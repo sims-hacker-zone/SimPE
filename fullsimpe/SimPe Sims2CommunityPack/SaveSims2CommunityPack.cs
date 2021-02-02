@@ -26,7 +26,7 @@ using System.Windows.Forms;
 namespace SimPe.Packages
 {
 	/// <summary>
-	/// Zusammenfassung für SaveSims2CommunityPack.
+	/// Zusammenfassung fÃ¼r SaveSims2CommunityPack.
 	/// </summary>
 	internal class SaveSims2CommunityPack : System.Windows.Forms.Form
 	{
@@ -69,7 +69,7 @@ namespace SimPe.Packages
 		public SaveSims2CommunityPack()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Erforderlich fÃ¼r die Windows Form-DesignerunterstÃ¼tzung
 			//
 			InitializeComponent();
 
@@ -100,8 +100,8 @@ namespace SimPe.Packages
 
 		#region Vom Windows Form-Designer generierter Code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

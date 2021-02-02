@@ -27,7 +27,7 @@ using System.Collections;
 namespace SimPe.PackedFiles.Wrapper
 {
 	/// <summary>
-	/// Zusammenfassung für ScorWrapper.
+	/// Zusammenfassung fÃ¼r ScorWrapper.
 	/// </summary>
 	public class Scor
 		: AbstractWrapper				//Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!

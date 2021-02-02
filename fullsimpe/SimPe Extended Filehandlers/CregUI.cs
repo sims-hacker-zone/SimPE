@@ -34,7 +34,7 @@ using SimPe.PackedFiles.Wrapper;
 namespace SimPe.PackedFiles.UserInterface
 {
 	/// <summary>
-	/// Zusammenfassung für ExtNgbhUI.
+	/// Zusammenfassung fÃ¼r ExtNgbhUI.
 	/// </summary>
 	public class CregUI : 
 		//System.Windows.Forms.UserControl
@@ -58,7 +58,7 @@ namespace SimPe.PackedFiles.UserInterface
 				| ControlStyles.DoubleBuffer
 				,true);
 
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Dieser Aufruf ist fÃ¼r den Windows Form-Designer erforderlich.
 			InitializeComponent();			
 		}
 		
@@ -81,8 +81,8 @@ namespace SimPe.PackedFiles.UserInterface
 
 		#region Vom Komponenten-Designer generierter Code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

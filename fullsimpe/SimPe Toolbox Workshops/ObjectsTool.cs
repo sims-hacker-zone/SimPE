@@ -25,7 +25,7 @@ using SimPe.Plugin.Tool.Dockable;
 namespace SimPe.Plugin.Tool
 {
 	/// <summary>
-	/// Zusammenfassung für ImportSemiTool.
+	/// Zusammenfassung fÃ¼r ImportSemiTool.
 	/// </summary>
 	public class ObjectsTool : SimPe.Interfaces.IToolPlus	
 	{

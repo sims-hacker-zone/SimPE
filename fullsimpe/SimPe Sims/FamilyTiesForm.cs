@@ -27,7 +27,7 @@ using SimPe.PackedFiles.Wrapper;
 namespace SimPe.PackedFiles.UserInterface
 {
 	/// <summary>
-	/// Zusammenfassung für FamilyTiesForm.
+	/// Zusammenfassung fÃ¼r FamilyTiesForm.
 	/// </summary>
 	public class FamilyTiesForm : System.Windows.Forms.Form
     {
@@ -36,7 +36,7 @@ namespace SimPe.PackedFiles.UserInterface
 		public FamilyTiesForm()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Erforderlich fÃ¼r die Windows Form-DesignerunterstÃ¼tzung
 			//
 			InitializeComponent();
 
@@ -73,8 +73,8 @@ namespace SimPe.PackedFiles.UserInterface
 
 		#region Vom Windows Form-Designer generierter Code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

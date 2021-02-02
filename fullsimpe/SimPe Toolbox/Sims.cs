@@ -26,7 +26,7 @@ using System.Windows.Forms;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für Sims.
+	/// Zusammenfassung fÃ¼r Sims.
 	/// </summary>
 	public class Sims : System.Windows.Forms.Form
 	{
@@ -65,7 +65,7 @@ namespace SimPe.Plugin
 		public Sims()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Erforderlich fÃ¼r die Windows Form-DesignerunterstÃ¼tzung
 			//
 			InitializeComponent();
 			sorter = new ColumnSorter();
@@ -92,8 +92,8 @@ namespace SimPe.Plugin
 
 		#region Vom Windows Form-Designer generierter Code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

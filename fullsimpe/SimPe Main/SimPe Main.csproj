@@ -16,7 +16,6 @@
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
-    <DelaySign>false</DelaySign>
     <OutputType>WinExe</OutputType>
     <RootNamespace>SimPe</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
@@ -149,27 +148,12 @@
       <HintPath>..\ambertation.utilities.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eyefinder">
-      <Name>eyefinder</Name>
-      <HintPath>..\eyefinder.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Microsoft.VisualBasic">
       <Name>Microsoft.VisualBasic</Name>
-    </Reference>
-    <Reference Include="Navisight">
-      <Name>navisight</Name>
-      <HintPath>..\navisight.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="NetDocks, Version=1.0.2471.34995, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\NetDocks.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="SandDock">
-      <Name>sanddock</Name>
-      <HintPath>..\sanddock.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="sims.guid, Version=1.0.2528.23536, Culture=neutral, processorArchitecture=MSIL">
@@ -200,11 +184,6 @@
     </Reference>
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
-    </Reference>
-    <Reference Include="XPCommonControls">
-      <Name>xpcommoncontrols</Name>
-      <HintPath>..\xpcommoncontrols.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="xsi.lib">
       <Name>xsi.lib</Name>
@@ -320,6 +299,18 @@
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
       <Private>False</Private>
     </ProjectReference>
+    <Reference Include="SandDock">
+      <HintPath>..\SandDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Navisight">
+      <HintPath>..\Navisight.dll</HintPath>
+    </Reference>
+    <Reference Include="Eyefinder">
+      <HintPath>..\Eyefinder.dll</HintPath>
+    </Reference>
+    <Reference Include="XPCommonControls">
+      <HintPath>..\XPCommonControls.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Build\SharedAssemblyInfo.cs">

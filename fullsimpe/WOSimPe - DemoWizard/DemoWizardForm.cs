@@ -8,7 +8,7 @@ using System.Data;
 namespace SimPe.Wizards
 {
 	/// <summary>
-	/// Zusammenfassung für DemoWizardForm.
+	/// Zusammenfassung fÃ¼r DemoWizardForm.
 	/// </summary>
 	public class DemoWizardForm : System.Windows.Forms.Form
 	{
@@ -34,12 +34,12 @@ namespace SimPe.Wizards
 		public DemoWizardForm()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Erforderlich fÃ¼r die Windows Form-DesignerunterstÃ¼tzung
 			//
 			InitializeComponent();
 
 			//
-			// TODO: Fügen Sie den Konstruktorcode nach dem Aufruf von InitializeComponent hinzu
+			// TODO: FÃ¼gen Sie den Konstruktorcode nach dem Aufruf von InitializeComponent hinzu
 			//
 		}
 
@@ -60,8 +60,8 @@ namespace SimPe.Wizards
 
 		#region Vom Windows Form-Designer generierter Code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -241,7 +241,7 @@ namespace SimPe.Wizards
 		#endregion
 
 		/// <summary>
-		/// Der Haupteinstiegspunkt für die Anwendung.
+		/// Der Haupteinstiegspunkt fÃ¼r die Anwendung.
 		/// </summary>
 		[STAThread]
 		static void Main() 

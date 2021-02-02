@@ -112,7 +112,7 @@ namespace SimPe.Plugin
 	}
 
 	/// <summary>
-	/// Zusammenfassung für cTSFaceGeometryBuilder.
+	/// Zusammenfassung fÃ¼r cTSFaceGeometryBuilder.
 	/// </summary>
 	public class TSFaceGeometryBuilder
 		: AbstractRcolBlock

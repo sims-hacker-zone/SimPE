@@ -27,7 +27,7 @@ using System.Windows.Forms;
 namespace SimPe.PackedFiles.UserInterface
 {
 	/// <summary>
-	/// Zusammenfassung für SimDNAUI.
+	/// Zusammenfassung fÃ¼r SimDNAUI.
 	/// </summary>
 	public class SimDNAUI : 
 		//System.Windows.Forms.UserControl 
@@ -44,7 +44,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public SimDNAUI()
 		{
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Dieser Aufruf ist fÃ¼r den Windows Form-Designer erforderlich.
 			InitializeComponent();
 
 			this.Text = "Sim DNA";
@@ -68,8 +68,8 @@ namespace SimPe.PackedFiles.UserInterface
 
 		#region Vom Komponenten-Designer generierter Code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

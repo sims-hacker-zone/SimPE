@@ -30,7 +30,7 @@ using Ambertation.Windows.Forms;
 namespace SimPe
 {
 	/// <summary>
-	/// Zusammenfassung für MainForm.
+	/// Zusammenfassung fÃ¼r MainForm.
 	/// </summary>
 	public partial class MainForm : System.Windows.Forms.Form
 	{
@@ -39,7 +39,7 @@ namespace SimPe
 		public MainForm()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Erforderlich fÃ¼r die Windows Form-DesignerunterstÃ¼tzung
 			//
 			InitializeComponent();
 

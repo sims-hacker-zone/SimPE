@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("The Dwarfen Realm")]
 [assembly: AssemblyProduct("SimPe Wants")]
-[assembly: AssemblyCopyright("Copyright © The Dwarfen Realm 2008")]
+[assembly: AssemblyCopyright("Copyright Â© The Dwarfen Realm 2008")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

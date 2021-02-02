@@ -27,7 +27,7 @@ using SimPe.Updates;
 namespace SimPe
 {
 	/// <summary>
-	/// Zusammenfassung für About.
+	/// Zusammenfassung fÃ¼r About.
 	/// </summary>
 	public class About : SimPe.Windows.Forms.HelpForm
     {
@@ -47,7 +47,7 @@ namespace SimPe
 		public About(bool html)
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Erforderlich fÃ¼r die Windows Form-DesignerunterstÃ¼tzung
 			//
 			InitializeComponent();
             button2.BackColor = SystemColors.Control;
@@ -95,8 +95,8 @@ namespace SimPe
 
 		#region Vom Windows Form-Designer generierter Code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

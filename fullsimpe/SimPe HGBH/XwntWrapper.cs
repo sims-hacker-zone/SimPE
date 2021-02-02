@@ -4,7 +4,7 @@ using System.Collections;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für MmatWrapper.
+	/// Zusammenfassung fÃ¼r MmatWrapper.
 	/// </summary>
 	public class XWant : SimPe.PackedFiles.Wrapper.Cpf
 	{

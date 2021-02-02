@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 namespace SimPe.Windows.Forms
 {
     public interface IResourceViewFilter

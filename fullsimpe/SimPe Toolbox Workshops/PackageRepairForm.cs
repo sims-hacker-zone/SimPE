@@ -7,7 +7,7 @@ using System.Windows.Forms;
 namespace SimPe.Plugin.Tool.Window
 {
 	/// <summary>
-	/// Zusammenfassung für PackageRepairForm.
+	/// Zusammenfassung fÃ¼r PackageRepairForm.
 	/// </summary>
 	class PackageRepairForm : System.Windows.Forms.Form
 	{
@@ -28,7 +28,7 @@ namespace SimPe.Plugin.Tool.Window
 		public PackageRepairForm()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Erforderlich fÃ¼r die Windows Form-DesignerunterstÃ¼tzung
 			//
 			InitializeComponent();
 
@@ -62,8 +62,8 @@ namespace SimPe.Plugin.Tool.Window
 
 		#region Vom Windows Form-Designer generierter Code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

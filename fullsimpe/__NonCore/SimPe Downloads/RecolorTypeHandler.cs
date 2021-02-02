@@ -3,7 +3,7 @@ using System;
 namespace SimPe.Plugin.Downloads
 {
 	/// <summary>
-	/// Zusammenfassung für SimTypeHandler.
+	/// Zusammenfassung fÃ¼r SimTypeHandler.
 	/// </summary>
 	public class RecolorTypeHandler : Downloads.ITypeHandler, System.IDisposable
 	{

@@ -22,7 +22,7 @@ using System;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für cViewerRefNodeBase.
+	/// Zusammenfassung fÃ¼r cViewerRefNodeBase.
 	/// </summary>
 	public class ViewerRefNodeBase
 			: AbstractRcolBlock

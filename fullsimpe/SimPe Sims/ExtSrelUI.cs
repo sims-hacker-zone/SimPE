@@ -32,7 +32,7 @@ using Ambertation.Windows.Forms;
 namespace SimPe.PackedFiles.UserInterface
 {
 	/// <summary>
-	/// Zusammenfassung für ExtSrelUI.
+	/// Zusammenfassung fÃ¼r ExtSrelUI.
 	/// </summary>
 	public class ExtSrel : SimPe.Windows.Forms.WrapperBaseControl, IPackedFileUI
 	{
@@ -49,10 +49,10 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			Text = SimPe.Localization.GetString("Sim Relation Editor");
 
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Dieser Aufruf ist fÃ¼r den Windows Form-Designer erforderlich.
 			InitializeComponent();
 
-			// TODO: Initialisierungen nach dem Aufruf von InitializeComponent hinzufügen
+			// TODO: Initialisierungen nach dem Aufruf von InitializeComponent hinzufÃ¼gen
 
 		}
 
@@ -73,8 +73,8 @@ namespace SimPe.PackedFiles.UserInterface
 
 		#region Vom Komponenten-Designer generierter Code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

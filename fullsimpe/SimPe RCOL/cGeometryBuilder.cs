@@ -22,7 +22,7 @@ using System;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für cGeometryBuilder.
+	/// Zusammenfassung fÃ¼r cGeometryBuilder.
 	/// </summary>
 	public class GeometryBuilder
 		: AbstractRcolBlock

@@ -31,7 +31,7 @@ using SimPe.Interfaces.Plugin;
 namespace SimPe.PackedFiles.Wrapper
 {
 	/// <summary>
-	/// Zusammenfassung für Elements2.
+	/// Zusammenfassung fÃ¼r Elements2.
 	/// </summary>
 	public class Elements2 : System.Windows.Forms.Form
 	{
@@ -43,7 +43,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public Elements2()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Erforderlich fÃ¼r die Windows Form-DesignerunterstÃ¼tzung
 			//
 			InitializeComponent();
 
@@ -71,8 +71,8 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#region Vom Windows Form-Designer generierter Code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

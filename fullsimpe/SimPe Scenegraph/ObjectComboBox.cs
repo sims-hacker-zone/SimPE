@@ -28,7 +28,7 @@ using SimPe.Cache;
 namespace SimPe.PackedFiles.Wrapper
 {
 	/// <summary>
-	/// Zusammenfassung für SimComboBox.
+	/// Zusammenfassung fÃ¼r SimComboBox.
 	/// </summary>
 	[System.ComponentModel.DefaultEvent("SelectedObjectChanged")]
 	public class ObjectComboBox : System.Windows.Forms.UserControl
@@ -56,7 +56,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ObjectComboBox()
 		{
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Dieser Aufruf ist fÃ¼r den Windows Form-Designer erforderlich.
 			InitializeComponent();
 
 			
@@ -87,8 +87,8 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#region Vom Komponenten-Designer generierter Code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

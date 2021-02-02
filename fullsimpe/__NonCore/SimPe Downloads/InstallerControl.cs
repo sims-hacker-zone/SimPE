@@ -9,7 +9,7 @@ using SimPe.Plugin.Downloads;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für InstallerControl.
+	/// Zusammenfassung fÃ¼r InstallerControl.
 	/// </summary>
 	public class InstallerControl : System.Windows.Forms.UserControl
 	{
@@ -38,7 +38,7 @@ namespace SimPe.Plugin
 
 		public InstallerControl()
 		{
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Dieser Aufruf ist fÃ¼r den Windows Form-Designer erforderlich.
 			InitializeComponent();
 
             Clear();
@@ -61,8 +61,8 @@ namespace SimPe.Plugin
 
 		#region Vom Komponenten-Designer generierter Code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

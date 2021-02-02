@@ -22,7 +22,7 @@ using System;
 namespace SimPe
 {
 	/// <summary>
-	/// Zusammenfassung für LoadActionTool.
+	/// Zusammenfassung fÃ¼r LoadActionTool.
 	/// </summary>
 	internal class ActionToolDescriptor
 	{

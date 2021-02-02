@@ -23,7 +23,7 @@ namespace SimPe.Plugin
 {
 	
 	/// <summary>
-	/// Zusammenfassung für WorkshopItems.
+	/// Zusammenfassung fÃ¼r WorkshopItems.
 	/// </summary>
 	public class WorkshopMMAT
 	{

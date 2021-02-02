@@ -23,7 +23,7 @@ using SimPe.Interfaces;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für ImportSemiTool.
+	/// Zusammenfassung fÃ¼r ImportSemiTool.
 	/// </summary>
 	internal class ScanerTool : Interfaces.AbstractTool, Interfaces.ITool
 	{

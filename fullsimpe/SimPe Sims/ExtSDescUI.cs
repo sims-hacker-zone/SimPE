@@ -33,7 +33,7 @@ using SimPe.Windows.Forms;
 namespace SimPe.PackedFiles.UserInterface
 {
 	/// <summary>
-	/// Zusammenfassung für ExtSDescUI.
+	/// Zusammenfassung fÃ¼r ExtSDescUI.
 	/// </summary>
 	public partial class ExtSDesc : 
 		//System.Windows.Forms.UserControl 
@@ -49,7 +49,7 @@ namespace SimPe.PackedFiles.UserInterface
 			strresources = new System.Resources.ResourceManager(typeof(ExtSDesc));
 			Text = SimPe.Localization.GetString("Sim Description Editor");
 			
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Dieser Aufruf ist fÃ¼r den Windows Form-Designer erforderlich.
 			InitializeComponent();	
 			Initialize();
 

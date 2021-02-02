@@ -65,7 +65,7 @@ namespace SimPe.Plugin
         {
             get { 
                 ///
-                /// TODO: Return false here, if you donÄt want your Plugin to show up in the Plugins Menus, but still want to catch the 
+                /// TODO: Return false here, if you donÃ„t want your Plugin to show up in the Plugins Menus, but still want to catch the 
                 /// ChangeEnabledStateEventHandler Event
                 /// 
                 return true; 

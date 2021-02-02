@@ -22,7 +22,7 @@ using System;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für StandardLightBase.
+	/// Zusammenfassung fÃ¼r StandardLightBase.
 	/// </summary>
 	public class AmbientLight : DirectionalLight
 	{

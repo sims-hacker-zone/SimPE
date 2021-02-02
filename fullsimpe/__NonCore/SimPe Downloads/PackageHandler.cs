@@ -3,7 +3,7 @@ using System;
 namespace SimPe.Plugin.Downloads
 {
 	/// <summary>
-	/// Zusammenfassung für TypedPackageHandler.
+	/// Zusammenfassung fÃ¼r TypedPackageHandler.
 	/// </summary>
 	public class PackageHandler : Downloads.IPackageHandler, System.IDisposable
 	{

@@ -1,28 +1,28 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-// Allgemeine Informationen über eine Assembly werden über die folgenden 
-// Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
-// die mit einer Assembly verknüpft sind.
+// Allgemeine Informationen Ã¼ber eine Assembly werden Ã¼ber die folgenden 
+// Attribute gesteuert. Ã„ndern Sie diese Attributwerte, um die Informationen zu Ã¤ndern,
+// die mit einer Assembly verknÃ¼pft sind.
 [assembly: AssemblyTitle("ControlsTest")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Privat")]
 [assembly: AssemblyProduct("ControlsTest")]
-[assembly: AssemblyCopyright("Copyright © Privat 2006")]
+[assembly: AssemblyCopyright("Copyright Â© Privat 2006")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Durch Festlegen von ComVisible auf "false" werden die Typen in dieser Assembly unsichtbar 
-// für COM-Komponenten. Wenn Sie auf einen Typ in dieser Assembly von 
-// COM zugreifen müssen, legen Sie das ComVisible-Attribut für diesen Typ auf "true" fest.
+// fÃ¼r COM-Komponenten. Wenn Sie auf einen Typ in dieser Assembly von 
+// COM zugreifen mÃ¼ssen, legen Sie das ComVisible-Attribut fÃ¼r diesen Typ auf "true" fest.
 [assembly: ComVisible(false)]
 
-// Die folgende GUID bestimmt die ID der Typbibliothek, wenn dieses Projekt für COM verfügbar gemacht wird
+// Die folgende GUID bestimmt die ID der Typbibliothek, wenn dieses Projekt fÃ¼r COM verfÃ¼gbar gemacht wird
 [assembly: Guid("d79c5391-f1b9-40b4-b428-947e01c05d32")]
 
-// Versionsinformationen für eine Assembly bestehen aus den folgenden vier Werten:
+// Versionsinformationen fÃ¼r eine Assembly bestehen aus den folgenden vier Werten:
 //
 //      Hauptversion
 //      Nebenversion 

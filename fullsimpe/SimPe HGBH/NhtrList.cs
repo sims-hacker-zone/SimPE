@@ -10,7 +10,7 @@ namespace SimPe.Plugin
 		Decorations = 3,
 	}
 	/// <summary>
-	/// Zusammenfassung für TileItem.
+	/// Zusammenfassung fÃ¼r TileItem.
 	/// </summary>
 	public class NhtrList : System.Collections.IEnumerable
 	{

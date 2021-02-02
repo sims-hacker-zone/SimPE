@@ -74,7 +74,7 @@ namespace SimPe.PackedFiles.UserInterface
 		public StrForm()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Erforderlich fÃ¼r die Windows Form-DesignerunterstÃ¼tzung
 			//
 			InitializeComponent();
 

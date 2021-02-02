@@ -27,7 +27,7 @@ using System.Drawing;
 namespace SimPe.PackedFiles.Wrapper
 {
 	/// <summary>
-	/// Zusammenfassung für ExtSDesc.
+	/// Zusammenfassung fÃ¼r ExtSDesc.
 	/// </summary>
 	public class ExtSrel : SRel, SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper
 	{

@@ -28,7 +28,7 @@ using SimPe.PackedFiles.Wrapper;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für NgbhForm.
+	/// Zusammenfassung fÃ¼r NgbhForm.
 	/// </summary>
 	public class NgbhForm : System.Windows.Forms.Form
 	{
@@ -94,8 +94,8 @@ namespace SimPe.Plugin
 
 		#region Vom Windows Form-Designer generierter Code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

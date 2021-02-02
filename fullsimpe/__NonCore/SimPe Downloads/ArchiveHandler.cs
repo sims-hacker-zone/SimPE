@@ -4,7 +4,7 @@ using System.Collections;
 namespace SimPe.Plugin.Downloads
 {
 	/// <summary>
-	/// Zusammenfassung für ArchiveHandler.
+	/// Zusammenfassung fÃ¼r ArchiveHandler.
 	/// </summary>
 	public abstract class ArchiveHandler : Downloads.IPackageHandler, System.IDisposable
 	{

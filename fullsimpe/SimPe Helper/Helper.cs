@@ -53,7 +53,7 @@ namespace SimPe
 		/// <summary>
 		/// Characters allowd in a Filepath
 		/// </summary>
-		public const string PATH_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzﬂ0123456789.-_ ";
+		public const string PATH_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz√ü0123456789.-_ ";
 
 		/// <summary>
 		/// Character used to Seperate Folders in a Path

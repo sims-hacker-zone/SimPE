@@ -26,7 +26,7 @@ namespace SimPe.Plugin
 {	
 
 	/// <summary>
-	/// Zusammenfassung für cCompactorBuilder.
+	/// Zusammenfassung fÃ¼r cCompactorBuilder.
 	/// </summary>
 	public class CompactorBuilder
 		: AbstractRcolBlock

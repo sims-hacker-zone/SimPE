@@ -3,7 +3,7 @@ using System;
 namespace SimPe.Wizards
 {
 	/// <summary>
-	/// Zusammenfassung für Step1.
+	/// Zusammenfassung fÃ¼r Step1.
 	/// </summary>
 	public class Step1b : AWizardForm
 	{

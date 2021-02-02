@@ -22,7 +22,7 @@ using System;
 namespace SimPe.Interfaces
 {
 	/// <summary>
-	/// Zusammenfassung für ICommandLineRegistry.
+	/// Zusammenfassung fÃ¼r ICommandLineRegistry.
 	/// </summary>
 	public interface ICommandLineRegistry
 	{		

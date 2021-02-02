@@ -33,7 +33,7 @@ namespace SimPe
     {
         public static MainForm Global;
         /// <summary>
-        /// Der Haupteinstiegspunkt für die Anwendung.
+        /// Der Haupteinstiegspunkt fÃ¼r die Anwendung.
         /// </summary>
         [STAThread]
         static void Main(string[] args)

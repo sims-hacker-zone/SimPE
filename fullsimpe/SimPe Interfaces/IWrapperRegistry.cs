@@ -23,7 +23,7 @@ using System.Collections.Generic;
 namespace SimPe.Interfaces
 {
 	/// <summary>
-	/// Zusammenfassung für IWrapperRegistry.
+	/// Zusammenfassung fÃ¼r IWrapperRegistry.
 	/// </summary>
 	public interface IWrapperRegistry
 	{		

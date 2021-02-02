@@ -27,7 +27,7 @@ using System.Collections;
 namespace SimPe.PackedFiles.Wrapper
 {
 	/// <summary>
-	/// Zusammenfassung für ExtSDesc.
+	/// Zusammenfassung fÃ¼r ExtSDesc.
 	/// </summary>
 	public class ExtSDesc : SDesc/*, SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper*/
 	{

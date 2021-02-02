@@ -27,7 +27,7 @@ using System.Windows.Forms;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für SlotUI.
+	/// Zusammenfassung fÃ¼r SlotUI.
 	/// </summary>
 	public class NgbhSlotUI : System.Windows.Forms.UserControl
 	{
@@ -54,7 +54,7 @@ namespace SimPe.Plugin
 				| ControlStyles.DoubleBuffer
 				,true);
 
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Dieser Aufruf ist fÃ¼r den Windows Form-Designer erforderlich.
 			InitializeComponent();
 
 			SlotType = Data.NeighborhoodSlots.Sims;
@@ -78,8 +78,8 @@ namespace SimPe.Plugin
 
 		#region Vom Komponenten-Designer generierter Code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

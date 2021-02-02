@@ -26,7 +26,7 @@ using System.Windows.Forms;
 namespace SimPe.Plugin.TabPage
 {
 	/// <summary>
-	/// Zusammenfassung für fShapeRefNode.
+	/// Zusammenfassung fÃ¼r fShapeRefNode.
 	/// </summary>
 	public class ShpeLod : 
 		//System.Windows.Forms.UserControl
@@ -54,7 +54,7 @@ namespace SimPe.Plugin.TabPage
 				| ControlStyles.DoubleBuffer
 				,true);
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Erforderlich fÃ¼r die Windows Form-DesignerunterstÃ¼tzung
 			//
             InitializeComponent();
 
@@ -79,8 +79,8 @@ namespace SimPe.Plugin.TabPage
 
 		#region Vom Windows Form-Designer generierter Code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

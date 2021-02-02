@@ -4,7 +4,7 @@ using SimPe.Geometry;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für TileItem.
+	/// Zusammenfassung fÃ¼r TileItem.
 	/// </summary>
 	public abstract class NhtrBaseItem : NhtrItem
 	{		

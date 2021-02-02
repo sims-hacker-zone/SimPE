@@ -77,7 +77,7 @@ namespace SimPe.Plugin
 	}
 
 	/// <summary>
-	/// Zusammenfassung für cCinematicScene.
+	/// Zusammenfassung fÃ¼r cCinematicScene.
 	/// </summary>
 	public class CinematicScene
 		: AbstractRcolBlock

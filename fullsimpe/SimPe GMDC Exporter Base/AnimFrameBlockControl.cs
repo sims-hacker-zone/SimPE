@@ -27,7 +27,7 @@ using System.Windows.Forms;
 namespace SimPe.Plugin.Anim
 {
 	/// <summary>
-	/// Zusammenfassung für AnimFrameBlockControl.
+	/// Zusammenfassung fÃ¼r AnimFrameBlockControl.
 	/// </summary>
 	public class AnimFrameBlockControl : System.Windows.Forms.UserControl
 	{
@@ -74,7 +74,7 @@ namespace SimPe.Plugin.Anim
 				| ControlStyles.DoubleBuffer
 				,true);
 
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Dieser Aufruf ist fÃ¼r den Windows Form-Designer erforderlich.
 			InitializeComponent();
 
 			SimPe.ThemeManager tm = SimPe.ThemeManager.Global.CreateChild();
@@ -103,8 +103,8 @@ namespace SimPe.Plugin.Anim
 
 		#region Vom Komponenten-Designer generierter Code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

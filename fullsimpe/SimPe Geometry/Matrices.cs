@@ -25,7 +25,7 @@ using System.Collections;
 namespace SimPe.Geometry
 {
 	/// <summary>
-	/// Zusammenfassung für Matrices.
+	/// Zusammenfassung fÃ¼r Matrices.
 	/// </summary>
 	public class Matrixd
 	{

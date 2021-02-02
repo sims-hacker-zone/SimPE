@@ -3,7 +3,7 @@ using System;
 namespace ReleaseCreator
 {
 	/// <summary>
-	/// Zusammenfassung für FileDescriptor.
+	/// Zusammenfassung fÃ¼r FileDescriptor.
 	/// </summary>
 	public class FileDescriptor
 	{

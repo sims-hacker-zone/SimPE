@@ -27,7 +27,7 @@ using System.Windows.Forms;
 namespace SimPe
 {
     /// <summary>
-    /// Zusammenfassung für OptionForm.
+    /// Zusammenfassung fÃ¼r OptionForm.
     /// </summary>
     public partial class OptionForm : System.Windows.Forms.Form
     {
@@ -40,7 +40,7 @@ namespace SimPe
             {
                 Application.DoEvents();
                 //
-                // Erforderlich für die Windows Form-Designerunterstützung
+                // Erforderlich fÃ¼r die Windows Form-DesignerunterstÃ¼tzung
                 //
                 InitializeComponent();
 

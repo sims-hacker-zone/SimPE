@@ -8,7 +8,7 @@ using System.Data;
 namespace SimPe.Wizards
 {
 	/// <summary>
-	/// Zusammenfassung für RecolorWizardForm.
+	/// Zusammenfassung fÃ¼r RecolorWizardForm.
 	/// </summary>
 	public class RecolorWizardForm : System.Windows.Forms.Form
 	{
@@ -54,7 +54,7 @@ namespace SimPe.Wizards
 		public RecolorWizardForm()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Erforderlich fÃ¼r die Windows Form-DesignerunterstÃ¼tzung
 			//
 			InitializeComponent();
 
@@ -79,8 +79,8 @@ namespace SimPe.Wizards
 
 		#region Vom Windows Form-Designer generierter Code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

@@ -26,7 +26,7 @@ namespace SimPe.Plugin
 {	
 
 	/// <summary>
-	/// Zusammenfassung für cTagExtension.
+	/// Zusammenfassung fÃ¼r cTagExtension.
 	/// </summary>
 	public class TagExtension
 		: AbstractRcolBlock

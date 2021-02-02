@@ -3,7 +3,7 @@ using System;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für BnfoCustomerItem.
+	/// Zusammenfassung fÃ¼r BnfoCustomerItem.
 	/// </summary>
 	public class BnfoCustomerItem
 	{

@@ -22,7 +22,7 @@ using System;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für cBoundedNode.
+	/// Zusammenfassung fÃ¼r cBoundedNode.
 	/// </summary>
 	public class BoundedNode
 		: AbstractRcolBlock

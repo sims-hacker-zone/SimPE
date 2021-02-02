@@ -192,7 +192,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Applies the initial Joint Transformation to the passed Vertex
 		/// </summary>
-		/// <param name="index">Index of the current Joint withi itÄs parent</param>
+		/// <param name="index">Index of the current Joint withi itÃ„s parent</param>
 		/// <param name="v">The Vertex you want to Transform</param>
 		/// <returns>Transformed Vertex</returns>
 		protected Vector3f Transform(int index, Vector3f v) 

@@ -27,7 +27,7 @@ using System.Windows.Forms;
 namespace Ambertation.Windows.Forms
 {
 	/// <summary>
-	/// Zusammenfassung für LabledProgressBar.
+	/// Zusammenfassung fÃ¼r LabledProgressBar.
 	/// </summary>
 	[ToolboxBitmapAttribute(typeof(ProgressBar)), DefaultEvent("ChangedValue")]
 	public class LabeledProgressBar : System.Windows.Forms.UserControl
@@ -65,7 +65,7 @@ namespace Ambertation.Windows.Forms
 			no = 0;
 			dno = 0;
 
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Dieser Aufruf ist fÃ¼r den Windows Form-Designer erforderlich.
 			InitializeComponent();
 
 			pb.TokenCount = 10;
@@ -256,8 +256,8 @@ namespace Ambertation.Windows.Forms
 
 		#region von Designer
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

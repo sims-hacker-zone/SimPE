@@ -28,7 +28,7 @@ using System.Windows.Forms;
 namespace SimPe.Windows.Forms
 {
 	/// <summary>
-	/// Zusammenfassung für WrapperBaseControl.
+	/// Zusammenfassung fÃ¼r WrapperBaseControl.
 	/// </summary>
 	[ToolboxBitmapAttribute(typeof(Panel))]
 	public class WrapperBaseControl : System.Windows.Forms.UserControl, SimPe.Interfaces.Plugin.IPackedFileUI
@@ -51,7 +51,7 @@ namespace SimPe.Windows.Forms
 					| ControlStyles.DoubleBuffer
 					,true);
 
-				// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+				// Dieser Aufruf ist fÃ¼r den Windows Form-Designer erforderlich.
 				InitializeComponent();	
 
 				headcol = Color.FromArgb(120, 0, 0, 0);
@@ -272,8 +272,8 @@ namespace SimPe.Windows.Forms
 
 		#region Vom Komponenten-Designer generierter Code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

@@ -4,7 +4,7 @@ using System.Collections;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für MmatWrapper.
+	/// Zusammenfassung fÃ¼r MmatWrapper.
 	/// </summary>
 	public class MmatWrapper : SimPe.PackedFiles.Wrapper.Cpf, SimPe.Interfaces.Scenegraph.IScenegraphBlock, SimPe.Interfaces.Scenegraph.IScenegraphItem
 	{

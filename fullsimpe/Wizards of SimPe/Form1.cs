@@ -27,7 +27,7 @@ using System.Data;
 namespace SimPe.Wizards
 {
 	/// <summary>
-	/// Zusammenfassung für Form1.
+	/// Zusammenfassung fÃ¼r Form1.
 	/// </summary>
 	public class Form1 : System.Windows.Forms.Form
 	{
@@ -54,7 +54,7 @@ namespace SimPe.Wizards
 		public Form1()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Erforderlich fÃ¼r die Windows Form-DesignerunterstÃ¼tzung
 			//
 			InitializeComponent();
 #if MAC
@@ -99,8 +99,8 @@ namespace SimPe.Wizards
 
 		#region Vom Windows Form-Designer generierter Code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -327,7 +327,7 @@ namespace SimPe.Wizards
 		internal static Form1 form1;
 
 		/// <summary>
-		/// Der Haupteinstiegspunkt für die Anwendung.
+		/// Der Haupteinstiegspunkt fÃ¼r die Anwendung.
 		/// </summary>
 		[STAThread]			
 		static void Main() 

@@ -28,7 +28,7 @@ using SimPe.Interfaces.Plugin;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für NeighborhoodForm.
+	/// Zusammenfassung fÃ¼r NeighborhoodForm.
 	/// </summary>
 	public class NeighborhoodForm : System.Windows.Forms.Form
 	{
@@ -77,8 +77,8 @@ namespace SimPe.Plugin
 
 		#region Vom Windows Form-Designer generierter Code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

@@ -23,7 +23,7 @@ using SimPe.Interfaces.Scenegraph;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für cGeometryNode.
+	/// Zusammenfassung fÃ¼r cGeometryNode.
 	/// </summary>
 	public class GeometryNode
 		: AbstractRcolBlock

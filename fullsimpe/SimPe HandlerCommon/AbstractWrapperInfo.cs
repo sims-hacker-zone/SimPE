@@ -24,7 +24,7 @@ using SimPe.Interfaces.Plugin;
 namespace SimPe.Interfaces.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für AbstractWrapperInfo.
+	/// Zusammenfassung fÃ¼r AbstractWrapperInfo.
 	/// </summary>
 	public class AbstractWrapperInfo : IWrapperInfo
 	{

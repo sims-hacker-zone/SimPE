@@ -3,7 +3,7 @@ using System;
 namespace SimPe.Interfaces
 {
 	/// <summary>
-	/// Zusammenfassung für ICacheFileTest.
+	/// Zusammenfassung fÃ¼r ICacheFileTest.
 	/// </summary>
 	public interface ICacheFileTest
 	{

@@ -101,7 +101,7 @@ namespace SimPe.Plugin
 
 	}
 	/// <summary>
-	/// Zusammenfassung für cShapeRefNode.
+	/// Zusammenfassung fÃ¼r cShapeRefNode.
 	/// </summary>
 	public class ShapeRefNode
 		: AbstractCresChildren

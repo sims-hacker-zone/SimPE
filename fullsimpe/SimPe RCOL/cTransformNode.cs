@@ -77,7 +77,7 @@ namespace SimPe.Plugin
 	}
 
 	/// <summary>
-	/// Zusammenfassung für cTransformNode.
+	/// Zusammenfassung fÃ¼r cTransformNode.
 	/// </summary>
 	public class TransformNode
 		: AbstractCresChildren

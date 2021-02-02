@@ -30,7 +30,7 @@ namespace Ambertation
 {
 	
 	/// <summary>
-	/// Zusammenfassung für Panel3D.
+	/// Zusammenfassung fÃ¼r Panel3D.
 	/// </summary>
 	internal class Panel3D : Panel
 	{

@@ -28,7 +28,7 @@ using SimPe.PackedFiles.Wrapper;
 namespace SimPe.PackedFiles.UserInterface
 {
 	/// <summary>
-	/// Zusammenfassung für ScorUI.
+	/// Zusammenfassung fÃ¼r ScorUI.
 	/// </summary>
 	public class ScorUI : 
 		//System.Windows.Forms.UserControl 
@@ -50,7 +50,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public ScorUI()
 		{
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Dieser Aufruf ist fÃ¼r den Windows Form-Designer erforderlich.
 			InitializeComponent();
             btAdd.Enabled = false;
             btRem.Enabled = false;
@@ -78,8 +78,8 @@ namespace SimPe.PackedFiles.UserInterface
 
 		#region Vom Komponenten-Designer generierter Code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

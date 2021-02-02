@@ -23,7 +23,7 @@ using System.Collections;
 namespace Ambertation.Soap
 {
 	/// <summary>
-	/// Zusammenfassung für PhpArray.
+	/// Zusammenfassung fÃ¼r PhpArray.
 	/// </summary>
 	public class PhpSerialized
 	{
@@ -33,7 +33,7 @@ namespace Ambertation.Soap
 		public delegate object SerializedTokenHandler(string str, ref int index);
 
 		/// <summary>
-		/// Erzeugt einen int Datentypen aus dem übergebenem String
+		/// Erzeugt einen int Datentypen aus dem Ã¼bergebenem String
 		/// </summary>
 		/// <param name="str">Die Zeichenkette</param>
 		/// <returns>Der Zahlenwert</returns>
@@ -46,7 +46,7 @@ namespace Ambertation.Soap
 		}
 
 		/// <summary>
-		/// Erzeugt einen double Datentypen aus dem übergebenem String
+		/// Erzeugt einen double Datentypen aus dem Ã¼bergebenem String
 		/// </summary>
 		/// <param name="str">Die Zeichenkette</param>
 		/// <returns>Der Zahlenwert</returns>
@@ -64,7 +64,7 @@ namespace Ambertation.Soap
 		/// </summary>
 		/// <param name="str">Die Zeichenkette</param>
 		/// <param name="index">Der aktuelle Index der Zeichenkette</param>
-		/// <param name="data">Data enthält das Hashtableelement das initialisiert werden soll</param>
+		/// <param name="data">Data enthÃ¤lt das Hashtableelement das initialisiert werden soll</param>
 		/// <returns>Ein neuer Hashtable welcher das Array darstellt</returns>
 		/// <remarks>
 		///		Ein serialisiertes Array hat z.B. die Form 
@@ -76,7 +76,7 @@ namespace Ambertation.Soap
 		{
 			str = str.Substring(index);
 			string[] tokens = str.Split(":".ToCharArray(), 3);
-			if (tokens.Length<3) throw new Exception("Ungültiger Array Token");
+			if (tokens.Length<3) throw new Exception("UngÃ¼ltiger Array Token");
 			int len = ToInt(tokens[1]);
 			
 			index += 3; //2x':', 1x'{'
@@ -120,12 +120,12 @@ namespace Ambertation.Soap
 					} 
 					else 
 					{
-						throw new Exception("Der Schlüssel darf nicht null sein!");
+						throw new Exception("Der SchlÃ¼ssel darf nicht null sein!");
 					}
 				} 
 				else 
 				{
-					throw new Exception("Der Schlüsseltoken '"+curToken+"' ist nicht bekannt!");
+					throw new Exception("Der SchlÃ¼sseltoken '"+curToken+"' ist nicht bekannt!");
 				}
 
 				index++; //1x';'
@@ -142,7 +142,7 @@ namespace Ambertation.Soap
 		/// </summary>
 		/// <param name="str">Die Zeichenkette</param>
 		/// <param name="index">Der aktuelle Index der Zeichenkette</param>
-		/// <param name="data">Data enthält das Hashtableelement das initialisiert werden soll</param>
+		/// <param name="data">Data enthÃ¤lt das Hashtableelement das initialisiert werden soll</param>
 		/// <returns>Ein neuer Hashtable welcher die Attribute des Objektes darstellt</returns>
 		/// <remarks>
 		///		Ein serialisiertes Objekt hat z.B. die Form 
@@ -154,7 +154,7 @@ namespace Ambertation.Soap
 		{
 			string sstr = str.Substring(index);
 			string[] tokens = sstr.Split(":".ToCharArray(), 5);
-			if (tokens.Length<5) throw new Exception("Ungültiger Objekt Token");
+			if (tokens.Length<5) throw new Exception("UngÃ¼ltiger Objekt Token");
 			int namelen = ToInt(tokens[1]);
 			int len = ToInt(tokens[3]);
 
@@ -202,12 +202,12 @@ namespace Ambertation.Soap
 					} 
 					else 
 					{
-						throw new Exception("Der Schlüssel darf nicht null sein!");
+						throw new Exception("Der SchlÃ¼ssel darf nicht null sein!");
 					}
 				} 
 				else 
 				{
-					throw new Exception("Der Schlüsseltoken '"+curToken+"' ist nicht bekannt!");
+					throw new Exception("Der SchlÃ¼sseltoken '"+curToken+"' ist nicht bekannt!");
 				}
 
 				index++; //1x';'
@@ -234,7 +234,7 @@ namespace Ambertation.Soap
 		protected static object NullHandler(string str, ref int index)
 		{
 			string[] tokens = str.Split(":".ToCharArray(), 2);
-			if (str[index]!='N') throw new Exception("Ungültiges NULL Token");
+			if (str[index]!='N') throw new Exception("UngÃ¼ltiges NULL Token");
 			
 						
 			index += 1; //1x':'
@@ -258,7 +258,7 @@ namespace Ambertation.Soap
 		{
 			str = str.Substring(index);
 			string[] tokens = str.Split(":".ToCharArray(), 3);
-			if (tokens.Length<3) throw new Exception("Ungültiger String Token");
+			if (tokens.Length<3) throw new Exception("UngÃ¼ltiger String Token");
 			int len = ToInt(tokens[1]);
 			
 			index += 4; //2x':', 2x'"'
@@ -288,7 +288,7 @@ namespace Ambertation.Soap
 		{
 			str = str.Substring(index);
 			string[] tokens = str.Split(":".ToCharArray(), 2);
-			if (tokens.Length<2) throw new Exception("Ungültiger Integer Token");
+			if (tokens.Length<2) throw new Exception("UngÃ¼ltiger Integer Token");
 			tokens[1] = tokens[1].Split(";".ToCharArray(), 2)[0];
 						
 			index += 1; //1x':'
@@ -314,7 +314,7 @@ namespace Ambertation.Soap
 		{
 			str = str.Substring(index);
 			string[] tokens = str.Split(":".ToCharArray(), 2);
-			if (tokens.Length<2) throw new Exception("Ungültiger Integer Token");
+			if (tokens.Length<2) throw new Exception("UngÃ¼ltiger Integer Token");
 			tokens[1] = tokens[1].Split(";".ToCharArray(), 2)[0];
 						
 			index += 1; //1x':'
@@ -340,7 +340,7 @@ namespace Ambertation.Soap
 		{
 			str = str.Substring(index);
 			string[] tokens = str.Split(":".ToCharArray(), 2);
-			if (tokens.Length<2) throw new Exception("Ungültiger Boolean Token");
+			if (tokens.Length<2) throw new Exception("UngÃ¼ltiger Boolean Token");
 			tokens[1] = tokens[1].Split(";".ToCharArray(), 2)[0];
 						
 			index += 1; //1x':'
@@ -351,7 +351,7 @@ namespace Ambertation.Soap
 		#endregion
 
 		/// <summary>
-		/// Erzeugt eine Delegaten Liste für TokenHandler der Funktion GetHashtableFromSerializedArray()
+		/// Erzeugt eine Delegaten Liste fÃ¼r TokenHandler der Funktion GetHashtableFromSerializedArray()
 		/// </summary>
 		/// <returns>Einen Hastable der einerm Tokenwert eine Funcktion (delegate) zuordnet.</returns>
 		protected static Hashtable BuildSerializedArrayTokenHandlers()

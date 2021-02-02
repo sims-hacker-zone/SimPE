@@ -31,7 +31,7 @@ using System.Windows.Forms;
 namespace Ambertation.Windows.Forms
 {
 	/// <summary>
-	/// Zusammenfassung für SelectorItem.
+	/// Zusammenfassung fÃ¼r SelectorItem.
 	/// </summary>
 	public class SelectorItem
 	{

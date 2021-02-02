@@ -3,7 +3,7 @@ using System;
 namespace SimPe.PackedFiles.Wrapper
 {
 	/// <summary>
-	/// Zusammenfassung für Creg3.
+	/// Zusammenfassung fÃ¼r Creg3.
 	/// </summary>
 	public class Creg3 : ICregGroup
 	{

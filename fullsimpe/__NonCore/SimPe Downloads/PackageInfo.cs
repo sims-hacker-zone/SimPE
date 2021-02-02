@@ -4,7 +4,7 @@ using System.Drawing;
 namespace SimPe.Plugin.Downloads
 {
 	/// <summary>
-	/// Zusammenfassung für PackageInfo.
+	/// Zusammenfassung fÃ¼r PackageInfo.
 	/// </summary>
 	public class PackageInfo : Downloads.IPackageInfo	, System.IDisposable
 	{

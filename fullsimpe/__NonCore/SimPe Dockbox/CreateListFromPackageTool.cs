@@ -24,7 +24,7 @@ using SimPe.Events;
 namespace SimPe.Plugin.Tool
 {
 	/// <summary>
-	/// Zusammenfassung für ImportSemiTool.
+	/// Zusammenfassung fÃ¼r ImportSemiTool.
 	/// </summary>
 	public class CreateListFromPackageTool : SimPe.Interfaces.IToolPlus	
 	{

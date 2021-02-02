@@ -34,7 +34,7 @@ namespace SimPe.Plugin
 		public EnhancedNgbh() : base()
 		{
 			//
-			// TODO: Fügen Sie hier die Konstruktorlogik hinzu
+			// TODO: FÃ¼gen Sie hier die Konstruktorlogik hinzu
 			//
 		}
 

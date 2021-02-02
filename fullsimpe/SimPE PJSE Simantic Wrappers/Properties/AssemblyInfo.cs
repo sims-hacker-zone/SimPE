@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Maintained by PLJones")]
 [assembly: AssemblyProduct("SimPE PJSE Simantic Wrappers")]
-[assembly: AssemblyCopyright("Copyright © PLJones 2006")]
+[assembly: AssemblyCopyright("Copyright Â© PLJones 2006")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

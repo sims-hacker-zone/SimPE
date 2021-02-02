@@ -4,7 +4,7 @@ using System.Collections;
 namespace SimPe.Plugin.Downloads
 {
 	/// <summary>
-	/// Zusammenfassung für PackageInfoCollection.
+	/// Zusammenfassung fÃ¼r PackageInfoCollection.
 	/// </summary>
 	public class PackageInfoCollection : System.IDisposable, System.Collections.IEnumerable
 	{

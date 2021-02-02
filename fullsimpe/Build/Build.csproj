@@ -42,7 +42,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>set TargetDir=$(SolutionDir)..\__$(Configuration)\
+    <!--<PostBuildEvent>set TargetDir=$(SolutionDir)..\__$(Configuration)\
 copy "$(SolutionDir)..\*.dll" "%25TargetDir%25"
 
 if not exist "%25TargetDir%25Data" mkdir "%25TargetDir%25Data"
@@ -52,6 +52,6 @@ if not exist "%25TargetDir%25Data\Plugins" mkdir "%25TargetDir%25Data\Plugins"
 
 copy "$(SolutionDir)..\__etc\*.*" "%25TargetDir%25"
 
-</PostBuildEvent>
+</PostBuildEvent>-->
   </PropertyGroup>
 </Project>

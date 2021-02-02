@@ -31,7 +31,7 @@ using System.Security.Permissions;
 namespace Ambertation.Windows.Forms
 {
 	/// <summary>
-	/// Zusammenfassung für TransparentGroupBox.
+	/// Zusammenfassung fÃ¼r TransparentGroupBox.
 	/// </summary>
 	[ToolboxBitmapAttribute(typeof(GroupBox))]
 	public class TransparentGroupBox : GroupBox

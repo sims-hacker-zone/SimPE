@@ -27,7 +27,7 @@ using SimPe.Interfaces.Files;
 namespace SimPe.Packages
 {
 	/// <summary>
-	/// Extends the Püackage Files for Extraction Methods
+	/// Extends the PÃ¼ackage Files for Extraction Methods
 	/// </summary>
 	public class ExtractableFile : File
 	{

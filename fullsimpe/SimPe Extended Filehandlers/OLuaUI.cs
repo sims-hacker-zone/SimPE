@@ -28,7 +28,7 @@ using System.Windows.Forms;
 namespace SimPe.PackedFiles.UserInterface
 {
 	/// <summary>
-	/// Zusammenfassung für OLuaUI.
+	/// Zusammenfassung fÃ¼r OLuaUI.
 	/// </summary>
 	public class ObjLua : System.Windows.Forms.UserControl, SimPe.Interfaces.Plugin.IPackedFileUI
 	{
@@ -46,7 +46,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public ObjLua()
 		{
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Dieser Aufruf ist fÃ¼r den Windows Form-Designer erforderlich.
 			InitializeComponent();
 
 			this.button2.Enabled = Helper.QARelease;
@@ -69,8 +69,8 @@ namespace SimPe.PackedFiles.UserInterface
 
 		#region Vom Komponenten-Designer generierter Code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

@@ -24,14 +24,14 @@ using System.Collections;
 namespace SimPe.PackedFiles.Wrapper
 {
 	/// <summary>
-	/// Zusammenfassung für ExtFamilyTiesWrapper.
+	/// Zusammenfassung fÃ¼r ExtFamilyTiesWrapper.
 	/// </summary>
 	public class ExtFamilyTies : FamilyTies
 	{
 		public ExtFamilyTies():base(FileTable.ProviderRegistry.SimNameProvider)
 		{
 			//
-			// TODO: Fügen Sie hier die Konstruktorlogik hinzu
+			// TODO: FÃ¼gen Sie hier die Konstruktorlogik hinzu
 			//
 		}
 

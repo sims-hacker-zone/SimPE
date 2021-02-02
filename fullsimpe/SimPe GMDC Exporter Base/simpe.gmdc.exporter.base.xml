@@ -1,0 +1,3682 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>simpe.gmdc.exporter.base</name>
+    </assembly>
+    <members>
+        <member name="T:SimPe.Plugin.Gmdc.AbstractGmdcExporter">
+            <summary>
+            Implement this abstract class to create a new Gmdc Exporter Plugin
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcExporter.DefaultCulture">
+            <summary>
+            Returns the Culture that should be used during the Export
+            </summary>
+            <remarks>The Culure is needed whenever you write floatingpoint 
+            Values to a Text File</remarks>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcExporter.Gmdc">
+            <summary>
+            Returns the assigned Gmdc File
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcExporter.Groups">
+            <summary>
+            Returns the MeshGroups that should be processed
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcExporter.VertexElement">
+            <summary>
+            Returns null or the Element that contains the Vertex Data
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcExporter.NormalElement">
+            <summary>
+            Returns null or the Element that contains the Vertex Data 
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcExporter.UVCoordinateElement">
+            <summary>
+            Returns null or the Element that contains the UVMap Data 
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcExporter.Link">
+            <summary>
+            Returns the Link that is used for the current Group (can be null)
+            </summary> 
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcExporter.Group">
+            <summary>
+            Returns the curent group (can be null)
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcExporter.Component">
+            <summary>
+            Which Order is used for the Components
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcExporter.CorrectJointSetup">
+            <summary>
+            true, if you want SimPe to correct the Joint definitions, moving all rotations to the _root node, 
+            and all translations to the _trans node of a Joint pair.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcExporter.#ctor(SimPe.Plugin.GeometryDataContainer,SimPe.Plugin.Gmdc.GmdcGroups)">
+            <summary>
+            Create a new Instance
+            </summary>
+            <param name="gmdc">The gmdc File you want to use</param>
+            <param name="groups"></param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcExporter.#ctor(SimPe.Plugin.GeometryDataContainer)">
+            <summary>
+            Create a new Instance
+            </summary>
+            <param name="gmdc">The gmdc File you want to use</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcExporter.#ctor">
+            <summary>
+            Create a New Instace
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcExporter.Process(SimPe.Plugin.GeometryDataContainer)">
+            <summary>
+            Create the export for all available Groups
+            </summary>
+            <param name="gmdc"></param>
+            <returns>The created Stream</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcExporter.Process(SimPe.Plugin.GeometryDataContainer,SimPe.Plugin.Gmdc.GmdcGroups)">
+            <summary>
+            Create the export for the given Groups
+            </summary>
+            <param name="gmdc"></param>
+            <param name="groups"></param>
+            <returns>The created Stream</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcExporter.LoadGroups(SimPe.Plugin.Gmdc.GmdcGroups)">
+            <summary>
+            Load the given Group Set
+            </summary>
+            <param name="groups"></param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcExporter.LoadSpecialElements(SimPe.Plugin.Gmdc.GmdcGroup)">
+            <summary>
+            Load Data into the Vertex, Normal an UVCoordinateElement members
+            </summary>
+            <param name="group"></param>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.AbstractGmdcExporter.writer">
+            <summary>
+            internal Attribute
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcExporter.FileContent">
+            <summary>
+            Returns the Content of the File base on the last loaded GroupSet
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcExporter.Version">
+            <summary>
+            Returns a Version Number for the used Interface
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcExporter.FileExtension">
+            <summary>
+            Returns the suggested File Extension (including the . like .obj or .3ds)
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcExporter.FileDescription">
+            <summary>
+            Returns the File Description (the Name of the exported FileType)
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcExporter.Author">
+            <summary>
+            Returns the name of the Author
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcExporter.InitFile">
+            <summary>
+            Called when a new File is started
+            </summary>
+            <remarks>
+            you should use this to write Header Informations. 
+            Use the <see cref="F:SimPe.Plugin.Gmdc.AbstractGmdcExporter.writer"/> member to write to the File
+            </remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcExporter.ProcessGroup">
+            <summary>
+            This is called whenever a Group (=subSet) needs to processed
+            </summary>
+            <remarks>
+            You can use the <see cref="P:SimPe.Plugin.Gmdc.AbstractGmdcExporter.UVCoordinateElement"/>,  <see cref="P:SimPe.Plugin.Gmdc.AbstractGmdcExporter.NormalElement"/>, 
+             <see cref="P:SimPe.Plugin.Gmdc.AbstractGmdcExporter.VertexElement"/>,  <see cref="P:SimPe.Plugin.Gmdc.AbstractGmdcExporter.Group"/> and  <see cref="P:SimPe.Plugin.Gmdc.AbstractGmdcExporter.Link"/> Members in this Method. 
+            
+            This Method is only called, when the <see cref="P:SimPe.Plugin.Gmdc.AbstractGmdcExporter.Group"/>, <see cref="P:SimPe.Plugin.Gmdc.AbstractGmdcExporter.Link"/> and 
+            Vertex Members are set (not null). The other still can 
+            be Null!
+            
+            Use the <see cref="F:SimPe.Plugin.Gmdc.AbstractGmdcExporter.writer"/> member to write to the File.
+            </remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcExporter.FinishFile">
+            <summary>
+            Called when the export was finished
+            </summary>
+            <remarks>you should use this to write Footer Informations. 
+            Use the <see cref="F:SimPe.Plugin.Gmdc.AbstractGmdcExporter.writer"/> member to write to the File</remarks>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.AbstractGmdcImporter">
+            <summary>
+            Implement this abstract class to create a new Gmdc Importer Plugin, however 
+            you can also base your new Importer on <see cref="T:SimPe.Plugin.Gmdc.GmdcImporterBase"/>, which 
+            offers a more simple Interface, as you only have to implement the
+            reading of the vertice, normals... Data
+            </summary>
+            <remarks>
+            SimPE offers diffrent Importer Abstraction classes. The most common 
+            one is AbstractGmdcImporter. It is used whenever you just want to 
+            import/overwrite Mesh Groups (vertext data...) but want to leave the 
+            rest of the Gmdc File alone.
+            
+            However, if you want to create a complete new (or altered) gmdc File
+            you need to implement the IGmdcReplacementImporter.	
+            </remarks>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.AbstractGmdcImporter.SMALLNUMBER">
+            <summary>
+            what is a small Number?
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcImporter.DefaultCulture">
+            <summary>
+            Returns the Culture that should be used during the Import
+            </summary>
+            <remarks>The Culure is needed whenever you read floatingpoint 
+            Values from a Text File</remarks>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_FACE_AMOUNT">
+            <summary>
+            Good Objects should not have more than this number of Faces
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT">
+            <summary>
+            Good Objects should not have more than this number of Vertices
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcImporter.Version">
+            <summary>
+            Returns a Version Number for the used Interface
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcImporter.ToDouble(System.String)">
+            <summary>
+            Convert the passed string to a double Value
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcImporter.Component">
+            <summary>
+            Which Order is used for the Components
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcImporter.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcImporter.FileExtension">
+            <summary>
+            Returns the suggested File Extension (including the . like .obj or .3ds)
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcImporter.FileDescription">
+            <summary>
+            Returns the File Description (the Name of the exported FileType)
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcImporter.Author">
+            <summary>
+            Returns the name of the Author
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcImporter.LoadGroups">
+            <summary>
+            This Method is called during the Import to process the input Data and 
+            generate a vaild Groups ArrayList.
+            </summary>
+            <returns>A List of all available Groups</returns>
+            <remarks>You can use the <see cref="P:SimPe.Plugin.Gmdc.AbstractGmdcImporter.Input"/> and <see cref="P:SimPe.Plugin.Gmdc.AbstractGmdcImporter.Gmdc"/> Member to acces the Stream and 
+            the Gmdc File that should be changed</remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcImporter.LoadBones">
+            <summary>
+            This Method is called during the Import to process the input Data and 
+            showl generate a List of all Joints that should be Imported.
+            </summary>
+            <returns>A List of all available Joints</returns>
+            <remarks>You can use the <see cref="P:SimPe.Plugin.Gmdc.AbstractGmdcImporter.Input"/> and <see cref="P:SimPe.Plugin.Gmdc.AbstractGmdcImporter.Gmdc"/> Member to acces the Stream and 
+            the Gmdc File that should be changed. This Method is allways called AFTER <see cref="M:SimPe.Plugin.Gmdc.AbstractGmdcImporter.LoadGroups"/>.</remarks>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.AbstractGmdcImporter.error">
+            <summary>
+            stores the Error Message that should be presented
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcImporter.ErrorMessage">
+            <summary>
+            Returns the Error Message Produced by the Last Parsing attempt
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcImporter.Input">
+            <summary>
+            The current Input (when LoadGroups() or ChangeGmdc() is called, this is never null)
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcImporter.Gmdc">
+            <summary>
+            The Gmdc that should be changed (when LoadGroups() or ChangeGmdc() is called, this is never null)
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcImporter.Process(System.IO.Stream,SimPe.Plugin.GeometryDataContainer,System.Boolean)">
+            <summary>
+            Process the Data stored in the passed Stream, and change/replace the passed Gmdc
+            </summary>
+            <param name="input">A Stream with the Input Data</param>
+            <param name="gmdc">The Gmdc that should receive the Data</param>
+            <param name="animationonly">true, if only the Animation Data should be imported</param>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.AbstractGmdcImporter.Options">
+            <summary>
+            Returns Global Import Options
+            </summary>
+            <remarks>
+            This Member is usually set in the <see cref="M:SimPe.Plugin.Gmdc.AbstractGmdcImporter.ValidateImportedGroups(SimPe.Plugin.Gmdc.ImportedGroups,SimPe.Plugin.Gmdc.ImportedBones)"/> Method
+            </remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcImporter.ValidateImportedGroups(SimPe.Plugin.Gmdc.ImportedGroups,SimPe.Plugin.Gmdc.ImportedBones)">
+            <summary>
+            This is called after the Groups were Imported to validate the Content
+            </summary>
+            <param name="grps">The imported Groups</param>
+            <param name="bns">The imported Joints</param>
+            <returns>true, if the Import should be continued</returns>
+            <remarks>This Implementation will show the ImportGmdcGroups Dialog to 
+            let the User validate the Content. Override this Method, if you want a 
+            diffrent Import Dialog</remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcImporter.ChangeGmdc(SimPe.Plugin.Gmdc.ImportedGroups,SimPe.Plugin.Gmdc.ImportedBones)">
+            <summary>
+            This Method is called when the Imported Data should be written to the 
+            passed Gmdc File
+            </summary>
+            <param name="grps">The imported Groups</param>
+            <param name="bns">The imported Joints</param>
+            <remarks>
+            Override This Method if you want a diffrent Behaviour when writing the Data
+            to the Gmdc. Override AddGroup(), ReplaceGroup() or RenameGroup() if you just 
+            want to alter a specific Behaviuour.
+            </remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcImporter.AddGroup(SimPe.Plugin.Gmdc.ImportedGroup)">
+            <summary>
+            Add the passed Group to the Gmdc
+            </summary>
+            <param name="g"></param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcImporter.ReplaceGroup(SimPe.Plugin.Gmdc.ImportedGroups,SimPe.Plugin.Gmdc.ImportedGroup)">
+            <summary>
+            Replace an existing Group with  the passed Group in the current Gmdc
+            </summary>
+            <param name="gs">List of all available Groups</param>
+            <param name="g"></param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcImporter.UpdateGroup(SimPe.Plugin.Gmdc.ImportedGroup)">
+            <summary>
+            RUpdate an existing Group with  the passed Group in the current Gmdc
+            </summary>
+            <param name="g"></param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcImporter.RenameGroup(SimPe.Plugin.Gmdc.ImportedGroup)">
+            <summary>
+            set the Name of the Group to a diffrent Value and Add it to the Gmdc
+            </summary>
+            <param name="g"></param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcImporter.IsLocalCres">
+            <summary>
+            Is the Cres within the same package than the GMDC is?
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcImporter.AddBone(SimPe.Plugin.Gmdc.ImportedGroups,SimPe.Plugin.Gmdc.ImportedBones,SimPe.Plugin.Gmdc.ImportedBone,System.Int32)">
+            <summary>
+            Add the passed Bone to the Gmdc and Fix the UseBone Indices to apropriate Values
+            </summary>
+            <param name="grps">List of all Imported Groups (needed to fix the UseBone Indices)</param>
+            <param name="bns">List of all Bones</param>
+            <param name="b"></param>
+            <param name="index">The Number of the Bone that should be added</param>
+            <returns>the real Bone Index</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcImporter.ReplaceBone(SimPe.Plugin.Gmdc.ImportedGroups,SimPe.Plugin.Gmdc.ImportedBones,SimPe.Plugin.Gmdc.ImportedBone,System.Int32)">
+            <summary>
+            Replace an exiting bone with the passed one
+            </summary>
+            <param name="grps">List of all Imported Groups (needed to fix the UseBone Indices)</param>
+            <param name="bns">List of all Bones</param>
+            <param name="b"></param>
+            <param name="index">The Number of the Bone that should be added</param>
+            <returns>the real Bone Index</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcImporter.UpdateBone(SimPe.Plugin.Gmdc.ImportedGroups,SimPe.Plugin.Gmdc.ImportedBone,System.Int32)">
+            <summary>
+            Replace an exiting bone with the passed one
+            </summary>
+            <param name="grps">List of all Imported Groups (needed to fix the UseBone Indices)</param>
+            <param name="b"></param>
+            <param name="index">The Number of the Bone that should be added</param>
+            <returns>the real Bone Index</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcImporter.NothingBone(SimPe.Plugin.Gmdc.ImportedGroups,SimPe.Plugin.Gmdc.ImportedBone,System.Int32)">
+            <summary>
+            Remove the Links to the NothingBones
+            </summary>
+            <param name="grps">List of all Imported Groups (needed to fix the UseBone Indices)</param>
+            <param name="b"></param>
+            <param name="index">The Number of the Bone that should be added</param>
+            <returns>the real Bone Index</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcImporter.PrepareGroup">
+            <summary>
+            Creates a new <see cref="T:SimPe.Plugin.Gmdc.ImportedGroup"/> Instance with Default Settings
+            </summary>
+            <returns>a new Container for an Imported MeshGroup</returns>
+            <remarks>
+            You should use this whenever you have to add a new Group!
+            </remarks>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.AbstractGmdcImporter.ajcor">
+            <summary>
+            This Map contains static correction Values used for specific animation Joints
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcImporter.GetCorrectionVector(System.String)">
+            <summary>
+            Returns a Vector that contains Correction Data for a Animation Joint
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+            <remarks>The vector should be added during Export, 
+            and will be substracted during Import</remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcImporter.ChangeAnim">
+            <summary>
+            This is called whenever a Animation is sored in 
+            <see cref="!:Gmdc.LinkedAnimation"/>, and it should import the Values stored in 
+            <see cref="P:SimPe.Plugin.Gmdc.AbstractGmdcImporter.AnimationBlocks"/> to <see cref="!:Gmdc.LinkedAnimation"/>.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.AbstractGmdcImporter.SetUpAnimationData">
+            <summary>
+            Called in order to Setup the Animation Data
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GmdcElementValueBase">
+            <summary>
+            Contains a SingleFloat Value
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElementValueBase.op_Multiply(SimPe.Plugin.Gmdc.GmdcElementValueBase,System.Double)">
+            <summary>
+            Scalar Multiplication
+            </summary>
+            <param name="evb">First Value</param>
+            <param name="d">Scalar Factor</param>
+            <returns>The resulting Value</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElementValueBase.op_Multiply(System.Double,SimPe.Plugin.Gmdc.GmdcElementValueBase)">
+            <summary>
+            Scalar Multiplication
+            </summary>
+            <param name="evb">First Value</param>
+            <param name="d">Scalar Factor</param>
+            <returns>The resulting Value</returns>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcElementValueBase.Data">
+            <summary>
+            The plain stored Data
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcElementValueBase.Size">
+            <summary>
+            Returns the number of Float Elements stored here
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElementValueBase.Unserialize(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElementValueBase.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes a the Attributes stored in this Instance to the BinaryStream
+            </summary>
+            <param name="writer">The Stream the Data should be stored to</param>
+            <remarks>
+            Be sure that the Position of the stream is Proper on 
+            return (i.e. must point to the first Byte after your actual File)
+            </remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElementValueBase.ToString">
+            <summary>
+            This output is used in the ListBox View
+            </summary>
+            <returns>A String Describing the Data</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElementValueBase.Clone">
+            <summary>
+            Create a Clone of this Object
+            </summary>
+            <returns>The Clone</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElementValueBase.Clone(SimPe.Plugin.Gmdc.GmdcElementValueBase)">
+            <summary>
+            This Method supports the Internal process of creating a Clone
+            </summary>
+            <param name="dest">The object that should receive the copied Data</param>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GmdcElementValueOneFloat">
+            <summary>
+            Contains a single Float Value
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElementValueOneFloat.#ctor(System.Single)">
+            <summary>
+            Create an Instance of this class
+            </summary>
+            <param name="f1">The Float Value</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElementValueOneFloat.Clone">
+            <summary>
+            Create a Clone of this Object
+            </summary>
+            <returns>The Clone</returns>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GmdcElementValueTwoFloat">
+            <summary>
+            Contains a two gloat Value
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElementValueTwoFloat.#ctor(System.Single,System.Single)">
+            <summary>
+            Create an Instance of this class
+            </summary>
+            <param name="f1">The first Value</param>
+            <param name="f2">The second Value</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElementValueTwoFloat.Clone">
+            <summary>
+            Create a Clone of this Object
+            </summary>
+            <returns>The Clone</returns>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat">
+            <summary>
+            Contains a three gloat Value
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat.#ctor(System.Single,System.Single,System.Single)">
+            <summary>
+            Create an Instance of this class
+            </summary>
+            <param name="f1">The first Value</param>
+            <param name="f2">The second Value</param>
+            <param name="f3">The third Value</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat.Clone">
+            <summary>
+            Create a Clone of this Object
+            </summary>
+            <returns>The Clone</returns>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GmdcElementValueOneInt">
+            <summary>
+            Contains a two gloat Value
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElementValueOneInt.#ctor(System.Int32)">
+            <summary>
+            Create an Instance of this class
+            </summary>
+            <param name="i1">The integer Value</param>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcElementValueOneInt.Value">
+            <summary>
+            Returns /Sets the stored Value
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcElementValueOneInt.Bytes">
+            <summary>
+            Returns / Sets the Bytes that are stored as one Dword Value
+            </summary>
+            <remarks>
+            Changein one of the passed Bytes will NOT effect the stored Value, you have to 
+            write a complete Array back into this Property to change the stored Value!
+            </remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElementValueOneInt.ToString">
+            <summary>
+            This output is used in the ListBox View
+            </summary>
+            <returns>A String Describing the Data</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElementValueOneInt.Clone">
+            <summary>
+            Create a Clone of this Object
+            </summary>
+            <returns>The Clone</returns>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GmdcElement">
+            <summary>
+            This class contains the Elements Section of a Geometric Data Container
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcElement.Number">
+            <summary>
+            Number of stored <see cref="P:SimPe.Plugin.Gmdc.GmdcElement.Values"/> that can be used
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcElement.Identity">
+            <summary>
+            The Type of Data that is stored in <see cref="P:SimPe.Plugin.Gmdc.GmdcElement.Values"/>.
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcElement.GroupId">
+            <summary>
+            If one <see cref="T:SimPe.Plugin.Gmdc.GmdcLink"/> is referenceing more than one <see cref="T:SimPe.Plugin.Gmdc.GmdcElement"/> 
+            of the same <see cref="P:SimPe.Plugin.Gmdc.GmdcElement.Identity"/>, this value is used to differ them. (Zero based)
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcElement.BlockFormat">
+            <summary>
+            What Type are the <see cref="P:SimPe.Plugin.Gmdc.GmdcElement.Values"/> stored in.
+            </summary>
+            <remarks>This Filed Determins which SubClass of <see cref="T:SimPe.Plugin.Gmdc.GmdcElementValueBase"/> is used for 
+            the <see cref="P:SimPe.Plugin.Gmdc.GmdcElement.Values"/> Members</remarks>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcElement.SetFormat">
+            <summary>
+            Describes the Elemnet
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcElement.Values">
+            <summary>
+            Contains a List of <see cref="T:SimPe.Plugin.Gmdc.GmdcElementValueBase"/> Values. The Type of the Elements 
+            is determined by the <see cref="P:SimPe.Plugin.Gmdc.GmdcElement.BlockFormat"/> Property.
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcElement.Items">
+            <summary>
+            Yet unknown what this is doing
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElement.#ctor(SimPe.Plugin.GeometryDataContainer)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElement.GetValueInstance">
+            <summary>
+            Returns an instance of GmdcElementValueBase class in the apropriate Format
+            </summary>
+            <returns>A class Instance</returns>
+            <remarks>The Type of the instance is determined using the SubType</remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElement.Unserialize(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElement.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes a the Attributes stored in this Instance to the BinaryStream
+            </summary>
+            <param name="writer">The Stream the Data should be stored to</param>
+            <remarks>
+            Be sure that the Position of the stream is Proper on 
+            return (i.e. must point to the first Byte after your actual File)
+            </remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElement.ToString">
+            <summary>
+            This output is used in the ListBox View
+            </summary>
+            <returns>A String Describing the Data</returns>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GmdcElementValues">
+            <summary>
+            Typesave ArrayList for GmdcElementValueBase Objects
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcElementValues.Item(System.Int32)">
+            <summary>
+            Integer Indexer
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcElementValues.Item(System.UInt32)">
+            <summary>
+            unsigned Integer Indexer
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElementValues.Add(SimPe.Plugin.Gmdc.GmdcElementValueBase)">
+            <summary>
+            add a new Element
+            </summary>
+            <param name="item">The object you want to add</param>
+            <returns>The index it was added on</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElementValues.Insert(System.Int32,SimPe.Plugin.Gmdc.GmdcElementValueBase)">
+            <summary>
+            insert a new Element
+            </summary>
+            <param name="index">The Index where the Element should be stored</param>
+            <param name="item">The object that should be inserted</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElementValues.Remove(SimPe.Plugin.Gmdc.GmdcElementValueBase)">
+            <summary>
+            remove an Element
+            </summary>
+            <param name="item">The object that should be removed</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElementValues.Contains(SimPe.Plugin.Gmdc.GmdcElementValueBase)">
+            <summary>
+            Checks wether or not the object is already stored in the List
+            </summary>
+            <param name="item">The Object you are looking for</param>
+            <returns>true, if it was found</returns>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcElementValues.Length">
+            <summary>
+            Number of stored Elements
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElementValues.Clone">
+            <summary>
+            Create a clone of this Object
+            </summary>
+            <returns>The clone</returns>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GmdcElements">
+            <summary>
+            Typesave ArrayList for GmdcElement Objects
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcElements.Item(System.Int32)">
+            <summary>
+            Integer Indexer
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcElements.Item(System.UInt32)">
+            <summary>
+            unsigned Integer Indexer
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElements.Add(SimPe.Plugin.Gmdc.GmdcElement)">
+            <summary>
+            add a new Element
+            </summary>
+            <param name="item">The object you want to add</param>
+            <returns>The index it was added on</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElements.Insert(System.Int32,SimPe.Plugin.Gmdc.GmdcElement)">
+            <summary>
+            insert a new Element
+            </summary>
+            <param name="index">The Index where the Element should be stored</param>
+            <param name="item">The object that should be inserted</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElements.Remove(SimPe.Plugin.Gmdc.GmdcElement)">
+            <summary>
+            remove an Element
+            </summary>
+            <param name="item">The object that should be removed</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElements.Contains(SimPe.Plugin.Gmdc.GmdcElement)">
+            <summary>
+            Checks wether or not the object is already stored in the List
+            </summary>
+            <param name="item">The Object you are looking for</param>
+            <returns>true, if it was found</returns>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcElements.Length">
+            <summary>
+            Number of stored Elements
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcElements.Clone">
+            <summary>
+            Create a clone of this Object
+            </summary>
+            <returns>The clone</returns>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.MeshOpacity">
+            <summary>
+            Know Values for Mesh Opacity
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.MeshOpacity.Unknown">
+            <summary>
+            Unknown Format
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.MeshOpacity.Opaque">
+            <summary>
+            Marks a solid Mesh
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.MeshOpacity.Shadow">
+            <summary>
+            Marks a Shadow or Highlight Mesh
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GmdcGroup">
+            <summary>
+            Contains the Group Section of a GMDC
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcGroup.PrimitiveType">
+            <summary>
+            Determins the Primitive Type of the Faces
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcGroup.LinkIndex">
+            <summary>
+            The Index of the <see cref="T:SimPe.Plugin.Gmdc.GmdcLink"/> Object that is referenced by this Group. (Index into the <see cref="P:SimPe.Plugin.GeometryDataContainer.Links"/> Property.
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcGroup.Link">
+            <summary>
+            The Link Element
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcGroup.Name">
+            <summary>
+            The Name of this Group
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcGroup.Faces">
+            <summary>
+            The Index of the used Vertices
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcGroup.Opacity">
+            <summary>
+            The opacity of this Group (0=transparent; 3=shadow; -1=opaque)
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcGroup.UsedJoints">
+            <summary>
+            List all Joints used by this Group
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcGroup.#ctor(SimPe.Plugin.GeometryDataContainer)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcGroup.Unserialize(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcGroup.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes a the Attributes stored in this Instance to the BinaryStream
+            </summary>
+            <param name="writer">The Stream the Data should be stored to</param>
+            <remarks>
+            Be sure that the Position of the stream is Proper on 
+            return (i.e. must point to the first Byte after your actual File)
+            </remarks>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcGroup.FaceCount">
+            <summary>
+            The Face Count for this Group
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcGroup.UsedVertexCount">
+            <summary>
+            The Number of diffrent Vertices used by this Group
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcGroup.ReferencedVertexCount">
+            <summary>
+            The Number of referenced Vertices
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcGroup.ToString">
+            <summary>
+            This output is used in the ListBox View
+            </summary>
+            <returns>A String Describing the Data</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcGroup.GetVectors(SimPe.Plugin.Gmdc.ElementIdentity)">
+            <summary>
+            Returns a List with all available Vertices
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcGroup.GetVertices">
+            <summary>
+            Returns a List with all available Vertices
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcGroup.GetNormals">
+            <summary>
+            Returns a List with all available Normals
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcGroup.GetUV">
+            <summary>
+            Returns a List with all available UV-Coords
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcGroup.GetBones">
+            <summary>
+            Returns a List with all available UV-Coords
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcGroup.GetFaces">
+            <summary>
+            Returns the Face Indices
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GmdcGroups">
+            <summary>
+            Typesave ArrayList for GmdcGroup Objects
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcGroups.Item(System.Int32)">
+            <summary>
+            Integer Indexer
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcGroups.Item(System.UInt32)">
+            <summary>
+            unsigned Integer Indexer
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcGroups.Add(SimPe.Plugin.Gmdc.GmdcGroup)">
+            <summary>
+            add a new Element
+            </summary>
+            <param name="item">The object you want to add</param>
+            <returns>The index it was added on</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcGroups.Insert(System.Int32,SimPe.Plugin.Gmdc.GmdcGroup)">
+            <summary>
+            insert a new Element
+            </summary>
+            <param name="index">The Index where the Element should be stored</param>
+            <param name="item">The object that should be inserted</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcGroups.Remove(SimPe.Plugin.Gmdc.GmdcGroup)">
+            <summary>
+            remove an Element
+            </summary>
+            <param name="item">The object that should be removed</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcGroups.Contains(SimPe.Plugin.Gmdc.GmdcGroup)">
+            <summary>
+            Checks wether or not the object is already stored in the List
+            </summary>
+            <param name="item">The Object you are looking for</param>
+            <returns>true, if it was found</returns>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcGroups.Length">
+            <summary>
+            Number of stored Elements
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcGroups.Clone">
+            <summary>
+            Create a clone of this Object
+            </summary>
+            <returns>The clone</returns>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.BlockFormat">
+            <summary>
+            Sets the Typf of the Items stored in <see cref="P:SimPe.Plugin.Gmdc.GmdcElement.Values"/>.
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.BlockFormat.OneFloat">
+            <summary>
+            <see cref="P:SimPe.Plugin.Gmdc.GmdcElement.Values"/> Member contains <see cref="T:SimPe.Plugin.Gmdc.GmdcElementValueOneFloat"/> Items
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.BlockFormat.TwoFloat">
+            <summary>
+            <see cref="P:SimPe.Plugin.Gmdc.GmdcElement.Values"/> Member contains <see cref="T:SimPe.Plugin.Gmdc.GmdcElementValueTwoFloat"/> Items
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.BlockFormat.ThreeFloat">
+            <summary>
+            <see cref="P:SimPe.Plugin.Gmdc.GmdcElement.Values"/> Member contains <see cref="T:SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat"/> Items
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.BlockFormat.OneDword">
+            <summary>
+            <see cref="P:SimPe.Plugin.Gmdc.GmdcElement.Values"/> Member contains <see cref="T:SimPe.Plugin.Gmdc.GmdcElementValueOneInt"/> Items
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.BlockFormat.Unknown">
+            <summary>
+            internal used to determin unknown Formats
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.PrimitiveType">
+            <summary>
+            The Kind of the stored Faces
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.PrimitiveType.Triangle">
+            <summary>
+            Faces are made from three Vertices (Triangles)
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.PrimitiveType.Unknown">
+            <summary>
+            internal used to determin unknown Formats
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.SetFormat">
+            <summary>
+            Determins the class of a <see cref="T:SimPe.Plugin.Gmdc.GmdcElement"/> Section
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.SetFormat.Main">
+            <summary>
+            Stores Data for the main Mesh
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.SetFormat.Normals">
+            <summary>
+            Stores Normals
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.SetFormat.Mapping">
+            <summary>
+            Stores UVCoordinates and Mapping stuff
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.SetFormat.Secondary">
+            <summary>
+            Stores undetermined Data
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.SetFormat.Unknown">
+            <summary>
+            internal used to determin unknown Formats
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.ElementIdentity">
+            <summary>
+            Used to determin what Data is represented by a <see cref="T:SimPe.Plugin.Gmdc.GmdcElement"/>
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ElementIdentity.Unknown">
+            <summary>
+            internal used to determin unknown Formats
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ElementIdentity.BlendIndex">
+            <summary>
+            ?
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ElementIdentity.BlendWeight">
+            <summary>
+            Weight of the Blend
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ElementIdentity.TargetIndex">
+            <summary>
+            ?
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ElementIdentity.NormalMorphDelta">
+            <summary>
+            ?
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ElementIdentity.Color">
+            <summary>
+            ?
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ElementIdentity.ColorDelta">
+            <summary>
+            ?
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ElementIdentity.Normal">
+            <summary>
+            Mesh Normals
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ElementIdentity.Vertex">
+            <summary>
+            Mesh Vertices
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ElementIdentity.UVCoordinate">
+            <summary>
+            UV-Mapping Coordinates (also known as ST-Coordinates)
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ElementIdentity.UVCoordinateDelta">
+            <summary>
+            ?
+            </summary>		
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ElementIdentity.Binormals">
+            <summary>
+            ?
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ElementIdentity.BoneWeights">
+            <summary>
+            The influence of a Bone to a Vertex
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ElementIdentity.BoneAssignment">
+            <summary>
+            The assigned Joints
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ElementIdentity.BumpMapNormal">
+            <summary>
+            Normals fpr BumpMapping
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ElementIdentity.BumpMapNormalDelta">
+            <summary>
+            ?
+            </summary>		
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ElementIdentity.MorphVertexDelta">
+            <summary>
+            ?
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ElementIdentity.MorphVertexMap">
+            <summary>
+            ?
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GmdcLinkBlock">
+            <summary>
+            Contains Methods to process typical Gmdc Block Tasks
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.GmdcLinkBlock.parent">
+            <summary>
+            Contains the <see cref="T:SimPe.Plugin.GeometryDataContainer"/> (=Gmdc Ressource) which is defining this Item
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcLinkBlock.Parent">
+            <summary>
+            Sets the currently assigned Parent
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcLinkBlock.#ctor(SimPe.Plugin.GeometryDataContainer)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcLinkBlock.ReadValue(System.IO.BinaryReader)">
+            <summary>
+            Read the value from the Stream
+            </summary>
+            <param name="reader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcLinkBlock.WriteValue(System.IO.BinaryWriter,System.Int32)">
+            <summary>
+            Write the value to the Stream
+            </summary>
+            <param name="writer"></param>
+            <param name="val"></param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcLinkBlock.ReadBlock(System.IO.BinaryReader,SimPe.IntArrayList)">
+            <summary>
+            Read a Link Block
+            </summary>
+            <param name="reader"></param>
+            <param name="items"></param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcLinkBlock.WriteBlock(System.IO.BinaryWriter,SimPe.IntArrayList)">
+            <summary>
+            Write a Link Block
+            </summary>
+            <param name="writer"></param>
+            <param name="items"></param>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GmdcLink">
+            <summary>
+            This Section References the Element Data
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcLink.ReferencedElement">
+            <summary>
+            This returns the List of all used <see cref="T:SimPe.Plugin.Gmdc.GmdcElement"/> Items. The Values are Indices
+            for the <see cref="P:SimPe.Plugin.GeometryDataContainer.Elements"/> Property.
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcLink.ReferencedSize">
+            <summary>
+            The Number of Elements that are Referenced by this Link
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcLink.ActiveElements">
+            <summary>
+            How many <see cref="T:SimPe.Plugin.Gmdc.GmdcElement"/> Items are referenced by this Link
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcLink.AliasValues">
+            <summary>
+            This Array Contains three <see cref="T:SimPe.IntArrayList"/> Items. Each Item has to be interporeted as 
+            Element Index Alias.
+            The <see cref="T:SimPe.Plugin.Gmdc.GmdcGroup"/> is referencing the Vertices that form a Face by an Index. If one of 
+            this Lists is set, it means, that whenever you pares an Index, read the value stored at that Index 
+            in one of this Lists. The Value read from there is then thge actual <see cref="T:SimPe.Plugin.Gmdc.GmdcElement"/> Index.
+            
+            The first List store here is an Alias Map for the first referenced <see cref="T:SimPe.Plugin.Gmdc.GmdcElement"/> in the
+            <see cref="P:SimPe.Plugin.Gmdc.GmdcLink.ReferencedElement"/> Property.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcLink.#ctor(SimPe.Plugin.GeometryDataContainer)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcLink.Unserialize(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcLink.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes a the Attributes stored in this Instance to the BinaryStream
+            </summary>
+            <param name="writer">The Stream the Data should be stored to</param>
+            <remarks>
+            Be sure that the Position of the stream is Proper on 
+            return (i.e. must point to the first Byte after your actual File)
+            </remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcLink.ToString">
+            <summary>
+            This output is used in the ListBox View
+            </summary>
+            <returns>A String Describing the Data</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcLink.FindElementType(SimPe.Plugin.Gmdc.ElementIdentity)">
+            <summary>
+            Returns the first Element Referenced from this Link that implements 
+            the passed <see cref="T:SimPe.Plugin.Gmdc.ElementIdentity"/>.
+            </summary>
+            <param name="id">Identity you are looking for</param>
+            <returns>null or the First mathcing Element</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcLink.GetElementNr(SimPe.Plugin.Gmdc.GmdcElement)">
+            <summary>
+            Returns the nr (as it can be used in GetValue() Method) of the passed Element in this Link Section
+            </summary>
+            <param name="e">Element you are looking for</param>
+            <returns>
+            -1 if the Element is not referenced from this Link or the index of that Element in the 
+            ReferenceElement Member
+            </returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcLink.GetValue(System.Int32,System.Int32)">
+            <summary>
+            Returns a specific Value
+            </summary>
+            <param name="nr">The Number of the referenced Element (index to the ReferencedElement Member)</param>
+            <param name="index">The index of the value you want to read from thet Element</param>
+            <returns>The stored Value or null on error</returns>
+            <remarks>To retrieve the correct number for an Element, see the GetElementNr() Method</remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcLink.GetRealIndex(System.Int32,System.Int32)">
+            <summary>
+            Returns a specific Value
+            </summary>
+            <param name="nr">The Number of the referenced Element (index to the ReferencedElement Member)</param>
+            <param name="index">The index of the value you want to read from thet Element</param>
+            <returns>-1 or an Element Index</returns>
+            <remarks>To retrieve the correct number for an Element, see the GetElementNr() Method</remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcLink.GetReferencedSize">
+            <summary>
+            Returns the value for <see cref="P:SimPe.Plugin.Gmdc.GmdcLink.ReferencedSize"/> for the current Settings
+            </summary>
+            <returns>The suggested value for <see cref="P:SimPe.Plugin.Gmdc.GmdcLink.ReferencedSize"/></returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcLink.Flatten">
+            <summary>
+            Makes sure that the Aliaslists are not used!
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GmdcLinks">
+            <summary>
+            Typesave ArrayList for GmdcLink Objects
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcLinks.Item(System.Int32)">
+            <summary>
+            Integer Indexer
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcLinks.Item(System.UInt32)">
+            <summary>
+            unsigned Integer Indexer
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcLinks.Add(SimPe.Plugin.Gmdc.GmdcLink)">
+            <summary>
+            add a new Element
+            </summary>
+            <param name="item">The object you want to add</param>
+            <returns>The index it was added on</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcLinks.Insert(System.Int32,SimPe.Plugin.Gmdc.GmdcLink)">
+            <summary>
+            insert a new Element
+            </summary>
+            <param name="index">The Index where the Element should be stored</param>
+            <param name="item">The object that should be inserted</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcLinks.Remove(SimPe.Plugin.Gmdc.GmdcLink)">
+            <summary>
+            remove an Element
+            </summary>
+            <param name="item">The object that should be removed</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcLinks.Contains(SimPe.Plugin.Gmdc.GmdcLink)">
+            <summary>
+            Checks wether or not the object is already stored in the List
+            </summary>
+            <param name="item">The Object you are looking for</param>
+            <returns>true, if it was found</returns>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcLinks.Length">
+            <summary>
+            Number of stored Elements
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcLinks.Clone">
+            <summary>
+            Create a clone of this Object
+            </summary>
+            <returns>The clone</returns>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GmdcNamePair">
+            <summary>
+            Stores two String Items
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcNamePair.BlendGroupName">
+            <summary>
+            The Name of the Belnding Group
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcNamePair.AssignedElementName">
+            <summary>
+            The Name of the Element that should be assigned to that Group
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcNamePair.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new Instance
+            </summary>
+            <param name="blend">Name of the Blendgroup</param>
+            <param name="element">Name of the Element that should be assigned to that Blend Group</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcNamePair.Unserialize(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcNamePair.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes a the Attributes stored in this Instance to the BinaryStream
+            </summary>
+            <param name="writer">The Stream the Data should be stored to</param>
+            <remarks>
+            Be sure that the Position of the stream is Proper on 
+            return (i.e. must point to the first Byte after your actual File)
+            </remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcNamePair.ToString">
+            <summary>
+            This output is used in the ListBox View
+            </summary>
+            <returns>A String Describing the Data</returns>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GmdcModel">
+            <summary>
+            Contains the Model Section of a GMDC
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcModel.Transformations">
+            <summary>
+            Set of Transformations
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcModel.BlendGroupDefinition">
+            <summary>
+            Groups to BlendGroup assignements
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcModel.BoundingMesh">
+            <summary>
+            Some SubSet Data (yet unknown)
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcModel.#ctor(SimPe.Plugin.GeometryDataContainer)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcModel.Unserialize(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcModel.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes a the Attributes stored in this Instance to the BinaryStream
+            </summary>
+            <param name="writer">The Stream the Data should be stored to</param>
+            <remarks>
+            Be sure that the Position of the stream is Proper on 
+            return (i.e. must point to the first Byte after your actual File)
+            </remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcModel.ClearBoundingMesh">
+            <summary>
+            Clear the BoundingMesh definition
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcModel.AddGroupToBoundingMesh(SimPe.Plugin.Gmdc.GmdcGroup)">
+            <summary>
+            Add the passed Group to the BoundingMesh Definition
+            </summary>
+            <param name="g"></param>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GmdcModels">
+            <summary>
+            Typesave ArrayList for GmdcModel Objects
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcModels.Item(System.Int32)">
+            <summary>
+            Integer Indexer
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcModels.Item(System.UInt32)">
+            <summary>
+            unsigned Integer Indexer
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcModels.Add(SimPe.Plugin.Gmdc.GmdcModel)">
+            <summary>
+            add a new Element
+            </summary>
+            <param name="item">The object you want to add</param>
+            <returns>The index it was added on</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcModels.Insert(System.Int32,SimPe.Plugin.Gmdc.GmdcModel)">
+            <summary>
+            insert a new Element
+            </summary>
+            <param name="index">The Index where the Element should be stored</param>
+            <param name="item">The object that should be inserted</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcModels.Remove(SimPe.Plugin.Gmdc.GmdcModel)">
+            <summary>
+            remove an Element
+            </summary>
+            <param name="item">The object that should be removed</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcModels.Contains(SimPe.Plugin.Gmdc.GmdcModel)">
+            <summary>
+            Checks wether or not the object is already stored in the List
+            </summary>
+            <param name="item">The Object you are looking for</param>
+            <returns>true, if it was found</returns>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcModels.Length">
+            <summary>
+            Number of stored Elements
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcModels.Clone">
+            <summary>
+            Create a clone of this Object
+            </summary>
+            <returns>The clone</returns>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GmdcNamePairs">
+            <summary>
+            Typesave ArrayList for GmdcNamePair Objects
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcNamePairs.Item(System.Int32)">
+            <summary>
+            Integer Indexer
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcNamePairs.Item(System.UInt32)">
+            <summary>
+            unsigned Integer Indexer
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcNamePairs.Add(SimPe.Plugin.Gmdc.GmdcNamePair)">
+            <summary>
+            add a new Element
+            </summary>
+            <param name="item">The object you want to add</param>
+            <returns>The index it was added on</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcNamePairs.Insert(System.Int32,SimPe.Plugin.Gmdc.GmdcNamePair)">
+            <summary>
+            insert a new Element
+            </summary>
+            <param name="index">The Index where the Element should be stored</param>
+            <param name="item">The object that should be inserted</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcNamePairs.Remove(SimPe.Plugin.Gmdc.GmdcNamePair)">
+            <summary>
+            remove an Element
+            </summary>
+            <param name="item">The object that should be removed</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcNamePairs.Contains(SimPe.Plugin.Gmdc.GmdcNamePair)">
+            <summary>
+            Checks wether or not the object is already stored in the List
+            </summary>
+            <param name="item">The Object you are looking for</param>
+            <returns>true, if it was found</returns>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcNamePairs.Length">
+            <summary>
+            Number of stored Elements
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcNamePairs.Clone">
+            <summary>
+            Create a clone of this Object
+            </summary>
+            <returns>The clone</returns>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GmdcJoint">
+            <summary>
+            Contains the Subset Section of a GMDC
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcJoint.VertexCount">
+            <summary>
+            Number of Vertices stored in this SubSet
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcJoint.Vertices">
+            <summary>
+            Vertex Definitions for this SubSet
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcJoint.Items">
+            <summary>
+            Some additional Index Data (yet unknown)
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcJoint.#ctor(SimPe.Plugin.GeometryDataContainer)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcJoint.Unserialize(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcJoint.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes a the Attributes stored in this Instance to the BinaryStream
+            </summary>
+            <param name="writer">The Stream the Data should be stored to</param>
+            <remarks>
+            Be sure that the Position of the stream is Proper on 
+            return (i.e. must point to the first Byte after your actual File)
+            </remarks>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcJoint.Index">
+            <summary>
+            The Index of this Joint in the Parent's joint List (-1 indicates 
+            that the Joint was not found within the Parent)
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcJoint.AssignedTransformNode">
+            <summary>
+            Returns the first TransformNode assigned to this Joint or null if none was found
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcJoint.Name">
+            <summary>
+            Reads the Name from the TransformNode or generates a default Name based on the Index
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcJoint.GetAssignedTransformNode(System.Int32)">
+            <summary>
+            Returns the assigned TransformNode
+            </summary>
+            <param name="index">the Index of this Joint within the Parent</param>
+            <returns>null or a TransformNode</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcJoint.Transform(System.Int32,SimPe.Geometry.Vector3f)">
+            <summary>
+            Applies the initial Joint Transformation to the passed Vertex
+            </summary>
+            <param name="index">Index of the current Joint withi itÄs parent</param>
+            <param name="v">The Vertex you want to Transform</param>
+            <returns>Transformed Vertex</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcJoint.CollectVertices">
+            <summary>
+            Adjusts the Vertex List, from all Elements Vertices that are assigned to this joint
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcJoint.ToString">
+            <summary>
+            This output is used in the ListBox View
+            </summary>
+            <returns>A String Describing the Data</returns>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GmdcJoints">
+            <summary>
+            Typesave ArrayList for GmdcJoint Objects
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcJoints.Item(System.Int32)">
+            <summary>
+            Integer Indexer
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcJoints.Item(System.UInt32)">
+            <summary>
+            unsigned Integer Indexer
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcJoints.Add(SimPe.Plugin.Gmdc.GmdcJoint)">
+            <summary>
+            add a new Element
+            </summary>
+            <param name="item">The object you want to add</param>
+            <returns>The index it was added on</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcJoints.Insert(System.Int32,SimPe.Plugin.Gmdc.GmdcJoint)">
+            <summary>
+            insert a new Element
+            </summary>
+            <param name="index">The Index where the Element should be stored</param>
+            <param name="item">The object that should be inserted</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcJoints.Remove(SimPe.Plugin.Gmdc.GmdcJoint)">
+            <summary>
+            remove an Element
+            </summary>
+            <param name="item">The object that should be removed</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcJoints.Contains(SimPe.Plugin.Gmdc.GmdcJoint)">
+            <summary>
+            Checks wether or not the object is already stored in the List
+            </summary>
+            <param name="item">The Object you are looking for</param>
+            <returns>true, if it was found</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcJoints.Contains(System.String)">
+            <summary>
+            Checks weteher or not a Joint with the passed name is stored in the List
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcJoints.Length">
+            <summary>
+            Number of stored Elements
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcJoints.Clone">
+            <summary>
+            Create a clone of this Object
+            </summary>
+            <returns>The clone</returns>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.ElementSorting">
+            <summary>
+            Describes the Order how Vectors should be Exported/read from a 3d-File
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ElementSorting.XYZ">
+            <summary>
+            Normal X, Y, Z Order
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ElementSorting.XZY">
+            <summary>
+            Flipped Depth with width (X, Z, Y)
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ElementSorting.Preview">
+            <summary>
+            Used when you want to display a Preview
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.ElementOrder">
+            <summary>
+            Helper Class that is used to determin the Element Order
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ElementOrder.Sorting">
+            <summary>
+            Returns/Sets the Sorting that should be Used
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ElementOrder.#ctor(SimPe.Plugin.Gmdc.ElementSorting)">
+            <summary>
+            Create a new Class with the given Sorting
+            </summary>
+            <param name="sorting">the sorting that should be used</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ElementOrder.Transform(SimPe.Geometry.Vector3f)">
+            <summary>
+            Transform the passed vector to fit into the specified Coordinate System
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ElementOrder.InverseTransform(SimPe.Geometry.Vector3f)">
+            <summary>
+            the inveres to <see cref="M:SimPe.Plugin.Gmdc.ElementOrder.Transform(SimPe.Geometry.Vector3f)"/>
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ElementOrder.TransformNormal(SimPe.Geometry.Vector3f)">
+            <summary>
+            Transform the passed normalvector to fit into the specified Coordinate System
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ElementOrder.InverseTransformNormal(SimPe.Geometry.Vector3f)">
+            <summary>
+            the inveres to <see cref="M:SimPe.Plugin.Gmdc.ElementOrder.TransformNormal(SimPe.Geometry.Vector3f)"/>
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ElementOrder.TransformScaled(SimPe.Geometry.Vector3f)">
+            <summary>
+            Transform the passed vector to fit into the specified Coordinate System and Scale
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ElementOrder.InverseTransformScaled(SimPe.Geometry.Vector3f)">
+            <summary>
+            the inveres to <see cref="M:SimPe.Plugin.Gmdc.ElementOrder.TransformScaled(SimPe.Geometry.Vector3f)"/>
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ElementOrder.Scale(SimPe.Geometry.Vector3f)">
+            <summary>
+            Scale the passed Vector
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ElementOrder.InverseScale(SimPe.Geometry.Vector3f)">
+            <summary>
+            the inveres to <see cref="M:SimPe.Plugin.Gmdc.ElementOrder.Scale(SimPe.Geometry.Vector3f)"/>
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.ExporterLoader">
+            <summary>
+            Manages the dynamic loading of Exporter Plugins
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ExporterLoader.Exporters">
+            <summary>
+            Return a List of all available Exporters
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ExporterLoader.Importers">
+            <summary>
+            Return a List of all available Importers
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ExporterLoader.GetExporters(System.String)">
+            <summary>
+            Returns a list of Exporters stored in th epassed file
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ExporterLoader.GetImporters(System.String)">
+            <summary>
+            Returns a list of Exporters stored in th epassed file
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ExporterLoader.LoadExporters">
+            <summary>
+            Find all available Exporters in the Plugin Folder (everything with the Extension *.exporter.dll)
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ExporterLoader.FindExporterByExtension(System.String)">
+            <summary>
+            Returns null or the Exporter that can create a File with teh given Extension
+            </summary>
+            <param name="fileext"></param>
+            <returns>null or an IGmdcExporter Instance</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ExporterLoader.FindFirstIndexByExtension(System.String)">
+            <summary>
+            Finds the first Exporter that registred for the passed File Extension
+            </summary>
+            <param name="fileext">The File Extension</param>
+            <returns>The Index of the Exporter or -1</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ExporterLoader.FindIndexByExtension(System.String)">
+            <summary>
+            Finds the Exporter that registred for the passed File Extension
+            </summary>
+            <param name="fileext"></param>
+            <returns>An Array of all Exporters that Registred for that Extension</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ExporterLoader.FindFirstImporterIndexByExtension(System.String)">
+            <summary>
+            Finds the first Exporter that registred for the passed File Extension
+            </summary>
+            <param name="fileext">The File Extension</param>
+            <returns>The Index of the Exporter or -1</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ExporterLoader.FindImporterIndexByExtension(System.String)">
+            <summary>
+            Finds the Exporter that registred for the passed File Extension
+            </summary>
+            <param name="fileext"></param>
+            <returns>An Array of all Exporters that Registred for that Extension</returns>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GenericImportForm">
+            <summary>
+            Zusammenfassung für GenericImport.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GenericImportForm.Dispose(System.Boolean)">
+            <summary>
+            Die verwendeten Ressourcen bereinigen.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GenericImportForm.InitializeComponent">
+            <summary>
+            Erforderliche Methode für die Designerunterstützung. 
+            Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GenericMeshImport">
+            <summary>
+            Zusammenfassung für GenericMeshImport.
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GmdcImporterBase">
+            <summary>
+            Implement this abstract class to create a new Gmdc Importer Plugin.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcImporterBase.#ctor">
+            <summary>
+            default Constructor
+            </summary>		
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcImporterBase.LoadGroups">
+            <summary>
+            This Method is called during the Import to process the input Data and 
+            generate a vaild Groups ArrayList.
+            </summary>
+            <returns>A List of all available Groups</returns>
+            <remarks>You can use the Input and Gmdc Member to acces the Stream and 
+            the Gmdc File that should be changed</remarks>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.GmdcImporterBase.vertices">
+            <summary>
+            stores the List of parsed Vertices (as SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat)
+            </summary>		
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.GmdcImporterBase.normals">
+            <summary>
+            stores the List of parsed Normals (as SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat)
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.GmdcImporterBase.uvmaps">
+            <summary>
+            stores the List of parsed UVCoordinates (as SimPe.Plugin.Gmdc.GmdcElementValueTwoFloat)
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.GmdcImporterBase.groups">
+            <summary>
+            Keys=GroupNames, values = faces List
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.GmdcImporterBase.faces">
+            <summary>
+            Contains the Faces List for the current Group (as SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat)
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcImporterBase.ProcessLists(SimPe.Plugin.Gmdc.ImportedGroups)">
+            <summary>
+            Use the Members, that wer initialized with LoadLists() to create
+            the Imported Group Data
+            </summary>
+            <param name="grps">The List that should receive the Group Data</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcImporterBase.AddElement(SimPe.Plugin.Gmdc.ImportedGroup,System.Int32,System.Object,System.Int32)">
+            <summary>
+            Add a new Value to the element with the given Index
+            </summary>
+            <param name="g">The current Group</param>
+            <param name="index">Index of the Element</param>
+            <param name="val">the Value you want to add</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcImporterBase.FillMissingElements(SimPe.Plugin.Gmdc.ImportedGroup,System.Int32,SimPe.Plugin.Gmdc.GmdcElementValueBase)">
+            <summary>
+            Make sure, that the Listing does NOT contain null References
+            </summary>
+            <param name="g">The current Group</param>
+            <param name="index">Index of the Element</param>
+            <param name="val">the Value you want to add</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcImporterBase.BuildGroup(SimPe.Plugin.Gmdc.ImportedGroup)">
+            <summary>
+            Build a Single Group from the Member Data generated with LoadLists()
+            </summary>
+            <param name="g"></param>
+            <remarks>At this point, the faces Member contains the face List for 
+            the current Group</remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcImporterBase.BuildGroupOld(SimPe.Plugin.Gmdc.ImportedGroup)">
+            <summary>
+            Build a Single Group from the Member Data generated with LoadLists()
+            </summary>
+            <param name="g"></param>
+            <remarks>At this point, the faces Member contains the face List for 
+            the current Group</remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcImporterBase.LoadLists">
+            <summary>
+            Initializes the <see cref="F:SimPe.Plugin.Gmdc.GmdcImporterBase.groups"/>, <see cref="F:SimPe.Plugin.Gmdc.GmdcImporterBase.vertices"/>, <see cref="F:SimPe.Plugin.Gmdc.GmdcImporterBase.normals"/> and <see cref="F:SimPe.Plugin.Gmdc.GmdcImporterBase.uvmaps"/> Lists
+            </summary>
+            <remarks>The <see cref="F:SimPe.Plugin.Gmdc.GmdcImporterBase.vertices"/> (SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat), 
+            <see cref="F:SimPe.Plugin.Gmdc.GmdcImporterBase.normals"/> (SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat) and 
+            <see cref="F:SimPe.Plugin.Gmdc.GmdcImporterBase.uvmaps"/> (SimPe.Plugin.Gmdc.GmdcElementValueTwoFloat) Lists contain 
+            the actual Coordinates for the vertices, normals and uvcoordinates.
+            
+            The <see cref="F:SimPe.Plugin.Gmdc.GmdcImporterBase.groups"/> Hashtable (key=name of a Meshgroup, 
+            value = <see cref="F:SimPe.Plugin.Gmdc.GmdcImporterBase.faces"/> (SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat) List) contains 
+            the Listing of all available faces in a Group.
+            
+            The SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat Members of the faces List 
+            enumerate the Vertex (data[0]), Normal (data[2]) and UVCoordinate (data[1])
+            Indices in the corresponding Lists.
+            </remarks>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.IGmdcExporter">
+            <summary>
+            This Interface must be implemented by Exporter Plugins
+            </summary>
+            <remarks>
+            It is probably a good Idea, to not implement this Interface 
+            direct, but reuse the AbstractGmdcExporter class.
+            </remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.IGmdcExporter.Process(SimPe.Plugin.GeometryDataContainer)">
+            <summary>
+            Create the export for all available Groups
+            </summary>
+            <param name="gmdc"></param>
+            <returns>The created Stream</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.IGmdcExporter.Process(SimPe.Plugin.GeometryDataContainer,SimPe.Plugin.Gmdc.GmdcGroups)">
+            <summary>
+            Create the export for the given Groups
+            </summary>
+            <param name="gmdc"></param>
+            <param name="groups"></param>
+            <returns>The created Stream</returns>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.IGmdcExporter.FileName">
+            <summary>
+            Retunrs or sets the FileName that is used to create the File
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.IGmdcExporter.FileContent">
+            <summary>
+            Returns the Content of the File base on the last loaded GroupSet
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.IGmdcExporter.Version">
+            <summary>
+            Returns a Version Number for the used Interface
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.IGmdcExporter.FileExtension">
+            <summary>
+            Returns the suggested File Extension (including the . like .obj or .3ds)
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.IGmdcExporter.FileDescription">
+            <summary>
+            Returns the File Description (the Name of the exported FileType)
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.IGmdcExporter.Author">
+            <summary>
+            Returns the name of the Author
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.IGmdcExporter.Component">
+            <summary>
+            Which Order is used for the Components (determins the Transformation that should be applied on export)
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.IGmdcExporter.CorrectJointSetup">
+            <summary>
+            true, if you want SimPe to correct the Joint definitions, moving all rotations to the _root node, 
+            and all translations to the _trans node of a Joint pair.
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.IGmdcImporter">
+            <summary>
+            This Interface is the base for all Importers
+            </summary>
+            <remarks>
+            It is probably a good Idea, to not implement this Interface 
+            direct, but reuse the GmdcImporterBase class.
+            </remarks>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.IGmdcImporter.Version">
+            <summary>
+            Returns a Version Number for the used Interface
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.IGmdcImporter.FileExtension">
+            <summary>
+            Returns the suggested File Extension (including the . like .obj or .3ds)
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.IGmdcImporter.FileDescription">
+            <summary>
+            Returns the File Description (the Name of the exported FileType)
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.IGmdcImporter.Author">
+            <summary>
+            Returns the name of the Author
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.IGmdcImporter.ErrorMessage">
+            <summary>
+            Returns the Error Message Produced by the Last Parsing attempt
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.IGmdcImporter.FileName">
+            <summary>
+            Returns the FileName that is used to create the File. Changing the FileName has no effect
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.IGmdcImporter.Process(System.IO.Stream,SimPe.Plugin.GeometryDataContainer,System.Boolean)">
+            <summary>
+            Process the Data stored in the passed Stream, and change/replace the passed Gmdc
+            </summary>
+            <param name="input">A Stream with the Input Data</param>
+            <param name="gmdc">The Gmdc that should receive the Data</param>
+            <param name="animationonly">True if you only want to import the Animation Data</param>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.IGmdcImporter.Component">
+            <summary>
+            Which Order is used for the Components (determins the Transformation that should be applied on import)
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.ImportedBone">
+            <summary>
+            This class contains all Data Needed to import one Bone (Joint)
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ImportedBone.action">
+            <summary>
+            internal Attribute
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportedBone.Action">
+            <summary>
+            Returns/Sets the action that should be performed
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportedBone.TargetIndex">
+            <summary>
+            If action is <see cref="F:SimPe.Plugin.Gmdc.GmdcImporterAction.Replace"/> or 
+            <see cref="F:SimPe.Plugin.Gmdc.GmdcImporterAction.Update"/> this Member stores the 
+            Index of the Target Joint (read/write)
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ImportedBone.name">
+            <summary>
+            internal Attribute
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportedBone.ImportedName">
+            <summary>
+            The name of the Imported Bone		
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ImportedBone.parentname">
+            <summary>
+            internal Attribute
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportedBone.ParentName">
+            <summary>
+            The name of the Parent Bone		
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportedBone.Bone">
+            <summary>
+            The new Bone
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportedBone.Transformation">
+            <summary>
+            The initial Transformation for this Joint
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportedBone.MarkColor">
+            <summary>
+            Returns the color that should be used to display this Group in the "Import Groups" ListView
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ImportedBone.scale">
+            <summary>
+            internal Attribute
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportedBone.Scale">
+            <summary>
+            Returns/Sets the scale Factor that should be applied to this group
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ImportedBone.#ctor(SimPe.Plugin.GeometryDataContainer)">
+            <summary>
+            Create a new Instance
+            </summary>
+            <param name="parent">The gmdc that should act as Parent</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ImportedBone.GetParentFrom(SimPe.Plugin.Gmdc.ImportedBones)">
+            <summary>
+            Returns the PArent Bone or null if none was found
+            </summary>
+            <param name="bones">List of Bones, where we should look for Parents</param>
+            <returns>null if no Parent is available or the Parent Bone</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ImportedBone.FindBestFitJoint(SimPe.Plugin.GeometryDataContainer)">
+            <summary>
+            Find a Joint with the same name as this one in tha passed GMDC, and set it as import Target
+            </summary>
+            <param name="gmdc"></param>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.ImportedBones">
+            <summary>
+            Typesave ArrayList for <see cref="T:SimPe.Plugin.Gmdc.ImportedGroup"/> Objects
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportedBones.Item(System.Int32)">
+            <summary>
+            Integer Indexer
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportedBones.Item(System.UInt32)">
+            <summary>
+            unsigned Integer Indexer
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ImportedBones.Add(SimPe.Plugin.Gmdc.ImportedBone)">
+            <summary>
+            add a new Element
+            </summary>
+            <param name="item">The object you want to add</param>
+            <returns>The index it was added on</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ImportedBones.Insert(System.Int32,SimPe.Plugin.Gmdc.ImportedBone)">
+            <summary>
+            insert a new Element
+            </summary>
+            <param name="index">The Index where the Element should be stored</param>
+            <param name="item">The object that should be inserted</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ImportedBones.Remove(SimPe.Plugin.Gmdc.ImportedBone)">
+            <summary>
+            remove an Element
+            </summary>
+            <param name="item">The object that should be removed</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ImportedBones.Contains(SimPe.Plugin.Gmdc.ImportedBone)">
+            <summary>
+            Checks wether or not the object is already stored in the List
+            </summary>
+            <param name="item">The Object you are looking for</param>
+            <returns>true, if it was found</returns>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportedBones.Length">
+            <summary>
+            Number of stored Elements
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ImportedBones.Clone">
+            <summary>
+            Create a clone of this Object
+            </summary>
+            <returns>The clone</returns>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GmdcImporterAction">
+            <summary>
+            Enumerates possible action for Mesh Groups
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.GmdcImporterAction.Nothing">
+            <summary>
+            Ignore the Mesh-Group
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.GmdcImporterAction.Replace">
+            <summary>
+            Replace the existing Group with the one stored in the <see cref="P:SimPe.Plugin.Gmdc.ImportedGroup.Group"/> Member
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.GmdcImporterAction.Add">
+            <summary>
+            Add the Group stored in the <see cref="P:SimPe.Plugin.Gmdc.ImportedGroup.Group"/> Member
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.GmdcImporterAction.Rename">
+            <summary>
+            Add the Group stored in <see cref="P:SimPe.Plugin.Gmdc.ImportedGroup.Group"/> and assign a new Name.
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.GmdcImporterAction.Update">
+            <summary>
+            Will only change the newly Imported Data in the stored <see cref="P:SimPe.Plugin.Gmdc.ImportedGroup.Group"/>.
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.GmdcGroupImporterAction">
+            <summary>
+            This class is generated for each available and imported Group, 
+            and determins the Behaviour during the Import
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.GmdcGroupImporterAction.newname">
+            <summary>
+            internal Attribute
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcGroupImporterAction.Target">
+            <summary>
+            If action is <see cref="F:SimPe.Plugin.Gmdc.GmdcImporterAction.Replace"/>, <see cref="F:SimPe.Plugin.Gmdc.GmdcImporterAction.Update"/> or 
+            <see cref="F:SimPe.Plugin.Gmdc.GmdcImporterAction.Rename"/>, this Member stores the 
+            new Name for the current Group. (read/write)
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.GmdcGroupImporterAction.action">
+            <summary>
+            internal Attribute
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcGroupImporterAction.Action">
+            <summary>
+            Returns/Sets the action that should be performed
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.GmdcGroupImporterAction.scale">
+            <summary>
+            internal Attribute
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.GmdcGroupImporterAction.Scale">
+            <summary>
+            Returns/Sets the scale Factor that should be applied to this group
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.GmdcGroupImporterAction.#ctor">
+            <summary>
+            Create a new Instance
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.ImportedGroup">
+            <summary>
+            This class contains all Data Needed to import one Mesh Group
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportedGroup.Group">
+            <summary>
+            The new MeshGroup
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportedGroup.Link">
+            <summary>
+            The new Link Section
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportedGroup.Elements">
+            <summary>
+            All Elements used by this Group
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportedGroup.VertexCount">
+            <summary>
+            Returns the Number of faces stored in the Group
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportedGroup.FaceCount">
+            <summary>
+            Returns the Number of stored Faces
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportedGroup.UseInBoundingMesh">
+            <summary>
+            True, if this MEshGroup sould be added to the BoundingMesh
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportedGroup.MarkColor">
+            <summary>
+            Returns the color that should be used to display this Group in the "Import Groups" ListView
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ImportedGroup.#ctor(SimPe.Plugin.GeometryDataContainer)">
+            <summary>
+            Create a new Instance
+            </summary>
+            <param name="parent">The gmdc that should act as Parent</param>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.ImportedGroups">
+            <summary>
+            Typesave ArrayList for <see cref="T:SimPe.Plugin.Gmdc.ImportedGroup"/> Objects
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportedGroups.Item(System.Int32)">
+            <summary>
+            Integer Indexer
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportedGroups.Item(System.UInt32)">
+            <summary>
+            unsigned Integer Indexer
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ImportedGroups.Add(SimPe.Plugin.Gmdc.ImportedGroup)">
+            <summary>
+            add a new Element
+            </summary>
+            <param name="item">The object you want to add</param>
+            <returns>The index it was added on</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ImportedGroups.Insert(System.Int32,SimPe.Plugin.Gmdc.ImportedGroup)">
+            <summary>
+            insert a new Element
+            </summary>
+            <param name="index">The Index where the Element should be stored</param>
+            <param name="item">The object that should be inserted</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ImportedGroups.Remove(SimPe.Plugin.Gmdc.ImportedGroup)">
+            <summary>
+            remove an Element
+            </summary>
+            <param name="item">The object that should be removed</param>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ImportedGroups.Contains(SimPe.Plugin.Gmdc.ImportedGroup)">
+            <summary>
+            Checks wether or not the object is already stored in the List
+            </summary>
+            <param name="item">The Object you are looking for</param>
+            <returns>true, if it was found</returns>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportedGroups.Length">
+            <summary>
+            Number of stored Elements
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ImportedGroups.Clone">
+            <summary>
+            Create a clone of this Object
+            </summary>
+            <returns>The clone</returns>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.ImportGmdcGroupsForm">
+            <summary>
+            The Form that is displayed when a Meshgroup is imported
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Gmdc.ImportGmdcGroupsForm.components">
+            <summary>
+            Needed Designervar.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ImportGmdcGroupsForm.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ImportGmdcGroupsForm.Dispose(System.Boolean)">
+            <summary>
+            Die verwendeten Ressourcen bereinigen.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ImportGmdcGroupsForm.InitializeComponent">
+            <summary>
+            Erforderliche Methode für die Designerunterstützung. 
+            Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ImportGmdcGroupsForm.Main">
+            <summary>
+            Der Haupteinstiegspunkt für die Anwendung.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ImportGmdcGroupsForm.SelectGroup">
+            <summary>
+            A Group was selected
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ImportGmdcGroupsForm.SelectBone">
+            <summary>
+            A Bone was selected
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ImportGmdcGroupsForm.Execute(SimPe.Plugin.GeometryDataContainer,SimPe.Plugin.Gmdc.ImportedGroups,SimPe.Plugin.Gmdc.ImportedBones)">
+            <summary>
+            Show the Group Import Dialog
+            </summary>
+            <param name="gmdc">The Target Gmdc File</param>
+            <param name="actions">An array containing all wanted Import Actions</param>
+            <param name="joints">An array of all Joints that should be imported</param>
+            <returns>DialogResult.OK or DialogResult.Cancel</returns>
+        </member>
+        <member name="T:SimPe.Plugin.Gmdc.ImportOptions">
+            <summary>
+            Contains the Globla Import Options as specified by the User
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Gmdc.ImportOptions.#ctor(System.Windows.Forms.DialogResult,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Creates an Instance of the Optiosn class
+            </summary>
+            <param name="res">Result of the Import Dialog</param>
+            <param name="cg">Want to clean the Groups</param>
+            <param name="cb">Want to clean the Joints</param>
+            <param name="uc">Want to Update the Crew, with the new Bone Hirarchy and Location</param>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportOptions.Result">
+            <summary>
+            Should the Import be continued?
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportOptions.CleanGroups">
+            <summary>
+            Should we clean available Groups before the Import?
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportOptions.CleanBones">
+            <summary>
+            Should we remove unreferenced Joints after the Import?
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Gmdc.ImportOptions.UpdateCres">
+            <summary>
+            Writes the Bone Locationa and Hirarchy to the CRES
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Anim.AxisTransformException">
+            <summary>
+            This Exception can be cause when dealing with AnimationAxisTransform classes
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Anim.AnimationAxisTransform">
+            <summary>
+            This Represents one Transformation within the <see cref="T:SimPe.Plugin.Anim.AnimationAxisTransformBlock"/>
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Anim.AnimationAxisTransform.Index">
+            <summary>
+            Index of this Object within the Parent List
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Anim.AnimationAxisTransform.Parent">
+            <summary>
+            Retuens the Parent of this Block
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Anim.AnimationAxisTransform.TimeCode">
+            <summary>
+            The TimeCode for this Frame
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Anim.AnimationAxisTransform.Linear">
+            <summary>
+            Use this KeyFrame as a Linear Pole?
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Anim.AnimationAxisTransform.ParentLocked">
+            <summary>
+            Unknown?
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Anim.AnimationAxisTransform.Parameter">
+            <summary>
+            The Transformation Parameter for this Frame
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Anim.AnimationAxisTransform.ParameterFloat">
+            <summary>
+            The Transformation Parameter for this Frame
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransform.#ctor(SimPe.Plugin.Anim.AnimationAxisTransformBlock,System.Int32)">
+            <summary>
+            Create a new Instance. 
+            </summary>
+            <param name="parent">The parent Block</param>
+            <remarks>
+            Instances are only valid in the context of a <see cref="T:SimPe.Plugin.Anim.AnimationAxisTransformBlock"/>!
+            </remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransform.Reset">
+            <summary>
+            Reset the stored Values
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransform.UnserializeData(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransform.SerializeData(System.IO.BinaryWriter)">
+            <summary>
+            Serializes to a BinaryStream from the Attributes of this Instance
+            </summary>
+            <param name="writer">The Stream that receives the Data</param>
+        </member>
+        <member name="T:SimPe.Plugin.Anim.AnimationAxisTransformBlock">
+            <summary>
+            Data is unknown
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransformBlock.GetTimeCode(System.Int32)">
+            <summary>
+            Returns the TimeCode for the indexth Frame
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransformBlock.UnserializeData(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransformBlock.SerializeData(System.IO.BinaryWriter)">
+            <summary>
+            Serializes to a BinaryStream from the Attributes of this Instance
+            </summary>
+            <param name="writer">The Stream that receives the Data</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransformBlock.UnserializeAddonData(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransformBlock.SerializeAddonData(System.IO.BinaryWriter)">
+            <summary>
+            Serializes to a BinaryStream from the Attributes of this Instance
+            </summary>
+            <param name="writer">The Stream that receives the Data</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransformBlock.GetCount">
+            <summary>
+            Return the number of Additional Word Values
+            </summary>
+            <returns>number of additional words to read</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransformBlock.SetCount(System.Int32)">
+            <summary>
+            Set the count for Part 5 Items
+            </summary>
+            <param name="ct">The New Count</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransformBlock.GetTimeCodes(System.Boolean,System.Boolean)">
+            <summary>
+            Returns a List of available TimeCodes
+            </summary>
+            <param name="linear">true if you want to have TimeCodes for Linear KeyFrames</param>
+            <param name="nonlinear">true if you want TimeCodes for Non Linear KeyFrames</param>		
+            <returns>List of TimeCodes</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransformBlock.Sort">
+            <summary>
+            Sorts the stored Frames by TimeCode
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransformBlock.GetLast">
+            <summary>
+            Returns the Last Frame
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransformBlock.GetFirst">
+            <summary>
+            Returns the First Frame
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransformBlock.Add(SimPe.Plugin.Anim.AnimationAxisTransform)">
+            <summary>
+            Add a new <see cref="T:SimPe.Plugin.Anim.AnimationAxisTransform"/> based on a Cloned Object
+            </summary>
+            <param name="aat">The Item you want to Add</param>		
+            <exception cref="T:SimPe.Plugin.Anim.AxisTransformException">
+            Thrown, if the Item you triy to add, is a Child of another <see cref="T:SimPe.Plugin.Anim.AnimationAxisTransformBlock"/>, 
+            or is already included in the current Listing. Before add a Frame, you have to create a Clone!
+            </exception>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransformBlock.Add(System.Int16,System.Int16,System.Int16,System.Int16,System.Boolean)">
+            <summary>
+            Add a new <see cref="T:SimPe.Plugin.Anim.AnimationAxisTransform"/> Item
+            </summary>
+            <param name="timecode"></param>
+            <param name="param"></param>
+            <param name="u1"></param>
+            <param name="u2"></param>
+            <param name="islinear"></param>
+            <remarks>The Data does not get added when the timecode already exists, null will be returned in that case</remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransformBlock.Insert(System.Int32,SimPe.Plugin.Anim.AnimationAxisTransform)">
+            <summary>
+            Insert a new <see cref="T:SimPe.Plugin.Anim.AnimationAxisTransform"/> based on a Cloned Object
+            </summary>
+            <param name="index">The index within the List</param>
+            <param name="aat">The Item you want to Add</param>	
+            <exception cref="T:SimPe.Plugin.Anim.AxisTransformException">
+            Thrown, if the Item you triy to add, is a Child of another <see cref="T:SimPe.Plugin.Anim.AnimationAxisTransformBlock"/>, 
+            or is already included in the current Listing. Before add a Frame, you have to create a Clone!
+            </exception>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransformBlock.Insert(System.Int32,System.Int16,System.Int16,System.Int16,System.Int16,System.Boolean)">
+            <summary>
+            Insert a new <see cref="T:SimPe.Plugin.Anim.AnimationAxisTransform"/> Item
+            </summary>
+            <param name="index">The index within the List</param>
+            <param name="timecode"></param>
+            <param name="param"></param>
+            <param name="u1"></param>
+            <param name="u2"></param>
+            <param name="islinear"></param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransformBlock.Clear(System.Boolean,System.Boolean)">
+            <summary>
+            Remove all Data Stored here
+            </summary>
+            <param name="clearlinear">true if you want to clear linear transformations</param>
+            <param name="clearnonlinear">true if you want to clear non Linear KeyFrames</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransformBlock.Clear">
+            <summary>
+            Clear al stored Transformations
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransformBlock.Remove(SimPe.Plugin.Anim.AnimationAxisTransform)">
+            <summary>
+            Remove the passed Item from the Parent
+            </summary>
+            <param name="aat"></param>
+        </member>
+        <member name="P:SimPe.Plugin.Anim.AnimationAxisTransformBlock.Item(System.Int32)">
+            <summary>
+            Integer Indexer
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Anim.AnimationAxisTransformBlock.Item(System.UInt32)">
+            <summary>
+            unsigned Integer Indexer
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransformBlock.ReIndex">
+            <summary>
+            Make sure the indices stored in the items Elements are in sync
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationAxisTransformBlock.ReIndex(System.Int32)">
+            <summary>
+            Make sure the indices stored in the items Elements are in sync
+            </summary>
+            <param name="start">the first Block you want to check</param>
+        </member>
+        <member name="T:SimPe.Plugin.Anim.AnimationFrame">
+            <summary>
+            Assembles the Data Read from the ANIM Resource in a Frame
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Anim.AnimationFrameBlock">
+            <summary>
+            Data is unknown
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationFrameBlock.AddNewAxis">
+            <summary>
+            Creat an additional Part3 Item
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationFrameBlock.ChangeTokenType(SimPe.Plugin.Anim.AnimationTokenType)">
+            <summary>
+            Change the TokenType of all AxisSets to t
+            </summary>
+            <param name="t">The new TokenType</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationFrameBlock.ChangeTokenType(SimPe.Plugin.Anim.AnimationTokenType,SimPe.Plugin.Anim.AnimationTokenType)">
+            <summary>
+            Change the TokenType of all AxisSets to t, if the currently are set to current. Otherwise do not change
+            </summary>
+            <param name="current">The current TokenType</param>
+            <param name="t">The new TokenType</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationFrameBlock.GetAxisValue(System.Int32,System.Int16,System.Int16,System.Int16)">
+            <summary>
+            Return the value matching the id
+            </summary>
+            <param name="id">Id of the Component you want to write</param>
+            <param name="x">returned when id=0</param>
+            <param name="y">returned when id=1</param>
+            <param name="z">returned when id=2</param>
+            <returns>0, x, y, or z</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationFrameBlock.UnserializeData(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationFrameBlock.GetDuration">
+            <summary>
+            Returns the Higest available TimeCode
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationFrameBlock.SerializeData(System.IO.BinaryWriter)">
+            <summary>
+            Serializes to a BinaryStream from the Attributes of this Instance
+            </summary>
+            <param name="writer">The Stream that receives the Data</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationFrameBlock.UnserializePart3Data(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationFrameBlock.SerializePart3Data(System.IO.BinaryWriter)">
+            <summary>
+            Serializes to a BinaryStream from the Attributes of this Instance
+            </summary>
+            <param name="writer">The Stream that receives the Data</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationFrameBlock.UnserializePart3AddonData(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationFrameBlock.SerializePart3AddonData(System.IO.BinaryWriter)">
+            <summary>
+            Serializes to a BinaryStream from the Attributes of this Instance
+            </summary>
+            <param name="writer">The Stream that receives the Data</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationFrameBlock.GetPart3Count">
+            <summary>
+            Returns the Number of Items for Part 3 assigned to this Object
+            </summary>
+            <returns>Number of Items</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationFrameBlock.SetPart3Count(System.Int32)">
+            <summary>
+            Set the count for Part 5 Items
+            </summary>
+            <param name="ct">The New Count</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationFrameBlock.RemoveUnneededFrames">
+            <summary>
+            This Operation will remove all Frames, that are not needed to perform the Animation
+            </summary>
+            <remarks>
+            Unneeded Frames are ones, that can be interpolated by 
+            the previous and following Frame
+            </remarks>
+        </member>
+        <member name="T:SimPe.Plugin.Anim.AnimationMeshBlock">
+            <summary>
+            Data is unknown
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationMeshBlock.UnserializeData(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationMeshBlock.SerializeData(System.IO.BinaryWriter)">
+            <summary>
+            Serializes to a BinaryStream from the Attributes of this Instance
+            </summary>
+            <param name="writer">The Stream that receives the Data</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationMeshBlock.UnserializePart2Data(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationMeshBlock.SerializePart2Data(System.IO.BinaryWriter)">
+            <summary>
+            Serializes to a BinaryStream from the Attributes of this Instance
+            </summary>
+            <param name="writer">The Stream that receives the Data</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationMeshBlock.UnserializePart2Name(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationMeshBlock.SerializePart2Name(System.IO.BinaryWriter)">
+            <summary>
+            Serializes to a BinaryStream from the Attributes of this Instance
+            </summary>
+            <param name="writer">The Stream that receives the Data</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationMeshBlock.UnserializePart3Data(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationMeshBlock.SerializePart3Data(System.IO.BinaryWriter)">
+            <summary>
+            Serializes to a BinaryStream from the Attributes of this Instance
+            </summary>
+            <param name="writer">The Stream that receives the Data</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationMeshBlock.UnserializePart3AddonData(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationMeshBlock.SerializePart3AddonData(System.IO.BinaryWriter)">
+            <summary>
+            Serializes to a BinaryStream from the Attributes of this Instance
+            </summary>
+            <param name="writer">The Stream that receives the Data</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationMeshBlock.UnserializePart4Data(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationMeshBlock.SerializePart4Data(System.IO.BinaryWriter)">
+            <summary>
+            Serializes to a BinaryStream from the Attributes of this Instance
+            </summary>
+            <param name="writer">The Stream that receives the Data</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationMeshBlock.UnserializePart5Data(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationMeshBlock.SerializePart5Data(System.IO.BinaryWriter)">
+            <summary>
+            Serializes to a BinaryStream from the Attributes of this Instance
+            </summary>
+            <param name="writer">The Stream that receives the Data</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationMeshBlock.GetPart2Count">
+            <summary>
+            Returns the Number of Items for Part 2 assigned to this Object
+            </summary>
+            <returns>Number of Items</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationMeshBlock.SetPart2Count(System.Int32)">
+            <summary>
+            Set the count for Part 5 Items
+            </summary>
+            <param name="ct">The New Count</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationMeshBlock.GetPart4Count">
+            <summary>
+            Returns the Number of Items for Part 4 assigned to this Object
+            </summary>
+            <returns>Number of Items</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationMeshBlock.SetPart4Count(System.Int32)">
+            <summary>
+            Set the count for Part 5 Items
+            </summary>
+            <param name="ct">The New Count</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimationMeshBlock.GetJointTransformation(System.String,SimPe.Plugin.Anim.FrameType)">
+            <summary>
+            Returns the first transformation for the given name and type
+            </summary>
+            <param name="name"></param>
+            <param name="type"></param>
+            <returns>null or the matching Block</returns>
+        </member>
+        <member name="T:SimPe.Plugin.Anim.AnimAxisTransformControl">
+            <summary>
+            Zusammenfassung für AnimAxisTransformControl.
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Anim.AnimAxisTransformControl.components">
+            <summary> 
+            Erforderliche Designervariable.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimAxisTransformControl.Dispose(System.Boolean)">
+            <summary> 
+            Die verwendeten Ressourcen bereinigen.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimAxisTransformControl.InitializeComponent">
+            <summary> 
+            Erforderliche Methode für die Designerunterstützung. 
+            Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Anim.AnimFrameBlockControl">
+            <summary>
+            Zusammenfassung für AnimFrameBlockControl.
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Anim.AnimFrameBlockControl.components">
+            <summary> 
+            Erforderliche Designervariable.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimFrameBlockControl.Dispose(System.Boolean)">
+            <summary> 
+            Die verwendeten Ressourcen bereinigen.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimFrameBlockControl.InitializeComponent">
+            <summary> 
+            Erforderliche Methode für die Designerunterstützung. 
+            Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Anim.AnimMeshBlockControl">
+            <summary>
+            Zusammenfassung für AnimationMeshBlock.
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Anim.AnimMeshBlockControl.components">
+            <summary> 
+            Erforderliche Designervariable.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimMeshBlockControl.Dispose(System.Boolean)">
+            <summary> 
+            Die verwendeten Ressourcen bereinigen.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimMeshBlockControl.InitializeComponent">
+            <summary> 
+            Erforderliche Methode für die Designerunterstützung. 
+            Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Anim.AnimResourceConst">
+            <summary>
+            contains an Animation Ressource
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimResourceConst.#ctor(SimPe.Plugin.Rcol)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimResourceConst.Unserialize(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimResourceConst.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes a the Attributes stored in this Instance to the BinaryStream
+            </summary>
+            <param name="writer">The Stream the Data should be stored to</param>
+            <remarks>
+            Be sure that the Position of the stream is Proper on 
+            return (i.e. must point to the first Byte after your actual File)
+            </remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimResourceConst.Align(System.Int32)">
+            <summary>
+            Calulates how many bytes we need to align the Stream
+            </summary>
+            <param name="ct">NUmber of bytes written</param>
+            <returns>Number of Bytes needed to align</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimResourceConst.Align(System.IO.BinaryReader,System.Int32)">
+            <summary>
+            Make sure the String Data is alligned
+            </summary>
+            <param name="reader">The reader you want to align</param>
+            <param name="ct">Number of Characters that were read (including terminating 0)</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimResourceConst.Align(System.IO.BinaryWriter,System.Int32)">
+            <summary>
+            Make sure the String Data is alligned
+            </summary>
+            <param name="reader">The reader you want to align</param>
+            <param name="ct">Number of Characters that were read (including terminating 0)</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimResourceConst.InitTabPage">
+            <summary>
+            You can use this to setop the Controls on a TabPage befor it is dispplayed
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Anim.AnimationTokenType">
+            <summary>
+            What type of Information is stored in the Token
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Anim.AnimationTokenType.TwoByte">
+            <summary>
+            One Short Value (0=transform parameter)
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Anim.AnimationTokenType.SixByte">
+            <summary>
+            three Short Values (0=timecode, 1=transform parameter, 2=???)
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Anim.AnimationTokenType.EightByte">
+            <summary>
+            four short Values (0=timecode, 1=transform parameter, 2=???, 3=???)
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Anim.FrameType">
+            <summary>
+            What type of Information is stored in a Frame
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Anim.FrameType.Translation">
+            <summary>
+            Translations
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Anim.FrameType.Rotation">
+            <summary>
+            Rotations
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Anim.FrameType.Unknown">
+            <summary>
+            Unknown Type
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Anim.AnimBlock">
+            <summary>
+            Base Class for common structures in the diffrent AnimBlock Formats
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimBlock.UnserializeName(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimBlock.SerializeName(System.IO.BinaryWriter)">
+            <summary>
+            Serializes to a BinaryStream from the Attributes of this Instance
+            </summary>
+            <param name="writer">The Stream that receives the Data</param>
+        </member>
+        <member name="T:SimPe.Plugin.Anim.AnimBlock4">
+            <summary>
+            Data is unknown
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimBlock4.UnserializeData(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimBlock4.SerializeData(System.IO.BinaryWriter)">
+            <summary>
+            Serializes to a BinaryStream from the Attributes of this Instance
+            </summary>
+            <param name="writer">The Stream that receives the Data</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimBlock4.UnserializePart5Data(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimBlock4.SerializePart5Data(System.IO.BinaryWriter)">
+            <summary>
+            Serializes to a BinaryStream from the Attributes of this Instance
+            </summary>
+            <param name="writer">The Stream that receives the Data</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimBlock4.GetPart5Count">
+            <summary>
+            Returns the Number of Items for Part 5 assigned to this Object
+            </summary>
+            <returns>Number of Items</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimBlock4.SetPart5Count(System.Int32)">
+            <summary>
+            Set the count for Part 5 Items
+            </summary>
+            <param name="ct">The New Count</param>
+        </member>
+        <member name="T:SimPe.Plugin.Anim.AnimBlock5">
+            <summary>
+            Data is unknown
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimBlock5.UnserializeData(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+            <remarks>This is only a DEBUG Implementation!</remarks>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimBlock5.SerializeData(System.IO.BinaryWriter)">
+            <summary>
+            Serializes to a BinaryStream from the Attributes of this Instance
+            </summary>
+            <param name="writer">The Stream that receives the Data</param>
+        </member>
+        <member name="T:SimPe.Plugin.Anim.AnimBlock6">
+            <summary>
+            Data is unknown
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimBlock6.UnserializeData(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.AnimBlock6.SerializeData(System.IO.BinaryWriter)">
+            <summary>
+            Serializes to a BinaryStream from the Attributes of this Instance
+            </summary>
+            <param name="writer">The Stream that receives the Data</param>
+        </member>
+        <member name="T:SimPe.Plugin.Anim.fAnimResourceConst">
+            <summary>
+            Zusammenfassung für fAnimResourceConst.
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Anim.fAnimResourceConst.components">
+            <summary>
+            Erforderliche Designervariable.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.fAnimResourceConst.Dispose(System.Boolean)">
+            <summary>
+            Die verwendeten Ressourcen bereinigen.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.fAnimResourceConst.InitializeComponent">
+            <summary>
+            Erforderliche Methode für die Designerunterstützung. 
+            Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Anim.AnimImporterAction">
+            <summary>
+            Enumerates possible action for a Joint Animation
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Anim.AnimImporterAction.Nothing">
+            <summary>
+            Ignore the Animation
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Anim.AnimImporterAction.Replace">
+            <summary>
+            Replace the existing Animation <see cref="P:SimPe.Plugin.Anim.ImportedFrameBlock.Target"/> with the one stored in the <see cref="P:SimPe.Plugin.Anim.ImportedFrameBlock.FrameBlock"/> Member
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Anim.AnimImporterAction.Add">
+            <summary>
+            Add the Animation stored in the <see cref="P:SimPe.Plugin.Anim.ImportedFrameBlock.FrameBlock"/> Member
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Anim.ImportedFrameBlock">
+            <summary>
+            This class contains all Data Needed to import one <see cref="T:SimPe.Plugin.Anim.AnimationFrameBlock"/> 
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Anim.ImportedFrameBlock.action">
+            <summary>
+            internal Attribute
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Anim.ImportedFrameBlock.Action">
+            <summary>
+            Returns/Sets the action that should be performed
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Anim.ImportedFrameBlock.ImportedName">
+            <summary>
+            The name of the Imported Bone		
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Anim.ImportedFrameBlock.target">
+            <summary>
+            internal Attribute
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Anim.ImportedFrameBlock.Target">
+            <summary>
+            The Animation that should get Replaced
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Anim.ImportedFrameBlock.DiscardZeroFrame">
+            <summary>
+            true if the First Frame (TimeCode 0) should be ignored during the Import
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Anim.ImportedFrameBlock.RemoveUnneeded">
+            <summary>
+            Remove all Keyframes that are not needed by the Animation?
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Anim.ImportedFrameBlock.FrameBlock">
+            <summary>
+            The new Bone
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Anim.ImportedFrameBlock.MarkColor">
+            <summary>
+            Returns the color that should be used to display this Group in the "Import Groups" ListView
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.ImportedFrameBlock.#ctor(SimPe.Plugin.Anim.AnimationFrameBlock)">
+            <summary>
+            Create a new Instance
+            </summary>
+            <param name="afb">The <see cref="T:SimPe.Plugin.Anim.AnimationFrameBlock"/> that was Imported</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.ImportedFrameBlock.FindTarget(SimPe.Plugin.Anim.AnimationMeshBlock)">
+            <summary>
+            Tries to find a <see cref="T:SimPe.Plugin.Anim.AnimationFrameBlock"/>  with the same Name in the passed <see cref="T:SimPe.Plugin.Anim.AnimationMeshBlock" />.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.ImportedFrameBlock.ReplaceFrames">
+            <summary>
+            Replaces the Frames within <see cref="P:SimPe.Plugin.Anim.ImportedFrameBlock.Target"/>, with the ones stored in <see cref="P:SimPe.Plugin.Anim.ImportedFrameBlock.FrameBlock"/>
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.ImportedFrameBlock.AddFrameBlock(SimPe.Plugin.Anim.AnimationMeshBlock)">
+            <summary>
+            Add the <see cref="P:SimPe.Plugin.Anim.ImportedFrameBlock.FrameBlock"/> to the passed <see cref="T:SimPe.Plugin.Anim.AnimationMeshBlock"/>.
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.Anim.ImportedFrameBlocks">
+            <summary>
+            Typesave ArrayList for <see cref="!:ImportedGroup"/> Objects
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Anim.ImportedFrameBlocks.Item(System.Int32)">
+            <summary>
+            Integer Indexer
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.Anim.ImportedFrameBlocks.Item(System.UInt32)">
+            <summary>
+            unsigned Integer Indexer
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.ImportedFrameBlocks.Add(SimPe.Plugin.Anim.ImportedFrameBlock)">
+            <summary>
+            add a new Element
+            </summary>
+            <param name="item">The object you want to add</param>
+            <returns>The index it was added on</returns>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.ImportedFrameBlocks.Insert(System.Int32,SimPe.Plugin.Anim.ImportedFrameBlock)">
+            <summary>
+            insert a new Element
+            </summary>
+            <param name="index">The Index where the Element should be stored</param>
+            <param name="item">The object that should be inserted</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.ImportedFrameBlocks.Remove(SimPe.Plugin.Anim.ImportedFrameBlock)">
+            <summary>
+            remove an Element
+            </summary>
+            <param name="item">The object that should be removed</param>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.ImportedFrameBlocks.Contains(SimPe.Plugin.Anim.ImportedFrameBlock)">
+            <summary>
+            Checks wether or not the object is already stored in the List
+            </summary>
+            <param name="item">The Object you are looking for</param>
+            <returns>true, if it was found</returns>
+        </member>
+        <member name="P:SimPe.Plugin.Anim.ImportedFrameBlocks.Length">
+            <summary>
+            Number of stored Elements
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.ImportedFrameBlocks.Clone">
+            <summary>
+            Create a clone of this Object
+            </summary>
+            <returns>The clone</returns>
+        </member>
+        <member name="T:SimPe.Plugin.Anim.ImportJointAnim">
+            <summary>
+            Zusammenfassung für ImportJointAnim.
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.Anim.ImportJointAnim.components">
+            <summary>
+            Erforderliche Designervariable.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.ImportJointAnim.Dispose(System.Boolean)">
+            <summary>
+            Die verwendeten Ressourcen bereinigen.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.ImportJointAnim.InitializeComponent">
+            <summary>
+            Erforderliche Methode für die Designerunterstützung. 
+            Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.Anim.ImportJointAnim.SelectJoint">
+            <summary>
+            A Bone was selected
+            </summary>
+        </member>
+        <member name="T:SimPe.Plugin.GeometryDataContainer">
+            <summary>
+            This class contains the Geometric Data of an Object
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.GeometryDataContainer.Elements">
+            <summary>
+            Returns a List of stored Elements
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.GeometryDataContainer.Links">
+            <summary>
+            Returns a List of stored Links
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.GeometryDataContainer.Groups">
+            <summary>
+            Returns a List of stored Groups
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.GeometryDataContainer.Model">
+            <summary>
+            Returns the stored Model
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.GeometryDataContainer.Joints">
+            <summary>
+            Returns a List of stored Joints
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.GeometryDataContainer.#ctor(SimPe.Plugin.Rcol)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.GeometryDataContainer.Unserialize(System.IO.BinaryReader)">
+            <summary>
+            Unserializes a BinaryStream into the Attributes of this Instance
+            </summary>
+            <param name="reader">The Stream that contains the FileData</param>
+        </member>
+        <member name="M:SimPe.Plugin.GeometryDataContainer.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes a the Attributes stored in this Instance to the BinaryStream
+            </summary>
+            <param name="writer">The Stream the Data should be stored to</param>
+            <remarks>
+            Be sure that the Position of the stream is Proper on 
+            return (i.e. must point to the first Byte after your actual File)
+            </remarks>
+        </member>
+        <member name="P:SimPe.Plugin.GeometryDataContainer.TabPage">
+            <summary>
+            Returns null or the Instance of a <see cref="T:System.Windows.Forms.TabPage"/> that 
+            should be displayed as Primary Interface
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.GeometryDataContainer.InitTabPage">
+            <summary>
+            You can use this to setop the Controls on a TabPage befor it is dispplayed
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.GeometryDataContainer.ExtendTabControl(System.Windows.Forms.TabControl)">
+            <summary>
+            Add Additional <see cref="T:System.Windows.Forms.TabPage"/> to show more Informations
+            </summary>
+            <param name="tc">The TabPage will be added here.</param>
+        </member>
+        <member name="M:SimPe.Plugin.GeometryDataContainer.GenerateX(SimPe.Plugin.Gmdc.GmdcGroups)">
+            <summary>
+            Creates a .x File for all Models stored in the GMDC
+            </summary>
+            <param name="models">List of all P3Models you want to export</param>
+            <returns>The content of the x File</returns>
+        </member>
+        <member name="M:SimPe.Plugin.GeometryDataContainer.RemoveGroup(System.Int32)">
+            <summary>
+            Remove the Group with the given Index from the File
+            </summary>
+            <param name="index">The index of the Element</param>
+        </member>
+        <member name="M:SimPe.Plugin.GeometryDataContainer.RemoveLink(System.Int32)">
+            <summary>
+            Remove the Link with the given Index from the File
+            </summary>
+            <param name="index">The index of the Element</param>
+            <returns>true if the link was removed</returns>
+            <remarks>
+            A Link will not be removed, if it is still referenced 
+            in one or more Groups!
+            </remarks>
+        </member>
+        <member name="M:SimPe.Plugin.GeometryDataContainer.RemoveElement(System.Int32)">
+            <summary>
+            Remove the Element with the given Index from the File
+            </summary>
+            <param name="index">The index of the Element</param>
+            <returns>true if the element was removed</returns>
+            <remarks>
+            A Element will not be removed, if it is still referenced 
+            in one or more Links!
+            </remarks>
+        </member>
+        <member name="P:SimPe.Plugin.GeometryDataContainer.TotalFaceCount">
+            <summary>
+            Returns the total Face Count for this Mesh
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.GeometryDataContainer.TotalUsedVertices">
+            <summary>
+            Returns the number of used Vertices in this Mshe
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.GeometryDataContainer.TotalReferencedVertices">
+            <summary>
+            Returns the number of referenced Vertices in this Mesh
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.GeometryDataContainer.CleanupBones">
+            <summary>
+            Call this Method to remove all unreferenced Joints
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.GeometryDataContainer.RemoveBone(System.Int32)">
+            <summary>
+            Removes a Bone from this File
+            </summary>
+            <remarks>Vertices referencing this Bone will be unassigned! </remarks>
+            <param name="index"></param>
+        </member>
+        <member name="M:SimPe.Plugin.GeometryDataContainer.FindGroupByName(System.String)">
+            <summary>
+            Returns the Index of the Group in <see cref="P:SimPe.Plugin.GeometryDataContainer.Groups"/>.
+            </summary>
+            <param name="name">The name of the Group</param>
+            <returns>-1 if the Grou is not foudn or the Index in <see cref="P:SimPe.Plugin.GeometryDataContainer.Groups"/></returns>
+        </member>
+        <member name="M:SimPe.Plugin.GeometryDataContainer.FindJointByName(System.String)">
+            <summary>
+            Returns the Index of the Joint in <see cref="P:SimPe.Plugin.GeometryDataContainer.Joints"/>.
+            </summary>
+            <param name="name">The name of the Joint</param>
+            <returns>-1 if the Joint is not found or the Index in <see cref="P:SimPe.Plugin.GeometryDataContainer.Joints"/></returns>
+        </member>
+        <member name="P:SimPe.Plugin.GeometryDataContainer.ParentResourceNode">
+            <summary>
+            Get the attached ResourceNode
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.GeometryDataContainer.FindReferencingCRES">
+            <summary>
+            Returns the RCOL which lists this Resource in it's ReferencedFiles Attribute
+            </summary>
+            <returns>null or the RCOl Ressource</returns>
+        </member>
+        <member name="M:SimPe.Plugin.GeometryDataContainer.FindReferencingCRES_Int">
+            <summary>
+            Returns the RCOL which lists this Resource in it's ReferencedFiles Attribute
+            </summary>
+            <returns>null or the RCOl Ressource</returns>
+        </member>
+        <member name="M:SimPe.Plugin.GeometryDataContainer.LoadJointRelationRec(System.Collections.Hashtable,System.Int32,SimPe.Interfaces.Scenegraph.ICresChildren)">
+            <summary>
+            Build the Parent Map
+            </summary>
+            <param name="parentmap">Hasttable that will contain the Child (key) -> Parent (value) Relation</param>
+            <param name="parent">the current Parent id (-1=none)</param>
+            <param name="c">the current Block we process</param>
+        </member>
+        <member name="M:SimPe.Plugin.GeometryDataContainer.LoadJointRelationMap">
+            <summary>
+            Creates a Map, that contains a mapping from each Joint to it's parent
+            </summary>
+            <returns>The JointRelation Map</returns>
+            <remarks>key=ChildJoint ID, value=ParentJoint ID (-1=top Level Joint)</remarks>
+        </member>
+        <member name="M:SimPe.Plugin.GeometryDataContainer.SortJointsRec(System.Int32,System.Collections.Hashtable,SimPe.IntArrayList)">
+            <summary>
+            Recusrivley add all SubJoints
+            </summary>
+            <param name="start"></param>
+            <param name="relmap"></param>
+            <param name="l"></param>
+        </member>
+        <member name="M:SimPe.Plugin.GeometryDataContainer.SortJoints(SimPe.Plugin.Gmdc.GmdcJoints,System.Collections.Hashtable)">
+            <summary>
+            Sort the passed list of Joints so that parent joints allways come first
+            </summary>
+            <param name="joints"><see cref="P:SimPe.Plugin.GeometryDataContainer.Joints"/></param>
+            <param name="relmap"><see cref="M:SimPe.Plugin.GeometryDataContainer.LoadJointRelationMap"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.GeometryDataContainer.SortJoints">
+            <summary>
+            Sort the passed list of Joints so that parent joints allways come first
+            </summary>		
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.GeometryDataContainer.SortJoints(System.Collections.Hashtable)">
+            <summary>
+            Sort the passed list of Joints so that parent joints allways come first
+            </summary>		
+            <param name="relmap"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SimPe.Plugin.GeometryDataContainerExt">
+            <summary>
+            This class contains the Geometric Data of an Object
+            </summary>
+        </member>
+        <member name="P:SimPe.Plugin.GeometryDataContainerExt.UserTxtrMap">
+            <summary>
+            Used as a User Override for the automatically created List of TXMTs, which is used for 
+            the Objects Textures
+            </summary>
+            <remarks>Keyas are the SubSet Names, the Values are <see cref="T:SimPe.Plugin.GenericRcol"/> Instances, 
+            that hold the TXMT for that Subset</remarks>
+        </member>
+        <member name="P:SimPe.Plugin.GeometryDataContainerExt.UserTxmtMap">
+            <summary>
+            Used as a User Override for the automatically created List of TXTRs, which is used for 
+            the Objects Textures
+            </summary>
+            <remarks>Keyas are the SubSet Names, the Values are <see cref="T:SimPe.Plugin.GenericRcol"/> Instances, 
+            that hold the TXTR for that Subset</remarks>
+        </member>
+        <member name="T:SimPe.Plugin.fGeometryDataContainer">
+            <summary>
+            Zusammenfassung für fGeometryDataContainer.
+            </summary>
+        </member>
+        <member name="F:SimPe.Plugin.fGeometryDataContainer.components">
+            <summary>
+            Erforderliche Designervariable.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.fGeometryDataContainer.Dispose(System.Boolean)">
+            <summary>
+            Die verwendeten Ressourcen bereinigen.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.fGeometryDataContainer.InitializeComponent">
+            <summary>
+            Erforderliche Methode für die Designerunterstützung. 
+            Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+            </summary>
+        </member>
+        <member name="M:SimPe.Plugin.fGeometryDataContainer.GetModels">
+            <summary>
+            Get all Selected Models
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SimPe.Plugin.fGeometryDataContainer.GetModelsExt">
+            <summary>
+            Get all Selected Models
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:System.Windows.Forms.ListViewEx">
+            <summary>
+            Zusammenfassung für ListViewEx.
+            </summary>
+            <remarks>From http://www.codeproject.com/cs/miscctrl/ListViewEmbeddedControls.asp with small changes</remarks>
+        </member>
+        <member name="T:System.Windows.Forms.ListViewEx.EmbeddedControl">
+            <summary>
+            Structure to hold an embedded control's info
+            </summary>
+        </member>
+        <member name="M:System.Windows.Forms.ListViewEx.GetColumnOrder">
+            <summary>
+            Retrieve the order in which columns appear
+            </summary>
+            <returns>Current display order of column indices</returns>
+        </member>
+        <member name="M:System.Windows.Forms.ListViewEx.GetSubItemBounds(System.Windows.Forms.ListViewItem,System.Int32)">
+            <summary>
+            Retrieve the bounds of a ListViewSubItem
+            </summary>
+            <param name="Item">The Item containing the SubItem</param>
+            <param name="SubItem">Index of the SubItem</param>
+            <returns>Subitem's bounds</returns>
+        </member>
+        <member name="M:System.Windows.Forms.ListViewEx.AddEmbeddedControl(System.Windows.Forms.Control,System.Int32,System.Int32)">
+            <summary>
+            Add a control to the ListView
+            </summary>
+            <param name="c">Control to be added</param>
+            <param name="col">Index of column</param>
+            <param name="row">Index of row</param>
+        </member>
+        <member name="M:System.Windows.Forms.ListViewEx.AddEmbeddedControl(System.Windows.Forms.Control,System.Int32,System.Int32,System.Windows.Forms.DockStyle)">
+            <summary>
+            Add a control to the ListView
+            </summary>
+            <param name="c">Control to be added</param>
+            <param name="col">Index of column</param>
+            <param name="row">Index of row</param>
+            <param name="dock">Location and resize behavior of embedded control</param>
+        </member>
+        <member name="M:System.Windows.Forms.ListViewEx.RemoveEmbeddedControl(System.Windows.Forms.Control)">
+            <summary>
+            Remove a control from the ListView
+            </summary>
+            <param name="c">Control to be removed</param>
+        </member>
+        <member name="M:System.Windows.Forms.ListViewEx.GetEmbeddedControl(System.Int32,System.Int32)">
+            <summary>
+            Retrieve the control embedded at a given location
+            </summary>
+            <param name="col">Index of Column</param>
+            <param name="row">Index of Row</param>
+            <returns>Control found at given location or null if none assigned.</returns>
+        </member>
+    </members>
+</doc>

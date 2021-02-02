@@ -29,7 +29,7 @@ using SimPe.Interfaces.Files;
 namespace SimPe.PackedFiles.UserInterface
 {
 	/// <summary>
-	/// Zusammenfassung für Generic.
+	/// Zusammenfassung fÃ¼r Generic.
 	/// </summary>
 	public class GenericTree : Generic
 	{

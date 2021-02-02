@@ -371,7 +371,7 @@ namespace SimPe.Plugin
 				}
 			
 				//
-				int[] Alpha = new int[16]; // FH: für Alpha reicht hier [4 * 4] !!!!
+				int[] Alpha = new int[16]; // FH: fÃ¼r Alpha reicht hier [4 * 4] !!!!
 				for (int y = 0; y < bm.Height; y += 4) // DXT encodes 4x4 blocks of pixel
 				{
 					for (int x = 0; x < bm.Width; x += 4)
@@ -579,7 +579,7 @@ namespace SimPe.Plugin
 		}
 
 		/// <summary>
-		/// Calculates the §D Distance of two Colors
+		/// Calculates the Â§D Distance of two Colors
 		/// </summary>
 		/// <param name="table">First Color</param>
 		/// <param name="test">Second Color</param>

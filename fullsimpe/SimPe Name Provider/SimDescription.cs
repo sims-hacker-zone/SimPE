@@ -27,7 +27,7 @@ using System.Xml;
 namespace SimPe.Providers
 {
 	/// <summary>
-	/// Zusammenfassung für SimDescription.
+	/// Zusammenfassung fÃ¼r SimDescription.
 	/// </summary>
 	public class SimDescriptions : SimCommonPackage, ISimDescriptions	 
 	{

@@ -26,7 +26,7 @@ using System.Windows.Forms;
 namespace SimPe.Plugin.Tool.Dockable
 {
 	/// <summary>
-	/// Zusammenfassung für ObjectWorkshopDock.
+	/// Zusammenfassung fÃ¼r ObjectWorkshopDock.
 	/// </summary>
 	public class ObjectWorkshopDock : System.Windows.Forms.Form
 	{
@@ -82,7 +82,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		public ObjectWorkshopDock()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Erforderlich fÃ¼r die Windows Form-DesignerunterstÃ¼tzung
 			//
 			InitializeComponent();
 
@@ -117,8 +117,8 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		#region Vom Windows Form-Designer generierter Code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

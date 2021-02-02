@@ -34,7 +34,7 @@ using SimPe.PackedFiles.Wrapper;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für ExtNgbhUI.
+	/// Zusammenfassung fÃ¼r ExtNgbhUI.
 	/// </summary>
 	public class BnfoUI : 
 		//System.Windows.Forms.UserControl
@@ -61,7 +61,7 @@ namespace SimPe.Plugin
 
 		public BnfoUI()
 		{			
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Dieser Aufruf ist fÃ¼r den Windows Form-Designer erforderlich.
 			InitializeComponent();
 
             toolBar1.Renderer = new SimPe.MediaPlayerRenderer();			
@@ -88,8 +88,8 @@ namespace SimPe.Plugin
 
 		#region Vom Komponenten-Designer generierter Code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{

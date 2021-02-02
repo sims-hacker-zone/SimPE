@@ -24,7 +24,7 @@ using SimPe.Events;
 namespace SimPe.Plugin.Tool
 {
 	/// <summary>
-	/// Zusammenfassung für SaveSims2PackTool.
+	/// Zusammenfassung fÃ¼r SaveSims2PackTool.
 	/// </summary>
 	public class SaveSims2PackTool : SimPe.Interfaces.IToolPlus	
 	{

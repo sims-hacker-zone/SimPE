@@ -26,7 +26,7 @@ namespace SimPe.Plugin
 {	
 
 	/// <summary>
-	/// Zusammenfassung für cBoundingVolumeBuilder.
+	/// Zusammenfassung fÃ¼r cBoundingVolumeBuilder.
 	/// </summary>
 	public class BoundingVolumeBuilder
 		: AbstractRcolBlock

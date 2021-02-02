@@ -22,7 +22,7 @@ using System;
 namespace SimPe.Interfaces
 {
 	/// <summary>
-	/// Zusammenfassung für ISettingsRegistry.
+	/// Zusammenfassung fÃ¼r ISettingsRegistry.
 	/// </summary>
 	public interface ISettingsRegistry
 	{		

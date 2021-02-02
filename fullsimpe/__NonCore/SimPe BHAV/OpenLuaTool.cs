@@ -30,7 +30,7 @@ namespace SimPe.Plugin
 		public OpenLuaTool()
 		{
 			//
-			// TODO: Fügen Sie hier die Konstruktorlogik hinzu
+			// TODO: FÃ¼gen Sie hier die Konstruktorlogik hinzu
 			//
 		}
 		#region ITool Member

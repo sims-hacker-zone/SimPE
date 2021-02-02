@@ -22,7 +22,7 @@ using System;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für PackedFileItem.
+	/// Zusammenfassung fÃ¼r PackedFileItem.
 	/// </summary>
 	public class NmapItem : SimPe.Packages.PackedFileDescriptor
 	{

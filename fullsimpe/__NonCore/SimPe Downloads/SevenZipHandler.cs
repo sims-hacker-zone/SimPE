@@ -4,7 +4,7 @@ using System.Collections;
 namespace SimPe.Plugin.Downloads
 {
 	/// <summary>
-	/// Zusammenfassung für SevenZipHandler.
+	/// Zusammenfassung fÃ¼r SevenZipHandler.
 	/// </summary>
 	public class SevenZipHandler : ArchiveHandler
 	{		

@@ -31,7 +31,7 @@ using Ambertation.Threading;
 namespace SimPe.Providers
 {
 	/// <summary>
-	/// Zusammenfassung für LotProvider.
+	/// Zusammenfassung fÃ¼r LotProvider.
 	/// </summary>
 	public class LotProvider : StoppableThread, SimPe.Interfaces.Providers.ILotProvider
 	{

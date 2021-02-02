@@ -24,7 +24,7 @@ using SimPe.Interfaces.Files;
 namespace SimPe.Providers
 {
 	/// <summary>
-	/// Zusammenfassung für SimCommonPackage.
+	/// Zusammenfassung fÃ¼r SimCommonPackage.
 	/// </summary>
 	public abstract class SimCommonPackage : ICommonPackage
 	{

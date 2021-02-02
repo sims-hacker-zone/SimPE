@@ -67,7 +67,7 @@ namespace Ambertation
 			html = html.Replace("</i>", @"\i0 ").Replace("</em>", @"\i0 ");
 			
 
-			html = html.Replace("&nbsp;", " ").Replace("&auml;", "ä").Replace("&ouml;", "ö").Replace("&uuml;", "ü").Replace("&Auml;", "Ä").Replace("&Ouml;", "Ö").Replace("&Uuml;", "Ü").Replace("&szlig;", "ß").Replace("&quot;", "\"").Replace("&amp;", "&");
+			html = html.Replace("&nbsp;", " ").Replace("&auml;", "Ã¤").Replace("&ouml;", "Ã¶").Replace("&uuml;", "Ã¼").Replace("&Auml;", "Ã„").Replace("&Ouml;", "Ã–").Replace("&Uuml;", "Ãœ").Replace("&szlig;", "ÃŸ").Replace("&quot;", "\"").Replace("&amp;", "&");
 			html = html.Replace("&lt;", "<").Replace("&gt;", ">");
 			
 

@@ -613,7 +613,7 @@ namespace SimPe.Data
             Virgo = 0x06,		 //de: Jungfrau
             Libra = 0x07,		 //de: Waage
             Scorpio = 0x08,
-            Sagittarius = 0x09,  //de: Schütze
+            Sagittarius = 0x09,  //de: SchÃ¼tze
             Capricorn = 0x0A,	 //de: Steinbock
             Aquarius = 0x0B,
             Pisces = 0x0C		 //de: Fische
