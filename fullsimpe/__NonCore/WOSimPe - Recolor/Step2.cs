@@ -3,7 +3,7 @@ using System;
 namespace SimPe.Wizards
 {
 	/// <summary>
-	/// Zusammenfassung fÃ¼r Step1.
+	/// Zusammenfassung für Step1.
 	/// </summary>
 	public class Step2 : AWizardForm
 	{
@@ -34,7 +34,7 @@ namespace SimPe.Wizards
 		{
 			get
 			{
-				return "Recolor the loaded texture Files";
+				return "Recolour the loaded texture Files";
 			}
 		}
 

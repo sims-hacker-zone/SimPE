@@ -1,0 +1,1611 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pnWiz0x0033.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pnWiz0x0033.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="tlpnGetSetValue.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tlpnGetSetValue.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="tlpnGetSetValue.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="ckbDecimal.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ckbDecimal.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="ckbDecimal.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ckbDecimal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="ckbDecimal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 21</value>
+  </data>
+  <data name="ckbDecimal.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="ckbDecimal.Text" xml:space="preserve">
+    <value>Decimal (except Consts/GUIDs)</value>
+  </data>
+  <data name="&gt;&gt;ckbDecimal.Name" xml:space="preserve">
+    <value>ckbDecimal</value>
+  </data>
+  <data name="&gt;&gt;ckbDecimal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ckbDecimal.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;ckbDecimal.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ckbAttrPicker.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ckbAttrPicker.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="ckbAttrPicker.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ckbAttrPicker.Location" type="System.Drawing.Point, System.Drawing">
+    <value>233, 3</value>
+  </data>
+  <data name="ckbAttrPicker.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 21</value>
+  </data>
+  <data name="ckbAttrPicker.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="ckbAttrPicker.Text" xml:space="preserve">
+    <value>use Attribute picker</value>
+  </data>
+  <data name="&gt;&gt;ckbAttrPicker.Name" xml:space="preserve">
+    <value>ckbAttrPicker</value>
+  </data>
+  <data name="&gt;&gt;ckbAttrPicker.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ckbAttrPicker.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;ckbAttrPicker.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>199, 317</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>385, 27</value>
+  </data>
+  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+    <value>tlpnGetSetValue</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lbOperation.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="lbOperation.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbOperation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbOperation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 3</value>
+  </data>
+  <data name="lbOperation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="lbOperation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 17</value>
+  </data>
+  <data name="lbOperation.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbOperation.Text" xml:space="preserve">
+    <value>Operation</value>
+  </data>
+  <data name="&gt;&gt;lbOperation.Name" xml:space="preserve">
+    <value>lbOperation</value>
+  </data>
+  <data name="&gt;&gt;lbOperation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbOperation.Parent" xml:space="preserve">
+    <value>tlpnGetSetValue</value>
+  </data>
+  <data name="&gt;&gt;lbOperation.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flpnOperation.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flpnOperation.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="cbOperation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="cbOperation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="cbOperation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>405, 24</value>
+  </data>
+  <data name="cbOperation.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cbOperation.Name" xml:space="preserve">
+    <value>cbOperation</value>
+  </data>
+  <data name="&gt;&gt;cbOperation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbOperation.Parent" xml:space="preserve">
+    <value>flpnOperation</value>
+  </data>
+  <data name="&gt;&gt;cbOperation.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ckbReversed.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ckbReversed.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ckbReversed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>437, 3</value>
+  </data>
+  <data name="ckbReversed.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>32, 3, 3, 3</value>
+  </data>
+  <data name="ckbReversed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 21</value>
+  </data>
+  <data name="ckbReversed.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="ckbReversed.Text" xml:space="preserve">
+    <value>Reversed</value>
+  </data>
+  <data name="&gt;&gt;ckbReversed.Name" xml:space="preserve">
+    <value>ckbReversed</value>
+  </data>
+  <data name="&gt;&gt;ckbReversed.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ckbReversed.Parent" xml:space="preserve">
+    <value>flpnOperation</value>
+  </data>
+  <data name="&gt;&gt;ckbReversed.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flpnOperation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 0</value>
+  </data>
+  <data name="flpnOperation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flpnOperation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>528, 27</value>
+  </data>
+  <data name="flpnOperation.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;flpnOperation.Name" xml:space="preserve">
+    <value>flpnOperation</value>
+  </data>
+  <data name="&gt;&gt;flpnOperation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flpnOperation.Parent" xml:space="preserve">
+    <value>tlpnGetSetValue</value>
+  </data>
+  <data name="&gt;&gt;flpnOperation.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="gbTokenTypes.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="gbTokenTypes.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="tableLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="ckbTTAll.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="ckbTTAll.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ckbTTAll.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ckbTTAll.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ckbTTAll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 87</value>
+  </data>
+  <data name="ckbTTAll.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 6, 3, 3</value>
+  </data>
+  <data name="ckbTTAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 21</value>
+  </data>
+  <data name="ckbTTAll.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="ckbTTAll.Text" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="&gt;&gt;ckbTTAll.Name" xml:space="preserve">
+    <value>ckbTTAll</value>
+  </data>
+  <data name="&gt;&gt;ckbTTAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ckbTTAll.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;ckbTTAll.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ckbTTInvShopping.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ckbTTInvShopping.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ckbTTInvShopping.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 57</value>
+  </data>
+  <data name="ckbTTInvShopping.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 21</value>
+  </data>
+  <data name="ckbTTInvShopping.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="ckbTTInvShopping.Text" xml:space="preserve">
+    <value>Exclude</value>
+  </data>
+  <data name="&gt;&gt;ckbTTInvShopping.Name" xml:space="preserve">
+    <value>ckbTTInvShopping</value>
+  </data>
+  <data name="&gt;&gt;ckbTTInvShopping.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ckbTTInvShopping.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;ckbTTInvShopping.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ckbTTShopping.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="ckbTTShopping.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ckbTTShopping.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="ckbTTShopping.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ckbTTShopping.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 57</value>
+  </data>
+  <data name="ckbTTShopping.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 21</value>
+  </data>
+  <data name="ckbTTShopping.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="ckbTTShopping.Text" xml:space="preserve">
+    <value>Shopping</value>
+  </data>
+  <data name="&gt;&gt;ckbTTShopping.Name" xml:space="preserve">
+    <value>ckbTTShopping</value>
+  </data>
+  <data name="&gt;&gt;ckbTTShopping.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ckbTTShopping.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;ckbTTShopping.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ckbTTInvMemory.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ckbTTInvMemory.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ckbTTInvMemory.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 30</value>
+  </data>
+  <data name="ckbTTInvMemory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 21</value>
+  </data>
+  <data name="ckbTTInvMemory.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="ckbTTInvMemory.Text" xml:space="preserve">
+    <value>Exclude</value>
+  </data>
+  <data name="&gt;&gt;ckbTTInvMemory.Name" xml:space="preserve">
+    <value>ckbTTInvMemory</value>
+  </data>
+  <data name="&gt;&gt;ckbTTInvMemory.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ckbTTInvMemory.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;ckbTTInvMemory.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="ckbTTMemory.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="ckbTTMemory.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ckbTTMemory.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="ckbTTMemory.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ckbTTMemory.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 30</value>
+  </data>
+  <data name="ckbTTMemory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 21</value>
+  </data>
+  <data name="ckbTTMemory.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="ckbTTMemory.Text" xml:space="preserve">
+    <value>Memory</value>
+  </data>
+  <data name="&gt;&gt;ckbTTMemory.Name" xml:space="preserve">
+    <value>ckbTTMemory</value>
+  </data>
+  <data name="&gt;&gt;ckbTTMemory.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ckbTTMemory.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;ckbTTMemory.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="ckbTTInvVisible.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ckbTTInvVisible.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ckbTTInvVisible.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 3</value>
+  </data>
+  <data name="ckbTTInvVisible.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 21</value>
+  </data>
+  <data name="ckbTTInvVisible.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="ckbTTInvVisible.Text" xml:space="preserve">
+    <value>Exclude</value>
+  </data>
+  <data name="&gt;&gt;ckbTTInvVisible.Name" xml:space="preserve">
+    <value>ckbTTInvVisible</value>
+  </data>
+  <data name="&gt;&gt;ckbTTInvVisible.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ckbTTInvVisible.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;ckbTTInvVisible.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="ckbTTVisible.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="ckbTTVisible.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ckbTTVisible.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="ckbTTVisible.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ckbTTVisible.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 3</value>
+  </data>
+  <data name="ckbTTVisible.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 21</value>
+  </data>
+  <data name="ckbTTVisible.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="ckbTTVisible.Text" xml:space="preserve">
+    <value>Visible</value>
+  </data>
+  <data name="&gt;&gt;ckbTTVisible.Name" xml:space="preserve">
+    <value>ckbTTVisible</value>
+  </data>
+  <data name="&gt;&gt;ckbTTVisible.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ckbTTVisible.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;ckbTTVisible.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 21</value>
+  </data>
+  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 111</value>
+  </data>
+  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
+    <value>gbTokenTypes</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="ckbTTAll" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="ckbTTInvShopping" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="ckbTTShopping" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="ckbTTInvMemory" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="ckbTTMemory" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="ckbTTInvVisible" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="ckbTTVisible" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="gbTokenTypes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 158</value>
+  </data>
+  <data name="gbTokenTypes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 6, 3</value>
+  </data>
+  <data name="gbTokenTypes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 153</value>
+  </data>
+  <data name="gbTokenTypes.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="gbTokenTypes.Text" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="&gt;&gt;gbTokenTypes.Name" xml:space="preserve">
+    <value>gbTokenTypes</value>
+  </data>
+  <data name="&gt;&gt;gbTokenTypes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbTokenTypes.Parent" xml:space="preserve">
+    <value>tlpnGetSetValue</value>
+  </data>
+  <data name="&gt;&gt;gbTokenTypes.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="gbInventoryType.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="gbInventoryType.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flpnDoid0.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flpnDoid0.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="lbDoid0.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="lbDoid0.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbDoid0.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbDoid0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="lbDoid0.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="lbDoid0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 17</value>
+  </data>
+  <data name="lbDoid0.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbDoid0.Text" xml:space="preserve">
+    <value>Doid0</value>
+  </data>
+  <data name="&gt;&gt;lbDoid0.Name" xml:space="preserve">
+    <value>lbDoid0</value>
+  </data>
+  <data name="&gt;&gt;lbDoid0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbDoid0.Parent" xml:space="preserve">
+    <value>flpnDoid0</value>
+  </data>
+  <data name="&gt;&gt;lbDoid0.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="pnDoid0.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="pnDoid0.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="cbPicker0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>300, 0</value>
+  </data>
+  <data name="cbPicker0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 24</value>
+  </data>
+  <data name="cbPicker0.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="cbPicker0.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;cbPicker0.Name" xml:space="preserve">
+    <value>cbPicker0</value>
+  </data>
+  <data name="&gt;&gt;cbPicker0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbPicker0.Parent" xml:space="preserve">
+    <value>pnDoid0</value>
+  </data>
+  <data name="&gt;&gt;cbPicker0.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tbVal0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>300, 0</value>
+  </data>
+  <data name="tbVal0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 22</value>
+  </data>
+  <data name="tbVal0.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tbVal0.Name" xml:space="preserve">
+    <value>tbVal0</value>
+  </data>
+  <data name="&gt;&gt;tbVal0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbVal0.Parent" xml:space="preserve">
+    <value>pnDoid0</value>
+  </data>
+  <data name="&gt;&gt;tbVal0.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbDataOwner0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="cbDataOwner0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>302, 24</value>
+  </data>
+  <data name="cbDataOwner0.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cbDataOwner0.Name" xml:space="preserve">
+    <value>cbDataOwner0</value>
+  </data>
+  <data name="&gt;&gt;cbDataOwner0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbDataOwner0.Parent" xml:space="preserve">
+    <value>pnDoid0</value>
+  </data>
+  <data name="&gt;&gt;cbDataOwner0.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="pnDoid0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>51, 0</value>
+  </data>
+  <data name="pnDoid0.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="pnDoid0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>459, 27</value>
+  </data>
+  <data name="pnDoid0.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;pnDoid0.Name" xml:space="preserve">
+    <value>pnDoid0</value>
+  </data>
+  <data name="&gt;&gt;pnDoid0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnDoid0.Parent" xml:space="preserve">
+    <value>flpnDoid0</value>
+  </data>
+  <data name="&gt;&gt;pnDoid0.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flpnDoid0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 48</value>
+  </data>
+  <data name="flpnDoid0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>510, 27</value>
+  </data>
+  <data name="flpnDoid0.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;flpnDoid0.Name" xml:space="preserve">
+    <value>flpnDoid0</value>
+  </data>
+  <data name="&gt;&gt;flpnDoid0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flpnDoid0.Parent" xml:space="preserve">
+    <value>gbInventoryType</value>
+  </data>
+  <data name="&gt;&gt;flpnDoid0.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flpnInventoryType.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flpnInventoryType.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="rb1Counted.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rb1Counted.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="rb1Counted.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="rb1Counted.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 21</value>
+  </data>
+  <data name="rb1Counted.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="rb1Counted.Text" xml:space="preserve">
+    <value>Counted</value>
+  </data>
+  <data name="&gt;&gt;rb1Counted.Name" xml:space="preserve">
+    <value>rb1Counted</value>
+  </data>
+  <data name="&gt;&gt;rb1Counted.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rb1Counted.Parent" xml:space="preserve">
+    <value>flpnInventoryType</value>
+  </data>
+  <data name="&gt;&gt;rb1Counted.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="rb1Singular.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rb1Singular.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="rb1Singular.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 3</value>
+  </data>
+  <data name="rb1Singular.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 21</value>
+  </data>
+  <data name="rb1Singular.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="rb1Singular.Text" xml:space="preserve">
+    <value>Singular</value>
+  </data>
+  <data name="&gt;&gt;rb1Singular.Name" xml:space="preserve">
+    <value>rb1Singular</value>
+  </data>
+  <data name="&gt;&gt;rb1Singular.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rb1Singular.Parent" xml:space="preserve">
+    <value>flpnInventoryType</value>
+  </data>
+  <data name="&gt;&gt;rb1Singular.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbTargetInv.Location" type="System.Drawing.Point, System.Drawing">
+    <value>169, 1</value>
+  </data>
+  <data name="cbTargetInv.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 1, 0, 0</value>
+  </data>
+  <data name="cbTargetInv.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 24</value>
+  </data>
+  <data name="cbTargetInv.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;cbTargetInv.Name" xml:space="preserve">
+    <value>cbTargetInv</value>
+  </data>
+  <data name="&gt;&gt;cbTargetInv.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbTargetInv.Parent" xml:space="preserve">
+    <value>flpnInventoryType</value>
+  </data>
+  <data name="&gt;&gt;cbTargetInv.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="flpnInventoryType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 21</value>
+  </data>
+  <data name="flpnInventoryType.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 18, 3</value>
+  </data>
+  <data name="flpnInventoryType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>338, 27</value>
+  </data>
+  <data name="flpnInventoryType.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;flpnInventoryType.Name" xml:space="preserve">
+    <value>flpnInventoryType</value>
+  </data>
+  <data name="&gt;&gt;flpnInventoryType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flpnInventoryType.Parent" xml:space="preserve">
+    <value>gbInventoryType</value>
+  </data>
+  <data name="&gt;&gt;flpnInventoryType.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="gbInventoryType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 158</value>
+  </data>
+  <data name="gbInventoryType.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 3, 3</value>
+  </data>
+  <data name="gbInventoryType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>522, 96</value>
+  </data>
+  <data name="gbInventoryType.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="gbInventoryType.Text" xml:space="preserve">
+    <value>Target inventory</value>
+  </data>
+  <data name="&gt;&gt;gbInventoryType.Name" xml:space="preserve">
+    <value>gbInventoryType</value>
+  </data>
+  <data name="&gt;&gt;gbInventoryType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbInventoryType.Parent" xml:space="preserve">
+    <value>tlpnGetSetValue</value>
+  </data>
+  <data name="&gt;&gt;gbInventoryType.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lbDoid1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="lbDoid1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbDoid1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbDoid1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>148, 30</value>
+  </data>
+  <data name="lbDoid1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="lbDoid1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 17</value>
+  </data>
+  <data name="lbDoid1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbDoid1.Text" xml:space="preserve">
+    <value>Doid1</value>
+  </data>
+  <data name="&gt;&gt;lbDoid1.Name" xml:space="preserve">
+    <value>lbDoid1</value>
+  </data>
+  <data name="&gt;&gt;lbDoid1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbDoid1.Parent" xml:space="preserve">
+    <value>tlpnGetSetValue</value>
+  </data>
+  <data name="&gt;&gt;lbDoid1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="pnDoid1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="pnDoid1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="cbPicker1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>300, 0</value>
+  </data>
+  <data name="cbPicker1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 24</value>
+  </data>
+  <data name="cbPicker1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="cbPicker1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;cbPicker1.Name" xml:space="preserve">
+    <value>cbPicker1</value>
+  </data>
+  <data name="&gt;&gt;cbPicker1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbPicker1.Parent" xml:space="preserve">
+    <value>pnDoid1</value>
+  </data>
+  <data name="&gt;&gt;cbPicker1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tbVal1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>300, 0</value>
+  </data>
+  <data name="tbVal1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 22</value>
+  </data>
+  <data name="tbVal1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tbVal1.Name" xml:space="preserve">
+    <value>tbVal1</value>
+  </data>
+  <data name="&gt;&gt;tbVal1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbVal1.Parent" xml:space="preserve">
+    <value>pnDoid1</value>
+  </data>
+  <data name="&gt;&gt;tbVal1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbDataOwner1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="cbDataOwner1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>302, 24</value>
+  </data>
+  <data name="cbDataOwner1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cbDataOwner1.Name" xml:space="preserve">
+    <value>cbDataOwner1</value>
+  </data>
+  <data name="&gt;&gt;cbDataOwner1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbDataOwner1.Parent" xml:space="preserve">
+    <value>pnDoid1</value>
+  </data>
+  <data name="&gt;&gt;cbDataOwner1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="pnDoid1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 27</value>
+  </data>
+  <data name="pnDoid1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="pnDoid1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>459, 27</value>
+  </data>
+  <data name="pnDoid1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;pnDoid1.Name" xml:space="preserve">
+    <value>pnDoid1</value>
+  </data>
+  <data name="&gt;&gt;pnDoid1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnDoid1.Parent" xml:space="preserve">
+    <value>tlpnGetSetValue</value>
+  </data>
+  <data name="&gt;&gt;pnDoid1.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="pnDoid3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="pnDoid3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="cbPicker3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>300, 0</value>
+  </data>
+  <data name="cbPicker3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 24</value>
+  </data>
+  <data name="cbPicker3.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="cbPicker3.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;cbPicker3.Name" xml:space="preserve">
+    <value>cbPicker3</value>
+  </data>
+  <data name="&gt;&gt;cbPicker3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbPicker3.Parent" xml:space="preserve">
+    <value>pnDoid3</value>
+  </data>
+  <data name="&gt;&gt;cbPicker3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tbVal3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>300, 0</value>
+  </data>
+  <data name="tbVal3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 22</value>
+  </data>
+  <data name="tbVal3.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tbVal3.Name" xml:space="preserve">
+    <value>tbVal3</value>
+  </data>
+  <data name="&gt;&gt;tbVal3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbVal3.Parent" xml:space="preserve">
+    <value>pnDoid3</value>
+  </data>
+  <data name="&gt;&gt;tbVal3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbDataOwner3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="cbDataOwner3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>302, 24</value>
+  </data>
+  <data name="cbDataOwner3.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cbDataOwner3.Name" xml:space="preserve">
+    <value>cbDataOwner3</value>
+  </data>
+  <data name="&gt;&gt;cbDataOwner3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbDataOwner3.Parent" xml:space="preserve">
+    <value>pnDoid3</value>
+  </data>
+  <data name="&gt;&gt;cbDataOwner3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="pnDoid3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 128</value>
+  </data>
+  <data name="pnDoid3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="pnDoid3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>459, 27</value>
+  </data>
+  <data name="pnDoid3.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;pnDoid3.Name" xml:space="preserve">
+    <value>pnDoid3</value>
+  </data>
+  <data name="&gt;&gt;pnDoid3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnDoid3.Parent" xml:space="preserve">
+    <value>tlpnGetSetValue</value>
+  </data>
+  <data name="&gt;&gt;pnDoid3.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="pnDoid2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="pnDoid2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="cbPicker2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>300, 0</value>
+  </data>
+  <data name="cbPicker2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 24</value>
+  </data>
+  <data name="cbPicker2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="cbPicker2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;cbPicker2.Name" xml:space="preserve">
+    <value>cbPicker2</value>
+  </data>
+  <data name="&gt;&gt;cbPicker2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbPicker2.Parent" xml:space="preserve">
+    <value>pnDoid2</value>
+  </data>
+  <data name="&gt;&gt;cbPicker2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tbVal2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>300, 0</value>
+  </data>
+  <data name="tbVal2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 22</value>
+  </data>
+  <data name="tbVal2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tbVal2.Name" xml:space="preserve">
+    <value>tbVal2</value>
+  </data>
+  <data name="&gt;&gt;tbVal2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbVal2.Parent" xml:space="preserve">
+    <value>pnDoid2</value>
+  </data>
+  <data name="&gt;&gt;tbVal2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbDataOwner2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="cbDataOwner2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>302, 24</value>
+  </data>
+  <data name="cbDataOwner2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cbDataOwner2.Name" xml:space="preserve">
+    <value>cbDataOwner2</value>
+  </data>
+  <data name="&gt;&gt;cbDataOwner2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbDataOwner2.Parent" xml:space="preserve">
+    <value>pnDoid2</value>
+  </data>
+  <data name="&gt;&gt;cbDataOwner2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="pnDoid2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 101</value>
+  </data>
+  <data name="pnDoid2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="pnDoid2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>459, 27</value>
+  </data>
+  <data name="pnDoid2.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;pnDoid2.Name" xml:space="preserve">
+    <value>pnDoid2</value>
+  </data>
+  <data name="&gt;&gt;pnDoid2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnDoid2.Parent" xml:space="preserve">
+    <value>tlpnGetSetValue</value>
+  </data>
+  <data name="&gt;&gt;pnDoid2.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="lbInventory.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="lbInventory.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbInventory.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbInventory.Location" type="System.Drawing.Point, System.Drawing">
+    <value>91, 57</value>
+  </data>
+  <data name="lbInventory.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="lbInventory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 17</value>
+  </data>
+  <data name="lbInventory.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbInventory.Text" xml:space="preserve">
+    <value>From inventory</value>
+  </data>
+  <data name="&gt;&gt;lbInventory.Name" xml:space="preserve">
+    <value>lbInventory</value>
+  </data>
+  <data name="&gt;&gt;lbInventory.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbInventory.Parent" xml:space="preserve">
+    <value>tlpnGetSetValue</value>
+  </data>
+  <data name="&gt;&gt;lbInventory.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="lbDoid3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="lbDoid3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbDoid3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbDoid3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>148, 131</value>
+  </data>
+  <data name="lbDoid3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="lbDoid3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 17</value>
+  </data>
+  <data name="lbDoid3.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbDoid3.Text" xml:space="preserve">
+    <value>Doid3</value>
+  </data>
+  <data name="&gt;&gt;lbDoid3.Name" xml:space="preserve">
+    <value>lbDoid3</value>
+  </data>
+  <data name="&gt;&gt;lbDoid3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbDoid3.Parent" xml:space="preserve">
+    <value>tlpnGetSetValue</value>
+  </data>
+  <data name="&gt;&gt;lbDoid3.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="cbInventory.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 54</value>
+  </data>
+  <data name="cbInventory.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="cbInventory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 24</value>
+  </data>
+  <data name="cbInventory.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;cbInventory.Name" xml:space="preserve">
+    <value>cbInventory</value>
+  </data>
+  <data name="&gt;&gt;cbInventory.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbInventory.Parent" xml:space="preserve">
+    <value>tlpnGetSetValue</value>
+  </data>
+  <data name="&gt;&gt;cbInventory.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="flpnGUID.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flpnGUID.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="tbGUID.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tbGUID.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="tbGUID.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 22</value>
+  </data>
+  <data name="tbGUID.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tbGUID.Text" xml:space="preserve">
+    <value>0xDDDDDDDD</value>
+  </data>
+  <data name="&gt;&gt;tbGUID.Name" xml:space="preserve">
+    <value>tbGUID</value>
+  </data>
+  <data name="&gt;&gt;tbGUID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbGUID.Parent" xml:space="preserve">
+    <value>flpnGUID</value>
+  </data>
+  <data name="&gt;&gt;tbGUID.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tbObjName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 0</value>
+  </data>
+  <data name="tbObjName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="tbObjName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>353, 22</value>
+  </data>
+  <data name="tbObjName.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tbObjName.Name" xml:space="preserve">
+    <value>tbObjName</value>
+  </data>
+  <data name="&gt;&gt;tbObjName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbObjName.Parent" xml:space="preserve">
+    <value>flpnGUID</value>
+  </data>
+  <data name="&gt;&gt;tbObjName.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flpnGUID.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 78</value>
+  </data>
+  <data name="flpnGUID.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flpnGUID.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 22</value>
+  </data>
+  <data name="flpnGUID.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;flpnGUID.Name" xml:space="preserve">
+    <value>flpnGUID</value>
+  </data>
+  <data name="&gt;&gt;flpnGUID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flpnGUID.Parent" xml:space="preserve">
+    <value>tlpnGetSetValue</value>
+  </data>
+  <data name="&gt;&gt;flpnGUID.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="lbDoid2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="lbDoid2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbDoid2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbDoid2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>148, 104</value>
+  </data>
+  <data name="lbDoid2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="lbDoid2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 17</value>
+  </data>
+  <data name="lbDoid2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbDoid2.Text" xml:space="preserve">
+    <value>Doid2</value>
+  </data>
+  <data name="&gt;&gt;lbDoid2.Name" xml:space="preserve">
+    <value>lbDoid2</value>
+  </data>
+  <data name="&gt;&gt;lbDoid2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbDoid2.Parent" xml:space="preserve">
+    <value>tlpnGetSetValue</value>
+  </data>
+  <data name="&gt;&gt;lbDoid2.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="lbGUID.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="lbGUID.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbGUID.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbGUID.Location" type="System.Drawing.Point, System.Drawing">
+    <value>107, 81</value>
+  </data>
+  <data name="lbGUID.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="lbGUID.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 17</value>
+  </data>
+  <data name="lbGUID.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbGUID.Text" xml:space="preserve">
+    <value>Token GUID</value>
+  </data>
+  <data name="&gt;&gt;lbGUID.Name" xml:space="preserve">
+    <value>lbGUID</value>
+  </data>
+  <data name="&gt;&gt;lbGUID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbGUID.Parent" xml:space="preserve">
+    <value>tlpnGetSetValue</value>
+  </data>
+  <data name="&gt;&gt;lbGUID.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="tlpnGetSetValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tlpnGetSetValue.RowCount" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="tlpnGetSetValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>724, 367</value>
+  </data>
+  <data name="tlpnGetSetValue.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tlpnGetSetValue.Name" xml:space="preserve">
+    <value>tlpnGetSetValue</value>
+  </data>
+  <data name="&gt;&gt;tlpnGetSetValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tlpnGetSetValue.Parent" xml:space="preserve">
+    <value>pnWiz0x0033</value>
+  </data>
+  <data name="&gt;&gt;tlpnGetSetValue.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tlpnGetSetValue.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="flowLayoutPanel1" Row="7" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lbOperation" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="flpnOperation" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="gbTokenTypes" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="gbInventoryType" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lbDoid1" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnDoid1" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="pnDoid3" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="pnDoid2" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lbInventory" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lbDoid3" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cbInventory" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="flpnGUID" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lbDoid2" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lbGUID" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="pnWiz0x0033.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="pnWiz0x0033.Size" type="System.Drawing.Size, System.Drawing">
+    <value>727, 370</value>
+  </data>
+  <data name="pnWiz0x0033.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;pnWiz0x0033.Name" xml:space="preserve">
+    <value>pnWiz0x0033</value>
+  </data>
+  <data name="&gt;&gt;pnWiz0x0033.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnWiz0x0033.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnWiz0x0033.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>8, 16</value>
+  </data>
+  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>762, 417</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>UI</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>UI</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

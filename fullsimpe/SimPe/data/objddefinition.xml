@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="propertydefinition.xsd">
+	<!-- ****************************************************************************** -->
+	<category name="01. OBJd File">
+		<property type="short">
+			<name>version_1 - Read Only</name>
+			<help>version_1 - Read Only</help>
+			<default>0</default>
+			<index>0</index>
+		</property>
+		<property type="short">
+			<name>version_2 - Read Only</name>
+			<help>version_2 - Read Only</help>
+			<default>0</default>
+			<readonly/>
+			<index>1</index>
+		</property>
+	</category>
+	<!-- ****************************************************************************** -->
+	<category name="02. Catalogue Price">
+		<property type="short">
+			<name>daily depreciation</name>
+			<help>daily depreciation</help>
+			<default>0</default>
+			<index>36</index>
+		</property>
+		<property type="short">
+			<name>self depreciating</name>
+			<help>self depreciating</help>
+			<default>0</default>
+			<index>37</index>
+		</property>
+		<property type="short">
+			<name>depreciation limit</name>
+			<help>depreciation limit</help>
+			<default>0</default>
+			<index>38</index>
+		</property>
+		<property type="short">
+			<name>price</name>
+			<help>price</help>
+			<default>0</default>
+			<index>18</index>
+		</property>
+		<property type="short">
+			<name>initial depreciation</name>
+			<help>initial depreciation</help>
+			<default>0</default>
+			<index>35</index>
+		</property>
+	</category>
+	<!-- ****************************************************************************** -->
+	<category name="03. Catalogue Sorting">
+		<property type="short">
+			<name>build mode type</name>
+			<help>build mode type</help>
+			<default>0</default>
+			<index>69</index>
+		</property>
+		<property type="class:SimPe.PackedFiles.Wrapper.ObjCatalogueUse">
+			<name>Catalogue Use Flags</name>
+			<help>Catalogue Use Flags</help>
+			<default>0</default>
+			<index>17</index>
+		</property>
+		<property type="short">
+			<name>Downtown Sort</name>
+			<help>Downtown Sort</help>
+			<default>0</default>
+			<index>95</index>
+		</property>
+		<property type="short">
+			<name>Function Sub-Sort</name>
+			<help>Function Sub-Sort</help>
+			<default>0</default>
+			<index>94</index>
+		</property>
+		<property type="short">
+			<name>Community Sort</name>
+			<help>Community Sort</help>
+			<default>0</default>
+			<index>100</index>
+		</property>
+		<property type="short">
+			<name>build Mode Subsort</name>
+			<help>build Mode Subsort</help>
+			<default>0</default>
+			<index>74</index>
+		</property>
+		<property type="class:SimPe.PackedFiles.Wrapper.ObjRoomSort">
+			<name>room sort flags</name>
+			<help>room sort flags</help>
+			<default>0</default>
+			<index>39</index>
+		</property>
+		<property type="class:SimPe.PackedFiles.Wrapper.ObjFunctionSort">
+			<name>function sort flags</name>
+			<help>function sort flags</help>
+			<default>0</default>
+			<index>40</index>
+		</property>
+		<property type="short">
+			<name>Holiday Sort</name>
+			<help>Holiday Sort</help>
+			<default>0</default>
+			<index>97</index>
+		</property>
+		<property type="class:SimPe.PackedFiles.Wrapper.Epsreq1">
+			<name>Valid EP Flags 1</name>
+			<help>Valid EP Flags 1</help>
+			<default>0</default>
+			<index>64</index>
+		</property>
+		<property type="class:SimPe.PackedFiles.Wrapper.Epsreq2">
+			<name>Valid EP Flags 2</name>
+			<help>Valid EP Flags 2</help>
+			<default>0</default>
+			<index>65</index>
+		</property>
+	</category>
+	<!-- ****************************************************************************** -->
+	<category name="04. Catalogue Ratings">
+		<property type="short">
+			<name>ratingRoom</name>
+			<help>ratingRoom</help>
+			<default>0</default>
+			<index>88</index>
+		</property>
+		<property type="short">
+			<name>ratingHygiene</name>
+			<help>ratingHygiene</help>
+			<default>0</default>
+			<index>84</index>
+		</property>
+		<property type="short">
+			<name>ratingComfort</name>
+			<help>ratingComfort</help>
+			<default>0</default>
+			<index>83</index>
+		</property>
+		<property type="short">
+			<name>ratingBladder</name>
+			<help>ratingBladder</help>
+			<default>0</default>
+			<index>85</index>
+		</property>
+		<property type="short">
+			<name>ratingSkillFlags</name>
+			<help>ratingSkillFlags</help>
+			<default>0</default>
+			<index>89</index>
+		</property>
+		<property type="short">
+			<name>ratingHunger</name>
+			<help>ratingHunger</help>
+			<default>0</default>
+			<index>82</index>
+		</property>
+		<property type="short">
+			<name>ratingEnergy</name>
+			<help>ratingEnergy</help>
+			<default>0</default>
+			<index>86</index>
+		</property>
+		<property type="short">
+			<name>ratingFun</name>
+			<help>ratingFun</help>
+			<default>0</default>
+			<index>87</index>
+		</property>
+		<property type="short">
+			<name>ratingScratch</name>
+			<help>ratingScratch</help>
+			<default>0</default>
+			<index>103</index>
+		</property>
+		<property type="short">
+			<name>ratingChew</name>
+			<help>ratingChew</help>
+			<default>0</default>
+			<index>104</index>
+		</property>
+	</category>
+	<!-- ****************************************************************************** -->
+	<category name="05. User placement">
+		<property type="bool">
+			<name>Keep Buying</name>
+			<help>Keep Buying</help>
+			<default>0</default>
+			<index>96</index>
+		</property>
+		<property type="short">
+			<name>No Duplicate On Placement</name>
+			<help>No Duplicate On Placement</help>
+			<default>0</default>
+			<index>46</index>
+		</property>
+		<property type="short">
+			<name>Use Default Placement flags</name>
+			<help>Use Default Placement flags</help>
+			<default>0</default>
+			<index>12</index>
+		</property>
+		<property type="short">
+			<name>Default Placement Flags</name>
+			<help>Default Placement Flags</help>
+			<default>0</default>
+			<index>4</index>
+		</property>
+		<property type="short">
+			<name>Default Wall Placement Flags</name>
+			<help>Default Wall Placement Flags</help>
+			<default>0</default>
+			<index>5</index>
+		</property>
+		<property type="short">
+			<name>Default Wall Adjacent Flags</name>
+			<help>Default Wall Adjacent Flags</help>
+			<default>0</default>
+			<index>3</index>
+		</property>
+		<property type="short">
+			<name>Default Allowed Height Flags</name>
+			<help>Default Allowed Height Flags</help>
+			<default>0</default>
+			<index>6</index>
+		</property>
+		<property type="short">
+			<name>Ignore Quarter Tile Placement</name>
+			<help>Ignore Quarter Tile Placement</help>
+			<default>0</default>
+			<index>34</index>
+		</property>
+	</category>
+	<!-- ****************************************************************************** -->
+	<category name="06. Mesh &amp; Graphics">
+		<property type="short">
+			<name>Multi-Tile lead object</name>
+			<help>Multi-Tile lead object</help>
+			<default>0</default>
+			<index>63</index>
+		</property>
+		<property type="short">
+			<name>tile width</name>
+			<help>tile width</help>
+			<default>0</default>
+			<index>67</index>
+		</property>
+		<property type="short">
+			<name>chair entry flags</name>
+			<help>chair entry flags</help>
+			<default>0</default>
+			<index>66</index>
+		</property>
+		<property type="short">
+			<name>Multi-Tile sub index</name>
+			<help>Multi-Tile sub index</help>
+			<default>0</default>
+			<index>11</index>
+		</property>
+		<property type="short">
+			<name>Multi-Tile master id</name>
+			<help>Multi-Tile master id</help>
+			<default>0</default>
+			<index>10</index>
+		</property>
+		<property type="short">
+			<name>front direction</name>
+			<help>front direction</help>
+			<default>0</default>
+			<index>61</index>
+		</property>
+		<property type="short">
+			<name>level offset</name>
+			<help>level offset</help>
+			<default>0</default>
+			<index>56</index>
+		</property>
+		<property type="short">
+			<name>3D Object Type</name>
+			<help>3D Object Type</help>
+			<default>0</default>
+			<index>99</index>
+		</property>
+		<property type="short">
+			<name>shadow type</name>
+			<help>shadow type</help>
+			<default>0</default>
+			<index>57</index>
+		</property>
+		<property type="short">
+			<name>Object size (quantity per shelf or slot)</name>
+			<help>0=large 1=medium 2=small</help>
+			<default>0</default>
+			<index>79</index>
+		</property>
+		<property type="short">
+			<name>footprint mask</name>
+			<help>footprint mask</help>
+			<default>0</default>
+			<index>77</index>
+		</property>
+		<property type="short">
+			<name>extend footprint</name>
+			<help>extend footprint</help>
+			<default>0</default>
+			<index>78</index>
+		</property>
+	</category>
+	<!-- ****************************************************************************** -->
+	<category name="07. Resource cross-refs">
+		<property type="short">
+			<name>slot group</name>
+			<help>slot group</help>
+			<default>0</default>
+			<index>31</index>
+		</property>
+		<property type="short">
+			<name>interaction group</name>
+			<help>interaction group</help>
+			<default>0</default>
+			<index>8</index>
+		</property>
+		<property type="short">
+			<name>Catalogue strings id</name>
+			<help>Catalogue strings id</help>
+			<default>0</default>
+			<index>41</index>
+		</property>
+		<property type="short">
+			<name>Default Thumbnail ID</name>
+			<help>Default Thumbnail ID</help>
+			<default>0</default>
+			<index>50</index>
+		</property>
+		<property type="short">
+			<name>motive effects id</name>
+			<help>motive effects id</help>
+			<default>0</default>
+			<index>51</index>
+		</property>
+		<property type="short">
+			<name>body strings id</name>
+			<help>body strings id</help>
+			<default>0</default>
+			<index>19</index>
+		</property>
+		<property type="short">
+			<name>Catalogue popup id</name>
+			<help>Catalogue popup id</help>
+			<default>0</default>
+			<index>54</index>
+		</property>
+		<property type="short">
+			<name>slots id</name>
+			<help>slots id</help>
+			<default>0</default>
+			<index>20</index>
+		</property>
+		<property type="short">
+			<name>Interaction Table ID</name>
+			<help>Interaction Table ID</help>
+			<default>0</default>
+			<index>7</index>
+		</property>
+		<property type="short">
+			<name>Was: object model guid 1 - Read Only</name>
+			<help>Was: object model guid 1 - Read Only</help>
+			<default>0</default>
+			<index>72</index>
+		</property>
+	</category>
+	<!-- ****************************************************************************** -->
+	<category name="08. GUIDs">
+		<property type="short">
+			<name>guid_1 - Read Only</name>
+			<help>guid_1 - Read Only</help>
+			<default>0</default>
+			<readonly/>
+			<index>14</index>
+		</property>
+		<property type="short">
+			<name>diagonal selector guid 2 - Read Only</name>
+			<help>diagonal selector guid 2 - Read Only</help>
+			<default>0</default>
+			<readonly/>
+			<index>22</index>
+		</property>
+		<property type="short">
+			<name>grid-aligned selector guid 2 - Read Only</name>
+			<help>grid-aligned selector guid 2 - Read Only</help>
+			<default>0</default>
+			<readonly/>
+			<index>24</index>
+		</property>
+		<property type="short">
+			<name>Proxy GUID 2</name>
+			<help>Proxy GUID 2</help>
+			<default>0</default>
+			<readonly/>
+			<index>30</index>
+		</property>
+		<property type="short">
+			<name>original guid 2 - Read Only</name>
+			<help>original guid 2 - Read Only</help>
+			<default>0</default>
+			<readonly/>
+			<index>71</index>
+		</property>
+		<property type="short">
+			<name>Proxy GUID 1</name>
+			<help>Proxy GUID 1</help>
+			<default>0</default>
+			<readonly/>
+			<index>29</index>
+		</property>
+		<property type="short">
+			<name>Job Object GUID 2</name>
+			<help>Job Object GUID 2</help>
+			<default>0</default>
+			<index>53</index>
+		</property>
+		<property type="short">
+			<name>diagonal selector guid 1 - Read Only</name>
+			<help>diagonal selector guid 1 - Read Only</help>
+			<default>0</default>
+			<readonly/>
+			<index>21</index>
+		</property>
+		<property type="short">
+			<name>grid-aligned selector guid 1 - Read Only</name>
+			<help>grid-aligned selector guid 1 - Read Only</help>
+			<default>0</default>
+			<readonly/>
+			<index>23</index>
+		</property>
+		<property type="short">
+			<name>guid_2 - Read Only</name>
+			<help>guid_2 - Read Only</help>
+			<default>0</default>
+			<readonly/>
+			<index>15</index>
+		</property>
+		<property type="short">
+			<name>original guid 1 - Read Only</name>
+			<help>original guid 1 - Read Only</help>
+			<default>0</default>
+			<readonly/>
+			<index>70</index>
+		</property>
+		<property type="short">
+			<name>Job Object GUID 1</name>
+			<help>Job Object GUID 1</help>
+			<default>0</default>
+			<index>52</index>
+		</property>
+		<property type="short">
+			<name>original guid 1</name>
+			<help>original guid 1</help>
+			<default>0</default>
+		</property>
+	</category>
+	<!-- ****************************************************************************** -->
+	<category name="09. Data Space">
+		<property type="short">
+			<name>number of object arrays</name>
+			<help>number of object arrays</help>
+			<default>0</default>
+			<index>59</index>
+		</property>
+		<property type="short">
+			<name>Num attributes</name>
+			<help>Num attributes</help>
+			<default>0</default>
+			<index>58</index>
+		</property>
+		<property type="short">
+			<name>Num type attributes</name>
+			<help>Num type attributes</help>
+			<default>0</default>
+			<index>90</index>
+		</property>
+		<property type="short">
+			<name>Initial stack size</name>
+			<help>Initial stack size</help>
+			<default>0</default>
+			<index>2</index>
+		</property>
+	</category>
+	<!-- ****************************************************************************** -->
+	<category name="10. Memories &amp; Wants">
+		<property type="short">
+			<name>Memory Nice/Bad</name>
+			<help>Memory Nice/Bad</help>
+			<default>0</default>
+			<index>33</index>
+		</property>
+		<property type="short">
+			<name>Want Category</name>
+			<help>Want Category</help>
+			<default>0</default>
+			<index>47</index>
+		</property>
+		<property type="short">
+			<name>Aspiration Flags</name>
+			<help>Aspiration Flags</help>
+			<default>0</default>
+			<index>32</index>
+		</property>
+	</category>
+	<!-- ****************************************************************************** -->
+	<category name="11. Miscellaneous">
+		<property type="short">
+			<name>Item Is Unlockable</name>
+			<help>Item Is Unlockable</help>
+			<default>0</default>
+			<index>16</index>
+		</property>
+		<property type="short">
+			<name>misc flags</name>
+			<help>misc flags</help>
+			<default>0</default>
+			<index>91</index>
+		</property>
+		<property type="short">
+			<name>Reset Lot Action</name>
+			<help>Reset Lot Action</help>
+			<default>0</default>
+			<index>98</index>
+		</property>
+		<property type="short">
+			<name>is global sim object</name>
+			<help>is global sim object</help>
+			<default>0</default>
+			<index>42</index>
+		</property>
+		<property type="short">
+			<name>Object ownership flags</name>
+			<help>Object ownership flags</help>
+			<default>0</default>
+			<index>25</index>
+		</property>
+		<property type="short">
+			<name>No New Name from Template</name>
+			<help>No New Name from Template</help>
+			<default>0</default>
+			<index>48</index>
+		</property>
+		<property type="short">
+			<name>inhibit suit copying</name>
+			<help>inhibit suit copying</help>
+			<default>0</default>
+			<index>68</index>
+		</property>
+		<property type="short">
+			<name>Ignore Current Model Index In Icons</name>
+			<help>Ignore Current Model Index In Icons</help>
+			<default>0</default>
+			<index>55</index>
+		</property>
+		<property type="short">
+			<name>Ignore GlobalSim field in CAS Lot</name>
+			<help>Ignore GlobalSim field in CAS Lot</help>
+			<default>0</default>
+			<index>26</index>
+		</property>
+		<property type="short">
+			<name>Cannot Move Out With</name>
+			<help>Cannot Move Out With</help>
+			<default>0</default>
+			<index>27</index>
+		</property>
+		<property type="short">
+			<name>Dream Flags</name>
+			<help>Dream Flags</help>
+			<default>0</default>
+			<index>101</index>
+		</property>
+		<property type="short">
+			<name>Selector Category</name>
+			<help>Selector Category</help>
+			<default>0</default>
+			<index>75</index>
+		</property>
+		<property type="short">
+			<name>Selector Sub-Category</name>
+			<help>Selector Sub-Category</help>
+			<default>0</default>
+			<index>76</index>
+		</property>
+		<property type="short">
+			<name>Look At Score</name>
+			<help>Look At Score</help>
+			<default>0</default>
+			<index>13</index>
+		</property>
+		<property type="short">
+			<name>Niceness Multiplier</name>
+			<help>Niceness Multiplier</help>
+			<default>0</default>
+			<index>45</index>
+		</property>
+		<property type="short">
+			<name>ToolTip Name Type - 0 default</name>
+			<help>ToolTip Name Type - 0 default</help>
+			<default>0</default>
+			<index>43</index>
+		</property>
+		<property type="bool">
+			<name>Hauntable</name>
+			<help>Hauntable</help>
+			<default>0</default>
+			<index>28</index>
+		</property>
+		<property type="short">
+			<name>type</name>
+			<help>type</help>
+			<default>0</default>
+			<index>9</index>
+		</property>
+		<property type="short">
+			<name>object version</name>
+			<help>object version</help>
+			<default>0</default>
+			<index>49</index>
+		</property>
+		<property type="short">
+			<name>Template Version</name>
+			<help>Template Version</help>
+			<default>0</default>
+			<index>44</index>
+		</property>
+		<property type="short">
+			<name>For Sale flags</name>
+			<help>For Sale flags</help>
+			<default>0</default>
+			<index>60</index>
+		</property>
+		<property type="short">
+			<name>Thumbnail flags</name>
+			<help>Thumbnail flags</help>
+			<default>0</default>
+			<index>102</index>
+		</property>
+		<property type="short">
+			<name>Was: object model guid 2 - Read Only</name>
+			<help>object model guid 2 - Read Only</help>
+			<default>0</default>
+			<index>73</index>
+		</property>
+		<property type="short">
+			<name>Requirements</name>
+			<help>Requirements</help>
+			<default>0</default>
+			<index>107</index>
+		</property>
+	</category>
+	<!-- ****************************************************************************** -->
+	<!-- ****************************************************************************** -->
+</properties>

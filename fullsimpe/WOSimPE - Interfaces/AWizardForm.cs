@@ -3,7 +3,7 @@ using System;
 namespace SimPe.Wizards
 {
 	/// <summary>
-	/// Zusammenfassung für AWizardForm.
+	/// Summary description for AWizardForm.
 	/// </summary>
 	public abstract class AWizardForm : IWizardForm
 	{

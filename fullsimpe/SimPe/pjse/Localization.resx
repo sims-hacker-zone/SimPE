@@ -1,0 +1,1478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="errwritingfile" xml:space="preserve">
+    <value>Error while writing to File</value>
+  </data>
+  <data name="errconvert" xml:space="preserve">
+    <value>Error Assigning a Value</value>
+  </data>
+  <data name="unk" xml:space="preserve">
+    <value>UNK</value>
+    <comment>Generally means a user-set value was not found</comment>
+  </data>
+  <data name="bhavnotfound" xml:space="preserve">
+    <value>[unknown BHAV]</value>
+    <comment>BhavWiz, BhavWizBhav</comment>
+  </data>
+  <data name="ml_done" xml:space="preserve">
+    <value>Done!</value>
+    <comment>Make Labels prompt</comment>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>Global</value>
+    <comment>Scope enum</comment>
+  </data>
+  <data name="invalid" xml:space="preserve">
+    <value>invalid</value>
+    <comment>BhavWiz, BhavOperandWiz: Identifies flag number zero as invalid</comment>
+  </data>
+  <data name="ml_keeplabels" xml:space="preserve">
+    <value>Keep existing labels?</value>
+    <comment>Make Labels prompt</comment>
+  </data>
+  <data name="notset" xml:space="preserve">
+    <value>not set</value>
+    <comment>BhavWiz: BCON found, entry not set</comment>
+  </data>
+  <data name="Private" xml:space="preserve">
+    <value>Private</value>
+    <comment>Scope enum</comment>
+  </data>
+  <data name="SemiGlobal" xml:space="preserve">
+    <value>SemiGlobal</value>
+    <comment>Scope enum</comment>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
+    <comment>BhavWiz: BCON value prefix</comment>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Clear</value>
+    <comment>StrForm button label</comment>
+  </data>
+  <data name="empty" xml:space="preserve">
+    <value>empty</value>
+    <comment>StrForm, empty language</comment>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value>String</value>
+    <comment>StrForm</comment>
+  </data>
+  <data name="noargs" xml:space="preserve">
+    <value>no args</value>
+    <comment>BhavWizBhav params</comment>
+  </data>
+  <data name="notfound" xml:space="preserve">
+    <value>not found</value>
+    <comment>BhavWiz: BCON not found</comment>
+  </data>
+  <data name="toomanylines" xml:space="preserve">
+    <value>Failed to add a new line.
+Check BHAV format and number of lines.</value>
+    <comment>BhavWrapper error</comment>
+  </data>
+  <data name="unkargs" xml:space="preserve">
+    <value>args unknown</value>
+    <comment>BhavWizBhav params</comment>
+  </data>
+  <data name="bw_callerparams" xml:space="preserve">
+    <value>caller's params</value>
+    <comment>bwb, 0x1c, 0x7a</comment>
+  </data>
+  <data name="Fallback" xml:space="preserve">
+    <value>Fallback</value>
+    <comment>Str, various fallback conditions</comment>
+  </data>
+  <data name="lcGlobal" xml:space="preserve">
+    <value>global</value>
+    <comment>BhavWizBhav prefix value</comment>
+  </data>
+  <data name="lcPrivate" xml:space="preserve">
+    <value>private</value>
+    <comment>BhavWizBhav prefix value</comment>
+  </data>
+  <data name="lcSemiGlobal" xml:space="preserve">
+    <value>semi</value>
+    <comment>BhavWizBhav prefix value</comment>
+  </data>
+  <data name="manyArgs" xml:space="preserve">
+    <value>args</value>
+    <comment>BhavWizBhav params, 0x7a, 0x7e</comment>
+  </data>
+  <data name="menuhelp" xml:space="preserve">
+    <value>&amp;Help</value>
+    <comment>Menu item</comment>
+  </data>
+  <data name="oneArg" xml:space="preserve">
+    <value>arg</value>
+    <comment>BhavWizBhav params</comment>
+  </data>
+  <data name="unkops" xml:space="preserve">
+    <value>unknown operands</value>
+    <comment>BhavWizBhav params</comment>
+  </data>
+  <data name="bwp03_formotive" xml:space="preserve">
+    <value>for motive(s)</value>
+  </data>
+  <data name="bwp03_inroom" xml:space="preserve">
+    <value>Only in room held in</value>
+  </data>
+  <data name="bwp03_nested" xml:space="preserve">
+    <value>Only nested</value>
+  </data>
+  <data name="bwp03_nworst" xml:space="preserve">
+    <value>for the N current worst motives</value>
+  </data>
+  <data name="bwp03_oninteraction" xml:space="preserve">
+    <value>Only on current Interaction object</value>
+  </data>
+  <data name="bwp03_oow" xml:space="preserve">
+    <value>Include Out Of World objects</value>
+  </data>
+  <data name="bwp03_remworst" xml:space="preserve">
+    <value>with remaining motives from the worst</value>
+  </data>
+  <data name="bwp0b_100tile" xml:space="preserve">
+    <value>in 1/100ths tile</value>
+  </data>
+  <data name="bwp0c_degrees" xml:space="preserve">
+    <value>in degrees</value>
+  </data>
+  <data name="bwp0d_callersparams" xml:space="preserve">
+    <value>passing on Caller's params 0 to 3</value>
+  </data>
+  <data name="bwp0d_forcerun" xml:space="preserve">
+    <value>force run Check Tree</value>
+  </data>
+  <data name="bwp0d_IconIndex" xml:space="preserve">
+    <value>Icon index</value>
+  </data>
+  <data name="bwp0d_IconObject" xml:space="preserve">
+    <value>Icon object</value>
+  </data>
+  <data name="bwp0d_lastfba" xml:space="preserve">
+    <value>from last FBA call</value>
+  </data>
+  <data name="bwp0d_linkto" xml:space="preserve">
+    <value>linking to interaction</value>
+  </data>
+  <data name="bwp0d_returnID" xml:space="preserve">
+    <value>returning ID in</value>
+  </data>
+  <data name="bwp0d_usename" xml:space="preserve">
+    <value>use name</value>
+  </data>
+  <data name="flagnr" xml:space="preserve">
+    <value>flag#</value>
+    <comment>Prim 0x02 flag operator: flag number</comment>
+  </data>
+  <data name="Interaction" xml:space="preserve">
+    <value>Interaction</value>
+    <comment>0x0d</comment>
+  </data>
+  <data name="lcPrim" xml:space="preserve">
+    <value>prim</value>
+    <comment>BhavWizPrim prefix value</comment>
+  </data>
+  <data name="me" xml:space="preserve">
+    <value>Me</value>
+    <comment>BhavWiz: dnMe()</comment>
+  </data>
+  <data name="none" xml:space="preserve">
+    <value>none</value>
+    <comment>0x03 (indicating an empty list), 0x22 (indicating no string specified - and in b.o.w), 0x74 (indicating no animation), 0x7e (no script)</comment>
+  </data>
+  <data name="Object" xml:space="preserve">
+    <value>Object</value>
+    <comment>0x0d, 0x32, 0x69</comment>
+  </data>
+  <data name="Target" xml:space="preserve">
+    <value>Target</value>
+    <comment>0x0d (identifies object to receive interaction)</comment>
+  </data>
+  <data name="bwp10_preferEmpty" xml:space="preserve">
+    <value>prefer empty</value>
+  </data>
+  <data name="bwp0f_if" xml:space="preserve">
+    <value>if</value>
+  </data>
+  <data name="bwp0f_ignored" xml:space="preserve">
+    <value>ignored in Release</value>
+  </data>
+  <data name="bwp10_beginInFrontOfRefobj" xml:space="preserve">
+    <value>begin in front of refobj</value>
+  </data>
+  <data name="bwp10_facing" xml:space="preserve">
+    <value>facing</value>
+  </data>
+  <data name="bwp10_onLevelGround" xml:space="preserve">
+    <value>on level ground</value>
+  </data>
+  <data name="bwp10_relativeTo" xml:space="preserve">
+    <value>relative to</value>
+  </data>
+  <data name="bwp10_startAt" xml:space="preserve">
+    <value>start at</value>
+  </data>
+  <data name="bwp10_userEditable" xml:space="preserve">
+    <value>user editable</value>
+  </data>
+  <data name="bwp10_withEmptyBorder" xml:space="preserve">
+    <value>with empty border</value>
+  </data>
+  <data name="bwp10_withLineOfSightToCenter" xml:space="preserve">
+    <value>with line of sight to centre</value>
+  </data>
+  <data name="bwp11_allowPush" xml:space="preserve">
+    <value>allow push</value>
+  </data>
+  <data name="bwp11_handleSubQueueInteractions" xml:space="preserve">
+    <value>Handle Sub Queue Interactions</value>
+  </data>
+  <data name="bwp_ticks" xml:space="preserve">
+    <value>ticks</value>
+    <comment>0x11, 0x7a</comment>
+  </data>
+  <data name="bwp12_cleanupAll" xml:space="preserve">
+    <value>cleanup all</value>
+  </data>
+  <data name="bwp12_returnImmediately" xml:space="preserve">
+    <value>return immediately</value>
+  </data>
+  <data name="bwp13_age" xml:space="preserve">
+    <value>age</value>
+  </data>
+  <data name="bwp13_characterFromBin" xml:space="preserve">
+    <value>Character from Bin</value>
+  </data>
+  <data name="bwp13_defAgeGenderSkin" xml:space="preserve">
+    <value>default age / gender / skin colour</value>
+  </data>
+  <data name="bwp13_gender" xml:space="preserve">
+    <value>gender</value>
+  </data>
+  <data name="bwp13_noParents" xml:space="preserve">
+    <value>No parents</value>
+  </data>
+  <data name="bwp13_personDataSource" xml:space="preserve">
+    <value>Person data source</value>
+  </data>
+  <data name="bwp13_skinColor" xml:space="preserve">
+    <value>skin colour</value>
+  </data>
+  <data name="bwp13_thumbnailOutfit" xml:space="preserve">
+    <value>Thumbnail Outfit</value>
+  </data>
+  <data name="compassE" xml:space="preserve">
+    <value>E</value>
+  </data>
+  <data name="compassN" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="compassNE" xml:space="preserve">
+    <value>NE</value>
+  </data>
+  <data name="compassNW" xml:space="preserve">
+    <value>NW</value>
+  </data>
+  <data name="compassS" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="compassSE" xml:space="preserve">
+    <value>SE</value>
+  </data>
+  <data name="compassSW" xml:space="preserve">
+    <value>SW</value>
+  </data>
+  <data name="compassW" xml:space="preserve">
+    <value>W</value>
+  </data>
+  <data name="default" xml:space="preserve">
+    <value>default</value>
+    <comment>0x13, 0x70</comment>
+  </data>
+  <data name="NeighborID" xml:space="preserve">
+    <value>Neighbour ID</value>
+    <comment>0x13, 0x70</comment>
+  </data>
+  <data name="Parent" xml:space="preserve">
+    <value>Parent</value>
+    <comment>0x13</comment>
+  </data>
+  <data name="FiletableSettings" xml:space="preserve">
+    <value>File table &amp;Settings</value>
+    <comment>Menu item</comment>
+  </data>
+  <data name="gt_reportOBJD" xml:space="preserve">
+    <value>Group {0}: [{1} guid: {2}] {3} ({4})</value>
+    <comment>GUIDTool listing</comment>
+  </data>
+  <data name="gt_MatchesFound" xml:space="preserve">
+    <value>Matches found</value>
+    <comment>GUIDTool result ("Matches found: nnn")</comment>
+  </data>
+  <data name="gt_ResourceFinder" xml:space="preserve">
+    <value>Simantics Resource Finder...</value>
+    <comment>GUIDTool menu item</comment>
+  </data>
+  <data name="allZeros" xml:space="preserve">
+    <value>all zeros</value>
+    <comment>BhavWizBhav params</comment>
+  </data>
+  <data name="bwp14_callersParams" xml:space="preserve">
+    <value>passing parameters from calling tree</value>
+  </data>
+  <data name="bwp14_changeIcon" xml:space="preserve">
+    <value>change icon</value>
+  </data>
+  <data name="bwp14_CTonly" xml:space="preserve">
+    <value>running check tree only</value>
+  </data>
+  <data name="bwp17_autoVary" xml:space="preserve">
+    <value>auto vary</value>
+  </data>
+  <data name="bwp17_sampleRate" xml:space="preserve">
+    <value>sample rate</value>
+  </data>
+  <data name="bwp_source" xml:space="preserve">
+    <value>source</value>
+    <comment>0x17, 0x6d, 0x79</comment>
+  </data>
+  <data name="bwp17_volume" xml:space="preserve">
+    <value>volume</value>
+  </data>
+  <data name="bwp19_test" xml:space="preserve">
+    <value>TEST</value>
+  </data>
+  <data name="bwp1a_failTooSmall" xml:space="preserve">
+    <value>fail if too small</value>
+  </data>
+  <data name="bwp1a_noCheckObj2" xml:space="preserve">
+    <value>don't check presence of second object</value>
+  </data>
+  <data name="bwp1a_relationship" xml:space="preserve">
+    <value>relationship</value>
+  </data>
+  <data name="bwp1a_useNIDs" xml:space="preserve">
+    <value>use neighbour IDs</value>
+  </data>
+  <data name="bwp1b_differentAltitudes" xml:space="preserve">
+    <value>allow different altitudes</value>
+  </data>
+  <data name="bwp_noFailureTrees" xml:space="preserve">
+    <value>no failure trees</value>
+    <comment>1b, 2d</comment>
+  </data>
+  <data name="Direction" xml:space="preserve">
+    <value>Direction</value>
+    <comment>0x1b</comment>
+  </data>
+  <data name="gt_NoMatchesFound" xml:space="preserve">
+    <value>No matches found</value>
+    <comment>GUIDTool result</comment>
+  </data>
+  <data name="bwp_Location" xml:space="preserve">
+    <value>Location</value>
+    <comment>0x1b, 0x77</comment>
+  </data>
+  <data name="Play" xml:space="preserve">
+    <value>Play</value>
+    <comment>0x17</comment>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>Stop</value>
+    <comment>0x17</comment>
+  </data>
+  <data name="bwp1c_search" xml:space="preserve">
+    <value>Search for BHAV</value>
+  </data>
+  <data name="bwp1c_treeName" xml:space="preserve">
+    <value>Tree name</value>
+  </data>
+  <data name="bwp1d_autoClear" xml:space="preserve">
+    <value>Auto Clearing the Person Data Motive Decay value</value>
+  </data>
+  <data name="bwp1d_clearAll" xml:space="preserve">
+    <value>Clear all</value>
+  </data>
+  <data name="bwp1d_perHour" xml:space="preserve">
+    <value>per hour</value>
+  </data>
+  <data name="bwp1d_stopAt" xml:space="preserve">
+    <value>stop at</value>
+  </data>
+  <data name="bwp1f_disabledObjects" xml:space="preserve">
+    <value>disabled objects included</value>
+  </data>
+  <data name="bwp_timeout" xml:space="preserve">
+    <value>timeout</value>
+    <comment>0x23, 0x24</comment>
+  </data>
+  <data name="bwp_TNSID" xml:space="preserve">
+    <value>TNS ID</value>
+  </data>
+  <data name="bwp20_isInstanceOf" xml:space="preserve">
+    <value>is instance of</value>
+  </data>
+  <data name="bwp20_neighbourID" xml:space="preserve">
+    <value>incoming ID is a neighbour ID</value>
+  </data>
+  <data name="bwp20_originalGUID" xml:space="preserve">
+    <value>checking original (not current) GUID</value>
+  </data>
+  <data name="bwp20_returnTemp01" xml:space="preserve">
+    <value>return GUID selected in Temp 0,1</value>
+  </data>
+  <data name="bwp_eventTree" xml:space="preserve">
+    <value>Event tree</value>
+    <comment>0x22, 0x69, 0x6a, 0x6b</comment>
+  </data>
+  <data name="bwp22_startingEffect" xml:space="preserve">
+    <value>Starting Effect</value>
+  </data>
+  <data name="bwp22_stoppingEffect" xml:space="preserve">
+    <value>Stopping Effect</value>
+  </data>
+  <data name="bwp22_windowID" xml:space="preserve">
+    <value>Window ID</value>
+  </data>
+  <data name="bwp23_center" xml:space="preserve">
+    <value>centre</value>
+  </data>
+  <data name="bwp23_far" xml:space="preserve">
+    <value>far</value>
+  </data>
+  <data name="bwp23_mid" xml:space="preserve">
+    <value>mid</value>
+  </data>
+  <data name="bwp23_near" xml:space="preserve">
+    <value>near</value>
+  </data>
+  <data name="bwp23_notVisible" xml:space="preserve">
+    <value>not visible</value>
+  </data>
+  <data name="bwp23_slowDown" xml:space="preserve">
+    <value>slow down</value>
+  </data>
+  <data name="bwp23_visible" xml:space="preserve">
+    <value>visible</value>
+  </data>
+  <data name="bwp23_zoom" xml:space="preserve">
+    <value>zoom</value>
+  </data>
+  <data name="bwp24_blockSimulation" xml:space="preserve">
+    <value>block simulation</value>
+  </data>
+  <data name="bwp24_button1" xml:space="preserve">
+    <value>Button 1</value>
+  </data>
+  <data name="bwp24_button2" xml:space="preserve">
+    <value>Button 2</value>
+  </data>
+  <data name="bwp24_button3" xml:space="preserve">
+    <value>Button 3</value>
+  </data>
+  <data name="bwp_icon" xml:space="preserve">
+    <value>icon</value>
+    <comment>0x24</comment>
+  </data>
+  <data name="bwp24_Locals" xml:space="preserve">
+    <value>passing through data starting with</value>
+  </data>
+  <data name="bwp_message" xml:space="preserve">
+    <value>Message</value>
+    <comment>0x24, 0x77</comment>
+  </data>
+  <data name="bwp_resultIn" xml:space="preserve">
+    <value>result in</value>
+    <comment>0x24, 0x78</comment>
+  </data>
+  <data name="bwp24_strings" xml:space="preserve">
+    <value>Strings</value>
+  </data>
+  <data name="bwp24_title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="bwp24_TNSStyle" xml:space="preserve">
+    <value>TNS Style</value>
+  </data>
+  <data name="bwp24_waitForUser" xml:space="preserve">
+    <value>wait for user</value>
+  </data>
+  <data name="stackobj" xml:space="preserve">
+    <value>Stack Object</value>
+    <comment>BhavWiz: dnStkOb()</comment>
+  </data>
+  <data name="bwp2a_copyTemp5" xml:space="preserve">
+    <value>copying design mode materials from object in Temp 5</value>
+  </data>
+  <data name="bwp2a_failNonEmpty" xml:space="preserve">
+    <value>fail if tile is non-empty</value>
+  </data>
+  <data name="bwp2a_moveInNewSim" xml:space="preserve">
+    <value>move in a new Sim</value>
+  </data>
+  <data name="bwp2a_passTemp0" xml:space="preserve">
+    <value>pass Temp 0 to main</value>
+  </data>
+  <data name="bwp2a_place" xml:space="preserve">
+    <value>place</value>
+  </data>
+  <data name="bwp2d_allowDiffAltitudes" xml:space="preserve">
+    <value>allow different altitudes</value>
+  </data>
+  <data name="bwp2d_ignoreDestObjFootprint" xml:space="preserve">
+    <value>ignore dest obj footprint</value>
+  </data>
+  <data name="bwp2e_askSimToMove" xml:space="preserve">
+    <value>ask person to move</value>
+  </data>
+  <data name="bwp2e_fromTemp1" xml:space="preserve">
+    <value>from slot in temp 1</value>
+  </data>
+  <data name="bwp_testOnly" xml:space="preserve">
+    <value>TEST ONLY</value>
+    <comment>0x2e, 0x71</comment>
+  </data>
+  <data name="bwp32_addChange" xml:space="preserve">
+    <value>Add / Change Interaction string Mode</value>
+  </data>
+  <data name="bwp32_disabled" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="bwp32_iconChange" xml:space="preserve">
+    <value>Interaction Icon Change Mode</value>
+  </data>
+  <data name="bwp32_iconIndex" xml:space="preserve">
+    <value>Model table icon index</value>
+  </data>
+  <data name="bwp32_nonPropagating" xml:space="preserve">
+    <value>non-propagating</value>
+  </data>
+  <data name="bwp32_propagating" xml:space="preserve">
+    <value>propagating</value>
+  </data>
+  <data name="bwp32_thumbnailOutfit" xml:space="preserve">
+    <value>Thumbnail Outfit</value>
+  </data>
+  <data name="bwp33_addInfo" xml:space="preserve">
+    <value>Add Token And Instance Info of Stack Object</value>
+  </data>
+  <data name="bwp33_addToken" xml:space="preserve">
+    <value>Add token</value>
+  </data>
+  <data name="bwp33_addToToken" xml:space="preserve">
+    <value>Add to token</value>
+  </data>
+  <data name="bwp33_category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="bwp33_copyToken" xml:space="preserve">
+    <value>Copy token</value>
+  </data>
+  <data name="bwp33_count" xml:space="preserve">
+    <value>count</value>
+  </data>
+  <data name="bwp33_counted" xml:space="preserve">
+    <value>counted</value>
+  </data>
+  <data name="bwp33_createObj" xml:space="preserve">
+    <value>Create Object from Token at Index</value>
+  </data>
+  <data name="bwp33_exclContained" xml:space="preserve">
+    <value>exclude contained objects</value>
+  </data>
+  <data name="bwp33_findToken" xml:space="preserve">
+    <value>Find token</value>
+  </data>
+  <data name="bwp33_fromInventory" xml:space="preserve">
+    <value>from inventory</value>
+  </data>
+  <data name="bwp33_get" xml:space="preserve">
+    <value>Get from My Temp Token</value>
+  </data>
+  <data name="bwp33_index" xml:space="preserve">
+    <value>index</value>
+  </data>
+  <data name="bwp33_Inventory" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
+  <data name="bwp33_loadTemp" xml:space="preserve">
+    <value>Read token into My Temp Token</value>
+  </data>
+  <data name="bwp33_pop" xml:space="preserve">
+    <value>Pop from token</value>
+  </data>
+  <data name="bwp33_property" xml:space="preserve">
+    <value>property</value>
+  </data>
+  <data name="bwp33_push" xml:space="preserve">
+    <value>Push onto token</value>
+  </data>
+  <data name="bwp33_removeFromToken" xml:space="preserve">
+    <value>Remove from token</value>
+  </data>
+  <data name="bwp33_removeToken" xml:space="preserve">
+    <value>Remove token</value>
+  </data>
+  <data name="bwp33_removeTokens" xml:space="preserve">
+    <value>Remove tokens</value>
+  </data>
+  <data name="bwp33_reversed" xml:space="preserve">
+    <value>reversed</value>
+  </data>
+  <data name="bwp33_saveTemp" xml:space="preserve">
+    <value>Save My Temp Token back to the location it was loaded from</value>
+  </data>
+  <data name="bwp33_setToNext" xml:space="preserve">
+    <value>Set To Next token</value>
+  </data>
+  <data name="bwp33_singular" xml:space="preserve">
+    <value>singular</value>
+  </data>
+  <data name="bwp33_storeCount" xml:space="preserve">
+    <value>Store token count</value>
+  </data>
+  <data name="bwp33_token" xml:space="preserve">
+    <value>token</value>
+  </data>
+  <data name="bwp33_unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="bwp_alignBlend" xml:space="preserve">
+    <value>Align blend out with calling object</value>
+    <comment>0x69, 0x6b</comment>
+  </data>
+  <data name="bwp_animation" xml:space="preserve">
+    <value>animation</value>
+    <comment>0x69, 0x6a</comment>
+  </data>
+  <data name="bwp_animSpeed" xml:space="preserve">
+    <value>Anim Speed</value>
+    <comment>0x69, 0x6a, 0x6b</comment>
+  </data>
+  <data name="bwp_blendIn" xml:space="preserve">
+    <value>Blend in</value>
+    <comment>0x69, 0x6a, 0x6b</comment>
+  </data>
+  <data name="bwp_blendOut" xml:space="preserve">
+    <value>Blend out</value>
+    <comment>0x69, 0x6a, 0x6b</comment>
+  </data>
+  <data name="bwp_flipFlag" xml:space="preserve">
+    <value>Flip Flag</value>
+    <comment>0x69, 0x6a, 0x6b, 0x7b</comment>
+  </data>
+  <data name="bwp_loopCount" xml:space="preserve">
+    <value>Loop Count</value>
+    <comment>0x69, 0x6b</comment>
+  </data>
+  <data name="bwp_notHurryable" xml:space="preserve">
+    <value>Not hurryable</value>
+    <comment>0x69, 0x6a</comment>
+  </data>
+  <data name="bwp_startTag" xml:space="preserve">
+    <value>Start at tag</value>
+    <comment>0x69, 0x6a, 0x6b</comment>
+  </data>
+  <data name="bwp_sync" xml:space="preserve">
+    <value>Sync to calling object</value>
+    <comment>0x69, 0x6b</comment>
+  </data>
+  <data name="bwp_interruptible" xml:space="preserve">
+    <value>Interruptible</value>
+    <comment>0x69, 0x6a, 0x6b</comment>
+  </data>
+  <data name="bwp6a_controllerIsSource" xml:space="preserve">
+    <value>Use controlling object as anim source</value>
+  </data>
+  <data name="bwp_high" xml:space="preserve">
+    <value>high</value>
+    <comment>priority level, 0x6a, 0x6b</comment>
+  </data>
+  <data name="bwp6a_IK" xml:space="preserve">
+    <value>IK Object</value>
+  </data>
+  <data name="bwp_low" xml:space="preserve">
+    <value>low</value>
+    <comment>priority level, 0x6a, 0x6b</comment>
+  </data>
+  <data name="bwp_medium" xml:space="preserve">
+    <value>medium</value>
+    <comment>priority level, 0x6a, 0x6b</comment>
+  </data>
+  <data name="bwp_priority" xml:space="preserve">
+    <value>Priority</value>
+    <comment>0x24, 0x6a, 0x6b, 0x77</comment>
+  </data>
+  <data name="bwp6a_sync" xml:space="preserve">
+    <value>Synch to last anim</value>
+  </data>
+  <data name="bwp6a_transToIdle" xml:space="preserve">
+    <value>Trans to Idle</value>
+  </data>
+  <data name="neigh" xml:space="preserve">
+    <value>Neighbour's</value>
+    <comment>BhavWiz: dnNeigh()</comment>
+  </data>
+  <data name="bwp6c_normalAndFlipped" xml:space="preserve">
+    <value>both normal AND flipped anims</value>
+  </data>
+  <data name="bwp6c_shortBlendOut" xml:space="preserve">
+    <value>short blend out</value>
+  </data>
+  <data name="bwp6d_allOver" xml:space="preserve">
+    <value>over all model</value>
+  </data>
+  <data name="bwp6d_material" xml:space="preserve">
+    <value>material</value>
+  </data>
+  <data name="bwp6d_materialFrom" xml:space="preserve">
+    <value>Material from</value>
+  </data>
+  <data name="bwp6d_meshFrom" xml:space="preserve">
+    <value>Mesh from</value>
+  </data>
+  <data name="bwp6d_meshGroup" xml:space="preserve">
+    <value>mesh group</value>
+  </data>
+  <data name="bwp6d_movingTexture" xml:space="preserve">
+    <value>moving texture</value>
+  </data>
+  <data name="bwp6d_screenShot" xml:space="preserve">
+    <value>screen shot</value>
+  </data>
+  <data name="bw_containmentSlot" xml:space="preserve">
+    <value>containment slot</value>
+    <comment>bw Slot()</comment>
+  </data>
+  <data name="bw_defHeight" xml:space="preserve">
+    <value>default 3/4 height</value>
+    <comment>bw Slot()</comment>
+  </data>
+  <data name="bwp6e_deg_s" xml:space="preserve">
+    <value>deg/s</value>
+    <comment>degrees per second</comment>
+  </data>
+  <data name="bwp6e_duration" xml:space="preserve">
+    <value>duration</value>
+  </data>
+  <data name="bwp6e_earlyExit" xml:space="preserve">
+    <value>allow early exit</value>
+  </data>
+  <data name="bwp6e_ignoreFrustrum" xml:space="preserve">
+    <value>ignoring frustrum</value>
+  </data>
+  <data name="bwp6e_ignoreRoom" xml:space="preserve">
+    <value>ignoring room</value>
+  </data>
+  <data name="bwp6e_includeSpine" xml:space="preserve">
+    <value>including Spine</value>
+  </data>
+  <data name="bw_routingSlot" xml:space="preserve">
+    <value>routing slot</value>
+    <comment>bw Slot()</comment>
+  </data>
+  <data name="bwp6e_speed" xml:space="preserve">
+    <value>Turn speed</value>
+  </data>
+  <data name="bwp6e_STOP" xml:space="preserve">
+    <value>STOP</value>
+  </data>
+  <data name="bw_targetingSlot" xml:space="preserve">
+    <value>targeting slot</value>
+    <comment>bw Slot()</comment>
+  </data>
+  <data name="bwp6e_turnAway" xml:space="preserve">
+    <value>Turn away speed</value>
+  </data>
+  <data name="bwp6e_turnTowards" xml:space="preserve">
+    <value>Turn towards speed</value>
+  </data>
+  <data name="bwp6f_all" xml:space="preserve">
+    <value>all on object</value>
+  </data>
+  <data name="bwp6f_intensity" xml:space="preserve">
+    <value>intensity</value>
+  </data>
+  <data name="bwp6f_light" xml:space="preserve">
+    <value>light</value>
+  </data>
+  <data name="bwp6f_ticks" xml:space="preserve">
+    <value>fade-in duration (ticks)</value>
+  </data>
+  <data name="bwp70_conversation" xml:space="preserve">
+    <value>Conversation</value>
+  </data>
+  <data name="bwp70_defaultEffect" xml:space="preserve">
+    <value>affecting default effect</value>
+  </data>
+  <data name="bwp70_effectID" xml:space="preserve">
+    <value>effect ID</value>
+  </data>
+  <data name="bwp70_model" xml:space="preserve">
+    <value>model</value>
+  </data>
+  <data name="bwp70_noIcon" xml:space="preserve">
+    <value>no icon</value>
+  </data>
+  <data name="bwp70_sheet" xml:space="preserve">
+    <value>sheet</value>
+  </data>
+  <data name="bwp_myArray" xml:space="preserve">
+    <value>My object array [array]</value>
+    <comment>0x76, 0x7d</comment>
+  </data>
+  <data name="bwp_slot" xml:space="preserve">
+    <value>Slot</value>
+    <comment>0x71</comment>
+  </data>
+  <data name="bwp_stackObjectArray" xml:space="preserve">
+    <value>Stack Object's object array [array]</value>
+    <comment>0x76, 0x7d</comment>
+  </data>
+  <data name="bwp6e_camera" xml:space="preserve">
+    <value>Camera</value>
+  </data>
+  <data name="bwp71_resetRootBones" xml:space="preserve">
+    <value>Reset root bones</value>
+  </data>
+  <data name="bwp72_pop" xml:space="preserve">
+    <value>Pop last entry from Stack</value>
+  </data>
+  <data name="bwp72_popAll" xml:space="preserve">
+    <value>Pop all entries from Stack</value>
+  </data>
+  <data name="bwp72_push" xml:space="preserve">
+    <value>Push onto Stack</value>
+  </data>
+  <data name="bwp74_agedAnim" xml:space="preserve">
+    <value>use Sim age to pick object Anim</value>
+  </data>
+  <data name="bwp74_dropOnto" xml:space="preserve">
+    <value>Drop onto</value>
+  </data>
+  <data name="bwp74_floor" xml:space="preserve">
+    <value>Floor</value>
+  </data>
+  <data name="bwp74_graspAnim" xml:space="preserve">
+    <value>grasp anim</value>
+  </data>
+  <data name="bwp74_handedness" xml:space="preserve">
+    <value>handedness</value>
+  </data>
+  <data name="bwp74_objectAnim" xml:space="preserve">
+    <value>object anim</value>
+  </data>
+  <data name="bwp74_pickUp" xml:space="preserve">
+    <value>Pick up</value>
+  </data>
+  <data name="bwp76_at" xml:space="preserve">
+    <value>at</value>
+  </data>
+  <data name="bwp76_clearContents" xml:space="preserve">
+    <value>Clear contents</value>
+  </data>
+  <data name="bwp76_getSize" xml:space="preserve">
+    <value>Get size</value>
+  </data>
+  <data name="bwp76_insert" xml:space="preserve">
+    <value>Insert</value>
+  </data>
+  <data name="bwp76_into" xml:space="preserve">
+    <value>into</value>
+  </data>
+  <data name="bwp76_pop" xml:space="preserve">
+    <value>Pop last element off array</value>
+  </data>
+  <data name="bwp76_push" xml:space="preserve">
+    <value>Push onto the back of the array</value>
+  </data>
+  <data name="bwp76_remove" xml:space="preserve">
+    <value>Remove at position</value>
+  </data>
+  <data name="bwp76_set" xml:space="preserve">
+    <value>Set</value>
+  </data>
+  <data name="bwp76_setAll" xml:space="preserve">
+    <value>Set all elements</value>
+  </data>
+  <data name="bwp76_setSize" xml:space="preserve">
+    <value>Set size</value>
+  </data>
+  <data name="bwp76_shift" xml:space="preserve">
+    <value>Shift first element off array</value>
+  </data>
+  <data name="bwp76_sortHiLo" xml:space="preserve">
+    <value>Sort array into highest to lowest order</value>
+  </data>
+  <data name="bwp76_sortLoHi" xml:space="preserve">
+    <value>Sort array into lowest to highest order</value>
+  </data>
+  <data name="bwp76_swap" xml:space="preserve">
+    <value>Swap elements</value>
+  </data>
+  <data name="bwp76_toNext" xml:space="preserve">
+    <value>to next</value>
+  </data>
+  <data name="bwp76_unshift" xml:space="preserve">
+    <value>Unshift onto the front of the array</value>
+  </data>
+  <data name="bwp77_allSims" xml:space="preserve">
+    <value>All Sims</value>
+  </data>
+  <data name="bwp77_everything" xml:space="preserve">
+    <value>Everything</value>
+  </data>
+  <data name="bwp77_insideBuilding" xml:space="preserve">
+    <value>Inside building</value>
+  </data>
+  <data name="bwp77_neighbors" xml:space="preserve">
+    <value>Neighbours</value>
+  </data>
+  <data name="bwp77_npcs" xml:space="preserve">
+    <value>NPCs</value>
+  </data>
+  <data name="bwp77_objects" xml:space="preserve">
+    <value>Objects</value>
+  </data>
+  <data name="bwp77_onLot" xml:space="preserve">
+    <value>On lot</value>
+  </data>
+  <data name="bwp77_onSameLevel" xml:space="preserve">
+    <value>On same level</value>
+  </data>
+  <data name="bwp77_outsideBuilding" xml:space="preserve">
+    <value>Outside building</value>
+  </data>
+  <data name="bwp77_room" xml:space="preserve">
+    <value>In room</value>
+  </data>
+  <data name="bwp77_same" xml:space="preserve">
+    <value>same</value>
+  </data>
+  <data name="bwp77_selectableSims" xml:space="preserve">
+    <value>Selectable Sims</value>
+  </data>
+  <data name="bwp77_userData" xml:space="preserve">
+    <value>user data</value>
+  </data>
+  <data name="bwp78_windowsIgnored" xml:space="preserve">
+    <value>Windows Ignored</value>
+  </data>
+  <data name="bwp79_outfit" xml:space="preserve">
+    <value>Outfit</value>
+  </data>
+  <data name="bwp79_outfitIndex" xml:space="preserve">
+    <value>Outfit index</value>
+  </data>
+  <data name="bwp79_personData" xml:space="preserve">
+    <value>Clear GUID pointers in person data fields</value>
+  </data>
+  <data name="bwp79_rebuild" xml:space="preserve">
+    <value>Rebuild current outfit</value>
+  </data>
+  <data name="bwp79_save" xml:space="preserve">
+    <value>Save change</value>
+  </data>
+  <data name="bwp79_self" xml:space="preserve">
+    <value>the sim's outfits</value>
+  </data>
+  <data name="bwp7a_delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="bwp7a_looping" xml:space="preserve">
+    <value>Looping</value>
+  </data>
+  <data name="bwp7a_modify" xml:space="preserve">
+    <value>Modify</value>
+  </data>
+  <data name="bwp7a_reset" xml:space="preserve">
+    <value>Reset Timer Ticks</value>
+  </data>
+  <data name="bwp7a_start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="bwp7b_array" xml:space="preserve">
+    <value>Array</value>
+  </data>
+  <data name="bwp7b_scene" xml:space="preserve">
+    <value>Scene</value>
+  </data>
+  <data name="bwp7b_showHouse" xml:space="preserve">
+    <value>Show Entire House</value>
+  </data>
+  <data name="bwp7b_start" xml:space="preserve">
+    <value>Start Animations Now</value>
+  </data>
+  <data name="bwp7c_level" xml:space="preserve">
+    <value>(optional) Want level</value>
+  </data>
+  <data name="bwp7e_definition" xml:space="preserve">
+    <value>Definition</value>
+  </data>
+  <data name="bwp7e_definitionIn" xml:space="preserve">
+    <value>definition in</value>
+  </data>
+  <data name="bwp7e_description" xml:space="preserve">
+    <value>description</value>
+  </data>
+  <data name="bwp7e_dynamic" xml:space="preserve">
+    <value>Dynamic</value>
+  </data>
+  <data name="bwp7e_objLuaFile" xml:space="preserve">
+    <value>objLua file</value>
+  </data>
+  <data name="bwp7e_script" xml:space="preserve">
+    <value>Script</value>
+  </data>
+  <data name="bwp7e_type" xml:space="preserve">
+    <value>type</value>
+  </data>
+  <data name="[Category:PJSE]" xml:space="preserve">
+    <value>PJSE General Preferences</value>
+  </data>
+  <data name="[Description:LoadAtStartup]" xml:space="preserve">
+    <value>When true, the PJSE File Table is loaded when SimPe starts, rather than when first needed.  If you don't use the PJSE (BHAV) editor, set to false.</value>
+  </data>
+  <data name="[Property:LoadAtStartup]" xml:space="preserve">
+    <value>Load the PJSE File Table at start up</value>
+  </data>
+  <data name="ft_Refresh" xml:space="preserve">
+    <value>Refresh PJSE &amp;File Table</value>
+    <comment>Menu item</comment>
+  </data>
+  <data name="strContext" xml:space="preserve">
+    <value>Runtime object cannot be predicted</value>
+  </data>
+  <data name="bow_noStrings" xml:space="preserve">
+    <value>No strings found</value>
+    <comment>0x1c, 0x24</comment>
+  </data>
+  <data name="ttabForm_MultipleFixed" xml:space="preserve">
+    <value>Use seven age groups? (human plus cats/dogs)</value>
+  </data>
+  <data name="ttabForm_Single" xml:space="preserve">
+    <value>Use only one age group?</value>
+  </data>
+  <data name="ttabForm_Sure" xml:space="preserve">
+    <value>Are you sure?</value>
+  </data>
+  <data name="gt_Stop" xml:space="preserve">
+    <value>&amp;Stop</value>
+    <comment>btnSearch alternate label</comment>
+  </data>
+  <data name="guidFilter" xml:space="preserve">
+    <value>GUID Index|*.txt|All files|*.*</value>
+  </data>
+  <data name="guidLoadIndex" xml:space="preserve">
+    <value>Load GUID Index</value>
+  </data>
+  <data name="guidSaveIndex" xml:space="preserve">
+    <value>Save GUID Index</value>
+  </data>
+  <data name="[Description:LoadGUIDIndexAtStartup]" xml:space="preserve">
+    <value>When true, the default GUID Index file is loaded when SimPe starts, rather than when the user requests it.  If you don't use the PJSE (BHAV) editor, set to false.</value>
+  </data>
+  <data name="[Property:LoadGUIDIndexAtStartup]" xml:space="preserve">
+    <value>Load the default GUID Index at start up</value>
+  </data>
+  <data name="[Description:AttrPickerAsText]" xml:space="preserve">
+    <value>In PJSE Wizards, Object attributes can be edited numerically when this is false, or selected from the known (labelled) values when this is true.  Labels are from the STR# 0x0100 file for this object (or group).  The affected Wizards all have a checkbox on the form, too, so you'll know which ones this applies to.</value>
+  </data>
+  <data name="[Description:DecimalDOValue]" xml:space="preserve">
+    <value>Normally, all values in PJSE editors are shown in hexadecimal.  If you set this value to "true", then some Wizards will provide decimal input.  The affected Wizards all have a "Decimal" checkbox on the form, too, so you'll know which ones this applies to.</value>
+  </data>
+  <data name="[Property:AttrPickerAsText]" xml:space="preserve">
+    <value>Choose from known attributes</value>
+  </data>
+  <data name="[Property:DecimalDOValue]" xml:space="preserve">
+    <value>Edit "Data owner" values in decimal</value>
+  </data>
+  <data name="[Description:ShowSpecialButtons]" xml:space="preserve">
+    <value>When true, the additional "Special Buttons" panel in the PJSE BHAV Editor will be displayed.  This is the same as setting the checkbox on the form.</value>
+  </data>
+  <data name="[Property:ShowSpecialButtons]" xml:space="preserve">
+    <value>Display "Special Buttons" panel</value>
+  </data>
+  <data name="[Category:FT]" xml:space="preserve">
+    <value>PJSE File Table Preferences</value>
+  </data>
+  <data name="[Category:GI]" xml:space="preserve">
+    <value>PJSE GUID Index Preferences</value>
+  </data>
+  <data name="ft_Settings" xml:space="preserve">
+    <value>PJSE File Table</value>
+  </data>
+  <data name="pjse_Settings" xml:space="preserve">
+    <value>PJSE editors</value>
+  </data>
+  <data name="strLangFilter" xml:space="preserve">
+    <value>Text Files|*.txt</value>
+  </data>
+  <data name="strLangLoad" xml:space="preserve">
+    <value>Import Language</value>
+  </data>
+  <data name="strLangSave" xml:space="preserve">
+    <value>Export Language</value>
+  </data>
+  <data name="[Description:StrShowDefault]" xml:space="preserve">
+    <value>In the PJSE String Editors, show the default language text alongside the current language.</value>
+  </data>
+  <data name="[Description:StrShowDesc]" xml:space="preserve">
+    <value>In the PJSE String Editors, show the string description text alongside the strings.</value>
+  </data>
+  <data name="[Property:StrShowDefault]" xml:space="preserve">
+    <value>Reveal default language for comparison</value>
+  </data>
+  <data name="[Property:StrShowDesc]" xml:space="preserve">
+    <value>Reveal string descriptions</value>
+  </data>
+  <data name="bhavForm.Unfloat" xml:space="preserve">
+    <value>Unfloat</value>
+  </data>
+  <data name="ttabForm_MultipleVaries" xml:space="preserve">
+    <value>Use separate human and animal adverts?</value>
+  </data>
+  <data name="bwb_unused" xml:space="preserve">
+    <value>Unused</value>
+    <comment>Label for unused parameters (based on called BHAV argc)</comment>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Index</value>
+    <comment>bow76</comment>
+  </data>
+  <data name="bwp7c_want" xml:space="preserve">
+    <value>Want</value>
+    <comment>0x7c</comment>
+  </data>
+  <data name="rc_override" xml:space="preserve">
+    <value>You have chosen a resource from {0}
+which overrides the equivalent resource from the current objects.packge.
+
+Do you want to use this resource?
+
+[Yes]: use this override.
+[No]: use the EA resource.
+[Cancel]: return to the Resource Chooser</value>
+    <comment>{0}: filename of package containing resource</comment>
+  </data>
+  <data name="rc_overridesEA" xml:space="preserve">
+    <value>Resource from objects.package overridden</value>
+  </data>
+  <data name="gt_report" xml:space="preserve">
+    <value>Group {0}: [{1}] {2} ({3})</value>
+    <comment>GUIDTool listing</comment>
+  </data>
+  <data name="bwp03_locntemp1" xml:space="preserve">
+    <value>Use location of object in Temp 1</value>
+  </data>
+  <data name="bwp32_subqueue" xml:space="preserve">
+    <value>To Sub-queue</value>
+  </data>
+  <data name="helpPJSE" xml:space="preserve">
+    <value>PJ Simantics Plugins</value>
+    <comment>Embedded Help Menu title for launching PJSE Help Contents</comment>
+  </data>
+  <data name="trcnTextOnly" xml:space="preserve">
+    <value>File does not conform to known format.  Cannot be analysed into fields.</value>
+    <comment>Appears in TRCN editor when file is unparse-able</comment>
+  </data>
+  <data name="tprpTextOnly" xml:space="preserve">
+    <value>File does not conform to known format.  Cannot be analysed into fields.</value>
+    <comment>Appears in TPRP editor when file is unparse-able</comment>
+  </data>
+  <data name="GUID" xml:space="preserve">
+    <value>GUID</value>
+    <comment>GUIDTool number label</comment>
+  </data>
+  <data name="OpCode" xml:space="preserve">
+    <value>OpCode</value>
+    <comment>GUIDTool number label</comment>
+  </data>
+  <data name="guidAskMessage" xml:space="preserve">
+    <value>Do you want to save the GUID Index now?
+	
+	[Default] - save in the default location
+	[Specify...] - let me specify where to save
+	[No] - don't save, just let me get back to SimPe</value>
+  </data>
+  <data name="guidAskTitle" xml:space="preserve">
+    <value>Save GUID Index?</value>
+  </data>
+  <data name="guidAskDefault" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="guidAskNoSave" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="guidAskSpecify" xml:space="preserve">
+    <value>Specify...</value>
+  </data>
+  <data name="cmpNFCurrent" xml:space="preserve">
+    <value>"{0}" not found in current objects.package</value>
+    <comment>{0}: current resource FileName</comment>
+  </data>
+  <data name="cmpNFExp" xml:space="preserve">
+    <value>"{0}" not found in {1} objects.package</value>
+    <comment>{0}: current resource FileName
+{1}: expansion pack name</comment>
+  </data>
+  <data name="pjseWindowTitle" xml:space="preserve">
+    <value>{0} [{2} {4}] {5} - Group: {3} - {1} - {6}</value>
+    <comment>{0}: EP NameShort, "Current" or "Custom"
+{1}: Package filename without path
+{2}: Type (short name)
+{3}: Group Number
+{4}: Instance Number
+{5}: Instance Filename
+{6}: {pjseWindowTitleView} or {pjseWindowTitleEdit}</comment>
+  </data>
+  <data name="expCurrent" xml:space="preserve">
+    <value>Current</value>
+    <comment>Used in place of the EP Name when the current EP isn't known</comment>
+  </data>
+  <data name="expCustom" xml:space="preserve">
+    <value>Custom</value>
+    <comment>Used to indicate Custom content</comment>
+  </data>
+  <data name="pjseWindowTitleEdit" xml:space="preserve">
+    <value>Edit</value>
+    <comment>Indicates window is in Edit mode</comment>
+  </data>
+  <data name="pjseWindowTitleView" xml:space="preserve">
+    <value>View</value>
+    <comment>Indicates window is in View mode</comment>
+  </data>
+  <data name="ml_overwriteduff" xml:space="preserve">
+    <value>The existing labels file cannot be read.
+Overwrite the existing file?</value>
+    <comment>Make Labels prompt</comment>
+  </data>
+  <data name="bwb_useTemps" xml:space="preserve">
+    <value>using Temps</value>
+    <comment>BhavWizBhav params</comment>
+  </data>
+  <data name="OpenOtherPkg" xml:space="preserve">
+    <value>The resource resides in a different package.  Opening it will close the current package
+and open the package containing the target resource.
+
+Do you want to continue?</value>
+    <comment>Used before opening a sibling resource in a different package</comment>
+  </data>
+	<data name="pjObjKeyHelp" xml:space="preserve">
+    <value>PJ ObjKey Tool</value>
+  </data>
+	<data name="pjCObjKeyTool" xml:space="preserve">
+    <value>PJSE\ObjKey Tool</value>
+  </data>
+	<data name="missing3IDR" xml:space="preserve">
+    <value>The 3IDR file for this CPF resource has disappeared!</value>
+  </data>
+	<data name="missingCPF" xml:space="preserve">
+    <value>The CPF resource for this 3IDR has disappeared!</value>
+  </data>
+	<data name="pjOBJDHelp" xml:space="preserve">
+    <value>PJ OBJD Tool</value>
+  </data>
+	<data name="pjCOBJDTool" xml:space="preserve">
+    <value>PJSE\OBJD Tool</value>
+  </data>
+	<data name="SaveAbandonCancelText" xml:space="preserve">
+    <value>You have uncommitted changes to the Object Definition you are editing.
+
+Do you want to save these changes?</value>
+  </data>
+	<data name="None" xml:space="preserve">
+    <value>None</value>
+    <comment>No Function or Build Mode selected</comment>
+  </data>
+	<data name="ChooseFolder" xml:space="preserve">
+    <value>Choose the folder for extracted Sim data</value>
+  </data>
+	<data name="nfmTitle" xml:space="preserve">
+    <value>Close window without selection to extract all</value>
+  </data>
+	<data name="pjCHoodHelp" xml:space="preserve">
+    <value>Export Neighbourhood data</value>
+  </data>
+	<data name="pjCHoodTool" xml:space="preserve">
+    <value>Export Neighbourhoods...</value>
+    <comment>Higher-level menu name is fixed</comment>
+  </data>
+	<data name="pjHoodHelp" xml:space="preserve">
+    <value>PJ Export Neighbourhoods</value>
+  </data>
+	<data name="badMeshPackage" xml:space="preserve">
+    <value>Could not use this package.  Either zero or multiple CRES or SHPE resources were found.</value>
+  </data>
+	<data name="didNotOpen" xml:space="preserve">
+    <value>Chosen package did not open.</value>
+  </data>
+	<data name="multipleMeshes" xml:space="preserve">
+    <value>Multiple meshes found (did you pick the right package?).
+Import resources for them all?</value>
+  </data>
+	<data name="noCRESSHPE" xml:space="preserve">
+    <value>3IDR file has incorrect format</value>
+  </data>
+	<data name="noGZPSXMOL" xml:space="preserve">
+    <value>No Property Set or Mesh Overlay XML files in package.</value>
+  </data>
+	<data name="noMeshName" xml:space="preserve">
+    <value>No mesh name entered.</value>
+  </data>
+	<data name="noMeshPkg" xml:space="preserve">
+    <value>No meshes in package.</value>
+  </data>
+	<data name="notAllPartsFound" xml:space="preserve">
+    <value>Not all parts could be found for mesh: </value>
+  </data>
+	<data name="pjBMTExtract" xml:space="preserve">
+    <value>PJSE\Body Mesh Tool\Extracting stage</value>
+  </data>
+	<data name="pjBMTHelp" xml:space="preserve">
+    <value>PJ Body Mesh Tool</value>
+  </data>
+	<data name="pjBMTLink" xml:space="preserve">
+    <value>PJSE\Body Mesh Tool\Linking stage</value>
+  </data>
+	<data name="pjSME" xml:space="preserve">
+    <value>Sim Mesh Extractor</value>
+  </data>
+	<data name="pjSML" xml:space="preserve">
+    <value>Sim Mesh Linker</value>
+  </data>
+	<data name="pjSMLbegin" xml:space="preserve">
+    <value>After beginning linking, you will be asked to close your 3IDR resource without committing; so if you have changes to save, please click Cancel and do so first.   Otherwise click OK to browse to your mesh file.</value>
+  </data>
+	<data name="pjSMLdone" xml:space="preserve">
+    <value>Now close your 3IDR resource, without committing, by opening a different resource.  After that you can continue as normal.   Remember to save.</value>
+  </data>
+	<data name="pkgFilter" xml:space="preserve">
+    <value>Package file|*.package|All files|*.*</value>
+  </data>
+	<data name="selectPkgMesh" xml:space="preserve">
+    <value>Select Custom Mesh Package</value>
+  </data>
+	<data name="selectPkgTexture" xml:space="preserve">
+    <value>Select Exported Texture Package</value>
+  </data>
+</root>

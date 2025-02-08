@@ -17,7 +17,6 @@
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
-    <DelaySign>false</DelaySign>
     <OutputType>Library</OutputType>
     <RootNamespace>SimPe.Wizards</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
@@ -128,11 +127,6 @@
     <ProjectReference Include="..\..\SimPe Extended Filehandlers\SimPe Extended Filehandlers.csproj">
       <Project>{7EF7C30C-2968-46E8-AA74-79EDB0FE8F2A}</Project>
       <Name>SimPe Extended Filehandlers</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\..\SimPe HandlerCommon\SimPe HandlerCommon.csproj">
-      <Project>{A4CC48FD-9574-4F0B-B721-9E8C1B1E6A8A}</Project>
-      <Name>SimPe HandlerCommon</Name>
       <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\..\SimPe Helper\SimPe Helper.csproj">

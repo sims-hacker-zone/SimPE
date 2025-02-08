@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cbdebug.Text" xml:space="preserve">
+    <value>Игра в режиме отладки</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cbblur.Text" xml:space="preserve">
+    <value>Пятно цензуры</value>
+  </data>
+  <data name="cbsound.Text" xml:space="preserve">
+    <value>Включить звуки при запуске игры</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Внешние утилиты:</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="linkLabel1.Text" xml:space="preserve">
+    <value>добавить</value>
+  </data>
+  <data name="linkLabel2.Text" xml:space="preserve">
+    <value>удалить</value>
+  </data>
+  <data name="button4.Text" xml:space="preserve">
+    <value>Обзор...</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Папка утилит Nvidia DDS:</value>
+  </data>
+  <data name="cbLock.Text" xml:space="preserve">
+    <value>Закрепить все панели</value>
+  </data>
+  <data name="cbAsync.Text" xml:space="preserve">
+    <value>Асинхронная загрузка</value>
+  </data>
+  <data name="cbAsync.ToolTip" xml:space="preserve">
+    <value>Используйте эту функцию, если требуется загружать дерево/список ресурсов в фоновом режиме.</value>
+  </data>
+  <data name="cbhidden.ToolTip" xml:space="preserve">
+    <value>При изменении этой настройки потребуется перезапуск SimPe</value>
+  </data>
+  <data name="button8.Text" xml:space="preserve">
+    <value>очистить журнал</value>
+  </data>
+  <data name="button8.ToolTip" xml:space="preserve">
+    <value>Очистить список недавних файлов.</value>
+  </data>
+  <data name="button7.Text" xml:space="preserve">
+    <value>сбросить лист</value>
+  </data>
+  <data name="button7.ToolTip" xml:space="preserve">
+    <value>Эта функция сбрасывает настройки рабочей области основного интерфейсам по умолчанию.</value>
+  </data>
+  <data name="cbsplash.Text" xml:space="preserve">
+    <value>Стартовая заставка</value>
+  </data>
+  <data name="lldds2.Text" xml:space="preserve">
+    <value>Вы можете загрузить их здесь</value>
+  </data>
+  <data name="lldds.Text" xml:space="preserve">
+    <value>Утилиты Nvidia DDS не найдены.</value>
+  </data>
+  <data name="cbow.Text" xml:space="preserve">
+    <value>отображать быстрые диалоги</value>
+  </data>
+  <data name="cbshowobjd.Text" xml:space="preserve">
+    <value>отображать имя файла OBJd</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Размер эскиза:</value>
+  </data>
+  <data name="button6.Text" xml:space="preserve">
+    <value>очистить кеш</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Фотрмат отчета:</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Язык игры по умолчанию:</value>
+  </data>
+  <data name="cbautobak.Text" xml:space="preserve">
+    <value>Авто-откат</value>
+  </data>
+  <data name="cbcache.Text" xml:space="preserve">
+    <value>Кеширование</value>
+  </data>
+  <data name="cbsilent.Text" xml:space="preserve">
+    <value>Тихий режим (меньше всплывающих окон)</value>
+  </data>
+  <data name="cbwait.Text" xml:space="preserve">
+    <value>Экран ожидания</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Настройки SimPe:</value>
+  </data>
+  <data name="cbSimple.Text" xml:space="preserve">
+    <value>Простой щелчок для открытия ресурсов</value>
+  </data>
+  <data name="cbmulti.Text" xml:space="preserve">
+    <value>Позволить одновременное открытие нескольких ресурсов</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Настройки игры:</value>
+  </data>
+  <data name="lladddown.Text" xml:space="preserve">
+    <value>добавить Папку закачек</value>
+  </data>
+  <data name="lldel.Text" xml:space="preserve">
+    <value>удалить</value>
+  </data>
+  <data name="lladd.Text" xml:space="preserve">
+    <value>добавить</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Настройки Gmdc:</value>
+  </data>
+  <data name="hdFolders.Text" xml:space="preserve">
+    <value>Системные папки</value>
+  </data>
+  <data name="cbFirefox.Text" xml:space="preserve">
+    <value>Использовать стиль Firefox для открытых вкладок</value>
+  </data>
+  <data name="groupBox6.Text" xml:space="preserve">
+    <value>Обзор вкладок:</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Тема оформления:</value>
+  </data>
+  <data name="hdSettings.Text" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="hdTools.Text" xml:space="preserve">
+    <value>Внешние утилиты</value>
+  </data>
+  <data name="cbIncCep.Text" xml:space="preserve">
+    <value>Включить CEP</value>
+  </data>
+  <data name="groupBox8.Text" xml:space="preserve">
+    <value>Простые настройки:</value>
+  </data>
+  <data name="btReload.Text" xml:space="preserve">
+    <value>Загрузить снова</value>
+  </data>
+  <data name="linkLabel6.Text" xml:space="preserve">
+    <value>сбросить</value>
+  </data>
+  <data name="llchg.Text" xml:space="preserve">
+    <value>изменить</value>
+  </data>
+  <data name="groupBox9.Text" xml:space="preserve">
+    <value>Расширенные настройки:</value>
+  </data>
+  <data name="hdFileTable.Text" xml:space="preserve">
+    <value>Файловая таблица (поиск путей)</value>
+  </data>
+  <data name="cbAsyncSort.Text" xml:space="preserve">
+    <value>Асинхронная сортировка</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Формат вида столбцов:</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Расширение имени TGI:</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Формат имени:</value>
+  </data>
+  <data name="groupBox10.Text" xml:space="preserve">
+    <value>Список ресурсов:</value>
+  </data>
+  <data name="cbSimTemp.Text" xml:space="preserve">
+    <value>включать шаблоны</value>
+  </data>
+  <data name="cbDeep.Text" xml:space="preserve">
+    <value>Глубокий поиск (TazzMann)</value>
+  </data>
+  <data name="hdSceneGraph.Text" xml:space="preserve">
+    <value>Разное</value>
+  </data>
+	<assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+	<data name="toolBar1.Font" type="System.Drawing.Font, System.Drawing">
+		<value>Segoe UI, 7pt</value>
+	</data>
+  <data name="tbFolders.Text" xml:space="preserve">
+    <value>Системные папки</value>
+  </data>
+  <data name="tbCheck.Text" xml:space="preserve">
+    <value>Проверка системы</value>
+  </data>
+  <data name="tbSettings.Text" xml:space="preserve">
+    <value>Настройки SimPe</value>
+  </data>
+  <data name="tbSceneGraph.Text" xml:space="preserve">
+    <value>Разное</value>
+  </data>
+  <data name="tbCustom.Text" xml:space="preserve">
+    <value>Выборочные параметры</value>
+  </data>
+  <data name="tbFileTable.Text" xml:space="preserve">
+    <value>Файловая таблица</value>
+  </data>
+  <data name="tbPlugins.Text" xml:space="preserve">
+    <value>Имеющиеся модули</value>
+  </data>
+  <data name="tbTools.Text" xml:space="preserve">
+    <value>Внешние утилиты</value>
+  </data>
+  <data name="tbIdent.Text" xml:space="preserve">
+    <value>Идентифи-кация</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>ID пользователя:</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Пароль:</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Имя пользователя:</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Параметры</value>
+  </data>
+</root>

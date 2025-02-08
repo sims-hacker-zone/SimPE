@@ -26,20 +26,20 @@ using System.Windows.Forms;
 namespace SimPe.Wizards
 {
 	/// <summary>
-	/// Zusammenfassung für FormStep1.
+	/// Summary description for FormStep1.
 	/// </summary>
 	public class FormStep1 : System.Windows.Forms.Form, IWizardForm
 	{
 		private System.Windows.Forms.Panel pnwizard;
 		/// <summary>
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
 		public FormStep1()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
 
@@ -56,6 +56,7 @@ namespace SimPe.Wizards
 			}
 
 			pnwizard.Height = top;
+			if (Helper.WindowsRegistry.UseBigIcons) this.Font = new System.Drawing.Font("Tahoma", 12F);
 		}
 
 		Panel BuildWizardPanel(IWizardEntry we)
@@ -107,7 +108,7 @@ namespace SimPe.Wizards
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -121,10 +122,10 @@ namespace SimPe.Wizards
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -136,17 +137,15 @@ namespace SimPe.Wizards
 			this.pnwizard.BackColor = System.Drawing.Color.White;
 			this.pnwizard.Location = new System.Drawing.Point(0, 0);
 			this.pnwizard.Name = "pnwizard";
-			this.pnwizard.Size = new System.Drawing.Size(624, 184);
+			this.pnwizard.Size = new System.Drawing.Size(1022, 626);
 			this.pnwizard.TabIndex = 8;
 			// 
 			// FormStep1
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(7, 16);
-			this.ClientSize = new System.Drawing.Size(616, 302);
+			this.ClientSize = new System.Drawing.Size(1022, 626);
 			this.Controls.Add(this.pnwizard);
 			this.Font = new System.Drawing.Font("Verdana", 9.75F);
-			this.MaximumSize = new System.Drawing.Size(624, 800);
-			this.MinimumSize = new System.Drawing.Size(624, 0);
 			this.Name = "FormStep1";
 			this.Text = "FormStep1";
 			this.ResumeLayout(false);

@@ -1,0 +1,564 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cbdebug.Text" xml:space="preserve">
+    <value>Spiel startet im Debug Modus</value>
+  </data>
+  <data name="cbdebug.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbblur.Text" xml:space="preserve">
+    <value>Nackte Sims verpixeln</value>
+  </data>
+  <data name="cbblur.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbsound.Text" xml:space="preserve">
+    <value>Spiel mit Ton starten</value>
+  </data>
+  <data name="cbsound.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Externe Programme:</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lbext.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="linkLabel1.Text" xml:space="preserve">
+    <value>hinzufügen</value>
+  </data>
+  <data name="linkLabel1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="linkLabel2.Text" xml:space="preserve">
+    <value>löschen</value>
+  </data>
+  <data name="linkLabel2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="button4.Text" xml:space="preserve">
+    <value>Durchsuchen...</value>
+  </data>
+  <data name="button4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tbdds.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Nvidia DDS Tool Verzeichnis:</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbLock.Text" xml:space="preserve">
+    <value>Docks sperren</value>
+  </data>
+  <data name="cbAsync.Text" xml:space="preserve">
+    <value>Asynchrones Laden</value>
+  </data>
+  <data name="cbAsync.ToolTip" xml:space="preserve">
+    <value>Ermöglicht das Laden der Resourcen Liste und des Resourcen Baums im Hintergrund.</value>
+  </data>
+  <data name="button8.Text" xml:space="preserve">
+    <value>Dateiliste leeren</value>
+  </data>
+  <data name="button8.ToolTip" xml:space="preserve">
+    <value>Löscht die Liste der zuletzt geöffneten Dateien</value>
+  </data>
+  <data name="button7.Text" xml:space="preserve">
+    <value>Layout zurücksetzen</value>
+  </data>
+  <data name="button7.ToolTip" xml:space="preserve">
+    <value>Setzt die Layout Einstellungen des Hauptbildschirms zurück.</value>
+  </data>
+  <data name="cbsplash.Text" xml:space="preserve">
+    <value>Zeige Startbild</value>
+  </data>
+  <data name="lldds2.Text" xml:space="preserve">
+    <value>Sie stehen hier zum Download bereit.</value>
+  </data>
+  <data name="lldds2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lldds.Text" xml:space="preserve">
+    <value>Die Nvidia DDS Utilities wurden nicht gefunden.</value>
+  </data>
+  <data name="lldds.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbow.Text" xml:space="preserve">
+    <value>schnell anzeigen</value>
+  </data>
+  <data name="cbow.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbshowobjd.Text" xml:space="preserve">
+    <value>zeige OBJd Dateinamen</value>
+  </data>
+  <data name="cbshowobjd.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Vorschaugröße:</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="button6.Text" xml:space="preserve">
+    <value>Cache leeren</value>
+  </data>
+  <data name="button6.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbReport.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbpkgmaint.Text" xml:space="preserve">
+    <value>Verwende Pkg. Maintainer</value>
+  </data>
+  <data name="cbpkgmaint.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Standard Sprache:</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbautobak.Text" xml:space="preserve">
+    <value>Automatisches Backup</value>
+  </data>
+  <data name="cbautobak.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbcache.Text" xml:space="preserve">
+    <value>Cache benutzen</value>
+  </data>
+  <data name="cbcache.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cblang.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbsilent.Text" xml:space="preserve">
+    <value>Leise (weniger Popups)</value>
+  </data>
+  <data name="cbsilent.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbwait.Text" xml:space="preserve">
+    <value>Wartebildschirm</value>
+  </data>
+  <data name="cbwait.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>SimPe Einstellungen:</value>
+  </data>
+  <data name="groupBox2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbSimple.Text" xml:space="preserve">
+    <value>kein Doppelklick zum Öffnen</value>
+  </data>
+  <data name="cbSimple.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbmulti.Text" xml:space="preserve">
+    <value>Mehrere geöffnete Resourcen gleichzeitig zulassen</value>
+  </data>
+  <data name="cbmulti.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Spiel Einstellungen:</value>
+  </data>
+  <data name="groupBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lladddown.Text" xml:space="preserve">
+    <value>Downloads Verz. aufnehmen</value>
+  </data>
+  <data name="lladddown.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lldel.Text" xml:space="preserve">
+    <value>löschen</value>
+  </data>
+  <data name="lldel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lladd.Text" xml:space="preserve">
+    <value>hinzufügen</value>
+  </data>
+  <data name="lladd.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Im-/Export Skalierung:</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbjointname.Text" xml:space="preserve">
+    <value>GMDC: Zeige Joint-Bezeichnung</value>
+  </data>
+  <data name="cbjointname.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>GMDC Einstellungen:</value>
+  </data>
+  <data name="groupBox4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pgPaths.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="hdFolders.Text" xml:space="preserve">
+    <value>Systemverzeichnisse</value>
+  </data>
+  <data name="hcFolders.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbFirefox.Text" xml:space="preserve">
+    <value>Firefox Stil zum Öffnen neuer Tabs</value>
+  </data>
+  <data name="cbFirefox.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox6.Text" xml:space="preserve">
+    <value>Tabbed Browsing:</value>
+  </data>
+  <data name="groupBox6.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbThemes.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox5.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="hdSettings.Text" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="hcSettings.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="hdTools.Text" xml:space="preserve">
+    <value>Externe Programme</value>
+  </data>
+  <data name="hcTools.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbIncCep.Text" xml:space="preserve">
+    <value>CEP einbinden</value>
+  </data>
+  <data name="cbIncCep.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox8.Text" xml:space="preserve">
+    <value>Einstellungen:</value>
+  </data>
+  <data name="groupBox8.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btReload.Text" xml:space="preserve">
+    <value>neu laden</value>
+  </data>
+  <data name="btReload.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="linkLabel6.Text" xml:space="preserve">
+    <value>zurücksetzen</value>
+  </data>
+  <data name="linkLabel6.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lbfolder.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="llchg.Text" xml:space="preserve">
+    <value>ändern</value>
+  </data>
+  <data name="llchg.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox9.Text" xml:space="preserve">
+    <value>Erweiterte Einstellungen:</value>
+  </data>
+  <data name="groupBox9.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="hdFileTable.Text" xml:space="preserve">
+    <value>FileTable (Suchpfad)</value>
+  </data>
+  <data name="hcFileTable.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbAsyncSort.Text" xml:space="preserve">
+    <value>Asynchrones sortieren</value>
+  </data>
+  <data name="cbAsyncSort.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbRLExt.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Typ Format:</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbRLTGI.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>TGI Namenserweiterung:</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbRLNames.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Namens Format:</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox10.Text" xml:space="preserve">
+    <value>Resource Liste:</value>
+  </data>
+  <data name="groupBox10.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbSimTemp.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbDeep.Text" xml:space="preserve">
+    <value>Tiefensuche (by TazzMann)</value>
+  </data>
+  <data name="cbDeep.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox7.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="hdSceneGraph.Text" xml:space="preserve">
+    <value>Verschiedenes</value>
+  </data>
+  <data name="hcSceneGraph.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tbFolders.Text" xml:space="preserve">
+    <value>Verzeichnisse</value>
+  </data>
+  <data name="tbSettings.Text" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="tbCustom.Text" xml:space="preserve">
+    <value>Erweiterte Einstellungen</value>
+  </data>
+  <data name="tbSceneGraph.Text" xml:space="preserve">
+    <value>Verschiedenes</value>
+  </data>
+  <data name="tbPlugins.Text" xml:space="preserve">
+    <value>Erweiterungen</value>
+  </data>
+  <data name="tbTools.Text" xml:space="preserve">
+    <value>Programme</value>
+  </data>
+  <data name="btpup.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btpdown.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cnt.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="hdPlugins.Text" xml:space="preserve">
+    <value>Erweiterungen</value>
+  </data>
+  <data name="hcPlugins.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tbPassword.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tbUsername.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="hcIdent.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkControl1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="hcCheck.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pgcustom.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbCustom.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="hdCustom.Text" xml:space="preserve">
+    <value>Einstellungen für</value>
+  </data>
+  <data name="hcCustom.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+</root>

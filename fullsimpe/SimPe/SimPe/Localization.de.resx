@@ -1,0 +1,1693 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="unk" xml:space="preserve">
+    <value>UNB</value>
+  </data>
+  <data name="userdefined" xml:space="preserve">
+    <value>Benutzer definiert</value>
+  </data>
+  <data name="sdesc" xml:space="preserve">
+    <value>Sim Beschreibung</value>
+  </data>
+  <data name="srel" xml:space="preserve">
+    <value>Sim Beziehung</value>
+  </data>
+  <data name="famt" xml:space="preserve">
+    <value>Familienstammbaum</value>
+  </data>
+  <data name="str" xml:space="preserve">
+    <value>Text Listen</value>
+  </data>
+  <data name="realsize" xml:space="preserve">
+    <value>Tatsächliche Größe</value>
+  </data>
+  <data name="none" xml:space="preserve">
+    <value>keiner</value>
+  </data>
+  <data name="err000" xml:space="preserve">
+    <value>Fehler beim Laden einer eingebetteten Datei!</value>
+  </data>
+  <data name="proceed" xml:space="preserve">
+    <value>Fortfahren?</value>
+  </data>
+  <data name="ask000" xml:space="preserve">
+    <value>Soll der Vorgang abgebrochen werden?</value>
+  </data>
+  <data name="errwritingfile" xml:space="preserve">
+    <value>Fehler beim Schreiben der Datei</value>
+  </data>
+  <data name="err001" xml:space="preserve">
+    <value>Fehler beim Schreiben der Packet Beschreibung</value>
+  </data>
+  <data name="nfo000" xml:space="preserve">
+    <value>{0} Dateien entpackt</value>
+  </data>
+  <data name="err002" xml:space="preserve">
+    <value>Fehler beim Entpacken nach </value>
+  </data>
+  <data name="err003" xml:space="preserve">
+    <value>Fehler beim Versuch eine eingebettete Datei mit {0} zu ersetzen.</value>
+  </data>
+  <data name="erropenfile" xml:space="preserve">
+    <value>Fehler beim Öffnen der Datei </value>
+  </data>
+  <data name="err004" xml:space="preserve">
+    <value>Fehler beim erneuten Laden einer Datei.</value>
+  </data>
+  <data name="errregistry" xml:space="preserve">
+    <value>Fehler beim Zugriff auf die Registry.</value>
+  </data>
+  <data name="delete?" xml:space="preserve">
+    <value>Löschen?</value>
+  </data>
+  <data name="askdelete" xml:space="preserve">
+    <value>Sollen die ausgewählten Dateien wirklich gelöscht werden?</value>
+  </data>
+  <data name="err005" xml:space="preserve">
+    <value>Fehler beim Löschen einer eingebetteten Datei</value>
+  </data>
+  <data name="err006" xml:space="preserve">
+    <value>Fehler beim Hinzufügen einer eingebetteten Datei</value>
+  </data>
+  <data name="err007" xml:space="preserve">
+    <value>Es konnten nicht alle Interessen aller Sims maximiert werden!</value>
+  </data>
+  <data name="commited" xml:space="preserve">
+    <value>Die Änderungen wurden übernommen.</value>
+  </data>
+  <data name="cantcommitfami" xml:space="preserve">
+    <value>Kann die Familiendatei nicht übernehmen.</value>
+  </data>
+  <data name="cantcommitsdesc" xml:space="preserve">
+    <value>Kann die Beschreibung nicht übernehmen.</value>
+  </data>
+  <data name="cantcommitfamt" xml:space="preserve">
+    <value>Kann die Verwanschaftsdatei nicht übernehmen</value>
+  </data>
+  <data name="cantcommittie" xml:space="preserve">
+    <value>Kann die aktuelle Verwandschaftsbeziehung nicht übernehmen.</value>
+  </data>
+  <data name="cantaddrelation" xml:space="preserve">
+    <value>Kann die Beziehungen nicht hinzufügen</value>
+  </data>
+  <data name="cantcommitrelation" xml:space="preserve">
+    <value>Kann die Beziehungsdaten nicht übernehmen.</value>
+  </data>
+  <data name="cantdeleterelation" xml:space="preserve">
+    <value>Kann die Beziehung nicht löschen.</value>
+  </data>
+  <data name="filenotfound" xml:space="preserve">
+    <value>Datei wurde nicht gefunden</value>
+  </data>
+  <data name="rightclickcopy" xml:space="preserve">
+    <value>Rechtsklick: in die Zwischenablage</value>
+  </data>
+  <data name="viewer" xml:space="preserve">
+    <value>Betrachter</value>
+  </data>
+  <data name="SimPe.Data.MetaData.AspirationTypes.Nothing" xml:space="preserve">
+    <value>Nichts</value>
+  </data>
+  <data name="SimPe.Data.MetaData.AspirationTypes.Romance" xml:space="preserve">
+    <value>Romantik</value>
+  </data>
+  <data name="SimPe.Data.MetaData.AspirationTypes.Family" xml:space="preserve">
+    <value>Familie</value>
+  </data>
+  <data name="SimPe.Data.MetaData.AspirationTypes.Fortune" xml:space="preserve">
+    <value>Berühmt sein</value>
+  </data>
+  <data name="SimPe.Data.MetaData.AspirationTypes.Reputation" xml:space="preserve">
+    <value>Ruf</value>
+  </data>
+  <data name="SimPe.Data.MetaData.AspirationTypes.Knowledge" xml:space="preserve">
+    <value>Wissen</value>
+  </data>
+  <data name="SimPe.Data.MetaData.AspirationTypes.Growup" xml:space="preserve">
+    <value>Groß werden</value>
+  </data>
+  <data name="SimPe.Data.MetaData.AspirationTypes.Pleasure" xml:space="preserve">
+    <value>Spaß</value>
+  </data>
+  <data name="Data.MetaData.AspirationTypes.Chees" xml:space="preserve">
+    <value>Käse</value>
+  </data>
+  <data name="Aries" xml:space="preserve">
+    <value>Widder</value>
+  </data>
+  <data name="Taurus" xml:space="preserve">
+    <value>Stier</value>
+  </data>
+  <data name="Gemini" xml:space="preserve">
+    <value>Zwilling</value>
+  </data>
+  <data name="Cancer" xml:space="preserve">
+    <value>Krebs</value>
+  </data>
+  <data name="Leo" xml:space="preserve">
+    <value>Löwe</value>
+  </data>
+  <data name="Virgo" xml:space="preserve">
+    <value>Jungfrau</value>
+  </data>
+  <data name="Libra" xml:space="preserve">
+    <value>Waage</value>
+  </data>
+  <data name="Scorpio" xml:space="preserve">
+    <value>Skorpion</value>
+  </data>
+  <data name="Sagittarius" xml:space="preserve">
+    <value>Schütze</value>
+  </data>
+  <data name="Capricorn" xml:space="preserve">
+    <value>Steinbock</value>
+  </data>
+  <data name="Aquarius" xml:space="preserve">
+    <value>Wassermann</value>
+  </data>
+  <data name="Toddler" xml:space="preserve">
+    <value>Kleinkind</value>
+  </data>
+  <data name="Child" xml:space="preserve">
+    <value>Kind</value>
+  </data>
+  <data name="Teen" xml:space="preserve">
+    <value>Teenager</value>
+  </data>
+  <data name="Adult" xml:space="preserve">
+    <value>Erwachsen</value>
+  </data>
+  <data name="Elder" xml:space="preserve">
+    <value>Greis</value>
+  </data>
+  <data name="Unemployed" xml:space="preserve">
+    <value>Arbeitslos</value>
+  </data>
+  <data name="Military" xml:space="preserve">
+    <value>Militär</value>
+  </data>
+  <data name="Politics" xml:space="preserve">
+    <value>Politik</value>
+  </data>
+  <data name="Science" xml:space="preserve">
+    <value>Wissenschaft</value>
+  </data>
+  <data name="Medical" xml:space="preserve">
+    <value>Medizin</value>
+  </data>
+  <data name="Athletic" xml:space="preserve">
+    <value>Sport</value>
+  </data>
+  <data name="Economy" xml:space="preserve">
+    <value>Wirtschaft</value>
+  </data>
+  <data name="LawEnforcement" xml:space="preserve">
+    <value>Gesetzeshüter</value>
+  </data>
+  <data name="Culinary" xml:space="preserve">
+    <value>Koch</value>
+  </data>
+  <data name="Slacker" xml:space="preserve">
+    <value>Faulenzer</value>
+  </data>
+  <data name="Criminal" xml:space="preserve">
+    <value>Krimineller</value>
+  </data>
+  <data name="TeenElderAthletic" xml:space="preserve">
+    <value>Teen/Rentner - Sport</value>
+  </data>
+  <data name="TeenElderBusiness" xml:space="preserve">
+    <value>Teen/Rentner - Wirtschaft</value>
+  </data>
+  <data name="TeenElderCriminal" xml:space="preserve">
+    <value>Teen/Rentner - Krimineller</value>
+  </data>
+  <data name="TeenElderCulinary" xml:space="preserve">
+    <value>Teen/Rentner - Koch</value>
+  </data>
+  <data name="TeenElderLawEnforcement" xml:space="preserve">
+    <value>Teen/Rentner - Gesetzeshüter</value>
+  </data>
+  <data name="TeenElderMedical" xml:space="preserve">
+    <value>Teen/Rentner - Medizin</value>
+  </data>
+  <data name="TeenElderMilitary" xml:space="preserve">
+    <value>Teen/Rentner - Militär</value>
+  </data>
+  <data name="TeenElderPolitics" xml:space="preserve">
+    <value>Teen/Rentner - Politik</value>
+  </data>
+  <data name="TeenElderScience" xml:space="preserve">
+    <value>Teen/Rentner - Wissenschaft</value>
+  </data>
+  <data name="TeenElderSlacker" xml:space="preserve">
+    <value>Teen/Rentner - Faulenzer</value>
+  </data>
+  <data name="Paranormal" xml:space="preserve">
+    <value>Paranormales</value>
+  </data>
+  <data name="NaturalScientist" xml:space="preserve">
+    <value>Natur-Wissenschaftler</value>
+  </data>
+  <data name="ShowBiz" xml:space="preserve">
+    <value>Unterhaltungs Industrie</value>
+  </data>
+  <data name="Artist" xml:space="preserve">
+    <value>Künstler</value>
+  </data>
+  <data name="Adventurer" xml:space="preserve">
+    <value>Abentuerer</value>
+  </data>
+  <data name="Education" xml:space="preserve">
+    <value>Lehre</value>
+  </data>
+  <data name="Gamer" xml:space="preserve">
+    <value>Gamer</value>
+  </data>
+  <data name="Journalism" xml:space="preserve">
+    <value>Journalismus</value>
+  </data>
+  <data name="Law" xml:space="preserve">
+    <value>Recht</value>
+  </data>
+  <data name="Music" xml:space="preserve">
+    <value>Musik</value>
+  </data>
+  <data name="TeenElderAdventurer" xml:space="preserve">
+    <value>Teen/Rentner - Abenteurer</value>
+  </data>
+  <data name="TeenElderEducation" xml:space="preserve">
+    <value>Teen/Rentner - Lehre</value>
+  </data>
+  <data name="TeenElderGamer" xml:space="preserve">
+    <value>Teen/Rentner - Gamer</value>
+  </data>
+  <data name="TeenElderJournalism" xml:space="preserve">
+    <value>Teen/Rentner - Journalismus</value>
+  </data>
+  <data name="TeenElderLaw" xml:space="preserve">
+    <value>Teen/Rentner - Recht</value>
+  </data>
+  <data name="TeenElderMusic" xml:space="preserve">
+    <value>Teen/Rentner - Musik</value>
+  </data>
+  <data name="PetSecurity" xml:space="preserve">
+    <value>Haustier - Sicherheit</value>
+  </data>
+  <data name="PetService" xml:space="preserve">
+    <value>Haustier - Dienstleistung</value>
+  </data>
+  <data name="PetShowBiz" xml:space="preserve">
+    <value>Haustier - Unterhaltungs Industrie</value>
+  </data>
+
+  <data name="TeenElderConstruction" xml:space="preserve">
+    <value>Teen/Rentner - Architekt</value>
+  </data>
+  <data name="TeenElderDance" xml:space="preserve">
+    <value>Teen/Rentner - Tänzer</value>
+  </data>
+  <data name="TeenElderEntertainment" xml:space="preserve">
+    <value>Teen/Rentner - Entertainer</value>
+  </data>
+  <data name="TeenElderIntelligence" xml:space="preserve">
+    <value>Teen/Rentner - Gehimdienst</value>
+  </data>
+  <data name="TeenElderOcenography" xml:space="preserve">
+    <value>Teen/Rentner - Meeresforscher</value>
+  </data>
+  <data name="Construction" xml:space="preserve">
+    <value>Architekts</value>
+  </data>
+  <data name="Dance" xml:space="preserve">
+    <value>Tänzer</value>
+  </data>
+  <data name="Entertainment" xml:space="preserve">
+    <value>Entertainer</value>
+  </data>
+  <data name="Intelligence" xml:space="preserve">
+    <value>Gehimdienst</value>
+  </data>
+  <data name="Ocenography" xml:space="preserve">
+    <value>Meeresforscher</value>
+  </data>
+  <data name="cantaddtie" xml:space="preserve">
+    <value>Dieser Sim kann nicht in die Verwandschaft aufgenommen werden.</value>
+  </data>
+  <data name="MyMotherIs" xml:space="preserve">
+    <value>Elternteil A ist</value>
+  </data>
+  <data name="MyFatherIs" xml:space="preserve">
+    <value>Elternteil B ist</value>
+  </data>
+  <data name="ImMarriedTo" xml:space="preserve">
+    <value>Mein Ehepartner ist</value>
+  </data>
+  <data name="MySiblingIs" xml:space="preserve">
+    <value>Mein Geschwister ist</value>
+  </data>
+  <data name="MyChildIs" xml:space="preserve">
+    <value>Mein Kind ist</value>
+  </data>
+  <data name="cantcommitobjd" xml:space="preserve">
+    <value>Kann die Objekt Daten nicht übernehmen</value>
+  </data>
+  <data name="unnamed" xml:space="preserve">
+    <value>Unbenannt</value>
+  </data>
+  <data name="byteviewerror" xml:space="preserve">
+    <value>Fehler beim Anzeigen der Byte Ansicht.</value>
+  </data>
+  <data name="confirm" xml:space="preserve">
+    <value>Bestätigung</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>Englisch (us)</value>
+  </data>
+  <data name="English_uk" xml:space="preserve">
+    <value>Englisch</value>
+  </data>
+  <data name="French" xml:space="preserve">
+    <value>Französisch</value>
+  </data>
+  <data name="German" xml:space="preserve">
+    <value>Deutsch</value>
+  </data>
+  <data name="Grade_Unknown" xml:space="preserve">
+    <value>Keine Note</value>
+  </data>
+  <data name="Grade_F" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="Grade_DMinus" xml:space="preserve">
+    <value>4-</value>
+  </data>
+  <data name="Grade_D" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="Grade_DPlus" xml:space="preserve">
+    <value>4+</value>
+  </data>
+  <data name="Grade_CMinus" xml:space="preserve">
+    <value>3-</value>
+  </data>
+  <data name="Grade_C" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="Grade_CPlus" xml:space="preserve">
+    <value>3+</value>
+  </data>
+  <data name="Grade_BMinus" xml:space="preserve">
+    <value>2-</value>
+  </data>
+  <data name="Grade_B" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="Grade_BPlus" xml:space="preserve">
+    <value>2+</value>
+  </data>
+  <data name="Grade_AMinus" xml:space="preserve">
+    <value>1-</value>
+  </data>
+  <data name="Grade_A" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Grade_APlus" xml:space="preserve">
+    <value>1+</value>
+  </data>
+  <data name="PublicSchool" xml:space="preserve">
+    <value>Öffentliche Schule</value>
+  </data>
+  <data name="PrivateSchool" xml:space="preserve">
+    <value>Privatschule</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Unbekannt</value>
+  </data>
+  <data name="errconvert" xml:space="preserve">
+    <value>Zuweisungsfehler</value>
+  </data>
+  <data name="simsbrowser" xml:space="preserve">
+    <value>Sim auswählen</value>
+  </data>
+  <data name="neighborhoodbrowser" xml:space="preserve">
+    <value>Nachbarschaft auswählen</value>
+  </data>
+  <data name="backuprestore" xml:space="preserve">
+    <value>Soll die Nachbarschaft vor dem wiederherstellen des Backups gesichert werden?</value>
+  </data>
+  <data name="backupdelete" xml:space="preserve">
+    <value>Sind sie sicher dass alle Dateien in {0} gelöscht werden sollen?</value>
+  </data>
+  <data name="backup?" xml:space="preserve">
+    <value>Sicherung erstellen?</value>
+  </data>
+  <data name="disclaimer" xml:space="preserve">
+    <value>SimPe ist ein Tool das tief in die Interna von "Die Sims 2" eingreifen kann.
+		
+Viele Anwender verwenden SimPe bereits ohne Probleme. Wenn es allerdings unsachgemäß verwendet wird können Schäden am Spiel sowie am gesamten System entstehen. SimPe darf nur dann verwendet werden, wenn Sie diese Risiken akzeptieren. Bedenken Sie, dass SimPe noch im Alpha-Stadium ist!
+Es wird dringend empfohlen vor dem Start ein Backup des Verzeicnisses "Eigene Dateien\EA Games\Die Sims 2\" anzufertigen!
+		
+Soll SimPe gestartet werden?</value>
+  </data>
+  <data name="savechanges?" xml:space="preserve">
+    <value>Änderungen speichern?</value>
+  </data>
+  <data name="savechanges" xml:space="preserve">
+    <value>Sollen die Änderungen am Package "{filename}" gesichert werden?</value>
+  </data>
+  <data name="unsavedchanges" xml:space="preserve">
+    <value>Das geöffnete Package enthält nicht gespeicherte Daten die verloren gehen wenn sie eine neue Nachbarschaft öffnen. 
+		
+Möchten Sie fortfahren?</value>
+  </data>
+  <data name="errunsupportedimage" xml:space="preserve">
+    <value>Das Bildformat wird nicht unterstützt.</value>
+  </data>
+  <data name="Brazilian" xml:space="preserve">
+    <value>Portugiesisch (Brasilien)</value>
+  </data>
+  <data name="savewrapperchanges" xml:space="preserve">
+    <value>Möchten Sie die Änderungen an der Resource "{name}" übernehmen?
+
+Package: {filename}</value>
+  </data>
+  <data name="RT_Unset_Unknown" xml:space="preserve">
+    <value>Nicht definiert oder unbekannt</value>
+  </data>
+  <data name="RT_Nice_Nephew" xml:space="preserve">
+    <value>Nichte oder Neffe</value>
+  </data>
+  <data name="RT_Parent" xml:space="preserve">
+    <value>Elternteil</value>
+  </data>
+  <data name="RT_Child" xml:space="preserve">
+    <value>Kind</value>
+  </data>
+  <data name="RT_Sibling" xml:space="preserve">
+    <value>Geschwister</value>
+  </data>
+  <data name="RT_Gradparent" xml:space="preserve">
+    <value>Großmutter oder Großvater</value>
+  </data>
+  <data name="RT_Grandchild" xml:space="preserve">
+    <value>Enkel</value>
+  </data>
+  <data name="RT_Aunt" xml:space="preserve">
+    <value>Tante oder Onkel</value>
+  </data>
+  <data name="RT_Cousin" xml:space="preserve">
+    <value>Kusine oder Kusin</value>
+  </data>
+  <data name="RT_Spouses" xml:space="preserve">
+    <value>Ehepartner</value>
+  </data>
+	<data name="RT_Child_Inlaw" xml:space="preserve">
+    <value>Kind Inlaw</value>
+  </data>
+	<data name="RT_Parent_Inlaw" xml:space="preserve">
+    <value>Elternteil Inlaw</value>
+  </data>
+	<data name="RT_Sibling_Inlaw" xml:space="preserve">
+    <value>Geschwister Inlaw</value>
+  </data>
+	<data name="OW_Warning" xml:space="preserve">
+    <value>Damit diese Tool auch mit Objekten funktioniert deren Farbalternativen nicht standardmäßig aktiviert sind muss noch das Colour Options Enabler Paket von http://www.modthesims2.com/index.php? heruntergeladen und installiert werden.
+		
+		Der Object Workshop ist noch immer in der testphase, deswegen sollten alle damit erstellten Farbalternativen einen deutlischen Hinweis auf den Beta Status tragen. Für einige der erstellten Farbalternativen ist es auch notwendig das die Benutzer den Colour Options Enabler installieren!\n\nTrotzdem weitermachen?</value>
+  </data>
+  <data name="Pisces" xml:space="preserve">
+    <value>Fische</value>
+  </data>
+  <data name="YoungAdult" xml:space="preserve">
+    <value>Junger Erwachener</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="question" xml:space="preserve">
+    <value>Frage</value>
+  </data>
+  <data name="open_wnt_from_sdsc" xml:space="preserve">
+    <value>Sollen die Einstellungen für diese Sim übernommen werden bevor die Ängste und Wünsche angezeigt werden?</value>
+  </data>
+  <data name="open_fami_from_sdsc" xml:space="preserve">
+    <value>Sollen die Einstellungen für diese Sim übernommen werden bevor die Familien Information angezeigt wird?</value>
+  </data>
+  <data name="open_dna_from_sdsc" xml:space="preserve">
+    <value>Sollen die Einstellungen für diese Sim übernommen werden bevor seine DNS angezeigt wird?</value>
+  </data>
+  <data name="open_cloth_from_sdsc" xml:space="preserve">
+    <value>Sollen die Einstellungen für diese Sim übernommen werden bevor seine Kleidung angezeigt wird?</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="neighborhood" xml:space="preserve">
+    <value>&amp;Nachbarschaft</value>
+  </data>
+  <data name="object tool" xml:space="preserve">
+    <value>Objekt &amp;Werkzeuge</value>
+  </data>
+  <data name="object creation" xml:space="preserve">
+    <value>Objekte &amp;Erstellen</value>
+  </data>
+  <data name="sim description" xml:space="preserve">
+    <value>Sim: Beschreibung</value>
+  </data>
+  <data name="Family Information" xml:space="preserve">
+    <value>Familien Information</value>
+  </data>
+  <data name="Family Ties" xml:space="preserve">
+    <value>Stammbaum</value>
+  </data>
+  <data name="Neighborhood/Memory" xml:space="preserve">
+    <value>Nachbarschaft/Erinnerungen</value>
+  </data>
+  <data name="Sim Wants and Fears" xml:space="preserve">
+    <value>Sim: Wünsche und Ängste</value>
+  </data>
+  <data name="Sim Relations" xml:space="preserve">
+    <value>Sim: Beziehungen</value>
+  </data>
+  <data name="sim dna" xml:space="preserve">
+    <value>Sim: DNA</value>
+  </data>
+  <data name="Extract..." xml:space="preserve">
+    <value>Entpacken...</value>
+  </data>
+  <data name="Replace..." xml:space="preserve">
+    <value>Ersetzen...</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="Create Resource" xml:space="preserve">
+    <value>Neue Resource</value>
+  </data>
+  <data name="Clone" xml:space="preserve">
+    <value>Klonen</value>
+  </data>
+  <data name="Add..." xml:space="preserve">
+    <value>Aufnehmen...</value>
+  </data>
+  <data name="Restore" xml:space="preserve">
+    <value>Wiederherstellen</value>
+  </data>
+  <data name="changed?" xml:space="preserve">
+    <value>Resource wurde verändert</value>
+  </data>
+  <data name="reschanged" xml:space="preserve">
+    <value>Die Resource "{name}" wurde außerhalb des Editors geändert. Soll sie neu geladen werden?
+
+Package: {filename}</value>
+  </data>
+  <data name="Intrigued Neighborhood" xml:space="preserve">
+    <value>Interes. Nachbarschaft</value>
+  </data>
+  <data name="Set TGI Values" xml:space="preserve">
+    <value>TGI aktualisieren</value>
+  </data>
+  <data name="Reload FileTable" xml:space="preserve">
+    <value>FileTable neu laden</value>
+  </data>
+  <data name="Build Namemap" xml:space="preserve">
+    <value>Namemap Erzeugen</value>
+  </data>
+  <data name="Create Description" xml:space="preserve">
+    <value>Erstelle &amp;Beschreibung</value>
+  </data>
+  <data name="from Selection..." xml:space="preserve">
+    <value>aus &amp;Auswahl...</value>
+  </data>
+  <data name="from Package..." xml:space="preserve">
+    <value>aus &amp;Package...</value>
+  </data>
+  <data name="Updates" xml:space="preserve">
+    <value>Aktualisierungen</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Unique Instances" xml:space="preserve">
+    <value>Eindeutige Instanzen</value>
+  </data>
+  <data name="Czech" xml:space="preserve">
+    <value>Tschechisch</value>
+  </data>
+  <data name="Tutorials" xml:space="preserve">
+    <value>Anleitungen</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Willkommen</value>
+  </data>
+  <data name="SimPe.Data.FamilyTieTypes.MyMotherIs" xml:space="preserve">
+    <value>Elternteil A</value>
+  </data>
+  <data name="SimPe.Data.FamilyTieTypes.MyFatherIs" xml:space="preserve">
+    <value>Elternteil B</value>
+  </data>
+  <data name="SimPe.Data.FamilyTieTypes.ImMarriedTo" xml:space="preserve">
+    <value>Ehepartner</value>
+  </data>
+  <data name="SimPe.Data.FamilyTieTypes.MySiblingIs" xml:space="preserve">
+    <value>Geschwister</value>
+  </data>
+  <data name="SimPe.Data.FamilyTieTypes.MyChildIs" xml:space="preserve">
+    <value>Kind</value>
+  </data>
+  <data name="AddFamilyTieCaption" xml:space="preserve">
+    <value>"{name}" in die Familie von "{gname}" aufnehmen</value>
+  </data>
+  <data name="OpenSDesc" xml:space="preserve">
+    <value>Öffne Sim Beschreibung von "{name}"</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Lade</value>
+  </data>
+  <data name="Please Wait" xml:space="preserve">
+    <value>Bitte warten</value>
+  </data>
+  <data name="Sim Relation Editor" xml:space="preserve">
+    <value>Sim Beziehungs Editor</value>
+  </data>
+  <data name="Sim Description Editor" xml:space="preserve">
+    <value>Sim Beschreibungs Editor</value>
+  </data>
+  <data name="towards" xml:space="preserve">
+    <value>für</value>
+  </data>
+  <data name="AddRelationCaption" xml:space="preserve">
+    <value>Beziehung zu "{name}" erstellen</value>
+  </data>
+  <data name="RemoveRelationCaption" xml:space="preserve">
+    <value>Beziehung zu "{name}" entfernen</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="cache_cleared" xml:space="preserve">
+    <value>"Der Cache wurde geleert. Damit die Änderungen aktiv werden, muss SimPe neu gestartet werden!"</value>
+  </data>
+  <data name="SimPe.Data.ObjectTypes.Person" xml:space="preserve">
+    <value>Person</value>
+  </data>
+  <data name="SimPe.Data.ObjectTypes.Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="SimPe.Data.ObjectTypes.ArchitecturalSupport" xml:space="preserve">
+    <value>Architektur</value>
+  </data>
+  <data name="SimPe.Data.ObjectTypes.SimType" xml:space="preserve">
+    <value>Sim Typ</value>
+  </data>
+  <data name="SimPe.Data.ObjectTypes.Door" xml:space="preserve">
+    <value>Tür</value>
+  </data>
+  <data name="SimPe.Data.ObjectTypes.Window" xml:space="preserve">
+    <value>Fenster</value>
+  </data>
+  <data name="SimPe.Data.ObjectTypes.Stairs" xml:space="preserve">
+    <value>Treppen</value>
+  </data>
+  <data name="SimPe.Data.ObjectTypes.ModularStairs" xml:space="preserve">
+    <value>Modulare Treppen</value>
+  </data>
+  <data name="SimPe.Data.ObjectTypes.ModularStairsPortal" xml:space="preserve">
+    <value>ModularStairsPortal</value>
+  </data>
+  <data name="SimPe.Data.ObjectTypes.Vehicle" xml:space="preserve">
+    <value>Fahrzeug</value>
+  </data>
+  <data name="SimPe.Data.ObjectTypes.Outfit" xml:space="preserve">
+    <value>Outfit</value>
+  </data>
+  <data name="SimPe.Data.ObjectTypes.Memory" xml:space="preserve">
+    <value>Erinnerung</value>
+  </data>
+  <data name="SimPe.Data.ObjectTypes.Template" xml:space="preserve">
+    <value>Vorlage</value>
+  </data>
+  <data name="SimPe.Data.ObjectTypes.Unknown" xml:space="preserve">
+    <value>Unbekannt</value>
+  </data>
+  <data name="SimPe.Data.ObjectTypes.Tiles" xml:space="preserve">
+    <value>Bodenbeläge und Teppiche</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Sonstiges</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSortBits.Seating" xml:space="preserve">
+    <value>Sitzmöbel</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSortBits.Surfaces" xml:space="preserve">
+    <value>Oberflächen</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSortBits.Appliances" xml:space="preserve">
+    <value>Haushaltsgeräte</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSortBits.Electronics" xml:space="preserve">
+    <value>Elektronik</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSortBits.Plumbing" xml:space="preserve">
+    <value>Installationstechnik</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSortBits.Decorative" xml:space="preserve">
+    <value>Dekoration</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSortBits.General" xml:space="preserve">
+    <value>Allgemein</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSortBits.Lighting" xml:space="preserve">
+    <value>Beleuchtung</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSortBits.Hobbies" xml:space="preserve">
+    <value>Hobbys</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSortBits.AspirationRewards" xml:space="preserve">
+    <value>Lebensziel Belohnungen</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSortBits.CareerRewards" xml:space="preserve">
+    <value>Karriere Belohnungen</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Seating_DiningroomChair" xml:space="preserve">
+    <value>Sitzmöbel / Esszimmer</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Seating_LivingroomChair" xml:space="preserve">
+    <value>Sitzmöbel / Wohnzimmer</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Seating_Sofas" xml:space="preserve">
+    <value>Sitzmöbel / Sofas</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Seating_Beds" xml:space="preserve">
+    <value>Sitzmöbel / Betten</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Seating_Recreation" xml:space="preserve">
+    <value>Sitzmöbel / Entspannung</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Seating_UnknownA" xml:space="preserve">
+    <value>Sitzmöbel / Unbekannt I</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Seating_UnknownB" xml:space="preserve">
+    <value>Sitzmöbel / Unbekannt II</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Seating_Misc" xml:space="preserve">
+    <value>Sitzmöbel / Verschiedenes</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Surfaces_Counter" xml:space="preserve">
+    <value>Oberflächen / Tresen und Küchenmöbel</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Surfaces_Table" xml:space="preserve">
+    <value>Oberflächen / Tische</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Surfaces_EndTable" xml:space="preserve">
+    <value>Oberflächen / Beistelltische</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Surfaces_Desks" xml:space="preserve">
+    <value>Oberflächen / Schreibtische</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Surfaces_Coffeetable" xml:space="preserve">
+    <value>Oberflächen / Kaffeetische</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Surfaces_Business" xml:space="preserve">
+    <value>Oberflächen / Regale</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Surfaces_UnknownB" xml:space="preserve">
+    <value>Oberflächen / Unbekannt II</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Surfaces_Misc" xml:space="preserve">
+    <value>Oberflächen / Verschiedenes</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Decorative_Wall" xml:space="preserve">
+    <value>Dekoration / Wandschmuck</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Decorative_Sculpture" xml:space="preserve">
+    <value>Dekoration / Skulpturen</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Decorative_Plants" xml:space="preserve">
+    <value>Dekoration / Pflanzen</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Decorative_Mirror" xml:space="preserve">
+    <value>Dekoration / Spiegel</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Decorative_Curtain" xml:space="preserve">
+    <value>Dekoration / Vorhänge</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Decorative_Rugs" xml:space="preserve">
+    <value>Dekoration / Teppichböden</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Decorative_UnknownB" xml:space="preserve">
+    <value>Dekoration / Unbekannt II</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Decorative_Misc" xml:space="preserve">
+    <value>Dekoration / Verschiedenes</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Plumbing_Toilet" xml:space="preserve">
+    <value>Installationstechnik / Toilette</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Plumbing_Shower" xml:space="preserve">
+    <value>Installationstechnik / Dusche und Bad</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Plumbing_Sink" xml:space="preserve">
+    <value>Installationstechnik / Wasch- und Spülbecken</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Plumbing_HotTub" xml:space="preserve">
+    <value>Installationstechnik / Whirlpool</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Plumbing_UnknownC" xml:space="preserve">
+    <value>Installationstechnik / Unbekannt III</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Plumbing_UnknownA" xml:space="preserve">
+    <value>Installationstechnik / Unbekannt I</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Plumbing_UnknownB" xml:space="preserve">
+    <value>Installationstechnik / Unbekannt II</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Plumbing_Misc" xml:space="preserve">
+    <value>Installationstechnik / Verschiedenes</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Appliances_Cooking" xml:space="preserve">
+    <value>Haushaltsgeräte / Kochen</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Appliances_Refrigerator" xml:space="preserve">
+    <value>Haushaltsgeräte / Kühlen</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Appliances_Small" xml:space="preserve">
+    <value>Haushaltsgeräte / Klein</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Appliances_Large" xml:space="preserve">
+    <value>Haushaltsgeräte / Groß</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Appliances_UnknownC" xml:space="preserve">
+    <value>Haushaltsgeräte / Unbekannt III</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Appliances_UnknownA" xml:space="preserve">
+    <value>Haushaltsgeräte / Unbekannt I</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Appliances_UnknownB" xml:space="preserve">
+    <value>Haushaltsgeräte / Unbekannt II</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Appliances_Misc" xml:space="preserve">
+    <value>Haushaltsgeräte / Verschiedenes</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Electronics_Entertainment" xml:space="preserve">
+    <value>Elektronik / Spiele und Unterhaltung</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Electronics_TV_and_Computer" xml:space="preserve">
+    <value>Elektronik / TV und Computer</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Electronics_Audio" xml:space="preserve">
+    <value>Elektronik / Audio</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Electronics_Small" xml:space="preserve">
+    <value>Elektronik / Kleingeräte</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Electronics_UnknownC" xml:space="preserve">
+    <value>Elektronik / Unbekannt III</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Electronics_UnknownA" xml:space="preserve">
+    <value>Elektronik / Unbekannt I</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Electronics_UnknownB" xml:space="preserve">
+    <value>Elektronik / Unbekannt II</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Electronics_Misc" xml:space="preserve">
+    <value>Elektronik / Verschiedenes</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Lighting_TableLamp" xml:space="preserve">
+    <value>Beleuchtung / Tischlampe</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Lighting_FloorLamp" xml:space="preserve">
+    <value>Beleuchtung / Standleuchter</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Lighting_WallLamp" xml:space="preserve">
+    <value>Beleuchtung / Wandleuchter</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Lighting_CeilingLamp" xml:space="preserve">
+    <value>Beleuchtung / Hängelampen</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Lighting_Outdoor" xml:space="preserve">
+    <value>Beleuchtung / Außenbeleuchtung</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Lighting_UnknownA" xml:space="preserve">
+    <value>Beleuchtung / Unbekannt I</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Lighting_UnknownB" xml:space="preserve">
+    <value>Beleuchtung / Unbekannt II</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Lighting_Misc" xml:space="preserve">
+    <value>Beleuchtung / Verschiedenes</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Hobbies_Creative" xml:space="preserve">
+    <value>Hobbys / Kreativität</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Hobbies_Knowledge" xml:space="preserve">
+    <value>Hobbys / Wissen</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Hobbies_Excerising" xml:space="preserve">
+    <value>Hobbys / Training</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Hobbies_Recreation" xml:space="preserve">
+    <value>Hobbys / Erholung</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Hobbies_UnknownC" xml:space="preserve">
+    <value>Hobbys / Unbekannt III</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Hobbies_UnknownA" xml:space="preserve">
+    <value>Hobbys / Unbekannt I</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Hobbies_UnknownB" xml:space="preserve">
+    <value>Hobbys / Unbekannt II</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.Hobbies_Misc" xml:space="preserve">
+    <value>Hobbys / Verschiedenes</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.General_Dresser" xml:space="preserve">
+    <value>Allgemein / Ankleide</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.General_Party" xml:space="preserve">
+    <value>Allgemein / Feiern</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.General_Child" xml:space="preserve">
+    <value>Allgemein / Kinder</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.General_Pets" xml:space="preserve">
+    <value>Allgemein / Haustiere</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.General_Car" xml:space="preserve">
+    <value>Allgemein / Autos</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.General_UnknownA" xml:space="preserve">
+    <value>Allgemein / Unbekannt I</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.General_UnknownB" xml:space="preserve">
+    <value>Allgemein / Unbekannt II</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.General_Misc" xml:space="preserve">
+    <value>Allgemein / Verschiedenes</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.AspirationRewards_UnknownA" xml:space="preserve">
+    <value>Lebensziel Belohnungen / Unbekannt I</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.AspirationRewards_UnknownB" xml:space="preserve">
+    <value>Lebensziel Belohnungen / Unbekannt II</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.AspirationRewards_UnknownC" xml:space="preserve">
+    <value>Lebensziel Belohnungen / Unbekannt III</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.AspirationRewards_UnknownD" xml:space="preserve">
+    <value>Lebensziel Belohnungen / Unbekannt IV</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.AspirationRewards_UnknownE" xml:space="preserve">
+    <value>Lebensziel Belohnungen / Unbekannt V</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.AspirationRewards_UnknownF" xml:space="preserve">
+    <value>Lebensziel Belohnungen / Unbekannt VI</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.AspirationRewards_UnknownG" xml:space="preserve">
+    <value>Lebensziel Belohnungen / Unbekannt VII</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.AspirationRewards_UnknownH" xml:space="preserve">
+    <value>Lebensziel Belohnungen / Unbekannt VIII</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.CareerRewards_UnknownA" xml:space="preserve">
+    <value>Karriere Belohnungen / Unbekannt I</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.CareerRewards_UnknownB" xml:space="preserve">
+    <value>Karriere Belohnungen / Unbekannt II</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.CareerRewards_UnknownC" xml:space="preserve">
+    <value>Karriere Belohnungen / Unbekannt III</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.CareerRewards_UnknownD" xml:space="preserve">
+    <value>Karriere Belohnungen / Unbekannt IV</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.CareerRewards_UnknownE" xml:space="preserve">
+    <value>Karriere Belohnungen / Unbekannt V</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.CareerRewards_UnknownF" xml:space="preserve">
+    <value>Karriere Belohnungen / Unbekannt VI</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.CareerRewards_UnknownG" xml:space="preserve">
+    <value>Karriere Belohnungen / Unbekannt VII</value>
+  </data>
+  <data name="SimPe.Data.ObjFunctionSubSort.CareerRewards_UnknownH" xml:space="preserve">
+    <value>Karriere Belohnungen / Unbekannt VIII</value>
+  </data>
+  <data name="Searching - Please Wait" xml:space="preserve">
+    <value>Suche - bitte warten!</value>
+  </data>
+  <data name="XObject" xml:space="preserve">
+    <value>Sonstiges</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Roof" xml:space="preserve">
+    <value>Dächer</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Fence_Rail" xml:space="preserve">
+    <value>Zäune</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Fence_Halfwall" xml:space="preserve">
+    <value>Halbwände</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Terrain" xml:space="preserve">
+    <value>Bodenstruktur</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Floor_Brick" xml:space="preserve">
+    <value>Fußböden / Mauerstein</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Floor_Carpet" xml:space="preserve">
+    <value>Fußböden / Teppich</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Floor_Lino" xml:space="preserve">
+    <value>Fußböden / Linoleum</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Floor_Poured" xml:space="preserve">
+    <value>Fußböden / Gussbeton</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Floor_Stone" xml:space="preserve">
+    <value>Fußböden / Stein</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Floor_Tile" xml:space="preserve">
+    <value>Fußböden / Fliesen und Kacheln</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Floor_Wood" xml:space="preserve">
+    <value>Fußböden / Holz</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Floor_Other" xml:space="preserve">
+    <value>Fußböden / Verschiedenes</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Wall_Brick" xml:space="preserve">
+    <value>Wände / Mauerstein</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Wall_Masonry" xml:space="preserve">
+    <value>Wände / Mauerwerk</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Wall_Paint" xml:space="preserve">
+    <value>Wände / Farbe</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Wall_Paneling" xml:space="preserve">
+    <value>Wände / Täfelung</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Wall_Poured" xml:space="preserve">
+    <value>Wände / Gussbeton</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Wall_Siding" xml:space="preserve">
+    <value>Wände / Stoffe</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Wall_Tile" xml:space="preserve">
+    <value>Wände / Fliesen und Kacheln</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Wall_Wallpaper" xml:space="preserve">
+    <value>Wände / Tapeten</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Wall_Other" xml:space="preserve">
+    <value>Wände / Verschiedenes</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Hood_Landmark" xml:space="preserve">
+    <value>Nachbarschaft / Sehenswürdigkeiten</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Hood_Flora" xml:space="preserve">
+    <value>Nachbarschaft / Flora</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Hood_Effects" xml:space="preserve">
+    <value>Nachbarschaft / Effekte</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Hood_Misc" xml:space="preserve">
+    <value>Nachbarschaft / Verschiedenes</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Hood_Stone" xml:space="preserve">
+    <value>Nachbarschaft / Steine</value>
+  </data>
+  <data name="SimPe.Data.XObjFunctionSubSort.Hood_Other" xml:space="preserve">
+    <value>Nachbarschaft / Sonstiges</value>
+  </data>
+  <data name="Censor_Install_Warn" xml:space="preserve">
+    <value>Da auf dem System Nightlife (oder eine neuere Erweiterung) installiert wurde, muss SimPe nun eine Datei in den Config Ordner kopieren um die Verpixelung zu deaktivieren.
+    
+Soll SimPe fortfahren?</value>
+  </data>
+  <data name="Censor_UnInstall_Warn" xml:space="preserve">
+    <value>Um die Verpixelung zu reaktivieren, muss SimPe nun die Datei {filename} löschen.
+    
+Soll SimPe fortfahren?</value>
+  </data>
+  <data name="Check FileTable" xml:space="preserve">
+    <value>Prüfe FileTable</value>
+  </data>
+  <data name="Delete Sims" xml:space="preserve">
+    <value>Sim Löschen</value>
+  </data>
+  <data name="PresetClassic" xml:space="preserve">
+    <value>klassisch</value>
+  </data>
+  <data name="PresetModern" xml:space="preserve">
+    <value>modern</value>
+  </data>
+  <data name="PresetChanged" xml:space="preserve">
+    <value>Das Aussehen und Verhalten von SimPe wurde auf "{name}" gesetzt.
+
+Soll SimPe nun gestartet werden?</value>
+  </data>
+  <data name="ObsoleteOW" xml:space="preserve">
+    <value>Der klassische ObjectWorkshop wird nicht weiter entwickelt und ist daher überflüssig.
+
+Stattdessen sollte der dockbare ObjectWorkshop verwendet werden.
+Er kann über den Menüpunkt "Fenster-&gt;Object Workshop" angezeigt werden.
+
+Trotzdem fortfahren?
+		</value>
+  </data>
+  <data name="Package Tool" xml:space="preserve">
+    <value>Package Werkzeuge</value>
+  </data>
+  <data name="Repair Package..." xml:space="preserve">
+    <value>Package reparieren...</value>
+  </data>
+  <data name="Open Sims2Pack..." xml:space="preserve">
+    <value>Öffne Sims2Pack...</value>
+  </data>
+  <data name="Create Sims2Pack..." xml:space="preserve">
+    <value>Erstelle Sims2Pack...</value>
+  </data>
+  <data name="FinishedPackageRepair" xml:space="preserve">
+    <value>Fehlersuche wurde abgeschlossen.</value>
+  </data>
+  <data name="[Property:GamePath]" xml:space="preserve">
+    <value>Sims 2</value>
+  </data>
+  <data name="[Description:GamePath]" xml:space="preserve">
+    <value>Hier sollte das Installationsverzeichnis von "Die Sims 2" stehen. Das angegebene Verzeichnis muss den Unterordner "TSData" enthalten. Wenn kein Verzeichnis angegeben wurde, wird der Standardpfad gesetzt.</value>
+  </data>
+  <data name="[Description:]" xml:space="preserve">
+    <value>
+      Hier sollte das Installationsverzeichnis von '{LongName}' stehen. Das angegebene Verzeichnis muss den Unterordner 'TSData' enthalten. Wenn kein Verzeichnis angegeben wurde, wird der Standardpfad gesetzt.</value>
+  </data>
+  <data name="[Property:SaveGamePath]" xml:space="preserve">
+    <value>Spielstände</value>
+  </data>
+  <data name="[Description:SaveGamePath]" xml:space="preserve">
+    <value>Hier sollte der Pfad zum Spielstand Verzeichnis von "Die Sims 2 " stehen. Das angegebene Verzeichnis muss die Unterordner "Downloads" und "Neighborhoods" enthalten. Wenn kein Verzeichnis angegeben wurde, wird der Standardpfad gesetzt.</value>
+  </data>
+  <data name="[Property:NvidadPath]" xml:space="preserve">
+    <value>Nvidia DDS-Tool</value>
+  </data>
+  <data name="[Description:NvidadPath]" xml:space="preserve">
+    <value>Hier sollte der Pfad zu den "Nvidia DDS-Tool" stehen</value>
+  </data>
+  <data name="[Category:BaseGame]" xml:space="preserve">
+    <value>1. Original Spiel</value>
+  </data>
+  <data name="[Category:ExpansionPack]" xml:space="preserve">
+    <value>2. Erweiterungen</value>
+  </data>
+  <data name="[Category:StuffPack]" xml:space="preserve">
+    <value>3. Mini-Erweiterungen</value>
+  </data>
+  <data name="[Category:Story]" xml:space="preserve">
+    <value>4. Sim Stories</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.JobAssignment.Nothing" xml:space="preserve">
+    <value>Nichts</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.JobAssignment.Chef" xml:space="preserve">
+    <value>Koch</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.JobAssignment.Host" xml:space="preserve">
+    <value>Empfangschef</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.JobAssignment.Server" xml:space="preserve">
+    <value>Kellner</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.JobAssignment.Cashier" xml:space="preserve">
+    <value>Kassierer</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.JobAssignment.Bartender" xml:space="preserve">
+    <value>Barkeeper</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.JobAssignment.Barista" xml:space="preserve">
+    <value>Barista</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.JobAssignment.DJ" xml:space="preserve">
+    <value>DJ</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.JobAssignment.SellLemonade" xml:space="preserve">
+    <value>Limonade verkaufen</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.JobAssignment.Stylist" xml:space="preserve">
+    <value>Stylist</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.JobAssignment.Tidy" xml:space="preserve">
+    <value>Aufräumen</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.JobAssignment.Restock" xml:space="preserve">
+    <value>Auffüllen</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.JobAssignment.Sales" xml:space="preserve">
+    <value>Verkaufen</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.JobAssignment.MakeToys" xml:space="preserve">
+    <value>Spielzeug herstellen</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.JobAssignment.ArrangeFlowers" xml:space="preserve">
+    <value>Blumensträuße binden</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.JobAssignment.BuildRobots" xml:space="preserve">
+    <value>Roboter bauen</value>
+  </data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignment.MakeFood" xml:space="preserve">
+    <value>Essen zubereiten</value>
+  </data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignment.Masseuse" xml:space="preserve">
+    <value>Masseur sein</value>
+  </data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignment.MakePottery" xml:space="preserve">
+    <value>Töpfern</value>
+  </data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignment.Sewing" xml:space="preserve">
+    <value>Coudre</value>
+  </data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Nothing" xml:space="preserve">
+<value>Nichts</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Chef" xml:space="preserve">
+<value>Koch</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Host" xml:space="preserve">
+<value>Empfangschef</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Server" xml:space="preserve">
+<value>Kellner</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Cashier" xml:space="preserve">
+<value>Kassierer</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Bartender" xml:space="preserve">
+<value>Barkeeper</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Barista" xml:space="preserve">
+<value>Barista</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.DJ" xml:space="preserve">
+<value>DJ</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.SellLemonade" xml:space="preserve">
+<value>Limonade verkaufen</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Stylist" xml:space="preserve">
+<value>Stylist</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Tidy" xml:space="preserve">
+<value>Aufräumen</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Restock" xml:space="preserve">
+<value>Auffüllen</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Sales" xml:space="preserve">
+<value>Verkaufen</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.MakeToys" xml:space="preserve">
+<value>Spielzeug herstellen</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.ArrangeFlowers" xml:space="preserve">
+<value>Blumensträuße binden</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.BuildRobots" xml:space="preserve">
+<value>Roboter bauen</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.MakeFood" xml:space="preserve">
+<value>Essen zubereiten</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Masseuse" xml:space="preserve">
+<value>Masseur sein</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.MakePottery" xml:space="preserve">
+<value>Töpfern</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Sewing" xml:space="preserve">
+<value>Coudre</value>
+</data>
+  <data name="Reset Filetable" xml:space="preserve">
+    <value>SimPe muss den "FileTable" zurücksetzen. Dazu wird die Datei "{flname}" gelöscht. Soll SimPe nun den "FileTable" zurücksetzen?</value>
+  </data>
+  <data name="Reset Cache" xml:space="preserve">
+    <value>Um die Neuerungen aus "Open for Business" voll unterstützen zu können, muss SimPe den Cache zurücksetzen. Dazu muss die Datei "{flname}" gelöscht werden. Soll SimPe nun den Cache zurücksetzen?</value>
+  </data>
+  <data name="Unknown EP found" xml:space="preserve">
+    <value>SimPe hat festgestellt, dass wahrscheinlich eine neue Erweiterung für "Die Sims 2" installiert wurde.		
+Diese Version von SimPe kann nur mit Versionen des Spiels bis einschließlich "{name}" umgehen. Dateien die mit neueren Versionen erstellt wurden, können zu Fehlern führen! 
+(Weitere Informationen findet ihr unter http://www.modthesims2.com/index.php?).
+Soll SimPe dennoch gestartet werden?</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warnung!</value>
+  </data>
+  <data name="[All Households]" xml:space="preserve">
+    <value>[Alle Haushalte]</value>
+  </data>
+  <data name="SimPe.Data.NeighborhoodSlots.Sims" xml:space="preserve">
+    <value>Erinnerungen</value>
+  </data>
+  <data name="SimPe.Data.NeighborhoodSlots.SimsIntern" xml:space="preserve">
+    <value>Token (Fähigkeiten, Abzeichen, Inventar...)</value>
+  </data>
+  <data name="SimPe.Data.NeighborhoodSlots.Lots" xml:space="preserve">
+    <value>Grundstücke</value>
+  </data>
+  <data name="SimPe.Data.NeighborhoodSlots.LotsIntern" xml:space="preserve">
+    <value>Grundstücke Intern</value>
+  </data>
+  <data name="SimPe.Data.NeighborhoodSlots.Families" xml:space="preserve">
+    <value>Familien</value>
+  </data>
+  <data name="SimPe.Data.NeighborhoodSlots.FamiliesIntern" xml:space="preserve">
+    <value>Familien Intern</value>
+  </data>
+  <data name="Gossip about" xml:space="preserve">
+    <value>Gerücht über</value>
+  </data>
+  <data name="SimPe.Plugin.SimMemoryType.Memory" xml:space="preserve">
+    <value>Erinnerung</value>
+  </data>
+  <data name="SimPe.Plugin.SimMemoryType.Gossip" xml:space="preserve">
+    <value>Hörensagen</value>
+  </data>
+  <data name="SimPe.Plugin.SimMemoryType.Skill" xml:space="preserve">
+    <value>Fähigkeit</value>
+  </data>
+  <data name="SimPe.Plugin.SimMemoryType.Inventory" xml:space="preserve">
+    <value>Inventar</value>
+  </data>
+  <data name="SimPe.Plugin.SimMemoryType.GossipInventory" xml:space="preserve">
+    <value>Inventar (Hörensagen)</value>
+  </data>
+  <data name="SimPe.Plugin.SimMemoryType.Token" xml:space="preserve">
+    <value>Token</value>
+  </data>
+  <data name="SimPe.Plugin.SimMemoryType.ValueToken" xml:space="preserve">
+    <value>Wert</value>
+  </data>
+  <data name="SimPe.Plugin.SimMemoryType.Object" xml:space="preserve">
+    <value>Objekt</value>
+  </data>
+  <data name="SimPe.Plugin.SimMemoryType.Aspiration" xml:space="preserve">
+    <value>Lebensziel</value>
+  </data>
+  <data name="SimPe.Plugin.SimMemoryType.Badge" xml:space="preserve">
+    <value>Abzeichen</value>
+  </data>
+  <data name="Check: Folder not found" xml:space="preserve">
+    <value>Verzeichnis für "{name}" wurde nicht gefunden.</value>
+  </data>
+  <data name="Check: Unable to locate" xml:space="preserve">
+    <value>Konnte "{name}" nicht finden.</value>
+  </data>
+  <data name="Check: CEP not found" xml:space="preserve">
+    <value>Das CEP konnte nicht gefunden werden.</value>
+  </data>
+  <data name="Check: Unable to load cache" xml:space="preserve">
+    <value>Konnte den SimPe Cache nicht lesen.</value>
+  </data>
+  <data name="Check: Error while load" xml:space="preserve">
+    <value>Konnte "{name}" nicht laden.</value>
+  </data>
+  <data name="Check: No Objects" xml:space="preserve">
+    <value>Konnte keine Objekte finden.</value>
+  </data>
+  <data name="Check: No Textures" xml:space="preserve">
+    <value>Konnte keine Texturdaten finden.</value>
+  </data>
+  <data name="Savegames" xml:space="preserve">
+    <value>Spielstände</value>
+  </data>
+  <data name="Max Relation to this Sim" xml:space="preserve">
+    <value>Beziehung zu {name} maximieren</value>
+  </data>
+  <data name="NO_CRES_FOUND" xml:space="preserve">
+    <value>Die definierende CRES-Resource wurde nicht gefunden.
+
+Dies hat zur Folge, dass SimPe die Joint-Hierarchie nicht aufbauen kann.
+		</value>
+  </data>
+  <data name="FileTableSectionInclude" xml:space="preserve">
+    <value>{what} laden</value>
+  </data>
+  <data name="AllRes" xml:space="preserve">
+    <value>Alle Resourcen</value>
+  </data>
+  <data name="Loading embedded resource names..." xml:space="preserve">
+    <value>Lade eingebettete Resourcen...</value>
+  </data>
+  <data name="Loading package..." xml:space="preserve">
+    <value>Lade Package...</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.SpeciesType.Human" xml:space="preserve">
+    <value>Mensch</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.SpeciesType.LargeDog" xml:space="preserve">
+    <value>Großer Hund</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.SpeciesType.SmallDog" xml:space="preserve">
+    <value>Kleiner Hund</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.SpeciesType.Cat" xml:space="preserve">
+    <value>Katze</value>
+  </data>
+  <data name="Starting SimPe..." xml:space="preserve">
+    <value>Starte SimPe...</value>
+  </data>
+  <data name="Checking commandline parameters" xml:space="preserve">
+    <value>Prüfe Kommandozeile</value>
+  </data>
+  <data name="Creating GUI" xml:space="preserve">
+    <value>Erstelle GUI</value>
+  </data>
+  <data name="Starting Main Form" xml:space="preserve">
+    <value>Starte SimPe Dialog</value>
+  </data>
+  <data name="Loading Plugins..." xml:space="preserve">
+    <value>Lade Plugins...</value>
+  </data>
+  <data name="Enabling RemoteControl" xml:space="preserve">
+    <value>Aktiviere Fernbedienung</value>
+  </data>
+  <data name="Starting Resource Loader" xml:space="preserve">
+    <value>Starte ResourceLoader</value>
+  </data>
+  <data name="Building View Filter" xml:space="preserve">
+    <value>Erstelle Anzeigefilter</value>
+  </data>
+  <data name="SimPe.ResourceListExtensionFormats.Hex" xml:space="preserve">
+    <value>als Hex-Nummer</value>
+  </data>
+  <data name="SimPe.ResourceListExtensionFormats.Short" xml:space="preserve">
+    <value>kurzer Text</value>
+  </data>
+  <data name="SimPe.ResourceListExtensionFormats.Long" xml:space="preserve">
+    <value>langer Text</value>
+  </data>
+  <data name="SimPe.ResourceListExtensionFormats.None" xml:space="preserve">
+    <value>verstecken</value>
+  </data>
+  <data name="SimPe.ResourceListFormats.LongTypeNames" xml:space="preserve">
+    <value>langer Typ + Name</value>
+  </data>
+  <data name="SimPe.ResourceListFormats.ShortTypeNames" xml:space="preserve">
+    <value>kurzer Typ + Name</value>
+  </data>
+  <data name="SimPe.ResourceListFormats.JustNames" xml:space="preserve">
+    <value>Nur Name</value>
+  </data>
+  <data name="SimPe.ResourceListFormats.JustLongType" xml:space="preserve">
+    <value>Nur langer Typ</value>
+  </data>
+
+  <data name="SimPe.ResourceListFormats.JustShortType" xml:space="preserve">
+    <value>Nur kurzer Typ</value>
+  </data>
+  <data name="SimPe.ResourceListUnnamedFormats.Instance" xml:space="preserve">
+    <value>Nur Instanz</value>
+  </data>
+  <data name="SimPe.ResourceListUnnamedFormats.GroupInstance" xml:space="preserve">
+    <value>Gruppe + Instanz</value>
+  </data>
+  <data name="SimPe.ResourceListUnnamedFormats.FullTGI" xml:space="preserve">
+    <value>Alles</value>
+  </data>
+  <data name="installed" xml:space="preserve">
+    <value>Installiert</value>
+  </data>
+  <data name="available" xml:space="preserve">
+    <value>Verfügbar</value>
+  </data>
+  <data name="Download from" xml:space="preserve">
+    <value>Download von</value>
+  </data>
+  <data name="NoDotNet" xml:space="preserve">
+    <value>SimPe hat festgestellt, dass auf diesem System .NET {VERSION} installiert ist. 
+
+Damit SimPe korrekt funktioniert muss allerding .NET 2.0 installiert sein.</value>
+  </data>
+  <data name="Searching" xml:space="preserve">
+    <value>Durchsuche</value>
+  </data>
+  <data name="URLKnowledgeBase" xml:space="preserve">
+    <value>http://simswiki.info/wiki.php?title=Tutorials:Modding</value>
+  </data>
+
+  <data name="SimPe.PackedFiles.Wrapper.Hobbies.Cuisine" xml:space="preserve">
+    <value>Kochen</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.Hobbies.Arts" xml:space="preserve">
+    <value>Kunst</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.Hobbies.Film" xml:space="preserve">
+    <value>Filme</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.Hobbies.Sport" xml:space="preserve">
+    <value>Sport</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.Hobbies.Games" xml:space="preserve">
+    <value>Spiele</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.Hobbies.Nature" xml:space="preserve">
+    <value>Natur</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.Hobbies.Tinkering" xml:space="preserve">
+    <value>Heimwerken</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.Hobbies.Fitness" xml:space="preserve">
+    <value>Fitness</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.Hobbies.Science" xml:space="preserve">
+    <value>Wissenschaft</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.Hobbies.Music" xml:space="preserve">
+    <value>Musik</value>
+  </data>
+  <data name="SimPe.PackedFiles.Wrapper.Hobbies.Secret" xml:space="preserve">
+    <value>Geheim ???</value>
+  </data>
+</root>

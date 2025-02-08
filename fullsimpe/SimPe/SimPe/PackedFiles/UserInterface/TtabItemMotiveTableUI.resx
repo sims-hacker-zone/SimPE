@@ -1,0 +1,1665 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lbMotive0.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lbMotive0.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lbMotive0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 33</value>
+  </data>
+  <data name="lbMotive0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="lbMotive0.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbMotive0.Text" xml:space="preserve">
+    <value>motive0</value>
+  </data>
+  <data name="&gt;&gt;lbMotive0.Name" xml:space="preserve">
+    <value>lbMotive0</value>
+  </data>
+  <data name="&gt;&gt;lbMotive0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbMotive0.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbMotive0.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lbMotive1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbMotive1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbMotive1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 57</value>
+  </data>
+  <data name="lbMotive1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="lbMotive1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbMotive1.Text" xml:space="preserve">
+    <value>motive0</value>
+  </data>
+  <data name="&gt;&gt;lbMotive1.Name" xml:space="preserve">
+    <value>lbMotive1</value>
+  </data>
+  <data name="&gt;&gt;lbMotive1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbMotive1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbMotive1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lbMotive2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbMotive2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbMotive2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 80</value>
+  </data>
+  <data name="lbMotive2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="lbMotive2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbMotive2.Text" xml:space="preserve">
+    <value>motive0</value>
+  </data>
+  <data name="&gt;&gt;lbMotive2.Name" xml:space="preserve">
+    <value>lbMotive2</value>
+  </data>
+  <data name="&gt;&gt;lbMotive2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbMotive2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbMotive2.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lbMotive3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbMotive3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbMotive3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 103</value>
+  </data>
+  <data name="lbMotive3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="lbMotive3.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbMotive3.Text" xml:space="preserve">
+    <value>motive0</value>
+  </data>
+  <data name="&gt;&gt;lbMotive3.Name" xml:space="preserve">
+    <value>lbMotive3</value>
+  </data>
+  <data name="&gt;&gt;lbMotive3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbMotive3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbMotive3.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="lbMotive4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbMotive4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbMotive4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 126</value>
+  </data>
+  <data name="lbMotive4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="lbMotive4.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbMotive4.Text" xml:space="preserve">
+    <value>motive0</value>
+  </data>
+  <data name="&gt;&gt;lbMotive4.Name" xml:space="preserve">
+    <value>lbMotive4</value>
+  </data>
+  <data name="&gt;&gt;lbMotive4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbMotive4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbMotive4.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="lbMotive5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbMotive5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbMotive5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 149</value>
+  </data>
+  <data name="lbMotive5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="lbMotive5.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbMotive5.Text" xml:space="preserve">
+    <value>motive0</value>
+  </data>
+  <data name="&gt;&gt;lbMotive5.Name" xml:space="preserve">
+    <value>lbMotive5</value>
+  </data>
+  <data name="&gt;&gt;lbMotive5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbMotive5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbMotive5.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="lbMotive6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbMotive6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbMotive6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 172</value>
+  </data>
+  <data name="lbMotive6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="lbMotive6.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbMotive6.Text" xml:space="preserve">
+    <value>motive0</value>
+  </data>
+  <data name="&gt;&gt;lbMotive6.Name" xml:space="preserve">
+    <value>lbMotive6</value>
+  </data>
+  <data name="&gt;&gt;lbMotive6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbMotive6.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbMotive6.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="lbMotive7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbMotive7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbMotive7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 195</value>
+  </data>
+  <data name="lbMotive7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="lbMotive7.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbMotive7.Text" xml:space="preserve">
+    <value>motive0</value>
+  </data>
+  <data name="&gt;&gt;lbMotive7.Name" xml:space="preserve">
+    <value>lbMotive7</value>
+  </data>
+  <data name="&gt;&gt;lbMotive7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbMotive7.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbMotive7.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="lbMotive9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbMotive9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbMotive9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 241</value>
+  </data>
+  <data name="lbMotive9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="lbMotive9.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbMotive9.Text" xml:space="preserve">
+    <value>motive0</value>
+  </data>
+  <data name="&gt;&gt;lbMotive9.Name" xml:space="preserve">
+    <value>lbMotive9</value>
+  </data>
+  <data name="&gt;&gt;lbMotive9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbMotive9.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbMotive9.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="lbMotive11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbMotive11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbMotive11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 287</value>
+  </data>
+  <data name="lbMotive11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="lbMotive11.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbMotive11.Text" xml:space="preserve">
+    <value>motive0</value>
+  </data>
+  <data name="&gt;&gt;lbMotive11.Name" xml:space="preserve">
+    <value>lbMotive11</value>
+  </data>
+  <data name="&gt;&gt;lbMotive11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbMotive11.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbMotive11.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="lbMotive8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbMotive8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbMotive8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 218</value>
+  </data>
+  <data name="lbMotive8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="lbMotive8.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbMotive8.Text" xml:space="preserve">
+    <value>motive0</value>
+  </data>
+  <data name="&gt;&gt;lbMotive8.Name" xml:space="preserve">
+    <value>lbMotive8</value>
+  </data>
+  <data name="&gt;&gt;lbMotive8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbMotive8.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbMotive8.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="lbMotive10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbMotive10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbMotive10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 264</value>
+  </data>
+  <data name="lbMotive10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="lbMotive10.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbMotive10.Text" xml:space="preserve">
+    <value>motive0</value>
+  </data>
+  <data name="&gt;&gt;lbMotive10.Name" xml:space="preserve">
+    <value>lbMotive10</value>
+  </data>
+  <data name="&gt;&gt;lbMotive10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbMotive10.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbMotive10.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="lbMotive14.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbMotive14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbMotive14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 356</value>
+  </data>
+  <data name="lbMotive14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="lbMotive14.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbMotive14.Text" xml:space="preserve">
+    <value>motive0</value>
+  </data>
+  <data name="&gt;&gt;lbMotive14.Name" xml:space="preserve">
+    <value>lbMotive14</value>
+  </data>
+  <data name="&gt;&gt;lbMotive14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbMotive14.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbMotive14.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="lbMotive15.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbMotive15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbMotive15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 379</value>
+  </data>
+  <data name="lbMotive15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="lbMotive15.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbMotive15.Text" xml:space="preserve">
+    <value>motive0</value>
+  </data>
+  <data name="&gt;&gt;lbMotive15.Name" xml:space="preserve">
+    <value>lbMotive15</value>
+  </data>
+  <data name="&gt;&gt;lbMotive15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbMotive15.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbMotive15.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="lbMotive13.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbMotive13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbMotive13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 333</value>
+  </data>
+  <data name="lbMotive13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="lbMotive13.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbMotive13.Text" xml:space="preserve">
+    <value>motive0</value>
+  </data>
+  <data name="&gt;&gt;lbMotive13.Name" xml:space="preserve">
+    <value>lbMotive13</value>
+  </data>
+  <data name="&gt;&gt;lbMotive13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbMotive13.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbMotive13.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="lbMotive12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbMotive12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbMotive12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 310</value>
+  </data>
+  <data name="lbMotive12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="lbMotive12.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbMotive12.Text" xml:space="preserve">
+    <value>motive0</value>
+  </data>
+  <data name="&gt;&gt;lbMotive12.Name" xml:space="preserve">
+    <value>lbMotive12</value>
+  </data>
+  <data name="&gt;&gt;lbMotive12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbMotive12.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbMotive12.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="pnAllGroups.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="pnAllGroups.Location" type="System.Drawing.Point, System.Drawing">
+    <value>166, 0</value>
+  </data>
+  <data name="pnAllGroups.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 456</value>
+  </data>
+  <data name="pnAllGroups.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;pnAllGroups.Name" xml:space="preserve">
+    <value>pnAllGroups</value>
+  </data>
+  <data name="&gt;&gt;pnAllGroups.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnAllGroups.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnAllGroups.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cbShowAll.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbShowAll.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="cbShowAll.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbShowAll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 0</value>
+  </data>
+  <data name="cbShowAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 17</value>
+  </data>
+  <data name="cbShowAll.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="cbShowAll.Text" xml:space="preserve">
+    <value>Sho&amp;w All</value>
+  </data>
+  <data name="cbShowAll.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;cbShowAll.Name" xml:space="preserve">
+    <value>cbShowAll</value>
+  </data>
+  <data name="&gt;&gt;cbShowAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbShowAll.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cbShowAll.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnCopyAll.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCopyAll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 401</value>
+  </data>
+  <data name="btnCopyAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 24</value>
+  </data>
+  <data name="btnCopyAll.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="btnCopyAll.Text" xml:space="preserve">
+    <value>Set all like this</value>
+  </data>
+  <data name="&gt;&gt;btnCopyAll.Name" xml:space="preserve">
+    <value>btnCopyAll</value>
+  </data>
+  <data name="&gt;&gt;btnCopyAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCopyAll.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;btnCopyAll.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lbCBM0.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCBM0.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCBM0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 36</value>
+  </data>
+  <data name="lbCBM0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="lbCBM0.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="lbCBM0.Text" xml:space="preserve">
+    <value>motive to all</value>
+  </data>
+  <data name="&gt;&gt;lbCBM0.Name" xml:space="preserve">
+    <value>lbCBM0</value>
+  </data>
+  <data name="&gt;&gt;lbCBM0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCBM0.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;lbCBM0.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnCpyM0.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCpyM0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 33</value>
+  </data>
+  <data name="btnCpyM0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 24</value>
+  </data>
+  <data name="btnCpyM0.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="btnCpyM0.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM0.Name" xml:space="preserve">
+    <value>btnCpyM0</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM0.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM0.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnCpyM1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCpyM1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 55</value>
+  </data>
+  <data name="btnCpyM1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 24</value>
+  </data>
+  <data name="btnCpyM1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="btnCpyM1.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM1.Name" xml:space="preserve">
+    <value>btnCpyM1</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM1.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnCpyM2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCpyM2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 78</value>
+  </data>
+  <data name="btnCpyM2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 24</value>
+  </data>
+  <data name="btnCpyM2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnCpyM2.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM2.Name" xml:space="preserve">
+    <value>btnCpyM2</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM2.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM2.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnCpyM3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCpyM3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 101</value>
+  </data>
+  <data name="btnCpyM3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 24</value>
+  </data>
+  <data name="btnCpyM3.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="btnCpyM3.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM3.Name" xml:space="preserve">
+    <value>btnCpyM3</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM3.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM3.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="btnCpyM4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCpyM4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 124</value>
+  </data>
+  <data name="btnCpyM4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 24</value>
+  </data>
+  <data name="btnCpyM4.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="btnCpyM4.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM4.Name" xml:space="preserve">
+    <value>btnCpyM4</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM4.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM4.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="btnCpyM5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCpyM5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 147</value>
+  </data>
+  <data name="btnCpyM5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 24</value>
+  </data>
+  <data name="btnCpyM5.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="btnCpyM5.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM5.Name" xml:space="preserve">
+    <value>btnCpyM5</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM5.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM5.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="btnCpyM7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCpyM7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 193</value>
+  </data>
+  <data name="btnCpyM7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 24</value>
+  </data>
+  <data name="btnCpyM7.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="btnCpyM7.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM7.Name" xml:space="preserve">
+    <value>btnCpyM7</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM7.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM7.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="btnCpyM6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCpyM6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 170</value>
+  </data>
+  <data name="btnCpyM6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 24</value>
+  </data>
+  <data name="btnCpyM6.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="btnCpyM6.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM6.Name" xml:space="preserve">
+    <value>btnCpyM6</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM6.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM6.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="btnCpyM9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCpyM9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 239</value>
+  </data>
+  <data name="btnCpyM9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 24</value>
+  </data>
+  <data name="btnCpyM9.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="btnCpyM9.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM9.Name" xml:space="preserve">
+    <value>btnCpyM9</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM9.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM9.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="btnCpyM12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCpyM12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 308</value>
+  </data>
+  <data name="btnCpyM12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 24</value>
+  </data>
+  <data name="btnCpyM12.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="btnCpyM12.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM12.Name" xml:space="preserve">
+    <value>btnCpyM12</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM12.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM12.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="btnCpyM11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCpyM11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 285</value>
+  </data>
+  <data name="btnCpyM11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 24</value>
+  </data>
+  <data name="btnCpyM11.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="btnCpyM11.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM11.Name" xml:space="preserve">
+    <value>btnCpyM11</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM11.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM11.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="btnCpyM10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCpyM10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 262</value>
+  </data>
+  <data name="btnCpyM10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 24</value>
+  </data>
+  <data name="btnCpyM10.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="btnCpyM10.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM10.Name" xml:space="preserve">
+    <value>btnCpyM10</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM10.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM10.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="btnCpyM15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCpyM15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 377</value>
+  </data>
+  <data name="btnCpyM15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 24</value>
+  </data>
+  <data name="btnCpyM15.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="btnCpyM15.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM15.Name" xml:space="preserve">
+    <value>btnCpyM15</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM15.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM15.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="btnCpyM14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCpyM14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 354</value>
+  </data>
+  <data name="btnCpyM14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 24</value>
+  </data>
+  <data name="btnCpyM14.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="btnCpyM14.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM14.Name" xml:space="preserve">
+    <value>btnCpyM14</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM14.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM14.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="btnCpyM13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCpyM13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 331</value>
+  </data>
+  <data name="btnCpyM13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 24</value>
+  </data>
+  <data name="btnCpyM13.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="btnCpyM13.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM13.Name" xml:space="preserve">
+    <value>btnCpyM13</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM13.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM13.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="btnCpyM8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCpyM8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 216</value>
+  </data>
+  <data name="btnCpyM8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 24</value>
+  </data>
+  <data name="btnCpyM8.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="btnCpyM8.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM8.Name" xml:space="preserve">
+    <value>btnCpyM8</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM8.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;btnCpyM8.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="lbCBM1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCBM1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCBM1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 59</value>
+  </data>
+  <data name="lbCBM1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="lbCBM1.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="lbCBM1.Text" xml:space="preserve">
+    <value>motive to all</value>
+  </data>
+  <data name="&gt;&gt;lbCBM1.Name" xml:space="preserve">
+    <value>lbCBM1</value>
+  </data>
+  <data name="&gt;&gt;lbCBM1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCBM1.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;lbCBM1.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="lbCBM2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCBM2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCBM2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 82</value>
+  </data>
+  <data name="lbCBM2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="lbCBM2.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="lbCBM2.Text" xml:space="preserve">
+    <value>motive to all</value>
+  </data>
+  <data name="&gt;&gt;lbCBM2.Name" xml:space="preserve">
+    <value>lbCBM2</value>
+  </data>
+  <data name="&gt;&gt;lbCBM2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCBM2.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;lbCBM2.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="lbCBM3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCBM3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCBM3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 105</value>
+  </data>
+  <data name="lbCBM3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="lbCBM3.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="lbCBM3.Text" xml:space="preserve">
+    <value>motive to all</value>
+  </data>
+  <data name="&gt;&gt;lbCBM3.Name" xml:space="preserve">
+    <value>lbCBM3</value>
+  </data>
+  <data name="&gt;&gt;lbCBM3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCBM3.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;lbCBM3.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="lbCBM4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCBM4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCBM4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 128</value>
+  </data>
+  <data name="lbCBM4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="lbCBM4.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="lbCBM4.Text" xml:space="preserve">
+    <value>motive to all</value>
+  </data>
+  <data name="&gt;&gt;lbCBM4.Name" xml:space="preserve">
+    <value>lbCBM4</value>
+  </data>
+  <data name="&gt;&gt;lbCBM4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCBM4.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;lbCBM4.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="lbCBM5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCBM5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCBM5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 151</value>
+  </data>
+  <data name="lbCBM5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="lbCBM5.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="lbCBM5.Text" xml:space="preserve">
+    <value>motive to all</value>
+  </data>
+  <data name="&gt;&gt;lbCBM5.Name" xml:space="preserve">
+    <value>lbCBM5</value>
+  </data>
+  <data name="&gt;&gt;lbCBM5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCBM5.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;lbCBM5.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="lbCBM6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCBM6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCBM6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 173</value>
+  </data>
+  <data name="lbCBM6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="lbCBM6.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="lbCBM6.Text" xml:space="preserve">
+    <value>motive to all</value>
+  </data>
+  <data name="&gt;&gt;lbCBM6.Name" xml:space="preserve">
+    <value>lbCBM6</value>
+  </data>
+  <data name="&gt;&gt;lbCBM6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCBM6.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;lbCBM6.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="lbCBM7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCBM7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCBM7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 197</value>
+  </data>
+  <data name="lbCBM7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="lbCBM7.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="lbCBM7.Text" xml:space="preserve">
+    <value>motive to all</value>
+  </data>
+  <data name="&gt;&gt;lbCBM7.Name" xml:space="preserve">
+    <value>lbCBM7</value>
+  </data>
+  <data name="&gt;&gt;lbCBM7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCBM7.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;lbCBM7.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="lbCBM15.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCBM15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCBM15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 381</value>
+  </data>
+  <data name="lbCBM15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="lbCBM15.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="lbCBM15.Text" xml:space="preserve">
+    <value>motive to all</value>
+  </data>
+  <data name="&gt;&gt;lbCBM15.Name" xml:space="preserve">
+    <value>lbCBM15</value>
+  </data>
+  <data name="&gt;&gt;lbCBM15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCBM15.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;lbCBM15.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="lbCBM11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCBM11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCBM11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 289</value>
+  </data>
+  <data name="lbCBM11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="lbCBM11.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="lbCBM11.Text" xml:space="preserve">
+    <value>motive to all</value>
+  </data>
+  <data name="&gt;&gt;lbCBM11.Name" xml:space="preserve">
+    <value>lbCBM11</value>
+  </data>
+  <data name="&gt;&gt;lbCBM11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCBM11.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;lbCBM11.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="lbCBM14.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCBM14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCBM14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 358</value>
+  </data>
+  <data name="lbCBM14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="lbCBM14.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="lbCBM14.Text" xml:space="preserve">
+    <value>motive to all</value>
+  </data>
+  <data name="&gt;&gt;lbCBM14.Name" xml:space="preserve">
+    <value>lbCBM14</value>
+  </data>
+  <data name="&gt;&gt;lbCBM14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCBM14.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;lbCBM14.ZOrder" xml:space="preserve">
+    <value>27</value>
+  </data>
+  <data name="lbCBM8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCBM8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCBM8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 220</value>
+  </data>
+  <data name="lbCBM8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="lbCBM8.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="lbCBM8.Text" xml:space="preserve">
+    <value>motive to all</value>
+  </data>
+  <data name="&gt;&gt;lbCBM8.Name" xml:space="preserve">
+    <value>lbCBM8</value>
+  </data>
+  <data name="&gt;&gt;lbCBM8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCBM8.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;lbCBM8.ZOrder" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="lbCBM9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCBM9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCBM9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 243</value>
+  </data>
+  <data name="lbCBM9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="lbCBM9.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="lbCBM9.Text" xml:space="preserve">
+    <value>motive to all</value>
+  </data>
+  <data name="&gt;&gt;lbCBM9.Name" xml:space="preserve">
+    <value>lbCBM9</value>
+  </data>
+  <data name="&gt;&gt;lbCBM9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCBM9.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;lbCBM9.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="lbCBM13.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCBM13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCBM13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 335</value>
+  </data>
+  <data name="lbCBM13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="lbCBM13.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="lbCBM13.Text" xml:space="preserve">
+    <value>motive to all</value>
+  </data>
+  <data name="&gt;&gt;lbCBM13.Name" xml:space="preserve">
+    <value>lbCBM13</value>
+  </data>
+  <data name="&gt;&gt;lbCBM13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCBM13.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;lbCBM13.ZOrder" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="lbCBM10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCBM10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCBM10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 266</value>
+  </data>
+  <data name="lbCBM10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="lbCBM10.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="lbCBM10.Text" xml:space="preserve">
+    <value>motive to all</value>
+  </data>
+  <data name="&gt;&gt;lbCBM10.Name" xml:space="preserve">
+    <value>lbCBM10</value>
+  </data>
+  <data name="&gt;&gt;lbCBM10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCBM10.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;lbCBM10.ZOrder" xml:space="preserve">
+    <value>31</value>
+  </data>
+  <data name="lbCBM12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCBM12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCBM12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 312</value>
+  </data>
+  <data name="lbCBM12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="lbCBM12.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="lbCBM12.Text" xml:space="preserve">
+    <value>motive to all</value>
+  </data>
+  <data name="&gt;&gt;lbCBM12.Name" xml:space="preserve">
+    <value>lbCBM12</value>
+  </data>
+  <data name="&gt;&gt;lbCBM12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCBM12.Parent" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;lbCBM12.ZOrder" xml:space="preserve">
+    <value>32</value>
+  </data>
+  <data name="pnCopyButtons.Location" type="System.Drawing.Point, System.Drawing">
+    <value>325, 0</value>
+  </data>
+  <data name="pnCopyButtons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 456</value>
+  </data>
+  <data name="pnCopyButtons.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;pnCopyButtons.Name" xml:space="preserve">
+    <value>pnCopyButtons</value>
+  </data>
+  <data name="&gt;&gt;pnCopyButtons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnCopyButtons.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnCopyButtons.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lbNrGroups.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbNrGroups.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbNrGroups.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 408</value>
+  </data>
+  <data name="lbNrGroups.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 13</value>
+  </data>
+  <data name="lbNrGroups.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="lbNrGroups.Text" xml:space="preserve">
+    <value>Groups: 0xDDDDDDDD</value>
+  </data>
+  <data name="&gt;&gt;lbNrGroups.Name" xml:space="preserve">
+    <value>lbNrGroups</value>
+  </data>
+  <data name="&gt;&gt;lbNrGroups.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbNrGroups.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbNrGroups.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>478, 456</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>TtabItemMotiveTableUI</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>
