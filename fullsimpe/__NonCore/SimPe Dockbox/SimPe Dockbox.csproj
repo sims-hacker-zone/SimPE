@@ -17,7 +17,6 @@
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
-    <DelaySign>false</DelaySign>
     <OutputType>Library</OutputType>
     <RootNamespace>SimPe.Plugin.Tool.Dockable</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
@@ -133,11 +132,6 @@
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
     </Reference>
-    <Reference Include="XPCommonControls">
-      <Name>xpcommoncontrols</Name>
-      <HintPath>..\..\xpcommoncontrols.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <ProjectReference Include="..\..\GraphControl\GraphControl.csproj">
       <Project>{7D2EE6ED-78C1-4738-9AE1-E3C165A81E3D}</Project>
       <Name>GraphControl</Name>
@@ -208,6 +202,18 @@
       <Name>SimPe Workspace Helper</Name>
       <Private>False</Private>
     </ProjectReference>
+    <Reference Include="Steepvalley.Windows.Forms.Common">
+      <HintPath>..\..\..\xpCommon\Steepvalley.Windows.Forms.XPCommonControls\bin\Debug\Steepvalley.Windows.Forms.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Steepvalley.Windows.Forms">
+      <HintPath>..\..\..\xpCommon\Steepvalley.Windows.Forms.XPCommonControls\bin\Debug\Steepvalley.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Steepvalley.Windows.Forms.ListView">
+      <HintPath>..\..\..\xpCommon\Steepvalley.Windows.Forms.ListView\bin\Debug\Steepvalley.Windows.Forms.ListView.dll</HintPath>
+    </Reference>
+    <Reference Include="XPCommonControls">
+      <HintPath>..\..\XPCommonControls.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionBuildPhpGUIDList.cs">

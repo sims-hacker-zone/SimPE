@@ -193,6 +193,9 @@
       <Name>SimPe Splash</Name>
       <Private>False</Private>
     </ProjectReference>
+    <Reference Include="XPCommonControls">
+      <HintPath>..\XPCommonControls.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Build\SharedAssemblyInfo.cs">

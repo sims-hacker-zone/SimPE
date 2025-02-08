@@ -2,17 +2,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Build", "..\Build\Build.csproj", "{BA6E610A-3015-4536-99CD-D73892E9BD1E}"
 	ProjectSection(ProjectDependencies) = postProject
-		{7BEDA101-8294-40CF-838C-40523DBBCDA7} = {7BEDA101-8294-40CF-838C-40523DBBCDA7}
 		{283AB63B-00B1-4479-8D1D-E2CEC07C4B64} = {283AB63B-00B1-4479-8D1D-E2CEC07C4B64}
-		{62E5BE50-2A34-43D0-9ABA-EE3F751C1627} = {62E5BE50-2A34-43D0-9ABA-EE3F751C1627}
-		{19BF4C91-3A16-41D2-A7F0-2DE5BD7E13CF} = {19BF4C91-3A16-41D2-A7F0-2DE5BD7E13CF}
 		{F7DD4A1A-8C32-4247-9AE9-AE4372455A24} = {F7DD4A1A-8C32-4247-9AE9-AE4372455A24}
 		{3D13FA23-1B13-4FA8-8654-D5E7C1BAD823} = {3D13FA23-1B13-4FA8-8654-D5E7C1BAD823}
-		{DA114369-0A54-42A9-A3B0-F48FC5EA4F7D} = {DA114369-0A54-42A9-A3B0-F48FC5EA4F7D}
-		{0E0A4A2C-1BAE-4659-9511-5C089FA4E154} = {0E0A4A2C-1BAE-4659-9511-5C089FA4E154}
 		{4A0695E9-8C32-4F70-B7C7-B7F2EF7E38B6} = {4A0695E9-8C32-4F70-B7C7-B7F2EF7E38B6}
 		{6AA664E9-B45F-4D61-9B9F-E68341C16473} = {6AA664E9-B45F-4D61-9B9F-E68341C16473}
-		{DF925ACD-1B45-4B03-8832-54E00EE6C5D7} = {DF925ACD-1B45-4B03-8832-54E00EE6C5D7}
 		{44911ACC-87B8-4FED-865C-1950F703C3D1} = {44911ACC-87B8-4FED-865C-1950F703C3D1}
 		{DE27E48A-F5C1-4AE4-A50D-FFA0FFF4CFFD} = {DE27E48A-F5C1-4AE4-A50D-FFA0FFF4CFFD}
 		{7368AF5F-2C82-4750-A31F-63AA4432758C} = {7368AF5F-2C82-4750-A31F-63AA4432758C}
@@ -104,27 +98,27 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TGA_View", "..\TGA_View\TGA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewHexEdit", "..\HexEdit\NewHexEdit.csproj", "{57FB03C0-014D-4347-BF66-16E62ECA1EFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe pjse System Classes", "..\..\pjseCoderPlugin-cvs\pjse System Classes\SimPe pjse System Classes.csproj", "{0B9D2E1D-30F3-4718-B66B-791BFBAC3DB7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe pjse System Classes", "..\..\pjse\pjseCoderPlugin\pjse System Classes\SimPe pjse System Classes.csproj", "{0B9D2E1D-30F3-4718-B66B-791BFBAC3DB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe pjse localisation", "..\..\pjseCoderPlugin-cvs\pjse Localisation\SimPe pjse localisation.csproj", "{F5C9F168-98B7-4AE8-8ED6-9DB9A23A4CCF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe pjse localisation", "..\..\pjse\pjseCoderPlugin\pjse Localisation\SimPe pjse localisation.csproj", "{F5C9F168-98B7-4AE8-8ED6-9DB9A23A4CCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe pjse filetable", "..\..\pjseCoderPlugin-cvs\pjse filetable\SimPe pjse filetable.csproj", "{84085FAA-A947-492E-88BC-B941A4623811}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe pjse filetable", "..\..\pjse\pjseCoderPlugin\pjse filetable\SimPe pjse filetable.csproj", "{84085FAA-A947-492E-88BC-B941A4623811}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe pjse update tool", "..\..\pjseCoderPlugin-cvs\pjse update tool\SimPe pjse update tool.csproj", "{AF7E4CA2-6B8F-4A54-8149-9B7BEAB23432}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe pjse update tool", "..\..\pjse\pjseCoderPlugin\pjse update tool\SimPe pjse update tool.csproj", "{AF7E4CA2-6B8F-4A54-8149-9B7BEAB23432}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe pjse GUID Tool", "..\..\pjseCoderPlugin-cvs\pjse GUID Tool\SimPe pjse GUID Tool.csproj", "{DF925ACD-1B45-4B03-8832-54E00EE6C5D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe pjse GUID Tool", "..\..\pjse\pjseCoderPlugin\pjse GUID Tool\SimPe pjse GUID Tool.csproj", "{DF925ACD-1B45-4B03-8832-54E00EE6C5D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe pjse coder plugin", "..\..\pjseCoderPlugin-cvs\SimPe BHAV\SimPe pjse coder plugin.csproj", "{19BF4C91-3A16-41D2-A7F0-2DE5BD7E13CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe pjse coder plugin", "..\..\pjse\pjseCoderPlugin\SimPe BHAV\SimPe pjse coder plugin.csproj", "{19BF4C91-3A16-41D2-A7F0-2DE5BD7E13CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe pjObjKeyTool", "..\..\pjObjKeyTool-cvs\pjObjKeyTool\SimPe pjObjKeyTool.csproj", "{DA114369-0A54-42A9-A3B0-F48FC5EA4F7D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe pjObjKeyTool", "..\..\pjse\pjObjKeyTool\pjObjKeyTool\SimPe pjObjKeyTool.csproj", "{DA114369-0A54-42A9-A3B0-F48FC5EA4F7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe pjBodyMeshTool", "..\..\pjBodyMeshTool-cvs\pjBodyMeshTool\SimPe pjBodyMeshTool.csproj", "{0E0A4A2C-1BAE-4659-9511-5C089FA4E154}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe pjOBJDTool", "..\..\pjOBJDTool-cvs\pjOBJDTool\SimPe pjOBJDTool.csproj", "{62E5BE50-2A34-43D0-9ABA-EE3F751C1627}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe pjHoodTool", "..\..\pjHoodTool-cvs\pjHoodTool\SimPe pjHoodTool.csproj", "{7BEDA101-8294-40CF-838C-40523DBBCDA7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe pjOBJDTool", "..\..\pjse\pjOBJDTool\pjOBJDTool\SimPe pjOBJDTool.csproj", "{62E5BE50-2A34-43D0-9ABA-EE3F751C1627}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe Wants", "..\SimPe Wants\SimPe Wants.csproj", "{283AB63B-00B1-4479-8D1D-E2CEC07C4B64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe pjBodyMeshTool", "..\..\pjse\pjBodyMeshTool\pjBodyMeshTool\SimPe pjBodyMeshTool.csproj", "{0E0A4A2C-1BAE-4659-9511-5C089FA4E154}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe pjHoodTool", "..\..\pjse\pjHoodTool\pjHoodTool\SimPe pjHoodTool.csproj", "{7BEDA101-8294-40CF-838C-40523DBBCDA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -507,14 +501,6 @@ Global
 		{DA114369-0A54-42A9-A3B0-F48FC5EA4F7D}.Release MAC|Any CPU.Build.0 = Release|Any CPU
 		{DA114369-0A54-42A9-A3B0-F48FC5EA4F7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA114369-0A54-42A9-A3B0-F48FC5EA4F7D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0E0A4A2C-1BAE-4659-9511-5C089FA4E154}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0E0A4A2C-1BAE-4659-9511-5C089FA4E154}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0E0A4A2C-1BAE-4659-9511-5C089FA4E154}.InProgress|Any CPU.ActiveCfg = Release|Any CPU
-		{0E0A4A2C-1BAE-4659-9511-5C089FA4E154}.InProgress|Any CPU.Build.0 = Release|Any CPU
-		{0E0A4A2C-1BAE-4659-9511-5C089FA4E154}.Release MAC|Any CPU.ActiveCfg = Release|Any CPU
-		{0E0A4A2C-1BAE-4659-9511-5C089FA4E154}.Release MAC|Any CPU.Build.0 = Release|Any CPU
-		{0E0A4A2C-1BAE-4659-9511-5C089FA4E154}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0E0A4A2C-1BAE-4659-9511-5C089FA4E154}.Release|Any CPU.Build.0 = Release|Any CPU
 		{62E5BE50-2A34-43D0-9ABA-EE3F751C1627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{62E5BE50-2A34-43D0-9ABA-EE3F751C1627}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62E5BE50-2A34-43D0-9ABA-EE3F751C1627}.InProgress|Any CPU.ActiveCfg = Release|Any CPU
@@ -523,14 +509,6 @@ Global
 		{62E5BE50-2A34-43D0-9ABA-EE3F751C1627}.Release MAC|Any CPU.Build.0 = Release|Any CPU
 		{62E5BE50-2A34-43D0-9ABA-EE3F751C1627}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62E5BE50-2A34-43D0-9ABA-EE3F751C1627}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7BEDA101-8294-40CF-838C-40523DBBCDA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7BEDA101-8294-40CF-838C-40523DBBCDA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7BEDA101-8294-40CF-838C-40523DBBCDA7}.InProgress|Any CPU.ActiveCfg = Release|Any CPU
-		{7BEDA101-8294-40CF-838C-40523DBBCDA7}.InProgress|Any CPU.Build.0 = Release|Any CPU
-		{7BEDA101-8294-40CF-838C-40523DBBCDA7}.Release MAC|Any CPU.ActiveCfg = Release|Any CPU
-		{7BEDA101-8294-40CF-838C-40523DBBCDA7}.Release MAC|Any CPU.Build.0 = Release|Any CPU
-		{7BEDA101-8294-40CF-838C-40523DBBCDA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7BEDA101-8294-40CF-838C-40523DBBCDA7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{283AB63B-00B1-4479-8D1D-E2CEC07C4B64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{283AB63B-00B1-4479-8D1D-E2CEC07C4B64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{283AB63B-00B1-4479-8D1D-E2CEC07C4B64}.InProgress|Any CPU.ActiveCfg = Release|Any CPU
@@ -539,8 +517,26 @@ Global
 		{283AB63B-00B1-4479-8D1D-E2CEC07C4B64}.Release MAC|Any CPU.Build.0 = Release|Any CPU
 		{283AB63B-00B1-4479-8D1D-E2CEC07C4B64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{283AB63B-00B1-4479-8D1D-E2CEC07C4B64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E0A4A2C-1BAE-4659-9511-5C089FA4E154}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E0A4A2C-1BAE-4659-9511-5C089FA4E154}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E0A4A2C-1BAE-4659-9511-5C089FA4E154}.InProgress|Any CPU.ActiveCfg = Release|Any CPU
+		{0E0A4A2C-1BAE-4659-9511-5C089FA4E154}.InProgress|Any CPU.Build.0 = Release|Any CPU
+		{0E0A4A2C-1BAE-4659-9511-5C089FA4E154}.Release MAC|Any CPU.ActiveCfg = Release|Any CPU
+		{0E0A4A2C-1BAE-4659-9511-5C089FA4E154}.Release MAC|Any CPU.Build.0 = Release|Any CPU
+		{0E0A4A2C-1BAE-4659-9511-5C089FA4E154}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E0A4A2C-1BAE-4659-9511-5C089FA4E154}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BEDA101-8294-40CF-838C-40523DBBCDA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BEDA101-8294-40CF-838C-40523DBBCDA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BEDA101-8294-40CF-838C-40523DBBCDA7}.InProgress|Any CPU.ActiveCfg = Release|Any CPU
+		{7BEDA101-8294-40CF-838C-40523DBBCDA7}.InProgress|Any CPU.Build.0 = Release|Any CPU
+		{7BEDA101-8294-40CF-838C-40523DBBCDA7}.Release MAC|Any CPU.ActiveCfg = Release|Any CPU
+		{7BEDA101-8294-40CF-838C-40523DBBCDA7}.Release MAC|Any CPU.Build.0 = Release|Any CPU
+		{7BEDA101-8294-40CF-838C-40523DBBCDA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BEDA101-8294-40CF-838C-40523DBBCDA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 EndGlobal

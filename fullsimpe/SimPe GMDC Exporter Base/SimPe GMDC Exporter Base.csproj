@@ -221,6 +221,9 @@
     <Reference Include="microsoft.directx.direct3dx">
       <HintPath>..\microsoft.directx.direct3dx.dll</HintPath>
     </Reference>
+    <Reference Include="XPCommonControls">
+      <HintPath>..\XPCommonControls.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Build\SharedAssemblyInfo.cs">
