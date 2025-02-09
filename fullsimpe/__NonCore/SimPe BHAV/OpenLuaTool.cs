@@ -25,12 +25,12 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Simple Tool in order to acces the Virual LUA Package
 	/// </summary>
-	public class OpenLuaTool : Interfaces.ITool
+    public class OpenLuaTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
 		public OpenLuaTool()
 		{
 			//
-			// TODO: FÃ¼gen Sie hier die Konstruktorlogik hinzu
+			// TODO: Fügen Sie hier die Konstruktorlogik hinzu
 			//
 		}
 		#region ITool Member
@@ -55,6 +55,16 @@ namespace SimPe.Plugin
 			return "Object Tool\\Open virtual LUA package";
 		}
 
-		#endregion
+        #endregion
+
+        #region IToolExt Member
+        public override System.Drawing.Image Icon
+        {
+            get
+            {
+                return SimPe.GetIcon.OpenLua;
+            }
+        }
+        #endregion
 	}
 }

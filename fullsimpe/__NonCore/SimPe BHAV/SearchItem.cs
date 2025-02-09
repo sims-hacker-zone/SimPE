@@ -22,7 +22,7 @@ using System;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für SearchItem.
+	/// Summary description for SearchItem.
 	/// </summary>
 	public class SearchItem
 	{

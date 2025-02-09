@@ -23,9 +23,9 @@ using SimPe.Interfaces;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für ImportSemiTool.
+	/// Summary description for ImportSemiTool.
 	/// </summary>
-	public class ImportSemiTool : Interfaces.ITool
+    public class ImportSemiTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
 		IWrapperRegistry reg;
 		IProviderRegistry prov;
@@ -62,5 +62,15 @@ namespace SimPe.Plugin
 		}
 
 		#endregion
+
+        #region IToolExt Member
+        public override System.Drawing.Image Icon
+        {
+            get
+            {
+                return SimPe.GetIcon.ImportSemi;
+            }
+        }
+        #endregion
 	}
 }

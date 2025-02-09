@@ -19,13 +19,14 @@
  ***************************************************************************/
 using System;
 using SimPe.Interfaces;
+using System.Drawing;
 
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für ImportSemiTool.
+	/// Summary description for ImportSemiTool.
 	/// </summary>
-	public class SearchTool : Interfaces.ITool
+    public class SearchTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
 		/// <summary>
 		/// Windows Registry Link
@@ -56,7 +57,8 @@ namespace SimPe.Plugin
 
         public bool IsEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
         {
-            return true;
+            if (package == null || package.FileName==null) return false;
+            else return true;
         }
 
 		private bool IsReallyEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
@@ -95,9 +97,18 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			return Localization.GetString("Search Packed Files...");
-		}
+			return Localization.GetString("Search Current File...");
+        }
 
-		#endregion
+        #endregion
+        #region IToolExt Member
+        public override System.Drawing.Image Icon
+        {
+            get
+            {
+                return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.Plugin.search.png"));
+            }
+        }
+        #endregion
 	}
 }

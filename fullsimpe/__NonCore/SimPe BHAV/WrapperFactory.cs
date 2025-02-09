@@ -30,27 +30,8 @@ namespace SimPe.Plugin
 	/// If a Plugin isn't returned, SimPe won't recognize it!
 	/// </remarks>
 	public class WrapperFactory
-        : SimPe.Interfaces.Plugin.AbstractWrapperFactory
-        , SimPe.Interfaces.Plugin.IToolFactory
-            , SimPe.Interfaces.Plugin.ICommandLineFactory
+        : SimPe.Interfaces.Plugin.AbstractWrapperFactory, SimPe.Interfaces.Plugin.IToolFactory
     {
-
-		/// <summary>
-		/// Bhav Wizard
-		/// </summary>
-		/*static BhavWizard bw = null;
-
-		/// <summary>
-		/// Returns a handle to the Bhav Wizard Window
-		/// </summary>
-		internal static BhavWizard BhavWizardForm 
-		{
-			get 
-			{
-				if (bw==null) bw = new BhavWizard();
-				return bw;
-			}
-		}*/
 
 		static IProviderRegistry provider;
 		public static IProviderRegistry Provider
@@ -69,7 +50,7 @@ namespace SimPe.Plugin
 				provider = value;
 			}
 		}
-
+        /*
 		/// <summary>
 		/// Holds a reference to the Form containing the UI Panel
 		/// </summary>
@@ -84,19 +65,19 @@ namespace SimPe.Plugin
 			get 
 			{
 				IWrapper[] wrappers = {
-										  /*new Bhav(LinkedProvider.OpcodeProvider),
+										  new Bhav(LinkedProvider.OpcodeProvider),
 										  new Bcon(),
 										  new Ttab(LinkedProvider.OpcodeProvider),
-										  new Objf(LinkedProvider.OpcodeProvider),*/
-										  new Glob()
-										  //new Trcn()
+										  new Objf(LinkedProvider.OpcodeProvider),
+										  new Glob(),
+										  new Trcn()
 									  };
 				return wrappers;
 			}
 		}
 
 		#endregion
-
+        */
 		#region IToolFactory Member
 
 		public IToolPlugin[] KnownTools
@@ -105,9 +86,6 @@ namespace SimPe.Plugin
             {
                 IToolPlugin[] tools = {
 									new ImportSemiTool(this.LinkedRegistry, this.LinkedProvider),
-#if DEBUG
-                                    new SimPe.Plugin.Tool.Action.ActionBuildGlobList(),
-#endif
 								    new OpenLuaTool(),
                                     new SearchTool(this.LinkedRegistry, this.LinkedProvider),
 								};
@@ -117,20 +95,5 @@ namespace SimPe.Plugin
 
 
 		#endregion
-
-        #region ICommandLineFactory Members
-
-        public ICommandLine[] KnownCommandLines
-        {
-            get
-            {
-                return new ICommandLine[] {
-                    new GenSemiGlobals(),
-                    new BuildPackage(),
-                };
-            }
-        }
-
-        #endregion
     }
 }

@@ -27,7 +27,7 @@ using SimPe.PackedFiles.Wrapper;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für Search.
+	/// Summary description for Search.
 	/// </summary>
 	public class Search : System.Windows.Forms.Form
 	{
@@ -65,20 +65,23 @@ namespace SimPe.Plugin
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.TextBox tbpropval;
 		private System.Windows.Forms.Label label7;
+		private CheckBox cblastname;
+		private System.Windows.Forms.Panel panel1;
 		private System.ComponentModel.IContainer components;
 
 		public Search()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
 
 			prov = null;
+			if (SimPe.Helper.WindowsRegistry.UseBigIcons) this.lblist.Font = new System.Drawing.Font("Verdana", 11F);
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -92,10 +95,10 @@ namespace SimPe.Plugin
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -113,6 +116,7 @@ namespace SimPe.Plugin
 			this.tbflname = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
+			this.cblastname = new System.Windows.Forms.CheckBox();
 			this.linkLabel2 = new System.Windows.Forms.LinkLabel();
 			this.tbsimname = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
@@ -134,27 +138,30 @@ namespace SimPe.Plugin
 			this.btopen = new System.Windows.Forms.Button();
 			this.pb = new System.Windows.Forms.ProgressBar();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+			this.panel1 = new System.Windows.Forms.Panel();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
 			this.tabPage3.SuspendLayout();
 			this.tabPage4.SuspendLayout();
 			this.tabPage5.SuspendLayout();
+			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tabControl1
 			// 
-			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
 				| System.Windows.Forms.AnchorStyles.Right)));
 			this.tabControl1.Controls.Add(this.tabPage1);
 			this.tabControl1.Controls.Add(this.tabPage2);
 			this.tabControl1.Controls.Add(this.tabPage3);
 			this.tabControl1.Controls.Add(this.tabPage4);
 			this.tabControl1.Controls.Add(this.tabPage5);
-			this.tabControl1.Location = new System.Drawing.Point(8, 8);
+			this.tabControl1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tabControl1.Location = new System.Drawing.Point(8, 10);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(560, 88);
+			this.tabControl1.Size = new System.Drawing.Size(768, 108);
 			this.tabControl1.TabIndex = 0;
 			// 
 			// tabPage1
@@ -164,27 +171,27 @@ namespace SimPe.Plugin
 			this.tabPage1.Controls.Add(this.llsearch);
 			this.tabPage1.Controls.Add(this.tbOpcode);
 			this.tabPage1.Controls.Add(this.label1);
-			this.tabPage1.Location = new System.Drawing.Point(4, 22);
+			this.tabPage1.Location = new System.Drawing.Point(4, 25);
 			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Size = new System.Drawing.Size(552, 62);
+			this.tabPage1.Size = new System.Drawing.Size(760, 79);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "BHAV";
 			// 
 			// tbbhavgroup
 			// 
-			this.tbbhavgroup.Location = new System.Drawing.Point(136, 32);
+			this.tbbhavgroup.Location = new System.Drawing.Point(140, 37);
 			this.tbbhavgroup.Name = "tbbhavgroup";
+			this.tbbhavgroup.Size = new System.Drawing.Size(100, 23);
 			this.tbbhavgroup.TabIndex = 4;
-			this.tbbhavgroup.Text = "";
 			this.toolTip1.SetToolTip(this.tbbhavgroup, "leave empty to search in all Groups");
 			// 
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.label5.Location = new System.Drawing.Point(84, 40);
+			this.label5.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label5.Location = new System.Drawing.Point(84, 42);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(47, 17);
+			this.label5.Size = new System.Drawing.Size(50, 13);
 			this.label5.TabIndex = 3;
 			this.label5.Text = "Group:";
 			// 
@@ -193,10 +200,10 @@ namespace SimPe.Plugin
 			this.llsearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.llsearch.AutoSize = true;
 			this.llsearch.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.llsearch.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.llsearch.Location = new System.Drawing.Point(496, 40);
+			this.llsearch.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.llsearch.Location = new System.Drawing.Point(515, 57);
 			this.llsearch.Name = "llsearch";
-			this.llsearch.Size = new System.Drawing.Size(46, 17);
+			this.llsearch.Size = new System.Drawing.Size(57, 16);
 			this.llsearch.TabIndex = 2;
 			this.llsearch.TabStop = true;
 			this.llsearch.Text = "search";
@@ -204,18 +211,19 @@ namespace SimPe.Plugin
 			// 
 			// tbOpcode
 			// 
-			this.tbOpcode.Location = new System.Drawing.Point(136, 8);
+			this.tbOpcode.Location = new System.Drawing.Point(140, 8);
 			this.tbOpcode.Name = "tbOpcode";
+			this.tbOpcode.Size = new System.Drawing.Size(100, 23);
 			this.tbOpcode.TabIndex = 1;
 			this.tbOpcode.Text = "0x0000";
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label1.Location = new System.Drawing.Point(16, 16);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(115, 17);
+			this.label1.Size = new System.Drawing.Size(119, 13);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Contains Opcode:";
 			// 
@@ -225,16 +233,16 @@ namespace SimPe.Plugin
 			this.tabPage2.Controls.Add(this.linkLabel1);
 			this.tabPage2.Controls.Add(this.tbflname);
 			this.tabPage2.Controls.Add(this.label2);
-			this.tabPage2.Location = new System.Drawing.Point(4, 22);
+			this.tabPage2.Location = new System.Drawing.Point(4, 25);
 			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Size = new System.Drawing.Size(552, 62);
+			this.tabPage2.Size = new System.Drawing.Size(760, 79);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "RCOL";
 			// 
 			// cbusefileindex
 			// 
 			this.cbusefileindex.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbusefileindex.Location = new System.Drawing.Point(80, 32);
+			this.cbusefileindex.Location = new System.Drawing.Point(80, 35);
 			this.cbusefileindex.Name = "cbusefileindex";
 			this.cbusefileindex.Size = new System.Drawing.Size(120, 24);
 			this.cbusefileindex.TabIndex = 6;
@@ -245,10 +253,10 @@ namespace SimPe.Plugin
 			this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.linkLabel1.AutoSize = true;
 			this.linkLabel1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.linkLabel1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.linkLabel1.Location = new System.Drawing.Point(496, 40);
+			this.linkLabel1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.linkLabel1.Location = new System.Drawing.Point(515, 57);
 			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.Size = new System.Drawing.Size(46, 17);
+			this.linkLabel1.Size = new System.Drawing.Size(57, 16);
 			this.linkLabel1.TabIndex = 5;
 			this.linkLabel1.TabStop = true;
 			this.linkLabel1.Text = "search";
@@ -256,44 +264,54 @@ namespace SimPe.Plugin
 			// 
 			// tbflname
 			// 
-			this.tbflname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.tbflname.Location = new System.Drawing.Point(80, 8);
+			this.tbflname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
+			this.tbflname.Location = new System.Drawing.Point(90, 8);
 			this.tbflname.Name = "tbflname";
-			this.tbflname.Size = new System.Drawing.Size(408, 21);
+			this.tbflname.Size = new System.Drawing.Size(653, 23);
 			this.tbflname.TabIndex = 4;
-			this.tbflname.Text = "";
 			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label2.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label2.Location = new System.Drawing.Point(13, 15);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(67, 17);
+			this.label2.Size = new System.Drawing.Size(71, 13);
 			this.label2.TabIndex = 3;
 			this.label2.Text = "Filename:";
 			// 
 			// tabPage3
 			// 
+			this.tabPage3.Controls.Add(this.cblastname);
 			this.tabPage3.Controls.Add(this.linkLabel2);
 			this.tabPage3.Controls.Add(this.tbsimname);
 			this.tabPage3.Controls.Add(this.label3);
-			this.tabPage3.Location = new System.Drawing.Point(4, 22);
+			this.tabPage3.Location = new System.Drawing.Point(4, 25);
 			this.tabPage3.Name = "tabPage3";
-			this.tabPage3.Size = new System.Drawing.Size(552, 62);
+			this.tabPage3.Size = new System.Drawing.Size(760, 79);
 			this.tabPage3.TabIndex = 2;
 			this.tabPage3.Text = "Sims";
+			// 
+			// cblastname
+			// 
+			this.cblastname.AutoSize = true;
+			this.cblastname.Location = new System.Drawing.Point(88, 37);
+			this.cblastname.Name = "cblastname";
+			this.cblastname.Size = new System.Drawing.Size(219, 20);
+			this.cblastname.TabIndex = 9;
+			this.cblastname.Text = "Use Last or Family name only";
+			this.cblastname.UseVisualStyleBackColor = true;
 			// 
 			// linkLabel2
 			// 
 			this.linkLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.linkLabel2.AutoSize = true;
 			this.linkLabel2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.linkLabel2.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.linkLabel2.Location = new System.Drawing.Point(496, 40);
+			this.linkLabel2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.linkLabel2.Location = new System.Drawing.Point(515, 57);
 			this.linkLabel2.Name = "linkLabel2";
-			this.linkLabel2.Size = new System.Drawing.Size(46, 17);
+			this.linkLabel2.Size = new System.Drawing.Size(57, 16);
 			this.linkLabel2.TabIndex = 8;
 			this.linkLabel2.TabStop = true;
 			this.linkLabel2.Text = "search";
@@ -301,21 +319,20 @@ namespace SimPe.Plugin
 			// 
 			// tbsimname
 			// 
-			this.tbsimname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.tbsimname.Location = new System.Drawing.Point(88, 8);
+			this.tbsimname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
+			this.tbsimname.Location = new System.Drawing.Point(95, 8);
 			this.tbsimname.Name = "tbsimname";
-			this.tbsimname.Size = new System.Drawing.Size(400, 21);
+			this.tbsimname.Size = new System.Drawing.Size(648, 23);
 			this.tbsimname.TabIndex = 8;
-			this.tbsimname.Text = "";
 			// 
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label3.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label3.Location = new System.Drawing.Point(13, 12);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(73, 17);
+			this.label3.Size = new System.Drawing.Size(76, 13);
 			this.label3.TabIndex = 6;
 			this.label3.Text = "Sim Name:";
 			// 
@@ -330,45 +347,44 @@ namespace SimPe.Plugin
 			this.tabPage4.Controls.Add(this.linkLabel3);
 			this.tabPage4.Controls.Add(this.tbpropname);
 			this.tabPage4.Controls.Add(this.label4);
-			this.tabPage4.Location = new System.Drawing.Point(4, 22);
+			this.tabPage4.Location = new System.Drawing.Point(4, 25);
 			this.tabPage4.Name = "tabPage4";
-			this.tabPage4.Size = new System.Drawing.Size(552, 62);
+			this.tabPage4.Size = new System.Drawing.Size(760, 79);
 			this.tabPage4.TabIndex = 3;
 			this.tabPage4.Text = "Property Set";
 			// 
 			// tbpropval
 			// 
-			this.tbpropval.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.tbpropval.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
 				| System.Windows.Forms.AnchorStyles.Right)));
-			this.tbpropval.Location = new System.Drawing.Point(288, 8);
+			this.tbpropval.Location = new System.Drawing.Point(454, 8);
 			this.tbpropval.Name = "tbpropval";
-			this.tbpropval.Size = new System.Drawing.Size(256, 21);
+			this.tbpropval.Size = new System.Drawing.Size(287, 23);
 			this.tbpropval.TabIndex = 16;
-			this.tbpropval.Text = "";
 			// 
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.label7.Location = new System.Drawing.Point(240, 16);
+			this.label7.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label7.Location = new System.Drawing.Point(401, 13);
 			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(44, 17);
+			this.label7.Size = new System.Drawing.Size(47, 13);
 			this.label7.TabIndex = 15;
 			this.label7.Text = "Value:";
 			// 
 			// rbcont
 			// 
 			this.rbcont.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.rbcont.Location = new System.Drawing.Point(296, 32);
+			this.rbcont.Location = new System.Drawing.Point(317, 37);
 			this.rbcont.Name = "rbcont";
-			this.rbcont.Size = new System.Drawing.Size(72, 24);
+			this.rbcont.Size = new System.Drawing.Size(88, 24);
 			this.rbcont.TabIndex = 14;
 			this.rbcont.Text = "contains";
 			// 
 			// rbend
 			// 
 			this.rbend.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.rbend.Location = new System.Drawing.Point(232, 32);
+			this.rbend.Location = new System.Drawing.Point(253, 37);
 			this.rbend.Name = "rbend";
 			this.rbend.Size = new System.Drawing.Size(48, 24);
 			this.rbend.TabIndex = 13;
@@ -378,7 +394,7 @@ namespace SimPe.Plugin
 			// 
 			this.rbstart.Checked = true;
 			this.rbstart.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.rbstart.Location = new System.Drawing.Point(160, 32);
+			this.rbstart.Location = new System.Drawing.Point(181, 37);
 			this.rbstart.Name = "rbstart";
 			this.rbstart.Size = new System.Drawing.Size(56, 24);
 			this.rbstart.TabIndex = 12;
@@ -388,9 +404,9 @@ namespace SimPe.Plugin
 			// rbfull
 			// 
 			this.rbfull.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.rbfull.Location = new System.Drawing.Point(88, 32);
+			this.rbfull.Location = new System.Drawing.Point(88, 37);
 			this.rbfull.Name = "rbfull";
-			this.rbfull.Size = new System.Drawing.Size(56, 24);
+			this.rbfull.Size = new System.Drawing.Size(77, 24);
 			this.rbfull.TabIndex = 11;
 			this.rbfull.Text = "match";
 			// 
@@ -399,10 +415,10 @@ namespace SimPe.Plugin
 			this.linkLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.linkLabel3.AutoSize = true;
 			this.linkLabel3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.linkLabel3.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.linkLabel3.Location = new System.Drawing.Point(496, 40);
+			this.linkLabel3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.linkLabel3.Location = new System.Drawing.Point(515, 57);
 			this.linkLabel3.Name = "linkLabel3";
-			this.linkLabel3.Size = new System.Drawing.Size(46, 17);
+			this.linkLabel3.Size = new System.Drawing.Size(57, 16);
 			this.linkLabel3.TabIndex = 10;
 			this.linkLabel3.TabStop = true;
 			this.linkLabel3.Text = "search";
@@ -410,19 +426,19 @@ namespace SimPe.Plugin
 			// 
 			// tbpropname
 			// 
-			this.tbpropname.Location = new System.Drawing.Point(88, 8);
+			this.tbpropname.Location = new System.Drawing.Point(67, 8);
 			this.tbpropname.Name = "tbpropname";
-			this.tbpropname.Size = new System.Drawing.Size(128, 21);
+			this.tbpropname.Size = new System.Drawing.Size(287, 23);
 			this.tbpropname.TabIndex = 9;
 			this.tbpropname.Text = "name";
 			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.label4.Location = new System.Drawing.Point(41, 12);
+			this.label4.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label4.Location = new System.Drawing.Point(13, 13);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(45, 17);
+			this.label4.Size = new System.Drawing.Size(48, 13);
 			this.label4.TabIndex = 8;
 			this.label4.Text = "Name:";
 			// 
@@ -431,9 +447,9 @@ namespace SimPe.Plugin
 			this.tabPage5.Controls.Add(this.linkLabel4);
 			this.tabPage5.Controls.Add(this.tbguid);
 			this.tabPage5.Controls.Add(this.label6);
-			this.tabPage5.Location = new System.Drawing.Point(4, 22);
+			this.tabPage5.Location = new System.Drawing.Point(4, 25);
 			this.tabPage5.Name = "tabPage5";
-			this.tabPage5.Size = new System.Drawing.Size(552, 62);
+			this.tabPage5.Size = new System.Drawing.Size(760, 79);
 			this.tabPage5.TabIndex = 4;
 			this.tabPage5.Text = "GUID";
 			// 
@@ -442,10 +458,10 @@ namespace SimPe.Plugin
 			this.linkLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.linkLabel4.AutoSize = true;
 			this.linkLabel4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.linkLabel4.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.linkLabel4.Location = new System.Drawing.Point(495, 39);
+			this.linkLabel4.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.linkLabel4.Location = new System.Drawing.Point(515, 57);
 			this.linkLabel4.Name = "linkLabel4";
-			this.linkLabel4.Size = new System.Drawing.Size(46, 17);
+			this.linkLabel4.Size = new System.Drawing.Size(57, 16);
 			this.linkLabel4.TabIndex = 11;
 			this.linkLabel4.TabStop = true;
 			this.linkLabel4.Text = "search";
@@ -453,34 +469,34 @@ namespace SimPe.Plugin
 			// 
 			// tbguid
 			// 
-			this.tbguid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
+			this.tbguid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this.tbguid.Location = new System.Drawing.Point(87, 7);
 			this.tbguid.Name = "tbguid";
-			this.tbguid.Size = new System.Drawing.Size(97, 21);
+			this.tbguid.Size = new System.Drawing.Size(147, 23);
 			this.tbguid.TabIndex = 10;
 			this.tbguid.Text = "0x00000000";
 			// 
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label6.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label6.Location = new System.Drawing.Point(40, 11);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(43, 17);
+			this.label6.Size = new System.Drawing.Size(44, 13);
 			this.label6.TabIndex = 9;
 			this.label6.Text = "GUID:";
 			// 
 			// lblist
 			// 
-			this.lblist.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
+			this.lblist.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this.lblist.HorizontalScrollbar = true;
 			this.lblist.IntegralHeight = false;
-			this.lblist.Location = new System.Drawing.Point(8, 104);
+			this.lblist.Location = new System.Drawing.Point(8, 124);
 			this.lblist.Name = "lblist";
-			this.lblist.Size = new System.Drawing.Size(560, 192);
+			this.lblist.Size = new System.Drawing.Size(768, 344);
 			this.lblist.TabIndex = 1;
 			this.lblist.SelectedIndexChanged += new System.EventHandler(this.SelectFile);
 			// 
@@ -488,41 +504,68 @@ namespace SimPe.Plugin
 			// 
 			this.btopen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btopen.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btopen.Location = new System.Drawing.Point(493, 304);
+			this.btopen.Location = new System.Drawing.Point(701, 474);
 			this.btopen.Name = "btopen";
+			this.btopen.Size = new System.Drawing.Size(75, 23);
 			this.btopen.TabIndex = 2;
 			this.btopen.Text = "Open";
 			this.btopen.Click += new System.EventHandler(this.Open);
 			// 
 			// pb
 			// 
-			this.pb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.pb.Location = new System.Drawing.Point(8, 304);
+			this.pb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
+			this.pb.Location = new System.Drawing.Point(8, 481);
 			this.pb.Maximum = 1000;
 			this.pb.Name = "pb";
-			this.pb.Size = new System.Drawing.Size(480, 16);
+			this.pb.Size = new System.Drawing.Size(687, 16);
 			this.pb.TabIndex = 3;
+			this.pb.BackColor = System.Drawing.Color.Transparent;
+			this.pb.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.pb.Gradient = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+			this.pb.Quality = true;
+			this.pb.TokenCount = 2;
+			this.pb.UnselectedColor = System.Drawing.Color.Black;
+			this.pb.UseTokenBuffer = false;
+			// 
+			// panel1
+			// 
+			this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
+			this.panel1.BackColor = System.Drawing.Color.Transparent;
+			this.panel1.Controls.Add(this.pb);
+			this.panel1.Controls.Add(this.btopen);
+			this.panel1.Controls.Add(this.lblist);
+			this.panel1.Controls.Add(this.tabControl1);
+			this.panel1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.panel1.Location = new System.Drawing.Point(0, 0);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(786, 503);
+			this.panel1.TabIndex = 4;
 			// 
 			// Search
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-			this.ClientSize = new System.Drawing.Size(576, 334);
-			this.Controls.Add(this.pb);
-			this.Controls.Add(this.btopen);
-			this.Controls.Add(this.lblist);
-			this.Controls.Add(this.tabControl1);
-			this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.ClientSize = new System.Drawing.Size(784, 501);
+			this.Controls.Add(this.panel1);
+			this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
 			this.Name = "Search";
 			this.ShowInTaskbar = false;
 			this.Text = "Search";
 			this.tabControl1.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
+			this.tabPage1.PerformLayout();
 			this.tabPage2.ResumeLayout(false);
+			this.tabPage2.PerformLayout();
 			this.tabPage3.ResumeLayout(false);
+			this.tabPage3.PerformLayout();
 			this.tabPage4.ResumeLayout(false);
+			this.tabPage4.PerformLayout();
 			this.tabPage5.ResumeLayout(false);
+			this.tabPage5.PerformLayout();
+			this.panel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -650,14 +693,32 @@ namespace SimPe.Plugin
 
 			if (ext.Trim()!="") ext = " ("+ext+")";
 
-			string simname = sdesc.SimName + " " + sdesc.SimFamilyName;
-			simname = simname.Trim().ToLower();
-			if (simname==name) return new SearchItem(simname+ext, pfd);
+			string simname = "";
 
-			simname = sdesc.SimName + " " + sdesc.HouseholdName;
-			simname = simname.Trim().ToLower();
-			if (simname==name) return new SearchItem(simname+ext, pfd);
-			
+			if (this.cblastname.Checked)
+			{
+				simname = sdesc.SimFamilyName;
+				simname = simname.Trim().ToLower();
+				if (simname == name) return new SearchItem(sdesc.SimName + " " + sdesc.SimFamilyName + ext, pfd);
+
+				simname = sdesc.HouseholdName;
+				simname = simname.Trim().ToLower();
+				if (simname == name) return new SearchItem(sdesc.SimName + " " + sdesc.SimFamilyName + ext, pfd);
+			}
+			else
+			{
+				simname = sdesc.SimName + " " + sdesc.SimFamilyName;
+				simname = simname.Trim().ToLower();
+				if (simname == name) return new SearchItem(sdesc.SimName + " " + sdesc.SimFamilyName + ext, pfd);
+
+				simname = sdesc.SimName + " " + sdesc.HouseholdName;
+				simname = simname.Trim().ToLower();
+				if (simname == name) return new SearchItem(sdesc.SimName + " " + sdesc.SimFamilyName + ext, pfd);
+
+				simname = sdesc.SimName;
+				simname = simname.Trim().ToLower();
+				if (simname == name) return new SearchItem(sdesc.SimName + " " + sdesc.SimFamilyName + ext, pfd);
+			}
 
 			return null;
 		}
@@ -782,8 +843,8 @@ namespace SimPe.Plugin
 			if (cbusefileindex.Checked) 
 			{
 				WaitingScreen.Wait();
-                try { SimPe.FileTable.FileIndex.Load(); }
-                finally { WaitingScreen.Stop(this); }
+				try { SimPe.FileTable.FileIndex.Load(); }
+				finally { WaitingScreen.Stop(this); }
 
 				lblist.Items.Clear();
 				SimPe.Packages.PackedFileDescriptor pfd = new SimPe.Packages.PackedFileDescriptor();

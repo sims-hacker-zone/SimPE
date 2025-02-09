@@ -26,7 +26,7 @@ using System.Windows.Forms;
 namespace SimPe
 {
 	/// <summary>
-	/// Zusammenfassung für ImportSemi.
+	/// Summary description for ImportSemi.
 	/// </summary>
 	public class ImportSemi : System.Windows.Forms.Form
 	{
@@ -40,12 +40,13 @@ namespace SimPe
 		private System.Windows.Forms.CheckBox cbfix;
 		private System.Windows.Forms.ToolTip toolTip1;
 		private System.Windows.Forms.CheckBox cbname;
+        private System.Windows.Forms.Panel panel1;
 		private System.ComponentModel.IContainer components;
 
 		public ImportSemi()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
 
@@ -79,7 +80,7 @@ namespace SimPe
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -93,145 +94,171 @@ namespace SimPe
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(ImportSemi));
-			this.btimport = new System.Windows.Forms.Button();
-			this.cbsemi = new System.Windows.Forms.ComboBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.llscan = new System.Windows.Forms.LinkLabel();
-			this.lbfiles = new System.Windows.Forms.CheckedListBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-			this.cbfix = new System.Windows.Forms.CheckBox();
-			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-			this.cbname = new System.Windows.Forms.CheckBox();
-			this.SuspendLayout();
-			// 
-			// btimport
-			// 
-			this.btimport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btimport.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btimport.Location = new System.Drawing.Point(437, 360);
-			this.btimport.Name = "btimport";
-			this.btimport.TabIndex = 1;
-			this.btimport.Text = "Import";
-			this.btimport.Click += new System.EventHandler(this.ImportFiles);
-			// 
-			// cbsemi
-			// 
-			this.cbsemi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.cbsemi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbsemi.Location = new System.Drawing.Point(16, 32);
-			this.cbsemi.Name = "cbsemi";
-			this.cbsemi.Size = new System.Drawing.Size(496, 21);
-			this.cbsemi.TabIndex = 2;
-			// 
-			// label1
-			// 
-			this.label1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.label1.Location = new System.Drawing.Point(16, 16);
-			this.label1.Name = "label1";
-			this.label1.TabIndex = 3;
-			this.label1.Text = "Semi Global:";
-			// 
-			// llscan
-			// 
-			this.llscan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.llscan.AutoSize = true;
-			this.llscan.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.llscan.Location = new System.Drawing.Point(479, 56);
-			this.llscan.Name = "llscan";
-			this.llscan.Size = new System.Drawing.Size(33, 17);
-			this.llscan.TabIndex = 4;
-			this.llscan.TabStop = true;
-			this.llscan.Text = "scan";
-			this.llscan.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ScanSemiGlobals);
-			// 
-			// lbfiles
-			// 
-			this.lbfiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.lbfiles.CheckOnClick = true;
-			this.lbfiles.HorizontalScrollbar = true;
-			this.lbfiles.IntegralHeight = false;
-			this.lbfiles.Location = new System.Drawing.Point(16, 96);
-			this.lbfiles.Name = "lbfiles";
-			this.lbfiles.Size = new System.Drawing.Size(496, 256);
-			this.lbfiles.TabIndex = 5;
-			// 
-			// label2
-			// 
-			this.label2.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.label2.Location = new System.Drawing.Point(16, 80);
-			this.label2.Name = "label2";
-			this.label2.TabIndex = 6;
-			this.label2.Text = "Files:";
-			// 
-			// linkLabel1
-			// 
-			this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.linkLabel1.Location = new System.Drawing.Point(16, 352);
-			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.Size = new System.Drawing.Size(76, 17);
-			this.linkLabel1.TabIndex = 7;
-			this.linkLabel1.TabStop = true;
-			this.linkLabel1.Text = "uncheck all";
-			this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-			// 
-			// cbfix
-			// 
-			this.cbfix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.cbfix.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbfix.Location = new System.Drawing.Point(256, 360);
-			this.cbfix.Name = "cbfix";
-			this.cbfix.Size = new System.Drawing.Size(176, 24);
-			this.cbfix.TabIndex = 8;
-			this.cbfix.Text = "Fix Package References";
-			this.toolTip1.SetToolTip(this.cbfix, "Check this Option if you want to Fix references form TTABs and BHAVs in this pack" +
-				"age to the imported SemiGLobals.");
-			// 
-			// cbname
-			// 
-			this.cbname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.cbname.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbname.Location = new System.Drawing.Point(120, 360);
-			this.cbname.Name = "cbname";
-			this.cbname.Size = new System.Drawing.Size(128, 24);
-			this.cbname.TabIndex = 9;
-			this.cbname.Text = "Add name Prefix";
-			this.toolTip1.SetToolTip(this.cbname, "Check this Option if you want to Fix references form TTABs and BHAVs in this pack" +
-				"age to the imported SemiGLobals.");
-			// 
-			// ImportSemi
-			// 
-			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-			this.ClientSize = new System.Drawing.Size(522, 392);
-			this.Controls.Add(this.cbname);
-			this.Controls.Add(this.cbfix);
-			this.Controls.Add(this.lbfiles);
-			this.Controls.Add(this.llscan);
-			this.Controls.Add(this.linkLabel1);
-			this.Controls.Add(this.cbsemi);
-			this.Controls.Add(this.btimport);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.label2);
-			this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Name = "ImportSemi";
-			this.Text = "Import SemiGlobals";
-			this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportSemi));
+            this.btimport = new System.Windows.Forms.Button();
+            this.cbsemi = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.llscan = new System.Windows.Forms.LinkLabel();
+            this.lbfiles = new System.Windows.Forms.CheckedListBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.cbfix = new System.Windows.Forms.CheckBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.cbname = new System.Windows.Forms.CheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // btimport
+            // 
+            this.btimport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btimport.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btimport.Location = new System.Drawing.Point(698, 471);
+            this.btimport.Name = "btimport";
+            this.btimport.Size = new System.Drawing.Size(75, 23);
+            this.btimport.TabIndex = 1;
+            this.btimport.Text = "Import";
+            this.btimport.Click += new System.EventHandler(this.ImportFiles);
+            // 
+            // cbsemi
+            // 
+            this.cbsemi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbsemi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbsemi.Location = new System.Drawing.Point(16, 32);
+            this.cbsemi.Name = "cbsemi";
+            this.cbsemi.Size = new System.Drawing.Size(758, 24);
+            this.cbsemi.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(16, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 23);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Semi Global:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // llscan
+            // 
+            this.llscan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.llscan.AutoSize = true;
+            this.llscan.BackColor = System.Drawing.Color.Transparent;
+            this.llscan.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llscan.Location = new System.Drawing.Point(730, 59);
+            this.llscan.Name = "llscan";
+            this.llscan.Size = new System.Drawing.Size(42, 16);
+            this.llscan.TabIndex = 4;
+            this.llscan.TabStop = true;
+            this.llscan.Text = "scan";
+            this.llscan.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ScanSemiGlobals);
+            // 
+            // lbfiles
+            // 
+            this.lbfiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbfiles.CheckOnClick = true;
+            this.lbfiles.HorizontalScrollbar = true;
+            this.lbfiles.IntegralHeight = false;
+            this.lbfiles.Location = new System.Drawing.Point(16, 96);
+            this.lbfiles.Name = "lbfiles";
+            this.lbfiles.Size = new System.Drawing.Size(758, 365);
+            this.lbfiles.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(16, 70);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 23);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Files:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.linkLabel1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Location = new System.Drawing.Point(16, 471);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(89, 16);
+            this.linkLabel1.TabIndex = 7;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "uncheck all";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // cbfix
+            // 
+            this.cbfix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbfix.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbfix.Location = new System.Drawing.Point(506, 470);
+            this.cbfix.Name = "cbfix";
+            this.cbfix.Size = new System.Drawing.Size(176, 24);
+            this.cbfix.TabIndex = 8;
+            this.cbfix.Text = "Fix Package References";
+            this.toolTip1.SetToolTip(this.cbfix, "Check this Option if you want to Fix references form TTABs and BHAVs in this pack" +
+                    "age to the imported SemiGLobals.");
+            // 
+            // cbname
+            // 
+            this.cbname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbname.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbname.Location = new System.Drawing.Point(362, 470);
+            this.cbname.Name = "cbname";
+            this.cbname.Size = new System.Drawing.Size(128, 24);
+            this.cbname.TabIndex = 9;
+            this.cbname.Text = "Add name Prefix";
+            this.toolTip1.SetToolTip(this.cbname, "Check this Option if you want to Fix references form TTABs and BHAVs in this pack" +
+                    "age to the imported SemiGLobals.");
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.lbfiles);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.cbname);
+            this.panel1.Controls.Add(this.cbfix);
+            this.panel1.Controls.Add(this.llscan);
+            this.panel1.Controls.Add(this.linkLabel1);
+            this.panel1.Controls.Add(this.cbsemi);
+            this.panel1.Controls.Add(this.btimport);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(787, 503);
+            this.panel1.TabIndex = 10;
+            // 
+            // ImportSemi
+            // 
+            this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
+            this.ClientSize = new System.Drawing.Size(784, 501);
+            this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "ImportSemi";
+            this.Text = "Import SemiGlobals";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.ResumeLayout(false);
 
 		}
 		#endregion
