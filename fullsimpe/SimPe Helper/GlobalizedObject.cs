@@ -167,9 +167,9 @@ namespace SimPe
 				
 				
 				// Get the string from the resources. 
-				// If this fails, then use default empty string indictating 'no description' 
-				string s = resource.GetString("[Description:"+displayName+"]");
-				this.localizedDescription = (s!=null)? s : ""; 
+				// If this fails, then use default empty string indictating 'no description'
+				string s = resource.GetString("[Description:" + displayName + "]");
+				this.localizedDescription = (s != null) ? s : "";
 
 				return this.localizedDescription;
 			}

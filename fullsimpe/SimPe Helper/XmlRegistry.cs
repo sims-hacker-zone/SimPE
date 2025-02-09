@@ -257,18 +257,15 @@ namespace SimPe
 		public XmlRegistryKey CurrentUser 
 		{
 			get {return root; }
-		}
+		}		
 
-        /// <summary>
-        /// Load the Registry from the passed File
-        /// </summary>
-        /// <param name="infilename">Name of the Registry</param>
-        /// <param name="create">true, if you want to create the File if it does not exist</param>
-        public XmlRegistry(string infilename, string outfilename, bool create)
+		/// <summary>
+		/// Load the Registry from the passed File
+		/// </summary>
+		/// <param name="xmlfilename">Name of the Registry</param>
+		/// <param name="create">true, if you want to create the File if it does not exist</param>
+		public XmlRegistry(string infilename, string outfilename, bool create)
 		{
-#if MAC
-			Console.WriteLine("Loading Settings from \""+infilename+"\".");
-#endif
 			root = new XmlRegistryKey();
 			if (create) 
 			{
@@ -528,7 +525,7 @@ namespace SimPe
 			} 
 			catch (Exception ex)
 			{
-				Helper.ExceptionMessage("", new Warning("Unable to create settings File.", "SimPE was unable to create the file "+filename+".\n\nYour Settings won't not be saved!", ex));
+				Helper.ExceptionMessage("", new Warning("Unable to create settings File.", "SimPe was unable to create the file "+filename+".\n\nYour Settings won't not be saved!", ex));
 			}
 		}
 

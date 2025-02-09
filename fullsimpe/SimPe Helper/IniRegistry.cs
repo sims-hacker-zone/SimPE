@@ -24,7 +24,6 @@ using System.Text;
 
 namespace SimPe
 {
-    
     /// <summary>
     /// Simple "[section name]", "key name=value" ini file reader/writer.
     /// Any comments and blank lines read are lost if the file is written.
@@ -32,7 +31,6 @@ namespace SimPe
     public class IniRegistry : IEnumerable<String>, IEnumerable<IniRegistry.SectionContent>
     {
         class Sectionlist : Dictionary<String, SectionContent> {}
-        
 
         bool fileIsReadonly = true;
         string iniFile = null;
@@ -67,8 +65,8 @@ namespace SimPe
                 else if (line.Contains("="))
                 {
                     string[] a = line.Split(new char[] { '=' }, 2);
-                    keyName = a[0].Trim().ToLower();
-                    keyValue = a[1].Trim().ToLower();
+                    keyName = a[0].Trim(); //.ToLower();
+                    keyValue = a[1].Trim(); //.ToLower();
                     reg[keyBase].SetValue(keyName, keyValue, true);
                     continue;
                 }
@@ -275,8 +273,6 @@ namespace SimPe
             {
                 list.Clear();
             }
-
-
 
             public string this[string key]
             {

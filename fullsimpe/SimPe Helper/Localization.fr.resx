@@ -253,9 +253,6 @@
   <data name="byteviewerror" xml:space="preserve">
     <value>Erreur lors de l'affichage de Byte View</value>
   </data>
-  <data name="usebigfile?" xml:space="preserve">
-    <value>Ce fichier est d'une taille plus grande que 10ko, le charger quand même ? (Cela peut prendre quelques instants !)</value>
-  </data>
   <data name="confirm" xml:space="preserve">
     <value>Confirmation</value>
   </data>
@@ -281,12 +278,12 @@
     <value>Créer une copie ?</value>
   </data>
   <data name="disclaimer" xml:space="preserve">
-    <value>SimPE est un outil utilisé pour modifier les données internes de "Les Sims 2". 
+    <value>SimPe est un outil utilisé pour modifier les données internes de "Les Sims 2". 
 		
-Plusieurs personnes utilisent SimPE sans problème.  Mais si vous ne faites pas attention cet outil peut endommager votre jeu et même votre système.  N'utilisez pas SimPE si vous ne voulez pas prendre ce risque !  Rappelez-vous que SimPE est en stade alpha !
-Assurez-vous d'avoir une copie de secours fonctionnelle de "Mes documents\EA Games\Les Sims 2\" avant de lancer SimPE.
+Plusieurs personnes utilisent SimPe sans problème.  Mais si vous ne faites pas attention cet outil peut endommager votre jeu et même votre système.  N'utilisez pas SimPe si vous ne voulez pas prendre ce risque !  Rappelez-vous que SimPe est en stade alpha !
+Assurez-vous d'avoir une copie de secours fonctionnelle de "Mes documents\EA Games\Les Sims 2\" avant de lancer SimPe.
 
-Lancer SimPE maintenant ?</value>
+Lancer SimPe maintenant ?</value>
   </data>
   <data name="savechanges?" xml:space="preserve">
     <value>Enregistrer les changements ?</value>
@@ -320,7 +317,7 @@ Emballage :  {filename}</value>
     <value>Tante ou Oncle</value>
   </data>
   <data name="OW_Warning" xml:space="preserve">
-    <value>Pour que cette fonctionnalité fonctionne sur les objets dont le support d'ajout de Couleur n'est pas activés, vous aurez besoin de télécharger "Options d'Activation de Couleur" (Colour Options Enabler) ici http://sims.ambertation.de/download.shtml .\n\n Cette fonctionnalité est en stade de "Beta Test" et peut ne pas fonctionner correctement.  Ne distribuez pas un objet Recoloré avec cet outil sans mentionner qu'il est en teste ou en version Beta, et n'oubliez pas que l'utilisateur aura aussi besoin de "Options d'Activation de Couleur" pour tous les objets "Recolorés" !\n\n Continuer ?</value>
+    <value>Pour que cette fonctionnalité fonctionne sur les objets dont le support d'ajout de Couleur n'est pas activés, vous aurez besoin de télécharger "Options d'Activation de Couleur" (Colour Options Enabler) ici http://www.modthesims2.com/index.php? .\n\n Cette fonctionnalité est en stade de "Beta Test" et peut ne pas fonctionner correctement.  Ne distribuez pas un objet Recoloré avec cet outil sans mentionner qu'il est en teste ou en version Beta, et n'oubliez pas que l'utilisateur aura aussi besoin de "Options d'Activation de Couleur" pour tous les objets "Recolorés" !\n\n Continuer ?</value>
   </data>
   <data name="YoungAdult" xml:space="preserve">
     <value>Jeune adult</value>
@@ -397,23 +394,8 @@ Package :  {filename}</value>
   <data name="Please Wait" xml:space="preserve">
     <value>Veuillez patienter...</value>
   </data>
-  <data name="Current Version" xml:space="preserve">
-    <value>Version actuelle</value>
-  </data>
-  <data name="Available QA-Version" xml:space="preserve">
-    <value>QA-Version disponible</value>
-  </data>
-  <data name="Available Version" xml:space="preserve">
-    <value>Version disponible</value>
-  </data>
-  <data name="download" xml:space="preserve">
-    <value>télécharger</value>
-  </data>
-  <data name="get_qa_release" xml:space="preserve">
-    <value>Une nouvelle &lt;b&gt;Version QA&lt;/b&gt; a été trouvée.&lt;br /&gt;Vous pouvez la télécharger ici &lt;b&gt;&lt;a href="http://ambertation.de/simpeforum/forum/viewforum/14" target="_blank"&gt;http://ambertation.de/simpeforum/forum/viewforum/14&lt;/a&gt;&lt;/b&gt;.</value>
-  </data>
   <data name="cache_cleared" xml:space="preserve">
-    <value>"La mémoire-cache a été effacée.  SimPE doit être relancé pour terminer l'opération!"</value>
+    <value>"La mémoire-cache a été effacée.  SimPe doit être relancé pour terminer l'opération!"</value>
   </data>
   <data name="SimPe.Data.ObjectTypes.Person" xml:space="preserve">
     <value>Personne</value>
@@ -854,27 +836,20 @@ Package :  {filename}</value>
     <value>Divertissement</value>
     <comment>était Plaisir</comment>
   </data>
-  <data name="Fix_Fence_Warning" xml:space="preserve">
-    <value>"Créer une clôture compatible avec la version originale du jeu, n'est pas une mince affaire qui peut causer des conflits dans le jeu.  Je ne le recommande pas si vous avez en tête de distribuer la clôture !
-
-Si vous voulez créer une clôture pour la version originale du jeu, veuillez considérer de la créer en deux Packages séparés.  Un pour Académie et supérieur, et un autre pour la version originale du jeu.
-
-Voulez-vous réellement rendre cette clôture compatible avec la version originale du jeu ?"</value>
-  </data>
   <data name="Censor_Install_Warn" xml:space="preserve">
-    <value>Vous avez installé "Nuits de folie" (ou un nouveau disque additionnel).  SimPE doit copier un fichier dans votre dossier "Config" pour retirer le Voile.
+    <value>Vous avez installé "Nuits de folie" (ou un nouveau disque additionnel).  SimPe doit copier un fichier dans votre dossier "Config" pour retirer le Voile.
     
 Voulez-vous continuer ?</value>
   </data>
   <data name="Censor_UnInstall_Warn" xml:space="preserve">
-    <value>Pour restaurer le Voile, SimPE doit supprimer le fichier {filename}.
+    <value>Pour restaurer le Voile, SimPe doit supprimer le fichier {filename}.
     
 Voulez-vous continuer ?</value>
   </data>
   <data name="Check FileTable" xml:space="preserve">
     <value>Vérifier la table de fichier</value>
   </data>
-  <data name="Delete Sim" xml:space="preserve">
+  <data name="Delete Sims" xml:space="preserve">
     <value>Supprimer le Sim</value>
   </data>
   <data name="SimPe.Data.MetaData.AspirationTypes.Nothing" xml:space="preserve">
@@ -908,9 +883,9 @@ Voulez-vous continuer ?</value>
     <value>moderne</value>
   </data>
   <data name="PresetChanged" xml:space="preserve">
-    <value>L'apparence de SimPE a été modifiée pour "{name}".
+    <value>L'apparence de SimPe a été modifiée pour "{name}".
 
-Voulez-vous relancer SimPE maintenant ?</value>
+Voulez-vous relancer SimPe maintenant ?</value>
   </data>
   <data name="ObsoleteOW" xml:space="preserve">
     <value>La version fenêtrée de ObjectWorkshop est quelque peu vieillotte.  Veuillez utiliser sa version Onglet.
@@ -939,82 +914,13 @@ Continuer ?
     <value>Sims 2</value>
   </data>
   <data name="[Description:GamePath]" xml:space="preserve">
-    <value>Doit contenir le dossier d'installation de "Les Sims 2". 
-Le dossier spécifié doit contenir un dossier nommé "TSData".
-
-Si aucun chemin n'est spécifié, SimPE utilisera le dossier par défaut.</value>
-  </data>
-  <data name="[Property:EP1Path]" xml:space="preserve">
-    <value>1: Académie</value>
-  </data>
-  <data name="[Description:EP1Path]" xml:space="preserve">
-    <value>Doit contenir le dossier d'installation de "Les Sims 2 - Académie". 
-Le dossier spécifié doit contenir un dossier nommé "TSData".
-
-Si aucun chemin n'est spécifié, SimPE utilisera le dossier par défaut.</value>
-  </data>
-  <data name="[Property:EP2Path]" xml:space="preserve">
-    <value>2: Nuits de folie</value>
-  </data>
-  <data name="[Description:EP2Path]" xml:space="preserve">
-    <value>Doit contenir le dossier d'installation de "Les Sims 2 - Nuits de folie". 
-Le dossier spécifié doit contenir un dossier nommé "TSData".
-
-Si aucun chemin n'est spécifié, SimPE utilisera le dossier par défaut.</value>
-  </data>
-  <data name="[Property:EP3Path]" xml:space="preserve">
-    <value>3: La bonne affaire</value>
-  </data>
-  <data name="[Description:EP3Path]" xml:space="preserve">
-    <value>Doit contenir le dossier d'installation de "Les Sims 2 - La bonne affaire". 
-Le dossier spécifié doit contenir un dossier nommé "TSData".
-
-Si aucun chemin n'est spécifié, SimPE utilisera le dossier par défaut.</value>
-  </data>
-  <data name="[Property:EP4Path]" xml:space="preserve">
-    <value>4: Animaux &amp; Cie</value>
-  </data>
-  <data name="[Description:EP4Path]" xml:space="preserve">
-    <value>Doit contenir le dossier d'installation de "Les Sims 2 - Animaux &amp;&amp; Cie".
-Le dossier spécifié doit contenir un dossier nommé "TSData".
-
-Si aucun chemin n'est spécifié, SimPE utilisera le dossier par défaut.</value>
-  </data>
-  <data name="[Property:SP1Path]" xml:space="preserve">
-    <value>1: Kit Fun en famille</value>
-  </data>
-  <data name="[Description:SP1Path]" xml:space="preserve">
-    <value>Doit contenir le dossier d'installation de "Les Sims 2 - Kit Fun en famille". 
-Le dossier spécifié doit contenir un dossier nommé "TSData".
-
-Si aucun chemin n'est spécifié, SimPE utilisera le dossier par défaut.</value>
-  </data>
-  <data name="[Property:SP2Path]" xml:space="preserve">
-    <value>2: Kit Glamour</value>
-  </data>
-  <data name="[Description:SP2Path]" xml:space="preserve">
-    <value>Ceci devrait contenir le dossier d'installation de "Les Sims 2 - Kit Glamour".
-Le dossier spécifié doit contenir un dossier nommé "TSData".
-
-Si aucun chemin n'est spécifié, SimPE utilisera le dossier par défaut.</value>
-  </data>
-  <data name="[Property:SP3Path]" xml:space="preserve">
-    <value>3: Kit Joyeux Noël</value>
-  </data>
-  <data name="[Description:SP3Path]" xml:space="preserve">
-    <value>Ceci devrait contenir le dossier d'installation de "Les Sims 2 - Kit Joyeux Noël".
-Le dossier spécifié doit contenir un dossier nommé "TSData".
-
-Si aucun chemin n'est spécifié, SimPE utilisera le dossier par défaut.</value>
+    <value>Doit contenir le dossier d'installation de "Les Sims 2". Le dossier spécifié doit contenir un dossier nommé "TSData". Si aucun chemin n'est spécifié, SimPe utilisera le dossier par défaut.</value>
   </data>
   <data name="[Property:SaveGamePath]" xml:space="preserve">
     <value>Partie sauvegardée</value>
   </data>
   <data name="[Description:SaveGamePath]" xml:space="preserve">
-    <value>Doit contenir le dossier de parties sauvegardées de "Les Sims 2". 
-Le dossier spécifié doit contenir ces deux dossiers nommés "Downloads" et "Neighborhoods".
-
-Si aucun chemin n'est spécifié, SimPE utilisera le dossier par défaut.</value>
+    <value>Doit contenir le dossier de parties sauvegardées de "Les Sims 2". Le dossier spécifié doit contenir ces deux dossiers nommés "Downloads" et "Neighborhoods". Si aucun chemin n'est spécifié, SimPe utilisera le dossier par défaut.</value>
   </data>
   <data name="[Property:NvidadPath]" xml:space="preserve">
     <value>Outil Nvidia DDS</value>
@@ -1079,23 +985,90 @@ Si aucun chemin n'est spécifié, SimPE utilisera le dossier par défaut.</value
   <data name="SimPe.PackedFiles.Wrapper.JobAssignment.BuildRobots" xml:space="preserve">
     <value>Fabriquer des Robots</value>
   </data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignment.MakeFood" xml:space="preserve">
+    <value>Cuisiner</value>
+  </data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignment.Masseuse" xml:space="preserve">
+    <value>Etre masseur</value>
+  </data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignment.MakePottery" xml:space="preserve">
+    <value>Faire de la poterie</value>
+  </data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignment.SellWoohoo" xml:space="preserve">
+    <value>Vendre de la Woohoo</value>
+  </data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Nothing" xml:space="preserve">
+<value>Aucune</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Chef" xml:space="preserve">
+<value>Chef</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Host" xml:space="preserve">
+<value>Hôte</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Server" xml:space="preserve">
+<value>Serveur</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Cashier" xml:space="preserve">
+<value>Caissier</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Bartender" xml:space="preserve">
+<value>Barman</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Barista" xml:space="preserve">
+<value>Barista</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.DJ" xml:space="preserve">
+<value>DJ</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.SellLemonade" xml:space="preserve">
+<value>Vendre de la limonade</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Stylist" xml:space="preserve">
+<value>Styliste</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Tidy" xml:space="preserve">
+<value>Rangement</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Restock" xml:space="preserve">
+<value>Réasortissement</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Sales" xml:space="preserve">
+<value>Ventes</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.MakeToys" xml:space="preserve">
+<value>Fabriquer des jouets</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.ArrangeFlowers" xml:space="preserve">
+<value>Arranger les fleures</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.BuildRobots" xml:space="preserve">
+<value>Fabriquer des Robots</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.MakeFood" xml:space="preserve">
+<value>Cuisiner</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Masseuse" xml:space="preserve">
+<value>Etre masseur</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.MakePottery" xml:space="preserve">
+<value>Faire de la poterie</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Sewing" xml:space="preserve">
+<value>Coudre</value>
+</data>
   <data name="Reset Filetable" xml:space="preserve">
-    <value>SimPE doit réinitialiser votre table de fichier.  Le fichier "{flname}" sera supprimé.
-
-Voulez-vous que SimPe réinitialise votre table de fichier ?</value>
+    <value>SimPe doit réinitialiser votre table de fichier.  Le fichier "{flname}" sera supprimé. Voulez-vous que SimPe réinitialise votre table de fichier ?</value>
   </data>
   <data name="Reset Cache" xml:space="preserve">
     <value>Le format de la mémoire-cache de SimPe a été amélioré pour supporter les nouvelles fonctionnalités de "La bonne affaire".  Pour fonctionner correctement, SimPe doit réinitialiser sa mémoire-cache, en supprimant le fichier "{flname}".
-
 voulez-vous que SimPe réinitialise la mémoire-cache ?</value>
   </data>
   <data name="Unknown EP found" xml:space="preserve">
-    <value>SimPE a détecté un nouveau disque additionnel pour "Les Sims 2".
-		
-Cette version de SimPE fonctionne uniquement avec les versions du jeu jusqu'à "{name}".  Les nouveaux fichiers du jeu peuvent causer des erreurs lors de leur ouverture avec cette version de SimPE !
-(Pour plus d'informations, visiter http://sims.ambertation.de/en/).
-
-Run SimPE anyway?</value>
+    <value>SimPe a détecté un nouveau disque additionnel pour "Les Sims 2".		
+Cette version de SimPe fonctionne uniquement avec les versions du jeu jusqu'à "{name}".  Les nouveaux fichiers du jeu peuvent causer des erreurs lors de leur ouverture avec cette version de SimPe !
+(Pour plus d'informations, visiter http://www.modthesims2.com/index.php?).
+Run SimPe anyway?</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>Avertissement !</value>
@@ -1215,7 +1188,7 @@ Run SimPE anyway?</value>
     <value>Impossible de charger "{name}".</value>
   </data>
   <data name="Check: Unable to load cache" xml:space="preserve">
-    <value>Impossible de charger la mémoire-cache de SimPE.</value>
+    <value>Impossible de charger la mémoire-cache de SimPe.</value>
   </data>
   <data name="Check: No Objects" xml:space="preserve">
     <value>Impossible de localiser l'objets.</value>
@@ -1235,8 +1208,7 @@ Run SimPE anyway?</value>
   </data>
   <data name="NO_CRES_FOUND" xml:space="preserve">
     <value>Le CRES parent est introuvable.
-
-SimPE est dans l'impossibilité de construitre la hiérarchie des articulations.</value>
+SimPe est dans l'impossibilité de construitre la hiérarchie des articulations.</value>
   </data>
   <data name="OpenInCaption" xml:space="preserve">
     <value>{where} :  TSData/Res...</value>
@@ -1265,11 +1237,8 @@ SimPE est dans l'impossibilité de construitre la hiérarchie des articulations.
   <data name="SimPe.PackedFiles.Wrapper.SpeciesType.Cat" xml:space="preserve">
     <value>Chat</value>
   </data>
-  <data name="Starting SimPE..." xml:space="preserve">
-    <value>Chargement de SimPE...</value>
-  </data>
-  <data name="Validating SimPE registry" xml:space="preserve">
-    <value>Validation du registre de SimPE</value>
+  <data name="Starting SimPe..." xml:space="preserve">
+    <value>Chargement de SimPe...</value>
   </data>
   <data name="Checking commandline parameters" xml:space="preserve">
     <value>Vérification des paramètres de la ligne de commande</value>
@@ -1322,14 +1291,8 @@ SimPE est dans l'impossibilité de construitre la hiérarchie des articulations.
   <data name="SimPe.ResourceListUnnamedFormats.FullTGI" xml:space="preserve">
     <value>TGI complet</value>
   </data>
-  <data name="UpdatesAvailable" xml:space="preserve">
-    <value>Il existe de nouvelles mises à jour.  Est-ce que SimPE doit affichier l'information sur version ?</value>
-  </data>
   <data name="Updates" xml:space="preserve">
     <value>Mises à jour</value>
-  </data>
-  <data name="Updateable Plugins" xml:space="preserve">
-    <value>Plugins pouvant être mis à jour</value>
   </data>
   <data name="installed" xml:space="preserve">
     <value>Installé</value>
@@ -1683,7 +1646,7 @@ SimPE est dans l'impossibilité de construitre la hiérarchie des articulations.
   <data name="Refresh &amp;FileTable" xml:space="preserve">
     <value>Actualiser la table de fichier</value>
   </data>
-  <data name="Search Packed Files..." xml:space="preserve">
+  <data name="Search Current File..." xml:space="preserve">
     <value>Rechercher des fichiers Packed...</value>
   </data>
   <data name="Sims Surgery..." xml:space="preserve">
@@ -1782,9 +1745,6 @@ SimPE est dans l'impossibilité de construitre la hiérarchie des articulations.
   <data name="Spanish" xml:space="preserve">
     <value>Espagnol</value>
   </data>
-  <data name="UNK: 0xEC44BDDC" xml:space="preserve">
-    <value>INC :  0xEC44BDDC</value>
-  </data>
   <data name="Philosophy" xml:space="preserve">
     <value>Philosophie</value>
   </data>
@@ -1796,9 +1756,6 @@ SimPE est dans l'impossibilité de construitre la hiérarchie des articulations.
   </data>
   <data name="Finnish" xml:space="preserve">
     <value>Finlandais</value>
-  </data>
-  <data name="Hebrew" xml:space="preserve">
-    <value>Hébreu</value>
   </data>
   <data name="Japanese" xml:space="preserve">
     <value>Japonais</value>
@@ -2112,36 +2069,6 @@ SimPE est dans l'impossibilité de construitre la hiérarchie des articulations.
   <data name="UI Data" xml:space="preserve">
     <value>Donnée d'interfage (UI)</value>
   </data>
-  <data name="UNK: 0x0C900FDB" xml:space="preserve">
-    <value>INC :  0x0C900FDB</value>
-  </data>
-  <data name="UNK: 0x50455253" xml:space="preserve">
-    <value>INC :  0x50455253</value>
-  </data>
-  <data name="UNK: 0x6C589723" xml:space="preserve">
-    <value>INC :  0x6C589723</value>
-  </data>
-  <data name="UNK: 0x7B1ACFCD" xml:space="preserve">
-    <value>INC :  0x7B1ACFCD</value>
-  </data>
-  <data name="UNK: 0x8B0C79D6" xml:space="preserve">
-    <value>INC :  0x8B0C79D6</value>
-  </data>
-  <data name="UNK: 0x8CC0A14B" xml:space="preserve">
-    <value>INC :  0x8CC0A14B</value>
-  </data>
-  <data name="UNK: 0xAB9406AA" xml:space="preserve">
-    <value>INC :  0xAB9406AA</value>
-  </data>
-  <data name="UNK: 0xADEE8D84" xml:space="preserve">
-    <value>INC :  0xADEE8D84</value>
-  </data>
-  <data name="UNK: 0xBC66BAEC" xml:space="preserve">
-    <value>INC :  0xBC66BAEC</value>
-  </data>
-  <data name="UNK: 0xCD8B6498" xml:space="preserve">
-    <value>INC :  0xCD8B6498</value>
-  </data>
   <data name="Wall Graph" xml:space="preserve">
     <value>Mur - Graphique</value>
   </data>
@@ -2196,33 +2123,6 @@ SimPE est dans l'impossibilité de construitre la hiérarchie des articulations.
   <data name="[Category:Story]" xml:space="preserve">
     <value>4. Les Sims Histoires</value>
   </data>
-  <data name="[Description:EP5Path]" xml:space="preserve">
-    <value>Doit contenir le dossier d'installation de "Les Sims 2 - Au fil des saisons".
-Le dossier spécifié doit contenir un dossier nommé "TSData".
-
-Si aucun chemin n'est spécifié, SimPE utilisera le dossier par défaut.</value>
-  </data>
-  <data name="[Description:SIMSLSPath]" xml:space="preserve">
-    <value>Doit contenir le dossier d'installation de "Les Sims 2 - Histoires".
-Le dossier spécifié doit contenir un dossier nommé "TSData".
-
-Si aucun chemin n'est spécifié, SimPE utilisera le dossier par défaut.</value>
-  </data>
-  <data name="[Property:EP5Path]" xml:space="preserve">
-    <value>5: Au fil des saisons</value>
-  </data>
-  <data name="[Property:SIMSLSPath]" xml:space="preserve">
-    <value>1: Histoires</value>
-  </data>
-  <data name="[Property:SP4Path]" xml:space="preserve">
-    <value>4: Kit Jour de Fête</value>
-  </data>
-  <data name="[Description:SP4Path]" xml:space="preserve">
-    <value>Ceci devrait contenir le dossier d'installation de "Les Sims 2 - Kit Jour de Fête".
-Le dossier spécifié doit contenir un dossier nommé "TSData".
-
-Si aucun chemin n'est spécifié, SimPE utilisera le dossier par défaut.</value>
-  </data>
   <data name="Adventurer" xml:space="preserve">
     <value>Aventurier</value>
   </data>
@@ -2255,9 +2155,9 @@ Si aucun chemin n'est spécifié, SimPE utilisera le dossier par défaut.</value
     <value>Musique</value>
   </data>
   <data name="NoDotNet" xml:space="preserve">
-    <value>SimPE a détecté l'installation de .NET {VERSION} sur votre système. 
+    <value>SimPe a détecté l'installation de .NET {VERSION} sur votre système. 
     
-Pour que SimPE fonctionne correctement, vous devez installer .NET 2.0.</value>
+Pour que SimPe fonctionne correctement, vous devez installer .NET 2.0.</value>
   </data>
   <data name="PetSecurity" xml:space="preserve">
     <value>Animal - Sécurité</value>
@@ -2287,6 +2187,6 @@ Pour que SimPE fonctionne correctement, vous devez installer .NET 2.0.</value>
     <value>Éducation (Ado/Aîné)</value>
   </data>
   <data name="URLKnowledgeBase" xml:space="preserve">
-    <value>http://sims.ambertation.de/en/kb/</value>
+    <value>http://simswiki.info/wiki.php?title=Tutorials:Modding</value>
   </data>
 </root>

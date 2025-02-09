@@ -17,7 +17,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-// $Id$
+// $Id: CRCParameters.cs 9 2005-03-20 16:05:29Z ambertation $
 
 #region License
 /* ***** BEGIN LICENSE BLOCK *****
@@ -136,10 +136,11 @@ namespace Classless.Hasher {
 				case CRCStandard.CRC32:					temp = new CRCParameters(32, 0xEDB88320, 0xFFFFFFFF, 0xFFFFFFFF, false);	break;
 				case CRCStandard.CRC32_REVERSED:		temp = new CRCParameters(32, 0x04C11DB7, 0xFFFFFFFF, 0xFFFFFFFF,  true);	break;
 				case CRCStandard.CRC32_JAMCRC:			temp = new CRCParameters(32, 0x04C11DB7, 0xFFFFFFFF,          0,  true);	break;
-				case CRCStandard.CRC32_BZIP2:			temp = new CRCParameters(32, 0x04C11DB7, 0xFFFFFFFF, 0xFFFFFFFF, false);	break;
+                case CRCStandard.CRC32_BZIP2:           temp = new CRCParameters(32, 0x04C11DB7, 0xFFFFFFFF, 0xFFFFFFFF, false);    break;
+                case CRCStandard.CRC32_CAS:             temp = new CRCParameters(32, 0xEDB88320,          0, 0xFFFFFFFF, false);    break;
 				default:								temp = new CRCParameters(32, 0x04C11DB7, 0xFFFFFFFF, 0xFFFFFFFF,  true);	break;
 			}
-
+            // (32, 0x04C11DB7, 0xffffffff, 0, false)
 			return temp;
 		}
 	}

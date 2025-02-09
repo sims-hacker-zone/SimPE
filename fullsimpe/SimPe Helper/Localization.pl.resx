@@ -252,9 +252,6 @@
   <data name="byteviewerror" xml:space="preserve">
     <value>Błąd podczas wyświetlania widoku bajtów</value>
   </data>
-  <data name="usebigfile?" xml:space="preserve">
-    <value>Ten plik jest większy niż 10kb. Czy pomimo to chcesz go wczytać? (to może trochę potrwać!)</value>
-  </data>
   <data name="confirm" xml:space="preserve">
     <value>Potwierdzenie</value>
   </data>
@@ -280,12 +277,12 @@
     <value>Stworzyć kopię?</value>
   </data>
   <data name="disclaimer" xml:space="preserve">
-    <value>SimPE to narzędzie, które umożliwia zmiany wewnętrznych danych gry "The Sims 2".
+    <value>SimPe to narzędzie, które umożliwia zmiany wewnętrznych danych gry "The Sims 2".
 
-Wielu ludzi używa SimPE bez problemów. Jeśli jednak nie będziesz ostrożny, SimPE może uszkodzić dane gry lub nawet twój system. Nie używaj programu SimPE, jeśli nie chcesz podejmować ryzyka! Pamiętaj, że SimPE jest w wersji alfa!
-Najlepiej upewnij się, że posiadasz działającą kopię zapasową katalogu "Moje dokumenty\EA Games\The Sims 2\" przed uruchomieniem SimPE.
+Wielu ludzi używa SimPe bez problemów. Jeśli jednak nie będziesz ostrożny, SimPe może uszkodzić dane gry lub nawet twój system. Nie używaj programu SimPe, jeśli nie chcesz podejmować ryzyka! Pamiętaj, że SimPe jest w wersji alfa!
+Najlepiej upewnij się, że posiadasz działającą kopię zapasową katalogu "Moje dokumenty\EA Games\The Sims 2\" przed uruchomieniem SimPe.
 
-Czy chcesz uruchomić SimPE?</value>
+Czy chcesz uruchomić SimPe?</value>
   </data>
   <data name="savechanges?" xml:space="preserve">
     <value>Zapisać zmiany?</value>
@@ -319,7 +316,7 @@ Pakiet: {filename}</value>
     <value>Ciocia lub wujek</value>
   </data>
   <data name="OW_Warning" xml:space="preserve">
-    <value>Aby użyć tej możliwości i pracować z obiektami, które standardowo nie obsługują wielu wersji kolorystycznych, musisz pobrać i zainstalować pakiet Colour Options Enabler ze strony http://sims.ambertation.de/download.shtml.\n\nPamiętaj, że jest to wciąż testowa wersja beta i mogą występować błędy. Nie rozpowszechniaj rekolorów stworzonych tym narzędziem bez powiadamiania, że jest to wciąż wersja testowa lub beta. Nie zapomnij, że użytkownicy stworzonych rekolorów także muszą zainstalować pakiet Colour Options Enabler!\n\nKontynuować?</value>
+    <value>Aby użyć tej możliwości i pracować z obiektami, które standardowo nie obsługują wielu wersji kolorystycznych, musisz pobrać i zainstalować pakiet Colour Options Enabler ze strony http://www.modthesims2.com/index.php?, że jest to wciąż testowa wersja beta i mogą występować błędy. Nie rozpowszechniaj rekolorów stworzonych tym narzędziem bez powiadamiania, że jest to wciąż wersja testowa lub beta. Nie zapomnij, że użytkownicy stworzonych rekolorów także muszą zainstalować pakiet Colour Options Enabler!\n\nKontynuować?</value>
   </data>
   <data name="YoungAdult" xml:space="preserve">
     <value>Młody dorosły</value>
@@ -390,6 +387,6 @@ Package: {filename}</value>
     <value>Usuń związek z: "{name}"</value>
   </data>
   <data name="URLKnowledgeBase" xml:space="preserve">
-    <value>http://sims.ambertation.de/en/kb/</value>
+    <value>http://simswiki.info/wiki.php?title=Tutorials:Modding</value>
   </data>
 </root>

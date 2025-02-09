@@ -17,7 +17,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-// $Id$
+// $Id: CRCStandard.cs 9 2005-03-20 16:05:29Z ambertation $
 
 #region License
 /* ***** BEGIN LICENSE BLOCK *****
@@ -87,6 +87,9 @@ namespace Classless.Hasher {
 		CRC32_JAMCRC,
 
 		/// <summary>A variation on the CRC32 algorithm. Used in BZip2.</summary>
-		CRC32_BZIP2
+		CRC32_BZIP2,
+
+		/// <summary>A variation on the CRC32 algorithm. Used in CAS.</summary>
+		CRC32_CAS
 	}
 }

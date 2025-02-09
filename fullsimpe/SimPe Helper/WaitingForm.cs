@@ -24,20 +24,21 @@ using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Drawing.Imaging;
 
 namespace SimPe
 {
 	/// <summary>
-	/// Zusammenfassung für WaitingForm.
+	/// Summary description for WaitingForm.
 	/// </summary>
 	internal class WaitingForm : Form
 	{
         #region Form variables
         private Panel panel1;
-        private PictureBox pb;
+        internal PictureBox pb;
         private Label lbwait;
 		private Label lbmsg;
-        private PictureBox pbsimpe;
+        internal PictureBox pbsimpe;
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -48,7 +49,7 @@ namespace SimPe
 		{
             System.Diagnostics.Trace.WriteLine("SimPe.WaitingForm..ctor()");
             //
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
 			//this.TopMost = Helper.WindowsRegistry.WaitingScreenTopMost;
@@ -63,7 +64,7 @@ namespace SimPe
 		}
 
         /// <summary>
-        /// Die verwendeten Ressourcen bereinigen.
+        /// Clean up any resources being used.
         /// </summary>
         protected override void Dispose(bool disposing)
         {
@@ -78,7 +79,7 @@ namespace SimPe
         }
 
         IntPtr myhandle;
-        System.Drawing.Image image = null;
+        internal System.Drawing.Image image = null;
         string message = "";
 
         const uint WM_CHANGE_MESSAGE = Ambertation.Windows.Forms.APIHelp.WM_APP + 0x0003;
@@ -93,6 +94,7 @@ namespace SimPe
             lock (lockObj)
             {
                 if (this.image == image) return;
+                this.image = image;
                 Ambertation.Windows.Forms.APIHelp.SendMessage(myhandle, WM_CHANGE_IMAGE, 0, 0);
             }
         }
@@ -152,10 +154,10 @@ namespace SimPe
         }
 
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{

@@ -171,7 +171,6 @@ namespace SimPe
 		public static string Serialize(SimPe.Interfaces.Plugin.Internal.IPackedFileName wrapper, SimPe.Interfaces.Files.IPackedFileDescriptorBasic pfd, bool withdesc)
 		{
 			string s = Formater.SerializeTGI(wrapper, pfd);
-
 			if (withdesc)
 			{
 				if (wrapper!=null) s += wrapper.Description;			

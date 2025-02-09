@@ -250,7 +250,7 @@ namespace SimPe.Data
 							list.Add((SimPe.Interfaces.IAlias)a);
 						}
 					}
-				} // for i			
+				} // for i
 
 				SimPe.Interfaces.IAlias[] ret = new SimPe.Interfaces.IAlias[list.Count];
 				list.CopyTo(ret);

@@ -45,8 +45,8 @@ namespace Ambertation.Threading
 				ct++;
 				stop.Set();
 				System.Windows.Forms.Application.DoEvents();
-                Thread.Sleep(100);                
-			}            
+                Thread.Sleep(100);
+			}
             
 			ended.Set();
             return !worker.IsAlive;

@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
     <ProductVersion>8.0.50727</ProductVersion>
@@ -17,6 +16,7 @@
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
     <OutputType>Library</OutputType>
     <RootNamespace>SimPe</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
@@ -26,8 +26,6 @@
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>..\__Debug\</OutputPath>
@@ -60,7 +58,8 @@
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <DocumentationFile>
     </DocumentationFile>
     <DebugSymbols>false</DebugSymbols>
@@ -76,6 +75,7 @@
     <DebugType>none</DebugType>
     <ErrorReport>prompt</ErrorReport>
     <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release Mac|AnyCPU' ">
     <OutputPath>..\__Release\</OutputPath>
@@ -111,7 +111,8 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <BaseAddress>285212672</BaseAddress>
     <Optimize>true</Optimize>
     <DebugType>
@@ -169,9 +170,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Build\SharedAssemblyInfo.cs">
-      <Link>Properties\SharedAssemblyInfo.cs</Link>
-    </Compile>
     <Compile Include="Alias.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -179,9 +177,10 @@
     <Compile Include="ASerializeFormater.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs">
+    <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Boolset.cs" />
     <Compile Include="CaseInvariantArrayList.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -210,7 +209,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="IniRegistry.cs" />
-    <Compile Include="IUpdatablePlugin.cs" />
+    <Compile Include="LabelledBoolsetControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LabelledBoolsetControl.Designer.cs">
+      <DependentUpon>LabelledBoolsetControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="PathProvider.cs" />
     <Compile Include="ExpansionItem.cs" />
     <Compile Include="FlagBase.cs">
@@ -276,6 +280,17 @@
     <Compile Include="PathSettings.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="pjseMsgBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pjseMsgBox.Designer.cs">
+      <DependentUpon>pjseMsgBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="PropertyObjectBuilder.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -314,12 +329,6 @@
     <Compile Include="TypeAlias.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UpdateInfo.cs" />
-    <Compile Include="UpdateInfoList.cs" />
-    <Compile Include="UpdateState.cs" />
-    <Compile Include="VisualStyleLinkLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="WaitingBar.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -330,9 +339,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="WarningException.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="WebUpdate.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="XmlRegistry.cs">
@@ -399,6 +405,14 @@
       <DependentUpon>ExceptionForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="LabelledBoolsetControl.resx">
+      <DependentUpon>LabelledBoolsetControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization.en-US.resx">
+      <DependentUpon>Localization.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Localization.fr.resx">
       <DependentUpon>Localization.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -410,6 +424,15 @@
     <EmbeddedResource Include="Localization.ru.resx">
       <DependentUpon>Localization.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pjseMsgBox.resx">
+      <DependentUpon>pjseMsgBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="quaxi_pets_censor_v1.package" />
     <EmbeddedResource Include="WaitingForm.fr.resx">
@@ -424,12 +447,6 @@
       <DependentUpon>WaitingForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\pjse\pjseCoderPlugin\pjse System Classes\SimPe pjse System Classes.csproj">
-      <Project>{0B9D2E1D-30F3-4718-B66B-791BFBAC3DB7}</Project>
-      <Name>SimPe pjse System Classes</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

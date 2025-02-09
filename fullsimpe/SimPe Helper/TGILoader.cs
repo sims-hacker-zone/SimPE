@@ -112,7 +112,7 @@ namespace SimPe
             bool nodecomp = false;
 			foreach (XmlNode subnode in node) 
 			{
-				if (subnode.Name=="know") known = true;
+				if (subnode.Name=="known") known = true;
 				if (subnode.Name=="embeddedfilename") contfl = true;
 				if (subnode.Name=="name") name = subnode.InnerText;
 				if (subnode.Name=="shortname") shortname = subnode.InnerText;

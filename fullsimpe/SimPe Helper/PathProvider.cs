@@ -22,7 +22,7 @@ namespace SimPe
         Fashion =           0x200,//9
         Voyage =            0x400,//10
         Teen =              0x800,//11
-        Store =             0x1000,//12
+        Extra =             0x1000,//12 -- This should be Store
         FreeTime =          0x2000,//13
         Kitchens =          0x4000,//14
         IKEA =              0x8000,//15
@@ -30,9 +30,11 @@ namespace SimPe
         Mansions =          0x00020000,//17
         XP18 =              0x00040000,//18
         XP19 =              0x00080000,//19
-        IslandStories =     0x10000000,//28 -- SimPE stolen: beware!!
-        PetStories =        0x20000000,//29 -- SimPE stolen: beware!!
-        LifeStories =       0x40000000,//30 -- SimPE stolen: beware!!
+        Store =             0x00100000,//20 -- May need to comment this one out again
+        // Store =             0x08000000,//27 -- Store is actually 31 but that is taken
+        IslandStories =     0x10000000,//28 -- SimPe stolen: beware!!
+        PetStories =        0x20000000,//29 -- SimPe stolen: beware!!
+        LifeStories =       0x40000000,//30 -- SimPe stolen: beware!!
         Custom =            0x80000000 //31
     }
 
@@ -63,9 +65,16 @@ namespace SimPe
 
         long avlgrp;
 
-        public static string ExpansionFile
+        public static string ExpansionFile  // CJH
         {
-            get { return System.IO.Path.Combine(Helper.SimPeDataPath, "expansions.xreg"); }
+            get
+            {
+                string name = Helper.DataFolder.ExpansionsXREG;
+                if (System.IO.File.Exists(name)) return Helper.DataFolder.ExpansionsXREG;
+                else if (Helper.ECCorNewSEfound) return System.IO.Path.Combine(Helper.SimPeDataPath, "expansions2.xreg");
+                else return System.IO.Path.Combine(Helper.SimPeDataPath, "expansions.xreg");
+                // else return System.IO.Path.Combine(Helper.SimPeDataPath, "expansions.xreg");
+            }
         }
 
         static PathProvider glb;
@@ -104,26 +113,22 @@ namespace SimPe
                 ExpansionItem i = new ExpansionItem(xrk.OpenSubKey(name, false));
                 exps.Add(i);
                 map[i.Expansion] = i;
-
                 if (i.Flag.Class == ExpansionItem.Classes.Story) continue;
-
-                if (i.CensorFile != ""){
+                if (i.CensorFile != "")
+                {
                     string fl = System.IO.Path.Combine(SimSavegameFolder, @"Downloads\" + i.CensorFileName);
                     if (!censorfiles.Contains(fl)) censorfiles.Add(fl);
                     fl = System.IO.Path.Combine(SimSavegameFolder, @"Config\" + i.CensorFileName);
-                    if (!censorfiles.Contains(fl)) censorfiles.Add(fl);  
+                    if (!censorfiles.Contains(fl)) censorfiles.Add(fl);
                 }
-                if (i.Version > ver )
+                if (i.Version > ver)
                 {
                     ver = i.Version;
                     lastknown = i.Expansion;
                 }
-
                 avlgrp = avlgrp | (uint)i.Group;
             }
             System.Diagnostics.Debug.WriteLine("----\r\n");
-
-            
 
             spver = GetMaxVersion(ExpansionItem.Classes.StuffPack);
             epver = GetMaxVersion(ExpansionItem.Classes.ExpansionPack);
@@ -138,7 +143,7 @@ namespace SimPe
             foreach (ExpansionItem ei in exps)
                 if (ei.Exists)
                     if (System.IO.Directory.Exists(ei.InstallFolder))
-                        paths.Add(ei.InstallFolder);        
+                        paths.Add(ei.InstallFolder);
         }
 
         private void CreateSaveGameMap()
@@ -161,13 +166,12 @@ namespace SimPe
         }
 
 
-
         protected int GetMaxVersion(ExpansionItem.Classes sp)
         {
             int ret = 0;
             foreach (ExpansionItem i in exps)
             {
-                if (i.Exists)
+                if (i.Exists || i.InstallFolder != "")
                 {
                     if (sp ==i.Flag.Class && i.Flag.FullObjectsPackage)
                     {
@@ -184,9 +188,11 @@ namespace SimPe
             get { return lastknown; }
         }
 
-        public int GameVersion
+        public int GameVersion // if Ts2 not installed will return a Story Version if installed
         {
-            get { return Math.Max(epver, spver); }
+            get {
+            if (!GetExpansion(SimPe.Expansions.BaseGame).Exists && epver == 0 && spver == 0 && stver > 0) return stver;            
+            return Math.Max(epver, spver); }
         }
 
         public int EPInstalled
@@ -197,6 +203,11 @@ namespace SimPe
         public int SPInstalled
         {
             get { return spver; }
+        }
+
+        public int STInstalled
+        {
+            get { return stver; }
         }
 
         /// <summary>
@@ -213,6 +224,28 @@ namespace SimPe
                 return Latest.ApplicationPath; 
             }
 
+        }
+
+        public string InGameLang
+        {
+            get
+            {
+                Microsoft.Win32.RegistryKey tk;
+                if (Latest.Version == 19 || Latest.Version == 18)
+                    tk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Sims2EP9.exe", false);
+                else
+                    tk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\" + Latest.ExeName, false);
+                if (tk == null) return "English";
+                object gr = tk.GetValue("Game Registry", "");
+                Microsoft.Win32.RegistryKey rk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey((string)gr + "\\1.0", false);
+                if (rk != null)
+                {
+                    object o = rk.GetValue("Language");
+                    if (o == null) return "Invalid Language Id";
+                    return SimPe.Data.MetaData.GetLanguageName(Convert.ToInt16(o.ToString()));
+                }
+                else return "Invalid Language Id";
+            }
         }
 
         public void SetDefaultPaths()
@@ -255,20 +288,41 @@ namespace SimPe
         /// Returns the object describing the highest Expansion in the interval [minver, maxver[
         /// </summary>
         /// <param name="minver"></param>
-        /// <param name="maxver"> not including this version</param>
+        /// <param name="maxver"></param>
         /// <returns>null will be returned, if the passed Expansion is not yet defined. If it is just not installed on
         /// the users Nil, a valid object will be returned, but the <see cref="ExoansionItem.Exists"/> property 
         /// returns false.</returns>
+        /// by including t.InstallFolder it will also find user manually configured EPs
         public ExpansionItem GetHighestAvailableExpansion(int minver, int maxver)
         {
             ExpansionItem exp = null;
             ExpansionItem t = null;
             int v = minver;
+            maxver++;
             while (v < maxver)
             {
                 t = GetExpansion(v++);
                 if (t != null)
-                    if (t.Exists)
+                    if (t.Exists || t.InstallFolder != "")
+                        exp = t;
+            }
+            return exp;
+        }
+
+        /// <summary>
+        /// Returns the object describing the Lowest Expansion in the interval [minver, maxver[
+        /// </summary>
+        public ExpansionItem GetLowestAvailableExpansion(int minver, int maxver)
+        {
+            ExpansionItem exp = null;
+            ExpansionItem t = null;
+            int v = maxver;
+            minver--;
+            while (v > minver)
+            {
+                t = GetExpansion(v--);
+                if (t != null)
+                    if (t.Exists || t.InstallFolder != "")
                         exp = t;
             }
             return exp;
@@ -317,18 +371,31 @@ namespace SimPe
         {
             get
             {
-                if (latest.CensorFile=="") return BlurNudityPreEP2;
-                else return BlurNudityPostEP2;
+                if (PathProvider.Global.EPInstalled < 18)
+                {
+                    if (latest.CensorFile == "") return BlurNudityPreEP2;
+                    else return BlurNudityPostEP2;
+                }
+                else return true;
             }
             set
             {
-                if (latest.CensorFile == "")
+                if (PathProvider.Global.EPInstalled < 18)
                 {
-                    BlurNudityPostEP2 = false;
-                    BlurNudityPreEP2 = value;
+                    if (latest.CensorFile == "")
+                    {
+                        BlurNudityPostEP2 = false;
+                        BlurNudityPreEP2 = value;
+                    }
+                    else
+                    {
+                        BlurNudityPostEP2 = value;
+                    }
                 }
-                else {
-                    BlurNudityPostEP2 = value;
+                else
+                {
+                    BlurNudityPostEP2 = true;
+                    BlurNudityPreEP2 = true;
                 }
             }
         }
@@ -360,12 +427,14 @@ namespace SimPe
 
         void SetBlurNudity(bool value, string resname, bool silent)
         {
+            if (PathProvider.Global.EPInstalled > 17) silent = true;
             if (!value)
             {
                 string fl = latest.CensorFile;
+                string f2 = latest.SensorFile;
                 string folder = System.IO.Path.GetDirectoryName(fl);
 
-                if (System.IO.File.Exists(fl)) return;
+                if (System.IO.File.Exists(fl) || System.IO.File.Exists(f2)) return;
 
                 if (!silent)
                     if (System.Windows.Forms.MessageBox.Show(SimPe.Localization.GetString("Censor_Install_Warn").Replace("{filename}", fl), SimPe.Localization.GetString("Warning"), System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.No)
@@ -601,7 +670,11 @@ namespace SimPe
             {
                 try
                 {
-                    string path = System.IO.Path.Combine(PersonalFolder, "EA Games");
+                    string path;
+                    if (Helper.WindowsRegistry.LoadOnlySimsStory == 0)
+                        path = System.IO.Path.Combine(PersonalFolder, "EA Games");
+                    else
+                        path = System.IO.Path.Combine(PersonalFolder, "Electronic Arts"); // For Sim Stories
                     path = System.IO.Path.Combine(path, DisplayedName);
                     return Helper.ToLongPathName(path);
                 }
@@ -642,7 +715,8 @@ namespace SimPe
             set
             {
                 XmlRegistryKey rkf = Helper.WindowsRegistry.RegistryKey.CreateSubKey("Settings");
-                rkf.SetValue("SavegamePath", value);
+                if (value == "") rkf.DeleteSubKey("SavegamePath", false);
+                else rkf.SetValue("SavegamePath", value);
             }
         }
 
@@ -655,12 +729,8 @@ namespace SimPe
         {
             try
             {
-#if MAC
-					return "The Sims 2";
-#else
                 Microsoft.Win32.RegistryKey rk = ei.Registry;
                 return GetDisplayedNameForExpansion(rk);
-#endif
             }
             catch (Exception)
             {
@@ -677,13 +747,10 @@ namespace SimPe
         {
             try
             {
-#if MAC
-					return "The Sims 2";
-#else
                 object o = rk.GetValue("DisplayName");
                 if (o == null) return "The Sims 2";
-                else return o.ToString();
-#endif
+                else
+                    return o.ToString();
             }
             catch (Exception)
             {
@@ -692,7 +759,7 @@ namespace SimPe
         }
 
         /// <summary>
-        /// Returns the Displayed Sims 2 name
+        /// Returns the Displayed BaseGame name, no good for sim stories
         /// </summary>
         protected static string DisplayedName
         {
@@ -700,12 +767,23 @@ namespace SimPe
             {
                 try
                 {
-#if MAC
-					return "The Sims 2";
-#else
-                    Microsoft.Win32.RegistryKey rk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"Software\EA Games\The Sims 2");
-                    return GetDisplayedNameForExpansion(rk);
-#endif
+                    Microsoft.Win32.RegistryKey tk;
+                    if (Helper.WindowsRegistry.LoadOnlySimsStory == 28) // Castaway Stories
+                        tk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\SimsCS.exe", false);
+                    else if (Helper.WindowsRegistry.LoadOnlySimsStory == 29) // Pet Stories
+                        tk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\SimsPS.exe", false);
+                    else if (Helper.WindowsRegistry.LoadOnlySimsStory == 30) // Life Stories
+                        tk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\SimsLS.exe", false);
+                    else
+                        tk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Sims2.exe", false);
+                    if (tk != null)
+                    {
+                        object o = tk.GetValue("Game Registry", false);
+                        Microsoft.Win32.RegistryKey rk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey((string)o, false);
+                        return GetDisplayedNameForExpansion(rk);
+                    }
+                    else
+                        return "The Sims 2";
                 }
                 catch (Exception)
                 {

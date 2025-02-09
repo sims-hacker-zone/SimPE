@@ -37,7 +37,6 @@ namespace SimPe
                 return ps;
             }
         }
-
        
         static PathSettings CreateInstance()
         {
@@ -45,24 +44,23 @@ namespace SimPe
             src += "using System.ComponentModel;\n";
             src += "namespace SimPe{\n";
             src += "public class RuntimePathSettings : PathSettings { \n";
-
             src += "\tpublic RuntimePathSettings() : base(Helper.WindowsRegistry){\n";
             src += "\t}\n\n\n";
 
             foreach (ExpansionItem ei in PathProvider.Global.Expansions)
             {
                 src += "\t[Category(\"" + ei.Flag.Class + "\"), System.ComponentModel.Editor(typeof(SimPe.SelectSimFolderUITypeEditor), typeof(System.Drawing.Design.UITypeEditor)),\n";
-                src += "\tDescription(\""+SimPe.Localization.GetString("[Description:]").Replace("{LongName}", ei.Name).Trim().Replace(Helper.lbr, "\\n")+"\"), ";
-                src += "DisplayName(\""+ei.NameSortNumber+": "+ei.NameShorter+"\")]\n";
-                src += "\tpublic string "+ei.ShortId+"Path\n";
+                src += "\tDescription(\"" + SimPe.Localization.GetString("[Description:]").Replace("{LongName}", ei.Name).Trim().Replace(Helper.lbr, "\\n") + "\"), ";
+                src += "DisplayName(\"" + ei.NameSortNumber + ": " + ei.NameShorter + "\")]\n";
+                src += "\tpublic string " + ei.ShortId + "Path\n";
                 src += "\t{\n";
                 src += "\t\tget {\n";
                 src += "\t\t\treturn GetPath(PathProvider.Global.GetExpansion(" + ei.Version + "));\n";
                 src += "\t\t}\n";
                 src += "\t\tset {PathProvider.Global.GetExpansion(" + ei.Version + ").InstallFolder = value;}\n";
                 src += "\t}\n\n";
-            }        
-            
+            }
+
             src += "}}\n";
 
             try
@@ -74,14 +72,13 @@ namespace SimPe
             }
             catch (Exception ex)
             {
-                if (Helper.DebugMode || Helper.QARelease)
+                if (Helper.WindowsRegistry.HiddenMode || Helper.QARelease)
                 {
-                    System.IO.StreamWriter sw = new System.IO.StreamWriter(System.IO.Path.Combine(Helper.SimPePath, "RuntimePathSettings.cs"));
+                    System.IO.StreamWriter sw = new System.IO.StreamWriter(System.IO.Path.Combine(Helper.SimPeDataPath, "RuntimePathSettings.cs"));
                     sw.Write(src);
                     sw.Close();
                     sw.Dispose();
                     sw = null;
-
                     Helper.ExceptionMessage(ex);
                 }
                 return null;

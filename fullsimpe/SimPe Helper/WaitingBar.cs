@@ -33,8 +33,7 @@ namespace SimPe
 	{
 		static IWaitingBarControl bar;
         static Stack<SessionData> mystack = new Stack<SessionData>();		
-		public const int TIMEOUT = 10000; 
-
+		public const int TIMEOUT = 10000;
 
 		public static IWaitingBarControl Bar
 		{
@@ -52,7 +51,6 @@ namespace SimPe
 				return false;
 			}
 		}
-
 	
         public static string Message
 		{
@@ -61,9 +59,9 @@ namespace SimPe
                 if (bar != null) return bar.Message;
                 return "";				
 			} 
-			set 
+			set
 			{
-                if (bar != null) bar.Message = value;								
+                if (bar != null) bar.Message = value;
                 Application.DoEvents();
 			}
 		}
@@ -97,7 +95,7 @@ namespace SimPe
 			} 
 			set 
 			{
-                if (bar!=null) bar.Progress = value;								
+                if (bar!=null) bar.Progress = value;
                 Application.DoEvents();
 			}
 		}
@@ -114,8 +112,6 @@ namespace SimPe
                 if (bar!=null) bar.MaxProgress = value;		
 			}
 		}
-
-        
 
         public static void SubStart()
         {
@@ -135,7 +131,6 @@ namespace SimPe
         {
             Stop();
         }
-
 		
 		public static void Start()
 		{
@@ -146,7 +141,6 @@ namespace SimPe
                 if (!bar.Running) bar.Wait();
 				
 			}
-			
 		}		
 
 		public static void Start(int max)
@@ -158,8 +152,8 @@ namespace SimPe
                 if (!bar.Running) bar.Wait(max);
                 else bar.MaxProgress = max;
 			}
-			
 		}
+
         public static void Stop()
         {
             Stop(false);
@@ -176,15 +170,10 @@ namespace SimPe
                     return;
                 }
 
-
-
                 sd = mystack.Pop();
-
 
                 if (mystack.Count == 0)
                     if (bar != null) bar.Stop();
-
-                
             }
 
             if (force)
@@ -233,10 +222,7 @@ namespace SimPe
                     Progress = sd.Progress;
                 }
             }
-            catch (Exception ex)
-            {
-                if (Helper.DebugMode) Console.WriteLine(ex);
-            }
+            catch { }
         }
 	}
 }

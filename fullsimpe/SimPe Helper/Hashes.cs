@@ -29,6 +29,7 @@ namespace SimPe
 	{
 		static CRC crc24 = new CRC(CRCParameters.GetParameters(CRCStandard.CRC24));
 		static CRC crc32 = new CRC(new Classless.Hasher.CRCParameters(32, 0x04C11DB7, 0xffffffff, 0, false));
+		static CRC crc32_cas = new CRC(CRCParameters.GetParameters(CRCStandard.CRC32_CAS));
 
 		public static CRC Crc24 
 		{
@@ -38,6 +39,11 @@ namespace SimPe
 		public static CRC Crc32 
 		{
 			get { return crc32; }
+		}
+
+		public static CRC Crc32_cas
+		{
+			get { return crc32_cas; }
 		}
 
 		/// <summary>
@@ -146,6 +152,18 @@ namespace SimPe
 		{
 			filename = filename.Trim().ToLower();
 			byte[] rt = crc32.ComputeHash(Helper.ToBytes(filename, 0));//CRC24Seed, CRC24Poly, filename.ToCharArray());
+
+			return (uint)ToLong(rt);
+		}
+
+		/// <summary>
+		/// Returns a CRC32CAS hash for the passed string
+		/// </summary>
+		/// <param name="s"></param>
+		/// <returns></returns>
+		public static uint GetCrc32CAS(string s)
+		{
+			byte[] rt = crc32_cas.ComputeHash(Helper.ToBytes(s, 0));//CRC24Seed, CRC24Poly, filename.ToCharArray());
 
 			return (uint)ToLong(rt);
 		}

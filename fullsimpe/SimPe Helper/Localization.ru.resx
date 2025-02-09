@@ -252,9 +252,6 @@
   <data name="byteviewerror" xml:space="preserve">
     <value>В режиме байтового просмотра произошла ошибка</value>
   </data>
-  <data name="usebigfile?" xml:space="preserve">
-    <value>Этот файл занимает больше 10 кб, вы все равно хотите загрузить его? (на это потребуется некоторое время!)</value>
-  </data>
   <data name="confirm" xml:space="preserve">
     <value>Подтверждение</value>
   </data>
@@ -280,12 +277,12 @@
     <value>Создать копию?</value>
   </data>
   <data name="disclaimer" xml:space="preserve">
-    <value>SimPE является утилитой для изменения внутренних данных игры The Sims 2. 
+    <value>SimPe является утилитой для изменения внутренних данных игры The Sims 2. 
 		
-У большинства пользователей не возникает проблем при использовании SimPE. Однако, если вы не будете проявлять осторожность, эта утилита может повредить вашу игру или даже систему. Помните, что вы используете SimPE на свой страх и риск! SimPE все еще находится в стадии альфа-тестирования!
-Убедитесь, что у вас имеется резервная копия папки "Мои документы\EA Games\The Sims 2\" перед запуском SimPE.
+У большинства пользователей не возникает проблем при использовании SimPe. Однако, если вы не будете проявлять осторожность, эта утилита может повредить вашу игру или даже систему. Помните, что вы используете SimPE на свой страх и риск! SimPE все еще находится в стадии альфа-тестирования!
+Убедитесь, что у вас имеется резервная копия папки "Мои документы\EA Games\The Sims 2\" перед запуском SimPe.
 
-Запустить SimPE?</value>
+Запустить SimPe?</value>
   </data>
   <data name="savechanges?" xml:space="preserve">
     <value>Сохранить изменения?</value>
@@ -319,7 +316,7 @@
     <value>Дядя\тетя</value>
   </data>
   <data name="OW_Warning" xml:space="preserve">
-    <value>Чтобы эта функция работала с объектами, расцветку которых нельзя выбирать, вам потребуется загрузить и установить модуль выбора расцветки (Colour Options Enabler), который можно найти по адресу: http://sims.ambertation.de/download.shtml .\n\nЭта функция все еще находится в стадии бета-тестирования, и может работать некорректно. Не распространяйте моды расцветок, без упоминания о том, что при их создании использовался бета-метод; и помните, что пользователи, загружающие эти моды должны также иметь модуль выбора расцветки (Colour Options Enabler)!\n\nВы хотите продолжить?</value>
+    <value>Чтобы эта функция работала с объектами, расцветку которых нельзя выбирать, вам потребуется загрузить и установить модуль выбора расцветки (Colour Options Enabler), который можно найти по адресу: http://www.modthesims2.com/index.php? .\n\nЭта функция все еще находится в стадии бета-тестирования, и может работать некорректно. Не распространяйте моды расцветок, без упоминания о том, что при их создании использовался бета-метод; и помните, что пользователи, загружающие эти моды должны также иметь модуль выбора расцветки (Colour Options Enabler)!\n\nВы хотите продолжить?</value>
   </data>
   <data name="YoungAdult" xml:space="preserve">
     <value>Юношество</value>
@@ -391,21 +388,6 @@
   </data>
   <data name="Please Wait" xml:space="preserve">
     <value>Подождите</value>
-  </data>
-  <data name="Current Version" xml:space="preserve">
-    <value>Текущая версия</value>
-  </data>
-  <data name="Available QA-Version" xml:space="preserve">
-    <value>Доступная QA-версия</value>
-  </data>
-  <data name="Available Version" xml:space="preserve">
-    <value>Доступная версия</value>
-  </data>
-  <data name="download" xml:space="preserve">
-    <value>загрузить</value>
-  </data>
-  <data name="get_qa_release" xml:space="preserve">
-    <value>Выпущена новая &lt;b&gt;QA-версия&lt;/b&gt;.&lt;br /&gt;Вы можете загрузить ее здесь: &lt;b&gt;http://ambertation.de/simpeforum/viewforum.php?f=14&lt;/b&gt;.</value>
   </data>
   <data name="Information" xml:space="preserve">
     <value>Информация</value>
@@ -848,13 +830,6 @@
   <data name="Fun" xml:space="preserve">
     <value>Удовольствия</value>
   </data>
-  <data name="Fix_Fence_Warning" xml:space="preserve">
-    <value>"Создание забора, совместимого с оригинальной игрой, является очень трудоемким процессом, который может вызвать конфликты файлов игры. Его создание не рекомендуется.
-
-Если вы все же хотите сделать забор для первоначальной версии игры, выпустите его в двух архивах, один из которых совместим с оригинальной игрой, а другой с версией "Университет" и более поздними.
-
-Вы все равно хотите создать забор для оригинальной версии?"</value>
-  </data>
   <data name="Censor_Install_Warn" xml:space="preserve">
     <value>Вы установили дополнение "Ночная жизнь" (или более новое). Это означает, что для удаления пятна цензуры, SimPe требуется копировать файл в вашу папку конфигурации.
     
@@ -868,7 +843,7 @@
   <data name="Check FileTable" xml:space="preserve">
     <value>Проверить файловую таблицу</value>
   </data>
-  <data name="Delete Sim" xml:space="preserve">
+  <data name="Delete Sims" xml:space="preserve">
     <value>Удалить Сима</value>
   </data>
   <data name="SimPe.Data.MetaData.AspirationTypes.Nothing" xml:space="preserve">
@@ -931,84 +906,13 @@
     <value>The Sims 2</value>
   </data>
   <data name="[Description:GamePath]" xml:space="preserve">
-    <value>Это поле должно содержать папку с установленной игрой "The Sims 2".
-Полученный каталог должен содержать подкаталог "TSData".
-
-Если оно пустое, SimPE будет использовать папку по умолчанию.</value>
-  </data>
-  <data name="[Property:EP1Path]" xml:space="preserve">
-    <value>1: Университет</value>
-  </data>
-  <data name="[Description:EP1Path]" xml:space="preserve">
-    <value>Это поле должно содержать папку с установленной игрой "The Sims 2: Университет".
-Полученный каталог должен содержать подкаталог "TSData".
-
-Если оно пустое, SimPE будет использовать папку по умолчанию.</value>
-  </data>
-  <data name="[Property:EP2Path]" xml:space="preserve">
-    <value>2: Ночная жизнь</value>
-  </data>
-  <data name="[Description:EP2Path]" xml:space="preserve">
-    <value>Это поле должно содержать папку с установленной игрой "The Sims 2: Ночная жизнь".
-Полученный каталог должен содержать подкаталог "TSData".
-
-Если оно пустое, SimPE будет использовать папку по умолчанию.</value>
-  </data>
-  <data name="[Property:EP3Path]" xml:space="preserve">
-    <value>3: Бизнес</value>
-  </data>
-  <data name="[Description:EP3Path]" xml:space="preserve">
-    <value>Это поле должно содержать папку с установленной игрой "The Sims 2: Бизнес".
-Полученный каталог должен содержать подкаталог "TSData".
-
-Если оно пустое, SimPE будет использовать папку по умолчанию.</value>
-  </data>
-  <data name="[Property:EP4Path]" xml:space="preserve">
-    <value>4: Питомцы</value>
-  </data>
-  <data name="[Description:EP4Path]" xml:space="preserve">
-    <value>Это поле должно содержать папку с установленной игрой "The Sims 2: Питомцы".
-Полученный каталог должен содержать подкаталог "TSData".
-
-Если оно пустое, SimPE будет использовать папку по умолчанию.</value>
-  </data>
-  <data name="[Property:SP1Path]" xml:space="preserve">
-    <value>1: Каталог - Для дома и семьи</value>
-  </data>
-  <data name="[Description:SP1Path]" xml:space="preserve">
-    <value>Это поле должно содержать папку с установленной игрой "The Sims 2: Каталог - Для дома и семьи".
-Полученный каталог должен содержать подкаталог "TSData".
-
-Если оно пустое, SimPE будет использовать папку по умолчанию.</value>
-  </data>
-  <data name="[Property:SP2Path]" xml:space="preserve">
-    <value>2: Каталог - Гламурная жизнь</value>
-  </data>
-  <data name="[Description:SP2Path]" xml:space="preserve">
-    <value>Это поле должно содержать папку с установленной игрой "The Sims 2: Каталог - Гламурная жизнь".
-Полученный каталог должен содержать подкаталог "TSData".
-
-Если оно пустое, SimPE будет использовать папку по умолчанию.</value>
-  </data>
-  <data name="[Property:SP4Path]" xml:space="preserve">
-    <value>4: Каталог - Торжество</value>
-  </data>
-  <data name="[Description:SP4Path]" xml:space="preserve">
-    <value>
-      Это поле должно содержать папку с установленной игрой "The Sims 2 Торжество! - Каталог".
-      Полученный каталог должен содержать подкаталог "TSData".
-
-      Если оно пустое, SimPE будет использовать папку по умолчанию.
-    </value>
+    <value>Это поле должно содержать папку с установленной игрой "The Sims 2". Полученный каталог должен содержать подкаталог "TSData". Если оно пустое, SimPe будет использовать папку по умолчанию.</value>
   </data>
   <data name="[Property:SaveGamePath]" xml:space="preserve">
     <value>Сохранения</value>
   </data>
   <data name="[Description:SaveGamePath]" xml:space="preserve">
-    <value>Это поле должно содержать папку сохранений игры "The Sims 2".
-Полученный каталог должен содержать подкаталоги "Downloads" и "Neighborhoods".
-
-Если оно пустое, SimPE будет использовать папку по умолчанию.</value>
+    <value>Это поле должно содержать папку сохранений игры "The Sims 2". Полученный каталог должен содержать подкаталоги "Downloads" и "Neighborhoods". Если оно пустое, SimPe будет использовать папку по умолчанию.</value>
   </data>
   <data name="[Property:NvidadPath]" xml:space="preserve">
     <value>Утилиты Nvidia DDS</value>
@@ -1073,24 +977,86 @@
   <data name="SimPe.PackedFiles.Wrapper.JobAssignment.BuildRobots" xml:space="preserve">
     <value>Роботехник</value>
   </data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignment.MakeFood" xml:space="preserve">
+    <value>Повар</value>
+  </data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignment.Masseuse" xml:space="preserve">
+    <value>Массажист</value>
+  </data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignment.MakePottery" xml:space="preserve">
+    <value>Сделать гончарное изделие</value>
+  </data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignment.Sewing" xml:space="preserve">
+    <value>Шить</value>
+  </data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Nothing" xml:space="preserve">
+<value>Нет</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Chef" xml:space="preserve">
+<value>Шеф-повар</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Host" xml:space="preserve">
+<value>Менеджер зала</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Server" xml:space="preserve">
+<value>Официант</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Cashier" xml:space="preserve">
+<value>Кассир</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Bartender" xml:space="preserve">
+<value>Бармен</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Barista" xml:space="preserve">
+<value>Бариста</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.DJ" xml:space="preserve">
+<value>Ди Джей</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.SellLemonade" xml:space="preserve">
+<value>Продавец лимонада</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Stylist" xml:space="preserve">
+<value>Стилист</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Tidy" xml:space="preserve">
+<value>Уборщик</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Restock" xml:space="preserve">
+<value>Менеджер по закупкам</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Sales" xml:space="preserve">
+<value>Продавец</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.MakeToys" xml:space="preserve">
+<value>Кукольник</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.ArrangeFlowers" xml:space="preserve">
+<value>Флорист</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.BuildRobots" xml:space="preserve">
+<value>Роботехник</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.MakeFood" xml:space="preserve">
+<value>Повар</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Masseuse" xml:space="preserve">
+<value>Массажист</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.MakePottery" xml:space="preserve">
+<value>Сделать гончарное изделие</value>
+</data>
+	<data name="SimPe.PackedFiles.Wrapper.JobAssignf.Sewing" xml:space="preserve">
+<value>Шить</value>
+</data>
   <data name="Reset Filetable" xml:space="preserve">
-    <value>SimPE требуется сбросить вашу файловую таблицу. Это означает, что SimPe удалит файл "{flname}".
-
-Вы хотите сбросить файловую таблицу?</value>
+    <value>SimPe требуется сбросить вашу файловую таблицу. Это означает, что SimPe удалит файл "{flname}". Вы хотите сбросить файловую таблицу?</value>
   </data>
   <data name="Reset Cache" xml:space="preserve">
-    <value>Формат кеша SimPe был расширен. Это сделано для поддержки новых функций дополнения "Бизнес". Для правильной работы, SimPe требуется сбросить кеш.
-Это означает, что SimPe удалит файл "{flname}".
-
-Вы хотите сбросить кеш?</value>
+    <value>Формат кеша SimPe был расширен. Это сделано для поддержки новых функций дополнения "Бизнес". Для правильной работы, SimPe требуется сбросить кеш. Это означает, что SimPe удалит файл "{flname}". Вы хотите сбросить кеш?</value>
   </data>
   <data name="Unknown EP found" xml:space="preserve">
-    <value>Программа SimPE обнаружила новое дополнение к игре "The Sims 2".
-		
-Данная версия SimPE поддерживает только файлы "{name}". Новые файлы игры могут вызвать ошибки при открытии в этой версии SimPE!
-(для дополнительной информации, посетите http://sims.ambertation.de).
-
-Вы все равно хотите запустить SimPE?</value>
+    <value>Программа SimPe обнаружила новое дополнение к игре "The Sims 2". Данная версия SimPE поддерживает только файлы "{name}". Новые файлы игры могут вызвать ошибки при открытии в этой версии SimPE! (для дополнительной информации, посетите http://www.modthesims2.com/index.php?). Вы все равно хотите запустить SimPE?</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>Внимание!</value>
@@ -1280,9 +1246,6 @@ This means, that SimPE is unable to build the Joint Hirarchy.</value>
   <data name="German" xml:space="preserve">
     <value>Немецкий</value>
   </data>
-  <data name="Hebrew" xml:space="preserve">
-    <value>Иврит</value>
-  </data>
   <data name="Italian" xml:space="preserve">
     <value>Итальянский</value>
   </data>
@@ -1451,23 +1414,11 @@ This means, that SimPE is unable to build the Joint Hirarchy.</value>
   <data name="Starting Resource Loader" xml:space="preserve">
     <value>Запуск загрузчика ресурсов</value>
   </data>
-  <data name="Starting SimPE..." xml:space="preserve">
-    <value>Запуск SimPE...</value>
+  <data name="Starting SimPe..." xml:space="preserve">
+    <value>Запуск SimPe...</value>
   </data>
   <data name="Taurus" xml:space="preserve">
     <value>Телец</value>
-  </data>
-  <data name="[Description:SIMSLSPath]" xml:space="preserve">
-    <value>Это поле должно содержать папку с установленной игрой "The Sims 2: Житейские истории".
-Полученный каталог должен содержать подкаталог "TSData".
-
-Если оно пустое, SimPE будет использовать папку по умолчанию.</value>
-  </data>
-  <data name="[Property:EP5Path]" xml:space="preserve">
-    <value>5: Времена года</value>
-  </data>
-  <data name="[Property:SIMSLSPath]" xml:space="preserve">
-    <value>1: Житейские истории</value>
   </data>
   <data name="EP NAME 8" xml:space="preserve">
     <value>The Sims 2: Времена года</value>
@@ -1566,6 +1517,6 @@ This means, that SimPE is unable to build the Joint Hirarchy.</value>
     <value>Мировая база данных</value>
   </data>
   <data name="URLKnowledgeBase" xml:space="preserve">
-    <value>http://sims.ambertation.de/en/kb/</value>
+    <value>http://www.modthesims2.com/index.php?</value>
   </data>
 </root>

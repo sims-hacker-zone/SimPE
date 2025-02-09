@@ -33,8 +33,6 @@ namespace SimPe
         {
             string flname = System.IO.Path.GetTempFileName();
 
-
-
             // Create the C# compiler
             CodeDomProvider iCodeCompiler = new CSharpCodeProvider();
 

@@ -21,10 +21,7 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Xml;
-#if MAC
-#else
 using Microsoft.Win32;
-#endif
 
 
 namespace SimPe
@@ -39,13 +36,10 @@ namespace SimPe
 		#region Attributes
 		///Number of Recent Files stored in the Reg
 		public const byte RECENT_COUNT = 15;
-#if MAC
-#else
 		/// <summary>
 		/// The Root Registry Kex for this Application
 		/// </summary>
 		private RegistryKey rk;
-#endif
 
 		/// <summary>
 		/// Contains the Registry
@@ -75,8 +69,8 @@ namespace SimPe
 		{
 			get {return lr;}
 		}
-
-		int pep, pepct; long pver;
+        long pver;
+        // int pep, pepct; long pver; - seem not to be used will comment all out
 		#endregion
 
 		#region Management
@@ -85,13 +79,10 @@ namespace SimPe
 		/// </summary>
 		internal Registry()
 		{
-#if MAC			
-#else
 			rk = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Ambertation\\SimPe");
-#endif
 			pver = this.GetPreviousVersion();
-            pep = -1;
-			pepct = this.GetPreviousEpCount();
+            // pep = -1;
+			// pepct = this.GetPreviousEpCount();
 			Reload();
 			if (Helper.QARelease) this.WasQAUser=true;
 		}
@@ -113,7 +104,8 @@ namespace SimPe
 		/// </summary>
 		public void ReloadLayout()
 		{
-			lr = new LayoutRegistry(xrk.CreateSubKey("Layout"));		
+            //lr = new LayoutRegistry(xrk.CreateSubKey("Layout"));
+            lr = new LayoutRegistry(null);
 		}
 
 		/// <summary>
@@ -161,19 +153,15 @@ namespace SimPe
 		#endregion
 
 		/// <summary>
-		/// Update the SimPE paths
+		/// Update the SimPe paths
 		/// </summary>
 		public void UpdateSimPEDirectory()
 		{
-#if MAC
-			XmlRegistryKey rkf = xrk.CreateSubKey("Settings");	
-#else
-			RegistryKey rkf = rk.CreateSubKey("Settings");			
-#endif
+			RegistryKey rkf = rk.CreateSubKey("Settings");
 			rkf.SetValue("Path", Helper.SimPePath);
 			rkf.SetValue("DataPath", Helper.SimPeDataPath);
 			rkf.SetValue("PluginPath", Helper.SimPePluginPath);
-			rkf.SetValue("LastVersion", Helper.SimPeVersionLong);
+            rkf.SetValue("LastVersion", Helper.SimPeVersionLong);
 		}
 
 		/// <summary>
@@ -183,49 +171,28 @@ namespace SimPe
 		{
 			get
 			{
-#if MAC
-				return "";
-#else
 				RegistryKey rkf = rk.CreateSubKey("Settings");	
 				return rkf.GetValue("DataPath", "").ToString();
-#endif
 			}
-		}
+        }
+
+        public string GetPreviousData()
+        {
+            RegistryKey rkf = rk.CreateSubKey("Settings");
+            return rkf.GetValue("DataPath", "").ToString();
+        }
 		
 		/// <summary>
-		/// Returns the DataFolder as set by the last SimPe run
+		/// Returns the SimPe Version as set by the last SimPe run
 		/// </summary>
-		protected long GetPreviousVersion()
+        public long GetPreviousVersion()
 		{
-			
-#if MAC
-				return 0;
-#else
 			RegistryKey rkf = rk.CreateSubKey("Settings");	
 			return Convert.ToInt64(rkf.GetValue("LastVersion", (long)0));
-#endif			
 		}
 
-		
 		/// <summary>
-		/// Returns the number of the latest EP used, and writes the new Number to the Registry
-		/// </summary>
-		protected int GetPreviousEp()
-		{
-			
-#if MAC
-				return this.EPInstalled;
-#else
-			RegistryKey rkf = rk.CreateSubKey("Settings");	
-			int res = Convert.ToInt32(rkf.GetValue("LatestEP", 0));
-
-			rkf.SetValue("LatestEP", PathProvider.Global.EPInstalled);
-			return res;
-#endif			
-		}		
-
-		/// <summary>
-		/// Returns the Version of the latest SimPE used so far
+		/// Returns the Version of the latest SimPe used so far
 		/// </summary>
 		public long PreviousVersion
 		{
@@ -238,53 +205,56 @@ namespace SimPe
 		#region EP Handler
 		public bool FoundUnknownEP()
 		{
-			//if (PreviousEpCount<EpCount) return true;
-
 			string[] inst = InstalledEPExecutables;
 			if (inst.Length==0) return false;
+            string[] eenames ={
+            "sims2.exe",
+            "sims2ep1.exe",
+            "sims2ep2.exe",
+            "sims2ep3.exe", 
+            "sims2sp1.exe",
+            "sims2sp2.exe",
+            "sims2ep4.exe",
+            "sims2ep5.exe",
+            "sims2sp4.exe",
+            "sims2sp5.exe",
+            "sims2ep6.exe",
+            "sims2sp6.exe",
+            "sims2ecc.exe",
+            "sims2ep7.exe",
+            "sims2sp7.exe",
+            "sims2sp8.exe",
+            "sims2ep8.exe",
+            "sims2ep9.exe",
+            "sims2sc.exe"
+            };
 
 			foreach (string si in inst)
 			{
 				if (si=="") continue;
-				bool found = false;
-				foreach(ExpansionItem ei in PathProvider.Global.Expansions)		
-				{		
-					string n = ei.ExeName.ToLower().Trim();
-					if (n=="") continue;
-					if (si==n)
-					{
-						found = true;
-						break;
-					}
-				}
-
-				if (!found) return true;
+                bool found = false;
+                foreach (string n in eenames)
+                {
+                    if (si == n)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) return true;
 			}
-
 			return false;
 		}
 
-		/// <summary>
-		/// Returns the latest number of the Expansion used so far
-		/// </summary>
-		public int PreviousEpCount
-		{
-			get
-			{
-                if (pep == -1) pep = this.GetPreviousEp();
-				return pep;
-			}
-		}
-
-		protected string[] InstalledEPExecutables
+        public string[] InstalledEPExecutables
 		{
 			get 
 			{
-#if MAC
-				return new string[0];
-#else
-				Microsoft.Win32.RegistryKey rk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\EA GAMES\The Sims 2\", false);
-				if (rk!=null)
+                Microsoft.Win32.RegistryKey tk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Sims2.exe", false);
+                if (tk == null) return new string[0];
+                object gr = tk.GetValue("Game Registry", false);
+                Microsoft.Win32.RegistryKey rk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey((string)gr, false);
+                if (rk != null)
 				{
 					object o = rk.GetValue("EPsInstalled", "");
 					if (o==null) return new string[0];
@@ -298,70 +268,19 @@ namespace SimPe
 					return ret;
 				}
 				else return new string[0];
-#endif
 			}
 		}
 
-		protected int EPCount
-		{
-			get 
-			{
-#if MAC
-				return 0;
-#else
-				Microsoft.Win32.RegistryKey rk = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"Software\EA GAMES\", false);
-				if (rk!=null)
-				{
-					if (rk!=null) return rk.SubKeyCount;
-				}
-				return 0;
-#endif
-			}
-		}
-
-		/// <summary>
-		/// Returns the number of the latest EP used, and writes the new Number to the Registry
-		/// </summary>
-		protected int GetPreviousEpCount()
-		{
-			
-#if MAC
-				return 0;
-#else
-			RegistryKey rkf = rk.CreateSubKey("Settings");	
-			int res = Convert.ToInt32(rkf.GetValue("LastEPCount", this.EPCount));
-
-			rkf.SetValue("LastEPCount", this.EPCount);
-			return res;
-#endif			
-		}
 		#endregion
 
-		/// <summary>
-		/// true, if the user wants the Pescado Mode
-		/// </summary>
-		public  bool Silent
-		{
-			get 
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-				object o = rkf.GetValue("PescadoMode", false);
-				return Convert.ToBoolean(o);
-			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-				rkf.SetValue("PescadoMode", value);
-			}
-		}
-
         /// <summary>
-        /// true, if the user wants the Pescado Mode
+        /// true, if the user wants File Table Simple Selection - Fixed now but Setting Manager has to be re-started for change to show
         /// </summary>
         public bool FileTableSimpleSelectUseGroups
         {
             get
             {
+                if (HiddenMode) return false;
                 XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
                 object o = rkf.GetValue("FileTableSimpleSelectUseGroups", true);
                 return Convert.ToBoolean(o);
@@ -374,7 +293,7 @@ namespace SimPe
         }
 
         /// <summary>
-        /// true, if the user wants the Pescado Mode
+        /// true, if the user wants the Wait bar to always be visible
         /// </summary>
         public bool ShowWaitBarPermanent
         {
@@ -388,6 +307,141 @@ namespace SimPe
             {
                 XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
                 rkf.SetValue("ShowWaitBarPermanent", value);
+            }
+        }
+
+        /// <summary>
+        /// true, if user want all neighbourhoods available
+        /// </summary>
+        [System.ComponentModel.Description("Enable this to load sim story neighbourhoods as well as default")]
+        public bool LoadAllNeighbourhoods
+        {
+            get
+            {
+                if (Helper.WindowsRegistry.Layout.IsClassicPreset || LoadOnlySimsStory > 0) return false;
+                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                object o = rkf.GetValue("LoadAllHoods", false);
+                return Convert.ToBoolean(o);
+            }
+            set
+            {
+                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                rkf.SetValue("LoadAllHoods", value);
+            }
+        }
+
+        /// <summary>
+        /// true, if new Store Edition needs to be supported
+        /// </summary>
+        public bool UseExpansions2
+        {
+            get
+            {
+                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                object o = rkf.GetValue("UseExpansions2", false);
+                return Convert.ToBoolean(o);
+            }
+            set
+            {
+                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                rkf.SetValue("UseExpansions2", value);
+            }
+        }
+
+        /// <summary>
+        /// Set to an ST value to set all except that Sims Story Edition as not installed
+        /// </summary>
+        public int LoadOnlySimsStory
+        {
+            get
+            {
+                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                object o = rkf.GetValue("LoadOnlySimsStory", 0);
+                return Convert.ToInt32(o);
+            }
+            set
+            {
+                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                rkf.SetValue("LoadOnlySimsStory", value);
+            }
+        }
+
+        /// <summary>
+        /// true, if user likes bigger Icons on the main tool bars
+        /// </summary>
+        [System.ComponentModel.Description("Enable this for larger Icons on the main toolbar and larger fonts in some areas")]
+        public bool UseBigIcons
+        {
+            get
+            {
+                if (Helper.WindowsRegistry.Layout.IsClassicPreset) return false;
+                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                object o = rkf.GetValue("UseBigIcons", false);
+                return Convert.ToBoolean(o);
+            }
+            set
+            {
+                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                rkf.SetValue("UseBigIcons", value);
+            }
+        }
+
+        /// <summary>
+        /// true, if user uses the custom Music and Art sim Skills
+        /// </summary>
+        [System.ComponentModel.Description("Enable this if you use the Custom Music and Art Skills for your sims")]
+        public bool ShowMoreSkills
+        {
+            get
+            {
+                if (Helper.WindowsRegistry.Layout.IsClassicPreset) return false;
+                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                object o = rkf.GetValue("ShowMoreSkills", false);
+                return Convert.ToBoolean(o);
+            }
+            set
+            {
+                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                rkf.SetValue("ShowMoreSkills", value);
+            }
+        }
+
+        /// <summary>
+        /// true, if user uses the Dog Show or Training Items
+        /// </summary>
+        [System.ComponentModel.Description("Enable this if you use the Pet Stories Dog Show or Training Items for your pets")]
+        public bool ShowPetAbilities
+        {
+            get
+            {
+                if (Helper.WindowsRegistry.Layout.IsClassicPreset) return false;
+                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                object o = rkf.GetValue("ShowPetAbilities", "false");
+                return Convert.ToBoolean(o);
+            }
+            set
+            {
+                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                rkf.SetValue("ShowPetAbilities", value);
+            }
+        }
+
+        /// <summary>
+        /// true to load the main file table at startup
+        /// </summary>
+        [System.ComponentModel.Description("Enable this to load the main file table at startup instead of when first needed")]
+        public bool LoadTableAtStartup
+        {
+            get
+            {
+                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                object o = rkf.GetValue("loadAtStartup", false);
+                return Convert.ToBoolean(o);
+            }
+            set
+            {
+                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                rkf.SetValue("loadAtStartup", value);
             }
         }
 
@@ -452,6 +506,7 @@ namespace SimPe
         {
             get
             {
+                if (Helper.WindowsRegistry.Layout.IsClassicPreset) return false;
                 XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
                 object o = rkf.GetValue("AllowChangeOfSecondaryAspiration", true);
                 return Convert.ToBoolean(o);
@@ -462,8 +517,6 @@ namespace SimPe
                 rkf.SetValue("AllowChangeOfSecondaryAspiration", value);
             }
         }
-
-		
 
 		/// <summary>
 		/// true, if user wants to show the Name of a Joint in the GMDC Plugin
@@ -502,43 +555,7 @@ namespace SimPe
 		}
 
 		/// <summary>
-		/// true, if user wants to activate the Cache
-		/// </summary>
-		public  bool XPStyle
-		{
-			get 
-			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
-				object o = rkf.GetValue("XPStyle", true);
-				return Convert.ToBoolean(o);
-			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-				rkf.SetValue("XPStyle", value);
-			}
-		}
-
-		/// <summary>
-		/// true, if the user wanted to use the HexViewer
-		/// </summary>
-		public  bool HexViewState 
-		{
-			get 
-			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
-				object o = rkf.GetValue("HexViewEnabled", false);
-				return Convert.ToBoolean(o);
-			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-				rkf.SetValue("HexViewEnabled", value);
-			}
-		}
-
-		/// <summary>
-		/// true, if the HiddenMode is activated
+		/// true, if the HiddenMode (Crap Mode) is activated
 		/// </summary>
 		public bool HiddenMode
 		{
@@ -558,7 +575,7 @@ namespace SimPe
         /// <summary>
         /// true, if Groups cache is going to be used
         /// </summary>
-        [System.ComponentModel.Description("Enable this if some thumbnails from custom packages do not load right. This will slow down the loading of the first package in a SimPE Session")]
+        [System.ComponentModel.Description("Enable this if some thumbnails from custom packages do not load right. This will slow down the loading of the first package in a SimPe Session")]
         public bool UseMaxisGroupsCache
         {
             get
@@ -581,6 +598,7 @@ namespace SimPe
 		{
 			get 
 			{
+                if (Helper.WindowsRegistry.Layout.IsClassicPreset) return false;
 				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("DecodeFilenames", true);
 				return Convert.ToBoolean(o);
@@ -593,7 +611,7 @@ namespace SimPe
 		}
 
 		/// <summary>
-		/// GUID Username
+		/// Optional User Name
 		/// </summary>
 		public string Username
 		{
@@ -626,12 +644,10 @@ namespace SimPe
 				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				rkf.SetValue("CUi", value);
 			}
-		}
-
-		
+		}		
 
 		/// <summary>
-		/// GUID Username
+        /// Language Code for SimPe
 		/// </summary>
 		public Data.MetaData.Languages LanguageCode
 		{
@@ -650,45 +666,36 @@ namespace SimPe
 		}
 
 		/// <summary>
-		/// GUID Password
+		/// Optional User Password
 		/// </summary>
 		public string Password
 		{
 			get 
 			{
 				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
-				object o = rkf.GetValue("Password", "");
-				return o.ToString();
+                object o = rkf.GetValue("Password", "");
+                return o.ToString();
+                //return descramble(o.ToString());
 			}
 			set
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-				rkf.SetValue("Password", value);
+                rkf.SetValue("Password", value);
+                //rkf.SetValue("Password", scramble(value));
 			}
 		}
 
 		/// <summary>
-		/// The Version that was executed last Time SimPE was started
+		/// This was not used and always return zero, I have 
+        /// Made it return the Current SimPe Version, 
+        /// Was an int which may cause an issue if an old
+        /// addon did call it
 		/// </summary>
-		public int Version
+		public long Version
 		{
-			get 
-			{
-				try 
-				{
-					XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
-					object o = rkf.GetValue("Version", 0);					
-					return (int)o;
-				} 
-				catch (Exception) 
-				{
-					return 0;
-				}
-			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-				rkf.SetValue("Version", value);
+			get
+            {
+                return Helper.SimPeVersionLong;
 			}
 		}
 
@@ -718,7 +725,7 @@ namespace SimPe
         }
 
 		/// <summary>
-		/// Returns the Thumbnail Size for Treeview Items in OW
+		/// Returns the Thumbnail Size for Treeview Items in Object Workshop
 		/// </summary>
 		public int OWThumbSize
 		{
@@ -727,12 +734,12 @@ namespace SimPe
 				try 
 				{
 					XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
-					object o = rkf.GetValue("OWThumbSize", 16);
+					object o = rkf.GetValue("OWThumbSize", 24);
 					return (int)o;
 				} 
 				catch (Exception) 
 				{
-					return 16;
+					return 24;
 				}
 			}
 			set
@@ -740,10 +747,60 @@ namespace SimPe
 				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				rkf.SetValue("OWThumbSize", value);
 			}
-		}
+        }
+
+        /// <summary>
+        /// Returns the Thumbnail Size for Treeview Items in Object Workshop
+        /// </summary>
+        public bool OWincludewalls
+        {
+            get
+            {
+                try
+                {
+                    XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                    object o = rkf.GetValue("OWWallsFloors", false);
+                    return (bool)o;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+            set
+            {
+                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                rkf.SetValue("OWWallsFloors", value);
+            }
+        }
+
+        /// <summary>
+        /// Trim junk from names for Treeview Items in Object Workshop
+        /// </summary>
+        public bool OWtrimnames
+        {
+            get
+            {
+                try
+                {
+                    XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                    object o = rkf.GetValue("OWTrimNames", false);
+                    return (bool)o;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+            set
+            {
+                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                rkf.SetValue("OWTrimNames", value);
+            }
+        }
 
 		/// <summary>
-		/// true, if the user wanted to use the HexViewer
+        /// true, if the user wants to Load Meta Information
 		/// </summary>
 		public bool LoadMetaInfo 
 		{
@@ -757,28 +814,6 @@ namespace SimPe
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				rkf.SetValue("LoadMetaInfos", value);
-			}
-		}
-
-		/// <summary>
-		/// true, if the user wants to autocheck for Updates
-		/// </summary>
-		public bool CheckForUpdates 
-		{
-			get 
-			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
-#if MAC
-				object o = rkf.GetValue("CheckForUpdates", false);
-#else
-                object o = rkf.GetValue("CheckForUpdates", false);
-#endif
-				return Convert.ToBoolean(o);
-			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-				rkf.SetValue("CheckForUpdates", value);
 			}
 		}
 
@@ -801,7 +836,7 @@ namespace SimPe
 		}
 
 		/// <summary>
-		/// true, if the user wanted to use the HexViewer
+		/// true, if the user wants .bak files to be generated
 		/// </summary>
 		public bool AutoBackup 
 		{
@@ -837,7 +872,7 @@ namespace SimPe
 		}
 
 		/// <summary>
-		/// true, if the user wants the Waiting Screen as a TopMost Window
+		/// true, if the user wants the Waiting Screen as a TopMost Window, seems not to be used but I don't know why not
 		/// </summary>
 		public bool WaitingScreenTopMost
 		{
@@ -855,7 +890,7 @@ namespace SimPe
 		}
 
 		/// <summary>
-		/// true, if the user wants the Waiting Screen
+		/// true, if the user wants to load Object Workshop fast
 		/// </summary>
 		public bool LoadOWFast 
 		{
@@ -873,7 +908,7 @@ namespace SimPe
 		}
 
 		/// <summary>
-		/// true, if the user wantsto use the package Maintainer
+		/// true, if the user wants to use the package Maintainer
 		/// </summary>
 		public bool UsePackageMaintainer 
 		{
@@ -891,7 +926,7 @@ namespace SimPe
 		}
 
 		/// <summary>
-		/// true, if the user wantsto use the package Maintainer
+        /// true, if the user wants to be able to have Multiple Files open
 		/// </summary>
 		public bool MultipleFiles
 		{
@@ -970,7 +1005,7 @@ namespace SimPe
 			get 
 			{
 				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
-				object o = rkf.GetValue("BigPackageResourceCount", 1000);
+				object o = rkf.GetValue("BigPackageResourceCount", 2000);
 				return Convert.ToInt32(o);
 			}
 			set
@@ -1014,7 +1049,25 @@ namespace SimPe
 				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				rkf.SetValue("GraphQuality", value);
 			}
-		}
+        }
+
+        /// <summary>
+        /// should we prioritize mmat over cres
+        /// </summary>
+        public bool CresPrioritize
+        {
+            get
+            {
+                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                object o = rkf.GetValue("CresPrioritize", true);
+                return Convert.ToBoolean(o);
+            }
+            set
+            {
+                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                rkf.SetValue("CresPrioritize", value);
+            }
+        }
 
 		/// <summary>
 		/// returns the last Extension used during a GMDC import/export
@@ -1180,25 +1233,6 @@ namespace SimPe
         }
 
         /// <summary>
-        /// oboslete??? True, if you want to see items added to the resoruceList at once (ie. no BeginUpdate)
-        /// </summary>
-        private bool ShowResourceListContentAtOnce
-        {
-            get
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("ShowResourceListContentAtOnce", false);
-                return Convert.ToBoolean(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("ShowResourceListContentAtOnce", value);
-            }
-        }
-
-
-        /// <summary>
         /// True, if you want to rebuild the ResourceTree whenever the type of a loaded Resource changes
         /// </summary>
         public  bool UpdateResourceListWhenTGIChanges
@@ -1232,24 +1266,25 @@ namespace SimPe
 				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				rkf.SetValue("LockDocks", value);
 			}
-		}
+        }
 
-		/// <summary>
-		/// When did whe perform the last UpdateCheck?
-		/// </summary>
-		public DateTime LastUpdateCheck
-		{
-			get 
-			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
-				object o = rkf.GetValue("LastUpdateCheck", DateTime.Now.Subtract(new TimeSpan(2, 0, 0, 0, 0)));
-				return Convert.ToDateTime(o);
-			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-				rkf.SetValue("LastUpdateCheck", value);
-			}
+        /// <summary>
+        /// set this true to allow families in the family bin to count as having a Lot
+        /// </summary>
+        [System.ComponentModel.Description("Enable this to allow the family bin to count as a Lot")]
+        public bool AllowLotZero
+        {
+            get
+            {
+                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                object o = rkf.GetValue("allowlotzero", true);
+                return Convert.ToBoolean(o);
+            }
+            set
+            {
+                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                rkf.SetValue("allowlotzero", value);
+            }
         }
 
         #region ResourceList
@@ -1438,7 +1473,6 @@ namespace SimPe
 		{
 			XmlRegistryKey  rkf = mrk.CreateSubKey("Listings");
 			Ambertation.CaseInvariantArrayList al = (Ambertation.CaseInvariantArrayList)rkf.GetValue("RecentFiles", new Ambertation.CaseInvariantArrayList());
-			
 
 			string[] res = new string[al.Count];
 			al.CopyTo(res);
@@ -1511,7 +1545,6 @@ namespace SimPe
 			set 
 			{
                 if (!System.IO.Directory.Exists(System.IO.Path.GetDirectoryName(PathProvider.Global.StartupCheatFile))) return;
-
 				try 
 				{
 					string newcont = "";
@@ -1525,7 +1558,6 @@ namespace SimPe
 						fs = null;
 						
 						string[] lines = cont.Split("\n".ToCharArray());
-						
 
 						foreach (string line in lines) 
 						{
@@ -1568,7 +1600,7 @@ namespace SimPe
 					fw.Close();
 					fw.Dispose();
 					fw = null;
-				} 
+				}
 				catch (Exception) {}
 			}
 		}		
@@ -1590,9 +1622,156 @@ namespace SimPe
             PathProvider.Global.BlurNudityUpdate();
 		}
 		#endregion
-
-
+        /*
 		#region Obsolete
+        
+		/// <summary>
+        /// Returns the latest number of the Expansion used so far - seems not to be used ever
+		/// </summary>
+		public int PreviousEpCount
+		{
+			get
+			{
+                if (pep == -1) pep = this.GetPreviousEp();
+				return pep;
+			}
+		}
+		protected int EPCount
+		{
+			get 
+			{
+                int cints = 0;
+                string[] cinst = InstalledEPExecutables;
+                if (cinst.Length == 0) return 0;
+                foreach (string csi in cinst)
+                {
+                    if (csi != "") cints += 1;
+                }
+                return cints;
+			}
+		}
+
+		/// <summary>
+		/// Returns the number of the EPs used, and writes the new Number to the Registry
+		/// </summary>
+		protected int GetPreviousEpCount()
+		{
+			RegistryKey rkf = rk.CreateSubKey("Settings");	
+			int res = Convert.ToInt32(rkf.GetValue("LastEPCount", this.EPCount));
+
+			rkf.SetValue("LastEPCount", this.EPCount);
+			return res;
+		}
+		/// <summary>
+		/// Returns the number of the latest EP used, and writes the new Number to the Registry
+		/// </summary>
+		protected int GetPreviousEp()
+		{
+			RegistryKey rkf = rk.CreateSubKey("Settings");	
+			int res = Convert.ToInt32(rkf.GetValue("LatestEP", 0));
+
+			//rkf.SetValue("LatestEP", PathProvider.Global.EPInstalled);
+            rkf.SetValue("LatestEP", PathProvider.Global.GameVersion);
+			return res;
+		}
+        
+        private string scramble(string rey)
+        {
+            byte[] b = Helper.ToBytes(rey);
+            return Helper.BytesToHexList(b);
+        }
+
+        private string descramble(string rey)
+        {
+            string ret = "";
+            byte[] b = Helper.HexListToBytes(rey);
+            foreach (byte f in b) ret += (char)f;
+            return ret;
+        }
+        /// <summary>
+        /// oboslete??? True, if you want to see items added to the resoruceList at once (ie. no BeginUpdate)
+        /// </summary>
+        private bool ShowResourceListContentAtOnce
+        {
+            get
+            {
+                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                object o = rkf.GetValue("ShowResourceListContentAtOnce", false);
+                return Convert.ToBoolean(o);
+            }
+            set
+            {
+                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+                rkf.SetValue("ShowResourceListContentAtOnce", value);
+            }
+        }
+
+		/// <summary>
+		/// true, if user wants to activate the Cache
+		/// </summary>
+		public  bool XPStyle
+		{
+			get 
+			{
+				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("XPStyle", true);
+				return Convert.ToBoolean(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("XPStyle", value);
+			}
+		}
+		/// <summary>
+		/// true, if the user wanted to use the HexViewer
+		/// </summary>
+		public  bool HexViewState 
+		{
+			get 
+			{
+				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("HexViewEnabled", false);
+				return Convert.ToBoolean(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("HexViewEnabled", value);
+			}
+		}        
+		/// <summary>
+		/// Obsolete, Since there is no updates will always get/set false
+		/// </summary>
+		public bool CheckForUpdates 
+		{
+			get 
+			{
+                return false;
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("CheckForUpdates", false);
+			}
+		}        
+		/// <summary>
+		/// When did whe perform the last UpdateCheck? Obsolete always returns the default
+		/// </summary>
+		public DateTime LastUpdateCheck
+		{
+			get 
+			{
+				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("LastUpdateCheck", DateTime.Now.Subtract(new TimeSpan(2, 0, 0, 0, 0)));
+				return Convert.ToDateTime(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("LastUpdateCheck", value);
+			}
+        }        
         public class ObsoleteWarning : Warning
         {
             internal ObsoleteWarning(string message, string detail) : base(message, detail) { }
@@ -1600,9 +1779,9 @@ namespace SimPe
 
         protected static void WarnObsolete()
         {
-            if (Helper.DebugMode) throw new SimPe.Registry.ObsoleteWarning("This call is obsolete!", "The Call to this method is obsolete.\n\n Please use the matching version in SimPe.PathProvider.Global, or see http://ambertation.de/simpeforum/sims2/SimPE-Expansion-Management-PathProvider for details.");
+            // if (Helper.DebugMode)
+                throw new SimPe.Registry.ObsoleteWarning("This call is obsolete!", "The Call to this method is obsolete.\n\n Please use the matching version in SimPe.PathProvider.Global, or see http://www.modthesims2.com/index.php? for details.");
         }
-
 		/// <summary>
 		/// Obsolete! 
 		/// </summary>
@@ -1614,7 +1793,6 @@ namespace SimPe
                 return SimPe.PathProvider.Global[Expansions.University].RealInstallFolder;
 			}
 		}
-
 		/// <summary>
 		/// Obsolete! 
 		/// </summary>
@@ -1626,7 +1804,6 @@ namespace SimPe
                 return SimPe.PathProvider.Global[Expansions.Nightlife].RealInstallFolder;
 			}
 		}
-
 		/// <summary>
 		/// Obsolete! 
 		/// </summary>
@@ -1638,7 +1815,6 @@ namespace SimPe
                 return SimPe.PathProvider.Global[Expansions.Business].RealInstallFolder;
 			}
 		}
-
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
@@ -1650,7 +1826,6 @@ namespace SimPe
                 return SimPe.PathProvider.Global[Expansions.FamilyFun].RealInstallFolder;
 			}
 		}
-
         /// <summary>
         /// Obsolete!
         /// </summary>
@@ -1662,7 +1837,6 @@ namespace SimPe
                 return SimPe.PathProvider.Global[Expansions.Glamour].RealInstallFolder;
             }
         }
-
         /// <summary>
         /// Obsolete!
         /// </summary>
@@ -1676,7 +1850,6 @@ namespace SimPe
 				return ret;
 			}
 		}
-
         /// <summary>
         /// Obsolete!
         /// </summary>
@@ -1688,7 +1861,6 @@ namespace SimPe
                 return SimPe.PathProvider.Global.GameVersion;			
 			}
 		}
-
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
@@ -1700,7 +1872,6 @@ namespace SimPe
                 return SimPe.PathProvider.Global.EPInstalled;
 			}
 		}
-
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
@@ -1711,8 +1882,18 @@ namespace SimPe
                 WarnObsolete();
                 return PathProvider.Global.SPInstalled;
 			}
-		}
-
+        }
+        /// <summary>
+        /// Obsolete!
+        /// </summary>
+        public int STInstalled
+        {
+            get
+            {
+                WarnObsolete();
+                return PathProvider.Global.STInstalled;
+            }
+        }
         /// <summary>
         /// Obsolete!
         /// </summary>
@@ -1723,8 +1904,7 @@ namespace SimPe
                 WarnObsolete();
 				return SimPe.PathProvider.RealSavegamePath;
 			}
-		}
-         
+		}         
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
@@ -1736,7 +1916,6 @@ namespace SimPe
 				return SimPe.PathProvider.Global[Expansions.BaseGame].RealInstallFolder;
 			}
 		}
-
         /// <summary>
         /// Obsolete!
         /// </summary>
@@ -1753,7 +1932,6 @@ namespace SimPe
                 SimPe.PathProvider.Global[Expansions.BaseGame].InstallFolder = value;
             }
         }
-
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
@@ -1765,7 +1943,6 @@ namespace SimPe
 				return PathProvider.Global.NvidiaDDSTool;
 			}
 		}
-
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
@@ -1788,7 +1965,6 @@ namespace SimPe
 				return PathProvider.Global.NeighborhoodFolder;
 			}
 		}
-
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
@@ -1800,7 +1976,6 @@ namespace SimPe
                 return PathProvider.Global.BackupFolder;
 			}
 		}
-
         /// <summary>
 		/// Obsolete!
 		/// </summary>
@@ -1816,11 +1991,7 @@ namespace SimPe
                 WarnObsolete();
                 PathProvider.Global.NvidiaDDSPath = value;
 			}
-		}
-
-		
-
-		
+		}		
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
@@ -1837,7 +2008,6 @@ namespace SimPe
                 PathProvider.Global[Expansions.University].InstallFolder = value;
 			}
 		}
-
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
@@ -1854,7 +2024,6 @@ namespace SimPe
                 PathProvider.Global[Expansions.Nightlife].InstallFolder = value;
 			}
 		}
-
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
@@ -1871,7 +2040,6 @@ namespace SimPe
                 PathProvider.Global[Expansions.Business].InstallFolder = value;
 			}
 		}
-
 		/// <summary>
 		///Obsolete !
 		/// </summary>
@@ -1888,7 +2056,6 @@ namespace SimPe
                 PathProvider.Global[Expansions.FamilyFun].InstallFolder = value;
 			}
 		}
-
         /// <summary>
         /// Obsolete!
         /// </summary>
@@ -1905,7 +2072,6 @@ namespace SimPe
                 PathProvider.Global[Expansions.Glamour].InstallFolder = value;
 			}  
         }
-
 		protected static int GetVersion(int index) {
             if ((index & 0xFFFF0000) == 0x00020000) return 5;
 			if ((index & 0xFFFF0000) == 0x00010000) return 4;
@@ -1913,8 +2079,7 @@ namespace SimPe
 			if ((index & 0x0000FFFF) == 0x00000002) return 2;
 			if ((index & 0x0000FFFF) == 0x00000001) return 1;
             return 0;
-        }
-		
+        }		
         /// <summary>
         /// Obsolete!
         /// </summary>
@@ -1926,8 +2091,6 @@ namespace SimPe
             WarnObsolete();
             return PathProvider.Global[GetVersion(index)].Name;			
 		}
-
-
         /// <summary>
         /// Obsolete!
         /// </summary>
@@ -1936,10 +2099,9 @@ namespace SimPe
             get
             {
                 WarnObsolete();
-                return GetEpName(this.EPInstalled);
+                return SimPe.PathProvider.Global.Latest.DisplayName;
             }
 		}
-
         /// <summary>
         /// Obsolete!
         /// </summary>
@@ -1949,9 +2111,7 @@ namespace SimPe
 		{
             WarnObsolete();
             return PathProvider.Global[GetVersion(index)].ExeName;	
-		}
-
-		 
+		}		 
         /// <summary>
         /// Obsolete!
         /// </summary>
@@ -1962,7 +2122,6 @@ namespace SimPe
             WarnObsolete();
             return PathProvider.Global[GetVersion(index)].InstallFolder;
 		}
-
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
@@ -1975,7 +2134,6 @@ namespace SimPe
 			}
 			
 		}
-
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
@@ -1993,5 +2151,6 @@ namespace SimPe
 			}
 		}
 		#endregion
+         */
 	}
 }

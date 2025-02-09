@@ -73,7 +73,6 @@ namespace SimPe
 			foreach (PropertyInfo p in ps)
 			{
 				if (!p.CanRead) continue;
-				
 
 				try 
 				{
@@ -96,10 +95,8 @@ namespace SimPe
 				}
 				finally 
 				{
-					
 				}
 			}
-
 			return s;
 		}
 
@@ -109,7 +106,6 @@ namespace SimPe
 			foreach (PropertyInfo p in ps)
 			{
 				if (!p.CanRead) continue;
-				
 
 				try 
 				{
@@ -133,7 +129,6 @@ namespace SimPe
 				}
 				finally 
 				{
-					
 				}
 			}
 

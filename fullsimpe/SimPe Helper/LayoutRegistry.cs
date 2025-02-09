@@ -21,10 +21,7 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Xml;
-#if MAC
-#else
 using Microsoft.Win32;
-#endif
 
 
 namespace SimPe
@@ -54,9 +51,7 @@ namespace SimPe
         {
             reg = new XmlRegistry(Helper.DataFolder.Layout2XREG, Helper.DataFolder.Layout2XREGW, true);
             xrk = reg.CurrentUser.CreateSubKey(@"Software\Ambertation\SimPe\Layout");
-        }	
-
-		
+        }
 
 		/// <summary>
 		/// Returns the Registry Key you can use to store Optional Plugin Data
@@ -70,10 +65,10 @@ namespace SimPe
 		}
 
 		/// <summary>
-		/// Descturtor 
+        /// Descturtor -(Whats a Descturtor?)
 		/// </summary>
 		/// <remarks>
-		/// Will flsuh the XmlRegistry to the disk
+        /// Will flsuh the XmlRegistry to the disk -(Whats a flsuh?)
 		/// </remarks>
 		~LayoutRegistry()
 		{
@@ -105,25 +100,195 @@ namespace SimPe
             {
                 xrk.SetValue("TBButtons", value);
             }
-        }
-		
+        }		
 
 		/// <summary>
-		/// true, if the user wantsto use the package Maintainer
-		/// </summary>
+		/// gets / sets the Theme for SimPe
+        /// </summary>
+        /// <remarks>Math.Min caps the maximum theme to 10 to prevent errors, must be increased to add another theme</remarks>
 		public byte SelectedTheme
 		{
-			get 
-			{
-				object o = xrk.GetValue("ThemeID", (int)1);
-				return (byte)Convert.ToInt32(o);
+			get
+            {
+                if (Helper.WindowsRegistry.Layout.IsClassicPreset) return (byte)0;
+                object o = xrk.GetValue("ThemeID", (byte)1);
+                return Math.Min((byte)Convert.ToInt32(o), (byte)10);
 			}
 			set
 			{
 				xrk.SetValue("ThemeID", (int)value);
 			}
-		}		
-		
+        }
+
+        /// <summary>
+        /// true if classic pre-set has been launched
+        /// </summary>
+        public bool IsClassicPreset
+        {
+            get
+            {
+                object o = xrk.GetValue("IsClassic", false);
+                return Convert.ToBoolean(o);
+            }
+            set
+            {
+                xrk.SetValue("IsClassic", value);
+            }
+        }
+
+        /// <summary>
+        /// true if the Layout should be stored on exit
+        /// </summary>
+        public bool AutoStoreLayout
+        {
+            get
+            {
+                object o = xrk.GetValue("AutoLayout", true);
+                return Convert.ToBoolean(o);
+            }
+            set
+            {
+                xrk.SetValue("AutoLayout", value);
+            }
+        }
+
+        static string[] colNames = new string[] { "Name", "Type", "Group", "InstHi", "Inst", "Offset", "Size" };
+        public System.Collections.Generic.List<string> ColumnOrder
+        {
+            get
+            {
+                string[] s = xrk.GetValue("ColumnOrder", String.Join(",", colNames)).ToString().Split(',');
+                System.Collections.Generic.List<string> ls = new System.Collections.Generic.List<string>(s);
+                System.Collections.Generic.List<string> lc = new System.Collections.Generic.List<string>(colNames);
+                foreach (string v in s) if (!lc.Contains(v)) ls.Remove(v);
+                foreach (string v in colNames) if (!ls.Contains(v)) ls.Add(v);
+                return ls;
+            }
+            set
+            {
+                string[] s = value.ToArray();
+                System.Collections.Generic.List<string> ls = new System.Collections.Generic.List<string>(s);
+                System.Collections.Generic.List<string> lc = new System.Collections.Generic.List<string>(colNames);
+                foreach (string v in s) if (!lc.Contains(v)) ls.Remove(v);
+                foreach (string v in colNames) if (!ls.Contains(v)) ls.Add(v);
+                xrk.SetValue("ColumnOrder", String.Join(",", ls.ToArray()));
+            }
+        }
+
+		/// <summary>
+		/// Width of the Column in the main Window
+		/// </summary>
+		public int NameColumnWidth
+		{
+			get 
+			{
+                object o = xrk.GetValue("NameColumnWidth", (int)280);
+				return Convert.ToInt32(o);
+			}
+			set
+			{
+                xrk.SetValue("NameColumnWidth", value);
+			}
+        }
+
+        /// <summary>
+        /// Width of the Column in the main Window
+        /// </summary>
+        public int TypeColumnWidth
+        {
+            get
+            {
+                object o = xrk.GetValue("TypeColumnWidth", (int)70);
+                return Convert.ToInt32(o);
+            }
+            set
+            {
+                xrk.SetValue("TypeColumnWidth", value);
+            }
+        }
+
+		/// <summary>
+		/// Width of the Column in the main Window
+		/// </summary>
+		public int GroupColumnWidth
+		{
+			get 
+			{
+                object o = xrk.GetValue("GroupColumnWidth", (int)120);
+				return Convert.ToInt32(o);
+			}
+			set
+			{
+				xrk.SetValue("GroupColumnWidth", value);
+			}
+		}
+
+		/// <summary>
+		/// Width of the Column in the main Window
+		/// </summary>
+		public int InstanceHighColumnWidth
+		{
+			get 
+			{
+                object o = xrk.GetValue("InstanceHighColumnWidth", (int)120);
+				return Convert.ToInt32(o);
+			}
+			set
+			{
+				xrk.SetValue("InstanceHighColumnWidth", value);
+			}
+		}
+
+		/// <summary>
+		/// Width of the Column in the main Window
+		/// </summary>
+		public int InstanceColumnWidth
+		{
+			get 
+			{
+                object o = xrk.GetValue("InstanceColumnWidth", (int)160);
+				return Convert.ToInt32(o);
+			}
+			set
+			{
+				xrk.SetValue("InstanceColumnWidth", value);
+			}
+		}
+
+		/// <summary>
+		/// Width of the Column in the main Window
+		/// </summary>
+		public int OffsetColumnWidth
+		{
+			get 
+			{
+                object o = xrk.GetValue("OffsetColumnWidth", (int)120);
+				return Convert.ToInt32(o);
+			}
+			set
+			{
+				xrk.SetValue("OffsetColumnWidth", value);
+			}
+		}
+
+		/// <summary>
+		/// Width of the Column in the main Window
+		/// </summary>
+		public int SizeColumnWidth
+		{
+			get 
+			{
+                object o = xrk.GetValue("SizeColumnWidth", (int)140);
+				return Convert.ToInt32(o);
+			}
+			set
+			{
+				xrk.SetValue("SizeColumnWidth", value);
+			}
+		}        
+
+        /*
+		#region Obsolete
 		/// <summary>
 		/// true if the taskBox should be presented expanded
 		/// </summary>
@@ -170,126 +335,7 @@ namespace SimPe
 			{
 				xrk.SetValue("ActionPlugExpanded", value);
 			}
-		}
-
-
-        static string[] colNames = new string[] { "Name", "Type", "Group", "InstHi", "Inst", "Offset", "Size" };
-        public System.Collections.Generic.List<string> ColumnOrder
-        {
-            get
-            {
-                string[] s = xrk.GetValue("ColumnOrder", String.Join(",", colNames)).ToString().Split(',');
-                System.Collections.Generic.List<string> ls = new System.Collections.Generic.List<string>(s);
-                System.Collections.Generic.List<string> lc = new System.Collections.Generic.List<string>(colNames);
-                foreach (string v in s) if (!lc.Contains(v)) ls.Remove(v);
-                foreach (string v in colNames) if (!ls.Contains(v)) ls.Add(v);
-                return ls;
-            }
-            set
-            {
-                string[] s = value.ToArray();
-                System.Collections.Generic.List<string> ls = new System.Collections.Generic.List<string>(s);
-                System.Collections.Generic.List<string> lc = new System.Collections.Generic.List<string>(colNames);
-                foreach (string v in s) if (!lc.Contains(v)) ls.Remove(v);
-                foreach (string v in colNames) if (!ls.Contains(v)) ls.Add(v);
-                xrk.SetValue("ColumnOrder", String.Join(",", ls.ToArray()));
-            }
         }
-
-		/// <summary>
-		/// Width of the Column in the main Window
-		/// </summary>
-		public int TypeColumnWidth
-		{
-			get 
-			{
-				object o = xrk.GetValue("TypeColumnWidth", (int)204);
-				return Convert.ToInt32(o);
-			}
-			set
-			{
-				xrk.SetValue("TypeColumnWidth", value);
-			}
-		}
-
-		/// <summary>
-		/// Width of the Column in the main Window
-		/// </summary>
-		public int GroupColumnWidth
-		{
-			get 
-			{
-				object o = xrk.GetValue("GroupColumnWidth", (int)100);
-				return Convert.ToInt32(o);
-			}
-			set
-			{
-				xrk.SetValue("GroupColumnWidth", value);
-			}
-		}
-
-		/// <summary>
-		/// Width of the Column in the main Window
-		/// </summary>
-		public int InstanceHighColumnWidth
-		{
-			get 
-			{
-				object o = xrk.GetValue("InstanceHighColumnWidth", (int)100);
-				return Convert.ToInt32(o);
-			}
-			set
-			{
-				xrk.SetValue("InstanceHighColumnWidth", value);
-			}
-		}
-
-		/// <summary>
-		/// Width of the Column in the main Window
-		/// </summary>
-		public int InstanceColumnWidth
-		{
-			get 
-			{
-				object o = xrk.GetValue("InstanceColumnWidth", (int)100);
-				return Convert.ToInt32(o);
-			}
-			set
-			{
-				xrk.SetValue("InstanceColumnWidth", value);
-			}
-		}
-
-		/// <summary>
-		/// Width of the Column in the main Window
-		/// </summary>
-		public int OffsetColumnWidth
-		{
-			get 
-			{
-				object o = xrk.GetValue("OffsetColumnWidth", (int)100);
-				return Convert.ToInt32(o);
-			}
-			set
-			{
-				xrk.SetValue("OffsetColumnWidth", value);
-			}
-		}
-
-		/// <summary>
-		/// Width of the Column in the main Window
-		/// </summary>
-		public int SizeColumnWidth
-		{
-			get 
-			{
-				object o = xrk.GetValue("SizeColumnWidth", (int)100);
-				return Convert.ToInt32(o);
-			}
-			set
-			{
-				xrk.SetValue("SizeColumnWidth", value);
-			}
-		}
+        */
 	}
 }

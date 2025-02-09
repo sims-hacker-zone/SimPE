@@ -26,7 +26,7 @@ using System.Windows.Forms;
 namespace SimPe
 {
 	/// <summary>
-	/// Zusammenfassung für SelectSimFolder.
+	/// Summary description for SelectSimFolder.
 	/// </summary>
 	class SelectSimFolder : System.Windows.Forms.Form
 	{
@@ -39,9 +39,9 @@ namespace SimPe
 				this.folder = folder;
 			}
 
-			public string Folder 
+			public string Folder
 			{
-				get {return folder;}
+				get { return folder; }
 			}
 
 			public override string ToString()
@@ -56,46 +56,46 @@ namespace SimPe
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.FolderBrowserDialog fbd;
 		private System.Windows.Forms.ComboBox tbFolder;
-		private SteepValley.Windows.Forms.XPLine xpLine1;
 		private System.Windows.Forms.Button btCancel;
 		private System.Windows.Forms.Button btOK;
-		/// <summary>
-		/// Erforderliche Designervariable.
-		/// </summary>
-		private System.ComponentModel.Container components = null;
+        private SteepValley.Windows.Forms.XPLine xpLine1;
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.Container components = null;
 
 		public SelectSimFolder()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
 
-            foreach (ExpansionItem ei in PathProvider.Global.Expansions)
-            {
-                this.tbFolder.Items.Add(new FolderWrapper(ei.Name, ei.RealInstallFolder));
-            }
+			foreach (ExpansionItem ei in PathProvider.Global.Expansions)
+			{
+				this.tbFolder.Items.Add(new FolderWrapper(ei.Name, ei.RealInstallFolder));
+			}
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
-				if(components != null)
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -130,6 +130,7 @@ namespace SimPe
 			this.btOK.FlatStyle = System.Windows.Forms.FlatStyle.System;
 			this.btOK.Location = new System.Drawing.Point(512, 52);
 			this.btOK.Name = "btOK";
+			this.btOK.Size = new System.Drawing.Size(75, 23);
 			this.btOK.TabIndex = 6;
 			this.btOK.Text = "OK";
 			this.btOK.Click += new System.EventHandler(this.btOK_Click);
@@ -141,6 +142,7 @@ namespace SimPe
 			this.btCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
 			this.btCancel.Location = new System.Drawing.Point(592, 52);
 			this.btCancel.Name = "btCancel";
+			this.btCancel.Size = new System.Drawing.Size(75, 23);
 			this.btCancel.TabIndex = 5;
 			this.btCancel.Text = "Cancel";
 			this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
@@ -160,8 +162,8 @@ namespace SimPe
 			// 
 			// tbFolder
 			// 
-			this.tbFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
+			this.tbFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this.tbFolder.Location = new System.Drawing.Point(64, 8);
 			this.tbFolder.Name = "tbFolder";
 			this.tbFolder.Size = new System.Drawing.Size(520, 21);
@@ -173,6 +175,7 @@ namespace SimPe
 			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
 			this.button1.Location = new System.Drawing.Point(592, 8);
 			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(75, 23);
 			this.button1.TabIndex = 2;
 			this.button1.Text = "Browse...";
 			this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -180,7 +183,7 @@ namespace SimPe
 			// label1
 			// 
 			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label1.Location = new System.Drawing.Point(8, 8);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(48, 23);
@@ -195,7 +198,7 @@ namespace SimPe
 			this.CancelButton = this.btCancel;
 			this.ClientSize = new System.Drawing.Size(674, 80);
 			this.Controls.Add(this.xpGradientPanel1);
-			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "SelectSimFolder";
 			this.ShowInTaskbar = false;
@@ -212,7 +215,7 @@ namespace SimPe
 			SelectSimFolder f = new SelectSimFolder();
 			f.tbFolder.Text = path;
 
-			if (f.ShowDialog()==DialogResult.OK)
+			if (f.ShowDialog() == DialogResult.OK)
 				return f.tbFolder.Text;
 
 			return path;
@@ -223,12 +226,10 @@ namespace SimPe
 			if (System.IO.Directory.Exists(tbFolder.Text))
 				fbd.SelectedPath = tbFolder.Text;
 
-			if (fbd.ShowDialog()==DialogResult.OK)
+			if (fbd.ShowDialog() == DialogResult.OK)
 				tbFolder.Text = fbd.SelectedPath;
 		}
-
 		
-
 		private void btOK_Click(object sender, System.EventArgs e)
 		{
 			this.DialogResult = DialogResult.OK;
@@ -240,11 +241,7 @@ namespace SimPe
 			this.DialogResult = DialogResult.Cancel;
 			Close();
 		}
-		
-
-		
 	}
-
 	/// <summary>
 	/// a type editor for db connections
 	/// </summary>

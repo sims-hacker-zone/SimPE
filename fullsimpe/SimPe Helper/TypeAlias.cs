@@ -96,8 +96,27 @@ namespace SimPe.Data
 			knowntype = known;
             this.containsfilename = containsflname;
             this.nodecompforcache = nodecompforcache;
-		}
+        }
+        /*
+        /// <summary>
+        /// Cosntructor of the class
+        /// </summary>
+        /// Obsolete - Only here for compatibility
+        /// <param name="shortname">The short name</param>
+        /// <param name="val">The id</param>
+        /// <param name="name">The name</param>
+        /// <param name="known">true if the filetype is known(default)</param>
+        public TypeAlias(bool containsflname, string shortname, uint val, string name, bool known)
+            : base(val, name)
+        {
 
+            this.shortname = shortname;
+            this.extension = "";
+            knowntype = known;
+            this.containsfilename = containsflname;
+            this.nodecompforcache = true;
+        }
+        */
 		/// <summary>
 		/// True if the first 64 Byte of this Type are interpreted as Filename
 		/// </summary>
