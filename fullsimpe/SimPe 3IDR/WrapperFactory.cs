@@ -42,13 +42,20 @@ namespace SimPe.Plugin
 		/// <returns>A List of all provided Plugins (=FileType Wrappers)</returns>
 		public override SimPe.Interfaces.IWrapper[] KnownWrappers
 		{
-			get 
-			{
-				// TODO:  You can add more Wrappers here
-				IWrapper[] wrappers = {
+			get
+            {
+                if (Helper.NoPlugins)
+                {
+                    return new IWrapper[0];
+                }
+                else
+                {
+                    // TODO:  You can add more Wrappers here
+                    IWrapper[] wrappers = {
 										  new Nmap(this.LinkedProvider)
 									  };
-				return wrappers;
+                    return wrappers;
+                }
 			}
 		}
 

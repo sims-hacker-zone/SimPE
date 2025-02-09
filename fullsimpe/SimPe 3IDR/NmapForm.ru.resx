@@ -121,21 +121,8 @@
   <data name="linkLabel1.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 7</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>201, 59</value>
-  </data>
-  <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 18</value>
-  </data>
   <data name="linkLabel1.Text" xml:space="preserve">
     <value>создать Текстовый файл</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 31</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 13</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Имя файла:</value>
@@ -146,47 +133,17 @@
   <data name="button1.Text" xml:space="preserve">
     <value>Ввести</value>
   </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 55</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 13</value>
-  </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Файл:</value>
-  </data>
-  <data name="lladd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>232, 80</value>
-  </data>
-  <data name="lladd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 18</value>
   </data>
   <data name="lladd.Text" xml:space="preserve">
     <value>добавить</value>
   </data>
-  <data name="lldelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>297, 80</value>
-  </data>
-  <data name="lldelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 13</value>
-  </data>
   <data name="lldelete.Text" xml:space="preserve">
     <value>удалить</value>
   </data>
-  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 31</value>
-  </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 13</value>
-  </data>
   <data name="label11.Text" xml:space="preserve">
     <value>Экземпляр:</value>
-  </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>57, 7</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 13</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Группа:</value>
@@ -194,26 +151,14 @@
   <data name="llcommit.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 8</value>
   </data>
-  <data name="llcommit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>145, 80</value>
-  </data>
-  <data name="llcommit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 13</value>
-  </data>
   <data name="llcommit.Text" xml:space="preserve">
     <value>изменить</value>
   </data>
   <data name="gbtypes.Text" xml:space="preserve">
     <value>Свойства</value>
   </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 16</value>
-  </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Править карту файла</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Inherit</value>
   </data>
   <data name="sfd.Filter" xml:space="preserve">
     <value>Текстовый файл (*.txt)|*.txt|Все файлы (*.*)|*.*</value>
