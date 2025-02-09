@@ -120,11 +120,11 @@ namespace SimPe.PackedFiles.UserInterface
 		private void InitializeComponent()
 		{
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClstForm));
-            this.clstPanel = new System.Windows.Forms.Panel(();
+            this.clstPanel = new System.Windows.Forms.Panel();
             this.lbformat = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.lbclst = new System.Windows.Forms.ListBox();
-            this.panel4 = new System.Windows.Forms.Panel(();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.clstPanel.SuspendLayout();
             this.SuspendLayout();
             // 
