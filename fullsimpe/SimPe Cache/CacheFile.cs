@@ -31,9 +31,14 @@ namespace SimPe.Cache
 	public class CacheFile:  System.IDisposable, SimPe.Interfaces.ICacheFileTest
 	{
 		/// <summary>
-		/// This is the 64-Bit Int, a cache File needs to start with
+		/// This is the obsolete 64-Bit Int, included for backward compatibility
 		/// </summary>
-		public const ulong SIGNATURE = 0x45506d6953;
+        public const ulong OLDSIG = 0x45506d6953;
+
+        /// <summary>
+        /// This is the 64-Bit Int, a cache File needs to start with
+        /// </summary>
+        public const ulong SIGNATURE = 0x7374695420676942;
 
 		/// <summary>
 		/// The current Version
@@ -85,11 +90,11 @@ namespace SimPe.Cache
 
 				try 
 				{
-					ulong sig = reader.ReadUInt64();
-					if (sig!=SIGNATURE) throw new CacheException("Unknown Cache File Signature ("+Helper.HexString(sig)+")", flname, 0);
+					sig = reader.ReadUInt64();
+					if (sig != OLDSIG && sig != SIGNATURE) throw new CacheException("Unknown Cache File Signature (" + Helper.HexString(sig) + ")", flname, 0);
 
 					version = reader.ReadByte();
-					if (version>VERSION) throw new CacheException("Unable to read Cache", flname, version);
+					if (version > VERSION) throw new CacheException("Unable to read Cache", flname, version);
 
 					int count = reader.ReadInt32();
                     if (withprogress) Wait.MaxProgress = count;
@@ -172,7 +177,7 @@ namespace SimPe.Cache
 				if (!containers[i].Valid) containers.RemoveAt(i);
 			}
 		}
-
+		ulong sig;
 		byte version;
 		string filename;
 		CacheContainers containers;
@@ -191,6 +196,14 @@ namespace SimPe.Cache
 		public string FileName
 		{
 			get { return filename; }
+		}
+
+		/// <summary>
+		/// The file Signature
+		/// </summary>
+		public ulong Signature
+		{
+			get { return sig; }
 		}
 
 		/// <summary>

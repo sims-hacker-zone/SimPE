@@ -41,31 +41,31 @@ namespace SimPe.Cache
 		/// <summary>
 		/// The package contains a Skin
 		/// </summary>
-		Skin = 0x1,		
+		Skin = 0x1,
 		/// <summary>
 		/// The package contains a Wallpaper
 		/// </summary>
-		Wallpaper = 0x2,		
+		Wallpaper = 0x2,
 		/// <summary>
 		/// The package contains a Floor
 		/// </summary>
-		Floor = 0x4,		
+		Floor = 0x4,
 		/// <summary>
 		/// The package contains a Clothing
 		/// </summary>
-		Cloth = 0x8,		
+		Clothing = 0x8,		
 		/// <summary>
-		/// The package contains a Object or Clone
+		/// The package contains a Crap Object or Clone
 		/// </summary>
-		Object = 0x10,		
+		CustomObject = 0x10,
 		/// <summary>
-		/// The package contains a Recolor
+		/// The package contains a Recolour
 		/// </summary>
-		Recolor = 0x20,
+		Recolour = 0x20,
 		/// <summary>
-		/// An Object probably created by Maxis
+		/// An Object properly created
 		/// </summary>
-		MaxisObject = 0x80,
+        Object = 0x80,
 		/// <summary>
 		/// A CEP Related File
 		/// </summary>
@@ -73,7 +73,7 @@ namespace SimPe.Cache
 		/// <summary>
 		/// A Sim or Sim Template
 		/// </summary>
-		Sim = 0x200,		
+		Sim = 0x200,
 		/// <summary>
 		/// Hairtones
 		/// </summary>
@@ -94,7 +94,7 @@ namespace SimPe.Cache
 		/// <summary>
 		/// Contains a Neighborhood
 		/// </summary>
-		Neighborhood = 0x2000,
+        Neighbourhood = 0x2000,
 		/// <summary>
 		/// Contains a Lot
 		/// </summary>
@@ -110,7 +110,11 @@ namespace SimPe.Cache
 		/// <summary>
 		/// Describes TerrainPaint
 		/// </summary>
-		Terrain = 0x20000
+        Terrain = 0x20000,
+        /// <summary>
+        /// Describes the Game Wide Inventory
+        /// </summary>
+        GameInventory = 0x40000
 	}
 
 	/// <summary>

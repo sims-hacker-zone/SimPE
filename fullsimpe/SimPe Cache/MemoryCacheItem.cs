@@ -130,7 +130,7 @@ namespace SimPe.Cache
 
 		public bool IsToken
 		{
-			get { return IsAspiration || (ObjdName.Trim().ToLower().StartsWith("token") && (this.ObjectType == Data.ObjectTypes.Normal || this.ObjectType == Data.ObjectTypes.Memory));}
+			get { return IsAspiration || ((ObjdName.Trim().ToLower().StartsWith("token") || ObjdName.Trim().ToLower().StartsWith("cs - token")) && (this.ObjectType == Data.ObjectTypes.Normal || this.ObjectType == Data.ObjectTypes.Memory)); }
 		}
 
 		public bool IsJobData
@@ -141,12 +141,11 @@ namespace SimPe.Cache
 		public bool IsMemory
 		{
 			get { return IsToken || this.ObjectType == Data.ObjectTypes.Memory; }
-		}
-		
+		}		
 
 		public bool IsBadge
 		{
-			get { return ObjdName.ToLower().Trim().StartsWith("token - badge") && this.ObjectType == Data.ObjectTypes.Normal && IsToken;}
+			get { return (ObjdName.ToLower().Trim().StartsWith("token - badge") || ObjdName.ToLower().Trim().StartsWith("cs - token - badge")) && this.ObjectType == Data.ObjectTypes.Normal; }
 		}
 
 		public bool IsSkill

@@ -48,7 +48,7 @@ namespace SimPe.Cache
 	{
 		Outdated = 0x00,
 		ClassicOW = 0x03,
-		DockableOW = 0x04,
+		DockableOW = 0x05,
 		Unsupported = 0xff
 	}
 
@@ -60,7 +60,7 @@ namespace SimPe.Cache
 		/// <summary>
 		/// The current Version
 		/// </summary>
-		public const byte VERSION = 4;
+		public const byte VERSION = 5;
 
 		public ObjectCacheItem()
 		{			
@@ -81,6 +81,7 @@ namespace SimPe.Cache
 		Data.ObjectTypes objtype;
 		string objname;
 		uint objfuncsort;
+		uint objbuildtipe;
 		bool use;
 		ObjectClass oclass;
 		object tag;
@@ -95,8 +96,8 @@ namespace SimPe.Cache
 		public ObjectCacheItemVersions ObjectVersion 
 		{
 			get { 
-				if (version==(byte)ObjectCacheItemVersions.ClassicOW) return ObjectCacheItemVersions.ClassicOW; 
-				if (version==(byte)ObjectCacheItemVersions.DockableOW) return ObjectCacheItemVersions.DockableOW; 
+				if (version==(byte)ObjectCacheItemVersions.ClassicOW) return ObjectCacheItemVersions.ClassicOW;
+				if (version == (byte)ObjectCacheItemVersions.DockableOW) return ObjectCacheItemVersions.DockableOW;
 				if (version>VERSION) return ObjectCacheItemVersions.Unsupported;
 				return ObjectCacheItemVersions.Outdated;
 			}
@@ -145,6 +146,15 @@ namespace SimPe.Cache
 			set { objfuncsort = value; }
 		}
 
+		/// <summary>
+		/// Returns the FunctionSort Field of the Object
+		/// </summary>
+		public uint ObjBuildType
+		{
+			get { return objbuildtipe; }
+			set { objbuildtipe = value; }
+		}
+
 		public static string[][] GetCategory(ObjectCacheItemVersions version, Data.ObjFunctionSubSort subsort, Data.ObjectTypes type) 
 		{
 			return GetCategory(version, subsort, type, ObjectClass.Object);
@@ -159,15 +169,15 @@ namespace SimPe.Cache
 			{
 				System.Collections.ArrayList list = new System.Collections.ArrayList();
 				Data.ObjFunctionSortBits[] ss = (Data.ObjFunctionSortBits[])System.Enum.GetValues(typeof(Data.ObjFunctionSortBits));
-				foreach (Data.ObjFunctionSortBits s in ss) 
-					if ((ofss & (uint)Math.Pow(2, (byte)s))!=0)						
-						list.Add(s.ToString());													
+				foreach (Data.ObjFunctionSortBits s in ss)
+					if ((ofss & (uint)Math.Pow(2, (byte)s))!=0)
+						list.Add(s.ToString());
 				
 				ret = new string[list.Count][];
 				for (int i=0; i<list.Count; i++)
 					ret[i]= new string[] { list[i].ToString() };
 			}
-			else if  (version==ObjectCacheItemVersions.DockableOW) 
+			else // if (version == ObjectCacheItemVersions.DockableOW) 
 			{
 				if (cl==ObjectClass.XObject) 
 				{
@@ -177,7 +187,7 @@ namespace SimPe.Cache
 					if (ps.Length>=2) { ret[0] = new string[] {SimPe.Localization.GetString("XObject"), ps[0], ps[1]}; }
 					else if (ps.Length==1) { ret[0] = new string[] {SimPe.Localization.GetString("XObject"), ps[0]}; }
 					
-				} 
+				}
 				else 
 				{
 					Data.ObjFunctionSubSort fss = subsort;
@@ -210,7 +220,7 @@ namespace SimPe.Cache
 								list.Add(new string[] {SimPe.Localization.GetString("SimPe.Data.ObjFunctionSortBits."+s.ToString())});			
 							}
 						}
-					}								
+					}
 				
 					ret = new string[list.Count][];
 					for (int i=0; i<list.Count; i++) 
@@ -352,6 +362,8 @@ namespace SimPe.Cache
 			objtype = (Data.ObjectTypes)reader.ReadUInt16();
 			if (version>=4) objfuncsort = reader.ReadUInt32();
 			else objfuncsort = (uint)reader.ReadInt16();
+			if (version >= 5) objbuildtipe = reader.ReadUInt32();
+			else objbuildtipe = 0;
 
 			if (version>=2) 
 			{
@@ -365,7 +377,7 @@ namespace SimPe.Cache
 			}
 
 			if (version>=3) oclass = (ObjectClass)reader.ReadByte();
-			else oclass = ObjectClass.Object;			
+			else oclass = ObjectClass.Object;
 		}
 
 		public void Save(System.IO.BinaryWriter writer) 
@@ -402,6 +414,7 @@ namespace SimPe.Cache
 
 			writer.Write((ushort)objtype);
 			writer.Write(objfuncsort);
+			writer.Write(objbuildtipe);
 
 			writer.Write(objname);
 			writer.Write(use);
