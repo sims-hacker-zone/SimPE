@@ -28,13 +28,28 @@ using System.Windows.Forms;
 namespace SimPe.Windows.Forms
 {
 	/// <summary>
-	/// Zusammenfassung für WrapperBaseControl.
+	/// Summary description for WrapperBaseControl.
 	/// </summary>
 	[ToolboxBitmapAttribute(typeof(Panel))]
 	public class WrapperBaseControl : System.Windows.Forms.UserControl, SimPe.Interfaces.Plugin.IPackedFileUI
-	{
+    {
+        /// <summary>
+        /// Determines the Anchor Location of the background image.
+        /// </summary>
+        public enum ImageLayout
+        {
+            TopLeft = 0,
+            TopRight = 1,
+            BottomLeft = 2,
+            BottomRight = 3,
+            Centered = 4,
+            CenterLeft = 5,
+            CenterRight = 6,
+            CenterTop = 7,
+            CenterBottom = 8
+        }
 		/// <summary> 
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
@@ -51,29 +66,32 @@ namespace SimPe.Windows.Forms
 					| ControlStyles.DoubleBuffer
 					,true);
 
-				// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
-				InitializeComponent();	
+				// Required designer variable.
+				InitializeComponent();
 
-				headcol = Color.FromArgb(120, 0, 0, 0);
+                headcol = Color.FromArgb(120, 0, 0, 0);
+                headend = Color.FromArgb(120, 0, 0, 0);
 				headforecol = Color.White;
 				Font = new Font("tahoma", this.Font.Size, this.Font.Style, this.Font.Unit);
 				headfont = new Font(this.Font.FontFamily, 9.75f, FontStyle.Bold, this.Font.Unit);
-			
-				gradcol = SystemColors.InactiveCaption;
-				this.mGradient = LinearGradientMode.ForwardDiagonal;
-				BackColor = SystemColors.InactiveCaptionText;	
-		
-			
-				tm = ThemeManager.Global.CreateChild();
-				tm.AddControl(this);
+
+                this.mGradient = LinearGradientMode.ForwardDiagonal;
+                BackColor = Color.FromArgb(240, 236, 255);
+                midcol = Color.FromArgb(192, 192, 255);
+                gradcol = Color.FromArgb(252, 248, 255);
+                mCentre = 0.7F;
+                mPicloc = new System.Drawing.Point(0, 0);
+                mPicZoom = 1.0F;
+                mPicOpacity = 1.0F;
+                mPicFit = false;
+                bklayout = ImageLayout.TopLeft;
+
+                SimPe.ThemeManager.Global.AddControl(this);
 
 				txt = "";
-
 				CanCommit = true;
 			}
 			catch {}
-
-			//this.D = new Rectangle(0, 24, Width, Height-24);
 		}
 
         ~WrapperBaseControl()
@@ -82,7 +100,7 @@ namespace SimPe.Windows.Forms
         }
 
 		/// <summary> 
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -136,8 +154,7 @@ namespace SimPe.Windows.Forms
 			}
 		}
 
-
-		Color headcol, headforecol;
+        Color headcol, headend, headforecol;
 		Font headfont;
 
 		public Color HeadBackColor
@@ -151,7 +168,20 @@ namespace SimPe.Windows.Forms
 					Invalidate();
 				}
 			}
-		}
+        }
+
+        public Color HeadEndColor
+        {
+            get { return headend; }
+            set
+            {
+                if (value != headend)
+                {
+                    headend = value;
+                    Invalidate();
+                }
+            }
+        }
 
 		public Color HeadForeColor
 		{
@@ -164,9 +194,7 @@ namespace SimPe.Windows.Forms
 					this.Invalidate();
 				}
 			}
-		}
-
-		
+		}		
 
 		public Font HeadFont
 		{
@@ -188,7 +216,14 @@ namespace SimPe.Windows.Forms
 
 		private System.Windows.Forms.Button btCommit;
 		LinearGradientMode mGradient;
-		Color gradcol;		
+        Color gradcol;
+        Color midcol;
+        float mCentre;
+        System.Drawing.Point mPicloc;
+        float mPicZoom;
+        float mPicOpacity;
+        bool mPicFit;
+        ImageLayout bklayout;
 	
 		public Color GradientColor
 		{
@@ -201,7 +236,28 @@ namespace SimPe.Windows.Forms
 					this.Invalidate();
 				}
 			}
-		}
+        }
+
+        public Color MiddleColor
+        {
+            get { return midcol; }
+            set
+            {
+                if (value != midcol)
+                {
+                    midcol = value;
+                    this.Invalidate();
+                }
+            }
+        }
+
+        public float GradCentre
+        {
+            get { return mCentre; }
+            set { mCentre = value;
+                this.Invalidate();
+            }
+        }
 
 		public LinearGradientMode Gradient
 		{
@@ -224,15 +280,26 @@ namespace SimPe.Windows.Forms
 				cc = value;
 				this.btCommit.Visible = cc;
 			}
-		}
+        }
+
+        public bool BackgroundImageZoomToFit { get { return mPicFit; } set { mPicFit = value; this.Invalidate(); } }
+        public float BackgroundImageScale { get { return mPicZoom; } set { if (!mPicFit) { mPicZoom = value; this.Invalidate(); } } }
+        public System.Drawing.Point BackgroundImageLocation { get { return mPicloc; } set { if (bklayout != ImageLayout.Centered) { mPicloc = value; this.Invalidate(); } } }
+        public ImageLayout BackgroundImageAnchor { get { return bklayout; } set { bklayout = value; this.Invalidate(); } }
+        public float BackgroundImageOpacity { get { return mPicOpacity; } set { mPicOpacity = value; this.Invalidate(); } }
+
+        [Localizable(false)]
+        [Browsable(false)]
+        public override System.Windows.Forms.ImageLayout BackgroundImageLayout { get { return System.Windows.Forms.ImageLayout.Zoom; } }
+
 		#endregion
 
 		#region Properties
-		SimPe.ThemeManager tm;
+        SimPe.ThemeManager tm;
 		
 
 		[Browsable(false)]
-		public SimPe.ThemeManager ThemeManager
+        public SimPe.ThemeManager ThemeManager
 		{
 			get { return tm; }
 		}
@@ -270,10 +337,10 @@ namespace SimPe.Windows.Forms
 		public event System.EventHandler Commited;
 		#endregion
 
-		#region Vom Komponenten-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -326,9 +393,10 @@ namespace SimPe.Windows.Forms
 
 		}
 		#endregion
+
 		protected override void OnPaintBackground(PaintEventArgs pevent)
 		{
-			base.OnPaintBackground (pevent);
+			// base.OnPaintBackground (pevent);
 		}
 
 		protected override void OnPaint(PaintEventArgs e)
@@ -336,17 +404,107 @@ namespace SimPe.Windows.Forms
 			base.OnPaint (e);
 
 			if ((this.Width > 0) && (this.Height > 0))
-			{
-				Rectangle rec = new Rectangle(0, 0, this.Width, this.Height);
-				LinearGradientBrush b = new LinearGradientBrush(rec, this.BackColor, this.GradientColor, this.Gradient);
-				e.Graphics.FillRectangle(b, rec);
-				b.Dispose();
-				
+            {
+                if (this.Height - this.HeaderHeight > 0)
+                {
+                    if (this.GradCentre < 0.02F) this.GradCentre = this.mCentre = 0.02F;
+                    if (this.GradCentre > 0.98F) this.GradCentre = this.mCentre = 0.98F;
+                    Rectangle rec = new Rectangle(0, this.HeaderHeight, this.Width, this.Height - this.HeaderHeight);
+                    LinearGradientBrush b = new LinearGradientBrush(rec, this.BackColor, this.MiddleColor, this.Gradient);
+                    ColorBlend cb = new ColorBlend(3);
+                    cb.Colors = new Color[] { this.BackColor, this.MiddleColor, this.GradientColor };
+                    cb.Positions = new float[] { 0F, this.GradCentre, 1F };
+                    b.InterpolationColors = cb;
+                    e.Graphics.FillRectangle(b, rec);
+                    b.Dispose();
+                    if (this.BackgroundImage != null && mPicOpacity > 0)
+                    {
+                        int hyte = this.Height - this.HeaderHeight;
+                        int adjx = this.Width - mPicloc.X;
+                        int adjy = hyte - mPicloc.Y;
+                        if ((adjx > 5) && (adjy > 5))
+                        {
+                            if (mPicFit)
+                            {
+                                if ((adjy / this.BackgroundImage.PhysicalDimension.Height) < (adjx / this.BackgroundImage.PhysicalDimension.Width))
+                                { mPicZoom = adjy / this.BackgroundImage.PhysicalDimension.Height; }
+                                else
+                                { mPicZoom = adjx / this.BackgroundImage.PhysicalDimension.Width; }
+                            }
+                            Int32 Widf = Convert.ToInt32(this.BackgroundImage.Width * mPicZoom);
+                            Int32 Hite = Convert.ToInt32(this.BackgroundImage.Height * mPicZoom);
+                            int pyintX = mPicloc.X;
+                            int pyintY = mPicloc.Y + this.HeaderHeight;
+                            if (bklayout == ImageLayout.TopRight)
+                            {
+                                pyintX = (this.Width - Widf) - mPicloc.X;
+                            }
+                            else if (bklayout == ImageLayout.BottomRight)
+                            {
+                                pyintX = (this.Width - Widf) - mPicloc.X;
+                                pyintY = (this.Height - Hite) - mPicloc.Y;
+                            }
+                            else if (bklayout == ImageLayout.BottomLeft)
+                            {
+                                pyintY = (this.Height - Hite) - mPicloc.Y;
+                            }
+                            else if (bklayout == ImageLayout.Centered)
+                            {
+                                pyintX = (this.Width - Widf) / 2;
+                                pyintY = (this.Height - Hite + this.HeaderHeight) / 2;
+                            }
+                            else if (bklayout == ImageLayout.CenterLeft)
+                            {
+                                pyintY = (this.Height - Hite + this.HeaderHeight) / 2;
+                            }
+                            else if (bklayout == ImageLayout.CenterTop)
+                            {
+                                pyintX = (this.Width - Widf) / 2;
+                            }
+                            else if (bklayout == ImageLayout.CenterRight)
+                            {
+                                pyintY = (this.Height - Hite + this.HeaderHeight) / 2;
+                                pyintX = (this.Width - Widf) - mPicloc.X;
+                            }
+                            else if (bklayout == ImageLayout.CenterBottom)
+                            {
+                                pyintX = (this.Width - Widf) / 2;
+                                pyintY = (this.Height - Hite) - mPicloc.Y;
+                            }
 
-				//Draw the HeadLine
-				SolidBrush bg = new SolidBrush(this.HeadBackColor);
+                            // Draw the Background Image
+                            Rectangle picrect = new Rectangle(pyintX, pyintY, Widf, Hite);
+                            if (mPicOpacity >= 1)
+                                e.Graphics.DrawImage(this.BackgroundImage, picrect);
+                            else
+                            {
+                                float[][] ptsArray ={ 
+									new float[] {1, 0, 0, 0, 0},
+									new float[] {0, 1, 0, 0, 0},
+									new float[] {0, 0, 1, 0, 0},
+									new float[] {0, 0, 0, mPicOpacity, 0}, 
+									new float[] {0, 0, 0, 0, 1}};
+                                System.Drawing.Imaging.ColorMatrix clrMatrix = new System.Drawing.Imaging.ColorMatrix(ptsArray);
+                                System.Drawing.Imaging.ImageAttributes imgAttributes = new System.Drawing.Imaging.ImageAttributes();
+                                imgAttributes.SetColorMatrix(clrMatrix,
+                                    System.Drawing.Imaging.ColorMatrixFlag.Default,
+                                    System.Drawing.Imaging.ColorAdjustType.Bitmap);
+                                e.Graphics.DrawImage(this.BackgroundImage, picrect, 0, 0, this.BackgroundImage.Width, this.BackgroundImage.Height, System.Drawing.GraphicsUnit.Pixel, imgAttributes);
+                                imgAttributes.Dispose();
+                            }
+                        }
+                    }
+                }
+
+                //Draw the HeadLine HeadEndColor
+                Rectangle hrec = new Rectangle(0, 0, this.Width, this.HeaderHeight);
+                LinearGradientBrush bg = new LinearGradientBrush(hrec, HeadBackColor, HeadEndColor, System.Drawing.Drawing2D.LinearGradientMode.Horizontal);
 				SolidBrush fb = new SolidBrush(this.HeadForeColor);
-				e.Graphics.FillRectangle(bg, 0, 0, Width, HeaderHeight);
+                ColorBlend hcb = new ColorBlend(2);
+                hcb.Colors = new Color[] { HeadBackColor, HeadEndColor };
+                hcb.Positions = new float[] { 0F, 1F };
+                bg.InterpolationColors = hcb;
+                e.Graphics.FillRectangle(bg, hrec);
 				SizeF sz = e.Graphics.MeasureString(HeaderText, this.HeadFont);
 				int dist = (int)((HeaderHeight-sz.Height) / 2);
 				e.Graphics.DrawString(HeaderText, this.HeadFont, fb, dist, dist);

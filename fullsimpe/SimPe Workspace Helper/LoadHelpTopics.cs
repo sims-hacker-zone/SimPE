@@ -58,7 +58,7 @@ namespace SimPe
 			}
 
 			if (parent.Image == null)
-				parent.Image = System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.agt_support.png"));
+                parent.Image = GetIcon.Support;
 		}
 
 		void AddItems(SimPe.Interfaces.IHelpRegistry reg)

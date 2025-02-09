@@ -121,17 +121,10 @@
     <value>Vérifier si l'emplacement des dossiers d'installation de "Les Sims 2" est valide</value>
   </data>
   <data name="chkCache.Caption" xml:space="preserve">
-    <value>Vérifier si la mémoire-cache de SimPE peut être chargée</value>
+    <value>Vérifier si la mémoire-cache de SimPe peut être chargée</value>
   </data>
   <data name="chkFileTable.Caption" xml:space="preserve">
-    <value>Vérifier si la Table de fichier de SimPE contient les fichiers nécessaires</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>232, 5</value>
-  </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 23</value>
+    <value>Vérifier si la Table de fichier de SimPe contient les fichiers nécessaires</value>
   </data>
   <data name="button1.Text" xml:space="preserve">
     <value>Lancer la vérification</value>

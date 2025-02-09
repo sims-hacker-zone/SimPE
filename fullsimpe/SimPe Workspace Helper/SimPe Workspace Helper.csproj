@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
     <ProductVersion>8.0.50727</ProductVersion>
@@ -26,8 +25,6 @@
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>..\__Debug\</OutputPath>
@@ -60,7 +57,8 @@
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <DocumentationFile>
     </DocumentationFile>
     <DebugSymbols>false</DebugSymbols>
@@ -130,6 +128,12 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GDF, Version=0.69.20.22, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="graphcontrol, Version=1.69.8412.24482, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="NetDocks, Version=1.0.2471.34995, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\NetDocks.dll</HintPath>
@@ -198,16 +202,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Build\SharedAssemblyInfo.cs">
-      <Link>Properties\SharedAssemblyInfo.cs</Link>
-    </Compile>
     <Compile Include="AbstractTool.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AbstractToolPlus.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs">
+    <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CheckControl.cs">
@@ -230,6 +231,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GlossyRenderer.cs" />
+    <Compile Include="IconRes.cs" />
     <Compile Include="IDockableTool.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -244,6 +246,13 @@
     </Compile>
     <Compile Include="IListener.cs">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ImageRes.cs" />
+    <Compile Include="InfoCheck.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InfoCheck.designer.cs">
+      <DependentUpon>InfoCheck.cs</DependentUpon>
     </Compile>
     <Compile Include="ITool.cs">
       <SubType>Code</SubType>
@@ -269,7 +278,9 @@
     <Compile Include="LoadedPackage.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="LoadFileWrappers.cs" />
+    <Compile Include="LoadFileWrappers.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="LoadFileWrappersExt.cs">
     </Compile>
     <Compile Include="LoadHelpTopics.cs">
@@ -283,6 +294,11 @@
     </Compile>
     <Compile Include="PackedFileDescriptorCollection.cs">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="PropertyParser.cs">
       <SubType>Code</SubType>
@@ -315,7 +331,6 @@
     <Compile Include="XmlPackageReader.cs">
       <SubType>Code</SubType>
     </Compile>
-    <EmbeddedResource Include="agt_support.png" />
     <EmbeddedResource Include="CheckControl.de.resx">
       <DependentUpon>CheckControl.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -332,8 +347,6 @@
       <DependentUpon>CheckItem.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Create Description.png" />
-    <EmbeddedResource Include="fail.png" />
     <EmbeddedResource Include="LoadFileWrappers.resx">
       <DependentUpon>LoadFileWrappers.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -346,12 +359,6 @@
       <DependentUpon>Message.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Neighborhood.png" />
-    <EmbeddedResource Include="Object Creation.png" />
-    <EmbeddedResource Include="Object Tool.png" />
-    <EmbeddedResource Include="ok.png" />
-    <EmbeddedResource Include="Package Tool.png" />
-    <EmbeddedResource Include="unk.png" />
     <EmbeddedResource Include="WrapperBaseControl.de.resx">
       <DependentUpon>WrapperBaseControl.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -390,7 +397,16 @@
       <DependentUpon>CheckItem.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="InfoCheck.resx">
+      <DependentUpon>InfoCheck.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="pattern.gif" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="WrapperBaseControl.fr.resx">
       <DependentUpon>WrapperBaseControl.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -403,6 +419,369 @@
       <DependentUpon>WrapperBaseControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\blSaveAs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\acclone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\accreate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\acdelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\acexport.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\acfilter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\acimport.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\acreplace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\acrestore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bgDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bgNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bgOpen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bgReset.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bgSave.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bgSaveAs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\blDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\blNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\blOpen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\blReset.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\blSave.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\acbgrestore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\acbgclone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\acbgcreate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\acbgdelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\acbgexport.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\acbgfilter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\acbgimport.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\acbgreplace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\dbs2pc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\dbagent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\dbbgagent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\dbbgpackage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\dbbgrecur.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\dbbgS2pack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\dbbgs2pc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\dbpackage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\dbrecur.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\dbS2pack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\whwarn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\whfail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\whok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\whunk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\valbabydoll.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\demo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\network.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\noone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\tbsurg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\tbbgcamera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\tbbgcontents.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\tbbgcreatepackage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\tbbgneighboorhood.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\tbbgsimbrowser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\tbbgsurg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\tbcamera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\tbcontents.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\tbcreatepackage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\tbneighboorhood.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\tbsimbrowser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\deletesim.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bgdeletesim.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\tbskinn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\tbbgskinn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\dbbgselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\dbselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\tbbgwcreatepackage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\anicamera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\anibgcamera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\hoodtool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bghoodtool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\tbintegrit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\tbbggenerator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\tbbgintegrity.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\tbgenerator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bhlua.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bhbgimport.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bhbglua.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bhimport.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\acstart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\acbgstart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\acfixtgi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\acbgfixtgi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\copyrightbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\copyright.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\cpreview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\cbgpreview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\beachbabe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\psSave.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\psDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\psNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\psOpen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bgacchecktable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\acchecktable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\tbPhpGuid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bgPhpGuid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\pjfinder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bgfinder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\pjobjdtool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bgpjobjdtool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bookmark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bgbookmark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\support.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\gametip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\readim.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\stxt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\butflie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bgbutflie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\sheone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\CAF.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\aCAF.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\LinkSt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bgExtractSt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bgLinkSt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\ExtractSt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\pjkey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bgKey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\Infobg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\Info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\debug.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\bgdebug.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\dbbgos2pc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\dbbgoS2pack.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

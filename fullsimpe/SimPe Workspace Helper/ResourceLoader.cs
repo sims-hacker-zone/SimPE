@@ -320,8 +320,6 @@ namespace SimPe
 					((TD.SandDock.TabControl)doc.Parent).SelectedPage = (TD.SandDock.TabPage)doc;
 				else 
 					doc.LayoutSystem.SelectedControl = doc;
-				
-
 				return true;
 			}
 

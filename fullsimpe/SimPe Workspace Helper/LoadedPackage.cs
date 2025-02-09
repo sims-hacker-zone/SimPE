@@ -175,37 +175,38 @@ namespace SimPe
 		/// <returns>true, if the file was loaded</returns>
 		public bool LoadFromFile(string flname, bool sync) 
 		{
-            bool res = false;
-            try
-            {
-                FileNameEventArg e = new FileNameEventArg(flname);
-                if (BeforeFileLoad != null) BeforeFileLoad(this, e);
-                if (e.Cancel) return false;
+			bool res = false;
+			try
+			{
+				FileNameEventArg e = new FileNameEventArg(flname);
+				if (BeforeFileLoad != null) BeforeFileLoad(this, e);
+				if (e.Cancel) return false;
 
-                Wait.SubStart();
-                Wait.Message = "Loading File";
+				Wait.SubStart();
+				Wait.Message = "Loading File";
 
-                if (pkg != null) this.SetupEvents(false);
+				if (pkg != null) this.SetupEvents(false);
 
-                pkg = SimPe.Packages.File.LoadFromFile(e.FileName, sync);
-                if (pkg.Index.Length < Helper.WindowsRegistry.BigPackageResourceCount)
-                    pkg.LoadCompressedState();
+				pkg = SimPe.Packages.File.LoadFromFile(e.FileName, sync);
 
-                this.SetupEvents(true);
-                Helper.WindowsRegistry.AddRecentFile(flname);
+				if (pkg.Index.Length < Helper.WindowsRegistry.BigPackageResourceCount)
+					pkg.LoadCompressedState();
 
-                Wait.SubStop();
+				this.SetupEvents(true);
+				Helper.WindowsRegistry.AddRecentFile(flname);
 
-                if (AfterFileLoad != null) AfterFileLoad(this);
-                res = true;
-            }
+				Wait.SubStop();
+
+				if (AfterFileLoad != null) AfterFileLoad(this);
+				res = true;
+			}
 #if !DEBUG
-            catch (Exception ex) { SimPe.Helper.ExceptionMessage(ex); }
+			catch (Exception ex) { SimPe.Helper.ExceptionMessage(ex); }
 #endif
-            finally { }
-            if (res != true) pkg = null;
-            return res;
-        }
+			finally { }
+			if (res != true) pkg = null;
+			return res;
+		}
 
 		/// <summary>
 		/// Save the current package
@@ -236,6 +237,9 @@ namespace SimPe
 				Wait.Message = "Saving File";
 
 				string oname = this.FileName;
+				if (Package.Header.Created == 0 && UserVerification.HaveValidUserId)
+					Package.Header.Created = UserVerification.UserId;
+
 				this.Package.Save(e.FileName);
 
 				if (savetocopy) Package.FileName = oname;
@@ -298,24 +302,34 @@ namespace SimPe
 			if (Helper.IsNeighborhoodFile(FileName) && (Helper.WindowsRegistry.LoadMetaInfo))
 			{
 				SimPe.Interfaces.Files.IPackageFile pkg = Package;
-				try 
+				try
 				{
 					string mname = Helper.GetMainNeighborhoodFile(pkg.SaveFileName);
 					if (mname != pkg.SaveFileName)
 						pkg = SimPe.Packages.GeneratableFile.LoadFromFile(mname);
-				} 
+				}
 				catch {}
 				FileTable.ProviderRegistry.SimFamilynameProvider.BasePackage = pkg;
-				FileTable.ProviderRegistry.SimDescriptionProvider.BasePackage = pkg;				
+				FileTable.ProviderRegistry.SimDescriptionProvider.BasePackage = pkg;
 				FileTable.ProviderRegistry.SimNameProvider.BaseFolder = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(FileName), "Characters");
-				FileTable.ProviderRegistry.LotProvider.BaseFolder  = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(FileName), "Lots");				
-			} 
-			else 
+				FileTable.ProviderRegistry.LotProvider.BaseFolder  = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(FileName), "Lots");			
+			}
+			else
 			{
-				FileTable.ProviderRegistry.SimNameProvider.BaseFolder = "";
-				FileTable.ProviderRegistry.SimFamilynameProvider.BasePackage = null;
-				FileTable.ProviderRegistry.SimDescriptionProvider.BasePackage = null;
-				FileTable.ProviderRegistry.LotProvider.BaseFolder = "";
+				if (Helper.IsLotCatalogFile(FileName) && (Helper.WindowsRegistry.LoadMetaInfo))
+				{
+					FileTable.ProviderRegistry.SimFamilynameProvider.BasePackage = pkg;
+					FileTable.ProviderRegistry.SimDescriptionProvider.BasePackage = pkg;
+					FileTable.ProviderRegistry.SimNameProvider.BaseFolder = System.IO.Path.GetDirectoryName(FileName);
+					FileTable.ProviderRegistry.LotProvider.BaseFolder = System.IO.Path.GetDirectoryName(FileName);
+				}
+				else
+				{
+					FileTable.ProviderRegistry.SimNameProvider.BaseFolder = "";
+					FileTable.ProviderRegistry.SimFamilynameProvider.BasePackage = null;
+					FileTable.ProviderRegistry.SimDescriptionProvider.BasePackage = null;
+					FileTable.ProviderRegistry.LotProvider.BaseFolder = "";
+				}
 			}
 		}
 
@@ -365,7 +379,7 @@ namespace SimPe
 		{
 			if (sender is ToolStripMenuItem) 
 			{
-                ToolStripMenuItem mbi = (ToolStripMenuItem)sender;
+				ToolStripMenuItem mbi = (ToolStripMenuItem)sender;
 
 				FileNameEventArg me = new FileNameEventArg(mbi.Tag.ToString());									
 				if (BeforeRecentFileLoad!=null) BeforeRecentFileLoad(this, me);				
@@ -413,7 +427,7 @@ namespace SimPe
 		/// Add a List of recently Opened Files to the Menu
 		/// </summary>
 		/// <param name="menu"></param>
-        public void UpdateRecentFileMenu(System.Windows.Forms.ToolStripMenuItem menu)
+		public void UpdateRecentFileMenu(System.Windows.Forms.ToolStripMenuItem menu)
 		{
 			menu.DropDownItems.Clear();
 
@@ -426,12 +440,12 @@ namespace SimPe
 					if (sname.Length>MAX_FILENAME_LENGTH) 
 						sname = "..."+sname.Substring(file.Length-MAX_FILENAME_LENGTH, MAX_FILENAME_LENGTH);
 
-                    System.Windows.Forms.ToolStripMenuItem mbi = new System.Windows.Forms.ToolStripMenuItem(sname);
+					System.Windows.Forms.ToolStripMenuItem mbi = new System.Windows.Forms.ToolStripMenuItem(sname);
 					mbi.Tag = file;
 					mbi.Click += new EventHandler(OpenRecent);
-                    System.Windows.Forms.KeysConverter kc = new KeysConverter();
+					System.Windows.Forms.KeysConverter kc = new KeysConverter();
 
-                    LoadFileWrappersExt.SetShurtcutKey(mbi, GetShortCut(menu.DropDownItems.Count + 1));					
+					LoadFileWrappersExt.SetShurtcutKey(mbi, GetShortCut(menu.DropDownItems.Count + 1));					
 					
 					menu.DropDownItems.Add(mbi);
 				}
@@ -443,9 +457,14 @@ namespace SimPe
 		/// </summary>
 		/// <param name="names">list of FileNames</param>
 		/// <param name="create">true, if you want to create a new Package if none was loaded</param>
-		public void LoadOrImportFiles(string[] names, bool create) 
-		{			
-			if (names.Length==0) return;
+		public void LoadOrImportFiles(string[] names, bool create)
+		{
+			if (names.Length == 0) return; // Tashiketh
+			if (names.Length == 2 && names[0] == "-load")
+			{
+				if (System.IO.File.Exists(names[1])) this.LoadFromFile(names[1]);
+				return;
+			}
 			if (!Loaded && !create) return;
 
 			if (!Loaded && create) this.LoadFromPackage(SimPe.Packages.GeneratableFile.CreateNew());
@@ -455,24 +474,23 @@ namespace SimPe
 			{				
 				if (System.IO.File.Exists(names[0])) this.LoadFromFile(names[0]);
 			}
-            else if (et == ExtensionType.ExtractedFile || et == ExtensionType.ExtractedFileDescriptor || names.Length > 1 || et == ExtensionType.ExtrackedPackageDescriptor)
+			else if (et == ExtensionType.ExtractedFile || et == ExtensionType.ExtractedFileDescriptor || names.Length > 1 || et == ExtensionType.ExtrackedPackageDescriptor)
 			{
 				this.PauseIndexChangedEvents();
-                this.Package.BeginUpdate();
+				this.Package.BeginUpdate();
 				try 
 				{
 					for (int i=0; i<names.Length; i++) 					
 						if (System.IO.File.Exists(names[i])) 
 						{
 							PackedFileDescriptors pfds = LoadDescriptorsFromDisk(names[i]);
-                            
-							foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds) this.Package.Add(pfd);
-                            
+							
+							foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds) this.Package.Add(pfd);                            
 						}				
 				} 
 				finally 
 				{
-                    this.Package.EndUpdate();
+					this.Package.EndUpdate();
 					this.RestartIndexChangedEvents();
 				}
 			}
@@ -522,13 +540,13 @@ namespace SimPe
 				if (flname.ToLower().EndsWith("package.xml")) 
 				{				
 					SimPe.Packages.File pkg = Packages.GeneratableFile.LoadFromStream(XmlPackageReader.OpenExtractedPackage(null, flname));
-                    foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.Index) 
+					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.Index) 
 					{
 						Interfaces.Files.IPackedFile file = pkg.Read(pfd);
 						pfd.UserData = file.UncompressedData;
 						if (!list.Contains(pfd)) list.Add(pfd);
 					}
-                    
+					
 				} 
 				else if (flname.ToLower().EndsWith(".xml")) 
 				{		

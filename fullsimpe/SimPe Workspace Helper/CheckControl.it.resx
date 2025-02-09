@@ -126,13 +126,6 @@
   <data name="chkFileTable.Caption" xml:space="preserve">
     <value>Controlla se le Tabelle dei File di Simpe contengono i file necessari</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 5</value>
-  </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 23</value>
-  </data>
   <data name="button1.Text" xml:space="preserve">
     <value>Avvia Controllo</value>
   </data>

@@ -160,12 +160,19 @@ namespace SimPe
 		/// </summary>
 		IToolRegistry treg;
 
-        //this is a manual List of Wrappers that are know to cause Problems
+        //this is a manual List of Wrappers that are known to cause Problems
         System.Collections.ArrayList ignore;
 
 		void CreateIgnoreList(){
             ignore = new ArrayList();
             ignore.Add("simpe.3d.plugin.dll");
+            ignore.Add("pjse.filetable.plugin.dll");
+            ignore.Add("pjse.guidtool.plugin.dll");
+            ignore.Add("pjse.coder.plugin.dll");
+            ignore.Add("simpe.actiondeletesim.plugin.dll");
+            ignore.Add("theos.simsurgery.plugin.dll");
+            ignore.Add("theo.meshscanner.plugin.dll");
+            ignore.Add("simpe.ngbh.plugin.dll");
 		}
 
 		/// <summary>

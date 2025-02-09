@@ -116,14 +116,9 @@ namespace SimPe
 		/// <returns></returns>
 		public bool AllowedExtension(string filename) 
 		{
-#if MAC
-			filename = filename.Trim();
-#else
 			filename = filename.Trim().ToLower();
-#endif
 			for (int i=0;i<extensions.Count; i++)
-				if (filename.EndsWith(extensions[i].ToString().Replace("*", ""))) return true;			
-
+				if (filename.EndsWith(extensions[i].ToString().Replace("*", ""))) return true;
 			return false;
 		}
 	}
