@@ -47,11 +47,11 @@ namespace SimPe.Interfaces.Scenegraph
 		/// </remarks>
 		void ForceReload();
 
-        /// <summary>
-        /// Indicates the File Index was loaded
-        /// </summary>
-        event EventHandler FILoad;
-        void OnFILoad(object sender, EventArgs e);
+		/// <summary>
+		/// Indicates the File Index was loaded
+		/// </summary>
+		event EventHandler FILoad;
+		void OnFILoad(object sender, EventArgs e);
 
 		/// <summary>
 		/// Load the FileIndex if it is not available yet
@@ -217,7 +217,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <summary>
 		/// Looks for a File based on the Filename
 		/// </summary>
-		/// <param name="filename">The name of the File (applies only to Scenegraüh Resources)</param>
+		/// <param name="filename">The name of the File (applies only to Scenegraph Resources)</param>
 		/// <param name="type">The Type of the File you are looking for</param>
 		/// <param name="defgroup">If the Filename has no group Hash, use this one</param>
 		/// <param name="betolerant">
@@ -284,6 +284,14 @@ namespace SimPe.Interfaces.Scenegraph
 		bool Loaded
 		{
 			get;
+		}
+
+		/// <summary>
+		/// prevent PJSE FileTable from auto loading with SimPe FileTable
+		/// </summary>
+		bool AllowEvent
+		{
+			get; set;
 		}
 
 		#region FileTable Childs

@@ -64,11 +64,8 @@ namespace SimPe.Providers
 
         public override string ToString()
         {
-#if DEBUG
-            return name + " (0x" + Helper.HexString(id) + ", " + nr + ")";
-#else
+            if (Helper.WindowsRegistry.HiddenMode) return name + " (0x" + Helper.HexString(id) + ", " + nr + ")";
             return name;
-#endif
         }
     }
 }

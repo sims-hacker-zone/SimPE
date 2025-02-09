@@ -23,7 +23,7 @@ using System.Collections.Generic;
 namespace SimPe.Interfaces
 {
 	/// <summary>
-	/// Zusammenfassung für IWrapperRegistry.
+	/// Summary description for IWrapperRegistry.
 	/// </summary>
 	public interface IWrapperRegistry
 	{		
@@ -93,11 +93,5 @@ namespace SimPe.Interfaces
 		{
 			get;
 		}
-
-        /// <summary>
-        /// Returns a list of all known plugins, that have an update location
-        /// </summary>
-        List<SimPe.Updates.IUpdatablePlugin> UpdatablePlugins
-        { get; }
 	}
 }

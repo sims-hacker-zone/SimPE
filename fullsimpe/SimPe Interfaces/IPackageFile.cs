@@ -186,8 +186,7 @@ namespace SimPe.Interfaces.Files
 		/// </summary>
 		/// <param name="type">Type you want to look for</param>
 		/// <returns>The descriptor for the matching Dile or null</returns>
-		IPackedFileDescriptor FindExactFile(uint type, uint subtype, uint group, uint instance, uint offset); 
-		
+		IPackedFileDescriptor FindExactFile(uint type, uint subtype, uint group, uint instance, uint offset);
 
 		/// <summary>
 		/// Returns a List ofa all Files matching the passed group

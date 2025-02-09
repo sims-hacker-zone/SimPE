@@ -41,7 +41,6 @@ namespace SimPe.Interfaces.Files
 		{
 			get;
 		}
-		
 
 		/// <summary>
 		/// Returns the Major Version of The Packages FileFormat
@@ -51,8 +50,6 @@ namespace SimPe.Interfaces.Files
 		{
 			get;
 		}
-
-
 
 		/// <summary>
 		/// Returns the Minor Version of The Packages FileFormat 
@@ -78,7 +75,25 @@ namespace SimPe.Interfaces.Files
 		{
 			get;
 			set;
-		}
+        }
+
+        /// <summary>
+        /// The Icon to display (for lot packages)
+        /// </summary>
+        Int16 Epicon
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Should the defined Icon be shown : 1 is true (for lot packages)
+        /// </summary>
+        Int16 Showicon
+        {
+            get;
+            set;
+        }
 
 		/// <summary>
 		/// true if the version is greater or equal than 1.1
@@ -105,7 +120,7 @@ namespace SimPe.Interfaces.Files
 		}
 
 		/// <summary>
-		/// This is missused in SimPE as a Unique Creator ID
+		/// This is missused in SimPe as a Unique Creator ID
 		/// </summary>
 		uint Created
 		{
