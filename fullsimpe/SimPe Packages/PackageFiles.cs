@@ -26,7 +26,7 @@ using System.Windows.Forms;
 namespace SimPe
 {
 	/// <summary>
-	/// Zusammenfassung für PackageSelectorForm.
+	/// Summary description for PackageSelectorForm.
 	/// </summary>
 	public class PackageSelectorForm : System.Windows.Forms.Form
 	{
@@ -34,20 +34,20 @@ namespace SimPe
 		private System.Windows.Forms.Label lbfile;
 		private System.Windows.Forms.ListBox lbfiles;
 		/// <summary>
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
 		public PackageSelectorForm()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -61,10 +61,10 @@ namespace SimPe
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -83,8 +83,8 @@ namespace SimPe
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(576, 32);
 			this.label1.TabIndex = 0;
-			this.label1.Text = "You can use this Helper to Drag && Drop the Files from the current Package to to " +
-				"any Reference List. The Item will be added to the List.";
+			this.label1.Text = "You can use this Helper to Drag && Drop the Files from the current Package to " +
+				"a Reference List. The Item will be added to the List.";
 			// 
 			// lbfile
 			// 

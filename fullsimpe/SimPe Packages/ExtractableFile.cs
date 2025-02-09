@@ -27,7 +27,7 @@ using SimPe.Interfaces.Files;
 namespace SimPe.Packages
 {
 	/// <summary>
-	/// Extends the Püackage Files for Extraction Methods
+	/// Extends the Package Files for Extraction Methods
 	/// </summary>
 	public class ExtractableFile : File
 	{
@@ -56,9 +56,9 @@ namespace SimPe.Packages
 		/// <param name="pfd">The PackedFileDescriptor</param>
 		/// <returns>The MemoryStream representing the PackedFile</returns>
 		public System.IO.MemoryStream Extract(PackedFileDescriptor pfd) 
-		{			
+		{
 			IPackedFile pf = base.Read(pfd);
-			return new MemoryStream(pf.UncompressedData);			
+			return new MemoryStream(pf.UncompressedData);
 		}
 
 		/// <summary>

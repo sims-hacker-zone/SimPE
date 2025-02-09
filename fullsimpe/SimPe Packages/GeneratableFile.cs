@@ -83,7 +83,7 @@ namespace SimPe.Packages
 		/// <param name="flname">The Filename you want to save the Package to</param>
 		/// <remarks>This is Experimental and might not work properly</remarks>
 		public override void Save(string flname)
-		{			
+		{
 			//can we write to the output File?
 			if (!CanWriteToFile(flname, false))
 			{
@@ -251,9 +251,10 @@ namespace SimPe.Packages
 		{
 			this.LockStream();			
 			OpenReader();
-			System.IO.MemoryStream ms = new MemoryStream(10000);
+            System.IO.MemoryStream ms = new MemoryStream(16384); // Fuck
+            // was MemoryStream(10000) : 10000 is odd , assuming bigger is faster is now 16kb
+            // But.. out of mem error can be caused by larger caches so increasing this may be not good
 			System.IO.BinaryWriter writer = new BinaryWriter(ms);
-
 			
 			//make sure we write the correct Version!
 			if ((header.majorversion==1) && (header.minorversion==0))
@@ -261,23 +262,23 @@ namespace SimPe.Packages
 				header.minorversion = 1;
 				header.majorversion = 1;
 				filelist = null;
-			}			
+			}
 
 			int oldcount = 0;
 			if (this.Index!=null) oldcount = this.Index.Length;
 
-			//now save the stuff	
+			//now save the stuff
 			header.Save(writer);
 
 			//now save the files
 			PackedFileDescriptors tmpindex = new PackedFileDescriptors();
 			ArrayList tmpcmp = new ArrayList();
-			if (this.fileindex==null) fileindex = new SimPe.Interfaces.Files.IPackedFileDescriptor[0];
+            if (this.fileindex == null) fileindex = new SimPe.Interfaces.Files.IPackedFileDescriptor[0];
 
 			PrepareCompression();
 
 			foreach(PackedFileDescriptor pfd in this.fileindex)
-			{				
+			{
 				pfd.Changed = false;
 
 				//we write the filelist as last File
@@ -321,7 +322,7 @@ namespace SimPe.Packages
 						newpfd.size = pf.data.Length;
 						newpfd.SetUserData(pfd.UserData, false);
 
-						if (Helper.DebugMode) Helper.ExceptionMessage(ex);
+                        if (Helper.WindowsRegistry.HiddenMode) Helper.ExceptionMessage(ex);
 					}																			
 				} 				
 				else 
@@ -336,16 +337,14 @@ namespace SimPe.Packages
 				newpfd.MarkForReCompress = false;
 				newpfd.fldata = pf;
 				newpfd.WasCompressed = pf.IsCompressed;
-				
-				
 
 				tmpcmp.Add(pf.IsCompressed);
-				tmpindex.Add(newpfd);		
-				
-				writer.Write(pf.data);
-			}			
+				tmpindex.Add(newpfd);
 
-			//Last Entry should be the Filelist			
+				writer.Write(pf.data);
+            }
+
+			//Last Entry should be the Filelist
 			WriteFileList(writer, ref tmpindex, tmpcmp);
 
 			//create a new Index

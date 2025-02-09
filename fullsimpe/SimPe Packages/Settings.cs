@@ -34,15 +34,13 @@ namespace SimPe.Custom
         private static Settings settings;
         static Settings() { settings = new Settings(); }
         public static bool Persistent { get { return settings.KeepFilesOpen; } }
-        //public static bool SimNames { get { return !settings.HackerMode && settings.AddSimNames; } }
-
 
         public Settings() : base(rm) { }
 
         const string BASENAME = "Settings";
         SimPe.XmlRegistryKey xrk = SimPe.Helper.WindowsRegistry.RegistryKey;
 
-        [System.ComponentModel.Category("SimPe")]
+        [System.ComponentModel.Category("SimPE")]
         public bool KeepFilesOpen
         {
             get
@@ -59,45 +57,9 @@ namespace SimPe.Custom
             }
         }
 
-        /*
-        [System.ComponentModel.Category("SimPe")]
-        public bool AddSimNames
-        {
-            get
-            {
-                SimPe.XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
-                object o = rkf.GetValue("addSimNames", false);
-                return Convert.ToBoolean(o);
-            }
-
-            set
-            {
-                SimPe.XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
-                rkf.SetValue("addSimNames", value);
-            }
-        }
-
-        [System.ComponentModel.Category("SimPe")]
-        public bool HackerMode
-        {
-            get
-            {
-                SimPe.XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
-                object o = rkf.GetValue("hackerMode", false);
-                return Convert.ToBoolean(o);
-            }
-
-            set
-            {
-                SimPe.XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
-                rkf.SetValue("hackerMode", value);
-            }
-        }
-        */
-
         #region ISettings Members
 
-        public override string ToString() { return "SimPe"; }
+        public override string ToString() { return "SimPE"; }
 
         [System.ComponentModel.Browsable(false)]
         public System.Drawing.Image Icon { get { return null; } }
@@ -114,6 +76,5 @@ namespace SimPe.Custom
         public ISettings[] KnownSettings { get { return new ISettings[] { new Settings() }; } }
 
         #endregion
-
     }
 }

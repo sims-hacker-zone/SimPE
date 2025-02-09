@@ -56,7 +56,8 @@ namespace SimPe.Packages
 		/// </summary>
 		internal PackageMaintainer()
 		{
-            ht = new Hashtable(StringComparer.CurrentCultureIgnoreCase);
+            ht = new Hashtable(new CaseInsensitiveHashCodeProvider(), new CaseInsensitiveComparer());
+            // ht = new Hashtable(new StringComparer(), new IEqualityComparer());
 		}
 
 		/// <summary>
@@ -108,8 +109,8 @@ namespace SimPe.Packages
 
 		internal void SyncFileIndex(GeneratableFile pkg)
 		{
-			this.FileIndex.Clear();		
-			if (pkg.Index.Length<=Helper.WindowsRegistry.BigPackageResourceCount)
+			this.FileIndex.Clear();
+			if (pkg.Index.Length <= Helper.WindowsRegistry.BigPackageResourceCount)
 				this.FileIndex.AddIndexFromPackage(pkg);
 		}
 
@@ -139,23 +140,18 @@ namespace SimPe.Packages
 			if (filename==null) ret =  GeneratableFile.CreateNew();
 			else 
 			{
-
-			
 				if (!Helper.WindowsRegistry.UsePackageMaintainer)  ret = new GeneratableFile(filename);
-				else 
-				{
-
+				else
+                {
 					if (!ht.ContainsKey(filename)) ht[filename] = new GeneratableFile(filename);
 					else if (sync) 
 					{				
 						SimPe.FileTableBase.FileIndex.ClosePackage((GeneratableFile)ht[filename]);
 						//((GeneratableFile)ht[filename]).Close(true);
 						((GeneratableFile)ht[filename]).ReloadFromFile(filename);
-								
 					}
-
 					ret = (GeneratableFile)ht[filename];
-				}				
+				}
 			}
 
 			if (sync) 

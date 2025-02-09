@@ -99,7 +99,8 @@ namespace SimPe.Packages
 					if (fs.CanWrite) return true;
 					if (fs.CanRead) fa=FileAccess.ReadWrite;
 					break;
-				}
+                }
+
 				default: 
 				{
 					if (fs.CanRead && fs.CanWrite) return true;
@@ -116,8 +117,7 @@ namespace SimPe.Packages
 				fs = new FileStream(name, System.IO.FileMode.OpenOrCreate, fa);
 			} 
 			catch (Exception ex){
-				if (Helper.DebugMode) Helper.ExceptionMessage("", ex);
-                //Helper.ExceptionMessage("StreamItem.SetFileAccess", ex);
+                if (Helper.WindowsRegistry.HiddenMode) Helper.ExceptionMessage("", ex);
 				return false;
 			}
 			return true;
@@ -253,6 +253,15 @@ namespace SimPe.Packages
 				{
 					Console.WriteLine(ex);
 				}
+			}
+            string[] subdirs = System.IO.Directory.GetDirectories(Helper.SimPeTeleportPath);
+            foreach (string subdir in subdirs)
+            {
+                try
+                {
+                    System.IO.Directory.Delete(subdir, true);
+                }
+                catch {}
 			}
 		}
 

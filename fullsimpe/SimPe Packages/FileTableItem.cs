@@ -5,8 +5,6 @@ using SimPe.Interfaces.Wrapper;
 
 namespace SimPe
 {
-    
-
     /// <summary>
     /// The type and location of a Folder/file
     /// </summary>
@@ -82,7 +80,6 @@ namespace SimPe
             this.file = state;
         }
 
-
         public static string GetRoot(FileTableItemType type)
         {
             string ret = null;
@@ -104,23 +101,13 @@ namespace SimPe
         {
             try
             {
-
                 if (System.IO.Directory.Exists(name))
                     if (!Helper.IsAbsolutePath(name)) return false;
             }
-#if DEBUG
-            catch (Exception ex)
-            {
-                Helper.ExceptionMessage(ex);
-            }
-
-#else
 			catch {}
-#endif
 
             string root = GetRoot(type);
             if (root == null || root == "" || root == Helper.PATH_SEP) return false;
-
 
             root = Helper.CompareableFileName(Helper.ToLongPathName(root));
             if (!root.EndsWith(Helper.PATH_SEP)) root += Helper.PATH_SEP;
@@ -171,7 +158,7 @@ namespace SimPe
         }
 
         /// <summary>
-        /// Check this to determin if this item should be used in the FileTable
+        /// Check this to determine if this item should be used in the FileTable
         /// </summary>
         public bool Use
         {
@@ -192,7 +179,9 @@ namespace SimPe
 
         public bool IsUseable
         {
-            get { return ver == -1 || ver == PathProvider.Global.GameVersion; }
+            get {
+            return ver == -1 || ver == PathProvider.Global.GameVersion;
+            }
         }
 
         public int EpVersion
@@ -268,7 +257,6 @@ namespace SimPe
                     files = System.IO.Directory.GetFiles(n, "*.package");
                 else files = new string[0];
             }
-
             return files;
         }
 
@@ -278,15 +266,14 @@ namespace SimPe
             if (IsFile) n += "File: ";
             else if (IsRecursive) n += "RecursiveFolder: ";
             else n += "Folder: ";
-
             if (!IsUseable) n = "(Unused) " + n;
             else if (!IsAvail) n = "(Missing) " + n;
-            n += "{" + type.ToString() + "}" + path;
-
+            if (!Helper.WindowsRegistry.UseExpansions2 && type.ToString() == "Extra")
+                n += "{Store}" + path;
+            else
+                n += "{" + type.ToString() + "}" + path;
             if (ver != -1) n += " (Only when GameVersion=" + ver.ToString() + ")";
             return n;
         }
-
     }
-
 }

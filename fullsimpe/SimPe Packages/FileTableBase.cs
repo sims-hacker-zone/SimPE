@@ -44,7 +44,7 @@ namespace SimPe
 		}
 
 		/// <summary>
-		/// Returns a List of all Folders the User want's to scan for Content
+		/// Returns a List of all Folders, even those the User doesn't want to scan for Content
 		/// </summary>
 		public static ArrayList DefaultFolders
 		{
@@ -167,48 +167,53 @@ namespace SimPe
 
                 try
                 {
-
                     xw.WriteStartElement("folders");
                     xw.WriteStartElement("filetable");
+                    if (SimPe.PathProvider.Global.GameVersion < 18)
+                    {
+                        xw.WriteStartElement("file");
+                        xw.WriteAttributeString("root", "save");
+                        xw.WriteAttributeString("ignore", "1");
+                        xw.WriteValue("Downloads" + Helper.PATH_SEP + "_EnableColorOptionsGMND.package");
+                        xw.WriteEndElement();
 
-                    xw.WriteStartElement("file");
-                    xw.WriteAttributeString("root", "save");
-                    xw.WriteValue("Downloads" + Helper.PATH_SEP + "_EnableColorOptionsGMND.package");
-                    xw.WriteEndElement();
+                        xw.WriteStartElement("file");
+                        xw.WriteAttributeString("root", "game");
+                        xw.WriteAttributeString("ignore", "1");
+                        xw.WriteValue("TSData" + Helper.PATH_SEP + "Res" + Helper.PATH_SEP + "Sims3D" + Helper.PATH_SEP + "_EnableColorOptionsMMAT.package");
+                        xw.WriteEndElement();
 
-                    xw.WriteStartElement("file");
-                    xw.WriteAttributeString("root", "game");
-                    xw.WriteValue("TSData" + Helper.PATH_SEP + "Res" + Helper.PATH_SEP + "Sims3D" + Helper.PATH_SEP + "_EnableColorOptionsMMAT.package");
-                    xw.WriteEndElement();
+                        xw.WriteStartElement("path");
+                        xw.WriteAttributeString("root", "save");
+                        xw.WriteAttributeString("recursive", "1");
+                        xw.WriteAttributeString("ignore", "1");
+                        xw.WriteValue("zCEP-EXTRA");
+                        xw.WriteEndElement();
 
-                    xw.WriteStartElement("path");
-                    xw.WriteAttributeString("root", "save");
-                    xw.WriteAttributeString("recursive", "1");
-                    xw.WriteValue("zCEP-EXTRA");
-                    xw.WriteEndElement();
-
-                    xw.WriteStartElement("path");
-                    xw.WriteAttributeString("root", "game");
-                    xw.WriteAttributeString("recursive", "1");
-                    xw.WriteValue("TSData" + Helper.PATH_SEP + "Res" + Helper.PATH_SEP + "Catalog" + Helper.PATH_SEP + "zCEP-EXTRA");
-                    xw.WriteEndElement();
+                        xw.WriteStartElement("path");
+                        xw.WriteAttributeString("root", "game");
+                        xw.WriteAttributeString("recursive", "1");
+                        xw.WriteAttributeString("ignore", "1");
+                        xw.WriteValue("TSData" + Helper.PATH_SEP + "Res" + Helper.PATH_SEP + "Catalog" + Helper.PATH_SEP + "zCEP-EXTRA");
+                        xw.WriteEndElement();
+                    }
 
                     for (int i = PathProvider.Global.Expansions.Count - 1; i >= 0; i--)
                     {
                         ExpansionItem ei = PathProvider.Global.Expansions[i];
                         string s = ei.ShortId.ToLower();
+                        {
+                            foreach (string folder in ei.PreObjectFileTableFolders)
+                                writenode(xw, shouldignor(ei, folder), s, null, folder);
 
-                        //string ign = "";
-                        foreach (string folder in ei.PreObjectFileTableFolders)
-                            writenode(xw, (ei.Group & 1) != 1, s, null, folder);
+                            if (ei.Flag.Class == ExpansionItem.Classes.Story || !ei.Flag.FullObjectsPackage)
+                                writenode(xw, shouldignor(ei, ei.ObjectsSubFolder), s, null, ei.ObjectsSubFolder);
+                            else
+                                writenode(xw, shouldignor(ei, ei.ObjectsSubFolder), s, ei.Version.ToString(), ei.ObjectsSubFolder);
 
-                        if (ei.Flag.Class == ExpansionItem.Classes.Story || !ei.Flag.FullObjectsPackage)
-                            writenode(xw, (ei.Group & 1) != 1, s, null, ei.ObjectsSubFolder);
-                        else
-                            writenode(xw, (ei.Group & 1) != 1, s, ei.Version.ToString(), ei.ObjectsSubFolder);
-
-                        foreach (string folder in ei.FileTableFolders)
-                            writenode(xw, (ei.Group & 1) != 1, s, null, folder);
+                            foreach (string folder in ei.FileTableFolders)
+                                writenode(xw, shouldignor(ei, folder), s, null, folder);
+                        }
                     }
 
                     xw.WriteEndElement();
@@ -224,6 +229,14 @@ namespace SimPe
             {
                 Helper.ExceptionMessage("Unable to create default Folder File!", ex);
             }
+        }
+
+        private static bool shouldignor(ExpansionItem ei, string folder)
+        {
+            if ((PathProvider.Global.GameVersion < 21 && ei.Flag.SimStory) || (!ei.Exists && ei.InstallFolder == "")) return true;
+            if (ei.Version == PathProvider.Global.GameVersion && (folder.EndsWith("\\Objects") || folder.EndsWith("\\Overrides") || folder.EndsWith("\\UI") || folder.EndsWith("\\Wants"))) return false;
+            if (folder.EndsWith("\\3D") || folder.EndsWith("\\Sims3D") || folder.EndsWith("\\Stuffpack\\Objects") || folder.EndsWith("\\Materials")) return false;
+            return true;
         }
 
         /// <summary>
@@ -264,7 +277,6 @@ namespace SimPe
                             {
                                 switch (fti.Type.AsUint)
                                 {
-
                                     case (uint)FileTablePaths.SaveGameFolder:
                                         {
                                             xw.WriteAttributeString("root", "save");
@@ -295,7 +307,6 @@ namespace SimPe
 
                         xw.WriteValue(fti.RelativePath);
                         xw.WriteEndElement();
-
                     }
                     xw.WriteEndElement();
                     xw.WriteEndElement();

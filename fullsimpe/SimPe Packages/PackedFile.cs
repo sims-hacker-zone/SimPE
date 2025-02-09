@@ -1,6 +1,3 @@
-#if DEBUG
-//#define LOG
-#endif
 /***************************************************************************
  *   Copyright (C) 2005 by Ambertation                                     *
  *   quaxi@ambertation.de                                                  *
@@ -72,7 +69,7 @@ namespace SimPe.Packages
 		{
 			get 
 			{
-				return ((headersize!=0) && (Signature==SimPe.Data.MetaData.COMPRESS_SIGNATURE));
+                return ((headersize != 0) && (Signature == SimPe.Data.MetaData.COMPRESS_SIGNATURE));
 			}
 		}
 
@@ -92,7 +89,6 @@ namespace SimPe.Packages
 			}
 		}
 
-
 		/// <summary>
 		/// Compression Signature
 		/// </summary>		
@@ -108,15 +104,12 @@ namespace SimPe.Packages
 				return signature;
 			}
 		}
-
-
+        
         internal uint datastart;
         public uint DataStart
         {
             get { return datastart; }
         }
-		
-
 
         /// <summary>
         /// Filesize
@@ -133,7 +126,6 @@ namespace SimPe.Packages
                 return datasize;
             }
         }
-
 
 		/// <summary>
 		/// the File Data
@@ -344,7 +336,6 @@ namespace SimPe.Packages
 		}
 
 		#region decompression
-        
 
         /// <summary>
         /// Uncompresses the File Data passed
@@ -426,7 +417,6 @@ namespace SimPe.Packages
                 throw ex;
             }
 
-
             if (index < data.Length)
             {
                 plaincount = (data[index++] & 0x03);
@@ -447,9 +437,8 @@ namespace SimPe.Packages
 		/// <returns>The uncompressed FileData</returns>
 		public unsafe Byte[] UncompressUnsafe(Byte[] data, uint targetSize, int offset){
 			Byte[] uncdata = null;
-				
-
-			try 
+            
+            try 
 			{
 				uncdata = new Byte[targetSize];
 			} 
@@ -553,7 +542,7 @@ namespace SimPe.Packages
 		public Byte[] Uncompress(Byte[] data, uint targetSize, int offset, int size)
 		{
             Byte[] uncdata = null;
-			int index = offset;			
+			int index = offset;
 
 			try 
 			{
@@ -563,7 +552,6 @@ namespace SimPe.Packages
 			{
 				uncdata = new Byte[0];
 			}
-
             
 			int uncindex = 0;
 			int plaincount = 0;
@@ -574,26 +562,14 @@ namespace SimPe.Packages
 			Byte cc2 = 0;
 			Byte cc3 = 0;
 			int source;
-			
-#if LOG
-			System.IO.StreamWriter sw = new System.IO.StreamWriter(@"c:\decomp.txt", false);
-			string kind = "";
-			int lineoffset = 0;
-#endif
 			try 
 			{
 				while ((index<data.Length) && (data[index] < 0xfc))
 				{
-#if LOG
-					lineoffset = index;
-#endif
 					cc = data[index++];
 				
 					if ((cc&0x80)==0)
 					{
-#if LOG
-						kind = "0x00400";
-#endif
 						cc1 = data[index++];
 						plaincount = (cc & 0x03);
 						copycount = ((cc & 0x1C) >> 2) + 3;
@@ -601,9 +577,6 @@ namespace SimPe.Packages
 					} 
 					else if ((cc&0x40)==0)
 					{
-#if LOG
-						kind = "0x04000";
-#endif
 						cc1 = data[index++];
 						cc2 = data[index++];
 						plaincount = (cc1 & 0xC0) >> 6 ; 
@@ -612,9 +585,6 @@ namespace SimPe.Packages
 					} 
 					else if ((cc&0x20)==0)
 					{
-#if LOG
-						kind = "0x20000";
-#endif
 						cc1 = data[index++];
 						cc2 = data[index++];
 						cc3 = data[index++];
@@ -623,10 +593,7 @@ namespace SimPe.Packages
 						copyoffset = ((cc & 0x10) << 12) + (cc1 << 8) + cc2 +1;
 					} 
 					else 
-					{		
-#if LOG
-						kind = "0x0";
-#endif										
+					{
 						plaincount = (cc - 0xDF) << 2; 
 						copycount = 0;
 						copyoffset = 0;				
@@ -644,23 +611,14 @@ namespace SimPe.Packages
 							for (int i=0; i<uncindex; i++) newdata[i] = uncdata[i];
 							return newdata;
 						}
-						
-#if LOG
-					sw.WriteLine("offset="+Helper.HexString(lineoffset)+", plainc="+Helper.HexString(plaincount)+", copyc="+Helper.HexString(copycount)+", copyo="+Helper.HexString(copyoffset)+", type="+Helper.HexString(cc)+", kind="+kind);
-#endif
 				}//while
 			} //try
 			catch(Exception ex)
 			{
 				Helper.ExceptionMessage("", ex);
-			} 
+			}
 			finally 
 			{
-				#if LOG
-					sw.Close();
-					sw.Dispose();
-					sw = null;
-				#endif
 			}
 
 			if (index<data.Length) 
@@ -705,7 +663,6 @@ namespace SimPe.Packages
             Byte cc1 = 0;
             Byte cc2 = 0;
             Byte cc3 = 0;
-
 
             try
             {
@@ -761,7 +718,6 @@ namespace SimPe.Packages
                 throw ex;
             }
 
-
             if (s.Position < end)
             {
                 plaincount = (s.ReadByte() & 0x03);
@@ -800,7 +756,7 @@ namespace SimPe.Packages
 		/// <param name="pkgver">The Version of the package the compressed Data will be stored in</param>
 		/// <returns>the compressed Data (including the header)</returns>
 		public static byte[] Compress(byte[] data)
-		{			
+		{
 			try 
 			{
 				//return Comp(data, true);

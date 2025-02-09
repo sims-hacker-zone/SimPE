@@ -38,7 +38,7 @@ namespace SimPe.Packages
 			hole = new HeaderHole();
 			id = new char[4];
 			reserved_00 = new Int32[3];
-			reserved_02 = new Int32[8];
+			reserved_02 = new Int32[7];
 
 			id[0] = 'D';
 			id[1] = 'B';
@@ -48,6 +48,9 @@ namespace SimPe.Packages
 			majorversion = 1;
 			minorversion = 1;
 			index.Type = 7;
+
+            epicon = 0;
+            showicon = 0;
 
 			indextype = Data.MetaData.IndexTypes.ptLongFileIndex;
 		}
@@ -71,10 +74,44 @@ namespace SimPe.Packages
 				return ret;
 			}
 		}
-		
 
+        /// <summary>
+        /// The Icon to display (for lot packages)
+        /// </summary>	
+        internal Int16 epicon;
 
-		/// <summary>
+        [DescriptionAttribute("The Icon to display for this Package"), CategoryAttribute("Icon"), DefaultValueAttribute(0)]	
+        public Int16 Epicon
+        {
+            get
+            {
+                return epicon;
+            }
+            set
+            {
+                epicon = value;
+            }
+        }
+
+        /// <summary>
+        /// Should the defined Icon be shown : 1 is true (for lot packages)
+        /// </summary>
+        internal Int16 showicon;
+
+        [DescriptionAttribute("Should an Icon display for this Package"), CategoryAttribute("Icon"), DefaultValueAttribute(0)]
+        public Int16 Showicon
+        {
+            get
+            {
+                return showicon;
+            }
+            set
+            {
+                showicon = value;
+            }
+        }
+        
+        /// <summary>
 		/// The Major Version (part before the .) of the Package File Format
 		/// </summary>
 		internal Int32 majorversion;
@@ -91,8 +128,6 @@ namespace SimPe.Packages
 				return majorversion;
 			}
 		}
-
-
 
 		/// <summary>
 		/// The Minor Version (part after the .) of the Package File Format
@@ -124,7 +159,6 @@ namespace SimPe.Packages
 			}
 		}
 
-
 		/// <summary>
 		/// 3 dwords of reserved Data
 		/// </summary>
@@ -133,7 +167,6 @@ namespace SimPe.Packages
 #else
 		internal Int32[] reserved_00;
 #endif
-
 
 		/// <summary>
 		/// Createion Date of the File
@@ -207,7 +240,6 @@ namespace SimPe.Packages
 			}
 		}
 
-
 		/// <summary>
 		/// Only available for versions >= 1.1
 		/// </summary>
@@ -230,7 +262,7 @@ namespace SimPe.Packages
 		}
 
 		/// <summary>
-		/// 8 dwords of reserved Data
+		/// 7 dwords of reserved Data - was 8 but have lost one for Icon in lot files
 		/// </summary>
 #if DEBUG
 		public Int32[] reserved_02;
@@ -243,8 +275,6 @@ namespace SimPe.Packages
 #else
 		internal Int32[] reserved_02;
 #endif
-
-
 		/// <summary>
 		/// true if the version is greater or equal than 1.1
 		/// </summary>
@@ -264,10 +294,8 @@ namespace SimPe.Packages
 			set {lidl = value;}
 		}
 
-
 		#region File Processing Methods
-        static string spore = "\r\n\r\nSimPe is a package editor for Sims2 packages."
-            + "\r\nSpore packages are NOT supported.";
+        static string spore = "\r\n\r\nSimPe is a package editor for Sims2 packages only.";
 		/// <summary>
 		/// Initializes the Structure from a BinaryReader
 		/// </summary>
@@ -292,7 +320,6 @@ namespace SimPe.Packages
 			this.created = reader.ReadUInt32();
 			this.modified = reader.ReadInt32();
 			
-			
 			this.index.type = reader.ReadInt32();
 			if (!lidl)
 			{
@@ -310,6 +337,9 @@ namespace SimPe.Packages
 			this.hole.size = reader.ReadInt32();
 
 			if (IsVersion0101) this.indextype = (Data.MetaData.IndexTypes)reader.ReadUInt32();
+
+            this.epicon = reader.ReadInt16();
+            this.showicon = reader.ReadInt16();
 
 			//this.reserved_02 = new Int32[8];
 			for (uint i=0; i<this.reserved_02.Length; i++) this.reserved_02[i] = reader.ReadInt32();
@@ -342,6 +372,8 @@ namespace SimPe.Packages
 			writer.Write(this.hole.size);
 
 			if (IsVersion0101) writer.Write((uint)this.IndexType);
+            writer.Write(this.epicon);
+            writer.Write(this.showicon);
 
 			for (uint i=0; i<this.reserved_02.Length; i++) writer.Write(this.reserved_02[i]);
 		}
@@ -372,7 +404,9 @@ namespace SimPe.Packages
 
 			iph.reserved_00 = this.reserved_00;
 			iph.reserved_02 = this.reserved_02;
-			
+
+            iph.epicon = this.epicon;
+            iph.showicon = this.showicon;			
 			return (SimPe.Interfaces.Files.IPackageHeader)iph;
 		}
 	}

@@ -63,8 +63,6 @@ namespace SimPe.Packages
 			set { offset = value; }
 		}
 
-
-
 		/// <summary>
 		/// Size of the compressed File
 		/// </summary>		

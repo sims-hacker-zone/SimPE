@@ -29,11 +29,9 @@ namespace SimPe.Packages
 		internal IndexDetails(SimPe.Interfaces.Files.IPackageHeader hd)
 		{			
 			this.hd = hd;
-		}		
-
-		
-
-		/// <summary>
+		}
+        
+        /// <summary>
 		/// Returns the Identifier of the File
 		/// </summary>
 		/// <remarks>This value should be DBPF</remarks>
@@ -41,7 +39,6 @@ namespace SimPe.Packages
 		{
 			get {return hd.Identifier;}
 		}
-				
 
 		/// <summary>
 		/// Returns the Overall Version of this Package
@@ -58,15 +55,37 @@ namespace SimPe.Packages
 		{
 			get {return hd.IndexType;}
 			set {hd.IndexType = value;}
-		}		
+		}
 
 		/// <summary>
-		/// This is missused in SimPE as a Unique Creator ID
+		/// This is missused in SimPe as a Unique Creator ID
 		/// </summary>
-		public uint Ident
+		public string Ident
 		{
-			get {return hd.Created;}			
-		}
+			get {return "0x"+Helper.HexString(hd.Created);}
+        }
+
+        /// <summary>
+        /// Expansion Pack Icon Used by Lots in the Lot Catalogue
+        /// </summary>
+        public short EPIcon
+        {
+            get { return hd.Epicon; }
+            set { hd.Epicon = value; }
+        }
+
+        /// <summary>
+        /// Used by Lots in the Lot Catalogue, true (1) determines the Icon value is valid
+        /// </summary>
+        public short ShowIcon
+        {
+            get { return hd.Showicon; }
+            set
+            {
+                if (value > 0) hd.Showicon = 1;
+                else hd.Showicon = 0;
+            }
+        }
 	}
 
 	public class IndexDetailsAdvanced : IndexDetails
@@ -98,10 +117,9 @@ namespace SimPe.Packages
 		public string IndexItemSize
 		{
 			get {return "0x"+Helper.HexString( hd.Index.ItemSize) +" (0x"+Helper.HexString(hd.Index.Size / hd.Index.Count)+")";}
-		}		
-		
-
-		/// <summary>
+		}
+        
+        /// <summary>
 		/// Returns the Major Version of The Packages FileFormat
 		/// </summary>
 		/// <remarks>This value should be 1</remarks>
@@ -109,10 +127,8 @@ namespace SimPe.Packages
 		{
 			get {return hd.MajorVersion;}
 		}
-
-
-
-		/// <summary>
+        
+        /// <summary>
 		/// Returns the Minor Version of The Packages FileFormat 
 		/// </summary>
 		/// <remarks>This value should be 0 or 1</remarks>
@@ -121,7 +137,6 @@ namespace SimPe.Packages
 			get {return hd.MinorVersion;}
 		}						
 	}
-
 
 	/// <summary>
 	/// This offers some Repair Methods for .packages
