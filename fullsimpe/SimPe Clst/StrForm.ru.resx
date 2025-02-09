@@ -123,13 +123,6 @@
   <data name="btcommit.Text" xml:space="preserve">
     <value>Ввести</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>39, 79</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 13</value>
-  </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Язык:</value>
   </data>
@@ -137,20 +130,8 @@
   <data name="lldelall.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 7</value>
   </data>
-  <data name="lldelall.Location" type="System.Drawing.Point, System.Drawing">
-    <value>231, 241</value>
-  </data>
-  <data name="lldelall.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 18</value>
-  </data>
   <data name="lldelall.Text" xml:space="preserve">
     <value>удалить везде</value>
-  </data>
-  <data name="lldelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>228, 222</value>
-  </data>
-  <data name="lldelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 13</value>
   </data>
   <data name="lldelete.Text" xml:space="preserve">
     <value>удалить</value>
@@ -158,32 +139,14 @@
   <data name="llchangeall.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 8</value>
   </data>
-  <data name="llchangeall.Location" type="System.Drawing.Point, System.Drawing">
-    <value>452, 241</value>
-  </data>
-  <data name="llchangeall.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 18</value>
-  </data>
   <data name="llchangeall.Text" xml:space="preserve">
     <value>изменить везде</value>
   </data>
   <data name="lladdall.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 8</value>
   </data>
-  <data name="lladdall.Location" type="System.Drawing.Point, System.Drawing">
-    <value>338, 241</value>
-  </data>
-  <data name="lladdall.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 18</value>
-  </data>
   <data name="lladdall.Text" xml:space="preserve">
     <value>добавить везде</value>
-  </data>
-  <data name="lladd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>338, 222</value>
-  </data>
-  <data name="lladd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 18</value>
   </data>
   <data name="lladd.Text" xml:space="preserve">
     <value>добавить</value>
@@ -191,23 +154,11 @@
   <data name="llcommit.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 8</value>
   </data>
-  <data name="llcommit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>452, 222</value>
-  </data>
-  <data name="llcommit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 13</value>
-  </data>
   <data name="llcommit.Text" xml:space="preserve">
     <value>изменить</value>
   </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 13</value>
-  </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Описание:</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 13</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Значение:</value>
@@ -215,35 +166,11 @@
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Строки</value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 49</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 13</value>
-  </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Формат:</value>
   </data>
-  <data name="lbstr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>224, 8</value>
-  </data>
-  <data name="lbstr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 13</value>
-  </data>
   <data name="lbstr.Text" xml:space="preserve">
     <value>нет файла</value>
-  </data>
-  <data name="banner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 16</value>
-  </data>
-  <data name="banner.Text" xml:space="preserve">
-    <value>Править текстовые ресурсы</value>
-  </data>
-  <data name="llcreate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 48</value>
-  </data>
-  <data name="llcreate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 18</value>
   </data>
   <data name="llcreate.Text" xml:space="preserve">
     <value>создать текстовый файл</value>
@@ -251,13 +178,7 @@
   <data name="linkLabel1.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>13, 5</value>
   </data>
-  <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 18</value>
-  </data>
   <data name="linkLabel1.Text" xml:space="preserve">
     <value>включить все языки</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>896, 384</value>
   </data>
 </root>

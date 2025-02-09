@@ -120,13 +120,6 @@
   <data name="btcommit.Text">
     <value xml:space="preserve">Zatwierdź</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>40, 64</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 13</value>
-  </data>
   <data name="label4.Text">
     <value xml:space="preserve">Język:</value>
   </data>
@@ -134,32 +127,14 @@
   <data name="lldelall.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 4</value>
   </data>
-  <data name="lldelall.Location" type="System.Drawing.Point, System.Drawing">
-    <value>234, 192</value>
-  </data>
-  <data name="lldelall.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 15</value>
-  </data>
   <data name="lldelall.Text">
     <value xml:space="preserve">usuń wszędzie</value>
   </data>
   <data name="lldelete.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 4</value>
   </data>
-  <data name="lldelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>234, 176</value>
-  </data>
-  <data name="lldelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 15</value>
-  </data>
   <data name="lldelete.Text">
     <value xml:space="preserve">usuń</value>
-  </data>
-  <data name="llchangeall.Location" type="System.Drawing.Point, System.Drawing">
-    <value>454, 192</value>
-  </data>
-  <data name="llchangeall.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 15</value>
   </data>
   <data name="llchangeall.Text">
     <value xml:space="preserve">zmień wszędzie</value>
@@ -167,44 +142,20 @@
   <data name="lladdall.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 5</value>
   </data>
-  <data name="lladdall.Location" type="System.Drawing.Point, System.Drawing">
-    <value>341, 192</value>
-  </data>
-  <data name="lladdall.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 15</value>
-  </data>
   <data name="lladdall.Text">
     <value xml:space="preserve">dodaj wszędzie</value>
   </data>
   <data name="lladd.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 5</value>
   </data>
-  <data name="lladd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>341, 176</value>
-  </data>
-  <data name="lladd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 15</value>
-  </data>
   <data name="lladd.Text">
     <value xml:space="preserve">dodaj</value>
-  </data>
-  <data name="llcommit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>454, 176</value>
-  </data>
-  <data name="llcommit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 15</value>
   </data>
   <data name="llcommit.Text">
     <value xml:space="preserve">zmień</value>
   </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
-  </data>
   <data name="label3.Text">
     <value xml:space="preserve">Opis:</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
   </data>
   <data name="label2.Text">
     <value xml:space="preserve">Wartość:</value>
@@ -212,29 +163,11 @@
   <data name="groupBox1.Text">
     <value xml:space="preserve">Łańcuchy</value>
   </data>
-  <data name="lbstr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>230, 8</value>
-  </data>
-  <data name="lbstr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 13</value>
-  </data>
   <data name="lbstr.Text">
     <value xml:space="preserve">brak pliku</value>
   </data>
-  <data name="banner.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>Yes</value>
-  </data>
-  <data name="banner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 16</value>
-  </data>
-  <data name="banner.Text">
-    <value xml:space="preserve">Edytor zasobów tekstowych</value>
-  </data>
   <data name="llcreate.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 6</value>
-  </data>
-  <data name="llcreate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 15</value>
   </data>
   <data name="llcreate.Text">
     <value xml:space="preserve">stwórz plik tekstowy</value>
@@ -242,13 +175,7 @@
   <data name="linkLabel1.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>16, 6</value>
   </data>
-  <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 15</value>
-  </data>
   <data name="linkLabel1.Text">
     <value xml:space="preserve">włącz wszystkie języki</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
 </root>
