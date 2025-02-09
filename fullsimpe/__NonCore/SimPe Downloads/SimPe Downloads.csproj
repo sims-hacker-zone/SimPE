@@ -278,11 +278,6 @@
       <Name>SimPe GMDC Exporter Base</Name>
       <Private>False</Private>
     </ProjectReference>
-    <ProjectReference Include="..\..\SimPe HandlerCommon\SimPe HandlerCommon.csproj">
-      <Project>{A4CC48FD-9574-4F0B-B721-9E8C1B1E6A8A}</Project>
-      <Name>SimPe HandlerCommon</Name>
-      <Private>False</Private>
-    </ProjectReference>
     <ProjectReference Include="..\..\SimPe Helper\SimPe Helper.csproj">
       <Project>{59E3C353-1350-42D8-A045-CBBAD232F228}</Project>
       <Name>SimPe Helper</Name>
