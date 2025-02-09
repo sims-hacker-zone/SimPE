@@ -62,7 +62,7 @@ namespace SimPe.Plugin
 								};
 				return tools;
 			}
-		}		
-		#endregion
+		}
+        #endregion
 	}
 }

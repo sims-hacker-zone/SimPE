@@ -33,21 +33,6 @@ namespace SimPe.Plugin
         {
             InitializeComponent();
         }
-
-        #region bcon indices
-#if undef
-        private const byte COOKING = 0;
-        private const byte MECHANICAL = 1;
-        private const byte BODY = 2;
-        private const byte CHARISMA = 3;
-        private const byte CREATIVITY = 4;
-        private const byte LOGIC = 5;
-        private const byte GARDENING = 6;
-        private const byte CLEANING = 7;
-        private const byte MONEY = 8;
-        private const byte JOB = 9;
-#endif
-        #endregion
         private const int mm = 100;
         public void setValues(bool labels, string label, string value, SimPe.PackedFiles.Wrapper.Bcon[] bcon, ushort level)
         {
@@ -62,8 +47,7 @@ namespace SimPe.Plugin
                 lnudCharisma.Value = bcon[3][level] / mm;
                 lnudCreativity.Value = bcon[4][level] / mm;
                 lnudLogic.Value = bcon[5][level] / mm;
-                //lnudGardening.Value = bcon[6][level] / mm;
-                lnudCleaning.Value = bcon[7][level] / mm;
+                lnudCleaning.Value = bcon[6][level] / mm;
             }
             else
             {
@@ -79,8 +63,7 @@ namespace SimPe.Plugin
             bcon[3][level] = (short)(lnudCharisma.Value * mm);
             bcon[4][level] = (short)(lnudCreativity.Value * mm);
             bcon[5][level] = (short)(lnudLogic.Value * mm);
-            //bcon[6][level] = (short)(lnudGardening.Value * mm);
-            bcon[7][level] = (short)(lnudCleaning.Value * mm);
+            bcon[6][level] = (short)(lnudCleaning.Value * mm);
         }
 
         private bool labels = true;
@@ -95,12 +78,33 @@ namespace SimPe.Plugin
                 labels = value;
                 lnudCooking.NoLabel = lnudMechanical.NoLabel = lnudBody.NoLabel = lnudCharisma.NoLabel =
                     lnudCreativity.NoLabel = lnudLogic.NoLabel = lnudCleaning.NoLabel = !labels;
+                if (labels)
+                    this.MaximumSize = new System.Drawing.Size(1160, 48);
+                else
+                    this.MaximumSize = new System.Drawing.Size(1160, 27);                
+            }
+        }
+
+        private bool hsk = true;
+        public bool HaveSkills
+        {
+            get
+            {
+                return hsk;
+            }
+            set
+            {
+                if (hsk != value)
+                {
+                    hsk = value;
+                    lnudCooking.Visible = lnudMechanical.Visible = lnudBody.Visible = lnudCharisma.Visible =
+                        lnudCreativity.Visible = lnudLogic.Visible = lnudCleaning.Visible = hsk;
+                }
             }
         }
 
         public string Label { get { return lbChoice.Text; } set { lbChoice.Text = value; } }
         public string Value { get { return tbChoice.Text; } set { tbChoice.Text = value; } }
-        public int ValueWidth { get { return tbChoice.Width; } set { tbChoice.Width = value; } }
 
         public decimal Cooking { get { return lnudCooking.Value; } set { lnudCooking.Value = value; } }
         public decimal Mechanical { get { return lnudMechanical.Value; } set { lnudMechanical.Value = value; } }

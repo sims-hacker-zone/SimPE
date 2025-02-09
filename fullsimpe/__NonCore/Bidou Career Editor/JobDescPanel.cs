@@ -39,7 +39,7 @@ namespace SimPe.Plugin
 
         public string DescLabel { get { return lbDesc.Text; } set { lbDesc.Text = value; } }
         public string DescValue { get { return tbDesc.Text; } set { tbDesc.Text = value; } }
-
+        /*
         public Size DescSize
         {
             get { return tbDesc.Size; }
@@ -49,7 +49,7 @@ namespace SimPe.Plugin
                 tbTitle.Width = tbDesc.Width;
             }
         }
-
+        */
         /// <summary>
         /// Raised when the Title text box value changes
         /// </summary>

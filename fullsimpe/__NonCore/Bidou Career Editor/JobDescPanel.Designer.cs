@@ -28,86 +28,72 @@ namespace SimPe.Plugin
         /// </summary>
         private void InitializeComponent()
         {
-            this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.tbDesc = new System.Windows.Forms.TextBox();
             this.lbDesc = new System.Windows.Forms.Label();
             this.lbTitle = new System.Windows.Forms.Label();
             this.tbTitle = new System.Windows.Forms.TextBox();
-            this.tlpMain.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tlpMain
-            // 
-            this.tlpMain.AutoSize = true;
-            this.tlpMain.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlpMain.ColumnCount = 2;
-            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpMain.Controls.Add(this.tbDesc, 1, 1);
-            this.tlpMain.Controls.Add(this.lbDesc, 0, 1);
-            this.tlpMain.Controls.Add(this.lbTitle, 0, 0);
-            this.tlpMain.Controls.Add(this.tbTitle, 1, 0);
-            this.tlpMain.Location = new System.Drawing.Point(0, 0);
-            this.tlpMain.Margin = new System.Windows.Forms.Padding(0);
-            this.tlpMain.Name = "tlpMain";
-            this.tlpMain.RowCount = 2;
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpMain.Size = new System.Drawing.Size(367, 192);
-            this.tlpMain.TabIndex = 0;
             // 
             // tbDesc
             // 
-            this.tbDesc.Location = new System.Drawing.Point(56, 31);
+            this.tbDesc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbDesc.Location = new System.Drawing.Point(82, 24);
+            this.tbDesc.Margin = new System.Windows.Forms.Padding(2);
             this.tbDesc.Multiline = true;
             this.tbDesc.Name = "tbDesc";
-            this.tbDesc.Size = new System.Drawing.Size(308, 158);
+            this.tbDesc.Size = new System.Drawing.Size(220, 129);
             this.tbDesc.TabIndex = 4;
-            this.tbDesc.Text = "Desc X";
+            this.tbDesc.Text = "Desc Female";
             this.tbDesc.TextChanged += new System.EventHandler(this.tbDesc_TextChanged);
             // 
             // lbDesc
             // 
-            this.lbDesc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbDesc.AutoSize = true;
-            this.lbDesc.Location = new System.Drawing.Point(0, 31);
-            this.lbDesc.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.lbDesc.Font = new System.Drawing.Font("Verdana", 8.25F);
+            this.lbDesc.Location = new System.Drawing.Point(0, 27);
+            this.lbDesc.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.lbDesc.Name = "lbDesc";
-            this.lbDesc.Size = new System.Drawing.Size(53, 17);
+            this.lbDesc.Size = new System.Drawing.Size(82, 18);
             this.lbDesc.TabIndex = 3;
-            this.lbDesc.Text = "Desc X";
+            this.lbDesc.Text = "Desc Female";
+            this.lbDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lbTitle
             // 
-            this.lbTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbTitle.AutoSize = true;
-            this.lbTitle.Location = new System.Drawing.Point(5, 3);
-            this.lbTitle.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.lbTitle.Font = new System.Drawing.Font("Verdana", 8.25F);
+            this.lbTitle.Location = new System.Drawing.Point(0, 0);
+            this.lbTitle.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(48, 17);
+            this.lbTitle.Size = new System.Drawing.Size(82, 18);
             this.lbTitle.TabIndex = 1;
-            this.lbTitle.Text = "Title X";
+            this.lbTitle.Text = "Title Female";
+            this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tbTitle
             // 
-            this.tbTitle.Location = new System.Drawing.Point(56, 3);
+            this.tbTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbTitle.Location = new System.Drawing.Point(82, 0);
+            this.tbTitle.Margin = new System.Windows.Forms.Padding(2);
             this.tbTitle.Name = "tbTitle";
-            this.tbTitle.Size = new System.Drawing.Size(308, 22);
+            this.tbTitle.Size = new System.Drawing.Size(220, 20);
             this.tbTitle.TabIndex = 2;
-            this.tbTitle.Text = "Title X";
+            this.tbTitle.Text = "Title Female";
             this.tbTitle.TextChanged += new System.EventHandler(this.tbTitle_TextChanged);
             // 
             // JobDescPanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Controls.Add(this.tlpMain);
+            this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.tbTitle);
+            this.Controls.Add(this.lbTitle);
+            this.Controls.Add(this.lbDesc);
+            this.Controls.Add(this.tbDesc);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "JobDescPanel";
-            this.Size = new System.Drawing.Size(367, 192);
-            this.tlpMain.ResumeLayout(false);
-            this.tlpMain.PerformLayout();
+            this.Size = new System.Drawing.Size(303, 155);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -115,7 +101,6 @@ namespace SimPe.Plugin
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tlpMain;
         private System.Windows.Forms.TextBox tbDesc;
         private System.Windows.Forms.Label lbDesc;
         private System.Windows.Forms.Label lbTitle;

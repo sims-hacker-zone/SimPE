@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>237, 15</value>
+  </metadata>
+  <data name="pictureBox2.ToolTip" xml:space="preserve">
+    <value>Chance for A sets the likelyhood that ChoiseA
+will be the correct answer
+
+For non-Pets
+If you set this to -1 then the likelyhood for both
+ChoiseA and ChoiceB can be set by one skill each.
+
+For Pets only
+Chance for B sets the likelyhood that ChoiseB
+wil also be a correct answer</value>
+  </data>
   <metadata name="mainMenu1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>120, 15</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>64</value>

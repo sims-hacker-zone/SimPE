@@ -27,7 +27,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Zusammenfassung für ImportSemiTool.
 	/// </summary>
-	public class CareerTool : Interfaces.ITool
+    public class CareerTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
 		/// <summary>
 		/// Windows Registry Link
@@ -55,10 +55,7 @@ namespace SimPe.Plugin
 		{
 			get 
 			{
-                if (SimPe.PathProvider.Global.EPInstalled == 1)
-					return System.IO.Path.Combine(Helper.SimPeDataPath, "ep1base.career");
-				else
-					return System.IO.Path.Combine(Helper.SimPeDataPath, "base.career");
+                return "SimPe.Plugin.base.career";
 			}
 		}
 
@@ -69,13 +66,8 @@ namespace SimPe.Plugin
 
         private bool IsReallyEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
         {
-            if (System.IO.File.Exists(DefaultCareerFile)) return true;
+            if (package == null || package.FileName == null) return true;
 
-            if (package == null)
-            {
-                System.Windows.Forms.MessageBox.Show("You do not have a package open and the Default Career File was not found.");
-                return false;
-            }
             Interfaces.Files.IPackedFileDescriptor[] globals = package.FindFiles(Data.MetaData.GLOB_FILE);
             if (globals.Length == 1)
             {
@@ -93,13 +85,31 @@ namespace SimPe.Plugin
 
 			CareerEditor careerEditor = new CareerEditor();			
 			return careerEditor.Execute(ref pfd, ref package, prov);
-		}
+        }
+
 
 		public override string ToString()
 		{
-			return "Bidou's Career Editor...";
-		}
+            return "Object Creation\\Bidou's Career Editor...";
+        }
 
-		#endregion
-	}
+        #endregion
+
+        #region IToolExt Member
+        public override System.Drawing.Image Icon
+        {
+            get
+            {
+                return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.Plugin.CareerIcon.png"));
+            }
+        }
+        public override System.Windows.Forms.Shortcut Shortcut
+        {
+            get
+            {
+                return System.Windows.Forms.Shortcut.None;
+            }
+        }
+        #endregion
+    }
 }

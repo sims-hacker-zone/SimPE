@@ -75,49 +75,42 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="pjse.coder.plugin, Version=4.0.2915.16274, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="GDF, Version=0.69.20.22, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\SimPe\Plugins\pjse.coder.plugin.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\__Release\GDF.dll</HintPath>
     </Reference>
-    <Reference Include="pjse.SystemClasses, Version=1.0.2857.22031, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="pjse.coder, Version=4.69.8276.41340, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\SimPe\Plugins\pjse.SystemClasses.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\__Release\pjse.coder.dll</HintPath>
     </Reference>
     <Reference Include="simpe.3idr, Version=1.0.2842.29026, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\SimPe\simpe.3idr.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="simpe.commonhandler, Version=1.0.2842.29005, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\SimPe\simpe.commonhandler.dll</HintPath>
+      <HintPath>..\__Release\simpe.3idr.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="simpe.filehandler, Version=1.0.2842.29021, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\SimPe\simpe.filehandler.dll</HintPath>
+      <HintPath>..\__Release\simpe.filehandler.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="simpe.helper, Version=0.63.8.28998, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\SimPe\simpe.helper.dll</HintPath>
+      <HintPath>..\__Release\simpe.helper.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="simpe.interfaces, Version=1.0.2842.29003, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\SimPe\simpe.interfaces.dll</HintPath>
+      <HintPath>..\__Release\simpe.interfaces.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="simpe.package, Version=1.0.2842.29010, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\SimPe\simpe.package.dll</HintPath>
+      <HintPath>..\__Release\simpe.package.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="simpe.workspace, Version=1.0.2842.29014, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\SimPe\simpe.workspace.dll</HintPath>
+      <HintPath>..\__Release\simpe.workspace.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System">
@@ -164,12 +157,6 @@
     <Compile Include="Factory.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GUIDChooser.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUIDChooser.Designer.cs">
-      <DependentUpon>GUIDChooser.cs</DependentUpon>
-    </Compile>
     <Compile Include="JobDescPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -194,10 +181,6 @@
       <SubType>Designer</SubType>
       <DependentUpon>EffectPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUIDChooser.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>GUIDChooser.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="JobDescPanel.resx">
       <SubType>Designer</SubType>
       <DependentUpon>JobDescPanel.cs</DependentUpon>
@@ -206,6 +189,9 @@
       <SubType>Designer</SubType>
       <DependentUpon>LabelledNumericUpDown.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="base.career" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

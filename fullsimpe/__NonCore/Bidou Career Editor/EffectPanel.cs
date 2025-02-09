@@ -33,24 +33,10 @@ namespace SimPe.Plugin
         {
             InitializeComponent();
         }
-
-        #region bcon indices
-#if undef
-        private const byte COOKING = 0;
-        private const byte MECHANICAL = 1;
-        private const byte BODY = 2;
-        private const byte CHARISMA = 3;
-        private const byte CREATIVITY = 4;
-        private const byte LOGIC = 5;
-        private const byte GARDENING = 6;
-        private const byte CLEANING = 7;
-        private const byte MONEY = 8;
-        private const byte JOB = 9;
-#endif
-        #endregion
         public void setValues(ushort maxLevel, ushort level, SimPe.PackedFiles.Wrapper.Bcon[] bcon, string male, string female)
         {
             IsPetCareer = (bcon[0] == null);
+            IsCastaway = (bcon[9] != null);
             if (!isPetCareer)
             {
                 lnudCooking.Value = bcon[0][level] / 100;
@@ -59,24 +45,26 @@ namespace SimPe.Plugin
                 lnudCharisma.Value = bcon[3][level] / 100;
                 lnudCreativity.Value = bcon[4][level] / 100;
                 lnudLogic.Value = bcon[5][level] / 100;
-                //lnudGardening.Value = bcon[6][level] / 100;
-                lnudCleaning.Value = bcon[7][level] / 100;
+                lnudCleaning.Value = bcon[6][level] / 100;
             }
-            lnudMoney.Value = bcon[8][level];
+            lnudMoney.Value = bcon[7][level];
             lnudJobLevels.Minimum = level * -1;
             lnudJobLevels.Maximum = maxLevel - level;
-            if (bcon[9][level] < lnudJobLevels.Minimum)
+            if (bcon[8][level] < lnudJobLevels.Minimum)
                 lnudJobLevels.Value = lnudJobLevels.Minimum;
-            else if (bcon[9][level] > lnudJobLevels.Maximum)
+            else if (bcon[8][level] > lnudJobLevels.Maximum)
                 lnudJobLevels.Value = lnudJobLevels.Maximum;
             else
-                lnudJobLevels.Value = bcon[9][level];
+                lnudJobLevels.Value = bcon[8][level];
+            if (isCastaway)
+                lnudFood.Value = bcon[9][level];
             tbMale.Text = male;
             tbFemale.Text = female;
         }
         public void getValues(SimPe.PackedFiles.Wrapper.Bcon[] bcon, ushort level, ref string male, ref string female)
         {
             IsPetCareer = (bcon[0] == null);
+            IsCastaway = (bcon[9] != null);
             if (!isPetCareer)
             {
                 bcon[0][level] = (short)(lnudCooking.Value * 100);
@@ -85,11 +73,12 @@ namespace SimPe.Plugin
                 bcon[3][level] = (short)(lnudCharisma.Value * 100);
                 bcon[4][level] = (short)(lnudCreativity.Value * 100);
                 bcon[5][level] = (short)(lnudLogic.Value * 100);
-                //bcon[6][level] = (short)(lnudGardening.Value * 100);
-                bcon[7][level] = (short)(lnudCleaning.Value * 100);
+                bcon[6][level] = (short)(lnudCleaning.Value * 100);
             }
-            bcon[8][level] = (short)lnudMoney.Value;
-            bcon[9][level] = (short)lnudJobLevels.Value;
+            bcon[7][level] = (short)lnudMoney.Value;
+            bcon[8][level] = (short)lnudJobLevels.Value;
+            if (isCastaway)
+                bcon[9][level] = (short)lnudFood.Value; ;
             male = tbMale.Text;
             female = tbFemale.Text;
         }
@@ -103,10 +92,11 @@ namespace SimPe.Plugin
         public decimal Cleaning { get { return lnudCleaning.Value; } set { lnudCleaning.Value = value; } }
         public decimal Money { get { return lnudMoney.Value; } set { lnudMoney.Value = value; } }
         public decimal JobLevels { get { return lnudJobLevels.Value; } set { lnudJobLevels.Value = value; } }
+        public decimal Food { get { return lnudMoney.Value; } set { lnudMoney.Value = value; } }
 
         public string Male { get { return tbMale.Text; } set { tbMale.Text = value; } }
         public string Female { get { return tbFemale.Text; } set { tbFemale.Text = value; } }
-        public Size TextSize { get { return tbMale.Size; } set { tbFemale.Size = tbMale.Size = value; } }
+        //public Size TextSize { get { return tbMale.Size; } set { tbFemale.Size = tbMale.Size = value; } }
 
         private bool isPetCareer = false;
         public bool IsPetCareer
@@ -115,14 +105,28 @@ namespace SimPe.Plugin
             set
             {
                 isPetCareer = value;
-                lnudCooking.Enabled = lnudMechanical.Enabled = lnudCharisma.Enabled = lnudBody.Enabled =
-                    lnudCreativity.Enabled = lnudLogic.Enabled = lnudCleaning.Enabled = !isPetCareer;
+                lnudCooking.Visible = lnudMechanical.Visible = lnudCharisma.Visible = lnudBody.Visible =
+                    lnudCreativity.Visible = lnudLogic.Visible = lnudCleaning.Visible = !isPetCareer;
+            }
+        }
+        private bool isCastaway = false;
+        public bool IsCastaway
+        {
+            get { return isCastaway; }
+            set
+            {
+                isCastaway = value;
+                lnudFood.Visible = isCastaway;
+                if (isCastaway)
+                    lnudMoney.Label = "Resource";
+                else
+                    lnudMoney.Label = "Money";
             }
         }
 
         private void llCopy_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            tbFemale.Text = tbMale.Text;
+            tbMale.Text = tbFemale.Text;
         }
     }
 }

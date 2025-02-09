@@ -26,7 +26,6 @@
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>..\..\__Debug\Plugins\</OutputPath>
@@ -154,16 +153,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\pjseCoderPlugin-cvs\pjse System Classes\SimPe pjse System Classes.csproj">
-      <Project>{0B9D2E1D-30F3-4718-B66B-791BFBAC3DB7}</Project>
-      <Name>SimPe pjse System Classes</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\pjseCoderPlugin-cvs\SimPe BHAV\SimPe pjse coder plugin.csproj">
-      <Project>{19BF4C91-3A16-41D2-A7F0-2DE5BD7E13CF}</Project>
-      <Name>SimPe pjse coder plugin</Name>
-      <Private>False</Private>
-    </ProjectReference>
     <ProjectReference Include="..\..\SimPe 3IDR\SimPe 3IDR.csproj">
       <Project>{37D97490-DC9F-4DB7-9215-998C6BC06078}</Project>
       <Name>SimPe 3IDR</Name>
@@ -199,6 +188,17 @@
       <Name>SimPe Workspace Helper</Name>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\pjse\pjseCoderPlugin\pjse System Classes\SimPe pjse System Classes.csproj">
+      <Project>{0B9D2E1D-30F3-4718-B66B-791BFBAC3DB7}</Project>
+      <Name>SimPe pjse System Classes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\pjse\pjseCoderPlugin\SimPe BHAV\SimPe pjse coder plugin.csproj">
+      <Project>{19BF4C91-3A16-41D2-A7F0-2DE5BD7E13CF}</Project>
+      <Name>SimPe pjse coder plugin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="base.career" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
