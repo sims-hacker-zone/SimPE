@@ -81,7 +81,7 @@ namespace SimPe.Plugin.Tool
 		{
 			get
 			{
-				return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.Plugin.camera.png"));
+                return SimPe.GetIcon.AnimCamera;
 			}
 		}
 

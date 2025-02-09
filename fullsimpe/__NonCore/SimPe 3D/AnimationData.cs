@@ -4,7 +4,7 @@ using SimPe.Plugin.Anim;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für AnimationData.
+	/// Summary description for AnimationData.
 	/// </summary>
 	class AnimationData
 	{

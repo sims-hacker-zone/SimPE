@@ -26,41 +26,37 @@ using System.Windows.Forms;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für AnimPreview.
+	/// Summary description for AnimPreview.
 	/// </summary>
 	public class AnimPreview : System.Windows.Forms.Form
 	{
 		private SteepValley.Windows.Forms.XPGradientPanel xpGradientPanel1;
 		private System.Windows.Forms.Panel panel1;
 		private Ambertation.Graphics.DirectXPanel dx;
-		private SimPe.ThemeManager tm;
 		private System.Windows.Forms.ListBox lb;
 		private System.Windows.Forms.TreeView tv;
 		private System.Windows.Forms.Button btPlay;
 		private System.Windows.Forms.Timer timer1;
 		private System.Windows.Forms.ProgressBar pb;
-		private System.Windows.Forms.Label label1;
 		private System.ComponentModel.IContainer components;
 
 		AnimPreview()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
-
-			tm = SimPe.ThemeManager.Global.CreateChild();
-			tm.AddControl(this.xpGradientPanel1);
 
 			dx = new Ambertation.Graphics.DirectXPanel();
 			dx.Parent = this.panel1;
 			dx.Dock = DockStyle.Fill;
+			//dx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
 
 			dx.ResetDevice += new EventHandler(dx_ResetDevice);
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -80,15 +76,15 @@ namespace SimPe.Plugin
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(AnimPreview));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnimPreview));
 			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
 			this.pb = new System.Windows.Forms.ProgressBar();
 			this.btPlay = new System.Windows.Forms.Button();
@@ -96,13 +92,11 @@ namespace SimPe.Plugin
 			this.lb = new System.Windows.Forms.ListBox();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
-			this.label1 = new System.Windows.Forms.Label();
 			this.xpGradientPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// xpGradientPanel1
 			// 
-			this.xpGradientPanel1.Controls.Add(this.label1);
 			this.xpGradientPanel1.Controls.Add(this.pb);
 			this.xpGradientPanel1.Controls.Add(this.btPlay);
 			this.xpGradientPanel1.Controls.Add(this.tv);
@@ -126,17 +120,16 @@ namespace SimPe.Plugin
 			this.btPlay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btPlay.Location = new System.Drawing.Point(200, 408);
 			this.btPlay.Name = "btPlay";
+			this.btPlay.Size = new System.Drawing.Size(75, 23);
 			this.btPlay.TabIndex = 2;
 			this.btPlay.Text = "Play";
 			this.btPlay.Click += new System.EventHandler(this.btPlay_Click);
 			// 
 			// tv
 			// 
-			this.tv.ImageIndex = -1;
 			this.tv.Location = new System.Drawing.Point(8, 80);
 			this.tv.Name = "tv";
-			this.tv.SelectedImageIndex = -1;
-			this.tv.Size = new System.Drawing.Size(264, 272);
+			this.tv.Size = new System.Drawing.Size(264, 322);
 			this.tv.TabIndex = 1;
 			this.tv.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tv_AfterSelect);
 			// 
@@ -160,22 +153,13 @@ namespace SimPe.Plugin
 			// 
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
 			// 
-			// label1
-			// 
-			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Location = new System.Drawing.Point(8, 360);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(264, 48);
-			this.label1.TabIndex = 4;
-			this.label1.Text = "label1";
-			// 
 			// AnimPreview
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
 			this.ClientSize = new System.Drawing.Size(776, 454);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.xpGradientPanel1);
-			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "AnimPreview";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -206,22 +190,22 @@ namespace SimPe.Plugin
 			AnimPreview f = new AnimPreview();
 
 			WaitingScreen.Wait();
-            Wait.SubStart(anim.MeshBlock.Length);
-            try
-            {
-                WaitingScreen.UpdateMessage(SimPe.Localization.GetString("Loading Meshes"));
-                int ct = 0;
-                foreach (SimPe.Plugin.Anim.AnimationMeshBlock amb in anim.MeshBlock)
-                {
-                    f.lb.Items.Add(new ListedMeshBlocks(amb));
-                    Wait.Progress = ct++;
-                }
-            }
-            finally
-            {
-                Wait.SubStop();
-                WaitingScreen.Stop();
-            }
+			Wait.SubStart(anim.MeshBlock.Length);
+			try
+			{
+				WaitingScreen.UpdateMessage(SimPe.Localization.GetString("Loading Meshes"));
+				int ct = 0;
+				foreach (SimPe.Plugin.Anim.AnimationMeshBlock amb in anim.MeshBlock)
+				{
+					f.lb.Items.Add(new ListedMeshBlocks(amb));
+					Wait.Progress = ct++;
+				}
+			}
+			finally
+			{
+				Wait.SubStop();
+				WaitingScreen.Stop();
+			}
 			
 			f.ShowDialog();
 
@@ -229,13 +213,12 @@ namespace SimPe.Plugin
 		}
 
 		SimPe.Plugin.Gmdc.ElementOrder eo = new SimPe.Plugin.Gmdc.ElementOrder(SimPe.Plugin.Gmdc.ElementSorting.XYZ);
-				
+
 		void AddJoint(ListedMeshBlocks lmb, SimPe.Interfaces.Scenegraph.ICresChildren bl, Ambertation.Graphics.MeshList parent, System.Windows.Forms.TreeNodeCollection nodes)
 		{
-			SimPe.Plugin.TransformNode tn = bl.StoredTransformNode;						
-			
-			
-			if (tn!=null)
+			SimPe.Plugin.TransformNode tn = bl.StoredTransformNode;
+
+			if (tn != null)
 			{
 				Ambertation.Graphics.MeshBox mb = new Ambertation.Graphics.MeshBox(
 					Microsoft.DirectX.Direct3D.Mesh.Sphere(dx.Device, 0.02f, 12, 24),
@@ -248,7 +231,7 @@ namespace SimPe.Plugin
 				trans.Rotation.X = tn.Rotation.GetEulerAngles().X;
 				trans.Rotation.Y = tn.Rotation.GetEulerAngles().Y;
 				trans.Rotation.Z = tn.Rotation.GetEulerAngles().Z;
-				
+
 				trans.Translation.X = tn.TransformX;
 				trans.Translation.Y = tn.TransformY;
 				trans.Translation.Z = tn.TransformZ;
@@ -258,29 +241,23 @@ namespace SimPe.Plugin
 				TreeNode tnode = new TreeNode(tn.ToString());
 				tnode.Tag = mb;
 				nodes.Add(tnode);
-				jointmap[bl.GetName()] = mb;	
+				jointmap[bl.GetName()] = mb;
 
 				parent.Add(mb);
 
 				foreach (SimPe.Interfaces.Scenegraph.ICresChildren cld in bl)
 					AddJoint(lmb, cld, mb, tnode.Nodes);
-				
-			} 		
-			else 
+
+			}
+			else
 			{
 				foreach (SimPe.Interfaces.Scenegraph.ICresChildren cld in bl)
 					AddJoint(lmb, cld, parent, nodes);
 			}
-	
-			
-		}
-
-		
+		}		
 
 		private void dx_ResetDevice(object sender, EventArgs e)
-		{			
-			
-
+		{
 			if (!inter) 
 			{
 				dx.Meshes.Clear(true);
@@ -315,7 +292,6 @@ namespace SimPe.Plugin
 						
 			if (root!=null) root.Dispose();
 			root = new Ambertation.Graphics.MeshList();
-			
 
 			AddJoint(lmb, rn, root, tv.Nodes);
 
@@ -384,15 +360,14 @@ namespace SimPe.Plugin
 			if (timecode>lmb.ANIMBlock.Animation.TotalTime) 
 			{
 				timer1.Enabled = false;
+				pb.Value = 0;
 				return;
 			}
-
 			
 			pb.Value = timecode;						
 
 			foreach (AnimationData ad in animdata)	
 				ad.SetFrame(timecode);
-			
 			
 			dx.Render();
 			//Application.DoEvents();

@@ -34,7 +34,7 @@
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>DEBUG</DefineConstants>
     <DocumentationFile>
     </DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
@@ -57,7 +57,8 @@
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <DocumentationFile>
     </DocumentationFile>
     <DebugSymbols>false</DebugSymbols>
@@ -111,28 +112,39 @@
     <Reference Include="Microsoft.VisualBasic">
       <Name>Microsoft.VisualBasic</Name>
     </Reference>
-    <Reference Include="simpe.commonhandler, Version=1.0.2909.39934, Culture=neutral, processorArchitecture=x86">
-      <Private>False</Private>
-    </Reference>
     <Reference Include="simpe.geometry, Version=1.0.2909.39938, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\__Release\simpe.geometry.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
     <Reference Include="simpe.gmdc.exporter.base, Version=1.0.2909.39941, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\__Release\simpe.gmdc.exporter.base.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
     <Reference Include="simpe.helper, Version=0.64.5.39932, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\__Release\simpe.helper.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
     <Reference Include="simpe.interfaces, Version=1.0.2909.39934, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\__Release\simpe.interfaces.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
     <Reference Include="simpe.package, Version=1.0.2909.39936, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\__Release\simpe.package.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
     <Reference Include="simpe.rcol, Version=1.0.2909.39938, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\__Release\simpe.rcol.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
     <Reference Include="simpe.workspace, Version=1.0.2909.39937, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\__Release\simpe.workspace.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
     <Reference Include="System">
@@ -185,7 +197,6 @@
       <DependentUpon>AnimPreview.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="camera.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
