@@ -898,4 +898,75 @@ namespace SimPe.Data
 		}
 
 	}
+
+    /// <summary>
+    /// Localized Version of the BuildSubSort Enum
+    /// </summary>
+    public class LocalizedBuildSubSort
+    {
+        /// <summary>
+        /// Contains the value
+        /// </summary>
+        BuildFunctionSubSort data;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="data">The Value of the Enum</param>
+        public LocalizedBuildSubSort(BuildFunctionSubSort data)
+        {
+            this.data = data;
+        }
+
+        /// <summary>
+        /// Implicit Assignement of Enum Values
+        /// </summary>
+        /// <param name="item">the value</param>
+        /// <returns>the new Object</returns>
+        public static implicit operator LocalizedBuildSubSort(BuildFunctionSubSort item)
+        {
+            return new LocalizedBuildSubSort(item);
+        }
+
+        /// <summary>
+        /// Implicit Assignement of Enum Values
+        /// </summary>
+        /// <param name="item">the value</param>
+        /// <returns>the new Object</returns>
+        public static implicit operator BuildFunctionSubSort(LocalizedBuildSubSort item)
+        {
+            return item.data;
+        }
+
+        /// <summary>
+        /// Implicit Assignement of Enum Values
+        /// </summary>
+        /// <param name="item">the value</param>
+        /// <returns>the new Object</returns>
+        public static implicit operator LocalizedBuildSubSort(uint item)
+        {
+            return new LocalizedBuildSubSort((BuildFunctionSubSort)item);
+        }
+
+        /// <summary>
+        /// Implicit Assignement of Enum Values
+        /// </summary>
+        /// <param name="item">the value</param>
+        /// <returns>the new Object</returns>
+        public static implicit operator uint(LocalizedBuildSubSort item)
+        {
+            return (uint)item.data;
+        }
+
+        /// <summary>
+        /// Overrides the Default to string Members
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            string s = Localization.Manager.GetString(data.ToString());
+            if (s != null) return s;
+            else return data.ToString();
+        }
+    }
 }
