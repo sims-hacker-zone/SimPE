@@ -197,15 +197,6 @@
       <Name>SimPe Workspace Helper</Name>
       <Private>False</Private>
     </ProjectReference>
-    <Reference Include="Steepvalley.Windows.Forms.Common">
-      <HintPath>..\..\..\xpCommon\Steepvalley.Windows.Forms.XPCommonControls\bin\Debug\Steepvalley.Windows.Forms.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Steepvalley.Windows.Forms">
-      <HintPath>..\..\..\xpCommon\Steepvalley.Windows.Forms.XPCommonControls\bin\Debug\Steepvalley.Windows.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="Steepvalley.Windows.Forms.ListView">
-      <HintPath>..\..\..\xpCommon\Steepvalley.Windows.Forms.ListView\bin\Debug\Steepvalley.Windows.Forms.ListView.dll</HintPath>
-    </Reference>
     <Reference Include="XPCommonControls">
       <HintPath>..\..\XPCommonControls.dll</HintPath>
     </Reference>
