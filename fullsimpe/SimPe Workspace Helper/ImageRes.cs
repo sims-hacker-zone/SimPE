@@ -78,9 +78,11 @@ namespace SimPe
                 SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(0x856DDBAC, 0, 0x499DB772, 0x8CBB9323);
                 if (pfd != null)
                 {
-                    SimPe.PackedFiles.Wrapper.Picture pic = new SimPe.PackedFiles.Wrapper.Picture();
-                    pic.ProcessData(pfd, pkg);
-                    return pic.Image;
+                    // TODO Uncomment when circular dependencies are sorted out.
+                    // SimPe.PackedFiles.Wrapper.Picture pic = new SimPe.PackedFiles.Wrapper.Picture();
+                    // pic.ProcessData(pfd, pkg);
+                    // return pic.Image;
+                    return null;
                 }
             }
             return null;
@@ -98,9 +100,11 @@ namespace SimPe
                 SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(0x856DDBAC, 0, 0x499DB772, inst);
                 if (pfd != null)
                 {
-                    SimPe.PackedFiles.Wrapper.Picture pic = new SimPe.PackedFiles.Wrapper.Picture();
-                    pic.ProcessData(pfd, pkg);
-                    return pic.Image;
+                    // TODO Uncomment when circular dependencies are sorted out.
+                    // SimPe.PackedFiles.Wrapper.Picture pic = new SimPe.PackedFiles.Wrapper.Picture();
+                    // pic.ProcessData(pfd, pkg);
+                    // return pic.Image;
+                    return null;
                 }
             }
             if (System.IO.Directory.Exists(System.IO.Path.Combine(PathProvider.SimSavegameFolder, "Downloads")))
@@ -112,9 +116,11 @@ namespace SimPe
                     SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(0x856DDBAC, 0, 0x499DB772, inst);
                     if (pfd != null)
                     {
-                        SimPe.PackedFiles.Wrapper.Picture pic = new SimPe.PackedFiles.Wrapper.Picture();
-                        pic.ProcessData(pfd, pkg);
-                        return pic.Image;
+                        // TODO Uncomment when circular dependencies are sorted out.
+                        // SimPe.PackedFiles.Wrapper.Picture pic = new SimPe.PackedFiles.Wrapper.Picture();
+                        // pic.ProcessData(pfd, pkg);
+                        // return pic.Image;
+                        return null;
                     }
                 }
             }

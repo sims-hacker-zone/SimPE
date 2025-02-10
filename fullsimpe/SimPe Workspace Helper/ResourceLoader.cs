@@ -525,7 +525,7 @@ namespace SimPe
 		/// <param name="wrapper"></param>
 		/// <returns>true, if the Wrapper was unloaded completley (false if User decided to answer with Cancel)</returns>
 		/// <remarks>When there are uncommited changes, the Method will 
-		/// Prompt the User (if <see cref="SimPe.Helper.WindowsRegistry.Silent"/> is not set)
+		/// Prompt the User
 		/// if the changes should be commited</remarks>
 		bool UnloadWrapper(SimPe.Interfaces.Plugin.IFileWrapper wrapper)
 		{			
@@ -534,7 +534,7 @@ namespace SimPe
 			if (wrapper.GetType().GetInterface("IPackedFileSaveExtension", false) == typeof(SimPe.Interfaces.Plugin.Internal.IPackedFileSaveExtension)) 
 			{
 				SimPe.Interfaces.Plugin.Internal.IPackedFileSaveExtension wrp = (SimPe.Interfaces.Plugin.Internal.IPackedFileSaveExtension)wrapper;
-				if ((wrp.Changed) && (!Helper.WindowsRegistry.Silent))
+				if ((wrp.Changed))
 				{
 					MessageBoxButtons mbb = MessageBoxButtons.YesNoCancel;
 					//Deleted wrappers are Ignored!!!
@@ -627,8 +627,7 @@ namespace SimPe
 						string flname = wrapper.Package.FileName;
 						if (flname==null) flname="";
 						System.Windows.Forms.DialogResult dr = System.Windows.Forms.DialogResult.Yes;
-						if (!Helper.WindowsRegistry.Silent)
-							dr = Message.Show(SimPe.Localization.GetString("reschanged").Replace("{name}", doc.Text).Replace("{filename}", flname), SimPe.Localization.GetString("changed?"), System.Windows.Forms.MessageBoxButtons.YesNo);
+						dr = Message.Show(SimPe.Localization.GetString("reschanged").Replace("{name}", doc.Text).Replace("{filename}", flname), SimPe.Localization.GetString("changed?"), System.Windows.Forms.MessageBoxButtons.YesNo);
 
 						if (dr==System.Windows.Forms.DialogResult.Yes) 
 						{
