@@ -117,123 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btprev.Location" type="System.Drawing.Point, System.Drawing">
-    <value>494, 302</value>
-  </data>
   <data name="btprev.Text" xml:space="preserve">
     <value>Aperçu</value>
-  </data>
-  <data name="cbtype.Location" type="System.Drawing.Point, System.Drawing">
-    <value>318, 128</value>
-  </data>
-  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>310, 112</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 13</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>Type :</value>
   </data>
-  <data name="rtbcpfname.Location" type="System.Drawing.Point, System.Drawing">
-    <value>318, 64</value>
-  </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>310, 48</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 13</value>
-  </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Nom :</value>
-  </data>
-  <data name="rtbcpf.Location" type="System.Drawing.Point, System.Drawing">
-    <value>318, 176</value>
-  </data>
-  <data name="rtbcpf.Size" type="System.Drawing.Size, System.Drawing">
-    <value>336, 78</value>
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>310, 160</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 13</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Valeur :</value>
   </data>
-  <data name="btcpfcommit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>574, 302</value>
-  </data>
   <data name="btcpfcommit.Text" xml:space="preserve">
     <value>Appliquer</value>
   </data>
-  <data name="lbcpf.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 286</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 16</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
+	<data name="label5.Text" xml:space="preserve">
     <value>Éditeur CPF</value>
-  </data>
-  <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>668, 24</value>
-  </data>
-  <data name="tbNref.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 21</value>
-  </data>
-  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 56</value>
-  </data>
-  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 13</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Groupe :</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 22</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 33</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Nom de 
 fichier :</value>
   </data>
-  <data name="label9.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopRight</value>
-  </data>
-  <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>214, 56</value>
-  </data>
-  <data name="button2.Text" xml:space="preserve">
+	<data name="button2.Text" xml:space="preserve">
     <value>Appliquer</value>
-  </data>
-  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 16</value>
-  </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>Éditeur de référence de nom</value>
-  </data>
-  <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>324, 24</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="llcpfadd.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 7</value>
-  </data>
-  <data name="llcpfadd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>526, 262</value>
-  </data>
-  <data name="llcpfadd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
   </data>
   <data name="llcpfadd.Text" xml:space="preserve">
     <value>ajouter</value>
@@ -241,23 +155,11 @@ fichier :</value>
   <data name="llcpfchange.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 9</value>
   </data>
-  <data name="llcpfchange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>452, 262</value>
-  </data>
-  <data name="llcpfchange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 18</value>
-  </data>
   <data name="llcpfchange.Text" xml:space="preserve">
     <value>modifier</value>
   </data>
   <data name="linkLabel1.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 9</value>
-  </data>
-  <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>584, 262</value>
-  </data>
-  <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 13</value>
   </data>
   <data name="linkLabel1.Text" xml:space="preserve">
     <value>supprimer</value>

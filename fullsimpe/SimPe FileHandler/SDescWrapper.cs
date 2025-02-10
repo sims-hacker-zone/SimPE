@@ -42,7 +42,7 @@ namespace SimPe.PackedFiles.Wrapper
         Voyage = 0x2e,
         VoyageB = 0x2f,
         Freetime = 0x33,
-        Apartment =  0x36,
+        Apartment = 0x36,
 	}
 
 	/// <summary>
@@ -65,8 +65,12 @@ namespace SimPe.PackedFiles.Wrapper
 		Sales = 0x0C,
 		MakeToys = 0x0D,
 		ArrangeFlowers = 0x0E,
-		BuildRobots = 0x0F
-	}
+        BuildRobots = 0x0F,
+        MakeFood = 0x10,
+        Masseuse = 0x11,
+        MakePottery = 0x12,
+        Sewing = 0x13
+    }
     
     public enum Hobbies : ushort
     {
@@ -120,13 +124,66 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get { return GetBit(4); }
 			set { SetBit(4, value); }
-		}
+        }
+
+        public bool CanFlyOverLowObjects
+        {
+            get { return GetBit(5); }
+            set { SetBit(5, value); }
+        }
+
+        public bool ForceRouteRecalc
+        {
+            get { return GetBit(6); }
+            set { SetBit(6, value); }
+        }
+
+        public bool CanSwimInOcean
+        {
+            get { return GetBit(7); }
+            set { SetBit(7, value); }
+        }
 	}
-	#endregion
+    #endregion
+
+    #region Sim Selectable Flags
+    /// <summary>
+    /// Ghost Flag class
+    /// </summary>
+    public class SelectableFlags : FlagBase
+    {
+        public SelectableFlags(ushort flags) : base(flags) { }
+        public SelectableFlags() : base(0) { }
+
+        public bool Selectable
+        {
+            get { return GetBit(0); }
+            set { SetBit(0, value); }
+        }
+
+        public bool NotSelectable
+        {
+            get { return GetBit(1); }
+            set { SetBit(1, value); }
+        }
+
+        public bool HideRelationships
+        {
+            get { return GetBit(2); }
+            set { SetBit(2, value); }
+        }
+
+        public bool HolidayMate
+        {
+            get { return GetBit(3); }
+            set { SetBit(3, value); }
+        }
+    }
+    #endregion
 
 	#region Body Flags
 	/// <summary>
-	/// Ghost Flag class
+    /// Body Flag class
 	/// </summary>
 	public class BodyFlags : FlagBase
 	{
@@ -161,9 +218,59 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get { return GetBit(4); }
 			set { SetBit(4, value); }
-		}
+        }
+
+        public bool Hospital
+        {
+            get { return GetBit(5); }
+            set { SetBit(5, value); }
+        }
+
+        public bool BirthControl
+        {
+            get { return GetBit(6); }
+            set { SetBit(6, value); }
+        }
 	}
-	#endregion
+    #endregion
+
+    #region Cult Flags
+    /// <summary>
+    /// Cult Flag class
+    /// </summary>
+    public class CultFlags : FlagBase
+    {
+        public CultFlags(ushort flags) : base(flags) { }
+        public CultFlags() : base(0) { }
+
+        public bool AllowFamily 
+        {
+            get { return GetBit(0); }
+            set { SetBit(0, value); }
+        }
+        public bool NoAlcohol 
+        {
+            get { return GetBit(1); }
+            set { SetBit(1, value); }
+        }
+        public bool NoAutoWoohoo 
+        {
+            get { return GetBit(2); }
+            set { SetBit(2, value); }
+        }
+        public bool MarkedSim 
+        {
+            get { return GetBit(3); }
+            set { SetBit(3, value); }
+        }
+        public bool NotUsedf
+        {
+            get { return GetBit(4); }
+            set { SetBit(4, value); }
+        }
+    }
+
+    #endregion
 
     #region Pet Traits
     /// <summary>
@@ -246,6 +353,231 @@ namespace SimPe.PackedFiles.Wrapper
     }
     #endregion
 
+    #region PersonData Flags 1
+    /// <summary>
+    /// Flags for PersonData Flags 1
+    /// </summary>
+    public class PersonFlags1 : FlagBase
+    {
+        public PersonFlags1(ushort flags) : base(flags) { }
+        public PersonFlags1() : base(0) { }
+
+        public bool IsZombie
+        {
+            get { return GetBit(0); }
+            set { SetBit(0, value); }
+        }
+
+        public bool PermaPlatinum
+        {
+            get { return GetBit(1); }
+            set { SetBit(1, value); }
+        }
+
+        public bool IsVampire
+        {
+            get { return GetBit(2); }
+            set { SetBit(2, value); }
+        }
+
+        public bool VampireSmoke
+        {
+            get { return GetBit(3); }
+            set { SetBit(3, value); }
+        }
+
+        public bool WantHistory
+        {
+            get { return GetBit(4); }
+            set { SetBit(4, value); }
+        }
+
+        public bool LycanCarrier
+        {
+            get { return GetBit(5); }
+            set { SetBit(5, value); }
+        }
+
+        public bool LycanActive
+        {
+            get { return GetBit(6); }
+            set { SetBit(6, value); }
+        }
+
+        public bool IsRunaway
+        {
+            get { return GetBit(7); }
+            set { SetBit(7, value); }
+        }
+
+        public bool IsPlantsim
+        {
+            get { return GetBit(8); }
+            set { SetBit(8, value); }
+        }
+
+        public bool IsBigfoot
+        {
+            get { return GetBit(9); }
+            set { SetBit(9, value); }
+        }
+
+        public bool IsWitch
+        {
+            get { return GetBit(10); }
+            set { SetBit(10, value); }
+        }
+
+        public bool IsRoomate
+        {
+            get { return GetBit(11); }
+            set { SetBit(11, value); }
+        }
+    }
+    #endregion
+
+    #region PersonData Flags 3
+    /// <summary>
+    /// Flags for PersonData Flags 3
+    /// </summary>
+    public class PersonFlags3 : FlagBase
+    {
+        public PersonFlags3(ushort flags) : base(flags) { }
+        public PersonFlags3() : base(0) { }
+
+        public bool IsOwned
+        {
+            get { return GetBit(0); }
+            set { SetBit(0, value); }
+        }
+
+        public bool StayNaked
+        {
+            get { return GetBit(1); }
+            set { SetBit(1, value); }
+        }
+
+        public bool Reserved01
+        {
+            get { return GetBit(2); }
+            set { SetBit(2, value); }
+        }
+
+        public bool Reserved02
+        {
+            get { return GetBit(3); }
+            set { SetBit(3, value); }
+        }
+
+        public bool Reserved03
+        {
+            get { return GetBit(4); }
+            set { SetBit(4, value); }
+        }
+
+        public bool Reserved04
+        {
+            get { return GetBit(5); }
+            set { SetBit(5, value); }
+        }
+    }
+    #endregion
+
+    #region Semester info flags
+    /// <summary>
+    /// Flags for Semester info flags
+    /// </summary>
+    public class SemesterFlags : FlagBase
+    {
+        public SemesterFlags(ushort flags) : base(flags) { }
+        public SemesterFlags() : base(0) { }
+
+        public bool Freshman
+        {
+            get { return GetBit(0); }
+            set { SetBit(0, value); }
+        }
+
+        public bool Sophomore
+        {
+            get { return GetBit(1); }
+            set { SetBit(1, value); }
+        }
+
+        public bool Junior
+        {
+            get { return GetBit(2); }
+            set { SetBit(2, value); }
+        }
+
+        public bool Senior
+        {
+            get { return GetBit(3); }
+            set { SetBit(3, value); }
+        }
+
+        public bool GoodSem
+        {
+            get { return GetBit(4); }
+            set { SetBit(4, value); }
+        }
+
+        public bool Probation
+        {
+            get { return GetBit(5); }
+            set { SetBit(5, value); }
+        }
+
+        public bool Graduated
+        {
+            get { return GetBit(6); }
+            set { SetBit(6, value); }
+        }
+
+        public bool AtClass
+        {
+            get { return GetBit(7); }
+            set { SetBit(7, value); }
+        }
+
+        public bool Gates1
+        {
+            get { return GetBit(8); }
+            set { SetBit(8, value); }
+        }
+
+        public bool Gates2
+        {
+            get { return GetBit(9); }
+            set { SetBit(9, value); }
+        }
+
+        public bool Gates3
+        {
+            get { return GetBit(10); }
+            set { SetBit(10, value); }
+        }
+
+        public bool Gates4
+        {
+            get { return GetBit(11); }
+            set { SetBit(11, value); }
+        }
+
+        public bool Dropped
+        {
+            get { return GetBit(12); }
+            set { SetBit(12, value); }
+        }
+
+        public bool Expelled
+        {
+            get { return GetBit(13); }
+            set { SetBit(13, value); }
+        }
+    }
+    #endregion
+
 	#region CharacterDescription 
 	/// <summary>
 	/// Holds some descriptive Properties about a Character
@@ -259,17 +591,49 @@ namespace SimPe.PackedFiles.Wrapper
 			set { ghostflags = value; }
 		}
 
+        SelectableFlags selectableflags;
+        public SelectableFlags SelectableFlag 
+		{
+            get { return selectableflags; }
+            set { selectableflags = value; }
+		}
+
 		BodyFlags bodyflags;
 		public BodyFlags BodyFlag 
 		{
 			get { return bodyflags; }
 			set { bodyflags = value; }
-		}
+        }
 
-		public CharacterDescription() 
+        CultFlags cultflags;
+        public CultFlags CultFlag
+        {
+            get { return cultflags; }
+            set { cultflags = value; }
+        }
+
+        PersonFlags1 perf;
+        public PersonFlags1 PersonFlags1
+        {
+            get { return perf; }
+            set { perf = value; }
+        }
+
+        PersonFlags3 pefl;
+        public PersonFlags3 PersonFlags3
+        {
+            get { return pefl; }
+            set { pefl = value; }
+        }
+
+		public CharacterDescription()
 		{
 			ghostflags = new GhostFlags();
-			bodyflags = new BodyFlags();
+            bodyflags = new BodyFlags();
+            cultflags = new CultFlags();
+            selectableflags = new SelectableFlags();
+            perf = new PersonFlags1();
+            pefl = new PersonFlags3();
 		}
 
 		ushort autonomy;
@@ -284,14 +648,49 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get { return npc; }
 			set { npc = value; }
-		}
+        }
+
+        short titlePostName;
+        public short TitlePostName
+        {
+            get { return titlePostName; }
+            set { titlePostName = value; }
+        }
+
+        ushort asuburb;
+        public ushort AllocatedSuburb
+        {
+            get { return asuburb; }
+            set { asuburb = value; }
+        }
+
+        ushort partner;
+        public ushort PartnerID
+        {
+            get { return partner; }
+            set { partner = value; }
+        }
+
+        ushort religion;
+        public ushort ReligionId
+        {
+            get { return religion; }
+            set { religion = value; }
+        }
 
 		ushort mst;
 		public ushort MotivesStatic 
 		{
 			get { return mst; }
 			set { mst = value; }
-		}
+        }
+
+        ushort pto;
+        public ushort PTO
+        {
+            get { return pto; }
+            set { pto = value; }
+        }
 
 		ushort voice;
 		public ushort VoiceType 
@@ -319,59 +718,92 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get { return careerperformance; }			
 			set { careerperformance = value; }
-		}		
-
-
+		}
+        
 		private MetaData.Careers career;
 		public MetaData.Careers Career 
 		{
-			get { 
-				/*if ((LifeSection == Data.MetaData.LifeSections.Adult) 
-					|| (LifeSection == Data.MetaData.LifeSections.Teen) 
-					|| (LifeSection == Data.MetaData.LifeSections.Elder) )
-				{
-					return career;
-				} 
-				else 
-				{
-					return MetaData.Careers.Unemployed;
-				}*/
+			get
+            { 
 				return career;
 			}
 			set 
 			{
 				career = value;				
 			}
-		}
+        }
+
+        ushort pension;
+        public ushort Pension
+        {
+            get { return pension; }
+            set { pension = value; }
+        }
 
 		private ushort careerlevel;
 		public ushort CareerLevel 
 		{
-			get { 
-				/*if (LifeSection == Data.MetaData.LifeSections.Adult) 
-				{
-					 return (ushort)Math.Min(10, (int)careerlevel); 
-				} 
-				else if (LifeSection == Data.MetaData.LifeSections.Teen) 
-				{
-					 return (ushort)Math.Min(3, (int)careerlevel); 
-				} 
-				else if (LifeSection == Data.MetaData.LifeSections.Elder) 
-				{
-					 return (ushort)Math.Min(10, (int)careerlevel);
-				} 
-				else 
-				{
-					return 0;
-				}*/
+			get
+            {
 				return careerlevel;
 			}
 			set 
-			{
-				//careerlevel = (ushort)Math.Min(10, (int)value); 				
+			{			
 				careerlevel = value;
 			}
-		}
+        }
+
+        private MetaData.Careers retired;
+        public MetaData.Careers Retired
+        {
+            get
+            {
+                return retired;
+            }
+            set
+            {
+                retired = value;
+            }
+        }
+
+        private ushort retiredlevel;
+        public ushort RetiredLevel
+        {
+            get
+            {
+                return retiredlevel;
+            }
+            set
+            {
+                retiredlevel = value;
+            }
+        }
+
+        private MetaData.Bodyshape bodyshape;
+        public MetaData.Bodyshape Bodyshape
+        {
+            get
+            {
+                return bodyshape;
+            }
+            set
+            {
+                bodyshape = value;
+            }
+        }
+
+        private MetaData.ServiceTypes servicetypes; // use NPCType to write
+        public MetaData.ServiceTypes ServiceTypes
+        {
+            get
+            {
+                return servicetypes;
+            }
+            set
+            {
+                servicetypes = value;
+            }
+        }
 
 		private MetaData.ZodiacSignes zodiac;
 		public MetaData.ZodiacSignes ZodiacSign
@@ -401,6 +833,12 @@ namespace SimPe.PackedFiles.Wrapper
 			set {lifesection = value; }
 		}
 
+        private ushort realage; // use lifesection to write
+        public ushort Realage
+        {
+            get { return realage; }
+            set { realage = value; }
+        }
 
 		private ushort age;	
 		public ushort Age
@@ -442,7 +880,8 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get { return (uint)(lifelinescore * (ushort)10); }
 			set { lifelinescore = (ushort)(Math.Min(short.MaxValue, value / 10)); }
-		}		
+		}
+
 	}
 	#endregion
 
@@ -451,10 +890,8 @@ namespace SimPe.PackedFiles.Wrapper
 	/// Stores character Attributes
 	/// </summary>
 	public class CharacterAttributes : Serializer
-	{				
-		
-
-		private ushort neat;
+	{
+        private ushort neat;
 		public ushort Neat 
 		{
 			get 
@@ -531,50 +968,71 @@ namespace SimPe.PackedFiles.Wrapper
 		public short Hunger 
 		{
 			get { return hunger; }
-			set { hunger = Math.Min((short)1000, Math.Max((short)-1000, value)); }
+			set { hunger = Math.Min((short)0, Math.Max((short)-1000, value)); }
 		}
 
 		private short comfort;
 		public short Comfort 
 		{
 			get { return comfort; }
-			set { comfort = Math.Min((short)1000, Math.Max((short)-1000, value)); }
+			set { comfort = Math.Min((short)0, Math.Max((short)-1000, value)); }
 		}
 
 		private short bladder;
 		public short Bladder 
 		{
 			get { return bladder; }
-			set { bladder = Math.Min((short)1000, Math.Max((short)-1000, value)); }
+			set { bladder = Math.Min((short)0, Math.Max((short)-1000, value)); }
 		}
 
 		private short energy;
 		public short Energy 
 		{
 			get { return energy; }
-			set { energy = Math.Min((short)1000, Math.Max((short)-1000, value)); }
+			set { energy = Math.Min((short)0, Math.Max((short)-1000, value)); }
 		}
 
 		private short hygiene;
 		public short Hygiene 
 		{
 			get { return hygiene; }
-			set { hygiene = Math.Min((short)1000, Math.Max((short)-1000, value)); }
-		}
+			set { hygiene = Math.Min((short)0, Math.Max((short)-1000, value)); }
+        }
 
-		private short social;
-		public short Social 
+        private short amorous;
+        public short Amorous
+        {
+            get { return amorous; }
+            set { amorous = Math.Min((short)0, Math.Max((short)-1000, value)); }
+        }
+
+        private short shopping;
+        public short Shopping 
 		{
-			get { return social; }
-			set { social = Math.Min((short)1000, Math.Max((short)-1000, value)); }
-		}
+            get { return shopping; }
+            set { shopping = Math.Min((short)0, Math.Max((short)-1000, value)); }
+        }
+
+        private short social;
+        public short Social
+        {
+            get { return social; }
+            set { social = Math.Min((short)0, Math.Max((short)-1000, value)); }
+        }
 
 		private short fun;
 		public short Fun 
 		{
 			get { return fun; }
-			set { fun = Math.Min((short)1000, Math.Max((short)-1000, value)); }
-		}
+			set { fun = Math.Min((short)0, Math.Max((short)-1000, value)); }
+        }
+
+        private short scratchy;
+        public short ScratchC
+        {
+            get { return scratchy; }
+            set { scratchy = Math.Min((short)0, Math.Max((short)-1000, value)); }
+        }
 	}
 	#endregion
 
@@ -610,7 +1068,21 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get	{ return (ushort)Math.Min(1000, (uint)mechanical); }
 			set { mechanical = (ushort)Math.Min(1000, (uint)value); }
-		}
+        }
+
+        private ushort music;
+        public ushort Music
+        {
+            get { return (ushort)Math.Min(1000, (uint)music); }
+            set { music = (ushort)Math.Min(1000, (uint)value); }
+        }
+
+        private ushort art;
+        public ushort Art
+        {
+            get { return (ushort)Math.Min(1000, (uint)art); }
+            set { art = (ushort)Math.Min(1000, (uint)value); }
+        }
 
 		private ushort charisma;
 		public ushort Charisma 
@@ -815,9 +1287,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public ushort[] SimInstances
 		{
 			get	{ return siminstance; }
-			set { 
-				siminstance = value; 				
-			}
+			set { siminstance = value; }
 		}
 
 		/// <summary>
@@ -892,6 +1362,13 @@ namespace SimPe.PackedFiles.Wrapper
 			semester = 1;
 		}
 
+        SemesterFlags semesterflags = new SemesterFlags();
+        public SemesterFlags SemesterFlag
+        {
+            get { return semesterflags; }
+            set { semesterflags = value; }
+		}
+
 		ushort effort;
 		public ushort Effort
 		{
@@ -914,7 +1391,6 @@ namespace SimPe.PackedFiles.Wrapper
 			get { return time; }			
 			set { time = value; }
 		}
-
 		
 		ushort semester;
 		public ushort Semester
@@ -958,7 +1434,7 @@ namespace SimPe.PackedFiles.Wrapper
 			reader.BaseStream.Seek(0x160, SeekOrigin.Begin);
 			major = (Data.Majors)reader.ReadUInt32();
 			time = reader.ReadUInt16();
-			reader.BaseStream.Seek(0x2, SeekOrigin.Current);
+            semesterflags.Value = reader.ReadUInt16();
 			semester = reader.ReadUInt16();
 			oncampus = reader.ReadUInt16();
 			reader.BaseStream.Seek(0x4, SeekOrigin.Current);
@@ -976,7 +1452,8 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.BaseStream.Seek(0x160, SeekOrigin.Begin);
 			writer.Write((uint)major);
 			writer.Write((ushort)time);
-			writer.BaseStream.Seek(0x2, SeekOrigin.Current);
+            writer.Write(semesterflags.Value);
+			// writer.BaseStream.Seek(0x2, SeekOrigin.Current);
 			writer.Write((ushort)semester);
 			writer.Write((ushort)oncampus);
 			writer.BaseStream.Seek(0x4, SeekOrigin.Current);
@@ -1271,21 +1748,21 @@ namespace SimPe.PackedFiles.Wrapper
 			set { flags = value; }
 		}
 
-		ushort assignment;
-		public JobAssignment Assignment
-		{
-			get { return (JobAssignment)assignment; }			
-			set { assignment = (ushort)value; }
-		}
-		
+        ushort assignment;
+        public JobAssignment Assignment
+        {
+            get { return (JobAssignment)assignment; }
+            set { assignment = (ushort)value; }
+        }
 
 		internal void Unserialize(BinaryReader reader)
 		{
 			reader.BaseStream.Seek(0x192, SeekOrigin.Begin);
 			this.lotid = reader.ReadUInt16();					
 			this.salary = reader.ReadUInt16();
-			this.flags = reader.ReadUInt16();			
-			this.assignment = reader.ReadUInt16();			
+            this.flags = reader.ReadUInt16();
+            this.assignment = reader.ReadUInt16();
+
 		}
 
 		internal void Serialize(BinaryWriter writer)
@@ -1293,8 +1770,8 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.BaseStream.Seek(0x192, SeekOrigin.Begin);
 			writer.Write((ushort)this.lotid);					
 			writer.Write((ushort)this.salary);
-			writer.Write((ushort)this.flags);			
-			writer.Write((ushort)this.assignment);
+			writer.Write((ushort)this.flags);
+            writer.Write((ushort)this.assignment);
 		}
 	}
 	#endregion
@@ -1315,8 +1792,6 @@ namespace SimPe.PackedFiles.Wrapper
         {
             get { return pett; }
         }
-
-        
 
         internal void Unserialize(BinaryReader reader)
         {
@@ -1387,10 +1862,40 @@ namespace SimPe.PackedFiles.Wrapper
     }
     #endregion
 
-    #region SdscApartment
+    #region SdscCastaway
+    /// <summary>
+    /// Castaway specific Data
+    /// </summary>
+    public class SdscCastaway : Serializer
+    {
+        internal SdscCastaway()
+        {
+            subspecies = 0;
+        }
+
+        ushort subspecies;
+        public ushort Subspecies
+        {
+            get { return subspecies; }
+            set { subspecies = value; }
+        }
+
+        internal void Unserialize(BinaryReader reader)
+        {
+            reader.BaseStream.Seek(0x19C, SeekOrigin.Begin);
+            this.subspecies = reader.ReadUInt16();
+        }
+
+        internal void Serialize(BinaryWriter writer)
+        {
+            writer.BaseStream.Seek(0x19C, SeekOrigin.Begin);
+            writer.Write((ushort)this.subspecies);
+        }
+    }
     #endregion
 
-
+    #region SdscApartment
+    #endregion
 
     /// <summary>
 	/// Represents a PackedFile in SDsc Format
@@ -1406,7 +1911,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// The Id of the related sim
 		/// </summary>
-		private uint simid; 
+		private uint simid;
 
 		/// <summary>
 		/// Instance Number of Family
@@ -1528,9 +2033,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public SdscNightlife Nightlife
 		{
 			get { return nightlife; }
-		}
-
-        
+		}        
 
 		SdscBusiness business;
 		/// <summary>
@@ -1562,6 +2065,15 @@ namespace SimPe.PackedFiles.Wrapper
             get { return voyage; }
         }
 
+        SdscCastaway castaway;
+        /// <summary>
+        /// Returns Castaway Specific Data
+        /// </summary>
+        /// <remarks>Only valid if Version == SDescVersions.Castaway</remarks>
+        public SdscCastaway Castaway
+        {
+            get { return castaway; }
+        }
 
         SdscFreetime freetime;
         /// <summary>
@@ -1613,10 +2125,8 @@ namespace SimPe.PackedFiles.Wrapper
 			get 
 			{
 				return gencharacter;
-			}			
+			}
 		}
-
-		
 
 		/// <summary>
 		/// Skill Attributes
@@ -1724,10 +2234,8 @@ namespace SimPe.PackedFiles.Wrapper
 						if ((System.Drawing.Image)tags[1]!=null)
 							return true;
 					}
-				} 
-
+				}
 				return false;
-				
 			}
 		}
 
@@ -1747,10 +2255,8 @@ namespace SimPe.PackedFiles.Wrapper
 						if ((System.Drawing.Image)tags[1]!=null)
 							return (System.Drawing.Image)tags[1];
 					}
-				} 
-
+				}
 				return new System.Drawing.Bitmap(1,1);
-				
 			}
 		}
 
@@ -1773,7 +2279,17 @@ namespace SimPe.PackedFiles.Wrapper
 				} 
 				return null;
 			}
-		}
+        }
+
+        public bool IsCharSplit
+        {
+            get
+            {
+                if (CharacterFileName == null) return false;
+                else if (CharacterFileName.Contains(".1")) return true;
+                else return false;
+            }
+        }
 
 		/// <summary>
 		/// Returns or Sets the Instance Number
@@ -1819,7 +2335,6 @@ namespace SimPe.PackedFiles.Wrapper
 					a.Name = name;
 					if (a.Tag.Length>=2) a.Tag[2] = familyname;
 				}
-
 				return true;
 			} 
 			catch (Exception ex) 
@@ -1847,9 +2362,8 @@ namespace SimPe.PackedFiles.Wrapper
 							if (o[2]!=null) return o[2].ToString();
 						}
 					}
-				} 
+				}
 				return Localization.Manager.GetString("Unknown");
-				
 			}
 			set 
 			{
@@ -1867,6 +2381,7 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				if (familynameprovider!=null) 
 				{
+                    if (familynameprovider.FindName(SimId).Name == SimPe.Localization.GetString("Unknown")) return Data.MetaData.NPCFamily(Convert.ToUInt32(FamilyInstance));
 					return familynameprovider.FindName(SimId).Name;
 				} 
 				else 
@@ -1935,7 +2450,6 @@ namespace SimPe.PackedFiles.Wrapper
 					return sdesc;
 				}
 			}
-
 			return null;
 		}
 		#endregion
@@ -1975,7 +2489,6 @@ namespace SimPe.PackedFiles.Wrapper
 			familynameprovider = prov.SimFamilynameProvider;
 			sdescprovider = prov.SimDescriptionProvider;
 		}
-        
 
 		public SDesc() : this(FileTable.ProviderRegistry.SimNameProvider, FileTable.ProviderRegistry.SimFamilynameProvider, FileTable.ProviderRegistry.SimDescriptionProvider) {}
 
@@ -2013,6 +2526,7 @@ namespace SimPe.PackedFiles.Wrapper
 			business = new SdscBusiness();
             pets = new SdscPets();
             voyage = new SdscVoyage();
+            castaway = new SdscCastaway();
             freetime = new SdscFreetime(this);
             apartment = new SdscApartment(this);
 
@@ -2021,7 +2535,6 @@ namespace SimPe.PackedFiles.Wrapper
 			description.LifeSection = MetaData.LifeSections.Adult;
 			description.Gender = MetaData.Gender.Female;
 			description.LifelinePoints = 500;
-			
 
 			interests.FemalePreference = 50;
 			interests.MalePreference = 50;
@@ -2050,24 +2563,22 @@ namespace SimPe.PackedFiles.Wrapper
 			get 
 			{
                 if (version == (int)SDescVersions.Castaway) return 0x19E + 0XA;
-
                 if (version >= (int)SDescVersions.Apartment) return 0x1DA + 0xA;
                 if (version >= (int)SDescVersions.Freetime) return 0x1D4 + 0xA;
                 if (version >= (int)SDescVersions.VoyageB) return 0x1A4 + 0xA; //0x19e + 0xa?
                 if (version >= (int)SDescVersions.Voyage) return 0x1A4 + 0xA; //0x19e + 0xa?
                 if (version >= (int)SDescVersions.Pets) return 0x19C + 0xA;
-				if (version>=(int)SDescVersions.Business) return 0x19A+0xA;
-				if (version>=(int)SDescVersions.Nightlife) return 0x192+0xA;
-				if (version>=(int)SDescVersions.University) return 0x16A+0x12;
+				if (version >= (int)SDescVersions.Business) return 0x19A + 0xA;
+				if (version >= (int)SDescVersions.Nightlife) return 0x192 + 0xA;
+				if (version >= (int)SDescVersions.University) return 0x16A + 0x12;
 				return 0x16A;
 			}
 		}
 		protected override void Unserialize(System.IO.BinaryReader reader)
         {
-            
 			//the formula offset = 0x0a + 2*pid
 			long startpos = reader.BaseStream.Position;
-			reserved_01 = reader.ReadBytes(0xC2);						
+			reserved_01 = reader.ReadBytes(0xC2);
 			description.Age = reader.ReadUInt16();
 			description.PrevAgeDays = reader.ReadUInt16();
 			//reserved_02= reader.ReadBytes(0x9A);
@@ -2081,13 +2592,11 @@ namespace SimPe.PackedFiles.Wrapper
 			///
 			reader.BaseStream.Seek(startpos + 0x04, System.IO.SeekOrigin.Begin);
 			version = reader.ReadInt32();
-
 			
 			//Read the GUID Data
 			reader.BaseStream.Seek(startpos + GuidDataPosition, System.IO.SeekOrigin.Begin);
 			instancenumber = reader.ReadUInt16();
 			simid = reader.ReadUInt32();
-			
  
 			//decay			
 			reader.BaseStream.Seek(startpos + 0xC6, System.IO.SeekOrigin.Begin);
@@ -2096,10 +2605,12 @@ namespace SimPe.PackedFiles.Wrapper
 			decay.Bladder = reader.ReadInt16();
 			decay.Energy = reader.ReadInt16();
 			decay.Hygiene = reader.ReadInt16();
-			reader.BaseStream.Seek(0x02, System.IO.SeekOrigin.Current);
+			decay.Amorous = reader.ReadInt16();
 			decay.Social = reader.ReadInt16();
-			reader.BaseStream.Seek(0x02, System.IO.SeekOrigin.Current);
+			decay.Shopping = reader.ReadInt16();
 			decay.Fun = reader.ReadInt16();
+			reader.BaseStream.Seek(startpos + 0xE0, System.IO.SeekOrigin.Begin);
+			decay.ScratchC = reader.ReadInt16();
 			
 			//skills
 			reader.BaseStream.Seek(startpos + 0x1E, System.IO.SeekOrigin.Begin);
@@ -2107,25 +2618,33 @@ namespace SimPe.PackedFiles.Wrapper
 			skills.Cooking = reader.ReadUInt16();
 			skills.Charisma = reader.ReadUInt16();
 			skills.Mechanical = reader.ReadUInt16();
-			reader.BaseStream.Seek(0x04, System.IO.SeekOrigin.Current);
+			skills.Music = reader.ReadUInt16();
+			description.PartnerID = reader.ReadUInt16();
 			skills.Creativity = reader.ReadUInt16();
-			reader.BaseStream.Seek(0x02, System.IO.SeekOrigin.Current);
+			skills.Art = reader.ReadUInt16();
 			skills.Body = reader.ReadUInt16();
 			skills.Logic = reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0xEA, System.IO.SeekOrigin.Begin);
+            // Chris H this is Sunshine Motive change to Amorous Personality - reader.BaseStream.Seek(startpos + 0xEA, System.IO.SeekOrigin.Begin);
+            reader.BaseStream.Seek(startpos + 0xB6, System.IO.SeekOrigin.Begin);
 			skills.Romance = reader.ReadUInt16();
-
 
 			//character (Genetic)
 			reader.BaseStream.Seek(startpos + 0x10, System.IO.SeekOrigin.Begin);
 			character.Nice = reader.ReadUInt16();
 			character.Active = reader.ReadUInt16();
 			reader.BaseStream.Seek(0x02, System.IO.SeekOrigin.Current);
+
+            //reader.BaseStream.Seek(0x014, SeekOrigin.Begin);
+            //University.Effort = reader.ReadUInt16();
+
 			character.Playful = reader.ReadUInt16();
 			character.Outgoing = reader.ReadUInt16();
 			character.Neat = reader.ReadUInt16();
 
-			//random Data
+            //random Data
+            reader.BaseStream.Seek(startpos + 0xb4, SeekOrigin.Begin);
+            description.PersonFlags1.Value = reader.ReadUInt16();
+
 			reader.BaseStream.Seek(startpos + 0x46, System.IO.SeekOrigin.Begin);
 			description.MotivesStatic = reader.ReadUInt16();	
 			reader.BaseStream.Seek(startpos + 0x68, System.IO.SeekOrigin.Begin);
@@ -2135,6 +2654,8 @@ namespace SimPe.PackedFiles.Wrapper
 			reader.BaseStream.Seek(startpos + 0x7C, System.IO.SeekOrigin.Begin);
 			description.Grade = (Data.MetaData.Grades)reader.ReadUInt16();
 			description.CareerLevel = reader.ReadUInt16();
+            reader.BaseStream.Seek(startpos + 0x80, System.IO.SeekOrigin.Begin);
+            description.Realage = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x80, System.IO.SeekOrigin.Begin);
 			description.LifeSection = (MetaData.LifeSections)reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x86, System.IO.SeekOrigin.Begin);
@@ -2142,30 +2663,57 @@ namespace SimPe.PackedFiles.Wrapper
 			reader.BaseStream.Seek(startpos + 0x8A, System.IO.SeekOrigin.Begin);
 			description.CareerPerformance = reader.ReadInt16();
 			reader.BaseStream.Seek(startpos + 0x8E, System.IO.SeekOrigin.Begin);
-			description.Gender = (MetaData.Gender)reader.ReadUInt16();		
+			description.Gender = (MetaData.Gender)reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x94, System.IO.SeekOrigin.Begin);
-			description.GhostFlag.Value = reader.ReadUInt16();
+            description.GhostFlag.Value = reader.ReadUInt16();
+            reader.BaseStream.Seek(startpos + 0x96, System.IO.SeekOrigin.Begin);
+            description.PTO = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x98, System.IO.SeekOrigin.Begin);
 			description.ZodiacSign = (Data.MetaData.ZodiacSignes)reader.ReadUInt16();
+
+            reader.BaseStream.Seek(startpos + 0x102, System.IO.SeekOrigin.Begin);
+            description.Pension = reader.ReadUInt16();
+
 			reader.BaseStream.Seek(startpos + 0xAE, System.IO.SeekOrigin.Begin);
 			description.BodyFlag.Value = reader.ReadUInt16();
+            reader.BaseStream.Seek(startpos + 0x134, System.IO.SeekOrigin.Begin);
+            description.CultFlag.Value = reader.ReadUInt16();
+            reader.BaseStream.Seek(startpos + 0x13C, System.IO.SeekOrigin.Begin);
+            description.ReligionId = reader.ReadUInt16();
+            _ = reader.ReadUInt16();
+            reader.BaseStream.Seek(startpos + 0x12A, System.IO.SeekOrigin.Begin);
+            _ = reader.ReadUInt16();
+            reader.BaseStream.Seek(startpos + 0xBA, System.IO.SeekOrigin.Begin);
+            _ = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0xB0, System.IO.SeekOrigin.Begin);
 			skills.Fatness = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0xBE, System.IO.SeekOrigin.Begin);
-			description.Career = (Data.MetaData.Careers)reader.ReadUInt32();
+            description.Career = (Data.MetaData.Careers)reader.ReadUInt32();
+            reader.BaseStream.Seek(startpos + 0x12C, System.IO.SeekOrigin.Begin);
+            description.AllocatedSuburb = reader.ReadUInt16();
+            description.PersonFlags3.Value = reader.ReadUInt16();
+            description.Bodyshape = (Data.MetaData.Bodyshape)reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0xE2, System.IO.SeekOrigin.Begin);
 			description.SchoolType = (Data.MetaData.SchoolTypes)reader.ReadUInt32();
 			reader.BaseStream.Seek(startpos + 0x14C, System.IO.SeekOrigin.Begin);
 			description.LifelinePoints = reader.ReadInt16();
 			description.LifelineScore = (uint)(reader.ReadUInt16() * 10);
-			description.BlizLifelinePoints = reader.ReadUInt16();
+            description.BlizLifelinePoints = reader.ReadUInt16();
+            reader.BaseStream.Seek(startpos + 0x142, System.IO.SeekOrigin.Begin);
+            description.ServiceTypes = (Data.MetaData.ServiceTypes)reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x142, System.IO.SeekOrigin.Begin);
 			description.NPCType = reader.ReadUInt16();
-			description.AgeDuration = reader.ReadUInt16();
+            description.AgeDuration = reader.ReadUInt16();
+            reader.BaseStream.Seek(startpos + 0x148, System.IO.SeekOrigin.Begin);
+            description.SelectableFlag.Value = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x54, System.IO.SeekOrigin.Begin);
 			description.AutonomyLevel = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x156, System.IO.SeekOrigin.Begin);
 			unlinked = reader.ReadUInt16();
+
+            reader.BaseStream.Seek(startpos + 0x15A, System.IO.SeekOrigin.Begin);
+            description.Retired = (Data.MetaData.Careers)reader.ReadUInt32();
+            description.RetiredLevel = reader.ReadUInt16();
 
 			//available Relationships
 			reader.BaseStream.Seek(startpos + this.RelationPosition, System.IO.SeekOrigin.Begin);
@@ -2195,21 +2743,16 @@ namespace SimPe.PackedFiles.Wrapper
 
             if (version >= (int)SDescVersions.Voyage) voyage.UnserializeMem(reader);
             
-            
-
-			//character (Genetic)
+            //character (Genetic)
 			reader.BaseStream.Seek(startpos + 0x6A, System.IO.SeekOrigin.Begin);
 			gencharacter.Neat = reader.ReadUInt16();
 			gencharacter.Nice = reader.ReadUInt16();
 			gencharacter.Active = reader.ReadUInt16();
 			gencharacter.Outgoing = reader.ReadUInt16();
 			gencharacter.Playful = reader.ReadUInt16();
-
-			
-			
-
-			//interests
-			reader.BaseStream.Seek(startpos + 0x038, System.IO.SeekOrigin.Begin);						
+            
+            //interests
+			reader.BaseStream.Seek(startpos + 0x038, System.IO.SeekOrigin.Begin);
 			interests.MalePreference = reader.ReadInt16();
 			interests.FemalePreference = reader.ReadInt16();
 			reader.BaseStream.Seek(startpos + 0x104, System.IO.SeekOrigin.Begin);
@@ -2252,19 +2795,31 @@ namespace SimPe.PackedFiles.Wrapper
             if (version >= (int)SDescVersions.Voyage)
                 voyage.Unserialize(reader);
 
+            //castway only Items
+            if (version == (int)SDescVersions.Castaway)
+                castaway.Unserialize(reader);
+
             //freetime only Items
             if (version >= (int)SDescVersions.Freetime)
                 freetime.Unserialize(reader);
 
             //apartment only Items
             if (version >= (int)SDescVersions.Apartment)
+            {
                 apartment.Unserialize(reader);
+                reader.BaseStream.Seek(startpos + 0x1D8, System.IO.SeekOrigin.Begin);
+                description.TitlePostName = (short)reader.ReadUInt16();
+            }
 
 			reader.BaseStream.Seek(endpos, System.IO.SeekOrigin.Begin);
 		}
 
-		protected override void Serialize(System.IO.BinaryWriter writer) 
-		{		
+        protected override void Serialize(System.IO.BinaryWriter writer)
+		{
+        // No point in writing different values to the same Position so
+        // Realage if used must be preconverted to LifeSection
+        // ServiceTypes if used must be preconverted to NPCType
+
 			long startpos = writer.BaseStream.Position;
 			writer.Write(reserved_01);					
 			writer.Write(description.Age);
@@ -2275,7 +2830,7 @@ namespace SimPe.PackedFiles.Wrapper
 			byte[] res03 = Helper.SetLength(backupdata, (int)(this.RelationPosition-writer.BaseStream.Position));
 			writer.Write(res03);
 			while (writer.BaseStream.Length < 0x16D) writer.Write((byte)0);
-			long endpos = writer.BaseStream.Position;			
+			long endpos = writer.BaseStream.Position;
 			
 			///
 			/// TODO: This needs to be done more efficient, but for now it will work!
@@ -2286,8 +2841,7 @@ namespace SimPe.PackedFiles.Wrapper
 			//Write the Guid Data
 			writer.BaseStream.Seek(startpos + GuidDataPosition, System.IO.SeekOrigin.Begin);
 			writer.Write(instancenumber);
-			writer.Write(simid); 
-			
+			writer.Write(simid);
 
 			//character 
 			writer.BaseStream.Seek(startpos + 0x10, System.IO.SeekOrigin.Begin);
@@ -2302,9 +2856,14 @@ namespace SimPe.PackedFiles.Wrapper
             if (version >= (int)SDescVersions.Freetime)
                 freetime.Serialize(writer);
 
-			//random Data			
+            //random Data
+            writer.BaseStream.Seek(startpos + 0xb4, SeekOrigin.Begin);
+            writer.Write((ushort)description.PersonFlags1.Value);
+
 			writer.BaseStream.Seek(startpos + 0x46, System.IO.SeekOrigin.Begin);
-			writer.Write((ushort)description.MotivesStatic);
+            writer.Write((ushort)description.MotivesStatic);
+            writer.BaseStream.Seek(startpos + 0x54, System.IO.SeekOrigin.Begin);
+            writer.Write(description.AutonomyLevel);
 			writer.BaseStream.Seek(startpos + 0x68, System.IO.SeekOrigin.Begin);
 			writer.Write((ushort)description.Aspiration);
 			writer.BaseStream.Seek(startpos + 0xBC, System.IO.SeekOrigin.Begin);
@@ -2319,30 +2878,53 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.BaseStream.Seek(startpos + 0x8A, System.IO.SeekOrigin.Begin);
 			writer.Write(description.CareerPerformance);
 			writer.BaseStream.Seek(startpos + 0x8E, System.IO.SeekOrigin.Begin);
-			writer.Write((ushort)description.Gender);	
+			writer.Write((ushort)description.Gender);
 			writer.BaseStream.Seek(startpos + 0x94, System.IO.SeekOrigin.Begin);
-			writer.Write(description.GhostFlag.Value);
+            writer.Write(description.GhostFlag.Value);
+            writer.BaseStream.Seek(startpos + 0x96, System.IO.SeekOrigin.Begin);
+            writer.Write((ushort)description.PTO);
 			writer.BaseStream.Seek(startpos + 0x98, System.IO.SeekOrigin.Begin);
 			writer.Write((ushort)description.ZodiacSign);
+
+            writer.BaseStream.Seek(startpos + 0x102, System.IO.SeekOrigin.Begin);
+            writer.Write((ushort)description.Pension);
+
 			writer.BaseStream.Seek(startpos + 0xAE, System.IO.SeekOrigin.Begin);
-			writer.Write(description.BodyFlag.Value);
+            writer.Write(description.BodyFlag.Value);
+            writer.BaseStream.Seek(startpos + 0x134, System.IO.SeekOrigin.Begin);
+            writer.Write(description.CultFlag.Value);
+            writer.BaseStream.Seek(startpos + 0x13C, System.IO.SeekOrigin.Begin);
+            writer.Write(description.ReligionId);
+            writer.Write((ushort)0);
+			writer.BaseStream.Seek(startpos + 0x12A, System.IO.SeekOrigin.Begin);
+            writer.Write((ushort)0);
+            writer.BaseStream.Seek(startpos + 0xBA, System.IO.SeekOrigin.Begin);
+            writer.Write((ushort)0);
 			writer.BaseStream.Seek(startpos + 0xB0, System.IO.SeekOrigin.Begin);
 			writer.Write(skills.Fatness);
 			writer.BaseStream.Seek(startpos + 0xBE, System.IO.SeekOrigin.Begin);
 			writer.Write((uint)description.Career);
+            writer.BaseStream.Seek(startpos + 0x12C, System.IO.SeekOrigin.Begin);
+            writer.Write(description.AllocatedSuburb);
+            writer.Write((ushort)description.PersonFlags3.Value);
+            writer.Write((ushort)description.Bodyshape);
 			writer.BaseStream.Seek(startpos + 0xE2, System.IO.SeekOrigin.Begin);
 			writer.Write((uint)description.SchoolType);
 			writer.BaseStream.Seek(startpos + 0x14C, System.IO.SeekOrigin.Begin);
 			writer.Write(description.LifelinePoints);
 			writer.Write((ushort)(description.LifelineScore / 10));
-			writer.Write(description.BlizLifelinePoints);
+            writer.Write(description.BlizLifelinePoints);
 			writer.BaseStream.Seek(startpos + 0x142, System.IO.SeekOrigin.Begin);
 			writer.Write(description.NPCType);
-			writer.Write(description.AgeDuration);
-			writer.BaseStream.Seek(startpos + 0x54, System.IO.SeekOrigin.Begin);
-			writer.Write(description.AutonomyLevel);
+            writer.Write(description.AgeDuration);
+            writer.BaseStream.Seek(startpos + 0x148, System.IO.SeekOrigin.Begin);
+            writer.Write(description.SelectableFlag.Value);
 			writer.BaseStream.Seek(startpos + 0x156, System.IO.SeekOrigin.Begin);
-			writer.Write(unlinked);
+            writer.Write(unlinked);
+
+            writer.BaseStream.Seek(startpos + 0x15A, System.IO.SeekOrigin.Begin);
+            writer.Write((uint)description.Retired);
+            writer.Write(description.RetiredLevel);
 
 			//decay
 			writer.BaseStream.Seek(startpos + 0xC6, System.IO.SeekOrigin.Begin);
@@ -2351,10 +2933,12 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write(decay.Bladder);
 			writer.Write(decay.Energy);
 			writer.Write(decay.Hygiene);
-			writer.BaseStream.Seek(0x02, System.IO.SeekOrigin.Current);
-			writer.Write(decay.Social);
-			writer.BaseStream.Seek(0x02, System.IO.SeekOrigin.Current);
-			writer.Write(decay.Fun);
+            writer.Write(decay.Amorous);
+            writer.Write(decay.Social);
+            writer.Write(decay.Shopping);
+            writer.Write(decay.Fun);
+            writer.BaseStream.Seek(startpos + 0xE0, System.IO.SeekOrigin.Begin);
+            writer.Write(decay.ScratchC);
 
 			//available Relationships
 			writer.BaseStream.Seek(startpos + this.RelationPosition, System.IO.SeekOrigin.Begin);			
@@ -2366,19 +2950,20 @@ namespace SimPe.PackedFiles.Wrapper
             writer.Write((byte)enddata);
             if (version >= (int)SDescVersions.Voyage) voyage.SerializeMem(writer);
             
-
-			//skills
+            //skills
 			writer.BaseStream.Seek(startpos + 0x1E, System.IO.SeekOrigin.Begin);
 			writer.Write(skills.Cleaning);
 			writer.Write(skills.Cooking);
 			writer.Write(skills.Charisma);
-			writer.Write(skills.Mechanical);
-			writer.BaseStream.Seek(0x04, System.IO.SeekOrigin.Current);
-			writer.Write(skills.Creativity);
-			writer.BaseStream.Seek(0x02, System.IO.SeekOrigin.Current);
+            writer.Write(skills.Mechanical);
+            writer.Write(skills.Music);
+            writer.Write(description.PartnerID);
+            writer.Write(skills.Creativity);
+            writer.Write(skills.Art);
 			writer.Write(skills.Body);
 			writer.Write(skills.Logic);
-			writer.BaseStream.Seek(startpos + 0xEA, System.IO.SeekOrigin.Begin);
+            // Chris H this was Sunshine Motive changed to Amorous Personality - writer.BaseStream.Seek(startpos + 0xEA, System.IO.SeekOrigin.Begin);
+            writer.BaseStream.Seek(startpos + 0xB6, System.IO.SeekOrigin.Begin);
 			writer.Write(skills.Romance);
 
 			//character (Genetic)
@@ -2433,10 +3018,13 @@ namespace SimPe.PackedFiles.Wrapper
             if (version >= (int)SDescVersions.Voyage)
                 voyage.Serialize(writer);
 
+            //castway only Items
+            if (version == (int)SDescVersions.Castaway)
+                castaway.Serialize(writer);
+
             //apartment only Items
             if (version >= (int)SDescVersions.Apartment)
                 apartment.Serialize(writer);
-			
 
 			writer.BaseStream.Seek(endpos, System.IO.SeekOrigin.Begin);
 		}
@@ -2465,7 +3053,6 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-
 		public Byte[] FileSignature
 		{
 			get 
@@ -2474,16 +3061,14 @@ namespace SimPe.PackedFiles.Wrapper
 							 };
 				return sig;
 			}
-		}		
-
-		
+        }
 
 		#endregion
 
 		#region static values
 		static SimPe.Interfaces.IAlias[] addoncarrer;
 		/// <summary>
-		/// Returns a List of Userdefined AddOnCareers
+		/// Returns a List of Userdefined Add On Careers
 		/// </summary>
 		public static SimPe.Interfaces.IAlias[] AddonCarrers
 		{
@@ -2496,7 +3081,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		static SimPe.Interfaces.IAlias[] addonmajor;
 		/// <summary>
-		/// Returns a List of Userdefined AddOnCareers
+		/// Returns a List of Userdefined Add On Majors
 		/// </summary>
 		public static SimPe.Interfaces.IAlias[] AddonMajors
 		{
@@ -2509,7 +3094,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		static SimPe.Interfaces.IAlias[] addonschool;
 		/// <summary>
-		/// Returns a List of Userdefined AddOnCareers
+		/// Returns a List of Userdefined Add On Schools
 		/// </summary>
 		public static SimPe.Interfaces.IAlias[] AddonSchools
 		{
@@ -2518,7 +3103,7 @@ namespace SimPe.PackedFiles.Wrapper
 				if (addonschool==null) addonschool = Data.Alias.LoadFromXml(System.IO.Path.Combine(Helper.SimPeDataPath, "additional_schools.xml"));
 				return addonschool;
 			}
-		}
+        }
 		#endregion
 
         public static Expansions GetMinExpansion(SDescVersions ver){
@@ -2529,8 +3114,8 @@ namespace SimPe.PackedFiles.Wrapper
 
             return Expansions.BaseGame;
         }
-
-        public static SDescVersions GetMinVersion(Expansions exp)
+        /*
+        public static SDescVersions GetMinVersion(Expansions exp) // don't need this anymore
         {
             string[] names = Enum.GetNames(typeof(SDescVersions));
             string name = exp.ToString();
@@ -2538,6 +3123,28 @@ namespace SimPe.PackedFiles.Wrapper
                 if (name == n) return (SDescVersions)Enum.Parse(typeof(SDescVersions), n);
 
             return SDescVersions.Unknown;
+        } */
+
+        public static ExpansionItem GetIEVersion(SDescVersions sv)
+        {
+            if (sv == SDescVersions.Apartment) return PathProvider.Global.Latest;
+            if (sv == SDescVersions.Freetime) return PathProvider.Global.GetLowestAvailableExpansion(13, 15); // lowest is EP, these SPs lack data so use them last
+            if (sv == SDescVersions.Voyage || sv == SDescVersions.VoyageB) return PathProvider.Global.GetLowestAvailableExpansion(10, 12);
+            if (sv == SDescVersions.Castaway) return PathProvider.Global.GetExpansion(28);
+            if (sv == SDescVersions.Pets)
+            {
+                if (Helper.WindowsRegistry.LoadOnlySimsStory == 29) return PathProvider.Global.GetExpansion(29);
+                else return PathProvider.Global.GetHighestAvailableExpansion(6, 9);
+            }
+            if (sv == SDescVersions.Business)
+            {
+                if (Helper.WindowsRegistry.LoadOnlySimsStory == 30) return PathProvider.Global.GetExpansion(30);
+                else return (PathProvider.Global.GetHighestAvailableExpansion(3, 5));
+            }
+            if (sv == SDescVersions.Nightlife) return PathProvider.Global.GetExpansion(2);
+            if (sv == SDescVersions.University) return PathProvider.Global.GetExpansion(1);
+            if (sv == SDescVersions.BaseGame) return PathProvider.Global.GetExpansion(0);
+            return null;
         }
 
 		public override int GetHashCode()
@@ -2552,11 +3159,8 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			if (this.FileDescriptor==null || this.Package==null)
 				return base.Equals (obj);
-			
-
 			if (obj==null) return false;
 			if (!(obj is SDesc)) return false;
-
 			return (((SDesc)obj).SimId == SimId) && (((SDesc)obj).Instance == Instance);
 		}
 

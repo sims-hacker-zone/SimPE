@@ -117,159 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="banner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 16</value>
-  </data>
-  <data name="banner.Text" xml:space="preserve">
-    <value>Aperçu d'image</value>
-  </data>
   <data name="btPicExport.Text" xml:space="preserve">
     <value>Exporter...</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 16</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Éditeur XML</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="visualStyleLinkLabel2.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="visualStyleLinkLabel2.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
-    <value>0, 9</value>
-  </data>
-  <data name="visualStyleLinkLabel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>233, 112</value>
-  </data>
-  <data name="visualStyleLinkLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
-  </data>
-  <data name="visualStyleLinkLabel2.Text" xml:space="preserve">
-    <value>appliquer</value>
-  </data>
-  <data name="visualStyleLinkLabel2.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopRight</value>
-  </data>
-  <data name="cbupdate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>294, 34</value>
-  </data>
-  <data name="cbupdate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 24</value>
-  </data>
   <data name="cbupdate.Text" xml:space="preserve">
     <value>Mettre à jour MMAT</value>
-  </data>
-  <data name="label63.Location" type="System.Drawing.Point, System.Drawing">
-    <value>313, 96</value>
-  </data>
-  <data name="label63.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 13</value>
   </data>
   <data name="label63.Text" xml:space="preserve">
     <value>GUID d'origine :</value>
   </data>
-  <data name="label97.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label97.Location" type="System.Drawing.Point, System.Drawing">
-    <value>518, 96</value>
-  </data>
-  <data name="label97.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 13</value>
-  </data>
   <data name="label97.Text" xml:space="preserve">
     <value>GUID alternatif :</value>
-  </data>
-  <data name="llgetGUID.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
-    <value>0, 7</value>
-  </data>
-  <data name="llgetGUID.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 17</value>
-  </data>
-  <data name="llgetGUID.Text" xml:space="preserve">
-    <value>obtenir le GUID</value>
   </data>
   <data name="gbelements.Text" xml:space="preserve">
     <value>Éléments</value>
   </data>
-  <data name="llcommitobjd.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="llcommitobjd.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
-    <value>0, 9</value>
-  </data>
-  <data name="llcommitobjd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>625, 224</value>
-  </data>
-  <data name="llcommitobjd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
-  </data>
-  <data name="llcommitobjd.Text" xml:space="preserve">
-    <value>appliquer</value>
-  </data>
-  <data name="llcommitobjd.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopRight</value>
-  </data>
-  <data name="label65.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 96</value>
-  </data>
-  <data name="label65.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 13</value>
-  </data>
   <data name="label65.Text" xml:space="preserve">
     <value>Type d'objet :</value>
   </data>
-  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 57</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 33</value>
-  </data>
   <data name="label9.Text" xml:space="preserve">
-    <value>Nom de 
-fichier :</value>
-  </data>
-  <data name="label9.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopRight</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 13</value>
+    <value>Nom de fichier :</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>GUID :</value>
   </data>
-  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 16</value>
-  </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>Aperçu de la description de l'objet</value>
-  </data>
-  <data name="btnewtie.Location" type="System.Drawing.Point, System.Drawing">
-    <value>654, 72</value>
-  </data>
-  <data name="btnewtie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 23</value>
-  </data>
   <data name="btnewtie.Text" xml:space="preserve">
     <value>créer de nouveaux liens pour ce Sim</value>
   </data>
-  <data name="btdeletetie.Location" type="System.Drawing.Point, System.Drawing">
-    <value>312, 227</value>
-  </data>
-  <data name="btdeletetie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 45</value>
-  </data>
   <data name="btdeletetie.Text" xml:space="preserve">
     <value>supprimer le lien</value>
-  </data>
-  <data name="btaddtie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 45</value>
   </data>
   <data name="btaddtie.Text" xml:space="preserve">
     <value>&lt;- ajouter le lien</value>
@@ -277,313 +156,96 @@ fichier :</value>
   <data name="llcommitties.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 9</value>
   </data>
-  <data name="llcommitties.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 272</value>
-  </data>
-  <data name="llcommitties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 18</value>
-  </data>
   <data name="llcommitties.Text" xml:space="preserve">
     <value>appliquer les liens du Sim actuel</value>
   </data>
   <data name="gbties.Text" xml:space="preserve">
     <value>Liens </value>
   </data>
-  <data name="bttiecommit.Text" xml:space="preserve">
-    <value>Appliquer</value>
-  </data>
-  <data name="label64.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 13</value>
-  </data>
   <data name="label64.Text" xml:space="preserve">
     <value>Sim :</value>
-  </data>
-  <data name="label68.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 16</value>
-  </data>
-  <data name="label68.Text" xml:space="preserve">
-    <value>Éditeur de liens familiaux</value>
   </data>
   <data name="tabPage4.Text" xml:space="preserve">
     <value>Liens familiaux</value>
   </data>
-  <data name="label89.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label89.Location" type="System.Drawing.Point, System.Drawing">
-    <value>760, 36</value>
-  </data>
-  <data name="label89.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 33</value>
-  </data>
   <data name="label89.Text" xml:space="preserve">
-    <value>Sous-
-terrain :</value>
-  </data>
-  <data name="label89.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopRight</value>
-  </data>
-  <data name="cbcomputer.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cbcomputer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 36</value>
-  </data>
-  <data name="cbcomputer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 17</value>
+    <value>Sous- terrain :</value>
   </data>
   <data name="cbcomputer.Text" xml:space="preserve">
     <value>A un ordinateur</value>
   </data>
-  <data name="cblot.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cblot.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 18</value>
-  </data>
-  <data name="cblot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 17</value>
-  </data>
   <data name="cblot.Text" xml:space="preserve">
     <value>Nouveau terrain</value>
-  </data>
-  <data name="cbbaby.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cbbaby.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 36</value>
-  </data>
-  <data name="cbbaby.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 17</value>
   </data>
   <data name="cbbaby.Text" xml:space="preserve">
     <value>A un bébé</value>
   </data>
-  <data name="cbphone.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cbphone.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 18</value>
-  </data>
-  <data name="cbphone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 17</value>
-  </data>
   <data name="cbphone.Text" xml:space="preserve">
     <value>A un téléphone</value>
   </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 64</value>
-  </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>Marqueurs</value>
-  </data>
-  <data name="label93.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label93.Location" type="System.Drawing.Point, System.Drawing">
-    <value>272, 94</value>
-  </data>
-  <data name="label93.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 33</value>
   </data>
   <data name="label93.Text" xml:space="preserve">
     <value>GUID de 
 l'album :</value>
   </data>
-  <data name="label93.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopRight</value>
-  </data>
-  <data name="label92.Location" type="System.Drawing.Point, System.Drawing">
-    <value>281, 80</value>
-  </data>
-  <data name="label92.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 13</value>
-  </data>
   <data name="label92.Text" xml:space="preserve">
     <value>Marqueurs :</value>
-  </data>
-  <data name="llFamiDeleteSim.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
   </data>
   <data name="llFamiDeleteSim.Text" xml:space="preserve">
     <value>supprimer le Sim</value>
   </data>
-  <data name="llFamiAddSim.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
-  </data>
   <data name="llFamiAddSim.Text" xml:space="preserve">
     <value>&lt;- ajouter le Sim</value>
   </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>Appliquer</value>
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 48</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 13</value>
-  </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Nom :</value>
-  </data>
-  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 43</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Membres 
 de la famille :</value>
   </data>
-  <data name="label5.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopRight</value>
-  </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 104</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 13</value>
-  </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Amis de la famille :</value>
   </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>70, 80</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 13</value>
-  </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Argent :</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 16</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Éditeur de famille (FAMi)</value>
-  </data>
-  <data name="label15.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>568, 36</value>
-  </data>
-  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 33</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
     <value>Instance 
 du terrain :</value>
   </data>
-  <data name="label15.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopRight</value>
-  </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>Description de famille (FAMi)</value>
-  </data>
-  <data name="label91.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label91.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 76</value>
-  </data>
-  <data name="label91.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 33</value>
   </data>
   <data name="label91.Text" xml:space="preserve">
     <value>Type de 
 relation  :</value>
   </data>
-  <data name="label91.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopRight</value>
-  </data>
-  <data name="llsrelcommit.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
-    <value>0, 9</value>
-  </data>
-  <data name="llsrelcommit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>216, 208</value>
-  </data>
-  <data name="llsrelcommit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 18</value>
-  </data>
-  <data name="llsrelcommit.Text" xml:space="preserve">
-    <value>appliquer</value>
-  </data>
-  <data name="cbbest.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 72</value>
-  </data>
   <data name="cbbest.Text" xml:space="preserve">
     <value>Connaissance</value>
-  </data>
-  <data name="cbfamily.Location" type="System.Drawing.Point, System.Drawing">
-    <value>193, 56</value>
-  </data>
-  <data name="cbfamily.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 16</value>
   </data>
   <data name="cbfamily.Text" xml:space="preserve">
     <value>Famille</value>
   </data>
-  <data name="cbmarried.Location" type="System.Drawing.Point, System.Drawing">
-    <value>193, 40</value>
-  </data>
-  <data name="cbmarried.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 16</value>
-  </data>
   <data name="cbmarried.Text" xml:space="preserve">
     <value>Mariage/U</value>
-  </data>
-  <data name="cbengaged.Location" type="System.Drawing.Point, System.Drawing">
-    <value>193, 24</value>
   </data>
   <data name="cbengaged.Text" xml:space="preserve">
     <value>Fiancé(e)</value>
   </data>
-  <data name="cbsteady.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 56</value>
-  </data>
-  <data name="cbsteady.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 16</value>
-  </data>
   <data name="cbsteady.Text" xml:space="preserve">
     <value>P. Ami(e)</value>
-  </data>
-  <data name="cblove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 40</value>
-  </data>
-  <data name="cblove.Text" xml:space="preserve">
-    <value>Amour</value>
-  </data>
-  <data name="cbcrush.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 24</value>
-  </data>
-  <data name="cbcrush.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 16</value>
   </data>
   <data name="cbcrush.Text" xml:space="preserve">
     <value>Entiché(e)</value>
   </data>
-  <data name="cbbuddie.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 56</value>
-  </data>
-  <data name="cbbuddie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 16</value>
-  </data>
   <data name="cbbuddie.Text" xml:space="preserve">
     <value>Ami(e) proche</value>
   </data>
-  <data name="cbfriend.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 40</value>
-  </data>
   <data name="cbfriend.Text" xml:space="preserve">
     <value>Ami(e)</value>
-  </data>
-  <data name="cbenemy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="cbenemy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 16</value>
   </data>
   <data name="cbenemy.Text" xml:space="preserve">
     <value>Énemi(e)</value>
@@ -591,29 +253,11 @@ relation  :</value>
   <data name="gbrelation.Text" xml:space="preserve">
     <value>État de la relation</value>
   </data>
-  <data name="label57.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-2, 64</value>
-  </data>
-  <data name="label57.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 13</value>
-  </data>
   <data name="label57.Text" xml:space="preserve">
     <value>Global :</value>
   </data>
-  <data name="label58.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 40</value>
-  </data>
-  <data name="label58.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 13</value>
-  </data>
   <data name="label58.Text" xml:space="preserve">
     <value>Journalier :</value>
-  </data>
-  <data name="label56.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 16</value>
-  </data>
-  <data name="label56.Text" xml:space="preserve">
-    <value>Éditeur de relation</value>
   </data>
   <data name="tabPage3.Text" xml:space="preserve">
     <value>Autres</value>

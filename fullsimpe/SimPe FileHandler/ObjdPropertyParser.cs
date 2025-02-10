@@ -18,32 +18,75 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+using System.Xml;
+using System.Collections;
+using Ambertation;
+using System.Threading;
+using System.Reflection;
+using System.Reflection.Emit;
+using System.ComponentModel;
+using System.Globalization;
 
-namespace SimPe.PackedFiles.UserInterface 
+namespace SimPe.PackedFiles.Wrapper
 {
+	
+
 	/// <summary>
-	/// Abstract Base for some UIHandlers
+	/// Read an XML Description File and create a List of available Properties
 	/// </summary>
-	public abstract class UIBase
+	public class ObjdPropertyParser  : Ambertation.PropertyParser
 	{
 		/// <summary>
-		/// The Form containing the Panel
+		/// Create a new Instance
 		/// </summary>
-		internal static Elements form = null;
+		/// <param name="filename">Name of the File to parse</param>
+		/// <remarks>If the File is not available, an empty 
+		/// Proprties hashtable will be returned!</remarks>
+		public ObjdPropertyParser(string filename) :base (filename)
+		{		
+			typemap = new Hashtable();
+		}
+		
+		Hashtable typemap;
+		public PropertyDescription GetDescriptor(ushort index)
+		{
+			if (props==null) this.Load();
+            return (PropertyDescription)typemap[index];
+		}
 
 		/// <summary>
-		/// Constructor for the Class
+		/// Creat an object of a given type
 		/// </summary>
-		public UIBase ()
-		{
-			if (form==null)	form = new Elements();			
+		/// <param name="typename"></param>
+		/// <param name="value"></param>
+		/// <returns></returns>
+		protected override object BuildValue(string typename, string value) 
+		{			
+			return base.BuildValue(typename, value);
 		}
+		
 
-		#region IDisposable Member
-		public virtual void Dispose()
+		protected override void HandleProperty(XmlNode node, PropertyDescription pd)
 		{
+			base.HandleProperty(node, pd);
 
+			foreach (XmlNode subnode in node) 
+			{
+				if (subnode.Name=="index") 
+				{
+					try
+					{
+						ushort index = Convert.ToUInt16(subnode.InnerText);
+                        if (!typemap.Contains(index))
+                            typemap[index] = pd;
+                    }
+					catch {}
+				}
+					
+
+			}
 		}
-		#endregion
+		
+		
 	}
 }

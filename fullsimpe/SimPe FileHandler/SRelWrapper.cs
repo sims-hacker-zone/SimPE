@@ -119,7 +119,7 @@ namespace SimPe.PackedFiles.Wrapper
         uint[] reserved = new uint[3];
 
         /// <summary>
-		/// Sores the Relationship Values
+		/// Stores the Relationship Values
 		/// </summary>
 		private int[] values = new int[4];
 
@@ -295,7 +295,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 				uint[] types = {
 								   Data.MetaData.RELATION_FILE
-							   }; //handles the Version Information File
+							   };
 				return types;
 			}
 		}

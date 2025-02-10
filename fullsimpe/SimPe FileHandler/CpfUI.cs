@@ -49,7 +49,6 @@ namespace SimPe.PackedFiles.UserInterface
 			form.cbtype.Items.Add(Data.MetaData.DataTypes.dtInteger);
 			form.cbtype.Items.Add(Data.MetaData.DataTypes.dtSingle);
 			form.cbtype.Items.Add(Data.MetaData.DataTypes.dtBoolean);
-			
 
 			form.cbtype.SelectedIndex = 0;
 

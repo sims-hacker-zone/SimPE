@@ -32,18 +32,25 @@ namespace SimPe.PackedFiles.Wrapper.Factory
 		#region AbstractWrapperFactory Member
 		public override SimPe.Interfaces.IWrapper[] KnownWrappers
 		{
-			get 
-			{		
+			get
+            {
+                if (Helper.NoPlugins)
+                {
+                    return new IWrapper[0];
+                }
 				if (Helper.StartedGui == Executable.Classic) 
 				{
-					IWrapper[] wrappers = {
+                    IWrapper[] wrappers = {
 											  new SimPe.PackedFiles.Wrapper.Picture(),
-											  new SimPe.PackedFiles.Wrapper.Xml(),										 
-											  new SimPe.PackedFiles.Wrapper.Fami(this.LinkedProvider.SimNameProvider),											  
+											  new SimPe.PackedFiles.Wrapper.Xml(),
+											  new SimPe.PackedFiles.Wrapper.Fami(this.LinkedProvider.SimNameProvider),
 											  new SimPe.PackedFiles.Wrapper.SRel(),
 											  new SimPe.PackedFiles.Wrapper.Cpf(),
 											  new SimPe.PackedFiles.Wrapper.FamilyTies(this.LinkedProvider.SimNameProvider),
-											  new SimPe.PackedFiles.Wrapper.Nref()
+											  new SimPe.PackedFiles.Wrapper.Nref(),
+											  new SimPe.PackedFiles.Wrapper.Objd(this.LinkedProvider.OpcodeProvider),
+											  new SimPe.Plugin.Glob(),
+											  new SimPe.PackedFiles.Wrapper.ObjLua()
 										  };
 					return wrappers;
 				} 
@@ -51,17 +58,13 @@ namespace SimPe.PackedFiles.Wrapper.Factory
 				{
 					IWrapper[] wrappers = {
 											  new SimPe.PackedFiles.Wrapper.Picture(),
-											  new SimPe.PackedFiles.Wrapper.Xml(),
-										 
-											  new SimPe.PackedFiles.Wrapper.Fami(this.LinkedProvider.SimNameProvider),											 										  
+											  new SimPe.PackedFiles.Wrapper.Xml(),								 
+											  new SimPe.PackedFiles.Wrapper.Fami(this.LinkedProvider.SimNameProvider),
 											  new SimPe.PackedFiles.Wrapper.Cpf(),
-/*#if DEBUG
-											  new SimPe.PackedFiles.Wrapper.SRel(),	
-											  new SimPe.PackedFiles.Wrapper.SDesc(this.LinkedProvider.SimNameProvider, this.LinkedProvider.SimFamilynameProvider, this.LinkedProvider.SimDescriptionProvider),											  
-											  new SimPe.PackedFiles.Wrapper.Objd(this.LinkedProvider.OpcodeProvider),
-											  new SimPe.PackedFiles.Wrapper.FamilyTies(this.LinkedProvider.SimNameProvider),
-#endif	*/
-											  new SimPe.PackedFiles.Wrapper.Nref()
+											  new SimPe.PackedFiles.Wrapper.Nref(),
+											  new SimPe.PackedFiles.Wrapper.ExtObjd(),
+											  new SimPe.Plugin.Glob(),
+											  new SimPe.PackedFiles.Wrapper.ObjLua()
 										  };
 					return wrappers;
 				}

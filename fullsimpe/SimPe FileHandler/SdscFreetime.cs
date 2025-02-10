@@ -85,8 +85,6 @@ namespace SimPe.PackedFiles.Wrapper
             set { unlocksspent = value; }
         }
 
-
-
         public ushort HungerDecayModifier
         {
             get { return decays[0]; }
@@ -129,15 +127,11 @@ namespace SimPe.PackedFiles.Wrapper
             set { decays[6] = value; }
         }
 
-
-
         public uint BugCollection
         {
             get { return bugcollection; }
             set { bugcollection = value; }
         }
-
-
 
         internal void Unserialize(BinaryReader reader)
         {
@@ -186,8 +180,6 @@ namespace SimPe.PackedFiles.Wrapper
             StoreAspirations();
         }
 
-        
-
         SimPe.Data.MetaData.AspirationTypes pa, sa;
         protected void LoadAspirations()
         {
@@ -208,6 +200,13 @@ namespace SimPe.PackedFiles.Wrapper
         {
             if (parent==null) return;
             if (aspeditor==null) return;
+            /*
+            if (pa == SimPe.Data.MetaData.AspirationTypes.Nothing)
+            {
+                pa = SimPe.Data.MetaData.AspirationTypes.Romance;
+                sa = SimPe.Data.MetaData.AspirationTypes.Nothing;
+            }
+            */
             SimPe.Data.MetaData.AspirationTypes[] asps = new SimPe.Data.MetaData.AspirationTypes[]{pa, sa};
             aspeditor.StoreAspirations(asps, parent);
         }

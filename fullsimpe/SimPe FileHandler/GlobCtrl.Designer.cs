@@ -1,16 +1,16 @@
-namespace SimPe.Plugin
+﻿namespace SimPe.Plugin
 {
     partial class GlobCtrl
     {
         /// <summary> 
-        /// Erforderliche Designervariable.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary> 
-        /// Verwendete Ressourcen bereinigen.
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">True, wenn verwaltete Ressourcen gelÃ¶scht werden sollen; andernfalls False.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,11 +20,11 @@ namespace SimPe.Plugin
             base.Dispose(disposing);
         }
 
-        #region Vom Komponenten-Designer generierter Code
+        #region Windows Form Designer generated code
 
         /// <summary> 
-        /// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
-        /// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -32,41 +32,45 @@ namespace SimPe.Plugin
             this.label43 = new System.Windows.Forms.Label();
             this.cbseminame = new System.Windows.Forms.ComboBox();
             this.label42 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.lbglobfile = new System.Windows.Forms.Label();
-            this.label46 = new System.Windows.Forms.Label();
+            this.pritee = new System.Windows.Forms.Panel();
+            this.lbBug = new System.Windows.Forms.Label();
+            this.lbBloat = new System.Windows.Forms.Label();
+            this.tbfilenm = new System.Windows.Forms.TextBox();
+            this.lbfilenm = new System.Windows.Forms.Label();
             this.panel6.SuspendLayout();
+            this.pritee.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbgroup
             // 
-            this.tbgroup.Location = new System.Drawing.Point(57, 54);
+            this.tbgroup.BackColor = System.Drawing.SystemColors.Window;
+            this.tbgroup.Location = new System.Drawing.Point(80, 78);
             this.tbgroup.Name = "tbgroup";
             this.tbgroup.ReadOnly = true;
-            this.tbgroup.Size = new System.Drawing.Size(100, 20);
+            this.tbgroup.Size = new System.Drawing.Size(100, 21);
             this.tbgroup.TabIndex = 16;
             this.tbgroup.Text = "0x0";
             // 
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.Font = new System.Drawing.Font("Verdana", 8.25F);
+            this.label43.BackColor = System.Drawing.Color.Transparent;
+            this.label43.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold);
             this.label43.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label43.Location = new System.Drawing.Point(9, 62);
+            this.label43.Location = new System.Drawing.Point(24, 80);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(47, 13);
+            this.label43.Size = new System.Drawing.Size(50, 13);
             this.label43.TabIndex = 15;
             this.label43.Text = "Group:";
             // 
             // cbseminame
             // 
-            this.cbseminame.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
             this.cbseminame.ItemHeight = 13;
-            this.cbseminame.Location = new System.Drawing.Point(57, 30);
+            this.cbseminame.Location = new System.Drawing.Point(80, 54);
             this.cbseminame.Name = "cbseminame";
-            this.cbseminame.Size = new System.Drawing.Size(190, 21);
+            this.cbseminame.Size = new System.Drawing.Size(254, 21);
             this.cbseminame.TabIndex = 14;
             this.cbseminame.SelectedIndexChanged += new System.EventHandler(this.SemiGlobalChanged);
             this.cbseminame.TextUpdate += new System.EventHandler(this.SemiGlobalChanged);
@@ -74,78 +78,122 @@ namespace SimPe.Plugin
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Verdana", 8.25F);
+            this.label42.BackColor = System.Drawing.Color.Transparent;
+            this.label42.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold);
             this.label42.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label42.Location = new System.Drawing.Point(9, 38);
+            this.label42.Location = new System.Drawing.Point(26, 56);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(45, 13);
+            this.label42.Size = new System.Drawing.Size(48, 13);
             this.label42.TabIndex = 12;
             this.label42.Text = "Name:";
             // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button3.Location = new System.Drawing.Point(167, 102);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(80, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Commit";
-            this.button3.Click += new System.EventHandler(this.GlobCommit);
-            // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            //this.panel6.CanCommit = true;
             this.panel6.Controls.Add(this.lbglobfile);
-            this.panel6.Controls.Add(this.label46);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
-            this.panel6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel6.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold);
+            //this.panel6.HeaderText = "Global Data Editor";
             this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Margin = new System.Windows.Forms.Padding(0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(277, 24);
+            this.panel6.Size = new System.Drawing.Size(554, 24);
             this.panel6.TabIndex = 0;
+            //this.panel6.OnCommit += new System.Windows.Forms.Panel.EventHandler(this.GlobCommit);
             // 
             // lbglobfile
             // 
-            this.lbglobfile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lbglobfile.AutoSize = true;
+            this.lbglobfile.BackColor = System.Drawing.Color.Transparent;
             this.lbglobfile.Font = new System.Drawing.Font("Verdana", 8.25F);
             this.lbglobfile.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lbglobfile.Location = new System.Drawing.Point(144, 8);
+            this.lbglobfile.Location = new System.Drawing.Point(170, 6);
             this.lbglobfile.Name = "lbglobfile";
             this.lbglobfile.Size = new System.Drawing.Size(44, 13);
             this.lbglobfile.TabIndex = 3;
             this.lbglobfile.Text = "no File";
             // 
-            // label46
+            // pritee
             // 
-            this.label46.AutoSize = true;
-            this.label46.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label46.Location = new System.Drawing.Point(0, 4);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(138, 16);
-            this.label46.TabIndex = 0;
-            this.label46.Text = "Global Data Editor";
+            this.pritee.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pritee.BackColor = System.Drawing.Color.Transparent;
+            //this.pritee.BackgroundImageAnchor = System.Windows.Forms.Panel.ImageLayout.CenterTop;
+            //this.pritee.BackgroundImageLocation = new System.Drawing.Point(0, 24);
+            //this.pritee.BackgroundImageZoomToFit = true;
+            this.pritee.Controls.Add(this.lbBug);
+            this.pritee.Controls.Add(this.lbBloat);
+            this.pritee.Controls.Add(this.tbfilenm);
+            this.pritee.Controls.Add(this.lbfilenm);
+            this.pritee.Controls.Add(this.panel6);
+            this.pritee.Controls.Add(this.tbgroup);
+            this.pritee.Controls.Add(this.label43);
+            this.pritee.Controls.Add(this.cbseminame);
+            this.pritee.Controls.Add(this.label42);
+            this.pritee.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pritee.Location = new System.Drawing.Point(0, 0);
+            this.pritee.Name = "pritee";
+            this.pritee.Size = new System.Drawing.Size(554, 291);
+            this.pritee.TabIndex = 17;
+            // 
+            // lbBloat
+            // 
+            this.lbBloat.AutoSize = true;
+            this.lbBloat.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbBloat.Location = new System.Drawing.Point(24, 115);
+            this.lbBloat.Name = "lbBloat";
+            this.lbBloat.Size = new System.Drawing.Size(320, 54);
+            this.lbBloat.TabIndex = 19;
+            this.lbBloat.Text = "This File contains extra, unused data.\r\n\r\n\'Click\' Commit to fix";
+            this.lbBloat.Visible = false;
+            // 
+            // lbBug
+            // 
+            this.lbBug.AutoSize = true;
+            this.lbBug.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbBug.Location = new System.Drawing.Point(24, 115);
+            this.lbBug.Name = "lbBug";
+            this.lbBug.Size = new System.Drawing.Size(272, 72);
+            this.lbBug.TabIndex = 19;
+            this.lbBug.Text = "This File does not conform to the\r\nstandard GLOB File format.\r\n\r\n\'Click\' Commit to fix";
+            this.lbBug.Visible = false;
+            // 
+            // tbfilenm
+            // 
+            this.tbfilenm.BackColor = System.Drawing.SystemColors.Window;
+            this.tbfilenm.Location = new System.Drawing.Point(80, 30);
+            this.tbfilenm.Name = "tbfilenm";
+            this.tbfilenm.Size = new System.Drawing.Size(254, 21);
+            this.tbfilenm.TabIndex = 18;
+            this.tbfilenm.TextChanged += new System.EventHandler(this.tbfilenm_TextChanged);
+            // 
+            // lbfilenm
+            // 
+            this.lbfilenm.AutoSize = true;
+            this.lbfilenm.BackColor = System.Drawing.Color.Transparent;
+            this.lbfilenm.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lbfilenm.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lbfilenm.Location = new System.Drawing.Point(3, 32);
+            this.lbfilenm.Name = "lbfilenm";
+            this.lbfilenm.Size = new System.Drawing.Size(71, 13);
+            this.lbfilenm.TabIndex = 17;
+            this.lbfilenm.Text = "Filename:";
             // 
             // GlobCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tbgroup);
-            this.Controls.Add(this.label43);
-            this.Controls.Add(this.cbseminame);
-            this.Controls.Add(this.panel6);
-            this.Controls.Add(this.label42);
-            this.Controls.Add(this.button3);
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Controls.Add(this.pritee);
             this.Name = "GlobCtrl";
-            this.Size = new System.Drawing.Size(277, 141);
+            this.Size = new System.Drawing.Size(554, 291);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.pritee.ResumeLayout(false);
+            this.pritee.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -155,9 +203,12 @@ namespace SimPe.Plugin
         private System.Windows.Forms.Label label43;
         internal System.Windows.Forms.ComboBox cbseminame;
         private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel6;
         internal System.Windows.Forms.Label lbglobfile;
-        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Panel pritee;
+        internal System.Windows.Forms.TextBox tbfilenm;
+        private System.Windows.Forms.Label lbfilenm;
+        internal System.Windows.Forms.Label lbBug;
+        internal System.Windows.Forms.Label lbBloat;
     }
 }

@@ -49,7 +49,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a List with all known Names
 		/// </summary>
-		public Hashtable Map 
+		public Hashtable Map
 		{
 			get { return map; }
 		}
@@ -108,7 +108,24 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="version">Version where you want to load the Description from</param>
 		void ParseXml(SimPe.PackedFiles.Wrapper.SDescVersions version)
-		{
+        {
+            // version is Sdsc version - must be converted to EP version
+            ExpansionItem ei = SimPe.PackedFiles.Wrapper.SDesc.GetIEVersion(version);
+            if (ei != null)
+            {
+                SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(System.IO.Path.Combine(ei.InstallFolder, "TSData\\Res\\Wants\\WantTuning.package"));
+                if (pkg != null) // if it is null then what?
+                {
+                    SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(0x00000000, 0, 0xCDA53B6F, 0x2D7EE26B);
+                    if (pfd != null)
+                    {
+                        SimPe.PackedFiles.Wrapper.Xml xml = new SimPe.PackedFiles.Wrapper.Xml();
+                        xml.ProcessData(pfd, pkg);
+                        ParseXml(xml.Text);
+                    }
+                }
+            }
+            /*
 			map = new Hashtable();			
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFile(0x00000000, 0xCDA53B6F, 0x2D7EE26B, null);
             
@@ -138,7 +155,7 @@ namespace SimPe.Plugin
 				xml.ProcessData(item);
 
 				ParseXml(xml.Text);
-			}
+			} */
 		}
 
 		/// <summary>
@@ -237,12 +254,15 @@ namespace SimPe.Plugin
 		/// <returns>The Name or null</returns>
 		public string FindName(WantType wt, uint id)
 		{
-			Hashtable ht = (Hashtable)Map[wt];
-			if (ht!=null) 
-			{
-				return (string)ht[id];
-			}
-
+            try
+            {
+                Hashtable ht = (Hashtable)Map[wt];
+                if (ht != null)
+                {
+                    return (string)ht[id];
+                }
+            }
+            catch { }
 			return null;
 		}
 
@@ -254,16 +274,19 @@ namespace SimPe.Plugin
 		public ArrayList GetNames(WantType wt) 
 		{
 			ArrayList ret = new ArrayList();
-			Hashtable ht = (Hashtable)Map[wt];
-			if (ht!=null) 
-			{
-				foreach (uint t in ht.Keys) 
-				{
-					Data.Alias a = new SimPe.Data.Alias(t, (string)ht[t], "{name}");
-					ret.Add(a);
-				}
-			}
-
+            try
+            {
+                Hashtable ht = (Hashtable)Map[wt];
+                if (ht != null)
+                {
+                    foreach (uint t in ht.Keys)
+                    {
+                        Data.Alias a = new SimPe.Data.Alias(t, (string)ht[t], "{name}");
+                        ret.Add(a);
+                    }
+                }
+            }
+            catch { }
 			return ret;
 		}
 	}

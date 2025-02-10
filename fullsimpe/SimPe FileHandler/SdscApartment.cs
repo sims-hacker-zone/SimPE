@@ -6,7 +6,7 @@ using System.IO;
 namespace SimPe.PackedFiles.Wrapper
 {
     /// <summary>
-    /// Freetime specific Data
+    /// Apartment Life specific Data
     /// </summary>
     public class SdscApartment : Serializer
     {
@@ -22,7 +22,7 @@ namespace SimPe.PackedFiles.Wrapper
 
         public short Reputation { get { return reputation; } set { reputation = value; } }
         public short ProbabilityToAppear { get { return probabilityToAppear; } set { probabilityToAppear = value; } }
-        //public short TitlePostName { get { return titlePostName; } set { titlePostName = value; } }
+        public short TitlePostName { get { return titlePostName; } set { titlePostName = value; } }
 
         internal void Unserialize(BinaryReader reader)
         {

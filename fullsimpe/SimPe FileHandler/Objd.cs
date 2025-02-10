@@ -53,7 +53,7 @@ namespace SimPe.PackedFiles.UserInterface
 			form.tblottype.Text = "0x"+Helper.HexString(objd.Type);
 			form.lbtypename.Text = ((Data.ObjectTypes)objd.Type).ToString().Trim();
 			form.tborgguid.Text = "0x"+Helper.HexString(objd.OriginalGuid);
-			form.tbproxguid.Text = "0x"+Helper.HexString(objd.ProxyGuid);
+			form.tbproxguid.Text = "0x" + Helper.HexString(objd.ProxyGuid);
 
 			Hashtable list = objd.Attributes;
 			form.pnelements.Controls.Clear();

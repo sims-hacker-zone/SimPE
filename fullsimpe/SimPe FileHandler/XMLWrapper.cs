@@ -74,11 +74,11 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		protected override void Serialize(System.IO.BinaryWriter writer) 
-		{		
+		{
 			byte[] data = new byte[Text.Length];
-			for (int i=0; i<Text.Length; i++) data[i] = (byte)Text[i];			
-			
-			writer.Write(data);			
+            for (int i = 0; i < Text.Length; i++)
+            data[i] = (byte)Text[i];
+			writer.Write(data);
 		}
 		#endregion
 
@@ -90,8 +90,9 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				uint[] Types = {
 								 0x00000000, //UI Data 
-							     0xCD7FE87A,  //Material Shaders                                 
-                                 0x7181C501 //Pet Unknown
+							     0xCD7FE87A, //Material Shaders                                 
+                                 0x7181C501, //Pet Unknown
+                                 0x0B9EB87E // Track Settings
 							   };
 				return Types;
 			}

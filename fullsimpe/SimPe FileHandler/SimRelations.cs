@@ -23,7 +23,7 @@ using SimPe.PackedFiles.Wrapper;
 namespace SimPe.PackedFiles.Wrapper.Supporting
 {
 	/// <summary>
-	/// Zusammenfassung für SimRelations.
+	/// Summary description for SimRelations.
 	/// </summary>
 	public class SimRelations
 	{

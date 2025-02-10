@@ -117,30 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btprev.Location" type="System.Drawing.Point, System.Drawing">
-    <value>462, 304</value>
-  </data>
-  <data name="btprev.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 23</value>
-  </data>
   <data name="btprev.Text" xml:space="preserve">
     <value>Пред. просмотр</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>Тип:</value>
   </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 13</value>
-  </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Имя:</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 13</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Значение:</value>
@@ -148,26 +132,11 @@
   <data name="btcpfcommit.Text" xml:space="preserve">
     <value>Ввести</value>
   </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 16</value>
-  </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Править CPF</value>
   </data>
-  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 56</value>
-  </data>
-  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 13</value>
-  </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Группа:</value>
-  </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 32</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 13</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Файл:</value>
@@ -175,21 +144,9 @@
   <data name="button2.Text" xml:space="preserve">
     <value>Ввести</value>
   </data>
-  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 16</value>
-  </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>Править связи имен</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="llcpfadd.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 8</value>
-  </data>
-  <data name="llcpfadd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>530, 264</value>
-  </data>
-  <data name="llcpfadd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 13</value>
   </data>
   <data name="llcpfadd.Text" xml:space="preserve">
     <value>добавить</value>
@@ -197,29 +154,14 @@
   <data name="llcpfchange.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 8</value>
   </data>
-  <data name="llcpfchange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>448, 264</value>
-  </data>
-  <data name="llcpfchange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 13</value>
-  </data>
   <data name="llcpfchange.Text" xml:space="preserve">
     <value>изменить</value>
   </data>
   <data name="linkLabel1.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 7</value>
   </data>
-  <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>600, 264</value>
-  </data>
-  <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 13</value>
-  </data>
   <data name="linkLabel1.Text" xml:space="preserve">
     <value>удалить</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Inherit</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Элементы2</value>

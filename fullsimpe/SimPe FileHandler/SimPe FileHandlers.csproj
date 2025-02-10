@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
     <ProductVersion>8.0.50727</ProductVersion>
@@ -26,11 +25,9 @@
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>..\__Debug\</OutputPath>
+    <OutputPath>Debug\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
@@ -60,7 +57,8 @@
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <DocumentationFile>
     </DocumentationFile>
     <DebugSymbols>false</DebugSymbols>
@@ -76,6 +74,7 @@
     <DebugType>none</DebugType>
     <ErrorReport>prompt</ErrorReport>
     <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release MAC|AnyCPU' ">
     <OutputPath>..\__Release\</OutputPath>
@@ -102,7 +101,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
+    <OutputPath>Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <BaseAddress>285212672</BaseAddress>
     <DebugType>full</DebugType>
@@ -167,10 +166,6 @@
       <HintPath>..\xpcommoncontrols.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <ProjectReference Include="..\..\pjse\pjseCoderPlugin\pjse System Classes\SimPe pjse System Classes.csproj">
-      <Project>{0B9D2E1D-30F3-4718-B66B-791BFBAC3DB7}</Project>
-      <Name>SimPe pjse System Classes</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SimPe Cache\SimPe Cache.csproj">
       <Project>{C949FB46-0C06-4C5D-92AE-5DD7F6E53364}</Project>
       <Name>SimPe Cache</Name>
@@ -211,16 +206,43 @@
       <Name>TGA_View</Name>
       <Private>False</Private>
     </ProjectReference>
+    <Reference Include="ambertation.utilities">
+      <HintPath>..\ambertation.utilities.dll</HintPath>
+    </Reference>
     <Reference Include="XPCommonControls">
       <HintPath>..\XPCommonControls.dll</HintPath>
     </Reference>
+    <ProjectReference Include="..\EnumComboBox\EnumComboBox.csproj">
+      <Project>{5C663721-B4E3-43F7-A39F-9E6060FA5433}</Project>
+      <Name>EnumComboBox</Name>
+    </ProjectReference>
+    <Reference Include="AdvancedForms">
+      <HintPath>..\AdvancedForms.dll</HintPath>
+    </Reference>
+    <ProjectReference Include="..\GraphControl\GraphControl.csproj">
+      <Project>{7D2EE6ED-78C1-4738-9AE1-E3C165A81E3D}</Project>
+      <Name>GraphControl</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Build\SharedAssemblyInfo.cs">
-      <Link>Properties\SharedAssemblyInfo.cs</Link>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs">
+    <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ExtObjdForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExtObjdWrapper.cs" />
+    <Compile Include="ObjdPropertyParser.cs" />
+    <Compile Include="ObjLuaLoader.cs" />
+    <Compile Include="OLuaOperators.cs" />
+    <Compile Include="OLuaUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OLuaWrapper.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="SdscApartment.cs" />
     <Compile Include="CpfItem.cs">
@@ -374,12 +396,33 @@
       <DependentUpon>Elements2.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="ExtObjdForm.fr.resx">
+      <DependentUpon>ExtObjdForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExtObjdForm.it.resx">
+      <DependentUpon>ExtObjdForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExtObjdForm.resx">
+      <DependentUpon>ExtObjdForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="fami.png" />
     <EmbeddedResource Include="GlobCtrl.resx">
       <DependentUpon>GlobCtrl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="OLuaUI.resx">
+      <DependentUpon>OLuaUI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="pic.png" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="sdsc.png" />
     <EmbeddedResource Include="SdscExtendedForm.resx">
       <DependentUpon>SdscExtendedForm.cs</DependentUpon>
@@ -390,6 +433,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="srel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="objd.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

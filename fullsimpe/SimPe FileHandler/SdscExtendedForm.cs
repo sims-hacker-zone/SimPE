@@ -8,7 +8,7 @@ using SimPe.PackedFiles.Wrapper;
 namespace SimPe.PackedFiles.UserInterface
 {
 	/// <summary>
-	/// Zusammenfassung für SdscExtendedForm.
+	/// Summary description for SdscExtendedForm.
 	/// </summary>
 	public class SdscExtendedForm : System.Windows.Forms.Form
 	{
@@ -20,24 +20,20 @@ namespace SimPe.PackedFiles.UserInterface
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.Button button2;
 		/// <summary>
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
 		public SdscExtendedForm()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
-
-			//
-			// TODO: Fügen Sie den Konstruktorcode nach dem Aufruf von InitializeComponent hinzu
-			//
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -51,117 +47,137 @@ namespace SimPe.PackedFiles.UserInterface
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(SdscExtendedForm));
-			this.pg = new System.Windows.Forms.PropertyGrid();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.rbhex = new System.Windows.Forms.RadioButton();
-			this.rbdec = new System.Windows.Forms.RadioButton();
-			this.rbbin = new System.Windows.Forms.RadioButton();
-			this.button1 = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
-			this.panel1.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// pg
-			// 
-			this.pg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.pg.HelpVisible = false;
-			this.pg.LargeButtons = false;
-			this.pg.LineColor = System.Drawing.SystemColors.ScrollBar;
-			this.pg.Location = new System.Drawing.Point(8, 40);
-			this.pg.Name = "pg";
-			this.pg.Size = new System.Drawing.Size(544, 280);
-			this.pg.TabIndex = 0;
-			this.pg.Text = "propertyGrid1";
-			this.pg.ToolbarVisible = false;
-			this.pg.ViewBackColor = System.Drawing.SystemColors.Window;
-			this.pg.ViewForeColor = System.Drawing.SystemColors.WindowText;
-			this.pg.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.PropChanged);
-			// 
-			// panel1
-			// 
-			this.panel1.Controls.Add(this.rbhex);
-			this.panel1.Controls.Add(this.rbdec);
-			this.panel1.Controls.Add(this.rbbin);
-			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel1.Location = new System.Drawing.Point(8, 8);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(544, 32);
-			this.panel1.TabIndex = 1;
-			// 
-			// rbhex
-			// 
-			this.rbhex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.rbhex.Location = new System.Drawing.Point(432, 8);
-			this.rbhex.Name = "rbhex";
-			this.rbhex.TabIndex = 6;
-			this.rbhex.Text = "Hexadecimal";
-			this.rbhex.CheckedChanged += new System.EventHandler(this.DigitChanged);
-			// 
-			// rbdec
-			// 
-			this.rbdec.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.rbdec.Location = new System.Drawing.Point(352, 8);
-			this.rbdec.Name = "rbdec";
-			this.rbdec.Size = new System.Drawing.Size(72, 24);
-			this.rbdec.TabIndex = 5;
-			this.rbdec.Text = "Decimal";
-			this.rbdec.CheckedChanged += new System.EventHandler(this.DigitChanged);
-			// 
-			// rbbin
-			// 
-			this.rbbin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.rbbin.Location = new System.Drawing.Point(280, 8);
-			this.rbbin.Name = "rbbin";
-			this.rbbin.Size = new System.Drawing.Size(64, 24);
-			this.rbbin.TabIndex = 4;
-			this.rbbin.Text = "Binary";
-			this.rbbin.CheckedChanged += new System.EventHandler(this.DigitChanged);
-			// 
-			// button1
-			// 
-			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.button1.Location = new System.Drawing.Point(392, 328);
-			this.button1.Name = "button1";
-			this.button1.TabIndex = 2;
-			this.button1.Text = "OK";
-			this.button1.Click += new System.EventHandler(this.button1_Click);
-			// 
-			// button2
-			// 
-			this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.button2.Location = new System.Drawing.Point(477, 328);
-			this.button2.Name = "button2";
-			this.button2.TabIndex = 3;
-			this.button2.Text = "Cancel";
-			this.button2.Click += new System.EventHandler(this.button2_Click);
-			// 
-			// SdscExtendedForm
-			// 
-			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-			this.ClientSize = new System.Drawing.Size(560, 358);
-			this.Controls.Add(this.button2);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.panel1);
-			this.Controls.Add(this.pg);
-			this.DockPadding.All = 8;
-			this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Name = "SdscExtendedForm";
-			this.Text = "Extended Sdsc Browser";
-			this.panel1.ResumeLayout(false);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SdscExtendedForm));
+            this.pg = new System.Windows.Forms.PropertyGrid();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.rbhex = new System.Windows.Forms.RadioButton();
+            this.rbdec = new System.Windows.Forms.RadioButton();
+            this.rbbin = new System.Windows.Forms.RadioButton();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // pg
+            // 
+            this.pg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pg.HelpVisible = false;
+            this.pg.LineColor = System.Drawing.SystemColors.ScrollBar;
+            this.pg.Location = new System.Drawing.Point(8, 40);
+            this.pg.Name = "pg";
+            this.pg.Size = new System.Drawing.Size(688, 379);
+            this.pg.TabIndex = 0;
+            this.pg.ToolbarVisible = false;
+            this.pg.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.PropChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.rbhex);
+            this.panel1.Controls.Add(this.rbdec);
+            this.panel1.Controls.Add(this.rbbin);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
+            //this.panel1.HeaderText = "";
+            this.panel1.Location = new System.Drawing.Point(8, 8);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(688, 32);
+            //this.panel1.StartColor = System.Drawing.SystemColors.Control;
+            this.panel1.TabIndex = 1;
+            // 
+            // rbhex
+            // 
+            this.rbhex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbhex.AutoSize = true;
+            this.rbhex.BackColor = System.Drawing.Color.Transparent;
+            this.rbhex.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbhex.ForeColor = System.Drawing.Color.Black;
+            this.rbhex.Location = new System.Drawing.Point(576, 8);
+            this.rbhex.Name = "rbhex";
+            this.rbhex.Size = new System.Drawing.Size(107, 20);
+            this.rbhex.TabIndex = 6;
+            this.rbhex.Text = "Hexadecimal";
+            this.rbhex.UseVisualStyleBackColor = false;
+            this.rbhex.CheckedChanged += new System.EventHandler(this.DigitChanged);
+            // 
+            // rbdec
+            // 
+            this.rbdec.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbdec.AutoSize = true;
+            this.rbdec.BackColor = System.Drawing.Color.Transparent;
+            this.rbdec.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbdec.ForeColor = System.Drawing.Color.Black;
+            this.rbdec.Location = new System.Drawing.Point(484, 8);
+            this.rbdec.Name = "rbdec";
+            this.rbdec.Size = new System.Drawing.Size(76, 20);
+            this.rbdec.TabIndex = 5;
+            this.rbdec.Text = "Decimal";
+            this.rbdec.UseVisualStyleBackColor = false;
+            this.rbdec.CheckedChanged += new System.EventHandler(this.DigitChanged);
+            // 
+            // rbbin
+            // 
+            this.rbbin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbbin.AutoSize = true;
+            this.rbbin.BackColor = System.Drawing.Color.Transparent;
+            this.rbbin.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbbin.ForeColor = System.Drawing.Color.Black;
+            this.rbbin.Location = new System.Drawing.Point(402, 8);
+            this.rbbin.Name = "rbbin";
+            this.rbbin.Size = new System.Drawing.Size(66, 20);
+            this.rbbin.TabIndex = 4;
+            this.rbbin.Text = "Binary";
+            this.rbbin.UseVisualStyleBackColor = false;
+            this.rbbin.CheckedChanged += new System.EventHandler(this.DigitChanged);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button1.Location = new System.Drawing.Point(536, 427);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "OK";
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button2.Location = new System.Drawing.Point(621, 427);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Cancel";
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // SdscExtendedForm
+            // 
+            this.AutoScaleBaseSize = new System.Drawing.Size(7, 16);
+            this.ClientSize = new System.Drawing.Size(704, 457);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pg);
+            this.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "SdscExtendedForm";
+            this.Padding = new System.Windows.Forms.Padding(8);
+            this.Text = "Extended Sdsc Browser";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.ResumeLayout(false);
 
 		}
 		#endregion
@@ -186,7 +202,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{			
 			wnl = null;
 			if (version==SDescVersions.BaseGame) 
-			{				
+			{
 				string flname = System.IO.Path.Combine(PathProvider.Global.GetExpansion(Expansions.BaseGame).InstallFolder, @"TSData\Res\Objects\objects.package");
 				if (System.IO.File.Exists(flname))
 				{
@@ -212,11 +228,11 @@ namespace SimPe.PackedFiles.UserInterface
 						wnl = new SimPe.Plugin.WantNameLoader(xml);
 					}
 				}
-			} 			
+			}
 			
 			if (wnl==null) 
 			{
-				FileTable.FileIndex.Load();
+                // FileTable.FileIndex.Load(); // don't need this anymore
 				wnl = new SimPe.Plugin.WantNameLoader(version);
 			}
 		}
@@ -237,16 +253,13 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 			}
 	
-			FileTable.FileIndex.Load();
-						
+			// FileTable.FileIndex.Load(); // don't need this anymore
 
 			propchanged = false;
 			this.pg.SelectedObject = null;
 			
 			names = new Hashtable();
 			ArrayList ns = wnl.GetNames(SimPe.Plugin.WantType.Undefined);
-
-			
 			
 			int max = -1;
 			foreach (SimPe.Interfaces.IAlias a in ns) 
@@ -255,8 +268,7 @@ namespace SimPe.PackedFiles.UserInterface
 				names[(int)a.Id] = a.Name;							
 			}
 			max++;
-			
-			
+
 			Hashtable ht = new Hashtable();
 			for (int i=0; i<Math.Min(max, shortdata.Length); i++)
 			{

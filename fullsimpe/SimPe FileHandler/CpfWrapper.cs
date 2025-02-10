@@ -369,12 +369,14 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				uint[] types = {
+                uint[] types = {
+								   0xAC598EAC, //Age Data
+								   0xEBFEE342, //Version Information
 								   0xEBCF3E27, //Property Set
 								   0x0C560F39, //Binary Index
 								   //0x4C697E5A, //MMAT
-								   0xEBFEE33F,
-								   0x2C1FD8A1,
+								   0xEBFEE33F, //Sim DNA
+								   0x2C1FD8A1, //Texture Overlay XML
 								   Data.MetaData.XOBJ, //Object XML
 								   0x4C158081, //Skintone XML
 								   0x0C1FE246, //Meshoverlay XML
@@ -387,7 +389,8 @@ namespace SimPe.PackedFiles.Wrapper
 								   Data.MetaData.XFLR, //Floors
 								   Data.MetaData.XFNC, // Fences
 								   Data.MetaData.XNGB,  // Hood Objects
-                                   0xD1954460 //Pet Body Options
+                                   0xD1954460, //Pet Body Options
+                                   0x6C4F359D //Collection
 							   };
 			
 				return types;

@@ -50,14 +50,24 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Contains the Filename
 		/// </summary>
-		byte[] filename;	
+		byte[] filename;
+
+        public bool faulty = false;
+        public bool bloaty = false;
 	
 		/// <summary>
 		/// Returns the Filename
 		/// </summary>
 		public string FileName 
 		{
-			get { return Helper.ToString(filename); }
+            get { return Helper.ToString(filename); }
+            set
+            {
+                if (!Helper.ToString(filename).Equals(value))
+                {
+                    filename = Helper.ToBytes(value, 0x40);
+                }
+            }
 		}
 
 		/// <summary>
@@ -140,7 +150,7 @@ namespace SimPe.Plugin
 			}
 		}*/
 		#endregion
-
+        /*
 		#region IWrapper member
 		public override bool CheckVersion(uint version) 
 		{
@@ -150,11 +160,10 @@ namespace SimPe.Plugin
 			{
 				return true;
 			}
-
 			return false;
 		}
 		#endregion
-		
+		*/
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
@@ -171,8 +180,8 @@ namespace SimPe.Plugin
 				"Global Data Wrapper",
 				"Quaxi",
 				"---",
-				3
-				); 
+                4
+				);
 		}
 
 		/// <summary>
@@ -181,8 +190,18 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
+            faulty = bloaty = false;
 			filename = reader.ReadBytes(64);
-			byte len = reader.ReadByte();							
+			byte len = reader.ReadByte();
+            if ((byte)(reader.BaseStream.Length - reader.BaseStream.Position) < len)// some early files ommit len so the first letter is read as len
+            {
+                faulty = true;
+                reader.BaseStream.Seek(-1, System.IO.SeekOrigin.Current);
+                len = (byte)(reader.BaseStream.Length - reader.BaseStream.Position);
+            }
+            else if ((byte)(reader.BaseStream.Length - reader.BaseStream.Position) > len)// some early files contain a whole bunch of extra junk at the end
+                bloaty = true;
+
 			semiglobal = reader.ReadBytes(len);
 			attributes = new Hashtable();
 
@@ -211,7 +230,6 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region IFileWrapper Member
-
 		public override string Description
 		{
 			get
@@ -229,7 +247,6 @@ namespace SimPe.Plugin
 				return new byte[0];
 			}
 		}
-
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
@@ -241,7 +258,6 @@ namespace SimPe.Plugin
 				return types;
 			}
 		}
-
 		#endregion		
 	}
 }
