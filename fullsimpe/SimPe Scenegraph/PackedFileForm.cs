@@ -27,7 +27,7 @@ using SimPe.Interfaces.Plugin;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für MyPackedFileForm.
+	/// Summary description for MyPackedFileForm.
 	/// </summary>
 	public class RefFileForm : System.Windows.Forms.Form
 	{
@@ -54,23 +54,24 @@ namespace SimPe.Plugin
 		internal System.Windows.Forms.Button btdown;
 		private System.Windows.Forms.Button button4;
 		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.PictureBox pb;
+		internal System.Windows.Forms.PictureBox pb;
 		private System.Windows.Forms.ContextMenu contextMenu1;
 		private System.Windows.Forms.MenuItem miAdd;
 		internal System.Windows.Forms.MenuItem miRem;
 		private System.ComponentModel.IContainer components;
+		internal System.Drawing.Image imge;
 
 		public RefFileForm()
 		{
 			components = null;
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -84,10 +85,10 @@ namespace SimPe.Plugin
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -119,6 +120,7 @@ namespace SimPe.Plugin
 			this.panel3 = new System.Windows.Forms.Panel();
 			this.label1 = new System.Windows.Forms.Label();
 			this.wrapperPanel.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
 			this.gbtypes.SuspendLayout();
 			this.pntypes.SuspendLayout();
 			this.panel3.SuspendLayout();
@@ -127,6 +129,7 @@ namespace SimPe.Plugin
 			// wrapperPanel
 			// 
 			this.wrapperPanel.AutoScroll = true;
+			this.wrapperPanel.BackColor = System.Drawing.Color.Transparent;
 			this.wrapperPanel.Controls.Add(this.pb);
 			this.wrapperPanel.Controls.Add(this.button2);
 			this.wrapperPanel.Controls.Add(this.button4);
@@ -149,8 +152,8 @@ namespace SimPe.Plugin
 			this.pb.ImeMode = System.Windows.Forms.ImeMode.NoControl;
 			this.pb.Location = new System.Drawing.Point(240, 168);
 			this.pb.Name = "pb";
-			this.pb.Size = new System.Drawing.Size(160, 152);
-			this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pb.Size = new System.Drawing.Size(152, 152);
+			this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pb.TabIndex = 43;
 			this.pb.TabStop = false;
 			this.pb.SizeChanged += new System.EventHandler(this.pb_SizeChanged);
@@ -257,10 +260,11 @@ namespace SimPe.Plugin
 			this.lladd.LinkArea = new System.Windows.Forms.LinkArea(0, 6);
 			this.lladd.Location = new System.Drawing.Point(384, 80);
 			this.lladd.Name = "lladd";
-			this.lladd.Size = new System.Drawing.Size(28, 17);
+			this.lladd.Size = new System.Drawing.Size(28, 18);
 			this.lladd.TabIndex = 19;
 			this.lladd.TabStop = true;
 			this.lladd.Text = "add";
+			this.lladd.UseCompatibleTextRendering = true;
 			this.lladd.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.AddFile);
 			// 
 			// lldelete
@@ -271,7 +275,7 @@ namespace SimPe.Plugin
 			this.lldelete.LinkArea = new System.Windows.Forms.LinkArea(0, 6);
 			this.lldelete.Location = new System.Drawing.Point(416, 80);
 			this.lldelete.Name = "lldelete";
-			this.lldelete.Size = new System.Drawing.Size(44, 17);
+			this.lldelete.Size = new System.Drawing.Size(48, 13);
 			this.lldelete.TabIndex = 18;
 			this.lldelete.TabStop = true;
 			this.lldelete.Text = "delete";
@@ -282,8 +286,8 @@ namespace SimPe.Plugin
 			this.tbsubtype.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
 			this.tbsubtype.Location = new System.Drawing.Point(120, 24);
 			this.tbsubtype.Name = "tbsubtype";
+			this.tbsubtype.Size = new System.Drawing.Size(100, 20);
 			this.tbsubtype.TabIndex = 12;
-			this.tbsubtype.Text = "";
 			this.tbsubtype.TextChanged += new System.EventHandler(this.AutoChange);
 			// 
 			// tbinstance
@@ -291,8 +295,8 @@ namespace SimPe.Plugin
 			this.tbinstance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
 			this.tbinstance.Location = new System.Drawing.Point(120, 72);
 			this.tbinstance.Name = "tbinstance";
+			this.tbinstance.Size = new System.Drawing.Size(100, 20);
 			this.tbinstance.TabIndex = 14;
-			this.tbinstance.Text = "";
 			this.tbinstance.TextChanged += new System.EventHandler(this.AutoChange);
 			// 
 			// label11
@@ -311,8 +315,8 @@ namespace SimPe.Plugin
 			this.tbtype.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
 			this.tbtype.Location = new System.Drawing.Point(120, 0);
 			this.tbtype.Name = "tbtype";
+			this.tbtype.Size = new System.Drawing.Size(100, 20);
 			this.tbtype.TabIndex = 11;
-			this.tbtype.Text = "";
 			this.tbtype.TextChanged += new System.EventHandler(this.tbtype_TextChanged);
 			// 
 			// label8
@@ -353,8 +357,8 @@ namespace SimPe.Plugin
 			this.tbgroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
 			this.tbgroup.Location = new System.Drawing.Point(120, 48);
 			this.tbgroup.Name = "tbgroup";
+			this.tbgroup.Size = new System.Drawing.Size(100, 20);
 			this.tbgroup.TabIndex = 13;
-			this.tbgroup.Text = "";
 			this.tbgroup.TextChanged += new System.EventHandler(this.AutoChange);
 			// 
 			// cbtypes
@@ -377,7 +381,7 @@ namespace SimPe.Plugin
 			this.llcommit.LinkArea = new System.Windows.Forms.LinkArea(0, 6);
 			this.llcommit.Location = new System.Drawing.Point(328, 80);
 			this.llcommit.Name = "llcommit";
-			this.llcommit.Size = new System.Drawing.Size(50, 17);
+			this.llcommit.Size = new System.Drawing.Size(54, 13);
 			this.llcommit.TabIndex = 17;
 			this.llcommit.TabStop = true;
 			this.llcommit.Text = "change";
@@ -387,9 +391,9 @@ namespace SimPe.Plugin
 			// lblist
 			// 
 			this.lblist.AllowDrop = true;
-			this.lblist.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
+			this.lblist.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this.lblist.ContextMenu = this.contextMenu1;
 			this.lblist.HorizontalScrollbar = true;
 			this.lblist.IntegralHeight = false;
@@ -404,8 +408,8 @@ namespace SimPe.Plugin
 			// contextMenu1
 			// 
 			this.contextMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																						 this.miAdd,
-																						 this.miRem});
+			this.miAdd,
+			this.miRem});
 			// 
 			// miAdd
 			// 
@@ -428,6 +432,7 @@ namespace SimPe.Plugin
 			this.panel3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
 			this.panel3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
 			this.panel3.Location = new System.Drawing.Point(0, 0);
+			this.panel3.Margin = new System.Windows.Forms.Padding(0);
 			this.panel3.Name = "panel3";
 			this.panel3.Size = new System.Drawing.Size(664, 24);
 			this.panel3.TabIndex = 0;
@@ -453,6 +458,7 @@ namespace SimPe.Plugin
 			this.Text = "MyPackedFileForm";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.wrapperPanel.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
 			this.gbtypes.ResumeLayout(false);
 			this.pntypes.ResumeLayout(false);
 			this.panel3.ResumeLayout(false);
@@ -497,19 +503,8 @@ namespace SimPe.Plugin
 
 		private void SelectFile(object sender, System.EventArgs e)
 		{
-			llcommit.Enabled = false;
-			lldelete.Enabled = false;
-			btup.Enabled = false;
-			btdown.Enabled = false;
-			miAdd.Enabled = false;
-			miRem.Enabled = lldelete.Enabled;
-			if (lblist.SelectedIndex<0) return;
-			llcommit.Enabled = true;
-			lldelete.Enabled = true;
-			btup.Enabled = true;
-			btdown.Enabled = true;
-			miAdd.Enabled = true;
-			miRem.Enabled = lldelete.Enabled;
+			if (lblist.SelectedIndex < 0) { llcommit.Enabled = lldelete.Enabled = btup.Enabled = btdown.Enabled = miAdd.Enabled = miRem.Enabled = false; return; }
+			llcommit.Enabled = lldelete.Enabled = btup.Enabled = btdown.Enabled = miAdd.Enabled = miRem.Enabled = true;
 
 			if (tbtype.Tag!=null) return;
 			try 
@@ -532,18 +527,18 @@ namespace SimPe.Plugin
 					//show the Image
 					if (txtr==null) 
 					{
-						pb.Image = null;
+						pb.Image = imge;
 					} 
 					else 
 					{
 						MipMap mm = ((ImageData)txtr.Blocks[0]).GetLargestTexture(pb.Size);
 						if (mm!=null) pb.Image = mm.Texture;
-						else pb.Image = null;
+						else pb.Image = imge;
 					}
 				} 
 				else 
 				{
-					pb.Image = null;
+					pb.Image = imge;
 				}
 			} 
 			catch (Exception ex) 
@@ -668,7 +663,6 @@ namespace SimPe.Plugin
 			try 
 			{
 				RefFile wrp = (RefFile)wrapper;
-				//FileSelect fs = new FileSelect(wrp.Provider);
 				Interfaces.Files.IPackedFileDescriptor pfd = FileSelect.Execute();
 				if (pfd!=null) 
 				{
@@ -724,7 +718,9 @@ namespace SimPe.Plugin
 
 		private void pb_SizeChanged(object sender, System.EventArgs e)
 		{
-			pb.Width = pb.Height;
+			if (pb.Height < 421)
+				pb.Width = pb.Height;
+			else pb.Width = 420;
 		}
 
 		private void miAdd_Click(object sender, System.EventArgs e)

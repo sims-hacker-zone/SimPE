@@ -113,7 +113,6 @@ namespace SimPe.PackedFiles.Wrapper
 			set { unknownf8 = value; }
 		}
 
-
 		int unknowni1;		
 		public int UnknownInt1
 		{
@@ -184,7 +183,6 @@ namespace SimPe.PackedFiles.Wrapper
 			set { unknowni10 = value; }
 		}
 
-
 		short unknowns1;		
 		public short UnknownShort1
 		{
@@ -197,8 +195,14 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get { return unknowns2; }
 			set { unknowns2 = value; }
-		}
+        }
 
+        short unknowns3;
+        public short UnknownShort3
+        {
+            get { return unknowns3; }
+            set { unknowns3 = value; }
+        }
 
 		public SlotItem(Slot parent) 
 		{
@@ -239,7 +243,8 @@ namespace SimPe.PackedFiles.Wrapper
 
 			if (parent.Version>=7) unknownf7 = reader.ReadSingle();
 			if (parent.Version>=8) unknowni7 = reader.ReadInt32();
-			if (parent.Version>=9) unknowni8 = reader.ReadInt32();
+            if (parent.Version >= 9) unknowni8 = reader.ReadInt32();
+            if (parent.Version == 10) unknowns3 = reader.ReadInt16();// this is in test, before making full use of I need to test, test and fucking test
 			if (parent.Version>=0x10) unknownf8 = reader.ReadSingle();
 
 			if (parent.Version>=0x40) 
@@ -290,7 +295,8 @@ namespace SimPe.PackedFiles.Wrapper
 
 			if (parent.Version>=7) writer.Write(unknownf7);
 			if (parent.Version>=8) writer.Write(unknowni7);
-			if (parent.Version>=9) writer.Write(unknowni8);
+            if (parent.Version >= 9) writer.Write(unknowni8);
+            if (parent.Version == 10) writer.Write(unknowns3);
 			if (parent.Version>=0x10) writer.Write(unknownf8);
 
 			if (parent.Version>=0x40) 

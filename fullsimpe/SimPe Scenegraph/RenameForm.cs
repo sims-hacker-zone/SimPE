@@ -7,7 +7,7 @@ using System.Windows.Forms;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für RenameForm.
+	/// Summary description for RenameForm.
 	/// </summary>
 	public class RenameForm : System.Windows.Forms.Form
 	{
@@ -21,14 +21,14 @@ namespace SimPe.Plugin
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.CheckBox cbv2;
 		/// <summary>
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
 		public RenameForm()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
 
@@ -36,7 +36,7 @@ namespace SimPe.Plugin
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -50,10 +50,10 @@ namespace SimPe.Plugin
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -208,7 +208,7 @@ namespace SimPe.Plugin
 				
 			}
 
-			return "SimPE";
+			return "SimPe";
 		}
 
 		/// <summary>
@@ -263,7 +263,7 @@ namespace SimPe.Plugin
 			username = username.Replace("_", ".");
 
 			if (lv!=null) lv.Items.Clear();
-            Hashtable ht = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
+			Hashtable ht = new Hashtable(CaseInsensitiveHashCodeProvider.DefaultInvariant, CaseInsensitiveComparer.DefaultInvariant);
 			string old = Hashes.StripHashFromName(FindMainOldName(package).ToLower().Trim());
 			if (old.EndsWith("_cres")) old = old.Substring(0, old.Length-5);
 
@@ -322,7 +322,7 @@ namespace SimPe.Plugin
 
 		protected  Hashtable GetReplacementMap()
 		{
-            Hashtable ht = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
+            Hashtable ht = new Hashtable(CaseInsensitiveHashCodeProvider.DefaultInvariant, CaseInsensitiveComparer.DefaultInvariant);
 			foreach (ListViewItem lvi in lv.Items)
 			{
 				string oldname = lvi.SubItems[2].Text.Trim().ToLower();

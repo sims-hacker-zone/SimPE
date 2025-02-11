@@ -453,7 +453,6 @@ namespace SimPe.Plugin
 		public void Fix(Hashtable map, bool uniquefamily)
 		{
 			string grouphash = "##0x"+Helper.HexString(Data.MetaData.CUSTOM_GROUP)+"!";//"#0x"+Helper.HexString(package.FileGroupHash)+"!";
-			
 
 			Hashtable refmap = new Hashtable();
 			Hashtable completerefmap = new Hashtable();

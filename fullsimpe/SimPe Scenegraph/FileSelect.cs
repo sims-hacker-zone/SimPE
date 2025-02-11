@@ -26,7 +26,7 @@ using System.Windows.Forms;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für FileSelect.
+	/// Summary description for FileSelect.
 	/// </summary>
 	public class FileSelect : System.Windows.Forms.Form
 	{
@@ -39,7 +39,7 @@ namespace SimPe.Plugin
 		private System.Windows.Forms.TreeView tvfemale;
 		private System.Windows.Forms.TreeView tvmale;
 		/// <summary>
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
@@ -47,7 +47,7 @@ namespace SimPe.Plugin
 		public FileSelect()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
 
@@ -100,26 +100,29 @@ namespace SimPe.Plugin
 		void FillCategoryNodes(Hashtable mmap) 
 		{
 			WaitingScreen.Wait();
+			WaitingScreen.UpdateMessage("Loading File Table");
 			try 
 			{
 				FileTable.FileIndex.Load();
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFile(Data.MetaData.GZPS, true);
+				WaitingScreen.UpdateMessage("Loading Clothing..");
 				foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items) 
 				{
 					SimPe.PackedFiles.Wrapper.Cpf skin = new SimPe.PackedFiles.Wrapper.Cpf();
 					skin.ProcessData(item);
 
-					if (skin.GetSaveItem("type").StringValue=="skin") 
+					if (skin.GetSaveItem("type").StringValue == "skin" && skin.GetSaveItem("species").UIntegerValue == 1 && skin.GetSaveItem("name").StringValue != "")
 					{
-						bool added = false;
+						// bool added = false;
 						uint skinage = skin.GetSaveItem("age").UIntegerValue;
 						uint skincat = skin.GetSaveItem("category").UIntegerValue;
-						if ((skincat&(uint)Data.SkinCategories.Skin)==(uint)Data.SkinCategories.Skin) skincat = (uint)Data.SkinCategories.Skin;
-						if (skin.GetSaveItem("override0subset").StringValue.Trim().ToLower().StartsWith("hair")) skincat = (uint)Data.SkinCategories.Skin;
-						if (skin.GetSaveItem("override0subset").StringValue.Trim().ToLower().StartsWith("bang")) skincat = (uint)Data.SkinCategories.Skin;
+						if ((skincat & (uint)Data.SkinCategories.Skin) == (uint)Data.SkinCategories.Skin) skincat = (uint)Data.SkinCategories.Skin;
+						if (skincat != 128 && (skin.GetSaveItem("outfit").UIntegerValue == 1 || skin.GetSaveItem("parts").UIntegerValue == 1)) skincat = (uint)Data.SkinCategories.Hair;
+						//if (skin.GetSaveItem("override0subset").StringValue.Trim().ToLower().StartsWith("hair")) skincat = (uint)Data.SkinCategories.Skin;
+						//if (skin.GetSaveItem("override0subset").StringValue.Trim().ToLower().StartsWith("bang")) skincat = (uint)Data.SkinCategories.Skin; // these don't work
 						uint skinsex = skin.GetSaveItem("gender").UIntegerValue;
 						string name = skin.GetSaveItem("name").StringValue;
-						foreach (uint age in mmap.Keys) 
+						foreach (uint age in mmap.Keys)
 						{
 							if ((age&skinage)==age) 
 							{
@@ -137,22 +140,13 @@ namespace SimPe.Plugin
 												TreeNode node = new TreeNode(name);
 												node.Tag = skin;
 												parent.Nodes.Add(node);
-
-												added = true;
+												// added = true;
 											}
 										}
 									}
 								}
 							}
 						} //foreach age
-
-						if (!added) 
-						{
-							TreeNode tn = new TreeNode(name);
-							tn.Tag = skin;
-							tvmale.Nodes.Add(tn);
-							tvfemale.Nodes.Add((TreeNode)tn.Clone());
-						}
 					}
 				}
 			} 
@@ -163,7 +157,7 @@ namespace SimPe.Plugin
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -177,14 +171,14 @@ namespace SimPe.Plugin
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(FileSelect));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FileSelect));
 			this.button1 = new System.Windows.Forms.Button();
 			this.tc = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -196,29 +190,31 @@ namespace SimPe.Plugin
 			this.tc.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// button1
 			// 
 			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.button1.Location = new System.Drawing.Point(576, 544);
+			this.button1.Location = new System.Drawing.Point(776, 579);
 			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(75, 23);
 			this.button1.TabIndex = 1;
 			this.button1.Text = "Use";
 			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// tc
 			// 
-			this.tc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
+			this.tc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this.tc.Controls.Add(this.tabPage1);
 			this.tc.Controls.Add(this.tabPage2);
 			this.tc.Location = new System.Drawing.Point(8, 8);
 			this.tc.Name = "tc";
 			this.tc.SelectedIndex = 0;
-			this.tc.Size = new System.Drawing.Size(560, 560);
+			this.tc.Size = new System.Drawing.Size(677, 595);
 			this.tc.TabIndex = 2;
 			// 
 			// tabPage1
@@ -226,21 +222,21 @@ namespace SimPe.Plugin
 			this.tabPage1.Controls.Add(this.tvfemale);
 			this.tabPage1.Location = new System.Drawing.Point(4, 22);
 			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Size = new System.Drawing.Size(552, 534);
+			this.tabPage1.Size = new System.Drawing.Size(669, 569);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "Female";
 			// 
 			// tvfemale
 			// 
-			this.tvfemale.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
+			this.tvfemale.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
+			this.tvfemale.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
+			this.tvfemale.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.tvfemale.HideSelection = false;
-			this.tvfemale.ImageIndex = -1;
 			this.tvfemale.Location = new System.Drawing.Point(8, 8);
 			this.tvfemale.Name = "tvfemale";
-			this.tvfemale.SelectedImageIndex = -1;
-			this.tvfemale.Size = new System.Drawing.Size(536, 520);
+			this.tvfemale.Size = new System.Drawing.Size(653, 555);
 			this.tvfemale.TabIndex = 0;
 			this.tvfemale.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.Select);
 			// 
@@ -249,53 +245,56 @@ namespace SimPe.Plugin
 			this.tabPage2.Controls.Add(this.tvmale);
 			this.tabPage2.Location = new System.Drawing.Point(4, 22);
 			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Size = new System.Drawing.Size(552, 534);
+			this.tabPage2.Size = new System.Drawing.Size(669, 569);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "Male";
 			// 
 			// tvmale
 			// 
-			this.tvmale.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
+			this.tvmale.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
+			this.tvmale.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(252)))), ((int)(((byte)(255)))));
+			this.tvmale.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.tvmale.HideSelection = false;
-			this.tvmale.ImageIndex = -1;
 			this.tvmale.Location = new System.Drawing.Point(8, 7);
 			this.tvmale.Name = "tvmale";
-			this.tvmale.SelectedImageIndex = -1;
-			this.tvmale.Size = new System.Drawing.Size(536, 520);
+			this.tvmale.Size = new System.Drawing.Size(653, 555);
 			this.tvmale.TabIndex = 1;
 			this.tvmale.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.Select);
 			// 
 			// pb
 			// 
+			this.pb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.pb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pb.Location = new System.Drawing.Point(576, 8);
+			this.pb.Location = new System.Drawing.Point(690, 8);
 			this.pb.Name = "pb";
-			this.pb.Size = new System.Drawing.Size(216, 184);
-			this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pb.Size = new System.Drawing.Size(300, 300);
+			this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pb.TabIndex = 3;
 			this.pb.TabStop = false;
 			// 
 			// lbname
 			// 
-			this.lbname.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.lbname.Location = new System.Drawing.Point(576, 216);
+			this.lbname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Right)));
+			this.lbname.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbname.Location = new System.Drawing.Point(690, 323);
 			this.lbname.Name = "lbname";
-			this.lbname.Size = new System.Drawing.Size(216, 192);
+			this.lbname.Size = new System.Drawing.Size(300, 253);
 			this.lbname.TabIndex = 5;
 			this.lbname.Text = "label1";
 			// 
 			// FileSelect
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-			this.ClientSize = new System.Drawing.Size(794, 576);
+			this.ClientSize = new System.Drawing.Size(994, 611);
 			this.Controls.Add(this.lbname);
 			this.Controls.Add(this.pb);
 			this.Controls.Add(this.tc);
 			this.Controls.Add(this.button1);
-			this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "FileSelect";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -303,13 +302,13 @@ namespace SimPe.Plugin
 			this.tc.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
 			this.tabPage2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
 			this.ResumeLayout(false);
 
 		}
 		#endregion
 
-		bool ok ;
-		
+		bool ok;
 
 		static FileSelect form = null;
 		public static SimPe.Interfaces.Files.IPackedFileDescriptor Execute()

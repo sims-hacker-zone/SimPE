@@ -16,15 +16,12 @@ namespace SimPe.PackedFiles.UserInterface
 		internal System.Windows.Forms.Label label12;
 		internal System.Windows.Forms.Panel GropPanel;
 		/// <summary>
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
 		public GroupCacheForm()
 		{
-			//
-			// Erforderlich für die Windows Form-Designerunterstützung
-			//
 			InitializeComponent();
 
 			//
@@ -33,7 +30,7 @@ namespace SimPe.PackedFiles.UserInterface
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -47,10 +44,10 @@ namespace SimPe.PackedFiles.UserInterface
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{

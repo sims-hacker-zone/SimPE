@@ -28,7 +28,7 @@ using SimPe.Cache;
 namespace SimPe.PackedFiles.Wrapper
 {
 	/// <summary>
-	/// Zusammenfassung für SimComboBox.
+	/// Summary description for SimComboBox.
 	/// </summary>
 	[System.ComponentModel.DefaultEvent("SelectedObjectChanged")]
 	public class ObjectComboBox : System.Windows.Forms.UserControl
@@ -48,15 +48,15 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-        private Ambertation.Windows.Forms.FlatComboBox cb;
+        private System.Windows.Forms.ComboBox cb;
 		/// <summary> 
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
 		public ObjectComboBox()
 		{
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Required designer variable.
 			InitializeComponent();
 
 			
@@ -71,7 +71,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		/// <summary> 
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -85,14 +85,14 @@ namespace SimPe.PackedFiles.Wrapper
 			base.Dispose( disposing );
 		}
 
-		#region Vom Komponenten-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.cb = new Ambertation.Windows.Forms.FlatComboBox();
+            this.cb = new System.Windows.Forms.ComboBox();
 			this.SuspendLayout();
 			// 
 			// cb

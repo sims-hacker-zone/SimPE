@@ -73,9 +73,37 @@ namespace SimPe.PackedFiles.UserInterface
 			Slot wrp = (Slot) wrapper;
 			form.wrapper = wrp;
 			form.Tag = true;
+            int unyt = 10;
+
+            form.tabControl1.Controls.Remove(form.tabPage1);
+            form.tabControl1.Controls.Remove(form.tabPage2);
+            form.tabControl1.Controls.Remove(form.tabPage3);
+            form.tabControl1.Controls.Remove(form.tabPage4);
+            form.tabControl1.Controls.Remove(form.tabPage5);
+            form.tabControl1.Controls.Remove(form.tabPageA);
+            form.tabControl1.Controls.Remove(form.tabPage6);
+            form.tabControl1.Controls.Remove(form.tabPage7);
+
+            if (wrp.Version >= 5)
+                form.tabControl1.Controls.Add(form.tabPage1);
+            if (wrp.Version >= 6)
+                form.tabControl1.Controls.Add(form.tabPage2);
+            if (wrp.Version >= 7)
+                form.tabControl1.Controls.Add(form.tabPage3);
+            if (wrp.Version >= 8)
+                form.tabControl1.Controls.Add(form.tabPage4);
+            if (wrp.Version >= 9)
+                form.tabControl1.Controls.Add(form.tabPage5);
+            if (wrp.Version == 10)
+                form.tabControl1.Controls.Add(form.tabPageA);
+            if (wrp.Version >= 0x10)
+                form.tabControl1.Controls.Add(form.tabPage6);
+            if (wrp.Version >= 0x40)
+                form.tabControl1.Controls.Add(form.tabPage7);
 
 			try 
 			{
+                unyt = (form.lv.Width - 100) / 75;
 				form.tbver.Text = "0x"+Helper.HexString(wrp.Version);
 				form.tbname.Text = wrp.FileName;
 
@@ -83,75 +111,78 @@ namespace SimPe.PackedFiles.UserInterface
 				form.lv.Items.Clear();
 				form.lv.Columns.Clear();
 
+                // x40 = 9
+                // x30 = 9
+                // x60 = 2 = 750 so width / 75 is units of ten
+                // + 1 @ 100 = 850 so width / 85 is units of ten
+
 				System.Windows.Forms.ColumnHeader c = new System.Windows.Forms.ColumnHeader();
-				c.Text = "Type"; c.Width=100; form.lv.Columns.Add(c);
-
+                c.Text = "Type"; c.Width = 100; form.lv.Columns.Add(c);
 				c = new System.Windows.Forms.ColumnHeader();
-				c.Text = "F1"; c.Width=40; form.lv.Columns.Add(c);
+                c.Text = "Float1"; c.Width = unyt * 4; form.lv.Columns.Add(c);
 				c = new System.Windows.Forms.ColumnHeader();
-				c.Text = "F2"; c.Width=40; form.lv.Columns.Add(c);
+                c.Text = "Float2"; c.Width = unyt * 4; form.lv.Columns.Add(c);
 				c = new System.Windows.Forms.ColumnHeader();
-				c.Text = "F3"; c.Width=40; form.lv.Columns.Add(c);
-
+                c.Text = "Float3"; c.Width = unyt * 4; form.lv.Columns.Add(c);
 				c = new System.Windows.Forms.ColumnHeader();
-				c.Text = "I1"; c.Width=30; form.lv.Columns.Add(c);
+                c.Text = "Int1"; c.Width = unyt * 3; form.lv.Columns.Add(c);
 				c = new System.Windows.Forms.ColumnHeader();
-				c.Text = "I2"; c.Width=30; form.lv.Columns.Add(c);
+                c.Text = "Int2"; c.Width = unyt * 3; form.lv.Columns.Add(c);
 				c = new System.Windows.Forms.ColumnHeader();
-				c.Text = "I3"; c.Width=30; form.lv.Columns.Add(c);
+                c.Text = "Int3"; c.Width = unyt * 3; form.lv.Columns.Add(c);
 				c = new System.Windows.Forms.ColumnHeader();
-				c.Text = "I4"; c.Width=30; form.lv.Columns.Add(c);
+                c.Text = "Int4"; c.Width = unyt * 4; form.lv.Columns.Add(c);
 				c = new System.Windows.Forms.ColumnHeader();
-				c.Text = "I5"; c.Width=30; form.lv.Columns.Add(c);
-
+                c.Text = "Int5"; c.Width = unyt * 3; form.lv.Columns.Add(c);
 				if (wrp.Version>=5) 
 				{
 					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "F4"; c.Width=40; form.lv.Columns.Add(c);
+                    c.Text = "Float4"; c.Width = unyt * 4; form.lv.Columns.Add(c);
 					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "F5"; c.Width=40; form.lv.Columns.Add(c);
+                    c.Text = "Float5"; c.Width = unyt * 4; form.lv.Columns.Add(c);
 					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "F6"; c.Width=40; form.lv.Columns.Add(c);
-
+                    c.Text = "Float6"; c.Width = unyt * 4; form.lv.Columns.Add(c);
 					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "I6"; c.Width=30; form.lv.Columns.Add(c);
+                    c.Text = "Int6"; c.Width = unyt * 3; form.lv.Columns.Add(c);
 				}
-
 				if (wrp.Version>=6) 
 				{
 					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "S1"; c.Width=30; form.lv.Columns.Add(c);
+                    c.Text = "Shrt1"; c.Width = unyt * 3; form.lv.Columns.Add(c);
 					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "S2"; c.Width=30; form.lv.Columns.Add(c);
+                    c.Text = "Shrt2"; c.Width = unyt * 3; form.lv.Columns.Add(c);
 				}
-
 				if (wrp.Version>=7) 
 				{
 					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "F7"; c.Width=40; form.lv.Columns.Add(c);
+                    c.Text = "Float7"; c.Width = unyt * 6; form.lv.Columns.Add(c);
 				}
 				if (wrp.Version>=8) 
 				{
 					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "I7"; c.Width=30; form.lv.Columns.Add(c);
+                    c.Text = "Int7"; c.Width = unyt * 3; form.lv.Columns.Add(c);
 				}
 				if (wrp.Version>=9) 
 				{
 					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "I8"; c.Width=30; form.lv.Columns.Add(c);
-				}
+                    c.Text = "Int8"; c.Width = unyt * 4; form.lv.Columns.Add(c);
+                }
+                if (wrp.Version == 10)
+                {
+                    c = new System.Windows.Forms.ColumnHeader();
+                    c.Text = "Shrt3"; c.Width = unyt * 3; form.lv.Columns.Add(c);
+                }
 				if (wrp.Version>=0x10) 
 				{
 					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "F8"; c.Width=40; form.lv.Columns.Add(c);
+                    c.Text = "Float8"; c.Width = unyt * 6; form.lv.Columns.Add(c);
 				}
-
 				if (wrp.Version>=0x40) 
 				{
 					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "I9"; c.Width=30; form.lv.Columns.Add(c);
+                    c.Text = "Int9"; c.Width = unyt * 3; form.lv.Columns.Add(c);
 					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "I10"; c.Width=30; form.lv.Columns.Add(c);
+                    c.Text = "Int10"; c.Width = unyt * 4; form.lv.Columns.Add(c);
 				}
 
 				foreach (SlotItem i in wrp.Items) form.ShowItem(i);

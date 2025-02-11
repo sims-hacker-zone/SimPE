@@ -229,7 +229,7 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				uint[] types = {
-								  0x54535053	//grop	
+								  0x54535053	//group
 							   };
 			
 				return types;

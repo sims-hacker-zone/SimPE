@@ -140,7 +140,7 @@ namespace SimPe.Plugin
 
 		bool pullfromstr;
 		/// <summary>
-		/// If true, SimPE will check all Str resources with the instance listed in <see cref="PullFromStrInstances"/>
+		/// If true, SimPe will check all Str resources with the instance listed in <see cref="PullFromStrInstances"/>
 		/// and pull all Resources linked from there too
 		/// </summary>
 		public bool PullResourcesByStr

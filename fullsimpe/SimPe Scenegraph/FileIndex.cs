@@ -63,7 +63,7 @@ namespace SimPe.Plugin
 		}
 
 		/// <summary>
-		/// Get the Local Group alue used for this Package
+		/// Get the Local Group Value used for this Package
 		/// </summary>
 		public uint LocalGroup
 		{
@@ -479,6 +479,13 @@ namespace SimPe.Plugin
 			StartThread();
 		}
 
+        bool allowevent;
+        public bool AllowEvent
+        {
+            get { return allowevent; }
+            set { allowevent = value; }
+        }
+
 		/// <summary>
 		/// This is used to start the Reload Thread
 		/// </summary>
@@ -500,7 +507,8 @@ namespace SimPe.Plugin
 			}
 
 			Wait.SubStop();
-			OnFILoad(this, new EventArgs());
+            if (allowevent) OnFILoad(this, new EventArgs()); // this triggers loading of PJSE filetable
+            else allowevent = true;
 		}
 
 
@@ -1254,7 +1262,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Looks for a File based on the Filename
 		/// </summary>
-		/// <param name="filename">The name of the File (applies only to Scenegraüh Resources)</param>
+		/// <param name="filename">The name of the File (applies only to Scenegraph Resources)</param>
 		/// <param name="type">The Type of the File you are looking for</param>
 		/// <param name="defgroup">If the Filename has no group Hash, use this one</param>
 		/// <param name="betolerant">

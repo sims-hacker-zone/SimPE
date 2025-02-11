@@ -366,12 +366,12 @@ namespace SimPe.Plugin
 			if (cachefile!=null) return;
 			
 			cachefile = new SimPe.Cache.MMATCacheFile();
-			if (Helper.WindowsRegistry.UseCache) cachefile.Load(Helper.SimPeCache);
+			if (Helper.WindowsRegistry.UseCache) cachefile.Load(Helper.SimPeLanguageCache);
 		}
 
 		static void SaveCache() 
 		{
-			if (Helper.WindowsRegistry.UseCache) cachefile.Save(Helper.SimPeCache);
+			if (Helper.WindowsRegistry.UseCache) cachefile.Save(Helper.SimPeLanguageCache);
 		}
 		#endregion
 
@@ -710,7 +710,7 @@ namespace SimPe.Plugin
 		/// <returns>A List of Modelnames</returns>		
 		public static string[] LoadParentModelNames(SimPe.Interfaces.Files.IPackageFile pkg, bool delete)
 		{
-            if (WaitingScreen.Running) WaitingScreen.UpdateMessage("Loading Parent Modelnames");
+			if (WaitingScreen.Running) WaitingScreen.UpdateMessage("Loading Parent Modelnames");
 			ArrayList list = new ArrayList();
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(Data.MetaData.GMND);
@@ -941,13 +941,14 @@ namespace SimPe.Plugin
 					{
 						try 
 						{
+							// if (item.FileDescriptor.Type == Data.MetaData.STRING_FILE)
 							SimPe.Plugin.GenericRcol sub = new GenericRcol(null, false);	
 							sub.ProcessData(item);
 							LoadReferenced(this.modelnames, this.exclude, files, itemlist, sub, item, true, setup);
 						} 
 						catch (Exception ex)
 						{
-							if (Helper.DebugMode) 
+							if (Helper.WindowsRegistry.HiddenMode) 
 								Helper.ExceptionMessage("", ex);
 						}
 					}
@@ -1044,23 +1045,21 @@ namespace SimPe.Plugin
 		/// Add Resources referenced from XML Files
 		/// </summary>
 		protected void AddFromXml(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items)
-		{			
-			foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items) 
+		{
+			foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
 			{
-				try 
+				try
 				{
-					SimPe.Plugin.GenericRcol sub = new GenericRcol(null, false);	
+					SimPe.Plugin.GenericRcol sub = new GenericRcol(null, false);
 					sub.ProcessData(item);
 					LoadReferenced(this.modelnames, this.exclude, files, itemlist, sub, item, true, setup);
-				} 
+				}
 				catch (Exception ex)
 				{
-					if (Helper.DebugMode) 
+					if (Helper.WindowsRegistry.HiddenMode)
 						Helper.ExceptionMessage("", ex);
 				}
 			}
-			
-							
 		}
 		#endregion
 	}

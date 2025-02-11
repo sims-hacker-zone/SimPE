@@ -27,7 +27,7 @@ using SimPe.PackedFiles.Wrapper;
 namespace SimPe.PackedFiles.UserInterface
 {
 	/// <summary>
-	/// Zusammenfassung für SlotForm.
+	/// Summary description for SlotForm.
 	/// </summary>
 	public class SlotForm : System.Windows.Forms.Form
 	{
@@ -52,14 +52,15 @@ namespace SimPe.PackedFiles.UserInterface
 		private System.Windows.Forms.TextBox tbi5;
 		private System.Windows.Forms.Label label9;
 		internal System.Windows.Forms.ComboBox cbtype;
-		private System.Windows.Forms.TabControl tabControl1;
-		private System.Windows.Forms.TabPage tabPage1;
-		private System.Windows.Forms.TabPage tabPage2;
-		private System.Windows.Forms.TabPage tabPage3;
-		private System.Windows.Forms.TabPage tabPage4;
-		private System.Windows.Forms.TabPage tabPage5;
-		private System.Windows.Forms.TabPage tabPage6;
-		private System.Windows.Forms.TabPage tabPage7;
+        internal System.Windows.Forms.TabControl tabControl1;
+        internal System.Windows.Forms.TabPage tabPage1;
+        internal System.Windows.Forms.TabPage tabPage2;
+        internal System.Windows.Forms.TabPage tabPage3;
+        internal System.Windows.Forms.TabPage tabPage4;
+        internal System.Windows.Forms.TabPage tabPage5;
+        internal System.Windows.Forms.TabPage tabPageA;
+        internal System.Windows.Forms.TabPage tabPage6;
+        internal System.Windows.Forms.TabPage tabPage7;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.TextBox tbf6;
 		private System.Windows.Forms.Label label11;
@@ -79,7 +80,9 @@ namespace SimPe.PackedFiles.UserInterface
 		private System.Windows.Forms.Label label19;
 		private System.Windows.Forms.TextBox tbi7;
 		private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label0A;
 		private System.Windows.Forms.TextBox tbi8;
+        private System.Windows.Forms.TextBox tbs3;
 		private System.Windows.Forms.Label label21;
 		private System.Windows.Forms.TextBox tbi10;
 		private System.Windows.Forms.Label label22;
@@ -89,19 +92,19 @@ namespace SimPe.PackedFiles.UserInterface
 		internal System.Windows.Forms.TextBox tbver;
 		private System.Windows.Forms.Label label24;
 		internal System.Windows.Forms.TextBox tbname;
-		internal System.Windows.Forms.ListView lv;
-		private Skybound.VisualStyles.VisualStyleLinkLabel llcommit;
-		private Skybound.VisualStyles.VisualStyleLinkLabel visualStyleLinkLabel1;
-        private Skybound.VisualStyles.VisualStyleLinkLabel visualStyleLinkLabel2;
+        internal System.Windows.Forms.ListView lv;
+        private System.Windows.Forms.LinkLabel visualStyleLinkLabel1;
+        private System.Windows.Forms.LinkLabel visualStyleLinkLabel2;
+        private System.Windows.Forms.LinkLabel visualStyleLinkLabel3;
 		/// <summary>
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
 		public SlotForm()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
 
@@ -111,7 +114,7 @@ namespace SimPe.PackedFiles.UserInterface
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -125,16 +128,17 @@ namespace SimPe.PackedFiles.UserInterface
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
             this.pnslot = new System.Windows.Forms.Panel();
-            this.visualStyleLinkLabel2 = new Skybound.VisualStyles.VisualStyleLinkLabel();
-            this.visualStyleLinkLabel1 = new Skybound.VisualStyles.VisualStyleLinkLabel();
+            this.visualStyleLinkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.visualStyleLinkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.visualStyleLinkLabel1 = new System.Windows.Forms.LinkLabel();
             this.lv = new System.Windows.Forms.ListView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbname = new System.Windows.Forms.TextBox();
@@ -163,8 +167,11 @@ namespace SimPe.PackedFiles.UserInterface
             this.label19 = new System.Windows.Forms.Label();
             this.tbi7 = new System.Windows.Forms.TextBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabPageA = new System.Windows.Forms.TabPage();
             this.label20 = new System.Windows.Forms.Label();
+            this.label0A = new System.Windows.Forms.Label();
             this.tbi8 = new System.Windows.Forms.TextBox();
+            this.tbs3 = new System.Windows.Forms.TextBox();            
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.label18 = new System.Windows.Forms.Label();
             this.tbf8 = new System.Windows.Forms.TextBox();
@@ -202,13 +209,17 @@ namespace SimPe.PackedFiles.UserInterface
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            this.tabPageA.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnslot
             // 
+            this.pnslot.BackColor = System.Drawing.Color.Transparent;
+            this.pnslot.BackgroundImageLocation = new System.Drawing.Point(0, 260);
+            this.pnslot.BackgroundImageZoomToFit = true;
+            this.pnslot.Controls.Add(this.visualStyleLinkLabel3);
             this.pnslot.Controls.Add(this.visualStyleLinkLabel2);
             this.pnslot.Controls.Add(this.visualStyleLinkLabel1);
             this.pnslot.Controls.Add(this.lv);
@@ -233,18 +244,32 @@ namespace SimPe.PackedFiles.UserInterface
             this.pnslot.Controls.Add(this.label1);
             this.pnslot.Controls.Add(this.tbf1);
             this.pnslot.Controls.Add(this.panel4);
-            this.pnslot.Controls.Add(this.llcommit);
             this.pnslot.Font = new System.Drawing.Font("Verdana", 8.25F);
             this.pnslot.Location = new System.Drawing.Point(14, 29);
             this.pnslot.Name = "pnslot";
-            this.pnslot.Size = new System.Drawing.Size(730, 315);
+            this.pnslot.Size = new System.Drawing.Size(730, 332);
             this.pnslot.TabIndex = 9;
+            // 
+            // visualStyleLinkLabel3
+            // 
+            this.visualStyleLinkLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.visualStyleLinkLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.visualStyleLinkLabel3.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.visualStyleLinkLabel3.Location = new System.Drawing.Point(100, 305);
+            this.visualStyleLinkLabel3.Name = "visualStyleLinkLabel3";
+            this.visualStyleLinkLabel3.Size = new System.Drawing.Size(54, 23);
+            this.visualStyleLinkLabel3.TabIndex = 28;
+            this.visualStyleLinkLabel3.TabStop = true;
+            this.visualStyleLinkLabel3.Text = "Clone";
+            this.visualStyleLinkLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.visualStyleLinkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Clone);
             // 
             // visualStyleLinkLabel2
             // 
             this.visualStyleLinkLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.visualStyleLinkLabel2.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualStyleLinkLabel2.Location = new System.Drawing.Point(208, 288);
+            this.visualStyleLinkLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.visualStyleLinkLabel2.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.visualStyleLinkLabel2.Location = new System.Drawing.Point(178, 305);
             this.visualStyleLinkLabel2.Name = "visualStyleLinkLabel2";
             this.visualStyleLinkLabel2.Size = new System.Drawing.Size(64, 23);
             this.visualStyleLinkLabel2.TabIndex = 27;
@@ -256,10 +281,11 @@ namespace SimPe.PackedFiles.UserInterface
             // visualStyleLinkLabel1
             // 
             this.visualStyleLinkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.visualStyleLinkLabel1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualStyleLinkLabel1.Location = new System.Drawing.Point(280, 288);
+            this.visualStyleLinkLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.visualStyleLinkLabel1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.visualStyleLinkLabel1.Location = new System.Drawing.Point(266, 305);
             this.visualStyleLinkLabel1.Name = "visualStyleLinkLabel1";
-            this.visualStyleLinkLabel1.Size = new System.Drawing.Size(32, 23);
+            this.visualStyleLinkLabel1.Size = new System.Drawing.Size(46, 23);
             this.visualStyleLinkLabel1.TabIndex = 26;
             this.visualStyleLinkLabel1.TabStop = true;
             this.visualStyleLinkLabel1.Text = "Add";
@@ -277,7 +303,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.lv.Location = new System.Drawing.Point(8, 120);
             this.lv.MultiSelect = false;
             this.lv.Name = "lv";
-            this.lv.Size = new System.Drawing.Size(304, 168);
+            this.lv.Size = new System.Drawing.Size(304, 182);
             this.lv.TabIndex = 24;
             this.lv.UseCompatibleStateImageBehavior = false;
             this.lv.View = System.Windows.Forms.View.Details;
@@ -348,12 +374,13 @@ namespace SimPe.PackedFiles.UserInterface
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPageA);
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Location = new System.Drawing.Point(320, 144);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(400, 144);
+            this.tabControl1.Size = new System.Drawing.Size(400, 114);
             this.tabControl1.TabIndex = 22;
             // 
             // tabPage1
@@ -368,7 +395,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.tabPage1.Controls.Add(this.tbf4);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(392, 118);
+            this.tabPage1.Size = new System.Drawing.Size(392, 88);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Version 0x05+";
             // 
@@ -460,7 +487,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.tabPage2.Controls.Add(this.tbs1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(392, 118);
+            this.tabPage2.Size = new System.Drawing.Size(392, 88);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "0x06+";
             // 
@@ -510,7 +537,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.tabPage3.Controls.Add(this.tbf7);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(392, 118);
+            this.tabPage3.Size = new System.Drawing.Size(392, 88);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "0x07+";
             // 
@@ -540,7 +567,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.tabPage4.Controls.Add(this.tbi7);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(392, 118);
+            this.tabPage4.Size = new System.Drawing.Size(392, 88);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "0x08+";
             // 
@@ -564,13 +591,43 @@ namespace SimPe.PackedFiles.UserInterface
             this.tbi7.Text = "0";
             this.tbi7.TextChanged += new System.EventHandler(this.Changed);
             // 
+            // tabPageA
+            // 
+            this.tabPageA.Controls.Add(this.label0A);
+            this.tabPageA.Controls.Add(this.tbs3);
+            this.tabPageA.Location = new System.Drawing.Point(4, 22);
+            this.tabPageA.Name = "tabPageA";
+            this.tabPageA.Size = new System.Drawing.Size(392, 88);
+            this.tabPageA.TabIndex = 7;
+            this.tabPageA.Text = "0x0A";
+            // 
+            // label0A
+            // 
+            this.label0A.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label0A.Location = new System.Drawing.Point(8, 8);
+            this.label0A.Name = "label0A";
+            this.label0A.Size = new System.Drawing.Size(56, 23);
+            this.label0A.TabIndex = 13;
+            this.label0A.Text = "Short 3:";
+            this.label0A.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            // 
+            // tbs3
+            // 
+            this.tbs3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbs3.Location = new System.Drawing.Point(72, 8);
+            this.tbs3.Name = "tbs3";
+            this.tbs3.Size = new System.Drawing.Size(64, 21);
+            this.tbs3.TabIndex = 12;
+            this.tbs3.Text = "0";
+            this.tbs3.TextChanged += new System.EventHandler(this.Changed);
+            // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.label20);
             this.tabPage5.Controls.Add(this.tbi8);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(392, 118);
+            this.tabPage5.Size = new System.Drawing.Size(392, 88);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "0x09+";
             // 
@@ -600,7 +657,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.tabPage6.Controls.Add(this.tbf8);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(392, 118);
+            this.tabPage6.Size = new System.Drawing.Size(392, 88);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "0x10+";
             // 
@@ -632,7 +689,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.tabPage7.Controls.Add(this.tbi9);
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(392, 118);
+            this.tabPage7.Size = new System.Drawing.Size(392, 88);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "0x40+";
             // 
@@ -689,6 +746,7 @@ namespace SimPe.PackedFiles.UserInterface
             // label9
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Location = new System.Drawing.Point(328, 32);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(56, 23);
@@ -699,6 +757,7 @@ namespace SimPe.PackedFiles.UserInterface
             // label8
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Location = new System.Drawing.Point(584, 88);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 23);
@@ -719,6 +778,7 @@ namespace SimPe.PackedFiles.UserInterface
             // label7
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Location = new System.Drawing.Point(584, 64);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 23);
@@ -739,6 +799,7 @@ namespace SimPe.PackedFiles.UserInterface
             // label6
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Location = new System.Drawing.Point(456, 112);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 23);
@@ -759,6 +820,7 @@ namespace SimPe.PackedFiles.UserInterface
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Location = new System.Drawing.Point(456, 88);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 23);
@@ -779,6 +841,7 @@ namespace SimPe.PackedFiles.UserInterface
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Location = new System.Drawing.Point(456, 64);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 23);
@@ -799,6 +862,7 @@ namespace SimPe.PackedFiles.UserInterface
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Location = new System.Drawing.Point(328, 112);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 23);
@@ -819,6 +883,7 @@ namespace SimPe.PackedFiles.UserInterface
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(328, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 23);
@@ -839,6 +904,7 @@ namespace SimPe.PackedFiles.UserInterface
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(328, 64);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 23);
@@ -860,11 +926,8 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panel4.Controls.Add(this.label12);
-            this.panel4.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
-            this.panel4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(730, 24);
             this.panel4.TabIndex = 0;
@@ -914,6 +977,8 @@ namespace SimPe.PackedFiles.UserInterface
             this.tabPage4.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            this.tabPageA.ResumeLayout(false);
+            this.tabPageA.PerformLayout();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             this.tabPage7.ResumeLayout(false);
@@ -968,7 +1033,8 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (wrapper.Version>=7) lvi.SubItems.Add(si.UnknownFloat7.ToString());
 			if (wrapper.Version>=8) lvi.SubItems.Add(si.UnknownInt7.ToString());
-			if (wrapper.Version>=9) lvi.SubItems.Add(si.UnknownInt8.ToString());
+            if (wrapper.Version >= 9) lvi.SubItems.Add(si.UnknownInt8.ToString());
+            if (wrapper.Version == 10) lvi.SubItems.Add(si.UnknownShort3.ToString());
 			if (wrapper.Version>=0x10) lvi.SubItems.Add(si.UnknownFloat8.ToString());
 
 			if (wrapper.Version>=0x40) 
@@ -1016,6 +1082,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 				tbs1.Text = si.UnknownShort1.ToString();
 				tbs2.Text = si.UnknownShort2.ToString();
+                tbs3.Text = si.UnknownShort3.ToString();
 			}
 			finally 
 			{
@@ -1055,6 +1122,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 				si.UnknownShort1 = Convert.ToInt16(tbs1.Text);
 				si.UnknownShort2 = Convert.ToInt16(tbs2.Text);
+                si.UnknownShort3 = Convert.ToInt16(tbs3.Text);
 
 				wrapper.Changed = true;
 
@@ -1068,12 +1136,12 @@ namespace SimPe.PackedFiles.UserInterface
 			if (Tag!=null) return;
 			wrapper.FileName = tbname.Text;
 			wrapper.Changed = true;
-		}
+        }
 
-		private void llcommit_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
-		{
-			wrapper.SynchronizeUserData();
-		}
+        private void btcommit_Click(object sender, EventArgs e)
+        {
+            wrapper.SynchronizeUserData();
+        }
 
 		private void Add(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
 		{
@@ -1096,5 +1164,37 @@ namespace SimPe.PackedFiles.UserInterface
 			} 
 			catch {}
 		}
+
+        private void Clone(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+        {
+            if (lv.SelectedItems.Count == 0) return;
+            SlotItem si = new SlotItem(wrapper);
+            SimPe.PackedFiles.Wrapper.SlotItem sv = (SimPe.PackedFiles.Wrapper.SlotItem)lv.SelectedItems[0].Tag;
+            si.Type = sv.Type;
+            si.UnknownFloat1 = sv.UnknownFloat1;
+            si.UnknownFloat2 = sv.UnknownFloat2;
+            si.UnknownFloat3 = sv.UnknownFloat3;
+            si.UnknownFloat4 = sv.UnknownFloat4;
+            si.UnknownFloat5 = sv.UnknownFloat5;
+            si.UnknownFloat6 = sv.UnknownFloat6;
+            si.UnknownFloat7 = sv.UnknownFloat7;
+            si.UnknownFloat8 = sv.UnknownFloat8;
+            si.UnknownInt1 = sv.UnknownInt1;
+            si.UnknownInt2 = sv.UnknownInt2;
+            si.UnknownInt3 = sv.UnknownInt3;
+            si.UnknownInt4 = sv.UnknownInt4;
+            si.UnknownInt5 = sv.UnknownInt5;
+            si.UnknownInt6 = sv.UnknownInt6;
+            si.UnknownInt7 = sv.UnknownInt7;
+            si.UnknownInt8 = sv.UnknownInt8;
+            si.UnknownInt9 = sv.UnknownInt9;
+            si.UnknownInt10 = sv.UnknownInt10;
+            si.UnknownShort1 = sv.UnknownShort1;
+            si.UnknownShort2 = sv.UnknownShort2;
+            si.UnknownShort3 = sv.UnknownShort3;
+            wrapper.Items.Add(si);
+            ShowItem(si);
+            wrapper.Changed = true;
+        }
 	}
 }

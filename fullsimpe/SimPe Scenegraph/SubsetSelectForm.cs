@@ -26,7 +26,7 @@ using System.Windows.Forms;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für SubsetSelectForm.
+	/// Summary description for SubsetSelectForm.
 	/// </summary>
 	public class SubsetSelectForm : System.Windows.Forms.Form
 	{
@@ -35,24 +35,24 @@ namespace SimPe.Plugin
 		public System.Windows.Forms.Button button1;
 		public System.Windows.Forms.CheckBox cbauto;
 		/// <summary>
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
 		internal SubsetSelectForm()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
 
 			//
-			// TODO: Fügen Sie den Konstruktorcode nach dem Aufruf von InitializeComponent hinzu
+			// TODO: F�gen Sie den Konstruktorcode nach dem Aufruf von InitializeComponent hinzu
 			//
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -66,10 +66,10 @@ namespace SimPe.Plugin
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{

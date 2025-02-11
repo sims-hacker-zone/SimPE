@@ -19,7 +19,7 @@ namespace SimPe.Plugin
 		public CorruptedFileException(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item, Exception inner)
 			:base (
 					"A corrupted PackedFile was found.", 
-					new Exception("The File '"+GetFileName(item)+"' contains a Corrupted File ("+item.FileDescriptor.ToString()+").\n\n SimPE will Ignore this File, but the resulting Package might be broken!", inner)
+					new Exception("The File '"+GetFileName(item)+"' contains a Corrupted File ("+item.FileDescriptor.ToString()+").\n\n SimPe will Ignore this File, but the resulting Package might be broken!", inner)
 			)
 		{
 			FileTable.FileIndex.RemoveItem(item);

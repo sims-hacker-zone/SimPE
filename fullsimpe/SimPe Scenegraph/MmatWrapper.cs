@@ -4,7 +4,7 @@ using System.Collections;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für MmatWrapper.
+	/// Summary description for MmatWrapper.
 	/// </summary>
 	public class MmatWrapper : SimPe.PackedFiles.Wrapper.Cpf, SimPe.Interfaces.Scenegraph.IScenegraphBlock, SimPe.Interfaces.Scenegraph.IScenegraphItem
 	{
@@ -56,7 +56,7 @@ namespace SimPe.Plugin
 			return new SimPe.Interfaces.Plugin.AbstractWrapperInfo(
 				"MMAT Wrapper",
 				"Quaxi",
-				"This File describes a ColorOption for a Mesh Group / Subset. It is needed to provide an additional Color for Objects.",
+				"This File describes a ColorOption for a Mesh Group / Subset. It is needed to provide an additional Colour for Objects.",
 				4,
 				System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.Plugin.mmat.png"))
 				);   

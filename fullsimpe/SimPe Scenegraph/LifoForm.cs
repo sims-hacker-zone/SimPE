@@ -28,19 +28,19 @@ using SimPe.Interfaces.Scenegraph;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für LifoForm.
+	/// Summary description for LifoForm.
 	/// </summary>
 	public class LifoForm : System.Windows.Forms.Form
 	{
 		/// <summary>
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
 		public LifoForm()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
 
@@ -50,7 +50,7 @@ namespace SimPe.Plugin
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -64,10 +64,10 @@ namespace SimPe.Plugin
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -283,13 +283,13 @@ namespace SimPe.Plugin
 			// contextMenu1
 			// 
 			this.contextMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem1,
-            this.menuItem4,
-            this.menuItem3,
-            this.menuItem6,
-            this.menuItem7,
-            this.menuItem2,
-            this.menuItem5});
+			this.menuItem1,
+			this.menuItem4,
+			this.menuItem3,
+			this.menuItem6,
+			this.menuItem7,
+			this.menuItem2,
+			this.menuItem5});
 			// 
 			// menuItem1
 			// 
@@ -380,32 +380,15 @@ namespace SimPe.Plugin
 			// sfd
 			// 
 			this.sfd.Filter = "Png (*.png)|*.png|Bitmap (*.bmp)|*.bmp|Gif (*.gif)|*.gif|JPEG File (*.jpg)|*.jpg|" +
-					"All Files (*.*)|*.*";
+				"All Files (*.*)|*.*";
 			this.sfd.Title = "Export Image";
 			// 
 			// ofd
 			// 
-			this.ofd.Filter = "Alle Image Files (*.jpg;*.bmp;*.gif;*.png)|*.jpg;*.bmp;*.gif;*.png|Bitmap (*.bmp)" +
-					"|*.bmp|Gif (*.gif)|*.gif|JPEG File (*.jpg)|*.jpg|Png (*.png)|*.png|All Files (*." +
-					"*)|*.*";
+			this.ofd.Filter = "All Image Files (*.jpg;*.bmp;*.gif;*.png)|*.jpg;*.bmp;*.gif;*.png|Bitmap (*.bmp)|" +
+				"*.bmp|Gif (*.gif)|*.gif|JPEG File (*.jpg)|*.jpg|Png (*.png)|*.png|All Files (*.*" +
+				")|*.*";
 			this.ofd.FilterIndex = 5;
-			// 
-			// menuItem3
-			// 
-			this.menuItem3.Index = 2;
-			this.menuItem3.Text = "Import &DDS...";
-			this.menuItem3.Click += new System.EventHandler(this.ImportDDS);
-			// 
-			// menuItem6
-			// 
-			this.menuItem6.Index = 3;
-			this.menuItem6.Text = "Build DXT...";
-			this.menuItem6.Click += new System.EventHandler(this.BuildDXT);
-			// 
-			// menuItem7
-			// 
-			this.menuItem7.Index = 4;
-			this.menuItem7.Text = "-";
 			// 
 			// LifoForm
 			// 

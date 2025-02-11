@@ -106,20 +106,26 @@ namespace SimPe.Plugin
 		public override SimPe.Interfaces.IWrapper[] KnownWrappers
 		{
 			get 
-			{			
-				InitRcolBlocks();
-				IWrapper[] wrappers = {
+			{
+                if (Helper.NoPlugins)
+                {
+                    return new IWrapper[0];
+                }
+                else
+                {
+                    InitRcolBlocks();
+                    IWrapper[] wrappers = {
 										  new RefFile(),
 										  new Plugin.Txtr(this.LinkedProvider, false),
-										  //new Plugin.Matd(this.LinkedProvider, false),
 										  new Plugin.Lifo(this.LinkedProvider, false),
-										  //new Plugin.Shpe(this.LinkedProvider),
+										  // new Plugin.Shpe(this.LinkedProvider),
 						                  new Plugin.GenericRcol(this.LinkedProvider, false),
 										  new Plugin.MmatWrapper(),					
 										  new SimPe.PackedFiles.Wrapper.GroupCache(),
 										  new SimPe.PackedFiles.Wrapper.Slot(),
 									  };
-				return wrappers;
+                    return wrappers;
+                }
 			}
 		}
 

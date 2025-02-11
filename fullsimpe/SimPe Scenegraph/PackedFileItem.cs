@@ -44,11 +44,15 @@ namespace SimPe.Plugin
 			{
 				try 
 				{
-					if (Cpf!=null) 
+					if (Cpf != null)
 					{
 						SimPe.PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("category");
-						if (citem!=null) return citem.UIntegerValue;
-					
+						if (citem != null)
+						{
+							if ((citem.UIntegerValue & (uint)Data.SkinCategories.Skin) == (uint)Data.SkinCategories.Skin) citem.UIntegerValue = (uint)Data.SkinCategories.Skin;
+							if (citem.UIntegerValue != 128 && OutfitPart == 1) citem.UIntegerValue = (uint)Data.SkinCategories.Hair;
+							return citem.UIntegerValue;
+						}
 					}
 				} 
 				catch (Exception) {}
@@ -66,7 +70,6 @@ namespace SimPe.Plugin
 					{
 						SimPe.PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("age");
 						if (citem!=null) return citem.UIntegerValue;
-					
 					}
 				} 
 				catch (Exception) {}
@@ -84,11 +87,72 @@ namespace SimPe.Plugin
 					{
 						SimPe.PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("name");
 						if (citem!=null) return citem.StringValue;
-					
 					}
 				} 
 				catch (Exception) {}
 				return "";
+			}
+		}
+
+		public uint Gender
+		{
+			get
+			{
+				try
+				{
+					if (Cpf != null)
+					{
+						SimPe.PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("gender");
+						if (citem != null) return citem.UIntegerValue;
+					}
+				}
+				catch (Exception) { }
+				return 0;
+			}
+		}
+
+		public string Bodyshape
+		{
+			get
+			{
+				try
+				{
+					if (Cpf != null)
+					{
+						SimPe.PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("product");
+						if (citem != null)
+						{
+							if (citem.UIntegerValue > 0 && citem.UIntegerValue < 255)
+								return SimPe.Data.MetaData.GetBodyName(citem.UIntegerValue);
+						}
+						citem = Cpf.GetItem("skintone");
+						if (citem == null)
+							citem = Cpf.GetItem("skincolor");
+						if (citem != null) return SimPe.Data.MetaData.GetBodyName(SimPe.Data.MetaData.GetBodyShapeid(citem.StringValue));
+					}
+				}
+				catch (Exception) { }
+				return "Unknown";
+			}
+		}
+
+		public uint OutfitPart
+		{
+			get
+			{
+				try
+				{
+					if (Cpf != null)
+					{
+						SimPe.PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("outfit");
+						if (citem == null)
+							citem = Cpf.GetItem("parts");
+						if (citem != null) return citem.UIntegerValue;
+
+					}
+				}
+				catch (Exception) { }
+				return 0;
 			}
 		}
 
@@ -259,6 +323,26 @@ namespace SimPe.Plugin
 			}
 		}
 
+		public string PartNames
+		{
+			get
+			{
+				string spart = "";
+				uint part = this.OutfitPart;
+				Array a = System.Enum.GetValues(typeof(Data.SkinParts));
+				foreach (Data.SkinParts k in a)
+				{
+					if ((part & (uint)k) == (uint)k)
+					{
+						if (spart != "") spart += ", ";
+						spart += k.ToString();
+					}
+				}
+
+				return spart;
+			}
+		}
+
 		public string AgeNames 
 		{
 			get 
@@ -279,9 +363,29 @@ namespace SimPe.Plugin
 			}
 		}
 
+		public string GenderNames
+		{
+			get
+			{
+				string ssex = "";
+				uint sex = this.Gender;
+				Array a = System.Enum.GetValues(typeof(Data.Sex));
+				foreach (Data.Sex k in a)
+				{
+					if ((sex & (uint)k) == (uint)k)
+					{
+						if (ssex != "") ssex += ", ";
+						ssex += k.ToString();
+					}
+				}
+
+				return ssex;
+			}
+		}
+
 		public override string ToString()
 		{
-			return "Category="+CategoryNames+"; Age="+AgeNames+"; Name="+Name;									
+			return "Category="+CategoryNames+"; Age="+AgeNames+"; Name="+Name;
 		}
 
 	}
@@ -310,7 +414,7 @@ namespace SimPe.Plugin
 		{
 			get 
 			{
-				if ((skin==null) && (this.Type==Data.MetaData.GZPS) && (parent!=null))
+				if ((skin == null) && (this.Type == Data.MetaData.GZPS || this.Type == Data.MetaData.AGED || this.Type == Data.MetaData.XSTN) && (parent != null))
 				{
 					try 
 					{
@@ -334,18 +438,20 @@ namespace SimPe.Plugin
 		
 		public override string ToString()
 		{
-			string name = base.ToString();			
-			
-			
-		
-			if (Skin!=null) 
+			string name = base.ToString();
+			if (Skin!=null)
 			{
-				name = "Category="+Skin.CategoryNames+"; Age="+Skin.AgeNames+"; Name="+Skin.Name;
-				name += " ("+base.ToString()+")";
+				if (Skin.PartNames != "") name += "; Part=" + Skin.PartNames;
+				if (Skin.CategoryNames != "") name += "; Category=" + Skin.CategoryNames;
+				if (Skin.AgeNames != "") name += "; Age=" + Skin.AgeNames;
+				if (Skin.GenderNames != "") name += "; Gender=" + Skin.GenderNames;
+				if (Skin.Name != "") name += "; Name=" + Skin.Name;
+				if (Skin.Bodyshape != "Unknown" && !Skin.Bodyshape.Contains("Maxis")) name += "; Body=" + Skin.Bodyshape;
+				// name = "Category="+Skin.CategoryNames+"; Age="+Skin.AgeNames+"; Name="+Skin.Name;
+				// name += " ("+base.ToString()+")";
 			}
 			return name;
 		}
-
 	}
 
 	internal class CpfListItem : SkinChain
@@ -380,6 +486,5 @@ namespace SimPe.Plugin
 		{
 			return "0x"+Helper.HexString((ushort)category)+": "+name;
 		}
-
 	}
 }

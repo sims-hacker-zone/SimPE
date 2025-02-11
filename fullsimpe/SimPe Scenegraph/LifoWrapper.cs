@@ -54,9 +54,10 @@ namespace SimPe.Plugin
 		{
 			return new AbstractWrapperInfo(
 				"LIFO Wrapper",
-				"Pumuckl, Quaxi",
-				"---",
-				5
+                "Pumuckl, Quaxi",
+                "This File is part of the Scenegraph. It contains a large image for a Texture.",
+				5,
+                System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.Plugin.lifo.png"))
 				); 
 		}
 		#endregion

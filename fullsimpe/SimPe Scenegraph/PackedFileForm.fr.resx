@@ -118,29 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pb.Location" type="System.Drawing.Point, System.Drawing">
-    <value>246, 168</value>
-  </data>
-  <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>325, 28</value>
-  </data>
-  <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 21</value>
-  </data>
   <data name="button2.Text" xml:space="preserve">
     <value>Emballage</value>
-  </data>
-  <data name="button4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>293, 28</value>
   </data>
   <data name="btdown.Text" xml:space="preserve">
     <value>bas</value>
   </data>
   <data name="btup.Text" xml:space="preserve">
     <value>haut</value>
-  </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 23</value>
   </data>
   <data name="button1.Text" xml:space="preserve">
     <value>Appliquer</value>
@@ -152,23 +137,11 @@
   <data name="lladd.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 7</value>
   </data>
-  <data name="lladd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>331, 80</value>
-  </data>
-  <data name="lladd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 18</value>
-  </data>
   <data name="lladd.Text" xml:space="preserve">
     <value>ajouter</value>
   </data>
   <data name="lldelete.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 9</value>
-  </data>
-  <data name="lldelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>394, 80</value>
-  </data>
-  <data name="lldelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 13</value>
   </data>
   <data name="lldelete.Text" xml:space="preserve">
     <value>supprimer</value>
@@ -178,12 +151,6 @@
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>Type de fichier :</value>
-  </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 18</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 27</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Sous-Type/
@@ -195,12 +162,6 @@ Class ID :</value>
   <data name="llcommit.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 8</value>
   </data>
-  <data name="llcommit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>262, 80</value>
-  </data>
-  <data name="llcommit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 13</value>
-  </data>
   <data name="llcommit.Text" xml:space="preserve">
     <value>modifier</value>
   </data>
@@ -209,9 +170,6 @@ Class ID :</value>
   </data>
   <data name="miRem.Text" xml:space="preserve">
     <value>&amp;Supprimer</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 16</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Éditeur de fichier de Référence 3D</value>

@@ -127,17 +127,8 @@
     <value>Aplicar</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lladd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>361, 80</value>
-  </data>
-  <data name="lladd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 13</value>
-  </data>
   <data name="lladd.Text" xml:space="preserve">
     <value>añadir</value>
-  </data>
-  <data name="lldelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 13</value>
   </data>
   <data name="lldelete.Text" xml:space="preserve">
     <value>borrar</value>
@@ -148,20 +139,11 @@
   <data name="label8.Text" xml:space="preserve">
     <value>Tpo de archivo:</value>
   </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-2, 24</value>
-  </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Clase ID:</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Grupo:</value>
-  </data>
-  <data name="llcommit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>299, 80</value>
-  </data>
-  <data name="llcommit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 18</value>
   </data>
   <data name="llcommit.Text" xml:space="preserve">
     <value>cambiar</value>

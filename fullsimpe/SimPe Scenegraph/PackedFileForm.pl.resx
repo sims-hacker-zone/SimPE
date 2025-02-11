@@ -115,38 +115,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pb.Location" type="System.Drawing.Point, System.Drawing">
-    <value>251, 168</value>
-  </data>
-  <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>339, 28</value>
-  </data>
-  <data name="button4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>307, 28</value>
-  </data>
-  <data name="btdown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 23</value>
-  </data>
   <data name="btdown.Text">
     <value xml:space="preserve">w dół</value>
-  </data>
-  <data name="btup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 23</value>
   </data>
   <data name="btup.Text">
     <value xml:space="preserve">w górę</value>
   </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 23</value>
-  </data>
   <data name="button1.Text">
     <value xml:space="preserve">Zatwierdź</value>
-  </data>
-  <data name="lladd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>377, 80</value>
-  </data>
-  <data name="lladd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 15</value>
   </data>
   <data name="lladd.Text">
     <value xml:space="preserve">dodaj</value>
@@ -154,12 +130,6 @@
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lldelete.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 4</value>
-  </data>
-  <data name="lldelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>423, 80</value>
-  </data>
-  <data name="lldelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
   </data>
   <data name="lldelete.Text">
     <value xml:space="preserve">usuń</value>
@@ -179,17 +149,11 @@
   <data name="llcommit.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 5</value>
   </data>
-  <data name="llcommit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 13</value>
-  </data>
   <data name="llcommit.Text">
     <value xml:space="preserve">zmień</value>
   </data>
   <data name="gbtypes.Text">
     <value xml:space="preserve">Właściwości pliku</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 16</value>
   </data>
   <data name="label1.Text">
     <value xml:space="preserve">Edytor pliku odniesienia 3D</value>
