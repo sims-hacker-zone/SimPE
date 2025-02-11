@@ -120,12 +120,4 @@
   <data name="pb.LabelText" xml:space="preserve">
     <value>Лояльность:</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="pb.LabelWidth" type="System.Int32, mscorlib">
-    <value>81</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pb.Size" type="System.Drawing.Size, System.Drawing">
-    <value>348, 32</value>
-  </data>
 </root>

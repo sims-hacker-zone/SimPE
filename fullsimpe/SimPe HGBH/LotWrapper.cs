@@ -43,7 +43,7 @@ namespace SimPe.Plugin
 		ushort subver = 0;
 		Size sz;
 		Ltxt.LotType type = Ltxt.LotType.Residential;
-        Boolset roads = (byte)0x00; //noRoads = 0x00, atLeft = 0x01, atTop = 0x02, atRight = 0x04, atBottom = 0x08
+        byte roads = (byte)0x00; //noRoads = 0x00, atLeft = 0x01, atTop = 0x02, atRight = 0x04, atBottom = 0x08
         Ltxt.Rotation rotation = Ltxt.Rotation.toLeft;
         UInt32 unknown_0 = 0;
         string lotname = ""; //7bitstr
@@ -59,7 +59,7 @@ namespace SimPe.Plugin
         public LtxtSubVersion SubVersion { get { return (LtxtSubVersion)subver; } set { subver = (ushort)value; } }
         public Size LotSize { get { return sz; } set { sz = value; } }
         public Ltxt.LotType Type { get { return type; } set { type = value; } }
-        public Boolset LotRoads { get { return roads; } set { roads = value; } }
+        public byte LotRoads { get { return roads; } set { roads = value; } }
         public byte LotRotation { get { return (byte)rotation; } set { rotation = (Ltxt.Rotation)value; } }
         internal UInt32 Unknown0 { get { return unknown_0; } set { unknown_0 = value; } }
         public string LotName { get { return lotname; } set { lotname = value; } }
@@ -90,7 +90,7 @@ namespace SimPe.Plugin
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
-			return null;
+            return new LoteUI();
 		}
 
 		/// <summary>

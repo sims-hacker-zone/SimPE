@@ -8,13 +8,13 @@ using System.Windows.Forms;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für NgbhValueDescriptorUI.
+	/// Summary description for NgbhValueDescriptorUI.
 	/// </summary>
 	[System.ComponentModel.DefaultEvent("AddedNewItem")]
 	public class NgbhValueDescriptorUI : System.Windows.Forms.UserControl
 	{
 		/// <summary> 
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
@@ -28,15 +28,14 @@ namespace SimPe.Plugin
 				ControlStyles.ResizeRedraw 
 				| ControlStyles.DoubleBuffer
 				,true);
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Required designer variable.
 			InitializeComponent();
 
 			SetContent();
-
 		}
 
 		/// <summary> 
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -50,10 +49,10 @@ namespace SimPe.Plugin
 			base.Dispose( disposing );
 		}
 
-		#region Vom Komponenten-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -61,7 +60,7 @@ namespace SimPe.Plugin
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.pb = new Ambertation.Windows.Forms.LabeledProgressBar();
 			this.panel2 = new System.Windows.Forms.Panel();
-			this.cb = new Ambertation.Windows.Forms.TransparentCheckBox();
+            this.cb = new System.Windows.Forms.CheckBox();
 			this.panel3 = new System.Windows.Forms.Panel();
 			this.lb = new System.Windows.Forms.Label();
 			this.ll = new System.Windows.Forms.LinkLabel();
@@ -290,7 +289,7 @@ namespace SimPe.Plugin
 		private System.Windows.Forms.Panel panel1;
 		private Ambertation.Windows.Forms.LabeledProgressBar pb;
 		private System.Windows.Forms.Panel panel2;
-		private Ambertation.Windows.Forms.TransparentCheckBox cb;
+        private System.Windows.Forms.CheckBox cb;
 		private System.Windows.Forms.Panel panel3;
 		private System.Windows.Forms.LinkLabel ll;
 		private System.Windows.Forms.Label lb;
@@ -333,7 +332,7 @@ namespace SimPe.Plugin
 		NgbhItem item;
 		bool inter;
 		void SetContent()
-		{		
+		{
 			if (inter) return;
 			inter = true;
 			if (des!=null && slot!=null)
@@ -351,16 +350,12 @@ namespace SimPe.Plugin
 				else
 					lb.Text = des.ToString();
 
-				
-				
-								
 				this.Enabled = true;
 			} 	
 			else 
 			{
 				this.Enabled = false;
 			}
-			
 
 			SetVisible();
 			inter = false;
@@ -429,8 +424,6 @@ namespace SimPe.Plugin
 
 		private void pb_Load(object sender, System.EventArgs e)
 		{
-		
 		}
-
 	}
 }

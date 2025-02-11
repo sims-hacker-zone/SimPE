@@ -178,4 +178,27 @@
         DP8C6CY4ShQREToAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>184, 17</value>
+  </metadata>
+  <data name="tbunknown.ToolTip" xml:space="preserve">
+    <value>This is Catched Fair Pay
+The value is re-calculated on the fly
+so changing it here may be pointless
+
+the value is
+$15 base rate plus
+$1 per skill point plus
+$5 per bronze talent badge plus
+$10 per silver talent badge plus
+$15 per gold talent badge plus
+*$70 for manager (A bug in the game
+prevents that from working!)</value>
+  </data>
+  <metadata name="ilist.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>114, 17</value>
+  </metadata>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>184, 17</value>
+  </metadata>
 </root>

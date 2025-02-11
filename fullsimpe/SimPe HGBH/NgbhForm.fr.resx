@@ -120,21 +120,8 @@
   <data name="button1.Text" xml:space="preserve">
     <value>Appliquer</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>452, 56</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 13</value>
-  </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Valeur :</value>
-  </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>231, 56</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 13</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Nr. d'inventaire :</value>
@@ -149,39 +136,14 @@
   <data name="linkLabel2.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 3</value>
   </data>
-  <data name="linkLabel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>581, 112</value>
-  </data>
-  <data name="linkLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 13</value>
-  </data>
   <data name="linkLabel2.Text" xml:space="preserve">
     <value>moi</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>184, 76</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 26</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Propriétaire d'événement :</value>
   </data>
-  <data name="label4.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopRight</value>
-  </data>
   <data name="lladd.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 7</value>
-  </data>
-  <data name="lladd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>486, 280</value>
-  </data>
-  <data name="lladd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
   </data>
   <data name="lladd.Text" xml:space="preserve">
     <value>ajouter</value>
@@ -189,29 +151,11 @@
   <data name="linkLabel1.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 9</value>
   </data>
-  <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>546, 280</value>
-  </data>
-  <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 13</value>
-  </data>
   <data name="linkLabel1.Text" xml:space="preserve">
     <value>supprimer</value>
   </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>193, 184</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 13</value>
-  </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Sujet :</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>192, 136</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 13</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>GUID :</value>
@@ -219,20 +163,11 @@
   <data name="cbaction.Text" xml:space="preserve">
     <value>Est un Contrôleur</value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>253, 32</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 13</value>
-  </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Marqueurs? :</value>
   </data>
   <data name="gbmem.Text" xml:space="preserve">
     <value>Mémoires</value>
-  </data>
-  <data name="label27.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 16</value>
   </data>
   <data name="label27.Text" xml:space="preserve">
     <value>Éditeur de mémoire expérimental</value>

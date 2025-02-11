@@ -34,7 +34,7 @@ namespace SimPe.Plugin
 		public EnhancedNgbh() : base()
 		{
 			//
-			// TODO: Fügen Sie hier die Konstruktorlogik hinzu
+			// TODO: F�gen Sie hier die Konstruktorlogik hinzu
 			//
 		}
 
@@ -45,9 +45,9 @@ namespace SimPe.Plugin
 		protected override IWrapperInfo CreateWrapperInfo()
 		{
 			return new AbstractWrapperInfo(
-				"Extended Neighborhood/Memory Wrapper",
+				"Extended Neighbourhood/Memory Wrapper",
 				"Quaxi (with extensions developed by Theo)",
-				"This File contains the Memories and Inventories of all Sims and Lots that Live in this Neighborhood.",
+				"This File contains the Memories and Inventories of all Sims and Lots that Live in this Neighbourhood.",
 				2,
 				System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.Plugin.ngbh.png"))
 				); 
@@ -114,10 +114,7 @@ namespace SimPe.Plugin
 				}
 				return ret;
 			}
-
 		}
-
-
 
 		public void FixNeighborhoodMemories()
 		{
@@ -125,18 +122,18 @@ namespace SimPe.Plugin
 			int fixedCount = 0;
 
 			ExceptionBuilder trace = new ExceptionBuilder();
-			trace.Append("Invalid memories found:"+Helper.lbr);
-			
-			Collections.NgbhSlots slots = this.GetSlots(Data.NeighborhoodSlots.Sims);			
+			trace.Append("Invalid memories found:" + Helper.lbr);
+
+			Collections.NgbhSlots slots = this.GetSlots(Data.NeighborhoodSlots.Sims);
 
 			foreach (NgbhSlot slot in slots)
 			{
 				SDesc simDesc = FileTable.ProviderRegistry.SimDescriptionProvider.SimInstance[slot.SlotID] as SDesc;
+				// SDesc always returns null 
 				Collections.NgbhItems simMemories = slot.ItemsB;
 
 				ArrayList memoryToRemove = new ArrayList();
 				ArrayList memoryToFix = new ArrayList();
-
 
 				NgbhItem lastSpamMemory = null;
 
@@ -150,20 +147,18 @@ namespace SimPe.Plugin
 						// ...and the lame "Met Unknown" memories
 						if (simMemory.SimInstance != 0)
 						{
-							// fix invalid sim instances
+							// fix invalid sim instances, fixes things that aren't broken
 							ushort inst = FileTable.ProviderRegistry.SimDescriptionProvider.GetInstance(simMemory.SimID);
 							if (simMemory.SimInstance != inst)
 							{
 								simMemory.SimInstance = inst;
 								memoryToFix.Add(simMemory);
 							}
-							
-
-							if (simDesc==null)
+							/*
+							if (simDesc == null) // SDesc always returns null, so this wipes every memery
 							{
 								memoryToRemove.Add(simMemory);
-							}
-							
+							}*/
 						}
 
 						// it could be spam...
@@ -183,10 +178,7 @@ namespace SimPe.Plugin
 						{
 							lastSpamMemory = null;
 						}
-						
-
 					}
-
 				} // for simMemories
 
 
@@ -195,7 +187,8 @@ namespace SimPe.Plugin
 					deletedCount += memoryToRemove.Count;
 					fixedCount += memoryToFix.Count;
 
-					trace.AppendFormat("{0} {1}: {2} \r\n", simDesc.SimName, simDesc.SimFamilyName, memoryToRemove.Count + memoryToFix.Count);
+					if (simDesc != null) // SDesc always returns null so this won't be used as it always throwa an ERROR
+						trace.AppendFormat("{0} {1}: {2} \r\n", simDesc.SimName, simDesc.SimFamilyName, memoryToRemove.Count + memoryToFix.Count);
 
 					foreach (NgbhItem item in memoryToFix)
 						trace.AppendFormat("[FIX]- {0}\r\n", item.ToString());
@@ -204,11 +197,9 @@ namespace SimPe.Plugin
 					foreach (NgbhItem item in itemsToRemove)
 						trace.AppendFormat("[DEL]- {0}\r\n", item.ToString());
 
-					trace.Append("\t\r\n\r\n");					
+					trace.Append("\t\r\n\r\n");
 					slot.ItemsB.Remove(itemsToRemove);
 				}
-
-
 			}
 
 			if (deletedCount > 0 || fixedCount > 0)
@@ -307,7 +298,6 @@ namespace SimPe.Plugin
 
 				// reached top of $career
 				ret[0x2323232] = Career;
-
 				// learned how to make $food
 				ret[0x3248932] = Food;
 				// burned $food
@@ -370,8 +360,6 @@ namespace SimPe.Plugin
 
 		}
 
-
-
 		internal enum FoodType : uint
 		{
 			Unknown = 0x0000,
@@ -381,7 +369,6 @@ namespace SimPe.Plugin
 			Cereal,
 			Pancake,
 			Omelette,
-
 
 			// lunch
 			TVDinner,
@@ -399,10 +386,8 @@ namespace SimPe.Plugin
 			Salmon,
 			Turkey,
 
-
 			// dessert
 			Gelatin
-
 		}
 	}
 }

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für NgbhSkillHelperElement.
+	/// Summary description for NgbhSkillHelperElement.
 	/// </summary>
 	[System.ComponentModel.DefaultEvent("AddedNewItem")]
 	public class NgbhSkillHelperElement : System.Windows.Forms.UserControl
@@ -16,7 +16,7 @@ namespace SimPe.Plugin
 		private SimPe.Plugin.NgbhValueDescriptorSelection cb;
 		private SimPe.Plugin.NgbhValueDescriptorUI ui;
 		/// <summary> 
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
@@ -30,7 +30,7 @@ namespace SimPe.Plugin
 				ControlStyles.ResizeRedraw 
 				| ControlStyles.DoubleBuffer
 				,true);
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Required designer variable.
 			InitializeComponent();
 
 			ShowToddlerSkills = true;
@@ -40,7 +40,7 @@ namespace SimPe.Plugin
 		}
 
 		/// <summary> 
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -54,10 +54,10 @@ namespace SimPe.Plugin
 			base.Dispose( disposing );
 		}
 
-		#region Vom Komponenten-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{

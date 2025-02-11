@@ -28,7 +28,7 @@ using System.Windows.Forms;
 namespace SimPe.Plugin 
 {
 	/// <summary>
-	/// Zusammenfassung für TattUI.
+	/// Summary description for TattUI.
 	/// </summary>
 	public class TattUI : 
 		SimPe.Windows.Forms.WrapperBaseControl
@@ -47,13 +47,12 @@ namespace SimPe.Plugin
 
 		public TattUI()
 		{
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+            // Required designer variable.
 			InitializeComponent();
-
 		}
 
 		/// <summary> 
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -67,10 +66,10 @@ namespace SimPe.Plugin
 			base.Dispose( disposing );
 		}
 
-		#region Vom Komponenten-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{

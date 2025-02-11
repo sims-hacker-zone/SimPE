@@ -179,7 +179,15 @@ namespace SimPe.Plugin.Collections
 			foreach (NgbhItem i in list)
 				if (i.Guid == guid) return i;
 			return null;
-		}
+        }
+
+        public int CountItemsByGuid(uint guid)
+        {
+            int j = 0;
+            foreach (NgbhItem i in list)
+                if (i.Guid == guid && !i.IsGossip) j++;
+            return j;
+        }
 
 		#region IDisposable Member
 

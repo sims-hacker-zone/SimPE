@@ -3,7 +3,7 @@ using System;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für TileItem.
+	/// Summary description for TileItem.
 	/// </summary>
 	public abstract class NhtrItem
 	{			

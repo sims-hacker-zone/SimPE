@@ -49,7 +49,7 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class NgbhItem
 	{
-		internal const int ICON_SIZE = 24; 
+		internal const int ICON_SIZE = 24; // was 24
 		Ngbh parent;
 		NgbhSlotList parentslot;
 		internal NgbhItem(NgbhSlotList parentslot) : this (parentslot, SimMemoryType.Memory) {}
@@ -555,8 +555,7 @@ namespace SimPe.Plugin
 
 		protected string GetSubjectName()
 		{
-
-			string ext = " (0x"+Helper.HexString(this.SimID)+")";
+            string ext = " (0x"+Helper.HexString(this.SimID)+")";
 			string n = SimPe.Localization.GetString("Unknown")+ext;
 			if (parent.Provider.SimNameProvider.StoredData.ContainsKey(this.SimID))
 				n = parent.Provider.SimNameProvider.FindName(this.SimID).ToString();
@@ -571,14 +570,18 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			string name = this.MemoryCacheItem.Name.Replace("$Subject", GetSubjectName());
-			if (name.Trim()=="") name = "---";
-
+            string name = this.MemoryCacheItem.Name.Replace("$Subject", GetSubjectName());
+            name = name.Replace("$Constant:4097:7", "X Number of");
+            if (name.Trim() == "")
+            {
+                if (SimPe.Helper.WindowsRegistry.HiddenMode) name = "---";
+                else name = "[GUID=0x" + Helper.HexString(this.guid) + "]";
+            }
 			if (!this.Flags.IsVisible) name = "[invisible] "+name;
 
 			try 
 			{
-				if (OwnerInstance != this.ParentSlot.SlotID) 
+                if (OwnerInstance != this.ParentSlot.SlotID && (MemoryType == SimMemoryType.Gossip || MemoryType == SimMemoryType.GossipInventory)) 
 				{
 					uint sid = parent.Provider.SimDescriptionProvider.FindSim(OwnerInstance).SimId;
 				

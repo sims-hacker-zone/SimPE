@@ -28,7 +28,7 @@ namespace SimPe.Plugin
 		Business = 0x04
 	}
 	/// <summary>
-	/// Wrapper for 0xABD0DC63 , which apear to be the "Neighborhood terrain" Resource
+	/// Wrapper for 0xABD0DC63 , which appear to be the "Neighbourhood terrain" Resource
 	/// </summary>
 	public class Nhtr : AbstractWrapper
 		, SimPe.Interfaces.Plugin.IFileWrapper
@@ -70,9 +70,9 @@ namespace SimPe.Plugin
 		protected override IWrapperInfo CreateWrapperInfo()
 		{
 			return new AbstractWrapperInfo(
-				"Neighborhood Terrain Wrapper",
+				"Neighbourhood Terrain Wrapper",
 				"TickleOnTheTum, jaxad0127 and Quaxi",
-				"Contains Informations about the Neighborhood Terrain.",
+				"Contains Information about the Neighbourhood Terrain.",
 				3,
 				null
 				); 

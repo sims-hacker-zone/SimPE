@@ -22,7 +22,7 @@ using System;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für WantItemContainer.
+	/// Summary description for WantItemContainer.
 	/// </summary>
 	public class WantItemContainer
 	{

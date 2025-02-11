@@ -27,7 +27,7 @@ using System.Windows.Forms;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für NgbhItemsListViewItem.
+	/// Summary description for NgbhItemsListViewItem.
 	/// </summary>
 	public class NgbhItemsListView : System.Windows.Forms.UserControl
     {
@@ -46,6 +46,7 @@ namespace SimPe.Plugin
 		private ToolStripMenuItem miDelCascade;
         private ToolStripSeparator toolStripMenuItem2;
 		private ListView lv;
+        private CheckBox cbnogoss;
 
         ThemeManager tm;
 		public NgbhItemsListView()
@@ -58,7 +59,7 @@ namespace SimPe.Plugin
 				ControlStyles.ResizeRedraw 
 				| ControlStyles.DoubleBuffer
 				,true);
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Required designer variable.
 			InitializeComponent();
 			
 			SmallImageList = new ImageList();
@@ -75,7 +76,7 @@ namespace SimPe.Plugin
 		}
 
 		/// <summary> 
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -96,10 +97,10 @@ namespace SimPe.Plugin
 			base.Dispose( disposing );
 		}
 
-		#region Vom Komponenten-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -110,22 +111,23 @@ namespace SimPe.Plugin
             this.miCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.miPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.miPasteGossip = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.miClone = new System.Windows.Forms.ToolStripMenuItem();
             this.miDelCascade = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbnogoss = new System.Windows.Forms.CheckBox();
             this.lladd = new System.Windows.Forms.LinkLabel();
-            this.cbadd = new ComboBox();
+            this.cbadd = new System.Windows.Forms.ComboBox();
             this.lldel = new System.Windows.Forms.LinkLabel();
             this.btUp = new System.Windows.Forms.Button();
             this.btDown = new System.Windows.Forms.Button();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.menu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lv
             // 
-            this.lv.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lv.ContextMenuStrip = this.menu;
             resources.ApplyResources(this.lv, "lv");
             this.lv.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -166,6 +168,11 @@ namespace SimPe.Plugin
             resources.ApplyResources(this.miPasteGossip, "miPasteGossip");
             this.miPasteGossip.Click += new System.EventHandler(this.PasteItemsAsGossip);
             // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
+            // 
             // miClone
             // 
             this.miClone.Name = "miClone";
@@ -182,12 +189,20 @@ namespace SimPe.Plugin
             // 
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.cbnogoss);
             this.panel1.Controls.Add(this.lladd);
             this.panel1.Controls.Add(this.cbadd);
             this.panel1.Controls.Add(this.lldel);
             this.panel1.Controls.Add(this.btUp);
             this.panel1.Controls.Add(this.btDown);
             this.panel1.Name = "panel1";
+            // 
+            // cbnogoss
+            // 
+            resources.ApplyResources(this.cbnogoss, "cbnogoss");
+            this.cbnogoss.Name = "cbnogoss";
+            this.cbnogoss.UseVisualStyleBackColor = true;
+            this.cbnogoss.CheckedChanged += new System.EventHandler(this.cbnogoss_CheckedChanged);
             // 
             // lladd
             // 
@@ -224,11 +239,6 @@ namespace SimPe.Plugin
             this.btDown.Name = "btDown";
             this.btDown.Click += new System.EventHandler(this.btDown_Click);
             // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
-            // 
             // NgbhItemsListView
             // 
             this.Controls.Add(this.lv);
@@ -237,11 +247,11 @@ namespace SimPe.Plugin
             this.Name = "NgbhItemsListView";
             this.menu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
 		}
 
-        
 		#endregion
 
 		SimPe.Data.NeighborhoodSlots st;
@@ -257,6 +267,14 @@ namespace SimPe.Plugin
 				}
 			}
 		}
+
+        bool cc = false;
+
+        [Category("Appearance")]
+        [DefaultValue(typeof(bool), "false")]
+        [Browsable(true)]
+        public bool ShowGossip
+        { get { return cc; } set { cc = value; this.cbnogoss.Visible = cc; } }
 
 		public NgbhSlotList Slot
 		{
@@ -279,13 +297,10 @@ namespace SimPe.Plugin
 		public Collections.NgbhItems NgbhItems 
 		{
 			get {return items;}
-			set 
-			{
-				//if (value!=items)
-			{
+			set
+            {
 				items = value;
 				SetContent();
-			}
 			}
 		}
 
@@ -297,21 +312,24 @@ namespace SimPe.Plugin
 			if (items!=null)
 			{
 				lv.BeginUpdate();
-				foreach (NgbhItem i in items)								
-					AddItemToList(i);								
+                foreach (NgbhItem i in items)
+                {
+                    if (cbnogoss.Checked) { if (!i.IsGossip) AddItemToList(i); }
+                    else AddItemToList(i);
+                }
 				lv.EndUpdate();
 
 				SetAvailableAddTypes();
 			}
 		}
 
-		public  void Refresh(bool full)
+		public void Refresh(bool full)
 		{
 			if (full) SetContent();
 			base.Refresh();
 		}
 		public new void Refresh()
-		{
+        {
 			Refresh(true);
 		}
 
@@ -399,9 +417,7 @@ namespace SimPe.Plugin
 
 			SelectedItem.Update();
 			this.Refresh(false);
-
-			
-		}
+        }
 
 		public ListView.ListViewItemCollection Items
 		{
@@ -505,8 +521,12 @@ namespace SimPe.Plugin
 			int index = SelectedIndex;
 			items.Swap(index, index+1);
 			SwapListViewItem(index, index+1);
-		}
+        }
 
+        private void cbnogoss_CheckedChanged(object sender, EventArgs e)
+        {
+            SetContent();
+        }
 		
 		#region Extensions by Theo
 		System.Collections.Queue clipboard;
@@ -543,8 +563,7 @@ namespace SimPe.Plugin
 				}
 				this.Cursor = Cursors.Default;
 			}
-
-		}
+        }
 
 		void PasteItems(object sender, EventArgs e)
 		{
@@ -753,28 +772,25 @@ namespace SimPe.Plugin
 
         void menu_VisibleChanged(object sender, EventArgs e)
         {
-        
-			miCopy.Enabled = lv.SelectedItems.Count>0;
-			miClone.Enabled = miCopy.Enabled;			
-			miPaste.Enabled = clipboard.Count>0;
+            try
+            {
+                miCopy.Enabled = lv.SelectedItems.Count > 0;
+                miClone.Enabled = miCopy.Enabled;
+                miPaste.Enabled = clipboard.Count > 0;
 
-			if (((NgbhSlot)items.Parent).Type == Data.NeighborhoodSlots.Sims || ((NgbhSlot)items.Parent).Type == Data.NeighborhoodSlots.SimsIntern)
-			{
-				miDelCascade.Enabled = miCopy.Enabled;				
-				miPasteGossip.Enabled = miPaste.Enabled;
-			} 
-			else 
-			{
-				miDelCascade.Enabled = false;
-				miPasteGossip.Enabled = false;
-			}
+                if (((NgbhSlot)items.Parent).Type == Data.NeighborhoodSlots.Sims || ((NgbhSlot)items.Parent).Type == Data.NeighborhoodSlots.SimsIntern)
+                {
+                    miDelCascade.Enabled = miCopy.Enabled;
+                    miPasteGossip.Enabled = miPaste.Enabled;
+                }
+                else
+                {
+                    miDelCascade.Enabled = false;
+                    miPasteGossip.Enabled = false;
+                }
+            }
+            catch { miCopy.Enabled = miPaste.Enabled = miPasteGossip.Enabled = miClone.Enabled = miDelCascade.Enabled = false; }
 		}
-		
-
-
-		
-		#endregion
-
-		
-	}
+        #endregion
+    }
 }

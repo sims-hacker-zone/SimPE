@@ -3,7 +3,7 @@ using System;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für BnfoCustomerItem.
+	/// Summary description for BnfoCustomerItem.
 	/// </summary>
 	public class BnfoCustomerItem
 	{
@@ -63,14 +63,12 @@ namespace SimPe.Plugin
 
 		long endpos;
 		internal void Unserialize(System.IO.BinaryReader reader)
-		{	
+		{
 			SimInstance = reader.ReadUInt16();
 			loyalty = reader.ReadInt32();
 			data = reader.ReadBytes(data.Length);
 			lloyalty = reader.ReadInt32();
-
 			endpos = reader.BaseStream.Position;
-			
 		}
 
 		internal  void Serialize(System.IO.BinaryWriter writer) 
@@ -84,8 +82,12 @@ namespace SimPe.Plugin
 		public override string ToString()
 		{
 			string s = "";
-			if (SimDescription!=null) 
-				s = SimDescription.SimName+" "+SimDescription.SimFamilyName;
+			if (SimDescription != null)
+			{
+				s = SimDescription.SimName + " " + SimDescription.SimFamilyName;
+				if (SimDescription.CharacterDescription.NPCType == 41) s += " [Reporter]";
+			}
+			else s = SimPe.Localization.GetString("Unknown");
 
 			if (Helper.WindowsRegistry.HiddenMode) 
 			{
@@ -96,6 +98,5 @@ namespace SimPe.Plugin
 				return s + ": "+" "+this.LoyaltyStars.ToString();
 			}
 		}
-
 	}
 }

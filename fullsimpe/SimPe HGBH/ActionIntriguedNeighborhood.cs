@@ -18,11 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+using System.Media;
 
 namespace SimPe.Plugin.Tool.Action
 {
 	/// <summary>
-	/// The Intrigued Neighborhood Action
+	/// The Intrigued Neighbourhood Action
 	/// </summary>
 	public class ActionIntriguedNeighborhood : SimPe.Interfaces.IToolAction
 	{
@@ -31,7 +32,9 @@ namespace SimPe.Plugin.Tool.Action
 
 		public virtual bool ChangeEnabledStateEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
 		{
-			return true;
+            if (es.Loaded && Helper.IsNeighborhoodFile(es.LoadedPackage.FileName)) return true;
+
+			return false;
 		}
 
         private bool RealChangeEnabledStateEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
@@ -49,13 +52,22 @@ namespace SimPe.Plugin.Tool.Action
                     this.ToString());
                 return;
             }
+            SimPe.PackedFiles.Wrapper.SimDNA sdna; // Fuck
 
 			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = e.LoadedPackage.Package.FindFiles(Data.MetaData.SIM_DESCRIPTION_FILE);
 
-			SimPe.PackedFiles.Wrapper.SDesc sdesc = new SimPe.PackedFiles.Wrapper.SDesc(null, null, null);
-			foreach(SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds) 
-			{
-				sdesc.ProcessData(pfd, e.LoadedPackage.Package);
+            SimPe.PackedFiles.Wrapper.SDesc sdesc = new SimPe.PackedFiles.Wrapper.SDesc(null, null, null);
+            Random slt = new Random();
+            foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+            {
+                sdesc.ProcessData(pfd, e.LoadedPackage.Package);
+                if (sdesc.Nightlife.Species != 0 || ((int)sdesc.Version == (int)SimPe.PackedFiles.Wrapper.SDescVersions.Castaway && sdesc.Castaway.Subspecies > 0)) continue;
+                SimPe.Interfaces.Files.IPackedFileDescriptor pfb = e.LoadedPackage.Package.FindFileAnyGroup(Data.MetaData.SDNA, 0, pfd.Instance);
+                if (pfb != null)
+                {
+                    sdna = new SimPe.PackedFiles.Wrapper.SimDNA();
+                    sdna.ProcessData(pfb, e.LoadedPackage.Package, true);
+                }
 
 				sdesc.Interests.Animals = 1000;
 				sdesc.Interests.Crime = 1000;

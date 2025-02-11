@@ -27,19 +27,21 @@ using System.Windows.Forms;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für SlotUI.
+	/// Summary description for SlotUI.
 	/// </summary>
 	public class NgbhSlotUI : System.Windows.Forms.UserControl
 	{
 		private TD.SandDock.TabControl tabControl1;
 		private TD.SandDock.TabPage tabPage1;
-		private TD.SandDock.TabPage tabPage2;
+        private TD.SandDock.TabPage tabPage2;
+        internal TD.SandDock.TabPage tabPage3;
 		private NgbhItemsListView lv;
-		private SimPe.Plugin.NgbhItemsListView lvint;
+        private NgbhItemsListView lvint;
+        private NgbhItemsListView lvfam;
 		private System.Windows.Forms.Splitter splitter1;
-		private SimPe.Plugin.MemoryProperties memprop;
+		private MemoryProperties memprop;
 		/// <summary> 
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
@@ -54,15 +56,24 @@ namespace SimPe.Plugin
 				| ControlStyles.DoubleBuffer
 				,true);
 
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Required designer variable.
 			InitializeComponent();
 
 			SlotType = Data.NeighborhoodSlots.Sims;
-			tabPage2_VisibleChanged(null, null);
+            tabPage2_VisibleChanged(null, null);
+
+            if (Helper.WindowsRegistry.HiddenMode)
+            {
+                this.tabControl1.Controls.Remove(this.tabPage3);
+                this.tabControl1.LayoutSystem = new TD.SandDock.SplitLayoutSystem(250, 400, System.Windows.Forms.Orientation.Horizontal, new TD.SandDock.LayoutSystemBase[] {
+																																											new TD.SandDock.DocumentLayoutSystem(504, 165, new TD.SandDock.DockControl[] {
+																																																															 this.tabPage1,
+																																																															 this.tabPage2}, this.tabPage1)});
+            }
 		}
 
 		/// <summary> 
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -76,10 +87,10 @@ namespace SimPe.Plugin
 			base.Dispose( disposing );
 		}
 
-		#region Vom Komponenten-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -87,24 +98,29 @@ namespace SimPe.Plugin
 			this.tabPage1 = new TD.SandDock.TabPage();
 			this.lv = new SimPe.Plugin.NgbhItemsListView();
 			this.tabPage2 = new TD.SandDock.TabPage();
-			this.lvint = new SimPe.Plugin.NgbhItemsListView();
+            this.lvint = new SimPe.Plugin.NgbhItemsListView();
+            this.tabPage3 = new TD.SandDock.TabPage();
+            this.lvfam = new SimPe.Plugin.NgbhItemsListView();
 			this.splitter1 = new System.Windows.Forms.Splitter();
 			this.memprop = new SimPe.Plugin.MemoryProperties();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
-			this.tabPage2.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tabControl1
 			// 
 			this.tabControl1.BorderStyle = TD.SandDock.Rendering.BorderStyle.None;
 			this.tabControl1.Controls.Add(this.tabPage1);
-			this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
 			this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tabControl1.LayoutSystem = new TD.SandDock.SplitLayoutSystem(250, 400, System.Windows.Forms.Orientation.Horizontal, new TD.SandDock.LayoutSystemBase[] {
 																																											new TD.SandDock.DocumentLayoutSystem(504, 165, new TD.SandDock.DockControl[] {
 																																																															 this.tabPage1,
-																																																															 this.tabPage2}, this.tabPage1)});
+																																																															 this.tabPage2,
+                                                                                                                                                                                																			 this.tabPage3}, this.tabPage1)});
 			this.tabControl1.Location = new System.Drawing.Point(0, 0);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.Size = new System.Drawing.Size(504, 165);
@@ -133,6 +149,7 @@ namespace SimPe.Plugin
 			this.lv.NgbhItems = null;
 			this.lv.Size = new System.Drawing.Size(500, 141);
 			this.lv.Slot = null;
+            this.lv.ShowGossip = true;
 			this.lv.SlotType = SimPe.Data.NeighborhoodSlots.Sims;
 			this.lv.TabIndex = 0;
 			// 
@@ -159,9 +176,36 @@ namespace SimPe.Plugin
 			this.lvint.Name = "lvint";
 			this.lvint.NgbhItems = null;
 			this.lvint.Size = new System.Drawing.Size(500, 117);
-			this.lvint.Slot = null;
+            this.lvint.Slot = null;
 			this.lvint.SlotType = SimPe.Data.NeighborhoodSlots.Sims;
-			this.lvint.TabIndex = 1;
+            this.lvint.TabIndex = 1;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage3.Controls.Add(this.lvfam);
+            this.tabPage3.FloatingSize = new System.Drawing.Size(550, 400);
+            this.tabPage3.Guid = new System.Guid("88419e31-43c9-4409-8d97-7ef80e69b00b");
+            this.tabPage3.Location = new System.Drawing.Point(2, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(500, 117);
+            this.tabPage3.TabIndex = 1;
+            this.tabPage3.TabText = "Family Inventory";
+            this.tabPage3.Text = "Family Inventory";
+            this.tabPage3.Visible = false;
+            this.tabPage3.VisibleChanged += new System.EventHandler(this.tabPage2_VisibleChanged);
+            // 
+            // lvfam
+            // 
+            this.lvfam.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvfam.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.lvfam.Location = new System.Drawing.Point(0, 0);
+            this.lvfam.Name = "lvfam";
+            this.lvfam.NgbhItems = null;
+            this.lvfam.Size = new System.Drawing.Size(500, 117);
+            this.lvfam.Slot = null;
+            this.lvfam.SlotType = SimPe.Data.NeighborhoodSlots.Families;
+            this.lvfam.TabIndex = 2;
 			// 
 			// splitter1
 			// 
@@ -195,7 +239,8 @@ namespace SimPe.Plugin
 			this.Size = new System.Drawing.Size(504, 360);
 			this.tabControl1.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
-			this.tabPage2.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -210,7 +255,9 @@ namespace SimPe.Plugin
 			{
 				st = value;
 				lv.NgbhItems = null;
-				lvint.NgbhItems = null;
+                lvint.NgbhItems = null;
+                lvfam.NgbhItems = null;
+                lvfam.SlotType = SimPe.Data.NeighborhoodSlots.Families;
 				if (st== SimPe.Data.NeighborhoodSlots.Sims || st==SimPe.Data.NeighborhoodSlots.SimsIntern) 
 				{
 					this.tabPage1.Text = SimPe.Localization.GetString("SimPe.Data.NeighborhoodSlots.Sims");
@@ -242,7 +289,8 @@ namespace SimPe.Plugin
 			}			
 		}
 
-		NgbhSlot slot;
+        NgbhSlot slot;
+        NgbhSlot Slut;
 		[System.ComponentModel.Browsable(false)]
 		public NgbhSlot Slot
 		{
@@ -250,7 +298,7 @@ namespace SimPe.Plugin
 			set 
 			{
 				slot = value;
-				SetContent();				
+				SetContent();			
 			}
 		}
 
@@ -281,37 +329,47 @@ namespace SimPe.Plugin
 				}
 			}
 		}
+
 		#endregion
 
 		void SetContent()
 		{
 			lv.Slot = slot;
-			lvint.Slot = slot;			
+            lvint.Slot = slot;
+            lvfam.Slot = Slut;
 		}
 
 		public new void Refresh()
-		{
+        {
 			lv.Refresh();
-			lvint.Refresh();
+            lvint.Refresh();
+            lvfam.Refresh();
 			base.Refresh();
 		}
 
 		private void pc_SelectedSimChanged(object sender, Image thumb, SimPe.PackedFiles.Wrapper.SDesc sdesc)
 		{
-			
 			if (ngbh!=null && pc!=null) 
 			{
-				if (pc.SelectedSim!=null)
-					this.Slot = ngbh.GetSlots(st).GetInstanceSlot(pc.SelectedSim.FileDescriptor.Instance);	
-				else
-					this.Slot = null;
+                if (pc.SelectedSim != null)
+                {
+                    this.Slut = ngbh.GetSlots(SimPe.Data.NeighborhoodSlots.Families).GetInstanceSlot(pc.SelectedSim.FamilyInstance);
+                    this.Slot = ngbh.GetSlots(st).GetInstanceSlot(pc.SelectedSim.FileDescriptor.Instance);
+                }
+                else
+                {
+                    this.Slut = null;
+                    this.Slot = null;
+                }
 			}
-		}			
+		}
 
 		private void tabPage2_VisibleChanged(object sender, System.EventArgs e)
 		{
 			if (tabControl1.SelectedPage == this.tabPage1)
 				memprop.NgbhItemsListView = lv;
+            else if (tabControl1.SelectedPage == this.tabPage3)
+                memprop.NgbhItemsListView = lvfam;
 			else
 				memprop.NgbhItemsListView = lvint;
 		}

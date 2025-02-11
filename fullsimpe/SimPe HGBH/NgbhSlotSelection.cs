@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für NgbhSlotSelection.
+	/// Summary description for NgbhSlotSelection.
 	/// </summary>
 	[System.ComponentModel.DefaultEvent("SelectedSlotChanged")]
 	public class NgbhSlotSelection : System.Windows.Forms.UserControl
@@ -16,7 +16,7 @@ namespace SimPe.Plugin
 		private SimPe.Plugin.NgbhSlotListView lv;
 		private Ambertation.Windows.Forms.EnumComboBox cb;
 		/// <summary> 
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
@@ -31,7 +31,7 @@ namespace SimPe.Plugin
 				| ControlStyles.DoubleBuffer
 				,true);
 
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Required designer variable.
 			InitializeComponent();
 
 			cb.Enum = typeof(Data.NeighborhoodSlots);
@@ -40,7 +40,7 @@ namespace SimPe.Plugin
 		}
 
 		/// <summary> 
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -54,88 +54,44 @@ namespace SimPe.Plugin
 			base.Dispose( disposing );
 		}
 
-		#region Vom Komponenten-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(NgbhSlotSelection));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NgbhSlotSelection));
 			this.lv = new SimPe.Plugin.NgbhSlotListView();
 			this.cb = new Ambertation.Windows.Forms.EnumComboBox();
 			this.SuspendLayout();
 			// 
 			// lv
 			// 
-			this.lv.AccessibleDescription = resources.GetString("lv.AccessibleDescription");
-			this.lv.AccessibleName = resources.GetString("lv.AccessibleName");
-			this.lv.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("lv.Anchor")));
-			this.lv.AutoScroll = ((bool)(resources.GetObject("lv.AutoScroll")));
-			this.lv.AutoScrollMargin = ((System.Drawing.Size)(resources.GetObject("lv.AutoScrollMargin")));
-			this.lv.AutoScrollMinSize = ((System.Drawing.Size)(resources.GetObject("lv.AutoScrollMinSize")));
-			this.lv.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("lv.BackgroundImage")));
-			this.lv.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("lv.Dock")));
-			this.lv.DockPadding.All = 1;
-			this.lv.Enabled = ((bool)(resources.GetObject("lv.Enabled")));
-			this.lv.Font = ((System.Drawing.Font)(resources.GetObject("lv.Font")));
-			this.lv.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("lv.ImeMode")));
-			this.lv.Location = ((System.Drawing.Point)(resources.GetObject("lv.Location")));
+			resources.ApplyResources(this.lv, "lv");
 			this.lv.Name = "lv";
 			this.lv.NgbhResource = null;
-			this.lv.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("lv.RightToLeft")));
-			this.lv.Size = ((System.Drawing.Size)(resources.GetObject("lv.Size")));
 			this.lv.Slot = null;
 			this.lv.Slots = null;
 			this.lv.SlotType = SimPe.Data.NeighborhoodSlots.LotsIntern;
-			this.lv.TabIndex = ((int)(resources.GetObject("lv.TabIndex")));
-			this.lv.Visible = ((bool)(resources.GetObject("lv.Visible")));
 			this.lv.SelectedSlotChanged += new System.EventHandler(this.lv_SelectedSlotChanged);
 			// 
 			// cb
 			// 
-			this.cb.AccessibleDescription = resources.GetString("cb.AccessibleDescription");
-			this.cb.AccessibleName = resources.GetString("cb.AccessibleName");
-			this.cb.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("cb.Anchor")));
-			this.cb.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cb.BackgroundImage")));			
-			this.cb.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("cb.Dock")));
+			resources.ApplyResources(this.cb, "cb");
 			this.cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cb.Enabled = ((bool)(resources.GetObject("cb.Enabled")));
 			this.cb.Enum = null;
-			this.cb.Font = ((System.Drawing.Font)(resources.GetObject("cb.Font")));
 			this.cb.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.cb.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("cb.ImeMode")));
-			this.cb.IntegralHeight = ((bool)(resources.GetObject("cb.IntegralHeight")));
-			this.cb.ItemHeight = ((int)(resources.GetObject("cb.ItemHeight")));
-			this.cb.Location = ((System.Drawing.Point)(resources.GetObject("cb.Location")));
-			this.cb.MaxDropDownItems = ((int)(resources.GetObject("cb.MaxDropDownItems")));
-			this.cb.MaxLength = ((int)(resources.GetObject("cb.MaxLength")));
 			this.cb.Name = "cb";
 			this.cb.ResourceManager = null;
-			this.cb.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("cb.RightToLeft")));
-			this.cb.Size = ((System.Drawing.Size)(resources.GetObject("cb.Size")));
-			this.cb.TabIndex = ((int)(resources.GetObject("cb.TabIndex")));
-			this.cb.Text = resources.GetString("cb.Text");
-			this.cb.Visible = ((bool)(resources.GetObject("cb.Visible")));
 			this.cb.SelectedIndexChanged += new System.EventHandler(this.cb_SelectedIndexChanged);
 			// 
 			// NgbhSlotSelection
 			// 
-			this.AccessibleDescription = resources.GetString("$this.AccessibleDescription");
-			this.AccessibleName = resources.GetString("$this.AccessibleName");
-			this.AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
-			this.AutoScrollMargin = ((System.Drawing.Size)(resources.GetObject("$this.AutoScrollMargin")));
-			this.AutoScrollMinSize = ((System.Drawing.Size)(resources.GetObject("$this.AutoScrollMinSize")));
-			this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
 			this.Controls.Add(this.cb);
 			this.Controls.Add(this.lv);
-			this.Enabled = ((bool)(resources.GetObject("$this.Enabled")));
-			this.Font = ((System.Drawing.Font)(resources.GetObject("$this.Font")));
-			this.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("$this.ImeMode")));
-			this.Location = ((System.Drawing.Point)(resources.GetObject("$this.Location")));
+			resources.ApplyResources(this, "$this");
 			this.Name = "NgbhSlotSelection";
-			this.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("$this.RightToLeft")));
-			this.Size = ((System.Drawing.Size)(resources.GetObject("$this.Size")));
 			this.ResumeLayout(false);
 
 		}

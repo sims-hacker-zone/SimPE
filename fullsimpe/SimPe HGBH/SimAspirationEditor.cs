@@ -10,13 +10,11 @@ namespace SimPe.Plugin
         public const uint SEC_ASP_TOKEN_GUID = 0x53D08989;
         public SimPe.Data.MetaData.AspirationTypes[] LoadAspirations(SDesc sim)
         {
-            
             if (sim == null) return null;
             LoadMemoryResource(sim);
             ushort sval = GetSecondaryAspirationValue(sim);
             SimPe.Data.MetaData.AspirationTypes[] res = new SimPe.Data.MetaData.AspirationTypes[] { SimPe.Data.MetaData.AspirationTypes.Nothing, SimPe.Data.MetaData.AspirationTypes.Nothing };
             ushort a = (ushort)sim.CharacterDescription.Aspiration;
-
 
             if (sval != 0)
             {
@@ -26,8 +24,6 @@ namespace SimPe.Plugin
             else
             {
                 Array arr = Enum.GetValues(typeof(SimPe.Data.MetaData.AspirationTypes));
-            
-
                 foreach (ushort i in arr)
                 {
                     if ((a & i) == i)
@@ -111,16 +107,13 @@ namespace SimPe.Plugin
             {
                 NgbhItem item = slot.FindItem(SEC_ASP_TOKEN_GUID);
                 if (create && item == null)
-                {                    
+                {
                     item = slot.ItemsB.AddNew(SimMemoryType.Token);
-
                     item.Guid = SEC_ASP_TOKEN_GUID;
                     item.Value = 0;
-
                 }
                 return item;
             }
-
             return null;
         }
 

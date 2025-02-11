@@ -40,10 +40,10 @@ namespace SimPe.Cache
 		}		
 
 		/// <summary>
-		/// Add a MaterialOverride to the Cache
+		/// Add a Want Item to the Cache
 		/// </summary>
 		/// <param name="want">The Want File</param>
-		public void AddItem(WantInformation want) 
+		public void AddItem(WantInformation want)
 		{
 			CacheContainer mycc = this.UseConatiner(ContainerType.Want, want.XWant.Package.FileName);
 			
@@ -66,24 +66,16 @@ namespace SimPe.Cache
 		/// </summary>
 		public Hashtable Map 
 		{
-			get { 
+			get
+            { 
 				if (map==null) LoadWants();
 				return map; 
 			}
 		}
 
-		/// <summary>
-		/// Creates a FileIndex with all available MMAT Files
-		/// </summary>
-		/// <returns>the FileIndex</returns>
-		/// <remarks>
-		/// The Tags of the FileDescriptions contain the MMATCachItem Object, 
-		/// the FileNames of the FileDescriptions contain the Name of the package File
-		/// </remarks>
 		public void LoadWants()
 		{
 			map = new Hashtable();
-			
 
 			foreach (CacheContainer cc in Containers) 
 			{
@@ -95,6 +87,6 @@ namespace SimPe.Cache
 					}
 				}
 			}//foreach
-		}		
+		}
 	}
 }

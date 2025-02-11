@@ -120,16 +120,6 @@
   <data name="button1.Text" xml:space="preserve">
     <value>Conferma</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="cbown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 80</value>
-  </data>
-  <data name="cbown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>297, 21</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 13</value>
-  </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Valore:</value>
   </data>
@@ -139,12 +129,6 @@
   <data name="btup.Text" xml:space="preserve">
     <value>su</value>
   </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>236, 83</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 13</value>
-  </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Ricordo di:</value>
   </data>
@@ -152,32 +136,14 @@
   <data name="lladd.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 8</value>
   </data>
-  <data name="lladd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>493, 280</value>
-  </data>
-  <data name="lladd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 13</value>
-  </data>
   <data name="lladd.Text" xml:space="preserve">
     <value>aggiungi</value>
   </data>
   <data name="linkLabel1.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 7</value>
   </data>
-  <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>561, 282</value>
-  </data>
-  <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
-  </data>
   <data name="linkLabel1.Text" xml:space="preserve">
     <value>elimina</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 179</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 13</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Soggetto:</value>
@@ -190,9 +156,6 @@
   </data>
   <data name="gbmem.Text" xml:space="preserve">
     <value>Ricordi</value>
-  </data>
-  <data name="label27.Size" type="System.Drawing.Size, System.Drawing">
-    <value>244, 16</value>
   </data>
   <data name="label27.Text" xml:space="preserve">
     <value>Editor dei Ricordi (sperimentale)</value>

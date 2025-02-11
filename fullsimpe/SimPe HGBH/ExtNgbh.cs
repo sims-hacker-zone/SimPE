@@ -24,7 +24,7 @@ using SimPe.Interfaces.Plugin;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// This links to th eextended GUI for the Neighborhood Wrapper
+	/// This links to the eextended GUI for the Neighbourhood Wrapper
 	/// </summary>
 	public class ExtNgbh : Ngbh
 	{
@@ -59,6 +59,16 @@ namespace SimPe.Plugin
 														 new NgbhValueDescriptor("Learned to talk", false, NgbhValueDescriptorType.ToddlerSkill, 0x4ddf0e12, 2, 0, 1000, 4),
 														 new NgbhValueDescriptor("Pottytrained", false, NgbhValueDescriptorType.ToddlerSkill, 0x4ddf0e12, 3, 0, 1000, 4)
 			});
+
+            if (SimPe.PathProvider.Global.EPInstalled >= 13)
+            {
+                list.AddRange(new NgbhValueDescriptor[] {new NgbhValueDescriptor("Nursery Rhyme", false, NgbhValueDescriptorType.ToddlerSkill, 0x4ddf0e12, 7, 0, 600, 7)});
+            }
+
+            if (PathProvider.Global.GetExpansion(SimPe.Expansions.IslandStories).Exists)
+            {
+                list.AddRange(new NgbhValueDescriptor[] {new NgbhValueDescriptor("Limbo Skill", false, NgbhValueDescriptorType.Skill, 0x33fbe0b7, 0, 0, 200)});
+            }
 
 			vd = new NgbhValueDescriptor[list.Count];
 			list.CopyTo(vd);			

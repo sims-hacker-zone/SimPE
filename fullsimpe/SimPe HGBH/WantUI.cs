@@ -113,7 +113,6 @@ namespace SimPe.Plugin
 				else 
 					form.lbsimname.Text = Localization.Manager.GetString("Unknown");
 
-				
 				form.lastwi = null;
 				form.lastlvi = null;
 
@@ -133,7 +132,6 @@ namespace SimPe.Plugin
 				form.tvhist.Nodes.Clear();
 				form.ihist.Images.Clear();			
 				form.ihist.Images.Add(new System.Drawing.Bitmap(this.GetType().Assembly.GetManifestResourceStream("SimPe.Plugin.nothumb.png")));
-			
 
 				if (wrp.Version >= 0x06) 
 				{
@@ -150,11 +148,10 @@ namespace SimPe.Plugin
 						form.tabControl1.TabPages.Remove(form.tblife);
 						form.tabControl1.SelectedIndex = 0;
 					}
-				}	
-			
+				}
 				
 				WantInformation.SaveCache();
-			} 
+			}
 			catch (Exception ex) 
 			{
 				Helper.ExceptionMessage("", ex);
@@ -171,7 +168,6 @@ namespace SimPe.Plugin
 		#region IDisposable Member
 		public virtual void Dispose()
 		{
-			
 		}
 		#endregion
 	}

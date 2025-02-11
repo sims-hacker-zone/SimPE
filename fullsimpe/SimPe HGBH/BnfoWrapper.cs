@@ -33,10 +33,8 @@ namespace SimPe.Plugin
 	public class Bnfo : AbstractWrapper
 		, SimPe.Interfaces.Plugin.IFileWrapper
 		, SimPe.Interfaces.Plugin.IFileWrapperSaveExtension
-		, SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper		
+		, SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper
 	{
-		
-
 		#region Attributes
 		uint ver;
 		public BnfoVersions Version
@@ -56,6 +54,40 @@ namespace SimPe.Plugin
 			get {return level2;}
 			set {level2 = value;}
 		}
+		int wt;
+		public int EmployeeCount
+		{
+			get { return wt; }
+			set { wt = value; }
+		}
+		ushort[] empls;
+		public ushort[] Employees
+		{
+			get { return empls; }
+			set { empls = value; }
+		}
+		int[] pr;
+		public int[] PayRate //doesn't need to be int, could just be byte but int is easier to work with. 0 to 6 inclusive
+		{
+			get { return pr; }
+			set { pr = value; }
+		}
+
+		int[] reven;
+		public int[] Revenue
+		{
+			get { return reven; }
+		}
+		int[] expe;
+		public int[] Expences
+		{
+			get { return expe; }
+		}
+		int hct;
+		public int HistoryCount
+		{
+			get { return hct; }
+		}
 
 		uint unk1, unk2;
 		uint empct;
@@ -67,7 +99,6 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		
 		public Bnfo() : base()
 		{			
 			Version = BnfoVersions.Business;
@@ -80,26 +111,21 @@ namespace SimPe.Plugin
 			return new AbstractWrapperInfo(
 				"Business Info Wrapper",
 				"Quaxi",
-				"Contains Informations about the Business on a Lot (like Cutomer Loiality)",
+				"Contains Information about the Business on a Lot (like Customer Loyality)",
 				2,
-				System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.Plugin.bookmark.png"))
+				SimPe.GetIcon.BnfoIco
 				); 
 		}
 		#endregion
-
-		
 
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
 			return new BnfoUI();
 		}
-		
-
-		
 
 		byte[] over;
-		
+
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{	
 			ver = reader.ReadUInt32();
@@ -115,30 +141,47 @@ namespace SimPe.Plugin
 			{
 				BnfoCustomerItem item = new BnfoCustomerItem(this);
 				item.Unserialize(reader);
-				
 				citems.Add(item);
 			}
-#if TRACE
-			Console.WriteLine("Employes: "+empct.ToString());
-			Console.WriteLine("Server Customers: "+ct.ToString());
-#endif
+			/*
 			long pos = reader.BaseStream.Position;
 			over = reader.ReadBytes((int)(reader.BaseStream.Length - pos));
+			reader.BaseStream.Seek(pos, System.IO.SeekOrigin.Begin);
+			*/
+			wt = reader.ReadInt32();
+			Array.Resize<ushort>(ref empls, wt);
+			Array.Resize<int>(ref pr, wt);
+			Array.Resize<uint>(ref tit, wt);
+			for (int i = 0; i < wt; i++)
+			{
+				empls[i] = reader.ReadUInt16();
+				pr[i] = reader.ReadInt32();
+			}
+			long pos = reader.BaseStream.Position;
+			over = reader.ReadBytes((int)(reader.BaseStream.Length - reader.BaseStream.Position));
 
 			reader.BaseStream.Seek(pos, System.IO.SeekOrigin.Begin);
-			ct = reader.ReadInt32();
-			for (int i=0; i<ct; i++)
-				reader.ReadBytes(86);
+			hct = reader.ReadInt32(); // number of History blocks
 
-
-#if TRACE
-			Console.WriteLine("Employes: "+reader.BaseStream.Position.ToString("X"));
-#endif
+			if (hct > 0 && over.Length > 60)
+			{
+				Array.Resize<int>(ref reven, hct);
+				Array.Resize<int>(ref expe, hct);
+				reader.BaseStream.Seek(-8, System.IO.SeekOrigin.Current);
+				// first is + 52, I would jump over it so I must pull back 8?
+				for (int i = 0; i < hct; i++)
+				{
+					reader.BaseStream.Seek(60, System.IO.SeekOrigin.Current);
+					reven[i] = reader.ReadInt32();// Renenue
+					reader.BaseStream.Seek(4, System.IO.SeekOrigin.Current); // credited
+					expe[i] = reader.ReadInt32(); // Expences
+				}
+			}
 		}
 
 		protected override void Serialize(System.IO.BinaryWriter writer) 
 		{		
-			writer.Write(ver);;
+			writer.Write(ver);
 			writer.Write(level1);
 			writer.Write(level2);
 			writer.Write(unk1);
@@ -148,12 +191,18 @@ namespace SimPe.Plugin
 			writer.Write((int)citems.Count);
 			foreach (BnfoCustomerItem item in citems)
 				item.Serialize(writer);
+			
+			writer.Write(wt);
+			for (int i = 0; i < wt; i++)
+			{
+				writer.Write(empls[i]);
+				writer.Write(pr[i]);
+				writer.Write(tit[i]);
+			}
 
 			writer.Write(over);
-		}		
+		}
 		#endregion
-
-		
 
 		#region IPackedFileWrapper Member
 
@@ -168,7 +217,6 @@ namespace SimPe.Plugin
 			}
 		}
 
-
 		public Byte[] FileSignature
 		{
 			get 
@@ -177,9 +225,9 @@ namespace SimPe.Plugin
 							 };
 				return sig;
 			}
-		}		
-		
-		#endregion		
+		}
+
+		#endregion
 	}
 
 }

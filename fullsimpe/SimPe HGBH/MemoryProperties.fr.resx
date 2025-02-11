@@ -117,15 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="rbObjs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>224, 4</value>
-  </data>
   <data name="rbObjs.Text" xml:space="preserve">
     <value>Objets</value>
-  </data>
-  <data name="rbToks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 24</value>
   </data>
   <data name="rbToks.Text" xml:space="preserve">
     <value>Souvenirs</value>
@@ -136,24 +129,14 @@
   <data name="label10.Text" xml:space="preserve">
     <value>Liste :</value>
   </data>
-  <data name="cbVis.Location" type="System.Drawing.Point, System.Drawing">
-    <value>224, 8</value>
-  </data>
   <data name="cbCtrl.Text" xml:space="preserve">
     <value>Contrôleur</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Marqueurs :</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 23</value>
-  </data>
   <data name="tabPage3.Text" xml:space="preserve">
     <value>Propriétés</value>
-  </data>
-  <data name="tabPage4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
   </data>
   <data name="tabPage4.Text" xml:space="preserve">
     <value>Donnée brut</value>
@@ -168,12 +151,6 @@
   <data name="llme2.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 3</value>
   </data>
-  <data name="llme2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>408, 8</value>
-  </data>
-  <data name="llme2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 16</value>
-  </data>
   <data name="llme2.Text" xml:space="preserve">
     <value>Moi</value>
   </data>
@@ -182,9 +159,6 @@
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>Valeur :</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Inventaire # :</value>
@@ -210,14 +184,8 @@
   <data name="llSetRawLength.Text" xml:space="preserve">
     <value>Appliquer</value>
   </data>
-  <data name="llSetRawLength.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 23</value>
-  </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Longueur :</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 23</value>
   </data>
   <data name="tabPage3.TabText" xml:space="preserve">
     <value>Propriétés</value>

@@ -33,7 +33,7 @@ using SimPe.Windows.Forms;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für ExtNgbhUI.
+	/// Summary description for ExtNgbhUI.
 	/// </summary>
 	public class ExtNgbhUI : 
 		//System.Windows.Forms.UserControl
@@ -43,39 +43,34 @@ namespace SimPe.Plugin
 		private System.Windows.Forms.Panel pnSims;
 		SimPe.PackedFiles.Wrapper.SimPoolControl spc = null;
 		private System.Windows.Forms.Panel pnDebug;
-		private SimPe.Plugin.NgbhSlotSelection nssel;
-		private SimPe.Plugin.NgbhSlotUI nsui;
+		private NgbhSlotSelection nssel;
+		private NgbhSlotUI nsui;
 		private ToolStrip toolBar1;
 		private System.Windows.Forms.Panel pnBadge;
 		private ToolStripButton biSim;
 		private ToolStripButton biBadge;
 		private ToolStripButton biDebug;
-		private SimPe.Plugin.NgbhSkillHelper shelper;
+		private NgbhSkillHelper shelper;
 		private MenuStrip menuBar1;
 		private ContextMenuStrip menu;
 		private ToolStripMenuItem miNuke;
 		private ToolStripMenuItem miFix;
-		SimPe.Plugin.NgbhSlotUI simslot = null;		
+		NgbhSlotUI simslot = null;		
 
 		public ExtNgbhUI()
 		{
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
 			InitializeComponent();
-
-            toolBar1.Renderer = new SimPe.MediaPlayerRenderer();			
-
-			ThemeManager.AddControl(this.toolBar1);
-            ThemeManager.AddControl(this.menu);
 
 			biSim.Tag = pnSims;
 			biDebug.Tag = pnDebug;
 			biBadge.Tag = pnBadge;
 			
-			
 			biDebug.Visible = Helper.WindowsRegistry.HiddenMode;
+            if (!Helper.WindowsRegistry.HiddenMode) this.menu.Items.Remove(this.miFix);
+
 			this.SelectButton(biSim);
 
-            biBadge.Enabled = SimPe.PathProvider.Global.EPInstalled >= 3;
+            biBadge.Enabled = (SimPe.PathProvider.Global.EPInstalled >= 3 || SimPe.PathProvider.Global.STInstalled >= 28);
 
 			SimPe.RemoteControl.HookToMessageQueue(0x4E474248, new SimPe.RemoteControl.ControlEvent(ControlEvent));
 		}
@@ -112,24 +107,13 @@ namespace SimPe.Plugin
 				spc.SelectedElement = sdesc;
 				if (spc.SelectedElement!=null) return true;
 			}
-			/*foreach (ListViewItem lvi in this.spc.Items)
-			{					
-				PackedFiles.Wrapper.SDesc sdesc = lvi.Tag as PackedFiles.Wrapper.SDesc;
-				if (sdesc.FileDescriptor.Instance == inst) 
-				{
-					ret = true;
-					lvi.Selected = true;
-					lvi.EnsureVisible();						
-				} 
-				else lvi.Selected = false;
-			}*/
 
 			return ret;
 		}
 
 
 		/// <summary> 
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -143,10 +127,10 @@ namespace SimPe.Plugin
 			base.Dispose( disposing );
 		}
 
-		#region Vom Komponenten-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -280,6 +264,7 @@ namespace SimPe.Plugin
             this.nsui.Name = "nsui";
             this.nsui.NgbhResource = null;
             this.nsui.SimPoolControl = null;
+            this.nsui.tabPage3.Enabled = false;
             this.nsui.Size = new System.Drawing.Size(392, 276);
             this.nsui.Slot = null;
             this.nsui.SlotType = SimPe.Data.NeighborhoodSlots.Sims;
@@ -374,7 +359,7 @@ namespace SimPe.Plugin
             this.Controls.Add(this.pnDebug);
             this.Controls.Add(this.toolBar1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.HeaderText = "Neighborhood and Sim Memory Editor";
+            this.HeaderText = "Sim Memory Editor";
             this.Name = "ExtNgbhUI";
             this.Size = new System.Drawing.Size(680, 368);
             this.Controls.SetChildIndex(this.toolBar1, 0);
@@ -390,11 +375,8 @@ namespace SimPe.Plugin
             this.toolBar1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
 		}
-
-        
-		#endregion
+        #endregion
 
 		public ExtNgbh Ngbh
 		{
@@ -447,12 +429,20 @@ namespace SimPe.Plugin
 			else if (pnBadge.Visible) pnBadge.Controls.Add(this.spc);
 		}
 
-		private void spc_SelectedSimChanged(object sender, System.Drawing.Image thumb, SimPe.PackedFiles.Wrapper.SDesc sdesc)
-		{
-/*			if (sdesc!=null)
-				lbName.Text = sdesc.SimName+" "+sdesc.SimFamilyName;
-			else
-				lbName.Text = SimPe.Localization.GetString("Unknown");*/
+        private void spc_SelectedSimChanged(object sender, System.Drawing.Image thumb, SimPe.PackedFiles.Wrapper.SDesc sdesc)
+        {
+            if (spc.SelectedSim != null)
+            {
+                Collections.NgbhSlots slots = this.Ngbh.GetSlots(Data.NeighborhoodSlots.Sims);
+                if (slots != null)
+                {
+                    NgbhSlot slot = slots.GetInstanceSlot(spc.SelectedSim.Instance);
+                    if (slot == null)
+                    {
+                        slots.AddNew(spc.SelectedSim.Instance);
+                    }
+                }
+            }
 		}
 
 		private void nssel_SelectedSlotChanged(object sender, System.EventArgs e)
@@ -488,7 +478,7 @@ namespace SimPe.Plugin
         void menu_VisibleChanged(object sender, EventArgs e)
         {
             miFix.Enabled = (this.Ngbh != null) && Helper.WindowsRegistry.HiddenMode;
-            miNuke.Enabled = (spc.SelectedSim != null);	
+            miNuke.Enabled = (spc.SelectedSim != null);
         }
 
 		private void miNuke_Activate(object sender, System.EventArgs e)
@@ -504,8 +494,8 @@ namespace SimPe.Plugin
 						slot.RemoveMyMemories();
 						int deletedCount = slot.RemoveMemoriesAboutMe();
 
-						if (deletedCount > 0)					
-							Message.Show(String.Format("Deleted {0} memories from the sim pool", deletedCount));
+						if (deletedCount > 0)
+                            SimPe.Message.Show(String.Format("Deleted {0} memories from the sim pool", deletedCount), "Advice", MessageBoxButtons.OK);
 					
 						spc.Refresh();
 					}

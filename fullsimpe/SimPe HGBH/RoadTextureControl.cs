@@ -28,7 +28,7 @@ using System.Windows.Forms;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für RoadTextureControl.
+	/// Summary description for RoadTextureControl.
 	/// </summary>
 	public class RoadTextureControl : 
 		//System.Windows.Forms.UserControl
@@ -52,21 +52,20 @@ namespace SimPe.Plugin
 		private System.Windows.Forms.Label label7;
 		private Ambertation.Windows.Forms.EnumComboBox cbType;
 		/// <summary> 
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
 		public RoadTextureControl() : base()
 		{
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Required designer variable.
 			InitializeComponent();
 
-			this.ThemeManager.AddControl(this.xpTaskBoxSimple1);
 			cbType.Enum = typeof(RoadTexture.RoadTextureType);
 		}
 
 		/// <summary> 
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -80,10 +79,10 @@ namespace SimPe.Plugin
 			base.Dispose( disposing );
 		}
 
-		#region Vom Komponenten-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -109,9 +108,10 @@ namespace SimPe.Plugin
 			// label1
 			// 
 			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label1.Location = new System.Drawing.Point(8, 64);
 			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(100, 23);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Resource ID:";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -120,7 +120,7 @@ namespace SimPe.Plugin
 			// 
 			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label2.BackColor = System.Drawing.Color.Transparent;
-			this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label2.Location = new System.Drawing.Point(368, 64);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(72, 23);
@@ -132,7 +132,7 @@ namespace SimPe.Plugin
 			// 
 			this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label3.BackColor = System.Drawing.Color.Transparent;
-			this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label3.Location = new System.Drawing.Point(528, 64);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(72, 23);
@@ -143,18 +143,19 @@ namespace SimPe.Plugin
 			// label4
 			// 
 			this.label4.BackColor = System.Drawing.Color.Transparent;
-			this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label4.Location = new System.Drawing.Point(8, 32);
 			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(100, 23);
 			this.label4.TabIndex = 3;
 			this.label4.Text = "Resourcename:";
 			this.label4.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			// 
 			// lb
 			// 
-			this.lb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
+			this.lb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this.lb.HorizontalScrollbar = true;
 			this.lb.IntegralHeight = false;
 			this.lb.Location = new System.Drawing.Point(8, 96);
@@ -165,8 +166,8 @@ namespace SimPe.Plugin
 			// 
 			// tbFlname
 			// 
-			this.tbFlname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
+			this.tbFlname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this.tbFlname.Location = new System.Drawing.Point(120, 32);
 			this.tbFlname.Name = "tbFlname";
 			this.tbFlname.Size = new System.Drawing.Size(560, 21);
@@ -206,11 +207,10 @@ namespace SimPe.Plugin
 			this.tbId.Name = "tbId";
 			this.tbId.Size = new System.Drawing.Size(192, 21);
 			this.tbId.TabIndex = 10;
-			this.tbId.Text = "";
 			// 
 			// label5
 			// 
-			this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label5.Location = new System.Drawing.Point(8, 48);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(48, 23);
@@ -222,25 +222,17 @@ namespace SimPe.Plugin
 			// 
 			this.xpTaskBoxSimple1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.xpTaskBoxSimple1.BackColor = System.Drawing.Color.Transparent;
-			this.xpTaskBoxSimple1.BodyColor = System.Drawing.SystemColors.InactiveCaptionText;
-			this.xpTaskBoxSimple1.BorderColor = System.Drawing.SystemColors.Window;
 			this.xpTaskBoxSimple1.Controls.Add(this.tbTxmt);
 			this.xpTaskBoxSimple1.Controls.Add(this.label6);
 			this.xpTaskBoxSimple1.Controls.Add(this.tbId);
 			this.xpTaskBoxSimple1.Controls.Add(this.label5);
-			this.xpTaskBoxSimple1.DockPadding.Bottom = 4;
-			this.xpTaskBoxSimple1.DockPadding.Left = 4;
-			this.xpTaskBoxSimple1.DockPadding.Right = 4;
-			this.xpTaskBoxSimple1.DockPadding.Top = 44;
 			this.xpTaskBoxSimple1.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
 			this.xpTaskBoxSimple1.HeaderText = "Properties";
-			this.xpTaskBoxSimple1.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
 			this.xpTaskBoxSimple1.IconLocation = new System.Drawing.Point(4, 12);
 			this.xpTaskBoxSimple1.IconSize = new System.Drawing.Size(32, 32);
-			this.xpTaskBoxSimple1.LeftHeaderColor = System.Drawing.SystemColors.InactiveCaption;
 			this.xpTaskBoxSimple1.Location = new System.Drawing.Point(392, 88);
 			this.xpTaskBoxSimple1.Name = "xpTaskBoxSimple1";
-			this.xpTaskBoxSimple1.RightHeaderColor = System.Drawing.SystemColors.Highlight;
+			this.xpTaskBoxSimple1.Padding = new System.Windows.Forms.Padding(4, 44, 4, 4);
 			this.xpTaskBoxSimple1.Size = new System.Drawing.Size(288, 100);
 			this.xpTaskBoxSimple1.TabIndex = 11;
 			// 
@@ -250,11 +242,10 @@ namespace SimPe.Plugin
 			this.tbTxmt.Name = "tbTxmt";
 			this.tbTxmt.Size = new System.Drawing.Size(192, 21);
 			this.tbTxmt.TabIndex = 12;
-			this.tbTxmt.Text = "";
 			// 
 			// label6
 			// 
-			this.label6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label6.Location = new System.Drawing.Point(8, 72);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(48, 23);
@@ -265,7 +256,7 @@ namespace SimPe.Plugin
 			// label7
 			// 
 			this.label7.BackColor = System.Drawing.Color.Transparent;
-			this.label7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label7.Location = new System.Drawing.Point(200, 64);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(40, 23);
@@ -275,8 +266,6 @@ namespace SimPe.Plugin
 			// 
 			// cbType
 			// 
-			this.cbType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
 			this.cbType.Enabled = false;
 			this.cbType.Enum = null;
 			this.cbType.Location = new System.Drawing.Point(240, 64);
@@ -288,6 +277,7 @@ namespace SimPe.Plugin
 			// 
 			// RoadTextureControl
 			// 
+			this.CanCommit = false;
 			this.Controls.Add(this.cbType);
 			this.Controls.Add(this.label7);
 			this.Controls.Add(this.xpTaskBoxSimple1);
@@ -300,11 +290,26 @@ namespace SimPe.Plugin
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
-			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.HeaderText = "Road Texture";
 			this.Name = "RoadTextureControl";
 			this.Size = new System.Drawing.Size(688, 296);
+			this.Controls.SetChildIndex(this.label1, 0);
+			this.Controls.SetChildIndex(this.label2, 0);
+			this.Controls.SetChildIndex(this.label3, 0);
+			this.Controls.SetChildIndex(this.label4, 0);
+			this.Controls.SetChildIndex(this.lb, 0);
+			this.Controls.SetChildIndex(this.tbFlname, 0);
+			this.Controls.SetChildIndex(this.tbUk1, 0);
+			this.Controls.SetChildIndex(this.tbUk2, 0);
+			this.Controls.SetChildIndex(this.tbUk3, 0);
+			this.Controls.SetChildIndex(this.xpTaskBoxSimple1, 0);
+			this.Controls.SetChildIndex(this.label7, 0);
+			this.Controls.SetChildIndex(this.cbType, 0);
 			this.xpTaskBoxSimple1.ResumeLayout(false);
+			this.xpTaskBoxSimple1.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 		#endregion

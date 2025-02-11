@@ -41,11 +41,21 @@ namespace SimPe.Plugin
 		/// <returns>A List of all provided Plugins (=FileType Wrappers)</returns>
 		public override SimPe.Interfaces.IWrapper[] KnownWrappers
 		{
-			get 
-			{
-                SimPe.PackedFiles.Wrapper.SdscFreetime.RegisterAsAspirationEditor(new SimPe.Plugin.SimAspirationEditor());
-				FileTable.ProviderRegistry.LotProvider.LoadingLot += new SimPe.Interfaces.Providers.LoadLotData(LotProvider_LoadingLot);
-                IWrapper[] wrappers = {
+			get
+            {
+                if (Helper.NoPlugins)
+                {
+                    return new IWrapper[0];
+                }
+                else
+                {
+                    SimPe.PackedFiles.Wrapper.SdscFreetime.RegisterAsAspirationEditor(new SimPe.Plugin.SimAspirationEditor());
+                    SimPe.PackedFiles.Wrapper.SdscApartment.RegisterWillyEditor(new SimPe.Plugin.SimWillyEditor());
+                    SimPe.PackedFiles.Wrapper.SdscApartment.RegisterNookyEditor(new SimPe.Plugin.SimNookyEditor());
+                    FileTable.ProviderRegistry.LotProvider.LoadingLot += new SimPe.Interfaces.Providers.LoadLotData(LotProvider_LoadingLot);
+                    if (Helper.StartedGui == Executable.Classic)
+                    {
+                        IWrapper[] wrappers = {
 										  new Plugin.EnhancedNgbh(),
 										  new Plugin.Ngbh(this.LinkedProvider),
 										  new Plugin.Ltxt(this.LinkedProvider),
@@ -58,7 +68,24 @@ namespace SimPe.Plugin
 										  new Plugin.Nhtr(),
                                           new Plugin.Lot(),
 									  };
-				return wrappers;
+                    return wrappers;
+                    }
+                    else
+                    {
+                        IWrapper[] wrappers = {
+										  new Plugin.EnhancedNgbh(),
+										  new Plugin.Ngbh(this.LinkedProvider),
+										  new Plugin.Ltxt(this.LinkedProvider),
+										  new Plugin.Idno(),
+									      new Plugin.RoadTexture(),
+										  new Plugin.Tatt(),		
+										  new Plugin.Bnfo(),
+										  new Plugin.Nhtr(),
+                                          new Plugin.Lot(),
+									  };
+                        return wrappers;
+                    }
+                }
 			}
 		}
 
@@ -66,26 +93,33 @@ namespace SimPe.Plugin
 
 		#region IToolFactory Member
 
-
 		public IToolPlugin[] KnownTools
 		{
 			get
-			{
-				System.Collections.ArrayList tools = new System.Collections.ArrayList();				
-				if (Helper.WindowsRegistry.HiddenMode) 
-				{
-					tools.Add(new Plugin.FixUidTool());
-					tools.Add(new ActionIntriguedNeighborhood());
-				}
-
-				if (Helper.QARelease) tools.Add(new ActionDeleteSim());
-				
-				IToolPlugin[] ret = new IToolPlugin[tools.Count];
-				tools.CopyTo(ret);
+            {
+                IToolPlugin[] ret = null;
+                if (Helper.StartedGui == Executable.Classic || Helper.NoPlugins)
+                {
+                    ret = new IToolPlugin[] { };
+                }
+                else
+                {
+                    System.Collections.ArrayList tools = new System.Collections.ArrayList();
+                    if (Helper.WindowsRegistry.HiddenMode)
+                    {
+                        tools.Add(new Plugin.FixUidTool());
+                    }
+                    if (Helper.WindowsRegistry.HiddenMode)
+                    {
+                        tools.Add(new ActionIntriguedNeighborhood());
+                    }
+                    tools.Add(new ActionDeleteSim());
+                    ret = new IToolPlugin[tools.Count];
+                    tools.CopyTo(ret);
+                }
 				return ret;
 			}
-		}		
-
+		}
 
 		#endregion
 

@@ -8,13 +8,13 @@ using System.Windows.Forms;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für NgbhSkillHelper.
+	/// Summary description for NgbhSkillHelper.
 	/// </summary>
 	[System.ComponentModel.DefaultEvent("AddedNewItem")]
 	public class NgbhSkillHelper : System.Windows.Forms.UserControl
 	{
 		/// <summary> 
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
@@ -29,7 +29,7 @@ namespace SimPe.Plugin
 				ControlStyles.ResizeRedraw 
 				| ControlStyles.DoubleBuffer
 				,true);
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Required designer variable.
 			InitializeComponent();	
 		
 			try 
@@ -38,14 +38,14 @@ namespace SimPe.Plugin
 				tm.AddControl(this.xpBadges);
 				tm.AddControl(this.xpSkills);
 
-                this.xpBadges.Visible = SimPe.PathProvider.Global.EPInstalled >= 3;
+                this.xpBadges.Visible = (SimPe.PathProvider.Global.EPInstalled >= 3 || SimPe.PathProvider.Global.STInstalled >= 28);
 				SetContent();
 			} 
 			catch {}
 		}
 
 		/// <summary> 
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -66,10 +66,10 @@ namespace SimPe.Plugin
 			base.Dispose( disposing );
 		}
 
-		#region Vom Komponenten-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -131,15 +131,15 @@ namespace SimPe.Plugin
 			this.xpBadges.Font = ((System.Drawing.Font)(resources.GetObject("xpBadges.Font")));
 			this.xpBadges.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
 			this.xpBadges.HeaderText = resources.GetString("xpBadges.HeaderText");
-			this.xpBadges.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.xpBadges.HeaderTextColor = SystemColors.ControlText;
 			this.xpBadges.Icon = ((System.Drawing.Image)(resources.GetObject("xpBadges.Icon")));
 			this.xpBadges.IconLocation = new System.Drawing.Point(4, 0);
 			this.xpBadges.IconSize = new System.Drawing.Size(48, 48);
 			this.xpBadges.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("xpBadges.ImeMode")));
-			this.xpBadges.LeftHeaderColor = System.Drawing.SystemColors.InactiveCaption;
+            this.xpBadges.LeftHeaderColor = SystemColors.ControlDark;
 			this.xpBadges.Location = ((System.Drawing.Point)(resources.GetObject("xpBadges.Location")));
 			this.xpBadges.Name = "xpBadges";
-			this.xpBadges.RightHeaderColor = System.Drawing.SystemColors.Highlight;
+            this.xpBadges.RightHeaderColor = SystemColors.ControlDark;
 			this.xpBadges.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("xpBadges.RightToLeft")));
 			this.xpBadges.Size = ((System.Drawing.Size)(resources.GetObject("xpBadges.Size")));
 			this.xpBadges.TabIndex = ((int)(resources.GetObject("xpBadges.TabIndex")));
@@ -156,8 +156,8 @@ namespace SimPe.Plugin
 			this.xpSkills.AutoScrollMinSize = ((System.Drawing.Size)(resources.GetObject("xpSkills.AutoScrollMinSize")));
 			this.xpSkills.BackColor = System.Drawing.Color.Transparent;
 			this.xpSkills.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("xpSkills.BackgroundImage")));
-			this.xpSkills.BodyColor = System.Drawing.SystemColors.InactiveCaptionText;
-			this.xpSkills.BorderColor = System.Drawing.SystemColors.Window;
+            this.xpSkills.BodyColor = SystemColors.ControlLight;
+            this.xpSkills.BorderColor = SystemColors.ControlDarkDark;
 			this.xpSkills.Controls.Add(this.skills);
 			this.xpSkills.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("xpSkills.Dock")));
 			this.xpSkills.DockPadding.Bottom = 4;
@@ -168,15 +168,15 @@ namespace SimPe.Plugin
 			this.xpSkills.Font = ((System.Drawing.Font)(resources.GetObject("xpSkills.Font")));
 			this.xpSkills.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
 			this.xpSkills.HeaderText = resources.GetString("xpSkills.HeaderText");
-			this.xpSkills.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.xpSkills.HeaderTextColor = SystemColors.ControlText;
 			this.xpSkills.Icon = ((System.Drawing.Image)(resources.GetObject("xpSkills.Icon")));
 			this.xpSkills.IconLocation = new System.Drawing.Point(4, 0);
 			this.xpSkills.IconSize = new System.Drawing.Size(48, 48);
 			this.xpSkills.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("xpSkills.ImeMode")));
-			this.xpSkills.LeftHeaderColor = System.Drawing.SystemColors.InactiveCaption;
+            this.xpSkills.LeftHeaderColor = SystemColors.ControlDark;
 			this.xpSkills.Location = ((System.Drawing.Point)(resources.GetObject("xpSkills.Location")));
 			this.xpSkills.Name = "xpSkills";
-			this.xpSkills.RightHeaderColor = System.Drawing.SystemColors.Highlight;
+            this.xpSkills.RightHeaderColor = SystemColors.ControlDark;
 			this.xpSkills.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("xpSkills.RightToLeft")));
 			this.xpSkills.Size = ((System.Drawing.Size)(resources.GetObject("xpSkills.Size")));
 			this.xpSkills.TabIndex = ((int)(resources.GetObject("xpSkills.TabIndex")));

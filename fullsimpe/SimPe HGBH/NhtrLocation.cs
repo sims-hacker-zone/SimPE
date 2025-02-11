@@ -4,7 +4,7 @@ using SimPe.Geometry;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für NhtrLocation.
+	/// Summary description for NhtrLocation.
 	/// </summary>
 	[System.ComponentModel.TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
 	public class NhtrLocation

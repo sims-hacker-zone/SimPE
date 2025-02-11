@@ -175,6 +175,13 @@ namespace SimPe.Plugin
 			if (res==null) res = itemsb.FindItemByGuid(guid);
 			return res;
 		}
+
+        public int CountItem(uint guid)
+        {
+            int wooh = itemsa.CountItemsByGuid(guid);
+            if (wooh == 0) wooh = itemsb.CountItemsByGuid(guid);
+            return wooh;
+		}
 	}
 
 	/// <summary>
@@ -272,7 +279,6 @@ namespace SimPe.Plugin
 		{
 			this.ItemsA.Clear();
 			this.ItemsB.Clear();
-
 		}
 		#endregion
 	}

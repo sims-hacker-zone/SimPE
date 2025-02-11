@@ -133,7 +133,7 @@
 </value>
   </data>
   <data name="miCopy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 22</value>
+    <value>205, 22</value>
   </data>
   <data name="miCopy.Text" xml:space="preserve">
     <value>Copy Selection</value>
@@ -152,22 +152,22 @@
 </value>
   </data>
   <data name="miPaste.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 22</value>
+    <value>205, 22</value>
   </data>
   <data name="miPaste.Text" xml:space="preserve">
     <value>Paste below</value>
   </data>
   <data name="miPasteGossip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 22</value>
+    <value>205, 22</value>
   </data>
   <data name="miPasteGossip.Text" xml:space="preserve">
     <value>Paste as Gossip</value>
   </data>
   <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 6</value>
+    <value>202, 6</value>
   </data>
   <data name="miClone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 22</value>
+    <value>205, 22</value>
   </data>
   <data name="miClone.Text" xml:space="preserve">
     <value>Clone</value>
@@ -185,13 +185,13 @@
 </value>
   </data>
   <data name="miDelCascade.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 22</value>
+    <value>205, 22</value>
   </data>
   <data name="miDelCascade.Text" xml:space="preserve">
     <value>Cascade Delete Selection</value>
   </data>
   <data name="menu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 120</value>
+    <value>206, 120</value>
   </data>
   <data name="menu.Text" xml:space="preserve">
     <value>(context menu)</value>
@@ -231,6 +231,42 @@
   <data name="panel1.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="cbnogoss.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbnogoss.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="cbnogoss.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 9pt, style=Bold</value>
+  </data>
+  <data name="cbnogoss.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 130</value>
+  </data>
+  <data name="cbnogoss.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 18</value>
+  </data>
+  <data name="cbnogoss.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="cbnogoss.Text" xml:space="preserve">
+    <value>Hide Gossip</value>
+  </data>
+  <data name="cbnogoss.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;cbnogoss.Name" xml:space="preserve">
+    <value>cbnogoss</value>
+  </data>
+  <data name="&gt;&gt;cbnogoss.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbnogoss.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;cbnogoss.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="lladd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt, style=Bold</value>
   </data>
@@ -265,7 +301,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;lladd.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="cbadd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -286,13 +322,13 @@
     <value>cbadd</value>
   </data>
   <data name="&gt;&gt;cbadd.Type" xml:space="preserve">
-    <value>TD.SandBar.FlatComboBox, SandBar, Version=1.3.0.1, Culture=neutral, PublicKeyToken=75b7ec17dd7c14c3</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbadd.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;cbadd.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="lldel.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -331,7 +367,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;lldel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="btUp.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -389,7 +425,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;btUp.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="btDown.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -451,7 +487,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;btDown.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
@@ -504,6 +540,12 @@
   <data name="&gt;&gt;miPasteGossip.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;toolStripMenuItem2.Name" xml:space="preserve">
+    <value>toolStripMenuItem2</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;miClone.Name" xml:space="preserve">
     <value>miClone</value>
   </data>
@@ -515,12 +557,6 @@
   </data>
   <data name="&gt;&gt;miDelCascade.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem2.Name" xml:space="preserve">
-    <value>toolStripMenuItem2</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>NgbhItemsListView</value>

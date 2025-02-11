@@ -247,9 +247,6 @@
   <data name="&gt;&gt;pb.Name">
     <value>pb</value>
   </data>
-  <data name="&gt;&gt;pb.Type">
-    <value>Ambertation.Windows.Forms.LabeledProgressBar, EnumComboBox, Version=1.0.2259.38580, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;pb.Parent">
     <value>panel1</value>
   </data>
@@ -411,9 +408,6 @@
   </data>
   <data name="&gt;&gt;cb.Name">
     <value>cb</value>
-  </data>
-  <data name="&gt;&gt;cb.Type">
-    <value>Ambertation.Windows.Forms.TransparentCheckBox, graphcontrol, Version=1.0.2259.38575, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cb.Parent">
     <value>panel2</value>

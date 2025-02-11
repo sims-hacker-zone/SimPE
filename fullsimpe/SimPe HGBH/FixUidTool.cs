@@ -23,7 +23,7 @@ using SimPe.Interfaces;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für ImportSemiTool.
+	/// Summary description for ImportSemiTool.
 	/// </summary>
 	public class FixUidTool : Interfaces.ITool
 	{
@@ -42,8 +42,8 @@ namespace SimPe.Plugin
 
 		public Interfaces.Plugin.IToolResult ShowDialog(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package)
 		{		
-			System.Windows.Forms.DialogResult dr = 
-				System.Windows.Forms.MessageBox.Show("Using this Tool can serioulsy mess up all of your Neighborhoods. However if some of your Neighborhoods are missing in the Neighborhood Selection of the Game, this Tool might help fixing it.\n\nMake sure you have a Backup of ALL your Neighborhoods befor starting this Tool!\n\nDo you want to start this Tool?", "Confirmation", System.Windows.Forms.MessageBoxButtons.YesNo);
+			System.Windows.Forms.DialogResult dr =
+                System.Windows.Forms.MessageBox.Show("Using this Tool can serioulsy mess up all of your Neighbourhoods and Neighbourhood Stories, it can acheive nothing usefull.\n\nMake sure you have a Backup of ALL your Neighbourhoods before starting this Tool!\n\nDo you want to start this Tool?", "Confirmation", System.Windows.Forms.MessageBoxButtons.YesNo);
 
 
 			if (dr == System.Windows.Forms.DialogResult.Yes) 
@@ -84,7 +84,7 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			return "Neighborhood\\Fix Neighborhood Uid's";
+			return "Neighbourhood\\Fix Neighbourhood Uid's";
 		}
 
 		#endregion

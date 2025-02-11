@@ -24,7 +24,7 @@ using SimPe.Interfaces.Plugin;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Available Neighborhood Types
+	/// Available Neighbourhood Types
 	/// </summary>
 	public enum NeighborhoodType:uint 
 	{
@@ -35,8 +35,35 @@ namespace SimPe.Plugin
 		Suburb = 0x04,
         Village = 0x05,
         Lakes = 0x06,
-        Island = 0x07
-	}
+        Island = 0x07,
+        Custom = 0x08
+    }
+
+	/// <summary>
+	/// Available EPs
+	/// </summary>
+	public enum NeighbourhoodEP:uint 
+	{
+		None = 0x00,
+		University = 0x01,
+		Nightlife = 0x02,
+		Business = 0x03,
+		FamilyFun = 0x04,
+		GlamourLife = 0x05,
+		Pets = 0x06,
+		Seasons = 0x07,
+		Celebration = 0x08,
+		Fashion = 0x09,
+		BonVoyage = 0x0a,
+		TeenStyle = 0x0b,
+        StoreEdition_old = 0x0c,
+		Freetime = 0x0d,
+		KitchenBath = 0x0e,
+		IkeaHome = 0x0f,
+		ApartmentLife = 0x10,
+		MansionGarden = 0x11,
+        StoreEdition = 0x1f
+    }
 
 	/// <summary>
 	/// Known Neighborhhod Versions
@@ -50,7 +77,18 @@ namespace SimPe.Plugin
 		Sims2_Business = 0x08,
         Sims2_Pets = 0x09,
         Sims2_Seasons = 0x0A
-	}
+    }
+
+    /// <summary>
+    /// Available Seasons
+    /// </summary>
+    public enum NhSeasons : byte
+    {
+        Spring = 0,
+        Summer = 1,
+        Autumn = 2,
+        Winter = 3
+    }
 
 	/// <summary>
 	/// This is the actual FileWrapper
@@ -78,7 +116,7 @@ namespace SimPe.Plugin
 
 		NeighborhoodType type;
 		/// <summary>
-		/// Returns the Type of this Neighborhood
+		/// Returns the Type of this Neighbourhood
 		/// </summary>
 		public NeighborhoodType Type 
 		{
@@ -86,9 +124,69 @@ namespace SimPe.Plugin
 			set { type = value; }
 		}
 
+        Data.MetaData.NeighbourhoodEP reqep;
+        /// <summary>
+        /// Returns the required EP of this Neighbourhood
+        /// </summary>
+        public Data.MetaData.NeighbourhoodEP Reqep
+        {
+            get { return reqep; }
+            set { reqep = value; }
+        }
+
+        Data.MetaData.NeighbourhoodEP subep;
+        /// <summary>
+        /// Returns the affiliated EP of this Neighbourhood
+        /// </summary>
+        public Data.MetaData.NeighbourhoodEP Subep
+        {
+            get { return subep; }
+            set { subep = value; }
+        }
+
+        NhSeasons quada;
+        /// <summary>
+        /// Returns the 1st season qaudrant of this Neighbourhood
+        /// </summary>
+        public NhSeasons Quada
+        {
+            get { return quada; }
+            set { quada = value; }
+        }
+
+        NhSeasons quadb;
+        /// <summary>
+        /// Returns the 2nd season qaudrant of this Neighbourhood
+        /// </summary>
+        public NhSeasons Quadb
+        {
+            get { return quadb; }
+            set { quadb = value; }
+        }
+
+        NhSeasons quadc;
+        /// <summary>
+        /// Returns the 3rd season qaudrant of this Neighbourhood
+        /// </summary>
+        public NhSeasons Quadc
+        {
+            get { return quadc; }
+            set { quadc = value; }
+        }
+
+        NhSeasons quadd;
+        /// <summary>
+        /// Returns the 4th season qaudrant of this Neighbourhood
+        /// </summary>
+        public NhSeasons Quadd
+        {
+            get { return quadd; }
+            set { quadd = value; }
+        }
+
 		string name;
 		/// <summary>
-		/// Returns the nametag of this Neighborhood
+		/// Returns the nametag of this Neighbourhood
 		/// </summary>
 		public string OwnerName
 		{
@@ -98,17 +196,37 @@ namespace SimPe.Plugin
 
 		uint uid;
 		/// <summary>
-		/// Returns the nametag of this owning Neighborhood
+		/// Returns the UID of this owning Neighbourhood
 		/// </summary>
 		public uint Uid
 		{
 			get { return uid; }
 			set { uid = value; }
-		}
+        }
+
+        uint idflags;
+        /// <summary>
+        /// Returns the flag settings of this Neighbourhood
+        /// </summary>
+        public uint Idflags
+        {
+            get { return idflags; }
+            set { idflags = value; }
+        }
+
+        uint subtype;
+        /// <summary>
+        /// Returns the subtype of this Neighbourhood
+        /// </summary>
+        public uint Subtype
+        {
+            get { return subtype; }
+            set { subtype = value; }
+        }
 
 		string subname;
 		/// <summary>
-		/// Returns the nametag of this Neighborhood
+		/// Returns the nametag of this Neighbourhood
 		/// </summary>
 		public string SubName
 		{
@@ -147,7 +265,7 @@ namespace SimPe.Plugin
 		/// <param name="filename">the Filename</param>
 		/// <param name="scanall">
 		///   true, if you want to scan all package Files in the Folder 
-		///   (otherwise only Neighborhood Files are scanned!)
+		///   (otherwise only Neighbourhood Files are scanned!)
 		///  </param>
 		/// <remarks>
 		/// </remarks>
@@ -157,14 +275,14 @@ namespace SimPe.Plugin
 		}
 
 		/// <summary>
-		/// Assigns a unique uid to the idno
+		/// Assigns a unique uid to the idno and breaks neighbourhood story
 		/// </summary>
 		/// <param name="idno">the idno object</param>
 		/// <param name="filename">the Filename</param>
 		/// <param name="folder">The folder you want to scan (recursive)</param>
 		/// <param name="scanall">
 		///   true, if you want to scan all package Files in the Folder 
-		///   (otherwise only Neighborhood Files are scanned!)
+		///   (otherwise only Neighbourhood Files are scanned!)
 		///  </param>
 		/// <remarks>
 		/// </remarks>
@@ -175,7 +293,7 @@ namespace SimPe.Plugin
 		}
 
 		/// <summary>
-		/// Assigns a unique uid to the idno
+        /// Assigns a unique uid to the idno and breaks neighbourhood story
 		/// </summary>
 		/// <param name="idno">the idno object</param>
 		/// <param name="filename">the Filename</param>
@@ -208,9 +326,9 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a Idno Object based on the Informations gathered from a FileName
 		/// </summary>
-		/// <param name="filename">The name of the Neighborhood File</param>
+		/// <param name="filename">The name of the Neighbourhood File</param>
 		/// <returns>
-		/// null if the filename was not a valid Neighborhood name or an instance of the Idno Class
+		/// null if the filename was not a valid Neighbourhood name or an instance of the Idno Class
 		/// </returns>
 		/// <remarks>
 		/// This Method will not assign a uid to the Idno. You can assign a unique uid 
@@ -239,12 +357,12 @@ namespace SimPe.Plugin
 		}
 
 		/// <summary>
-		/// Scan the passed Folder for Neighborhood Files and collect the assigned IDs
+		/// Scan the passed Folder for Neighbourhood Files and collect the assigned IDs
 		/// </summary>
 		/// <param name="folder">The Folder to scan (recursive)</param>
 		/// <param name="scanall">
 		///   true, if you want to scan all package Files in the Folder 
-		///   (otherwise only Neighborhood Files are scanned!)
+		///   (otherwise only Neighbourhood Files are scanned!)
 		///  </param>
 		/// <returns>A Map for ids (key=filename, value=id)</returns>	
 		public static Hashtable FindUids(string folder, bool scanall)
@@ -255,13 +373,13 @@ namespace SimPe.Plugin
 		}		
 
 		/// <summary>
-		/// Scan the passed Folder for Neighborhood Files and collect the assigned IDs
+		/// Scan the passed Folder for Neighbourhood Files and collect the assigned IDs
 		/// </summary>
 		/// <param name="folder">The Folder to scan (recursive)</param>
 		/// <param name="ids">A Map for ids (key=filename, value=id)</param>
 		/// <param name="scanall">
 		///   true, if you want to scan all package Files in the Folder 
-		///   (otherwise only Neighborhood Files are scanned!)
+		///   (otherwise only Neighbourhood Files are scanned!)
 		///  </param>
 		static void FindUids(string folder, Hashtable ids, bool scanall)
 		{
@@ -358,10 +476,10 @@ namespace SimPe.Plugin
 		protected override IWrapperInfo CreateWrapperInfo()
 		{
 			return new AbstractWrapperInfo(
-				"Neighborhood ID Wrapper",
+				"Neighbourhood ID Wrapper",
 				"Quaxi",
-				"Contains the ID for this Neighborhood. The Neighborhood ID must be Unique for all packages the Game is loading.",
-				3,
+				"Contains the ID for this Neighbourhood. The Neighbourhood ID must be Unique for all packages the Game is loading.",
+				4,
 				System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.Plugin.idno.png"))
 				); 
 		}
@@ -380,12 +498,20 @@ namespace SimPe.Plugin
 			if (version>=(int)NeighborhoodVersion.Sims2_University) 
 			{
 				type = (NeighborhoodType)reader.ReadUInt32();
-				if ((int)type>=(int)NeighborhoodType.University) 
-				{
-					ct = reader.ReadInt32();
-					subname = Helper.ToString(reader.ReadBytes(ct));				
-				}
-			} 
+                    subtype = reader.ReadUInt32();
+                    if (subtype > 0) subname = Helper.ToString(reader.ReadBytes((int)subtype)); // CJH - was ReadBytes(ct) -ct is parent name length -EndOfStream error when ct is longer than 4 chars
+                    if (version>=(int)NeighborhoodVersion.Sims2_Seasons)
+                    {
+                        ct = reader.ReadInt32();
+                        reqep = (Data.MetaData.NeighbourhoodEP)reader.ReadUInt32();
+                        subep = (Data.MetaData.NeighbourhoodEP)reader.ReadUInt32();
+                        idflags = reader.ReadUInt32();
+                        quada = (NhSeasons)reader.ReadByte();
+                        quadb = (NhSeasons)reader.ReadByte();
+                        quadc = (NhSeasons)reader.ReadByte();
+                        quadd = (NhSeasons)reader.ReadByte();
+                    }
+			}
 			else 
 			{
 				type = NeighborhoodType.Normal;
@@ -413,12 +539,25 @@ namespace SimPe.Plugin
 			if (version>=(int)NeighborhoodVersion.Sims2_University) 
 			{
 				writer.Write((uint)type);
-				if ((int)type>=(int)NeighborhoodType.University) 
+				if (subtype > 0)
 				{
 					b = Helper.ToBytes(subname, 0);
 					writer.Write((int)b.Length);
 					writer.Write(b);
 				}
+                else writer.Write((int)subtype);
+                if (version >= (int)NeighborhoodVersion.Sims2_Seasons)
+                {
+                    writer.Write((int)0);
+                    writer.Write((int)reqep);
+                    writer.Write((int)subep);
+                    writer.Write((int)idflags);
+                    writer.Write((byte)quada);
+                    writer.Write((byte)quadb);
+                    writer.Write((byte)quadc);
+                    writer.Write((byte)quadd);
+                }
+
 			}
 			writer.Write(over);
 		}
