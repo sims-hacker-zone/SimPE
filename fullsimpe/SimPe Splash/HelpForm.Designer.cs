@@ -1,16 +1,16 @@
-namespace SimPe.Windows.Forms
+﻿namespace SimPe.Windows.Forms
 {
     partial class HelpForm
     {
         /// <summary>
-        /// Erforderliche Designervariable.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Verwendete Ressourcen bereinigen.
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">True, wenn verwaltete Ressourcen gelÃ¶scht werden sollen; andernfalls False.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,16 +20,16 @@ namespace SimPe.Windows.Forms
             base.Dispose(disposing);
         }
 
-        #region Vom Windows Form-Designer generierter Code
+        #region Windows Form Designer generated code
 
         /// <summary>
-        /// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung.
-        /// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None; // Was Font but that goes wonky if you scale up Windows Font
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Text = "HelpForm";
         }

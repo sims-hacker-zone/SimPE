@@ -47,23 +47,18 @@ namespace SimPe.Windows.Forms
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.None;
             lbtxt.Text = msg;
-            lbver.Text = Helper.VersionToString(Helper.SimPeVersion); //SimPe.Helper.SimPeVersion.FileMajorPart + "." + SimPe.Helper.SimPeVersion.FileMinorPart + "." + SimPe.Helper.SimPeVersion.FileBuildPart;
-
-            if (Helper.DebugMode && Helper.QARelease) lbver.Text += " [Debug, QA]";
-            else if (Helper.DebugMode) lbver.Text += " [Debug]";
-            else if (Helper.QARelease) lbver.Text += " [QA]";
-
+            lbver.Text = Helper.VersionToString(Helper.SimPeVersion);
+                if (Helper.WindowsRegistry.HiddenMode && Helper.QARelease) lbver.Text += " [Debug, QA]";
+                else if (Helper.WindowsRegistry.HiddenMode) lbver.Text += " [Debug]";
+                else if (Helper.QARelease) lbver.Text += " [QA]";
         }
 
         protected override void OnCreateBitmap(Graphics g, Bitmap b)
         {
-            //base.OnCreateBitmap(g, b);
-
             if (bg == null)
             {
                 bg = Image.FromStream(typeof(HelpForm).Assembly.GetManifestResourceStream("SimPe.Windows.Forms.img.splash.png"));
             }
-
             g.DrawImage(bg, new Point(0, 0));
             g.Dispose();
         }

@@ -122,10 +122,10 @@
     <value>Georgia, 12pt</value>
   </data>
   <data name="lbtxt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 115</value>
+    <value>12, 119</value>
   </data>
   <data name="lbtxt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>427, 18</value>
+    <value>427, 28</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lbtxt.TabIndex" type="System.Int32, mscorlib">
@@ -156,7 +156,7 @@
     <value>Georgia, 8.25pt</value>
   </data>
   <data name="lbver.Location" type="System.Drawing.Point, System.Drawing">
-    <value>73, 151</value>
+    <value>84, 151</value>
   </data>
   <data name="lbver.Size" type="System.Drawing.Size, System.Drawing">
     <value>43, 14</value>
@@ -186,7 +186,7 @@
     <value>Georgia, 8.25pt, style=Bold</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 151</value>
+    <value>8, 151</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 14</value>
@@ -218,6 +218,10 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>773, 441</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>SplashForm</value>
   </data>
@@ -225,6 +229,6 @@
     <value>SplashForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.TransparentForm, NetDocks, Version=1.0.2498.17365, Culture=neutral, PublicKeyToken=null</value>
+    <value>Ambertation.Windows.Forms.TransparentForm, NetDocks, Version=1.0.2983.24895, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

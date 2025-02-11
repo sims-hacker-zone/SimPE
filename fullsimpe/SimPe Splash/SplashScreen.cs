@@ -58,7 +58,7 @@ namespace SimPe
         {
             mmsg = "";
 
-            if (Helper.WindowsRegistry.ShowStartupSplash)
+            if (Helper.WindowsRegistry.ShowStartupSplash || (Helper.WindowsRegistry.GetPreviousVersion() != Helper.SimPeVersionLong))
             {
                 t = new System.Threading.Thread(new System.Threading.ThreadStart(StartThread));
                 t.Start();

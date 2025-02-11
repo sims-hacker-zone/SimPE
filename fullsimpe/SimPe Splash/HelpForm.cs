@@ -39,29 +39,25 @@ namespace SimPe.Windows.Forms
 
         public HelpForm()
             : base()//Color.Transparent, new Size(781, 475))
-        {            
-            
-            
+        {
             InitializeComponent();
-
-            this.MinimumSize = new Size(781, 475);
-            this.MaximumSize = new Size(781, 2048);
+            this.MinimumSize = new Size(1024, 661);
+            this.MaximumSize = new Size(1024, 2048);
         }
 
         protected override void OnCreateBitmap(Graphics g, Bitmap b)
         {
             //base.OnCreateBitmap(g, b);
-
             if (top == null)
             {
-
                 top = Image.FromStream(typeof(HelpForm).Assembly.GetManifestResourceStream("SimPe.Windows.Forms.img.top.png"));
                 center = Image.FromStream(typeof(HelpForm).Assembly.GetManifestResourceStream("SimPe.Windows.Forms.img.center.png"));
                 bottom = Image.FromStream(typeof(HelpForm).Assembly.GetManifestResourceStream("SimPe.Windows.Forms.img.bottom.png"));
-                headerrect = new Rectangle(0, 0, top.Width, top.Height);
             }
+            headerrect = new Rectangle(0, 0, top.Width, top.Height);
 
-            g.DrawImage(top, new Point(0, 0));
+            // g.DrawImage(top, new Point(0, 0)); // this goes wonky if you scale up Windows Fonts
+            g.DrawImage(top, headerrect);
             int y = top.Height;
             int my = b.Height - bottom.Height;
             while (y < my)
