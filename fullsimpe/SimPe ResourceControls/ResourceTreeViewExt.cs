@@ -23,8 +23,6 @@ namespace SimPe.Windows.Forms
             typebuilder = new ResourceTreeNodesByType();
             groupbuilder = new ResourceTreeNodesByGroup();
             instbuilder = new ResourceTreeNodesByInstance();
-
-            SimPe.ThemeManager.Global.AddControl(this.toolStrip1);
             builder = typebuilder;
             tbType.Checked = true;
             last = null;
@@ -32,7 +30,6 @@ namespace SimPe.Windows.Forms
 
         ~ResourceTreeViewExt()
         {
-            SimPe.ThemeManager.Global.RemoveControl(this.toolStrip1);
         }
 
         internal void SetManager(ResourceViewManager manager)
@@ -78,13 +75,20 @@ namespace SimPe.Windows.Forms
             firstnode.Expand();
 
             allowselectevent = selectevent;
-            if (!dontselect && ((maps.Everything.Count <= Helper.WindowsRegistry.BigPackageResourceCount || Helper.WindowsRegistry.ResoruceTreeAllwaysAutoselect)))
+            if (!dontselect && (maps.Everything.Count <= Helper.WindowsRegistry.BigPackageResourceCount || Helper.WindowsRegistry.ResoruceTreeAllwaysAutoselect))
             {
                 if (!SelectID(firstnode, builder.LastSelectedId))
                 {
                     SelectAll();
                     allowselectevent = true;
                     return false;
+                }
+            }
+            else if (dontselect)
+            {
+                foreach (ResourceTreeNodeExt node in firstnode.Nodes)
+                {
+                    if (node.ID == 0x46414D49) { tv.SelectedNode = node; break; }
                 }
             }
 
@@ -123,7 +127,6 @@ namespace SimPe.Windows.Forms
             if (firstnode!=null)
                 tv.SelectedNode = firstnode;
         }
-
 
         private void tv_AfterSelect(object sender, TreeViewEventArgs e)
         {

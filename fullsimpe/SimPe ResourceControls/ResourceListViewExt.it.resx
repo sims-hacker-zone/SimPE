@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="clType.Text" xml:space="preserve">
-    <value>Nome</value>
+    <value>Tipo</value>
   </data>
   <data name="clGroup.Text" xml:space="preserve">
     <value>Gruppo</value>
@@ -133,6 +133,6 @@
     <value>Dimensioni</value>
   </data>
   <data name="clTName.Text" xml:space="preserve">
-    <value>Tipo</value>
+    <value>Nome</value>
   </data>
 </root>

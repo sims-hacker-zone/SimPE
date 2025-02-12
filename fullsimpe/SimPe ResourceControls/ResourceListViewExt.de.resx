@@ -129,7 +129,7 @@
   <data name="clSize.Text" xml:space="preserve">
     <value>Größe</value>
   </data>
-  <data name="clTName.Text" xml:space="preserve">
+	<data name="clType.Text" xml:space="preserve">
     <value>Typ</value>
   </data>
 </root>

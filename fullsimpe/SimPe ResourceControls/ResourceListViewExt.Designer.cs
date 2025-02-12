@@ -1,16 +1,16 @@
-namespace SimPe.Windows.Forms
+﻿namespace SimPe.Windows.Forms
 {
     partial class ResourceListViewExt
     {
         /// <summary> 
-        /// Erforderliche Designervariable.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary> 
-        /// Verwendete Ressourcen bereinigen.
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">True, wenn verwaltete Ressourcen gelÃ¶scht werden sollen; andernfalls False.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,15 +20,16 @@ namespace SimPe.Windows.Forms
             base.Dispose(disposing);
         }
 
-        #region Vom Komponenten-Designer generierter Code
+        #region Windows Form Designer generated code
 
         /// <summary> 
-        /// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung. 
-        /// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResourceListViewExt));
+            this.clTName = new System.Windows.Forms.ColumnHeader();
             this.clType = new System.Windows.Forms.ColumnHeader();
             this.clGroup = new System.Windows.Forms.ColumnHeader();
             this.clInstHi = new System.Windows.Forms.ColumnHeader();
@@ -36,8 +37,11 @@ namespace SimPe.Windows.Forms
             this.clOffset = new System.Windows.Forms.ColumnHeader();
             this.clSize = new System.Windows.Forms.ColumnHeader();
             this.lv = new SimPe.Windows.Forms.ListViewDoubleBuffered();
-            this.clTName = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
+            // 
+            // clTName
+            // 
+            resources.ApplyResources(this.clTName, "clTName");
             // 
             // clType
             // 
@@ -68,8 +72,8 @@ namespace SimPe.Windows.Forms
             this.lv.AllowColumnReorder = true;
             this.lv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lv.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.clType,
             this.clTName,
+            this.clType,
             this.clGroup,
             this.clInstHi,
             this.clInst,
@@ -95,10 +99,6 @@ namespace SimPe.Windows.Forms
             this.lv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lv_KeyDown);
             this.lv.Click += new System.EventHandler(this.lv_Click);
             // 
-            // clTName
-            // 
-            resources.ApplyResources(this.clTName, "clTName");
-            // 
             // ResourceListViewExt
             // 
             this.Controls.Add(this.lv);
@@ -110,13 +110,13 @@ namespace SimPe.Windows.Forms
 
         #endregion
 
+        private System.Windows.Forms.ColumnHeader clTName;
         private System.Windows.Forms.ColumnHeader clType;
         private System.Windows.Forms.ColumnHeader clGroup;
         private System.Windows.Forms.ColumnHeader clInstHi;
         private System.Windows.Forms.ColumnHeader clInst;
         private System.Windows.Forms.ColumnHeader clOffset;
         private System.Windows.Forms.ColumnHeader clSize;
-        private System.Windows.Forms.ColumnHeader clTName;
         private ListViewDoubleBuffered lv;
 
     }

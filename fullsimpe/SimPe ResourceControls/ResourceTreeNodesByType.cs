@@ -17,7 +17,7 @@ namespace SimPe.Windows.Forms
 
             tn.ImageIndex = 0;
             return tn;
-        }        
+        }
 
         #endregion
 

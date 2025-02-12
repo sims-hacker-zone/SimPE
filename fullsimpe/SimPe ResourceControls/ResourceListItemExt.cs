@@ -26,7 +26,6 @@ namespace SimPe.Windows.Forms
             this.manager = manager;
             this.pfd = pfd;
 
-
             string[] subitems = new string[7];
             subitems[0] = visible ? pfd.GetRealName() : pfd.Descriptor.ToResListString(); // Name
             subitems[1] = GetExtText(); // Type

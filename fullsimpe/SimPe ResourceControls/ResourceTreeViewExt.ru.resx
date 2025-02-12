@@ -117,40 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="tbInst.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAMZJREFUOE9jYBh0
-        4N+/f9P+4wAgObwOhmkGKvqPDYPM/fbt22ychoAUwDSiOwJZHKch6AYANYUAscHDhw9XYZHjwXAJsv+P
-        Hj16CKQJ5m8sBqjg8grIZBWYBmSvIHsD5DJCAbrfwcEBZ2BiNQDZCyB2fX09SlgSdAG6Px89ejQhMDDQ
-        4+7du2uxhAGmF4iNxgMHDhwHhRPOWMCXkKCabYBqMKMRZCIokeBKyqCoBSrBrRnJSeCohIY0yK8wDBLD
-        bjPeOMUjCQBn70SptOs0tgAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="tbInst.Text" xml:space="preserve">
     <value>по Экземпляру</value>
   </data>
-  <data name="tbGroup.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAI5JREFUOE9jYBhU
-        4N+/f9P+EwFA6rA6HKQXKEEQQ9XxYBgCcwHMEHTHIIsD2SoEXQG1KQSo0ADZdVC2AbEGgBUih8/Ro0cP
-        keICZJtA/gY5HYQxwwBkE9FOxZV+BtYAbNH48OHDVUSndmwJCWeiwWYqtqR87ty5nUC1EkS7Aho9oGgC
-        RR8I444yUkzFpRYAPLDmWQtJn3gAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="tbGroup.Text" xml:space="preserve">
     <value>по Группе</value>
-  </data>
-  <data name="tbType.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAJNJREFUOE9jYBg0
-        4N+/f9P+EwlAajEcDtILFCQKQ9XyoBiCbADMITADsfGBciqUGmCAYgByGBw9evQQuosePny4CuYSkDyG
-        C6CmgfwFcpoKugFAMZCNcHkoG3ciwGEA8almYA2ABShyNIICkWj3Y0tUWBMPLhOxJetz587tBKqXINoV
-        SFEGij4QBkUvavIlxTRcagEveAG9x8I7RAAAAABJRU5ErkJggg==
-</value>
   </data>
   <data name="tbType.Text" xml:space="preserve">
     <value>по Типу</value>

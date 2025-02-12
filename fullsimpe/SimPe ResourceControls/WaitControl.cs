@@ -32,14 +32,6 @@ namespace SimPe
             ShowAnimation = true;
             ShowText = true;
             nowp = -1;
-
-            System.Reflection.Assembly a = this.GetType().Assembly;
-            for (int i = 1; i <= 8; i++)
-            {
-                System.IO.Stream s = a.GetManifestResourceStream("SimPe." + i.ToString() + ".png");
-                if (s != null)
-                    this.tbWait.Images.Add(Image.FromStream(s));
-            }
         }
 
         protected override void WndProc(ref System.Windows.Forms.Message m)
@@ -54,6 +46,7 @@ namespace SimPe
                 else if (m.Msg == WM_USER_CHANGED_MESSAGE)
                 {
                     this.tbInfo.Text = Message;
+                    //this.statusStrip1.Invalidate();
                 }
                 else if (m.Msg == WM_USER_CHANGED_MAXPROGRESS)
                 {
@@ -143,12 +136,10 @@ namespace SimPe
             }
 
             if (diff >= 10)
-            {            
-    
+            {
                 this.statusStrip1.Refresh();
                 nowp = perc;
             }
-            
         }
 
         bool wait;        
@@ -169,7 +160,6 @@ namespace SimPe
             if (wait)
             {
                 this.Visible = true;
-                this.tbWait.Start();
             }
             else
             {
@@ -177,7 +167,6 @@ namespace SimPe
                 this.Message = "";
                 this.Progress = 0;
                 this.ShowProgress = false;
-                this.tbWait.Stop();
             }
         }
 
@@ -210,17 +199,13 @@ namespace SimPe
             get { return sanim; }
             set
             {
-                int val = 0;
-                if (value) val = 1;
-                Ambertation.Windows.Forms.APIHelp.SendMessage(myhandle, WM_USER_SHOW_HIDE_ANIMATION, val, 0);
-
+                sanim = value;
+                Ambertation.Windows.Forms.APIHelp.SendMessage(myhandle, WM_USER_SHOW_HIDE_ANIMATION, 0, 0);
             }
         }
 
         private void DoShowAnimation(bool value)
         {
-            sanim = value;
-            tbWait.Visible = sanim;
         }
 
         bool stxt;
@@ -256,7 +241,6 @@ namespace SimPe
             }
             set
             {
-                
             }
         }       
 

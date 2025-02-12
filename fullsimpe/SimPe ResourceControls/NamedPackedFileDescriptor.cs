@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -68,14 +68,7 @@ namespace SimPe.Windows.Forms
                             {
                                 realname = wrp.ResourceName;                                
                             }
-#if DEBUG
-                            catch (Exception ex)
-                            {
-                                realname = ex.Message;
-                            }
-#else
-					catch{ realname = pfd.ToResListString();}
-#endif
+                            catch{ realname = pfd.ToResListString();}
                             finally
                             {
                                 if (bakpfd != null || bakpkg != null)

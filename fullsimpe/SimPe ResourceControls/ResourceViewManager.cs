@@ -10,9 +10,8 @@ namespace SimPe.Windows.Forms
 {
     public partial class ResourceViewManager : Component
     {
-        
-
         ResourceMaps maps;
+        bool isbigneighbourhood = false;
         public ResourceViewManager()
         {
             InitializeComponent();
@@ -61,7 +60,6 @@ namespace SimPe.Windows.Forms
 
         SimPe.Interfaces.Files.IPackageFile pkg;
 
-
         [System.ComponentModel.Browsable(false)]
         public ResourceViewManager.ResourceNameList Everything
         {
@@ -94,8 +92,6 @@ namespace SimPe.Windows.Forms
                     oldpkg.AddedResource -= new EventHandler(newpkg_AddedResource);
                 }
                 maps.Clear();
-
-
 
                 if (newpkg != null)
                 {
@@ -145,17 +141,22 @@ namespace SimPe.Windows.Forms
         private void UpdateContent(bool lettreeviewselect)
         {
             bool donotselect = false;
-            if (maps.Everything.Count > Helper.WindowsRegistry.BigPackageResourceCount && !Helper.WindowsRegistry.ResoruceTreeAllwaysAutoselect)
-                donotselect = true;
+            string filonam = "nil";
+            if (pkg != null) filonam = pkg.FileName;
+
+            if ((maps.Everything.Count > Helper.WindowsRegistry.BigPackageResourceCount && !Helper.WindowsRegistry.ResoruceTreeAllwaysAutoselect) || Helper.IsNeighborhoodFile(filonam))
+            { donotselect = true; lv.Clear(); }
             
             if (lv != null && !lettreeviewselect)
             {
                 if (donotselect)
                     lv.SetResources(new ResourceNameList());
-                else 
+                else
                     lv.SetResources(maps.Everything);
             }
-            if (tv != null) tv.SetResourceMaps(maps, lettreeviewselect, donotselect);
+            if (tv != null) tv.SetResourceMaps(maps, lettreeviewselect, Helper.IsNeighborhoodFile(filonam));
+            // if (tv != null) tv.SetResourceMaps(maps, lettreeviewselect, donotselect);
+            isbigneighbourhood = donotselect;
         }
 
         void newpkg_SavedIndex(object sender, EventArgs e)
@@ -258,7 +259,7 @@ namespace SimPe.Windows.Forms
         {
             bool res = false;
             if (lv != null) res = lv.SelectResource(resource);
-            if (!res && tv!=null && lv!=null)
+            if (!res && tv != null && lv != null && !isbigneighbourhood)
             {
                 tv.SelectAll();
                 res = lv.SelectResource(resource);

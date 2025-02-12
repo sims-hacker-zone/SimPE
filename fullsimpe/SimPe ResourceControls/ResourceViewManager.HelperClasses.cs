@@ -36,12 +36,10 @@ namespace SimPe.Windows.Forms
 
             }
 
-
             class DescriptorSort : IComparer<NamedPackedFileDescriptor>
             {
                 SortColumn sc;
                 bool asc;
-
 
                 public DescriptorSort()
                 {
