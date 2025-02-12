@@ -50,8 +50,10 @@ namespace SimPe.Plugin
 
 		public SimPe.Cache.PackageType GetType(SimPe.Interfaces.Files.IPackageFile pkg)
 		{
-			if (pkg.FindFiles(Data.MetaData.IDNO).Length!=0) return SimPe.Cache.PackageType.Neighborhood;
-			if (pkg.FindFiles(Data.MetaData.HOUS).Length!=0) return SimPe.Cache.PackageType.Lot;
+			if (pkg.FindFiles(Data.MetaData.IDNO).Length!=0) return SimPe.Cache.PackageType.Neighbourhood;
+            if (pkg.FileName.Contains("Tutorial_Neighborhood")) return SimPe.Cache.PackageType.Neighbourhood;
+            if (pkg.FindFiles(Data.MetaData.HOUS).Length != 0) return SimPe.Cache.PackageType.Lot;
+            if (pkg.FindFiles(Data.MetaData.GINV).Length != 0) return SimPe.Cache.PackageType.GameInventory;
 			return SimPe.Cache.PackageType.Unknown;
 		}
 

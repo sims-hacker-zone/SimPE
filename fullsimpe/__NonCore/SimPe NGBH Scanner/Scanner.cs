@@ -39,8 +39,7 @@ namespace SimPe.Plugin
 
 		public void LoadThumbnail(ScannerItem si, SimPe.Cache.PackageState ps) 
 		{
-			
-			if (si.PackageCacheItem.Type == PackageType.Neighborhood) 
+			if (si.PackageCacheItem.Type == PackageType.Neighbourhood) 
 			{
 				string name = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(si.FileName), System.IO.Path.GetFileNameWithoutExtension(si.FileName))+".png";
 				if (System.IO.File.Exists(name))
@@ -68,42 +67,45 @@ namespace SimPe.Plugin
 		{
 			ListView.SmallImageList = ListView.LargeImageList;
 			ids.Clear();
-			AbstractScanner.AddColumn(this.ListView, "Neighborhood Type", 100);
-			AbstractScanner.AddColumn(this.ListView, "Neighborhood UID", 50);
+			AbstractScanner.AddColumn(this.ListView, "Neighbourhood Type", 140);
+			AbstractScanner.AddColumn(this.ListView, "Neighbourhood UID", 80);
 		}
-
-		
 
 		public void ScanPackage(ScannerItem si, SimPe.Cache.PackageState ps, System.Windows.Forms.ListViewItem lvi)
 		{
 			this.LoadThumbnail(si, ps);
-
-			if (si.PackageCacheItem.Type == PackageType.Neighborhood) 
+			if (si.PackageCacheItem.Type == PackageType.Neighbourhood) 
 			{
 				Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(Data.MetaData.IDNO);
-				if (pfds.Length>0) 
+				if (pfds.Length > 0)
 				{
 					Idno idno = new Idno();
 					idno.ProcessData(pfds[0], si.Package);
 
 					ps.Data = new uint[2];
-					ps.Data[0] = (uint)idno.Type;
+					ps.Data[0] = (uint)idno.Tipe;
 					ps.Data[1] = idno.Uid;
 
 					//check for duplicates
-					if (ids.Contains(idno.Uid)) ps.State = TriState.False;
-					else ps.State = TriState.True;										
+					if (ids.Contains(idno.Uid) && SimPe.PathProvider.Global.EPInstalled < 18) ps.State = TriState.False;
+					else ps.State = TriState.True;
+				}
+				else
+				{
+					ps.Data = new uint[2];
+					ps.Data[0] = 0;
+					ps.Data[1] = 0;
+					ps.State = TriState.True;
 				}
 			}
 
-            if (si.PackageCacheItem.Thumbnail != null && WaitingScreen.Running) WaitingScreen.UpdateImage(si.PackageCacheItem.Thumbnail);
 			UpdateState(si, ps, lvi);
 		}
 
 		public void UpdateState(ScannerItem si, SimPe.Cache.PackageState ps, System.Windows.Forms.ListViewItem lvi)
 		{		
 			AbstractScanner.SetSubItem(lvi, this.StartColum+1, "");
-			if (si.PackageCacheItem.Type == PackageType.Neighborhood) 
+			if (si.PackageCacheItem.Type == PackageType.Neighbourhood) 
 			{
 				if (si.PackageCacheItem.Thumbnail==null) this.LoadThumbnail(si, ps);			
 
@@ -117,23 +119,33 @@ namespace SimPe.Plugin
 				if (ps.Data.Length>1) 
 				{		
 					ids.Add(ps.Data[1]);
-					AbstractScanner.SetSubItem(lvi, this.StartColum, ((NeighborhoodType)ps.Data[0]).ToString());					
+					AbstractScanner.SetSubItem(lvi, this.StartColum, ((NeighbourhoodTipe)ps.Data[0]).ToString().Replace("_", " "));					
 					AbstractScanner.SetSubItem(lvi, this.StartColum+1, "0x"+Helper.HexString(ps.Data[1]), ps);
 				}
 			}
 		}
 
-		public void FinishScan() { }	
+		public void FinishScan() { }
 		
 		protected override System.Windows.Forms.Control CreateOperationControl()
 		{
-			Skybound.VisualStyles.VisualStyleLinkLabel ll = new Skybound.VisualStyles.VisualStyleLinkLabel();
-			ll.AutoSize = true;
-			ll.Text = "Create Unique ID";
-			ll.Font = new System.Drawing.Font("Verdana", ll.Font.Size, System.Drawing.FontStyle.Bold);
-
-			ll.LinkClicked +=new System.Windows.Forms.LinkLabelLinkClickedEventHandler(MakeUnique);
-			return ll;
+			if (SimPe.PathProvider.Global.EPInstalled >= 18)
+			{
+				System.Windows.Forms.Label ll = new System.Windows.Forms.Label();
+				ll.AutoSize = true;
+				ll.Text = "Create Unique ID - Disabled:\r\nChanging Neighbourhood IDs Destroys Neighbourhood Stories\r\nYour game will correctly fix Neighbourhood IDs if needed";
+				ll.Font = new System.Drawing.Font("Verdana", ll.Font.Size, System.Drawing.FontStyle.Bold);
+				return ll;
+			}
+			else
+			{
+				System.Windows.Forms.LinkLabel ll = new System.Windows.Forms.LinkLabel();
+				ll.AutoSize = true;
+				ll.Text = "Create Unique ID";
+				ll.Font = new System.Drawing.Font("Verdana", ll.Font.Size, System.Drawing.FontStyle.Bold);
+				ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(MakeUnique);
+				return ll;
+			}
 		}
 
 		ScannerItem[] selection;
@@ -147,9 +159,9 @@ namespace SimPe.Plugin
 			}
 
 			bool en = false;
-			foreach (ScannerItem si in items) 
+			foreach (ScannerItem si in items)
 			{
-				if (si.PackageCacheItem.Type == PackageType.Neighborhood) 
+				if (si.PackageCacheItem.Type == PackageType.Neighbourhood)
 				{
 					en = true;
 					break;
@@ -163,54 +175,52 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			return "Neighborhood Scanner";
+			return "Neighbourhood Scanner";
 		}
 
-        private void MakeUnique(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
-        {
-            if (selection == null) return;
+		private void MakeUnique(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		{
+			if (selection == null || SimPe.PathProvider.Global.EPInstalled >= 18) return;
 
-            WaitingScreen.Wait();
-            bool chg = false;
-            try
-            {
-                Hashtable ids = Idno.FindUids(PathProvider.SimSavegameFolder, true);
-                foreach (ScannerItem si in selection)
-                {
-                    if (si.PackageCacheItem.Thumbnail != null) WaitingScreen.Update(si.PackageCacheItem.Thumbnail, si.FileName);
-                    else WaitingScreen.UpdateMessage(si.FileName);
+			WaitingScreen.Wait();
+			bool chg = false;
+			try
+			{
+				Hashtable ids = Idno.FindUids(PathProvider.SimSavegameFolder, true);
+				foreach (ScannerItem si in selection)
+				{
+					WaitingScreen.UpdateMessage(si.FileName);
 
-                    SimPe.Cache.PackageState ps = si.PackageCacheItem.FindState(this.Uid, true);
-                    if (si.PackageCacheItem.Type == PackageType.Neighborhood)
-                    {
-                        Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(Data.MetaData.IDNO);
-                        if (pfds.Length > 0)
-                        {
-                            Idno idno = new Idno();
-                            idno.ProcessData(pfds[0], si.Package);
-                            idno.MakeUnique(ids);
+					SimPe.Cache.PackageState ps = si.PackageCacheItem.FindState(this.Uid, true);
+					if (si.PackageCacheItem.Type == PackageType.Neighbourhood)
+					{
+						Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(Data.MetaData.IDNO);
+						if (pfds.Length > 0)
+						{
+							Idno idno = new Idno();
+							idno.ProcessData(pfds[0], si.Package);
+							idno.MakeUnique(ids);
 
+							if (ps.Data.Length < 2) ps.Data = new uint[2];
+							if (idno.Uid != ps.Data[1])
+							{
+								idno.SynchronizeUserData();
+								si.Package.Save();
+								chg = true;
 
-                            if (ps.Data.Length < 2) ps.Data = new uint[2];
-                            if (idno.Uid != ps.Data[1])
-                            {
-                                idno.SynchronizeUserData();
-                                si.Package.Save();
-                                chg = true;
+								ps.Data[1] = idno.Uid;
+								ps.State = TriState.True;
+							}
+						}
+					}
+				}
 
-                                ps.Data[1] = idno.Uid;
-                                ps.State = TriState.True;
-                            }
-                        }
-                    }
-                }
-
-                if (chg && this.CallbackFinish != null) this.CallbackFinish(false, false);
-            }
+				if (chg && this.CallbackFinish != null) this.CallbackFinish(false, false);
+			}
 #if !DEBUG
-            catch (Exception ex) { Helper.ExceptionMessage("", ex); }
+			catch (Exception ex) { Helper.ExceptionMessage("", ex); }
 #endif
-            finally { WaitingScreen.Stop(); }
-        }
+			finally { WaitingScreen.Stop(); }
+		}
 	}
 }
