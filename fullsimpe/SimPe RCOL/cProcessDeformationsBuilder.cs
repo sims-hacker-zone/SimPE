@@ -26,7 +26,7 @@ namespace SimPe.Plugin
 {	
 
 	/// <summary>
-	/// Zusammenfassung für cProcessDeformationsBuilder.
+	/// Summary description for cProcessDeformationsBuilder.
 	/// </summary>
 	public class ProcessDeformationsBuilder
 		: AbstractRcolBlock

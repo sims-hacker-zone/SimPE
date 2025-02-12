@@ -175,14 +175,6 @@ namespace SimPe.Plugin
 			
 			long p1 =reader.BaseStream.Position;
 			size = (int)(reader.BaseStream.Length-p1);
-
-			/*if (!Helper.DebugMode) 
-			{
-				datatype = MipMapType.Texture;
-				img = ImageLoader.Load(texturesize, size, format, reader, -1, 1);
-				reader.BaseStream.Seek(p1, System.IO.SeekOrigin.Begin);
-			} 
-			else */
 			{
 				datatype = MipMapType.SimPE_PlainData;
 			}

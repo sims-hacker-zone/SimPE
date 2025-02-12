@@ -104,7 +104,7 @@ namespace SimPe.Plugin
 	}
 
 	/// <summary>
-	/// Zusammenfassung für cIndexedMeshBuilder.
+	/// Summary description for cIndexedMeshBuilder.
 	/// </summary>
 	public class IndexedMeshBuilder
 		: AbstractRcolBlock

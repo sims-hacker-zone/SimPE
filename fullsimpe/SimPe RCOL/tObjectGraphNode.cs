@@ -26,7 +26,7 @@ using System.Windows.Forms;
 namespace SimPe.Plugin.TabPage
 {
 	/// <summary>
-	/// Zusammenfassung für fShapeRefNode.
+	/// Summary description for fShapeRefNode.
 	/// </summary>
 	public class ObjectGraphNode : 
 		//System.Windows.Forms.UserControl
@@ -62,7 +62,7 @@ namespace SimPe.Plugin.TabPage
 				,true);
 
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+            // Required designer variable.
 			//
             InitializeComponent();
 
@@ -70,7 +70,7 @@ namespace SimPe.Plugin.TabPage
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -85,10 +85,10 @@ namespace SimPe.Plugin.TabPage
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -144,7 +144,7 @@ namespace SimPe.Plugin.TabPage
 			// tb_ogn_ver
 			// 
 			this.tb_ogn_ver.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.tb_ogn_ver.Location = new System.Drawing.Point(16, 40);
+			this.tb_ogn_ver.Location = new System.Drawing.Point(16, 36);
 			this.tb_ogn_ver.Name = "tb_ogn_ver";
 			this.tb_ogn_ver.Size = new System.Drawing.Size(88, 21);
 			this.tb_ogn_ver.TabIndex = 24;
@@ -155,7 +155,7 @@ namespace SimPe.Plugin.TabPage
 			// 
 			this.label27.AutoSize = true;
 			this.label27.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.label27.Location = new System.Drawing.Point(8, 24);
+			this.label27.Location = new System.Drawing.Point(8, 20);
 			this.label27.Name = "label27";
 			this.label27.Size = new System.Drawing.Size(52, 17);
 			this.label27.TabIndex = 23;
@@ -166,7 +166,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_ogn_file.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
 				| System.Windows.Forms.AnchorStyles.Right)));
 			this.tb_ogn_file.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.tb_ogn_file.Location = new System.Drawing.Point(16, 80);
+			this.tb_ogn_file.Location = new System.Drawing.Point(16, 76);
 			this.tb_ogn_file.Name = "tb_ogn_file";
 			this.tb_ogn_file.Size = new System.Drawing.Size(480, 21);
 			this.tb_ogn_file.TabIndex = 20;
@@ -177,7 +177,7 @@ namespace SimPe.Plugin.TabPage
 			// 
 			this.label18.AutoSize = true;
 			this.label18.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.label18.Location = new System.Drawing.Point(8, 64);
+			this.label18.Location = new System.Drawing.Point(8, 60);
 			this.label18.Name = "label18";
 			this.label18.Size = new System.Drawing.Size(61, 17);
 			this.label18.TabIndex = 19;

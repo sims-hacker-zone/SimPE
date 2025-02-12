@@ -140,7 +140,7 @@ namespace SimPe.Plugin
 
 		static ArrayList assemblies;
 		/// <summary>
-		/// keeps a List of all <see cref="System.Reflection.Assembly"/>, SimPE should use to look for Tokens
+		/// keeps a List of all <see cref="System.Reflection.Assembly"/>, SimPe should use to look for Tokens
 		/// </summary>
 		public static ArrayList TokenAssemblies
 		{

@@ -27,7 +27,7 @@ using SimPe.Interfaces.Plugin;
 namespace SimPe.Plugin.TabPage
 {
 	/// <summary>
-	/// Zusammenfassung für MatdForm.
+	/// Summary description for MatdForm.
 	/// </summary>
 	public class MatdForm : 
 		System.Windows.Forms.TabPage
@@ -42,7 +42,6 @@ namespace SimPe.Plugin.TabPage
         private System.Windows.Forms.TextBox tbval;
         private System.Windows.Forms.LinkLabel lladd;
         internal System.Windows.Forms.LinkLabel lldel;
-        private System.Windows.Forms.LinkLabel llscan;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private Button btnImport;
         private Button btnExport;
@@ -50,7 +49,7 @@ namespace SimPe.Plugin.TabPage
         private SaveFileDialog saveFileDialog1;
         private OpenFileDialog openFileDialog1;
         /// <summary>
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
         #endregion
@@ -67,7 +66,7 @@ namespace SimPe.Plugin.TabPage
 				,true);
 
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
 
@@ -75,14 +74,11 @@ namespace SimPe.Plugin.TabPage
             btnImport.Left = btnExport.Right + 12;
             btnMerge.Left = btnImport.Right + 12;
             btnExport.Top = btnImport.Top = btnMerge.Top = gbprop.Bottom + 12;
-
-            llscan.Visible = Helper.DebugMode;
-
             this.UseVisualStyleBackColor = true;
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -97,14 +93,13 @@ namespace SimPe.Plugin.TabPage
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.llscan = new System.Windows.Forms.LinkLabel();
             this.lbprop = new System.Windows.Forms.ListBox();
             this.gbprop = new System.Windows.Forms.GroupBox();
             this.lldel = new System.Windows.Forms.LinkLabel();
@@ -121,17 +116,6 @@ namespace SimPe.Plugin.TabPage
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.gbprop.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // llscan
-            // 
-            this.llscan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.llscan.Location = new System.Drawing.Point(432, 208);
-            this.llscan.Name = "llscan";
-            this.llscan.Size = new System.Drawing.Size(100, 23);
-            this.llscan.TabIndex = 5;
-            this.llscan.TabStop = true;
-            this.llscan.Text = "scan";
-            this.llscan.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llscan_LinkClicked);
             // 
             // lbprop
             // 
@@ -289,7 +273,6 @@ namespace SimPe.Plugin.TabPage
             // MatdForm
             // 
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.llscan);
             this.Controls.Add(this.lbprop);
             this.Controls.Add(this.btnMerge);
             this.Controls.Add(this.btnImport);
@@ -304,7 +287,6 @@ namespace SimPe.Plugin.TabPage
             this.gbprop.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
 		}
 		#endregion
 
@@ -348,7 +330,6 @@ namespace SimPe.Plugin.TabPage
 		{
 			if (tbname.Tag!=null) return;
 			if (this.lbprop.SelectedIndex>=0) Change();
-
 		}
 
 		private void SelectItem(object sender, System.EventArgs e)
@@ -394,63 +375,7 @@ namespace SimPe.Plugin.TabPage
 			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)this.Tag;
 			md.Properties = (MaterialDefinitionProperty[])Helper.Delete(md.Properties, lbprop.Items[lbprop.SelectedIndex]);
 			md.Changed = true;
-			lbprop.Items.Remove(lbprop.Items[lbprop.SelectedIndex]);
-
-			
-		}		
-
-		private void llscan_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
-		{
-#if DEBUG
-			FileTable.FileIndex.Load();
-
-			System.IO.StreamWriter sw = System.IO.File.CreateText(@"G:\txmt.txt");
-			Hashtable ht = new Hashtable();
-			FileTable.FileIndex.AddIndexFromFolder(@":G:\EA Games\Die Sims 2\");
-			try 
-			{
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFile(Data.MetaData.TXMT, true);
-				foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
-				{
-                    Rcol txmt = new SimPe.Plugin.GenericRcol(null, false);
-					txmt.ProcessData(item);
-                    SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)txmt.Blocks[0];
-					foreach (MaterialDefinitionProperty mdp in md.Properties) 
-					{
-						if (!ht.ContainsKey(mdp.Name)) ht.Add(mdp.Name, "| " + mdp.Value + " | ");
-						else 
-						{
-							string s = (string)ht[mdp.Name];
-							if (s.IndexOf("| "+mdp.Value+" |")==-1) 
-							{
-								s += mdp.Value + " | ";
-								ht[mdp.Name] = s;
-							}
-						}
-					}
-				}
-
-				
-				
-
-				foreach (string k in ht.Keys) 
-				{
-					//if (!MaterialDefinition.PropertyParser.Properties.ContainsKey(k)) 
-					{
-						string v = (string)ht[k];
-						string[] parts = v.Split("|".ToCharArray(), 3);
-						sw.Write(k+"; ");
-						sw.WriteLine((string)ht[k]);						
-					}
-			}
-			} 
-			finally 
-			{
-				sw.Close();
-				sw.Dispose();
-				sw = null;
-			}
-#endif
+			lbprop.Items.Remove(lbprop.Items[lbprop.SelectedIndex]);			
 		}
 
 		internal void TxmtChangeTab(object sender, System.EventArgs e)

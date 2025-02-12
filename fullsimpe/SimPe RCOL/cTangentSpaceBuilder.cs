@@ -26,7 +26,7 @@ namespace SimPe.Plugin
 {	
 
 	/// <summary>
-	/// Zusammenfassung für cTangentSpaceBuilder.
+	/// Summary description for cTangentSpaceBuilder.
 	/// </summary>
 	public class TangentSpaceBuilder
 		: AbstractRcolBlock

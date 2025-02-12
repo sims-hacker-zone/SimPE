@@ -274,11 +274,8 @@ namespace SimPe.Plugin
 
 				tMaterialDefinitionFiles.lbfl.Items.Clear();
 				foreach (string fl in Listing) tMaterialDefinitionFiles.lbfl.Items.Add(fl);
-
-				//if (Helper.WindowsRegistry.HiddenMode) 
-				{
-					tMaterialDefinitionCat.SetupGrid(this);
-				}				
+                
+                tMaterialDefinitionCat.SetupGrid(this);
 			} 
 			finally 
 			{
@@ -291,13 +288,9 @@ namespace SimPe.Plugin
 		{
 			tMaterialDefinitionProperties.Tag = this;
 			tc.TabPages.Add(tMaterialDefinitionProperties);
-
 			
 			tMaterialDefinitionFiles.Tag = this;
 			tc.TabPages.Add(tMaterialDefinitionFiles);
-			
-
-			//if (Helper.WindowsRegistry.HiddenMode) 
 		{
 			tMaterialDefinitionCat.Tag = this;
 			tc.TabPages.Add(tMaterialDefinitionCat);

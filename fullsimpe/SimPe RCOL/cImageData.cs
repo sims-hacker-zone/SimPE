@@ -143,14 +143,6 @@ namespace SimPe.Plugin
 						try 
 						{
 							data = reader.ReadBytes(imgsize);
-
-							/*if (!Helper.DebugMode) 
-							{
-								// this is derefered now, until application reads the Texture Property
-								reader.BaseStream.Seek(-imgsize, System.IO.SeekOrigin.Current);
-								img = ImageLoader.Load(parent.TextureSize, imgsize, parent.Format, reader, index, mapcount);
-							} 
-							else*/ 
 							{
 								datatype = MipMapType.SimPE_PlainData;
 								img = null;

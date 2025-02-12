@@ -26,7 +26,7 @@ using System.Windows.Forms;
 namespace SimPe.Plugin.TabPage
 {
 	/// <summary>
-	/// Zusammenfassung für fExtension.
+	/// Summary description for fExtension.
 	/// </summary>
 	public class Extension : 
 		//System.Windows.Forms.UserControl
@@ -69,7 +69,7 @@ namespace SimPe.Plugin.TabPage
 		private System.Windows.Forms.GroupBox gbfloat;
 		private System.Windows.Forms.TextBox tbfloat;
 		/// <summary>
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
@@ -85,7 +85,7 @@ namespace SimPe.Plugin.TabPage
 				,true);
 
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
 
@@ -103,7 +103,7 @@ namespace SimPe.Plugin.TabPage
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -118,10 +118,10 @@ namespace SimPe.Plugin.TabPage
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -501,7 +501,7 @@ namespace SimPe.Plugin.TabPage
 			this.lb_items.IntegralHeight = false;
 			this.lb_items.Location = new System.Drawing.Point(8, 24);
 			this.lb_items.Name = "lb_items";
-			this.lb_items.Size = new System.Drawing.Size(264, 256);
+			this.lb_items.Size = new System.Drawing.Size(264, 256); // if I take 200 off there's very little left
 			this.lb_items.TabIndex = 0;
 			this.lb_items.SelectedIndexChanged += new System.EventHandler(this.SelectItem);
 			// 

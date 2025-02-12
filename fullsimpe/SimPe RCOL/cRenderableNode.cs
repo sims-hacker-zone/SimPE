@@ -22,7 +22,7 @@ using System;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für cRenderableNode.
+	/// Summary description for cRenderableNode.
 	/// </summary>
 	public class RenderableNode
 		: AbstractRcolBlock
