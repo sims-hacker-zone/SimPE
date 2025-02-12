@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace SimPe.PackedFiles.Wrapper
 {
+    [System.ComponentModel.DefaultEvent("SelectedSimChanged")]
     public partial class SimRelationPoolControl : SimPoolControl
     {
         static System.Drawing.Image RelatedImage;

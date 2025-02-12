@@ -369,9 +369,6 @@
   <data name="&gt;&gt;pbVal.Name" xml:space="preserve">
     <value>pbVal</value>
   </data>
-  <data name="&gt;&gt;pbVal.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.LabeledProgressBar, EnumComboBox, Version=1.0.2509.16637, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;pbVal.Parent" xml:space="preserve">
     <value>$this</value>
   </data>

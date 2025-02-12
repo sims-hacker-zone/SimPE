@@ -8,12 +8,12 @@ using System.Windows.Forms;
 namespace SimPe.PackedFiles.Wrapper
 {	
 	/// <summary>
-	/// Zusammenfassung für SimListView.
+	/// Summary description for SimListView.
 	/// </summary>
 	public class SimListView : SteepValley.Windows.Forms.XPListView
 	{
 		/// <summary> 
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
         static Size ICON_SIZE = new Size(64, 64);
@@ -22,7 +22,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public SimListView()
 		{
 			SetStyle(ControlStyles.UserMouse, true);
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Required designer variable.
 			InitializeComponent();
 
 			this.HideSelection = false;
@@ -40,7 +40,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		/// <summary> 
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -55,10 +55,10 @@ namespace SimPe.PackedFiles.Wrapper
 			base.Dispose( disposing );
 		}
 
-		#region Vom Komponenten-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -80,12 +80,12 @@ namespace SimPe.PackedFiles.Wrapper
 
         public Image GetSimIcon(SimPe.PackedFiles.Wrapper.ExtSDesc sdesc, Color bgcol)
         {
-            return BuildSimPreviewImage(bgcol, sdesc.Image, sdesc.SimId);
+            return BuildSimPreviewImage(bgcol, sdesc.Image, sdesc.SimId, sdesc);
         }
 
 		public SteepValley.Windows.Forms.XPListViewItem Add(SimPe.PackedFiles.Wrapper.ExtSDesc sdesc, Color bgcol)
 		{
-            Image imgbig = BuildSimPreviewImage(bgcol, sdesc.Image, sdesc.SimId);
+            Image imgbig = BuildSimPreviewImage(bgcol, sdesc.Image, sdesc.SimId, sdesc);
             return Add(sdesc, imgbig);
         }
 
@@ -124,9 +124,9 @@ namespace SimPe.PackedFiles.Wrapper
 
         public static Image BuildSimPreviewImage(SimPe.PackedFiles.Wrapper.ExtSDesc sdesc, Color bgcol)
         {
-            return BuildSimPreviewImage(bgcol, sdesc.Image, sdesc.SimId);
+            return BuildSimPreviewImage(bgcol, sdesc.Image, sdesc.SimId, sdesc);
         }
-        protected static Image BuildSimPreviewImage(Color bgcol, Image imgbig, uint guid)
+        protected static Image BuildSimPreviewImage(Color bgcol, Image imgbig, uint guid, SimPe.PackedFiles.Wrapper.ExtSDesc sdesc)
         {
             if (simicons.ContainsKey(guid))
             {
@@ -138,12 +138,11 @@ namespace SimPe.PackedFiles.Wrapper
                 if (imgbig.Width < 16)
                     imgbig = null;
 
-            if (imgbig != null)
-                imgbig = Ambertation.Drawing.GraphicRoutines.KnockoutImage(imgbig, new Point(0, 0), Color.Magenta);
+            if (imgbig != null) imgbig = Ambertation.Drawing.GraphicRoutines.KnockoutImage(imgbig, new Point(0, 0), Color.Magenta);
             else
-                imgbig = Image.FromStream(
-                    typeof(SimListView).Assembly.GetManifestResourceStream("SimPe.PackedFiles.Wrapper.noone.png")
-                );
+            {
+                imgbig = SimPe.GetImage.NoOne;
+            }
 
             imgbig = Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(
                 imgbig,
@@ -160,9 +159,6 @@ namespace SimPe.PackedFiles.Wrapper
 
             simicons[guid] = imgbig;
             return (Image)imgbig.Clone();
-        }		
-		
-		
-
+        }
 	}
 }

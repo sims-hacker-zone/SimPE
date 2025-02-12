@@ -36,7 +36,7 @@ namespace SimPe.PackedFiles.UserInterface
     {
 
         /// <summary> 
-        /// Die verwendeten Ressourcen bereinigen.
+        /// Clean up any resources being used.
         /// </summary>
         protected override void Dispose(bool disposing)
         {
@@ -50,10 +50,10 @@ namespace SimPe.PackedFiles.UserInterface
             base.Dispose(disposing);
         }
 
-        #region Vom Komponenten-Designer generierter Code
+        #region Windows Form Designer generated code
         /// <summary> 
-        /// Erforderliche Methode für die Designerunterstützung. 
-        /// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -82,10 +82,19 @@ namespace SimPe.PackedFiles.UserInterface
             this.biEP3 = new System.Windows.Forms.ToolStripButton();
             this.biEP6 = new System.Windows.Forms.ToolStripButton();
             this.biEP7 = new System.Windows.Forms.ToolStripButton();
+            this.biEP9 = new System.Windows.Forms.ToolStripButton();
             this.biMore = new System.Windows.Forms.ToolStripButton();
             this.biMax = new System.Windows.Forms.ToolStripButton();
+            this.biLezby = new System.Windows.Forms.ToolStripButton();
             this.mbiMax = new System.Windows.Forms.ToolStripMenuItem();
             this.pnId = new System.Windows.Forms.Panel();
+            this.btOriGuid = new System.Windows.Forms.Button();
+            this.lbHousname = new System.Windows.Forms.Label();
+            this.lbSplitChar = new System.Windows.Forms.Label();
+            this.lbFixedRes = new System.Windows.Forms.Label();
+            this.tbsinstance = new System.Windows.Forms.TextBox();
+            this.label42 = new System.Windows.Forms.Label();
+            this.lbsubspec = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.cbSpecies = new Ambertation.Windows.Forms.EnumComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -170,6 +179,13 @@ namespace SimPe.PackedFiles.UserInterface
             this.mbiMaxThisRel = new System.Windows.Forms.ToolStripMenuItem();
             this.mbiMaxKnownRel = new System.Windows.Forms.ToolStripMenuItem();
             this.pnCareer = new System.Windows.Forms.Panel();
+            this.lbRetcareer = new System.Windows.Forms.Label();
+            this.lpRetirement = new Ambertation.Windows.Forms.LabeledProgressBar();
+            this.cbRetirement = new System.Windows.Forms.ComboBox();
+            this.tbpension = new System.Windows.Forms.TextBox();
+            this.lbpension = new System.Windows.Forms.Label();
+            this.lbaccholidays = new System.Windows.Forms.Label();
+            this.tbaccholidays = new System.Windows.Forms.TextBox();
             this.pbAspBliz = new Ambertation.Windows.Forms.LabeledProgressBar();
             this.label60 = new System.Windows.Forms.Label();
             this.cbaspiration = new System.Windows.Forms.ComboBox();
@@ -212,7 +228,41 @@ namespace SimPe.PackedFiles.UserInterface
             this.srcTb = new Ambertation.Windows.Forms.XPTaskBoxSimple();
             this.dstTb = new Ambertation.Windows.Forms.XPTaskBoxSimple();
             this.pnMisc = new System.Windows.Forms.Panel();
-            this.xpTaskBoxSimple3 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+            this.tbMotiveDec = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+            this.lbdecScratc = new System.Windows.Forms.Label();
+            this.tbdecScratc = new System.Windows.Forms.TextBox();
+            this.lbdecAmor = new System.Windows.Forms.Label();
+            this.tbdecAmor = new System.Windows.Forms.TextBox();
+            this.lbdecFun = new System.Windows.Forms.Label();
+            this.tbdecFun = new System.Windows.Forms.TextBox();
+            this.lbdecShop = new System.Windows.Forms.Label();
+            this.tbdecShop = new System.Windows.Forms.TextBox();
+            this.lbdecSocial = new System.Windows.Forms.Label();
+            this.tbdecSocial = new System.Windows.Forms.TextBox();
+            this.lbdecHygiene = new System.Windows.Forms.Label();
+            this.tbdecHygiene = new System.Windows.Forms.TextBox();
+            this.tbdecEnergy = new System.Windows.Forms.TextBox();
+            this.lbdecEnergy = new System.Windows.Forms.Label();
+            this.tbdecBladder = new System.Windows.Forms.TextBox();
+            this.lbdecBladder = new System.Windows.Forms.Label();
+            this.tbdecComfort = new System.Windows.Forms.TextBox();
+            this.lbdecComfort = new System.Windows.Forms.Label();
+            this.tbdecHunger = new System.Windows.Forms.TextBox();
+            this.lbdecHunger = new System.Windows.Forms.Label();
+            this.tbpersonflags = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+            this.cbpfwitch = new System.Windows.Forms.CheckBox();
+            this.cbpfroomy = new System.Windows.Forms.CheckBox();
+            this.cbpfBigf = new System.Windows.Forms.CheckBox();
+            this.cbpfPlant = new System.Windows.Forms.CheckBox();
+            this.cbpfrunaw = new System.Windows.Forms.CheckBox();
+            this.cbpflyact = new System.Windows.Forms.CheckBox();
+            this.cbpflycar = new System.Windows.Forms.CheckBox();
+            this.cbpfwants = new System.Windows.Forms.CheckBox();
+            this.cbpfvsmoke = new System.Windows.Forms.CheckBox();
+            this.cbpfvamp = new System.Windows.Forms.CheckBox();
+            this.cbpfperma = new System.Windows.Forms.CheckBox();
+            this.cbpfZomb = new System.Windows.Forms.CheckBox();
+            this.bTaskBox3 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
             this.label3 = new System.Windows.Forms.Label();
             this.tbstatmot = new System.Windows.Forms.TextBox();
             this.label96 = new System.Windows.Forms.Label();
@@ -227,19 +277,30 @@ namespace SimPe.PackedFiles.UserInterface
             this.label87 = new System.Windows.Forms.Label();
             this.tbautonomy = new System.Windows.Forms.TextBox();
             this.label86 = new System.Windows.Forms.Label();
-            this.xpTaskBoxSimple2 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-            this.cbfit = new Ambertation.Windows.Forms.TransparentCheckBox();
-            this.cbpreginv = new Ambertation.Windows.Forms.TransparentCheckBox();
-            this.cbpreghalf = new Ambertation.Windows.Forms.TransparentCheckBox();
-            this.cbpregfull = new Ambertation.Windows.Forms.TransparentCheckBox();
-            this.cbfat = new Ambertation.Windows.Forms.TransparentCheckBox();
-            this.xpTaskBoxSimple1 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-            this.cbisghost = new Ambertation.Windows.Forms.TransparentCheckBox();
-            this.cbignoretraversal = new Ambertation.Windows.Forms.TransparentCheckBox();
-            this.cbpasspeople = new Ambertation.Windows.Forms.TransparentCheckBox();
-            this.cbpasswalls = new Ambertation.Windows.Forms.TransparentCheckBox();
-            this.cbpassobject = new Ambertation.Windows.Forms.TransparentCheckBox();
+            this.bTaskBox2 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+            this.cbfit = new System.Windows.Forms.CheckBox();
+            this.cbpreginv = new System.Windows.Forms.CheckBox();
+            this.cbpreghalf = new System.Windows.Forms.CheckBox();
+            this.cbpregfull = new System.Windows.Forms.CheckBox();
+            this.cbfat = new System.Windows.Forms.CheckBox();
+            this.bTaskBox1 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+            this.cbisghost = new System.Windows.Forms.CheckBox();
+            this.cbignoretraversal = new System.Windows.Forms.CheckBox();
+            this.cbpasspeople = new System.Windows.Forms.CheckBox();
+            this.cbpasswalls = new System.Windows.Forms.CheckBox();
+            this.cbpassobject = new System.Windows.Forms.CheckBox();
             this.pnEP1 = new System.Windows.Forms.Panel();
+            this.tbSeminfo = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+            this.cbexpelled = new System.Windows.Forms.CheckBox();
+            this.cbdroped = new System.Windows.Forms.CheckBox();
+            this.cbatclass = new System.Windows.Forms.CheckBox();
+            this.cbgraduate = new System.Windows.Forms.CheckBox();
+            this.cbprobation = new System.Windows.Forms.CheckBox();
+            this.cbGoodsem = new System.Windows.Forms.CheckBox();
+            this.cbSenior = new System.Windows.Forms.CheckBox();
+            this.cbJunior = new System.Windows.Forms.CheckBox();
+            this.cbSopho = new System.Windows.Forms.CheckBox();
+            this.cbfreshman = new System.Windows.Forms.CheckBox();
             this.pbLastGrade = new Ambertation.Windows.Forms.LabeledProgressBar();
             this.pbUniTime = new Ambertation.Windows.Forms.LabeledProgressBar();
             this.pbEffort = new Ambertation.Windows.Forms.LabeledProgressBar();
@@ -247,7 +308,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.tbsemester = new System.Windows.Forms.TextBox();
             this.label103 = new System.Windows.Forms.Label();
             this.label101 = new System.Windows.Forms.Label();
-            this.cboncampus = new Ambertation.Windows.Forms.TransparentCheckBox();
+            this.cboncampus = new System.Windows.Forms.CheckBox();
             this.cbmajor = new System.Windows.Forms.ComboBox();
             this.label98 = new System.Windows.Forms.Label();
             this.tbmajor = new System.Windows.Forms.TextBox();
@@ -257,7 +318,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.cbaspiration2 = new System.Windows.Forms.ComboBox();
             this.cbHobbyPre = new Ambertation.Windows.Forms.EnumComboBox();
             this.label40 = new System.Windows.Forms.Label();
-            this.xpTaskBoxSimple4 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+            this.bTaskBox4 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
             this.label33 = new System.Windows.Forms.Label();
             this.tb7social = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
@@ -280,7 +341,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.label30 = new System.Windows.Forms.Label();
             this.tbLtAsp = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
-            this.tbHobbyPre = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.cbHobbyEnth = new System.Windows.Forms.ComboBox();
             this.pnEP2 = new System.Windows.Forms.Panel();
@@ -293,9 +353,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.lbTurnOn = new System.Windows.Forms.CheckedListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.lbTraits = new System.Windows.Forms.CheckedListBox();
+            this.pbtraits = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.pnEP3 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.llep3openinfo = new System.Windows.Forms.LinkLabel();
             this.label15 = new System.Windows.Forms.Label();
             this.sblb = new SimPe.PackedFiles.Wrapper.SimBusinessList();
@@ -313,6 +373,78 @@ namespace SimPe.PackedFiles.UserInterface
             this.tbhdaysleft = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.labelcol = new System.Windows.Forms.Label();
+            this.pnEP9 = new System.Windows.Forms.Panel();
+            this.lbfaithinfo = new System.Windows.Forms.Label();
+            this.tbfemdik = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+            this.lbFemcolour = new System.Windows.Forms.Label();
+            this.cbfembaldy = new System.Windows.Forms.CheckBox();
+            this.cbfemsmall = new System.Windows.Forms.CheckBox();
+            this.cbfembig = new System.Windows.Forms.CheckBox();
+            this.cbfemcirc = new System.Windows.Forms.CheckBox();
+            this.cbFemColour = new System.Windows.Forms.ComboBox();
+            this.Various = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+            this.lbVBFriend = new System.Windows.Forms.Label();
+            this.cbVBFriend = new System.Windows.Forms.ComboBox();
+            this.cbisslave = new System.Windows.Forms.CheckBox();
+            this.cbstaynude = new System.Windows.Forms.CheckBox();
+            this.lbReligion = new System.Windows.Forms.Label();
+            this.lbpostTitle = new System.Windows.Forms.Label();
+            this.cbpostTitle = new System.Windows.Forms.ComboBox();
+            this.cbSuburbs = new System.Windows.Forms.ComboBox();
+            this.cbFaiths = new System.Windows.Forms.ComboBox();
+            this.lbalcsub = new System.Windows.Forms.Label();
+            this.cbhospital = new System.Windows.Forms.CheckBox();
+            this.pbicon = new System.Windows.Forms.PictureBox();
+            this.cbonpill = new System.Windows.Forms.CheckBox();
+            this.cbmarker = new System.Windows.Forms.CheckBox();
+            this.lbBodee = new System.Windows.Forms.Label();
+            this.cbBody = new System.Windows.Forms.ComboBox();
+            this.Nipples = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+            this.labelnipple = new System.Windows.Forms.Label();
+            this.cbnipsit = new System.Windows.Forms.CheckBox();
+            this.cbnipssi = new System.Windows.Forms.CheckBox();
+            this.cbnipsma = new System.Windows.Forms.CheckBox();
+            this.cbnipswi = new System.Windows.Forms.CheckBox();
+            this.cbnipsfo = new System.Windows.Forms.CheckBox();
+            this.cbnipsgy = new System.Windows.Forms.CheckBox();
+            this.cbnipsun = new System.Windows.Forms.CheckBox();
+            this.cbnipspy = new System.Windows.Forms.CheckBox();
+            this.cbnipssw = new System.Windows.Forms.CheckBox();
+            this.cbnipsca = new System.Windows.Forms.CheckBox();
+            this.cbnipsna = new System.Windows.Forms.CheckBox();
+            this.Pubes = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+            this.pnPenis = new System.Windows.Forms.Panel();
+            this.cbdickless = new System.Windows.Forms.CheckBox();
+            this.labelpenis = new System.Windows.Forms.Label();
+            this.lbBallsize = new System.Windows.Forms.Label();
+            this.cbDiklength = new System.Windows.Forms.ComboBox();
+            this.lbDikgirth = new System.Windows.Forms.Label();
+            this.cbDikgirth = new System.Windows.Forms.ComboBox();
+            this.lbDikcolour = new System.Windows.Forms.Label();
+            this.cbBallsize = new System.Windows.Forms.ComboBox();
+            this.lbDikstate = new System.Windows.Forms.Label();
+            this.cbDikstate = new System.Windows.Forms.ComboBox();
+            this.lbDiklength = new System.Windows.Forms.Label();
+            this.cbDikcolour = new System.Windows.Forms.ComboBox();
+            this.pnMuffy = new System.Windows.Forms.Panel();
+            this.btpubedic = new System.Windows.Forms.Button();
+            this.labelpubes = new System.Windows.Forms.Label();
+            this.cbpubesh = new System.Windows.Forms.CheckBox();
+            this.cbpubetr = new System.Windows.Forms.CheckBox();
+            this.cbpubetf = new System.Windows.Forms.CheckBox();
+            this.cbpubebk = new System.Windows.Forms.CheckBox();
+            this.cbpubebn = new System.Windows.Forms.CheckBox();
+            this.cbpubebd = new System.Windows.Forms.CheckBox();
+            this.cbpuberd = new System.Windows.Forms.CheckBox();
+            this.labelgenital = new System.Windows.Forms.Label();
+            this.cbpubeal = new System.Windows.Forms.CheckBox();
+            this.cbpubegy = new System.Windows.Forms.CheckBox();
+            this.cbpubeun = new System.Windows.Forms.CheckBox();
+            this.cbpubepy = new System.Windows.Forms.CheckBox();
+            this.cbpubesw = new System.Windows.Forms.CheckBox();
+            this.cbpubeca = new System.Windows.Forms.CheckBox();
+            this.btProfile = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnPetInt.SuspendLayout();
             this.toolBar1.SuspendLayout();
             this.pnId.SuspendLayout();
@@ -329,16 +461,27 @@ namespace SimPe.PackedFiles.UserInterface
             this.pnRel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnMisc.SuspendLayout();
-            this.xpTaskBoxSimple3.SuspendLayout();
-            this.xpTaskBoxSimple2.SuspendLayout();
-            this.xpTaskBoxSimple1.SuspendLayout();
+            this.tbMotiveDec.SuspendLayout();
+            this.tbpersonflags.SuspendLayout();
+            this.bTaskBox3.SuspendLayout();
+            this.bTaskBox2.SuspendLayout();
+            this.bTaskBox1.SuspendLayout();
             this.pnEP1.SuspendLayout();
+            this.tbSeminfo.SuspendLayout();
             this.pnEP7.SuspendLayout();
-            this.xpTaskBoxSimple4.SuspendLayout();
+            this.bTaskBox4.SuspendLayout();
             this.pnEP2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbtraits)).BeginInit();
             this.pnEP3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnVoyage.SuspendLayout();
+            this.pnEP9.SuspendLayout();
+            this.tbfemdik.SuspendLayout();
+            this.Various.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbicon)).BeginInit();
+            this.Nipples.SuspendLayout();
+            this.Pubes.SuspendLayout();
+            this.pnPenis.SuspendLayout();
+            this.pnMuffy.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnPetInt
@@ -362,13 +505,18 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPetEating.BackColor = System.Drawing.Color.Transparent;
             this.pbPetEating.DisplayOffset = 0;
             resources.ApplyResources(this.pbPetEating, "pbPetEating");
+            this.pbPetEating.GradientEndColour = System.Drawing.Color.White;
+            this.pbPetEating.GradientStartColour = System.Drawing.Color.White;
+            this.pbPetEating.LabelAlignment = System.Windows.Forms.DockStyle.Right;
             this.pbPetEating.Maximum = 1000;
             this.pbPetEating.Name = "pbPetEating";
             this.pbPetEating.NumberFormat = "N1";
             this.pbPetEating.NumberOffset = 0;
             this.pbPetEating.NumberScale = 0.01;
+            this.pbPetEating.ProgressBackColour = System.Drawing.SystemColors.Window;
             this.pbPetEating.SelectedColor = System.Drawing.Color.Lime;
             this.pbPetEating.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
+            this.pbPetEating.TextBoxBackColour = System.Drawing.SystemColors.Window;
             this.pbPetEating.TokenCount = 10;
             this.pbPetEating.UnselectedColor = System.Drawing.Color.Black;
             this.pbPetEating.Value = 500;
@@ -378,13 +526,18 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPetOutside.BackColor = System.Drawing.Color.Transparent;
             this.pbPetOutside.DisplayOffset = 0;
             resources.ApplyResources(this.pbPetOutside, "pbPetOutside");
+            this.pbPetOutside.GradientEndColour = System.Drawing.Color.White;
+            this.pbPetOutside.GradientStartColour = System.Drawing.Color.White;
+            this.pbPetOutside.LabelAlignment = System.Windows.Forms.DockStyle.Right;
             this.pbPetOutside.Maximum = 1000;
             this.pbPetOutside.Name = "pbPetOutside";
             this.pbPetOutside.NumberFormat = "N1";
             this.pbPetOutside.NumberOffset = 0;
             this.pbPetOutside.NumberScale = 0.01;
+            this.pbPetOutside.ProgressBackColour = System.Drawing.SystemColors.Window;
             this.pbPetOutside.SelectedColor = System.Drawing.Color.Lime;
             this.pbPetOutside.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
+            this.pbPetOutside.TextBoxBackColour = System.Drawing.SystemColors.Window;
             this.pbPetOutside.TokenCount = 10;
             this.pbPetOutside.UnselectedColor = System.Drawing.Color.Black;
             this.pbPetOutside.Value = 500;
@@ -394,13 +547,18 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPetPlaying.BackColor = System.Drawing.Color.Transparent;
             this.pbPetPlaying.DisplayOffset = 0;
             resources.ApplyResources(this.pbPetPlaying, "pbPetPlaying");
+            this.pbPetPlaying.GradientEndColour = System.Drawing.Color.White;
+            this.pbPetPlaying.GradientStartColour = System.Drawing.Color.White;
+            this.pbPetPlaying.LabelAlignment = System.Windows.Forms.DockStyle.Right;
             this.pbPetPlaying.Maximum = 1000;
             this.pbPetPlaying.Name = "pbPetPlaying";
             this.pbPetPlaying.NumberFormat = "N1";
             this.pbPetPlaying.NumberOffset = 0;
             this.pbPetPlaying.NumberScale = 0.01;
+            this.pbPetPlaying.ProgressBackColour = System.Drawing.SystemColors.Window;
             this.pbPetPlaying.SelectedColor = System.Drawing.Color.Lime;
             this.pbPetPlaying.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
+            this.pbPetPlaying.TextBoxBackColour = System.Drawing.SystemColors.Window;
             this.pbPetPlaying.TokenCount = 10;
             this.pbPetPlaying.UnselectedColor = System.Drawing.Color.Black;
             this.pbPetPlaying.Value = 500;
@@ -410,11 +568,15 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPetSpooky.BackColor = System.Drawing.Color.Transparent;
             this.pbPetSpooky.DisplayOffset = 0;
             resources.ApplyResources(this.pbPetSpooky, "pbPetSpooky");
+            this.pbPetSpooky.GradientEndColour = System.Drawing.Color.White;
+            this.pbPetSpooky.GradientStartColour = System.Drawing.Color.White;
+            this.pbPetSpooky.LabelAlignment = System.Windows.Forms.DockStyle.Right;
             this.pbPetSpooky.Maximum = 1000;
             this.pbPetSpooky.Name = "pbPetSpooky";
             this.pbPetSpooky.NumberFormat = "N1";
             this.pbPetSpooky.NumberOffset = 0;
             this.pbPetSpooky.NumberScale = 0.01;
+            this.pbPetSpooky.ProgressBackColour = System.Drawing.SystemColors.Window;
             this.pbPetSpooky.SelectedColor = System.Drawing.Color.Lime;
             this.pbPetSpooky.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbPetSpooky.TokenCount = 10;
@@ -431,6 +593,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPetSleep.NumberFormat = "N1";
             this.pbPetSleep.NumberOffset = 0;
             this.pbPetSleep.NumberScale = 0.01;
+            this.pbPetSleep.ProgressBackColour = System.Drawing.SystemColors.Window;
             this.pbPetSleep.SelectedColor = System.Drawing.Color.Lime;
             this.pbPetSleep.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbPetSleep.TokenCount = 10;
@@ -447,6 +610,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPetToy.NumberFormat = "N1";
             this.pbPetToy.NumberOffset = 0;
             this.pbPetToy.NumberScale = 0.01;
+            this.pbPetToy.ProgressBackColour = System.Drawing.SystemColors.Window;
             this.pbPetToy.SelectedColor = System.Drawing.Color.Lime;
             this.pbPetToy.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbPetToy.TokenCount = 10;
@@ -458,11 +622,15 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPetWeather.BackColor = System.Drawing.Color.Transparent;
             this.pbPetWeather.DisplayOffset = 0;
             resources.ApplyResources(this.pbPetWeather, "pbPetWeather");
+            this.pbPetWeather.GradientEndColour = System.Drawing.Color.White;
+            this.pbPetWeather.GradientStartColour = System.Drawing.Color.White;
+            this.pbPetWeather.LabelAlignment = System.Windows.Forms.DockStyle.Right;
             this.pbPetWeather.Maximum = 1000;
             this.pbPetWeather.Name = "pbPetWeather";
             this.pbPetWeather.NumberFormat = "N1";
             this.pbPetWeather.NumberOffset = 0;
             this.pbPetWeather.NumberScale = 0.01;
+            this.pbPetWeather.ProgressBackColour = System.Drawing.SystemColors.Window;
             this.pbPetWeather.SelectedColor = System.Drawing.Color.Lime;
             this.pbPetWeather.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbPetWeather.TokenCount = 10;
@@ -474,11 +642,15 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPetPets.BackColor = System.Drawing.Color.Transparent;
             this.pbPetPets.DisplayOffset = 0;
             resources.ApplyResources(this.pbPetPets, "pbPetPets");
+            this.pbPetPets.GradientEndColour = System.Drawing.Color.White;
+            this.pbPetPets.GradientStartColour = System.Drawing.Color.White;
+            this.pbPetPets.LabelAlignment = System.Windows.Forms.DockStyle.Right;
             this.pbPetPets.Maximum = 1000;
             this.pbPetPets.Name = "pbPetPets";
             this.pbPetPets.NumberFormat = "N1";
             this.pbPetPets.NumberOffset = 0;
             this.pbPetPets.NumberScale = 0.01;
+            this.pbPetPets.ProgressBackColour = System.Drawing.SystemColors.Window;
             this.pbPetPets.SelectedColor = System.Drawing.Color.Lime;
             this.pbPetPets.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbPetPets.TokenCount = 10;
@@ -490,11 +662,15 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPetAnimals.BackColor = System.Drawing.Color.Transparent;
             this.pbPetAnimals.DisplayOffset = 0;
             resources.ApplyResources(this.pbPetAnimals, "pbPetAnimals");
+            this.pbPetAnimals.GradientEndColour = System.Drawing.Color.White;
+            this.pbPetAnimals.GradientStartColour = System.Drawing.Color.White;
+            this.pbPetAnimals.LabelAlignment = System.Windows.Forms.DockStyle.Right;
             this.pbPetAnimals.Maximum = 1000;
             this.pbPetAnimals.Name = "pbPetAnimals";
             this.pbPetAnimals.NumberFormat = "N1";
             this.pbPetAnimals.NumberOffset = 0;
             this.pbPetAnimals.NumberScale = 0.01;
+            this.pbPetAnimals.ProgressBackColour = System.Drawing.SystemColors.Window;
             this.pbPetAnimals.SelectedColor = System.Drawing.Color.Lime;
             this.pbPetAnimals.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbPetAnimals.TokenCount = 10;
@@ -519,8 +695,10 @@ namespace SimPe.PackedFiles.UserInterface
             this.biEP3,
             this.biEP6,
             this.biEP7,
+            this.biEP9,
             this.biMore,
-            this.biMax});
+            this.biMax,
+            this.biLezby});
             this.toolBar1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.toolBar1.Name = "toolBar1";
             // 
@@ -596,6 +774,12 @@ namespace SimPe.PackedFiles.UserInterface
             this.biEP7.Name = "biEP7";
             this.biEP7.Click += new System.EventHandler(this.ChoosePage);
             // 
+            // biEP9
+            // 
+            resources.ApplyResources(this.biEP9, "biEP9");
+            this.biEP9.Name = "biEP9";
+            this.biEP9.Click += new System.EventHandler(this.ChoosePage);
+            // 
             // biMore
             // 
             resources.ApplyResources(this.biMore, "biMore");
@@ -605,9 +789,15 @@ namespace SimPe.PackedFiles.UserInterface
             // biMax
             // 
             resources.ApplyResources(this.biMax, "biMax");
-            this.biMax.Margin = new System.Windows.Forms.Padding(52, 1, 0, 2);
+            this.biMax.Margin = new System.Windows.Forms.Padding(48, 1, 0, 2);
             this.biMax.Name = "biMax";
             this.biMax.Click += new System.EventHandler(this.Activate_biMax);
+            // 
+            // biLezby
+            // 
+            resources.ApplyResources(this.biLezby, "biLezby");
+            this.biLezby.Name = "biLezby";
+            this.biLezby.Click += new System.EventHandler(this.Activate_biLezby);
             // 
             // mbiMax
             // 
@@ -619,6 +809,16 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             resources.ApplyResources(this.pnId, "pnId");
             this.pnId.BackColor = System.Drawing.Color.Transparent;
+            this.pnId.BackgroundImageAnchor = System.Windows.Forms.Panel.ImageLayout.BottomLeft;
+            this.pnId.BackgroundImageLocation = new System.Drawing.Point(750, 0);
+            this.pnId.BackgroundImageZoomToFit = true;
+            this.pnId.Controls.Add(this.btOriGuid);
+            this.pnId.Controls.Add(this.lbHousname);
+            this.pnId.Controls.Add(this.lbSplitChar);
+            this.pnId.Controls.Add(this.lbFixedRes);
+            this.pnId.Controls.Add(this.tbsinstance);
+            this.pnId.Controls.Add(this.label42);
+            this.pnId.Controls.Add(this.lbsubspec);
             this.pnId.Controls.Add(this.label16);
             this.pnId.Controls.Add(this.cbSpecies);
             this.pnId.Controls.Add(this.label2);
@@ -636,7 +836,51 @@ namespace SimPe.PackedFiles.UserInterface
             this.pnId.Controls.Add(this.tbage);
             this.pnId.Controls.Add(this.label48);
             this.pnId.Controls.Add(this.cblifesection);
+            this.pnId.Controls.Add(this.lbservice);
+            this.pnId.Controls.Add(this.cbservice);
             this.pnId.Name = "pnId";
+            // 
+            // btOriGuid
+            // 
+            resources.ApplyResources(this.btOriGuid, "btOriGuid");
+            this.btOriGuid.Name = "btOriGuid";
+            this.toolTip1.SetToolTip(this.btOriGuid, resources.GetString("btOriGuid.ToolTip"));
+            this.btOriGuid.UseVisualStyleBackColor = true;
+            this.btOriGuid.Click += new System.EventHandler(this.btOriGuid_Click);
+            // 
+            // lbHousname
+            // 
+            resources.ApplyResources(this.lbHousname, "lbHousname");
+            this.lbHousname.Name = "lbHousname";
+            // 
+            // lbSplitChar
+            // 
+            resources.ApplyResources(this.lbSplitChar, "lbSplitChar");
+            this.lbSplitChar.ForeColor = System.Drawing.Color.Maroon;
+            this.lbSplitChar.Name = "lbSplitChar";
+            this.toolTip1.SetToolTip(this.lbSplitChar, resources.GetString("lbSplitChar.ToolTip"));
+            // 
+            // lbFixedRes
+            // 
+            resources.ApplyResources(this.lbFixedRes, "lbFixedRes");
+            this.lbFixedRes.Name = "lbFixedRes";
+            // 
+            // tbsinstance
+            // 
+            resources.ApplyResources(this.tbsinstance, "tbsinstance");
+            this.tbsinstance.Name = "tbsinstance";
+            this.toolTip1.SetToolTip(this.tbsinstance, resources.GetString("tbsinstance.ToolTip"));
+            this.tbsinstance.TextChanged += new System.EventHandler(this.ChangedId);
+            // 
+            // label42
+            // 
+            resources.ApplyResources(this.label42, "label42");
+            this.label42.Name = "label42";
+            // 
+            // lbsubspec
+            // 
+            resources.ApplyResources(this.lbsubspec, "lbsubspec");
+            this.lbsubspec.Name = "lbsubspec";
             // 
             // label16
             // 
@@ -645,7 +889,6 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             // cbSpecies
             // 
-            this.cbSpecies.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSpecies.Enum = null;
             resources.ApplyResources(this.cbSpecies, "cbSpecies");
             this.cbSpecies.Name = "cbSpecies";
@@ -666,6 +909,8 @@ namespace SimPe.PackedFiles.UserInterface
             // tbsimdescfamname
             // 
             resources.ApplyResources(this.tbsimdescfamname, "tbsimdescfamname");
+            this.tbsimdescfamname.MaximumSize = new System.Drawing.Size(416, 21);
+            this.tbsimdescfamname.MinimumSize = new System.Drawing.Size(200, 21);
             this.tbsimdescfamname.Name = "tbsimdescfamname";
             this.tbsimdescfamname.TextChanged += new System.EventHandler(this.ChangedId);
             // 
@@ -734,17 +979,39 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             // cblifesection
             // 
-            this.cblifesection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cblifesection, "cblifesection");
             this.cblifesection.Name = "cblifesection";
             this.cblifesection.SelectedValueChanged += new System.EventHandler(this.ChangedId);
+            // 
+            // lbservice
+            // 
+            resources.ApplyResources(this.lbservice, "lbservice");
+            this.lbservice.Name = "lbservice";
+            // 
+            // cbservice
+            // 
+            resources.ApplyResources(this.cbservice, "cbservice");
+            this.cbservice.FormattingEnabled = true;
+            this.cbservice.Name = "cbservice";
+            this.toolTip1.SetToolTip(this.cbservice, resources.GetString("cbservice.ToolTip"));
+            this.cbservice.SelectedIndexChanged += new System.EventHandler(this.cbservice_SelectedIndexChanged);
             // 
             // pnSkill
             // 
             resources.ApplyResources(this.pnSkill, "pnSkill");
             this.pnSkill.BackColor = System.Drawing.Color.Transparent;
+            this.pnSkill.BackgroundImageAnchor = System.Windows.Forms.Panel.ImageLayout.BottomLeft;
+            this.pnSkill.BackgroundImageLocation = new System.Drawing.Point(750, 0);
+            this.pnSkill.BackgroundImageZoomToFit = true;
+            this.pnSkill.Controls.Add(this.pbArty);
+            this.pnSkill.Controls.Add(this.pbMusic);
+            this.pnSkill.Controls.Add(this.pbPupbody);
+            this.pnSkill.Controls.Add(this.pbPupClean);
+            this.pnSkill.Controls.Add(this.pbPupCreative);
+            this.pnSkill.Controls.Add(this.pbPupCharisma);
+            this.pnSkill.Controls.Add(this.pbPupMech);
+            this.pnSkill.Controls.Add(this.pbPupLogic);
             this.pnSkill.Controls.Add(this.pbBody);
-            this.pnSkill.Controls.Add(this.pbRomance);
             this.pnSkill.Controls.Add(this.pbFat);
             this.pnSkill.Controls.Add(this.pbClean);
             this.pnSkill.Controls.Add(this.pbCreative);
@@ -752,52 +1019,217 @@ namespace SimPe.PackedFiles.UserInterface
             this.pnSkill.Controls.Add(this.pbMech);
             this.pnSkill.Controls.Add(this.pbLogic);
             this.pnSkill.Controls.Add(this.pbCooking);
+            this.pnSkill.Controls.Add(this.pbReputate);
             this.pnSkill.Name = "pnSkill";
+            // 
+            // pbArty
+            // 
+            this.pbArty.BackColor = System.Drawing.Color.Transparent;
+            this.pbArty.DisplayOffset = 0;
+            resources.ApplyResources(this.pbArty, "pbArty");
+            this.pbArty.GradientEndColour = System.Drawing.Color.White;
+            this.pbArty.GradientStartColour = System.Drawing.Color.White;
+            this.pbArty.LabelAlignment = System.Windows.Forms.DockStyle.Right;
+            this.pbArty.Maximum = 1000;
+            this.pbArty.Name = "pbArty";
+            this.pbArty.NumberFormat = "N2";
+            this.pbArty.NumberOffset = 0;
+            this.pbArty.NumberScale = 0.01;
+            this.pbArty.ProgressBackColour = System.Drawing.SystemColors.Window;
+            this.pbArty.SelectedColor = System.Drawing.Color.Lime;
+            this.pbArty.TextBoxBackColour = System.Drawing.SystemColors.Window;
+            this.pbArty.TokenCount = 21;
+            this.pbArty.UnselectedColor = System.Drawing.Color.Black;
+            this.pbArty.Value = 500;
+            this.pbArty.Changed += new System.EventHandler(this.ChangedSkill);
+            // 
+            // pbMusic
+            // 
+            this.pbMusic.BackColor = System.Drawing.Color.Transparent;
+            this.pbMusic.DisplayOffset = 0;
+            resources.ApplyResources(this.pbMusic, "pbMusic");
+            this.pbMusic.GradientEndColour = System.Drawing.Color.White;
+            this.pbMusic.GradientStartColour = System.Drawing.Color.White;
+            this.pbMusic.LabelAlignment = System.Windows.Forms.DockStyle.Right;
+            this.pbMusic.Maximum = 1000;
+            this.pbMusic.Name = "pbMusic";
+            this.pbMusic.NumberFormat = "N2";
+            this.pbMusic.NumberOffset = 0;
+            this.pbMusic.NumberScale = 0.01;
+            this.pbMusic.ProgressBackColour = System.Drawing.SystemColors.Window;
+            this.pbMusic.SelectedColor = System.Drawing.Color.Lime;
+            this.pbMusic.TextBoxBackColour = System.Drawing.SystemColors.Window;
+            this.pbMusic.TokenCount = 21;
+            this.pbMusic.UnselectedColor = System.Drawing.Color.Black;
+            this.pbMusic.Value = 500;
+            this.pbMusic.Changed += new System.EventHandler(this.ChangedSkill);
+            // 
+            // pbPupbody
+            // 
+            this.pbPupbody.BackColor = System.Drawing.Color.Transparent;
+            this.pbPupbody.DisplayOffset = 0;
+            resources.ApplyResources(this.pbPupbody, "pbPupbody");
+            this.pbPupbody.GradientEndColour = System.Drawing.Color.White;
+            this.pbPupbody.GradientStartColour = System.Drawing.Color.White;
+            this.pbPupbody.LabelAlignment = System.Windows.Forms.DockStyle.Right;
+            this.pbPupbody.Maximum = 1000;
+            this.pbPupbody.Name = "pbPupbody";
+            this.pbPupbody.NumberFormat = "N2";
+            this.pbPupbody.NumberOffset = 0;
+            this.pbPupbody.NumberScale = 0.01;
+            this.pbPupbody.ProgressBackColour = System.Drawing.SystemColors.Window;
+            this.pbPupbody.SelectedColor = System.Drawing.Color.Lime;
+            this.pbPupbody.TextBoxBackColour = System.Drawing.SystemColors.Window;
+            this.pbPupbody.TokenCount = 21;
+            this.toolTip1.SetToolTip(this.pbPupbody, resources.GetString("pbPupbody.ToolTip"));
+            this.pbPupbody.UnselectedColor = System.Drawing.Color.Black;
+            this.pbPupbody.Value = 500;
+            this.pbPupbody.Changed += new System.EventHandler(this.ChangedSkill);
+            // 
+            // pbPupClean
+            // 
+            this.pbPupClean.BackColor = System.Drawing.Color.Transparent;
+            this.pbPupClean.DisplayOffset = 0;
+            resources.ApplyResources(this.pbPupClean, "pbPupClean");
+            this.pbPupClean.GradientEndColour = System.Drawing.Color.White;
+            this.pbPupClean.GradientStartColour = System.Drawing.Color.White;
+            this.pbPupClean.LabelAlignment = System.Windows.Forms.DockStyle.Right;
+            this.pbPupClean.Maximum = 1000;
+            this.pbPupClean.Name = "pbPupClean";
+            this.pbPupClean.NumberFormat = "N2";
+            this.pbPupClean.NumberOffset = 0;
+            this.pbPupClean.NumberScale = 0.01;
+            this.pbPupClean.ProgressBackColour = System.Drawing.SystemColors.Window;
+            this.pbPupClean.SelectedColor = System.Drawing.Color.Lime;
+            this.pbPupClean.TextBoxBackColour = System.Drawing.SystemColors.Window;
+            this.pbPupClean.TokenCount = 21;
+            this.toolTip1.SetToolTip(this.pbPupClean, resources.GetString("pbPupClean.ToolTip"));
+            this.pbPupClean.UnselectedColor = System.Drawing.Color.Black;
+            this.pbPupClean.Value = 500;
+            this.pbPupClean.Changed += new System.EventHandler(this.ChangedSkill);
+            // 
+            // pbPupCreative
+            // 
+            this.pbPupCreative.BackColor = System.Drawing.Color.Transparent;
+            this.pbPupCreative.DisplayOffset = 0;
+            resources.ApplyResources(this.pbPupCreative, "pbPupCreative");
+            this.pbPupCreative.GradientEndColour = System.Drawing.Color.White;
+            this.pbPupCreative.GradientStartColour = System.Drawing.Color.White;
+            this.pbPupCreative.LabelAlignment = System.Windows.Forms.DockStyle.Right;
+            this.pbPupCreative.Maximum = 1000;
+            this.pbPupCreative.Name = "pbPupCreative";
+            this.pbPupCreative.NumberFormat = "N2";
+            this.pbPupCreative.NumberOffset = 0;
+            this.pbPupCreative.NumberScale = 0.01;
+            this.pbPupCreative.ProgressBackColour = System.Drawing.SystemColors.Window;
+            this.pbPupCreative.SelectedColor = System.Drawing.Color.Lime;
+            this.pbPupCreative.TextBoxBackColour = System.Drawing.SystemColors.Window;
+            this.pbPupCreative.TokenCount = 21;
+            this.toolTip1.SetToolTip(this.pbPupCreative, resources.GetString("pbPupCreative.ToolTip"));
+            this.pbPupCreative.UnselectedColor = System.Drawing.Color.Black;
+            this.pbPupCreative.Value = 500;
+            this.pbPupCreative.Changed += new System.EventHandler(this.ChangedSkill);
+            // 
+            // pbPupCharisma
+            // 
+            this.pbPupCharisma.BackColor = System.Drawing.Color.Transparent;
+            this.pbPupCharisma.DisplayOffset = 0;
+            resources.ApplyResources(this.pbPupCharisma, "pbPupCharisma");
+            this.pbPupCharisma.GradientEndColour = System.Drawing.Color.White;
+            this.pbPupCharisma.GradientStartColour = System.Drawing.Color.White;
+            this.pbPupCharisma.LabelAlignment = System.Windows.Forms.DockStyle.Right;
+            this.pbPupCharisma.Maximum = 1000;
+            this.pbPupCharisma.Name = "pbPupCharisma";
+            this.pbPupCharisma.NumberFormat = "N2";
+            this.pbPupCharisma.NumberOffset = 0;
+            this.pbPupCharisma.NumberScale = 0.01;
+            this.pbPupCharisma.ProgressBackColour = System.Drawing.SystemColors.Window;
+            this.pbPupCharisma.SelectedColor = System.Drawing.Color.Lime;
+            this.pbPupCharisma.TextBoxBackColour = System.Drawing.SystemColors.Window;
+            this.pbPupCharisma.TokenCount = 21;
+            this.toolTip1.SetToolTip(this.pbPupCharisma, resources.GetString("pbPupCharisma.ToolTip"));
+            this.pbPupCharisma.UnselectedColor = System.Drawing.Color.Black;
+            this.pbPupCharisma.Value = 500;
+            this.pbPupCharisma.Changed += new System.EventHandler(this.ChangedSkill);
+            // 
+            // pbPupMech
+            // 
+            this.pbPupMech.BackColor = System.Drawing.Color.Transparent;
+            this.pbPupMech.DisplayOffset = 0;
+            resources.ApplyResources(this.pbPupMech, "pbPupMech");
+            this.pbPupMech.GradientEndColour = System.Drawing.Color.White;
+            this.pbPupMech.GradientStartColour = System.Drawing.Color.White;
+            this.pbPupMech.LabelAlignment = System.Windows.Forms.DockStyle.Right;
+            this.pbPupMech.Maximum = 1000;
+            this.pbPupMech.Name = "pbPupMech";
+            this.pbPupMech.NumberFormat = "N2";
+            this.pbPupMech.NumberOffset = 0;
+            this.pbPupMech.NumberScale = 0.01;
+            this.pbPupMech.ProgressBackColour = System.Drawing.SystemColors.Window;
+            this.pbPupMech.SelectedColor = System.Drawing.Color.Lime;
+            this.pbPupMech.TextBoxBackColour = System.Drawing.SystemColors.Window;
+            this.pbPupMech.TokenCount = 21;
+            this.toolTip1.SetToolTip(this.pbPupMech, resources.GetString("pbPupMech.ToolTip"));
+            this.pbPupMech.UnselectedColor = System.Drawing.Color.Black;
+            this.pbPupMech.Value = 500;
+            this.pbPupMech.Changed += new System.EventHandler(this.ChangedSkill);
+            // 
+            // pbPupLogic
+            // 
+            this.pbPupLogic.BackColor = System.Drawing.Color.Transparent;
+            this.pbPupLogic.DisplayOffset = 0;
+            resources.ApplyResources(this.pbPupLogic, "pbPupLogic");
+            this.pbPupLogic.GradientEndColour = System.Drawing.Color.White;
+            this.pbPupLogic.GradientStartColour = System.Drawing.Color.White;
+            this.pbPupLogic.LabelAlignment = System.Windows.Forms.DockStyle.Right;
+            this.pbPupLogic.Maximum = 1000;
+            this.pbPupLogic.Name = "pbPupLogic";
+            this.pbPupLogic.NumberFormat = "N2";
+            this.pbPupLogic.NumberOffset = 0;
+            this.pbPupLogic.NumberScale = 0.01;
+            this.pbPupLogic.ProgressBackColour = System.Drawing.SystemColors.Window;
+            this.pbPupLogic.SelectedColor = System.Drawing.Color.Lime;
+            this.pbPupLogic.TextBoxBackColour = System.Drawing.SystemColors.Window;
+            this.pbPupLogic.TokenCount = 21;
+            this.toolTip1.SetToolTip(this.pbPupLogic, resources.GetString("pbPupLogic.ToolTip"));
+            this.pbPupLogic.UnselectedColor = System.Drawing.Color.Black;
+            this.pbPupLogic.Value = 500;
+            this.pbPupLogic.Changed += new System.EventHandler(this.ChangedSkill);
             // 
             // pbBody
             // 
             this.pbBody.BackColor = System.Drawing.Color.Transparent;
             this.pbBody.DisplayOffset = 0;
             resources.ApplyResources(this.pbBody, "pbBody");
+            this.pbBody.GradientEndColour = System.Drawing.Color.White;
+            this.pbBody.GradientStartColour = System.Drawing.Color.White;
+            this.pbBody.LabelAlignment = System.Windows.Forms.DockStyle.Right;
             this.pbBody.Maximum = 1000;
             this.pbBody.Name = "pbBody";
             this.pbBody.NumberFormat = "N2";
             this.pbBody.NumberOffset = 0;
             this.pbBody.NumberScale = 0.01;
+            this.pbBody.ProgressBackColour = System.Drawing.SystemColors.Window;
             this.pbBody.SelectedColor = System.Drawing.Color.Lime;
             this.pbBody.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
-            this.pbBody.TokenCount = 21;
             this.pbBody.UnselectedColor = System.Drawing.Color.Black;
             this.pbBody.Value = 500;
             this.pbBody.Changed += new System.EventHandler(this.ChangedSkill);
-            // 
-            // pbRomance
-            // 
-            this.pbRomance.BackColor = System.Drawing.Color.Transparent;
-            this.pbRomance.DisplayOffset = 0;
-            resources.ApplyResources(this.pbRomance, "pbRomance");
-            this.pbRomance.Maximum = 1000;
-            this.pbRomance.Name = "pbRomance";
-            this.pbRomance.NumberFormat = "N1";
-            this.pbRomance.NumberOffset = 0;
-            this.pbRomance.NumberScale = 0.01;
-            this.pbRomance.SelectedColor = System.Drawing.Color.OrangeRed;
-            this.pbRomance.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
-            this.pbRomance.TokenCount = 10;
-            this.pbRomance.UnselectedColor = System.Drawing.Color.Black;
-            this.pbRomance.Value = 500;
-            this.pbRomance.Changed += new System.EventHandler(this.ChangedSkill);
             // 
             // pbFat
             // 
             this.pbFat.BackColor = System.Drawing.Color.Transparent;
             this.pbFat.DisplayOffset = 0;
             resources.ApplyResources(this.pbFat, "pbFat");
+            this.pbFat.GradientEndColour = System.Drawing.Color.White;
+            this.pbFat.GradientStartColour = System.Drawing.Color.White;
+            this.pbFat.LabelAlignment = System.Windows.Forms.DockStyle.Right;
             this.pbFat.Maximum = 1000;
             this.pbFat.Name = "pbFat";
             this.pbFat.NumberFormat = "N1";
             this.pbFat.NumberOffset = 0;
             this.pbFat.NumberScale = 0.01;
+            this.pbFat.ProgressBackColour = System.Drawing.SystemColors.Window;
             this.pbFat.SelectedColor = System.Drawing.Color.Orange;
             this.pbFat.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbFat.TokenCount = 10;
@@ -810,13 +1242,17 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbClean.BackColor = System.Drawing.Color.Transparent;
             this.pbClean.DisplayOffset = 0;
             resources.ApplyResources(this.pbClean, "pbClean");
+            this.pbClean.GradientEndColour = System.Drawing.Color.White;
+            this.pbClean.GradientStartColour = System.Drawing.Color.White;
+            this.pbClean.LabelAlignment = System.Windows.Forms.DockStyle.Right;
             this.pbClean.Maximum = 1000;
             this.pbClean.Name = "pbClean";
             this.pbClean.NumberFormat = "N2";
             this.pbClean.NumberOffset = 0;
             this.pbClean.NumberScale = 0.01;
+            this.pbClean.ProgressBackColour = System.Drawing.SystemColors.Window;
             this.pbClean.SelectedColor = System.Drawing.Color.Lime;
-            this.pbClean.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
+            this.pbClean.TextBoxBackColour = System.Drawing.SystemColors.Window;
             this.pbClean.TokenCount = 21;
             this.pbClean.UnselectedColor = System.Drawing.Color.Black;
             this.pbClean.Value = 500;
@@ -827,6 +1263,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbCreative.BackColor = System.Drawing.Color.Transparent;
             this.pbCreative.DisplayOffset = 0;
             resources.ApplyResources(this.pbCreative, "pbCreative");
+            this.pbCreative.GradientEndColour = System.Drawing.Color.White;
+            this.pbCreative.GradientStartColour = System.Drawing.Color.White;
+            this.pbCreative.LabelAlignment = System.Windows.Forms.DockStyle.Right;
             this.pbCreative.Maximum = 1000;
             this.pbCreative.Name = "pbCreative";
             this.pbCreative.NumberFormat = "N2";
@@ -850,7 +1289,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbCharisma.NumberOffset = 0;
             this.pbCharisma.NumberScale = 0.01;
             this.pbCharisma.SelectedColor = System.Drawing.Color.Lime;
-            this.pbCharisma.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbCharisma.TokenCount = 21;
             this.pbCharisma.UnselectedColor = System.Drawing.Color.Black;
             this.pbCharisma.Value = 500;
@@ -867,7 +1305,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbMech.NumberOffset = 0;
             this.pbMech.NumberScale = 0.01;
             this.pbMech.SelectedColor = System.Drawing.Color.Lime;
-            this.pbMech.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbMech.TokenCount = 21;
             this.pbMech.UnselectedColor = System.Drawing.Color.Black;
             this.pbMech.Value = 500;
@@ -884,7 +1321,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbLogic.NumberOffset = 0;
             this.pbLogic.NumberScale = 0.01;
             this.pbLogic.SelectedColor = System.Drawing.Color.Lime;
-            this.pbLogic.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbLogic.TokenCount = 21;
             this.pbLogic.UnselectedColor = System.Drawing.Color.Black;
             this.pbLogic.Value = 500;
@@ -894,23 +1330,58 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             this.pbCooking.BackColor = System.Drawing.Color.Transparent;
             this.pbCooking.DisplayOffset = 0;
-            resources.ApplyResources(this.pbCooking, "pbCooking");
+            resources.ApplyResources(this.pbCooking, "pbCooking");m.Windows.Forms.DockStyle.Right;
             this.pbCooking.Maximum = 1000;
             this.pbCooking.Name = "pbCooking";
             this.pbCooking.NumberFormat = "N2";
             this.pbCooking.NumberOffset = 0;
             this.pbCooking.NumberScale = 0.01;
             this.pbCooking.SelectedColor = System.Drawing.Color.Lime;
-            this.pbCooking.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbCooking.TokenCount = 21;
             this.pbCooking.UnselectedColor = System.Drawing.Color.Black;
             this.pbCooking.Value = 500;
             this.pbCooking.Changed += new System.EventHandler(this.ChangedSkill);
             // 
+            // pbReputate
+            // 
+            this.pbReputate.BackColor = System.Drawing.Color.Transparent;
+            this.pbReputate.DisplayOffset = 0;
+            resources.ApplyResources(this.pbReputate, "pbReputate");
+            this.pbReputate.Maximum = 200;
+            this.pbReputate.Name = "pbReputate";
+            this.pbReputate.NumberFormat = "N0";
+            this.pbReputate.NumberOffset = -100;
+            this.pbReputate.NumberScale = 1;
+            this.pbReputate.SelectedColor = System.Drawing.Color.Gold;
+            this.pbReputate.TokenCount = 19;
+            this.pbReputate.UnselectedColor = System.Drawing.Color.Black;
+            this.pbReputate.Value = 0;
+            this.pbReputate.Changed += new System.EventHandler(this.ChangedSkill);
+            // 
+            // pbRomance
+            // 
+            this.pbRomance.BackColor = System.Drawing.Color.Transparent;
+            this.pbRomance.DisplayOffset = 0;
+            resources.ApplyResources(this.pbRomance, "pbRomance");
+            this.pbRomance.Maximum = 1000;
+            this.pbRomance.Name = "pbRomance";
+            this.pbRomance.NumberFormat = "N2";
+            this.pbRomance.NumberOffset = 0;
+            this.pbRomance.NumberScale = 0.01;
+            this.pbRomance.SelectedColor = System.Drawing.Color.HotPink;
+            this.pbRomance.TokenCount = 21;
+            this.pbRomance.UnselectedColor = System.Drawing.Color.Black;
+            this.pbRomance.Value = 500;
+            this.pbRomance.Changed += new System.EventHandler(this.ChangedVarious);
+            // 
             // pnChar
             // 
             resources.ApplyResources(this.pnChar, "pnChar");
             this.pnChar.BackColor = System.Drawing.Color.Transparent;
+            this.pnChar.BackgroundImageAnchor = System.Windows.Forms.Panel.ImageLayout.BottomLeft;
+            this.pnChar.BackgroundImageLocation = new System.Drawing.Point(750, 0);
+            this.pnChar.BackgroundImageZoomToFit = true;
+            this.pnChar.Controls.Add(this.btProfile);
             this.pnChar.Controls.Add(this.pnPetChar);
             this.pnChar.Controls.Add(this.pnHumanChar);
             this.pnChar.Controls.Add(this.pbMan);
@@ -945,6 +1416,13 @@ namespace SimPe.PackedFiles.UserInterface
             this.pnPetChar.Controls.Add(this.label17);
             this.pnPetChar.Name = "pnPetChar";
             // 
+            // btProfile
+            // 
+            resources.ApplyResources(this.btProfile, "btProfile");
+            this.btProfile.Name = "btProfile";
+            this.btProfile.UseVisualStyleBackColor = true;
+            this.btProfile.Click += new System.EventHandler(this.btProfile_Click);
+            // 
             // label26
             // 
             resources.ApplyResources(this.label26, "label26");
@@ -972,36 +1450,36 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             // ptPigpen
             // 
-            this.ptPigpen.Level = SimPe.PackedFiles.Wrapper.PetTraitSelect.Levels.Normal;
             resources.ApplyResources(this.ptPigpen, "ptPigpen");
+            this.ptPigpen.Level = SimPe.PackedFiles.Wrapper.PetTraitSelect.Levels.Normal;
             this.ptPigpen.Name = "ptPigpen";
             this.ptPigpen.LevelChanged += new System.EventHandler(this.ChangedEP4);
             // 
             // ptAggres
             // 
-            this.ptAggres.Level = SimPe.PackedFiles.Wrapper.PetTraitSelect.Levels.Normal;
             resources.ApplyResources(this.ptAggres, "ptAggres");
+            this.ptAggres.Level = SimPe.PackedFiles.Wrapper.PetTraitSelect.Levels.Normal;
             this.ptAggres.Name = "ptAggres";
             this.ptAggres.LevelChanged += new System.EventHandler(this.ChangedEP4);
             // 
             // ptIndep
             // 
-            this.ptIndep.Level = SimPe.PackedFiles.Wrapper.PetTraitSelect.Levels.Normal;
             resources.ApplyResources(this.ptIndep, "ptIndep");
+            this.ptIndep.Level = SimPe.PackedFiles.Wrapper.PetTraitSelect.Levels.Normal;
             this.ptIndep.Name = "ptIndep";
             this.ptIndep.LevelChanged += new System.EventHandler(this.ChangedEP4);
             // 
             // ptHyper
             // 
-            this.ptHyper.Level = SimPe.PackedFiles.Wrapper.PetTraitSelect.Levels.Normal;
             resources.ApplyResources(this.ptHyper, "ptHyper");
+            this.ptHyper.Level = SimPe.PackedFiles.Wrapper.PetTraitSelect.Levels.Normal;
             this.ptHyper.Name = "ptHyper";
             this.ptHyper.LevelChanged += new System.EventHandler(this.ChangedEP4);
             // 
             // ptGifted
             // 
-            this.ptGifted.Level = SimPe.PackedFiles.Wrapper.PetTraitSelect.Levels.Normal;
             resources.ApplyResources(this.ptGifted, "ptGifted");
+            this.ptGifted.Level = SimPe.PackedFiles.Wrapper.PetTraitSelect.Levels.Normal;
             this.ptGifted.Name = "ptGifted";
             this.ptGifted.LevelChanged += new System.EventHandler(this.ChangedEP4);
             // 
@@ -1056,7 +1534,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbNeat.NumberOffset = 0;
             this.pbNeat.NumberScale = 0.01;
             this.pbNeat.SelectedColor = System.Drawing.Color.Lime;
-            this.pbNeat.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbNeat.TokenCount = 10;
             this.pbNeat.UnselectedColor = System.Drawing.Color.Black;
             this.pbNeat.Value = 50;
@@ -1073,7 +1550,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbOutgoing.NumberOffset = 0;
             this.pbOutgoing.NumberScale = 0.01;
             this.pbOutgoing.SelectedColor = System.Drawing.Color.Lime;
-            this.pbOutgoing.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbOutgoing.TokenCount = 10;
             this.pbOutgoing.UnselectedColor = System.Drawing.Color.Black;
             this.pbOutgoing.Value = 50;
@@ -1090,7 +1566,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbActive.NumberOffset = 0;
             this.pbActive.NumberScale = 0.01;
             this.pbActive.SelectedColor = System.Drawing.Color.Lime;
-            this.pbActive.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbActive.TokenCount = 10;
             this.pbActive.UnselectedColor = System.Drawing.Color.Black;
             this.pbActive.Value = 50;
@@ -1107,7 +1582,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPlayful.NumberOffset = 0;
             this.pbPlayful.NumberScale = 0.01;
             this.pbPlayful.SelectedColor = System.Drawing.Color.Lime;
-            this.pbPlayful.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbPlayful.TokenCount = 10;
             this.pbPlayful.UnselectedColor = System.Drawing.Color.Black;
             this.pbPlayful.Value = 50;
@@ -1124,7 +1598,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbGNice.NumberOffset = 0;
             this.pbGNice.NumberScale = 0.01;
             this.pbGNice.SelectedColor = System.Drawing.Color.Lime;
-            this.pbGNice.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbGNice.TokenCount = 10;
             this.pbGNice.UnselectedColor = System.Drawing.Color.Black;
             this.pbGNice.Value = 50;
@@ -1141,7 +1614,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbNice.NumberOffset = 0;
             this.pbNice.NumberScale = 0.01;
             this.pbNice.SelectedColor = System.Drawing.Color.Lime;
-            this.pbNice.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbNice.TokenCount = 10;
             this.pbNice.UnselectedColor = System.Drawing.Color.Black;
             this.pbNice.Value = 50;
@@ -1158,7 +1630,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbGPlayful.NumberOffset = 0;
             this.pbGPlayful.NumberScale = 0.01;
             this.pbGPlayful.SelectedColor = System.Drawing.Color.Lime;
-            this.pbGPlayful.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbGPlayful.TokenCount = 10;
             this.pbGPlayful.UnselectedColor = System.Drawing.Color.Black;
             this.pbGPlayful.Value = 50;
@@ -1175,7 +1646,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbGNeat.NumberOffset = 0;
             this.pbGNeat.NumberScale = 0.01;
             this.pbGNeat.SelectedColor = System.Drawing.Color.Lime;
-            this.pbGNeat.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbGNeat.TokenCount = 10;
             this.pbGNeat.UnselectedColor = System.Drawing.Color.Black;
             this.pbGNeat.Value = 50;
@@ -1192,7 +1662,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbGActive.NumberOffset = 0;
             this.pbGActive.NumberScale = 0.01;
             this.pbGActive.SelectedColor = System.Drawing.Color.Lime;
-            this.pbGActive.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbGActive.TokenCount = 10;
             this.pbGActive.UnselectedColor = System.Drawing.Color.Black;
             this.pbGActive.Value = 50;
@@ -1209,7 +1678,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbGOutgoing.NumberOffset = 0;
             this.pbGOutgoing.NumberScale = 0.01;
             this.pbGOutgoing.SelectedColor = System.Drawing.Color.Lime;
-            this.pbGOutgoing.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbGOutgoing.TokenCount = 10;
             this.pbGOutgoing.UnselectedColor = System.Drawing.Color.Black;
             this.pbGOutgoing.Value = 50;
@@ -1226,7 +1694,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbMan.NumberOffset = -1000;
             this.pbMan.NumberScale = 0.01;
             this.pbMan.SelectedColor = System.Drawing.Color.OrangeRed;
-            this.pbMan.Style = Ambertation.Windows.Forms.ProgresBarStyle.Balance;
             this.pbMan.TokenCount = 19;
             this.pbMan.UnselectedColor = System.Drawing.Color.Black;
             this.pbMan.Value = 0;
@@ -1243,7 +1710,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbWoman.NumberOffset = -1000;
             this.pbWoman.NumberScale = 0.01;
             this.pbWoman.SelectedColor = System.Drawing.Color.OrangeRed;
-            this.pbWoman.Style = Ambertation.Windows.Forms.ProgresBarStyle.Balance;
             this.pbWoman.TokenCount = 19;
             this.pbWoman.UnselectedColor = System.Drawing.Color.Black;
             this.pbWoman.Value = 0;
@@ -1251,7 +1717,6 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             // cbzodiac
             // 
-            this.cbzodiac.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cbzodiac, "cbzodiac");
             this.cbzodiac.Name = "cbzodiac";
             this.cbzodiac.SelectedIndexChanged += new System.EventHandler(this.ChangedChar);
@@ -1348,8 +1813,8 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             // miOpenSCOR
             // 
-            this.miOpenSCOR.Name = "miOpenSCOR";
             resources.ApplyResources(this.miOpenSCOR, "miOpenSCOR");
+            this.miOpenSCOR.Name = "miOpenSCOR";
             this.miOpenSCOR.Click += new System.EventHandler(this.activate_miOpenScore);
             // 
             // miOpenFamily
@@ -1427,6 +1892,16 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             resources.ApplyResources(this.pnCareer, "pnCareer");
             this.pnCareer.BackColor = System.Drawing.Color.Transparent;
+            this.pnCareer.BackgroundImageAnchor = System.Windows.Forms.Panel.ImageLayout.BottomLeft;
+            this.pnCareer.BackgroundImageLocation = new System.Drawing.Point(750, 0);
+            this.pnCareer.BackgroundImageZoomToFit = true;
+            this.pnCareer.Controls.Add(this.lbRetcareer);
+            this.pnCareer.Controls.Add(this.lpRetirement);
+            this.pnCareer.Controls.Add(this.cbRetirement);
+            this.pnCareer.Controls.Add(this.tbpension);
+            this.pnCareer.Controls.Add(this.lbpension);
+            this.pnCareer.Controls.Add(this.lbaccholidays);
+            this.pnCareer.Controls.Add(this.tbaccholidays);
             this.pnCareer.Controls.Add(this.pbAspBliz);
             this.pnCareer.Controls.Add(this.label60);
             this.pnCareer.Controls.Add(this.cbaspiration);
@@ -1445,6 +1920,57 @@ namespace SimPe.PackedFiles.UserInterface
             this.pnCareer.Controls.Add(this.tbcareervalue);
             this.pnCareer.Name = "pnCareer";
             // 
+            // lbRetcareer
+            // 
+            resources.ApplyResources(this.lbRetcareer, "lbRetcareer");
+            this.lbRetcareer.Name = "lbRetcareer";
+            // 
+            // lpRetirement
+            // 
+            this.lpRetirement.BackColor = System.Drawing.Color.Transparent;
+            this.lpRetirement.DisplayOffset = 0;
+            resources.ApplyResources(this.lpRetirement, "lpRetirement");
+            this.lpRetirement.Maximum = 10;
+            this.lpRetirement.Name = "lpRetirement";
+            this.lpRetirement.NumberFormat = "N0";
+            this.lpRetirement.NumberOffset = 0;
+            this.lpRetirement.NumberScale = 1;
+            this.lpRetirement.SelectedColor = System.Drawing.Color.YellowGreen;
+            this.lpRetirement.TokenCount = 10;
+            this.lpRetirement.UnselectedColor = System.Drawing.Color.Black;
+            this.lpRetirement.Value = 10;
+            this.lpRetirement.Changed += new System.EventHandler(this.ChangedCareer);
+            // 
+            // cbRetirement
+            // 
+            resources.ApplyResources(this.cbRetirement, "cbRetirement");
+            this.cbRetirement.Name = "cbRetirement";
+            this.cbRetirement.SelectedIndexChanged += new System.EventHandler(this.cbRetirement_SelectedIndexChanged);
+            // 
+            // tbpension
+            // 
+            this.tbpension.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.tbpension, "tbpension");
+            this.tbpension.Name = "tbpension";
+            this.tbpension.TextChanged += new System.EventHandler(this.ChangedCareer);
+            // 
+            // lbpension
+            // 
+            resources.ApplyResources(this.lbpension, "lbpension");
+            this.lbpension.Name = "lbpension";
+            // 
+            // lbaccholidays
+            // 
+            resources.ApplyResources(this.lbaccholidays, "lbaccholidays");
+            this.lbaccholidays.Name = "lbaccholidays";
+            // 
+            // tbaccholidays
+            // 
+            this.tbaccholidays.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.tbaccholidays, "tbaccholidays");
+            this.tbaccholidays.Name = "tbaccholidays";
+            this.tbaccholidays.TextChanged += new System.EventHandler(this.ChangedCareer);
+            // 
             // pbAspBliz
             // 
             this.pbAspBliz.BackColor = System.Drawing.Color.Transparent;
@@ -1456,7 +1982,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbAspBliz.NumberOffset = 0;
             this.pbAspBliz.NumberScale = 1;
             this.pbAspBliz.SelectedColor = System.Drawing.Color.YellowGreen;
-            this.pbAspBliz.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbAspBliz.TokenCount = 21;
             this.pbAspBliz.UnselectedColor = System.Drawing.Color.Black;
             this.pbAspBliz.Value = 10;
@@ -1469,7 +1994,6 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             // cbaspiration
             // 
-            this.cbaspiration.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cbaspiration, "cbaspiration");
             this.cbaspiration.Name = "cbaspiration";
             this.cbaspiration.SelectedValueChanged += new System.EventHandler(this.ChangedAspiration);
@@ -1485,7 +2009,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbAspCur.NumberOffset = -600;
             this.pbAspCur.NumberScale = 1;
             this.pbAspCur.SelectedColor = System.Drawing.Color.YellowGreen;
-            this.pbAspCur.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbAspCur.TokenCount = 21;
             this.pbAspCur.UnselectedColor = System.Drawing.Color.Black;
             this.pbAspCur.Value = 0;
@@ -1514,8 +2037,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbCareerPerformance.NumberOffset = 0;
             this.pbCareerPerformance.NumberScale = 1;
             this.pbCareerPerformance.SelectedColor = System.Drawing.Color.YellowGreen;
-            this.pbCareerPerformance.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
-            this.pbCareerPerformance.TokenCount = 21;
+            this.pbCareerPerformance.TokenCount = 20;
             this.pbCareerPerformance.UnselectedColor = System.Drawing.Color.Black;
             this.pbCareerPerformance.Value = 10;
             this.pbCareerPerformance.Changed += new System.EventHandler(this.ChangedCareer);
@@ -1531,7 +2053,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbCareerLevel.NumberOffset = 0;
             this.pbCareerLevel.NumberScale = 1;
             this.pbCareerLevel.SelectedColor = System.Drawing.Color.YellowGreen;
-            this.pbCareerLevel.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbCareerLevel.TokenCount = 10;
             this.pbCareerLevel.UnselectedColor = System.Drawing.Color.Black;
             this.pbCareerLevel.Value = 10;
@@ -1556,14 +2077,12 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             // cbgrade
             // 
-            this.cbgrade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cbgrade, "cbgrade");
             this.cbgrade.Name = "cbgrade";
             this.cbgrade.SelectedValueChanged += new System.EventHandler(this.ChangedCareer);
             // 
             // cbschooltype
             // 
-            this.cbschooltype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cbschooltype, "cbschooltype");
             this.cbschooltype.Name = "cbschooltype";
             this.cbschooltype.SelectedIndexChanged += new System.EventHandler(this.cbschooltype_SelectedIndexChanged);
@@ -1575,7 +2094,6 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             // cbcareer
             // 
-            this.cbcareer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cbcareer, "cbcareer");
             this.cbcareer.Name = "cbcareer";
             this.cbcareer.SelectedIndexChanged += new System.EventHandler(this.cbcareer_SelectedIndexChanged);
@@ -1591,6 +2109,9 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             resources.ApplyResources(this.pnInt, "pnInt");
             this.pnInt.BackColor = System.Drawing.Color.Transparent;
+            this.pnInt.BackgroundImageAnchor = System.Windows.Forms.Panel.ImageLayout.BottomLeft;
+            this.pnInt.BackgroundImageLocation = new System.Drawing.Point(750, 0);
+            this.pnInt.BackgroundImageZoomToFit = true;
             this.pnInt.Controls.Add(this.pnSimInt);
             this.pnInt.Controls.Add(this.pnPetInt);
             this.pnInt.Name = "pnInt";
@@ -1632,7 +2153,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbSciFi.NumberOffset = 0;
             this.pbSciFi.NumberScale = 0.01;
             this.pbSciFi.SelectedColor = System.Drawing.Color.Lime;
-            this.pbSciFi.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbSciFi.TokenCount = 10;
             this.pbSciFi.UnselectedColor = System.Drawing.Color.Black;
             this.pbSciFi.Value = 500;
@@ -1649,7 +2169,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbTravel.NumberOffset = 0;
             this.pbTravel.NumberScale = 0.01;
             this.pbTravel.SelectedColor = System.Drawing.Color.Lime;
-            this.pbTravel.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbTravel.TokenCount = 10;
             this.pbTravel.UnselectedColor = System.Drawing.Color.Black;
             this.pbTravel.Value = 500;
@@ -1666,7 +2185,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbToys.NumberOffset = 0;
             this.pbToys.NumberScale = 0.01;
             this.pbToys.SelectedColor = System.Drawing.Color.Lime;
-            this.pbToys.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbToys.TokenCount = 10;
             this.pbToys.UnselectedColor = System.Drawing.Color.Black;
             this.pbToys.Value = 500;
@@ -1683,7 +2201,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbEnvironment.NumberOffset = 0;
             this.pbEnvironment.NumberScale = 0.01;
             this.pbEnvironment.SelectedColor = System.Drawing.Color.Lime;
-            this.pbEnvironment.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbEnvironment.TokenCount = 10;
             this.pbEnvironment.UnselectedColor = System.Drawing.Color.Black;
             this.pbEnvironment.Value = 500;
@@ -1700,7 +2217,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbSchool.NumberOffset = 0;
             this.pbSchool.NumberScale = 0.01;
             this.pbSchool.SelectedColor = System.Drawing.Color.Lime;
-            this.pbSchool.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbSchool.TokenCount = 10;
             this.pbSchool.UnselectedColor = System.Drawing.Color.Black;
             this.pbSchool.Value = 500;
@@ -1717,7 +2233,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbParanormal.NumberOffset = 0;
             this.pbParanormal.NumberScale = 0.01;
             this.pbParanormal.SelectedColor = System.Drawing.Color.Lime;
-            this.pbParanormal.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbParanormal.TokenCount = 10;
             this.pbParanormal.UnselectedColor = System.Drawing.Color.Black;
             this.pbParanormal.Value = 500;
@@ -1734,7 +2249,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbAnimals.NumberOffset = 0;
             this.pbAnimals.NumberScale = 0.01;
             this.pbAnimals.SelectedColor = System.Drawing.Color.Lime;
-            this.pbAnimals.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbAnimals.TokenCount = 10;
             this.pbAnimals.UnselectedColor = System.Drawing.Color.Black;
             this.pbAnimals.Value = 500;
@@ -1751,7 +2265,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbEntertainment.NumberOffset = 0;
             this.pbEntertainment.NumberScale = 0.01;
             this.pbEntertainment.SelectedColor = System.Drawing.Color.Lime;
-            this.pbEntertainment.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbEntertainment.TokenCount = 10;
             this.pbEntertainment.UnselectedColor = System.Drawing.Color.Black;
             this.pbEntertainment.Value = 500;
@@ -1768,7 +2281,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbWeather.NumberOffset = 0;
             this.pbWeather.NumberScale = 0.01;
             this.pbWeather.SelectedColor = System.Drawing.Color.Lime;
-            this.pbWeather.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbWeather.TokenCount = 10;
             this.pbWeather.UnselectedColor = System.Drawing.Color.Black;
             this.pbWeather.Value = 500;
@@ -1785,7 +2297,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbCulture.NumberOffset = 0;
             this.pbCulture.NumberScale = 0.01;
             this.pbCulture.SelectedColor = System.Drawing.Color.Lime;
-            this.pbCulture.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbCulture.TokenCount = 10;
             this.pbCulture.UnselectedColor = System.Drawing.Color.Black;
             this.pbCulture.Value = 500;
@@ -1802,7 +2313,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbWork.NumberOffset = 0;
             this.pbWork.NumberScale = 0.01;
             this.pbWork.SelectedColor = System.Drawing.Color.Lime;
-            this.pbWork.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbWork.TokenCount = 10;
             this.pbWork.UnselectedColor = System.Drawing.Color.Black;
             this.pbWork.Value = 500;
@@ -1819,7 +2329,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbMoney.NumberOffset = 0;
             this.pbMoney.NumberScale = 0.01;
             this.pbMoney.SelectedColor = System.Drawing.Color.Lime;
-            this.pbMoney.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbMoney.TokenCount = 10;
             this.pbMoney.UnselectedColor = System.Drawing.Color.Black;
             this.pbMoney.Value = 500;
@@ -1836,7 +2345,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPolitics.NumberOffset = 0;
             this.pbPolitics.NumberScale = 0.01;
             this.pbPolitics.SelectedColor = System.Drawing.Color.Lime;
-            this.pbPolitics.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbPolitics.TokenCount = 10;
             this.pbPolitics.UnselectedColor = System.Drawing.Color.Black;
             this.pbPolitics.Value = 500;
@@ -1853,7 +2361,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbCrime.NumberOffset = 0;
             this.pbCrime.NumberScale = 0.01;
             this.pbCrime.SelectedColor = System.Drawing.Color.Lime;
-            this.pbCrime.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbCrime.TokenCount = 10;
             this.pbCrime.UnselectedColor = System.Drawing.Color.Black;
             this.pbCrime.Value = 500;
@@ -1870,7 +2377,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbFood.NumberOffset = 0;
             this.pbFood.NumberScale = 0.01;
             this.pbFood.SelectedColor = System.Drawing.Color.Lime;
-            this.pbFood.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbFood.TokenCount = 10;
             this.pbFood.UnselectedColor = System.Drawing.Color.Black;
             this.pbFood.Value = 500;
@@ -1887,7 +2393,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbSports.NumberOffset = 0;
             this.pbSports.NumberScale = 0.01;
             this.pbSports.SelectedColor = System.Drawing.Color.Lime;
-            this.pbSports.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbSports.TokenCount = 10;
             this.pbSports.UnselectedColor = System.Drawing.Color.Black;
             this.pbSports.Value = 500;
@@ -1904,7 +2409,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbHealth.NumberOffset = 0;
             this.pbHealth.NumberScale = 0.01;
             this.pbHealth.SelectedColor = System.Drawing.Color.Lime;
-            this.pbHealth.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbHealth.TokenCount = 10;
             this.pbHealth.UnselectedColor = System.Drawing.Color.Black;
             this.pbHealth.Value = 500;
@@ -1921,7 +2425,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbFashion.NumberOffset = 0;
             this.pbFashion.NumberScale = 0.01;
             this.pbFashion.SelectedColor = System.Drawing.Color.Lime;
-            this.pbFashion.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbFashion.TokenCount = 10;
             this.pbFashion.UnselectedColor = System.Drawing.Color.Black;
             this.pbFashion.Value = 500;
@@ -1931,6 +2434,9 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             resources.ApplyResources(this.pnRel, "pnRel");
             this.pnRel.BackColor = System.Drawing.Color.Transparent;
+            this.pnRel.BackgroundImageAnchor = System.Windows.Forms.Panel.ImageLayout.BottomLeft;
+            this.pnRel.BackgroundImageLocation = new System.Drawing.Point(750, 0);
+            this.pnRel.BackgroundImageZoomToFit = true;
             this.pnRel.Controls.Add(this.lv);
             this.pnRel.Controls.Add(this.panel3);
             this.pnRel.Name = "pnRel";
@@ -1964,66 +2470,329 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             resources.ApplyResources(this.srcTb, "srcTb");
             this.srcTb.BackColor = System.Drawing.Color.Transparent;
-            this.srcTb.BodyColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.srcTb.BorderColor = System.Drawing.SystemColors.Window;
-            this.srcTb.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
-            this.srcTb.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.srcTb.BodyColor = System.Drawing.SystemColors.ControlLight;
+            this.srcTb.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.srcTb.IconLocation = new System.Drawing.Point(4, 6);
             this.srcTb.IconSize = new System.Drawing.Size(48, 32);
-            this.srcTb.LeftHeaderColor = System.Drawing.SystemColors.InactiveCaption;
+            this.srcTb.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
             this.srcTb.Name = "srcTb";
-            this.srcTb.RightHeaderColor = System.Drawing.SystemColors.Highlight;
+            this.srcTb.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
             // 
             // dstTb
             // 
             resources.ApplyResources(this.dstTb, "dstTb");
             this.dstTb.BackColor = System.Drawing.Color.Transparent;
-            this.dstTb.BodyColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.dstTb.BorderColor = System.Drawing.SystemColors.Window;
-            this.dstTb.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
-            this.dstTb.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dstTb.BodyColor = System.Drawing.SystemColors.ControlLight;
+            this.dstTb.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dstTb.IconLocation = new System.Drawing.Point(4, 6);
             this.dstTb.IconSize = new System.Drawing.Size(48, 32);
-            this.dstTb.LeftHeaderColor = System.Drawing.SystemColors.InactiveCaption;
+            this.dstTb.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
             this.dstTb.Name = "dstTb";
-            this.dstTb.RightHeaderColor = System.Drawing.SystemColors.Highlight;
+            this.dstTb.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
             // 
             // pnMisc
             // 
             resources.ApplyResources(this.pnMisc, "pnMisc");
             this.pnMisc.BackColor = System.Drawing.Color.Transparent;
-            this.pnMisc.Controls.Add(this.xpTaskBoxSimple3);
-            this.pnMisc.Controls.Add(this.xpTaskBoxSimple2);
-            this.pnMisc.Controls.Add(this.xpTaskBoxSimple1);
+            this.pnMisc.BackgroundImageAnchor = System.Windows.Forms.Panel.ImageLayout.BottomLeft;
+            this.pnMisc.BackgroundImageLocation = new System.Drawing.Point(750, 0);
+            this.pnMisc.BackgroundImageZoomToFit = true;
+            this.pnMisc.Controls.Add(this.tbMotiveDec);
+            this.pnMisc.Controls.Add(this.tbpersonflags);
+            this.pnMisc.Controls.Add(this.bTaskBox3);
+            this.pnMisc.Controls.Add(this.bTaskBox2);
+            this.pnMisc.Controls.Add(this.bTaskBox1);
             this.pnMisc.Name = "pnMisc";
             // 
-            // xpTaskBoxSimple3
+            // tbMotiveDec
             // 
-            this.xpTaskBoxSimple3.BackColor = System.Drawing.Color.Transparent;
-            this.xpTaskBoxSimple3.BodyColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.xpTaskBoxSimple3.BorderColor = System.Drawing.SystemColors.Window;
-            this.xpTaskBoxSimple3.Controls.Add(this.label3);
-            this.xpTaskBoxSimple3.Controls.Add(this.tbstatmot);
-            this.xpTaskBoxSimple3.Controls.Add(this.label96);
-            this.xpTaskBoxSimple3.Controls.Add(this.tbunlinked);
-            this.xpTaskBoxSimple3.Controls.Add(this.label95);
-            this.xpTaskBoxSimple3.Controls.Add(this.tbagedur);
-            this.xpTaskBoxSimple3.Controls.Add(this.tbprevdays);
-            this.xpTaskBoxSimple3.Controls.Add(this.label94);
-            this.xpTaskBoxSimple3.Controls.Add(this.tbvoice);
-            this.xpTaskBoxSimple3.Controls.Add(this.label90);
-            this.xpTaskBoxSimple3.Controls.Add(this.tbnpc);
-            this.xpTaskBoxSimple3.Controls.Add(this.label87);
-            this.xpTaskBoxSimple3.Controls.Add(this.tbautonomy);
-            this.xpTaskBoxSimple3.Controls.Add(this.label86);
-            this.xpTaskBoxSimple3.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
-            resources.ApplyResources(this.xpTaskBoxSimple3, "xpTaskBoxSimple3");
-            this.xpTaskBoxSimple3.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.xpTaskBoxSimple3.IconLocation = new System.Drawing.Point(4, 12);
-            this.xpTaskBoxSimple3.IconSize = new System.Drawing.Size(32, 32);
-            this.xpTaskBoxSimple3.LeftHeaderColor = System.Drawing.SystemColors.InactiveCaption;
-            this.xpTaskBoxSimple3.Name = "xpTaskBoxSimple3";
-            this.xpTaskBoxSimple3.RightHeaderColor = System.Drawing.SystemColors.Highlight;
+            this.tbMotiveDec.BackColor = System.Drawing.Color.Transparent;
+            this.tbMotiveDec.BodyColor = System.Drawing.SystemColors.ControlLight;
+            this.tbMotiveDec.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.tbMotiveDec.Controls.Add(this.lbdecScratc);
+            this.tbMotiveDec.Controls.Add(this.tbdecScratc);
+            this.tbMotiveDec.Controls.Add(this.lbdecAmor);
+            this.tbMotiveDec.Controls.Add(this.tbdecAmor);
+            this.tbMotiveDec.Controls.Add(this.lbdecFun);
+            this.tbMotiveDec.Controls.Add(this.tbdecFun);
+            this.tbMotiveDec.Controls.Add(this.lbdecShop);
+            this.tbMotiveDec.Controls.Add(this.tbdecShop);
+            this.tbMotiveDec.Controls.Add(this.lbdecSocial);
+            this.tbMotiveDec.Controls.Add(this.tbdecSocial);
+            this.tbMotiveDec.Controls.Add(this.lbdecHygiene);
+            this.tbMotiveDec.Controls.Add(this.tbdecHygiene);
+            this.tbMotiveDec.Controls.Add(this.tbdecEnergy);
+            this.tbMotiveDec.Controls.Add(this.lbdecEnergy);
+            this.tbMotiveDec.Controls.Add(this.tbdecBladder);
+            this.tbMotiveDec.Controls.Add(this.lbdecBladder);
+            this.tbMotiveDec.Controls.Add(this.tbdecComfort);
+            this.tbMotiveDec.Controls.Add(this.lbdecComfort);
+            this.tbMotiveDec.Controls.Add(this.tbdecHunger);
+            this.tbMotiveDec.Controls.Add(this.lbdecHunger);
+            resources.ApplyResources(this.tbMotiveDec, "tbMotiveDec");
+            this.tbMotiveDec.IconLocation = new System.Drawing.Point(4, 0);
+            this.tbMotiveDec.IconSize = new System.Drawing.Size(32, 32);
+            this.tbMotiveDec.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
+            this.tbMotiveDec.Name = "tbMotiveDec";
+            this.tbMotiveDec.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
+            this.toolTip1.SetToolTip(this.tbMotiveDec, resources.GetString("tbMotiveDec.ToolTip"));
+            this.tbMotiveDec.TopGap = 4;
+            // 
+            // lbdecScratc
+            // 
+            resources.ApplyResources(this.lbdecScratc, "lbdecScratc");
+            this.lbdecScratc.Name = "lbdecScratc";
+            // 
+            // tbdecScratc
+            // 
+            this.tbdecScratc.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.tbdecScratc, "tbdecScratc");
+            this.tbdecScratc.Name = "tbdecScratc";
+            // 
+            // lbdecAmor
+            // 
+            resources.ApplyResources(this.lbdecAmor, "lbdecAmor");
+            this.lbdecAmor.Name = "lbdecAmor";
+            // 
+            // tbdecAmor
+            // 
+            this.tbdecAmor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.tbdecAmor, "tbdecAmor");
+            this.tbdecAmor.Name = "tbdecAmor";
+            this.tbdecAmor.TextChanged += new System.EventHandler(this.ChangedOther);
+            // 
+            // lbdecFun
+            // 
+            resources.ApplyResources(this.lbdecFun, "lbdecFun");
+            this.lbdecFun.Name = "lbdecFun";
+            // 
+            // tbdecFun
+            // 
+            this.tbdecFun.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.tbdecFun, "tbdecFun");
+            this.tbdecFun.Name = "tbdecFun";
+            this.tbdecFun.TextChanged += new System.EventHandler(this.ChangedOther);
+            // 
+            // lbdecShop
+            // 
+            resources.ApplyResources(this.lbdecShop, "lbdecShop");
+            this.lbdecShop.Name = "lbdecShop";
+            // 
+            // tbdecShop
+            // 
+            this.tbdecShop.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.tbdecShop, "tbdecShop");
+            this.tbdecShop.Name = "tbdecShop";
+            this.tbdecShop.TextChanged += new System.EventHandler(this.ChangedOther);
+            // 
+            // lbdecSocial
+            // 
+            resources.ApplyResources(this.lbdecSocial, "lbdecSocial");
+            this.lbdecSocial.Name = "lbdecSocial";
+            // 
+            // tbdecSocial
+            // 
+            this.tbdecSocial.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.tbdecSocial, "tbdecSocial");
+            this.tbdecSocial.Name = "tbdecSocial";
+            this.tbdecSocial.TextChanged += new System.EventHandler(this.ChangedOther);
+            // 
+            // lbdecHygiene
+            // 
+            resources.ApplyResources(this.lbdecHygiene, "lbdecHygiene");
+            this.lbdecHygiene.Name = "lbdecHygiene";
+            // 
+            // tbdecHygiene
+            // 
+            this.tbdecHygiene.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.tbdecHygiene, "tbdecHygiene");
+            this.tbdecHygiene.Name = "tbdecHygiene";
+            this.tbdecHygiene.TextChanged += new System.EventHandler(this.ChangedOther);
+            // 
+            // tbdecEnergy
+            // 
+            this.tbdecEnergy.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.tbdecEnergy, "tbdecEnergy");
+            this.tbdecEnergy.Name = "tbdecEnergy";
+            this.tbdecEnergy.TextChanged += new System.EventHandler(this.ChangedOther);
+            // 
+            // lbdecEnergy
+            // 
+            resources.ApplyResources(this.lbdecEnergy, "lbdecEnergy");
+            this.lbdecEnergy.Name = "lbdecEnergy";
+            // 
+            // tbdecBladder
+            // 
+            this.tbdecBladder.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.tbdecBladder, "tbdecBladder");
+            this.tbdecBladder.Name = "tbdecBladder";
+            this.tbdecBladder.TextChanged += new System.EventHandler(this.ChangedOther);
+            // 
+            // lbdecBladder
+            // 
+            resources.ApplyResources(this.lbdecBladder, "lbdecBladder");
+            this.lbdecBladder.Name = "lbdecBladder";
+            // 
+            // tbdecComfort
+            // 
+            this.tbdecComfort.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.tbdecComfort, "tbdecComfort");
+            this.tbdecComfort.Name = "tbdecComfort";
+            this.tbdecComfort.TextChanged += new System.EventHandler(this.ChangedOther);
+            // 
+            // lbdecComfort
+            // 
+            resources.ApplyResources(this.lbdecComfort, "lbdecComfort");
+            this.lbdecComfort.Name = "lbdecComfort";
+            // 
+            // tbdecHunger
+            // 
+            this.tbdecHunger.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.tbdecHunger, "tbdecHunger");
+            this.tbdecHunger.Name = "tbdecHunger";
+            this.tbdecHunger.TextChanged += new System.EventHandler(this.ChangedOther);
+            // 
+            // lbdecHunger
+            // 
+            resources.ApplyResources(this.lbdecHunger, "lbdecHunger");
+            this.lbdecHunger.Name = "lbdecHunger";
+            // 
+            // tbpersonflags
+            // 
+            this.tbpersonflags.BackColor = System.Drawing.Color.Transparent;
+            this.tbpersonflags.BodyColor = System.Drawing.SystemColors.ControlLight;
+            this.tbpersonflags.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.tbpersonflags.Controls.Add(this.cbpfwitch);
+            this.tbpersonflags.Controls.Add(this.cbpfroomy);
+            this.tbpersonflags.Controls.Add(this.cbpfBigf);
+            this.tbpersonflags.Controls.Add(this.cbpfPlant);
+            this.tbpersonflags.Controls.Add(this.cbpfrunaw);
+            this.tbpersonflags.Controls.Add(this.cbpflyact);
+            this.tbpersonflags.Controls.Add(this.cbpflycar);
+            this.tbpersonflags.Controls.Add(this.cbpfwants);
+            this.tbpersonflags.Controls.Add(this.cbpfvsmoke);
+            this.tbpersonflags.Controls.Add(this.cbpfvamp);
+            this.tbpersonflags.Controls.Add(this.cbpfperma);
+            this.tbpersonflags.Controls.Add(this.cbpfZomb);
+            resources.ApplyResources(this.tbpersonflags, "tbpersonflags");
+            this.tbpersonflags.IconLocation = new System.Drawing.Point(4, 0);
+            this.tbpersonflags.IconSize = new System.Drawing.Size(32, 32);
+            this.tbpersonflags.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
+            this.tbpersonflags.Name = "tbpersonflags";
+            this.tbpersonflags.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
+            this.tbpersonflags.TopGap = 4;
+            // 
+            // cbpfwitch
+            // 
+            resources.ApplyResources(this.cbpfwitch, "cbpfwitch");
+            this.cbpfwitch.Name = "cbpfwitch";
+            this.cbpfwitch.UseVisualStyleBackColor = true;
+            this.cbpfwitch.CheckedChanged += new System.EventHandler(this.cbdataflag1_CheckedChanged);
+            // 
+            // cbpfroomy
+            // 
+            resources.ApplyResources(this.cbpfroomy, "cbpfroomy");
+            this.cbpfroomy.Name = "cbpfroomy";
+            this.cbpfroomy.UseVisualStyleBackColor = true;
+            this.cbpfroomy.CheckedChanged += new System.EventHandler(this.cbdataflag1_CheckedChanged);
+            // 
+            // cbpfBigf
+            // 
+            resources.ApplyResources(this.cbpfBigf, "cbpfBigf");
+            this.cbpfBigf.Name = "cbpfBigf";
+            this.cbpfBigf.UseVisualStyleBackColor = true;
+            this.cbpfBigf.CheckedChanged += new System.EventHandler(this.cbdataflag1_CheckedChanged);
+            // 
+            // cbpfPlant
+            // 
+            resources.ApplyResources(this.cbpfPlant, "cbpfPlant");
+            this.cbpfPlant.Name = "cbpfPlant";
+            this.cbpfPlant.UseVisualStyleBackColor = true;
+            this.cbpfPlant.CheckedChanged += new System.EventHandler(this.cbdataflag1_CheckedChanged);
+            // 
+            // cbpfrunaw
+            // 
+            resources.ApplyResources(this.cbpfrunaw, "cbpfrunaw");
+            this.cbpfrunaw.Name = "cbpfrunaw";
+            this.toolTip1.SetToolTip(this.cbpfrunaw, resources.GetString("cbpfrunaw.ToolTip"));
+            this.cbpfrunaw.UseVisualStyleBackColor = true;
+            this.cbpfrunaw.CheckedChanged += new System.EventHandler(this.cbdataflag1_CheckedChanged);
+            // 
+            // cbpflyact
+            // 
+            resources.ApplyResources(this.cbpflyact, "cbpflyact");
+            this.cbpflyact.Name = "cbpflyact";
+            this.cbpflyact.UseVisualStyleBackColor = true;
+            this.cbpflyact.CheckedChanged += new System.EventHandler(this.cbdataflag1_CheckedChanged);
+            // 
+            // cbpflycar
+            // 
+            resources.ApplyResources(this.cbpflycar, "cbpflycar");
+            this.cbpflycar.Name = "cbpflycar";
+            this.cbpflycar.UseVisualStyleBackColor = true;
+            this.cbpflycar.CheckedChanged += new System.EventHandler(this.cbdataflag1_CheckedChanged);
+            // 
+            // cbpfwants
+            // 
+            resources.ApplyResources(this.cbpfwants, "cbpfwants");
+            this.cbpfwants.Name = "cbpfwants";
+            this.cbpfwants.UseVisualStyleBackColor = true;
+            this.cbpfwants.CheckedChanged += new System.EventHandler(this.cbdataflag1_CheckedChanged);
+            // 
+            // cbpfvsmoke
+            // 
+            resources.ApplyResources(this.cbpfvsmoke, "cbpfvsmoke");
+            this.cbpfvsmoke.Name = "cbpfvsmoke";
+            this.cbpfvsmoke.UseVisualStyleBackColor = true;
+            this.cbpfvsmoke.CheckedChanged += new System.EventHandler(this.cbdataflag1_CheckedChanged);
+            // 
+            // cbpfvamp
+            // 
+            resources.ApplyResources(this.cbpfvamp, "cbpfvamp");
+            this.cbpfvamp.Name = "cbpfvamp";
+            this.cbpfvamp.UseVisualStyleBackColor = true;
+            this.cbpfvamp.CheckedChanged += new System.EventHandler(this.cbdataflag1_CheckedChanged);
+            // 
+            // cbpfperma
+            // 
+            resources.ApplyResources(this.cbpfperma, "cbpfperma");
+            this.cbpfperma.Name = "cbpfperma";
+            this.cbpfperma.UseVisualStyleBackColor = true;
+            this.cbpfperma.CheckedChanged += new System.EventHandler(this.cbdataflag1_CheckedChanged);
+            // 
+            // cbpfZomb
+            // 
+            resources.ApplyResources(this.cbpfZomb, "cbpfZomb");
+            this.cbpfZomb.Name = "cbpfZomb";
+            this.cbpfZomb.UseVisualStyleBackColor = true;
+            this.cbpfZomb.CheckedChanged += new System.EventHandler(this.cbdataflag1_CheckedChanged);
+            // 
+            // bTaskBox3
+            // 
+            this.bTaskBox3.BackColor = System.Drawing.Color.Transparent;
+            this.bTaskBox3.BodyColor = System.Drawing.SystemColors.ControlLight;
+            this.bTaskBox3.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bTaskBox3.Controls.Add(this.label3);
+            this.bTaskBox3.Controls.Add(this.tbstatmot);
+            this.bTaskBox3.Controls.Add(this.label96);
+            this.bTaskBox3.Controls.Add(this.tbunlinked);
+            this.bTaskBox3.Controls.Add(this.label95);
+            this.bTaskBox3.Controls.Add(this.tbagedur);
+            this.bTaskBox3.Controls.Add(this.tbprevdays);
+            this.bTaskBox3.Controls.Add(this.label94);
+            this.bTaskBox3.Controls.Add(this.tbvoice);
+            this.bTaskBox3.Controls.Add(this.label90);
+            this.bTaskBox3.Controls.Add(this.tbnpc);
+            this.bTaskBox3.Controls.Add(this.label87);
+            this.bTaskBox3.Controls.Add(this.tbautonomy);
+            this.bTaskBox3.Controls.Add(this.label86);
+            resources.ApplyResources(this.bTaskBox3, "bTaskBox3");
+            this.bTaskBox3.IconLocation = new System.Drawing.Point(4, 0);
+            this.bTaskBox3.IconSize = new System.Drawing.Size(32, 32);
+            this.bTaskBox3.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
+            this.bTaskBox3.Name = "bTaskBox3";
+            this.bTaskBox3.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
+            this.bTaskBox3.TopGap = 4;
             // 
             // label3
             // 
@@ -2109,24 +2878,23 @@ namespace SimPe.PackedFiles.UserInterface
             resources.ApplyResources(this.label86, "label86");
             this.label86.Name = "label86";
             // 
-            // xpTaskBoxSimple2
+            // bTaskBox2
             // 
-            this.xpTaskBoxSimple2.BackColor = System.Drawing.Color.Transparent;
-            this.xpTaskBoxSimple2.BodyColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.xpTaskBoxSimple2.BorderColor = System.Drawing.SystemColors.Window;
-            this.xpTaskBoxSimple2.Controls.Add(this.cbfit);
-            this.xpTaskBoxSimple2.Controls.Add(this.cbpreginv);
-            this.xpTaskBoxSimple2.Controls.Add(this.cbpreghalf);
-            this.xpTaskBoxSimple2.Controls.Add(this.cbpregfull);
-            this.xpTaskBoxSimple2.Controls.Add(this.cbfat);
-            this.xpTaskBoxSimple2.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
-            resources.ApplyResources(this.xpTaskBoxSimple2, "xpTaskBoxSimple2");
-            this.xpTaskBoxSimple2.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.xpTaskBoxSimple2.IconLocation = new System.Drawing.Point(4, 12);
-            this.xpTaskBoxSimple2.IconSize = new System.Drawing.Size(32, 32);
-            this.xpTaskBoxSimple2.LeftHeaderColor = System.Drawing.SystemColors.InactiveCaption;
-            this.xpTaskBoxSimple2.Name = "xpTaskBoxSimple2";
-            this.xpTaskBoxSimple2.RightHeaderColor = System.Drawing.SystemColors.Highlight;
+            this.bTaskBox2.BackColor = System.Drawing.Color.Transparent;
+            this.bTaskBox2.BodyColor = System.Drawing.SystemColors.ControlLight;
+            this.bTaskBox2.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bTaskBox2.Controls.Add(this.cbfit);
+            this.bTaskBox2.Controls.Add(this.cbpreginv);
+            this.bTaskBox2.Controls.Add(this.cbpreghalf);
+            this.bTaskBox2.Controls.Add(this.cbpregfull);
+            this.bTaskBox2.Controls.Add(this.cbfat);
+            resources.ApplyResources(this.bTaskBox2, "bTaskBox2");
+            this.bTaskBox2.IconLocation = new System.Drawing.Point(4, 0);
+            this.bTaskBox2.IconSize = new System.Drawing.Size(32, 32);
+            this.bTaskBox2.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
+            this.bTaskBox2.Name = "bTaskBox2";
+            this.bTaskBox2.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
+            this.bTaskBox2.TopGap = 4;
             // 
             // cbfit
             // 
@@ -2163,24 +2931,23 @@ namespace SimPe.PackedFiles.UserInterface
             this.cbfat.UseVisualStyleBackColor = false;
             this.cbfat.CheckedChanged += new System.EventHandler(this.ChangedOther);
             // 
-            // xpTaskBoxSimple1
+            // bTaskBox1
             // 
-            this.xpTaskBoxSimple1.BackColor = System.Drawing.Color.Transparent;
-            this.xpTaskBoxSimple1.BodyColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.xpTaskBoxSimple1.BorderColor = System.Drawing.SystemColors.Window;
-            this.xpTaskBoxSimple1.Controls.Add(this.cbisghost);
-            this.xpTaskBoxSimple1.Controls.Add(this.cbignoretraversal);
-            this.xpTaskBoxSimple1.Controls.Add(this.cbpasspeople);
-            this.xpTaskBoxSimple1.Controls.Add(this.cbpasswalls);
-            this.xpTaskBoxSimple1.Controls.Add(this.cbpassobject);
-            this.xpTaskBoxSimple1.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
-            resources.ApplyResources(this.xpTaskBoxSimple1, "xpTaskBoxSimple1");
-            this.xpTaskBoxSimple1.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.xpTaskBoxSimple1.IconLocation = new System.Drawing.Point(4, 12);
-            this.xpTaskBoxSimple1.IconSize = new System.Drawing.Size(32, 32);
-            this.xpTaskBoxSimple1.LeftHeaderColor = System.Drawing.SystemColors.InactiveCaption;
-            this.xpTaskBoxSimple1.Name = "xpTaskBoxSimple1";
-            this.xpTaskBoxSimple1.RightHeaderColor = System.Drawing.SystemColors.Highlight;
+            this.bTaskBox1.BackColor = System.Drawing.Color.Transparent;
+            this.bTaskBox1.BodyColor = System.Drawing.SystemColors.ControlLight;
+            this.bTaskBox1.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bTaskBox1.Controls.Add(this.cbisghost);
+            this.bTaskBox1.Controls.Add(this.cbignoretraversal);
+            this.bTaskBox1.Controls.Add(this.cbpasspeople);
+            this.bTaskBox1.Controls.Add(this.cbpasswalls);
+            this.bTaskBox1.Controls.Add(this.cbpassobject);
+            resources.ApplyResources(this.bTaskBox1, "bTaskBox1");
+            this.bTaskBox1.IconLocation = new System.Drawing.Point(4, 0);
+            this.bTaskBox1.IconSize = new System.Drawing.Size(32, 32);
+            this.bTaskBox1.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
+            this.bTaskBox1.Name = "bTaskBox1";
+            this.bTaskBox1.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
+            this.bTaskBox1.TopGap = 4;
             // 
             // cbisghost
             // 
@@ -2221,6 +2988,10 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             resources.ApplyResources(this.pnEP1, "pnEP1");
             this.pnEP1.BackColor = System.Drawing.Color.Transparent;
+            this.pnEP1.BackgroundImageAnchor = System.Windows.Forms.Panel.ImageLayout.BottomLeft;
+            this.pnEP1.BackgroundImageLocation = new System.Drawing.Point(750, 0);
+            this.pnEP1.BackgroundImageZoomToFit = true;
+            this.pnEP1.Controls.Add(this.tbSeminfo);
             this.pnEP1.Controls.Add(this.pbLastGrade);
             this.pnEP1.Controls.Add(this.pbUniTime);
             this.pnEP1.Controls.Add(this.pbEffort);
@@ -2234,6 +3005,98 @@ namespace SimPe.PackedFiles.UserInterface
             this.pnEP1.Controls.Add(this.tbmajor);
             this.pnEP1.Name = "pnEP1";
             // 
+            // tbSeminfo
+            // 
+            this.tbSeminfo.BackColor = System.Drawing.Color.Transparent;
+            this.tbSeminfo.BodyColor = System.Drawing.SystemColors.ControlLight;
+            this.tbSeminfo.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.tbSeminfo.Controls.Add(this.cbexpelled);
+            this.tbSeminfo.Controls.Add(this.cbdroped);
+            this.tbSeminfo.Controls.Add(this.cbatclass);
+            this.tbSeminfo.Controls.Add(this.cbgraduate);
+            this.tbSeminfo.Controls.Add(this.cbprobation);
+            this.tbSeminfo.Controls.Add(this.cbGoodsem);
+            this.tbSeminfo.Controls.Add(this.cbSenior);
+            this.tbSeminfo.Controls.Add(this.cbJunior);
+            this.tbSeminfo.Controls.Add(this.cbSopho);
+            this.tbSeminfo.Controls.Add(this.cbfreshman);
+            resources.ApplyResources(this.tbSeminfo, "tbSeminfo");
+            this.tbSeminfo.IconLocation = new System.Drawing.Point(4, 12);
+            this.tbSeminfo.IconSize = new System.Drawing.Size(32, 32);
+            this.tbSeminfo.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
+            this.tbSeminfo.Name = "tbSeminfo";
+            this.tbSeminfo.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
+            // 
+            // cbexpelled
+            // 
+            resources.ApplyResources(this.cbexpelled, "cbexpelled");
+            this.cbexpelled.Name = "cbexpelled";
+            this.cbexpelled.UseVisualStyleBackColor = true;
+            this.cbexpelled.CheckedChanged += new System.EventHandler(this.ChangedEP1);
+            // 
+            // cbdroped
+            // 
+            resources.ApplyResources(this.cbdroped, "cbdroped");
+            this.cbdroped.Name = "cbdroped";
+            this.cbdroped.UseVisualStyleBackColor = true;
+            this.cbdroped.CheckedChanged += new System.EventHandler(this.ChangedEP1);
+            // 
+            // cbatclass
+            // 
+            resources.ApplyResources(this.cbatclass, "cbatclass");
+            this.cbatclass.Name = "cbatclass";
+            this.cbatclass.UseVisualStyleBackColor = true;
+            this.cbatclass.CheckedChanged += new System.EventHandler(this.ChangedEP1);
+            // 
+            // cbgraduate
+            // 
+            resources.ApplyResources(this.cbgraduate, "cbgraduate");
+            this.cbgraduate.Name = "cbgraduate";
+            this.cbgraduate.UseVisualStyleBackColor = true;
+            this.cbgraduate.CheckedChanged += new System.EventHandler(this.ChangedEP1);
+            // 
+            // cbprobation
+            // 
+            resources.ApplyResources(this.cbprobation, "cbprobation");
+            this.cbprobation.Name = "cbprobation";
+            this.cbprobation.UseVisualStyleBackColor = true;
+            this.cbprobation.CheckedChanged += new System.EventHandler(this.ChangedEP1);
+            // 
+            // cbGoodsem
+            // 
+            resources.ApplyResources(this.cbGoodsem, "cbGoodsem");
+            this.cbGoodsem.Name = "cbGoodsem";
+            this.cbGoodsem.UseVisualStyleBackColor = true;
+            this.cbGoodsem.CheckedChanged += new System.EventHandler(this.ChangedEP1);
+            // 
+            // cbSenior
+            // 
+            resources.ApplyResources(this.cbSenior, "cbSenior");
+            this.cbSenior.Name = "cbSenior";
+            this.cbSenior.UseVisualStyleBackColor = true;
+            this.cbSenior.CheckedChanged += new System.EventHandler(this.ChangedSenior);
+            // 
+            // cbJunior
+            // 
+            resources.ApplyResources(this.cbJunior, "cbJunior");
+            this.cbJunior.Name = "cbJunior";
+            this.cbJunior.UseVisualStyleBackColor = true;
+            this.cbJunior.CheckedChanged += new System.EventHandler(this.ChangedJunior);
+            // 
+            // cbSopho
+            // 
+            resources.ApplyResources(this.cbSopho, "cbSopho");
+            this.cbSopho.Name = "cbSopho";
+            this.cbSopho.UseVisualStyleBackColor = true;
+            this.cbSopho.CheckedChanged += new System.EventHandler(this.ChangedSopho);
+            // 
+            // cbfreshman
+            // 
+            resources.ApplyResources(this.cbfreshman, "cbfreshman");
+            this.cbfreshman.Name = "cbfreshman";
+            this.cbfreshman.UseVisualStyleBackColor = true;
+            this.cbfreshman.CheckedChanged += new System.EventHandler(this.Changedfreshman);
+            // 
             // pbLastGrade
             // 
             this.pbLastGrade.BackColor = System.Drawing.Color.Transparent;
@@ -2245,7 +3108,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbLastGrade.NumberOffset = 0;
             this.pbLastGrade.NumberScale = 0.004;
             this.pbLastGrade.SelectedColor = System.Drawing.Color.OrangeRed;
-            this.pbLastGrade.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbLastGrade.TokenCount = 4;
             this.pbLastGrade.UnselectedColor = System.Drawing.Color.Black;
             this.pbLastGrade.Value = 0;
@@ -2262,7 +3124,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbUniTime.NumberOffset = 0;
             this.pbUniTime.NumberScale = 1;
             this.pbUniTime.SelectedColor = System.Drawing.Color.Lime;
-            this.pbUniTime.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbUniTime.TokenCount = 18;
             this.pbUniTime.UnselectedColor = System.Drawing.Color.Black;
             this.pbUniTime.Value = 0;
@@ -2279,7 +3140,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbEffort.NumberOffset = 0;
             this.pbEffort.NumberScale = 0.01;
             this.pbEffort.SelectedColor = System.Drawing.Color.Lime;
-            this.pbEffort.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbEffort.TokenCount = 10;
             this.pbEffort.UnselectedColor = System.Drawing.Color.Black;
             this.pbEffort.Value = 0;
@@ -2316,7 +3176,6 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             // cbmajor
             // 
-            this.cbmajor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cbmajor, "cbmajor");
             this.cbmajor.Name = "cbmajor";
             this.cbmajor.SelectedIndexChanged += new System.EventHandler(this.cbmajor_SelectedIndexChanged);
@@ -2337,12 +3196,15 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             resources.ApplyResources(this.pnEP7, "pnEP7");
             this.pnEP7.BackColor = System.Drawing.Color.Transparent;
+            this.pnEP7.BackgroundImageAnchor = System.Windows.Forms.Panel.ImageLayout.BottomLeft;
+            this.pnEP7.BackgroundImageLocation = new System.Drawing.Point(750, 0);
+            this.pnEP7.BackgroundImageZoomToFit = true;
             this.pnEP7.Controls.Add(this.pbhbenth);
             this.pnEP7.Controls.Add(this.label41);
             this.pnEP7.Controls.Add(this.cbaspiration2);
             this.pnEP7.Controls.Add(this.cbHobbyPre);
             this.pnEP7.Controls.Add(this.label40);
-            this.pnEP7.Controls.Add(this.xpTaskBoxSimple4);
+            this.pnEP7.Controls.Add(this.bTaskBox4);
             this.pnEP7.Controls.Add(this.tbBugColl);
             this.pnEP7.Controls.Add(this.label32);
             this.pnEP7.Controls.Add(this.tbUnlocksUsed);
@@ -2351,7 +3213,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pnEP7.Controls.Add(this.label30);
             this.pnEP7.Controls.Add(this.tbLtAsp);
             this.pnEP7.Controls.Add(this.label28);
-            this.pnEP7.Controls.Add(this.tbHobbyPre);
             this.pnEP7.Controls.Add(this.label27);
             this.pnEP7.Controls.Add(this.cbHobbyEnth);
             this.pnEP7.Name = "pnEP7";
@@ -2367,7 +3228,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbhbenth.NumberOffset = 0;
             this.pbhbenth.NumberScale = 1;
             this.pbhbenth.SelectedColor = System.Drawing.Color.YellowGreen;
-            this.pbhbenth.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbhbenth.TokenCount = 14;
             this.pbhbenth.UnselectedColor = System.Drawing.Color.Black;
             this.pbhbenth.Value = 500;
@@ -2380,14 +3240,12 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             // cbaspiration2
             // 
-            this.cbaspiration2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cbaspiration2, "cbaspiration2");
             this.cbaspiration2.Name = "cbaspiration2";
             this.cbaspiration2.SelectedIndexChanged += new System.EventHandler(this.ChangedEP7);
             // 
             // cbHobbyPre
             // 
-            this.cbHobbyPre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbHobbyPre.Enum = null;
             this.cbHobbyPre.FormattingEnabled = true;
             resources.ApplyResources(this.cbHobbyPre, "cbHobbyPre");
@@ -2400,37 +3258,36 @@ namespace SimPe.PackedFiles.UserInterface
             resources.ApplyResources(this.label40, "label40");
             this.label40.Name = "label40";
             // 
-            // xpTaskBoxSimple4
+            // bTaskBox4
             // 
-            this.xpTaskBoxSimple4.BackColor = System.Drawing.Color.Transparent;
-            this.xpTaskBoxSimple4.BodyColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.xpTaskBoxSimple4.BorderColor = System.Drawing.SystemColors.Window;
-            this.xpTaskBoxSimple4.Controls.Add(this.label33);
-            this.xpTaskBoxSimple4.Controls.Add(this.tb7social);
-            this.xpTaskBoxSimple4.Controls.Add(this.label34);
-            this.xpTaskBoxSimple4.Controls.Add(this.tb7fun);
-            this.xpTaskBoxSimple4.Controls.Add(this.label35);
-            this.xpTaskBoxSimple4.Controls.Add(this.tb7hygiene);
-            this.xpTaskBoxSimple4.Controls.Add(this.tb7energy);
-            this.xpTaskBoxSimple4.Controls.Add(this.label36);
-            this.xpTaskBoxSimple4.Controls.Add(this.tb7bladder);
-            this.xpTaskBoxSimple4.Controls.Add(this.label37);
-            this.xpTaskBoxSimple4.Controls.Add(this.tb7comfort);
-            this.xpTaskBoxSimple4.Controls.Add(this.label38);
-            this.xpTaskBoxSimple4.Controls.Add(this.tb7hunger);
-            this.xpTaskBoxSimple4.Controls.Add(this.label39);
-            this.xpTaskBoxSimple4.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
-            resources.ApplyResources(this.xpTaskBoxSimple4, "xpTaskBoxSimple4");
-            this.xpTaskBoxSimple4.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.xpTaskBoxSimple4.IconLocation = new System.Drawing.Point(4, 12);
-            this.xpTaskBoxSimple4.IconSize = new System.Drawing.Size(32, 32);
-            this.xpTaskBoxSimple4.LeftHeaderColor = System.Drawing.SystemColors.InactiveCaption;
-            this.xpTaskBoxSimple4.Name = "xpTaskBoxSimple4";
-            this.xpTaskBoxSimple4.RightHeaderColor = System.Drawing.SystemColors.Highlight;
+            this.bTaskBox4.BackColor = System.Drawing.Color.Transparent;
+            this.bTaskBox4.BodyColor = System.Drawing.SystemColors.ControlLight;
+            this.bTaskBox4.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bTaskBox4.Controls.Add(this.label33);
+            this.bTaskBox4.Controls.Add(this.tb7social);
+            this.bTaskBox4.Controls.Add(this.label34);
+            this.bTaskBox4.Controls.Add(this.tb7fun);
+            this.bTaskBox4.Controls.Add(this.label35);
+            this.bTaskBox4.Controls.Add(this.tb7hygiene);
+            this.bTaskBox4.Controls.Add(this.tb7energy);
+            this.bTaskBox4.Controls.Add(this.label36);
+            this.bTaskBox4.Controls.Add(this.tb7bladder);
+            this.bTaskBox4.Controls.Add(this.label37);
+            this.bTaskBox4.Controls.Add(this.tb7comfort);
+            this.bTaskBox4.Controls.Add(this.label38);
+            this.bTaskBox4.Controls.Add(this.tb7hunger);
+            this.bTaskBox4.Controls.Add(this.label39);
+            resources.ApplyResources(this.bTaskBox4, "bTaskBox4");
+            this.bTaskBox4.IconLocation = new System.Drawing.Point(4, 12);
+            this.bTaskBox4.IconSize = new System.Drawing.Size(32, 32);
+            this.bTaskBox4.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
+            this.bTaskBox4.Name = "bTaskBox4";
+            this.bTaskBox4.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
             // 
             // label33
             // 
             resources.ApplyResources(this.label33, "label33");
+            this.label33.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label33.Name = "label33";
             // 
             // tb7social
@@ -2443,6 +3300,7 @@ namespace SimPe.PackedFiles.UserInterface
             // label34
             // 
             resources.ApplyResources(this.label34, "label34");
+            this.label34.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label34.Name = "label34";
             // 
             // tb7fun
@@ -2455,6 +3313,7 @@ namespace SimPe.PackedFiles.UserInterface
             // label35
             // 
             resources.ApplyResources(this.label35, "label35");
+            this.label35.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label35.Name = "label35";
             // 
             // tb7hygiene
@@ -2474,6 +3333,7 @@ namespace SimPe.PackedFiles.UserInterface
             // label36
             // 
             resources.ApplyResources(this.label36, "label36");
+            this.label36.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label36.Name = "label36";
             // 
             // tb7bladder
@@ -2486,6 +3346,7 @@ namespace SimPe.PackedFiles.UserInterface
             // label37
             // 
             resources.ApplyResources(this.label37, "label37");
+            this.label37.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label37.Name = "label37";
             // 
             // tb7comfort
@@ -2498,6 +3359,7 @@ namespace SimPe.PackedFiles.UserInterface
             // label38
             // 
             resources.ApplyResources(this.label38, "label38");
+            this.label38.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label38.Name = "label38";
             // 
             // tb7hunger
@@ -2510,6 +3372,7 @@ namespace SimPe.PackedFiles.UserInterface
             // label39
             // 
             resources.ApplyResources(this.label39, "label39");
+            this.label39.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label39.Name = "label39";
             // 
             // tbBugColl
@@ -2556,13 +3419,6 @@ namespace SimPe.PackedFiles.UserInterface
             resources.ApplyResources(this.label28, "label28");
             this.label28.Name = "label28";
             // 
-            // tbHobbyPre
-            // 
-            resources.ApplyResources(this.tbHobbyPre, "tbHobbyPre");
-            this.tbHobbyPre.Name = "tbHobbyPre";
-            this.tbHobbyPre.ReadOnly = true;
-            this.tbHobbyPre.TextChanged += new System.EventHandler(this.ChangedEP7);
-            // 
             // label27
             // 
             resources.ApplyResources(this.label27, "label27");
@@ -2570,7 +3426,6 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             // cbHobbyEnth
             // 
-            this.cbHobbyEnth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbHobbyEnth.FormattingEnabled = true;
             this.cbHobbyEnth.Items.AddRange(new object[] {
             resources.GetString("cbHobbyEnth.Items"),
@@ -2592,6 +3447,9 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             resources.ApplyResources(this.pnEP2, "pnEP2");
             this.pnEP2.BackColor = System.Drawing.Color.Transparent;
+            this.pnEP2.BackgroundImageAnchor = System.Windows.Forms.Panel.ImageLayout.BottomLeft;
+            this.pnEP2.BackgroundImageLocation = new System.Drawing.Point(750, 0);
+            this.pnEP2.BackgroundImageZoomToFit = true;
             this.pnEP2.Controls.Add(this.tbNTLove);
             this.pnEP2.Controls.Add(this.tbNTPerfume);
             this.pnEP2.Controls.Add(this.label8);
@@ -2601,6 +3459,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.pnEP2.Controls.Add(this.lbTurnOn);
             this.pnEP2.Controls.Add(this.label5);
             this.pnEP2.Controls.Add(this.lbTraits);
+            this.pnEP2.Controls.Add(this.pbtraits);
             this.pnEP2.Controls.Add(this.label4);
             this.pnEP2.Name = "pnEP2";
             // 
@@ -2629,9 +3488,10 @@ namespace SimPe.PackedFiles.UserInterface
             // lbTurnOff
             // 
             resources.ApplyResources(this.lbTurnOff, "lbTurnOff");
-            this.lbTurnOff.Name = "lbTurnOff";
             this.lbTurnOff.CheckOnClick = true;
-            this.lbTurnOff.ItemCheck += new ItemCheckEventHandler(cklb_ItemCheck);
+            this.lbTurnOff.Name = "lbTurnOff";
+            this.lbTurnOff.SelectedIndexChanged += new System.EventHandler(this.lbTurnOff_SelectedIndexChanged);
+            this.lbTurnOff.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.cklb_ItemCheck);
             // 
             // label6
             // 
@@ -2641,9 +3501,10 @@ namespace SimPe.PackedFiles.UserInterface
             // lbTurnOn
             // 
             resources.ApplyResources(this.lbTurnOn, "lbTurnOn");
-            this.lbTurnOn.Name = "lbTurnOn";
             this.lbTurnOn.CheckOnClick = true;
-            this.lbTurnOn.ItemCheck += new ItemCheckEventHandler(cklb_ItemCheck);
+            this.lbTurnOn.Name = "lbTurnOn";
+            this.lbTurnOn.SelectedIndexChanged += new System.EventHandler(this.lbTurnOn_SelectedIndexChanged);
+            this.lbTurnOn.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.cklb_ItemCheck);
             // 
             // label5
             // 
@@ -2653,9 +3514,16 @@ namespace SimPe.PackedFiles.UserInterface
             // lbTraits
             // 
             resources.ApplyResources(this.lbTraits, "lbTraits");
-            this.lbTraits.Name = "lbTraits";
             this.lbTraits.CheckOnClick = true;
-            this.lbTraits.ItemCheck += new ItemCheckEventHandler(cklb_ItemCheck);
+            this.lbTraits.Name = "lbTraits";
+            this.lbTraits.SelectedIndexChanged += new System.EventHandler(this.lbTraits_SelectedIndexChanged);
+            this.lbTraits.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.cklb_ItemCheck);
+            // 
+            // pbtraits
+            // 
+            resources.ApplyResources(this.pbtraits, "pbtraits");
+            this.pbtraits.Name = "pbtraits";
+            this.pbtraits.TabStop = false;
             // 
             // label4
             // 
@@ -2666,7 +3534,9 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             resources.ApplyResources(this.pnEP3, "pnEP3");
             this.pnEP3.BackColor = System.Drawing.Color.Transparent;
-            this.pnEP3.Controls.Add(this.pictureBox1);
+            this.pnEP3.BackgroundImageAnchor = System.Windows.Forms.Panel.ImageLayout.BottomLeft;
+            this.pnEP3.BackgroundImageLocation = new System.Drawing.Point(750, 0);
+            this.pnEP3.BackgroundImageZoomToFit = true;
             this.pnEP3.Controls.Add(this.llep3openinfo);
             this.pnEP3.Controls.Add(this.label15);
             this.pnEP3.Controls.Add(this.sblb);
@@ -2680,19 +3550,13 @@ namespace SimPe.PackedFiles.UserInterface
             this.pnEP3.Controls.Add(this.label11);
             this.pnEP3.Name = "pnEP3";
             // 
-            // pictureBox1
-            // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.TabStop = false;
-            // 
             // llep3openinfo
             // 
             resources.ApplyResources(this.llep3openinfo, "llep3openinfo");
+            this.llep3openinfo.BackColor = System.Drawing.Color.Transparent;
+            this.llep3openinfo.ForeColor = System.Drawing.Color.Black;
             this.llep3openinfo.Name = "llep3openinfo";
-            this.llep3openinfo.TabStop = true;
-            this.llep3openinfo.UseCompatibleTextRendering = true;
-            this.llep3openinfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llep3openinfo_LinkClicked);
+            this.llep3openinfo.LinkClicked += new System.Windows.Forms.LinkLabel.EventHandler(this.llep3openinfo_LinkClicked);
             // 
             // label15
             // 
@@ -2724,7 +3588,6 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             // cbEp3Asgn
             // 
-            this.cbEp3Asgn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEp3Asgn.Enum = null;
             this.cbEp3Asgn.ForeColor = System.Drawing.SystemColors.ControlText;
             resources.ApplyResources(this.cbEp3Asgn, "cbEp3Asgn");
@@ -2758,6 +3621,9 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             resources.ApplyResources(this.pnVoyage, "pnVoyage");
             this.pnVoyage.BackColor = System.Drawing.Color.Transparent;
+            this.pnVoyage.BackgroundImageAnchor = System.Windows.Forms.Panel.ImageLayout.BottomLeft;
+            this.pnVoyage.BackgroundImageLocation = new System.Drawing.Point(750, 0);
+            this.pnVoyage.BackgroundImageZoomToFit = true;
             this.pnVoyage.Controls.Add(this.lvCollectibles);
             this.pnVoyage.Controls.Add(this.tbhdaysleft);
             this.pnVoyage.Controls.Add(this.label29);
@@ -2800,39 +3666,601 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             resources.ApplyResources(this.labelcol, "labelcol");
             this.labelcol.Name = "labelcol";
-            this.labelcol.Click += new System.EventHandler(this.lbcollectibles_Click);
+            // 
+            // pnEP9
+            // 
+            resources.ApplyResources(this.pnEP9, "pnEP9");
+            this.pnEP9.BackColor = System.Drawing.Color.Transparent;
+            this.pnEP9.BackgroundImageAnchor = System.Windows.Forms.Panel.ImageLayout.BottomLeft;
+            this.pnEP9.BackgroundImageLocation = new System.Drawing.Point(750, 0);
+            this.pnEP9.BackgroundImageZoomToFit = true;
+            this.pnEP9.Controls.Add(this.lbfaithinfo);
+            this.pnEP9.Controls.Add(this.tbfemdik);
+            this.pnEP9.Controls.Add(this.Various);
+            this.pnEP9.Controls.Add(this.Nipples);
+            this.pnEP9.Controls.Add(this.Pubes);
+            this.pnEP9.Name = "pnEP9";
+            // 
+            // lbfaithinfo
+            // 
+            resources.ApplyResources(this.lbfaithinfo, "lbfaithinfo");
+            this.lbfaithinfo.Name = "lbfaithinfo";
+            // 
+            // tbfemdik
+            // 
+            this.tbfemdik.BackColor = System.Drawing.Color.Transparent;
+            this.tbfemdik.BodyColor = System.Drawing.SystemColors.ControlLight;
+            this.tbfemdik.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.tbfemdik.Controls.Add(this.lbFemcolour);
+            this.tbfemdik.Controls.Add(this.cbfembaldy);
+            this.tbfemdik.Controls.Add(this.cbfemsmall);
+            this.tbfemdik.Controls.Add(this.cbfembig);
+            this.tbfemdik.Controls.Add(this.cbfemcirc);
+            this.tbfemdik.Controls.Add(this.cbFemColour);
+            resources.ApplyResources(this.tbfemdik, "tbfemdik");
+            this.tbfemdik.IconLocation = new System.Drawing.Point(4, 0);
+            this.tbfemdik.IconSize = new System.Drawing.Size(32, 32);
+            this.tbfemdik.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
+            this.tbfemdik.Name = "tbfemdik";
+            this.tbfemdik.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
+            this.tbfemdik.TopGap = 4;
+            // 
+            // lbFemcolour
+            // 
+            resources.ApplyResources(this.lbFemcolour, "lbFemcolour");
+            this.lbFemcolour.Name = "lbFemcolour";
+            // 
+            // cbfembaldy
+            // 
+            resources.ApplyResources(this.cbfembaldy, "cbfembaldy");
+            this.cbfembaldy.Name = "cbfembaldy";
+            this.cbfembaldy.UseVisualStyleBackColor = true;
+            this.cbfembaldy.CheckedChanged += new System.EventHandler(this.cbFemPenisChanged);
+            // 
+            // cbfemsmall
+            // 
+            resources.ApplyResources(this.cbfemsmall, "cbfemsmall");
+            this.cbfemsmall.Name = "cbfemsmall";
+            this.cbfemsmall.UseVisualStyleBackColor = true;
+            this.cbfemsmall.CheckedChanged += new System.EventHandler(this.cbFemPenisChanged);
+            // 
+            // cbfembig
+            // 
+            resources.ApplyResources(this.cbfembig, "cbfembig");
+            this.cbfembig.Name = "cbfembig";
+            this.cbfembig.UseVisualStyleBackColor = true;
+            this.cbfembig.CheckedChanged += new System.EventHandler(this.cbFemPenisChanged);
+            // 
+            // cbfemcirc
+            // 
+            resources.ApplyResources(this.cbfemcirc, "cbfemcirc");
+            this.cbfemcirc.Name = "cbfemcirc";
+            this.cbfemcirc.UseVisualStyleBackColor = true;
+            this.cbfemcirc.CheckedChanged += new System.EventHandler(this.cbFemPenisChanged);
+            // 
+            // cbFemColour
+            // 
+            resources.ApplyResources(this.cbFemColour, "cbFemColour");
+            this.cbFemColour.FormattingEnabled = true;
+            this.cbFemColour.Name = "cbFemColour";
+            this.cbFemColour.SelectedIndexChanged += new System.EventHandler(this.cbFemPenisChanged);
+            // 
+            // Various
+            // 
+            this.Various.BackColor = System.Drawing.Color.Transparent;
+            this.Various.BodyColor = System.Drawing.SystemColors.ControlLight;
+            this.Various.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Various.Controls.Add(this.lbVBFriend);
+            this.Various.Controls.Add(this.cbVBFriend);
+            this.Various.Controls.Add(this.cbisslave);
+            this.Various.Controls.Add(this.cbstaynude);
+            this.Various.Controls.Add(this.lbReligion);
+            this.Various.Controls.Add(this.lbpostTitle);
+            this.Various.Controls.Add(this.cbpostTitle);
+            this.Various.Controls.Add(this.cbSuburbs);
+            this.Various.Controls.Add(this.pbRomance);
+            this.Various.Controls.Add(this.cbFaiths);
+            this.Various.Controls.Add(this.lbalcsub);
+            this.Various.Controls.Add(this.cbhospital);
+            this.Various.Controls.Add(this.pbicon);
+            this.Various.Controls.Add(this.cbonpill);
+            this.Various.Controls.Add(this.cbmarker);
+            this.Various.Controls.Add(this.lbBodee);
+            this.Various.Controls.Add(this.cbBody);
+            resources.ApplyResources(this.Various, "Various");
+            this.Various.IconLocation = new System.Drawing.Point(4, 0);
+            this.Various.IconSize = new System.Drawing.Size(32, 32);
+            this.Various.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
+            this.Various.Name = "Various";
+            this.Various.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
+            this.Various.TopGap = 6;
+            // 
+            // lbVBFriend
+            // 
+            resources.ApplyResources(this.lbVBFriend, "lbVBFriend");
+            this.lbVBFriend.Name = "lbVBFriend";
+            this.lbVBFriend.Click += new System.EventHandler(this.lbVBFriend_Click);
+            // 
+            // cbVBFriend
+            // 
+            resources.ApplyResources(this.cbVBFriend, "cbVBFriend");
+            this.cbVBFriend.FormattingEnabled = true;
+            this.cbVBFriend.Name = "cbVBFriend";
+            this.cbVBFriend.SelectedIndexChanged += new System.EventHandler(this.cbVBFriend_SelectedIndexChanged);
+            // 
+            // cbisslave
+            // 
+            resources.ApplyResources(this.cbisslave, "cbisslave");
+            this.cbisslave.Name = "cbisslave";
+            this.cbisslave.UseVisualStyleBackColor = true;
+            this.cbisslave.CheckedChanged += new System.EventHandler(this.ChangedVarious);
+            // 
+            // cbstaynude
+            // 
+            resources.ApplyResources(this.cbstaynude, "cbstaynude");
+            this.cbstaynude.Name = "cbstaynude";
+            this.cbstaynude.UseVisualStyleBackColor = true;
+            this.cbstaynude.CheckedChanged += new System.EventHandler(this.ChangedVarious);
+            // 
+            // lbReligion
+            // 
+            resources.ApplyResources(this.lbReligion, "lbReligion");
+            this.lbReligion.Name = "lbReligion";
+            this.lbReligion.Click += new System.EventHandler(this.lbReligion_Click);
+            // 
+            // lbpostTitle
+            // 
+            resources.ApplyResources(this.lbpostTitle, "lbpostTitle");
+            this.lbpostTitle.Name = "lbpostTitle";
+            // 
+            // cbpostTitle
+            // 
+            resources.ApplyResources(this.cbpostTitle, "cbpostTitle");
+            this.cbpostTitle.FormattingEnabled = true;
+            this.cbpostTitle.Name = "cbpostTitle";
+            this.cbpostTitle.SelectedIndexChanged += new System.EventHandler(this.cbpostTitle_SelectedIndexChanged);
+            // 
+            // cbSuburbs
+            // 
+            this.cbSuburbs.FormattingEnabled = true;
+            resources.ApplyResources(this.cbSuburbs, "cbSuburbs");
+            this.cbSuburbs.Name = "cbSuburbs";
+            this.cbSuburbs.SelectedIndexChanged += new System.EventHandler(this.cbSuburbs_SelectedIndexChanged);
+            // 
+            // cbFaiths
+            // 
+            resources.ApplyResources(this.cbFaiths, "cbFaiths");
+            this.cbFaiths.FormattingEnabled = true;
+            this.cbFaiths.Name = "cbFaiths";
+            this.cbFaiths.SelectedIndexChanged += new System.EventHandler(this.cbFaiths_SelectedIndexChanged);
+            // 
+            // lbalcsub
+            // 
+            resources.ApplyResources(this.lbalcsub, "lbalcsub");
+            this.lbalcsub.Name = "lbalcsub";
+            // 
+            // cbhospital
+            // 
+            resources.ApplyResources(this.cbhospital, "cbhospital");
+            this.cbhospital.Name = "cbhospital";
+            this.cbhospital.UseVisualStyleBackColor = true;
+            this.cbhospital.CheckedChanged += new System.EventHandler(this.ChangedVarious);
+            // 
+            // pbicon
+            // 
+            resources.ApplyResources(this.pbicon, "pbicon");
+            this.pbicon.Name = "pbicon";
+            this.pbicon.TabStop = false;
+            // 
+            // cbonpill
+            // 
+            resources.ApplyResources(this.cbonpill, "cbonpill");
+            this.cbonpill.Name = "cbonpill";
+            this.cbonpill.UseVisualStyleBackColor = true;
+            this.cbonpill.CheckedChanged += new System.EventHandler(this.ChangedVarious);
+            // 
+            // cbmarker
+            // 
+            resources.ApplyResources(this.cbmarker, "cbmarker");
+            this.cbmarker.Name = "cbmarker";
+            this.cbmarker.UseVisualStyleBackColor = true;
+            this.cbmarker.CheckedChanged += new System.EventHandler(this.ChangedVarious);
+            // 
+            // lbBodee
+            // 
+            resources.ApplyResources(this.lbBodee, "lbBodee");
+            this.lbBodee.Name = "lbBodee";
+            this.lbBodee.Click += new System.EventHandler(this.lbBodee_Click);
+            // 
+            // cbBody
+            // 
+            resources.ApplyResources(this.cbBody, "cbBody");
+            this.cbBody.FormattingEnabled = true;
+            this.cbBody.Name = "cbBody";
+            this.cbBody.SelectedIndexChanged += new System.EventHandler(this.cbBody_SelectedIndexChanged);
+            // 
+            // Nipples
+            // 
+            this.Nipples.BackColor = System.Drawing.Color.Transparent;
+            this.Nipples.BodyColor = System.Drawing.SystemColors.ControlLight;
+            this.Nipples.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Nipples.Controls.Add(this.labelnipple);
+            this.Nipples.Controls.Add(this.cbnipsit);
+            this.Nipples.Controls.Add(this.cbnipssi);
+            this.Nipples.Controls.Add(this.cbnipsma);
+            this.Nipples.Controls.Add(this.cbnipswi);
+            this.Nipples.Controls.Add(this.cbnipsfo);
+            this.Nipples.Controls.Add(this.cbnipsgy);
+            this.Nipples.Controls.Add(this.cbnipsun);
+            this.Nipples.Controls.Add(this.cbnipspy);
+            this.Nipples.Controls.Add(this.cbnipssw);
+            this.Nipples.Controls.Add(this.cbnipsca);
+            this.Nipples.Controls.Add(this.cbnipsna);
+            resources.ApplyResources(this.Nipples, "Nipples");
+            this.Nipples.IconLocation = new System.Drawing.Point(4, 0);
+            this.Nipples.IconSize = new System.Drawing.Size(32, 32);
+            this.Nipples.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
+            this.Nipples.Name = "Nipples";
+            this.Nipples.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
+            this.Nipples.TopGap = 4;
+            // 
+            // labelnipple
+            // 
+            resources.ApplyResources(this.labelnipple, "labelnipple");
+            this.labelnipple.Name = "labelnipple";
+            // 
+            // cbnipsit
+            // 
+            resources.ApplyResources(this.cbnipsit, "cbnipsit");
+            this.cbnipsit.Name = "cbnipsit";
+            this.cbnipsit.UseVisualStyleBackColor = true;
+            this.cbnipsit.CheckedChanged += new System.EventHandler(this.ChangedNipples);
+            // 
+            // cbnipssi
+            // 
+            resources.ApplyResources(this.cbnipssi, "cbnipssi");
+            this.cbnipssi.Name = "cbnipssi";
+            this.cbnipssi.UseVisualStyleBackColor = true;
+            this.cbnipssi.CheckedChanged += new System.EventHandler(this.ChangedNipples);
+            // 
+            // cbnipsma
+            // 
+            resources.ApplyResources(this.cbnipsma, "cbnipsma");
+            this.cbnipsma.Name = "cbnipsma";
+            this.cbnipsma.UseVisualStyleBackColor = true;
+            this.cbnipsma.CheckedChanged += new System.EventHandler(this.ChangedNipples);
+            // 
+            // cbnipswi
+            // 
+            resources.ApplyResources(this.cbnipswi, "cbnipswi");
+            this.cbnipswi.Name = "cbnipswi";
+            this.cbnipswi.UseVisualStyleBackColor = true;
+            this.cbnipswi.CheckedChanged += new System.EventHandler(this.ChangedNipples);
+            // 
+            // cbnipsfo
+            // 
+            resources.ApplyResources(this.cbnipsfo, "cbnipsfo");
+            this.cbnipsfo.Name = "cbnipsfo";
+            this.cbnipsfo.UseVisualStyleBackColor = true;
+            this.cbnipsfo.CheckedChanged += new System.EventHandler(this.ChangedNipples);
+            // 
+            // cbnipsgy
+            // 
+            resources.ApplyResources(this.cbnipsgy, "cbnipsgy");
+            this.cbnipsgy.Name = "cbnipsgy";
+            this.cbnipsgy.UseVisualStyleBackColor = true;
+            this.cbnipsgy.CheckedChanged += new System.EventHandler(this.ChangedNipples);
+            // 
+            // cbnipsun
+            // 
+            resources.ApplyResources(this.cbnipsun, "cbnipsun");
+            this.cbnipsun.Name = "cbnipsun";
+            this.cbnipsun.UseVisualStyleBackColor = true;
+            this.cbnipsun.CheckedChanged += new System.EventHandler(this.ChangedNipples);
+            // 
+            // cbnipspy
+            // 
+            resources.ApplyResources(this.cbnipspy, "cbnipspy");
+            this.cbnipspy.Name = "cbnipspy";
+            this.cbnipspy.UseVisualStyleBackColor = true;
+            this.cbnipspy.CheckedChanged += new System.EventHandler(this.ChangedNipples);
+            // 
+            // cbnipssw
+            // 
+            resources.ApplyResources(this.cbnipssw, "cbnipssw");
+            this.cbnipssw.Name = "cbnipssw";
+            this.cbnipssw.UseVisualStyleBackColor = true;
+            this.cbnipssw.CheckedChanged += new System.EventHandler(this.ChangedNipples);
+            // 
+            // cbnipsca
+            // 
+            resources.ApplyResources(this.cbnipsca, "cbnipsca");
+            this.cbnipsca.Name = "cbnipsca";
+            this.cbnipsca.UseVisualStyleBackColor = true;
+            this.cbnipsca.CheckedChanged += new System.EventHandler(this.ChangedNipples);
+            // 
+            // cbnipsna
+            // 
+            resources.ApplyResources(this.cbnipsna, "cbnipsna");
+            this.cbnipsna.Name = "cbnipsna";
+            this.cbnipsna.UseVisualStyleBackColor = true;
+            this.cbnipsna.CheckedChanged += new System.EventHandler(this.ChangedNipples);
+            // 
+            // Pubes
+            // 
+            this.Pubes.BackColor = System.Drawing.Color.Transparent;
+            this.Pubes.BodyColor = System.Drawing.SystemColors.ControlLight;
+            this.Pubes.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Pubes.Controls.Add(this.pnPenis);
+            this.Pubes.Controls.Add(this.pnMuffy);
+            this.Pubes.Controls.Add(this.labelgenital);
+            this.Pubes.Controls.Add(this.cbpubeal);
+            this.Pubes.Controls.Add(this.cbpubegy);
+            this.Pubes.Controls.Add(this.cbpubeun);
+            this.Pubes.Controls.Add(this.cbpubepy);
+            this.Pubes.Controls.Add(this.cbpubesw);
+            this.Pubes.Controls.Add(this.cbpubeca);
+            resources.ApplyResources(this.Pubes, "Pubes");
+            this.Pubes.IconLocation = new System.Drawing.Point(4, 0);
+            this.Pubes.IconSize = new System.Drawing.Size(32, 32);
+            this.Pubes.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
+            this.Pubes.Name = "Pubes";
+            this.Pubes.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
+            this.Pubes.TopGap = 4;
+            // 
+            // pnPenis
+            // 
+            this.pnPenis.Controls.Add(this.cbdickless);
+            this.pnPenis.Controls.Add(this.labelpenis);
+            this.pnPenis.Controls.Add(this.lbBallsize);
+            this.pnPenis.Controls.Add(this.cbDiklength);
+            this.pnPenis.Controls.Add(this.lbDikgirth);
+            this.pnPenis.Controls.Add(this.cbDikgirth);
+            this.pnPenis.Controls.Add(this.lbDikcolour);
+            this.pnPenis.Controls.Add(this.cbBallsize);
+            this.pnPenis.Controls.Add(this.lbDikstate);
+            this.pnPenis.Controls.Add(this.cbDikstate);
+            this.pnPenis.Controls.Add(this.lbDiklength);
+            this.pnPenis.Controls.Add(this.cbDikcolour);
+            resources.ApplyResources(this.pnPenis, "pnPenis");
+            this.pnPenis.Name = "pnPenis";
+            // 
+            // cbdickless
+            // 
+            resources.ApplyResources(this.cbdickless, "cbdickless");
+            this.cbdickless.Name = "cbdickless";
+            this.cbdickless.UseVisualStyleBackColor = true;
+            this.cbdickless.CheckedChanged += new System.EventHandler(this.ChangedGenitals);
+            // 
+            // labelpenis
+            // 
+            resources.ApplyResources(this.labelpenis, "labelpenis");
+            this.labelpenis.Name = "labelpenis";
+            // 
+            // lbBallsize
+            // 
+            resources.ApplyResources(this.lbBallsize, "lbBallsize");
+            this.lbBallsize.Name = "lbBallsize";
+            // 
+            // cbDiklength
+            // 
+            resources.ApplyResources(this.cbDiklength, "cbDiklength");
+            this.cbDiklength.FormattingEnabled = true;
+            this.cbDiklength.Name = "cbDiklength";
+            this.cbDiklength.SelectedIndexChanged += new System.EventHandler(this.cbPenis_SelectedIndexChanged);
+            // 
+            // lbDikgirth
+            // 
+            resources.ApplyResources(this.lbDikgirth, "lbDikgirth");
+            this.lbDikgirth.Name = "lbDikgirth";
+            // 
+            // cbDikgirth
+            // 
+            resources.ApplyResources(this.cbDikgirth, "cbDikgirth");
+            this.cbDikgirth.FormattingEnabled = true;
+            this.cbDikgirth.Name = "cbDikgirth";
+            this.cbDikgirth.SelectedIndexChanged += new System.EventHandler(this.cbPenis_SelectedIndexChanged);
+            // 
+            // lbDikcolour
+            // 
+            resources.ApplyResources(this.lbDikcolour, "lbDikcolour");
+            this.lbDikcolour.Name = "lbDikcolour";
+            // 
+            // cbBallsize
+            // 
+            resources.ApplyResources(this.cbBallsize, "cbBallsize");
+            this.cbBallsize.FormattingEnabled = true;
+            this.cbBallsize.Name = "cbBallsize";
+            this.cbBallsize.SelectedIndexChanged += new System.EventHandler(this.cbPenis_SelectedIndexChanged);
+            // 
+            // lbDikstate
+            // 
+            resources.ApplyResources(this.lbDikstate, "lbDikstate");
+            this.lbDikstate.Name = "lbDikstate";
+            // 
+            // cbDikstate
+            // 
+            resources.ApplyResources(this.cbDikstate, "cbDikstate");
+            this.cbDikstate.FormattingEnabled = true;
+            this.cbDikstate.Name = "cbDikstate";
+            this.cbDikstate.SelectedIndexChanged += new System.EventHandler(this.cbPenis_SelectedIndexChanged);
+            // 
+            // lbDiklength
+            // 
+            resources.ApplyResources(this.lbDiklength, "lbDiklength");
+            this.lbDiklength.Name = "lbDiklength";
+            // 
+            // cbDikcolour
+            // 
+            resources.ApplyResources(this.cbDikcolour, "cbDikcolour");
+            this.cbDikcolour.FormattingEnabled = true;
+            this.cbDikcolour.Name = "cbDikcolour";
+            this.cbDikcolour.SelectedIndexChanged += new System.EventHandler(this.cbPenis_SelectedIndexChanged);
+            // 
+            // pnMuffy
+            // 
+            this.pnMuffy.Controls.Add(this.btpubedic);
+            this.pnMuffy.Controls.Add(this.labelpubes);
+            this.pnMuffy.Controls.Add(this.cbpubesh);
+            this.pnMuffy.Controls.Add(this.cbpubetr);
+            this.pnMuffy.Controls.Add(this.cbpubetf);
+            this.pnMuffy.Controls.Add(this.cbpubebk);
+            this.pnMuffy.Controls.Add(this.cbpubebn);
+            this.pnMuffy.Controls.Add(this.cbpubebd);
+            this.pnMuffy.Controls.Add(this.cbpuberd);
+            resources.ApplyResources(this.pnMuffy, "pnMuffy");
+            this.pnMuffy.Name = "pnMuffy";
+            this.toolTip1.SetToolTip(this.pnMuffy, resources.GetString("pnMuffy.ToolTip"));
+            // 
+            // btpubedic
+            // 
+            resources.ApplyResources(this.btpubedic, "btpubedic");
+            this.btpubedic.Name = "btpubedic";
+            this.btpubedic.UseVisualStyleBackColor = true;
+            this.btpubedic.Click += new System.EventHandler(this.btpubedic_Click);
+            // 
+            // labelpubes
+            // 
+            resources.ApplyResources(this.labelpubes, "labelpubes");
+            this.labelpubes.Name = "labelpubes";
+            // 
+            // cbpubesh
+            // 
+            resources.ApplyResources(this.cbpubesh, "cbpubesh");
+            this.cbpubesh.Name = "cbpubesh";
+            this.cbpubesh.UseVisualStyleBackColor = true;
+            this.cbpubesh.CheckedChanged += new System.EventHandler(this.ChangedGenitals);
+            // 
+            // cbpubetr
+            // 
+            resources.ApplyResources(this.cbpubetr, "cbpubetr");
+            this.cbpubetr.Name = "cbpubetr";
+            this.cbpubetr.UseVisualStyleBackColor = true;
+            this.cbpubetr.CheckedChanged += new System.EventHandler(this.ChangedNipples);
+            // 
+            // cbpubetf
+            // 
+            resources.ApplyResources(this.cbpubetf, "cbpubetf");
+            this.cbpubetf.Name = "cbpubetf";
+            this.cbpubetf.UseVisualStyleBackColor = true;
+            this.cbpubetf.CheckedChanged += new System.EventHandler(this.ChangedGenitals);
+            // 
+            // cbpubebk
+            // 
+            resources.ApplyResources(this.cbpubebk, "cbpubebk");
+            this.cbpubebk.Name = "cbpubebk";
+            this.cbpubebk.UseVisualStyleBackColor = true;
+            this.cbpubebk.CheckedChanged += new System.EventHandler(this.ChangedGenitals);
+            // 
+            // cbpubebn
+            // 
+            resources.ApplyResources(this.cbpubebn, "cbpubebn");
+            this.cbpubebn.Name = "cbpubebn";
+            this.cbpubebn.UseVisualStyleBackColor = true;
+            this.cbpubebn.CheckedChanged += new System.EventHandler(this.ChangedGenitals);
+            // 
+            // cbpubebd
+            // 
+            resources.ApplyResources(this.cbpubebd, "cbpubebd");
+            this.cbpubebd.Name = "cbpubebd";
+            this.cbpubebd.UseVisualStyleBackColor = true;
+            this.cbpubebd.CheckedChanged += new System.EventHandler(this.ChangedGenitals);
+            // 
+            // cbpuberd
+            // 
+            resources.ApplyResources(this.cbpuberd, "cbpuberd");
+            this.cbpuberd.Name = "cbpuberd";
+            this.cbpuberd.UseVisualStyleBackColor = true;
+            this.cbpuberd.CheckedChanged += new System.EventHandler(this.ChangedGenitals);
+            // 
+            // labelgenital
+            // 
+            resources.ApplyResources(this.labelgenital, "labelgenital");
+            this.labelgenital.Name = "labelgenital";
+            // 
+            // cbpubeal
+            // 
+            resources.ApplyResources(this.cbpubeal, "cbpubeal");
+            this.cbpubeal.Name = "cbpubeal";
+            this.cbpubeal.UseVisualStyleBackColor = true;
+            this.cbpubeal.CheckedChanged += new System.EventHandler(this.ChangedGenitals);
+            // 
+            // cbpubegy
+            // 
+            resources.ApplyResources(this.cbpubegy, "cbpubegy");
+            this.cbpubegy.Name = "cbpubegy";
+            this.cbpubegy.UseVisualStyleBackColor = true;
+            this.cbpubegy.CheckedChanged += new System.EventHandler(this.ChangedGenitals);
+            // 
+            // cbpubeun
+            // 
+            resources.ApplyResources(this.cbpubeun, "cbpubeun");
+            this.cbpubeun.Name = "cbpubeun";
+            this.cbpubeun.UseVisualStyleBackColor = true;
+            this.cbpubeun.CheckedChanged += new System.EventHandler(this.ChangedGenitals);
+            // 
+            // cbpubepy
+            // 
+            resources.ApplyResources(this.cbpubepy, "cbpubepy");
+            this.cbpubepy.Name = "cbpubepy";
+            this.cbpubepy.UseVisualStyleBackColor = true;
+            this.cbpubepy.CheckedChanged += new System.EventHandler(this.ChangedGenitals);
+            // 
+            // cbpubesw
+            // 
+            resources.ApplyResources(this.cbpubesw, "cbpubesw");
+            this.cbpubesw.Name = "cbpubesw";
+            this.cbpubesw.UseVisualStyleBackColor = true;
+            this.cbpubesw.CheckedChanged += new System.EventHandler(this.ChangedGenitals);
+            // 
+            // cbpubeca
+            // 
+            resources.ApplyResources(this.cbpubeca, "cbpubeca");
+            this.cbpubeca.Name = "cbpubeca";
+            this.cbpubeca.UseVisualStyleBackColor = true;
+            this.cbpubeca.CheckedChanged += new System.EventHandler(this.ChangedGenitals);
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.AutoPopDelay = 8000;
+            this.toolTip1.InitialDelay = 50;
+            this.toolTip1.ReshowDelay = 100;
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTip1.ToolTipTitle = "Note:";
             // 
             // ExtSDesc
             // 
-            this.Controls.Add(this.pnEP7);
+            this.Controls.Add(this.toolBar1);
+            this.Controls.Add(this.pnId);
             this.Controls.Add(this.pnCareer);
             this.Controls.Add(this.pnRel);
-            this.Controls.Add(this.pnMisc);
-            this.Controls.Add(this.pnSkill);
-            this.Controls.Add(this.pnEP2);
-            this.Controls.Add(this.toolBar1);
-            this.Controls.Add(this.pnEP1);
             this.Controls.Add(this.pnInt);
             this.Controls.Add(this.pnChar);
-            this.Controls.Add(this.pnId);
+            this.Controls.Add(this.pnSkill);
+            this.Controls.Add(this.pnMisc);
+            this.Controls.Add(this.pnEP1);
+            this.Controls.Add(this.pnEP2);
             this.Controls.Add(this.pnEP3);
             this.Controls.Add(this.pnVoyage);
+            this.Controls.Add(this.pnEP7);
+            this.Controls.Add(this.pnEP9);
             resources.ApplyResources(this, "$this");
             this.HeaderText = null;
             this.Name = "ExtSDesc";
+            this.Controls.SetChildIndex(this.pnEP9, 0);
+            this.Controls.SetChildIndex(this.pnEP7, 0);
             this.Controls.SetChildIndex(this.pnVoyage, 0);
             this.Controls.SetChildIndex(this.pnEP3, 0);
-            this.Controls.SetChildIndex(this.pnId, 0);
+            this.Controls.SetChildIndex(this.pnEP2, 0);
+            this.Controls.SetChildIndex(this.pnEP1, 0);
+            this.Controls.SetChildIndex(this.pnMisc, 0);
+            this.Controls.SetChildIndex(this.pnSkill, 0);
             this.Controls.SetChildIndex(this.pnChar, 0);
             this.Controls.SetChildIndex(this.pnInt, 0);
-            this.Controls.SetChildIndex(this.pnEP1, 0);
-            this.Controls.SetChildIndex(this.toolBar1, 0);
-            this.Controls.SetChildIndex(this.pnEP2, 0);
-            this.Controls.SetChildIndex(this.pnSkill, 0);
-            this.Controls.SetChildIndex(this.pnMisc, 0);
             this.Controls.SetChildIndex(this.pnRel, 0);
             this.Controls.SetChildIndex(this.pnCareer, 0);
-            this.Controls.SetChildIndex(this.pnEP7, 0);
+            this.Controls.SetChildIndex(this.pnId, 0);
+            this.Controls.SetChildIndex(this.toolBar1, 0);
             this.pnPetInt.ResumeLayout(false);
             this.toolBar1.ResumeLayout(false);
             this.toolBar1.PerformLayout();
@@ -2842,6 +4270,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.pnSkill.ResumeLayout(false);
             this.pnChar.ResumeLayout(false);
             this.pnPetChar.ResumeLayout(false);
+            this.pnPetChar.PerformLayout();
             this.pnHumanChar.ResumeLayout(false);
             this.mbiLink.ResumeLayout(false);
             this.miRel.ResumeLayout(false);
@@ -2853,23 +4282,44 @@ namespace SimPe.PackedFiles.UserInterface
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.pnMisc.ResumeLayout(false);
-            this.xpTaskBoxSimple3.ResumeLayout(false);
-            this.xpTaskBoxSimple3.PerformLayout();
-            this.xpTaskBoxSimple2.ResumeLayout(false);
-            this.xpTaskBoxSimple1.ResumeLayout(false);
+            this.tbMotiveDec.ResumeLayout(false);
+            this.tbMotiveDec.PerformLayout();
+            this.tbpersonflags.ResumeLayout(false);
+            this.tbpersonflags.PerformLayout();
+            this.bTaskBox3.ResumeLayout(false);
+            this.bTaskBox3.PerformLayout();
+            this.bTaskBox2.ResumeLayout(false);
+            this.bTaskBox1.ResumeLayout(false);
             this.pnEP1.ResumeLayout(false);
             this.pnEP1.PerformLayout();
+            this.tbSeminfo.ResumeLayout(false);
+            this.tbSeminfo.PerformLayout();
             this.pnEP7.ResumeLayout(false);
             this.pnEP7.PerformLayout();
-            this.xpTaskBoxSimple4.ResumeLayout(false);
-            this.xpTaskBoxSimple4.PerformLayout();
+            this.bTaskBox4.ResumeLayout(false);
+            this.bTaskBox4.PerformLayout();
             this.pnEP2.ResumeLayout(false);
             this.pnEP2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbtraits)).EndInit();
             this.pnEP3.ResumeLayout(false);
             this.pnEP3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnVoyage.ResumeLayout(false);
             this.pnVoyage.PerformLayout();
+            this.pnEP9.ResumeLayout(false);
+            this.pnEP9.PerformLayout();
+            this.tbfemdik.ResumeLayout(false);
+            this.tbfemdik.PerformLayout();
+            this.Various.ResumeLayout(false);
+            this.Various.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbicon)).EndInit();
+            this.Nipples.ResumeLayout(false);
+            this.Nipples.PerformLayout();
+            this.Pubes.ResumeLayout(false);
+            this.Pubes.PerformLayout();
+            this.pnPenis.ResumeLayout(false);
+            this.pnPenis.PerformLayout();
+            this.pnMuffy.ResumeLayout(false);
+            this.pnMuffy.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2877,30 +4327,35 @@ namespace SimPe.PackedFiles.UserInterface
         #endregion
 
         private ToolStrip toolBar1;
-        private ToolStripButton biEP1;
         private ToolStripButton biId;
         private ToolStripButton biRel;
         private ToolStripButton biInt;
         private ToolStripButton biChar;
         private ToolStripButton biSkill;
         private ToolStripButton biMisc;
+        private ToolStripButton biEP1;
+        private ToolStripButton biEP2;
+        private ToolStripButton biEP3;
+        private ToolStripButton biEP6;
+        private ToolStripButton biEP7;
+        private ToolStripButton biEP9;
+        private ToolStripButton biMax;
+        private ToolStripButton biLezby;
+        private ToolStripButton biCareer;
+        private ToolStripButton biMore;
         private System.Windows.Forms.Panel pnId;
-        internal System.Windows.Forms.TextBox tbsimdescfamname;
-        internal System.Windows.Forms.TextBox tbfaminst;
-        private System.Windows.Forms.Label label49;
-        internal System.Windows.Forms.RadioButton rbmale;
-        internal System.Windows.Forms.RadioButton rbfemale;
-        private System.Windows.Forms.Label label48;
-        internal System.Windows.Forms.ComboBox cblifesection;
-        internal System.Windows.Forms.PictureBox pbImage;
-        internal System.Windows.Forms.TextBox tbsimdescname;
-        private System.Windows.Forms.Label label13;
-        internal System.Windows.Forms.TextBox tbsim;
-        internal System.Windows.Forms.TextBox tbage;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel pnCareer;
         private System.Windows.Forms.Panel pnSkill;
+        private System.Windows.Forms.Panel pnChar;
+        private System.Windows.Forms.Panel pnInt;
+        private System.Windows.Forms.Panel pnRel;
+        private System.Windows.Forms.Panel pnMisc;
+        private System.Windows.Forms.Panel pnEP1;
+        private System.Windows.Forms.Panel pnEP2;
+        private System.Windows.Forms.Panel pnEP3;
+        private System.Windows.Forms.Panel pnVoyage;
+        private System.Windows.Forms.Panel pnEP7;
+        private System.Windows.Forms.Panel pnEP9;
         private Ambertation.Windows.Forms.LabeledProgressBar pbRomance;
         private Ambertation.Windows.Forms.LabeledProgressBar pbFat;
         private Ambertation.Windows.Forms.LabeledProgressBar pbClean;
@@ -2910,35 +4365,9 @@ namespace SimPe.PackedFiles.UserInterface
         private Ambertation.Windows.Forms.LabeledProgressBar pbMech;
         private Ambertation.Windows.Forms.LabeledProgressBar pbLogic;
         private Ambertation.Windows.Forms.LabeledProgressBar pbCooking;
-        private ToolStripButton biMax;
-        private System.Windows.Forms.Panel pnChar;
-        private System.Windows.Forms.Panel pnPetChar;
-        internal System.Windows.Forms.ComboBox cbzodiac;
-        private System.Windows.Forms.Label label47;
-        private ToolStripButton biCareer;
-        private System.Windows.Forms.Panel pnCareer;
-        internal System.Windows.Forms.TextBox tbschooltype;
-        private System.Windows.Forms.Label label77;
-        internal System.Windows.Forms.ComboBox cbgrade;
-        internal System.Windows.Forms.ComboBox cbschooltype;
-        private System.Windows.Forms.Label label78;
-        private System.Windows.Forms.Label label50;
-        internal System.Windows.Forms.ComboBox cbcareer;
-        internal System.Windows.Forms.TextBox tbcareervalue;
         private Ambertation.Windows.Forms.LabeledProgressBar pbCareerLevel;
         private Ambertation.Windows.Forms.LabeledProgressBar pbCareerPerformance;
         private Ambertation.Windows.Forms.LabeledProgressBar pbAspBliz;
-        private System.Windows.Forms.Label label60;
-        internal System.Windows.Forms.ComboBox cbaspiration;
-        private Ambertation.Windows.Forms.LabeledProgressBar pbAspCur;
-        private System.Windows.Forms.Label label46;
-        internal System.Windows.Forms.TextBox tblifelinescore;
-        private System.Windows.Forms.Panel pnInt;
-        private System.Windows.Forms.Panel pnRel;
-        private System.Windows.Forms.Panel pnMisc;
-        private System.Windows.Forms.Panel pnEP1;
-        private System.Windows.Forms.Panel pnEP2;
-        private System.Windows.Forms.Panel pnEP7;
         private Ambertation.Windows.Forms.LabeledProgressBar pbPolitics;
         private Ambertation.Windows.Forms.LabeledProgressBar pbMoney;
         private Ambertation.Windows.Forms.LabeledProgressBar pbCulture;
@@ -2969,49 +4398,48 @@ namespace SimPe.PackedFiles.UserInterface
         private Ambertation.Windows.Forms.LabeledProgressBar pbNeat;
         private Ambertation.Windows.Forms.LabeledProgressBar pbWoman;
         private Ambertation.Windows.Forms.LabeledProgressBar pbMan;
-        private System.Windows.Forms.Label label70;
-        private System.Windows.Forms.Label label69;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private Ambertation.Windows.Forms.TransparentCheckBox cbignoretraversal;
-        private Ambertation.Windows.Forms.TransparentCheckBox cbpasspeople;
-        private Ambertation.Windows.Forms.TransparentCheckBox cbpasswalls;
-        private Ambertation.Windows.Forms.TransparentCheckBox cbpassobject;
-        private Ambertation.Windows.Forms.TransparentCheckBox cbisghost;
-        private Ambertation.Windows.Forms.XPTaskBoxSimple xpTaskBoxSimple1;
-        private Ambertation.Windows.Forms.TransparentCheckBox cbfit;
-        private Ambertation.Windows.Forms.TransparentCheckBox cbpreginv;
-        private Ambertation.Windows.Forms.TransparentCheckBox cbpreghalf;
-        private Ambertation.Windows.Forms.TransparentCheckBox cbpregfull;
-        private Ambertation.Windows.Forms.TransparentCheckBox cbfat;
-        private Ambertation.Windows.Forms.XPTaskBoxSimple xpTaskBoxSimple2;
-        private Ambertation.Windows.Forms.XPTaskBoxSimple xpTaskBoxSimple3;
-        private System.Windows.Forms.Label label96;
-        internal System.Windows.Forms.TextBox tbunlinked;
-        private System.Windows.Forms.Label label95;
-        internal System.Windows.Forms.TextBox tbagedur;
-        internal System.Windows.Forms.TextBox tbprevdays;
-        private System.Windows.Forms.Label label94;
-        internal System.Windows.Forms.TextBox tbvoice;
-        private System.Windows.Forms.Label label90;
-        internal System.Windows.Forms.TextBox tbnpc;
-        private System.Windows.Forms.Label label87;
-        internal System.Windows.Forms.TextBox tbautonomy;
-        private System.Windows.Forms.Label label86;
-        private ToolStripButton biMore;
-        internal System.Windows.Forms.TextBox tbinfluence;
-        internal System.Windows.Forms.TextBox tbsemester;
-        internal System.Windows.Forms.Label label103;
-        internal System.Windows.Forms.Label label101;
-        internal Ambertation.Windows.Forms.TransparentCheckBox cboncampus;
-        internal System.Windows.Forms.ComboBox cbmajor;
-        internal System.Windows.Forms.Label label98;
-        internal System.Windows.Forms.TextBox tbmajor;
+        private Ambertation.Windows.Forms.LabeledProgressBar pbAspCur;
         private Ambertation.Windows.Forms.LabeledProgressBar pbLastGrade;
         private Ambertation.Windows.Forms.LabeledProgressBar pbEffort;
         private Ambertation.Windows.Forms.LabeledProgressBar pbUniTime;
-        private ToolStripMenuItem mbiMax;
+        private Ambertation.Windows.Forms.LabeledProgressBar pbPetEating;
+        private Ambertation.Windows.Forms.LabeledProgressBar pbPetOutside;
+        private Ambertation.Windows.Forms.LabeledProgressBar pbPetPlaying;
+        private Ambertation.Windows.Forms.LabeledProgressBar pbPetSpooky;
+        private Ambertation.Windows.Forms.LabeledProgressBar pbPetSleep;
+        private Ambertation.Windows.Forms.LabeledProgressBar pbPetToy;
+        private Ambertation.Windows.Forms.LabeledProgressBar pbPetWeather;
+        private Ambertation.Windows.Forms.LabeledProgressBar pbPetPets;
+        private Ambertation.Windows.Forms.LabeledProgressBar pbPetAnimals;
+        private Ambertation.Windows.Forms.LabeledProgressBar pbhbenth;
+        private Ambertation.Windows.Forms.LabeledProgressBar pbReputate;
+        private Ambertation.Windows.Forms.LabeledProgressBar pbPupbody;
+        private Ambertation.Windows.Forms.LabeledProgressBar pbPupClean;
+        private Ambertation.Windows.Forms.LabeledProgressBar pbPupCreative;
+        private Ambertation.Windows.Forms.LabeledProgressBar pbPupCharisma;
+        private Ambertation.Windows.Forms.LabeledProgressBar pbPupMech;
+        private Ambertation.Windows.Forms.LabeledProgressBar pbPupLogic;
+        private Ambertation.Windows.Forms.LabeledProgressBar pbArty;
+        private Ambertation.Windows.Forms.LabeledProgressBar pbMusic;
+        private Ambertation.Windows.Forms.LabeledProgressBar lpRetirement;
+        private Ambertation.Windows.Forms.XPTaskBoxSimple bTaskBox1;
+        private Ambertation.Windows.Forms.XPTaskBoxSimple bTaskBox2;
+        private Ambertation.Windows.Forms.XPTaskBoxSimple bTaskBox3;
+        private Ambertation.Windows.Forms.XPTaskBoxSimple bTaskBox4;
+        private Ambertation.Windows.Forms.XPTaskBoxSimple srcTb;
+        private Ambertation.Windows.Forms.XPTaskBoxSimple dstTb;
+        private Ambertation.Windows.Forms.XPTaskBoxSimple Pubes;
+        private Ambertation.Windows.Forms.XPTaskBoxSimple Nipples;
+        private Ambertation.Windows.Forms.XPTaskBoxSimple tbfemdik;
+        private Ambertation.Windows.Forms.XPTaskBoxSimple Various;
+        private Ambertation.Windows.Forms.XPTaskBoxSimple tbpersonflags;
+        private Ambertation.Windows.Forms.XPTaskBoxSimple tbSeminfo;
+        private Ambertation.Windows.Forms.XPTaskBoxSimple tbMotiveDec;
+        private System.Windows.Forms.LinkLabel llep3openinfo;
         private ContextMenuStrip mbiLink;
+        private ContextMenuStrip miRel;
+        private ToolStripMenuItem miAddRelation;
+        private ToolStripMenuItem mbiMax;
         private ToolStripMenuItem miRand;
         private ToolStripMenuItem miOpenChar;
         private ToolStripMenuItem miOpenDNA;
@@ -3020,118 +4448,283 @@ namespace SimPe.PackedFiles.UserInterface
         private ToolStripMenuItem miMore;
         private ToolStripMenuItem miRelink;
         private ToolStripMenuItem miOpenWf;
-        private System.Windows.Forms.Label label3;
-        internal System.Windows.Forms.TextBox tbstatmot;
-        private System.Windows.Forms.Panel panel3;
-        private SimPe.PackedFiles.UserInterface.CommonSrel srcRel;
-        private SimPe.PackedFiles.UserInterface.CommonSrel dstRel;
-        private Ambertation.Windows.Forms.XPTaskBoxSimple srcTb;
-        private Ambertation.Windows.Forms.XPTaskBoxSimple dstTb;
-        private ContextMenuStrip miRel;
-        private ToolStripMenuItem miAddRelation;
-        private ToolStripMenuItem miRemRelation;
-        private System.ComponentModel.IContainer components;
-        private ToolStripButton biEP2;
-        private System.Windows.Forms.CheckedListBox lbTraits;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckedListBox lbTurnOn;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckedListBox lbTurnOff;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox tbNTPerfume;
-        private System.Windows.Forms.TextBox tbNTLove;
-        private ToolStripButton biEP3;
-        private System.Windows.Forms.Panel pnEP3;
-        private System.Windows.Forms.TextBox tbEp3Flag;
-        private System.Windows.Forms.TextBox tbEp3Lot;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label11;
-        private Ambertation.Windows.Forms.EnumComboBox cbEp3Asgn;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox tbEp3Salery;
-        private System.Windows.Forms.Label label14;
         private ToolStripMenuItem miOpenMem;
         private ToolStripMenuItem miOpenBadge;
-        private SimPe.PackedFiles.Wrapper.SimBusinessList sblb;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.LinkLabel llep3openinfo;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private ToolStripMenuItem mbiMaxThisRel;
         private ToolStripMenuItem mbiMaxKnownRel;
-        private SimPe.PackedFiles.Wrapper.SimRelationPoolControl lv;
+        private ToolStripMenuItem miOpenSCOR;
+        private ToolStripMenuItem miRemRelation;
         private ToolStripSeparator toolStripMenuItem1;
         private ToolStripSeparator toolStripMenuItem2;
         private ToolStripSeparator toolStripMenuItem3;
-        private Label label16;
-        internal EnumComboBox cbSpecies;
-        private Label label21;
-        private Label label20;
-        private Label label19;
-        private Label label18;
-        private Label label17;
+        private Panel panel1;
+        private Panel panel2;
+        private Panel panel3;
         private Panel pnHumanChar;
+        private Panel pnPetChar;
+        private Panel pnSimInt;
+        private Panel pnPetInt;
+        private Panel pnPenis;
+        private Panel pnMuffy;
+        private TextBox tbNTPerfume;
+        private TextBox tbNTLove;
+        private TextBox tbEp3Flag;
+        private TextBox tbEp3Lot;
+        private TextBox tbEp3Salery;
+        private TextBox tbhdaysleft;
+        private TextBox tbUnlocksUsed;
+        private TextBox tbUnlockPts;
+        private TextBox tbLtAsp;
+        private TextBox tbBugColl;
+        private TextBox tbpension;
+        internal TextBox tbaccholidays;
+        internal TextBox tbsinstance;
+        internal TextBox tb7social;
+        internal TextBox tb7fun;
+        internal TextBox tb7hygiene;
+        internal TextBox tb7energy;
+        internal TextBox tb7bladder;
+        internal TextBox tb7comfort;
+        internal TextBox tb7hunger;
+        internal TextBox tbsimdescfamname;
+        internal TextBox tbfaminst;
+        internal TextBox tbsim;
+        internal TextBox tbage;
+        internal TextBox tbsimdescname;
+        internal TextBox tbschooltype;
+        internal TextBox tbcareervalue;
+        internal TextBox tblifelinescore;
+        internal TextBox tbunlinked;
+        internal TextBox tbagedur;
+        internal TextBox tbprevdays;
+        internal TextBox tbvoice;
+        internal TextBox tbnpc;
+        internal TextBox tbautonomy;
+        internal TextBox tbinfluence;
+        internal TextBox tbsemester;
+        internal TextBox tbmajor;
+        internal TextBox tbstatmot;
+        internal TextBox tbdecScratc;
+        internal TextBox tbdecAmor;
+        internal TextBox tbdecFun;
+        internal TextBox tbdecShop;
+        internal TextBox tbdecSocial;
+        internal TextBox tbdecHygiene;
+        internal TextBox tbdecEnergy;
+        internal TextBox tbdecBladder;
+        internal TextBox tbdecComfort;
+        internal TextBox tbdecHunger;
+        private Label label49;
+        internal RadioButton rbmale;
+        internal RadioButton rbfemale;
+        private Label label48;
+        internal ComboBox cblifesection;
+        internal PictureBox pbImage;
+        private Label label13;
+        private Label label10;
+        private Label label1;
+        private Label label2;
+        internal ComboBox cbzodiac;
+        private Label label47;
+        private Label label77;
+        internal ComboBox cbgrade;
+        internal ComboBox cbschooltype;
+        private Label label78;
+        private Label label50;
+        internal ComboBox cbcareer;
+        private Label label60;
+        internal ComboBox cbaspiration;
+        private Label label46;
+        private Label label70;
+        private Label label69;
+        private CheckBox cbignoretraversal;
+        private CheckBox cbpasspeople;
+        private CheckBox cbpasswalls;
+        private CheckBox cbpassobject;
+        private CheckBox cbisghost;
+        private CheckBox cbfit;
+        private CheckBox cbpreginv;
+        private CheckBox cbpreghalf;
+        private CheckBox cbpregfull;
+        private CheckBox cbfat;
+        private Label label96;
+        private Label label95;
+        private Label label94;
+        private Label label90;
+        private Label label87;
+        private Label label86;
+        internal Label label103;
+        internal Label label101;
+        internal CheckBox cboncampus;
+        internal ComboBox cbmajor;
+        internal Label label98;
+        private Label label3;
+        private SimPe.PackedFiles.Wrapper.SimBusinessList sblb;
+        private SimPe.PackedFiles.Wrapper.SimRelationPoolControl lv;
         private SimPe.PackedFiles.Wrapper.PetTraitSelect ptPigpen;
         private SimPe.PackedFiles.Wrapper.PetTraitSelect ptAggres;
         private SimPe.PackedFiles.Wrapper.PetTraitSelect ptIndep;
         private SimPe.PackedFiles.Wrapper.PetTraitSelect ptHyper;
         private SimPe.PackedFiles.Wrapper.PetTraitSelect ptGifted;
-        private LabeledProgressBar pbPetEating;
-        private LabeledProgressBar pbPetOutside;
-        private LabeledProgressBar pbPetPlaying;
-        private LabeledProgressBar pbPetSpooky;
-        private LabeledProgressBar pbPetSleep;
-        private LabeledProgressBar pbPetToy;
-        private LabeledProgressBar pbPetWeather;
-        private LabeledProgressBar pbPetPets;
-        private LabeledProgressBar pbPetAnimals;
-        private Panel pnSimInt;
-        private Panel pnPetInt;
+        private SimPe.PackedFiles.UserInterface.CommonSrel srcRel;
+        private SimPe.PackedFiles.UserInterface.CommonSrel dstRel;
+        private EnumComboBox cbEp3Asgn;
+        public EnumComboBox cbSpecies;
+        private EnumComboBox cbHobbyPre;
+        private System.ComponentModel.IContainer components;
+        private CheckedListBox lbTraits;
+        private PictureBox pbtraits;
+        private Label label4;
+        private CheckedListBox lbTurnOn;
+        private Label label5;
+        private CheckedListBox lbTurnOff;
+        private Label label6;
+        private Label label7;
+        private Label label8;
+        private Label label9;
+        private Label label11;
+        private Label label12;
+        private Label label14;
+        private Label label15;
+        private Label label16;
+        private Label label21;
+        private Label label20;
+        private Label label19;
+        private Label label18;
+        private Label label17;
         private Label label26;
         private Label label25;
         private Label label24;
         private Label label23;
         private Label label22;
-        private ToolStripMenuItem miOpenSCOR;
-        private ToolStripButton biEP6;
-        private Panel pnVoyage;
-        private TextBox tbhdaysleft;
         private Label label29;
         private Label labelcol;
         private ListView lvCollectibles;
         private ImageList ilCollectibles;
-        private ToolStripButton biEP7;
         private ComboBox cbHobbyEnth;
         private Label label27;
-        private TextBox tbUnlocksUsed;
         private Label label31;
-        private TextBox tbUnlockPts;
         private Label label30;
-        private TextBox tbLtAsp;
         private Label label28;
-        private TextBox tbHobbyPre;
-        private TextBox tbBugColl;
         private Label label32;
-        private XPTaskBoxSimple xpTaskBoxSimple4;
         private Label label33;
-        internal TextBox tb7social;
         private Label label34;
-        internal TextBox tb7fun;
         private Label label35;
-        internal TextBox tb7hygiene;
-        internal TextBox tb7energy;
         private Label label36;
-        internal TextBox tb7bladder;
         private Label label37;
-        internal TextBox tb7comfort;
         private Label label38;
-        internal TextBox tb7hunger;
         private Label label39;
         private Label label40;
-        private EnumComboBox cbHobbyPre;
         private Label label41;
         internal ComboBox cbaspiration2;
-        private LabeledProgressBar pbhbenth;
+        private ComboBox cbBody;
+        private ComboBox cbFaiths;
+        private ComboBox cbDikcolour;
+        private ComboBox cbDikstate;
+        private ComboBox cbBallsize;
+        private ComboBox cbDikgirth;
+        private ComboBox cbDiklength;
+        private Label lbDiklength;
+        private Label lbBallsize;
+        private Label lbDikgirth;
+        private Label lbDikcolour;
+        private Label lbDikstate;
+        private Label lbBodee;
+        private Label labelpubes;
+        private Label labelgenital;
+        private CheckBox cbpubetr;
+        private CheckBox cbpuberd;
+        private CheckBox cbpubebd;
+        private CheckBox cbpubebn;
+        private CheckBox cbpubebk;
+        private CheckBox cbpubesh;
+        private CheckBox cbpubeun;
+        private CheckBox cbpubepy;
+        private CheckBox cbpubesw;
+        private CheckBox cbpubeca;
+        private CheckBox cbpubeal;
+        private CheckBox cbpubegy;
+        private CheckBox cbpubetf;
+        private CheckBox cbnipsgy;
+        private CheckBox cbnipsun;
+        private CheckBox cbnipspy;
+        private CheckBox cbnipssw;
+        private CheckBox cbnipsca;
+        private CheckBox cbnipsna;
+        private CheckBox cbnipssi;
+        private CheckBox cbnipsma;
+        private CheckBox cbnipswi;
+        private CheckBox cbnipsfo;
+        private CheckBox cbnipsit;
+        private Label labelnipple;
+        private Button btpubedic;
+        private Button btProfile;
+        private ToolTip toolTip1;
+        private CheckBox cbhospital;
+        private CheckBox cbonpill;
+        private CheckBox cbmarker;
+        private ComboBox cbSuburbs;
+        private Label lbalcsub;
+        private ComboBox cbservice;
+        private Label lbservice;
+        private Label lbaccholidays;
+        private Label lbsubspec;
+        private Label label42;
+        private Label lbSplitChar;
+        private Label lbFixedRes;
+        private Label lbHousname;
+        private PictureBox pbicon;
+        private Label lbpostTitle;
+        private Label lbReligion;
+        private ComboBox cbpostTitle;
+        private Label lbRetcareer;
+        internal ComboBox cbRetirement;
+        private Label lbpension;
+        private Button btOriGuid;
+        private CheckBox cbpfZomb;
+        private CheckBox cbpfwants;
+        private CheckBox cbpfvsmoke;
+        private CheckBox cbpfvamp;
+        private CheckBox cbpfperma;
+        private CheckBox cbpfBigf;
+        private CheckBox cbpfPlant;
+        private CheckBox cbpfrunaw;
+        private CheckBox cbpflyact;
+        private CheckBox cbpflycar;
+        private CheckBox cbpfwitch;
+        private CheckBox cbpfroomy;
+        private CheckBox cbstaynude;
+        private CheckBox cbisslave;
+        private Label lbVBFriend;
+        private ComboBox cbVBFriend;
+        private Label labelpenis;
+        private CheckBox cbdickless;
+        private CheckBox cbSenior;
+        private CheckBox cbJunior;
+        private CheckBox cbSopho;
+        private CheckBox cbfreshman;
+        private CheckBox cbexpelled;
+        private CheckBox cbdroped;
+        private CheckBox cbatclass;
+        private CheckBox cbgraduate;
+        private CheckBox cbprobation;
+        private CheckBox cbGoodsem;
+        private Label lbFemcolour;
+        private CheckBox cbfembaldy;
+        private CheckBox cbfemsmall;
+        private CheckBox cbfembig;
+        private CheckBox cbfemcirc;
+        private ComboBox cbFemColour;
+        private Label lbfaithinfo;
+        private Label lbdecScratc;
+        private Label lbdecAmor;
+        private Label lbdecFun;
+        private Label lbdecShop;
+        private Label lbdecSocial;
+        private Label lbdecHygiene;
+        private Label lbdecEnergy;
+        private Label lbdecBladder;
+        private Label lbdecComfort;
+        private Label lbdecHunger;
     }
 }

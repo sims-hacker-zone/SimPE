@@ -28,7 +28,7 @@ using SimPe.PackedFiles.Wrapper;
 namespace SimPe.PackedFiles.UserInterface
 {
 	/// <summary>
-	/// Zusammenfassung für ScorUI.
+	/// Summary description for ScorUI.
 	/// </summary>
 	public class ScorUI : 
 		//System.Windows.Forms.UserControl 
@@ -44,13 +44,13 @@ namespace SimPe.PackedFiles.UserInterface
         private Button btRem;
         private ComboBox cbType;
 		/// <summary> 
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
 		public ScorUI()
 		{
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Required designer variable.
 			InitializeComponent();
             btAdd.Enabled = false;
             btRem.Enabled = false;
@@ -62,7 +62,7 @@ namespace SimPe.PackedFiles.UserInterface
 		}
 
 		/// <summary> 
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -76,10 +76,10 @@ namespace SimPe.PackedFiles.UserInterface
 			base.Dispose( disposing );
 		}
 
-		#region Vom Komponenten-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -301,7 +301,7 @@ namespace SimPe.PackedFiles.UserInterface
                     si.Gui.Dock = DockStyle.Fill;
                 }
             }
-            btRem.Enabled = lb.SelectedItem != null && Helper.WindowsRegistry.HiddenMode; ;
+            btRem.Enabled = lb.SelectedItem != null && Helper.WindowsRegistry.HiddenMode;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

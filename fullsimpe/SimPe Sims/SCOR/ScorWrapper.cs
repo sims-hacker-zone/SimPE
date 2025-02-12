@@ -27,7 +27,7 @@ using System.Collections;
 namespace SimPe.PackedFiles.Wrapper
 {
 	/// <summary>
-	/// Zusammenfassung für ScorWrapper.
+	/// Summary description for ScorWrapper.
 	/// </summary>
 	public class Scor
 		: AbstractWrapper				//Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
@@ -83,7 +83,6 @@ namespace SimPe.PackedFiles.Wrapper
 
         protected override string GetResourceName(TypeAlias ta)
         {
-            //if (!SimPe.Custom.Settings.SimNames) return base.GetResourceName(ta);
             ExtSDesc sdsc = FileTable.ProviderRegistry.SimDescriptionProvider.FindSim((ushort)this.FileDescriptor.Instance) as ExtSDesc;
             if (sdsc == null)
                 return base.GetResourceName(ta);

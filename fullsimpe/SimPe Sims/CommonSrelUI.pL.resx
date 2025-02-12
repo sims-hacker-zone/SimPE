@@ -118,92 +118,32 @@
     <value xml:space="preserve">Typ związku:</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="cbbest.Location" type="System.Drawing.Point, System.Drawing">
-    <value>377, 56</value>
-  </data>
-  <data name="cbbest.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 16</value>
-  </data>
   <data name="cbbest.Text">
     <value xml:space="preserve">Znajomość</value>
-  </data>
-  <data name="cbfamily.Location" type="System.Drawing.Point, System.Drawing">
-    <value>377, 72</value>
-  </data>
-  <data name="cbfamily.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 16</value>
   </data>
   <data name="cbfamily.Text">
     <value xml:space="preserve">Rodzina</value>
   </data>
-  <data name="cbmarried.Location" type="System.Drawing.Point, System.Drawing">
-    <value>181, 72</value>
-  </data>
-  <data name="cbmarried.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 16</value>
-  </data>
   <data name="cbmarried.Text">
     <value xml:space="preserve">Małżeństwo</value>
-  </data>
-  <data name="cbengaged.Location" type="System.Drawing.Point, System.Drawing">
-    <value>82, 72</value>
-  </data>
-  <data name="cbengaged.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 16</value>
   </data>
   <data name="cbengaged.Text">
     <value xml:space="preserve">Zaręczony/a</value>
   </data>
-  <data name="cbsteady.Location" type="System.Drawing.Point, System.Drawing">
-    <value>280, 72</value>
-  </data>
-  <data name="cbsteady.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 16</value>
-  </data>
   <data name="cbsteady.Text">
     <value xml:space="preserve">St.sympatia</value>
-  </data>
-  <data name="cblove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 72</value>
-  </data>
-  <data name="cblove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 16</value>
   </data>
   <data name="cblove.Text">
     <value xml:space="preserve">Miłość</value>
   </data>
-  <data name="cbcrush.Location" type="System.Drawing.Point, System.Drawing">
-    <value>280, 56</value>
-  </data>
-  <data name="cbcrush.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 16</value>
-  </data>
   <data name="cbcrush.Text">
     <value xml:space="preserve">Zauroczenie</value>
-  </data>
-  <data name="cbbuddie.Location" type="System.Drawing.Point, System.Drawing">
-    <value>181, 56</value>
-  </data>
-  <data name="cbbuddie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 16</value>
   </data>
   <data name="cbbuddie.Text">
     <value xml:space="preserve">Koleżeństwo</value>
   </data>
-  <data name="cbfriend.Location" type="System.Drawing.Point, System.Drawing">
-    <value>82, 56</value>
-  </data>
-  <data name="cbfriend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 16</value>
-  </data>
   <data name="cbfriend.Text">
     <value xml:space="preserve">Przyjaźń</value>
-  </data>
-  <data name="cbenemy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 56</value>
-  </data>
-  <data name="cbenemy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 16</value>
   </data>
   <data name="cbenemy.Text">
     <value xml:space="preserve">Wróg</value>
@@ -215,13 +155,4 @@
     <value xml:space="preserve">Długotrwały:</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="pbLife.LabelWidth" type="System.Int32, mscorlib">
-    <value>74</value>
-  </data>
-  <data name="pbLife.Location" type="System.Drawing.Point, System.Drawing">
-    <value>236, 0</value>
-  </data>
-  <data name="pbLife.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 20</value>
-  </data>
 </root>

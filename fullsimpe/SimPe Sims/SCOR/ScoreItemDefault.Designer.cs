@@ -30,6 +30,7 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
             this.tb.Multiline = true;
             this.tb.Name = "tb";
             this.tb.ReadOnly = true;
+            this.tb.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tb.Size = new System.Drawing.Size(261, 130);
             this.tb.TabIndex = 1;
             // 

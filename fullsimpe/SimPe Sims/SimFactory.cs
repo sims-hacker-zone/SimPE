@@ -33,11 +33,18 @@ namespace SimPe.PackedFiles.Wrapper.Factory
 		public override SimPe.Interfaces.IWrapper[] KnownWrappers
 		{
 			get 
-			{				
-				if (Helper.StartedGui == Executable.Classic) 
+			{
+                if (Helper.NoPlugins) 
 				{
 					return new IWrapper[0];
-				} 
+                }
+                else if (Helper.StartedGui == Executable.Classic)
+                {
+                    IWrapper[] wrappers = {
+											  new SimPe.PackedFiles.Wrapper.LinkedSDesc(),
+										  };
+                    return wrappers;
+                } 
 				else 
 				{
 					IWrapper[] wrappers = {

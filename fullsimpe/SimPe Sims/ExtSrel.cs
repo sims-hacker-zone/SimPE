@@ -27,7 +27,7 @@ using System.Drawing;
 namespace SimPe.PackedFiles.Wrapper
 {
 	/// <summary>
-	/// Zusammenfassung für ExtSDesc.
+	/// Summary description for ExtSDesc.
 	/// </summary>
 	public class ExtSrel : SRel, SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper
 	{
@@ -146,7 +146,14 @@ namespace SimPe.PackedFiles.Wrapper
 					if (SourceSim.Image!=null)
 						if (SourceSim.Image.Width>8)
 							isrc = SourceSim.Image;
-				if (isrc==null) isrc = Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.PackedFiles.Wrapper.noone.png"));
+                if (isrc == null)
+                {
+                    if (SourceSim != null)
+                    {
+                        isrc = SimPe.GetImage.NoOne;
+                    }
+                    else isrc = SimPe.GetImage.NoOne;
+                }
 				else isrc = Ambertation.Drawing.GraphicRoutines.KnockoutImage(isrc, new Point(0,0), Color.Magenta);
 
 				Image idst = null;
@@ -154,7 +161,14 @@ namespace SimPe.PackedFiles.Wrapper
 					if (TargetSim.Image!=null) 
 						if (TargetSim.Image.Width>8)
 							idst = TargetSim.Image;
-				if (idst==null) idst = Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.PackedFiles.Wrapper.noone.png"));
+                if (idst == null)
+                {
+                    if (TargetSim != null)
+                    {
+                        idst = SimPe.GetImage.NoOne;
+                    }
+                    else idst = SimPe.GetImage.NoOne;
+                }
 				else idst = Ambertation.Drawing.GraphicRoutines.KnockoutImage(idst, new Point(0,0), Color.Magenta);
 
 				const int offsety = 32;

@@ -27,7 +27,7 @@ using SimPe.PackedFiles.Wrapper;
 namespace SimPe.PackedFiles.UserInterface
 {
 	/// <summary>
-	/// Zusammenfassung für FamilyTiesForm.
+	/// Summary description for FamilyTiesForm.
 	/// </summary>
 	public class FamilyTiesForm : System.Windows.Forms.Form
     {
@@ -36,28 +36,19 @@ namespace SimPe.PackedFiles.UserInterface
 		public FamilyTiesForm()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
-
-			ThemeManager tc = SimPe.ThemeManager.Global.CreateChild();
-			tc.AddControl(this.pnfamt);
-			tc.AddControl(this.panel2);
-			tc.AddControl(this.pool);
-			tc.AddControl(this.xpGradientPanel1);
-			tc.AddControl(this.miAddTie);
 
 			ties.Parent = null;
 			ties.Parent = this.panel1;
 
 			this.cbrel.Enum = typeof(Data.MetaData.FamilyTieTypes);
 			this.cbrel.ResourceManager = Localization.Manager;
-			//Data.MetaData.FamilyTieTypes[] ns = (Data.MetaData.FamilyTieTypes[])System.Enum.GetValues(typeof(Data.MetaData.FamilyTieTypes));
-			//foreach (Data.MetaData.FamilyTieTypes n in ns) this.cbrel.Items.Add((Data.LocalizedFamilyTieTypes)n);
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -71,10 +62,10 @@ namespace SimPe.PackedFiles.UserInterface
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -113,49 +104,38 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             // pnfamt
             // 
-            this.pnfamt.AccessibleDescription = null;
-            this.pnfamt.AccessibleName = null;
-            resources.ApplyResources(this.pnfamt, "pnfamt");
             this.pnfamt.BackColor = System.Drawing.SystemColors.Control;
             this.pnfamt.BackgroundImage = null;
             this.pnfamt.Controls.Add(this.panel1);
             this.pnfamt.Controls.Add(this.panel4);
             this.pnfamt.Controls.Add(this.panel3);
             this.pnfamt.Controls.Add(this.panel2);
-            this.pnfamt.Font = null;
+            resources.ApplyResources(this.pnfamt, "pnfamt");
             this.pnfamt.Name = "pnfamt";
             // 
             // panel1
             // 
-            this.panel1.AccessibleDescription = null;
-            this.panel1.AccessibleName = null;
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel1.BackgroundImage = null;
             this.panel1.Controls.Add(this.ties);
-            this.panel1.Font = null;
             this.panel1.Name = "panel1";
             // 
             // ties
             // 
-            this.ties.AccessibleDescription = null;
-            this.ties.AccessibleName = null;
             resources.ApplyResources(this.ties, "ties");
             this.ties.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ties.BackgroundImage = null;
-            this.ties.Font = null;
             this.ties.LineMode = Ambertation.Windows.Forms.Graph.LinkControlLineMode.Bezier;
             this.ties.LockItems = false;
-            this.ties.MinHeight = 296;
-            this.ties.MinWidth = 520;
+            this.ties.MinHeight = 344;
+            this.ties.MinWidth = 720;
             this.ties.Name = "ties";
             this.ties.Quality = true;
             this.ties.SaveBounds = true;
             this.ties.SelectedElement = null;
-            this.ties.DoubleClickSim += new SimPe.PackedFiles.Wrapper.SimPoolControl.SelectedSimHandler(this.ties_DoubleClickSim);
             this.ties.SelectedSimChanged += new SimPe.PackedFiles.Wrapper.SimPoolControl.SelectedSimHandler(this.ties_SelectedSimChanged);
+            this.ties.DoubleClickSim += new SimPe.PackedFiles.Wrapper.SimPoolControl.SelectedSimHandler(this.ties_DoubleClickSim);
             // 
-            // panel4
+            // panel3
             // 
             this.panel4.AccessibleDescription = null;
             this.panel4.AccessibleName = null;
@@ -169,11 +149,8 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             // cbLock
             // 
-            this.cbLock.AccessibleDescription = null;
-            this.cbLock.AccessibleName = null;
             resources.ApplyResources(this.cbLock, "cbLock");
             this.cbLock.BackColor = System.Drawing.Color.Transparent;
-            this.cbLock.BackgroundImage = null;
             this.cbLock.Name = "cbLock";
             this.cbLock.UseVisualStyleBackColor = false;
             // 
@@ -216,8 +193,6 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             // xpLine1
             // 
-            this.xpLine1.AccessibleDescription = null;
-            this.xpLine1.AccessibleName = null;
             resources.ApplyResources(this.xpLine1, "xpLine1");
             this.xpLine1.BackColor = System.Drawing.Color.Transparent;
             this.xpLine1.BackgroundImage = null;
@@ -238,11 +213,8 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             // cbkeep
             // 
-            this.cbkeep.AccessibleDescription = null;
-            this.cbkeep.AccessibleName = null;
             resources.ApplyResources(this.cbkeep, "cbkeep");
             this.cbkeep.BackColor = System.Drawing.Color.Transparent;
-            this.cbkeep.BackgroundImage = null;
             this.cbkeep.Checked = true;
             this.cbkeep.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbkeep.Name = "cbkeep";
@@ -250,12 +222,9 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             // cbrel
             // 
-            this.cbrel.AccessibleDescription = null;
-            this.cbrel.AccessibleName = null;
-            resources.ApplyResources(this.cbrel, "cbrel");
-            this.cbrel.BackgroundImage = null;
             this.cbrel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbrel.Enum = null;
+            resources.ApplyResources(this.cbrel, "cbrel");
             this.cbrel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.cbrel.Name = "cbrel";
             this.cbrel.ResourceManager = null;
@@ -263,57 +232,41 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             // llrem
             // 
-            this.llrem.AccessibleDescription = null;
-            this.llrem.AccessibleName = null;
-            resources.ApplyResources(this.llrem, "llrem");
             this.llrem.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.llrem, "llrem");
             this.llrem.Name = "llrem";
             this.llrem.TabStop = true;
             this.llrem.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llrem_LinkClicked);
             // 
             // label3
             // 
-            this.label3.AccessibleDescription = null;
-            this.label3.AccessibleName = null;
-            resources.ApplyResources(this.label3, "label3");
             this.label3.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
             // lbname
             // 
-            this.lbname.AccessibleDescription = null;
-            this.lbname.AccessibleName = null;
             resources.ApplyResources(this.lbname, "lbname");
             this.lbname.BackColor = System.Drawing.Color.Transparent;
             this.lbname.Name = "lbname";
             // 
             // label2
             // 
-            this.label2.AccessibleDescription = null;
-            this.label2.AccessibleName = null;
-            resources.ApplyResources(this.label2, "label2");
             this.label2.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
             // panel2
             // 
-            this.panel2.AccessibleDescription = null;
-            this.panel2.AccessibleName = null;
-            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.BackColor = System.Drawing.SystemColors.Info;
-            this.panel2.BackgroundImage = null;
             this.panel2.Controls.Add(this.pool);
-            this.panel2.Font = null;
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
             // pool
             // 
-            this.pool.AccessibleDescription = null;
-            this.pool.AccessibleName = null;
-            resources.ApplyResources(this.pool, "pool");
-            this.pool.BackColor = System.Drawing.SystemColors.Info;
-            this.pool.BackgroundImage = null;
             this.pool.ContextMenuStrip = this.miTies;
+            resources.ApplyResources(this.pool, "pool");
             this.pool.Name = "pool";
             this.pool.Package = null;
             this.pool.RightClickSelect = false;
@@ -327,62 +280,44 @@ namespace SimPe.PackedFiles.UserInterface
             // 
             // miTies
             // 
-            this.miTies.AccessibleDescription = null;
-            this.miTies.AccessibleName = null;
-            resources.ApplyResources(this.miTies, "miTies");
-            this.miTies.BackgroundImage = null;
-            this.miTies.Font = null;
             this.miTies.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miAddTie,
             this.miOpenSdesc});
             this.miTies.Name = "miTies";
+            resources.ApplyResources(this.miTies, "miTies");
             this.miTies.VisibleChanged += new System.EventHandler(this.miAddTie_BeforePopup);
             // 
             // miAddTie
             // 
-            this.miAddTie.AccessibleDescription = null;
-            this.miAddTie.AccessibleName = null;
-            resources.ApplyResources(this.miAddTie, "miAddTie");
-            this.miAddTie.BackgroundImage = null;
             this.miAddTie.Name = "miAddTie";
-            this.miAddTie.ShortcutKeyDisplayString = null;
+            resources.ApplyResources(this.miAddTie, "miAddTie");
             this.miAddTie.Tag = "\"{name}\" in die Familie von \"{gname}\" aufnehmen";
             this.miAddTie.Click += new System.EventHandler(this.Activate_miAddTie);
             // 
             // miOpenSdesc
             // 
-            this.miOpenSdesc.AccessibleDescription = null;
-            this.miOpenSdesc.AccessibleName = null;
             resources.ApplyResources(this.miOpenSdesc, "miOpenSdesc");
-            this.miOpenSdesc.BackgroundImage = null;
             this.miOpenSdesc.Name = "miOpenSdesc";
-            this.miOpenSdesc.ShortcutKeyDisplayString = null;
             this.miOpenSdesc.Click += new System.EventHandler(this.Activate_miOpenSDesc);
             // 
             // label12
             // 
-            this.label12.AccessibleDescription = null;
-            this.label12.AccessibleName = null;
             resources.ApplyResources(this.label12, "label12");
-            this.label12.Font = null;
             this.label12.Name = "label12";
             // 
             // FamilyTiesForm
             // 
-            this.AccessibleDescription = null;
-            this.AccessibleName = null;
             resources.ApplyResources(this, "$this");
-            this.BackgroundImage = null;
             this.Controls.Add(this.pnfamt);
-            this.Font = null;
-            this.Icon = null;
             this.Name = "FamilyTiesForm";
             this.pnfamt.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.xpGradientPanel1.ResumeLayout(false);
+            this.GradientPanel.ResumeLayout(false);
+            this.GradientPanel.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.miTies.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -418,6 +353,8 @@ namespace SimPe.PackedFiles.UserInterface
         private ToolStripMenuItem miOpenSdesc;
 		private SteepValley.Windows.Forms.XPLine xpLine1;
         internal CheckBox cbLock;
+        private Label labelnid;
+        private Label labelidd;
 		Image thumb;
 		internal void pool_SelectedSimChanged(object sender, System.Drawing.Image thumb, SimPe.PackedFiles.Wrapper.SDesc sdesc)
 		{
@@ -479,12 +416,13 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ties_SelectedSimChanged(object sender, System.Drawing.Image thumb, SimPe.PackedFiles.Wrapper.SDesc sdesc)
 		{
 			
-			if (sdesc!=null) 
+			if (sdesc!=null)
 			{
 				cbrel.Tag = null;
 				this.lbname.Text = sdesc.SimName+" "+sdesc.SimFamilyName;
-				cbrel.Enabled = (sdesc!=currentsdsc);
-				if (cbrel.Enabled) 
+                this.labelidd.Text = "0x" + Helper.HexString(sdesc.Instance);
+                cbrel.Enabled = (sdesc != currentsdsc);
+				if (cbrel.Enabled)
 				{
 					SimPe.PackedFiles.Wrapper.Supporting.FamilyTieSim fts = wrapper.FindTies(currentsdsc);
 					SimPe.PackedFiles.Wrapper.Supporting.FamilyTieItem fti = fts.FindTie(sdesc);
@@ -494,11 +432,11 @@ namespace SimPe.PackedFiles.UserInterface
 			} 
 			else 
 			{
-				
 				cbrel.Enabled = (ties.SelectedElement!=null);
-				if (!cbrel.Enabled) 
+				if (!cbrel.Enabled)
 				{
 					lbname.Text = "";
+                    labelidd.Text = "";
 					cbrel.Tag = null;
 				}
 			}

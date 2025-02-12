@@ -58,82 +58,81 @@ namespace SimPe.PackedFiles.Wrapper
 			this.BeginUpdate();
 			if (Parent!=null) 
 			{
-				this.Width = Parent.ClientRectangle.Width;
-				this.Height = Parent.ClientRectangle.Height;
+				this.Width = this.Parent.Width;
+				this.Height = this.Parent.Height - 24;
 			}
 			bool run = WaitingScreen.Running;
 			WaitingScreen.Wait();
-            try
-            {
-                this.SaveBounds = false;
-                this.AutoSize = true;
-                this.Clear();
-                baseip = null;
+			try
+			{
+				this.SaveBounds = false;
+				this.AutoSize = true;
+				this.Clear();
+				baseip = null;
 
-                if (famt == null || sdsc == null)
-                {
-                    this.EndUpdate();
-                    if (!run) WaitingScreen.Stop();
-                    return;
-                }
+				if (famt == null || sdsc == null)
+				{
+					this.EndUpdate();
+					if (!run) WaitingScreen.Stop();
+					return;
+				}
 
-                FamilyTieSim tie = famt.FindTies(sdsc);
-                Wrapper.SDesc[] parents = famt.ParentSims(sdsc);
-                Wrapper.SDesc[] siblings = famt.SiblingSims(sdsc);
-                Wrapper.SDesc[] childs = famt.ChildSims(sdsc);
+				FamilyTieSim tie = famt.FindTies(sdsc);
+				Wrapper.SDesc[] parents = famt.ParentSims(sdsc);
+				Wrapper.SDesc[] siblings = famt.SiblingSims(sdsc);
+				Wrapper.SDesc[] childs = famt.ChildSims(sdsc);
 
-                int maxct = parents.Length + siblings.Length + childs.Length;
-                if (maxct < 4)
-                {
-                    this.LinearUpdateGraph(sdsc, famt);
-                    if (!run) WaitingScreen.Stop();
-                    return;
-                }
+				int maxct = parents.Length + siblings.Length + childs.Length;
+				if (maxct < 4)
+				{
+					this.LinearUpdateGraph(sdsc, famt);
+					if (!run) WaitingScreen.Stop();
+					return;
+				}
 
-                double r = GraphPanel.GetPinCircleRadius(this.ItemSize, this.ItemSize, maxct);
-                Point center = new Point(
-                    Math.Max(Width / 2, (int)r + 16 + ItemSize.Width / 2),
-                    Math.Max(Height / 2, (int)r + ItemSize.Height / 2)
-                    );
+				double r = GraphPanel.GetPinCircleRadius(this.ItemSize, this.ItemSize, maxct);
+				Point center = new Point(
+					Math.Max(this.Width / 2, (int)r + 16 + ItemSize.Width / 2),
+					Math.Max(this.Height / 2, (int)r + ItemSize.Height / 2)
+					);
+				baseip = CreateItem(sdsc, 0, 0);
+				baseip.Location = GraphPanel.GetCenterLocationOnPinCircle(center, r, ItemSize);
+				baseip.Parent = this;
+				this.SelectedElement = baseip;
+				baseip.PanelColor = Color.Black;
+				baseip.ForeColor = Color.White;
+				baseip.EndUpdate();
 
-                baseip = CreateItem(sdsc, 0, 0);
-                baseip.Location = GraphPanel.GetCenterLocationOnPinCircle(center, r, ItemSize);
-                baseip.Parent = this;
-                this.SelectedElement = baseip;
-                baseip.PanelColor = Color.Black;
-                baseip.ForeColor = Color.White;
-                baseip.EndUpdate();
+				int ct = 0;
 
-                int ct = 0;
+				if (tie != null)
+				{
+					foreach (SDesc s in childs)
+					{
+						ImagePanel ip = AddTieToGraph(s, 0, 0, tie.FindTie(s).Type, false);
+						ip.Location = GraphPanel.GetItemLocationOnPinCricle(center, r, ct++, maxct, ItemSize);
+						ip.EndUpdate();
+					}
 
-                if (tie != null)
-                {
-                    foreach (SDesc s in childs)
-                    {
-                        ImagePanel ip = AddTieToGraph(s, 0, 0, tie.FindTie(s).Type, false);
-                        ip.Location = GraphPanel.GetItemLocationOnPinCricle(center, r, ct++, maxct, ItemSize);
-                        ip.EndUpdate();
-                    }
+					foreach (SDesc s in siblings)
+					{
+						ImagePanel ip = AddTieToGraph(s, 0, 0, tie.FindTie(s).Type, false);
+						ip.Location = GraphPanel.GetItemLocationOnPinCricle(center, r, ct++, maxct, ItemSize);
+						ip.EndUpdate();
+					}
 
-                    foreach (SDesc s in siblings)
-                    {
-                        ImagePanel ip = AddTieToGraph(s, 0, 0, tie.FindTie(s).Type, false);
-                        ip.Location = GraphPanel.GetItemLocationOnPinCricle(center, r, ct++, maxct, ItemSize);
-                        ip.EndUpdate();
-                    }
-
-                    foreach (SDesc s in parents)
-                    {
-                        ImagePanel ip = AddTieToGraph(s, 0, 0, tie.FindTie(s).Type, false);
-                        ip.Location = GraphPanel.GetItemLocationOnPinCricle(center, r, ct++, maxct, ItemSize);
-                        ip.EndUpdate();
-                    }
-                }
+					foreach (SDesc s in parents)
+					{
+						ImagePanel ip = AddTieToGraph(s, 0, 0, tie.FindTie(s).Type, false);
+						ip.Location = GraphPanel.GetItemLocationOnPinCricle(center, r, ct++, maxct, ItemSize);
+						ip.EndUpdate();
+					}
+				}
 
 
-                this.EndUpdate();
-            }
-            finally { if (!run) WaitingScreen.Stop(); }
+				this.EndUpdate();
+			}
+			finally { if (!run) WaitingScreen.Stop(); }
 		}
 
 		public void LinearUpdateGraph(Wrapper.SDesc sdsc, Wrapper.ExtFamilyTies famt)
@@ -162,7 +161,6 @@ namespace SimPe.PackedFiles.Wrapper
 			int maxw = Math.Max(Math.Max(prect.Width, srect.Width), crect.Width);
 			int top = prect.Height + (srect.Height-ItemSize.Height) /2;
 			int left = (maxw - ItemSize.Width)/2+32;
-			
 
 			baseip = CreateItem(sdsc, left, top);
 			baseip.Parent = this;
@@ -193,7 +191,7 @@ namespace SimPe.PackedFiles.Wrapper
 					if (ct==siblings.Length/2 || siblings.Length==1) 
 					{
 						left += 70;
-						baseip.SetBounds(left, top+24, baseip.Width, baseip.Height);
+						baseip.SetBounds(left, top + 24, baseip.Width, baseip.Height);
 						left += ip.Width+94;				
 					}
 					else if (ct>siblings.Length/2) top -= 4;
@@ -242,7 +240,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			ImagePanel eip = new ImagePanel();
 			eip.BeginUpdate();
-			eip.SetBounds(left, top, this.ItemSize.Width, this.ItemSize.Height);
+			eip.SetBounds(left, top + 24, this.ItemSize.Width, this.ItemSize.Height); // add 24 to the top for the panelheader
 			SimPoolControl.CreateItem(eip, sdesc);
 
 			eip.GotFocus += new EventHandler(eip_GotFocus);

@@ -27,20 +27,20 @@ using System.Windows.Forms;
 namespace SimPe.PackedFiles.Wrapper
 {
 	/// <summary>
-	/// Zusammenfassung für SimComboBox.
+	/// Summary description for SimComboBox.
 	/// </summary>
 	[System.ComponentModel.DefaultEvent("SelectedSimChanged")]
 	public class SimComboBox : System.Windows.Forms.UserControl
 	{
-		private Ambertation.Windows.Forms.FlatComboBox cb;
+		private System.Windows.Forms.ComboBox cb;
 		/// <summary> 
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
 		public SimComboBox()
 		{
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Required designer variable.
 			InitializeComponent();
 
 			cb.Sorted = true;
@@ -54,7 +54,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		/// <summary> 
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -69,26 +69,26 @@ namespace SimPe.PackedFiles.Wrapper
 			base.Dispose( disposing );
 		}
 
-		#region Vom Komponenten-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.cb = new Ambertation.Windows.Forms.FlatComboBox();
+			this.cb = new System.Windows.Forms.ComboBox();
 			this.SuspendLayout();
 			// 
 			// cb
 			// 
 			this.cb.Dock = System.Windows.Forms.DockStyle.Top;
-			this.cb.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.cb.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cb.Location = new System.Drawing.Point(0, 0);
 			this.cb.Name = "cb";
 			this.cb.Size = new System.Drawing.Size(150, 21);
 			this.cb.TabIndex = 0;
-			this.cb.TextChanged += new System.EventHandler(this.cb_TextChanged);
 			this.cb.SelectedIndexChanged += new System.EventHandler(this.cb_SelectedIndexChanged);
+			this.cb.TextChanged += new System.EventHandler(this.cb_TextChanged);
 			// 
 			// SimComboBox
 			// 

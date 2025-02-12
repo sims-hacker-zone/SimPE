@@ -120,21 +120,8 @@
   <data name="pbVal.LabelText" xml:space="preserve">
     <value>Значение:</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="llAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>347, 24</value>
-  </data>
-  <data name="llAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 13</value>
-  </data>
   <data name="llAdd.Text" xml:space="preserve">
     <value>Создать новый</value>
-  </data>
-  <data name="llRemove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>446, 24</value>
-  </data>
-  <data name="llRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 13</value>
   </data>
   <data name="llRemove.Text" xml:space="preserve">
     <value>Удалить</value>

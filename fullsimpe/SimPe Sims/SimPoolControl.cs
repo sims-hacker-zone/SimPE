@@ -38,7 +38,6 @@ namespace SimPe.PackedFiles.Wrapper
             details = false;
             rightclicksel = false;
 			InitializeComponent();
-            
 		}
 
 		protected SimListView gp;
@@ -47,7 +46,7 @@ namespace SimPe.PackedFiles.Wrapper
 		private System.Windows.Forms.ColumnHeader columnHeader3;
 		private System.Windows.Forms.ColumnHeader columnHeader4;
 		private System.Windows.Forms.ColumnHeader chHouse;
-        protected Ambertation.Windows.Forms.FlatComboBox cbhousehold;
+        internal System.Windows.Forms.ComboBox cbhousehold;
         private System.ComponentModel.IContainer components;
 
 		public SimPe.PackedFiles.Wrapper.SDesc SelectedElement
@@ -244,7 +243,6 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 
             SetViewMode();
-            
 
 			if (gp.Items.Count>0) 
 			{
@@ -287,11 +285,26 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public static System.Drawing.Color GetImagePanelColor(SDesc sdesc)
 		{
-			if (sdesc.Unlinked!=0) 
-				return System.Drawing.Color.DarkBlue;
-			else if (!sdesc.AvailableCharacterData)
-				return System.Drawing.Color.DarkRed;
-			return System.Drawing.SystemColors.ControlDarkDark;//System.Drawing.Color.Black;
+            if (sdesc.Unlinked != 0)
+            {
+                if (!sdesc.AvailableCharacterData)
+                    return System.Drawing.Color.FromArgb(72,0,72);
+                else
+                    return System.Drawing.Color.DarkBlue;
+            }
+            else if (!sdesc.AvailableCharacterData && !sdesc.IsCharSplit)
+                return System.Drawing.Color.DarkRed;
+            else if (System.IO.Path.GetFileNameWithoutExtension(sdesc.CharacterFileName) == "objects")
+                return System.Drawing.Color.DarkGoldenrod;
+            else if (sdesc.CharacterDescription.GhostFlag.IsGhost && sdesc.FamilyInstance == 0)
+                return System.Drawing.Color.Black;
+            else if (Helper.WindowsRegistry.ThemedForms && sdesc.Nightlife.Species == 0)
+            {
+                if (sdesc.CharacterDescription.Gender == Data.MetaData.Gender.Female)
+                    return System.Drawing.Color.FromArgb(160, 90, 144);
+                else return System.Drawing.Color.FromArgb(70, 124, 140);
+            }
+			return System.Drawing.SystemColors.ControlDarkDark;
 		}
 
 		internal static void CreateItem(ImagePanel eip, SDesc sdesc)
@@ -307,21 +320,23 @@ namespace SimPe.PackedFiles.Wrapper
 				
 				System.Drawing.Image img = sdesc.Image;
 				if (img.Width<8) img=null;
-				if (img==null) img = System.Drawing.Image.FromStream(typeof(SimPoolControl).Assembly.GetManifestResourceStream("SimPe.PackedFiles.Wrapper.noone.png"));
-				else if (Helper.WindowsRegistry.GraphQuality) img = Ambertation.Drawing.GraphicRoutines.KnockoutImage(img, new System.Drawing.Point(0,0), System.Drawing.Color.Magenta);					
+                if (img == null)
+                {
+                    img = SimPe.GetImage.NoOne;
+                }
+                else if (Helper.WindowsRegistry.GraphQuality) img = Ambertation.Drawing.GraphicRoutines.KnockoutImage(img, new System.Drawing.Point(0, 0), System.Drawing.Color.Magenta);					
 				
 				eip.Image = Ambertation.Drawing.GraphicRoutines.ScaleImage(img, 48, 48, Helper.WindowsRegistry.GraphQuality);
 
 				eip.ImagePanelColor = GetImagePanelColor(sdesc);				
-			} 
+			}
 			catch {	}
-
-			
-			
+			/*
 			if (sdesc.CharacterDescription.Gender==Data.MetaData.Gender.Female)
 				eip.PanelColor = System.Drawing.Color.LightPink;
 			else
 				eip.PanelColor = System.Drawing.Color.PowderBlue;
+            */
 		}
 
 		public static ExtendedImagePanel CreateItem(Wrapper.SDesc sdesc)
@@ -345,7 +360,7 @@ namespace SimPe.PackedFiles.Wrapper
 			try 
 			{
 				eip.Properties["GUID"].Value = "0x"+Helper.HexString(sdesc.SimId);
-				eip.Properties["Instance"].Value = "0x"+Helper.HexString(sdesc.FileDescriptor.Instance);
+                eip.Properties["Instance"].Value = "0x" + Helper.HexString(sdesc.FileDescriptor.Instance);
 				eip.Properties["Household"].Value = sdesc.HouseholdName;
 				/*eip.Properties["Life Stage"].Value = ((Data.LocalizedLifeSections)sdesc.CharacterDescription.LifeSection).ToString();
 				eip.Properties["Career"].Value = ((Data.LocalizedCareers)sdesc.CharacterDescription.Career).ToString();
@@ -357,8 +372,6 @@ namespace SimPe.PackedFiles.Wrapper
 				eip.Properties["Error"].Value = ex.Message;
 			}
 
-			
-			
 			CreateItem(eip, sdesc);
 		}
 
@@ -367,9 +380,7 @@ namespace SimPe.PackedFiles.Wrapper
 			ExtendedImagePanel eip = new ExtendedImagePanel();
 			eip.BeginUpdate();
 			eip.SetBounds(left, top, 216, 80);
-			
-
-			Wrapper.SDesc sdesc = new SDesc();			
+            Wrapper.SDesc sdesc = new SDesc();			
 			try 
 			{
 				sdesc.ProcessData(pfd, pkg);
@@ -380,11 +391,6 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				eip.Properties["Error"].Value = ex.Message;
 			}
-
-			//eip.GotFocus += new EventHandler(eip_GotFocus);
-			//eip.MouseDown += new System.Windows.Forms.MouseEventHandler(eip_MouseDown);
-			//eip.DoubleClick += new EventHandler(eip_DoubleClick);
-			
 			return eip;
 		}
 
@@ -445,10 +451,10 @@ namespace SimPe.PackedFiles.Wrapper
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SimPoolControl));
             SteepValley.Windows.Forms.XPListViewGroup xpListViewGroup1 = new SteepValley.Windows.Forms.XPListViewGroup("Unrelated", 0);
             SteepValley.Windows.Forms.XPListViewGroup xpListViewGroup2 = new SteepValley.Windows.Forms.XPListViewGroup("Related", 1);
-            this.cbhousehold = new Ambertation.Windows.Forms.FlatComboBox();
+            this.cbhousehold = new System.Windows.Forms.ComboBox();
             this.gp = new SimPe.PackedFiles.Wrapper.SimListView();
-            this.chHouse = new System.Windows.Forms.ColumnHeader();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.chHouse = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
@@ -487,17 +493,17 @@ namespace SimPe.PackedFiles.Wrapper
             this.gp.TileColumns = new int[] {
         1};
             this.gp.UseCompatibleStateImageBehavior = false;
-            this.gp.DoubleClick += new System.EventHandler(this.gp_DoubleClick);
             this.gp.SelectedIndexChanged += new System.EventHandler(this.gp_SelectedIndexChanged);
+            this.gp.DoubleClick += new System.EventHandler(this.gp_DoubleClick);
             this.gp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gp_MouseDown);
-            // 
-            // chHouse
-            // 
-            resources.ApplyResources(this.chHouse, "chHouse");
             // 
             // columnHeader1
             // 
             resources.ApplyResources(this.columnHeader1, "columnHeader1");
+            // 
+            // chHouse
+            // 
+            resources.ApplyResources(this.chHouse, "chHouse");
             // 
             // columnHeader2
             // 

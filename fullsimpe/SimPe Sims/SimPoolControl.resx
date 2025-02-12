@@ -121,16 +121,19 @@
   <data name="cbhousehold.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cbhousehold.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 9.75pt</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cbhousehold.ItemHeight" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>16</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cbhousehold.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 1</value>
   </data>
   <data name="cbhousehold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>502, 21</value>
+    <value>502, 24</value>
   </data>
   <data name="cbhousehold.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -139,7 +142,7 @@
     <value>cbhousehold</value>
   </data>
   <data name="&gt;&gt;cbhousehold.Type" xml:space="preserve">
-    <value>TD.SandBar.FlatComboBox, SandBar, Version=1.3.0.1, Culture=neutral, PublicKeyToken=75b7ec17dd7c14c3</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbhousehold.Parent" xml:space="preserve">
     <value>$this</value>
@@ -166,10 +169,10 @@
     <value>Fill</value>
   </data>
   <data name="gp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 25</value>
   </data>
   <data name="gp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>502, 353</value>
+    <value>502, 350</value>
   </data>
   <data name="gp.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -178,7 +181,7 @@
     <value>gp</value>
   </data>
   <data name="&gt;&gt;gp.Type" xml:space="preserve">
-    <value>SimPe.PackedFiles.Wrapper.SimListView, simpe.sims, Version=1.0.2352.23827, Culture=neutral, PublicKeyToken=null</value>
+    <value>SimPe.PackedFiles.Wrapper.SimListView, simpe.sims, Version=1.69.8455.31299, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;gp.Parent" xml:space="preserve">
     <value>$this</value>
@@ -198,16 +201,16 @@
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>504, 376</value>
   </data>
-  <data name="&gt;&gt;chHouse.Name" xml:space="preserve">
-    <value>chHouse</value>
-  </data>
-  <data name="&gt;&gt;chHouse.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;columnHeader1.Name" xml:space="preserve">
     <value>columnHeader1</value>
   </data>
   <data name="&gt;&gt;columnHeader1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chHouse.Name" xml:space="preserve">
+    <value>chHouse</value>
+  </data>
+  <data name="&gt;&gt;chHouse.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;columnHeader2.Name" xml:space="preserve">

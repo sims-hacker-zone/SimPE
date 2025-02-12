@@ -118,98 +118,35 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label91.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 31</value>
-  </data>
   <data name="label91.Text" xml:space="preserve">
     <value>Type de relation :</value>
-  </data>
-  <data name="label91.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopRight</value>
-  </data>
-  <data name="cbbest.Location" type="System.Drawing.Point, System.Drawing">
-    <value>388, 56</value>
-  </data>
-  <data name="cbbest.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 16</value>
   </data>
   <data name="cbbest.Text" xml:space="preserve">
     <value>Connaissance</value>
   </data>
-  <data name="cbfamily.Location" type="System.Drawing.Point, System.Drawing">
-    <value>388, 72</value>
-  </data>
-  <data name="cbfamily.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 16</value>
-  </data>
   <data name="cbfamily.Text" xml:space="preserve">
     <value>Famille</value>
-  </data>
-  <data name="cbmarried.Location" type="System.Drawing.Point, System.Drawing">
-    <value>170, 72</value>
-  </data>
-  <data name="cbmarried.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 16</value>
   </data>
   <data name="cbmarried.Text" xml:space="preserve">
     <value>Mariage/Union</value>
   </data>
-  <data name="cbengaged.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 72</value>
-  </data>
-  <data name="cbengaged.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 16</value>
-  </data>
   <data name="cbengaged.Text" xml:space="preserve">
     <value>Fiancé(e)</value>
-  </data>
-  <data name="cbsteady.Location" type="System.Drawing.Point, System.Drawing">
-    <value>281, 72</value>
-  </data>
-  <data name="cbsteady.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 16</value>
   </data>
   <data name="cbsteady.Text" xml:space="preserve">
     <value>Petit(e) ami(e)</value>
   </data>
-  <data name="cblove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 72</value>
-  </data>
   <data name="cblove.Text" xml:space="preserve">
     <value>Amour</value>
-  </data>
-  <data name="cbcrush.Location" type="System.Drawing.Point, System.Drawing">
-    <value>281, 56</value>
-  </data>
-  <data name="cbcrush.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 16</value>
   </data>
   <data name="cbcrush.Text" xml:space="preserve">
     <value>Entiché(e)</value>
   </data>
-  <data name="cbbuddie.Location" type="System.Drawing.Point, System.Drawing">
-    <value>170, 56</value>
-  </data>
-  <data name="cbbuddie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 16</value>
-  </data>
   <data name="cbbuddie.Text" xml:space="preserve">
     <value>Ami(e) proche</value>
   </data>
-  <data name="cbfriend.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 56</value>
-  </data>
-  <data name="cbfriend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 16</value>
-  </data>
   <data name="cbfriend.Text" xml:space="preserve">
     <value>Ami(e)</value>
-  </data>
-  <data name="cbenemy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 56</value>
-  </data>
-  <data name="cbenemy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 16</value>
   </data>
   <data name="cbenemy.Text" xml:space="preserve">
     <value>Ennemi(e)</value>
@@ -218,34 +155,4 @@
     <value>Journalier :</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="pbDay.LabelWidth" type="System.Int32, mscorlib">
-    <value>70</value>
-  </data>
-  <data name="pbDay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-2, 0</value>
-  </data>
-  <data name="pbDay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>244, 20</value>
-  </data>
-  <data name="pbDay.TextboxWidth" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="pbLife.LabelText" xml:space="preserve">
-    <value>Global :</value>
-  </data>
-  <data name="pbLife.LabelWidth" type="System.Int32, mscorlib">
-    <value>78</value>
-  </data>
-  <data name="pbLife.Location" type="System.Drawing.Point, System.Drawing">
-    <value>254, 0</value>
-  </data>
-  <data name="pbLife.Size" type="System.Drawing.Size, System.Drawing">
-    <value>244, 20</value>
-  </data>
-  <data name="pbLife.TextboxWidth" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>498, 88</value>
-  </data>
 </root>

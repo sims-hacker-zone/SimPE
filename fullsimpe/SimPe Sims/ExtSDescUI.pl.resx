@@ -544,10 +544,10 @@
 	<data name="pnMisc.Text">
 		<value />
 	</data>
-	<data name="xpTaskBoxSimple3.HeaderText">
+	<data name="bTaskBox3.HeaderText">
 		<value xml:space="preserve">Inne</value>
 	</data>
-	<data name="xpTaskBoxSimple3.Text">
+	<data name="bTaskBox3.Text">
 		<value />
 	</data>
 	<data name="label3.Text">
@@ -592,10 +592,10 @@
 	<data name="label86.Text">
 		<value xml:space="preserve">Samodzielność:</value>
 	</data>
-	<data name="xpTaskBoxSimple2.HeaderText">
+	<data name="bTaskBox2.HeaderText">
 		<value xml:space="preserve">Znaczniki ciała</value>
 	</data>
-	<data name="xpTaskBoxSimple2.Text">
+	<data name="bTaskBox2.Text">
 		<value />
 	</data>
 	<data name="cbfit.Text">
@@ -613,10 +613,10 @@
 	<data name="cbfat.Text">
 		<value xml:space="preserve">Grube</value>
 	</data>
-	<data name="xpTaskBoxSimple1.HeaderText">
+	<data name="bTaskBox1.HeaderText">
 		<value xml:space="preserve">Znaczniki ducha</value>
 	</data>
-	<data name="xpTaskBoxSimple1.Text">
+	<data name="bTaskBox1.Text">
 		<value />
 	</data>
 	<data name="cbisghost.Text">

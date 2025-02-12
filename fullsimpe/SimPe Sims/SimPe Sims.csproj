@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
     <ProductVersion>8.0.50727</ProductVersion>
@@ -17,6 +16,7 @@
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
     <OutputType>Library</OutputType>
     <RootNamespace>SimPe.PackedFiles.Wrapper</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
@@ -26,8 +26,6 @@
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>..\__Debug\</OutputPath>
@@ -60,7 +58,8 @@
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <DocumentationFile>
     </DocumentationFile>
     <DebugSymbols>false</DebugSymbols>
@@ -76,6 +75,7 @@
     <DebugType>none</DebugType>
     <ErrorReport>prompt</ErrorReport>
     <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -88,7 +88,8 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <BaseAddress>285212672</BaseAddress>
     <Optimize>true</Optimize>
     <DebugType>
@@ -215,10 +216,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Build\SharedAssemblyInfo.cs">
-      <Link>Properties\SharedAssemblyInfo.cs</Link>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs">
+    <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CommonSrelUI.cs">
@@ -321,9 +319,16 @@
     <Compile Include="SimFactory.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="SimInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SimInfo.Designer.cs">
+      <DependentUpon>SimInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="SimListView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SimOriGuid.cs" />
     <Compile Include="SimPoolControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -383,7 +388,6 @@
       <DependentUpon>FamilyTiesForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="noone.png" />
     <EmbeddedResource Include="sdsc.png" />
     <EmbeddedResource Include="SimBusinessList.resx">
       <DependentUpon>SimBusinessList.cs</DependentUpon>
@@ -486,15 +490,35 @@
       <SubType>Designer</SubType>
       <DependentUpon>ScoreItemLearnedBehaviour.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SCOR\ScoreItemLearnedBehaviour.fr.resx">
+      <DependentUpon>ScoreItemLearnedBehaviour.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SCOR\ScoreItemLearnedBehaviour.it.resx">
+      <DependentUpon>ScoreItemLearnedBehaviour.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="SCOR\ScoreItemLearnedBehaviour.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ScoreItemLearnedBehaviour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SCOR\ScoreItemLearnedBehaviour.ru.resx">
+      <DependentUpon>ScoreItemLearnedBehaviour.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SCOR\ScorUI.resx">
       <DependentUpon>ScorUI.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="SimInfo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SimInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SimPoolControl.fr.resx">
+      <DependentUpon>SimPoolControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimPoolControl.ru.resx">
       <DependentUpon>SimPoolControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -503,6 +527,14 @@
       <DependentUpon>SimRelationPoolControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SimRelationPoolControl.fr.resx">
+      <DependentUpon>SimRelationPoolControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimRelationPoolControl.it.resx">
+      <DependentUpon>SimRelationPoolControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimRelationPoolControl.ru.resx">
       <DependentUpon>SimRelationPoolControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
