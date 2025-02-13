@@ -22,7 +22,7 @@ using System;
 namespace SimPe.Actions.Default
 {
 	/// <summary>
-	/// Zusammenfassung für ExportAction.
+    /// Summary description for ReplaceAction.
 	/// </summary>
 	public class StartExternalToolAction : ReplaceAction
 	{
@@ -72,7 +72,7 @@ namespace SimPe.Actions.Default
 		{
 			get
 			{
-				return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.actionstart.png"));
+                return SimPe.GetIcon.actionStart;
 			}
 		}
 		#endregion

@@ -22,7 +22,7 @@ using System;
 namespace SimPe.Actions.Default
 {
 	/// <summary>
-	/// Zusammenfassung für ExportAction.
+    /// Summary description for CloneAction.
 	/// </summary>
 	public class CloneAction : AbstractActionDefault
 	{
@@ -63,10 +63,18 @@ namespace SimPe.Actions.Default
 		public override System.Drawing.Image Icon
 		{
 			get
-			{
-				return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.actionclone.png"));
+            {
+                return SimPe.GetIcon.actionClone;
 			}
-		}
+        }
+
+        public override System.Windows.Forms.Shortcut Shortcut
+        {
+            get
+            {
+                return System.Windows.Forms.Shortcut.ShiftIns;
+            }
+        }
 		#endregion
 	}
 }

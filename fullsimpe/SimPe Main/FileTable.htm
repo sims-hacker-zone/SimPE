@@ -1,0 +1,101 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-au">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>File Table and Profiles</title>
+<style>
+<!--
+ p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+-->
+</style>
+</head>
+
+<body>
+<p class="MsoNormal"><b>Sim<font color="#FF8040">Pe</font></b>'s File Table and 
+Preferences Profiles</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Left alone SimPe will load far more into it's File Table 
+than Sims2 will ever load, causing SimPe to become slow, cumbersome and 
+unstable. Various parts of SimPe will load the File Table in different ways and 
+if the File Table is huge that will cause long delays and instability.</p>
+<p class="MsoNormal">At the very least you should unselect those parts in the 
+Advanced Settings: that are marked as (Unused), the Unused tag is there for your 
+information. Even though SimPe 'knows' not to use them it will use them if you 
+want it to (<i>and you don't want it to</i>).</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Setting up a profile and creating the shortcut for the 
+profile may seem a bit daunting at first but once it is done you never have to 
+do it for that profile again. Instead of creating a shortcut for your profile, 
+you can start SimPe using any saved profile from The Sims 2 EPselector.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Once you have SimPe's layout and File Table configured the 
+way you like then you should then save it as a profile. When you save a profile 
+SimPe saves your preferences then copies them to the profile folder, so next 
+time you start SimPe it will use the same settings as that profile. Therefore 
+you need the first normal profile to restore your preferences after creating 
+other profiles. It is also very easy way to restore SimPe if its layout ever 
+gets messed up.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">SimPe's profiles were added by it's original authors for 
+the purpose keeping SimPe lean for specific tasks.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">If you plan to edit neighbourhoods you don't need SimPe to 
+load the 3D resources. You will need it to load the Objects from your highest EP as that contains several NPCs and all of 
+the sim memories. You will also need the Wants and perhaps UI from your highest EP. If you expect to use Sim Surgery 
+then you may want to keep Base Game's catalog/Skins, catalog/Bins and Sims3D but there is very little else 
+you might need. If you intend to edit/view memories you will need the PJSE File 
+Table loaded. You may also consider disabling a few plug-ins for some profiles to keep SimPe a bit leaner.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">If you plan to use Object Workshop then you need the 
+opposite, you will need all of the 3D resources from every EP and SP so Object 
+Workshop can pull textures and meshes from them. You will need the 
+Objects from your highest EP (<i>everything needs that</i>), you will 
+also need all of the Stuff Pack\Objects and the Overrides from your highest EP 
+(which updates the Stuff Pack\Objects). You can simply configure the 
+file table for Object Workshop by 'De-Select All' then just set the 'Include 
+Graphics' in the Simple Settings.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">If you are 'modding' op-codes then the File Table is not so 
+important as the PJSE components use their own File Table. Keep the Objects 
+and Overrides from your highest EP and&nbsp; all of the Stuff Pack\Objects 
+but there is very little else the File Table needs in this profile. Setting PJSE 
+to load its File Table and GUID Index at start-up is useful for this 
+profile.</p>
+
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font face="Verdana">Sims2 Story Editions:</font></p>
+<p class="MsoNormal">If you want a profile for one of Sims2 Story Editions then 
+there is a 'trick' you need to do. SimPe always knows what games you have 
+installed even when they are disabled in the File Table and always gives 
+priority to Sims2 over the story editions so it can't treat them as the separate 
+game that they are.</p>
+<p class="MsoNormal">To get SimPe to never load anything from Sims2 or its 
+Expansions you can set it to only load support for your chosen Story Edition in 
+'Various / Only Load Support For'. Once set SimPe will 'see' Sims2 and its 
+Expansions as not installed. If SimPe finds nothing but a story edition then it 
+will treat it properly and fully support it.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font face="Verdana">Store Editions:</font></p>
+<p class="MsoNormal">EA released two Store Editions both with the same 
+executable name, therefore it is impossible for both exist in the App Paths 
+registry so neither SimPe or Sims2 can load both. On starting, SimPe will check 
+for the newer Store Edition (<i>by checking Store Edition's 'Suppression Exe' 
+value in Windows registry</i>), if SimPe 
+finds it or the Extra Stuff Pack**&nbsp; it will load 
+support for the newer Store Edition, otherwise it will just support the old 
+Store Edition.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">**With the newer Store Edition since the old Store Edition 
+can't be used, both SimPe and Sims2 can support an extra custom Stuff Pack in the gap 
+left by it. For SimPe to load your custom Stuff Pack it must have an executable name of Sims2ECC.exe 
+(<i>the executable doesn't need to actually exist except in Windows registry</i>).</p>
+
+</body>
+
+</html>

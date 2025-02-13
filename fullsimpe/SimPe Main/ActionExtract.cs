@@ -22,7 +22,7 @@ using System;
 namespace SimPe.Actions.Default
 {
 	/// <summary>
-	/// Zusammenfassung für ExportAction.
+	/// Summary description for ExportAction.
 	/// </summary>
 	public class ExportAction : AbstractActionDefault
 	{
@@ -58,10 +58,6 @@ namespace SimPe.Actions.Default
 				if (fbd.ShowDialog()==System.Windows.Forms.DialogResult.OK) return fbd.SelectedPath;
 			}
 
-			
-
-			
-			
 			return null;
 		}
 
@@ -74,61 +70,87 @@ namespace SimPe.Actions.Default
 			if (!run) WaitingScreen.Wait();
 			try 
 			{
-				xml += "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>" + Helper.lbr;		
-				xml += "<package type=\""+((uint)package.Header.IndexType).ToString()+"\">" + Helper.lbr;
-				for (int i=0; i<pfds.Length; i++) 
-				{
-                    System.Windows.Forms.Application.DoEvents();		
-					Packages.PackedFileDescriptor fii = (Packages.PackedFileDescriptor)pfds[i];					
-					Data.TypeAlias a = fii.TypeName;
+                if (Helper.Profile == "Short")
+                {
+                    for (int i = 0; i < pfds.Length; i++)
+                    {
+                        System.Windows.Forms.Application.DoEvents();
+                        Packages.PackedFileDescriptor fii = (Packages.PackedFileDescriptor)pfds[i];
+                        fii.Path = null;
+                        string path = System.IO.Path.Combine(selpath, fii.Path);
+                        fii.Filename = null;
+                        string name = System.IO.Path.Combine(path, fii.Filename);
+                        try
+                        {
+                            if (!System.IO.Directory.Exists(path)) System.IO.Directory.CreateDirectory(path);
+                            fii.Path = "";
+                            package.SavePackedFile(name, null, fii, true);
+                            filecount++;
+                            fii.Dispose();
+                        }
+                        catch (Exception ex)
+                        {
+                            Helper.ExceptionMessage(Localization.Manager.GetString("errwritingfile") + " " + name, ex);
+                        }
+                    }
+                }
+                else
+                {
+                    xml += "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>" + Helper.lbr;
+                    xml += "<package type=\"" + ((uint)package.Header.IndexType).ToString() + "\">" + Helper.lbr;
+                    for (int i = 0; i < pfds.Length; i++)
+                    {
+                        System.Windows.Forms.Application.DoEvents();
+                        Packages.PackedFileDescriptor fii = (Packages.PackedFileDescriptor)pfds[i];
+                        Data.TypeAlias a = fii.TypeName;
 
-					fii.Path = null;
-					string path = System.IO.Path.Combine(selpath, fii.Path);
-								
-					fii.Filename = null;
-					string name = System.IO.Path.Combine(path, fii.Filename);
+                        fii.Path = null;
+                        string path = System.IO.Path.Combine(selpath, fii.Path);
 
-					try 
-					{
-						if (!System.IO.Directory.Exists(path)) System.IO.Directory.CreateDirectory(path);
-					
-						//make sure the sub xmls don't have a Filename
-						fii.Path = "";
-						package.SavePackedFile(name, null, fii, true);
-						fii.Path = null;
-					
-						xml += fii.GenerateXmlMetaInfo();
-											
-						filecount++;
-					} 
-					catch (Exception ex) 
-					{
-						excount++;
-						Helper.ExceptionMessage(Localization.Manager.GetString("errwritingfile")+" "+name, ex);
-						if (excount>=5) 
-							if (Message.Show(Localization.Manager.GetString("ask000"), Localization.Manager.GetString("proceed"), System.Windows.Forms.MessageBoxButtons.YesNo)==System.Windows.Forms.DialogResult.Yes) 
-								i=pfds.Length;
-					}
-				
-				}//for i
-				xml += "</package>" + Helper.lbr;
+                        fii.Filename = null;
+                        string name = System.IO.Path.Combine(path, fii.Filename);
 
-				System.IO.TextWriter tw = System.IO.File.CreateText(System.IO.Path.Combine(selpath, "package.xml"));
-				try 
-				{				
-					tw.Write(xml);
-				} 
-				catch (Exception ex) 
-				{
-					Helper.ExceptionMessage(Localization.Manager.GetString("err001"), ex);
-				}
-				finally 
-				{
-					tw.Close();
-					tw.Dispose();
-					tw = null;
-				}				
+                        try
+                        {
+                            if (!System.IO.Directory.Exists(path)) System.IO.Directory.CreateDirectory(path);
 
+                            //make sure the sub xmls don't have a Filename
+                            fii.Path = "";
+                            package.SavePackedFile(name, null, fii, true);
+                            fii.Path = null;
+
+                            xml += fii.GenerateXmlMetaInfo();
+
+                            filecount++;
+                        }
+                        catch (Exception ex)
+                        {
+                            excount++;
+                            Helper.ExceptionMessage(Localization.Manager.GetString("errwritingfile") + " " + name, ex);
+                            if (excount >= 5)
+                                if (Message.Show(Localization.Manager.GetString("ask000"), Localization.Manager.GetString("proceed"), System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                                    i = pfds.Length;
+                        }
+
+                    }//for i
+                    xml += "</package>" + Helper.lbr;
+
+                    System.IO.TextWriter tw = System.IO.File.CreateText(System.IO.Path.Combine(selpath, "package.xml"));
+                    try
+                    {
+                        tw.Write(xml);
+                    }
+                    catch (Exception ex)
+                    {
+                        Helper.ExceptionMessage(Localization.Manager.GetString("err001"), ex);
+                    }
+                    finally
+                    {
+                        tw.Close();
+                        tw.Dispose();
+                        tw = null;
+                    }
+                }
 			}
 			finally 
 			{
@@ -148,10 +170,8 @@ namespace SimPe.Actions.Default
 
 			if (flname==null) return;
 
-#if !DEBUG
 			try 
-#endif
-			{
+            {
 				if (!multi) //extract one File
 				{
 					SimPe.Packages.PackedFileDescriptor pfd = (SimPe.Packages.PackedFileDescriptor)es[0].Resource.FileDescriptor;
@@ -170,12 +190,10 @@ namespace SimPe.Actions.Default
 					ExtractAllFiles(flname, ar, es.LoadedPackage.Package);
 				}
 			}
-#if !DEBUG
-			catch (Exception ex) 
+            catch (Exception ex) 
 			{
 				Helper.ExceptionMessage(Localization.Manager.GetString("err002")+flname, ex);
 			}
-#endif
 		}
 
 		#endregion
@@ -193,10 +211,18 @@ namespace SimPe.Actions.Default
 		public override System.Drawing.Image Icon
 		{
 			get
-			{
-				return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.actionexport.png"));
+            {
+                return SimPe.GetIcon.actionExport;
 			}
-		}
+        }
+
+        public override System.Windows.Forms.Shortcut Shortcut
+        {
+            get
+            {
+                return System.Windows.Forms.Shortcut.ShiftIns;
+            }
+        }
 		#endregion
 	}
 }

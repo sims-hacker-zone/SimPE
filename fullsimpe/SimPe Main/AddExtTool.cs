@@ -26,7 +26,7 @@ using System.Windows.Forms;
 namespace SimPe
 {
 	/// <summary>
-	/// Zusammenfassung für AddExtTool.
+	/// Summary description for AddExtTool.
 	/// </summary>
 	public class AddExtTool : System.Windows.Forms.Form
 	{
@@ -41,17 +41,14 @@ namespace SimPe
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.OpenFileDialog ofd;
 		private System.Windows.Forms.TextBox tbtype;
-		private System.Windows.Forms.ComboBox cbtypes;
-		/// <summary>
-		/// Erforderliche Designervariable.
-		/// </summary>
+        private System.Windows.Forms.ComboBox cbtypes;
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
 		private System.ComponentModel.Container components = null;
 
 		public AddExtTool()
 		{
-			//
-			// Erforderlich für die Windows Form-Designerunterstützung
-			//
 			InitializeComponent();
 
 			foreach (SimPe.Data.TypeAlias a in SimPe.Helper.TGILoader.FileTypes) 
@@ -64,9 +61,10 @@ namespace SimPe
 			}
 		}
 
-		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
-		/// </summary>
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
 		protected override void Dispose( bool disposing )
 		{
 			if( disposing )
@@ -79,11 +77,11 @@ namespace SimPe
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
-		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
-		/// </summary>
+        #region Windows Form Designer generated code
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
 		private void InitializeComponent()
 		{
 			this.label1 = new System.Windows.Forms.Label();

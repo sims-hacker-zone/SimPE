@@ -22,7 +22,7 @@ using System;
 namespace SimPe.Actions.Default
 {
 	/// <summary>
-	/// Zusammenfassung für ExportAction.
+    /// Summary description for AddAction.
 	/// </summary>
 	public class AddAction : ReplaceAction
 	{
@@ -60,14 +60,14 @@ namespace SimPe.Actions.Default
 
 		#endregion
 
-		#region IToolExt Member		
+		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
 			get
 			{
-				return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.actionimport.png"));
+                return SimPe.GetIcon.actionImport;
 			}
-		}
+        }
 		#endregion
 	}
 }

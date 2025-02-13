@@ -22,7 +22,7 @@ using System;
 namespace SimPe.Actions.Default
 {
 	/// <summary>
-	/// Zusammenfassung für ExportAction.
+    /// Summary description for AbstractActionDefault.
 	/// </summary>
 	public abstract class AbstractActionDefault : SimPe.Interfaces.IToolAction
 	{

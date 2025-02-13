@@ -39,7 +39,7 @@ namespace SimPe
         {
             ToolStripMenuItem mi = new ToolStripMenuItem(c.Text);
             if (first) miWindow.DropDownItems.Add("-");
-            mi.Image = c.TabImage;            
+            mi.Image = c.TabImage;
 
             mi.Click += new EventHandler(Activate_miWindowDocks);
             mi.Tag = c;
@@ -64,7 +64,7 @@ namespace SimPe
         {
             System.Collections.Generic.List<Ambertation.Windows.Forms.DockPanel> ctrls = manager.GetPanels();
 
-            bool first = true;
+            bool first = false; // this was true to seperate new doc container
             foreach (Ambertation.Windows.Forms.DockPanel c in ctrls)
             {
                 if (c.Tag != null) continue;
@@ -160,12 +160,13 @@ namespace SimPe
             UpdateMenuItems();
 
             tbAction.Visible = true;
-            tbTools.Visible = true;
+            // tbTools.Visible = true;
+            tbTools.Visible = !Helper.NoPlugins;
             tbWindow.Visible = false;
 
             ArrayList exclude = new ArrayList();
             exclude.Add(this.miNewDc);
-            SimPe.LoadFileWrappersExt.BuildToolBar(tbWindow, miWindow.DropDownItems, exclude);            
+            SimPe.LoadFileWrappersExt.BuildToolBar(tbWindow, miWindow.DropDownItems, exclude);
         }
 
         bool createdmenus;
@@ -179,6 +180,7 @@ namespace SimPe
             this.miSaveAs.Enabled = package.Loaded;
             this.miClose.Enabled = package.Loaded;
             this.miShowName.Enabled = package.Loaded;
+            this.miObjects.Enabled = System.IO.File.Exists(System.IO.Path.Combine(PathProvider.Global.Latest.InstallFolder ,PathProvider.Global.Latest.ObjectsSubFolder + "\\objects.package"));
 
             if (!createdmenus)
             {
@@ -191,7 +193,7 @@ namespace SimPe
                         mi.Text = SimPe.Localization.GetString("OpenInCaption").Replace("{where}", ei.NameShort);
                         mi.Tag = ei;
                         mi.Click += new EventHandler(this.Activate_miOpenInEp);
-                        mi.Enabled = ei.Exists;
+                        mi.Enabled = (ei.Exists || ei.InstallFolder != ""); // ei.InstallFolder is for where the user manually set the path to this EP
 
                         this.miOpenIn.DropDownItems.Insert(miOpenIn.DropDownItems.Count - 1, mi);
                     }

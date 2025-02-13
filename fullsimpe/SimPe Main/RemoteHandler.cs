@@ -21,7 +21,7 @@ using System;
 namespace SimPe
 {
 	/// <summary>
-	/// This is the entry point for the RemoteHandlers of the main SimPE Form
+	/// This is the entry point for the RemoteHandlers of the main SimPe Form
 	/// </summary>
 	internal class RemoteHandler
 	{

@@ -26,7 +26,7 @@ using System.Windows.Forms;
 namespace SimPe
 {
 	/// <summary>
-	/// Zusammenfassung für Hidden.
+	/// Summary description for Hidden.
 	/// </summary>
 	public class Hidden : System.Windows.Forms.Form
 	{
@@ -40,24 +40,20 @@ namespace SimPe
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.Button button3;
         private Button button4;
-		/// <summary>
-		/// Erforderliche Designervariable.
-		/// </summary>
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
 		private System.ComponentModel.Container components = null;
 
 		public Hidden()
 		{
-			//
-			// Erforderlich für die Windows Form-Designerunterstützung
-			//
 			InitializeComponent();
-
-			button3.Visible = Helper.WindowsRegistry.HiddenMode;
 		}
 
-		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
-		/// </summary>
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
 		protected override void Dispose( bool disposing )
 		{
 			if( disposing )
@@ -70,11 +66,11 @@ namespace SimPe
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
-		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
-		/// </summary>
+        #region Windows Form Designer generated code
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
 		private void InitializeComponent()
 		{
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Hidden));
@@ -167,7 +163,7 @@ namespace SimPe
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(128, 23);
             this.button3.TabIndex = 9;
-            this.button3.Text = "FileTable Content";
+            this.button3.Text = "File Table Content";
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
@@ -260,8 +256,7 @@ namespace SimPe
             f.Controls.Add(pg);
             pg.Dock = DockStyle.Fill;
             f.FormBorderStyle = FormBorderStyle.SizableToolWindow;
-            f.Text = "SimPE Settings";
-
+            f.Text = "SimPe Settings";
             pg.SelectedObject = Helper.WindowsRegistry;
             f.ShowDialog();
             UpdateDialog();

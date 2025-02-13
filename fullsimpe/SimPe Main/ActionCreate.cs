@@ -22,7 +22,7 @@ using System;
 namespace SimPe.Actions.Default
 {
 	/// <summary>
-	/// Zusammenfassung für ExportAction.
+    /// Summary description for CreateAction.
 	/// </summary>
 	public class CreateAction : AbstractActionDefault
 	{
@@ -60,8 +60,8 @@ namespace SimPe.Actions.Default
 		public override System.Drawing.Image Icon
 		{
 			get
-			{
-				return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.actioncreate.png"));
+            {
+                return SimPe.GetIcon.actionCreate;
 			}
 		}
 		#endregion

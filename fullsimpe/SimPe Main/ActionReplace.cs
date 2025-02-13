@@ -22,7 +22,7 @@ using System;
 namespace SimPe.Actions.Default
 {
 	/// <summary>
-	/// Zusammenfassung für ExportAction.
+    /// Summary description for ReplaceAction.
 	/// </summary>
 	public class ReplaceAction : AbstractActionDefault
 	{
@@ -108,14 +108,22 @@ namespace SimPe.Actions.Default
 
 		#endregion
 
-		#region IToolExt Member		
+		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
 			get
-			{
-				return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.actionreplace.png"));
+            {
+                return SimPe.GetIcon.actionReplace;
 			}
-		}		
+        }
+
+        public override System.Windows.Forms.Shortcut Shortcut
+        {
+            get
+            {
+                return System.Windows.Forms.Shortcut.ShiftIns;
+            }
+        }
 		#endregion
 	}
 }

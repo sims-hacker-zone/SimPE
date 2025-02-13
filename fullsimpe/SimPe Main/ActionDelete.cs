@@ -22,7 +22,7 @@ using System;
 namespace SimPe.Actions.Default
 {
 	/// <summary>
-	/// Zusammenfassung für ExportAction.
+    /// Summary description for DeleteAction.
 	/// </summary>
 	public class DeleteAction : AbstractActionDefault
 	{
@@ -74,8 +74,8 @@ namespace SimPe.Actions.Default
 		public override System.Drawing.Image Icon
 		{
 			get
-			{
-				return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.actiondelete.png"));
+            {
+                return SimPe.GetIcon.actionDelete;
 			}
 		}
 

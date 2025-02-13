@@ -31,13 +31,16 @@ namespace SimPe
     {
         private void SetupMainForm()
         {
-            SimPe.Splash.Screen.SetMessage(SimPe.Localization.GetString("Creating GUI"));
-            if (Helper.DebugMode)
+            if (Helper.WindowsRegistry.HiddenMode)
             {
                 ToolStripButton tbDebug = new ToolStripButton();
-                tbDebug.Text = "Debug docks";
+                tbDebug.ToolTipText = "Debug docks";
+                tbDebug.Image = GetIcon.Debug;
                 toolBar1.Items.Add(tbDebug);
                 tbDebug.Click += new EventHandler(tbDebug_Click);
+
+                toolBar1.Items.Add(biNewDc);
+                menuBarItem1.DropDownItems.Insert(11, miNewDc);
             }
             manager.Visible = false;
             tbContainer.Visible = false;
@@ -45,6 +48,20 @@ namespace SimPe
             
             Wait.Bar = this.waitControl1;
 
+            if (Helper.WindowsRegistry.UseBigIcons)
+            {
+                toolBar1.ImageScalingSize = new System.Drawing.Size(32, 32);
+                tbWindow.ImageScalingSize = new System.Drawing.Size(32, 32);
+                tbTools.ImageScalingSize = new System.Drawing.Size(32, 32);
+                tbAction.ImageScalingSize = new System.Drawing.Size(32, 32);
+
+                biNew.Image = GetIcon.New;
+                biOpen.Image = GetIcon.Open;
+                biSave.Image = GetIcon.Save;
+                biSaveAs.Image = GetIcon.SaveAs;
+                biClose.Image = GetIcon.Delete;
+                biReset.Image = GetIcon.Reset;
+            }
             
             package = new LoadedPackage();
             package.BeforeFileLoad += new PackageFileLoadEvent(BeforeFileLoad);
@@ -52,8 +69,6 @@ namespace SimPe
             package.BeforeFileSave += new PackageFileSaveEvent(BeforeFileSave);
             package.AfterFileSave += new PackageFileSavedEvent(AfterFileSave);
             package.IndexChanged += new EventHandler(ChangedActiveIndex);
-            //package.AddedResource += new EventHandler(AddedRemovedIndexResource);
-            //package.RemovedResource += new EventHandler(AddedRemovedIndexResource);
 
             SimPe.Splash.Screen.SetMessage(SimPe.Localization.GetString("Building View Filter"));
             filter = new ViewFilter();
@@ -77,7 +92,6 @@ namespace SimPe
                 this.mbiTopics,
                 lv
             );
-            SimPe.Splash.Screen.SetMessage(SimPe.Localization.GetString("Loaded Plugins"));
             plugger.ClosedToolPlugin += new ToolMenuItemExt.ExternalToolNotify(ClosedToolPlugin);
             remote.SetPlugger(plugger);
 
@@ -86,31 +100,36 @@ namespace SimPe
             package.UpdateRecentFileMenu(this.miRecent);
 
             InitTheme();
-
             dockBottom.Height = ((this.Height * 3) / 4);
-            this.Text += " (Version " + Helper.SimPeVersion.ProductVersion + ")";
+            this.Text = "SimPe (Version " + Helper.SimPeVersion.ProductVersion + ") " + PathProvider.Global.Latest.DisplayName;
             
             TD.SandDock.SandDockManager sdm2 = new TD.SandDock.SandDockManager();
             sdm2.OwnerForm = this;
-            ThemeManager.Global.AddControl(sdm2);
+            sdm2.Renderer = new TD.SandDock.Rendering.WhidbeyRenderer();
 
-            this.dc.Manager = sdm2;            
-
+            this.dc.Manager = sdm2;
 
             InitMenuItems();
             this.dcPlugin.Open();
             Ambertation.Windows.Forms.ToolStripRuntimeDesigner.Add(tbContainer);
             Ambertation.Windows.Forms.ToolStripRuntimeDesigner.LineUpToolBars(tbContainer);
-            this.menuBar1.ContextMenuStrip = tbContainer.TopToolStripPanel.ContextMenuStrip;
+            if (Helper.StartedGui == Executable.Default) this.menuBar1.ContextMenuStrip = tbContainer.TopToolStripPanel.ContextMenuStrip;
 
             Ambertation.Windows.Forms.Serializer.Global.Register(tbContainer);
             Ambertation.Windows.Forms.Serializer.Global.Register(manager);
 
             manager.NoCleanup = false;
             manager.ForceCleanUp();
-            //this.dcResource.BringToFront();
-            //this.dcResourceList.BringToFront();
             lv.Filter = filter;
+
+            if (Helper.WindowsRegistry.LoadTableAtStartup)
+            {
+                FileTable.FileIndex.AllowEvent = false;
+                SimPe.Splash.Screen.SetMessage("Loading the FileTable");
+                FileTable.FileIndex.Load();
+            }
+            else
+                FileTable.FileIndex.AllowEvent = true;
 
             waitControl1.ShowProgress = false;
             waitControl1.Progress = 0;
@@ -132,7 +151,6 @@ namespace SimPe
             foreach (Data.SemiGlobalAlias sga in Data.MetaData.SemiGlobals)
                 if (sga.Known) this.cbsemig.Items.Add(sga);
             if (cbsemig.Items.Count > 0) cbsemig.SelectedIndex = 0;
-
             if (!System.IO.File.Exists(SimPe.Helper.DataFolder.SimPeLayout))
                 ResetLayout(this, null);
             else
@@ -141,6 +159,15 @@ namespace SimPe
             //Set the Lock State of the Docks
             MakeFloatable(!Helper.WindowsRegistry.LockDocks);
 
+            int eep = PathProvider.Global.Latest.Version;
+            if (eep == 20) eep = 12; //Store new
+            if (eep == 28) eep = 6; //Castaway
+            if (eep == 29) eep = 6; //Pet Stories
+            //Life Stories and Base game = No Icon
+            if (GetImage.GetExpansionIcon((byte)eep) == null || Helper.StartedGui == Executable.Classic) this.miRunSims.Image = global::SimPe.Properties.Resources.Sims2;
+            else this.miRunSims.Image = GetImage.GetExpansionIcon((byte)eep);
+            this.miRunSims.Text = "Run " + PathProvider.Global.Latest.NameShorter;
+
             manager.Visible = true;
             tbContainer.Visible = true;
 
@@ -148,11 +175,8 @@ namespace SimPe
 
             SimPe.Splash.Screen.Stop();
 
-            if (Helper.WindowsRegistry.PreviousVersion == 0)
+            if (Helper.WindowsRegistry.PreviousVersion != Helper.SimPeVersionLong)
                 About.ShowWelcome();
-
-            if (Helper.WindowsRegistry.CheckForUpdates)
-                About.ShowUpdate();
         }
     }
 }

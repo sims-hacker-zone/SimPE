@@ -25,7 +25,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Data;
 using SimPe.Events;
-using Ambertation.Windows.Forms;
+//using Ambertation.Windows.Forms;
 
 namespace SimPe
 {
@@ -48,14 +48,19 @@ namespace SimPe
             if (Commandline.PreSplash(argv)) return;
 
             Commandline.CheckFiles();
-            //if (!Commandline.ImportOldData()) return;
 
+            /* Test for a New or Unknown EP, probably pointless now  */
+            if (Helper.WindowsRegistry.FoundUnknownEP())
+            {
+                if (Message.Show(SimPe.Localization.GetString("Unknown EP found").Replace("{name}", SimPe.PathProvider.Global.GetExpansion(SimPe.PathProvider.Global.LastKnown).Name), SimPe.Localization.GetString("Warning"), System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.No)
+                    return;
+            }
+            
             try
             {
-                SimPe.Splash.Screen.SetMessage(SimPe.Localization.GetString("Starting SimPE..."));
+                SimPe.Splash.Screen.SetMessage(SimPe.Localization.GetString("Starting SimPe..."));
 
                 Application.DoEvents();
-                Application.Idle += new EventHandler(Application_Idle);
 
                 Helper.WindowsRegistry.UpdateSimPEDirectory();
                 Global = new MainForm();
@@ -63,30 +68,34 @@ namespace SimPe
                 {
                     //load Files passed on the commandline
                     SimPe.Splash.Screen.SetMessage(SimPe.Localization.GetString("Load or Import Files"));
-                    Global.package.LoadOrImportFiles(argv.ToArray(), true);
+                    // Tashiketh
+                    if (argv.Count > 0)
+                    {
+                        if (argv[0] != "-load") Global.package.LoadOrImportFiles(argv.ToArray(), true);
+                        else Global.package.LoadOrImportFiles(argv.ToArray(), false);
+                    }
+                    // Global.package.LoadOrImportFiles(argv.ToArray(), true);
                     Application.Run(Global);
                 }
 
-
                 Helper.WindowsRegistry.Flush();
                 Helper.WindowsRegistry.Layout.Flush();
-                //ExpansionLoader.Global.Flush(); SimPE should not edit this File!
-
+                // ExpansionLoader.Global.Flush(); SimPe should not edit this File!
             }
-#if !DEBUG
+
             catch (Exception ex)
             {
                 try
                 {
                     SimPe.Splash.Screen.Stop();
-                    Helper.ExceptionMessage("SimPE will shutdown due to an unhandled Exception.", ex);
+                    Helper.ExceptionMessage("SimPe will shutdown due to an unhandled Exception.", ex);
                 }
                 catch (Exception ex2)
                 {
-                    MessageBox.Show("SimPE will shutdown due to an unhandled Exception.\n\nMessage: " + ex2.Message);
+                    MessageBox.Show("SimPe will shutdown due to an unhandled Exception.\n\nMessage: " + ex2.Message);
                 }
             }
-#endif
+            
             finally
             {
                 if (SimPe.Splash.Running) SimPe.Splash.Screen.ShutDown();

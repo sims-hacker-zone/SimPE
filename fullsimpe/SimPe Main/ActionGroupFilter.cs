@@ -35,6 +35,8 @@ namespace SimPe.Actions.Default
             return (Filter != null && Filter.FilterGroup) || (res && es.Count == 1);
         }
 
+        #region IToolAction Member
+
         public override void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
         {
             if (!ChangeEnabledStateEventHandler(sender, es)) return;
@@ -50,18 +52,24 @@ namespace SimPe.Actions.Default
             }
         }
 
+        #endregion
+
+        #region IToolPlugin Member
         public override string ToString()
         {
             return Localization.GetString("GroupFilterSet");
         }
+        
+		#endregion
 
-        /*public override System.Drawing.Image Icon
+		#region IToolExt Member		
+       public override System.Drawing.Image Icon
         {
             get
             {
-                return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("[.png"));
+                return SimPe.GetIcon.actionFilter;
             }
-        }*/
+        }
 
         public override System.Windows.Forms.Shortcut Shortcut
         {
@@ -70,5 +78,6 @@ namespace SimPe.Actions.Default
                 return System.Windows.Forms.Shortcut.CtrlT; // for "Toggle"...
             }
         }
+        #endregion
     }
 }

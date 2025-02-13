@@ -22,7 +22,7 @@ using System;
 namespace SimPe.Actions.Default
 {
 	/// <summary>
-	/// Zusammenfassung für ExportAction.
+    /// Summary description for RestoreAction.
 	/// </summary>
 	public class RestoreAction : AbstractActionDefault
 	{
@@ -68,8 +68,9 @@ namespace SimPe.Actions.Default
 		public override System.Drawing.Image Icon
 		{
 			get
-			{
-				return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.actionrestore.png"));
+            {
+
+                return SimPe.GetIcon.actionRestore;
 			}
 		}
 
