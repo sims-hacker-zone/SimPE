@@ -24,7 +24,6 @@ namespace SimPe.Plugin
             this.TBsting.Name = "TBsting";
             this.TBsting.Size = new System.Drawing.Size(813, 327);
             this.TBsting.TabIndex = 6;
-            this.TBsting.Text = "We want boobs";
             this.TBsting.TextChanged += new System.EventHandler(this.TBsting_TextChanged);
             // 
             // label2
@@ -36,7 +35,6 @@ namespace SimPe.Plugin
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(335, 41);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Boobies Make me Happy!";
             this.label2.Visible = false;
             // 
             // SimpleTextPackedFileUI

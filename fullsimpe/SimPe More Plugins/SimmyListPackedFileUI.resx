@@ -204,9 +204,6 @@ or an occupied lot in the Lot Catalogue</value>
   <data name="TBsting.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="TBsting.Text" xml:space="preserve">
-    <value>We want boobs</value>
-  </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -240,9 +237,6 @@ this neighbourhood has initialized.</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Boobies Make me Happy!</value>
   </data>
   <data name="label2.Visible" type="System.Boolean, mscorlib">
     <value>False</value>

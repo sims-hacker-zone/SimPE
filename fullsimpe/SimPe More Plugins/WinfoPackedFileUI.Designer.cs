@@ -164,7 +164,7 @@ namespace SimPe.Plugin
             this.witemperatelbl.Name = "witemperatelbl";
             this.witemperatelbl.Size = new System.Drawing.Size(185, 19);
             this.witemperatelbl.TabIndex = 21;
-            this.witemperatelbl.Text = "Temperature (0°c ~ 0°f)";
+            this.witemperatelbl.Text = "Temperature (0ï¿½c ~ 0ï¿½f)";
             // 
             // wiunk3lbl
             // 
@@ -278,7 +278,6 @@ namespace SimPe.Plugin
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(612, 23);
             this.textBox1.TabIndex = 28;
-            this.textBox1.Text = "We Want Boobs";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
@@ -290,7 +289,6 @@ namespace SimPe.Plugin
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(335, 41);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Boobies Make me Happy!";
             this.label1.Visible = false;
             // 
             // wiversionlbl

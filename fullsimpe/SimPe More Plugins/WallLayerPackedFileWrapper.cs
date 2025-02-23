@@ -13,7 +13,7 @@ namespace SimPe.Plugin
 	public class WallLayerPackedFileWrapper        
 		: AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension
     {
-        #region Boobs Attribute
+        #region Attribute
         /// <summary>
 		/// Contains the Data of the File
 		/// </summary>
@@ -26,7 +26,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns/Sets the Data of the File
         /// </summary>
-        public int BoobCount
+        public int ItemCount
         {
             get { return bcount; }
         }

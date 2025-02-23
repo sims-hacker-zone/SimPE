@@ -58,7 +58,7 @@ namespace SimPe.Plugin
             int walls = 0;
 
             this.cbExistFences.Items.Clear();
-            for (int i = 0; i < Wrapper.BoobCount; i++)
+            for (int i = 0; i < Wrapper.ItemCount; i++)
             {
                 if (SimPe.Data.MetaData.KnownFences.ContainsKey(Wrapper.bwallid[i]))
                 {
@@ -177,7 +177,7 @@ namespace SimPe.Plugin
             else
                 bfrom = Helper.HexStringToUInt(Convert.ToString(cbExistFences.SelectedItem));
             uint btoo = SimPe.Data.MetaData.GetFenceId(cballFences.SelectedItem);
-            for (int j = 0; j < Wrapper.BoobCount; j++)
+            for (int j = 0; j < Wrapper.ItemCount; j++)
             {
                 if (Wrapper.bwallid[j] == bfrom)
                 {
@@ -187,7 +187,7 @@ namespace SimPe.Plugin
             }
 
             this.cbExistFences.Items.Clear();
-            for (int i = 0; i < Wrapper.BoobCount; i++)
+            for (int i = 0; i < Wrapper.ItemCount; i++)
             {
                 if (SimPe.Data.MetaData.KnownFences.ContainsKey(Wrapper.bwallid[i]))
                 {

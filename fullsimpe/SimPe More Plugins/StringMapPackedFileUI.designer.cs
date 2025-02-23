@@ -65,7 +65,6 @@ namespace SimPe.Plugin
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(335, 41);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Boobies Make me Happy!";
             this.label1.Visible = false;
             // 
             // rtbStrings

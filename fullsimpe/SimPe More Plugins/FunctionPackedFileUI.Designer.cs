@@ -1850,7 +1850,6 @@ namespace SimPe.Plugin
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(335, 41);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Boobies Make me Happy!";
             this.label2.Visible = false;
             // 
             // FunctionPackedFileUI

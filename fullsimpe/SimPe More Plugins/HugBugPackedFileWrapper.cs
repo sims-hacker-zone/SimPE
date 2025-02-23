@@ -18,7 +18,7 @@ namespace SimPe.Plugin
 		/// Contains the Data of the File
 		/// </summary>
         private bool corrpt;
-        private bool isboobs;
+        private bool issims;
         private bool customcrap;
         private UInt32 guide;
         private UInt32 fbguid;
@@ -42,8 +42,8 @@ namespace SimPe.Plugin
         /// </summary>
         public bool IsSims
         {
-            get { return isboobs; }
-            set { isboobs = value; }
+            get { return issims; }
+            set { issims = value; }
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace SimPe.Plugin
             reader.BaseStream.Seek(76, System.IO.SeekOrigin.Begin); // Begin at first GUID
             */
             corrpt = false;
-            isboobs = false;
+            issims = false;
             customcrap = false;
             isz = 0; //clear any previous load
             while (reader.BaseStream.Position < reader.BaseStream.Length) // to help prevent trying to read past the end
@@ -161,7 +161,7 @@ namespace SimPe.Plugin
                     reader.BaseStream.Seek(4, System.IO.SeekOrigin.Current); // 4 bit byte usually empty but not on multi tile items
                     fbguid = reader.ReadUInt32(); // Fall Back GUID, this is the item a user will get if they don't have the item
                     if (guide == Bugga || fbguid == Bugga) corrpt = true; // Hug Bug exists
-                    if (tipe == 2) isboobs = true; // Sim(s) exist
+                    if (tipe == 2) issims = true; // Sim(s) exist
                     objekts[isz] = FormatGUID(guide, fbguid, tipe, namer); // public, format the string to appear in the window
                     if (objekts[isz].Contains("**")) customcrap = true; // public, CC crap exists
                     isz++; // public, counts the number of items

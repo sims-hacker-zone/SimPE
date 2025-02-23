@@ -13,7 +13,7 @@ namespace SimPe.Plugin
 	public class CregPackedFileWrapper        
 		: AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension
     {
-        #region Boobs Attribute
+        #region Attribute
         /// <summary>
 		/// Contains the Data of the File
 		/// </summary>
