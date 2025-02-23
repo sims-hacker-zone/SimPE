@@ -65,10 +65,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.biMisc.Tag = pnMisc;
 
 			this.tbsim.ReadOnly = !UserVerification.HaveUserId;
-			this.miRelink.Enabled = (UserVerification.HaveUserId || booby.PrettyGirls.IsTitsInstalled());
+			this.miRelink.Enabled = (UserVerification.HaveUserId);
 			this.tbBugColl.ReadOnly = !UserVerification.HaveUserId;
-
-			if (Helper.StartedGui == Executable.Default) this.pnEP9.BackgroundImage = booby.PrettyGirls.GoldenGirl;
 
 			if (Helper.StartedGui == Executable.Classic)
 			{
@@ -518,10 +516,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.DMASim));
 			
 			this.cbEp3Asgn.ResourceManager = SimPe.Localization.Manager;
-			if (booby.PrettyGirls.IsTitsInstalled())
-				this.cbEp3Asgn.Enum = typeof(Wrapper.JobAssignf);
-			else
-				this.cbEp3Asgn.Enum = typeof(Wrapper.JobAssignment);
+			this.cbEp3Asgn.Enum = typeof(Wrapper.JobAssignment);
 
 			this.cbSpecies.ResourceManager = SimPe.Localization.Manager;
 			this.cbSpecies.Enum = typeof(SimPe.PackedFiles.Wrapper.SdscNightlife.SpeciesType);
@@ -571,24 +566,6 @@ namespace SimPe.PackedFiles.UserInterface
 				if ((int)Sdesc.Version >= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Apartment && Sdesc.Nightlife.Species == 0 && Helper.StartedGui == Executable.Default)
 				{
 					this.HeaderText = Sdesc.SimName + " " + SimPe.Data.MetaData.GetTitleName(Sdesc.Apartment.TitlePostName);
-					this.biLezby.Visible = (booby.PrettyGirls.PervyMode && !Sdesc.CharacterDescription.IsPreTeen);
-					if (Sdesc.CharacterDescription.IsWoman)
-					{
-						if (Sdesc.CharacterDescription.ServiceTypes == MetaData.ServiceTypes.Streaker) pnimage = booby.PrettyGirls.NakedJane;
-						else if (Sdesc.CharacterDescription.ServiceTypes == MetaData.ServiceTypes.Nurse) pnimage = booby.PrettyGirls.NiceNurse;
-						else if (Sdesc.Apartment.TitlePostName == 16 || Sdesc.Apartment.TitlePostName == 18) pnimage = booby.PrettyGirls.Mindy;
-						else if (Sdesc.Apartment.TitlePostName == 20 || Sdesc.Apartment.TitlePostName == 22) pnimage = booby.PrettyGirls.WetGirl;
-						else if (Sdesc.FamilyInstance == 32753) pnimage = booby.PrettyGirls.BikiniBeach;
-						else if (Sdesc.FamilyInstance == 32617) pnimage = booby.PrettyGirls.Sorrowful;
-						else if (Sdesc.CharacterDescription.Career == MetaData.Careers.SexIndustry) pnimage = booby.PrettyGirls.Majia;
-						else if (Sdesc.Business.Assignf == SimPe.PackedFiles.Wrapper.JobAssignf.SellWoohoo) pnimage = booby.PrettyGirls.XmasGirl;
-						else if (Sdesc.Skills.Romance > 800 && Sdesc.University.Major == Majors.Drama) pnimage = booby.PrettyGirls.PurpleShades;
-						else if (Sdesc.Nightlife.AttractionTraits3 > 255) pnimage = booby.PrettyGirls.RedDevil;
-						else if (Sdesc.Character.Nice > 900) pnimage = booby.PrettyGirls.KittyGirl;
-						else if (Sdesc.Character.Neat > 800 && Sdesc.Skills.Cleaning > 800) pnimage = booby.PrettyGirls.BathTime;
-						else if (Sdesc.Freetime.HobbyPredistined == SimPe.PackedFiles.Wrapper.Hobbies.Nature) pnimage = booby.PrettyGirls.HippyGirl;
-						else pnimage = null;
-					}
 					else pnimage = null;
 				}
 				else
@@ -2511,9 +2488,6 @@ namespace SimPe.PackedFiles.UserInterface
 				Sdesc.Business.Salary = Helper.StringToUInt16(this.tbEp3Salery.Text, Sdesc.Business.Salary, 10);
 				Sdesc.Business.LotID = Helper.StringToUInt16(this.tbEp3Lot.Text, Sdesc.Business.LotID, 16);
 				Sdesc.Business.Flags = Helper.StringToUInt16(this.tbEp3Flag.Text, Sdesc.Business.Flags, 2);
-				if (booby.PrettyGirls.IsTitsInstalled())
-				Sdesc.Business.Assignf = (Wrapper.JobAssignf)this.cbEp3Asgn.SelectedValue;
-			else
 				Sdesc.Business.Assignment = (Wrapper.JobAssignment)this.cbEp3Asgn.SelectedValue;
 
 				Sdesc.Changed = true;

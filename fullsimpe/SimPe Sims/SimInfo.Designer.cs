@@ -87,7 +87,6 @@ namespace SimPe.PackedFiles.Wrapper
             this.lbInform.Name = "lbInform";
             this.lbInform.Size = new System.Drawing.Size(712, 185);
             this.lbInform.TabIndex = 0;
-            this.lbInform.Text = "Nice Boobs";
             // 
             // pnheader
             // 

@@ -43,8 +43,8 @@ namespace SimPe.PackedFiles.UserInterface
         private Label label91;
         private ComboBox cbfamtype;
         private TextBox tbRel;
-        private booby.LabeledProgressBar pbDay;
-        private booby.LabeledProgressBar pbLife;
+        private System.Windows.Forms.ProgressBar pbDay;
+        private System.Windows.Forms.ProgressBar pbLife;
         private TableLayoutPanel tableLayoutPanel1;
         private CheckBox cblove;
         private CheckBox cbcrush;
@@ -116,8 +116,8 @@ namespace SimPe.PackedFiles.UserInterface
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label91 = new System.Windows.Forms.Label();
             this.cbfamtype = new System.Windows.Forms.ComboBox();
-            this.pbDay = new booby.LabeledProgressBar();
-            this.pbLife = new booby.LabeledProgressBar();
+            this.pbDay = new System.Windows.Forms.ProgressBar();
+            this.pbLife = new System.Windows.Forms.ProgressBar();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.cbcrush = new System.Windows.Forms.CheckBox();
             this.cbfriend = new System.Windows.Forms.CheckBox();
@@ -179,7 +179,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbDay.NumberScale = 1;
             this.pbDay.ProgressBackColour = System.Drawing.SystemColors.Window;
             this.pbDay.SelectedColor = System.Drawing.Color.Lime;
-            this.pbDay.Style = booby.ProgresBarStyle.Simple;
             this.pbDay.TextBoxBackColour = System.Drawing.SystemColors.Window;
             this.pbDay.TokenCount = 30;
             this.pbDay.UnselectedColor = System.Drawing.Color.Black;
@@ -201,7 +200,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbLife.NumberScale = 1;
             this.pbLife.ProgressBackColour = System.Drawing.SystemColors.Window;
             this.pbLife.SelectedColor = System.Drawing.Color.Lime;
-            this.pbLife.Style = booby.ProgresBarStyle.Simple;
             this.pbLife.TextBoxBackColour = System.Drawing.SystemColors.Window;
             this.pbLife.TokenCount = 30;
             this.pbLife.UnselectedColor = System.Drawing.Color.Black;
