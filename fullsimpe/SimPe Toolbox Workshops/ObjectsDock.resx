@@ -118,9 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="xpAdvanced.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
   <data name="button6.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -132,7 +129,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 80</value>
+    <value>250, 80</value>
   </data>
   <data name="button6.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>Yes</value>
@@ -166,7 +163,7 @@
     <value>8, 80</value>
   </data>
   <data name="tbGUID.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 21</value>
+    <value>234, 21</value>
   </data>
   <data name="tbGUID.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -196,13 +193,13 @@
     <value>NoControl</value>
   </data>
   <data name="button5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 112</value>
+    <value>250, 112</value>
   </data>
   <data name="button5.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>Yes</value>
   </data>
   <data name="button5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 23</value>
+    <value>120, 32</value>
   </data>
   <data name="button5.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
@@ -229,7 +226,7 @@
     <value>8, 112</value>
   </data>
   <data name="tbCresName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 21</value>
+    <value>234, 21</value>
   </data>
   <data name="tbCresName.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -256,7 +253,7 @@
     <value>NoControl</value>
   </data>
   <data name="button4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 48</value>
+    <value>250, 48</value>
   </data>
   <data name="button4.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>Yes</value>
@@ -289,7 +286,7 @@
     <value>8, 48</value>
   </data>
   <data name="tbGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 21</value>
+    <value>234, 21</value>
   </data>
   <data name="tbGroup.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -314,44 +311,44 @@
   </data>
   <data name="xpAdvanced.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        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
-        TkSuQmCC
+        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
+        SUVORK5CYII=
 </value>
   </data>
   <data name="xpAdvanced.Location" type="System.Drawing.Point, System.Drawing">
@@ -361,7 +358,7 @@
     <value>4, 44, 4, 4</value>
   </data>
   <data name="xpAdvanced.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 152</value>
+    <value>378, 152</value>
   </data>
   <data name="xpAdvanced.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
@@ -385,10 +382,10 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 458</value>
+    <value>0, 376</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 48</value>
+    <value>595, 48</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -451,13 +448,13 @@
     <value>0, 60</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 32</value>
+    <value>595, 32</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Welcome to the new Object Workshop. </value>
+    <value>Welcome to the Object Workshop.</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -511,7 +508,7 @@
     <value>0, 0</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 60</value>
+    <value>595, 60</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -538,7 +535,7 @@
     <value>8, 8</value>
   </data>
   <data name="wizardStepPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 506</value>
+    <value>595, 424</value>
   </data>
   <data name="wizardStepPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -547,7 +544,7 @@
     <value>wizardStepPanel1</value>
   </data>
   <data name="&gt;&gt;wizardStepPanel1.Type" xml:space="preserve">
-    <value>SimPe.Wizards.WizardStepPanel, simpe.wizardbase, Version=1.0.2907.21823, Culture=neutral, PublicKeyToken=null</value>
+    <value>SimPe.Wizards.WizardStepPanel, simpe.wizardbase, Version=1.69.7473.5239, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;wizardStepPanel1.Parent" xml:space="preserve">
     <value>wizard1</value>
@@ -562,7 +559,7 @@
     <value>0, 0</value>
   </data>
   <data name="lb.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 299</value>
+    <value>555, 221</value>
   </data>
   <data name="lb.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -592,7 +589,7 @@
     <value>0, 0</value>
   </data>
   <data name="tv.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 309</value>
+    <value>555, 227</value>
   </data>
   <data name="tv.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -601,7 +598,7 @@
     <value>tv</value>
   </data>
   <data name="&gt;&gt;tv.Type" xml:space="preserve">
-    <value>SimPe.Plugin.Tool.Dockable.dcObjectWorkshop+MyTreeView, simpe.workshop.plugin, Version=1.0.2968.23322, Culture=neutral, PublicKeyToken=null</value>
+    <value>SimPe.Plugin.Tool.Dockable.dcObjectWorkshop+MyTreeView, simpe.workshop.plugin, Version=1.69.8628.29696, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tv.Parent" xml:space="preserve">
     <value>wizardStepPanel2</value>
@@ -616,10 +613,10 @@
     <value>NoControl</value>
   </data>
   <data name="splitter1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 309</value>
+    <value>0, 227</value>
   </data>
   <data name="splitter1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 2</value>
+    <value>555, 2</value>
   </data>
   <data name="splitter1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -644,42 +641,42 @@
   </data>
   <data name="xpTaskBoxSimple2.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        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
+        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
 </value>
   </data>
   <data name="xpTaskBoxSimple2.Location" type="System.Drawing.Point, System.Drawing">
@@ -689,7 +686,7 @@
     <value>4, 44, 4, 4</value>
   </data>
   <data name="xpTaskBoxSimple2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 195</value>
+    <value>555, 195</value>
   </data>
   <data name="xpTaskBoxSimple2.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -698,7 +695,7 @@
     <value>xpTaskBoxSimple2</value>
   </data>
   <data name="&gt;&gt;xpTaskBoxSimple2.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.XPTaskBoxSimple, graphcontrol, Version=1.0.2927.25824, Culture=neutral, PublicKeyToken=null</value>
+    <value>Ambertation.Windows.Forms.XPTaskBoxSimple, graphcontrol, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;xpTaskBoxSimple2.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -710,10 +707,10 @@
     <value>Bottom</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 311</value>
+    <value>0, 229</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 195</value>
+    <value>555, 215</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -737,7 +734,7 @@
     <value>8, 8</value>
   </data>
   <data name="wizardStepPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 506</value>
+    <value>555, 424</value>
   </data>
   <data name="wizardStepPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -746,7 +743,7 @@
     <value>wizardStepPanel2</value>
   </data>
   <data name="&gt;&gt;wizardStepPanel2.Type" xml:space="preserve">
-    <value>SimPe.Wizards.WizardStepPanel, simpe.wizardbase, Version=1.0.2907.21823, Culture=neutral, PublicKeyToken=null</value>
+    <value>SimPe.Wizards.WizardStepPanel, simpe.wizardbase, Version=1.69.7473.5239, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;wizardStepPanel2.Parent" xml:space="preserve">
     <value>wizard1</value>
@@ -762,42 +759,42 @@
   </data>
   <data name="xpTaskBoxSimple1.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        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
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAH3klEQVRYR8VXC1CU1xVeEPGBWuNoidYY
+        0alBjU2FkATUJrFJO61OqGnqtDg1Nokl0840jSYxo41VM1GIEDFgeMhLWFDer/CKyPJQBLI8F0EWcF12
+        ee4Cu8tD8PX1nLss4gARpzPtmflm9//vv/c73znfvf9dCYD/K/6r8P7mykaf4DLs3P2vZXQ503z3fxgn
+        g0oLUnOV+ORo3Bd0uZgwQww8TrgGaG86HSt9kb7aEqzEzWnEyaCrH2bLWjA8chcnAoo66NZPCbPF4OOE
+        a4BG/ZK/WmO/ZfczpGTNCf9CJ7ptTZgyGa+AYgf/CLmByTk4kT/uOfxXGlpEmLYIES4n6z/dFtmJj6OU
+        IFVGKqth/2cxb9AQq5l0MnomtUnVK8jv3bsP/n7weGoWDT1FEF5YsffyjqfeLU77ydt5AXTJc7GoieHo
+        GWHveqYN0goD2FAMrzPFbS5u29fR8CzzUw/iy8CrO+IyGgT5/fvAnTv3RBIhsdV4y+Ojt7z88718Qr83
+        bD1Yjt9612PZniLMd/LcTD+1I0wqaMYLvtcvHCs0IShOISZiHPHJkdHYjwk24ikKSm4hl95oGhYJMPHt
+        23cxPHwHJXItErMaoNYaUFPfha/C5DhfYYLLx3Is3hYWSj9/kjA210PhfLzyT9yG9AodiACsML9EjX2f
+        Sb1peCFBlI9a5FdR2yHI75N8Vs/kg4Mj6DXcQmR8Lfr7hwV4Hr+oanyS2IElO7PYpGsIc3ieycL2RT+V
+        JrC8H+EJCpEAK+IlRmuc/WD3ZWDJq5bSc9y9ew8jZMKhoduC8Nat2+J5lboPRuMQLharRDvDS41Y8XYB
+        Frgd/YjmYZNO6gVrp+MK73cSuhGV0yJawGTs8sDo8nb3nR+6knp1l35QkI9XPzAwQoS30Nc3JMyY/p1S
+        fG/vNIkEgtJbsP1EHRb+JraYeJ4m8HKfGOv2ZTg6n1RBWt4zlgBPyKRkPBNXxBJm9XfG1BsMQ+jpGRBV
+        CI6pQmeXCb29g4hMqBVe8LnUiyfcs2GzxMmNqOabGSeGzc+PKbIP5VACZEZOgNc3B5OzJzgsxmMyi3om
+        0+n6xSc/V1aphV7fD3lNu6hCRJEOq3bLYOfm40c89oRJd0yr9QeKPbaeViGhpGPMjNwGdj1f87J7oH4E
+        JrrP5dbrB9BFqtvbDeiha2lyHbq7++naKH53OkaBvWdvYN7riY/cMW03HLmm8SvuE22ISlTA4no2mPJG
+        zzj1ww+p7+w0oq2tjxIaFInfUPWIe9/mNYkqhJT2w+71NNiu+8cP7pjWaw+UeXuEtyI0TSkS4Mk42A8p
+        OY1jy85kMhtvvHqNphdabR/qGnX49mITOjqMaGrRiwQCM9V47VAFZrsGPbRjTohV78U7rjuoQGhh15gZ
+        Le7ncnbrBsYZb1CUmomYWK3ugUqlFwkGS6uoIgYBnofNeDhdh1m/SIT1ExtfIqp5ZsaJYbNmf1n2/uRO
+        fB1tTsBiRhkZrKhUPap+8CH1ra29uHlTLxLg1nD1KsmEXJXCq2pRhbMFOix1z8SMDZ//sBlXv5/r4Xrs
+        GqQyrcie+28xY/iF6rFlN5l6Jmxs6REJaDR9IrFW+uQE/BOV+PPpRsxwOfdoM67+oFxzKt+8NfNk3FeO
+        JNrvFfWdo8YziRIzCZMzDKSe139jU/doVcyJZZAnOIkzl/th5RILydOeFjNOGtYOnvneu4JvICJdKdpg
+        MWNDkw65Bc2k3jSm3kLCSfE+kCNrFuotVWF8X9UmEvgmW4vNH5RA8uwpixknj2U7oxxX/o328gLznmCp
+        ArciIq4K2lGDWdQzmVprpLEakdR49QxuDbfz1LlqHEjshMRJCsmC59iMU4bNivcKr/xd2orgVCUCIuUI
+        o/4baQUUlKhQWtEqVFpI2PkX0upwraFTkI1Xz5WpVJiFcBJBRb1Y/KsUSJ75N5txyrB68s3ITcv/UmTy
+        uaRHSLwCQdEVtBdch753iMhqicSsnleCvKYNubKmMfUMficUlbYKUmFCSoA/v06hI5xvAyTPnW0a5Zoy
+        Zi55I/yd1XsvI0jWjZCYSkQn1dK7oZXeevWorWsXSrtIYUxyjagGL8n2DhMyLzULQgupBf5Efiq/D699
+        Kje34RHB2+WcJb9PDnPeVw5pQRsR1Qr1+VdakFeoFGs+R0bbdIsOzbT9ZlxUwjfkgVqGL21CbL7DyR3Y
+        xAZk4mf9rkqW7+IzwiODDxDzF7+ZXubuVYfY3GaqQjWdfioomUrU1ncgOasOqTn1CI6W42xsJfxCy0US
+        bLhgmQ7vBiixYkcmJBvPDUjWfpEqWeS2i+bcRNjABNMJ6zlrPRwW/S7LtD9Gjdg0BS6k1uB8ShV9ViGW
+        EjmfWo2w8xW0BcsRlHwdXqka/PqgHHM3x1OvQ1okq/7pS/O8SniB4EhYSlhAmHbY2Ll+/sulf/gOPpla
+        SJMqkZRZi4SMKsSlVYlqROfdxKE4DZ73LDSXeb3PRYn99vfpt1sIGwmrCPwPai6BD6iP9x+CYta8V8KO
+        rPTIQ2S5EfHV/YgjRBR1Ys/pethvy4C1c0SXleNRqWSugzs970pYT1hO4MMtH/Mn/38wzeCM7ea+HJU0
+        Z2sKZr+SBNstCZi5KR42zsG1Vg6eR2n8ZcLzBD4F8wuH33r86n1stVMFK/gRgQm4n3zOY/D/y58RVhJ4
+        j+cj+CP+rEok/wEQvpdA5CVbswAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="xpTaskBoxSimple1.Location" type="System.Drawing.Point, System.Drawing">
@@ -807,7 +804,7 @@
     <value>4, 44, 4, 4</value>
   </data>
   <data name="xpTaskBoxSimple1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 38</value>
+    <value>282, -44</value>
   </data>
   <data name="xpTaskBoxSimple1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -816,7 +813,7 @@
     <value>xpTaskBoxSimple1</value>
   </data>
   <data name="&gt;&gt;xpTaskBoxSimple1.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.XPTaskBoxSimple, graphcontrol, Version=1.0.2927.25824, Culture=neutral, PublicKeyToken=null</value>
+    <value>Ambertation.Windows.Forms.XPTaskBoxSimple, graphcontrol, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;xpTaskBoxSimple1.Parent" xml:space="preserve">
     <value>wizardStepPanel3</value>
@@ -843,13 +840,13 @@
     <value>5</value>
   </data>
   <data name="cbColorExt.Text" xml:space="preserve">
-    <value>Create Color Extension Package</value>
+    <value>Create Colour Extension Package</value>
   </data>
   <data name="&gt;&gt;cbColorExt.Name" xml:space="preserve">
     <value>cbColorExt</value>
   </data>
   <data name="&gt;&gt;cbColorExt.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.TransparentCheckBox, graphcontrol, Version=1.0.2927.25824, Culture=neutral, PublicKeyToken=null</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbColorExt.Parent" xml:space="preserve">
     <value>gbRecolor</value>
@@ -861,49 +858,49 @@
     <value>Top</value>
   </data>
   <data name="gbRecolor.HeaderText" xml:space="preserve">
-    <value>Recolor</value>
+    <value>Recolour</value>
   </data>
   <data name="gbRecolor.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        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
+        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
+        J81vKIifAWAcqU6feuSrAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="gbRecolor.Location" type="System.Drawing.Point, System.Drawing">
@@ -913,7 +910,7 @@
     <value>4, 44, 4, 4</value>
   </data>
   <data name="gbRecolor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 76</value>
+    <value>282, 76</value>
   </data>
   <data name="gbRecolor.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -925,7 +922,7 @@
     <value>gbRecolor</value>
   </data>
   <data name="&gt;&gt;gbRecolor.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.XPTaskBoxSimple, graphcontrol, Version=1.0.2927.25824, Culture=neutral, PublicKeyToken=null</value>
+    <value>Ambertation.Windows.Forms.XPTaskBoxSimple, graphcontrol, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;gbRecolor.Parent" xml:space="preserve">
     <value>wizardStepPanel3</value>
@@ -940,13 +937,13 @@
     <value>True</value>
   </data>
   <data name="llCloneDef.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt, style=Bold</value>
+    <value>Tahoma, 10.25pt, style=Bold</value>
   </data>
   <data name="llCloneDef.Location" type="System.Drawing.Point, System.Drawing">
-    <value>188, 22</value>
+    <value>160, 6</value>
   </data>
   <data name="llCloneDef.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 13</value>
+    <value>96, 13</value>
   </data>
   <data name="llCloneDef.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -973,10 +970,10 @@
     <value>NoControl</value>
   </data>
   <data name="cbstrlink.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 232</value>
+    <value>368, 92</value>
   </data>
   <data name="cbstrlink.Size" type="System.Drawing.Size, System.Drawing">
-    <value>299, 24</value>
+    <value>200, 24</value>
   </data>
   <data name="cbstrlink.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -984,11 +981,17 @@
   <data name="cbstrlink.Text" xml:space="preserve">
     <value>Pull #STR-Linked Resources</value>
   </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>87, 17</value>
+  </metadata>
+  <data name="cbstrlink.ToolTip" xml:space="preserve">
+    <value>When checked, SimPe will include in the clone the additional materials referenced in the STR# 0x88 (that lists the alternative textures used in multi-state objects: lit/unlit and clean/dirty): if you are cloning a lamp, a counter, a plumbing item or anything that gets lit or dirty, be sure to keep this option checked (it won't hurt leaving it always checked, even for non multi-state objects).</value>
+  </data>
   <data name="&gt;&gt;cbstrlink.Name" xml:space="preserve">
     <value>cbstrlink</value>
   </data>
   <data name="&gt;&gt;cbstrlink.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.TransparentCheckBox, graphcontrol, Version=1.0.2927.25824, Culture=neutral, PublicKeyToken=null</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbstrlink.Parent" xml:space="preserve">
     <value>gbClone</value>
@@ -1003,10 +1006,10 @@
     <value>NoControl</value>
   </data>
   <data name="cbDesc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 280</value>
+    <value>368, 148</value>
   </data>
   <data name="cbDesc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>299, 24</value>
+    <value>200, 24</value>
   </data>
   <data name="cbDesc.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -1014,11 +1017,14 @@
   <data name="cbDesc.Text" xml:space="preserve">
     <value>Change Description</value>
   </data>
+  <data name="cbDesc.ToolTip" xml:space="preserve">
+    <value>This option will instruct OW to open a special window, at the end of the cloning process, where you can edit the name, the cost and the description of your new object. IMPORTANT: when checked, this option will allow you to edit the description in the US English, and will remove all the other translations.</value>
+  </data>
   <data name="&gt;&gt;cbDesc.Name" xml:space="preserve">
     <value>cbDesc</value>
   </data>
   <data name="&gt;&gt;cbDesc.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.TransparentCheckBox, graphcontrol, Version=1.0.2927.25824, Culture=neutral, PublicKeyToken=null</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbDesc.Parent" xml:space="preserve">
     <value>gbClone</value>
@@ -1033,10 +1039,10 @@
     <value>NoControl</value>
   </data>
   <data name="cbOrgGmdc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 256</value>
+    <value>368, 120</value>
   </data>
   <data name="cbOrgGmdc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>299, 24</value>
+    <value>200, 24</value>
   </data>
   <data name="cbOrgGmdc.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -1044,11 +1050,15 @@
   <data name="cbOrgGmdc.Text" xml:space="preserve">
     <value>Reference original Mesh</value>
   </data>
+  <data name="cbOrgGmdc.ToolTip" xml:space="preserve">
+    <value>When checked, OW will create a clone without the data related to the mesh: the original (Maxis) mesh will be used ("referenced"), instead.
+Uncheck the option to include the mesh in the resulting package.</value>
+  </data>
   <data name="&gt;&gt;cbOrgGmdc.Name" xml:space="preserve">
     <value>cbOrgGmdc</value>
   </data>
   <data name="&gt;&gt;cbOrgGmdc.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.TransparentCheckBox, graphcontrol, Version=1.0.2927.25824, Culture=neutral, PublicKeyToken=null</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbOrgGmdc.Parent" xml:space="preserve">
     <value>gbClone</value>
@@ -1063,22 +1073,26 @@
     <value>NoControl</value>
   </data>
   <data name="cbRemTxt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 112</value>
+    <value>24, 100</value>
   </data>
   <data name="cbRemTxt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>505, 24</value>
+    <value>310, 24</value>
   </data>
   <data name="cbRemTxt.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
   <data name="cbRemTxt.Text" xml:space="preserve">
-    <value>Rem. non default Languages from References</value>
+    <value>Rem. All Languages from References except US</value>
+  </data>
+  <data name="cbRemTxt.ToolTip" xml:space="preserve">
+    <value>This option will remove all the translations in the text references (e.g. the object description, the text messages, etc.). Object Workshop will retain the text only from the US English language. If you have created a new object and plan to provide the description in US English only, set this option checked.
+Uncheck the option if your object will contain text references in multiple languages.</value>
   </data>
   <data name="&gt;&gt;cbRemTxt.Name" xml:space="preserve">
     <value>cbRemTxt</value>
   </data>
   <data name="&gt;&gt;cbRemTxt.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.TransparentCheckBox, graphcontrol, Version=1.0.2927.25824, Culture=neutral, PublicKeyToken=null</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbRemTxt.Parent" xml:space="preserve">
     <value>gbClone</value>
@@ -1093,10 +1107,10 @@
     <value>NoControl</value>
   </data>
   <data name="cbanim.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 208</value>
+    <value>368, 64</value>
   </data>
   <data name="cbanim.Size" type="System.Drawing.Size, System.Drawing">
-    <value>299, 24</value>
+    <value>200, 24</value>
   </data>
   <data name="cbanim.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -1104,11 +1118,14 @@
   <data name="cbanim.Text" xml:space="preserve">
     <value>Pull Animations</value>
   </data>
+  <data name="cbanim.ToolTip" xml:space="preserve">
+    <value>When checked, SimPe will pull any ANIM files related to the original object</value>
+  </data>
   <data name="&gt;&gt;cbanim.Name" xml:space="preserve">
     <value>cbanim</value>
   </data>
   <data name="&gt;&gt;cbanim.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.TransparentCheckBox, graphcontrol, Version=1.0.2927.25824, Culture=neutral, PublicKeyToken=null</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbanim.Parent" xml:space="preserve">
     <value>gbClone</value>
@@ -1123,10 +1140,10 @@
     <value>NoControl</value>
   </data>
   <data name="cbwallmask.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 184</value>
+    <value>368, 36</value>
   </data>
   <data name="cbwallmask.Size" type="System.Drawing.Size, System.Drawing">
-    <value>299, 24</value>
+    <value>200, 24</value>
   </data>
   <data name="cbwallmask.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -1134,11 +1151,15 @@
   <data name="cbwallmask.Text" xml:space="preserve">
     <value>Pull Wallmasks (by Numenor)</value>
   </data>
+  <data name="cbwallmask.ToolTip" xml:space="preserve">
+    <value>This option is useful when cloning doors, windows and arches. The "Wallmasks" creates a "hole" in the wall when you place a door/window onto it.
+When the option is checked, SimPe will scan the game packages in order to find any wallmasks related to the object that is being cloned, and will include them in the clone. If you are not cloning a door/window/arch, SimPe simply won't find (nor include) any wallmask, so you can always leave this option checked.</value>
+  </data>
   <data name="&gt;&gt;cbwallmask.Name" xml:space="preserve">
     <value>cbwallmask</value>
   </data>
   <data name="&gt;&gt;cbwallmask.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.TransparentCheckBox, graphcontrol, Version=1.0.2927.25824, Culture=neutral, PublicKeyToken=null</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbwallmask.Parent" xml:space="preserve">
     <value>gbClone</value>
@@ -1153,7 +1174,7 @@
     <value>NoControl</value>
   </data>
   <data name="cbparent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 136</value>
+    <value>16, 124</value>
   </data>
   <data name="cbparent.Size" type="System.Drawing.Size, System.Drawing">
     <value>299, 24</value>
@@ -1164,11 +1185,17 @@
   <data name="cbparent.Text" xml:space="preserve">
     <value>Create a stand-alone object</value>
   </data>
+  <data name="cbparent.ToolTip" xml:space="preserve">
+    <value>This option is important only for original objects that "borrow" the textures from other objects: beds, armchairs, curtains etc.
+When this option is unchecked: all the external links are preserved, and therefore the cloned object will borrow the textures from the external object.
+If checked, all the external links will be broken, and the external textures will be included in the package. This can be useful in most cases (e.g. if you are cloning a table lamp originally linked to the corresponding floor version), but may lead to troubles (if you create a stand-alone bed, it will not use any more the common beddings).
+The recommendation is always to start with the option in its unchecked state; in case the clone doesn't work correctly (e.g. it doesn't use the custom textures you've prepared for it), then try re-cloning the object with this option checked.</value>
+  </data>
   <data name="&gt;&gt;cbparent.Name" xml:space="preserve">
     <value>cbparent</value>
   </data>
   <data name="&gt;&gt;cbparent.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.TransparentCheckBox, graphcontrol, Version=1.0.2927.25824, Culture=neutral, PublicKeyToken=null</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbparent.Parent" xml:space="preserve">
     <value>gbClone</value>
@@ -1183,7 +1210,7 @@
     <value>NoControl</value>
   </data>
   <data name="cbclean.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 92</value>
+    <value>24, 80</value>
   </data>
   <data name="cbclean.Size" type="System.Drawing.Size, System.Drawing">
     <value>291, 24</value>
@@ -1194,11 +1221,14 @@
   <data name="cbclean.Text" xml:space="preserve">
     <value>Rem. useless Files (by  Numenor)</value>
   </data>
+  <data name="cbclean.ToolTip" xml:space="preserve">
+    <value>This only removes a few useless Material Overrides from multi-model objects clones (e.g. fireplaces...) but still leaves most junk behind</value>
+  </data>
   <data name="&gt;&gt;cbclean.Name" xml:space="preserve">
     <value>cbclean</value>
   </data>
   <data name="&gt;&gt;cbclean.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.TransparentCheckBox, graphcontrol, Version=1.0.2927.25824, Culture=neutral, PublicKeyToken=null</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbclean.Parent" xml:space="preserve">
     <value>gbClone</value>
@@ -1213,7 +1243,7 @@
     <value>NoControl</value>
   </data>
   <data name="cbfix.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 72</value>
+    <value>12, 60</value>
   </data>
   <data name="cbfix.Size" type="System.Drawing.Size, System.Drawing">
     <value>303, 24</value>
@@ -1224,11 +1254,14 @@
   <data name="cbfix.Text" xml:space="preserve">
     <value>Fix Cloned Files (by wes_h)</value>
   </data>
+  <data name="cbfix.ToolTip" xml:space="preserve">
+    <value>When checked, SimPe will automatically invoke the Scenegraph Rename Wizard, that will let you give a unique Model Name to your object; SimPe will also perform a "Fix Integrity" on the package, it will lose the LIFOs by merging them into the TXTRs and doing a lot of other things.</value>
+  </data>
   <data name="&gt;&gt;cbfix.Name" xml:space="preserve">
     <value>cbfix</value>
   </data>
   <data name="&gt;&gt;cbfix.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.TransparentCheckBox, graphcontrol, Version=1.0.2927.25824, Culture=neutral, PublicKeyToken=null</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbfix.Parent" xml:space="preserve">
     <value>gbClone</value>
@@ -1243,7 +1276,7 @@
     <value>NoControl</value>
   </data>
   <data name="cbdefault.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 160</value>
+    <value>16, 148</value>
   </data>
   <data name="cbdefault.Size" type="System.Drawing.Size, System.Drawing">
     <value>299, 24</value>
@@ -1252,13 +1285,17 @@
     <value>11</value>
   </data>
   <data name="cbdefault.Text" xml:space="preserve">
-    <value>Pull only default Color</value>
+    <value>Pull only default Colour</value>
+  </data>
+  <data name="cbdefault.ToolTip" xml:space="preserve">
+    <value>If checked, SimPe will include in the clone only 1 recolour for each re-colourable subset; in particular, SimPe will choose the recolour that is marked "True" in the corresponding Material Override.
+If you uncheck this option, all the existing Maxis recolours will be included into the clone.</value>
   </data>
   <data name="&gt;&gt;cbdefault.Name" xml:space="preserve">
     <value>cbdefault</value>
   </data>
   <data name="&gt;&gt;cbdefault.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.TransparentCheckBox, graphcontrol, Version=1.0.2927.25824, Culture=neutral, PublicKeyToken=null</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbdefault.Parent" xml:space="preserve">
     <value>gbClone</value>
@@ -1273,7 +1310,7 @@
     <value>NoControl</value>
   </data>
   <data name="cbgid.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 48</value>
+    <value>12, 36</value>
   </data>
   <data name="cbgid.Size" type="System.Drawing.Size, System.Drawing">
     <value>303, 24</value>
@@ -1284,11 +1321,15 @@
   <data name="cbgid.Text" xml:space="preserve">
     <value>Set Custom Group ID (0x1c050000)</value>
   </data>
+  <data name="cbgid.ToolTip" xml:space="preserve">
+    <value>When checked, SimPe will assign all the scenegraphic files to the Group 0x1C050000. All the other files will be assigned to the Private Group 0xFFFFFFFF.
+If unchecked, all the original group ID assignments will be preserved.</value>
+  </data>
   <data name="&gt;&gt;cbgid.Name" xml:space="preserve">
     <value>cbgid</value>
   </data>
   <data name="&gt;&gt;cbgid.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.TransparentCheckBox, graphcontrol, Version=1.0.2927.25824, Culture=neutral, PublicKeyToken=null</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbgid.Parent" xml:space="preserve">
     <value>gbClone</value>
@@ -1304,42 +1345,41 @@
   </data>
   <data name="gbClone.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        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
-        gg==
+        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
 </value>
   </data>
   <data name="gbClone.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 80</value>
   </data>
   <data name="gbClone.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 44, 4, 4</value>
+    <value>4, 28, 4, 4</value>
   </data>
   <data name="gbClone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 312</value>
+    <value>282, 178</value>
   </data>
   <data name="gbClone.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1348,7 +1388,7 @@
     <value>gbClone</value>
   </data>
   <data name="&gt;&gt;gbClone.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.XPTaskBoxSimple, graphcontrol, Version=1.0.2927.25824, Culture=neutral, PublicKeyToken=null</value>
+    <value>Ambertation.Windows.Forms.XPTaskBoxSimple, graphcontrol, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;gbClone.Parent" xml:space="preserve">
     <value>wizardStepPanel3</value>
@@ -1366,7 +1406,7 @@
     <value>NoControl</value>
   </data>
   <data name="button3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>206, 48</value>
+    <value>197, 48</value>
   </data>
   <data name="button3.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -1396,7 +1436,7 @@
     <value>13</value>
   </data>
   <data name="cbTask.Items" xml:space="preserve">
-    <value>Recolor</value>
+    <value>Recolour</value>
   </data>
   <data name="cbTask.Items1" xml:space="preserve">
     <value>Clone</value>
@@ -1405,7 +1445,7 @@
     <value>8, 24</value>
   </data>
   <data name="cbTask.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 21</value>
+    <value>264, 21</value>
   </data>
   <data name="cbTask.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1414,7 +1454,7 @@
     <value>cbTask</value>
   </data>
   <data name="&gt;&gt;cbTask.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.FlatComboBox, AdvancedForms, Version=1.0.2529.20889, Culture=neutral, PublicKeyToken=null</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbTask.Parent" xml:space="preserve">
     <value>panel2</value>
@@ -1459,7 +1499,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 80</value>
+    <value>282, 80</value>
   </data>
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1483,7 +1523,7 @@
     <value>8, 8</value>
   </data>
   <data name="wizardStepPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 506</value>
+    <value>282, 424</value>
   </data>
   <data name="wizardStepPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1492,7 +1532,7 @@
     <value>wizardStepPanel3</value>
   </data>
   <data name="&gt;&gt;wizardStepPanel3.Type" xml:space="preserve">
-    <value>SimPe.Wizards.WizardStepPanel, simpe.wizardbase, Version=1.0.2907.21823, Culture=neutral, PublicKeyToken=null</value>
+    <value>SimPe.Wizards.WizardStepPanel, simpe.wizardbase, Version=1.69.7473.5239, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;wizardStepPanel3.Parent" xml:space="preserve">
     <value>wizard1</value>
@@ -1510,7 +1550,7 @@
     <value>Vertical</value>
   </data>
   <data name="tbDesc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 453</value>
+    <value>250, 332</value>
   </data>
   <data name="tbDesc.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1558,7 +1598,7 @@
     <value>96, 48</value>
   </data>
   <data name="tbName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 21</value>
+    <value>178, 21</value>
   </data>
   <data name="tbName.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1682,42 +1722,42 @@
   </data>
   <data name="xpTaskBoxSimple3.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAB8ZJREFUWEe9l31w
-        FOUdxxcrLZAahEqKWl4mgVLlTXuZQK3W2lGHVkdbpiJlILyklPKH1BR1BDpSwpsVdTpDBHkpgUCgQUqR
-        dCAvhEAC5D3k7S7J3eVe9vZ2b2/33t9fv/1tQjC8RGKnwzPzmdv97W+f/ezz232ePWZT1tSXUXvYLB/f
-        cTXzew/NYO532/DCzLU4+h5QcwBt1WW8av78rPvqMHMMM7d91c/51tIzEJxuVFdXiyrVvHn3VSJt3Ljf
-        5a5/N3zp0iXYJB86rpcLWTPHzL2vEqmpqWty128ItZZ/ArC/gqjOZVUzRs6+nxIjHk0bt7p5R4oPpxjA
-        +BxJrGd/9ANmliJRUVExdrCMSqUaefTo0dTBsdzc3NG7du1KGRwrLCxMWb58+ahh30hWBpOt/YjxJk+S
-        hOGnMDWt0f1x6bOLW9q6amiUxg90tGrVql+XlZWVD+54PbWzZ88eHhw7ffr0gc2bN+cNW0BJJIll2l2M
-        N1FMEtos+M0fhNVNJbbvjB2bPtBRdnb2ytLSUi3t37zjnJycrXTBqxR7YCCvoKCgZMuWLUXfSEBJzpzG
-        LFXnMXL4GEl0q+Dv3RibO23MywMdLVr025VHjhzR0f5DA7EV2dl5+fn5isCDA7GPP/ro7Lp164q/sYBy
-        wqq1K4rdhZPhKyAJ9Ry4de/Y2Z7qWl5wXausrjHsOXgwVN/c3GTj+Torz18rq7ps3b1/v6+1vb1Bstvr
-        zCxb+68vS1z7CgocPG9pOlPWWMowE6cMVyZ1dRFvdRsuQNj7CHyHSKJzDuLWzRBNdWjSGHHu4kWYrVZY
-        LRbwPI+6620ov1wNQRRh5ThYBRtq6htQVVcHt9OOmi4vUub8/s/DE0ibnf7XSikg8U5YLxWB/WwCvP8g
-        ietPIG7ZBLu5AZzggZm1wmQh6NfCCbBaRZhM3E04JcbZwLEc2k1ePPri+58PT2D6c1n5zQFwPb3ordfC
-        2FkBft8EeA6SRMsMRIzvw6Cth5Z1Q8faoDML0Jl46AxW6PQcdLpb6e3l0MN6MGfNof8MS+BbP3nz1XNc
-        HEHRApe6A5I3AtlQBWF/GjwHGCSbpyNpeQ8uvgmS7INDssMhEw4JTgWnfAsu2g+EgvjljtLrg9+cIWXG
-        vrFpdSWXgKg3wtrYBrPFDjMfhLmjEubdj8C9nyQapyHJrofMt8AsBsDyElgrQbksK/ZjEWHpww6n5MLK
-        Qg3HMKMfv+coPLZs8wdNtji4LgMs9e0wsjKMRhEGLgSh5xKEfWlwfa5IpCNqfJtq3AqTQIKcTM+DBJOZ
-        hPuQ+qGYU3TiL6VcgEl5fM49BWZv+2KPFAdCAge/rge+oB8+nwd+vwe+EOC1XIVNkdjLIF4/FbDkIujQ
-        wBeIIRDwEj4EFYJfgXgAhT1xMFPmL7inwPN/P3dGCibg1BngUPdAcvogSe5+ZDdkL2A3XgW7Jw2OPSRR
-        N4UWsVx4JQ1scgSi6O7HruCBnfA7PSgxAMxTr+fcU2DhscZalzcGu1oPe4cWAi3Tgs0Nm4LogSh5YSMJ
-        p6WWyvF9yJ+RRO0kxHrXwmZR01xApbJ5+rBRooLL7kWtDRj7yjtb7iUw+u1qQQtqUdaEKGdBJB5DNBr+
-        ightKySpTGJ9v8RuBpHGXyDk1CIaiyMWi94CklFIlD95xaeHvl7guxMnbGuQHYpAUNeLoJlDIKzUNoxA
-        MEx1jSAYukE4irAiYa+Dce90tOe9BLn5AoIeB0kkEYnE+ohGY0jEYghSn6qN/64YvGDdKTP1mRn56kTY
-        64rA3qCGrZuDYA/RMAb6EKUQRCcd88Qg+eOQAgm4o/RMyC70nPoEbdsXgqs4DK8nAgflyY4QEaY5Igx/
-        AFjw8ZUOuugt3xK3Svzw+WfLJOX+gYRei4TLiQSSiFMZFAaGNhqN9JUhEg4jHA4hQsNOgwG/tQedx/JQ
-        VVLc38ltbU2RTmSYUUMvSt9+IWdhg4fOSsbg7+iAR+Dh8nggyzI90TYItG+hBchkMsNgMNC0q0V3dxc0
-        ajU0Gg3NAxZo9Tps3ZoHvV5/h8C28/Yw8+CkzCGfg/Gvb3irgQe9Rj5wl5tg6uLQa5SpMxt6dAK6dTy6
-        dFaoac7v1FvQrmPR2m1CS6ceLR16tHYaKY8WIKuXVkkvnFRKh5NKQESDMeRf8IF5+OnXhhSYvChvu/OG
-        d6KrG4lQmEpAA0LjewdKfABl47am5CcSyZsoh8s7aTKauGDtkAI/fuvEIXqm+lt3N6jod63l/xpsZ4GR
-        Gcs/HFLgxT8Vne/rPBZCsq0FyZAfiXDwTmh1SwzmLjnJSBB9RAnqD4jQH6AExs98d8jvxBE/+8OZ5i8q
-        O3H8QitOnazEiSsa/LNWg+I6op5o1OCkQtNt3Ij35VCucs6Jqxocr6a+KttQdL4FRSWNOFTcisdm5VXR
-        CIy82yg8kPnmycbfbFdj4W4t3jhmxeIvZSwpc2HpRReWVbuw/BpR78KKBlpeG/tRtldQTDm2rIZyq1xY
-        Uu7C4hJHXx8L83V4bWsbXsmtxas5V/DkUxsv08VH37UMKamTXsp4ct7fMp7I+nDerHmfps+dvzPj6Wd2
-        ZqhuI5P2B3P7ceUc5dzZWTvTZxIzMnemT1ftTJ+m2jVqVNqSIQVuTJPK974yWz1841f5/P5/otz9iP8C
-        1dCUA0LlRyUAAAAASUVORK5CYII=
+        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
 </value>
   </data>
   <data name="xpTaskBoxSimple3.Location" type="System.Drawing.Point, System.Drawing">
@@ -1727,7 +1767,7 @@
     <value>4, 44, 4, 4</value>
   </data>
   <data name="xpTaskBoxSimple3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>327, 584</value>
+    <value>282, 463</value>
   </data>
   <data name="xpTaskBoxSimple3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1736,7 +1776,7 @@
     <value>xpTaskBoxSimple3</value>
   </data>
   <data name="&gt;&gt;xpTaskBoxSimple3.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.XPTaskBoxSimple, graphcontrol, Version=1.0.2927.25824, Culture=neutral, PublicKeyToken=null</value>
+    <value>Ambertation.Windows.Forms.XPTaskBoxSimple, graphcontrol, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;xpTaskBoxSimple3.Parent" xml:space="preserve">
     <value>wizardStepPanel5</value>
@@ -1751,7 +1791,7 @@
     <value>8, 8</value>
   </data>
   <data name="wizardStepPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>327, 584</value>
+    <value>282, 463</value>
   </data>
   <data name="wizardStepPanel5.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1760,7 +1800,7 @@
     <value>wizardStepPanel5</value>
   </data>
   <data name="&gt;&gt;wizardStepPanel5.Type" xml:space="preserve">
-    <value>SimPe.Wizards.WizardStepPanel, simpe.wizardbase, Version=1.0.2907.21823, Culture=neutral, PublicKeyToken=null</value>
+    <value>SimPe.Wizards.WizardStepPanel, simpe.wizardbase, Version=1.69.7473.5239, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;wizardStepPanel5.Parent" xml:space="preserve">
     <value>wizard1</value>
@@ -1768,154 +1808,28 @@
   <data name="&gt;&gt;wizardStepPanel5.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="animatedImagelist1.Images" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAhBJREFUOE9jYKAV
-        WLNknvWKhbNzFs6amtVQVaYHtIcdiBkJ2rdm6fyojSsXP960asl/ZLxiwaxr+VlpvkAD+ICYCatB65Yt
-        aIRpOrx3x/8LZ078P3fy6P89WzeADVu/fOGvtMS4YqBmMSBmRjFk7dL5LjDN927f+I8Ozp86BjZk1eK5
-        X1WVlcKAmoVRvAQ0/QhIwY0rFzE0wwROHTkANqQgO30XULMxNFwYGBbOnMIFlPgDkvz37x9OA54/fQw2
-        YHJvxwug5gggFmVISsn8jw/v3r3n/9u3b///+fPn/9cvn8EGAGPmK1AzKCyUQOEgKSoiHJmdnvw/Lyvt
-        /6xZs1DwunXr/t+6dev/z58//799/QpswNT+rg9AfXVArA4ygBeINVvrqx/1d7b837Z50/+zZ8/C8bVr
-        1+AugAVkXmbqbaCeciBWhsUE44Su1iqQ6bs2r/v/8f07jHB4cPc2LCr/qigpbgZqjAdiCXhUSoiLi82Z
-        2n8KFpVnTxz5D9IEwicP74cnqoiQwKtATV1AbAPEXMhpgRVoiE5nc91+YEr8h54SgfH/29/b8yJQw1Qg
-        DgWFHUo6gJrECaS19XS0SoD+PFxbXnyrpqzobmig30kBfv6lQLlmIA4CYnkgZkW2HZkNyjQyQGwNxOFA
-        nAbEKUAcCMSgxANKxiy4NMMDFcjgAGJQcpUGYikgFgRiNnRnAwA2XZVm6b1l0AAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="animatedImagelist1.Images1" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAlFJREFUOE9jYKAW
-        iE9My/fw9NUEmscJxExrlsyzXrFwds7CWVOzGqrK9IBi7EDMiNO+yOj4LKAhTzLTUtqXzJ3+dOPKxf83
-        rVoCxysWzLqWn5XmCzSAD2QBNoP4M9LSD6ekZf5vra/5v23Dmv/nTh37f+7k0f97tm4AG7R++cJfaYlx
-        xUDNYkDMjGLIwpmTPeZOm/i/uLDgf3pm7v+du3b9f/fu3f+/f//+B4HzQMNAhqxaPPerqrJSGFCzMIqX
-        gKYfAeL/+3fv+D9t+oz/WTkFGIacOnIAbEhBdvouoGZjaLgwMCycOYULKPEHJPnz58//Dx8+xGrI86eP
-        wQZM7u14AdQcAcSiYG+sXDhHDSSxd9tGsHN//foFNmT69Jn/586b///GjRtgg79++Qw2ABgzX4HaQGGh
-        BDagp61RGCSxbf1KsAHIhpw+ffr/vXv3wAa8ff0KbMDU/q4PQG11QKwOC0jm1Yvn3QZJPrp/F8WQz58/
-        ///27Rs4MGEBmZeZehuosRyIlWEGME7oaq0CGbBr87r/H9+/gxsCYzy4exsWlX9VlBQ3AzXGA7EEPCol
-        xMXF5kztPwVLPGdPHPkP0gTCJw/vhyeoiJDAq0BNXUBsA8RcyGmBFWiITmdz3X5gKvyHnAqh8f/b39vz
-        IlDDVCAOBWJJlHQANQmUD7T1dLRKgP48XFtefKumrOhuaKDfSQF+/qVAuWYgDgJieSBmRbYdmQ3KNDJA
-        bA3E4UCcBsQpQBwIxKDEA0rGLLg0wwMVyOAAYlBylQZiKSAWBGI2dGcDABo+m98QlMq1AAAAAElFTkSu
-        QmCC
-</value>
-  </data>
-  <data name="animatedImagelist1.Images2" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAkxJREFUOE+Fkm1I
-        U1EYx7NlL37IQlJ7gWj2AiVJ+NE+FPUlomKRJX4oLLc2rYyMjEpBpKhVLMhBDZutOXNmOhMkBDHYiDaI
-        EFZIl6ulRFHr9joWa9vT/zlwL87SDvy4597/+f/Puc95dLNmGBVHzN/H345JsVgshWUKoJnWp2ldbc6S
-        w5WWX9u2buko3lRUDjELZPw3oMvTWt7rdU886mwjo6majluMdO1SI7U7b72qqTLtQsBCMPufQd3tdxvZ
-        yPgHH5PJfIzqz5+lZttV8nXco577rrip4mAtzLlAlxby0NO6XTWPSiPEw1xVQw6Hg4LBID1/FhDBne47
-        0TUF+v0w56T9EtIDvGAkPCzMUwMSiQSFAk9EyMnqowMwF4N54hSu281ZEBIsplKpaQPev5sQATevX/4A
-        WxlYIgK8rpa1LAz292pmnvj9AfL5fBQOhymZTFL05w8R4HLYo7BxLfQiAFXOYaG/x5sWoCgKybJMkUhE
-        nOzzp48iwG6zfoWtAaxTC6l74HZKLI6PyVoI7xqPx8XuPF6EnoqAExajBGMdKFADMm5YL55jcaCvm759
-        UdJOwi9vZEmYUezkav2qPhgPgXztKvPz8nJb7LaQepV8bWxigv4hYWbK9hlewmQFmwF3pzYyEVJ4palh
-        CJ2YUg3qE/f/e8/OHcNYbQelYCn4q7UX4OOGjYXrT+M//fV1ta8vnDkllxp2BxdlZ3ugNYG9YCXInLz7
-        5Dk3xwpQAg4AE6gEBsDNw208ZzqzVlRM5gNu1+VgGVgM5k499h/Kk6DZ9FE/MwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="animatedImagelist1.Images3" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAlFJREFUOE+1k2tI
-        U2EYx5Wyi0xNVmoXiEwSSvzSRyuQIogwWyhdCDXSRSsmqSlILjc1cgVbsAna0q256c5MM8lFJH7YhC2W
-        JLSQxlKsLzHoMogNlnv6vwfO2IU+9sIPznvO+f3f2/NmZPyvNjE6XDFuenzTNKSXdXe2l2OczSCTjVd/
-        RXq78vjJEjxuSRt/wjJyadpm/vKCG6VExo1DH5tl0qrLdVcH6hqaFsXi7ccg704KmLQalYLknHtF771u
-        WvQs0JuXz/kw1d3u9fqGxq8ikegaxGqwNx7wzDJyQpA/+5cptWk1WpLLb1GLXBbJzc15BLES5MQDpsZM
-        Lhaw/GEpTbZYbdSlUNH9XhW1Nd+gmrNVbohH43tgGtRlQ/7DAmKxWFKAIHN2Ow3odaTp76UHfcpvkC+C
-        HfwMbCbDASbPzU4nydFolKxjNnI4HMRxHC24nMQ9NZBxUPcbWiso5gMe3lOKWcDslC0pgM0mGAyS1+sl
-        n89Ha6srhBMivUb9E5oClAp7sMFuHvazkLWVQFJIJBKhUChE4XCYPxH2j/x6kx9iB9gvBGRq1X2d7OPr
-        mUn69eN72kauBvy8jM1eLyneN8PqCRTFT6GosLDAoNe8FY7yndtFTGJ4nPPxorpQI/FBUoMjIDuxkLIQ
-        Utbfo5jHOmOplciZn0SrT59agqAHtWAn4Es7sW1F51B52cE2rNPZ1dH66U57S6BWcsazLS/Pgm894Bxg
-        FZiVKgt9dmn2gApwHkhBI5CAw6AAbPyXLLxnU2M3TQzYhdkF8sGm1Gn/BeruoLc5JQzBAAAAAElFTkSu
-        QmCC
-</value>
-  </data>
-  <data name="animatedImagelist1.Images4" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgVJREFUOE9jYKAV
-        WLNknvWKhbNzFs6amtVQVaYHtIcdiBkJ2rdm6fyojSsXP960asl/ZLxiwaxr+VlpvkAD+ICYCatB65Yt
-        aIRpOrx3x/8LZ078P3fy6P89WzeADVu/fOGvtMS4YqBmMSBmRjFk7dL5LjDN927f+I8Ozp86BjZk1eK5
-        X1WVlcKAmoVRvAQ0/QhIwY0rFzE0wwROHTkANqQgO30XULMxNFwYGBbOnMIFlPgDkvz37x9OA54/fQw2
-        YHJvxwug5gggFgV7Y+XCOWogib3bNmJobm3r+p+UkokTgw3oaWsUBhmwbf1KDAPevHnzf//+/f8XLFjw
-        v7+v9392evL/iJDAb0BtG4G4FhaQzKsXz7sNMuTR/bsohnz79u3//fv3/1+4cOH/skXz//d3tvwPDfR7
-        BNQ4CYj9YAYwTuhqrQIZsGvzuv8f37/DcMmDu7dhUflXRUlxM1BjPBBLwKNSQlxcbM7U/lOwqDx74sh/
-        kCYQPnl4PzxRAZ1/FaipC4htgJgLOS2wAg3R6Wyu2w9Mif/QUyIw/n/7e3teBGqYCsShQCyJkg6gJnEC
-        aW09Ha2SvMzUw7XlxbdqyoruAv18UoCffylQrhmIg4BYHohZkW1HZoMyjQwQWwNxOBCnAXEKEAcCMSjx
-        gJIxCy7N8EAFMjiAGJRcpYFYCogFgZgN3dkA9aqfK7LGo84AAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="animatedImagelist1.Images5" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAklJREFUOE9jYKAV
-        WLNknvWKhbNzFs6amtVQVaYHtIcdiBkJ2rdm6fyojSsXP960asl/ZLxiwaxr+VlpvkAD+ICYCatB65Yt
-        aIRpOrx3x/8LZ078P3fy6P89WzeADVu/fOGvtMS4YqBmMSBmRjFk7dL5LjDN927f+I8Ozp86BjZk1eK5
-        X1WVlcKAmoVRvAQ0/QhIwY0rFzE0wwROHTkANqQgO30XULMxNFwYGBbOnMIFlPgDkvz37x9OA54/fQw2
-        YHJvxwug5gggFgV7Y+XCOWogib3bNqJo/vv37//JU6b/v3v37v8vX778//zpI9gAYMx8BWoDhYUS2ICe
-        tkZhkMS29SsxbN+2fef/vPyS/wcOHPh/9/at/8AY+j+1v+sDUFsdEKvDApJ59eJ5t0GGPLp/F8WQt2/f
-        /p89Z97/rJyC/zOnTv6/bP7M/7kZKbeBGsuBWBlmAOOErtYqkAG7Nq/7//H9O7ghv379+v/w4cP/HR0d
-        /1NSM/8311X9VZSX2wHUmADEEvColBAXF5sztf8ULCrPnjjy/8Hd22B8dP/u/3OnTfxfXFjwPzY++Y+g
-        oNAGoEZPIOZBTgusQEN0Opvr9gP9+Q89JS5fMOu3i4PdNV09wwvRsUmfZGTkQC4QQklMQA4nEGvr6WiV
-        5GWmHq4tL75VU1Z0NzTQ76QAP/9SoFwrEKcZGZv1cHFxhwPZiugGgPigTCMDxNZADFKUBsQpQBwIxKDE
-        Iw3ECiCLgFgcmwEgMVCu4wBiUHIFaZACYkEgZoPKsUDlWQHukaKNWs4IHAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="animatedImagelist1.Images6" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAkNJREFUOE9jYKAV
-        WLNknvWKhbNzFs6amtVQVaYHtIcdiBkJ2rdm6fyojSsXP960asl/ZLxiwaxr+VlpvkAD+ICYCatB65Yt
-        aIRpOrx3x/8LZ078P3fy6P89WzeADVu/fOGvtMS4YqBmMSBmRjFk7dL5LjDN927f+I8Ozp86BjZk1eK5
-        X1WVlcKAmoVRvAQ0/QhIwY0rFzE0wwROHTkANqQgO30XULMxNFwYGBbOnMIFlPgDkvz37x9OA54/fQw2
-        YHJvxwug5gggFgV7Y+XCOWogib3bNqJofvTo8f/tO3b9//Tp0/+fP3/+//rlM9gAYMx8BWoDhYUS2ICe
-        tkZhkMS29StRDDh95uz/tvbu/xcuXPj/+vXr/29fvwIbMLW/6wNQWx0Qq8MCknn14nm3QZKP7t+FG3Li
-        xKn/9Y0t/zdt2vT//v37/2EBmZeZehuosRyIlWEGME7oaq0CGbBr87r/H9+/Axty7PiJ/7V1Tf9Xrlz5
-        /+D+vbCo/KuipLgZqDEeiCXgUSkhLi42Z2r/KVhUnj1x5P+mDRv+l5VX/W9trP8/a3Iv2ICIkMCrQE1d
-        QGwDxFzIaYEVaIhOZ3PdfmBK/AcO7b6e/zk5ef/LCnP/T+pp++Pv7XkRqGEqEIcCsSRKOoCaxAmktfV0
-        tEqA/jycn531LD4h+YexkcFtXh6ejUC5ZiAOAmJ5IGZFth2ZDco0MkBsbWxq3h8QFHYXyJ4BxJlADEo8
-        oGTMgkszPFCBDA47B2d3VzevWdAA0wfSbOjOBgB3DZ5acjxyPwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="animatedImagelist1.Images7" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAlZJREFUOE9jYKAV
-        WLNknvWKhbNzFs6amtVQVaYHtIcdiBkJ2rdm6fyojSsXP960asl/ZLxiwaxr+VlpvkAD+ICYCatB65Yt
-        aIRpOrx3x/8LZ078P3fy6P89WzeADVu/fOGvtMS4YqBmMSBmRjFk7dL5LjDN927f+I8Ozp86BjZk1eK5
-        X1WVlcKAmoVRvAQ0/QhIwY0rFzE0wwROHTkANqQgO30XULMxNFwYGBbOnMIFlPgDkvz37x9OA54/fQw2
-        YHJvxwug5gggFgV7Y+XCOWogib3bNqJoXrlq7f8TJ0/9//Tp0/8/f/78//rlM9gAYMx8BWoDhYUS2ICe
-        tkZhkMS29SvhBixdtvJ/bV3T/7379v2/efPm/x8/fvx/+/oV2ICp/V0fgNrqgFgdFpDMqxfPuw2SfHT/
-        7n+Y5lWrV/9fu3bt/9u3b///9evXf1hA5mWm3gZqLAdiZZgBjBO6WqtABrS3tv2vqq7/D9K8bNmy/2fP
-        nv3/+fPn//fv3IJF5V8VJcXNQI3xQCwBj0oJcXGx8tKyF3l5hf8rigv+tzY1/N+yacP/q5cv/j9xaB88
-        UUWEBF4FauoCYhsg5oIbEJ+QOik6Nul6aJD/1eK8rH/9nS3/Vy2a8x+YKmHx/9vf2/MiUMNUIA4FYkmU
-        dBAcGhnILyAASqr5cjIy/elJccdqy4tv1ZQV3Q0N9DspwM+/FCjXDMRBQCwPxKxw26EMXmioakFpkBPD
-        gTgNiFOAOBCIQYkHlIxZ0DWD+KC0DcpxIJNBmYUDiEHJVRqIpYBYEIjZUJwN5AAAaZqa/+KzyOQAAAAA
-        SUVORK5CYII=
-</value>
-  </data>
-  <data name="animatedImagelist1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="pbWait.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 16</value>
   </data>
-  <data name="animatedImagelist1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="pbWait.Size" type="System.Drawing.Size, System.Drawing">
     <value>16, 16</value>
   </data>
-  <data name="animatedImagelist1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="pbWait.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>Zoom</value>
   </data>
-  <data name="&gt;&gt;animatedImagelist1.Name" xml:space="preserve">
-    <value>animatedImagelist1</value>
+  <data name="pbWait.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;animatedImagelist1.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.AnimatedImagelist, graphcontrol, Version=1.0.2927.25824, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;pbWait.Name" xml:space="preserve">
+    <value>pbWait</value>
   </data>
-  <data name="&gt;&gt;animatedImagelist1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;pbWait.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pbWait.Parent" xml:space="preserve">
     <value>pnWait</value>
   </data>
-  <data name="&gt;&gt;animatedImagelist1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;pbWait.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="lbfinished.Font" type="System.Drawing.Font, System.Drawing">
@@ -1958,18 +1872,23 @@
     <value>NoControl</value>
   </data>
   <data name="lberr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 16</value>
+    <value>32, 8</value>
   </data>
   <data name="lberr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>280, 120</value>
+    <value>400, 168</value>
   </data>
   <data name="lberr.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="lberr.Text" xml:space="preserve">
-    <value>SimPE was unable to create the Object. A possible reason could be, that the selected Object is not CEP enabled, or that you did Interrupt the creation process.
+    <value>SimPe was unable to create the Object.
+	A possible reason could be that you Interrupted the creation process.
 
-Another reason might be, that the selected Object "borrows" it's Textures from a Parent Object. In that case you would need to work with the Parent Object.</value>
+Another reason might be that the selected Object is not a recolour-able Object.
+
+Another reason might be that the selected Object "borrows" it's Textures from a Parent Object. In that case you would need to work with the Parent Object.
+
+Another reason might be SimPe's file table has not been configured to load some required parts</value>
   </data>
   <data name="&gt;&gt;lberr.Name" xml:space="preserve">
     <value>lberr</value>
@@ -2056,7 +1975,7 @@ Another reason might be, that the selected Object "borrows" it's Textures from a
     <value>0, 0</value>
   </data>
   <data name="pnWait.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 136</value>
+    <value>595, 180</value>
   </data>
   <data name="pnWait.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2080,7 +1999,7 @@ Another reason might be, that the selected Object "borrows" it's Textures from a
     <value>8, 8</value>
   </data>
   <data name="wizardStepPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 506</value>
+    <value>595, 424</value>
   </data>
   <data name="wizardStepPanel4.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2089,7 +2008,7 @@ Another reason might be, that the selected Object "borrows" it's Textures from a
     <value>wizardStepPanel4</value>
   </data>
   <data name="&gt;&gt;wizardStepPanel4.Type" xml:space="preserve">
-    <value>SimPe.Wizards.WizardStepPanel, simpe.wizardbase, Version=1.0.2907.21823, Culture=neutral, PublicKeyToken=null</value>
+    <value>SimPe.Wizards.WizardStepPanel, simpe.wizardbase, Version=1.69.7473.5239, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;wizardStepPanel4.Parent" xml:space="preserve">
     <value>wizard1</value>
@@ -2107,7 +2026,7 @@ Another reason might be, that the selected Object "borrows" it's Textures from a
     <value>8, 8, 8, 8</value>
   </data>
   <data name="wizard1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 522</value>
+    <value>611, 440</value>
   </data>
   <data name="wizard1.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2116,7 +2035,7 @@ Another reason might be, that the selected Object "borrows" it's Textures from a
     <value>wizard1</value>
   </data>
   <data name="&gt;&gt;wizard1.Type" xml:space="preserve">
-    <value>SimPe.Wizards.Wizard, simpe.wizardbase, Version=1.0.2907.21823, Culture=neutral, PublicKeyToken=null</value>
+    <value>SimPe.Wizards.Wizard, simpe.wizardbase, Version=1.69.7473.5239, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;wizard1.Parent" xml:space="preserve">
     <value>xpGradientPanel1</value>
@@ -2133,15 +2052,15 @@ Another reason might be, that the selected Object "borrows" it's Textures from a
   <data name="biPrev.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAcJJREFUOE9jYBgF
-        mCFgWCpll3dgddLk29e5RLUkkBXw598XsCy/Nie1//4jaW0vRxTNnNEnZHSLr7anz7//euHpH//X3vj8
-        xSltWj1YkV8nr0bntayEtZ/vzTz6+f+CfW/+OSZNXwyW49RPlxbKuN8tV3H7bdKqD/8r937/33D05//+
-        I+/+Otdv2yVavTleYfGHK/GH3v2pOv7nf83uL/97dn/9716++zxQOyODbOiMJX6Lfv3fcOvX/ykXf/8P
-        2vP3f+zx//8LLvz/77//3d/gfe/+Lb757t+Me///Bx38/z9y39//Gbt+//eYcf9z9aKLNQxsBsm1EpXX
-        fxmv+/vf99T//4ue/v+/7Nn//+33gQbse/1Pdcvbr9bn/v4PvAOUe/H//9In//83XgHK7f3/XyulvxPk
-        C1YGVgF9NvPwav6KVcclNz395XT3//+YV///L//2/79Ccnkvk5ZtvEjl/N1Ka199sb70/38A0IBmoAVG
-        2QtPoccCN4OIjB1fcF6v9LyD12zf/f8vV9zQDlXExsAvYszlllAv2rjptMb2f/9VKzYfx5eQRdjUjUNt
-        YprLsCjiNfYvbzAOrmoczQkMDADqqOjSB8whZQAAAABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHHSURBVDhPYxgFWIBhqZRd3oHVSZNvX+cS1ZKAioIBf/59
+        Acvya3NS++8/ktb2coQKQwBn9AkZ3eKr7enz779eePrH/7U3Pn9xSptWD5b06+TV6LyWlbD2872ZRz//
+        n7j+7j/HpOmLwXKc+unSQhn3u+Uqbr9NWvXhf+Xe7/8bjv7837///l/n+m27RKs3xyss/nAl/tD9P1XH
+        //yv2f3lf8/ur//dy3efB2pnZJANnbHEb9Gv/xtu/fo/5eLv/0F7/v6PPf7/f8GF//8dgIYEr7//b8qp
+        +/9m3Pv/P+jg//+R+/7+z9j1+7/HjPufqxddrGFgM0iulai8/st43d//vqf+/1/09P//Zc/+/2+///+/
+        //o7/1S3vP1qfe7v/8A7QLkX//8vffL/f+MVoNze//+1Uvo7Qb5gZWAV0GczD6/mr1h1XHLT019Od///
+        j3n1///yb///KySX9zJp2caLVM7frbT21RfrS///BwANaAZaYJS98BTIAGTAzSAiY8cXnNcrPe/gNdt3
+        ///LFTe0Q+XYGPhFjLncEupFGzed1tj+779qxebjUDmsQIRN3TjUJqa5DMpHBrzG/uUNxsFVjVD+CAYM
+        DAAHFef7Uf2XTgAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="biPrev.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -2159,17 +2078,16 @@ Another reason might be, that the selected Object "borrows" it's Textures from a
   <data name="biNext.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAhhJREFUOE/dk91L
-        k1Ecxw/YXNYTzubMsFZtuBbGRhJJUYJEkOZ6rBxKY4kJdVM6VrHRConmkBFEUC5ouC6iRa/CZGlzPho1
-        3cU0g3yhiOFrr86LxtMYPt/OLtZF2j/ggXNzPj++5/f9ne8hZGWsTdrqY0dMfh+R7NT860icV6jQ2yND
-        jKqK/a/bUr3NEfwEWLyzsULWdpkwG3PTxVLNYZ1/QkDz40lh18nb9wijUi8RYq1POu/3x3FngIc9AlQ+
-        iE4wB0+fSBVqDDZr+xjgCvNwvl7EcdfUvKzUYqFoTVqIMbaNTl3v+oULr+JofLOI2kFA6QfkLT0drGdo
-        0DkKWENJnO/mYXwWxzbHAvLqucg6VXk5ESmLi+s80eTZQBI1nIDKfsA8ArgngZfzQMN7wPQOMFJRXY+A
-        Ri6Bp+MJhGYEbD/zPEDWV5xrYINAVR9gp6165wB/DDhAb93xFjg6LKCWCnqmgcB3YICyEh9QcINH1qHW
-        h0Rldt9KwfACoP8A7KFb8eIbL714t0tubuu4+fGHMP4bOEWHvJ92I2+fFnIu+UbE2uoWQjLVZLcr1F02
-        DBSFgQ3eaExS1/woQ7pZRweUqTZduVoDYN8XQMZ9TeQ2uXpFW7T1lBX8fQnZNS4odQQ/ry0ztJLVOXsp
-        EKdhvsXpUHJjPyUGszsjX1FBz7OXZkEkSYWnaNmQiLO3klVZJZSJVsaXWdbFH5f5EpODpP5OAAAAAElF
-        TkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIcSURBVDhP3ZL9S1NRGMcP2FzWDWdzZlirNlwLYyOJpChB
+        IkhzXSuH0lhiQv1SNlax0QqL5pARRFAucLR+iBb0JkyWNtfNqOmgaRa+QS+SvUfOHxq3Mbzfzm2jov4D
+        P3DgnO8Hnufh4ZA5wjJ97a4dlmCAyNbqMtFvpAXFKqMzNshoathM9D/lRocr/BKw+T/Ei1nHCcIszc8o
+        ItdtNwQnBLR0vBDW7b3YQRiNNqP+wNpvdl3tS+BSPw9nDKi+NjnBbN2/R3Q6k8N+ZQzwRHm4H81it2dq
+        WlFus1G1QPQijLl9dOps93ccvZ9A8+NZ1A8A6iCgbO3tZH2DA+5RwB5J4XAPD/PtBFa5ZlDQyMUWaSor
+        iURdWtrge5M6GEqhjhNQ3QdYhwHvW+DeNND0HLA8A8y0qKFXQDOXxK3xJCLvBaw+cCdEFlcdamLDQM1D
+        wElH9X8EgnFgC+265gmwc0hAPS3oeweEvgL91JUFgKJzPHK2tV0nGqv3giijM4BxBNhAj+ruF15+7HK3
+        0treefrpK2H8B7CPLnkznUZ5fkTIOx4YluprWwnJ1pL1nkhPxRBQEgWW+CfjsoaWG1ny5Qa6m2yt5eSp
+        OgCbPgEK7nMy/4jngWSFvpG6ol/bE1Gc4cJyV/j1wgpTG5mft5FG0rQhpNDmdqm5sW8yk9WbVaiqolFu
+        2vyNRCZ+npL04x+kuSvJvJwyepOkgzkIIT8BxdMSKXvSTM0AAAAASUVORK5CYII=
 </value>
   </data>
   <data name="biNext.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -2187,16 +2105,16 @@ Another reason might be, that the selected Object "borrows" it's Textures from a
   <data name="biFinish.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgVJREFUOE9jYKA7
-        4GdQYuBnUCDXXvGQHpezXm0Wp4EGiJJmiAiDWvoc/+sf/rz+//Tb/f+Rk9yvsQkzaMANYZNg0ASaqYLN
-        VE4FFvPS9WHPbn+88P/Gy3P/H7y7+X/FzQn/5eJ4doHV8yiy2GYvC/iUscr5NacsiwmyIaKGzB71+wO/
-        nHq+7f/hBxv+H3245f/MM2X/9dqE/7PosCxkEDZk88vabP9z2+15/zfdmva/aIf9VzEDZleQIcouXLH1
-        u6P/7bw/8/+mm5P/b7455X/vqej/xh1AzdosG4BK+Bn08vguxW1V+d+4P/j/7HPF/5ddq/ufs9/+p3u9
-        6IqJ58P/r75Z/3/JlbL/8y/n/W897fDfvEvkP7MS8xygZmawS5nVmGda94r8T9oh9T9tm9z/8gMG/9tP
-        Ov/vuej8v/+81//207b/a49r/685pfzfpkPsP7MEcxt6OLEyyzNPcZ4o/r/8uPz//IPS/0uPyvyvOC7z
-        v+qk7P/qM7L/O6/o/HdqU/3PIMCUjzPqWGRY6kLmqAIVa/9vOCf7v+WC3P+2K3L/Z91z+O9fb/CDgY8h
-        imC8s0sxZQYsMvw7+4HN//7b8v9XPQv5H9lv+Rao2Z2gZpgCDimmsJz5pp+3vsz6H9dv+oCBk8GcaM0w
-        hVwSzF4mKfxbGFgZtEnWDNXACKTJzjAkWQoARZXTv2ak7NAAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIMSURBVDhPY6A/4GdQAmIFKI9kIB7S43LWq83iNJAtChEi
+        FogwqKXP8b/+4c/r/0+/3f8fOcn9GpswgwZUloGBTYJBE2imCpSLAjgVWMxL14c9u/3xwv8bL8/9f/Du
+        5v8VNyf8l4vj2QVWwKPIYpu9LOBTxirn15yyLCZgQSgQNWT2qN8f+OXU823/Dz/Y8P/owy3/Z54p+6/X
+        JvyfRYdlIYOwIZtf1mb7n9tuz/u/6da0/0U77L+KGTC7gjQru3DF1q+J/rfz/sz/m25O/r/55pT/vaei
+        /xt3ADVrs2wAKuFn0MvjuxS3VeV/4/7g/7PPFf9fdq3uf9Z++5/u9aIrJp4P/7/6Zv3/JVfK/s+/nPe/
+        9bTDf/Mukf/MSsxzgJqZQZYwMKsxz7TuFfmftEPqf9o2uf/lBwz+t590/t9z0fl//3mv/+2nbf/XHtf+
+        X3NK+b9Nh9h/ZgnmNrBGJMDKLM88xXmi+P/y4/L/8w9K/y89KvO/4rjM/6qTsv+rz8j+77yi89+pTfU/
+        gwBTPlQPJmCRYakLmaMKVKz9v+Gc7P+WC3L/267I/Z91z+G/f73BDwY+hiioUtyAXYop03GR4d/ZD2z+
+        99+W/7/qWcj/yH7Lt0DN7lAlhAGHFFNYznzTz1tfZv2P6zd9wMDJYA6VIh5wSTB7maTwb2FgZdCGCpEM
+        GIGY7AxDAmBgAAALCdOfIcfAtgAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="biFinish.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -2214,19 +2132,19 @@ Another reason might be, that the selected Object "borrows" it's Textures from a
   <data name="biAbort.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAqJJREFUOE+VkwtI
-        U1EYx785nziTlPIR+IKmZUG1rITUIaIZFmWURqhUhqUjKbGXZVpZ1MLSXoRlBS0xfDCdmlq0WbatzMSc
-        CuVIUgIjg0b5SP33bYlUFNqBH+fc7/E793DPFdI0I9jPMTx44ZxQ+wmTwwcTDXD5+HQ9v+VrzsbpgUHg
-        YwsM5Sfe7Aj1TP0vQdnJWDXG+oDPXcC3dzxrUSwLLmWJcEaisoxlary9BbxvYB4CfY+B/kqkR3pmWQQr
-        vYXS6EDbGEcit78Zb68n7VAWYahADLyUA513gJ4SfFKkfXWzI1+6meyjQlceBpXJXzS5Em1mlMuRxR4k
-        YZmDWehqR9J1Yiqoi6XB75d8gNYzwAumNRvxQaLddH6DSAH9PkB/lBNZwPP9wKMk9BRF9FUcDFCmRrrI
-        5rvTAhuiwPJEQTeeJgLN6VyfhsxoFzntChLkoHYt8GAbE8/NcUDTVkDHz6+42LAR7adm9ZvfJlZiLYOW
-        azWbgRoxDkRQPoV5UzzuLgKqIgCVFKgPY0kIS0IB9QqMXnFCURTpuN+5Mc9DA90qoNodKCdkhJOcvJxJ
-        0nvOahwKV6DCC6j1BRr9WOCHiSonGHNpJD9BoGy7Zt8B3WygQQjUEVBCiBGT5U7M7cimAdzj4H1GJWAB
-        F2kYnTXQwnO7FdDG8WecN6MmGA/TsMiWAswCYf1eakGluZmpYpqYVqaNec0YmE6m+6dg4iIhRUKXpz77
-        hS2kQAMniwmmQ4SR07zmM1oERqZ3spk3GT5OOCalam4WTQnSQigHNwgdMhpLWEpX89dQs1FGGJVzo/lo
-        pbwuJOiTyJS4xLIz37tfRogPxT3ZSQP+7rRpMmwzz5nCYwIoOyWIrm9fToWrvWmPLZH/v+6/Eye8ZvRz
-        /FH0Awa3kyDSvBlmAAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKjSURBVDhPlZN7SJNhFMbPnJfCmaSQN3AqNA0LymUppQ4R
+        zbCohWmESmVYOpISu1mmlUUtLO1GaFbQEsML3lOLNsu2ldkwb1COIv3HyCApL5lP59v8I+oP84Ef3/ue
+        c57n/V74PppLoX6OkfHrPFOCvCiEt/bW6jzUeCHBCIwCnzvRW3X63e5wz/TZ1v+p8oxSi+kh4Gs/8OMD
+        P/UoU4VWcEtsnZhDlVlBWry/A3xqZR4DQ0+B4RpkRnvmWAbWSsWK2ED7OEciN0vhL93dTPrxHMJ4kQx4
+        rQb67gGD5fiiyfju5kC+dDvVpwH9BRitTf2my5frs2Ncjq/wIDl7FwoBrg6k2CSjomYljf686gN0nQde
+        MV25SAyW7KNLWyQaGA8CxhPcyAFeHgKepGCwJGqo+khAbXq0i2qpOy2zIwqsShYN4Hky0JHJ8xnIjnVR
+        095gUR6aNgKPdjKJbE4A2ncABt6/4eHereg+u2hYeBul3FYFPc/q4oFGGQ5HUSFFSCkR95cDdVFAgwJo
+        ieCQMA4JB7RrMHXdCSUxZGC/c1uBhw6GEKDeHagiZEWSmrydSd590eYXNK5AtTfQ5Au0+XGAH2bqnGDO
+        p8nCJFGt6eaCHhgWA61ioJmAckKcjCzfxJKeXBrBAy4+ZBpEHMBDOsZgC3Tys9sGMHH9BfcFtATzMZqQ
+        2FOAECBuOUCdqBHMTB3TznQxJuYt08v0MQMMB8xcIaTJ6ZpgtujydtKglZtlhLGjhMlzvOY7WgLMzEdG
+        MPMhE6cIJxVUzzaJ1c3KCKM8lBJ6VDSdtIpuFG6gDrOKMKVmk3C1Cl4XE4wpNJa80nIyf3d/KMyHEp7t
+        oRF/d9o2W7LzcqbIuADKTQumW7tWU/F6Ke3nX9F/tv+PnBhv63I+IvoN4dqOKbPZ2dsAAAAASUVORK5C
+        YII=
 </value>
   </data>
   <data name="biAbort.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -2244,26 +2162,26 @@ Another reason might be, that the selected Object "borrows" it's Textures from a
   <data name="biCatalog.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
-        U2EYx+0PEbtpFwnBKPGKiJImGP0gYhIYs1E5GF5gIxkpA00JRSmMEF0ohMh+GaRWYlqabMVcNdS2QpaI
-        VqiDIYhk397vA6fXhCjyhYdzeM/5fp7vczkAdeL2cwho7v/wWzT1zcN+Pwhr51uY2/y41PQaF+wzKKiZ
-        QvaN58g0jyLd5KEUcQbg+84P/Cm2tncQjW3j68YWIqubCC3FcOJc478BAuGoZM6zvoRnakXEruEIjhc4
-        /g5gZop9c+voGAyLbQIfeBZxLL9BA1jzXvuGbWamuKh+GmmVbswE19A59FEBbmoAG7YbsLtm2mZmiml9
-        cvabNDwpz6YB7LYBoMXCumkJr7LOmnnHzBQ/9X2Bo2cOibm1GsBREbAQiYmw/8lnuCeWkVzcgnZlnw1j
-        3HV/wuNXK6i/9x5Hc6wawDlTXHbLJ+LZUBQPRyKwdQdxutwl1h+NLXHh5Ht1ewBHsiwawCW57HyDAfWR
-        dvl0uhZQ1eqX8aVc7EKLqrum651ATLf9OJx5XQM4KmY0xPzZ0hFAiQJnXB0WwME0E3IsL5B17ZlADqWb
-        NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
-        s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="biCatalog.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="biCatalog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 17</value>
+    <value>68, 22</value>
   </data>
   <data name="biCatalog.Text" xml:space="preserve">
-    <value>Catalog</value>
+    <value>Catalogue</value>
   </data>
   <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -2272,7 +2190,7 @@ Another reason might be, that the selected Object "borrows" it's Textures from a
     <value>2, 0, 2, 0</value>
   </data>
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 25</value>
+    <value>611, 25</value>
   </data>
   <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -2295,11 +2213,23 @@ Another reason might be, that the selected Object "borrows" it's Textures from a
   <data name="xpGradientPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
+  <data name="xpGradientPanel1.EndColour" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="xpGradientPanel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Verdana, 8.25pt</value>
+  </data>
   <data name="xpGradientPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="xpGradientPanel1.MiddleColour" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
   <data name="xpGradientPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 547</value>
+    <value>611, 465</value>
+  </data>
+  <data name="xpGradientPanel1.StartColour" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
   </data>
   <data name="xpGradientPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2308,7 +2238,7 @@ Another reason might be, that the selected Object "borrows" it's Textures from a
     <value>xpGradientPanel1</value>
   </data>
   <data name="&gt;&gt;xpGradientPanel1.Type" xml:space="preserve">
-    <value>SteepValley.Windows.Forms.XPGradientPanel, XPCommonControls, Version=2.2.3.4, Culture=neutral, PublicKeyToken=825f5955c0dc55e8</value>
+    <value>SteepValley.Windows.Forms.XPGradientpanel, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;xpGradientPanel1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2342,47 +2272,45 @@ Another reason might be, that the selected Object "borrows" it's Textures from a
   </data>
   <data name="$this.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAA0lJREFUOE91kw9M
-        jGEcx++UmSG7wxBtmu6w3fybm2XhZcufUHKOzhVFkpIYubTZ/FeH01EipBWjiezWxB3VyvxJSCnWn7uu
-        TmV3Xd2d7q5uvV/Pe/5l43n33e999j7fz77P730eNgAWM9hstrumyRXXPT092TSLZg0jj9PppD08PFzJ
-        sgNxgYGBozQaTZ974a/BAH5B/Pz8RlzMyDLRNA2Hw4HBwUEMDAxALj8nv3Q1R6kqKSv19RVM/C+AfBh+
-        XpFudLlc6Hf0wWG3w0lAToedTlNb6DOvAJX6ZX3cnoTCfybg8XhTks5c/3bpHVBvdAE0EfpR8NaKsAIa
-        4nQzbr2woKZRb9wRE1v8VxJmErc3qTbiIfDpBgV9HoW7VQa8a+9DnXEQBdUu3Kzox4NPwEGVC5W17fad
-        Mbsf/oYYLkw0fcwKoGccMeBDNoXPORTEp4rQnk+h8zaFomoDnrfYkU4gmno7dsUldvH5fF83AJmsMq12
-        Zs+bR4tQpaRQZRChpkuEBpKksZJCc48ITbkUZHeq0dHZCrPuLaRSqXroFrg6OddqM8XCaFLC1K2C2axC
-        b28GrJb9sOYJEBO9GVcVB9BUehFdFQpESoLfDwWM3BhENfVdngBryTjY2u/DSmR7Mh62jPGIWsHHEck8
-        3JEth/r0OjRkhyFy0+qGv5qoTeNYbV8i0PlZhraPmW611iWhtTYU+hOjER3Aw7Hgucjd6Y/G/O2QioJq
-        /vxK0oOWZp7F/mwyOtO80N3Kh1k/A/qTY9BWMAb6umnoVo5DVvxiZEcthP5eLMLF66p/A46ySBNTORbn
-        NW889vaChcRmzMv4k9BGKvO+YpY3FNGLkLlVCF1hPCTikJduAGMuJ9JxOb2vBVOROtnLnaJLPhZryHyb
-        /3RIhL5IEc1GRqTQnUB3fy/CNm2odAMYM7lOZYVcTs8VYlg7byoSRXNwWLoAqWTxoZUCFB8PgvpsCF4o
-        RciN8Udz0X5IJOLSH2fgZ4IULsecIBZCkbgK6vQIVOXsQv3dBHQUH0L30xQY1ckwaw6jo0QGXdE+SLds
-        +XEOmATMNnx8fMqFAt7XoKXzDWFrlmjD1y9rCQ9d3hIeQuoQSYMprWTt0uZtUTuSGf93UbQg/1mLFU0A
-        AAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAADQUlEQVQ4T12SfUhTYRjF7z8RURqbhWkK
+        SW4VjMpohNHHNbAPK63WzDktTTOzzKTMEoK+LLdybaaZliZaqGQZQ7JWqWRYmZVpWvixOV1qbE635aYO
+        d7r3usI6cHju5T6/w7kvLwGA8R9JpLK7mbKsgmsyeQE9069I72RIMm/R3wIDA2czS9M1PcDX13dmVnau
+        weFwwGazYXJyEhMTE5BKr0tv5hUqlNW1NT4+PHdm+Y/+azAjUybX2+12jNtGYbNaMUYFjdmsDonK5Lj6
+        DlCq3rYlHEuscO7/G8DhcBamXL376+YnoE1vBxyUMY7yj2aElTsglBtxv8GE5g6tPiYuvoqBpivheEpL
+        5BPgWwEJbTGJskYdPvWNolU/ifImO+69Hsfjb8AppR31LX3WQ3FHnjhRgtDdcDd8zV3nWHJOhy/5JL4X
+        khCmV6KvhMTAAxKVTTq86bZCToW8aLPicELSIJfL9WFg5BC1avXS4Q9P16JRQaJRJ0DzoADtVJOOehJd
+        wwJ0FpFILW1C/0APjJqPEIvFKgZ2iq2Rss0WQzz0BgUMQ0oYjUqMjGTDbEqGuZiHuNh9yJOdRGdNFgZf
+        yxAlCv7sZBnN2htEdo7emg9ztRssfY9gpmx5Pg+W7HmI3szFOZEfSlM3QXVlJ9rzwxAVuq3dyU5JLWGZ
+        LT8iMfA9Fb1fcxj3tKagp2U3tJfmIHYdBxeCV6LokD86Sg5CLAhqdqJTZ9DdxTFZX3lgQOKKoR4ujNol
+        0F52QW+5C7StizCkcEPu0fXIj14D7cN4RAh3NjlxgjhPUIeYwTKN3fHEM09XmKjaNBzAXYBeatLPm5d5
+        Qha7Fjn7+dBUHIVIGPL2L1xHWcNmjbzneSHDw5VpMSidi+3U+wH/xRDxfZAmWI7sKD7TQPPoOMJC99Qz
+        ATRM3cPaCjZr+DYF7PDzQpJgBc6KVyODWj69hYeqi0FQXQtBg0KAojh/dFUmQyQS1jABNEyHpLFZxkQh
+        H7KkrVDJI9FYeBhtZYnorzqNoZdp0KvOwPjiLPqrU6GpPAFxePjUPaBh+je8vb3r+DzOz6CNq3Rh2zeo
+        I3YFdEfs3tQdEULNaRYHk2rRjo1dB6JjzhAEQfwGFtgjTRcvPRsAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 547</value>
+    <value>611, 454</value>
   </data>
   <data name="$this.TabImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAA0lJREFUOE91kw9M
-        jGEcx++UmSG7wxBtmu6w3fybm2XhZcufUHKOzhVFkpIYubTZ/FeH01EipBWjiezWxB3VyvxJSCnWn7uu
-        TmV3Xd2d7q5uvV/Pe/5l43n33e999j7fz77P730eNgAWM9hstrumyRXXPT092TSLZg0jj9PppD08PFzJ
-        sgNxgYGBozQaTZ974a/BAH5B/Pz8RlzMyDLRNA2Hw4HBwUEMDAxALj8nv3Q1R6kqKSv19RVM/C+AfBh+
-        XpFudLlc6Hf0wWG3w0lAToedTlNb6DOvAJX6ZX3cnoTCfybg8XhTks5c/3bpHVBvdAE0EfpR8NaKsAIa
-        4nQzbr2woKZRb9wRE1v8VxJmErc3qTbiIfDpBgV9HoW7VQa8a+9DnXEQBdUu3Kzox4NPwEGVC5W17fad
-        Mbsf/oYYLkw0fcwKoGccMeBDNoXPORTEp4rQnk+h8zaFomoDnrfYkU4gmno7dsUldvH5fF83AJmsMq12
-        Zs+bR4tQpaRQZRChpkuEBpKksZJCc48ITbkUZHeq0dHZCrPuLaRSqXroFrg6OddqM8XCaFLC1K2C2axC
-        b28GrJb9sOYJEBO9GVcVB9BUehFdFQpESoLfDwWM3BhENfVdngBryTjY2u/DSmR7Mh62jPGIWsHHEck8
-        3JEth/r0OjRkhyFy0+qGv5qoTeNYbV8i0PlZhraPmW611iWhtTYU+hOjER3Aw7Hgucjd6Y/G/O2QioJq
-        /vxK0oOWZp7F/mwyOtO80N3Kh1k/A/qTY9BWMAb6umnoVo5DVvxiZEcthP5eLMLF66p/A46ySBNTORbn
-        NW889vaChcRmzMv4k9BGKvO+YpY3FNGLkLlVCF1hPCTikJduAGMuJ9JxOb2vBVOROtnLnaJLPhZryHyb
-        /3RIhL5IEc1GRqTQnUB3fy/CNm2odAMYM7lOZYVcTs8VYlg7byoSRXNwWLoAqWTxoZUCFB8PgvpsCF4o
-        RciN8Udz0X5IJOLSH2fgZ4IULsecIBZCkbgK6vQIVOXsQv3dBHQUH0L30xQY1ckwaw6jo0QGXdE+SLds
-        +XEOmATMNnx8fMqFAt7XoKXzDWFrlmjD1y9rCQ9d3hIeQuoQSYMprWTt0uZtUTuSGf93UbQg/1mLFU0A
-        AAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAADQUlEQVQ4T12SfUhTYRjF7z8RURqbhWkK
+        SW4VjMpohNHHNbAPK63WzDktTTOzzKTMEoK+LLdybaaZliZaqGQZQ7JWqWRYmZVpWvixOV1qbE635aYO
+        d7r3usI6cHju5T6/w7kvLwGA8R9JpLK7mbKsgmsyeQE9069I72RIMm/R3wIDA2czS9M1PcDX13dmVnau
+        weFwwGazYXJyEhMTE5BKr0tv5hUqlNW1NT4+PHdm+Y/+azAjUybX2+12jNtGYbNaMUYFjdmsDonK5Lj6
+        DlCq3rYlHEuscO7/G8DhcBamXL376+YnoE1vBxyUMY7yj2aElTsglBtxv8GE5g6tPiYuvoqBpivheEpL
+        5BPgWwEJbTGJskYdPvWNolU/ifImO+69Hsfjb8AppR31LX3WQ3FHnjhRgtDdcDd8zV3nWHJOhy/5JL4X
+        khCmV6KvhMTAAxKVTTq86bZCToW8aLPicELSIJfL9WFg5BC1avXS4Q9P16JRQaJRJ0DzoADtVJOOehJd
+        wwJ0FpFILW1C/0APjJqPEIvFKgZ2iq2Rss0WQzz0BgUMQ0oYjUqMjGTDbEqGuZiHuNh9yJOdRGdNFgZf
+        yxAlCv7sZBnN2htEdo7emg9ztRssfY9gpmx5Pg+W7HmI3szFOZEfSlM3QXVlJ9rzwxAVuq3dyU5JLWGZ
+        LT8iMfA9Fb1fcxj3tKagp2U3tJfmIHYdBxeCV6LokD86Sg5CLAhqdqJTZ9DdxTFZX3lgQOKKoR4ujNol
+        0F52QW+5C7StizCkcEPu0fXIj14D7cN4RAh3NjlxgjhPUIeYwTKN3fHEM09XmKjaNBzAXYBeatLPm5d5
+        Qha7Fjn7+dBUHIVIGPL2L1xHWcNmjbzneSHDw5VpMSidi+3U+wH/xRDxfZAmWI7sKD7TQPPoOMJC99Qz
+        ATRM3cPaCjZr+DYF7PDzQpJgBc6KVyODWj69hYeqi0FQXQtBg0KAojh/dFUmQyQS1jABNEyHpLFZxkQh
+        H7KkrVDJI9FYeBhtZYnorzqNoZdp0KvOwPjiLPqrU6GpPAFxePjUPaBh+je8vb3r+DzOz6CNq3Rh2zeo
+        I3YFdEfs3tQdEULNaRYHk2rRjo1dB6JjzhAEQfwGFtgjTRcvPRsAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="&gt;&gt;biPrev.Name" xml:space="preserve">
@@ -2421,10 +2349,16 @@ Another reason might be, that the selected Object "borrows" it's Textures from a
   <data name="&gt;&gt;ilist.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;toolTip1.Name" xml:space="preserve">
+    <value>toolTip1</value>
+  </data>
+  <data name="&gt;&gt;toolTip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>dcObjectWorkshop</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.DockPanel, NetDocks, Version=1.0.2529.20888, Culture=neutral, PublicKeyToken=null</value>
+    <value>Ambertation.Windows.Forms.DockPanel, NetDocks, Version=1.0.2983.24895, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

@@ -45,8 +45,8 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public override void SetFromObjectCacheItem(SimPe.Cache.ObjectCacheItem oci)
 		{
-			if (oci==null) 
-			{
+			if (oci==null)
+            {
 				objd = null;
 				ClearScreen();
 				return;
@@ -83,8 +83,9 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public override void SetFromPackage(SimPe.Interfaces.Files.IPackageFile pkg)
 		{
-			if (pkg==null) 
-			{
+			if (pkg==null)
+            {
+                cpf = null; // CJH
 				objd = null;
 				ClearScreen();
 				return;
@@ -98,9 +99,8 @@ namespace SimPe.Plugin.Tool.Dockable
 				return;
 			}
 
-			objd = null;
-			
-
+            objd = null;
+            cpf = null; // CJH
 			
 			foreach (uint t in xtypes) 
 			{
@@ -128,7 +128,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			if (cpf==null) return;
             this.lbEPs.Visible = this.lbEPList.Visible = false;
 
-			SetupCategories(SimPe.Cache.ObjectCacheItem.GetCategory(SimPe.Cache.ObjectCacheItemVersions.DockableOW, (SimPe.Data.ObjFunctionSubSort)GetFunctionSort(cpf), Data.ObjectTypes.Normal, SimPe.Cache.ObjectClass.XObject));
+            SetupCategories(SimPe.Cache.ObjectCacheItem.GetCategory(SimPe.Cache.ObjectCacheItemVersions.DockableOW, (SimPe.Data.ObjFunctionSubSort)GetFunctionSort(cpf), Data.ObjectTypes.Normal, SimPe.Cache.ObjectClass.XObject));
 
 			pb.Image = null;
 			pb.Image =  GenerateImage(pb.Size, GetXThumbnail(cpf) , true);
@@ -143,8 +143,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			{
 				this.lbName.Text = cpf.GetSaveItem("name").StringValue;
 				this.lbAbout.Text = cpf.GetSaveItem("description").StringValue;
-			}
-						
+			}						
 			
 			this.lbPrice.Text = cpf.GetSaveItem("cost").UIntegerValue.ToString()+" $";
 
@@ -235,21 +234,18 @@ namespace SimPe.Plugin.Tool.Dockable
 		public static Image GetXThumbnail(SimPe.PackedFiles.Wrapper.Cpf cpf)
 		{
             if (xthumbs == null) xthumbs = SimPe.Packages.File.LoadFromFile(System.IO.Path.Combine(PathProvider.SimSavegameFolder, "Thumbnails\\BuildModeThumbnails.package"));			
-
-			SimPe.Packages.File tmbs = xthumbs;
-			Data.XObjFunctionSubSort fss = ObjectPreview.GetFunctionSort(cpf);
-
+            SimPe.Packages.File tmbs = xthumbs;
+            Data.XObjFunctionSubSort fss = ObjectPreview.GetFunctionSort(cpf);
 			uint inst = cpf.GetSaveItem("guid").UIntegerValue;
 			uint grp = cpf.FileDescriptor.Group;
 			if (cpf.GetItem("thumbnailinstanceid")!=null)
 			{
 				inst = cpf.GetSaveItem("thumbnailinstanceid").UIntegerValue;
 				grp = cpf.GetSaveItem("thumbnailgroupid").UIntegerValue;
-			}
-			
+			}			
 
 			//get Thumbnail Type
-			uint[] types = new uint[] {0x8C311262, 0x8C31125E}; //floors, walls
+            uint[] types = new uint[] { };//{0x8C311262, 0x8C31125E}; //floors, walls - no point loading these, this can't find these thumbs anyway
 			if (fss == Data.XObjFunctionSubSort.Roof) types = new uint[] {0xCC489E46};
 			else if (fss == Data.XObjFunctionSubSort.Fence_Rail || fss == Data.XObjFunctionSubSort.Fence_Halfwall) types = new uint[] {0xCC30CDF8};
 			else if (fss == Data.XObjFunctionSubSort.Roof) types = new uint[] {0xCC489E46};
@@ -264,19 +260,27 @@ namespace SimPe.Plugin.Tool.Dockable
 				types = new uint[] {0x4D533EDD};
                 if (nthumbs == null) nthumbs = SimPe.Packages.File.LoadFromFile(System.IO.Path.Combine(PathProvider.SimSavegameFolder, "Thumbnails\\CANHObjectsThumbnails.package"));
 				tmbs = nthumbs;
-			}
-			
+			}			
 			
 			return GetThumbnail(cpf.GetSaveItem("name").StringValue, types, grp, inst, tmbs);
-			//tmbs = null;
-			/*ArrayList types = new ArrayList();			
-			types.Add(0xEC3126C4); // Terrain
-			types.Add(0xCC30CDF8); //fences
-			types.Add(0x8C311262); //floors						
-			types.Add(0xCC489E46); //roof
-			types.Add(0x8C31125E); //wall*/
 		}
 		#endregion
+        /*
+        private void InitializeComponent()
+        {
+            ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // ObjectPreview
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.Name = "ObjectPreview";
+            this.Size = new System.Drawing.Size(550, 231);
+            ((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }*/
 	}
 }
 

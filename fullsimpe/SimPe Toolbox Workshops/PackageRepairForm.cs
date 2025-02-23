@@ -7,12 +7,11 @@ using System.Windows.Forms;
 namespace SimPe.Plugin.Tool.Window
 {
 	/// <summary>
-	/// Zusammenfassung für PackageRepairForm.
+	/// Summary description for PackageRepairForm.
 	/// </summary>
 	class PackageRepairForm : System.Windows.Forms.Form
 	{
 		private SteepValley.Windows.Forms.XPGradientPanel xpGradientPanel1;
-		ThemeManager tm;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox tbPkg;
 		private System.Windows.Forms.Button btBrowse;
@@ -20,26 +19,25 @@ namespace SimPe.Plugin.Tool.Window
 		private System.Windows.Forms.LinkLabel llRepair;
 		internal System.Windows.Forms.PropertyGrid pg;
 		private System.Windows.Forms.LinkLabel llOpen;
+		private System.ComponentModel.ComponentResourceManager resources1;
 		/// <summary>
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
 		public PackageRepairForm()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
 
-			tm = ThemeManager.Global.CreateChild();
-			tm.AddControl(this.xpGradientPanel1);
 
 			Setup(null);
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -60,14 +58,15 @@ namespace SimPe.Plugin.Tool.Window
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(PackageRepairForm));
+			this.resources1 = new System.ComponentModel.ComponentResourceManager(typeof(PreviewForm));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PackageRepairForm));
 			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
 			this.tbs = new Ambertation.Windows.Forms.XPTaskBoxSimple();
 			this.llOpen = new System.Windows.Forms.LinkLabel();
@@ -82,48 +81,54 @@ namespace SimPe.Plugin.Tool.Window
 			// 
 			// xpGradientPanel1
 			// 
+			this.xpGradientPanel1.BackColor = System.Drawing.Color.Transparent;
 			this.xpGradientPanel1.Controls.Add(this.tbs);
 			this.xpGradientPanel1.Controls.Add(this.btBrowse);
 			this.xpGradientPanel1.Controls.Add(this.tbPkg);
 			this.xpGradientPanel1.Controls.Add(this.label1);
 			this.xpGradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.xpGradientPanel1.EndColour = System.Drawing.SystemColors.Control;
+			this.xpGradientPanel1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.xpGradientPanel1.Location = new System.Drawing.Point(0, 0);
+			this.xpGradientPanel1.MiddleColour = System.Drawing.SystemColors.Control;
 			this.xpGradientPanel1.Name = "xpGradientPanel1";
-			this.xpGradientPanel1.Size = new System.Drawing.Size(506, 256);
+			this.xpGradientPanel1.Size = new System.Drawing.Size(594, 361);
+			this.xpGradientPanel1.StartColour = System.Drawing.SystemColors.Control;
 			this.xpGradientPanel1.TabIndex = 0;
 			// 
 			// tbs
 			// 
+			this.tbs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this.tbs.BackColor = System.Drawing.Color.Transparent;
-			this.tbs.BodyColor = System.Drawing.SystemColors.InactiveCaptionText;
-			this.tbs.BorderColor = System.Drawing.SystemColors.Window;
+			this.tbs.BodyColor = System.Drawing.SystemColors.ControlLight;
+			this.tbs.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
 			this.tbs.Controls.Add(this.llOpen);
 			this.tbs.Controls.Add(this.pg);
 			this.tbs.Controls.Add(this.llRepair);
-			this.tbs.DockPadding.Bottom = 4;
-			this.tbs.DockPadding.Left = 4;
-			this.tbs.DockPadding.Right = 4;
-			this.tbs.DockPadding.Top = 44;
-			this.tbs.HeaderFont = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.tbs.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
 			this.tbs.HeaderText = "";
-			this.tbs.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
+			this.tbs.HeaderTextColor = System.Drawing.SystemColors.ControlText;
 			this.tbs.Icon = ((System.Drawing.Image)(resources.GetObject("tbs.Icon")));
 			this.tbs.IconLocation = new System.Drawing.Point(4, 12);
 			this.tbs.IconSize = new System.Drawing.Size(32, 32);
-			this.tbs.LeftHeaderColor = System.Drawing.SystemColors.InactiveCaption;
+			this.tbs.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
 			this.tbs.Location = new System.Drawing.Point(8, 40);
 			this.tbs.Name = "tbs";
-			this.tbs.RightHeaderColor = System.Drawing.SystemColors.Highlight;
-			this.tbs.Size = new System.Drawing.Size(488, 208);
+			this.tbs.Padding = new System.Windows.Forms.Padding(4, 36, 4, 4);
+			this.tbs.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
+			this.tbs.Size = new System.Drawing.Size(576, 313);
 			this.tbs.TabIndex = 3;
+			this.tbs.TopGap = 8;
 			// 
 			// llOpen
 			// 
-			this.llOpen.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.llOpen.LinkColor = System.Drawing.Color.FromArgb(((System.Byte)(192)), ((System.Byte)(192)), ((System.Byte)(255)));
-			this.llOpen.Location = new System.Drawing.Point(440, 16);
+			this.llOpen.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.llOpen.LinkColor = System.Drawing.SystemColors.ControlText;
+			this.llOpen.Location = new System.Drawing.Point(500, 6);
 			this.llOpen.Name = "llOpen";
-			this.llOpen.Size = new System.Drawing.Size(40, 23);
+			this.llOpen.Size = new System.Drawing.Size(61, 23);
 			this.llOpen.TabIndex = 2;
 			this.llOpen.TabStop = true;
 			this.llOpen.Text = "Open";
@@ -132,31 +137,27 @@ namespace SimPe.Plugin.Tool.Window
 			// 
 			// pg
 			// 
-			this.pg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left)));
-			this.pg.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+			this.pg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Left)));
+			this.pg.BackColor = System.Drawing.SystemColors.Control;
 			this.pg.CommandsBackColor = System.Drawing.SystemColors.InactiveCaption;
-			this.pg.CommandsVisibleIfAvailable = true;
 			this.pg.HelpVisible = false;
-			this.pg.LargeButtons = false;
 			this.pg.LineColor = System.Drawing.SystemColors.ScrollBar;
-			this.pg.Location = new System.Drawing.Point(8, 56);
+			this.pg.Location = new System.Drawing.Point(8, 48);
 			this.pg.Name = "pg";
 			this.pg.PropertySort = System.Windows.Forms.PropertySort.Alphabetical;
-			this.pg.Size = new System.Drawing.Size(472, 144);
+			this.pg.Size = new System.Drawing.Size(558, 256);
 			this.pg.TabIndex = 1;
-			this.pg.Text = "Header Information";
 			this.pg.ToolbarVisible = false;
-			this.pg.ViewBackColor = System.Drawing.SystemColors.InactiveCaptionText;
-			this.pg.ViewForeColor = System.Drawing.SystemColors.WindowText;
+			this.pg.ViewBackColor = System.Drawing.SystemColors.Control;
 			// 
 			// llRepair
 			// 
-			this.llRepair.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.llRepair.LinkColor = System.Drawing.Color.FromArgb(((System.Byte)(192)), ((System.Byte)(192)), ((System.Byte)(255)));
-			this.llRepair.Location = new System.Drawing.Point(392, 16);
+			this.llRepair.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.llRepair.LinkColor = System.Drawing.SystemColors.ControlText;
+			this.llRepair.Location = new System.Drawing.Point(420, 6);
 			this.llRepair.Name = "llRepair";
-			this.llRepair.Size = new System.Drawing.Size(48, 23);
+			this.llRepair.Size = new System.Drawing.Size(72, 23);
 			this.llRepair.TabIndex = 0;
 			this.llRepair.TabStop = true;
 			this.llRepair.Text = "Repair";
@@ -166,8 +167,9 @@ namespace SimPe.Plugin.Tool.Window
 			// btBrowse
 			// 
 			this.btBrowse.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btBrowse.Location = new System.Drawing.Point(424, 16);
+			this.btBrowse.Location = new System.Drawing.Point(509, 16);
 			this.btBrowse.Name = "btBrowse";
+			this.btBrowse.Size = new System.Drawing.Size(75, 23);
 			this.btBrowse.TabIndex = 2;
 			this.btBrowse.Text = "Browse...";
 			this.btBrowse.Click += new System.EventHandler(this.btBrowse_Click);
@@ -177,33 +179,34 @@ namespace SimPe.Plugin.Tool.Window
 			this.tbPkg.Location = new System.Drawing.Point(80, 16);
 			this.tbPkg.Name = "tbPkg";
 			this.tbPkg.ReadOnly = true;
-			this.tbPkg.Size = new System.Drawing.Size(336, 21);
+			this.tbPkg.Size = new System.Drawing.Size(420, 21);
 			this.tbPkg.TabIndex = 1;
-			this.tbPkg.Text = "";
 			// 
 			// label1
 			// 
 			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label1.Location = new System.Drawing.Point(16, 16);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(64, 24);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Package:";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// PackageRepairForm
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
-			this.ClientSize = new System.Drawing.Size(506, 256);
+			this.ClientSize = new System.Drawing.Size(594, 361);
 			this.Controls.Add(this.xpGradientPanel1);
-			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = ((System.Drawing.Icon)(resources1.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.Name = "PackageRepairForm";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Package Repair";
 			this.xpGradientPanel1.ResumeLayout(false);
+			this.xpGradientPanel1.PerformLayout();
 			this.tbs.ResumeLayout(false);
 			this.ResumeLayout(false);
 

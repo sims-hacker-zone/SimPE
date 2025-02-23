@@ -29,7 +29,7 @@ namespace SimPe.Plugin
 	/// GetWrappers() has to return a list of all Plugins provided by this Library. 
 	/// If a Plugin isn't returned, SimPe won't recognize it!
 	/// </remarks>
-	public class WorkshopToolFactory : SimPe.Interfaces.Plugin.AbstractWrapperFactory, SimPe.Interfaces.Plugin.IToolFactory
+    public class WorkshopToolFactory : SimPe.Interfaces.Plugin.AbstractWrapperFactory, SimPe.Interfaces.Plugin.IToolFactory, SimPe.Interfaces.Plugin.IHelpFactory
 	{
 		internal static IToolPlugin[] Last;
 		public WorkshopToolFactory()
@@ -61,11 +61,10 @@ namespace SimPe.Plugin
         delegate void LoadDocksHandler(System.Collections.ArrayList docks);
         void InvokeLoadDocks(System.Collections.ArrayList docks)
         {
-            docks.Add(new SimPe.Plugin.Tool.Dockable.ObectWorkshopDockTool());
+            if (Helper.StartedGui == Executable.Classic) docks.Add(new WorkshopTool(this.LinkedRegistry, this.LinkedProvider));
+            else docks.Add(new SimPe.Plugin.Tool.Dockable.ObectWorkshopDockTool());
             docks.Add(new SimPe.Plugin.Tool.Dockable.PackageDetailDockTool());
-            if (Helper.WindowsRegistry.HiddenMode) docks.Add(new SimPe.Plugin.Tool.Action.ActionEnableFenceInOriginalGame());
-            docks.Add(new SimPe.Plugin.Tool.ObjectsTool());
-            docks.Add(new SimPe.Plugin.Tool.Window.PackageRepairTool());            
+            if (Helper.WindowsRegistry.HiddenMode) docks.Add(new SimPe.Plugin.Tool.Window.PackageRepairTool()); 
         }
 
 		public IToolPlugin[] KnownTools
@@ -81,29 +80,71 @@ namespace SimPe.Plugin
                 return Last;
 
 #if UNREACHABLE
-                if (Helper.WindowsRegistry.HiddenMode) 
-				{
-					Last = new IToolPlugin[]{
-											  new SimPe.Plugin.Tool.Dockable.ObectWorkshopDockTool(),
+                if (Helper.StartedGui == Executable.Classic)
+                {
+                    if (Helper.WindowsRegistry.HiddenMode)
+                    {
+                        Last = new IToolPlugin[]{
 											  new SimPe.Plugin.Tool.Dockable.PackageDetailDockTool(),
-											  new SimPe.Plugin.Tool.Action.ActionEnableFenceInOriginalGame(),
-											  new SimPe.Plugin.Tool.ObjectsTool(),
 											  new SimPe.Plugin.Tool.Window.PackageRepairTool(),
 										  };
-				} 
-				else 
-				{
-					Last =  new IToolPlugin[]{
+                    }
+                    else
+                    {
+                        Last = new IToolPlugin[]{
+												  new SimPe.Plugin.Tool.Dockable.PackageDetailDockTool(),
+										  };
+                    }
+                }
+                else
+                {
+                    if (Helper.WindowsRegistry.HiddenMode)
+                    {
+                        Last = new IToolPlugin[]{
+											  new SimPe.Plugin.Tool.Dockable.ObectWorkshopDockTool(),
+											  new SimPe.Plugin.Tool.Dockable.PackageDetailDockTool(),
+											  new SimPe.Plugin.Tool.Window.PackageRepairTool(),
+										  };
+                    }
+                    else
+                    {
+                        Last = new IToolPlugin[]{
 												  new SimPe.Plugin.Tool.Dockable.ObectWorkshopDockTool(),
 												  new SimPe.Plugin.Tool.Dockable.PackageDetailDockTool(),
-												  new SimPe.Plugin.Tool.ObjectsTool(),
-												  new SimPe.Plugin.Tool.Window.PackageRepairTool(),
 										  };
-				}
+                    }
+                }
 				return Last;
 #endif
             }
 		}
 		#endregion
+
+        #region IHelpFactory Members
+
+        class obwHelp : IHelp
+        {
+            public System.Drawing.Image Icon { get { return null; } }
+            public override string ToString() { return "Object Workshop"; }
+            public void ShowHelp(ShowHelpEventArgs e) { SimPe.RemoteControl.ShowHelp("file://" + SimPe.Helper.SimPePath + "/Doc/OWoptions.htm"); }
+        }
+
+        public IHelp[] KnownHelpTopics
+        {
+            get
+            {
+                if (Helper.StartedGui == Executable.Classic)
+                {
+                    return new IHelp[0];
+                }
+                else
+                {
+                    IHelp[] helpTopics = { new obwHelp() };
+                    return helpTopics;
+                }
+            }
+        }
+        #endregion
+
 	}
 }

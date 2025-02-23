@@ -279,7 +279,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			str.FileDescriptor.MarkForDelete = true;			
 			
-			return ObjectWorkshopHelper.Start(package, a, ref pfd, localgroup, cs, true);			
+			return ObjectWorkshopHelper.Start(package, a, ref pfd, localgroup, cs, true);
 		}
 
 		/// <summary>
@@ -352,7 +352,7 @@ namespace SimPe.Plugin.Tool.Dockable
 						ObjectCloner pobj = new ObjectCloner(pkg);
 						pobj.Setup = settings;
 						pobj.Setup.BaseResource = br;
-						pobj.Setup.OnlyDefaultMmats = (settings.OnlyDefaultMmats && br!=CloneSettings.BaseResourceType.Xml);;
+						pobj.Setup.OnlyDefaultMmats = (settings.OnlyDefaultMmats && br!=CloneSettings.BaseResourceType.Xml);
 						pobj.Setup.UpdateMmatGuids = pobj.Setup.OnlyDefaultMmats;
 						/*pobj.Setup.IncludeWallmask = settings.IncludeWallmask;
 						pobj.Setup.IncludeAnimationResources = settings.IncludeAnimationResources;						
@@ -441,9 +441,9 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			settings.KeepOriginalMesh = true;
 			SimPe.Packages.GeneratableFile package = pkg;
-			// we need packages in the Gmaes and the Download Folder
-			
-			if (( (!System.IO.File.Exists(ScenegraphHelper.GMND_PACKAGE)) || (!System.IO.File.Exists(ScenegraphHelper.MMAT_PACKAGE)) ) && (settings is OWCloneSettings)) 
+			// Low Eps need packages in the Gmaes and the Download Folder
+
+            if ((!System.IO.File.Exists(ScenegraphHelper.GMND_PACKAGE) || !System.IO.File.Exists(ScenegraphHelper.MMAT_PACKAGE)) && (settings is OWCloneSettings) && (SimPe.PathProvider.Global.EPInstalled < 16)) 
 			{
 				if (Message.Show(Localization.Manager.GetString("OW_Warning"), "Warning", MessageBoxButtons.YesNo)==DialogResult.No) return package;
 			}
@@ -476,9 +476,9 @@ namespace SimPe.Plugin.Tool.Dockable
 		protected static SimPe.Packages.GeneratableFile ReColor(CloneSettings.BaseResourceType br, SimPe.Packages.GeneratableFile pkg, Interfaces.Files.IPackedFileDescriptor pfd, uint localgroup, ObjectWorkshopSettings settings, bool pkgcontainsonlybase) 
 		{
 			SimPe.Packages.GeneratableFile package = pkg;
-			// we need packages in the Gmaes and the Download Folder
-			
-			if (( (!System.IO.File.Exists(ScenegraphHelper.GMND_PACKAGE)) || (!System.IO.File.Exists(ScenegraphHelper.MMAT_PACKAGE)) ) && (settings is OWCloneSettings)) 
+            // Low Eps need packages in the Gmaes and the Download Folder
+
+            if ((!System.IO.File.Exists(ScenegraphHelper.GMND_PACKAGE) || !System.IO.File.Exists(ScenegraphHelper.MMAT_PACKAGE)) && (settings is OWCloneSettings) && (SimPe.PathProvider.Global.EPInstalled < 16)) 
 			{
 				if (Message.Show(Localization.Manager.GetString("OW_Warning"), "Warning", MessageBoxButtons.YesNo)==DialogResult.No) return package;
 			}
@@ -497,32 +497,12 @@ namespace SimPe.Plugin.Tool.Dockable
             try
             {
                 WaitingScreen.UpdateMessage("Collecting needed Files");
-
                 if ((package == null) && (pfd != null)) package = RecolorClone(br, package, pfd, localgroup, settings, pkgcontainsonlybase);
 
             }
             finally { WaitingScreen.Stop(); }
-			
-			
-			/*if (settings is OWRecolorSettings) 
-			{
-				ObjectRecolor or = new ObjectRecolor(package);
-				or.EnableColorOptions();
-				or.LoadReferencedMATDs();				
-
-				//load all Pending Textures
-				ObjectCloner oc = new ObjectCloner(package);				
-			}*/
-
-			/*SimPe.Packages.GeneratableFile dn_pkg = null;
-			if (System.IO.File.Exists(ScenegraphHelper.GMND_PACKAGE)) dn_pkg = SimPe.Packages.GeneratableFile.LoadFromFile(ScenegraphHelper.GMND_PACKAGE);
-			else dn_pkg = SimPe.Packages.GeneratableFile.LoadFromStream((System.IO.BinaryReader)null);
-
-			SimPe.Packages.GeneratableFile gm_pkg = null;
-			if (System.IO.File.Exists(ScenegraphHelper.MMAT_PACKAGE)) gm_pkg = SimPe.Packages.GeneratableFile.LoadFromFile(ScenegraphHelper.MMAT_PACKAGE);
-			else gm_pkg = SimPe.Packages.GeneratableFile.LoadFromStream((System.IO.BinaryReader)null);*/
-			
-			SimPe.Packages.GeneratableFile npackage = SimPe.Packages.GeneratableFile.CreateNew();//.LoadFromStream((System.IO.BinaryReader)null);
+            
+            SimPe.Packages.GeneratableFile npackage = SimPe.Packages.GeneratableFile.CreateNew();//.LoadFromStream((System.IO.BinaryReader)null);
 
 			//Create the Templae for an additional MMAT
 			npackage.FileName = sfd.FileName;	
@@ -531,8 +511,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			cs.Create(npackage);
 
 			npackage.Save();
-			package = npackage;
-						
+			package = npackage;						
 
 			WaitingScreen.Stop();
 #if DEBUG
@@ -560,7 +539,6 @@ namespace SimPe.Plugin.Tool.Dockable
                 OWCloneSettings cs = (OWCloneSettings)settings;
 
                 package = RecolorClone(br, package, pfd, localgroup, settings, containsonlybaseclone);
-
 
                 FixObject fo = new FixObject(package, FixVersion.UniversityReady, settings.RemoveNonDefaultTextReferences);
                 System.Collections.Hashtable map = null;
@@ -611,7 +589,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
                 if (cs.ChangeObjectDescription) UpdateDescription(cs, package);
 
-                //select a resource to display in SimPE
+                //select a resource to display in SimPe
                 pfd = null;
                 if (package != null)
                 {
@@ -621,12 +599,9 @@ namespace SimPe.Plugin.Tool.Dockable
             }
             else
             {
-                /*if (br == SimPe.Plugin.CloneSettings.BaseResourceType.Xml)
-                    package = ReColorXObject(br, package, pfd, localgroup, new OWRecolorSettings());
-                else*/
                 package = ReColor(br, package, pfd, localgroup, new OWRecolorSettings(), containsonlybaseclone);
 
-                //select a resource for display in SimPE
+                //select a resource for display in SimPe
                 pfd = null;
                 if (package != null)
                 {

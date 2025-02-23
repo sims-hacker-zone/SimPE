@@ -126,9 +126,6 @@
   <data name="label2.Text" xml:space="preserve">
     <value>Popolazione:</value>
   </data>
-  <data name="llEdit.Text" xml:space="preserve">
-    <value>Modifica</value>
-  </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Universitari:</value>
   </data>

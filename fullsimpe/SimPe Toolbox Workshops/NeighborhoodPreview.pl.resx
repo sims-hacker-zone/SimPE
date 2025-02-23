@@ -124,12 +124,6 @@
     <value xml:space="preserve">Populacja:</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="llEdit.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
-    <value>0, 6</value>
-  </data>
-  <data name="llEdit.Text">
-    <value xml:space="preserve">Edytuj</value>
-  </data>
   <data name="label4.Text">
     <value xml:space="preserve">Uczelni:</value>
   </data>
