@@ -42,7 +42,7 @@ namespace SimPe.Geometry
 		ImaginaryReal = 0x02
 	}
 	/// <summary>
-	/// Zusammenfassung für Quaternion.
+	/// Summary description for Quaternion.
 	/// </summary>
 	[System.ComponentModel.TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
 	public class Quaternion : Vector4f
