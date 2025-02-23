@@ -143,13 +143,10 @@ namespace SimPe.Plugin
 			this.txtrPanel.Controls.Add(this.lbimg);
 			this.txtrPanel.Controls.Add(this.panel2);
 			this.txtrPanel.Controls.Add(this.label1);
-			this.txtrPanel.EndColour = System.Drawing.SystemColors.Control;
 			this.txtrPanel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtrPanel.Location = new System.Drawing.Point(8, 8);
-			this.txtrPanel.MiddleColour = System.Drawing.SystemColors.Control;
 			this.txtrPanel.Name = "txtrPanel";
 			this.txtrPanel.Size = new System.Drawing.Size(768, 288);
-			this.txtrPanel.StartColour = System.Drawing.SystemColors.Control;
 			this.txtrPanel.TabIndex = 19;
 			// 
 			// linkLabel4
@@ -482,7 +479,6 @@ namespace SimPe.Plugin
 			// 
 			this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
 						| System.Windows.Forms.AnchorStyles.Right)));
-			this.panel2.CanCommit = true;
 			this.panel2.Controls.Add(this.btex);
 			this.panel2.Controls.Add(this.btim);
 			this.panel2.Controls.Add(this.label27);

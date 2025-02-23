@@ -200,7 +200,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.tbf1 = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
-            this.llcommit = new Skybound.VisualStyles.VisualStyleLinkLabel();
             this.pnslot.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -217,8 +216,6 @@ namespace SimPe.PackedFiles.UserInterface
             // pnslot
             // 
             this.pnslot.BackColor = System.Drawing.Color.Transparent;
-            this.pnslot.BackgroundImageLocation = new System.Drawing.Point(0, 260);
-            this.pnslot.BackgroundImageZoomToFit = true;
             this.pnslot.Controls.Add(this.visualStyleLinkLabel3);
             this.pnslot.Controls.Add(this.visualStyleLinkLabel2);
             this.pnslot.Controls.Add(this.visualStyleLinkLabel1);
@@ -941,19 +938,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.label12.Size = new System.Drawing.Size(83, 16);
             this.label12.TabIndex = 0;
             this.label12.Text = "Slot Editor";
-            // 
-            // llcommit
-            // 
-            this.llcommit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.llcommit.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llcommit.Location = new System.Drawing.Point(620, 288);
-            this.llcommit.Name = "llcommit";
-            this.llcommit.Size = new System.Drawing.Size(100, 23);
-            this.llcommit.TabIndex = 25;
-            this.llcommit.TabStop = true;
-            this.llcommit.Text = "Commit";
-            this.llcommit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.llcommit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llcommit_LinkClicked);
             // 
             // SlotForm
             // 
