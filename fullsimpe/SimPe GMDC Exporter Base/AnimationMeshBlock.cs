@@ -350,8 +350,8 @@ namespace SimPe.Plugin.Anim
 				SimPe.Interfaces.Scenegraph.ICresChildren icc = rn.GetBlock(i);
 				
 				if (icc!=null)
-					if (icc.StoredTransformNode!=null) 				
-						if (icc.StoredTransformNode.ObjectGraphNode.FileName == this.Name) return rcol;				
+					if (icc.StoredTransformNode != null)
+						if (icc.StoredTransformNode.ObjectGraphNode.FileName == this.Name) return rcol;
 			}
 			return null;
 		}
@@ -364,38 +364,59 @@ namespace SimPe.Plugin.Anim
 				GenericRcol rcol = FindDefiningCRES(pfd, Parent.Package);
 				if (rcol!=null) 
 					return rcol;
-			} 
+			}
 
-			if (this.Name!="auskel" && this.Name!="causkel") return null;
-			FileTable.FileIndex.Load();
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFile(Data.MetaData.CRES, true);
-			foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
+			if (this.Name == "auskel" || this.Name == "tuskel" || this.Name == "cuskel" || this.Name == "puskel" || this.Name == "buskel")
 			{
-				GenericRcol rcol = FindDefiningCRES(item.FileDescriptor, item.Package);
-				if (rcol!=null) 
-					return rcol;
-			} 
+				FileTable.FileIndex.Load();
+				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFile(Data.MetaData.CRES, true);
+				foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
+				{
+					GenericRcol rcol = FindDefiningCRES(item.FileDescriptor, item.Package);
+					if (rcol != null)
+						return rcol;
+				}
+			}
 			return null;
 		}
 
 		public GenericRcol FindUsedGMDC(GenericRcol cres)
 		{
-			if (cres==null) return null;
-
+			if (cres == null) return null;
 			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item = cres.FindReferencedType(Data.MetaData.SHPE);
-			if (item!=null)
+			if (item != null)
 			{
 				GenericRcol rcol = new GenericRcol();
 				rcol.ProcessData(item);
 
 				item = rcol.FindReferencedType(Data.MetaData.GMND);
-				if (item!=null)
+				if (item != null)
 				{
 					rcol.ProcessData(item);
 					item = rcol.FindReferencedType(Data.MetaData.GMDC);
-					if (item!=null)
+					if (item != null)
 					{
 						rcol.ProcessData(item);
+						return rcol;
+					}
+				}
+			}
+			// the 'skel cres used by all sim animations don't have meshes so we point to the default naked body meshes instaed
+			if (this.Name == "auskel" || this.Name == "tuskel" || this.Name == "cuskel" || this.Name == "puskel" || this.Name == "buskel")
+			{
+				FileTable.FileIndex.Load();
+				ulong instns = 0xCCBC1AF8FFE2EDE9; //auskel
+				if (this.Name == "tuskel") instns = 0x9C1686E9FF68B810;
+				else if (this.Name == "cuskel") instns = 0xB7C67187FF38EF7F;
+				else if (this.Name == "puskel") instns = 0xFF5F4C89AE871D44;
+				else if (this.Name == "buskel") instns = 0x57D5D2CDFF545BA9;
+				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFile(Data.MetaData.GMDC, 0x1C0532FA, instns, Parent.Package);
+				foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem iteme in items)
+				{
+					if (iteme != null)
+					{
+						GenericRcol rcol = new GenericRcol();
+						rcol.ProcessData(iteme);
 						return rcol;
 					}
 				}

@@ -36,14 +36,14 @@ namespace SimPe.Plugin.Gmdc
 		private System.Windows.Forms.ComboBox cbboneaction;
 		private System.Windows.Forms.Label lbbonename;
 		private System.Windows.Forms.ComboBox cbbones;
-		private Ambertation.Windows.Forms.TransparentCheckBox cbcleanbn;
-		private Ambertation.Windows.Forms.TransparentCheckBox cbcleangrp;
-		private Ambertation.Windows.Forms.TransparentCheckBox cbupdatecres;
-		private SteepValley.Windows.Forms.XPGradientPanel xpGradientPanel1;
-		private Ambertation.Windows.Forms.XPTaskBoxSimple gbbones;
-		private Ambertation.Windows.Forms.XPTaskBoxSimple gbgroups;
-		private Ambertation.Windows.Forms.XPTaskBoxSimple gbsettings;
-		private Ambertation.Windows.Forms.TransparentCheckBox cbBMesh;
+		private System.Windows.Forms.CheckBox cbcleanbn;
+		private System.Windows.Forms.CheckBox cbcleangrp;
+		private System.Windows.Forms.CheckBox cbupdatecres;
+		private System.Windows.Forms.Panel Gradientpanel1;
+		private System.Windows.Forms.GroupBox gbbones;
+		private System.Windows.Forms.GroupBox gbgroups;
+		private System.Windows.Forms.GroupBox gbsettings;
+		private System.Windows.Forms.CheckBox cbBMesh;
 		private System.Windows.Forms.ColumnHeader chBMesh;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Label lbKeepOrder;
@@ -58,7 +58,7 @@ namespace SimPe.Plugin.Gmdc
 		public ImportGmdcGroupsForm()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
 
@@ -70,15 +70,10 @@ namespace SimPe.Plugin.Gmdc
 			cbboneaction.Items.Add(GmdcImporterAction.Replace);			
 			cbboneaction.Items.Add(GmdcImporterAction.Update);
 
-			SimPe.ThemeManager tm = SimPe.ThemeManager.Global.CreateChild();
-			tm.AddControl(this.xpGradientPanel1);
-			tm.AddControl(this.gbsettings);
-			tm.AddControl(this.gbgroups);
-			tm.AddControl(this.gbbones);
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -92,14 +87,14 @@ namespace SimPe.Plugin.Gmdc
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(ImportGmdcGroupsForm));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportGmdcGroupsForm));
 			this.lv = new System.Windows.Forms.ListView();
 			this.chName = new System.Windows.Forms.ColumnHeader();
 			this.chAction = new System.Windows.Forms.ColumnHeader();
@@ -125,17 +120,17 @@ namespace SimPe.Plugin.Gmdc
 			this.label9 = new System.Windows.Forms.Label();
 			this.label10 = new System.Windows.Forms.Label();
 			this.cbbones = new System.Windows.Forms.ComboBox();
-			this.cbupdatecres = new Ambertation.Windows.Forms.TransparentCheckBox();
-			this.cbcleanbn = new Ambertation.Windows.Forms.TransparentCheckBox();
-			this.cbcleangrp = new Ambertation.Windows.Forms.TransparentCheckBox();
-			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.gbbones = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.gbgroups = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+			this.cbupdatecres = new System.Windows.Forms.CheckBox();
+			this.cbcleanbn = new System.Windows.Forms.CheckBox();
+			this.cbcleangrp = new System.Windows.Forms.CheckBox();
+			this.Gradientpanel1 = new System.Windows.Forms.Panel();
+			this.gbbones = new System.Windows.Forms.GroupBox();
+			this.gbgroups = new System.Windows.Forms.GroupBox();
 			this.lbKeepOrder = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
-			this.cbBMesh = new Ambertation.Windows.Forms.TransparentCheckBox();
-			this.gbsettings = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.xpGradientPanel1.SuspendLayout();
+			this.cbBMesh = new System.Windows.Forms.CheckBox();
+			this.gbsettings = new System.Windows.Forms.GroupBox();
+			this.Gradientpanel1.SuspendLayout();
 			this.gbbones.SuspendLayout();
 			this.gbgroups.SuspendLayout();
 			this.gbsettings.SuspendLayout();
@@ -143,32 +138,33 @@ namespace SimPe.Plugin.Gmdc
 			// 
 			// lv
 			// 
-			this.lv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
+			this.lv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this.lv.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.lv.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-																				 this.chName,
-																				 this.chAction,
-																				 this.chTarget,
-																				 this.chVertex,
-																				 this.chFace,
-																				 this.chBones,
-																				 this.chBMesh});
+			this.chName,
+			this.chAction,
+			this.chTarget,
+			this.chVertex,
+			this.chFace,
+			this.chBones,
+			this.chBMesh});
 			this.lv.FullRowSelect = true;
 			this.lv.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
 			this.lv.HideSelection = false;
 			this.lv.Location = new System.Drawing.Point(8, 32);
 			this.lv.Name = "lv";
-			this.lv.Size = new System.Drawing.Size(488, 488);
+			this.lv.Size = new System.Drawing.Size(680, 435);
 			this.lv.TabIndex = 0;
+			this.lv.UseCompatibleStateImageBehavior = false;
 			this.lv.View = System.Windows.Forms.View.Details;
 			this.lv.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
 			// 
 			// chName
 			// 
 			this.chName.Text = "Name";
-			this.chName.Width = 131;
+			this.chName.Width = 148;
 			// 
 			// chAction
 			// 
@@ -184,6 +180,7 @@ namespace SimPe.Plugin.Gmdc
 			// 
 			this.chVertex.Text = "Vertices/Parent Bone";
 			this.chVertex.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.chVertex.Width = 140;
 			// 
 			// chFace
 			// 
@@ -198,27 +195,28 @@ namespace SimPe.Plugin.Gmdc
 			// chBMesh
 			// 
 			this.chBMesh.Text = "BoundingMesh";
-			this.chBMesh.Width = 46;
+			this.chBMesh.Width = 100;
 			// 
 			// label1
 			// 
 			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.label1.Location = new System.Drawing.Point(8, 16);
+			this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Location = new System.Drawing.Point(8, 4);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(176, 23);
+			this.label1.Size = new System.Drawing.Size(190, 25);
 			this.label1.TabIndex = 1;
 			this.label1.Text = "Importable Mesh Groups:";
+			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// cbopacity
 			// 
 			this.cbopacity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbopacity.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.cbopacity.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cbopacity.Items.AddRange(new object[] {
-														   "Opaque (Normal)",
-														   "Shadow",
-														   "Invisible"});
-			this.cbopacity.Location = new System.Drawing.Point(112, 88);
+			"Opaque (Normal)",
+			"Shadow",
+			"Invisible"});
+			this.cbopacity.Location = new System.Drawing.Point(114, 74);
 			this.cbopacity.Name = "cbopacity";
 			this.cbopacity.Size = new System.Drawing.Size(160, 21);
 			this.cbopacity.TabIndex = 9;
@@ -226,8 +224,8 @@ namespace SimPe.Plugin.Gmdc
 			// 
 			// label5
 			// 
-			this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.label5.Location = new System.Drawing.Point(16, 88);
+			this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label5.Location = new System.Drawing.Point(18, 74);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(88, 23);
 			this.label5.TabIndex = 8;
@@ -236,8 +234,8 @@ namespace SimPe.Plugin.Gmdc
 			// 
 			// tbscale
 			// 
-			this.tbscale.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.tbscale.Location = new System.Drawing.Point(112, 64);
+			this.tbscale.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbscale.Location = new System.Drawing.Point(114, 50);
 			this.tbscale.Name = "tbscale";
 			this.tbscale.ReadOnly = true;
 			this.tbscale.Size = new System.Drawing.Size(136, 21);
@@ -247,8 +245,8 @@ namespace SimPe.Plugin.Gmdc
 			// 
 			// label4
 			// 
-			this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.label4.Location = new System.Drawing.Point(16, 64);
+			this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label4.Location = new System.Drawing.Point(18, 50);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(88, 23);
 			this.label4.TabIndex = 6;
@@ -258,8 +256,8 @@ namespace SimPe.Plugin.Gmdc
 			// cbaction
 			// 
 			this.cbaction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbaction.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.cbaction.Location = new System.Drawing.Point(112, 168);
+			this.cbaction.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cbaction.Location = new System.Drawing.Point(114, 154);
 			this.cbaction.Name = "cbaction";
 			this.cbaction.Size = new System.Drawing.Size(160, 21);
 			this.cbaction.TabIndex = 3;
@@ -267,8 +265,8 @@ namespace SimPe.Plugin.Gmdc
 			// 
 			// lbname
 			// 
-			this.lbname.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.lbname.Location = new System.Drawing.Point(112, 40);
+			this.lbname.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbname.Location = new System.Drawing.Point(114, 26);
 			this.lbname.Name = "lbname";
 			this.lbname.Size = new System.Drawing.Size(160, 23);
 			this.lbname.TabIndex = 2;
@@ -277,8 +275,8 @@ namespace SimPe.Plugin.Gmdc
 			// 
 			// label3
 			// 
-			this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.label3.Location = new System.Drawing.Point(16, 168);
+			this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label3.Location = new System.Drawing.Point(18, 154);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(88, 23);
 			this.label3.TabIndex = 1;
@@ -287,8 +285,8 @@ namespace SimPe.Plugin.Gmdc
 			// 
 			// label2
 			// 
-			this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.label2.Location = new System.Drawing.Point(16, 40);
+			this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label2.Location = new System.Drawing.Point(18, 26);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(88, 23);
 			this.label2.TabIndex = 0;
@@ -298,8 +296,8 @@ namespace SimPe.Plugin.Gmdc
 			// cbnames
 			// 
 			this.cbnames.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbnames.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.cbnames.Location = new System.Drawing.Point(112, 192);
+			this.cbnames.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cbnames.Location = new System.Drawing.Point(114, 178);
 			this.cbnames.Name = "cbnames";
 			this.cbnames.Size = new System.Drawing.Size(160, 21);
 			this.cbnames.TabIndex = 5;
@@ -308,12 +306,11 @@ namespace SimPe.Plugin.Gmdc
 			// 
 			// tbname
 			// 
-			this.tbname.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.tbname.Location = new System.Drawing.Point(112, 192);
+			this.tbname.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbname.Location = new System.Drawing.Point(114, 178);
 			this.tbname.Name = "tbname";
 			this.tbname.Size = new System.Drawing.Size(160, 21);
 			this.tbname.TabIndex = 4;
-			this.tbname.Text = "";
 			this.tbname.Visible = false;
 			this.tbname.TextChanged += new System.EventHandler(this.tbname_TextChanged);
 			// 
@@ -321,8 +318,10 @@ namespace SimPe.Plugin.Gmdc
 			// 
 			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.button1.Location = new System.Drawing.Point(712, 498);
+			this.button1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button1.Location = new System.Drawing.Point(896, 445);
 			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(83, 23);
 			this.button1.TabIndex = 3;
 			this.button1.Text = "OK";
 			this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -330,8 +329,8 @@ namespace SimPe.Plugin.Gmdc
 			// cbboneaction
 			// 
 			this.cbboneaction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbboneaction.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.cbboneaction.Location = new System.Drawing.Point(112, 64);
+			this.cbboneaction.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cbboneaction.Location = new System.Drawing.Point(112, 51);
 			this.cbboneaction.Name = "cbboneaction";
 			this.cbboneaction.Size = new System.Drawing.Size(160, 21);
 			this.cbboneaction.TabIndex = 3;
@@ -339,8 +338,8 @@ namespace SimPe.Plugin.Gmdc
 			// 
 			// lbbonename
 			// 
-			this.lbbonename.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.lbbonename.Location = new System.Drawing.Point(112, 40);
+			this.lbbonename.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbbonename.Location = new System.Drawing.Point(112, 27);
 			this.lbbonename.Name = "lbbonename";
 			this.lbbonename.Size = new System.Drawing.Size(160, 23);
 			this.lbbonename.TabIndex = 2;
@@ -349,8 +348,8 @@ namespace SimPe.Plugin.Gmdc
 			// 
 			// label9
 			// 
-			this.label9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.label9.Location = new System.Drawing.Point(16, 64);
+			this.label9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label9.Location = new System.Drawing.Point(16, 51);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(88, 23);
 			this.label9.TabIndex = 1;
@@ -359,8 +358,8 @@ namespace SimPe.Plugin.Gmdc
 			// 
 			// label10
 			// 
-			this.label10.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.label10.Location = new System.Drawing.Point(16, 40);
+			this.label10.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label10.Location = new System.Drawing.Point(16, 27);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(88, 23);
 			this.label10.TabIndex = 0;
@@ -370,8 +369,8 @@ namespace SimPe.Plugin.Gmdc
 			// cbbones
 			// 
 			this.cbbones.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbbones.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.cbbones.Location = new System.Drawing.Point(112, 88);
+			this.cbbones.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cbbones.Location = new System.Drawing.Point(112, 75);
 			this.cbbones.Name = "cbbones";
 			this.cbbones.Size = new System.Drawing.Size(160, 21);
 			this.cbbones.TabIndex = 5;
@@ -380,8 +379,8 @@ namespace SimPe.Plugin.Gmdc
 			// 
 			// cbupdatecres
 			// 
-			this.cbupdatecres.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.cbupdatecres.Location = new System.Drawing.Point(16, 88);
+			this.cbupdatecres.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cbupdatecres.Location = new System.Drawing.Point(19, 75);
 			this.cbupdatecres.Name = "cbupdatecres";
 			this.cbupdatecres.Size = new System.Drawing.Size(260, 32);
 			this.cbupdatecres.TabIndex = 2;
@@ -390,8 +389,8 @@ namespace SimPe.Plugin.Gmdc
 			// 
 			// cbcleanbn
 			// 
-			this.cbcleanbn.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.cbcleanbn.Location = new System.Drawing.Point(16, 60);
+			this.cbcleanbn.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cbcleanbn.Location = new System.Drawing.Point(19, 47);
 			this.cbcleanbn.Name = "cbcleanbn";
 			this.cbcleanbn.Size = new System.Drawing.Size(256, 24);
 			this.cbcleanbn.TabIndex = 1;
@@ -399,60 +398,48 @@ namespace SimPe.Plugin.Gmdc
 			// 
 			// cbcleangrp
 			// 
-			this.cbcleangrp.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.cbcleangrp.Location = new System.Drawing.Point(16, 40);
+			this.cbcleangrp.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cbcleangrp.Location = new System.Drawing.Point(19, 27);
 			this.cbcleangrp.Name = "cbcleangrp";
 			this.cbcleangrp.Size = new System.Drawing.Size(224, 24);
 			this.cbcleangrp.TabIndex = 0;
 			this.cbcleangrp.Text = "Remove all Groups before Import";
 			// 
-			// xpGradientPanel1
+			// Gradientpanel1
 			// 
-			this.xpGradientPanel1.Controls.Add(this.gbbones);
-			this.xpGradientPanel1.Controls.Add(this.gbgroups);
-			this.xpGradientPanel1.Controls.Add(this.gbsettings);
-			this.xpGradientPanel1.Controls.Add(this.button1);
-			this.xpGradientPanel1.Controls.Add(this.lv);
-			this.xpGradientPanel1.Controls.Add(this.label1);
-			this.xpGradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.xpGradientPanel1.Location = new System.Drawing.Point(0, 0);
-			this.xpGradientPanel1.Name = "xpGradientPanel1";
-			this.xpGradientPanel1.Size = new System.Drawing.Size(792, 526);
-			this.xpGradientPanel1.TabIndex = 12;
+			this.Gradientpanel1.BackColor = System.Drawing.Color.Transparent;
+			this.Gradientpanel1.Controls.Add(this.gbbones);
+			this.Gradientpanel1.Controls.Add(this.gbgroups);
+			this.Gradientpanel1.Controls.Add(this.gbsettings);
+			this.Gradientpanel1.Controls.Add(this.button1);
+			this.Gradientpanel1.Controls.Add(this.lv);
+			this.Gradientpanel1.Controls.Add(this.label1);
+			this.Gradientpanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.Gradientpanel1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.Gradientpanel1.Location = new System.Drawing.Point(0, 0);
+			this.Gradientpanel1.Name = "Gradientpanel1";
+			this.Gradientpanel1.Size = new System.Drawing.Size(984, 473);
+			this.Gradientpanel1.TabIndex = 12;
 			// 
 			// gbbones
 			// 
 			this.gbbones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.gbbones.BackColor = System.Drawing.Color.Transparent;
-			this.gbbones.BodyColor = System.Drawing.SystemColors.InactiveCaptionText;
-			this.gbbones.BorderColor = System.Drawing.SystemColors.Window;
 			this.gbbones.Controls.Add(this.cbbones);
 			this.gbbones.Controls.Add(this.label10);
 			this.gbbones.Controls.Add(this.label9);
 			this.gbbones.Controls.Add(this.lbbonename);
 			this.gbbones.Controls.Add(this.cbboneaction);
-			this.gbbones.DockPadding.Bottom = 4;
-			this.gbbones.DockPadding.Left = 4;
-			this.gbbones.DockPadding.Right = 4;
-			this.gbbones.DockPadding.Top = 44;
-			this.gbbones.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
-			this.gbbones.HeaderText = "Bone Settings";
-			this.gbbones.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.gbbones.IconLocation = new System.Drawing.Point(4, 12);
-			this.gbbones.IconSize = new System.Drawing.Size(32, 32);
-			this.gbbones.LeftHeaderColor = System.Drawing.SystemColors.InactiveCaption;
-			this.gbbones.Location = new System.Drawing.Point(506, 368);
+			this.gbbones.Location = new System.Drawing.Point(698, 336);
 			this.gbbones.Name = "gbbones";
-			this.gbbones.RightHeaderColor = System.Drawing.SystemColors.Highlight;
-			this.gbbones.Size = new System.Drawing.Size(280, 120);
+			this.gbbones.Padding = new System.Windows.Forms.Padding(4, 44, 4, 4);
+			this.gbbones.Size = new System.Drawing.Size(280, 103);
 			this.gbbones.TabIndex = 14;
 			// 
 			// gbgroups
 			// 
 			this.gbgroups.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.gbgroups.BackColor = System.Drawing.Color.Transparent;
-			this.gbgroups.BodyColor = System.Drawing.SystemColors.InactiveCaptionText;
-			this.gbgroups.BorderColor = System.Drawing.SystemColors.Window;
 			this.gbgroups.Controls.Add(this.lbKeepOrder);
 			this.gbgroups.Controls.Add(this.label6);
 			this.gbgroups.Controls.Add(this.cbBMesh);
@@ -466,26 +453,16 @@ namespace SimPe.Plugin.Gmdc
 			this.gbgroups.Controls.Add(this.label5);
 			this.gbgroups.Controls.Add(this.cbopacity);
 			this.gbgroups.Controls.Add(this.tbname);
-			this.gbgroups.DockPadding.Bottom = 4;
-			this.gbgroups.DockPadding.Left = 4;
-			this.gbgroups.DockPadding.Right = 4;
-			this.gbgroups.DockPadding.Top = 44;
-			this.gbgroups.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
-			this.gbgroups.HeaderText = "Group Settings";
-			this.gbgroups.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.gbgroups.IconLocation = new System.Drawing.Point(4, 12);
-			this.gbgroups.IconSize = new System.Drawing.Size(32, 32);
-			this.gbgroups.LeftHeaderColor = System.Drawing.SystemColors.InactiveCaption;
-			this.gbgroups.Location = new System.Drawing.Point(506, 144);
+			this.gbgroups.Location = new System.Drawing.Point(698, 124);
 			this.gbgroups.Name = "gbgroups";
-			this.gbgroups.RightHeaderColor = System.Drawing.SystemColors.Highlight;
-			this.gbgroups.Size = new System.Drawing.Size(280, 224);
+			this.gbgroups.Padding = new System.Windows.Forms.Padding(4, 44, 4, 4);
+			this.gbgroups.Size = new System.Drawing.Size(280, 205);
 			this.gbgroups.TabIndex = 13;
 			// 
 			// lbKeepOrder
 			// 
-			this.lbKeepOrder.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.lbKeepOrder.Location = new System.Drawing.Point(112, 144);
+			this.lbKeepOrder.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbKeepOrder.Location = new System.Drawing.Point(114, 130);
 			this.lbKeepOrder.Name = "lbKeepOrder";
 			this.lbKeepOrder.Size = new System.Drawing.Size(160, 23);
 			this.lbKeepOrder.TabIndex = 12;
@@ -494,8 +471,8 @@ namespace SimPe.Plugin.Gmdc
 			// 
 			// label6
 			// 
-			this.label6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.label6.Location = new System.Drawing.Point(16, 144);
+			this.label6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label6.Location = new System.Drawing.Point(18, 130);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(88, 23);
 			this.label6.TabIndex = 11;
@@ -506,8 +483,8 @@ namespace SimPe.Plugin.Gmdc
 			// 
 			this.cbBMesh.Checked = true;
 			this.cbBMesh.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.cbBMesh.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.cbBMesh.Location = new System.Drawing.Point(112, 112);
+			this.cbBMesh.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cbBMesh.Location = new System.Drawing.Point(114, 98);
 			this.cbBMesh.Name = "cbBMesh";
 			this.cbBMesh.Size = new System.Drawing.Size(160, 32);
 			this.cbBMesh.TabIndex = 10;
@@ -518,41 +495,30 @@ namespace SimPe.Plugin.Gmdc
 			// 
 			this.gbsettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.gbsettings.BackColor = System.Drawing.Color.Transparent;
-			this.gbsettings.BodyColor = System.Drawing.SystemColors.InactiveCaptionText;
-			this.gbsettings.BorderColor = System.Drawing.SystemColors.Window;
 			this.gbsettings.Controls.Add(this.cbupdatecres);
 			this.gbsettings.Controls.Add(this.cbcleanbn);
 			this.gbsettings.Controls.Add(this.cbcleangrp);
-			this.gbsettings.DockPadding.Bottom = 4;
-			this.gbsettings.DockPadding.Left = 4;
-			this.gbsettings.DockPadding.Right = 4;
-			this.gbsettings.DockPadding.Top = 44;
-			this.gbsettings.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
-			this.gbsettings.HeaderText = "Global Settings";
-			this.gbsettings.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.gbsettings.IconLocation = new System.Drawing.Point(4, 12);
-			this.gbsettings.IconSize = new System.Drawing.Size(32, 32);
-			this.gbsettings.LeftHeaderColor = System.Drawing.SystemColors.InactiveCaption;
-			this.gbsettings.Location = new System.Drawing.Point(506, 16);
+			this.gbsettings.Location = new System.Drawing.Point(698, 4);
 			this.gbsettings.Name = "gbsettings";
-			this.gbsettings.RightHeaderColor = System.Drawing.SystemColors.Highlight;
-			this.gbsettings.Size = new System.Drawing.Size(280, 128);
+			this.gbsettings.Padding = new System.Windows.Forms.Padding(4, 44, 4, 4);
+			this.gbsettings.Size = new System.Drawing.Size(280, 113);
 			this.gbsettings.TabIndex = 12;
 			// 
 			// ImportGmdcGroupsForm
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
-			this.ClientSize = new System.Drawing.Size(792, 526);
-			this.Controls.Add(this.xpGradientPanel1);
-			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.ClientSize = new System.Drawing.Size(984, 473);
+			this.Controls.Add(this.Gradientpanel1);
+			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "ImportGmdcGroupsForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Mesh Group Importer";
 			this.Load += new System.EventHandler(this.ImportGmdcGroupsForm_Load);
-			this.xpGradientPanel1.ResumeLayout(false);
+			this.Gradientpanel1.ResumeLayout(false);
 			this.gbbones.ResumeLayout(false);
 			this.gbgroups.ResumeLayout(false);
+			this.gbgroups.PerformLayout();
 			this.gbsettings.ResumeLayout(false);
 			this.ResumeLayout(false);
 
@@ -560,7 +526,7 @@ namespace SimPe.Plugin.Gmdc
 		#endregion
 
 		/// <summary>
-		/// Der Haupteinstiegspunkt für die Anwendung.
+		/// Der Haupteinstiegspunkt f�r die Anwendung.
 		/// </summary>
 		[STAThread]
 		static void Main() 
@@ -712,17 +678,18 @@ namespace SimPe.Plugin.Gmdc
 				lvi.Tag = a;
 				lvi.ForeColor = a.MarkColor;
 
-				
-				if (a.VertexCount>SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT) toobig=true;
-				if (a.FaceCount>SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_FACE_AMOUNT) toobig=true;
+				if (a.VertexCount > SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT) toobig = true;
+					if (a.FaceCount > SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_FACE_AMOUNT) toobig = true;
 
 				f.lv.Items.Add(lvi);
 			}
 
-			if (toobig && !Helper.WindowsRegistry.HiddenMode) 			
+			if (toobig) 			
 			{
-				Helper.ExceptionMessage( new Warning("One or more of the imported Mesh Groups contain too many Vertices or Faces", "If SimPE is not running in Advanced Mode, the maximum Number of Vertices is set to "+SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT.ToString()+" and the maximum amount of Faces to "+SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_FACE_AMOUNT+".\n\nIf you want to Import this Mesh, you have to turn on Advanced Mode. However, Objects with big Meshes will slow down the Game!") );			
-				f.button1.Enabled = false;
+				{
+					Helper.ExceptionMessage(new Warning("One or more of the imported Mesh Groups contain too many Vertices or Faces", "If SimPe is not running in Creater Mode, the maximum Number of Vertices is set to " + SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT.ToString() + " and the maximum amount of Faces to " + SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_FACE_AMOUNT.ToString() + ".\n\nIf you want to Import this Mesh, you have to create a User Id."));
+					f.button1.Enabled = false;
+				}
 			}
 
 			int ct = 0;
@@ -746,7 +713,7 @@ namespace SimPe.Plugin.Gmdc
 
 				f.lv.Items.Add(lvi);
 			}
-			if (f.lv.Items.Count>0) f.lv.Items[0].Selected=true;
+			if (f.lv.Items.Count > 0) f.lv.Items[0].Selected = true;
 
 			f.ok = false;
 			f.ShowDialog();

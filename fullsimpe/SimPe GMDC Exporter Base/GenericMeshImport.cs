@@ -4,7 +4,7 @@ using Ambertation.Scenes;
 namespace SimPe.Plugin.Gmdc
 {
 	/// <summary>
-	/// Zusammenfassung für GenericMeshImport.
+	/// Summary description for GenericMeshImport.
 	/// </summary>
 	public class GenericMeshImport 
 	{

@@ -117,4 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="rtbnotes.Text" xml:space="preserve">
+    <value>Not all parts of an animation can be edited by importing an exported text file here, not all parts get exported.
+ In all cases syntax and capitalization is critical.
+ SimPe needs to find the right characters and convert them into numbers and will skip any section it can't parse.
+
+1) The first line must exactly match the first line of the exported text,
+   if not SimPe will assume you have tried to import the wrong file.
+2) The first line of each block must contain the same bone name as the exported
+   text has at that point or that block will be skipped.
+3) It must also contain either 'trn' or 'rot', you can change one to the other
+   to change to Translation frame type or Rotation frame type.
+4) Next line needs to have 'Two', 'Six' or 'Eight'. You can change it to change
+   the Animation Token Type (note the capitalization).
+5) In this line there must be a numerical character following a '(', this is how
+   many parts in the block. You can change this to add/remove parts.
+6) If this line contains the word 'locked' it will be locked, otherwise not.
+7) For each part; the first value is Time Code, this should be different for each
+   part. if you added parts you must at least change the Time Code for each.
+8) You can edit the other values in this line. Only if the line contains (linear) it
+   will be linear and only if the line contains (locked) it will be locked.</value>
+  </data>
 </root>

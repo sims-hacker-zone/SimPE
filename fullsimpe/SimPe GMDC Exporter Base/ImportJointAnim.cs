@@ -26,11 +26,11 @@ using System.Windows.Forms;
 namespace SimPe.Plugin.Anim
 {
 	/// <summary>
-	/// Zusammenfassung für ImportJointAnim.
+	/// Summary description for ImportJointAnim.
 	/// </summary>
 	public class ImportJointAnim : System.Windows.Forms.Form
 	{
-		private SteepValley.Windows.Forms.XPGradientPanel xpGradientPanel1;
+		private System.Windows.Forms.Panel Gradientpanel1;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.ListView lv;
 		private System.Windows.Forms.Label label1;
@@ -38,33 +38,29 @@ namespace SimPe.Plugin.Anim
 		private System.Windows.Forms.ColumnHeader chAction;
 		private System.Windows.Forms.ColumnHeader chTarget;
 		private System.Windows.Forms.ColumnHeader chCount;
-		private Ambertation.Windows.Forms.XPTaskBoxSimple gbgroups;
+		private System.Windows.Forms.GroupBox gbgroups;
 		private System.Windows.Forms.ComboBox cbnames;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label lbname;
 		private System.Windows.Forms.ComboBox cbaction;
-		private Ambertation.Windows.Forms.TransparentCheckBox cbDiscard;
+		private System.Windows.Forms.CheckBox cbDiscard;
 		private System.Windows.Forms.ColumnHeader chDuration;
 		private System.Windows.Forms.ColumnHeader chDiscardZero;
-		private Ambertation.Windows.Forms.TransparentCheckBox cbRemove;
-		private Ambertation.Windows.Forms.XPTaskBoxSimple gbsettings;
-		private Ambertation.Windows.Forms.TransparentCheckBox cbCorrect;
+		private System.Windows.Forms.CheckBox cbRemove;
+		private System.Windows.Forms.GroupBox gbsettings;
+		private System.Windows.Forms.CheckBox cbCorrect;
 		/// <summary>
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
 		public ImportJointAnim()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
-
-			SimPe.ThemeManager tm = SimPe.ThemeManager.Global.CreateChild();
-			tm.AddControl(this.xpGradientPanel1);
-			tm.AddControl(this.gbgroups);
 
 			this.cbaction.Items.Add(AnimImporterAction.Nothing);
 			this.cbaction.Items.Add(AnimImporterAction.Add);
@@ -72,7 +68,7 @@ namespace SimPe.Plugin.Anim
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -86,18 +82,20 @@ namespace SimPe.Plugin.Anim
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(ImportJointAnim));
-			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.gbgroups = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.cbRemove = new Ambertation.Windows.Forms.TransparentCheckBox();
-			this.cbDiscard = new Ambertation.Windows.Forms.TransparentCheckBox();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportJointAnim));
+			this.Gradientpanel1 = new System.Windows.Forms.Panel();
+			this.gbsettings = new System.Windows.Forms.GroupBox();
+			this.cbCorrect = new System.Windows.Forms.CheckBox();
+			this.gbgroups = new System.Windows.Forms.GroupBox();
+			this.cbRemove = new System.Windows.Forms.CheckBox();
+			this.cbDiscard = new System.Windows.Forms.CheckBox();
 			this.cbnames = new System.Windows.Forms.ComboBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
@@ -112,32 +110,50 @@ namespace SimPe.Plugin.Anim
 			this.chDuration = new System.Windows.Forms.ColumnHeader();
 			this.chDiscardZero = new System.Windows.Forms.ColumnHeader();
 			this.label1 = new System.Windows.Forms.Label();
-			this.gbsettings = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.cbCorrect = new Ambertation.Windows.Forms.TransparentCheckBox();
-			this.xpGradientPanel1.SuspendLayout();
-			this.gbgroups.SuspendLayout();
+			this.Gradientpanel1.SuspendLayout();
 			this.gbsettings.SuspendLayout();
+			this.gbgroups.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// xpGradientPanel1
+			// Gradientpanel1
 			// 
-			this.xpGradientPanel1.Controls.Add(this.gbsettings);
-			this.xpGradientPanel1.Controls.Add(this.gbgroups);
-			this.xpGradientPanel1.Controls.Add(this.button1);
-			this.xpGradientPanel1.Controls.Add(this.lv);
-			this.xpGradientPanel1.Controls.Add(this.label1);
-			this.xpGradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.xpGradientPanel1.Location = new System.Drawing.Point(0, 0);
-			this.xpGradientPanel1.Name = "xpGradientPanel1";
-			this.xpGradientPanel1.Size = new System.Drawing.Size(824, 438);
-			this.xpGradientPanel1.TabIndex = 13;
+			this.Gradientpanel1.BackColor = System.Drawing.Color.Transparent;
+			this.Gradientpanel1.Controls.Add(this.gbsettings);
+			this.Gradientpanel1.Controls.Add(this.gbgroups);
+			this.Gradientpanel1.Controls.Add(this.button1);
+			this.Gradientpanel1.Controls.Add(this.lv);
+			this.Gradientpanel1.Controls.Add(this.label1);
+			this.Gradientpanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.Gradientpanel1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.Gradientpanel1.Location = new System.Drawing.Point(0, 0);
+			this.Gradientpanel1.Name = "Gradientpanel1";
+			this.Gradientpanel1.Size = new System.Drawing.Size(824, 438);
+			this.Gradientpanel1.TabIndex = 13;
+			// 
+			// gbsettings
+			// 
+			this.gbsettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.gbsettings.BackColor = System.Drawing.Color.Transparent;
+			this.gbsettings.Controls.Add(this.cbCorrect);
+			this.gbsettings.Location = new System.Drawing.Point(536, 16);
+			this.gbsettings.Name = "gbsettings";
+			this.gbsettings.Padding = new System.Windows.Forms.Padding(4, 44, 4, 4);
+			this.gbsettings.Size = new System.Drawing.Size(280, 72);
+			this.gbsettings.TabIndex = 15;
+			// 
+			// cbCorrect
+			// 
+			this.cbCorrect.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cbCorrect.Location = new System.Drawing.Point(16, 40);
+			this.cbCorrect.Name = "cbCorrect";
+			this.cbCorrect.Size = new System.Drawing.Size(256, 24);
+			this.cbCorrect.TabIndex = 0;
+			this.cbCorrect.Text = "auskel Joint correction (by Pinhead)";
 			// 
 			// gbgroups
 			// 
 			this.gbgroups.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.gbgroups.BackColor = System.Drawing.Color.Transparent;
-			this.gbgroups.BodyColor = System.Drawing.SystemColors.InactiveCaptionText;
-			this.gbgroups.BorderColor = System.Drawing.SystemColors.Window;
 			this.gbgroups.Controls.Add(this.cbRemove);
 			this.gbgroups.Controls.Add(this.cbDiscard);
 			this.gbgroups.Controls.Add(this.cbnames);
@@ -145,20 +161,10 @@ namespace SimPe.Plugin.Anim
 			this.gbgroups.Controls.Add(this.label3);
 			this.gbgroups.Controls.Add(this.lbname);
 			this.gbgroups.Controls.Add(this.cbaction);
-			this.gbgroups.DockPadding.Bottom = 4;
-			this.gbgroups.DockPadding.Left = 4;
-			this.gbgroups.DockPadding.Right = 4;
-			this.gbgroups.DockPadding.Top = 44;
 			this.gbgroups.Enabled = false;
-			this.gbgroups.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
-			this.gbgroups.HeaderText = "Animationjoint Settings";
-			this.gbgroups.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.gbgroups.IconLocation = new System.Drawing.Point(4, 12);
-			this.gbgroups.IconSize = new System.Drawing.Size(32, 32);
-			this.gbgroups.LeftHeaderColor = System.Drawing.SystemColors.InactiveCaption;
 			this.gbgroups.Location = new System.Drawing.Point(536, 88);
 			this.gbgroups.Name = "gbgroups";
-			this.gbgroups.RightHeaderColor = System.Drawing.SystemColors.Highlight;
+			this.gbgroups.Padding = new System.Windows.Forms.Padding(4, 44, 4, 4);
 			this.gbgroups.Size = new System.Drawing.Size(280, 168);
 			this.gbgroups.TabIndex = 14;
 			// 
@@ -166,7 +172,7 @@ namespace SimPe.Plugin.Anim
 			// 
 			this.cbRemove.Checked = true;
 			this.cbRemove.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.cbRemove.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.cbRemove.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cbRemove.Location = new System.Drawing.Point(112, 84);
 			this.cbRemove.Name = "cbRemove";
 			this.cbRemove.Size = new System.Drawing.Size(160, 24);
@@ -178,7 +184,7 @@ namespace SimPe.Plugin.Anim
 			// 
 			this.cbDiscard.Checked = true;
 			this.cbDiscard.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.cbDiscard.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.cbDiscard.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cbDiscard.Location = new System.Drawing.Point(112, 64);
 			this.cbDiscard.Name = "cbDiscard";
 			this.cbDiscard.Size = new System.Drawing.Size(128, 24);
@@ -189,7 +195,7 @@ namespace SimPe.Plugin.Anim
 			// cbnames
 			// 
 			this.cbnames.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbnames.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.cbnames.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cbnames.Location = new System.Drawing.Point(112, 136);
 			this.cbnames.Name = "cbnames";
 			this.cbnames.Size = new System.Drawing.Size(160, 21);
@@ -199,7 +205,7 @@ namespace SimPe.Plugin.Anim
 			// 
 			// label2
 			// 
-			this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label2.Location = new System.Drawing.Point(16, 40);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(88, 23);
@@ -209,7 +215,7 @@ namespace SimPe.Plugin.Anim
 			// 
 			// label3
 			// 
-			this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label3.Location = new System.Drawing.Point(16, 112);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(88, 23);
@@ -219,7 +225,7 @@ namespace SimPe.Plugin.Anim
 			// 
 			// lbname
 			// 
-			this.lbname.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.lbname.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbname.Location = new System.Drawing.Point(112, 40);
 			this.lbname.Name = "lbname";
 			this.lbname.Size = new System.Drawing.Size(160, 23);
@@ -230,7 +236,7 @@ namespace SimPe.Plugin.Anim
 			// cbaction
 			// 
 			this.cbaction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbaction.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.cbaction.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cbaction.Location = new System.Drawing.Point(112, 112);
 			this.cbaction.Name = "cbaction";
 			this.cbaction.Size = new System.Drawing.Size(160, 21);
@@ -241,25 +247,27 @@ namespace SimPe.Plugin.Anim
 			// 
 			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.button1.Location = new System.Drawing.Point(744, 410);
+			this.button1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button1.Location = new System.Drawing.Point(739, 406);
 			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(80, 27);
 			this.button1.TabIndex = 3;
 			this.button1.Text = "OK";
 			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// lv
 			// 
-			this.lv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
+			this.lv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this.lv.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.lv.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-																				 this.chName,
-																				 this.chAction,
-																				 this.chTarget,
-																				 this.chCount,
-																				 this.chDuration,
-																				 this.chDiscardZero});
+			this.chName,
+			this.chAction,
+			this.chTarget,
+			this.chCount,
+			this.chDuration,
+			this.chDiscardZero});
 			this.lv.FullRowSelect = true;
 			this.lv.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
 			this.lv.HideSelection = false;
@@ -267,13 +275,14 @@ namespace SimPe.Plugin.Anim
 			this.lv.Name = "lv";
 			this.lv.Size = new System.Drawing.Size(520, 400);
 			this.lv.TabIndex = 0;
+			this.lv.UseCompatibleStateImageBehavior = false;
 			this.lv.View = System.Windows.Forms.View.Details;
 			this.lv.SelectedIndexChanged += new System.EventHandler(this.lv_SelectedIndexChanged);
 			// 
 			// chName
 			// 
 			this.chName.Text = "Name";
-			this.chName.Width = 130;
+			this.chName.Width = 150;
 			// 
 			// chAction
 			// 
@@ -293,67 +302,35 @@ namespace SimPe.Plugin.Anim
 			// chDuration
 			// 
 			this.chDuration.Text = "Duration";
-			this.chDuration.Width = 56;
+			this.chDuration.Width = 66;
 			// 
 			// chDiscardZero
 			// 
 			this.chDiscardZero.Text = "Zero";
-			this.chDiscardZero.Width = 36;
+			this.chDiscardZero.Width = 50;
 			// 
 			// label1
 			// 
 			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label1.Location = new System.Drawing.Point(8, 16);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(176, 23);
 			this.label1.TabIndex = 1;
 			this.label1.Text = "Importable Joints:";
 			// 
-			// gbsettings
-			// 
-			this.gbsettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.gbsettings.BackColor = System.Drawing.Color.Transparent;
-			this.gbsettings.BodyColor = System.Drawing.SystemColors.InactiveCaptionText;
-			this.gbsettings.BorderColor = System.Drawing.SystemColors.Window;
-			this.gbsettings.Controls.Add(this.cbCorrect);
-			this.gbsettings.DockPadding.Bottom = 4;
-			this.gbsettings.DockPadding.Left = 4;
-			this.gbsettings.DockPadding.Right = 4;
-			this.gbsettings.DockPadding.Top = 44;
-			this.gbsettings.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
-			this.gbsettings.HeaderText = "Global Settings";
-			this.gbsettings.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.gbsettings.IconLocation = new System.Drawing.Point(4, 12);
-			this.gbsettings.IconSize = new System.Drawing.Size(32, 32);
-			this.gbsettings.LeftHeaderColor = System.Drawing.SystemColors.InactiveCaption;
-			this.gbsettings.Location = new System.Drawing.Point(536, 16);
-			this.gbsettings.Name = "gbsettings";
-			this.gbsettings.RightHeaderColor = System.Drawing.SystemColors.Highlight;
-			this.gbsettings.Size = new System.Drawing.Size(280, 72);
-			this.gbsettings.TabIndex = 15;
-			// 
-			// cbCorrect
-			// 
-			this.cbCorrect.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.cbCorrect.Location = new System.Drawing.Point(16, 40);
-			this.cbCorrect.Name = "cbCorrect";
-			this.cbCorrect.Size = new System.Drawing.Size(256, 24);
-			this.cbCorrect.TabIndex = 0;
-			this.cbCorrect.Text = "auskel Joint correction (by Pinhead)";
-			// 
 			// ImportJointAnim
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
 			this.ClientSize = new System.Drawing.Size(824, 438);
-			this.Controls.Add(this.xpGradientPanel1);
-			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.Controls.Add(this.Gradientpanel1);
+			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "ImportJointAnim";
 			this.Text = "Import Animation";
-			this.xpGradientPanel1.ResumeLayout(false);
-			this.gbgroups.ResumeLayout(false);
+			this.Gradientpanel1.ResumeLayout(false);
 			this.gbsettings.ResumeLayout(false);
+			this.gbgroups.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}

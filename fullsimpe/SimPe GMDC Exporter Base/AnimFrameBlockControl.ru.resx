@@ -124,24 +124,11 @@
   <data name="llClone.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 11</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="llClone.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 8</value>
-  </data>
-  <data name="llClone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 23</value>
-  </data>
   <data name="llClone.Text" xml:space="preserve">
     <value>Клонировать</value>
   </data>
   <data name="llRefresh.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 8</value>
-  </data>
-  <data name="llRefresh.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 8</value>
-  </data>
-  <data name="llRefresh.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 23</value>
   </data>
   <data name="llRefresh.Text" xml:space="preserve">
     <value>Обновить</value>
@@ -149,20 +136,11 @@
   <data name="llAdd.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 8</value>
   </data>
-  <data name="llAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 23</value>
-  </data>
   <data name="llAdd.Text" xml:space="preserve">
     <value>Добавить</value>
   </data>
   <data name="llClear.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 8</value>
-  </data>
-  <data name="llClear.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 8</value>
-  </data>
-  <data name="llClear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 23</value>
   </data>
   <data name="llClear.Text" xml:space="preserve">
     <value>Очистить</value>

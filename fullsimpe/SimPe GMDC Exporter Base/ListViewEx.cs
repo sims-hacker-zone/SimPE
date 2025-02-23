@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 namespace System.Windows.Forms
 {
 	/// <summary>
-	/// Zusammenfassung für ListViewEx.
+	/// Summary description for ListViewEx.
 	/// </summary>
 	/// <remarks>From http://www.codeproject.com/cs/miscctrl/ListViewEmbeddedControls.asp with small changes</remarks>
 	public class ListViewEx : ListView

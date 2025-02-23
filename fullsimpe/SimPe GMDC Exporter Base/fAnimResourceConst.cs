@@ -7,7 +7,7 @@ using System.Windows.Forms;
 namespace SimPe.Plugin.Anim
 {
 	/// <summary>
-	/// Zusammenfassung für fAnimResourceConst.
+	/// Summary description for fAnimResourceConst.
 	/// </summary>
 	public class fAnimResourceConst : System.Windows.Forms.Form
 	{
@@ -24,23 +24,33 @@ namespace SimPe.Plugin.Anim
 		internal System.Windows.Forms.TabPage tMisc;
 		private System.Windows.Forms.LinkLabel llClear;
 		private System.Windows.Forms.LinkLabel llTxt;
+        private System.Windows.Forms.LinkLabel llInTxt;
 		internal SimPe.Plugin.Anim.AnimMeshBlockControl ambc;
         internal System.Windows.Forms.TabPage tMesh;
+        private RichTextBox rtbnotes;
+        private CheckBox cbshnote;
+        private System.Windows.Forms.Panel gradpanel;
 		/// <summary>
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
 		public fAnimResourceConst()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
-			
-			llTxt.Visible = Helper.WindowsRegistry.HiddenMode;
 
-			SimPe.ThemeManager tm = SimPe.ThemeManager.Global.CreateChild();
+            llInTxt.Visible = llTxt.Visible = (UserVerification.HaveUserId);
+
+            if (Helper.WindowsRegistry.UseBigIcons)
+            {
+                tv.Font = new System.Drawing.Font("Verdana", 12F);
+                rtbnotes.Font = new System.Drawing.Font("Verdana", 12F);
+            }
+
+            llInTxt.BackColor = llAdd.BackColor = llClear.BackColor = llTxt.BackColor = checkBox1.BackColor = pg.BackColor;
 
 			// 
 			// ambc
@@ -60,7 +70,7 @@ namespace SimPe.Plugin.Anim
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -74,17 +84,21 @@ namespace SimPe.Plugin.Anim
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fAnimResourceConst));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tAnimResourceConst = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbshnote = new System.Windows.Forms.CheckBox();
+            this.rtbnotes = new System.Windows.Forms.RichTextBox();
             this.llTxt = new System.Windows.Forms.LinkLabel();
+            this.llInTxt = new System.Windows.Forms.LinkLabel();
             this.llClear = new System.Windows.Forms.LinkLabel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tv = new System.Windows.Forms.TreeView();
@@ -95,11 +109,13 @@ namespace SimPe.Plugin.Anim
             this.tb_arc_ver = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.tMesh = new System.Windows.Forms.TabPage();
+            this.gradpanel = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tAnimResourceConst.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tMisc.SuspendLayout();
             this.groupBox12.SuspendLayout();
+            this.gradpanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -111,7 +127,7 @@ namespace SimPe.Plugin.Anim
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(800, 288);
+            this.tabControl1.Size = new System.Drawing.Size(920, 288);
             this.tabControl1.TabIndex = 2;
             // 
             // tAnimResourceConst
@@ -120,7 +136,7 @@ namespace SimPe.Plugin.Anim
             this.tAnimResourceConst.Controls.Add(this.groupBox2);
             this.tAnimResourceConst.Location = new System.Drawing.Point(4, 22);
             this.tAnimResourceConst.Name = "tAnimResourceConst";
-            this.tAnimResourceConst.Size = new System.Drawing.Size(792, 262);
+            this.tAnimResourceConst.Size = new System.Drawing.Size(912, 262);
             this.tAnimResourceConst.TabIndex = 6;
             this.tAnimResourceConst.Text = "Raw View";
             this.tAnimResourceConst.UseVisualStyleBackColor = true;
@@ -131,7 +147,10 @@ namespace SimPe.Plugin.Anim
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.cbshnote);
+            this.groupBox2.Controls.Add(this.rtbnotes);
             this.groupBox2.Controls.Add(this.llTxt);
+            this.groupBox2.Controls.Add(this.llInTxt);
             this.groupBox2.Controls.Add(this.llClear);
             this.groupBox2.Controls.Add(this.checkBox1);
             this.groupBox2.Controls.Add(this.tv);
@@ -141,28 +160,70 @@ namespace SimPe.Plugin.Anim
             this.groupBox2.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(8, 8);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(776, 248);
+            this.groupBox2.Size = new System.Drawing.Size(896, 248);
             this.groupBox2.TabIndex = 39;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Content";
             // 
+            // cbshnote
+            // 
+            this.cbshnote.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbshnote.AutoSize = true;
+            this.cbshnote.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbshnote.Location = new System.Drawing.Point(758, 0);
+            this.cbshnote.Name = "cbshnote";
+            this.cbshnote.Size = new System.Drawing.Size(125, 17);
+            this.cbshnote.TabIndex = 46;
+            this.cbshnote.Text = "\'From Text\' Notes";
+            this.cbshnote.UseVisualStyleBackColor = true;
+            this.cbshnote.Visible = false;
+            this.cbshnote.CheckedChanged += new System.EventHandler(this.cbshnote_CheckedChanged);
+            // 
+            // rtbnotes
+            // 
+            this.rtbnotes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtbnotes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rtbnotes.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbnotes.Location = new System.Drawing.Point(412, 24);
+            this.rtbnotes.Name = "rtbnotes";
+            this.rtbnotes.Size = new System.Drawing.Size(476, 216);
+            this.rtbnotes.TabIndex = 45;
+            this.rtbnotes.Text = resources.GetString("rtbnotes.Text");
+            this.rtbnotes.Visible = false;
+            // 
             // llTxt
             // 
+            this.llTxt.AutoSize = true;
             this.llTxt.Enabled = false;
-            this.llTxt.Location = new System.Drawing.Point(640, 32);
+            this.llTxt.Location = new System.Drawing.Point(684, 30);
             this.llTxt.Name = "llTxt";
-            this.llTxt.Size = new System.Drawing.Size(56, 16);
+            this.llTxt.Size = new System.Drawing.Size(56, 13);
             this.llTxt.TabIndex = 44;
             this.llTxt.TabStop = true;
-            this.llTxt.Text = "Text";
+            this.llTxt.Text = "To Text";
             this.llTxt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llTxt_LinkClicked);
+            // 
+            // llInTxt
+            // 
+            this.llInTxt.AutoSize = true;
+            this.llInTxt.Enabled = false;
+            this.llInTxt.Location = new System.Drawing.Point(746, 30);
+            this.llInTxt.Name = "llInTxt";
+            this.llInTxt.Size = new System.Drawing.Size(74, 13);
+            this.llInTxt.TabIndex = 44;
+            this.llInTxt.TabStop = true;
+            this.llInTxt.Text = "From Text";
+            this.llInTxt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llInTxt_LinkClicked);
             // 
             // llClear
             // 
+            this.llClear.AutoSize = true;
             this.llClear.Enabled = false;
-            this.llClear.Location = new System.Drawing.Point(480, 32);
+            this.llClear.Location = new System.Drawing.Point(584, 30);
             this.llClear.Name = "llClear";
-            this.llClear.Size = new System.Drawing.Size(88, 16);
+            this.llClear.Size = new System.Drawing.Size(94, 13);
             this.llClear.TabIndex = 43;
             this.llClear.TabStop = true;
             this.llClear.Text = "Clear Frames";
@@ -171,11 +232,13 @@ namespace SimPe.Plugin.Anim
             // checkBox1
             // 
             this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBox1.Location = new System.Drawing.Point(704, 32);
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(828, 30);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(56, 16);
+            this.checkBox1.Size = new System.Drawing.Size(55, 17);
             this.checkBox1.TabIndex = 42;
             this.checkBox1.Text = "Help";
+            this.checkBox1.UseVisualStyleBackColor = false;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // tv
@@ -187,16 +250,17 @@ namespace SimPe.Plugin.Anim
             this.tv.HideSelection = false;
             this.tv.Location = new System.Drawing.Point(8, 24);
             this.tv.Name = "tv";
-            this.tv.Size = new System.Drawing.Size(296, 216);
+            this.tv.Size = new System.Drawing.Size(396, 216);
             this.tv.TabIndex = 0;
             this.tv.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tv_AfterSelect);
             // 
             // llAdd
             // 
+            this.llAdd.AutoSize = true;
             this.llAdd.Enabled = false;
-            this.llAdd.Location = new System.Drawing.Point(400, 32);
+            this.llAdd.Location = new System.Drawing.Point(500, 30);
             this.llAdd.Name = "llAdd";
-            this.llAdd.Size = new System.Drawing.Size(80, 16);
+            this.llAdd.Size = new System.Drawing.Size(78, 13);
             this.llAdd.TabIndex = 2;
             this.llAdd.TabStop = true;
             this.llAdd.Text = "Add Frame";
@@ -211,18 +275,18 @@ namespace SimPe.Plugin.Anim
             this.pg.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pg.HelpVisible = false;
             this.pg.LineColor = System.Drawing.SystemColors.ScrollBar;
-            this.pg.Location = new System.Drawing.Point(312, 24);
+            this.pg.Location = new System.Drawing.Point(412, 24);
             this.pg.Name = "pg";
-            this.pg.Size = new System.Drawing.Size(456, 216);
+            this.pg.Size = new System.Drawing.Size(476, 216);
             this.pg.TabIndex = 1;
             // 
             // tMisc
             // 
             this.tMisc.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tMisc.Controls.Add(this.groupBox12);
+            this.tMisc.Controls.Add(this.gradpanel);
             this.tMisc.Location = new System.Drawing.Point(4, 22);
             this.tMisc.Name = "tMisc";
-            this.tMisc.Size = new System.Drawing.Size(792, 262);
+            this.tMisc.Size = new System.Drawing.Size(912, 262);
             this.tMisc.TabIndex = 7;
             this.tMisc.Text = "Misc.";
             this.tMisc.UseVisualStyleBackColor = true;
@@ -231,7 +295,6 @@ namespace SimPe.Plugin.Anim
             // 
             this.groupBox12.Controls.Add(this.tb_arc_ver);
             this.groupBox12.Controls.Add(this.label30);
-            this.groupBox12.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox12.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox12.Location = new System.Drawing.Point(8, 8);
             this.groupBox12.Name = "groupBox12";
@@ -256,7 +319,7 @@ namespace SimPe.Plugin.Anim
             this.label30.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.Location = new System.Drawing.Point(8, 24);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(55, 13);
+            this.label30.Size = new System.Drawing.Size(54, 13);
             this.label30.TabIndex = 23;
             this.label30.Text = "Version:";
             // 
@@ -265,36 +328,46 @@ namespace SimPe.Plugin.Anim
             this.tMesh.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tMesh.Location = new System.Drawing.Point(4, 22);
             this.tMesh.Name = "tMesh";
-            this.tMesh.Size = new System.Drawing.Size(792, 262);
+            this.tMesh.Size = new System.Drawing.Size(912, 262);
             this.tMesh.TabIndex = 8;
             this.tMesh.Text = "Mesh Animations";
             this.tMesh.UseVisualStyleBackColor = true;
             // 
+            // gradpanel
+            // 
+            this.gradpanel.BackColor = System.Drawing.Color.Transparent;
+            this.gradpanel.Controls.Add(this.groupBox12);
+            this.gradpanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gradpanel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gradpanel.Location = new System.Drawing.Point(0, 0);
+            this.gradpanel.Name = "gradpanel";
+            this.gradpanel.Size = new System.Drawing.Size(912, 262);
+            this.gradpanel.TabIndex = 13;
+            // 
             // fAnimResourceConst
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.ClientSize = new System.Drawing.Size(816, 350);
+            this.ClientSize = new System.Drawing.Size(936, 350);
             this.Controls.Add(this.tabControl1);
             this.Name = "fAnimResourceConst";
             this.Text = "fAnimResourceConst";
             this.tabControl1.ResumeLayout(false);
             this.tAnimResourceConst.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.tMisc.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
+            this.gradpanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
 		}
-		#endregion
-
-		
+		#endregion		
 
 		private void tv_AfterSelect(object sender, System.Windows.Forms.TreeViewEventArgs e)
 		{
-			llAdd.Enabled = false;
-			llTxt.Enabled = false;
-			llClear.Enabled = false;
+            llAdd.Enabled = llTxt.Enabled = llInTxt.Enabled = llClear.Enabled = false;
+            rtbnotes.Visible = cbshnote.Visible = false;
 			pg.SelectedObject = null;
 			if (e==null) return;
 			if (e.Node==null) return;
@@ -302,10 +375,9 @@ namespace SimPe.Plugin.Anim
 
 			pg.SelectedObject = e.Node.Tag;
 
-
 			if (e.Node.Tag is AnimationMeshBlock) 
 			{
-				llTxt.Enabled = true;
+                llInTxt.Enabled = llTxt.Enabled = true;
 			}
 			if (e.Node.Tag is AnimationFrameBlock) 
 			{
@@ -316,36 +388,9 @@ namespace SimPe.Plugin.Anim
 			{
 				llAdd.Enabled = true;
 				llClear.Enabled = true;
-				/*#if DEBUG
-				AnimationFrame[] afs = (AnimationFrame[])e.Node.Tag;
-
-				
-
-				System.IO.StreamWriter sw = System.IO.File.CreateText(@"G:\anim.txt");
-				try 
-				{
-
-					sw.WriteLine(afs.Length.ToString());
-					for (int i=0; i<afs.Length; i++) {
-						if (afs[0].Type == FrameType.Translation) 
-							sw.WriteLine((i+1).ToString()+" "+
-								(afs[i].Float_X * -1 * Helper.WindowsRegistry.ImportExportScaleFactor).ToString("N12", System.Globalization.CultureInfo.InvariantCulture)+" "+
-								(afs[i].Float_Z * Helper.WindowsRegistry.ImportExportScaleFactor).ToString("N12", System.Globalization.CultureInfo.InvariantCulture)+" "+
-								(afs[i].Float_Y * Helper.WindowsRegistry.ImportExportScaleFactor).ToString("N12", System.Globalization.CultureInfo.InvariantCulture));
-						else
-							sw.WriteLine((i+1).ToString()+" "+
-								(afs[i].Float_X * -1 ).ToString("N12", System.Globalization.CultureInfo.InvariantCulture)+" "+
-								(afs[i].Float_Z).ToString("N12", System.Globalization.CultureInfo.InvariantCulture)+" "+
-								(afs[i].Float_Y).ToString("N12", System.Globalization.CultureInfo.InvariantCulture));
-					}			
-				} 
-				finally
-				{
-					sw.Close();
-				}
-				#endif*/
 			}
-
+            cbshnote.Visible = (llInTxt.Enabled && (UserVerification.HaveUserId));
+            rtbnotes.Visible = (llInTxt.Enabled && cbshnote.Checked);
 		}
 
 		private void tb_arc_ver_TextChanged(object sender, System.EventArgs e)
@@ -431,15 +476,134 @@ namespace SimPe.Plugin.Anim
 					sw.Close();
 					sw.Dispose();
 					sw = null;
-				}
-			
+				}			
 			}
-		}
+        }
+
+        bool nah = true;
+        int coun = 0;
+        private void llInTxt_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+        {
+            nah = true;
+            AnimationMeshBlock ab1 = (AnimationMeshBlock)tv.SelectedNode.Tag;
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Text files (*.txt)|*.txt";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.StreamReader sr = System.IO.File.OpenText(ofd.FileName);
+                try
+                {
+                    if (sr.ReadLine() == ab1.Name + "-----------------------------------")
+                    {
+                        foreach (AnimationFrameBlock ab2 in ab1.Part2)
+                        {
+                            if (FromStrung(ab2, sr.ReadLine()))
+                            {
+                                foreach (AnimationAxisTransformBlock aatb in ab2.AxisSet)
+                                {
+                                    FromTwine(aatb, sr.ReadLine());
+                                    foreach (AnimationAxisTransform aat in aatb)
+                                    {
+                                        FromString(aat, sr.ReadLine());
+                                    }
+                                    if (coun > aatb.Count)
+                                        aatb.Add(coun - aatb.Count, false);
+                                    else if (coun < aatb.Count && coun > 0)
+                                    {
+                                        while (coun < aatb.Count)
+                                            aatb.Remove(aatb.GetLast());
+                                    }
+                                }
+                            }
+                        }
+                        AnimResourceConst arc = (AnimResourceConst)tAnimResourceConst.Tag;
+                        arc.Refresh();
+                        tv_AfterSelect(null, null);
+                        if (!nah) SimPe.Message.Show("Not all values imported properly", "Warning", System.Windows.Forms.MessageBoxButtons.OK);
+                    }
+                    else
+                        SimPe.Message.Show(ofd.FileName + "\r\nIs not the correct text file for " + ab1.Name + "\r\nNothing was Imported!", "Error", MessageBoxButtons.OK);
+                }
+                finally
+                {
+                    sr.Close();
+                    sr.Dispose();
+                    sr = null;
+                }
+            }
+        }
+
+        private void FromString(AnimationAxisTransform aatfb, string readline)
+        {
+            try
+            {
+                aatfb.Linear = readline.Contains("(linear)");
+                aatfb.ParentLocked = readline.Contains("(locked)");
+                readline = readline.Replace("(linear)", " ");
+                readline = readline.Replace("(locked)", " ");
+                readline.Trim();
+                string[] rline = readline.Split(new char[] { ':' }); // rline[0] is timecode rline[1] is all the rest
+                aatfb.TimeCode = Convert.ToInt16(rline[0]);
+                rline[1] += ";0;0"; // two extra zeros - if parent.Type has been changed we need data that's not otherwise there
+                string[] sline = rline[1].Split(new char[] { ';' });
+                if (aatfb.parent == null) // if parent == null then Parameter is immediately followed by comma
+                {
+                    string[] pline = sline[0].Split(new char[] { ',' });
+                    aatfb.Parameter = Convert.ToInt16(pline[0]);
+                    aatfb.Unknown1 = Convert.ToInt16(pline[1]);
+                    aatfb.Unknown2 = Convert.ToInt16(sline[1]);
+                }
+                else
+                {
+                    aatfb.Parameter = Convert.ToInt16(sline[0]);
+                    if (aatfb.parent.Type == AnimationTokenType.SixByte)
+                        aatfb.Unknown1 = Convert.ToInt16(sline[1]);
+                    else if (aatfb.parent.Type == AnimationTokenType.EightByte)
+                    {
+                        aatfb.Unknown1 = Convert.ToInt16(sline[1]);
+                        aatfb.Unknown2 = Convert.ToInt16(sline[2]);
+                    }
+                }
+            }
+            catch { nah = false; }
+        }
+
+        private void FromTwine(AnimationAxisTransformBlock aatbc, string readline)
+        {
+            coun = aatbc.Count;
+            try
+            {
+                int en;
+                int loc = readline.IndexOf("(") + 1;
+                if (readline.Contains(",")) en = readline.IndexOf(",");
+                else en = readline.IndexOf(")");
+                coun = Convert.ToInt32(readline.Substring(loc, en - loc));
+                aatbc.Locked = readline.Contains("locked");
+                if (readline.Contains("Two")) aatbc.Type = AnimationTokenType.TwoByte;
+                else if (readline.Contains("Six")) aatbc.Type = AnimationTokenType.SixByte;
+                else if (readline.Contains("Eight")) aatbc.Type = AnimationTokenType.EightByte;
+            }
+            catch { nah = false; }
+        }
+
+        private bool FromStrung(AnimationFrameBlock afbc, string readline)
+        {
+            if (!readline.Contains(afbc.Name)) { nah = false; return false; }
+            if (readline.Contains("rot")) afbc.TransformationType = FrameType.Rotation;
+            else if (readline.Contains("trn")) afbc.TransformationType = FrameType.Translation;
+            else { nah = false; return false; }
+            return true;
+        }
 
 		private void ambc_Changed(object sender, System.EventArgs e)
 		{
 			AnimResourceConst arc = (AnimResourceConst)tMesh.Tag;
 			arc.Parent.Changed = true;
 		}
+
+        private void cbshnote_CheckedChanged(object sender, EventArgs e)
+        {
+            this.rtbnotes.Visible = cbshnote.Checked;
+        }
 	}
 }

@@ -48,7 +48,7 @@ namespace SimPe.Plugin.Anim
 			get {return index; }
 		}
 
-		AnimationAxisTransformBlock parent;
+        public AnimationAxisTransformBlock parent;
 		/// <summary>
 		/// Retuens the Parent of this Block
 		/// </summary>

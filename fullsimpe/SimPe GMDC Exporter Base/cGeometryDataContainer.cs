@@ -243,7 +243,7 @@ namespace SimPe.Plugin
 			form.ResetPreview();
 			form.tb_ver.Text = "0x"+Helper.HexString(this.version);
 
-			if (Helper.WindowsRegistry.HiddenMode) 
+            if (UserVerification.HaveUserId) 
 			{
 				form.label_elements.Text = "Elements: "+elements.Length.ToString();
 				form.list_elements.Items.Clear();
@@ -318,8 +318,6 @@ namespace SimPe.Plugin
 		/// <param name="tc">The TabPage will be added here.</param>
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
-			
-
 			form.tGeometryDataContainer.Tag = this;
 			tc.TabPages.Add(form.tGeometryDataContainer);
 
@@ -335,10 +333,10 @@ namespace SimPe.Plugin
 			form.tSubset.Tag = this;
 			tc.TabPages.Add(form.tSubset);
 
-			if (Helper.WindowsRegistry.HiddenMode) 
+            if (UserVerification.HaveUserId) 
 			{
-				form.tDebug.Tag = this;
-				tc.TabPages.Add(form.tDebug);
+				form.tAdvncd.Tag = this;
+				tc.TabPages.Add(form.tAdvncd);
 			}
 		}
 
@@ -788,8 +786,6 @@ namespace SimPe.Plugin
 			get { return la; }
 			set { la = value; }
 		}
-
-		
 
 		#region IDisposable Member
 

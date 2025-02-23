@@ -410,7 +410,24 @@ namespace SimPe.Plugin.Anim
 
 			items.Add(aat);
 			return aat;
-		}
+        }
+
+        /// <summary>
+        /// Add new <see cref="AnimationAxisTransform"/> Items
+        /// </summary>
+        /// <param name="howmany"></param>
+        /// <param name="islinear"></param>
+        /// <remarks>Adds the amount of Data blocks according to howmany</remarks>
+        public AnimationAxisTransform Add(int howmany, bool islinear)
+        {
+            while (howmany > 0)
+            {
+                AnimationAxisTransform aat = BuildAnimationAxisTransform(0, 0, 0, 0, islinear, items.Count);
+                items.Add(aat);
+                howmany--;
+            }
+            return null;
+        }
 
 		/// <summary>
 		/// Insert a new <see cref="AnimationAxisTransform"/> based on a Cloned Object
@@ -492,7 +509,6 @@ namespace SimPe.Plugin.Anim
 			int ct = items.Count;
 			items.Remove(aat);
 			ReIndex();
-			
 
 			if (ct!=items.Count) 
 			{
@@ -594,7 +610,6 @@ namespace SimPe.Plugin.Anim
 		}
 
 		#region statics
-		//public const float SCALE = 6.25f/1000f;//10/(float)short.MaxValue;
 		public const float SCALE = 1.0f/1000f;
 		public const float SCALEROT = (float)(((1f/180f) * Math.PI) / 64f);
 
@@ -602,10 +617,7 @@ namespace SimPe.Plugin.Anim
 
 		public static float GetCompressedFloat(short v, float scale)
 		{
-			//if (scale==SCALEROT) 
-				return ((float)v * scale);		
-			//return ((float)((v - 7.33333) * 0.003));
-			//
+            return ((float)v * scale);
 		}
 
 		public static short FromCompressedFloat(float v, float scale)

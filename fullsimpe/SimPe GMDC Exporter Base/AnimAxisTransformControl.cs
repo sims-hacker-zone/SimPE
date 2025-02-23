@@ -27,7 +27,7 @@ using System.Windows.Forms;
 namespace SimPe.Plugin.Anim
 {
 	/// <summary>
-	/// Zusammenfassung für AnimAxisTransformControl.
+	/// Summary description for AnimAxisTransformControl.
 	/// </summary>
 	public class AnimAxisTransformControl : System.Windows.Forms.UserControl
 	{
@@ -35,7 +35,7 @@ namespace SimPe.Plugin.Anim
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
-		private Ambertation.Windows.Forms.TransparentCheckBox cbEvent;
+		private System.Windows.Forms.CheckBox cbEvent;
 		private System.Windows.Forms.TextBox tbTimeCode;
 		private System.Windows.Forms.TextBox tbParameter;
 		private System.Windows.Forms.TextBox tbU1;
@@ -51,9 +51,9 @@ namespace SimPe.Plugin.Anim
 		private System.Windows.Forms.TextBox tbParameterBin;
 		private System.Windows.Forms.LinkLabel llDelete;
 		private System.Windows.Forms.LinkLabel llAdd;
-		private Ambertation.Windows.Forms.TransparentCheckBox cbParentLock;
+		private System.Windows.Forms.CheckBox cbParentLock;
 		/// <summary> 
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
@@ -68,7 +68,7 @@ namespace SimPe.Plugin.Anim
 				| ControlStyles.DoubleBuffer
 				,true);
 
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Required designer variable.
 			InitializeComponent();
 
 			CanCreate = false;
@@ -77,7 +77,7 @@ namespace SimPe.Plugin.Anim
 		}
 
 		/// <summary> 
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -91,10 +91,10 @@ namespace SimPe.Plugin.Anim
 			base.Dispose( disposing );
 		}
 
-		#region Vom Komponenten-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -103,7 +103,7 @@ namespace SimPe.Plugin.Anim
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
-			this.cbEvent = new Ambertation.Windows.Forms.TransparentCheckBox();
+			this.cbEvent = new System.Windows.Forms.CheckBox();
 			this.tbTimeCode = new System.Windows.Forms.TextBox();
 			this.tbParameter = new System.Windows.Forms.TextBox();
 			this.tbU1 = new System.Windows.Forms.TextBox();
@@ -119,7 +119,7 @@ namespace SimPe.Plugin.Anim
 			this.tbParameterBin = new System.Windows.Forms.TextBox();
 			this.llDelete = new System.Windows.Forms.LinkLabel();
 			this.llAdd = new System.Windows.Forms.LinkLabel();
-			this.cbParentLock = new Ambertation.Windows.Forms.TransparentCheckBox();
+			this.cbParentLock = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// label1

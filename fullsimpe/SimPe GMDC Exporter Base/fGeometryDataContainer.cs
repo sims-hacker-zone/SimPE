@@ -26,12 +26,11 @@ using System.IO;
 using System.Globalization;
 using SimPe.Plugin.Gmdc;
 using SimPe.Geometry;
-using SimPe.Updates;
 
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für fGeometryDataContainer.
+	/// Summary description for fGeometryDataContainer.
 	/// </summary>
 	internal class fGeometryDataContainer : System.Windows.Forms.Form
 	{
@@ -105,7 +104,7 @@ namespace SimPe.Plugin
 		private System.Windows.Forms.Button button4;
 		private System.Windows.Forms.ColorDialog cd;
 		internal System.Windows.Forms.TabPage tMesh;
-		internal System.Windows.Forms.TabPage tDebug;
+		internal System.Windows.Forms.TabPage tAdvncd;
 		private System.Windows.Forms.PropertyGrid pg;
 		internal System.Windows.Forms.Label label_elements;
 		internal System.Windows.Forms.ListBox list_elements;
@@ -144,7 +143,6 @@ namespace SimPe.Plugin
 		private System.Windows.Forms.LinkLabel linkLabel3;
 		internal System.Windows.Forms.Label lb_models;
 		private System.Windows.Forms.LinkLabel linkLabel4;
-		private System.Windows.Forms.LinkLabel lljointprev;
 		private System.Windows.Forms.LinkLabel linkLabel5;
 		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.ComboBox cbaxis;
@@ -158,14 +156,14 @@ namespace SimPe.Plugin
 		private System.Windows.Forms.LinkLabel llClearBB;
 		private System.Windows.Forms.LinkLabel llAddBB;
 		/// <summary>
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
 		internal fGeometryDataContainer()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			try 
 			{
@@ -176,11 +174,7 @@ namespace SimPe.Plugin
 			catch (System.IO.FileNotFoundException)
 			{
 				WaitingScreen.Stop();
-				if (MessageBox.Show("The Microsoft Managed DirectX Extensions were not found on your System. Without them, the Preview is not available.\n\nYou can install them manually, by extracting the content of the DirectX\\ManagedDX.CAB on your Sims 2 Installation CD #1. If you double click on the extracted msi File, all needed Files will be installed.\n\nYou can also let SimPE install it automatically. SimPE will download the needed Files (3.5MB) from the SimPE Homepage and install them. Do you want SimPE to download and install the Files?", "Warning", MessageBoxButtons.YesNo)==DialogResult.Yes)
-				{
-					if (WebUpdate.InstallMDX()) MessageBox.Show("Managed DirectX Extension were installed succesfully!");
-				}	
-			
+                MessageBox.Show("The Microsoft Managed DirectX Extensions were not found on your System. Without them, the Preview is not available.\n\nYou can install them manually, by extracting the content of the DirectX\\ManagedDX.CAB on your Sims 2 Installation CD #1. If you double click on the extracted msi File, all needed Files will be installed.", "Warning", MessageBoxButtons.OK);
 				InitializeComponent();
 			}
 
@@ -193,30 +187,30 @@ namespace SimPe.Plugin
 			Gmdc.ElementIdentity[] eis = (Gmdc.ElementIdentity[])System.Enum.GetValues(typeof(Gmdc.ElementIdentity));
 			foreach (Gmdc.ElementIdentity e in eis) this.cbid.Items.Add(e);
 
-#if DEBUG
-			this.linkLabel3.Visible = true;
-#else
-			this.linkLabel3.Visible = false;
-#endif
-			lljointprev.Visible = Helper.WindowsRegistry.HiddenMode;
-
-
 			this.cbCorrect.Checked = Helper.WindowsRegistry.CorrectJointDefinitionOnExport;
 			SimPe.Plugin.Gmdc.ElementSorting[] vs = (SimPe.Plugin.Gmdc.ElementSorting[])System.Enum.GetValues(typeof(SimPe.Plugin.Gmdc.ElementSorting));
 			foreach (SimPe.Plugin.Gmdc.ElementSorting es in vs) {
-#if DEBUG
-#else
 				if (es == ElementSorting.Preview) continue;
-#endif
 				cbaxis.Items.Add(es);
 				if (es == ElementSorting.XZY) cbaxis.SelectedIndex = cbaxis.Items.Count-1;
 			}
 
-			if (DefaultSelectedAxisIndex>=0 && DefaultSelectedAxisIndex<cbaxis.Items.Count) cbaxis.SelectedIndex = DefaultSelectedAxisIndex;
+            if (DefaultSelectedAxisIndex >= 0 && DefaultSelectedAxisIndex < cbaxis.Items.Count) cbaxis.SelectedIndex = DefaultSelectedAxisIndex;
+
+            if (Helper.WindowsRegistry.UseBigIcons)
+            {
+                this.lbmodel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+                this.lb_itemsa.Font = new System.Drawing.Font("Verdana", 12F);
+                this.lb_itemsb.Font = new System.Drawing.Font("Verdana", 12F);
+                this.lb_itemsc.Font = new System.Drawing.Font("Verdana", 12F);
+                this.lb_model_trans.Font = new System.Drawing.Font("Verdana", 12F);
+                this.lb_model_faces.Font = new System.Drawing.Font("Verdana", 12F);
+                this.lb_subsets.Font = new System.Drawing.Font("Verdana", 12F);
+            }
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -230,10 +224,10 @@ namespace SimPe.Plugin
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -264,8 +258,7 @@ namespace SimPe.Plugin
             this.label28 = new System.Windows.Forms.Label();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.lb_itemsa1 = new System.Windows.Forms.ListBox();
-            this.tDebug = new System.Windows.Forms.TabPage();
-            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.tAdvncd = new System.Windows.Forms.TabPage();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.list_subsets = new System.Windows.Forms.ListBox();
             this.label_subsets = new System.Windows.Forms.Label();
@@ -354,7 +347,6 @@ namespace SimPe.Plugin
             this.lb_sub_faces = new System.Windows.Forms.ListBox();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
-            this.lljointprev = new System.Windows.Forms.LinkLabel();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.lb_subsets = new System.Windows.Forms.ListBox();
             this.sfd = new System.Windows.Forms.SaveFileDialog();
@@ -366,7 +358,7 @@ namespace SimPe.Plugin
             this.groupBox3.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox12.SuspendLayout();
-            this.tDebug.SuspendLayout();
+            this.tAdvncd.SuspendLayout();
             this.tGeometryDataContainer3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -392,7 +384,7 @@ namespace SimPe.Plugin
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tGeometryDataContainer);
-            this.tabControl1.Controls.Add(this.tDebug);
+            this.tabControl1.Controls.Add(this.tAdvncd);
             this.tabControl1.Controls.Add(this.tGeometryDataContainer3);
             this.tabControl1.Controls.Add(this.tMesh);
             this.tabControl1.Controls.Add(this.tModel);
@@ -451,7 +443,7 @@ namespace SimPe.Plugin
             this.label1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(8, 112);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 23;
             this.label1.Text = "Value:";
             // 
@@ -474,7 +466,6 @@ namespace SimPe.Plugin
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.groupBox3.Controls.Add(this.cbid);
             this.groupBox3.Controls.Add(this.cbset);
             this.groupBox3.Controls.Add(this.cbblock);
@@ -489,6 +480,7 @@ namespace SimPe.Plugin
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.tb_uk1);
             this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox3.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(8, 88);
             this.groupBox3.Name = "groupBox3";
@@ -683,7 +675,7 @@ namespace SimPe.Plugin
             this.label28.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.Location = new System.Drawing.Point(8, 24);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(55, 13);
+            this.label28.Size = new System.Drawing.Size(54, 13);
             this.label28.TabIndex = 23;
             this.label28.Text = "Version:";
             // 
@@ -714,37 +706,25 @@ namespace SimPe.Plugin
             this.lb_itemsa1.Size = new System.Drawing.Size(248, 104);
             this.lb_itemsa1.TabIndex = 22;
             // 
-            // tDebug
+            // tAdvncd
             // 
-            this.tDebug.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tDebug.Controls.Add(this.linkLabel3);
-            this.tDebug.Controls.Add(this.linkLabel1);
-            this.tDebug.Controls.Add(this.list_subsets);
-            this.tDebug.Controls.Add(this.label_subsets);
-            this.tDebug.Controls.Add(this.list_groups);
-            this.tDebug.Controls.Add(this.label_groups);
-            this.tDebug.Controls.Add(this.list_links);
-            this.tDebug.Controls.Add(this.label_links);
-            this.tDebug.Controls.Add(this.list_elements);
-            this.tDebug.Controls.Add(this.label_elements);
-            this.tDebug.Controls.Add(this.pg);
-            this.tDebug.Location = new System.Drawing.Point(4, 22);
-            this.tDebug.Name = "tDebug";
-            this.tDebug.Size = new System.Drawing.Size(884, 302);
-            this.tDebug.TabIndex = 5;
-            this.tDebug.Text = "Debug";
-            this.tDebug.UseVisualStyleBackColor = true;
-            // 
-            // linkLabel3
-            // 
-            this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(296, 152);
-            this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(32, 13);
-            this.linkLabel3.TabIndex = 10;
-            this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "Scan";
-            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
+            this.tAdvncd.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tAdvncd.Controls.Add(this.linkLabel1);
+            this.tAdvncd.Controls.Add(this.list_subsets);
+            this.tAdvncd.Controls.Add(this.label_subsets);
+            this.tAdvncd.Controls.Add(this.list_groups);
+            this.tAdvncd.Controls.Add(this.label_groups);
+            this.tAdvncd.Controls.Add(this.list_links);
+            this.tAdvncd.Controls.Add(this.label_links);
+            this.tAdvncd.Controls.Add(this.list_elements);
+            this.tAdvncd.Controls.Add(this.label_elements);
+            this.tAdvncd.Controls.Add(this.pg);
+            this.tAdvncd.Location = new System.Drawing.Point(4, 22);
+            this.tAdvncd.Name = "tAdvncd";
+            this.tAdvncd.Size = new System.Drawing.Size(884, 302);
+            this.tAdvncd.TabIndex = 5;
+            this.tAdvncd.Text = "Advanced";
+            this.tAdvncd.UseVisualStyleBackColor = true;
             // 
             // linkLabel1
             // 
@@ -754,7 +734,7 @@ namespace SimPe.Plugin
             this.linkLabel1.TabIndex = 9;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Model";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SeletDebugObject);
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SeletAdvncdObject);
             // 
             // list_subsets
             // 
@@ -762,7 +742,7 @@ namespace SimPe.Plugin
             this.list_subsets.Name = "list_subsets";
             this.list_subsets.Size = new System.Drawing.Size(264, 95);
             this.list_subsets.TabIndex = 8;
-            this.list_subsets.SelectedIndexChanged += new System.EventHandler(this.SeletDebugObject);
+            this.list_subsets.SelectedIndexChanged += new System.EventHandler(this.SeletAdvncdObject);
             // 
             // label_subsets
             // 
@@ -781,7 +761,7 @@ namespace SimPe.Plugin
             this.list_groups.Name = "list_groups";
             this.list_groups.Size = new System.Drawing.Size(264, 69);
             this.list_groups.TabIndex = 6;
-            this.list_groups.SelectedIndexChanged += new System.EventHandler(this.SeletDebugObject);
+            this.list_groups.SelectedIndexChanged += new System.EventHandler(this.SeletAdvncdObject);
             // 
             // label_groups
             // 
@@ -798,7 +778,7 @@ namespace SimPe.Plugin
             this.list_links.Name = "list_links";
             this.list_links.Size = new System.Drawing.Size(264, 69);
             this.list_links.TabIndex = 4;
-            this.list_links.SelectedIndexChanged += new System.EventHandler(this.SeletDebugObject);
+            this.list_links.SelectedIndexChanged += new System.EventHandler(this.SeletAdvncdObject);
             // 
             // label_links
             // 
@@ -815,7 +795,7 @@ namespace SimPe.Plugin
             this.list_elements.Name = "list_elements";
             this.list_elements.Size = new System.Drawing.Size(264, 95);
             this.list_elements.TabIndex = 2;
-            this.list_elements.SelectedIndexChanged += new System.EventHandler(this.SeletDebugObject);
+            this.list_elements.SelectedIndexChanged += new System.EventHandler(this.SeletAdvncdObject);
             // 
             // label_elements
             // 
@@ -886,7 +866,7 @@ namespace SimPe.Plugin
             this.label4.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(8, 112);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 13);
+            this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 23;
             this.label4.Text = "Value:";
             // 
@@ -1088,7 +1068,7 @@ namespace SimPe.Plugin
             this.label13.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(260, 24);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(74, 13);
+            this.label13.Size = new System.Drawing.Size(73, 13);
             this.label13.TabIndex = 5;
             this.label13.Text = "Prim. Type:";
             // 
@@ -1126,7 +1106,7 @@ namespace SimPe.Plugin
             this.label9.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(8, 120);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(44, 13);
+            this.label9.Size = new System.Drawing.Size(43, 13);
             this.label9.TabIndex = 23;
             this.label9.Text = "Value:";
             // 
@@ -1169,7 +1149,7 @@ namespace SimPe.Plugin
             // cbCorrect
             // 
             this.cbCorrect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cbCorrect.Location = new System.Drawing.Point(232, 264);
+            this.cbCorrect.Location = new System.Drawing.Point(272, 264);
             this.cbCorrect.Name = "cbCorrect";
             this.cbCorrect.Size = new System.Drawing.Size(96, 32);
             this.cbCorrect.TabIndex = 32;
@@ -1180,9 +1160,9 @@ namespace SimPe.Plugin
             // 
             this.dxprev.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.dxprev.Effect = null;
-            this.dxprev.Location = new System.Drawing.Point(336, 8);
+            this.dxprev.Location = new System.Drawing.Point(376, 8);
             this.dxprev.Name = "dxprev";
-            this.dxprev.Size = new System.Drawing.Size(344, 288);
+            this.dxprev.Size = new System.Drawing.Size(304, 288);
             this.dxprev.TabIndex = 31;
             this.dxprev.WorldMatrix = ((Microsoft.DirectX.Matrix)(resources.GetObject("dxprev.WorldMatrix")));
             this.dxprev.ResetDevice += new System.EventHandler(this.dxprev_ResetDevice);
@@ -1191,7 +1171,7 @@ namespace SimPe.Plugin
             // 
             this.cbaxis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cbaxis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbaxis.Location = new System.Drawing.Point(232, 240);
+            this.cbaxis.Location = new System.Drawing.Point(272, 240);
             this.cbaxis.Name = "cbaxis";
             this.cbaxis.Size = new System.Drawing.Size(96, 21);
             this.cbaxis.TabIndex = 30;
@@ -1201,20 +1181,20 @@ namespace SimPe.Plugin
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(176, 240);
+            this.label12.Location = new System.Drawing.Point(216, 240);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(48, 23);
+            this.label12.Size = new System.Drawing.Size(48, 20);
             this.label12.TabIndex = 29;
             this.label12.Text = "Order:";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button1.Location = new System.Drawing.Point(96, 240);
+            this.button1.Location = new System.Drawing.Point(110, 240);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(72, 23);
+            this.button1.Size = new System.Drawing.Size(78, 23);
             this.button1.TabIndex = 28;
             this.button1.Text = "Import...";
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -1225,7 +1205,7 @@ namespace SimPe.Plugin
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.button5.Location = new System.Drawing.Point(16, 240);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(72, 23);
+            this.button5.Size = new System.Drawing.Size(78, 23);
             this.button5.TabIndex = 27;
             this.button5.Text = "Export...";
             this.button5.Click += new System.EventHandler(this.Export);
@@ -1251,7 +1231,7 @@ namespace SimPe.Plugin
             this.lbmodel.HorizontalScrollbar = true;
             this.lbmodel.Location = new System.Drawing.Point(16, 24);
             this.lbmodel.Name = "lbmodel";
-            this.lbmodel.Size = new System.Drawing.Size(312, 214);
+            this.lbmodel.Size = new System.Drawing.Size(352, 214);
             this.lbmodel.TabIndex = 24;
             // 
             // lb_models
@@ -1263,7 +1243,6 @@ namespace SimPe.Plugin
             this.lb_models.Size = new System.Drawing.Size(51, 13);
             this.lb_models.TabIndex = 23;
             this.lb_models.Text = "Models:";
-            this.lb_models.Click += new System.EventHandler(this.lb_models_Click);
             // 
             // button3
             // 
@@ -1271,7 +1250,7 @@ namespace SimPe.Plugin
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.button3.Location = new System.Drawing.Point(16, 272);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(152, 23);
+            this.button3.Size = new System.Drawing.Size(172, 23);
             this.button3.TabIndex = 4;
             this.button3.Text = "Preview";
             this.button3.Click += new System.EventHandler(this.Preview);
@@ -1280,7 +1259,7 @@ namespace SimPe.Plugin
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button4.Location = new System.Drawing.Point(184, 272);
+            this.button4.Location = new System.Drawing.Point(219, 272);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(32, 23);
             this.button4.TabIndex = 26;
@@ -1481,7 +1460,7 @@ namespace SimPe.Plugin
             this.label15.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(8, 112);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(44, 13);
+            this.label15.Size = new System.Drawing.Size(43, 13);
             this.label15.TabIndex = 23;
             this.label15.Text = "Value:";
             // 
@@ -1533,7 +1512,7 @@ namespace SimPe.Plugin
             this.label17.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(8, 120);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(44, 13);
+            this.label17.Size = new System.Drawing.Size(43, 13);
             this.label17.TabIndex = 23;
             this.label17.Text = "Value:";
             // 
@@ -1584,7 +1563,7 @@ namespace SimPe.Plugin
             this.label14.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(8, 112);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(44, 13);
+            this.label14.Size = new System.Drawing.Size(43, 13);
             this.label14.TabIndex = 23;
             this.label14.Text = "Value:";
             // 
@@ -1725,7 +1704,7 @@ namespace SimPe.Plugin
             this.label19.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(8, 120);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(44, 13);
+            this.label19.Size = new System.Drawing.Size(43, 13);
             this.label19.TabIndex = 23;
             this.label19.Text = "Value:";
             // 
@@ -1816,7 +1795,6 @@ namespace SimPe.Plugin
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox15.Controls.Add(this.linkLabel5);
-            this.groupBox15.Controls.Add(this.lljointprev);
             this.groupBox15.Controls.Add(this.linkLabel4);
             this.groupBox15.Controls.Add(this.lb_subsets);
             this.groupBox15.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -1839,19 +1817,6 @@ namespace SimPe.Plugin
             this.linkLabel5.Text = "Rebuild";
             this.linkLabel5.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.linkLabel5.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.RebuildJointVertices);
-            // 
-            // lljointprev
-            // 
-            this.lljointprev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lljointprev.Enabled = false;
-            this.lljointprev.Location = new System.Drawing.Point(528, 232);
-            this.lljointprev.Name = "lljointprev";
-            this.lljointprev.Size = new System.Drawing.Size(56, 23);
-            this.lljointprev.TabIndex = 28;
-            this.lljointprev.TabStop = true;
-            this.lljointprev.Text = "Preview";
-            this.lljointprev.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.lljointprev.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.PreviewJoint);
             // 
             // linkLabel4
             // 
@@ -1908,8 +1873,8 @@ namespace SimPe.Plugin
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             this.groupBox12.ResumeLayout(false);
-            this.tDebug.ResumeLayout(false);
-            this.tDebug.PerformLayout();
+            this.tAdvncd.ResumeLayout(false);
+            this.tAdvncd.PerformLayout();
             this.tGeometryDataContainer3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
@@ -2304,11 +2269,7 @@ namespace SimPe.Plugin
 			catch (System.IO.FileNotFoundException)
 			{
 				WaitingScreen.Stop();
-				if (MessageBox.Show("The Microsoft Managed DirectX Extensions were not found on your System. Without them, the Preview is not available.\n\nYou can install them manually, by extracting the content of the DirectX\\ManagedDX.CAB on your Sims 2 Installation CD #1. If you double click on the extracted msi File, all needed Files will be installed.\n\nYou can also let SimPE install it automatically. SimPE will download the needed Files (3.5MB) from the SimPE Homepage and install them. Do you want SimPE to download and install the Files?", "Warning", MessageBoxButtons.YesNo)==DialogResult.Yes)
-				{
-					if (WebUpdate.InstallMDX()) MessageBox.Show("Managed DirectX Extension were installed succesfully!");
-				}
-					
+                MessageBox.Show("The Microsoft Managed DirectX Extensions were not found on your System. Without them, the Preview is not available.\n\nYou can install them manually, by extracting the content of the DirectX\\ManagedDX.CAB on your Sims 2 Installation CD #1. If you double click on the extracted msi File, all needed Files will be installed.", "Warning", MessageBoxButtons.OK);
 				return;
 			}
 			catch (Exception ex) 
@@ -2358,7 +2319,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SeletDebugObject(object sender, System.EventArgs e)
+		private void SeletAdvncdObject(object sender, System.EventArgs e)
 		{
 			ListBox lb = (ListBox)sender;
 			if (lb.SelectedIndex>=0) 
@@ -2366,11 +2327,6 @@ namespace SimPe.Plugin
 				pg.SelectedObject = ((SimPe.CountedListItem)lb.Items[lb.SelectedIndex]).Object;
 				pg.Refresh();
 			}
-		}
-
-		private void lb_models_Click(object sender, System.EventArgs e)
-		{
-		
 		}
 
 		private void dxprev_ResetDevice(object sender, System.EventArgs e)
@@ -2523,8 +2479,6 @@ namespace SimPe.Plugin
 			if (this.tMesh.Tag != null)
 			{				
 				GeometryDataContainer gmdc = (GeometryDataContainer) this.tMesh.Tag;
-				//VectorTransformations old = (VectorTransformations)gmdc.Model.Transformations.Clone();
-
 				try 
 				{
 					if (this.lb_model_trans.SelectedIndex<0) 
@@ -2582,7 +2536,7 @@ namespace SimPe.Plugin
 				gmdc.Refresh();
 			}
 		}
-
+        /*
 		private void PreviewJoint(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs ea)
 		{
 			if (this.tMesh.Tag != null)
@@ -2648,82 +2602,80 @@ namespace SimPe.Plugin
 				
 			}
 		}
-
-		private void DeleteJoint(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+        
+        private void linkLabel3_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
 		{
-			if (this.tMesh.Tag != null)
-			{
-				GeometryDataContainer gmdc = (GeometryDataContainer) this.tMesh.Tag;
+            if (this.tMesh.Tag != null)
+            {
+                SimPe.Interfaces.Files.IPackageFile pkg = ((GeometryDataContainer)this.tMesh.Tag).Parent.Package;
 
-				if (lb_subsets.SelectedIndex<0) return;
-				gmdc.RemoveBone(lb_subsets.SelectedIndex);
-				gmdc.Refresh();
-				gmdc.Changed = true;
-			}
-		}
+                SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(Data.MetaData.GMDC);
+                int min = int.MaxValue;
+                int max = 0;
+                int av = 0;
+                int ct = 0;
 
-		private void linkLabel3_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
-		{
-			if (this.tMesh.Tag != null)
-			{							
-				SimPe.Interfaces.Files.IPackageFile pkg =((GeometryDataContainer)this.tMesh.Tag).Parent.Package;
+                int vmin = int.MaxValue;
+                int vmax = 0;
+                int vav = 0;
+                int vct = 0;
+                foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+                {
+                    GenericRcol rcol = new GenericRcol(null, false);
+                    rcol.ProcessData(pfd, pkg);
 
-				SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(Data.MetaData.GMDC);
-				int min = int.MaxValue;
-				int max = 0;
-				int av = 0;
-				int ct = 0;
+                    GeometryDataContainer gmdc = (GeometryDataContainer)rcol.Blocks[0];
 
-				int vmin = int.MaxValue;
-				int vmax = 0;
-				int vav = 0;
-				int vct = 0;
-				foreach(SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
-				{
-					GenericRcol rcol = new GenericRcol(null, false);
-					rcol.ProcessData(pfd, pkg);
+                    foreach (GmdcGroup g in gmdc.Groups)
+                    {
+                        if (g.Faces.Length > max) max = g.Faces.Length;
+                        if (g.Faces.Length < min) min = g.Faces.Length;
+                        av += g.Faces.Length;
+                        ct++;
+                    }
 
-					GeometryDataContainer gmdc = (GeometryDataContainer)rcol.Blocks[0];
+                    foreach (GmdcLink l in gmdc.Links)
+                    {
+                        if (l.AliasValues[0].Count + l.AliasValues[1].Count + l.AliasValues[2].Count > 0 && l.ReferencedElement.Length > 2)
+                        {
+                            if (MessageBox.Show(l.ReferencedElement.Count.ToString() + " " + pfd.Instance.ToString("X") + "\n\nContinue?", "alt. Links", MessageBoxButtons.YesNo) == DialogResult.No) return;
+                        }
 
-					foreach (GmdcGroup g in gmdc.Groups) 
-					{
-						if (g.Faces.Length>max) max = g.Faces.Length;
-						if (g.Faces.Length<min) min = g.Faces.Length;	
-						av += g.Faces.Length;
-						ct ++;
-					}					
+                        if (l.ReferencedSize > vmax) vmax = l.ReferencedSize;
+                        if (l.ReferencedSize < vmin) vmin = l.ReferencedSize;
+                        vav += l.ReferencedSize;
+                        vct++;
 
-					foreach (GmdcLink l in gmdc.Links) 
-					{
-						if (l.AliasValues[0].Count + l.AliasValues[1].Count + l.AliasValues[2].Count > 0 && l.ReferencedElement.Length>2)
-						{
-							if (MessageBox.Show(l.ReferencedElement.Count.ToString()+" "+pfd.Instance.ToString("X")+"\n\nContinue?", "alt. Links", MessageBoxButtons.YesNo)==DialogResult.No) return;
-						}
+                        ct = -1;
+                        foreach (int k in l.ReferencedElement)
+                        {
+                            if (ct != -1)
+                            {
+                                if (gmdc.Elements[k].Values.Length != ct)
+                                {
+                                    //MessageBox.Show(pfd.Instance.ToString("X"));
+                                }
+                            }
 
-						if (l.ReferencedSize>vmax) vmax = l.ReferencedSize;
-						if (l.ReferencedSize<vmin) vmin = l.ReferencedSize;
-						vav += l.ReferencedSize;
-						vct ++;
+                            ct = gmdc.Elements[k].Values.Length;
+                        }
+                    }
+                }
+            }
+        }
+        */
+        private void DeleteJoint(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+        {
+            if (this.tMesh.Tag != null)
+            {
+                GeometryDataContainer gmdc = (GeometryDataContainer)this.tMesh.Tag;
 
-						ct = -1;
-						foreach (int k in l.ReferencedElement)
-						{
-							if (ct!=-1) 
-							{
-								if (gmdc.Elements[k].Values.Length!=ct) 
-								{
-									//MessageBox.Show(pfd.Instance.ToString("X"));
-								}
-							}
-
-							ct = gmdc.Elements[k].Values.Length;
-						}
-					}
-				}
-
-				//MessageBox.Show(min.ToString()+" - ("+(av/ct).ToString()+")"+max.ToString()+" Faces\n"+vmin.ToString()+" - ("+(vav/vct).ToString()+")"+vmax.ToString()+" Vertices");
-			}
-		}
+                if (lb_subsets.SelectedIndex < 0) return;
+                gmdc.RemoveBone(lb_subsets.SelectedIndex);
+                gmdc.Refresh();
+                gmdc.Changed = true;
+            }
+        }
 
 		private void linkLabel2_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
 		{
@@ -2937,7 +2889,7 @@ namespace SimPe.Plugin
 
 		
 
-		private void SeletDebugObject(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		private void SeletAdvncdObject(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
 		{
 			if (this.tMesh.Tag != null)
 			{

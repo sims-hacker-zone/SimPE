@@ -345,84 +345,83 @@ namespace SimPe.Plugin.Anim
 			System.Windows.Forms.TreeNode btn = new System.Windows.Forms.TreeNode("Header");
 			btn.Tag = this;
 			form.tv.Nodes.Add(btn);
-
-			foreach (AnimationMeshBlock ab in this.ab1) 
+			// can get a null reference exception here, it seems some AnimationMeshBlocks may not be readable
+			foreach (AnimationMeshBlock ab in this.ab1)
 			{
-				System.Windows.Forms.TreeNode tn = new System.Windows.Forms.TreeNode(ab.ToString());
-				tn.Tag = ab;
-				form.tv.Nodes.Add(tn);
-				
-				foreach (AnimationFrameBlock ab2 in ab.Part2) 
+				try
 				{
-					System.Windows.Forms.TreeNode tn2 = new System.Windows.Forms.TreeNode(ab2.ToString());
-					tn2.Tag = ab2;
-					tn.Nodes.Add(tn2);
-					foreach (AnimationAxisTransformBlock ab3 in ab2.AxisSet) 
-					{
-						System.Windows.Forms.TreeNode tn3 = new System.Windows.Forms.TreeNode(ab3.ToString());
-						tn3.Tag = ab3;
-						tn2.Nodes.Add(tn3);
+					System.Windows.Forms.TreeNode tn = new System.Windows.Forms.TreeNode(ab.ToString());
+					tn.Tag = ab;
+					form.tv.Nodes.Add(tn);
 
-						foreach (AnimationAxisTransform ab4 in ab3)
+					foreach (AnimationFrameBlock ab2 in ab.Part2)
+					{
+						System.Windows.Forms.TreeNode tn2 = new System.Windows.Forms.TreeNode(ab2.ToString());
+						tn2.Tag = ab2;
+						tn.Nodes.Add(tn2);
+						foreach (AnimationAxisTransformBlock ab3 in ab2.AxisSet)
 						{
-							System.Windows.Forms.TreeNode tn4 = new System.Windows.Forms.TreeNode(ab4.ToString());
-							tn4.Tag = ab4;
-							tn3.Nodes.Add(tn4);
+							System.Windows.Forms.TreeNode tn3 = new System.Windows.Forms.TreeNode(ab3.ToString());
+							tn3.Tag = ab3;
+							tn2.Nodes.Add(tn3);
+
+							foreach (AnimationAxisTransform ab4 in ab3)
+							{
+								System.Windows.Forms.TreeNode tn4 = new System.Windows.Forms.TreeNode(ab4.ToString());
+								tn4.Tag = ab4;
+								tn3.Nodes.Add(tn4);
+							}
+						}
+
+						//Add a FrameList
+						if (ab2.FrameCount > 0)
+						{
+							System.Windows.Forms.TreeNode frames = new System.Windows.Forms.TreeNode("Frames");
+							tn2.Nodes.Add(frames);
+							AnimationFrame[] afs = ab2.Frames;
+
+							for (int i = 0; i < afs.Length; i++)
+							{
+								AnimationFrame af = afs[i];
+								System.Windows.Forms.TreeNode tnf = new System.Windows.Forms.TreeNode(af.ToString());
+								tnf.Tag = af;
+								frames.Nodes.Add(tnf);
+							}
+							frames.Tag = afs;
+						}
+
+						//Add a FrameList
+						if (ab2.FrameCount > 0 && (UserVerification.HaveUserId))
+						{
+							System.Windows.Forms.TreeNode frames = new System.Windows.Forms.TreeNode("Interpolated Frames");
+							tn2.Nodes.Add(frames);
+							AnimationFrame[] afs = ab2.InterpolateMissingFrames();
+
+							for (int i = 0; i < afs.Length; i++)
+							{
+								AnimationFrame af = afs[i];
+								System.Windows.Forms.TreeNode tnf = new System.Windows.Forms.TreeNode(af.ToString());
+								tnf.Tag = af;
+								frames.Nodes.Add(tnf);
+							}
+							frames.Tag = afs;
 						}
 					}
 
-					//Add a FrameList
-					if (ab2.FrameCount>0) 
+					foreach (AnimBlock4 ab4 in ab.Part4)
 					{
-						System.Windows.Forms.TreeNode frames = new System.Windows.Forms.TreeNode("Frames");
-						tn2.Nodes.Add(frames);
-						AnimationFrame[] afs = ab2.Frames;
-
-						for (int i=0; i< afs.Length; i++)
+						System.Windows.Forms.TreeNode tn4 = new System.Windows.Forms.TreeNode(ab4.ToString());
+						tn4.Tag = ab4;
+						tn.Nodes.Add(tn4);
+						foreach (AnimBlock5 ab5 in ab4.Part5)
 						{
-							AnimationFrame af = afs[i];
-							System.Windows.Forms.TreeNode tnf = new System.Windows.Forms.TreeNode(af.ToString());
-							tnf.Tag = af;
-							frames.Nodes.Add(tnf);
+							System.Windows.Forms.TreeNode tn5 = new System.Windows.Forms.TreeNode(ab5.ToString());
+							tn5.Tag = ab5;
+							tn4.Nodes.Add(tn5);
 						}
-						frames.Tag = afs;
-					}
-
-					
-
-
-					//Add a FrameList
-					if (ab2.FrameCount>0 && Helper.WindowsRegistry.HiddenMode) 
-					{
-						System.Windows.Forms.TreeNode frames = new System.Windows.Forms.TreeNode("Interpolated Frames");
-						tn2.Nodes.Add(frames);
-						AnimationFrame[] afs = ab2.InterpolateMissingFrames();
-						
-						for (int i=0; i< afs.Length; i++)
-						{
-							AnimationFrame af = afs[i];
-							System.Windows.Forms.TreeNode tnf = new System.Windows.Forms.TreeNode(af.ToString());
-							tnf.Tag = af;
-							frames.Nodes.Add(tnf);
-						}
-						frames.Tag = afs;
-					}
-
-					
-				}
-
-				foreach (AnimBlock4 ab4 in ab.Part4) 
-				{
-					System.Windows.Forms.TreeNode tn4 = new System.Windows.Forms.TreeNode(ab4.ToString());
-					tn4.Tag = ab4;
-					tn.Nodes.Add(tn4);
-					foreach (AnimBlock5 ab5 in ab4.Part5) 
-					{
-						System.Windows.Forms.TreeNode tn5 = new System.Windows.Forms.TreeNode(ab5.ToString());
-						tn5.Tag = ab5;
-						tn4.Nodes.Add(tn5);
 					}
 				}
+				catch { btn.Text = "Header (faulty)"; }
 			}
 
 			foreach (AnimBlock6 ab in this.ab6) 
@@ -448,7 +447,7 @@ namespace SimPe.Plugin.Anim
 			tc.TabPages.Add(form.tMisc);
 
 			form.tAnimResourceConst.Tag = this;
-			if (Helper.WindowsRegistry.HiddenMode) tc.TabPages.Add(form.tAnimResourceConst);
+			if (UserVerification.HaveUserId) tc.TabPages.Add(form.tAnimResourceConst);
 		}
 
 

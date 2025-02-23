@@ -27,7 +27,7 @@ using System.Windows.Forms;
 namespace SimPe.Plugin.Anim
 {
 	/// <summary>
-	/// Zusammenfassung für AnimationMeshBlock.
+	/// Summary description for AnimationMeshBlock.
 	/// </summary>
 	public class AnimMeshBlockControl : System.Windows.Forms.UserControl
 	{
@@ -41,12 +41,12 @@ namespace SimPe.Plugin.Anim
 		private SimPe.Plugin.Anim.AnimFrameBlockControl pnFrames;
 		private System.Windows.Forms.LinkLabel llExport;
 		private System.Windows.Forms.LinkLabel llImport;
-		private Ambertation.Windows.Forms.TransparentCheckBox cbCorrect;
+        private System.Windows.Forms.CheckBox cbCorrect;
 		private System.Windows.Forms.MenuItem miAdd;
 		private System.Windows.Forms.MenuItem miRem;
 		private System.Windows.Forms.ContextMenu cmJoint;
 		/// <summary> 
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
@@ -61,7 +61,7 @@ namespace SimPe.Plugin.Anim
 				| ControlStyles.DoubleBuffer
 				,true);
 
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Required designer variable.
 			InitializeComponent();
 
 			this.pnFrames = new AnimFrameBlockControl();
@@ -81,7 +81,7 @@ namespace SimPe.Plugin.Anim
 		}
 
 		/// <summary> 
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -95,15 +95,15 @@ namespace SimPe.Plugin.Anim
 			base.Dispose( disposing );
 		}
 
-		#region Vom Komponenten-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
 			this.panel2 = new System.Windows.Forms.Panel();
-			this.cbCorrect = new Ambertation.Windows.Forms.TransparentCheckBox();
+            this.cbCorrect = new System.Windows.Forms.CheckBox();
 			this.llExport = new System.Windows.Forms.LinkLabel();
 			this.llImport = new System.Windows.Forms.LinkLabel();
 			this.pnJoint = new System.Windows.Forms.Panel();

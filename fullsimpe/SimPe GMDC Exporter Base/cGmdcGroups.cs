@@ -222,8 +222,8 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <returns>A String Describing the Data</returns>
 		public override string ToString()
-		{			
-			if (this.Faces.Count<0x2000)
+		{
+            if (this.Faces.Count < 0x2000 || UserVerification.HaveUserId)
 				return name + " (FaceCount="+(FaceCount).ToString()+", VertexCount="+UsedVertexCount.ToString()+")";
 			else 
 				return name + " (FaceCount="+(FaceCount).ToString()+", VertexCount=too many Faces)";

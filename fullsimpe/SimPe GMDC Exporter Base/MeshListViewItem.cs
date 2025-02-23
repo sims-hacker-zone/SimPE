@@ -39,11 +39,10 @@ namespace SimPe.Plugin.Gmdc
 				cbgroup.Items.Add(g);
 			cbgroup.SelectedItem = 0;
 
-			cbenv = new Ambertation.Windows.Forms.TransparentCheckBox();
+			cbenv = new System.Windows.Forms.CheckBox();
 			cbenv.BackColor = Color.Transparent;
-			cbenv.Checked = mesh.Envelopes.Count>0;			
-
-			
+			cbenv.Checked = mesh.Envelopes.Count>0;
+						
 			int i = gmi.Gmdc.FindGroupByName(mesh.Name);
 			if (i>=0) 
 			{				
@@ -115,8 +114,8 @@ namespace SimPe.Plugin.Gmdc
 
 		Color MyColor()
 		{
-			if (mesh.Vertices.Count>SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT) return Color.Red;
-			if (mesh.FaceIndices.Count>SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_FACE_AMOUNT) return Color.Red;
+			if (mesh.Vertices.Count > SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT) return Color.Red;
+			if (mesh.FaceIndices.Count > SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_FACE_AMOUNT) return Color.Red;
 			return Color.Black;
 		}
 

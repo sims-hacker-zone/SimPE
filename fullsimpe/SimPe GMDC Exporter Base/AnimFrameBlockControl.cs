@@ -27,7 +27,7 @@ using System.Windows.Forms;
 namespace SimPe.Plugin.Anim
 {
 	/// <summary>
-	/// Zusammenfassung für AnimFrameBlockControl.
+	/// Summary description for AnimFrameBlockControl.
 	/// </summary>
 	public class AnimFrameBlockControl : System.Windows.Forms.UserControl
 	{
@@ -52,6 +52,8 @@ namespace SimPe.Plugin.Anim
 		private System.Windows.Forms.LinkLabel llClone;
 		private System.Windows.Forms.ContextMenu contextMenu1;
 		private System.Windows.Forms.MenuItem miExp;
+		private System.Windows.Forms.MenuItem miClp;
+		private System.Windows.Forms.MenuItem miSlp;
 		private System.Windows.Forms.MenuItem miRem;
 		private System.Windows.Forms.TextBox tbDuration;
 		private System.Windows.Forms.TextBox tbName;
@@ -59,7 +61,7 @@ namespace SimPe.Plugin.Anim
 		private System.Windows.Forms.Label lbName;
 		private System.Windows.Forms.MenuItem miSort;
 		/// <summary> 
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
@@ -74,20 +76,18 @@ namespace SimPe.Plugin.Anim
 				| ControlStyles.DoubleBuffer
 				,true);
 
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Required designer variable.
 			InitializeComponent();
-
-			SimPe.ThemeManager tm = SimPe.ThemeManager.Global.CreateChild();
-
-			tm.AddControl(splitter1);
 			panel1.BackColor = splitter1.BackColor;
 			panel3.BackColor = splitter1.BackColor;
 			panel6.BackColor = splitter1.BackColor;
+			if (Helper.WindowsRegistry.UseBigIcons)
+				tv.Font = new System.Drawing.Font("Verdana", 12F);
 			Clear();
 		}
 
 		/// <summary> 
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -101,16 +101,18 @@ namespace SimPe.Plugin.Anim
 			base.Dispose( disposing );
 		}
 
-		#region Vom Komponenten-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
 			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(AnimFrameBlockControl));
 			this.tv = new System.Windows.Forms.TreeView();
 			this.contextMenu1 = new System.Windows.Forms.ContextMenu();
+			this.miSlp = new System.Windows.Forms.MenuItem();
+			this.miClp = new System.Windows.Forms.MenuItem();
 			this.miExp = new System.Windows.Forms.MenuItem();
 			this.miRem = new System.Windows.Forms.MenuItem();
 			this.miSort = new System.Windows.Forms.MenuItem();
@@ -174,7 +176,9 @@ namespace SimPe.Plugin.Anim
 			this.contextMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
 																						 this.miExp,
 																						 this.miRem,
-																						 this.miSort});
+																						 this.miSort,
+																						 this.miClp,
+																						 this.miSlp});
 			this.contextMenu1.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("contextMenu1.RightToLeft")));
 			// 
 			// miExp
@@ -206,6 +210,26 @@ namespace SimPe.Plugin.Anim
 			this.miSort.Text = resources.GetString("miSort.Text");
 			this.miSort.Visible = ((bool)(resources.GetObject("miSort.Visible")));
 			this.miSort.Click += new System.EventHandler(this.SortClick);
+			// 
+			// miClp
+			// 
+			this.miClp.Enabled = ((bool)(resources.GetObject("miClp.Enabled")));
+			this.miClp.Index = 3;
+			this.miClp.Shortcut = ((System.Windows.Forms.Shortcut)(resources.GetObject("miClp.Shortcut")));
+			this.miClp.ShowShortcut = ((bool)(resources.GetObject("miClp.ShowShortcut")));
+			this.miClp.Text = resources.GetString("miClp.Text");
+			this.miClp.Visible = ((bool)(resources.GetObject("miClp.Visible")));
+			this.miClp.Click += new System.EventHandler(this.menuItem4_Click);
+			// 
+			// miSlp
+			// 
+			this.miSlp.Enabled = ((bool)(resources.GetObject("miSlp.Enabled")));
+			this.miSlp.Index = 3;
+			this.miSlp.Shortcut = ((System.Windows.Forms.Shortcut)(resources.GetObject("miSlp.Shortcut")));
+			this.miSlp.ShowShortcut = ((bool)(resources.GetObject("miSlp.ShowShortcut")));
+			this.miSlp.Text = resources.GetString("miSlp.Text");
+			this.miSlp.Visible = ((bool)(resources.GetObject("miSlp.Visible")));
+			this.miSlp.Click += new System.EventHandler(this.menuItem3_Click);
 			// 
 			// splitter1
 			// 
@@ -790,6 +814,7 @@ namespace SimPe.Plugin.Anim
 			miRem.Enabled = enabled;
 			miExp.Enabled = enabled;
 			miSort.Enabled = enabled;
+			miSlp.Enabled = miClp.Enabled = enabled;
 			llAdd.Enabled = enabled;
 			llClear.Enabled = enabled;	
 		}
@@ -1015,8 +1040,8 @@ namespace SimPe.Plugin.Anim
 			AnimationFrame af = (AnimationFrame)tv.SelectedNode.Tag;
 			while (afb.AxisSet.Length<3) afb.AddNewAxis();
 
-            if (afb.AxisSet[2].Type == AnimationTokenType.TwoByte)
-                afb.AxisSet[2].Type = AnimationTokenType.SixByte;
+			if (afb.AxisSet[2].Type == AnimationTokenType.TwoByte)
+				afb.AxisSet[2].Type = AnimationTokenType.SixByte;
 			AnimationAxisTransform aat = afb.AxisSet[2].Add(af.TimeCode, 0, 0, 0, af.Linear);
 			af.ZBlock = afb.AxisSet[2].GetLast();
 			this.AddFrame(tv.SelectedNode, aat, "Z: ");
@@ -1098,6 +1123,95 @@ namespace SimPe.Plugin.Anim
 			{
 				intern = false;
 			}
+		}
+
+		private void menuItem3_Click(object sender, System.EventArgs e)
+		{
+			string Clap = afb.Name + "\r\n";
+			foreach (TreeNode tn in tv.Nodes)
+			{
+				Clap += tn.ToString().Replace("TreeNode: tc=", "time code= ") + "\r\n";
+				foreach (TreeNode sn in tn.Nodes)
+				{
+					Clap += sn.ToString().Replace("TreeNode:", "  ") + "\r\n";
+				}
+				Clap += "\r\n";
+			}
+			Clipboard.SetDataObject(Clap, true);
+		}
+
+		private void menuItem4_Click(object sender, System.EventArgs e)
+		{
+			string Clap = afb.Name + "\r\n";
+			float f;
+			float f1;
+			float f2;
+			foreach (AnimationFrame af in afb.Frames)
+			{
+				Clap += "time code= " + af.TimeCode.ToString() + ", " + af.Type.ToString() + "\r\n";
+				if (af.XBlock != null)
+				{
+					f = af.XBlock.GetCompressedFloat(af.XBlock.Parameter);
+					if (afb.TransformationType == FrameType.Rotation)
+						f = (float)SimPe.Geometry.Quaternion.RadToDeg(f);
+					if (f == 0) Clap += "   X: 0";
+					else Clap += "   X: " + f.ToString("N8");
+
+					f1 = af.XBlock.GetCompressedFloat(af.XBlock.Unknown1);
+					if (f1 == 0) Clap += "; 0";
+					else Clap += "; " + f1.ToString("N8");
+
+					f2 = af.XBlock.GetCompressedFloat(af.XBlock.Unknown2);
+					if (f2 == 0) Clap += "; 0";
+					else Clap += "; " + f2.ToString("N8");
+
+					if (af.XBlock.Linear) Clap += " (linear)";
+					if (af.XBlock.ParentLocked) Clap += " (locked)";
+					Clap += "\r\n";
+				}
+				if (af.YBlock != null)
+				{
+					f = af.YBlock.GetCompressedFloat(af.YBlock.Parameter);
+					if (afb.TransformationType == FrameType.Rotation)
+						f = (float)SimPe.Geometry.Quaternion.RadToDeg(f);
+					if (f == 0) Clap += "   Y: 0";
+					else Clap += "   Y: " + f.ToString("N8");
+
+					f1 = af.YBlock.GetCompressedFloat(af.YBlock.Unknown1);
+					if (f1 == 0) Clap += "; 0";
+					else Clap += "; " + f1.ToString("N8");
+
+					f2 = af.YBlock.GetCompressedFloat(af.YBlock.Unknown2);
+					if (f2 == 0) Clap += "; 0";
+					else Clap += "; " + f2.ToString("N8");
+
+					if (af.YBlock.Linear) Clap += " (linear)";
+					if (af.YBlock.ParentLocked) Clap += " (locked)";
+					Clap += "\r\n";
+				}
+				if (af.ZBlock != null)
+				{
+					f = af.ZBlock.GetCompressedFloat(af.ZBlock.Parameter);
+					if (afb.TransformationType == FrameType.Rotation)
+						f = (float)SimPe.Geometry.Quaternion.RadToDeg(f);
+					if (f == 0) Clap += "   Z: 0";
+					else Clap += "   Z: " + f.ToString("N8");
+
+					f1 = af.ZBlock.GetCompressedFloat(af.ZBlock.Unknown1);
+					if (f1 == 0) Clap += "; 0";
+					else Clap += "; " + f1.ToString("N8");
+
+					f2 = af.ZBlock.GetCompressedFloat(af.ZBlock.Unknown2);
+					if (f2 == 0) Clap += "; 0";
+					else Clap += "; " + f2.ToString("N8");
+
+					if (af.ZBlock.Linear) Clap += " (linear)";
+					if (af.ZBlock.ParentLocked) Clap += " (locked)";
+					Clap += "\r\n";
+				}
+				Clap += "\r\n";
+			}
+			Clipboard.SetDataObject(Clap, true);
 		}
 
 		private void menuItem2_Click(object sender, System.EventArgs e)

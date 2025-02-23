@@ -7,11 +7,11 @@ using System.Windows.Forms;
 namespace SimPe.Plugin.Gmdc
 {
 	/// <summary>
-	/// Zusammenfassung für GenericImport.
+	/// Summary description for GenericImport.
 	/// </summary>
 	class GenericImportForm : System.Windows.Forms.Form
 	{
-		private SteepValley.Windows.Forms.XPGradientPanel xpGradientPanel1;
+		private SteepValley.Windows.Forms.XPGradientPanel Gradientpanel1;
 		private System.ComponentModel.IContainer components;
 		private System.Windows.Forms.ListViewEx lvmesh;
 		private System.Windows.Forms.ImageList imageList1;
@@ -35,18 +35,14 @@ namespace SimPe.Plugin.Gmdc
 		private SteepValley.Windows.Forms.XPLine xpLine3;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Button button1;
-		private Ambertation.Windows.Forms.TransparentCheckBox cbClear;
+        private System.Windows.Forms.CheckBox cbClear;
 
-		SimPe.ThemeManager tm;
 		 GenericImportForm()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
-
-			tm = ThemeManager.Global.CreateChild();
-			tm.AddControl(this.xpGradientPanel1);						
 
 			ComboBox cb = new ComboBox();
 			this.imageList1.ImageSize = new Size(1, cb.Height+2);
@@ -54,16 +50,10 @@ namespace SimPe.Plugin.Gmdc
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
-			if (tm!=null)
-			{
-				tm.Clear();
-				tm.Parent = null;
-				tm = null;
-			}
 			if( disposing )
 			{
 				if(components != null)
@@ -74,18 +64,18 @@ namespace SimPe.Plugin.Gmdc
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
 			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(GenericImportForm));
-			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
+            this.Gradientpanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.cbClear = new Ambertation.Windows.Forms.TransparentCheckBox();
+            this.cbClear = new System.Windows.Forms.CheckBox();
 			this.button1 = new System.Windows.Forms.Button();
 			this.label3 = new System.Windows.Forms.Label();
 			this.xpLine3 = new SteepValley.Windows.Forms.XPLine();
@@ -107,26 +97,27 @@ namespace SimPe.Plugin.Gmdc
 			this.chVertices = new System.Windows.Forms.ColumnHeader();
 			this.chImportEnvelope = new System.Windows.Forms.ColumnHeader();
 			this.chJointCount = new System.Windows.Forms.ColumnHeader();
-			this.xpGradientPanel1.SuspendLayout();
+			this.Gradientpanel1.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// xpGradientPanel1
-			// 
-			this.xpGradientPanel1.Controls.Add(this.panel1);
-			this.xpGradientPanel1.Controls.Add(this.label3);
-			this.xpGradientPanel1.Controls.Add(this.xpLine3);
-			this.xpGradientPanel1.Controls.Add(this.lvbones);
-			this.xpGradientPanel1.Controls.Add(this.label2);
-			this.xpGradientPanel1.Controls.Add(this.xpLine2);
-			this.xpGradientPanel1.Controls.Add(this.label1);
-			this.xpGradientPanel1.Controls.Add(this.xpLine1);
-			this.xpGradientPanel1.Controls.Add(this.lvmesh);
-			this.xpGradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.xpGradientPanel1.Location = new System.Drawing.Point(0, 0);
-			this.xpGradientPanel1.Name = "xpGradientPanel1";
-			this.xpGradientPanel1.Size = new System.Drawing.Size(752, 486);
-			this.xpGradientPanel1.TabIndex = 0;
+			// Gradientpanel1
+            // 
+            this.Gradientpanel1.BackColor = System.Drawing.Color.Transparent;
+			this.Gradientpanel1.Controls.Add(this.panel1);
+			this.Gradientpanel1.Controls.Add(this.label3);
+			this.Gradientpanel1.Controls.Add(this.xpLine3);
+			this.Gradientpanel1.Controls.Add(this.lvbones);
+			this.Gradientpanel1.Controls.Add(this.label2);
+			this.Gradientpanel1.Controls.Add(this.xpLine2);
+			this.Gradientpanel1.Controls.Add(this.label1);
+			this.Gradientpanel1.Controls.Add(this.xpLine1);
+			this.Gradientpanel1.Controls.Add(this.lvmesh);
+            this.Gradientpanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.Gradientpanel1.Location = new System.Drawing.Point(0, 0);
+			this.Gradientpanel1.Name = "Gradientpanel1";
+			this.Gradientpanel1.Size = new System.Drawing.Size(752, 486);
+			this.Gradientpanel1.TabIndex = 0;
 			// 
 			// panel1
 			// 
@@ -174,11 +165,9 @@ namespace SimPe.Plugin.Gmdc
 			this.xpLine3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
 				| System.Windows.Forms.AnchorStyles.Right)));
 			this.xpLine3.BackColor = System.Drawing.Color.Transparent;
-			this.xpLine3.LineColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.xpLine3.Location = new System.Drawing.Point(8, 376);
+			this.xpLine3.Location = new System.Drawing.Point(9, 376);
 			this.xpLine3.Name = "xpLine3";
-			this.xpLine3.ShadowColor = System.Drawing.Color.FromArgb(((System.Byte)(127)), ((System.Byte)(255)), ((System.Byte)(255)), ((System.Byte)(255)));
-			this.xpLine3.Size = new System.Drawing.Size(740, 8);
+			this.xpLine3.Size = new System.Drawing.Size(740, 4);
 			this.xpLine3.TabIndex = 8;
 			// 
 			// lvbones
@@ -244,11 +233,9 @@ namespace SimPe.Plugin.Gmdc
 			this.xpLine2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
 				| System.Windows.Forms.AnchorStyles.Right)));
 			this.xpLine2.BackColor = System.Drawing.Color.Transparent;
-			this.xpLine2.LineColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.xpLine2.Location = new System.Drawing.Point(8, 208);
+			this.xpLine2.Location = new System.Drawing.Point(9, 208);
 			this.xpLine2.Name = "xpLine2";
-			this.xpLine2.ShadowColor = System.Drawing.Color.FromArgb(((System.Byte)(127)), ((System.Byte)(255)), ((System.Byte)(255)), ((System.Byte)(255)));
-			this.xpLine2.Size = new System.Drawing.Size(740, 8);
+			this.xpLine2.Size = new System.Drawing.Size(740, 4);
 			this.xpLine2.TabIndex = 5;
 			// 
 			// label1
@@ -268,11 +255,9 @@ namespace SimPe.Plugin.Gmdc
 			this.xpLine1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
 				| System.Windows.Forms.AnchorStyles.Right)));
 			this.xpLine1.BackColor = System.Drawing.Color.Transparent;
-			this.xpLine1.LineColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.xpLine1.Location = new System.Drawing.Point(8, 32);
+			this.xpLine1.Location = new System.Drawing.Point(9, 32);
 			this.xpLine1.Name = "xpLine1";
-			this.xpLine1.ShadowColor = System.Drawing.Color.FromArgb(((System.Byte)(127)), ((System.Byte)(255)), ((System.Byte)(255)), ((System.Byte)(255)));
-			this.xpLine1.Size = new System.Drawing.Size(740, 8);
+			this.xpLine1.Size = new System.Drawing.Size(740, 4);
 			this.xpLine1.TabIndex = 3;
 			// 
 			// lvmesh
@@ -337,7 +322,7 @@ namespace SimPe.Plugin.Gmdc
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
 			this.ClientSize = new System.Drawing.Size(752, 486);
-			this.Controls.Add(this.xpGradientPanel1);
+			this.Controls.Add(this.Gradientpanel1);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -346,7 +331,7 @@ namespace SimPe.Plugin.Gmdc
 			this.Name = "GenericImportForm";
 			this.ShowInTaskbar = false;
 			this.Text = "Mesh Import";
-			this.xpGradientPanel1.ResumeLayout(false);
+			this.Gradientpanel1.ResumeLayout(false);
 			this.panel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 
