@@ -193,8 +193,6 @@ namespace SimPe.Plugin
 					}
 					else 
 					{
-											
-
 						//now process the Reference Files
 						if (item!=null) 
 						{
@@ -222,7 +220,6 @@ namespace SimPe.Plugin
 						gi.PanelColor = Color.DarkRed;
 						gi.ForeColor = Color.White;
 						gi.BorderColor = gi.ForeColor;
-
 						if ((string)gi.Properties["Available"].Value=="extern") gi.PanelColor = Color.Black;
 					}
 				} 
@@ -242,27 +239,43 @@ namespace SimPe.Plugin
 		/// <remarks>Do not run twice</remarks>
 		public void BuildGraph(SimPe.Interfaces.Files.IPackageFile pkg, SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fileindex) 
 		{
-
+			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds;
 			gc.BeginUpdate();
 			gc.Clear();
 			gc.SaveBounds = false;
 			gc.AutoSize = true;
 			this.coords.Clear();
 			this.names.Clear();
-			if (WaitingScreen.Running) WaitingScreen.UpdateMessage("Scaning MMAT Tree");
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(Data.MetaData.MMAT);
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			if (Helper.WindowsRegistry.CresPrioritize)
 			{
-				AddItem(pfd, pkg, null, fileindex);
+				if (WaitingScreen.Running) WaitingScreen.UpdateMessage("Scaning CRES Tree");
+				pfds = pkg.FindFiles(Data.MetaData.CRES);
+				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				{
+					AddItem(pfd, pkg, null, fileindex);
+				}
+				if (WaitingScreen.Running) WaitingScreen.UpdateMessage("Scaning MMAT Tree");
+				pfds = pkg.FindFiles(Data.MetaData.MMAT);
+				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				{
+					AddItem(pfd, pkg, null, fileindex);
+				}
 			}
-
-            if (WaitingScreen.Running) WaitingScreen.UpdateMessage("Scaning CRES Tree");
-			pfds = pkg.FindFiles(Data.MetaData.CRES);
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			else
 			{
-				AddItem(pfd, pkg, null, fileindex);
-			}			
-
+				if (WaitingScreen.Running) WaitingScreen.UpdateMessage("Scaning MMAT Tree");
+				pfds = pkg.FindFiles(Data.MetaData.MMAT);
+				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				{
+					AddItem(pfd, pkg, null, fileindex);
+				}
+				if (WaitingScreen.Running) WaitingScreen.UpdateMessage("Scaning CRES Tree");
+				pfds = pkg.FindFiles(Data.MetaData.CRES);
+				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				{
+					AddItem(pfd, pkg, null, fileindex);
+				}
+			}
 			gc.AutoSize = false;
 			gc.SaveBounds = true;
 			gc.EndUpdate();
