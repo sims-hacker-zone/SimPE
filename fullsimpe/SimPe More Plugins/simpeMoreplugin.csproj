@@ -1,0 +1,316 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2AE83F37-E52A-4ADC-82E9-243465953FFD}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>simpe.More.plugin</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SimPe.Plugin</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\__Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\__Release\Plugins\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>
+    </DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="NetDocks">
+      <HintPath>..\NetDocks.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AudioRefPackedFileUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AudioRefPackedFileUI.designer.cs">
+      <DependentUpon>AudioRefPackedFileUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AudioRefPackedFileWrapper.cs" />
+    <Compile Include="CregUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CregUI.Designer.cs">
+      <DependentUpon>CregUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CregWrapper.cs" />
+    <Compile Include="HugBugPackedFileUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HugBugPackedFileUI.Designer.cs">
+      <DependentUpon>HugBugPackedFileUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HugBugPackedFileWrapper.cs" />
+    <Compile Include="InvenIndexPackedFileUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InvenIndexPackedFileUI.designer.cs">
+      <DependentUpon>InvenIndexPackedFileUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InvenIndexPackedFileWrapper.cs" />
+    <Compile Include="InventItemPackedFileUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InventItemPackedFileUI.designer.cs">
+      <DependentUpon>InventItemPackedFileUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventItemPackedFileWrapper.cs" />
+    <Compile Include="LotexturePackedFileUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LotexturePackedFileUI.Designer.cs">
+      <DependentUpon>LotexturePackedFileUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LotexturePackedFileWrapper.cs" />
+    <Compile Include="SimIndexPackedFileUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SimIndexPackedFileUI.Designer.cs">
+      <DependentUpon>SimIndexPackedFileUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SimIndexPackedFileWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SimmyListPackedFileUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SimmyListPackedFileUI.Designer.cs">
+      <DependentUpon>SimmyListPackedFileUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SimmyListPackedFileWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FunctionPackedFileUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FunctionPackedFileUI.Designer.cs">
+      <DependentUpon>FunctionPackedFileUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FunctionPackedFileWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SimpleTextPackedFileUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SimpleTextPackedFileUI.Designer.cs">
+      <DependentUpon>SimpleTextPackedFileUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SimpleTextPackedFileWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MoreWrapperFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="StringMapPackedFileUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StringMapPackedFileUI.designer.cs">
+      <DependentUpon>StringMapPackedFileUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StringMapPackedFileWrapper.cs" />
+    <Compile Include="WallLayerPackedFileUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WallLayerPackedFileUI.designer.cs">
+      <DependentUpon>WallLayerPackedFileUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WallLayerPackedFileWrapper.cs" />
+    <Compile Include="WinfoPackedFileUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinfoPackedFileUI.Designer.cs">
+      <DependentUpon>WinfoPackedFileUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinfoPackedFileWrapper.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SimIndexPackedFileUI.resx">
+      <DependentUpon>SimIndexPackedFileUI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimmyListPackedFileUI.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SimmyListPackedFileUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FunctionPackedFileUI.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FunctionPackedFileUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimpleTextPackedFileUI.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SimpleTextPackedFileUI.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AudioRefPackedFileUI.resx">
+      <DependentUpon>AudioRefPackedFileUI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CregUI.resx">
+      <DependentUpon>CregUI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HugBugPackedFileUI.resx">
+      <DependentUpon>HugBugPackedFileUI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvenIndexPackedFileUI.en-US.resx">
+      <DependentUpon>InvenIndexPackedFileUI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvenIndexPackedFileUI.resx">
+      <DependentUpon>InvenIndexPackedFileUI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventItemPackedFileUI.resx">
+      <DependentUpon>InventItemPackedFileUI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LotexturePackedFileUI.resx">
+      <DependentUpon>LotexturePackedFileUI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimmyListPackedFileUI.en-US.resx">
+      <DependentUpon>SimmyListPackedFileUI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StringMapPackedFileUI.resx">
+      <DependentUpon>StringMapPackedFileUI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WallLayerPackedFileUI.resx">
+      <DependentUpon>WallLayerPackedFileUI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinfoPackedFileUI.resx">
+      <DependentUpon>WinfoPackedFileUI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\pjse\pjseCoderPlugin\SimPe BHAV\SimPe pjse coder plugin.csproj">
+      <Project>{19BF4C91-3A16-41D2-A7F0-2DE5BD7E13CF}</Project>
+      <Name>SimPe pjse coder plugin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimPe FileHandler\SimPe FileHandlers.csproj">
+      <Project>{97551C0A-6295-4E32-8E15-A4FF456E65A6}</Project>
+      <Name>SimPe FileHandlers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimPe Helper\SimPe Helper.csproj">
+      <Project>{59E3C353-1350-42D8-A045-CBBAD232F228}</Project>
+      <Name>SimPe Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimPe Interfaces\SimPe Interfaces.csproj">
+      <Project>{74FCBBEC-105A-4006-A1FC-8EF4F80FD2D7}</Project>
+      <Name>SimPe Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimPe Packages\SimPe Packages.csproj">
+      <Project>{1C6C45BF-FE19-4C23-B327-01F45B0F269C}</Project>
+      <Name>SimPe Packages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimPe Sims\SimPe Sims.csproj">
+      <Project>{9877B092-C8C0-4B84-B5A0-F9A68AA1C0E4}</Project>
+      <Name>SimPe Sims</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimPe Workspace Helper\SimPe Workspace Helper.csproj">
+      <Project>{45021667-BAD2-4ECA-8423-F4734F914CBB}</Project>
+      <Name>SimPe Workspace Helper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

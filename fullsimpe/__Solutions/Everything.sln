@@ -124,6 +124,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorBinningTool", "..\Colo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "simpeGameTipplugin", "..\SimPe GameTipPlugin\simpeGameTipplugin.csproj", "{E86E8EF6-EF83-4CD4-B2A7-20A08CD835A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "simpeMoreplugin", "..\SimPe More Plugins\simpeMoreplugin.csproj", "{2AE83F37-E52A-4ADC-82E9-243465953FFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -554,6 +556,14 @@ Global
 		{E86E8EF6-EF83-4CD4-B2A7-20A08CD835A0}.Release MAC|Any CPU.Build.0 = Release|Any CPU
 		{E86E8EF6-EF83-4CD4-B2A7-20A08CD835A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E86E8EF6-EF83-4CD4-B2A7-20A08CD835A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AE83F37-E52A-4ADC-82E9-243465953FFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AE83F37-E52A-4ADC-82E9-243465953FFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AE83F37-E52A-4ADC-82E9-243465953FFD}.InProgress|Any CPU.ActiveCfg = Release|Any CPU
+		{2AE83F37-E52A-4ADC-82E9-243465953FFD}.InProgress|Any CPU.Build.0 = Release|Any CPU
+		{2AE83F37-E52A-4ADC-82E9-243465953FFD}.Release MAC|Any CPU.ActiveCfg = Release|Any CPU
+		{2AE83F37-E52A-4ADC-82E9-243465953FFD}.Release MAC|Any CPU.Build.0 = Release|Any CPU
+		{2AE83F37-E52A-4ADC-82E9-243465953FFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AE83F37-E52A-4ADC-82E9-243465953FFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
