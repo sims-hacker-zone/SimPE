@@ -91,7 +91,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 
         protected override void InitFile()
         {
-            if (this.Groups.Length > 1) throw new SimPe.Warning("Too Much Meshes Selected", "You've selected too much meshes\nSmd File only support 1 mesh per file");
+            if (this.Groups.Length > 1) throw new SimPe.Warning("Too Many Meshes Selected", "You've selected too many meshes\nSmd File only support 1 mesh per file");
             else if (this.Groups.Length < 1) throw new SimPe.Warning("No Mesh Selected", "You need to select one mesh");
         }
 
