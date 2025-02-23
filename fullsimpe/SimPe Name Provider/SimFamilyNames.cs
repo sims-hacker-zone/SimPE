@@ -49,9 +49,6 @@ namespace SimPe.Providers
 		/// </summary>
 		public SimFamilyNames() : base(null) {}
 
-
-		
-
 		/// <summary>
 		/// Loads all package Files in the directory and scans them for Name Informations
 		/// </summary>
@@ -66,7 +63,7 @@ namespace SimPe.Providers
 			{
 				IPackedFileDescriptor[] list = BasePackage.FindFiles(type);
 
-				foreach(IPackedFileDescriptor pfd in list )
+				foreach(IPackedFileDescriptor pfd in list)
 				{
 					fami.ProcessData(pfd, BasePackage);
 					al[(ushort)pfd.Instance] = fami.Name;
@@ -79,7 +76,7 @@ namespace SimPe.Providers
 							names.Add(simid, a); 
 						}
 					}
-				}								
+				}
 			}//foreach
 
 			///add unlisted Sims

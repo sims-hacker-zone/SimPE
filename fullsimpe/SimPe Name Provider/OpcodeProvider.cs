@@ -106,7 +106,7 @@ namespace SimPe.Providers
 			string max = " / "+items.Length.ToString();
 			int ct = 0;
 			if (items.Length!=0) //found anything?
-			{			
+			{
 				bool wasrunning = WaitingScreen.Running;
 				WaitingScreen.Wait();
                 try

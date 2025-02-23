@@ -206,23 +206,7 @@ namespace SimPe.Providers
 			matds = new ArrayList();
 			refs = new ArrayList();
 			txtrs = new Hashtable();
-			//LoadSkinImageFormPackage(BasePackage);
 			LoadUserImagePackages();
-
-			/*Registry reg = new Registry();
-			string file = System.IO.Path.Combine(reg.SimsPath, "TSData\\Res\\Sims3D\\Sims07.package");				
-			if (System.IO.File.Exists(file)) 
-			{
-				SimPe.Interfaces.Files.IPackageFile package = SimPe.Packages.GeneratableFile.LoadFromFile(file);
-				LoadSkinImageFormPackage(package);
-			} 		
-	
-			file = System.IO.Path.Combine(reg.SimsPath, "TSData\\Res\\Sims3D\\Sims02.package");				
-			if (System.IO.File.Exists(file)) 
-			{
-				SimPe.Interfaces.Files.IPackageFile package = SimPe.Packages.GeneratableFile.LoadFromFile(file);
-				LoadSkinImageFormPackage(package);
-			} */		
 		}
 		
 		protected void LoadUserPackages()
@@ -337,16 +321,6 @@ namespace SimPe.Providers
 				Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFile(matdname.Replace("CASIE_", ""), 0x49596978);
 				if (pfds.Length==0) pfds = package.FindFile(matdname, 0x49596978);
 				//try another Package
-				/*if (pfds.Length==0) 
-				{
-					file = System.IO.Path.Combine(Helper.WindowsRegistry.SimsPath, "TSData\\Res\\Sims3D\\Sims07.package");				
-					if (System.IO.File.Exists(file)) 
-					{
-						package = SimPe.Packages.GeneratableFile.LoadFromFile(file);
-						pfds = package.FindFile(matdname, 0x49596978);
-					}
-				}*/
-
 				//look for the right one
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds) 
 				{

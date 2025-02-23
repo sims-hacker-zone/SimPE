@@ -71,18 +71,17 @@ namespace SimPe.Providers
 			this.opcodes = opcodes;
 
 			ArrayList folders = new ArrayList();
-            foreach (SimPe.ExpansionItem ei in SimPe.PathProvider.Global.Expansions) {
-                if (!ei.Exists) continue;
+			foreach (SimPe.ExpansionItem ei in SimPe.PathProvider.Global.Expansions)
+			{
+				if (!ei.Exists) continue;
 
-                foreach (string s in ei.SimNameDeepSearch){
-                    string path = System.IO.Path.Combine(SimPe.PathProvider.Global.Latest.InstallFolder, s);
-                    if (!Directory.Exists(path)) path = System.IO.Path.Combine(ei.InstallFolder, s);
-                    if (Directory.Exists(path))
-                        folders.Add(new SimPe.FileTableItem(path));
-                }
-            }
-            
-			
+				foreach (string s in ei.SimNameDeepSearch){
+					string path = System.IO.Path.Combine(SimPe.PathProvider.Global.Latest.InstallFolder, s);
+					if (!Directory.Exists(path)) path = System.IO.Path.Combine(ei.InstallFolder, s);
+					if (Directory.Exists(path))
+						folders.Add(new SimPe.FileTableItem(path));
+				}
+			}
 			characterfi = new SimPe.Plugin.FileIndex(folders);
 		}
 
@@ -92,7 +91,6 @@ namespace SimPe.Providers
 		public SimNames(Interfaces.Providers.IOpcodeProvider opcodes) : this("", opcodes)
 		{			
 		}
-
 
 		/// <summary>
 		/// Returns or sets the Folder where the Character Files are stored
@@ -104,12 +102,13 @@ namespace SimPe.Providers
 			{
 				return dir;
 			}
-			set 
+			set
 			{
 				if (dir!=value) 
 				{
-					WaitForEnd();
-					names = null;					
+					WaitForEnd(); // wait for any other stoppable threads to end
+					if (dir != value) // if other thread has set dir then it has also set names so lets not wippe them out
+						names = null;
 				}
 				dir = value;
 			}
@@ -129,6 +128,7 @@ namespace SimPe.Providers
 		/// <param name="objd"></param>
 		/// <param name="ct"></param>
 		/// <param name="step"></param>
+		/// <param name="npc"></param>
 		/// <returns>The Alias for that Sim</returns>
 		/// <remarks>
 		/// Alias.Tag has the following Structure:
@@ -140,8 +140,6 @@ namespace SimPe.Providers
 		/// </remarks>
 		protected Alias AddSim(SimPe.PackedFiles.Wrapper.ExtObjd objd, ref int ct, int step, bool npc)
 		{
-			//if (objd.Type!=Data.ObjectTypes.Person) return null;
-
 			SimPe.Interfaces.Files.IPackageFile fl = objd.Package;
 			//BinaryReader br = new BinaryReader(File.OpenRead(file));//new StreamReader(file)
 			bool hasagedata = fl.FindFiles(0xAC598EAC).Length>0; //has Age Data
@@ -161,19 +159,14 @@ namespace SimPe.Providers
 			{
 				tags[4] = tags[0];
 				tags[0] = "";				
-				tags[2] += " (NPC)";
+				tags[2] += "(NPC)";
 			}
 
-			Alias a = null;
-			
-			
+			Alias a = null;	
 
-				
-			
-			
 			Interfaces.Files.IPackedFileDescriptor str_pfd = fl.FindFile(Data.MetaData.CTSS_FILE, 0, objd.FileDescriptor.Group, objd.CTSSInstance);
-						
-			if (str_pfd != null) 
+
+			if (str_pfd != null)
 			{
 				SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
 				str.ProcessData(str_pfd, fl);
@@ -183,14 +176,11 @@ namespace SimPe.Providers
 #if DEBUG
 					a = new Alias(objd.Guid, its[0].Title, "{name} {2} (0x{id})");						
 #else
-								a = new Alias(objd.Guid, its[0].Title, "{name} {2} (0x{id})");
+					a = new Alias(objd.Guid, its[0].Title, "{name} {2} (0x{id})");
 #endif
-					if (its.Length>2) tags[2] = its[2].Title;
-
-					
+					if (its.Length > 2) tags[2] = its[2].Title;					
 				}
 			}
-			
 
 			if (a!=null) 
 			{
@@ -201,12 +191,8 @@ namespace SimPe.Providers
 					if (pfd.Instance < 0x200) 
 					{
 						SimPe.PackedFiles.Wrapper.Picture pic = new SimPe.PackedFiles.Wrapper.Picture();
-						pic.ProcessData(pfd, fl);	
-						/*if (Helper.StartedGui==Executable.Classic) 
-							WaitingScreen.UpdateImage(pic.Image);
-						else
-							Wait.Image = pic.Image;								*/
-							
+						pic.ProcessData(pfd, fl);
+
 						tags[1] = pic.Image;							
 						break;
 					}						
@@ -224,37 +210,34 @@ namespace SimPe.Providers
 				}
 
 				//set stuff for NPCs
-				if (npc) a.Tag[2] = a.Tag[2].ToString()+" (NPC)";
-
+				if (npc && a.Tag[2].ToString() != "(NPC)") a.Tag[2] = a.Tag[2].ToString() + " (NPC)";
 				if (names==null) return null;
 				if (!names.Contains(objd.Guid)) names.Add(objd.Guid, a);
-			
 			}
-
 			return a;
 		}
-		
 
 		protected void ScanFileTable()
 		{
-			if (Helper.StartedGui==Executable.Classic) return;
+			if (Helper.StartedGui == Executable.Classic || !Helper.WindowsRegistry.DeepSimScan) return;
 			if (Helper.WindowsRegistry.DeepSimTemplateScan) characterfi.Load();
 
-			FileTable.FileIndex.AddChild(characterfi);
+			FileTable.FileIndex.AddChild(characterfi); // why if not DeepSimTemplateScan
 			try 
 			{
 				ScanFileTable(0x80);
+				if (Helper.WindowsRegistry.DeepSimTemplateScan) ScanFileTable(0x81); // some templates are instance 0x81
 			}
 			finally 
 			{
 				FileTable.FileIndex.RemoveChild(characterfi);
-			}
-			
+			}			
 		}
 		
 		protected void ScanFileTable(uint inst)
 		{
-			if (Helper.StartedGui==Executable.Classic) return;
+			// Mystery Sim - Girl GUID 0x6DD33865 group 0x7FBA59DA, Instance 0x000041A7 / Mystery Sim - Boy GUID 0x006D2D59 group 0x7FCB2EBC img instance 1 - Type normal
+			if (Helper.StartedGui == Executable.Classic || !Helper.WindowsRegistry.DeepSimScan) return;
 			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFileDiscardingGroup(Data.MetaData.OBJD_FILE, inst);
 			Wait.MaxProgress = items.Length;
 			int ct = 0;
@@ -265,76 +248,81 @@ namespace SimPe.Providers
 
 				SimPe.PackedFiles.Wrapper.ExtObjd objd = new SimPe.PackedFiles.Wrapper.ExtObjd();
 				objd.ProcessData(item);
+				if (Helper.WindowsRegistry.DeepSimTemplateScan && objd.Type == Data.ObjectTypes.Template)
+					AddSim(objd, ref ct, step, true);
 
-				if (objd.Type==Data.ObjectTypes.Person || objd.Type==Data.ObjectTypes.Template) 
-					AddSim(objd, ref ct, step, true);				
+				if (objd.Type == Data.ObjectTypes.Person)
+					AddSim(objd, ref ct, step, true);
 			}
 		}
 
 		protected override void StartThread()
 		{
-			string[] files = Directory.GetFiles(dir, "*.package");
-			if (Helper.StartedGui==Executable.Classic)
-				WaitingScreen.Wait();	
-			else Wait.SubStart(files.Length);
-			try 
+			if (Directory.Exists(dir))
 			{
-				bool breaked = false;			
-				SimPe.PackedFiles.Wrapper.ExtObjd objd = new SimPe.PackedFiles.Wrapper.ExtObjd();
-				SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
-				//ArrayList al = new ArrayList();
-				int ct = 0;
-				int step = Math.Max(2, Wait.MaxProgress / 100);
-				foreach(string file in files) 
+				string[] files = Directory.GetFiles(dir, "*.package");
+				if (Helper.StartedGui == Executable.Classic)
+					WaitingScreen.Wait();
+				else Wait.SubStart(files.Length);
+				try
 				{
-					if (this.HaveToStop) 
+					bool breaked = false;
+					SimPe.PackedFiles.Wrapper.ExtObjd objd = new SimPe.PackedFiles.Wrapper.ExtObjd();
+					SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+					//ArrayList al = new ArrayList();
+					int ct = 0;
+					int step = Math.Max(2, Wait.MaxProgress / 100);
+					foreach (string file in files)
 					{
-						breaked = true;
-						break;
-					}
+						if (this.HaveToStop)
+						{
+							breaked = true;
+							break;
+						}
 
-					SimPe.Packages.File fl = null;
-					try 
-					{
-						fl = SimPe.Packages.File.LoadFromFile(file);
-					} 
-					catch {break;}
-									
-					IPackedFileDescriptor[] list = fl.FindFiles(Data.MetaData.OBJD_FILE);
-					if (list.Length>0)	AddSim(fl, list[0], ref ct, step);
-					//fl.Reader.Close();
-				}//foreach
+						SimPe.Packages.File fl = null;
+						try
+						{
+							fl = SimPe.Packages.File.LoadFromFile(file);
+						}
+						catch { break; }
 
-				if (!breaked) ScanFileTable();
-			}  
-			catch (Exception ex)
-			{
-				Helper.ExceptionMessage(ex);
-			} 
-			finally 
-			{
-				if (Helper.StartedGui==Executable.Classic) WaitingScreen.Stop();
-				else Wait.SubStop();
+						IPackedFileDescriptor[] list = fl.FindFiles(Data.MetaData.OBJD_FILE);
+						if (list.Length > 0) AddSim(fl, list[0], ref ct, step);
+						//fl.Reader.Close();
+					}//foreach
+
+					if (!breaked) ScanFileTable();
+				}
+				catch (Exception ex)
+				{
+					Helper.ExceptionMessage(ex);
+				}
+				finally
+				{
+					if (Helper.StartedGui == Executable.Classic) WaitingScreen.Stop();
+					else Wait.Stop(true);
+				}
+				ended.Set();
 			}
-				
-			ended.Set();
+			else
+			{
+				ScanFileTable();
+				ended.Set();
+			}
 		}
-
 		
-		object sync = new object();
-
-		
+		object sync = new object();		
 
 		/// <summary>
 		/// Loads all package Files in the directory and scans them for Name Informations
 		/// </summary>
 		public void LoadSimsFromFolder() 
 		{
-			WaitForEnd();
-
+			WaitForEnd(); // wait for any other stoppable threads to end
+			if (names != null) return; // if names were set by other thread then lets not do it again (and again, and again etc.)
 			names = new Hashtable();
 			if (!Directory.Exists(dir)) return;
-						
 			if (Helper.WindowsRegistry.DeepSimScan && Helper.StartedGui!=Executable.Classic) 
 				FileTable.FileIndex.Load();
 			this.ExecuteThread(ThreadPriority.AboveNormal, "Sim Name Provider", true, true);						
@@ -356,11 +344,12 @@ namespace SimPe.Providers
 		public IAlias FindName(uint id) 
 		{			
 			if (names==null) LoadSimsFromFolder();
-
 			object o = names[id];
-			if (o!=null) return (IAlias)o;
-			else return new Alias(id, Localization.Manager.GetString("unknown"));
-		}		
+			if (o != null) return (IAlias)o;
+			string es = SimPe.Data.MetaData.GetKnownNPC(id);
+			if (es != "not found") return new Alias(id, es);
+			return new Alias(id, Localization.Manager.GetString("unknown"));
+		}
 
 		/// <summary>
 		/// Returrns the stored Alias Data
@@ -377,7 +366,5 @@ namespace SimPe.Providers
 				names = value;
 			}
 		}
-
-		
 	}
 }

@@ -61,10 +61,10 @@ namespace SimPe.PackedFiles
 		/// </summary>
 		ArrayList atools;
 
-        /// <summary>
-        /// Contains all known CommandLine tools
-        /// </summary>
-        ArrayList cmdlines;
+		/// <summary>
+		/// Contains all known CommandLine tools
+		/// </summary>
+		ArrayList cmdlines;
 
 		/// <summary>
 		/// Contains all known Helptopics
@@ -91,21 +91,11 @@ namespace SimPe.PackedFiles
 		/// </summary>
 		System.Windows.Forms.ImageList il;
 
-        /// <summary>
-        /// Updateable plugins
-        /// </summary>
-        List<SimPe.Updates.IUpdatablePlugin> uplugins;
-        public List<SimPe.Updates.IUpdatablePlugin> UpdatablePlugins
-        {
-            get { return uplugins; }
-        }
-
 		/// <summary>
 		/// Constructor of the class
 		/// </summary>
 		public TypeRegistry()
-		{            
-            uplugins = new List<SimPe.Updates.IUpdatablePlugin>();
+		{
 			reg = Helper.WindowsRegistry;
 			handlers = new ArrayList();		
 			opcodeprovider = new SimPe.Providers.Opcodes();
@@ -120,7 +110,7 @@ namespace SimPe.PackedFiles
 			toolsp = new ArrayList();
 			dtools = new ArrayList();
 			atools = new ArrayList();
-            cmdlines = new ArrayList();
+			cmdlines = new ArrayList();
 			helptopics = new ArrayList();
 			settings = new ArrayList();
 			listeners = new SimPe.Collections.InternalListeners();
@@ -136,25 +126,24 @@ namespace SimPe.PackedFiles
 		public void Register(IWrapper wrapper)
 		{
 
-            if (wrapper != null)
-            {
-                if (!handlers.Contains(wrapper))
-                {
-                    ((SimPe.Interfaces.IWrapper)wrapper).Priority = reg.GetWrapperPriority(((SimPe.Interfaces.IWrapper)wrapper).WrapperDescription.UID);
-                    handlers.Add((SimPe.Interfaces.Plugin.IFileWrapper)wrapper);
-                    if (wrapper.WrapperDescription is AbstractWrapperInfo)
-                    {
-                        if (wrapper.WrapperDescription.Icon != null)
-                        {
-
-                            ((AbstractWrapperInfo)wrapper.WrapperDescription).IconIndex = il.Images.Count;
-                            il.Images.Add(wrapper.WrapperDescription.Icon);
-                        }
-                        else
-                            ((AbstractWrapperInfo)wrapper.WrapperDescription).IconIndex = 1;
-                    }
-                }
-            }
+			if (wrapper != null)
+			{
+				if (!handlers.Contains(wrapper))
+				{
+					((SimPe.Interfaces.IWrapper)wrapper).Priority = reg.GetWrapperPriority(((SimPe.Interfaces.IWrapper)wrapper).WrapperDescription.UID);
+					handlers.Add((SimPe.Interfaces.Plugin.IFileWrapper)wrapper);
+					if (wrapper.WrapperDescription is AbstractWrapperInfo)
+					{
+						if (wrapper.WrapperDescription.Icon != null)
+						{
+							((AbstractWrapperInfo)wrapper.WrapperDescription).IconIndex = il.Images.Count;
+							il.Images.Add(wrapper.WrapperDescription.Icon);
+						}
+						else
+							((AbstractWrapperInfo)wrapper.WrapperDescription).IconIndex = 1;
+					}
+				}
+			}
 		}
 
 		public void Register(IWrapper[] wrappers, IWrapper[] guiwrappers)
@@ -181,33 +170,21 @@ namespace SimPe.PackedFiles
 		/// </summary>
 		/// <param name="factory">The Factory Elements you want to register</param>
 		/// <remarks>The wrapper must only be added if the Registry doesnt already contain it</remarks>
-		public void Register(IWrapperFactory factory) 
+		public void Register(IWrapperFactory factory)
 		{
 			factory.LinkedRegistry = this;
 			factory.LinkedProvider = this;
 			Register(factory.KnownWrappers, factory.KnownWrappers);
 
-			if (factory.GetType().GetInterface("SimPe.Interfaces.Plugin.IHelpFactory", false) == typeof(SimPe.Interfaces.Plugin.IHelpFactory))			
+			if (factory.GetType().GetInterface("SimPe.Interfaces.Plugin.IHelpFactory", false) == typeof(SimPe.Interfaces.Plugin.IHelpFactory))
 				Register((factory as SimPe.Interfaces.Plugin.IHelpFactory));
 
-            if (factory.GetType().GetInterface("SimPe.Interfaces.Plugin.ISettingsFactory", false) == typeof(SimPe.Interfaces.Plugin.ISettingsFactory))
-                Register((factory as SimPe.Interfaces.Plugin.ISettingsFactory));
+			if (factory.GetType().GetInterface("SimPe.Interfaces.Plugin.ISettingsFactory", false) == typeof(SimPe.Interfaces.Plugin.ISettingsFactory))
+				Register((factory as SimPe.Interfaces.Plugin.ISettingsFactory));
 
-            if (factory.GetType().GetInterface("SimPe.Interfaces.Plugin.ICommandLineFactory", false) == typeof(SimPe.Interfaces.Plugin.ICommandLineFactory))
-                Register((factory as SimPe.Interfaces.Plugin.ICommandLineFactory));
-
-            AddUpdatablePlugin(factory);
+			if (factory.GetType().GetInterface("SimPe.Interfaces.Plugin.ICommandLineFactory", false) == typeof(SimPe.Interfaces.Plugin.ICommandLineFactory))
+				Register((factory as SimPe.Interfaces.Plugin.ICommandLineFactory));
 		}
-
-        private void AddUpdatablePlugin(object factory)
-        {
-            if (factory == null) return;
-            SimPe.Updates.IUpdatablePlugin iup = factory as SimPe.Updates.IUpdatablePlugin;
-            if (iup != null)
-                if (!uplugins.Contains(iup))
-                    uplugins.Add(iup);
-        }
-
 		
 
 		public IWrapper[] Wrappers
@@ -311,7 +288,6 @@ namespace SimPe.PackedFiles
 
 				if (check==true) return h;
 			}
-
 			return null;
 		}
 
@@ -389,38 +365,35 @@ namespace SimPe.PackedFiles
 		#region IToolRegistry Member
 		public void Register(IToolPlugin tool)
 		{
-
-            if (tool != null)
-            {
-                if (tool.GetType().GetInterface("SimPe.Interfaces.IDockableTool", true) == typeof(SimPe.Interfaces.IDockableTool))
-                {
-                    if (!dtools.Contains(tool))
-                        dtools.Add((SimPe.Interfaces.IDockableTool)tool);
-                }
-                else if (tool.GetType().GetInterface("SimPe.Interfaces.IToolAction", true) == typeof(SimPe.Interfaces.IToolAction))
-                {
-                    if (!atools.Contains(tool))
-                        atools.Add((SimPe.Interfaces.IToolAction)tool);
-                }
-                else if (tool.GetType().GetInterface("SimPe.Interfaces.IToolPlus", true) == typeof(SimPe.Interfaces.IToolPlus))
-                {
-                    if (!toolsp.Contains(tool))
-                        toolsp.Add((SimPe.Interfaces.IToolPlus)tool);
-                }
-                else if (Helper.StartedGui != Executable.Classic && tool.GetType().GetInterface("SimPe.Interfaces.IListener", true) == typeof(SimPe.Interfaces.IListener))
-                {
-                    if (!listeners.Contains((SimPe.Interfaces.IListener)tool))
-                        listeners.Add((SimPe.Interfaces.IListener)tool);
-                }
-                else if (tool.GetType().GetInterface("SimPe.Interfaces.ITool", true) == typeof(SimPe.Interfaces.ITool))
-                {
-                    if (!tools.Contains(tool))
-                        tools.Add((SimPe.Interfaces.ITool)tool);
-                }
-            }
-					
-			
-		}		
+			if (tool != null)
+			{
+				if (tool.GetType().GetInterface("SimPe.Interfaces.IDockableTool", true) == typeof(SimPe.Interfaces.IDockableTool))
+				{
+					if (!dtools.Contains(tool))
+						dtools.Add((SimPe.Interfaces.IDockableTool)tool);
+				}
+				else if (tool.GetType().GetInterface("SimPe.Interfaces.IToolAction", true) == typeof(SimPe.Interfaces.IToolAction))
+				{
+					if (!atools.Contains(tool))
+						atools.Add((SimPe.Interfaces.IToolAction)tool);
+				}
+				else if (tool.GetType().GetInterface("SimPe.Interfaces.IToolPlus", true) == typeof(SimPe.Interfaces.IToolPlus))
+				{
+					if (!toolsp.Contains(tool))
+						toolsp.Add((SimPe.Interfaces.IToolPlus)tool);
+				}
+				else if (Helper.StartedGui != Executable.Classic && tool.GetType().GetInterface("SimPe.Interfaces.IListener", true) == typeof(SimPe.Interfaces.IListener))
+				{
+					if (!listeners.Contains((SimPe.Interfaces.IListener)tool))
+						listeners.Add((SimPe.Interfaces.IListener)tool);
+				}
+				else if (tool.GetType().GetInterface("SimPe.Interfaces.ITool", true) == typeof(SimPe.Interfaces.ITool))
+				{
+					if (!tools.Contains(tool))
+						tools.Add((SimPe.Interfaces.ITool)tool);
+				}
+			}
+		}
 
 		public void Register(IToolPlugin[] tools)
 		{
@@ -439,15 +412,13 @@ namespace SimPe.PackedFiles
 			{
 				s = factory.FileName;
 				Register(factory.KnownTools);
-            }
+			}
 #if !DEBUG
 			catch (Exception ex)
 			{
-				Helper.ExceptionMessage("Unable to load Tool \""+s+"\". You Probaly have a Plugin/Tool installed, that is not compatible with the current SimPE Release.", ex);
+				Helper.ExceptionMessage("Unable to load Tool \""+s+"\". You Probaly have a Plugin/Tool installed, that is not compatible with the current SimPe Release.", ex);
 			}
 #endif
-
-            AddUpdatablePlugin(factory);
 		}
 
 		public SimPe.Collections.Listeners Listeners
@@ -541,8 +512,6 @@ namespace SimPe.PackedFiles
 		{
 			if (factory==null) return;
 			RegisterSettings(factory.KnownSettings);
-
-            AddUpdatablePlugin(factory);
 		}
 
 		public ISettings[] Settings
@@ -571,66 +540,64 @@ namespace SimPe.PackedFiles
 
 		#endregion
 
-        #region ICommandLineRegistry Members
+		#region ICommandLineRegistry Members
 
-        public void Register(ICommandLineFactory factory)
-        {
-            if (factory == null) return;
-            RegisterCommandLines(factory.KnownCommandLines);
+		public void Register(ICommandLineFactory factory)
+		{
+			if (factory == null) return;
+			RegisterCommandLines(factory.KnownCommandLines);
+		}
 
-            AddUpdatablePlugin(factory);
-        }
+		public void RegisterCommandLines(ICommandLine[] CommandLines)
+		{
+			if (cmdlines == null) return;
+			foreach (ICommandLine c in CommandLines)
+				RegisterCommandLines(c as ICommandLine);
+		}
 
-        public void RegisterCommandLines(ICommandLine[] CommandLines)
-        {
-            if (cmdlines == null) return;
-            foreach (ICommandLine c in CommandLines)
-                RegisterCommandLines(c as ICommandLine);
-        }
+		public void RegisterCommandLines(ICommandLine cmdline)
+		{
+			if (cmdline == null) return;
+			if (!cmdlines.Contains(cmdline))
+				cmdlines.Add(cmdline);
+		}
 
-        public void RegisterCommandLines(ICommandLine cmdline)
-        {
-            if (cmdline == null) return;
-            if (!cmdlines.Contains(cmdline))
-                cmdlines.Add(cmdline);
-        }
+		public ICommandLine[] CommandLines
+		{
+			get
+			{
+				ICommandLine[] ret = new ICommandLine[cmdlines.Count];
+				cmdlines.CopyTo(ret);
+				return ret;
+			}
+		}
 
-        public ICommandLine[] CommandLines
-        {
-            get
-            {
-                ICommandLine[] ret = new ICommandLine[cmdlines.Count];
-                cmdlines.CopyTo(ret);
-                return ret;
-            }
-        }
+		#endregion
 
-        #endregion
+		/// <summary>
+		/// This will perform some basic tasks, to bring the SimPe API into an useable state
+		/// </summary>
+		/* unused ?? ?? ?? -> see SimPe Main\PluginManager.cs LoadStaticWrappers()
+		public static void InitDefaultFileTable()
+		{
+			SimPe.PackedFiles.TypeRegistry tr = new SimPe.PackedFiles.TypeRegistry();
 
-        /// <summary>
-        /// This will perform some basic tasks, to bring the SimPE API into an useable state
-        /// </summary>
-        /* unused ?? ?? ?? -> see SimPe Main\PluginManager.cs LoadStaticWrappers()
-        public static void InitDefaultFileTable()
-        {
-            SimPe.PackedFiles.TypeRegistry tr = new SimPe.PackedFiles.TypeRegistry();
+			SimPe.FileTable.ProviderRegistry = tr;
+			SimPe.FileTable.ToolRegistry = tr;
+			SimPe.FileTable.WrapperRegistry = tr;
+			SimPe.FileTable.HelpTopicRegistry = tr;
+			SimPe.FileTable.SettingsRegistry = tr;
 
-            SimPe.FileTable.ProviderRegistry = tr;
-            SimPe.FileTable.ToolRegistry = tr;
-            SimPe.FileTable.WrapperRegistry = tr;
-            SimPe.FileTable.HelpTopicRegistry = tr;
-            SimPe.FileTable.SettingsRegistry = tr;
+			SimPe.FileTable.WrapperRegistry.Register(new SimPe.PackedFiles.Wrapper.Factory.SimFactory());
+			SimPe.FileTable.WrapperRegistry.Register(new SimPe.PackedFiles.Wrapper.Factory.ExtendedWrapperFactory());
+			SimPe.FileTable.WrapperRegistry.Register(new SimPe.PackedFiles.Wrapper.Factory.DefaultWrapperFactory());
+			SimPe.FileTable.WrapperRegistry.Register(new SimPe.Plugin.ScenegraphWrapperFactory());
+			SimPe.FileTable.WrapperRegistry.Register(new SimPe.PackedFiles.Wrapper.Factory.ClstWrapperFactory());
+			SimPe.FileTable.WrapperRegistry.Register(new SimPe.Commandline.Help());
 
-            SimPe.FileTable.WrapperRegistry.Register(new SimPe.PackedFiles.Wrapper.Factory.SimFactory());
-            SimPe.FileTable.WrapperRegistry.Register(new SimPe.PackedFiles.Wrapper.Factory.ExtendedWrapperFactory());
-            SimPe.FileTable.WrapperRegistry.Register(new SimPe.PackedFiles.Wrapper.Factory.DefaultWrapperFactory());
-            SimPe.FileTable.WrapperRegistry.Register(new SimPe.Plugin.ScenegraphWrapperFactory());
-            SimPe.FileTable.WrapperRegistry.Register(new SimPe.PackedFiles.Wrapper.Factory.ClstWrapperFactory());
-            SimPe.FileTable.WrapperRegistry.Register(new SimPe.Commandline.Help());
-
-        }
-        */
-    }
+		}
+		*/
+	}
 }
 
 namespace SimPe.Collections 

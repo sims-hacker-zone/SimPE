@@ -27,7 +27,7 @@ using System.Xml;
 namespace SimPe.Providers
 {
 	/// <summary>
-	/// Zusammenfassung für SimDescription.
+	/// Summary description for SimDescription.
 	/// </summary>
 	public class SimDescriptions : SimCommonPackage, ISimDescriptions	 
 	{
@@ -114,12 +114,19 @@ namespace SimPe.Providers
 				LinkedSDesc sdesc = new LinkedSDesc();
 				sdesc.ProcessData(pfd, BasePackage);
 
-				if (bysimid.ContainsKey((uint)sdesc.SimId) || byinstance.ContainsKey((ushort)sdesc.Instance))
-                    if (!didwarndoubleguid)
+                if (!didwarndoubleguid)
+                {
+                    if (bysimid.ContainsKey((uint)sdesc.SimId))
                     {
-                        Helper.ExceptionMessage(new Warning("A Sim was found Twice!", "The Sim with GUID 0x" + Helper.HexString(sdesc.SimId) + " (inst=0x" + Helper.HexString(sdesc.Instance) + ") exists more than once. This could result in  Problems during the Gameplay!"));
+                        Helper.ExceptionMessage(new Warning("A Sim was found Twice!", "The Sim with GUID 0x" + Helper.HexString(sdesc.SimId) + " (instance=0x" + Helper.HexString(pfd.Instance) + ") exists more than once. This could result in Problems during the Gameplay!"));
                         didwarndoubleguid = true;
                     }
+                    if (byinstance.ContainsKey((ushort)sdesc.Instance))
+                    {
+                        Helper.ExceptionMessage(new Warning("A Sim was found Twice!", "The Sim with nid=0x" + Helper.HexString(sdesc.Instance) + " (instance=0x" + Helper.HexString(pfd.Instance) + ") exists more than once. This could result in Problems during the Gameplay!"));
+                        didwarndoubleguid = true;
+                    }
+                }
 				
 				bysimid[(uint)sdesc.SimId] = sdesc;
 				byinstance[(ushort)sdesc.Instance] = sdesc;
@@ -189,13 +196,14 @@ namespace SimPe.Providers
 
 
 		#region Nightlife Turn On/Off Extension
+        int to1 = 13;
 		System.Collections.Generic.Dictionary<int, string> turnons;
 		void LoadTurnOns()
 		{
 			if (turnons!=null) return;
             turnons = new System.Collections.Generic.Dictionary<int, string>();
-
-            if (SimPe.PathProvider.Global.EPInstalled < 2) return;
+            if (SimPe.PathProvider.Global.EPInstalled < 2 && SimPe.PathProvider.Global.STInstalled < 28) return;
+            else if (Helper.WindowsRegistry.LoadOnlySimsStory > 0) to1 = 12;
 
             SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(System.IO.Path.Combine(PathProvider.Global.Latest.InstallFolder, @"TSData\Res\Text\UIText.package"));
 			SimPe.PackedFiles.Wrapper.Str str = new Str();
@@ -205,9 +213,16 @@ namespace SimPe.Providers
 			{
 				str.ProcessData(pfd, pkg);
 				SimPe.PackedFiles.Wrapper.StrItemList strs = str.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
-
-				for (int i=0; i<strs.Count; i++)
-					turnons[i] = strs[i].Title;
+                if (to1 == 12)
+                {
+                    for (int i = 0; i < strs.Count; i++)
+                        if ( i != 13) turnons[i] = strs[i].Title;
+                }
+                else
+                {
+                    for (int i = 0; i < strs.Count; i++)
+                        turnons[i] = strs[i].Title;
+                }
 			}
 		}
 
@@ -217,11 +232,12 @@ namespace SimPe.Providers
             TraitAlias[] a = new TraitAlias[turnons.Count];
 
 			int ct = 0;
+            int j = 15 - to1;
 			foreach (int k in turnons.Keys)
 			{
 				string s = turnons[k];
 				int e = k;
-				if (e>0xD) e+=2; // only 14 bits in traits1 (etc)
+                if (e > to1) e += j; // Fuck - only 14 bits in traits 1. If A&N's Nudity were anabled this would need to be altered just for A&N
 				a[ct++] = new TraitAlias((ulong)Math.Pow(2, e), s);
             }
 
@@ -279,7 +295,7 @@ namespace SimPe.Providers
         {
             if (collectibles != null) return;
             collectibles = new System.Collections.Generic.Dictionary<int, CollectibleAlias>();
-            if (SimPe.PathProvider.Global.EPInstalled < 11) return;
+            if (SimPe.PathProvider.Global.EPInstalled < 10) return;
             
             SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(System.IO.Path.Combine(PathProvider.Global.Latest.InstallFolder, @"TSData\Res\Text\UIText.package"));
             SimPe.PackedFiles.Wrapper.Str str = new Str();
@@ -288,8 +304,6 @@ namespace SimPe.Providers
             {
                 str.ProcessData(pfd, pkg);
                 SimPe.PackedFiles.Wrapper.StrItemList strs = str.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
-
-                
                     
                 pkg = SimPe.Packages.File.LoadFromFile(System.IO.Path.Combine(PathProvider.Global.Latest.InstallFolder, @"TSData\Res\UI\ui.package"));
                 pfd = pkg.FindFile(0, 0, 0xA99D8A11, 0xACDC6300);
@@ -300,10 +314,9 @@ namespace SimPe.Providers
                         SimPe.PackedFiles.Wrapper.Xml xml = new SimPe.PackedFiles.Wrapper.Xml();
                         xml.ProcessData(pfd, pkg);
 
-
                         string[] lines = xml.Text.Split(new char[] { '\r' });
                         SimPe.PackedFiles.Wrapper.Picture pic = new Picture();
-                        SimPe.FileTable.FileIndex.Load();
+                        // SimPe.FileTable.FileIndex.Load();
                         foreach (string fulline in lines)
                         {
                             string line = fulline.ToLower().Trim();
@@ -320,12 +333,11 @@ namespace SimPe.Providers
                                 }
                             }
                         }
-
                     }
                     catch (Exception e)
                     {
                         System.Diagnostics.Debug.WriteLine("ERROR during Voyage Collectible Image Parsing:\n" + e.ToString());
-                        if (Helper.DebugMode) Helper.ExceptionMessage(e);
+                        if (Helper.WindowsRegistry.HiddenMode) Helper.ExceptionMessage(e);
                     }
                 }
             }
@@ -350,7 +362,7 @@ namespace SimPe.Providers
             collectibles[nr] = new CollectibleAlias((ulong)Math.Pow(2, nr), nr, name, img);
             return index;
         }
-
+        /* This required he whole file table but since we know where to find the images that is obsolete.
         private static System.Drawing.Image LoadCollectibleIcon(SimPe.PackedFiles.Wrapper.Picture pic, UInt32 g, UInt32 i)
         {
             SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = SimPe.FileTable.FileIndex.FindFileByGroupAndInstance(g, i);
@@ -362,6 +374,25 @@ namespace SimPe.Providers
                 gr.DrawImage(pic.Image, new System.Drawing.Rectangle(0, 0, bmp.Width, bmp.Height), new System.Drawing.Rectangle(0, 0, bmp.Width, bmp.Height), System.Drawing.GraphicsUnit.Pixel);
                 gr.Dispose();
                 return bmp;
+            }
+            return null;
+        }
+        */
+        private static System.Drawing.Image LoadCollectibleIcon(SimPe.PackedFiles.Wrapper.Picture pic, UInt32 g, UInt32 i)
+        {
+            SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(System.IO.Path.Combine(PathProvider.Global.GetExpansion(10).InstallFolder, "TSData\\Res\\UI\\ui.package"));
+            if (pkg != null)
+            {
+                SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(0x856DDBAC, 0, g, i);
+                if (pfd != null)
+                {
+                    pic.ProcessData(pfd, pkg);
+                    System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(pic.Image.Width / 4, pic.Image.Height);
+                    System.Drawing.Graphics gr = System.Drawing.Graphics.FromImage(bmp);
+                    gr.DrawImage(pic.Image, new System.Drawing.Rectangle(0, 0, bmp.Width, bmp.Height), new System.Drawing.Rectangle(0, 0, bmp.Width, bmp.Height), System.Drawing.GraphicsUnit.Pixel);
+                    gr.Dispose();
+                    return bmp;
+                }
             }
             return null;
         }
@@ -399,10 +430,6 @@ namespace SimPe.Providers
             return tipres;
         }
 
-        
-
-
-
         public SimPe.Providers.CollectibleAlias[] GetAllCollectibles()
         {
             if (collectibles == null) LoadCollectibles();
@@ -432,7 +459,6 @@ namespace SimPe.Providers
 
             return ret;
         }
-
 
         public string GetCollectibleName(ushort val1, ushort val2, ushort val3, ushort val4)
         {
