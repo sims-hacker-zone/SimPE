@@ -122,8 +122,18 @@ namespace SimPe.Wants
             WrapperChanged(wrapper, null);
 
             internalchg = true;
-
-            lbWant.Text = wrapper["folder"].Value + " / " + wrapper["nodeText"].Value + " (" + wrapper["objectType"].Value + ")";
+            if (wrapper.FileDescriptor.Type == 0xBEEF7B4D)
+            {
+                pjse_banner1.TitleText = "XML Goal File";
+                label1.Text = "Goal:";
+                lbWant.Text = wrapper["nodeText"].Value;
+            }
+            else
+            {
+                pjse_banner1.TitleText = "XML Want File";
+                label1.Text = "Want:";
+                lbWant.Text = wrapper["folder"].Value + " / " + wrapper["nodeText"].Value + " (" + wrapper["objectType"].Value + ")";
+            }
             cbVersion.SelectedIndex = XWNTWrapper.ValidVersions.IndexOf(wrapper.Version);
 
             lvWants.Items.Clear();

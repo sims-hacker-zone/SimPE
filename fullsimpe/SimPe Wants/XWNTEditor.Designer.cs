@@ -25,6 +25,7 @@ namespace SimPe.Wants
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.lbWant = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.cbVersion = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbProperty = new System.Windows.Forms.ComboBox();
@@ -33,7 +34,6 @@ namespace SimPe.Wants
             this.tbValue = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.pnXWNTEditor.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -43,20 +43,26 @@ namespace SimPe.Wants
             this.pnXWNTEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnXWNTEditor.BackColor = System.Drawing.Color.Transparent;
+            this.pnXWNTEditor.BackgroundImageLocation = new System.Drawing.Point(200, 28);
+            this.pnXWNTEditor.BackgroundImageZoomToFit = true;
             this.pnXWNTEditor.Controls.Add(this.pjse_banner1);
             this.pnXWNTEditor.Controls.Add(this.btnCommit);
             this.pnXWNTEditor.Controls.Add(this.lvWants);
             this.pnXWNTEditor.Controls.Add(this.flowLayoutPanel1);
+            this.pnXWNTEditor.EndColour = System.Drawing.SystemColors.Control;
+            this.pnXWNTEditor.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnXWNTEditor.Location = new System.Drawing.Point(3, 3);
+            this.pnXWNTEditor.MiddleColour = System.Drawing.SystemColors.Control;
             this.pnXWNTEditor.Name = "pnXWNTEditor";
             this.pnXWNTEditor.Size = new System.Drawing.Size(829, 406);
+            this.pnXWNTEditor.StartColour = System.Drawing.SystemColors.Control;
             this.pnXWNTEditor.TabIndex = 0;
             // 
             // pjse_banner1
             // 
             this.pjse_banner1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.pjse_banner1.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.pjse_banner1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold);
             this.pjse_banner1.Location = new System.Drawing.Point(0, 0);
             this.pjse_banner1.Margin = new System.Windows.Forms.Padding(0);
@@ -79,9 +85,8 @@ namespace SimPe.Wants
             // 
             // lvWants
             // 
-            this.lvWants.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvWants.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.lvWants.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.chKey,
             this.chType,
@@ -101,17 +106,17 @@ namespace SimPe.Wants
             // chKey
             // 
             this.chKey.Text = "Key";
-            this.chKey.Width = 122;
+            this.chKey.Width = 150;
             // 
             // chType
             // 
             this.chType.Text = "Type";
-            this.chType.Width = 92;
+            this.chType.Width = 100;
             // 
             // chValue
             // 
             this.chValue.Text = "Value";
-            this.chValue.Width = 307;
+            this.chValue.Width = 500;
             // 
             // flowLayoutPanel1
             // 
@@ -130,13 +135,12 @@ namespace SimPe.Wants
             this.flowLayoutPanel1.Controls.Add(this.btnAdd);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 29);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(748, 56);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(760, 56);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(36, 13);
@@ -152,13 +156,23 @@ namespace SimPe.Wants
             this.lbWant.TabIndex = 2;
             this.lbWant.Text = "lbWant";
             // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(398, 7);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(54, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Version:";
+            // 
             // cbVersion
             // 
             this.cbVersion.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cbVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flowLayoutPanel1.SetFlowBreak(this.cbVersion, true);
             this.cbVersion.FormattingEnabled = true;
-            this.cbVersion.Location = new System.Drawing.Point(449, 3);
+            this.cbVersion.Location = new System.Drawing.Point(458, 3);
             this.cbVersion.Name = "cbVersion";
             this.cbVersion.Size = new System.Drawing.Size(75, 21);
             this.cbVersion.TabIndex = 9;
@@ -170,7 +184,7 @@ namespace SimPe.Wants
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 35);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 13);
+            this.label2.Size = new System.Drawing.Size(34, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Key:";
             // 
@@ -179,7 +193,7 @@ namespace SimPe.Wants
             this.cbProperty.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cbProperty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProperty.FormattingEnabled = true;
-            this.cbProperty.Location = new System.Drawing.Point(37, 31);
+            this.cbProperty.Location = new System.Drawing.Point(43, 31);
             this.cbProperty.Name = "cbProperty";
             this.cbProperty.Size = new System.Drawing.Size(121, 21);
             this.cbProperty.TabIndex = 4;
@@ -189,9 +203,9 @@ namespace SimPe.Wants
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(164, 35);
+            this.label3.Location = new System.Drawing.Point(170, 35);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
+            this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Value:";
             // 
@@ -200,7 +214,7 @@ namespace SimPe.Wants
             this.cbValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cbValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbValue.FormattingEnabled = true;
-            this.cbValue.Location = new System.Drawing.Point(207, 31);
+            this.cbValue.Location = new System.Drawing.Point(219, 31);
             this.cbValue.Name = "cbValue";
             this.cbValue.Size = new System.Drawing.Size(185, 21);
             this.cbValue.TabIndex = 6;
@@ -210,9 +224,9 @@ namespace SimPe.Wants
             // tbValue
             // 
             this.tbValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tbValue.Location = new System.Drawing.Point(398, 31);
+            this.tbValue.Location = new System.Drawing.Point(410, 31);
             this.tbValue.Name = "tbValue";
-            this.tbValue.Size = new System.Drawing.Size(185, 20);
+            this.tbValue.Size = new System.Drawing.Size(185, 21);
             this.tbValue.TabIndex = 6;
             this.tbValue.TextChanged += new System.EventHandler(this.tbValue_TextChanged);
             // 
@@ -220,7 +234,7 @@ namespace SimPe.Wants
             // 
             this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnDelete.Enabled = false;
-            this.btnDelete.Location = new System.Drawing.Point(589, 30);
+            this.btnDelete.Location = new System.Drawing.Point(601, 30);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 7;
@@ -231,23 +245,13 @@ namespace SimPe.Wants
             // btnAdd
             // 
             this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnAdd.Location = new System.Drawing.Point(670, 30);
+            this.btnAdd.Location = new System.Drawing.Point(682, 30);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 8;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(398, 7);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Version:";
             // 
             // XWNTEditor
             // 

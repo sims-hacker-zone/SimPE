@@ -43,7 +43,7 @@ namespace SimPe.Wants
         public uint Version { get { return version; } set { if (version != value) { setVersion(value); OnWrapperChanged(this, new EventArgs()); } } }
         private void setVersion(uint value) { if (!IsValidVersion(value)) throw new ArgumentOutOfRangeException("value"); version = value; }
         private static List<uint> lValidVersions = null;
-        public static List<uint> ValidVersions { get { if (lValidVersions == null) lValidVersions = new List<uint>(new uint[] { 0x01, 0x05, 0x06, }); return lValidVersions; } }
+        public static List<uint> ValidVersions { get { if (lValidVersions == null) lValidVersions = new List<uint>(new uint[] { 0x01, 0x05, 0x06, 0x07, }); return lValidVersions; } } // CJH
         private static bool IsValidVersion(uint value) { return ValidVersions.Contains(value); }
 
         public uint MaxWants { get { return maxWants; } set { if (maxWants != value) { setMaxWants(value); OnWrapperChanged(this, new EventArgs()); } } }

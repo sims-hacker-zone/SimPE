@@ -204,7 +204,7 @@ namespace SimPe.Wants
         /// <summary>
         /// Returns a list of File Types this Plugin can process
         /// </summary>
-        public uint[] AssignableTypes { get { return new uint[] { XWNTType, }; } }
+        public uint[] AssignableTypes { get { return new uint[] { XWNTType, 0xBEEF7B4D }; } }
 
         /// <summary>
         /// Returns the Signature that can be used to identify Files processable with this Plugin
@@ -435,11 +435,14 @@ namespace SimPe.Wants
             get
             {
                 if (lValidLevels == null)
-                    lValidLevels = new List<string>(new string[]{
+                        lValidLevels = new List<string>(new string[]{
                         "Memorable",
                         "Power",
                         "Transitory",
+                        "Story",
+                        "Generational"
                     });
+
                 return lValidLevels;
             }
         }

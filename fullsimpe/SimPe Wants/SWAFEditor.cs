@@ -77,10 +77,6 @@ namespace SimPe.Wants
             cbSIArgType.Items.Clear();
             cbSIArgType.Items.AddRange(Enum.GetNames(typeof(SWAFItem.ArgTypes)));
 
-            tbSIArg.Location = flpSimID2.Location = gcSICategory.Location = gcSIObject.Location = cbSISkill.Location = gcSIBadge.Location = gcSICareer.Location =
-                new Point(0, 0);
-
-
             #region Want names
             if (wantNames == null)
             {
@@ -115,6 +111,7 @@ namespace SimPe.Wants
 
                         xwnts.Add(i, new object[] { e.FileDescriptor, e.Package, });
                         wants.Add(new KeyValuePair<string, uint>(s, i));
+                        SimPe.Plugin.WantInformation.LoadWant(i);
                     }
                     finally { if (++ctr == 10) { Wait.Progress++; ctr = 0; } }
                 }
@@ -234,6 +231,7 @@ namespace SimPe.Wants
             }
             gcSIObject.KnownObjects = new object[] { objectNames, objectIDs, };
             gcSICareer.KnownObjects = new object[] { careerNames, careerIDs, };
+            SimPe.Plugin.WantInformation.SaveCache();
             #endregion
 
             internalchg = false;
@@ -376,10 +374,22 @@ namespace SimPe.Wants
 
         private void SISimID2(SWAFItem i)
         {
-            Image noone = System.Drawing.Image.FromStream(typeof(SimPoolControl).Assembly.GetManifestResourceStream("SimPe.PackedFiles.Wrapper.noone.png"));
+            Image noone = SimPe.GetImage.NoOne;
             ExtSDesc sdsc = i.Sim != 0 ? FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(i.Sim) as ExtSDesc : null;
-            if (sdsc == null) { btnSim2.Image = null; llSimName2.Text = "?any sim?"; llSREL.Visible = false; }
-            else { Image img = sdsc.Image; btnSim2.Image = ((Image)(img == null ? noone : img)).GetThumbnailImage(64, 64, null, System.IntPtr.Zero); llSimName2.Text = sdsc.SimName + " " + sdsc.SimFamilyName; llSREL.Visible = true; }
+            if (sdsc == null) { btnSim2.Image = SimPe.GetIcon.SimBrowser; llSimName2.Text = "?any sim?"; llSREL.Visible = false; }
+            else
+            {
+                Image img = null;
+                if (sdsc.Image != null)
+                    if (sdsc.Image.Width > 8)
+                        img = sdsc.Image;
+                if (img == null)
+                {
+                    img = SimPe.GetImage.NoOne;
+                }
+                btnSim2.Image = img.GetThumbnailImage(64, 64, null, System.IntPtr.Zero);
+                llSimName2.Text = sdsc.SimName + " " + sdsc.SimFamilyName; llSREL.Visible = true;
+            }
         }
         private int findSkill(ushort skill)
         {
@@ -388,54 +398,57 @@ namespace SimPe.Wants
         }
         private void SIArg(SWAFItem i)
         {
-            pnArg.Enabled = true;
+            llSimName2.Visible = llSREL.Visible = tbSISimID2.Visible = btnSim2.Visible = false;
             switch (i.ArgType)
             {
                 case SWAFItem.ArgTypes.None:
-                    pnArg.Enabled = false;
-                    tbSIArg.Visible = true;
-                    flpSimID2.Visible = gcSIObject.Visible = gcSICategory.Visible = cbSISkill.Visible = gcSIBadge.Visible = gcSICareer.Visible = false;
-                    tbSIArg.Text = "";
+                    pnArg.Visible = false;
+                    gbSelectedItem.Height = 346;
+                    gcSIObject.Visible = gcSICategory.Visible = cbSISkill.Visible = gcSIBadge.Visible = gcSICareer.Visible = false;
                     break;
                 case SWAFItem.ArgTypes.Sim:
-                    flpSimID2.Visible = true;
-                    tbSIArg.Visible = gcSIObject.Visible = gcSICategory.Visible = cbSISkill.Visible = gcSIBadge.Visible = gcSICareer.Visible = false;
+                    pnArg.Visible = true; gbSelectedItem.Height = 451;
+                    llSimName2.Visible = llSREL.Visible = tbSISimID2.Visible = btnSim2.Visible = true;
+                    gcSIObject.Visible = gcSICategory.Visible = cbSISkill.Visible = gcSIBadge.Visible = gcSICareer.Visible = false;
                     if (i.Version < 0x08)
                     {
-                        flpSimID2.Enabled = false;
                         tbSISimID2.Text = llSimName2.Text = ""; llSREL.Visible = false;
-                        btnSim2.Image = null;
+                        btnSim2.Image = SimPe.GetIcon.SimBrowser;
                     }
                     else
                     {
-                        flpSimID2.Enabled = true;
                         tbSISimID2.Text = "0x" + Helper.HexString(i.Sim);
                         SISimID2(i);
                     }
                     break;
                 case SWAFItem.ArgTypes.Guid:
+                    pnArg.Visible = true; gbSelectedItem.Height = 451;
                     gcSIObject.Visible = true;
-                    tbSIArg.Visible = flpSimID2.Visible = gcSICategory.Visible = cbSISkill.Visible = gcSIBadge.Visible = gcSICareer.Visible = false;
+                    gcSICategory.Visible = cbSISkill.Visible = gcSIBadge.Visible = gcSICareer.Visible = false;
                     gcSIObject.Value = i.Guid;
                     break;
                 case SWAFItem.ArgTypes.Category:
+                    pnArg.Visible = true; gbSelectedItem.Height = 451;
                     gcSICategory.Visible = true;
-                    tbSIArg.Visible = flpSimID2.Visible = gcSIObject.Visible = cbSISkill.Visible = gcSIBadge.Visible = gcSICareer.Visible = false;
+                    gcSIObject.Visible = cbSISkill.Visible = gcSIBadge.Visible = gcSICareer.Visible = false;
                     gcSICategory.Value = i.Category;
                     break;
                 case SWAFItem.ArgTypes.Skill:
+                    pnArg.Visible = true; gbSelectedItem.Height = 451;
                     cbSISkill.Visible = true;
-                    tbSIArg.Visible = flpSimID2.Visible = gcSIObject.Visible = gcSICategory.Visible = gcSIBadge.Visible = gcSICareer.Visible = false;
+                    gcSIObject.Visible = gcSICategory.Visible = gcSIBadge.Visible = gcSICareer.Visible = false;
                     cbSISkill.SelectedIndex = findSkill(i.Skill);
                     break;
                 case SWAFItem.ArgTypes.Badge:
+                    pnArg.Visible = true; gbSelectedItem.Height = 451;
                     gcSIBadge.Visible = true;
-                    tbSIArg.Visible = flpSimID2.Visible = gcSIObject.Visible = gcSICategory.Visible = cbSISkill.Visible = gcSICareer.Visible = false;
+                    gcSIObject.Visible = gcSICategory.Visible = cbSISkill.Visible = gcSICareer.Visible = false;
                     gcSIBadge.Value = i.Badge;
                     break;
                 case SWAFItem.ArgTypes.Career:
+                    pnArg.Visible = true; gbSelectedItem.Height = 451;
                     gcSICareer.Visible = true;
-                    tbSIArg.Visible = flpSimID2.Visible = gcSIObject.Visible = gcSICategory.Visible = cbSISkill.Visible = gcSIBadge.Visible = false;
+                    gcSIObject.Visible = gcSICategory.Visible = cbSISkill.Visible = gcSIBadge.Visible = false;
                     gcSICareer.Value = i.Career;
                     break;
             }
@@ -488,8 +501,11 @@ namespace SimPe.Wants
             WrapperChanged(wrapper, null);
 
             internalchg = true;
+            ckbIncWants.Checked = true;
+            ckbIncLTWants.Checked = true;
 
             tbUnknown3.Enabled = tbMaxWants.Enabled = tbMaxFears.Enabled = wrapper.Version >= 0x05;
+            //ckbIncWants.Enabled = ckbIncFears.Enabled = ckbIncLTWants.Enabled = ckbIncHistory.Enabled = true;
 
             cbFileVersion.SelectedIndex = SWAFWrapper.ValidVersions.IndexOf(wrapper.Version);
 
@@ -502,6 +518,7 @@ namespace SimPe.Wants
 
             groupTables = new Hashtable[lvItems.Columns.Count];
             setLV();
+
             SetGroups(groupColumn);
 
             internalchg = false;
@@ -607,49 +624,51 @@ namespace SimPe.Wants
 
             // Remove the current groups.
             lvItems.Groups.Clear();
-
-            // Retrieve the hash table corresponding to the column.
-            Hashtable groups = (Hashtable)groupTables[column];
-
-            // Copy the groups for the column to an array.
-            ListViewGroup[] groupsArray = new ListViewGroup[groups.Count];
-            groups.Values.CopyTo(groupsArray, 0);
-
-            // Sort the groups and add them to myListView.
-            Array.Sort(groupsArray, new ListViewGroupSorter(lvItems.Sorting, column));
-            lvItems.Groups.AddRange(groupsArray);
-
-            // Iterate through the items in myListView, assigning each 
-            // one to the appropriate group.
-            foreach (ListViewItem item in lvItems.Items)
+            try
             {
-                SWAFItem i = item.Tag as SWAFItem;
+                // Retrieve the hash table corresponding to the column.
+                Hashtable groups = (Hashtable)groupTables[column];
 
-                // Retrieve the subitem text corresponding to the column.
-                string subItemText = item.SubItems[column].Text;
+                // Copy the groups for the column to an array.
+                ListViewGroup[] groupsArray = new ListViewGroup[groups.Count];
+                groups.Values.CopyTo(groupsArray, 0);
 
-                if (i != null)
+                // Sort the groups and add them to myListView.
+                Array.Sort(groupsArray, new ListViewGroupSorter(lvItems.Sorting, column));
+
+                // Iterate through the items in myListView, assigning each 
+                // one to the appropriate group.
+                foreach (ListViewItem item in lvItems.Items)
                 {
-                    if (column == 1)
+                    SWAFItem i = item.Tag as SWAFItem;
+
+                    // Retrieve the subitem text corresponding to the column.
+                    string subItemText = item.SubItems[column].Text;
+
+                    if (i != null)
                     {
-                        XWNTWrapper xwnt = pjse.FileTable.GFT[xwnts[i.WantId][1] as SimPe.Interfaces.Files.IPackageFile,
-                            xwnts[i.WantId][0] as SimPe.Interfaces.Files.IPackedFileDescriptor][0].Wrapper as XWNTWrapper;
-                        if (xwnt != null && xwnt["folder"] != null)
-                            subItemText = xwnt["folder"].Value;
+                        if (column == 1)
+                        {
+                            XWNTWrapper xwnt = pjse.FileTable.GFT[xwnts[i.WantId][1] as SimPe.Interfaces.Files.IPackageFile,
+                                xwnts[i.WantId][0] as SimPe.Interfaces.Files.IPackedFileDescriptor][0].Wrapper as XWNTWrapper;
+                            if (xwnt != null && xwnt["folder"] != null)
+                                subItemText = xwnt["folder"].Value;
+                        }
+                        else if (column == 2 && i.ArgType == SWAFItem.ArgTypes.Sim && i.Version >= 0x08)
+                        {
+                            ExtSDesc sdsc = FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(i.Sim) as ExtSDesc;
+                            if (sdsc != null && sdsc.SimFamilyName != null)
+                                subItemText = sdsc.SimFamilyName;
+                        }
                     }
-                    else if (column == 2 && i.ArgType == SWAFItem.ArgTypes.Sim && i.Version >= 0x08)
-                    {
-                        ExtSDesc sdsc = FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(i.Sim) as ExtSDesc;
-                        if (sdsc != null && sdsc.SimFamilyName != null)
-                            subItemText = sdsc.SimFamilyName;
-                    }
+
+                    // Assign the item to the matching group.
+                    item.Group = (ListViewGroup)groups[subItemText];
                 }
 
-                // Assign the item to the matching group.
-                item.Group = (ListViewGroup)groups[subItemText];
+                lvItems.ShowGroups = true;
             }
-
-            lvItems.ShowGroups = true;
+            catch {}
         }
 
 
@@ -829,40 +848,53 @@ namespace SimPe.Wants
             {
                 if (lvItems.SelectedIndices.Count == 0 || lvItems.SelectedItems[0].Tag as SWAFItem == null)
                 {
+                    pnArg.Visible = false;
+                    //gbSelectedItem.Height = 346;
                     gbSelectedItem.Enabled = btnDelete.Enabled = false;
-                    lbSIItemType.Text = tbSISimID.Text = llSimName.Text =
-                        tbSIArg.Text = tbSIArg2.Text =
-                        tbSICounter.Text = tbSIScore.Text = tbSIInfluence.Text = "";
+                    lbSIItemType.Text = tbSISimID.Text = llSimName.Text = tbSIArg2.Text = tbSICounter.Text = tbSIScore.Text = tbSIInfluence.Text = "";
                     cbSIArgType.SelectedIndex = cbSIVersion.SelectedIndex = -1;
                     gcSIWant.Value = 0;
-                    gcSICareer.Visible = flpSimID2.Visible = false;
-                    tbSIArg.Visible = true;
+                    gcSICareer.Visible = lbXWNTIntOp.Visible = label13.Visible = tbSIArg2.Visible = lbTimes.Visible = lbXWNTIntMult.Visible = false;
                     foreach (CheckBox ckb in lflags) ckb.CheckState = CheckState.Indeterminate;
+                    foreach (CheckBox ckb in lincs) ckb.Enabled = !ckb.Checked;//false;
+                    gbSelectedItem.Icon = null;
+                    gbSelectedItem.HeaderText = "Selected Item";
                 }
                 else
                 {
                     ExtSDesc sdsc = null;
-                    Image noone = System.Drawing.Image.FromStream(typeof(SimPoolControl).Assembly.GetManifestResourceStream("SimPe.PackedFiles.Wrapper.noone.png"));
                     gbSelectedItem.Enabled = btnDelete.Enabled = true;
-
+                    foreach (CheckBox ckb in lincs) ckb.Enabled = true;
                     SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
                     lbSIItemType.Text = "" + i.ItemType;
                     cbSIVersion.SelectedIndex = SWAFItem.ValidVersions.IndexOf(i.Version);
-
+                    lbXWNTIntOp.Visible = label13.Visible = tbSIArg2.Visible = lbTimes.Visible = lbXWNTIntMult.Visible = (i.Arg2 != 0);
                     tbSISimID.Text = "0x" + Helper.HexString(i.SimID);
                     sdsc = FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(i.SimID) as ExtSDesc;
-                    if (sdsc == null) { btnSim.Image = noone; llSimName.Text = ""; }
-                    else { Image img = sdsc.Image; btnSim.Image = ((Image)(img == null ? noone : img)).GetThumbnailImage(64, 64, null, System.IntPtr.Zero); llSimName.Text = sdsc.SimName + " " + sdsc.SimFamilyName; }
+                    if (sdsc == null) { btnSim.Image = SimPe.GetImage.NoOne.GetThumbnailImage(64, 64, null, System.IntPtr.Zero); llSimName.Text = ""; }
+                    else
+                    {
+                        Image img = null;
+                        if (sdsc.Image!=null)
+                            if (sdsc.Image.Width>8)
+                                img = sdsc.Image;
+                        if (img == null)
+                        {
+                            if (sdsc.CharacterDescription.Gender == SimPe.Data.MetaData.Gender.Female) img = SimPe.GetImage.SheOne;
+                            else img = SimPe.GetImage.NoOne;
+                        }
+                        btnSim.Image = img.GetThumbnailImage(64, 64, null, System.IntPtr.Zero);
+                        llSimName.Text = sdsc.SimName + " " + sdsc.SimFamilyName;
+                    }
 
                     gcSIWant.Value = i.WantId;
                     SIWant(i, i.WantId);
-
+                    SimPe.Plugin.WantInformation wantim = SimPe.Plugin.WantInformation.LoadWant(i.WantId);
+                    gbSelectedItem.Icon = wantim.Icon;
+                    gbSelectedItem.HeaderText = wantim.Name;
                     tbSIArg2.Text = "0x" + Helper.HexString(i.Arg2);
-
                     cbSIArgType.SelectedIndex = (new List<string>(Enum.GetNames(typeof(SWAFItem.ArgTypes)))).IndexOf("" + i.ArgType);
-
                     SIArg(i);
-
                     tbSICounter.Text = "0x" + Helper.HexString(i.Counter);
                     tbSIScore.Text = "" + i.Score;
                     tbSIInfluence.Enabled = i.Version >= 0x09;
@@ -892,7 +924,13 @@ namespace SimPe.Wants
             CheckBox ckb = sender as CheckBox;
             if (ckb == null || lincs.IndexOf(ckb) < 0) return;
 
-            ListViewItem lvi = lvItems.SelectedItems[0];
+            if (!ckbIncHistory.Checked && !ckbIncLTWants.Checked && !ckbIncFears.Checked && !ckbIncWants.Checked)
+            {
+                internalchg = true;
+                ckb.Checked = true;
+                internalchg = false;
+                return;
+            } // Can't deselect all catagories or system error CJH
 
             internalchg = true;
             try
@@ -906,12 +944,16 @@ namespace SimPe.Wants
                 SetGroups(groupColumn);
             }
             finally { internalchg = false; }
-
-            if (lvi != null && lvItems.Items.Contains(lvi)) lvi.Selected = true;
-            else if (lvItems.Items.Count > 0)
-                lvItems.Items[0].Selected = true;
-            else
-                lvItems_SelectedIndexChanged(null, null);
+            try
+            {
+                ListViewItem lvi = lvItems.SelectedItems[0]; // frows the error when no items exist
+                if (lvi != null && lvItems.Items.Contains(lvi)) lvi.Selected = true;
+                else if (lvItems.Items.Count > 0)
+                    lvItems.Items[0].Selected = true;
+                else
+                    lvItems_SelectedIndexChanged(null, null);
+            }
+            catch { }
 
         }
 
@@ -1111,6 +1153,8 @@ namespace SimPe.Wants
                 UpdateGroupsColumn(lvItems.SelectedItems[0], 7);
             }
             finally { internalchg = false; }
+            wrapper.Changed = true;
+            WrapperChanged(sender, e);
         }
 
         private void cbSIVersion_SelectedIndexChanged(object sender, EventArgs e)
@@ -1136,15 +1180,16 @@ namespace SimPe.Wants
             tbSIInfluence.Text = "";
             if (i.ArgType == SWAFItem.ArgTypes.Sim)
             {
-                flpSimID2.Enabled = false;
+                llSimName2.Visible = llSREL.Visible = tbSISimID2.Visible = btnSim2.Visible = true;
+                lbXWNTIntOp.Visible = label13.Visible = tbSIArg2.Visible = lbTimes.Visible = lbXWNTIntMult.Visible = false;
                 tbSISimID2.Text = llSimName2.Text = ""; llSREL.Visible = false;
-                btnSim2.Image = null;
+                btnSim2.Image = SimPe.GetIcon.SimBrowser;
             }
             if (i.Version >= 0x08)
             {
                 if (i.ArgType == SWAFItem.ArgTypes.Sim)
                 {
-                    flpSimID2.Enabled = true;
+                    lbXWNTIntOp.Visible = label13.Visible = tbSIArg2.Visible = lbTimes.Visible = lbXWNTIntMult.Visible = true;
                     tbSISimID2.Text = "0x" + Helper.HexString(i.Sim);
                     SISimID2(i);
                 }
