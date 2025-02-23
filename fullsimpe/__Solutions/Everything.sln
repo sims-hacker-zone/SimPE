@@ -18,7 +18,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Build", "..\Build\Build.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe GMDC Exporter", "..\__NonCore\SimPe GMDC Exporter\SimPe GMDC Exporter.csproj", "{F7DD4A1A-8C32-4247-9AE9-AE4372455A24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe Career Editor", "..\__NonCore\Bidou Career Editor\SimPe Career Editor.csproj", "{3D13FA23-1B13-4FA8-8654-D5E7C1BAD823}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "language Extractor", "..\SimPe LangExtracter\language Extractor.csproj", "{3D13FA23-1B13-4FA8-8654-D5E7C1BAD823}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wizards of SimPe", "..\Wizards of SimPe\Wizards of SimPe.csproj", "{9C10B224-7ABC-46D1-9ADC-58A817D6AF59}"
 EndProject
