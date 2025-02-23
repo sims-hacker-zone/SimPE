@@ -43,23 +43,11 @@ namespace SimPe.Wizards
 		protected void LoadWizards()
 		{
 			wizards.Clear();
-			if (!System.IO.Directory.Exists(WizardFolder)) 
-			{
-#if MAC
-				Console.WriteLine("Plugins Folder \""+this.WizardFolder+"\" was not found.");
-#endif
-				return;
-			}
+			if (!System.IO.Directory.Exists(WizardFolder)) return;
 
 			string[] plugins = System.IO.Directory.GetFiles(WizardFolder, "*.wizard.dll");
-#if MAC
-			Console.WriteLine("Found "+plugins.Length.ToString()+" Plugins");			
-#endif
 			foreach (string plugin in plugins) 
 			{
-#if MAC
-				Console.WriteLine(plugin);
-#endif
 				object[] objs = SimPe.LoadFileWrappers.LoadPlugins(plugin, typeof(IWizardEntry));
 				foreach (object o in objs) 
 				{
