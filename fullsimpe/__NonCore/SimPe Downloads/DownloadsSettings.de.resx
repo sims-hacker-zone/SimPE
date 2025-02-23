@@ -125,7 +125,7 @@
   </data>
   <data name="[Description:BuildPreviewForRecolors]" xml:space="preserve">
     <value>Falls dieser Wert auf true gesetzt wurde, wird versucht eine Vorschau für Farbalternativen zu erstellen.
-Dazu muss SimPE das Basiobjekt laden.</value>
+Dazu muss SimPe das Basiobjekt laden.</value>
   </data>
   <data name="[Property:LoadBasedataForRecolors]" xml:space="preserve">
     <value>Informationen aus Basisobjekt laden</value>

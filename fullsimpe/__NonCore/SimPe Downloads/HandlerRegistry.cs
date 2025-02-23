@@ -26,19 +26,21 @@ namespace SimPe.Plugin.Downloads
 			
 			AddFilehandler(ExtensionType.Package, typeof(PackageHandler));
 			AddFilehandler(ExtensionType.DisabledPackage, typeof(PackageHandler));
-			AddFilehandler(ExtensionType.Sim2Pack, typeof(PackageHandler));
-			Ambertation.SevenZip.IO.CommandlineArchive a = new Ambertation.SevenZip.IO.CommandlineArchive("");
-			foreach (string ext in a.SupportedForUnpack)
-				this.AddFileHandler(ext, typeof(SevenZipHandler));
-			
+            AddFilehandler(ExtensionType.Sim2Pack, typeof(Sims2PackHandler));
+            AddFilehandler(ExtensionType.Sim2PackCommunity, typeof(Sims2PackHandler));
+            // Nothing is 'Supported For Unpack' if SimPe folder is Windows protected
+            Ambertation.SevenZip.IO.CommandlineArchive a = new Ambertation.SevenZip.IO.CommandlineArchive("");
+            foreach (string ext in a.SupportedForUnpack)
+                this.AddFileHandler(ext, typeof(SevenZipHandler));
+
 			this.AddTypeHandler(SimPe.Cache.PackageType.Lot, typeof(LotTypeHandler));
 			this.AddTypeHandler(SimPe.Cache.PackageType.Wallpaper, typeof(WallpaperTypeHandler));
 			this.AddTypeHandler(SimPe.Cache.PackageType.Floor, typeof(WallpaperTypeHandler));
 			this.AddTypeHandler(SimPe.Cache.PackageType.Roof, typeof(WallpaperTypeHandler));
 			this.AddTypeHandler(SimPe.Cache.PackageType.Terrain, typeof(WallpaperTypeHandler));
 			this.AddTypeHandler(SimPe.Cache.PackageType.Sim, typeof(SimTypeHandler));
-			this.AddTypeHandler(SimPe.Cache.PackageType.Neighborhood, typeof(NeighborhoodTypeHandler));
-			this.AddTypeHandler(SimPe.Cache.PackageType.Recolor, typeof(RecolorTypeHandler));
+			this.AddTypeHandler(SimPe.Cache.PackageType.Neighbourhood, typeof(NeighborhoodTypeHandler));
+			this.AddTypeHandler(SimPe.Cache.PackageType.Recolour, typeof(RecolorTypeHandler));
 		}
 
 		void AddFilehandler(ExtensionType ext, Type handler)

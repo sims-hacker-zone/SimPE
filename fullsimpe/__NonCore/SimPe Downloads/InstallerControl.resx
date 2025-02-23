@@ -117,27 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="pb.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="pb.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pb.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="pb.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 144</value>
-  </data>
-  <data name="pb.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>CenterImage</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="pb.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
   <data name="&gt;&gt;pb.Name" xml:space="preserve">
     <value>pb</value>
   </data>
@@ -150,12 +129,14 @@
   <data name="&gt;&gt;pb.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pndrop.Location" type="System.Drawing.Point, System.Drawing">
     <value>32, 32</value>
   </data>
   <data name="pndrop.Size" type="System.Drawing.Size, System.Drawing">
     <value>144, 144</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="pndrop.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -171,6 +152,37 @@
   <data name="&gt;&gt;pndrop.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pb.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pb.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pb.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="pb.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 144</value>
+  </data>
+  <data name="pb.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>CenterImage</value>
+  </data>
+  <data name="pb.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;pb.Name" xml:space="preserve">
+    <value>pb</value>
+  </data>
+  <data name="&gt;&gt;pb.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pb.Parent" xml:space="preserve">
+    <value>pndrop</value>
+  </data>
+  <data name="&gt;&gt;pb.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="tbs.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
@@ -181,10 +193,10 @@
     <value>NoControl</value>
   </data>
   <data name="lbType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 152</value>
+    <value>104, 143</value>
   </data>
   <data name="lbType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 23</value>
+    <value>246, 21</value>
   </data>
   <data name="lbType.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -214,7 +226,7 @@
     <value>NoControl</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 195</value>
+    <value>7, 186</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 20</value>
@@ -247,10 +259,10 @@
     <value>NoControl</value>
   </data>
   <data name="lbGuid.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 268</value>
+    <value>104, 249</value>
   </data>
   <data name="lbGuid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 23</value>
+    <value>246, 42</value>
   </data>
   <data name="lbGuid.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -280,7 +292,7 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 268</value>
+    <value>7, 268</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 23</value>
@@ -313,7 +325,7 @@
     <value>NoControl</value>
   </data>
   <data name="lbVert.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 220</value>
+    <value>104, 206</value>
   </data>
   <data name="lbVert.Size" type="System.Drawing.Size, System.Drawing">
     <value>246, 21</value>
@@ -346,7 +358,7 @@
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 220</value>
+    <value>7, 206</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 21</value>
@@ -379,10 +391,10 @@
     <value>NoControl</value>
   </data>
   <data name="lbCat.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 172</value>
+    <value>104, 163</value>
   </data>
   <data name="lbCat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 23</value>
+    <value>246, 21</value>
   </data>
   <data name="lbCat.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -412,10 +424,10 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 152</value>
+    <value>7, 143</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 23</value>
+    <value>94, 21</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -499,10 +511,10 @@
     <value>NoControl</value>
   </data>
   <data name="lbPrice.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 192</value>
+    <value>104, 186</value>
   </data>
   <data name="lbPrice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 23</value>
+    <value>246, 21</value>
   </data>
   <data name="lbPrice.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -532,10 +544,10 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 172</value>
+    <value>7, 163</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 23</value>
+    <value>94, 21</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -565,7 +577,7 @@
     <value>NoControl</value>
   </data>
   <data name="lbFace.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 240</value>
+    <value>104, 226</value>
   </data>
   <data name="lbFace.Size" type="System.Drawing.Size, System.Drawing">
     <value>246, 21</value>
@@ -598,7 +610,7 @@
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 240</value>
+    <value>7, 226</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 21</value>
@@ -625,7 +637,7 @@
     <value>13</value>
   </data>
   <data name="tbs.HeaderHeight" type="System.Int32, mscorlib">
-    <value>130</value>
+    <value>24</value>
   </data>
   <data name="tbs.HeaderText" xml:space="preserve">
     <value>Details</value>
@@ -634,7 +646,7 @@
     <value>200, 8</value>
   </data>
   <data name="tbs.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 44, 4, 4</value>
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="tbs.Size" type="System.Drawing.Size, System.Drawing">
     <value>360, 296</value>
@@ -644,9 +656,6 @@
   </data>
   <data name="&gt;&gt;tbs.Name" xml:space="preserve">
     <value>tbs</value>
-  </data>
-  <data name="&gt;&gt;tbs.Type" xml:space="preserve">
-    <value>Ambertation.Windows.Forms.XPTaskBoxSimple, graphcontrol, Version=1.0.2314.23625, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbs.Parent" xml:space="preserve">
     <value>$this</value>
@@ -698,7 +707,7 @@
   </metadata>
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        /9j/4AAQSkZJRgABAgAAZABkAAD/7AARRHVja3kAAQAEAAAAPAAA/+4ADkFkb2JlAGTAAAAAAf/bAEMA
+        /9j/4AAQSkZJRgABAgEAAAAAAAD/7gAOQWRvYmUAZAAAAAAB/+wAEUR1Y2t5AAEABAAAADwAAP/bAEMA
         BgQEBAUEBgUFBgkGBQYJCwgGBggLDAoKCwoKDBAMDAwMDAwQDA4PEA8ODBMTFBQTExwbGxscHx8fHx8f
         Hx8fH//bAEMBBwcHDQwNGBAQGBoVERUaHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8f
         Hx8fHx8fHx8fHx8fH//AABEIAlgDIAMBEQACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUG

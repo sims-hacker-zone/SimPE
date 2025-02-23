@@ -4,7 +4,7 @@ using System.Collections;
 namespace SimPe.Plugin.Downloads
 {
 	/// <summary>
-	/// Zusammenfassung für ArchiveHandler.
+	/// Summary description for ArchiveHandler.
 	/// </summary>
 	public abstract class ArchiveHandler : Downloads.IPackageHandler, System.IDisposable
 	{
@@ -85,13 +85,16 @@ namespace SimPe.Plugin.Downloads
 			SimPe.StringArrayList other = new StringArrayList();
 			foreach (string file in files)
 			{
+				if (file.EndsWith(".package", true, null))
+				{
 				SimPe.Cache.PackageType type = PackageInfo.ClassifyPackage(file);
 				SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.AddIndexFromPackage(file);
 
-				if (type == SimPe.Cache.PackageType.Object || type == SimPe.Cache.PackageType.MaxisObject || type == SimPe.Cache.PackageType.Sim)
+				if (type == SimPe.Cache.PackageType.CustomObject || type == SimPe.Cache.PackageType.Object || type == SimPe.Cache.PackageType.Sim)
 					objects.Add(file);
 				else
 					other.Add(file);
+				}
 			}
 			objects.AddRange(other);
 			other.Clear(); other = null;

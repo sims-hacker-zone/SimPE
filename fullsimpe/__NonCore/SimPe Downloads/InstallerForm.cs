@@ -7,30 +7,30 @@ using System.Windows.Forms;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für InstallerForm.
+	/// Summary description for InstallerForm.
 	/// </summary>
 	public class InstallerForm : System.Windows.Forms.Form
 	{
 		private SimPe.Plugin.InstallerControl installerControl1;
 		/// <summary>
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
 		public InstallerForm()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
 
 			//
-			// TODO: Fügen Sie den Konstruktorcode nach dem Aufruf von InitializeComponent hinzu
+			// TODO: F�gen Sie den Konstruktorcode nach dem Aufruf von InitializeComponent hinzu
 			//
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -44,14 +44,14 @@ namespace SimPe.Plugin
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(InstallerForm));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InstallerForm));
 			this.installerControl1 = new SimPe.Plugin.InstallerControl();
 			this.SuspendLayout();
 			// 
@@ -59,6 +59,8 @@ namespace SimPe.Plugin
 			// 
 			this.installerControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("installerControl1.BackgroundImage")));
 			this.installerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.installerControl1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+			this.installerControl1.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.installerControl1.Location = new System.Drawing.Point(0, 0);
 			this.installerControl1.Name = "installerControl1";
 			this.installerControl1.Size = new System.Drawing.Size(624, 334);
@@ -69,7 +71,7 @@ namespace SimPe.Plugin
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
 			this.ClientSize = new System.Drawing.Size(624, 334);
 			this.Controls.Add(this.installerControl1);
-			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "InstallerForm";

@@ -38,7 +38,7 @@ namespace SimPe.Plugin.Downloads
 		/// <param name="pkg">The package</param>
 		/// <param name="countvert">false, if you don't need to know the number of 
 		/// stored vertices (you will not get a Preview if this is set to false!)</param>
-		/// <param name="rendergmdc">If true, SimPE will generate a Preview from 
+		/// <param name="rendergmdc">If true, SimPe will generate a Preview from 
 		/// the GMDC (only if countvert is also true)</param>
 		internal DefaultTypeHandler(SimPe.Cache.PackageType type, SimPe.Interfaces.Files.IPackageFile pkg, bool countvert, bool rendergmdc) : this()		
 		{

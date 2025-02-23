@@ -3,7 +3,7 @@ using System;
 namespace SimPe.Plugin.Downloads
 {
 	/// <summary>
-	/// Zusammenfassung für TypedPackageHandler.
+	/// Summary description for TypedPackageHandler.
 	/// </summary>
 	public class PackageHandler : Downloads.IPackageHandler, System.IDisposable
 	{
@@ -22,7 +22,7 @@ namespace SimPe.Plugin.Downloads
 			DeterminType(pkg);
 			Reset();
 
-			if (type==SimPe.Cache.PackageType.Object || type==SimPe.Cache.PackageType.Sim || type==SimPe.Cache.PackageType.MaxisObject)
+            if (type == SimPe.Cache.PackageType.CustomObject || type == SimPe.Cache.PackageType.Sim || type == SimPe.Cache.PackageType.Object)
 				SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache.ReloadCache(SimPe.Plugin.DownloadsToolFactory.FileIndex, false);
 			
 			hnd = HandlerRegistry.Global.LoadTypeHandler(type, pkg);
@@ -30,8 +30,11 @@ namespace SimPe.Plugin.Downloads
 		}	
 
 		protected virtual void DeterminType(SimPe.Interfaces.Files.IPackageFile pkg)
-		{
-			type = PackageInfo.ClassifyPackage(pkg);
+        {
+            if (System.IO.File.Exists(System.IO.Path.Combine(SimPe.Helper.SimPePluginPath, "simpe.scanfolder.plugin.dll")))
+                type = PackageInfo.ClassifyPackage(pkg);
+            else
+                type = SimPe.Cache.PackageType.Undefined;
 		}		
 
 		protected virtual void OnLoadContent(SimPe.Interfaces.Files.IPackageFile pkg, SimPe.Cache.PackageType type)

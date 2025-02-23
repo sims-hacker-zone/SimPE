@@ -9,7 +9,7 @@ using SimPe.Plugin.Downloads;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für InstallerControl.
+	/// Summary description for InstallerControl.
 	/// </summary>
 	public class InstallerControl : System.Windows.Forms.UserControl
 	{
@@ -32,20 +32,20 @@ namespace SimPe.Plugin
 		private System.Windows.Forms.Label lbType;
 		private System.Windows.Forms.LinkLabel llOptions;
 		/// <summary> 
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
 		public InstallerControl()
 		{
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Required designer variable.
 			InitializeComponent();
 
             Clear();
 		}
 
 		/// <summary> 
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -59,10 +59,10 @@ namespace SimPe.Plugin
 			base.Dispose( disposing );
 		}
 
-		#region Vom Komponenten-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -110,7 +110,7 @@ namespace SimPe.Plugin
             // 
             resources.ApplyResources(this.tbs, "tbs");
             this.tbs.BackColor = System.Drawing.Color.Transparent;
-            this.tbs.BodyColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.tbs.BodyColor = System.Drawing.SystemColors.Window;
             this.tbs.BorderColor = System.Drawing.SystemColors.Window;
             this.tbs.Controls.Add(this.lbType);
             this.tbs.Controls.Add(this.label6);
@@ -130,62 +130,62 @@ namespace SimPe.Plugin
             this.tbs.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.tbs.IconLocation = new System.Drawing.Point(4, 12);
             this.tbs.IconSize = new System.Drawing.Size(32, 32);
-            this.tbs.LeftHeaderColor = System.Drawing.SystemColors.InactiveCaption;
+            this.tbs.LeftHeaderColor = System.Drawing.Color.Transparent;
             this.tbs.Name = "tbs";
             this.tbs.RightHeaderColor = System.Drawing.Color.Transparent;
             // 
             // lbType
             // 
-            this.lbType.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.lbType.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.lbType, "lbType");
             this.lbType.Name = "lbType";
             // 
             // label6
             // 
-            this.label6.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
             // 
             // lbGuid
             // 
-            this.lbGuid.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.lbGuid.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.lbGuid, "lbGuid");
             this.lbGuid.Name = "lbGuid";
             // 
             // label4
             // 
-            this.label4.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             // 
             // lbVert
             // 
-            this.lbVert.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.lbVert.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.lbVert, "lbVert");
             this.lbVert.Name = "lbVert";
             // 
             // label5
             // 
-            this.label5.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
             // 
             // lbCat
             // 
-            this.lbCat.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.lbCat.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.lbCat, "lbCat");
             this.lbCat.Name = "lbCat";
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
             // rtb
             // 
             resources.ApplyResources(this.rtb, "rtb");
-            this.rtb.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.rtb.BackColor = System.Drawing.SystemColors.Window;
             this.rtb.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtb.Name = "rtb";
             this.rtb.ReadOnly = true;
@@ -199,25 +199,25 @@ namespace SimPe.Plugin
             // 
             // lbPrice
             // 
-            this.lbPrice.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.lbPrice.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.lbPrice, "lbPrice");
             this.lbPrice.Name = "lbPrice";
             // 
             // label3
             // 
-            this.label3.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
             // lbFace
             // 
-            this.lbFace.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.lbFace.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.lbFace, "lbFace");
             this.lbFace.Name = "lbFace";
             // 
             // label7
             // 
-            this.label7.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
             // 
@@ -238,6 +238,7 @@ namespace SimPe.Plugin
             this.Controls.Add(this.llOptions);
             this.Controls.Add(this.pndrop);
             this.Controls.Add(this.tbs);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "InstallerControl";
             this.pndrop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
@@ -398,7 +399,7 @@ namespace SimPe.Plugin
                 tbs.HeaderText = nfo.Name;
                 rtb.Text = nfo.Description;
                 lbCat.Text = nfo.Category;
-                lbPrice.Text = nfo.Price.ToString() + " $";
+                lbPrice.Text = "$" + nfo.Price.ToString();
                 lbVert.Text = nfo.VertexCount.ToString();
                 lbFace.Text = nfo.FaceCount.ToString();
 				lbGuid.Text = "";

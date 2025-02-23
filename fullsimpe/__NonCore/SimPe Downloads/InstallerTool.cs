@@ -52,9 +52,7 @@ namespace SimPe.Plugin.Tool.Window
 		{
 			get
 			{
-                System.IO.Stream s = this.GetType().Assembly.GetManifestResourceStream("SimPe.Plugin.Downloads.setup.png");
-                if (s == null) return null;
-				return System.Drawing.Image.FromStream(s);
+                return SimPe.GetIcon.ContentPreview;
 			}
 		}
 

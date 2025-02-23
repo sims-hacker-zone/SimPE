@@ -84,10 +84,14 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				
-				return new IToolPlugin[]{
-											new SimPe.Plugin.Tool.Window.InstallerTool()
-										};
+				{
+					IToolPlugin[] tools = {
+									new SimPe.Plugin.Tool.Window.InstallerTool(),
+									new SimPe.Plugin.Tool.SaveSims2PackTool(),
+									new SimPe.Plugin.Tool.LoadSims2PackTool()
+									};
+					return tools;
+				}
 			}
 		}
 		#endregion

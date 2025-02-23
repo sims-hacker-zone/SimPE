@@ -3,7 +3,7 @@ using System;
 namespace SimPe.Plugin.Downloads
 {
 	/// <summary>
-	/// Zusammenfassung für LotTypeHandler.
+	/// Summary description for LotTypeHandler.
 	/// </summary>
 	public class LotTypeHandler : SimpleTypeHandler
 	{		

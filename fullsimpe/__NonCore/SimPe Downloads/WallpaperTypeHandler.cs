@@ -3,7 +3,7 @@ using System;
 namespace SimPe.Plugin.Downloads
 {
 	/// <summary>
-	/// Zusammenfassung für WallpaperTypeHandler.
+	/// Summary description for WallpaperTypeHandler.
 	/// </summary>
 	public class WallpaperTypeHandler : LotTypeHandler
 	{

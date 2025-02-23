@@ -4,7 +4,7 @@ using System.Collections;
 namespace SimPe.Plugin.Downloads
 {
 	/// <summary>
-	/// Zusammenfassung für TypedPackageHandler.
+	/// Summary description for TypedPackageHandler.
 	/// </summary>
 	public class Sims2PackHandler : ArchiveHandler
 	{
@@ -32,7 +32,7 @@ namespace SimPe.Plugin.Downloads
 				desc.Package.Save(rname);	
 				if (System.IO.File.Exists(rname))
 					ret.Add(rname);
-			}			
+			}
 			return ret;
 		}		
 	}

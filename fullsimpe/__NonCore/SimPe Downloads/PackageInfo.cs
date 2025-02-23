@@ -4,7 +4,7 @@ using System.Drawing;
 namespace SimPe.Plugin.Downloads
 {
 	/// <summary>
-	/// Zusammenfassung für PackageInfo.
+	/// Summary description for PackageInfo.
 	/// </summary>
 	public class PackageInfo : Downloads.IPackageInfo	, System.IDisposable
 	{
@@ -24,9 +24,7 @@ namespace SimPe.Plugin.Downloads
 		{
             if (defimg == null)
             {
-                System.IO.Stream s = typeof(PackageInfo).Assembly.GetManifestResourceStream("SimPe.Plugin.Downloads.demo.png");
-                if (s!=null)
-                    defimg = Image.FromStream(s);
+                defimg = SimPe.GetImage.Demo;
             }
 		}
 
@@ -37,7 +35,7 @@ namespace SimPe.Plugin.Downloads
 		/// <returns>The Type of the Package</returns>
 		public static SimPe.Cache.PackageType ClassifyPackage(string filename)
 		{
-			if (!System.IO.File.Exists(filename)) return SimPe.Cache.PackageType.Undefined;
+            if (!System.IO.File.Exists(filename) || !System.IO.File.Exists(System.IO.Path.Combine(SimPe.Helper.SimPePluginPath, "simpe.scanfolder.plugin.dll"))) return SimPe.Cache.PackageType.Undefined;
 
 			SimPe.Interfaces.Files.IPackageFile pkg = SimPe.Packages.GeneratableFile.LoadFromFile(filename);
 			return ClassifyPackage(pkg);
@@ -50,10 +48,11 @@ namespace SimPe.Plugin.Downloads
 		/// <returns>The Type of the Package</returns>
 		public static SimPe.Cache.PackageType ClassifyPackage(SimPe.Interfaces.Files.IPackageFile pkg)
 		{
+            if (!System.IO.File.Exists(System.IO.Path.Combine(SimPe.Helper.SimPePluginPath, "simpe.scanfolder.plugin.dll"))) return SimPe.Cache.PackageType.Undefined;
 			SimPe.Cache.PackageType type = SimPe.Cache.PackageType.Undefined;
-			foreach (SimPe.Interfaces.Plugin.Scanner.IIdentifier ident in SimPe.Plugin.Scanner.ScannerRegistry.Global.Identifiers)
+            foreach (SimPe.Interfaces.Plugin.Scanner.IIdentifier ident in SimPe.Plugin.Scanner.ScannerRegistry.Global.Identifiers) // depends on simpe.scanfolder.plugin.dll, pity as that may not always exist
 			{
-				if (type != SimPe.Cache.PackageType.Unknown && type != SimPe.Cache.PackageType.Undefined) break;
+                if (type != SimPe.Cache.PackageType.Unknown && type != SimPe.Cache.PackageType.Undefined) break; // this makes no sense, type always is Undefined as we just set it
 				type = ident.GetType(pkg);	
 			}
 
@@ -96,7 +95,7 @@ namespace SimPe.Plugin.Downloads
             {
                 if (flname.StartsWith(Helper.CompareableFileName(ei.InstallFolder))) return (ei.Expansion);
             }
-            if (flname.StartsWith(Helper.CompareableFileName(System.IO.Path.Combine(PathProvider.SimSavegameFolder, "Donwloads")))) return Expansions.Custom;
+            if (flname.StartsWith(Helper.CompareableFileName(System.IO.Path.Combine(PathProvider.SimSavegameFolder, "Downloads")))) return Expansions.Custom;
 			return Expansions.None;
 		}
 
@@ -174,7 +173,10 @@ namespace SimPe.Plugin.Downloads
 		}
 		public bool HighVertexCount
 		{
-			get {return(VertexCount>8000); }
+			get
+            {
+                return(VertexCount>8000);
+            }
 		}
 
 		int facect;
@@ -185,7 +187,10 @@ namespace SimPe.Plugin.Downloads
 		}
 		public bool HighFaceCount
 		{
-			get {return(VertexCount>8000); }
+			get
+            {
+                return (FaceCount > 8000);
+            }
 		}
 
 		int price;
@@ -255,7 +260,7 @@ namespace SimPe.Plugin.Downloads
 			} 
 			else 
 			{
-				return Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(img, sz, 8, Color.FromArgb(90, Color.Black), SimPe.ThemeManager.Global.ThemeColorDark, Color.White, Color.FromArgb(80, Color.White), true, 3, 3);
+				return Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(img, sz, 8, Color.FromArgb(90, Color.Black), Color.FromArgb(10, 10, 40), Color.White, Color.FromArgb(80, Color.White), true, 3, 3);
 			}
 		}
 

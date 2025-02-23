@@ -3,7 +3,7 @@ using System;
 namespace SimPe.Plugin.Downloads
 {
 	/// <summary>
-	/// Zusammenfassung für SimTypeHandler.
+	/// Summary description for SimTypeHandler.
 	/// </summary>
 	public class NeighborhoodTypeHandler : SimpleTypeHandler
 	{
