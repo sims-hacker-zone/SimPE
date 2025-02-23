@@ -26,6 +26,7 @@ using System.Runtime.InteropServices;
 
 namespace Ambertation.Drawing
 {
+	/* I see nowhere in SimPe that MapFill is used
 	/// <summary>
 	/// Fills a bitmap using a non-recursive flood-fill.
 	/// </summary>
@@ -175,6 +176,7 @@ namespace Ambertation.Drawing
 			return bm;
 		}
 	}
+	*/
 	/// <summary>
 	/// Thgis extends the basic Graohics class with usefull Methods
 	/// </summary>
@@ -257,7 +259,6 @@ namespace Ambertation.Drawing
 						c.OldColor = Color.FromArgb(r, g, b);
 						cmap.Add(c);
 					}
-			
 
 			ColorMap[] res = new ColorMap[cmap.Count];
 			cmap.CopyTo(res);
@@ -285,7 +286,6 @@ namespace Ambertation.Drawing
 					{
 						cmap.Add(Color.FromArgb(r, g, b));
 					}
-			
 
 			return cmap;
 		}
@@ -314,10 +314,6 @@ namespace Ambertation.Drawing
 
 			return bm;
 		}
-
-#if MAC
-
-#else
 		[DllImport("gdi32")] 
 		public static extern int ExtFloodFill(IntPtr hDC, int x, int y, int crColor, int wFillType);
 		
@@ -346,7 +342,7 @@ namespace Ambertation.Drawing
 			DeleteObject(hb);
 			g.ReleaseHdc(p);
 		}
-#endif	
+
 		public static Image KnockoutImage(Image img, Point pos, Color fillcl)
 		{
 			return KnockoutImage(img, pos, fillcl, true);
@@ -354,8 +350,6 @@ namespace Ambertation.Drawing
 
 		public static Image KnockoutImage(Image img, Point pos, Color fillcl, bool save)
 		{
-			
-
 			Bitmap bm = null;
 			if (!save) 
 				bm = new Bitmap(img.Width, img.Height);
@@ -368,8 +362,6 @@ namespace Ambertation.Drawing
 				g.FillRectangle(new SolidBrush(((Bitmap)img).GetPixel(pos.X, pos.Y)), 0, 0, bm.Width, bm.Height);
 				g.DrawImage(img, new Rectangle(1, 1, img.Width, img.Height), new Rectangle(0, 0, img.Width, img.Height), GraphicsUnit.Pixel);
 			} else g.DrawImageUnscaled(img, 0, 0);
-
-			//Ambertation.Windows.Forms.Graph.GraphPanelElement.SetGraphicsMode(g, !quality);
 			
 			g.Dispose();
 
@@ -396,7 +388,6 @@ namespace Ambertation.Drawing
 			Ambertation.Windows.Forms.Graph.GraphPanelElement.SetGraphicsMode(g, !quality);
 			g.DrawImage(img, new Rectangle(0, 0, width, height), new Rectangle(0, 0, img.Width, img.Height), GraphicsUnit.Pixel);
 			g.Dispose();
-
 			
 			return bm;
 		}		
@@ -414,6 +405,5 @@ namespace Ambertation.Drawing
 			byte b = Convert.ToByte((float) (b1 + ((b2 - b1) * percentage)));
 			return Color.FromArgb(r, g, b);
 		}
-
 	}
 }

@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
     <ProductVersion>8.0.50727</ProductVersion>
@@ -17,6 +16,7 @@
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
     <OutputType>Library</OutputType>
     <RootNamespace>Ambertation.Windows.Forms</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
@@ -26,8 +26,6 @@
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>..\__Debug\</OutputPath>
@@ -36,7 +34,7 @@
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>DEBUG</DefineConstants>
     <DocumentationFile>
     </DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
@@ -51,6 +49,7 @@
     <WarningLevel>4</WarningLevel>
     <DebugType>full</DebugType>
     <ErrorReport>prompt</ErrorReport>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>..\__Release\</OutputPath>
@@ -59,7 +58,8 @@
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <DocumentationFile>
     </DocumentationFile>
     <DebugSymbols>false</DebugSymbols>
@@ -74,6 +74,7 @@
     <WarningLevel>4</WarningLevel>
     <DebugType>none</DebugType>
     <ErrorReport>prompt</ErrorReport>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System">
@@ -96,19 +97,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Build\SharedAssemblyInfo.cs">
-      <Link>Properties\SharedAssemblyInfo.cs</Link>
-    </Compile>
     <Compile Include="AbstractFloodFiller.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AnimatedDesigner.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AnimatedImagelist.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs">
+    <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Collections.cs">
@@ -116,6 +108,9 @@
     </Compile>
     <Compile Include="DragPanel.cs">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EnumComboBox.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ExtendedImagePanel.cs">
       <SubType>Code</SubType>
@@ -153,40 +148,46 @@
     <Compile Include="RoundedPanel.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SelectorItem.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TransparentCheckBox.cs">
+    <Compile Include="HexEditControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TransparentGroupBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UxTheme.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="XpTaskBoxSelector.cs">
-      <SubType>Component</SubType>
+    <Compile Include="HexViewControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="XpTaskBoxSimple.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
-    <EmbeddedResource Include="AnimatedImagelist.resx">
-      <DependentUpon>AnimatedImagelist.cs</DependentUpon>
+    <Compile Include="Highlight.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="EnumComboBox.resx">
+      <DependentUpon>EnumComboBox.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="GraphPanel.resx">
       <DependentUpon>GraphPanel.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="XpTaskBoxSelector.resx">
-      <DependentUpon>XpTaskBoxSelector.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="XpTaskBoxSimple.resx">
       <DependentUpon>XpTaskBoxSimple.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="b.png" />
+    <EmbeddedResource Include="bl.png" />
+    <EmbeddedResource Include="br.png" />
+    <EmbeddedResource Include="HexEditControl.resx">
+      <DependentUpon>HexEditControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HexViewControl.resx">
+      <DependentUpon>HexViewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="l.png" />
+    <EmbeddedResource Include="r.png" />
+    <EmbeddedResource Include="t.png" />
+    <EmbeddedResource Include="tl.png" />
+    <EmbeddedResource Include="tr.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

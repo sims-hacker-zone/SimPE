@@ -32,29 +32,17 @@ namespace Ambertation.Windows.Forms.Graph
 	/// </summary>
 	public abstract class RoundedPanel : GraphItemBase
 	{
-		
 		public RoundedPanel() :base ()
 		{
-			/*SetStyle(
-				ControlStyles.SupportsTransparentBackColor |
-				ControlStyles.AllPaintingInWmPaint |
-				//ControlStyles.Opaque |
-				ControlStyles.UserPaint |
-				ControlStyles.ResizeRedraw 
-				| ControlStyles.DoubleBuffer
-				,true);*/
-			
 			base.BackColor = Color.Transparent;
 			bg = Color.DarkOrange;
 			gradcl = Color.White;
 			bdcl = Color.FromArgb(90, Color.Black);
 			fadecl = Color.FromArgb(80, Color.White);
 			fade = 0.9f;
-			
 		}		
 
 		#region public Properties
-		
 
 		Color bg;
 		public Color PanelColor
@@ -128,13 +116,6 @@ namespace Ambertation.Windows.Forms.Graph
 			}
 		}
 		#endregion
-
-		#region Properties
-			
-		#endregion
-
-
-		
 
 		#region Event Override		
 		protected override void OnPaint(Graphics g, Image canvas, Rectangle dst, Rectangle src)
@@ -250,9 +231,6 @@ namespace Ambertation.Windows.Forms.Graph
 				b.Dispose();
 			}
 		}
-
-		
-		
 
 		protected override void UserDraw(Graphics gr)
 		{

@@ -59,18 +59,6 @@ namespace Ambertation.Windows.Forms.Graph
 		}
 		#endregion
 
-		#region Properties
-			
-		#endregion
-
-
-		
-
-		#region Event Override		
-		
-		
-		#endregion
-
 		#region Basic Draw Methods				
 
 		Rectangle  ThumbnailRectangle
@@ -110,7 +98,6 @@ namespace Ambertation.Windows.Forms.Graph
 			Rectangle trec = this.ThumbnailRectangle;
 			rad = Math.Min(Math.Min(8, trec.Height/2), trec.Width/2);
 			
-
 			DrawText(gr, prec, trec);
 			DrawThumbnail(gr, trec, rad);	
 		}
@@ -125,8 +112,7 @@ namespace Ambertation.Windows.Forms.Graph
 			Pen linepen = new Pen(Color.FromArgb(90, Color.Black));
 			gr.DrawLine(linepen, new Point(prec.Left, prec.Top+16), new Point(prec.Right, prec.Top+16));
 			linepen.Dispose();
-
-	
+			
 			StringFormat sf = new StringFormat();
 			sf.FormatFlags = StringFormatFlags.NoWrap;			
 			int top = prec.Top+24;
@@ -146,7 +132,6 @@ namespace Ambertation.Windows.Forms.Graph
 					if (top<indent.Height) indentx = indent.Width;
 					Font ft = new Font(Font.FontFamily, Font.Size, FontStyle.Italic, Font.Unit);
 					
-
 					gr.DrawString(
 						k+":", 
 						ft, 
@@ -171,12 +156,8 @@ namespace Ambertation.Windows.Forms.Graph
 
 					top += (int)Math.Max(sz.Height, sz2.Height);
 					ft.Dispose();
-					
 				}
 			}
-
-			//LinkGraphic.SetGraphicsMode(gr, true);
-			//properties = ht;
 		}
 		
 		#endregion		

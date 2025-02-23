@@ -45,8 +45,6 @@ namespace Ambertation.Windows.Forms.Graph
 			txt = "";
 		}
 
-		
-
 		#region public Properties
 		PropertyItems properties;		
 		public PropertyItems Properties 
@@ -86,20 +84,7 @@ namespace Ambertation.Windows.Forms.Graph
 
 		#endregion
 
-		#region Properties
-		
-		#endregion
-
-
-		
-
-		#region Event Override
-		#endregion
-
 		#region Basic Draw Methods
-		
-
-		
 
 		protected override void DrawText(Graphics gr)
 		{
@@ -162,12 +147,8 @@ namespace Ambertation.Windows.Forms.Graph
 
 					top += (int)Math.Max(sz.Height, sz2.Height);
 					ft.Dispose();
-					
 				}
 			}
-
-			//LinkGraphic.SetGraphicsMode(gr, true);
-			//properties = ht;
 		}
 		
 		#endregion

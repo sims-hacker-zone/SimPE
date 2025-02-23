@@ -34,7 +34,7 @@ namespace Ambertation.Windows.Forms
 	public class GraphPanel : System.Windows.Forms.Panel
 	{
 		/// <summary> 
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
@@ -51,7 +51,7 @@ namespace Ambertation.Windows.Forms
 		
 		public GraphPanel()
 		{
-			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
+			// Required designer variable.
 			InitializeComponent();
 
 			SetStyle(
@@ -77,7 +77,7 @@ namespace Ambertation.Windows.Forms
 		}
 
 		/// <summary> 
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -104,13 +104,13 @@ namespace Ambertation.Windows.Forms
 
 		}
 
-		#region Vom Komponenten-Designer generierter Code
+		#region Windows Form Designer generated code
 		
 
 
 		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{

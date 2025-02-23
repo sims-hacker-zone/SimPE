@@ -37,7 +37,6 @@ namespace Ambertation.Windows.Forms.Graph
 		{						
 			tborder = 2;
 			txt = "";
-
 			bg = Color.Gray;
 		}		
 
@@ -90,18 +89,6 @@ namespace Ambertation.Windows.Forms.Graph
 				this.Invalidate();
 			}
 		}
-		#endregion
-
-		#region Properties
-			
-		#endregion
-
-
-		
-
-		#region Event Override		
-		
-		
 		#endregion
 
 		#region Basic Draw Methods		
