@@ -249,7 +249,6 @@ namespace SimPe.Wizards
 			this.pbP.Quality = true;
 			this.pbP.SelectedColor = System.Drawing.Color.Orange;
 			this.pbP.Size = new System.Drawing.Size(372, 16);
-			this.pbP.Style = booby.ProgresBarStyle.Flat;
 			this.pbP.TabIndex = 16;
 			this.pbP.TokenCount = 20;
 			this.pbP.UnselectedColor = System.Drawing.Color.Gray;
