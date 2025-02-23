@@ -121,7 +121,7 @@ namespace SimPe
         private Label label17;
         private Label label16;
         private Label label15;
-        private Panel pnboobs;
+        private Panel panel1;
         private CheckBox cbexthemes;
         private LinkLabel lbAboot;
         private Button btNuffing;
@@ -202,7 +202,7 @@ namespace SimPe
             this.tbscale = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.pnboobs = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.cbBigIcons = new System.Windows.Forms.CheckBox();
             this.tbUserid = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -452,12 +452,12 @@ namespace SimPe
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.ResetLayoutClick);
             // 
-            // pnboobs
+            // panel1
             // 
-            this.pnboobs.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.pnboobs, "pnboobs");
-            this.pnboobs.Name = "pnboobs";
-            this.toolTip1.SetToolTip(this.pnboobs, resources.GetString("pnboobs.ToolTip"));
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            this.toolTip1.SetToolTip(this.panel1, resources.GetString("panel1.ToolTip"));
             // 
             // cbBigIcons
             // 
@@ -1154,7 +1154,7 @@ namespace SimPe
             this.ThemPanel.Controls.Add(this.toolBar1);
             this.ThemPanel.Controls.Add(this.button1);
             this.ThemPanel.Controls.Add(this.hcFolders);
-            this.ThemPanel.Controls.Add(this.pnboobs);
+            this.ThemPanel.Controls.Add(this.panel1);
             this.ThemPanel.Controls.Add(this.hcFileTable);
             this.ThemPanel.Controls.Add(this.hcCheck);
             this.ThemPanel.Controls.Add(this.hcSettings);

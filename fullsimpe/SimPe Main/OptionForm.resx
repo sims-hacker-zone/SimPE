@@ -698,31 +698,31 @@ by creating a User Id in the Identity tab</value>
   <data name="&gt;&gt;button7.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="pnboobs.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+  <data name="panel1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Zoom</value>
   </data>
-  <data name="pnboobs.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>812, 34</value>
   </data>
-  <data name="pnboobs.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 530</value>
   </data>
-  <data name="pnboobs.TabIndex" type="System.Int32, mscorlib">
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
   </data>
-  <data name="pnboobs.ToolTip" xml:space="preserve">
+  <data name="panel1.ToolTip" xml:space="preserve">
     <value>The Sims™ 2 Tits and Arse</value>
   </data>
-  <data name="&gt;&gt;pnboobs.Name" xml:space="preserve">
-    <value>pnboobs</value>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
   </data>
-  <data name="&gt;&gt;pnboobs.Type" xml:space="preserve">
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;pnboobs.Parent" xml:space="preserve">
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
     <value>ThemPanel</value>
   </data>
-  <data name="&gt;&gt;pnboobs.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="cbBigIcons.AutoSize" type="System.Boolean, mscorlib">
@@ -1984,9 +1984,6 @@ you create and puts SimPe into Creator Mode.</value>
   <data name="&gt;&gt;hdFolders.Name" xml:space="preserve">
     <value>hdFolders</value>
   </data>
-  <data name="&gt;&gt;hdFolders.Type" xml:space="preserve">
-    <value>booby.panelheader, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;hdFolders.Parent" xml:space="preserve">
     <value>hcFolders</value>
   </data>
@@ -2049,9 +2046,6 @@ you create and puts SimPe into Creator Mode.</value>
   </data>
   <data name="&gt;&gt;hdFolders.Name" xml:space="preserve">
     <value>hdFolders</value>
-  </data>
-  <data name="&gt;&gt;hdFolders.Type" xml:space="preserve">
-    <value>booby.panelheader, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;hdFolders.Parent" xml:space="preserve">
     <value>hcFolders</value>
@@ -2139,9 +2133,6 @@ you create and puts SimPe into Creator Mode.</value>
   </data>
   <data name="&gt;&gt;hdSettings.Name" xml:space="preserve">
     <value>hdSettings</value>
-  </data>
-  <data name="&gt;&gt;hdSettings.Type" xml:space="preserve">
-    <value>booby.panelheader, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;hdSettings.Parent" xml:space="preserve">
     <value>hcSettings</value>
@@ -2341,9 +2332,6 @@ you create and puts SimPe into Creator Mode.</value>
   <data name="&gt;&gt;hdTools.Name" xml:space="preserve">
     <value>hdTools</value>
   </data>
-  <data name="&gt;&gt;hdTools.Type" xml:space="preserve">
-    <value>booby.panelheader, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;hdTools.Parent" xml:space="preserve">
     <value>hcTools</value>
   </data>
@@ -2398,9 +2386,6 @@ you create and puts SimPe into Creator Mode.</value>
   <data name="&gt;&gt;hdTools.Name" xml:space="preserve">
     <value>hdTools</value>
   </data>
-  <data name="&gt;&gt;hdTools.Type" xml:space="preserve">
-    <value>booby.panelheader, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;hdTools.Parent" xml:space="preserve">
     <value>hcTools</value>
   </data>
@@ -2409,9 +2394,6 @@ you create and puts SimPe into Creator Mode.</value>
   </data>
   <data name="&gt;&gt;hdFileTable.Name" xml:space="preserve">
     <value>hdFileTable</value>
-  </data>
-  <data name="&gt;&gt;hdFileTable.Type" xml:space="preserve">
-    <value>booby.panelheader, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;hdFileTable.Parent" xml:space="preserve">
     <value>hcFileTable</value>
@@ -2526,9 +2508,6 @@ you create and puts SimPe into Creator Mode.</value>
   </data>
   <data name="&gt;&gt;hdFileTable.Name" xml:space="preserve">
     <value>hdFileTable</value>
-  </data>
-  <data name="&gt;&gt;hdFileTable.Type" xml:space="preserve">
-    <value>booby.panelheader, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;hdFileTable.Parent" xml:space="preserve">
     <value>hcFileTable</value>
@@ -2957,9 +2936,6 @@ you create and puts SimPe into Creator Mode.</value>
   <data name="&gt;&gt;hdSceneGraph.Name" xml:space="preserve">
     <value>hdSceneGraph</value>
   </data>
-  <data name="&gt;&gt;hdSceneGraph.Type" xml:space="preserve">
-    <value>booby.panelheader, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;hdSceneGraph.Parent" xml:space="preserve">
     <value>hcSceneGraph</value>
   </data>
@@ -3142,9 +3118,6 @@ you create and puts SimPe into Creator Mode.</value>
   </data>
   <data name="&gt;&gt;hdSceneGraph.Name" xml:space="preserve">
     <value>hdSceneGraph</value>
-  </data>
-  <data name="&gt;&gt;hdSceneGraph.Type" xml:space="preserve">
-    <value>booby.panelheader, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;hdSceneGraph.Parent" xml:space="preserve">
     <value>hcSceneGraph</value>
@@ -3638,9 +3611,6 @@ you create and puts SimPe into Creator Mode.</value>
   <data name="&gt;&gt;hdPlugins.Name" xml:space="preserve">
     <value>hdPlugins</value>
   </data>
-  <data name="&gt;&gt;hdPlugins.Type" xml:space="preserve">
-    <value>booby.panelheader, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;hdPlugins.Parent" xml:space="preserve">
     <value>hcPlugins</value>
   </data>
@@ -3819,9 +3789,6 @@ you create and puts SimPe into Creator Mode.</value>
   <data name="&gt;&gt;hdPlugins.Name" xml:space="preserve">
     <value>hdPlugins</value>
   </data>
-  <data name="&gt;&gt;hdPlugins.Type" xml:space="preserve">
-    <value>booby.panelheader, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;hdPlugins.Parent" xml:space="preserve">
     <value>hcPlugins</value>
   </data>
@@ -3830,9 +3797,6 @@ you create and puts SimPe into Creator Mode.</value>
   </data>
   <data name="&gt;&gt;hdIdent.Name" xml:space="preserve">
     <value>hdIdent</value>
-  </data>
-  <data name="&gt;&gt;hdIdent.Type" xml:space="preserve">
-    <value>booby.panelheader, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;hdIdent.Parent" xml:space="preserve">
     <value>hcIdent</value>
@@ -3947,9 +3911,6 @@ you create and puts SimPe into Creator Mode.</value>
   </data>
   <data name="&gt;&gt;hdIdent.Name" xml:space="preserve">
     <value>hdIdent</value>
-  </data>
-  <data name="&gt;&gt;hdIdent.Type" xml:space="preserve">
-    <value>booby.panelheader, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;hdIdent.Parent" xml:space="preserve">
     <value>hcIdent</value>
@@ -4116,9 +4077,6 @@ you create and puts SimPe into Creator Mode.</value>
   <data name="&gt;&gt;lineb1.Name" xml:space="preserve">
     <value>lineb1</value>
   </data>
-  <data name="&gt;&gt;lineb1.Type" xml:space="preserve">
-    <value>booby.Lineb, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;lineb1.Parent" xml:space="preserve">
     <value>hcCheck</value>
   </data>
@@ -4127,9 +4085,6 @@ you create and puts SimPe into Creator Mode.</value>
   </data>
   <data name="&gt;&gt;hdCheck.Name" xml:space="preserve">
     <value>hdCheck</value>
-  </data>
-  <data name="&gt;&gt;hdCheck.Type" xml:space="preserve">
-    <value>booby.panelheader, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;hdCheck.Parent" xml:space="preserve">
     <value>hcCheck</value>
@@ -4212,9 +4167,6 @@ you create and puts SimPe into Creator Mode.</value>
   <data name="&gt;&gt;lineb1.Name" xml:space="preserve">
     <value>lineb1</value>
   </data>
-  <data name="&gt;&gt;lineb1.Type" xml:space="preserve">
-    <value>booby.Lineb, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;lineb1.Parent" xml:space="preserve">
     <value>hcCheck</value>
   </data>
@@ -4244,9 +4196,6 @@ you create and puts SimPe into Creator Mode.</value>
   </data>
   <data name="&gt;&gt;hdCheck.Name" xml:space="preserve">
     <value>hdCheck</value>
-  </data>
-  <data name="&gt;&gt;hdCheck.Type" xml:space="preserve">
-    <value>booby.panelheader, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;hdCheck.Parent" xml:space="preserve">
     <value>hcCheck</value>
@@ -4292,9 +4241,6 @@ you create and puts SimPe into Creator Mode.</value>
   </data>
   <data name="&gt;&gt;hdCustom.Name" xml:space="preserve">
     <value>hdCustom</value>
-  </data>
-  <data name="&gt;&gt;hdCustom.Type" xml:space="preserve">
-    <value>booby.panelheader, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;hdCustom.Parent" xml:space="preserve">
     <value>hcCustom</value>
@@ -4389,9 +4335,6 @@ you create and puts SimPe into Creator Mode.</value>
   <data name="&gt;&gt;hdCustom.Name" xml:space="preserve">
     <value>hdCustom</value>
   </data>
-  <data name="&gt;&gt;hdCustom.Type" xml:space="preserve">
-    <value>booby.panelheader, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;hdCustom.Parent" xml:space="preserve">
     <value>hcCustom</value>
   </data>
@@ -4472,9 +4415,6 @@ you create and puts SimPe into Creator Mode.</value>
   </data>
   <data name="&gt;&gt;ThemPanel.Name" xml:space="preserve">
     <value>ThemPanel</value>
-  </data>
-  <data name="&gt;&gt;ThemPanel.Type" xml:space="preserve">
-    <value>booby.gradientpanel, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ThemPanel.Parent" xml:space="preserve">
     <value>$this</value>

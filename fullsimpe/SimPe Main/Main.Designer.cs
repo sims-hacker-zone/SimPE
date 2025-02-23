@@ -431,7 +431,6 @@ namespace SimPe
             resources.ApplyResources(this.tbDefaultAction, "tbDefaultAction");
             this.tbDefaultAction.IconLocation = new System.Drawing.Point(4, 0);
             this.tbDefaultAction.IconSize = new System.Drawing.Size(32, 32);
-            //this.tbDefaultAction.BackImage = booby.PrettyGirls.BathTime;
             this.tbDefaultAction.Name = "tbDefaultAction";
             this.tbDefaultAction.TopGap = 6;
             // 

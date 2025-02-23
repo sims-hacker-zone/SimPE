@@ -128,7 +128,7 @@ namespace SimPe
             this.cbIncCep.Enabled = (PathProvider.Global.GameVersion < 18);
             this.cbIncCep.Visible = (PathProvider.Global.GameVersion < 18);
 
-            else this.toolTip1.SetToolTip(this.pnboobs, "");
+            else this.toolTip1.SetToolTip(this.panel1, "");
 
             this.groupBox5.Visible = !Helper.WindowsRegistry.Layout.IsClassicPreset;
             this.cbBigIcons.Visible = !Helper.WindowsRegistry.Layout.IsClassicPreset;
@@ -900,8 +900,7 @@ namespace SimPe
                 /* if (!ei.Exists && ei.InstallFolder == "")
                  * ei.Exists only checks if SimPe found the Window registary entries
                  * ei.InstallFolder has a value if the user had to manually set the path
-                 * This handles the UC better
-                 * if (ei.Exists || ei.NameShort != "Boobs")*/
+                 * This handles the UC better*/
                 foreach (ExpansionItem ei in PathProvider.Global.Expansions)
                 {
                     CheckBox cb = CreateFileTableCheckbox(ref left, ref top, ei.NameShort,

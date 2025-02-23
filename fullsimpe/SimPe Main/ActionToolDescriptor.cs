@@ -27,7 +27,7 @@ namespace SimPe
 	internal class ActionToolDescriptor
 	{
 		SimPe.Interfaces.IToolAction tool;
-        booby.linkyicon ll;
+        LinkLabel ll;
 		LoadedPackage lp;
 
 		SimPe.Events.ResourceEventArgs lasteventarg;
@@ -35,7 +35,7 @@ namespace SimPe
 		/// <summary>
 		/// Returns the generated LinkLabel
 		/// </summary>
-		public booby.linkyicon LinkLabel 
+		public LinkLabel LinkLabel 
 		{
 			get {return ll; }
 		}
