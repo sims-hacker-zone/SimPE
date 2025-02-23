@@ -80,18 +80,6 @@ namespace SimPe.Plugin
             this.gtpbimage.TabIndex = 11;
             this.gtpbimage.TabStop = false;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Blackadder ITC", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(56, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(335, 41);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Boobies Make me Happy!";
-            this.label1.Visible = false;
-            // 
             // gtimaglbl
             // 
             this.gtimaglbl.AutoSize = true;

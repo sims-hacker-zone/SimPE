@@ -63,18 +63,6 @@ namespace SimPe.Plugin
             this.btBack.UseVisualStyleBackColor = true;
             this.btBack.Click += new System.EventHandler(this.btBack_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Blackadder ITC", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(56, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(335, 41);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Boobies Make me Happy!";
-            this.label1.Visible = false;
-            // 
             // preveplbl
             // 
             this.preveplbl.AutoSize = true;
@@ -93,7 +81,7 @@ namespace SimPe.Plugin
             this.previep.ReadOnly = true;
             this.previep.Size = new System.Drawing.Size(193, 23);
             this.previep.TabIndex = 0;
-            this.previep.Text = "The Sims™ 2";
+            this.previep.Text = "The Simsï¿½ 2";
             // 
             // LastEPusePackedFileUI
             // 

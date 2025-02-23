@@ -1631,18 +1631,6 @@ namespace SimPe.Plugin
             this.label3.TabIndex = 27;
             this.label3.Text = "Class Performance";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Blackadder ITC", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(56, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(335, 41);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Boobies Make me Happy!";
-            this.label2.Visible = false;
-            // 
             // checkBox17
             // 
             this.checkBox17.AutoSize = true;
