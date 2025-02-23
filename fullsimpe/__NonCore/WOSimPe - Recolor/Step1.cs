@@ -3,19 +3,19 @@ using System;
 namespace SimPe.Wizards
 {
 	/// <summary>
-	/// Zusammenfassung fÃ¼r Step1.
+	/// Zusammenfassung für Step1.
 	/// </summary>
 	public class Step1 : AWizardForm, IWizardEntry
 	{
-		static RecolorWizardForm dwf;
+		static RecolourWizardForm dwf;
 
 		/// <summary>
 		/// Returns the Main Form
 		/// </summary>
-		public static RecolorWizardForm Form
+		public static RecolourWizardForm Form
 		{
 			get { 
-				if (dwf==null) dwf = new RecolorWizardForm();
+				if (dwf==null) dwf = new RecolourWizardForm();
 				return dwf; 
 			}
 		}
@@ -31,7 +31,7 @@ namespace SimPe.Wizards
 		{
 			get
 			{
-				return "Use this Wizard to create Recolors of Objects that shipped with The Sims 2.";
+				return "Use this Wizard to create Recolours of Objects that shipped with The Sims 2.";
 			}
 		}
 
@@ -39,7 +39,7 @@ namespace SimPe.Wizards
 		{
 			get
 			{
-				return "Recolors";
+				return "Recolours";
 			}
 		}
 
@@ -75,7 +75,7 @@ namespace SimPe.Wizards
 		{
 			get
 			{
-				return "Select the Object you want to Recolor";
+				return "Select the Object you want to Recolour";
 			}
 		}
 
