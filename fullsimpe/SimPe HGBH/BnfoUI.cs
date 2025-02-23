@@ -48,9 +48,9 @@ namespace SimPe.Plugin
 		private Panel panel2;
 		private Panel Panel3;
 		private Panel Panel4;
-		private booby.GraphPanel gpreven;
-		private booby.GraphPanel gpexpen;
-		private booby.LabeledProgressBar pbpay;
+		private System.Windows.Forms.Panel gpreven;
+		private System.Windows.Forms.Panel gpexpen;
+		private System.Windows.Forms.ProgressBar pbpay;
 		private Label label1;
 		private Label lblot;
 		private Label label2;
@@ -153,8 +153,8 @@ namespace SimPe.Plugin
 			this.biWorkers = new System.Windows.Forms.ToolStripButton();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.lbcashf = new System.Windows.Forms.Label();
-			this.gpexpen = new booby.GraphPanel();
-			this.gpreven = new booby.GraphPanel();
+			this.gpexpen = new System.Windows.Forms.Panel();
+			this.gpreven = new System.Windows.Forms.Panel();
 			this.btClearim = new System.Windows.Forms.Button();
 			this.tbMax = new System.Windows.Forms.TextBox();
 			this.tbCur = new System.Windows.Forms.TextBox();
@@ -177,7 +177,7 @@ namespace SimPe.Plugin
 			this.lbaward = new System.Windows.Forms.Label();
 			this.tbunknown = new System.Windows.Forms.TextBox();
 			this.lbpay = new System.Windows.Forms.Label();
-			this.pbpay = new booby.LabeledProgressBar();
+			this.pbpay = new System.Windows.Forms.ProgressBar();
 			this.tbassi = new System.Windows.Forms.TextBox();
 			this.lbassi = new System.Windows.Forms.Label();
 			this.tbwages = new System.Windows.Forms.TextBox();
@@ -194,7 +194,7 @@ namespace SimPe.Plugin
 			this.ilist = new System.Windows.Forms.ImageList(this.components);
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.btchngeOwn = new System.Windows.Forms.Button();
-			this.Panel4 = new booby.gradientpanel();
+			this.Panel4 = new System.Windows.Forms.Panel();
 			this.btOcancel = new System.Windows.Forms.Button();
 			this.btOadd = new System.Windows.Forms.Button();
 			this.lbOgender = new System.Windows.Forms.Label();
@@ -752,7 +752,6 @@ namespace SimPe.Plugin
 			this.pbpay.ProgressBackColour = System.Drawing.SystemColors.Window;
 			this.pbpay.SelectedColor = System.Drawing.Color.Gold;
 			this.pbpay.Size = new System.Drawing.Size(261, 35);
-			this.pbpay.Style = booby.ProgresBarStyle.Increase;
 			this.pbpay.TabIndex = 15;
 			this.pbpay.TextBoxBackColour = System.Drawing.SystemColors.Window;
 			this.pbpay.TextboxWidth = 16;
@@ -1101,19 +1100,19 @@ namespace SimPe.Plugin
 		private void RefreshGraphs()
 		{
 			int n = 0;
-			int boobgood = Bnfo.HistoryCount;
+			int historycount = Bnfo.HistoryCount;
 			/*
 			 * somehow I have to gleen if home business or not - homeb = 0 for home business else = 1
 			*/
-			if (boobgood > homeb)
+			if (historycount > homeb)
 			{
-				int cflo = (Bnfo.Revenue[boobgood - 1]) - (Bnfo.Expences[boobgood - 1]);
-				Array.Resize<int>(ref rdatas, boobgood - homeb);
-				Array.Resize<int>(ref edatas, boobgood - homeb);
+				int cflo = (Bnfo.Revenue[historycount - 1]) - (Bnfo.Expences[historycount - 1]);
+				Array.Resize<int>(ref rdatas, historycount - homeb);
+				Array.Resize<int>(ref edatas, historycount - homeb);
 				// set both graphs to same max value so a direct comparison between the bar heights is possible
 				double mMax = 0;
 
-				for (int i = homeb; i < boobgood; i++)
+				for (int i = homeb; i < historycount; i++)
 				{
 					/*
 					 * expences can be negative

@@ -22,22 +22,6 @@ namespace SimPe.Plugin
         public LoteUI()
 		{
             InitializeComponent();
-            if (booby.ThemeManager.ThemedForms)
-            {
-                booby.ThemeManager tm = booby.ThemeManager.Global.CreateChild();
-                tm.AddControl(this.rtLotDef);
-                tm.AddControl(this.cbtype);
-                this.lbnotes.ForeColor = booby.ThemeManager.Global.ThemeColourXdark;
-                if (booby.ThemeManager.savedTheme == 4 || booby.ThemeManager.savedTheme == 7)
-                    this.rtLotDef.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            }
-            if (booby.PrettyGirls.PervyMode)
-            {
-                if (!booby.Infos.IsFontinstalled("Blackadder ITC"))
-                    this.label1.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.label1.Visible = true;
-                this.HeaderText = "Boobies";
-            }
 
             this.cbtype.Items.Clear();
             this.cbtype.Items.Add(Ltxt.LotType.Unknown);
