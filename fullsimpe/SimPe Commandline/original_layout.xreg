@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<registry>
+<key name="Software">
+<key name="Ambertation">
+<key name="SimPe">
+<key name="Layout">
+<string name="ColumnOrder">Name,Type,Group,InstHi,Inst,Size,Offset</string>
+<int name="GroupColumnWidth">100</int>
+<int name="InstanceColumnWidth">100</int>
+<int name="ThemeID">1</int>
+<int name="SizeColumnWidth">100</int>
+<int name="InstanceHighColumnWidth">100</int>
+<list name="TBButtons">
+<string name="0">action.SimPe.Actions.Default.AddAction</string>
+<string name="1">action.SimPe.Actions.Default.ExportAction</string>
+<string name="2">action.SimPe.Actions.Default.ReplaceAction</string>
+<string name="3">action.SimPe.Actions.Default.DeleteAction</string>
+<string name="4">action.SimPe.Actions.Default.RestoreAction</string>
+<string name="5">action.SimPe.Actions.Default.CloneAction</string>
+<string name="6">action.SimPe.Actions.Default.CreateAction</string>
+<string name="7">action.SimPe.Plugin.Tool.Action.ActionGlobalFixTGI</string>
+<string name="8">SimPe.Plugin.Tool.LoadSims2PackTool</string>
+<string name="9">SimPe.Plugin.NeighborhoodTool</string>
+<string name="10">SimPe.Plugin.SimsTool</string>
+<string name="11">SimPe.Plugin.SurgeryTool</string>
+</list>
+<int name="OffsetColumnWidth">100</int>
+<int name="TypeColumnWidth">70</int>
+</key>
+</key>
+</key>
+</key>
+</registry>

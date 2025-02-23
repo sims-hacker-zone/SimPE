@@ -4,18 +4,15 @@
 <key name="Ambertation">
 <key name="SimPe">
 <key name="Layout">
-<bool name="ActionDefExpanded">false</bool>
 <int name="GroupColumnWidth">100</int>
 <int name="InstanceColumnWidth">100</int>
 <int name="ThemeID">0</int>
-<bool name="ActionToolExpanded">false</bool>
 <int name="SizeColumnWidth">100</int>
-<bool name="ActionPlugExpanded">true</bool>
 <int name="OffsetColumnWidth">100</int>
 <int name="InstanceHighColumnWidth">100</int>
 <list name="TBButtons">
 </list>
-<int name="TypeColumnWidth">204</int>
+<int name="TypeColumnWidth">70</int>
 </key>
 </key>
 </key>
