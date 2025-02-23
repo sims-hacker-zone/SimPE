@@ -23,9 +23,9 @@ using SimPe.Interfaces;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für ImportSemiTool.
+	/// Summary description for ImportSemiTool.
 	/// </summary>
-	public class FixTool : Interfaces.ITool
+    public class FixTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
 		/// <summary>
 		/// Windows Registry Link
@@ -89,6 +89,16 @@ namespace SimPe.Plugin
 			return "Object Tool\\Fix Integrity";
 		}
 
-		#endregion
+        #endregion
+
+        #region IToolExt Member
+        public override System.Drawing.Image Icon
+        {
+            get
+            {
+                return SimPe.GetIcon.FixIntegrity;
+            }
+        }
+        #endregion
 	}
 }

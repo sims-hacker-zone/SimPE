@@ -23,7 +23,7 @@ using SimPe.Interfaces;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für ImportSemiTool.
+	/// Summary description for ImportSemiTool.
 	/// </summary>
 	public class DownloadScanTool : Interfaces.ITool
 	{
@@ -73,7 +73,7 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			return "Scan Folders...";
+			return "Scan Downloads...";
 		}
 
 		#endregion

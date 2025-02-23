@@ -28,7 +28,7 @@ using SimPe.Interfaces.Plugin;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für NeighborhoodForm.
+	/// Summary description for NeighborhoodForm.
 	/// </summary>
 	public class NeighborhoodForm : System.Windows.Forms.Form
 	{
@@ -43,19 +43,18 @@ namespace SimPe.Plugin
         private Label label1;
 		private System.ComponentModel.IContainer components;
         private Button btnClose;
-        ThemeManager tm;
+        private System.Windows.Forms.Panel pnBoPeep;
+        private PictureBox pbox;
 
 		public NeighborhoodForm()
 		{
 			InitializeComponent();
 
-            tm = ThemeManager.Global.CreateChild();
-            tm.AddControl(pnBackup);
-            tm.AddControl(pnOptions);
+            if (UserVerification.HaveUserId) this.lv.ShowItemToolTips = true;
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -75,10 +74,10 @@ namespace SimPe.Plugin
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -94,8 +93,12 @@ namespace SimPe.Plugin
             this.cbtypes = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.pnBoPeep = new System.Windows.Forms.Panel();
+            this.pbox = new System.Windows.Forms.PictureBox();
             this.pnBackup.SuspendLayout();
             this.pnOptions.SuspendLayout();
+            this.pnBoPeep.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbox)).BeginInit();
             this.SuspendLayout();
             // 
             // lv
@@ -138,37 +141,27 @@ namespace SimPe.Plugin
             // 
             resources.ApplyResources(this.pnBackup, "pnBackup");
             this.pnBackup.BackColor = System.Drawing.Color.Transparent;
-            this.pnBackup.BodyColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.pnBackup.BorderColor = System.Drawing.SystemColors.Window;
+            this.pnBackup.Controls.Add(this.pbox);
             this.pnBackup.Controls.Add(this.button3);
             this.pnBackup.Controls.Add(this.button2);
             this.pnBackup.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
-            this.pnBackup.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pnBackup.IconLocation = new System.Drawing.Point(4, 12);
             this.pnBackup.IconSize = new System.Drawing.Size(32, 32);
-            this.pnBackup.LeftHeaderColor = System.Drawing.SystemColors.InactiveCaption;
             this.pnBackup.Name = "pnBackup";
-            this.pnBackup.RightHeaderColor = System.Drawing.SystemColors.Highlight;
             // 
             // pnOptions
             // 
             resources.ApplyResources(this.pnOptions, "pnOptions");
             this.pnOptions.BackColor = System.Drawing.Color.Transparent;
-            this.pnOptions.BodyColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.pnOptions.BorderColor = System.Drawing.SystemColors.Window;
             this.pnOptions.Controls.Add(this.cbtypes);
             this.pnOptions.Controls.Add(this.label1);
             this.pnOptions.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
-            this.pnOptions.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pnOptions.IconLocation = new System.Drawing.Point(4, 12);
             this.pnOptions.IconSize = new System.Drawing.Size(32, 32);
-            this.pnOptions.LeftHeaderColor = System.Drawing.SystemColors.InactiveCaption;
             this.pnOptions.Name = "pnOptions";
-            this.pnOptions.RightHeaderColor = System.Drawing.SystemColors.Highlight;
             // 
             // cbtypes
             // 
-            this.cbtypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbtypes.FormattingEnabled = true;
             resources.ApplyResources(this.cbtypes, "cbtypes");
             this.cbtypes.Name = "cbtypes";
@@ -185,16 +178,29 @@ namespace SimPe.Plugin
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Name = "btnClose";
             // 
+            // pnBoPeep
+            // 
+            this.pnBoPeep.BackColor = System.Drawing.Color.Transparent;
+            this.pnBoPeep.Controls.Add(this.pnOptions);
+            this.pnBoPeep.Controls.Add(this.btnClose);
+            this.pnBoPeep.Controls.Add(this.btnOpen);
+            this.pnBoPeep.Controls.Add(this.lv);
+            this.pnBoPeep.Controls.Add(this.pnBackup);
+            resources.ApplyResources(this.pnBoPeep, "pnBoPeep");
+            this.pnBoPeep.Name = "pnBoPeep";
+            // 
+            // pbox
+            // 
+            resources.ApplyResources(this.pbox, "pbox");
+            this.pbox.Name = "pbox";
+            this.pbox.TabStop = false;
+            // 
             // NeighborhoodForm
             // 
             this.AcceptButton = this.btnOpen;
             resources.ApplyResources(this, "$this");
             this.CancelButton = this.btnClose;
-            this.Controls.Add(this.pnOptions);
-            this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnOpen);
-            this.Controls.Add(this.lv);
-            this.Controls.Add(this.pnBackup);
+            this.Controls.Add(this.pnBoPeep);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -202,11 +208,16 @@ namespace SimPe.Plugin
             this.pnBackup.ResumeLayout(false);
             this.pnOptions.ResumeLayout(false);
             this.pnOptions.PerformLayout();
+            this.pnBoPeep.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbox)).EndInit();
             this.ResumeLayout(false);
 
 		}
 		#endregion
 
+
+        bool lodesubs = true;
+        public bool ShowSubHoods { get { return lodesubs; } set { lodesubs = value; } }
 
         bool ngbhBUMgr = true;
         public bool ShowBackupManager { get { return ngbhBUMgr; } set { ngbhBUMgr = value; } }
@@ -241,7 +252,7 @@ namespace SimPe.Plugin
                 }
                 catch(System.ArgumentException) { }
 			}
-            this.ilist.Images.Add(new Bitmap(this.GetType().Assembly.GetManifestResourceStream("SimPe.Plugin.Network.png")));
+            this.ilist.Images.Add(new Bitmap(SimPe.GetImage.Network));
         }
 
 		protected void AddNeighborhood(ExpansionItem.NeighborhoodPath np, string path) 
@@ -272,14 +283,13 @@ namespace SimPe.Plugin
 			bool ret = false;
 			if (System.IO.File.Exists(name)) 
 			{
-                actime = " (" + System.IO.File.GetLastWriteTime(name).ToString();
-                /*if (Helper.WindowsRegistry.HiddenMode)*/ actime += ", " + NeighborhoodIdentifier(flname);
-                actime += ")";
+                actime = " (" + System.IO.File.GetLastWriteTime(name).ToString() + ") ";
+                actime += NeighborhoodIdentifier(flname);
 				ret = true;
 				try 
 				{
 					SimPe.Packages.File pk = SimPe.Packages.File.LoadFromFile(name);
-                    NeighborhoodType t;
+                    NeighbourhoodTipe t;
                     name = LoadLabel(pk, out t);
 				} 
 				catch (Exception) {}
@@ -293,7 +303,7 @@ namespace SimPe.Plugin
 			lvi.SubItems.Add(flname);
 			lvi.SubItems.Add(name);
             lvi.SubItems.Add(np.Lable);
-            if (Helper.WindowsRegistry.HiddenMode) 
+            if (UserVerification.HaveUserId)
                 lvi.ToolTipText = flname;
 
 			lv.Items.Add(lvi);
@@ -301,10 +311,10 @@ namespace SimPe.Plugin
 			return ret;
 		}
 
-        private static string LoadLabel(SimPe.Packages.File pk, out NeighborhoodType type)
+        private static string LoadLabel(SimPe.Packages.File pk, out NeighbourhoodTipe type)
         {
             string name = SimPe.Localization.GetString("Unknown");
-            type = NeighborhoodType.Unknown;
+            type = NeighbourhoodTipe.Normal;
             try
             {
                 SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pk.FindFile(0x43545353, 0, 0xffffffff, 1);
@@ -312,16 +322,20 @@ namespace SimPe.Plugin
                 {
                     SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
                     str.ProcessData(pfd, pk);
-                    name = str.LanguageItems(new SimPe.PackedFiles.Wrapper.StrLanguage((byte)Data.MetaData.Languages.English))[0].Title;
+                    name = str.FallbackedLanguageItem(Helper.WindowsRegistry.LanguageCode, 0).Title;
                 }
+                else
+                    if (pk.FileName.Contains("Tutorial")) name = "Tutorial"; // CJH
 
                 pfd = pk.FindFile(0xAC8A7A2E, 0, 0xffffffff, 1);
                 if (pfd != null)
                 {
                     SimPe.Plugin.Idno idno = new Idno();
                     idno.ProcessData(pfd, pk);
-                    type = idno.Type;
+                    type = idno.Tipe;
                 }
+                else
+                    if (pk.FileName.Contains("Tutorial")) type = NeighbourhoodTipe.Tutorial;
                 //pk.Reader.Close();
             }
             finally
@@ -345,13 +359,55 @@ namespace SimPe.Plugin
                 foreach (ExpansionItem.NeighborhoodPath path in paths)
                 {
                     string sourcepath = path.Path;
-                    string[] dirs = System.IO.Directory.GetDirectories(sourcepath, "????");
+                    // string[] dirs = System.IO.Directory.GetDirectories(sourcepath, "????");
+                    string[] dirs = System.IO.Directory.GetDirectories(sourcepath, "*"); // CJH - removes the 4 char limit
                     foreach (string dir in dirs)
-                        AddNeighborhood(path, dir);
+                        if (!dir.Contains("Tutorial"))
+                            AddNeighborhood(path, dir);
+                }
+                if (Helper.WindowsRegistry.LoadAllNeighbourhoods && loadNgbh)
+                {
+                    if (PathProvider.Global.GetExpansion(SimPe.Expansions.IslandStories).Exists)
+                    {
+                        paths = PathProvider.Global.GetNeighborhoodsForGroup(8);
+                        foreach (ExpansionItem.NeighborhoodPath path in paths)
+                        {
+                            string sourcepath = path.Path;
+                            string[] dirs = System.IO.Directory.GetDirectories(sourcepath, "*");
+                            foreach (string dir in dirs)
+                                if (!dir.Contains("Tutorial"))
+                                    AddNeighborhood(path, dir);
+                        }
+                    }
+                    if (PathProvider.Global.GetExpansion(SimPe.Expansions.PetStories).Exists)
+                    {
+                        paths = PathProvider.Global.GetNeighborhoodsForGroup(4);
+                        foreach (ExpansionItem.NeighborhoodPath path in paths)
+                        {
+                            string sourcepath = path.Path;
+                            string[] dirs = System.IO.Directory.GetDirectories(sourcepath, "*");
+                            foreach (string dir in dirs)
+                                if (!dir.Contains("Tutorial"))
+                                    AddNeighborhood(path, dir);
+                        }
+                    }
+                    if (PathProvider.Global.GetExpansion(SimPe.Expansions.LifeStories).Exists)
+                    {
+                        paths = PathProvider.Global.GetNeighborhoodsForGroup(2);
+                        foreach (ExpansionItem.NeighborhoodPath path in paths)
+                        {
+                            string sourcepath = path.Path;
+                            string[] dirs = System.IO.Directory.GetDirectories(sourcepath, "*");
+                            foreach (string dir in dirs)
+                                if (!dir.Contains("Tutorial"))
+                                    AddNeighborhood(path, dir);
+                        }
+                    }
                 }
             }
             finally
             {
+                WaitingScreen.UpdateImage(null);
                 WaitingScreen.Stop(this);
             }
 		}
@@ -366,8 +422,8 @@ namespace SimPe.Plugin
 			changed = false;
 			UpdateList();
 			this.Cursor = Cursors.Default;
-
             pnBackup.Visible = ngbhBUMgr;
+            pnOptions.Visible = lodesubs;
 			RemoteControl.ShowSubForm(this);
 			if (this.package!=null) package=this.package;
 			return new Plugin.ToolResult(false, ((this.package!=null) || (changed)));
@@ -375,13 +431,13 @@ namespace SimPe.Plugin
 
         class NgbhType
         {
-            string name, file; NeighborhoodType type;
+            string name, file; NeighbourhoodTipe type;
 
             public string FileName
             {
                 get { return file; }
-            } 
-            public NgbhType(string file, string name, NeighborhoodType type)
+            }
+            public NgbhType(string file, string name, NeighbourhoodTipe type)
             {
                 this.name = name;
                 this.type = type;
@@ -409,7 +465,7 @@ namespace SimPe.Plugin
                 foreach (string file in files)
                 {
                     SimPe.Packages.File pk = SimPe.Packages.File.LoadFromFile(file);
-                    NeighborhoodType type;
+                    NeighbourhoodTipe type;
                     string name = LoadLabel(pk, out type);
                     NgbhType nt = new NgbhType(file, name, type);
 
@@ -420,6 +476,7 @@ namespace SimPe.Plugin
                 if (cbtypes.SelectedIndex < 0 && cbtypes.Items.Count > 0)
                     cbtypes.SelectedIndex = 0;
             }
+            SetSmilyIcon("none");
         }
 
 		private void NgbOpen(object sender, System.EventArgs e)
@@ -450,7 +507,6 @@ namespace SimPe.Plugin
 			}
 		}
 
-
 		private void NgbBackup(object sender, System.EventArgs e)
 		{
 			if (lv.SelectedItems.Count<=0) return;
@@ -461,9 +517,6 @@ namespace SimPe.Plugin
 			
 			//if a File in the current Neighborhood is opened - close it!
 			CloseIfOpened(path);
-
-			this.Cursor = Cursors.WaitCursor;
-			WaitingScreen.Wait();
 			try 
 			{
 				//create a Backup Folder
@@ -478,15 +531,12 @@ namespace SimPe.Plugin
 				if (!System.IO.Directory.Exists(backuppath)) System.IO.Directory.CreateDirectory(backuppath);
 
 				Helper.CopyDirectory(path, backuppath, true);
+                SetSmilyIcon("happy");
 			} 
 			catch (Exception ex) 
 			{
-				Helper.ExceptionMessage("", ex);
-			}
-			finally 
-			{
-				WaitingScreen.Stop(this);
-				this.Cursor = Cursors.Default;
+                Helper.ExceptionMessage("", ex);
+                SetSmilyIcon("sad");
 			}
 		}
 
@@ -499,23 +549,78 @@ namespace SimPe.Plugin
 			//if a File in the current Neighborhood is opened - close it!
 			CloseIfOpened(path);
 
-			
-
 			NgbBackup nb = new NgbBackup();
             nb.Text += " (";
             if (lv.SelectedItems[0].SubItems[3].Text != "") nb.Text += lv.SelectedItems[0].SubItems[3].Text + ": ";
-            nb.Text += lv.SelectedItems[0].SubItems[2].Text.Trim();
-            if (Helper.WindowsRegistry.HiddenMode) nb.Text += ", " + NeighborhoodIdentifier(path);
-            nb.Text += ")";
-            nb.Execute(path, package, prov, lv.SelectedItems[0].SubItems[3].Text);
-
-			
+            nb.Text += lv.SelectedItems[0].SubItems[2].Text.Trim() + ")";
+            if (UserVerification.HaveUserId) nb.Text += " " + NeighborhoodIdentifier(path);
+            nb.Execute(path, package, prov, lv.SelectedItems[0].SubItems[3].Text);			
 			UpdateList();
+            SetSmilyIcon("none");
 		}
 
         private void cbtypes_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnOpen.Enabled = cbtypes.SelectedItem != null;
+            if (cbtypes.SelectedItem != null && lodesubs)
+            {
+                ngbh = cbtypes.SelectedItem as NgbhType;
+                if (ngbh != null)
+                {
+                    string name = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(ngbh.FileName), System.IO.Path.GetFileNameWithoutExtension(ngbh.FileName) + ".png");
+                    if (System.IO.File.Exists(name) && !Helper.EqualFileName(ngbh.FileName, lv.SelectedItems[0].SubItems[1].Text))
+                    {
+                        try
+                        {
+                            System.IO.Stream st = System.IO.File.OpenRead(name);
+                            Image img = Image.FromStream(st);
+                            st.Close();
+                            st.Dispose();
+                            st = null;
+                            this.pnBoPeep.BackgroundImageLocation = new System.Drawing.Point(8, this.pnBoPeep.Height - 186); // to shrink the image must change location
+                            this.pnBoPeep.BackgroundImage = img;
+                            return;
+                        }
+                        catch { }
+                    }
+                    this.pnBoPeep.BackgroundImageLocation = new System.Drawing.Point(60, 232);
+                    this.pnBoPeep.BackgroundImage = null;
+                }
+            }
+            else if (lodesubs)
+            {
+                this.pnBoPeep.BackgroundImage = null;
+            }
+        }
+
+        private void SetSmilyIcon(string hapy)
+        {
+            uint inst = 0xABBA2585;
+            if (hapy == "none") { pbox.Image = null; return; }
+            else if (hapy == "happy") inst = 0xABBA2575;
+            else if (hapy == "sad") inst = 0xABBA2591;
+            /*
+            if (pbpay.Value == 1) inst = 0xABBA2595;
+            if (pbpay.Value == 2) inst = 0xABBA2591;
+            if (pbpay.Value == 3) inst = 0xABBA2588;
+            if (pbpay.Value == 4) inst = 0xABBA2585;
+            if (pbpay.Value == 5) inst = 0xABBA2582;
+            if (pbpay.Value == 6) inst = 0xABBA2578;
+            if (pbpay.Value == 7) inst = 0xABBA2575;
+            */
+            SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(System.IO.Path.Combine(PathProvider.Global.Latest.InstallFolder, "TSData\\Res\\UI\\ui.package"));
+            if (pkg != null)
+            {
+                SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(0x856DDBAC, 0, 0x499DB772, inst);
+                if (pfd != null)
+                {
+                    SimPe.PackedFiles.Wrapper.Picture pic = new SimPe.PackedFiles.Wrapper.Picture();
+                    pic.ProcessData(pfd, pkg);
+                    pbox.Image = pic.Image;
+                }
+                else pbox.Image = null;
+            }
+            else pbox.Image = null;
         }
 	}
 }

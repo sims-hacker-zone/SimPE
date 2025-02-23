@@ -23,9 +23,9 @@ using SimPe.Interfaces;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für ImportSemiTool.
+	/// Summary description for ImportSemiTool.
 	/// </summary>
-	public class SkinWorkshopTool : Interfaces.ITool
+    public class SkinWorkshopTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
 		/// <summary>
 		/// Windows Registry Link
@@ -80,6 +80,23 @@ namespace SimPe.Plugin
 			return "Object Creation\\Skin Workshop...";
 		}
 
-		#endregion
+        #endregion
+
+        #region IToolExt Member
+        public override System.Drawing.Image Icon
+        {
+            get
+            {
+                return SimPe.GetIcon.SkinWorkshop;
+            }
+        }
+        public override System.Windows.Forms.Shortcut Shortcut
+        {
+            get
+            {
+                return System.Windows.Forms.Shortcut.None;
+            }
+        }
+        #endregion
 	}
 }

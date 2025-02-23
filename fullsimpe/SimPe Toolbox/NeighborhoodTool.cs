@@ -23,7 +23,7 @@ using SimPe.Interfaces;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für ImportSemiTool.
+	/// Summary description for ImportSemiTool.
 	/// </summary>
 	public class NeighborhoodTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
@@ -56,11 +56,19 @@ namespace SimPe.Plugin
 
 		public Interfaces.Plugin.IToolResult ShowDialog(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package)
 		{
-            if (!System.IO.Directory.Exists(PathProvider.Global.NeighborhoodFolder)) 
-			{
-                System.Windows.Forms.MessageBox.Show("The Folder " + PathProvider.Global.NeighborhoodFolder + " was not found.\nPlease specify the correct SaveGame Folder in the Options Dialog.");
-				return new ToolResult(false, false);
-			}
+            if (PathProvider.Global.GetSaveGamePathForGroup(PathProvider.Global.CurrentGroup).Count > 0)
+            {
+                if (!System.IO.Directory.Exists(PathProvider.Global.GetSaveGamePathForGroup(PathProvider.Global.CurrentGroup)[0]))
+                {
+                    System.Windows.Forms.MessageBox.Show("The Folder " + PathProvider.Global.GetSaveGamePathForGroup(PathProvider.Global.CurrentGroup)[0] + " was not found.\nPlease specify the correct SaveGame Folder in the Options Dialog.");
+                    return new ToolResult(false, false);
+                }
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("Neighbourhood Folder was not found.\nPlease specify the correct SaveGame Folder in the Options Dialog.");
+                return new ToolResult(false, false);
+            }
 
 			if (package!=null) 
 			{
@@ -79,7 +87,7 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			return "Neighborhood\\"+Localization.Manager.GetString("neighborhoodbrowser")+"...";
+			return "Neighbourhood\\"+Localization.Manager.GetString("neighborhoodbrowser")+"...";
 		}
 
 		#endregion
@@ -88,8 +96,8 @@ namespace SimPe.Plugin
 		public override System.Drawing.Image Icon
 		{
 			get
-			{
-				return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.Plugin.neighboorhood.png"));
+            {
+                return SimPe.GetIcon.tbNeighboorhood;
 			}
 		}
 		public override System.Windows.Forms.Shortcut Shortcut

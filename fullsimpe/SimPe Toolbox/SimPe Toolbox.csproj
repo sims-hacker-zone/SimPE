@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
     <ProductVersion>8.0.50727</ProductVersion>
@@ -17,6 +16,7 @@
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
     <OutputType>Library</OutputType>
     <RootNamespace>SimPe.Plugin</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
@@ -26,7 +26,6 @@
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>..\__Debug\Plugins\</OutputPath>
@@ -58,7 +57,8 @@
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <DocumentationFile>
     </DocumentationFile>
     <DebugSymbols>false</DebugSymbols>
@@ -74,6 +74,7 @@
     <DebugType>none</DebugType>
     <ErrorReport>prompt</ErrorReport>
     <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release MAC|AnyCPU' ">
     <OutputPath>..\__Release\Plugins\</OutputPath>
@@ -199,17 +200,19 @@
   <ItemGroup>
     <EmbeddedResource Include="3d.simpe" />
     <EmbeddedResource Include="bin.simpe" />
-    <EmbeddedResource Include="camera.png" />
-    <EmbeddedResource Include="contents.png" />
-    <EmbeddedResource Include="createpackage.png" />
-    <EmbeddedResource Include="custom.png" />
+    <EmbeddedResource Include="DownloadScan.resx">
+      <DependentUpon>DownloadScan.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Hash.resx">
       <DependentUpon>Hash.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="mmat.simpe" />
-    <EmbeddedResource Include="neighboorhood.png" />
     <EmbeddedResource Include="Neighborhood.de.resx">
+      <DependentUpon>Neighborhood.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Neighborhood.en-US.resx">
       <DependentUpon>Neighborhood.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -233,7 +236,6 @@
       <DependentUpon>Neighborhood.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Network.png" />
     <EmbeddedResource Include="NgbBackup.de.resx">
       <DependentUpon>NgbBackup.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -262,8 +264,11 @@
       <DependentUpon>NgbBackup.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="nothumb.png" />
     <EmbeddedResource Include="PhotoStudio.de.resx">
+      <DependentUpon>PhotoStudio.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PhotoStudio.en-US.resx">
       <DependentUpon>PhotoStudio.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -288,9 +293,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="readonlyevent.png" />
-    <EmbeddedResource Include="simbrowser.png" />
     <EmbeddedResource Include="Sims.de.resx">
+      <DependentUpon>Sims.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sims.en-US.resx">
       <DependentUpon>Sims.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -318,8 +325,11 @@
       <DependentUpon>SkinWorkshop.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="subitems.png" />
     <EmbeddedResource Include="Surgery.de.resx">
+      <DependentUpon>Surgery.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Surgery.en-US.resx">
       <DependentUpon>Surgery.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -343,10 +353,6 @@
       <DependentUpon>Surgery.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Workshop.resx">
-      <DependentUpon>Workshop.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <Compile Include="ActionBuildNameMap.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -354,6 +360,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DownloadScan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DownloadScanTool.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Factory.cs">
@@ -416,12 +428,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SurgeryTool.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Workshop.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WorkshopTool.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

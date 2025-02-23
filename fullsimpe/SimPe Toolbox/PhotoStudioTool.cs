@@ -23,7 +23,7 @@ using SimPe.Interfaces;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für ImportSemiTool.
+	/// Summary description for ImportSemiTool.
 	/// </summary>
 	public class PhotoStudioTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
@@ -58,9 +58,7 @@ namespace SimPe.Plugin
 
         public bool IsReallyEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
         {
-            if (System.IO.File.Exists(ScenegraphHelper.GMND_PACKAGE) && System.IO.File.Exists(ScenegraphHelper.MMAT_PACKAGE)) return true;
-            System.Windows.Forms.MessageBox.Show("The CEP must be installed and has not been found.");
-            return false;
+            return true;
         }
 
 		public Interfaces.Plugin.IToolResult ShowDialog(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package)
@@ -81,8 +79,8 @@ namespace SimPe.Plugin
 		public override System.Drawing.Image Icon
 		{
 			get
-			{
-				return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.Plugin.camera.png"));
+            {
+                return SimPe.GetIcon.Camera;
 			}
 		}
 

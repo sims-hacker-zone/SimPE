@@ -23,9 +23,9 @@ using SimPe.Interfaces;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für ImportSemiTool.
+	/// Summary description for ImportSemiTool.
 	/// </summary>
-	public class HashTool : Interfaces.ITool
+    public class HashTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
 		/// <summary>
 		/// Windows Registry Link
@@ -70,6 +70,16 @@ namespace SimPe.Plugin
 			return "Object Tool\\Hash Generator...";
 		}
 
-		#endregion
+        #endregion
+
+        #region IToolExt Member
+        public override System.Drawing.Image Icon
+        {
+            get
+            {
+                return SimPe.GetIcon.HashGenerator;
+            }
+        }
+        #endregion
 	}
 }

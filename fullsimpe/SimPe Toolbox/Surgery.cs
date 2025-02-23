@@ -22,11 +22,12 @@ using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für Sims.
+	/// Summary description for Sims.
 	/// </summary>
 	public class Surgery : System.Windows.Forms.Form
 	{
@@ -36,582 +37,276 @@ namespace SimPe.Plugin
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.GroupBox groupBox2;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.GroupBox groupBox3;
 		private System.Windows.Forms.PictureBox pbpatient;
 		private System.Windows.Forms.PictureBox pbarche;
 		private System.Windows.Forms.LinkLabel llusepatient;
 		private System.Windows.Forms.LinkLabel llusearche;
-		private System.Windows.Forms.Label lbpatname;
-		private System.Windows.Forms.Label lbpatlife;
-		private System.Windows.Forms.Label lbarchlife;
-		private System.Windows.Forms.Label lbarchname;
 		private System.Windows.Forms.LinkLabel llexport;
 		private System.Windows.Forms.SaveFileDialog sfd;
 		private System.Windows.Forms.ToolTip toolTip1;
 		private System.Windows.Forms.CheckBox cbskin;
-		private System.Windows.Forms.GroupBox groupBox3;
 		private System.Windows.Forms.ListView lvskin;
 		private System.Windows.Forms.ImageList iskin;
 		private System.Windows.Forms.CheckBox cbface;
 		private System.Windows.Forms.CheckBox cbmakeup;
 		private System.Windows.Forms.CheckBox cbeye;
+		private System.Windows.Forms.LinkLabel ctlLoadPackage;
+		private System.Windows.Forms.OpenFileDialog opd;
+		private System.Windows.Forms.Label lbUbi;
+		private CheckBox cbgals;
+		private CheckBox cbmens;
+		private CheckBox cbadults;
+		private PropertyGrid pgPatientDetails;
+		private PropertyGrid pgArchetypeDetails;
+		internal CheckBox cbTownie;
+		internal CheckBox cbNpc;
 		private System.ComponentModel.IContainer components;
 
 		public Surgery()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
 
-			LoadSkins();
+			if (UseBigIcons) { this.ilist.ImageSize = new System.Drawing.Size(96, 96); this.iskin.ImageSize = new System.Drawing.Size(64, 64); }
+			this.cbface.ForeColor = this.cbmakeup.ForeColor = this.cbeye.ForeColor = this.cbskin.ForeColor = this.groupBox1.HeaderTextColor;
+			LoadArchetyp();
+			this.cbTownie.Checked = ShowTownies;
+			this.cbNpc.Checked = ShowNPCs;
+			this.cbadults.Checked = AdultsOnly;
+			this.cbgals.Checked = JustGals;
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
-				if(components != null)
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(Surgery));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Surgery));
 			this.ilist = new System.Windows.Forms.ImageList(this.components);
 			this.lv = new System.Windows.Forms.ListView();
 			this.button1 = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
+			this.lbUbi = new System.Windows.Forms.Label();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.label2 = new System.Windows.Forms.Label();
+			this.pgPatientDetails = new System.Windows.Forms.PropertyGrid();
 			this.cbeye = new System.Windows.Forms.CheckBox();
 			this.cbmakeup = new System.Windows.Forms.CheckBox();
 			this.llexport = new System.Windows.Forms.LinkLabel();
-			this.lbpatlife = new System.Windows.Forms.Label();
-			this.lbpatname = new System.Windows.Forms.Label();
 			this.pbpatient = new System.Windows.Forms.PictureBox();
 			this.llusepatient = new System.Windows.Forms.LinkLabel();
 			this.cbface = new System.Windows.Forms.CheckBox();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.lbarchlife = new System.Windows.Forms.Label();
-			this.lbarchname = new System.Windows.Forms.Label();
+			this.pgArchetypeDetails = new System.Windows.Forms.PropertyGrid();
+			this.ctlLoadPackage = new System.Windows.Forms.LinkLabel();
 			this.llusearche = new System.Windows.Forms.LinkLabel();
 			this.pbarche = new System.Windows.Forms.PictureBox();
-			this.label3 = new System.Windows.Forms.Label();
 			this.sfd = new System.Windows.Forms.SaveFileDialog();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.cbskin = new System.Windows.Forms.CheckBox();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.lvskin = new System.Windows.Forms.ListView();
 			this.iskin = new System.Windows.Forms.ImageList(this.components);
+			this.opd = new System.Windows.Forms.OpenFileDialog();
+			this.cbgals = new System.Windows.Forms.CheckBox();
+			this.cbmens = new System.Windows.Forms.CheckBox();
+			this.cbadults = new System.Windows.Forms.CheckBox();
+			this.cbTownie = new System.Windows.Forms.CheckBox();
+			this.cbNpc = new System.Windows.Forms.CheckBox();
 			this.groupBox1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbpatient)).BeginInit();
 			this.groupBox2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbarche)).BeginInit();
 			this.groupBox3.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// ilist
 			// 
 			this.ilist.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-			this.ilist.ImageSize = ((System.Drawing.Size)(resources.GetObject("ilist.ImageSize")));
+			resources.ApplyResources(this.ilist, "ilist");
 			this.ilist.TransparentColor = System.Drawing.Color.Transparent;
 			// 
 			// lv
 			// 
-			this.lv.AccessibleDescription = resources.GetString("lv.AccessibleDescription");
-			this.lv.AccessibleName = resources.GetString("lv.AccessibleName");
-			this.lv.Alignment = ((System.Windows.Forms.ListViewAlignment)(resources.GetObject("lv.Alignment")));
-			this.lv.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("lv.Anchor")));
-			this.lv.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("lv.BackgroundImage")));
+			resources.ApplyResources(this.lv, "lv");
 			this.lv.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.lv.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("lv.Dock")));
-			this.lv.Enabled = ((bool)(resources.GetObject("lv.Enabled")));
-			this.lv.Font = ((System.Drawing.Font)(resources.GetObject("lv.Font")));
 			this.lv.HideSelection = false;
-			this.lv.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("lv.ImeMode")));
-			this.lv.LabelWrap = ((bool)(resources.GetObject("lv.LabelWrap")));
 			this.lv.LargeImageList = this.ilist;
-			this.lv.Location = ((System.Drawing.Point)(resources.GetObject("lv.Location")));
 			this.lv.MultiSelect = false;
 			this.lv.Name = "lv";
-			this.lv.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("lv.RightToLeft")));
-			this.lv.Size = ((System.Drawing.Size)(resources.GetObject("lv.Size")));
 			this.lv.SmallImageList = this.ilist;
 			this.lv.Sorting = System.Windows.Forms.SortOrder.Ascending;
 			this.lv.StateImageList = this.ilist;
-			this.lv.TabIndex = ((int)(resources.GetObject("lv.TabIndex")));
-			this.lv.Text = resources.GetString("lv.Text");
 			this.toolTip1.SetToolTip(this.lv, resources.GetString("lv.ToolTip"));
-			this.lv.Visible = ((bool)(resources.GetObject("lv.Visible")));
-			this.lv.DoubleClick += new System.EventHandler(this.Open);
+			this.lv.UseCompatibleStateImageBehavior = false;
 			this.lv.SelectedIndexChanged += new System.EventHandler(this.SelectSim);
+			this.lv.DoubleClick += new System.EventHandler(this.Open);
 			// 
 			// button1
 			// 
-			this.button1.AccessibleDescription = resources.GetString("button1.AccessibleDescription");
-			this.button1.AccessibleName = resources.GetString("button1.AccessibleName");
-			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("button1.Anchor")));
-			this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-			this.button1.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("button1.Dock")));
-			this.button1.Enabled = ((bool)(resources.GetObject("button1.Enabled")));
-			this.button1.FlatStyle = ((System.Windows.Forms.FlatStyle)(resources.GetObject("button1.FlatStyle")));
-			this.button1.Font = ((System.Drawing.Font)(resources.GetObject("button1.Font")));
-			this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-			this.button1.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("button1.ImageAlign")));
-			this.button1.ImageIndex = ((int)(resources.GetObject("button1.ImageIndex")));
-			this.button1.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("button1.ImeMode")));
-			this.button1.Location = ((System.Drawing.Point)(resources.GetObject("button1.Location")));
+			resources.ApplyResources(this.button1, "button1");
 			this.button1.Name = "button1";
-			this.button1.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("button1.RightToLeft")));
-			this.button1.Size = ((System.Drawing.Size)(resources.GetObject("button1.Size")));
-			this.button1.TabIndex = ((int)(resources.GetObject("button1.TabIndex")));
-			this.button1.Text = resources.GetString("button1.Text");
-			this.button1.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("button1.TextAlign")));
 			this.toolTip1.SetToolTip(this.button1, resources.GetString("button1.ToolTip"));
-			this.button1.Visible = ((bool)(resources.GetObject("button1.Visible")));
 			this.button1.Click += new System.EventHandler(this.Open);
 			// 
 			// label1
 			// 
-			this.label1.AccessibleDescription = resources.GetString("label1.AccessibleDescription");
-			this.label1.AccessibleName = resources.GetString("label1.AccessibleName");
-			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("label1.Anchor")));
-			this.label1.AutoSize = ((bool)(resources.GetObject("label1.AutoSize")));
-			this.label1.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("label1.Dock")));
-			this.label1.Enabled = ((bool)(resources.GetObject("label1.Enabled")));
-			this.label1.Font = ((System.Drawing.Font)(resources.GetObject("label1.Font")));
-			this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
-			this.label1.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("label1.ImageAlign")));
-			this.label1.ImageIndex = ((int)(resources.GetObject("label1.ImageIndex")));
-			this.label1.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("label1.ImeMode")));
-			this.label1.Location = ((System.Drawing.Point)(resources.GetObject("label1.Location")));
+			resources.ApplyResources(this.label1, "label1");
 			this.label1.Name = "label1";
-			this.label1.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("label1.RightToLeft")));
-			this.label1.Size = ((System.Drawing.Size)(resources.GetObject("label1.Size")));
-			this.label1.TabIndex = ((int)(resources.GetObject("label1.TabIndex")));
-			this.label1.Text = resources.GetString("label1.Text");
-			this.label1.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("label1.TextAlign")));
-			this.toolTip1.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
-			this.label1.Visible = ((bool)(resources.GetObject("label1.Visible")));
+			// 
+			// lbUbi
+			// 
+			this.lbUbi.BackColor = System.Drawing.SystemColors.Window;
+			resources.ApplyResources(this.lbUbi, "lbUbi");
+			this.lbUbi.ForeColor = System.Drawing.Color.Brown;
+			this.lbUbi.Name = "lbUbi";
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.AccessibleDescription = resources.GetString("groupBox1.AccessibleDescription");
-			this.groupBox1.AccessibleName = resources.GetString("groupBox1.AccessibleName");
-			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("groupBox1.Anchor")));
-			this.groupBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBox1.BackgroundImage")));
-			this.groupBox1.Controls.Add(this.label2);
+			resources.ApplyResources(this.groupBox1, "groupBox1");
+			this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+			this.groupBox1.BodyColor = System.Drawing.SystemColors.ControlLight;
+			this.groupBox1.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+			this.groupBox1.Controls.Add(this.pgPatientDetails);
 			this.groupBox1.Controls.Add(this.cbeye);
 			this.groupBox1.Controls.Add(this.cbmakeup);
 			this.groupBox1.Controls.Add(this.llexport);
-			this.groupBox1.Controls.Add(this.lbpatlife);
-			this.groupBox1.Controls.Add(this.lbpatname);
 			this.groupBox1.Controls.Add(this.pbpatient);
 			this.groupBox1.Controls.Add(this.llusepatient);
 			this.groupBox1.Controls.Add(this.cbface);
-			this.groupBox1.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("groupBox1.Dock")));
-			this.groupBox1.Enabled = ((bool)(resources.GetObject("groupBox1.Enabled")));
-			this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.groupBox1.Font = ((System.Drawing.Font)(resources.GetObject("groupBox1.Font")));
-			this.groupBox1.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("groupBox1.ImeMode")));
-			this.groupBox1.Location = ((System.Drawing.Point)(resources.GetObject("groupBox1.Location")));
+			this.groupBox1.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
+			this.groupBox1.HeaderTextColor = System.Drawing.SystemColors.ControlText;
+			this.groupBox1.IconLocation = new System.Drawing.Point(4, 12);
+			this.groupBox1.IconSize = new System.Drawing.Size(32, 32);
+			this.groupBox1.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("groupBox1.RightToLeft")));
-			this.groupBox1.Size = ((System.Drawing.Size)(resources.GetObject("groupBox1.Size")));
-			this.groupBox1.TabIndex = ((int)(resources.GetObject("groupBox1.TabIndex")));
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = resources.GetString("groupBox1.Text");
-			this.toolTip1.SetToolTip(this.groupBox1, resources.GetString("groupBox1.ToolTip"));
-			this.groupBox1.Visible = ((bool)(resources.GetObject("groupBox1.Visible")));
+			this.groupBox1.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
+			this.groupBox1.TopGap = 4;
 			// 
-			// label2
+			// pgPatientDetails
 			// 
-			this.label2.AccessibleDescription = resources.GetString("label2.AccessibleDescription");
-			this.label2.AccessibleName = resources.GetString("label2.AccessibleName");
-			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("label2.Anchor")));
-			this.label2.AutoSize = ((bool)(resources.GetObject("label2.AutoSize")));
-			this.label2.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("label2.Dock")));
-			this.label2.Enabled = ((bool)(resources.GetObject("label2.Enabled")));
-			this.label2.Font = ((System.Drawing.Font)(resources.GetObject("label2.Font")));
-			this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.label2.Image = ((System.Drawing.Image)(resources.GetObject("label2.Image")));
-			this.label2.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("label2.ImageAlign")));
-			this.label2.ImageIndex = ((int)(resources.GetObject("label2.ImageIndex")));
-			this.label2.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("label2.ImeMode")));
-			this.label2.Location = ((System.Drawing.Point)(resources.GetObject("label2.Location")));
-			this.label2.Name = "label2";
-			this.label2.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("label2.RightToLeft")));
-			this.label2.Size = ((System.Drawing.Size)(resources.GetObject("label2.Size")));
-			this.label2.TabIndex = ((int)(resources.GetObject("label2.TabIndex")));
-			this.label2.Text = resources.GetString("label2.Text");
-			this.label2.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("label2.TextAlign")));
-			this.toolTip1.SetToolTip(this.label2, resources.GetString("label2.ToolTip"));
-			this.label2.Visible = ((bool)(resources.GetObject("label2.Visible")));
+			resources.ApplyResources(this.pgPatientDetails, "pgPatientDetails");
+			this.pgPatientDetails.Name = "pgPatientDetails";
+			this.pgPatientDetails.PropertySort = System.Windows.Forms.PropertySort.Categorized;
+			this.pgPatientDetails.ToolbarVisible = false;
 			// 
 			// cbeye
 			// 
-			this.cbeye.AccessibleDescription = resources.GetString("cbeye.AccessibleDescription");
-			this.cbeye.AccessibleName = resources.GetString("cbeye.AccessibleName");
-			this.cbeye.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("cbeye.Anchor")));
-			this.cbeye.Appearance = ((System.Windows.Forms.Appearance)(resources.GetObject("cbeye.Appearance")));
-			this.cbeye.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cbeye.BackgroundImage")));
-			this.cbeye.CheckAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("cbeye.CheckAlign")));
-			this.cbeye.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("cbeye.Dock")));
-			this.cbeye.Enabled = ((bool)(resources.GetObject("cbeye.Enabled")));
-			this.cbeye.FlatStyle = ((System.Windows.Forms.FlatStyle)(resources.GetObject("cbeye.FlatStyle")));
-			this.cbeye.Font = ((System.Drawing.Font)(resources.GetObject("cbeye.Font")));
-			this.cbeye.Image = ((System.Drawing.Image)(resources.GetObject("cbeye.Image")));
-			this.cbeye.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("cbeye.ImageAlign")));
-			this.cbeye.ImageIndex = ((int)(resources.GetObject("cbeye.ImageIndex")));
-			this.cbeye.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("cbeye.ImeMode")));
-			this.cbeye.Location = ((System.Drawing.Point)(resources.GetObject("cbeye.Location")));
+			resources.ApplyResources(this.cbeye, "cbeye");
 			this.cbeye.Name = "cbeye";
-			this.cbeye.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("cbeye.RightToLeft")));
-			this.cbeye.Size = ((System.Drawing.Size)(resources.GetObject("cbeye.Size")));
-			this.cbeye.TabIndex = ((int)(resources.GetObject("cbeye.TabIndex")));
-			this.cbeye.Text = resources.GetString("cbeye.Text");
-			this.cbeye.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("cbeye.TextAlign")));
 			this.toolTip1.SetToolTip(this.cbeye, resources.GetString("cbeye.ToolTip"));
-			this.cbeye.Visible = ((bool)(resources.GetObject("cbeye.Visible")));
 			this.cbeye.CheckedChanged += new System.EventHandler(this.cbskin_CheckedChanged);
 			// 
 			// cbmakeup
 			// 
-			this.cbmakeup.AccessibleDescription = resources.GetString("cbmakeup.AccessibleDescription");
-			this.cbmakeup.AccessibleName = resources.GetString("cbmakeup.AccessibleName");
-			this.cbmakeup.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("cbmakeup.Anchor")));
-			this.cbmakeup.Appearance = ((System.Windows.Forms.Appearance)(resources.GetObject("cbmakeup.Appearance")));
-			this.cbmakeup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cbmakeup.BackgroundImage")));
-			this.cbmakeup.CheckAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("cbmakeup.CheckAlign")));
-			this.cbmakeup.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("cbmakeup.Dock")));
-			this.cbmakeup.Enabled = ((bool)(resources.GetObject("cbmakeup.Enabled")));
-			this.cbmakeup.FlatStyle = ((System.Windows.Forms.FlatStyle)(resources.GetObject("cbmakeup.FlatStyle")));
-			this.cbmakeup.Font = ((System.Drawing.Font)(resources.GetObject("cbmakeup.Font")));
-			this.cbmakeup.Image = ((System.Drawing.Image)(resources.GetObject("cbmakeup.Image")));
-			this.cbmakeup.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("cbmakeup.ImageAlign")));
-			this.cbmakeup.ImageIndex = ((int)(resources.GetObject("cbmakeup.ImageIndex")));
-			this.cbmakeup.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("cbmakeup.ImeMode")));
-			this.cbmakeup.Location = ((System.Drawing.Point)(resources.GetObject("cbmakeup.Location")));
+			resources.ApplyResources(this.cbmakeup, "cbmakeup");
 			this.cbmakeup.Name = "cbmakeup";
-			this.cbmakeup.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("cbmakeup.RightToLeft")));
-			this.cbmakeup.Size = ((System.Drawing.Size)(resources.GetObject("cbmakeup.Size")));
-			this.cbmakeup.TabIndex = ((int)(resources.GetObject("cbmakeup.TabIndex")));
-			this.cbmakeup.Text = resources.GetString("cbmakeup.Text");
-			this.cbmakeup.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("cbmakeup.TextAlign")));
 			this.toolTip1.SetToolTip(this.cbmakeup, resources.GetString("cbmakeup.ToolTip"));
-			this.cbmakeup.Visible = ((bool)(resources.GetObject("cbmakeup.Visible")));
 			this.cbmakeup.CheckedChanged += new System.EventHandler(this.cbskin_CheckedChanged);
 			// 
 			// llexport
 			// 
-			this.llexport.AccessibleDescription = resources.GetString("llexport.AccessibleDescription");
-			this.llexport.AccessibleName = resources.GetString("llexport.AccessibleName");
-			this.llexport.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("llexport.Anchor")));
-			this.llexport.AutoSize = ((bool)(resources.GetObject("llexport.AutoSize")));
-			this.llexport.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("llexport.Dock")));
-			this.llexport.Enabled = ((bool)(resources.GetObject("llexport.Enabled")));
-			this.llexport.Font = ((System.Drawing.Font)(resources.GetObject("llexport.Font")));
-			this.llexport.Image = ((System.Drawing.Image)(resources.GetObject("llexport.Image")));
-			this.llexport.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("llexport.ImageAlign")));
-			this.llexport.ImageIndex = ((int)(resources.GetObject("llexport.ImageIndex")));
-			this.llexport.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("llexport.ImeMode")));
-			this.llexport.LinkArea = ((System.Windows.Forms.LinkArea)(resources.GetObject("llexport.LinkArea")));
-			this.llexport.Location = ((System.Drawing.Point)(resources.GetObject("llexport.Location")));
+			resources.ApplyResources(this.llexport, "llexport");
 			this.llexport.Name = "llexport";
-			this.llexport.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("llexport.RightToLeft")));
-			this.llexport.Size = ((System.Drawing.Size)(resources.GetObject("llexport.Size")));
-			this.llexport.TabIndex = ((int)(resources.GetObject("llexport.TabIndex")));
 			this.llexport.TabStop = true;
-			this.llexport.Text = resources.GetString("llexport.Text");
-			this.llexport.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("llexport.TextAlign")));
 			this.toolTip1.SetToolTip(this.llexport, resources.GetString("llexport.ToolTip"));
-			this.llexport.Visible = ((bool)(resources.GetObject("llexport.Visible")));
 			this.llexport.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Export);
-			// 
-			// lbpatlife
-			// 
-			this.lbpatlife.AccessibleDescription = resources.GetString("lbpatlife.AccessibleDescription");
-			this.lbpatlife.AccessibleName = resources.GetString("lbpatlife.AccessibleName");
-			this.lbpatlife.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("lbpatlife.Anchor")));
-			this.lbpatlife.AutoSize = ((bool)(resources.GetObject("lbpatlife.AutoSize")));
-			this.lbpatlife.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("lbpatlife.Dock")));
-			this.lbpatlife.Enabled = ((bool)(resources.GetObject("lbpatlife.Enabled")));
-			this.lbpatlife.Font = ((System.Drawing.Font)(resources.GetObject("lbpatlife.Font")));
-			this.lbpatlife.Image = ((System.Drawing.Image)(resources.GetObject("lbpatlife.Image")));
-			this.lbpatlife.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("lbpatlife.ImageAlign")));
-			this.lbpatlife.ImageIndex = ((int)(resources.GetObject("lbpatlife.ImageIndex")));
-			this.lbpatlife.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("lbpatlife.ImeMode")));
-			this.lbpatlife.Location = ((System.Drawing.Point)(resources.GetObject("lbpatlife.Location")));
-			this.lbpatlife.Name = "lbpatlife";
-			this.lbpatlife.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("lbpatlife.RightToLeft")));
-			this.lbpatlife.Size = ((System.Drawing.Size)(resources.GetObject("lbpatlife.Size")));
-			this.lbpatlife.TabIndex = ((int)(resources.GetObject("lbpatlife.TabIndex")));
-			this.lbpatlife.Text = resources.GetString("lbpatlife.Text");
-			this.lbpatlife.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("lbpatlife.TextAlign")));
-			this.toolTip1.SetToolTip(this.lbpatlife, resources.GetString("lbpatlife.ToolTip"));
-			this.lbpatlife.Visible = ((bool)(resources.GetObject("lbpatlife.Visible")));
-			// 
-			// lbpatname
-			// 
-			this.lbpatname.AccessibleDescription = resources.GetString("lbpatname.AccessibleDescription");
-			this.lbpatname.AccessibleName = resources.GetString("lbpatname.AccessibleName");
-			this.lbpatname.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("lbpatname.Anchor")));
-			this.lbpatname.AutoSize = ((bool)(resources.GetObject("lbpatname.AutoSize")));
-			this.lbpatname.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("lbpatname.Dock")));
-			this.lbpatname.Enabled = ((bool)(resources.GetObject("lbpatname.Enabled")));
-			this.lbpatname.Font = ((System.Drawing.Font)(resources.GetObject("lbpatname.Font")));
-			this.lbpatname.Image = ((System.Drawing.Image)(resources.GetObject("lbpatname.Image")));
-			this.lbpatname.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("lbpatname.ImageAlign")));
-			this.lbpatname.ImageIndex = ((int)(resources.GetObject("lbpatname.ImageIndex")));
-			this.lbpatname.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("lbpatname.ImeMode")));
-			this.lbpatname.Location = ((System.Drawing.Point)(resources.GetObject("lbpatname.Location")));
-			this.lbpatname.Name = "lbpatname";
-			this.lbpatname.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("lbpatname.RightToLeft")));
-			this.lbpatname.Size = ((System.Drawing.Size)(resources.GetObject("lbpatname.Size")));
-			this.lbpatname.TabIndex = ((int)(resources.GetObject("lbpatname.TabIndex")));
-			this.lbpatname.Text = resources.GetString("lbpatname.Text");
-			this.lbpatname.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("lbpatname.TextAlign")));
-			this.toolTip1.SetToolTip(this.lbpatname, resources.GetString("lbpatname.ToolTip"));
-			this.lbpatname.Visible = ((bool)(resources.GetObject("lbpatname.Visible")));
 			// 
 			// pbpatient
 			// 
-			this.pbpatient.AccessibleDescription = resources.GetString("pbpatient.AccessibleDescription");
-			this.pbpatient.AccessibleName = resources.GetString("pbpatient.AccessibleName");
-			this.pbpatient.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("pbpatient.Anchor")));
-			this.pbpatient.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbpatient.BackgroundImage")));
 			this.pbpatient.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pbpatient.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("pbpatient.Dock")));
-			this.pbpatient.Enabled = ((bool)(resources.GetObject("pbpatient.Enabled")));
-			this.pbpatient.Font = ((System.Drawing.Font)(resources.GetObject("pbpatient.Font")));
-			this.pbpatient.Image = ((System.Drawing.Image)(resources.GetObject("pbpatient.Image")));
-			this.pbpatient.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("pbpatient.ImeMode")));
-			this.pbpatient.Location = ((System.Drawing.Point)(resources.GetObject("pbpatient.Location")));
+			resources.ApplyResources(this.pbpatient, "pbpatient");
 			this.pbpatient.Name = "pbpatient";
-			this.pbpatient.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("pbpatient.RightToLeft")));
-			this.pbpatient.Size = ((System.Drawing.Size)(resources.GetObject("pbpatient.Size")));
-			this.pbpatient.SizeMode = ((System.Windows.Forms.PictureBoxSizeMode)(resources.GetObject("pbpatient.SizeMode")));
-			this.pbpatient.TabIndex = ((int)(resources.GetObject("pbpatient.TabIndex")));
 			this.pbpatient.TabStop = false;
-			this.pbpatient.Text = resources.GetString("pbpatient.Text");
-			this.toolTip1.SetToolTip(this.pbpatient, resources.GetString("pbpatient.ToolTip"));
-			this.pbpatient.Visible = ((bool)(resources.GetObject("pbpatient.Visible")));
 			// 
 			// llusepatient
 			// 
-			this.llusepatient.AccessibleDescription = resources.GetString("llusepatient.AccessibleDescription");
-			this.llusepatient.AccessibleName = resources.GetString("llusepatient.AccessibleName");
-			this.llusepatient.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("llusepatient.Anchor")));
-			this.llusepatient.AutoSize = ((bool)(resources.GetObject("llusepatient.AutoSize")));
-			this.llusepatient.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("llusepatient.Dock")));
-			this.llusepatient.Enabled = ((bool)(resources.GetObject("llusepatient.Enabled")));
-			this.llusepatient.Font = ((System.Drawing.Font)(resources.GetObject("llusepatient.Font")));
-			this.llusepatient.Image = ((System.Drawing.Image)(resources.GetObject("llusepatient.Image")));
-			this.llusepatient.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("llusepatient.ImageAlign")));
-			this.llusepatient.ImageIndex = ((int)(resources.GetObject("llusepatient.ImageIndex")));
-			this.llusepatient.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("llusepatient.ImeMode")));
-			this.llusepatient.LinkArea = ((System.Windows.Forms.LinkArea)(resources.GetObject("llusepatient.LinkArea")));
-			this.llusepatient.Location = ((System.Drawing.Point)(resources.GetObject("llusepatient.Location")));
+			resources.ApplyResources(this.llusepatient, "llusepatient");
 			this.llusepatient.Name = "llusepatient";
-			this.llusepatient.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("llusepatient.RightToLeft")));
-			this.llusepatient.Size = ((System.Drawing.Size)(resources.GetObject("llusepatient.Size")));
-			this.llusepatient.TabIndex = ((int)(resources.GetObject("llusepatient.TabIndex")));
 			this.llusepatient.TabStop = true;
-			this.llusepatient.Text = resources.GetString("llusepatient.Text");
-			this.llusepatient.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("llusepatient.TextAlign")));
 			this.toolTip1.SetToolTip(this.llusepatient, resources.GetString("llusepatient.ToolTip"));
-			this.llusepatient.Visible = ((bool)(resources.GetObject("llusepatient.Visible")));
 			this.llusepatient.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.UsePatient);
 			// 
 			// cbface
 			// 
-			this.cbface.AccessibleDescription = resources.GetString("cbface.AccessibleDescription");
-			this.cbface.AccessibleName = resources.GetString("cbface.AccessibleName");
-			this.cbface.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("cbface.Anchor")));
-			this.cbface.Appearance = ((System.Windows.Forms.Appearance)(resources.GetObject("cbface.Appearance")));
-			this.cbface.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cbface.BackgroundImage")));
-			this.cbface.CheckAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("cbface.CheckAlign")));
-			this.cbface.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("cbface.Dock")));
-			this.cbface.Enabled = ((bool)(resources.GetObject("cbface.Enabled")));
-			this.cbface.FlatStyle = ((System.Windows.Forms.FlatStyle)(resources.GetObject("cbface.FlatStyle")));
-			this.cbface.Font = ((System.Drawing.Font)(resources.GetObject("cbface.Font")));
-			this.cbface.Image = ((System.Drawing.Image)(resources.GetObject("cbface.Image")));
-			this.cbface.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("cbface.ImageAlign")));
-			this.cbface.ImageIndex = ((int)(resources.GetObject("cbface.ImageIndex")));
-			this.cbface.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("cbface.ImeMode")));
-			this.cbface.Location = ((System.Drawing.Point)(resources.GetObject("cbface.Location")));
+			resources.ApplyResources(this.cbface, "cbface");
+			this.cbface.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.cbface.Name = "cbface";
-			this.cbface.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("cbface.RightToLeft")));
-			this.cbface.Size = ((System.Drawing.Size)(resources.GetObject("cbface.Size")));
-			this.cbface.TabIndex = ((int)(resources.GetObject("cbface.TabIndex")));
-			this.cbface.Text = resources.GetString("cbface.Text");
-			this.cbface.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("cbface.TextAlign")));
 			this.toolTip1.SetToolTip(this.cbface, resources.GetString("cbface.ToolTip"));
-			this.cbface.Visible = ((bool)(resources.GetObject("cbface.Visible")));
 			this.cbface.CheckedChanged += new System.EventHandler(this.cbskin_CheckedChanged);
 			// 
 			// groupBox2
 			// 
-			this.groupBox2.AccessibleDescription = resources.GetString("groupBox2.AccessibleDescription");
-			this.groupBox2.AccessibleName = resources.GetString("groupBox2.AccessibleName");
-			this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("groupBox2.Anchor")));
-			this.groupBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBox2.BackgroundImage")));
-			this.groupBox2.Controls.Add(this.lbarchlife);
-			this.groupBox2.Controls.Add(this.lbarchname);
+			resources.ApplyResources(this.groupBox2, "groupBox2");
+			this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+			this.groupBox2.BodyColor = System.Drawing.SystemColors.ControlLight;
+			this.groupBox2.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+			this.groupBox2.Controls.Add(this.pgArchetypeDetails);
+			this.groupBox2.Controls.Add(this.ctlLoadPackage);
 			this.groupBox2.Controls.Add(this.llusearche);
 			this.groupBox2.Controls.Add(this.pbarche);
-			this.groupBox2.Controls.Add(this.label3);
-			this.groupBox2.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("groupBox2.Dock")));
-			this.groupBox2.Enabled = ((bool)(resources.GetObject("groupBox2.Enabled")));
-			this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.groupBox2.Font = ((System.Drawing.Font)(resources.GetObject("groupBox2.Font")));
-			this.groupBox2.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("groupBox2.ImeMode")));
-			this.groupBox2.Location = ((System.Drawing.Point)(resources.GetObject("groupBox2.Location")));
+			this.groupBox2.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
+			this.groupBox2.HeaderTextColor = System.Drawing.SystemColors.ControlText;
+			this.groupBox2.IconLocation = new System.Drawing.Point(4, 12);
+			this.groupBox2.IconSize = new System.Drawing.Size(32, 32);
+			this.groupBox2.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("groupBox2.RightToLeft")));
-			this.groupBox2.Size = ((System.Drawing.Size)(resources.GetObject("groupBox2.Size")));
-			this.groupBox2.TabIndex = ((int)(resources.GetObject("groupBox2.TabIndex")));
-			this.groupBox2.TabStop = false;
-			this.groupBox2.Text = resources.GetString("groupBox2.Text");
-			this.toolTip1.SetToolTip(this.groupBox2, resources.GetString("groupBox2.ToolTip"));
-			this.groupBox2.Visible = ((bool)(resources.GetObject("groupBox2.Visible")));
+			this.groupBox2.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
+			this.groupBox2.TopGap = 4;
 			// 
-			// lbarchlife
+			// pgArchetypeDetails
 			// 
-			this.lbarchlife.AccessibleDescription = resources.GetString("lbarchlife.AccessibleDescription");
-			this.lbarchlife.AccessibleName = resources.GetString("lbarchlife.AccessibleName");
-			this.lbarchlife.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("lbarchlife.Anchor")));
-			this.lbarchlife.AutoSize = ((bool)(resources.GetObject("lbarchlife.AutoSize")));
-			this.lbarchlife.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("lbarchlife.Dock")));
-			this.lbarchlife.Enabled = ((bool)(resources.GetObject("lbarchlife.Enabled")));
-			this.lbarchlife.Font = ((System.Drawing.Font)(resources.GetObject("lbarchlife.Font")));
-			this.lbarchlife.Image = ((System.Drawing.Image)(resources.GetObject("lbarchlife.Image")));
-			this.lbarchlife.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("lbarchlife.ImageAlign")));
-			this.lbarchlife.ImageIndex = ((int)(resources.GetObject("lbarchlife.ImageIndex")));
-			this.lbarchlife.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("lbarchlife.ImeMode")));
-			this.lbarchlife.Location = ((System.Drawing.Point)(resources.GetObject("lbarchlife.Location")));
-			this.lbarchlife.Name = "lbarchlife";
-			this.lbarchlife.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("lbarchlife.RightToLeft")));
-			this.lbarchlife.Size = ((System.Drawing.Size)(resources.GetObject("lbarchlife.Size")));
-			this.lbarchlife.TabIndex = ((int)(resources.GetObject("lbarchlife.TabIndex")));
-			this.lbarchlife.Text = resources.GetString("lbarchlife.Text");
-			this.lbarchlife.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("lbarchlife.TextAlign")));
-			this.toolTip1.SetToolTip(this.lbarchlife, resources.GetString("lbarchlife.ToolTip"));
-			this.lbarchlife.Visible = ((bool)(resources.GetObject("lbarchlife.Visible")));
+			resources.ApplyResources(this.pgArchetypeDetails, "pgArchetypeDetails");
+			this.pgArchetypeDetails.Name = "pgArchetypeDetails";
+			this.pgArchetypeDetails.PropertySort = System.Windows.Forms.PropertySort.Categorized;
+			this.pgArchetypeDetails.ToolbarVisible = false;
 			// 
-			// lbarchname
+			// ctlLoadPackage
 			// 
-			this.lbarchname.AccessibleDescription = resources.GetString("lbarchname.AccessibleDescription");
-			this.lbarchname.AccessibleName = resources.GetString("lbarchname.AccessibleName");
-			this.lbarchname.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("lbarchname.Anchor")));
-			this.lbarchname.AutoSize = ((bool)(resources.GetObject("lbarchname.AutoSize")));
-			this.lbarchname.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("lbarchname.Dock")));
-			this.lbarchname.Enabled = ((bool)(resources.GetObject("lbarchname.Enabled")));
-			this.lbarchname.Font = ((System.Drawing.Font)(resources.GetObject("lbarchname.Font")));
-			this.lbarchname.Image = ((System.Drawing.Image)(resources.GetObject("lbarchname.Image")));
-			this.lbarchname.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("lbarchname.ImageAlign")));
-			this.lbarchname.ImageIndex = ((int)(resources.GetObject("lbarchname.ImageIndex")));
-			this.lbarchname.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("lbarchname.ImeMode")));
-			this.lbarchname.Location = ((System.Drawing.Point)(resources.GetObject("lbarchname.Location")));
-			this.lbarchname.Name = "lbarchname";
-			this.lbarchname.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("lbarchname.RightToLeft")));
-			this.lbarchname.Size = ((System.Drawing.Size)(resources.GetObject("lbarchname.Size")));
-			this.lbarchname.TabIndex = ((int)(resources.GetObject("lbarchname.TabIndex")));
-			this.lbarchname.Text = resources.GetString("lbarchname.Text");
-			this.lbarchname.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("lbarchname.TextAlign")));
-			this.toolTip1.SetToolTip(this.lbarchname, resources.GetString("lbarchname.ToolTip"));
-			this.lbarchname.Visible = ((bool)(resources.GetObject("lbarchname.Visible")));
+			resources.ApplyResources(this.ctlLoadPackage, "ctlLoadPackage");
+			this.ctlLoadPackage.Name = "ctlLoadPackage";
+			this.ctlLoadPackage.TabStop = true;
+			this.toolTip1.SetToolTip(this.ctlLoadPackage, resources.GetString("ctlLoadPackage.ToolTip"));
+			this.ctlLoadPackage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ctlLoadPackage_LinkClicked);
 			// 
 			// llusearche
 			// 
-			this.llusearche.AccessibleDescription = resources.GetString("llusearche.AccessibleDescription");
-			this.llusearche.AccessibleName = resources.GetString("llusearche.AccessibleName");
-			this.llusearche.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("llusearche.Anchor")));
-			this.llusearche.AutoSize = ((bool)(resources.GetObject("llusearche.AutoSize")));
-			this.llusearche.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("llusearche.Dock")));
-			this.llusearche.Enabled = ((bool)(resources.GetObject("llusearche.Enabled")));
-			this.llusearche.Font = ((System.Drawing.Font)(resources.GetObject("llusearche.Font")));
-			this.llusearche.Image = ((System.Drawing.Image)(resources.GetObject("llusearche.Image")));
-			this.llusearche.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("llusearche.ImageAlign")));
-			this.llusearche.ImageIndex = ((int)(resources.GetObject("llusearche.ImageIndex")));
-			this.llusearche.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("llusearche.ImeMode")));
-			this.llusearche.LinkArea = ((System.Windows.Forms.LinkArea)(resources.GetObject("llusearche.LinkArea")));
-			this.llusearche.Location = ((System.Drawing.Point)(resources.GetObject("llusearche.Location")));
+			resources.ApplyResources(this.llusearche, "llusearche");
 			this.llusearche.Name = "llusearche";
-			this.llusearche.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("llusearche.RightToLeft")));
-			this.llusearche.Size = ((System.Drawing.Size)(resources.GetObject("llusearche.Size")));
-			this.llusearche.TabIndex = ((int)(resources.GetObject("llusearche.TabIndex")));
 			this.llusearche.TabStop = true;
-			this.llusearche.Text = resources.GetString("llusearche.Text");
-			this.llusearche.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("llusearche.TextAlign")));
 			this.toolTip1.SetToolTip(this.llusearche, resources.GetString("llusearche.ToolTip"));
-			this.llusearche.Visible = ((bool)(resources.GetObject("llusearche.Visible")));
 			this.llusearche.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.UseArchetype);
 			// 
 			// pbarche
 			// 
-			this.pbarche.AccessibleDescription = resources.GetString("pbarche.AccessibleDescription");
-			this.pbarche.AccessibleName = resources.GetString("pbarche.AccessibleName");
-			this.pbarche.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("pbarche.Anchor")));
-			this.pbarche.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbarche.BackgroundImage")));
+			resources.ApplyResources(this.pbarche, "pbarche");
 			this.pbarche.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pbarche.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("pbarche.Dock")));
-			this.pbarche.Enabled = ((bool)(resources.GetObject("pbarche.Enabled")));
-			this.pbarche.Font = ((System.Drawing.Font)(resources.GetObject("pbarche.Font")));
-			this.pbarche.Image = ((System.Drawing.Image)(resources.GetObject("pbarche.Image")));
-			this.pbarche.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("pbarche.ImeMode")));
-			this.pbarche.Location = ((System.Drawing.Point)(resources.GetObject("pbarche.Location")));
 			this.pbarche.Name = "pbarche";
-			this.pbarche.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("pbarche.RightToLeft")));
-			this.pbarche.Size = ((System.Drawing.Size)(resources.GetObject("pbarche.Size")));
-			this.pbarche.SizeMode = ((System.Windows.Forms.PictureBoxSizeMode)(resources.GetObject("pbarche.SizeMode")));
-			this.pbarche.TabIndex = ((int)(resources.GetObject("pbarche.TabIndex")));
 			this.pbarche.TabStop = false;
-			this.pbarche.Text = resources.GetString("pbarche.Text");
-			this.toolTip1.SetToolTip(this.pbarche, resources.GetString("pbarche.ToolTip"));
-			this.pbarche.Visible = ((bool)(resources.GetObject("pbarche.Visible")));
-			// 
-			// label3
-			// 
-			this.label3.AccessibleDescription = resources.GetString("label3.AccessibleDescription");
-			this.label3.AccessibleName = resources.GetString("label3.AccessibleName");
-			this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("label3.Anchor")));
-			this.label3.AutoSize = ((bool)(resources.GetObject("label3.AutoSize")));
-			this.label3.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("label3.Dock")));
-			this.label3.Enabled = ((bool)(resources.GetObject("label3.Enabled")));
-			this.label3.Font = ((System.Drawing.Font)(resources.GetObject("label3.Font")));
-			this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.label3.Image = ((System.Drawing.Image)(resources.GetObject("label3.Image")));
-			this.label3.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("label3.ImageAlign")));
-			this.label3.ImageIndex = ((int)(resources.GetObject("label3.ImageIndex")));
-			this.label3.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("label3.ImeMode")));
-			this.label3.Location = ((System.Drawing.Point)(resources.GetObject("label3.Location")));
-			this.label3.Name = "label3";
-			this.label3.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("label3.RightToLeft")));
-			this.label3.Size = ((System.Drawing.Size)(resources.GetObject("label3.Size")));
-			this.label3.TabIndex = ((int)(resources.GetObject("label3.TabIndex")));
-			this.label3.Text = resources.GetString("label3.Text");
-			this.label3.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("label3.TextAlign")));
-			this.toolTip1.SetToolTip(this.label3, resources.GetString("label3.ToolTip"));
-			this.label3.Visible = ((bool)(resources.GetObject("label3.Visible")));
 			// 
 			// sfd
 			// 
-			this.sfd.Filter = resources.GetString("sfd.Filter");
-			this.sfd.Title = resources.GetString("sfd.Title");
+			resources.ApplyResources(this.sfd, "sfd");
 			// 
 			// toolTip1
 			// 
@@ -621,288 +316,268 @@ namespace SimPe.Plugin
 			// 
 			// cbskin
 			// 
-			this.cbskin.AccessibleDescription = resources.GetString("cbskin.AccessibleDescription");
-			this.cbskin.AccessibleName = resources.GetString("cbskin.AccessibleName");
-			this.cbskin.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("cbskin.Anchor")));
-			this.cbskin.Appearance = ((System.Windows.Forms.Appearance)(resources.GetObject("cbskin.Appearance")));
-			this.cbskin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cbskin.BackgroundImage")));
-			this.cbskin.CheckAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("cbskin.CheckAlign")));
-			this.cbskin.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("cbskin.Dock")));
-			this.cbskin.Enabled = ((bool)(resources.GetObject("cbskin.Enabled")));
-			this.cbskin.FlatStyle = ((System.Windows.Forms.FlatStyle)(resources.GetObject("cbskin.FlatStyle")));
-			this.cbskin.Font = ((System.Drawing.Font)(resources.GetObject("cbskin.Font")));
-			this.cbskin.Image = ((System.Drawing.Image)(resources.GetObject("cbskin.Image")));
-			this.cbskin.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("cbskin.ImageAlign")));
-			this.cbskin.ImageIndex = ((int)(resources.GetObject("cbskin.ImageIndex")));
-			this.cbskin.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("cbskin.ImeMode")));
-			this.cbskin.Location = ((System.Drawing.Point)(resources.GetObject("cbskin.Location")));
+			resources.ApplyResources(this.cbskin, "cbskin");
 			this.cbskin.Name = "cbskin";
-			this.cbskin.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("cbskin.RightToLeft")));
-			this.cbskin.Size = ((System.Drawing.Size)(resources.GetObject("cbskin.Size")));
-			this.cbskin.TabIndex = ((int)(resources.GetObject("cbskin.TabIndex")));
-			this.cbskin.Text = resources.GetString("cbskin.Text");
-			this.cbskin.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("cbskin.TextAlign")));
 			this.toolTip1.SetToolTip(this.cbskin, resources.GetString("cbskin.ToolTip"));
-			this.cbskin.Visible = ((bool)(resources.GetObject("cbskin.Visible")));
 			this.cbskin.CheckedChanged += new System.EventHandler(this.cbskin_CheckedChanged);
 			// 
 			// groupBox3
 			// 
-			this.groupBox3.AccessibleDescription = resources.GetString("groupBox3.AccessibleDescription");
-			this.groupBox3.AccessibleName = resources.GetString("groupBox3.AccessibleName");
-			this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("groupBox3.Anchor")));
-			this.groupBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBox3.BackgroundImage")));
+			resources.ApplyResources(this.groupBox3, "groupBox3");
+			this.groupBox3.BackColor = System.Drawing.Color.Transparent;
+			this.groupBox3.BodyColor = System.Drawing.SystemColors.ControlLight;
+			this.groupBox3.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
 			this.groupBox3.Controls.Add(this.cbskin);
 			this.groupBox3.Controls.Add(this.lvskin);
-			this.groupBox3.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("groupBox3.Dock")));
-			this.groupBox3.Enabled = ((bool)(resources.GetObject("groupBox3.Enabled")));
-			this.groupBox3.Font = ((System.Drawing.Font)(resources.GetObject("groupBox3.Font")));
-			this.groupBox3.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("groupBox3.ImeMode")));
-			this.groupBox3.Location = ((System.Drawing.Point)(resources.GetObject("groupBox3.Location")));
+			this.groupBox3.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
+			this.groupBox3.HeaderTextColor = System.Drawing.SystemColors.ControlText;
+			this.groupBox3.IconLocation = new System.Drawing.Point(4, 12);
+			this.groupBox3.IconSize = new System.Drawing.Size(32, 32);
+			this.groupBox3.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
 			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("groupBox3.RightToLeft")));
-			this.groupBox3.Size = ((System.Drawing.Size)(resources.GetObject("groupBox3.Size")));
-			this.groupBox3.TabIndex = ((int)(resources.GetObject("groupBox3.TabIndex")));
-			this.groupBox3.TabStop = false;
-			this.groupBox3.Text = resources.GetString("groupBox3.Text");
-			this.toolTip1.SetToolTip(this.groupBox3, resources.GetString("groupBox3.ToolTip"));
-			this.groupBox3.Visible = ((bool)(resources.GetObject("groupBox3.Visible")));
+			this.groupBox3.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
+			this.groupBox3.TopGap = 4;
 			// 
 			// lvskin
 			// 
-			this.lvskin.AccessibleDescription = resources.GetString("lvskin.AccessibleDescription");
-			this.lvskin.AccessibleName = resources.GetString("lvskin.AccessibleName");
-			this.lvskin.Alignment = ((System.Windows.Forms.ListViewAlignment)(resources.GetObject("lvskin.Alignment")));
-			this.lvskin.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("lvskin.Anchor")));
-			this.lvskin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("lvskin.BackgroundImage")));
+			resources.ApplyResources(this.lvskin, "lvskin");
 			this.lvskin.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.lvskin.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("lvskin.Dock")));
-			this.lvskin.Enabled = ((bool)(resources.GetObject("lvskin.Enabled")));
-			this.lvskin.Font = ((System.Drawing.Font)(resources.GetObject("lvskin.Font")));
 			this.lvskin.HideSelection = false;
-			this.lvskin.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("lvskin.ImeMode")));
-			this.lvskin.LabelWrap = ((bool)(resources.GetObject("lvskin.LabelWrap")));
 			this.lvskin.LargeImageList = this.iskin;
-			this.lvskin.Location = ((System.Drawing.Point)(resources.GetObject("lvskin.Location")));
 			this.lvskin.MultiSelect = false;
 			this.lvskin.Name = "lvskin";
-			this.lvskin.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("lvskin.RightToLeft")));
-			this.lvskin.Size = ((System.Drawing.Size)(resources.GetObject("lvskin.Size")));
-			this.lvskin.TabIndex = ((int)(resources.GetObject("lvskin.TabIndex")));
-			this.lvskin.Text = resources.GetString("lvskin.Text");
-			this.toolTip1.SetToolTip(this.lvskin, resources.GetString("lvskin.ToolTip"));
-			this.lvskin.Visible = ((bool)(resources.GetObject("lvskin.Visible")));
+			this.lvskin.UseCompatibleStateImageBehavior = false;
 			this.lvskin.SelectedIndexChanged += new System.EventHandler(this.lvskin_SelectedIndexChanged);
 			// 
 			// iskin
 			// 
 			this.iskin.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-			this.iskin.ImageSize = ((System.Drawing.Size)(resources.GetObject("iskin.ImageSize")));
+			resources.ApplyResources(this.iskin, "iskin");
 			this.iskin.TransparentColor = System.Drawing.Color.Transparent;
+			// 
+			// opd
+			// 
+			this.opd.DefaultExt = "package";
+			this.opd.FileOk += new System.ComponentModel.CancelEventHandler(this.opd_FileOk);
+			// 
+			// cbgals
+			// 
+			resources.ApplyResources(this.cbgals, "cbgals");
+			this.cbgals.Name = "cbgals";
+			this.cbgals.UseVisualStyleBackColor = true;
+			this.cbgals.CheckedChanged += new System.EventHandler(this.genderFilter_CheckedChanged);
+			// 
+			// cbmens
+			// 
+			resources.ApplyResources(this.cbmens, "cbmens");
+			this.cbmens.Name = "cbmens";
+			this.cbmens.UseVisualStyleBackColor = true;
+			this.cbmens.CheckedChanged += new System.EventHandler(this.genderFilter_CheckedChanged);
+			// 
+			// cbadults
+			// 
+			resources.ApplyResources(this.cbadults, "cbadults");
+			this.cbadults.Name = "cbadults";
+			this.cbadults.UseVisualStyleBackColor = true;
+			this.cbadults.CheckedChanged += new System.EventHandler(this.genderFilter_CheckedChanged);
+			// 
+			// cbTownie
+			// 
+			resources.ApplyResources(this.cbTownie, "cbTownie");
+			this.cbTownie.Name = "cbTownie";
+			this.cbTownie.CheckedChanged += new System.EventHandler(this.genderFilter_CheckedChanged);
+			// 
+			// cbNpc
+			// 
+			resources.ApplyResources(this.cbNpc, "cbNpc");
+			this.cbNpc.Name = "cbNpc";
+			this.cbNpc.CheckedChanged += new System.EventHandler(this.genderFilter_CheckedChanged);
 			// 
 			// Surgery
 			// 
-			this.AccessibleDescription = resources.GetString("$this.AccessibleDescription");
-			this.AccessibleName = resources.GetString("$this.AccessibleName");
-			this.AutoScaleBaseSize = ((System.Drawing.Size)(resources.GetObject("$this.AutoScaleBaseSize")));
-			this.AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
-			this.AutoScrollMargin = ((System.Drawing.Size)(resources.GetObject("$this.AutoScrollMargin")));
-			this.AutoScrollMinSize = ((System.Drawing.Size)(resources.GetObject("$this.AutoScrollMinSize")));
-			this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-			this.ClientSize = ((System.Drawing.Size)(resources.GetObject("$this.ClientSize")));
+			resources.ApplyResources(this, "$this");
+			this.Controls.Add(this.lbUbi);
+			this.Controls.Add(this.cbTownie);
+			this.Controls.Add(this.cbNpc);
+			this.Controls.Add(this.cbgals);
+			this.Controls.Add(this.cbmens);
+			this.Controls.Add(this.cbadults);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.lv);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.groupBox3);
-			this.Enabled = ((bool)(resources.GetObject("$this.Enabled")));
-			this.Font = ((System.Drawing.Font)(resources.GetObject("$this.Font")));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("$this.ImeMode")));
-			this.Location = ((System.Drawing.Point)(resources.GetObject("$this.Location")));
-			this.MaximumSize = ((System.Drawing.Size)(resources.GetObject("$this.MaximumSize")));
-			this.MinimumSize = ((System.Drawing.Size)(resources.GetObject("$this.MinimumSize")));
 			this.Name = "Surgery";
-			this.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("$this.RightToLeft")));
-			this.StartPosition = ((System.Windows.Forms.FormStartPosition)(resources.GetObject("$this.StartPosition")));
-			this.Text = resources.GetString("$this.Text");
-			this.toolTip1.SetToolTip(this, resources.GetString("$this.ToolTip"));
+			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
 			this.groupBox1.ResumeLayout(false);
+			this.groupBox1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbpatient)).EndInit();
 			this.groupBox2.ResumeLayout(false);
+			this.groupBox2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbarche)).EndInit();
 			this.groupBox3.ResumeLayout(false);
+			this.groupBox3.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 		#endregion
 
-		protected void AddImage(SimPe.PackedFiles.Wrapper.ExtSDesc sdesc) 
+		protected void AddImage(SimPe.PackedFiles.Wrapper.ExtSDesc sdesc)
 		{
-			if (sdesc.Image!=null) 
+			if (sdesc.HasImage) // if (sdesc.Image != null) -Chris H
 			{
-				if ((sdesc.Unlinked!=0x00) || (!sdesc.AvailableCharacterData) || sdesc.IsNPC)
-				{
-					Image img = (Image)sdesc.Image.Clone();
-					System.Drawing.Graphics g = Graphics.FromImage(img);
-					g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-					g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-
-					Pen pen = new Pen(Data.MetaData.SpecialSimColor, 3);
-
-					g.FillRectangle(pen.Brush, 0, 0, img.Width, img.Height);
-
-					int pos = 2;
-					if (sdesc.Unlinked!=0x00) 
-					{
-						g.FillRectangle(new SolidBrush(Data.MetaData.UnlinkedSim), pos, 2, 25, 25);
-						pos += 28;
-					}
-					if (!sdesc.AvailableCharacterData) 
-					{
-						g.FillRectangle(new SolidBrush(Data.MetaData.InactiveSim), pos, 2, 25, 25);
-						pos += 28;
-					}
-					if (sdesc.IsNPC) 
-					{
-						g.FillRectangle(new SolidBrush(Data.MetaData.NPCSim), pos, 2, 25, 25);
-						pos += 28;
-					}
-
-					this.ilist.Images.Add(img);
-				} 
-				else 
-				{
 					this.ilist.Images.Add(sdesc.Image);
-				}
-			} 
-			else 
+			}
+			else
 			{
-				this.ilist.Images.Add(new Bitmap(this.GetType().Assembly.GetManifestResourceStream("SimPe.Plugin.Network.png")));
+				else this.ilist.Images.Add(new Bitmap(SimPe.GetImage.NoOne));
 			}
 		}
 
-		protected void AddSim(SimPe.PackedFiles.Wrapper.ExtSDesc sdesc) 
+		private bool realIsNPC(PackedFiles.Wrapper.ExtSDesc sdesc)
 		{
-			//if (!sdesc.HasImage) return;
+			return sdesc.FamilyInstance == 0x7fff;
+		}
+
+		private bool realIsTownie(PackedFiles.Wrapper.ExtSDesc sdesc)
+		{
+			return sdesc.FamilyInstance < 0x7fff && sdesc.FamilyInstance >= 0x7f00;
+		}
+
+		protected void AddSim(SimPe.PackedFiles.Wrapper.ExtSDesc sdesc)
+		{
 			if (!sdesc.AvailableCharacterData) return;
-#if DEBUG
-#else
+			if (sdesc.Nightlife.Species > 0) return;
 			if (sdesc.IsNPC) return;
-#endif
-			
+			if (sdesc.CharacterDescription.ServiceTypes == SimPe.Data.MetaData.ServiceTypes.TinySim) return;
+			if ((int)sdesc.Version == (int)SimPe.PackedFiles.Wrapper.SDescVersions.Castaway && sdesc.Castaway.Subspecies > 0) return;
+			if (!this.cbNpc.Checked && realIsNPC(sdesc)) return;
+			if (!this.cbTownie.Checked && realIsTownie(sdesc)) return;
+			if (this.cbadults.Checked && sdesc.CharacterDescription.LifeSection != Data.MetaData.LifeSections.Adult) return;
+			if (this.cbmens.Checked && sdesc.CharacterDescription.Gender == Data.MetaData.Gender.Female) return;
+			if (this.cbgals.Checked && sdesc.CharacterDescription.Gender == Data.MetaData.Gender.Male) return;
 
 			AddImage(sdesc);
 			ListViewItem lvi = new ListViewItem();
-			lvi.Text = sdesc.SimName +" "+sdesc.SimFamilyName;
-			lvi.ImageIndex = ilist.Images.Count -1;
+			lvi.Text = sdesc.SimName + " " + sdesc.SimFamilyName;
+			lvi.ImageIndex = ilist.Images.Count - 1;
 			lvi.Tag = sdesc;
-
 			lv.Items.Add(lvi);
+		}
+
+		void LoadArchetyp()
+		{
+			iskin.Images.Add(new Bitmap(SimPe.GetImage.SheOne, iskin.ImageSize.Width, iskin.ImageSize.Height));
+			ListViewItem lvia = new ListViewItem("From Archetype");
+			lvia.ImageIndex = 0;
+			this.lvskin.Items.Add(lvia);
+			lvia.Selected = true;
 		}
 
 		Hashtable skinfiles;
 		void LoadSkins()
 		{
 			WaitingScreen.Wait();
-			try 
+			try
 			{
 				skinfiles = new Hashtable();
 				ArrayList tones = new ArrayList();
-				iskin.Images.Add(new Bitmap(iskin.ImageSize.Width, iskin.ImageSize.Height));
-				ListViewItem lvia = new ListViewItem("* from Archetype");
-				lvia.ImageIndex = 0;
-				this.lvskin.Items.Add(lvia);
-				lvia.Selected = true;
-
 				FileTable.FileIndex.Load();
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFile(Data.MetaData.GZPS, true);				
+				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFile(Data.MetaData.GZPS, true);
 				foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
 				{
 					SimPe.PackedFiles.Wrapper.Cpf skin = new SimPe.PackedFiles.Wrapper.Cpf();
 					skin.ProcessData(item);
-
-					//Maintain a List of all availabe SkinsFiles per skintone
-					ArrayList files = null;
-					string st = skin.GetSaveItem("skintone").StringValue;
-					if (skinfiles.ContainsKey(st)) 
+					if ((skin.GetSaveItem("type").StringValue == "skin") && ((skin.GetSaveItem("category").UIntegerValue & (uint)Data.SkinCategories.Skin) == (uint)Data.SkinCategories.Skin))
 					{
-						files = (ArrayList)skinfiles[st];
-					}
-					else 
-					{
-						files = new ArrayList();
-						skinfiles[st] = files;
-					}
-					files.Add(skin);
-
-					if ((skin.GetSaveItem("override0subset").StringValue=="top") && (skin.GetSaveItem("type").StringValue=="skin") && ((skin.GetSaveItem("category").UIntegerValue&(uint)Data.SkinCategories.Skin)==(uint)Data.SkinCategories.Skin))
-					{
-						WaitingScreen.UpdateMessage(skin.GetSaveItem("name").StringValue);
-
-						if (tones.Contains(st)) continue;
-						else tones.Add(st);
-
-						SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] idr = FileTable.FileIndex.FindFile(0xAC506764, item.FileDescriptor.Group, item.FileDescriptor.LongInstance, null);
-						if (idr.Length>0) 
+						//Maintain a List of all availabe SkinsFiles per skintone
+						ArrayList files = null;
+						string st = skin.GetSaveItem("skintone").StringValue;
+						if (skinfiles.ContainsKey(st))
 						{
-							SimPe.Plugin.RefFile reffile = new RefFile();
-							reffile.ProcessData(idr[0]);
+							files = (ArrayList)skinfiles[st];
+						}
+						else
+						{
+							files = new ArrayList();
+							skinfiles[st] = files;
+						}
+						files.Add(skin);
 
-							ListViewItem lvi = new ListViewItem(skin.GetSaveItem("name").StringValue);
-							if (Helper.DebugMode) lvi.Text += " ("+skin.GetSaveItem("skintone").StringValue+")";
-							lvi.Tag = skin.GetSaveItem("skintone").StringValue;
-							foreach (Interfaces.Files.IPackedFileDescriptor pfd in reffile.Items) 
-							{								
-								if (pfd.Type == Data.MetaData.TXMT) 
+						if ((skin.GetSaveItem("override0subset").StringValue == "body" || skin.GetSaveItem("override0subset").StringValue == "top") && skin.GetSaveItem("gender").UIntegerValue == 1 && skin.GetSaveItem("age").UIntegerValue == (uint)Data.Ages.Adult)
+						{
+							WaitingScreen.UpdateMessage(skin.GetSaveItem("name").StringValue);
+
+							if (tones.Contains(st)) continue;
+							else tones.Add(st);
+
+							SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] idr = FileTable.FileIndex.FindFile(0xAC506764, item.FileDescriptor.Group, item.FileDescriptor.LongInstance, null);
+							if (idr.Length > 0)
+							{
+								SimPe.Plugin.RefFile reffile = new RefFile();
+								reffile.ProcessData(idr[0]);
+
+								ListViewItem lvi = new ListViewItem(skin.GetSaveItem("name").StringValue);
+								if (Helper.WindowsRegistry.HiddenMode) lvi.Text += " (" + skin.GetSaveItem("skintone").StringValue + ")";
+								lvi.Tag = skin.GetSaveItem("skintone").StringValue;
+								foreach (Interfaces.Files.IPackedFileDescriptor pfd in reffile.Items)
 								{
-									SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] txmts = FileTable.FileIndex.FindFile(pfd, null);
-									if (txmts.Length>0) 
+									if (pfd.Type == Data.MetaData.TXMT)
 									{
-										SimPe.Plugin.Rcol rcol = new GenericRcol(null, false);
-										rcol.ProcessData(txmts[0]);
-
-										MaterialDefinition md = (MaterialDefinition)rcol.Blocks[0];
-										string txtrname = md.FindProperty("stdMatBaseTextureName").Value+"_txtr";
-
-										SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem txtri = FileTable.FileIndex.FindFileByName(txtrname, Data.MetaData.TXTR, Data.MetaData.LOCAL_GROUP, true);
-										if (txtri!=null) 
+										SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] txmts = FileTable.FileIndex.FindFile(pfd, null);
+										if (txmts.Length > 0)
 										{
-											rcol = new GenericRcol(null, false);
-											rcol.ProcessData(txtri);
+											SimPe.Plugin.Rcol rcol = new GenericRcol(null, false);
+											rcol.ProcessData(txmts[0]);
 
-											ImageData id = (ImageData)rcol.Blocks[0];
-											MipMap mm = id.GetLargestTexture(iskin.ImageSize);
+											MaterialDefinition md = (MaterialDefinition)rcol.Blocks[0];
+											string txtrname = md.FindProperty("stdMatBaseTextureName").Value + "_txtr";
 
-											if (mm!=null) 
+											SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem txtri = FileTable.FileIndex.FindFileByName(txtrname, Data.MetaData.TXTR, Data.MetaData.LOCAL_GROUP, true);
+											if (txtri != null)
 											{
-												iskin.Images.Add(ImageLoader.Preview(mm.Texture, iskin.ImageSize));
-												lvi.ImageIndex = iskin.Images.Count-1;
+												rcol = new GenericRcol(null, false);
+												rcol.ProcessData(txtri);
+
+												ImageData id = (ImageData)rcol.Blocks[0];
+												MipMap mm = id.GetLargestTexture(iskin.ImageSize);
+
+												if (mm != null)
+												{
+													iskin.Images.Add(ImageLoader.Preview(mm.Texture, iskin.ImageSize));
+													lvi.ImageIndex = iskin.Images.Count - 1;
+												}
 											}
 										}
-									
 									}
-								}
-							} //foreach reffile.Items
-							
-							lvskin.Items.Add(lvi);
-						} //if idr
-					}
+								} //foreach reffile.Items
+
+								lvskin.Items.Add(lvi);
+							} //if idr
+						}
+					} // Don't need to process evry item of clothing do we
 				} //foreach items
-			} 
-			finally 
+			}
+			finally
 			{
+				WaitingScreen.UpdateImage(null);
 				WaitingScreen.Stop();
 			}
+			Application.UseWaitCursor = false;
 		}
 
 		SimPe.Interfaces.Files.IPackedFileDescriptor pfd;
 		Interfaces.IProviderRegistry prov;
 		SimPe.Interfaces.Files.IPackageFile ngbh;
-		public Interfaces.Plugin.IToolResult Execute(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package, Interfaces.IProviderRegistry prov) 
+		public Interfaces.Plugin.IToolResult Execute(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package, Interfaces.IProviderRegistry prov)
 		{
 			this.Cursor = Cursors.WaitCursor;
-			
+
+			SimPe.Plugin.Idno idno = SimPe.Plugin.Idno.FromPackage(package);
+			if (idno != null) this.lbUbi.Visible = (idno.Type != NeighborhoodType.Normal);
 			this.pfd = null;
 			this.prov = prov;
 			this.ngbh = package;
@@ -910,96 +585,90 @@ namespace SimPe.Plugin
 			this.pbarche.Image = null;
 			this.pbpatient.Image = null;
 
-			this.lbpatlife.Text = "Lifestage";
-			this.lbpatname.Text = "Name";
-
-			this.lbarchlife.Text = "Lifestage";
-			this.lbarchname.Text = "Name";
-
 			this.spatient = null;
 			this.sarche = null;
+			this.tarcheFile = null;
 
-			button1.Enabled = CanDo();
+			button1.Enabled = false;
 
 			ilist.Images.Clear();
 			lv.Items.Clear();
 
-			
-
 			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(Data.MetaData.SIM_DESCRIPTION_FILE);
 			WaitingScreen.Wait();
-            try
-            {
-                foreach (Interfaces.Files.IPackedFileDescriptor spfd in pfds)
-                {
+			try
+			{
+				foreach (Interfaces.Files.IPackedFileDescriptor spfd in pfds)
+				{
+					PackedFiles.Wrapper.ExtSDesc sdesc = new SimPe.PackedFiles.Wrapper.ExtSDesc();
+					sdesc.ProcessData(spfd, package);
+					AddSim(sdesc);
+				}
 
-                    PackedFiles.Wrapper.ExtSDesc sdesc = new SimPe.PackedFiles.Wrapper.ExtSDesc();
-                    sdesc.ProcessData(spfd, package);
-
-                    //WaitingScreen.UpdateImage(ImageLoader.Preview(sdesc.Image, new Size(64, 64)));
-                    AddSim(sdesc);
-                }
-
-                this.Cursor = Cursors.Default;
-                this.llusearche.Enabled = false;
-                this.llusepatient.Enabled = false;
-                this.llexport.Enabled = false;
-                button1.Enabled = false;
-                if (lv.Items.Count > 0) lv.Items[0].Selected = true;
-
-
-
-            }
-            finally { WaitingScreen.Stop(this); }
+				this.Cursor = Cursors.Default;
+				this.llusearche.Enabled = false;
+				this.llusepatient.Enabled = false;
+				this.llexport.Enabled = false;
+				if (lv.Items.Count > 0) lv.Items[0].Selected = true;
+			}
+			finally { WaitingScreen.Stop(this); }
 			RemoteControl.ShowSubForm(this);
 
-			if (this.pfd!=null) pfd = this.pfd;
-			return new Plugin.ToolResult((this.pfd!=null), false);
+			if (this.pfd != null) pfd = this.pfd;
+			return new Plugin.ToolResult((this.pfd != null), false);
 		}
 
 		private void Open(object sender, System.EventArgs e)
 		{
-			if (!CanDo())  return;
-			
+			if (!CanDo()) return;
 
 			SimPe.Packages.File patient = SimPe.Packages.File.LoadFromFile(spatient.CharacterFileName);
 			SimPe.Packages.File archetype = null;
-			if (sarche!=null) archetype = SimPe.Packages.File.LoadFromFile(sarche.CharacterFileName);
-			else archetype = SimPe.Packages.File.LoadFromFile(null);
+			if (sarche != null) archetype = SimPe.Packages.File.LoadFromFile(sarche.CharacterFileName);
+			else
+				if (this.tarcheFile != null)
+				{
+					archetype = SimPe.Packages.File.LoadFromFile(this.tarcheFile);
+					if (!this.CheckArchetypeFile(archetype))
+					{
+						Helper.ExceptionMessage("The selected template file is not valid.", new ApplicationException());
+						return;
+					}
+				}
+				else archetype = SimPe.Packages.File.LoadFromFile(null);
 
 			SimPe.Packages.GeneratableFile newpackage = null;
 			PlasticSurgery ps = new PlasticSurgery(ngbh, patient, spatient, archetype, sarche);
 
 			if (!this.cbskin.Checked && !this.cbface.Checked && !this.cbmakeup.Checked && !this.cbeye.Checked) newpackage = ps.CloneSim();
 
-			if (this.cbskin.Checked) 
+			if (this.cbskin.Checked)
 			{
-				if (lvskin.SelectedItems.Count==0) return;
+				if (lvskin.SelectedItems.Count == 0) return;
 				string skin = (string)lvskin.SelectedItems[0].Tag;
-				if (skin==null) newpackage = ps.CloneSkinTone(skinfiles);
+				if (skin == null) newpackage = ps.CloneSkinTone(skinfiles);
 				else newpackage = ps.CloneSkinTone(skin, skinfiles);
 			}
 
-			if (this.cbface.Checked) 
+			if (this.cbface.Checked)
 			{
 				if (this.cbskin.Checked) ps = new PlasticSurgery(ngbh, newpackage, spatient, archetype, sarche);
 				newpackage = ps.CloneFace();
 			}
 
-			if (this.cbmakeup.Checked) 
+			if (this.cbmakeup.Checked)
 			{
 				if ((this.cbskin.Checked) || (this.cbface.Checked)) ps = new PlasticSurgery(ngbh, newpackage, spatient, archetype, sarche);
 				newpackage = ps.CloneMakeup(false, true);
 			}
 
-			if (this.cbeye.Checked) 
+			if (this.cbeye.Checked)
 			{
 				if ((this.cbskin.Checked) || (this.cbface.Checked) || (this.cbmakeup.Checked)) ps = new PlasticSurgery(ngbh, newpackage, spatient, archetype, sarche);
 				newpackage = ps.CloneMakeup(true, false);
 			}
-			
 
-			if (newpackage != null) 
+			if (newpackage != null)
 			{
 				newpackage.Save(spatient.CharacterFileName);
 				prov.SimNameProvider.StoredData = null;
@@ -1011,10 +680,8 @@ namespace SimPe.Plugin
 		{
 			this.llusearche.Enabled = false;
 			this.llusepatient.Enabled = false;
-			if (lv.SelectedItems.Count==0) return;
+			if (lv.SelectedItems.Count == 0) return;
 			this.llusearche.Enabled = true;
-
-
 			this.llusepatient.Enabled = !((SimPe.PackedFiles.Wrapper.ExtSDesc)lv.SelectedItems[0].Tag).IsNPC;
 		}
 
@@ -1022,71 +689,61 @@ namespace SimPe.Plugin
 		SimPe.PackedFiles.Wrapper.SDesc sarche = null;
 		private void UsePatient(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
 		{
-			this.llexport.Enabled = (spatient!=null);
-			if (lv.SelectedItems.Count==0) return;
-			if (lv.SelectedItems[0].ImageIndex>=0) pbpatient.Image = ilist.Images[lv.SelectedItems[0].ImageIndex];
+			this.llexport.Enabled = (spatient != null);
+			if (lv.SelectedItems.Count == 0) return;
+			if (lv.SelectedItems[0].ImageIndex >= 0) pbpatient.Image = ilist.Images[lv.SelectedItems[0].ImageIndex];
 
-			this.lbpatname.Text = lv.SelectedItems[0].Text;
-			
 			spatient = (SimPe.PackedFiles.Wrapper.SDesc)lv.SelectedItems[0].Tag;
-			lbpatlife.Text = spatient.CharacterDescription.LifeSection.ToString();
-			lbpatlife.Text += ", " + spatient.CharacterDescription.Gender.ToString();
 
-			button1.Enabled =  (pbpatient.Image!=null) && (pbarche.Image!=null);
+			button1.Enabled = (pbpatient.Image != null) && (sarche != null || this.tarcheFile != null);
 			pfd = (SimPe.Interfaces.Files.IPackedFileDescriptor)spatient.FileDescriptor;
-			this.llexport.Enabled = (spatient!=null);
+			this.llexport.Enabled = (spatient != null);
+			ShowSimDetails(spatient, pgPatientDetails);
 		}
 
 		private void UseArchetype(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
 		{
-			if (lv.SelectedItems.Count==0) return;
-			if (lv.SelectedItems[0].ImageIndex>=0) this.pbarche.Image = ilist.Images[lv.SelectedItems[0].ImageIndex];
+			if (lv.SelectedItems.Count == 0) return;
+			if (lv.SelectedItems[0].ImageIndex >= 0) this.pbarche.Image = ilist.Images[lv.SelectedItems[0].ImageIndex];
 
 			iskin.Images[0] = ImageLoader.Preview(pbarche.Image, iskin.ImageSize);
 			lvskin.Refresh();
 
-			this.lbarchname.Text = lv.SelectedItems[0].Text;
-			
 			sarche = (SimPe.PackedFiles.Wrapper.SDesc)lv.SelectedItems[0].Tag;
-			lbarchlife.Text = sarche.CharacterDescription.LifeSection.ToString();
-			lbarchlife.Text += ", " + sarche.CharacterDescription.Gender.ToString();
-
-			button1.Enabled =  (pbpatient.Image!=null) && (pbarche.Image!=null);
+			button1.Enabled = (pbpatient.Image != null) && (sarche != null);
+			ShowSimDetails(sarche, pgArchetypeDetails);
 		}
 
 		protected void FaceSurgery()
 		{
-			try 
+			try
 			{
 				SimPe.Packages.GeneratableFile patient = SimPe.Packages.GeneratableFile.LoadFromFile(spatient.CharacterFileName);
-				SimPe.Packages.File archetype = SimPe.Packages.File.LoadFromFile(sarche.CharacterFileName);
+				SimPe.Packages.File archetype = null;
+				if (sarche != null) archetype = SimPe.Packages.File.LoadFromFile(sarche.CharacterFileName);
+				else
+					if (this.tarcheFile != null) archetype = SimPe.Packages.File.LoadFromFile(this.tarcheFile);
+
+				if (!this.CheckArchetypeFile(archetype))
+				{
+					Helper.ExceptionMessage("The selected template file is not valid.", new ApplicationException());
+					return;
+				}
 
 				//Load Facial Data
 				Interfaces.Files.IPackedFileDescriptor[] apfds = archetype.FindFiles(0xCCCEF852); //LxNR, Face
-				if (apfds.Length==0) return;
+				if (apfds.Length == 0) return;
 				Interfaces.Files.IPackedFile file = archetype.Read(apfds[0]);
 
 				Interfaces.Files.IPackedFileDescriptor[] ppfds = patient.FindFiles(0xCCCEF852); //LxNR, Face
-				if (ppfds.Length==0) return;
+				if (ppfds.Length == 0) return;
 
 				ppfds[0].UserData = file.UncompressedData;
 
-#if DEBUG
-				//Load Shape Data
-				/*apfds = archetype.FindFiles(0xFC6EB1F7); //SHPE
-				if (apfds.Length==0) return;
-				file = archetype.Read(apfds[0]);
-
-				ppfds = patient.FindFiles(0xFC6EB1F7); //SHPE
-				if (ppfds.Length==0) return;
-
-				ppfds[0].UserData = file.UncompressedData;*/
-#endif
-				
 				//System.IO.MemoryStream ms = patient.Build();
 				//patient.Reader.Close();
 				patient.Save(spatient.CharacterFileName);
-			} 
+			}
 			catch (Exception ex)
 			{
 				Helper.ExceptionMessage("Unable to update the new Character Package.", ex);
@@ -1095,10 +752,8 @@ namespace SimPe.Plugin
 
 		private void Export(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
 		{
-			if (spatient==null) return;
-
-
-			try 
+			if (spatient == null) return;
+			try
 			{
 				//list of all Files top copy from the Archetype
 				ArrayList list = new ArrayList();
@@ -1124,20 +779,20 @@ namespace SimPe.Plugin
 				pfd2.Group = 0xffffffff; pfd2.SubType = 0x00000000; pfd2.Instance = 0xFF123456; pfd2.Type = 0x0C560F39; //BINX
 				pfd2.UserData = br2.ReadBytes((int)br2.BaseStream.Length);
 
-                sfd.InitialDirectory = System.IO.Path.Combine(PathProvider.SimSavegameFolder, "SavedSims");
+				sfd.InitialDirectory = System.IO.Path.Combine(PathProvider.SimSavegameFolder, "SavedSims");
 				sfd.FileName = System.IO.Path.GetFileNameWithoutExtension(spatient.CharacterFileName);
 
 				SimPe.Packages.GeneratableFile source = SimPe.Packages.GeneratableFile.LoadFromFile(spatient.CharacterFileName);
-				if (sfd.ShowDialog()==DialogResult.OK) 
+				if (sfd.ShowDialog() == DialogResult.OK)
 				{
 					SimPe.Packages.GeneratableFile patient = SimPe.Packages.GeneratableFile.LoadFromStream((System.IO.BinaryReader)null);
 					patient.FileName = "";
 					patient.Add(pfd1);
 					patient.Add(pfd2);
 
-					foreach (Interfaces.Files.IPackedFileDescriptor pfd in source.Index) 
+					foreach (Interfaces.Files.IPackedFileDescriptor pfd in source.Index)
 					{
-						if (list.Contains(pfd.Type)) 
+						if (list.Contains(pfd.Type))
 						{
 							Interfaces.Files.IPackedFile file = source.Read(pfd);
 							pfd.UserData = file.UncompressedData;
@@ -1154,29 +809,26 @@ namespace SimPe.Plugin
 								cpf.AddItem(ci, false);
 
 								ci = cpf.GetItem("version");
-								if (ci==null) 
+								if (ci == null)
 								{
 									ci = new SimPe.PackedFiles.Wrapper.CpfItem();
 									ci.Name = "version";
-									if ((cpf.GetSaveItem("age").UIntegerValue&(uint)Data.Ages.YoungAdult)!=0) ci.UIntegerValue = 2;
+									if ((cpf.GetSaveItem("age").UIntegerValue & (uint)Data.Ages.YoungAdult) != 0) ci.UIntegerValue = 2;
 									else ci.UIntegerValue = 1;
 									cpf.AddItem(ci);
 								}
-								
 
 								cpf.SynchronizeUserData();
 							}
 						}
 					}
-
 					patient.Save(sfd.FileName);
 				}
-			} 
+			}
 			catch (Exception ex)
 			{
 				Helper.ExceptionMessage("", ex);
 			}
-			
 		}
 
 		bool CanDo()
@@ -1186,29 +838,298 @@ namespace SimPe.Plugin
 			bool ret = true;
 			if (cbskin.Checked)
 			{
-				ret = (lvskin.SelectedItems.Count==1);
-				if (ret) if (lv.Items[0].Selected && (sarche == null)) ret=false;
-				
-			} 
-			
+				ret = (lvskin.SelectedItems.Count == 1);
+				if (ret) if (lvskin.Items[0].Selected && (sarche == null && tarcheFile == null)) ret = false;
+			}
+
 			if (!cbskin.Checked || cbface.Checked || cbmakeup.Checked || cbeye.Checked)
 			{
-				ret = ret && (sarche != null);
+				ret = ret && (sarche != null || tarcheFile != null);
 			}
 
 			return ret;
 		}
 
-		private void cbskin_CheckedChanged(object sender, System.EventArgs e)
+		bool skload = false;
+		private void cbskin_CheckedChanged(object sender, System.EventArgs e) // Fuck
 		{
+			if (!skload) LoadSkins();
 			lvskin.Enabled = this.cbskin.Checked;
-			lvskin_SelectedIndexChanged(null, null);
 			button1.Enabled = CanDo();
+			skload = true;
 		}
 
 		private void lvskin_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			button1.Enabled = CanDo();
+		}
+
+		private void ctlLoadPackage_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		{
+			this.opd.InitialDirectory = System.IO.Path.Combine(PathProvider.SimSavegameFolder, "SavedSims");
+			this.opd.ShowDialog();
+		}
+
+		private void opd_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			if (!e.Cancel)
+			{
+				this.tarcheFile = this.opd.FileName;
+				if (this.CheckArchetypeFile(SimPe.Packages.File.LoadFromFile(tarcheFile)))
+				{
+					button1.Enabled = (this.spatient != null);
+					pbarche.Image = SimPe.GetImage.NoOne;
+					ShowSimDetails(SimPe.Packages.File.LoadFromFile(tarcheFile), pgArchetypeDetails);
+				}
+				else
+				{
+					tarcheFile = null;
+					sarche = null;
+					button1.Enabled = false;
+					pbarche.Image = SimPe.GetIcon.Fail;
+					pgArchetypeDetails.SelectedObject = null;
+				}
+				iskin.Images[0] = ImageLoader.Preview(pbarche.Image, iskin.ImageSize);
+				lvskin.Refresh();
+			}
+		}
+
+		string tarcheFile = null;
+
+		/// <summary>
+		/// Checks if an arbitrary package contains the file types required
+		/// for archetype elegibility.
+		/// </summary>
+		/// <param name="archeFile"></param>
+		/// <returns>True if the provided package can be a surgery archetype, otherwise false.</returns>
+		bool CheckArchetypeFile(SimPe.Packages.File archeFile)
+		{
+			bool ret = false;
+			if (archeFile == null)
+				return ret;
+
+			// Build a list of required file types.
+			// Could this list be static?
+			ArrayList list = new ArrayList();
+			list.Add(0xAC506764u); //3IDR
+			list.Add(Data.MetaData.GZPS); //GZPS, Property Set
+			list.Add(0xAC598EACu); //AGED
+			list.Add(0xCCCEF852u); //LxNR, Face
+			// For now we disregard the user options, and consider
+			// all these types mandatory.
+			for (
+				int i = 0;
+				i < list.Count &&
+				(ret = ContainsType(archeFile.Index, (uint)list[i]));
+				i++
+				) ;
+			return ret;
+		}
+
+		static bool ContainsType(Interfaces.Files.IPackedFileDescriptor[] index, uint type)
+		{
+			for (int i = 0; i < index.Length; i++)
+				if (index[i].Type == type && index[i].Group == 0xffffffff)
+					return true;
+			return false;
+		}
+
+		protected void FillList()
+		{
+			this.Cursor = Cursors.WaitCursor;
+
+			this.pbarche.Image = null;
+			this.pbpatient.Image = null;
+			this.pgPatientDetails.SelectedObject = null;
+			this.pgArchetypeDetails.SelectedObject = null;
+
+			if (this.cbmens.Checked)
+				this.iskin.Images[0] = ImageLoader.Preview(SimPe.GetImage.NoOne, iskin.ImageSize);
+			else this.iskin.Images[0] = ImageLoader.Preview(SimPe.GetImage.SheOne, iskin.ImageSize);
+			lvskin.Refresh();
+
+			this.spatient = null;
+			this.sarche = null;
+			this.tarcheFile = null;
+
+			button1.Enabled = false;
+			ilist.Images.Clear();
+			lv.Items.Clear();
+
+			Interfaces.Files.IPackedFileDescriptor[] pfds = ngbh.FindFiles(Data.MetaData.SIM_DESCRIPTION_FILE);
+			WaitingScreen.Wait();
+			try
+			{
+				foreach (Interfaces.Files.IPackedFileDescriptor spfd in pfds)
+				{
+					PackedFiles.Wrapper.ExtSDesc sdesc = new SimPe.PackedFiles.Wrapper.ExtSDesc();
+					sdesc.ProcessData(spfd, ngbh);
+					AddSim(sdesc);
+				}
+
+				this.Cursor = Cursors.Default;
+				this.llusearche.Enabled = false;
+				this.llusepatient.Enabled = false;
+				this.llexport.Enabled = false;
+				if (lv.Items.Count > 0) lv.Items[0].Selected = true;
+			}
+			finally { WaitingScreen.Stop(this); }
+		}
+
+		private void genderFilter_CheckedChanged(object sender, System.EventArgs e)
+		{
+			this.cbgals.Enabled = !this.cbmens.Checked;
+			this.cbmens.Enabled = !this.cbgals.Checked;
+			if (ngbh != null)
+				this.FillList();
+		}
+
+		void ShowSimDetails(SimPe.PackedFiles.Wrapper.SDesc sim, PropertyGrid pg)
+		{
+			SimPe.Packages.File package = SimPe.Packages.File.LoadFromFile(sim.CharacterFileName);
+			if (package != null)
+			{
+				SimPe.Interfaces.Files.IPackedFileDescriptor pfdAged = package.FindFile(0xAC598EAC, 0, SimPe.Data.MetaData.LOCAL_GROUP, 1);
+				if (pfdAged != null)
+				{
+					SimPe.PackedFiles.Wrapper.Cpf aged = new SimPe.PackedFiles.Wrapper.Cpf();
+					aged.ProcessData(pfdAged, package, true);
+
+					SimInfo nfo = new SimInfo(aged, System.IO.Path.GetFileName(sim.CharacterFileName), String.Format("{0} {1}", sim.SimName, sim.SimFamilyName));
+					pg.SelectedObject = nfo;
+				}
+			}
+		}
+
+		void ShowSimDetails(SimPe.Packages.File package, PropertyGrid pg)
+		{
+
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfdAged = package.FindFile(0xAC598EAC, 0, SimPe.Data.MetaData.LOCAL_GROUP, 1);
+			if (pfdAged != null)
+			{
+				SimPe.PackedFiles.Wrapper.Cpf aged = new SimPe.PackedFiles.Wrapper.Cpf();
+				aged.ProcessData(pfdAged, package, true);
+
+				SimInfo nfo = new SimInfo(aged, System.IO.Path.GetFileName(package.FileName), null);
+				pg.SelectedObject = nfo;
+			}
+		}
+
+		private bool ShowTownies
+		{
+			get
+			{
+				XmlRegistryKey rkf = Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey("SimBrowser");
+				object o = rkf.GetValue("ShowTownies", false);
+				return Convert.ToBoolean(o);
+			}
+		}
+
+		private bool ShowNPCs
+		{
+			get
+			{
+				XmlRegistryKey rkf = Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey("SimBrowser");
+				object o = rkf.GetValue("ShowNPCs", false);
+				return Convert.ToBoolean(o);
+			}
+		}
+
+		private bool UseBigIcons
+		{
+			get
+			{
+				XmlRegistryKey rkf = Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey("SimBrowser");
+				object o = rkf.GetValue("UseBiggerIcons", false);
+				return Convert.ToBoolean(o);
+			}
+		}
+
+		private bool AdultsOnly
+		{
+			get
+			{
+				XmlRegistryKey rkf = Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey("SimBrowser");
+				object o = rkf.GetValue("AdultsOnly", false);
+				return Convert.ToBoolean(o);
+			}
+		}
+
+		private bool JustGals
+		{
+			get
+			{
+				XmlRegistryKey rkf = Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey("SimBrowser");
+				object o = rkf.GetValue("JustGals", false);
+				return Convert.ToBoolean(o);
+			}
+		}
+	}
+
+	/// <summary>
+	/// A simple info object for PropertyGrid presentation purposes.
+	/// </summary>
+	internal sealed class SimInfo
+	{
+		SimPe.PackedFiles.Wrapper.Cpf ageData;
+		string name;
+		string filename;
+
+		[Category("General")]
+		public SimPe.Data.Ages Age
+		{
+			get { return (SimPe.Data.Ages)ageData.GetItem("age").UIntegerValue; }
+		}
+
+		[Category("General")]
+		public SimPe.Data.SimGender Gender
+		{
+			get { return (SimPe.Data.SimGender)ageData.GetItem("gender").UIntegerValue; }
+		}
+
+		[Category("General")]
+		public string Name
+		{
+			get { return this.name; }
+		}
+
+		[Category("General")]
+		public string Filename
+		{
+			get { return this.filename; }
+		}
+
+		[Category("Genetics")]
+		public string Hair
+		{
+			get { return ageData.GetItem("haircolor").StringValue; }
+		}
+
+		[Category("Genetics")]
+		public string Eyes
+		{
+			get { return ageData.GetItem("eyecolor").StringValue; }
+		}
+
+		[Category("Genetics")]
+		public string Skin
+		{
+			get { return ageData.GetItem("skincolor").StringValue; }
+		}
+
+		[Category("Genetics")]
+		public string Bodyshape
+		{
+			get { return SimPe.Data.MetaData.GetBodyName(SimPe.Data.MetaData.GetBodyShapeid(ageData.GetItem("skincolor").StringValue)); }
+		}
+
+		public SimInfo(SimPe.PackedFiles.Wrapper.Cpf aged, string filename, string name)
+		{
+			if (aged == null)
+				throw new ArgumentNullException();
+			this.ageData = aged;
+			this.filename = filename;
+			this.name = name;
 		}
 	}
 }

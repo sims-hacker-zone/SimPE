@@ -23,7 +23,7 @@ using SimPe.Interfaces;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für ImportSemiTool.
+	/// Summary description for ImportSemiTool.
 	/// </summary>
 	public class SimsTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
@@ -51,14 +51,15 @@ namespace SimPe.Plugin
 
         public bool IsEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
         {
-            return true;
+            return (Helper.IsNeighborhoodFile(package.FileName) || Helper.IsLotCatalogFile(package.FileName));
+            //return true;
         }
 
 		private bool IsReallyEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
 		{
-			if (package==null) return false;
+			if (package == null) return false;
 			if (prov.SimNameProvider == null) return false;
-			return Helper.IsNeighborhoodFile(package.FileName);
+			return (Helper.IsNeighborhoodFile(package.FileName) || Helper.IsLotCatalogFile(package.FileName));
 		}
 
 		public Interfaces.Plugin.IToolResult ShowDialog(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package)
@@ -77,7 +78,7 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			return "Neighborhood\\"+Localization.Manager.GetString("simsbrowser")+"...";
+			return "Neighbourhood\\"+Localization.Manager.GetString("simsbrowser")+"...";
 		}
 
 		#endregion
@@ -86,8 +87,8 @@ namespace SimPe.Plugin
 		public override System.Drawing.Image Icon
 		{
 			get
-			{
-				return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.Plugin.simbrowser.png"));
+            {
+                return SimPe.GetIcon.SimBrowser;
 			}
 		}
 		public override System.Windows.Forms.Shortcut Shortcut

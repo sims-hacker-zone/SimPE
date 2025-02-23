@@ -26,7 +26,7 @@ using System.Windows.Forms;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für DownloadScan.
+	/// Summary description for DownloadScan.
 	/// </summary>
 	public class DownloadScan : System.Windows.Forms.Form
 	{
@@ -82,7 +82,7 @@ namespace SimPe.Plugin
 		public DownloadScan()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
 
@@ -96,7 +96,7 @@ namespace SimPe.Plugin
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -110,10 +110,10 @@ namespace SimPe.Plugin
 			base.Dispose( disposing );
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -171,7 +171,7 @@ namespace SimPe.Plugin
 			// 
 			this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
 				| System.Windows.Forms.AnchorStyles.Right)));
-			this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			//this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBox1.Items.AddRange(new object[] {
 														   "Download Folder",
 														   "Teleport Folder",
@@ -453,7 +453,7 @@ namespace SimPe.Plugin
 			this.tbname.Name = "tbname";
 			this.tbname.Size = new System.Drawing.Size(152, 21);
 			this.tbname.TabIndex = 7;
-			this.tbname.Text = "SimPE-";
+			this.tbname.Text = "SimPe-";
 			// 
 			// label1
 			// 
@@ -671,11 +671,11 @@ namespace SimPe.Plugin
 			} 
 			else if (comboBox1.SelectedIndex==1) 
 			{
-				lbdir.Text = System.IO.Path.Combine(Helper.WindowsRegistry.SimSavegameFolder, "Teleport");
+				lbdir.Text = System.IO.Path.Combine(SimPe.PathProvider.SimSavegameFolder, "Teleport");
 			} 
 			else 
 			{
-				lbdir.Text = System.IO.Path.Combine(Helper.WindowsRegistry.SimSavegameFolder, "Downloads");
+				lbdir.Text = System.IO.Path.Combine(SimPe.PathProvider.SimSavegameFolder, "Downloads");
 			}
 		}
 
@@ -912,13 +912,9 @@ namespace SimPe.Plugin
 			this.Cursor = Cursors.WaitCursor;
 			string[] files = System.IO.Directory.GetFiles(lbdir.Text, "*.package");
 			string[] dis_files = System.IO.Directory.GetFiles(lbdir.Text, "*.simpedis");
-
-			
-
 			this.AddFiles(files, "yes", files.Length + dis_files.Length, 0);
 			this.AddFiles(dis_files, "no", files.Length + dis_files.Length, files.Length);
 			this.Cursor = Cursors.Default;
-
 			lv.ListViewItemSorter = sorter;
 			pb.Value = 0;
 		}
@@ -979,13 +975,13 @@ namespace SimPe.Plugin
 				this.cbelder.CheckState = CheckState.Unchecked;
 
 				cbact.CheckState = CheckState.Unchecked;
-			    cbevery.CheckState = CheckState.Unchecked;
-			    cbformal.CheckState = CheckState.Unchecked;
-			    cbpj.CheckState = CheckState.Unchecked;
-			    cbpreg.CheckState = CheckState.Unchecked;
-			    cbskin.CheckState = CheckState.Unchecked;
-			    cbswim.CheckState = CheckState.Unchecked;
-			    cbundies.CheckState = CheckState.Unchecked;
+				cbevery.CheckState = CheckState.Unchecked;
+				cbformal.CheckState = CheckState.Unchecked;
+				cbpj.CheckState = CheckState.Unchecked;
+				cbpreg.CheckState = CheckState.Unchecked;
+				cbskin.CheckState = CheckState.Unchecked;
+				cbswim.CheckState = CheckState.Unchecked;
+				cbundies.CheckState = CheckState.Unchecked;
 			} 
 			else 
 			{
@@ -1058,8 +1054,6 @@ namespace SimPe.Plugin
 			}
 
 			if (Helper.WindowsRegistry.HiddenMode) llfix.Enabled = true;
-		
-
 
 			bool oner = (lv.SelectedItems.Count==1);
 			foreach (ListViewItem lvi in lv.SelectedItems) 
@@ -1161,7 +1155,7 @@ namespace SimPe.Plugin
 
 					try 
 					{
-						SimPe.Commandline.FixPackage(filename, mname, FixVersion.UniversityReady2);
+						SimPe.Plugin.FixPackage.Fix(filename, mname, FixVersion.UniversityReady2);
 					} 
 					catch (Exception ex)
 					{

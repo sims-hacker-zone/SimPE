@@ -114,7 +114,7 @@ namespace SimPe.Plugin.Tool.Action
 		{
 			get
 			{
-				return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.Plugin.contents.png"));
+                return SimPe.GetIcon.NameMap;
 			}
 		}
 

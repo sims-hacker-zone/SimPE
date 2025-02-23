@@ -64,21 +64,37 @@ namespace SimPe.Plugin
 			get
 			{
 				reg = this.LinkedRegistry;
-
-				IToolPlugin[] tools = {
+				if (Helper.StartedGui == Executable.Classic)
+				{
+					IToolPlugin[] tools = {
 									new NeighborhoodTool(this.LinkedRegistry, this.LinkedProvider),
 									new SimsTool(this.LinkedRegistry, this.LinkedProvider),
 									new SurgeryTool(this.LinkedRegistry, this.LinkedProvider),
-									//new DownloadScanTool(this.LinkedRegistry, this.LinkedProvider),									
+									new DownloadScanTool(this.LinkedRegistry, this.LinkedProvider),
 									new HashTool(this.LinkedRegistry, this.LinkedProvider),
 									new FixTool(this.LinkedRegistry, this.LinkedProvider),
-									new WorkshopTool(this.LinkedRegistry, this.LinkedProvider),
 									new SkinWorkshopTool(),
 									new PhotoStudioTool(this.LinkedRegistry, this.LinkedProvider),
 									new SimPe.Plugin.Tool.Action.ActionGlobalFixTGI(),
 									new SimPe.Plugin.Tool.Action.ActionBuildNameMap()
 								};
-				return tools;
+					return tools;
+				}
+				else
+				{
+					IToolPlugin[] tools = {
+									new NeighborhoodTool(this.LinkedRegistry, this.LinkedProvider),
+									new SimsTool(this.LinkedRegistry, this.LinkedProvider),
+									new SurgeryTool(this.LinkedRegistry, this.LinkedProvider),
+									new HashTool(this.LinkedRegistry, this.LinkedProvider),
+									new FixTool(this.LinkedRegistry, this.LinkedProvider),
+									new SkinWorkshopTool(),
+									new PhotoStudioTool(this.LinkedRegistry, this.LinkedProvider),
+									new SimPe.Plugin.Tool.Action.ActionGlobalFixTGI(),
+									new SimPe.Plugin.Tool.Action.ActionBuildNameMap()
+								};
+					return tools;
+				}
 			}
 		}
 		#endregion

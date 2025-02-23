@@ -23,9 +23,9 @@ using SimPe.Interfaces;
 namespace SimPe.Plugin
 {
 	/// <summary>
-	/// Zusammenfassung für ImportSemiTool.
+	/// Summary description for ImportSemiTool.
 	/// </summary>
-	public class SurgeryTool : Interfaces.ITool
+	public class SurgeryTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
 		/// <summary>
 		/// Windows Registry Link
@@ -50,15 +50,16 @@ namespace SimPe.Plugin
 		#region ITool Member
 
 		public bool IsEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
-		{
-            return true;
+        {
+            return (Helper.IsNeighborhoodFile(package.FileName) || Helper.IsLotCatalogFile(package.FileName));
+            //return true;
         }
 
         private bool IsReallyEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
         {
             if (package == null) return false;
             if (prov.SimNameProvider == null) return false;
-            return Helper.IsNeighborhoodFile(package.FileName);
+            return (Helper.IsNeighborhoodFile(package.FileName) || Helper.IsLotCatalogFile(package.FileName));
         }
 
 		Surgery surg;
@@ -78,9 +79,26 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			return "Neighborhood\\Sims Surgery...";
-		}
+			return "Neighbourhood\\Sims Surgery...";
+        }
 
-		#endregion
+        #endregion
+
+        #region IToolExt Member
+        public override System.Drawing.Image Icon
+        {
+            get
+            {
+                return SimPe.GetIcon.SimSurgery;
+            }
+        }
+		public override System.Windows.Forms.Shortcut Shortcut
+		{
+            get
+            {
+                return System.Windows.Forms.Shortcut.None;
+            }
+        }
+        #endregion
 	}
 }
