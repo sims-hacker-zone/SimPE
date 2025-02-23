@@ -61,7 +61,7 @@ namespace SimPe.Plugin.Scanner
 			ps.Data[0] = (uint)SimPe.PackedFiles.Wrapper.ShelveDimension.Indetermined;
 			ps.State = TriState.True;
 
-			if (si.PackageCacheItem.Type == PackageType.Object || si.PackageCacheItem.Type == PackageType.MaxisObject) 
+			if (si.PackageCacheItem.Type == PackageType.CustomObject || si.PackageCacheItem.Type == PackageType.Object) 
 			{
 				SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(Data.MetaData.OBJD_FILE);
 				
@@ -159,9 +159,8 @@ namespace SimPe.Plugin.Scanner
 			try 
 			{				
 				foreach (ScannerItem si in selection) 
-				{			
-					if (si.PackageCacheItem.Thumbnail!=null) WaitingScreen.Update(si.PackageCacheItem.Thumbnail, si.FileName);
-					else WaitingScreen.UpdateMessage(si.FileName);
+				{
+					WaitingScreen.UpdateMessage(si.FileName);
 
 					SimPe.Cache.PackageState ps = si.PackageCacheItem.FindState(this.Uid, true);
 					if (ps.Data.Length<1) continue;
@@ -195,8 +194,9 @@ namespace SimPe.Plugin.Scanner
 			{
 				Helper.ExceptionMessage("", ex);
 			}
-			finally 
+			finally
 			{
+				WaitingScreen.UpdateImage(null);
 				WaitingScreen.Stop();
 			}
 		}

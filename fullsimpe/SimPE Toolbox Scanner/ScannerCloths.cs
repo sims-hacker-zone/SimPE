@@ -34,7 +34,7 @@ namespace SimPe.Plugin.Scanner
 	{		
 		public ClothingScanner () : base () { }
 
-	    #region IScannerBase Member
+		#region IScannerBase Member
 		public uint Version 
 		{
 			get { return 1; }
@@ -52,12 +52,13 @@ namespace SimPe.Plugin.Scanner
 		{
 			AbstractScanner.AddColumn(ListView, "Ages", 150);
 			AbstractScanner.AddColumn(ListView, "Categories", 150);
+			AbstractScanner.AddColumn(ListView, "Gender", 50);
 		}
 
 
 		public void ScanPackage(ScannerItem si, SimPe.Cache.PackageState ps, System.Windows.Forms.ListViewItem lvi)
-		{		
-			if (si.PackageCacheItem.Type == SimPe.Cache.PackageType.Cloth || 
+		{
+			if (si.PackageCacheItem.Type == SimPe.Cache.PackageType.Clothing || 
 				si.PackageCacheItem.Type == SimPe.Cache.PackageType.Skin ||
 				((uint)si.PackageCacheItem.Type & (uint)SimPe.Cache.PackageType.Makeup) == (uint)SimPe.Cache.PackageType.Makeup || 
 				((uint)si.PackageCacheItem.Type & (uint)SimPe.Cache.PackageType.Accessory) == (uint)SimPe.Cache.PackageType.Accessory || 
@@ -78,6 +79,7 @@ namespace SimPe.Plugin.Scanner
 
 					data.Add(cpf.GetSaveItem("age").UIntegerValue);
 					data.Add(cpf.GetSaveItem("category").UIntegerValue);
+					data.Add(cpf.GetSaveItem("gender").UIntegerValue);
 				}
 
 				ps.Data = new uint[data.Count];
@@ -94,15 +96,17 @@ namespace SimPe.Plugin.Scanner
 
 		public void UpdateState(ScannerItem si, SimPe.Cache.PackageState ps, System.Windows.Forms.ListViewItem lvi)
 		{				
-			AbstractScanner.SetSubItem(lvi, this.StartColum+1, "");
+			AbstractScanner.SetSubItem(lvi, this.StartColum+2, "");
 
 			System.Drawing.Color cl = lvi.ForeColor;
-			if (ps.State == TriState.True) 
+			if (ps.State == TriState.True)
 			{
+				uint f = 0;
 				uint c = 0;
 				uint a = 0;
-				for (int i=0;i<ps.Data.Length-1; i+=2) 
+				for (int i=0;i<ps.Data.Length-2; i+=3)
 				{
+					f |= ps.Data[i + 2];
 					c |= ps.Data[i+1];
 					a |= ps.Data[i];
 				}
@@ -117,15 +121,29 @@ namespace SimPe.Plugin.Scanner
 						age += ag.ToString();
 					}
 				}
-				if (a==0) 
+				if (a == 0)
 					cl = System.Drawing.Color.Red;
 				AbstractScanner.SetSubItem(lvi, this.StartColum, age, cl);
 
+				string sex = "";
+				Data.Sex[] sexs = (Data.Sex[])System.Enum.GetValues(typeof(Data.Sex));
+				foreach (Data.Sex sx in sexs)
+				{
+					if ((f & (uint)sx) != 0)
+					{
+						if (sex != "") sex += ", ";
+						sex += sx.ToString();
+					}
+				}
+				if (f == 0)
+					cl = System.Drawing.Color.Red; else cl = lvi.ForeColor;
+				AbstractScanner.SetSubItem(lvi, this.StartColum+2, sex, cl);
+
 				if (si.PackageCacheItem.Type != SimPe.Cache.PackageType.Skin) 
 				{
-					string category="";				
-					Data.SkinCategories[] cats = (Data.SkinCategories[])System.Enum.GetValues(typeof(Data.SkinCategories));
-					foreach (Data.SkinCategories cat in cats) 
+					string category="";
+					Data.OutfitCats[] cats = (Data.OutfitCats[])System.Enum.GetValues(typeof(Data.OutfitCats));
+					foreach (Data.OutfitCats cat in cats) 
 					{
 						
 						if ((c&(uint)cat)!=0) 
@@ -134,8 +152,8 @@ namespace SimPe.Plugin.Scanner
 							category += cat.ToString();
 						}
 					}
-					if (c==0) 
-						cl = System.Drawing.Color.Red;
+					if (c==0)
+						cl = System.Drawing.Color.Red; else cl = lvi.ForeColor;
 					AbstractScanner.SetSubItem(lvi, this.StartColum+1, category, cl);
 				}				
 				
@@ -164,20 +182,24 @@ namespace SimPe.Plugin.Scanner
 			int[] agect = new int[ScannerPanelForm.Form.cbages.Length];
 			for (int i=0; i<agect.Length; i++)  agect[i] = 0;
 			int[] catct = new int[ScannerPanelForm.Form.cbcategories.Length];
-			for (int i=0; i<catct.Length; i++)  catct[i] = 0;
+			for (int i = 0; i < catct.Length; i++) catct[i] = 0;
+			int[] sexct = new int[ScannerPanelForm.Form.cbsexes.Length];
+			for (int i = 0; i < sexct.Length; i++) sexct[i] = 0;
 
 			int maxagecount = 0;
 			foreach (ScannerItem si in items) 
 			{
 				SimPe.Cache.PackageState ps = si.PackageCacheItem.FindState(this.Uid, true);
-				for (int ct=0; ct<ps.Data.Length-1; ct+=2) 
+				for (int ct = 0; ct < ps.Data.Length - 2; ct += 3)
 				{			
 					en = true;
 					maxagecount++;
 					for (int i=0; i<agect.Length; i++) 
-						if ((ps.Data[ct]&(uint)ScannerPanelForm.Form.cbages[i].Tag)!=0) agect[i]++;					
-					for (int i=0; i<catct.Length; i++) 
-						if ((ps.Data[ct+1]&(uint)ScannerPanelForm.Form.cbcategories[i].Tag)!=0) catct[i]++;	
+						if ((ps.Data[ct]&(uint)ScannerPanelForm.Form.cbages[i].Tag)!=0) agect[i]++;
+					for (int i=0; i<catct.Length; i++)
+						if ((ps.Data[ct+1]&(uint)ScannerPanelForm.Form.cbcategories[i].Tag)!=0) catct[i]++;
+					for (int i = 0; i < sexct.Length; i++)
+						if ((ps.Data[ct+2] & (uint)ScannerPanelForm.Form.cbsexes[i].Tag) != 0) sexct[i]++;
 				} //for ct
 			}
 
@@ -196,6 +218,14 @@ namespace SimPe.Plugin.Scanner
 				else if (catct[i]==maxagecount) ScannerPanelForm.Form.cbcategories[i].CheckState = System.Windows.Forms.CheckState.Checked;
 				else ScannerPanelForm.Form.cbcategories[i].CheckState = System.Windows.Forms.CheckState.Indeterminate;
 			}
+
+			//Set the State of the Checkboxes
+			for (int i = 0; i < sexct.Length; i++)
+			{
+				if (sexct[i] == 0) ScannerPanelForm.Form.cbsexes[i].CheckState = System.Windows.Forms.CheckState.Unchecked;
+				else if (sexct[i] == maxagecount) ScannerPanelForm.Form.cbsexes[i].CheckState = System.Windows.Forms.CheckState.Checked;
+				else ScannerPanelForm.Form.cbsexes[i].CheckState = System.Windows.Forms.CheckState.Indeterminate;
+			}			
 
 			this.OperationControl.Enabled = en;
 		}
@@ -244,34 +274,33 @@ namespace SimPe.Plugin.Scanner
 				bool chg = false;
 				foreach (ScannerItem si in selection) 
 				{
-					if (si.PackageCacheItem.Type == SimPe.Cache.PackageType.Cloth || 
+					if (si.PackageCacheItem.Type == SimPe.Cache.PackageType.Clothing ||
 						si.PackageCacheItem.Type == SimPe.Cache.PackageType.Skin ||
-						((uint)si.PackageCacheItem.Type & (uint)SimPe.Cache.PackageType.Makeup) == (uint)SimPe.Cache.PackageType.Makeup || 
-						((uint)si.PackageCacheItem.Type & (uint)SimPe.Cache.PackageType.Accessory) == (uint)SimPe.Cache.PackageType.Accessory || 
-						si.PackageCacheItem.Type == SimPe.Cache.PackageType.Hair 
-						) 
+						((uint)si.PackageCacheItem.Type & (uint)SimPe.Cache.PackageType.Makeup) == (uint)SimPe.Cache.PackageType.Makeup ||
+						((uint)si.PackageCacheItem.Type & (uint)SimPe.Cache.PackageType.Accessory) == (uint)SimPe.Cache.PackageType.Accessory ||
+						si.PackageCacheItem.Type == SimPe.Cache.PackageType.Hair
+						)
 					{
-						if (si.PackageCacheItem.Thumbnail!=null) WaitingScreen.Update(si.PackageCacheItem.Thumbnail, si.FileName);
-						else WaitingScreen.UpdateMessage(si.FileName);
+						WaitingScreen.UpdateMessage(si.FileName);
 
 						//make sure, the file is rescanned on the next Cache Update
 						SimPe.Cache.PackageState ps = si.PackageCacheItem.FindState(this.Uid, true);
 						ps.State = TriState.Null;
 
 						Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(Data.MetaData.GZPS);
-						if (pfds.Length==0) pfds = si.Package.FindFiles(0xCCA8E925); //Object XML
-						if (pfds.Length==0) pfds = si.Package.FindFiles(0x2C1FD8A1); //TextureOverlay XML
-						if (pfds.Length==0) pfds = si.Package.FindFiles(0x8C1580B5); //Hairtone XML
-						if (pfds.Length==0) pfds = si.Package.FindFiles(0x0C1FE246); //Mesh Overlay XML
+						if (pfds.Length == 0) pfds = si.Package.FindFiles(0xCCA8E925); //Object XML
+						if (pfds.Length == 0) pfds = si.Package.FindFiles(0x2C1FD8A1); //TextureOverlay XML
+						if (pfds.Length == 0) pfds = si.Package.FindFiles(0x8C1580B5); //Hairtone XML
+						if (pfds.Length == 0) pfds = si.Package.FindFiles(0x0C1FE246); //Mesh Overlay XML
 
 						ArrayList data = new ArrayList();
-						foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds) 
+						foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 						{
 							SimPe.PackedFiles.Wrapper.Cpf cpf = new Cpf();
 							cpf.ProcessData(pfd, si.Package, false);
 
 							uint age = cpf.GetSaveItem(name).UIntegerValue;
-							foreach (CheckBox cb in cbs) 
+							foreach (CheckBox cb in cbs)
 							{
 								if (cb.CheckState == CheckState.Indeterminate) continue;
 
@@ -279,23 +308,20 @@ namespace SimPe.Plugin.Scanner
 								if (cb.CheckState == CheckState.Unchecked) age ^= (uint)cb.Tag;
 							}
 
-							if (yacheck) 
+							if (yacheck)
 							{
 								//when Young Adult is set, we need to make sure that the Version is updated accordingly!
-								if ((age&(uint)Data.Ages.YoungAdult)!=0) AddUniversityFields(cpf);
+								if ((age & (uint)Data.Ages.YoungAdult) != 0) AddUniversityFields(cpf);
 							}
 
-							if (cpf.GetSaveItem(name).UIntegerValue!=age) chg=true;
+							if (cpf.GetSaveItem(name).UIntegerValue != age) chg = true;
 							cpf.GetSaveItem(name).UIntegerValue = age;
 
 							cpf.SynchronizeUserData();
-						}	
-					
+						}
+
 						si.Package.Save();
-					} 
-					
-
-
+					}
 				}//foreach
 				if (chg && this.CallbackFinish!=null) this.CallbackFinish(false, false);
 			} 
@@ -303,8 +329,9 @@ namespace SimPe.Plugin.Scanner
 			{
 				Helper.ExceptionMessage("", ex);
 			}
-			finally 
+			finally
 			{
+				WaitingScreen.UpdateImage(null);
 				WaitingScreen.Stop();
 			}
 		}
@@ -315,6 +342,13 @@ namespace SimPe.Plugin.Scanner
 		public void SetAge()
 		{
 			SetProperty("age", ScannerPanelForm.Form.cbages, true);
+		}
+		/// <summary>
+		/// Set the Gender of the Files
+		/// </summary>
+		public void SetSex()
+		{
+			SetProperty("gender", ScannerPanelForm.Form.cbsexes, true);
 		}
 
 		/// <summary>

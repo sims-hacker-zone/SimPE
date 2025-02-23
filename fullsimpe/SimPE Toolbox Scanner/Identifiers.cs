@@ -49,7 +49,7 @@ namespace SimPe.Plugin.Identifiers
 
 
 	/// <summary>
-	/// Identifies a Recolor Package
+	/// Identifies a Cep Package
 	/// </summary>
 	internal class CepIdentifier : IIdentifier
 	{
@@ -88,7 +88,7 @@ namespace SimPe.Plugin.Identifiers
 	}
 
 	/// <summary>
-	/// Identifies a Recolor Package
+	/// Identifies a Sim Package
 	/// </summary>
 	internal class SimIdentifier : IIdentifier
 	{
@@ -115,8 +115,8 @@ namespace SimPe.Plugin.Identifiers
 
 		public SimPe.Cache.PackageType GetType(SimPe.Interfaces.Files.IPackageFile pkg)
 		{
-			if (pkg.FindFiles(0xCCCEF852).Length!=0) return SimPe.Cache.PackageType.Sim; //Facial Structure
-			if (pkg.FindFiles(0xAC598EAC).Length!=0) return SimPe.Cache.PackageType.Sim; //Age Data
+			if (pkg.FindFiles(0xCCCEF852).Length!=0) return SimPe.Cache.PackageType.Sim; //Facial Structure - Pets don't have
+			if (pkg.FindFiles(0xAC598EAC).Length!=0) return SimPe.Cache.PackageType.Sim; //Age Data - Outfits with GUID do have
 			return SimPe.Cache.PackageType.Unknown;
 		}
 
@@ -124,7 +124,7 @@ namespace SimPe.Plugin.Identifiers
 	}
 
 	/// <summary>
-	/// Identifies a Recolor Package
+	/// Identifies an Object Package
 	/// </summary>
 	internal class ObjectIdentifier : IIdentifier
 	{
@@ -153,9 +153,9 @@ namespace SimPe.Plugin.Identifiers
 		{
 			if (pkg.FindFiles(Data.MetaData.OBJD_FILE).Length==0) return SimPe.Cache.PackageType.Unknown;
 
-			if (pkg.FindFiles(0x484F5553).Length>0) return SimPe.Cache.PackageType.Lot; //HOUS Resources
-			if (pkg.FindFilesByGroup(Data.MetaData.CUSTOM_GROUP).Length>0) return SimPe.Cache.PackageType.Object;
-			else return SimPe.Cache.PackageType.MaxisObject;
+			if (pkg.FindFiles(0x484F5553).Length>0) return SimPe.Cache.PackageType.Lot; //HOUS Resources - Lots won't get here
+            if (pkg.FindFilesByGroup(Data.MetaData.CUSTOM_GROUP).Length > 0) return SimPe.Cache.PackageType.CustomObject;
+			else return SimPe.Cache.PackageType.Object;
 		}
 
 		#endregion
@@ -231,8 +231,8 @@ namespace SimPe.Plugin.Identifiers
 					{
 						uint cat = cpf.GetSaveItem("category").UIntegerValue;
 
-						if ((cat & (uint)Data.SkinCategories.Skin) != 0) return SimPe.Cache.PackageType.Skin;
-						else return SimPe.Cache.PackageType.Cloth;
+                        if ((cat & (uint)Data.OutfitCats.Skin) != 0) return SimPe.Cache.PackageType.Skin;
+                        else return SimPe.Cache.PackageType.Clothing;
 					}
 					case "meshoverlay":
 					case "textureoverlay":
@@ -307,7 +307,7 @@ namespace SimPe.Plugin.Identifiers
 				}
 			}
 
-			return SimPe.Cache.PackageType.Recolor;
+			return SimPe.Cache.PackageType.Recolour;
 		}
 
 		#endregion

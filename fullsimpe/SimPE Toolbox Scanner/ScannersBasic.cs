@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+using System.Drawing;
 using SimPe.Cache;
 using SimPe.PackedFiles.Wrapper;
 using System.Collections;
@@ -333,7 +334,7 @@ namespace SimPe.Plugin.Scanner
 				str.ProcessData(pfds[0], si.Package, false);
 
 				SimPe.PackedFiles.Wrapper.StrItemList list = str.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
-                foreach (SimPe.PackedFiles.Wrapper.StrToken item in list) 
+				foreach (SimPe.PackedFiles.Wrapper.StrToken item in list) 
 				{
 					if (item.Title.Trim()!="") 
 					{
@@ -418,7 +419,7 @@ namespace SimPe.Plugin.Scanner
 		public void ScanPackage(ScannerItem si, SimPe.Cache.PackageState ps, System.Windows.Forms.ListViewItem lvi)
 		{
 			System.Drawing.Size sz = AbstractScanner.ThumbnailSize;
-			if (si.PackageCacheItem.Type == PackageType.Object || si.PackageCacheItem.Type == PackageType.MaxisObject || si.PackageCacheItem.Type == PackageType.Recolor) 
+			if (si.PackageCacheItem.Type == PackageType.CustomObject || si.PackageCacheItem.Type == PackageType.Object || si.PackageCacheItem.Type == PackageType.Recolour)
 			{
 				SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(Data.MetaData.OBJD_FILE);
 					
@@ -434,7 +435,7 @@ namespace SimPe.Plugin.Scanner
 
 				foreach (string modelname in modelnames) 
 				{                    
-                    System.Drawing.Image img = SimPe.Plugin.Workshop.GetThumbnail(group, modelname);
+					System.Drawing.Image img = GetThumbnail(group, modelname);
 					if (img!=null) 
 					{
 						si.PackageCacheItem.Thumbnail = img;
@@ -501,7 +502,6 @@ namespace SimPe.Plugin.Scanner
 				}
 			}
 
-            if (si.PackageCacheItem.Thumbnail != null) if (WaitingScreen.Running) WaitingScreen.UpdateImage(si.PackageCacheItem.Thumbnail);
 			UpdateState(si, ps, lvi);
 		}
 
@@ -527,6 +527,44 @@ namespace SimPe.Plugin.Scanner
 		{
 			return "Thumbnail Scanner";
 		}
+
+
+		#region Thumbnails
+
+		public static uint ThumbnailHash(uint group, string modelname)
+		{
+			string name = group.ToString() + modelname;
+			return (uint)Hashes.ToLong(Hashes.Crc32.ComputeHash(Helper.ToBytes(name.Trim().ToLower())));
+		}
+
+		static SimPe.Packages.File thumbs = null;
+
+		public static Image GetThumbnail(uint group, string modelname)
+		{
+
+			if (thumbs == null)
+			{
+				thumbs = SimPe.Packages.File.LoadFromFile(System.IO.Path.Combine(PathProvider.SimSavegameFolder, "Thumbnails\\ObjectThumbnails.package"));
+				thumbs.Persistent = true;
+			}
+
+			if (modelname.EndsWith("_cres", true, null)) modelname = modelname.Substring(0, modelname.Length - 5); ;
+
+			uint inst = ThumbnailHash(group, modelname);
+			Interfaces.Files.IPackedFileDescriptor ipfd = thumbs.FindFile(0xAC2950C1, group, 0xFFFFFFFF, inst);
+			if (ipfd != null)
+			{
+				try
+				{
+					SimPe.PackedFiles.Wrapper.Picture pic = new SimPe.PackedFiles.Wrapper.Picture();
+					pic.ProcessData(ipfd, thumbs);
+					return pic.Image;
+				}
+				catch (Exception) { }
+			}
+			return null;
+		}
+		#endregion
 	}
 
 	/// <summary>
@@ -557,9 +595,9 @@ namespace SimPe.Plugin.Scanner
 			if (list==null) list = new Hashtable();
 			else list.Clear();
 
-            string WaitingScreenMessage = "";
-            if (WaitingScreen.Running) WaitingScreenMessage = WaitingScreen.Message;
-            if (WaitingScreen.Running) WaitingScreen.Message = "Init Cache File";
+			string WaitingScreenMessage = "";
+			if (WaitingScreen.Running) WaitingScreenMessage = WaitingScreen.Message;
+			if (WaitingScreen.Running) WaitingScreen.Message = "Init Cache File";
 			if (cachefile==null) 
 			{
 				cachefile = MemoryCacheFile.InitCacheFile();
@@ -575,15 +613,16 @@ namespace SimPe.Plugin.Scanner
 			AbstractScanner.AddColumn(ListView, "Duplicate GUID", 80);
 			AbstractScanner.AddColumn(ListView, "First found", 80);
 
-            if (WaitingScreen.Running) WaitingScreen.Message = "Create hashtable";
-            foreach (MemoryCacheItem mci in cachefile.List) 
+			if (WaitingScreen.Running) WaitingScreen.Message = "Create hashtable";
+			foreach (MemoryCacheItem mci in cachefile.List) 
 			{
 				string flname = null;
 				if (mci.ParentCacheContainer==null)  
 					flname = mci.FileDescriptor.Filename;
 				else
-					flname = mci.ParentCacheContainer.FileName;				
-				list[(uint)mci.Guid] = flname.Trim().ToLower();
+					flname = mci.ParentCacheContainer.FileName;
+				list[(uint)mci.Guid] = flname;
+				// list[(uint)mci.Guid] = flname.Trim().ToLower();
 				/*if (mci.Guid == guid) 
 				{
 					if (mci.ParentCacheContainer!=null) 
@@ -596,8 +635,8 @@ namespace SimPe.Plugin.Scanner
 					}
 				}*/
 			}
-            if (WaitingScreen.Running) WaitingScreen.Message = WaitingScreenMessage;
-        }
+			if (WaitingScreen.Running) WaitingScreen.Message = WaitingScreenMessage;
+		}
 
 
 		public void ScanPackage(ScannerItem si, SimPe.Cache.PackageState ps, System.Windows.Forms.ListViewItem lvi)
@@ -626,9 +665,10 @@ namespace SimPe.Plugin.Scanner
 			ps.State = TriState.True;
 			string guids = "";
 			string ff = SimPe.Localization.Manager.GetString("unknown");
-			foreach (uint guid in si.PackageCacheItem.Guids) 
+			foreach (uint guid in si.PackageCacheItem.Guids)
 			{
-				string flname = si.FileName.Trim().ToLower();
+				string flname = si.FileName;
+				// string flname = si.FileName.Trim().ToLower();
 				if (guids!="") guids += ", ";
 				guids += "0x"+Helper.HexString(guid);
 
@@ -647,7 +687,8 @@ namespace SimPe.Plugin.Scanner
 					}
 				}*/
 
-				string fl = si.Package.FileName.Trim().ToLower();
+				string fl = si.Package.FileName;
+				// string fl = si.Package.FileName.Trim().ToLower();
 				if (list.ContainsKey(guid)) 
 				{ 		
 					string cmp = (string)list[guid];
@@ -667,9 +708,9 @@ namespace SimPe.Plugin.Scanner
 			string text = "no";
 			if (ps.State == TriState.False) text = "yes";
 
-			AbstractScanner.SetSubItem(lvi, this.StartColum, guids);	
-			AbstractScanner.SetSubItem(lvi, this.StartColum+1, text, ps);	
-			AbstractScanner.SetSubItem(lvi, this.StartColum+2, ff);	
+			AbstractScanner.SetSubItem(lvi, this.StartColum, guids);
+			AbstractScanner.SetSubItem(lvi, this.StartColum+1, text, ps);
+			AbstractScanner.SetSubItem(lvi, this.StartColum+2, ff);
 		}
 
 		public void FinishScan() { }
@@ -771,7 +812,7 @@ namespace SimPe.Plugin.Scanner
 
 		public override string ToString()
 		{
-			return "Recolor-Basemesh Scanner";
+			return "Recolour-Basemesh Scanner";
 		}
 	}
 

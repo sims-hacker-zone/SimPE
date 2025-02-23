@@ -72,7 +72,7 @@ namespace SimPe.Plugin.Scanner
 			ps.Data = new uint[1];
 			ps.State = TriState.True;
 			ps.Data[0] = (uint)HealthState.Ok;
-			if (si.Package.Header.Version != 0x100000001) 
+			if (si.Package.Header.Version != 0x100000001 && si.Package.Header.Version != 0x100000002)
 			{
 				ps.Data[0] = (uint)HealthState.UnknownVersion;
 			} 
@@ -90,7 +90,7 @@ namespace SimPe.Plugin.Scanner
 						}						
 					}
 
-					if (ps.Data[0] == (uint)HealthState.Ok) 
+					if (ps.Data[0] == (uint)HealthState.Ok)
 					{
 						foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in si.Package.Index) 
 						{
@@ -100,23 +100,23 @@ namespace SimPe.Plugin.Scanner
 							{
 								SimPe.PackedFiles.Wrapper.ExtObjd obj = new ExtObjd();
 								obj.ProcessData(pfd, si.Package);
-
-								if (obj.Ok!=SimPe.PackedFiles.Wrapper.ObjdHealth.Ok) ps.Data[0] = (uint)HealthState.NonDefaultObjd;
-								if (obj.Ok==SimPe.PackedFiles.Wrapper.ObjdHealth.UnmatchingFilenames && Helper.WindowsRegistry.HiddenMode) ps.Data[0] = (uint)HealthState.FaultyNamedObjd;
-								if (obj.Ok==ObjdHealth.OverLength) ps.Data[0] = (uint)HealthState.FaultySizedObjd;
+								if (obj.Ok != SimPe.PackedFiles.Wrapper.ObjdHealth.Ok) ps.Data[0] = (uint)HealthState.NonDefaultObjd;
+								if (obj.Ok == SimPe.PackedFiles.Wrapper.ObjdHealth.UnmatchingFilenames && UserVerification.HaveUserId) ps.Data[0] = (uint)HealthState.FaultyNamedObjd;
+								if (obj.Ok == ObjdHealth.OverLength) ps.Data[0] = (uint)HealthState.FaultySizedObjd;
 							}
+							
 							if (pfd.Type == Data.MetaData.GMDC) 
 							{
 								SimPe.Plugin.GenericRcol rcol = new GenericRcol();
 								rcol.ProcessData(pfd, si.Package);
 
 								SimPe.Plugin.GeometryDataContainer gmdc = (SimPe.Plugin.GeometryDataContainer)rcol.Blocks[0];
-								foreach (SimPe.Plugin.Gmdc.GmdcGroup g in gmdc.Groups) 
-								{
-									if (g.FaceCount>SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_FACE_AMOUNT) ps.Data[0] = (uint)HealthState.BigMeshGeometry;
-									else if (g.UsedVertexCount>SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT) ps.Data[0] = (uint)HealthState.BigMeshGeometry;
-								}
+								foreach (SimPe.Plugin.Gmdc.GmdcGroup g in gmdc.Groups)
+									{
+										if (g.FaceCount > SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_FACE_AMOUNT || g.UsedVertexCount > SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT) ps.Data[0] = (uint)HealthState.BigMeshGeometry;
+									}
 							}
+
 							if (!fl.IsCompressed) continue;
 
 							int pos = si.Package.FileListFile.FindFile(pfd);
@@ -175,7 +175,7 @@ namespace SimPe.Plugin.Scanner
 				SimPe.Cache.PackageState ps = item.PackageCacheItem.FindState(this.Uid, true);
 				if ((ps.State != TriState.Null) && (ps.Data.Length>0))
 				{
-					if ((HealthState)ps.Data[0]!=HealthState.Ok) 
+					if ((HealthState)ps.Data[0] == HealthState.WrongCompressionSize) // if ((HealthState)ps.Data[0]!=HealthState.Ok)					 
 					{
 						OperationControl.Enabled = true;
 						return;
@@ -188,7 +188,7 @@ namespace SimPe.Plugin.Scanner
 
 		protected override System.Windows.Forms.Control CreateOperationControl()
 		{
-			Skybound.VisualStyles.VisualStyleLinkLabel ll = new Skybound.VisualStyles.VisualStyleLinkLabel();
+			System.Windows.Forms.LinkLabel ll = new System.Windows.Forms.LinkLabel();
 			ll.AutoSize = true;
 			ll.Text = "fix unhealthy Package";
 			ll.Font = new System.Drawing.Font("Verdana", ll.Font.Size, System.Drawing.FontStyle.Bold);
@@ -218,9 +218,8 @@ namespace SimPe.Plugin.Scanner
 			try 
 			{
 				foreach (ScannerItem si in selection) 
-				{					
-					if (si.PackageCacheItem.Thumbnail!=null) WaitingScreen.Update(si.PackageCacheItem.Thumbnail, si.FileName);
-					else WaitingScreen.UpdateMessage(si.FileName);
+				{
+					WaitingScreen.UpdateMessage(si.FileName);
 
 					SimPe.Cache.PackageState ps = si.PackageCacheItem.FindState(this.Uid, true);
 					if ((ps.State != TriState.Null) && (ps.Data.Length>0))
@@ -249,7 +248,7 @@ namespace SimPe.Plugin.Scanner
 										{
 											ps.State = TriState.False;
 											ps.Data[0] = (uint)HealthState.NonDefaultObjd;
-											if (objd.Ok==SimPe.PackedFiles.Wrapper.ObjdHealth.UnmatchingFilenames && Helper.WindowsRegistry.HiddenMode) ps.Data[0] = (uint)HealthState.FaultyNamedObjd;
+											if (objd.Ok == SimPe.PackedFiles.Wrapper.ObjdHealth.UnmatchingFilenames && UserVerification.HaveUserId) ps.Data[0] = (uint)HealthState.FaultyNamedObjd;
 											if (objd.Ok==ObjdHealth.OverLength) ps.Data[0] = (uint)HealthState.FaultySizedObjd;
 										}
 									}
@@ -271,8 +270,9 @@ namespace SimPe.Plugin.Scanner
 			{
 				Helper.ExceptionMessage("", ex);
 			}
-			finally 
+			finally
 			{
+				WaitingScreen.UpdateImage(null);
 				WaitingScreen.Stop();
 			}
 		}

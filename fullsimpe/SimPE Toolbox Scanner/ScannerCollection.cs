@@ -4,7 +4,7 @@ using SimPe.Interfaces.Plugin.Scanner;
 namespace SimPe.Plugin.Scanner
 {
 	/// <summary>
-	/// Zusammenfassung für ScannerCollection.
+	/// Summary description for ScannerCollection.
 	/// </summary>
 	public class ScannerCollection : System.Collections.IEnumerable, System.IDisposable
 	{

@@ -26,7 +26,7 @@ using System.Windows.Forms;
 namespace SimPe.Plugin.Scanner
 {
 	/// <summary>
-	/// Zusammenfassung für ScannerPanelForm.
+	/// Summary description for ScannerPanelForm.
 	/// </summary>
 	internal class ScannerPanelForm : System.Windows.Forms.Form
 	{        
@@ -51,22 +51,23 @@ namespace SimPe.Plugin.Scanner
 		private System.Windows.Forms.CheckBox cbtoddler;
 		private System.Windows.Forms.CheckBox cbbaby;
 		/// <summary>
-		/// Erforderliche Designervariable.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
-		internal System.Windows.Forms.CheckBox[] cbages = new CheckBox[7];
-		private Skybound.VisualStyles.VisualStyleLinkLabel llsetage;
-		private Skybound.VisualStyles.VisualStyleLinkLabel llsetcat;
+        internal System.Windows.Forms.CheckBox[] cbages = new CheckBox[7];
+        internal System.Windows.Forms.CheckBox[] cbsexes = new CheckBox[2];
+        private System.Windows.Forms.LinkLabel llsetage;
+        private System.Windows.Forms.LinkLabel llsetcat;
 		private System.Windows.Forms.TabPage tabPage2;
 		internal System.Windows.Forms.Panel pnep;
-		private Skybound.VisualStyles.VisualStyleLinkLabel visualStyleLinkLabel1;
+        private System.Windows.Forms.LinkLabel visualStyleLinkLabel1;
 		private System.Windows.Forms.TextBox tbname;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.TabPage tabPage3;
 		internal System.Windows.Forms.Panel pnskin;
 		private System.Windows.Forms.Label label4;
-		private Skybound.VisualStyles.VisualStyleLinkLabel visualStyleLinkLabel2;
+        private System.Windows.Forms.LinkLabel visualStyleLinkLabel2;
 		private System.Windows.Forms.ComboBox cbskins;
 		private System.Windows.Forms.SaveFileDialog sfd;
 		private System.Windows.Forms.CheckBox cbtxmt;
@@ -76,13 +77,17 @@ namespace SimPe.Plugin.Scanner
 		internal System.Windows.Forms.Panel pnShelve;
 		private System.Windows.Forms.Label label5;
 		internal Ambertation.Windows.Forms.EnumComboBox cbshelve;
-		private Skybound.VisualStyles.VisualStyleLinkLabel llShelve;
-        private CheckBox cbout;		
+        private System.Windows.Forms.LinkLabel llShelve;
+        private CheckBox cbout;
+        private System.Windows.Forms.LinkLabel llsetsex;
+        private Label label6;
+        private CheckBox cbmale;
+        private CheckBox cbfemale;		
 		internal System.Windows.Forms.CheckBox[] cbcategories = new CheckBox[9];
 		public ScannerPanelForm()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Required designer variable.
 			//
 			InitializeComponent();
 
@@ -92,17 +97,20 @@ namespace SimPe.Plugin.Scanner
 			cbages[3] = cbteen; cbteen.Tag = Data.Ages.Teen;
 			cbages[4] = cbyoung; cbyoung.Tag = Data.Ages.YoungAdult;
 			cbages[5] = cbadult; cbadult.Tag = Data.Ages.Adult;
-			cbages[6] = cbelder; cbelder.Tag = Data.Ages.Elder;
-			
-			cbcategories[0] = cbact; cbact.Tag = Data.SkinCategories.Activewear;
-			cbcategories[1] = cbevery; cbevery.Tag = Data.SkinCategories.Everyday;
-			cbcategories[2] = cbformal; cbformal.Tag = Data.SkinCategories.Formal;
-			cbcategories[3] = cbpj; cbpj.Tag = Data.SkinCategories.PJ;
-			cbcategories[4] = cbpreg; cbpreg.Tag = Data.SkinCategories.Pregnant;
-			cbcategories[5] = cbskin; cbskin.Tag = Data.SkinCategories.Skin;
-			cbcategories[6] = cbswim; cbswim.Tag = Data.SkinCategories.Swimmwear;
-			cbcategories[7] = cbundies; cbundies.Tag = Data.SkinCategories.Undies;
-            cbcategories[8] = cbout; cbout.Tag = Data.SkinCategories.Outerwear;
+            cbages[6] = cbelder; cbelder.Tag = Data.Ages.Elder;
+
+            cbcategories[0] = cbact; cbact.Tag = Data.OutfitCats.Gym;
+            cbcategories[1] = cbevery; cbevery.Tag = Data.OutfitCats.Everyday;
+            cbcategories[2] = cbformal; cbformal.Tag = Data.OutfitCats.Formal;
+            cbcategories[3] = cbpj; cbpj.Tag = Data.OutfitCats.Pyjamas;
+            cbcategories[4] = cbpreg; cbpreg.Tag = Data.OutfitCats.Maternity;
+            cbcategories[5] = cbskin; cbskin.Tag = Data.OutfitCats.Skin;
+            cbcategories[6] = cbswim; cbswim.Tag = Data.OutfitCats.Swimsuit;
+            cbcategories[7] = cbundies; cbundies.Tag = Data.OutfitCats.Underwear;
+            cbcategories[8] = cbout; cbout.Tag = Data.OutfitCats.WinterWear;
+
+            cbsexes[0] = cbmale; cbmale.Tag = Data.Sex.Male;
+            cbsexes[1] = cbfemale; cbfemale.Tag = Data.Sex.Female;
 
 			if (Helper.WindowsRegistry.Username.Trim()!="")
 				this.tbname.Text = Helper.WindowsRegistry.Username+"-";
@@ -115,7 +123,7 @@ namespace SimPe.Plugin.Scanner
 		}
 
 		/// <summary>
-		/// Die verwendeten Ressourcen bereinigen.
+		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -139,10 +147,10 @@ namespace SimPe.Plugin.Scanner
 			}
 		}
 
-		#region Vom Windows Form-Designer generierter Code
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung. 
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -151,11 +159,16 @@ namespace SimPe.Plugin.Scanner
             this.pnep = new System.Windows.Forms.Panel();
             this.tbname = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.visualStyleLinkLabel1 = new Skybound.VisualStyles.VisualStyleLinkLabel();
+            this.visualStyleLinkLabel1 = new System.Windows.Forms.LinkLabel();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.pncloth = new System.Windows.Forms.Panel();
-            this.llsetcat = new Skybound.VisualStyles.VisualStyleLinkLabel();
-            this.llsetage = new Skybound.VisualStyles.VisualStyleLinkLabel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbmale = new System.Windows.Forms.CheckBox();
+            this.cbfemale = new System.Windows.Forms.CheckBox();
+            this.llsetsex = new System.Windows.Forms.LinkLabel();
+            this.cbout = new System.Windows.Forms.CheckBox();
+            this.llsetcat = new System.Windows.Forms.LinkLabel();
+            this.llsetage = new System.Windows.Forms.LinkLabel();
             this.cbswim = new System.Windows.Forms.CheckBox();
             this.cbact = new System.Windows.Forms.CheckBox();
             this.cbskin = new System.Windows.Forms.CheckBox();
@@ -177,17 +190,16 @@ namespace SimPe.Plugin.Scanner
             this.pnShelve = new System.Windows.Forms.Panel();
             this.cbshelve = new Ambertation.Windows.Forms.EnumComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.llShelve = new Skybound.VisualStyles.VisualStyleLinkLabel();
+            this.llShelve = new System.Windows.Forms.LinkLabel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.pnskin = new System.Windows.Forms.Panel();
             this.cbtxtr = new System.Windows.Forms.CheckBox();
             this.cbtxmt = new System.Windows.Forms.CheckBox();
             this.cbskins = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.visualStyleLinkLabel2 = new Skybound.VisualStyles.VisualStyleLinkLabel();
+            this.visualStyleLinkLabel2 = new System.Windows.Forms.LinkLabel();
             this.cbref = new System.Windows.Forms.CheckBox();
             this.sfd = new System.Windows.Forms.SaveFileDialog();
-            this.cbout = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.pnep.SuspendLayout();
@@ -208,7 +220,7 @@ namespace SimPe.Plugin.Scanner
             this.tabControl1.Location = new System.Drawing.Point(8, 8);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(408, 176);
+            this.tabControl1.Size = new System.Drawing.Size(432, 284);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage2
@@ -216,7 +228,7 @@ namespace SimPe.Plugin.Scanner
             this.tabPage2.Controls.Add(this.pnep);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(400, 150);
+            this.tabPage2.Size = new System.Drawing.Size(424, 258);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "EP-Ready?";
             // 
@@ -227,24 +239,22 @@ namespace SimPe.Plugin.Scanner
             this.pnep.Controls.Add(this.visualStyleLinkLabel1);
             this.pnep.Location = new System.Drawing.Point(24, 8);
             this.pnep.Name = "pnep";
-            this.pnep.Size = new System.Drawing.Size(368, 72);
+            this.pnep.Size = new System.Drawing.Size(289, 72);
             this.pnep.TabIndex = 0;
             // 
             // tbname
             // 
-            this.tbname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tbname.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbname.Location = new System.Drawing.Point(16, 24);
+            this.tbname.Location = new System.Drawing.Point(23, 24);
             this.tbname.Name = "tbname";
-            this.tbname.Size = new System.Drawing.Size(152, 21);
+            this.tbname.Size = new System.Drawing.Size(190, 21);
             this.tbname.TabIndex = 40;
-            this.tbname.Text = "SimPE-";
+            this.tbname.Text = "SimPe-";
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.Font = new System.Drawing.Font("Verdana", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(0, 8);
+            this.label3.Location = new System.Drawing.Point(7, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(128, 16);
             this.label3.TabIndex = 39;
@@ -267,7 +277,7 @@ namespace SimPe.Plugin.Scanner
             this.tabPage1.Controls.Add(this.pncloth);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(400, 150);
+            this.tabPage1.Size = new System.Drawing.Size(424, 258);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Clothes";
             // 
@@ -275,6 +285,10 @@ namespace SimPe.Plugin.Scanner
             // 
             this.pncloth.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.pncloth.Controls.Add(this.label6);
+            this.pncloth.Controls.Add(this.cbmale);
+            this.pncloth.Controls.Add(this.cbfemale);
+            this.pncloth.Controls.Add(this.llsetsex);
             this.pncloth.Controls.Add(this.cbout);
             this.pncloth.Controls.Add(this.llsetcat);
             this.pncloth.Controls.Add(this.llsetage);
@@ -297,8 +311,60 @@ namespace SimPe.Plugin.Scanner
             this.pncloth.Controls.Add(this.label1);
             this.pncloth.Location = new System.Drawing.Point(24, 8);
             this.pncloth.Name = "pncloth";
-            this.pncloth.Size = new System.Drawing.Size(368, 136);
+            this.pncloth.Size = new System.Drawing.Size(386, 184);
             this.pncloth.TabIndex = 0;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Verdana", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(24, 139);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(58, 13);
+            this.label6.TabIndex = 43;
+            this.label6.Text = "Gender:";
+            // 
+            // cbmale
+            // 
+            this.cbmale.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbmale.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbmale.Location = new System.Drawing.Point(104, 155);
+            this.cbmale.Name = "cbmale";
+            this.cbmale.Size = new System.Drawing.Size(80, 24);
+            this.cbmale.TabIndex = 42;
+            this.cbmale.Text = "Male";
+            // 
+            // cbfemale
+            // 
+            this.cbfemale.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbfemale.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbfemale.Location = new System.Drawing.Point(16, 155);
+            this.cbfemale.Name = "cbfemale";
+            this.cbfemale.Size = new System.Drawing.Size(80, 24);
+            this.cbfemale.TabIndex = 41;
+            this.cbfemale.Text = "Female";
+            // 
+            // llsetsex
+            // 
+            this.llsetsex.AutoSize = true;
+            this.llsetsex.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llsetsex.Location = new System.Drawing.Point(0, 139);
+            this.llsetsex.Name = "llsetsex";
+            this.llsetsex.Size = new System.Drawing.Size(27, 13);
+            this.llsetsex.TabIndex = 40;
+            this.llsetsex.TabStop = true;
+            this.llsetsex.Text = "set";
+            this.llsetsex.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.setSex);
+            // 
+            // cbout
+            // 
+            this.cbout.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbout.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbout.Location = new System.Drawing.Point(256, 112);
+            this.cbout.Name = "cbout";
+            this.cbout.Size = new System.Drawing.Size(101, 24);
+            this.cbout.TabIndex = 39;
+            this.cbout.Text = "Winter Wear";
             // 
             // llsetcat
             // 
@@ -332,23 +398,24 @@ namespace SimPe.Plugin.Scanner
             this.cbswim.Name = "cbswim";
             this.cbswim.Size = new System.Drawing.Size(80, 24);
             this.cbswim.TabIndex = 36;
-            this.cbswim.Text = "Swimm";
+            this.cbswim.Text = "Swim Suit";
             // 
             // cbact
             // 
             this.cbact.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbact.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbact.Location = new System.Drawing.Point(234, 112);
+            this.cbact.Location = new System.Drawing.Point(192, 112);
             this.cbact.Name = "cbact";
-            this.cbact.Size = new System.Drawing.Size(64, 24);
+            this.cbact.Size = new System.Drawing.Size(50, 24);
             this.cbact.TabIndex = 35;
-            this.cbact.Text = "Active";
+            this.cbact.Text = "Gym";
+            this.cbact.CheckedChanged += new System.EventHandler(this.cbact_CheckedChanged);
             // 
             // cbskin
             // 
             this.cbskin.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbskin.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbskin.Location = new System.Drawing.Point(102, 112);
+            this.cbskin.Location = new System.Drawing.Point(256, 136);
             this.cbskin.Name = "cbskin";
             this.cbskin.Size = new System.Drawing.Size(56, 24);
             this.cbskin.TabIndex = 34;
@@ -358,7 +425,7 @@ namespace SimPe.Plugin.Scanner
             // 
             this.cbformal.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbformal.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbformal.Location = new System.Drawing.Point(164, 112);
+            this.cbformal.Location = new System.Drawing.Point(182, 88);
             this.cbformal.Name = "cbformal";
             this.cbformal.Size = new System.Drawing.Size(64, 24);
             this.cbformal.TabIndex = 33;
@@ -368,31 +435,31 @@ namespace SimPe.Plugin.Scanner
             // 
             this.cbpreg.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbpreg.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbpreg.Location = new System.Drawing.Point(234, 88);
+            this.cbpreg.Location = new System.Drawing.Point(256, 88);
             this.cbpreg.Name = "cbpreg";
-            this.cbpreg.Size = new System.Drawing.Size(80, 24);
+            this.cbpreg.Size = new System.Drawing.Size(75, 24);
             this.cbpreg.TabIndex = 32;
-            this.cbpreg.Text = "Pregnant";
+            this.cbpreg.Text = "Maternity";
             // 
             // cbundies
             // 
             this.cbundies.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbundies.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbundies.Location = new System.Drawing.Point(164, 88);
+            this.cbundies.Location = new System.Drawing.Point(104, 112);
             this.cbundies.Name = "cbundies";
-            this.cbundies.Size = new System.Drawing.Size(64, 24);
+            this.cbundies.Size = new System.Drawing.Size(82, 24);
             this.cbundies.TabIndex = 31;
-            this.cbundies.Text = "Undies";
+            this.cbundies.Text = "Underwear";
             // 
             // cbpj
             // 
             this.cbpj.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbpj.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbpj.Location = new System.Drawing.Point(102, 88);
+            this.cbpj.Location = new System.Drawing.Point(104, 88);
             this.cbpj.Name = "cbpj";
-            this.cbpj.Size = new System.Drawing.Size(56, 24);
+            this.cbpj.Size = new System.Drawing.Size(72, 24);
             this.cbpj.TabIndex = 30;
-            this.cbpj.Text = "PJ";
+            this.cbpj.Text = "Pyjamas";
             // 
             // cbevery
             // 
@@ -408,7 +475,7 @@ namespace SimPe.Plugin.Scanner
             // 
             this.cbelder.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbelder.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbelder.Location = new System.Drawing.Point(176, 48);
+            this.cbelder.Location = new System.Drawing.Point(182, 48);
             this.cbelder.Name = "cbelder";
             this.cbelder.Size = new System.Drawing.Size(64, 24);
             this.cbelder.TabIndex = 28;
@@ -448,7 +515,7 @@ namespace SimPe.Plugin.Scanner
             // 
             this.cbchild.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbchild.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbchild.Location = new System.Drawing.Point(176, 24);
+            this.cbchild.Location = new System.Drawing.Point(182, 24);
             this.cbchild.Name = "cbchild";
             this.cbchild.Size = new System.Drawing.Size(64, 24);
             this.cbchild.TabIndex = 24;
@@ -458,7 +525,7 @@ namespace SimPe.Plugin.Scanner
             // 
             this.cbtoddler.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbtoddler.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbtoddler.Location = new System.Drawing.Point(112, 24);
+            this.cbtoddler.Location = new System.Drawing.Point(104, 24);
             this.cbtoddler.Name = "cbtoddler";
             this.cbtoddler.Size = new System.Drawing.Size(64, 24);
             this.cbtoddler.TabIndex = 23;
@@ -499,7 +566,7 @@ namespace SimPe.Plugin.Scanner
             this.tabPage4.Controls.Add(this.pnShelve);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(400, 150);
+            this.tabPage4.Size = new System.Drawing.Size(424, 258);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "SheleveReady?";
             // 
@@ -510,7 +577,7 @@ namespace SimPe.Plugin.Scanner
             this.pnShelve.Controls.Add(this.llShelve);
             this.pnShelve.Location = new System.Drawing.Point(8, 8);
             this.pnShelve.Name = "pnShelve";
-            this.pnShelve.Size = new System.Drawing.Size(368, 72);
+            this.pnShelve.Size = new System.Drawing.Size(361, 72);
             this.pnShelve.TabIndex = 1;
             // 
             // cbshelve
@@ -522,13 +589,12 @@ namespace SimPe.Plugin.Scanner
             this.cbshelve.Location = new System.Drawing.Point(16, 24);
             this.cbshelve.Name = "cbshelve";
             this.cbshelve.ResourceManager = null;
-            this.cbshelve.Size = new System.Drawing.Size(336, 21);
+            this.cbshelve.Size = new System.Drawing.Size(329, 21);
             this.cbshelve.TabIndex = 40;
             this.cbshelve.SelectedIndexChanged += new System.EventHandler(this.cbshelve_SelectedIndexChanged);
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.Font = new System.Drawing.Font("Verdana", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(0, 8);
             this.label5.Name = "label5";
@@ -553,7 +619,7 @@ namespace SimPe.Plugin.Scanner
             this.tabPage3.Controls.Add(this.pnskin);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(400, 150);
+            this.tabPage3.Size = new System.Drawing.Size(424, 258);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Skin";
             // 
@@ -567,7 +633,7 @@ namespace SimPe.Plugin.Scanner
             this.pnskin.Controls.Add(this.cbref);
             this.pnskin.Location = new System.Drawing.Point(24, 8);
             this.pnskin.Name = "pnskin";
-            this.pnskin.Size = new System.Drawing.Size(368, 120);
+            this.pnskin.Size = new System.Drawing.Size(343, 120);
             this.pnskin.TabIndex = 1;
             // 
             // cbtxtr
@@ -612,7 +678,6 @@ namespace SimPe.Plugin.Scanner
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.Font = new System.Drawing.Font("Verdana", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(0, 8);
             this.label4.Name = "label4";
@@ -645,16 +710,6 @@ namespace SimPe.Plugin.Scanner
             // 
             this.sfd.Filter = "Package File (*.package)|*.package|All Files (*.*)|*.*";
             this.sfd.Title = "Skin Override";
-            // 
-            // cbout
-            // 
-            this.cbout.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cbout.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbout.Location = new System.Drawing.Point(320, 88);
-            this.cbout.Name = "cbout";
-            this.cbout.Size = new System.Drawing.Size(48, 24);
-            this.cbout.TabIndex = 39;
-            this.cbout.Text = "Out";
             // 
             // ScannerPanelForm
             // 
@@ -694,7 +749,14 @@ namespace SimPe.Plugin.Scanner
 		{
 			ClothingScanner cs = (ClothingScanner)pncloth.Tag;
 			cs.SetAge();
-		}
+        }
+
+        private void setSex(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ClothingScanner cs = (ClothingScanner)pncloth.Tag;
+            cs.SetSex();
+
+        }
 
 		private void MakeEPReady(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
 		{
@@ -745,5 +807,10 @@ namespace SimPe.Plugin.Scanner
 			SimPe.PackedFiles.Wrapper.ShelveDimension sd = (SimPe.PackedFiles.Wrapper.ShelveDimension)cbshelve.SelectedValue;
 			llShelve.Enabled = (sd != SimPe.PackedFiles.Wrapper.ShelveDimension.Indetermined && sd != SimPe.PackedFiles.Wrapper.ShelveDimension.Multitile && sd!= SimPe.PackedFiles.Wrapper.ShelveDimension.Unknown1 && sd != SimPe.PackedFiles.Wrapper.ShelveDimension.Unknown2);
 		}
+
+        private void cbact_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
 	}
 }

@@ -66,7 +66,7 @@ namespace SimPe.Plugin.Scanner
 			ps.Data[0] = (uint)ReadyState.Yes;
 			ps.State = TriState.True;
 
-			if (si.PackageCacheItem.Type == PackageType.Object || si.PackageCacheItem.Type == PackageType.MaxisObject || si.PackageCacheItem.Type == PackageType.Recolor) 
+            if (si.PackageCacheItem.Type == PackageType.CustomObject || si.PackageCacheItem.Type == PackageType.Object || si.PackageCacheItem.Type == PackageType.Recolour) 
 			{
 				//this package does not contain a File in a Global Group, so it is probably not a Maxis Object!
 				if (si.Package.FindFilesByGroup(Data.MetaData.GLOBAL_GROUP).Length==0) 
@@ -161,9 +161,8 @@ namespace SimPe.Plugin.Scanner
 			try 
 			{				
 				foreach (ScannerItem si in selection) 
-				{			
-					if (si.PackageCacheItem.Thumbnail!=null) WaitingScreen.Update(si.PackageCacheItem.Thumbnail, si.FileName);
-					else WaitingScreen.UpdateMessage(si.FileName);
+				{
+                    WaitingScreen.UpdateMessage(si.FileName);
 
 					SimPe.Cache.PackageState ps = si.PackageCacheItem.FindState(this.Uid, true);
 					if (ps.Data.Length<1) continue;
@@ -194,8 +193,9 @@ namespace SimPe.Plugin.Scanner
 			{
 				Helper.ExceptionMessage("", ex);
 			}
-			finally 
-			{
+			finally
+            {
+                WaitingScreen.UpdateImage(null);
 				WaitingScreen.Stop();
 			}
 		}

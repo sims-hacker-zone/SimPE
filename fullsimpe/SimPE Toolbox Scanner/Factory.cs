@@ -64,11 +64,17 @@ namespace SimPe.Plugin
 			get
 			{
 				reg = this.LinkedRegistry;
-
-				IToolPlugin[] tools = {
+				if (Helper.StartedGui == Executable.Classic)
+				{
+					return new IToolPlugin[] { };
+				}
+				else
+				{
+					IToolPlugin[] tools = {
 									new ScanerTool()
 								};
-				return tools;
+					return tools;
+				}
 			}
 		}
 
