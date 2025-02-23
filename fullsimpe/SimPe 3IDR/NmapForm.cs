@@ -98,8 +98,6 @@ namespace SimPe.Plugin
 			// 
 			resources.ApplyResources(this.wrapperPanel, "wrapperPanel");
 			this.wrapperPanel.BackColor = System.Drawing.Color.Transparent;
-			this.wrapperPanel.BackgroundImageAnchor = ImageLayout.TopRight;
-			this.wrapperPanel.BackgroundImageZoomToFit = true;
 			this.wrapperPanel.Controls.Add(this.groupBox1);
 			this.wrapperPanel.Controls.Add(this.btref);
 			this.wrapperPanel.Controls.Add(this.gbtypes);
@@ -233,10 +231,8 @@ namespace SimPe.Plugin
 			// 
 			resources.ApplyResources(this.panel3, "panel3");
 			this.panel3.BackColor = System.Drawing.SystemColors.AppWorkspace;
-			this.panel3.CanCommit = true;
 			this.panel3.ForeColor = System.Drawing.Color.White;
 			this.panel3.Name = "panel3";
-			this.panel3.OnCommit += new EventHandler(this.CommitAll);
 			// 
 			// sfd
 			// 
