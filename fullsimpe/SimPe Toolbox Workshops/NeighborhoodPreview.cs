@@ -221,8 +221,8 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		protected void ClearScreen()
 		{
-			label5.Visible = Helper.WindowsRegistry.HiddenMode; // Boobs
-			lbVer.Visible = Helper.WindowsRegistry.HiddenMode; // Boobs
+			label5.Visible = Helper.WindowsRegistry.HiddenMode;
+			lbVer.Visible = Helper.WindowsRegistry.HiddenMode;
 
 			if (this.CatalogDescription!=null) 
 			{
