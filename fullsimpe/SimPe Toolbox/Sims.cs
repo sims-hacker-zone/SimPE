@@ -369,75 +369,54 @@ namespace SimPe.Plugin
 		protected void AddImage(SimPe.PackedFiles.Wrapper.ExtSDesc sdesc)
         {
             Image img = null;
-            if (booby.PrettyGirls.IsTitsInstalled() || booby.PrettyGirls.IsAngelsInstalled())
+            if (sdesc.Unlinked != 0x00 || !sdesc.AvailableCharacterData || sdesc.IsNPC)
             {
                 if (sdesc.HasImage)
-                    img = Ambertation.Drawing.GraphicRoutines.KnockoutImage(sdesc.Image, new Point(0, 0), Color.Magenta);
+                    img = ImageLoader.Preview(sdesc.Image, this.ilist.ImageSize);
+                else if (sdesc.CharacterDescription.Gender == SimPe.Data.MetaData.Gender.Female)
+                    img = ImageLoader.Preview(SimPe.GetImage.SheOne, this.ilist.ImageSize);
                 else
+                    img = ImageLoader.Preview(SimPe.GetImage.NoOne, this.ilist.ImageSize);
+                System.Drawing.Graphics g = Graphics.FromImage(img);
+                g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+                //Pen pen = new Pen(Data.MetaData.SpecialSimColor, 3);
+                //g.FillRectangle(pen.Brush, 0, 0, img.Width, img.Height); // what for??  makes these dark
+                int pos = 2;
+                if (sdesc.Unlinked != 0x00)
                 {
-                    if (sdesc.CharacterDescription.IsWoman && sdesc.Nightlife.Species == 0)
-                        img = SimPe.GetImage.BabyDoll;
-                    else if (sdesc.CharacterDescription.Gender == SimPe.Data.MetaData.Gender.Female)
-                        img = SimPe.GetImage.SheOne;
-                    else
-                        img = SimPe.GetImage.NoOne;
+                    g.FillRectangle(new SolidBrush(Data.MetaData.UnlinkedSim), pos, 2, 20, 20);
+                    pos += 22;
                 }
-
-                img = Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(img, this.ilist.ImageSize, 12, Color.FromArgb(90, Color.Black), SimPe.PackedFiles.Wrapper.SimPoolControl.GetImagePanelColor(sdesc), Color.White, Color.FromArgb(80, Color.White), true, 4, 0);
+                if (!sdesc.AvailableCharacterData)
+                {
+                    g.FillRectangle(new SolidBrush(Data.MetaData.InactiveSim), pos, 2, 20, 20);
+                    pos += 22;
+                }
+                if (sdesc.IsNPC)
+                {
+                    g.FillRectangle(new SolidBrush(Data.MetaData.NPCSim), pos, 2, 20, 20);
+                    pos += 22;
+                }
                 this.ilist.Images.Add(img);
                 this.iListSmall.Images.Add(ImageLoader.Preview(img, iListSmall.ImageSize));
             }
+            else if (sdesc.HasImage) // if (sdesc.Image != null) -Chris H
+            {
+                this.ilist.Images.Add(sdesc.Image);
+                this.iListSmall.Images.Add(ImageLoader.Preview(sdesc.Image, iListSmall.ImageSize));
+            }
             else
             {
-                if (sdesc.Unlinked != 0x00 || !sdesc.AvailableCharacterData || sdesc.IsNPC)
+                if (sdesc.CharacterDescription.Gender == SimPe.Data.MetaData.Gender.Female)
                 {
-                    if (sdesc.HasImage)
-                        img = ImageLoader.Preview(sdesc.Image, this.ilist.ImageSize);
-                    else if (sdesc.CharacterDescription.Gender == SimPe.Data.MetaData.Gender.Female)
-                        img = ImageLoader.Preview(SimPe.GetImage.SheOne, this.ilist.ImageSize);
-                    else
-                        img = ImageLoader.Preview(SimPe.GetImage.NoOne, this.ilist.ImageSize);
-                    System.Drawing.Graphics g = Graphics.FromImage(img);
-                    g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-                    g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-                    //Pen pen = new Pen(Data.MetaData.SpecialSimColor, 3);
-                    //g.FillRectangle(pen.Brush, 0, 0, img.Width, img.Height); // what for??  makes these dark
-                    int pos = 2;
-                    if (sdesc.Unlinked != 0x00)
-                    {
-                        g.FillRectangle(new SolidBrush(Data.MetaData.UnlinkedSim), pos, 2, 20, 20);
-                        pos += 22;
-                    }
-                    if (!sdesc.AvailableCharacterData)
-                    {
-                        g.FillRectangle(new SolidBrush(Data.MetaData.InactiveSim), pos, 2, 20, 20);
-                        pos += 22;
-                    }
-                    if (sdesc.IsNPC)
-                    {
-                        g.FillRectangle(new SolidBrush(Data.MetaData.NPCSim), pos, 2, 20, 20);
-                        pos += 22;
-                    }
-                    this.ilist.Images.Add(img);
-                    this.iListSmall.Images.Add(ImageLoader.Preview(img, iListSmall.ImageSize));
-                }
-                else if (sdesc.HasImage) // if (sdesc.Image != null) -Chris H
-                {
-                    this.ilist.Images.Add(sdesc.Image);
-                    this.iListSmall.Images.Add(ImageLoader.Preview(sdesc.Image, iListSmall.ImageSize));
+                    this.ilist.Images.Add(new Bitmap(SimPe.GetImage.SheOne));
+                    this.iListSmall.Images.Add(ImageLoader.Preview(new Bitmap(SimPe.GetImage.SheOne), iListSmall.ImageSize));
                 }
                 else
                 {
-                    if (sdesc.CharacterDescription.Gender == SimPe.Data.MetaData.Gender.Female)
-                    {
-                        this.ilist.Images.Add(new Bitmap(SimPe.GetImage.SheOne));
-                        this.iListSmall.Images.Add(ImageLoader.Preview(new Bitmap(SimPe.GetImage.SheOne), iListSmall.ImageSize));
-                    }
-                    else
-                    {
-                        this.ilist.Images.Add(new Bitmap(SimPe.GetImage.NoOne));
-                        this.iListSmall.Images.Add(ImageLoader.Preview(new Bitmap(SimPe.GetImage.NoOne), iListSmall.ImageSize));
-                    }
+                    this.ilist.Images.Add(new Bitmap(SimPe.GetImage.NoOne));
+                    this.iListSmall.Images.Add(ImageLoader.Preview(new Bitmap(SimPe.GetImage.NoOne), iListSmall.ImageSize));
                 }
             }
 		}

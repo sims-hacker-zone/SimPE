@@ -337,9 +337,6 @@
   <data name="&gt;&gt;pnBackup.Name" xml:space="preserve">
     <value>pnBackup</value>
   </data>
-  <data name="&gt;&gt;pnBackup.Type" xml:space="preserve">
-    <value>booby.TaskBox, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;pnBackup.Parent" xml:space="preserve">
     <value>pnBoPeep</value>
   </data>
@@ -454,9 +451,6 @@
   <data name="&gt;&gt;pnOptions.Name" xml:space="preserve">
     <value>pnOptions</value>
   </data>
-  <data name="&gt;&gt;pnOptions.Type" xml:space="preserve">
-    <value>booby.TaskBox, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;pnOptions.Parent" xml:space="preserve">
     <value>pnBoPeep</value>
   </data>
@@ -513,9 +507,6 @@
   </data>
   <data name="&gt;&gt;pnBoPeep.Name" xml:space="preserve">
     <value>pnBoPeep</value>
-  </data>
-  <data name="&gt;&gt;pnBoPeep.Type" xml:space="preserve">
-    <value>booby.gradientpanel, GDF, Version=0.69.20.24, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pnBoPeep.Parent" xml:space="preserve">
     <value>$this</value>
