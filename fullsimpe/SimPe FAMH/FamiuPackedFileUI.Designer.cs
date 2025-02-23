@@ -29,7 +29,6 @@ namespace SimPe.Plugin
             this.tbLadyNo = new System.Windows.Forms.TextBox();
             this.tbMenNo = new System.Windows.Forms.TextBox();
             this.tbLotNo = new System.Windows.Forms.TextBox();
-            //this.linkyabout = new booby.linkyicon();
             this.fundGraph = new System.Windows.Forms.Panel();
             this.mateGraph = new System.Windows.Forms.Panel();
             this.boyGraph = new System.Windows.Forms.Panel();
@@ -252,21 +251,6 @@ namespace SimPe.Plugin
             this.tbLotNo.Name = "tbLotNo";
             this.tbLotNo.Size = new System.Drawing.Size(100, 21);
             this.tbLotNo.TabIndex = 0;
-            // 
-            // linkyabout
-            // 
-            // this.linkyabout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // this.linkyabout.BackColor = System.Drawing.Color.Transparent;
-            // this.linkyabout.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // this.linkyabout.Gap = 2;
-            // this.linkyabout.Icon = GetIcon.Support;
-            // this.linkyabout.Label = "About...";
-            // this.linkyabout.Location = new System.Drawing.Point(1191, 34);
-            // this.linkyabout.Margin = new System.Windows.Forms.Padding(0);
-            // this.linkyabout.Name = "linkyabout";
-            // this.linkyabout.Size = new System.Drawing.Size(98, 18);
-            // this.linkyabout.TabIndex = 49;
-            // this.linkyabout.LinkClicked += new booby.linkyicon.EventHandler(this.linkyabout_LinkClicked);
             // 
             // fundGraph
             // 
@@ -598,7 +582,6 @@ namespace SimPe.Plugin
         private System.Windows.Forms.Panel mateGraph;
         private System.Windows.Forms.Panel fundGraph;
         private System.Windows.Forms.Panel girlGraph;
-        // private booby.linkyicon linkyabout;
         private System.Windows.Forms.RichTextBox rtbAbout;
         private System.Windows.Forms.Button btediter;
         private Ambertation.Windows.Forms.XPTaskBoxSimple tbEditer;
