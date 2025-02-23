@@ -105,33 +105,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="EnumComboBox.cs" />
-    <Compile Include="ExtProgressBar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="LabeledProgressBar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ProgressBar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ProgressBar.Designer.cs">
-      <DependentUpon>ProgressBar.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="EnumComboBox.resx">
       <DependentUpon>EnumComboBox.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ExtProgressBar.resx">
-      <DependentUpon>ExtProgressBar.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LabeledProgressBar.resx">
-      <DependentUpon>LabeledProgressBar.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProgressBar.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>ProgressBar.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
