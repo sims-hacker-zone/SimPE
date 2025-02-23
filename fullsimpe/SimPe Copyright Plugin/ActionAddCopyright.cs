@@ -22,7 +22,6 @@ using System.Collections;
 
 namespace SimPe.Plugin.Tool.Action
 {
-
 	/// <summary>
 	/// The ReloadFileTable Action
 	/// </summary>
@@ -39,7 +38,6 @@ namespace SimPe.Plugin.Tool.Action
 		{
 			if (!es.Loaded) return false;	
 			if (!es.HasFileDescriptor) return false;
-
 			return true;
 		}
 				
@@ -55,17 +53,13 @@ namespace SimPe.Plugin.Tool.Action
 			}	
 		}
 
-		#endregion		
+        #endregion
 		
 		#region MMAT
-		void RemoveFromMMAT(SimPe.PackedFiles.Wrapper.Cpf mmat)
-		{
-		}
 		void AddToMMAT(SimPe.Events.ResourceContainer rc)
 		{
 			SimPe.PackedFiles.Wrapper.Cpf mmat = new SimPe.PackedFiles.Wrapper.Cpf();
 			mmat.ProcessData(rc.Resource);
-			RemoveFromMMAT(mmat);
 
 			if (mmat.GetItem("copyright")==null) 
 			{
@@ -74,7 +68,8 @@ namespace SimPe.Plugin.Tool.Action
 				mmat.Items = (SimPe.PackedFiles.Wrapper.CpfItem[]) Helper.Add(mmat.Items, item);
 			}
 
-			mmat.GetItem("copyright").StringValue = form.tbMMAT.Text;
+            if (UserVerification.HaveValidUserId) mmat.GetItem("copyright").StringValue = form.tbMMAT.Text + " By " + form.tbCreator.Text + " (0x" + Helper.HexString(Helper.WindowsRegistry.CachedUserId) +")";
+            else mmat.GetItem("copyright").StringValue = form.tbMMAT.Text + " By " + form.tbCreator.Text;
 			mmat.SynchronizeUserData(true, true);
 		}
 		#endregion
@@ -126,7 +121,8 @@ namespace SimPe.Plugin.Tool.Action
 			dle.Extension.Items[0] = new ExtensionItem();
 			dle.Extension.Items[0].Typecode = ExtensionItem.ItemTypes.String;
 			dle.Extension.Items[0].Name = "created by";
-			dle.Extension.Items[0].String = form.tbCreator.Text;
+            if (UserVerification.HaveValidUserId) dle.Extension.Items[0].String = form.tbCreator.Text + " (0x" + Helper.HexString(Helper.WindowsRegistry.CachedUserId) + ")";
+			else dle.Extension.Items[0].String = form.tbCreator.Text;
 			
 			dle.Extension.Items[1] = new ExtensionItem();
 			dle.Extension.Items[1].Typecode = ExtensionItem.ItemTypes.String;
@@ -167,16 +163,17 @@ namespace SimPe.Plugin.Tool.Action
 		public override System.Windows.Forms.Shortcut Shortcut
 		{
 			get
-			{
-				return System.Windows.Forms.Shortcut.CtrlShiftC;
+            {
+                return System.Windows.Forms.Shortcut.None;
 			}
 		}
 
 		public override System.Drawing.Image Icon
 		{
 			get
-			{
-				return null;
+            {
+            
+                return SimPe.GetIcon.Copyright;
 			}
 		}
 
@@ -184,7 +181,6 @@ namespace SimPe.Plugin.Tool.Action
 		{
 			get {return true;}
 		}
-
 		#endregion
 	}
 }

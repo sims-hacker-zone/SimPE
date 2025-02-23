@@ -34,7 +34,7 @@
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>DEBUG</DefineConstants>
     <DocumentationFile>
     </DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
@@ -51,13 +51,14 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>..\..\__Release\</OutputPath>
+    <OutputPath>..\__Release\Plugins\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <DocumentationFile>
     </DocumentationFile>
     <DebugSymbols>false</DebugSymbols>
@@ -140,25 +141,31 @@
     <Compile Include="CopyrightToolFactory.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="StringsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <EmbeddedResource Include="StringsForm.resx">
       <DependentUpon>StringsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>if not exist "$(SolutionDir)..\__Release\Plugins\" mkdir "$(SolutionDir)..\__Release\Plugins\"
-if not exist "$(SolutionDir)..\__Release\de\" mkdir "$(SolutionDir)..\__Release\de\"
-if not exist "$(SolutionDir)..\__Release\es\" mkdir "$(SolutionDir)..\__Release\es\"
-if not exist "$(SolutionDir)..\__Release\pl\" mkdir "$(SolutionDir)..\__Release\pl\"
-copy "$(TargetPath)" "$(SolutionDir)..\__Release\Plugins\$(TargetFileName)"
-copy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)..\__Release\Plugins\"
-copy "$(TargetDir)de\*.dll" "$(SolutionDir)..\__Release\de\"
-copy "$(TargetDir)pl\*.dll" "$(SolutionDir)..\__Release\pl\"
-copy "$(TargetDir)es\*.dll" "$(SolutionDir)..\__Release\es\"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>
