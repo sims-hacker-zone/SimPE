@@ -212,10 +212,6 @@
     <Reference Include="XPCommonControls">
       <HintPath>..\XPCommonControls.dll</HintPath>
     </Reference>
-    <ProjectReference Include="..\EnumComboBox\EnumComboBox.csproj">
-      <Project>{5C663721-B4E3-43F7-A39F-9E6060FA5433}</Project>
-      <Name>EnumComboBox</Name>
-    </ProjectReference>
     <Reference Include="AdvancedForms">
       <HintPath>..\AdvancedForms.dll</HintPath>
     </Reference>
