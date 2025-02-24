@@ -1897,9 +1897,6 @@
     <Compile Include="SimPe\Plugin\DownloadScanTool.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SimPe\Plugin\Factory.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="SimPe\Plugin\FixTool.cs">
       <SubType>Code</SubType>
     </Compile>

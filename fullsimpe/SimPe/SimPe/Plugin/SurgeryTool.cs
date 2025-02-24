@@ -51,7 +51,7 @@ namespace SimPe.Plugin
 
 		public bool IsEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
         {
-            return (Helper.IsNeighborhoodFile(package.FileName) || Helper.IsLotCatalogFile(package.FileName));
+            return (Helper.IsNeighborhoodFile(package?.FileName) || Helper.IsLotCatalogFile(package?.FileName));
             //return true;
         }
 
