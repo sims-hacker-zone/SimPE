@@ -96,62 +96,15 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GameTipPackedFileUI.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GameTipPackedFileUI.Designer.cs">
-      <DependentUpon>GameTipPackedFileUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GameTipPackedFileWrapper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GoalCacheFile.cs" />
-    <Compile Include="GoalLoader.cs" />
-    <Compile Include="LastEpUsedPackedFileUI.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="LastEpUsedPackedFileUI.Designer.cs">
-      <DependentUpon>LastEpUsedPackedFileUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LastEpUsedPackedFileWrapper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GWInvPackedFileUI.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GWInvPackedFileUI.Designer.cs">
-      <DependentUpon>GWInvPackedFileUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GWInvPackedFileWrapper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GameTipWrapperFactory.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="XgoalWrapper.cs" />
-    <EmbeddedResource Include="GameTipPackedFileUI.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>GameTipPackedFileUI.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="LastEpUsedPackedFileUI.resx">
-      <DependentUpon>LastEpUsedPackedFileUI.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GWInvPackedFileUI.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>GWInvPackedFileUI.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -135,28 +135,6 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GmdcExportToMilkShapeAscii.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GmdcExportToObj.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GmdcExportToX.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GmdcExportToXSI.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GmdcImportFromMilkShapeAscii.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GmdcImportFromObj.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GmdcImportFromXsi.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="NormalMap.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

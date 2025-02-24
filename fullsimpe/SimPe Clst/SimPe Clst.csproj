@@ -16,7 +16,6 @@
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
-    <DelaySign>false</DelaySign>
     <OutputType>Library</OutputType>
     <RootNamespace>SimPe.PackedFiles.Wrapper</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
@@ -160,88 +159,9 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ClstForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ClstItem.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ClstWrapper.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="DefaultWrapperFactory.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="StrForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StrItem.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="StrListViewer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="StrWrapper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <EmbeddedResource Include="clst.png" />
-    <EmbeddedResource Include="ClstForm.de.resx">
-      <DependentUpon>ClstForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ClstForm.fr.resx">
-      <DependentUpon>ClstForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ClstForm.it.resx">
-      <DependentUpon>ClstForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ClstForm.pl.resx">
-      <DependentUpon>ClstForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ClstForm.resx">
-      <DependentUpon>ClstForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ClstForm.ru.resx">
-      <DependentUpon>ClstForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StrForm.de.resx">
-      <DependentUpon>StrForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StrForm.es.resx">
-      <DependentUpon>StrForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StrForm.fr.resx">
-      <DependentUpon>StrForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StrForm.it.resx">
-      <DependentUpon>StrForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StrForm.pl.resx">
-      <DependentUpon>StrForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StrForm.resx">
-      <DependentUpon>StrForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StrForm.ru.resx">
-      <DependentUpon>StrForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StrListViewer.resx">
-      <DependentUpon>StrListViewer.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="txt.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

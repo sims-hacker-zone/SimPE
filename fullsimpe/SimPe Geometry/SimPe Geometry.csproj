@@ -16,7 +16,6 @@
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
-    <DelaySign>false</DelaySign>
     <OutputType>Library</OutputType>
     <RootNamespace>SimPe.Geometry</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
@@ -153,21 +152,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GeometryException.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Matrices.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Quaternion.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Vectors.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="VectorTransformations.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

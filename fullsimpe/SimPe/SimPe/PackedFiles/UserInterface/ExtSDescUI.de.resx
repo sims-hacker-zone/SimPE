@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="biId.Text" xml:space="preserve">
+    <value>Übersicht</value>
+  </data>
+  <data name="biCareer.Text" xml:space="preserve">
+    <value>Kariere</value>
+  </data>
+  <data name="biRel.Text" xml:space="preserve">
+    <value>Beziehung</value>
+  </data>
+  <data name="biInt.Text" xml:space="preserve">
+    <value>Interessen</value>
+  </data>
+  <data name="biChar.Text" xml:space="preserve">
+    <value>Charakter</value>
+  </data>
+  <data name="biSkill.Text" xml:space="preserve">
+    <value>Fähigkeiten</value>
+  </data>
+  <data name="biMisc.Text" xml:space="preserve">
+    <value>Sonstiges</value>
+  </data>
+  <data name="biEP1.Text" xml:space="preserve">
+    <value>WCJ</value>
+  </data>
+  <data name="biEP6.Text" xml:space="preserve">
+    <value>Reise</value>
+  </data>
+  <data name="biEP6.ToolTipText" xml:space="preserve">
+    <value>Gute Reise</value>
+  </data>
+  <data name="biMore.Text" xml:space="preserve">
+    <value>Mehr</value>
+  </data>
+  <data name="biMax.Text" xml:space="preserve">
+    <value>Maximieren</value>
+  </data>
+  <data name="biMax.ToolTipText" xml:space="preserve">
+    <value>Maximiere alle angezeigten Werte</value>
+  </data>
+  <data name="mbiMax.Text" xml:space="preserve">
+    <value>Maximieren</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Spezies:</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Familien Instanz:</value>
+  </data>
+  <data name="label49.Text" xml:space="preserve">
+    <value>Behandle als:</value>
+  </data>
+  <data name="rbmale.Text" xml:space="preserve">
+    <value>Mann</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Verbleibende Tage:</value>
+  </data>
+  <data name="label48.Text" xml:space="preserve">
+    <value>Lebensabschnitt:</value>
+  </data>
+  <data name="pbBody.LabelText" xml:space="preserve">
+    <value>Körper:</value>
+  </data>
+  <data name="pbRomance.LabelText" xml:space="preserve">
+    <value>Romantik:</value>
+  </data>
+  <data name="pbFat.LabelText" xml:space="preserve">
+    <value>Dickheit:</value>
+  </data>
+  <data name="pbClean.LabelText" xml:space="preserve">
+    <value>Putzen:</value>
+  </data>
+  <data name="pbCreative.LabelText" xml:space="preserve">
+    <value>Kreativität:</value>
+  </data>
+  <data name="pbMech.LabelText" xml:space="preserve">
+    <value>Mechanik:</value>
+  </data>
+  <data name="pbLogic.LabelText" xml:space="preserve">
+    <value>Logik:</value>
+  </data>
+  <data name="pbCooking.LabelText" xml:space="preserve">
+    <value>Kochen:</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Penibel</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>Ängstlich</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Zutraulich</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Faul</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Dumm</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Schlampig</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Aggressiv</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>Unabhängig</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Hyperaktiv</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Schlau</value>
+  </data>
+  <data name="pbNeat.LabelText" xml:space="preserve">
+    <value>Ordentlich:</value>
+  </data>
+  <data name="pbOutgoing.LabelText" xml:space="preserve">
+    <value>Extrovertiert:</value>
+  </data>
+  <data name="pbActive.LabelText" xml:space="preserve">
+    <value>Aktiv:</value>
+  </data>
+  <data name="pbPlayful.LabelText" xml:space="preserve">
+    <value>Verspielt:</value>
+  </data>
+  <data name="pbGNice.LabelText" xml:space="preserve">
+    <value>Genetisch Nett:</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pbNice.LabelText" xml:space="preserve">
+    <value>Nett:</value>
+  </data>
+  <data name="pbGPlayful.LabelText" xml:space="preserve">
+    <value>Genetisch Verspielt:</value>
+  </data>
+  <data name="pbGNeat.LabelText" xml:space="preserve">
+    <value>Genetisch Ordentlich:</value>
+  </data>
+  <data name="pbGActive.LabelText" xml:space="preserve">
+    <value>Genetisch Aktiv:</value>
+  </data>
+  <data name="pbGOutgoing.LabelText" xml:space="preserve">
+    <value>Genetisch Extrovertiert:</value>
+  </data>
+  <data name="pbMan.LabelText" xml:space="preserve">
+    <value>Männer:</value>
+  </data>
+  <data name="pbWoman.LabelText" xml:space="preserve">
+    <value>Frauen:</value>
+  </data>
+  <data name="label47.Text" xml:space="preserve">
+    <value>Sternzeichen:</value>
+  </data>
+  <data name="label69.Text" xml:space="preserve">
+    <value>anziehend</value>
+  </data>
+  <data name="label70.Text" xml:space="preserve">
+    <value>abstoßend</value>
+  </data>
+  <data name="miRand.Text" xml:space="preserve">
+    <value>Zufällig</value>
+  </data>
+  <data name="miOpenChar.Text" xml:space="preserve">
+    <value>Öffne Charakter Datei</value>
+  </data>
+  <data name="miOpenWf.Text" xml:space="preserve">
+    <value>Öffne Wünsche &amp;&amp; Ängste</value>
+  </data>
+  <data name="miOpenMem.Text" xml:space="preserve">
+    <value>Öffne Erinnerungen</value>
+  </data>
+  <data name="miOpenBadge.Text" xml:space="preserve">
+    <value>Öffne verst. Fähigkeiten &amp;&amp; Auszeichungen</value>
+  </data>
+  <data name="miOpenDNA.Text" xml:space="preserve">
+    <value>Öffne Sim DNA</value>
+  </data>
+  <data name="miOpenSCOR.Text" xml:space="preserve">
+    <value>Öffne Sim Score</value>
+  </data>
+  <data name="miOpenFamily.Text" xml:space="preserve">
+    <value>Öffne Familie</value>
+  </data>
+  <data name="miOpenCloth.Text" xml:space="preserve">
+    <value>Öffne Kleidung</value>
+  </data>
+  <data name="miMore.Text" xml:space="preserve">
+    <value>Erweiterte Ansicht...</value>
+  </data>
+  <data name="miRelink.Text" xml:space="preserve">
+    <value>Charakter neu zuordnen</value>
+  </data>
+  <data name="mbiMaxKnownRel.Text" xml:space="preserve">
+    <value>Beziehungen zu bekannten Sims maximieren</value>
+  </data>
+  <data name="pbAspBliz.LabelText" xml:space="preserve">
+    <value>Stimmung kurzfristig:</value>
+  </data>
+  <data name="label60.Text" xml:space="preserve">
+    <value>Punkte:</value>
+  </data>
+  <data name="pbAspCur.LabelText" xml:space="preserve">
+    <value>Stimmung gesamt:</value>
+  </data>
+  <data name="label46.Text" xml:space="preserve">
+    <value>Lebensziel:</value>
+  </data>
+  <data name="pbCareerPerformance.LabelText" xml:space="preserve">
+    <value>Leistung:</value>
+  </data>
+  <data name="pbCareerLevel.LabelText" xml:space="preserve">
+    <value>Karriere Stufe:</value>
+  </data>
+  <data name="label78.Text" xml:space="preserve">
+    <value>Schultyp:</value>
+  </data>
+  <data name="label77.Text" xml:space="preserve">
+    <value>Note:</value>
+  </data>
+  <data name="label50.Text" xml:space="preserve">
+    <value>Karriere:</value>
+  </data>
+  <data name="pbSciFi.LabelText" xml:space="preserve">
+    <value>Science-Fiction:</value>
+  </data>
+  <data name="pbTravel.LabelText" xml:space="preserve">
+    <value>Reisen:</value>
+  </data>
+  <data name="pbToys.LabelText" xml:space="preserve">
+    <value>Spielzeug:</value>
+  </data>
+  <data name="pbEnvironment.LabelText" xml:space="preserve">
+    <value>Umwelt:</value>
+  </data>
+  <data name="pbSchool.LabelText" xml:space="preserve">
+    <value>Schule:</value>
+  </data>
+  <data name="pbParanormal.LabelText" xml:space="preserve">
+    <value>Paranormales:</value>
+  </data>
+  <data name="pbAnimals.LabelText" xml:space="preserve">
+    <value>Tiere:</value>
+  </data>
+  <data name="pbEntertainment.LabelText" xml:space="preserve">
+    <value>Unterhaltung:</value>
+  </data>
+  <data name="pbWeather.LabelText" xml:space="preserve">
+    <value>Wetter:</value>
+  </data>
+  <data name="pbCulture.LabelText" xml:space="preserve">
+    <value>Kultur:</value>
+  </data>
+  <data name="pbWork.LabelText" xml:space="preserve">
+    <value>Arbeit:</value>
+  </data>
+  <data name="pbMoney.LabelText" xml:space="preserve">
+    <value>Geld:</value>
+  </data>
+  <data name="pbPolitics.LabelText" xml:space="preserve">
+    <value>Politik:</value>
+  </data>
+  <data name="pbCrime.LabelText" xml:space="preserve">
+    <value>Kriminalität:</value>
+  </data>
+  <data name="pbFood.LabelText" xml:space="preserve">
+    <value>Nahrung:</value>
+  </data>
+  <data name="pbSports.LabelText" xml:space="preserve">
+    <value>Sport:</value>
+  </data>
+  <data name="pbHealth.LabelText" xml:space="preserve">
+    <value>Gesundheit:</value>
+  </data>
+  <data name="pbFashion.LabelText" xml:space="preserve">
+    <value>Mode:</value>
+  </data>
+  <data name="bTaskBox3.HeaderText" xml:space="preserve">
+    <value>Verschiedenes</value>
+  </data>
+  <data name="bTaskBox2.HeaderText" xml:space="preserve">
+    <value>Körper Schalter</value>
+  </data>
+  <data name="cbfit.Text" xml:space="preserve">
+    <value>Dünn</value>
+  </data>
+  <data name="cbpreginv.Text" xml:space="preserve">
+    <value>Schwanger (unsichtbar)</value>
+  </data>
+  <data name="cbpreghalf.Text" xml:space="preserve">
+    <value>Schwanger (halb)</value>
+  </data>
+  <data name="cbpregfull.Text" xml:space="preserve">
+    <value>Schwanger (voll)</value>
+  </data>
+  <data name="cbfat.Text" xml:space="preserve">
+    <value>Dick</value>
+  </data>
+  <data name="bTaskBox1.HeaderText" xml:space="preserve">
+    <value>Geist Schalter</value>
+  </data>
+  <data name="cbisghost.Text" xml:space="preserve">
+    <value>Ist Geist</value>
+  </data>
+  <data name="cbignoretraversal.Text" xml:space="preserve">
+    <value>Ignoriere Bewegungskosten</value>
+  </data>
+  <data name="cbpasspeople.Text" xml:space="preserve">
+    <value>Geht durch Sims</value>
+  </data>
+  <data name="cbpasswalls.Text" xml:space="preserve">
+    <value>Geht durch Wände</value>
+  </data>
+  <data name="cbpassobject.Text" xml:space="preserve">
+    <value>Geht durch Objekte</value>
+  </data>
+  <data name="pbLastGrade.LabelText" xml:space="preserve">
+    <value>Letzte Note:</value>
+  </data>
+  <data name="pbUniTime.LabelText" xml:space="preserve">
+    <value>Zeit bis Prüfung:</value>
+  </data>
+  <data name="pbEffort.LabelText" xml:space="preserve">
+    <value>Leistung:</value>
+  </data>
+  <data name="label101.Text" xml:space="preserve">
+    <value>Einfluss:</value>
+  </data>
+  <data name="cboncampus.Text" xml:space="preserve">
+    <value>Auf dem Campus (ist junger Erwachsener)</value>
+  </data>
+  <data name="label98.Text" xml:space="preserve">
+    <value>Fachrichtung:</value>
+  </data>
+  <data name="label41.Text" xml:space="preserve">
+    <value>Sekundäres Lebensziel :</value>
+  </data>
+  <data name="label40.Text" xml:space="preserve">
+    <value>Hobby Begeisterung:</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>Sozial:</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>Spaß:</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>Energie:</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>Harndrang:</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>Komfort:</value>
+  </data>
+  <data name="bTaskBox4.HeaderText" xml:space="preserve">
+    <value>Modifikatoren</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>Käfer Sammlung:</value>
+  </data>
+  <data name="label31.Text" xml:space="preserve">
+    <value>Verwendet:</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>Punkte:</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>Lebenswunsch:</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Vorbestimmtes Hobby:</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Liebestrank Wirkdauer:</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Parfum Wirkdauer:</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Abneigungen:</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Vorlieben:</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Eigenschaften:</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="llep3openinfo.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
+    <value>0, 13</value>
+  </data>
+  <data name="llep3openinfo.Label" xml:space="preserve">
+    <value>Öffne Info...</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Unternehmen:</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Gehalt:</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Aufgabe:</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Laden Grundstück:</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Verbleibende Urlaubstage:</value>
+  </data>
+  <data name="labelcol.Text" xml:space="preserve">
+    <value>Urlaubserinnerungen:</value>
+  </data>
+</root>

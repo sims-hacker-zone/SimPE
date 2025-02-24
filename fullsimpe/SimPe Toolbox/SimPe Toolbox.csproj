@@ -16,7 +16,6 @@
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
-    <DelaySign>false</DelaySign>
     <OutputType>Library</OutputType>
     <RootNamespace>SimPe.Plugin</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
@@ -198,237 +197,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="3d.simpe" />
-    <EmbeddedResource Include="bin.simpe" />
-    <EmbeddedResource Include="DownloadScan.resx">
-      <DependentUpon>DownloadScan.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Hash.resx">
-      <DependentUpon>Hash.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Neighborhood.de.resx">
-      <DependentUpon>Neighborhood.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Neighborhood.en-US.resx">
-      <DependentUpon>Neighborhood.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Neighborhood.fr.resx">
-      <DependentUpon>Neighborhood.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Neighborhood.it.resx">
-      <DependentUpon>Neighborhood.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Neighborhood.pl.resx">
-      <DependentUpon>Neighborhood.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Neighborhood.resx">
-      <DependentUpon>Neighborhood.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Neighborhood.ru.resx">
-      <DependentUpon>Neighborhood.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NgbBackup.de.resx">
-      <DependentUpon>NgbBackup.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NgbBackup.es.resx">
-      <DependentUpon>NgbBackup.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NgbBackup.fr.resx">
-      <DependentUpon>NgbBackup.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NgbBackup.it.resx">
-      <DependentUpon>NgbBackup.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NgbBackup.pl.resx">
-      <DependentUpon>NgbBackup.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NgbBackup.resx">
-      <DependentUpon>NgbBackup.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NgbBackup.ru.resx">
-      <DependentUpon>NgbBackup.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PhotoStudio.de.resx">
-      <DependentUpon>PhotoStudio.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PhotoStudio.en-US.resx">
-      <DependentUpon>PhotoStudio.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PhotoStudio.fr.resx">
-      <DependentUpon>PhotoStudio.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PhotoStudio.it.resx">
-      <DependentUpon>PhotoStudio.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PhotoStudio.pl.resx">
-      <DependentUpon>PhotoStudio.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PhotoStudio.resx">
-      <DependentUpon>PhotoStudio.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sims.de.resx">
-      <DependentUpon>Sims.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Sims.en-US.resx">
-      <DependentUpon>Sims.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Sims.fr.resx">
-      <DependentUpon>Sims.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Sims.it.resx">
-      <DependentUpon>Sims.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Sims.pl.resx">
-      <DependentUpon>Sims.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Sims.resx">
-      <DependentUpon>Sims.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Sims.ru.resx">
-      <DependentUpon>Sims.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SkinWorkshop.resx">
-      <DependentUpon>SkinWorkshop.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Surgery.de.resx">
-      <DependentUpon>Surgery.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Surgery.en-US.resx">
-      <DependentUpon>Surgery.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Surgery.es.resx">
-      <DependentUpon>Surgery.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Surgery.fr.resx">
-      <DependentUpon>Surgery.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Surgery.it.resx">
-      <DependentUpon>Surgery.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Surgery.pl.resx">
-      <DependentUpon>Surgery.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Surgery.resx">
-      <DependentUpon>Surgery.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="ActionBuildNameMap.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ActionGlobalFixTGI.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DownloadScan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DownloadScanTool.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Factory.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="FixTool.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Hash.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HashTool.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Neighborhood.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NeighborhoodTool.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="NgbBackup.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ObjectCacheFile.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PhotoStudio.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PhotoStudioTemplate.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PhotoStudioTool.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PlasticSurgery.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Sims.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SimsRegistry.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SimsTool.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SkinWorkshop.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SkinWorkshopTool.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Surgery.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SurgeryTool.cs">
-      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

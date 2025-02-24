@@ -16,7 +16,6 @@
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
-    <DelaySign>false</DelaySign>
     <OutputType>Library</OutputType>
     <RootNamespace>SimPe.Plugin.Tool.Dockable</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
@@ -257,179 +256,18 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="NeighborhoodPreview.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="NewObjectPreview.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="NewObjectPreview.Designer.cs">
-      <DependentUpon>NewObjectPreview.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ObjectCacheFile.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ObjectLoader.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Objects.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ObjectsDock.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ObjectWorkshopHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ObjectWorkshopRegistry.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PackageDetailDock.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PackageDetailDockTool.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PackageRepair.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PackageRepairForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PreviewForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Workshop.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WorkshopTool.cs" />
-    <Compile Include="WorkshopToolFactory.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="XObjectPreview.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <EmbeddedResource Include="custom.png" />
-    <EmbeddedResource Include="NeighborhoodPreview.de.resx">
-      <DependentUpon>NeighborhoodPreview.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NeighborhoodPreview.fr.resx">
-      <DependentUpon>NeighborhoodPreview.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NeighborhoodPreview.it.resx">
-      <DependentUpon>NeighborhoodPreview.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NeighborhoodPreview.pl.resx">
-      <DependentUpon>NeighborhoodPreview.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NeighborhoodPreview.resx">
-      <DependentUpon>NeighborhoodPreview.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NeighborhoodPreview.ru.resx">
-      <DependentUpon>NeighborhoodPreview.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NewObjectPreview.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>NewObjectPreview.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="nothumb.png" />
-    <EmbeddedResource Include="ObjectsDock.de.resx">
-      <DependentUpon>ObjectsDock.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ObjectsDock.fr.resx">
-      <DependentUpon>ObjectsDock.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ObjectsDock.it.resx">
-      <DependentUpon>ObjectsDock.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ObjectsDock.resx">
-      <DependentUpon>ObjectsDock.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ObjectsDock.ru.resx">
-      <DependentUpon>ObjectsDock.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PackageDetailDock.de.resx">
-      <DependentUpon>PackageDetailDock.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PackageDetailDock.fr.resx">
-      <DependentUpon>PackageDetailDock.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PackageDetailDock.it.resx">
-      <DependentUpon>PackageDetailDock.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PackageDetailDock.pl.resx">
-      <DependentUpon>PackageDetailDock.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PackageDetailDock.resx">
-      <DependentUpon>PackageDetailDock.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PackageRepairForm.resx">
-      <DependentUpon>PackageRepairForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PreviewForm.resx">
-      <DependentUpon>PreviewForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="repair.png" />
     <EmbeddedResource Include="subitems.png" />
-    <EmbeddedResource Include="XObjectPreview.de.resx">
-      <DependentUpon>XObjectPreview.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="XObjectPreview.fr.resx">
-      <DependentUpon>XObjectPreview.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="XObjectPreview.pl.resx">
-      <DependentUpon>XObjectPreview.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="XObjectPreview.resx">
-      <DependentUpon>XObjectPreview.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="NeighborhoodPreview.en-US.resx">
-      <DependentUpon>NeighborhoodPreview.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ObjectsDock.en-US.resx">
-      <DependentUpon>ObjectsDock.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="timer.gif" />
-    <EmbeddedResource Include="Workshop.resx">
-      <DependentUpon>Workshop.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

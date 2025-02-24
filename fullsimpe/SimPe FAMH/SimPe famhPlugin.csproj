@@ -122,30 +122,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="FamiuPackedFileUI.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FamiuPackedFileUI.Designer.cs">
-      <DependentUpon>FamiuPackedFileUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FamiuPackedFileWrapper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="FamiuWrapperFactory.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="FamiuPackedFileUI.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>FamiuPackedFileUI.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="book.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SimPe Clst\SimPe Clst.csproj">

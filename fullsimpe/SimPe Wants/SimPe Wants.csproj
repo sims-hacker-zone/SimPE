@@ -43,23 +43,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Settings.cs" />
-    <Compile Include="SWAFEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SWAFEditor.Designer.cs">
-      <DependentUpon>SWAFEditor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SWAFWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WrapperFactory.cs" />
-    <Compile Include="XWNTEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="XWNTEditor.Designer.cs">
-      <DependentUpon>XWNTEditor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="XWNTWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\pjseCoderPlugin-cvs\pjse filetable\SimPe pjse filetable.csproj">
@@ -117,14 +101,6 @@
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SWAFEditor.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>SWAFEditor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="XWNTEditor.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>XWNTEditor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

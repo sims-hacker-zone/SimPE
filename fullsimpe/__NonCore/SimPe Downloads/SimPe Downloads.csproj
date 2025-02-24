@@ -127,170 +127,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArchiveHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DefaultTypeHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DepSims2Community.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DownloadsFactory.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DownloadsSettings.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="HandlerRegistry.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="InstallerControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="InstallerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InstallerTool.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="IPackageHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="IPackageInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ITypeHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Loads2cpTool.cs" />
     <Compile Include="LoadSims2PackTool.cs" />
-    <Compile Include="LotTypeHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="NeighborhoodTypeHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PackageHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PackageInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PackageInfoCollection.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RecolorTypeHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Saves2cpTool.cs" />
-    <Compile Include="SaveSims2CommunityPack.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SaveSims2Pack.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="SaveSims2PackTool.cs" />
-    <Compile Include="SevenZipHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SimpleTypeHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Sims2CommunityPack.cs" />
-    <Compile Include="Sims2CommunityPackDescriptor.cs" />
-    <Compile Include="Sims2PackHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SimTypeHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="WallpaperTypeHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="XTypeHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <EmbeddedResource Include="DepSims2Community.resx">
-      <DependentUpon>DepSims2Community.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DownloadsSettings.de.resx">
-      <DependentUpon>DownloadsSettings.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DownloadsSettings.en-US.resx">
-      <DependentUpon>DownloadsSettings.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DownloadsSettings.fr.resx">
-      <DependentUpon>DownloadsSettings.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DownloadsSettings.it.resx">
-      <DependentUpon>DownloadsSettings.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DownloadsSettings.resx">
-      <DependentUpon>DownloadsSettings.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DownloadsSettings.ru.resx">
-      <DependentUpon>DownloadsSettings.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InstallerControl.de.resx">
-      <DependentUpon>InstallerControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InstallerControl.fr.resx">
-      <DependentUpon>InstallerControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InstallerControl.it.resx">
-      <DependentUpon>InstallerControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InstallerControl.resx">
-      <DependentUpon>InstallerControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InstallerControl.ru.resx">
-      <DependentUpon>InstallerControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InstallerForm.fr.resx">
-      <DependentUpon>InstallerForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InstallerForm.it.resx">
-      <DependentUpon>InstallerForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InstallerForm.ru.resx">
-      <DependentUpon>InstallerForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SaveSims2CommunityPack.resx">
-      <DependentUpon>SaveSims2CommunityPack.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SaveSims2Pack.resx">
-      <DependentUpon>SaveSims2Pack.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
