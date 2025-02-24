@@ -2418,9 +2418,6 @@
   <data name="&gt;&gt;themepanel.Name" xml:space="preserve">
     <value>themepanel</value>
   </data>
-  <data name="&gt;&gt;themepanel.Type" xml:space="preserve">
-    <value>booby.gradientpanel, GDF, Version=0.69.20.22, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;themepanel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>

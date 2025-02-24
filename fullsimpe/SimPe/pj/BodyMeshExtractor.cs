@@ -242,7 +242,7 @@ namespace pj
             return found;
         }
 
-        // Ebtry Point - Boobies
+        // Entry Point
         private void Main()
         {
             ArrayList al = new ArrayList();

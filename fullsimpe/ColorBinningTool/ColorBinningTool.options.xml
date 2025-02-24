@@ -1,8 +1,0 @@
-﻿<Output>
-<DisableOriginalPackages>False</DisableOriginalPackages>
-<GenerateSinglePackage>False</GenerateSinglePackage>
-<CompressTextures>False</CompressTextures>
-<RenameFiles>False</RenameFiles>
-<ReusePackages>True</ReusePackages>
-<KeepDisabledItems>True</KeepDisabledItems>
-</Output>

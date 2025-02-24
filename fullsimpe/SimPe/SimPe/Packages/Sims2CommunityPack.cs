@@ -87,8 +87,8 @@ namespace SimPe.Packages
 		/// to Seek to the Beginning</remarks>
 		protected static void Decompress(Stream instream, Stream outstream) 
 		{
-            //ICSharpCode.SharpZipLib.BZip2.BZip2.Decompress(instream, outstream, false); // newer ICSharpCode.SharpZipLib requires three parameters, param three means is the stream already in the app
-            ICSharpCode.SharpZipLib.BZip2.BZip2.Decompress(instream, outstream); // older ICSharpCode.SharpZipLib requires two parameters
+            ICSharpCode.SharpZipLib.BZip2.BZip2.Decompress(instream, outstream, false); // newer ICSharpCode.SharpZipLib requires three parameters, param three means is the stream already in the app
+            //ICSharpCode.SharpZipLib.BZip2.BZip2.Decompress(instream, outstream); // older ICSharpCode.SharpZipLib requires two parameters
 			outstream.Seek(0, System.IO.SeekOrigin.Begin);
 		}
 		

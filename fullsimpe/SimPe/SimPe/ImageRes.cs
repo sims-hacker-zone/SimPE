@@ -128,7 +128,7 @@ namespace SimPe
         }
 
 
-        //     public static void Loadimges(booby.TS2Logo tsLogo, int ep)
+        //     public static void Loadimges(TS2Logo tsLogo, int ep)
         //     {
         //         // This is used by the EP selecter which may display the logo for an EP that SimPe sees as not installed.
         //         ExpansionItem ei = PathProvider.Global.GetExpansion(ep);
