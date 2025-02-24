@@ -162,10 +162,18 @@ namespace SimPe.Plugin
             get
             {
                 IToolPlugin[] tools = {
-                                    new ImportSemiTool(this.LinkedRegistry, this.LinkedProvider),
+                                   new NeighborhoodTool(this.LinkedRegistry, this.LinkedProvider),
+                                    new SimsTool(this.LinkedRegistry, this.LinkedProvider),
+                                    new SurgeryTool(this.LinkedRegistry, this.LinkedProvider),
+                                    new HashTool(this.LinkedRegistry, this.LinkedProvider),
+                                    new FixTool(this.LinkedRegistry, this.LinkedProvider),
+                                    new SkinWorkshopTool(),
+                                    new PhotoStudioTool(this.LinkedRegistry, this.LinkedProvider),
+                                    new ActionGlobalFixTGI(),
+                                    new ActionBuildNameMap(),
+                                    new ImportSemiTool(LinkedRegistry, LinkedProvider),
                                     new OpenLuaTool(),
-                                    new SearchTool(this.LinkedRegistry, this.LinkedProvider),
-                                    new Plugin.FixUidTool(),
+                                    new SearchTool(LinkedRegistry, LinkedProvider),
                                     new ActionIntriguedNeighborhood(),
                                     new ActionDeleteSim(),
                                     new GeneticCategorizerTool(),

@@ -741,21 +741,20 @@ namespace SimPe
         /// <summary>
         /// Returns the Display name stored in a RegistryKey.
         /// </summary>
-        /// <param name="rk">RegistryKey to look in</param>
+        /// <param name="registryKey">RegistryKey to look in</param>
         /// <returns>DisplayName found in that Key</returns>
-        protected static string GetDisplayedNameForExpansion(Microsoft.Win32.RegistryKey rk)
+        protected static string GetDisplayedNameForExpansion(Microsoft.Win32.RegistryKey registryKey)
         {
-            try
+            if (registryKey != null)
             {
-                object o = rk.GetValue("DisplayName");
-                if (o == null) return "The Sims 2";
-                else
-                    return o.ToString();
+                var obj = registryKey.GetValue("DisplayName");
+                if(obj != null)
+                {
+                    return obj.ToString();
+                }
             }
-            catch (Exception)
-            {
-                return "The Sims 2";
-            }
+
+            return "The Sims 2";
         }
 
         /// <summary>

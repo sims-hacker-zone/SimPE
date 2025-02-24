@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{C62B5A09-3F7E-49E9-9A74-CC3634550179}</ProjectGuid>
@@ -26,79 +26,7 @@
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
-  <ItemGroup>
-    <Folder Include="SimPe\" />
-    <Folder Include="SimPe\Actions\" />
-    <Folder Include="SimPe\Actions\Default\" />
-    <Folder Include="img\" />
-    <Folder Include="docs\" />
-    <Folder Include="SimPe\Windows\" />
-    <Folder Include="SimPe\Windows\Forms\" />
-    <Folder Include="SimPe\Data\" />
-    <Folder Include="System\" />
-    <Folder Include="Ambertation\" />
-    <Folder Include="Classless\" />
-    <Folder Include="Classless\Hasher\" />
-    <Folder Include="SimPe\Interfaces\" />
-    <Folder Include="SimPe\Interfaces\Files\" />
-    <Folder Include="SimPe\Interfaces\Plugin\" />
-    <Folder Include="SimPe\Interfaces\Plugin\Internal\" />
-    <Folder Include="System\Windows\" />
-    <Folder Include="System\Windows\Forms\" />
-    <Folder Include="data\" />
-    <Folder Include="Ambertation\Threading\" />
-    <Folder Include="SimPe\Providers\" />
-    <Folder Include="SimPe\Events\" />
-    <Folder Include="SimPe\Interfaces\Providers\" />
-    <Folder Include="SimPe\Interfaces\Wrapper\" />
-    <Folder Include="SimPe\Interfaces\Scenegraph\" />
-    <Folder Include="Ambertation\Drawing\" />
-    <Folder Include="Ambertation\Windows\" />
-    <Folder Include="Ambertation\Windows\Forms\" />
-    <Folder Include="Ambertation\Collections\" />
-    <Folder Include="Ambertation\Windows\Forms\Graph\" />
-    <Folder Include="SimPe\PackedFiles\" />
-    <Folder Include="SimPe\PackedFiles\Wrapper\" />
-    <Folder Include="Ambertation\Renderer\" />
-    <Folder Include="SimPe\Collections\" />
-    <Folder Include="SimPe\Plugin\" />
-    <Folder Include="SimPe\Packages\" />
-    <Folder Include="SimPe\Collections\IO\" />
-    <Folder Include="SimPe\Custom\" />
-    <Folder Include="SimPe\PackedFiles\UserInterface\" />
-    <Folder Include="SimPe\Cache\" />
-    <Folder Include="SimPe\PackedFiles\Wrapper\Factory\" />
-    <Folder Include="SimPe\PackedFiles\Wrapper\Supporting\" />
-    <Folder Include="SimPe\PackedFiles\Wrapper\Lua\" />
-    <Folder Include="SimPe\Plugin\TabPage\" />
-    <Folder Include="SimPe\Geometry\" />
-    <Folder Include="SimPe\Plugin\Tool\" />
-    <Folder Include="SimPe\Plugin\Tool\Action\" />
-    <Folder Include="SimPe\Plugin\Tool\Dockable\" />
-    <Folder Include="SimPe\Plugin\Tool\Dockable\Finder\" />
-    <Folder Include="SimPe\Plugin\Downloads\" />
-    <Folder Include="SimPe\Plugin\Tool\Window\" />
-    <Folder Include="SimPe\Plugin\Gmdc\" />
-    <Folder Include="SimPe\Plugin\Gmdc\Exporter\" />
-    <Folder Include="SimPe\Plugin\Gmdc\Importer\" />
-    <Folder Include="SimPe\Plugin\Anim\" />
-    <Folder Include="SimPe\Plugin\Collections\" />
-    <Folder Include="SimPe\PackedFiles\Wrapper\SCOR\" />
-    <Folder Include="SimPe\Plugin\Scanner\" />
-    <Folder Include="SimPe\Plugin\Identifiers\" />
-    <Folder Include="SimPe\Interfaces\Plugin\Scanner\" />
-    <Folder Include="SimPe\Wants\" />
-    <Folder Include="SimPe\Wizards\" />
-    <Folder Include="SimPe\Plugin\UI\" />
-    <Folder Include="pj\" />
-    <Folder Include="pjHoodTool\" />
-    <Folder Include="pjOBJDTool\" />
-    <Folder Include="pjse\" />
-    <Folder Include="pjse\guidtool\" />
-    <Folder Include="pjse\BhavOperandWizards\" />
-    <Folder Include="SimPe\Properties\" />
-    <Folder Include="Ambertation\Viewer\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Compile Include="SimPe\Actions\Default\AbstractActionDefault.cs">
       <SubType>Code</SubType>
@@ -531,7 +459,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Ambertation\Windows\Forms\XpTaskBoxSimple.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="SimPe\Interfaces\AbstractTool.cs">
       <SubType>Code</SubType>
@@ -1969,9 +1897,6 @@
     <Compile Include="SimPe\Plugin\DownloadScanTool.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SimPe\Plugin\Factory.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="SimPe\Plugin\FixTool.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -2547,15 +2472,21 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="pj\Settings.cs" />
-    <Compile Include="pjHoodTool\Settims.cs" />
+    <Compile Include="pjHoodTool\Settims.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="pjHoodTool\Settims.Designer.cs">
-    <DependentUpon>Settims.cs</DependentUpon>
+      <DependentUpon>Settims.cs</DependentUpon>
     </Compile>
     <Compile Include="pjOBJDTool\Factory.cs" />
-    <Compile Include="pjse\guidtool\GUIDForm.cs" />
-    <Compile Include="SimPe\Plugin\TreesPackedFileUI.cs" />
+    <Compile Include="pjse\guidtool\GUIDForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SimPe\Plugin\TreesPackedFileUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="SimPe\Plugin\TreesPackedFileUI.designer.cs">
-    <DependentUpon>TreesPackedFileUI.cs</DependentUpon>
+      <DependentUpon>TreesPackedFileUI.cs</DependentUpon>
     </Compile>
     <Compile Include="SimPe\Plugin\TreesPackedFileWrapper.cs" />
     <Compile Include="SimPe\Plugin\Bhav.cs">
@@ -4493,16 +4424,16 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="pjHoodTool\Settims.resx">
-    <DependentUpon>Settims.cs</DependentUpon>
-    <SubType>Designer</SubType>
+      <DependentUpon>Settims.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="pjse\guidtool\GUIDForm.resx">
-    <DependentUpon>GUIDForm.cs</DependentUpon>
-    <SubType>Designer</SubType>
+      <DependentUpon>GUIDForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SimPe\Plugin\TreesPackedFileUI.resx">
-    <DependentUpon>TreesPackedFileUI.cs</DependentUpon>
-    <SubType>Designer</SubType>
+      <DependentUpon>TreesPackedFileUI.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
