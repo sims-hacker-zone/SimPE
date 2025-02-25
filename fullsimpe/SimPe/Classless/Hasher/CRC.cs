@@ -41,29 +41,39 @@
  *
  * Contributor(s):
  *		Jason Simeone (jay@classless.net)
- * 
+ *
  * ***** END LICENSE BLOCK ***** */
 #endregion
 
 using System;
 using System.Collections;
 
-namespace Classless.Hasher {
+namespace Classless.Hasher
+{
 	/// <summary>Computes the CRC hash for the input data using the managed library.</summary>
-	public class CRC : System.Security.Cryptography.HashAlgorithm {
-		static private Hashtable lookupTables;
+	public class CRC : System.Security.Cryptography.HashAlgorithm
+	{
+		private static Hashtable lookupTables;
 
 		private CRCParameters parameters;
 		private long[] lookup;
 		private long checksum;
 		private long registerMask;
 
-
 		/// <summary>Initializes a new instance of the CRC class.</summary>
 		/// <param name="param">The parameters to utilize in the CRC calculation.</param>
-		public CRC(CRCParameters param) : base() {
-			lock (this) {
-				if (param == null) { throw new ArgumentNullException("param", "The CRCParameters cannot be null."); }
+		public CRC(CRCParameters param)
+			: base()
+		{
+			lock (this)
+			{
+				if (param == null)
+				{
+					throw new ArgumentNullException(
+						"param",
+						"The CRCParameters cannot be null."
+					);
+				}
 				parameters = param;
 				HashSizeValue = param.Order;
 
@@ -76,15 +86,17 @@ namespace Classless.Hasher {
 		}
 
 		// Pre-build the more popular lookup tables.
-		static CRC() {
+		static CRC()
+		{
 			lookupTables = new Hashtable();
 			BuildLookup(CRCParameters.GetParameters(CRCStandard.CRC32_REVERSED));
 		}
 
-
 		/// <summary>Build the CRC lookup table for a given polynomial.</summary>
-		static private void BuildLookup(CRCParameters param) {
-			if (lookupTables.Contains(param)) {
+		static private void BuildLookup(CRCParameters param)
+		{
+			if (lookupTables.Contains(param))
+			{
 				// No sense in creating the table twice.
 				return;
 			}
@@ -94,22 +106,33 @@ namespace Classless.Hasher {
 			long widthMask = (((1 << (param.Order - 1)) - 1) << 1) | 1;
 
 			// Build the table.
-			for (int i = 0; i < table.Length; i++) {
+			for (int i = 0; i < table.Length; i++)
+			{
 				table[i] = i;
 
-				if (param.ReflectInput) { table[i] = Reflect((long)i, 8); }
-				
+				if (param.ReflectInput)
+				{
+					table[i] = Reflect((long)i, 8);
+				}
+
 				table[i] = table[i] << (param.Order - 8);
 
-				for (int j = 0; j < 8; j++) {
-					if ((table[i] & topBit) != 0) {
+				for (int j = 0; j < 8; j++)
+				{
+					if ((table[i] & topBit) != 0)
+					{
 						table[i] = (table[i] << 1) ^ param.Polynomial;
-					} else {
+					}
+					else
+					{
 						table[i] <<= 1;
 					}
 				}
 
-				if (param.ReflectInput) { table[i] = Reflect(table[i], param.Order); }
+				if (param.ReflectInput)
+				{
+					table[i] = Reflect(table[i], param.Order);
+				}
 
 				table[i] &= widthMask;
 			}
@@ -118,49 +141,69 @@ namespace Classless.Hasher {
 			lookupTables.Add(param, table);
 		}
 
-
 		/// <summary>Initializes the algorithm.</summary>
-		override public void Initialize() {
-			lock (this) {
+		override public void Initialize()
+		{
+			lock (this)
+			{
 				State = 0;
 				checksum = parameters.InitialValue;
-				if (parameters.ReflectInput) {
+				if (parameters.ReflectInput)
+				{
 					checksum = Reflect(checksum, parameters.Order);
 				}
 			}
 		}
 
-
 		/// <summary>Drives the hashing function.</summary>
 		/// <param name="array">The array containing the data.</param>
 		/// <param name="ibStart">The position in the array to begin reading from.</param>
 		/// <param name="cbSize">How many bytes in the array to read.</param>
-		override protected void HashCore(byte[] array, int ibStart, int cbSize) {
-			lock (this) {
-				for (int i = ibStart; i < (cbSize - ibStart); i++) {
-					if (parameters.ReflectInput) {
-						checksum = ((checksum >> 8) & registerMask) ^ lookup[(checksum ^ array[i]) & 0xFF];
-					} else {
-						checksum = (checksum << 8) ^ lookup[((checksum >> (parameters.Order - 8)) ^ array[i]) & 0xFF];
+		override protected void HashCore(byte[] array, int ibStart, int cbSize)
+		{
+			lock (this)
+			{
+				for (int i = ibStart; i < (cbSize - ibStart); i++)
+				{
+					if (parameters.ReflectInput)
+					{
+						checksum =
+							((checksum >> 8) & registerMask)
+							^ lookup[(checksum ^ array[i]) & 0xFF];
+					}
+					else
+					{
+						checksum =
+							(checksum << 8)
+							^ lookup[
+								((checksum >> (parameters.Order - 8)) ^ array[i]) & 0xFF
+							];
 					}
 				}
 			}
 		}
 
-
 		/// <summary>Performs any final activities required by the hash algorithm.</summary>
 		/// <returns>The final hash value.</returns>
-		override protected byte[] HashFinal() {
-			lock (this) {
-				int i, shift, numBytes;
+		override protected byte[] HashFinal()
+		{
+			lock (this)
+			{
+				int i,
+					shift,
+					numBytes;
 				byte[] temp;
 
 				checksum ^= (uint)parameters.FinalXORValue;
 
 				numBytes = (int)parameters.Order / 8;
-				if (((int)parameters.Order - (numBytes * 8)) > 0) { numBytes++; }
+				if (((int)parameters.Order - (numBytes * 8)) > 0)
+				{
+					numBytes++;
+				}
 				temp = new byte[numBytes];
-				for (i = (numBytes - 1), shift = 0; i >= 0; i--, shift += 8) {
+				for (i = (numBytes - 1), shift = 0; i >= 0; i--, shift += 8)
+				{
 					temp[i] = (byte)((checksum >> shift) & 0xFF);
 				}
 
@@ -168,20 +211,24 @@ namespace Classless.Hasher {
 			}
 		}
 
-
 		/// <summary>Reflects the lower bits of the value provided.</summary>
 		/// <param name="data">The value to reflect.</param>
 		/// <param name="numBits">The number of bits to reflect.</param>
 		/// <returns>The reflected value.</returns>
-		static private long Reflect(long data, int numBits) {
+		static private long Reflect(long data, int numBits)
+		{
 			long temp = data;
 
-			for (int i = 0; i < numBits; i++) {
+			for (int i = 0; i < numBits; i++)
+			{
 				long bitMask = (long)1 << ((numBits - 1) - i);
 
-				if ((temp & (long)1) != 0) {
+				if ((temp & (long)1) != 0)
+				{
 					data |= bitMask;
-				} else {
+				}
+				else
+				{
 					data &= ~bitMask;
 				}
 

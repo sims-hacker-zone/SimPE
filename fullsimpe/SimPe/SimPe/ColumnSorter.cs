@@ -26,43 +26,47 @@ namespace SimPe
 	/// <summary>
 	/// ListView Column Sorter
 	/// </summary>
-	public class  ColumnSorter : IComparer
+	public class ColumnSorter : IComparer
 	{
 		public ColumnSorter()
 		{
 			cc = 0;
 			so = SortOrder.Ascending;
 		}
+
 		int cc;
 		SortOrder so;
+
 		/// <summary>
 		/// The Currently active Column
 		/// </summary>
-		public int CurrentColumn 
+		public int CurrentColumn
 		{
-			get {return cc;}
-			set {
-				if (cc!=value) 
+			get { return cc; }
+			set
+			{
+				if (cc != value)
 				{
 					cc = value;
-					if (Changed!=null) Changed(this, new EventArgs());
+					if (Changed != null)
+						Changed(this, new EventArgs());
 				}
 			}
 		}
 
-
-
 		/// <summary>
 		/// The Sort Order
 		/// </summary>
-		public SortOrder Sorting 
+		public SortOrder Sorting
 		{
-			get {return so;}
-			set {
-				if (so!=value)
+			get { return so; }
+			set
+			{
+				if (so != value)
 				{
 					so = value;
-					if (Changed!=null) Changed(this, new EventArgs());
+					if (Changed != null)
+						Changed(this, new EventArgs());
 				}
 			}
 		}
@@ -79,34 +83,38 @@ namespace SimPe
 		{
 			ListViewItem rowA = (ListViewItem)x;
 			ListViewItem rowB = (ListViewItem)y;
-            
-			if (Sorting==SortOrder.Ascending) 
-			{
-				return String.Compare(rowA.SubItems[CurrentColumn].Text,
-					rowB.SubItems[CurrentColumn].Text);
-			} 
-			else 
-			{
-				return String.Compare(rowB.SubItems[CurrentColumn].Text,
-					rowA.SubItems[CurrentColumn].Text);
-			}
 
-		}		
+			if (Sorting == SortOrder.Ascending)
+			{
+				return String.Compare(
+					rowA.SubItems[CurrentColumn].Text,
+					rowB.SubItems[CurrentColumn].Text
+				);
+			}
+			else
+			{
+				return String.Compare(
+					rowB.SubItems[CurrentColumn].Text,
+					rowA.SubItems[CurrentColumn].Text
+				);
+			}
+		}
 	}
 
 	/// <summary>
 	/// ListView Column Sorter
 	/// </summary>
-	public class  ColumnsSorter : IComparer
+	public class ColumnsSorter : IComparer
 	{
 		int[] co;
+
 		/// <summary>
 		/// The Currently active Column
 		/// </summary>
 		public int[] ColumnOrder
 		{
 			get { return co; }
-			set {co = value; }
+			set { co = value; }
 		}
 
 		/// <summary>
@@ -114,7 +122,8 @@ namespace SimPe
 		/// </summary>
 		public SortOrder Sorting = SortOrder.Ascending;
 
-		public ColumnsSorter() : this (new int[0]) {}
+		public ColumnsSorter()
+			: this(new int[0]) { }
 
 		public ColumnsSorter(int[] columns)
 		{
@@ -132,20 +141,23 @@ namespace SimPe
 			ListViewItem rowA = (ListViewItem)x;
 			ListViewItem rowB = (ListViewItem)y;
 
-			if (Sorting!=SortOrder.Ascending) 
+			if (Sorting != SortOrder.Ascending)
 			{
 				rowB = (ListViewItem)x;
 				rowA = (ListViewItem)y;
 			}
 
-			for (int cc=0; cc<co.Length; cc++) 
+			for (int cc = 0; cc < co.Length; cc++)
 			{
-				int cmp = String.Compare(rowA.SubItems[co[cc]].Text, rowB.SubItems[co[cc]].Text);
-				if (cmp!=0) return cmp;
+				int cmp = String.Compare(
+					rowA.SubItems[co[cc]].Text,
+					rowB.SubItems[co[cc]].Text
+				);
+				if (cmp != 0)
+					return cmp;
 			}
 
 			return 0;
-
-		}		
+		}
 	}
 }

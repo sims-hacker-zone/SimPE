@@ -25,25 +25,26 @@ namespace SimPe.PackedFiles.Wrapper
 	/// <summary>
 	/// An Item stored in a CPF File
 	/// </summary>
-	public class ClstItem 
+	public class ClstItem
 	{
-		
 		Data.MetaData.IndexTypes format;
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public ClstItem (Data.MetaData.IndexTypes format) : this(null, format)
-		{			
-		}
+		public ClstItem(Data.MetaData.IndexTypes format)
+			: this(null, format) { }
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public ClstItem (SimPe.Interfaces.Files.IPackedFileDescriptor pfd, Data.MetaData.IndexTypes format)
+		public ClstItem(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			Data.MetaData.IndexTypes format
+		)
 		{
 			this.format = format;
-			if (pfd!=null)
+			if (pfd != null)
 			{
 				this.Type = pfd.Type;
 				this.Instance = pfd.Instance;
@@ -53,6 +54,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		uint type;
+
 		/// <summary>
 		/// Returns the Type of the referenced File
 		/// </summary>
@@ -65,38 +67,38 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Name of the represented Type
 		/// </summary>
-		public Data.TypeAlias TypeName 
+		public Data.TypeAlias TypeName
 		{
-			get 
-			{
-				return Data.MetaData.FindTypeAlias(Type);
-			}
+			get { return Data.MetaData.FindTypeAlias(Type); }
 		}
 
 		uint group;
+
 		/// <summary>
 		/// Returns the Group the referenced file is assigned to
 		/// </summary>
 		public uint Group
 		{
 			get { return group; }
-			set { group =value; }
+			set { group = value; }
 		}
 
 		uint instance;
+
 		/// <summary>
 		/// Returns the Instance Data
 		/// </summary>
 		public uint Instance
 		{
 			get { return instance; }
-			set { instance =value; }
+			set { instance = value; }
 		}
 
 		uint subtype;
+
 		/// <summary>
 		/// Returns an yet unknown Type
-		/// </summary>		
+		/// </summary>
 		/// <remarks>Only in Version 1.1 of package Files</remarks>
 		public uint SubType
 		{
@@ -105,48 +107,71 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		uint uncsize;
+
 		/// <summary>
 		/// Returns the (real) uncompressed Size of the File
 		/// </summary>
-		public uint UncompressedSize 
+		public uint UncompressedSize
 		{
 			get { return uncsize; }
-			set { uncsize =value; }
+			set { uncsize = value; }
 		}
 
 		public override int GetHashCode()
 		{
-			return (int)(this.Type|this.Instance)-(int)(this.Type&this.Instance) ;
+			return (int)(this.Type | this.Instance) - (int)(this.Type & this.Instance);
 		}
 
 		public override bool Equals(object obj)
 		{
-			if (obj==null) return false;
+			if (obj == null)
+				return false;
 			if (obj is ClstItem)
 			{
 				ClstItem ci = (ClstItem)obj;
-				return (ci.Group == Group && ci.Instance == Instance && ci.Type == type && (ci.SubType==SubType || ci.format == Data.MetaData.IndexTypes.ptShortFileIndex || format == Data.MetaData.IndexTypes.ptShortFileIndex));
-			} 
+				return (
+					ci.Group == Group
+					&& ci.Instance == Instance
+					&& ci.Type == type
+					&& (
+						ci.SubType == SubType
+						|| ci.format == Data.MetaData.IndexTypes.ptShortFileIndex
+						|| format == Data.MetaData.IndexTypes.ptShortFileIndex
+					)
+				);
+			}
 			else if (obj is SimPe.Interfaces.Files.IPackedFileDescriptor)
 			{
-				SimPe.Interfaces.Files.IPackedFileDescriptor ci = (SimPe.Interfaces.Files.IPackedFileDescriptor)obj;
-				return (ci.Group == Group && ci.Instance == Instance && ci.Type == type && (ci.SubType==SubType || format == Data.MetaData.IndexTypes.ptShortFileIndex));
-			} else return base.Equals (obj);
+				SimPe.Interfaces.Files.IPackedFileDescriptor ci =
+					(SimPe.Interfaces.Files.IPackedFileDescriptor)obj;
+				return (
+					ci.Group == Group
+					&& ci.Instance == Instance
+					&& ci.Type == type
+					&& (
+						ci.SubType == SubType
+						|| format == Data.MetaData.IndexTypes.ptShortFileIndex
+					)
+				);
+			}
+			else
+				return base.Equals(obj);
 		}
-
-
 
 		public override string ToString()
 		{
 			string name = this.TypeName + ": 0x" + Helper.HexString(this.Type);
-			if (format == Data.MetaData.IndexTypes.ptLongFileIndex) name += " - 0x" + Helper.HexString(this.SubType);
-			name += " - 0x" + Helper.HexString(this.Group) + " - 0x" + Helper.HexString(this.Instance) ;
+			if (format == Data.MetaData.IndexTypes.ptLongFileIndex)
+				name += " - 0x" + Helper.HexString(this.SubType);
+			name +=
+				" - 0x"
+				+ Helper.HexString(this.Group)
+				+ " - 0x"
+				+ Helper.HexString(this.Instance);
 
-			name += " = 0x"+Helper.HexString(UncompressedSize)+" byte";
+			name += " = 0x" + Helper.HexString(UncompressedSize) + " byte";
 			return name;
 		}
-
-		
 
 		/// <summary>
 		/// Unserializes a BinaryStream into the Attributes of this Instance
@@ -157,8 +182,10 @@ namespace SimPe.PackedFiles.Wrapper
 			type = reader.ReadUInt32();
 			group = reader.ReadUInt32();
 			instance = reader.ReadUInt32();
-			if (format == Data.MetaData.IndexTypes.ptLongFileIndex) subtype = reader.ReadUInt32();
-			else subtype = 0;
+			if (format == Data.MetaData.IndexTypes.ptLongFileIndex)
+				subtype = reader.ReadUInt32();
+			else
+				subtype = 0;
 			uncsize = reader.ReadUInt32();
 		}
 
@@ -166,14 +193,18 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Unserializes a BinaryStream into the Attributes of this Instance
 		/// </summary>
 		/// <param name="reader">The Stream that contains the FileData</param>
-		internal void Serialize(System.IO.BinaryWriter writer, Data.MetaData.IndexTypes format)
+		internal void Serialize(
+			System.IO.BinaryWriter writer,
+			Data.MetaData.IndexTypes format
+		)
 		{
 			this.format = format;
 
 			writer.Write(type);
 			writer.Write(group);
 			writer.Write(instance);
-			if (format == Data.MetaData.IndexTypes.ptLongFileIndex) writer.Write(subtype);
+			if (format == Data.MetaData.IndexTypes.ptLongFileIndex)
+				writer.Write(subtype);
 			writer.Write(uncsize);
 		}
 	}

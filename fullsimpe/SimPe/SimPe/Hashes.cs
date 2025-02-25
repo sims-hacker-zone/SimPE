@@ -28,15 +28,19 @@ namespace SimPe
 	public class Hashes
 	{
 		static CRC crc24 = new CRC(CRCParameters.GetParameters(CRCStandard.CRC24));
-		static CRC crc32 = new CRC(new Classless.Hasher.CRCParameters(32, 0x04C11DB7, 0xffffffff, 0, false));
-		static CRC crc32_cas = new CRC(CRCParameters.GetParameters(CRCStandard.CRC32_CAS));
+		static CRC crc32 = new CRC(
+			new Classless.Hasher.CRCParameters(32, 0x04C11DB7, 0xffffffff, 0, false)
+		);
+		static CRC crc32_cas = new CRC(
+			CRCParameters.GetParameters(CRCStandard.CRC32_CAS)
+		);
 
-		public static CRC Crc24 
+		public static CRC Crc24
 		{
 			get { return crc24; }
 		}
 
-		public static CRC Crc32 
+		public static CRC Crc32
 		{
 			get { return crc32; }
 		}
@@ -78,10 +82,10 @@ namespace SimPe
 			long crc = seed;
 			int i;
 
-			for (int index=0; index<octets.Length; index++)
+			for (int index = 0; index < octets.Length; index++)
 			{
 				crc ^= octets[index] << 16;
-				for (i = 0; i < 8; i++) 
+				for (i = 0; i < 8; i++)
 				{
 					crc <<= 1;
 					if ((crc & 0x1000000) != 0)
@@ -108,7 +112,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="filename"></param>
 		/// <returns></returns>
-		public static uint FileGroupHash(string filename) 
+		public static uint FileGroupHash(string filename)
 		{
 			return Data.MetaData.CUSTOM_GROUP;
 			/*filename = filename.Trim().ToLower();
@@ -125,7 +129,7 @@ namespace SimPe
 		public static uint GroupHash(string name)
 		{
 			name = name.Trim().ToLower();
-			byte[] rt = crc24.ComputeHash(Helper.ToBytes(name, 0));//CRC24Seed, CRC24Poly, filename.ToCharArray());
+			byte[] rt = crc24.ComputeHash(Helper.ToBytes(name, 0)); //CRC24Seed, CRC24Poly, filename.ToCharArray());
 
 			return (uint)(ToLong(rt) | 0x7f000000);
 		}
@@ -135,10 +139,10 @@ namespace SimPe
 		/// </summary>
 		/// <param name="filename"></param>
 		/// <returns></returns>
-		public static uint InstanceHash(string filename) 
+		public static uint InstanceHash(string filename)
 		{
 			filename = filename.Trim().ToLower();
-			byte[] rt = crc24.ComputeHash(Helper.ToBytes(filename, 0));//CRC24Seed, CRC24Poly, filename.ToCharArray());
+			byte[] rt = crc24.ComputeHash(Helper.ToBytes(filename, 0)); //CRC24Seed, CRC24Poly, filename.ToCharArray());
 
 			return (uint)(ToLong(rt) | 0xff000000);
 		}
@@ -148,10 +152,10 @@ namespace SimPe
 		/// </summary>
 		/// <param name="filename"></param>
 		/// <returns></returns>
-		public static uint SubTypeHash(string filename) 
+		public static uint SubTypeHash(string filename)
 		{
 			filename = filename.Trim().ToLower();
-			byte[] rt = crc32.ComputeHash(Helper.ToBytes(filename, 0));//CRC24Seed, CRC24Poly, filename.ToCharArray());
+			byte[] rt = crc32.ComputeHash(Helper.ToBytes(filename, 0)); //CRC24Seed, CRC24Poly, filename.ToCharArray());
 
 			return (uint)ToLong(rt);
 		}
@@ -163,7 +167,7 @@ namespace SimPe
 		/// <returns></returns>
 		public static uint GetCrc32CAS(string s)
 		{
-			byte[] rt = crc32_cas.ComputeHash(Helper.ToBytes(s, 0));//CRC24Seed, CRC24Poly, filename.ToCharArray());
+			byte[] rt = crc32_cas.ComputeHash(Helper.ToBytes(s, 0)); //CRC24Seed, CRC24Poly, filename.ToCharArray());
 
 			return (uint)ToLong(rt);
 		}
@@ -174,8 +178,8 @@ namespace SimPe
 		/// <param name="s"></param>
 		/// <returns></returns>
 		public static uint GetCrc32(string s)
-		{			
-			byte[] rt = crc32.ComputeHash(Helper.ToBytes(s, 0));//CRC24Seed, CRC24Poly, filename.ToCharArray());
+		{
+			byte[] rt = crc32.ComputeHash(Helper.ToBytes(s, 0)); //CRC24Seed, CRC24Poly, filename.ToCharArray());
 
 			return (uint)ToLong(rt);
 		}
@@ -186,8 +190,8 @@ namespace SimPe
 		/// <param name="s"></param>
 		/// <returns></returns>
 		public static uint GetCrc24(string s)
-		{			
-			byte[] rt = crc24.ComputeHash(Helper.ToBytes(s, 0));//CRC24Seed, CRC24Poly, filename.ToCharArray());
+		{
+			byte[] rt = crc24.ComputeHash(Helper.ToBytes(s, 0)); //CRC24Seed, CRC24Poly, filename.ToCharArray());
 
 			return (uint)ToLong(rt);
 		}
@@ -197,13 +201,14 @@ namespace SimPe
 		/// </summary>
 		/// <param name="filename"></param>
 		/// <returns></returns>
-		public static string StripHashFromName(string filename) 
+		public static string StripHashFromName(string filename)
 		{
-			if (filename == null) return "";
+			if (filename == null)
+				return "";
 
-			if (filename.IndexOf("#")==0) 
+			if (filename.IndexOf("#") == 0)
 			{
-				if (filename.IndexOf("!")>=1) 
+				if (filename.IndexOf("!") >= 1)
 				{
 					string[] part = filename.Split("!".ToCharArray(), 2);
 					return part[1];
@@ -219,19 +224,19 @@ namespace SimPe
 		/// <param name="filename"></param>
 		/// <param name="defgroup"></param>
 		/// <returns></returns>
-		public static uint GetHashGroupFromName(string filename, uint defgroup) 
+		public static uint GetHashGroupFromName(string filename, uint defgroup)
 		{
-			if (filename.IndexOf("#")==0) 
+			if (filename.IndexOf("#") == 0)
 			{
-				if (filename.IndexOf("!")>=1) 
+				if (filename.IndexOf("!") >= 1)
 				{
 					string[] part = filename.Split("!".ToCharArray(), 2);
-					
+
 					string hash = part[0].Replace("#", "").Replace("!", "");
-					try 
+					try
 					{
 						return Convert.ToUInt32(hash, 16);
-					} 
+					}
 					catch (Exception)
 					{
 						return defgroup;
@@ -250,19 +255,20 @@ namespace SimPe
 		/// <returns></returns>
 		public static string AssembleHashedFileName(uint hash, string filename)
 		{
-			return "#0x"+Helper.MinStrLength(hash.ToString("x"),8)+"!"+filename;
+			return "#0x" + Helper.MinStrLength(hash.ToString("x"), 8) + "!" + filename;
 		}
 	}
 
 	public class UserVerification
 	{
 		public static uint GenerateUserId(uint guid, string username, string password)
-		{			
-			if (username.Trim()=="") return 0;
+		{
+			if (username.Trim() == "")
+				return 0;
 
 			uint hash = Hashes.GetCrc32(username) & 0xFFFFFFFE;
-			guid = (uint)(guid  << 8) & 0xFFFFFF00;
-			if (guid==0)			
+			guid = (uint)(guid << 8) & 0xFFFFFF00;
+			if (guid == 0)
 				return hash;
 
 			return ((hash | 0x00000001) & 0x000000FF) | guid;
@@ -270,16 +276,17 @@ namespace SimPe
 
 		public static bool ValidUserId(uint id, string username, string password)
 		{
-			if (username.Trim()=="") return id==0;
-			uint hash = Hashes.GetCrc32(username) & 0xFFFFFFFE;			
+			if (username.Trim() == "")
+				return id == 0;
+			uint hash = Hashes.GetCrc32(username) & 0xFFFFFFFE;
 
-			if ((id & 1) == 0) 			
-				return (id==hash);
-			
+			if ((id & 1) == 0)
+				return (id == hash);
+
 			uint guid = GetUserGuid(id);
 			id = id & 0x000000FE;
 			hash = hash & 0x000000FE;
-			return (id==hash);
+			return (id == hash);
 		}
 
 		public static uint GetUserGuid(uint id)
@@ -290,12 +297,24 @@ namespace SimPe
 
 		public static bool HaveUserId
 		{
-			get {return (Helper.WindowsRegistry.CachedUserId!=0) && (Helper.WindowsRegistry.Username.Trim()!="");}
+			get
+			{
+				return (Helper.WindowsRegistry.CachedUserId != 0)
+					&& (Helper.WindowsRegistry.Username.Trim() != "");
+			}
 		}
 
 		public static bool HaveValidUserId
 		{
-			get {return HaveUserId && ValidUserId(Helper.WindowsRegistry.CachedUserId, Helper.WindowsRegistry.Username, Helper.WindowsRegistry.Password);}
+			get
+			{
+				return HaveUserId
+					&& ValidUserId(
+						Helper.WindowsRegistry.CachedUserId,
+						Helper.WindowsRegistry.Username,
+						Helper.WindowsRegistry.Password
+					);
+			}
 		}
 
 		public static uint UserId

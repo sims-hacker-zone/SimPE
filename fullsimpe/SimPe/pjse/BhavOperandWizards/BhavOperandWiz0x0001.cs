@@ -18,17 +18,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
-using SimPe.PackedFiles.Wrapper;
 using pjse.BhavNameWizards;
+using SimPe.PackedFiles.Wrapper;
 
 namespace pjse.BhavOperandWizards.Wiz0x0001
 {
 	/// <summary>
-	/// Zusammenfassung für BhavInstruction.
+	/// Zusammenfassung fï¿½r BhavInstruction.
 	/// </summary>
 	internal class UI : System.Windows.Forms.Form, iBhavOperandWizForm
 	{
@@ -37,6 +37,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0001
 		internal System.Windows.Forms.Panel pnWiz0x0001;
 		private System.Windows.Forms.ComboBox cbGenericSimsCall;
 		private System.Windows.Forms.Label lbGenericSimsCallparms;
+
 		/// <summary>
 		/// Erforderliche Designervariable.
 		/// </summary>
@@ -45,14 +46,13 @@ namespace pjse.BhavOperandWizards.Wiz0x0001
 
 		private string genericSimsCallparamText(int i)
 		{
-            return BhavWiz.readStr(GS.BhavStr.GenericsDesc, (ushort)i);
+			return BhavWiz.readStr(GS.BhavStr.GenericsDesc, (ushort)i);
 		}
-
 
 		public UI()
 		{
 			//
-			// Erforderlich für die Windows Form-Designerunterstützung
+			// Erforderlich fï¿½r die Windows Form-Designerunterstï¿½tzung
 			//
 			InitializeComponent();
 		}
@@ -60,33 +60,41 @@ namespace pjse.BhavOperandWizards.Wiz0x0001
 		/// <summary>
 		/// Die verwendeten Ressourcen bereinigen.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
-				if(components != null)
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
-        }
+			base.Dispose(disposing);
+		}
 
+		#region iBhavOperandWizForm
+		public Panel WizPanel
+		{
+			get { return this.pnWiz0x0001; }
+		}
 
-        #region iBhavOperandWizForm
-        public Panel WizPanel { get { return this.pnWiz0x0001; } }
-
-        public void Execute(Instruction inst)
+		public void Execute(Instruction inst)
 		{
 			byte operand0 = inst.Operands[0];
 
 			this.cbGenericSimsCall.Items.Clear();
 			for (byte i = 0; i < BhavWiz.readStr(GS.BhavStr.Generics).Count; i++)
-				this.cbGenericSimsCall.Items.Add("0x" + SimPe.Helper.HexString(i) + ": " + BhavWiz.readStr(GS.BhavStr.Generics, i));
+				this.cbGenericSimsCall.Items.Add(
+					"0x"
+						+ SimPe.Helper.HexString(i)
+						+ ": "
+						+ BhavWiz.readStr(GS.BhavStr.Generics, i)
+				);
 			this.lbGenericSimsCallparms.Text = "Should never see this";
 
 			lbGenericSimsCallparms.Text = genericSimsCallparamText(operand0);
-			cbGenericSimsCall.SelectedIndex = (operand0 < cbGenericSimsCall.Items.Count) ? operand0 : -1;
+			cbGenericSimsCall.SelectedIndex =
+				(operand0 < cbGenericSimsCall.Items.Count) ? operand0 : -1;
 		}
 
 		public Instruction Write(Instruction inst)
@@ -100,74 +108,85 @@ namespace pjse.BhavOperandWizards.Wiz0x0001
 
 		#region Vom Windows Form-Designer generierter Code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung.
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fï¿½r die Designerunterstï¿½tzung.
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geï¿½ndert werden.
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UI));
-            this.pnWiz0x0001 = new System.Windows.Forms.Panel();
-            this.lbGenericSimsCallparms = new System.Windows.Forms.Label();
-            this.cbGenericSimsCall = new System.Windows.Forms.ComboBox();
-            this.pnWiz0x0001.SuspendLayout();
-            this.SuspendLayout();
-            //
-            // pnWiz0x0001
-            //
-            this.pnWiz0x0001.Controls.Add(this.lbGenericSimsCallparms);
-            this.pnWiz0x0001.Controls.Add(this.cbGenericSimsCall);
-            resources.ApplyResources(this.pnWiz0x0001, "pnWiz0x0001");
-            this.pnWiz0x0001.Name = "pnWiz0x0001";
-            //
-            // lbGenericSimsCallparms
-            //
-            resources.ApplyResources(this.lbGenericSimsCallparms, "lbGenericSimsCallparms");
-            this.lbGenericSimsCallparms.Name = "lbGenericSimsCallparms";
-            //
-            // cbGenericSimsCall
-            //
-            this.cbGenericSimsCall.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbGenericSimsCall.DropDownWidth = 352;
-            resources.ApplyResources(this.cbGenericSimsCall, "cbGenericSimsCall");
-            this.cbGenericSimsCall.Name = "cbGenericSimsCall";
-            this.cbGenericSimsCall.SelectedIndexChanged += new System.EventHandler(this.cbGenericSimsCall_Changed);
-            //
-            // UI
-            //
-            resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.Controls.Add(this.pnWiz0x0001);
-            this.Name = "UI";
-            this.pnWiz0x0001.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+			System.ComponentModel.ComponentResourceManager resources =
+				new System.ComponentModel.ComponentResourceManager(typeof(UI));
+			this.pnWiz0x0001 = new System.Windows.Forms.Panel();
+			this.lbGenericSimsCallparms = new System.Windows.Forms.Label();
+			this.cbGenericSimsCall = new System.Windows.Forms.ComboBox();
+			this.pnWiz0x0001.SuspendLayout();
+			this.SuspendLayout();
+			//
+			// pnWiz0x0001
+			//
+			this.pnWiz0x0001.Controls.Add(this.lbGenericSimsCallparms);
+			this.pnWiz0x0001.Controls.Add(this.cbGenericSimsCall);
+			resources.ApplyResources(this.pnWiz0x0001, "pnWiz0x0001");
+			this.pnWiz0x0001.Name = "pnWiz0x0001";
+			//
+			// lbGenericSimsCallparms
+			//
+			resources.ApplyResources(
+				this.lbGenericSimsCallparms,
+				"lbGenericSimsCallparms"
+			);
+			this.lbGenericSimsCallparms.Name = "lbGenericSimsCallparms";
+			//
+			// cbGenericSimsCall
+			//
+			this.cbGenericSimsCall.DropDownStyle = System
+				.Windows
+				.Forms
+				.ComboBoxStyle
+				.DropDownList;
+			this.cbGenericSimsCall.DropDownWidth = 352;
+			resources.ApplyResources(this.cbGenericSimsCall, "cbGenericSimsCall");
+			this.cbGenericSimsCall.Name = "cbGenericSimsCall";
+			this.cbGenericSimsCall.SelectedIndexChanged += new System.EventHandler(
+				this.cbGenericSimsCall_Changed
+			);
+			//
+			// UI
+			//
+			resources.ApplyResources(this, "$this");
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.Controls.Add(this.pnWiz0x0001);
+			this.Name = "UI";
+			this.pnWiz0x0001.ResumeLayout(false);
+			this.ResumeLayout(false);
 		}
 		#endregion
 
 		private void cbGenericSimsCall_Changed(object sender, System.EventArgs e)
 		{
-			lbGenericSimsCallparms.Text = (cbGenericSimsCall.SelectedIndex >= 0)
-				? genericSimsCallparamText(cbGenericSimsCall.SelectedIndex)
-				: "";
+			lbGenericSimsCallparms.Text =
+				(cbGenericSimsCall.SelectedIndex >= 0)
+					? genericSimsCallparamText(cbGenericSimsCall.SelectedIndex)
+					: "";
 		}
-
-    }
-
+	}
 }
 
 namespace pjse.BhavOperandWizards
 {
 	public class BhavOperandWiz0x0001 : pjse.ABhavOperandWiz
 	{
-        public BhavOperandWiz0x0001(Instruction i) : base(i) { myForm = new Wiz0x0001.UI(); }
+		public BhavOperandWiz0x0001(Instruction i)
+			: base(i)
+		{
+			myForm = new Wiz0x0001.UI();
+		}
 
 		#region IDisposable Members
 		public override void Dispose()
 		{
-			if (myForm != null) myForm = null;
+			if (myForm != null)
+				myForm = null;
 		}
 		#endregion
-
 	}
-
 }

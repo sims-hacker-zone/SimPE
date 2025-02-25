@@ -2,17 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Specialized;
 using System.Text;
-
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Packages;
 using SimPe.PackedFiles.Wrapper;
 
-
 namespace SimPe.Plugin
 {
-
 	public class PackageInfo : AbstractCpfInfo, IDisposable
 	{
 		// Track whether Dispose has been called.
@@ -26,7 +23,7 @@ namespace SimPe.Plugin
 		public IPackageFile Package
 		{
 			get { return package; }
-			set 
+			set
 			{
 				package = value;
 				ProcessPackage(value);
@@ -37,7 +34,7 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (this.stringList != null) 
+				if (this.stringList != null)
 				{
 					StrItemList items = this.stringList.Items;
 					if (!Utility.IsNullOrEmpty(items))
@@ -47,19 +44,23 @@ namespace SimPe.Plugin
 			}
 			set
 			{
-				if (this.stringList != null) 
+				if (this.stringList != null)
 				{
 					StrItemList items = this.stringList.Items;
-					
+
 					if (!Utility.IsNullOrEmpty(items))
 						((StrToken)items[0]).Title = value;
 					else
 					{
-						StrToken item = new StrToken(0, Convert.ToByte(SimPe.Data.MetaData.Languages.English), value, String.Empty);
+						StrToken item = new StrToken(
+							0,
+							Convert.ToByte(SimPe.Data.MetaData.Languages.English),
+							value,
+							String.Empty
+						);
 						this.stringList.Add(item);
 					}
 				}
-
 			}
 		}
 
@@ -75,20 +76,18 @@ namespace SimPe.Plugin
 			set { this.packageHash = value; }
 		}
 
-
-		private PackageInfo()
-		{
-		}
+		private PackageInfo() { }
 
 		public PackageInfo(IPackageFile package)
 		{
 			this.Package = package;
 		}
 
-
 		void ProcessPackage(IPackageFile package)
 		{
-			IPackedFileDescriptor[] strList = package.FindFiles(SimPe.Data.MetaData.STRING_FILE);
+			IPackedFileDescriptor[] strList = package.FindFiles(
+				SimPe.Data.MetaData.STRING_FILE
+			);
 			if (Utility.IsNullOrEmpty(strList))
 			{
 				IPackedFileDescriptor textFile = this.CreateTextResource(package);
@@ -113,7 +112,6 @@ namespace SimPe.Plugin
 
 				//this.packageHash = this.GetPackageHash();
 			}
-
 		}
 
 		public IPackedFileDescriptor[] FindFiles(uint type)
@@ -130,15 +128,14 @@ namespace SimPe.Plugin
 				this.stringList.SynchronizeUserData();
 		}
 
-
 		private uint GetPackageHash()
 		{
 			Random rn = new Random();
-			uint ret = ((uint)rn.Next(0xffffff)|0xff000000u);
-			foreach (IPackedFileDescriptor pfd in this.package.Index) 
+			uint ret = ((uint)rn.Next(0xffffff) | 0xff000000u);
+			foreach (IPackedFileDescriptor pfd in this.package.Index)
 			{
 				///This is a scenegraph Resource so get the Hash from there!
-				if (MetaData.RcolList.Contains(pfd.Type)) 
+				if (MetaData.RcolList.Contains(pfd.Type))
 				{
 					using (Rcol rcol = new GenericRcol(null, false))
 					{
@@ -146,7 +143,6 @@ namespace SimPe.Plugin
 						ret = Hashes.GroupHash(rcol.FileName);
 					}
 					break;
-
 				}
 			}
 			return ret;
@@ -166,20 +162,21 @@ namespace SimPe.Plugin
 			uint group = this.GetScenegraphGroup(package);
 			if (group != 0)
 			{
-
 				ret = package.NewDescriptor(
 					SimPe.Data.MetaData.STRING_FILE,
 					0x00000000u,
 					group,
 					0x00000001u
-					);
+				);
 
 				package.Add(ret, true);
 
-				try 
+				try
 				{
 					// link the newly created resource
-					IPackedFileDescriptor[] pfd3IDR = package.FindFiles(SimPe.Data.MetaData.REF_FILE);
+					IPackedFileDescriptor[] pfd3IDR = package.FindFiles(
+						SimPe.Data.MetaData.REF_FILE
+					);
 					foreach (IPackedFileDescriptor pfd in pfd3IDR)
 					{
 						using (RefFile refFile = new RefFile())
@@ -195,11 +192,11 @@ namespace SimPe.Plugin
 									temp.Add(ret);
 							}
 
-							refFile.Items = (IPackedFileDescriptor[])temp.ToArray(typeof(IPackedFileDescriptor));
+							refFile.Items = (IPackedFileDescriptor[])
+								temp.ToArray(typeof(IPackedFileDescriptor));
 
 							refFile.SynchronizeUserData();
 						}
-
 					}
 				}
 				catch
@@ -207,18 +204,15 @@ namespace SimPe.Plugin
 					package.Remove(ret);
 					ret = null;
 				}
-
-			
 			}
 
 			return ret;
 		}
 
-
 		uint GetScenegraphGroup(IPackageFile package)
 		{
 			uint ret = 0;
-			foreach (IPackedFileDescriptor pfd in this.package.Index) 
+			foreach (IPackedFileDescriptor pfd in this.package.Index)
 				if (MetaData.RcolList.Contains(pfd.Type))
 				{
 					ret = pfd.Group;
@@ -235,7 +229,6 @@ namespace SimPe.Plugin
 			GC.SuppressFinalize(this);
 		}
 
-
 		private void Dispose(bool disposing)
 		{
 			if (!this.disposed)
@@ -245,13 +238,11 @@ namespace SimPe.Plugin
 					if (this.package is IDisposable)
 						((IDisposable)this.package).Dispose();
 				}
-				disposed = true;         
+				disposed = true;
 			}
-
 		}
 
 		#endregion
-
 	}
 
 	public class PackageInfoTable : ListDictionary, IDisposable
@@ -259,22 +250,18 @@ namespace SimPe.Plugin
 		// Track whether Dispose has been called.
 		private bool disposed = false;
 
-
 		public new PackageInfo this[object key]
 		{
 			get { return base[key] as PackageInfo; }
 			set { base[key] = value; }
 		}
 
-		public PackageInfoTable()
-		{
-		}
+		public PackageInfoTable() { }
 
 		public void Add(object key, PackageInfo pnfo)
 		{
 			base.Add(key, pnfo);
 		}
-
 
 		public void RemovePackage(object key)
 		{
@@ -292,7 +279,6 @@ namespace SimPe.Plugin
 				pnfo.Dispose();
 			this.Clear();
 		}
-
 
 		public bool ContainsKey(object key)
 		{
@@ -323,7 +309,6 @@ namespace SimPe.Plugin
 			GC.SuppressFinalize(this);
 		}
 
-
 		private void Dispose(bool disposing)
 		{
 			if (!this.disposed)
@@ -336,11 +321,9 @@ namespace SimPe.Plugin
 							((IDisposable)pnfo.Package).Dispose();
 				}
 			}
-			disposed = true;         
+			disposed = true;
 		}
-
 
 		#endregion
 	}
-	
 }

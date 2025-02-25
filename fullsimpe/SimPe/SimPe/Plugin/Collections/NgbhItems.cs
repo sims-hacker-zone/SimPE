@@ -30,15 +30,16 @@ namespace SimPe.Plugin.Collections
 		ArrayList list = new ArrayList();
 		NgbhSlotList parent;
 		Ngbh ngbh;
-		public NgbhSlotList Parent 
+		public NgbhSlotList Parent
 		{
-			get {return parent;}
+			get { return parent; }
 		}
-		
+
 		internal NgbhItems(NgbhSlotList parent)
 		{
 			this.parent = parent;
-			if (parent!=null) ngbh = parent.Parent;
+			if (parent != null)
+				ngbh = parent.Parent;
 			list = new ArrayList();
 		}
 
@@ -73,19 +74,22 @@ namespace SimPe.Plugin.Collections
 		public void Add(NgbhItem item)
 		{
 			list.Add(item);
-			if (ngbh!=null) ngbh.Changed = true;
+			if (ngbh != null)
+				ngbh.Changed = true;
 		}
 
 		public void Insert(int index, NgbhItem item)
 		{
 			list.Insert(index, item);
-			if (ngbh!=null) ngbh.Changed = true;
+			if (ngbh != null)
+				ngbh.Changed = true;
 		}
 
 		public void Remove(NgbhItem item)
 		{
 			list.Remove(item);
-			if (ngbh!=null) ngbh.Changed = true;
+			if (ngbh != null)
+				ngbh.Changed = true;
 		}
 
 		public void Remove(NgbhItem[] items)
@@ -93,7 +97,8 @@ namespace SimPe.Plugin.Collections
 			foreach (NgbhItem item in items)
 				Remove(item);
 
-			if (ngbh!=null) ngbh.Changed = true;
+			if (ngbh != null)
+				ngbh.Changed = true;
 		}
 
 		public void Remove(NgbhItems items)
@@ -101,19 +106,22 @@ namespace SimPe.Plugin.Collections
 			foreach (NgbhItem item in items)
 				Remove(item);
 
-			if (ngbh!=null) ngbh.Changed = true;
+			if (ngbh != null)
+				ngbh.Changed = true;
 		}
 
 		public void RemoveAt(int index)
 		{
 			list.RemoveAt(index);
-			if (ngbh!=null) ngbh.Changed = true;
+			if (ngbh != null)
+				ngbh.Changed = true;
 		}
 
 		public void Clear()
 		{
 			list.Clear();
-			if (ngbh!=null) ngbh.Changed = true;
+			if (ngbh != null)
+				ngbh.Changed = true;
 		}
 
 		public bool Contains(NgbhItem item)
@@ -123,31 +131,35 @@ namespace SimPe.Plugin.Collections
 
 		public void Swap(int i1, int i2)
 		{
-			if (i1<0 || i2<0 || i1>=list.Count || i2>=list.Count) return;
+			if (i1 < 0 || i2 < 0 || i1 >= list.Count || i2 >= list.Count)
+				return;
 			object o = list[i1];
 			list[i1] = list[i2];
 			list[i2] = o;
 
-			if (ngbh!=null) ngbh.Changed = true;
+			if (ngbh != null)
+				ngbh.Changed = true;
 		}
 
 		public NgbhItem this[int index]
 		{
-			get {return list[index] as NgbhItem;}
-			set {
+			get { return list[index] as NgbhItem; }
+			set
+			{
 				list[index] = value;
-				if (ngbh!=null) ngbh.Changed = true;
+				if (ngbh != null)
+					ngbh.Changed = true;
 			}
 		}
 
 		public int Count
 		{
-			get {return list.Count;}
+			get { return list.Count; }
 		}
 
 		public int Length
 		{
-			get {return list.Count;}
+			get { return list.Count; }
 		}
 
 		public NgbhItems Clone()
@@ -165,11 +177,13 @@ namespace SimPe.Plugin.Collections
 		}
 
 		public const uint MIN_INVENTORY_NUMBER = 1000;
+
 		internal uint GetMaxInventoryNumber()
 		{
 			uint nr = MIN_INVENTORY_NUMBER - 1;
-			foreach (NgbhItem i in list)			
-				if (i.InventoryNumber>nr) nr = i.InventoryNumber;
+			foreach (NgbhItem i in list)
+				if (i.InventoryNumber > nr)
+					nr = i.InventoryNumber;
 
 			return nr;
 		}
@@ -177,23 +191,26 @@ namespace SimPe.Plugin.Collections
 		public NgbhItem FindItemByGuid(uint guid)
 		{
 			foreach (NgbhItem i in list)
-				if (i.Guid == guid) return i;
+				if (i.Guid == guid)
+					return i;
 			return null;
-        }
+		}
 
-        public int CountItemsByGuid(uint guid)
-        {
-            int j = 0;
-            foreach (NgbhItem i in list)
-                if (i.Guid == guid && !i.IsGossip) j++;
-            return j;
-        }
+		public int CountItemsByGuid(uint guid)
+		{
+			int j = 0;
+			foreach (NgbhItem i in list)
+				if (i.Guid == guid && !i.IsGossip)
+					j++;
+			return j;
+		}
 
 		#region IDisposable Member
 
 		public void Dispose()
 		{
-			if (list!=null) list.Clear();
+			if (list != null)
+				list.Clear();
 			list = null;
 		}
 

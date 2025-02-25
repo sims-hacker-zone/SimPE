@@ -30,11 +30,6 @@ namespace SimPe.Interfaces.Files
 		/// returns the Index Type of the File
 		/// </summary>
 		/// <remarks>This value should be 7</remarks>
-		int Type
-		{
-			get;
-			set;
-		}		
+		int Type { get; set; }
 	}
-
 }

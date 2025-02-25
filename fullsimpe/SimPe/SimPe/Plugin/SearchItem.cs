@@ -32,7 +32,7 @@ namespace SimPe.Plugin
 		public SearchItem(Interfaces.Files.IPackedFileDescriptor pfd)
 		{
 			this.pfd = pfd;
-			this.flname = null;			
+			this.flname = null;
 		}
 
 		public SearchItem(string flname, Interfaces.Files.IPackedFileDescriptor pfd)
@@ -41,25 +41,27 @@ namespace SimPe.Plugin
 			this.flname = flname;
 		}
 
-		public Interfaces.Files.IPackedFileDescriptor Descriptor 
+		public Interfaces.Files.IPackedFileDescriptor Descriptor
 		{
 			get { return pfd; }
 		}
 
-		public string FileName 
+		public string FileName
 		{
-			get 
+			get
 			{
-				if (flname==null) return "";
+				if (flname == null)
+					return "";
 				return flname;
 			}
 		}
 
 		public override string ToString()
 		{
-			if (flname==null) return pfd.ToString ();
-			else return flname+": "+pfd.ToString ();
+			if (flname == null)
+				return pfd.ToString();
+			else
+				return flname + ": " + pfd.ToString();
 		}
-
 	}
 }

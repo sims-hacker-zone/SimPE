@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SimPe
@@ -41,47 +41,57 @@ namespace SimPe
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.OpenFileDialog ofd;
 		private System.Windows.Forms.TextBox tbtype;
-        private System.Windows.Forms.ComboBox cbtypes;
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
+		private System.Windows.Forms.ComboBox cbtypes;
+
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
 		private System.ComponentModel.Container components = null;
 
 		public AddExtTool()
 		{
 			InitializeComponent();
 
-			foreach (SimPe.Data.TypeAlias a in SimPe.Helper.TGILoader.FileTypes) 
+			foreach (SimPe.Data.TypeAlias a in SimPe.Helper.TGILoader.FileTypes)
 			{
-				if (a.Id==0xffffffff) 
+				if (a.Id == 0xffffffff)
 				{
-					SimPe.Data.TypeAlias an = new SimPe.Data.TypeAlias(false, "ALL", 0xffffffff, "---  All Types ---", true, true);
+					SimPe.Data.TypeAlias an = new SimPe.Data.TypeAlias(
+						false,
+						"ALL",
+						0xffffffff,
+						"---  All Types ---",
+						true,
+						true
+					);
 					cbtypes.Items.Add(an);
-				} else  cbtypes.Items.Add(a);
+				}
+				else
+					cbtypes.Items.Add(a);
 			}
 		}
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose( bool disposing )
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
-				if(components != null)
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
 
-        #region Windows Form Designer generated code
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
+		#region Windows Form Designer generated code
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
 		private void InitializeComponent()
 		{
 			this.label1 = new System.Windows.Forms.Label();
@@ -97,126 +107,205 @@ namespace SimPe
 			this.tbtype = new System.Windows.Forms.TextBox();
 			this.cbtypes = new System.Windows.Forms.ComboBox();
 			this.SuspendLayout();
-			// 
+			//
 			// label1
-			// 
+			//
 			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label1.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.label1.Location = new System.Drawing.Point(61, 16);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(45, 17);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Name:";
-			// 
+			//
 			// label2
-			// 
+			//
 			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label2.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.label2.Location = new System.Drawing.Point(67, 40);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(39, 17);
 			this.label2.TabIndex = 1;
 			this.label2.Text = "Type:";
-			// 
+			//
 			// label3
-			// 
+			//
 			this.label3.AutoSize = true;
-			this.label3.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label3.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.label3.Location = new System.Drawing.Point(38, 64);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(68, 17);
 			this.label3.TabIndex = 2;
 			this.label3.Text = "FileName:";
-			// 
+			//
 			// label4
-			// 
+			//
 			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label4.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.label4.Location = new System.Drawing.Point(24, 88);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(82, 17);
 			this.label4.TabIndex = 3;
 			this.label4.Text = "Parameters:";
-			// 
+			//
 			// button1
-			// 
-			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.button1.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Bottom
+						| System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
 			this.button1.Location = new System.Drawing.Point(472, 112);
 			this.button1.Name = "button1";
 			this.button1.TabIndex = 4;
 			this.button1.Text = "OK";
 			this.button1.Click += new System.EventHandler(this.button1_Click);
-			// 
+			//
 			// tbname
-			// 
-			this.tbname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.tbname.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							System.Windows.Forms.AnchorStyles.Top
+							| System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.tbname.Location = new System.Drawing.Point(112, 8);
 			this.tbname.Name = "tbname";
 			this.tbname.Size = new System.Drawing.Size(432, 21);
 			this.tbname.TabIndex = 5;
 			this.tbname.Text = "";
-			// 
+			//
 			// tbfile
-			// 
-			this.tbfile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.tbfile.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							System.Windows.Forms.AnchorStyles.Top
+							| System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.tbfile.Location = new System.Drawing.Point(112, 56);
 			this.tbfile.Name = "tbfile";
 			this.tbfile.Size = new System.Drawing.Size(352, 21);
 			this.tbfile.TabIndex = 6;
 			this.tbfile.Text = "";
-			// 
+			//
 			// tbattr
-			// 
-			this.tbattr.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.tbattr.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							System.Windows.Forms.AnchorStyles.Top
+							| System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.tbattr.Location = new System.Drawing.Point(112, 80);
 			this.tbattr.Name = "tbattr";
 			this.tbattr.Size = new System.Drawing.Size(432, 21);
 			this.tbattr.TabIndex = 7;
 			this.tbattr.Text = "";
-			// 
+			//
 			// button2
-			// 
-			this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.button2.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Top
+						| System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
 			this.button2.Location = new System.Drawing.Point(472, 56);
 			this.button2.Name = "button2";
 			this.button2.TabIndex = 8;
 			this.button2.Text = "Browse...";
 			this.button2.Click += new System.EventHandler(this.button2_Click);
-			// 
+			//
 			// ofd
-			// 
-			this.ofd.Filter = "Application (*.exe;*.bat;*.com;*.cmd)|*.exe;*.bat;*.com;*.cmd|All Files (*.*)|*.*" +
-				"";
-			// 
+			//
+			this.ofd.Filter =
+				"Application (*.exe;*.bat;*.com;*.cmd)|*.exe;*.bat;*.com;*.cmd|All Files (*.*)|*.*"
+				+ "";
+			//
 			// tbtype
-			// 
+			//
 			this.tbtype.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
 			this.tbtype.Location = new System.Drawing.Point(112, 32);
 			this.tbtype.Name = "tbtype";
 			this.tbtype.TabIndex = 17;
 			this.tbtype.Text = "";
-			this.tbtype.TextChanged += new System.EventHandler(this.SelectTypeByNameClick);
-			// 
+			this.tbtype.TextChanged += new System.EventHandler(
+				this.SelectTypeByNameClick
+			);
+			//
 			// cbtypes
-			// 
-			this.cbtypes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.cbtypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			//
+			this.cbtypes.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							System.Windows.Forms.AnchorStyles.Top
+							| System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
+			this.cbtypes.DropDownStyle = System
+				.Windows
+				.Forms
+				.ComboBoxStyle
+				.DropDownList;
 			this.cbtypes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
 			this.cbtypes.ItemHeight = 13;
 			this.cbtypes.Location = new System.Drawing.Point(216, 32);
 			this.cbtypes.Name = "cbtypes";
 			this.cbtypes.Size = new System.Drawing.Size(248, 21);
 			this.cbtypes.TabIndex = 18;
-			this.cbtypes.SelectedIndexChanged += new System.EventHandler(this.TypeSelectClick);
-			// 
+			this.cbtypes.SelectedIndexChanged += new System.EventHandler(
+				this.TypeSelectClick
+			);
+			//
 			// AddExtTool
-			// 
+			//
 			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
 			this.ClientSize = new System.Drawing.Size(554, 142);
 			this.Controls.Add(this.tbtype);
@@ -230,18 +319,24 @@ namespace SimPe
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
-			this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "AddExtTool";
 			this.ShowInTaskbar = false;
 			this.Text = "Add External Tool";
 			this.ResumeLayout(false);
-
 		}
 		#endregion
 
 		ToolLoaderItemExt tli;
-		public ToolLoaderItemExt Execute() 
+
+		public ToolLoaderItemExt Execute()
 		{
 			tli = null;
 
@@ -249,7 +344,7 @@ namespace SimPe
 			this.tbtype.Text = "0xffffffff";
 			this.tbattr.Text = "{tempfile}";
 			this.tbfile.Text = "";
-			
+
 			ShowDialog();
 			return tli;
 		}
@@ -257,24 +352,32 @@ namespace SimPe
 		private void button2_Click(object sender, System.EventArgs e)
 		{
 			ofd.FileName = tbfile.Text;
-			if (ofd.ShowDialog()==DialogResult.OK) tbfile.Text = ofd.FileName;
+			if (ofd.ShowDialog() == DialogResult.OK)
+				tbfile.Text = ofd.FileName;
 		}
 
 		private void TypeSelectClick(object sender, System.EventArgs e)
 		{
-			if (cbtypes.Tag != null) return;
-			tbtype.Text = "0x"+Helper.HexString(((SimPe.Data.TypeAlias)cbtypes.Items[cbtypes.SelectedIndex]).Id);
+			if (cbtypes.Tag != null)
+				return;
+			tbtype.Text =
+				"0x"
+				+ Helper.HexString(
+					((SimPe.Data.TypeAlias)cbtypes.Items[cbtypes.SelectedIndex]).Id
+				);
 		}
 
 		private void SelectTypeByNameClick(object sender, System.EventArgs e)
 		{
 			cbtypes.Tag = true;
-			Data.TypeAlias a = Data.MetaData.FindTypeAlias(Helper.HexStringToUInt(tbtype.Text));
+			Data.TypeAlias a = Data.MetaData.FindTypeAlias(
+				Helper.HexStringToUInt(tbtype.Text)
+			);
 
-			int ct=0;
-			foreach(Data.TypeAlias i in cbtypes.Items) 
-			{								
-				if (i==a) 
+			int ct = 0;
+			foreach (Data.TypeAlias i in cbtypes.Items)
+			{
+				if (i == a)
 				{
 					cbtypes.SelectedIndex = ct;
 					cbtypes.Tag = null;
@@ -292,11 +395,11 @@ namespace SimPe
 			tli = new ToolLoaderItemExt(tbname.Text);
 			tli.Attributes = tbattr.Text;
 			tli.FileName = tbfile.Text;
-			try 
+			try
 			{
 				tli.Type = Convert.ToUInt32(tbtype.Text);
 			}
-			catch (Exception) 
+			catch (Exception)
 			{
 				tli.Type = 0xffffffff;
 			}

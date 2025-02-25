@@ -19,19 +19,19 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;
-using SimPe.Interfaces;
 
 namespace SimPe.Plugin
 {
-	
 	/// <summary>
 	/// Extends the basic Neighborhood Plugin by some usefull Features
 	/// </summary>
 	public class EnhancedNgbh : SimPe.Plugin.ExtNgbh
 	{
-		public EnhancedNgbh() : base()
+		public EnhancedNgbh()
+			: base()
 		{
 			//
 			// TODO: F�gen Sie hier die Konstruktorlogik hinzu
@@ -49,9 +49,12 @@ namespace SimPe.Plugin
 				"Quaxi (with extensions developed by Theo)",
 				"This File contains the Memories and Inventories of all Sims and Lots that Live in this Neighbourhood.",
 				2,
-				System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.ngbh.png"))
-				); 
-		}		
+				System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream("SimPe.img.ngbh.png")
+				)
+			);
+		}
 
 		class ExceptionBuilder : ApplicationException
 		{
@@ -62,9 +65,7 @@ namespace SimPe.Plugin
 				get { return msg.ToString(); }
 			}
 
-			public ExceptionBuilder()
-			{
-			}
+			public ExceptionBuilder() { }
 
 			public void Append(string str)
 			{
@@ -75,14 +76,11 @@ namespace SimPe.Plugin
 			{
 				this.msg.AppendFormat(format, args);
 			}
-
 		}
 
 		class AliasList : CollectionBase
 		{
-			public AliasList()
-			{
-			}
+			public AliasList() { }
 
 			public int Add(IAlias alias)
 			{
@@ -128,8 +126,11 @@ namespace SimPe.Plugin
 
 			foreach (NgbhSlot slot in slots)
 			{
-				SDesc simDesc = FileTable.ProviderRegistry.SimDescriptionProvider.SimInstance[slot.SlotID] as SDesc;
-				// SDesc always returns null 
+				SDesc simDesc =
+					FileTable.ProviderRegistry.SimDescriptionProvider.SimInstance[
+						slot.SlotID
+					] as SDesc;
+				// SDesc always returns null
 				Collections.NgbhItems simMemories = slot.ItemsB;
 
 				ArrayList memoryToRemove = new ArrayList();
@@ -148,7 +149,10 @@ namespace SimPe.Plugin
 						if (simMemory.SimInstance != 0)
 						{
 							// fix invalid sim instances, fixes things that aren't broken
-							ushort inst = FileTable.ProviderRegistry.SimDescriptionProvider.GetInstance(simMemory.SimID);
+							ushort inst =
+								FileTable.ProviderRegistry.SimDescriptionProvider.GetInstance(
+									simMemory.SimID
+								);
 							if (simMemory.SimInstance != inst)
 							{
 								simMemory.SimInstance = inst;
@@ -166,10 +170,10 @@ namespace SimPe.Plugin
 						if (simMemory.IsSpam)
 						{
 							if (
-								lastSpamMemory != null &&
-								lastSpamMemory.Guid == simMemory.Guid &&
-								lastSpamMemory.SimInstance == simMemory.SimInstance
-								)
+								lastSpamMemory != null
+								&& lastSpamMemory.Guid == simMemory.Guid
+								&& lastSpamMemory.SimInstance == simMemory.SimInstance
+							)
 								memoryToRemove.Add(simMemory);
 
 							lastSpamMemory = simMemory;
@@ -181,19 +185,24 @@ namespace SimPe.Plugin
 					}
 				} // for simMemories
 
-
 				if (memoryToRemove.Count > 0 || memoryToFix.Count > 0)
 				{
 					deletedCount += memoryToRemove.Count;
 					fixedCount += memoryToFix.Count;
 
 					if (simDesc != null) // SDesc always returns null so this won't be used as it always throwa an ERROR
-						trace.AppendFormat("{0} {1}: {2} \r\n", simDesc.SimName, simDesc.SimFamilyName, memoryToRemove.Count + memoryToFix.Count);
+						trace.AppendFormat(
+							"{0} {1}: {2} \r\n",
+							simDesc.SimName,
+							simDesc.SimFamilyName,
+							memoryToRemove.Count + memoryToFix.Count
+						);
 
 					foreach (NgbhItem item in memoryToFix)
 						trace.AppendFormat("[FIX]- {0}\r\n", item.ToString());
 
-					NgbhItem[] itemsToRemove = (NgbhItem[])memoryToRemove.ToArray(typeof(NgbhItem));
+					NgbhItem[] itemsToRemove = (NgbhItem[])
+						memoryToRemove.ToArray(typeof(NgbhItem));
 					foreach (NgbhItem item in itemsToRemove)
 						trace.AppendFormat("[DEL]- {0}\r\n", item.ToString());
 
@@ -204,7 +213,13 @@ namespace SimPe.Plugin
 
 			if (deletedCount > 0 || fixedCount > 0)
 			{
-				Helper.ExceptionMessage(String.Format("Fixed/Deleted {0} invalid memories.", deletedCount+fixedCount), trace);				
+				Helper.ExceptionMessage(
+					String.Format(
+						"Fixed/Deleted {0} invalid memories.",
+						deletedCount + fixedCount
+					),
+					trace
+				);
 			}
 		}
 
@@ -224,18 +239,23 @@ namespace SimPe.Plugin
 		{
 			int deletedCount = 0;
 			ExceptionBuilder trace = new ExceptionBuilder();
-			trace.Append("Memories found:"+Helper.lbr);
-			
+			trace.Append("Memories found:" + Helper.lbr);
+
 			Collections.NgbhSlots slots = this.GetSlots(Data.NeighborhoodSlots.Sims);
 			foreach (NgbhSlot slot in slots)
 			{
 				// skip my own memories?
-				if (ownerID == slot.SlotID) continue;
+				if (ownerID == slot.SlotID)
+					continue;
 
-				SDesc simDesc = FileTable.ProviderRegistry.SimDescriptionProvider.SimInstance[(ushort)slot.SlotID] as SDesc;
+				SDesc simDesc =
+					FileTable.ProviderRegistry.SimDescriptionProvider.SimInstance[
+						(ushort)slot.SlotID
+					] as SDesc;
 				Collections.NgbhItems simMemories = slot.ItemsB;
 
-				Collections.NgbhItems memoryToRemove = new SimPe.Plugin.Collections.NgbhItems(null);
+				Collections.NgbhItems memoryToRemove =
+					new SimPe.Plugin.Collections.NgbhItems(null);
 				for (int j = 0; j < simMemories.Length; j++)
 				{
 					for (int i = 0; i < items.Length; i++)
@@ -244,11 +264,12 @@ namespace SimPe.Plugin
 						NgbhItem simMemory = simMemories[j];
 
 						if (
-							simMemory.IsMemory && item.IsMemory &&
-							simMemory.Guid == item.Guid &&
-							ArrayEquals(simMemory.Data, item.Data) &&
-							!simMemory.Flags.IsVisible
-							)
+							simMemory.IsMemory
+							&& item.IsMemory
+							&& simMemory.Guid == item.Guid
+							&& ArrayEquals(simMemory.Data, item.Data)
+							&& !simMemory.Flags.IsVisible
+						)
 						{
 							memoryToRemove.Add(simMemory); // simMemory.RemoveFromParentB();
 						}
@@ -258,34 +279,42 @@ namespace SimPe.Plugin
 				if (memoryToRemove.Count > 0)
 				{
 					deletedCount += memoryToRemove.Count;
-					trace.AppendFormat("{0} {1}: {2} \r\n", simDesc.SimName, simDesc.SimFamilyName, memoryToRemove.Count);
+					trace.AppendFormat(
+						"{0} {1}: {2} \r\n",
+						simDesc.SimName,
+						simDesc.SimFamilyName,
+						memoryToRemove.Count
+					);
 					foreach (NgbhItem item in memoryToRemove)
 						trace.AppendFormat("\t- {0}\r\n", item.ToString());
 					trace.Append("\t\r\n\r\n");
 					slot.ItemsB.Remove(memoryToRemove);
 				}
-
 			}
 
 			if (deletedCount > 0)
-				Message.Show(String.Format("Deleted {0} memories from the sim pool", deletedCount)+Helper.lbr+Helper.lbr+trace.ToString());
+				Message.Show(
+					String.Format(
+						"Deleted {0} memories from the sim pool",
+						deletedCount
+					)
+						+ Helper.lbr
+						+ Helper.lbr
+						+ trace.ToString()
+				);
 		}
 	}
-
 
 	namespace NgbhMetaData
 	{
 		internal sealed class Memory
 		{
-			Memory()
-			{
-			}
+			Memory() { }
 
 			/// <summary>
 			/// A memory's subject can be of three different types
 			/// </summary>
-			const ushort
-				Sim = 0,
+			const ushort Sim = 0,
 				Food = 1,
 				Career = 2;
 
@@ -305,6 +334,7 @@ namespace SimPe.Plugin
 
 				return ret;
 			}
+
 			static ArrayList BuildSpamMemoryList()
 			{
 				ArrayList ret = new ArrayList();
@@ -312,7 +342,7 @@ namespace SimPe.Plugin
 				// Had family reunion
 				ret.Add(0x2DD3B15Fu);
 
-				// got A+ 
+				// got A+
 				ret.Add(0x4CAB11D3u);
 
 				// subject got A+
@@ -357,7 +387,6 @@ namespace SimPe.Plugin
 			{
 				return spamGuid.Contains(guid);
 			}
-
 		}
 
 		internal enum FoodType : uint
@@ -387,8 +416,7 @@ namespace SimPe.Plugin
 			Turkey,
 
 			// dessert
-			Gelatin
+			Gelatin,
 		}
 	}
 }
-

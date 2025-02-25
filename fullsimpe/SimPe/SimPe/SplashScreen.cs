@@ -25,84 +25,104 @@ using System.Text;
 
 namespace SimPe
 {
-    public class Splash
-    {
-        /// <summary>
-        /// Event1: StartThread has created frm and sent SetMessage
-        /// </summary>
-        static System.Threading.ManualResetEvent ev1 = new System.Threading.ManualResetEvent(false);
+	public class Splash
+	{
+		/// <summary>
+		/// Event1: StartThread has created frm and sent SetMessage
+		/// </summary>
+		static System.Threading.ManualResetEvent ev1 =
+			new System.Threading.ManualResetEvent(false);
 
-        static Splash scr;
-        static object lockObj = new object();
-        public static Splash Screen
-        {
-            get
-            {
-                lock (lockObj)
-                {
-                    if (scr == null)
-                    {
-                        ev1.Reset();
-                        scr = new Splash();
-                        ev1.WaitOne();
-                    }
-                }
-                return scr;
-            }
-        }
+		static Splash scr;
+		static object lockObj = new object();
+		public static Splash Screen
+		{
+			get
+			{
+				lock (lockObj)
+				{
+					if (scr == null)
+					{
+						ev1.Reset();
+						scr = new Splash();
+						ev1.WaitOne();
+					}
+				}
+				return scr;
+			}
+		}
 
-        public static bool Running { get { return scr != null; } }
+		public static bool Running
+		{
+			get { return scr != null; }
+		}
 
-        System.Threading.Thread t = null;
-        private Splash()
-        {
-            mmsg = "";
+		System.Threading.Thread t = null;
 
-            if (Helper.WindowsRegistry.ShowStartupSplash || (Helper.WindowsRegistry.GetPreviousVersion() != Helper.SimPeVersionLong))
-            {
-                t = new System.Threading.Thread(new System.Threading.ThreadStart(StartThread));
-                t.Start();
-            }
-            else
-                ev1.Set();
-        }
+		private Splash()
+		{
+			mmsg = "";
 
-        SimPe.Windows.Forms.SplashForm frm = null;
-        protected void StartThread()
-        {
-            frm = new SimPe.Windows.Forms.SplashForm();
-            frm.FormClosed += new System.Windows.Forms.FormClosedEventHandler(frm_FormClosed);
-            SetMessage(mmsg);
-            ev1.Set();
-            frm.StartSplash();
-        }
+			if (
+				Helper.WindowsRegistry.ShowStartupSplash
+				|| (
+					Helper.WindowsRegistry.GetPreviousVersion()
+					!= Helper.SimPeVersionLong
+				)
+			)
+			{
+				t = new System.Threading.Thread(
+					new System.Threading.ThreadStart(StartThread)
+				);
+				t.Start();
+			}
+			else
+				ev1.Set();
+		}
 
-        void frm_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
-        {
-            lock (lockObj)
-            {
-                t = null;
-                frm = null;
-                scr = null;
-            }
-        }
+		SimPe.Windows.Forms.SplashForm frm = null;
 
-        string mmsg;
-        public void SetMessage(string msg)
-        {
-            mmsg = msg;
-            if (frm != null) frm.Message = msg;
-        }
+		protected void StartThread()
+		{
+			frm = new SimPe.Windows.Forms.SplashForm();
+			frm.FormClosed += new System.Windows.Forms.FormClosedEventHandler(
+				frm_FormClosed
+			);
+			SetMessage(mmsg);
+			ev1.Set();
+			frm.StartSplash();
+		}
 
-        public void Stop()
-        {
-            if (frm != null) frm.StopSplash();
-        }
+		void frm_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
+		{
+			lock (lockObj)
+			{
+				t = null;
+				frm = null;
+				scr = null;
+			}
+		}
 
-        public void ShutDown()
-        {
-            Stop();
-            if (t != null) t.Join();
-        }
-    }
+		string mmsg;
+
+		public void SetMessage(string msg)
+		{
+			mmsg = msg;
+			if (frm != null)
+				frm.Message = msg;
+		}
+
+		public void Stop()
+		{
+			if (frm != null)
+				frm.StopSplash();
+		}
+
+		public void ShutDown()
+		{
+			Stop();
+			if (t != null)
+				t.Join();
+		}
+	}
 }

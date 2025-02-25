@@ -25,13 +25,13 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for ImportSemiTool.
 	/// </summary>
-    public class HashTool : Interfaces.AbstractTool, Interfaces.ITool
+	public class HashTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
 		/// <summary>
 		/// Windows Registry Link
 		/// </summary>
 		static SimPe.Registry registry;
-		internal static Registry WindowsRegistry 
+		internal static Registry WindowsRegistry
 		{
 			get { return registry; }
 		}
@@ -40,24 +40,29 @@ namespace SimPe.Plugin
 		IProviderRegistry prov;
 		Hash hs;
 
-		internal HashTool(IWrapperRegistry reg, IProviderRegistry prov) 
+		internal HashTool(IWrapperRegistry reg, IProviderRegistry prov)
 		{
 			this.reg = reg;
 			this.prov = prov;
 
-			if (registry==null) registry = Helper.WindowsRegistry;
-
-			
+			if (registry == null)
+				registry = Helper.WindowsRegistry;
 		}
 
 		#region ITool Member
 
-		public bool IsEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
+		public bool IsEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
 			return true;
 		}
 
-		public Interfaces.Plugin.IToolResult ShowDialog(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package)
+		public Interfaces.Plugin.IToolResult ShowDialog(
+			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			ref SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
 			hs = new Hash();
 			hs.Execute(package);
@@ -70,16 +75,13 @@ namespace SimPe.Plugin
 			return "Object Tool\\Hash Generator...";
 		}
 
-        #endregion
+		#endregion
 
-        #region IToolExt Member
-        public override System.Drawing.Image Icon
-        {
-            get
-            {
-                return SimPe.GetIcon.HashGenerator;
-            }
-        }
-        #endregion
+		#region IToolExt Member
+		public override System.Drawing.Image Icon
+		{
+			get { return SimPe.GetIcon.HashGenerator; }
+		}
+		#endregion
 	}
 }

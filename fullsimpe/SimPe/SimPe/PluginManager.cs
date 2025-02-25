@@ -32,55 +32,67 @@ namespace SimPe
 	{
 		LoadFileWrappersExt wloader;
 		LoadHelpTopics lht;
+
 		internal PluginManager(
-            ToolStripMenuItem toolmenu, 
+			ToolStripMenuItem toolmenu,
 			ToolStrip tootoolbar,
-			TD.SandDock.TabControl dc, 
+			TD.SandDock.TabControl dc,
 			LoadedPackage lp,
 			SteepValley.Windows.Forms.ThemedControls.XPTaskBox defaultactiontaskbox,
-            ContextMenuStrip defaultactionmenu,
-			SteepValley.Windows.Forms.ThemedControls.XPTaskBox toolactiontaskbox, 
+			ContextMenuStrip defaultactionmenu,
+			SteepValley.Windows.Forms.ThemedControls.XPTaskBox toolactiontaskbox,
 			SteepValley.Windows.Forms.ThemedControls.XPTaskBox extactiontaskbox,
 			ToolStrip actiontoolbar,
 			Ambertation.Windows.Forms.DockContainer docktooldc,
-            ToolStripMenuItem helpmenu,
-            Windows.Forms.ResourceListViewExt lv
-            ) : base(true)
+			ToolStripMenuItem helpmenu,
+			Windows.Forms.ResourceListViewExt lv
+		)
+			: base(true)
 		{
-            Splash.Screen.SetMessage("Loading Type Registry"); // the first message clearly seen
-            PackedFiles.TypeRegistry tr = new PackedFiles.TypeRegistry();
+			Splash.Screen.SetMessage("Loading Type Registry"); // the first message clearly seen
+			PackedFiles.TypeRegistry tr = new PackedFiles.TypeRegistry();
 
 			FileTable.ProviderRegistry = tr;
 			FileTable.ToolRegistry = tr;
 			FileTable.WrapperRegistry = tr;
-            FileTable.CommandLineRegistry = tr;
-            FileTable.HelpTopicRegistry = tr;
-            FileTable.SettingsRegistry = tr;
+			FileTable.CommandLineRegistry = tr;
+			FileTable.HelpTopicRegistry = tr;
+			FileTable.SettingsRegistry = tr;
 			wloader = new LoadFileWrappersExt();
 
-            this.LoadDynamicWrappers();
+			this.LoadDynamicWrappers();
 			this.LoadStaticWrappers();
-            this.LoadMenuItems(toolmenu, tootoolbar);
+			this.LoadMenuItems(toolmenu, tootoolbar);
 
-            Splash.Screen.SetMessage("Loading Listeners");
+			Splash.Screen.SetMessage("Loading Listeners");
 			wloader.AddListeners(ref ChangedGuiResourceEvent);
 			//dc.ActiveDocumentChanged += new TD.SandDock.ActiveDocumentEventHandler(wloader.ActiveDocumentChanged);
 			//lp.AfterFileLoad += new Events.PackageFileLoadedEvent(wloader.ChangedPackage);
 
 
-            Splash.Screen.SetMessage("Loading Default Actions");
-            LoadActionTools(defaultactiontaskbox, actiontoolbar, defaultactionmenu, GetDefaultActions(lv));
-            Splash.Screen.SetMessage("Loading External Tools");
-			LoadActionTools(toolactiontaskbox, actiontoolbar, defaultactionmenu, LoadExternalTools());
-            Splash.Screen.SetMessage("Loading Default Tools");
+			Splash.Screen.SetMessage("Loading Default Actions");
+			LoadActionTools(
+				defaultactiontaskbox,
+				actiontoolbar,
+				defaultactionmenu,
+				GetDefaultActions(lv)
+			);
+			Splash.Screen.SetMessage("Loading External Tools");
+			LoadActionTools(
+				toolactiontaskbox,
+				actiontoolbar,
+				defaultactionmenu,
+				LoadExternalTools()
+			);
+			Splash.Screen.SetMessage("Loading Default Tools");
 			LoadActionTools(extactiontaskbox, actiontoolbar, null, null);
 
-            Splash.Screen.SetMessage("Loading Docks");
+			Splash.Screen.SetMessage("Loading Docks");
 			LoadDocks(docktooldc, lp);
-            Splash.Screen.SetMessage("Loading Help Topics");
+			Splash.Screen.SetMessage("Loading Help Topics");
 			lht = new LoadHelpTopics(helpmenu);
 
-            Splash.Screen.SetMessage("Loaded Help Topics");
+			Splash.Screen.SetMessage("Loaded Help Topics");
 		}
 
 		/// <summary>
@@ -95,7 +107,7 @@ namespace SimPe
 		/// <param name="pk"></param>
 		void ClosedToolPluginHandler(object sender, PackageArg pk)
 		{
-			if (ClosedToolPlugin!=null)
+			if (ClosedToolPlugin != null)
 				ClosedToolPlugin(sender, pk);
 		}
 
@@ -103,150 +115,193 @@ namespace SimPe
 		/// Load all Static FileWrappers (theese Wrappers are allways available!)
 		/// </summary>
 		void LoadStaticWrappers()
-        {
-            Splash.Screen.SetMessage("Loading Static Wrappers");
-            FileTable.WrapperRegistry.Register(new CommandlineHelpFactory());
-            FileTable.WrapperRegistry.Register(new Custom.SettingsFactory());
-            FileTable.WrapperRegistry.Register(new PackedFiles.Wrapper.Factory.SimFactory());
-            FileTable.WrapperRegistry.Register(new PackedFiles.Wrapper.Factory.DefaultWrapperFactory());
-            //FileTable.WrapperRegistry.Register(new Plugin.ScenegraphWrapperFactory());
-            //FileTable.WrapperRegistry.Register(new Plugin.RefFileFactory());
-            //FileTable.WrapperRegistry.Register(new PackedFiles.Wrapper.Factory.ClstWrapperFactory());
-        }
+		{
+			Splash.Screen.SetMessage("Loading Static Wrappers");
+			FileTable.WrapperRegistry.Register(new CommandlineHelpFactory());
+			FileTable.WrapperRegistry.Register(new Custom.SettingsFactory());
+			FileTable.WrapperRegistry.Register(
+				new PackedFiles.Wrapper.Factory.SimFactory()
+			);
+			FileTable.WrapperRegistry.Register(
+				new PackedFiles.Wrapper.Factory.DefaultWrapperFactory()
+			);
+			//FileTable.WrapperRegistry.Register(new Plugin.ScenegraphWrapperFactory());
+			//FileTable.WrapperRegistry.Register(new Plugin.RefFileFactory());
+			//FileTable.WrapperRegistry.Register(new PackedFiles.Wrapper.Factory.ClstWrapperFactory());
+		}
 
 		/// <summary>
-        /// Load all Wrappers found in the Plugins Folder - this before Static FileWrappers
+		/// Load all Wrappers found in the Plugins Folder - this before Static FileWrappers
 		/// </summary>
-        void LoadDynamicWrappers()
-        {
-            Splash.Screen.SetMessage("Loading Dynamic Wrappers");
-            try
-            {
-                FileTable.WrapperRegistry.Register(new Plugin.WrapperFactory()); //moved here to max priority, when a StaticWrapper Clst was higher
-                FileTable.ToolRegistry.Register(new Plugin.WrapperFactory());
-            }
-            catch (Exception ex)
-            {
-                Exception e = new Exception("Unable to load PJSE Coder", new Exception("Invalid Interface in pjse.coder.dll", ex));
-                Helper.ExceptionMessage(e);
-            }
+		void LoadDynamicWrappers()
+		{
+			Splash.Screen.SetMessage("Loading Dynamic Wrappers");
+			try
+			{
+				FileTable.WrapperRegistry.Register(new Plugin.WrapperFactory()); //moved here to max priority, when a StaticWrapper Clst was higher
+				FileTable.ToolRegistry.Register(new Plugin.WrapperFactory());
+			}
+			catch (Exception ex)
+			{
+				Exception e = new Exception(
+					"Unable to load PJSE Coder",
+					new Exception("Invalid Interface in pjse.coder.dll", ex)
+				);
+				Helper.ExceptionMessage(e);
+			}
 
-            string fil = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath), "simpe.neighbourhood.dll");
-            try
-            {
-                LoadFileWrappersExt.LoadWrapperFactory(fil, wloader);
-                LoadFileWrappersExt.LoadToolFactory(fil, wloader);
-            }
-            catch (Exception ex)
-            {
-                Exception e = new Exception("Unable to load Neighbourhood decoder", new Exception("Invalid Interface in simpe.neighbourhood.dll", ex));
-                Helper.ExceptionMessage(e);
-            }
-            string folder = Helper.SimPePluginPath;
-            if (!System.IO.Directory.Exists(folder)) return;
+			string fil = System.IO.Path.Combine(
+				System.IO.Path.GetDirectoryName(
+					System.Windows.Forms.Application.ExecutablePath
+				),
+				"simpe.neighbourhood.dll"
+			);
+			try
+			{
+				LoadFileWrappersExt.LoadWrapperFactory(fil, wloader);
+				LoadFileWrappersExt.LoadToolFactory(fil, wloader);
+			}
+			catch (Exception ex)
+			{
+				Exception e = new Exception(
+					"Unable to load Neighbourhood decoder",
+					new Exception("Invalid Interface in simpe.neighbourhood.dll", ex)
+				);
+				Helper.ExceptionMessage(e);
+			}
+			string folder = Helper.SimPePluginPath;
+			if (!System.IO.Directory.Exists(folder))
+				return;
 
-            string[] files = System.IO.Directory.GetFiles(folder, "*.plugin.dll");
+			string[] files = System.IO.Directory.GetFiles(folder, "*.plugin.dll");
 
-            foreach (string file in files)
-            {
-				try 
-                {
-                    LoadFileWrappersExt.LoadWrapperFactory(file, wloader);
-                }
-				catch (Exception ex) 
+			foreach (string file in files)
+			{
+				try
 				{
-					Exception e = new Exception("Unable to load WrapperFactory", new Exception("Invalid Interface in "+file, ex));
-					LoadFileWrappersExt.LoadErrorWrapper(new PackedFiles.Wrapper.ErrorWrapper(file, ex), wloader);
+					LoadFileWrappersExt.LoadWrapperFactory(file, wloader);
+				}
+				catch (Exception ex)
+				{
+					Exception e = new Exception(
+						"Unable to load WrapperFactory",
+						new Exception("Invalid Interface in " + file, ex)
+					);
+					LoadFileWrappersExt.LoadErrorWrapper(
+						new PackedFiles.Wrapper.ErrorWrapper(file, ex),
+						wloader
+					);
 					Helper.ExceptionMessage(ex);
 				}
-                try 
-                {
-                    LoadFileWrappersExt.LoadToolFactory(file, wloader);
-                }
-				catch (Exception ex) 
+				try
 				{
-					Exception e = new Exception("Unable to load ToolFactory", new Exception("Invalid Interface in "+file, ex));
+					LoadFileWrappersExt.LoadToolFactory(file, wloader);
+				}
+				catch (Exception ex)
+				{
+					Exception e = new Exception(
+						"Unable to load ToolFactory",
+						new Exception("Invalid Interface in " + file, ex)
+					);
 					Helper.ExceptionMessage(e);
 				}
-            }
-        }
+			}
+		}
 
-        void LoadMenuItems(ToolStripMenuItem toolmenu, ToolStrip tootoolbar)
-        {
-            Splash.Screen.SetMessage("Loading Menu Items");
-            ToolMenuItemExt.ExternalToolNotify chghandler = new ToolMenuItemExt.ExternalToolNotify(ClosedToolPluginHandler);
-            IToolExt[] toolsp = (IToolExt[])FileTable.ToolRegistry.ToolsPlus;
-            foreach (IToolExt tool in toolsp)
-            {
-                string name = tool.ToString();
-                string[] parts = name.Split("\\".ToCharArray());
-                name = Localization.GetString(parts[parts.Length - 1]);
-                ToolMenuItemExt item = new ToolMenuItemExt(name, tool, chghandler);
+		void LoadMenuItems(ToolStripMenuItem toolmenu, ToolStrip tootoolbar)
+		{
+			Splash.Screen.SetMessage("Loading Menu Items");
+			ToolMenuItemExt.ExternalToolNotify chghandler =
+				new ToolMenuItemExt.ExternalToolNotify(ClosedToolPluginHandler);
+			IToolExt[] toolsp = (IToolExt[])FileTable.ToolRegistry.ToolsPlus;
+			foreach (IToolExt tool in toolsp)
+			{
+				string name = tool.ToString();
+				string[] parts = name.Split("\\".ToCharArray());
+				name = Localization.GetString(parts[parts.Length - 1]);
+				ToolMenuItemExt item = new ToolMenuItemExt(name, tool, chghandler);
 
-                LoadFileWrappersExt.AddMenuItem(ref ChangedGuiResourceEvent, toolmenu.DropDownItems, item, parts);
-            }
+				LoadFileWrappersExt.AddMenuItem(
+					ref ChangedGuiResourceEvent,
+					toolmenu.DropDownItems,
+					item,
+					parts
+				);
+			}
 
-            ITool[] tools = FileTable.ToolRegistry.Tools;
-            foreach (ITool tool in tools)
-            {
-                string name = tool.ToString().Trim();
-                if (name == "") continue;
+			ITool[] tools = FileTable.ToolRegistry.Tools;
+			foreach (ITool tool in tools)
+			{
+				string name = tool.ToString().Trim();
+				if (name == "")
+					continue;
 
-                string[] parts = name.Split("\\".ToCharArray());
-                name = Localization.GetString(parts[parts.Length - 1]);
-                ToolMenuItemExt item = new ToolMenuItemExt(name, tool, chghandler);
+				string[] parts = name.Split("\\".ToCharArray());
+				name = Localization.GetString(parts[parts.Length - 1]);
+				ToolMenuItemExt item = new ToolMenuItemExt(name, tool, chghandler);
 
-                LoadFileWrappersExt.AddMenuItem(ref ChangedGuiResourceEvent, toolmenu.DropDownItems, item, parts);
-            }
+				LoadFileWrappersExt.AddMenuItem(
+					ref ChangedGuiResourceEvent,
+					toolmenu.DropDownItems,
+					item,
+					parts
+				);
+			}
 
-            LoadFileWrappersExt.BuildToolBar(tootoolbar, toolmenu.DropDownItems);
-        }
+			LoadFileWrappersExt.BuildToolBar(tootoolbar, toolmenu.DropDownItems);
+		}
 
-		#region Action Tools			
+		#region Action Tools
 		event Events.ChangedResourceEvent ChangedGuiResourceEvent;
 
 		object thsender;
 		Events.ResourceEventArgs the;
+
 		protected override void StartThread()
-		{			
+		{
 			System.Delegate[] dls = ChangedGuiResourceEvent.GetInvocationList();
-			foreach (System.Delegate d in dls) 
+			foreach (System.Delegate d in dls)
 			{
-				if (this.HaveToStop) 
-					break;				
+				if (this.HaveToStop)
+					break;
 				((Events.ChangedResourceEvent)d)(thsender, the);
 			}
 		}
 
 		/// <summary>
-		/// Fires with the same arguments that were used during 
+		/// Fires with the same arguments that were used during
 		/// the last Time <see cref="ChangedGuiResourceEventHandler"/> was called
 		/// </summary>
 		public void ChangedGuiResourceEventHandler()
 		{
-			if (the!=null) ChangedGuiResourceEventHandler(thsender, the);
+			if (the != null)
+				ChangedGuiResourceEventHandler(thsender, the);
 		}
-		
+
 		/// <summary>
 		/// Fired when a Resource was changed by a ToolPlugin and the Enabled state needs to be changed
 		/// </summary>
-		public void ChangedGuiResourceEventHandler(object sender, Events.ResourceEventArgs e)
+		public void ChangedGuiResourceEventHandler(
+			object sender,
+			Events.ResourceEventArgs e
+		)
 		{
-            RemoteControl.FireResourceListSelectionChangedHandler(sender, e);
-			if (ChangedGuiResourceEvent!=null) 
+			RemoteControl.FireResourceListSelectionChangedHandler(sender, e);
+			if (ChangedGuiResourceEvent != null)
 			{
 				thsender = sender;
 				the = e;
-				
+
 				//this.ExecuteThread(System.Threading.ThreadPriority.Normal, "ActionTool notification");
-				
+
 				//ChangedGuiResourceEvent(sender, e);
 
 				System.Delegate[] dls = ChangedGuiResourceEvent.GetInvocationList();
-				foreach (System.Delegate d in dls) 
+				foreach (System.Delegate d in dls)
 				{
-					if (d.Target is Interfaces.IToolExt) 
-						if (!((Interfaces.IToolExt)d.Target).Visible) continue;
+					if (d.Target is Interfaces.IToolExt)
+						if (!((Interfaces.IToolExt)d.Target).Visible)
+							continue;
 
 					((Events.ChangedResourceEvent)d)(sender, e);
 				}
@@ -259,40 +314,46 @@ namespace SimPe
 		/// <returns></returns>
 		Interfaces.IToolAction[] GetDefaultActions(Windows.Forms.ResourceListViewExt lv)
 		{
-            return new Interfaces.IToolAction[] {
-                new Actions.Default.AddAction(),
-                new Actions.Default.ExportAction(),
-                new Actions.Default.ReplaceAction(),
-                new Actions.Default.DeleteAction(),
-                new Actions.Default.RestoreAction(),
-                new Actions.Default.CloneAction(),
-                new Actions.Default.CreateAction(),
-                new Actions.Default.ActionGroupFilter(lv),
-            };
-        }
+			return new Interfaces.IToolAction[]
+			{
+				new Actions.Default.AddAction(),
+				new Actions.Default.ExportAction(),
+				new Actions.Default.ReplaceAction(),
+				new Actions.Default.DeleteAction(),
+				new Actions.Default.RestoreAction(),
+				new Actions.Default.CloneAction(),
+				new Actions.Default.CreateAction(),
+				new Actions.Default.ActionGroupFilter(lv),
+			};
+		}
 
 		/// <summary>
 		/// Load all available Action Tools
 		/// </summary>
 		void LoadActionTools(
-			SteepValley.Windows.Forms.ThemedControls.XPTaskBox taskbox, 
+			SteepValley.Windows.Forms.ThemedControls.XPTaskBox taskbox,
 			ToolStrip tb,
-            ContextMenuStrip mi, 
-			Interfaces.IToolAction[] tools)
+			ContextMenuStrip mi,
+			Interfaces.IToolAction[] tools
+		)
 		{
-			if (tools==null) tools = FileTable.ToolRegistry.Actions;
+			if (tools == null)
+				tools = FileTable.ToolRegistry.Actions;
 
-			int top =  4 + taskbox.DockPadding.Top;
-			if (taskbox.Tag!=null) top = (int)taskbox.Tag;
+			int top = 4 + taskbox.DockPadding.Top;
+			if (taskbox.Tag != null)
+				top = (int)taskbox.Tag;
 
 			bool tfirst = true;
 			bool mfirst = true;
-			foreach (Interfaces.IToolAction tool in tools) 
+			foreach (Interfaces.IToolAction tool in tools)
 			{
 				ActionToolDescriptor atd = new ActionToolDescriptor(tool);
-				ChangedGuiResourceEvent += new Events.ChangedResourceEvent(atd.ChangeEnabledStateEventHandler);				
+				ChangedGuiResourceEvent += new Events.ChangedResourceEvent(
+					atd.ChangeEnabledStateEventHandler
+				);
 
-				if (taskbox!=null) 
+				if (taskbox != null)
 				{
 					atd.LinkLabel.Top = top;
 					atd.LinkLabel.Left = 12;
@@ -302,24 +363,24 @@ namespace SimPe
 					atd.LinkLabel.AutoSize = true;
 				}
 
-				if (mi!=null) 
+				if (mi != null)
 				{
-                    bool beggrp = (mfirst && mi.Items.Count != 0);
-                    if (beggrp) mi.Items.Add("-");
-                    mi.Items.Add(atd.MenuButton);
-                    
-                    mfirst = false;
+					bool beggrp = (mfirst && mi.Items.Count != 0);
+					if (beggrp)
+						mi.Items.Add("-");
+					mi.Items.Add(atd.MenuButton);
+
+					mfirst = false;
 				}
 
-				if (tb!=null && atd.ToolBarButton!=null)
+				if (tb != null && atd.ToolBarButton != null)
 				{
-                    if (tfirst && tb.Items.Count != 0)
-                        tb.Items.Add(new ToolStripSeparator());
-                    tb.Items.Add(atd.ToolBarButton);
-                    
+					if (tfirst && tb.Items.Count != 0)
+						tb.Items.Add(new ToolStripSeparator());
+					tb.Items.Add(atd.ToolBarButton);
+
 					tfirst = false;
 				}
-				
 			}
 			taskbox.Height = top + 8;
 			taskbox.Tag = top;
@@ -329,11 +390,11 @@ namespace SimPe
 		#region External Program Tools
 		Interfaces.IToolAction[] LoadExternalTools()
 		{
-   			ToolLoaderItemExt[] items = ToolLoaderExt.Items;
+			ToolLoaderItemExt[] items = ToolLoaderExt.Items;
 			Interfaces.IToolAction[] tools = new Interfaces.IToolAction[items.Length];
-			for (int i=0; i<items.Length; i++)
+			for (int i = 0; i < items.Length; i++)
 				tools[i] = new Actions.Default.StartExternalToolAction(items[i]);
-			
+
 			return tools;
 		}
 		#endregion
@@ -345,20 +406,22 @@ namespace SimPe
 			{
 				Ambertation.Windows.Forms.DockPanel dctrl = idt.GetDockableControl();
 
-                
-				if (dctrl!=null) 
+				if (dctrl != null)
 				{
-                    dctrl.Name = "dc."+idt.GetType().Namespace + "." + idt.GetType().Name;
+					dctrl.Name =
+						"dc." + idt.GetType().Namespace + "." + idt.GetType().Name;
 					dctrl.Manager = dc.Manager;
-                    dc.Controls.Add(dctrl);
+					dc.Controls.Add(dctrl);
 					//dctrl.DockNextTo(dc);
 
-					ChangedGuiResourceEvent += new Events.ChangedResourceEvent(idt.RefreshDock);
+					ChangedGuiResourceEvent += new Events.ChangedResourceEvent(
+						idt.RefreshDock
+					);
 					dctrl.Tag = idt.Shortcut;
 					idt.RefreshDock(this, new Events.ResourceEventArgs(lp));
 				}
 			}
 		}
 		#endregion
-    }
+	}
 }

@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SimPe.Plugin.Tool.Dockable
@@ -15,7 +15,8 @@ namespace SimPe.Plugin.Tool.Dockable
 		private SteepValley.Windows.Forms.XPGradientPanel xpGradientPanel1;
 		protected SimPe.Plugin.Tool.Dockable.NeighborhoodPreview np;
 		private SimPe.Plugin.Tool.Dockable.ObjectPreview op;
-		/// <summary> 
+
+		/// <summary>
 		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
@@ -26,68 +27,75 @@ namespace SimPe.Plugin.Tool.Dockable
 			InitializeComponent();
 		}
 
-		/// <summary> 
+		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
-				if(components != null)
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
 
 		#region Component Designer generated code
-		/// <summary> 
-		/// Required method for Designer support - do not modify 
+		/// <summary>
+		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dcPackageDetails));
+			System.ComponentModel.ComponentResourceManager resources =
+				new System.ComponentModel.ComponentResourceManager(
+					typeof(dcPackageDetails)
+				);
 			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
 			this.np = new SimPe.Plugin.Tool.Dockable.NeighborhoodPreview();
 			this.op = new SimPe.Plugin.Tool.Dockable.ObjectPreview();
 			this.xpGradientPanel1.SuspendLayout();
 			this.SuspendLayout();
-			// 
+			//
 			// xpGradientPanel1
-			// 
+			//
 			this.xpGradientPanel1.BackColor = System.Drawing.Color.Transparent;
 			resources.ApplyResources(this.xpGradientPanel1, "xpGradientPanel1");
 			this.xpGradientPanel1.Controls.Add(this.np);
 			this.xpGradientPanel1.Controls.Add(this.op);
 			this.xpGradientPanel1.Name = "xpGradientPanel1";
-			// 
+			//
 			// np
-			// 
+			//
 			this.np.BackColor = System.Drawing.Color.Transparent;
 			resources.ApplyResources(this.np, "np");
 			this.np.Name = "np";
-			// 
+			//
 			// op
-			// 
+			//
 			resources.ApplyResources(this.op, "op");
 			this.op.BackColor = System.Drawing.Color.Transparent;
 			this.op.LoadCustomImage = true;
 			this.op.Name = "op";
 			this.op.SelectedObject = null;
 			this.op.SelectedXObject = null;
-			// 
+			//
 			// dcPackageDetails
-			// 
+			//
 			resources.ApplyResources(this, "$this");
 			this.Controls.Add(this.xpGradientPanel1);
 			this.FloatingSize = new System.Drawing.Size(592, 376);
 			this.Image = ((System.Drawing.Image)(resources.GetObject("$this.Image")));
 			this.Name = "dcPackageDetails";
-			this.TabImage = ((System.Drawing.Image)(resources.GetObject("$this.TabImage")));
+			this.TabImage = (
+				(System.Drawing.Image)(resources.GetObject("$this.TabImage"))
+			);
 			this.TabText = "Details";
-			this.VisibleChanged += new System.EventHandler(this.dcPackageDetails_VisibleChanged);
+			this.VisibleChanged += new System.EventHandler(
+				this.dcPackageDetails_VisibleChanged
+			);
 			this.xpGradientPanel1.ResumeLayout(false);
 			this.xpGradientPanel1.PerformLayout();
 			this.ResumeLayout(false);

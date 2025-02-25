@@ -6,28 +6,49 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for MmatWrapper.
 	/// </summary>
-	public class MmatWrapper : SimPe.PackedFiles.Wrapper.Cpf, SimPe.Interfaces.Scenegraph.IScenegraphBlock, SimPe.Interfaces.Scenegraph.IScenegraphItem
+	public class MmatWrapper
+		: SimPe.PackedFiles.Wrapper.Cpf,
+			SimPe.Interfaces.Scenegraph.IScenegraphBlock,
+			SimPe.Interfaces.Scenegraph.IScenegraphItem
 	{
 		static SimPe.PackedFiles.UserInterface.CpfUI.ExecutePreview prev;
 		public static SimPe.PackedFiles.UserInterface.CpfUI.ExecutePreview GlobalCpfPreview
 		{
-			get {return prev;}
-			set {prev=value;}
+			get { return prev; }
+			set { prev = value; }
 		}
+
 		#region IScenegraphBlock Member
 
-		public void ReferencedItems(System.Collections.Hashtable refmap, uint parentgroup)
+		public void ReferencedItems(
+			System.Collections.Hashtable refmap,
+			uint parentgroup
+		)
 		{
 			ArrayList list = new ArrayList();
 			string name = this.GetSaveItem("modelName").StringValue.Trim();
-			if (!name.ToLower().EndsWith("_cres")) name += "_cres";
-			list.Add(SimPe.Plugin.ScenegraphHelper.BuildPfd(name, SimPe.Plugin.ScenegraphHelper.CRES, parentgroup));			
+			if (!name.ToLower().EndsWith("_cres"))
+				name += "_cres";
+			list.Add(
+				SimPe.Plugin.ScenegraphHelper.BuildPfd(
+					name,
+					SimPe.Plugin.ScenegraphHelper.CRES,
+					parentgroup
+				)
+			);
 			refmap["CRES"] = list;
 
 			list = new ArrayList();
 			name = this.GetSaveItem("name").StringValue.Trim();
-			if (!name.ToLower().EndsWith("_txmt")) name += "_txmt";
-			list.Add(SimPe.Plugin.ScenegraphHelper.BuildPfd(name, SimPe.Plugin.ScenegraphHelper.TXMT, parentgroup));			
+			if (!name.ToLower().EndsWith("_txmt"))
+				name += "_txmt";
+			list.Add(
+				SimPe.Plugin.ScenegraphHelper.BuildPfd(
+					name,
+					SimPe.Plugin.ScenegraphHelper.TXMT,
+					parentgroup
+				)
+			);
 			refmap["TXMT"] = list;
 		}
 
@@ -58,8 +79,11 @@ namespace SimPe.Plugin
 				"Quaxi",
 				"This File describes a ColorOption for a Mesh Group / Subset. It is needed to provide an additional Colour for Objects.",
 				4,
-				System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.mmat.png"))
-				);   
+				System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream("SimPe.img.mmat.png")
+				)
+			);
 		}
 
 		/// <summary>
@@ -69,10 +93,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				uint[] types = {
-								   0x4C697E5A //MMAT
-							   };
-			
+				uint[] types =
+				{
+					0x4C697E5A, //MMAT
+				};
+
 				return types;
 			}
 		}
@@ -81,27 +106,36 @@ namespace SimPe.Plugin
 		/// Load and return the referenced CRES File (null if none was available)
 		/// </summary>
 		/// <remarks>
-		/// You should store this value in a temp var if you need it multiple times, 
+		/// You should store this value in a temp var if you need it multiple times,
 		/// as the File is reloaded with each call
 		/// </remarks>
-		public GenericRcol CRES 
+		public GenericRcol CRES
 		{
-			get 
+			get
 			{
 				Hashtable refs = this.ReferenceChains;
 				ArrayList cress = (ArrayList)refs["CRES"];
-				if (cress!=null) 
+				if (cress != null)
 				{
-					if (cress.Count>0) 
+					if (cress.Count > 0)
 					{
-						Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile((Interfaces.Files.IPackedFileDescriptor)cress[0]);
-						if (pfd==null) //fallback code
+						Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
+							(Interfaces.Files.IPackedFileDescriptor)cress[0]
+						);
+						if (pfd == null) //fallback code
 						{
-							Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFile(((Interfaces.Files.IPackedFileDescriptor)cress[0]).Filename, Data.MetaData.CRES);
-							if (pfds.Length>0) pfd = pfds[0];
+							Interfaces.Files.IPackedFileDescriptor[] pfds =
+								package.FindFile(
+									(
+										(Interfaces.Files.IPackedFileDescriptor)cress[0]
+									).Filename,
+									Data.MetaData.CRES
+								);
+							if (pfds.Length > 0)
+								pfd = pfds[0];
 						}
 
-						if (pfd!=null) 
+						if (pfd != null)
 						{
 							GenericRcol cres = new GenericRcol(null, false);
 							cres.ProcessData(pfd, package);
@@ -109,13 +143,19 @@ namespace SimPe.Plugin
 							return cres;
 						}
 
-						if (pfd==null) //FileTable fallback code
+						if (pfd == null) //FileTable fallback code
 						{
-							Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFileDiscardingGroup((Interfaces.Files.IPackedFileDescriptor)cress[0]);
-							if (items.Length>0) 
+							Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+								FileTable.FileIndex.FindFileDiscardingGroup(
+									(Interfaces.Files.IPackedFileDescriptor)cress[0]
+								);
+							if (items.Length > 0)
 							{
 								GenericRcol cres = new GenericRcol(null, false);
-								cres.ProcessData(items[0].FileDescriptor, items[0].Package);
+								cres.ProcessData(
+									items[0].FileDescriptor,
+									items[0].Package
+								);
 
 								return cres;
 							}
@@ -130,27 +170,36 @@ namespace SimPe.Plugin
 		/// Load and return the referenced TXMT File (null if none was available)
 		/// </summary>
 		/// <remarks>
-		/// You should store this value in a temp var if you need it multiple times, 
+		/// You should store this value in a temp var if you need it multiple times,
 		/// as the File is reloaded with each call
 		/// </remarks>
-		public GenericRcol TXMT 
+		public GenericRcol TXMT
 		{
-			get 
+			get
 			{
 				Hashtable refs = this.ReferenceChains;
 				ArrayList txmts = (ArrayList)refs["TXMT"];
-				if (txmts!=null) 
+				if (txmts != null)
 				{
-					if (txmts.Count>0) 
+					if (txmts.Count > 0)
 					{
-						Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile((Interfaces.Files.IPackedFileDescriptor)txmts[0]);
-						if (pfd==null) //fallback code
+						Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
+							(Interfaces.Files.IPackedFileDescriptor)txmts[0]
+						);
+						if (pfd == null) //fallback code
 						{
-							Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFile(((Interfaces.Files.IPackedFileDescriptor)txmts[0]).Filename, Data.MetaData.TXMT);
-							if (pfds.Length>0) pfd = pfds[0];
+							Interfaces.Files.IPackedFileDescriptor[] pfds =
+								package.FindFile(
+									(
+										(Interfaces.Files.IPackedFileDescriptor)txmts[0]
+									).Filename,
+									Data.MetaData.TXMT
+								);
+							if (pfds.Length > 0)
+								pfd = pfds[0];
 						}
 
-						if (pfd!=null) 
+						if (pfd != null)
 						{
 							GenericRcol txmt = new GenericRcol(null, false);
 							txmt.ProcessData(pfd, package);
@@ -158,20 +207,26 @@ namespace SimPe.Plugin
 							return txmt;
 						}
 
-						if (pfd==null) //FileTable fallback code
+						if (pfd == null) //FileTable fallback code
 						{
-							Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFileDiscardingGroup((Interfaces.Files.IPackedFileDescriptor)txmts[0]);
-							if (items.Length>0) 
+							Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+								FileTable.FileIndex.FindFileDiscardingGroup(
+									(Interfaces.Files.IPackedFileDescriptor)txmts[0]
+								);
+							if (items.Length > 0)
 							{
 								GenericRcol txmt = new GenericRcol(null, false);
-								txmt.ProcessData(items[0].FileDescriptor, items[0].Package);
+								txmt.ProcessData(
+									items[0].FileDescriptor,
+									items[0].Package
+								);
 
 								return txmt;
 							}
 						}
 					}
 				}
-			return null;
+				return null;
 			}
 		}
 
@@ -180,22 +235,32 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="txmt">a valid txmt</param>
 		/// <returns>the Texture or null</returns>
-		public GenericRcol GetTxtr(GenericRcol txmt) 
+		public GenericRcol GetTxtr(GenericRcol txmt)
 		{
-			if (txmt==null) return null;
+			if (txmt == null)
+				return null;
 			Hashtable refs = txmt.ReferenceChains;
-			ArrayList txtrs = (ArrayList)refs["stdMatBaseTextureName"];//["TXTR"];
-			if (txtrs!=null) 
+			ArrayList txtrs = (ArrayList)refs["stdMatBaseTextureName"]; //["TXTR"];
+			if (txtrs != null)
 			{
-				if (txtrs.Count>0) 
+				if (txtrs.Count > 0)
 				{
-					Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile((Interfaces.Files.IPackedFileDescriptor)txtrs[0]);
-					if (pfd==null) //fallback code
+					Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
+						(Interfaces.Files.IPackedFileDescriptor)txtrs[0]
+					);
+					if (pfd == null) //fallback code
 					{
-						Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFile(((Interfaces.Files.IPackedFileDescriptor)txtrs[0]).Filename, Data.MetaData.TXTR);
-						if (pfds.Length>0) pfd = pfds[0];
-					}							
-					if (pfd!=null) 
+						Interfaces.Files.IPackedFileDescriptor[] pfds =
+							package.FindFile(
+								(
+									(Interfaces.Files.IPackedFileDescriptor)txtrs[0]
+								).Filename,
+								Data.MetaData.TXTR
+							);
+						if (pfds.Length > 0)
+							pfd = pfds[0];
+					}
+					if (pfd != null)
 					{
 						GenericRcol txtr = new GenericRcol(null, false);
 						txtr.ProcessData(pfd, package);
@@ -203,10 +268,13 @@ namespace SimPe.Plugin
 						return txtr;
 					}
 
-					if (pfd==null) //FileTable fallback code
+					if (pfd == null) //FileTable fallback code
 					{
-						Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFileDiscardingGroup((Interfaces.Files.IPackedFileDescriptor)txtrs[0]);
-						if (items.Length>0) 
+						Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+							FileTable.FileIndex.FindFileDiscardingGroup(
+								(Interfaces.Files.IPackedFileDescriptor)txtrs[0]
+							);
+						if (items.Length > 0)
 						{
 							GenericRcol txtr = new GenericRcol(null, false);
 							txtr.ProcessData(items[0].FileDescriptor, items[0].Package);
@@ -224,60 +292,78 @@ namespace SimPe.Plugin
 		/// Load and return the referenced TXTR File (through the TXMT, null if none was available)
 		/// </summary>
 		/// <remarks>
-		/// You should store this value in a temp var if you need it multiple times, 
+		/// You should store this value in a temp var if you need it multiple times,
 		/// as the File is reloaded with each call
 		/// </remarks>
-		public GenericRcol TXTR 
+		public GenericRcol TXTR
 		{
-			get 
+			get
 			{
 				GenericRcol txmt = this.TXMT;
 				return GetTxtr(txmt);
-				
 			}
 		}
 
-		protected void FindRcolr(Interfaces.Files.IPackedFileDescriptor pfd)
-		{
-		}
+		protected void FindRcolr(Interfaces.Files.IPackedFileDescriptor pfd) { }
 
 		protected GenericRcol GetGmdc()
 		{
 			GenericRcol rcol = CRES;
-			if (rcol!=null)
+			if (rcol != null)
 			{
 				Hashtable refs = rcol.ReferenceChains;
 				ArrayList shps = (ArrayList)refs["Generic"];
-				if (shps!=null)
-					if (shps.Count>0)
+				if (shps != null)
+					if (shps.Count > 0)
 					{
-						Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFile((Interfaces.Files.IPackedFileDescriptor)shps[0], null);
-						if (items.Length>0) 
+						Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+							FileTable.FileIndex.FindFile(
+								(Interfaces.Files.IPackedFileDescriptor)shps[0],
+								null
+							);
+						if (items.Length > 0)
 						{
 							GenericRcol shpe = new GenericRcol(null, false);
 							shpe.ProcessData(items[0].FileDescriptor, items[0].Package);
 
 							refs = shpe.ReferenceChains;
 							ArrayList gmnds = (ArrayList)refs["Models"];
-							if (gmnds!=null) 
-								if (gmnds.Count>0)
+							if (gmnds != null)
+								if (gmnds.Count > 0)
 								{
-									items = FileTable.FileIndex.FindFile((Interfaces.Files.IPackedFileDescriptor)gmnds[0], null);
-									if (items.Length>0) 
+									items = FileTable.FileIndex.FindFile(
+										(Interfaces.Files.IPackedFileDescriptor)
+											gmnds[0],
+										null
+									);
+									if (items.Length > 0)
 									{
 										GenericRcol gmnd = new GenericRcol(null, false);
-										gmnd.ProcessData(items[0].FileDescriptor, items[0].Package);
+										gmnd.ProcessData(
+											items[0].FileDescriptor,
+											items[0].Package
+										);
 
 										refs = gmnd.ReferenceChains;
 										ArrayList gmdcs = (ArrayList)refs["Generic"];
-										if (gmdcs!=null) 
-											if (gmdcs.Count>0)
+										if (gmdcs != null)
+											if (gmdcs.Count > 0)
 											{
-												items = FileTable.FileIndex.FindFile((Interfaces.Files.IPackedFileDescriptor)gmdcs[0], null);
-												if (items.Length>0) 
+												items = FileTable.FileIndex.FindFile(
+													(Interfaces.Files.IPackedFileDescriptor)
+														gmdcs[0],
+													null
+												);
+												if (items.Length > 0)
 												{
-													GenericRcol gmdc = new GenericRcol(null, false);
-													gmdc.ProcessData(items[0].FileDescriptor, items[0].Package);
+													GenericRcol gmdc = new GenericRcol(
+														null,
+														false
+													);
+													gmdc.ProcessData(
+														items[0].FileDescriptor,
+														items[0].Package
+													);
 
 													return gmdc;
 												}
@@ -295,34 +381,40 @@ namespace SimPe.Plugin
 		/// Load and return the used GMDC File (through the CRES, null if none was available)
 		/// </summary>
 		/// <remarks>
-		/// You should store this value in a temp var if you need it multiple times, 
+		/// You should store this value in a temp var if you need it multiple times,
 		/// as the File is reloaded with each call
 		/// </remarks>
-		public GenericRcol GMDC 
+		public GenericRcol GMDC
 		{
-			get 
-			{
-				return GetGmdc();				
-			}
+			get { return GetGmdc(); }
 		}
 
 		public override string Description
 		{
 			get
 			{
-				string str = "objectGUID=0x"+Helper.HexString(this.ObjectGUID)+"; subset="+this.SubsetName+"; references=";
+				string str =
+					"objectGUID=0x"
+					+ Helper.HexString(this.ObjectGUID)
+					+ "; subset="
+					+ this.SubsetName
+					+ "; references=";
 				Hashtable map = this.ReferenceChains;
-				foreach (string s in map.Keys) 
+				foreach (string s in map.Keys)
 				{
-					str += s+":";
-					foreach (Interfaces.Files.IPackedFileDescriptor pfd in (ArrayList)map[s])
+					str += s + ":";
+					foreach (
+						Interfaces.Files.IPackedFileDescriptor pfd in (ArrayList)map[s]
+					)
 					{
-						str += pfd.Filename+" ("+pfd.ToString()+") | ";						
+						str += pfd.Filename + " (" + pfd.ToString() + ") | ";
 					}
-					if (((ArrayList)map[s]).Count>0) str = str.Substring(0, str.Length-2);
+					if (((ArrayList)map[s]).Count > 0)
+						str = str.Substring(0, str.Length - 2);
 					str += ",";
 				}
-				if (map.Count>0) str = str.Substring(0, str.Length-1);
+				if (map.Count > 0)
+					str = str.Substring(0, str.Length - 1);
 
 				return str;
 			}
@@ -343,65 +435,65 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region Default Attribute
-		public string Creator 
+		public string Creator
 		{
 			get { return this.GetSaveItem("creator").StringValue; }
 			set { this.GetSaveItem("creator").StringValue = value; }
 		}
 
-		public bool DefaultMaterial 
+		public bool DefaultMaterial
 		{
 			get { return this.GetSaveItem("defaultMaterial").BooleanValue; }
 			set { this.GetSaveItem("defaultMaterial").BooleanValue = value; }
 		}
 
-		public string Family 
+		public string Family
 		{
 			get { return this.GetSaveItem("family").StringValue; }
 			set { this.GetSaveItem("family").StringValue = value; }
 		}
 
-		public uint Flags 
+		public uint Flags
 		{
 			get { return this.GetSaveItem("flags").UIntegerValue; }
 			set { this.GetSaveItem("flags").UIntegerValue = value; }
 		}
 
-		public uint MaterialStateFlags 
+		public uint MaterialStateFlags
 		{
 			get { return this.GetSaveItem("materialStateFlags").UIntegerValue; }
 			set { this.GetSaveItem("materialStateFlags").UIntegerValue = value; }
 		}
 
-		public string ModelName 
+		public string ModelName
 		{
 			get { return this.GetSaveItem("modelName").StringValue; }
 			set { this.GetSaveItem("modelName").StringValue = value; }
 		}
 
-		public string Name 
+		public string Name
 		{
 			get { return this.GetSaveItem("name").StringValue; }
 			set { this.GetSaveItem("name").StringValue = value; }
 		}
 
-		public uint ObjectGUID 
+		public uint ObjectGUID
 		{
 			get { return this.GetSaveItem("objectGUID").UIntegerValue; }
 			set { this.GetSaveItem("objectGUID").UIntegerValue = value; }
 		}
 
-		public int ObjectStateIndex 
+		public int ObjectStateIndex
 		{
 			get { return this.GetSaveItem("objectStateIndex").IntegerValue; }
 			set { this.GetSaveItem("objectStateIndex").IntegerValue = value; }
 		}
 
-		public string SubsetName 
+		public string SubsetName
 		{
 			get { return this.GetSaveItem("subsetName").StringValue; }
 			set { this.GetSaveItem("subsetName").StringValue = value; }
 		}
-		#endregion		
+		#endregion
 	}
 }

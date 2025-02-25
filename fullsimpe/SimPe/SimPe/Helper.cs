@@ -19,23 +19,24 @@
  ***************************************************************************/
 using System;
 using System.IO;
-using System.Text;
 using System.Runtime.InteropServices;
-using System.Xml;
+using System.Text;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace SimPe
 {
 	/// <summary>
 	/// Determins the Executable that was started
 	/// </summary>
-	public enum Executable : byte 
+	public enum Executable : byte
 	{
 		Classic = 1,
 		Default = 2,
 		WizardsOfSimpe = 3,
-		Other = 4
+		Other = 4,
 	}
+
 	/// <summary>
 	/// Some Helper Functions frequently used in the handlers
 	/// </summary>
@@ -45,6 +46,7 @@ namespace SimPe
 		/// Linebreaks
 		/// </summary>
 		public const string lbr = "\r\n";
+
 		/// <summary>
 		/// Tabs
 		/// </summary>
@@ -53,7 +55,8 @@ namespace SimPe
 		/// <summary>
 		/// Characters allowd in a Filepath
 		/// </summary>
-		public const string PATH_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz�0123456789.-_ �";
+		public const string PATH_CHARACTERS =
+			"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz�0123456789.-_ �";
 
 		/// <summary>
 		/// Character used to Seperate Folders in a Path
@@ -70,9 +73,11 @@ namespace SimPe
 		/// </summary>
 		public static Registry WindowsRegistry
 		{
-			get { 
-				if (reg==null) reg = new Registry();
-				return reg; 
+			get
+			{
+				if (reg == null)
+					reg = new Registry();
+				return reg;
 			}
 		}
 
@@ -86,8 +91,8 @@ namespace SimPe
 		/// </summary>
 		public static Parameters CommandlineParameters
 		{
-			get {return param; }
-			set {param = value; }
+			get { return param; }
+			set { param = value; }
 		}
 
 		/// <summary>
@@ -108,9 +113,11 @@ namespace SimPe
 		/// <returns>The input String with added zeros.</returns>
 		public static string MinStrLength(string input, int length)
 		{
-			while (input.Length<length) input = "0"+input;
+			while (input.Length < length)
+				input = "0" + input;
 			return input;
 		}
+
 		/// <summary>
 		/// Creates a HexString (with Leading 0) of the given Length
 		/// </summary>
@@ -119,8 +126,10 @@ namespace SimPe
 		/// <returns>The input String with added zeros.</returns>
 		public static string StrLength(string input, int length)
 		{
-			while (input.Length < length) input += "0";
-			if (input.Length > length) input = input.Substring(0, length);
+			while (input.Length < length)
+				input += "0";
+			if (input.Length > length)
+				input = input.Substring(0, length);
 			return input;
 		}
 
@@ -133,9 +142,12 @@ namespace SimPe
 		/// <param name="left">True, if you want to add from the left, and cut from the right</param>
 		public static string StrLength(string input, int length, bool left)
 		{
-			if (left) return StrLength(input, length);
-			while (input.Length<length) input = "0"+input;
-			if (input.Length>length) input = input.Substring(input.Length-length, length);
+			if (left)
+				return StrLength(input, length);
+			while (input.Length < length)
+				input = "0" + input;
+			if (input.Length > length)
+				input = input.Substring(input.Length - length, length);
 			return input;
 		}
 
@@ -146,7 +158,7 @@ namespace SimPe
 		/// <returns>value as HexString (allways 8 Chars long)</returns>
 		public static string HexString(long input)
 		{
-			return HexString((ulong) input);
+			return HexString((ulong)input);
 		}
 
 		/// <summary>
@@ -226,11 +238,11 @@ namespace SimPe
 		/// <returns>the represented value</returns>
 		public static uint StringToUInt32(string txt, uint def, byte bbase)
 		{
-			try 
+			try
 			{
 				return Convert.ToUInt32(txt, bbase);
-			} 
-			catch 
+			}
+			catch
 			{
 				return def;
 			}
@@ -243,11 +255,11 @@ namespace SimPe
 		/// <returns>the represented value</returns>
 		public static float StringToFloat(string txt, float def)
 		{
-			try 
+			try
 			{
 				return Convert.ToSingle(txt);
-			} 
-			catch 
+			}
+			catch
 			{
 				return def;
 			}
@@ -260,11 +272,11 @@ namespace SimPe
 		/// <returns>the represented value</returns>
 		public static int StringToInt32(string txt, int def, byte bbase)
 		{
-			try 
+			try
 			{
 				return Convert.ToInt32(txt, bbase);
-			} 
-			catch 
+			}
+			catch
 			{
 				return def;
 			}
@@ -277,11 +289,11 @@ namespace SimPe
 		/// <returns>the represented value</returns>
 		public static ushort StringToUInt16(string txt, ushort def, byte bbase)
 		{
-			try 
+			try
 			{
 				return Convert.ToUInt16(txt, bbase);
-			} 
-			catch 
+			}
+			catch
 			{
 				return def;
 			}
@@ -294,11 +306,11 @@ namespace SimPe
 		/// <returns>the represented value</returns>
 		public static short StringToInt16(string txt, short def, byte bbase)
 		{
-			try 
+			try
 			{
 				return Convert.ToInt16(txt, bbase);
-			} 
-			catch 
+			}
+			catch
 			{
 				return def;
 			}
@@ -327,28 +339,30 @@ namespace SimPe
 		/// <param name="input">The String you want to change</param>
 		/// <param name="allowed">A string coinatining all Allowed Characters</param>
 		/// <returns>the string without illegal Characters</returns>
-		public static string RemoveUnlistedCharacters(string input, string allowed) 
+		public static string RemoveUnlistedCharacters(string input, string allowed)
 		{
 			string output = "";
-			for (int i=0; i<input.Length; i++) 
+			for (int i = 0; i < input.Length; i++)
 			{
 				char c = input[i];
-				if (allowed.IndexOf(c)!=-1) output += c;
+				if (allowed.IndexOf(c) != -1)
+					output += c;
 			}
 
 			return output;
 		}
+
 		/*
 		 * WTF is a Caharcter, that can't be displayed
 		 * how could I convert a Caharcter if I don't know what that is?
 		 * DisplayableCharactre? don't display a Charactre, they're ugly
-		 * 
+		 *
 		/// <summary>
 		/// Returns a Caharcter that can be displayed
 		/// </summary>
 		/// <param name="c">The Charcatre to convert</param>
 		/// <returns>a displayable character</returns>
-		public static char DisplayableCharactre(char c) 
+		public static char DisplayableCharactre(char c)
 		{
 			if ((c>0x1F) && (c<0xff) && (c!=0xAD) && ((c<0x7F) || (c>0x9F)))  return c;
 			else return '.';
@@ -359,7 +373,7 @@ namespace SimPe
 		/// Shows an Exception Message for the User
 		/// </summary>
 		/// <param name="ex">The Exception</param>
-		public static void ExceptionMessage(Exception ex) 
+		public static void ExceptionMessage(Exception ex)
 		{
 			ExceptionForm.Execute("", ex);
 		}
@@ -369,7 +383,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="ex">The Exception</param>
 		/// <param name="message">An operation Description (when did the Exception occur)</param>
-		public static void ExceptionMessage(string message, Exception ex) 
+		public static void ExceptionMessage(string message, Exception ex)
 		{
 			ExceptionForm.Execute(message, ex);
 		}
@@ -379,10 +393,12 @@ namespace SimPe
 		/// </summary>
 		/// <param name="o">The Input Object</param>
 		/// <returns>The stored value as String</returns>
-		public static string ToString(object o) 
+		public static string ToString(object o)
 		{
-			if (o==null) return "";
-			else return o.ToString();
+			if (o == null)
+				return "";
+			else
+				return o.ToString();
 		}
 
 		/// <summary>
@@ -390,7 +406,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="ba">The Aray</param>
 		/// <returns>The stored value as String</returns>
-		/*public static string ToString(byte[] ba) 
+		/*public static string ToString(byte[] ba)
 		{
 			if (ba==null) return "";
 
@@ -402,43 +418,58 @@ namespace SimPe
 		/// <summary>
 		/// Returns the Path SimPe is located in
 		/// </summary>
-		public static string SimPePath 
+		public static string SimPePath
 		{
 			get
 			{
-				return Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath);
+				return Path.GetDirectoryName(
+					System.Windows.Forms.Application.ExecutablePath
+				);
 			}
 		}
 
 		/// <summary>
 		/// Returns the Path SimPe Plugins are located in
 		/// </summary>
-		public static string SimPePluginPath 
+		public static string SimPePluginPath
 		{
 			get
 			{
-				return Path.Combine(Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath), "Plugins");
+				return Path.Combine(
+					Path.GetDirectoryName(
+						System.Windows.Forms.Application.ExecutablePath
+					),
+					"Plugins"
+				);
 			}
 		}
 
 		/// <summary>
 		/// Returns the Path for SimPe Teleports
 		/// </summary>
-		public static string SimPeTeleportPath 
+		public static string SimPeTeleportPath
 		{
 			get
 			{
-				string dir = Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SimPe"), "Teleport");
+				string dir = Path.Combine(
+					Path.Combine(
+						Environment.GetFolderPath(
+							Environment.SpecialFolder.ApplicationData
+						),
+						"SimPe"
+					),
+					"Teleport"
+				);
 				// string dir = Path.Combine(Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath), "Teleport");
-				try 
+				try
 				{
 					if (!Directory.Exists(dir))
 						Directory.CreateDirectory(dir);
-				} 
-				catch {}
+				}
+				catch { }
 				return dir;
 			}
-		}		
+		}
 
 		/// <summary>
 		/// Returns the Name of a Language Cache File with the passed Prefix
@@ -448,15 +479,26 @@ namespace SimPe
 		public static string GetSimPeLanguageCache(string prefix)
 		{
 			if (Helper.WindowsRegistry.LoadOnlySimsStory > 0)
-				return Path.Combine(Helper.SimPeDataPath, prefix + Helper.HexString((byte)Helper.WindowsRegistry.LanguageCode) + Convert.ToString(Helper.WindowsRegistry.LoadOnlySimsStory) + ".simpepkg");
+				return Path.Combine(
+					Helper.SimPeDataPath,
+					prefix
+						+ Helper.HexString((byte)Helper.WindowsRegistry.LanguageCode)
+						+ Convert.ToString(Helper.WindowsRegistry.LoadOnlySimsStory)
+						+ ".simpepkg"
+				);
 			else
-				return Path.Combine(Helper.SimPeDataPath, prefix+Helper.HexString((byte)Helper.WindowsRegistry.LanguageCode)+".simpepkg");
+				return Path.Combine(
+					Helper.SimPeDataPath,
+					prefix
+						+ Helper.HexString((byte)Helper.WindowsRegistry.LanguageCode)
+						+ ".simpepkg"
+				);
 		}
 
 		/// <summary>
 		/// Returns the Name of the Cache File for the current Language
 		/// </summary>
-		public static string SimPeLanguageCache 
+		public static string SimPeLanguageCache
 		{
 			get { return GetSimPeLanguageCache("objcache_"); }
 		}
@@ -467,39 +509,50 @@ namespace SimPe
 		/// </summary>
 		/// <param name="prefix"></param>
 		/// <returns></returns>
-		public static string GetSimPeCache(string prefix) 
+		public static string GetSimPeCache(string prefix)
 		{
-			return Path.Combine(Helper.SimPeDataPath, prefix+".simpepkg");
+			return Path.Combine(Helper.SimPeDataPath, prefix + ".simpepkg");
 		}
 
 		/// <summary>
 		/// Outdated, use SimPeLanguageCache
 		/// Returns the Name of the Language independent Cache File
 		/// </summary>
-		public static string SimPeCache 
+		public static string SimPeCache
 		{
 			get { return GetSimPeCache("objcache"); }
 		}
 
 		private static string profile = "";
-		public static string Profile { get { return profile; } set { profile = value; } }
+		public static string Profile
+		{
+			get { return profile; }
+			set { profile = value; }
+		}
 
 		/// <summary>
 		/// Returns the Path additional SimPe Files are located in
 		/// </summary>
-		public static string SimPeDataPath 
+		public static string SimPeDataPath
 		{
 			get
 			{
-
-				string path = Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SimPe"), "Data");
+				string path = Path.Combine(
+					Path.Combine(
+						Environment.GetFolderPath(
+							Environment.SpecialFolder.ApplicationData
+						),
+						"SimPe"
+					),
+					"Data"
+				);
 				// string path = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Data");
-				try 
+				try
 				{
 					if (!Directory.Exists(path))
 						Directory.CreateDirectory(path);
-				} 
-				catch {}
+				}
+				catch { }
 				return path;
 			}
 		}
@@ -514,99 +567,152 @@ namespace SimPe
 				get
 				{
 					string path = Path.Combine(SimPeDataPath, "Profiles");
-					try { if (!Directory.Exists(path)) Directory.CreateDirectory(path); }
+					try
+					{
+						if (!Directory.Exists(path))
+							Directory.CreateDirectory(path);
+					}
 					catch { }
 					return path;
 				}
 			}
 
-			static string ProfilePath(string s) { return ProfilePath(s, false); }
+			static string ProfilePath(string s)
+			{
+				return ProfilePath(s, false);
+			}
+
 			static string ProfilePath(string s, bool readOnly)
 			{
-					string path = SimPeDataPath;
-					if (profile.Length > 0 && readOnly)
-						path = Path.Combine(Path.Combine(path, "Profiles"), profile);
-						return Path.Combine(path, s);
+				string path = SimPeDataPath;
+				if (profile.Length > 0 && readOnly)
+					path = Path.Combine(Path.Combine(path, "Profiles"), profile);
+				return Path.Combine(path, s);
 			}
 
 			/// <summary>
 			/// The path of the main SimPe settings file (write)
 			/// </summary>
-			public static string SimPeXREGW { get { return ProfilePath("simpe.xreg"); } }
+			public static string SimPeXREGW
+			{
+				get { return ProfilePath("simpe.xreg"); }
+			}
 
 			/// <summary>
 			/// The path of the main SimPe settings file (readonly)
 			/// </summary>
-			public static string SimPeXREG { get { return ProfilePath("simpe.xreg", true); } }
+			public static string SimPeXREG
+			{
+				get { return ProfilePath("simpe.xreg", true); }
+			}
 
 			/// <summary>
 			/// The path of the current layout (write)
 			/// </summary>
-			public static string SimPeLayoutW { get { return ProfilePath("simpe.layout"); } }
+			public static string SimPeLayoutW
+			{
+				get { return ProfilePath("simpe.layout"); }
+			}
 
 			/// <summary>
 			/// The path of the current layout (readonly)
 			/// </summary>
-			public static string SimPeLayout { get { return ProfilePath("simpe.layout", true); } }
+			public static string SimPeLayout
+			{
+				get { return ProfilePath("simpe.layout", true); }
+			}
 
 			/// <summary>
 			/// The path of the layout settings file (write)
 			/// </summary>
-			public static string Layout2XREGW { get { return ProfilePath("layout2.xreg"); } }
+			public static string Layout2XREGW
+			{
+				get { return ProfilePath("layout2.xreg"); }
+			}
 
 			/// <summary>
 			/// The path of the layout settings file (readonly)
 			/// </summary>
-			public static string Layout2XREG { get { return ProfilePath("layout2.xreg", true); } }
+			public static string Layout2XREG
+			{
+				get { return ProfilePath("layout2.xreg", true); }
+			}
 
 			/// <summary>
 			/// The path of the filetable folders file (write)
 			/// </summary>
-			public static string FoldersXREGW { get { return ProfilePath("folders.xreg"); } }
+			public static string FoldersXREGW
+			{
+				get { return ProfilePath("folders.xreg"); }
+			}
 
 			/// <summary>
 			/// The path of the filetable folders file (readonly)
 			/// </summary>
-			public static string FoldersXREG { get { return ProfilePath("folders.xreg", true); } }
+			public static string FoldersXREG
+			{
+				get { return ProfilePath("folders.xreg", true); }
+			}
 
 			/// <summary>
 			/// The path of the filetable folders file (write)
 			/// </summary>
-			public static string ExpansionsXREGW { get {
-				if (ECCorNewSEfound) return ProfilePath("expansions2.xreg");
-					else return ProfilePath("expansions.xreg"); } }
+			public static string ExpansionsXREGW
+			{
+				get
+				{
+					if (ECCorNewSEfound)
+						return ProfilePath("expansions2.xreg");
+					else
+						return ProfilePath("expansions.xreg");
+				}
+			}
+
 			/// <summary>
 			/// The path of the filetable folders file (readonly)
 			/// </summary>
-			public static string ExpansionsXREG { get {
-				if (ECCorNewSEfound) return ProfilePath("expansions2.xreg", true);
-				else return ProfilePath("expansions.xreg", true); } }
+			public static string ExpansionsXREG
+			{
+				get
+				{
+					if (ECCorNewSEfound)
+						return ProfilePath("expansions2.xreg", true);
+					else
+						return ProfilePath("expansions.xreg", true);
+				}
+			}
 
 			/// <summary>
 			/// The path of the MRU registry file (write)
 			/// </summary>
-			public static string MRUXREGW { get { return ProfilePath("mru.xreg"); } }
+			public static string MRUXREGW
+			{
+				get { return ProfilePath("mru.xreg"); }
+			}
 
 			/// <summary>
 			/// The path of the MRU registry file (readonly)
 			/// </summary>
-			public static string MRUXREG { get { return MRUXREGW; } } // Only one global MRU list, held in the Data folder
+			public static string MRUXREG
+			{
+				get { return MRUXREGW; }
+			} // Only one global MRU list, held in the Data folder
 		}
 
 		/// <summary>
 		/// Returns the Path additional SimPe Files are located in
 		/// </summary>
-		public static string SimPePluginDataPath 
+		public static string SimPePluginDataPath
 		{
 			get
 			{
-				string path =  Path.Combine(SimPeDataPath, "Plugins");
-				try 
+				string path = Path.Combine(SimPeDataPath, "Plugins");
+				try
 				{
 					if (!Directory.Exists(path))
 						Directory.CreateDirectory(path);
-				} 
-				catch {}
+				}
+				catch { }
 				return path;
 			}
 		}
@@ -616,45 +722,72 @@ namespace SimPe
 		/// </summary>
 		public static string SimPeViewportFile
 		{
-			get
-			{
-				return Path.Combine(SimPeDataPath, "vport.set");
-			}
+			get { return Path.Combine(SimPeDataPath, "vport.set"); }
 		}
 
 		public static string SimPeSemiGlobalFile
 		{
-			get
-			{
-				return Path.Combine(SimPe.Helper.SimPeDataPath, "semiglobals.xml");
-			}
+			get { return Path.Combine(SimPe.Helper.SimPeDataPath, "semiglobals.xml"); }
 		}
 
 		/// <summary>
 		/// Bit number identifying what's been "enabled" on the commandline
 		/// </summary>
-		private enum RunModeFlags : int { localmode = 0, noplugins, fileformat, noerrors, anypackage, }; // bit number
+		private enum RunModeFlags : int
+		{
+			localmode = 0,
+			noplugins,
+			fileformat,
+			noerrors,
+			anypackage,
+		}; // bit number
+
 		private static Boolset RunModeFlag = (int)0;
+
 		/// <summary>
 		/// "localmode": when true, do not load the file table
 		/// </summary>
-		public static bool LocalMode { get { return RunModeFlag[(int)RunModeFlags.localmode]; } set { RunModeFlag[(int)RunModeFlags.localmode] = value; } }
+		public static bool LocalMode
+		{
+			get { return RunModeFlag[(int)RunModeFlags.localmode]; }
+			set { RunModeFlag[(int)RunModeFlags.localmode] = value; }
+		}
+
 		/// <summary>
 		/// "noplugins": when true, do not load plugins (other than core)
 		/// </summary>
-		public static bool NoPlugins { get { return RunModeFlag[(int)RunModeFlags.noplugins]; } set { RunModeFlag[(int)RunModeFlags.noplugins] = value; } }
+		public static bool NoPlugins
+		{
+			get { return RunModeFlag[(int)RunModeFlags.noplugins]; }
+			set { RunModeFlag[(int)RunModeFlags.noplugins] = value; }
+		}
+
 		/// <summary>
 		/// "fileformat": when true, prefix filenames with their format, when known (for PJSE wrappers at this stage)
 		/// </summary>
-		public static bool FileFormat { get { return RunModeFlag[(int)RunModeFlags.fileformat]; } set { RunModeFlag[(int)RunModeFlags.fileformat] = value; } }
+		public static bool FileFormat
+		{
+			get { return RunModeFlag[(int)RunModeFlags.fileformat]; }
+			set { RunModeFlag[(int)RunModeFlags.fileformat] = value; }
+		}
+
 		/// <summary>
 		/// "noerrors": when true, suppress ExceptionMessage dialog
 		/// </summary>
-		public static bool NoErrors { get { return RunModeFlag[(int)RunModeFlags.noerrors]; } set { RunModeFlag[(int)RunModeFlags.noerrors] = value; } }
+		public static bool NoErrors
+		{
+			get { return RunModeFlag[(int)RunModeFlags.noerrors]; }
+			set { RunModeFlag[(int)RunModeFlags.noerrors] = value; }
+		}
+
 		/// <summary>
 		/// "anypackage": when true, allow packages to be opened regardless of DBPF version number
 		/// </summary>
-		public static bool AnyPackage { get { return RunModeFlag[(int)RunModeFlags.anypackage]; } set { RunModeFlag[(int)RunModeFlags.anypackage] = value; } }
+		public static bool AnyPackage
+		{
+			get { return RunModeFlag[(int)RunModeFlags.anypackage]; }
+			set { RunModeFlag[(int)RunModeFlags.anypackage] = value; }
+		}
 
 		/// <summary>
 		/// Indicates whether a given plugin should load, based on "noplugins" command line option
@@ -672,28 +805,33 @@ namespace SimPe
 			return false; */
 		}
 
-
 		/// <summary>
 		/// Returns the Version Information for the started Executable
 		/// </summary>
-		public static System.Diagnostics.FileVersionInfo ExecutableVersion 
+		public static System.Diagnostics.FileVersionInfo ExecutableVersion
 		{
-			get 
+			get
 			{
-				return System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Windows.Forms.Application.ExecutablePath); 
+				return System.Diagnostics.FileVersionInfo.GetVersionInfo(
+					System.Windows.Forms.Application.ExecutablePath
+				);
 			}
 		}
+
 		/// <summary>
 		/// Returns the the overall SimPe Version
 		/// </summary>
-		public static System.Diagnostics.FileVersionInfo SimPeVersion 
+		public static System.Diagnostics.FileVersionInfo SimPeVersion
 		{
-			get { 
-				try 
+			get
+			{
+				try
 				{
-					return System.Diagnostics.FileVersionInfo.GetVersionInfo(typeof(Helper).Assembly.Location);
-				} 
-				catch 
+					return System.Diagnostics.FileVersionInfo.GetVersionInfo(
+						typeof(Helper).Assembly.Location
+					);
+				}
+				catch
 				{
 					return ExecutableVersion;
 				}
@@ -703,9 +841,9 @@ namespace SimPe
 		/// <summary>
 		/// Returns the long Version Number
 		/// </summary>
-		public static long SimPeVersionLong 
+		public static long SimPeVersionLong
 		{
-			get { return  VersionToLong(SimPeVersion); }				
+			get { return VersionToLong(SimPeVersion); }
 		}
 
 		/// <summary>
@@ -718,8 +856,7 @@ namespace SimPe
 			lver = (lver << 16) + ver.FileBuildPart;
 			lver = (lver << 16) + ver.FilePrivatePart;
 			return lver;
-			
-		}		
+		}
 
 		/// <summary>
 		/// Formats the Version and returns it
@@ -728,7 +865,13 @@ namespace SimPe
 		/// <returns></returns>
 		public static string VersionToString(System.Diagnostics.FileVersionInfo ver)
 		{
-			return ver.FileMajorPart+"."+ver.FileMinorPart+"."+ver.FileBuildPart+"."+ver.FilePrivatePart;
+			return ver.FileMajorPart
+				+ "."
+				+ ver.FileMinorPart
+				+ "."
+				+ ver.FileBuildPart
+				+ "."
+				+ ver.FilePrivatePart;
 		}
 
 		/// <summary>
@@ -737,15 +880,15 @@ namespace SimPe
 		/// <param name="l"></param>
 		/// <returns></returns>
 		public static string LongVersionToString(long l)
-		{	
+		{
 			string res = "";
 			res = (l & 0xffff).ToString();
-			l = l>>16;
-			res = (l & 0xffff).ToString()+"."+res;
-			l = l>>16;
-			res = (l & 0xffff).ToString()+"."+res;
-			l = l>>16;
-			res = (l & 0xffff).ToString()+"."+res;		
+			l = l >> 16;
+			res = (l & 0xffff).ToString() + "." + res;
+			l = l >> 16;
+			res = (l & 0xffff).ToString() + "." + res;
+			l = l >> 16;
+			res = (l & 0xffff).ToString() + "." + res;
 			return res;
 		}
 
@@ -755,25 +898,25 @@ namespace SimPe
 		/// <param name="l"></param>
 		/// <returns></returns>
 		public static string LongVersionToShortString(long l)
-		{	
-			string res = "";			
-			l = l>>16;			
-			l = l>>16;
+		{
+			string res = "";
+			l = l >> 16;
+			l = l >> 16;
 			res = (l & 0xffff).ToString();
-			l = l>>16;
-			res = (l & 0xffff).ToString()+"."+res;		
+			l = l >> 16;
+			res = (l & 0xffff).ToString() + "." + res;
 			return res;
 		}
 
 		/// <summary>
 		/// Returns the Version Number as Text
 		/// </summary>
-		public static string SimPeVersionString 
+		public static string SimPeVersionString
 		{
-			get 
-			{ 
+			get
+			{
 				System.Diagnostics.FileVersionInfo ver = SimPeVersion;
-				return VersionToString(ver);				
+				return VersionToString(ver);
 			}
 		}
 
@@ -782,10 +925,7 @@ namespace SimPe
 		/// </summary>
 		public static bool QARelease
 		{
-			get 
-			{
-				return ((SimPeVersion.ProductMinorPart % 2)==1);
-			}
+			get { return ((SimPeVersion.ProductMinorPart % 2) == 1); }
 		}
 
 		/// <summary>
@@ -795,17 +935,28 @@ namespace SimPe
 		{
 			get
 			{
-				Microsoft.Win32.RegistryKey tk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Sims2ECC.exe", false);
-				if (tk != null) return true;
-				tk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Sims2SC.exe", false);
-				if (tk == null) return false;
+				Microsoft.Win32.RegistryKey tk =
+					Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
+						"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Sims2ECC.exe",
+						false
+					);
+				if (tk != null)
+					return true;
+				tk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
+					"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Sims2SC.exe",
+					false
+				);
+				if (tk == null)
+					return false;
 				object gr = tk.GetValue("Game Registry", "");
-				Microsoft.Win32.RegistryKey rk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey((string)gr, false);
+				Microsoft.Win32.RegistryKey rk =
+					Microsoft.Win32.Registry.LocalMachine.OpenSubKey((string)gr, false);
 				if (rk != null)
 				{
 					object o = rk.GetValue("Suppression Exe", "");
 					string s = o.ToString();
-					if (s.Contains("Sims2EP8.exe")) return true;
+					if (s.Contains("Sims2EP8.exe"))
+						return true;
 				}
 				return false;
 			}
@@ -814,14 +965,28 @@ namespace SimPe
 		/// <summary>
 		/// Returnst the Gui that was started
 		/// </summary>
-		public static Executable StartedGui 
+		public static Executable StartedGui
 		{
 			get
 			{
-				if (WindowsRegistry.Layout.IsClassicPreset == true) return Executable.Classic;
-				else if (System.Windows.Forms.Application.ExecutablePath.Trim().ToLower().EndsWith("wizards of simpe.exe")) return Executable.WizardsOfSimpe;
-				else if (System.Windows.Forms.Application.ExecutablePath.Trim().ToLower().EndsWith("simpe.exe")) return Executable.Default;
-				else return Executable.Other;
+				if (WindowsRegistry.Layout.IsClassicPreset == true)
+					return Executable.Classic;
+				else if (
+					System
+						.Windows.Forms.Application.ExecutablePath.Trim()
+						.ToLower()
+						.EndsWith("wizards of simpe.exe")
+				)
+					return Executable.WizardsOfSimpe;
+				else if (
+					System
+						.Windows.Forms.Application.ExecutablePath.Trim()
+						.ToLower()
+						.EndsWith("simpe.exe")
+				)
+					return Executable.Default;
+				else
+					return Executable.Other;
 			}
 		}
 
@@ -830,23 +995,26 @@ namespace SimPe
 		/// </summary>
 		/// <param name="data">The Byte Array</param>
 		/// <returns>the String Representation</returns>
-		public static string ToString(byte[] data) 
+		public static string ToString(byte[] data)
 		{
-			if (data==null) return "";
+			if (data == null)
+				return "";
 
 			string text = "";
 			BinaryReader ms = new BinaryReader(new MemoryStream(data));
-			try 
+			try
 			{
-				while (ms.BaseStream.Position<ms.BaseStream.Length) 
+				while (ms.BaseStream.Position < ms.BaseStream.Length)
 				{
-					if (ms.PeekChar()==0) break;
-					if (ms.PeekChar()==-1) break;
+					if (ms.PeekChar() == 0)
+						break;
+					if (ms.PeekChar() == -1)
+						break;
 					text += ms.ReadChar();
 				}
-			} 
-			catch ( Exception) {}	
-	
+			}
+			catch (Exception) { }
+
 			return text;
 		}
 
@@ -855,7 +1023,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="str">The String to Convert</param>
 		/// <returns>A Byte Array of the given Length (filled with 0)</returns>
-		public static byte[] ToBytes(string str) 
+		public static byte[] ToBytes(string str)
 		{
 			return ToBytes(str, 0);
 		}
@@ -866,12 +1034,11 @@ namespace SimPe
 		/// <param name="str">The String to Convert</param>
 		/// <param name="len">Length of the Array (the returned Array will have this exact Length)</param>
 		/// <returns>A Byte Array of the given Length (filled with 0)</returns>
-		public static byte[] ToBytes(string str, int len) 
+		public static byte[] ToBytes(string str, int len)
 		{
-			
 			/*System.IO.MemoryStream ms = new MemoryStream();
 			System.IO.BinaryWriter bw = new BinaryWriter(ms);
-			foreach (char c in str) 
+			foreach (char c in str)
 			{
 				if ((len==0) || (bw.BaseStream.Position<len)) bw.Write(c);
 			}
@@ -883,12 +1050,19 @@ namespace SimPe
 			ret = br.ReadBytes((int)br.BaseStream.Length);*/
 
 			byte[] ret = null;
-			if (len!=0) 
+			if (len != 0)
 			{
 				ret = new byte[len];
-				System.Text.Encoding.ASCII.GetBytes(str, 0, Math.Min(len, str.Length), ret, 0);
+				System.Text.Encoding.ASCII.GetBytes(
+					str,
+					0,
+					Math.Min(len, str.Length),
+					ret,
+					0
+				);
 			}
-			else ret = System.Text.Encoding.ASCII.GetBytes(str);
+			else
+				ret = System.Text.Encoding.ASCII.GetBytes(str);
 
 			return ret;
 		}
@@ -900,14 +1074,22 @@ namespace SimPe
 		/// <param name="destinationPath"></param>
 		/// <param name="recurse"></param>
 		/// <remarks>created by Mark (daviesma@qca.org.uk)</remarks>
-		public static void CopyDirectory(string sourcePath, string destinationPath, bool recurse)
+		public static void CopyDirectory(
+			string sourcePath,
+			string destinationPath,
+			bool recurse
+		)
 		{
 			String[] files;
-			if (destinationPath[destinationPath.Length-1] != Path.DirectorySeparatorChar)
-				destinationPath+=Path.DirectorySeparatorChar;
-			if(!Directory.Exists(destinationPath)) Directory.CreateDirectory(destinationPath);
-			files = Directory.GetFileSystemEntries (sourcePath);
-			foreach(string element in files)
+			if (
+				destinationPath[destinationPath.Length - 1]
+				!= Path.DirectorySeparatorChar
+			)
+				destinationPath += Path.DirectorySeparatorChar;
+			if (!Directory.Exists(destinationPath))
+				Directory.CreateDirectory(destinationPath);
+			files = Directory.GetFileSystemEntries(sourcePath);
+			foreach (string element in files)
 			{
 				// lets not back up or restore the useless extra backup files
 				if (!element.EndsWith(".bkp"))
@@ -916,20 +1098,32 @@ namespace SimPe
 					{
 						// copy sub directories (recursively)
 						if (Directory.Exists(element))
-							CopyDirectory(element, destinationPath + Path.GetFileName(element), recurse);
+							CopyDirectory(
+								element,
+								destinationPath + Path.GetFileName(element),
+								recurse
+							);
 						// copy files in directory
 						else
-							File.Copy(element, destinationPath + Path.GetFileName(element), true);
+							File.Copy(
+								element,
+								destinationPath + Path.GetFileName(element),
+								true
+							);
 					}
 					else
 					{
 						// only copy files in directory
 						if (!Directory.Exists(element))
-							File.Copy(element, destinationPath + Path.GetFileName(element), true);
+							File.Copy(
+								element,
+								destinationPath + Path.GetFileName(element),
+								true
+							);
 					}
 				}
 			}
-		} 
+		}
 
 		/// <summary>
 		/// Returns the Language Code that matches the Sims2 Language first
@@ -942,97 +1136,143 @@ namespace SimPe
 			string s = PathProvider.Global.InGameLang;
 			switch (s)
 			{
-				case "US English": return Data.MetaData.Languages.English;
-				case "French": return Data.MetaData.Languages.French;
-				case "German": return Data.MetaData.Languages.German;
-				case "Italian": return Data.MetaData.Languages.Italian;
-				case "Spanish": return Data.MetaData.Languages.Spanish;
-				case "Swedish": return Data.MetaData.Languages.Swedish;
-				case "Finnish": return Data.MetaData.Languages.Finnish;
-				case "Dutch": return Data.MetaData.Languages.Dutch;
-				case "Danish": return Data.MetaData.Languages.Danish;
-				case "Brazilian Portuguese": return Data.MetaData.Languages.Brazilian;
-				case "Czech": return Data.MetaData.Languages.Czech;
-				case "Japanese": return Data.MetaData.Languages.Japanese;
-				case "Korean": return Data.MetaData.Languages.Korean;
-				case "Russian": return Data.MetaData.Languages.Russian;
-				case "Simplified Chinese": return Data.MetaData.Languages.SimplifiedChinese;
-				case "Traditional Chinese": return Data.MetaData.Languages.TraditionalChinese;
-				case "English": return Data.MetaData.Languages.English_uk;
-				case "Polish": return Data.MetaData.Languages.Polish;
-				case "Thai": return Data.MetaData.Languages.Thai;
-				case "Norwegian": return Data.MetaData.Languages.Norwegian;
-				case "Portuguese": return Data.MetaData.Languages.Portuguese;
-				case "Hungarian": return Data.MetaData.Languages.Hungarian;
+				case "US English":
+					return Data.MetaData.Languages.English;
+				case "French":
+					return Data.MetaData.Languages.French;
+				case "German":
+					return Data.MetaData.Languages.German;
+				case "Italian":
+					return Data.MetaData.Languages.Italian;
+				case "Spanish":
+					return Data.MetaData.Languages.Spanish;
+				case "Swedish":
+					return Data.MetaData.Languages.Swedish;
+				case "Finnish":
+					return Data.MetaData.Languages.Finnish;
+				case "Dutch":
+					return Data.MetaData.Languages.Dutch;
+				case "Danish":
+					return Data.MetaData.Languages.Danish;
+				case "Brazilian Portuguese":
+					return Data.MetaData.Languages.Brazilian;
+				case "Czech":
+					return Data.MetaData.Languages.Czech;
+				case "Japanese":
+					return Data.MetaData.Languages.Japanese;
+				case "Korean":
+					return Data.MetaData.Languages.Korean;
+				case "Russian":
+					return Data.MetaData.Languages.Russian;
+				case "Simplified Chinese":
+					return Data.MetaData.Languages.SimplifiedChinese;
+				case "Traditional Chinese":
+					return Data.MetaData.Languages.TraditionalChinese;
+				case "English":
+					return Data.MetaData.Languages.English_uk;
+				case "Polish":
+					return Data.MetaData.Languages.Polish;
+				case "Thai":
+					return Data.MetaData.Languages.Thai;
+				case "Norwegian":
+					return Data.MetaData.Languages.Norwegian;
+				case "Portuguese":
+					return Data.MetaData.Languages.Portuguese;
+				case "Hungarian":
+					return Data.MetaData.Languages.Hungarian;
 			}
 
-			s = System.Threading.Thread.CurrentThread.CurrentCulture.ThreeLetterISOLanguageName.ToUpper();
+			s =
+				System.Threading.Thread.CurrentThread.CurrentCulture.ThreeLetterISOLanguageName.ToUpper();
 			switch (s)
 			{
-				case "ENA": return Data.MetaData.Languages.English_uk;
-				case "ENG": return Data.MetaData.Languages.English_uk;
-				case "ENZ": return Data.MetaData.Languages.English_uk;
-				case "ENS": return Data.MetaData.Languages.English_uk;
-				case "ENC": return Data.MetaData.Languages.English_uk;
-				case "ENU": return Data.MetaData.Languages.English;
-				case "DEU": return Data.MetaData.Languages.German;
-				case "ESP": return Data.MetaData.Languages.Spanish;
-				case "FIN": return Data.MetaData.Languages.Finnish;
-				case "CHS": return Data.MetaData.Languages.SimplifiedChinese;
-				case "CHT": return Data.MetaData.Languages.TraditionalChinese;
-				case "FRE": return Data.MetaData.Languages.French;
-				case "JPN": return Data.MetaData.Languages.Japanese;
-				case "ITA": return Data.MetaData.Languages.Italian;
-				case "DUT": return Data.MetaData.Languages.Dutch;
-				case "DAN": return Data.MetaData.Languages.Danish;
-				case "NOR": return Data.MetaData.Languages.Norwegian;
-				case "RUS": return Data.MetaData.Languages.Russian;
-				case "POR": return Data.MetaData.Languages.Portuguese;
-				case "POL": return Data.MetaData.Languages.Polish;
-				case "THA": return Data.MetaData.Languages.Thai;
-				case "KOR": return Data.MetaData.Languages.Korean;
-				case "HUN": return Data.MetaData.Languages.Hungarian;
+				case "ENA":
+					return Data.MetaData.Languages.English_uk;
+				case "ENG":
+					return Data.MetaData.Languages.English_uk;
+				case "ENZ":
+					return Data.MetaData.Languages.English_uk;
+				case "ENS":
+					return Data.MetaData.Languages.English_uk;
+				case "ENC":
+					return Data.MetaData.Languages.English_uk;
+				case "ENU":
+					return Data.MetaData.Languages.English;
+				case "DEU":
+					return Data.MetaData.Languages.German;
+				case "ESP":
+					return Data.MetaData.Languages.Spanish;
+				case "FIN":
+					return Data.MetaData.Languages.Finnish;
+				case "CHS":
+					return Data.MetaData.Languages.SimplifiedChinese;
+				case "CHT":
+					return Data.MetaData.Languages.TraditionalChinese;
+				case "FRE":
+					return Data.MetaData.Languages.French;
+				case "JPN":
+					return Data.MetaData.Languages.Japanese;
+				case "ITA":
+					return Data.MetaData.Languages.Italian;
+				case "DUT":
+					return Data.MetaData.Languages.Dutch;
+				case "DAN":
+					return Data.MetaData.Languages.Danish;
+				case "NOR":
+					return Data.MetaData.Languages.Norwegian;
+				case "RUS":
+					return Data.MetaData.Languages.Russian;
+				case "POR":
+					return Data.MetaData.Languages.Portuguese;
+				case "POL":
+					return Data.MetaData.Languages.Polish;
+				case "THA":
+					return Data.MetaData.Languages.Thai;
+				case "KOR":
+					return Data.MetaData.Languages.Korean;
+				case "HUN":
+					return Data.MetaData.Languages.Hungarian;
 			}
 
 			return lng;
 		}
+
 		/// <summary>
 		/// Creates a HexList from teh Byte Array
 		/// </summary>
 		/// <param name="data"></param>
 		/// <returns></returns>
-		public static string  BytesToHexList(byte[] data) 
+		public static string BytesToHexList(byte[] data)
 		{
 			return BytesToHexList(data, -1);
 		}
 
-
 		/// <summary>
 		/// Creates a HexList from teh Byte Array
 		/// </summary>
 		/// <param name="data"></param>
 		/// <returns></returns>
-		public static string  BytesToHexList(byte[] data, int dwordperrow) 
+		public static string BytesToHexList(byte[] data, int dwordperrow)
 		{
-			if (dwordperrow>0) dwordperrow++;
+			if (dwordperrow > 0)
+				dwordperrow++;
 			string s = "";
 			int dwords = 0;
-			for (int i=0; i<data.Length; i++) 
+			for (int i = 0; i < data.Length; i++)
 			{
 				byte b = data[i];
-				s += HexString(b)+" ";
-				if (i % 4 == 3) 
+				s += HexString(b) + " ";
+				if (i % 4 == 3)
 				{
 					s += " ";
 					dwords++;
 				}
-				if (dwordperrow>0)
-					if (dwords%dwordperrow == dwordperrow-1) 	
-					{		
+				if (dwordperrow > 0)
+					if (dwords % dwordperrow == dwordperrow - 1)
+					{
 						dwords = 0;
 						s += Helper.lbr;
 					}
-					
 			}
 			return s.Trim();
 		}
@@ -1042,16 +1282,17 @@ namespace SimPe
 		/// </summary>
 		/// <param name="hexlist"></param>
 		/// <returns>The Byte Array</returns>
-		public static byte[] HexListToBytes(string hexlist) 
+		public static byte[] HexListToBytes(string hexlist)
 		{
-			while (hexlist.IndexOf("  ")!=-1) hexlist = hexlist.Replace("  ", " ");
+			while (hexlist.IndexOf("  ") != -1)
+				hexlist = hexlist.Replace("  ", " ");
 
 			string[] tokens = hexlist.Split(" ".ToCharArray());
 			byte[] data = new byte[tokens.Length];
 
-			for(int i=0; i<tokens.Length; i++)
+			for (int i = 0; i < tokens.Length; i++)
 			{
-				if (tokens[i].Trim()!="")
+				if (tokens[i].Trim() != "")
 					data[i] = Convert.ToByte(tokens[i], 16);
 				else
 					data[i] = 0;
@@ -1065,12 +1306,13 @@ namespace SimPe
 		/// <param name="array"></param>
 		/// <param name="len"></param>
 		/// <returns></returns>
-		public static byte[] SetLength(byte[] array, int len) 
+		public static byte[] SetLength(byte[] array, int len)
 		{
-			if (array.Length == len) return array;
+			if (array.Length == len)
+				return array;
 
 			byte[] ret = new byte[len];
-			for(int i=0; i<Math.Min(array.Length, ret.Length); i++)
+			for (int i = 0; i < Math.Min(array.Length, ret.Length); i++)
 			{
 				ret[i] = array[i];
 			}
@@ -1085,12 +1327,11 @@ namespace SimPe
 		/// <param name="item">The new Item</param>
 		/// <param name="elementType">Type of the Array Elements</param>
 		/// <returns>The extended Array</returns>
-		public static Array Add(Array source, object item, System.Type elementType) 
+		public static Array Add(Array source, object item, System.Type elementType)
 		{
-			
-			Array a = Array.CreateInstance(elementType, source.Length+1);
+			Array a = Array.CreateInstance(elementType, source.Length + 1);
 			source.CopyTo(a, 0);
-			a.SetValue(item, a.Length-1);
+			a.SetValue(item, a.Length - 1);
 			return a;
 		}
 
@@ -1100,9 +1341,8 @@ namespace SimPe
 		/// <param name="source">The Sourec Array</param>
 		/// <param name="item">The new Item</param>
 		/// <returns>The extended Array</returns>
-		public static Array Add(Array source, object item) 
+		public static Array Add(Array source, object item)
 		{
-			
 			return Add(source, item, item.GetType());
 		}
 
@@ -1113,17 +1353,18 @@ namespace SimPe
 		/// <param name="item">The Item delete</param>
 		/// <param name="elementType">Type of the Array Elements</param>
 		/// <returns>The Source Array without any Element that Equals item</returns>
-		public static Array Delete(Array source, object item, System.Type elementType) 
+		public static Array Delete(Array source, object item, System.Type elementType)
 		{
 			System.Collections.ArrayList a = new System.Collections.ArrayList();
-			foreach (object i in source) 
+			foreach (object i in source)
 			{
-				if (i==null) 
+				if (i == null)
 				{
-					if (item==null)
+					if (item == null)
 						a.Add(i);
 				}
-				else if (!i.Equals(item)) a.Add(i);
+				else if (!i.Equals(item))
+					a.Add(i);
 			}
 
 			Array ar = Array.CreateInstance(elementType, a.Count);
@@ -1137,7 +1378,7 @@ namespace SimPe
 		/// <param name="source">The Sourec Array</param>
 		/// <param name="item">The Item delete</param>
 		/// <returns>The Source Array without any Element that Equals item</returns>
-		public static Array Delete(Array source, object item) 
+		public static Array Delete(Array source, object item)
 		{
 			return Delete(source, item, item.GetType());
 		}
@@ -1149,9 +1390,12 @@ namespace SimPe
 		/// <param name="item">The Item delete</param>
 		/// <param name="elementType">Type of the Array Elements</param>
 		/// <returns>The Source Array without any Element that Equals item</returns>
-		public static Array Merge(Array source1, Array source2, System.Type elementType) 
+		public static Array Merge(Array source1, Array source2, System.Type elementType)
 		{
-			Array a = Array.CreateInstance(elementType, source1.Length + source2.Length);
+			Array a = Array.CreateInstance(
+				elementType,
+				source1.Length + source2.Length
+			);
 			source1.CopyTo(a, 0);
 			source2.CopyTo(a, source1.Length);
 			return a;
@@ -1173,7 +1417,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="val">The Short value</param>
 		/// <returns>Byte arra, index 0 contains the lower byte </returns>
-		public static byte[] ToByte(short val) 
+		public static byte[] ToByte(short val)
 		{
 			byte[] ret = new byte[2];
 			ret[1] = (byte)(val & 0xff);
@@ -1197,7 +1441,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="val">The Short value</param>
 		/// <returns>Byte arra, index 0 contains the lower byte </returns>
-		public static short[] Toshort(int val) 
+		public static short[] Toshort(int val)
 		{
 			short[] ret = new short[2];
 			ret[1] = (short)(val & 0xffff);
@@ -1210,10 +1454,7 @@ namespace SimPe
 		/// </summary>
 		public static bool DebugMode
 		{
-			get 
-			{
-				return Helper.WindowsRegistry.HiddenMode;
-			}
+			get { return Helper.WindowsRegistry.HiddenMode; }
 		}
 
 		/// <summary>
@@ -1222,22 +1463,37 @@ namespace SimPe
 		/// <param name="flname"></param>
 		/// <returns></returns>
 		static string neighborhood_package = "_neighborhood.package";
-		public static string GetMainNeighborhoodFile(string filename) 
+
+		public static string GetMainNeighborhoodFile(string filename)
 		{
-			if (filename==null) return "";
+			if (filename == null)
+				return "";
 			string flname = Path.GetFileName(filename);
 			flname = flname.Trim().ToLower();
 
-			if (flname.EndsWith(neighborhood_package)) return filename;	
+			if (flname.EndsWith(neighborhood_package))
+				return filename;
 			flname = Path.GetFileNameWithoutExtension(flname);
-			string[] parts = flname.Split(new char[] {'_'}, 2);
-			if (parts.Length==0) return filename;
-			return Path.Combine(Path.GetDirectoryName(filename), parts[0] + neighborhood_package);
+			string[] parts = flname.Split(new char[] { '_' }, 2);
+			if (parts.Length == 0)
+				return filename;
+			return Path.Combine(
+				Path.GetDirectoryName(filename),
+				parts[0] + neighborhood_package
+			);
 		}
 
 		// static string HoodsFile { get { return Path.Combine(Helper.SimPeDataPath, "hoods.xml"); ; } }
 		static System.Collections.Generic.List<string> knownHoods = null;
-		static System.Collections.Generic.List<string> KnownHoods { get { if (knownHoods == null) LoadKnownHoods(); return knownHoods; } }
+		static System.Collections.Generic.List<string> KnownHoods
+		{
+			get
+			{
+				if (knownHoods == null)
+					LoadKnownHoods();
+				return knownHoods;
+			}
+		}
 
 		static void LoadKnownHoods()
 		{
@@ -1253,7 +1509,7 @@ namespace SimPe
 			 * Since no new hood types will exist we don't need to use an external file
 			 */
 		}
-		
+
 		/// <summary>
 		/// Returns true if this is a Neighborhood File
 		/// </summary>
@@ -1261,15 +1517,21 @@ namespace SimPe
 		/// <returns></returns>
 		public static bool IsNeighborhoodFile(string filename)
 		{
-			if (filename == null || filename == "") return false;
+			if (filename == null || filename == "")
+				return false;
 			filename = Path.GetFileName(filename);
 			filename = filename.Trim().ToLower();
 
 			// if (filename.IndexOf(neighborhood_package) == 4 && filename.Length == 4 + neighborhood_package.Length) return true;
 			// foreach (string hood in KnownHoods) if (filename.IndexOf("_" + hood) == 4 && filename.IndexOf(".package") == 4 + 1 + hood.Length + 3) return true;
 
-			if (filename.Contains("_neighborhood.package")) return true;
-			foreach (string hood in KnownHoods) if (filename.Contains("_" + hood + "0") && filename.EndsWith(".package")) return true; // CJH - removes the 4 char limit
+			if (filename.Contains("_neighborhood.package"))
+				return true;
+			foreach (string hood in KnownHoods)
+				if (
+					filename.Contains("_" + hood + "0") && filename.EndsWith(".package")
+				)
+					return true; // CJH - removes the 4 char limit
 
 			return false;
 		}
@@ -1281,12 +1543,14 @@ namespace SimPe
 		/// <returns></returns>
 		public static bool IsLotCatalogFile(string filename)
 		{
-			if (filename == null || filename == "") return false;
+			if (filename == null || filename == "")
+				return false;
 			if (System.IO.Path.GetDirectoryName(filename).EndsWith("LotCatalog"))
 			{
 				filename = Path.GetFileName(filename);
 				filename = filename.Trim().ToLower();
-				if (filename.StartsWith("cx_00")) return true;
+				if (filename.StartsWith("cx_00"))
+					return true;
 			}
 
 			return false;
@@ -1298,21 +1562,20 @@ namespace SimPe
 		/// <returns></returns>
 		public static string NewestGamePath
 		{
-			get 
-			{
-				return PathProvider.Global.Latest.InstallFolder;
-			}
+			get { return PathProvider.Global.Latest.InstallFolder; }
 		}
 
 		static SimPe.TGILoader tgiload;
+
 		/// <summary>
 		/// Retrns the TGI Loader Class
 		/// </summary>
-		public static SimPe.TGILoader TGILoader 
+		public static SimPe.TGILoader TGILoader
 		{
-			get 
+			get
 			{
-				if (tgiload==null) tgiload = new TGILoader();
+				if (tgiload == null)
+					tgiload = new TGILoader();
 				return tgiload;
 			}
 		}
@@ -1324,10 +1587,11 @@ namespace SimPe
 		/// <returns></returns>
 		public static string SaveFileName(string flname)
 		{
-			if (flname==null) flname="";
+			if (flname == null)
+				flname = "";
 			flname = flname.Replace("\\", "_");
 			flname = flname.Replace("/", "_");
-			flname = flname.Replace(":", "_");			
+			flname = flname.Replace(":", "_");
 			return flname;
 		}
 
@@ -1339,14 +1603,16 @@ namespace SimPe
 		/// <returns></returns>
 		public static bool EqualFileName(string fl1, string fl2)
 		{
-			return fl1.Trim().ToLower()==fl2.Trim().ToLower();
+			return fl1.Trim().ToLower() == fl2.Trim().ToLower();
 		}
 
 		public static bool IsAbsolutePath(string path)
 		{
-			if (path == null) return false;
+			if (path == null)
+				return false;
 			path = path.Trim();
-			if (path.IndexOf(":")==1) return true;
+			if (path.IndexOf(":") == 1)
+				return true;
 			return false;
 		}
 
@@ -1361,12 +1627,13 @@ namespace SimPe
 		}
 
 		#region Folders
-		
-		[DllImport("kernel32.dll", SetLastError=true, CharSet=CharSet.Auto)]
+
+		[DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
 		static extern uint GetLongPathName(
 			string lpszShortPath,
 			[Out] System.Text.StringBuilder lpszLongPath,
-			uint cchBuffer);
+			uint cchBuffer
+		);
 
 		/// <summary>
 		/// The ToShortPathNameToLongPathName function retrieves the long path form of a specified short input path
@@ -1375,7 +1642,8 @@ namespace SimPe
 		/// <returns>A long name path string</returns>
 		public static string ToLongPathName(string shortName)
 		{
-			if (!Directory.Exists(shortName)) return shortName.Trim().ToLower();
+			if (!Directory.Exists(shortName))
+				return shortName.Trim().ToLower();
 			StringBuilder longNameBuffer = new StringBuilder(256);
 			uint bufferSize = (uint)longNameBuffer.Capacity;
 
@@ -1385,22 +1653,24 @@ namespace SimPe
 		}
 
 		public static string ToLongFileName(string shortName)
-		{			
+		{
 			return Path.Combine(
 				ToLongPathName(Path.GetDirectoryName(shortName)),
-				Path.GetFileName(shortName));
+				Path.GetFileName(shortName)
+			);
 		}
 
 		#endregion
-		
+
 
 		public static System.Windows.Forms.Keys ToKeys(System.Windows.Forms.Shortcut sc)
-		{            
+		{
 			System.Windows.Forms.Keys ret = System.Windows.Forms.Keys.None;
 			string name = sc.ToString().ToLower();
 
-			if (name == "none") return ret;
-			
+			if (name == "none")
+				return ret;
+
 			SetKey(ref ret, ref name, "ctrl", System.Windows.Forms.Keys.Control);
 			SetKey(ref ret, ref name, "shift", System.Windows.Forms.Keys.Shift);
 			SetKey(ref ret, ref name, "alt", System.Windows.Forms.Keys.Alt);
@@ -1408,65 +1678,124 @@ namespace SimPe
 			SetKey(ref ret, ref name, "del", System.Windows.Forms.Keys.Delete);
 			SetKey(ref ret, ref name, "bksp", System.Windows.Forms.Keys.Back);
 
-			if (SetKey(ref ret, ref name, "uparrow", System.Windows.Forms.Keys.Up)) return ret;
-			if (SetKey(ref ret, ref name, "downarrow", System.Windows.Forms.Keys.Down)) return ret;
-			if (SetKey(ref ret, ref name, "leftarrow", System.Windows.Forms.Keys.Left)) return ret;
-			if (SetKey(ref ret, ref name, "rightarrow", System.Windows.Forms.Keys.Right)) return ret;
+			if (SetKey(ref ret, ref name, "uparrow", System.Windows.Forms.Keys.Up))
+				return ret;
+			if (SetKey(ref ret, ref name, "downarrow", System.Windows.Forms.Keys.Down))
+				return ret;
+			if (SetKey(ref ret, ref name, "leftarrow", System.Windows.Forms.Keys.Left))
+				return ret;
+			if (
+				SetKey(ref ret, ref name, "rightarrow", System.Windows.Forms.Keys.Right)
+			)
+				return ret;
 
-			if (SetKey(ref ret, ref name, "f1", System.Windows.Forms.Keys.F1)) return ret;
-			if (SetKey(ref ret, ref name, "f2", System.Windows.Forms.Keys.F2)) return ret;
-			if (SetKey(ref ret, ref name, "f3", System.Windows.Forms.Keys.F3)) return ret;
-			if (SetKey(ref ret, ref name, "f4", System.Windows.Forms.Keys.F4)) return ret;
-			if (SetKey(ref ret, ref name, "f5", System.Windows.Forms.Keys.F5)) return ret;
-			if (SetKey(ref ret, ref name, "f6", System.Windows.Forms.Keys.F6)) return ret;
-			if (SetKey(ref ret, ref name, "f7", System.Windows.Forms.Keys.F7)) return ret;
-			if (SetKey(ref ret, ref name, "f8", System.Windows.Forms.Keys.F8)) return ret;
-			if (SetKey(ref ret, ref name, "f9", System.Windows.Forms.Keys.F9)) return ret;
-			if (SetKey(ref ret, ref name, "f10", System.Windows.Forms.Keys.F10)) return ret;
-			if (SetKey(ref ret, ref name, "f11", System.Windows.Forms.Keys.F11)) return ret;
-			if (SetKey(ref ret, ref name, "f12", System.Windows.Forms.Keys.F12)) return ret;
+			if (SetKey(ref ret, ref name, "f1", System.Windows.Forms.Keys.F1))
+				return ret;
+			if (SetKey(ref ret, ref name, "f2", System.Windows.Forms.Keys.F2))
+				return ret;
+			if (SetKey(ref ret, ref name, "f3", System.Windows.Forms.Keys.F3))
+				return ret;
+			if (SetKey(ref ret, ref name, "f4", System.Windows.Forms.Keys.F4))
+				return ret;
+			if (SetKey(ref ret, ref name, "f5", System.Windows.Forms.Keys.F5))
+				return ret;
+			if (SetKey(ref ret, ref name, "f6", System.Windows.Forms.Keys.F6))
+				return ret;
+			if (SetKey(ref ret, ref name, "f7", System.Windows.Forms.Keys.F7))
+				return ret;
+			if (SetKey(ref ret, ref name, "f8", System.Windows.Forms.Keys.F8))
+				return ret;
+			if (SetKey(ref ret, ref name, "f9", System.Windows.Forms.Keys.F9))
+				return ret;
+			if (SetKey(ref ret, ref name, "f10", System.Windows.Forms.Keys.F10))
+				return ret;
+			if (SetKey(ref ret, ref name, "f11", System.Windows.Forms.Keys.F11))
+				return ret;
+			if (SetKey(ref ret, ref name, "f12", System.Windows.Forms.Keys.F12))
+				return ret;
 
-			if (SetKey(ref ret, ref name, "1", System.Windows.Forms.Keys.D1)) return ret;
-			if (SetKey(ref ret, ref name, "2", System.Windows.Forms.Keys.D2)) return ret;
-			if (SetKey(ref ret, ref name, "3", System.Windows.Forms.Keys.D3)) return ret; 
-			if (SetKey(ref ret, ref name, "4", System.Windows.Forms.Keys.D4)) return ret;
-			if (SetKey(ref ret, ref name, "5", System.Windows.Forms.Keys.D5)) return ret;
-			if (SetKey(ref ret, ref name, "6", System.Windows.Forms.Keys.D6)) return ret;
-			if (SetKey(ref ret, ref name, "7", System.Windows.Forms.Keys.D7)) return ret;
-			if (SetKey(ref ret, ref name, "8", System.Windows.Forms.Keys.D8)) return ret;
-			if (SetKey(ref ret, ref name, "9", System.Windows.Forms.Keys.D9)) return ret;
-			if (SetKey(ref ret, ref name, "0", System.Windows.Forms.Keys.D0)) return ret;
+			if (SetKey(ref ret, ref name, "1", System.Windows.Forms.Keys.D1))
+				return ret;
+			if (SetKey(ref ret, ref name, "2", System.Windows.Forms.Keys.D2))
+				return ret;
+			if (SetKey(ref ret, ref name, "3", System.Windows.Forms.Keys.D3))
+				return ret;
+			if (SetKey(ref ret, ref name, "4", System.Windows.Forms.Keys.D4))
+				return ret;
+			if (SetKey(ref ret, ref name, "5", System.Windows.Forms.Keys.D5))
+				return ret;
+			if (SetKey(ref ret, ref name, "6", System.Windows.Forms.Keys.D6))
+				return ret;
+			if (SetKey(ref ret, ref name, "7", System.Windows.Forms.Keys.D7))
+				return ret;
+			if (SetKey(ref ret, ref name, "8", System.Windows.Forms.Keys.D8))
+				return ret;
+			if (SetKey(ref ret, ref name, "9", System.Windows.Forms.Keys.D9))
+				return ret;
+			if (SetKey(ref ret, ref name, "0", System.Windows.Forms.Keys.D0))
+				return ret;
 
-			if (SetKey(ref ret, ref name, "a", System.Windows.Forms.Keys.A)) return ret;
-			if (SetKey(ref ret, ref name, "b", System.Windows.Forms.Keys.B)) return ret;
-			if (SetKey(ref ret, ref name, "c", System.Windows.Forms.Keys.C)) return ret;
-			if (SetKey(ref ret, ref name, "d", System.Windows.Forms.Keys.D)) return ret;
-			if (SetKey(ref ret, ref name, "e", System.Windows.Forms.Keys.E)) return ret;
-			if (SetKey(ref ret, ref name, "f", System.Windows.Forms.Keys.F)) return ret;
-			if (SetKey(ref ret, ref name, "g", System.Windows.Forms.Keys.G)) return ret;
-			if (SetKey(ref ret, ref name, "h", System.Windows.Forms.Keys.H)) return ret;
-			if (SetKey(ref ret, ref name, "i", System.Windows.Forms.Keys.I)) return ret;
-			if (SetKey(ref ret, ref name, "j", System.Windows.Forms.Keys.J)) return ret;
-			if (SetKey(ref ret, ref name, "k", System.Windows.Forms.Keys.K)) return ret;
-			if (SetKey(ref ret, ref name, "l", System.Windows.Forms.Keys.L)) return ret;
-			if (SetKey(ref ret, ref name, "m", System.Windows.Forms.Keys.M)) return ret;
-			if (SetKey(ref ret, ref name, "n", System.Windows.Forms.Keys.N)) return ret;
-			if (SetKey(ref ret, ref name, "o", System.Windows.Forms.Keys.O)) return ret;
-			if (SetKey(ref ret, ref name, "p", System.Windows.Forms.Keys.P)) return ret;
-			if (SetKey(ref ret, ref name, "q", System.Windows.Forms.Keys.Q)) return ret;
-			if (SetKey(ref ret, ref name, "r", System.Windows.Forms.Keys.R)) return ret;
-			if (SetKey(ref ret, ref name, "s", System.Windows.Forms.Keys.S)) return ret;
-			if (SetKey(ref ret, ref name, "t", System.Windows.Forms.Keys.T)) return ret;
-			if (SetKey(ref ret, ref name, "u", System.Windows.Forms.Keys.U)) return ret;
-			if (SetKey(ref ret, ref name, "v", System.Windows.Forms.Keys.V)) return ret;
-			if (SetKey(ref ret, ref name, "w", System.Windows.Forms.Keys.W)) return ret;
-			if (SetKey(ref ret, ref name, "x", System.Windows.Forms.Keys.X)) return ret;
-			if (SetKey(ref ret, ref name, "y", System.Windows.Forms.Keys.Y)) return ret; 
-			if (SetKey(ref ret, ref name, "z", System.Windows.Forms.Keys.Z)) return ret;
+			if (SetKey(ref ret, ref name, "a", System.Windows.Forms.Keys.A))
+				return ret;
+			if (SetKey(ref ret, ref name, "b", System.Windows.Forms.Keys.B))
+				return ret;
+			if (SetKey(ref ret, ref name, "c", System.Windows.Forms.Keys.C))
+				return ret;
+			if (SetKey(ref ret, ref name, "d", System.Windows.Forms.Keys.D))
+				return ret;
+			if (SetKey(ref ret, ref name, "e", System.Windows.Forms.Keys.E))
+				return ret;
+			if (SetKey(ref ret, ref name, "f", System.Windows.Forms.Keys.F))
+				return ret;
+			if (SetKey(ref ret, ref name, "g", System.Windows.Forms.Keys.G))
+				return ret;
+			if (SetKey(ref ret, ref name, "h", System.Windows.Forms.Keys.H))
+				return ret;
+			if (SetKey(ref ret, ref name, "i", System.Windows.Forms.Keys.I))
+				return ret;
+			if (SetKey(ref ret, ref name, "j", System.Windows.Forms.Keys.J))
+				return ret;
+			if (SetKey(ref ret, ref name, "k", System.Windows.Forms.Keys.K))
+				return ret;
+			if (SetKey(ref ret, ref name, "l", System.Windows.Forms.Keys.L))
+				return ret;
+			if (SetKey(ref ret, ref name, "m", System.Windows.Forms.Keys.M))
+				return ret;
+			if (SetKey(ref ret, ref name, "n", System.Windows.Forms.Keys.N))
+				return ret;
+			if (SetKey(ref ret, ref name, "o", System.Windows.Forms.Keys.O))
+				return ret;
+			if (SetKey(ref ret, ref name, "p", System.Windows.Forms.Keys.P))
+				return ret;
+			if (SetKey(ref ret, ref name, "q", System.Windows.Forms.Keys.Q))
+				return ret;
+			if (SetKey(ref ret, ref name, "r", System.Windows.Forms.Keys.R))
+				return ret;
+			if (SetKey(ref ret, ref name, "s", System.Windows.Forms.Keys.S))
+				return ret;
+			if (SetKey(ref ret, ref name, "t", System.Windows.Forms.Keys.T))
+				return ret;
+			if (SetKey(ref ret, ref name, "u", System.Windows.Forms.Keys.U))
+				return ret;
+			if (SetKey(ref ret, ref name, "v", System.Windows.Forms.Keys.V))
+				return ret;
+			if (SetKey(ref ret, ref name, "w", System.Windows.Forms.Keys.W))
+				return ret;
+			if (SetKey(ref ret, ref name, "x", System.Windows.Forms.Keys.X))
+				return ret;
+			if (SetKey(ref ret, ref name, "y", System.Windows.Forms.Keys.Y))
+				return ret;
+			if (SetKey(ref ret, ref name, "z", System.Windows.Forms.Keys.Z))
+				return ret;
 			return ret;
 		}
 
-		private static bool SetKey(ref System.Windows.Forms.Keys ret, ref string name, string capt, System.Windows.Forms.Keys key)
+		private static bool SetKey(
+			ref System.Windows.Forms.Keys ret,
+			ref string name,
+			string capt,
+			System.Windows.Forms.Keys key
+		)
 		{
 			if (name.IndexOf(capt) >= 0)
 			{
@@ -1478,7 +1807,6 @@ namespace SimPe
 			}
 
 			return false;
-		}        
-		
+		}
 	}
 }

@@ -28,27 +28,34 @@ namespace SimPe.Packages
 	public class PackageMaintainer
 	{
 		static PackageMaintainer me;
+
 		/// <summary>
 		/// Returns the active package maintainer
 		/// </summary>
 		public static PackageMaintainer Maintainer
 		{
-			get 
+			get
 			{
-				if (me==null) me = new PackageMaintainer();
+				if (me == null)
+					me = new PackageMaintainer();
 				return me;
 			}
 		}
 
 		Hashtable ht;
 		SimPe.Interfaces.Scenegraph.IScenegraphFileIndex localfileindex;
+
 		/// <summary>
 		/// Set or Get the FileIndex used to hold loaded Packages
 		/// </summary>
 		public SimPe.Interfaces.Scenegraph.IScenegraphFileIndex FileIndex
 		{
-			get { return localfileindex;}
-			set { if (localfileindex==null) localfileindex = value; }
+			get { return localfileindex; }
+			set
+			{
+				if (localfileindex == null)
+					localfileindex = value;
+			}
 		}
 
 		/// <summary>
@@ -56,8 +63,11 @@ namespace SimPe.Packages
 		/// </summary>
 		internal PackageMaintainer()
 		{
-            ht = new Hashtable(new CaseInsensitiveHashCodeProvider(), new CaseInsensitiveComparer());
-            // ht = new Hashtable(new StringComparer(), new IEqualityComparer());
+			ht = new Hashtable(
+				new CaseInsensitiveHashCodeProvider(),
+				new CaseInsensitiveComparer()
+			);
+			// ht = new Hashtable(new StringComparer(), new IEqualityComparer());
 		}
 
 		/// <summary>
@@ -66,8 +76,10 @@ namespace SimPe.Packages
 		/// <param name="pkg"></param>
 		internal void RemovePackage(GeneratableFile pkg)
 		{
-			if (!Helper.WindowsRegistry.UsePackageMaintainer) return;
-			if (pkg==null) return;			
+			if (!Helper.WindowsRegistry.UsePackageMaintainer)
+				return;
+			if (pkg == null)
+				return;
 
 			RemovePackage(pkg.FileName);
 		}
@@ -78,13 +90,14 @@ namespace SimPe.Packages
 		/// <param name="pkg"></param>
 		public void RemovePackagesInPath(string folder)
 		{
-			if (folder==null) return;
+			if (folder == null)
+				return;
 			folder = folder.Trim().ToLower();
-			
 
 			ArrayList list = new ArrayList();
 			foreach (string k in ht.Keys)
-				if (k.Trim().ToLower().StartsWith(folder)) list.Add(k);
+				if (k.Trim().ToLower().StartsWith(folder))
+					list.Add(k);
 
 			foreach (string k in list)
 				RemovePackage(k);
@@ -96,10 +109,10 @@ namespace SimPe.Packages
 		/// <param name="pkg"></param>
 		internal void RemovePackage(string flname)
 		{
-			if (flname==null) return;
-			
+			if (flname == null)
+				return;
 
-			if (ht.ContainsKey(flname)) 
+			if (ht.ContainsKey(flname))
 			{
 				SimPe.FileTableBase.FileIndex.ClosePackage((GeneratableFile)ht[flname]);
 				//((GeneratableFile)ht[filename]).Close(true);
@@ -134,19 +147,24 @@ namespace SimPe.Packages
 		/// If the package was loaded once in this session, this Method will return an instance to the
 		/// last loaded Version. Otherwise it wil create a new instance
 		/// </remarks>
-		public GeneratableFile LoadPackageFromFile(string filename, bool sync) 
+		public GeneratableFile LoadPackageFromFile(string filename, bool sync)
 		{
-			GeneratableFile ret = null;			
-			if (filename==null) ret =  GeneratableFile.CreateNew();
-			else 
+			GeneratableFile ret = null;
+			if (filename == null)
+				ret = GeneratableFile.CreateNew();
+			else
 			{
-				if (!Helper.WindowsRegistry.UsePackageMaintainer)  ret = new GeneratableFile(filename);
+				if (!Helper.WindowsRegistry.UsePackageMaintainer)
+					ret = new GeneratableFile(filename);
 				else
-                {
-					if (!ht.ContainsKey(filename)) ht[filename] = new GeneratableFile(filename);
-					else if (sync) 
-					{				
-						SimPe.FileTableBase.FileIndex.ClosePackage((GeneratableFile)ht[filename]);
+				{
+					if (!ht.ContainsKey(filename))
+						ht[filename] = new GeneratableFile(filename);
+					else if (sync)
+					{
+						SimPe.FileTableBase.FileIndex.ClosePackage(
+							(GeneratableFile)ht[filename]
+						);
 						//((GeneratableFile)ht[filename]).Close(true);
 						((GeneratableFile)ht[filename]).ReloadFromFile(filename);
 					}
@@ -154,7 +172,7 @@ namespace SimPe.Packages
 				}
 			}
 
-			if (sync) 
+			if (sync)
 			{
 				this.SyncFileIndex(ret);
 			}

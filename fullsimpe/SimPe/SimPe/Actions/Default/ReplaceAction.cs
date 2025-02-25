@@ -22,78 +22,86 @@ using System;
 namespace SimPe.Actions.Default
 {
 	/// <summary>
-    /// Summary description for ReplaceAction.
+	/// Summary description for ReplaceAction.
 	/// </summary>
 	public class ReplaceAction : AbstractActionDefault
 	{
-
-		public ReplaceAction()
-		{
-			
-		}
+		public ReplaceAction() { }
 
 		/// <summary>
 		/// Load a list of FIleDescriptors from the disc
 		/// </summary>
 		/// <param name="add">true if you want to add them lateron</param>
 		/// <returns></returns>
-		protected SimPe.Collections.PackedFileDescriptors LoadDescriptors(bool add) 
+		protected SimPe.Collections.PackedFileDescriptors LoadDescriptors(bool add)
 		{
-			System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog();
-			if (!add) 
+			System.Windows.Forms.OpenFileDialog ofd =
+				new System.Windows.Forms.OpenFileDialog();
+			if (!add)
 			{
-				ofd.Filter =  ExtensionProvider.BuildFilterString(
-					new SimPe.ExtensionType[] {
-												  SimPe.ExtensionType.ExtractedFile,
-												  SimPe.ExtensionType.ExtractedFileDescriptor,
-												  SimPe.ExtensionType.AllFiles
-											  }
-					);
-			} 
-			else 
+				ofd.Filter = ExtensionProvider.BuildFilterString(
+					new SimPe.ExtensionType[]
+					{
+						SimPe.ExtensionType.ExtractedFile,
+						SimPe.ExtensionType.ExtractedFileDescriptor,
+						SimPe.ExtensionType.AllFiles,
+					}
+				);
+			}
+			else
 			{
-				ofd.Filter =  ExtensionProvider.BuildFilterString(
-					new SimPe.ExtensionType[] {
-												  SimPe.ExtensionType.ExtractedFileDescriptor,
-												  SimPe.ExtensionType.ExtrackedPackageDescriptor,
-												  SimPe.ExtensionType.ExtractedFile,
-												  SimPe.ExtensionType.Package,
-												  SimPe.ExtensionType.DisabledPackage,
-												  SimPe.ExtensionType.AllFiles
-											  }
-					);
+				ofd.Filter = ExtensionProvider.BuildFilterString(
+					new SimPe.ExtensionType[]
+					{
+						SimPe.ExtensionType.ExtractedFileDescriptor,
+						SimPe.ExtensionType.ExtrackedPackageDescriptor,
+						SimPe.ExtensionType.ExtractedFile,
+						SimPe.ExtensionType.Package,
+						SimPe.ExtensionType.DisabledPackage,
+						SimPe.ExtensionType.AllFiles,
+					}
+				);
 			}
 
 			ofd.Title = SimPe.Localization.GetString(this.ToString());
 			ofd.Multiselect = add;
-			if (ofd.ShowDialog()==System.Windows.Forms.DialogResult.OK) 
+			if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 			{
-				SimPe.Collections.PackedFileDescriptors pfds = LoadedPackage.LoadDescriptorsFromDisk(ofd.FileNames);
+				SimPe.Collections.PackedFileDescriptors pfds =
+					LoadedPackage.LoadDescriptorsFromDisk(ofd.FileNames);
 				return pfds;
 			}
 
 			return new SimPe.Collections.PackedFileDescriptors();
 		}
-		#region IToolAction Member		
 
-		public override bool ChangeEnabledStateEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
-		{
-			bool res = base.ChangeEnabledStateEventHandler (sender, es);
-			return (res && es.Count==1);											
-		}		
+		#region IToolAction Member
 
-		public override void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
+		public override bool ChangeEnabledStateEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs es
+		)
 		{
-			if (!ChangeEnabledStateEventHandler(null, es)) return;
+			bool res = base.ChangeEnabledStateEventHandler(sender, es);
+			return (res && es.Count == 1);
+		}
+
+		public override void ExecuteEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs es
+		)
+		{
+			if (!ChangeEnabledStateEventHandler(null, es))
+				return;
 
 			SimPe.Collections.PackedFileDescriptors pfds = this.LoadDescriptors(false);
-			if (es.Count>0) 
+			if (es.Count > 0)
 			{
-				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds) 		
-					if (pfd!=null)
-						if (es[0].Resource!=null)
-							if (es[0].Resource.FileDescriptor!=null)
-								es[0].Resource.FileDescriptor.UserData = pfd.UserData;						
+				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+					if (pfd != null)
+						if (es[0].Resource != null)
+							if (es[0].Resource.FileDescriptor != null)
+								es[0].Resource.FileDescriptor.UserData = pfd.UserData;
 			}
 		}
 
@@ -111,19 +119,13 @@ namespace SimPe.Actions.Default
 		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
-			get
-            {
-                return SimPe.GetIcon.actionReplace;
-			}
-        }
+			get { return SimPe.GetIcon.actionReplace; }
+		}
 
-        public override System.Windows.Forms.Shortcut Shortcut
-        {
-            get
-            {
-                return System.Windows.Forms.Shortcut.ShiftIns;
-            }
-        }
+		public override System.Windows.Forms.Shortcut Shortcut
+		{
+			get { return System.Windows.Forms.Shortcut.ShiftIns; }
+		}
 		#endregion
 	}
 }

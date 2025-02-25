@@ -28,37 +28,41 @@ namespace SimPe.Plugin
 	class ListedMeshBlocks
 	{
 		AnimationMeshBlock amb;
-		SimPe.Plugin.GenericRcol cres, gmdc;
+		SimPe.Plugin.GenericRcol cres,
+			gmdc;
+
 		public ListedMeshBlocks(AnimationMeshBlock amb)
 		{
 			this.amb = amb;
 			cres = amb.FindDefiningCRES();
-			if (cres!=null) gmdc = amb.FindUsedGMDC(cres);
+			if (cres != null)
+				gmdc = amb.FindUsedGMDC(cres);
 		}
 
 		public AnimationMeshBlock ANIMBlock
 		{
-			get {return amb;}
+			get { return amb; }
 		}
 
-		public SimPe.Plugin.GenericRcol CRES 
+		public SimPe.Plugin.GenericRcol CRES
 		{
-			get {return cres;}
+			get { return cres; }
 		}
 
-		public SimPe.Plugin.GenericRcol GMDC 
+		public SimPe.Plugin.GenericRcol GMDC
 		{
-			get {return gmdc;}
+			get { return gmdc; }
 		}
 
 		public override string ToString()
 		{
-			string s= amb.ToString ();
-			if (cres==null) s += "[No CRES found]";
-			else if (gmdc==null) s += "[No GMDC found]";
+			string s = amb.ToString();
+			if (cres == null)
+				s += "[No CRES found]";
+			else if (gmdc == null)
+				s += "[No GMDC found]";
 
 			return s;
 		}
-
 	}
 }

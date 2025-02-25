@@ -40,15 +40,25 @@ namespace SimPe.Plugin
 		{
 			this.package = package;
 
-			Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(0xEBCF3E27, 0xffffffff, 0xffffffff, 0xffffffff);
+			Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
+				0xEBCF3E27,
+				0xffffffff,
+				0xffffffff,
+				0xffffffff
+			);
 			pset = new SimPe.PackedFiles.Wrapper.Cpf();
 			ctss = null;
-			if (pfd!=null)
+			if (pfd != null)
 			{
 				pset.ProcessData(pfd, package);
 
-				pfd = package.FindFile(Data.MetaData.CTSS_FILE, 0xffffffff, 0xffffffff, pset.GetSaveItem("description").UIntegerValue);
-				if (pfd!=null) 
+				pfd = package.FindFile(
+					Data.MetaData.CTSS_FILE,
+					0xffffffff,
+					0xffffffff,
+					pset.GetSaveItem("description").UIntegerValue
+				);
+				if (pfd != null)
 				{
 					ctss = new SimPe.PackedFiles.Wrapper.Str();
 					ctss.ProcessData(pfd, package);
@@ -59,7 +69,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// eturns the Base Package
 		/// </summary>
-		public Interfaces.Files.IPackageFile Package 
+		public Interfaces.Files.IPackageFile Package
 		{
 			get { return package; }
 		}
@@ -67,13 +77,16 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// The Title of this Package
 		/// </summary>
-		public string Title 
+		public string Title
 		{
-			get 
+			get
 			{
-				if (ctss==null) return package.FileName;
-				SimPe.PackedFiles.Wrapper.StrItemList items = ctss.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
-				if (items.Length>0) return items[0].Title;
+				if (ctss == null)
+					return package.FileName;
+				SimPe.PackedFiles.Wrapper.StrItemList items =
+					ctss.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
+				if (items.Length > 0)
+					return items[0].Title;
 
 				return package.FileName;
 			}
@@ -103,23 +116,29 @@ namespace SimPe.Plugin
 		/// </summary>
 		public Image Texture
 		{
-			get 
+			get
 			{
-				try 
+				try
 				{
 					SimPe.Plugin.Txtr txtr = new Txtr(null, false);
 
 					//load TXTR
-					Interfaces.Files.IPackedFileDescriptor[] pfd = package.FindFile(TxtrFile+"_txtr", 0x1C4A276C);
-					if (pfd.Length>0) 
+					Interfaces.Files.IPackedFileDescriptor[] pfd = package.FindFile(
+						TxtrFile + "_txtr",
+						0x1C4A276C
+					);
+					if (pfd.Length > 0)
 					{
 						txtr.ProcessData(pfd[0], package);
 					}
 
 					SimPe.Plugin.ImageData id = (SimPe.Plugin.ImageData)txtr.Blocks[0];
-					return id.MipMapBlocks[0].MipMaps[id.MipMapBlocks[0].MipMaps.Length-1].Texture;
-				} 
-				catch (Exception) {
+					return id.MipMapBlocks[0]
+						.MipMaps[id.MipMapBlocks[0].MipMaps.Length - 1]
+						.Texture;
+				}
+				catch (Exception)
+				{
 					return new Bitmap(1, 1);
 				}
 			}
@@ -147,26 +166,25 @@ namespace SimPe.Plugin
 		/// </summary>
 		public System.Drawing.Rectangle TargetRectangle
 		{
-			get 
+			get
 			{
 				return new System.Drawing.Rectangle(
 					pset.GetSaveItem("left").IntegerValue,
 					pset.GetSaveItem("top").IntegerValue,
 					pset.GetSaveItem("width").IntegerValue,
 					pset.GetSaveItem("height").IntegerValue
-					);
+				);
 			}
 		}
 
 		/// <summary>
-		/// 
+		///
 		/// </summary>
 		/// <returns></returns>
 		public override string ToString()
 		{
 			System.Drawing.Rectangle rect = TargetRectangle;
-			return rect.Width.ToString()+"x"+rect.Height.ToString()+": "+Title;
+			return rect.Width.ToString() + "x" + rect.Height.ToString() + ": " + Title;
 		}
-
 	}
 }

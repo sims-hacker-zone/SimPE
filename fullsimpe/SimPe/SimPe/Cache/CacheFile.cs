@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.IO;
 using System.Collections;
+using System.IO;
 using SimPe;
 using SimPe.Packages;
 
@@ -28,17 +28,17 @@ namespace SimPe.Cache
 	/// <summary>
 	/// Contains an Instance of a CacheFile
 	/// </summary>
-	public class CacheFile:  System.IDisposable, SimPe.Interfaces.ICacheFileTest
+	public class CacheFile : System.IDisposable, SimPe.Interfaces.ICacheFileTest
 	{
 		/// <summary>
 		/// This is the obsolete 64-Bit Int, included for backward compatibility
 		/// </summary>
-        public const ulong OLDSIG = 0x45506d6953;
+		public const ulong OLDSIG = 0x45506d6953;
 
-        /// <summary>
-        /// This is the 64-Bit Int, a cache File needs to start with
-        /// </summary>
-        public const ulong SIGNATURE = 0x7374695420676942;
+		/// <summary>
+		/// This is the 64-Bit Int, a cache File needs to start with
+		/// </summary>
+		public const ulong SIGNATURE = 0x7374695420676942;
 
 		/// <summary>
 		/// The current Version
@@ -50,7 +50,6 @@ namespace SimPe.Cache
 		/// </summary>
 		protected ContainerType DEFAULT_TYPE = ContainerType.None;
 
-
 		/// <summary>
 		/// Creaet a new Instance for an empty File
 		/// </summary>
@@ -58,61 +57,77 @@ namespace SimPe.Cache
 		{
 			version = VERSION;
 			containers = new CacheContainers();
-		}	
-	
-        /// <summary>
-		/// Load a Cache File from the Disk
-		/// </summary>
-		/// <param name="flname">the name of the File</param>
-		/// <exception cref="CacheException">Thrown if the File is not readable (ie, wrong Version or Signature)</exception>
-        public void Load(string flname)
-        {
-            Load(flname, false);
-        }
+		}
 
 		/// <summary>
 		/// Load a Cache File from the Disk
 		/// </summary>
 		/// <param name="flname">the name of the File</param>
-        /// <param name="withprogress">true if you want  to set the Progress in the current Wait control</param>
 		/// <exception cref="CacheException">Thrown if the File is not readable (ie, wrong Version or Signature)</exception>
-		public void Load(string flname, bool withprogress) 
+		public void Load(string flname)
+		{
+			Load(flname, false);
+		}
+
+		/// <summary>
+		/// Load a Cache File from the Disk
+		/// </summary>
+		/// <param name="flname">the name of the File</param>
+		/// <param name="withprogress">true if you want  to set the Progress in the current Wait control</param>
+		/// <exception cref="CacheException">Thrown if the File is not readable (ie, wrong Version or Signature)</exception>
+		public void Load(string flname, bool withprogress)
 		{
 			this.filename = flname;
 			containers.Clear();
 
-			if (!System.IO.File.Exists(flname)) return;
+			if (!System.IO.File.Exists(flname))
+				return;
 
 			StreamItem si = StreamFactory.UseStream(flname, FileAccess.Read, true);
-			try 
+			try
 			{
 				BinaryReader reader = new BinaryReader(si.FileStream);
 
-				try 
+				try
 				{
 					sig = reader.ReadUInt64();
-					if (sig != OLDSIG && sig != SIGNATURE) throw new CacheException("Unknown Cache File Signature (" + Helper.HexString(sig) + ")", flname, 0);
+					if (sig != OLDSIG && sig != SIGNATURE)
+						throw new CacheException(
+							"Unknown Cache File Signature ("
+								+ Helper.HexString(sig)
+								+ ")",
+							flname,
+							0
+						);
 
 					version = reader.ReadByte();
-					if (version > VERSION) throw new CacheException("Unable to read Cache", flname, version);
+					if (version > VERSION)
+						throw new CacheException(
+							"Unable to read Cache",
+							flname,
+							version
+						);
 
 					int count = reader.ReadInt32();
-                    if (withprogress) Wait.MaxProgress = count;
-					for (int i=0; i<count; i++) 
+					if (withprogress)
+						Wait.MaxProgress = count;
+					for (int i = 0; i < count; i++)
 					{
 						CacheContainer cc = new CacheContainer(DEFAULT_TYPE);
 						cc.Load(reader);
 						containers.Add(cc);
-                        if (withprogress) Wait.Progress = i;
-                        if (i % 10 == 0) System.Windows.Forms.Application.DoEvents();
+						if (withprogress)
+							Wait.Progress = i;
+						if (i % 10 == 0)
+							System.Windows.Forms.Application.DoEvents();
 					}
-				} 
-				finally 
+				}
+				finally
 				{
 					reader.Close();
 				}
-			} 
-			finally 
+			}
+			finally
 			{
 				si.Close();
 			}
@@ -121,7 +136,7 @@ namespace SimPe.Cache
 		/// <summary>
 		/// Save a Cache File to the Disk
 		/// </summary>
-		public void Save() 
+		public void Save()
 		{
 			Save(filename);
 		}
@@ -130,13 +145,13 @@ namespace SimPe.Cache
 		/// Save a Cache File to the Disk
 		/// </summary>
 		/// <param name="flname">the name of the File</param>
-		public void Save(string flname) 
+		public void Save(string flname)
 		{
 			this.filename = flname;
 			this.version = VERSION;
 
 			StreamItem si = StreamFactory.UseStream(flname, FileAccess.Write, true);
-			try 
+			try
 			{
 				CleanUp();
 
@@ -150,21 +165,21 @@ namespace SimPe.Cache
 				writer.Write((int)containers.Count);
 				ArrayList offsets = new ArrayList();
 				//prepare the Index
-				for (int i=0; i<containers.Count; i++) 
+				for (int i = 0; i < containers.Count; i++)
 				{
 					offsets.Add(writer.BaseStream.Position);
-					containers[i].Save(writer, -1);				
+					containers[i].Save(writer, -1);
 				}
 
 				//write the Data
-				for (int i=0; i<containers.Count; i++) 
+				for (int i = 0; i < containers.Count; i++)
 				{
 					long offset = writer.BaseStream.Position;
 					writer.BaseStream.Seek((long)offsets[i], SeekOrigin.Begin);
-					containers[i].Save(writer, (int)offset);				
+					containers[i].Save(writer, (int)offset);
 				}
-			} 
-			finally 
+			}
+			finally
 			{
 				si.Close();
 			}
@@ -172,11 +187,13 @@ namespace SimPe.Cache
 
 		public void CleanUp()
 		{
-			for (int i=containers.Count-1; i>=0; i--)
+			for (int i = containers.Count - 1; i >= 0; i--)
 			{
-				if (!containers[i].Valid) containers.RemoveAt(i);
+				if (!containers[i].Valid)
+					containers.RemoveAt(i);
 			}
 		}
+
 		ulong sig;
 		byte version;
 		string filename;
@@ -185,7 +202,7 @@ namespace SimPe.Cache
 		/// <summary>
 		/// Returns the Version of the File
 		/// </summary>
-		public byte Version 
+		public byte Version
 		{
 			get { return version; }
 		}
@@ -209,7 +226,7 @@ namespace SimPe.Cache
 		/// <summary>
 		/// Returns all Available Containers
 		/// </summary>
-		public CacheContainers Containers 
+		public CacheContainers Containers
 		{
 			get { return containers; }
 		}
@@ -220,22 +237,23 @@ namespace SimPe.Cache
 		/// <param name="ct">The Container Type</param>
 		/// <param name="name">The name of the FIle</param>
 		/// <remarks>If no container is Found, a new one will be created for this File and Type!</remarks>
-		public CacheContainer UseConatiner(ContainerType ct, string name) 
+		public CacheContainer UseConatiner(ContainerType ct, string name)
 		{
-			if (name==null) name = "";
+			if (name == null)
+				name = "";
 			name = name.Trim().ToLower();
 
 			CacheContainer mycc = null;
-			foreach (CacheContainer cc in containers) 
+			foreach (CacheContainer cc in containers)
 			{
-				if (cc.Type == ct && cc.Valid && cc.FileName==name)
+				if (cc.Type == ct && cc.Valid && cc.FileName == name)
 				{
 					mycc = cc;
 					break;
 				}
 			} //foreach
 
-			if (mycc==null) 
+			if (mycc == null)
 			{
 				mycc = new CacheContainer(ct);
 				mycc.FileName = name;

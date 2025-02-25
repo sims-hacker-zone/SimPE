@@ -25,7 +25,7 @@ namespace SimPe
 	/// <summary>
 	/// Which ExtensionType dou you want to have
 	/// </summary>
-	public enum ExtensionType : short 
+	public enum ExtensionType : short
 	{
 		Package = 0x01,
 		DisabledPackage = 0x02,
@@ -35,13 +35,13 @@ namespace SimPe
 		Sim2Pack = 0x20,
 		Sim2PackCommunity = 0x40,
 		AllFiles = 0x80,
-		LuaScript = 0x100
+		LuaScript = 0x100,
 	}
 
 	/// <summary>
 	/// Describes one Extension
 	/// </summary>
-	public class ExtensionDescriptor 
+	public class ExtensionDescriptor
 	{
 		/// <summary>
 		/// Create an Instance
@@ -53,7 +53,9 @@ namespace SimPe
 			extensions = new ArrayList();
 			string[] p = ext.Split(";".ToCharArray());
 
-			foreach (string s in p) if (s.Trim()!="") extensions.Add(s.Trim());
+			foreach (string s in p)
+				if (s.Trim() != "")
+					extensions.Add(s.Trim());
 			this.text = SimPe.Localization.GetString(name);
 		}
 
@@ -67,15 +69,17 @@ namespace SimPe
 		}
 
 		ArrayList extensions;
+
 		/// <summary>
 		/// Returns a List of allowed Extensions for this Type (like *.bmp, *.gif, *.jpg)
 		/// </summary>
-		public ArrayList Extensions 
+		public ArrayList Extensions
 		{
 			get { return extensions; }
 		}
 
 		string text;
+
 		/// <summary>
 		/// Returns the Name of this Extension
 		/// </summary>
@@ -91,9 +95,10 @@ namespace SimPe
 		public string GetExtensionList()
 		{
 			string res = "";
-			for (int i=0;i<extensions.Count; i++)
+			for (int i = 0; i < extensions.Count; i++)
 			{
-				if (i!=0) res += ";";
+				if (i != 0)
+					res += ";";
 				res += extensions[i];
 			}
 
@@ -106,7 +111,7 @@ namespace SimPe
 		/// <returns></returns>
 		public override string ToString()
 		{
-			return text+" ("+GetExtensionList()+")|"+GetExtensionList();
+			return text + " (" + GetExtensionList() + ")|" + GetExtensionList();
 		}
 
 		/// <summary>
@@ -114,11 +119,12 @@ namespace SimPe
 		/// </summary>
 		/// <param name="filename"></param>
 		/// <returns></returns>
-		public bool AllowedExtension(string filename) 
+		public bool AllowedExtension(string filename)
 		{
 			filename = filename.Trim().ToLower();
-			for (int i=0;i<extensions.Count; i++)
-				if (filename.EndsWith(extensions[i].ToString().Replace("*", ""))) return true;
+			for (int i = 0; i < extensions.Count; i++)
+				if (filename.EndsWith(extensions[i].ToString().Replace("*", "")))
+					return true;
 			return false;
 		}
 	}
@@ -129,21 +135,61 @@ namespace SimPe
 	public class ExtensionProvider
 	{
 		static Hashtable map;
+
 		/// <summary>
 		/// Creates the Extension Map
 		/// </summary>
 		static void BuildMap()
 		{
 			map = new Hashtable();
-			map.Add(ExtensionType.Package, new ExtensionDescriptor("DBPF Package", "*.package;*.cache;*.template;*.sims"));
-			map.Add(ExtensionType.DisabledPackage, new ExtensionDescriptor("Disabled DBPF Package", "*.packagedisabled;*.simpedis"));
-			map.Add(ExtensionType.ExtractedFile, new ExtensionDescriptor("Extracted File", GetExtractExtensions("")));
-			map.Add(ExtensionType.ExtractedFileDescriptor, new ExtensionDescriptor("Extracted File Descriptor", GetExtractExtensions(".xml")));
-			map.Add(ExtensionType.ExtrackedPackageDescriptor, new ExtensionDescriptor("Extracted Package", "package.xml"));
-			map.Add(ExtensionType.Sim2Pack, new ExtensionDescriptor("Packed Objects", "*.sims2pack"));
-			map.Add(ExtensionType.Sim2PackCommunity, new ExtensionDescriptor("Sims 2 Community Package", "*.s2cp"));
-			map.Add(ExtensionType.AllFiles, new ExtensionDescriptor("All Files", "*.*"));
-			map.Add(ExtensionType.LuaScript, new ExtensionDescriptor("LUA Script", "*.lua;*.globalObjLua;*.objLua;luac.out"));
+			map.Add(
+				ExtensionType.Package,
+				new ExtensionDescriptor(
+					"DBPF Package",
+					"*.package;*.cache;*.template;*.sims"
+				)
+			);
+			map.Add(
+				ExtensionType.DisabledPackage,
+				new ExtensionDescriptor(
+					"Disabled DBPF Package",
+					"*.packagedisabled;*.simpedis"
+				)
+			);
+			map.Add(
+				ExtensionType.ExtractedFile,
+				new ExtensionDescriptor("Extracted File", GetExtractExtensions(""))
+			);
+			map.Add(
+				ExtensionType.ExtractedFileDescriptor,
+				new ExtensionDescriptor(
+					"Extracted File Descriptor",
+					GetExtractExtensions(".xml")
+				)
+			);
+			map.Add(
+				ExtensionType.ExtrackedPackageDescriptor,
+				new ExtensionDescriptor("Extracted Package", "package.xml")
+			);
+			map.Add(
+				ExtensionType.Sim2Pack,
+				new ExtensionDescriptor("Packed Objects", "*.sims2pack")
+			);
+			map.Add(
+				ExtensionType.Sim2PackCommunity,
+				new ExtensionDescriptor("Sims 2 Community Package", "*.s2cp")
+			);
+			map.Add(
+				ExtensionType.AllFiles,
+				new ExtensionDescriptor("All Files", "*.*")
+			);
+			map.Add(
+				ExtensionType.LuaScript,
+				new ExtensionDescriptor(
+					"LUA Script",
+					"*.lua;*.globalObjLua;*.objLua;luac.out"
+				)
+			);
 		}
 
 		/// <summary>
@@ -153,28 +199,31 @@ namespace SimPe
 		static ArrayList GetExtractExtensions(string suffix)
 		{
 			ArrayList exts = new ArrayList();
-			exts.Add("*.simpe"+suffix);
+			exts.Add("*.simpe" + suffix);
 
 			SimPe.Data.TypeAlias[] types = Helper.TGILoader.FileTypes;
-			foreach (SimPe.Data.TypeAlias type in types) 
+			foreach (SimPe.Data.TypeAlias type in types)
 			{
 				string ext = type.Extension.Trim().ToLower();
-				if (ext=="") continue;
-				ext = "*."+ext+suffix;
-				if (!exts.Contains(ext)) exts.Add(ext);
+				if (ext == "")
+					continue;
+				ext = "*." + ext + suffix;
+				if (!exts.Contains(ext))
+					exts.Add(ext);
 			}
 
 			return exts;
 		}
 
 		/// <summary>
-		/// Returns a List of known Extensions (key=ExtensionType, value =ExtensionDescriptor) 
+		/// Returns a List of known Extensions (key=ExtensionType, value =ExtensionDescriptor)
 		/// </summary>
-		public static Hashtable ExtensionMap 
+		public static Hashtable ExtensionMap
 		{
-			get 
+			get
 			{
-				if (map==null) BuildMap();
+				if (map == null)
+					BuildMap();
 				return map;
 			}
 		}
@@ -184,13 +233,14 @@ namespace SimPe
 		/// </summary>
 		/// <param name="type"></param>
 		/// <returns></returns>
-		public static ExtensionDescriptor GetExtension(ExtensionType type) 
+		public static ExtensionDescriptor GetExtension(ExtensionType type)
 		{
 			ExtensionDescriptor res = (ExtensionDescriptor)ExtensionMap[type];
-			if (res==null) res = new ExtensionDescriptor("Unknown Type", "*.*");
+			if (res == null)
+				res = new ExtensionDescriptor("Unknown Type", "*.*");
 			return res;
-		}	
-	
+		}
+
 		/// <summary>
 		/// returns the Filter String that provides the passed Types
 		/// </summary>
@@ -199,9 +249,10 @@ namespace SimPe
 		public static string BuildFilterString(ExtensionType[] types)
 		{
 			string s = "";
-			for (int i=0; i<types.Length; i++) 
+			for (int i = 0; i < types.Length; i++)
 			{
-				if (i!=0) s+="|";
+				if (i != 0)
+					s += "|";
 				s += GetExtension(types[i]).ToString();
 			}
 
@@ -215,10 +266,11 @@ namespace SimPe
 		/// <returns></returns>
 		public static ExtensionType GetExtension(string filename)
 		{
-			foreach (ExtensionType et in ExtensionMap.Keys) 
+			foreach (ExtensionType et in ExtensionMap.Keys)
 			{
 				ExtensionDescriptor ed = (ExtensionDescriptor)ExtensionMap[et];
-				if (ed.AllowedExtension(filename)) return et;
+				if (ed.AllowedExtension(filename))
+					return et;
 			}
 
 			return ExtensionType.AllFiles;

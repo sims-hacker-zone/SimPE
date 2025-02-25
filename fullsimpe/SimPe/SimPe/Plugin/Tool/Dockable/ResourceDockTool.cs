@@ -22,103 +22,113 @@ using Ambertation.Windows.Forms;
 
 namespace SimPe.Plugin.Tool.Dockable
 {
-    /// <summary>
-    /// Docakble Tool to view/change Resource specific Informations
-    /// </summary>
-    public class ResourceDockTool : SimPe.Interfaces.IDockableTool
-    {
-        ResourceDock rd;
-        public ResourceDockTool(ResourceDock rd)
-        {
-            this.rd = rd;
-        }
+	/// <summary>
+	/// Docakble Tool to view/change Resource specific Informations
+	/// </summary>
+	public class ResourceDockTool : SimPe.Interfaces.IDockableTool
+	{
+		ResourceDock rd;
 
-        #region IDockableTool Member
+		public ResourceDockTool(ResourceDock rd)
+		{
+			this.rd = rd;
+		}
 
-        public DockPanel GetDockableControl()
-        {
-            return rd.dcResource;
-        }
+		#region IDockableTool Member
 
-        public event SimPe.Events.ChangedResourceEvent ShowNewResource;
+		public DockPanel GetDockableControl()
+		{
+			return rd.dcResource;
+		}
 
-        public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es)
-        {
-            rd.items = null;
-            bool check = false;
-            if (!es.Empty)
-                if (es[0].HasFileDescriptor)
-                {
-                    check = true;
-                    rd.tbtype.Text = "0x" + Helper.HexString(es[0].Resource.FileDescriptor.Type);
-                    rd.tbgroup.Text = "0x" + Helper.HexString(es[0].Resource.FileDescriptor.Group);
-                    rd.tbinstance.Text = "0x" + Helper.HexString(es[0].Resource.FileDescriptor.Instance);
-                    rd.tbinstance2.Text = "0x" + Helper.HexString(es[0].Resource.FileDescriptor.SubType);
-                }
+		public event SimPe.Events.ChangedResourceEvent ShowNewResource;
 
+		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es)
+		{
+			rd.items = null;
+			bool check = false;
+			if (!es.Empty)
+				if (es[0].HasFileDescriptor)
+				{
+					check = true;
+					rd.tbtype.Text =
+						"0x" + Helper.HexString(es[0].Resource.FileDescriptor.Type);
+					rd.tbgroup.Text =
+						"0x" + Helper.HexString(es[0].Resource.FileDescriptor.Group);
+					rd.tbinstance.Text =
+						"0x" + Helper.HexString(es[0].Resource.FileDescriptor.Instance);
+					rd.tbinstance2.Text =
+						"0x" + Helper.HexString(es[0].Resource.FileDescriptor.SubType);
+				}
 
-            rd.pntypes.Enabled = check;
+			rd.pntypes.Enabled = check;
 
+			//Set Compression State
+			int tct = 0;
+			foreach (SimPe.Events.ResourceContainer e in es)
+			{
+				if (!e.HasFileDescriptor)
+					continue;
 
-            //Set Compression State
-            int tct = 0;
-            foreach (SimPe.Events.ResourceContainer e in es)
-            {
-                if (!e.HasFileDescriptor) continue;
+				if (
+					e.Resource.FileDescriptor.MarkForReCompress
+					|| (
+						e.Resource.FileDescriptor.WasCompressed
+						&& !e.Resource.FileDescriptor.HasUserdata
+					)
+				)
+					tct++;
+			}
 
-                if (e.Resource.FileDescriptor.MarkForReCompress || (e.Resource.FileDescriptor.WasCompressed && !e.Resource.FileDescriptor.HasUserdata)) tct++;
-            }
+			if (tct == 0)
+				rd.cbComp.SelectedIndex = 0;
+			else if (tct == es.Count)
+				rd.cbComp.SelectedIndex = 1;
+			else
+				rd.cbComp.SelectedIndex = 2;
 
-            if (tct == 0) rd.cbComp.SelectedIndex = 0;
-            else if (tct == es.Count) rd.cbComp.SelectedIndex = 1;
-            else rd.cbComp.SelectedIndex = 2;
+			rd.cbComp.Enabled = (es.Count > 0);
+			rd.lbComp.Enabled = (es.Count > 0);
 
-            rd.cbComp.Enabled = (es.Count > 0);
-            rd.lbComp.Enabled = (es.Count > 0);
+			rd.items = es;
+			rd.guipackage = es.LoadedPackage;
 
-            rd.items = es;
-            rd.guipackage = es.LoadedPackage;
+			if (es.Loaded)
+				if (!es.LoadedPackage.Package.LoadedCompressedState)
+					rd.cbComp.Enabled = false;
+		}
 
-            if (es.Loaded)
-                if (!es.LoadedPackage.Package.LoadedCompressedState)
-                    rd.cbComp.Enabled = false;
+		#endregion
 
-        }
+		#region IToolPlugin Member
 
-        #endregion
+		public override string ToString()
+		{
+			return rd.dcResource.Text;
+		}
 
-        #region IToolPlugin Member
+		#endregion
 
-        public override string ToString()
-        {
-            return rd.dcResource.Text;
-        }
+		#region IToolExt Member
 
-        #endregion
+		public System.Windows.Forms.Shortcut Shortcut
+		{
+			get { return System.Windows.Forms.Shortcut.None; }
+		}
 
-        #region IToolExt Member
+		public System.Drawing.Image Icon
+		{
+			get { return rd.dcResource.TabImage; }
+		}
 
-        public System.Windows.Forms.Shortcut Shortcut
-        {
-            get
-            {
-                return System.Windows.Forms.Shortcut.None;
-            }
-        }
+		public virtual bool Visible
+		{
+			get
+			{
+				return GetDockableControl().IsDocked || GetDockableControl().IsFloating;
+			}
+		}
 
-        public System.Drawing.Image Icon
-        {
-            get
-            {
-                return rd.dcResource.TabImage;
-            }
-        }
-
-        public virtual bool Visible
-        {
-            get { return GetDockableControl().IsDocked || GetDockableControl().IsFloating; }
-        }
-
-        #endregion
-    }
+		#endregion
+	}
 }

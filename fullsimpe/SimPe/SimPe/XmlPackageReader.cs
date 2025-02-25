@@ -18,10 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Xml;
-using System.IO;
 using System.Collections;
+using System.IO;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace SimPe
 {
@@ -36,9 +36,12 @@ namespace SimPe
 		/// <param name="filename">Filename of package.xml File describing the Package</param>
 		/// <param name="pb">A Progressbar indicating the progress</param>
 		/// <returns>Binary Reader representing the Package File</returns>
-		public static System.IO.BinaryReader OpenExtractedPackage(ProgressBar pb, string filename) 
+		public static System.IO.BinaryReader OpenExtractedPackage(
+			ProgressBar pb,
+			string filename
+		)
 		{
-			string path = System.IO.Path.GetDirectoryName(filename);			
+			string path = System.IO.Path.GetDirectoryName(filename);
 			System.Xml.XmlDocument xmlfile = new XmlDocument();
 			xmlfile.Load(filename);
 
@@ -48,38 +51,42 @@ namespace SimPe
 			ArrayList list = new ArrayList();
 			//Alle Eintr&auml;ge im Root Node verarbeiten
 			Data.MetaData.IndexTypes type = Data.MetaData.IndexTypes.ptShortFileIndex;
-			for (int i=0; i<XMLData.Count; i++)
+			for (int i = 0; i < XMLData.Count; i++)
 			{
 				XmlNode node = XMLData.Item(i);
 
-				object o = node.Attributes["type"].Value; if (o==null) o="1";
+				object o = node.Attributes["type"].Value;
+				if (o == null)
+					o = "1";
 				type = (Data.MetaData.IndexTypes)uint.Parse(o.ToString());
-				
-				if (pb!=null) pb.Maximum = node.ChildNodes.Count;
+
+				if (pb != null)
+					pb.Maximum = node.ChildNodes.Count;
 				int count = 0;
-				foreach (XmlNode subnode in node) 
+				foreach (XmlNode subnode in node)
 				{
-					if (pb!=null) 
+					if (pb != null)
 					{
 						pb.Value = count++;
 						System.Windows.Forms.Application.DoEvents();
 					}
 					///a New FileItem
-					if (subnode.LocalName == "packedfile") 
+					if (subnode.LocalName == "packedfile")
 					{
 						list.Add(CreateDescriptor(path, subnode));
 					}
 				}
-			}			
+			}
 
-			SimPe.Packages.GeneratableFile file = SimPe.Packages.GeneratableFile.CreateNew();
+			SimPe.Packages.GeneratableFile file =
+				SimPe.Packages.GeneratableFile.CreateNew();
 			file.BeginUpdate();
 			file.Header.IndexType = type;
 
-			foreach(SimPe.Packages.PackedFileDescriptor pfd in list) 
+			foreach (SimPe.Packages.PackedFileDescriptor pfd in list)
 			{
 				file.Add(pfd);
-				if (pfd.Type == Packages.File.FILELIST_TYPE) 
+				if (pfd.Type == Packages.File.FILELIST_TYPE)
 				{
 					file.FileList = pfd;
 				}
@@ -87,7 +94,8 @@ namespace SimPe
 
 			System.IO.MemoryStream ms = file.Build();
 			file.EndUpdate();
-			if (pb!=null) pb.Value = pb.Maximum;
+			if (pb != null)
+				pb.Value = pb.Maximum;
 			return new System.IO.BinaryReader(ms);
 		}
 
@@ -96,29 +104,33 @@ namespace SimPe
 		/// </summary>
 		/// <param name="filename">name of the xml Description File</param>
 		/// <returns>a FileDescription where you have to put the UserData in</returns>
-		public static SimPe.Packages.PackedFileDescriptor OpenExtractedPackedFile(string filename)  
+		public static SimPe.Packages.PackedFileDescriptor OpenExtractedPackedFile(
+			string filename
+		)
 		{
-			string path = System.IO.Path.GetDirectoryName(filename);			
+			string path = System.IO.Path.GetDirectoryName(filename);
 			System.Xml.XmlDocument xmlfile = new XmlDocument();
 			xmlfile.Load(filename);
 
 			//Root Node suchen
 			XmlNodeList XMLData = xmlfile.GetElementsByTagName("package");
 
-			for (int i=0; i<XMLData.Count; i++)
+			for (int i = 0; i < XMLData.Count; i++)
 			{
 				XmlNode node = XMLData.Item(i);
 
-				object o = node.Attributes["type"].Value; if (o==null) o="1";				
-				foreach (XmlNode subnode in node) 
-				{		
+				object o = node.Attributes["type"].Value;
+				if (o == null)
+					o = "1";
+				foreach (XmlNode subnode in node)
+				{
 					///a New FileItem
-					if (subnode.LocalName == "packedfile") 
+					if (subnode.LocalName == "packedfile")
 					{
 						return CreateDescriptor(path, subnode);
 					}
 				}
-			}		
+			}
 
 			return null;
 		}
@@ -129,18 +141,22 @@ namespace SimPe
 		/// <param name="parentpath">The Path where the Package xml is located</param>
 		/// <param name="node">packedfile XML-Node</param>
 		/// <returns>A PackedFile Descriptor</returns>
-		protected static SimPe.Packages.PackedFileDescriptor CreateDescriptor(string parentpath, XmlNode node) 
+		protected static SimPe.Packages.PackedFileDescriptor CreateDescriptor(
+			string parentpath,
+			XmlNode node
+		)
 		{
-			SimPe.Packages.PackedFileDescriptor pfd = new SimPe.Packages.PackedFileDescriptor();
-			foreach(XmlNode subnode in node) 
+			SimPe.Packages.PackedFileDescriptor pfd =
+				new SimPe.Packages.PackedFileDescriptor();
+			foreach (XmlNode subnode in node)
 			{
-				switch (subnode.Name) 
+				switch (subnode.Name)
 				{
-					case "type": 
+					case "type":
 					{
-						foreach (XmlNode typenode in subnode) 
+						foreach (XmlNode typenode in subnode)
 						{
-							switch (typenode.Name) 
+							switch (typenode.Name)
 							{
 								case "number":
 								{
@@ -151,17 +167,17 @@ namespace SimPe
 						}
 						break;
 					}
-					case "classid": 
+					case "classid":
 					{
 						pfd.SubType = Convert.ToUInt32(subnode.InnerText);
 						break;
 					}
-					case "group": 
+					case "group":
 					{
 						pfd.Group = Convert.ToUInt32(subnode.InnerText);
 						break;
 					}
-					case "instance": 
+					case "instance":
 					{
 						pfd.Instance = Convert.ToUInt32(subnode.InnerText);
 						break;
@@ -170,30 +186,38 @@ namespace SimPe
 			}
 
 			//now load the Files Data
-			object flname = node.Attributes["name"].Value; if (flname==null) flname="";
-			object path = node.Attributes["path"].Value; if (path==null) path="";
+			object flname = node.Attributes["name"].Value;
+			if (flname == null)
+				flname = "";
+			object path = node.Attributes["path"].Value;
+			if (path == null)
+				path = "";
 			pfd.Path = path.ToString();
 			pfd.Filename = flname.ToString();
 
-			flname = System.IO.Path.Combine(parentpath, System.IO.Path.Combine(path.ToString(), flname.ToString()));
+			flname = System.IO.Path.Combine(
+				parentpath,
+				System.IO.Path.Combine(path.ToString(), flname.ToString())
+			);
 
-			if (File.Exists(flname.ToString())) 
+			if (File.Exists(flname.ToString()))
 			{
-                FileStream fs = System.IO.File.OpenRead(flname.ToString());
+				FileStream fs = System.IO.File.OpenRead(flname.ToString());
 				System.IO.BinaryReader mbr = new System.IO.BinaryReader(fs);
-				try 
+				try
 				{
 					byte[] data = new byte[mbr.BaseStream.Length];
-					for (int i=0; i<data.Length; i++) data[i] = mbr.ReadByte();
+					for (int i = 0; i < data.Length; i++)
+						data[i] = mbr.ReadByte();
 					pfd.UserData = data;
-				} 
-				finally 
+				}
+				finally
 				{
 					mbr.Close();
-                    mbr = null;
-                    fs.Close();
-                    fs.Dispose();
-                    fs = null;
+					mbr = null;
+					fs.Close();
+					fs.Dispose();
+					fs = null;
 				}
 			}
 

@@ -6,20 +6,20 @@ namespace SimPe.Plugin.Gmdc
 	/// <summary>
 	/// Summary description for GenericMeshImport.
 	/// </summary>
-	public class GenericMeshImport 
+	public class GenericMeshImport
 	{
-		public enum ImportAction 
-		{			
+		public enum ImportAction
+		{
 			Ignore,
 			Update,
 			Replace,
-			Add
+			Add,
 		}
 
-		public enum JointImportAction 
-		{			
+		public enum JointImportAction
+		{
 			Ignore,
-			Update					
+			Update,
 		}
 
 		Scene scn;
@@ -41,28 +41,31 @@ namespace SimPe.Plugin.Gmdc
 			bones = b;
 		}
 
-		public GenericMeshImport(Scene scn, GeometryDataContainer gmdc, ElementOrder component)
+		public GenericMeshImport(
+			Scene scn,
+			GeometryDataContainer gmdc,
+			ElementOrder component
+		)
 		{
 			eo = component;
 			this.scn = scn;
 			this.gmdc = gmdc;
 			ClearGroupsOnImport = false;
-
 		}
 
 		public ElementOrder Component
 		{
-			get {return eo;}
+			get { return eo; }
 		}
 
 		public Scene Scene
 		{
-			get {return scn;}
+			get { return scn; }
 		}
 
 		public GeometryDataContainer Gmdc
 		{
-			get {return gmdc;}
+			get { return gmdc; }
 		}
 
 		public bool Run()
@@ -73,11 +76,13 @@ namespace SimPe.Plugin.Gmdc
 
 			GenericImportForm.Execute(this);
 
-			if (meshes.Length==0) return false;
+			if (meshes.Length == 0)
+				return false;
 
-			if (this.ClearGroupsOnImport)		
-			{	
-				for (int i=Gmdc.Groups.Length-1; i>=0; i--) Gmdc.RemoveGroup(i);		
+			if (this.ClearGroupsOnImport)
+			{
+				for (int i = Gmdc.Groups.Length - 1; i >= 0; i--)
+					Gmdc.RemoveGroup(i);
 				foreach (MeshListViewItemExt m in meshes)
 					m.Group = null;
 			}
@@ -85,9 +90,9 @@ namespace SimPe.Plugin.Gmdc
 			foreach (BoneListViewItemExt b in bones)
 				b.AssignVertices();
 
-			foreach (MeshListViewItemExt m in meshes)		
-				m.BuildGroup();			
-						
+			foreach (MeshListViewItemExt m in meshes)
+				m.BuildGroup();
+
 			scn.ClearTags();
 			return true;
 		}

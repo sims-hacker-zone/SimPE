@@ -23,16 +23,14 @@ using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
 {
-	
 	/// <summary>
 	/// This is the actual FileWrapper
 	/// </summary>
 	/// <remarks>
-	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads 
+	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public class BoneDataExtension
-		: AbstractRcolBlock
+	public class BoneDataExtension : AbstractRcolBlock
 	{
 		#region Attributes
 		Extension ext;
@@ -42,20 +40,21 @@ namespace SimPe.Plugin
 		}
 
 		#endregion
-		
 
-		
+
+
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public BoneDataExtension(Rcol parent) : base( parent)
+		public BoneDataExtension(Rcol parent)
+			: base(parent)
 		{
 			ext = new Extension(null);
 			version = 0x01;
 			BlockID = 0xe9075bc5;
 		}
-		
+
 		#region IRcolBlock Member
 
 		/// <summary>
@@ -67,7 +66,7 @@ namespace SimPe.Plugin
 			version = reader.ReadUInt32();
 			string fldsc = reader.ReadString();
 			uint myid = reader.ReadUInt32();
-			
+
 			ext.Unserialize(reader, version);
 			ext.BlockID = myid;
 		}
@@ -77,7 +76,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public override void Serialize(System.IO.BinaryWriter writer)
@@ -96,7 +95,8 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (tGenericRcol==null) tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+				if (tGenericRcol == null)
+					tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
 				return tGenericRcol;
 			}
 		}
@@ -105,30 +105,32 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
 		/// </summary>
-		protected override void InitTabPage() 
+		protected override void InitTabPage()
 		{
-			if (tGenericRcol==null) tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
-			tGenericRcol.tb_ver.Text = "0x"+Helper.HexString(this.version);
+			if (tGenericRcol == null)
+				tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(this.version);
 			tGenericRcol.gen_pg.SelectedObject = this;
 		}
 
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
-			base.ExtendTabControl (tc);
+			base.ExtendTabControl(tc);
 			this.ext.AddToTabControl(tc);
-			tc.SelectedIndex = tc.TabPages.Count-1;
+			tc.SelectedIndex = tc.TabPages.Count - 1;
 		}
 
 		public override string ToString()
 		{
-			return ext.VarName + " ("+base.ToString ()+")";
+			return ext.VarName + " (" + base.ToString() + ")";
 		}
 
 		#region IDisposable Member
 
 		public override void Dispose()
 		{
-			if (this.tGenericRcol!=null) this.tGenericRcol.Dispose();
+			if (this.tGenericRcol != null)
+				this.tGenericRcol.Dispose();
 			tGenericRcol = null;
 		}
 

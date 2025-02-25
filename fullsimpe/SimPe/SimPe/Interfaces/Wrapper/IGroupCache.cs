@@ -20,7 +20,6 @@
 using System;
 using System.Drawing;
 
-
 namespace SimPe.Interfaces.Wrapper
 {
 	/// <summary>
@@ -33,6 +32,6 @@ namespace SimPe.Interfaces.Wrapper
 		/// </summary>
 		/// <param name="flname"></param>
 		/// <returns></returns>
-		IGroupCacheItem GetItem(string flname);		
+		IGroupCacheItem GetItem(string flname);
 	}
 }

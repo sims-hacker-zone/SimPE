@@ -1,9 +1,9 @@
 using System;
 using System.Drawing;
+using System.Threading;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
-using System.Threading;
 using SimPe.Plugin.UI;
 
 namespace SimPe.Plugin
@@ -11,14 +11,13 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for GeneticCategorizerTool.
 	/// </summary>
-	public class GeneticCategorizerTool :  AbstractTool, IToolPlugin, ITool
+	public class GeneticCategorizerTool : AbstractTool, IToolPlugin, ITool
 	{
-
 		#region IToolPlugin Members
 
 		public override string ToString()
 		{
-            return "Object Creation\\Colour Binning Tool";
+			return "Object Creation\\Colour Binning Tool";
 		}
 
 		#endregion
@@ -35,7 +34,10 @@ namespace SimPe.Plugin
 			return true;
 		}
 
-		public IToolResult ShowDialog(ref IPackedFileDescriptor pfd, ref IPackageFile package)
+		public IToolResult ShowDialog(
+			ref IPackedFileDescriptor pfd,
+			ref IPackageFile package
+		)
 		{
 			// EnsureFileTable();
 			MainForm form = new MainForm();
@@ -44,15 +46,19 @@ namespace SimPe.Plugin
 			return new ToolResult(false, false);
 		}
 
-
 		#endregion
 
 		public override System.Drawing.Image Icon
 		{
 			get
 			{
-                return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.ColorBinningTool.png"));
+				return System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream(
+							"SimPe.img.ColorBinningTool.png"
+						)
+				);
 			}
 		}
-    }
+	}
 }

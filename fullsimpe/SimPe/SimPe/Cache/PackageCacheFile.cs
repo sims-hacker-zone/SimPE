@@ -18,18 +18,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.IO;
 using System.Collections;
+using System.IO;
 using SimPe;
 using SimPe.Plugin;
-
 
 namespace SimPe.Cache
 {
 	/// <summary>
 	/// Contains an Instance of a CacheFile
 	/// </summary>
-	internal class PackageCacheFile: CacheFile
+	internal class PackageCacheFile : CacheFile
 	{
 		public static string CacheFileName
 		{
@@ -39,32 +38,36 @@ namespace SimPe.Cache
 		/// <summary>
 		/// Creaet a new Instance for an empty File
 		/// </summary>
-		public PackageCacheFile() : base()
+		public PackageCacheFile()
+			: base()
 		{
 			DEFAULT_TYPE = ContainerType.Package;
-		}		
+		}
 
 		/// <summary>
 		/// Load/Add a Cache Item for the passed File
 		/// </summary>
 		/// <param name="filename">The Name of the File</param>
-		public ScannerItem LoadItem(string filename) 
+		public ScannerItem LoadItem(string filename)
 		{
 			CacheContainer mycc = this.UseConatiner(ContainerType.Package, filename);
-			
-			if (mycc.Items.Count==0) 
+
+			if (mycc.Items.Count == 0)
 			{
 				PackageCacheItem pci = new PackageCacheItem();
-				ScannerItem item = new ScannerItem(pci, mycc);	
+				ScannerItem item = new ScannerItem(pci, mycc);
 				item.FileName = filename;
-				pci.Name = System.IO.Path.GetFileNameWithoutExtension(filename);						
+				pci.Name = System.IO.Path.GetFileNameWithoutExtension(filename);
 				mycc.Items.Add(pci);
 
 				return item;
-			} 
-			else 
+			}
+			else
 			{
-				ScannerItem item = new ScannerItem((PackageCacheItem)mycc.Items[0], mycc);
+				ScannerItem item = new ScannerItem(
+					(PackageCacheItem)mycc.Items[0],
+					mycc
+				);
 				item.FileName = filename;
 
 				return item;
@@ -72,14 +75,17 @@ namespace SimPe.Cache
 		}
 
 		Hashtable map;
+
 		/// <summary>
 		/// Return the FileIndex represented by the Cached Files
 		/// </summary>
-		public Hashtable Map 
+		public Hashtable Map
 		{
-			get { 
-				if (map==null) LoadFiles();
-				return map; 
+			get
+			{
+				if (map == null)
+					LoadFiles();
+				return map;
 			}
 		}
 
@@ -88,26 +94,25 @@ namespace SimPe.Cache
 		/// </summary>
 		/// <returns>the FileIndex</returns>
 		/// <remarks>
-		/// The Tags of the FileDescriptions contain the MMATCachItem Object, 
+		/// The Tags of the FileDescriptions contain the MMATCachItem Object,
 		/// the FileNames of the FileDescriptions contain the Name of the package File
 		/// </remarks>
 		public void LoadFiles()
 		{
 			map = new Hashtable();
-			
 
-			foreach (CacheContainer cc in Containers) 
+			foreach (CacheContainer cc in Containers)
 			{
-				if (cc.Type==ContainerType.Package && cc.Valid) 
+				if (cc.Type == ContainerType.Package && cc.Valid)
 				{
-					foreach (PackageCacheItem item in cc.Items) 
+					foreach (PackageCacheItem item in cc.Items)
 					{
 						ScannerItem si = new ScannerItem(item, cc);
 						si.FileName = cc.FileName;
 						map[si.FileName.Trim().ToLower()] = item;
 					}
 				}
-			}//foreach
-		}			
+			} //foreach
+		}
 	}
 }

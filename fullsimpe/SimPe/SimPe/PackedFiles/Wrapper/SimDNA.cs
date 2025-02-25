@@ -26,6 +26,7 @@ namespace SimPe.PackedFiles.Wrapper
 	{
 		Cpf dna;
 		uint b;
+
 		internal Gene(Cpf dna, uint b)
 		{
 			this.dna = dna;
@@ -35,8 +36,10 @@ namespace SimPe.PackedFiles.Wrapper
 		string GetName(uint line)
 		{
 			line += b;
-			if (b==0x10000005) b = 4;
-			if (b==0x10000007) b = 10;
+			if (b == 0x10000005)
+				b = 4;
+			if (b == 0x10000007)
+				b = 10;
 			return line.ToString();
 		}
 
@@ -49,7 +52,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			string name = GetName(line);
 			CpfItem i = dna.GetItem(name);
-			if (i==null) 
+			if (i == null)
 			{
 				i = new CpfItem();
 				i.Name = name;
@@ -61,49 +64,50 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public string Hair
 		{
-			get { return GetItem(1);}
+			get { return GetItem(1); }
 			set { SetItem(1, value); }
 		}
 
 		public string SkintoneRange
 		{
-			get { return GetItem(2);}
+			get { return GetItem(2); }
 			set { SetItem(2, value); }
 		}
 
 		public string Eye
 		{
-			get { return GetItem(3);}
+			get { return GetItem(3); }
 			set { SetItem(3, value); }
 		}
 
 		public string FacialFeature
 		{
-			get { return GetItem(5);}
+			get { return GetItem(5); }
 			set { SetItem(5, value); }
 		}
 
 		public string Skintone
 		{
-			get { return GetItem(6);}
+			get { return GetItem(6); }
 			set { SetItem(6, value); }
 		}
-		
+
 		internal string Description
 		{
-			get 
-			{
-				return SimPe.Serializer.Serialize(this);
-			}
+			get { return SimPe.Serializer.Serialize(this); }
 		}
 	}
+
 	/// <summary>
 	/// Contains the SimDNA Data
 	/// </summary>
 	public class SimDNA : Cpf
 	{
-		Gene dominant, recessive;
-		public SimDNA() : base()
+		Gene dominant,
+			recessive;
+
+		public SimDNA()
+			: base()
 		{
 			dominant = new Gene(this, 0);
 			recessive = new Gene(this, 0x10000000);
@@ -111,12 +115,12 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public Gene Dominant
 		{
-			get {return dominant;}
+			get { return dominant; }
 		}
 
 		public Gene Recessive
 		{
-			get {return recessive;}
+			get { return recessive; }
 		}
 
 		protected override IPackedFileUI CreateDefaultUIHandler()
@@ -135,24 +139,21 @@ namespace SimPe.PackedFiles.Wrapper
 				"Quaxi",
 				"This File contains the DNA of a Sim.",
 				1,
-				System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.dna.png"))				
-				);   
+				System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream("SimPe.img.dna.png")
+				)
+			);
 		}
 
 		public override byte[] FileSignature
 		{
-			get
-			{
-				return new Byte[0];				
-			}
+			get { return new Byte[0]; }
 		}
 
 		public override uint[] AssignableTypes
 		{
-			get
-			{
-				return new uint[] { Data.MetaData.SDNA };
-			}
+			get { return new uint[] { Data.MetaData.SDNA }; }
 		}
 
 		public override string DescriptionHeader
@@ -160,9 +161,9 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				System.Collections.ArrayList list = new System.Collections.ArrayList();
-				
-				list.Add("Dominant "+Serializer.SerializeTypeHeader(this.Dominant));
-				list.Add("Recessive "+Serializer.SerializeTypeHeader(this.Recessive));
+
+				list.Add("Dominant " + Serializer.SerializeTypeHeader(this.Dominant));
+				list.Add("Recessive " + Serializer.SerializeTypeHeader(this.Recessive));
 
 				return Serializer.ConcatHeader(Serializer.ConvertArrayList(list));
 			}
@@ -182,7 +183,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
 		{
-			ExtSDesc sdsc = FileTable.ProviderRegistry.SimDescriptionProvider.FindSim((ushort)this.FileDescriptor.Instance) as ExtSDesc;
+			ExtSDesc sdsc =
+				FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(
+					(ushort)this.FileDescriptor.Instance
+				) as ExtSDesc;
 			if (sdsc == null)
 				return base.GetResourceName(ta);
 			else

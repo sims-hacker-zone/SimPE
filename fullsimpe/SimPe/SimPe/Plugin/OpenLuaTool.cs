@@ -25,22 +25,29 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Simple Tool in order to acces the Virual LUA Package
 	/// </summary>
-    public class OpenLuaTool : Interfaces.AbstractTool, Interfaces.ITool
+	public class OpenLuaTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
 		public OpenLuaTool()
 		{
 			//
-			// TODO: Fügen Sie hier die Konstruktorlogik hinzu
+			// TODO: Fï¿½gen Sie hier die Konstruktorlogik hinzu
 			//
 		}
+
 		#region ITool Member
 
-		public bool IsEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
+		public bool IsEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
-			return (SimPe.PathProvider.Global.EPInstalled>=0x2);
+			return (SimPe.PathProvider.Global.EPInstalled >= 0x2);
 		}
 
-		public SimPe.Interfaces.Plugin.IToolResult ShowDialog(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package)
+		public SimPe.Interfaces.Plugin.IToolResult ShowDialog(
+			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			ref SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
 			package = SimPe.ObjLuaLoader.VirtualPackage;
 			return new SimPe.Plugin.ToolResult(false, true);
@@ -55,16 +62,13 @@ namespace SimPe.Plugin
 			return "Object Tool\\Open virtual LUA package";
 		}
 
-        #endregion
+		#endregion
 
-        #region IToolExt Member
-        public override System.Drawing.Image Icon
-        {
-            get
-            {
-                return SimPe.GetIcon.OpenLua;
-            }
-        }
-        #endregion
+		#region IToolExt Member
+		public override System.Drawing.Image Icon
+		{
+			get { return SimPe.GetIcon.OpenLua; }
+		}
+		#endregion
 	}
 }

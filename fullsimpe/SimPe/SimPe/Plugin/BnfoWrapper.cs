@@ -22,37 +22,40 @@ using System.Collections;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
-{		
+{
 	public enum BnfoVersions : uint
 	{
-		Business = 0x04
+		Business = 0x04,
 	}
+
 	/// <summary>
 	/// Wrapper for 0x104F6A6E , which apear to be the "Business info Resource"
 	/// </summary>
-	public class Bnfo : AbstractWrapper
-		, SimPe.Interfaces.Plugin.IFileWrapper
-		, SimPe.Interfaces.Plugin.IFileWrapperSaveExtension
-		, SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper
+	public class Bnfo
+		: AbstractWrapper,
+			SimPe.Interfaces.Plugin.IFileWrapper,
+			SimPe.Interfaces.Plugin.IFileWrapperSaveExtension,
+			SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper
 	{
 		#region Attributes
 		uint ver;
 		public BnfoVersions Version
 		{
-			get {return (BnfoVersions)ver; }
-			set {ver = (uint)value;}
+			get { return (BnfoVersions)ver; }
+			set { ver = (uint)value; }
 		}
 
-		uint level1, level2;
+		uint level1,
+			level2;
 		public uint CurrentBusinessState
 		{
-			get {return level1;}
-			set {level1 = value;}
+			get { return level1; }
+			set { level1 = value; }
 		}
 		public uint MaxSeenBusinessState
 		{
-			get {return level2;}
-			set {level2 = value;}
+			get { return level2; }
+			set { level2 = value; }
 		}
 		int wt;
 		public int EmployeeCount
@@ -72,14 +75,14 @@ namespace SimPe.Plugin
 			get { return pr; }
 			set { pr = value; }
 		}
-        uint[] a;
-        public uint[] A // Fair Pay - should never be below 15
-        {
-            get { return a; }
-            set { a = value; }
-        }
+		uint[] a;
+		public uint[] A // Fair Pay - should never be below 15
+		{
+			get { return a; }
+			set { a = value; }
+		}
 
-        int[] reven;
+		int[] reven;
 		public int[] Revenue
 		{
 			get { return reven; }
@@ -95,18 +98,20 @@ namespace SimPe.Plugin
 			get { return hct; }
 		}
 
-		uint unk1, unk2;
+		uint unk1,
+			unk2;
 		uint empct;
 
 		Collections.BnfoCustomerItems citems;
 		public Collections.BnfoCustomerItems CustomerItems
 		{
-			get {return citems;}
+			get { return citems; }
 		}
 		#endregion
 
-		public Bnfo() : base()
-		{			
+		public Bnfo()
+			: base()
+		{
 			Version = BnfoVersions.Business;
 			citems = new SimPe.Plugin.Collections.BnfoCustomerItems(this);
 		}
@@ -120,7 +125,7 @@ namespace SimPe.Plugin
 				"Contains Information about the Business on a Lot (like Customer Loyality)",
 				2,
 				SimPe.GetIcon.BnfoIco
-				); 
+			);
 		}
 		#endregion
 
@@ -133,7 +138,7 @@ namespace SimPe.Plugin
 		byte[] over;
 
 		protected override void Unserialize(System.IO.BinaryReader reader)
-		{	
+		{
 			ver = reader.ReadUInt32();
 			level1 = reader.ReadUInt32();
 			level2 = reader.ReadUInt32();
@@ -143,7 +148,7 @@ namespace SimPe.Plugin
 
 			int ct = reader.ReadInt32();
 			citems.Clear();
-			for (int i=0; i<ct; i++)
+			for (int i = 0; i < ct; i++)
 			{
 				BnfoCustomerItem item = new BnfoCustomerItem(this);
 				item.Unserialize(reader);
@@ -162,10 +167,12 @@ namespace SimPe.Plugin
 			{
 				empls[i] = reader.ReadUInt16();
 				pr[i] = reader.ReadInt32();
-                a[i] = reader.ReadUInt32();
-            }
+				a[i] = reader.ReadUInt32();
+			}
 			long pos = reader.BaseStream.Position;
-			over = reader.ReadBytes((int)(reader.BaseStream.Length - reader.BaseStream.Position));
+			over = reader.ReadBytes(
+				(int)(reader.BaseStream.Length - reader.BaseStream.Position)
+			);
 
 			reader.BaseStream.Seek(pos, System.IO.SeekOrigin.Begin);
 			hct = reader.ReadInt32(); // number of History blocks
@@ -179,15 +186,15 @@ namespace SimPe.Plugin
 				for (int i = 0; i < hct; i++)
 				{
 					reader.BaseStream.Seek(60, System.IO.SeekOrigin.Current);
-					reven[i] = reader.ReadInt32();// Renenue
+					reven[i] = reader.ReadInt32(); // Renenue
 					reader.BaseStream.Seek(4, System.IO.SeekOrigin.Current); // credited
 					expe[i] = reader.ReadInt32(); // Expences
 				}
 			}
 		}
 
-		protected override void Serialize(System.IO.BinaryWriter writer) 
-		{		
+		protected override void Serialize(System.IO.BinaryWriter writer)
+		{
 			writer.Write(ver);
 			writer.Write(level1);
 			writer.Write(level2);
@@ -198,7 +205,7 @@ namespace SimPe.Plugin
 			writer.Write((int)citems.Count);
 			foreach (BnfoCustomerItem item in citems)
 				item.Serialize(writer);
-			
+
 			writer.Write(wt);
 			for (int i = 0; i < wt; i++)
 			{
@@ -215,26 +222,22 @@ namespace SimPe.Plugin
 
 		public uint[] AssignableTypes
 		{
-			get 
+			get
 			{
-				uint[] Types = {
-								   0x104F6A6E
-							   };
+				uint[] Types = { 0x104F6A6E };
 				return Types;
 			}
 		}
 
 		public Byte[] FileSignature
 		{
-			get 
+			get
 			{
-				Byte[] sig = {					 
-							 };
+				Byte[] sig = { };
 				return sig;
 			}
 		}
 
 		#endregion
 	}
-
 }

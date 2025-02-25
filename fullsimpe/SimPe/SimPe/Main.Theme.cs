@@ -18,136 +18,150 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
-using System.Windows.Forms;
 using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
 using SimPe.Events;
 
 namespace SimPe
 {
-    partial class MainForm
-    {
-        void InitTheme()
-        {
-            this.dcResourceList.Visible = true;
-            this.dcResource.Visible = true;
-            //setup the Theme Manager
+	partial class MainForm
+	{
+		void InitTheme()
+		{
+			this.dcResourceList.Visible = true;
+			this.dcResource.Visible = true;
+			//setup the Theme Manager
 
-            this.manager.Renderer = new Ambertation.Windows.Forms.GlossyRenderer();
-        }
+			this.manager.Renderer = new Ambertation.Windows.Forms.GlossyRenderer();
+		}
 
-        private void StoreLayout()
-        {
-            Ambertation.Windows.Forms.Serializer.Global.ToFile(Helper.DataFolder.SimPeLayoutW);
-            
-            MyButtonItem.SetLayoutInformations(this);
+		private void StoreLayout()
+		{
+			Ambertation.Windows.Forms.Serializer.Global.ToFile(
+				Helper.DataFolder.SimPeLayoutW
+			);
 
-            resourceViewManager1.StoreLayout();
-        }
+			MyButtonItem.SetLayoutInformations(this);
 
-        System.IO.Stream defaultlayout;
-        /// <summary>
-        /// Wrapper needed to call the Layout Change through an Event
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void ResetLayout(object sender, EventArgs e)
-        {
-            if (defaultlayout != null)
-            {
-                Ambertation.Windows.Forms.Serializer.Global.FromStream(defaultlayout);
-                Ambertation.Windows.Forms.Serializer.Global.ToFile(Helper.DataFolder.SimPeLayoutW);
-            }
+			resourceViewManager1.StoreLayout();
+		}
 
-            if (Helper.WindowsRegistry.UseBigIcons)
-            {
-                toolBar1.ImageScalingSize = new System.Drawing.Size(16, 16);
-                tbWindow.ImageScalingSize = new System.Drawing.Size(16, 16);
-                tbTools.ImageScalingSize = new System.Drawing.Size(16, 16);
-                tbAction.ImageScalingSize = new System.Drawing.Size(16, 16);
-            }
+		System.IO.Stream defaultlayout;
 
-            Commandline.ForceDefaultLayout();
-            waitControl1.Visible = true;
-            // End Force Default Layout
+		/// <summary>
+		/// Wrapper needed to call the Layout Change through an Event
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		void ResetLayout(object sender, EventArgs e)
+		{
+			if (defaultlayout != null)
+			{
+				Ambertation.Windows.Forms.Serializer.Global.FromStream(defaultlayout);
+				Ambertation.Windows.Forms.Serializer.Global.ToFile(
+					Helper.DataFolder.SimPeLayoutW
+				);
+			}
 
-            FixVisibleState(tbTools);
-            FixVisibleState(tbAction);
-            FixVisibleState(toolBar1);
+			if (Helper.WindowsRegistry.UseBigIcons)
+			{
+				toolBar1.ImageScalingSize = new System.Drawing.Size(16, 16);
+				tbWindow.ImageScalingSize = new System.Drawing.Size(16, 16);
+				tbTools.ImageScalingSize = new System.Drawing.Size(16, 16);
+				tbAction.ImageScalingSize = new System.Drawing.Size(16, 16);
+			}
 
-            ReloadLayout();
+			Commandline.ForceDefaultLayout();
+			waitControl1.Visible = true;
+			// End Force Default Layout
 
-            // tbTools.Visible = true;
-            tbTools.Visible = !Helper.NoPlugins;
-            tbAction.Visible = true;
-            toolBar1.Visible = true;
-            tbWindow.Visible = false;
-            this.dcResourceList.Visible = true;
-        }
+			FixVisibleState(tbTools);
+			FixVisibleState(tbAction);
+			FixVisibleState(toolBar1);
 
+			ReloadLayout();
 
-        /// <summary>
-        /// Reload the Layout from the Registry
-        /// </summary>
-        void ReloadLayout()
-        {
-            this.SuspendLayout();
-            //store defaults            
-            if (defaultlayout == null) 
-                defaultlayout = Ambertation.Windows.Forms.Serializer.Global.ToStream();
+			// tbTools.Visible = true;
+			tbTools.Visible = !Helper.NoPlugins;
+			tbAction.Visible = true;
+			toolBar1.Visible = true;
+			tbWindow.Visible = false;
+			this.dcResourceList.Visible = true;
+		}
 
-            try
-            {
-                Ambertation.Windows.Forms.Serializer.Global.FromFile(Helper.DataFolder.SimPeLayout);                                
-            }
-            catch (Exception ex)
-            {
-                Helper.ExceptionMessage(ex);
-            }
+		/// <summary>
+		/// Reload the Layout from the Registry
+		/// </summary>
+		void ReloadLayout()
+		{
+			this.SuspendLayout();
+			//store defaults
+			if (defaultlayout == null)
+				defaultlayout = Ambertation.Windows.Forms.Serializer.Global.ToStream();
 
-            resourceViewManager1.RestoreLayout();
+			try
+			{
+				Ambertation.Windows.Forms.Serializer.Global.FromFile(
+					Helper.DataFolder.SimPeLayout
+				);
+			}
+			catch (Exception ex)
+			{
+				Helper.ExceptionMessage(ex);
+			}
 
-            UpdateDockMenus();
-            MyButtonItem.GetLayoutInformations(this);
+			resourceViewManager1.RestoreLayout();
 
-            FixCheckedState(tbTools);
-            FixCheckedState((tbAction));
-            FixCheckedState(toolBar1);
+			UpdateDockMenus();
+			MyButtonItem.GetLayoutInformations(this);
 
-            foreach (ToolStripItem tsi in miWindow.DropDownItems)
-            {
-                ToolStripMenuItem tsmi = tsi as ToolStripMenuItem;
-                if (tsmi == null) continue;
-                if (tsmi.Tag == null) continue;
+			FixCheckedState(tbTools);
+			FixCheckedState((tbAction));
+			FixCheckedState(toolBar1);
 
-                Ambertation.Windows.Forms.DockPanel dp = tsmi.Tag as Ambertation.Windows.Forms.DockPanel;
-                if (dp != null)                
-                    tsmi.Checked = dp.IsOpen;                                
-            }
-            this.ResumeLayout();
-        }
+			foreach (ToolStripItem tsi in miWindow.DropDownItems)
+			{
+				ToolStripMenuItem tsmi = tsi as ToolStripMenuItem;
+				if (tsmi == null)
+					continue;
+				if (tsmi.Tag == null)
+					continue;
 
-        private void FixCheckedState(System.Windows.Forms.ToolStrip ts)
-        {
-            foreach (System.Windows.Forms.ToolStripItem tsi in ts.Items)
-            {
-                System.Windows.Forms.ToolStripButton tsb = tsi as System.Windows.Forms.ToolStripButton;
-                if (tsb == null) continue;
-                if (tsb.Overflow != System.Windows.Forms.ToolStripItemOverflow.Always)
-                    tsb.Checked = false;
-            }
-        }
+				Ambertation.Windows.Forms.DockPanel dp =
+					tsmi.Tag as Ambertation.Windows.Forms.DockPanel;
+				if (dp != null)
+					tsmi.Checked = dp.IsOpen;
+			}
+			this.ResumeLayout();
+		}
 
-        private void FixVisibleState(System.Windows.Forms.ToolStrip ts)
-        {
-            foreach (System.Windows.Forms.ToolStripItem tsi in ts.Items)
-            {
-                System.Windows.Forms.ToolStripButton tsb = tsi as System.Windows.Forms.ToolStripButton;
-                if (tsb == null) continue;
-                if (tsb.Image!=null) tsb.Visible = true;
-            }
-        }
-    }
+		private void FixCheckedState(System.Windows.Forms.ToolStrip ts)
+		{
+			foreach (System.Windows.Forms.ToolStripItem tsi in ts.Items)
+			{
+				System.Windows.Forms.ToolStripButton tsb =
+					tsi as System.Windows.Forms.ToolStripButton;
+				if (tsb == null)
+					continue;
+				if (tsb.Overflow != System.Windows.Forms.ToolStripItemOverflow.Always)
+					tsb.Checked = false;
+			}
+		}
+
+		private void FixVisibleState(System.Windows.Forms.ToolStrip ts)
+		{
+			foreach (System.Windows.Forms.ToolStripItem tsi in ts.Items)
+			{
+				System.Windows.Forms.ToolStripButton tsb =
+					tsi as System.Windows.Forms.ToolStripButton;
+				if (tsb == null)
+					continue;
+				if (tsb.Image != null)
+					tsb.Visible = true;
+			}
+		}
+	}
 }

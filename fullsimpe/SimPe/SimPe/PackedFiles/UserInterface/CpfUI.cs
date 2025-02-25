@@ -26,9 +26,12 @@ namespace SimPe.PackedFiles.UserInterface
 	/// <summary>
 	/// UI Handler for a Str Wrapper
 	/// </summary>
-	public class CpfUI : IPackedFileUI	
+	public class CpfUI : IPackedFileUI
 	{
-		public delegate void ExecutePreview(Cpf mmat, SimPe.Interfaces.Files.IPackageFile package);
+		public delegate void ExecutePreview(
+			Cpf mmat,
+			SimPe.Interfaces.Files.IPackageFile package
+		);
 
 		#region Code to Startup the UI
 
@@ -55,7 +58,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.fkt = fkt;
 		}
 		#endregion
-		
+
 		#region IPackedFileUI Member
 
 		/// <summary>
@@ -63,10 +66,7 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		public System.Windows.Forms.Control GUIHandle
 		{
-			get
-			{
-				return form.CpfPanel;
-			}
+			get { return form.CpfPanel; }
 		}
 
 		/// <summary>
@@ -78,19 +78,19 @@ namespace SimPe.PackedFiles.UserInterface
 		public void UpdateGUI(IFileWrapper wrapper)
 		{
 			form.wrapper = (IFileWrapperSaveExtension)wrapper;
-			Cpf wrp = (Cpf) wrapper;
+			Cpf wrp = (Cpf)wrapper;
 
 			form.lbcpf.Items.Clear();
-			foreach (CpfItem item in wrp.Items) 
+			foreach (CpfItem item in wrp.Items)
 			{
 				form.lbcpf.Items.Add(item);
 			}
 
 			form.llcpfchange.Enabled = false;
-			form.btprev.Visible = (fkt!=null);
+			form.btprev.Visible = (fkt != null);
 
 			form.fkt = this.fkt;
-		}		
+		}
 
 		#endregion
 

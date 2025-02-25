@@ -28,14 +28,14 @@ namespace SimPe.Plugin
 	{
 		#region Attributes
 		float unknown8;
-		public float Val6 
+		public float Val6
 		{
 			get { return unknown8; }
 			set { unknown8 = value; }
 		}
 
 		float unknown9;
-		public float Val7 
+		public float Val7
 		{
 			get { return unknown9; }
 			set { unknown9 = value; }
@@ -46,11 +46,12 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public PointLight(Rcol parent) : base( parent)
+		public PointLight(Rcol parent)
+			: base(parent)
 		{
 			version = 1;
 			BlockID = 0xc9c81ba9;
-		}		
+		}
 
 		public override void Unserialize(System.IO.BinaryReader reader)
 		{
@@ -69,18 +70,17 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
 		/// </summary>
-		protected override void InitTabPage() 
+		protected override void InitTabPage()
 		{
 			base.InitTabPage();
 			tDirectionalLight.tb_l_6.Text = unknown8.ToString();
 			tDirectionalLight.tb_l_7.Text = unknown9.ToString();
-			
+
 			tDirectionalLight.label39.Visible = true;
 			tDirectionalLight.label44.Visible = true;
 
 			tDirectionalLight.tb_l_6.Visible = true;
 			tDirectionalLight.tb_l_7.Visible = true;
 		}
-
 	}
 }

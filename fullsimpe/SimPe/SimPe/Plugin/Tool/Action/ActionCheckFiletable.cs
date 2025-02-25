@@ -20,63 +20,99 @@
 using System;
 
 namespace SimPe.Plugin.Tool.Action
-{	
+{
 	/// <summary>
 	/// The ReloadFileTable Action
 	/// </summary>
 	public class ActionCheckFiletable : SimPe.Interfaces.IToolAction
 	{
-		
 		#region IToolAction Member
 
-		public virtual bool ChangeEnabledStateEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
+		public virtual bool ChangeEnabledStateEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs es
+		)
 		{
-			return es.Loaded;								
+			return es.Loaded;
 		}
+
 		string GetString(SimPe.Interfaces.Files.IPackedFileDescriptor pfd)
 		{
-			return pfd.ExceptionString+" (o="+Helper.HexString(pfd.Offset)+", s="+Helper.HexString(pfd.Size)+")";
+			return pfd.ExceptionString
+				+ " (o="
+				+ Helper.HexString(pfd.Offset)
+				+ ", s="
+				+ Helper.HexString(pfd.Size)
+				+ ")";
 		}
 
 		public void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs e)
 		{
-			if (!ChangeEnabledStateEventHandler(null, e)) return;
-			
-			SimPe.FileTable.FileIndex.Load();
-			
-			System.IO.StreamWriter sw = new System.IO.StreamWriter(new System.IO.MemoryStream());
-			try 
-			{
-				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in e.LoadedPackage.Package.Index) 
-				{
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] fiis = FileTable.FileIndex.FindFile(pfd, e.LoadedPackage.Package);
+			if (!ChangeEnabledStateEventHandler(null, e))
+				return;
 
-					if (fiis.Length!=1) 
+			SimPe.FileTable.FileIndex.Load();
+
+			System.IO.StreamWriter sw = new System.IO.StreamWriter(
+				new System.IO.MemoryStream()
+			);
+			try
+			{
+				foreach (
+					SimPe.Interfaces.Files.IPackedFileDescriptor pfd in e.LoadedPackage
+						.Package
+						.Index
+				)
+				{
+					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] fiis =
+						FileTable.FileIndex.FindFile(pfd, e.LoadedPackage.Package);
+
+					if (fiis.Length != 1)
 					{
-						sw.WriteLine(GetString(pfd)+" found "+fiis.Length.ToString()+" times.");
-						foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii in fiis) 
+						sw.WriteLine(
+							GetString(pfd)
+								+ " found "
+								+ fiis.Length.ToString()
+								+ " times."
+						);
+						foreach (
+							SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii in fiis
+						)
 						{
-							sw.WriteLine("    "+fii.Package.FileName+": "+GetString(fii.FileDescriptor));
+							sw.WriteLine(
+								"    "
+									+ fii.Package.FileName
+									+ ": "
+									+ GetString(fii.FileDescriptor)
+							);
 						}
 					}
-					else if (fiis[0].FileDescriptor.Offset!=pfd.Offset || fiis[0].FileDescriptor.Size!=pfd.Size) 
+					else if (
+						fiis[0].FileDescriptor.Offset != pfd.Offset
+						|| fiis[0].FileDescriptor.Size != pfd.Size
+					)
 					{
-						sw.WriteLine(GetString(pfd)+" "+" <> "+GetString(fiis[0].FileDescriptor));
+						sw.WriteLine(
+							GetString(pfd)
+								+ " "
+								+ " <> "
+								+ GetString(fiis[0].FileDescriptor)
+						);
 					}
 				}
 
-				Report f= new Report();
+				Report f = new Report();
 				f.Execute(sw);
 			}
-			finally 
+			finally
 			{
 				sw.Close();
 			}
 		}
 
-		#endregion		
+		#endregion
 
-		
+
 		#region IToolPlugin Member
 		public override string ToString()
 		{
@@ -87,23 +123,17 @@ namespace SimPe.Plugin.Tool.Action
 		#region IToolExt Member
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.None;
-			}
+			get { return System.Windows.Forms.Shortcut.None; }
 		}
 
 		public System.Drawing.Image Icon
 		{
-			get
-			{
-				return null;
-			}
+			get { return null; }
 		}
 
-		public virtual bool Visible 
+		public virtual bool Visible
 		{
-			get {return true;}
+			get { return true; }
 		}
 
 		#endregion

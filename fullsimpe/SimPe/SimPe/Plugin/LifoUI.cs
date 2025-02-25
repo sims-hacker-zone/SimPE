@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Interfaces.Plugin;
 using System.Windows.Forms;
+using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
 {
@@ -59,10 +59,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public System.Windows.Forms.Control GUIHandle
 		{
-			get
-			{
-				return form.LifoPanel;
-			}
+			get { return form.LifoPanel; }
 		}
 
 		/// <summary>
@@ -73,22 +70,21 @@ namespace SimPe.Plugin
 		/// <param name="wrapper">The Attributes of this Wrapper have to be displayed</param>
 		public void UpdateGUI(IFileWrapper wrapper)
 		{
-			
-			Lifo wrp = (Lifo) wrapper;
-			form.wrapper  = wrp;
-			
+			Lifo wrp = (Lifo)wrapper;
+			form.wrapper = wrp;
+
 			form.cbitem.Items.Clear();
-			foreach (LevelInfo id in wrp.Blocks) 
+			foreach (LevelInfo id in wrp.Blocks)
 			{
 				form.cbitem.Items.Add(id);
 			}
 
-			if (form.cbitem.Items.Count>=0) form.cbitem.SelectedIndex = 0;
-			
-		}		
+			if (form.cbitem.Items.Count >= 0)
+				form.cbitem.SelectedIndex = 0;
+		}
 
 		#endregion
-		
+
 		#region IDisposable Member
 		public virtual void Dispose()
 		{

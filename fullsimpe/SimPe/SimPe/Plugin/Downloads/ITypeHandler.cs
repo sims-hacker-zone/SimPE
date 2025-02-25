@@ -13,14 +13,14 @@ namespace SimPe.Plugin.Downloads
 		/// </summary>
 		/// <param name="type"></param>
 		/// <param name="pkg"></param>
-		void LoadContent(SimPe.Cache.PackageType type, SimPe.Interfaces.Files.IPackageFile pkg);
+		void LoadContent(
+			SimPe.Cache.PackageType type,
+			SimPe.Interfaces.Files.IPackageFile pkg
+		);
 
 		/// <summary>
 		/// Returns informations about the Content stored in the package
 		/// </summary>
-		IPackageInfo[] Objects
-		{
-			get;
-		}
+		IPackageInfo[] Objects { get; }
 	}
 }

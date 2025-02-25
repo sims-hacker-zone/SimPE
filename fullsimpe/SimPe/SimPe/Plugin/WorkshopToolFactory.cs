@@ -26,15 +26,22 @@ namespace SimPe.Plugin
 	/// Lists all Plugins (=FileType Wrappers) available in this Package
 	/// </summary>
 	/// <remarks>
-	/// GetWrappers() has to return a list of all Plugins provided by this Library. 
+	/// GetWrappers() has to return a list of all Plugins provided by this Library.
 	/// If a Plugin isn't returned, SimPe won't recognize it!
 	/// </remarks>
-    public class WorkshopToolFactory : SimPe.Interfaces.Plugin.AbstractWrapperFactory, SimPe.Interfaces.Plugin.IToolFactory, SimPe.Interfaces.Plugin.IHelpFactory
+	public class WorkshopToolFactory
+		: SimPe.Interfaces.Plugin.AbstractWrapperFactory,
+			SimPe.Interfaces.Plugin.IToolFactory,
+			SimPe.Interfaces.Plugin.IHelpFactory
 	{
 		internal static IToolPlugin[] Last;
+
 		public WorkshopToolFactory()
 		{
-			SimPe.Plugin.MmatWrapper.GlobalCpfPreview = new SimPe.PackedFiles.UserInterface.CpfUI.ExecutePreview(SimPe.Plugin.PreviewForm.Execute);
+			SimPe.Plugin.MmatWrapper.GlobalCpfPreview =
+				new SimPe.PackedFiles.UserInterface.CpfUI.ExecutePreview(
+					SimPe.Plugin.PreviewForm.Execute
+				);
 		}
 
 		#region AbstractWrapperFactory Member
@@ -44,12 +51,10 @@ namespace SimPe.Plugin
 		/// <returns>A List of all provided Plugins (=FileType Wrappers)</returns>
 		public override SimPe.Interfaces.IWrapper[] KnownWrappers
 		{
-			get 
+			get
 			{
 				// TODO:  You can add more Wrappers here
-				IWrapper[] wrappers = {
-										  
-									  };
+				IWrapper[] wrappers = { };
 				return wrappers;
 			}
 		}
@@ -58,93 +63,114 @@ namespace SimPe.Plugin
 
 		#region IToolFactory Member
 
-        delegate void LoadDocksHandler(System.Collections.ArrayList docks);
-        void InvokeLoadDocks(System.Collections.ArrayList docks)
-        {
-            if (Helper.StartedGui == Executable.Classic) docks.Add(new WorkshopTool(this.LinkedRegistry, this.LinkedProvider));
-            else docks.Add(new SimPe.Plugin.Tool.Dockable.ObectWorkshopDockTool());
-            docks.Add(new SimPe.Plugin.Tool.Dockable.PackageDetailDockTool());
-            if (Helper.WindowsRegistry.HiddenMode) docks.Add(new SimPe.Plugin.Tool.Window.PackageRepairTool()); 
-        }
+		delegate void LoadDocksHandler(System.Collections.ArrayList docks);
+
+		void InvokeLoadDocks(System.Collections.ArrayList docks)
+		{
+			if (Helper.StartedGui == Executable.Classic)
+				docks.Add(new WorkshopTool(this.LinkedRegistry, this.LinkedProvider));
+			else
+				docks.Add(new SimPe.Plugin.Tool.Dockable.ObectWorkshopDockTool());
+			docks.Add(new SimPe.Plugin.Tool.Dockable.PackageDetailDockTool());
+			if (Helper.WindowsRegistry.HiddenMode)
+				docks.Add(new SimPe.Plugin.Tool.Window.PackageRepairTool());
+		}
 
 		public IToolPlugin[] KnownTools
 		{
 			get
 			{
-                if (Last != null) return Last;
-                System.Collections.ArrayList list = new System.Collections.ArrayList();
-                InvokeLoadDocks(list);
+				if (Last != null)
+					return Last;
+				System.Collections.ArrayList list = new System.Collections.ArrayList();
+				InvokeLoadDocks(list);
 
-                Last = new IToolPlugin[list.Count];
-                list.CopyTo(Last);
-                return Last;
+				Last = new IToolPlugin[list.Count];
+				list.CopyTo(Last);
+				return Last;
 
 #if UNREACHABLE
-                if (Helper.StartedGui == Executable.Classic)
-                {
-                    if (Helper.WindowsRegistry.HiddenMode)
-                    {
-                        Last = new IToolPlugin[]{
-											  new SimPe.Plugin.Tool.Dockable.PackageDetailDockTool(),
-											  new SimPe.Plugin.Tool.Window.PackageRepairTool(),
-										  };
-                    }
-                    else
-                    {
-                        Last = new IToolPlugin[]{
-												  new SimPe.Plugin.Tool.Dockable.PackageDetailDockTool(),
-										  };
-                    }
-                }
-                else
-                {
-                    if (Helper.WindowsRegistry.HiddenMode)
-                    {
-                        Last = new IToolPlugin[]{
-											  new SimPe.Plugin.Tool.Dockable.ObectWorkshopDockTool(),
-											  new SimPe.Plugin.Tool.Dockable.PackageDetailDockTool(),
-											  new SimPe.Plugin.Tool.Window.PackageRepairTool(),
-										  };
-                    }
-                    else
-                    {
-                        Last = new IToolPlugin[]{
-												  new SimPe.Plugin.Tool.Dockable.ObectWorkshopDockTool(),
-												  new SimPe.Plugin.Tool.Dockable.PackageDetailDockTool(),
-										  };
-                    }
-                }
+				if (Helper.StartedGui == Executable.Classic)
+				{
+					if (Helper.WindowsRegistry.HiddenMode)
+					{
+						Last = new IToolPlugin[]
+						{
+							new SimPe.Plugin.Tool.Dockable.PackageDetailDockTool(),
+							new SimPe.Plugin.Tool.Window.PackageRepairTool(),
+						};
+					}
+					else
+					{
+						Last = new IToolPlugin[]
+						{
+							new SimPe.Plugin.Tool.Dockable.PackageDetailDockTool(),
+						};
+					}
+				}
+				else
+				{
+					if (Helper.WindowsRegistry.HiddenMode)
+					{
+						Last = new IToolPlugin[]
+						{
+							new SimPe.Plugin.Tool.Dockable.ObectWorkshopDockTool(),
+							new SimPe.Plugin.Tool.Dockable.PackageDetailDockTool(),
+							new SimPe.Plugin.Tool.Window.PackageRepairTool(),
+						};
+					}
+					else
+					{
+						Last = new IToolPlugin[]
+						{
+							new SimPe.Plugin.Tool.Dockable.ObectWorkshopDockTool(),
+							new SimPe.Plugin.Tool.Dockable.PackageDetailDockTool(),
+						};
+					}
+				}
 				return Last;
 #endif
-            }
+			}
 		}
 		#endregion
 
-        #region IHelpFactory Members
+		#region IHelpFactory Members
 
-        class obwHelp : IHelp
-        {
-            public System.Drawing.Image Icon { get { return null; } }
-            public override string ToString() { return "Object Workshop"; }
-            public void ShowHelp(ShowHelpEventArgs e) { SimPe.RemoteControl.ShowHelp("file://" + SimPe.Helper.SimPePath + "/Doc/OWoptions.htm"); }
-        }
+		class obwHelp : IHelp
+		{
+			public System.Drawing.Image Icon
+			{
+				get { return null; }
+			}
 
-        public IHelp[] KnownHelpTopics
-        {
-            get
-            {
-                if (Helper.StartedGui == Executable.Classic)
-                {
-                    return new IHelp[0];
-                }
-                else
-                {
-                    IHelp[] helpTopics = { new obwHelp() };
-                    return helpTopics;
-                }
-            }
-        }
-        #endregion
+			public override string ToString()
+			{
+				return "Object Workshop";
+			}
 
+			public void ShowHelp(ShowHelpEventArgs e)
+			{
+				SimPe.RemoteControl.ShowHelp(
+					"file://" + SimPe.Helper.SimPePath + "/Doc/OWoptions.htm"
+				);
+			}
+		}
+
+		public IHelp[] KnownHelpTopics
+		{
+			get
+			{
+				if (Helper.StartedGui == Executable.Classic)
+				{
+					return new IHelp[0];
+				}
+				else
+				{
+					IHelp[] helpTopics = { new obwHelp() };
+					return helpTopics;
+				}
+			}
+		}
+		#endregion
 	}
 }

@@ -19,10 +19,10 @@
  ***************************************************************************/
 using System;
 using System.IO;
-using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces.Plugin.Internal;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin;
+using SimPe.Interfaces.Plugin.Internal;
 
 namespace SimPe.Packages
 {
@@ -35,18 +35,21 @@ namespace SimPe.Packages
 		/// Constructor For the Class
 		/// </summary>
 		/// <param name="br">The BinaryReader representing the Package File</param>
-		internal ExtractableFile(BinaryReader br) : base(br) {}
-		internal ExtractableFile(string flname) : base(flname) {}
+		internal ExtractableFile(BinaryReader br)
+			: base(br) { }
+
+		internal ExtractableFile(string flname)
+			: base(flname) { }
 
 		/// <summary>
 		/// Init the Clone for this Package
 		/// </summary>
 		/// <returns>An INstance of this Class</returns>
-		protected override Interfaces.Files.IPackageFile NewCloneBase() 
+		protected override Interfaces.Files.IPackageFile NewCloneBase()
 		{
 			ExtractableFile fl = new ExtractableFile((BinaryReader)null);
 			fl.header = this.header;
-			
+
 			return fl;
 		}
 
@@ -55,7 +58,7 @@ namespace SimPe.Packages
 		/// </summary>
 		/// <param name="pfd">The PackedFileDescriptor</param>
 		/// <returns>The MemoryStream representing the PackedFile</returns>
-		public System.IO.MemoryStream Extract(PackedFileDescriptor pfd) 
+		public System.IO.MemoryStream Extract(PackedFileDescriptor pfd)
 		{
 			IPackedFile pf = base.Read(pfd);
 			return new MemoryStream(pf.UncompressedData);
@@ -71,19 +74,27 @@ namespace SimPe.Packages
 		/// </param>
 		/// <param name="pfd">
 		/// The description of the File, or null. If not null an additional XML File will be created
-		/// representing the Information like TypeId, SubId, Instance and Group.		
+		/// representing the Information like TypeId, SubId, Instance and Group.
 		/// </param>
 		/// <param name="meta">set false if you do not want to create the Meta Xml File</param>
-		/// 
-		public void SavePackedFile(string flname, MemoryStream pf, PackedFileDescriptor pfd, bool meta)
+		///
+		public void SavePackedFile(
+			string flname,
+			MemoryStream pf,
+			PackedFileDescriptor pfd,
+			bool meta
+		)
 		{
-			if (pfd!=null) 
+			if (pfd != null)
 			{
-				if (pf==null) pf = Extract(pfd);
-				if (meta) SaveMetaInfo(flname+".xml", pfd);
+				if (pf == null)
+					pf = Extract(pfd);
+				if (meta)
+					SaveMetaInfo(flname + ".xml", pfd);
 			}
 
-			if (pf!=null) SavePackedFile(flname, pf);			
+			if (pf != null)
+				SavePackedFile(flname, pf);
 		}
 
 		/// <summary>
@@ -94,32 +105,33 @@ namespace SimPe.Packages
 		protected void SavePackedFile(string flname, MemoryStream pf)
 		{
 			StreamItem si = StreamFactory.GetStreamItem(flname, false);
-			
+
 			System.IO.FileStream fs = null;
-			if (si==null) 
+			if (si == null)
 			{
 				fs = new FileStream(flname, System.IO.FileMode.Create);
-			} 
-			else 
+			}
+			else
 			{
-                si.SetFileAccess(FileAccess.Write);
-                fs = si.FileStream;
+				si.SetFileAccess(FileAccess.Write);
+				fs = si.FileStream;
 			}
 
-			try 
+			try
 			{
 				byte[] d = pf.ToArray();
 				fs.Write(d, 0, d.Length);
-			} 
-			finally 
+			}
+			finally
 			{
-                if (si != null) si.Close();
-                else
-                {
-                    fs.Close();
-                    fs.Dispose();
-                    fs = null;
-                }
+				if (si != null)
+					si.Close();
+				else
+				{
+					fs.Close();
+					fs.Dispose();
+					fs = null;
+				}
 			}
 		}
 
@@ -130,16 +142,21 @@ namespace SimPe.Packages
 		/// <param name="pfd">The description of the File</param>
 		protected void SaveMetaInfo(string flname, PackedFileDescriptor pfd)
 		{
-
 			System.IO.TextWriter fs = System.IO.File.CreateText(flname);
-			try 
-			{				
-				fs.WriteLine("<?xml version=\"1.0\" encoding=\""+fs.Encoding.HeaderName+"\" ?>");
-				fs.WriteLine("<package type=\""+((uint)Header.IndexType).ToString()+"\">");
+			try
+			{
+				fs.WriteLine(
+					"<?xml version=\"1.0\" encoding=\""
+						+ fs.Encoding.HeaderName
+						+ "\" ?>"
+				);
+				fs.WriteLine(
+					"<package type=\"" + ((uint)Header.IndexType).ToString() + "\">"
+				);
 				fs.Write(pfd.GenerateXmlMetaInfo());
 				fs.WriteLine("</package>");
-			} 
-			finally 
+			}
+			finally
 			{
 				fs.Close();
 				fs.Dispose();
@@ -164,9 +181,14 @@ namespace SimPe.Packages
 		public string GeneratePackageXML(bool header)
 		{
 			string xml = "";
-			if (header) xml += "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>" + Helper.lbr;
-			xml += "<package type=\""+((uint)Header.IndexType).ToString()+"\">" + Helper.lbr;
-			foreach(PackedFileDescriptor pfd in this.fileindex) 
+			if (header)
+				xml += "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>" + Helper.lbr;
+			xml +=
+				"<package type=\""
+				+ ((uint)Header.IndexType).ToString()
+				+ "\">"
+				+ Helper.lbr;
+			foreach (PackedFileDescriptor pfd in this.fileindex)
 			{
 				xml += pfd.GenerateXmlMetaInfo() + Helper.lbr;
 			}
@@ -178,16 +200,20 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Generates a Package XML File containing all informations needed to recreate the Package
 		/// </summary>
-		/// <param name="flname">The Filename for the File</param>		
+		/// <param name="flname">The Filename for the File</param>
 		public void GeneratePackageXML(string flname)
 		{
 			System.IO.TextWriter fs = System.IO.File.CreateText(flname);
-			try 
-			{				
-				fs.WriteLine("<?xml version=\"1.0\" encoding=\""+fs.Encoding.HeaderName+"\" ?>");
-				fs.Write(GeneratePackageXML(false));				
-			} 
-			finally 
+			try
+			{
+				fs.WriteLine(
+					"<?xml version=\"1.0\" encoding=\""
+						+ fs.Encoding.HeaderName
+						+ "\" ?>"
+				);
+				fs.Write(GeneratePackageXML(false));
+			}
+			finally
 			{
 				fs.Close();
 				fs.Dispose();

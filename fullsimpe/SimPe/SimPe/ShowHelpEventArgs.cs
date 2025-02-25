@@ -26,9 +26,7 @@ namespace SimPe
 	/// </summary>
 	public class ShowHelpEventArgs : System.EventArgs
 	{
-		public ShowHelpEventArgs() : base()
-		{
-			
-		}
+		public ShowHelpEventArgs()
+			: base() { }
 	}
 }

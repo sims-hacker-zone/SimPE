@@ -31,11 +31,10 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// Constructor
 		/// </summary>
 		/// <param name="rels">(2 Items) inbound and outbound Relationship</param>
-		internal SimRelations (SRel[] rels) 
+		internal SimRelations(SRel[] rels)
 		{
 			this.rels = rels;
 		}
-		
 
 		/// <summary>
 		/// This string will be dieplayed whe ToString is called
@@ -45,7 +44,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// <summary>
 		/// Returns/Sets the nametag
 		/// </summary>
-		public string NameTag 
+		public string NameTag
 		{
 			get { return nametag; }
 			set { nametag = value; }
@@ -57,11 +56,11 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// <returns>A String Describing the Object</returns>
 		public override string ToString()
 		{
-			if (nametag!=null) return nametag;
+			if (nametag != null)
+				return nametag;
 
-			return base.ToString ();
+			return base.ToString();
 		}
-
 
 		/// <summary>
 		/// inbound(1) and outbound(0) relationshios
@@ -71,7 +70,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// <summary>
 		/// The relation of your Sim zo another
 		/// </summary>
-		public SRel OutboundRelation 
+		public SRel OutboundRelation
 		{
 			get { return rels[0]; }
 		}
@@ -89,12 +88,13 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// </summary>
 		public void SynchronizeUserData()
 		{
-			if (rels!=null) 
+			if (rels != null)
 			{
-				if (rels[0]!=null) rels[0].SynchronizeUserData();
-				if (rels[1]!=null) rels[1].SynchronizeUserData();
+				if (rels[0] != null)
+					rels[0].SynchronizeUserData();
+				if (rels[1] != null)
+					rels[1].SynchronizeUserData();
 			}
 		}
-
 	}
 }

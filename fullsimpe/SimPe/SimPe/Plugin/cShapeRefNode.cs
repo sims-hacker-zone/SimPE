@@ -22,24 +22,25 @@ using System.ComponentModel;
 
 namespace SimPe.Plugin
 {
-	public class ShapeRefNodeItem_A 
+	public class ShapeRefNodeItem_A
 	{
-		public ShapeRefNodeItem_A () 
+		public ShapeRefNodeItem_A()
 		{
 			unknown1 = 0x101;
 		}
+
 		ushort unknown1;
-		public ushort Unknown1 
+		public ushort Unknown1
 		{
-			get {return unknown1; }
-			set {unknown1 = value; }
+			get { return unknown1; }
+			set { unknown1 = value; }
 		}
 
 		int unknown2;
-		public int Unknown2 
+		public int Unknown2
 		{
-			get {return unknown2; }
-			set {unknown2 = value; }
+			get { return unknown2; }
+			set { unknown2 = value; }
 		}
 
 		/// <summary>
@@ -57,7 +58,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public void Serialize(System.IO.BinaryWriter writer)
@@ -68,15 +69,17 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			return "0x"+Helper.HexString(unknown1)+" 0x"+Helper.HexString((uint)unknown2);
+			return "0x"
+				+ Helper.HexString(unknown1)
+				+ " 0x"
+				+ Helper.HexString((uint)unknown2);
 		}
-
 	}
 
-	public class ShapeRefNodeItem_B 
+	public class ShapeRefNodeItem_B
 	{
 		int unknown1;
-		public int Unknown1 
+		public int Unknown1
 		{
 			get { return unknown1; }
 			set { unknown1 = value; }
@@ -96,15 +99,14 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			return "0x"+Helper.HexString((uint)unknown1)+": "+Name;
+			return "0x" + Helper.HexString((uint)unknown1) + ": " + Name;
 		}
-
 	}
+
 	/// <summary>
 	/// Summary description for cShapeRefNode.
 	/// </summary>
-	public class ShapeRefNode
-		: AbstractCresChildren
+	public class ShapeRefNode : AbstractCresChildren
 	{
 		#region Attributes
 		RenderableNode rn;
@@ -112,14 +114,14 @@ namespace SimPe.Plugin
 		TransformNode tn;
 
 		short unknown1;
-		public short Unknown1 
+		public short Unknown1
 		{
 			get { return unknown1; }
 			set { unknown1 = value; }
 		}
 
 		int unknown2;
-		public int Unknown2 
+		public int Unknown2
 		{
 			get { return unknown2; }
 			set { unknown2 = value; }
@@ -133,14 +135,14 @@ namespace SimPe.Plugin
 		}
 
 		int unknown3;
-		public int Unknown3 
+		public int Unknown3
 		{
 			get { return unknown3; }
 			set { unknown3 = value; }
 		}
 
 		byte unknown4;
-		public byte Unknown4 
+		public byte Unknown4
 		{
 			get { return unknown4; }
 			set { unknown4 = value; }
@@ -154,7 +156,7 @@ namespace SimPe.Plugin
 		}
 
 		int unknown5;
-		public int Unknown5 
+		public int Unknown5
 		{
 			get { return unknown5; }
 			set { unknown5 = value; }
@@ -175,7 +177,7 @@ namespace SimPe.Plugin
 		}
 
 		int unknown6;
-		public int Unknown6 
+		public int Unknown6
 		{
 			get { return unknown6; }
 			set { unknown6 = value; }
@@ -187,12 +189,13 @@ namespace SimPe.Plugin
 			get { return tn; }
 		}
 		#endregion
-		
+
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public ShapeRefNode(Rcol parent) : base(parent)
+		public ShapeRefNode(Rcol parent)
+			: base(parent)
 		{
 			rn = new RenderableNode(null);
 			bn = new BoundedNode(null);
@@ -212,7 +215,7 @@ namespace SimPe.Plugin
 			name = "Practical";
 			BlockID = 0x65245517;
 		}
-		
+
 		#region IRcolBlock Member
 
 		/// <summary>
@@ -224,17 +227,17 @@ namespace SimPe.Plugin
 			version = reader.ReadUInt32();
 
 			string name = reader.ReadString();
-			uint myid = reader.ReadUInt32();		
+			uint myid = reader.ReadUInt32();
 			rn.Unserialize(reader);
 			rn.BlockID = myid;
 
 			name = reader.ReadString();
-			myid = reader.ReadUInt32();		
+			myid = reader.ReadUInt32();
 			bn.Unserialize(reader);
 			bn.BlockID = myid;
 
 			name = reader.ReadString();
-			myid = reader.ReadUInt32();		
+			myid = reader.ReadUInt32();
 			tn.Unserialize(reader);
 			tn.BlockID = myid;
 
@@ -245,7 +248,7 @@ namespace SimPe.Plugin
 			unknown4 = reader.ReadByte();
 
 			itemsa = new ShapeRefNodeItem_A[reader.ReadUInt32()];
-			for(int i=0; i<itemsa.Length; i++)
+			for (int i = 0; i < itemsa.Length; i++)
 			{
 				itemsa[i] = new ShapeRefNodeItem_A();
 				itemsa[i].Unserialize(reader);
@@ -253,16 +256,16 @@ namespace SimPe.Plugin
 			unknown5 = reader.ReadInt32();
 
 			itemsb = new ShapeRefNodeItem_B[reader.ReadUInt32()];
-			for(int i=0; i<itemsb.Length; i++)
+			for (int i = 0; i < itemsb.Length; i++)
 			{
 				itemsb[i] = new ShapeRefNodeItem_B();
 				itemsb[i].Unknown1 = reader.ReadInt32();
 			}
 
 			int len = 0;
-			if (version == 0x15) 
+			if (version == 0x15)
 			{
-				for(int i=0; i<itemsb.Length; i++)
+				for (int i = 0; i < itemsb.Length; i++)
 				{
 					itemsb[i].Name = reader.ReadString();
 				}
@@ -278,7 +281,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public override void Serialize(System.IO.BinaryWriter writer)
@@ -304,18 +307,19 @@ namespace SimPe.Plugin
 			writer.Write(unknown4);
 
 			writer.Write((uint)itemsa.Length);
-			for(int i=0; i<itemsa.Length; i++) itemsa[i].Serialize(writer);
+			for (int i = 0; i < itemsa.Length; i++)
+				itemsa[i].Serialize(writer);
 			writer.Write(unknown5);
 
 			writer.Write((uint)itemsb.Length);
-			for(int i=0; i<itemsb.Length; i++)
+			for (int i = 0; i < itemsb.Length; i++)
 			{
 				writer.Write(itemsb[i].Unknown1);
 			}
 
-			if (version == 0x15) 
+			if (version == 0x15)
 			{
-				for(int i=0; i<itemsb.Length; i++)
+				for (int i = 0; i < itemsb.Length; i++)
 				{
 					writer.Write(itemsb[i].Name);
 				}
@@ -326,12 +330,13 @@ namespace SimPe.Plugin
 			writer.Write(unknown6);
 		}
 
-		TabPage.ShapeRefNode tShapeRefNode;		
+		TabPage.ShapeRefNode tShapeRefNode;
 		public override System.Windows.Forms.TabPage TabPage
 		{
 			get
 			{
-				if (tShapeRefNode==null) tShapeRefNode = new SimPe.Plugin.TabPage.ShapeRefNode(); 
+				if (tShapeRefNode == null)
+					tShapeRefNode = new SimPe.Plugin.TabPage.ShapeRefNode();
 				return tShapeRefNode;
 			}
 		}
@@ -347,19 +352,16 @@ namespace SimPe.Plugin
 		/// Returns a List of all Child Blocks referenced by this Element
 		/// </summary>
 		[BrowsableAttribute(false)]
-		public override IntArrayList ChildBlocks 
+		public override IntArrayList ChildBlocks
 		{
-			get 
-			{
-				return tn.ChildBlocks;
-			}
-		}	
+			get { return tn.ChildBlocks; }
+		}
 
 		[BrowsableAttribute(false)]
-		public override int ImageIndex 
+		public override int ImageIndex
 		{
-			get 
-			{ 
+			get
+			{
 				return 3; //mesh
 			}
 		}
@@ -368,32 +370,40 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
 		/// </summary>
-		protected override void InitTabPage() 
+		protected override void InitTabPage()
 		{
-			if (tShapeRefNode==null) tShapeRefNode = new SimPe.Plugin.TabPage.ShapeRefNode(); 
-			
+			if (tShapeRefNode == null)
+				tShapeRefNode = new SimPe.Plugin.TabPage.ShapeRefNode();
+
 			tShapeRefNode.lb_srn_a.Items.Clear();
-			for(int i=0; i<this.itemsa.Length; i++) tShapeRefNode.lb_srn_a.Items.Add(itemsa[i]);
+			for (int i = 0; i < this.itemsa.Length; i++)
+				tShapeRefNode.lb_srn_a.Items.Add(itemsa[i]);
 
 			tShapeRefNode.lb_srn_b.Items.Clear();
-			for(int i=0; i<this.itemsb.Length; i++) tShapeRefNode.lb_srn_b.Items.Add(itemsb[i]);
+			for (int i = 0; i < this.itemsb.Length; i++)
+				tShapeRefNode.lb_srn_b.Items.Add(itemsb[i]);
 
-			tShapeRefNode.tb_srn_uk1.Text = "0x"+Helper.HexString((ushort)this.unknown1);
-			tShapeRefNode.tb_srn_uk2.Text = "0x"+Helper.HexString((uint)this.unknown2);
-			tShapeRefNode.tb_srn_uk3.Text = "0x"+Helper.HexString((uint)this.unknown3);
-			tShapeRefNode.tb_srn_uk4.Text = "0x"+Helper.HexString(this.unknown4);
-			tShapeRefNode.tb_srn_uk5.Text = "0x"+Helper.HexString((uint)this.unknown5);
-			tShapeRefNode.tb_srn_uk6.Text = "0x"+Helper.HexString((uint)this.unknown6);
+			tShapeRefNode.tb_srn_uk1.Text =
+				"0x" + Helper.HexString((ushort)this.unknown1);
+			tShapeRefNode.tb_srn_uk2.Text =
+				"0x" + Helper.HexString((uint)this.unknown2);
+			tShapeRefNode.tb_srn_uk3.Text =
+				"0x" + Helper.HexString((uint)this.unknown3);
+			tShapeRefNode.tb_srn_uk4.Text = "0x" + Helper.HexString(this.unknown4);
+			tShapeRefNode.tb_srn_uk5.Text =
+				"0x" + Helper.HexString((uint)this.unknown5);
+			tShapeRefNode.tb_srn_uk6.Text =
+				"0x" + Helper.HexString((uint)this.unknown6);
 
 			tShapeRefNode.tb_srn_kind.Text = this.name;
 			tShapeRefNode.tb_srn_data.Text = Helper.BytesToHexList(this.data);
 
-			tShapeRefNode.tb_srn_ver.Text = "0x"+Helper.HexString(this.version);
+			tShapeRefNode.tb_srn_ver.Text = "0x" + Helper.HexString(this.version);
 		}
 
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
-			base.ExtendTabControl (tc);
+			base.ExtendTabControl(tc);
 			this.rn.AddToTabControl(tc);
 			this.bn.AddToTabControl(tc);
 			this.tn.AddToTabControl(tc);
@@ -401,15 +411,20 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			return name + " - " + tn.ObjectGraphNode.FileName + " ("+base.ToString ()+")";
+			return name
+				+ " - "
+				+ tn.ObjectGraphNode.FileName
+				+ " ("
+				+ base.ToString()
+				+ ")";
 		}
-
 
 		#region IDisposable Member
 
 		public override void Dispose()
 		{
-			if (this.tShapeRefNode!=null) this.tShapeRefNode.Dispose();
+			if (this.tShapeRefNode != null)
+				this.tShapeRefNode.Dispose();
 			tShapeRefNode = null;
 		}
 

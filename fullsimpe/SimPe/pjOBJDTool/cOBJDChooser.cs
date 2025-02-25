@@ -27,47 +27,51 @@ using System.Windows.Forms;
 
 namespace pjOBJDTool
 {
-    public partial class cOBJDChooser : Form
-    {
-        private pfOBJD value = null;
-        public pfOBJD Value { get { return value; } }
-        List<pfOBJD> items = null;
+	public partial class cOBJDChooser : Form
+	{
+		private pfOBJD value = null;
+		public pfOBJD Value
+		{
+			get { return value; }
+		}
+		List<pfOBJD> items = null;
 
-        public cOBJDChooser()
-        {
-            InitializeComponent();
-        }
+		public cOBJDChooser()
+		{
+			InitializeComponent();
+		}
 
-        public DialogResult Execute(List<pfOBJD> items)
-        {
-            this.items = items;
-            value = null;
+		public DialogResult Execute(List<pfOBJD> items)
+		{
+			this.items = items;
+			value = null;
 
-            lbItems.Items.Clear();
-            foreach (pfOBJD item in items)
-            {
-                lbItems.Items.Add((IsLead(item) ? "* " : "   ") + item.Filename);
-                if (IsLead(item)) lbItems.SelectedIndex = lbItems.Items.Count - 1;
-            }
+			lbItems.Items.Clear();
+			foreach (pfOBJD item in items)
+			{
+				lbItems.Items.Add((IsLead(item) ? "* " : "   ") + item.Filename);
+				if (IsLead(item))
+					lbItems.SelectedIndex = lbItems.Items.Count - 1;
+			}
 
-            return ShowDialog();
-        }
+			return ShowDialog();
+		}
 
-        bool IsLead(pfOBJD item)
-        {
-            return (item[0x0a] == 0 || (item[0x0a] > 0 && (short)item[0x0b] < 0));
-        }
+		bool IsLead(pfOBJD item)
+		{
+			return (item[0x0a] == 0 || (item[0x0a] > 0 && (short)item[0x0b] < 0));
+		}
 
-        private void lbItems_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lbItems.SelectedIndex >= 0)
-                value = items[lbItems.SelectedIndex];
-        }
+		private void lbItems_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (lbItems.SelectedIndex >= 0)
+				value = items[lbItems.SelectedIndex];
+		}
 
-        private void lbItems_DoubleClick(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-        }
-    }
+		private void lbItems_DoubleClick(object sender, EventArgs e)
+		{
+			this.DialogResult = DialogResult.OK;
+			this.Close();
+		}
+	}
 }

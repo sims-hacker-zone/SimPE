@@ -27,7 +27,7 @@ namespace SimPe.Plugin
 	/// This is the actual FileWrapper
 	/// </summary>
 	/// <remarks>
-	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads 
+	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
 	public class Shpe : GenericRcol
@@ -35,12 +35,10 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public Shpe(Interfaces.IProviderRegistry provider) : base(provider, false)
-		{
-		}
+		public Shpe(Interfaces.IProviderRegistry provider)
+			: base(provider, false) { }
 
-		
-		#region AbstractWrapper Member		
+		#region AbstractWrapper Member
 
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper
@@ -48,12 +46,7 @@ namespace SimPe.Plugin
 		/// <returns>Human Readable Description</returns>
 		protected override IWrapperInfo CreateWrapperInfo()
 		{
-			return new AbstractWrapperInfo(
-				"SHPE Wrapper",
-				"Quaxi",
-				"---",
-				4
-				); 
+			return new AbstractWrapperInfo("SHPE Wrapper", "Quaxi", "---", 4);
 		}
 		#endregion
 
@@ -67,16 +60,14 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				uint[] types = {
-								   0xFC6EB1F7   //SHPE Files
-							   };
+				uint[] types =
+				{
+					0xFC6EB1F7, //SHPE Files
+				};
 				return types;
 			}
 		}
 
-		#endregion		
-
-		
-
+		#endregion
 	}
 }

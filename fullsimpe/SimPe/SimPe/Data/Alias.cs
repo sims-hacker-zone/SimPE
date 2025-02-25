@@ -43,23 +43,21 @@ namespace SimPe.Data
 		/// </summary>
 		protected string name;
 
-				
 		/// <summary>
 		/// Cosntructor of the class
 		/// </summary>
 		/// <param name="val">The id</param>
 		/// <param name="name">The name</param>
-		public StaticAlias(uint val, string name) : this(val, name, new object[0])
-		{			
-		}	
-		
+		public StaticAlias(uint val, string name)
+			: this(val, name, new object[0]) { }
+
 		~StaticAlias()
 		{
-			try 
+			try
 			{
 				this.Dispose();
-			} 
-			catch {}
+			}
+			catch { }
 		}
 
 		/// <summary>
@@ -88,10 +86,7 @@ namespace SimPe.Data
 
 		public uint Id
 		{
-			get
-			{
-				return id;
-			}
+			get { return id; }
 		}
 
 		public string Name
@@ -100,19 +95,13 @@ namespace SimPe.Data
 			set { name = value; }
 		}
 
-		public object[] Tag 
+		public object[] Tag
 		{
-			get 
-			{
-				return tag;
-			}
-			set
-			{
-				tag = value;
-			}
+			get { return tag; }
+			set { tag = value; }
 		}
 
-		#endregion		
+		#endregion
 
 		#region IDisposable Member
 
@@ -124,35 +113,36 @@ namespace SimPe.Data
 
 		#endregion
 	}
+
 	/// <summary>
 	/// Conects an value with a name
 	/// </summary>
 	public class Alias : StaticAlias
-	{		
+	{
 		/// <summary>
 		/// This is used to format the ToString() Output
 		/// </summary>
 		private string template;
 
-		static string DefaultTemplate 
+		static string DefaultTemplate
 		{
-			get 
+			get
 			{
 #if DEBUG
-			return "{name} (0x{id})";
+				return "{name} (0x{id})";
 #else
-			return "{name} (0x{id})";
+				return "{name} (0x{id})";
 #endif
 			}
 		}
+
 		/// <summary>
 		/// Cosntructor of the class
 		/// </summary>
 		/// <param name="val">The id</param>
 		/// <param name="name">The name</param>
-		public Alias(uint val, string name) : this(val, name, DefaultTemplate)
-		{			
-		}
+		public Alias(uint val, string name)
+			: this(val, name, DefaultTemplate) { }
 
 		/// <summary>
 		/// Cosntructor of the class
@@ -160,9 +150,8 @@ namespace SimPe.Data
 		/// <param name="val">The id</param>
 		/// <param name="name">The name</param>
 		/// <param name="tag"></param>
-		public Alias(uint val, string name, object[] tag) : this(val, name, tag, DefaultTemplate)
-		{
-		}
+		public Alias(uint val, string name, object[] tag)
+			: this(val, name, tag, DefaultTemplate) { }
 
 		/// <summary>
 		/// Cosntructor of the class
@@ -170,9 +159,8 @@ namespace SimPe.Data
 		/// <param name="val">The id</param>
 		/// <param name="name">The name</param>
 		/// <param name="template">The ToString Template</param>
-		public Alias(uint val, string name, string template) : this(val, name, null, template)
-		{
-		}
+		public Alias(uint val, string name, string template)
+			: this(val, name, null, template) { }
 
 		/// <summary>
 		/// Cosntructor of the class
@@ -181,9 +169,10 @@ namespace SimPe.Data
 		/// <param name="name">The name</param>
 		/// <param name="tag"></param>
 		/// <param name="template">The ToString Template</param>
-		public Alias(uint val, string name, object[] tag, string template) : base(val, name, tag)
+		public Alias(uint val, string name, object[] tag, string template)
+			: base(val, name, tag)
 		{
-			this.template = template;			
+			this.template = template;
 		}
 
 		/// <summary>
@@ -197,19 +186,20 @@ namespace SimPe.Data
 			ret = ret.Replace("{name}", name);
 			ret = ret.Replace("{id}", id.ToString("X"));
 
-			if (tag!=null) 
+			if (tag != null)
 			{
-				for (int i=0; i<tag.Length; i++) 
+				for (int i = 0; i < tag.Length; i++)
 				{
 					object o = tag[i];
-					if (o!=null) ret = ret.Replace("{"+i.ToString()+"}", o.ToString());
-					else ret = ret.Replace("{"+i.ToString()+"}", "");
+					if (o != null)
+						ret = ret.Replace("{" + i.ToString() + "}", o.ToString());
+					else
+						ret = ret.Replace("{" + i.ToString() + "}", "");
 				}
 			}
 
 			return ret;
 		}
-
 
 		#region static Loader
 		/// <summary>
@@ -219,32 +209,37 @@ namespace SimPe.Data
 		/// <returns>The IAlias List</returns>
 		public static SimPe.Interfaces.IAlias[] LoadFromXml(string flname)
 		{
-			if (!System.IO.File.Exists(flname)) return new SimPe.Interfaces.IAlias[0];
+			if (!System.IO.File.Exists(flname))
+				return new SimPe.Interfaces.IAlias[0];
 
-			try 
+			try
 			{
 				//read XML File
 				System.Xml.XmlDocument xmlfile = new XmlDocument();
 				xmlfile.Load(flname);
 
-				
 				//seek Root Node
-				XmlNodeList XMLData = xmlfile.GetElementsByTagName("alias");					
+				XmlNodeList XMLData = xmlfile.GetElementsByTagName("alias");
 
 				ArrayList list = new ArrayList();
 				//Process all Root Node Entries
-				for (int i=0; i<XMLData.Count; i++)
+				for (int i = 0; i < XMLData.Count; i++)
 				{
-					XmlNode node = XMLData.Item(i);	
-					foreach (XmlNode subnode in node) 
+					XmlNode node = XMLData.Item(i);
+					foreach (XmlNode subnode in node)
 					{
-						if (subnode.LocalName.Trim().ToLower()=="item") 
+						if (subnode.LocalName.Trim().ToLower() == "item")
 						{
-							string sval = subnode.Attributes["value"].Value.Trim().ToString();
+							string sval = subnode
+								.Attributes["value"]
+								.Value.Trim()
+								.ToString();
 							uint val = 0;
 
-							if (sval.StartsWith("0x")) val = Convert.ToUInt32(sval, 16);
-							else val = Convert.ToUInt32(sval);
+							if (sval.StartsWith("0x"))
+								val = Convert.ToUInt32(sval, 16);
+							else
+								val = Convert.ToUInt32(sval);
 
 							Alias a = new Alias(val, subnode.InnerText.Trim());
 							list.Add((SimPe.Interfaces.IAlias)a);
@@ -256,7 +251,7 @@ namespace SimPe.Data
 				list.CopyTo(ret);
 				return ret;
 			}
-			catch (Exception ex) 
+			catch (Exception ex)
 			{
 				Helper.ExceptionMessage("", ex);
 			}

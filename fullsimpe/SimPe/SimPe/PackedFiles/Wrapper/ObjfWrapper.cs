@@ -20,8 +20,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -34,16 +34,22 @@ namespace SimPe.PackedFiles.Wrapper
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
 	public class Objf
-        : pjse.ExtendedWrapper<ObjfItem, Objf> //AbstractWrapper				//Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-		, IFileWrapper					//This Interface is used when loading a File
-		, IFileWrapperSaveExtension		//This Interface (if available) will be used to store a File
-		//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+		: pjse.ExtendedWrapper<
+			ObjfItem,
+			Objf
+		> //AbstractWrapper				//Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
+			,
+			IFileWrapper //This Interface is used when loading a File
+			,
+			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
+	//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 	{
 		#region Attributes
 		/// <summary>
 		/// Contains the Filename
 		/// </summary>
 		private byte[] filename = new byte[64];
+
 		/// <summary>
 		/// Header of the File
 		/// </summary>
@@ -68,28 +74,36 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 		#endregion
 
-        /// <summary>
+		/// <summary>
 		/// Constructor
 		/// </summary>
-		public Objf() : base() { }
+		public Objf()
+			: base() { }
 
-        public new void Add(ObjfItem item) { Add(item, 0x8000); }
+		public new void Add(ObjfItem item)
+		{
+			Add(item, 0x8000);
+		}
 
-        public new void Insert(int index, ObjfItem item) { Insert(index, item, 0x8000); }
-
+		public new void Insert(int index, ObjfItem item)
+		{
+			Insert(index, item, 0x8000);
+		}
 
 		#region AbstractWrapper Member
 		public override bool CheckVersion(uint version)
 		{
-			if ( (version==0012) //0.00
-				|| (version==0013) //0.10
-				)
+			if (
+				(version == 0012) //0.00
+				|| (version == 0013) //0.10
+			)
 			{
 				return true;
 			}
 
 			return false;
 		}
+
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
 			return new UserInterface.ObjfForm();
@@ -109,7 +123,7 @@ namespace SimPe.PackedFiles.Wrapper
 				"Peter L Jones",
 				"Object Function Table Editor",
 				1
-				);
+			);
 		}
 
 		/// <summary>
@@ -130,8 +144,10 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write((uint)items.Count);
 
 			for (int i = 0; i < items.Count; i++)
-				if (items[i] != null) ((ObjfItem)items[i]).Serialize(writer);
+				if (items[i] != null)
+					((ObjfItem)items[i]).Serialize(writer);
 		}
+
 		/// <summary>
 		/// Unserializes a BinaryStream into the Attributes of this Instance
 		/// </summary>
@@ -139,8 +155,8 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			// in case we give up...
-            // items = null; //throws NullReferenceException
-            uint itemCount = 0;
+			// items = null; //throws NullReferenceException
+			uint itemCount = 0;
 
 			filename = reader.ReadBytes(64);
 
@@ -149,25 +165,26 @@ namespace SimPe.PackedFiles.Wrapper
 			header[1] = reader.ReadUInt32();
 			header[2] = reader.ReadUInt32();
 			//if (header[2] != 0x4f424a66)
-            //	return; // throws NullReferenceException if items = null
+			//	return; // throws NullReferenceException if items = null
 
-            if (header[2] == 0x4f424a66)
-                itemCount = reader.ReadUInt32();
-            else
-            {
-                header[2] = 0x4f424a66; // will be fixed when commited, this allows a corrupt file to load as a blank file
-                this.Changed = true; // enable commit button for immediate commit.
-            }
+			if (header[2] == 0x4f424a66)
+				itemCount = reader.ReadUInt32();
+			else
+			{
+				header[2] = 0x4f424a66; // will be fixed when commited, this allows a corrupt file to load as a blank file
+				this.Changed = true; // enable commit button for immediate commit.
+			}
 
-            items = new List<ObjfItem>();
-            while(items.Count < itemCount)
+			items = new List<ObjfItem>();
+			while (items.Count < itemCount)
 				items.Add(new ObjfItem(this, reader));
 		}
 
 		#endregion
 
-        public const uint Objftype = 0x4F424A66;
-        #region IFileWrapper Member
+		public const uint Objftype = 0x4F424A66;
+
+		#region IFileWrapper Member
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
@@ -175,7 +192,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-                uint[] types = { Objftype }; //handles the OBJf File
+				uint[] types = { Objftype }; //handles the OBJf File
 				return types;
 			}
 		}
@@ -185,10 +202,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get
-			{
-				return new byte[0];
-			}
+			get { return new byte[0]; }
 		}
 
 		#endregion
@@ -198,11 +212,10 @@ namespace SimPe.PackedFiles.Wrapper
 		#endregion
 	}
 
-
 	/// <summary>
 	/// An Item stored in an OBJf
 	/// </summary>
-    public class ObjfItem : pjse.ExtendedWrapperItem<Objf, ObjfItem>
+	public class ObjfItem : pjse.ExtendedWrapperItem<Objf, ObjfItem>
 	{
 		#region Attributes
 		private ushort guard = 0;
@@ -248,7 +261,6 @@ namespace SimPe.PackedFiles.Wrapper
 			Unserialize(reader);
 		}
 
-
 		public ObjfItem Clone()
 		{
 			ObjfItem clone = new ObjfItem(this.parent);
@@ -256,7 +268,6 @@ namespace SimPe.PackedFiles.Wrapper
 			clone.guard = this.guard;
 			return clone;
 		}
-
 
 		/// <summary>
 		/// Reads Data from the Stream
@@ -276,6 +287,6 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			writer.Write(guard);
 			writer.Write(action);
-        }
-    }
+		}
+	}
 }

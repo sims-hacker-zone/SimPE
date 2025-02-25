@@ -26,8 +26,9 @@ namespace SimPe.Plugin.Tool.Dockable
 	/// Hex to Decimal Converter Dialog
 	/// </summary>
 	public class HexDecConverterTool : SimPe.Interfaces.IDockableTool
-	{		
+	{
 		ResourceDock rd;
+
 		public HexDecConverterTool(ResourceDock rd)
 		{
 			this.rd = rd;
@@ -35,17 +36,14 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		#region IDockableTool Member
 
-        public Ambertation.Windows.Forms.DockPanel GetDockableControl()
+		public Ambertation.Windows.Forms.DockPanel GetDockableControl()
 		{
 			return rd.dcConvert;
 		}
 
 		public event SimPe.Events.ChangedResourceEvent ShowNewResource;
 
-		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es)
-		{
-			
-		}
+		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es) { }
 
 		#endregion
 
@@ -62,23 +60,20 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.CtrlH;
-			}
+			get { return System.Windows.Forms.Shortcut.CtrlH; }
 		}
 
 		public System.Drawing.Image Icon
 		{
+			get { return rd.dcConvert.TabImage; }
+		}
+
+		public virtual bool Visible
+		{
 			get
 			{
-				return rd.dcConvert.TabImage;
+				return GetDockableControl().IsDocked || GetDockableControl().IsFloating;
 			}
-		}		
-
-		public virtual bool Visible 
-		{
-			get { return GetDockableControl().IsDocked ||  GetDockableControl().IsFloating; }
 		}
 		#endregion
 	}

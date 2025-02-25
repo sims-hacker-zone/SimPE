@@ -20,440 +20,506 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using Ambertation.Windows.Forms;
 
 namespace SimPe.Plugin.Tool.Dockable
 {
-    /// <summary>
-    /// Summary description for DockableWindow1.
-    /// </summary>
-    public partial class FinderDock : Ambertation.Windows.Forms.DockPanel, SimPe.Interfaces.IDockableTool, SimPe.Interfaces.IFinderResultGui
-    {
+	/// <summary>
+	/// Summary description for DockableWindow1.
+	/// </summary>
+	public partial class FinderDock
+		: Ambertation.Windows.Forms.DockPanel,
+			SimPe.Interfaces.IDockableTool,
+			SimPe.Interfaces.IFinderResultGui
+	{
+		SimPe.ThemeManager tm;
+		SimPe.ColumnSorter sorter;
 
-        SimPe.ThemeManager tm;
-        SimPe.ColumnSorter sorter;
+		System.Collections.Generic.List<string> packages;
+		System.Threading.Thread[] threads;
+		private Panel pnContainer;
+		SimPe.Interfaces.AFinderTool searchtool;
+		int runningthreads;
 
-        System.Collections.Generic.List<string> packages;
-        System.Threading.Thread[] threads;
-        private Panel pnContainer;
-        SimPe.Interfaces.AFinderTool searchtool;
-        int runningthreads;
-        public FinderDock()
-        {
-            // This call is required by the Windows.Forms Form Designer.
-            InitializeComponent();
+		public FinderDock()
+		{
+			// This call is required by the Windows.Forms Form Designer.
+			InitializeComponent();
 
-            tm = SimPe.ThemeManager.Global.CreateChild();
-            tm.AddControl(this.xpGradientPanel1);
+			tm = SimPe.ThemeManager.Global.CreateChild();
+			tm.AddControl(this.xpGradientPanel1);
 
-            tm.AddControl(this.tbResult);
-            tm.AddControl(this.toolBar1);
+			tm.AddControl(this.tbResult);
+			tm.AddControl(this.toolBar1);
 
-            
+			sorter = new ColumnSorter();
+			sorter.CurrentColumn = 0;
+			lv.ListViewItemSorter = sorter;
 
-            sorter = new ColumnSorter();
-            sorter.CurrentColumn = 0;
-            lv.ListViewItemSorter = sorter;
+			lv.View = SteepValley.Windows.Forms.ExtendedView.Details;
 
-            lv.View = SteepValley.Windows.Forms.ExtendedView.Details;
+			packages = new System.Collections.Generic.List<string>();
+			threads = new System.Threading.Thread[
+				Helper.WindowsRegistry.SortProcessCount / 2
+			];
 
-            packages = new System.Collections.Generic.List<string>();
-            threads = new System.Threading.Thread[Helper.WindowsRegistry.SortProcessCount / 2];
+			runningthreads = 0;
+			CreateThreads(false);
 
-            runningthreads = 0;
-            CreateThreads(false);
+			foreach (
+				SimPe.Interfaces.AFinderTool tl in Finder.FinderToolRegistry.Global.CreateToolInstances(
+					this
+				)
+			)
+			{
+				this.cbTask.Items.Add(tl);
+			}
+			if (cbTask.Items.Count > 0)
+				this.cbTask.SelectedIndex = 0;
+		}
 
-            foreach (SimPe.Interfaces.AFinderTool tl in Finder.FinderToolRegistry.Global.CreateToolInstances(this))
-            {
-                this.cbTask.Items.Add(tl);
-            }
-            if (cbTask.Items.Count > 0) this.cbTask.SelectedIndex = 0;
-        }
+		private void CreateThreads(bool start)
+		{
+			for (int ct = 0; ct < threads.Length; ct++)
+			{
+				threads[ct] = new System.Threading.Thread(
+					new System.Threading.ThreadStart(ThreadRunner)
+				);
+				threads[ct].Name = "Search Thread " + (ct);
+				if (start)
+					threads[ct].Start();
+			}
+		}
 
-        private void CreateThreads(bool start)
-        {
-            for (int ct = 0; ct < threads.Length; ct++)
-            {
-                threads[ct] = new System.Threading.Thread(new System.Threading.ThreadStart(ThreadRunner));
-                threads[ct].Name = "Search Thread " + (ct);
-                if (start) threads[ct].Start();
-            }
-        }
+		public Ambertation.Windows.Forms.DockPanel GetDockableControl()
+		{
+			return this;
+		}
 
+		public event SimPe.Events.ChangedResourceEvent ShowNewResource;
 
+		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es)
+		{
+			//code here
+		}
 
-        public Ambertation.Windows.Forms.DockPanel GetDockableControl()
-        {
-            return this;
-        }
+		#region IToolPlugin Member
 
-        public event SimPe.Events.ChangedResourceEvent ShowNewResource;
+		public override string ToString()
+		{
+			return this.Text;
+		}
 
-        public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es)
-        {
-            //code here	
-        }
-
-
-        #region IToolPlugin Member
-
-        public override string ToString()
-        {
-            return this.Text;
-        }
-
-        #endregion
-
-
-
-        private void cbTask_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            pnContainer.Controls.Clear();
-            if (cbTask.SelectedItem == null) return;
-
-            Control c = ((SimPe.Interfaces.AFinderTool)cbTask.SelectedItem).SearchGui;
-            pnContainer.Height = c.Height;            
-            pnContainer.Controls.Add(c);
-            c.Parent = pnContainer;
-            c.Left = 0;
-            c.Top = 0;
-            c.Dock = DockStyle.Top;
-            c.Visible = true;
-        }
-
-        public void ClearResults()
-        {
-            lv.DoubleBuffering = false;
-            lv.Items.Clear();
-            lv.ShowGroups = false;
-            lv.Groups.Clear();
-            lv.TileColumns = new int[0];
-            lv.Columns.Clear();
-        }
-
-        protected void CreateDefaultColumns()
-        {
-            ArrayList a = new ArrayList();
-            a.AddRange(new string[] { "Resourcename", "Type", "Group", "Instance", "Offset", "Size", "Filename" });
-            ArrayList b = new ArrayList();
-            b.AddRange(new int[] { 350, 80, 80, 140, 80, 80, 200 });
-            CreateColums(a, b);
-        }
-
-        protected void CreateColums(System.Collections.ArrayList strings, System.Collections.ArrayList widths)
-        {
-            for (int i = 0; i < strings.Count; i++)
-            {
-
-                ColumnHeader ch = new ColumnHeader();
-                ch.Text = (string)strings[i];
-                ch.Width = (int)widths[i];
-                lv.Columns.Add(ch);
-            }
-        }
+		#endregion
 
 
-        protected int AddResultGroup(string name)
-        {
-            string cname = name.Trim().ToLower();
-            foreach (SteepValley.Windows.Forms.XPListViewGroup lvg in lv.Groups)
-                if (lvg.GroupText.Trim().ToLower() == cname)
-                    return lvg.GroupIndex;
 
-            SteepValley.Windows.Forms.XPListViewGroup g = new SteepValley.Windows.Forms.XPListViewGroup(name);
-            g.GroupIndex = lv.Groups.Count;
-            lv.Groups.Add(g);
-            return g.GroupIndex;
-        }
-        
-        
+		private void cbTask_SelectedIndexChanged(object sender, System.EventArgs e)
+		{
+			pnContainer.Controls.Clear();
+			if (cbTask.SelectedItem == null)
+				return;
 
-        private void lv_DoubleClick(object sender, System.EventArgs e)
-        {
-            if (lv.SelectedItems.Count!=1) return;
+			Control c = ((SimPe.Interfaces.AFinderTool)cbTask.SelectedItem).SearchGui;
+			pnContainer.Height = c.Height;
+			pnContainer.Controls.Add(c);
+			c.Parent = pnContainer;
+			c.Left = 0;
+			c.Top = 0;
+			c.Dock = DockStyle.Top;
+			c.Visible = true;
+		}
 
-            IFinderResultItem fri = (IFinderResultItem)lv.SelectedItems[0];
-            fri.OpenResource();
-        }
+		public void ClearResults()
+		{
+			lv.DoubleBuffering = false;
+			lv.Items.Clear();
+			lv.ShowGroups = false;
+			lv.Groups.Clear();
+			lv.TileColumns = new int[0];
+			lv.Columns.Clear();
+		}
 
-        private void Activate_biList(object sender, System.EventArgs e)
-        {
-            lv.View = SteepValley.Windows.Forms.ExtendedView.List;
-            biList.Checked = true;
-            biTile.Checked = false;
-            biDetail.Checked = false;
-        }
+		protected void CreateDefaultColumns()
+		{
+			ArrayList a = new ArrayList();
+			a.AddRange(
+				new string[]
+				{
+					"Resourcename",
+					"Type",
+					"Group",
+					"Instance",
+					"Offset",
+					"Size",
+					"Filename",
+				}
+			);
+			ArrayList b = new ArrayList();
+			b.AddRange(new int[] { 350, 80, 80, 140, 80, 80, 200 });
+			CreateColums(a, b);
+		}
 
-        private void Activate_biTile(object sender, System.EventArgs e)
-        {
-            lv.View = SteepValley.Windows.Forms.ExtendedView.Tile;
-            biList.Checked = false;
-            biTile.Checked = true;
-            biDetail.Checked = false;
-        }
+		protected void CreateColums(
+			System.Collections.ArrayList strings,
+			System.Collections.ArrayList widths
+		)
+		{
+			for (int i = 0; i < strings.Count; i++)
+			{
+				ColumnHeader ch = new ColumnHeader();
+				ch.Text = (string)strings[i];
+				ch.Width = (int)widths[i];
+				lv.Columns.Add(ch);
+			}
+		}
 
-        private void Activate_biDetails(object sender, System.EventArgs e)
-        {
-            lv.View = SteepValley.Windows.Forms.ExtendedView.Details;
-            biList.Checked = false;
-            biTile.Checked = false;
-            biDetail.Checked = true;
-        }
+		protected int AddResultGroup(string name)
+		{
+			string cname = name.Trim().ToLower();
+			foreach (SteepValley.Windows.Forms.XPListViewGroup lvg in lv.Groups)
+				if (lvg.GroupText.Trim().ToLower() == cname)
+					return lvg.GroupIndex;
 
-        private void lv_ColumnClick(object sender, System.Windows.Forms.ColumnClickEventArgs e)
-        {
-            ((ListView)sender).ListViewItemSorter = sorter;
-            ((ColumnSorter)((ListView)sender).ListViewItemSorter).CurrentColumn = e.Column;
-            ((ListView)sender).Sort();
-        }		                
+			SteepValley.Windows.Forms.XPListViewGroup g =
+				new SteepValley.Windows.Forms.XPListViewGroup(name);
+			g.GroupIndex = lv.Groups.Count;
+			lv.Groups.Add(g);
+			return g.GroupIndex;
+		}
 
-        private void lv_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
+		private void lv_DoubleClick(object sender, System.EventArgs e)
+		{
+			if (lv.SelectedItems.Count != 1)
+				return;
 
-        }
+			IFinderResultItem fri = (IFinderResultItem)lv.SelectedItems[0];
+			fri.OpenResource();
+		}
 
-        #region IToolExt Member
+		private void Activate_biList(object sender, System.EventArgs e)
+		{
+			lv.View = SteepValley.Windows.Forms.ExtendedView.List;
+			biList.Checked = true;
+			biTile.Checked = false;
+			biDetail.Checked = false;
+		}
 
-        public System.Windows.Forms.Shortcut Shortcut
-        {
-            get
-            {
-                return System.Windows.Forms.Shortcut.None;
-            }
-        }
+		private void Activate_biTile(object sender, System.EventArgs e)
+		{
+			lv.View = SteepValley.Windows.Forms.ExtendedView.Tile;
+			biList.Checked = false;
+			biTile.Checked = true;
+			biDetail.Checked = false;
+		}
 
-        public System.Drawing.Image Icon
-        {
-            get
-            {
-                return this.TabImage;
-            }
-        }
+		private void Activate_biDetails(object sender, System.EventArgs e)
+		{
+			lv.View = SteepValley.Windows.Forms.ExtendedView.Details;
+			biList.Checked = false;
+			biTile.Checked = false;
+			biDetail.Checked = true;
+		}
 
-        public new bool Visible
-        {
-            get { return this.IsDocked || this.IsFloating; }
-        }
+		private void lv_ColumnClick(
+			object sender,
+			System.Windows.Forms.ColumnClickEventArgs e
+		)
+		{
+			((ListView)sender).ListViewItemSorter = sorter;
+			((ColumnSorter)((ListView)sender).ListViewItemSorter).CurrentColumn =
+				e.Column;
+			((ListView)sender).Sort();
+		}
 
-        #endregion
+		private void lv_SelectedIndexChanged(object sender, System.EventArgs e) { }
 
-        #region IFinderResultGui Members
-        bool truncated;
-        bool forcestop;
-        public bool ForcedStop
-        {
-            get { return forcestop; }
-            set { if (value) StopSearch(); }
-        }
-        public void AddResult(SimPe.Interfaces.Files.IPackageFile pkg, SimPe.Interfaces.Files.IPackedFileDescriptor pfd)
-        {
-            AddResult(null, pkg, pfd);
-        }
-        delegate void InvokeAddResult(string group, SimPe.Interfaces.Files.IPackageFile pkg, SimPe.Interfaces.Files.IPackedFileDescriptor pfd);
-        public void AddResult(string group, SimPe.Interfaces.Files.IPackageFile pkg, SimPe.Interfaces.Files.IPackedFileDescriptor pfd)
-        {
-            if (this.InvokeRequired) this.BeginInvoke(new InvokeAddResult(InvokedAddResult), new object[] {group, pkg, pfd });
-            else InvokedAddResult(group, pkg, pfd);
-        }
+		#region IToolExt Member
 
-        protected void InvokedAddResult(string group, SimPe.Interfaces.Files.IPackageFile pkg, SimPe.Interfaces.Files.IPackedFileDescriptor pfd)
-        {
-            
-            lock (lv)
-            {
-                if (lv.Items.Count > Helper.WindowsRegistry.MaxSearchResults)
-                {
-                    truncated = true;
-                    return;
-                }
+		public System.Windows.Forms.Shortcut Shortcut
+		{
+			get { return System.Windows.Forms.Shortcut.None; }
+		}
 
-                ScenegraphResultItem sri = new ScenegraphResultItem(pkg, pfd);
-                if (group == null) sri.GroupIndex = AddResultGroup(pkg.SaveFileName);
-                else sri.GroupIndex = this.AddResultGroup(group);
+		public System.Drawing.Image Icon
+		{
+			get { return this.TabImage; }
+		}
 
-                lv.Items.Add(sri);
-            }
-        }
+		public new bool Visible
+		{
+			get { return this.IsDocked || this.IsFloating; }
+		}
 
-        protected void SetPackageList()
-        {
-            FileTable.FileIndex.Load();
-            packages.Clear();
-            truncated = false;
-            pnErr.Visible = false;
+		#endregion
 
-            foreach (FileTableItem fti in SimPe.FileTable.FileIndex.BaseFolders)
-            {
-                if (fti.Use)
-                {
-                    string name = fti.Name;
-                    if (fti.IsFile) AddToPackageList(name);
-                    else
-                    {
-                        string[] files = System.IO.Directory.GetFiles(name, "*.package");
-                        foreach (string s in files)
-                            AddToPackageList(s);
-                    }
-                }
-            }
-        }
+		#region IFinderResultGui Members
+		bool truncated;
+		bool forcestop;
+		public bool ForcedStop
+		{
+			get { return forcestop; }
+			set
+			{
+				if (value)
+					StopSearch();
+			}
+		}
 
-        void AddToPackageList(string fl)
-        {
+		public void AddResult(
+			SimPe.Interfaces.Files.IPackageFile pkg,
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+		)
+		{
+			AddResult(null, pkg, pfd);
+		}
+
+		delegate void InvokeAddResult(
+			string group,
+			SimPe.Interfaces.Files.IPackageFile pkg,
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+		);
+
+		public void AddResult(
+			string group,
+			SimPe.Interfaces.Files.IPackageFile pkg,
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+		)
+		{
+			if (this.InvokeRequired)
+				this.BeginInvoke(
+					new InvokeAddResult(InvokedAddResult),
+					new object[] { group, pkg, pfd }
+				);
+			else
+				InvokedAddResult(group, pkg, pfd);
+		}
+
+		protected void InvokedAddResult(
+			string group,
+			SimPe.Interfaces.Files.IPackageFile pkg,
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+		)
+		{
+			lock (lv)
+			{
+				if (lv.Items.Count > Helper.WindowsRegistry.MaxSearchResults)
+				{
+					truncated = true;
+					return;
+				}
+
+				ScenegraphResultItem sri = new ScenegraphResultItem(pkg, pfd);
+				if (group == null)
+					sri.GroupIndex = AddResultGroup(pkg.SaveFileName);
+				else
+					sri.GroupIndex = this.AddResultGroup(group);
+
+				lv.Items.Add(sri);
+			}
+		}
+
+		protected void SetPackageList()
+		{
+			FileTable.FileIndex.Load();
+			packages.Clear();
+			truncated = false;
+			pnErr.Visible = false;
+
+			foreach (FileTableItem fti in SimPe.FileTable.FileIndex.BaseFolders)
+			{
+				if (fti.Use)
+				{
+					string name = fti.Name;
+					if (fti.IsFile)
+						AddToPackageList(name);
+					else
+					{
+						string[] files = System.IO.Directory.GetFiles(
+							name,
+							"*.package"
+						);
+						foreach (string s in files)
+							AddToPackageList(s);
+					}
+				}
+			}
+		}
+
+		void AddToPackageList(string fl)
+		{
 #if DEBUG
-            //if (packages.Count > 10) return;
+			//if (packages.Count > 10) return;
 #endif
-            if (!packages.Contains(Helper.CompareableFileName(fl)))
-                packages.Add(Helper.CompareableFileName(fl));
-        }
+			if (!packages.Contains(Helper.CompareableFileName(fl)))
+				packages.Add(Helper.CompareableFileName(fl));
+		}
 
-        public void StartSearch(SimPe.Interfaces.AFinderTool sender)
-        {
-            StopSearch();
-            lock (packages)
-            {
-                SetPackageList();
-                Wait.Start(packages.Count+1);
-                
-                searchtool = sender;
-                forcestop = false;
+		public void StartSearch(SimPe.Interfaces.AFinderTool sender)
+		{
+			StopSearch();
+			lock (packages)
+			{
+				SetPackageList();
+				Wait.Start(packages.Count + 1);
 
-                
-                ClearResults();
-                lv.BeginUpdate();
-                sorter.Sorting = SortOrder.None;
-                CreateDefaultColumns();
-            }
+				searchtool = sender;
+				forcestop = false;
 
-            if (sender.ProcessParalell)
-            {
-                CreateThreads(true);
-            }
-            else
-            {
-                CreateThreads(false);
-                threads[0].Start();
-            }
-        }
+				ClearResults();
+				lv.BeginUpdate();
+				sorter.Sorting = SortOrder.None;
+				CreateDefaultColumns();
+			}
 
-        public bool Searching
-        {
-            get { return runningthreads > 0; }
-        }
+			if (sender.ProcessParalell)
+			{
+				CreateThreads(true);
+			}
+			else
+			{
+				CreateThreads(false);
+				threads[0].Start();
+			}
+		}
 
-        public void StopSearch()
-        {
-            lock (packages)
-            {
-                packages.Clear();
-                forcestop = true;
-            }
-            
-            bool stopped =  !Searching;
-            while (!stopped)
-            {
-                Wait.Message = "Stopping Search...";
-                System.Threading.Thread.CurrentThread.Join(500);
+		public bool Searching
+		{
+			get { return runningthreads > 0; }
+		}
 
-                stopped = !Searching;
-            }            
-        }
-        delegate void InvokeDoneSearching();
-        void DoneSearching()
-        {
+		public void StopSearch()
+		{
+			lock (packages)
+			{
+				packages.Clear();
+				forcestop = true;
+			}
 
-            Wait.Progress++;
-            lv.TileColumns = new int[] { 1, 2, 3, 4, 5 };
-            lv.ShowGroups = true;
-            sorter.Sorting = SortOrder.Ascending;
-            lv.Sort();
-            lv.EndUpdate();
-            lv.DoubleBuffering = true;
+			bool stopped = !Searching;
+			while (!stopped)
+			{
+				Wait.Message = "Stopping Search...";
+				System.Threading.Thread.CurrentThread.Join(500);
 
-            if (searchtool!=null) searchtool.NotifyFinishedSearch();
-            pnErr.Text = pnErr.Text.Replace("{nr}", Helper.WindowsRegistry.MaxSearchResults.ToString());
-            pnErr.Visible = truncated;
-            Wait.Stop();
+				stopped = !Searching;
+			}
+		}
 
-            System.Diagnostics.Debug.WriteLine("Done Searching");
-        }
+		delegate void InvokeDoneSearching();
 
-        internal void ThreadRunner()
-        {
-            lock (threads)
-            {
-                runningthreads++;
-                System.Diagnostics.Debug.WriteLine("Started Search Thread nr " + runningthreads + ".");
-            }
-            while (true)
-            {
-                string name = "";
-                lock (packages)
-                {
-                    if (packages.Count == 0 || truncated) break;
-                    name = packages[0];
-                    packages.RemoveAt(0);
-                    Wait.Progress++;
-                    Wait.Message = SimPe.Localization.GetString("Searching") +" "+ System.IO.Path.GetFileNameWithoutExtension(name);
-                    System.Diagnostics.Debug.WriteLine("Searching "+System.IO.Path.GetFileNameWithoutExtension(name));
-                }
+		void DoneSearching()
+		{
+			Wait.Progress++;
+			lv.TileColumns = new int[] { 1, 2, 3, 4, 5 };
+			lv.ShowGroups = true;
+			sorter.Sorting = SortOrder.Ascending;
+			lv.Sort();
+			lv.EndUpdate();
+			lv.DoubleBuffering = true;
 
-                if (System.IO.File.Exists(name))
-                {
-                    SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(name);
-                    searchtool.SearchPackage(pkg);
-                }
-            }
+			if (searchtool != null)
+				searchtool.NotifyFinishedSearch();
+			pnErr.Text = pnErr.Text.Replace(
+				"{nr}",
+				Helper.WindowsRegistry.MaxSearchResults.ToString()
+			);
+			pnErr.Visible = truncated;
+			Wait.Stop();
 
-            lock (threads)
-            {
-                runningthreads--;
-                System.Diagnostics.Debug.WriteLine("Finished Search Thread. " + runningthreads + " threads remain active.");
-                if (runningthreads == 0)
-                {
-                    if (this.InvokeRequired) this.BeginInvoke(new InvokeDoneSearching(DoneSearching));
-                    else DoneSearching();
-                }
-            }
-        }
-        #endregion
+			System.Diagnostics.Debug.WriteLine("Done Searching");
+		}
 
-        protected override void OnControlRemoved(ControlEventArgs e)
-        {
-            base.OnControlRemoved(e);
-            System.Diagnostics.Debug.WriteLine("Stopping Search...");
-            StopSearch();
-            System.Diagnostics.Debug.WriteLine("Stopped Search...");
-        }
-    }
+		internal void ThreadRunner()
+		{
+			lock (threads)
+			{
+				runningthreads++;
+				System.Diagnostics.Debug.WriteLine(
+					"Started Search Thread nr " + runningthreads + "."
+				);
+			}
+			while (true)
+			{
+				string name = "";
+				lock (packages)
+				{
+					if (packages.Count == 0 || truncated)
+						break;
+					name = packages[0];
+					packages.RemoveAt(0);
+					Wait.Progress++;
+					Wait.Message =
+						SimPe.Localization.GetString("Searching")
+						+ " "
+						+ System.IO.Path.GetFileNameWithoutExtension(name);
+					System.Diagnostics.Debug.WriteLine(
+						"Searching " + System.IO.Path.GetFileNameWithoutExtension(name)
+					);
+				}
 
-    /*internal class FinderThread : Ambertation.Threading.StoppableThread, System.IDisposable
-    {
-        FinderDock fd;
-        internal FinderThread(FinderDock fd)
-            : base(true)
-        {
-            this.fd = fd;
-        }
-        protected override void StartThread()
-        {
-            fd.FindByStringMatch();
-        }
+				if (System.IO.File.Exists(name))
+				{
+					SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(name);
+					searchtool.SearchPackage(pkg);
+				}
+			}
 
-        public void Execute()
-        {
-            this.ExecuteThread(System.Threading.ThreadPriority.Normal, "Finder", false);
-        }
-        #region IDisposable Member
+			lock (threads)
+			{
+				runningthreads--;
+				System.Diagnostics.Debug.WriteLine(
+					"Finished Search Thread. "
+						+ runningthreads
+						+ " threads remain active."
+				);
+				if (runningthreads == 0)
+				{
+					if (this.InvokeRequired)
+						this.BeginInvoke(new InvokeDoneSearching(DoneSearching));
+					else
+						DoneSearching();
+				}
+			}
+		}
+		#endregion
 
-        public override void Dispose()
-        {
-            fd = null;
-        }
+		protected override void OnControlRemoved(ControlEventArgs e)
+		{
+			base.OnControlRemoved(e);
+			System.Diagnostics.Debug.WriteLine("Stopping Search...");
+			StopSearch();
+			System.Diagnostics.Debug.WriteLine("Stopped Search...");
+		}
+	}
 
-        #endregion
-    }*/
+	/*internal class FinderThread : Ambertation.Threading.StoppableThread, System.IDisposable
+	{
+		FinderDock fd;
+		internal FinderThread(FinderDock fd)
+			: base(true)
+		{
+			this.fd = fd;
+		}
+		protected override void StartThread()
+		{
+			fd.FindByStringMatch();
+		}
+
+		public void Execute()
+		{
+			this.ExecuteThread(System.Threading.ThreadPriority.Normal, "Finder", false);
+		}
+		#region IDisposable Member
+
+		public override void Dispose()
+		{
+			fd = null;
+		}
+
+		#endregion
+	}*/
 }

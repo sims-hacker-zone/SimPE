@@ -25,56 +25,56 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for cGeometryNode.
 	/// </summary>
-	public class GeometryNode
-		: AbstractRcolBlock
+	public class GeometryNode : AbstractRcolBlock
 	{
 		#region Attributes
 		ObjectGraphNode ogn;
 
-		public ObjectGraphNode ObjectGraphNode 
+		public ObjectGraphNode ObjectGraphNode
 		{
 			get { return ogn; }
 			set { ogn = value; }
 		}
 
 		short unknown1;
-		public short Unknown1 
+		public short Unknown1
 		{
 			get { return unknown1; }
 			set { unknown1 = value; }
 		}
 
 		short unknown2;
-		public short Unknown2 
+		public short Unknown2
 		{
 			get { return unknown2; }
 			set { unknown2 = value; }
 		}
 
 		byte unknown3;
-		public byte Unknown3 
+		public byte Unknown3
 		{
 			get { return unknown3; }
 			set { unknown3 = value; }
 		}
 
 		IRcolBlock[] data;
-		public int Count 
+		public int Count
 		{
 			get { return data.Length; }
 		}
-		public IRcolBlock[] Blocks 
+		public IRcolBlock[] Blocks
 		{
 			get { return data; }
 			set { data = value; }
 		}
 		#endregion
-		
+
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public GeometryNode( Rcol parent) : base(parent)
+		public GeometryNode(Rcol parent)
+			: base(parent)
 		{
 			ogn = new ObjectGraphNode(null);
 			this.sgres = new SGResource(null);
@@ -84,7 +84,7 @@ namespace SimPe.Plugin
 
 			data = new IRcolBlock[0];
 		}
-		
+
 		#region IRcolBlock Member
 
 		/// <summary>
@@ -96,21 +96,21 @@ namespace SimPe.Plugin
 			version = reader.ReadUInt32();
 
 			string name = reader.ReadString();
-			uint myid = reader.ReadUInt32();		
+			uint myid = reader.ReadUInt32();
 			ogn.Unserialize(reader);
 			ogn.BlockID = myid;
 
 			name = reader.ReadString();
-			myid = reader.ReadUInt32();		
+			myid = reader.ReadUInt32();
 			sgres.Unserialize(reader);
 			sgres.BlockID = myid;
 
-			if (version==0x0b) 
+			if (version == 0x0b)
 			{
 				unknown1 = reader.ReadInt16();
 			}
 
-			if ((version==0x0b) || (version==0x0c))
+			if ((version == 0x0b) || (version == 0x0c))
 			{
 				unknown2 = reader.ReadInt16();
 				unknown3 = reader.ReadByte();
@@ -118,7 +118,7 @@ namespace SimPe.Plugin
 
 			int count = reader.ReadInt32();
 			data = new IRcolBlock[count];
-			for (int i=0; i<count; i++)
+			for (int i = 0; i < count; i++)
 			{
 				uint id = reader.ReadUInt32();
 				data[i] = Parent.ReadBlock(id, reader);
@@ -130,7 +130,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public override void Serialize(System.IO.BinaryWriter writer)
@@ -145,22 +145,22 @@ namespace SimPe.Plugin
 			writer.Write(sgres.BlockID);
 			sgres.Serialize(writer);
 
-			if (version==0x0b) 
+			if (version == 0x0b)
 			{
 				writer.Write(unknown1);
 			}
 
-			if ((version==0x0b) || (version==0x0c))
+			if ((version == 0x0b) || (version == 0x0c))
 			{
 				writer.Write(unknown2);
 				writer.Write(unknown3);
 			}
 
 			writer.Write((int)data.Length);
-			for (int i=0; i<data.Length; i++)
+			for (int i = 0; i < data.Length; i++)
 			{
 				writer.Write(data[i].BlockID);
-				Parent.WriteBlock(data[i], writer);				
+				Parent.WriteBlock(data[i], writer);
 			}
 		}
 
@@ -169,7 +169,8 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (tGeometryNode==null) tGeometryNode = new SimPe.Plugin.TabPage.GeometryNode();
+				if (tGeometryNode == null)
+					tGeometryNode = new SimPe.Plugin.TabPage.GeometryNode();
 				return tGeometryNode;
 			}
 		}
@@ -178,28 +179,34 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
 		/// </summary>
-		protected override void InitTabPage() 
+		protected override void InitTabPage()
 		{
-			if (tGeometryNode==null) tGeometryNode = new SimPe.Plugin.TabPage.GeometryNode();
+			if (tGeometryNode == null)
+				tGeometryNode = new SimPe.Plugin.TabPage.GeometryNode();
 
-			tGeometryNode.tb_gn_ver.Text = "0x"+Helper.HexString(this.version);
+			tGeometryNode.tb_gn_ver.Text = "0x" + Helper.HexString(this.version);
 
-			tGeometryNode.tb_gn_uk1.Text = "0x"+Helper.HexString((ushort)this.unknown1);
-			tGeometryNode.tb_gn_uk2.Text = "0x"+Helper.HexString((ushort)this.unknown2);
-			tGeometryNode.tb_gn_uk3.Text = "0x"+Helper.HexString(this.unknown3);
+			tGeometryNode.tb_gn_uk1.Text =
+				"0x" + Helper.HexString((ushort)this.unknown1);
+			tGeometryNode.tb_gn_uk2.Text =
+				"0x" + Helper.HexString((ushort)this.unknown2);
+			tGeometryNode.tb_gn_uk3.Text = "0x" + Helper.HexString(this.unknown3);
 
 			tGeometryNode.tb_gn_count.Text = Count.ToString();
 
 			tGeometryNode.cb_gn_list.Items.Clear();
-			
-			foreach (IRcolBlock irb in this.data) SimPe.CountedListItem.Add(tGeometryNode.cb_gn_list, irb);
-			if (tGeometryNode.cb_gn_list.Items.Count>0) tGeometryNode.cb_gn_list.SelectedIndex = 0;
-			else tGeometryNode.BuildChildTabControl(null);
+
+			foreach (IRcolBlock irb in this.data)
+				SimPe.CountedListItem.Add(tGeometryNode.cb_gn_list, irb);
+			if (tGeometryNode.cb_gn_list.Items.Count > 0)
+				tGeometryNode.cb_gn_list.SelectedIndex = 0;
+			else
+				tGeometryNode.BuildChildTabControl(null);
 		}
 
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
-			base.ExtendTabControl (tc);
+			base.ExtendTabControl(tc);
 			this.ogn.AddToTabControl(tc);
 		}
 
@@ -213,31 +220,39 @@ namespace SimPe.Plugin
 			FileTable.FileIndex.Load();
 			return FindReferencingSHPE_NoLoad();
 		}
-			/// <summary>
-			/// Returns the RCOL which lists this Resource in it's ReferencedFiles Attribute
-			/// </summary>
-			/// <returns>null or the RCOl Ressource</returns>
-			/// <remarks>This Version will not Load the FileTable!</remarks>
+
+		/// <summary>
+		/// Returns the RCOL which lists this Resource in it's ReferencedFiles Attribute
+		/// </summary>
+		/// <returns>null or the RCOl Ressource</returns>
+		/// <remarks>This Version will not Load the FileTable!</remarks>
 		public Rcol FindReferencingSHPE_NoLoad()
 		{
-			
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFile(SimPe.Data.MetaData.SHPE, true);
+			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+				FileTable.FileIndex.FindFile(SimPe.Data.MetaData.SHPE, true);
 			string mn = Hashes.StripHashFromName(this.Parent.FileName.Trim().ToLower());
-			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item  in items) 
+			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
 			{
 				Rcol r = new GenericRcol(null, false);
 				//try to open the File in the same package, not in the FileTable Package!
-				if (item.Package.SaveFileName.Trim().ToLower()==parent.Package.SaveFileName.Trim().ToLower()) 
-					r.ProcessData(parent.Package.FindFile(item.FileDescriptor), parent.Package);
+				if (
+					item.Package.SaveFileName.Trim().ToLower()
+					== parent.Package.SaveFileName.Trim().ToLower()
+				)
+					r.ProcessData(
+						parent.Package.FindFile(item.FileDescriptor),
+						parent.Package
+					);
 				else
 					r.ProcessData(item);
 
 				Shape s = (Shape)r.Blocks[0];
-				
-				foreach (ShapeItem i in s.Items) 
+
+				foreach (ShapeItem i in s.Items)
 				{
 					string n = Hashes.StripHashFromName(i.FileName).Trim().ToLower();
-					if (n==mn) return r;
+					if (n == mn)
+						return r;
 				}
 			}
 
@@ -249,7 +264,8 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (this.tGeometryNode!=null) this.tGeometryNode.Dispose();
+			if (this.tGeometryNode != null)
+				this.tGeometryNode.Dispose();
 			tGeometryNode = null;
 		}
 

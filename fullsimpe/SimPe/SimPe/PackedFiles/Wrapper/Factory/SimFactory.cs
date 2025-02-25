@@ -18,12 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces;
+using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper.Factory
 {
-
 	/// <summary>
 	/// The Wrapper Factory for Default Wrappers that ship with SimPe
 	/// </summary>
@@ -32,34 +31,35 @@ namespace SimPe.PackedFiles.Wrapper.Factory
 		#region AbstractWrapperFactory Member
 		public override SimPe.Interfaces.IWrapper[] KnownWrappers
 		{
-			get 
+			get
 			{
-                if (Helper.NoPlugins) 
+				if (Helper.NoPlugins)
 				{
 					return new IWrapper[0];
-                }
-                else if (Helper.StartedGui == Executable.Classic)
-                {
-                    IWrapper[] wrappers = {
-											  new SimPe.PackedFiles.Wrapper.LinkedSDesc(),
-										  };
-                    return wrappers;
-                } 
-				else 
+				}
+				else if (Helper.StartedGui == Executable.Classic)
 				{
-					IWrapper[] wrappers = {
-											  new SimPe.PackedFiles.Wrapper.ExtFamilyTies()	,
-											  new SimPe.PackedFiles.Wrapper.LinkedSDesc(),
-											  new SimPe.PackedFiles.Wrapper.ExtSrel(),
-											  new SimPe.PackedFiles.Wrapper.SimDNA(),
-											  new SimPe.PackedFiles.Wrapper.Scor()
-										  };
+					IWrapper[] wrappers =
+					{
+						new SimPe.PackedFiles.Wrapper.LinkedSDesc(),
+					};
+					return wrappers;
+				}
+				else
+				{
+					IWrapper[] wrappers =
+					{
+						new SimPe.PackedFiles.Wrapper.ExtFamilyTies(),
+						new SimPe.PackedFiles.Wrapper.LinkedSDesc(),
+						new SimPe.PackedFiles.Wrapper.ExtSrel(),
+						new SimPe.PackedFiles.Wrapper.SimDNA(),
+						new SimPe.PackedFiles.Wrapper.Scor(),
+					};
 					return wrappers;
 				}
 			}
 		}
 
 		#endregion
-
 	}
 }

@@ -25,51 +25,56 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for ImportSemiTool.
 	/// </summary>
-    public class SkinWorkshopTool : Interfaces.AbstractTool, Interfaces.ITool
+	public class SkinWorkshopTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
 		/// <summary>
 		/// Windows Registry Link
 		/// </summary>
 		static SimPe.Registry registry;
-		internal static Registry WindowsRegistry 
+		internal static Registry WindowsRegistry
 		{
 			get { return registry; }
 		}
 
 		SkinWorkshop ws;
 
-		internal SkinWorkshopTool() 
+		internal SkinWorkshopTool()
 		{
-			
-
-			if (registry==null) registry = Helper.WindowsRegistry;
+			if (registry == null)
+				registry = Helper.WindowsRegistry;
 
 			ws = new SkinWorkshop();
 		}
 
 		#region ITool Member
 
-		public bool IsEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
+		public bool IsEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
 			return true;
 		}
 
-		public Interfaces.Plugin.IToolResult ShowDialog(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package)
+		public Interfaces.Plugin.IToolResult ShowDialog(
+			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			ref SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
-			
 			SimPe.Interfaces.Files.IPackageFile pkg = ws.Execute(package);
 
-			if (pkg!=null) 
+			if (pkg != null)
 			{
-				if (pkg.Reader!=null) 
+				if (pkg.Reader != null)
 				{
-					if (!pkg.Reader.BaseStream.CanWrite) new ToolResult(false, false);
+					if (!pkg.Reader.BaseStream.CanWrite)
+						new ToolResult(false, false);
 				}
 
 				package = pkg;
 				return new ToolResult(false, true);
-			} 
-			else 
+			}
+			else
 			{
 				return new ToolResult(false, false);
 			}
@@ -80,23 +85,17 @@ namespace SimPe.Plugin
 			return "Object Creation\\Skin Workshop...";
 		}
 
-        #endregion
+		#endregion
 
-        #region IToolExt Member
-        public override System.Drawing.Image Icon
-        {
-            get
-            {
-                return SimPe.GetIcon.SkinWorkshop;
-            }
-        }
-        public override System.Windows.Forms.Shortcut Shortcut
-        {
-            get
-            {
-                return System.Windows.Forms.Shortcut.None;
-            }
-        }
-        #endregion
+		#region IToolExt Member
+		public override System.Drawing.Image Icon
+		{
+			get { return SimPe.GetIcon.SkinWorkshop; }
+		}
+		public override System.Windows.Forms.Shortcut Shortcut
+		{
+			get { return System.Windows.Forms.Shortcut.None; }
+		}
+		#endregion
 	}
 }

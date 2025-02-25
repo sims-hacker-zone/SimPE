@@ -22,12 +22,11 @@ using SimPe;
 
 namespace SimPe.Cache
 {
-
 	/// <summary>
 	/// Contains one CacheItem
 	/// </summary>
 	public interface ICacheItem
-	{		
+	{
 		/// <summary>
 		/// Load the Item from the Stream
 		/// </summary>
@@ -38,14 +37,11 @@ namespace SimPe.Cache
 		/// Save the Item to the Stream
 		/// </summary>
 		/// <param name="writer">the Stream Writer</param>
-		void Save(System.IO.BinaryWriter writer) ;
+		void Save(System.IO.BinaryWriter writer);
 
 		/// <summary>
 		/// Returns the Version of this CacheItem
 		/// </summary>
-		byte Version 
-		{
-			get;
-		}
+		byte Version { get; }
 	}
 }

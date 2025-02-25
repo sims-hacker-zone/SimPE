@@ -22,39 +22,52 @@ using System;
 namespace SimPe.Actions.Default
 {
 	/// <summary>
-    /// Summary description for ReplaceAction.
+	/// Summary description for ReplaceAction.
 	/// </summary>
 	public class StartExternalToolAction : ReplaceAction
 	{
 		ToolLoaderItemExt item;
+
 		public StartExternalToolAction(ToolLoaderItemExt item)
 		{
 			this.item = item;
 		}
-		#region IToolAction Member		
 
-		public override bool ChangeEnabledStateEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
+		#region IToolAction Member
+
+		public override bool ChangeEnabledStateEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs es
+		)
 		{
-			if (es.LoadedPackage==null) return false;
-			if (es.Count!=1) return false;
+			if (es.LoadedPackage == null)
+				return false;
+			if (es.Count != 1)
+				return false;
 
-			foreach (SimPe.Events.ResourceContainer e in es)			
+			foreach (SimPe.Events.ResourceContainer e in es)
 				if (e.HasFileDescriptor)
-					{
-						if (item.Type==0xffffffff) return true;
-						if (item.Type==e.Resource.FileDescriptor.Type) return true;
-					}
+				{
+					if (item.Type == 0xffffffff)
+						return true;
+					if (item.Type == e.Resource.FileDescriptor.Type)
+						return true;
+				}
 
 			return false;
 		}
 
-		public override void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
+		public override void ExecuteEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs es
+		)
 		{
-			if (!ChangeEnabledStateEventHandler(null, es)) return;
+			if (!ChangeEnabledStateEventHandler(null, es))
+				return;
 
-			foreach (SimPe.Events.ResourceContainer e in es) 
-				item.Execute(e.Resource);													
-		}		
+			foreach (SimPe.Events.ResourceContainer e in es)
+				item.Execute(e.Resource);
+		}
 
 		#endregion
 
@@ -62,18 +75,15 @@ namespace SimPe.Actions.Default
 
 		public override string ToString()
 		{
-			return item.Name+"...";
+			return item.Name + "...";
 		}
 
 		#endregion
 
-		#region IToolExt Member		
+		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
-			get
-			{
-                return SimPe.GetIcon.actionStart;
-			}
+			get { return SimPe.GetIcon.actionStart; }
 		}
 		#endregion
 	}

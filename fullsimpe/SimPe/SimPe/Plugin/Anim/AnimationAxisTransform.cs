@@ -27,52 +27,56 @@ namespace SimPe.Plugin.Anim
 	/// <summary>
 	/// This Exception can be cause when dealing with AnimationAxisTransform classes
 	/// </summary>
-	public class AxisTransformException : Exception 
+	public class AxisTransformException : Exception
 	{
-		public AxisTransformException(string message) : base(message) {}
+		public AxisTransformException(string message)
+			: base(message) { }
 	}
 
 	/// <summary>
 	/// This Represents one Transformation within the <see cref="AnimationAxisTransformBlock"/>
 	/// </summary>
-	public class AnimationAxisTransform : System.IDisposable, System.ICloneable, System.IComparable
+	public class AnimationAxisTransform
+		: System.IDisposable,
+			System.ICloneable,
+			System.IComparable
 	{
 		#region Attributes
 		int index;
+
 		/// <summary>
 		/// Index of this Object within the Parent List
 		/// </summary>
-		[Description("Index of this Object within the Parent List"), Category("Information")]
+		[
+			Description("Index of this Object within the Parent List"),
+			Category("Information")
+		]
 		public int Index
 		{
-			get {return index; }
+			get { return index; }
 		}
 
-        public AnimationAxisTransformBlock parent;
+		public AnimationAxisTransformBlock parent;
+
 		/// <summary>
 		/// Retuens the Parent of this Block
 		/// </summary>
 		[Browsable(false)]
 		public AnimationAxisTransformBlock Parent
 		{
-			get {return parent;}
+			get { return parent; }
 		}
 
 		ushort tc;
+
 		/// <summary>
 		/// The TimeCode for this Frame
 		/// </summary>
 		[Description("When should this Frame get displayed?"), Category("Information")]
 		public short TimeCode
 		{
-			get 
-			{
-				return  (short)(tc & 0x7fff);
-			}
-			set 
-			{
-				tc = (ushort)( (tc & 0x8000) | (ushort)(value & 0x7fff) );
-			}
+			get { return (short)(tc & 0x7fff); }
+			set { tc = (ushort)((tc & 0x8000) | (ushort)(value & 0x7fff)); }
 		}
 
 		/// <summary>
@@ -81,14 +85,12 @@ namespace SimPe.Plugin.Anim
 		[Description("Use this KeyFrame as a Linear Pole."), Category("Information")]
 		public bool Linear
 		{
-			get 
-			{
-				return ((tc & 0x8000) == 0x8000);
-			}
+			get { return ((tc & 0x8000) == 0x8000); }
 			set
 			{
 				tc = (ushort)(tc & 0x7fff);
-				if (value) tc = (ushort)(tc | 0x8000);
+				if (value)
+					tc = (ushort)(tc | 0x8000);
 			}
 		}
 
@@ -98,32 +100,37 @@ namespace SimPe.Plugin.Anim
 		[Description("True if the Parent is Locked."), Category("Information")]
 		public bool ParentLocked
 		{
-			get 
+			get
 			{
-				if (parent==null) return true;
+				if (parent == null)
+					return true;
 				return parent.Locked;
 			}
-			set
-			{
-				parent.Locked = value;
-			}
+			set { parent.Locked = value; }
 		}
 
 		short param;
+
 		/// <summary>
 		/// The Transformation Parameter for this Frame
 		/// </summary>
-		[Description("The Transformation Parameter for this Frame."), Category("Information")]
+		[
+			Description("The Transformation Parameter for this Frame."),
+			Category("Information")
+		]
 		public short Parameter
 		{
-			get {return param;}
-			set {param = value;}
+			get { return param; }
+			set { param = value; }
 		}
 
 		/// <summary>
 		/// The Transformation Parameter for this Frame
 		/// </summary>
-		[Description("The Transformation Parameter as Floatingpoint Value."), Category("Information")]
+		[
+			Description("The Transformation Parameter as Floatingpoint Value."),
+			Category("Information")
+		]
 		public float ParameterFloat
 		{
 			get { return this.GetCompressedFloat(Parameter); }
@@ -133,20 +140,20 @@ namespace SimPe.Plugin.Anim
 		short u1;
 		public short Unknown1
 		{
-			get {return u1;}
-			set {u1 = value;}
+			get { return u1; }
+			set { u1 = value; }
 		}
 
 		short u2;
 		public short Unknown2
 		{
-			get {return u2;}
-			set {u2 = value;}
+			get { return u2; }
+			set { u2 = value; }
 		}
 		#endregion
 
 		/// <summary>
-		/// Create a new Instance. 
+		/// Create a new Instance.
 		/// </summary>
 		/// <param name="parent">The parent Block</param>
 		/// <remarks>
@@ -160,11 +167,11 @@ namespace SimPe.Plugin.Anim
 			Reset();
 		}
 
-		public AnimationAxisTransform() : this(null, -1) {}
+		public AnimationAxisTransform()
+			: this(null, -1) { }
 
-		public AnimationAxisTransform(AnimationAxisTransformBlock parent) : this(parent, -1)
-		{
-		}
+		public AnimationAxisTransform(AnimationAxisTransformBlock parent)
+			: this(parent, -1) { }
 
 		public AnimationAxisTransform CloneBase()
 		{
@@ -206,27 +213,28 @@ namespace SimPe.Plugin.Anim
 		internal void UnserializeData(System.IO.BinaryReader reader)
 		{
 			Reset();
-			short[]datas = new short[parent.TokenSize];			
-			for (int i=0; i<datas.Length; i++) datas[i] = reader.ReadInt16();
+			short[] datas = new short[parent.TokenSize];
+			for (int i = 0; i < datas.Length; i++)
+				datas[i] = reader.ReadInt16();
 
-			if (parent.Type == AnimationTokenType.TwoByte) 
+			if (parent.Type == AnimationTokenType.TwoByte)
 			{
 				param = datas[0];
-			} 
-			else if (parent.Type == AnimationTokenType.SixByte) 
+			}
+			else if (parent.Type == AnimationTokenType.SixByte)
 			{
 				tc = (ushort)datas[0];
 				param = datas[1];
 				u1 = datas[2];
-			} 
-			else 
+			}
+			else
 			{
 				tc = (ushort)datas[0];
 				param = datas[1];
 				u1 = datas[2];
 				u2 = datas[3];
 			}
-		}	
+		}
 
 		/// <summary>
 		/// Serializes to a BinaryStream from the Attributes of this Instance
@@ -234,19 +242,19 @@ namespace SimPe.Plugin.Anim
 		/// <param name="writer">The Stream that receives the Data</param>
 		internal void SerializeData(System.IO.BinaryWriter writer)
 		{
-			short[]datas = new short[parent.TokenSize];
+			short[] datas = new short[parent.TokenSize];
 
-			if (parent.Type == AnimationTokenType.TwoByte) 
+			if (parent.Type == AnimationTokenType.TwoByte)
 			{
 				datas[0] = param;
-			} 
-			else if (parent.Type == AnimationTokenType.SixByte) 
+			}
+			else if (parent.Type == AnimationTokenType.SixByte)
 			{
 				datas[0] = (short)tc;
 				datas[1] = param;
 				datas[2] = u1;
-			} 
-			else 
+			}
+			else
 			{
 				datas[0] = (short)tc;
 				datas[1] = param;
@@ -254,15 +262,15 @@ namespace SimPe.Plugin.Anim
 				datas[3] = u2;
 			}
 
-			for (int i=0; i<datas.Length; i++) writer.Write(datas[i]);
+			for (int i = 0; i < datas.Length; i++)
+				writer.Write(datas[i]);
 		}
-
 
 		#region IDisposable Member
 
 		public void Dispose()
 		{
-			if (parent!=null)
+			if (parent != null)
 			{
 				parent = null;
 			}
@@ -281,18 +289,22 @@ namespace SimPe.Plugin.Anim
 
 		public override string ToString()
 		{
-			string s =  TimeCode.ToString()+": "+Parameter.ToString();
-			if (parent==null) 
+			string s = TimeCode.ToString() + ": " + Parameter.ToString();
+			if (parent == null)
 			{
-				s +=", "+Unknown1.ToString()+"; "+Unknown2.ToString();
-			} 
-			else 
-			{
-				if (parent.Type == AnimationTokenType.SixByte) s += "; "+Unknown1.ToString();
-				if (parent.Type == AnimationTokenType.EightByte) s += "; "+Unknown1.ToString()+"; "+Unknown2.ToString();
+				s += ", " + Unknown1.ToString() + "; " + Unknown2.ToString();
 			}
-			if (Linear) s += " (linear)";
-			if (ParentLocked) s += " (locked)";
+			else
+			{
+				if (parent.Type == AnimationTokenType.SixByte)
+					s += "; " + Unknown1.ToString();
+				if (parent.Type == AnimationTokenType.EightByte)
+					s += "; " + Unknown1.ToString() + "; " + Unknown2.ToString();
+			}
+			if (Linear)
+				s += " (linear)";
+			if (ParentLocked)
+				s += " (locked)";
 			return s;
 		}
 
@@ -300,30 +312,39 @@ namespace SimPe.Plugin.Anim
 
 		public int CompareTo(object obj)
 		{
-			if (obj==null) return 1;
-			if (!(obj is AnimationAxisTransform)) return -1;
-			
+			if (obj == null)
+				return 1;
+			if (!(obj is AnimationAxisTransform))
+				return -1;
+
 			AnimationAxisTransform aat = (AnimationAxisTransform)obj;
-			return this.TimeCode.CompareTo(aat.TimeCode);			
+			return this.TimeCode.CompareTo(aat.TimeCode);
 		}
 
 		#endregion
 
 		#region Float Converters
-		
+
 		public float GetCompressedFloat(short val)
-		{			
-			if (parent!=null) return parent.GetCompressedFloat(val);
-			return AnimationAxisTransformBlock.GetCompressedFloat(val, AnimationAxisTransformBlock.SCALE); 
+		{
+			if (parent != null)
+				return parent.GetCompressedFloat(val);
+			return AnimationAxisTransformBlock.GetCompressedFloat(
+				val,
+				AnimationAxisTransformBlock.SCALE
+			);
 		}
 
 		public short FromCompressedFloat(float val)
-		{			
-			if (parent!=null) return parent.FromCompressedFloat(val);
-			return AnimationAxisTransformBlock.FromCompressedFloat(val, AnimationAxisTransformBlock.SCALE); 
+		{
+			if (parent != null)
+				return parent.FromCompressedFloat(val);
+			return AnimationAxisTransformBlock.FromCompressedFloat(
+				val,
+				AnimationAxisTransformBlock.SCALE
+			);
 		}
-		
-		
+
 		#endregion
 	}
 }

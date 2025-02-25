@@ -30,89 +30,111 @@ using Ambertation.Windows.Forms;
 
 namespace SimPe.Windows.Forms
 {
-    public partial class SplashForm : TransparentForm
-    {
-        static Image bg;
-        const uint WM_CHANGE_MESSAGE = Ambertation.Windows.Forms.APIHelp.WM_APP + 0x0001;
-        const uint WM_SHOW_HIDE = Ambertation.Windows.Forms.APIHelp.WM_APP + 0x0002;
-        IntPtr myhandle;
+	public partial class SplashForm : TransparentForm
+	{
+		static Image bg;
+		const uint WM_CHANGE_MESSAGE =
+			Ambertation.Windows.Forms.APIHelp.WM_APP + 0x0001;
+		const uint WM_SHOW_HIDE = Ambertation.Windows.Forms.APIHelp.WM_APP + 0x0002;
+		IntPtr myhandle;
 
-        public SplashForm()
-        {
-            msg = "";
-            InitializeComponent();
-            this.MinimumSize = new Size(461, 212);
-            this.MaximumSize = new Size(461, 212);
-            myhandle = Handle;
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.FormBorderStyle = FormBorderStyle.None;
-            lbtxt.Text = msg;
-            lbver.Text = Helper.VersionToString(Helper.SimPeVersion);
-                if (Helper.WindowsRegistry.HiddenMode && Helper.QARelease) lbver.Text += " [Debug, QA]";
-                else if (Helper.WindowsRegistry.HiddenMode) lbver.Text += " [Debug]";
-                else if (Helper.QARelease) lbver.Text += " [QA]";
-        }
+		public SplashForm()
+		{
+			msg = "";
+			InitializeComponent();
+			this.MinimumSize = new Size(461, 212);
+			this.MaximumSize = new Size(461, 212);
+			myhandle = Handle;
+			this.StartPosition = FormStartPosition.CenterScreen;
+			this.FormBorderStyle = FormBorderStyle.None;
+			lbtxt.Text = msg;
+			lbver.Text = Helper.VersionToString(Helper.SimPeVersion);
+			if (Helper.WindowsRegistry.HiddenMode && Helper.QARelease)
+				lbver.Text += " [Debug, QA]";
+			else if (Helper.WindowsRegistry.HiddenMode)
+				lbver.Text += " [Debug]";
+			else if (Helper.QARelease)
+				lbver.Text += " [QA]";
+		}
 
-        protected override void OnCreateBitmap(Graphics g, Bitmap b)
-        {
-            if (bg == null)
-            {
-                bg = Image.FromStream(typeof(HelpForm).Assembly.GetManifestResourceStream("SimPe.img.splash.png"));
-            }
-            g.DrawImage(bg, new Point(0, 0));
-            g.Dispose();
-        }
+		protected override void OnCreateBitmap(Graphics g, Bitmap b)
+		{
+			if (bg == null)
+			{
+				bg = Image.FromStream(
+					typeof(HelpForm).Assembly.GetManifestResourceStream(
+						"SimPe.img.splash.png"
+					)
+				);
+			}
+			g.DrawImage(bg, new Point(0, 0));
+			g.Dispose();
+		}
 
-        string msg;
-        public string Message
-        {
-            get { return msg; }
-            set
-            {
-                lock (msg)
-                {
-                    if (msg != value)
-                    {
-                        if (value == null) msg = "";
-                        else msg = value;
+		string msg;
+		public string Message
+		{
+			get { return msg; }
+			set
+			{
+				lock (msg)
+				{
+					if (msg != value)
+					{
+						if (value == null)
+							msg = "";
+						else
+							msg = value;
 
-                        SendMessageChangeSignal();
-                    }
-                }
-            }
-        }
+						SendMessageChangeSignal();
+					}
+				}
+			}
+		}
 
-        protected void SendMessageChangeSignal()
-        {
-            Ambertation.Windows.Forms.APIHelp.SendMessage(myhandle, WM_CHANGE_MESSAGE, 0, 0);
-        }
+		protected void SendMessageChangeSignal()
+		{
+			Ambertation.Windows.Forms.APIHelp.SendMessage(
+				myhandle,
+				WM_CHANGE_MESSAGE,
+				0,
+				0
+			);
+		}
 
-        protected override void WndProc(ref System.Windows.Forms.Message m)
-        {
-            if (m.HWnd == Handle)
-            {
-                if (m.Msg == WM_CHANGE_MESSAGE)
-                {
-                    this.lbtxt.Text = Message;
-                }
-                else if (m.Msg == WM_SHOW_HIDE)
-                {
-                    int i = m.WParam.ToInt32();
-                    if (i == 1) { if (!this.Visible) this.ShowDialog(); else Application.DoEvents(); }
-                    else this.Close();
-                }
-            }
-            base.WndProc(ref m);
-        }
+		protected override void WndProc(ref System.Windows.Forms.Message m)
+		{
+			if (m.HWnd == Handle)
+			{
+				if (m.Msg == WM_CHANGE_MESSAGE)
+				{
+					this.lbtxt.Text = Message;
+				}
+				else if (m.Msg == WM_SHOW_HIDE)
+				{
+					int i = m.WParam.ToInt32();
+					if (i == 1)
+					{
+						if (!this.Visible)
+							this.ShowDialog();
+						else
+							Application.DoEvents();
+					}
+					else
+						this.Close();
+				}
+			}
+			base.WndProc(ref m);
+		}
 
-        public void StartSplash()
-        {
-            Ambertation.Windows.Forms.APIHelp.SendMessage(myhandle, WM_SHOW_HIDE, 1, 0);
-        }
+		public void StartSplash()
+		{
+			Ambertation.Windows.Forms.APIHelp.SendMessage(myhandle, WM_SHOW_HIDE, 1, 0);
+		}
 
-        public void StopSplash()
-        {
-            Ambertation.Windows.Forms.APIHelp.SendMessage(myhandle, WM_SHOW_HIDE, 0, 0);
-        }
-    }
+		public void StopSplash()
+		{
+			Ambertation.Windows.Forms.APIHelp.SendMessage(myhandle, WM_SHOW_HIDE, 0, 0);
+		}
+	}
 }

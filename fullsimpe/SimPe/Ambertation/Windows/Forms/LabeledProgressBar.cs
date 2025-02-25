@@ -20,8 +20,8 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Ambertation.Windows.Forms
@@ -38,8 +38,8 @@ namespace Ambertation.Windows.Forms
 		private System.Windows.Forms.Label lb;
 		private Ambertation.Windows.Forms.SubExtProgressBar pb;
 		private System.Windows.Forms.TextBox tb;
-		
-		/// <summary> 
+
+		/// <summary>
 		/// Erforderliche Designervariable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
@@ -47,18 +47,19 @@ namespace Ambertation.Windows.Forms
 		public LabeledProgressBar()
 		{
 			SetStyle(
-				ControlStyles.SupportsTransparentBackColor |
-				ControlStyles.AllPaintingInWmPaint |
-				//ControlStyles.Opaque |
-				ControlStyles.UserPaint 
-				| ControlStyles.DoubleBuffer
-				,true);
+				ControlStyles.SupportsTransparentBackColor
+					| ControlStyles.AllPaintingInWmPaint
+					|
+					//ControlStyles.Opaque |
+					ControlStyles.UserPaint
+					| ControlStyles.DoubleBuffer,
+				true
+			);
 
-			
 			BackColor = Color.Transparent;
 			ns = 1f;
-			
-			internalupdate =false;
+
+			internalupdate = false;
 			nf = "N0";
 			nsu = "";
 			npre = "";
@@ -76,47 +77,35 @@ namespace Ambertation.Windows.Forms
 		}
 
 		#region Public Properties
-		
+
 		public ProgresBarStyle Style
 		{
-			get {return pb.Style; }
-			set
-			{
-				pb.Style = value;
-			}
+			get { return pb.Style; }
+			set { pb.Style = value; }
 		}
 
 		public Color SelectedColor
 		{
-			get {return pb.SelectedColor; }
-			set
-			{
-				pb.SelectedColor = value;
-			}
+			get { return pb.SelectedColor; }
+			set { pb.SelectedColor = value; }
 		}
 
 		public Color UnselectedColor
 		{
-			get {return pb.UnselectedColor; }
-			set
-			{
-				pb.UnselectedColor = value;
-			}
+			get { return pb.UnselectedColor; }
+			set { pb.UnselectedColor = value; }
 		}
 
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public int TokenWidth
 		{
-			get {return pb.TokenWidth; }			
+			get { return pb.TokenWidth; }
 		}
 
 		public int TokenCount
 		{
-			get {return pb.TokenCount; }
-			set
-			{
-				pb.TokenCount = value;
-			}
+			get { return pb.TokenCount; }
+			set { pb.TokenCount = value; }
 		}
 
 		[Localizable(true)]
@@ -124,7 +113,7 @@ namespace Ambertation.Windows.Forms
 		{
 			get { return pntb.Width; }
 			set { pntb.Width = value; }
-		}		
+		}
 
 		[Localizable(true)]
 		public string LabelText
@@ -143,7 +132,7 @@ namespace Ambertation.Windows.Forms
 		public int Maximum
 		{
 			get { return pb.Maximum; }
-			set 
+			set
 			{
 				pb.Maximum = Math.Max(1, value);
 				Update();
@@ -152,10 +141,10 @@ namespace Ambertation.Windows.Forms
 
 		public int Value
 		{
-			get { return pb.Value+this.NumberOffset; }
-			set 
+			get { return pb.Value + this.NumberOffset; }
+			set
 			{
-				pb.Value = value-this.NumberOffset;
+				pb.Value = value - this.NumberOffset;
 				Update();
 			}
 		}
@@ -164,10 +153,11 @@ namespace Ambertation.Windows.Forms
 		public double NumberScale
 		{
 			get { return ns; }
-			set 
+			set
 			{
 				ns = value;
-				if (ns==0) ns = 1;
+				if (ns == 0)
+					ns = 1;
 				Update();
 			}
 		}
@@ -176,7 +166,7 @@ namespace Ambertation.Windows.Forms
 		public string NumberFormat
 		{
 			get { return nf; }
-			set 
+			set
 			{
 				nf = value;
 				Update();
@@ -187,7 +177,7 @@ namespace Ambertation.Windows.Forms
 		string NumberPrefix
 		{
 			get { return npre; }
-			set 
+			set
 			{
 				npre = value;
 				Update();
@@ -198,7 +188,7 @@ namespace Ambertation.Windows.Forms
 		string NumberSuffix
 		{
 			get { return nsu; }
-			set 
+			set
 			{
 				nsu = value;
 				Update();
@@ -209,7 +199,7 @@ namespace Ambertation.Windows.Forms
 		public int NumberOffset
 		{
 			get { return no; }
-			set 
+			set
 			{
 				no = value;
 				Update();
@@ -220,7 +210,7 @@ namespace Ambertation.Windows.Forms
 		public int DisplayOffset
 		{
 			get { return dno; }
-			set 
+			set
 			{
 				dno = value;
 				Update();
@@ -234,29 +224,31 @@ namespace Ambertation.Windows.Forms
 
 		protected void FireChangedEvent(bool both)
 		{
-			if (Changed!=null && both) Changed(this, new EventArgs());
-			if (ChangedValue!=null) ChangedValue(this, new EventArgs());
+			if (Changed != null && both)
+				Changed(this, new EventArgs());
+			if (ChangedValue != null)
+				ChangedValue(this, new EventArgs());
 		}
 		#endregion
 
-		/// <summary> 
+		/// <summary>
 		/// Die verwendeten Ressourcen bereinigen.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
-				if(components != null)
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
 
 		#region von Designer
-		/// <summary> 
-		/// Erforderliche Methode für die Designerunterstützung. 
+		/// <summary>
+		/// Erforderliche Methode für die Designerunterstützung.
 		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
 		/// </summary>
 		private void InitializeComponent()
@@ -271,9 +263,9 @@ namespace Ambertation.Windows.Forms
 			this.pntb.SuspendLayout();
 			this.pnlb.SuspendLayout();
 			this.SuspendLayout();
-			// 
+			//
 			// pn
-			// 
+			//
 			this.pn.Controls.Add(this.pb);
 			this.pn.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pn.DockPadding.Left = 8;
@@ -282,11 +274,16 @@ namespace Ambertation.Windows.Forms
 			this.pn.Name = "pn";
 			this.pn.Size = new System.Drawing.Size(280, 15);
 			this.pn.TabIndex = 0;
-			// 
+			//
 			// pb
-			// 
+			//
 			this.pb.BackColor = System.Drawing.Color.Transparent;
-			this.pb.BorderColor = System.Drawing.Color.FromArgb(((System.Byte)(100)), ((System.Byte)(0)), ((System.Byte)(0)), ((System.Byte)(0)));
+			this.pb.BorderColor = System.Drawing.Color.FromArgb(
+				((System.Byte)(100)),
+				((System.Byte)(0)),
+				((System.Byte)(0)),
+				((System.Byte)(0))
+			);
 			this.pb.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pb.Gradient = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
 			this.pb.GradientEndColor = System.Drawing.Color.White;
@@ -303,31 +300,43 @@ namespace Ambertation.Windows.Forms
 			this.pb.TabIndex = 0;
 			this.pb.UnselectedColor = System.Drawing.Color.Black;
 			this.pb.Value = 0;
-			this.pb.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pb_MouseUp);
-			this.pb.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pb_MouseMove);
-			this.pb.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pb_MouseDown);
-			// 
+			this.pb.MouseUp += new System.Windows.Forms.MouseEventHandler(
+				this.pb_MouseUp
+			);
+			this.pb.MouseMove += new System.Windows.Forms.MouseEventHandler(
+				this.pb_MouseMove
+			);
+			this.pb.MouseDown += new System.Windows.Forms.MouseEventHandler(
+				this.pb_MouseDown
+			);
+			//
 			// lb
-			// 
+			//
 			this.lb.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.lb.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.lb.Font = new System.Drawing.Font(
+				"Tahoma",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.lb.Location = new System.Drawing.Point(0, -8);
 			this.lb.Name = "lb";
 			this.lb.Size = new System.Drawing.Size(80, 23);
 			this.lb.TabIndex = 0;
 			this.lb.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-			// 
+			//
 			// pntb
-			// 
+			//
 			this.pntb.Controls.Add(this.tb);
 			this.pntb.Dock = System.Windows.Forms.DockStyle.Right;
 			this.pntb.Location = new System.Drawing.Point(360, 0);
 			this.pntb.Name = "pntb";
 			this.pntb.Size = new System.Drawing.Size(40, 15);
 			this.pntb.TabIndex = 1;
-			// 
+			//
 			// tb
-			// 
+			//
 			this.tb.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.tb.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.tb.Location = new System.Drawing.Point(0, 1);
@@ -336,111 +345,127 @@ namespace Ambertation.Windows.Forms
 			this.tb.TabIndex = 0;
 			this.tb.Text = "";
 			this.tb.TextChanged += new System.EventHandler(this.tb_TextChanged);
-			// 
+			//
 			// pnlb
-			// 
+			//
 			this.pnlb.Controls.Add(this.lb);
 			this.pnlb.Dock = System.Windows.Forms.DockStyle.Left;
 			this.pnlb.Location = new System.Drawing.Point(0, 0);
 			this.pnlb.Name = "pnlb";
 			this.pnlb.Size = new System.Drawing.Size(80, 15);
 			this.pnlb.TabIndex = 2;
-			// 
+			//
 			// LabeledProgressBar
-			// 
+			//
 			this.Controls.Add(this.pn);
 			this.Controls.Add(this.pnlb);
 			this.Controls.Add(this.pntb);
 			this.DockPadding.Bottom = 5;
-			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.Font = new System.Drawing.Font(
+				"Tahoma",
+				8.25F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.Name = "LabeledProgressBar";
 			this.Size = new System.Drawing.Size(400, 20);
 			this.pn.ResumeLayout(false);
 			this.pntb.ResumeLayout(false);
 			this.pnlb.ResumeLayout(false);
 			this.ResumeLayout(false);
-
 		}
 		#endregion
 
 		bool internalupdate;
+
 		public new void Update()
-		{			
-			if (internalupdate) return;
+		{
+			if (internalupdate)
+				return;
 			internalupdate = true;
-			try 
+			try
 			{
 				double disp = ((float)Value) * ns + dno;
 				tb.Text = npre + disp.ToString(nf) + nsu;
 			}
-			catch {}
-			finally 
+			catch { }
+			finally
 			{
 				internalupdate = false;
 			}
-
 		}
-        protected override void OnVisibleChanged(EventArgs e)
-        {
-            base.OnVisibleChanged(e);
-            pb.Visible = this.Visible;            
-        }
-		
+
+		protected override void OnVisibleChanged(EventArgs e)
+		{
+			base.OnVisibleChanged(e);
+			pb.Visible = this.Visible;
+		}
 
 		private void tb_TextChanged(object sender, System.EventArgs e)
 		{
-			
-			if (internalupdate) 
+			if (internalupdate)
 			{
 				FireChangedEvent(true);
 				return;
 			}
 			internalupdate = true;
-			try 
+			try
 			{
-				int val = (int)((((Convert.ToDouble(tb.Text)-dno) / ns)) );
-				Value = Math.Max(pb.Minimum, Math.Min(pb.Maximum, val));				
+				int val = (int)((((Convert.ToDouble(tb.Text) - dno) / ns)));
+				Value = Math.Max(pb.Minimum, Math.Min(pb.Maximum, val));
 			}
-			catch {}
-			finally 
+			catch { }
+			finally
 			{
 				FireChangedEvent(true);
 				internalupdate = false;
-			}	
-		
-			
+			}
 		}
 
-		private void ProgressBarUpdate(System.Windows.Forms.MouseEventArgs e) 
+		private void ProgressBarUpdate(System.Windows.Forms.MouseEventArgs e)
 		{
-			if (e!=null) 
+			if (e != null)
 			{
-				int nval = Math.Max(pb.Minimum, Math.Min(pb.Maximum, Convert.ToInt32(Math.Round(((double)e.X / (double)pb.SensitiveWidth) * pb.Maximum))));			
+				int nval = Math.Max(
+					pb.Minimum,
+					Math.Min(
+						pb.Maximum,
+						Convert.ToInt32(
+							Math.Round(
+								((double)e.X / (double)pb.SensitiveWidth) * pb.Maximum
+							)
+						)
+					)
+				);
 				bool update = nval != pb.Value;
 				pb.Value = nval;
-				if (update) FireChangedEvent(false);
+				if (update)
+					FireChangedEvent(false);
 				Update();
 			}
 		}
-	
+
 		private void pb_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
-			if (e.Button==MouseButtons.Left) ProgressBarUpdate(e);		
+			if (e.Button == MouseButtons.Left)
+				ProgressBarUpdate(e);
 		}
 
 		private void pb_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
-		
-			if (e.Button==MouseButtons.Left) ProgressBarUpdate(e);							
+			if (e.Button == MouseButtons.Left)
+				ProgressBarUpdate(e);
 		}
 
 		private void pb_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
-			if (e.Button==MouseButtons.Left) ProgressBarUpdate(e);		
+			if (e.Button == MouseButtons.Left)
+				ProgressBarUpdate(e);
 		}
 
 		protected override void OnResize(EventArgs e)
-		{		
+		{
 			base.OnResize(e);
 			/*tb.Left = this.Width-tb.Width;
 			tb.Top = pb.Bottom-tb.Height+1;
@@ -453,16 +478,14 @@ namespace Ambertation.Windows.Forms
 				);*/
 		}
 
-		public void CompleteRedraw() 
+		public void CompleteRedraw()
 		{
 			pb.CompleteRedraw();
 			pb.Refresh();
 		}
 
-
 		private void lb_SizeChanged(object sender, System.EventArgs e)
-		{			
-			
+		{
 			//OnResize(e);
 		}
 	}

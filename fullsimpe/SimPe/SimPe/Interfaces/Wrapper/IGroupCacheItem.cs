@@ -27,22 +27,14 @@ namespace SimPe.Interfaces.Wrapper
 	/// </summary>
 	public interface IGroupCacheItem
 	{
-					
 		/// <summary>
 		/// Returns the FileName for this Item
 		/// </summary>
-		string FileName 
-		{
-			get;
-		}
+		string FileName { get; }
 
 		/// <summary>
 		/// Returns the Group that was assigned by the Game
 		/// </summary>
-		uint LocalGroup 
-		{
-			get;
-		}						
-			
+		uint LocalGroup { get; }
 	}
 }

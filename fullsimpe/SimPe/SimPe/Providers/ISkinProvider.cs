@@ -40,16 +40,13 @@ namespace SimPe.Interfaces.Providers
 		/// <summary>
 		/// Returns a list of all known memories
 		/// </summary>
-		ArrayList StoredSkins
-		{
-			get;		
-		}
+		ArrayList StoredSkins { get; }
 
 		string FindTxtrName(Interfaces.Files.IPackedFileDescriptor spfd);
 		string FindTxtrName(string matdname);
 
 		/// <summary>
-		/// 
+		///
 		/// </summary>
 		/// <param name="ocpf">The MMAT or Property Set describing the Model</param>
 		/// <returns>The Texture or null</returns>

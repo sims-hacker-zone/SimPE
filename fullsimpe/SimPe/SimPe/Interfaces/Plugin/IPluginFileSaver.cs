@@ -25,8 +25,5 @@ namespace SimPe.Interfaces.Plugin
 	/// <summary>
 	/// Interface for Filehanders that are able to save their content to a BinaryStream
 	/// </summary>
-	public interface IFileWrapperSaveExtension : IPackedFileSaveExtension
-	{
-				
-	}
+	public interface IFileWrapperSaveExtension : IPackedFileSaveExtension { }
 }

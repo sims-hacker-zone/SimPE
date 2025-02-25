@@ -1,12 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Specialized;
-
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Packages;
 using SimPe.PackedFiles.Wrapper;
-
 
 namespace SimPe.Plugin
 {
@@ -15,18 +13,13 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class RcolTable : CollectionBase
 	{
-
 		public Rcol this[int index]
 		{
 			get { return this.List[index] as Rcol; }
-			set	{ this.List[index] = value; }
+			set { this.List[index] = value; }
 		}
 
-
-		public RcolTable()
-		{
-			
-		}
+		public RcolTable() { }
 
 		public int Add(Rcol rcol)
 		{
@@ -37,7 +30,6 @@ namespace SimPe.Plugin
 		{
 			this.InnerList.AddRange(rcols);
 		}
-
 
 		public Rcol FindByReference(string reference)
 		{
@@ -51,7 +43,9 @@ namespace SimPe.Plugin
 			{
 				if (rcol.FileDescriptor != null)
 				{
-					ResourceReference rcolRef = new ResourceReference(rcol.FileDescriptor);
+					ResourceReference rcolRef = new ResourceReference(
+						rcol.FileDescriptor
+					);
 					if (rcolRef == reference)
 						return rcol;
 				}
@@ -91,8 +85,5 @@ namespace SimPe.Plugin
 				rcol.SynchronizeUserData();
 			}
 		}
-
 	}
-
-
 }

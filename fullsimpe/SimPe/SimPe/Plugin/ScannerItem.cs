@@ -25,41 +25,46 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// An Instance of this class represents one scanned Package
 	/// </summary>
-	public class ScannerItem 	{
+	public class ScannerItem
+	{
 		PackageCacheItem pci;
 		public PackageCacheItem PackageCacheItem
 		{
 			get { return pci; }
 		}
-		
+
 		string filename;
 
 		/// <summary>
 		/// The FileName of the Package File
 		/// </summary>
-		public string FileName 
+		public string FileName
 		{
 			get { return filename; }
-			set { 
-				if (filename.Trim().ToLower() != value.Trim().ToLower()) pkg = null;
-				filename = value; 
+			set
+			{
+				if (filename.Trim().ToLower() != value.Trim().ToLower())
+					pkg = null;
+				filename = value;
 			}
 		}
 
 		SimPe.Cache.CacheContainer cc;
-		public SimPe.Cache.CacheContainer ParentContainer 
+		public SimPe.Cache.CacheContainer ParentContainer
 		{
 			get { return cc; }
 		}
 
 		SimPe.Packages.GeneratableFile pkg = null;
+
 		/// <summary>
 		/// Returns the Package Instance fo the given FileNmae
 		/// </summary>
-		public SimPe.Packages.GeneratableFile Package 
+		public SimPe.Packages.GeneratableFile Package
 		{
-			get { 
-				if (pkg==null) 
+			get
+			{
+				if (pkg == null)
 				{
 					pkg = SimPe.Packages.GeneratableFile.LoadFromFile(FileName);
 				}
@@ -69,7 +74,7 @@ namespace SimPe.Plugin
 			set { pkg = value; }
 		}
 
-		public ScannerItem(PackageCacheItem pci, SimPe.Cache.CacheContainer cc) 
+		public ScannerItem(PackageCacheItem pci, SimPe.Cache.CacheContainer cc)
 		{
 			this.pci = pci;
 			this.cc = cc;
@@ -79,14 +84,8 @@ namespace SimPe.Plugin
 		System.Windows.Forms.ListViewItem lvi;
 		public System.Windows.Forms.ListViewItem ListViewItem
 		{
-			get 
-			{
-				return lvi;
-			}
-			set 
-			{
-				lvi = value;
-			}
+			get { return lvi; }
+			set { lvi = value; }
 		}
 	}
 }

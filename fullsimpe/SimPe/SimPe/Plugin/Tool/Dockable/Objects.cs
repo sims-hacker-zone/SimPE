@@ -26,8 +26,9 @@ namespace SimPe.Plugin.Tool.Dockable
 	/// Tghe Object Workshop as new Dockable Tool
 	/// </summary>
 	public class ObectWorkshopDockTool : SimPe.Interfaces.IDockableTool
-	{		
+	{
 		dcObjectWorkshop dc;
+
 		public ObectWorkshopDockTool()
 		{
 			dc = new dcObjectWorkshop();
@@ -38,14 +39,11 @@ namespace SimPe.Plugin.Tool.Dockable
 		public Ambertation.Windows.Forms.DockPanel GetDockableControl()
 		{
 			return dc;
-		}		
+		}
 
 		public event SimPe.Events.ChangedResourceEvent ShowNewResource;
 
-		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es)
-		{
-			
-		}
+		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es) { }
 
 		#endregion
 
@@ -62,23 +60,20 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.None;
-			}
+			get { return System.Windows.Forms.Shortcut.None; }
 		}
 
 		public System.Drawing.Image Icon
 		{
+			get { return dc.TabImage; }
+		}
+
+		public virtual bool Visible
+		{
 			get
 			{
-				return dc.TabImage;
+				return GetDockableControl().IsDocked || GetDockableControl().IsFloating;
 			}
-		}	
-
-		public virtual bool Visible 
-		{
-			get { return GetDockableControl().IsDocked ||  GetDockableControl().IsFloating; }
 		}
 
 		#endregion

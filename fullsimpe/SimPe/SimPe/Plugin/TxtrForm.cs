@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
@@ -51,26 +51,27 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
-				if(components != null)
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
 
 		#region Windows Form Designer generated code
 		/// <summary>
-		/// Required method for Designer support - do not modify 
+		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(TxtrForm));
+			System.Resources.ResourceManager resources =
+				new System.Resources.ResourceManager(typeof(TxtrForm));
 			this.txtrPanel = new System.Windows.Forms.Panel();
 			this.linkLabel4 = new System.Windows.Forms.LinkLabel();
 			this.linkLabel3 = new System.Windows.Forms.LinkLabel();
@@ -116,9 +117,9 @@ namespace SimPe.Plugin
 			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
 			this.panel2.SuspendLayout();
 			this.SuspendLayout();
-			// 
+			//
 			// txtrPanel
-			// 
+			//
 			this.txtrPanel.BackColor = System.Drawing.Color.Transparent;
 			this.txtrPanel.Controls.Add(this.linkLabel4);
 			this.txtrPanel.Controls.Add(this.linkLabel3);
@@ -143,18 +144,37 @@ namespace SimPe.Plugin
 			this.txtrPanel.Controls.Add(this.lbimg);
 			this.txtrPanel.Controls.Add(this.panel2);
 			this.txtrPanel.Controls.Add(this.label1);
-			this.txtrPanel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtrPanel.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.txtrPanel.Location = new System.Drawing.Point(8, 8);
 			this.txtrPanel.Name = "txtrPanel";
 			this.txtrPanel.Size = new System.Drawing.Size(768, 288);
 			this.txtrPanel.TabIndex = 19;
-			// 
+			//
 			// linkLabel4
-			// 
-			this.linkLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			//
+			this.linkLabel4.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Bottom
+						| System.Windows.Forms.AnchorStyles.Left
+					)
+				)
+			);
 			this.linkLabel4.AutoSize = true;
 			this.linkLabel4.BackColor = System.Drawing.Color.Transparent;
-			this.linkLabel4.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.linkLabel4.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.linkLabel4.LinkArea = new System.Windows.Forms.LinkArea(0, 5);
 			this.linkLabel4.Location = new System.Drawing.Point(200, 264);
 			this.linkLabel4.Name = "linkLabel4";
@@ -163,26 +183,42 @@ namespace SimPe.Plugin
 			this.linkLabel4.TabStop = true;
 			this.linkLabel4.Text = "build default MipMap";
 			this.linkLabel4.UseCompatibleTextRendering = true;
-			this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.BuildMipMap);
-			// 
+			this.linkLabel4.LinkClicked +=
+				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+					this.BuildMipMap
+				);
+			//
 			// linkLabel3
-			// 
+			//
 			this.linkLabel3.AutoSize = true;
 			this.linkLabel3.BackColor = System.Drawing.Color.Transparent;
-			this.linkLabel3.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.linkLabel3.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.linkLabel3.Location = new System.Drawing.Point(288, 88);
 			this.linkLabel3.Name = "linkLabel3";
 			this.linkLabel3.Size = new System.Drawing.Size(51, 13);
 			this.linkLabel3.TabIndex = 23;
 			this.linkLabel3.TabStop = true;
 			this.linkLabel3.Text = "fix TGI";
-			this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.FixTGI);
-			// 
+			this.linkLabel3.LinkClicked +=
+				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.FixTGI);
+			//
 			// linkLabel1
-			// 
+			//
 			this.linkLabel1.AutoSize = true;
 			this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
-			this.linkLabel1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.linkLabel1.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.linkLabel1.Location = new System.Drawing.Point(344, 88);
 			this.linkLabel1.Name = "linkLabel1";
 			this.linkLabel1.Size = new System.Drawing.Size(85, 13);
@@ -190,177 +226,282 @@ namespace SimPe.Plugin
 			this.linkLabel1.TabStop = true;
 			this.linkLabel1.Text = "assign Hash";
 			this.linkLabel1.Visible = false;
-			this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.BuildFilename);
-			// 
+			this.linkLabel1.LinkClicked +=
+				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+					this.BuildFilename
+				);
+			//
 			// tblevel
-			// 
+			//
 			this.tblevel.Location = new System.Drawing.Point(336, 134);
 			this.tblevel.Name = "tblevel";
 			this.tblevel.Size = new System.Drawing.Size(88, 21);
 			this.tblevel.TabIndex = 21;
 			this.tblevel.TextChanged += new System.EventHandler(this.Changedlevel);
-			// 
+			//
 			// label8
-			// 
+			//
 			this.label8.AutoSize = true;
 			this.label8.BackColor = System.Drawing.Color.Transparent;
-			this.label8.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label8.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.label8.Location = new System.Drawing.Point(240, 136);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(98, 13);
 			this.label8.TabIndex = 20;
 			this.label8.Text = "MipMap Level:";
-			// 
+			//
 			// linkLabel2
-			// 
-			this.linkLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			//
+			this.linkLabel2.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Bottom
+						| System.Windows.Forms.AnchorStyles.Left
+					)
+				)
+			);
 			this.linkLabel2.AutoSize = true;
 			this.linkLabel2.BackColor = System.Drawing.Color.Transparent;
-			this.linkLabel2.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.linkLabel2.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.linkLabel2.Location = new System.Drawing.Point(344, 264);
 			this.linkLabel2.Name = "linkLabel2";
 			this.linkLabel2.Size = new System.Drawing.Size(31, 13);
 			this.linkLabel2.TabIndex = 19;
 			this.linkLabel2.TabStop = true;
 			this.linkLabel2.Text = "add";
-			this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Add);
-			// 
+			this.linkLabel2.LinkClicked +=
+				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Add);
+			//
 			// lldel
-			// 
-			this.lldel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			//
+			this.lldel.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Bottom
+						| System.Windows.Forms.AnchorStyles.Left
+					)
+				)
+			);
 			this.lldel.AutoSize = true;
 			this.lldel.BackColor = System.Drawing.Color.Transparent;
-			this.lldel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lldel.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.lldel.Location = new System.Drawing.Point(380, 264);
 			this.lldel.Name = "lldel";
 			this.lldel.Size = new System.Drawing.Size(48, 13);
 			this.lldel.TabIndex = 18;
 			this.lldel.TabStop = true;
 			this.lldel.Text = "delete";
-			this.lldel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Delete);
-			// 
+			this.lldel.LinkClicked +=
+				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Delete);
+			//
 			// tblifo
-			// 
-			this.tblifo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.tblifo.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							System.Windows.Forms.AnchorStyles.Bottom
+							| System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.tblifo.Location = new System.Drawing.Point(440, 252);
 			this.tblifo.Name = "tblifo";
 			this.tblifo.Size = new System.Drawing.Size(320, 21);
 			this.tblifo.TabIndex = 16;
 			this.tblifo.TextChanged += new System.EventHandler(this.SetLifo);
-			// 
+			//
 			// label6
-			// 
-			this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			//
+			this.label6.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Bottom
+						| System.Windows.Forms.AnchorStyles.Left
+					)
+				)
+			);
 			this.label6.AutoSize = true;
 			this.label6.BackColor = System.Drawing.Color.Transparent;
-			this.label6.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label6.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.label6.Location = new System.Drawing.Point(432, 236);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(111, 13);
 			this.label6.TabIndex = 17;
 			this.label6.Text = "LIFO Reference:";
-			// 
+			//
 			// label5
-			// 
+			//
 			this.label5.AutoSize = true;
 			this.label5.BackColor = System.Drawing.Color.Transparent;
-			this.label5.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label5.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.label5.Location = new System.Drawing.Point(141, 136);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(15, 13);
 			this.label5.TabIndex = 15;
 			this.label5.Text = "x";
-			// 
+			//
 			// tbheight
-			// 
+			//
 			this.tbheight.Location = new System.Drawing.Point(160, 134);
 			this.tbheight.Name = "tbheight";
 			this.tbheight.Size = new System.Drawing.Size(56, 21);
 			this.tbheight.TabIndex = 14;
 			this.tbheight.TextChanged += new System.EventHandler(this.ChangedSize);
-			// 
+			//
 			// tbwidth
-			// 
+			//
 			this.tbwidth.Location = new System.Drawing.Point(80, 134);
 			this.tbwidth.Name = "tbwidth";
 			this.tbwidth.Size = new System.Drawing.Size(56, 21);
 			this.tbwidth.TabIndex = 13;
 			this.tbwidth.TextChanged += new System.EventHandler(this.ChangedSize);
-			// 
+			//
 			// label4
-			// 
+			//
 			this.label4.AutoSize = true;
 			this.label4.BackColor = System.Drawing.Color.Transparent;
-			this.label4.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label4.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.label4.Location = new System.Drawing.Point(43, 136);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(38, 13);
 			this.label4.TabIndex = 12;
 			this.label4.Text = "Size:";
-			// 
+			//
 			// label3
-			// 
+			//
 			this.label3.AutoSize = true;
 			this.label3.BackColor = System.Drawing.Color.Transparent;
-			this.label3.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label3.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.label3.Location = new System.Drawing.Point(24, 112);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(58, 13);
 			this.label3.TabIndex = 11;
 			this.label3.Text = "Format:";
-			// 
+			//
 			// cbformats
-			// 
-			this.cbformats.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			//
+			this.cbformats.DropDownStyle = System
+				.Windows
+				.Forms
+				.ComboBoxStyle
+				.DropDownList;
 			this.cbformats.Location = new System.Drawing.Point(80, 108);
 			this.cbformats.Name = "cbformats";
 			this.cbformats.Size = new System.Drawing.Size(344, 21);
 			this.cbformats.TabIndex = 10;
-			this.cbformats.SelectedIndexChanged += new System.EventHandler(this.ChangeFormat);
-			// 
+			this.cbformats.SelectedIndexChanged += new System.EventHandler(
+				this.ChangeFormat
+			);
+			//
 			// tbflname
-			// 
+			//
 			this.tbflname.Location = new System.Drawing.Point(80, 56);
 			this.tbflname.Name = "tbflname";
 			this.tbflname.Size = new System.Drawing.Size(344, 21);
 			this.tbflname.TabIndex = 9;
 			this.tbflname.TextChanged += new System.EventHandler(this.FileNameChanged);
-			// 
+			//
 			// label2
-			// 
+			//
 			this.label2.AutoSize = true;
 			this.label2.BackColor = System.Drawing.Color.Transparent;
-			this.label2.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label2.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.label2.Location = new System.Drawing.Point(8, 36);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(71, 13);
 			this.label2.TabIndex = 8;
 			this.label2.Text = "Filename:";
-			// 
+			//
 			// cbitem
-			// 
+			//
 			this.cbitem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbitem.Location = new System.Drawing.Point(80, 32);
 			this.cbitem.Name = "cbitem";
 			this.cbitem.Size = new System.Drawing.Size(344, 21);
 			this.cbitem.TabIndex = 7;
-			this.cbitem.SelectedIndexChanged += new System.EventHandler(this.SelectItem);
-			// 
+			this.cbitem.SelectedIndexChanged += new System.EventHandler(
+				this.SelectItem
+			);
+			//
 			// cbmipmaps
-			// 
-			this.cbmipmaps.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			//
+			this.cbmipmaps.DropDownStyle = System
+				.Windows
+				.Forms
+				.ComboBoxStyle
+				.DropDownList;
 			this.cbmipmaps.Location = new System.Drawing.Point(80, 160);
 			this.cbmipmaps.Name = "cbmipmaps";
 			this.cbmipmaps.Size = new System.Drawing.Size(344, 21);
 			this.cbmipmaps.TabIndex = 5;
-			this.cbmipmaps.SelectedIndexChanged += new System.EventHandler(this.SelectMipMapBlock);
-			// 
+			this.cbmipmaps.SelectedIndexChanged += new System.EventHandler(
+				this.SelectMipMapBlock
+			);
+			//
 			// panel1
-			// 
-			this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-						| System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.panel1.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							(
+								System.Windows.Forms.AnchorStyles.Top
+								| System.Windows.Forms.AnchorStyles.Bottom
+							) | System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.panel1.AutoScroll = true;
 			this.panel1.AutoScrollMinSize = new System.Drawing.Size(24, 24);
 			this.panel1.BackColor = System.Drawing.Color.Transparent;
@@ -370,10 +511,17 @@ namespace SimPe.Plugin
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(328, 200);
 			this.panel1.TabIndex = 4;
-			// 
+			//
 			// label7
-			// 
-			this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			//
+			this.label7.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Bottom
+						| System.Windows.Forms.AnchorStyles.Left
+					)
+				)
+			);
 			this.label7.AutoSize = true;
 			this.label7.Font = new System.Drawing.Font("Verdana", 8.25F);
 			this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -383,11 +531,13 @@ namespace SimPe.Plugin
 			this.label7.Size = new System.Drawing.Size(293, 13);
 			this.label7.TabIndex = 6;
 			this.label7.Text = "Right click on the Image to get more Interactions.";
-			// 
+			//
 			// pb
-			// 
+			//
 			this.pb.BackColor = System.Drawing.SystemColors.Control;
-			this.pb.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pb.BackgroundImage")));
+			this.pb.BackgroundImage = (
+				(System.Drawing.Image)(resources.GetObject("pb.BackgroundImage"))
+			);
 			this.pb.ContextMenu = this.contextMenu1;
 			this.pb.Location = new System.Drawing.Point(0, 0);
 			this.pb.Name = "pb";
@@ -395,107 +545,146 @@ namespace SimPe.Plugin
 			this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
 			this.pb.TabIndex = 5;
 			this.pb.TabStop = false;
-			// 
+			//
 			// contextMenu1
-			// 
-			this.contextMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-			this.menuItem1,
-			this.milifo,
-			this.menuItem4,
-			this.menuItem6,
-			this.menuItem7,
-			this.mibuild,
-			this.menuItem3,
-			this.menuItem2,
-			this.menuItem5});
+			//
+			this.contextMenu1.MenuItems.AddRange(
+				new System.Windows.Forms.MenuItem[]
+				{
+					this.menuItem1,
+					this.milifo,
+					this.menuItem4,
+					this.menuItem6,
+					this.menuItem7,
+					this.mibuild,
+					this.menuItem3,
+					this.menuItem2,
+					this.menuItem5,
+				}
+			);
 			this.contextMenu1.Popup += new System.EventHandler(this.ContextPopUp);
-			// 
+			//
 			// menuItem1
-			// 
+			//
 			this.menuItem1.Index = 0;
 			this.menuItem1.Text = "&Import...";
 			this.menuItem1.Click += new System.EventHandler(this.btim_Click);
-			// 
+			//
 			// milifo
-			// 
+			//
 			this.milifo.Enabled = false;
 			this.milifo.Index = 1;
 			this.milifo.Text = "Import local  LIFO";
 			this.milifo.Click += new System.EventHandler(this.ImportLifo);
-			// 
+			//
 			// menuItem4
-			// 
+			//
 			this.menuItem4.Index = 2;
 			this.menuItem4.Text = "Import &Alpha Channel...";
 			this.menuItem4.Click += new System.EventHandler(this.ImportAlpha);
-			// 
+			//
 			// menuItem6
-			// 
+			//
 			this.menuItem6.Index = 3;
 			this.menuItem6.Text = "&Update all Sizes";
 			this.menuItem6.Click += new System.EventHandler(this.UpdateAllSizes);
-			// 
+			//
 			// menuItem7
-			// 
+			//
 			this.menuItem7.Index = 4;
 			this.menuItem7.Text = "Import &DDS...";
 			this.menuItem7.Click += new System.EventHandler(this.ImportDDS);
-			// 
+			//
 			// mibuild
-			// 
+			//
 			this.mibuild.Index = 5;
 			this.mibuild.Text = "Build DXT...";
 			this.mibuild.Click += new System.EventHandler(this.BuildDXT);
-			// 
+			//
 			// menuItem3
-			// 
+			//
 			this.menuItem3.Index = 6;
 			this.menuItem3.Text = "-";
-			// 
+			//
 			// menuItem2
-			// 
+			//
 			this.menuItem2.Index = 7;
 			this.menuItem2.Text = "&Export...";
 			this.menuItem2.Click += new System.EventHandler(this.btex_Click);
-			// 
+			//
 			// menuItem5
-			// 
+			//
 			this.menuItem5.Index = 8;
 			this.menuItem5.Text = "Export Alpha &Channel...";
 			this.menuItem5.Click += new System.EventHandler(this.ExportAlpha);
-			// 
+			//
 			// lbimg
-			// 
-			this.lbimg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-						| System.Windows.Forms.AnchorStyles.Left)));
+			//
+			this.lbimg.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							System.Windows.Forms.AnchorStyles.Top
+							| System.Windows.Forms.AnchorStyles.Bottom
+						) | System.Windows.Forms.AnchorStyles.Left
+					)
+				)
+			);
 			this.lbimg.IntegralHeight = false;
 			this.lbimg.Location = new System.Drawing.Point(8, 184);
 			this.lbimg.Name = "lbimg";
 			this.lbimg.Size = new System.Drawing.Size(416, 80);
 			this.lbimg.TabIndex = 3;
-			this.lbimg.SelectedIndexChanged += new System.EventHandler(this.PictureSelect);
-			// 
+			this.lbimg.SelectedIndexChanged += new System.EventHandler(
+				this.PictureSelect
+			);
+			//
 			// panel2
-			// 
-			this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.panel2.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							System.Windows.Forms.AnchorStyles.Top
+							| System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.panel2.Controls.Add(this.btex);
 			this.panel2.Controls.Add(this.btim);
 			this.panel2.Controls.Add(this.label27);
 			this.panel2.Controls.Add(this.btcommit);
-			this.panel2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
+			this.panel2.Font = new System.Drawing.Font(
+				"Verdana",
+				9.75F,
+				System.Drawing.FontStyle.Bold
+			);
 			this.panel2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
 			this.panel2.Location = new System.Drawing.Point(0, 0);
 			this.panel2.Margin = new System.Windows.Forms.Padding(0);
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(768, 24);
 			this.panel2.TabIndex = 0;
-			// 
+			//
 			// btex
-			// 
-			this.btex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.btex.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Top
+						| System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.btex.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btex.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btex.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.btex.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.btex.Location = new System.Drawing.Point(584, 0);
 			this.btex.Name = "btex";
@@ -503,12 +692,25 @@ namespace SimPe.Plugin
 			this.btex.TabIndex = 8;
 			this.btex.Text = "Export...";
 			this.btex.Click += new System.EventHandler(this.btex_Click);
-			// 
+			//
 			// btim
-			// 
-			this.btim.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.btim.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Top
+						| System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.btim.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btim.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btim.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.btim.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.btim.Location = new System.Drawing.Point(504, 0);
 			this.btim.Name = "btim";
@@ -516,9 +718,9 @@ namespace SimPe.Plugin
 			this.btim.TabIndex = 7;
 			this.btim.Text = "Import...";
 			this.btim.Click += new System.EventHandler(this.btim_Click);
-			// 
+			//
 			// label27
-			// 
+			//
 			this.label27.AutoSize = true;
 			this.label27.ImeMode = System.Windows.Forms.ImeMode.NoControl;
 			this.label27.Location = new System.Drawing.Point(0, 4);
@@ -526,44 +728,69 @@ namespace SimPe.Plugin
 			this.label27.Size = new System.Drawing.Size(93, 19);
 			this.label27.TabIndex = 0;
 			this.label27.Text = "TXTR Editor";
-			// 
+			//
 			// btcommit
-			// 
-			this.btcommit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.btcommit.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Top
+						| System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.btcommit.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btcommit.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.btcommit.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.btcommit.Location = new System.Drawing.Point(688, 0);
 			this.btcommit.Name = "btcommit";
 			this.btcommit.TabIndex = 6;
 			this.btcommit.Text = "Commit";
 			this.btcommit.Click += new System.EventHandler(this.btcommit_Click);
-			// 
+			//
 			// label1
-			// 
+			//
 			this.label1.AutoSize = true;
 			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.label1.Location = new System.Drawing.Point(28, 168);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(53, 13);
 			this.label1.TabIndex = 6;
 			this.label1.Text = "Blocks:";
-			// 
+			//
 			// sfd
-			// 
+			//
 			this.sfd.Filter = resources.GetString("sfd.Filter");
 			this.sfd.Title = "Export Image";
-			// 
+			//
 			// ofd
-			// 
+			//
 			this.ofd.FilterIndex = 4;
-			// 
+			//
 			// TxtrForm
-			// 
+			//
 			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
 			this.ClientSize = new System.Drawing.Size(792, 310);
 			this.Controls.Add(this.txtrPanel);
-			this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.Name = "TxtrForm";
 			this.Text = "TxtrForm";
 			this.txtrPanel.ResumeLayout(false);
@@ -574,7 +801,6 @@ namespace SimPe.Plugin
 			this.panel2.ResumeLayout(false);
 			this.panel2.PerformLayout();
 			this.ResumeLayout(false);
-
 		}
 		#endregion
 
@@ -628,19 +854,21 @@ namespace SimPe.Plugin
 			pb.Image = null;
 			btex.Enabled = false;
 			lldel.Enabled = false;
-			try 
+			try
 			{
 				lbimg.Tag = true;
 				MipMap mm = (MipMap)lbimg.Items[lbimg.SelectedIndex];
 				pb.Image = mm.Texture;
-				if (mm.Texture==null) tblifo.Text = mm.LifoFile;
-				else tblifo.Text = "";
+				if (mm.Texture == null)
+					tblifo.Text = mm.LifoFile;
+				else
+					tblifo.Text = "";
 
-				btex.Enabled = (pb.Image!=null);
+				btex.Enabled = (pb.Image != null);
 				lldel.Enabled = true;
-			} 
-			catch (Exception) {}
-			finally 
+			}
+			catch (Exception) { }
+			finally
 			{
 				lbimg.Tag = null;
 			}
@@ -648,47 +876,63 @@ namespace SimPe.Plugin
 
 		private void btcommit_Click(object sender, System.EventArgs e)
 		{
-			try 
+			try
 			{
 				Txtr wrp = (Txtr)wrapper;
 				wrp.SynchronizeUserData();
 				MessageBox.Show(Localization.Manager.GetString("commited"));
-			} 
-			catch (Exception ex) 
+			}
+			catch (Exception ex)
 			{
-				Helper.ExceptionMessage(Localization.Manager.GetString("errwritingfile"), ex);
+				Helper.ExceptionMessage(
+					Localization.Manager.GetString("errwritingfile"),
+					ex
+				);
 			}
 		}
 
-		
-
 		private void btex_Click(object sender, System.EventArgs e)
 		{
-			if (pb.Image == null) return;
+			if (pb.Image == null)
+				return;
 
-			sfd.FileName = this.tbflname.Text+"_"+pb.Image.Size.Width.ToString()+"x"+pb.Image.Size.Height.ToString()+".png";
-			if (sfd.ShowDialog() == DialogResult.OK) 
+			sfd.FileName =
+				this.tbflname.Text
+				+ "_"
+				+ pb.Image.Size.Width.ToString()
+				+ "x"
+				+ pb.Image.Size.Height.ToString()
+				+ ".png";
+			if (sfd.ShowDialog() == DialogResult.OK)
 			{
-				try 
+				try
 				{
-					pb.Image.Save(sfd.FileName, ImageLoader.GetImageFormat(sfd.FileName));
-				} 
-				catch (Exception ex) 
+					pb.Image.Save(
+						sfd.FileName,
+						ImageLoader.GetImageFormat(sfd.FileName)
+					);
+				}
+				catch (Exception ex)
 				{
-					Helper.ExceptionMessage(Localization.Manager.GetString("errwritingfile"), ex);
+					Helper.ExceptionMessage(
+						Localization.Manager.GetString("errwritingfile"),
+						ex
+					);
 				}
 			}
 		}
 
 		private void btim_Click(object sender, System.EventArgs e)
 		{
-			if (lbimg.SelectedIndex<0) return;
+			if (lbimg.SelectedIndex < 0)
+				return;
 
-			ofd.Filter = "All Image Files (*.jpg;*.jpeg;*.tif.*.tiff;*.wmf;*.emf;*.bmp;*.gif;*.png)|*.jpg;*.jpeg;*.tif.*.tiff;*.wmf;*.emf;*.bmp;*.gif;*.png|Png (*.png)|*.png|Bitmap (*.bmp)|*.bmp|Gif (*.gif)|*.gif|Tiff image (*.tiff;*.tif)|*.tiff;*.tif|Windows Meta File (*.wmf)|*.wmf|Enhanced Meta File (*.emf)|*.emf|JPEG File (*.jpg;*.jpeg)|*.jpg;*.jpeg|All Files (*.*)|*.*";
+			ofd.Filter =
+				"All Image Files (*.jpg;*.jpeg;*.tif.*.tiff;*.wmf;*.emf;*.bmp;*.gif;*.png)|*.jpg;*.jpeg;*.tif.*.tiff;*.wmf;*.emf;*.bmp;*.gif;*.png|Png (*.png)|*.png|Bitmap (*.bmp)|*.bmp|Gif (*.gif)|*.gif|Tiff image (*.tiff;*.tif)|*.tiff;*.tif|Windows Meta File (*.wmf)|*.wmf|Enhanced Meta File (*.emf)|*.emf|JPEG File (*.jpg;*.jpeg)|*.jpg;*.jpeg|All Files (*.*)|*.*";
 			ofd.FilterIndex = 2;
-			if (ofd.ShowDialog() == DialogResult.OK) 
+			if (ofd.ShowDialog() == DialogResult.OK)
 			{
-				try 
+				try
 				{
 					ImageData id = (ImageData)cbitem.Items[cbitem.SelectedIndex];
 					System.IO.Stream s = System.IO.File.OpenRead(ofd.FileName);
@@ -698,7 +942,8 @@ namespace SimPe.Plugin
 					s = null;
 
 					img = this.CropImage(id, img);
-					if (img==null) return;
+					if (img == null)
+						return;
 
 					lbimg.Tag = true;
 					MipMap mm = (MipMap)lbimg.Items[lbimg.SelectedIndex];
@@ -708,12 +953,15 @@ namespace SimPe.Plugin
 					lbimg.Items[lbimg.SelectedIndex] = mm;
 
 					//if (img!=null) img.Dispose();
-				} 
-				catch (Exception ex) 
-				{
-					Helper.ExceptionMessage(Localization.Manager.GetString("erropenfile"), ex);
 				}
-				finally 
+				catch (Exception ex)
+				{
+					Helper.ExceptionMessage(
+						Localization.Manager.GetString("erropenfile"),
+						ex
+					);
+				}
+				finally
 				{
 					lbimg.Tag = null;
 				}
@@ -722,41 +970,48 @@ namespace SimPe.Plugin
 
 		private void SelectItem(object sender, System.EventArgs e)
 		{
-			if (cbitem.Tag!=null) return;
+			if (cbitem.Tag != null)
+				return;
 			this.cbmipmaps.Items.Clear();
-			this.lbimg.Items.Clear();	
-			if (cbitem.SelectedIndex<0) return;
-			try 
+			this.lbimg.Items.Clear();
+			if (cbitem.SelectedIndex < 0)
+				return;
+			try
 			{
 				cbitem.Tag = true;
 				ImageData selecteditem = (ImageData)cbitem.Items[cbitem.SelectedIndex];
-				foreach (MipMapBlock mmp in selecteditem.MipMapBlocks) 
+				foreach (MipMapBlock mmp in selecteditem.MipMapBlocks)
 				{
 					this.cbmipmaps.Items.Add(mmp);
 				}
 
-				if (cbmipmaps.Items.Count>0) cbmipmaps.SelectedIndex = 0;
+				if (cbmipmaps.Items.Count > 0)
+					cbmipmaps.SelectedIndex = 0;
 				this.tbflname.Text = selecteditem.NameResource.FileName;
 				this.tbwidth.Text = selecteditem.TextureSize.Width.ToString();
 				this.tbheight.Text = selecteditem.TextureSize.Height.ToString();
 				this.tblevel.Text = selecteditem.MipMapLevels.ToString();
 
 				this.cbformats.SelectedIndex = 0;
-				for (int i=0; i<cbformats.Items.Count; i++)
+				for (int i = 0; i < cbformats.Items.Count; i++)
 				{
-					ImageLoader.TxtrFormats f = (ImageLoader.TxtrFormats)cbformats.Items[i];
-					if (f==selecteditem.Format) 
+					ImageLoader.TxtrFormats f = (ImageLoader.TxtrFormats)
+						cbformats.Items[i];
+					if (f == selecteditem.Format)
 					{
 						cbformats.SelectedIndex = i;
 						break;
 					}
 				}
-			} 
-			catch (Exception ex) 
+			}
+			catch (Exception ex)
 			{
-				Helper.ExceptionMessage(Localization.Manager.GetString("erropenfile"), ex);
-			} 
-			finally 
+				Helper.ExceptionMessage(
+					Localization.Manager.GetString("erropenfile"),
+					ex
+				);
+			}
+			finally
 			{
 				cbitem.Tag = null;
 			}
@@ -764,26 +1019,34 @@ namespace SimPe.Plugin
 
 		private void FileNameChanged(object sender, System.EventArgs e)
 		{
-			if (cbitem.Tag!=null) return;
-			if (cbitem.SelectedIndex<0) return;
-			try 
+			if (cbitem.Tag != null)
+				return;
+			if (cbitem.SelectedIndex < 0)
+				return;
+			try
 			{
 				cbitem.Tag = true;
 				ImageData selecteditem = (ImageData)cbitem.Items[cbitem.SelectedIndex];
 				selecteditem.NameResource.FileName = tbflname.Text.Trim();
-				if (tbflname.Text.ToLower().EndsWith("_txtr")) 
+				if (tbflname.Text.ToLower().EndsWith("_txtr"))
 				{
-					selecteditem.FileNameRepeat = selecteditem.NameResource.FileName.Substring(0, selecteditem.NameResource.FileName.Length - 5);
+					selecteditem.FileNameRepeat =
+						selecteditem.NameResource.FileName.Substring(
+							0,
+							selecteditem.NameResource.FileName.Length - 5
+						);
 				}
 				cbitem.Items[cbitem.SelectedIndex] = selecteditem;
 				cbitem.Text = tbflname.Text;
-			} 
-			catch (Exception ex) 
-			{
-				Helper.ExceptionMessage(Localization.Manager.GetString("erropenfile"), ex);
 			}
-			
-			finally 
+			catch (Exception ex)
+			{
+				Helper.ExceptionMessage(
+					Localization.Manager.GetString("erropenfile"),
+					ex
+				);
+			}
+			finally
 			{
 				cbitem.Tag = null;
 			}
@@ -791,29 +1054,35 @@ namespace SimPe.Plugin
 
 		private void SelectMipMapBlock(object sender, System.EventArgs e)
 		{
-			if (cbmipmaps.Tag!=null) return;
+			if (cbmipmaps.Tag != null)
+				return;
 			this.lbimg.Items.Clear();
-			if (cbmipmaps.SelectedIndex<0) return;
-			try 
+			if (cbmipmaps.SelectedIndex < 0)
+				return;
+			try
 			{
 				cbmipmaps.Tag = true;
 				MipMapBlock mmp = (MipMapBlock)cbmipmaps.Items[cbmipmaps.SelectedIndex];
 				int minindex = -1;
-				for (int i=0; i<mmp.MipMaps.Length; i++)
+				for (int i = 0; i < mmp.MipMaps.Length; i++)
 				{
 					MipMap mm = mmp.MipMaps[i];
 					mm.ReloadTexture();
 					this.lbimg.Items.Add(mm);
-					if (mm.Texture != null) minindex = i;
+					if (mm.Texture != null)
+						minindex = i;
 				}
 
 				lbimg.SelectedIndex = minindex;
-			} 
-			catch (Exception ex) 
+			}
+			catch (Exception ex)
 			{
-				Helper.ExceptionMessage(Localization.Manager.GetString("erropenfile"), ex);
-			} 
-			finally 
+				Helper.ExceptionMessage(
+					Localization.Manager.GetString("erropenfile"),
+					ex
+				);
+			}
+			finally
 			{
 				cbmipmaps.Tag = null;
 			}
@@ -821,30 +1090,36 @@ namespace SimPe.Plugin
 
 		private void ChangeFormat(object sender, System.EventArgs e)
 		{
-			if (cbitem.Tag!=null) return;
-			if (cbitem.SelectedIndex<0) return;
-			if (cbformats.SelectedIndex<1) return;
-			try 
+			if (cbitem.Tag != null)
+				return;
+			if (cbitem.SelectedIndex < 0)
+				return;
+			if (cbformats.SelectedIndex < 1)
+				return;
+			try
 			{
 				cbitem.Tag = true;
 				ImageData selecteditem = (ImageData)cbitem.Items[cbitem.SelectedIndex];
-				selecteditem.Format = (ImageLoader.TxtrFormats)cbformats.Items[cbformats.SelectedIndex];
+				selecteditem.Format = (ImageLoader.TxtrFormats)
+					cbformats.Items[cbformats.SelectedIndex];
 
 				//make sure images are resaved when the Format was changed!
-				foreach (MipMapBlock mmp in selecteditem.MipMapBlocks) 
+				foreach (MipMapBlock mmp in selecteditem.MipMapBlocks)
 				{
-					foreach (MipMap mm in mmp.MipMaps) 
+					foreach (MipMap mm in mmp.MipMaps)
 					{
 						mm.Data = null;
 					}
 				}
-			} 
-			catch (Exception ex) 
-			{
-				Helper.ExceptionMessage(Localization.Manager.GetString("erropenfile"), ex);
 			}
-			
-			finally 
+			catch (Exception ex)
+			{
+				Helper.ExceptionMessage(
+					Localization.Manager.GetString("erropenfile"),
+					ex
+				);
+			}
+			finally
 			{
 				cbitem.Tag = null;
 			}
@@ -852,29 +1127,40 @@ namespace SimPe.Plugin
 
 		private void SetLifo(object sender, System.EventArgs e)
 		{
-			if (lbimg.Tag !=null) return;
-			try 
+			if (lbimg.Tag != null)
+				return;
+			try
 			{
 				MipMap mm = (MipMap)lbimg.Items[lbimg.SelectedIndex];
 				pb.Image = null;
 				mm.Texture = null;
 				mm.LifoFile = tblifo.Text;
 				lbimg.Items[lbimg.SelectedIndex] = mm;
-			} 
-			catch (Exception ex) 
+			}
+			catch (Exception ex)
 			{
-				Helper.ExceptionMessage(Localization.Manager.GetString("erropenfile"), ex);
+				Helper.ExceptionMessage(
+					Localization.Manager.GetString("erropenfile"),
+					ex
+				);
 			}
 		}
 
-		private void Delete(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		private void Delete(
+			object sender,
+			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		)
 		{
-			if (lbimg.SelectedIndex<0) return;
+			if (lbimg.SelectedIndex < 0)
+				return;
 			lbimg.Items.Remove(lbimg.Items[lbimg.SelectedIndex]);
 			UpdateMimMaps();
 		}
 
-		private void Add(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		private void Add(
+			object sender,
+			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		)
 		{
 			MipMap mm = new MipMap(SelectedImageData());
 			mm.LifoFile = null;
@@ -887,20 +1173,20 @@ namespace SimPe.Plugin
 		{
 			//add a MipMapBlock if it doesnt already exist
 			ImageData id = null;
-			if (cbitem.SelectedIndex<0) 
+			if (cbitem.SelectedIndex < 0)
 			{
 				Txtr wrp = (Txtr)wrapper;
 				id = new ImageData(wrp);
 				id.NameResource.FileName = "Unknown";
 
-				IRcolBlock[] irc = new IRcolBlock[wrp.Blocks.Length+1];
+				IRcolBlock[] irc = new IRcolBlock[wrp.Blocks.Length + 1];
 				wrp.Blocks.CopyTo(irc, 0);
-				irc[irc.Length-1] = id;
+				irc[irc.Length - 1] = id;
 				wrp.Blocks = irc;
 				cbitem.Items.Add(id);
-				cbitem.SelectedIndex = cbitem.Items.Count-1;
-			} 
-			else 
+				cbitem.SelectedIndex = cbitem.Items.Count - 1;
+			}
+			else
 			{
 				id = (ImageData)cbitem.Items[cbitem.SelectedIndex];
 			}
@@ -908,31 +1194,32 @@ namespace SimPe.Plugin
 			return id;
 		}
 
-		protected MipMapBlock SelectedMipMapBlock(ImageData id) 
+		protected MipMapBlock SelectedMipMapBlock(ImageData id)
 		{
 			//add a MipMapBlock if it doesnt already exist
-			if (this.cbmipmaps.SelectedIndex<0)  
+			if (this.cbmipmaps.SelectedIndex < 0)
 			{
-				MipMapBlock[] mmp = new MipMapBlock[id.MipMapBlocks.Length+1];
+				MipMapBlock[] mmp = new MipMapBlock[id.MipMapBlocks.Length + 1];
 				id.MipMapBlocks.CopyTo(mmp, 0);
-				mmp[mmp.Length-1] = new MipMapBlock(id);
+				mmp[mmp.Length - 1] = new MipMapBlock(id);
 				id.MipMapBlocks = mmp;
-				cbmipmaps.Items.Add(mmp[mmp.Length-1]);
-				cbmipmaps.SelectedIndex = cbmipmaps.Items.Count-1;
+				cbmipmaps.Items.Add(mmp[mmp.Length - 1]);
+				cbmipmaps.SelectedIndex = cbmipmaps.Items.Count - 1;
 
-				return mmp[mmp.Length-1];
-			} 
-			else 
+				return mmp[mmp.Length - 1];
+			}
+			else
 			{
 				object o = cbmipmaps.SelectedItem;
-				if (o is MipMapBlock) return o as MipMapBlock;
-				
-				try 
+				if (o is MipMapBlock)
+					return o as MipMapBlock;
+
+				try
 				{
 					MipMapBlock[] mmb = o as MipMapBlock[];
-					return mmb[mmb.Length-1];
-				} 
-				catch 
+					return mmb[mmb.Length - 1];
+				}
+				catch
 				{
 					return new MipMapBlock(id);
 				}
@@ -943,9 +1230,9 @@ namespace SimPe.Plugin
 		{
 			ImageData id = SelectedImageData();
 			MipMapBlock mmp = SelectedMipMapBlock(id);
-			
+
 			MipMap[] mm = new MipMap[lbimg.Items.Count];
-			for (int i=0; i<mm.Length; i++)
+			for (int i = 0; i < mm.Length; i++)
 			{
 				mm[i] = (MipMap)lbimg.Items[i];
 			}
@@ -956,67 +1243,91 @@ namespace SimPe.Plugin
 
 		private void UpdateAllSizes(object sender, System.EventArgs e)
 		{
-			try 
+			try
 			{
 				lbimg.Tag = true;
 				MipMap map = null;
 				Size sz = new Size(0, 0);
 
 				//Find biggest Texture
-				for (int i=0; i< lbimg.Items.Count; i++) 
+				for (int i = 0; i < lbimg.Items.Count; i++)
 				{
 					MipMap mm = (MipMap)lbimg.Items[i];
 
-					if (mm.Texture!=null)
+					if (mm.Texture != null)
 					{
-						if (mm.Texture.Size.Width > sz.Width) 
+						if (mm.Texture.Size.Width > sz.Width)
 						{
 							sz = mm.Texture.Size;
 							map = mm;
 						}
 					}
 				} // for i
-			
-				if (map==null) return;
+
+				if (map == null)
+					return;
 
 				//create a Scaled Version for each testure
-				for (int i=0; i< lbimg.Items.Count; i++) 
+				for (int i = 0; i < lbimg.Items.Count; i++)
 				{
 					MipMap mm = (MipMap)lbimg.Items[i];
 
-					if (mm.Texture!=null)
+					if (mm.Texture != null)
 					{
 						//don't change the original Picture
-						if (mm != map) 
+						if (mm != map)
 						{
-							Bitmap bm = new Bitmap(mm.Texture.Size.Width, mm.Texture.Size.Height);
+							Bitmap bm = new Bitmap(
+								mm.Texture.Size.Width,
+								mm.Texture.Size.Height
+							);
 							Graphics gr = Graphics.FromImage(bm);
 
-							gr.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-							gr.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-							gr.DrawImage(map.Texture, new Rectangle(new Point(0,0), bm.Size), new Rectangle(new Point(0,0), map.Texture.Size), GraphicsUnit.Pixel);
+							gr.CompositingQuality = System
+								.Drawing
+								.Drawing2D
+								.CompositingQuality
+								.HighQuality;
+							gr.InterpolationMode = System
+								.Drawing
+								.Drawing2D
+								.InterpolationMode
+								.HighQualityBicubic;
+							gr.DrawImage(
+								map.Texture,
+								new Rectangle(new Point(0, 0), bm.Size),
+								new Rectangle(new Point(0, 0), map.Texture.Size),
+								GraphicsUnit.Pixel
+							);
 							mm.Texture = bm;
 						}
 					}
 				} // for i
 			}
-			catch (Exception ex) 
+			catch (Exception ex)
 			{
-				Helper.ExceptionMessage(Localization.Manager.GetString("errconvert"), ex);
+				Helper.ExceptionMessage(
+					Localization.Manager.GetString("errconvert"),
+					ex
+				);
 			}
 		}
 
 		protected Image GetAlpha(Image img)
 		{
-			Bitmap bm = new Bitmap(pb.Image.Size.Width, pb.Image.Size.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-					
+			Bitmap bm = new Bitmap(
+				pb.Image.Size.Width,
+				pb.Image.Size.Height,
+				System.Drawing.Imaging.PixelFormat.Format24bppRgb
+			);
+
 			Bitmap src = (Bitmap)img;
-			for (int y=0; y<bm.Size.Height; y++) 
+			for (int y = 0; y < bm.Size.Height; y++)
 			{
-				for (int x=0; x<bm.Size.Width; x++) 
+				for (int x = 0; x < bm.Size.Width; x++)
 				{
 					byte a = src.GetPixel(x, y).A;
-					bm.SetPixel(x, y, Color.FromArgb(a, a, a)); 
+					bm.SetPixel(x, y, Color.FromArgb(a, a, a));
 				} // for x
 			} //for y
 
@@ -1025,17 +1336,21 @@ namespace SimPe.Plugin
 
 		protected Image ChangeAlpha(Image img, Image alpha)
 		{
-			Bitmap bm = new Bitmap(pb.Image.Size.Width, pb.Image.Size.Height, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
-					
+			Bitmap bm = new Bitmap(
+				pb.Image.Size.Width,
+				pb.Image.Size.Height,
+				System.Drawing.Imaging.PixelFormat.Format32bppArgb
+			);
+
 			Bitmap src = (Bitmap)img;
 			Bitmap asrc = (Bitmap)alpha;
-			for (int y=0; y<bm.Size.Height; y++) 
+			for (int y = 0; y < bm.Size.Height; y++)
 			{
-				for (int x=0; x<bm.Size.Width; x++) 
+				for (int x = 0; x < bm.Size.Width; x++)
 				{
 					byte a = asrc.GetPixel(x, y).R;
 					Color cl = src.GetPixel(x, y);
-					bm.SetPixel(x, y, Color.FromArgb(a, cl)); 
+					bm.SetPixel(x, y, Color.FromArgb(a, cl));
 				} // for x
 			} //for y
 
@@ -1047,13 +1362,19 @@ namespace SimPe.Plugin
 			double ratio = (double)id.TextureSize.Width / (double)id.TextureSize.Height;
 			double newratio = (double)img.Width / (double)img.Height;
 
-			if (ratio != newratio) 
+			if (ratio != newratio)
 			{
-				if (MessageBox.Show("The File you want to import does not have the correct aspect Ratio!\n\nDo you want SimPe to crop the Image?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes) 
+				if (
+					MessageBox.Show(
+						"The File you want to import does not have the correct aspect Ratio!\n\nDo you want SimPe to crop the Image?",
+						"Warning",
+						MessageBoxButtons.YesNo
+					) == DialogResult.Yes
+				)
 				{
 					int w = Convert.ToInt32(img.Height * ratio);
 					int h = img.Height;
-					if (w>img.Width) 
+					if (w > img.Width)
 					{
 						w = img.Width;
 						h = Convert.ToInt32(img.Width / ratio);
@@ -1061,16 +1382,19 @@ namespace SimPe.Plugin
 
 					Image img2 = new Bitmap(w, h);
 					Graphics gr = Graphics.FromImage(img2);
-					gr.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;							
+					gr.InterpolationMode = System
+						.Drawing
+						.Drawing2D
+						.InterpolationMode
+						.HighQualityBicubic;
 
 					gr.DrawImageUnscaled(img, 0, 0);
 					img = img2;
-				} 
-				else 
+				}
+				else
 				{
 					return null;
 				}
-						
 			}
 
 			return img;
@@ -1078,32 +1402,44 @@ namespace SimPe.Plugin
 
 		private void ExportAlpha(object sender, System.EventArgs e)
 		{
-			if (pb.Image == null) return;
+			if (pb.Image == null)
+				return;
 
-			sfd.FileName = this.tbflname.Text+"_alpha_"+pb.Image.Size.Width.ToString()+"x"+pb.Image.Size.Height.ToString()+".png";
-			if (sfd.ShowDialog() == DialogResult.OK) 
+			sfd.FileName =
+				this.tbflname.Text
+				+ "_alpha_"
+				+ pb.Image.Size.Width.ToString()
+				+ "x"
+				+ pb.Image.Size.Height.ToString()
+				+ ".png";
+			if (sfd.ShowDialog() == DialogResult.OK)
 			{
-				try 
+				try
 				{
 					Image bm = GetAlpha(pb.Image);
 					bm.Save(sfd.FileName, ImageLoader.GetImageFormat(sfd.FileName));
-				} 
-				catch (Exception ex) 
+				}
+				catch (Exception ex)
 				{
-					Helper.ExceptionMessage(Localization.Manager.GetString("errwritingfile"), ex);
+					Helper.ExceptionMessage(
+						Localization.Manager.GetString("errwritingfile"),
+						ex
+					);
 				}
 			}
 		}
 
 		private void ImportAlpha(object sender, System.EventArgs e)
 		{
-			if (lbimg.SelectedIndex<0) return;
+			if (lbimg.SelectedIndex < 0)
+				return;
 
-			ofd.Filter = "All Image Files (*.jpg;*.bmp;*.gif;*.png)|*.jpg;*.bmp;*.gif;*.png|Png (*.png)|*.png|Bitmap (*.bmp)|*.bmp|Gif (*.gif)|*.gif|JPEG File (*.jpg)|*.jpg|All Files (*.*)|*.*";
+			ofd.Filter =
+				"All Image Files (*.jpg;*.bmp;*.gif;*.png)|*.jpg;*.bmp;*.gif;*.png|Png (*.png)|*.png|Bitmap (*.bmp)|*.bmp|Gif (*.gif)|*.gif|JPEG File (*.jpg)|*.jpg|All Files (*.*)|*.*";
 			ofd.FilterIndex = 2;
-			if (ofd.ShowDialog() == DialogResult.OK) 
+			if (ofd.ShowDialog() == DialogResult.OK)
 			{
-				try 
+				try
 				{
 					ImageData id = (ImageData)cbitem.Items[cbitem.SelectedIndex];
 					System.IO.Stream s = System.IO.File.OpenRead(ofd.FileName);
@@ -1113,20 +1449,24 @@ namespace SimPe.Plugin
 					s = null;
 
 					img = this.CropImage(id, img);
-					if (img==null) return;
+					if (img == null)
+						return;
 
 					lbimg.Tag = true;
 					MipMap mm = (MipMap)lbimg.Items[lbimg.SelectedIndex];
 					mm.LifoFile = "";
 					mm.Texture = this.ChangeAlpha(mm.Texture, img);
 					pb.Image = mm.Texture;
-					lbimg.Items[lbimg.SelectedIndex] = mm;					
-				} 
-				catch (Exception ex) 
-				{
-					Helper.ExceptionMessage(Localization.Manager.GetString("erropenfile"), ex);
+					lbimg.Items[lbimg.SelectedIndex] = mm;
 				}
-				finally 
+				catch (Exception ex)
+				{
+					Helper.ExceptionMessage(
+						Localization.Manager.GetString("erropenfile"),
+						ex
+					);
+				}
+				finally
 				{
 					lbimg.Tag = null;
 				}
@@ -1135,51 +1475,68 @@ namespace SimPe.Plugin
 
 		private void Changedlevel(object sender, System.EventArgs e)
 		{
-			if (cbitem.Tag!=null) return;
-			if (cbitem.SelectedIndex<0) return;
-			try 
+			if (cbitem.Tag != null)
+				return;
+			if (cbitem.SelectedIndex < 0)
+				return;
+			try
 			{
 				cbitem.Tag = true;
 				ImageData selecteditem = (ImageData)cbitem.Items[cbitem.SelectedIndex];
 				selecteditem.MipMapLevels = Convert.ToUInt32(tblevel.Text);
 				cbitem.Items[cbitem.SelectedIndex] = selecteditem;
 				cbitem.Text = tbflname.Text;
-			} 
-			catch (Exception ex) 
-			{
-				Helper.ExceptionMessage(Localization.Manager.GetString("erropenfile"), ex);
 			}
-			
-			finally 
+			catch (Exception ex)
+			{
+				Helper.ExceptionMessage(
+					Localization.Manager.GetString("erropenfile"),
+					ex
+				);
+			}
+			finally
 			{
 				cbitem.Tag = null;
 			}
 		}
 
-		private void BuildFilename(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		private void BuildFilename(
+			object sender,
+			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		)
 		{
 			string fl = Hashes.StripHashFromName(this.tbflname.Text);
-			this.tbflname.Text = Hashes.AssembleHashedFileName(wrapper.Package.FileGroupHash, fl);
+			this.tbflname.Text = Hashes.AssembleHashedFileName(
+				wrapper.Package.FileGroupHash,
+				fl
+			);
 		}
 
-		private void FixTGI(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		private void FixTGI(
+			object sender,
+			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		)
 		{
 			string fl = Hashes.StripHashFromName(this.tbflname.Text);
 			wrapper.FileDescriptor.Instance = Hashes.InstanceHash(fl);
 			wrapper.FileDescriptor.SubType = Hashes.SubTypeHash(fl);
 		}
 
-		protected Interfaces.Files.IPackedFileDescriptor GetLocalLifo(MipMap mm) 
+		protected Interfaces.Files.IPackedFileDescriptor GetLocalLifo(MipMap mm)
 		{
-			if (mm.Texture==null) 
+			if (mm.Texture == null)
 			{
 				uint st = Hashes.SubTypeHash(mm.LifoFile);
 				uint inst = Hashes.InstanceHash(mm.LifoFile);
 
-				Interfaces.Files.IPackedFileDescriptor pfd = wrapper.Package.FindFile(0xED534136, st, wrapper.FileDescriptor.Group, inst);
+				Interfaces.Files.IPackedFileDescriptor pfd = wrapper.Package.FindFile(
+					0xED534136,
+					st,
+					wrapper.FileDescriptor.Group,
+					inst
+				);
 				return pfd;
-			} 
-			
+			}
 
 			return null;
 		}
@@ -1187,23 +1544,28 @@ namespace SimPe.Plugin
 		private void ContextPopUp(object sender, System.EventArgs e)
 		{
 			milifo.Enabled = false;
-			this.mibuild.Enabled = System.IO.File.Exists(PathProvider.Global.NvidiaDDSTool);
-			if (lbimg.SelectedIndex<0) return;
-			try 
+			this.mibuild.Enabled = System.IO.File.Exists(
+				PathProvider.Global.NvidiaDDSTool
+			);
+			if (lbimg.SelectedIndex < 0)
+				return;
+			try
 			{
-				if (lbimg.SelectedIndex>=0) 
+				if (lbimg.SelectedIndex >= 0)
 				{
 					MipMap mm = (MipMap)lbimg.Items[lbimg.SelectedIndex];
 					Interfaces.Files.IPackedFileDescriptor pfd = GetLocalLifo(mm);
 					milifo.Enabled = (pfd != null);
-				} 
-				else 
+				}
+				else
 				{
 					milifo.Enabled = false;
 				}
-				mibuild.Enabled = (System.IO.File.Exists(PathProvider.Global.NvidiaDDSTool));
-			} 
-			catch (Exception ex) 
+				mibuild.Enabled = (
+					System.IO.File.Exists(PathProvider.Global.NvidiaDDSTool)
+				);
+			}
+			catch (Exception ex)
 			{
 				Helper.ExceptionMessage("", ex);
 			}
@@ -1211,114 +1573,122 @@ namespace SimPe.Plugin
 
 		private void ImportLifo(object sender, System.EventArgs e)
 		{
-			if (lbimg.SelectedIndex<0) return;
-			try 
+			if (lbimg.SelectedIndex < 0)
+				return;
+			try
 			{
 				cbitem.Tag = true;
 				MipMap mm = (MipMap)lbimg.Items[lbimg.SelectedIndex];
 				Interfaces.Files.IPackedFileDescriptor pfd = GetLocalLifo(mm);
 				Lifo lifo = new Lifo(null, false);
 				lifo.ProcessData(pfd, wrapper.Package);
-				mm.Texture = null;//((LevelInfo)lifo.Blocks[0]).Texture;
+				mm.Texture = null; //((LevelInfo)lifo.Blocks[0]).Texture;
 				mm.Data = ((LevelInfo)lifo.Blocks[0]).Data;
 				pb.Image = mm.Texture;
 				lbimg.Items[lbimg.SelectedIndex] = mm;
-			} 
-			catch (Exception ex) 
+			}
+			catch (Exception ex)
 			{
 				Helper.ExceptionMessage("", ex);
-			} 
-			finally 
+			}
+			finally
 			{
 				cbitem.Tag = null;
 			}
 		}
 
-		private void BuildMipMap(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		private void BuildMipMap(
+			object sender,
+			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		)
 		{
-			try 
+			try
 			{
-				Size sz = SimPe.Plugin.ImageSize.Execute(SelectedImageData().TextureSize);
+				Size sz = SimPe.Plugin.ImageSize.Execute(
+					SelectedImageData().TextureSize
+				);
 				cbitem.Tag = true;
 				lbimg.Items.Clear();
 				int wd = 1;
 				int hg = 1;
 
-				/*if (SelectedImageData().TextureSize.Width>SelectedImageData().TextureSize.Height) 
+				/*if (SelectedImageData().TextureSize.Width>SelectedImageData().TextureSize.Height)
 				{
 					wd = SelectedImageData().TextureSize.Width/SelectedImageData().TextureSize.Height;
 					hg = 1;
 				}*/
 
 				int levels = Convert.ToInt32(tblevel.Text);
-				for (int i=0; i<levels; i++)
+				for (int i = 0; i < levels; i++)
 				{
-					MipMap mm = new MipMap(SelectedImageData());					
+					MipMap mm = new MipMap(SelectedImageData());
 					mm.Texture = new Bitmap(wd, hg);
 
-					if (i==levels-1) 
+					if (i == levels - 1)
 					{
 						SelectedImageData().TextureSize = new Size(wd, hg);
 					}
 
-					if ((wd==hg) && (wd==1))
+					if ((wd == hg) && (wd == 1))
 					{
-						wd =  Math.Max(1, (sz.Width / Math.Max(1, sz.Height)));
-						hg =  Math.Max(1, (sz.Height / Math.Max(1, sz.Width)));
+						wd = Math.Max(1, (sz.Width / Math.Max(1, sz.Height)));
+						hg = Math.Max(1, (sz.Height / Math.Max(1, sz.Width)));
 
-						if ((wd==hg) && (wd==1)) 
+						if ((wd == hg) && (wd == 1))
 						{
-							wd *= 2; hg *= 2;
+							wd *= 2;
+							hg *= 2;
 						}
-					} 
-					else 
+					}
+					else
 					{
-						wd *= 2; hg *= 2;
+						wd *= 2;
+						hg *= 2;
 					}
 
 					lbimg.Items.Add(mm);
 				}
 
 				UpdateMimMaps();
-				if (cbitem.Tag==null) 
+				if (cbitem.Tag == null)
 				{
 					tbwidth.Text = SelectedImageData().TextureSize.Width.ToString();
 					tbheight.Text = SelectedImageData().TextureSize.Height.ToString();
-					lbimg.SelectedIndex = lbimg.Items.Count-1;
+					lbimg.SelectedIndex = lbimg.Items.Count - 1;
 				}
-			} 
+			}
 			catch (Exception ex)
 			{
 				Helper.ExceptionMessage("", ex);
-			} 
-			finally 
+			}
+			finally
 			{
 				cbitem.Tag = null;
 			}
 		}
 
-		void LoadDDS(DDSData[] data) 
+		void LoadDDS(DDSData[] data)
 		{
-			if (data==null) return;
-			if (data.Length>0) 
+			if (data == null)
+				return;
+			if (data.Length > 0)
 			{
-				try 
+				try
 				{
 					cbitem.Tag = true;
 					ImageData id = SelectedImageData();
-					
+
 					id.TextureSize = data[0].ParentSize;
 					id.Format = data[0].Format;
 					id.MipMapLevels = (uint)data.Length;
 
 					this.lbimg.Items.Clear();
-					for (int i=data.Length-1; i>=0; i--)
+					for (int i = data.Length - 1; i >= 0; i--)
 					{
 						DDSData item = data[i];
-						MipMap mm = new MipMap(id);	
+						MipMap mm = new MipMap(id);
 						mm.Texture = item.Texture;
 						mm.Data = item.Data;
-						
 
 						lbimg.Items.Add(mm);
 					}
@@ -1327,33 +1697,31 @@ namespace SimPe.Plugin
 					tbheight.Text = id.TextureSize.Height.ToString();
 
 					this.cbformats.SelectedIndex = 0;
-					for (int i=0; i<cbformats.Items.Count; i++) 
+					for (int i = 0; i < cbformats.Items.Count; i++)
 					{
-						if ((ImageLoader.TxtrFormats)cbformats.Items[i]==id.Format) 
+						if ((ImageLoader.TxtrFormats)cbformats.Items[i] == id.Format)
 						{
 							cbformats.SelectedIndex = i;
 							break;
 						}
 					}
 				}
-				finally 
+				finally
 				{
 					cbitem.Tag = null;
 				}
-
-						
 			}
 
 			UpdateMimMaps();
-			lbimg.SelectedIndex = lbimg.Items.Count-1;
+			lbimg.SelectedIndex = lbimg.Items.Count - 1;
 		}
 
 		private void ImportDDS(object sender, System.EventArgs e)
 		{
 			ofd.Filter = "NVIDIA DDS File (*.dds)|*.dds|All Files (*.*)|*.*";
-			if (ofd.ShowDialog() == DialogResult.OK) 
+			if (ofd.ShowDialog() == DialogResult.OK)
 			{
-				try 
+				try
 				{
 					cbitem.Tag = true;
 					ImageData id = SelectedImageData();
@@ -1361,11 +1729,11 @@ namespace SimPe.Plugin
 
 					LoadDDS(data);
 				}
-				catch (Exception ex) 
+				catch (Exception ex)
 				{
 					Helper.ExceptionMessage("", ex);
-				} 
-				finally 
+				}
+				finally
 				{
 					cbitem.Tag = null;
 				}
@@ -1374,22 +1742,29 @@ namespace SimPe.Plugin
 
 		private void ChangedSize(object sender, System.EventArgs e)
 		{
-			if (cbitem.Tag!=null) return;
-			if (cbitem.SelectedIndex<0) return;
-			try 
+			if (cbitem.Tag != null)
+				return;
+			if (cbitem.SelectedIndex < 0)
+				return;
+			try
 			{
 				cbitem.Tag = true;
 				ImageData id = (ImageData)cbitem.Items[cbitem.SelectedIndex];
-				id.TextureSize = new Size(Convert.ToInt32(tbwidth.Text), Convert.ToInt32(tbheight.Text));
+				id.TextureSize = new Size(
+					Convert.ToInt32(tbwidth.Text),
+					Convert.ToInt32(tbheight.Text)
+				);
 
 				BuildMipMap(null, null);
-			} 
-			catch (Exception ex) 
-			{
-				Helper.ExceptionMessage(Localization.Manager.GetString("erropenfile"), ex);
 			}
-			
-			finally 
+			catch (Exception ex)
+			{
+				Helper.ExceptionMessage(
+					Localization.Manager.GetString("erropenfile"),
+					ex
+				);
+			}
+			finally
 			{
 				cbitem.Tag = null;
 			}
@@ -1400,7 +1775,13 @@ namespace SimPe.Plugin
 			DDSTool dds = new DDSTool();
 
 			ImageData id = SelectedImageData();
-			LoadDDS(dds.Execute(Convert.ToInt32(this.tblevel.Text), id.TextureSize, id.Format));
+			LoadDDS(
+				dds.Execute(
+					Convert.ToInt32(this.tblevel.Text),
+					id.TextureSize,
+					id.Format
+				)
+			);
 			id.Refresh();
 		}
 	}

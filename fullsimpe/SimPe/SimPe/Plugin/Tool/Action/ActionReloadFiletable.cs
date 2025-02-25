@@ -26,28 +26,31 @@ namespace SimPe.Plugin.Tool.Action
 	/// </summary>
 	public class ActionReloadFiletable : SimPe.Interfaces.IToolAction
 	{
-		
 		#region IToolAction Member
 
-		public virtual bool ChangeEnabledStateEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
+		public virtual bool ChangeEnabledStateEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs es
+		)
 		{
-			return true;								
+			return true;
 		}
 
 		public void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs e)
 		{
-			if (!ChangeEnabledStateEventHandler(null, e)) return;
-			
-            // Once you reload the filetable, you're no longer in local mode
-            //bool old = SimPe.Helper.LocalMode;
-            SimPe.Helper.LocalMode = false;
+			if (!ChangeEnabledStateEventHandler(null, e))
+				return;
+
+			// Once you reload the filetable, you're no longer in local mode
+			//bool old = SimPe.Helper.LocalMode;
+			SimPe.Helper.LocalMode = false;
 			SimPe.FileTable.FileIndex.ForceReload();
-            //SimPe.Helper.LocalMode = old;
+			//SimPe.Helper.LocalMode = old;
 		}
 
-		#endregion		
+		#endregion
 
-		
+
 		#region IToolPlugin Member
 		public override string ToString()
 		{
@@ -58,23 +61,23 @@ namespace SimPe.Plugin.Tool.Action
 		#region IToolExt Member
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.None;
-			}
+			get { return System.Windows.Forms.Shortcut.None; }
 		}
 
 		public System.Drawing.Image Icon
 		{
 			get
 			{
-				return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.recur.png"));
+				return System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream("SimPe.img.recur.png")
+				);
 			}
 		}
 
-		public virtual bool Visible 
+		public virtual bool Visible
 		{
-			get {return true;}
+			get { return true; }
 		}
 
 		#endregion

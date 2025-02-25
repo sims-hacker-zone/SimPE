@@ -18,11 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
-using System.Windows.Forms;
 using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace SimPe.Wizards
 {
@@ -40,6 +40,7 @@ namespace SimPe.Wizards
 		private System.Windows.Forms.LinkLabel llback;
 		private System.Windows.Forms.LinkLabel llopt;
 		internal System.Windows.Forms.Panel pnP;
+
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -47,9 +48,9 @@ namespace SimPe.Wizards
 		private System.Windows.Forms.Label lbmsg;
 		internal System.Windows.Forms.Label lbPmsg;
 		internal Ambertation.Windows.Forms.ExtProgressBar pbP;
-		
 
 		FormStep1 step1;
+
 		public Form1()
 		{
 			//
@@ -65,39 +66,48 @@ namespace SimPe.Wizards
 			ShowStep(step1, true);
 			if ((!Option.HaveObjects) || (!Option.HaveSavefolder))
 			{
-				MessageBox.Show("Your Path settings are invalid. Wizards of SimPe will direct you to the Options Page.\n\nYou can just click on the 'Suggest' Buttons there, to get the default Paths. If the 'Suggest' Button disapears, your Path is set correct.", "Warning", MessageBoxButtons.OK);
+				MessageBox.Show(
+					"Your Path settings are invalid. Wizards of SimPe will direct you to the Options Page.\n\nYou can just click on the 'Suggest' Buttons there, to get the default Paths. If the 'Suggest' Button disapears, your Path is set correct.",
+					"Warning",
+					MessageBoxButtons.OK
+				);
 				this.ShowOptions(null, null);
 			}
 
-			Wait.Bar = new SimPe.Wizards.WaitBarControl(this);	
-			if (SimPe.FileTable.FileIndex==null) SimPe.FileTable.FileIndex = new SimPe.Plugin.FileIndex();
-			SimPe.Packages.PackageMaintainer.Maintainer.FileIndex = SimPe.FileTable.FileIndex;
-			if (Helper.WindowsRegistry.UseBigIcons) this.pndrop.Font = new System.Drawing.Font("Tahoma", 12F);
+			Wait.Bar = new SimPe.Wizards.WaitBarControl(this);
+			if (SimPe.FileTable.FileIndex == null)
+				SimPe.FileTable.FileIndex = new SimPe.Plugin.FileIndex();
+			SimPe.Packages.PackageMaintainer.Maintainer.FileIndex = SimPe
+				.FileTable
+				.FileIndex;
+			if (Helper.WindowsRegistry.UseBigIcons)
+				this.pndrop.Font = new System.Drawing.Font("Tahoma", 12F);
 		}
 
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
-				if (components != null) 
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
 
 		#region Windows Form Designer generated code
 		/// <summary>
-		/// Required method for Designer support - do not modify 
+		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+			System.ComponentModel.ComponentResourceManager resources =
+				new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.pbtop = new System.Windows.Forms.PictureBox();
 			this.pbbottom = new System.Windows.Forms.PictureBox();
 			this.pndrop = new System.Windows.Forms.Panel();
@@ -116,29 +126,33 @@ namespace SimPe.Wizards
 			((System.ComponentModel.ISupportInitialize)(this.pbstretch)).BeginInit();
 			this.pnP.SuspendLayout();
 			this.SuspendLayout();
-			// 
+			//
 			// pbtop
-			// 
+			//
 			this.pbtop.Dock = System.Windows.Forms.DockStyle.Top;
-			this.pbtop.Image = ((System.Drawing.Image)(resources.GetObject("pbtop.Image")));
+			this.pbtop.Image = (
+				(System.Drawing.Image)(resources.GetObject("pbtop.Image"))
+			);
 			this.pbtop.Location = new System.Drawing.Point(0, 0);
 			this.pbtop.Name = "pbtop";
 			this.pbtop.Size = new System.Drawing.Size(1032, 153);
 			this.pbtop.TabIndex = 0;
 			this.pbtop.TabStop = false;
-			// 
+			//
 			// pbbottom
-			// 
-			this.pbbottom.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbbottom.BackgroundImage")));
+			//
+			this.pbbottom.BackgroundImage = (
+				(System.Drawing.Image)(resources.GetObject("pbbottom.BackgroundImage"))
+			);
 			this.pbbottom.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.pbbottom.Location = new System.Drawing.Point(0, 612);
 			this.pbbottom.Name = "pbbottom";
 			this.pbbottom.Size = new System.Drawing.Size(1032, 24);
 			this.pbbottom.TabIndex = 1;
 			this.pbbottom.TabStop = false;
-			// 
+			//
 			// pndrop
-			// 
+			//
 			this.pndrop.Controls.Add(this.llopt);
 			this.pndrop.Controls.Add(this.llback);
 			this.pndrop.Controls.Add(this.llnext);
@@ -148,13 +162,26 @@ namespace SimPe.Wizards
 			this.pndrop.Name = "pndrop";
 			this.pndrop.Size = new System.Drawing.Size(1032, 459);
 			this.pndrop.TabIndex = 4;
-			// 
+			//
 			// llopt
-			// 
-			this.llopt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			//
+			this.llopt.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Bottom
+						| System.Windows.Forms.AnchorStyles.Left
+					)
+				)
+			);
 			this.llopt.AutoSize = true;
 			this.llopt.BackColor = System.Drawing.Color.White;
-			this.llopt.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.llopt.Font = new System.Drawing.Font(
+				"Verdana",
+				9.75F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.llopt.LinkColor = System.Drawing.Color.Red;
 			this.llopt.Location = new System.Drawing.Point(24, 444);
 			this.llopt.Name = "llopt";
@@ -163,15 +190,31 @@ namespace SimPe.Wizards
 			this.llopt.TabStop = true;
 			this.llopt.Text = "Options";
 			this.llopt.VisitedLinkColor = System.Drawing.Color.Maroon;
-			this.llopt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ShowOptions);
-			// 
+			this.llopt.LinkClicked +=
+				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+					this.ShowOptions
+				);
+			//
 			// llback
-			// 
-			this.llback.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.llback.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Bottom
+						| System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.llback.AutoSize = true;
 			this.llback.BackColor = System.Drawing.Color.White;
 			this.llback.Enabled = false;
-			this.llback.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.llback.Font = new System.Drawing.Font(
+				"Verdana",
+				12F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.llback.LinkColor = System.Drawing.Color.Red;
 			this.llback.Location = new System.Drawing.Point(858, 443);
 			this.llback.Name = "llback";
@@ -180,15 +223,29 @@ namespace SimPe.Wizards
 			this.llback.TabStop = true;
 			this.llback.Text = "< Back";
 			this.llback.VisitedLinkColor = System.Drawing.Color.Maroon;
-			this.llback.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Back);
-			// 
+			this.llback.LinkClicked +=
+				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Back);
+			//
 			// llnext
-			// 
-			this.llnext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.llnext.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Bottom
+						| System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.llnext.AutoSize = true;
 			this.llnext.BackColor = System.Drawing.Color.White;
 			this.llnext.Enabled = false;
-			this.llnext.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.llnext.Font = new System.Drawing.Font(
+				"Verdana",
+				12F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.llnext.LinkColor = System.Drawing.Color.Red;
 			this.llnext.Location = new System.Drawing.Point(942, 443);
 			this.llnext.Name = "llnext";
@@ -197,23 +254,32 @@ namespace SimPe.Wizards
 			this.llnext.TabStop = true;
 			this.llnext.Text = "Next >";
 			this.llnext.VisitedLinkColor = System.Drawing.Color.Maroon;
-			this.llnext.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Next);
-			// 
+			this.llnext.LinkClicked +=
+				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Next);
+			//
 			// pbstretch
-			// 
-			this.pbstretch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbstretch.BackgroundImage")));
+			//
+			this.pbstretch.BackgroundImage = (
+				(System.Drawing.Image)(resources.GetObject("pbstretch.BackgroundImage"))
+			);
 			this.pbstretch.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pbstretch.Location = new System.Drawing.Point(0, 0);
 			this.pbstretch.Name = "pbstretch";
 			this.pbstretch.Size = new System.Drawing.Size(1032, 459);
 			this.pbstretch.TabIndex = 5;
 			this.pbstretch.TabStop = false;
-			// 
+			//
 			// lbstep
-			// 
+			//
 			this.lbstep.AutoSize = true;
 			this.lbstep.BackColor = System.Drawing.Color.Transparent;
-			this.lbstep.Font = new System.Drawing.Font("Georgia", 60F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbstep.Font = new System.Drawing.Font(
+				"Georgia",
+				60F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.lbstep.ForeColor = System.Drawing.Color.White;
 			this.lbstep.Location = new System.Drawing.Point(922, 0);
 			this.lbstep.Name = "lbstep";
@@ -221,10 +287,17 @@ namespace SimPe.Wizards
 			this.lbstep.TabIndex = 10;
 			this.lbstep.Text = "0";
 			this.lbstep.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-			// 
+			//
 			// pnP
-			// 
-			this.pnP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			//
+			this.pnP.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Bottom
+						| System.Windows.Forms.AnchorStyles.Left
+					)
+				)
+			);
 			this.pnP.BackColor = System.Drawing.Color.White;
 			this.pnP.Controls.Add(this.pbP);
 			this.pnP.Controls.Add(this.lbPmsg);
@@ -233,11 +306,16 @@ namespace SimPe.Wizards
 			this.pnP.Size = new System.Drawing.Size(634, 24);
 			this.pnP.TabIndex = 5;
 			this.pnP.Visible = false;
-			// 
+			//
 			// pbP
-			// 
+			//
 			this.pbP.BackColor = System.Drawing.Color.Transparent;
-			this.pbP.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.pbP.BorderColor = System.Drawing.Color.FromArgb(
+				((int)(((byte)(100)))),
+				((int)(((byte)(0)))),
+				((int)(((byte)(0)))),
+				((int)(((byte)(0))))
+			);
 			this.pbP.Gradient = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
 			this.pbP.GradientEndColor = System.Drawing.Color.White;
 			this.pbP.GradientStartColor = System.Drawing.Color.White;
@@ -254,12 +332,26 @@ namespace SimPe.Wizards
 			this.pbP.UnselectedColor = System.Drawing.Color.Gray;
 			this.pbP.UseTokenBuffer = true;
 			this.pbP.Value = 50;
-			// 
+			//
 			// lbPmsg
-			// 
-			this.lbPmsg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
-			this.lbPmsg.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			//
+			this.lbPmsg.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							System.Windows.Forms.AnchorStyles.Top
+							| System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
+			this.lbPmsg.Font = new System.Drawing.Font(
+				"Georgia",
+				9.75F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.lbPmsg.ForeColor = System.Drawing.Color.Silver;
 			this.lbPmsg.Location = new System.Drawing.Point(378, 0);
 			this.lbPmsg.Name = "lbPmsg";
@@ -267,11 +359,17 @@ namespace SimPe.Wizards
 			this.lbPmsg.TabIndex = 15;
 			this.lbPmsg.Text = "Please Wait";
 			this.lbPmsg.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
+			//
 			// lbmsg
-			// 
+			//
 			this.lbmsg.BackColor = System.Drawing.Color.Transparent;
-			this.lbmsg.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbmsg.Font = new System.Drawing.Font(
+				"Georgia",
+				12F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.lbmsg.ForeColor = System.Drawing.Color.DimGray;
 			this.lbmsg.Location = new System.Drawing.Point(248, 14);
 			this.lbmsg.Name = "lbmsg";
@@ -279,13 +377,19 @@ namespace SimPe.Wizards
 			this.lbmsg.TabIndex = 6;
 			this.lbmsg.Text = "Description";
 			this.lbmsg.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-			// 
+			//
 			// Form1
-			// 
+			//
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(153)))));
-			this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+			this.BackColor = System.Drawing.Color.FromArgb(
+				((int)(((byte)(102)))),
+				((int)(((byte)(102)))),
+				((int)(((byte)(153))))
+			);
+			this.BackgroundImage = (
+				(System.Drawing.Image)(resources.GetObject("$this.BackgroundImage"))
+			);
 			this.ClientSize = new System.Drawing.Size(1032, 636);
 			this.Controls.Add(this.pnP);
 			this.Controls.Add(this.pndrop);
@@ -310,7 +414,6 @@ namespace SimPe.Wizards
 			this.pnP.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
-
 		}
 		#endregion
 
@@ -319,10 +422,10 @@ namespace SimPe.Wizards
 		/// <summary>
 		/// Der Haupteinstiegspunkt f�r die Anwendung.
 		/// </summary>
-		[STAThread]			
-		static void Main() 
+		[STAThread]
+		static void Main()
 		{
-			try 
+			try
 			{
 				bool adv = SimPe.Helper.WindowsRegistry.HiddenMode;
 				bool asy = SimPe.Helper.WindowsRegistry.AsynchronLoad;
@@ -338,14 +441,20 @@ namespace SimPe.Wizards
 				SimPe.Helper.WindowsRegistry.AsynchronLoad = asy;
 
 				SimPe.Helper.WindowsRegistry.Flush();
-			} 
+			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("WOS will Shutdown due to an unhandled Exception. \n\nMessage:"+ex.Message);
+				MessageBox.Show(
+					"WOS will Shutdown due to an unhandled Exception. \n\nMessage:"
+						+ ex.Message
+				);
 			}
 		}
 
-		private void ExitClick(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		private void ExitClick(
+			object sender,
+			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		)
 		{
 			Close();
 		}
@@ -359,10 +468,11 @@ namespace SimPe.Wizards
 		/// </summary>
 		/// <param name="sender">the current Wizard Step</param>
 		/// <param name="autonext">true if the page wanted to go to the next Wizard Step NOW</param>
-		void ContentChanged(IWizardForm sender, bool autonext) 
+		void ContentChanged(IWizardForm sender, bool autonext)
 		{
 			llnext.Enabled = sender.CanContinue;
-			if (autonext) this.Next();
+			if (autonext)
+				this.Next();
 		}
 
 		/// <summary>
@@ -371,11 +481,13 @@ namespace SimPe.Wizards
 		internal void Prev()
 		{
 			IWizardForm now = prevsteps.Pop();
-			if (now==null) return;
+			if (now == null)
+				return;
 			now.WizardWindow.Visible = false;
 
 			now = prevsteps.Tail();
-			if (now==null) return;
+			if (now == null)
+				return;
 
 			ShowStep(now, false);
 		}
@@ -386,9 +498,13 @@ namespace SimPe.Wizards
 		internal void Next()
 		{
 			IWizardForm now = prevsteps.Tail();
-			if (now==null) return;
+			if (now == null)
+				return;
 
-			if (now.GetType().GetInterface("IWizardFinish", false) == typeof(IWizardFinish)) 
+			if (
+				now.GetType().GetInterface("IWizardFinish", false)
+				== typeof(IWizardFinish)
+			)
 			{
 				IWizardFinish wf = (IWizardFinish)now;
 				wf.Finit();
@@ -396,27 +512,28 @@ namespace SimPe.Wizards
 				prevsteps = new Stack();
 				prevsteps.Push(step1);
 				ShowStep(step1, true);
-			} 
+			}
 			else
 			{
-				
 				now.WizardWindow.Visible = false;
 
 				now = now.Next;
-				if (now==null) return;
+				if (now == null)
+					return;
 
 				prevsteps.Push(now);
 				ShowStep(now, true);
 			}
 		}
 
-		private void Form1_Load(object sender, System.EventArgs e)
-		{
-
-		}
+		private void Form1_Load(object sender, System.EventArgs e) { }
 
 		Option op = new Option();
-		private void ShowOptions(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+
+		private void ShowOptions(
+			object sender,
+			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		)
 		{
 			this.llopt.LinkVisited = true;
 			op.form1 = this;
@@ -431,20 +548,30 @@ namespace SimPe.Wizards
 			pndrop.Visible = false;
 		}
 
-		internal void HideOptions(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
-		{						
+		internal void HideOptions(
+			object sender,
+			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		)
+		{
 			pndrop.Visible = true;
-			op.pnopt.Visible = false;			
+			op.pnopt.Visible = false;
 		}
 
 		private void Close(object sender, System.ComponentModel.CancelEventArgs e)
 		{
-			if ((prevsteps.Count>1)) 
+			if ((prevsteps.Count > 1))
 			{
-				e.Cancel = (MessageBox.Show("This Wizard is not finished yet.\n\nDo you want to quit anyway?", "Information", MessageBoxButtons.YesNo)!=DialogResult.Yes);
+				e.Cancel = (
+					MessageBox.Show(
+						"This Wizard is not finished yet.\n\nDo you want to quit anyway?",
+						"Information",
+						MessageBoxButtons.YesNo
+					) != DialogResult.Yes
+				);
 			}
 
-			if (!e.Cancel) Helper.WindowsRegistry.Flush();
+			if (!e.Cancel)
+				Helper.WindowsRegistry.Flush();
 		}
 
 		/// <summary>
@@ -459,35 +586,46 @@ namespace SimPe.Wizards
 			pn.Visible = false;
 			pn.Parent = this.pndrop;
 			pn.Dock = DockStyle.None;
-			pn.Anchor = ((System.Windows.Forms.AnchorStyles)(AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom));			
+			pn.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					AnchorStyles.Left
+					| AnchorStyles.Top
+					| AnchorStyles.Right
+					| AnchorStyles.Bottom
+				)
+			);
 			pn.BackColor = Color.White;
 			pn.Left = 16;
 			pn.Top = 0;
-			pn.Width = pndrop.Width - 2*pn.Left;
+			pn.Width = pndrop.Width - 2 * pn.Left;
 			pn.Height = pndrop.Height - (pn.Top + llnext.Height);
 
 			lbmsg.Text = step.WizardMessage;
 			lbstep.Text = step.WizardStep.ToString();
 			//lbmsg.Left = lbstep.Left - lbmsg.Width;
-			lbmsg.Width = lbstep.Left - lbmsg.Left + 2;			
-			
-			llback.Enabled = (prevsteps.Count>1);
-			if (step.GetType().GetInterface("IWizardFinish", false) == typeof(IWizardFinish)) 
+			lbmsg.Width = lbstep.Left - lbmsg.Left + 2;
+
+			llback.Enabled = (prevsteps.Count > 1);
+			if (
+				step.GetType().GetInterface("IWizardFinish", false)
+				== typeof(IWizardFinish)
+			)
 			{
 				llnext.Text = "Finish";
 				llnext.Enabled = true;
-			} 
-			else 
+			}
+			else
 			{
 				llnext.Text = "Next >";
-				llnext.Enabled = (step.Next!=null);
+				llnext.Enabled = (step.Next != null);
 			}
 
-			llnext.Enabled = llnext.Enabled & step.CanContinue;			
-			llopt.Visible = (prevsteps.Count<=1);
+			llnext.Enabled = llnext.Enabled & step.CanContinue;
+			llopt.Visible = (prevsteps.Count <= 1);
 
 			bool show = true;
-			if (init) show = step.Init(new ChangedContent(this.ContentChanged));
+			if (init)
+				show = step.Init(new ChangedContent(this.ContentChanged));
 			pn.Visible = show;
 
 			lbmsg.SendToBack();
@@ -497,15 +635,20 @@ namespace SimPe.Wizards
 		}
 		#endregion
 
-		private void Back(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		private void Back(
+			object sender,
+			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		)
 		{
 			Prev();
 		}
 
-		private void Next(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		private void Next(
+			object sender,
+			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		)
 		{
 			Next();
 		}
-
 	}
 }

@@ -31,7 +31,7 @@ namespace SimPe.Plugin
 		/// Windows Registry Link
 		/// </summary>
 		static SimPe.Registry registry;
-		internal static Registry WindowsRegistry 
+		internal static Registry WindowsRegistry
 		{
 			get { return registry; }
 		}
@@ -39,36 +39,58 @@ namespace SimPe.Plugin
 		IWrapperRegistry reg;
 		IProviderRegistry prov;
 
-		internal SimsTool(IWrapperRegistry reg, IProviderRegistry prov) 
+		internal SimsTool(IWrapperRegistry reg, IProviderRegistry prov)
 		{
 			this.reg = reg;
 			this.prov = prov;
 
-			if (registry==null) registry = Helper.WindowsRegistry;
+			if (registry == null)
+				registry = Helper.WindowsRegistry;
 		}
 
 		#region ITool Member
 
-        public bool IsEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
-        {
-            return (Helper.IsNeighborhoodFile(package?.FileName) || Helper.IsLotCatalogFile(package?.FileName));
-        }
-
-		private bool IsReallyEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
+		public bool IsEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
-			if (package == null) return false;
-			if (prov.SimNameProvider == null) return false;
-			return (Helper.IsNeighborhoodFile(package.FileName) || Helper.IsLotCatalogFile(package.FileName));
+			return (
+				Helper.IsNeighborhoodFile(package?.FileName)
+				|| Helper.IsLotCatalogFile(package?.FileName)
+			);
 		}
 
-		public Interfaces.Plugin.IToolResult ShowDialog(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package)
+		private bool IsReallyEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
-            if (!IsReallyEnabled(pfd, package))
-            {
-                System.Windows.Forms.MessageBox.Show(SimPe.Localization.GetString("This is not an appropriate context in which to use this tool"),
-                    Localization.Manager.GetString("simsbrowser"));
-                return new Plugin.ToolResult(false, false);
-            }
+			if (package == null)
+				return false;
+			if (prov.SimNameProvider == null)
+				return false;
+			return (
+				Helper.IsNeighborhoodFile(package.FileName)
+				|| Helper.IsLotCatalogFile(package.FileName)
+			);
+		}
+
+		public Interfaces.Plugin.IToolResult ShowDialog(
+			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			ref SimPe.Interfaces.Files.IPackageFile package
+		)
+		{
+			if (!IsReallyEnabled(pfd, package))
+			{
+				System.Windows.Forms.MessageBox.Show(
+					SimPe.Localization.GetString(
+						"This is not an appropriate context in which to use this tool"
+					),
+					Localization.Manager.GetString("simsbrowser")
+				);
+				return new Plugin.ToolResult(false, false);
+			}
 			Sims sims = new Sims();
 			sims.Text = Localization.Manager.GetString("simsbrowser");
 
@@ -77,7 +99,9 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			return "Neighbourhood\\"+Localization.Manager.GetString("simsbrowser")+"...";
+			return "Neighbourhood\\"
+				+ Localization.Manager.GetString("simsbrowser")
+				+ "...";
 		}
 
 		#endregion
@@ -85,17 +109,11 @@ namespace SimPe.Plugin
 		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
-			get
-            {
-                return SimPe.GetIcon.SimBrowser;
-			}
+			get { return SimPe.GetIcon.SimBrowser; }
 		}
 		public override System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.CtrlShiftS;
-			}
+			get { return System.Windows.Forms.Shortcut.CtrlShiftS; }
 		}
 		#endregion
 	}

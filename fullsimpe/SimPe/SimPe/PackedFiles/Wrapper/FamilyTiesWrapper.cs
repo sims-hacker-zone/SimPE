@@ -18,13 +18,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces.Plugin.Internal;
+using System.Collections;
+using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
-using SimPe.Data;
+using SimPe.Interfaces.Plugin;
+using SimPe.Interfaces.Plugin.Internal;
 using SimPe.PackedFiles.Wrapper.Supporting;
-using System.Collections;
 
 namespace SimPe.PackedFiles.Wrapper
 {
@@ -33,7 +33,6 @@ namespace SimPe.PackedFiles.Wrapper
 	/// </summary>
 	public class FamilyTies : AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension
 	{
-		
 		/// <summary>
 		/// Stores null or a valid Name Provider
 		/// </summary>
@@ -42,12 +41,9 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Name Provider
 		/// </summary>
-		internal SimPe.Interfaces.Providers.ISimNames NameProvider 
+		internal SimPe.Interfaces.Providers.ISimNames NameProvider
 		{
-			get 
-			{
-				return nameprovider;
-			}
+			get { return nameprovider; }
 		}
 
 		#region Attributes
@@ -59,18 +55,18 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns/Sets all stored Sims
 		/// </summary>
-		public FamilyTieSim[] Sims 
+		public FamilyTieSim[] Sims
 		{
-			get 
+			get
 			{
 				FamilyTieSim[] simlist = new FamilyTieSim[sims.Count];
 				sims.CopyTo(simlist);
 				return simlist;
 			}
-			set 
+			set
 			{
 				sims.Clear();
-				foreach(FamilyTieSim sim in value) 
+				foreach (FamilyTieSim sim in value)
 				{
 					sims.Add(sim);
 				}
@@ -82,12 +78,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region IWrapper Member
 		protected override IWrapperInfo CreateWrapperInfo()
 		{
-			return new AbstractWrapperInfo(
-				"Family Ties Wrapper",
-				"Quaxi",
-				"---",
-				1
-				); 
+			return new AbstractWrapperInfo("Family Ties Wrapper", "Quaxi", "---", 1);
 		}
 		#endregion
 
@@ -97,43 +88,47 @@ namespace SimPe.PackedFiles.Wrapper
 			return new SimPe.PackedFiles.UserInterface.FamilyTies();
 		}
 
-		public FamilyTies(SimPe.Interfaces.Providers.ISimNames names) : base()
-		{			
+		public FamilyTies(SimPe.Interfaces.Providers.ISimNames names)
+			: base()
+		{
 			nameprovider = names;
 			sims = new ArrayList();
-		}		
+		}
 
 		protected override void Unserialize(System.IO.BinaryReader reader)
-		{						
+		{
 			uint id = reader.ReadUInt32();
-			if (id!=0x00000001) throw new Exception("File is not Recognized by the Family Ties Wrapper!");
+			if (id != 0x00000001)
+				throw new Exception(
+					"File is not Recognized by the Family Ties Wrapper!"
+				);
 			int count = reader.ReadInt32();
 			sims = new ArrayList(count);
 
-			for (int i=0; i<count; i++) 
+			for (int i = 0; i < count; i++)
 			{
 				ushort instance = reader.ReadUInt16();
 				int blockdel = reader.ReadInt32();
 				FamilyTieItem[] items = new FamilyTieItem[reader.ReadInt32()];
-				for (int k=0; k<items.Length; k++) 
+				for (int k = 0; k < items.Length; k++)
 				{
-					MetaData.FamilyTieTypes type = (MetaData.FamilyTieTypes)reader.ReadUInt32();
+					MetaData.FamilyTieTypes type = (MetaData.FamilyTieTypes)
+						reader.ReadUInt32();
 					ushort tinstance = reader.ReadUInt16();
 					items[k] = new FamilyTieItem(type, tinstance, this);
 				}
 				FamilyTieSim simtie = new FamilyTieSim(instance, items, this);
 				simtie.BlockDelimiter = blockdel;
 				sims.Add(simtie);
-				
 			}
 		}
 
-		protected override void Serialize(System.IO.BinaryWriter writer) 
-		{		
+		protected override void Serialize(System.IO.BinaryWriter writer)
+		{
 			writer.Write((int)0x00000001);
 			writer.Write((int)sims.Count);
 
-			foreach(FamilyTieSim sim in sims) 
+			foreach (FamilyTieSim sim in sims)
 			{
 				writer.Write(sim.Instance);
 				writer.Write(sim.BlockDelimiter);
@@ -141,10 +136,9 @@ namespace SimPe.PackedFiles.Wrapper
 				foreach (FamilyTieItem tie in sim.Ties)
 				{
 					writer.Write((uint)tie.Type);
-					writer.Write(tie.Instance);					
+					writer.Write(tie.Instance);
 				}
 			}
-			
 		}
 		#endregion
 
@@ -152,27 +146,21 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint[] AssignableTypes
 		{
-			get 
+			get
 			{
-				uint[] Types = {
-								   MetaData.FAMILY_TIES_FILE
-							   };
+				uint[] Types = { MetaData.FAMILY_TIES_FILE };
 				return Types;
 			}
 		}
 
-
 		public Byte[] FileSignature
 		{
-			get 
+			get
 			{
-				Byte[] sig = {								 				 
-							 };
+				Byte[] sig = { };
 				return sig;
 			}
-		}		
-
-		
+		}
 
 		#endregion
 
@@ -183,9 +171,11 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <returns>null or the <see cref="FamilyTieSim"/> for that Sim</returns>
 		public FamilyTieSim FindTies(SDesc sdsc)
 		{
-			if (sdsc==null) return null;
-			foreach (FamilyTieSim s in sims)			
-				if (s.Instance == sdsc.Instance) return s;			
+			if (sdsc == null)
+				return null;
+			foreach (FamilyTieSim s in sims)
+				if (s.Instance == sdsc.Instance)
+					return s;
 
 			return null;
 		}
@@ -198,7 +188,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public FamilyTieSim CreateTie(SDesc sdsc)
 		{
 			FamilyTieSim s = FindTies(sdsc);
-			if (s==null) 
+			if (s == null)
 			{
 				s = new FamilyTieSim(sdsc.Instance, new FamilyTieItem[0], this);
 				sims.Add(s);

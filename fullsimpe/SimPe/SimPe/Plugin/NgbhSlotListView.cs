@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SimPe.Plugin
@@ -14,7 +14,8 @@ namespace SimPe.Plugin
 	public class NgbhSlotListView : System.Windows.Forms.UserControl
 	{
 		private System.Windows.Forms.ListView lv;
-		/// <summary> 
+
+		/// <summary>
 		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
@@ -22,46 +23,48 @@ namespace SimPe.Plugin
 		public NgbhSlotListView()
 		{
 			SetStyle(
-				ControlStyles.SupportsTransparentBackColor |
-				ControlStyles.AllPaintingInWmPaint |
-				//ControlStyles.Opaque |
-				ControlStyles.UserPaint |
-				ControlStyles.ResizeRedraw 
-				| ControlStyles.DoubleBuffer
-				,true);
+				ControlStyles.SupportsTransparentBackColor
+					| ControlStyles.AllPaintingInWmPaint
+					|
+					//ControlStyles.Opaque |
+					ControlStyles.UserPaint
+					| ControlStyles.ResizeRedraw
+					| ControlStyles.DoubleBuffer,
+				true
+			);
 			// Required designer variable.
 			InitializeComponent();
 
 			SetContent();
 		}
 
-		/// <summary> 
+		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
-				if(components != null)
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
 
 		#region Windows Form Designer generated code
-		/// <summary> 
-		/// Required method for Designer support - do not modify 
+		/// <summary>
+		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
 			this.lv = new System.Windows.Forms.ListView();
 			this.SuspendLayout();
-			// 
+			//
 			// lv
-			// 
+			//
 			this.lv.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.lv.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.lv.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -72,77 +75,86 @@ namespace SimPe.Plugin
 			this.lv.Size = new System.Drawing.Size(270, 166);
 			this.lv.TabIndex = 1;
 			this.lv.View = System.Windows.Forms.View.List;
-			this.lv.SelectedIndexChanged += new System.EventHandler(this.lv_SelectedIndexChanged);
-			// 
+			this.lv.SelectedIndexChanged += new System.EventHandler(
+				this.lv_SelectedIndexChanged
+			);
+			//
 			// NgbhSlotListView
-			// 
+			//
 			this.Controls.Add(this.lv);
 			this.DockPadding.All = 1;
-			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.Font = new System.Drawing.Font(
+				"Tahoma",
+				8.25F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.Name = "NgbhSlotListView";
 			this.Size = new System.Drawing.Size(272, 168);
 			this.ResumeLayout(false);
-
 		}
 		#endregion
 
 		NgbhSlot slot;
+
 		[System.ComponentModel.Browsable(false)]
 		public NgbhSlot Slot
 		{
-			get {return slot;}
-			set 
+			get { return slot; }
+			set
 			{
 				slot = value;
-				SetContent();				
+				SetContent();
 			}
 		}
 
 		Collections.NgbhSlots slots;
+
 		[System.ComponentModel.Browsable(false)]
 		public Collections.NgbhSlots Slots
 		{
-			get {return slots;}
-			set 
+			get { return slots; }
+			set
 			{
 				slots = value;
-				SetContent();				
+				SetContent();
 			}
 		}
 
 		Ngbh ngbh;
+
 		[System.ComponentModel.Browsable(false)]
 		public Ngbh NgbhResource
 		{
-			get {return ngbh;}
-			set 
+			get { return ngbh; }
+			set
 			{
 				ngbh = value;
-				SetContent();				
+				SetContent();
 			}
 		}
 
 		Data.NeighborhoodSlots st;
-		public Data.NeighborhoodSlots SlotType 
+		public Data.NeighborhoodSlots SlotType
 		{
-			get {return st;}
-			set 
+			get { return st; }
+			set
 			{
-				if (st!=value)
+				if (st != value)
 				{
 					st = value;
-					if (ngbh!=null)					
-						Slots = ngbh.GetSlots(st);					
+					if (ngbh != null)
+						Slots = ngbh.GetSlots(st);
 				}
 			}
 		}
-
 
 		void SetContent()
 		{
 			this.lv.BeginUpdate();
 			this.lv.Items.Clear();
-			if (slots!=null) 
+			if (slots != null)
 			{
 				foreach (NgbhSlot s in slots)
 				{
@@ -158,14 +170,16 @@ namespace SimPe.Plugin
 
 		private void lv_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if (SelectedSlotChanged!=null) SelectedSlotChanged(this, e);
+			if (SelectedSlotChanged != null)
+				SelectedSlotChanged(this, e);
 		}
 
 		public NgbhSlot SelectedSlot
 		{
-			get 
+			get
 			{
-				if (lv.SelectedItems.Count==0) return null;
+				if (lv.SelectedItems.Count == 0)
+					return null;
 				return lv.SelectedItems[0].Tag as NgbhSlot;
 			}
 		}

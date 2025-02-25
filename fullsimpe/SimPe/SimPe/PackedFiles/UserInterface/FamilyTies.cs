@@ -18,12 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Windows.Forms;
 using System.Drawing;
-using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces;
-using SimPe.PackedFiles.Wrapper.Supporting;
+using System.Windows.Forms;
 using SimPe.Data;
+using SimPe.Interfaces;
+using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Wrapper.Supporting;
 
 namespace SimPe.PackedFiles.UserInterface
 {
@@ -34,24 +34,44 @@ namespace SimPe.PackedFiles.UserInterface
 	{
 		protected void ResetPanel(Wrapper.FamilyTies famt)
 		{
-			form.cballtieablesims.Items.Clear();			
+			form.cballtieablesims.Items.Clear();
 			form.cballtieablesims.Sorted = false;
-			Interfaces.Files.IPackedFileDescriptor[] pfds = famt.Package.FindFiles(Data.MetaData.SIM_DESCRIPTION_FILE);
-			Wrapper.SDesc sdesc = new SimPe.PackedFiles.Wrapper.SDesc(famt.NameProvider, null, null);
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds) 
+			Interfaces.Files.IPackedFileDescriptor[] pfds = famt.Package.FindFiles(
+				Data.MetaData.SIM_DESCRIPTION_FILE
+			);
+			Wrapper.SDesc sdesc = new SimPe.PackedFiles.Wrapper.SDesc(
+				famt.NameProvider,
+				null,
+				null
+			);
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				Wrapper.Supporting.FamilyTieSim fts = new FamilyTieSim((ushort)pfd.Instance, null, famt);
+				Wrapper.Supporting.FamilyTieSim fts = new FamilyTieSim(
+					(ushort)pfd.Instance,
+					null,
+					famt
+				);
 				form.cballtieablesims.Items.Add(fts);
 			}
-			
+
 			form.cballtieablesims.Sorted = true;
 
 			form.cbtietype.Items.Clear();
-			form.cbtietype.Items.Add(new LocalizedFamilyTieTypes(Data.MetaData.FamilyTieTypes.MyMotherIs));
-			form.cbtietype.Items.Add(new LocalizedFamilyTieTypes(Data.MetaData.FamilyTieTypes.MyFatherIs));
-			form.cbtietype.Items.Add(new LocalizedFamilyTieTypes(Data.MetaData.FamilyTieTypes.ImMarriedTo));
-			form.cbtietype.Items.Add(new LocalizedFamilyTieTypes(Data.MetaData.FamilyTieTypes.MySiblingIs));
-			form.cbtietype.Items.Add(new LocalizedFamilyTieTypes(Data.MetaData.FamilyTieTypes.MyChildIs));
+			form.cbtietype.Items.Add(
+				new LocalizedFamilyTieTypes(Data.MetaData.FamilyTieTypes.MyMotherIs)
+			);
+			form.cbtietype.Items.Add(
+				new LocalizedFamilyTieTypes(Data.MetaData.FamilyTieTypes.MyFatherIs)
+			);
+			form.cbtietype.Items.Add(
+				new LocalizedFamilyTieTypes(Data.MetaData.FamilyTieTypes.ImMarriedTo)
+			);
+			form.cbtietype.Items.Add(
+				new LocalizedFamilyTieTypes(Data.MetaData.FamilyTieTypes.MySiblingIs)
+			);
+			form.cbtietype.Items.Add(
+				new LocalizedFamilyTieTypes(Data.MetaData.FamilyTieTypes.MyChildIs)
+			);
 			form.cbtietype.SelectedIndex = 2;
 
 			form.btaddtie.Enabled = false;
@@ -65,10 +85,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public Control GUIHandle
 		{
-			get 
-			{
-				return form.familytiePanel;
-			}
+			get { return form.familytiePanel; }
 		}
 
 		public void UpdateGUI(SimPe.Interfaces.Plugin.IFileWrapper wrapper)
@@ -76,18 +93,17 @@ namespace SimPe.PackedFiles.UserInterface
 			Wrapper.FamilyTies famt = (Wrapper.FamilyTies)wrapper;
 			form.wrapper = famt;
 			ResetPanel(famt);
-			
+
 			FamilyTieSim[] sims = famt.Sims;
 			form.cbtiesims.Items.Clear();
 			//form.cbtiesims.Sorted = false;
-			foreach(FamilyTieSim sim in sims) 
+			foreach (FamilyTieSim sim in sims)
 			{
 				form.cbtiesims.Items.Add(sim);
 			}
 			//form.cbtiesims.Sorted = true;
 		}
 
-		
-		#endregion		
+		#endregion
 	}
 }

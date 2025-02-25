@@ -26,26 +26,40 @@ namespace SimPe.Plugin.Tool.Action
 	/// </summary>
 	public class ActionGlobalFixTGI : SimPe.Interfaces.IToolAction
 	{
-		
 		#region IToolAction Member
 
-		public virtual bool ChangeEnabledStateEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
+		public virtual bool ChangeEnabledStateEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs es
+		)
 		{
-			return es.Loaded;								
+			return es.Loaded;
 		}
 
 		public void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs e)
 		{
-			if (!ChangeEnabledStateEventHandler(null, e)) return;
-			
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in e.LoadedPackage.Package.Index)
+			if (!ChangeEnabledStateEventHandler(null, e))
+				return;
+
+			foreach (
+				Interfaces.Files.IPackedFileDescriptor pfd in e.LoadedPackage
+					.Package
+					.Index
+			)
 			{
 				//Do we have a registred handler?
-				SimPe.Interfaces.Plugin.IFileWrapper wrapper = (SimPe.Interfaces.Plugin.IFileWrapper)FileTable.WrapperRegistry.FindHandler(pfd.Type);
-				SimPe.Interfaces.Files.IPackedFile file = e.LoadedPackage.Package.Read(pfd);
-				if (wrapper==null) wrapper = FileTable.WrapperRegistry.FindHandler(file.UncompressedData);
+				SimPe.Interfaces.Plugin.IFileWrapper wrapper =
+					(SimPe.Interfaces.Plugin.IFileWrapper)
+						FileTable.WrapperRegistry.FindHandler(pfd.Type);
+				SimPe.Interfaces.Files.IPackedFile file = e.LoadedPackage.Package.Read(
+					pfd
+				);
+				if (wrapper == null)
+					wrapper = FileTable.WrapperRegistry.FindHandler(
+						file.UncompressedData
+					);
 
-				if (wrapper!=null) 
+				if (wrapper != null)
 				{
 					wrapper.ProcessData(pfd, e.LoadedPackage.Package);
 					wrapper.Fix(FileTable.WrapperRegistry);
@@ -53,9 +67,9 @@ namespace SimPe.Plugin.Tool.Action
 			}
 		}
 
-		#endregion		
+		#endregion
 
-		
+
 		#region IToolPlugin Member
 		public override string ToString()
 		{
@@ -66,23 +80,17 @@ namespace SimPe.Plugin.Tool.Action
 		#region IToolExt Member
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.None;
-			}
+			get { return System.Windows.Forms.Shortcut.None; }
 		}
 
 		public System.Drawing.Image Icon
 		{
-			get
-			{
-                return SimPe.GetIcon.actionFixTGI;
-			}
+			get { return SimPe.GetIcon.actionFixTGI; }
 		}
 
-		public virtual bool Visible 
+		public virtual bool Visible
 		{
-			get {return true;}
+			get { return true; }
 		}
 
 		#endregion

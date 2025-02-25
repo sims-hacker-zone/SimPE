@@ -35,7 +35,10 @@ namespace SimPe.Cache
 		/// <param name="message">The Message</param>
 		/// <param name="filename">the Name of the Cache File (can be null)</param>
 		/// <param name="version">the Version of the Cache File</param>
-		public CacheException(string message, string filename, byte version) : base(message + " (file="+filename+", version="+version.ToString()+")")
+		public CacheException(string message, string filename, byte version)
+			: base(
+				message + " (file=" + filename + ", version=" + version.ToString() + ")"
+			)
 		{
 			this.filename = filename;
 			this.ver = version;

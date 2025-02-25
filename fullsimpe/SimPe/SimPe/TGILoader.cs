@@ -31,6 +31,7 @@ namespace SimPe
 		Hashtable map;
 		Data.TypeAlias[] list;
 		ArrayList alist;
+
 		/// <summary>
 		/// Create a new Instance
 		/// </summary>
@@ -40,13 +41,14 @@ namespace SimPe
 			map = new Hashtable();
 			list = new Data.TypeAlias[0];
 			alist = new ArrayList();
-			LoadTGI(filename);			
+			LoadTGI(filename);
 		}
 
 		/// <summary>
 		/// Create a new Instance from the default File
 		/// </summary>
-		public TGILoader() : this (System.IO.Path.Combine(Helper.SimPeDataPath, "tgi.xml")) {}
+		public TGILoader()
+			: this(System.IO.Path.Combine(Helper.SimPeDataPath, "tgi.xml")) { }
 
 		/// <summary>
 		/// Load the Values from File
@@ -55,26 +57,30 @@ namespace SimPe
 		void LoadTGI(string xmlfilename)
 		{
 			map.Clear();
-			if (!System.IO.File.Exists(xmlfilename)) 
+			if (!System.IO.File.Exists(xmlfilename))
 			{
-				Helper.ExceptionMessage(new Warning("Unable to load TGI description", "The File \""+xmlfilename+"\" was not found on the system"));
+				Helper.ExceptionMessage(
+					new Warning(
+						"Unable to load TGI description",
+						"The File \"" + xmlfilename + "\" was not found on the system"
+					)
+				);
 				return;
 			}
-			
-			
+
 			//read XML File
 			System.Xml.XmlDocument xmlfile = new XmlDocument();
 			xmlfile.Load(xmlfilename);
 
 			//seek Root Node
-			XmlNodeList XMLData = xmlfile.GetElementsByTagName("tgi");					
+			XmlNodeList XMLData = xmlfile.GetElementsByTagName("tgi");
 
 			//Process all Root Node Entries
-			for (int i=0; i<XMLData.Count; i++)
+			for (int i = 0; i < XMLData.Count; i++)
 			{
-				XmlNode node = XMLData.Item(i);	
-				ParseSubNode(node);				
-			}	
+				XmlNode node = XMLData.Item(i);
+				ParseSubNode(node);
+			}
 
 			list = new Data.TypeAlias[alist.Count];
 			alist.CopyTo(list);
@@ -87,8 +93,9 @@ namespace SimPe
 		/// <param name="node"></param>
 		void ParseSubNode(XmlNode node)
 		{
-			foreach (XmlNode subnode in node) 
-				if (subnode.Name=="type") LoadType(subnode);
+			foreach (XmlNode subnode in node)
+				if (subnode.Name == "type")
+					LoadType(subnode);
 		}
 
 		/// <summary>
@@ -96,32 +103,46 @@ namespace SimPe
 		/// </summary>
 		/// <param name="node"></param>
 		void LoadType(XmlNode node)
-		{			
+		{
 			uint type = 0;
-			try 
+			try
 			{
 				type = Convert.ToUInt32(node.Attributes["value"].Value, 16);
-			} 
-			catch {}
+			}
+			catch { }
 
 			bool known = false;
 			string name = "";
 			string shortname = "";
 			string ext = "";
 			bool contfl = false;
-            bool nodecomp = false;
-			foreach (XmlNode subnode in node) 
+			bool nodecomp = false;
+			foreach (XmlNode subnode in node)
 			{
-				if (subnode.Name=="known") known = true;
-				if (subnode.Name=="embeddedfilename") contfl = true;
-				if (subnode.Name=="name") name = subnode.InnerText;
-				if (subnode.Name=="shortname") shortname = subnode.InnerText;
-				if (subnode.Name=="extension") ext = subnode.InnerText;
-                if (subnode.Name == "nodecompressforcache") nodecomp = true;
+				if (subnode.Name == "known")
+					known = true;
+				if (subnode.Name == "embeddedfilename")
+					contfl = true;
+				if (subnode.Name == "name")
+					name = subnode.InnerText;
+				if (subnode.Name == "shortname")
+					shortname = subnode.InnerText;
+				if (subnode.Name == "extension")
+					ext = subnode.InnerText;
+				if (subnode.Name == "nodecompressforcache")
+					nodecomp = true;
 			}
 
 			//Data.TypeAlias ta = new Data.TypeAlias(contfl, SimPe.Localization.GetString(shortname), type, SimPe.Localization.GetString(name), ext, known);
-            Data.TypeAlias ta = new Data.TypeAlias(contfl, shortname, type, SimPe.Localization.GetString(name), ext, known, nodecomp);
+			Data.TypeAlias ta = new Data.TypeAlias(
+				contfl,
+				shortname,
+				type,
+				SimPe.Localization.GetString(name),
+				ext,
+				known,
+				nodecomp
+			);
 			map[type] = ta;
 			alist.Add(ta);
 		}
@@ -131,7 +152,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="type"></param>
 		/// <returns></returns>
-		public Data.TypeAlias GetByType(uint type) 
+		public Data.TypeAlias GetByType(uint type)
 		{
 			return (Data.TypeAlias)map[type];
 		}

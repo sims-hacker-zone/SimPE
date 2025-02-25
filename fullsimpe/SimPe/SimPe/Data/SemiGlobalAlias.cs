@@ -24,19 +24,21 @@ namespace SimPe.Data
 	/// <summary>
 	/// Overrides the Alias class
 	/// </summary>
-	public class SemiGlobalAlias : Data.Alias , IComparable<SemiGlobalAlias>
+	public class SemiGlobalAlias : Data.Alias, IComparable<SemiGlobalAlias>
 	{
 		/// <summary>
 		/// true, if this can be used as a valid Global
 		/// </summary>
 		bool known;
 
-		public SemiGlobalAlias(uint id, string name) : base (id, name) 
+		public SemiGlobalAlias(uint id, string name)
+			: base(id, name)
 		{
 			known = false;
 		}
 
-		public SemiGlobalAlias(bool known, uint id, string name) : base (id, name) 
+		public SemiGlobalAlias(bool known, uint id, string name)
+			: base(id, name)
 		{
 			this.known = known;
 		}
@@ -44,7 +46,7 @@ namespace SimPe.Data
 		/// <summary>
 		/// returns true if this Global is know for certain
 		/// </summary>
-		public bool Known 
+		public bool Known
 		{
 			get { return known; }
 		}
@@ -54,14 +56,13 @@ namespace SimPe.Data
 			return this.Name;
 		}
 
+		#region IComparable<SemiGlobalAlias> Member
 
-        #region IComparable<SemiGlobalAlias> Member
+		public int CompareTo(SemiGlobalAlias other)
+		{
+			return ToString().CompareTo(other.ToString());
+		}
 
-        public int CompareTo(SemiGlobalAlias other)
-        {
-            return ToString().CompareTo(other.ToString());
-        }
-
-        #endregion
-    }
+		#endregion
+	}
 }

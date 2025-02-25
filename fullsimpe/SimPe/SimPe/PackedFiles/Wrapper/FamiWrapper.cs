@@ -18,11 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces.Plugin.Internal;
+using System.Drawing;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
-using System.Drawing;
+using SimPe.Interfaces.Plugin;
+using SimPe.Interfaces.Plugin.Internal;
 
 namespace SimPe.PackedFiles.Wrapper
 {
@@ -32,7 +32,7 @@ namespace SimPe.PackedFiles.Wrapper
 	enum MemoryType : ushort
 	{
 		GoodMemory = 0x0000,
-		BadMemory = 0xfff8
+		BadMemory = 0xfff8,
 	}
 
 	public enum FamiVersions : int
@@ -41,12 +41,13 @@ namespace SimPe.PackedFiles.Wrapper
 		University = 0x4f,
 		Business = 0x51,
 		Voyage = 0x55,
-		Castaway = 0x56
+		Castaway = 0x56,
 	}
 
 	public class FamiFlags : FlagBase
 	{
-		public FamiFlags(ushort flags) : base(flags) { }
+		public FamiFlags(ushort flags)
+			: base(flags) { }
 
 		public bool HasPhone
 		{
@@ -72,6 +73,7 @@ namespace SimPe.PackedFiles.Wrapper
 			set { SetBit((byte)3, value); }
 		}
 	}
+
 	/// <summary>
 	/// Represents a PackedFile in Fami Format
 	/// </summary>
@@ -85,19 +87,20 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Instance Number of the Lot this Familie lives in
 		/// </summary>
-		private uint lotinstance, businesslot, vacationlot;
+		private uint lotinstance,
+			businesslot,
+			vacationlot;
 
 		/// <summary>
 		/// Money of the Family
 		/// </summary>
-		private int money, businessmoney;
+		private int money,
+			businessmoney;
 
 		/// <summary>
 		/// Friends of this Family
 		/// </summary>
 		private uint friends;
-
-
 
 		/// <summary>
 		/// The Members of this Family
@@ -111,7 +114,8 @@ namespace SimPe.PackedFiles.Wrapper
 		private uint albumGUID;
 
 		private int ca_resources;
-		private int ca_food, ca_food_decay;
+		private int ca_food,
+			ca_food_decay;
 
 		public FamiVersions Version
 		{
@@ -150,14 +154,8 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public int Money
 		{
-			get
-			{
-				return money;
-			}
-			set
-			{
-				money = value;
-			}
+			get { return money; }
+			set { money = value; }
 		}
 
 		public int CastAwayResources
@@ -192,14 +190,12 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint[] Members
 		{
-			get
-			{
-				return sims;
-			}
+			get { return sims; }
 			set
 			{
 				sims = value;
-				if (sims == null) sims = new uint[0];
+				if (sims == null)
+					sims = new uint[0];
 			}
 		}
 
@@ -214,12 +210,10 @@ namespace SimPe.PackedFiles.Wrapper
 				string[] names = new string[sims.Length];
 				if (nameprovider != null)
 				{
-
 					for (int i = 0; i < sims.Length; i++)
 					{
 						names[i] = nameprovider.FindName(sims[i]).Name;
 					}
-
 				}
 				return names;
 			}
@@ -270,7 +264,12 @@ namespace SimPe.PackedFiles.Wrapper
 				string name = Data.MetaData.NPCFamily(this.FileDescriptor.Instance);
 				try
 				{
-					IPackedFileDescriptor pfd = package.FindFile(Data.MetaData.STRING_FILE, 0, this.FileDescriptor.Group, this.FileDescriptor.Instance);
+					IPackedFileDescriptor pfd = package.FindFile(
+						Data.MetaData.STRING_FILE,
+						0,
+						this.FileDescriptor.Group,
+						this.FileDescriptor.Instance
+					);
 
 					//found a Text Resource
 					if (pfd != null)
@@ -278,19 +277,27 @@ namespace SimPe.PackedFiles.Wrapper
 						SimPe.PackedFiles.Wrapper.Str str = new Str();
 						str.ProcessData(pfd, package);
 
-						SimPe.PackedFiles.Wrapper.StrItemList items = str.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
-						if (items.Length > 0) name = items[0].Title;
+						SimPe.PackedFiles.Wrapper.StrItemList items =
+							str.FallbackedLanguageItems(
+								Helper.WindowsRegistry.LanguageCode
+							);
+						if (items.Length > 0)
+							name = items[0].Title;
 					}
 				}
 				catch (Exception) { }
 				return name;
 			}
-
 			set
 			{
 				try
 				{
-					IPackedFileDescriptor pfd = package.FindFile(Data.MetaData.STRING_FILE, 0, this.FileDescriptor.Group, this.FileDescriptor.Instance);
+					IPackedFileDescriptor pfd = package.FindFile(
+						Data.MetaData.STRING_FILE,
+						0,
+						this.FileDescriptor.Group,
+						this.FileDescriptor.Instance
+					);
 
 					// found a Text Resource
 					if (pfd != null)
@@ -298,10 +305,14 @@ namespace SimPe.PackedFiles.Wrapper
 						SimPe.PackedFiles.Wrapper.Str str = new Str();
 						str.ProcessData(pfd, package);
 
-						foreach (SimPe.PackedFiles.Wrapper.StrLanguage lng in str.Languages)
+						foreach (
+							SimPe.PackedFiles.Wrapper.StrLanguage lng in str.Languages
+						)
 						{
-							if (lng == null) continue;
-							if (str.LanguageItems(lng)[0x0] != null) str.LanguageItems(lng)[0x0].Title = value;
+							if (lng == null)
+								continue;
+							if (str.LanguageItems(lng)[0x0] != null)
+								str.LanguageItems(lng)[0x0].Title = value;
 						}
 
 						str.SynchronizeUserData();
@@ -320,34 +331,76 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				if (Helper.IsLotCatalogFile(package.FileName))
 				{
-					IPackedFileDescriptor pfc = package.FindFile(0x856DDBAC, 0, 0xFFFFFFFF, 0x6CD85218);
+					IPackedFileDescriptor pfc = package.FindFile(
+						0x856DDBAC,
+						0,
+						0xFFFFFFFF,
+						0x6CD85218
+					);
 					if (pfc != null)
 					{
 						try
 						{
-							SimPe.PackedFiles.Wrapper.Picture pic = new SimPe.PackedFiles.Wrapper.Picture();
+							SimPe.PackedFiles.Wrapper.Picture pic =
+								new SimPe.PackedFiles.Wrapper.Picture();
 							pic.ProcessData(pfc, package);
-							return Ambertation.Drawing.GraphicRoutines.MakeTransparent(pic.Image, Color.Black, 0.05f, true);
+							return Ambertation.Drawing.GraphicRoutines.MakeTransparent(
+								pic.Image,
+								Color.Black,
+								0.05f,
+								true
+							);
 						}
-						catch (Exception) { return null; }
+						catch (Exception)
+						{
+							return null;
+						}
 					}
 				}
 				else
 				{
-					if (Helper.StartedGui == Executable.Classic || this.FileDescriptor.Instance > 32511 || package.FileName == null) return null;
-					int inxy = System.IO.Path.GetFileNameWithoutExtension(package.FileName).IndexOf("_") + 1;
-					string suyt = System.IO.Path.GetFileNameWithoutExtension(package.FileName).Substring(0, inxy);
-					SimPe.Packages.File fumbs = SimPe.Packages.File.LoadFromFile(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(package.FileName), "Thumbnails\\" + suyt + "FamilyThumbnails.package"));
-					Interfaces.Files.IPackedFileDescriptor pfd = fumbs.FindFileAnyGroup(0x8C3CE95A, 0, this.FileDescriptor.Instance);
+					if (
+						Helper.StartedGui == Executable.Classic
+						|| this.FileDescriptor.Instance > 32511
+						|| package.FileName == null
+					)
+						return null;
+					int inxy =
+						System
+							.IO.Path.GetFileNameWithoutExtension(package.FileName)
+							.IndexOf("_") + 1;
+					string suyt = System
+						.IO.Path.GetFileNameWithoutExtension(package.FileName)
+						.Substring(0, inxy);
+					SimPe.Packages.File fumbs = SimPe.Packages.File.LoadFromFile(
+						System.IO.Path.Combine(
+							System.IO.Path.GetDirectoryName(package.FileName),
+							"Thumbnails\\" + suyt + "FamilyThumbnails.package"
+						)
+					);
+					Interfaces.Files.IPackedFileDescriptor pfd = fumbs.FindFileAnyGroup(
+						0x8C3CE95A,
+						0,
+						this.FileDescriptor.Instance
+					);
 					if (pfd != null)
 					{
 						try
 						{
-							SimPe.PackedFiles.Wrapper.Picture pic = new SimPe.PackedFiles.Wrapper.Picture();
+							SimPe.PackedFiles.Wrapper.Picture pic =
+								new SimPe.PackedFiles.Wrapper.Picture();
 							pic.ProcessData(pfd, fumbs);
-							return Ambertation.Drawing.GraphicRoutines.MakeTransparent(pic.Image, Color.Black, 0.05f, true);
+							return Ambertation.Drawing.GraphicRoutines.MakeTransparent(
+								pic.Image,
+								Color.Black,
+								0.05f,
+								true
+							);
 						}
-						catch (Exception) { return null; }
+						catch (Exception)
+						{
+							return null;
+						}
 					}
 				}
 				return null;
@@ -364,10 +417,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		internal SimPe.Interfaces.Providers.ISimNames NameProvider
 		{
-			get
-			{
-				return nameprovider;
-			}
+			get { return nameprovider; }
 		}
 
 		/// <summary>
@@ -376,13 +426,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="simid">id of the Sim</param>
 		/// <returns>The Description file for the Sim</returns>
 		/// <remarks>
-		/// If the Description file does not exist in 
+		/// If the Description file does not exist in
 		/// the current Package, it will be added!
 		/// </remarks>
 		/// <exception cref="Exception">Thrown when ProcessData was not called.</exception>
 		public SDesc GetDescriptionFile(uint simid)
 		{
-			if (package == null) throw new Exception("No package loaded!");
+			if (package == null)
+				throw new Exception("No package loaded!");
 
 			SDesc sdesc = SDesc.FindForSimId(simid, package);
 			if (sdesc == null)
@@ -392,15 +443,23 @@ namespace SimPe.PackedFiles.Wrapper
 				sdesc.CharacterDescription.Age = 28;
 				sdesc.CharacterDescription.Gender = SimPe.Data.MetaData.Gender.Female;
 
-				IPackedFileDescriptor[] files = package.FindFiles(SimPe.Data.MetaData.SIM_DESCRIPTION_FILE);
+				IPackedFileDescriptor[] files = package.FindFiles(
+					SimPe.Data.MetaData.SIM_DESCRIPTION_FILE
+				);
 				sdesc.Instance = 0;
 				foreach (IPackedFileDescriptor pfd in files)
 				{
-					if (pfd.Instance > sdesc.Instance) sdesc.Instance = (ushort)pfd.Instance;
+					if (pfd.Instance > sdesc.Instance)
+						sdesc.Instance = (ushort)pfd.Instance;
 				}
 				sdesc.Instance++;
 
-				IPackedFileDescriptor fd = package.Add(SimPe.Data.MetaData.SIM_DESCRIPTION_FILE, 0x0, FileDescriptor.Group, sdesc.Instance);
+				IPackedFileDescriptor fd = package.Add(
+					SimPe.Data.MetaData.SIM_DESCRIPTION_FILE,
+					0x0,
+					FileDescriptor.Group,
+					sdesc.Instance
+				);
 				sdesc.Save(fd);
 			}
 
@@ -427,14 +486,17 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			id = reader.ReadUInt32();
 			version = (FamiVersions)reader.ReadUInt32();
-			unknown = reader.ReadUInt32();      // Always 0x0000
+			unknown = reader.ReadUInt32(); // Always 0x0000
 			lotinstance = reader.ReadUInt32();
-			if ((int)version >= (int)FamiVersions.Business) businesslot = reader.ReadUInt32();
-			if ((int)version >= (int)FamiVersions.Voyage) vacationlot = reader.ReadUInt32();
+			if ((int)version >= (int)FamiVersions.Business)
+				businesslot = reader.ReadUInt32();
+			if ((int)version >= (int)FamiVersions.Voyage)
+				vacationlot = reader.ReadUInt32();
 
 			strinstance = reader.ReadUInt32();
 			money = reader.ReadInt32();
-			if ((int)version >= (int)FamiVersions.Castaway) ca_food_decay = reader.ReadInt32();
+			if ((int)version >= (int)FamiVersions.Castaway)
+				ca_food_decay = reader.ReadInt32();
 			friends = reader.ReadUInt32();
 			this.flags = reader.ReadUInt32();
 			uint count = reader.ReadUInt32();
@@ -445,14 +507,16 @@ namespace SimPe.PackedFiles.Wrapper
 				sims[i] = reader.ReadUInt32();
 			}
 			this.albumGUID = reader.ReadUInt32(); //relations??
-			if ((int)version >= (int)FamiVersions.University) this.subhood = reader.ReadUInt32();
+			if ((int)version >= (int)FamiVersions.University)
+				this.subhood = reader.ReadUInt32();
 			if ((int)version >= (int)FamiVersions.Castaway)
 			{
 				ca_resources = reader.ReadInt32();
 				ca_food = reader.ReadInt32();
 			}
 
-			if ((int)version >= (int)FamiVersions.Business) businessmoney = reader.ReadInt32();
+			if ((int)version >= (int)FamiVersions.Business)
+				businessmoney = reader.ReadInt32();
 		}
 
 		protected override void Serialize(System.IO.BinaryWriter writer)
@@ -461,8 +525,10 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write((uint)version);
 			writer.Write(unknown);
 			writer.Write(lotinstance);
-			if ((int)version >= (int)FamiVersions.Business) writer.Write(businesslot);
-			if ((int)version >= (int)FamiVersions.Voyage) writer.Write(vacationlot);
+			if ((int)version >= (int)FamiVersions.Business)
+				writer.Write(businesslot);
+			if ((int)version >= (int)FamiVersions.Voyage)
+				writer.Write(vacationlot);
 			if ((int)version >= (int)FamiVersions.Castaway)
 			{
 				writer.Write(ca_resources);
@@ -484,14 +550,16 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 			writer.Write(this.albumGUID);
 
-			if ((int)version >= (int)FamiVersions.University) writer.Write(this.subhood);
+			if ((int)version >= (int)FamiVersions.University)
+				writer.Write(this.subhood);
 			if ((int)version >= (int)FamiVersions.Castaway)
 			{
 				writer.Write(ca_resources);
 				writer.Write(ca_food);
 				writer.Write(ca_food_decay);
 			}
-			else if ((int)version >= (int)FamiVersions.Business) writer.Write(businessmoney);
+			else if ((int)version >= (int)FamiVersions.Business)
+				writer.Write(businessmoney);
 		}
 		#endregion
 
@@ -503,13 +571,17 @@ namespace SimPe.PackedFiles.Wrapper
 				"Quaxi",
 				"This File contains Informations about one Sim Family.",
 				7,
-				System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.fami.png"))
-				);
+				System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream("SimPe.img.fami.png")
+				)
+			);
 		}
 
 		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
 		{
-			if (!this.Processed) ProcessData(FileDescriptor, Package);
+			if (!this.Processed)
+				ProcessData(FileDescriptor, Package);
 			return this.Name;
 		}
 
@@ -521,9 +593,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				uint[] Types = {
-								  0x46414D49 
-							   };
+				uint[] Types = { 0x46414D49 };
 				return Types;
 			}
 		}
@@ -532,12 +602,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				Byte[] sig = {
-								(byte)'I',
-								(byte)'M',
-								(byte)'A',
-								(byte)'F' 						 
-							 };
+				Byte[] sig = { (byte)'I', (byte)'M', (byte)'A', (byte)'F' };
 				return sig;
 			}
 		}

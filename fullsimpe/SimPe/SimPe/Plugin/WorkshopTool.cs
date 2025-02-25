@@ -31,7 +31,7 @@ namespace SimPe.Plugin
 		/// Windows Registry Link
 		/// </summary>
 		static SimPe.Registry registry;
-		internal static Registry WindowsRegistry 
+		internal static Registry WindowsRegistry
 		{
 			get { return registry; }
 		}
@@ -40,44 +40,58 @@ namespace SimPe.Plugin
 		IProviderRegistry prov;
 		Workshop ws;
 
-		internal WorkshopTool(IWrapperRegistry reg, IProviderRegistry prov) 
+		internal WorkshopTool(IWrapperRegistry reg, IProviderRegistry prov)
 		{
 			this.reg = reg;
 			this.prov = prov;
 
-			if (registry==null) registry = Helper.WindowsRegistry;
+			if (registry == null)
+				registry = Helper.WindowsRegistry;
 
 			ws = new Workshop();
 		}
 
 		#region ITool Member
 
-		public bool IsEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
+		public bool IsEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
 			return true;
 		}
 
-		public Interfaces.Plugin.IToolResult ShowDialog(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package)
+		public Interfaces.Plugin.IToolResult ShowDialog(
+			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			ref SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
-			if (Helper.StartedGui == Executable.Default) 
+			if (Helper.StartedGui == Executable.Default)
 			{
-				if (Message.Show(SimPe.Localization.GetString("ObsoleteOW"), SimPe.Localization.GetString("Warning"), System.Windows.Forms.MessageBoxButtons.YesNo)==System.Windows.Forms.DialogResult.No)
+				if (
+					Message.Show(
+						SimPe.Localization.GetString("ObsoleteOW"),
+						SimPe.Localization.GetString("Warning"),
+						System.Windows.Forms.MessageBoxButtons.YesNo
+					) == System.Windows.Forms.DialogResult.No
+				)
 					return new ToolResult(false, false);
 			}
 
 			SimPe.Interfaces.Files.IPackageFile pkg = ws.Execute(prov, package);
 
-			if (pkg!=null) 
+			if (pkg != null)
 			{
-				if (pkg.Reader!=null) 
+				if (pkg.Reader != null)
 				{
-					if (!pkg.Reader.BaseStream.CanWrite) new ToolResult(false, false);
+					if (!pkg.Reader.BaseStream.CanWrite)
+						new ToolResult(false, false);
 				}
 
 				package = pkg;
 				return new ToolResult(false, true);
-			} 
-			else 
+			}
+			else
 			{
 				return new ToolResult(false, false);
 			}
@@ -85,7 +99,7 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			if (Helper.StartedGui == Executable.Default) 
+			if (Helper.StartedGui == Executable.Default)
 				return "Object Creation\\Windowed Object Workshop...";
 			else
 				return "Object Creation\\Object Workshop...";
@@ -96,16 +110,13 @@ namespace SimPe.Plugin
 		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
-			get
-			{
-                return SimPe.GetIcon.CreatePackageW;
-			}
+			get { return SimPe.GetIcon.CreatePackageW; }
 		}
 		public override System.Windows.Forms.Shortcut Shortcut
 		{
 			get
 			{
-				if (Helper.StartedGui == Executable.Default) 
+				if (Helper.StartedGui == Executable.Default)
 					return System.Windows.Forms.Shortcut.None;
 				else
 					return System.Windows.Forms.Shortcut.CtrlW;

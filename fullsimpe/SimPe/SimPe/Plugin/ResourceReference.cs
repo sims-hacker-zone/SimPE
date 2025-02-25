@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
 using System.Globalization;
-
 using SimPe.Interfaces.Files;
-
 
 namespace SimPe.Plugin
 {
@@ -46,27 +44,26 @@ namespace SimPe.Plugin
 		{
 			return BitConverter.ToInt32(
 				BitConverter.GetBytes(
-					this.Type ^
-					this.Group ^
-					this.SubType ^
-					this.Instance),
+					this.Type ^ this.Group ^ this.SubType ^ this.Instance
+				),
 				0
-				);
+			);
 		}
-
 
 		public override string ToString()
 		{
-			return String.Format("{0:X8}-{1:X8}-{2:X8}-{3:X8}", this.Type, this.Group, this.SubType, this.Instance);
+			return String.Format(
+				"{0:X8}-{1:X8}-{2:X8}-{3:X8}",
+				this.Type,
+				this.Group,
+				this.SubType,
+				this.Instance
+			);
 		}
 
 		public static uint GetHash(IPackedFileDescriptor pfd)
 		{
-			return 
-				pfd.Type ^
-				pfd.Group ^
-				pfd.SubType ^
-				pfd.Instance;
+			return pfd.Type ^ pfd.Group ^ pfd.SubType ^ pfd.Instance;
 		}
 
 		public static ResourceReference Parse(string s)
@@ -76,9 +73,12 @@ namespace SimPe.Plugin
 			{
 				string[] parts = s.Split('-');
 				if (parts.Length != 4)
-					throw new FormatException("The specified string was not in the correct format for a ResourceReference");
+					throw new FormatException(
+						"The specified string was not in the correct format for a ResourceReference"
+					);
 
-				NumberStyles format = NumberStyles.AllowHexSpecifier | NumberStyles.HexNumber;
+				NumberStyles format =
+					NumberStyles.AllowHexSpecifier | NumberStyles.HexNumber;
 				ret.Type = uint.Parse(parts[0], format);
 				ret.Group = uint.Parse(parts[1], format);
 				ret.SubType = uint.Parse(parts[2], format);
@@ -86,8 +86,5 @@ namespace SimPe.Plugin
 			}
 			return ret;
 		}
-
-
 	}
-
 }

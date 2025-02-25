@@ -20,8 +20,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -34,16 +34,22 @@ namespace SimPe.PackedFiles.Wrapper
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
 	public class Bcon
-        : pjse.ExtendedWrapper<BconItem, Bcon> //AbstractWrapper				//Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-		, IFileWrapper					//This Interface is used when loading a File
-		, IFileWrapperSaveExtension		//This Interface (if available) will be used to store a File
-		//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+		: pjse.ExtendedWrapper<
+			BconItem,
+			Bcon
+		> //AbstractWrapper				//Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
+			,
+			IFileWrapper //This Interface is used when loading a File
+			,
+			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
+	//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 	{
 		#region Attributes
 		/// <summary>
 		/// Contains the Filename
 		/// </summary>
 		private byte[] filename = new byte[64];
+
 		/// <summary>
 		/// Just A Flag
 		/// </summary>
@@ -72,7 +78,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public bool Flag
 		{
-			get { return flag;	}
+			get { return flag; }
 			set
 			{
 				if (flag != value)
@@ -87,15 +93,16 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Constructor
 		/// </summary>
-        public Bcon() : base() { }
-
+		public Bcon()
+			: base() { }
 
 		#region AbstractWrapper Member
 		public override bool CheckVersion(uint version)
 		{
-			if ( (version==0012) //0.00
-				|| (version==0013) //0.10
-				)
+			if (
+				(version == 0012) //0.00
+				|| (version == 0013) //0.10
+			)
 			{
 				return true;
 			}
@@ -119,7 +126,7 @@ namespace SimPe.PackedFiles.Wrapper
 				"Peter L Jones",
 				"BCON Value Editor",
 				1
-				);
+			);
 		}
 
 		/// <summary>
@@ -136,7 +143,7 @@ namespace SimPe.PackedFiles.Wrapper
 			int countflag = items.Count | (flag ? 0x8000 : 0x0000);
 			writer.Write((ushort)countflag);
 
-			foreach(short v in items)
+			foreach (short v in items)
 				writer.Write(v);
 		}
 
@@ -151,29 +158,30 @@ namespace SimPe.PackedFiles.Wrapper
 			flag = (countflag & 0x8000) != 0;
 			int length = countflag & 0x7fff;
 
-            items = new List<BconItem>();
-            while(items.Count < length)
+			items = new List<BconItem>();
+			while (items.Count < length)
 				items.Add(reader.ReadInt16());
 		}
 
 		#endregion
 
-        public const uint Bcontype = 0x42434F4E;
-        #region IFileWrapper Member
-        /// <summary>
+		public const uint Bcontype = 0x42434F4E;
+
+		#region IFileWrapper Member
+		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes { get { return new uint[] { Bcontype }; } }
+		public uint[] AssignableTypes
+		{
+			get { return new uint[] { Bcontype }; }
+		}
 
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get
-			{
-				return new byte[0];
-			}
+			get { return new byte[0]; }
 		}
 
 		#endregion
@@ -182,42 +190,85 @@ namespace SimPe.PackedFiles.Wrapper
 		//all covered by Serialize()
 		#endregion
 
-        public new void Add(BconItem item) { Add(item, 0x8000); }
+		public new void Add(BconItem item)
+		{
+			Add(item, 0x8000);
+		}
 
-        public new void Insert(int index, BconItem item) { Insert(index, item, 0x8000); }
+		public new void Insert(int index, BconItem item)
+		{
+			Insert(index, item, 0x8000);
+		}
+	}
 
-    }
+	public class BconItem
+		: pjse.ExtendedWrapperItem<Bcon, BconItem>,
+			IComparable<short>,
+			IEquatable<short>,
+			IComparable<BconItem>
+	{
+		private Int16 value;
 
-    public class BconItem : pjse.ExtendedWrapperItem<Bcon, BconItem>
-        , IComparable<short>, IEquatable<short>, IComparable<BconItem>
-    {
-        private Int16 value;
-        public BconItem(Int16 value) { this.value = value; }
-        public static explicit operator byte(BconItem i) { return (byte)i.value; }
-        public static implicit operator short(BconItem i) { return i.value; }
-        public static explicit operator ushort(BconItem i) { return (ushort)i.value; }
-        public static implicit operator BconItem(short i) { return new BconItem(i); }
+		public BconItem(Int16 value)
+		{
+			this.value = value;
+		}
 
-        public override string ToString() { return value.ToString(); }
+		public static explicit operator byte(BconItem i)
+		{
+			return (byte)i.value;
+		}
 
-        public override bool Equals(BconItem other) { return value.Equals(other.value); }
+		public static implicit operator short(BconItem i)
+		{
+			return i.value;
+		}
 
-        #region IComparable<short> Members
+		public static explicit operator ushort(BconItem i)
+		{
+			return (ushort)i.value;
+		}
 
-        public int CompareTo(short other) { return value.CompareTo(other); }
+		public static implicit operator BconItem(short i)
+		{
+			return new BconItem(i);
+		}
 
-        #endregion
+		public override string ToString()
+		{
+			return value.ToString();
+		}
 
-        #region IEquatable<short> Members
+		public override bool Equals(BconItem other)
+		{
+			return value.Equals(other.value);
+		}
 
-        public bool Equals(short other) { return value.Equals(other); }
+		#region IComparable<short> Members
 
-        #endregion
+		public int CompareTo(short other)
+		{
+			return value.CompareTo(other);
+		}
 
-        #region IComparable<BconItem> Members
+		#endregion
 
-        public int CompareTo(BconItem other) { return value.CompareTo(other.value); }
+		#region IEquatable<short> Members
 
-        #endregion
-    }
+		public bool Equals(short other)
+		{
+			return value.Equals(other);
+		}
+
+		#endregion
+
+		#region IComparable<BconItem> Members
+
+		public int CompareTo(BconItem other)
+		{
+			return value.CompareTo(other.value);
+		}
+
+		#endregion
+	}
 }

@@ -27,11 +27,10 @@ namespace SimPe.Plugin.Gmdc
 		string name;
 		int index;
 
-		public GroupDescriptor(string name) : this(name, -1)
-		{
-		}
+		public GroupDescriptor(string name)
+			: this(name, -1) { }
 
-		public GroupDescriptor(string name, int index) 
+		public GroupDescriptor(string name, int index)
 		{
 			this.name = name;
 			this.index = index;
@@ -51,7 +50,7 @@ namespace SimPe.Plugin.Gmdc
 
 		public bool HasIndex
 		{
-			get { return (index>=0); }
+			get { return (index >= 0); }
 		}
 	}
 
@@ -64,29 +63,33 @@ namespace SimPe.Plugin.Gmdc
 		/// Ignore the Mesh-Group
 		/// </summary>
 		Nothing = 0x00,
+
 		/// <summary>
 		/// Replace the existing Group with the one stored in the <see cref="ImportedGroup.Group"/> Member
 		/// </summary>
 		Replace = 0x01,
+
 		/// <summary>
 		/// Add the Group stored in the <see cref="ImportedGroup.Group"/> Member
 		/// </summary>
 		Add = 0x02,
+
 		/// <summary>
 		/// Add the Group stored in <see cref="ImportedGroup.Group"/> and assign a new Name.
 		/// </summary>
 		Rename = 0x03,
+
 		/// <summary>
 		/// Will only change the newly Imported Data in the stored <see cref="ImportedGroup.Group"/>.
 		/// </summary>
-		Update = 0x04
+		Update = 0x04,
 	}
 
 	/// <summary>
-	/// This class is generated for each available and imported Group, 
+	/// This class is generated for each available and imported Group,
 	/// and determins the Behaviour during the Import
 	/// </summary>
-	public class GmdcGroupImporterAction 
+	public class GmdcGroupImporterAction
 	{
 		/// <summary>
 		/// internal Attribute
@@ -94,8 +97,8 @@ namespace SimPe.Plugin.Gmdc
 		GroupDescriptor newname;
 
 		/// <summary>
-		/// If action is <see cref="GmdcImporterAction.Replace"/>, <see cref="GmdcImporterAction.Update"/> or 
-		/// <see cref="GmdcImporterAction.Rename"/>, this Member stores the 
+		/// If action is <see cref="GmdcImporterAction.Replace"/>, <see cref="GmdcImporterAction.Update"/> or
+		/// <see cref="GmdcImporterAction.Rename"/>, this Member stores the
 		/// new Name for the current Group. (read/write)
 		/// </summary>
 		public GroupDescriptor Target
@@ -108,10 +111,11 @@ namespace SimPe.Plugin.Gmdc
 		/// internal Attribute
 		/// </summary>
 		GmdcImporterAction action;
+
 		/// <summary>
 		/// Returns/Sets the action that should be performed
 		/// </summary>
-		public GmdcImporterAction Action 
+		public GmdcImporterAction Action
 		{
 			get { return action; }
 			set { action = value; }
@@ -121,6 +125,7 @@ namespace SimPe.Plugin.Gmdc
 		/// internal Attribute
 		/// </summary>
 		float scale;
+
 		/// <summary>
 		/// Returns/Sets the scale Factor that should be applied to this group
 		/// </summary>
@@ -134,7 +139,7 @@ namespace SimPe.Plugin.Gmdc
 		/// Create a new Instance
 		/// </summary>
 		public GmdcGroupImporterAction()
-		{		
+		{
 			action = GmdcImporterAction.Add;
 			scale = (float)(1.0);
 
@@ -148,6 +153,7 @@ namespace SimPe.Plugin.Gmdc
 	public class ImportedGroup : GmdcGroupImporterAction
 	{
 		GmdcGroup group;
+
 		/// <summary>
 		/// The new MeshGroup
 		/// </summary>
@@ -156,7 +162,8 @@ namespace SimPe.Plugin.Gmdc
 			get { return group; }
 		}
 
-		GmdcLink link;	
+		GmdcLink link;
+
 		/// <summary>
 		/// The new Link Section
 		/// </summary>
@@ -166,6 +173,7 @@ namespace SimPe.Plugin.Gmdc
 		}
 
 		GmdcElements elements;
+
 		/// <summary>
 		/// All Elements used by this Group
 		/// </summary>
@@ -177,12 +185,14 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Returns the Number of faces stored in the Group
 		/// </summary>
-		public int VertexCount 
+		public int VertexCount
 		{
-			get 
+			get
 			{
 				int vc = 0;
-				foreach (int i in Link.ReferencedElement) if (Elements[i].Identity == ElementIdentity.Vertex) vc += Elements[i].Values.Count;
+				foreach (int i in Link.ReferencedElement)
+					if (Elements[i].Identity == ElementIdentity.Vertex)
+						vc += Elements[i].Values.Count;
 				return vc;
 			}
 		}
@@ -193,10 +203,11 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns></returns>
 		public int FaceCount
 		{
-			get {return this.Group.Faces.Length / 3; }
+			get { return this.Group.Faces.Length / 3; }
 		}
 
 		bool useinbmesh;
+
 		/// <summary>
 		/// True, if this MEshGroup sould be added to the BoundingMesh
 		/// </summary>
@@ -207,35 +218,40 @@ namespace SimPe.Plugin.Gmdc
 		}
 
 		bool keeporder;
+
 		internal void SetKeepOrder(bool val)
 		{
 			keeporder = val;
 		}
+
 		public bool KeepOrder
 		{
-			get {return keeporder;}
+			get { return keeporder; }
 		}
 
 		/// <summary>
 		/// Returns the color that should be used to display this Group in the "Import Groups" ListView
 		/// </summary>
-		public System.Drawing.Color MarkColor 
+		public System.Drawing.Color MarkColor
 		{
-			get 
+			get
 			{
-				if (Action==GmdcImporterAction.Nothing) return System.Drawing.Color.Silver;
-				if (VertexCount > AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT) return System.Drawing.Color.Red;
-				if (FaceCount > AbstractGmdcImporter.CRITICAL_FACE_AMOUNT) return System.Drawing.Color.Red;
+				if (Action == GmdcImporterAction.Nothing)
+					return System.Drawing.Color.Silver;
+				if (VertexCount > AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT)
+					return System.Drawing.Color.Red;
+				if (FaceCount > AbstractGmdcImporter.CRITICAL_FACE_AMOUNT)
+					return System.Drawing.Color.Red;
 				return System.Drawing.SystemColors.WindowText;
 			}
 		}
-
 
 		/// <summary>
 		/// Create a new Instance
 		/// </summary>
 		/// <param name="parent">The gmdc that should act as Parent</param>
-		public ImportedGroup(GeometryDataContainer parent) : base()
+		public ImportedGroup(GeometryDataContainer parent)
+			: base()
 		{
 			keeporder = true;
 			group = new GmdcGroup(parent);
@@ -249,7 +265,7 @@ namespace SimPe.Plugin.Gmdc
 	/// <summary>
 	/// Typesave ArrayList for <see cref="ImportedGroup"/> Objects
 	/// </summary>
-	public class ImportedGroups : ArrayList 
+	public class ImportedGroups : ArrayList
 	{
 		/// <summary>
 		/// Integer Indexer
@@ -306,12 +322,12 @@ namespace SimPe.Plugin.Gmdc
 		public bool Contains(ImportedGroup item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -323,7 +339,8 @@ namespace SimPe.Plugin.Gmdc
 		public override object Clone()
 		{
 			ImportedGroups list = new ImportedGroups();
-			foreach (ImportedGroup item in this) list.Add(item);
+			foreach (ImportedGroup item in this)
+				list.Add(item);
 
 			return list;
 		}

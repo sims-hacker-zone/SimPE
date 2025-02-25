@@ -28,14 +28,16 @@ namespace SimPe
 	public class Serializer
 	{
 		#region Formater
-		static 	SimPe.Interfaces.ISerializeFormater formater;
-		public static SimPe.Interfaces.ISerializeFormater Formater 
+		static SimPe.Interfaces.ISerializeFormater formater;
+		public static SimPe.Interfaces.ISerializeFormater Formater
 		{
-			get {
-				if (formater == null) ResetFormater();
-				return formater; 
+			get
+			{
+				if (formater == null)
+					ResetFormater();
+				return formater;
 			}
-			set {formater = value; }
+			set { formater = value; }
 		}
 
 		public static void ResetFormater()
@@ -63,7 +65,7 @@ namespace SimPe
 					s += data[0];
 				} else s += " ";
 			}
-			return s;			
+			return s;
 		}
 
 
@@ -76,15 +78,15 @@ namespace SimPe
 			foreach (string[] data in elements)
 			{
 				if (s!="") s += Seperator;
-				if (data.Length==1) 
+				if (data.Length==1)
 				{
 					s += data[0];
-				} 
+				}
 				else if (data.Length==2)
 				{
 					s += Property(data[0], data[1]);
 				}
-				else 
+				else
 				{
 					s += " ";
 				}
@@ -95,15 +97,15 @@ namespace SimPe
 
 		public virtual string GetPropertyDescription()
 		{
-			return SimPe.Serializer.Serialize(this);			
-		}		
+			return SimPe.Serializer.Serialize(this);
+		}
 
 		public override string ToString()
 		{
 			return ToString(this.GetType().Name);
 		}
 
-		public  string ToString(string name)
+		public string ToString(string name)
 		{
 			return SubProperty(name, this.GetPropertyDescription());
 		}
@@ -126,11 +128,12 @@ namespace SimPe
 		public static string Seperator
 		{
 			get { return Formater.Seperator; }
-		}	
+		}
 
 		public static string SerializeTypeHeader(object o)
 		{
-			if (o==null) return "";
+			if (o == null)
+				return "";
 			Type t = o.GetType();
 			PropertyInfo[] ps = t.GetProperties();
 
@@ -139,41 +142,55 @@ namespace SimPe
 
 			return s;
 		}
-		
 
-		public static string SerializeTypeHeader(SimPe.Interfaces.Plugin.Internal.IPackedFileName wrapper, SimPe.Interfaces.Files.IPackedFileDescriptorBasic pfd)
+		public static string SerializeTypeHeader(
+			SimPe.Interfaces.Plugin.Internal.IPackedFileName wrapper,
+			SimPe.Interfaces.Files.IPackedFileDescriptorBasic pfd
+		)
 		{
 			return SerializeTypeHeader(wrapper, pfd, true);
 		}
 
-		public static string SerializeTypeHeader(SimPe.Interfaces.Plugin.Internal.IPackedFileName wrapper, SimPe.Interfaces.Files.IPackedFileDescriptorBasic pfd, bool withdesc)
+		public static string SerializeTypeHeader(
+			SimPe.Interfaces.Plugin.Internal.IPackedFileName wrapper,
+			SimPe.Interfaces.Files.IPackedFileDescriptorBasic pfd,
+			bool withdesc
+		)
 		{
 			string s = "";
-			s+= Formater.SerializeTGIHeader();
+			s += Formater.SerializeTGIHeader();
 
-			if (withdesc && wrapper!=null) s += wrapper.DescriptionHeader;
+			if (withdesc && wrapper != null)
+				s += wrapper.DescriptionHeader;
 			return s;
 		}
 
-
-		public static string Serialize(SimPe.Interfaces.Plugin.Internal.IPackedFileName wrapper, SimPe.Interfaces.Files.IPackedFileDescriptorBasic pfd)
+		public static string Serialize(
+			SimPe.Interfaces.Plugin.Internal.IPackedFileName wrapper,
+			SimPe.Interfaces.Files.IPackedFileDescriptorBasic pfd
+		)
 		{
 			return Serialize(wrapper, pfd, false);
 		}
 
 		/// <summary>
-		/// 
+		///
 		/// </summary>
 		/// <param name="wrapper"></param>
 		/// <param name="pfd"></param>
 		/// <param name="withdesc">true, if you want to include the Description of the DAta stored in the passed Wrapper</param>
 		/// <returns></returns>
-		public static string Serialize(SimPe.Interfaces.Plugin.Internal.IPackedFileName wrapper, SimPe.Interfaces.Files.IPackedFileDescriptorBasic pfd, bool withdesc)
+		public static string Serialize(
+			SimPe.Interfaces.Plugin.Internal.IPackedFileName wrapper,
+			SimPe.Interfaces.Files.IPackedFileDescriptorBasic pfd,
+			bool withdesc
+		)
 		{
 			string s = Formater.SerializeTGI(wrapper, pfd);
 			if (withdesc)
 			{
-				if (wrapper!=null) s += wrapper.Description;			
+				if (wrapper != null)
+					s += wrapper.Description;
 				s += Seperator;
 			}
 
@@ -186,19 +203,21 @@ namespace SimPe
 		}
 
 		/// <summary>
-		/// 
+		///
 		/// </summary>
 		/// <param name="o"></param>
 		/// <param name="writeheader">true, if a descriptive Header should be written</param>
 		/// <returns></returns>
 		public static string Serialize(object o, bool writeheader)
 		{
-			if (o==null) return "";
+			if (o == null)
+				return "";
 			Type t = o.GetType();
 			PropertyInfo[] ps = t.GetProperties();
 
 			string s = "";
-			if (writeheader) s += Formater.SerializeHeader(o, t, ps);
+			if (writeheader)
+				s += Formater.SerializeHeader(o, t, ps);
 			s += Formater.Serialize(o, t, ps);
 			return s;
 		}

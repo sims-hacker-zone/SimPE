@@ -1,244 +1,259 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
 
 namespace SimPe.PackedFiles.Wrapper
 {
-    /// <summary>
-    /// Freetime specific Data
-    /// </summary>
-    public class SdscFreetime : Serializer
-    {
-        static IAspirationEditor aspeditor;
-        public static void RegisterAsAspirationEditor(IAspirationEditor ed)
-        {
-            aspeditor = ed;
-        }
+	/// <summary>
+	/// Freetime specific Data
+	/// </summary>
+	public class SdscFreetime : Serializer
+	{
+		static IAspirationEditor aspeditor;
 
-        internal SdscFreetime(SDesc dsc)
-        {
-            parent = dsc;
-            enthusiasm = new List<ushort>();
-            decays = new List<ushort>();
+		public static void RegisterAsAspirationEditor(IAspirationEditor ed)
+		{
+			aspeditor = ed;
+		}
 
-            for (int i = 0; i < 11; i++) enthusiasm.Add(0);
-            for (int i = 0; i < 7; i++) decays.Add(0);
+		internal SdscFreetime(SDesc dsc)
+		{
+			parent = dsc;
+			enthusiasm = new List<ushort>();
+			decays = new List<ushort>();
 
-            predestined = 0;
-            ltasp = 0;
-            unlockpts = 0;
-            unlocksspent = 0;
-            bugcollection = 0;
-        }
+			for (int i = 0; i < 11; i++)
+				enthusiasm.Add(0);
+			for (int i = 0; i < 7; i++)
+				decays.Add(0);
 
-        SDesc parent;
-        List<ushort> enthusiasm;
-        ushort predestined;
-        ushort ltasp;
-        ushort unlockpts;
-        ushort unlocksspent;
-        List<ushort> decays;
-        uint bugcollection;
+			predestined = 0;
+			ltasp = 0;
+			unlockpts = 0;
+			unlocksspent = 0;
+			bugcollection = 0;
+		}
 
-        public List<ushort> HobbyEnthusiasm
-        {
-            get { return enthusiasm; }
-        }
+		SDesc parent;
+		List<ushort> enthusiasm;
+		ushort predestined;
+		ushort ltasp;
+		ushort unlockpts;
+		ushort unlocksspent;
+		List<ushort> decays;
+		uint bugcollection;
 
-        public static ushort HobbiesToIndex(Hobbies hb)
-        {
-            return (ushort)(((ushort)hb) - 0xcc);
-        }
+		public List<ushort> HobbyEnthusiasm
+		{
+			get { return enthusiasm; }
+		}
 
-        public static Hobbies IndexToHobbies(int us)
-        {
-            return IndexToHobbies((ushort)us);
-        }
+		public static ushort HobbiesToIndex(Hobbies hb)
+		{
+			return (ushort)(((ushort)hb) - 0xcc);
+		}
 
-        public static Hobbies IndexToHobbies(ushort us)
-        {
-            return (Hobbies)(us + 0xcc);
-        }
+		public static Hobbies IndexToHobbies(int us)
+		{
+			return IndexToHobbies((ushort)us);
+		}
 
-        public Hobbies HobbyPredistined
-        {
-            get { return (Hobbies)predestined; }
-            set { predestined = (ushort)value; }
-        }
+		public static Hobbies IndexToHobbies(ushort us)
+		{
+			return (Hobbies)(us + 0xcc);
+		}
 
-        public ushort LongtermAspiration
-        {
-            get { return ltasp; }
-            set { ltasp = value; }
-        }
+		public Hobbies HobbyPredistined
+		{
+			get { return (Hobbies)predestined; }
+			set { predestined = (ushort)value; }
+		}
 
-        public ushort LongtermAspirationUnlockPoints
-        {
-            get { return unlockpts; }
-            set { unlockpts = value; }
-        }
+		public ushort LongtermAspiration
+		{
+			get { return ltasp; }
+			set { ltasp = value; }
+		}
 
-        public ushort LongtermAspirationUnlocksSpent
-        {
-            get { return unlocksspent; }
-            set { unlocksspent = value; }
-        }
+		public ushort LongtermAspirationUnlockPoints
+		{
+			get { return unlockpts; }
+			set { unlockpts = value; }
+		}
 
-        public ushort HungerDecayModifier
-        {
-            get { return decays[0]; }
-            set { decays[0] = value; }
-        }
+		public ushort LongtermAspirationUnlocksSpent
+		{
+			get { return unlocksspent; }
+			set { unlocksspent = value; }
+		}
 
-        public ushort ComfortDecayModifier
-        {
-            get { return decays[1]; }
-            set { decays[1] = value; }
-        }
+		public ushort HungerDecayModifier
+		{
+			get { return decays[0]; }
+			set { decays[0] = value; }
+		}
 
-        public ushort BladderDecayModifier
-        {
-            get { return decays[2]; }
-            set { decays[2] = value; }
-        }
+		public ushort ComfortDecayModifier
+		{
+			get { return decays[1]; }
+			set { decays[1] = value; }
+		}
 
-        public ushort EnergyDecayModifier
-        {
-            get { return decays[3]; }
-            set { decays[3] = value; }
-        }
+		public ushort BladderDecayModifier
+		{
+			get { return decays[2]; }
+			set { decays[2] = value; }
+		}
 
-        public ushort HygieneDecayModifier
-        {
-            get { return decays[4]; }
-            set { decays[4] = value; }
-        }
+		public ushort EnergyDecayModifier
+		{
+			get { return decays[3]; }
+			set { decays[3] = value; }
+		}
 
-        public ushort FunDecayModifier
-        {
-            get { return decays[5]; }
-            set { decays[5] = value; }
-        }
+		public ushort HygieneDecayModifier
+		{
+			get { return decays[4]; }
+			set { decays[4] = value; }
+		}
 
-        public ushort SocialPublicDecayModifier
-        {
-            get { return decays[6]; }
-            set { decays[6] = value; }
-        }
+		public ushort FunDecayModifier
+		{
+			get { return decays[5]; }
+			set { decays[5] = value; }
+		}
 
-        public uint BugCollection
-        {
-            get { return bugcollection; }
-            set { bugcollection = value; }
-        }
+		public ushort SocialPublicDecayModifier
+		{
+			get { return decays[6]; }
+			set { decays[6] = value; }
+		}
 
-        internal void Unserialize(BinaryReader reader)
-        {
-            reader.BaseStream.Seek(0x1A4, SeekOrigin.Begin);
-            for (int i = 0; i < enthusiasm.Count; i++)
-            {
-                enthusiasm[i] = reader.ReadUInt16();
-            }
+		public uint BugCollection
+		{
+			get { return bugcollection; }
+			set { bugcollection = value; }
+		}
 
-            predestined = reader.ReadUInt16();
-            ltasp = reader.ReadUInt16();
-            unlockpts = reader.ReadUInt16();
-            unlocksspent = reader.ReadUInt16();
+		internal void Unserialize(BinaryReader reader)
+		{
+			reader.BaseStream.Seek(0x1A4, SeekOrigin.Begin);
+			for (int i = 0; i < enthusiasm.Count; i++)
+			{
+				enthusiasm[i] = reader.ReadUInt16();
+			}
 
-            for (int i = 0; i < decays.Count; i++)
-            {
-                decays[i] = reader.ReadUInt16();
-            }
+			predestined = reader.ReadUInt16();
+			ltasp = reader.ReadUInt16();
+			unlockpts = reader.ReadUInt16();
+			unlocksspent = reader.ReadUInt16();
 
-            bugcollection = reader.ReadUInt32();
+			for (int i = 0; i < decays.Count; i++)
+			{
+				decays[i] = reader.ReadUInt16();
+			}
 
-            LoadAspirations();
-        }
+			bugcollection = reader.ReadUInt32();
 
-        internal void Serialize(BinaryWriter writer)
-        {
-            writer.BaseStream.Seek(0x1A4, SeekOrigin.Begin);
+			LoadAspirations();
+		}
 
-            for (int i = 0; i < enthusiasm.Count; i++)
-            {
-                writer.Write((ushort)enthusiasm[i]);
-            }
+		internal void Serialize(BinaryWriter writer)
+		{
+			writer.BaseStream.Seek(0x1A4, SeekOrigin.Begin);
 
-            writer.Write((ushort)predestined);
-            writer.Write((ushort)ltasp);
-            writer.Write((ushort)unlockpts);
-            writer.Write((ushort)unlocksspent);
+			for (int i = 0; i < enthusiasm.Count; i++)
+			{
+				writer.Write((ushort)enthusiasm[i]);
+			}
 
-            for (int i = 0; i < decays.Count; i++)
-            {
-                writer.Write((ushort)decays[i]);
-            }
+			writer.Write((ushort)predestined);
+			writer.Write((ushort)ltasp);
+			writer.Write((ushort)unlockpts);
+			writer.Write((ushort)unlocksspent);
 
-            writer.Write((uint)bugcollection);
+			for (int i = 0; i < decays.Count; i++)
+			{
+				writer.Write((ushort)decays[i]);
+			}
 
-            StoreAspirations();
-        }
+			writer.Write((uint)bugcollection);
 
-        SimPe.Data.MetaData.AspirationTypes pa, sa;
-        protected void LoadAspirations()
-        {
-            pa = SimPe.Data.MetaData.AspirationTypes.Nothing;
-            sa = SimPe.Data.MetaData.AspirationTypes.Nothing;
-            if (parent == null) return;
-            pa = parent.CharacterDescription.Aspiration;
+			StoreAspirations();
+		}
 
-            if (aspeditor == null) return;
-            SimPe.Data.MetaData.AspirationTypes[] asps = aspeditor.LoadAspirations(this.parent);
+		SimPe.Data.MetaData.AspirationTypes pa,
+			sa;
 
-            if (asps == null) return;
-            if (asps.Length > 0) pa = asps[0];
-            if (asps.Length > 1) sa = asps[1];
-        }
+		protected void LoadAspirations()
+		{
+			pa = SimPe.Data.MetaData.AspirationTypes.Nothing;
+			sa = SimPe.Data.MetaData.AspirationTypes.Nothing;
+			if (parent == null)
+				return;
+			pa = parent.CharacterDescription.Aspiration;
 
-        protected void StoreAspirations()
-        {
-            if (parent==null) return;
-            if (aspeditor==null) return;
-            /*
-            if (pa == SimPe.Data.MetaData.AspirationTypes.Nothing)
-            {
-                pa = SimPe.Data.MetaData.AspirationTypes.Romance;
-                sa = SimPe.Data.MetaData.AspirationTypes.Nothing;
-            }
-            */
-            SimPe.Data.MetaData.AspirationTypes[] asps = new SimPe.Data.MetaData.AspirationTypes[]{pa, sa};
-            aspeditor.StoreAspirations(asps, parent);
-        }
+			if (aspeditor == null)
+				return;
+			SimPe.Data.MetaData.AspirationTypes[] asps = aspeditor.LoadAspirations(
+				this.parent
+			);
 
+			if (asps == null)
+				return;
+			if (asps.Length > 0)
+				pa = asps[0];
+			if (asps.Length > 1)
+				sa = asps[1];
+		}
 
-        /// <remarks>
-        /// The return value of this attribute is always valid, 
-        /// no matter which version the loaded SDSC was
-        /// </remarks>
-        public SimPe.Data.MetaData.AspirationTypes PrimaryAspiration
-        {
-            get {
-                if (parent == null) return pa;
-                if ((int)parent.Version >= (int)SDescVersions.Freetime) return pa;
-                else return parent.CharacterDescription.Aspiration;
-            }
-            set {
-                if ((int)parent.Version >= (int)SDescVersions.Freetime) pa = value;
-                else parent.CharacterDescription.Aspiration = value;
-            }
-        }
+		protected void StoreAspirations()
+		{
+			if (parent == null)
+				return;
+			if (aspeditor == null)
+				return;
+			/*
+			if (pa == SimPe.Data.MetaData.AspirationTypes.Nothing)
+			{
+				pa = SimPe.Data.MetaData.AspirationTypes.Romance;
+				sa = SimPe.Data.MetaData.AspirationTypes.Nothing;
+			}
+			*/
+			SimPe.Data.MetaData.AspirationTypes[] asps =
+				new SimPe.Data.MetaData.AspirationTypes[] { pa, sa };
+			aspeditor.StoreAspirations(asps, parent);
+		}
 
-        public SimPe.Data.MetaData.AspirationTypes SecondaryAspiration
-        {
-            get
-            {
-                return sa;
-            }
-            set
-            {
-                sa = value;
-            }
-        }
-    }
+		/// <remarks>
+		/// The return value of this attribute is always valid,
+		/// no matter which version the loaded SDSC was
+		/// </remarks>
+		public SimPe.Data.MetaData.AspirationTypes PrimaryAspiration
+		{
+			get
+			{
+				if (parent == null)
+					return pa;
+				if ((int)parent.Version >= (int)SDescVersions.Freetime)
+					return pa;
+				else
+					return parent.CharacterDescription.Aspiration;
+			}
+			set
+			{
+				if ((int)parent.Version >= (int)SDescVersions.Freetime)
+					pa = value;
+				else
+					parent.CharacterDescription.Aspiration = value;
+			}
+		}
+
+		public SimPe.Data.MetaData.AspirationTypes SecondaryAspiration
+		{
+			get { return sa; }
+			set { sa = value; }
+		}
+	}
 }

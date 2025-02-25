@@ -19,9 +19,8 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using SimPe.Packages;
 using SimPe.Interfaces.Files;
-
+using SimPe.Packages;
 
 namespace SimPe.Plugin
 {
@@ -30,7 +29,7 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class SubsetItem
 	{
-		public SubsetItem(string name, bool slave) 
+		public SubsetItem(string name, bool slave)
 		{
 			this.Name = name;
 			this.Slave = slave;
@@ -43,9 +42,9 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Just a helper Class for the ColorOPtions class
 	/// </summary>
-	public class ColorOptionsItem 
+	public class ColorOptionsItem
 	{
-		public ColorOptionsItem(SimPe.PackedFiles.Wrapper.Cpf mmat) 
+		public ColorOptionsItem(SimPe.PackedFiles.Wrapper.Cpf mmat)
 		{
 			this.MMAT = mmat;
 
@@ -64,24 +63,29 @@ namespace SimPe.Plugin
 		public SimPe.PackedFiles.Wrapper.Cpf MMAT;
 
 		public SimPe.Plugin.Rcol matd;
+
 		/// <summary>
 		/// Returns the linked MATD or null if none was found
 		/// </summary>
-		public SimPe.Plugin.Rcol MATD 
+		public SimPe.Plugin.Rcol MATD
 		{
-			get 
+			get
 			{
-				if (matd==null) 
+				if (matd == null)
 				{
-					string flname = Hashes.StripHashFromName(MMAT.GetSaveItem("name").StringValue.Trim()+"_txmt".ToLower());
+					string flname = Hashes.StripHashFromName(
+						MMAT.GetSaveItem("name").StringValue.Trim() + "_txmt".ToLower()
+					);
 
-					Interfaces.Files.IPackedFileDescriptor[] pfds = MMAT.Package.FindFile(flname);
-					for (int i=0; i<pfds.Length; i++)
+					Interfaces.Files.IPackedFileDescriptor[] pfds =
+						MMAT.Package.FindFile(flname);
+					for (int i = 0; i < pfds.Length; i++)
 					{
 						matd = new GenericRcol(null, false);
 						matd.ProcessData(pfds[0], MMAT.Package);
 
-						if (matd.FileName.Trim().ToLower()==flname) break;
+						if (matd.FileName.Trim().ToLower() == flname)
+							break;
 					}
 				}
 
@@ -90,27 +94,35 @@ namespace SimPe.Plugin
 		}
 
 		public SimPe.Plugin.Txtr txtr;
+
 		/// <summary>
 		/// Returns the linked TXTR or null if none was found
 		/// </summary>
 		public SimPe.Plugin.Txtr TXTR
 		{
-			get 
+			get
 			{
-				if (MATD==null) return null;
+				if (MATD == null)
+					return null;
 
-				if (txtr==null)
+				if (txtr == null)
 				{
-					SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)matd.Blocks[0];
-					string flname = Hashes.StripHashFromName(md.GetProperty("stdMatBaseTextureName").Value.Trim()+"_txtr".ToLower());
+					SimPe.Plugin.MaterialDefinition md =
+						(SimPe.Plugin.MaterialDefinition)matd.Blocks[0];
+					string flname = Hashes.StripHashFromName(
+						md.GetProperty("stdMatBaseTextureName").Value.Trim()
+							+ "_txtr".ToLower()
+					);
 
-					Interfaces.Files.IPackedFileDescriptor[] pfds = MMAT.Package.FindFile(flname);
-					for (int i=0; i<pfds.Length; i++)
+					Interfaces.Files.IPackedFileDescriptor[] pfds =
+						MMAT.Package.FindFile(flname);
+					for (int i = 0; i < pfds.Length; i++)
 					{
 						txtr = new Txtr(null, false);
 						txtr.ProcessData(pfds[0], MMAT.Package);
 
-						if (txtr.FileName.Trim().ToLower()==flname) break;
+						if (txtr.FileName.Trim().ToLower() == flname)
+							break;
 					}
 				}
 
@@ -123,28 +135,31 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string TxtrRef
 		{
-			get 
+			get
 			{
-				if (MATD==null) return "";
+				if (MATD == null)
+					return "";
 
 				MaterialDefinition md = (MaterialDefinition)MATD.Blocks[0];
-				return Hashes.StripHashFromName(md.GetProperty("stdMatBaseTextureName").Value);
+				return Hashes.StripHashFromName(
+					md.GetProperty("stdMatBaseTextureName").Value
+				);
 			}
 		}
 
-		
 		/// <summary>
 		/// Checks if this is a slave Subset
 		/// </summary>
 		/// <param name="subset"></param>
 		/// <param name="subsets"></param>
 		/// <returns></returns>
-		public bool IsSlave(string subset, SubsetItem[] subsets) 
+		public bool IsSlave(string subset, SubsetItem[] subsets)
 		{
 			subset = Hashes.StripHashFromName(subset).Trim().ToLower();
-			foreach (SubsetItem i in subsets) 
+			foreach (SubsetItem i in subsets)
 			{
-				if ((i.Slave) && (i.Name.Trim().ToLower()==subset)) return true;
+				if ((i.Slave) && (i.Name.Trim().ToLower() == subset))
+					return true;
 			}
 
 			return false;
@@ -153,27 +168,38 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Fix all links
 		/// </summary>
-		public string Fix(string family, uint group, ref int ct, Hashtable matdrep, Hashtable txtrrep, ArrayList guids)
+		public string Fix(
+			string family,
+			uint group,
+			ref int ct,
+			Hashtable matdrep,
+			Hashtable txtrrep,
+			ArrayList guids
+		)
 		{
 			//make sure the references are loaded
 			txtr = TXTR;
-	
-			string groups = "#0x"+Helper.HexString(group)+"!";
+
+			string groups = "#0x" + Helper.HexString(group) + "!";
 			groups = "##0x1c050000!";
 			MMAT.GetSaveItem("family").StringValue = family;
-			string matdname = Hashes.StripHashFromName(MMAT.GetSaveItem("name").StringValue) + "_" + family; 
-			if (matdrep[MMAT.GetSaveItem("name").StringValue]==null) 
+			string matdname =
+				Hashes.StripHashFromName(MMAT.GetSaveItem("name").StringValue)
+				+ "_"
+				+ family;
+			if (matdrep[MMAT.GetSaveItem("name").StringValue] == null)
 			{
-				matdrep.Add(MMAT.GetSaveItem("name").StringValue, groups+matdname);
-				MMAT.GetSaveItem("name").StringValue = groups+matdname;
-			} 
-			else 
+				matdrep.Add(MMAT.GetSaveItem("name").StringValue, groups + matdname);
+				MMAT.GetSaveItem("name").StringValue = groups + matdname;
+			}
+			else
 			{
-				MMAT.GetSaveItem("name").StringValue = (string)matdrep[MMAT.GetSaveItem("name").StringValue];
+				MMAT.GetSaveItem("name").StringValue = (string)
+					matdrep[MMAT.GetSaveItem("name").StringValue];
 			}
 
 			//make sure we use a supported GUID
-			if (guids.Count>0) 
+			if (guids.Count > 0)
 			{
 				if (!guids.Contains(MMAT.GetSaveItem("objectGUID").UIntegerValue))
 					MMAT.GetSaveItem("objectGUID").UIntegerValue = (uint)guids[0];
@@ -185,63 +211,77 @@ namespace SimPe.Plugin
 
 			string txtrname = groups + "_" + family;
 			string org = "";
-			if (MATD!=null) 
+			if (MATD != null)
 			{
 				MaterialDefinition md = (MaterialDefinition)MATD.Blocks[0];
 				md.FileDescription = matdname;
-				MATD.FileName = groups + matdname + "_txmt";	
-				SimPe.Packages.PackedFileDescriptor matdpfd = new PackedFileDescriptor();
+				MATD.FileName = groups + matdname + "_txmt";
+				SimPe.Packages.PackedFileDescriptor matdpfd =
+					new PackedFileDescriptor();
 
 				matdpfd.Type = MATD.FileDescriptor.Type;
 				MATD.FileDescriptor = matdpfd;
 				MATD.FileDescriptor.Group = 0x1c050000; //group; //0x1C0532FA;
-				
-				MATD.FileDescriptor.Instance = Hashes.InstanceHash(Hashes.StripHashFromName(MATD.FileName));
-				MATD.FileDescriptor.SubType = Hashes.SubTypeHash(Hashes.StripHashFromName(MATD.FileName));
 
-				org = TxtrRef;	
+				MATD.FileDescriptor.Instance = Hashes.InstanceHash(
+					Hashes.StripHashFromName(MATD.FileName)
+				);
+				MATD.FileDescriptor.SubType = Hashes.SubTypeHash(
+					Hashes.StripHashFromName(MATD.FileName)
+				);
+
+				org = TxtrRef;
 				string realtxtrname = ""; //Hashes.StripHashFromName(md.GetProperty("stdMatBaseTextureName").Value);
-				if (TXTR!=null) 
+				if (TXTR != null)
 				{
 					realtxtrname = Hashes.StripHashFromName(TXTR.FileName);
-					if (realtxtrname.Length>5) realtxtrname = realtxtrname.Substring(0, realtxtrname.Length-5);
-
+					if (realtxtrname.Length > 5)
+						realtxtrname = realtxtrname.Substring(
+							0,
+							realtxtrname.Length - 5
+						);
 				}
 
 				//we foudn a texture
-				if (realtxtrname.Trim()!="") 
+				if (realtxtrname.Trim() != "")
 				{
-					txtrname =  realtxtrname + "_" + family;
-					if (txtrrep[realtxtrname]==null) 
+					txtrname = realtxtrname + "_" + family;
+					if (txtrrep[realtxtrname] == null)
 					{
 						txtrrep.Add(realtxtrname, txtrname);
 						txtrrep.Add(txtrname, txtrname);
-					} 
-					else 
+					}
+					else
 					{
 						txtrname = (string)txtrrep[realtxtrname];
 					}
-				
-					md.GetProperty("stdMatBaseTextureName").Value = /*groups +*/ Hashes.StripHashFromName(txtrname);
+
+					md.GetProperty("stdMatBaseTextureName").Value = /*groups +*/
+					Hashes.StripHashFromName(txtrname);
 
 					string[] files = new string[1];
-					files[0] = /*groups +*/ Hashes.StripHashFromName(txtrname);
+					files[0] = /*groups +*/
+					Hashes.StripHashFromName(txtrname);
 					md.Listing = files;
 				}
 			}
 
-			
-			if (TXTR!=null) 
-			{							
+			if (TXTR != null)
+			{
 				TXTR.FileName = groups + txtrname + "_txtr";
-				SimPe.Packages.PackedFileDescriptor txtrpfd = new PackedFileDescriptor();
+				SimPe.Packages.PackedFileDescriptor txtrpfd =
+					new PackedFileDescriptor();
 
 				txtrpfd.Type = TXTR.FileDescriptor.Type;
 				TXTR.FileDescriptor = txtrpfd;
 				TXTR.FileDescriptor.Group = 0x1c050000; //group; //0x1C0532FA;
-				
-				TXTR.FileDescriptor.Instance = Hashes.InstanceHash(Hashes.StripHashFromName(TXTR.FileName));
-				TXTR.FileDescriptor.SubType = Hashes.SubTypeHash(Hashes.StripHashFromName(TXTR.FileName));
+
+				TXTR.FileDescriptor.Instance = Hashes.InstanceHash(
+					Hashes.StripHashFromName(TXTR.FileName)
+				);
+				TXTR.FileDescriptor.SubType = Hashes.SubTypeHash(
+					Hashes.StripHashFromName(TXTR.FileName)
+				);
 			}
 
 			return org;

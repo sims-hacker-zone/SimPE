@@ -21,81 +21,82 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
 namespace SimPe.Plugin.Tool.Dockable.Finder
 {
-    public partial class FindInNmap : FindInStr
-    {
-        public FindInNmap(SimPe.Interfaces.IFinderResultGui rgui)
-            :base(rgui)
-        {
-            InitializeComponent();
-        }
+	public partial class FindInNmap : FindInStr
+	{
+		public FindInNmap(SimPe.Interfaces.IFinderResultGui rgui)
+			: base(rgui)
+		{
+			InitializeComponent();
+		}
 
-        public FindInNmap() : this(null) { }
+		public FindInNmap()
+			: this(null) { }
 
-        public override bool ProcessParalell
-        {
-            get
-            {
-                return false;
-            }
-        }
+		public override bool ProcessParalell
+		{
+			get { return false; }
+		}
 
-        public override void SearchPackage(SimPe.Interfaces.Files.IPackageFile pkg, SimPe.Interfaces.Files.IPackedFileDescriptor pfd)
-        {
-            if (pfd.Type != Data.MetaData.NAME_MAP) return;
-            SimPe.Plugin.Nmap nmap = new Nmap(FileTable.ProviderRegistry);
-            nmap.ProcessData(pfd, pkg);
+		public override void SearchPackage(
+			SimPe.Interfaces.Files.IPackageFile pkg,
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+		)
+		{
+			if (pfd.Type != Data.MetaData.NAME_MAP)
+				return;
+			SimPe.Plugin.Nmap nmap = new Nmap(FileTable.ProviderRegistry);
+			nmap.ProcessData(pfd, pkg);
 
-            //check all stored nMap entries for a match
-            foreach (SimPe.Interfaces.Files.IPackedFileDescriptor mypfd in nmap.Items)
-            {
-                bool found = false;
-                string n = mypfd.Filename.Trim().ToLower();
-                if (compareType == CompareType.Equal)
-                {
-                    found = n == name;
-                }
-                else if (compareType == CompareType.Start)
-                {
-                    found = n.StartsWith(name);
-                }
-                else if (compareType == CompareType.End)
-                {
-                    found = n.EndsWith(name);
-                }
-                else if (compareType == CompareType.Contain)
-                {
-                    found = n.IndexOf(name) > -1;
-                }
-                else if (compareType == CompareType.RegExp && reg != null)
-                {
-                    found = reg.IsMatch(n);
-                }
+			//check all stored nMap entries for a match
+			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor mypfd in nmap.Items)
+			{
+				bool found = false;
+				string n = mypfd.Filename.Trim().ToLower();
+				if (compareType == CompareType.Equal)
+				{
+					found = n == name;
+				}
+				else if (compareType == CompareType.Start)
+				{
+					found = n.StartsWith(name);
+				}
+				else if (compareType == CompareType.End)
+				{
+					found = n.EndsWith(name);
+				}
+				else if (compareType == CompareType.Contain)
+				{
+					found = n.IndexOf(name) > -1;
+				}
+				else if (compareType == CompareType.RegExp && reg != null)
+				{
+					found = reg.IsMatch(n);
+				}
 
-                //we have a match, so add the result item
-                if (found)
-                {
-                    SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] rfiis =
-                        FileTable.FileIndex.FindFileDiscardingHighInstance(
-                        pfd.Instance,
-                        mypfd.Group,
-                        mypfd.Instance,
-                        null);
+				//we have a match, so add the result item
+				if (found)
+				{
+					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] rfiis =
+						FileTable.FileIndex.FindFileDiscardingHighInstance(
+							pfd.Instance,
+							mypfd.Group,
+							mypfd.Instance,
+							null
+						);
 
-                    foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem rfii in rfiis)                    
-                        ResultGui.AddResult(rfii.Package, rfii.FileDescriptor);                    
-                }
-            }
-
-
-         
-        }
-    
-    }
+					foreach (
+						SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem rfii in rfiis
+					)
+						ResultGui.AddResult(rfii.Package, rfii.FileDescriptor);
+				}
+			}
+		}
+	}
 }

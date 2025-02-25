@@ -22,27 +22,41 @@ using System;
 namespace SimPe.Actions.Default
 {
 	/// <summary>
-    /// Summary description for CreateAction.
+	/// Summary description for CreateAction.
 	/// </summary>
 	public class CreateAction : AbstractActionDefault
 	{
-		public CreateAction()
-		{
-			
-		}
-		#region IToolAction Member		
+		public CreateAction() { }
 
-		public override bool ChangeEnabledStateEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
+		#region IToolAction Member
+
+		public override bool ChangeEnabledStateEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs es
+		)
 		{
-			if (es.LoadedPackage==null) return false;
+			if (es.LoadedPackage == null)
+				return false;
 			return es.LoadedPackage.Loaded;
 		}
 
-		public override void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs e)
+		public override void ExecuteEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs e
+		)
 		{
-			if (!ChangeEnabledStateEventHandler(null, e)) return;
+			if (!ChangeEnabledStateEventHandler(null, e))
+				return;
 
-			e.LoadedPackage.Package.Add(e.LoadedPackage.Package.NewDescriptor(0xffffffff, 0, Data.MetaData.LOCAL_GROUP, 0), true);
+			e.LoadedPackage.Package.Add(
+				e.LoadedPackage.Package.NewDescriptor(
+					0xffffffff,
+					0,
+					Data.MetaData.LOCAL_GROUP,
+					0
+				),
+				true
+			);
 		}
 
 		#endregion
@@ -56,13 +70,10 @@ namespace SimPe.Actions.Default
 
 		#endregion
 
-		#region IToolExt Member		
+		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
-			get
-            {
-                return SimPe.GetIcon.actionCreate;
-			}
+			get { return SimPe.GetIcon.actionCreate; }
 		}
 		#endregion
 	}

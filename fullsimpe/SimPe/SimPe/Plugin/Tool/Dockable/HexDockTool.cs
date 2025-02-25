@@ -27,6 +27,7 @@ namespace SimPe.Plugin.Tool.Dockable
 	public class HexDockTool : SimPe.Interfaces.IDockableTool
 	{
 		ResourceDock rd;
+
 		public HexDockTool(ResourceDock rd)
 		{
 			this.rd = rd;
@@ -34,7 +35,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		#region IDockableTool Member
 
-        public Ambertation.Windows.Forms.DockPanel GetDockableControl()
+		public Ambertation.Windows.Forms.DockPanel GetDockableControl()
 		{
 			return rd.dcHex;
 		}
@@ -44,27 +45,28 @@ namespace SimPe.Plugin.Tool.Dockable
 		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es)
 		{
 			rd.button1.Enabled = false;
-			if (!rd.dcHex.IsFloating && !rd.dcHex.IsDocked) return;
-			if (es.HasFileDescriptor) 
+			if (!rd.dcHex.IsFloating && !rd.dcHex.IsDocked)
+				return;
+			if (es.HasFileDescriptor)
 			{
-				foreach (SimPe.Events.ResourceContainer e in es) 
+				foreach (SimPe.Events.ResourceContainer e in es)
 				{
 					if (e.HasFileDescriptor && e.HasPackage)
 					{
-						try 
-						{							
+						try
+						{
 							rd.hexpfd = e.Resource.FileDescriptor;
-							SimPe.Interfaces.Files.IPackedFile pf = e.Resource.Package.Read(e.Resource.FileDescriptor);
+							SimPe.Interfaces.Files.IPackedFile pf =
+								e.Resource.Package.Read(e.Resource.FileDescriptor);
 							rd.hvc.Data = pf.UncompressedData;
 							rd.button1.Enabled = true;
 							return;
-						} 
-						catch {}
-						
+						}
+						catch { }
 					}
 				}
 			}
-			
+
 			rd.hvc.Data = null;
 		}
 
@@ -83,23 +85,20 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.None;
-			}
+			get { return System.Windows.Forms.Shortcut.None; }
 		}
 
 		public System.Drawing.Image Icon
 		{
+			get { return rd.dcResource.TabImage; }
+		}
+
+		public virtual bool Visible
+		{
 			get
 			{
-				return rd.dcResource.TabImage;
+				return GetDockableControl().IsDocked || GetDockableControl().IsFloating;
 			}
-		}		
-
-		public virtual bool Visible 
-		{
-			get { return GetDockableControl().IsDocked ||  GetDockableControl().IsFloating; }
 		}
 
 		#endregion

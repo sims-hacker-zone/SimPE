@@ -39,11 +39,9 @@ namespace SimPe.Packages
 		/// </summary>
 		public int Count
 		{
-			get	{ return count; }
+			get { return count; }
 			set { count = value; }
 		}
-
-
 
 		/// <summary>
 		/// Offset for the Hole Index
@@ -55,11 +53,9 @@ namespace SimPe.Packages
 		/// </summary>
 		public uint Offset
 		{
-			get	{ return offset; }
+			get { return offset; }
 			set { offset = value; }
 		}
-
-
 
 		/// <summary>
 		/// Size of the Hole Index
@@ -71,29 +67,26 @@ namespace SimPe.Packages
 		/// </summary>
 		public int Size
 		{
-			get	{ return size; }
+			get { return size; }
 			set { size = value; }
 		}
-
 
 		/// <summary>
 		/// Returns the size of One Item stored in the index
 		/// </summary>
 		public virtual int ItemSize
 		{
-			get 
-			{				
-				if (Count!=0) 
+			get
+			{
+				if (Count != 0)
 				{
-					return Size/Count;
-				} 
-				else 
+					return Size / Count;
+				}
+				else
 				{
 					return 0;
 				}
-				
 			}
 		}
 	}
-
 }

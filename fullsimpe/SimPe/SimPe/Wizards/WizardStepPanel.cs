@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Windows.Forms;
-using System.Drawing;
 using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace SimPe.Wizards
 {
@@ -33,135 +33,134 @@ namespace SimPe.Wizards
 		public WizardStepPanel()
 		{
 			this.BackColor = Color.Transparent;
-			
-			
 		}
 
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			base.OnPaint(e);
 
-			if (this.DesignMode) 
+			if (this.DesignMode)
 			{
 				SizeF sz = e.Graphics.MeasureString(HintName, Font);
-				e.Graphics.DrawString(HintName, Font, new SolidBrush(Color.FromArgb(130,ForeColor)), (int)(Width-sz.Width)-2, (int)(Height-sz.Height)-2);
+				e.Graphics.DrawString(
+					HintName,
+					Font,
+					new SolidBrush(Color.FromArgb(130, ForeColor)),
+					(int)(Width - sz.Width) - 2,
+					(int)(Height - sz.Height) - 2
+				);
 			}
 		}
 
-		internal string HintName 
+		internal string HintName
 		{
-			get { return "Step "+index.ToString()+" ("+Name/*+" in "+this.ParentWizard.Text*/+")"; }
+			get
+			{
+				return "Step "
+					+ index.ToString()
+					+ " ("
+					+ Name /*+" in "+this.ParentWizard.Text*/
+					+ ")";
+			}
 		}
 
 		#region IWizardStep Member
 
 		[Browsable(false)]
-		public  System.Windows.Forms.Control Client
+		public System.Windows.Forms.Control Client
 		{
-			get 
-			{
-				return this;
-			}
+			get { return this; }
 		}
 
 		internal void SetupParent(Wizard parent)
 		{
 			this.parent = parent;
 			index = 0;
-			if (parent==null) return;
-			index = ((Wizard)parent).Controls.Count-1;
-			first = (index==0);		
+			if (parent == null)
+				return;
+			index = ((Wizard)parent).Controls.Count - 1;
+			first = (index == 0);
 
 			parent.Aborted += new WizardHandle(OnAborted);
 			parent.Finished += new WizardHandle(OnFinished);
 			parent.Loaded += new WizardHandle(OnLoaded);
-		}	
-	
+		}
+
 		internal void RemoveParent(Wizard parent)
-		{			
-			if (parent==null) return;
+		{
+			if (parent == null)
+				return;
 			parent.Aborted -= new WizardHandle(OnAborted);
 			parent.Finished -= new WizardHandle(OnFinished);
 			parent.Loaded -= new WizardHandle(OnLoaded);
-		}	
+		}
 
 		Wizard parent;
 		public Wizard ParentWizard
 		{
-			get
-			{				
-				return parent;
-			}				
+			get { return parent; }
 		}
 
 		bool first;
 		public bool First
 		{
-			get
-			{				
-				return first;
-			}
-			set 
-			{
-				first = value;
-			}
+			get { return first; }
+			set { first = value; }
 		}
 
 		bool last;
 		public bool Last
 		{
-			get
-			{			
-				return last;
-			}
-			set 
-			{
-				last = value;
-			}
+			get { return last; }
+			set { last = value; }
 		}
 
 		int index;
 		public int Index
 		{
-			get
-			{
-				return index;
-			}
+			get { return index; }
 		}
 
 		protected void OnLoaded(Wizard sender)
 		{
-			if (Loaded!=null) Loaded(sender, this);
+			if (Loaded != null)
+				Loaded(sender, this);
 		}
 
 		protected void OnAborted(Wizard sender)
 		{
-			if (Aborted!=null) Aborted(sender, this);
+			if (Aborted != null)
+				Aborted(sender, this);
 		}
 
 		protected void OnFinished(Wizard sender)
 		{
-			if (Finished!=null) Finished(sender, this);
+			if (Finished != null)
+				Finished(sender, this);
 		}
 
 		internal void OnPrepare(Wizard sender, int target)
 		{
-			if (Prepare!=null) Prepare(sender, this, target);
+			if (Prepare != null)
+				Prepare(sender, this, target);
 		}
 
 		internal void OnRollback(Wizard sender, int target)
 		{
-			if (Rollback!=null) Rollback(sender, this, target);
+			if (Rollback != null)
+				Rollback(sender, this, target);
 		}
 
 		internal void OnShow(Wizard sender, WizardEventArgs e)
 		{
-			if (Activate!=null) Activate(sender, e);
+			if (Activate != null)
+				Activate(sender, e);
 		}
 
 		internal void OnShowed(Wizard sender)
 		{
-			if (Activated!=null) Activated(sender, this);
+			if (Activated != null)
+				Activated(sender, this);
 		}
 
 		public event WizardStepHandle Loaded;
@@ -174,6 +173,5 @@ namespace SimPe.Wizards
 		public event WizardStepHandle Activated;
 
 		#endregion
-		
 	}
 }

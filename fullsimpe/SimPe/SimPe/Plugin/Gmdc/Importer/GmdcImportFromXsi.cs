@@ -18,57 +18,44 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.IO;
-using System.Globalization;
 using System.Collections;
-using SimPe.Plugin.Gmdc;
+using System.Globalization;
+using System.IO;
 using SimPe.Geometry;
+using SimPe.Plugin.Gmdc;
 
 namespace SimPe.Plugin.Gmdc.Importer
 {
 	/// <summary>
 	/// This class provides the functionality to Import Data from the .obj FileFormat
-	/// </summary>	
+	/// </summary>
 	public class GmdcImportFromXsi : SimPe.Plugin.Gmdc.IGmdcImporter
-	{		
+	{
 		#region IGmdcImporter Member
 
 		public int Version
 		{
-			get
-			{
-				return 1;
-			}
+			get { return 1; }
 		}
 
 		public string FileExtension
 		{
-			get
-			{
-				return ".xsi";
-			}
+			get { return ".xsi"; }
 		}
 
 		public string FileDescription
 		{
-			
-			get {return "Softimage/3D dotXSI";}			
+			get { return "Softimage/3D dotXSI"; }
 		}
 
 		public string Author
 		{
-			get
-			{
-				return "Quaxi";
-			}
+			get { return "Quaxi"; }
 		}
 
 		public string ErrorMessage
 		{
-			get
-			{
-				return "";
-			}
+			get { return ""; }
 		}
 
 		string flname;
@@ -76,35 +63,42 @@ namespace SimPe.Plugin.Gmdc.Importer
 		{
 			get
 			{
-				if (flname==null) return "";
+				if (flname == null)
+					return "";
 				return flname;
 			}
-			set
-			{
-				flname = value;
-			}
-		}		
+			set { flname = value; }
+		}
 
 		ElementOrder cmp;
 		public ElementOrder Component
 		{
 			get
 			{
-				if (cmp==null) cmp = new ElementOrder(Gmdc.ElementSorting.XZY);
+				if (cmp == null)
+					cmp = new ElementOrder(Gmdc.ElementSorting.XZY);
 				return cmp;
 			}
-			set
-			{
-				cmp = value;
-			}
+			set { cmp = value; }
 		}
 
-		public bool Process(System.IO.Stream input, GeometryDataContainer gmdc, bool animationonly)
+		public bool Process(
+			System.IO.Stream input,
+			GeometryDataContainer gmdc,
+			bool animationonly
+		)
 		{
 			System.IO.StreamReader sr = new StreamReader(input);
-			Ambertation.XSI.IO.AsciiFile xsi = Ambertation.XSI.IO.AsciiFile.FromStream(sr, FileName);
+			Ambertation.XSI.IO.AsciiFile xsi = Ambertation.XSI.IO.AsciiFile.FromStream(
+				sr,
+				FileName
+			);
 
-			GenericMeshImport gmi = new GenericMeshImport(xsi.ToScene(), gmdc, Component);
+			GenericMeshImport gmi = new GenericMeshImport(
+				xsi.ToScene(),
+				gmdc,
+				Component
+			);
 			return gmi.Run();
 		}
 

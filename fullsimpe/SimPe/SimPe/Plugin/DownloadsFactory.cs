@@ -26,25 +26,31 @@ namespace SimPe.Plugin
 	/// Lists all Plugins (=FileType Wrappers) available in this Package
 	/// </summary>
 	/// <remarks>
-	/// GetWrappers() has to return a list of all Plugins provided by this Library. 
+	/// GetWrappers() has to return a list of all Plugins provided by this Library.
 	/// If a Plugin isn't returned, SimPe won't recognize it!
 	/// </remarks>
-	public class DownloadsToolFactory : SimPe.Interfaces.Plugin.AbstractWrapperFactory, SimPe.Interfaces.Plugin.IToolFactory, SimPe.Interfaces.Plugin.ISettingsFactory
+	public class DownloadsToolFactory
+		: SimPe.Interfaces.Plugin.AbstractWrapperFactory,
+			SimPe.Interfaces.Plugin.IToolFactory,
+			SimPe.Interfaces.Plugin.ISettingsFactory
 	{
-		static SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fii, tfii;
+		static SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fii,
+			tfii;
 		internal static SimPe.Interfaces.Scenegraph.IScenegraphFileIndex FileIndex
 		{
-			get 
+			get
 			{
-				if (fii==null) fii = FileTable.FileIndex.AddNewChild();
+				if (fii == null)
+					fii = FileTable.FileIndex.AddNewChild();
 				return fii;
 			}
 		}
 		internal static SimPe.Interfaces.Scenegraph.IScenegraphFileIndex TeleportFileIndex
 		{
-			get 
+			get
 			{
-				if (tfii==null) tfii = FileIndex.AddNewChild();
+				if (tfii == null)
+					tfii = FileIndex.AddNewChild();
 				return tfii;
 			}
 		}
@@ -52,8 +58,8 @@ namespace SimPe.Plugin
 		public DownloadsToolFactory()
 		{
 			SimPe.Packages.StreamFactory.CleanupTeleport();
-			
 		}
+
 		~DownloadsToolFactory()
 		{
 			SimPe.Packages.StreamFactory.CleanupTeleport();
@@ -66,12 +72,10 @@ namespace SimPe.Plugin
 		/// <returns>A List of all provided Plugins (=FileType Wrappers)</returns>
 		public override SimPe.Interfaces.IWrapper[] KnownWrappers
 		{
-			get 
+			get
 			{
 				// TODO:  You can add more Wrappers here
-				IWrapper[] wrappers = {
-										  
-									  };
+				IWrapper[] wrappers = { };
 				return wrappers;
 			}
 		}
@@ -85,11 +89,12 @@ namespace SimPe.Plugin
 			get
 			{
 				{
-					IToolPlugin[] tools = {
-									new SimPe.Plugin.Tool.Window.InstallerTool(),
-									new SimPe.Plugin.Tool.SaveSims2PackTool(),
-									new SimPe.Plugin.Tool.LoadSims2PackTool()
-									};
+					IToolPlugin[] tools =
+					{
+						new SimPe.Plugin.Tool.Window.InstallerTool(),
+						new SimPe.Plugin.Tool.SaveSims2PackTool(),
+						new SimPe.Plugin.Tool.LoadSims2PackTool(),
+					};
 					return tools;
 				}
 			}
@@ -100,21 +105,17 @@ namespace SimPe.Plugin
 		static SimPe.Plugin.Downloads.DownloadsSettings settings;
 		public static SimPe.Plugin.Downloads.DownloadsSettings Settings
 		{
-			get 
+			get
 			{
-				if (settings==null) settings = new SimPe.Plugin.Downloads.DownloadsSettings();
+				if (settings == null)
+					settings = new SimPe.Plugin.Downloads.DownloadsSettings();
 				return settings;
 			}
 		}
 
 		public ISettings[] KnownSettings
 		{
-			get
-			{
-				return new ISettings[] {
-										   Settings
-									   };
-			}
+			get { return new ISettings[] { Settings }; }
 		}
 
 		#endregion

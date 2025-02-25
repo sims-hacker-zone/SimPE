@@ -29,6 +29,7 @@ namespace SimPe.Plugin.Collections
 	{
 		ArrayList list = new ArrayList();
 		Bnfo parent;
+
 		internal BnfoCustomerItems(Bnfo parent)
 		{
 			list = new ArrayList();
@@ -72,18 +73,18 @@ namespace SimPe.Plugin.Collections
 
 		public BnfoCustomerItem this[int index]
 		{
-			get {return list[index] as BnfoCustomerItem;}
-			set {list[index] = value;}
+			get { return list[index] as BnfoCustomerItem; }
+			set { list[index] = value; }
 		}
 
 		public int Count
 		{
-			get {return list.Count;}
+			get { return list.Count; }
 		}
 
 		public int Length
 		{
-			get {return list.Count;}
+			get { return list.Count; }
 		}
 
 		public BnfoCustomerItems Clone()
@@ -107,11 +108,13 @@ namespace SimPe.Plugin.Collections
 
 		public BnfoCustomerItem GetInstanceItem(ushort instance, bool create)
 		{
-			foreach (BnfoCustomerItem s in list) if (s.SimInstance == instance) return s;
+			foreach (BnfoCustomerItem s in list)
+				if (s.SimInstance == instance)
+					return s;
 
-			if (create)			
+			if (create)
 				return this.AddNew(instance);
-			
+
 			return null;
 		}
 
@@ -119,7 +122,8 @@ namespace SimPe.Plugin.Collections
 
 		public void Dispose()
 		{
-			if (list!=null) list.Clear();
+			if (list != null)
+				list.Clear();
 			list = null;
 		}
 

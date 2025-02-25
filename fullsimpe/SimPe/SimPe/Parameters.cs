@@ -37,9 +37,10 @@ namespace SimPe
 		public Parameters(string[] param)
 		{
 			ArrayList fllist = new ArrayList();
-			foreach (string s in param) 
+			foreach (string s in param)
 			{
-				if (System.IO.File.Exists(s)) fllist.Add(s);
+				if (System.IO.File.Exists(s))
+					fllist.Add(s);
 			}
 
 			files = new string[fllist.Count];
@@ -49,7 +50,7 @@ namespace SimPe
 		/// <summary>
 		/// Returns the Files passed on the Commandline
 		/// </summary>
-		public string[] Files 
+		public string[] Files
 		{
 			get { return files; }
 		}

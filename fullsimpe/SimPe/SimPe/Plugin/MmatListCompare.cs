@@ -19,9 +19,8 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using SimPe.Packages;
 using SimPe.Interfaces.Files;
-
+using SimPe.Packages;
 
 namespace SimPe.Plugin
 {
@@ -34,14 +33,17 @@ namespace SimPe.Plugin
 			SimPe.Plugin.MmatWrapper mmat1 = (SimPe.Plugin.MmatWrapper)x;
 			SimPe.Plugin.MmatWrapper mmat2 = (SimPe.Plugin.MmatWrapper)y;
 
-			int cmp = mmat1.GetSaveItem("materialStateFlags").IntegerValue - mmat2.GetSaveItem("materialStateFlags").IntegerValue;
-			if (cmp==0) cmp = mmat1.GetSaveItem("objectStateIndex").IntegerValue - mmat2.GetSaveItem("objectStateIndex").IntegerValue;
+			int cmp =
+				mmat1.GetSaveItem("materialStateFlags").IntegerValue
+				- mmat2.GetSaveItem("materialStateFlags").IntegerValue;
+			if (cmp == 0)
+				cmp =
+					mmat1.GetSaveItem("objectStateIndex").IntegerValue
+					- mmat2.GetSaveItem("objectStateIndex").IntegerValue;
 
 			return cmp;
 		}
 
 		#endregion
-
 	}
-
 }

@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 using SimPe.Events;
 
 namespace SimPe.Interfaces
@@ -27,15 +27,15 @@ namespace SimPe.Interfaces
 	/// <summary>
 	/// The Basic Interface for ToolPlugins (dockable (<see cref="SimPe.Interfaces.IDockableTool"/>) or not (<see cref="SimPe.Interfaces.ITool"/>))
 	/// </summary>
-	public interface IToolPlugin 
-	{		
+	public interface IToolPlugin
+	{
 		/// <remarks>
 		/// This is explicit listed in the Interface description, as you should return a String (best would be Name)
 		/// that identifies the Wrapper
 		/// </remarks>
 		/// <summary>Returns a short describing String</summary>
 		/// <returns>A Describing String for the Wrapper</returns>
-		string ToString();	
+		string ToString();
 	}
 
 	/// <summary>
@@ -49,7 +49,10 @@ namespace SimPe.Interfaces
 		/// <param name="package">The currently opened Package</param>
 		/// <param name="pfd">The currently selected File</param>
 		/// <returns>true, if the package was changed</returns>
-		Plugin.IToolResult ShowDialog(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package);
+		Plugin.IToolResult ShowDialog(
+			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			ref SimPe.Interfaces.Files.IPackageFile package
+		);
 
 		/// <summary>
 		/// Returns true if the Menu Item can be enabled
@@ -57,17 +60,20 @@ namespace SimPe.Interfaces
 		/// <param name="pfd">Descriptor for the currently selected File or null if none</param>
 		/// <param name="package">The opened Package or null if none</param>
 		/// <returns>true if this tool is avaliable</returns>
-		bool IsEnabled(Interfaces.Files.IPackedFileDescriptor pfd ,Interfaces.Files.IPackageFile package);
+		bool IsEnabled(
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile package
+		);
 	}
 
 	/// <summary>
 	/// defines a Action Plugin with the new Interface
 	/// </summary>
-	public interface IToolPlus: IToolExt
+	public interface IToolPlus : IToolExt
 	{
 		/// <summary>
 		/// This Eventhandler will be connected to the ExecuteAction Event of the Caller, you should
-		/// perform the Action here. You can notify the caller of Changes when setting the apropriate 
+		/// perform the Action here. You can notify the caller of Changes when setting the apropriate
 		/// Attributes in e
 		/// </summary>
 		/// <param name="sender"></param>
@@ -75,11 +81,11 @@ namespace SimPe.Interfaces
 		void Execute(object sender, ResourceEventArgs e);
 
 		/// <summary>
-		/// This EventHandler will be connected to the ChangeResource Event of the Caller, you can set 
+		/// This EventHandler will be connected to the ChangeResource Event of the Caller, you can set
 		/// the Enabled State here
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		bool ChangeEnabledStateEventHandler(object sender, ResourceEventArgs e);		
+		bool ChangeEnabledStateEventHandler(object sender, ResourceEventArgs e);
 	}
 }

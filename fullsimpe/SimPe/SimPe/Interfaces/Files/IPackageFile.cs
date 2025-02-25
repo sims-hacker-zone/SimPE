@@ -30,20 +30,13 @@ namespace SimPe.Interfaces.Files
 		/// <summary>
 		/// Returns the File Reader
 		/// </summary>
-		System.IO.BinaryReader Reader
-		{
-			get;
-		}
+		System.IO.BinaryReader Reader { get; }
 
 		/// <summary>
 		/// Set/returns the Persistent state of this Package
 		/// </summary>
 		/// <remarks>If persistent the FileHandle won't be closed!</remarks>
-		bool Persistent 
-		{
-			get;
-			set;
-		}
+		bool Persistent { get; set; }
 
 		/// <summary>
 		/// Create a Clone of this Package File
@@ -100,26 +93,27 @@ namespace SimPe.Interfaces.Files
 		void Add(IPackedFileDescriptor pfd, bool isnew);
 
 		/// <summary>
-		/// Copies the FileDescriptors form the passed Package to this one. The Method creats 
-		/// a Clone for each Descriptor, and read it' Userdata form the original package. 
+		/// Copies the FileDescriptors form the passed Package to this one. The Method creats
+		/// a Clone for each Descriptor, and read it' Userdata form the original package.
 		/// </summary>
 		/// <param name="package">The package that should get copied into this one</param>
-		void CopyDescriptors(SimPe.Interfaces.Files.IPackageFile package);		
+		void CopyDescriptors(SimPe.Interfaces.Files.IPackageFile package);
 
 		/// <summary>
 		/// Returns or Changes the stored Fileindex
 		/// </summary>
-		IPackedFileDescriptor[] Index 
-		{
-			get;
-		}
+		IPackedFileDescriptor[] Index { get; }
 
 		/// <summary>
 		/// Creates a new File descriptor
 		/// </summary>
 		/// <returns>the new File descriptor</returns>
-		IPackedFileDescriptor NewDescriptor(uint type, uint subtype, uint group, uint instance);
-
+		IPackedFileDescriptor NewDescriptor(
+			uint type,
+			uint subtype,
+			uint group,
+			uint instance
+		);
 
 		#endregion
 
@@ -146,47 +140,57 @@ namespace SimPe.Interfaces.Files
 		IPackedFileDescriptor[] FindFiles(uint type);
 
 		/// <summary>
-		/// Returns the first File matching 
+		/// Returns the first File matching
 		/// </summary>
 		/// <param name="subtype">SubType you want to look for</param>
 		/// <returns>The descriptor for the matching Dile or null</returns>
 		IPackedFileDescriptor[] FindFile(uint subtype, uint instance);
 
 		/// <summary>
-		/// Returns the first File matching 
+		/// Returns the first File matching
 		/// </summary>
 		/// <param name="type">Type you want to look for</param>
 		/// <returns>The descriptor for the matching Dile or null</returns>
 		IPackedFileDescriptor[] FindFile(uint type, uint subtype, uint instance);
 
-
 		/// <summary>
-		/// Returns the first File matching 
+		/// Returns the first File matching
 		/// </summary>
 		/// <param name="pfd">Type you want to look for</param>
 		/// <returns>The descriptor for the matching Dile or null</returns>
 		IPackedFileDescriptor FindFile(Interfaces.Files.IPackedFileDescriptor pfd);
 
 		/// <summary>
-		/// Returns the first File matching 
+		/// Returns the first File matching
 		/// </summary>
 		/// <param name="type">Type you want to look for</param>
 		/// <returns>The descriptor for the matching File or null</returns>
-		IPackedFileDescriptor FindFile(uint type, uint subtype, uint group, uint instance);
+		IPackedFileDescriptor FindFile(
+			uint type,
+			uint subtype,
+			uint group,
+			uint instance
+		);
 
 		/// <summary>
-		/// Returns the first File matching 
+		/// Returns the first File matching
 		/// </summary>
 		/// <param name="pfd">Type you want to look for</param>
 		/// <returns>The descriptor for the matching Dile or null</returns>
-		IPackedFileDescriptor FindExactFile(Interfaces.Files.IPackedFileDescriptor pfd) ;
+		IPackedFileDescriptor FindExactFile(Interfaces.Files.IPackedFileDescriptor pfd);
 
 		/// <summary>
-		/// Returns the first File matching 
+		/// Returns the first File matching
 		/// </summary>
 		/// <param name="type">Type you want to look for</param>
 		/// <returns>The descriptor for the matching Dile or null</returns>
-		IPackedFileDescriptor FindExactFile(uint type, uint subtype, uint group, uint instance, uint offset);
+		IPackedFileDescriptor FindExactFile(
+			uint type,
+			uint subtype,
+			uint group,
+			uint instance,
+			uint offset
+		);
 
 		/// <summary>
 		/// Returns a List ofa all Files matching the passed group
@@ -204,53 +208,38 @@ namespace SimPe.Interfaces.Files
 		/// <returns>The FileIndexItem for this Entry</returns>
 		//HoleIndexItem GetHoleIndex(uint item);
 
-				
+
 		#endregion
 
 		#region Header Handling
 		/// <summary>
 		/// The Structural Data of the Header
 		/// </summary>
-		Interfaces.Files.IPackageHeader Header
-		{
-			get;
-		}
+		Interfaces.Files.IPackageHeader Header { get; }
 		#endregion
 
 		#region File Handling
 		/// <summary>
 		/// True if the User has changed a PackedFile
 		/// </summary>
-		bool HasUserChanges
-		{
-			get;
-		}
+		bool HasUserChanges { get; }
 
 		/// <summary>
 		/// Returns the FileName of the Current Package
 		/// </summary>
 		/// <remarks>Can be null if a Memory stream was opened as package</remarks>
-		string FileName 
-		{
-			get;
-		}
+		string FileName { get; }
 
 		/// <summary>
 		/// Returns the FileName of the Current Package
 		/// </summary>
 		/// <remarks>Will never return null</remarks>
-		string SaveFileName 
-		{
-			get;
-		}
+		string SaveFileName { get; }
 
 		/// <summary>
 		/// Returns the hash Group Value for this File
 		/// </summary>
-		uint FileGroupHash 
-		{
-			get;
-		}
+		uint FileGroupHash { get; }
 
 		/// <summary>
 		/// Reads the File specified by the given itemIndex
@@ -266,14 +255,14 @@ namespace SimPe.Interfaces.Files
 		/// <returns>The plain Content of the File</returns>
 		IPackedFile Read(IPackedFileDescriptor pfd);
 
-        /// <summary>
-        /// Returns the Stream that holds the given Resource
-        /// </summary>
-        /// <param name="pfd">The PackedFileDescriptor</param>
-        /// <returns>The PackedFile containing Stream Infos</returns>
-        IPackedFile GetStream(IPackedFileDescriptor pfd);
+		/// <summary>
+		/// Returns the Stream that holds the given Resource
+		/// </summary>
+		/// <param name="pfd">The PackedFileDescriptor</param>
+		/// <returns>The PackedFile containing Stream Infos</returns>
+		IPackedFile GetStream(IPackedFileDescriptor pfd);
 		#endregion
-        
+
 
 		/// <summary>
 		/// Close this Instance, leaving the FileDescripors valid
@@ -291,8 +280,8 @@ namespace SimPe.Interfaces.Files
 
 		#region Events
 		/// <summary>
-		/// Derefers <see cref="IPackedFileDescriptor.DescriptionChanged"/> and 
-		/// <see cref="IPackedFileDescriptor.ChangedData"/> for all stored Descriptors 
+		/// Derefers <see cref="IPackedFileDescriptor.DescriptionChanged"/> and
+		/// <see cref="IPackedFileDescriptor.ChangedData"/> for all stored Descriptors
 		/// until <see cref="EndUpdate"/> is called
 		/// </summary>
 		void BeginUpdate();
@@ -302,16 +291,15 @@ namespace SimPe.Interfaces.Files
 		/// </summary>
 		void ForgetUpdate();
 
-
 		/// <summary>
 		/// Executes Events Derrefered by <see cref="BeginUpdate"/>
 		/// </summary>
 		void EndUpdate();
 
-        /// <summary>
-        /// Triggered whenever EndUpdate is called an the package was changed
-        /// </summary>
-        event System.EventHandler EndedUpdate;
+		/// <summary>
+		/// Triggered whenever EndUpdate is called an the package was changed
+		/// </summary>
+		event System.EventHandler EndedUpdate;
 
 		/// <summary>
 		/// Triggered whenever a new Resource was added

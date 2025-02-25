@@ -30,16 +30,13 @@ using System.Windows.Forms;
 
 namespace Ambertation.Windows.Forms
 {
-	
-
 	/// <summary>
-	/// This is an c#-Version of a Control created by www.steepvalley.net. 
+	/// This is an c#-Version of a Control created by www.steepvalley.net.
 	/// I translated it to remove the Expand/Collapse feature
 	/// </summary>
 	[DesignTimeVisible(true), ToolboxBitmapAttribute(typeof(GroupBox))]
 	public class XPTaskBoxSimple : Panel
-	{		
-
+	{
 		// Methods
 		public XPTaskBoxSimple()
 		{
@@ -60,73 +57,82 @@ namespace Ambertation.Windows.Forms
 			this.bodc = SystemColors.InactiveCaptionText;
 			this.htc = SystemColors.ActiveCaptionText;
 
-			this.font = new Font(base.Font.Name, base.Font.Size+2, FontStyle.Bold, base.Font.Unit);
+			this.font = new Font(
+				base.Font.Name,
+				base.Font.Size + 2,
+				FontStyle.Bold,
+				base.Font.Unit
+			);
 
 			icsz = new Size(32, 32);
 			icpt = new Point(4, 12);
 		}
-		
-		Color lhc, rhc, bc, bodc, htc;
-		public Color LeftHeaderColor 
+
+		Color lhc,
+			rhc,
+			bc,
+			bodc,
+			htc;
+		public Color LeftHeaderColor
 		{
-			get {return lhc; }
-			set 
+			get { return lhc; }
+			set
 			{
-				if (lhc != value) 
+				if (lhc != value)
 				{
-					lhc=value;
+					lhc = value;
 					this.Invalidate();
 				}
 			}
 		}
 
-		public Color RightHeaderColor 
+		public Color RightHeaderColor
 		{
-			get {return rhc; }
-			set 
+			get { return rhc; }
+			set
 			{
-				if (rhc != value) 
+				if (rhc != value)
 				{
-					rhc=value;
+					rhc = value;
 					this.Invalidate();
 				}
 			}
 		}
 
-		public Color BorderColor 
+		public Color BorderColor
 		{
-			get {return bc; }
-			set 
+			get { return bc; }
+			set
 			{
-				if (bc != value) 
+				if (bc != value)
 				{
-					bc=value;
+					bc = value;
 					this.Invalidate();
 				}
 			}
 		}
 
-		public Color HeaderTextColor 
+		public Color HeaderTextColor
 		{
-			get {return htc; }
-			set 
+			get { return htc; }
+			set
 			{
-				if (htc != value) 
+				if (htc != value)
 				{
-					htc=value;
+					htc = value;
 					this.Invalidate();
 				}
 			}
 		}
 
-		public Color BodyColor 
+		public Color BodyColor
 		{
-			get {return bodc; }
-			set 
+			get { return bodc; }
+			set
 			{
-				if (bodc != value) 
+				if (bodc != value)
 				{
-					bodc=value;
+					bodc = value;
 					this.Invalidate();
 				}
 			}
@@ -135,12 +141,12 @@ namespace Ambertation.Windows.Forms
 		Font font;
 		public Font HeaderFont
 		{
-			get {return font; }
-			set 
+			get { return font; }
+			set
 			{
-				if (font != value) 
+				if (font != value)
 				{
-					font=value;
+					font = value;
 					this.Invalidate();
 				}
 			}
@@ -150,7 +156,8 @@ namespace Ambertation.Windows.Forms
 		{
 			if (disposing && (this.components != null))
 			{
-				if (canvas!=null) canvas.Dispose();
+				if (canvas != null)
+					canvas.Dispose();
 				canvas = null;
 				this.components.Dispose();
 			}
@@ -161,9 +168,9 @@ namespace Ambertation.Windows.Forms
 		private void InitializeComponent()
 		{
 			this.components = new Container();
-			
+
 			Size size1 = new Size(0x10, 0x10);
-			
+
 			this.DockPadding.Bottom = 4;
 			this.DockPadding.Left = 4;
 			this.DockPadding.Right = 4;
@@ -171,7 +178,10 @@ namespace Ambertation.Windows.Forms
 			this.Name = "XPTaskBoxSimple";
 		}
 
-		private void mThemeFormat_PropertyChanged(object sender, PropertyChangedEventArgs e)
+		private void mThemeFormat_PropertyChanged(
+			object sender,
+			PropertyChangedEventArgs e
+		)
 		{
 			this.Invalidate();
 		}
@@ -180,9 +190,9 @@ namespace Ambertation.Windows.Forms
 		public Size IconSize
 		{
 			get { return icsz; }
-			set 
+			set
 			{
-				if (icsz!=value) 
+				if (icsz != value)
 				{
 					icsz = value;
 					Invalidate();
@@ -194,9 +204,9 @@ namespace Ambertation.Windows.Forms
 		public Point IconLocation
 		{
 			get { return icpt; }
-			set 
+			set
 			{
-				if (icpt!=value) 
+				if (icpt != value)
 				{
 					icpt = value;
 					Invalidate();
@@ -205,10 +215,12 @@ namespace Ambertation.Windows.Forms
 		}
 
 		System.Drawing.Bitmap canvas;
+
 		protected void RebuildCanvas()
 		{
-			if (canvas!=null) canvas.Dispose();
-			if (this.Width<=7 || this.Height<=headerh+21) 
+			if (canvas != null)
+				canvas.Dispose();
+			if (this.Width <= 7 || this.Height <= headerh + 21)
 			{
 				canvas = null;
 				return;
@@ -217,12 +229,27 @@ namespace Ambertation.Windows.Forms
 			System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(canvas);
 			Rectangle ef4;
 			g.SmoothingMode = SmoothingMode.HighQuality;
-			Rectangle ef3 = new Rectangle(0, 16, this.Width-1, headerh);
-			Rectangle ef3b = new Rectangle(3, ef3.Bottom, this.Width-7, this.Height-ef3.Bottom-4);
-			Rectangle ef2 = new Rectangle(0, 16+headerh+2, this.Width-1, (this.Height - 16+headerh+3));
-			Rectangle ef1 = new Rectangle(0, 16, this.Width-1,(this.Height - 0x11));
+			Rectangle ef3 = new Rectangle(0, 16, this.Width - 1, headerh);
+			Rectangle ef3b = new Rectangle(
+				3,
+				ef3.Bottom,
+				this.Width - 7,
+				this.Height - ef3.Bottom - 4
+			);
+			Rectangle ef2 = new Rectangle(
+				0,
+				16 + headerh + 2,
+				this.Width - 1,
+				(this.Height - 16 + headerh + 3)
+			);
+			Rectangle ef1 = new Rectangle(0, 16, this.Width - 1, (this.Height - 0x11));
 			GraphicsPath path = new GraphicsPath();
-			LinearGradientBrush brush1 = new LinearGradientBrush(ef3, LeftHeaderColor, RightHeaderColor, LinearGradientMode.Horizontal);
+			LinearGradientBrush brush1 = new LinearGradientBrush(
+				ef3,
+				LeftHeaderColor,
+				RightHeaderColor,
+				LinearGradientMode.Horizontal
+			);
 			Pen borderpen = new Pen(BorderColor, 1f);
 			StringFormat format1 = new StringFormat();
 			format1.Alignment = StringAlignment.Near;
@@ -230,52 +257,69 @@ namespace Ambertation.Windows.Forms
 			format1.Trimming = StringTrimming.EllipsisCharacter;
 			format1.FormatFlags = StringFormatFlags.NoWrap;
 			borderpen.Alignment = PenAlignment.Inset;
-			
-			
+
 			path = Ambertation.Drawing.GraphicRoutines.GethRoundRectPath(ef1, 7);
 			g.FillPath(brush1, path);
-			
 
-			path = Ambertation.Drawing.GraphicRoutines.GethRoundRectPath(ef3b, 7);			
+			path = Ambertation.Drawing.GraphicRoutines.GethRoundRectPath(ef3b, 7);
 			g.FillPath(new SolidBrush(BodyColor), path);
 
-			path = Ambertation.Drawing.GraphicRoutines.GethRoundRectPath(ef1, 7);			
+			path = Ambertation.Drawing.GraphicRoutines.GethRoundRectPath(ef1, 7);
 			g.DrawPath(borderpen, path);
 			if (this.mIcon != null)
 			{
 				Size size1 = mIcon.Size;
 				Rectangle rectangle1 = new Rectangle(IconLocation, size1);
 				g.DrawImage(
-					//Ambertation.Drawing.GraphicRoutines.ScaleImage(mIcon, size1.Width, size1.Height, true)					
-					mIcon
-					, rectangle1,
-					new Rectangle(0, 0, mIcon.Width, mIcon.Height), 
-					GraphicsUnit.Pixel);
-				ef4 = new Rectangle(8+size1.Width+IconLocation.X, 16, (this.Width - (size1.Width+IconLocation.X)), headerh);
+					//Ambertation.Drawing.GraphicRoutines.ScaleImage(mIcon, size1.Width, size1.Height, true)
+					mIcon,
+					rectangle1,
+					new Rectangle(0, 0, mIcon.Width, mIcon.Height),
+					GraphicsUnit.Pixel
+				);
+				ef4 = new Rectangle(
+					8 + size1.Width + IconLocation.X,
+					16,
+					(this.Width - (size1.Width + IconLocation.X)),
+					headerh
+				);
 			}
 			else
 			{
 				ef4 = new Rectangle(8, 16, (this.Width - 0x18), headerh);
 			}
-			g.DrawString(this.mstrHeaderText, this.HeaderFont, new SolidBrush(this.HeaderTextColor), ef4, format1);
-			
+			g.DrawString(
+				this.mstrHeaderText,
+				this.HeaderFont,
+				new SolidBrush(this.HeaderTextColor),
+				ef4,
+				format1
+			);
+
 			path.Dispose();
 			brush1.Dispose();
 			borderpen.Dispose();
 			format1.Dispose();
 			g.Dispose();
 		}
-		
+
 		protected override void OnPaint(PaintEventArgs e)
 		{
-			if (canvas==null) RebuildCanvas();
-			if (canvas!=null) e.Graphics.DrawImage(canvas, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
+			if (canvas == null)
+				RebuildCanvas();
+			if (canvas != null)
+				e.Graphics.DrawImage(
+					canvas,
+					e.ClipRectangle,
+					e.ClipRectangle,
+					GraphicsUnit.Pixel
+				);
 			base.OnPaint(e);
 		}
 
 		protected override void OnSizeChanged(EventArgs e)
 		{
-			base.OnSizeChanged (e);
+			base.OnSizeChanged(e);
 			RebuildCanvas();
 		}
 
@@ -285,17 +329,17 @@ namespace Ambertation.Windows.Forms
 			base.Invalidate();
 		}
 
-
-		
-
 		// Properties
-		[Category("Appearance"), DefaultValue("Title"), Localizable(true), Browsable(true), Description("Caption text.")]
+		[
+			Category("Appearance"),
+			DefaultValue("Title"),
+			Localizable(true),
+			Browsable(true),
+			Description("Caption text.")
+		]
 		public string HeaderText
 		{
-			get
-			{
-				return this.mstrHeaderText;
-			}
+			get { return this.mstrHeaderText; }
 			set
 			{
 				this.mstrHeaderText = value;
@@ -303,15 +347,15 @@ namespace Ambertation.Windows.Forms
 			}
 		}
 
-		
-
-		[Localizable(true), Description("Icon"), Category("Appearance"), DefaultValue(typeof(System.Drawing.Icon), "")]
+		[
+			Localizable(true),
+			Description("Icon"),
+			Category("Appearance"),
+			DefaultValue(typeof(System.Drawing.Icon), "")
+		]
 		public System.Drawing.Image Icon
 		{
-			get
-			{
-				return this.mIcon;
-			}
+			get { return this.mIcon; }
 			set
 			{
 				this.mIcon = value;
@@ -320,24 +364,22 @@ namespace Ambertation.Windows.Forms
 		}
 
 		int headerh;
-		[Localizable(true), Description("Hight of the Headline"), Category("Appearance"), DefaultValue(typeof(int), "22")]
+
+		[
+			Localizable(true),
+			Description("Hight of the Headline"),
+			Category("Appearance"),
+			DefaultValue(typeof(int), "22")
+		]
 		public int HeaderHeight
 		{
-			get
-			{
-				return headerh;
-			}
+			get { return headerh; }
 			set
 			{
 				headerh = value;
 				this.Invalidate();
 			}
 		}
-
-		
-		
-
-		
 
 		[Browsable(false), Description("returns the usable region as Rectangle")]
 		internal Rectangle WorkspaceRect
@@ -347,7 +389,6 @@ namespace Ambertation.Windows.Forms
 				return new Rectangle(3, 0x29, this.Width - 7, (this.Height - 40) - 4);
 			}
 		}
-
 
 		// Fields
 		private IContainer components;

@@ -20,10 +20,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Collections.Generic;
 using System.Collections;
-using SimPe.Interfaces.Plugin;
+using System.Collections.Generic;
 using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
 {
@@ -36,16 +36,22 @@ namespace SimPe.PackedFiles.Wrapper
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
 	public class Bhav
-        : pjse.ExtendedWrapper<Instruction, Bhav> //AbstractWrapper				//Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-		, IFileWrapper					//This Interface is used when loading a File
-		, IFileWrapperSaveExtension		//This Interface (if available) will be used to store a File
-		//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+		: pjse.ExtendedWrapper<
+			Instruction,
+			Bhav
+		> //AbstractWrapper				//Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
+			,
+			IFileWrapper //This Interface is used when loading a File
+			,
+			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
+	//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 	{
 		#region Attributes
 		/// <summary>
 		/// Contains the Filename
 		/// </summary>
 		private byte[] filename = new byte[64];
+
 		/// <summary>
 		/// Stores the Header
 		/// </summary>
@@ -72,72 +78,90 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Header
 		/// </summary>
-		public BhavHeader Header { get { return header; } }
+		public BhavHeader Header
+		{
+			get { return header; }
+		}
 		#endregion
 
 
-        public Bhav() : base() { header = new BhavHeader(this); }
+		public Bhav()
+			: base()
+		{
+			header = new BhavHeader(this);
+		}
 
+		private void SortSwap(int a, int b)
+		{
+			Instruction i = this[a];
+			this[a] = this[b];
+			this[b] = i;
 
-        private void SortSwap(int a, int b)
-        {
-            Instruction i = this[a];
-            this[a] = this[b];
-            this[b] = i;
+			foreach (Instruction item in this)
+			{
+				if (item.Target1 == a)
+					item.Target1 = (ushort)b;
+				else if (item.Target1 == b)
+					item.Target1 = (ushort)a;
 
-            foreach (Instruction item in this)
-            {
-                if (item.Target1 == a) item.Target1 = (ushort)b;
-                else if (item.Target1 == b) item.Target1 = (ushort)a;
+				if (item.Target2 == a)
+					item.Target2 = (ushort)b;
+				else if (item.Target2 == b)
+					item.Target2 = (ushort)a;
+			}
+		}
 
-                if (item.Target2 == a) item.Target2 = (ushort)b;
-                else if (item.Target2 == b) item.Target2 = (ushort)a;
-            }
-        }
+		/// <summary>
+		/// Moves an instruction from position 'from' to position 'to', renumbering Targets as required
+		/// </summary>
+		/// <param name="from">starting position</param>
+		/// <param name="to">ending position</param>
+		public new void Move(int from, int to)
+		{
+			if (from == to)
+				return;
+			if (from < 0 || from >= Count)
+				return;
+			if (to < 0 || to >= Count)
+				return;
 
-        /// <summary>
-        /// Moves an instruction from position 'from' to position 'to', renumbering Targets as required
-        /// </summary>
-        /// <param name="from">starting position</param>
-        /// <param name="to">ending position</param>
-        public new void Move(int from, int to)
-        {
-            if (from == to) return;
-            if (from < 0 || from >= Count) return;
-            if (to < 0 || to >= Count) return;
+			while (from < to)
+				this.SortSwap(from, ++from);
+			while (from > to)
+				this.SortSwap(from, --from);
+			OnWrapperChanged(items, new EventArgs());
+		}
 
-            while (from < to) this.SortSwap(from, ++from);
-            while (from > to) this.SortSwap(from, --from);
-            OnWrapperChanged(items, new EventArgs());
-        }
+		// only allow 32K or 128 lines
+		public new void Add(Instruction item)
+		{
+			Add(item, this.Header.Format < 0x8007 ? 0x80 : 0x8000);
+		}
 
-        // only allow 32K or 128 lines
-        public new void Add(Instruction item) { Add(item, this.Header.Format < 0x8007 ? 0x80 : 0x8000); }
+		public new void Insert(int index, Instruction item)
+		{
+			bool savedstate = internalchg;
+			internalchg = true;
+			this.Add(item);
+			internalchg = savedstate;
+			this.Move(this.Count - 1, index);
+		}
 
-        public new void Insert(int index, Instruction item)
-        {
-            bool savedstate = internalchg;
-            internalchg = true;
-            this.Add(item);
-            internalchg = savedstate;
-            this.Move(this.Count - 1, index);
-        }
+		public new bool Remove(Instruction item)
+		{
+			this.Move(IndexOf(item), this.Count - 1);
+			return base.Remove(item);
+		}
 
-        public new bool Remove(Instruction item)
-        {
-            this.Move(IndexOf(item), this.Count - 1);
-            return base.Remove(item);
-        }
-
-        public new void RemoveAt(int index)
-        {
-            this.Remove(this[index]);
-        }
+		public new void RemoveAt(int index)
+		{
+			this.Remove(this[index]);
+		}
 
 		public new void Sort()
 		{
-			int start = 0;		// where we got to on True pass
-			int startnext = 0;	// where we got to on False pass
+			int start = 0; // where we got to on True pass
+			int startnext = 0; // where we got to on False pass
 
 			bool savedstate = internalchg;
 			bool somethingchanged = false;
@@ -146,7 +170,7 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				for (int i = start; i < items.Count; i++)
 				{
-					start = i+1;
+					start = i + 1;
 					if (items[i].Target1 <= i || items[i].Target1 >= items.Count)
 					{
 						if (items[i].Target2 <= i || items[i].Target2 >= items.Count)
@@ -168,7 +192,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 				for (int i = startnext; i < start; i++)
 				{
-					startnext = i+1;
+					startnext = i + 1;
 					if (items[i].Target2 < start || items[i].Target2 >= items.Count)
 						continue;
 					Move(items[i].Target2, start);
@@ -177,16 +201,17 @@ namespace SimPe.PackedFiles.Wrapper
 				}
 			}
 			internalchg = savedstate;
-			if (somethingchanged) OnWrapperChanged(items, new EventArgs());
+			if (somethingchanged)
+				OnWrapperChanged(items, new EventArgs());
 		}
-
 
 		#region AbstractWrapper Member
 		public override bool CheckVersion(uint version)
 		{
-			if ( (version==0012) //0.00
-				|| (version==0013) //0.10
-				)
+			if (
+				(version == 0012) //0.00
+				|| (version == 0013) //0.10
+			)
 			{
 				return true;
 			}
@@ -213,7 +238,7 @@ namespace SimPe.PackedFiles.Wrapper
 				"Peter L Jones",
 				"Advanced SimAntics Editor",
 				3
-				);
+			);
 		}
 
 		/// <summary>
@@ -242,45 +267,53 @@ namespace SimPe.PackedFiles.Wrapper
 			filename = reader.ReadBytes(0x40);
 			header.Unserialize(reader);
 
-            items = new List<Instruction>();
-            while(items.Count < this.Header.InstructionCount)
+			items = new List<Instruction>();
+			while (items.Count < this.Header.InstructionCount)
 				items.Add(new Instruction(this, reader));
 		}
 
 		#endregion
 
-        public const uint Bhavtype = 0x42484156;
-        #region IFileWrapper Member
+		public const uint Bhavtype = 0x42484156;
+
+		#region IFileWrapper Member
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-        public uint[] AssignableTypes { get { return new uint[] { Bhavtype }; } }
+		public uint[] AssignableTypes
+		{
+			get { return new uint[] { Bhavtype }; }
+		}
 
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get
-			{
-				return new byte[0];
-			}
+			get { return new byte[0]; }
 		}
 
 		#endregion
 
 		#region IFileWrapperSaveExtension Member
 		//all covered by AbstractWrapper
-        protected override string GetResourceName(Data.TypeAlias ta)
-        {
-        	if (!SimPe.Helper.FileFormat) return base.GetResourceName(ta);
-            SimPe.Interfaces.Files.IPackedFile pf = Package.Read(FileDescriptor);
-            byte[] ab = pf.GetUncompressedData(0x42);
-            return (ab.Length > 0x41 ? "0x" + Helper.HexString(ab[0x41]) + Helper.HexString(ab[0x40]) + ": " : "") + Helper.ToString(pf.GetUncompressedData(0x40));
-        }
-        #endregion
+		protected override string GetResourceName(Data.TypeAlias ta)
+		{
+			if (!SimPe.Helper.FileFormat)
+				return base.GetResourceName(ta);
+			SimPe.Interfaces.Files.IPackedFile pf = Package.Read(FileDescriptor);
+			byte[] ab = pf.GetUncompressedData(0x42);
+			return (
+					ab.Length > 0x41
+						? "0x"
+							+ Helper.HexString(ab[0x41])
+							+ Helper.HexString(ab[0x40])
+							+ ": "
+						: ""
+				) + Helper.ToString(pf.GetUncompressedData(0x40));
+		}
+		#endregion
 	}
-
 
 	/// <summary>
 	/// Class containing a BHAV Header
@@ -411,20 +444,19 @@ namespace SimPe.PackedFiles.Wrapper
 			this.wrapper = wrapper;
 		}
 
-
 		/// <summary>
 		/// Reads the Data from a Stream
 		/// </summary>
 		/// <param name="reader"></param>
 		public void Unserialize(System.IO.BinaryReader reader)
 		{
-			format      = reader.ReadUInt16();			//0x0040 - format
-			count       = reader.ReadUInt16();	//0x0042 - # of opcodes
-			type        = reader.ReadByte();			//0x0044 - tree type
-			argc        = reader.ReadByte();			//0x0045 - # of args
-			locals      = reader.ReadByte();			//0x0046 - # of locals
-			headerflag  = reader.ReadByte();			//0x0047 - header flag
-			treeversion = reader.ReadUInt32();			//0x0048 - Tree version (4 bytes)
+			format = reader.ReadUInt16(); //0x0040 - format
+			count = reader.ReadUInt16(); //0x0042 - # of opcodes
+			type = reader.ReadByte(); //0x0044 - tree type
+			argc = reader.ReadByte(); //0x0045 - # of args
+			locals = reader.ReadByte(); //0x0046 - # of locals
+			headerflag = reader.ReadByte(); //0x0047 - header flag
+			treeversion = reader.ReadUInt32(); //0x0048 - Tree version (4 bytes)
 			if (format > 0x8008)
 				cacheflags = reader.ReadByte();
 			else
@@ -449,11 +481,10 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 	}
 
-
 	/// <summary>
 	/// Class representing an Instruction
 	/// </summary>
-    public class Instruction : pjse.ExtendedWrapperItem<Bhav, Instruction>
+	public class Instruction : pjse.ExtendedWrapperItem<Bhav, Instruction>
 	{
 		#region Attributes
 		private ushort opcode = 0;
@@ -462,7 +493,17 @@ namespace SimPe.PackedFiles.Wrapper
 		private byte nodeversion = 0;
 		private wrappedByteArray operands = null;
 		private wrappedByteArray reserved_01 = null;
-		private static readonly byte[] nooperands = { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, };
+		private static readonly byte[] nooperands =
+		{
+			0xff,
+			0xff,
+			0xff,
+			0xff,
+			0xff,
+			0xff,
+			0xff,
+			0xff,
+		};
 		#endregion
 
 		#region Accessor methods
@@ -518,15 +559,21 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public wrappedByteArray Operands { get { return operands; } }
+		public wrappedByteArray Operands
+		{
+			get { return operands; }
+		}
 
-		public wrappedByteArray Reserved1 { get { return reserved_01; } }
+		public wrappedByteArray Reserved1
+		{
+			get { return reserved_01; }
+		}
 		#endregion
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public Instruction (Bhav parent)
+		public Instruction(Bhav parent)
 		{
 			this.parent = parent;
 			this.operands = new wrappedByteArray(this, (byte[])nooperands.Clone());
@@ -534,17 +581,29 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 #if UNUSED
-        /// <summary>
+		/// <summary>
 		/// Constructor
 		/// </summary>
-		internal Instruction (Bhav parent, ushort opcode) : this(parent) { this.opcode = opcode; }
+		internal Instruction(Bhav parent, ushort opcode)
+			: this(parent)
+		{
+			this.opcode = opcode;
+		}
 #endif
 
 #if UNUSED
-        /// <summary>
+		/// <summary>
 		/// Constructor
 		/// </summary>
-		internal Instruction (Bhav parent, ushort opcode, ushort addr1, ushort addr2, byte nodeversion, byte[] operands, byte[] reserved_01)
+		internal Instruction(
+			Bhav parent,
+			ushort opcode,
+			ushort addr1,
+			ushort addr2,
+			byte nodeversion,
+			byte[] operands,
+			byte[] reserved_01
+		)
 		{
 			this.parent = parent;
 			this.opcode = opcode;
@@ -559,37 +618,39 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		internal Instruction (Bhav parent, System.IO.BinaryReader reader)
+		internal Instruction(Bhav parent, System.IO.BinaryReader reader)
 		{
 			this.parent = parent;
 			Unserialize(reader);
 		}
 
-
 		public Instruction Clone()
 		{
 			Instruction clone = new Instruction(this.parent);
-			clone.opcode      = this.opcode;
-			clone.addr1       = this.addr1;
-			clone.addr2       = this.addr2;
+			clone.opcode = this.opcode;
+			clone.addr1 = this.addr1;
+			clone.addr2 = this.addr2;
 			clone.nodeversion = this.nodeversion;
-			clone.operands    = operands.Clone();
+			clone.operands = operands.Clone();
 			clone.operands.Parent = clone;
 			clone.reserved_01 = reserved_01.Clone();
 			clone.reserved_01.Parent = clone;
 			return clone;
 		}
 
-
 		private ushort formatSpecificSetAddr(ushort addr)
 		{
 			if (parent.Header.Format < 0x8007)
 				switch (addr)
 				{
-					case 0x00FD: return 0xFFFC;	// error
-					case 0x00FE: return 0xFFFD;	// true
-					case 0x00FF: return 0xFFFE;	// false
-					default: return addr;
+					case 0x00FD:
+						return 0xFFFC; // error
+					case 0x00FE:
+						return 0xFFFD; // true
+					case 0x00FF:
+						return 0xFFFE; // false
+					default:
+						return addr;
 				}
 			return addr;
 		}
@@ -631,7 +692,6 @@ namespace SimPe.PackedFiles.Wrapper
 				operands = new wrappedByteArray(this, reader);
 				reserved_01 = new wrappedByteArray(this, reader);
 			}
-
 		}
 
 		private ushort formatSpecificGetAddr(ushort target)
@@ -639,10 +699,14 @@ namespace SimPe.PackedFiles.Wrapper
 			if (parent.Header.Format < 0x8007)
 				switch (target)
 				{
-					case 0xFFFC: return 0x00FD;	// error
-					case 0xFFFD: return 0x00FE;	// true
-					case 0xFFFE: return 0x00FF;	// false
-					default: return (ushort)(target & 0x00FF);
+					case 0xFFFC:
+						return 0x00FD; // error
+					case 0xFFFD:
+						return 0x00FE; // true
+					case 0xFFFE:
+						return 0x00FF; // false
+					default:
+						return (ushort)(target & 0x00FF);
 				}
 			return target;
 		}
@@ -672,7 +736,8 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 			else if (((Bhav)parent).Header.Format < 0x8005)
 			{
-				operands.Serialize(writer);;
+				operands.Serialize(writer);
+				;
 				reserved_01.Serialize(writer);
 			}
 			else
@@ -682,23 +747,25 @@ namespace SimPe.PackedFiles.Wrapper
 				reserved_01.Serialize(writer);
 			}
 		}
-    }
-
-
+	}
 
 	public class wrappedByteArray
 	{
 		private byte[] array;
 		private Instruction parent;
 
-		public wrappedByteArray(Instruction parent, byte[] array) { this.parent = parent; this.array = array; }
+		public wrappedByteArray(Instruction parent, byte[] array)
+		{
+			this.parent = parent;
+			this.array = array;
+		}
+
 		public wrappedByteArray(Instruction parent, System.IO.BinaryReader reader)
 		{
 			this.parent = parent;
 			this.array = new byte[8];
 			Unserialize(reader);
 		}
-
 
 		public byte this[int index]
 		{
@@ -708,30 +775,35 @@ namespace SimPe.PackedFiles.Wrapper
 				if (array[index] != value)
 				{
 					array[index] = value;
-					if (parent != null) parent.Parent.OnWrapperChanged(parent, new EventArgs());
+					if (parent != null)
+						parent.Parent.OnWrapperChanged(parent, new EventArgs());
 				}
 			}
 		}
 
-		internal wrappedByteArray Clone() { return new wrappedByteArray(parent, (byte[])array.Clone()); }
-		public static implicit operator byte[] (wrappedByteArray a)
+		internal wrappedByteArray Clone()
+		{
+			return new wrappedByteArray(parent, (byte[])array.Clone());
+		}
+
+		public static implicit operator byte[](wrappedByteArray a)
 		{
 			return (byte[])a.array.Clone();
 		}
 
-
-		internal Instruction Parent { set { parent = value; } }
-
+		internal Instruction Parent
+		{
+			set { parent = value; }
+		}
 
 		private void Unserialize(System.IO.BinaryReader reader)
 		{
 			array = reader.ReadBytes(8);
 		}
+
 		internal void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(array);
 		}
-
 	}
-
 }

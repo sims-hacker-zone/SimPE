@@ -25,54 +25,24 @@ namespace SimPe.Interfaces.Providers
 {
 	public interface ILotItem
 	{
-		uint Instance
-		{
-			get;
-		}
+		uint Instance { get; }
 
-		System.Drawing.Image Image
-		{
-			get;
-		}
+		System.Drawing.Image Image { get; }
 
-		string Name
-		{
-			get;
-		}
+		string Name { get; }
 
-		string LotName
-		{
-			get;
-		}
-			
-
+		string LotName { get; }
 
 		object FindTag(Type t);
-		System.Collections.ArrayList Tags
-		{
-			get;
-		}
+		System.Collections.ArrayList Tags { get; }
 
-		uint Owner
-		{
-			get;
-		}
+		uint Owner { get; }
 
-		SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem LtxtFileIndexItem
-		{
-			get;
-		}
+		SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem LtxtFileIndexItem { get; }
 
-		SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem BnfoFileIndexItem
-		{
-			get;
-		}
+		SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem BnfoFileIndexItem { get; }
 
-		SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem StrFileIndexItem
-		{
-			get;
-		}
-
+		SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem StrFileIndexItem { get; }
 	}
 
 	public delegate void LoadLotData(object sender, ILotItem item);
@@ -86,10 +56,7 @@ namespace SimPe.Interfaces.Providers
 		/// Returns or sets the Folder where the Character Files are stored
 		/// </summary>
 		/// <remarks>Sets the names List to null</remarks>
-		string BaseFolder
-		{
-			get; set;
-		}
+		string BaseFolder { get; set; }
 
 		/// <summary>
 		/// returns a List of all Lot Names
@@ -97,15 +64,11 @@ namespace SimPe.Interfaces.Providers
 		/// <returns></returns>
 		string[] GetNames();
 
-		Hashtable StoredData
-		{
-			get;
-		}
+		Hashtable StoredData { get; }
 
 		SimPe.Interfaces.Providers.ILotItem FindLot(uint inst);
 		SimPe.Interfaces.Providers.ILotItem[] FindLotsOwnedBySim(uint siminst);
 
 		event SimPe.Interfaces.Providers.LoadLotData LoadingLot;
-		
 	}
 }

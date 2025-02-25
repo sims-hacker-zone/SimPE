@@ -22,48 +22,49 @@ using System.Collections;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
-{		
+{
 	public enum NhtrVersions : uint
 	{
-		Business = 0x04
+		Business = 0x04,
 	}
+
 	/// <summary>
 	/// Wrapper for 0xABD0DC63 , which appear to be the "Neighbourhood terrain" Resource
 	/// </summary>
-	public class Nhtr : AbstractWrapper
-		, SimPe.Interfaces.Plugin.IFileWrapper
-		, SimPe.Interfaces.Plugin.IFileWrapperSaveExtension
-		, SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper		
+	public class Nhtr
+		: AbstractWrapper,
+			SimPe.Interfaces.Plugin.IFileWrapper,
+			SimPe.Interfaces.Plugin.IFileWrapperSaveExtension,
+			SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper
 	{
-		
-
 		#region Attributes
-		uint ver;		
+		uint ver;
 
 		public NhtrVersions Version
 		{
-			get {return (NhtrVersions)ver; }
-			set {ver = (uint)value;}
+			get { return (NhtrVersions)ver; }
+			set { ver = (uint)value; }
 		}
 
 		NhtrList[] items;
 		public NhtrList[] Items
 		{
-			get {return items;}
+			get { return items; }
 		}
-		
-		
+
 		#endregion
 
-		
-		public Nhtr() : base()
-		{			
+
+		public Nhtr()
+			: base()
+		{
 			Ambertation.BaseChangeableNumber.DigitBase = 16;
 			Version = NhtrVersions.Business;
-			NhtrListType[] types = Enum.GetValues(typeof(NhtrListType)) as NhtrListType[];
+			NhtrListType[] types =
+				Enum.GetValues(typeof(NhtrListType)) as NhtrListType[];
 			items = new NhtrList[types.Length];
 			foreach (NhtrListType tp in types)
-				items[(int)tp] = new NhtrList(this, tp);			
+				items[(int)tp] = new NhtrList(this, tp);
 		}
 
 		#region IWrapper Member
@@ -75,67 +76,60 @@ namespace SimPe.Plugin
 				"Contains Information about the Neighbourhood Terrain.",
 				3,
 				null
-				); 
+			);
 		}
 		#endregion
 
-		
+
 
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
 			return new NhtrUI();
-		}						
-		
-		
+		}
+
 		protected override void Unserialize(System.IO.BinaryReader reader)
-		{	
-			
+		{
 			ver = reader.ReadUInt32();
 			foreach (NhtrList list in items)
 			{
 				list.Clear();
 				list.Unserialize(reader);
 			}
-			
-			//Console.WriteLine(reader.BaseStream.Position - reader.BaseStream.Length);			
+
+			//Console.WriteLine(reader.BaseStream.Position - reader.BaseStream.Length);
 		}
 
-		protected override void Serialize(System.IO.BinaryWriter writer) 
-		{		
+		protected override void Serialize(System.IO.BinaryWriter writer)
+		{
 			writer.Write(ver);
-			foreach (NhtrList list in items)			
-				list.Serialize(writer);			
-		}		
+			foreach (NhtrList list in items)
+				list.Serialize(writer);
+		}
 		#endregion
 
-		
+
 
 		#region IPackedFileWrapper Member
 
 		public uint[] AssignableTypes
 		{
-			get 
+			get
 			{
-				uint[] Types = {
-								   0xABD0DC63
-							   };
+				uint[] Types = { 0xABD0DC63 };
 				return Types;
 			}
 		}
 
-
 		public Byte[] FileSignature
 		{
-			get 
+			get
 			{
-				Byte[] sig = {					 
-							 };
+				Byte[] sig = { };
 				return sig;
 			}
-		}		
-		
-		#endregion		
-	}
+		}
 
+		#endregion
+	}
 }

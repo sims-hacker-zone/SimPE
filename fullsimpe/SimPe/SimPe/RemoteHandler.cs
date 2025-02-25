@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 namespace SimPe
 {
 	/// <summary>
@@ -29,55 +30,77 @@ namespace SimPe
 		SimPe.ResourceLoader rl;
 		System.Windows.Forms.ToolStripMenuItem docs;
 		PluginManager plugger;
-        internal RemoteHandler(System.Windows.Forms.Form form, LoadedPackage lp, ResourceLoader rl, System.Windows.Forms.ToolStripMenuItem docmenu) 
+
+		internal RemoteHandler(
+			System.Windows.Forms.Form form,
+			LoadedPackage lp,
+			ResourceLoader rl,
+			System.Windows.Forms.ToolStripMenuItem docmenu
+		)
 		{
 			this.lp = lp;
 			this.rl = rl;
 			docs = docmenu;
 			this.plugger = null;
 
-			RemoteControl.OpenPackageFkt = new SimPe.RemoteControl.OpenPackageDelegate(OpenPackage);
-			RemoteControl.OpenPackedFileFkt = new SimPe.RemoteControl.OpenPackedFileDelegate(OpenPackedFile);
-			RemoteControl.OpenMemoryPackageFkt = new SimPe.RemoteControl.OpenMemPackageDelegate(OpenMemPackage);
-			RemoteControl.ShowDockFkt = new SimPe.RemoteControl.ShowDockDelegate(ShowDock);
+			RemoteControl.OpenPackageFkt = new SimPe.RemoteControl.OpenPackageDelegate(
+				OpenPackage
+			);
+			RemoteControl.OpenPackedFileFkt =
+				new SimPe.RemoteControl.OpenPackedFileDelegate(OpenPackedFile);
+			RemoteControl.OpenMemoryPackageFkt =
+				new SimPe.RemoteControl.OpenMemPackageDelegate(OpenMemPackage);
+			RemoteControl.ShowDockFkt = new SimPe.RemoteControl.ShowDockDelegate(
+				ShowDock
+			);
 
 			RemoteControl.ApplicationForm = form;
 		}
 
-        internal void SetPlugger(PluginManager plugger)
-        {
-            this.plugger = plugger;
-        }
+		internal void SetPlugger(PluginManager plugger)
+		{
+			this.plugger = plugger;
+		}
 
 		public bool OpenPackage(string filename)
 		{
-			if (!System.IO.File.Exists(filename)) return false;
+			if (!System.IO.File.Exists(filename))
+				return false;
 
 			return lp.LoadFromFile(filename);
 		}
 
 		public bool OpenMemPackage(SimPe.Interfaces.Files.IPackageFile pkg)
 		{
-			if (pkg==null) return false;
-			if (!(pkg is SimPe.Packages.GeneratableFile)) return false;
+			if (pkg == null)
+				return false;
+			if (!(pkg is SimPe.Packages.GeneratableFile))
+				return false;
 
 			return lp.LoadFromPackage((SimPe.Packages.GeneratableFile)pkg);
 		}
 
-		public bool OpenPackedFile(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii) 
+		public bool OpenPackedFile(
+			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii
+		)
 		{
-			if (fii==null) return false;		
+			if (fii == null)
+				return false;
 
-			try 
+			try
 			{
-				if (fii.Package!=null) 
+				if (fii.Package != null)
 				{
-					if (!fii.Package.Equals(lp.Package)) 
+					if (!fii.Package.Equals(lp.Package))
 					{
 						int bprc = Helper.WindowsRegistry.BigPackageResourceCount;
 						Helper.WindowsRegistry.BigPackageResourceCount = int.MaxValue;
 
-						if (!lp.LoadFromPackage((SimPe.Packages.GeneratableFile)fii.Package)) 
+						if (
+							!lp.LoadFromPackage(
+								(SimPe.Packages.GeneratableFile)fii.Package
+							)
+						)
 						{
 							Helper.WindowsRegistry.BigPackageResourceCount = bprc;
 							return false;
@@ -85,7 +108,7 @@ namespace SimPe
 						Helper.WindowsRegistry.BigPackageResourceCount = bprc;
 					}
 				}
-			} 
+			}
 			catch (Exception ex)
 			{
 				Helper.ExceptionMessage(ex);
@@ -93,7 +116,8 @@ namespace SimPe
 			}
 
 			bool res = rl.AddResource(fii, false);
-			if (res && LoadedResource!=null) FireLoadEvent(fii);
+			if (res && LoadedResource != null)
+				FireLoadEvent(fii);
 
 			return res;
 		}
@@ -102,7 +126,9 @@ namespace SimPe
 		/// Fires the <see cref="LoadedResource"/> Event
 		/// </summary>
 		/// <param name="fii"></param>
-		public void FireLoadEvent(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii)
+		public void FireLoadEvent(
+			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii
+		)
 		{
 			SimPe.Events.ResourceEventArgs e = new SimPe.Events.ResourceEventArgs(lp);
 			e.Items.Add(new SimPe.Events.ResourceContainer(fii));
@@ -120,25 +146,28 @@ namespace SimPe
 		/// <param name="doc">The Doc you want to show/hide</param>
 		public void ShowDock(Ambertation.Windows.Forms.DockPanel doc, bool hide)
 		{
-			if (hide && (doc.IsOpen)) doc.Close();
-			if (!hide ) 
+			if (hide && (doc.IsOpen))
+				doc.Close();
+			if (!hide)
 			{
-                if (!doc.IsOpen) doc.OpenFloating();
-                if (doc.Collapsed) doc.Expand(false);
-                doc.EnsureVisible();
-                if (!(doc.IsOpen)) 
-					plugger.ChangedGuiResourceEventHandler();				
+				if (!doc.IsOpen)
+					doc.OpenFloating();
+				if (doc.Collapsed)
+					doc.Expand(false);
+				doc.EnsureVisible();
+				if (!(doc.IsOpen))
+					plugger.ChangedGuiResourceEventHandler();
 			}
 
-            foreach (object o in docs.DropDownItems)
+			foreach (object o in docs.DropDownItems)
 			{
-                System.Windows.Forms.ToolStripMenuItem mi = o as System.Windows.Forms.ToolStripMenuItem;
-                if (mi==null) continue;
-                if (mi.Tag as Ambertation.Windows.Forms.DockPanel == doc) 				
-					mi.Checked = doc.IsOpen;				
+				System.Windows.Forms.ToolStripMenuItem mi =
+					o as System.Windows.Forms.ToolStripMenuItem;
+				if (mi == null)
+					continue;
+				if (mi.Tag as Ambertation.Windows.Forms.DockPanel == doc)
+					mi.Checked = doc.IsOpen;
 			}
 		}
 	}
-
-	
 }

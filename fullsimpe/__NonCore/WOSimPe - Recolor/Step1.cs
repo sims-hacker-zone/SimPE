@@ -3,7 +3,7 @@ using System;
 namespace SimPe.Wizards
 {
 	/// <summary>
-	/// Zusammenfassung für Step1.
+	/// Zusammenfassung fï¿½r Step1.
 	/// </summary>
 	public class Step1 : AWizardForm, IWizardEntry
 	{
@@ -14,16 +14,15 @@ namespace SimPe.Wizards
 		/// </summary>
 		public static RecolourWizardForm Form
 		{
-			get { 
-				if (dwf==null) dwf = new RecolourWizardForm();
-				return dwf; 
+			get
+			{
+				if (dwf == null)
+					dwf = new RecolourWizardForm();
+				return dwf;
 			}
 		}
 
-		public Step1()
-		{
-			
-		}
+		public Step1() { }
 
 		#region IWizardEntry Member
 
@@ -37,18 +36,12 @@ namespace SimPe.Wizards
 
 		public string WizardCaption
 		{
-			get
-			{
-				return "Recolours";
-			}
+			get { return "Recolours"; }
 		}
 
 		public System.Drawing.Image WizardImage
 		{
-			get
-			{
-				return Form.pb.Image;
-			}
+			get { return Form.pb.Image; }
 		}
 
 		#endregion
@@ -57,50 +50,44 @@ namespace SimPe.Wizards
 
 		public override System.Windows.Forms.Panel WizardWindow
 		{
-			get
-			{
-				return Form.pnwizard1;
-			}
+			get { return Form.pnwizard1; }
 		}
 
 		protected override bool Init()
 		{
-			if (Form.step1==null) Form.step1 = this;
-				
+			if (Form.step1 == null)
+				Form.step1 = this;
+
 			Form.BuildList();
 			return true;
 		}
 
 		public override string WizardMessage
 		{
-			get
-			{
-				return "Select the Object you want to Recolour";
-			}
+			get { return "Select the Object you want to Recolour"; }
 		}
 
 		public override bool CanContinue
 		{
 			get
 			{
-				if (Form.selectedlv==null) return false;
-				return (Form.selectedlv.SelectedItems.Count>0);
+				if (Form.selectedlv == null)
+					return false;
+				return (Form.selectedlv.SelectedItems.Count > 0);
 			}
 		}
 
 		public override int WizardStep
 		{
-			get
-			{
-				return 2;
-			}
+			get { return 2; }
 		}
 
 		public override IWizardForm Next
 		{
 			get
 			{
-				if (Form.step1b==null) Form.step1b = new Step1b();
+				if (Form.step1b == null)
+					Form.step1b = new Step1b();
 				return Form.step1b;
 			}
 		}

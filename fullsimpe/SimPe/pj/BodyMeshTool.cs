@@ -23,30 +23,31 @@ using SimPe.Interfaces.Plugin;
 
 namespace pj
 {
-    class BodyMeshTool : AbstractWrapperFactory, IToolFactory, IHelpFactory
-    {
-        #region IToolFactory Members
+	class BodyMeshTool : AbstractWrapperFactory, IToolFactory, IHelpFactory
+	{
+		#region IToolFactory Members
 
-        public IToolPlugin[] KnownTools
-        {
-            get
-            {
-                return new IToolPlugin[] {
-                    new BodyMeshExtractor()
-                    , new BodyMeshLinker()
-                };
-            }
-        }
+		public IToolPlugin[] KnownTools
+		{
+			get
+			{
+				return new IToolPlugin[]
+				{
+					new BodyMeshExtractor(),
+					new BodyMeshLinker(),
+				};
+			}
+		}
 
-        #endregion
+		#endregion
 
-        #region IHelpFactory Members
+		#region IHelpFactory Members
 
-        public IHelp[] KnownHelpTopics
-        {
-            get { return new IHelp[] { new BodyMeshHelp() }; }
-        }
+		public IHelp[] KnownHelpTopics
+		{
+			get { return new IHelp[] { new BodyMeshHelp() }; }
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 }

@@ -32,30 +32,32 @@ namespace SimPe.Packages
 		/// The Stream is Opene
 		/// </summary>
 		Opened,
+
 		/// <summary>
 		/// The Stream is Closed
 		/// </summary>
 		Closed,
+
 		/// <summary>
 		/// The stream is not available
 		/// </summary>
-		Removed
+		Removed,
 	}
 
 	/// <summary>
 	/// Contains one FIleStream
 	/// </summary>
-	public class StreamItem 
+	public class StreamItem
 	{
 		FileStream fs;
-		
+
 		/// <summary>
 		/// Creates a new Instance
 		/// </summary>
 		/// <param name="fs">The FIlestream you want to use</param>
-		internal StreamItem(FileStream fs) 
+		internal StreamItem(FileStream fs)
 		{
-			SetFileStream(fs);					
+			SetFileStream(fs);
 		}
 
 		/// <summary>
@@ -63,7 +65,7 @@ namespace SimPe.Packages
 		/// </summary>
 		public FileStream FileStream
 		{
-			get {return fs;}			
+			get { return fs; }
 		}
 
 		/// <summary>
@@ -72,7 +74,7 @@ namespace SimPe.Packages
 		/// <param name="fs"></param>
 		internal void SetFileStream(FileStream fs)
 		{
-			this.fs = fs;		
+			this.fs = fs;
 		}
 
 		/// <summary>
@@ -81,43 +83,52 @@ namespace SimPe.Packages
 		/// <param name="fa">File Acces you need</param>
 		/// <remarks>won't do anything if thhe Stream is null!</remarks>
 		/// <returns>true if the FIleMode was changed</returns>
-		public bool SetFileAccess(FileAccess fa) 
+		public bool SetFileAccess(FileAccess fa)
 		{
-			if (fs==null) return false;
+			if (fs == null)
+				return false;
 
-			switch (fa) 
+			switch (fa)
 			{
 				case FileAccess.Read:
 				{
-					if (fs.CanRead) return true;
-					if (fs.CanWrite) fa=FileAccess.ReadWrite;
+					if (fs.CanRead)
+						return true;
+					if (fs.CanWrite)
+						fa = FileAccess.ReadWrite;
 					break;
 				}
 
 				case FileAccess.Write:
 				{
-					if (fs.CanWrite) return true;
-					if (fs.CanRead) fa=FileAccess.ReadWrite;
+					if (fs.CanWrite)
+						return true;
+					if (fs.CanRead)
+						fa = FileAccess.ReadWrite;
 					break;
-                }
+				}
 
-				default: 
+				default:
 				{
-					if (fs.CanRead && fs.CanWrite) return true;
+					if (fs.CanRead && fs.CanWrite)
+						return true;
 					break;
 				}
 			}
 
-			try 
+			try
 			{
-				if (this.StreamState==StreamState.Opened) fs.Close();					
-				
+				if (this.StreamState == StreamState.Opened)
+					fs.Close();
+
 				string name = fs.Name;
 				fs = null;
 				fs = new FileStream(name, System.IO.FileMode.OpenOrCreate, fa);
-			} 
-			catch (Exception ex){
-                if (Helper.WindowsRegistry.HiddenMode) Helper.ExceptionMessage("", ex);
+			}
+			catch (Exception ex)
+			{
+				if (Helper.WindowsRegistry.HiddenMode)
+					Helper.ExceptionMessage("", ex);
 				return false;
 			}
 			return true;
@@ -128,21 +139,28 @@ namespace SimPe.Packages
 		/// </summary>
 		public StreamState StreamState
 		{
-			get 
+			get
 			{
-				if (fs==null) return StreamState.Removed;
+				if (fs == null)
+					return StreamState.Removed;
 
-				if (fs.CanSeek) return StreamState.Opened;
+				if (fs.CanSeek)
+					return StreamState.Opened;
 				return StreamState.Closed;
 			}
-		}	
-		
+		}
+
 		/// <summary>
 		/// Closes the Stream if opened
 		/// </summary>
 		public void Close()
 		{
-			if (fs != null) { fs.Close(); fs.Dispose(); fs = null; }
+			if (fs != null)
+			{
+				fs.Close();
+				fs.Dispose();
+				fs = null;
+			}
 		}
 	}
 
@@ -163,9 +181,10 @@ namespace SimPe.Packages
 		{
 			InitTable();
 			filename = filename.Trim().ToLower();
-			if (streams.ContainsKey(filename)) 
+			if (streams.ContainsKey(filename))
 			{
-				if (!locked.Contains(filename)) locked.Add(filename);
+				if (!locked.Contains(filename))
+					locked.Add(filename);
 				return true;
 			}
 			return false;
@@ -180,9 +199,9 @@ namespace SimPe.Packages
 		{
 			InitTable();
 			filename = filename.Trim().ToLower();
-			if (streams.ContainsKey(filename)) 
+			if (streams.ContainsKey(filename))
 			{
-				if (locked.Contains(filename)) 
+				if (locked.Contains(filename))
 				{
 					locked.Remove(filename);
 					return true;
@@ -200,7 +219,8 @@ namespace SimPe.Packages
 		public static bool IsLocked(string filename, bool checkfiletable)
 		{
 			filename = filename.Trim().ToLower();
-            return locked.Contains(filename) || (checkfiletable && SimPe.FileTableBase.FileIndex.Contains(filename));
+			return locked.Contains(filename)
+				|| (checkfiletable && SimPe.FileTableBase.FileIndex.Contains(filename));
 		}
 
 		/// <summary>
@@ -209,8 +229,8 @@ namespace SimPe.Packages
 		public static void UnlockAll()
 		{
 			InitTable();
-			foreach (string k in streams.Keys) 			
-				UnlockStream(k);			
+			foreach (string k in streams.Keys)
+				UnlockStream(k);
 		}
 
 		public static void WriteToConsole()
@@ -221,14 +241,18 @@ namespace SimPe.Packages
 			f.Controls.Add(lb);
 			lb.Dock = System.Windows.Forms.DockStyle.Fill;
 
-			foreach (string k in streams.Keys) 
+			foreach (string k in streams.Keys)
 			{
 				StreamItem si = streams[k] as StreamItem;
 				string add = k;
-				if (si!=null) add +=" ["+si.StreamState+"]";	
-				if (IsLocked(k, false)) add = "[locked] "+add;
-				else if (IsLocked(k, true)) add = "[ftlocked] "+add;
-				if (PackageMaintainer.Maintainer.Contains(k)) add += "[managed]";
+				if (si != null)
+					add += " [" + si.StreamState + "]";
+				if (IsLocked(k, false))
+					add = "[locked] " + add;
+				else if (IsLocked(k, true))
+					add = "[ftlocked] " + add;
+				if (PackageMaintainer.Maintainer.Contains(k))
+					add += "[managed]";
 				lb.Items.Add(add);
 			}
 
@@ -236,6 +260,7 @@ namespace SimPe.Packages
 			f.ShowDialog();
 			f.Dispose();
 		}
+
 		/// <summary>
 		/// Removes all Files from the Teleport Folder
 		/// </summary>
@@ -244,30 +269,33 @@ namespace SimPe.Packages
 			string[] files = System.IO.Directory.GetFiles(Helper.SimPeTeleportPath);
 			foreach (string file in files)
 			{
-				try 
+				try
 				{
 					SimPe.Packages.StreamFactory.CloseStream(file);
 					System.IO.File.Delete(file);
-				} 
+				}
 				catch (Exception ex)
 				{
 					Console.WriteLine(ex);
 				}
 			}
-            string[] subdirs = System.IO.Directory.GetDirectories(Helper.SimPeTeleportPath);
-            foreach (string subdir in subdirs)
-            {
-                try
-                {
-                    System.IO.Directory.Delete(subdir, true);
-                }
-                catch {}
+			string[] subdirs = System.IO.Directory.GetDirectories(
+				Helper.SimPeTeleportPath
+			);
+			foreach (string subdir in subdirs)
+			{
+				try
+				{
+					System.IO.Directory.Delete(subdir, true);
+				}
+				catch { }
 			}
 		}
 
 		static void InitTable()
 		{
-			if (streams==null) streams = new Hashtable();
+			if (streams == null)
+				streams = new Hashtable();
 		}
 
 		/// <summary>
@@ -277,7 +305,7 @@ namespace SimPe.Packages
 		/// <returns>The Suggeste Share Mode</returns>
 		/*public static FileShare GetFileShare(FileAccess fa)
 		{
-			switch (fa) 
+			switch (fa)
 			{
 				case FileAccess.Read:
 				{
@@ -296,11 +324,11 @@ namespace SimPe.Packages
 		/// <param name="filename">The name of the FIle you want to open</param>
 		/// <returns>a valid StreamItem</returns>
 		/// <remarks>
-		/// If this File was not know yet, a new StreamItem will 
-		/// be generated for it and returned. The StreamItem will 
+		/// If this File was not know yet, a new StreamItem will
+		/// be generated for it and returned. The StreamItem will
 		/// not contain a Stream in that case!
 		/// </remarks>
-		public static StreamItem GetStreamItem(string filename) 
+		public static StreamItem GetStreamItem(string filename)
 		{
 			return GetStreamItem(filename, true);
 		}
@@ -311,17 +339,18 @@ namespace SimPe.Packages
 		/// <param name="filename">The name of the FIle you want to open</param>
 		/// <returns>a valid StreamItem or null if not found and createnew was set</returns>
 		/// <param name="createnew">
-		/// If true and this File was not know yet, a new StreamItem will be generated 
-		/// for it and returned. The StreamItem will 
+		/// If true and this File was not know yet, a new StreamItem will be generated
+		/// for it and returned. The StreamItem will
 		/// not contain a Stream in that case!
 		/// </param>
-		public static StreamItem GetStreamItem(string filename, bool createnew) 
+		public static StreamItem GetStreamItem(string filename, bool createnew)
 		{
 			InitTable();
-			if (filename==null) filename="";
+			if (filename == null)
+				filename = "";
 			filename = filename.Trim().ToLower();
 			StreamItem si = (StreamItem)streams[filename];
-			if ((si==null) && createnew)
+			if ((si == null) && createnew)
 			{
 				si = new StreamItem(null);
 				streams[filename] = si;
@@ -335,10 +364,10 @@ namespace SimPe.Packages
 		/// </summary>
 		/// <param name="name"></param>
 		/// <returns></returns>
-		public static bool IsStreamAvailable(string name) 
-		{			
+		public static bool IsStreamAvailable(string name)
+		{
 			StreamItem si = GetStreamItem(name, false);
-			return (si!=null);
+			return (si != null);
 		}
 
 		/// <summary>
@@ -347,7 +376,7 @@ namespace SimPe.Packages
 		/// <param name="filename">The name of the File</param>
 		/// <param name="fa">The Acces Attributes</param>
 		/// <returns>a StreamItem (StreamState is Removed if the File did not exits!</returns>
-		public static StreamItem UseStream(string filename, FileAccess fa) 
+		public static StreamItem UseStream(string filename, FileAccess fa)
 		{
 			return UseStream(filename, fa, false);
 		}
@@ -359,38 +388,43 @@ namespace SimPe.Packages
 		/// <param name="fa">The Acces Attributes</param>
 		/// <param name="create">true if the file should be created if not available</param>
 		/// <returns>a StreamItem (StreamState is Removed if the File did not exits!</returns>
-        public static StreamItem UseStream(string filename, FileAccess fa, bool create)
-        {
-            StreamItem si = GetStreamItem(filename);
+		public static StreamItem UseStream(string filename, FileAccess fa, bool create)
+		{
+			StreamItem si = GetStreamItem(filename);
 
-            //File does not exists, so set State to removed
-            if (!System.IO.File.Exists(filename))
-            {
-                si.Close();
-                si.SetFileStream(create ? new FileStream(filename, System.IO.FileMode.OpenOrCreate, fa) : null);
-                return si;
-            }
+			//File does not exists, so set State to removed
+			if (!System.IO.File.Exists(filename))
+			{
+				si.Close();
+				si.SetFileStream(
+					create
+						? new FileStream(filename, System.IO.FileMode.OpenOrCreate, fa)
+						: null
+				);
+				return si;
+			}
 
-            // Files does exist -- Removed means never opened here
-            if (si.StreamState == StreamState.Removed)
-                si.SetFileStream(new FileStream(filename, FileMode.Open, fa));
-            else if (!si.SetFileAccess(fa))
-                si.Close();
+			// Files does exist -- Removed means never opened here
+			if (si.StreamState == StreamState.Removed)
+				si.SetFileStream(new FileStream(filename, FileMode.Open, fa));
+			else if (!si.SetFileAccess(fa))
+				si.Close();
 
-            if (si.StreamState == StreamState.Opened)
-                si.FileStream.Seek(0, SeekOrigin.Begin);
+			if (si.StreamState == StreamState.Opened)
+				si.FileStream.Seek(0, SeekOrigin.Begin);
 
-            return si;
-        }
+			return si;
+		}
 
 		/// <summary>
 		/// Returns null or a StreamItem that was already created
 		/// </summary>
 		/// <param name="fs">The Stream you are looking for</param>
 		/// <returns>the Stream Item or null if none was found</returns>
-		public static StreamItem FindStreamItem(FileStream fs) 
+		public static StreamItem FindStreamItem(FileStream fs)
 		{
-			if (fs==null) return null;
+			if (fs == null)
+				return null;
 
 			return GetStreamItem(fs.Name, false);
 		}
@@ -400,21 +434,21 @@ namespace SimPe.Packages
 		/// </summary>
 		/// <param name="filename">The name of the File</param>
 		/// <returns>true if the File is closed now</returns>
-        public static bool CloseStream(string filename)
-        {
-            if (IsLocked(filename, false))
-                return false;
+		public static bool CloseStream(string filename)
+		{
+			if (IsLocked(filename, false))
+				return false;
 
-            StreamItem si = GetStreamItem(filename, false);
-            if (si != null)
-            {
-                si.Close();
-                if (!IsLocked(filename, true))
-                    PackageMaintainer.Maintainer.RemovePackage(filename);
-                return (si.StreamState != StreamState.Opened);
-            }
-            return false;
-        }
+			StreamItem si = GetStreamItem(filename, false);
+			if (si != null)
+			{
+				si.Close();
+				if (!IsLocked(filename, true))
+					PackageMaintainer.Maintainer.RemovePackage(filename);
+				return (si.StreamState != StreamState.Opened);
+			}
+			return false;
+		}
 
 		/// <summary>
 		/// Closes all opened Streams (that are not locked and not referenced in the FileTable)
@@ -431,9 +465,9 @@ namespace SimPe.Packages
 		public static void CloseAll(bool force)
 		{
 			InitTable();
-			foreach (string k in streams.Keys) 
-			{				
-				if (!IsLocked(k, true) || force) 
+			foreach (string k in streams.Keys)
+			{
+				if (!IsLocked(k, true) || force)
 				{
 					StreamItem si = streams[k] as StreamItem;
 					si.Close();

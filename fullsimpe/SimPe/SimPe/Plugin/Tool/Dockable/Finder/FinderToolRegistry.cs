@@ -24,52 +24,68 @@ using System.Text;
 
 namespace SimPe.Plugin.Tool.Dockable.Finder
 {
-    public sealed class FinderToolRegistry
-    {
-        
-        static FinderToolRegistry glb = null;
-        public static FinderToolRegistry Global
-        {
-            get
-            {
-                if (glb == null) glb = new FinderToolRegistry();
-                return glb;
-            }
-        }
+	public sealed class FinderToolRegistry
+	{
+		static FinderToolRegistry glb = null;
+		public static FinderToolRegistry Global
+		{
+			get
+			{
+				if (glb == null)
+					glb = new FinderToolRegistry();
+				return glb;
+			}
+		}
 
-        List<Type> list;
-        private FinderToolRegistry()
-        {
-            list = new List<Type>();
-            map = new Dictionary<SimPe.Interfaces.IFinderResultGui, SimPe.Interfaces.AFinderTool[]>();
+		List<Type> list;
 
-            Add(typeof(FindObj));
-            Add(typeof(FindInNmap));
-            Add(typeof(FindInStr));
-            Add(typeof(FindInCpf));
-            Add(typeof(FindTGI));
-            Add(typeof(FindInNref));
-            Add(typeof(FindInSG));
-        }
+		private FinderToolRegistry()
+		{
+			list = new List<Type>();
+			map =
+				new Dictionary<
+					SimPe.Interfaces.IFinderResultGui,
+					SimPe.Interfaces.AFinderTool[]
+				>();
 
-        public void Add(Type tool)
-        {
-            list.Add(tool);
-        }
+			Add(typeof(FindObj));
+			Add(typeof(FindInNmap));
+			Add(typeof(FindInStr));
+			Add(typeof(FindInCpf));
+			Add(typeof(FindTGI));
+			Add(typeof(FindInNref));
+			Add(typeof(FindInSG));
+		}
 
-        Dictionary<SimPe.Interfaces.IFinderResultGui, SimPe.Interfaces.AFinderTool[]> map;
-        public SimPe.Interfaces.AFinderTool[] CreateToolInstances(SimPe.Interfaces.IFinderResultGui gui)
-        {
-            if (map.ContainsKey(gui)) return map[gui];
+		public void Add(Type tool)
+		{
+			list.Add(tool);
+		}
 
-            SimPe.Interfaces.AFinderTool[] ret = new SimPe.Interfaces.AFinderTool[list.Count];
-            for (int i = 0; i < list.Count; i++)
-            {
-                ret[i] = System.Activator.CreateInstance(list[i], new object[] { gui }) as SimPe.Interfaces.AFinderTool;  
-            }
+		Dictionary<
+			SimPe.Interfaces.IFinderResultGui,
+			SimPe.Interfaces.AFinderTool[]
+		> map;
 
-            map[gui] = ret;
-            return ret;
-        }
-    }
+		public SimPe.Interfaces.AFinderTool[] CreateToolInstances(
+			SimPe.Interfaces.IFinderResultGui gui
+		)
+		{
+			if (map.ContainsKey(gui))
+				return map[gui];
+
+			SimPe.Interfaces.AFinderTool[] ret = new SimPe.Interfaces.AFinderTool[
+				list.Count
+			];
+			for (int i = 0; i < list.Count; i++)
+			{
+				ret[i] =
+					System.Activator.CreateInstance(list[i], new object[] { gui })
+					as SimPe.Interfaces.AFinderTool;
+			}
+
+			map[gui] = ret;
+			return ret;
+		}
+	}
 }

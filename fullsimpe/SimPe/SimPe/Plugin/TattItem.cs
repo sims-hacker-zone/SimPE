@@ -27,19 +27,17 @@ namespace SimPe.Plugin
 	/// This is the actual FileWrapper
 	/// </summary>
 	/// <remarks>
-	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads 
+	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public class TattItem :System.IDisposable
+	public class TattItem : System.IDisposable
 	{
-		
-
 		#region Attributes
 		uint guid;
 		ushort[] items;
 		#endregion
 
-		
+
 		/// <summary>
 		/// Constructor
 		/// </summary>
@@ -47,9 +45,6 @@ namespace SimPe.Plugin
 		{
 			items = new ushort[0];
 		}
-
-		
-		
 
 		/// <summary>
 		/// Unserializes a BinaryStream into the Attributes of this Instance
@@ -59,7 +54,7 @@ namespace SimPe.Plugin
 		{
 			guid = reader.ReadUInt32();
 			items = new ushort[reader.ReadUInt32()];
-			for (int i=0; i<items.Length; i++)
+			for (int i = 0; i < items.Length; i++)
 				items[i] = reader.ReadUInt16();
 		}
 
@@ -68,17 +63,16 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		internal void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(guid);
 			writer.Write((uint)items.Length);
-			for (int i=0; i<items.Length; i++)
+			for (int i = 0; i < items.Length; i++)
 				writer.Write(items[i]);
 		}
-
 
 		#region IDisposable Member
 
@@ -91,11 +85,10 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			string s = "0x"+Helper.HexString(guid)+": ";
+			string s = "0x" + Helper.HexString(guid) + ": ";
 			foreach (ushort u in items)
-				s += Helper.HexString(u)+" ";
+				s += Helper.HexString(u) + " ";
 			return s;
 		}
-
 	}
 }

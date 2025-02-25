@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Interfaces.Files;
 using SimPe.Cache;
+using SimPe.Interfaces.Files;
 
 namespace SimPe.Interfaces.Plugin.Scanner
 {
@@ -35,44 +35,35 @@ namespace SimPe.Interfaces.Plugin.Scanner
 	}
 
 	/// <summary>
-	/// Implements the very basic Interface for a Scanner/Identifier, 
+	/// Implements the very basic Interface for a Scanner/Identifier,
 	/// this is used to determin wether or not a Scanner/Identifier can be loaded!
 	/// </summary>
 	public interface IScannerPluginBase
-	{	
+	{
 		/// <summary>
 		/// Returns the Version of the IIdentifier Interface the scanner/identifier is implementing
 		/// </summary>
 		/// <remarks>
-		/// The current Scan Folders Plugin will only process Scanners/identifiers 
+		/// The current Scan Folders Plugin will only process Scanners/identifiers
 		/// with a Version of 1
 		/// </remarks>
-		uint Version 
-		{
-			get;
-		}
+		uint Version { get; }
 
 		/// <summary>
 		/// Returns the Position of the Index in the ScanList
 		/// </summary>
 		/// <remarks>
-		/// Identifiers are ordere, meaning you can determin in which order the 
-		/// scanners are called, specifiyinga low index (negative) will make a 
+		/// Identifiers are ordere, meaning you can determin in which order the
+		/// scanners are called, specifiyinga low index (negative) will make a
 		/// Identifier to be executed early, a High Index will execute it later
 		/// </remarks>
-		int Index 
-		{
-			get;
-		}
+		int Index { get; }
 
 		/// <summary>
 		/// Returns the Interface that is implemented by the Plugin
 		/// </summary>
-		ScannerPluginType PluginType 
-		{
-			get;
-		}
-	}	
+		ScannerPluginType PluginType { get; }
+	}
 
 	/// <summary>
 	/// Identifies the Type of a Package

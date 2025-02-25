@@ -26,30 +26,28 @@ namespace Sims.GUID
 	/// </summary>
 	public class ObjectListItem
 	{
-		internal ObjectListItem(uint guid, string name) 
+		internal ObjectListItem(uint guid, string name)
 		{
 			this.guid = guid;
 			this.name = name;
 		}
 
 		uint guid;
-		public uint GUID 
+		public uint GUID
 		{
 			get { return guid; }
 			set { guid = value; }
 		}
 
 		string name;
-		public string Name 
+		public string Name
 		{
-			set { name = value;}
+			set { name = value; }
 		}
 
 		public override string ToString()
 		{
-			return name+" (0x"+guid.ToString("X")+")";
+			return name + " (0x" + guid.ToString("X") + ")";
 		}
-
-
 	}
 }

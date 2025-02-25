@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.IO;
-using System.Globalization;
 using System.Collections;
+using System.Globalization;
+using System.IO;
 
 namespace SimPe.Plugin.Gmdc
 {
@@ -33,38 +33,42 @@ namespace SimPe.Plugin.Gmdc
 		/// Unknown Format
 		/// </summary>
 		Unknown = 0,
+
 		/// <summary>
 		/// Marks a solid Mesh
 		/// </summary>
 		Opaque = 0xffffffff,
+
 		/// <summary>
 		/// Marks a Shadow or Highlight Mesh
 		/// </summary>
-		Shadow = 0x00000003		
+		Shadow = 0x00000003,
 	}
 
 	/// <summary>
 	/// Contains the Group Section of a GMDC
 	/// </summary>
-	public class GmdcGroup  : GmdcLinkBlock
+	public class GmdcGroup : GmdcLinkBlock
 	{
 		#region Attributes
 
 		PrimitiveType unknown1;
+
 		/// <summary>
 		/// Determins the Primitive Type of the Faces
 		/// </summary>
-		public PrimitiveType PrimitiveType 
+		public PrimitiveType PrimitiveType
 		{
 			get { return unknown1; }
 			set { unknown1 = value; }
 		}
 
 		int alternate;
+
 		/// <summary>
 		/// The Index of the <see cref="GmdcLink"/> Object that is referenced by this Group. (Index into the <see cref="GeometryDataContainer.Links"/> Property.
 		/// </summary>
-		public int LinkIndex 
+		public int LinkIndex
 		{
 			get { return alternate; }
 			set { alternate = value; }
@@ -75,50 +79,56 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcLink Link
 		{
-			get 
+			get
 			{
-				if (parent==null) return null;
-				if (LinkIndex<0 || LinkIndex>=parent.Links.Count) return null;
+				if (parent == null)
+					return null;
+				if (LinkIndex < 0 || LinkIndex >= parent.Links.Count)
+					return null;
 
 				return parent.Links[LinkIndex];
 			}
 		}
 
 		string name;
+
 		/// <summary>
 		/// The Name of this Group
 		/// </summary>
-		public String Name 
+		public String Name
 		{
 			get { return name; }
 			set { name = value; }
 		}
-		
+
 		IntArrayList items1;
+
 		/// <summary>
 		/// The Index of the used Vertices
 		/// </summary>
-		public IntArrayList Faces 
+		public IntArrayList Faces
 		{
 			get { return items1; }
 			set { items1 = value; }
 		}
 
 		uint opacity;
+
 		/// <summary>
 		/// The opacity of this Group (0=transparent; 3=shadow; -1=opaque)
 		/// </summary>
-		public uint Opacity 
+		public uint Opacity
 		{
 			get { return opacity; }
 			set { opacity = value; }
 		}
 
 		IntArrayList items2;
+
 		/// <summary>
 		/// List all Joints used by this Group
 		/// </summary>
-		public IntArrayList UsedJoints 
+		public IntArrayList UsedJoints
 		{
 			get { return items2; }
 			set { items2 = value; }
@@ -128,7 +138,8 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public GmdcGroup(GeometryDataContainer parent) : base(parent)
+		public GmdcGroup(GeometryDataContainer parent)
+			: base(parent)
 		{
 			items1 = new IntArrayList();
 			items2 = new IntArrayList();
@@ -136,12 +147,11 @@ namespace SimPe.Plugin.Gmdc
 			alternate = -1;
 		}
 
-			
 		/// <summary>
 		/// Unserializes a BinaryStream into the Attributes of this Instance
 		/// </summary>
 		/// <param name="reader">The Stream that contains the FileData</param>
-		public  void Unserialize(System.IO.BinaryReader reader)
+		public void Unserialize(System.IO.BinaryReader reader)
 		{
 			unknown1 = (PrimitiveType)reader.ReadUInt32();
 			alternate = reader.ReadInt32();
@@ -149,11 +159,15 @@ namespace SimPe.Plugin.Gmdc
 
 			ReadBlock(reader, items1);
 
-			if (parent.Version!=0x03) opacity = reader.ReadUInt32();
-			else opacity = 0;
+			if (parent.Version != 0x03)
+				opacity = reader.ReadUInt32();
+			else
+				opacity = 0;
 
-			if (parent.Version!=0x01) ReadBlock(reader, items2); 
-			else items2.Clear();
+			if (parent.Version != 0x01)
+				ReadBlock(reader, items2);
+			else
+				items2.Clear();
 		}
 
 		/// <summary>
@@ -161,10 +175,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
-		public  void Serialize(System.IO.BinaryWriter writer)
+		public void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write((uint)unknown1);
 			writer.Write(alternate);
@@ -172,28 +186,32 @@ namespace SimPe.Plugin.Gmdc
 
 			WriteBlock(writer, items1);
 
-			if (parent.Version!=0x03) writer.Write((uint)opacity);
+			if (parent.Version != 0x03)
+				writer.Write((uint)opacity);
 
-			if (parent.Version!=0x01) WriteBlock(writer, items2); 
+			if (parent.Version != 0x01)
+				WriteBlock(writer, items2);
 		}
 
 		/// <summary>
 		/// The Face Count for this Group
 		/// </summary>
-		public int FaceCount 
+		public int FaceCount
 		{
-			get { return this.Faces.Count/3; }
+			get { return this.Faces.Count / 3; }
 		}
 
 		/// <summary>
 		/// The Number of diffrent Vertices used by this Group
 		/// </summary>
-		public int UsedVertexCount 
+		public int UsedVertexCount
 		{
-			get 
-			{		
+			get
+			{
 				System.Collections.Hashtable refs = new Hashtable();
-				foreach (int i in Faces) if (!refs.ContainsKey(i)) refs[i] = 1;			
+				foreach (int i in Faces)
+					if (!refs.ContainsKey(i))
+						refs[i] = 1;
 				int ret = refs.Count;
 				refs.Clear();
 				refs = null;
@@ -204,14 +222,15 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// The Number of referenced Vertices
 		/// </summary>
-		public int ReferencedVertexCount 
+		public int ReferencedVertexCount
 		{
-			get 
+			get
 			{
 				int vertcount = 0;
-				if (this.LinkIndex<parent.Links.Count) 
+				if (this.LinkIndex < parent.Links.Count)
 				{
-					if (LinkIndex>=0 && LinkIndex<parent.Links.Count) vertcount = parent.Links[LinkIndex].ReferencedSize;
+					if (LinkIndex >= 0 && LinkIndex < parent.Links.Count)
+						vertcount = parent.Links[LinkIndex].ReferencedSize;
 				}
 				return vertcount;
 			}
@@ -223,10 +242,18 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns>A String Describing the Data</returns>
 		public override string ToString()
 		{
-            if (this.Faces.Count < 0x2000 || UserVerification.HaveUserId)
-				return name + " (FaceCount="+(FaceCount).ToString()+", VertexCount="+UsedVertexCount.ToString()+")";
-			else 
-				return name + " (FaceCount="+(FaceCount).ToString()+", VertexCount=too many Faces)";
+			if (this.Faces.Count < 0x2000 || UserVerification.HaveUserId)
+				return name
+					+ " (FaceCount="
+					+ (FaceCount).ToString()
+					+ ", VertexCount="
+					+ UsedVertexCount.ToString()
+					+ ")";
+			else
+				return name
+					+ " (FaceCount="
+					+ (FaceCount).ToString()
+					+ ", VertexCount=too many Faces)";
 		}
 
 		/// <summary>
@@ -236,10 +263,10 @@ namespace SimPe.Plugin.Gmdc
 		public SimPe.Geometry.Vectors4f GetVectors(ElementIdentity id)
 		{
 			SimPe.Geometry.Vectors4f ret = new SimPe.Geometry.Vectors4f();
-			if (this.Link!=null) 
+			if (this.Link != null)
 			{
 				GmdcElement e = this.Link.FindElementType(id);
-				if (e!=null) 
+				if (e != null)
 				{
 					int nr = this.Link.GetElementNr(e);
 
@@ -247,18 +274,38 @@ namespace SimPe.Plugin.Gmdc
 					{
 						GmdcElementValueBase vb = Link.GetValue(nr, i);
 						SimPe.Geometry.Vector4f v;
-						if (vb is GmdcElementValueOneInt) 
+						if (vb is GmdcElementValueOneInt)
 						{
 							GmdcElementValueOneInt oi = (GmdcElementValueOneInt)vb;
 							byte[] data = oi.Bytes;
-							if (data.Length==4) v = new SimPe.Geometry.Vector4f(data[0], data[1], data[2], data[3]);
-							else if (data.Length==3) v = new SimPe.Geometry.Vector4f(data[0], data[1], data[2]);
-							else if (data.Length==2) v = new SimPe.Geometry.Vector4f(data[0], data[1], 0);
-							else v = new SimPe.Geometry.Vector4f(data[0], 0, 0);
+							if (data.Length == 4)
+								v = new SimPe.Geometry.Vector4f(
+									data[0],
+									data[1],
+									data[2],
+									data[3]
+								);
+							else if (data.Length == 3)
+								v = new SimPe.Geometry.Vector4f(
+									data[0],
+									data[1],
+									data[2]
+								);
+							else if (data.Length == 2)
+								v = new SimPe.Geometry.Vector4f(data[0], data[1], 0);
+							else
+								v = new SimPe.Geometry.Vector4f(data[0], 0, 0);
 						}
-						else if (vb.Data.Length==3) v = new SimPe.Geometry.Vector4f(vb.Data[0], vb.Data[1], vb.Data[2]);
-						else if (vb.Data.Length==2) v = new SimPe.Geometry.Vector4f(vb.Data[0], vb.Data[1], 0);
-						else v = new SimPe.Geometry.Vector4f(vb.Data[0], 0, 0);
+						else if (vb.Data.Length == 3)
+							v = new SimPe.Geometry.Vector4f(
+								vb.Data[0],
+								vb.Data[1],
+								vb.Data[2]
+							);
+						else if (vb.Data.Length == 2)
+							v = new SimPe.Geometry.Vector4f(vb.Data[0], vb.Data[1], 0);
+						else
+							v = new SimPe.Geometry.Vector4f(vb.Data[0], 0, 0);
 
 						ret.Add(v);
 					}
@@ -305,10 +352,14 @@ namespace SimPe.Plugin.Gmdc
 
 			foreach (SimPe.Geometry.Vector4f v in ret)
 			{
-				if ((int)v.X!=0xff) v.X = this.UsedJoints[(byte)v.X];
-				if ((int)v.Y!=0xff) v.Y = this.UsedJoints[(byte)v.Y];
-				if ((int)v.Z!=0xff) v.Z = this.UsedJoints[(byte)v.Z];
-				if ((int)v.W!=0xff) v.W = this.UsedJoints[(byte)v.W];
+				if ((int)v.X != 0xff)
+					v.X = this.UsedJoints[(byte)v.X];
+				if ((int)v.Y != 0xff)
+					v.Y = this.UsedJoints[(byte)v.Y];
+				if ((int)v.Z != 0xff)
+					v.Z = this.UsedJoints[(byte)v.Z];
+				if ((int)v.W != 0xff)
+					v.W = this.UsedJoints[(byte)v.W];
 			}
 			return ret;
 		}
@@ -323,29 +374,31 @@ namespace SimPe.Plugin.Gmdc
 			SimPe.Geometry.Vector3i v = null;
 			for (int i = 0; i < Faces.Count; i++)
 			{
-				
-				if (i%3 == 0) 
+				if (i % 3 == 0)
 				{
-					v = new SimPe.Geometry.Vector3i();														
+					v = new SimPe.Geometry.Vector3i();
 					v.X = Faces[i];
-				}				
-				else if (i%3 == 2) 
+				}
+				else if (i % 3 == 2)
 				{
-					ret.Add(v);	
+					ret.Add(v);
 					v.Z = Faces[i];
 				}
 				else
 					v.Y = Faces[i];
 			}
-			
+
 			return ret;
 		}
 
-		public static SimPe.Geometry.Vectors3i GetUsingFaces(SimPe.Geometry.Vectors3i faces, int vertexid)
+		public static SimPe.Geometry.Vectors3i GetUsingFaces(
+			SimPe.Geometry.Vectors3i faces,
+			int vertexid
+		)
 		{
 			SimPe.Geometry.Vectors3i ret = new SimPe.Geometry.Vectors3i();
 			foreach (SimPe.Geometry.Vector3i v in faces)
-				if (v.X==vertexid || v.Y==vertexid || v.Z == vertexid)
+				if (v.X == vertexid || v.Y == vertexid || v.Z == vertexid)
 					ret.Add(v);
 
 			return ret;
@@ -356,7 +409,7 @@ namespace SimPe.Plugin.Gmdc
 	/// <summary>
 	/// Typesave ArrayList for GmdcGroup Objects
 	/// </summary>
-	public class GmdcGroups : ArrayList 
+	public class GmdcGroups : ArrayList
 	{
 		/// <summary>
 		/// Integer Indexer
@@ -413,12 +466,12 @@ namespace SimPe.Plugin.Gmdc
 		public bool Contains(GmdcGroup item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -430,7 +483,8 @@ namespace SimPe.Plugin.Gmdc
 		public override object Clone()
 		{
 			GmdcGroups list = new GmdcGroups();
-			foreach (GmdcGroup item in this) list.Add(item);
+			foreach (GmdcGroup item in this)
+				list.Add(item);
 
 			return list;
 		}

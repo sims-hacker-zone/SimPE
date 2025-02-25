@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SimPe.Plugin.TabPage
@@ -28,7 +28,8 @@ namespace SimPe.Plugin.TabPage
 	/// <summary>
 	/// Summary description for ShpeForm.
 	/// </summary>
-	public class ShpeParts : 
+	public class ShpeParts
+		:
 		//System.Windows.Forms.UserControl
 		System.Windows.Forms.TabPage
 	{
@@ -41,6 +42,7 @@ namespace SimPe.Plugin.TabPage
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.LinkLabel linkLabel7;
 		private System.Windows.Forms.LinkLabel linkLabel8;
+
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -49,41 +51,43 @@ namespace SimPe.Plugin.TabPage
 		public ShpeParts()
 		{
 			SetStyle(
-				ControlStyles.SupportsTransparentBackColor |
-				ControlStyles.AllPaintingInWmPaint |
-				//ControlStyles.Opaque |
-				ControlStyles.UserPaint |
-				ControlStyles.ResizeRedraw 
-				| ControlStyles.DoubleBuffer
-				,true);
+				ControlStyles.SupportsTransparentBackColor
+					| ControlStyles.AllPaintingInWmPaint
+					|
+					//ControlStyles.Opaque |
+					ControlStyles.UserPaint
+					| ControlStyles.ResizeRedraw
+					| ControlStyles.DoubleBuffer,
+				true
+			);
 
 			//
 			// Required designer variable.
 			//
-            InitializeComponent();
+			InitializeComponent();
 
-            this.UseVisualStyleBackColor = true;
+			this.UseVisualStyleBackColor = true;
 		}
 
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
 				Tag = null;
-				if(components != null)
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
 
 		#region Windows Form Designer generated code
 		/// <summary>
-		/// Required method for Designer support - do not modify 
+		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
@@ -98,9 +102,9 @@ namespace SimPe.Plugin.TabPage
 			this.label5 = new System.Windows.Forms.Label();
 			this.lbpart = new System.Windows.Forms.ListBox();
 			this.SuspendLayout();
-			// 
+			//
 			// tabPage3
-			// 
+			//
 			this.Controls.Add(this.linkLabel7);
 			this.Controls.Add(this.linkLabel8);
 			this.Controls.Add(this.tbpartdata);
@@ -115,127 +119,236 @@ namespace SimPe.Plugin.TabPage
 			this.Size = new System.Drawing.Size(536, 254);
 			this.TabIndex = 2;
 			this.Text = "Parts";
-			// 
+			//
 			// linkLabel7
-			// 
-			this.linkLabel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.linkLabel7.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Top
+						| System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.linkLabel7.AutoSize = true;
-			this.linkLabel7.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.linkLabel7.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.linkLabel7.Location = new System.Drawing.Point(484, 120);
 			this.linkLabel7.Name = "linkLabel7";
 			this.linkLabel7.Size = new System.Drawing.Size(44, 17);
 			this.linkLabel7.TabIndex = 21;
 			this.linkLabel7.TabStop = true;
 			this.linkLabel7.Text = "delete";
-			this.linkLabel7.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel7_LinkClicked);
-			// 
+			this.linkLabel7.LinkClicked +=
+				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+					this.linkLabel7_LinkClicked
+				);
+			//
 			// linkLabel8
-			// 
-			this.linkLabel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.linkLabel8.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Top
+						| System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.linkLabel8.AutoSize = true;
-			this.linkLabel8.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.linkLabel8.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.linkLabel8.Location = new System.Drawing.Point(456, 120);
 			this.linkLabel8.Name = "linkLabel8";
 			this.linkLabel8.Size = new System.Drawing.Size(28, 17);
 			this.linkLabel8.TabIndex = 20;
 			this.linkLabel8.TabStop = true;
 			this.linkLabel8.Text = "add";
-			this.linkLabel8.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel8_LinkClicked);
-			// 
+			this.linkLabel8.LinkClicked +=
+				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+					this.linkLabel8_LinkClicked
+				);
+			//
 			// tbpartdata
-			// 
-			this.tbpartdata.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.tbpartdata.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			//
+			this.tbpartdata.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							System.Windows.Forms.AnchorStyles.Top
+							| System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
+			this.tbpartdata.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.tbpartdata.Location = new System.Drawing.Point(16, 224);
 			this.tbpartdata.Name = "tbpartdata";
 			this.tbpartdata.Size = new System.Drawing.Size(512, 21);
 			this.tbpartdata.TabIndex = 18;
 			this.tbpartdata.Text = "";
 			this.tbpartdata.TextChanged += new System.EventHandler(this.ChangedPart);
-			// 
+			//
 			// label7
-			// 
+			//
 			this.label7.AutoSize = true;
-			this.label7.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label7.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.label7.Location = new System.Drawing.Point(8, 208);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(38, 17);
 			this.label7.TabIndex = 19;
 			this.label7.Text = "Data:";
-			// 
+			//
 			// tbpartdsc
-			// 
-			this.tbpartdsc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.tbpartdsc.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			//
+			this.tbpartdsc.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							System.Windows.Forms.AnchorStyles.Top
+							| System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
+			this.tbpartdsc.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.tbpartdsc.Location = new System.Drawing.Point(16, 184);
 			this.tbpartdsc.Name = "tbpartdsc";
 			this.tbpartdsc.Size = new System.Drawing.Size(512, 21);
 			this.tbpartdsc.TabIndex = 16;
 			this.tbpartdsc.Text = "";
 			this.tbpartdsc.TextChanged += new System.EventHandler(this.ChangedPart);
-			// 
+			//
 			// label6
-			// 
+			//
 			this.label6.AutoSize = true;
-			this.label6.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label6.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.label6.Location = new System.Drawing.Point(8, 168);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(153, 17);
 			this.label6.TabIndex = 17;
 			this.label6.Text = "Material Definition File:";
-			// 
+			//
 			// tbparttype
-			// 
-			this.tbparttype.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.tbparttype.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			//
+			this.tbparttype.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							System.Windows.Forms.AnchorStyles.Top
+							| System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
+			this.tbparttype.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.tbparttype.Location = new System.Drawing.Point(16, 144);
 			this.tbparttype.Name = "tbparttype";
 			this.tbparttype.Size = new System.Drawing.Size(512, 21);
 			this.tbparttype.TabIndex = 14;
 			this.tbparttype.Text = "";
 			this.tbparttype.TextChanged += new System.EventHandler(this.ChangedPart);
-			// 
+			//
 			// label5
-			// 
+			//
 			this.label5.AutoSize = true;
-			this.label5.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label5.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.label5.Location = new System.Drawing.Point(8, 128);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(93, 17);
 			this.label5.TabIndex = 15;
 			this.label5.Text = "Subset Name:";
-			// 
+			//
 			// lbpart
-			// 
-			this.lbpart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.lbpart.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			//
+			this.lbpart.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							System.Windows.Forms.AnchorStyles.Top
+							| System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
+			this.lbpart.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.lbpart.HorizontalScrollbar = true;
 			this.lbpart.IntegralHeight = false;
 			this.lbpart.Location = new System.Drawing.Point(8, 8);
 			this.lbpart.Name = "lbpart";
 			this.lbpart.Size = new System.Drawing.Size(520, 112);
 			this.lbpart.TabIndex = 13;
-			this.lbpart.SelectedIndexChanged += new System.EventHandler(this.SelectPart);
-			// 
+			this.lbpart.SelectedIndexChanged += new System.EventHandler(
+				this.SelectPart
+			);
+			//
 			// ShpeParts
-			// 
+			//
 			this.ResumeLayout(false);
-
 		}
 		#endregion
 
-		//internal Shpe wrapper;		
+		//internal Shpe wrapper;
 
 		private void SelectPart(object sender, System.EventArgs e)
 		{
-			if (lbpart.Tag!=null) return;
-			if (lbpart.SelectedIndex<0) return;
+			if (lbpart.Tag != null)
+				return;
+			if (lbpart.SelectedIndex < 0)
+				return;
 
-			try 
+			try
 			{
 				lbpart.Tag = true;
 				ShapePart item = (ShapePart)lbpart.Items[lbpart.SelectedIndex];
@@ -243,11 +356,12 @@ namespace SimPe.Plugin.TabPage
 				tbpartdsc.Text = item.FileName;
 
 				string s = "";
-				foreach (byte b in item.Data) s += Helper.HexString(b)+" ";
+				foreach (byte b in item.Data)
+					s += Helper.HexString(b) + " ";
 				tbpartdata.Text = s;
-			} 
-			catch (Exception){}
-			finally 
+			}
+			catch (Exception) { }
+			finally
 			{
 				lbpart.Tag = null;
 			}
@@ -255,25 +369,28 @@ namespace SimPe.Plugin.TabPage
 
 		private void ChangedPart(object sender, System.EventArgs e)
 		{
-			if (lbpart.Tag!=null) return;
-			if (lbpart.SelectedIndex<0) return;
+			if (lbpart.Tag != null)
+				return;
+			if (lbpart.SelectedIndex < 0)
+				return;
 
-			try 
+			try
 			{
 				lbpart.Tag = true;
 				ShapePart item = (ShapePart)lbpart.Items[lbpart.SelectedIndex];
 				item.Subset = tbparttype.Text;
 				item.FileName = tbpartdsc.Text;
-				
+
 				string[] tokens = tbpartdata.Text.Trim().Split(" ".ToCharArray());
 				byte[] data = new byte[tokens.Length];
-				for (int i=0; i<data.Length; i++) data[i] = Convert.ToByte(tokens[i]);
+				for (int i = 0; i < data.Length; i++)
+					data[i] = Convert.ToByte(tokens[i]);
 				item.Data = data;
 
 				lbpart.Items[lbpart.SelectedIndex] = item;
-			} 
-			catch (Exception){}
-			finally 
+			}
+			catch (Exception) { }
+			finally
 			{
 				lbpart.Tag = null;
 			}
@@ -281,22 +398,24 @@ namespace SimPe.Plugin.TabPage
 
 		private void UpdateLists()
 		{
-			try 
+			try
 			{
-				SimPe.Plugin.Shape shape = (SimPe.Plugin.Shape)this.Tag;				
+				SimPe.Plugin.Shape shape = (SimPe.Plugin.Shape)this.Tag;
 
 				ShapePart[] parts = new ShapePart[lbpart.Items.Count];
-				for (int i=0; i<parts.Length; i++) parts[i] = (ShapePart)lbpart.Items[i];
-				shape.Parts = parts;				
-			} 
-			catch (Exception){}
+				for (int i = 0; i < parts.Length; i++)
+					parts[i] = (ShapePart)lbpart.Items[i];
+				shape.Parts = parts;
+			}
+			catch (Exception) { }
 		}
 
-		
-
-		private void linkLabel8_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		private void linkLabel8_LinkClicked(
+			object sender,
+			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		)
 		{
-			try 
+			try
 			{
 				//Shpe wrp = (Shpe)wrapper;
 				SimPe.Plugin.Shape shape = (SimPe.Plugin.Shape)this.Tag;
@@ -309,14 +428,18 @@ namespace SimPe.Plugin.TabPage
 				lbpart.Items.Add(val);
 				UpdateLists();
 			}
-			catch (Exception) {}
+			catch (Exception) { }
 		}
 
-		private void linkLabel7_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		private void linkLabel7_LinkClicked(
+			object sender,
+			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		)
 		{
-			if (lbpart.SelectedIndex < 0) return;
+			if (lbpart.SelectedIndex < 0)
+				return;
 			lbpart.Items.RemoveAt(lbpart.SelectedIndex);
 			UpdateLists();
-		}		
+		}
 	}
 }

@@ -20,66 +20,72 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Resources;
 using System.Globalization;
+using System.Resources;
 using System.Threading;
 
 namespace pjse
 {
-    /// <summary>
-    /// Supports the Localization
-    /// </summary>
-    public class Localization
-    {
-        /// <summary>
-        /// The ResourceManager singleton object
-        /// </summary>
-        private static ResourceManager resource = null;
+	/// <summary>
+	/// Supports the Localization
+	/// </summary>
+	public class Localization
+	{
+		/// <summary>
+		/// The ResourceManager singleton object
+		/// </summary>
+		private static ResourceManager resource = null;
 
-        /// <summary>
-        /// Initializes the ResourceManager
-        /// </summary>
-        private static void Initialize() { resource = new ResourceManager(typeof(pjse.Localization)); }
+		/// <summary>
+		/// Initializes the ResourceManager
+		/// </summary>
+		private static void Initialize()
+		{
+			resource = new ResourceManager(typeof(pjse.Localization));
+		}
 
-        /// <summary>
-        /// Returns the current Resource Manager
-        /// </summary>
-        private static ResourceManager Manager
-        {
-            get
-            {
-                if (resource == null) Initialize();
-                return resource;
-            }
-        }
+		/// <summary>
+		/// Returns the current Resource Manager
+		/// </summary>
+		private static ResourceManager Manager
+		{
+			get
+			{
+				if (resource == null)
+					Initialize();
+				return resource;
+			}
+		}
 
-        /// <summary>
-        /// Returns a translated String
-        /// </summary>
-        /// <param name="name">string to translate</param>
-        /// <returns>translated string</returns>
-        /// <remarks>If there is no Translation, the passsed string will be returned</remarks>
-        public static string GetString(string name)
-        {
-            string res = pjse.Localization.Manager.GetString(name);
-            if (res == null) res = name;
-            return res;
-        }
+		/// <summary>
+		/// Returns a translated String
+		/// </summary>
+		/// <param name="name">string to translate</param>
+		/// <returns>translated string</returns>
+		/// <remarks>If there is no Translation, the passsed string will be returned</remarks>
+		public static string GetString(string name)
+		{
+			string res = pjse.Localization.Manager.GetString(name);
+			if (res == null)
+				res = name;
+			return res;
+		}
 
-        /// <summary>
-        /// Returns a translated String with parameter substitution
-        /// </summary>
-        /// <param name="name">string to translate</param>
-        /// <returns>translated string</returns>
-        /// <remarks>If there is no Translation, the passsed string will be returned</remarks>
-        public static string GetString(string name, params object[] args)
-        {
-            string res = pjse.Localization.Manager.GetString(name);
-            if (res == null) res = name;
-            for (int i = 0; i < args.Length; i++)
-                res = res.Replace("{" + i.ToString() + "}", args[i].ToString());
+		/// <summary>
+		/// Returns a translated String with parameter substitution
+		/// </summary>
+		/// <param name="name">string to translate</param>
+		/// <returns>translated string</returns>
+		/// <remarks>If there is no Translation, the passsed string will be returned</remarks>
+		public static string GetString(string name, params object[] args)
+		{
+			string res = pjse.Localization.Manager.GetString(name);
+			if (res == null)
+				res = name;
+			for (int i = 0; i < args.Length; i++)
+				res = res.Replace("{" + i.ToString() + "}", args[i].ToString());
 
-            return res;
-        }
-    }
+			return res;
+		}
+	}
 }

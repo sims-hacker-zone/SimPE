@@ -18,10 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Interfaces.Plugin;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 using SimPe.Cache;
+using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
 {
@@ -29,17 +29,15 @@ namespace SimPe.Plugin
 	/// This class is used to fill the UI for this FileType with Data
 	/// </summary>
 	public class NgbhUI : IPackedFileUI
-	{		
+	{
 		/// <summary>
 		/// Returns the MemoryObject Cache
 		/// </summary>
 		internal static MemoryCacheFile ObjectCache
 		{
-			get 
-			{
-				return SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache;
-			}
+			get { return SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache; }
 		}
+
 		#region Code to Startup the UI
 
 		/// <summary>
@@ -52,20 +50,23 @@ namespace SimPe.Plugin
 		/// </summary>
 		public NgbhUI()
 		{
-			
-
 			//form = WrapperFactory.form;
-			if (form==null) 
+			if (form == null)
 			{
 				form = new NgbhForm();
 				form.cbguid.Items.Clear();
 				form.cbguid.Sorted = false;
 
-				form.cbguid.Items.Add(new Data.Alias(0, "-: "+Localization.Manager.GetString("Unknown"), "{name}"));
-							
+				form.cbguid.Items.Add(
+					new Data.Alias(
+						0,
+						"-: " + Localization.Manager.GetString("Unknown"),
+						"{name}"
+					)
+				);
 
 				Wait.Message = ("Load Memories from Cache");
-				foreach (MemoryCacheItem mci in ObjectCache.List) 
+				foreach (MemoryCacheItem mci in ObjectCache.List)
 				{
 					Data.Alias a = new SimPe.Data.Alias(mci.Guid, mci.Name);
 					object[] o = new object[3];
@@ -75,18 +76,18 @@ namespace SimPe.Plugin
 
 					a.Tag = o;
 
-					if (mci.ObjectType == Data.ObjectTypes.Memory) 
+					if (mci.ObjectType == Data.ObjectTypes.Memory)
 					{
 						form.cbguid.Items.Add(a);
 					}
-					else if (mci.ObjectType == Data.ObjectTypes.Normal) 
+					else if (mci.ObjectType == Data.ObjectTypes.Normal)
 					{
-						if (mci.ObjdName.ToLower().IndexOf("token")!=-1) 
-							form.cbguid.Items.Add(a);						
-					} 					
+						if (mci.ObjdName.ToLower().IndexOf("token") != -1)
+							form.cbguid.Items.Add(a);
+					}
 				}
 				form.cbguid.Sorted = true;
-			}			
+			}
 		}
 		#endregion
 
@@ -97,10 +98,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public System.Windows.Forms.Control GUIHandle
 		{
-			get
-			{
-				return form.ngbhPanel;
-			}
+			get { return form.ngbhPanel; }
 		}
 
 		/// <summary>
@@ -113,7 +111,7 @@ namespace SimPe.Plugin
 		{
 			form.wrapper = (IFileWrapperSaveExtension)wrapper;
 
-			Ngbh wrp = (Ngbh) wrapper;
+			Ngbh wrp = (Ngbh)wrapper;
 
 			form.lv.BeginUpdate();
 			form.lv.Items.Clear();
@@ -123,26 +121,31 @@ namespace SimPe.Plugin
 			form.gbmem.Enabled = false;
 			form.lbmem.Items.Clear();
 
-			Interfaces.Files.IPackedFileDescriptor[] pfds = wrp.Package.FindFiles(Data.MetaData.SIM_DESCRIPTION_FILE);
+			Interfaces.Files.IPackedFileDescriptor[] pfds = wrp.Package.FindFiles(
+				Data.MetaData.SIM_DESCRIPTION_FILE
+			);
 			form.cbsub.Items.Add(new Data.Alias(0, "---", "{name}"));
 			form.cbsub.Sorted = false;
 			form.cbown.Items.Add(new Data.Alias(0, "---", "{name}"));
 			form.cbown.Sorted = false;
-			foreach(Interfaces.Files.IPackedFileDescriptor spfd in pfds) 
+			foreach (Interfaces.Files.IPackedFileDescriptor spfd in pfds)
 			{
-				PackedFiles.Wrapper.SDesc sdesc = new SimPe.PackedFiles.Wrapper.SDesc(wrp.Provider.SimNameProvider, wrp.Provider.SimFamilynameProvider, null);
+				PackedFiles.Wrapper.SDesc sdesc = new SimPe.PackedFiles.Wrapper.SDesc(
+					wrp.Provider.SimNameProvider,
+					wrp.Provider.SimFamilynameProvider,
+					null
+				);
 
-                Wait.SubStart();
-				
-				
+				Wait.SubStart();
+
 				sdesc.ProcessData(spfd, wrp.Package);
-				
+
 				ListViewItem lvi = new ListViewItem();
 				lvi.Text = sdesc.SimName + " " + sdesc.SimFamilyName;
 
 #if DEBUG
 				Data.Alias a = new Data.Alias(sdesc.SimId, lvi.Text);
-				lvi.Text += " (0x"+Helper.HexString(sdesc.Instance)+")";
+				lvi.Text += " (0x" + Helper.HexString(sdesc.Instance) + ")";
 #else
 				Data.Alias a = new Data.Alias(sdesc.SimId, lvi.Text, "{name}");
 #endif
@@ -154,10 +157,9 @@ namespace SimPe.Plugin
 				form.cbsub.Items.Add(a);
 				form.cbown.Items.Add(a);
 
-
-				if (sdesc.HasImage) 
-				{				
-					/*if (sdesc.Unlinked!=0x00) 
+				if (sdesc.HasImage)
+				{
+					/*if (sdesc.Unlinked!=0x00)
 					{
 						Image img = (Image)sdesc.Image.Clone();
 						System.Drawing.Graphics g = Graphics.FromImage(img);
@@ -170,60 +172,74 @@ namespace SimPe.Plugin
 
 						form.ilist.Images.Add(img);
 					} */
-					if ((sdesc.Unlinked!=0x00) || (!sdesc.AvailableCharacterData))
+					if ((sdesc.Unlinked != 0x00) || (!sdesc.AvailableCharacterData))
 					{
 						Image img = (Image)sdesc.Image.Clone();
 						System.Drawing.Graphics g = Graphics.FromImage(img);
-						g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-						g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+						g.CompositingQuality = System
+							.Drawing
+							.Drawing2D
+							.CompositingQuality
+							.HighQuality;
+						g.CompositingMode = System
+							.Drawing
+							.Drawing2D
+							.CompositingMode
+							.SourceOver;
 
 						Pen pen = new Pen(Data.MetaData.SpecialSimColor, 3);
 
 						g.FillRectangle(pen.Brush, 0, 0, img.Width, img.Height);
 
 						int pos = 2;
-						if (sdesc.Unlinked!=0x00) 
+						if (sdesc.Unlinked != 0x00)
 						{
-							g.FillRectangle(new Pen(Data.MetaData.UnlinkedSim, 1).Brush, pos, 2, 25, 25);
+							g.FillRectangle(
+								new Pen(Data.MetaData.UnlinkedSim, 1).Brush,
+								pos,
+								2,
+								25,
+								25
+							);
 							pos += 28;
 						}
-						if (!sdesc.AvailableCharacterData) 
+						if (!sdesc.AvailableCharacterData)
 						{
-							g.FillRectangle(new Pen(Data.MetaData.InactiveSim, 1).Brush, pos, 2, 25, 25);
+							g.FillRectangle(
+								new Pen(Data.MetaData.InactiveSim, 1).Brush,
+								pos,
+								2,
+								25,
+								25
+							);
 							pos += 28;
 						}
 
 						form.ilist.Images.Add(img);
-					} 
-					else 
-					{
-						form.ilist.Images.Add( sdesc.Image);
 					}
-					
-					lvi.ImageIndex = form.ilist.Images.Count-1;
+					else
+					{
+						form.ilist.Images.Add(sdesc.Image);
+					}
+
+					lvi.ImageIndex = form.ilist.Images.Count - 1;
 				}
 
 				form.lv.Items.Add(lvi);
-
 			}
 			form.cbsub.Sorted = true;
 			form.cbown.Sorted = true;
 			form.lv.Sort();
 
-			
-
 			form.lv.EndUpdate();
 
-            Wait.SubStop();
-		}		
+			Wait.SubStop();
+		}
 
 		#endregion
-		
+
 		#region IDisposable Member
-		public virtual void Dispose()
-		{
-			
-		}
+		public virtual void Dispose() { }
 		#endregion
 	}
 }

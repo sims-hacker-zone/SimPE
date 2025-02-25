@@ -40,8 +40,11 @@ namespace Ambertation.Soap
 		protected static int ToInt(string str)
 		{
 			int val = 0;
-			try {val = int.Parse(str);}
-			catch{}
+			try
+			{
+				val = int.Parse(str);
+			}
+			catch { }
 			return val;
 		}
 
@@ -53,8 +56,11 @@ namespace Ambertation.Soap
 		protected static double ToDouble(string str)
 		{
 			double val = 0;
-			try {val = double.Parse(str);}
-			catch{}
+			try
+			{
+				val = double.Parse(str);
+			}
+			catch { }
 			return val;
 		}
 
@@ -67,7 +73,7 @@ namespace Ambertation.Soap
 		/// <param name="data">Data enthält das Hashtableelement das initialisiert werden soll</param>
 		/// <returns>Ein neuer Hashtable welcher das Array darstellt</returns>
 		/// <remarks>
-		///		Ein serialisiertes Array hat z.B. die Form 
+		///		Ein serialisiertes Array hat z.B. die Form
 		///		<code>
 		///			a:4:{s:4:"code";s:6:"700666";i:1;s:10:"16.09.1978";i:2;b:0;s:4:"test";s:23:"Das ist: {} "ein" test;";}
 		///		</code>
@@ -76,9 +82,10 @@ namespace Ambertation.Soap
 		{
 			str = str.Substring(index);
 			string[] tokens = str.Split(":".ToCharArray(), 3);
-			if (tokens.Length<3) throw new Exception("Ungültiger Array Token");
+			if (tokens.Length < 3)
+				throw new Exception("Ungültiger Array Token");
 			int len = ToInt(tokens[1]);
-			
+
 			index += 3; //2x':', 1x'{'
 			index += tokens[0].Length;
 			index += tokens[1].Length;
@@ -91,49 +98,57 @@ namespace Ambertation.Soap
 			int itemcount = 0;
 
 			//go throug the string character wise
-			while ((index < str.Length) && (itemcount<len))
+			while ((index < str.Length) && (itemcount < len))
 			{
 				int oldindex = index;
 				char curToken = str[index];
 
-				if (curToken=='}') break;
+				if (curToken == '}')
+					break;
 				sth = (SerializedTokenHandler)sths[curToken];
-				
-				if (sth!=null) 
+
+				if (sth != null)
 				{
 					key = sth(str, ref index);
-					if (key!=null) 
+					if (key != null)
 					{
 						index++; //1x';'
 						curToken = str[index];
-						
+
 						sth = (SerializedTokenHandler)sths[curToken];
-						if (sth!=null) 
+						if (sth != null)
 						{
 							ret[key] = sth(str, ref index);
 							itemcount++;
-						} 
-						else 
-						{
-							throw new Exception("Der Werttoken '"+curToken+"' ist nicht bekannt!");
 						}
-					} 
-					else 
+						else
+						{
+							throw new Exception(
+								"Der Werttoken '" + curToken + "' ist nicht bekannt!"
+							);
+						}
+					}
+					else
 					{
 						throw new Exception("Der Schlüssel darf nicht null sein!");
 					}
-				} 
-				else 
+				}
+				else
 				{
-					throw new Exception("Der Schlüsseltoken '"+curToken+"' ist nicht bekannt!");
+					throw new Exception(
+						"Der Schlüsseltoken '" + curToken + "' ist nicht bekannt!"
+					);
 				}
 
 				index++; //1x';'
 			}
 
 			index++; //1x'}';
-			if (itemcount!=len) throw new Exception("Das Array konnte nicht korrekt verarbeitet werden. Die Anzahl der Elemente ist zu klein!");
-			
+			if (itemcount != len)
+				throw new Exception(
+					"Das Array konnte nicht korrekt verarbeitet werden. Die Anzahl der Elemente ist zu klein!"
+				);
+
 			return ret;
 		}
 
@@ -145,7 +160,7 @@ namespace Ambertation.Soap
 		/// <param name="data">Data enthält das Hashtableelement das initialisiert werden soll</param>
 		/// <returns>Ein neuer Hashtable welcher die Attribute des Objektes darstellt</returns>
 		/// <remarks>
-		///		Ein serialisiertes Objekt hat z.B. die Form 
+		///		Ein serialisiertes Objekt hat z.B. die Form
 		///		<code>
 		///			O:7:"Updater":2:{s:5:"tests";N;s:4:"else";N;}
 		///		</code>
@@ -154,7 +169,8 @@ namespace Ambertation.Soap
 		{
 			string sstr = str.Substring(index);
 			string[] tokens = sstr.Split(":".ToCharArray(), 5);
-			if (tokens.Length<5) throw new Exception("Ungültiger Objekt Token");
+			if (tokens.Length < 5)
+				throw new Exception("Ungültiger Objekt Token");
 			int namelen = ToInt(tokens[1]);
 			int len = ToInt(tokens[3]);
 
@@ -171,51 +187,57 @@ namespace Ambertation.Soap
 			object key = null;
 			int itemcount = 0;
 
-
-
 			//go throug the string character wise
-			while ((index < str.Length) && (itemcount<len))
+			while ((index < str.Length) && (itemcount < len))
 			{
 				int oldindex = index;
 				char curToken = str[index];
 
-				if (curToken=='}') break;
+				if (curToken == '}')
+					break;
 				sth = (SerializedTokenHandler)sths[curToken];
-				
-				if (sth!=null) 
+
+				if (sth != null)
 				{
 					key = sth(str, ref index);
-					if (key!=null) 
+					if (key != null)
 					{
 						index++; //1x';'
 						curToken = str[index];
 						sth = (SerializedTokenHandler)sths[curToken];
-						if (sth!=null) 
+						if (sth != null)
 						{
 							ret.Add(key, sth(str, ref index));
 							itemcount++;
-						} 
-						else 
-						{
-							throw new Exception("Der Werttoken '"+curToken+"' ist nicht bekannt!");
 						}
-					} 
-					else 
+						else
+						{
+							throw new Exception(
+								"Der Werttoken '" + curToken + "' ist nicht bekannt!"
+							);
+						}
+					}
+					else
 					{
 						throw new Exception("Der Schlüssel darf nicht null sein!");
 					}
-				} 
-				else 
+				}
+				else
 				{
-					throw new Exception("Der Schlüsseltoken '"+curToken+"' ist nicht bekannt!");
+					throw new Exception(
+						"Der Schlüsseltoken '" + curToken + "' ist nicht bekannt!"
+					);
 				}
 
 				index++; //1x';'
 			}
 
 			index++; //1x'}';
-			if (itemcount!=len) throw new Exception("Das Objekt konnte nicht korrekt verarbeitet werden. Die Anzahl der Elemente ist zu klein!");
-			
+			if (itemcount != len)
+				throw new Exception(
+					"Das Objekt konnte nicht korrekt verarbeitet werden. Die Anzahl der Elemente ist zu klein!"
+				);
+
 			return ret;
 		}
 
@@ -226,7 +248,7 @@ namespace Ambertation.Soap
 		/// <param name="index">Der aktuelle Index der Zeichenkette</param>
 		/// <returns>Der Wert null</returns>
 		/// <remarks>
-		///		Ein serialisiertes NULL hat die Form 
+		///		Ein serialisiertes NULL hat die Form
 		///		<code>
 		///			N
 		///		</code>
@@ -234,9 +256,9 @@ namespace Ambertation.Soap
 		protected static object NullHandler(string str, ref int index)
 		{
 			string[] tokens = str.Split(":".ToCharArray(), 2);
-			if (str[index]!='N') throw new Exception("Ungültiges NULL Token");
-			
-						
+			if (str[index] != 'N')
+				throw new Exception("Ungültiges NULL Token");
+
 			index += 1; //1x':'
 			return null;
 		}
@@ -249,7 +271,7 @@ namespace Ambertation.Soap
 		/// <param name="data">wird ignoriert</param>
 		/// <returns>eine neue Zeichenkette</returns>
 		/// <remarks>
-		///		Ein serialisierter String hat z.B. die Form 
+		///		Ein serialisierter String hat z.B. die Form
 		///		<code>
 		///			s:23:"Das ist: {} "ein" test;"
 		///		</code>
@@ -258,15 +280,14 @@ namespace Ambertation.Soap
 		{
 			str = str.Substring(index);
 			string[] tokens = str.Split(":".ToCharArray(), 3);
-			if (tokens.Length<3) throw new Exception("Ungültiger String Token");
+			if (tokens.Length < 3)
+				throw new Exception("Ungültiger String Token");
 			int len = ToInt(tokens[1]);
-			
+
 			index += 4; //2x':', 2x'"'
 			index += tokens[0].Length;
 			index += tokens[1].Length;
 			index += len;
-
-			
 
 			return tokens[2].Substring(1, len);
 		}
@@ -279,7 +300,7 @@ namespace Ambertation.Soap
 		/// <param name="data">wird ignoriert</param>
 		/// <returns>eine int Wert</returns>
 		/// <remarks>
-		///		Ein serialisierter Integer hat z.B. die Form 
+		///		Ein serialisierter Integer hat z.B. die Form
 		///		<code>
 		///			i:2
 		///		</code>
@@ -288,9 +309,10 @@ namespace Ambertation.Soap
 		{
 			str = str.Substring(index);
 			string[] tokens = str.Split(":".ToCharArray(), 2);
-			if (tokens.Length<2) throw new Exception("Ungültiger Integer Token");
+			if (tokens.Length < 2)
+				throw new Exception("Ungültiger Integer Token");
 			tokens[1] = tokens[1].Split(";".ToCharArray(), 2)[0];
-						
+
 			index += 1; //1x':'
 			index += tokens[0].Length;
 			index += tokens[1].Length;
@@ -305,7 +327,7 @@ namespace Ambertation.Soap
 		/// <param name="data">wird ignoriert</param>
 		/// <returns>eine double Wert</returns>
 		/// <remarks>
-		///		Ein serialisierter Float hat z.B. die Form 
+		///		Ein serialisierter Float hat z.B. die Form
 		///		<code>
 		///			d:0.34000000000000003552713678800500929355621337890625
 		///		</code>
@@ -314,9 +336,10 @@ namespace Ambertation.Soap
 		{
 			str = str.Substring(index);
 			string[] tokens = str.Split(":".ToCharArray(), 2);
-			if (tokens.Length<2) throw new Exception("Ungültiger Integer Token");
+			if (tokens.Length < 2)
+				throw new Exception("Ungültiger Integer Token");
 			tokens[1] = tokens[1].Split(";".ToCharArray(), 2)[0];
-						
+
 			index += 1; //1x':'
 			index += tokens[0].Length;
 			index += tokens[1].Length;
@@ -331,7 +354,7 @@ namespace Ambertation.Soap
 		/// <param name="data">wird ignoriert</param>
 		/// <returns>eine bool Wert</returns>
 		/// <remarks>
-		///		Ein serialisierter Boolean hat z.B. die Form 
+		///		Ein serialisierter Boolean hat z.B. die Form
 		///		<code>
 		///			b:0
 		///		</code>
@@ -340,13 +363,14 @@ namespace Ambertation.Soap
 		{
 			str = str.Substring(index);
 			string[] tokens = str.Split(":".ToCharArray(), 2);
-			if (tokens.Length<2) throw new Exception("Ungültiger Boolean Token");
+			if (tokens.Length < 2)
+				throw new Exception("Ungültiger Boolean Token");
 			tokens[1] = tokens[1].Split(";".ToCharArray(), 2)[0];
-						
+
 			index += 1; //1x':'
 			index += tokens[0].Length;
 			index += tokens[1].Length;
-			return (tokens[1]!="0");
+			return (tokens[1] != "0");
 		}
 		#endregion
 
@@ -369,7 +393,6 @@ namespace Ambertation.Soap
 			return sth;
 		}
 
-
 		/// <summary>
 		/// Creates a new Hastable from the Information stored in a Serialized Array String generated by php.
 		/// </summary>
@@ -382,22 +405,23 @@ namespace Ambertation.Soap
 			int index = 0;
 
 			//go throug the string character wise
-			while (index < str.Length) 
+			while (index < str.Length)
 			{
 				int oldindex = index;
 				char curToken = str[index];
 				sth = (SerializedTokenHandler)sths[curToken];
-				
-				if (sth!=null) 
+
+				if (sth != null)
 				{
-					object obj  = sth(str, ref index);
-					if (obj!=null) 
+					object obj = sth(str, ref index);
+					if (obj != null)
 					{
 						return (Hashtable)obj;
 					}
-				} 
+				}
 
-				if (index==oldindex) index++;
+				if (index == oldindex)
+					index++;
 			}
 
 			return null;
@@ -407,35 +431,37 @@ namespace Ambertation.Soap
 		static string Serialize(string s)
 		{
 			s = s.Replace("\"", "\\\"");
-			return "s:"+s.Length.ToString()+":\""+s+"\"";
+			return "s:" + s.Length.ToString() + ":\"" + s + "\"";
 		}
 
 		static string Serialize(char c)
 		{
-			return Serialize(""+c);
+			return Serialize("" + c);
 		}
 
 		static string Serialize(long i)
 		{
-			return "i:"+i.ToString();
+			return "i:" + i.ToString();
 		}
 
 		static string Serialize(bool b)
 		{
-			if (b) return "b:1";
-			else return "b:0";
+			if (b)
+				return "b:1";
+			else
+				return "b:0";
 		}
 
 		static string Serialize(double d)
 		{
-			return "d:"+d.ToString(System.Globalization.CultureInfo.InvariantCulture);
+			return "d:" + d.ToString(System.Globalization.CultureInfo.InvariantCulture);
 		}
 
 		static string Serialize(Hashtable ht)
 		{
-			string ret = "a:"+ht.Count.ToString()+":{";
-			foreach (string k in ht.Keys)			
-				ret += BuildItem(ht, k);					
+			string ret = "a:" + ht.Count.ToString() + ":{";
+			foreach (string k in ht.Keys)
+				ret += BuildItem(ht, k);
 
 			return ret + "}";
 		}
@@ -443,21 +469,33 @@ namespace Ambertation.Soap
 		static string BuildItem(Hashtable ht, string k)
 		{
 			object o = ht[k];
-			string ret = Serialize(k)+";"; 
-			if (o==null) ret += "N";
-			else 
+			string ret = Serialize(k) + ";";
+			if (o == null)
+				ret += "N";
+			else
 			{
-				if (o is string) ret += Serialize((string)o);
-				else if (o is int) ret += Serialize((int)o);
-				else if (o is uint) ret += Serialize((uint)o);
-				else if (o is short) ret += Serialize((short)o);
-				else if (o is ushort) ret += Serialize((ushort)o);
-				else if (o is byte) ret += Serialize((byte)o);
-				else if (o is Hashtable) ret += Serialize((Hashtable)o);
-				else if (o is bool) ret += Serialize((bool)o);
-				else if (o is double) ret += Serialize((double)o);
-				else if (o is float) ret += Serialize((float)o);
-				else if (o is char) ret += Serialize((char)o);
+				if (o is string)
+					ret += Serialize((string)o);
+				else if (o is int)
+					ret += Serialize((int)o);
+				else if (o is uint)
+					ret += Serialize((uint)o);
+				else if (o is short)
+					ret += Serialize((short)o);
+				else if (o is ushort)
+					ret += Serialize((ushort)o);
+				else if (o is byte)
+					ret += Serialize((byte)o);
+				else if (o is Hashtable)
+					ret += Serialize((Hashtable)o);
+				else if (o is bool)
+					ret += Serialize((bool)o);
+				else if (o is double)
+					ret += Serialize((double)o);
+				else if (o is float)
+					ret += Serialize((float)o);
+				else if (o is char)
+					ret += Serialize((char)o);
 			}
 
 			return ret + ";";

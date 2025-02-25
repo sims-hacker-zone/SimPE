@@ -18,135 +18,149 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces;
-using SimPe.PackedFiles.Wrapper.Supporting;
-using SimPe.Data;
 using System.Collections;
 using System.Collections.Generic;
+using SimPe.Data;
+using SimPe.Interfaces;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper.SCOR;
+using SimPe.PackedFiles.Wrapper.Supporting;
 
 namespace SimPe.PackedFiles.Wrapper
 {
 	/// <summary>
 	/// An Item as stored in a Scor Resource
 	/// </summary>
-    public class ScorItem
-    {
-        #region GuiWrappers
-        static Dictionary<string, Type> guis;
-        static Dictionary<string, IScorItemToken> readers;
-        static IScorItemToken deftoken;
-        internal static Dictionary<string, Type> GuiElements
-        {
-            get
-            {
-                if (guis == null) LoadGuielements();
-                return guis;
-            }
-        }
+	public class ScorItem
+	{
+		#region GuiWrappers
+		static Dictionary<string, Type> guis;
+		static Dictionary<string, IScorItemToken> readers;
+		static IScorItemToken deftoken;
+		internal static Dictionary<string, Type> GuiElements
+		{
+			get
+			{
+				if (guis == null)
+					LoadGuielements();
+				return guis;
+			}
+		}
 
-        internal static Dictionary<string, IScorItemToken> Readers
-        {
-            get
-            {
-                if (guis == null) LoadGuielements();
-                return readers;
-            }
-        }
+		internal static Dictionary<string, IScorItemToken> Readers
+		{
+			get
+			{
+				if (guis == null)
+					LoadGuielements();
+				return readers;
+			}
+		}
 
-        internal static IScorItemToken DefaultTokenParser
-        {
-            get {
-                if (guis == null) LoadGuielements();
-                return deftoken;
-            }
-        }
+		internal static IScorItemToken DefaultTokenParser
+		{
+			get
+			{
+				if (guis == null)
+					LoadGuielements();
+				return deftoken;
+			}
+		}
 
-        static void LoadGuielements(){
-            guis = new Dictionary<string, Type>();
-            readers = new Dictionary<string, IScorItemToken>();
+		static void LoadGuielements()
+		{
+			guis = new Dictionary<string, Type>();
+			readers = new Dictionary<string, IScorItemToken>();
 
-            deftoken = new SCOR.ScorItemTokenDefault();
+			deftoken = new SCOR.ScorItemTokenDefault();
 
-            guis.Add("Learned Behaviors", typeof(SCOR.ScoreItemLearnedBehaviour));
-            guis.Add("Business Rewards", typeof(SCOR.ScoreItemBusinessRewards));
+			guis.Add("Learned Behaviors", typeof(SCOR.ScoreItemLearnedBehaviour));
+			guis.Add("Business Rewards", typeof(SCOR.ScoreItemBusinessRewards));
 
-            readers.Add("Business Rewards", new SCOR.ScorItemTokenBusinessRewards());
-        }
+			readers.Add("Business Rewards", new SCOR.ScorItemTokenBusinessRewards());
+		}
 
-        internal void LoadGuiElement(string name)            
-        {
-            gui = GetGuiElement(name, null);
-        }
+		internal void LoadGuiElement(string name)
+		{
+			gui = GetGuiElement(name, null);
+		}
 
-        protected  SCOR.AScorItem GetGuiElement(string name, byte[] data)
-        {
-            SCOR.AScorItem ret = null;
-            if (GuiElements.ContainsKey(name))
-            {
-                ret = System.Activator.CreateInstance(GuiElements[name], new object[] { this }) as SCOR.AScorItem;                
-            }
-            if (ret==null) ret = new SCOR.ScoreItemDefault(this);
-            if (data != null)
-            {
-                System.IO.BinaryReader br = new System.IO.BinaryReader(new System.IO.MemoryStream(data));
-                ret.SetData(name, br);
-                br.Close();
-            }
+		protected SCOR.AScorItem GetGuiElement(string name, byte[] data)
+		{
+			SCOR.AScorItem ret = null;
+			if (GuiElements.ContainsKey(name))
+			{
+				ret =
+					System.Activator.CreateInstance(
+						GuiElements[name],
+						new object[] { this }
+					) as SCOR.AScorItem;
+			}
+			if (ret == null)
+				ret = new SCOR.ScoreItemDefault(this);
+			if (data != null)
+			{
+				System.IO.BinaryReader br = new System.IO.BinaryReader(
+					new System.IO.MemoryStream(data)
+				);
+				ret.SetData(name, br);
+				br.Close();
+			}
 
-            return ret;
-        }
+			return ret;
+		}
 
-        internal SCOR.IScorItemToken GetTokenParser(string name)
-        {
-            if (Readers.ContainsKey(name)) return Readers[name];
-            return DefaultTokenParser;
-        }
-        #endregion
+		internal SCOR.IScorItemToken GetTokenParser(string name)
+		{
+			if (Readers.ContainsKey(name))
+				return Readers[name];
+			return DefaultTokenParser;
+		}
+		#endregion
 
-        SCOR.AScorItem gui;
-        public SCOR.AScorItem Gui
-        {
-            get {
-                if (gui == null) SetGui("", new byte[0]);
-                return gui; 
-            }
-        }
+		SCOR.AScorItem gui;
+		public SCOR.AScorItem Gui
+		{
+			get
+			{
+				if (gui == null)
+					SetGui("", new byte[0]);
+				return gui;
+			}
+		}
 
+		Scor parent;
+		public Scor Parent
+		{
+			get { return parent; }
+		}
 
-        Scor parent;
-        public Scor Parent
-        {
-            get { return parent; }
-        }
-		
-		
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public ScorItem(string name, Scor parent) : this(parent)
+		public ScorItem(string name, Scor parent)
+			: this(parent)
 		{
 			SetGui(name, new byte[0]);
 		}
 
-		internal ScorItem(Scor parent) 
+		internal ScorItem(Scor parent)
 		{
 			this.parent = parent;
-            SetGui("", new byte[0]);
+			SetGui("", new byte[0]);
 		}
 
-        ~ScorItem()
-        {
-            //if (gui != null) gui.Dispose();
-        }
+		~ScorItem()
+		{
+			//if (gui != null) gui.Dispose();
+		}
 
-        protected void SetGui(string name, byte[] data)
-        {
-            //if (gui != null) gui.Dispose();
-            gui = GetGuiElement(name, data);
-        }
-						
+		protected void SetGui(string name, byte[] data)
+		{
+			//if (gui != null) gui.Dispose();
+			gui = GetGuiElement(name, data);
+		}
+
 		/// <summary>
 		/// Unserializes a BinaryStream into the Attributes of this Instance
 		/// </summary>
@@ -155,80 +169,87 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			string name = StreamHelper.ReadString(reader);
 
-            SCOR.IScorItemToken tp = GetTokenParser(name);
+			SCOR.IScorItemToken tp = GetTokenParser(name);
 
-            lock (tp)
-            {
-                byte[] data = tp.UnserializeToken(this, reader);
+			lock (tp)
+			{
+				byte[] data = tp.UnserializeToken(this, reader);
 
-                if (tp.ActivatedGUI == null) SetGui(name, data);
-                else
-                {
-                    gui = tp.ActivatedGUI;
-                    gui.SetData(name, null);
-                }
-            }
+				if (tp.ActivatedGUI == null)
+					SetGui(name, data);
+				else
+				{
+					gui = tp.ActivatedGUI;
+					gui.SetData(name, null);
+				}
+			}
 		}
 
-        internal static byte[] UnserializeDefaultToken(System.IO.BinaryReader reader)
-        {
-            if (reader.BaseStream.Position > reader.BaseStream.Length - 1) return new byte[0];
-            System.Collections.ArrayList bytes = new ArrayList();
+		internal static byte[] UnserializeDefaultToken(System.IO.BinaryReader reader)
+		{
+			if (reader.BaseStream.Position > reader.BaseStream.Length - 1)
+				return new byte[0];
+			System.Collections.ArrayList bytes = new ArrayList();
 
-            byte test = reader.ReadByte();
-            byte last = test;
-            while (last != 0x00 || test != 0x04)
-            {
-                bytes.Add(test);
-                if (reader.BaseStream.Position > reader.BaseStream.Length - 1) break;
-                last = test;
-                test = reader.ReadByte();
-            }
+			byte test = reader.ReadByte();
+			byte last = test;
+			while (last != 0x00 || test != 0x04)
+			{
+				bytes.Add(test);
+				if (reader.BaseStream.Position > reader.BaseStream.Length - 1)
+					break;
+				last = test;
+				test = reader.ReadByte();
+			}
 
-            if (reader.BaseStream.Position <= reader.BaseStream.Length - 1)
-                if (bytes.Count > 0)
-                    bytes.RemoveAt(bytes.Count - 1);
+			if (reader.BaseStream.Position <= reader.BaseStream.Length - 1)
+				if (bytes.Count > 0)
+					bytes.RemoveAt(bytes.Count - 1);
 
-            byte[] data = new byte[bytes.Count];
-            bytes.CopyTo(data);
+			byte[] data = new byte[bytes.Count];
+			bytes.CopyTo(data);
 
-            return data;
-        }
+			return data;
+		}
 
 		/// <summary>
 		/// Serializes a the Attributes stored in this Instance to the BinaryStream
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
-		internal  void Serialize(System.IO.BinaryWriter writer, bool last)
+		internal void Serialize(System.IO.BinaryWriter writer, bool last)
 		{
-            Gui.Serialize(writer, last);
-            SerializeDefaultToken(writer, last);			
+			Gui.Serialize(writer, last);
+			SerializeDefaultToken(writer, last);
 		}
 
-        internal static void SerializeDefaultToken(System.IO.BinaryWriter writer, bool last)
-        {            
-            if (!last) writer.Write((ushort)0x0400);
-        }		
+		internal static void SerializeDefaultToken(
+			System.IO.BinaryWriter writer,
+			bool last
+		)
+		{
+			if (!last)
+				writer.Write((ushort)0x0400);
+		}
 
 		public override string ToString()
 		{
-            return Gui.TokenName;
+			return Gui.TokenName;
 		}
-
 	}
 
-	public class ScorItems : 
-        System.Collections.Generic.IEnumerable<ScorItem>
-        , System.IDisposable
+	public class ScorItems
+		: System.Collections.Generic.IEnumerable<ScorItem>,
+			System.IDisposable
 	{
 		System.Collections.Generic.List<ScorItem> list;
+
 		public ScorItems()
 		{
-            list = new List<ScorItem>();
+			list = new List<ScorItem>();
 		}
 
 		public void Add(ScorItem si)
@@ -248,7 +269,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public int Count
 		{
-			get {return list.Count;}
+			get { return list.Count; }
 		}
 
 		public bool Contains(ScorItem si)
@@ -258,28 +279,23 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected int FindIndex(string name)
 		{
-			for (int i=0; i< list.Count; i++)
-				if (this[i].Gui.Name==name) return i;
+			for (int i = 0; i < list.Count; i++)
+				if (this[i].Gui.Name == name)
+					return i;
 
 			return -1;
 		}
 
 		public ScorItem this[string name]
 		{
-			get { return list[FindIndex(name)] as ScorItem;}
-			set 
-			{
-				list[FindIndex(name)] = value;
-			}
+			get { return list[FindIndex(name)] as ScorItem; }
+			set { list[FindIndex(name)] = value; }
 		}
 
 		public ScorItem this[int index]
 		{
-			get { return list[index] as ScorItem;}
-			set 
-			{
-				list[index] = value;
-			}
+			get { return list[index] as ScorItem; }
+			set { list[index] = value; }
 		}
 
 		#region IEnumerable Member
@@ -301,19 +317,18 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#endregion
 
-        #region IEnumerable<ScorItem> Members
+		#region IEnumerable<ScorItem> Members
 
-        IEnumerator<ScorItem> IEnumerable<ScorItem>.GetEnumerator()
-        {
-            return list.GetEnumerator();
-        }
+		IEnumerator<ScorItem> IEnumerable<ScorItem>.GetEnumerator()
+		{
+			return list.GetEnumerator();
+		}
 
-        internal IEnumerator<ScorItem> GetScorItemEnumerator()
-        {
-            return list.GetEnumerator();
-        }
+		internal IEnumerator<ScorItem> GetScorItemEnumerator()
+		{
+			return list.GetEnumerator();
+		}
 
-        #endregion
-    }
-
+		#endregion
+	}
 }

@@ -27,7 +27,7 @@ namespace SimPe.Interfaces.Providers
 	/// Interface to obtain the SimFamilyNames Alias List from the Type Registry
 	/// </summary>
 	public interface IOpcodeProvider : ICommonPackage
-	{		
+	{
 		/// <summary>
 		/// Returns the the name of the Function
 		/// </summary>
@@ -38,10 +38,7 @@ namespace SimPe.Interfaces.Providers
 		// <summary>
 		/// Returns the List of known Primitivess
 		/// </summary>
-		ArrayList StoredPrimitives
-		{
-			get;
-		}
+		ArrayList StoredPrimitives { get; }
 
 		/// <summary>
 		/// Returns the the name of the Expression Operator
@@ -78,17 +75,16 @@ namespace SimPe.Interfaces.Providers
 		/// <summary>
 		/// Returns a list of all known memories
 		/// </summary>
-		Hashtable StoredMemories
-		{
-			get;
-		}
+		Hashtable StoredMemories { get; }
 
 		/// <summary>
 		/// returns null or a Matching global BHAV File
 		/// </summary>
 		/// <param name="opcode">the Opcode of the BHAV</param>
 		/// <returns>The Descriptor for the Bhav File in the BasePackage</returns>
-		SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem LoadGlobalBHAV(ushort opcode);
+		SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem LoadGlobalBHAV(
+			ushort opcode
+		);
 
 		/// <summary>
 		/// Returns the Bhav for a Semi Global Opcode
@@ -96,49 +92,40 @@ namespace SimPe.Interfaces.Providers
 		/// <param name="opcode">The Opcode</param>
 		/// <param name="group">The group of the SemiGlobal</param>
 		/// <returns>The Descriptor of the Bhaf File in the Base Packagee or null</returns>
-		SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem LoadSemiGlobalBHAV(ushort opcode, uint group);
+		SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem LoadSemiGlobalBHAV(
+			ushort opcode,
+			uint group
+		);
 
 		/// <summary>
 		/// Returns the the name of all Fileds in an Objd File
 		/// </summary>
 		/// <param name="type">The Objects type</param>
-		ArrayList OBJDDescription(ushort type);		
+		ArrayList OBJDDescription(ushort type);
 
 		/// <summary>
 		/// Returns a list of all known Objf Lines
 		/// </summary>
-		ArrayList StoredObjfLines
-		{
-			get;
-		}
+		ArrayList StoredObjfLines { get; }
 
 		/// <summary>
 		/// Returns the names Operatores in Expression Primitives
 		/// </summary>
-		ArrayList StoredExpressionOperators
-		{
-			get;
-		}
+		ArrayList StoredExpressionOperators { get; }
 
 		/// <summary>
 		/// Returns the names of the Data in an Expression Primitive
 		/// </summary>
-		ArrayList StoredDataNames
-		{
-			get;
-		}
+		ArrayList StoredDataNames { get; }
 
 		/// <summary>
 		/// Returns the List of known Motives
 		/// </summary>
-		ArrayList StoredMotives
-		{
-			get ;
-		}
+		ArrayList StoredMotives { get; }
 
 		/// <summary>
 		/// Call this to manually initialize the BasePacakhe
 		/// </summary>
-		void LoadPackage(); 
+		void LoadPackage();
 	}
 }

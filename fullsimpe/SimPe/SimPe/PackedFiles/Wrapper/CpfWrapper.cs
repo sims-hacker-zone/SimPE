@@ -28,34 +28,35 @@ namespace SimPe.PackedFiles.Wrapper
 	/// This is the actual FileWrapper
 	/// </summary>
 	/// <remarks>
-	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads 
+	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
 	public class Cpf
-		: AbstractWrapper				//Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-		, IFileWrapper					//This Interface is used when loading a File
-		, IFileWrapperSaveExtension		//This Interface (if available) will be used to store a File
-		, IMultiplePackedFileWrapper	//Allow Multiple Instances
+		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
+			,
+			IFileWrapper //This Interface is used when loading a File
+			,
+			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
+			,
+			IMultiplePackedFileWrapper //Allow Multiple Instances
 	{
 		#region Attributes
 		/// <summary>
 		/// Contains the Filename
 		/// </summary>
-		byte[] id;	
-	
+		byte[] id;
+
 		/// <summary>
 		/// Returns the Filename
 		/// </summary>
-		public byte[] Id 
+		public byte[] Id
 		{
 			get { return id; }
 		}
 
-		
-
 		/// <summary>
 		/// Contains all available Items
-		/// </summary>		
+		/// </summary>
 		private CpfItem[] items;
 
 		/// <summary>
@@ -63,7 +64,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public CpfItem[] Items
 		{
-			get { return items;	}			
+			get { return items; }
 			set { items = value; }
 		}
 		#endregion
@@ -71,8 +72,9 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public Cpf() : base()
-		{		
+		public Cpf()
+			: base()
+		{
 			id = this.FileSignature;
 			items = new CpfItem[0];
 		}
@@ -81,7 +83,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Add a new CPF Item
 		/// </summary>
 		/// <param name="item">The item you want to add</param>
-		public void AddItem(CpfItem item) 
+		public void AddItem(CpfItem item)
 		{
 			AddItem(item, true);
 		}
@@ -91,18 +93,19 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		/// <param name="item">The item you want to add</param>
 		/// <param name="duplicate">true if you want to add the item even if a similar one already exists</param>
-		public void AddItem(CpfItem item, bool duplicate) 
+		public void AddItem(CpfItem item, bool duplicate)
 		{
-			if (item!=null) 
+			if (item != null)
 			{
 				CpfItem ex = null;
-				if (!duplicate) ex = this.GetItem(item.Name);
-				if (ex!=null) 
+				if (!duplicate)
+					ex = this.GetItem(item.Name);
+				if (ex != null)
 				{
-					ex.Datatype = item.Datatype;					
+					ex.Datatype = item.Datatype;
 					ex.Value = item.Value;
-				} 
-				else 
+				}
+				else
 				{
 					items = (CpfItem[])Helper.Add(items, item);
 				}
@@ -114,10 +117,11 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		/// <param name="name"></param>
 		/// <returns>null or the Item</returns>
-		public CpfItem GetItem(string name) 
+		public CpfItem GetItem(string name)
 		{
 			foreach (CpfItem item in this.items)
-				if (item.Name == name) return item;
+				if (item.Name == name)
+					return item;
 
 			return null;
 		}
@@ -127,19 +131,22 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		/// <param name="name"></param>
 		/// <returns>the Item</returns>
-		public CpfItem GetSaveItem(string name) 
+		public CpfItem GetSaveItem(string name)
 		{
 			CpfItem res = GetItem(name);
-			if (res==null)	return new CpfItem();
-			else return res;
+			if (res == null)
+				return new CpfItem();
+			else
+				return res;
 		}
-		
+
 		#region IWrapper member
-		public override bool CheckVersion(uint version) 
+		public override bool CheckVersion(uint version)
 		{
-			if ( (version==0009) //0.00
-				|| (version==0010) //0.10
-				) 
+			if (
+				(version == 0009) //0.00
+				|| (version == 0010) //0.10
+			)
 			{
 				return true;
 			}
@@ -147,7 +154,7 @@ namespace SimPe.PackedFiles.Wrapper
 			return false;
 		}
 		#endregion
-		
+
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
@@ -165,16 +172,22 @@ namespace SimPe.PackedFiles.Wrapper
 				"Quaxi",
 				"This File is a structured Text File (like an .ini or .xml File), that contains Key Value Pairs.",
 				8,
-				System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.cpf.png"))				
-				);   
+				System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream("SimPe.img.cpf.png")
+				)
+			);
 		}
 
 		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
 		{
-			if (!this.Processed) ProcessData(FileDescriptor, Package);
+			if (!this.Processed)
+				ProcessData(FileDescriptor, Package);
 			CpfItem item = this.GetItem("name");
-			if (item == null) return base.GetResourceName (ta);
-			else return item.StringValue;
+			if (item == null)
+				return base.GetResourceName(ta);
+			else
+				return item.StringValue;
 		}
 
 #if DEBUG
@@ -182,22 +195,20 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				string s="";
+				string s = "";
 
-				s += this.GetSaveItem("name").StringValue+"; ";
-				s += this.GetSaveItem("age").StringValue+"; ";
-				s += this.GetSaveItem("gender").StringValue+"; ";
-				s += this.GetSaveItem("fitness").StringValue+"; ";
-				s += this.GetSaveItem("override0subset").StringValue+"; ";
-				s += this.GetSaveItem("category").StringValue+"; ";
-				s += this.GetSaveItem("outfit").StringValue+"; ";
-				s += this.GetSaveItem("flags").StringValue+"; ";
+				s += this.GetSaveItem("name").StringValue + "; ";
+				s += this.GetSaveItem("age").StringValue + "; ";
+				s += this.GetSaveItem("gender").StringValue + "; ";
+				s += this.GetSaveItem("fitness").StringValue + "; ";
+				s += this.GetSaveItem("override0subset").StringValue + "; ";
+				s += this.GetSaveItem("category").StringValue + "; ";
+				s += this.GetSaveItem("outfit").StringValue + "; ";
+				s += this.GetSaveItem("flags").StringValue + "; ";
 				return s;
 			}
 		}
 #endif
-
-
 
 		/// <summary>
 		/// Unserializes a BinaryStream into the Attributes of this Instance
@@ -217,70 +228,87 @@ namespace SimPe.PackedFiles.Wrapper
 			ArrayList list = new ArrayList();
 
 			//Process all Root Node Entries
-			for (int i=0; i<XMLData.Count; i++)
+			for (int i = 0; i < XMLData.Count; i++)
 			{
-				XmlNode node = XMLData.Item(i);																
-												
-				foreach (XmlNode subnode in node) 
+				XmlNode node = XMLData.Item(i);
+
+				foreach (XmlNode subnode in node)
 				{
 					CpfItem item = new CpfItem();
 
-					if (subnode.LocalName.Trim().ToLower() == "anyuint32") 
+					if (subnode.LocalName.Trim().ToLower() == "anyuint32")
 					{
 						item.Datatype = Data.MetaData.DataTypes.dtUInteger;
-						if (subnode.InnerText.IndexOf("-")!=-1)item.UIntegerValue = (uint)Convert.ToInt32(subnode.InnerText);
-						else if (subnode.InnerText.IndexOf("0x")==-1)item.UIntegerValue = Convert.ToUInt32(subnode.InnerText);
-						else item.UIntegerValue = Convert.ToUInt32(subnode.InnerText, 16);
-					} 
-					else if ((subnode.LocalName.Trim().ToLower() == "anyint32") || (subnode.LocalName.Trim().ToLower() == "anysint32"))
+						if (subnode.InnerText.IndexOf("-") != -1)
+							item.UIntegerValue = (uint)
+								Convert.ToInt32(subnode.InnerText);
+						else if (subnode.InnerText.IndexOf("0x") == -1)
+							item.UIntegerValue = Convert.ToUInt32(subnode.InnerText);
+						else
+							item.UIntegerValue = Convert.ToUInt32(
+								subnode.InnerText,
+								16
+							);
+					}
+					else if (
+						(subnode.LocalName.Trim().ToLower() == "anyint32")
+						|| (subnode.LocalName.Trim().ToLower() == "anysint32")
+					)
 					{
 						item.Datatype = Data.MetaData.DataTypes.dtInteger;
-						if (subnode.InnerText.IndexOf("0x")==-1)item.IntegerValue = Convert.ToInt32(subnode.InnerText);
-						else item.IntegerValue = Convert.ToInt32(subnode.InnerText, 16);
+						if (subnode.InnerText.IndexOf("0x") == -1)
+							item.IntegerValue = Convert.ToInt32(subnode.InnerText);
+						else
+							item.IntegerValue = Convert.ToInt32(subnode.InnerText, 16);
 					}
-					else if (subnode.LocalName.Trim().ToLower() == "anystring") 
+					else if (subnode.LocalName.Trim().ToLower() == "anystring")
 					{
 						item.Datatype = Data.MetaData.DataTypes.dtString;
 						item.StringValue = subnode.InnerText;
 					}
-					else if (subnode.LocalName.Trim().ToLower() == "anyfloat32") 
+					else if (subnode.LocalName.Trim().ToLower() == "anyfloat32")
 					{
 						item.Datatype = Data.MetaData.DataTypes.dtSingle;
-						item.SingleValue = Convert.ToSingle(subnode.InnerText, System.Globalization.CultureInfo.InvariantCulture);
+						item.SingleValue = Convert.ToSingle(
+							subnode.InnerText,
+							System.Globalization.CultureInfo.InvariantCulture
+						);
 					}
-					else if (subnode.LocalName.Trim().ToLower() == "anyboolean") 
+					else if (subnode.LocalName.Trim().ToLower() == "anyboolean")
 					{
 						item.Datatype = Data.MetaData.DataTypes.dtBoolean;
-						if (subnode.InnerText.Trim().ToLower()=="true") 
+						if (subnode.InnerText.Trim().ToLower() == "true")
 						{
 							item.BooleanValue = true;
-						} 
-						else if (subnode.InnerText.Trim().ToLower()=="false") 
+						}
+						else if (subnode.InnerText.Trim().ToLower() == "false")
 						{
 							item.BooleanValue = false;
-						} 
-						else 
-						{
-							item.BooleanValue = (Convert.ToInt32(subnode.InnerText)!=0);
 						}
-					} 
-					else if  (subnode.LocalName.Trim().ToLower() == "#comment") 
+						else
+						{
+							item.BooleanValue = (
+								Convert.ToInt32(subnode.InnerText) != 0
+							);
+						}
+					}
+					else if (subnode.LocalName.Trim().ToLower() == "#comment")
 					{
 						continue;
 					}
-					/*else 
+					/*else
 					{
 						item.Datatype = (Data.MetaData.DataTypes)Convert.ToUInt32(subnode.Attributes["type"].Value, 16);
 					}*/
 
-					try 
+					try
 					{
 						item.Name = subnode.Attributes["key"].Value;
-						list.Add(item);	
-					} 
-					catch {}
+						list.Add(item);
+					}
+					catch { }
 				}
-			}//for i
+			} //for i
 
 			items = new CpfItem[list.Count];
 			list.CopyTo(items);
@@ -293,16 +321,16 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			id = reader.ReadBytes(0x06);
-			if (id[0]!=SIGNATURE[0]) 
+			if (id[0] != SIGNATURE[0])
 			{
 				id = SIGNATURE;
 				this.UnserializeXml(reader);
-				
+
 				return;
 			}
 			items = new CpfItem[reader.ReadUInt32()];
 
-			for(int i=0; i<items.Length; i++)
+			for (int i = 0; i < items.Length; i++)
 			{
 				items[i] = new CpfItem();
 				items[i].Unserialize(reader);
@@ -314,53 +342,54 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
-		{			
-			if (id.Length!=0x06) id = SIGNATURE;
+		{
+			if (id.Length != 0x06)
+				id = SIGNATURE;
 			writer.Write(id);
 			writer.Write((uint)items.Length);
 
-			for(int i=0; i<items.Length; i++)
+			for (int i = 0; i < items.Length; i++)
 			{
 				items[i].Serialize(writer);
 			}
 		}
 		#endregion
 
-		#region IFileWrapperSaveExtension Member		
+		#region IFileWrapperSaveExtension Member
 		//all covered by Serialize()
 		#endregion
 
 		#region IFileWrapper Member
-		protected static byte [] SIGNATURE = new byte[]{
-														  0xE0,
-														  0x50,
-														  0xE7,
-														  0xCB,
-														  0x02,
-														  0x00
-													  };
+		protected static byte[] SIGNATURE = new byte[]
+		{
+			0xE0,
+			0x50,
+			0xE7,
+			0xCB,
+			0x02,
+			0x00,
+		};
+
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
 		public virtual byte[] FileSignature
 		{
-			get
-			{				
-				return SIGNATURE;
-			}
+			get { return SIGNATURE; }
 		}
 
 		public bool CanHandleType(uint type)
 		{
 			foreach (uint t in this.AssignableTypes)
-				if (t==type) return true;
+				if (t == type)
+					return true;
 
 			return false;
-		}	
+		}
 
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
@@ -369,35 +398,36 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-                uint[] types = {
-								   0xAC598EAC, //Age Data
-								   0xEBFEE342, //Version Information
-								   0xEBCF3E27, //Property Set
-								   0x0C560F39, //Binary Index
-								   //0x4C697E5A, //MMAT
-								   0xEBFEE33F, //Sim DNA
-								   0x2C1FD8A1, //Texture Overlay XML
-								   Data.MetaData.XOBJ, //Object XML
-								   0x4C158081, //Skintone XML
-								   0x0C1FE246, //Meshoverlay XML
-								   0x8C1580B5, //Hairtone XML
-								   0x8C93BF6C, //Face Region
-								   0x6C93B566, //Face Neutral
-								   0x0C93E3DE, //Face Modifier
-								   0x8C93E35C, //Face Arch
-								   Data.MetaData.XROF, //Roofs
-								   Data.MetaData.XFLR, //Floors
-								   Data.MetaData.XFNC, // Fences
-								   Data.MetaData.XNGB,  // Hood Objects
-                                   0xD1954460, //Pet Body Options
-                                   0x6C4F359D //Collection
-							   };
-			
+				uint[] types =
+				{
+					0xAC598EAC, //Age Data
+					0xEBFEE342, //Version Information
+					0xEBCF3E27, //Property Set
+					0x0C560F39, //Binary Index
+					//0x4C697E5A, //MMAT
+					0xEBFEE33F, //Sim DNA
+					0x2C1FD8A1, //Texture Overlay XML
+					Data.MetaData.XOBJ, //Object XML
+					0x4C158081, //Skintone XML
+					0x0C1FE246, //Meshoverlay XML
+					0x8C1580B5, //Hairtone XML
+					0x8C93BF6C, //Face Region
+					0x6C93B566, //Face Neutral
+					0x0C93E3DE, //Face Modifier
+					0x8C93E35C, //Face Arch
+					Data.MetaData.XROF, //Roofs
+					Data.MetaData.XFLR, //Floors
+					Data.MetaData.XFNC, // Fences
+					Data.MetaData.XNGB, // Hood Objects
+					0xD1954460, //Pet Body Options
+					0x6C4F359D, //Collection
+				};
+
 				return types;
 			}
 		}
 
-		#endregion		
+		#endregion
 
 		#region IMultiplePackedFileWrapper
 		public override object[] GetConstructorArguments()
@@ -409,18 +439,17 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public override void Dispose()
 		{
-			base.Dispose ();
+			base.Dispose();
 
-			if (items!=null) 
+			if (items != null)
 			{
-				for (int i=items.Length-1; i>=0; i--) 
-					if (items[i]!=null)
+				for (int i = items.Length - 1; i >= 0; i--)
+					if (items[i] != null)
 						items[i].Dispose();
 			}
 
 			items = new CpfItem[0];
 			items = null;
 		}
-
 	}
 }

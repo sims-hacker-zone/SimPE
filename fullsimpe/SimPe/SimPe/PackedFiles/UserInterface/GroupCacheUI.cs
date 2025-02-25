@@ -26,7 +26,7 @@ namespace SimPe.PackedFiles.UserInterface
 	/// <summary>
 	/// UI Handler for a Str Wrapper
 	/// </summary>
-	public class GroupCacheUI : IPackedFileUI	
+	public class GroupCacheUI : IPackedFileUI
 	{
 		#region Code to Startup the UI
 
@@ -40,10 +40,11 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		public GroupCacheUI()
 		{
-			if (form==null) form = new GroupCacheForm();
+			if (form == null)
+				form = new GroupCacheForm();
 		}
 		#endregion
-		
+
 		#region IPackedFileUI Member
 
 		/// <summary>
@@ -51,10 +52,7 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		public System.Windows.Forms.Control GUIHandle
 		{
-			get
-			{
-				return form.GropPanel;
-			}
+			get { return form.GropPanel; }
 		}
 
 		/// <summary>
@@ -66,25 +64,23 @@ namespace SimPe.PackedFiles.UserInterface
 		public void UpdateGUI(IFileWrapper wrapper)
 		{
 			//form.wrapper = (IFileWrapperSaveExtension)wrapper;
-			GroupCache wrp = (GroupCache) wrapper;
+			GroupCache wrp = (GroupCache)wrapper;
 
 			form.lbgroup.BeginUpdate();
 			form.lbgroup.Items.Clear();
 			form.lbgroup.Sorted = false;
-			foreach (GroupCacheItem i in wrp.Items) form.lbgroup.Items.Add(i);
+			foreach (GroupCacheItem i in wrp.Items)
+				form.lbgroup.Items.Add(i);
 			form.lbgroup.Sorted = true;
 			form.lbgroup.EndUpdate();
-		}		
+		}
 
 		#endregion
 
-		
+
 
 		#region IDisposable Member
-		public virtual void Dispose()
-		{
-			
-		}
+		public virtual void Dispose() { }
 		#endregion
 	}
 }

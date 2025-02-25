@@ -10,6 +10,7 @@ namespace SimPe.Plugin
 	{
 		SimPe.Interfaces.Files.IPackageFile package;
 		SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fii;
+
 		public TextureLocator(SimPe.Interfaces.Files.IPackageFile package)
 		{
 			this.package = package;
@@ -26,22 +27,30 @@ namespace SimPe.Plugin
 		/// <returns>null or the found gmnd</returns>
 		public Rcol FindReferencingGMND(Rcol gmdc, string flname)
 		{
-			if (gmdc==null) return null;
+			if (gmdc == null)
+				return null;
 
 			SimPe.Interfaces.Files.IPackageFile lpackage = package;
-			if (flname!=null) lpackage = SimPe.Packages.File.LoadFromFile(flname);
+			if (flname != null)
+				lpackage = SimPe.Packages.File.LoadFromFile(flname);
 
-			Interfaces.Files.IPackedFileDescriptor[] pfds = lpackage.FindFiles(0x7BA3838C);
+			Interfaces.Files.IPackedFileDescriptor[] pfds = lpackage.FindFiles(
+				0x7BA3838C
+			);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				Rcol rcol = new GenericRcol(null, false);
 				rcol.ProcessData(pfd, lpackage);
-				foreach (Interfaces.Files.IPackedFileDescriptor rpfd in rcol.ReferencedFiles) 
+				foreach (
+					Interfaces.Files.IPackedFileDescriptor rpfd in rcol.ReferencedFiles
+				)
 				{
-					if ((gmdc.FileDescriptor.Group == rpfd.Group) &&
-						(gmdc.FileDescriptor.Instance == rpfd.Instance) &&
-						(gmdc.FileDescriptor.SubType == rpfd.SubType) &&
-						(gmdc.FileDescriptor.Type == rpfd.Type)) 
+					if (
+						(gmdc.FileDescriptor.Group == rpfd.Group)
+						&& (gmdc.FileDescriptor.Instance == rpfd.Instance)
+						&& (gmdc.FileDescriptor.SubType == rpfd.SubType)
+						&& (gmdc.FileDescriptor.Type == rpfd.Type)
+					)
 					{
 						return rcol;
 					}
@@ -59,21 +68,28 @@ namespace SimPe.Plugin
 		/// <returns>null or the first found shpe</returns>
 		public Rcol FindReferencingSHPE(Rcol gmnd, string flname)
 		{
-			if (gmnd==null) return null;
+			if (gmnd == null)
+				return null;
 
 			SimPe.Interfaces.Files.IPackageFile lpackage = package;
-			if (flname!=null) lpackage = SimPe.Packages.File.LoadFromFile(flname);
+			if (flname != null)
+				lpackage = SimPe.Packages.File.LoadFromFile(flname);
 
-			Interfaces.Files.IPackedFileDescriptor[] pfds = lpackage.FindFiles(0xFC6EB1F7);
+			Interfaces.Files.IPackedFileDescriptor[] pfds = lpackage.FindFiles(
+				0xFC6EB1F7
+			);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				Rcol rcol = new GenericRcol(null, false);
 				rcol.ProcessData(pfd, lpackage);
-				
+
 				Shape shp = (Shape)rcol.Blocks[0];
-				foreach (ShapeItem i in shp.Items) 
+				foreach (ShapeItem i in shp.Items)
 				{
-					if (Hashes.StripHashFromName(i.FileName).Trim().ToLower()==Hashes.StripHashFromName(gmnd.FileName).Trim().ToLower())
+					if (
+						Hashes.StripHashFromName(i.FileName).Trim().ToLower()
+						== Hashes.StripHashFromName(gmnd.FileName).Trim().ToLower()
+					)
 					{
 						return rcol;
 					}
@@ -92,30 +108,40 @@ namespace SimPe.Plugin
 		public Hashtable FindReferencedTXMT(Rcol shpe, string flname)
 		{
 			Hashtable ht = new Hashtable();
-			if (shpe==null) return ht;
+			if (shpe == null)
+				return ht;
 
 			SimPe.Interfaces.Files.IPackageFile lpackage = package;
-			if (flname!=null) lpackage = SimPe.Packages.File.LoadFromFile(flname);
+			if (flname != null)
+				lpackage = SimPe.Packages.File.LoadFromFile(flname);
 
-			Shape shp = (Shape)shpe.Blocks[0];			
-			foreach (ShapePart p in shp.Parts) 
+			Shape shp = (Shape)shpe.Blocks[0];
+			foreach (ShapePart p in shp.Parts)
 			{
-				string txmtflname = Hashes.StripHashFromName(p.FileName).Trim().ToLower()+"_txmt";
+				string txmtflname =
+					Hashes.StripHashFromName(p.FileName).Trim().ToLower() + "_txmt";
 				string subset = p.Subset.Trim().ToLower();
 
-				Interfaces.Files.IPackedFileDescriptor[] pfds = lpackage.FindFile(txmtflname, 0x49596978);
+				Interfaces.Files.IPackedFileDescriptor[] pfds = lpackage.FindFile(
+					txmtflname,
+					0x49596978
+				);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					Rcol rcol = new GenericRcol(null, false);
 					rcol.ProcessData(pfd, lpackage);
 
-					if (Hashes.StripHashFromName(rcol.FileName).Trim().ToLower()==txmtflname)
+					if (
+						Hashes.StripHashFromName(rcol.FileName).Trim().ToLower()
+						== txmtflname
+					)
 					{
-						if (!ht.Contains(subset)) ht.Add(subset, rcol);
+						if (!ht.Contains(subset))
+							ht.Add(subset, rcol);
 					}
 				}
-			}			
-			
+			}
+
 			return ht;
 		}
 
@@ -128,32 +154,43 @@ namespace SimPe.Plugin
 		public Hashtable FindReferencedTXTR(Hashtable txmts, string flname)
 		{
 			Hashtable ht = new Hashtable();
-			if (txmts==null) return ht;
+			if (txmts == null)
+				return ht;
 
 			SimPe.Interfaces.Files.IPackageFile lpackage = package;
-			if (flname!=null) lpackage = SimPe.Packages.File.LoadFromFile(flname);
+			if (flname != null)
+				lpackage = SimPe.Packages.File.LoadFromFile(flname);
 
 			foreach (string subset in txmts.Keys)
 			{
 				Rcol rcol = (Rcol)txmts[subset];
 				MaterialDefinition txmt = (MaterialDefinition)rcol.Blocks[0];
-				string txtrname = Hashes.StripHashFromName(txmt.GetProperty("stdMatBaseTextureName").Value)+"_txtr";
+				string txtrname =
+					Hashes.StripHashFromName(
+						txmt.GetProperty("stdMatBaseTextureName").Value
+					) + "_txtr";
 				txtrname = txtrname.Trim().ToLower();
-				
-				Interfaces.Files.IPackedFileDescriptor[] pfds = lpackage.FindFile(txtrname, 0x1C4A276C);
+
+				Interfaces.Files.IPackedFileDescriptor[] pfds = lpackage.FindFile(
+					txtrname,
+					0x1C4A276C
+				);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					Rcol txtr = new GenericRcol(null, false);
 					txtr.ProcessData(pfd, lpackage);
 
-					if (Hashes.StripHashFromName(txtr.FileName).Trim().ToLower()==txtrname)
+					if (
+						Hashes.StripHashFromName(txtr.FileName).Trim().ToLower()
+						== txtrname
+					)
 					{
-						if (!ht.Contains(subset)) ht.Add(subset, txtr);
+						if (!ht.Contains(subset))
+							ht.Add(subset, txtr);
 					}
 				}
 			}
-			
-			
+
 			return ht;
 		}
 
@@ -188,12 +225,15 @@ namespace SimPe.Plugin
 		{
 			Hashtable list = new Hashtable();
 
-			foreach (string s in txmts.Keys) 
+			foreach (string s in txmts.Keys)
 			{
 				Rcol rcol = (Rcol)txmts[s];
 				MaterialDefinition md = (MaterialDefinition)rcol.Blocks[0];
 
-				list[s] = md.ToSceneMaterial(scn, Hashes.StripHashFromName(rcol.FileName));
+				list[s] = md.ToSceneMaterial(
+					scn,
+					Hashes.StripHashFromName(rcol.FileName)
+				);
 			}
 			return list;
 		}
@@ -206,14 +246,14 @@ namespace SimPe.Plugin
 		public Hashtable GetLargestImages(Hashtable txtrs)
 		{
 			Hashtable list = new Hashtable();
-			foreach (string s in txtrs.Keys) 
+			foreach (string s in txtrs.Keys)
 			{
 				Rcol rcol = (Rcol)txtrs[s];
 				ImageData id = (ImageData)rcol.Blocks[0];
 
 				id.GetReferencedLifos();
-				System.Drawing.Image img = id.LargestTexture.Texture;//null;
-				/*foreach (MipMapBlock mmp in id.MipMapBlocks) 
+				System.Drawing.Image img = id.LargestTexture.Texture; //null;
+				/*foreach (MipMapBlock mmp in id.MipMapBlocks)
 				{
 					foreach (MipMap mm in mmp.MipMaps)
 					{
@@ -221,8 +261,8 @@ namespace SimPe.Plugin
 					}
 				}*/
 
-				
-				if (img!=null) 
+
+				if (img != null)
 				{
 					//img.RotateFlip(System.Drawing.RotateFlipType.RotateNoneFlipX);
 					System.IO.MemoryStream ms = new System.IO.MemoryStream();
@@ -234,6 +274,7 @@ namespace SimPe.Plugin
 
 			return list;
 		}
+
 		#region IDisposable Member
 
 		public void Dispose()

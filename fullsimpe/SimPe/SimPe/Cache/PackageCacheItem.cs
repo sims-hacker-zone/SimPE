@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+using System.Collections;
 using System.Drawing;
 using System.IO;
-using System.Collections;
 using SimPe;
 
 namespace SimPe.Cache
@@ -34,50 +34,62 @@ namespace SimPe.Cache
 		/// This package was never scaned
 		/// </summary>
 		Undefined = 0x40,
+
 		/// <summary>
 		/// The Package was scanned, but the Type is unknown
-		/// </summary>	
+		/// </summary>
 		Unknown = 0x0,
+
 		/// <summary>
 		/// The package contains a Skin
 		/// </summary>
 		Skin = 0x1,
+
 		/// <summary>
 		/// The package contains a Wallpaper
 		/// </summary>
 		Wallpaper = 0x2,
+
 		/// <summary>
 		/// The package contains a Floor
 		/// </summary>
 		Floor = 0x4,
+
 		/// <summary>
 		/// The package contains a Clothing
 		/// </summary>
-		Clothing = 0x8,		
+		Clothing = 0x8,
+
 		/// <summary>
 		/// The package contains a Crap Object or Clone
 		/// </summary>
 		CustomObject = 0x10,
+
 		/// <summary>
 		/// The package contains a Recolour
 		/// </summary>
 		Recolour = 0x20,
+
 		/// <summary>
 		/// An Object properly created
 		/// </summary>
-        Object = 0x80,
+		Object = 0x80,
+
 		/// <summary>
 		/// A CEP Related File
 		/// </summary>
 		CEP = 0x100,
+
 		/// <summary>
 		/// A Sim or Sim Template
 		/// </summary>
 		Sim = 0x200,
+
 		/// <summary>
 		/// Hairtones
 		/// </summary>
 		Hair = 0x1000,
+
 		/// <summary>
 		/// Makeup for Sims
 		/// </summary>
@@ -86,45 +98,51 @@ namespace SimPe.Cache
 		Eye = 0x401,
 		Beard = 0x402,
 		EyeBrow = 0x403,
-		Lipstick = 0x404,		
-		Mask = 0x405,		
+		Lipstick = 0x404,
+		Mask = 0x405,
 		Blush = 0x406,
 		EyeShadow = 0x407,
 		Glasses = 0x801,
+
 		/// <summary>
 		/// Contains a Neighborhood
 		/// </summary>
-        Neighbourhood = 0x2000,
+		Neighbourhood = 0x2000,
+
 		/// <summary>
 		/// Contains a Lot
 		/// </summary>
 		Lot = 0x4000,
+
 		/// <summary>
 		/// Describes a Fence
 		/// </summary>
 		Fence = 0x8000,
+
 		/// <summary>
 		/// Describes a Roof
 		/// </summary>
 		Roof = 0x10000,
+
 		/// <summary>
 		/// Describes TerrainPaint
 		/// </summary>
-        Terrain = 0x20000,
-        /// <summary>
-        /// Describes the Game Wide Inventory
-        /// </summary>
-        GameInventory = 0x40000
+		Terrain = 0x20000,
+
+		/// <summary>
+		/// Describes the Game Wide Inventory
+		/// </summary>
+		GameInventory = 0x40000,
 	}
 
 	/// <summary>
 	/// Adds the Null State to the Bollen states
 	/// </summary>
-	public enum TriState :byte 
+	public enum TriState : byte
 	{
 		False = 0,
 		True = 1,
-		Null = 2
+		Null = 2,
 	}
 
 	/// <summary>
@@ -134,13 +152,14 @@ namespace SimPe.Cache
 	/// You can save diffrent informations along with a package file, each state (like contains duplicate GUID)
 	/// has it's own uid. A TriState::Null measn, that the state was not ionvestigated yet
 	/// </remarks>
-	public class PackageState 
+	public class PackageState
 	{
 		uint uid;
 		TriState state;
 		string info;
 		uint[] data;
-		public PackageState(uint uid, TriState state, string info) 
+
+		public PackageState(uint uid, TriState state, string info)
 		{
 			this.uid = uid;
 			this.state = state;
@@ -154,58 +173,62 @@ namespace SimPe.Cache
 			info = "";
 		}
 
-		public TriState State 
+		public TriState State
 		{
 			get { return state; }
 			set { state = value; }
 		}
 
-		public uint Uid 
+		public uint Uid
 		{
 			get { return uid; }
 			set { uid = value; }
 		}
 
-		public string Info 
+		public string Info
 		{
 			get { return info; }
 			set { info = value; }
 		}
 
-		public uint[] Data 
+		public uint[] Data
 		{
-			get { 
-				if (data==null) data = new uint[0];
-				return data; 
+			get
+			{
+				if (data == null)
+					data = new uint[0];
+				return data;
 			}
 			set { data = value; }
 		}
 
-		internal virtual void Load(System.IO.BinaryReader reader) 
+		internal virtual void Load(System.IO.BinaryReader reader)
 		{
 			state = (TriState)reader.ReadByte();
 			uid = reader.ReadUInt32();
 			info = reader.ReadString();
 			byte ct = reader.ReadByte();
 			data = new uint[ct];
-			for (int i=0; i<data.Length; i++) data[i] = reader.ReadUInt32();
+			for (int i = 0; i < data.Length; i++)
+				data[i] = reader.ReadUInt32();
 		}
 
-		internal virtual void Save(System.IO.BinaryWriter writer) 
+		internal virtual void Save(System.IO.BinaryWriter writer)
 		{
 			writer.Write((byte)state);
 			writer.Write(uid);
 			writer.Write(info);
 
-			if (data==null) 
+			if (data == null)
 			{
 				writer.Write((byte)0);
-			} 
-			else 
+			}
+			else
 			{
 				byte ct = (byte)data.Length;
 				writer.Write(ct);
-				for (int i=0; i<ct; i++) writer.Write(data[i]);
+				for (int i = 0; i < ct; i++)
+					writer.Write(data[i]);
 			}
 		}
 	}
@@ -213,7 +236,7 @@ namespace SimPe.Cache
 	/// <summary>
 	/// Typesave ArrayList for PackageState Objects
 	/// </summary>
-	public class PackageStates : ArrayList 
+	public class PackageStates : ArrayList
 	{
 		public new PackageState this[int index]
 		{
@@ -245,9 +268,9 @@ namespace SimPe.Cache
 		public bool Contains(PackageState item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -255,12 +278,12 @@ namespace SimPe.Cache
 		public override object Clone()
 		{
 			PackageStates list = new PackageStates();
-			foreach (PackageState item in this) list.Add(item);
+			foreach (PackageState item in this)
+				list.Add(item);
 
 			return list;
 		}
 	}
-
 
 	/// <summary>
 	/// Contains one ObjectCacheItem
@@ -273,7 +296,7 @@ namespace SimPe.Cache
 		public const byte VERSION = 1;
 
 		public PackageCacheItem()
-		{			
+		{
 			version = VERSION;
 			name = "";
 			guids = new uint[0];
@@ -281,15 +304,15 @@ namespace SimPe.Cache
 			states = new PackageStates();
 		}
 
-		protected byte version;		
-		
+		protected byte version;
+
 		uint[] guids;
 		public uint[] Guids
 		{
 			get { return guids; }
 			set { guids = value; }
-		}		
-		
+		}
+
 		PackageType type;
 		public PackageType Type
 		{
@@ -302,7 +325,7 @@ namespace SimPe.Cache
 		{
 			get { return name; }
 			set { name = value; }
-		}		
+		}
 
 		Image thumb;
 		public Image Thumbnail
@@ -312,13 +335,13 @@ namespace SimPe.Cache
 		}
 
 		PackageStates states;
-		public PackageStates States 
+		public PackageStates States
 		{
 			get { return states; }
 			set { states = value; }
 		}
 
-		public int StateCount 
+		public int StateCount
 		{
 			get { return states.Count; }
 		}
@@ -329,14 +352,15 @@ namespace SimPe.Cache
 		/// <param name="uid">the unique ID of the state</param>
 		/// <param name="create">true if you want to create a new state (and add it) if it did not exist</param>
 		/// <returns></returns>
-		public PackageState FindState(uint uid, bool create) 
+		public PackageState FindState(uint uid, bool create)
 		{
-			foreach (PackageState ps in states) 
+			foreach (PackageState ps in states)
 			{
-				if (ps.Uid == uid) return ps;
+				if (ps.Uid == uid)
+					return ps;
 			}
 
-			if (create) 
+			if (create)
 			{
 				PackageState ps = new PackageState();
 				ps.Uid = uid;
@@ -348,7 +372,6 @@ namespace SimPe.Cache
 			return null;
 		}
 
-		
 		bool enabled;
 		public bool Enabled
 		{
@@ -358,26 +381,28 @@ namespace SimPe.Cache
 
 		public override string ToString()
 		{
-			return "name="+Name;
+			return "name=" + Name;
 		}
 
 		#region ICacheItem Member
 
-		public void Load(System.IO.BinaryReader reader) 
+		public void Load(System.IO.BinaryReader reader)
 		{
 			states.Clear();
 			version = reader.ReadByte();
-			if (version>VERSION) throw new CacheException("Unknown CacheItem Version.", null, version);
-							
+			if (version > VERSION)
+				throw new CacheException("Unknown CacheItem Version.", null, version);
+
 			name = reader.ReadString();
 			type = (PackageType)reader.ReadUInt32();
 			enabled = reader.ReadBoolean();
 			int ct = reader.ReadByte();
 			guids = new uint[ct];
-			for (int i=0; i<guids.Length; i++) guids[i] = reader.ReadUInt32();	
+			for (int i = 0; i < guids.Length; i++)
+				guids[i] = reader.ReadUInt32();
 
 			ct = reader.ReadByte();
-			for (int i=0; i<ct; i++) 
+			for (int i = 0; i < ct; i++)
 			{
 				PackageState ps = new PackageState();
 				ps.Load(reader);
@@ -385,39 +410,41 @@ namespace SimPe.Cache
 			}
 
 			int size = reader.ReadInt32();
-			if (size==0) 
+			if (size == 0)
 			{
 				thumb = null;
-			} 
-			else 
+			}
+			else
 			{
 				byte[] data = reader.ReadBytes(size);
 				MemoryStream ms = new MemoryStream(data);
 
-				thumb = Image.FromStream(ms);				
+				thumb = Image.FromStream(ms);
 			}
 		}
 
-		public void Save(System.IO.BinaryWriter writer) 
+		public void Save(System.IO.BinaryWriter writer)
 		{
 			version = VERSION;
 			writer.Write(version);
 			writer.Write(name);
-			writer.Write((uint)type);			
+			writer.Write((uint)type);
 			writer.Write(enabled);
-			
+
 			writer.Write((byte)guids.Length);
-			for (int i=0; i<guids.Length; i++) writer.Write(guids[i]);	
+			for (int i = 0; i < guids.Length; i++)
+				writer.Write(guids[i]);
 
 			byte ct = (byte)states.Count;
 			writer.Write(ct);
-			for (int i=0; i<ct; i++) states[i].Save(writer);
+			for (int i = 0; i < ct; i++)
+				states[i].Save(writer);
 
-			if (thumb==null) 
+			if (thumb == null)
 			{
 				writer.Write((int)0);
-			} 
-			else 
+			}
+			else
 			{
 				MemoryStream ms = new MemoryStream();
 				thumb.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
@@ -429,10 +456,7 @@ namespace SimPe.Cache
 
 		public byte Version
 		{
-			get
-			{
-				return version;
-			}
+			get { return version; }
 		}
 
 		#endregion

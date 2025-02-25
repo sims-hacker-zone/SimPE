@@ -22,49 +22,50 @@ using System;
 namespace SimPe.Actions.Default
 {
 	/// <summary>
-    /// Summary description for AbstractActionDefault.
+	/// Summary description for AbstractActionDefault.
 	/// </summary>
 	public abstract class AbstractActionDefault : Interfaces.IToolAction
 	{
-		
 		#region IToolAction Member
 
-		public virtual bool ChangeEnabledStateEventHandler(object sender, Events.ResourceEventArgs es)
+		public virtual bool ChangeEnabledStateEventHandler(
+			object sender,
+			Events.ResourceEventArgs es
+		)
 		{
-			if (es == null) return false;
-			if (es.LoadedPackage == null) return false;
+			if (es == null)
+				return false;
+			if (es.LoadedPackage == null)
+				return false;
 
 			if (es.LoadedPackage.Loaded)
-				return es.HasResource;							
+				return es.HasResource;
 
 			return false;
 		}
 
-		public abstract void ExecuteEventHandler(object sender, Events.ResourceEventArgs e);
+		public abstract void ExecuteEventHandler(
+			object sender,
+			Events.ResourceEventArgs e
+		);
 
-		#endregion		
+		#endregion
 
 		#region IToolExt Member
 
 		public virtual System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.None;
-			}
+			get { return System.Windows.Forms.Shortcut.None; }
 		}
 
 		public virtual System.Drawing.Image Icon
 		{
-			get
-			{
-				return null;
-			}
+			get { return null; }
 		}
 
-		public virtual bool Visible 
+		public virtual bool Visible
 		{
-			get {return true;}
+			get { return true; }
 		}
 
 		#endregion

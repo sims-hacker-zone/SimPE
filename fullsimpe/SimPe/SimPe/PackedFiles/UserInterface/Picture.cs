@@ -18,26 +18,22 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Windows.Forms;
 using System.Drawing;
-using SimPe.Interfaces.Plugin;
+using System.Windows.Forms;
 using SimPe.Interfaces;
+using SimPe.Interfaces.Plugin;
 
-namespace SimPe.PackedFiles.UserInterface 
+namespace SimPe.PackedFiles.UserInterface
 {
 	/// <summary>
 	/// handles Packed Jpeg Files
 	/// </summary>
 	public class Picture : UIBase, IPackedFileUI
 	{
-		
 		#region IPackedFileUI Member
 		public Control GUIHandle
 		{
-			get 
-			{
-				return form.JpegPanel;
-			}
+			get { return form.JpegPanel; }
 		}
 
 		public void UpdateGUI(SimPe.Interfaces.Plugin.IFileWrapper wrapper)
@@ -47,8 +43,6 @@ namespace SimPe.PackedFiles.UserInterface
 			Image img = ((SimPe.PackedFiles.Wrapper.Picture)wrapper).Image;
 			pb.Image = img;
 		}
-
-		
 
 		#endregion
 	}

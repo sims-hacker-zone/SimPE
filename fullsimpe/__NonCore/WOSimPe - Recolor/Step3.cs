@@ -3,14 +3,12 @@ using System;
 namespace SimPe.Wizards
 {
 	/// <summary>
-	/// Zusammenfassung für Step1.
+	/// Zusammenfassung fï¿½r Step1.
 	/// </summary>
-	public class Step3 :AWizardForm, IWizardFinish
+	public class Step3 : AWizardForm, IWizardFinish
 	{
-		public Step3()
-		{
-			
-		}
+		public Step3() { }
+
 		#region IWizardFinish Member
 		public void Finit()
 		{
@@ -23,48 +21,41 @@ namespace SimPe.Wizards
 
 		public override System.Windows.Forms.Panel WizardWindow
 		{
-			get
-			{
-				return Step1.Form.pnwizard3;
-			}
+			get { return Step1.Form.pnwizard3; }
 		}
 
 		protected override bool Init()
 		{
-			Step1.Form.lberr.Visible = System.IO.File.Exists(Step1.Form.GetPackageFilename);
+			Step1.Form.lberr.Visible = System.IO.File.Exists(
+				Step1.Form.GetPackageFilename
+			);
 			return true;
 		}
 
 		public override string WizardMessage
 		{
-			get
-			{
-				return "Specify the Name of your Recolour";
-			}
+			get { return "Specify the Name of your Recolour"; }
 		}
 
 		public override bool CanContinue
 		{
 			get
 			{
-				return ((!System.IO.File.Exists(Step1.Form.GetPackageFilename)) || (Step1.Form.cbover.Checked));
+				return (
+					(!System.IO.File.Exists(Step1.Form.GetPackageFilename))
+					|| (Step1.Form.cbover.Checked)
+				);
 			}
 		}
 
 		public override int WizardStep
 		{
-			get
-			{
-				return 5;
-			}
+			get { return 5; }
 		}
 
 		public override IWizardForm Next
 		{
-			get
-			{
-				return null;
-			}
+			get { return null; }
 		}
 
 		#endregion

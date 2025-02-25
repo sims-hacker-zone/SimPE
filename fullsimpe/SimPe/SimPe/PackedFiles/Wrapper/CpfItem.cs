@@ -25,17 +25,19 @@ namespace SimPe.PackedFiles.Wrapper
 	/// <summary>
 	/// An Item stored in a CPF File
 	/// </summary>
-	public class CpfItem : System.IDisposable {
+	public class CpfItem : System.IDisposable
+	{
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public CpfItem ()
+		public CpfItem()
 		{
 			name = new byte[0];
 			val = new byte[0];
 		}
 
 		Data.MetaData.DataTypes dt;
+
 		/// <summary>
 		/// Returns the
 		/// </summary>
@@ -44,22 +46,16 @@ namespace SimPe.PackedFiles.Wrapper
 			get { return dt; }
 			set { dt = value; }
 		}
-		
+
 		byte[] name;
+
 		/// <summary>
 		/// Returns the Name
 		/// </summary>
 		public string Name
 		{
-			get
-			{
-				return Helper.ToString(name);
-			}
-			set 
-			{
-				name = Helper.ToBytes(value, 0);
-			}
-
+			get { return Helper.ToString(name); }
+			set { name = Helper.ToBytes(value, 0); }
 		}
 
 		/// <summary>
@@ -71,9 +67,9 @@ namespace SimPe.PackedFiles.Wrapper
 			set { name = value; }
 		}
 
-
 		#region value Handling
 		byte[] val;
+
 		/// <summary>
 		/// Returns the
 		/// </summary>
@@ -82,7 +78,7 @@ namespace SimPe.PackedFiles.Wrapper
 			get { return val; }
 			set { val = value; }
 		}
-		
+
 		/// <summary>
 		/// Returns the value as a String
 		/// </summary>
@@ -96,24 +92,22 @@ namespace SimPe.PackedFiles.Wrapper
 					{
 						return AsSingle().ToString();
 					}
-					case MetaData.DataTypes.dtInteger: 
+					case MetaData.DataTypes.dtInteger:
 					case Data.MetaData.DataTypes.dtUInteger:
 					{
-						return "0x"+Helper.HexString(AsInteger());
+						return "0x" + Helper.HexString(AsInteger());
 					}
 					case MetaData.DataTypes.dtString:
 					{
 						return AsString();
 					}
-					default: 
+					default:
 					{
 						return "";
 					}
 				} //switch;
-				
 			}
-			
-			set 
+			set
 			{
 				dt = Data.MetaData.DataTypes.dtString;
 				val = Helper.ToBytes(value, 0);
@@ -133,7 +127,7 @@ namespace SimPe.PackedFiles.Wrapper
 					{
 						return Convert.ToUInt32(AsSingle());
 					}
-					case MetaData.DataTypes.dtInteger: 
+					case MetaData.DataTypes.dtInteger:
 					case Data.MetaData.DataTypes.dtUInteger:
 					{
 						return AsUInteger();
@@ -141,25 +135,25 @@ namespace SimPe.PackedFiles.Wrapper
 					case MetaData.DataTypes.dtString:
 					{
 						uint ret = 0;
-						try 
+						try
 						{
 							ret = uint.Parse(AsString());
-						} 
-						catch (Exception){}
+						}
+						catch (Exception) { }
 						return ret;
 					}
-					default: 
+					default:
 					{
 						return 0;
 					}
 				} //switch;
-				
 			}
-			
-			set 
+			set
 			{
 				dt = Data.MetaData.DataTypes.dtUInteger;
-				System.IO.BinaryWriter bw = new System.IO.BinaryWriter(new System.IO.MemoryStream());
+				System.IO.BinaryWriter bw = new System.IO.BinaryWriter(
+					new System.IO.MemoryStream()
+				);
 				bw.Write(value);
 				System.IO.BinaryReader br = new System.IO.BinaryReader(bw.BaseStream);
 				br.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
@@ -180,7 +174,7 @@ namespace SimPe.PackedFiles.Wrapper
 					{
 						return Convert.ToInt32(AsSingle());
 					}
-					case MetaData.DataTypes.dtInteger: 
+					case MetaData.DataTypes.dtInteger:
 					case Data.MetaData.DataTypes.dtUInteger:
 					{
 						return AsInteger();
@@ -188,25 +182,25 @@ namespace SimPe.PackedFiles.Wrapper
 					case MetaData.DataTypes.dtString:
 					{
 						int ret = 0;
-						try 
+						try
 						{
 							ret = int.Parse(AsString());
-						} 
-						catch (Exception){}
+						}
+						catch (Exception) { }
 						return ret;
 					}
-					default: 
+					default:
 					{
 						return 0;
 					}
 				} //switch;
-				
 			}
-			
-			set 
+			set
 			{
 				dt = Data.MetaData.DataTypes.dtInteger;
-				System.IO.BinaryWriter bw = new System.IO.BinaryWriter(new System.IO.MemoryStream());
+				System.IO.BinaryWriter bw = new System.IO.BinaryWriter(
+					new System.IO.MemoryStream()
+				);
 				bw.Write(value);
 				System.IO.BinaryReader br = new System.IO.BinaryReader(bw.BaseStream);
 				br.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
@@ -227,7 +221,7 @@ namespace SimPe.PackedFiles.Wrapper
 					{
 						return AsSingle();
 					}
-					case MetaData.DataTypes.dtInteger: 
+					case MetaData.DataTypes.dtInteger:
 					case Data.MetaData.DataTypes.dtUInteger:
 					{
 						return AsInteger();
@@ -235,24 +229,25 @@ namespace SimPe.PackedFiles.Wrapper
 					case MetaData.DataTypes.dtString:
 					{
 						Single ret = 0;
-						try 
+						try
 						{
 							ret = Single.Parse(AsString());
-						} 
-						catch (Exception){}
+						}
+						catch (Exception) { }
 						return ret;
 					}
-					default: 
+					default:
 					{
 						return 0;
 					}
 				} //switch;
-				
 			}
-			set 
+			set
 			{
 				dt = Data.MetaData.DataTypes.dtSingle;
-				System.IO.BinaryWriter bw = new System.IO.BinaryWriter(new System.IO.MemoryStream());
+				System.IO.BinaryWriter bw = new System.IO.BinaryWriter(
+					new System.IO.MemoryStream()
+				);
 				bw.Write(value);
 				System.IO.BinaryReader br = new System.IO.BinaryReader(bw.BaseStream);
 				br.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
@@ -271,40 +266,39 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					case MetaData.DataTypes.dtSingle:
 					{
-						return (AsSingle()!=0.0);
+						return (AsSingle() != 0.0);
 					}
-					case MetaData.DataTypes.dtInteger: 
+					case MetaData.DataTypes.dtInteger:
 					case Data.MetaData.DataTypes.dtUInteger:
 					{
-						return (AsInteger()!=0);
+						return (AsInteger() != 0);
 					}
 					case MetaData.DataTypes.dtString:
 					{
 						bool ret = false;
-						try 
+						try
 						{
-							ret = (byte.Parse(AsString())!=0);
-						} 
-						catch (Exception){
+							ret = (byte.Parse(AsString()) != 0);
 						}
+						catch (Exception) { }
 						return ret;
 					}
-					case MetaData.DataTypes.dtBoolean: 
+					case MetaData.DataTypes.dtBoolean:
 					{
 						return AsBoolean();
 					}
-					default: 
+					default:
 					{
 						return false;
 					}
 				} //switch;
-				
 			}
-			
-			set 
+			set
 			{
 				dt = Data.MetaData.DataTypes.dtBoolean;
-				System.IO.BinaryWriter bw = new System.IO.BinaryWriter(new System.IO.MemoryStream());
+				System.IO.BinaryWriter bw = new System.IO.BinaryWriter(
+					new System.IO.MemoryStream()
+				);
 				bw.Write(value);
 				System.IO.BinaryReader br = new System.IO.BinaryReader(bw.BaseStream);
 				br.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
@@ -315,13 +309,13 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns Value as an Object of the defined type
 		/// </summary>
-		public object ObjectValue 
+		public object ObjectValue
 		{
-			get 
+			get
 			{
-				switch (dt) 
+				switch (dt)
 				{
-					case Data.MetaData.DataTypes.dtUInteger: 
+					case Data.MetaData.DataTypes.dtUInteger:
 					{
 						return UIntegerValue;
 					}
@@ -329,15 +323,15 @@ namespace SimPe.PackedFiles.Wrapper
 					{
 						return IntegerValue;
 					}
-					case Data.MetaData.DataTypes.dtSingle: 
+					case Data.MetaData.DataTypes.dtSingle:
 					{
 						return SingleValue;
 					}
-					case Data.MetaData.DataTypes.dtBoolean: 
+					case Data.MetaData.DataTypes.dtBoolean:
 					{
 						return BooleanValue;
 					}
-					default: 
+					default:
 					{
 						return StringValue;
 					}
@@ -353,11 +347,13 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <returns>The Value interpreted as Integer</returns>
 		protected int AsInteger()
 		{
-			try 
+			try
 			{
-				System.IO.BinaryReader br = new System.IO.BinaryReader(new System.IO.MemoryStream(val));
+				System.IO.BinaryReader br = new System.IO.BinaryReader(
+					new System.IO.MemoryStream(val)
+				);
 				return br.ReadInt32();
-			} 
+			}
 			catch (Exception)
 			{
 				return 0;
@@ -370,11 +366,13 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <returns>The Value interpreted as Integer</returns>
 		protected uint AsUInteger()
 		{
-			try 
+			try
 			{
-				System.IO.BinaryReader br = new System.IO.BinaryReader(new System.IO.MemoryStream(val));
+				System.IO.BinaryReader br = new System.IO.BinaryReader(
+					new System.IO.MemoryStream(val)
+				);
 				return br.ReadUInt32();
-			} 
+			}
 			catch (Exception)
 			{
 				return 0;
@@ -387,8 +385,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <returns>The Value interpreted as Boolean</returns>
 		protected bool AsBoolean()
 		{
-			if (Value.Length<1) return false;
-			else return (Value[0]==1);
+			if (Value.Length < 1)
+				return false;
+			else
+				return (Value[0] == 1);
 		}
 
 		/// <summary>
@@ -397,14 +397,17 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <returns>The Value interpreted as String</returns>
 		protected string AsString()
 		{
-			System.IO.BinaryReader br = new System.IO.BinaryReader(new System.IO.MemoryStream(Value));
-			try 
+			System.IO.BinaryReader br = new System.IO.BinaryReader(
+				new System.IO.MemoryStream(Value)
+			);
+			try
 			{
 				string ret = "";
-				while (br.PeekChar()!=-1) ret+=br.ReadChar();
+				while (br.PeekChar() != -1)
+					ret += br.ReadChar();
 				return ret;
-			} 
-			catch (Exception) 
+			}
+			catch (Exception)
 			{
 				return "";
 			}
@@ -416,12 +419,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <returns>The Value interpreted as Singel</returns>
 		protected Single AsSingle()
 		{
-			System.IO.BinaryReader br = new System.IO.BinaryReader(new System.IO.MemoryStream(Value));
-			try 
+			System.IO.BinaryReader br = new System.IO.BinaryReader(
+				new System.IO.MemoryStream(Value)
+			);
+			try
 			{
 				return br.ReadSingle();
-			} 
-			catch (Exception) 
+			}
+			catch (Exception)
 			{
 				return 0;
 			}
@@ -437,11 +442,11 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			//Load Datatype
 			dt = (MetaData.DataTypes)reader.ReadUInt32();
-			
-			//Load the Name 
+
+			//Load the Name
 			int namelength = reader.ReadInt32();
 			name = reader.ReadBytes(namelength);
-			
+
 			//Load Value
 			int valuelength;
 			switch (dt)
@@ -451,7 +456,7 @@ namespace SimPe.PackedFiles.Wrapper
 					valuelength = reader.ReadInt32();
 					break;
 				}
-				case (MetaData.DataTypes.dtBoolean): 
+				case (MetaData.DataTypes.dtBoolean):
 				{
 					valuelength = 1;
 					break;
@@ -470,11 +475,11 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		/// <param name="writer"></param>
 		internal void Serialize(System.IO.BinaryWriter writer)
-		{			
+		{
 			//Store Datatype
 			writer.Write((uint)dt);
-			
-			//Store the Name 
+
+			//Store the Name
 			writer.Write((uint)name.Length);
 			writer.Write(name);
 
@@ -498,33 +503,33 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public override string ToString()
 		{
-			string ret =  Name+ " ("+dt.ToString()+") = ";
+			string ret = Name + " (" + dt.ToString() + ") = ";
 
-			switch (this.Datatype) 
+			switch (this.Datatype)
 			{
 				case Data.MetaData.DataTypes.dtUInteger:
 				case Data.MetaData.DataTypes.dtInteger:
 				{
-					ret += "0x"+Helper.HexString(this.UIntegerValue);
+					ret += "0x" + Helper.HexString(this.UIntegerValue);
 					break;
 				}
-				default: 
+				default:
 				{
-					if (ObjectValue != null) ret += ObjectValue.ToString();
+					if (ObjectValue != null)
+						ret += ObjectValue.ToString();
 					break;
 				}
 			}
 
-					return ret;
+			return ret;
 		}
 
 		public void Dispose()
 		{
 			this.val = new byte[0];
-			this.val= null;
+			this.val = null;
 			this.name = new byte[0];
 			this.name = null;
-
 		}
 	}
 }

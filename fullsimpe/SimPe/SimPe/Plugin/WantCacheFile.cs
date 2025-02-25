@@ -18,26 +18,26 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.IO;
 using System.Collections;
+using System.IO;
 using SimPe;
 using SimPe.Plugin;
-
 
 namespace SimPe.Cache
 {
 	/// <summary>
 	/// Contains an Instance of a CacheFile
 	/// </summary>
-	public class WantCacheFile: CacheFile
+	public class WantCacheFile : CacheFile
 	{
 		/// <summary>
 		/// Creaet a new Instance for an empty File
 		/// </summary>
-		public WantCacheFile() : base()
+		public WantCacheFile()
+			: base()
 		{
 			DEFAULT_TYPE = ContainerType.Want;
-		}		
+		}
 
 		/// <summary>
 		/// Add a Want Item to the Cache
@@ -45,9 +45,12 @@ namespace SimPe.Cache
 		/// <param name="want">The Want File</param>
 		public void AddItem(WantInformation want)
 		{
-			CacheContainer mycc = this.UseConatiner(ContainerType.Want, want.XWant.Package.FileName);
-			
-			WantCacheItem wci = new WantCacheItem();	
+			CacheContainer mycc = this.UseConatiner(
+				ContainerType.Want,
+				want.XWant.Package.FileName
+			);
+
+			WantCacheItem wci = new WantCacheItem();
 			wci.FileDescriptor = want.XWant.FileDescriptor;
 			wci.Folder = want.XWant.Folder;
 			wci.Guid = want.Guid;
@@ -55,21 +58,23 @@ namespace SimPe.Cache
 			wci.Influence = want.XWant.Influence;
 			wci.Name = want.Name;
 			wci.ObjectType = want.XWant.ObjectType;
-			wci.Score = want.XWant.Score;			
+			wci.Score = want.XWant.Score;
 
 			mycc.Items.Add(wci);
 		}
 
 		Hashtable map;
+
 		/// <summary>
 		/// Return the FileIndex represented by the Cached Files
 		/// </summary>
-		public Hashtable Map 
+		public Hashtable Map
 		{
 			get
-            { 
-				if (map==null) LoadWants();
-				return map; 
+			{
+				if (map == null)
+					LoadWants();
+				return map;
 			}
 		}
 
@@ -77,16 +82,16 @@ namespace SimPe.Cache
 		{
 			map = new Hashtable();
 
-			foreach (CacheContainer cc in Containers) 
+			foreach (CacheContainer cc in Containers)
 			{
-				if (cc.Type==ContainerType.Want && cc.Valid) 
+				if (cc.Type == ContainerType.Want && cc.Valid)
 				{
-					foreach (WantCacheItem wci in cc.Items) 
+					foreach (WantCacheItem wci in cc.Items)
 					{
 						map[wci.Guid] = wci;
 					}
 				}
-			}//foreach
+			} //foreach
 		}
 	}
 }

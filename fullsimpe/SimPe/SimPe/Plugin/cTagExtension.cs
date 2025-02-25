@@ -18,18 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+using System.Collections;
 using System.ComponentModel;
 using SimPe.Geometry;
-using System.Collections;
 
 namespace SimPe.Plugin
-{	
-
+{
 	/// <summary>
 	/// Summary description for cTagExtension.
 	/// </summary>
-	public class TagExtension
-		: AbstractRcolBlock
+	public class TagExtension : AbstractRcolBlock
 	{
 		#region Attributes
 		string en;
@@ -37,18 +35,19 @@ namespace SimPe.Plugin
 		uint ever;
 
 		string s1;
-		public string Name 
+		public string Name
 		{
 			get { return s1; }
 			set { s1 = value; }
 		}
 		#endregion
-		
+
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public TagExtension(Rcol parent) : base(parent)
+		public TagExtension(Rcol parent)
+			: base(parent)
 		{
 			en = "cExtension";
 			eid = 0;
@@ -56,7 +55,7 @@ namespace SimPe.Plugin
 			BlockID = 0x9a809646;
 			s1 = "";
 		}
-		
+
 		#region IRcolBlock Member
 
 		/// <summary>
@@ -68,7 +67,7 @@ namespace SimPe.Plugin
 			version = reader.ReadUInt32();
 
 			en = reader.ReadString();
-			eid = reader.ReadUInt32();		
+			eid = reader.ReadUInt32();
 			ever = reader.ReadUInt32();
 			s1 = reader.ReadString();
 		}
@@ -78,7 +77,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public override void Serialize(System.IO.BinaryWriter writer)
@@ -97,7 +96,8 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (tGenericRcol==null) tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+				if (tGenericRcol == null)
+					tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
 				return tGenericRcol;
 			}
 		}
@@ -106,10 +106,11 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
 		/// </summary>
-		protected override void InitTabPage() 
+		protected override void InitTabPage()
 		{
-			if (tGenericRcol==null) tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
-			tGenericRcol.tb_ver.Text = "0x"+Helper.HexString(this.version);
+			if (tGenericRcol == null)
+				tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(this.version);
 			tGenericRcol.gen_pg.SelectedObject = this;
 		}
 
@@ -117,12 +118,11 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (this.tGenericRcol!=null) this.tGenericRcol.Dispose();
+			if (this.tGenericRcol != null)
+				this.tGenericRcol.Dispose();
 			tGenericRcol = null;
 		}
 
 		#endregion
 	}
-
-
 }

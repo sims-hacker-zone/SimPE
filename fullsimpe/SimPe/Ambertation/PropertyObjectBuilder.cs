@@ -19,21 +19,23 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using System.Threading;
-using System.Reflection;
-using System.Reflection.Emit;
 using System.ComponentModel;
 using System.Globalization;
+using System.Reflection;
+using System.Reflection.Emit;
+using System.Threading;
 
 namespace Ambertation
 {
 	/// <summary>
 	/// This is a typeconverter for the special Short class
 	/// </summary>
-	public class HexTypeConverter:TypeConverter
+	public class HexTypeConverter : TypeConverter
 	{
-		public override bool CanConvertTo(ITypeDescriptorContext context,
-			System.Type destinationType) 
+		public override bool CanConvertTo(
+			ITypeDescriptorContext context,
+			System.Type destinationType
+		)
 		{
 			if (destinationType == typeof(BaseChangeShort))
 				return true;
@@ -41,15 +43,15 @@ namespace Ambertation
 			return base.CanConvertTo(context, destinationType);
 		}
 
-		public override object ConvertTo(ITypeDescriptorContext context,
-			CultureInfo culture, 
-			object value, 
-			System.Type destinationType) 
+		public override object ConvertTo(
+			ITypeDescriptorContext context,
+			CultureInfo culture,
+			object value,
+			System.Type destinationType
+		)
 		{
-			if (destinationType == typeof(System.String) && 
-				value is BaseChangeShort)
+			if (destinationType == typeof(System.String) && value is BaseChangeShort)
 			{
-
 				BaseChangeShort so = (BaseChangeShort)value;
 
 				return so.ToString();
@@ -57,8 +59,10 @@ namespace Ambertation
 			return base.ConvertTo(context, culture, value, destinationType);
 		}
 
-		public override bool CanConvertFrom(ITypeDescriptorContext context,
-			System.Type sourceType) 
+		public override bool CanConvertFrom(
+			ITypeDescriptorContext context,
+			System.Type sourceType
+		)
 		{
 			if (sourceType == typeof(string))
 				return true;
@@ -66,22 +70,30 @@ namespace Ambertation
 			return base.CanConvertFrom(context, sourceType);
 		}
 
-		public override object ConvertFrom(ITypeDescriptorContext context,
-			CultureInfo culture, object value) 
+		public override object ConvertFrom(
+			ITypeDescriptorContext context,
+			CultureInfo culture,
+			object value
+		)
 		{
-			if (value is string) 
+			if (value is string)
 			{
-				try 
+				try
 				{
-					string s = (string) value;					
+					string s = (string)value;
 					return BaseChangeShort.Convert(s);
 				}
-				catch 
+				catch
 				{
 					throw new ArgumentException(
-						"Can not convert '" + (string)value + "'. This is not a valid "+BaseChangeShort.BaseName+" Number!");						
+						"Can not convert '"
+							+ (string)value
+							+ "'. This is not a valid "
+							+ BaseChangeShort.BaseName
+							+ " Number!"
+					);
 				}
-			}  
+			}
 			return base.ConvertFrom(context, culture, value);
 		}
 	}
@@ -89,13 +101,16 @@ namespace Ambertation
 	/// <summary>
 	/// This is a class that can present short Values in diffrent Ways
 	/// </summary>
-	[TypeConverterAttribute(typeof(HexTypeConverter)),
-	DescriptionAttribute("This Values can be displayed in Dec, Hex and Bin")]
-	public class BaseChangeShort 
+	[
+		TypeConverterAttribute(typeof(HexTypeConverter)),
+		DescriptionAttribute("This Values can be displayed in Dec, Hex and Bin")
+	]
+	public class BaseChangeShort
 	{
 		static int digitbase = 16;
+
 		/// <summary>
-		/// The Number Base used for Display 
+		/// The Number Base used for Display
 		/// </summary>
 		public static int DigitBase
 		{
@@ -106,12 +121,14 @@ namespace Ambertation
 		/// <summary>
 		/// Name of this Number Representation
 		/// </summary>
-		public static string BaseName 
+		public static string BaseName
 		{
-			get 
+			get
 			{
-				if (digitbase==16) return "Hexadecimal";
-				if (digitbase==2) return "Binary";
+				if (digitbase == 16)
+					return "Hexadecimal";
+				if (digitbase == 2)
+					return "Binary";
 				return "Decimal";
 			}
 		}
@@ -125,42 +142,61 @@ namespace Ambertation
 		{
 			s = s.Trim().ToLower();
 			short val = 0;
-			if (s.StartsWith("0x")) 
+			if (s.StartsWith("0x"))
 			{
 				val = System.Convert.ToInt16(s, 16);
-			} 
-			else if (s.StartsWith("b")) 
+			}
+			else if (s.StartsWith("b"))
 			{
 				val = System.Convert.ToInt16(s.Substring(1), 2);
 			}
-			else 
+			else
 			{
 				val = System.Convert.ToInt16(s, 10);
 			}
-			
+
 			return new BaseChangeShort(val);
 		}
 
 		int val;
 
-		public BaseChangeShort(int v) { val = v;	}
-		public BaseChangeShort(uint v) { val = (int)v;	}
-		public BaseChangeShort(short v) { val = v;	}
-		internal BaseChangeShort() { val = 0; }
+		public BaseChangeShort(int v)
+		{
+			val = v;
+		}
+
+		public BaseChangeShort(uint v)
+		{
+			val = (int)v;
+		}
+
+		public BaseChangeShort(short v)
+		{
+			val = v;
+		}
+
+		internal BaseChangeShort()
+		{
+			val = 0;
+		}
 
 		/// <summary>
 		/// The actual Value (as short)
 		/// </summary>
-		public short Value 
+		public short Value
 		{
-			get { return (short)(val & 0xffff); ; }
+			get
+			{
+				return (short)(val & 0xffff);
+				;
+			}
 			set { val = (short)(value & 0xffff); }
 		}
 
 		/// <summary>
 		/// The actual Value (as Integer)
 		/// </summary>
-		public int IntegerValue 
+		public int IntegerValue
 		{
 			get { return val; }
 			set { val = value; }
@@ -172,20 +208,19 @@ namespace Ambertation
 		/// <returns>A String</returns>
 		public override string ToString()
 		{
-			if (digitbase==16) 
+			if (digitbase == 16)
 			{
-				return "0x"+val.ToString("x");
-			} 
-			else if (digitbase==2) 
-			{
-				return "b"+System.Convert.ToString(val, 2);
+				return "0x" + val.ToString("x");
 			}
-			else 
+			else if (digitbase == 2)
+			{
+				return "b" + System.Convert.ToString(val, 2);
+			}
+			else
 			{
 				return val.ToString();
 			}
 		}
-
 	}
 
 	/// <summary>
@@ -204,29 +239,37 @@ namespace Ambertation
 			AssemblyName myAsmName = new AssemblyName();
 			myAsmName.Name = "MyDynamicAssembly";
 
-			AssemblyBuilder myAsmBuilder = myDomain.DefineDynamicAssembly(myAsmName,
-				AssemblyBuilderAccess.Run);
+			AssemblyBuilder myAsmBuilder = myDomain.DefineDynamicAssembly(
+				myAsmName,
+				AssemblyBuilderAccess.Run
+			);
 
 			ModuleBuilder myModBuilder = myAsmBuilder.DefineDynamicModule("MyModule");
 
-			TypeBuilder myTypeBuilder = myModBuilder.DefineType("CustomerData", 
-				TypeAttributes.Public);
+			TypeBuilder myTypeBuilder = myModBuilder.DefineType(
+				"CustomerData",
+				TypeAttributes.Public
+			);
 
-			
 			//Add all properties
-			foreach (string k in ht.Keys) AddProperty(k, myTypeBuilder);
+			foreach (string k in ht.Keys)
+				AddProperty(k, myTypeBuilder);
 
 			//Creat type and an Instance
 			custDataType = myTypeBuilder.CreateType();
 			instance = Activator.CreateInstance(custDataType);
-			
-			foreach (string k in ht.Keys) 
+
+			foreach (string k in ht.Keys)
 			{
 				BaseChangeShort val = new BaseChangeShort((short)ht[k]);
-				custDataType.InvokeMember(k, BindingFlags.SetProperty,
-					null, instance, new object[]{ val });
+				custDataType.InvokeMember(
+					k,
+					BindingFlags.SetProperty,
+					null,
+					instance,
+					new object[] { val }
+				);
 			}
-    
 		}
 
 		/// <summary>
@@ -236,20 +279,26 @@ namespace Ambertation
 		/// <param name="myTypeBuilder">The TypeBuidler Object</param>
 		public static void AddProperty(string name, TypeBuilder myTypeBuilder)
 		{
-			FieldBuilder customerNameBldr = myTypeBuilder.DefineField("_"+name.ToLower(),
+			FieldBuilder customerNameBldr = myTypeBuilder.DefineField(
+				"_" + name.ToLower(),
 				typeof(BaseChangeShort),
-				FieldAttributes.Private);
+				FieldAttributes.Private
+			);
 
-			PropertyBuilder custNamePropBldr = myTypeBuilder.DefineProperty(name,
+			PropertyBuilder custNamePropBldr = myTypeBuilder.DefineProperty(
+				name,
 				PropertyAttributes.HasDefault,
 				typeof(BaseChangeShort),
-				new Type[] { typeof(BaseChangeShort) });
+				new Type[] { typeof(BaseChangeShort) }
+			);
 
 			// First, we'll define the behavior of the "get" property for CustomerName as a method.
-			MethodBuilder custNameGetPropMthdBldr = myTypeBuilder.DefineMethod("Get"+name,
-				MethodAttributes.Public,    
+			MethodBuilder custNameGetPropMthdBldr = myTypeBuilder.DefineMethod(
+				"Get" + name,
+				MethodAttributes.Public,
 				typeof(BaseChangeShort),
-				new Type[] { });
+				new Type[] { }
+			);
 
 			ILGenerator custNameGetIL = custNameGetPropMthdBldr.GetILGenerator();
 
@@ -258,10 +307,12 @@ namespace Ambertation
 			custNameGetIL.Emit(OpCodes.Ret);
 
 			// Now, we'll define the behavior of the "set" property for CustomerName.
-			MethodBuilder custNameSetPropMthdBldr = myTypeBuilder.DefineMethod("Set"+name,
-				MethodAttributes.Public,    
+			MethodBuilder custNameSetPropMthdBldr = myTypeBuilder.DefineMethod(
+				"Set" + name,
+				MethodAttributes.Public,
 				null,
-				new Type[] { typeof(BaseChangeShort) });
+				new Type[] { typeof(BaseChangeShort) }
+			);
 
 			ILGenerator custNameSetIL = custNameSetPropMthdBldr.GetILGenerator();
 
@@ -270,8 +321,8 @@ namespace Ambertation
 			custNameSetIL.Emit(OpCodes.Stfld, customerNameBldr);
 			custNameSetIL.Emit(OpCodes.Ret);
 
-			// Last, we must map the two methods created above to our PropertyBuilder to 
-			// their corresponding behaviors, "get" and "set" respectively. 
+			// Last, we must map the two methods created above to our PropertyBuilder to
+			// their corresponding behaviors, "get" and "set" respectively.
 			custNamePropBldr.SetGetMethod(custNameGetPropMthdBldr);
 			custNamePropBldr.SetSetMethod(custNameSetPropMthdBldr);
 		}
@@ -281,18 +332,25 @@ namespace Ambertation
 		/// </summary>
 		public Hashtable Properties
 		{
-			get 
+			get
 			{
-				if (instance == null) return new Hashtable();
+				if (instance == null)
+					return new Hashtable();
 
 				Hashtable ret = new Hashtable();
-				foreach (string k in ht.Keys) 
+				foreach (string k in ht.Keys)
 				{
-					BaseChangeShort val = (BaseChangeShort)custDataType.InvokeMember(k, BindingFlags.GetProperty,
-						null, instance, new object[]{ });
+					BaseChangeShort val = (BaseChangeShort)
+						custDataType.InvokeMember(
+							k,
+							BindingFlags.GetProperty,
+							null,
+							instance,
+							new object[] { }
+						);
 					ret[k] = val.Value;
 				}
-				
+
 				return ret;
 			}
 		}
@@ -302,10 +360,7 @@ namespace Ambertation
 		/// </summary>
 		public object Instance
 		{
-			get 
-			{
-				return instance;
-			}
+			get { return instance; }
 		}
 	}
 }

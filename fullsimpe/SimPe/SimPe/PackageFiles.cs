@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SimPe
@@ -33,6 +33,7 @@ namespace SimPe
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label lbfile;
 		private System.Windows.Forms.ListBox lbfiles;
+
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -49,79 +50,115 @@ namespace SimPe
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
-				if(components != null)
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
 
 		#region Windows Form Designer generated code
 		/// <summary>
-		/// Required method for Designer support - do not modify 
+		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(PackageSelectorForm));
+			System.Resources.ResourceManager resources =
+				new System.Resources.ResourceManager(typeof(PackageSelectorForm));
 			this.label1 = new System.Windows.Forms.Label();
 			this.lbfile = new System.Windows.Forms.Label();
 			this.lbfiles = new System.Windows.Forms.ListBox();
 			this.SuspendLayout();
-			// 
+			//
 			// label1
-			// 
-			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.label1.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							System.Windows.Forms.AnchorStyles.Bottom
+							| System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
 			this.label1.Location = new System.Drawing.Point(8, 286);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(576, 32);
 			this.label1.TabIndex = 0;
-			this.label1.Text = "You can use this Helper to Drag && Drop the Files from the current Package to " +
-				"a Reference List. The Item will be added to the List.";
-			// 
+			this.label1.Text =
+				"You can use this Helper to Drag && Drop the Files from the current Package to "
+				+ "a Reference List. The Item will be added to the List.";
+			//
 			// lbfile
-			// 
+			//
 			this.lbfile.AutoSize = true;
-			this.lbfile.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.lbfile.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.lbfile.Location = new System.Drawing.Point(16, 16);
 			this.lbfile.Name = "lbfile";
 			this.lbfile.Size = new System.Drawing.Size(67, 17);
 			this.lbfile.TabIndex = 1;
 			this.lbfile.Text = "Filename:";
-			// 
+			//
 			// lbfiles
-			// 
-			this.lbfiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.lbfiles.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							(
+								System.Windows.Forms.AnchorStyles.Top
+								| System.Windows.Forms.AnchorStyles.Bottom
+							) | System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.lbfiles.Location = new System.Drawing.Point(24, 32);
 			this.lbfiles.Name = "lbfiles";
 			this.lbfiles.Size = new System.Drawing.Size(552, 238);
 			this.lbfiles.TabIndex = 2;
-			this.lbfiles.MouseMove += new System.Windows.Forms.MouseEventHandler(this.StartDrop);
-			// 
+			this.lbfiles.MouseMove += new System.Windows.Forms.MouseEventHandler(
+				this.StartDrop
+			);
+			//
 			// PackageSelectorForm
-			// 
+			//
 			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
 			this.ClientSize = new System.Drawing.Size(592, 324);
 			this.Controls.Add(this.lbfiles);
 			this.Controls.Add(this.lbfile);
 			this.Controls.Add(this.label1);
-			this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+			this.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
+			this.FormBorderStyle = System
+				.Windows
+				.Forms
+				.FormBorderStyle
+				.SizableToolWindow;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MinimumSize = new System.Drawing.Size(440, 232);
 			this.Name = "PackageSelectorForm";
 			this.Text = "PackageSelectorForm";
 			this.ResumeLayout(false);
-
 		}
 		#endregion
 
@@ -129,25 +166,30 @@ namespace SimPe
 		/// Displays the Tool with the content of the passed Package
 		/// </summary>
 		/// <param name="package">The package you want to list</param>
-		public void Execute(SimPe.Interfaces.Files.IPackageFile package) 
+		public void Execute(SimPe.Interfaces.Files.IPackageFile package)
 		{
 			this.lbfiles.Sorted = false;
 			this.lbfiles.Items.Clear();
 			this.lbfile.Text = package.FileName;
 
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in package.Index) lbfiles.Items.Add(pfd);
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in package.Index)
+				lbfiles.Items.Add(pfd);
 			this.lbfiles.Sorted = true;
 			this.Show();
 		}
 
 		private void StartDrop(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
-			if (lbfiles.SelectedIndex<0) return;
+			if (lbfiles.SelectedIndex < 0)
+				return;
 
-			if (e.Button == MouseButtons.Left) 
+			if (e.Button == MouseButtons.Left)
 			{
-				lbfiles.DoDragDrop((Interfaces.Files.IPackedFileDescriptor)lbfiles.Items[lbfiles.SelectedIndex], DragDropEffects.Copy | DragDropEffects.Link);
-
+				lbfiles.DoDragDrop(
+					(Interfaces.Files.IPackedFileDescriptor)
+						lbfiles.Items[lbfiles.SelectedIndex],
+					DragDropEffects.Copy | DragDropEffects.Link
+				);
 			}
 		}
 	}

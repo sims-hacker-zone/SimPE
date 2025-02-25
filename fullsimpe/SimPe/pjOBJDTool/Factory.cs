@@ -28,10 +28,13 @@ namespace pjOBJDTool
 	/// Lists all Plugins (=FileType Wrappers) available in this Package
 	/// </summary>
 	/// <remarks>
-	/// GetWrappers() has to return a list of all Plugins provided by this Library. 
+	/// GetWrappers() has to return a list of all Plugins provided by this Library.
 	/// If a Plugin isn't returned, SimPe won't recognize it!
 	/// </remarks>
-    public class WrapperFactory : SimPe.Interfaces.Plugin.AbstractWrapperFactory, SimPe.Interfaces.Plugin.IToolFactory, SimPe.Interfaces.Plugin.IHelpFactory
+	public class WrapperFactory
+		: SimPe.Interfaces.Plugin.AbstractWrapperFactory,
+			SimPe.Interfaces.Plugin.IToolFactory,
+			SimPe.Interfaces.Plugin.IHelpFactory
 	{
 		#region AbstractWrapperFactory Member
 		/// <summary>
@@ -40,12 +43,10 @@ namespace pjOBJDTool
 		/// <returns>A List of all provided Plugins (=FileType Wrappers)</returns>
 		public override SimPe.Interfaces.IWrapper[] KnownWrappers
 		{
-			get 
+			get
 			{
 				// TODO:  You can add more Wrappers here
-				IWrapper[] wrappers = {
-										  
-									  };
+				IWrapper[] wrappers = { };
 				return wrappers;
 			}
 		}
@@ -58,31 +59,48 @@ namespace pjOBJDTool
 		{
 			get
 			{
-				IToolPlugin[] tools = {
-									new tOBJDTool(this.LinkedRegistry, this.LinkedProvider)
-								};
+				IToolPlugin[] tools =
+				{
+					new tOBJDTool(this.LinkedRegistry, this.LinkedProvider),
+				};
 				return tools;
 			}
 		}
-        #endregion
+		#endregion
 
-        #region IHelpFactory Members
+		#region IHelpFactory Members
 
-        class hOBJDHelp : IHelp
-        {
-            public System.Drawing.Image Icon { get { return null; } }
-            public override string ToString() { return "PJ OBJD Tool"; }
-            public void ShowHelp(SimPe.ShowHelpEventArgs e) { SimPe.RemoteControl.ShowHelp("file://" + SimPe.Helper.SimPePluginPath + "/pjOBJDTool.plugin/pjOBJDTool_Help" + "/Contents.htm"); }
-        }
+		class hOBJDHelp : IHelp
+		{
+			public System.Drawing.Image Icon
+			{
+				get { return null; }
+			}
 
-        public IHelp[] KnownHelpTopics
-        {
-            get
-            {
-                IHelp[] helpTopics = { new hOBJDHelp() };
-                return helpTopics;
-            }
-        }
-        #endregion
+			public override string ToString()
+			{
+				return "PJ OBJD Tool";
+			}
+
+			public void ShowHelp(SimPe.ShowHelpEventArgs e)
+			{
+				SimPe.RemoteControl.ShowHelp(
+					"file://"
+						+ SimPe.Helper.SimPePluginPath
+						+ "/pjOBJDTool.plugin/pjOBJDTool_Help"
+						+ "/Contents.htm"
+				);
+			}
+		}
+
+		public IHelp[] KnownHelpTopics
+		{
+			get
+			{
+				IHelp[] helpTopics = { new hOBJDHelp() };
+				return helpTopics;
+			}
+		}
+		#endregion
 	}
 }

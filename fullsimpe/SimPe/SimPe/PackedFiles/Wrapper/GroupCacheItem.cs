@@ -19,8 +19,8 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Wrapper;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -28,14 +28,15 @@ namespace SimPe.PackedFiles.Wrapper
 	/// <summary>
 	/// This is the actual FileWrapper
 	/// </summary>
-	public class GroupCacheItem : IGroupCacheItem		
+	public class GroupCacheItem : IGroupCacheItem
 	{
 		#region Attributes
 		string flname;
+
 		/// <summary>
 		/// Returns the FileName for this Item
 		/// </summary>
-		public string FileName 
+		public string FileName
 		{
 			get { return flname.Trim().ToLower(); }
 			set { flname = value.Trim().ToLower(); }
@@ -43,27 +44,29 @@ namespace SimPe.PackedFiles.Wrapper
 
 		uint unknown1;
 		uint localgroup;
+
 		/// <summary>
 		/// Returns the Group that was assigned by the Game
 		/// </summary>
-		public uint LocalGroup 
+		public uint LocalGroup
 		{
 			get { return localgroup; }
-			set {localgroup = value; }
+			set { localgroup = value; }
 		}
-		uint[] unknown2;		
+		uint[] unknown2;
 		#endregion
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public GroupCacheItem() : base()
-		{		
+		public GroupCacheItem()
+			: base()
+		{
 			flname = "";
 			unknown2 = new uint[0];
-		}		
-		
-		#region AbstractWrapper Member		
+		}
+
+		#region AbstractWrapper Member
 		/// <summary>
 		/// Unserializes a BinaryStream into the Attributes of this Instance
 		/// </summary>
@@ -77,9 +80,10 @@ namespace SimPe.PackedFiles.Wrapper
 			byte[] bs = reader.ReadBytes(ct);
 			flname = Helper.ToString(bs);
 			unknown1 = reader.ReadUInt32();
-			localgroup = reader.ReadUInt32();			
+			localgroup = reader.ReadUInt32();
 			unknown2 = new uint[reader.ReadUInt32()];
-			for (int i=0; i<unknown2.Length; i++) unknown2[i]=reader.ReadUInt32();
+			for (int i = 0; i < unknown2.Length; i++)
+				unknown2[i] = reader.ReadUInt32();
 		}
 
 		/// <summary>
@@ -87,18 +91,19 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		internal void Serialize(System.IO.BinaryWriter writer)
-		{		
-			int ct = flname.Length;			
+		{
+			int ct = flname.Length;
 			byte[] bs = Helper.ToBytes(flname, 0);
 			writer.Write((int)bs.Length);
 			writer.Write(bs);
 			writer.Write(unknown1);
 			writer.Write(localgroup);
-			for (int i=0; i<unknown2.Length; i++) writer.Write(unknown2[i]);			
+			for (int i = 0; i < unknown2.Length; i++)
+				writer.Write(unknown2[i]);
 		}
 		#endregion
 
@@ -108,21 +113,21 @@ namespace SimPe.PackedFiles.Wrapper
 			n += " => 0x";
 			n += Helper.HexString(unknown1) + ":0x" + Helper.HexString(this.LocalGroup);
 			n += " (";
-			for (int i=0; i<unknown2.Length; i++) 
+			for (int i = 0; i < unknown2.Length; i++)
 			{
-				if (i!=0) n+=", ";
-				n+=  Helper.HexString(unknown2[i]);
+				if (i != 0)
+					n += ", ";
+				n += Helper.HexString(unknown2[i]);
 			}
 			n += " )";
 			return n;
 		}
-
 	}
 
 	/// <summary>
 	/// Typesave ArrayList for StrIte Objects
 	/// </summary>
-	public class GroupCacheItems : ArrayList 
+	public class GroupCacheItems : ArrayList
 	{
 		public new GroupCacheItem this[int index]
 		{
@@ -154,9 +159,9 @@ namespace SimPe.PackedFiles.Wrapper
 		public bool Contains(GroupCacheItem item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -164,10 +169,10 @@ namespace SimPe.PackedFiles.Wrapper
 		public override object Clone()
 		{
 			GroupCacheItems list = new GroupCacheItems();
-			foreach (GroupCacheItem item in this) list.Add(item);
+			foreach (GroupCacheItem item in this)
+				list.Add(item);
 
 			return list;
 		}
-
 	}
 }

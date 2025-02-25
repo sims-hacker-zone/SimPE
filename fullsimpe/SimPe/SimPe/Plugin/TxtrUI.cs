@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Interfaces.Plugin;
 using System.Windows.Forms;
+using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
 {
@@ -45,7 +45,7 @@ namespace SimPe.Plugin
 			form.cbformats.Items.Add(ImageLoader.TxtrFormats.Unknown);
 			form.cbformats.Items.Add(ImageLoader.TxtrFormats.ExtRaw8Bit);
 			form.cbformats.Items.Add(ImageLoader.TxtrFormats.Raw8Bit);
-			form.cbformats.Items.Add(ImageLoader.TxtrFormats.Raw24Bit);			
+			form.cbformats.Items.Add(ImageLoader.TxtrFormats.Raw24Bit);
 			form.cbformats.Items.Add(ImageLoader.TxtrFormats.ExtRaw24Bit);
 			form.cbformats.Items.Add(ImageLoader.TxtrFormats.Raw32Bit);
 			form.cbformats.Items.Add(ImageLoader.TxtrFormats.DXT1Format);
@@ -61,10 +61,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public System.Windows.Forms.Control GUIHandle
 		{
-			get
-			{
-				return form.txtrPanel;
-			}
+			get { return form.txtrPanel; }
 		}
 
 		/// <summary>
@@ -75,8 +72,8 @@ namespace SimPe.Plugin
 		/// <param name="wrapper">The Attributes of this Wrapper have to be displayed</param>
 		public void UpdateGUI(IFileWrapper wrapper)
 		{
-			Txtr wrp = (Txtr) wrapper;
-			if (wrp.Blocks.Length==0) 
+			Txtr wrp = (Txtr)wrapper;
+			if (wrp.Blocks.Length == 0)
 			{
 				wrp.Blocks = new SimPe.Interfaces.Scenegraph.IRcolBlock[1];
 				wrp.Blocks[0] = new ImageData(wrp);
@@ -88,21 +85,19 @@ namespace SimPe.Plugin
 			form.cbitem.Items.Clear();
 			form.cbmipmaps.Items.Clear();
 			form.lldel.Enabled = false;
-			
 
-			foreach (ImageData id in wrp.Blocks) 
+			foreach (ImageData id in wrp.Blocks)
 			{
 				form.cbitem.Items.Add(id);
 			}
 
-			if (form.cbitem.Items.Count>0) form.cbitem.SelectedIndex = 0;
+			if (form.cbitem.Items.Count > 0)
+				form.cbitem.SelectedIndex = 0;
 			//if (form.lbimg.Items.Count>0) form.lbimg.SelectedIndex = 0;
-			
-			
-		}		
+		}
 
 		#endregion
-		
+
 		#region IDisposable Member
 		public virtual void Dispose()
 		{

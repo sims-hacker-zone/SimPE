@@ -25,8 +25,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for cBoundedNode.
 	/// </summary>
-	public class LightRefNode
-		: AbstractCresChildren
+	public class LightRefNode : AbstractCresChildren
 	{
 		#region Attributes
 
@@ -34,23 +33,22 @@ namespace SimPe.Plugin
 		BoundedNode bn;
 		TransformNode tn;
 
-
 		short unknown1;
-		public short Unknown1 
+		public short Unknown1
 		{
 			get { return unknown1; }
 			set { unknown1 = value; }
 		}
 
 		string[] items;
-		public string[] Strings 
+		public string[] Strings
 		{
 			get { return items; }
 			set { items = value; }
 		}
 
 		byte[] unknown2;
-		public byte[] Unknown2 
+		public byte[] Unknown2
 		{
 			get { return unknown2; }
 			//set { unknown2 = value; }
@@ -62,19 +60,20 @@ namespace SimPe.Plugin
 			get { return tn; }
 		}
 		#endregion
-		
+
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public LightRefNode(Rcol parent) : base(parent)
+		public LightRefNode(Rcol parent)
+			: base(parent)
 		{
 			version = 0xa;
 			BlockID = 0x253d2018;
 
 			rn = new RenderableNode(null);
 			bn = new BoundedNode(null);
-			tn= new TransformNode(null);
+			tn = new TransformNode(null);
 
 			items = new string[0];
 			unknown2 = new byte[13];
@@ -90,24 +89,21 @@ namespace SimPe.Plugin
 		/// Returns a List of all Child Blocks referenced by this Element
 		/// </summary>
 		[BrowsableAttribute(false)]
-		public override IntArrayList ChildBlocks 
+		public override IntArrayList ChildBlocks
 		{
-			get 
-			{
-				return tn.ChildBlocks;
-			}
-		}	
+			get { return tn.ChildBlocks; }
+		}
 
 		[BrowsableAttribute(false)]
-		public override int ImageIndex 
+		public override int ImageIndex
 		{
-			get 
-			{ 
-				return 2;  //light
+			get
+			{
+				return 2; //light
 			}
 		}
 		#endregion
-		
+
 		#region IRcolBlock Member
 
 		/// <summary>
@@ -119,23 +115,23 @@ namespace SimPe.Plugin
 			version = reader.ReadUInt32();
 
 			string name = reader.ReadString();
-			uint myid = reader.ReadUInt32();		
+			uint myid = reader.ReadUInt32();
 			rn.Unserialize(reader);
 			rn.BlockID = myid;
 
 			name = reader.ReadString();
-			myid = reader.ReadUInt32();		
+			myid = reader.ReadUInt32();
 			bn.Unserialize(reader);
 			bn.BlockID = myid;
 
 			name = reader.ReadString();
-			myid = reader.ReadUInt32();		
+			myid = reader.ReadUInt32();
 			tn.Unserialize(reader);
 			tn.BlockID = myid;
 
 			unknown1 = reader.ReadInt16();
 			items = new string[reader.ReadUInt32()];
-			for (int i=0; i<items.Length; i++) 
+			for (int i = 0; i < items.Length; i++)
 			{
 				items[i] = reader.ReadString();
 			}
@@ -148,7 +144,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public override void Serialize(System.IO.BinaryWriter writer)
@@ -169,7 +165,7 @@ namespace SimPe.Plugin
 
 			writer.Write(unknown1);
 			writer.Write((uint)items.Length);
-			for (int i=0; i<items.Length; i++) 
+			for (int i = 0; i < items.Length; i++)
 			{
 				writer.Write(items[i]);
 			}
@@ -183,7 +179,8 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (tGenericRcol==null) tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+				if (tGenericRcol == null)
+					tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
 				return tGenericRcol;
 			}
 		}
@@ -192,16 +189,17 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
 		/// </summary>
-		protected override void InitTabPage() 
+		protected override void InitTabPage()
 		{
-			if (tGenericRcol==null) tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
-			tGenericRcol.tb_ver.Text = "0x"+Helper.HexString(this.version);
+			if (tGenericRcol == null)
+				tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(this.version);
 			tGenericRcol.gen_pg.SelectedObject = this;
 		}
 
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
-			base.ExtendTabControl (tc);
+			base.ExtendTabControl(tc);
 			this.rn.AddToTabControl(tc);
 			this.bn.AddToTabControl(tc);
 			this.tn.AddToTabControl(tc);
@@ -209,14 +207,15 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			return this.tn.ObjectGraphNode.FileName + " ("+base.ToString ()+")";
+			return this.tn.ObjectGraphNode.FileName + " (" + base.ToString() + ")";
 		}
 
 		#region IDisposable Member
 
 		public override void Dispose()
 		{
-			if (this.tGenericRcol!=null) this.tGenericRcol.Dispose();
+			if (this.tGenericRcol != null)
+				this.tGenericRcol.Dispose();
 			tGenericRcol = null;
 		}
 

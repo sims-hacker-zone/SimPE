@@ -66,17 +66,18 @@ namespace SimPe.Plugin.Anim
 
 		AnimationAxisTransform[] block;
 		short tc;
+
 		public AnimationFrame(short tc, FrameType tp)
 		{
-			this.tc = tc;			
+			this.tc = tc;
 			this.tp = tp;
 			block = new AnimationAxisTransform[3];
 		}
 
 		internal AnimationAxisTransform[] Blocks
 		{
-			get{ return block; }
-		}		
+			get { return block; }
+		}
 
 		public AnimationAxisTransform XBlock
 		{
@@ -95,101 +96,147 @@ namespace SimPe.Plugin.Anim
 			get { return block[2]; }
 			set { block[2] = value; }
 		}
-		
-		
+
 		AnimationAxisTransform GetFrameAddonData(int part)
 		{
-			AnimationAxisTransform b = GetBlock((byte)(part%3));
-			
-			if (b==null) return new AnimationAxisTransform(null, -1);
+			AnimationAxisTransform b = GetBlock((byte)(part % 3));
+
+			if (b == null)
+				return new AnimationAxisTransform(null, -1);
 			return b;
-		}	
-		
+		}
+
 		public AnimationAxisTransform GetBlock(byte nr)
 		{
 			return block[nr];
 		}
 
-		[DescriptionAttribute("The X Value for this Transformation"), CategoryAttribute("Data"), DefaultValueAttribute(0)]
+		[
+			DescriptionAttribute("The X Value for this Transformation"),
+			CategoryAttribute("Data"),
+			DefaultValueAttribute(0)
+		]
 		public short X
 		{
 			get { return GetFrameAddonData(0).Parameter; }
 			set { GetFrameAddonData(0).Parameter = value; }
 		}
 
-		[DescriptionAttribute("The Y Value for this Transformation"), CategoryAttribute("Data"), DefaultValueAttribute(0)]
+		[
+			DescriptionAttribute("The Y Value for this Transformation"),
+			CategoryAttribute("Data"),
+			DefaultValueAttribute(0)
+		]
 		public short Y
 		{
 			get { return GetFrameAddonData(1).Parameter; }
 			set { GetFrameAddonData(1).Parameter = value; }
 		}
 
-		[DescriptionAttribute("The Z Value for this Transformation"), CategoryAttribute("Data"), DefaultValueAttribute(0)]
+		[
+			DescriptionAttribute("The Z Value for this Transformation"),
+			CategoryAttribute("Data"),
+			DefaultValueAttribute(0)
+		]
 		public short Z
 		{
 			get { return GetFrameAddonData(2).Parameter; }
 			set { GetFrameAddonData(2).Parameter = value; }
-		}	
-	
-		[DescriptionAttribute("The X Value (as Floating Point) for this Transformation"), CategoryAttribute("Data"), DefaultValueAttribute(0)]
+		}
+
+		[
+			DescriptionAttribute(
+				"The X Value (as Floating Point) for this Transformation"
+			),
+			CategoryAttribute("Data"),
+			DefaultValueAttribute(0)
+		]
 		public float Float_X
 		{
 			get { return GetFrameAddonData(0).ParameterFloat; }
 			set { GetFrameAddonData(0).ParameterFloat = value; }
 		}
 
-		[DescriptionAttribute("The Y Value (as Floating Point) for this Transformation"), CategoryAttribute("Data"), DefaultValueAttribute(0)]
+		[
+			DescriptionAttribute(
+				"The Y Value (as Floating Point) for this Transformation"
+			),
+			CategoryAttribute("Data"),
+			DefaultValueAttribute(0)
+		]
 		public float Float_Y
 		{
 			get { return GetFrameAddonData(1).ParameterFloat; }
 			set { GetFrameAddonData(1).ParameterFloat = value; }
 		}
 
-		[DescriptionAttribute("The Z Value (as Floating Point) for this Transformation"), CategoryAttribute("Data"), DefaultValueAttribute(0)]
+		[
+			DescriptionAttribute(
+				"The Z Value (as Floating Point) for this Transformation"
+			),
+			CategoryAttribute("Data"),
+			DefaultValueAttribute(0)
+		]
 		public float Float_Z
 		{
 			get { return GetFrameAddonData(2).ParameterFloat; }
 			set { GetFrameAddonData(2).ParameterFloat = value; }
-		}		
+		}
 
-		[DescriptionAttribute("The TimeCode the X Transformation should be finished"), CategoryAttribute("Data"), DefaultValueAttribute(0)]
+		[
+			DescriptionAttribute(
+				"The TimeCode the X Transformation should be finished"
+			),
+			CategoryAttribute("Data"),
+			DefaultValueAttribute(0)
+		]
 		public short TimeCode
 		{
-			get 
-			{
-				return tc;
-			}
+			get { return tc; }
 			set
 			{
-				if (tc!=value) 
+				if (tc != value)
 				{
 					tc = value;
-					if (block[0]!=null) block[0].TimeCode = value;
-					if (block[1]!=null) block[1].TimeCode = value;
-					if (block[2]!=null) block[2].TimeCode = value;
+					if (block[0] != null)
+						block[0].TimeCode = value;
+					if (block[1] != null)
+						block[1].TimeCode = value;
+					if (block[2] != null)
+						block[2].TimeCode = value;
 				}
 			}
 		}
 
-		[DescriptionAttribute("True if Frames are interpolated linear fro this KeyFrame"), CategoryAttribute("Data"), DefaultValueAttribute(false)]
+		[
+			DescriptionAttribute(
+				"True if Frames are interpolated linear fro this KeyFrame"
+			),
+			CategoryAttribute("Data"),
+			DefaultValueAttribute(false)
+		]
 		public bool Linear
 		{
-			get { 
-				if (block[0]!=null) return block[0].Linear;
-				if (block[1]!=null) return block[1].Linear;
-				if (block[2]!=null) return block[2].Linear;
+			get
+			{
+				if (block[0] != null)
+					return block[0].Linear;
+				if (block[1] != null)
+					return block[1].Linear;
+				if (block[2] != null)
+					return block[2].Linear;
 				return false;
 			}
 			set
-			{				
-				if (block[0]!=null) block[0].Linear = value;
-				if (block[1]!=null) block[1].Linear = value;
-				if (block[2]!=null) block[2].Linear = value;				
+			{
+				if (block[0] != null)
+					block[0].Linear = value;
+				if (block[1] != null)
+					block[1].Linear = value;
+				if (block[2] != null)
+					block[2].Linear = value;
 			}
 		}
-		
-
-
 
 		public short Unknown1_X
 		{
@@ -207,7 +254,7 @@ namespace SimPe.Plugin.Anim
 		{
 			get { return GetFrameAddonData(2).Unknown1; }
 			set { GetFrameAddonData(2).Unknown1 = value; }
-		}	
+		}
 
 		public short Unknown2_X
 		{
@@ -225,34 +272,41 @@ namespace SimPe.Plugin.Anim
 		{
 			get { return GetFrameAddonData(2).Unknown2; }
 			set { GetFrameAddonData(2).Unknown2 = value; }
-		}	
-	
+		}
+
 		public override string ToString()
 		{
 			return tc.ToString();
-		}		
+		}
 
-		[DescriptionAttribute("Data interpreted as Vector"), CategoryAttribute("Information"), DefaultValueAttribute(0x11BA05F0)]	
+		[
+			DescriptionAttribute("Data interpreted as Vector"),
+			CategoryAttribute("Information"),
+			DefaultValueAttribute(0x11BA05F0)
+		]
 		public Vector3f Vector
 		{
-			get 
-			{ 
+			get
+			{
 				double x = this.Float_X;
 				double y = this.Float_Y;
 				double z = this.Float_Z;
-				
-				return new Vector3f(this.Float_X, this.Float_Y, this.Float_Z);											
+
+				return new Vector3f(this.Float_X, this.Float_Y, this.Float_Z);
 			}
 		}
 
 		FrameType tp;
-		[DescriptionAttribute("What kind of Transformation is performed. You can changes this in the Parent Node!"), CategoryAttribute("Information")]
+
+		[
+			DescriptionAttribute(
+				"What kind of Transformation is performed. You can changes this in the Parent Node!"
+			),
+			CategoryAttribute("Information")
+		]
 		public FrameType Type
 		{
-			get 
-			{
-				return tp;
-			}
+			get { return tp; }
 		}
 	}
 }

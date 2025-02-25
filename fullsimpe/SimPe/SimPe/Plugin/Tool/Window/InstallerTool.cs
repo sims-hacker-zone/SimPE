@@ -1,9 +1,8 @@
 using System;
-using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
-
 
 namespace SimPe.Plugin.Tool.Window
 {
@@ -11,10 +10,9 @@ namespace SimPe.Plugin.Tool.Window
 	/// Tool that should automatically repair corrupted packages
 	/// </summary>
 	public class InstallerTool : SimPe.Interfaces.IToolPlus
-	{		
-		public InstallerTool()
-		{
-		}
+	{
+		public InstallerTool() { }
+
 		#region IToolPlus Member
 
 		public void Execute(object sender, SimPe.Events.ResourceEventArgs e)
@@ -23,7 +21,10 @@ namespace SimPe.Plugin.Tool.Window
 			f.ShowDialog();
 		}
 
-		public bool ChangeEnabledStateEventHandler(object sender, SimPe.Events.ResourceEventArgs e)
+		public bool ChangeEnabledStateEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs e
+		)
 		{
 			return true;
 		}
@@ -34,26 +35,17 @@ namespace SimPe.Plugin.Tool.Window
 
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{				
-				return System.Windows.Forms.Shortcut.CtrlShiftI;
-			}
+			get { return System.Windows.Forms.Shortcut.CtrlShiftI; }
 		}
 
 		public bool Visible
 		{
-			get
-			{
-				return true;
-			}
+			get { return true; }
 		}
 
 		public Image Icon
 		{
-			get
-			{
-                return SimPe.GetIcon.ContentPreview;
-			}
+			get { return SimPe.GetIcon.ContentPreview; }
 		}
 
 		#endregion

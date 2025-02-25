@@ -40,7 +40,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		void Serialize(System.IO.BinaryWriter writer);
@@ -65,45 +65,27 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <summary>
 		/// Name of the Block containing the Object
 		/// </summary>
-		string BlockName 
-		{
-			get;
-			set;
-		}
+		string BlockName { get; set; }
 
 		/// <summary>
 		/// Returns the ID used for this Block
 		/// </summary>
-		uint BlockID
-		{
-			get;
-			set;
-		}
+		uint BlockID { get; set; }
 
 		/// <summary>
 		/// Returns / Sets the cSGResource of this Block, or null if none is avilable
 		/// </summary>
-		SGResource NameResource
-		{
-			get;
-			set;
-		}
+		SGResource NameResource { get; set; }
 
 		/// <summary>
 		/// Returns a tabPage that contains a GUI for this Element
 		/// </summary>
-		TabPage TabPage 
-		{
-			get;
-		}
+		TabPage TabPage { get; }
 
 		/// <summary>
 		/// Returns a tabPage that contains a GUI for the first Block in a RCOL Resource
 		/// </summary>
-		TabPage ResourceTabPage 
-		{
-			get;
-		}
+		TabPage ResourceTabPage { get; }
 
 		/// <summary>
 		/// Update the displayed Data
@@ -119,17 +101,13 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <summary>
 		/// Data was changed
 		/// </summary>
-		bool Changed 
-		{
-			get;
-			set;
-		}
+		bool Changed { get; set; }
+
 		/// <summary>
 		/// Returns the RCOL which lists this Resource in it's ReferencedFiles Attribute
 		/// </summary>
 		/// <param name="type">the Type of the ressource youar looking for</param>
 		/// <returns>null or the RCOl Ressource</returns>
 		Rcol FindReferencingParent(uint type);
-
 	}
 }

@@ -18,48 +18,50 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
 using System.Collections;
+using System.Drawing;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
 
 namespace SimPe.Plugin
 {
-	public class ShapePart 
+	public class ShapePart
 	{
 		string type;
-		public string Subset 
+		public string Subset
 		{
 			get { return type; }
 			set { type = value; }
 		}
 
 		string desc;
-		public string FileName 
+		public string FileName
 		{
 			get { return desc; }
 			set { desc = value; }
 		}
 
 		byte[] data;
-		public byte[] Data 
+		public byte[] Data
 		{
 			get { return data; }
-			set 
+			set
 			{
-				if (value.Length==9) 
+				if (value.Length == 9)
 				{
 					data = value;
-				} 
-				else if (value.Length>9) 
+				}
+				else if (value.Length > 9)
 				{
 					data = new byte[9];
-					for (int i=0; i<9; i++) data[i] = value[i];
-				} 
-				else 
+					for (int i = 0; i < 9; i++)
+						data[i] = value[i];
+				}
+				else
 				{
 					data = new byte[9];
-					for (int i=0; i<value.Length; i++) data[i] = value[i];
+					for (int i = 0; i < value.Length; i++)
+						data[i] = value[i];
 				}
 			}
 		}
@@ -70,6 +72,7 @@ namespace SimPe.Plugin
 			type = "";
 			desc = "";
 		}
+
 		/// <summary>
 		/// Unserializes a BinaryStream into the Attributes of this Instance
 		/// </summary>
@@ -86,7 +89,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public void Serialize(System.IO.BinaryWriter writer)
@@ -98,7 +101,7 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			string name = type+": "+desc;
+			string name = type + ": " + desc;
 			return name;
 		}
 	}
@@ -106,40 +109,40 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// A Shape Item
 	/// </summary>
-	public class ShapeItem 
+	public class ShapeItem
 	{
 		Shape parent;
 
 		int unknown1;
-		public int Unknown1 
+		public int Unknown1
 		{
 			get { return unknown1; }
 			set { unknown1 = value; }
 		}
 
 		byte unknown2;
-		public byte Unknown2 
+		public byte Unknown2
 		{
 			get { return unknown2; }
 			set { unknown2 = value; }
 		}
 
 		int unknown3;
-		public int Unknown3 
+		public int Unknown3
 		{
 			get { return unknown3; }
 			set { unknown3 = value; }
 		}
 
 		byte unknown4;
-		public byte Unknown4 
+		public byte Unknown4
 		{
 			get { return unknown4; }
 			set { unknown4 = value; }
 		}
 
 		string filename;
-		public string FileName 
+		public string FileName
 		{
 			get { return filename; }
 			set { filename = value; }
@@ -151,7 +154,6 @@ namespace SimPe.Plugin
 			filename = "";
 		}
 
-
 		/// <summary>
 		/// Unserializes a BinaryStream into the Attributes of this Instance
 		/// </summary>
@@ -160,13 +162,13 @@ namespace SimPe.Plugin
 		{
 			unknown1 = reader.ReadInt32();
 			unknown2 = reader.ReadByte();
-			if ((parent.Version == 0x07) || (parent.Version == 0x06)) 
+			if ((parent.Version == 0x07) || (parent.Version == 0x06))
 			{
 				filename = "";
 				unknown3 = reader.ReadInt32();
 				unknown4 = reader.ReadByte();
-			} 
-			else 
+			}
+			else
 			{
 				filename = reader.ReadString();
 				unknown3 = 0;
@@ -179,19 +181,19 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(unknown1);
 			writer.Write(unknown2);
-			if ((parent.Version == 0x07) || (parent.Version == 0x06)) 
+			if ((parent.Version == 0x07) || (parent.Version == 0x06))
 			{
 				writer.Write(unknown3);
 				writer.Write(unknown4);
-			} 
-			else 
+			}
+			else
 			{
 				writer.Write(filename);
 			}
@@ -199,60 +201,67 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			string name = "0x" + Helper.HexString((uint)unknown1) + " - 0x" + Helper.HexString(unknown2);
-			if ((parent.Version == 0x07) || (parent.Version == 0x06)) return name + " - 0x" + Helper.HexString((uint)unknown3) + " - 0x" + Helper.HexString(unknown4);
-			else return name+": "+filename;
+			string name =
+				"0x"
+				+ Helper.HexString((uint)unknown1)
+				+ " - 0x"
+				+ Helper.HexString(unknown2);
+			if ((parent.Version == 0x07) || (parent.Version == 0x06))
+				return name
+					+ " - 0x"
+					+ Helper.HexString((uint)unknown3)
+					+ " - 0x"
+					+ Helper.HexString(unknown4);
+			else
+				return name + ": " + filename;
 		}
-
 	}
 
 	/// <summary>
 	/// This is the actual FileWrapper
 	/// </summary>
 	/// <remarks>
-	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads 
+	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public class Shape
-		: AbstractRcolBlock, IScenegraphBlock
+	public class Shape : AbstractRcolBlock, IScenegraphBlock
 	{
 		#region Attributes
 		uint[] unknown;
-		public uint[] Unknwon 
+		public uint[] Unknwon
 		{
 			get { return unknown; }
 			set { unknown = value; }
 		}
 
 		ShapeItem[] items;
-		public ShapeItem[] Items 
+		public ShapeItem[] Items
 		{
 			get { return items; }
 			set { items = value; }
 		}
 
 		ShapePart[] parts;
-		public ShapePart[] Parts 
+		public ShapePart[] Parts
 		{
 			get { return parts; }
 			set { parts = value; }
 		}
 
-
 		ObjectGraphNode ogn;
-		public ObjectGraphNode GraphNode 
+		public ObjectGraphNode GraphNode
 		{
 			get { return ogn; }
 			set { ogn = value; }
 		}
 
 		ReferentNode refnode;
-		public ReferentNode RefNode 
+		public ReferentNode RefNode
 		{
 			get { return refnode; }
 		}
 		#endregion
-		/*public Rcol Parent 
+		/*public Rcol Parent
 		{
 			get { return parent; }
 		}*/
@@ -260,7 +269,8 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public Shape(Rcol parent) : base(parent)
+		public Shape(Rcol parent)
+			: base(parent)
 		{
 			sgres = new SGResource(null);
 			refnode = new ReferentNode(null);
@@ -271,7 +281,7 @@ namespace SimPe.Plugin
 			parts = new ShapePart[0];
 			BlockID = 0xFC6EB1F7;
 		}
-		
+
 		#region IRcolBlock Member
 
 		/// <summary>
@@ -285,7 +295,7 @@ namespace SimPe.Plugin
 
 			sgres.BlockID = reader.ReadUInt32();
 			sgres.Unserialize(reader);
-			
+
 			s = reader.ReadString();
 			refnode.BlockID = reader.ReadUInt32();
 			refnode.Unserialize(reader);
@@ -294,19 +304,22 @@ namespace SimPe.Plugin
 			ogn.BlockID = reader.ReadUInt32();
 			ogn.Unserialize(reader);
 
-			if (version!=0x06) unknown = new uint[reader.ReadUInt32()];
-			else unknown = new uint[0];
-			for (int i=0; i<unknown.Length; i++) unknown[i] = reader.ReadUInt32();
-			
+			if (version != 0x06)
+				unknown = new uint[reader.ReadUInt32()];
+			else
+				unknown = new uint[0];
+			for (int i = 0; i < unknown.Length; i++)
+				unknown[i] = reader.ReadUInt32();
+
 			items = new ShapeItem[reader.ReadUInt32()];
-			for (int i=0; i<items.Length; i++) 
+			for (int i = 0; i < items.Length; i++)
 			{
 				items[i] = new ShapeItem(this);
 				items[i].Unserialize(reader);
 			}
 
 			parts = new ShapePart[reader.ReadUInt32()];
-			for (int i=0; i<parts.Length; i++) 
+			for (int i = 0; i < parts.Length; i++)
 			{
 				parts[i] = new ShapePart();
 				parts[i].Unserialize(reader);
@@ -318,7 +331,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public override void Serialize(System.IO.BinaryWriter writer)
@@ -327,7 +340,7 @@ namespace SimPe.Plugin
 			writer.Write(sgres.Register(null));
 			writer.Write(sgres.BlockID);
 			sgres.Serialize(writer);
-			
+
 			writer.Write(refnode.Register(null));
 			writer.Write(refnode.BlockID);
 			refnode.Serialize(writer);
@@ -336,20 +349,22 @@ namespace SimPe.Plugin
 			writer.Write(ogn.BlockID);
 			ogn.Serialize(writer);
 
-			if (version!=0x06) 
+			if (version != 0x06)
 			{
 				writer.Write((uint)unknown.Length);
-				for (int i=0; i<unknown.Length; i++) writer.Write(unknown[i]);
+				for (int i = 0; i < unknown.Length; i++)
+					writer.Write(unknown[i]);
 			}
-			
+
 			writer.Write((uint)items.Length);
-			for (int i=0; i<items.Length; i++) items[i].Serialize(writer);
-			
+			for (int i = 0; i < items.Length; i++)
+				items[i].Serialize(writer);
 
 			writer.Write((uint)parts.Length);
-			for (int i=0; i<parts.Length; i++) parts[i].Serialize(writer);
+			for (int i = 0; i < parts.Length; i++)
+				parts[i].Serialize(writer);
 		}
-		
+
 		TabPage.ObjectGraphNode tObjectGraphNode;
 		TabPage.GenericRcol tGenericRcol;
 		TabPage.ShpeLod tShpeLod;
@@ -359,7 +374,8 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (tGenericRcol==null) tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+				if (tGenericRcol == null)
+					tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
 				return tGenericRcol;
 			}
 		}
@@ -368,37 +384,50 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
 		/// </summary>
-		protected override void InitTabPage() 
-		{			
-			if (tObjectGraphNode==null) tObjectGraphNode= new SimPe.Plugin.TabPage.ObjectGraphNode();
-			if (tGenericRcol==null) tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
-			if (tShpeLod==null) tShpeLod = new SimPe.Plugin.TabPage.ShpeLod();
-			if (tShpeItems==null) tShpeItems = new SimPe.Plugin.TabPage.ShpeItems();
-			if (tShpeParts==null) tShpeParts = new SimPe.Plugin.TabPage.ShpeParts();
-			tGenericRcol.tb_ver.Text = "0x"+Helper.HexString(this.version);	
+		protected override void InitTabPage()
+		{
+			if (tObjectGraphNode == null)
+				tObjectGraphNode = new SimPe.Plugin.TabPage.ObjectGraphNode();
+			if (tGenericRcol == null)
+				tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+			if (tShpeLod == null)
+				tShpeLod = new SimPe.Plugin.TabPage.ShpeLod();
+			if (tShpeItems == null)
+				tShpeItems = new SimPe.Plugin.TabPage.ShpeItems();
+			if (tShpeParts == null)
+				tShpeParts = new SimPe.Plugin.TabPage.ShpeParts();
+			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(this.version);
 			tGenericRcol.gen_pg.SelectedObject = this;
-		
+
 			tShpeLod.lbunk.Items.Clear();
 			tShpeItems.lbitem.Items.Clear();
 			tShpeParts.lbpart.Items.Clear();
-			try 
+			try
 			{
 				Shape wrp = this;
-				
-				foreach (uint val in wrp.Unknwon) tShpeLod.lbunk.Items.Add(val);
-				foreach (ShapeItem item in wrp.Items) tShpeItems.lbitem.Items.Add(item);
-				foreach (ShapePart part in wrp.Parts) tShpeParts.lbpart.Items.Add(part);
-				foreach (ObjectGraphNodeItem ogni in wrp.GraphNode.Items) tObjectGraphNode.lb_ogn.Items.Add(ogni);
+
+				foreach (uint val in wrp.Unknwon)
+					tShpeLod.lbunk.Items.Add(val);
+				foreach (ShapeItem item in wrp.Items)
+					tShpeItems.lbitem.Items.Add(item);
+				foreach (ShapePart part in wrp.Parts)
+					tShpeParts.lbpart.Items.Add(part);
+				foreach (ObjectGraphNodeItem ogni in wrp.GraphNode.Items)
+					tObjectGraphNode.lb_ogn.Items.Add(ogni);
 				tObjectGraphNode.tb_ogn_file.Text = wrp.GraphNode.FileName;
-				tObjectGraphNode.tb_ogn_ver.Text = Helper.HexString(wrp.GraphNode.Version);
-			} 
-			catch (Exception ex) 
+				tObjectGraphNode.tb_ogn_ver.Text = Helper.HexString(
+					wrp.GraphNode.Version
+				);
+			}
+			catch (Exception ex)
 			{
-				Helper.ExceptionMessage(Localization.Manager.GetString("erropenfile"), ex);
-			} 
+				Helper.ExceptionMessage(
+					Localization.Manager.GetString("erropenfile"),
+					ex
+				);
+			}
 		}
 
-		
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
 			tShpeLod.Tag = this;
@@ -410,28 +439,41 @@ namespace SimPe.Plugin
 			tShpeParts.Tag = this;
 			tc.TabPages.Add(tShpeParts);
 
-			if (tObjectGraphNode==null) tObjectGraphNode= new SimPe.Plugin.TabPage.ObjectGraphNode();
+			if (tObjectGraphNode == null)
+				tObjectGraphNode = new SimPe.Plugin.TabPage.ObjectGraphNode();
 			tObjectGraphNode.Tag = this.GraphNode;
 			tc.TabPages.Add(tObjectGraphNode);
 
-            tc.SelectedTab = tShpeParts;
+			tc.SelectedTab = tShpeParts;
 		}
 
 		#region IScenegraphItem Member
-		
+
 		public void ReferencedItems(Hashtable refmap, uint parentgroup)
 		{
 			ArrayList list = new ArrayList();
-			foreach (ShapePart part in Parts) 
+			foreach (ShapePart part in Parts)
 			{
-				list.Add(SimPe.Plugin.ScenegraphHelper.BuildPfd(part.FileName.Trim()+"_txmt", SimPe.Plugin.ScenegraphHelper.TXMT, parentgroup));
+				list.Add(
+					SimPe.Plugin.ScenegraphHelper.BuildPfd(
+						part.FileName.Trim() + "_txmt",
+						SimPe.Plugin.ScenegraphHelper.TXMT,
+						parentgroup
+					)
+				);
 			}
 			refmap["Subsets"] = list;
 
 			list = new ArrayList();
-			foreach (ShapeItem item in Items) 
+			foreach (ShapeItem item in Items)
 			{
-				list.Add(SimPe.Plugin.ScenegraphHelper.BuildPfd(item.FileName.Trim(), SimPe.Plugin.ScenegraphHelper.GMND, parentgroup));
+				list.Add(
+					SimPe.Plugin.ScenegraphHelper.BuildPfd(
+						item.FileName.Trim(),
+						SimPe.Plugin.ScenegraphHelper.GMND,
+						parentgroup
+					)
+				);
 			}
 			refmap["Models"] = list;
 		}
@@ -442,19 +484,24 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (this.tObjectGraphNode!=null) this.tObjectGraphNode.Dispose();
+			if (this.tObjectGraphNode != null)
+				this.tObjectGraphNode.Dispose();
 			tObjectGraphNode = null;
 
-			if (this.tGenericRcol!=null) this.tGenericRcol.Dispose();
+			if (this.tGenericRcol != null)
+				this.tGenericRcol.Dispose();
 			tGenericRcol = null;
 
-			if (tShpeLod!=null) tShpeLod.Dispose();
+			if (tShpeLod != null)
+				tShpeLod.Dispose();
 			tShpeLod = null;
 
-			if (tShpeItems!=null) tShpeItems.Dispose();
+			if (tShpeItems != null)
+				tShpeItems.Dispose();
 			tShpeItems = null;
 
-			if (tShpeParts!=null) tShpeParts.Dispose();
+			if (tShpeParts != null)
+				tShpeParts.Dispose();
 			tShpeParts = null;
 		}
 

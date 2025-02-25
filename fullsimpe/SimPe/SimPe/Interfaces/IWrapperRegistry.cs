@@ -26,19 +26,19 @@ namespace SimPe.Interfaces
 	/// Summary description for IWrapperRegistry.
 	/// </summary>
 	public interface IWrapperRegistry
-	{		
+	{
 		/// <summary>
 		/// Registers a Wrapper to the Registry
 		/// </summary>
 		/// <param name="wrapper">The wrapper to register</param>
 		/// <remarks>The wrapper must only be added if the Registry doesnt already contain it</remarks>
-		void Register(IWrapper wrapper);	
-	
+		void Register(IWrapper wrapper);
+
 		/// <summary>
 		/// Registers all listed Wrappers with this Registry
 		/// </summary>
 		/// <param name="wrappers">The Wrappers to register</param>
-		/// <param name="guiwrappers">null, or a List of the same Length as wrappers, 
+		/// <param name="guiwrappers">null, or a List of the same Length as wrappers,
 		/// with a second Instance of each wrapper</param>
 		/// <remarks>The wrapper must only be added if the Registry doesnt already contain it</remarks>
 		void Register(IWrapper[] wrappers, IWrapper[] guiwrappers);
@@ -54,19 +54,13 @@ namespace SimPe.Interfaces
 		/// Returns the List of Known Wrappers (without Wrappers having a Priority &lt; 0!)
 		/// </summary>
 		/// <remarks>The Wrappers should be Returned in Order of Priority starting with the lowest!</remarks>
-		IWrapper[] Wrappers 
-		{
-			get;
-		}
+		IWrapper[] Wrappers { get; }
 
 		/// <summary>
 		/// Returns the List of all Known Wrappers including Wrappers with Priority &lt; 0
 		/// </summary>
 		/// <remarks>The Wrappers should be Returned in Order of Priority starting with the lowest!</remarks>
-		IWrapper[] AllWrappers 
-		{
-			get;
-		}
+		IWrapper[] AllWrappers { get; }
 
 		/// <summary>
 		/// Returns the first Handler capable of processing a File of the given Type
@@ -81,7 +75,7 @@ namespace SimPe.Interfaces
 		/// <param name="data">The Data of the PackedFile</param>
 		/// <returns>The assigned Handler or null if none was found</returns>
 		/// <remarks>
-		/// A handler is assigned if the first bytes of the Data are equal 
+		/// A handler is assigned if the first bytes of the Data are equal
 		/// to the signature provided by the Handler
 		/// </remarks>
 		SimPe.Interfaces.Plugin.IFileWrapper FindHandler(Byte[] data);
@@ -89,9 +83,6 @@ namespace SimPe.Interfaces
 		/// <summary>
 		/// Contains a Listing of all available Wrapper Icons
 		/// </summary>
-		System.Windows.Forms.ImageList WrapperImageList
-		{
-			get;
-		}
+		System.Windows.Forms.ImageList WrapperImageList { get; }
 	}
 }

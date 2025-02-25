@@ -23,11 +23,10 @@ using SimPe;
 
 namespace SimPe.Cache
 {
-
 	/// <summary>
 	/// Typesave ArrayList for ICacheItem Objects
 	/// </summary>
-	public class CacheItems : ArrayList 
+	public class CacheItems : ArrayList
 	{
 		public new ICacheItem this[int index]
 		{
@@ -59,9 +58,9 @@ namespace SimPe.Cache
 		public bool Contains(ICacheItem item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -69,7 +68,8 @@ namespace SimPe.Cache
 		public override object Clone()
 		{
 			CacheItems list = new CacheItems();
-			foreach (ICacheItem item in this) list.Add(item);
+			foreach (ICacheItem item in this)
+				list.Add(item);
 
 			return list;
 		}
@@ -78,7 +78,7 @@ namespace SimPe.Cache
 	/// <summary>
 	/// Typesave ArrayList for CacheContainer Objects
 	/// </summary>
-	public class CacheContainers : ArrayList 
+	public class CacheContainers : ArrayList
 	{
 		public new CacheContainer this[int index]
 		{
@@ -110,9 +110,9 @@ namespace SimPe.Cache
 		public bool Contains(CacheContainer item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -120,10 +120,10 @@ namespace SimPe.Cache
 		public override object Clone()
 		{
 			CacheContainers list = new CacheContainers();
-			foreach (CacheContainer item in this) list.Add(item);
+			foreach (CacheContainer item in this)
+				list.Add(item);
 
 			return list;
 		}
-
 	}
 }

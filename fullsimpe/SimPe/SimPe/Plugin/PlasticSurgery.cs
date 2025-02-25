@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
 using SimPe.Data;
-using SimPe.PackedFiles.Wrapper;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
+using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.Plugin
 {
@@ -27,7 +27,13 @@ namespace SimPe.Plugin
 		/// <param name="ngbh">The Neighborhood the Sim lives in (needed for DNA)</param>
 		/// <param name="patient">The Sim that should be changed</param>
 		/// <param name="archetype">The Template Sime</param>
-		public PlasticSurgery(Interfaces.Files.IPackageFile ngbh, Interfaces.Files.IPackageFile patient, SDesc spatient, Interfaces.Files.IPackageFile archetype, SDesc sarchetype)
+		public PlasticSurgery(
+			Interfaces.Files.IPackageFile ngbh,
+			Interfaces.Files.IPackageFile patient,
+			SDesc spatient,
+			Interfaces.Files.IPackageFile archetype,
+			SDesc sarchetype
+		)
 		{
 			this.patient = patient;
 			this.archetype = archetype;
@@ -67,10 +73,11 @@ namespace SimPe.Plugin
 		/// <returns>the new Package for the patient Sim</returns>
 		public SimPe.Packages.GeneratableFile CloneSim()
 		{
-			SimPe.Packages.GeneratableFile ret = SimPe.Packages.GeneratableFile.LoadFromFile((string)null);
+			SimPe.Packages.GeneratableFile ret =
+				SimPe.Packages.GeneratableFile.LoadFromFile((string)null);
 
 			ArrayList list = new ArrayList();
-			list.Add((uint)0xAC506764); //3IDR			
+			list.Add((uint)0xAC506764); //3IDR
 			list.Add(Data.MetaData.GZPS); //GZPS, Property Set
 			list.Add((uint)0xAC598EAC); //AGED
 			list.Add((uint)0xCCCEF852); //LxNR, Face
@@ -86,7 +93,12 @@ namespace SimPe.Plugin
 				{
 					Interfaces.Files.IPackedFile fl = archetype.Read(pfd);
 
-					Interfaces.Files.IPackedFileDescriptor newpfd = ret.NewDescriptor(pfd.Type, pfd.SubType, pfd.Group, pfd.Instance);
+					Interfaces.Files.IPackedFileDescriptor newpfd = ret.NewDescriptor(
+						pfd.Type,
+						pfd.SubType,
+						pfd.Group,
+						pfd.Instance
+					);
 					newpfd.UserData = fl.UncompressedData;
 					ret.Add(newpfd);
 
@@ -96,19 +108,27 @@ namespace SimPe.Plugin
 						SimPe.Plugin.Rcol rcol = new GenericRcol(null, false);
 						rcol.ProcessData(newpfd, ret);
 
-						rcol.FileName = "#0x" + Helper.HexString(hashgroup) + "!" + Hashes.StripHashFromName(rcol.FileName);
+						rcol.FileName =
+							"#0x"
+							+ Helper.HexString(hashgroup)
+							+ "!"
+							+ Hashes.StripHashFromName(rcol.FileName);
 
 						switch (pfd.Type)
 						{
 							case Data.MetaData.SHPE:
+							{
+								Shape shp = (Shape)rcol.Blocks[0];
+								foreach (ShapeItem i in shp.Items)
 								{
-									Shape shp = (Shape)rcol.Blocks[0];
-									foreach (ShapeItem i in shp.Items)
-									{
-										i.FileName = "#0x" + Helper.HexString(hashgroup) + "!" + Hashes.StripHashFromName(i.FileName);
-									}
-									break;
+									i.FileName =
+										"#0x"
+										+ Helper.HexString(hashgroup)
+										+ "!"
+										+ Hashes.StripHashFromName(i.FileName);
 								}
+								break;
+							}
 						}
 						rcol.SynchronizeUserData();
 					}
@@ -128,7 +148,12 @@ namespace SimPe.Plugin
 				{
 					Interfaces.Files.IPackedFile fl = patient.Read(pfd);
 
-					Interfaces.Files.IPackedFileDescriptor newpfd = ret.NewDescriptor(pfd.Type, pfd.SubType, pfd.Group, pfd.Instance);
+					Interfaces.Files.IPackedFileDescriptor newpfd = ret.NewDescriptor(
+						pfd.Type,
+						pfd.SubType,
+						pfd.Group,
+						pfd.Instance
+					);
 					newpfd.UserData = fl.UncompressedData;
 					ret.Add(newpfd);
 				}
@@ -148,14 +173,36 @@ namespace SimPe.Plugin
 			*/
 			Interfaces.Files.IPackedFileDescriptor dna = null;
 			if (!this.fromTemplate)
-				dna = ngbh.FindFile(0xEBFEE33F, 0, Data.MetaData.LOCAL_GROUP, sarchetype.Instance);
+				dna = ngbh.FindFile(
+					0xEBFEE33F,
+					0,
+					Data.MetaData.LOCAL_GROUP,
+					sarchetype.Instance
+				);
 			else
 			{
-				string skintone = this.GetCpfProperty(this.archetype, Data.MetaData.GZPS, "skintone");
-				string hairtone = this.GetCpfProperty(this.archetype, Data.MetaData.GZPS, "hairtone");
-				string eyecolor = this.GetCpfProperty(this.archetype, 0xAC598EAC, "eyecolor");
+				string skintone = this.GetCpfProperty(
+					this.archetype,
+					Data.MetaData.GZPS,
+					"skintone"
+				);
+				string hairtone = this.GetCpfProperty(
+					this.archetype,
+					Data.MetaData.GZPS,
+					"hairtone"
+				);
+				string eyecolor = this.GetCpfProperty(
+					this.archetype,
+					0xAC598EAC,
+					"eyecolor"
+				);
 
-				dna = ngbh.NewDescriptor(0xEBFEE33F, 0, Data.MetaData.LOCAL_GROUP, spatient.Instance);
+				dna = ngbh.NewDescriptor(
+					0xEBFEE33F,
+					0,
+					Data.MetaData.LOCAL_GROUP,
+					spatient.Instance
+				);
 
 				SimPe.PackedFiles.Wrapper.Cpf cpf = new Cpf();
 				cpf.ProcessData(dna, ngbh);
@@ -176,10 +223,20 @@ namespace SimPe.Plugin
 
 			if (dna != null)
 			{
-				Interfaces.Files.IPackedFileDescriptor tna = ngbh.FindFile(0xEBFEE33F, 0, Data.MetaData.LOCAL_GROUP, spatient.Instance);
+				Interfaces.Files.IPackedFileDescriptor tna = ngbh.FindFile(
+					0xEBFEE33F,
+					0,
+					Data.MetaData.LOCAL_GROUP,
+					spatient.Instance
+				);
 				if (tna == null)
 				{
-					tna = ngbh.NewDescriptor(0xEBFEE33F, 0, Data.MetaData.LOCAL_GROUP, spatient.Instance);
+					tna = ngbh.NewDescriptor(
+						0xEBFEE33F,
+						0,
+						Data.MetaData.LOCAL_GROUP,
+						spatient.Instance
+					);
 					tna.Changed = true;
 					ngbh.Add(tna);
 				}
@@ -187,7 +244,6 @@ namespace SimPe.Plugin
 				Interfaces.Files.IPackedFile fl = ngbh.Read(dna);
 				tna.UserData = fl.UncompressedData;
 			}
-
 
 			UpdateFaceStructure(ret);
 			return ret;
@@ -207,23 +263,20 @@ namespace SimPe.Plugin
 		/// This function will compile the clothing in use by the patient sim,
 		/// and add the corresponding resource links to the archetype's reference file.
 		/// </summary>
-		void ProcessClothing(
-			IPackageFile patient,
-			IPackageFile archetype)
+		void ProcessClothing(IPackageFile patient, IPackageFile archetype)
 		{
 			IPackedFileDescriptor patSourceRef = GetClothing3IDREntry(patient);
 			IPackedFileDescriptor arcTargetRef = GetClothing3IDREntry(archetype);
 
-			if (
-				arcTargetRef != null &&
-				patSourceRef != null
-				)
+			if (arcTargetRef != null && patSourceRef != null)
 			{
 				RefFileItem[] pcItems = this.GetClothingItems(patSourceRef, patient);
 				if (pcItems == null || pcItems.Length == 0)
 				{
 					// cascade fatal error
-					throw new ApplicationException("Cannot resolve clothing data on the patient sim");
+					throw new ApplicationException(
+						"Cannot resolve clothing data on the patient sim"
+					);
 				}
 
 				// next, find the clothing references in the patient package.
@@ -237,10 +290,7 @@ namespace SimPe.Plugin
 
 					foreach (IPackedFileDescriptor pfd in items)
 					{
-						if (
-							(pfd is RefFileItem) &&
-							((RefFileItem)pfd).Skin != null
-							)
+						if ((pfd is RefFileItem) && ((RefFileItem)pfd).Skin != null)
 							inUse.Add(((RefFileItem)pfd).Skin.Category);
 					}
 
@@ -255,12 +305,12 @@ namespace SimPe.Plugin
 							}
 						}
 					}
-					arcRef.Items = (IPackedFileDescriptor[])items.ToArray(typeof(IPackedFileDescriptor));
+					arcRef.Items = (IPackedFileDescriptor[])
+						items.ToArray(typeof(IPackedFileDescriptor));
 					arcRef.SynchronizeUserData();
 				}
 			}
 		}
-
 
 		RefFileItem[] GetClothingItems(IPackedFileDescriptor pfd, IPackageFile file)
 		{
@@ -279,7 +329,7 @@ namespace SimPe.Plugin
 						{
 							SkinCategories cat = (SkinCategories)item.Skin.Category;
 
-							// we don't want skin pointers 
+							// we don't want skin pointers
 							if ((cat & SkinCategories.Skin) == SkinCategories.Skin)
 								continue;
 
@@ -294,10 +344,7 @@ namespace SimPe.Plugin
 		IPackedFileDescriptor GetClothing3IDREntry(IPackageFile file)
 		{
 			foreach (IPackedFileDescriptor pfd in file.Index)
-				if (
-					pfd.Type == Data.MetaData.REF_FILE &&
-					pfd.Instance == 0x01
-					)
+				if (pfd.Type == Data.MetaData.REF_FILE && pfd.Instance == 0x01)
 					return pfd;
 			return null;
 		}
@@ -327,8 +374,11 @@ namespace SimPe.Plugin
 			return "";
 		}
 
-
-		string GetCpfProperty(SimPe.Interfaces.Files.IPackageFile pkg, uint type, string key)
+		string GetCpfProperty(
+			SimPe.Interfaces.Files.IPackageFile pkg,
+			uint type,
+			string key
+		)
 		{
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.Index)
 			{
@@ -341,7 +391,6 @@ namespace SimPe.Plugin
 						if (item != null)
 							return item.StringValue;
 					}
-
 				}
 			}
 
@@ -353,35 +402,66 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="skinfile">a PropertySet</param>
 		/// <param name="skin">the new skintone</param>
-		/// <param name="skinfiles">a Hashtable listing al Proerty Sets for each available skintone (key=skintone string, value= ArrayList of Cpf Objects)</param>		
+		/// <param name="skinfiles">a Hashtable listing al Proerty Sets for each available skintone (key=skintone string, value= ArrayList of Cpf Objects)</param>
 		/// <returns>FileDescriptor for the new SkinFile</returns>
-		SimPe.Interfaces.Files.IPackedFileDescriptor UpdateSkintone(Cpf skinfile, string skin, Hashtable skinfiles)
+		SimPe.Interfaces.Files.IPackedFileDescriptor UpdateSkintone(
+			Cpf skinfile,
+			string skin,
+			Hashtable skinfiles
+		)
 		{
 			SimPe.Interfaces.Files.IPackedFileDescriptor ret = skinfile.FileDescriptor;
 
 			//this is a skin!
-			if ((skinfile.GetSaveItem("category").UIntegerValue & (uint)Data.SkinCategories.Skin) == (uint)Data.SkinCategories.Skin)
+			if (
+				(
+					skinfile.GetSaveItem("category").UIntegerValue
+					& (uint)Data.SkinCategories.Skin
+				) == (uint)Data.SkinCategories.Skin
+			)
 			{
-
 				//the values that are checked for equality to find a matching Property Set in the target skintone
 				Hashtable props = new Hashtable();
 
-				props.Add("fitness", skinfile.GetSaveItem("fitness").StringValue.Trim().ToLower());
-				props.Add("gender", skinfile.GetSaveItem("gender").StringValue.Trim().ToLower());
-				props.Add("outfit", skinfile.GetSaveItem("outfit").StringValue.Trim().ToLower());
-				props.Add("override0subset", skinfile.GetSaveItem("override0subset").StringValue.Trim().ToLower());
+				props.Add(
+					"fitness",
+					skinfile.GetSaveItem("fitness").StringValue.Trim().ToLower()
+				);
+				props.Add(
+					"gender",
+					skinfile.GetSaveItem("gender").StringValue.Trim().ToLower()
+				);
+				props.Add(
+					"outfit",
+					skinfile.GetSaveItem("outfit").StringValue.Trim().ToLower()
+				);
+				props.Add(
+					"override0subset",
+					skinfile.GetSaveItem("override0subset").StringValue.Trim().ToLower()
+				);
 
 				foreach (Cpf newcpf in (ArrayList)skinfiles[skin])
 				{
-					if (((skinfile.GetSaveItem("age").UIntegerValue & newcpf.GetSaveItem("age").UIntegerValue) != 0))
+					if (
+						(
+							(
+								skinfile.GetSaveItem("age").UIntegerValue
+								& newcpf.GetSaveItem("age").UIntegerValue
+							) != 0
+						)
+					)
 					{
 						bool use = true;
 						foreach (string k in props.Keys)
 						{
-
-							if (newcpf.GetSaveItem(k).StringValue.Trim().ToLower() != (string)props[k])
+							if (
+								newcpf.GetSaveItem(k).StringValue.Trim().ToLower()
+								!= (string)props[k]
+							)
 							{
-								patientgender = skinfile.GetSaveItem("gender").UIntegerValue;
+								patientgender = skinfile
+									.GetSaveItem("gender")
+									.UIntegerValue;
 								use = false;
 								break;
 							}
@@ -402,21 +482,30 @@ namespace SimPe.Plugin
 		/// Updates the SkinTone References in the 3IDR Files
 		/// </summary>
 		/// <param name="reffile">the 3IDR File</param><param name="skin">the new skintone</param>
-		/// <param name="skinfiles">a Hashtable listing al Proerty Sets for each available skintone (key=skintone string, value= ArrayList of Cpf Objects)</param>	
-		void UpdateSkintone(SimPe.Plugin.RefFile reffile, string skin, Hashtable skinfiles)
+		/// <param name="skinfiles">a Hashtable listing al Proerty Sets for each available skintone (key=skintone string, value= ArrayList of Cpf Objects)</param>
+		void UpdateSkintone(
+			SimPe.Plugin.RefFile reffile,
+			string skin,
+			Hashtable skinfiles
+		)
 		{
-			if (reffile == null) return;
-			if (reffile.Items == null) return;
-			if (reffile.Package == null) return;
+			if (reffile == null)
+				return;
+			if (reffile.Items == null)
+				return;
+			if (reffile.Package == null)
+				return;
 
 			for (int i = 0; i < reffile.Items.Length; i++)
 			{
-				SimPe.Interfaces.Files.IPackedFileDescriptor pfd = (SimPe.Interfaces.Files.IPackedFileDescriptor)reffile.Items[i];
-				if (pfd == null) continue;
+				SimPe.Interfaces.Files.IPackedFileDescriptor pfd =
+					(SimPe.Interfaces.Files.IPackedFileDescriptor)reffile.Items[i];
+				if (pfd == null)
+					continue;
 				if (pfd.Type == Data.MetaData.GZPS)
 				{
-
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] fii = FileTable.FileIndex.FindFile(pfd, reffile.Package);
+					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] fii =
+						FileTable.FileIndex.FindFile(pfd, reffile.Package);
 					if (fii.Length > 0)
 					{
 						Cpf skinfile = new Cpf();
@@ -432,15 +521,24 @@ namespace SimPe.Plugin
 
 		string FindTxtrName(string name)
 		{
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item = FileTable.FileIndex.FindFileByName(name, Data.MetaData.TXTR, 0xffffffff, true);
+			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item =
+				FileTable.FileIndex.FindFileByName(
+					name,
+					Data.MetaData.TXTR,
+					0xffffffff,
+					true
+				);
 			if (item != null)
 			{
 				Rcol txtr = new GenericRcol(null, false);
 				txtr.ProcessData(item);
 				name = txtr.FileName.Trim();
-				if (name.ToLower().EndsWith("_txtr")) name = name.Substring(0, name.Length - 5);
-				if (name.StartsWith("#")) name = "_" + name;
-			} name = name.Replace("-", "_");
+				if (name.ToLower().EndsWith("_txtr"))
+					name = name.Substring(0, name.Length - 5);
+				if (name.StartsWith("#"))
+					name = "_" + name;
+			}
+			name = name.Replace("-", "_");
 
 			return name;
 		}
@@ -449,67 +547,112 @@ namespace SimPe.Plugin
 		/// Updates the SkinTone References in the 3IDR Files
 		/// </summary>
 		/// <param name="md">The Metreial Definition</param>
-		/// <param name="skinfiles">a Hashtable listing al Proerty Sets for each available skintone (key=skintone string, value= ArrayList of Cpf Objects)</param>	
+		/// <param name="skinfiles">a Hashtable listing al Proerty Sets for each available skintone (key=skintone string, value= ArrayList of Cpf Objects)</param>
 		/// <param name="sourceskin">the hash for the source skin</param>
 		/// <param name="targetskin">the hash for the target skin</param>
-		void UpdateSkintone(MaterialDefinition md, string targetskin, Hashtable skinfiles)
+		void UpdateSkintone(
+			MaterialDefinition md,
+			string targetskin,
+			Hashtable skinfiles
+		)
 		{
-			uint age = (uint)Data.MetaData.AgeTranslation((Data.MetaData.LifeSections)spatient.CharacterDescription.Age);
-			try { age = (uint)Math.Pow(2, Convert.ToInt32(md.FindProperty("paramAge").Value)); }
+			uint age = (uint)
+				Data.MetaData.AgeTranslation(
+					(Data.MetaData.LifeSections)spatient.CharacterDescription.Age
+				);
+			try
+			{
+				age = (uint)
+					Math.Pow(2, Convert.ToInt32(md.FindProperty("paramAge").Value));
+			}
 			catch { }
-			try { patientgender = Convert.ToUInt32(md.FindProperty("paramGender").Value); }
+			try
+			{
+				patientgender = Convert.ToUInt32(md.FindProperty("paramGender").Value);
+			}
 			catch { }
 
-			if (skinfiles[targetskin] == null) return;
+			if (skinfiles[targetskin] == null)
+				return;
 			foreach (Cpf newcpf in (ArrayList)skinfiles[targetskin])
 			{
-				if (newcpf.GetSaveItem("override0subset").StringValue.Trim().ToLower() == "face")
+				if (
+					newcpf.GetSaveItem("override0subset").StringValue.Trim().ToLower()
+					== "face"
+				)
 					if ((newcpf.GetSaveItem("age").UIntegerValue & age) == age)
-						if ((newcpf.GetSaveItem("gender").UIntegerValue & patientgender) == patientgender)
+						if (
+							(newcpf.GetSaveItem("gender").UIntegerValue & patientgender)
+							== patientgender
+						)
 						{
-
 							SimPe.Plugin.SkinChain sc = new SkinChain(newcpf);
-							Interfaces.Files.IPackedFileDescriptor[] pfds = newcpf.Package.FindFile(0xAC506764, newcpf.FileDescriptor.SubType, newcpf.FileDescriptor.Instance);
+							Interfaces.Files.IPackedFileDescriptor[] pfds =
+								newcpf.Package.FindFile(
+									0xAC506764,
+									newcpf.FileDescriptor.SubType,
+									newcpf.FileDescriptor.Instance
+								);
 
 							Rcol txmt = sc.TXMT;
 							Rcol txtr = sc.TXTR;
 							if (txtr != null && txmt != null)
 							{
 								string txmtname = txmt.FileName.Trim();
-								if (txmtname.ToLower().EndsWith("_txmt")) txmtname = txmtname.Substring(0, txmtname.Length - 5);
+								if (txmtname.ToLower().EndsWith("_txmt"))
+									txmtname = txmtname.Substring(
+										0,
+										txmtname.Length - 5
+									);
 
 								string basename = txtr.FileName.Trim();
-								if (basename.ToLower().EndsWith("_txtr")) basename = basename.Substring(0, basename.Length - 5);
+								if (basename.ToLower().EndsWith("_txtr"))
+									basename = basename.Substring(
+										0,
+										basename.Length - 5
+									);
 
-								if (txmtname.IndexOf("#") == 0) txmtname = "_" + txmtname;
+								if (txmtname.IndexOf("#") == 0)
+									txmtname = "_" + txmtname;
 
 								int count = 0;
-								try { count = Convert.ToInt32(md.FindProperty("numTexturesToComposite").Value); }
+								try
+								{
+									count = Convert.ToInt32(
+										md.FindProperty("numTexturesToComposite").Value
+									);
+								}
 								catch { }
 
 								if (count > 0)
 								{
 									md.FindProperty("baseTexture0").Value = basename;
-									md.FindProperty("stdMatBaseTextureName").Value = basename;
+									md.FindProperty("stdMatBaseTextureName").Value =
+										basename;
 
 									for (int i = 1; i < count; i++)
 									{
-										string name = md.FindProperty("baseTexture" + i.ToString()).Value.Trim();
-										if (!name.ToLower().EndsWith("_txtr")) name += "_txtr";
+										string name = md.FindProperty(
+												"baseTexture" + i.ToString()
+											)
+											.Value.Trim();
+										if (!name.ToLower().EndsWith("_txtr"))
+											name += "_txtr";
 										name = this.FindTxtrName(name);
 
-										if (i != 0) txmtname += "_";
+										if (i != 0)
+											txmtname += "_";
 										txmtname += name;
 									}
 
-									md.FindProperty("compositeBaseTextureName").Value = txmtname;
+									md.FindProperty("compositeBaseTextureName").Value =
+										txmtname;
 									string[] list = new string[1];
 									list[0] = txmtname;
 									md.Listing = list;
 								}
 							}
 						}
-
 			}
 		}
 
@@ -524,16 +667,19 @@ namespace SimPe.Plugin
 			return CloneSkinTone(askin, skinfiles);
 		}
 
-
 		/// <summary>
 		/// Change the SkinTone of a Sim
 		/// </summary>
 		/// <param name="skin">the new skintone</param>
 		/// param name="skinfiles">a Hashtable listing al Proerty Sets for each available skintone (key=skintone string, value= ArrayList of Cpf Objects)</param>
 		/// <returns>the new Package for the patient Sim</returns>
-		public SimPe.Packages.GeneratableFile CloneSkinTone(string skin, Hashtable skinfiles)
+		public SimPe.Packages.GeneratableFile CloneSkinTone(
+			string skin,
+			Hashtable skinfiles
+		)
 		{
-			SimPe.Packages.GeneratableFile ret = SimPe.Packages.GeneratableFile.LoadFromFile((string)null);
+			SimPe.Packages.GeneratableFile ret =
+				SimPe.Packages.GeneratableFile.LoadFromFile((string)null);
 			string pskin = GetSkintone(this.patient);
 
 			ArrayList list = new ArrayList();
@@ -544,46 +690,57 @@ namespace SimPe.Plugin
 				{
 					Interfaces.Files.IPackedFile fl = patient.Read(pfd);
 
-					Interfaces.Files.IPackedFileDescriptor newpfd = ret.NewDescriptor(pfd.Type, pfd.SubType, pfd.Group, pfd.Instance);
+					Interfaces.Files.IPackedFileDescriptor newpfd = ret.NewDescriptor(
+						pfd.Type,
+						pfd.SubType,
+						pfd.Group,
+						pfd.Instance
+					);
 					newpfd.UserData = fl.UncompressedData;
 					ret.Add(newpfd);
 
 					switch (newpfd.Type)
 					{
 						case (uint)0xAC598EAC: //AGED
-							{
-								SimPe.PackedFiles.Wrapper.Cpf cpf = new Cpf();
-								cpf.ProcessData(newpfd, ret);
-								cpf.GetSaveItem("skincolor").StringValue = skin;
+						{
+							SimPe.PackedFiles.Wrapper.Cpf cpf = new Cpf();
+							cpf.ProcessData(newpfd, ret);
+							cpf.GetSaveItem("skincolor").StringValue = skin;
 
-								cpf.SynchronizeUserData();
-								break;
-							}
+							cpf.SynchronizeUserData();
+							break;
+						}
 						case Data.MetaData.GZPS:
-							{
-								SimPe.PackedFiles.Wrapper.Cpf cpf = new Cpf();
-								cpf.ProcessData(newpfd, ret);
-								cpf.GetSaveItem("skintone").StringValue = skin;
+						{
+							SimPe.PackedFiles.Wrapper.Cpf cpf = new Cpf();
+							cpf.ProcessData(newpfd, ret);
+							cpf.GetSaveItem("skintone").StringValue = skin;
 
-								cpf.SynchronizeUserData();
-								break;
-							}
+							cpf.SynchronizeUserData();
+							break;
+						}
 						case Data.MetaData.TXMT:
-							{
-								SimPe.Plugin.Rcol rcol = new GenericRcol(null, false);
-								rcol.ProcessData(newpfd, ret);
-								MaterialDefinition txmt = (MaterialDefinition)rcol.Blocks[0];
-								txmt.FindProperty("cafSkinTone").Value = skin;
+						{
+							SimPe.Plugin.Rcol rcol = new GenericRcol(null, false);
+							rcol.ProcessData(newpfd, ret);
+							MaterialDefinition txmt = (MaterialDefinition)
+								rcol.Blocks[0];
+							txmt.FindProperty("cafSkinTone").Value = skin;
 
-								rcol.SynchronizeUserData();
-								break;
-							}
+							rcol.SynchronizeUserData();
+							break;
+						}
 					}
 				}
 			}
 
 			//Update DNA File
-			Interfaces.Files.IPackedFileDescriptor dna = ngbh.FindFile(0xEBFEE33F, 0, Data.MetaData.LOCAL_GROUP, spatient.Instance);
+			Interfaces.Files.IPackedFileDescriptor dna = ngbh.FindFile(
+				0xEBFEE33F,
+				0,
+				Data.MetaData.LOCAL_GROUP,
+				spatient.Instance
+			);
 			if (dna != null)
 			{
 				SimPe.PackedFiles.Wrapper.Cpf cpf = new Cpf();
@@ -595,7 +752,9 @@ namespace SimPe.Plugin
 			}
 
 			//Update 3IDR Files
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = ret.FindFiles(0xAC506764);
+			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = ret.FindFiles(
+				0xAC506764
+			);
 			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				SimPe.Plugin.RefFile reffile = new RefFile();
@@ -617,7 +776,6 @@ namespace SimPe.Plugin
 				rcol.SynchronizeUserData();
 			}
 
-
 			return ret;
 		}
 
@@ -630,15 +788,13 @@ namespace SimPe.Plugin
 		/// <returns>the new Package for the patient Sim</returns>
 		public SimPe.Packages.GeneratableFile CloneFace()
 		{
-			SimPe.Packages.GeneratableFile ret = SimPe.Packages.GeneratableFile.LoadFromFile((string)null);
-
-
+			SimPe.Packages.GeneratableFile ret =
+				SimPe.Packages.GeneratableFile.LoadFromFile((string)null);
 
 			ArrayList list = new ArrayList();
 			list.Add((uint)0xCCCEF852); //LxNR, Face
 
 			uint hashgroup = this.GetPatientHash();
-
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in archetype.Index)
 			{
@@ -646,7 +802,12 @@ namespace SimPe.Plugin
 				{
 					Interfaces.Files.IPackedFile fl = archetype.Read(pfd);
 
-					Interfaces.Files.IPackedFileDescriptor newpfd = ret.NewDescriptor(pfd.Type, pfd.SubType, pfd.Group, pfd.Instance);
+					Interfaces.Files.IPackedFileDescriptor newpfd = ret.NewDescriptor(
+						pfd.Type,
+						pfd.SubType,
+						pfd.Group,
+						pfd.Instance
+					);
 					newpfd.UserData = fl.UncompressedData;
 					ret.Add(newpfd);
 				}
@@ -659,7 +820,12 @@ namespace SimPe.Plugin
 				{
 					Interfaces.Files.IPackedFile fl = patient.Read(pfd);
 
-					Interfaces.Files.IPackedFileDescriptor newpfd = ret.NewDescriptor(pfd.Type, pfd.SubType, pfd.Group, pfd.Instance);
+					Interfaces.Files.IPackedFileDescriptor newpfd = ret.NewDescriptor(
+						pfd.Type,
+						pfd.SubType,
+						pfd.Group,
+						pfd.Instance
+					);
 					newpfd.UserData = fl.UncompressedData;
 					ret.Add(newpfd);
 				}
@@ -676,7 +842,9 @@ namespace SimPe.Plugin
 		/// <param name="pkg">The package with the Face Data</param>
 		public void UpdateFaceStructure(SimPe.Packages.GeneratableFile pkg)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles((uint)0xCCCEF852); //LxNR, Face
+			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
+				(uint)0xCCCEF852
+			); //LxNR, Face
 			SimPe.Interfaces.Files.IPackedFileDescriptor oldpfd = null;
 			SimPe.Interfaces.Files.IPackedFileDescriptor newpfd = null;
 
@@ -684,8 +852,16 @@ namespace SimPe.Plugin
 			uint ni = 2;
 			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				if (pfd.Instance <= oi) { oldpfd = pfd; oi = pfd.Instance; }
-				if (pfd.Instance >= ni) { newpfd = pfd; ni = pfd.Instance; }
+				if (pfd.Instance <= oi)
+				{
+					oldpfd = pfd;
+					oi = pfd.Instance;
+				}
+				if (pfd.Instance >= ni)
+				{
+					newpfd = pfd;
+					ni = pfd.Instance;
+				}
 			}
 
 			if (oldpfd != null && newpfd != null)
@@ -710,7 +886,9 @@ namespace SimPe.Plugin
 			string gender = md.FindProperty("paramGender").Value;
 
 			//find a matching Package in the arechtype
-			Interfaces.Files.IPackedFileDescriptor[] pfds = this.archetype.FindFiles(Data.MetaData.TXMT);
+			Interfaces.Files.IPackedFileDescriptor[] pfds = this.archetype.FindFiles(
+				Data.MetaData.TXMT
+			);
 			SimPe.Plugin.Rcol atxmt = new GenericRcol(null, false);
 			MaterialDefinition amd = null;
 
@@ -719,29 +897,46 @@ namespace SimPe.Plugin
 				atxmt.ProcessData(pfd, this.archetype);
 
 				amd = (MaterialDefinition)atxmt.Blocks[0];
-				if ((amd.FindProperty("paramAge").Value == age) && (amd.FindProperty("paramGender").Value == gender)) break;
+				if (
+					(amd.FindProperty("paramAge").Value == age)
+					&& (amd.FindProperty("paramGender").Value == gender)
+				)
+					break;
 			}
 
 			if (amd != null)
 			{
 				int count = 0;
 				md.Add(amd.FindProperty("numTexturesToComposite"));
-				try { count = Convert.ToInt32(md.FindProperty("numTexturesToComposite").Value); }
+				try
+				{
+					count = Convert.ToInt32(
+						md.FindProperty("numTexturesToComposite").Value
+					);
+				}
 				catch { }
 
 				string txmtname = "";
 				for (int i = 0; i < count; i++)
 				{
-					MaterialDefinitionProperty val = amd.FindProperty("baseTexture" + i.ToString());
-					if (i != 0) md.Add(val);
-					if (i == 1) if (eyecolor) md.Add(val);
-						else if (makeups) md.Add(val);
+					MaterialDefinitionProperty val = amd.FindProperty(
+						"baseTexture" + i.ToString()
+					);
+					if (i != 0)
+						md.Add(val);
+					if (i == 1)
+						if (eyecolor)
+							md.Add(val);
+						else if (makeups)
+							md.Add(val);
 
 					string name = val.Value.Trim();
-					if (!name.ToLower().EndsWith("_txtr")) name += "_txtr";
+					if (!name.ToLower().EndsWith("_txtr"))
+						name += "_txtr";
 					name = this.FindTxtrName(name);
 
-					if (i != 0) txmtname += "_";
+					if (i != 0)
+						txmtname += "_";
 					txmtname += name;
 				}
 
@@ -754,17 +949,23 @@ namespace SimPe.Plugin
 				{
 					count = 0;
 					md.Add(amd.FindProperty("cafNumOverlays"));
-					try { count = Convert.ToInt32(md.FindProperty("cafNumOverlays").Value); }
+					try
+					{
+						count = Convert.ToInt32(
+							md.FindProperty("cafNumOverlays").Value
+						);
+					}
 					catch { }
 
 					for (int i = 0; i < count; i++)
 					{
-						MaterialDefinitionProperty val = amd.FindProperty("cafOverlay" + i.ToString());
+						MaterialDefinitionProperty val = amd.FindProperty(
+							"cafOverlay" + i.ToString()
+						);
 						md.Add(val);
 					}
 				}
 			}
-
 		}
 
 		/// <summary>
@@ -775,7 +976,8 @@ namespace SimPe.Plugin
 		/// <param name="makeups">true, if you want to alter the makeup</param>
 		public SimPe.Packages.GeneratableFile CloneMakeup(bool eyecolor, bool makeups)
 		{
-			SimPe.Packages.GeneratableFile ret = SimPe.Packages.GeneratableFile.LoadFromFile((string)null);
+			SimPe.Packages.GeneratableFile ret =
+				SimPe.Packages.GeneratableFile.LoadFromFile((string)null);
 
 			ArrayList list = new ArrayList();
 			list.Add((uint)0xE86B1EEF); //make sure the compressed Directory won't be copied!
@@ -785,14 +987,21 @@ namespace SimPe.Plugin
 				{
 					Interfaces.Files.IPackedFile fl = patient.Read(pfd);
 
-					Interfaces.Files.IPackedFileDescriptor newpfd = ret.NewDescriptor(pfd.Type, pfd.SubType, pfd.Group, pfd.Instance);
+					Interfaces.Files.IPackedFileDescriptor newpfd = ret.NewDescriptor(
+						pfd.Type,
+						pfd.SubType,
+						pfd.Group,
+						pfd.Instance
+					);
 					newpfd.UserData = fl.UncompressedData;
 					ret.Add(newpfd);
 				}
 			}
 
 			//Update TXMT Files for the Face
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = ret.FindFiles(Data.MetaData.TXMT);
+			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = ret.FindFiles(
+				Data.MetaData.TXMT
+			);
 			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				SimPe.Plugin.Rcol rcol = new GenericRcol(null, false);
@@ -810,7 +1019,12 @@ namespace SimPe.Plugin
 				string eyecolorGuid2 = null;
 				if (!this.fromTemplate)
 				{
-					Interfaces.Files.IPackedFileDescriptor adna = ngbh.FindFile(0xEBFEE33F, 0, Data.MetaData.LOCAL_GROUP, sarchetype.Instance);
+					Interfaces.Files.IPackedFileDescriptor adna = ngbh.FindFile(
+						0xEBFEE33F,
+						0,
+						Data.MetaData.LOCAL_GROUP,
+						sarchetype.Instance
+					);
 					using (SimPe.PackedFiles.Wrapper.Cpf cpf = new Cpf())
 					{
 						cpf.ProcessData(adna, ngbh);
@@ -820,7 +1034,11 @@ namespace SimPe.Plugin
 				}
 				else
 				{
-					eyecolorGuid1 = this.GetCpfProperty(this.archetype, 0xAC598EAC, "eyecolor");
+					eyecolorGuid1 = this.GetCpfProperty(
+						this.archetype,
+						0xAC598EAC,
+						"eyecolor"
+					);
 					eyecolorGuid2 = eyecolorGuid1;
 				}
 
@@ -828,7 +1046,12 @@ namespace SimPe.Plugin
 				// (if applicable)
 				if (eyecolorGuid1 != null && eyecolorGuid1.Length > 0)
 				{
-					Interfaces.Files.IPackedFileDescriptor dna = ngbh.FindFile(0xEBFEE33F, 0, Data.MetaData.LOCAL_GROUP, spatient.Instance);
+					Interfaces.Files.IPackedFileDescriptor dna = ngbh.FindFile(
+						0xEBFEE33F,
+						0,
+						Data.MetaData.LOCAL_GROUP,
+						spatient.Instance
+					);
 					if (dna != null)
 					{
 						SimPe.PackedFiles.Wrapper.Cpf cpf = new Cpf();

@@ -8,10 +8,8 @@ namespace SimPe.Plugin.Downloads
 	public abstract class SimpleTypeHandler : Downloads.ITypeHandler, System.IDisposable
 	{
 		protected PackageInfo nfo;
-		public SimpleTypeHandler()
-		{
-			
-		}
+
+		public SimpleTypeHandler() { }
 
 		protected abstract void SetName(SimPe.Interfaces.Files.IPackageFile pkg);
 		protected abstract void SetImage(SimPe.Interfaces.Files.IPackageFile pkg);
@@ -20,19 +18,22 @@ namespace SimPe.Plugin.Downloads
 		{
 			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(type);
 
-			if (pfds.Length>0)
+			if (pfds.Length > 0)
 			{
-				SimPe.PackedFiles.Wrapper.StrItemList items = Downloads.DefaultTypeHandler.GetCtssItems(pfds[0], pkg);
-				if (items.Length>0) nfo.Name = items[0].Title;
+				SimPe.PackedFiles.Wrapper.StrItemList items =
+					Downloads.DefaultTypeHandler.GetCtssItems(pfds[0], pkg);
+				if (items.Length > 0)
+					nfo.Name = items[0].Title;
 			}
 		}
 
 		protected void SetImage(uint type, SimPe.Interfaces.Files.IPackageFile pkg)
 		{
 			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(type);
-			if (pfds.Length>0) 
+			if (pfds.Length > 0)
 			{
-				SimPe.PackedFiles.Wrapper.Picture pic = new SimPe.PackedFiles.Wrapper.Picture();
+				SimPe.PackedFiles.Wrapper.Picture pic =
+					new SimPe.PackedFiles.Wrapper.Picture();
 				pic.ProcessData(pfds[0], pkg);
 				nfo.Image = pic.Image;
 			}
@@ -40,33 +41,35 @@ namespace SimPe.Plugin.Downloads
 			nfo.KnockoutThumbnail = false;
 		}
 
-		protected virtual void BeforeLoadContent(SimPe.Cache.PackageType type, SimPe.Interfaces.Files.IPackageFile pkg)
-		{
-		}
+		protected virtual void BeforeLoadContent(
+			SimPe.Cache.PackageType type,
+			SimPe.Interfaces.Files.IPackageFile pkg
+		) { }
 
-		protected virtual void AfterLoadContent(SimPe.Cache.PackageType type, SimPe.Interfaces.Files.IPackageFile pkg)
-		{
-		}
+		protected virtual void AfterLoadContent(
+			SimPe.Cache.PackageType type,
+			SimPe.Interfaces.Files.IPackageFile pkg
+		) { }
 
 		#region ITypeHandler Member
 
-		
 
-		public void LoadContent(SimPe.Cache.PackageType type, SimPe.Interfaces.Files.IPackageFile pkg)
+
+		public void LoadContent(
+			SimPe.Cache.PackageType type,
+			SimPe.Interfaces.Files.IPackageFile pkg
+		)
 		{
 			nfo = new PackageInfo(pkg);
-			BeforeLoadContent(type, pkg);			
+			BeforeLoadContent(type, pkg);
 			SetName(pkg);
 			SetImage(pkg);
 			AfterLoadContent(type, pkg);
-		}		
+		}
 
 		public IPackageInfo[] Objects
 		{
-			get
-			{
-				return new IPackageInfo[] {nfo};
-			}
+			get { return new IPackageInfo[] { nfo }; }
 		}
 
 		#endregion

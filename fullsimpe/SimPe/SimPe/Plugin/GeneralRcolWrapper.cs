@@ -28,7 +28,7 @@ namespace SimPe.Plugin
 	/// This is the actual FileWrapper
 	/// </summary>
 	/// <remarks>
-	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads 
+	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
 	public class GenericRcol : Rcol, IScenegraphItem
@@ -36,18 +36,17 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public GenericRcol(Interfaces.IProviderRegistry provider, bool fast) : base(provider, fast)
-		{
-		}
+		public GenericRcol(Interfaces.IProviderRegistry provider, bool fast)
+			: base(provider, fast) { }
 
-		public GenericRcol() : base() {}
+		public GenericRcol()
+			: base() { }
 
-		
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
 			return new RcolUI();
-		}		
+		}
 		#endregion
 
 
@@ -60,21 +59,26 @@ namespace SimPe.Plugin
 				str += this.FileName;
 				str += ", references=";
 				Hashtable map = this.ReferenceChains;
-				foreach (string s in map.Keys) 
+				foreach (string s in map.Keys)
 				{
-					str += s+": ";
-					foreach (Interfaces.Files.IPackedFileDescriptor pfd in (ArrayList)map[s])
+					str += s + ": ";
+					foreach (
+						Interfaces.Files.IPackedFileDescriptor pfd in (ArrayList)map[s]
+					)
 					{
-						str += pfd.Filename+" ("+pfd.ToString()+") | ";						
+						str += pfd.Filename + " (" + pfd.ToString() + ") | ";
 					}
-					if (((ArrayList)map[s]).Count>0) str = str.Substring(0, str.Length-2);
+					if (((ArrayList)map[s]).Count > 0)
+						str = str.Substring(0, str.Length - 2);
 					str += ",";
 				}
-				if (map.Count>0) str = str.Substring(0, str.Length-1);
+				if (map.Count > 0)
+					str = str.Substring(0, str.Length - 1);
 
 				return str;
 			}
 		}
+
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
@@ -82,33 +86,31 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				uint[] types = {
-								   ScenegraphHelper.TXMT,
-								   ScenegraphHelper.CRES,
-								   ScenegraphHelper.GMND,
-								   ScenegraphHelper.GMDC,
-								   ScenegraphHelper.SHPE,
-								   Data.MetaData.ANIM,   //ANIM
-								   0x4D51F042,	//CINE
-								   Data.MetaData.LDIR,	
-								   Data.MetaData.LAMB,
-								   Data.MetaData.LPNT,
-								   Data.MetaData.LSPT
-							   };
+				uint[] types =
+				{
+					ScenegraphHelper.TXMT,
+					ScenegraphHelper.CRES,
+					ScenegraphHelper.GMND,
+					ScenegraphHelper.GMDC,
+					ScenegraphHelper.SHPE,
+					Data.MetaData.ANIM, //ANIM
+					0x4D51F042, //CINE
+					Data.MetaData.LDIR,
+					Data.MetaData.LAMB,
+					Data.MetaData.LPNT,
+					Data.MetaData.LSPT,
+				};
 				return types;
 			}
 		}
 
-		#endregion		
+		#endregion
 
 		/// <summary>
 		/// Subcallses can reimplement this Method to add additional References
 		/// </summary>
 		/// <param name="refmap">The Reference Map, Keys are the name of the Reference type, values are ArrayLists containing IPackedFileDescriptors</param>
-		protected virtual void FindReferences(Hashtable refmap)
-		{
-		}
-
+		protected virtual void FindReferences(Hashtable refmap) { }
 
 		/// <summary>
 		/// Add te References stored in the Reference Section
@@ -117,14 +119,18 @@ namespace SimPe.Plugin
 		void FindGenericReferences(Hashtable refmap)
 		{
 			ArrayList list = new ArrayList();
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in this.ReferencedFiles) list.Add(pfd);
-			
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in this.ReferencedFiles)
+				list.Add(pfd);
+
 			refmap["Generic"] = list;
 
 			//now check each stored block if it implements IScenegraphBlock
 			foreach (IRcolBlock irb in this.Blocks)
 			{
-				if (typeof(IScenegraphBlock) == irb.GetType().GetInterface("IScenegraphBlock"))
+				if (
+					typeof(IScenegraphBlock)
+					== irb.GetType().GetInterface("IScenegraphBlock")
+				)
 				{
 					IScenegraphBlock sgb = (IScenegraphBlock)irb;
 					sgb.ReferencedItems(refmap, this.FileDescriptor.Group);
@@ -132,34 +138,50 @@ namespace SimPe.Plugin
 			}
 		}
 
-		#region IScenegraphItem Member	
-		public SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem FindReferencedType(uint type)
+		#region IScenegraphItem Member
+		public SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem FindReferencedType(
+			uint type
+		)
 		{
-			
-
 			foreach (ArrayList list in ReferenceChains.Values)
-				foreach (object o in list)
+			foreach (object o in list)
+			{
+				SimPe.Interfaces.Files.IPackedFileDescriptor opfd =
+					(SimPe.Interfaces.Files.IPackedFileDescriptor)o;
+				if (opfd.Type == type)
 				{
-					SimPe.Interfaces.Files.IPackedFileDescriptor opfd = (SimPe.Interfaces.Files.IPackedFileDescriptor)o;					
-					if (opfd.Type == type) 
+					SimPe.Interfaces.Files.IPackedFileDescriptor pfd = Package.FindFile(
+						opfd
+					);
+					if (pfd == null)
 					{
-						SimPe.Interfaces.Files.IPackedFileDescriptor pfd = Package.FindFile(opfd);
-						if (pfd==null) { opfd.Group = this.FileDescriptor.Group; pfd = Package.FindFile(opfd); }
-						if (pfd==null) { opfd.Group = Data.MetaData.LOCAL_GROUP; pfd = Package.FindFile(opfd); }						
-						SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item = null;
-						if (pfd == null) 
-						{				
-							FileTable.FileIndex.Load();
-							SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFile((SimPe.Interfaces.Files.IPackedFileDescriptor)o, null);										
-							if (items.Length>0) item = items[0];
-						}
-						else 					
-							item = FileTable.FileIndex.CreateFileIndexItem(pfd, Package);					
-
-						if (item!=null) 
-							return item;
+						opfd.Group = this.FileDescriptor.Group;
+						pfd = Package.FindFile(opfd);
 					}
+					if (pfd == null)
+					{
+						opfd.Group = Data.MetaData.LOCAL_GROUP;
+						pfd = Package.FindFile(opfd);
+					}
+					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item = null;
+					if (pfd == null)
+					{
+						FileTable.FileIndex.Load();
+						SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+							FileTable.FileIndex.FindFile(
+								(SimPe.Interfaces.Files.IPackedFileDescriptor)o,
+								null
+							);
+						if (items.Length > 0)
+							item = items[0];
+					}
+					else
+						item = FileTable.FileIndex.CreateFileIndexItem(pfd, Package);
+
+					if (item != null)
+						return item;
 				}
+			}
 			return null;
 		}
 

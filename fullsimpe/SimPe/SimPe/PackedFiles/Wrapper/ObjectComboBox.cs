@@ -20,8 +20,8 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using SimPe.Cache;
 
@@ -38,18 +38,20 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the MemoryObject Cache
 		/// </summary>
-		public static MemoryCacheFile ObjectCache 
+		public static MemoryCacheFile ObjectCache
 		{
-			get 
+			get
 			{
-				if (cachefile==null) cachefile = MemoryCacheFile.InitCacheFile();				
+				if (cachefile == null)
+					cachefile = MemoryCacheFile.InitCacheFile();
 
 				return cachefile;
 			}
 		}
 
-        private System.Windows.Forms.ComboBox cb;
-		/// <summary> 
+		private System.Windows.Forms.ComboBox cb;
+
+		/// <summary>
 		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
@@ -59,112 +61,141 @@ namespace SimPe.PackedFiles.Wrapper
 			// Required designer variable.
 			InitializeComponent();
 
-			
-			loaded = false;	
+			loaded = false;
 			si = true;
 			sm = false;
-			st = false;		
+			st = false;
 			sjd = false;
 			sa = false;
 			sb = false;
 			sk = false;
 		}
 
-		/// <summary> 
+		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
-			{				
-				if(components != null)
+			if (disposing)
+			{
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
 
 		#region Windows Form Designer generated code
-		/// <summary> 
-		/// Required method for Designer support - do not modify 
+		/// <summary>
+		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.cb = new System.Windows.Forms.ComboBox();
+			this.cb = new System.Windows.Forms.ComboBox();
 			this.SuspendLayout();
-			// 
+			//
 			// cb
-			// 
+			//
 			this.cb.Dock = System.Windows.Forms.DockStyle.Top;
-			this.cb.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.cb.Font = new System.Drawing.Font(
+				"Tahoma",
+				8.25F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.cb.Location = new System.Drawing.Point(0, 0);
 			this.cb.Name = "cb";
 			this.cb.Size = new System.Drawing.Size(150, 21);
 			this.cb.TabIndex = 0;
 			this.cb.TextChanged += new System.EventHandler(this.cb_TextChanged);
-			this.cb.SelectedIndexChanged += new System.EventHandler(this.cb_SelectedIndexChanged);
-			// 
+			this.cb.SelectedIndexChanged += new System.EventHandler(
+				this.cb_SelectedIndexChanged
+			);
+			//
 			// ObjectComboBox
-			// 
+			//
 			this.Controls.Add(this.cb);
 			this.Name = "ObjectComboBox";
 			this.Size = new System.Drawing.Size(150, 24);
 			this.ResumeLayout(false);
-
 		}
 		#endregion
 
 		void SetContent()
 		{
 			cb.BeginUpdate();
-			try 
+			try
 			{
-				if (!loaded) return;
-                if (this.DesignMode) return;
+				if (!loaded)
+					return;
+				if (this.DesignMode)
+					return;
 
 				cb.Items.Clear();
 				cb.Sorted = false;
 				foreach (SimPe.Cache.MemoryCacheItem mci in ObjectCache.List)
 				{
-                    bool use = false;
-					if (this.ShowInventory && mci.IsInventory && !mci.IsToken && !mci.IsMemory && !mci.IsJobData) use = true;
-					if (this.ShowTokens && mci.IsToken) use = true;
-					if (this.ShowMemories && !mci.IsToken && mci.IsMemory) use = true;
-					if (this.ShowJobData && mci.IsJobData) use = true;
-					if (this.ShowAspiration && mci.IsAspiration) use = true;
-					if (this.ShowBadge && mci.IsBadge) use = true;
-					if (this.ShowSkill && mci.IsSkill) use = true;
+					bool use = false;
+					if (
+						this.ShowInventory
+						&& mci.IsInventory
+						&& !mci.IsToken
+						&& !mci.IsMemory
+						&& !mci.IsJobData
+					)
+						use = true;
+					if (this.ShowTokens && mci.IsToken)
+						use = true;
+					if (this.ShowMemories && !mci.IsToken && mci.IsMemory)
+						use = true;
+					if (this.ShowJobData && mci.IsJobData)
+						use = true;
+					if (this.ShowAspiration && mci.IsAspiration)
+						use = true;
+					if (this.ShowBadge && mci.IsBadge)
+						use = true;
+					if (this.ShowSkill && mci.IsSkill)
+						use = true;
 
-					if (!use) continue;
+					if (!use)
+						continue;
 
-                    SimPe.Interfaces.IAlias a = new SimPe.Data.StaticAlias(mci.Guid,
-                        mci.Name + " {" + mci.ObjdName + "}",
-                        new object[] { mci });
+					SimPe.Interfaces.IAlias a = new SimPe.Data.StaticAlias(
+						mci.Guid,
+						mci.Name + " {" + mci.ObjdName + "}",
+						new object[] { mci }
+					);
 
 					cb.Items.Add(a);
-				}		
-				cb.Sorted = true;			
-				
-			} 
+				}
+				cb.Sorted = true;
+			}
 			catch (Exception ex)
 			{
 				Console.WriteLine(ex.Message);
 			}
 			finally
 			{
-			    cb.EndUpdate();
+				cb.EndUpdate();
 			}
 		}
 
-		bool si, st, sm, sjd, sa, sb, sk;
+		bool si,
+			st,
+			sm,
+			sjd,
+			sa,
+			sb,
+			sk;
 		public bool ShowTokens
 		{
-			get {return st;}
-			set 
+			get { return st; }
+			set
 			{
-				if (st!=value)
+				if (st != value)
 				{
 					st = value;
 					SetContent();
@@ -174,10 +205,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool ShowAspiration
 		{
-			get {return sa;}
-			set 
+			get { return sa; }
+			set
 			{
-				if (sa!=value)
+				if (sa != value)
 				{
 					sa = value;
 					SetContent();
@@ -187,10 +218,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool ShowBadge
 		{
-			get {return sb;}
-			set 
+			get { return sb; }
+			set
 			{
-				if (sb!=value)
+				if (sb != value)
 				{
 					sb = value;
 					SetContent();
@@ -200,10 +231,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool ShowSkill
 		{
-			get {return sk;}
-			set 
+			get { return sk; }
+			set
 			{
-				if (sk!=value)
+				if (sk != value)
 				{
 					sk = value;
 					SetContent();
@@ -213,10 +244,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool ShowMemories
 		{
-			get {return sm;}
-			set 
+			get { return sm; }
+			set
 			{
-				if (sm!=value)
+				if (sm != value)
 				{
 					sm = value;
 					SetContent();
@@ -226,10 +257,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool ShowInventory
 		{
-			get {return si;}
-			set 
+			get { return si; }
+			set
 			{
-				if (si!=value)
+				if (si != value)
 				{
 					si = value;
 					SetContent();
@@ -239,41 +270,42 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool ShowJobData
 		{
-			get {return sjd;}
-			set 
+			get { return sjd; }
+			set
 			{
-				if (sjd!=value)
+				if (sjd != value)
 				{
 					sjd = value;
 					SetContent();
 				}
 			}
 		}
-		
+
 		public uint SelectedGuid
 		{
-			get 
+			get
 			{
 				SimPe.Cache.MemoryCacheItem mci = SelectedItem;
-				
-				if (mci==null) return 0xffffffff;
+
+				if (mci == null)
+					return 0xffffffff;
 				return mci.Guid;
 			}
 			set
 			{
 				int id = -1;
-				int ct=0;
+				int ct = 0;
 				foreach (SimPe.Interfaces.IAlias a in cb.Items)
 				{
-					SimPe.Cache.MemoryCacheItem mci = a.Tag[0] as SimPe.Cache.MemoryCacheItem;
-					if (mci.Guid == value) 
+					SimPe.Cache.MemoryCacheItem mci =
+						a.Tag[0] as SimPe.Cache.MemoryCacheItem;
+					if (mci.Guid == value)
 					{
 						id = ct;
 						break;
-					}					
+					}
 					ct++;
 				}
-				
 
 				cb.SelectedIndex = id;
 			}
@@ -281,26 +313,28 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public SimPe.Cache.MemoryCacheItem SelectedItem
 		{
-			get 
+			get
 			{
-				if (cb.SelectedItem==null) return null;
+				if (cb.SelectedItem == null)
+					return null;
 				SimPe.Interfaces.IAlias a = cb.SelectedItem as SimPe.Interfaces.IAlias;
 				return a.Tag[0] as SimPe.Cache.MemoryCacheItem;
 			}
 			set
 			{
 				int id = -1;
-				if (value!=null) 
+				if (value != null)
 				{
-					int ct=0;
+					int ct = 0;
 					foreach (SimPe.Interfaces.IAlias a in cb.Items)
 					{
-						SimPe.Cache.MemoryCacheItem mci = a.Tag[0] as SimPe.Cache.MemoryCacheItem;
-						if (mci.Guid == value.Guid) 
+						SimPe.Cache.MemoryCacheItem mci =
+							a.Tag[0] as SimPe.Cache.MemoryCacheItem;
+						if (mci.Guid == value.Guid)
 						{
 							id = ct;
 							break;
-						}					
+						}
 						ct++;
 					}
 				}
@@ -310,6 +344,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		bool loaded;
+
 		public void Reload()
 		{
 			loaded = true;
@@ -318,21 +353,23 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		public event EventHandler SelectedObjectChanged;
+
 		private void cb_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if (SelectedObjectChanged!=null) SelectedObjectChanged(this, new EventArgs());
-		}		
+			if (SelectedObjectChanged != null)
+				SelectedObjectChanged(this, new EventArgs());
+		}
 
 		protected override void OnVisibleChanged(EventArgs e)
 		{
-			base.OnVisibleChanged (e);
-			if (!loaded && Visible) Reload();
+			base.OnVisibleChanged(e);
+			if (!loaded && Visible)
+				Reload();
 		}
 
 		private void cb_TextChanged(object sender, System.EventArgs e)
 		{
 			//cb.DroppedDown = true;
 		}
-
 	}
 }

@@ -14,12 +14,17 @@ namespace System.Windows.Forms
 	{
 		#region Interop-Defines
 		[DllImport("user32.dll")]
-		private	static extern IntPtr SendMessage(IntPtr hWnd, int msg,	IntPtr wPar, IntPtr	lPar);
+		private static extern IntPtr SendMessage(
+			IntPtr hWnd,
+			int msg,
+			IntPtr wPar,
+			IntPtr lPar
+		);
 
 		// ListView messages
-		private const int LVM_FIRST					= 0x1000;
-		private const int LVM_GETCOLUMNORDERARRAY	= (LVM_FIRST + 59);
-		
+		private const int LVM_FIRST = 0x1000;
+		private const int LVM_GETCOLUMNORDERARRAY = (LVM_FIRST + 59);
+
 		// Windows Messages
 		private const int WM_PAINT = 0x000F;
 		#endregion
@@ -37,8 +42,8 @@ namespace System.Windows.Forms
 		}
 
 		private ArrayList _embeddedControls = new ArrayList();
-		
-		public ListViewEx() {}
+
+		public ListViewEx() { }
 
 		/// <summary>
 		/// Retrieve the order in which columns appear
@@ -46,16 +51,23 @@ namespace System.Windows.Forms
 		/// <returns>Current display order of column indices</returns>
 		protected int[] GetColumnOrder()
 		{
-			IntPtr lPar	= Marshal.AllocHGlobal(Marshal.SizeOf(typeof(int)) * Columns.Count);
+			IntPtr lPar = Marshal.AllocHGlobal(
+				Marshal.SizeOf(typeof(int)) * Columns.Count
+			);
 
-			IntPtr res = SendMessage(Handle, LVM_GETCOLUMNORDERARRAY, new IntPtr(Columns.Count), lPar);
-			if (res.ToInt32() == 0)	// Something went wrong
+			IntPtr res = SendMessage(
+				Handle,
+				LVM_GETCOLUMNORDERARRAY,
+				new IntPtr(Columns.Count),
+				lPar
+			);
+			if (res.ToInt32() == 0) // Something went wrong
 			{
 				Marshal.FreeHGlobal(lPar);
 				return null;
 			}
 
-			int	[] order = new int[Columns.Count];
+			int[] order = new int[Columns.Count];
 			Marshal.Copy(lPar, order, 0, Columns.Count);
 
 			Marshal.FreeHGlobal(lPar);
@@ -81,25 +93,32 @@ namespace System.Windows.Forms
 				return subItemRect;
 
 			if (SubItem >= order.Length)
-				throw new IndexOutOfRangeException("SubItem "+SubItem+" out of range");
+				throw new IndexOutOfRangeException(
+					"SubItem " + SubItem + " out of range"
+				);
 
 			// Retrieve the bounds of the entire ListViewItem (all subitems)
 			Rectangle lviBounds = Item.GetBounds(ItemBoundsPortion.Entire);
-			int	subItemX = lviBounds.Left;
+			int subItemX = lviBounds.Left;
 
 			// Calculate the X position of the SubItem.
 			// Because the columns can be reordered we have to use Columns[order[i]] instead of Columns[i] !
 			ColumnHeader col;
 			int i;
-			for (i=0; i<order.Length; i++)
+			for (i = 0; i < order.Length; i++)
 			{
 				col = this.Columns[order[i]];
 				if (col.Index == SubItem)
 					break;
 				subItemX += col.Width;
 			}
- 
-			subItemRect	= new Rectangle(subItemX+1, lviBounds.Top+1, this.Columns[order[i]].Width-2, lviBounds.Height-1);
+
+			subItemRect = new Rectangle(
+				subItemX + 1,
+				lviBounds.Top + 1,
+				this.Columns[order[i]].Width - 2,
+				lviBounds.Height - 1
+			);
 
 			return subItemRect;
 		}
@@ -112,8 +131,9 @@ namespace System.Windows.Forms
 		/// <param name="row">Index of row</param>
 		public void AddEmbeddedControl(Control c, int col, int row)
 		{
-			AddEmbeddedControl(c,col,row,DockStyle.Fill);
+			AddEmbeddedControl(c, col, row, DockStyle.Fill);
 		}
+
 		/// <summary>
 		/// Add a control to the ListView
 		/// </summary>
@@ -123,9 +143,9 @@ namespace System.Windows.Forms
 		/// <param name="dock">Location and resize behavior of embedded control</param>
 		public void AddEmbeddedControl(Control c, int col, int row, DockStyle dock)
 		{
-			if (c==null)
+			if (c == null)
 				throw new ArgumentNullException();
-			if (col>=Columns.Count || row>=Items.Count)
+			if (col >= Columns.Count || row >= Items.Count)
 				throw new ArgumentOutOfRangeException();
 
 			EmbeddedControl ec;
@@ -139,12 +159,10 @@ namespace System.Windows.Forms
 
 			// Add a Click event handler to select the ListView row when an embedded control is clicked
 			c.Click += new EventHandler(_embeddedControl_Click);
-			
+
 			this.Controls.Add(c);
 		}
-		
 
-		
 		/// <summary>
 		/// Remove a control from the ListView
 		/// </summary>
@@ -154,7 +172,7 @@ namespace System.Windows.Forms
 			if (c == null)
 				throw new ArgumentNullException();
 
-			for (int i=0; i<_embeddedControls.Count; i++)
+			for (int i = 0; i < _embeddedControls.Count; i++)
 			{
 				EmbeddedControl ec = (EmbeddedControl)_embeddedControls[i];
 				if (ec.Control == c)
@@ -167,7 +185,7 @@ namespace System.Windows.Forms
 			}
 			throw new Exception("Control not found!");
 		}
-		
+
 		/// <summary>
 		/// Retrieve the control embedded at a given location
 		/// </summary>
@@ -186,10 +204,7 @@ namespace System.Windows.Forms
 		[DefaultValue(View.LargeIcon)]
 		public new View View
 		{
-			get 
-			{
-				return base.View;
-			}
+			get { return base.View; }
 			set
 			{
 				// Embedded controls are rendered only when we're in Details mode
@@ -213,8 +228,10 @@ namespace System.Windows.Forms
 					{
 						Rectangle rc = this.GetSubItemBounds(ec.Item, ec.Column);
 
-						if ((this.HeaderStyle != ColumnHeaderStyle.None) &&
-							(rc.Top<this.Font.Height)) // Control overlaps ColumnHeader
+						if (
+							(this.HeaderStyle != ColumnHeaderStyle.None)
+							&& (rc.Top < this.Font.Height)
+						) // Control overlaps ColumnHeader
 						{
 							ec.Control.Visible = false;
 							continue;
@@ -235,11 +252,11 @@ namespace System.Windows.Forms
 								rc.Width = ec.Control.Width;
 								break;
 							case DockStyle.Bottom:
-								rc.Offset(0, rc.Height-ec.Control.Height);
+								rc.Offset(0, rc.Height - ec.Control.Height);
 								rc.Height = ec.Control.Height;
 								break;
 							case DockStyle.Right:
-								rc.Offset(rc.Width-ec.Control.Width, 0);
+								rc.Offset(rc.Width - ec.Control.Width, 0);
 								rc.Width = ec.Control.Width;
 								break;
 							case DockStyle.None:
@@ -252,7 +269,7 @@ namespace System.Windows.Forms
 					}
 					break;
 			}
-			base.WndProc (ref m);
+			base.WndProc(ref m);
 		}
 
 		private void _embeddedControl_Click(object sender, EventArgs e)
@@ -262,7 +279,7 @@ namespace System.Windows.Forms
 			{
 				if (ec.Control == (Control)sender)
 				{
-					if (this.SelectedItems.Count<=1)
+					if (this.SelectedItems.Count <= 1)
 					{
 						this.SelectedItems.Clear();
 						ec.Item.Selected = true;

@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.IO;
-using System.Globalization;
 using System.Collections;
+using System.Globalization;
+using System.IO;
 
 namespace SimPe.Plugin.Gmdc
 {
@@ -30,18 +30,21 @@ namespace SimPe.Plugin.Gmdc
 		public int VN;
 		public int VU;
 
-		public FaceSetCompare(ElementAlias alias, float v, float vn, float vu) : this(alias, (int)v, (int)vn, (int)vu) {}
+		public FaceSetCompare(ElementAlias alias, float v, float vn, float vu)
+			: this(alias, (int)v, (int)vn, (int)vu) { }
+
 		public FaceSetCompare(ElementAlias alias, int v, int vn, int vu)
 		{
 			V = GetAlias(alias.V, v);
 			VN = GetAlias(alias.VN, vn);
-			VU = GetAlias(alias.VU, vu);			
+			VU = GetAlias(alias.VU, vu);
 		}
 
 		int GetAlias(Hashtable alias, int index)
 		{
-			object o = alias[index-1];
-			if (o==null) return -1;
+			object o = alias[index - 1];
+			if (o == null)
+				return -1;
 			return (int)o;
 		}
 
@@ -52,21 +55,22 @@ namespace SimPe.Plugin.Gmdc
 
 		public override bool Equals(object obj)
 		{
-			if (obj==null) return false;
-			if (obj is FaceSetCompare) 
+			if (obj == null)
+				return false;
+			if (obj is FaceSetCompare)
 			{
 				FaceSetCompare e = (FaceSetCompare)obj;
 				bool v = V.Equals(e.V);
 				bool vn = VN.Equals(e.VN);
-				bool vu =VU.Equals(e.VU);
+				bool vu = VU.Equals(e.VU);
 
-				return v&&vn&&vu;
+				return v && vn && vu;
 			}
-			return base.Equals (obj);
+			return base.Equals(obj);
 		}
 	}
 
-	internal class ElementAlias 
+	internal class ElementAlias
 	{
 		public Hashtable V = new Hashtable();
 		public Hashtable VN = new Hashtable();
@@ -79,7 +83,11 @@ namespace SimPe.Plugin.Gmdc
 		public GmdcElementValueBase VN;
 		public GmdcElementValueBase VU;
 
-		public ElementSetCompare(GmdcElementValueBase v, GmdcElementValueBase vn, GmdcElementValueBase vu)
+		public ElementSetCompare(
+			GmdcElementValueBase v,
+			GmdcElementValueBase vn,
+			GmdcElementValueBase vu
+		)
 		{
 			V = v;
 			VN = vn;
@@ -88,47 +96,52 @@ namespace SimPe.Plugin.Gmdc
 
 		public override int GetHashCode()
 		{
-			return base.GetHashCode ();
+			return base.GetHashCode();
 		}
 
 		public override bool Equals(object obj)
 		{
-			if (obj==null) return false;
-			if (obj is ElementSetCompare) 
+			if (obj == null)
+				return false;
+			if (obj is ElementSetCompare)
 			{
 				ElementSetCompare e = (ElementSetCompare)obj;
-				bool v = e.V==null&&V==null;
-				bool vn = e.VN==null&&VN==null;
-				bool vu = e.VU==null&&VU==null;
+				bool v = e.V == null && V == null;
+				bool vn = e.VN == null && VN == null;
+				bool vu = e.VU == null && VU == null;
 
-				if (V!=null) v = V.Equals(e.V);
-				if (VN!=null) vn = VN.Equals(e.VN);
-				if (VU!=null) vu = VU.Equals(e.VU);
+				if (V != null)
+					v = V.Equals(e.V);
+				if (VN != null)
+					vn = VN.Equals(e.VN);
+				if (VU != null)
+					vu = VU.Equals(e.VU);
 
-				return v&&vn&&vu;
+				return v && vn && vu;
 			}
-			return base.Equals (obj);
+			return base.Equals(obj);
 		}
-
 	}
+
 	/// <summary>
 	/// Implement this abstract class to create a new Gmdc Importer Plugin.
 	/// </summary>
 	public abstract class GmdcImporterBase : AbstractGmdcImporter
-	{		
+	{
 		/// <summary>
 		/// default Constructor
-		/// </summary>		
-		public GmdcImporterBase() : base() {}
+		/// </summary>
+		public GmdcImporterBase()
+			: base() { }
 
-		#region AbstractGmdcImporter Implementation	
+		#region AbstractGmdcImporter Implementation
 
 		/// <summary>
-		/// This Method is called during the Import to process the input Data and 
+		/// This Method is called during the Import to process the input Data and
 		/// generate a vaild Groups ArrayList.
 		/// </summary>
 		/// <returns>A List of all available Groups</returns>
-		/// <remarks>You can use the Input and Gmdc Member to acces the Stream and 
+		/// <remarks>You can use the Input and Gmdc Member to acces the Stream and
 		/// the Gmdc File that should be changed</remarks>
 		protected override ImportedGroups LoadGroups()
 		{
@@ -141,12 +154,14 @@ namespace SimPe.Plugin.Gmdc
 
 		/// <summary>
 		/// stores the List of parsed Vertices (as SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat)
-		/// </summary>		
+		/// </summary>
 		protected ArrayList vertices;
+
 		/// <summary>
 		/// stores the List of parsed Normals (as SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat)
 		/// </summary>
 		protected ArrayList normals;
+
 		/// <summary>
 		/// stores the List of parsed UVCoordinates (as SimPe.Plugin.Gmdc.GmdcElementValueTwoFloat)
 		/// </summary>
@@ -156,6 +171,7 @@ namespace SimPe.Plugin.Gmdc
 		/// Keys=GroupNames, values = faces List
 		/// </summary>
 		protected Hashtable groups;
+
 		/// <summary>
 		/// Contains the Faces List for the current Group (as SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat)
 		/// </summary>
@@ -168,37 +184,38 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="grps">The List that should receive the Group Data</param>
 		void ProcessLists(ImportedGroups grps)
 		{
-			foreach (string k in groups.Keys) 
+			foreach (string k in groups.Keys)
 			{
 				faces = (ArrayList)groups[k];
 
 				//ignore empty groups
-				if (faces.Count==0) continue;
+				if (faces.Count == 0)
+					continue;
 
-				ImportedGroup g = PrepareGroup();								
+				ImportedGroup g = PrepareGroup();
 				g.Group.Name = k;
 				BuildGroup(g);
 
 				grps.Add(g);
 			}
 		}
-		
+
 		/// <summary>
 		/// Add a new Value to the element with the given Index
 		/// </summary>
 		/// <param name="g">The current Group</param>
 		/// <param name="index">Index of the Element</param>
 		/// <param name="val">the Value you want to add</param>
-		void AddElement(ImportedGroup g, int index, object val, int slotindex) 
+		void AddElement(ImportedGroup g, int index, object val, int slotindex)
 		{
-			if (slotindex==-1)
+			if (slotindex == -1)
 				g.Elements[index].Values.Add(val);
-			else 
+			else
 			{
-				while (g.Elements[index].Values.Count<=slotindex) g.Elements[index].Values.Add(null);
+				while (g.Elements[index].Values.Count <= slotindex)
+					g.Elements[index].Values.Add(null);
 				g.Elements[index].Values[slotindex] = val as Gmdc.GmdcElementValueBase;
 			}
-			
 		}
 
 		/// <summary>
@@ -207,11 +224,17 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="g">The current Group</param>
 		/// <param name="index">Index of the Element</param>
 		/// <param name="val">the Value you want to add</param>
-		void FillMissingElements(ImportedGroup g, int index, Gmdc.GmdcElementValueBase val) 
+		void FillMissingElements(
+			ImportedGroup g,
+			int index,
+			Gmdc.GmdcElementValueBase val
+		)
 		{
-			if (val==null) return;
-			for (int i=0; i< g.Elements[index].Values.Count; i++)
-				if (g.Elements[index].Values[i]==null) g.Elements[index].Values[i] = val;						
+			if (val == null)
+				return;
+			for (int i = 0; i < g.Elements[index].Values.Count; i++)
+				if (g.Elements[index].Values[i] == null)
+					g.Elements[index].Values[i] = val;
 		}
 
 		void BuildAliasMap(Hashtable alias, ArrayList list)
@@ -219,21 +242,21 @@ namespace SimPe.Plugin.Gmdc
 			Hashtable fv = new Hashtable();
 
 			//remove duplicates
-			for (int i=0; i<list.Count; i++)
-			{				
+			for (int i = 0; i < list.Count; i++)
+			{
 				//get an Element we can use to compare the current Content
-				GmdcElementValueBase e = (GmdcElementValueBase)list[i];								
+				GmdcElementValueBase e = (GmdcElementValueBase)list[i];
 
 				//check if we already have this combination
 				object o = fv[e];
-				
+
 				//if not found so far, add it to the map
-				if (o==null) 
+				if (o == null)
 				{
 					alias[i] = i;
 					fv[e] = i;
-				} 
-				else 
+				}
+				else
 				{
 					alias[i] = (int)o;
 				}
@@ -243,7 +266,8 @@ namespace SimPe.Plugin.Gmdc
 		bool CanKeepOrder(ArrayList faces)
 		{
 			foreach (GmdcElementValueThreeFloat f in faces)
-				if (f.Data[0]!=f.Data[1] || f.Data[0]!=f.Data[2]) return false;
+				if (f.Data[0] != f.Data[1] || f.Data[0] != f.Data[2])
+					return false;
 
 			return true;
 		}
@@ -252,74 +276,82 @@ namespace SimPe.Plugin.Gmdc
 		/// Build a Single Group from the Member Data generated with LoadLists()
 		/// </summary>
 		/// <param name="g"></param>
-		/// <remarks>At this point, the faces Member contains the face List for 
+		/// <remarks>At this point, the faces Member contains the face List for
 		/// the current Group</remarks>
 		void BuildGroup(ImportedGroup g)
-		{			
+		{
 			ArrayList fv = new ArrayList();
 			ElementAlias alias = new ElementAlias();
 			Hashtable facealias = new Hashtable();
 
 			g.SetKeepOrder(CanKeepOrder(faces));
 
-			
 			BuildAliasMap(alias.V, vertices);
 			BuildAliasMap(alias.VN, normals);
 			BuildAliasMap(alias.VU, uvmaps);
 
-
 			//Build the Face/Element List
-			for (int x=0; x<faces.Count; x++)
+			for (int x = 0; x < faces.Count; x++)
 			{
 				GmdcElementValueThreeFloat f = (GmdcElementValueThreeFloat)faces[x];
 
-				FaceSetCompare fc = new FaceSetCompare(alias, f.Data[0], f.Data[2], f.Data[1]);
-
+				FaceSetCompare fc = new FaceSetCompare(
+					alias,
+					f.Data[0],
+					f.Data[2],
+					f.Data[1]
+				);
 
 				//check if we already have this combination
 				object o = facealias[fc];
 #if DEBUG
-				try 
+				try
 				{
 #endif
 					int c = g.Elements[0].Values.Count;
-					if (o==null) 
+					if (o == null)
 					{
-						if (fc.V>=0) 
+						if (fc.V >= 0)
 						{
 							int cv = -1;
-							if (g.KeepOrder) 
+							if (g.KeepOrder)
 							{
-								if (f.Data[0]>0) c = (int)f.Data[0]-1;
+								if (f.Data[0] > 0)
+									c = (int)f.Data[0] - 1;
 								cv = c;
 							}
-							
-							
+
 							AddElement(g, 0, vertices[fc.V], cv);
 							AddElement(g, 1, normals[fc.VN], cv);
-							AddElement(g, 2, uvmaps[fc.VU], cv);							
+							AddElement(g, 2, uvmaps[fc.VU], cv);
 						}
-						
-						facealias[fc] = c;						
-					} 
-					else 
-					{						
+
+						facealias[fc] = c;
+					}
+					else
+					{
 						c = (int)o;
 					}
 
-					if (fc.V>=0 || fc.VN>=0 || fc.VU>=0) g.Group.Faces.Add(c);
+					if (fc.V >= 0 || fc.VN >= 0 || fc.VU >= 0)
+						g.Group.Faces.Add(c);
 #if DEBUG
-				} 
+				}
 				catch (Exception ex)
 				{
-					FaceSetCompare ft = new FaceSetCompare(alias, f.Data[0], f.Data[2], f.Data[1]);
+					FaceSetCompare ft = new FaceSetCompare(
+						alias,
+						f.Data[0],
+						f.Data[2],
+						f.Data[1]
+					);
 					Helper.ExceptionMessage(ex);
 					return;
 				}
-#endif				
+#endif
 			}
 
-			if (g.KeepOrder) 
+			if (g.KeepOrder)
 			{
 				///Make sure all slots in the Elemnts are set
 				FillMissingElements(g, 0, new Gmdc.GmdcElementValueThreeFloat(0, 0, 0));
@@ -332,7 +364,7 @@ namespace SimPe.Plugin.Gmdc
 		/// Build a Single Group from the Member Data generated with LoadLists()
 		/// </summary>
 		/// <param name="g"></param>
-		/// <remarks>At this point, the faces Member contains the face List for 
+		/// <remarks>At this point, the faces Member contains the face List for
 		/// the current Group</remarks>
 		void BuildGroupOld(ImportedGroup g)
 		{
@@ -342,7 +374,7 @@ namespace SimPe.Plugin.Gmdc
 			Hashtable vnalias = new Hashtable();
 			Hashtable vtalias = new Hashtable();
 
-			for (int x=0; x<faces.Count; x++)
+			for (int x = 0; x < faces.Count; x++)
 			{
 				GmdcElementValueThreeFloat f = (GmdcElementValueThreeFloat)faces[x];
 				int v = (int)f.Data[0];
@@ -352,123 +384,142 @@ namespace SimPe.Plugin.Gmdc
 				bool newvn = false;
 				bool newvt = false;
 
-				if (v<=0) throw new Exception("Zero Vertex Index Found!");
-				try 
+				if (v <= 0)
+					throw new Exception("Zero Vertex Index Found!");
+				try
 				{
 					//new Element, so add it to the Map and the List
-					if (!valias.ContainsKey(v)) 
+					if (!valias.ContainsKey(v))
 					{
 						ArrayList l = new ArrayList();
 						l.Add(g.Elements[0].Values.Count);
 						valias[v] = l;
-						AddElement(g, 0, vertices[v-1], -1);
+						AddElement(g, 0, vertices[v - 1], -1);
 						newv = true;
 					}
-				
 
-					if (vn>0) 
+					if (vn > 0)
 					{
 						//new Element, so add it to the Map and the List
-						if (!vnalias.ContainsKey(vn)) 
+						if (!vnalias.ContainsKey(vn))
 						{
 							ArrayList l = new ArrayList();
 							l.Add(g.Elements[1].Values.Count);
 							vnalias[vn] = l;
-							AddElement(g, 1, normals[vn-1], -1);
+							AddElement(g, 1, normals[vn - 1], -1);
 							newvn = true;
 						}
 					}
-				
 
-					if (vt>0)
+					if (vt > 0)
 					{
 						//new Element, so add it to the Map and the List
-						if (!vtalias.ContainsKey(vt)) 
+						if (!vtalias.ContainsKey(vt))
 						{
 							ArrayList l = new ArrayList();
 							l.Add(g.Elements[2].Values.Count);
 							vtalias[vt] = l;
-							AddElement(g, 2, uvmaps[vt-1], -1);	
+							AddElement(g, 2, uvmaps[vt - 1], -1);
 							newvt = true;
 						}
-					} 
-			
+					}
+
 					//Now get a List of all position where we can find an instance of the wanted FaceItem
 					ArrayList lv = (ArrayList)valias[v];
-					if (lv==null) 
+					if (lv == null)
 					{
 						lv = new ArrayList();
 						lv.Add(-1);
 					}
 					ArrayList lvn = (ArrayList)vnalias[vn];
-					if (lvn==null) 
+					if (lvn == null)
 					{
 						lvn = new ArrayList();
 						lvn.Add(-1);
 					}
 					ArrayList lvt = (ArrayList)vtalias[vt];
-					if (lvt==null) 
+					if (lvt == null)
 					{
 						lvt = new ArrayList();
 						lvt.Add(-1);
 					}
-		
+
 					//We need something where als stored Indices are the same, so look for that
 					bool found = false;
-					if (faces.Count<0x1000) 
+					if (faces.Count < 0x1000)
 					{
-						for (int i=0; i<lv.Count; i++)
-							for (int j=0; j<lvn.Count; j++)
-								for (int k=0; k<lvt.Count; k++) 
+						for (int i = 0; i < lv.Count; i++)
+						for (int j = 0; j < lvn.Count; j++)
+						for (int k = 0; k < lvt.Count; k++)
+						{
+							if (
+								(
+									(int)lv[i] == (int)lvn[j]
+									|| (int)lv[i] == -1
+									|| (int)lvn[j] == -1
+								)
+								&& (
+									(int)lv[i] == (int)lvt[k]
+									|| (int)lv[i] == -1
+									|| (int)lvt[k] == -1
+								)
+								&& (
+									(int)lvn[j] == (int)lvt[k]
+									|| (int)lvt[k] == -1
+									|| (int)lvn[j] == -1
+								)
+							)
+							{
+								int val = (int)lv[i];
+								if (val == -1)
+									val = (int)lvn[j];
+								if (val == -1)
+									val = (int)lvt[k];
+								if (val != -1)
 								{
-									if (
-										((int)lv[i]==(int)lvn[j] || (int)lv[i]==-1 || (int)lvn[j]==-1) && 
-										((int)lv[i]==(int)lvt[k] || (int)lv[i]==-1 || (int)lvt[k]==-1) && 
-										((int)lvn[j]==(int)lvt[k] || (int)lvt[k]==-1 || (int)lvn[j]==-1)
-										) 
-									{
-										int val = (int)lv[i];
-										if (val==-1) val = (int)lvn[j];
-										if (val==-1) val = (int)lvt[k];
-										if (val!=-1) 
-										{
-											g.Group.Faces.Add(val);
-											found = true;
-										}
-									}
+									g.Group.Faces.Add(val);
+									found = true;
 								}
+							}
+						}
 					}
-				
+
 					//unfortunatley we did not find matching pairs, so add new Elements
-					if (!found) 
+					if (!found)
 					{
-						if (!newv && v>0) 
+						if (!newv && v > 0)
 						{
 							lv.Add(g.Elements[0].Values.Count);
-							AddElement(g, 0, vertices[v-1], -1);
+							AddElement(g, 0, vertices[v - 1], -1);
 						}
 
-						if (!newvn && vn>0)
+						if (!newvn && vn > 0)
 						{
 							lvn.Add(g.Elements[1].Values.Count);
-							AddElement(g, 1, normals[vn-1], -1);
+							AddElement(g, 1, normals[vn - 1], -1);
 						}
 
-						if (!newvt && vt>0) 
+						if (!newvt && vt > 0)
 						{
 							lvt.Add(g.Elements[2].Values.Count);
-							AddElement(g, 2, uvmaps[vt-1], -1);
-						}	
-					
-						if (g.Elements[0].Values.Count!=g.Elements[1].Values.Count || g.Elements[0].Values.Count!=g.Elements[2].Values.Count)
+							AddElement(g, 2, uvmaps[vt - 1], -1);
+						}
+
+						if (
+							g.Elements[0].Values.Count != g.Elements[1].Values.Count
+							|| g.Elements[0].Values.Count != g.Elements[2].Values.Count
+						)
 							throw new Exception("Element Lists are out of Sync");
 
-						g.Group.Faces.Add(g.Elements[0].Values.Count-1);
+						g.Group.Faces.Add(g.Elements[0].Values.Count - 1);
 					}
 				}
 				catch (Exception ex)
 				{
-					Exception nex = new Exception("Error while creating Group List", new Exception(this.ErrorMessage, ex));
+					Exception nex = new Exception(
+						"Error while creating Group List",
+						new Exception(this.ErrorMessage, ex)
+					);
 					this.error = "";
 					throw nex;
 				}
@@ -476,20 +527,20 @@ namespace SimPe.Plugin.Gmdc
 
 			/*int size = int.MaxValue;
 			//if we have an empty map, we will not add that section to the Link Element!
-			if (g.Elements[0].Values.Count>0) 
+			if (g.Elements[0].Values.Count>0)
 			{
 				g.Link.ReferencedElement.Add(0);
 				size = Math.Min(size, g.Elements[0].Values.Count);
 			}
-			if (g.Elements[1].Values.Count>0) 
+			if (g.Elements[1].Values.Count>0)
 			{
-				g.Link.ReferencedElement.Add(1);				
+				g.Link.ReferencedElement.Add(1);
 				size = Math.Min(size, g.Elements[1].Values.Count);
 			}
-			if (g.Elements[2].Values.Count>0) 
+			if (g.Elements[2].Values.Count>0)
 			{
 				g.Link.ReferencedElement.Add(2);
-				size = Math.Min(size, g.Elements[2].Values.Count);	
+				size = Math.Min(size, g.Elements[2].Values.Count);
 			}
 
 			if (size==int.MaxValue) size=0;
@@ -505,19 +556,19 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Initializes the <see cref="groups"/>, <see cref="vertices"/>, <see cref="normals"/> and <see cref="uvmaps"/> Lists
 		/// </summary>
-		/// <remarks>The <see cref="vertices"/> (SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat), 
-		/// <see cref="normals"/> (SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat) and 
-		/// <see cref="uvmaps"/> (SimPe.Plugin.Gmdc.GmdcElementValueTwoFloat) Lists contain 
+		/// <remarks>The <see cref="vertices"/> (SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat),
+		/// <see cref="normals"/> (SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat) and
+		/// <see cref="uvmaps"/> (SimPe.Plugin.Gmdc.GmdcElementValueTwoFloat) Lists contain
 		/// the actual Coordinates for the vertices, normals and uvcoordinates.
-		/// 
-		/// The <see cref="groups"/> Hashtable (key=name of a Meshgroup, 
-		/// value = <see cref="faces"/> (SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat) List) contains 
+		///
+		/// The <see cref="groups"/> Hashtable (key=name of a Meshgroup,
+		/// value = <see cref="faces"/> (SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat) List) contains
 		/// the Listing of all available faces in a Group.
-		/// 
-		/// The SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat Members of the faces List 
+		///
+		/// The SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat Members of the faces List
 		/// enumerate the Vertex (data[0]), Normal (data[2]) and UVCoordinate (data[1])
 		/// Indices in the corresponding Lists.
 		/// </remarks>
-		protected abstract void LoadLists();		
+		protected abstract void LoadLists();
 	}
 }

@@ -27,8 +27,9 @@ namespace SimPe.Cache
 	public enum RcolCacheItemType : byte
 	{
 		Wallmask = 0,
-		Unknown = 0xff
+		Unknown = 0xff,
 	};
+
 	/// <summary>
 	/// Contains one RcolCacheItem
 	/// </summary>
@@ -40,18 +41,19 @@ namespace SimPe.Cache
 		public const byte VERSION = 1;
 
 		public RcolCacheItem()
-		{			
+		{
 			version = VERSION;
 			resourcename = "";
-			modelname = "";	
+			modelname = "";
 			rtp = RcolCacheItemType.Unknown;
-	
+
 			pfd = new Packages.PackedFileDescriptor();
 		}
 
 		byte version;
 		string modelname;
 		string resourcename;
+
 		//RcolCacheItemType type;
 		Interfaces.Files.IPackedFileDescriptor pfd;
 
@@ -60,9 +62,10 @@ namespace SimPe.Cache
 		/// </summary>
 		public Interfaces.Files.IPackedFileDescriptor FileDescriptor
 		{
-			get { 
+			get
+			{
 				pfd.Tag = this;
-				return pfd; 
+				return pfd;
 			}
 			set { pfd = value; }
 		}
@@ -81,7 +84,7 @@ namespace SimPe.Cache
 		{
 			get { return resourcename; }
 			set { resourcename = value; }
-		}				
+		}
 
 		/// <summary>
 		/// Returns the ModeName for this Object
@@ -91,30 +94,34 @@ namespace SimPe.Cache
 			get { return modelname; }
 			set { modelname = value; }
 		}
-		
 
 		public override string ToString()
 		{
-			return "modelname="+ModelName+", type="+RcolType+", name="+ResourceName;
+			return "modelname="
+				+ ModelName
+				+ ", type="
+				+ RcolType
+				+ ", name="
+				+ ResourceName;
 		}
-
 
 		#region ICacheItem Member
 
-		public void Load(System.IO.BinaryReader reader) 
+		public void Load(System.IO.BinaryReader reader)
 		{
 			version = reader.ReadByte();
-			if (version>VERSION) throw new CacheException("Unknown CacheItem Version.", null, version);
-										
+			if (version > VERSION)
+				throw new CacheException("Unknown CacheItem Version.", null, version);
+
 			resourcename = reader.ReadString();
 			rtp = (RcolCacheItemType)reader.ReadByte();
 			pfd = new Packages.PackedFileDescriptor();
 			pfd.Type = reader.ReadUInt32();
 			pfd.Group = reader.ReadUInt32();
-			pfd.LongInstance = reader.ReadUInt64();			
+			pfd.LongInstance = reader.ReadUInt64();
 		}
 
-		public void Save(System.IO.BinaryWriter writer) 
+		public void Save(System.IO.BinaryWriter writer)
 		{
 			version = VERSION;
 			writer.Write(version);
@@ -122,15 +129,12 @@ namespace SimPe.Cache
 			writer.Write((byte)rtp);
 			writer.Write(pfd.Type);
 			writer.Write(pfd.Group);
-			writer.Write(pfd.LongInstance);			
+			writer.Write(pfd.LongInstance);
 		}
 
 		public byte Version
 		{
-			get
-			{
-				return version;
-			}
+			get { return version; }
 		}
 
 		#endregion

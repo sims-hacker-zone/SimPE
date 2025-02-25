@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace pjse
@@ -36,6 +36,7 @@ namespace pjse
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.Button OK;
 		private System.Windows.Forms.Button Cancel;
+
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -53,18 +54,17 @@ namespace pjse
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
-				if(components != null)
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
-
 
 		#region StrBig
 		public string doBig(string init)
@@ -93,63 +93,63 @@ namespace pjse
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StrBig));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.OK = new System.Windows.Forms.Button();
-            this.Cancel = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.OK);
-            this.panel1.Controls.Add(this.Cancel);
-            this.panel1.Controls.Add(this.panel2);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
-            // 
-            // OK
-            // 
-            resources.ApplyResources(this.OK, "OK");
-            this.OK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OK.Name = "OK";
-            // 
-            // Cancel
-            // 
-            resources.ApplyResources(this.Cancel, "Cancel");
-            this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Ignore;
-            this.Cancel.Name = "Cancel";
-            // 
-            // panel2
-            // 
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Name = "panel2";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.AcceptsTab = true;
-            this.richTextBox1.DetectUrls = false;
-            resources.ApplyResources(this.richTextBox1, "richTextBox1");
-            this.richTextBox1.Name = "richTextBox1";
-            // 
-            // StrBig
-            // 
-            this.AcceptButton = this.OK;
-            resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.CancelButton = this.Cancel;
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.panel1);
-            this.MinimizeBox = false;
-            this.Name = "StrBig";
-            this.ShowInTaskbar = false;
-            this.panel1.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+			System.ComponentModel.ComponentResourceManager resources =
+				new System.ComponentModel.ComponentResourceManager(typeof(StrBig));
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.OK = new System.Windows.Forms.Button();
+			this.Cancel = new System.Windows.Forms.Button();
+			this.panel2 = new System.Windows.Forms.Panel();
+			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+			this.panel1.SuspendLayout();
+			this.SuspendLayout();
+			//
+			// panel1
+			//
+			this.panel1.BackColor = System.Drawing.Color.Transparent;
+			this.panel1.Controls.Add(this.OK);
+			this.panel1.Controls.Add(this.Cancel);
+			this.panel1.Controls.Add(this.panel2);
+			resources.ApplyResources(this.panel1, "panel1");
+			this.panel1.Name = "panel1";
+			//
+			// OK
+			//
+			resources.ApplyResources(this.OK, "OK");
+			this.OK.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.OK.Name = "OK";
+			//
+			// Cancel
+			//
+			resources.ApplyResources(this.Cancel, "Cancel");
+			this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Ignore;
+			this.Cancel.Name = "Cancel";
+			//
+			// panel2
+			//
+			resources.ApplyResources(this.panel2, "panel2");
+			this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.panel2.Name = "panel2";
+			//
+			// richTextBox1
+			//
+			this.richTextBox1.AcceptsTab = true;
+			this.richTextBox1.DetectUrls = false;
+			resources.ApplyResources(this.richTextBox1, "richTextBox1");
+			this.richTextBox1.Name = "richTextBox1";
+			//
+			// StrBig
+			//
+			this.AcceptButton = this.OK;
+			resources.ApplyResources(this, "$this");
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.CancelButton = this.Cancel;
+			this.Controls.Add(this.richTextBox1);
+			this.Controls.Add(this.panel1);
+			this.MinimizeBox = false;
+			this.Name = "StrBig";
+			this.ShowInTaskbar = false;
+			this.panel1.ResumeLayout(false);
+			this.ResumeLayout(false);
 		}
 		#endregion
 	}

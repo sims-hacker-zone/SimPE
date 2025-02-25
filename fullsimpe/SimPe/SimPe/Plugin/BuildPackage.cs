@@ -28,46 +28,54 @@ using SimPe.Packages;
 
 namespace SimPe.Plugin
 {
-    class BuildPackage : ICommandLine
-    {
-        #region ICommandLine Members
-        public bool Parse(List<string> argv)
-        {
-            int i = ArgParser.Parse(argv, "-build");
-            if (i < 0) return false;
+	class BuildPackage : ICommandLine
+	{
+		#region ICommandLine Members
+		public bool Parse(List<string> argv)
+		{
+			int i = ArgParser.Parse(argv, "-build");
+			if (i < 0)
+				return false;
 
-            Splash.Screen.SetMessage("Building Package...");
+			Splash.Screen.SetMessage("Building Package...");
 
-            string output = "";
-            string input = "";
+			string output = "";
+			string input = "";
 
-            while (argv.Count - i > 0 && input.Length == 0 && output.Length == 0)
-            {
-                if (ArgParser.Parse(argv, i, "-desc", ref input)) continue;
-                if (ArgParser.Parse(argv, i, "-out", ref output)) continue;
-                SimPe.Message.Show(Help()[0]);
-                return true;
-            }
+			while (argv.Count - i > 0 && input.Length == 0 && output.Length == 0)
+			{
+				if (ArgParser.Parse(argv, i, "-desc", ref input))
+					continue;
+				if (ArgParser.Parse(argv, i, "-out", ref output))
+					continue;
+				SimPe.Message.Show(Help()[0]);
+				return true;
+			}
 
-            if (input.Length == 0 || output.Length == 0)
-            {
-                SimPe.Message.Show(Help()[0]);
-                return true;
-            }
-            if (!System.IO.File.Exists(input))
-            {
-                SimPe.Message.Show(Help()[0]);
-                return true;
-            }
+			if (input.Length == 0 || output.Length == 0)
+			{
+				SimPe.Message.Show(Help()[0]);
+				return true;
+			}
+			if (!System.IO.File.Exists(input))
+			{
+				SimPe.Message.Show(Help()[0]);
+				return true;
+			}
 
-            GeneratableFile pkg = GeneratableFile.LoadFromStream(XmlPackageReader.OpenExtractedPackage(null, input));
-            pkg.Save(output);
+			GeneratableFile pkg = GeneratableFile.LoadFromStream(
+				XmlPackageReader.OpenExtractedPackage(null, input)
+			);
+			pkg.Save(output);
 
-            Splash.Screen.SetMessage("");
-            return true;
-        }
-        public string[] Help() { return new string[] { "-build -desc <input> -out <output>", "" }; }
-        #endregion
-    }
+			Splash.Screen.SetMessage("");
+			return true;
+		}
 
+		public string[] Help()
+		{
+			return new string[] { "-build -desc <input> -out <output>", "" };
+		}
+		#endregion
+	}
 }

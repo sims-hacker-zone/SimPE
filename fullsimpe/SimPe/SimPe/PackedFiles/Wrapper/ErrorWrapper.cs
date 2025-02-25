@@ -24,24 +24,25 @@ namespace SimPe.PackedFiles.Wrapper
 	/// <summary>
 	/// This is A ResourceWrapper, which is added when an external Wrapper could not be loaded
 	/// </summary>
-	public class ErrorWrapper : SimPe.Interfaces.IWrapper, SimPe.Interfaces.Plugin.IFileWrapper
+	public class ErrorWrapper
+		: SimPe.Interfaces.IWrapper,
+			SimPe.Interfaces.Plugin.IFileWrapper
 	{
 		string flname;
 		Exception e;
+
 		public ErrorWrapper(string filename, Exception e)
 		{
 			flname = filename;
 			this.e = e;
-			p=-1;
+			p = -1;
 		}
+
 		#region IWrapper Member
 
 		public string WrapperFileName
 		{
-			get
-			{
-				return System.IO.Path.GetFileName(flname);
-			}
+			get { return System.IO.Path.GetFileName(flname); }
 		}
 
 		public void Register(SimPe.Interfaces.IWrapperRegistry registry)
@@ -52,14 +53,8 @@ namespace SimPe.PackedFiles.Wrapper
 		int p;
 		public int Priority
 		{
-			get
-			{
-				return p;
-			}
-			set
-			{	
-				p = value;
-			}
+			get { return p; }
+			set { p = value; }
 		}
 
 		public override string ToString()
@@ -70,13 +65,13 @@ namespace SimPe.PackedFiles.Wrapper
 		public SimPe.Interfaces.Plugin.IWrapperInfo WrapperDescription
 		{
 			get
-			{				
+			{
 				return new SimPe.Interfaces.Plugin.AbstractWrapperInfo(
 					WrapperFileName,
 					SimPe.Localization.GetString("Unknown"),
-					e.ToString()+":"+e.Message,
+					e.ToString() + ":" + e.Message,
 					1
-					);
+				);
 			}
 		}
 
@@ -87,10 +82,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool AllowMultipleInstances
 		{
-			get
-			{
-				return false;
-			}
+			get { return false; }
 		}
 
 		#endregion
@@ -99,125 +91,91 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public byte[] FileSignature
 		{
-			get
-			{
-				return new byte[0];
-			}
+			get { return new byte[0]; }
 		}
 
 		public uint[] AssignableTypes
 		{
-			get
-			{				
-				return new uint[0];
-			}
+			get { return new uint[0]; }
 		}
 
 		#endregion
 
 		#region IPackedFileWrapper Member
 
-		public void RefreshUI()
-		{			
-		}
+		public void RefreshUI() { }
 
 		public string ResourceName
 		{
-			get
-			{
-				return "";
-			}
+			get { return ""; }
 		}
 
-		public void ProcessData(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package, bool catchex)
-		{
-			
-		}
+		public void ProcessData(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package,
+			bool catchex
+		) { }
 
-		void SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper.ProcessData(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package, SimPe.Interfaces.Files.IPackedFile file, bool catchex)
-		{
-			
-		}
+		void SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper.ProcessData(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package,
+			SimPe.Interfaces.Files.IPackedFile file,
+			bool catchex
+		) { }
 
-		void SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper.ProcessData(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item, bool catchex)
-		{
-			
-		}
+		void SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper.ProcessData(
+			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item,
+			bool catchex
+		) { }
 
-		void SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper.ProcessData(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
-		{
+		void SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper.ProcessData(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		) { }
 
-		}
+		void SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper.ProcessData(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package,
+			SimPe.Interfaces.Files.IPackedFile file
+		) { }
 
-		void SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper.ProcessData(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package, SimPe.Interfaces.Files.IPackedFile file)
-		{
-
-		}
-
-		void SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper.ProcessData(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item)
-		{	
-		}
+		void SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper.ProcessData(
+			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item
+		) { }
 
 		public string Description
 		{
-			get
-			{
-				return "Error Object";
-			}
+			get { return "Error Object"; }
 		}
 
 		public string DescriptionHeader
 		{
-			get
-			{
-				return "Error";
-			}
+			get { return "Error"; }
 		}
 
 		public System.IO.BinaryReader StoredData
 		{
-			get
-			{
-				return null;
-			}
+			get { return null; }
 		}
 
-		public void LoadUI()
-		{
-			
-		}
+		public void LoadUI() { }
 
-		public void Fix(SimPe.Interfaces.IWrapperRegistry registry)
-		{
-			
-		}
+		public void Fix(SimPe.Interfaces.IWrapperRegistry registry) { }
 
 		public System.IO.MemoryStream Content
 		{
-			get
-			{
-				return null;
-			}
+			get { return null; }
 		}
 
 		public SimPe.Interfaces.Files.IPackageFile Package
 		{
-			get
-			{
-				return null;
-			}
+			get { return null; }
 		}
 
 		public SimPe.Interfaces.Plugin.IPackedFileUI UIHandler
 		{
-			get
-			{
-				return null;
-			}
-			set
-			{
-				
-			}
+			get { return null; }
+			set { }
 		}
 
 		public SimPe.Interfaces.Plugin.IFileWrapper Activate()
@@ -225,33 +183,22 @@ namespace SimPe.PackedFiles.Wrapper
 			return this;
 		}
 
-		public void Refresh()
-		{
-			
-		}
+		public void Refresh() { }
 
 		public string FileExtension
 		{
-			get
-			{
-				return ".err";
-			}
+			get { return ".err"; }
 		}
 
 		public SimPe.Interfaces.Files.IPackedFileDescriptor FileDescriptor
 		{
-			get
-			{
-				return null;
-			}
+			get { return null; }
 		}
 
 		#endregion
-		
+
 		#region IDisposable Member
-		public virtual void Dispose()
-		{			
-		}
+		public virtual void Dispose() { }
 		#endregion
 	}
 }

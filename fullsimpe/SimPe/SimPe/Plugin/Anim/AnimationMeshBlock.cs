@@ -28,7 +28,7 @@ namespace SimPe.Plugin.Anim
 	/// Data is unknown
 	/// </summary>
 	public class AnimationMeshBlock : AnimBlock
-	{		
+	{
 		#region Attributes
 		Rcol parent;
 		public Rcol Parent
@@ -38,96 +38,129 @@ namespace SimPe.Plugin.Anim
 
 		public AnimResourceConst Animation
 		{
-			get 
-			{
-				return (AnimResourceConst)parent.Blocks[0];
-			}
+			get { return (AnimResourceConst)parent.Blocks[0]; }
 		}
 		AnimationFrameBlock[] ab2;
+
 		[BrowsableAttribute(false)]
-		public AnimationFrameBlock[] Part2 
+		public AnimationFrameBlock[] Part2
 		{
 			get { return ab2; }
 			set { ab2 = value; }
 		}
-		[DescriptionAttribute("Number of loaded AnimationFrameBlock Items"), CategoryAttribute("Information")]
-		public int Part2Count 
+
+		[
+			DescriptionAttribute("Number of loaded AnimationFrameBlock Items"),
+			CategoryAttribute("Information")
+		]
+		public int Part2Count
 		{
 			get { return ab2.Length; }
 		}
 
-				
 		AnimBlock4[] ab4;
+
 		[BrowsableAttribute(false)]
-		public AnimBlock4[] Part4 
+		public AnimBlock4[] Part4
 		{
 			get { return ab4; }
 		}
-		[DescriptionAttribute("Number of loaded AnimBlock4 Items"), CategoryAttribute("Information")]
-		public int Part4Count 
+
+		[
+			DescriptionAttribute("Number of loaded AnimBlock4 Items"),
+			CategoryAttribute("Information")
+		]
+		public int Part4Count
 		{
 			get { return ab4.Length; }
 		}
 
 		uint[] datai;
-		[DescriptionAttribute("Reserved"), CategoryAttribute("Reserved"), DefaultValueAttribute(0x11BA05F0)]		
-		public uint Unknown1 
+
+		[
+			DescriptionAttribute("Reserved"),
+			CategoryAttribute("Reserved"),
+			DefaultValueAttribute(0x11BA05F0)
+		]
+		public uint Unknown1
 		{
 			get { return datai[0]; }
 			set { datai[0] = value; }
 		}
-		[DescriptionAttribute("Reserved"), CategoryAttribute("Reserved"), DefaultValueAttribute(0x11BA05F0)]		
-		public uint Unknown2 
+
+		[
+			DescriptionAttribute("Reserved"),
+			CategoryAttribute("Reserved"),
+			DefaultValueAttribute(0x11BA05F0)
+		]
+		public uint Unknown2
 		{
 			get { return datai[1]; }
 			set { datai[1] = value; }
 		}
-		[DescriptionAttribute("Reserved"), CategoryAttribute("Reserved"), DefaultValueAttribute(0x11BA05F0)]		
-		public uint Unknown3 
+
+		[
+			DescriptionAttribute("Reserved"),
+			CategoryAttribute("Reserved"),
+			DefaultValueAttribute(0x11BA05F0)
+		]
+		public uint Unknown3
 		{
 			get { return datai[2]; }
 			set { datai[2] = value; }
 		}
-		[DescriptionAttribute("Reserved"), CategoryAttribute("Reserved"), DefaultValueAttribute(0x11BA05F0)]		
-		public uint Unknown4 
+
+		[
+			DescriptionAttribute("Reserved"),
+			CategoryAttribute("Reserved"),
+			DefaultValueAttribute(0x11BA05F0)
+		]
+		public uint Unknown4
 		{
 			get { return datai[3]; }
 			set { datai[3] = value; }
 		}
-		[DescriptionAttribute("Reserved"), CategoryAttribute("Reserved"), DefaultValueAttribute(0x11BA05F0)]		
-		public uint Unknown5 
+
+		[
+			DescriptionAttribute("Reserved"),
+			CategoryAttribute("Reserved"),
+			DefaultValueAttribute(0x11BA05F0)
+		]
+		public uint Unknown5
 		{
 			get { return datai[4]; }
 			set { datai[4] = value; }
 		}
 
 		short[] datas;
-		public short SUnknown1 
+		public short SUnknown1
 		{
 			get { return datas[0]; }
 			set { datas[0] = value; }
 		}
 
 		[DescriptionAttribute("Number of assigned AnimationFrameBlock Items")]
-		public short AnimatedBoneCount 
+		public short AnimatedBoneCount
 		{
 			get { return datas[1]; }
 		}
-		
-		[DescriptionAttribute("Lower 6 Bits(?) are reserved for the Number of assigned AnimBlock4 Items")]
-		public short SUnknown3 
+
+		[DescriptionAttribute(
+			"Lower 6 Bits(?) are reserved for the Number of assigned AnimBlock4 Items"
+		)]
+		public short SUnknown3
 		{
 			get { return datas[2]; }
 			set { datas[2] = value; }
 		}
-		public short SUnknown4 
+		public short SUnknown4
 		{
 			get { return datas[3]; }
 			set { datas[3] = value; }
 		}
 		#endregion
 
-		internal AnimationMeshBlock(Rcol parent) 
+		internal AnimationMeshBlock(Rcol parent)
 		{
 			datai = new uint[6];
 			datas = new short[4];
@@ -146,14 +179,14 @@ namespace SimPe.Plugin.Anim
 			datai[1] = reader.ReadUInt32();
 
 			datas[0] = reader.ReadInt16();
-			datas[1] = reader.ReadInt16();	//number of ab2 Items
-			datas[2] = reader.ReadInt16();  //number of ab4 Items (and some unknown Bits)
-			datas[3] = reader.ReadInt16();			
+			datas[1] = reader.ReadInt16(); //number of ab2 Items
+			datas[2] = reader.ReadInt16(); //number of ab4 Items (and some unknown Bits)
+			datas[3] = reader.ReadInt16();
 
 			datai[2] = reader.ReadUInt32();
 			datai[3] = reader.ReadUInt32();
 			datai[4] = reader.ReadUInt32();
-		}	
+		}
 
 		/// <summary>
 		/// Serializes to a BinaryStream from the Attributes of this Instance
@@ -184,7 +217,7 @@ namespace SimPe.Plugin.Anim
 		internal void UnserializePart2Data(System.IO.BinaryReader reader)
 		{
 			ab2 = new AnimationFrameBlock[GetPart2Count()];
-			for (int i=0; i<ab2.Length; i++) 
+			for (int i = 0; i < ab2.Length; i++)
 			{
 				ab2[i] = new AnimationFrameBlock(this);
 				ab2[i].UnserializeData(reader);
@@ -197,7 +230,8 @@ namespace SimPe.Plugin.Anim
 		/// <param name="writer">The Stream that receives the Data</param>
 		internal void SerializePart2Data(System.IO.BinaryWriter writer)
 		{
-			for (int i=0; i<ab2.Length; i++) ab2[i].SerializeData(writer);
+			for (int i = 0; i < ab2.Length; i++)
+				ab2[i].SerializeData(writer);
 		}
 
 		/// <summary>
@@ -207,7 +241,8 @@ namespace SimPe.Plugin.Anim
 		internal int UnserializePart2Name(System.IO.BinaryReader reader)
 		{
 			int len = 0;
-			for (int i=0; i<ab2.Length; i++) len += ab2[i].UnserializeName(reader);
+			for (int i = 0; i < ab2.Length; i++)
+				len += ab2[i].UnserializeName(reader);
 			return len;
 		}
 
@@ -218,7 +253,8 @@ namespace SimPe.Plugin.Anim
 		internal int SerializePart2Name(System.IO.BinaryWriter writer)
 		{
 			int len = 0;
-			for (int i=0; i<ab2.Length; i++) len += ab2[i].SerializeName(writer);
+			for (int i = 0; i < ab2.Length; i++)
+				len += ab2[i].SerializeName(writer);
 			return len;
 		}
 
@@ -227,8 +263,9 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal void UnserializePart3Data(System.IO.BinaryReader reader)
-		{			
-			for (int i=0; i<ab2.Length; i++) ab2[i].UnserializePart3Data(reader);
+		{
+			for (int i = 0; i < ab2.Length; i++)
+				ab2[i].UnserializePart3Data(reader);
 		}
 
 		/// <summary>
@@ -237,7 +274,8 @@ namespace SimPe.Plugin.Anim
 		/// <param name="writer">The Stream that receives the Data</param>
 		internal void SerializePart3Data(System.IO.BinaryWriter writer)
 		{
-			for (int i=0; i<ab2.Length; i++) ab2[i].SerializePart3Data(writer);
+			for (int i = 0; i < ab2.Length; i++)
+				ab2[i].SerializePart3Data(writer);
 		}
 
 		/// <summary>
@@ -245,8 +283,9 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal void UnserializePart3AddonData(System.IO.BinaryReader reader)
-		{						
-			for (int i=0; i<ab2.Length; i++) ab2[i].UnserializePart3AddonData(reader);
+		{
+			for (int i = 0; i < ab2.Length; i++)
+				ab2[i].UnserializePart3AddonData(reader);
 		}
 
 		/// <summary>
@@ -255,7 +294,8 @@ namespace SimPe.Plugin.Anim
 		/// <param name="writer">The Stream that receives the Data</param>
 		internal void SerializePart3AddonData(System.IO.BinaryWriter writer)
 		{
-			for (int i=0; i<ab2.Length; i++) ab2[i].SerializePart3AddonData(writer);
+			for (int i = 0; i < ab2.Length; i++)
+				ab2[i].SerializePart3AddonData(writer);
 		}
 
 		/// <summary>
@@ -263,9 +303,9 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal void UnserializePart4Data(System.IO.BinaryReader reader)
-		{					
+		{
 			ab4 = new AnimBlock4[GetPart4Count()];
-			for (int i=0; i<ab4.Length; i++) 
+			for (int i = 0; i < ab4.Length; i++)
 			{
 				ab4[i] = new AnimBlock4();
 				ab4[i].UnserializeData(reader);
@@ -278,7 +318,8 @@ namespace SimPe.Plugin.Anim
 		/// <param name="writer">The Stream that receives the Data</param>
 		internal void SerializePart4Data(System.IO.BinaryWriter writer)
 		{
-			for (int i=0; i<ab4.Length; i++) ab4[i].SerializeData(writer);
+			for (int i = 0; i < ab4.Length; i++)
+				ab4[i].SerializeData(writer);
 		}
 
 		/// <summary>
@@ -286,8 +327,9 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal void UnserializePart5Data(System.IO.BinaryReader reader)
-		{			
-			for (int i=0; i<ab4.Length; i++) ab4[i].UnserializePart5Data(reader);
+		{
+			for (int i = 0; i < ab4.Length; i++)
+				ab4[i].UnserializePart5Data(reader);
 		}
 
 		/// <summary>
@@ -296,9 +338,10 @@ namespace SimPe.Plugin.Anim
 		/// <param name="writer">The Stream that receives the Data</param>
 		internal void SerializePart5Data(System.IO.BinaryWriter writer)
 		{
-			for (int i=0; i<ab4.Length; i++) ab4[i].SerializePart5Data(writer);
+			for (int i = 0; i < ab4.Length; i++)
+				ab4[i].SerializePart5Data(writer);
 		}
-	
+
 		/// <summary>
 		/// Returns the Number of Items for Part 2 assigned to this Object
 		/// </summary>
@@ -312,11 +355,11 @@ namespace SimPe.Plugin.Anim
 		/// Set the count for Part 5 Items
 		/// </summary>
 		/// <param name="ct">The New Count</param>
-		void SetPart2Count(int ct) 
+		void SetPart2Count(int ct)
 		{
 			datas[1] = (short)ct;
 		}
-		
+
 		/// <summary>
 		/// Returns the Number of Items for Part 4 assigned to this Object
 		/// </summary>
@@ -330,49 +373,70 @@ namespace SimPe.Plugin.Anim
 		/// Set the count for Part 5 Items
 		/// </summary>
 		/// <param name="ct">The New Count</param>
-		void SetPart4Count(int ct) 
+		void SetPart4Count(int ct)
 		{
-			if (ct>0x3f) ct = 0x3f;
+			if (ct > 0x3f)
+				ct = 0x3f;
 			ct = ct & 0x3f;
 
 			datas[2] = (short)((int)datas[2] & 0x0000FFC0);
 			datas[2] = (short)((ushort)datas[2] | (ushort)ct);
 		}
 
-		protected GenericRcol FindDefiningCRES(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile pkg)
+		protected GenericRcol FindDefiningCRES(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile pkg
+		)
 		{
 			GenericRcol rcol = new GenericRcol();
 			rcol.ProcessData(pfd, pkg);
 
 			ResourceNode rn = (ResourceNode)rcol.Blocks[0];
-			foreach (int i in rn.ChildBlocks) 
+			foreach (int i in rn.ChildBlocks)
 			{
 				SimPe.Interfaces.Scenegraph.ICresChildren icc = rn.GetBlock(i);
-				
-				if (icc!=null)
+
+				if (icc != null)
 					if (icc.StoredTransformNode != null)
-						if (icc.StoredTransformNode.ObjectGraphNode.FileName == this.Name) return rcol;
+						if (
+							icc.StoredTransformNode.ObjectGraphNode.FileName
+							== this.Name
+						)
+							return rcol;
 			}
 			return null;
 		}
 
 		public GenericRcol FindDefiningCRES()
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = Parent.Package.FindFiles(Data.MetaData.CRES);
+			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds =
+				Parent.Package.FindFiles(Data.MetaData.CRES);
 			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				GenericRcol rcol = FindDefiningCRES(pfd, Parent.Package);
-				if (rcol!=null) 
+				if (rcol != null)
 					return rcol;
 			}
 
-			if (this.Name == "auskel" || this.Name == "tuskel" || this.Name == "cuskel" || this.Name == "puskel" || this.Name == "buskel")
+			if (
+				this.Name == "auskel"
+				|| this.Name == "tuskel"
+				|| this.Name == "cuskel"
+				|| this.Name == "puskel"
+				|| this.Name == "buskel"
+			)
 			{
 				FileTable.FileIndex.Load();
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFile(Data.MetaData.CRES, true);
-				foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
+				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+					FileTable.FileIndex.FindFile(Data.MetaData.CRES, true);
+				foreach (
+					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
+				)
 				{
-					GenericRcol rcol = FindDefiningCRES(item.FileDescriptor, item.Package);
+					GenericRcol rcol = FindDefiningCRES(
+						item.FileDescriptor,
+						item.Package
+					);
 					if (rcol != null)
 						return rcol;
 				}
@@ -382,8 +446,10 @@ namespace SimPe.Plugin.Anim
 
 		public GenericRcol FindUsedGMDC(GenericRcol cres)
 		{
-			if (cres == null) return null;
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item = cres.FindReferencedType(Data.MetaData.SHPE);
+			if (cres == null)
+				return null;
+			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item =
+				cres.FindReferencedType(Data.MetaData.SHPE);
 			if (item != null)
 			{
 				GenericRcol rcol = new GenericRcol();
@@ -402,16 +468,34 @@ namespace SimPe.Plugin.Anim
 				}
 			}
 			// the 'skel cres used by all sim animations don't have meshes so we point to the default naked body meshes instaed
-			if (this.Name == "auskel" || this.Name == "tuskel" || this.Name == "cuskel" || this.Name == "puskel" || this.Name == "buskel")
+			if (
+				this.Name == "auskel"
+				|| this.Name == "tuskel"
+				|| this.Name == "cuskel"
+				|| this.Name == "puskel"
+				|| this.Name == "buskel"
+			)
 			{
 				FileTable.FileIndex.Load();
 				ulong instns = 0xCCBC1AF8FFE2EDE9; //auskel
-				if (this.Name == "tuskel") instns = 0x9C1686E9FF68B810;
-				else if (this.Name == "cuskel") instns = 0xB7C67187FF38EF7F;
-				else if (this.Name == "puskel") instns = 0xFF5F4C89AE871D44;
-				else if (this.Name == "buskel") instns = 0x57D5D2CDFF545BA9;
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFile(Data.MetaData.GMDC, 0x1C0532FA, instns, Parent.Package);
-				foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem iteme in items)
+				if (this.Name == "tuskel")
+					instns = 0x9C1686E9FF68B810;
+				else if (this.Name == "cuskel")
+					instns = 0xB7C67187FF38EF7F;
+				else if (this.Name == "puskel")
+					instns = 0xFF5F4C89AE871D44;
+				else if (this.Name == "buskel")
+					instns = 0x57D5D2CDFF545BA9;
+				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+					FileTable.FileIndex.FindFile(
+						Data.MetaData.GMDC,
+						0x1C0532FA,
+						instns,
+						Parent.Package
+					);
+				foreach (
+					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem iteme in items
+				)
 				{
 					if (iteme != null)
 					{
@@ -432,12 +516,15 @@ namespace SimPe.Plugin.Anim
 		/// <returns>null or the matching Block</returns>
 		public AnimationFrameBlock GetJointTransformation(string name, FrameType type)
 		{
-			foreach (AnimationFrameBlock ab in this.Part2)			
-				if (ab.Name == name && ab.TransformationType == type && ab.AxisCount==3) 
+			foreach (AnimationFrameBlock ab in this.Part2)
+				if (
+					ab.Name == name
+					&& ab.TransformationType == type
+					&& ab.AxisCount == 3
+				)
 					return ab;
-			
+
 			return null;
 		}
 	}
-
 }

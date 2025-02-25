@@ -27,15 +27,21 @@ namespace SimPe
 	/// </summary>
 	public class RemoteControl
 	{
-		public class ControlEventArgs : System.EventArgs 
+		public class ControlEventArgs : System.EventArgs
 		{
 			object[] data;
 			uint target;
-			public ControlEventArgs(uint target) : this(target, new object[0]) {}
-			public ControlEventArgs(uint target, object data) : this(target, new object[]{data}) {}
+
+			public ControlEventArgs(uint target)
+				: this(target, new object[0]) { }
+
+			public ControlEventArgs(uint target, object data)
+				: this(target, new object[] { data }) { }
+
 			public ControlEventArgs(uint target, object[] data)
 			{
-				if (data==null) data = new object[0];
+				if (data == null)
+					data = new object[0];
 				this.data = data;
 
 				this.target = target;
@@ -43,24 +49,23 @@ namespace SimPe
 
 			public uint TargetType
 			{
-				get {return target;}
+				get { return target; }
 			}
 
 			public object Item
 			{
-				get 
-				{ 
-					if (data.Length==0) return null;
-					else return data[0];
+				get
+				{
+					if (data.Length == 0)
+						return null;
+					else
+						return data[0];
 				}
 			}
 
 			public object Items
 			{
-				get 
-				{
-					return data;
-				}
+				get { return data; }
 			}
 		}
 
@@ -84,7 +89,7 @@ namespace SimPe
 
 		public static void UnhookFromMessageQueue(uint type, ControlEvent fkt)
 		{
-			for (int i=events.Count-1; i>=0; i--)
+			for (int i = events.Count - 1; i >= 0; i--)
 			{
 				MessageQueueItemInfo mqi = (MessageQueueItemInfo)events[i];
 				if (mqi.target == type)
@@ -93,12 +98,15 @@ namespace SimPe
 			}
 		}
 
-
 		public static void AddMessage(object sender, ControlEventArgs e)
 		{
 			foreach (MessageQueueItemInfo mqi in events)
 			{
-				if (mqi.target == e.TargetType || mqi.target==0xffffffff || e.TargetType==0xffffffff)
+				if (
+					mqi.target == e.TargetType
+					|| mqi.target == 0xffffffff
+					|| e.TargetType == 0xffffffff
+				)
 					mqi.fkt(sender, e);
 			}
 		}
@@ -111,29 +119,38 @@ namespace SimPe
 		/// <summary>
 		/// Delegate you have to implement for the remote Package opener
 		/// </summary>
-		public delegate bool OpenMemPackageDelegate(SimPe.Interfaces.Files.IPackageFile pkg);
+		public delegate bool OpenMemPackageDelegate(
+			SimPe.Interfaces.Files.IPackageFile pkg
+		);
 
 		/// <summary>
 		/// Delegate you have to implement for the Remote PackedFile Opener
 		/// </summary>
-		public delegate bool OpenPackedFileDelegate(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii);
+		public delegate bool OpenPackedFileDelegate(
+			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii
+		);
 
 		/// <summary>
 		/// Used to show/hide a Dock
 		/// </summary>
-		public delegate void ShowDockDelegate(Ambertation.Windows.Forms.DockPanel doc, bool hide);
+		public delegate void ShowDockDelegate(
+			Ambertation.Windows.Forms.DockPanel doc,
+			bool hide
+		);
 
 		#region Application Form
 		static System.Windows.Forms.Form appform;
+
 		/// <summary>
 		/// Returns the Main Application Form
 		/// </summary>
 		public static System.Windows.Forms.Form ApplicationForm
 		{
-			get {return appform;}
-			set {
+			get { return appform; }
+			set
+			{
 				appform = value;
-				if (appform!=null)
+				if (appform != null)
 					appstate = appform.WindowState;
 				else
 					appstate = System.Windows.Forms.FormWindowState.Maximized;
@@ -142,26 +159,39 @@ namespace SimPe
 
 		static bool VisibleForm(System.Windows.Forms.Form form)
 		{
-			if (!form.ShowInTaskbar) return false;
-			if (form.FormBorderStyle == System.Windows.Forms.FormBorderStyle.FixedToolWindow) return false;
-			if (form.FormBorderStyle == System.Windows.Forms.FormBorderStyle.SizableToolWindow) return false;
-			if (form.MinimizeBox == false) return false;
+			if (!form.ShowInTaskbar)
+				return false;
+			if (
+				form.FormBorderStyle
+				== System.Windows.Forms.FormBorderStyle.FixedToolWindow
+			)
+				return false;
+			if (
+				form.FormBorderStyle
+				== System.Windows.Forms.FormBorderStyle.SizableToolWindow
+			)
+				return false;
+			if (form.MinimizeBox == false)
+				return false;
 
 			return true;
 		}
 
 		public static void ShowSubForm(System.Windows.Forms.Form form)
 		{
-			if (VisibleForm(form)) HideApplicationForm();
+			if (VisibleForm(form))
+				HideApplicationForm();
 			form.ShowDialog(ApplicationForm);
-			if (VisibleForm(form)) ShowApplicationForm();
+			if (VisibleForm(form))
+				ShowApplicationForm();
 		}
 
 		public static void HideApplicationForm()
 		{
-			if (ApplicationForm==null) return;
-			
-			if (ApplicationForm.Visible) 
+			if (ApplicationForm == null)
+				return;
+
+			if (ApplicationForm.Visible)
 			{
 				ApplicationForm.Hide();
 				ApplicationForm.ShowInTaskbar = true;
@@ -169,37 +199,51 @@ namespace SimPe
 		}
 
 		public static void ShowApplicationForm()
-		{			
-			if (ApplicationForm==null) return;
-			if (!ApplicationForm.Visible) 
+		{
+			if (ApplicationForm == null)
+				return;
+			if (!ApplicationForm.Visible)
 			{
 				ApplicationForm.Show();
 				ApplicationForm.ShowInTaskbar = true;
-			}			
+			}
 		}
 
 		static System.Windows.Forms.FormWindowState appstate;
+
 		public static void MinimizeApplicationForm()
 		{
-			if (ApplicationForm==null) return;
-			
-			if (ApplicationForm.WindowState!=System.Windows.Forms.FormWindowState.Minimized)
+			if (ApplicationForm == null)
+				return;
+
+			if (
+				ApplicationForm.WindowState
+				!= System.Windows.Forms.FormWindowState.Minimized
+			)
 			{
 				appstate = ApplicationForm.WindowState;
-				ApplicationForm.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+				ApplicationForm.WindowState = System
+					.Windows
+					.Forms
+					.FormWindowState
+					.Minimized;
 			}
 		}
 
 		public static void RestoreApplicationForm()
 		{
-			
-			if (ApplicationForm==null) return;
-			if (ApplicationForm.WindowState==System.Windows.Forms.FormWindowState.Minimized)
+			if (ApplicationForm == null)
+				return;
+			if (
+				ApplicationForm.WindowState
+				== System.Windows.Forms.FormWindowState.Minimized
+			)
 				ApplicationForm.WindowState = appstate;
 		}
 		#endregion
 
 		static ShowDockDelegate sdd;
+
 		/// <summary>
 		/// Returns/Sets the ShowDock Delegate
 		/// </summary>
@@ -210,6 +254,7 @@ namespace SimPe
 		}
 
 		static OpenPackedFileDelegate opf;
+
 		/// <summary>
 		/// Returns/Sets the Function that should be called if you want to open a PackedFile
 		/// </summary>
@@ -220,6 +265,7 @@ namespace SimPe
 		}
 
 		static OpenPackageDelegate op;
+
 		/// <summary>
 		/// Returns/Sets the Function that should be called if you want to open a PackedFile
 		/// </summary>
@@ -236,7 +282,8 @@ namespace SimPe
 		/// <param name="hide"></param>
 		public static void ShowDock(Ambertation.Windows.Forms.DockPanel doc, bool hide)
 		{
-			if (sdd==null) return;
+			if (sdd == null)
+				return;
 			sdd(doc, hide);
 		}
 
@@ -245,22 +292,29 @@ namespace SimPe
 		/// </summary>
 		/// <param name="filename">The Filename of the package</param>
 		/// <returns>true, if the package was opened</returns>
-		public static bool OpenPackage(string filename) 
+		public static bool OpenPackage(string filename)
 		{
-			if (op==null) return false;
+			if (op == null)
+				return false;
 
-			try 
+			try
 			{
 				return op(filename);
-			} 
-			catch (Exception ex) 
+			}
+			catch (Exception ex)
 			{
-				Helper.ExceptionMessage("Unable to open a Package in the SimPe GUI. (file="+filename+")", ex);
+				Helper.ExceptionMessage(
+					"Unable to open a Package in the SimPe GUI. (file="
+						+ filename
+						+ ")",
+					ex
+				);
 			}
 			return false;
 		}
 
 		static OpenMemPackageDelegate omp;
+
 		/// <summary>
 		/// Returns/Sets the Function that should be called if you want to open a PackedFile
 		/// </summary>
@@ -275,17 +329,23 @@ namespace SimPe
 		/// </summary>
 		/// <param name="filename">The Filename of the package</param>
 		/// <returns>true, if the package was opened</returns>
-		public static bool OpenMemoryPackage(SimPe.Interfaces.Files.IPackageFile pkg) 
+		public static bool OpenMemoryPackage(SimPe.Interfaces.Files.IPackageFile pkg)
 		{
-			if (omp==null) return false;
+			if (omp == null)
+				return false;
 
-			try 
+			try
 			{
 				return omp(pkg);
-			} 
-			catch (Exception ex) 
+			}
+			catch (Exception ex)
 			{
-				Helper.ExceptionMessage("Unable to open a Package in the SimPe GUI. (package="+pkg.ToString()+")", ex);
+				Helper.ExceptionMessage(
+					"Unable to open a Package in the SimPe GUI. (package="
+						+ pkg.ToString()
+						+ ")",
+					ex
+				);
 			}
 			return false;
 		}
@@ -296,28 +356,38 @@ namespace SimPe
 		/// <param name="pfd">The FileDescriptor</param>
 		/// <param name="pkg">The package the descriptor is in</param>
 		/// <returns>true, if the package was opened</returns>
-		public static bool OpenPackedFile(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile pkg) 
+		public static bool OpenPackedFile(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile pkg
+		)
 		{
 			return OpenPackedFile(FileTable.FileIndex.CreateFileIndexItem(pfd, pkg));
 		}
-
 
 		/// <summary>
 		/// Open a Package in the main SimPe Gui
 		/// </summary>
 		/// <param name="pfd">The FileDescriptor</param>
 		/// <returns>true, if the package was opened</returns>
-		public static bool OpenPackedFile(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii) 
+		public static bool OpenPackedFile(
+			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii
+		)
 		{
-			if (opf==null) return false;
+			if (opf == null)
+				return false;
 
-			try 
+			try
 			{
 				return opf(fii);
-			} 
-			catch (Exception ex) 
-			{                
-				Helper.ExceptionMessage("Unable to open a resource in the SimPe GUI. ("+fii.ToString()+")", ex);
+			}
+			catch (Exception ex)
+			{
+				Helper.ExceptionMessage(
+					"Unable to open a resource in the SimPe GUI. ("
+						+ fii.ToString()
+						+ ")",
+					ex
+				);
 			}
 			return false;
 		}
@@ -363,7 +433,8 @@ namespace SimPe
 			f.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			f.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 
-			System.Windows.Forms.PropertyGrid pg = new System.Windows.Forms.PropertyGrid();
+			System.Windows.Forms.PropertyGrid pg =
+				new System.Windows.Forms.PropertyGrid();
 			f.Controls.Add(pg);
 			pg.Dock = System.Windows.Forms.DockStyle.Fill;
 			pg.SelectedObject = settings.GetSettingsObject();
@@ -371,11 +442,20 @@ namespace SimPe
 			f.Dispose();
 		}
 
-		public delegate void ResourceListSelectionChangedHandler(object sender, SimPe.Events.ResourceEventArgs e);
-		public static void FireResourceListSelectionChangedHandler(object sender, SimPe.Events.ResourceEventArgs e)
+		public delegate void ResourceListSelectionChangedHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs e
+		);
+
+		public static void FireResourceListSelectionChangedHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs e
+		)
 		{
-			if (ResourceListSelectionChanged != null) ResourceListSelectionChanged(sender, e);
+			if (ResourceListSelectionChanged != null)
+				ResourceListSelectionChanged(sender, e);
 		}
+
 		public static event ResourceListSelectionChangedHandler ResourceListSelectionChanged;
 	}
 }

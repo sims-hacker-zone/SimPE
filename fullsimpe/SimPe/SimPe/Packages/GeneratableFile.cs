@@ -18,17 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.IO;
 using System.Collections;
-using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces.Plugin.Internal;
+using System.IO;
+using SimPe.Collections.IO;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
-using SimPe.Collections.IO;
+using SimPe.Interfaces.Plugin;
+using SimPe.Interfaces.Plugin.Internal;
 
 namespace SimPe.Packages
 {
-	
 	/// <summary>
 	/// Extends the Packges Files with writing Support
 	/// </summary>
@@ -43,22 +42,24 @@ namespace SimPe.Packages
 		/// Cosntructor of the Class
 		/// </summary>
 		/// <param name="br">The BinaryReader representing the Package File</param>
-		internal GeneratableFile(BinaryReader br) : base(br) {}	
-		internal GeneratableFile(string flname) : base(flname) {}
+		internal GeneratableFile(BinaryReader br)
+			: base(br) { }
 
+		internal GeneratableFile(string flname)
+			: base(flname) { }
 
 		/// <summary>
 		/// Init the Clone for this Package
 		/// </summary>
 		/// <returns>An INstance of this Class</returns>
-		protected override Interfaces.Files.IPackageFile NewCloneBase() 
+		protected override Interfaces.Files.IPackageFile NewCloneBase()
 		{
 			GeneratableFile fl = new GeneratableFile((BinaryReader)null);
 			fl.header = this.header;
-			
+
 			return fl;
-		}		
-	
+		}
+
 		/// <summary>
 		/// Checks if the passed File is writable by the System
 		/// </summary>
@@ -66,13 +67,16 @@ namespace SimPe.Packages
 		/// <returns>true, if the File is writable</returns>
 		public static bool CanWriteToFile(string flname, bool close)
 		{
-			if (!System.IO.File.Exists(flname)) 			
-				return true;			
+			if (!System.IO.File.Exists(flname))
+				return true;
 
-			StreamItem si = StreamFactory.UseStream(flname, System.IO.FileAccess.ReadWrite);
+			StreamItem si = StreamFactory.UseStream(
+				flname,
+				System.IO.FileAccess.ReadWrite
+			);
 			bool res = (si.StreamState == StreamState.Opened);
 
-			if (close && res) 
+			if (close && res)
 				si.Close();
 			return res;
 		}
@@ -87,39 +91,51 @@ namespace SimPe.Packages
 			//can we write to the output File?
 			if (!CanWriteToFile(flname, false))
 			{
-				Helper.ExceptionMessage(new Warning("Changes cannot be saved!", @""""+flname+@""" is write protected."));
+				Helper.ExceptionMessage(
+					new Warning(
+						"Changes cannot be saved!",
+						@"""" + flname + @""" is write protected."
+					)
+				);
 				return;
 			}
 
 			//can we write to the .bak File?
-			if (Helper.WindowsRegistry.AutoBackup) 			
+			if (Helper.WindowsRegistry.AutoBackup)
 				if (!CanWriteToFile(GetBakFileName(flname), true))
 				{
-					Helper.ExceptionMessage(new Warning("Changes cannot be saved!", @""""+GetBakFileName(flname)+@""" is write protected."));
+					Helper.ExceptionMessage(
+						new Warning(
+							"Changes cannot be saved!",
+							@"""" + GetBakFileName(flname) + @""" is write protected."
+						)
+					);
 					return;
 				}
 
 			this.BeginUpdate();
-			bool wasinfileindex = PackageMaintainer.Maintainer.FileIndex.Contains(flname);
+			bool wasinfileindex = PackageMaintainer.Maintainer.FileIndex.Contains(
+				flname
+			);
 			PackageMaintainer.Maintainer.RemovePackage(flname);
-			try 
+			try
 			{
-				//this.IncrementalBuild();						
+				//this.IncrementalBuild();
 				System.IO.MemoryStream ms = this.Build();
-				if (Reader!=null) 
+				if (Reader != null)
 					this.Reader.Close();
 				this.Save(ms, flname);
 
-				//this.reader =  new System.IO.BinaryReader(System.IO.File.OpenRead(flname));			
+				//this.reader =  new System.IO.BinaryReader(System.IO.File.OpenRead(flname));
 				this.FileName = flname;
 				type = PackageBaseType.Filename;
 
 				this.OpenReader();
-				this.CloseReader();	
-			} 
+				this.CloseReader();
+			}
 			finally
 			{
-				this.ForgetUpdate();				
+				this.ForgetUpdate();
 				this.EndUpdate();
 
 				if (wasinfileindex)
@@ -136,22 +152,25 @@ namespace SimPe.Packages
 		/// <returns>the suggested Backup Filename</returns>
 		protected string GetBakFileName(string flname)
 		{
-			return System.IO.Path.Combine(System.IO.Path.GetDirectoryName(flname), System.IO.Path.GetFileNameWithoutExtension(flname)+".bak");
-            /*
-            string dir = System.IO.Path.GetDirectoryName(flname);
-            string stem = System.IO.Path.GetFileNameWithoutExtension(flname);
-            string bakfile = System.IO.Path.Combine(dir, stem + ".bak");
-            if (!System.IO.File.Exists(bakfile)) return bakfile;
-            else
-            {
-                short i = 0;
-                while (true)
-                {
-                    bakfile = System.IO.Path.Combine(dir, stem + "." + Helper.HexString(i) + ".bak");
-                    if (!System.IO.File.Exists(bakfile)) return bakfile;
-                }
-            }
-            */
+			return System.IO.Path.Combine(
+				System.IO.Path.GetDirectoryName(flname),
+				System.IO.Path.GetFileNameWithoutExtension(flname) + ".bak"
+			);
+			/*
+			string dir = System.IO.Path.GetDirectoryName(flname);
+			string stem = System.IO.Path.GetFileNameWithoutExtension(flname);
+			string bakfile = System.IO.Path.Combine(dir, stem + ".bak");
+			if (!System.IO.File.Exists(bakfile)) return bakfile;
+			else
+			{
+				short i = 0;
+				while (true)
+				{
+					bakfile = System.IO.Path.Combine(dir, stem + "." + Helper.HexString(i) + ".bak");
+					if (!System.IO.File.Exists(bakfile)) return bakfile;
+				}
+			}
+			*/
 		}
 
 		/// <summary>
@@ -161,49 +180,49 @@ namespace SimPe.Packages
 		/// <param name="flname">Filename for the Package</param>
 		protected void Save(MemoryStream ms, string flname)
 		{
-            StreamFactory.CloseStream(flname);
+			StreamFactory.CloseStream(flname);
 
-            string tmpfile = System.IO.Path.GetTempFileName();
-			try 
+			string tmpfile = System.IO.Path.GetTempFileName();
+			try
 			{
-                // Try to save to a temp file
+				// Try to save to a temp file
 				System.IO.FileStream fs = new FileStream(tmpfile, FileMode.Create);
-				try 
+				try
 				{
 					Save(ms, fs);
-				} 
-				finally 
+				}
+				finally
 				{
 					fs.Close();
 					fs.Dispose();
 					fs = null;
 				}
 
-                // If the destination already exists...
-				if (System.IO.File.Exists(flname)) 
+				// If the destination already exists...
+				if (System.IO.File.Exists(flname))
 				{
-                    // ...back up the current package content...
-                    if (Helper.WindowsRegistry.AutoBackup)
-                    {
-                        string bakfile = GetBakFileName(flname);
-                        if (System.IO.File.Exists(bakfile))
-                            System.IO.File.Delete(bakfile);
-                        System.IO.File.Copy(flname, bakfile, true);
-                    }
+					// ...back up the current package content...
+					if (Helper.WindowsRegistry.AutoBackup)
+					{
+						string bakfile = GetBakFileName(flname);
+						if (System.IO.File.Exists(bakfile))
+							System.IO.File.Delete(bakfile);
+						System.IO.File.Copy(flname, bakfile, true);
+					}
 
-                    // ...and get rid
-                    System.IO.File.Delete(flname);
+					// ...and get rid
+					System.IO.File.Delete(flname);
 				}
-			} 
-			catch (Exception ex) 
+			}
+			catch (Exception ex)
 			{
 				System.IO.File.Delete(tmpfile);
 				throw ex;
 			}
 
-            // At this point we have successfully written tmpfile and deleted flname
-            // Rename the temp file to the destination
-            System.IO.File.Move(tmpfile, flname);
+			// At this point we have successfully written tmpfile and deleted flname
+			// Rename the temp file to the destination
+			System.IO.File.Move(tmpfile, flname);
 
 			StreamFactory.UseStream(flname, FileAccess.Read);
 		}
@@ -215,24 +234,28 @@ namespace SimPe.Packages
 		/// <param name="fs">The Filestream you want to write the File to</param>
 		protected void Save(MemoryStream ms, FileStream fs)
 		{
-            fs.Seek(0, SeekOrigin.Begin);
-            fs.SetLength(0);
-            byte[] b = ms.ToArray();
-            //fs.Lock(0, reader.BaseStream.Length);
-            fs.Write(b, 0, b.Length);
-            //fs.Unlock(0, reader.BaseStream.Length);
-        }
+			fs.Seek(0, SeekOrigin.Begin);
+			fs.SetLength(0);
+			byte[] b = ms.ToArray();
+			//fs.Lock(0, reader.BaseStream.Length);
+			fs.Write(b, 0, b.Length);
+			//fs.Unlock(0, reader.BaseStream.Length);
+		}
 
 		/// <summary>
 		/// This is used to enable SimPe to add compressed Resources
 		/// </summary>
 		void PrepareCompression()
 		{
-			if (fileindex==null) return;
+			if (fileindex == null)
+				return;
 
-			if (filelistfile!=null) return;
-			
-			filelistfile = new SimPe.PackedFiles.Wrapper.CompressedFileList(this.Header.IndexType);
+			if (filelistfile != null)
+				return;
+
+			filelistfile = new SimPe.PackedFiles.Wrapper.CompressedFileList(
+				this.Header.IndexType
+			);
 			filelist = new PackedFileDescriptor();
 			filelist.Type = Data.MetaData.DIRECTORY_FILE;
 			filelist.LongInstance = 0x286B1F03;
@@ -249,15 +272,15 @@ namespace SimPe.Packages
 		/// <returns>The MemoryStream representing the new Package File</returns>
 		public MemoryStream Build()
 		{
-			this.LockStream();			
+			this.LockStream();
 			OpenReader();
-            System.IO.MemoryStream ms = new MemoryStream(16384); // Fuck
-            // was MemoryStream(10000) : 10000 is odd , assuming bigger is faster is now 16kb
-            // But.. out of mem error can be caused by larger caches so increasing this may be not good
+			System.IO.MemoryStream ms = new MemoryStream(16384); // Fuck
+			// was MemoryStream(10000) : 10000 is odd , assuming bigger is faster is now 16kb
+			// But.. out of mem error can be caused by larger caches so increasing this may be not good
 			System.IO.BinaryWriter writer = new BinaryWriter(ms);
-			
+
 			//make sure we write the correct Version!
-			if ((header.majorversion==1) && (header.minorversion==0))
+			if ((header.majorversion == 1) && (header.minorversion == 0))
 			{
 				header.minorversion = 1;
 				header.majorversion = 1;
@@ -265,7 +288,8 @@ namespace SimPe.Packages
 			}
 
 			int oldcount = 0;
-			if (this.Index!=null) oldcount = this.Index.Length;
+			if (this.Index != null)
+				oldcount = this.Index.Length;
 
 			//now save the stuff
 			header.Save(writer);
@@ -273,40 +297,43 @@ namespace SimPe.Packages
 			//now save the files
 			PackedFileDescriptors tmpindex = new PackedFileDescriptors();
 			ArrayList tmpcmp = new ArrayList();
-            if (this.fileindex == null) fileindex = new SimPe.Interfaces.Files.IPackedFileDescriptor[0];
+			if (this.fileindex == null)
+				fileindex = new SimPe.Interfaces.Files.IPackedFileDescriptor[0];
 
 			PrepareCompression();
 
-			foreach(PackedFileDescriptor pfd in this.fileindex)
+			foreach (PackedFileDescriptor pfd in this.fileindex)
 			{
 				pfd.Changed = false;
 
 				//we write the filelist as last File
-				if (pfd==this.filelist) continue;
-				if (pfd.Type == Data.MetaData.DIRECTORY_FILE) continue;
-				if (pfd.MarkForDelete) continue;
+				if (pfd == this.filelist)
+					continue;
+				if (pfd.Type == Data.MetaData.DIRECTORY_FILE)
+					continue;
+				if (pfd.MarkForDelete)
+					continue;
 
-				//PackedFileDescriptor newpfd = (PackedFileDescriptor)pfd.Clone();				
+				//PackedFileDescriptor newpfd = (PackedFileDescriptor)pfd.Clone();
 				PackedFileDescriptor newpfd = (PackedFileDescriptor)pfd;
-							
 
 				PackedFile pf = null;
-				if (pfd.MarkForReCompress) 
+				if (pfd.MarkForReCompress)
 				{
-					try 
+					try
 					{
-						if (pfd.HasUserdata) 
+						if (pfd.HasUserdata)
 						{
 							pf = new PackedFile(PackedFile.Compress(pfd.UserData));
-							pf.uncsize = (uint)pfd.UserData.Length;							
+							pf.uncsize = (uint)pfd.UserData.Length;
 						}
-						else 
+						else
 						{
 							byte[] data = ((PackedFile)this.Read(pfd)).UncompressedData;
 							pf = new PackedFile(PackedFile.Compress(data));
 							pf.uncsize = (uint)data.Length;
 						}
-						
+
 						pf.size = pf.data.Length;
 						pf.signature = Data.MetaData.COMPRESS_SIGNATURE;
 						pf.headersize = 9;
@@ -315,23 +342,24 @@ namespace SimPe.Packages
 
 						//recreate the FileList
 						filelist = null;
-					} 
-					catch (Exception ex) 
+					}
+					catch (Exception ex)
 					{
 						pf = (PackedFile)this.Read(pfd);
 						newpfd.size = pf.data.Length;
 						newpfd.SetUserData(pfd.UserData, false);
 
-                        if (Helper.WindowsRegistry.HiddenMode) Helper.ExceptionMessage(ex);
-					}																			
-				} 				
-				else 
+						if (Helper.WindowsRegistry.HiddenMode)
+							Helper.ExceptionMessage(ex);
+					}
+				}
+				else
 				{
 					pf = (PackedFile)this.Read(pfd);
 					newpfd.size = pf.data.Length;
-					newpfd.SetUserData(pfd.UserData, false);	
+					newpfd.SetUserData(pfd.UserData, false);
 				}
-				
+
 				newpfd.offset = (uint)writer.BaseStream.Position;
 				newpfd.Changed = false;
 				newpfd.MarkForReCompress = false;
@@ -342,7 +370,7 @@ namespace SimPe.Packages
 				tmpindex.Add(newpfd);
 
 				writer.Write(pf.data);
-            }
+			}
 
 			//Last Entry should be the Filelist
 			WriteFileList(writer, ref tmpindex, tmpcmp);
@@ -363,7 +391,6 @@ namespace SimPe.Packages
 			header.Index.Count = myindex.Length;
 			SaveIndex(writer, myindex);
 			Index = myindex;
-			
 
 			//rewrite Header
 			ms.Seek(0, SeekOrigin.Begin);
@@ -374,22 +401,28 @@ namespace SimPe.Packages
 			CloseReader();
 
 			FireIndexEvent();
-			if (Index.Length<oldcount) this.FireRemoveEvent();
-			else if (Index.Length>oldcount) this.FireAddEvent();
+			if (Index.Length < oldcount)
+				this.FireRemoveEvent();
+			else if (Index.Length > oldcount)
+				this.FireAddEvent();
 			return ms;
 		}
 
 		#region Index and Hole Writing
-		
+
 		/// <summary>
 		/// Writes the Index to the Package File
 		/// </summary>
 		/// <param name="writer">The BinaryWriter to use</param>
 		/// <param name="tmpcmp">the index you want to write</param>
 		/// <param name="tmpindex">listing of the compressin state for each packed File</param>
-		protected void WriteFileList(BinaryWriter writer, ref PackedFileDescriptors tmpindex, ArrayList tmpcmp)
+		protected void WriteFileList(
+			BinaryWriter writer,
+			ref PackedFileDescriptors tmpindex,
+			ArrayList tmpcmp
+		)
 		{
-			if (this.filelist==null) 
+			if (this.filelist == null)
 			{
 				filelist = new PackedFileDescriptor();
 				filelist.instance = 0x286B1F03;
@@ -397,31 +430,35 @@ namespace SimPe.Packages
 				filelist.Type = Data.MetaData.DIRECTORY_FILE;
 			}
 
-			//we use the fact, taht packed files that were altered by SimPe will not be compressed, 
-			//so we only need to delete entries in the Filelist that do not exist any longer. The Size 
+			//we use the fact, taht packed files that were altered by SimPe will not be compressed,
+			//so we only need to delete entries in the Filelist that do not exist any longer. The Size
 			//won't change!
 			byte[] b = this.Read(filelist).UncompressedData;
-			SimPe.PackedFiles.Wrapper.CompressedFileList fl = new SimPe.PackedFiles.Wrapper.CompressedFileList(filelist, this);			
-			if (filelist.MarkForDelete) fl.Clear();
+			SimPe.PackedFiles.Wrapper.CompressedFileList fl =
+				new SimPe.PackedFiles.Wrapper.CompressedFileList(filelist, this);
+			if (filelist.MarkForDelete)
+				fl.Clear();
 
-			SimPe.PackedFiles.Wrapper.CompressedFileList newfl = new SimPe.PackedFiles.Wrapper.CompressedFileList(this.Header.IndexType);
+			SimPe.PackedFiles.Wrapper.CompressedFileList newfl =
+				new SimPe.PackedFiles.Wrapper.CompressedFileList(this.Header.IndexType);
 			newfl.FileDescriptor = filelist;
 
-			for (int i=0; i<tmpcmp.Count; i++)
+			for (int i = 0; i < tmpcmp.Count; i++)
 			{
-				if ((bool)tmpcmp[i]) 
+				if ((bool)tmpcmp[i])
 				{
 					int pos = fl.FindFile((IPackedFileDescriptor)tmpindex[i]);
 
-					if (pos!=-1) //the file did already exist, so the size did not change!
+					if (pos != -1) //the file did already exist, so the size did not change!
 					{
-						SimPe.PackedFiles.Wrapper.ClstItem fi = fl.Items[pos];						
+						SimPe.PackedFiles.Wrapper.ClstItem fi = fl.Items[pos];
 						newfl.Add(fi);
-					} 
+					}
 					else //the file is new but compressed
-					{						
+					{
 						//IPackedFile pf = this.Read((IPackedFileDescriptor)tmpindex[i]);
-						SimPe.PackedFiles.Wrapper.ClstItem fi = new SimPe.PackedFiles.Wrapper.ClstItem(newfl.IndexType);
+						SimPe.PackedFiles.Wrapper.ClstItem fi =
+							new SimPe.PackedFiles.Wrapper.ClstItem(newfl.IndexType);
 						PackedFileDescriptor pfd = (PackedFileDescriptor)tmpindex[i];
 						fi.Type = pfd.Type;
 						fi.Group = pfd.Group;
@@ -433,16 +470,14 @@ namespace SimPe.Packages
 				}
 			}
 
-			
-			
 			//no compressed Files, so remove the (empty) Filelist
-			if (newfl.Items.Length!=0) 
+			if (newfl.Items.Length != 0)
 			{
-				//tmpindex[tmpindex.Length-1] = filelist;	
+				//tmpindex[tmpindex.Length-1] = filelist;
 				tmpindex.Add(filelist);
 
-				newfl.SynchronizeUserData();					
-				filelist.offset = (uint)writer.BaseStream.Position;					
+				newfl.SynchronizeUserData();
+				filelist.offset = (uint)writer.BaseStream.Position;
 				filelist.size = filelist.UserData.Length;
 				writer.Write(filelist.UserData);
 				filelist.Changed = false;
@@ -459,14 +494,18 @@ namespace SimPe.Packages
 		protected void SaveIndex(BinaryWriter writer, IPackedFileDescriptor[] tmpindex)
 		{
 			long pos = writer.BaseStream.Position;
-			foreach (PackedFileDescriptor item in tmpindex) 
+			foreach (PackedFileDescriptor item in tmpindex)
 			{
 				writer.Write((uint)item.Type);
 				writer.Write((uint)item.Group);
 				writer.Write((uint)item.Instance);
-				if ((Header.IsVersion0101) && (Header.IndexType==Data.MetaData.IndexTypes.ptLongFileIndex)) writer.Write((uint)item.SubType);
+				if (
+					(Header.IsVersion0101)
+					&& (Header.IndexType == Data.MetaData.IndexTypes.ptLongFileIndex)
+				)
+					writer.Write((uint)item.SubType);
 				writer.Write(item.Offset);
-				writer.Write(item.Size);			
+				writer.Write(item.Size);
 			}
 
 			header.Index.Size = (int)(writer.BaseStream.Position - pos);
@@ -480,15 +519,14 @@ namespace SimPe.Packages
 		protected void SaveHoleIndex(BinaryWriter writer, HoleIndexItem[] tmpindex)
 		{
 			long pos = writer.BaseStream.Position;
-			foreach (HoleIndexItem item in tmpindex) 
+			foreach (HoleIndexItem item in tmpindex)
 			{
 				writer.Write(item.Offset);
-				writer.Write(item.Size);			
+				writer.Write(item.Size);
 			}
 
 			header.HoleIndex.Size = (int)(writer.BaseStream.Position - pos);
 		}
 		#endregion
-		
 	}
 }

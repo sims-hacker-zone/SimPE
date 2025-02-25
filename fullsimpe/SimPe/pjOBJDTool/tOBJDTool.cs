@@ -23,87 +23,96 @@ using SimPe.Interfaces.Plugin;
 
 namespace pjOBJDTool
 {
-    class tOBJDTool : AbstractTool, ITool
-    {
-        
+	class tOBJDTool : AbstractTool, ITool
+	{
 		/// <summary>
 		/// Windows Registry Link
 		/// </summary>
 		static SimPe.Registry registry;
-		internal static SimPe.Registry WindowsRegistry 
+		internal static SimPe.Registry WindowsRegistry
 		{
 			get { return registry; }
 		}
 
 		IWrapperRegistry reg;
 		IProviderRegistry prov;
-        cOBJDTool cobjdtool;
+		cOBJDTool cobjdtool;
 
-        internal tOBJDTool(IWrapperRegistry reg, IProviderRegistry prov) 
+		internal tOBJDTool(IWrapperRegistry reg, IProviderRegistry prov)
 		{
 			this.reg = reg;
 			this.prov = prov;
 
-			if (registry==null) registry = SimPe.Helper.WindowsRegistry;
-        }
+			if (registry == null)
+				registry = SimPe.Helper.WindowsRegistry;
+		}
 
-        #region ITool Member
+		#region ITool Member
 
-        public bool IsEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
-        {
-            if (package == null) return false;
-            SimPe.Interfaces.Files.IPackedFileDescriptor[] obbies = package.FindFiles(SimPe.Data.MetaData.OBJD_FILE);
-            if (obbies.Length < 1) return false;
-            return true;
-        }
+		public bool IsEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
+		{
+			if (package == null)
+				return false;
+			SimPe.Interfaces.Files.IPackedFileDescriptor[] obbies = package.FindFiles(
+				SimPe.Data.MetaData.OBJD_FILE
+			);
+			if (obbies.Length < 1)
+				return false;
+			return true;
+		}
 
-        public bool IsReallyEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
-        {
-            return true;
-        }
+		public bool IsReallyEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
+		{
+			return true;
+		}
 
-        public SimPe.Interfaces.Plugin.IToolResult ShowDialog(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package)
-        {
-            if (!IsReallyEnabled(pfd, package)) return new SimPe.Plugin.ToolResult(false, false);
-            if (cobjdtool == null) cobjdtool = new cOBJDTool();
-            return cobjdtool.Execute(ref pfd, ref package, prov);
-        }
+		public SimPe.Interfaces.Plugin.IToolResult ShowDialog(
+			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			ref SimPe.Interfaces.Files.IPackageFile package
+		)
+		{
+			if (!IsReallyEnabled(pfd, package))
+				return new SimPe.Plugin.ToolResult(false, false);
+			if (cobjdtool == null)
+				cobjdtool = new cOBJDTool();
+			return cobjdtool.Execute(ref pfd, ref package, prov);
+		}
 
-        public override string ToString()
-        {
-            return "PJSE\\OBJD Tool";
-        }
-        
-        #endregion
+		public override string ToString()
+		{
+			return "PJSE\\OBJD Tool";
+		}
 
-        /*
-        public IToolPlugin[] KnownTools { get { return new IToolPlugin[] { new cOBJDTool() }; } }
+		#endregion
 
-        #region IToolPlugin Members
+		/*
+		public IToolPlugin[] KnownTools { get { return new IToolPlugin[] { new cOBJDTool() }; } }
 
-        string IToolPlugin.ToString()
-        {
-            return L.Get("pjCOBJDTool");
-        }
+		#region IToolPlugin Members
 
-        #endregion
-        */
+		string IToolPlugin.ToString()
+		{
+			return L.Get("pjCOBJDTool");
+		}
 
-        #region IToolExt Member
-        public override System.Drawing.Image Icon
-        {
-            get
-            {
-                return SimPe.GetIcon.pjOBJDtool;
-            }
-        }
-        public override System.Windows.Forms.Shortcut Shortcut
-        {
-            get
-            {
-                return System.Windows.Forms.Shortcut.None;
-            }
-        }
-        #endregion
-    }
+		#endregion
+		*/
+
+		#region IToolExt Member
+		public override System.Drawing.Image Icon
+		{
+			get { return SimPe.GetIcon.pjOBJDtool; }
+		}
+		public override System.Windows.Forms.Shortcut Shortcut
+		{
+			get { return System.Windows.Forms.Shortcut.None; }
+		}
+		#endregion
+	}
 }

@@ -18,39 +18,41 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.IO;
 using System.Collections;
+using System.IO;
 using SimPe;
 using SimPe.Plugin;
-
 
 namespace SimPe.Cache
 {
 	/// <summary>
 	/// Contains an Instance of a CacheFile
 	/// </summary>
-	public class MemoryCacheFile: CacheFile
+	public class MemoryCacheFile : CacheFile
 	{
 		/// <summary>
 		/// Updates and Loads the Memory Cache
 		/// </summary>
 		/// <returns></returns>
-		public static MemoryCacheFile InitCacheFile() 
+		public static MemoryCacheFile InitCacheFile()
 		{
 			FileTable.FileIndex.Load();
 			return InitCacheFile(FileTable.FileIndex);
 		}
+
 		/// <summary>
 		/// Updates and Loads the Memory Cache
 		/// </summary>
 		/// <returns></returns>
-		public static MemoryCacheFile InitCacheFile(SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fileindex) 
+		public static MemoryCacheFile InitCacheFile(
+			SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fileindex
+		)
 		{
 			Wait.SubStart();
-			Wait.Message = "Loading Memorycache" ;
+			Wait.Message = "Loading Memorycache";
 
 			MemoryCacheFile cachefile = new MemoryCacheFile();
-			
+
 			cachefile.Load(Helper.SimPeLanguageCache, true);
 			cachefile.ReloadCache(fileindex, true);
 			Wait.SubStop();
@@ -69,110 +71,159 @@ namespace SimPe.Cache
 			ReloadCache(FileTable.FileIndex, save);
 		}
 
-		public void ReloadCache(SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fileindex, bool save)
-		{			
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = fileindex.FindFile(Data.MetaData.OBJD_FILE, true);
-			
+		public void ReloadCache(
+			SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fileindex,
+			bool save
+		)
+		{
+			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = fileindex.FindFile(
+				Data.MetaData.OBJD_FILE,
+				true
+			);
+
 			bool added = false;
 			Wait.MaxProgress = items.Length;
 			Wait.Message = "Updating Cache";
 			int ct = 0;
-			foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items) 
+			foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
 			{
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] citems = this.FileIndex.FindFile(item.GetLocalFileDescriptor(), null);
-				if (citems.Length==0) 
+				Interfaces.Scenegraph.IScenegraphFileIndexItem[] citems =
+					this.FileIndex.FindFile(item.GetLocalFileDescriptor(), null);
+				if (citems.Length == 0)
 				{
-					
-					SimPe.PackedFiles.Wrapper.ExtObjd objd = new SimPe.PackedFiles.Wrapper.ExtObjd();
+					SimPe.PackedFiles.Wrapper.ExtObjd objd =
+						new SimPe.PackedFiles.Wrapper.ExtObjd();
 					objd.ProcessData(item);
 
-					this.AddItem(objd);					
+					this.AddItem(objd);
 					added = true;
 				}
 				Wait.Progress = ct++;
 			}
 
-			if (added) 
+			if (added)
 			{
 				this.map = null;
 				Wait.Message = "Saving Chache";
-				if (save) this.Save(this.FileName);				
+				if (save)
+					this.Save(this.FileName);
 				this.LoadMemTable();
 				this.LoadMemList();
-			}			
+			}
 		}
 
 		/// <summary>
 		/// Creaet a new Instance for an empty File
 		/// </summary>
-		public MemoryCacheFile() : base()
+		public MemoryCacheFile()
+			: base()
 		{
 			DEFAULT_TYPE = ContainerType.Memory;
-		}		
+		}
 
 		/// <summary>
 		/// Add a MaterialOverride to the Cache
 		/// </summary>
 		/// <param name="objd">The Object Data File</param>
-		public MemoryCacheItem AddItem(SimPe.PackedFiles.Wrapper.ExtObjd objd) 
+		public MemoryCacheItem AddItem(SimPe.PackedFiles.Wrapper.ExtObjd objd)
 		{
-			CacheContainer mycc = this.UseConatiner(ContainerType.Memory, objd.Package.FileName);
-			
-			MemoryCacheItem mci = new MemoryCacheItem();			
+			CacheContainer mycc = this.UseConatiner(
+				ContainerType.Memory,
+				objd.Package.FileName
+			);
+
+			MemoryCacheItem mci = new MemoryCacheItem();
 			mci.FileDescriptor = objd.FileDescriptor;
-			mci.Guid = objd.Guid;			
-			mci.ObjectType = objd.Type;		
+			mci.Guid = objd.Guid;
+			mci.ObjectType = objd.Type;
 			mci.ObjdName = objd.FileName;
 			mci.ParentCacheContainer = mycc;
 
-			try 
+			try
 			{
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] sitems = FileTable.FileIndex.FindFile(Data.MetaData.CTSS_FILE, objd.FileDescriptor.Group, objd.CTSSInstance + (ulong)1, null);
+				Interfaces.Scenegraph.IScenegraphFileIndexItem[] sitems =
+					FileTable.FileIndex.FindFile(
+						Data.MetaData.CTSS_FILE,
+						objd.FileDescriptor.Group,
+						objd.CTSSInstance + (ulong)1,
+						null
+					);
 				if (sitems.Length == 0)
-					sitems = FileTable.FileIndex.FindFile(Data.MetaData.CTSS_FILE, objd.FileDescriptor.Group, objd.CTSSInstance, null);
-				if (sitems.Length>0) 
+					sitems = FileTable.FileIndex.FindFile(
+						Data.MetaData.CTSS_FILE,
+						objd.FileDescriptor.Group,
+						objd.CTSSInstance,
+						null
+					);
+				if (sitems.Length > 0)
 				{
-					SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+					SimPe.PackedFiles.Wrapper.Str str =
+						new SimPe.PackedFiles.Wrapper.Str();
 					str.ProcessData(sitems[0]);
-					SimPe.PackedFiles.Wrapper.StrItemList strs = str.LanguageItems(Helper.WindowsRegistry.LanguageCode);																
-					if (strs.Length>0) mci.Name = strs[0].Title;
-								
+					SimPe.PackedFiles.Wrapper.StrItemList strs = str.LanguageItems(
+						Helper.WindowsRegistry.LanguageCode
+					);
+					if (strs.Length > 0)
+						mci.Name = strs[0].Title;
+
 					//not found?
-					if (mci.Name== "") 
+					if (mci.Name == "")
 					{
-						strs = str.LanguageItems(1);																
-						if (strs.Length>0) mci.Name = strs[0].Title;
-					}							
+						strs = str.LanguageItems(1);
+						if (strs.Length > 0)
+							mci.Name = strs[0].Title;
+					}
 				}
 			}
-			catch (Exception) {}
+			catch (Exception) { }
 
-			try 
+			try
 			{
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] sitems = FileTable.FileIndex.FindFile(Data.MetaData.STRING_FILE, objd.FileDescriptor.Group, 0x100, null);
-				if (sitems.Length>0) 
+				Interfaces.Scenegraph.IScenegraphFileIndexItem[] sitems =
+					FileTable.FileIndex.FindFile(
+						Data.MetaData.STRING_FILE,
+						objd.FileDescriptor.Group,
+						0x100,
+						null
+					);
+				if (sitems.Length > 0)
 				{
-					SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+					SimPe.PackedFiles.Wrapper.Str str =
+						new SimPe.PackedFiles.Wrapper.Str();
 					str.ProcessData(sitems[0]);
-					SimPe.PackedFiles.Wrapper.StrItemList strs = str.LanguageItems(Data.MetaData.Languages.English);																
+					SimPe.PackedFiles.Wrapper.StrItemList strs = str.LanguageItems(
+						Data.MetaData.Languages.English
+					);
 					string[] res = new string[strs.Count];
-					for (int i=0; i<res.Length; i++)					
+					for (int i = 0; i < res.Length; i++)
 						res[i] = strs[i].Title;
 					mci.ValueNames = res;
 				}
 			}
-			catch (Exception) {}
-			
+			catch (Exception) { }
+
 			//still no name?
-			if (mci.Name == "") mci.Name = objd.FileName;
+			if (mci.Name == "")
+				mci.Name = objd.FileName;
 			//having an icon?
-			SimPe.PackedFiles.Wrapper.Picture pic = new SimPe.PackedFiles.Wrapper.Picture();
+			SimPe.PackedFiles.Wrapper.Picture pic =
+				new SimPe.PackedFiles.Wrapper.Picture();
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] iitems;
 			if (mci.IsBadge)
-				iitems = FileTable.FileIndex.FindFile(Data.MetaData.SIM_IMAGE_FILE, objd.FileDescriptor.Group, 3, null);
+				iitems = FileTable.FileIndex.FindFile(
+					Data.MetaData.SIM_IMAGE_FILE,
+					objd.FileDescriptor.Group,
+					3,
+					null
+				);
 			else
-				iitems = FileTable.FileIndex.FindFile(Data.MetaData.SIM_IMAGE_FILE, objd.FileDescriptor.Group, 1, null);	
-			if (iitems.Length>0) 
+				iitems = FileTable.FileIndex.FindFile(
+					Data.MetaData.SIM_IMAGE_FILE,
+					objd.FileDescriptor.Group,
+					1,
+					null
+				);
+			if (iitems.Length > 0)
 			{
 				pic.ProcessData(iitems[0]);
 				mci.Icon = pic.Image;
@@ -187,14 +238,17 @@ namespace SimPe.Cache
 		}
 
 		Hashtable map;
+
 		/// <summary>
 		/// Return the FileIndex represented by the Cached Files
 		/// </summary>
-		public Hashtable Map 
+		public Hashtable Map
 		{
-			get { 
-				if (map==null) LoadMem();
-				return map; 
+			get
+			{
+				if (map == null)
+					LoadMem();
+				return map;
 			}
 		}
 
@@ -203,36 +257,37 @@ namespace SimPe.Cache
 		/// </summary>
 		/// <returns>the FileIndex</returns>
 		/// <remarks>
-		/// The Tags of the FileDescriptions contain the MMATCachItem Object, 
+		/// The Tags of the FileDescriptions contain the MMATCachItem Object,
 		/// the FileNames of the FileDescriptions contain the Name of the package File
 		/// </remarks>
 		public void LoadMem()
 		{
 			map = new Hashtable();
-			
 
-			foreach (CacheContainer cc in Containers) 
+			foreach (CacheContainer cc in Containers)
 			{
-				if (cc.Type==ContainerType.Memory && cc.Valid) 
+				if (cc.Type == ContainerType.Memory && cc.Valid)
 				{
-					foreach (MemoryCacheItem mci in cc.Items) 
+					foreach (MemoryCacheItem mci in cc.Items)
 					{
 						map[mci.Guid] = mci;
 					}
 				}
-			}//foreach
-		}	
+			} //foreach
+		}
 
 		ArrayList list;
+
 		/// <summary>
 		/// Return a List of all cached Memory Items
 		/// </summary>
 		public ArrayList List
 		{
-			get 
-			{ 
-				if (list==null) LoadMemList();
-				return list; 
+			get
+			{
+				if (list == null)
+					LoadMemList();
+				return list;
 			}
 		}
 
@@ -241,36 +296,37 @@ namespace SimPe.Cache
 		/// </summary>
 		/// <returns>the FileIndex</returns>
 		/// <remarks>
-		/// The Tags of the FileDescriptions contain the MMATCachItem Object, 
+		/// The Tags of the FileDescriptions contain the MMATCachItem Object,
 		/// the FileNames of the FileDescriptions contain the Name of the package File
 		/// </remarks>
 		public void LoadMemList()
 		{
 			list = new ArrayList();
-			
 
-			foreach (CacheContainer cc in Containers) 
+			foreach (CacheContainer cc in Containers)
 			{
-				if (cc.Type==ContainerType.Memory && cc.Valid) 
+				if (cc.Type == ContainerType.Memory && cc.Valid)
 				{
-					foreach (MemoryCacheItem mci in cc.Items) 
-					{						
+					foreach (MemoryCacheItem mci in cc.Items)
+					{
 						list.Add(mci);
 					}
 				}
-			}//foreach
+			} //foreach
 		}
-	
+
 		FileIndex fi;
+
 		/// <summary>
 		/// Return the FileIndex represented by the Cached Files
 		/// </summary>
-		public FileIndex FileIndex 
+		public FileIndex FileIndex
 		{
-			get 
-			{ 
-				if (fi==null) LoadMemTable();
-				return fi; 
+			get
+			{
+				if (fi == null)
+					LoadMemTable();
+				return fi;
 			}
 		}
 
@@ -279,26 +335,30 @@ namespace SimPe.Cache
 		/// </summary>
 		/// <returns>the FileIndex</returns>
 		/// <remarks>
-		/// The Tags of the FileDescriptions contain the MMATCachItem Object, 
+		/// The Tags of the FileDescriptions contain the MMATCachItem Object,
 		/// the FileNames of the FileDescriptions contain the Name of the package File
 		/// </remarks>
 		public void LoadMemTable()
 		{
 			fi = new FileIndex(new ArrayList());
 			fi.Duplicates = false;
-			
-			foreach (CacheContainer cc in Containers) 
+
+			foreach (CacheContainer cc in Containers)
 			{
-				if (cc.Type==ContainerType.Memory && cc.Valid) 
+				if (cc.Type == ContainerType.Memory && cc.Valid)
 				{
-					foreach (MemoryCacheItem mci in cc.Items) 
+					foreach (MemoryCacheItem mci in cc.Items)
 					{
 						Interfaces.Files.IPackedFileDescriptor pfd = mci.FileDescriptor;
 						pfd.Filename = cc.FileName;
-						fi.AddIndexFromPfd(pfd, null, FileIndex.GetLocalGroup(pfd.Filename));
+						fi.AddIndexFromPfd(
+							pfd,
+							null,
+							FileIndex.GetLocalGroup(pfd.Filename)
+						);
 					}
 				}
-			}//foreach
+			} //foreach
 		}
 
 		/// <summary>
@@ -321,10 +381,13 @@ namespace SimPe.Cache
 		{
 			MemoryCacheItem mci = FindItem(guid);
 			SimPe.Data.Alias a;
-			if (mci==null)
-				 a = new SimPe.Data.Alias(guid, Localization.Manager.GetString("Unknown"));
+			if (mci == null)
+				a = new SimPe.Data.Alias(
+					guid,
+					Localization.Manager.GetString("Unknown")
+				);
 			else
-				 a = new SimPe.Data.Alias(guid, mci.Name);
+				a = new SimPe.Data.Alias(guid, mci.Name);
 
 			object[] o = new object[3];
 			o[0] = mci.FileDescriptor;
@@ -333,6 +396,6 @@ namespace SimPe.Cache
 			a.Tag = o;
 
 			return a;
-		}		
+		}
 	}
 }

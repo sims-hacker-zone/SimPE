@@ -18,40 +18,39 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+using System.Collections;
 using System.ComponentModel;
 using SimPe.Geometry;
-using System.Collections;
 
 namespace SimPe.Plugin
-{	
-
+{
 	/// <summary>
 	/// Items for the TSFaceGeometryBuilder class
 	/// </summary>
 	public class TSFaceGeometryBuilderItem
 	{
 		#region Attributes
-		Vectors3f v1;							
-		public Vectors3f Vectors1 
+		Vectors3f v1;
+		public Vectors3f Vectors1
 		{
 			get { return v1; }
 			set { v1 = value; }
 		}
-		Vectors3f v2;							
+		Vectors3f v2;
 		public Vectors3f Vectors2
 		{
 			get { return v2; }
 			set { v2 = value; }
 		}
-		short u1;								
-		public short Unknown1 
+		short u1;
+		public short Unknown1
 		{
 			get { return u1; }
 			set { u1 = value; }
 		}
 
-		int u2;								
-		public int Unknown2 
+		int u2;
+		public int Unknown2
 		{
 			get { return u2; }
 			set { u2 = value; }
@@ -63,6 +62,7 @@ namespace SimPe.Plugin
 			v1 = new Vectors3f();
 			v2 = new Vectors3f();
 		}
+
 		/// <summary>
 		/// Unserializes a BinaryStream into the Attributes of this Instance
 		/// </summary>
@@ -73,16 +73,16 @@ namespace SimPe.Plugin
 			u2 = reader.ReadInt32();
 			int count = reader.ReadInt32();
 			v1.Clear();
-			for (int i=0; i<count; i++) 
+			for (int i = 0; i < count; i++)
 			{
 				Vector3f o = new Vector3f();
 				o.Unserialize(reader);
 				v1.Add(o);
 			}
-			
+
 			count = reader.ReadInt32();
 			v2.Clear();
-			for (int i=0; i<count; i++) 
+			for (int i = 0; i < count; i++)
 			{
 				Vector3f o = new Vector3f();
 				o.Unserialize(reader);
@@ -95,7 +95,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		internal virtual void Serialize(System.IO.BinaryWriter writer)
@@ -104,61 +104,62 @@ namespace SimPe.Plugin
 			writer.Write(u2);
 
 			writer.Write((int)v1.Count);
-			for (int i=0; i<v1.Count; i++) v1[i].Serialize(writer);			
-			
+			for (int i = 0; i < v1.Count; i++)
+				v1[i].Serialize(writer);
+
 			writer.Write((int)v2.Count);
-			for (int i=0; i<v2.Count; i++) v2[i].Serialize(writer);			
+			for (int i = 0; i < v2.Count; i++)
+				v2[i].Serialize(writer);
 		}
 	}
 
 	/// <summary>
 	/// Summary description for cTSFaceGeometryBuilder.
 	/// </summary>
-	public class TSFaceGeometryBuilder
-		: AbstractRcolBlock
+	public class TSFaceGeometryBuilder : AbstractRcolBlock
 	{
 		#region Attributes
 		GeometryBuilder gb;
-		
-		
-		int u1;						
-		public int Unknown1 
+
+		int u1;
+		public int Unknown1
 		{
 			get { return u1; }
 			set { u1 = value; }
 		}
-		byte u2;						
-		public byte Unknown2 
+		byte u2;
+		public byte Unknown2
 		{
 			get { return u2; }
 			set { u2 = value; }
 		}
-		int u3;						
-		public int Unknown3 
+		int u3;
+		public int Unknown3
 		{
 			get { return u3; }
 			set { u3 = value; }
 		}
 
-		TSFaceGeometryBuilderItems items;							
-		public TSFaceGeometryBuilderItems Items 
+		TSFaceGeometryBuilderItems items;
+		public TSFaceGeometryBuilderItems Items
 		{
 			get { return items; }
 		}
 		#endregion
-		
+
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public TSFaceGeometryBuilder(Rcol parent) : base(parent)
+		public TSFaceGeometryBuilder(Rcol parent)
+			: base(parent)
 		{
-			gb = new GeometryBuilder(null);			
+			gb = new GeometryBuilder(null);
 			BlockID = 0x2b70b86e;
 
 			items = new TSFaceGeometryBuilderItems();
 		}
-		
+
 		#region IRcolBlock Member
 
 		/// <summary>
@@ -170,21 +171,22 @@ namespace SimPe.Plugin
 			version = reader.ReadUInt32();
 
 			string name = reader.ReadString();
-			uint myid = reader.ReadUInt32();		
+			uint myid = reader.ReadUInt32();
 			gb.Unserialize(reader);
 			gb.BlockID = myid;
 
-		
 			u1 = reader.ReadInt32();
 			u2 = reader.ReadByte();
 			u3 = reader.ReadInt32();
-	
-			for (int i=0; i<10; i++) 
+
+			for (int i = 0; i < 10; i++)
 			{
-				TSFaceGeometryBuilderItem o =  new TSFaceGeometryBuilderItem();
+				TSFaceGeometryBuilderItem o = new TSFaceGeometryBuilderItem();
 				o.Unserialize(reader);
-				if (items.Count<=i) items.IntAdd(o);
-				else items[i] = o;
+				if (items.Count <= i)
+					items.IntAdd(o);
+				else
+					items[i] = o;
 			}
 		}
 
@@ -193,7 +195,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public override void Serialize(System.IO.BinaryWriter writer)
@@ -207,13 +209,14 @@ namespace SimPe.Plugin
 			writer.Write(u1);
 			writer.Write(u2);
 			writer.Write(u3);
-				
-			for (int i=0; i<10; i++) 
+
+			for (int i = 0; i < 10; i++)
 			{
-				if (i<items.Count) items[i].Serialize(writer);	
-				else 
+				if (i < items.Count)
+					items[i].Serialize(writer);
+				else
 				{
-					TSFaceGeometryBuilderItem o =  new TSFaceGeometryBuilderItem();
+					TSFaceGeometryBuilderItem o = new TSFaceGeometryBuilderItem();
 					o.Serialize(writer);
 				}
 			}
@@ -225,7 +228,8 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (tGenericRcol==null) tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+				if (tGenericRcol == null)
+					tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
 				return tGenericRcol;
 			}
 		}
@@ -234,38 +238,38 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
 		/// </summary>
-		protected override void InitTabPage() 
+		protected override void InitTabPage()
 		{
-			if (tGenericRcol==null) tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
-			tGenericRcol.tb_ver.Text = "0x"+Helper.HexString(this.version);
+			if (tGenericRcol == null)
+				tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(this.version);
 			tGenericRcol.gen_pg.SelectedObject = this;
 		}
 
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
-			base.ExtendTabControl (tc);
+			base.ExtendTabControl(tc);
 			this.gb.AddToTabControl(tc);
 		}
-
 
 		#region IDisposable Member
 
 		public override void Dispose()
 		{
-			if (this.tGenericRcol!=null) this.tGenericRcol.Dispose();
+			if (this.tGenericRcol != null)
+				this.tGenericRcol.Dispose();
 			tGenericRcol = null;
 		}
 
 		#endregion
 	}
 
+	#region Container
 
-	#region Container	
-	
 	/// <summary>
 	/// Typesave ArrayList for TSFaceGeometryBuilderItem Objects
 	/// </summary>
-	public class TSFaceGeometryBuilderItems : ArrayList 
+	public class TSFaceGeometryBuilderItems : ArrayList
 	{
 		/// <summary>
 		/// Integer Indexer
@@ -332,12 +336,12 @@ namespace SimPe.Plugin
 		public bool Contains(TSFaceGeometryBuilderItem item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -349,11 +353,11 @@ namespace SimPe.Plugin
 		public override object Clone()
 		{
 			TSFaceGeometryBuilderItems list = new TSFaceGeometryBuilderItems();
-			foreach (TSFaceGeometryBuilderItem item in this) list.Add(item);
+			foreach (TSFaceGeometryBuilderItem item in this)
+				list.Add(item);
 
 			return list;
 		}
 	}
 	#endregion
-	
 }

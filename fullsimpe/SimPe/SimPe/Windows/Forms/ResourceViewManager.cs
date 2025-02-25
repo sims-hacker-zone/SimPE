@@ -1,270 +1,327 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
 namespace SimPe.Windows.Forms
 {
-    public partial class ResourceViewManager : Component
-    {
-        ResourceMaps maps;
-        bool isbigneighbourhood = false;
-        public ResourceViewManager()
-        {
-            InitializeComponent();
-            
-            maps = new ResourceMaps();
-        }
+	public partial class ResourceViewManager : Component
+	{
+		ResourceMaps maps;
+		bool isbigneighbourhood = false;
 
-        ~ResourceViewManager()
-        {
-            this.CancelThreads();
-        }
+		public ResourceViewManager()
+		{
+			InitializeComponent();
 
-        ResourceListViewExt lv;
-        public ResourceListViewExt ListView
-        {
-            get { return lv; }
-            set {
-                if (lv != value)
-                {
-                    if (lv != null) lv.SetManager(null);
-                    lv = value;
-                    if (lv != null) lv.SetManager(this);
-                }
-            }
-        }
+			maps = new ResourceMaps();
+		}
 
-        ResourceTreeViewExt tv;
-        public ResourceTreeViewExt TreeView
-        {
-            get { return tv; }
-            set
-            {
-                if (tv != value)
-                {
-                    if (tv != null) tv.SetManager(null);
-                    tv = value;
-                    if (tv != null) tv.SetManager(this);
-                }
-            }
-        }
+		~ResourceViewManager()
+		{
+			this.CancelThreads();
+		}
 
-        public bool Available
-        {
-            get { return (tv != null && lv != null); }
-        }
+		ResourceListViewExt lv;
+		public ResourceListViewExt ListView
+		{
+			get { return lv; }
+			set
+			{
+				if (lv != value)
+				{
+					if (lv != null)
+						lv.SetManager(null);
+					lv = value;
+					if (lv != null)
+						lv.SetManager(this);
+				}
+			}
+		}
 
-        SimPe.Interfaces.Files.IPackageFile pkg;
+		ResourceTreeViewExt tv;
+		public ResourceTreeViewExt TreeView
+		{
+			get { return tv; }
+			set
+			{
+				if (tv != value)
+				{
+					if (tv != null)
+						tv.SetManager(null);
+					tv = value;
+					if (tv != null)
+						tv.SetManager(this);
+				}
+			}
+		}
 
-        [System.ComponentModel.Browsable(false)]
-        public ResourceViewManager.ResourceNameList Everything
-        {
-            get { return maps.Everything; }
-        }
+		public bool Available
+		{
+			get { return (tv != null && lv != null); }
+		}
 
-        [System.ComponentModel.Browsable(false)]
-        public SimPe.Interfaces.Files.IPackageFile Package
-        {
-            get { return pkg; }
-            set {
-                if (pkg != value)
-                {
-                    SimPe.Interfaces.Files.IPackageFile old = pkg;
-                    pkg = value;
-                    OnChangedPackage(old, pkg, true);
-                }
-            }
-        }
+		SimPe.Interfaces.Files.IPackageFile pkg;
 
-        protected void OnChangedPackage(SimPe.Interfaces.Files.IPackageFile oldpkg, SimPe.Interfaces.Files.IPackageFile newpkg, bool lettreeviewselect)
-        {
-            lock (maps)
-            {
-                if (lv != null) lv.BeginUpdate();
-                if (oldpkg != null)
-                {
-                    oldpkg.SavedIndex -= new EventHandler(newpkg_SavedIndex);
-                    oldpkg.RemovedResource -= new EventHandler(newpkg_RemovedResource);
-                    oldpkg.AddedResource -= new EventHandler(newpkg_AddedResource);
-                }
-                maps.Clear();
+		[System.ComponentModel.Browsable(false)]
+		public ResourceViewManager.ResourceNameList Everything
+		{
+			get { return maps.Everything; }
+		}
 
-                if (newpkg != null)
-                {
-                    if (Helper.WindowsRegistry.ShowProgressWhenPackageLoads || !Helper.WindowsRegistry.AsynchronSort)
-                        Wait.Start(newpkg.Index.Length);
-                    else Wait.Start();
-                    Wait.Message = SimPe.Localization.GetString("Loading package...");
-                    int ct = 0;
-                    foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in newpkg.Index)
-                    {
-                        NamedPackedFileDescriptor npfd = new NamedPackedFileDescriptor(pfd, newpkg);
-                        if (!Helper.WindowsRegistry.AsynchronSort) npfd.GetRealName();
+		[System.ComponentModel.Browsable(false)]
+		public SimPe.Interfaces.Files.IPackageFile Package
+		{
+			get { return pkg; }
+			set
+			{
+				if (pkg != value)
+				{
+					SimPe.Interfaces.Files.IPackageFile old = pkg;
+					pkg = value;
+					OnChangedPackage(old, pkg, true);
+				}
+			}
+		}
 
-                        maps.Everything.Add(npfd);
-                        AddResourceToMaps(npfd);
-                        if (Helper.WindowsRegistry.ShowProgressWhenPackageLoads || !Helper.WindowsRegistry.AsynchronSort) Wait.Progress = ct++;
-                    }
-                    Wait.Stop();
-                }
+		protected void OnChangedPackage(
+			SimPe.Interfaces.Files.IPackageFile oldpkg,
+			SimPe.Interfaces.Files.IPackageFile newpkg,
+			bool lettreeviewselect
+		)
+		{
+			lock (maps)
+			{
+				if (lv != null)
+					lv.BeginUpdate();
+				if (oldpkg != null)
+				{
+					oldpkg.SavedIndex -= new EventHandler(newpkg_SavedIndex);
+					oldpkg.RemovedResource -= new EventHandler(newpkg_RemovedResource);
+					oldpkg.AddedResource -= new EventHandler(newpkg_AddedResource);
+				}
+				maps.Clear();
 
-                UpdateContent(lettreeviewselect);
+				if (newpkg != null)
+				{
+					if (
+						Helper.WindowsRegistry.ShowProgressWhenPackageLoads
+						|| !Helper.WindowsRegistry.AsynchronSort
+					)
+						Wait.Start(newpkg.Index.Length);
+					else
+						Wait.Start();
+					Wait.Message = SimPe.Localization.GetString("Loading package...");
+					int ct = 0;
+					foreach (
+						SimPe.Interfaces.Files.IPackedFileDescriptor pfd in newpkg.Index
+					)
+					{
+						NamedPackedFileDescriptor npfd = new NamedPackedFileDescriptor(
+							pfd,
+							newpkg
+						);
+						if (!Helper.WindowsRegistry.AsynchronSort)
+							npfd.GetRealName();
 
-                if (newpkg != null)
-                {
-                    newpkg.AddedResource += new EventHandler(newpkg_AddedResource);
-                    newpkg.RemovedResource += new EventHandler(newpkg_RemovedResource);
-                    newpkg.SavedIndex += new EventHandler(newpkg_SavedIndex);
-                }
+						maps.Everything.Add(npfd);
+						AddResourceToMaps(npfd);
+						if (
+							Helper.WindowsRegistry.ShowProgressWhenPackageLoads
+							|| !Helper.WindowsRegistry.AsynchronSort
+						)
+							Wait.Progress = ct++;
+					}
+					Wait.Stop();
+				}
 
-                if (lv != null) lv.EndUpdate();
-            }
-        }
+				UpdateContent(lettreeviewselect);
 
-        internal void UpdateTree()
-        {
-            //lv.BeginUpdate();
-            maps.Clear(false);            
-            foreach (NamedPackedFileDescriptor npfd in maps.Everything)
-            {
-                if (!Helper.WindowsRegistry.AsynchronSort) npfd.GetRealName();
-                AddResourceToMaps(npfd);
-            }
-            if (tv != null) tv.SetResourceMaps(maps, false, false);
-            //lv.EndUpdate(false);
-        }
+				if (newpkg != null)
+				{
+					newpkg.AddedResource += new EventHandler(newpkg_AddedResource);
+					newpkg.RemovedResource += new EventHandler(newpkg_RemovedResource);
+					newpkg.SavedIndex += new EventHandler(newpkg_SavedIndex);
+				}
 
-        private void UpdateContent(bool lettreeviewselect)
-        {
-            bool donotselect = false;
-            string filonam = "nil";
-            if (pkg != null) filonam = pkg.FileName;
+				if (lv != null)
+					lv.EndUpdate();
+			}
+		}
 
-            if ((maps.Everything.Count > Helper.WindowsRegistry.BigPackageResourceCount && !Helper.WindowsRegistry.ResoruceTreeAllwaysAutoselect) || Helper.IsNeighborhoodFile(filonam))
-            { donotselect = true; lv.Clear(); }
-            
-            if (lv != null && !lettreeviewselect)
-            {
-                if (donotselect)
-                    lv.SetResources(new ResourceNameList());
-                else
-                    lv.SetResources(maps.Everything);
-            }
-            if (tv != null) tv.SetResourceMaps(maps, lettreeviewselect, Helper.IsNeighborhoodFile(filonam));
-            // if (tv != null) tv.SetResourceMaps(maps, lettreeviewselect, donotselect);
-            isbigneighbourhood = donotselect;
-        }
+		internal void UpdateTree()
+		{
+			//lv.BeginUpdate();
+			maps.Clear(false);
+			foreach (NamedPackedFileDescriptor npfd in maps.Everything)
+			{
+				if (!Helper.WindowsRegistry.AsynchronSort)
+					npfd.GetRealName();
+				AddResourceToMaps(npfd);
+			}
+			if (tv != null)
+				tv.SetResourceMaps(maps, false, false);
+			//lv.EndUpdate(false);
+		}
 
-        void newpkg_SavedIndex(object sender, EventArgs e)
-        {
-            OnChangedPackage(pkg, pkg, true);
-        }
+		private void UpdateContent(bool lettreeviewselect)
+		{
+			bool donotselect = false;
+			string filonam = "nil";
+			if (pkg != null)
+				filonam = pkg.FileName;
 
-        public void FakeSave(){
-            newpkg_SavedIndex(null, null);
-        }
+			if (
+				(
+					maps.Everything.Count
+						> Helper.WindowsRegistry.BigPackageResourceCount
+					&& !Helper.WindowsRegistry.ResoruceTreeAllwaysAutoselect
+				) || Helper.IsNeighborhoodFile(filonam)
+			)
+			{
+				donotselect = true;
+				lv.Clear();
+			}
 
-        void newpkg_RemovedResource(object sender, EventArgs e)
-        {
-            //OnChangedPackage(pkg, pkg);
-            if (lv != null) lv.Refresh();
-        }
+			if (lv != null && !lettreeviewselect)
+			{
+				if (donotselect)
+					lv.SetResources(new ResourceNameList());
+				else
+					lv.SetResources(maps.Everything);
+			}
+			if (tv != null)
+				tv.SetResourceMaps(
+					maps,
+					lettreeviewselect,
+					Helper.IsNeighborhoodFile(filonam)
+				);
+			// if (tv != null) tv.SetResourceMaps(maps, lettreeviewselect, donotselect);
+			isbigneighbourhood = donotselect;
+		}
 
-        void newpkg_AddedResource(object sender, EventArgs e)
-        {
-            OnChangedPackage(pkg, pkg, true);
-        }
+		void newpkg_SavedIndex(object sender, EventArgs e)
+		{
+			OnChangedPackage(pkg, pkg, true);
+		}
 
-        private void AddResourceToMaps(NamedPackedFileDescriptor npfd)
-        {
-            AddToTypeMap(npfd);
-            AddToGroupMap(npfd);
-            AddToInstMap(npfd);            
-        }
+		public void FakeSave()
+		{
+			newpkg_SavedIndex(null, null);
+		}
 
-        private void AddToTypeMap(NamedPackedFileDescriptor npfd)
-        {
-            ResourceNameList pfdlist = null;
-            if (maps.ByType.ContainsKey(npfd.Descriptor.Type)) pfdlist = maps.ByType[npfd.Descriptor.Type];
-            else
-            {
-                pfdlist = new ResourceNameList();
-                maps.ByType[npfd.Descriptor.Type] = pfdlist;
-            }
+		void newpkg_RemovedResource(object sender, EventArgs e)
+		{
+			//OnChangedPackage(pkg, pkg);
+			if (lv != null)
+				lv.Refresh();
+		}
 
-            pfdlist.Add(npfd);
-        }
+		void newpkg_AddedResource(object sender, EventArgs e)
+		{
+			OnChangedPackage(pkg, pkg, true);
+		}
 
-        private void AddToGroupMap(NamedPackedFileDescriptor npfd)
-        {
-            ResourceNameList pfdlist = null;
-            if (maps.ByGroup.ContainsKey(npfd.Descriptor.Group)) pfdlist = maps.ByGroup[npfd.Descriptor.Group];
-            else
-            {
-                pfdlist = new ResourceNameList();
-                maps.ByGroup[npfd.Descriptor.Group] = pfdlist;
-            }
+		private void AddResourceToMaps(NamedPackedFileDescriptor npfd)
+		{
+			AddToTypeMap(npfd);
+			AddToGroupMap(npfd);
+			AddToInstMap(npfd);
+		}
 
-            pfdlist.Add(npfd);
-        }
+		private void AddToTypeMap(NamedPackedFileDescriptor npfd)
+		{
+			ResourceNameList pfdlist = null;
+			if (maps.ByType.ContainsKey(npfd.Descriptor.Type))
+				pfdlist = maps.ByType[npfd.Descriptor.Type];
+			else
+			{
+				pfdlist = new ResourceNameList();
+				maps.ByType[npfd.Descriptor.Type] = pfdlist;
+			}
 
-        private void AddToInstMap(NamedPackedFileDescriptor npfd)
-        {
-            ResourceNameList pfdlist = null;
-            if (maps.ByInstance.ContainsKey(npfd.Descriptor.LongInstance)) pfdlist = maps.ByInstance[npfd.Descriptor.LongInstance];
-            else
-            {
-                pfdlist = new ResourceNameList();
-                maps.ByInstance[npfd.Descriptor.LongInstance] = pfdlist;
-            }
+			pfdlist.Add(npfd);
+		}
 
-            pfdlist.Add(npfd);
-        }
+		private void AddToGroupMap(NamedPackedFileDescriptor npfd)
+		{
+			ResourceNameList pfdlist = null;
+			if (maps.ByGroup.ContainsKey(npfd.Descriptor.Group))
+				pfdlist = maps.ByGroup[npfd.Descriptor.Group];
+			else
+			{
+				pfdlist = new ResourceNameList();
+				maps.ByGroup[npfd.Descriptor.Group] = pfdlist;
+			}
 
-        internal static int GetIndexForResourceType(uint type)
-        {
-            if (Helper.WindowsRegistry.DecodeFilenamesState)
-            {
-                SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper wrp = FileTable.WrapperRegistry.FindHandler(type);
-                if (wrp != null)
-                {
-                    return wrp.WrapperDescription.IconIndex;
-                }
-            }
+			pfdlist.Add(npfd);
+		}
 
-            return 0;
-        }
+		private void AddToInstMap(NamedPackedFileDescriptor npfd)
+		{
+			ResourceNameList pfdlist = null;
+			if (maps.ByInstance.ContainsKey(npfd.Descriptor.LongInstance))
+				pfdlist = maps.ByInstance[npfd.Descriptor.LongInstance];
+			else
+			{
+				pfdlist = new ResourceNameList();
+				maps.ByInstance[npfd.Descriptor.LongInstance] = pfdlist;
+			}
 
-        public void CancelThreads()
-        {
-            if (lv != null) lv.CancelThreads();
-        }
+			pfdlist.Add(npfd);
+		}
 
-        public void StoreLayout()
-        {
-            if (lv != null) lv.StoreLayout();
-        }
+		internal static int GetIndexForResourceType(uint type)
+		{
+			if (Helper.WindowsRegistry.DecodeFilenamesState)
+			{
+				SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper wrp =
+					FileTable.WrapperRegistry.FindHandler(type);
+				if (wrp != null)
+				{
+					return wrp.WrapperDescription.IconIndex;
+				}
+			}
 
-        public void RestoreLayout()
-        {
-            if (lv != null) lv.RestoreLayout();
-            if (tv != null) tv.RestoreLayout();
-        }
+			return 0;
+		}
 
-        public bool SelectResource(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem resource)
-        {
-            bool res = false;
-            if (lv != null) res = lv.SelectResource(resource);
-            if (!res && tv != null && lv != null && !isbigneighbourhood)
-            {
-                tv.SelectAll();
-                res = lv.SelectResource(resource);
-            }
-            return res;
-        }
-    }
+		public void CancelThreads()
+		{
+			if (lv != null)
+				lv.CancelThreads();
+		}
+
+		public void StoreLayout()
+		{
+			if (lv != null)
+				lv.StoreLayout();
+		}
+
+		public void RestoreLayout()
+		{
+			if (lv != null)
+				lv.RestoreLayout();
+			if (tv != null)
+				tv.RestoreLayout();
+		}
+
+		public bool SelectResource(
+			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem resource
+		)
+		{
+			bool res = false;
+			if (lv != null)
+				res = lv.SelectResource(resource);
+			if (!res && tv != null && lv != null && !isbigneighbourhood)
+			{
+				tv.SelectAll();
+				res = lv.SelectResource(resource);
+			}
+			return res;
+		}
+	}
 }

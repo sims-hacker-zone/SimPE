@@ -4,29 +4,25 @@ using System.Text;
 
 namespace SimPe.Windows.Forms
 {
-    public abstract class AResourceTreeNodeBuilder : IResourceTreeNodeBuilder
-    {
-        ulong last;
-        public AResourceTreeNodeBuilder()
-        {
-            last = 0;
-        }
-        #region IResourceTreeNodeBuilder Member
+	public abstract class AResourceTreeNodeBuilder : IResourceTreeNodeBuilder
+	{
+		ulong last;
 
-        public abstract ResourceTreeNodeExt BuildNodes(ResourceMaps maps);
+		public AResourceTreeNodeBuilder()
+		{
+			last = 0;
+		}
 
-        public ulong LastSelectedId
-        {
-            get
-            {
-                return last;
-            }
-            set
-            {
-                last = value;
-            }
-        }
+		#region IResourceTreeNodeBuilder Member
 
-        #endregion
-    }
+		public abstract ResourceTreeNodeExt BuildNodes(ResourceMaps maps);
+
+		public ulong LastSelectedId
+		{
+			get { return last; }
+			set { last = value; }
+		}
+
+		#endregion
+	}
 }

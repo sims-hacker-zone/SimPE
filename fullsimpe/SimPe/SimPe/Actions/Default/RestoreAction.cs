@@ -22,35 +22,41 @@ using System;
 namespace SimPe.Actions.Default
 {
 	/// <summary>
-    /// Summary description for RestoreAction.
+	/// Summary description for RestoreAction.
 	/// </summary>
 	public class RestoreAction : AbstractActionDefault
 	{
-		public RestoreAction()
-		{
-			
-		}
-		#region IToolAction Member		
+		public RestoreAction() { }
 
-		public override bool ChangeEnabledStateEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
+		#region IToolAction Member
+
+		public override bool ChangeEnabledStateEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs es
+		)
 		{
-			bool res = base.ChangeEnabledStateEventHandler (sender, es);
-			if (res) 
+			bool res = base.ChangeEnabledStateEventHandler(sender, es);
+			if (res)
 			{
 				res = false;
 				foreach (SimPe.Events.ResourceContainer e in es)
 					if (e.HasFileDescriptor)
-							if (e.Resource.FileDescriptor.MarkForDelete) return true;								
+						if (e.Resource.FileDescriptor.MarkForDelete)
+							return true;
 			}
 			return false;
 		}
 
-		public override void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
+		public override void ExecuteEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs es
+		)
 		{
-			if (!ChangeEnabledStateEventHandler(null, es)) return;
+			if (!ChangeEnabledStateEventHandler(null, es))
+				return;
 
-			foreach (SimPe.Events.ResourceContainer e in es) 
-				e.Resource.FileDescriptor.MarkForDelete = false;				
+			foreach (SimPe.Events.ResourceContainer e in es)
+				e.Resource.FileDescriptor.MarkForDelete = false;
 		}
 
 		#endregion
@@ -64,22 +70,19 @@ namespace SimPe.Actions.Default
 
 		#endregion
 
-		#region IToolExt Member		
+		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
 			get
-            {
+			{
 
-                return SimPe.GetIcon.actionRestore;
+				return SimPe.GetIcon.actionRestore;
 			}
 		}
 
 		public override System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.ShiftIns;
-			}
+			get { return System.Windows.Forms.Shortcut.ShiftIns; }
 		}
 		#endregion
 	}

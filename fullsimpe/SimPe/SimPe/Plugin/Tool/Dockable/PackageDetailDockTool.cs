@@ -27,6 +27,7 @@ namespace SimPe.Plugin.Tool.Dockable
 	public class PackageDetailDockTool : SimPe.Interfaces.IDockableTool
 	{
 		dcPackageDetails dc;
+
 		public PackageDetailDockTool()
 		{
 			dc = new dcPackageDetails();
@@ -43,17 +44,21 @@ namespace SimPe.Plugin.Tool.Dockable
 		public event SimPe.Events.ChangedResourceEvent ShowNewResource;
 
 		SimPe.Interfaces.Files.IPackageFile pkg;
+
 		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es)
 		{
-			if (!es.Loaded) dc.SetPackage(null);
-			else 
+			if (!es.Loaded)
+				dc.SetPackage(null);
+			else
 			{
 				//Only once for a package
-				if (pkg!=null) if (pkg.Equals(es.LoadedPackage.Package)) return;
+				if (pkg != null)
+					if (pkg.Equals(es.LoadedPackage.Package))
+						return;
 
 				dc.SetPackage(es.LoadedPackage.Package);
 			}
-	
+
 			pkg = es.LoadedPackage.Package;
 		}
 
@@ -72,23 +77,20 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.None;
-			}
+			get { return System.Windows.Forms.Shortcut.None; }
 		}
 
 		public System.Drawing.Image Icon
 		{
+			get { return dc.TabImage; }
+		}
+
+		public virtual bool Visible
+		{
 			get
 			{
-				return dc.TabImage;
+				return GetDockableControl().IsDocked || GetDockableControl().IsFloating;
 			}
-		}	
-
-		public virtual bool Visible 
-		{
-			get { return GetDockableControl().IsDocked ||  GetDockableControl().IsFloating; }
 		}
 
 		#endregion

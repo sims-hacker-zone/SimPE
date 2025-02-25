@@ -18,34 +18,35 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.IO;
 using System.Collections;
+using System.IO;
 
 namespace SimPe.Packages
 {
 	public class IndexDetails
 	{
 		protected SimPe.Interfaces.Files.IPackageHeader hd;
+
 		internal IndexDetails(SimPe.Interfaces.Files.IPackageHeader hd)
-		{			
+		{
 			this.hd = hd;
 		}
-        
-        /// <summary>
+
+		/// <summary>
 		/// Returns the Identifier of the File
 		/// </summary>
 		/// <remarks>This value should be DBPF</remarks>
 		public string Identifier
 		{
-			get {return hd.Identifier;}
+			get { return hd.Identifier; }
 		}
 
 		/// <summary>
 		/// Returns the Overall Version of this Package
 		/// </summary>
-		public string Version 
+		public string Version
 		{
-			get { return "0x"+Helper.HexString(hd.Version);}
+			get { return "0x" + Helper.HexString(hd.Version); }
 		}
 
 		/// <summary>
@@ -53,8 +54,8 @@ namespace SimPe.Packages
 		/// </summary>
 		public SimPe.Data.MetaData.IndexTypes IndexType
 		{
-			get {return hd.IndexType;}
-			set {hd.IndexType = value;}
+			get { return hd.IndexType; }
+			set { hd.IndexType = value; }
 		}
 
 		/// <summary>
@@ -62,80 +63,88 @@ namespace SimPe.Packages
 		/// </summary>
 		public string Ident
 		{
-			get {return "0x"+Helper.HexString(hd.Created);}
-        }
+			get { return "0x" + Helper.HexString(hd.Created); }
+		}
 
-        /// <summary>
-        /// Expansion Pack Icon Used by Lots in the Lot Catalogue
-        /// </summary>
-        public short EPIcon
-        {
-            get { return hd.Epicon; }
-            set { hd.Epicon = value; }
-        }
+		/// <summary>
+		/// Expansion Pack Icon Used by Lots in the Lot Catalogue
+		/// </summary>
+		public short EPIcon
+		{
+			get { return hd.Epicon; }
+			set { hd.Epicon = value; }
+		}
 
-        /// <summary>
-        /// Used by Lots in the Lot Catalogue, true (1) determines the Icon value is valid
-        /// </summary>
-        public short ShowIcon
-        {
-            get { return hd.Showicon; }
-            set
-            {
-                if (value > 0) hd.Showicon = 1;
-                else hd.Showicon = 0;
-            }
-        }
+		/// <summary>
+		/// Used by Lots in the Lot Catalogue, true (1) determines the Icon value is valid
+		/// </summary>
+		public short ShowIcon
+		{
+			get { return hd.Showicon; }
+			set
+			{
+				if (value > 0)
+					hd.Showicon = 1;
+				else
+					hd.Showicon = 0;
+			}
+		}
 	}
 
 	public class IndexDetailsAdvanced : IndexDetails
 	{
-		internal IndexDetailsAdvanced(SimPe.Interfaces.Files.IPackageHeader hd) : base (hd)
-		{					
-		}				
-	
+		internal IndexDetailsAdvanced(SimPe.Interfaces.Files.IPackageHeader hd)
+			: base(hd) { }
+
 		public string IndexOffset
 		{
-			get {return "0x"+Helper.HexString( hd.Index.Offset);}
+			get { return "0x" + Helper.HexString(hd.Index.Offset); }
 		}
 
 		public string IndexSize
 		{
-			get {return "0x"+Helper.HexString(hd.Index.Size);}
+			get { return "0x" + Helper.HexString(hd.Index.Size); }
 		}
 
 		public int ResourceCount
 		{
-			get {return hd.Index.Count;}
+			get { return hd.Index.Count; }
 		}
 
 		public string IndexVersion
 		{
-			get {return "0x"+Helper.HexString(hd.Index.Type);}
+			get { return "0x" + Helper.HexString(hd.Index.Type); }
 		}
 
 		public string IndexItemSize
 		{
-			get {return "0x"+Helper.HexString( hd.Index.ItemSize) +" (0x"+Helper.HexString(hd.Index.Size / hd.Index.Count)+")";}
+			get
+			{
+				return "0x"
+					+ Helper.HexString(hd.Index.ItemSize)
+					+ " (0x"
+					+ Helper.HexString(hd.Index.Size / hd.Index.Count)
+					+ ")";
+			}
 		}
-        
-        /// <summary>
+
+		/// <summary>
 		/// Returns the Major Version of The Packages FileFormat
 		/// </summary>
 		/// <remarks>This value should be 1</remarks>
 		public int MajorVersion
 		{
-			get {return hd.MajorVersion;}
+			get { return hd.MajorVersion; }
 		}
-        
-        /// <summary>
-		/// Returns the Minor Version of The Packages FileFormat 
+
+		/// <summary>
+		/// Returns the Minor Version of The Packages FileFormat
 		/// </summary>
 		/// <remarks>This value should be 0 or 1</remarks>
 		public int MinorVersion
 		{
-			get {return hd.MinorVersion;}
-		}						
+			get { return hd.MinorVersion; }
+		}
 	}
 
 	/// <summary>
@@ -145,6 +154,7 @@ namespace SimPe.Packages
 	{
 		SimPe.Interfaces.Files.IPackageFile pkg;
 		static ArrayList types;
+
 		public PackageRepair(SimPe.Interfaces.Files.IPackageFile pkg)
 		{
 			this.pkg = pkg;
@@ -161,23 +171,28 @@ namespace SimPe.Packages
 
 		bool CouldBeIndexItem(BinaryReader br, long pos, int step, bool strict)
 		{
-			if (pos<0) return false;			
+			if (pos < 0)
+				return false;
 
-			for (int i =0; i<4; i++) 
+			for (int i = 0; i < 4; i++)
 			{
-				br.BaseStream.Seek(pos+i*step, SeekOrigin.Begin);
+				br.BaseStream.Seek(pos + i * step, SeekOrigin.Begin);
 				SimPe.Packages.PackedFileDescriptor pfd = new PackedFileDescriptor();
 				pfd.LoadFromStream(pkg.Header, br);
-				
 
-				if (!types.Contains(pfd.Type)) return false;
-				if (pfd.Size<=0) return false;
-				if (pfd.Offset<=0 || pfd.Offset>=br.BaseStream.Length) return false;
+				if (!types.Contains(pfd.Type))
+					return false;
+				if (pfd.Size <= 0)
+					return false;
+				if (pfd.Offset <= 0 || pfd.Offset >= br.BaseStream.Length)
+					return false;
 
 				if (strict)
 				{
-					if (pfd.Type==0x00000000) return false;
-					if (pfd.Type==0xffffffff) return false;
+					if (pfd.Type == 0x00000000)
+						return false;
+					if (pfd.Type == 0xffffffff)
+						return false;
 				}
 			}
 
@@ -196,52 +211,61 @@ namespace SimPe.Packages
 				((File)pkg).ReloadReader();
 			BinaryReader br = pkg.Reader;
 			int step = 0x18;
-			if (pkg.Header.IndexType == SimPe.Data.MetaData.IndexTypes.ptShortFileIndex) step = 0x14;
-			long pos = br.BaseStream.Length - (4*step +1);
+			if (pkg.Header.IndexType == SimPe.Data.MetaData.IndexTypes.ptShortFileIndex)
+				step = 0x14;
+			long pos = br.BaseStream.Length - (4 * step + 1);
 
 			long lastitem = -1;
-			long firstitem = -1;			
+			long firstitem = -1;
 			SimPe.WaitingScreen.Wait();
-			
-			try 
-			{
-				while (pos>0x04)
-				{
-					WaitingScreen.UpdateMessage("0x"+Helper.HexString(pos)+" / 0x"+Helper.HexString(br.BaseStream.Length));					
 
-					bool hit = CouldBeIndexItem(br, pos, step, lastitem==-1);
-					if (hit && lastitem==-1)
+			try
+			{
+				while (pos > 0x04)
+				{
+					WaitingScreen.UpdateMessage(
+						"0x"
+							+ Helper.HexString(pos)
+							+ " / 0x"
+							+ Helper.HexString(br.BaseStream.Length)
+					);
+
+					bool hit = CouldBeIndexItem(br, pos, step, lastitem == -1);
+					if (hit && lastitem == -1)
 					{
 						lastitem = br.BaseStream.Position;
 					}
 
-					if (!hit && lastitem!=-1)
+					if (!hit && lastitem != -1)
 					{
-						firstitem = pos+step;
+						firstitem = pos + step;
 						break;
 					}
 
-					if (lastitem==-1) pos --;
-					else pos -= step;
-				}		
-			} 
-			finally 
+					if (lastitem == -1)
+						pos--;
+					else
+						pos -= step;
+				}
+			}
+			finally
 			{
 				WaitingScreen.Stop();
 			}
-			
+
 			hi.offset = (uint)firstitem;
-			hi.size = (int)(lastitem-firstitem);
+			hi.size = (int)(lastitem - firstitem);
 			hi.count = hi.size / step;
 
-			if (firstitem==-1) hi = pkg.Header.Index as HeaderIndex;
+			if (firstitem == -1)
+				hi = pkg.Header.Index as HeaderIndex;
 
 			return hi;
 		}
 
 		public void UseIndexData(HeaderIndex hi)
 		{
-			if (hi.Parent == pkg.Header && Package!=null) 
+			if (hi.Parent == pkg.Header && Package != null)
 			{
 				hi.UseInParent();
 				((HeaderData)hi.Parent).LockIndexDuringLoad = true;
@@ -252,22 +276,20 @@ namespace SimPe.Packages
 
 		public IndexDetails IndexDetails
 		{
-			get 
-			{
-				return new IndexDetails(pkg.Header);
-			}
+			get { return new IndexDetails(pkg.Header); }
 		}
 
 		public IndexDetailsAdvanced IndexDetailsAdvanced
 		{
-			get {return new IndexDetailsAdvanced(pkg.Header);}
+			get { return new IndexDetailsAdvanced(pkg.Header); }
 		}
 
 		public SimPe.Packages.GeneratableFile Package
 		{
-			get 
+			get
 			{
-				if (pkg is SimPe.Packages.GeneratableFile) return (SimPe.Packages.GeneratableFile)pkg;
+				if (pkg is SimPe.Packages.GeneratableFile)
+					return (SimPe.Packages.GeneratableFile)pkg;
 				return null;
 			}
 		}

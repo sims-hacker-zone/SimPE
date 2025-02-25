@@ -18,49 +18,48 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+using System.Collections;
 using System.ComponentModel;
 using SimPe.Geometry;
-using System.Collections;
 
 namespace SimPe.Plugin
-{	
-
+{
 	/// <summary>
 	/// Summary description for cProcessDeformationsBuilder.
 	/// </summary>
-	public class ProcessDeformationsBuilder
-		: AbstractRcolBlock
+	public class ProcessDeformationsBuilder : AbstractRcolBlock
 	{
 		#region Attributes
 		GeometryBuilder gb;
 		SimPe.Interfaces.Files.IPackedFileDescriptor pfd;
-		short u1;						
-		public short Unknown1 
+		short u1;
+		public short Unknown1
 		{
 			get { return u1; }
 			set { u1 = value; }
 		}
 
-		int u2;						
-		public int Unknown2 
+		int u2;
+		public int Unknown2
 		{
 			get { return u2; }
 			set { u2 = value; }
 		}
 		#endregion
-		
+
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public ProcessDeformationsBuilder(Rcol parent) : base(parent)
+		public ProcessDeformationsBuilder(Rcol parent)
+			: base(parent)
 		{
-			gb = new GeometryBuilder(null);			
+			gb = new GeometryBuilder(null);
 			BlockID = 0x5ce7e026;
 
 			pfd = new SimPe.Packages.PackedFileDescriptor();
 		}
-		
+
 		#region IRcolBlock Member
 
 		/// <summary>
@@ -72,13 +71,14 @@ namespace SimPe.Plugin
 			version = reader.ReadUInt32();
 
 			string name = reader.ReadString();
-			uint myid = reader.ReadUInt32();		
+			uint myid = reader.ReadUInt32();
 			gb.Unserialize(reader);
 			gb.BlockID = myid;
 
 			pfd.Group = reader.ReadUInt32();
 			pfd.Instance = reader.ReadUInt32();
-			if (Parent.Count==0xffff0001) pfd.SubType = reader.ReadUInt32();
+			if (Parent.Count == 0xffff0001)
+				pfd.SubType = reader.ReadUInt32();
 			pfd.Type = reader.ReadUInt32();
 
 			u1 = reader.ReadInt16();
@@ -90,7 +90,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public override void Serialize(System.IO.BinaryWriter writer)
@@ -103,7 +103,8 @@ namespace SimPe.Plugin
 
 			writer.Write(pfd.Group);
 			writer.Write(pfd.Instance);
-			if (Parent.Count==0xffff0001) writer.Write(pfd.SubType);
+			if (Parent.Count == 0xffff0001)
+				writer.Write(pfd.SubType);
 			writer.Write(pfd.Type);
 
 			writer.Write(u1);
@@ -116,7 +117,8 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (tGenericRcol==null) tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+				if (tGenericRcol == null)
+					tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
 				return tGenericRcol;
 			}
 		}
@@ -125,25 +127,26 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
 		/// </summary>
-		protected override void InitTabPage() 
+		protected override void InitTabPage()
 		{
-			if (tGenericRcol==null) tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
-			tGenericRcol.tb_ver.Text = "0x"+Helper.HexString(this.version);
+			if (tGenericRcol == null)
+				tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(this.version);
 			tGenericRcol.gen_pg.SelectedObject = this;
 		}
 
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
-			base.ExtendTabControl (tc);
+			base.ExtendTabControl(tc);
 			this.gb.AddToTabControl(tc);
 		}
-
 
 		#region IDisposable Member
 
 		public override void Dispose()
 		{
-			if (this.tGenericRcol!=null) this.tGenericRcol.Dispose();
+			if (this.tGenericRcol != null)
+				this.tGenericRcol.Dispose();
 			tGenericRcol = null;
 		}
 

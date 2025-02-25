@@ -27,16 +27,21 @@ namespace SimPe.Plugin
 	public class NmapItem : SimPe.Packages.PackedFileDescriptor
 	{
 		Nmap parent;
-		public NmapItem (Nmap parent)
+
+		public NmapItem(Nmap parent)
 		{
 			this.parent = parent;
 		}
 
 		public override string ToString()
 		{
-			string name = Filename+": 0x"+Helper.HexString(Group)+" - 0x"+Helper.HexString(Instance);
+			string name =
+				Filename
+				+ ": 0x"
+				+ Helper.HexString(Group)
+				+ " - 0x"
+				+ Helper.HexString(Instance);
 			return name;
 		}
-
 	}
 }

@@ -27,7 +27,7 @@ namespace SimPe.Plugin
 	/// This is the actual FileWrapper
 	/// </summary>
 	/// <remarks>
-	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads 
+	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
 	public class Txtr : Rcol
@@ -35,11 +35,9 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public Txtr(Interfaces.IProviderRegistry provider, bool fast) : base(provider, fast)
-		{
-		}
+		public Txtr(Interfaces.IProviderRegistry provider, bool fast)
+			: base(provider, fast) { }
 
-		
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
@@ -57,8 +55,11 @@ namespace SimPe.Plugin
 				"Pumuckl, Quaxi",
 				"This File is part of the Scenegraph. It contains the Texture for a Mesh Group/Subset.",
 				13,
-				System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.txtr.png"))
-				); 
+				System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream("SimPe.img.txtr.png")
+				)
+			);
 		}
 		#endregion
 
@@ -72,13 +73,14 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				uint[] types = {
-								   0x1C4A276C   //TXTR Files
-							   };
+				uint[] types =
+				{
+					0x1C4A276C, //TXTR Files
+				};
 				return types;
 			}
 		}
 
-		#endregion		
+		#endregion
 	}
 }

@@ -25,9 +25,12 @@ namespace Ambertation.Windows.Forms
 	/// <summary>
 	/// This Class determins a Highlighted Section
 	/// </summary>
-	public class Highlight 
+	public class Highlight
 	{
-		int start, len, max;
+		int start,
+			len,
+			max;
+
 		/// <summary>
 		/// Create a new Instance
 		/// </summary>
@@ -38,7 +41,7 @@ namespace Ambertation.Windows.Forms
 		{
 			this.Maximum = max;
 			this.len = len;
-			Start = start;			
+			Start = start;
 		}
 
 		/// <summary>
@@ -46,9 +49,10 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public int Start
 		{
-			get {return start; }
-			set {
-				start =  Math.Min(max-1, Math.Max(0, value)); 
+			get { return start; }
+			set
+			{
+				start = Math.Min(max - 1, Math.Max(0, value));
 				Length = len;
 			}
 		}
@@ -56,28 +60,28 @@ namespace Ambertation.Windows.Forms
 		/// <summary>
 		/// Returns or Sets the length of the Highlight
 		/// </summary>
-		public int Length 
+		public int Length
 		{
-			get {return len; }
-			set {len = Math.Max(0, Math.Min(max-start, value)); }
+			get { return len; }
+			set { len = Math.Max(0, Math.Min(max - start, value)); }
 		}
 
 		/// <summary>
 		/// Returns the Last selected Position
 		/// </summary>
-		public int End 
+		public int End
 		{
-			get {return start+len-1;}
+			get { return start + len - 1; }
 		}
 
 		/// <summary>
 		/// Changes the allowed Maximum
 		/// </summary>
-		internal int Maximum 
+		internal int Maximum
 		{
-			set 
-			{ 
-				if (max!=value) 
+			set
+			{
+				if (max != value)
 				{
 					max = value;
 					len = 0;
@@ -93,18 +97,17 @@ namespace Ambertation.Windows.Forms
 		/// <returns></returns>
 		public bool Contains(int offset)
 		{
-			return (offset>=Start && offset<=End );
+			return (offset >= Start && offset <= End);
 		}
 	}
 }
 
 namespace Ambertation.Collections
 {
-
 	/// <summary>
 	/// Typesave ArrayList for Highlight Objects
 	/// </summary>
-	public class Highlights : ArrayList 
+	public class Highlights : ArrayList
 	{
 		/// <summary>
 		/// Integer Indexer
@@ -129,7 +132,7 @@ namespace Ambertation.Collections
 		/// </summary>
 		/// <param name="item">The object you want to add</param>
 		/// <returns>The index it was added on</returns>
-		internal  int Add(Ambertation.Windows.Forms.Highlight item)
+		internal int Add(Ambertation.Windows.Forms.Highlight item)
 		{
 			return base.Add(item);
 		}
@@ -151,7 +154,7 @@ namespace Ambertation.Collections
 		internal void Remove(Ambertation.Windows.Forms.Highlight item)
 		{
 			base.Remove(item);
-		}		
+		}
 
 		/// <summary>
 		/// Checks wether or not the object is already stored in the List
@@ -161,12 +164,12 @@ namespace Ambertation.Collections
 		public bool Contains(Ambertation.Windows.Forms.Highlight item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -178,7 +181,8 @@ namespace Ambertation.Collections
 		internal new object Clone()
 		{
 			Highlights list = new Highlights();
-			foreach (Ambertation.Windows.Forms.Highlight item in this) list.Add(item);
+			foreach (Ambertation.Windows.Forms.Highlight item in this)
+				list.Add(item);
 
 			return list;
 		}

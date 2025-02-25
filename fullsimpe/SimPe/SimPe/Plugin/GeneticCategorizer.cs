@@ -18,6 +18,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -28,7 +29,6 @@ using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Scenegraph;
 using SimPe.Packages;
 using SimPe.PackedFiles.Wrapper;
-using System.Collections.Generic;
 
 namespace SimPe.Plugin
 {
@@ -44,12 +44,8 @@ namespace SimPe.Plugin
 
 		public PackageSettings Settings
 		{
-			get {
-				return this.settings;
-			}
-			set {
-				this.settings = value;
-			}
+			get { return this.settings; }
+			set { this.settings = value; }
 		}
 
 		public bool IsEmpty
@@ -65,12 +61,11 @@ namespace SimPe.Plugin
 			//this.settings = new PackageSettings();
 		}
 
-		public GeneticCategorizer(System.ComponentModel.IContainer container) : this()
+		public GeneticCategorizer(System.ComponentModel.IContainer container)
+			: this()
 		{
 			if (container != null)
 				container.Add(this);
-
-			
 		}
 
 		public bool AddPackage(HairColor key, string fileName)
@@ -100,7 +95,7 @@ namespace SimPe.Plugin
 				default:
 					ret = new PackageSettings(this.settings, type);
 					break;
-			}			
+			}
 			return ret;
 		}
 
@@ -110,9 +105,9 @@ namespace SimPe.Plugin
 			{
 				if (!this.packages.ContainsKey(key))
 				{
-                    PackageInfo pnfo = new PackageInfo(package);
+					PackageInfo pnfo = new PackageInfo(package);
 					this.packages.Add(key, pnfo);
-					
+
 					pnfo.RecolorItems = this.GetRecolorItems(key);
 
 					#region Determine package type
@@ -134,23 +129,28 @@ namespace SimPe.Plugin
 								break;
 							}
 						}
-
 					}
 
 					#endregion
 
 					if (
-						this.settings == null ||
-						this.settings.PackageType == RecolorType.Unsupported
-						)
+						this.settings == null
+						|| this.settings.PackageType == RecolorType.Unsupported
+					)
 					{
 						this.settings = this.GetSettings(newType);
 					}
-					else
-						if (newType != this.settings.PackageType)
+					else if (newType != this.settings.PackageType)
 					{
 						this.Clear(key);
-						Helper.ExceptionMessage(new ApplicationException(String.Format("The package being added is not a {0}", this.settings.PackageType)));
+						Helper.ExceptionMessage(
+							new ApplicationException(
+								String.Format(
+									"The package being added is not a {0}",
+									this.settings.PackageType
+								)
+							)
+						);
 						return false;
 					}
 
@@ -158,21 +158,22 @@ namespace SimPe.Plugin
 					{
 						if (this.settings is SkintoneSettings)
 						{
-							((SkintoneSettings)this.settings).GeneticWeight = pnfo.PropertySet.GetSaveItem("genetic").SingleValue;
+							((SkintoneSettings)this.settings).GeneticWeight = pnfo
+								.PropertySet.GetSaveItem("genetic")
+								.SingleValue;
 						}
 
 						if (this.settings.FamilyGuid == Guid.Empty)
 							this.settings.FamilyGuid = pnfo.Family;
-
 					}
-                    /*
-                    if (!FileTable.FileIndex.Loaded && WrapperFactory.Settings.ForceTableLoad)
-                    {
-                        FileTable.FileIndex.Load();
-                        FileTable.FileIndex.AddIndexFromPackage(package, false);
-                    }*/
+					/*
+					if (!FileTable.FileIndex.Loaded && WrapperFactory.Settings.ForceTableLoad)
+					{
+						FileTable.FileIndex.Load();
+						FileTable.FileIndex.AddIndexFromPackage(package, false);
+					}*/
 
-                    if (Utility.IsNullOrEmpty(this.settings.Description))
+					if (Utility.IsNullOrEmpty(this.settings.Description))
 						this.settings.Description = pnfo.Description; //this.GetPackageText(key);
 
 					return true;
@@ -180,7 +181,6 @@ namespace SimPe.Plugin
 			}
 			return false;
 		}
-
 
 		public void Clear(HairColor key)
 		{
@@ -212,11 +212,10 @@ namespace SimPe.Plugin
 
 		public bool MovePackage(HairColor currentKey, HairColor newKey)
 		{
-
 			if (
-				this.packages.ContainsKey(currentKey) &&
-			 !this.packages.ContainsKey(newKey)
-				)
+				this.packages.ContainsKey(currentKey)
+				&& !this.packages.ContainsKey(newKey)
+			)
 			{
 				this.packages.Add(newKey, this.packages[currentKey]);
 				this.packages.Remove(currentKey);
@@ -234,15 +233,16 @@ namespace SimPe.Plugin
 
 					foreach (RecolorItem item in this.GetRecolorItems(newKey))
 					{
-                        bool greyRecolor = (item.Age == Ages.Elder ^ newKey == HairColor.Grey) && newKey != HairColor.Unbinned;
+						bool greyRecolor =
+							(item.Age == Ages.Elder ^ newKey == HairColor.Grey)
+							&& newKey != HairColor.Unbinned;
 						if (!greyRecolor)
 							item.ColorBin = newKey;
 						else
 							item.ColorBin = HairColor.Grey;
 					}
-
 				}
-				
+
 				this.loadedTextures.Clear();
 
 				return true;
@@ -260,7 +260,9 @@ namespace SimPe.Plugin
 				PackageInfo pnfo = this.packages[key];
 				if (pnfo != null)
 				{
-					IPackedFileDescriptor[] files = pnfo.FindFiles(SimPe.Data.MetaData.GZPS);
+					IPackedFileDescriptor[] files = pnfo.FindFiles(
+						SimPe.Data.MetaData.GZPS
+					);
 					if (Utility.IsNullOrEmpty(files))
 						files = pnfo.FindFiles(Utility.DataType.XTOL);
 					if (Utility.IsNullOrEmpty(files))
@@ -271,20 +273,25 @@ namespace SimPe.Plugin
 
 				foreach (RecolorItem item in list)
 				{
-                    bool greyRecolor = (item.Age == Ages.Elder ^ key == HairColor.Grey) && key != HairColor.Unbinned;
+					bool greyRecolor =
+						(item.Age == Ages.Elder ^ key == HairColor.Grey)
+						&& key != HairColor.Unbinned;
 					if (!greyRecolor)
 						item.ColorBin = key;
 					else
 						item.ColorBin = HairColor.Grey;
 				}
-				
+
 				this.recolorItems[key] = list.ToArray(typeof(RecolorItem));
 			}
-		
+
 			return (RecolorItem[])this.recolorItems[key];
 		}
 
-		private ArrayList ProcessCpfItems(IPackedFileDescriptor[] cpfs, IPackageFile package)
+		private ArrayList ProcessCpfItems(
+			IPackedFileDescriptor[] cpfs,
+			IPackageFile package
+		)
 		{
 			ArrayList ret = new ArrayList();
 			if (!Utility.IsNullOrEmpty(cpfs))
@@ -326,7 +333,6 @@ namespace SimPe.Plugin
 
 					ret.Add(item);
 				}
-
 			}
 			return ret;
 		}
@@ -340,7 +346,7 @@ namespace SimPe.Plugin
 
 		public void RevertToBaseTextures(RcolTable materials)
 		{
-            ArrayList temp = new ArrayList();
+			ArrayList temp = new ArrayList();
 			foreach (MaterialDefinitionRcol rcol in materials)
 			{
 				if (rcol.MaterialDefinition != null)
@@ -353,32 +359,32 @@ namespace SimPe.Plugin
 
 						if (mmatd.Listing.Length == 1)
 						{
-							string newTextureName = this.NewTextureName(baseTextureName, rcol.ColorBin);
+							string newTextureName = this.NewTextureName(
+								baseTextureName,
+								rcol.ColorBin
+							);
 							rcol.BaseTextureName = newTextureName;
 						}
 						else
 						{
-							string newTextureName = this.NewTextureName(mmatd.Listing[1], rcol.ColorBin);
+							string newTextureName = this.NewTextureName(
+								mmatd.Listing[1],
+								rcol.ColorBin
+							);
 							rcol.NormalMapTextureName = baseTextureName;
 							rcol.BaseTextureName = newTextureName;
 						}
 
 						this.ReloadTextureDescriptor(rcol);
-
 					}
-
 				}
-
 			}
-
-
 		}
-
 
 		string NewTextureName(string baseTextureName, HairColor key)
 		{
-            if (key == HairColor.Unbinned)
-			return baseTextureName;
+			if (key == HairColor.Unbinned)
+				return baseTextureName;
 
 			string[] parts = baseTextureName.Split('-');
 			System.Text.StringBuilder str = new System.Text.StringBuilder();
@@ -392,7 +398,6 @@ namespace SimPe.Plugin
 			return str.ToString();
 		}
 
-
 		public IPackedFileDescriptor[] GetTextureDescriptor(RcolTable table)
 		{
 			ArrayList ret = new ArrayList();
@@ -402,15 +407,13 @@ namespace SimPe.Plugin
 				IPackedFileDescriptor[] txtr = GetTextureDescriptor(rcol);
 				if (!Utility.IsNullOrEmpty(txtr))
 					ret.AddRange(txtr);
-
 			}
 			return (IPackedFileDescriptor[])ret.ToArray(typeof(IPackedFileDescriptor));
 		}
 
-
 		IScenegraphFileIndexItem FindFileByReference(IPackedFileDescriptor reference)
 		{
-            /*if (!FileTable.FileIndex.Loaded && WrapperFactory.Settings.ForceTableLoad)
+			/*if (!FileTable.FileIndex.Loaded && WrapperFactory.Settings.ForceTableLoad)
 				FileTable.FileIndex.Load();*/
 
 			IScenegraphFileIndexItem ret = null;
@@ -421,20 +424,27 @@ namespace SimPe.Plugin
 				object key = de.Key;
 				PackageInfo pnfo = de.Value as PackageInfo;
 
-				IPackedFileDescriptor local = pnfo.Package.FindFile(reference.Type, reference.SubType, reference.Group, reference.Instance);
+				IPackedFileDescriptor local = pnfo.Package.FindFile(
+					reference.Type,
+					reference.SubType,
+					reference.Group,
+					reference.Instance
+				);
 				if (local != null)
 				{
 					ret = new FileIndexItem(local, pnfo.Package);
 					break;
 				}
-
-
 			}
 
 			if (ret == null)
 			{
 				// find in all packages
-				IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFileByGroupAndInstance(reference.Group, reference.LongInstance);
+				IScenegraphFileIndexItem[] items =
+					FileTable.FileIndex.FindFileByGroupAndInstance(
+						reference.Group,
+						reference.LongInstance
+					);
 				if (!Utility.IsNullOrEmpty(items))
 				{
 					foreach (IScenegraphFileIndexItem sfi in items)
@@ -445,25 +455,22 @@ namespace SimPe.Plugin
 							break;
 						}
 					}
-
 				}
-
 			}
 
 			if (ret == null)
 			{
-				IScenegraphFileIndexItem[] sfi = FileTable.FileIndex.FindFileDiscardingGroup(reference); //, pnfo.Package);
+				IScenegraphFileIndexItem[] sfi =
+					FileTable.FileIndex.FindFileDiscardingGroup(reference); //, pnfo.Package);
 				if (!Utility.IsNullOrEmpty(sfi))
 					ret = sfi[0];
 			}
-
 
 			return ret;
 		}
 
 		public System.Drawing.Image GetImage(Rcol rcol, System.Drawing.Size size)
 		{
-
 			MaterialDefinitionRcol txmt = rcol as MaterialDefinitionRcol;
 			if (txmt != null)
 			{
@@ -489,22 +496,29 @@ namespace SimPe.Plugin
 		{
 			ArrayList ret = new ArrayList();
 
-			ResourceReference[] rrs = this.FindTXMTReferences(package, cpf.FileDescriptor.Group, cpf.FileDescriptor.Instance);
+			ResourceReference[] rrs = this.FindTXMTReferences(
+				package,
+				cpf.FileDescriptor.Group,
+				cpf.FileDescriptor.Instance
+			);
 			foreach (ResourceReference rr in rrs)
 			{
-				IPackedFileDescriptor pfd = package.FindFile(rr.Type, rr.SubType, rr.Group, rr.Instance);
+				IPackedFileDescriptor pfd = package.FindFile(
+					rr.Type,
+					rr.SubType,
+					rr.Group,
+					rr.Instance
+				);
 				if (pfd != null)
 				{
 					MaterialDefinitionRcol rcol = new MaterialDefinitionRcol(); // GenericRcol(null, false);
-					
+
 					rcol.ProcessData(pfd, package, false);
 
 					this.ReloadTextureDescriptor(rcol);
-					
+
 					ret.Add(rcol);
-
 				}
-
 			}
 
 			return (Rcol[])ret.ToArray(typeof(Rcol));
@@ -532,12 +546,15 @@ namespace SimPe.Plugin
 
 			Hashtable table = rcol.GetTextureDescriptor();
 
-			IPackedFileDescriptor pfdBaseTexture = table[TextureType.Base] as IPackedFileDescriptor;
+			IPackedFileDescriptor pfdBaseTexture =
+				table[TextureType.Base] as IPackedFileDescriptor;
 			if (pfdBaseTexture != null)
 			{
 				ResourceReference key = new ResourceReference(pfdBaseTexture);
 
-				IScenegraphFileIndexItem item = this.FindFileByReference(pfdBaseTexture);
+				IScenegraphFileIndexItem item = this.FindFileByReference(
+					pfdBaseTexture
+				);
 				if (item != null)
 				{
 					Txtr txtr = null;
@@ -555,12 +572,15 @@ namespace SimPe.Plugin
 
 			if (table.ContainsKey(TextureType.NormalMap))
 			{
-				IPackedFileDescriptor pfdNormalMapTexture = table[TextureType.NormalMap] as IPackedFileDescriptor;
+				IPackedFileDescriptor pfdNormalMapTexture =
+					table[TextureType.NormalMap] as IPackedFileDescriptor;
 				if (pfdNormalMapTexture != null)
 				{
 					ResourceReference key = new ResourceReference(pfdNormalMapTexture);
 
-					IScenegraphFileIndexItem item = this.FindFileByReference(pfdNormalMapTexture);
+					IScenegraphFileIndexItem item = this.FindFileByReference(
+						pfdNormalMapTexture
+					);
 					if (item != null)
 					{
 						Txtr txtr = null;
@@ -580,84 +600,94 @@ namespace SimPe.Plugin
 			return (Rcol[])ret.ToArray(typeof(Rcol));
 		}
 
-
-		private ResourceReference[] FindTXMTReferences(IPackageFile package, uint refGroup, uint refInstance)
+		private ResourceReference[] FindTXMTReferences(
+			IPackageFile package,
+			uint refGroup,
+			uint refInstance
+		)
 		{
 			ArrayList ret = new ArrayList();
 
-			IPackedFileDescriptor[] pfds = Utility.FindFiles(package, Data.MetaData.REF_FILE, refGroup, refInstance);
+			IPackedFileDescriptor[] pfds = Utility.FindFiles(
+				package,
+				Data.MetaData.REF_FILE,
+				refGroup,
+				refInstance
+			);
 			if (!Utility.IsNullOrEmpty(pfds))
 			{
 				// we're not even trying to touch these, so let's just release
 				// their resources after we take a peek...
-				using (RefFile refFile = new RefFile()) 
+				using (RefFile refFile = new RefFile())
 				{
 					foreach (IPackedFileDescriptor pfd in pfds) // there should be only one!
 					{
-						try {
+						try
+						{
 							refFile.ProcessData(pfd, package, false);
 							foreach (IPackedFileDescriptor ptr in refFile.Items)
 								if (ptr.Type == SimPe.Data.MetaData.TXMT)
 									ret.Add(new ResourceReference(ptr));
 						}
-						catch {
-						}
-						finally {
+						catch { }
+						finally
+						{
 							refFile.Package = null;
 							refFile.FileDescriptor = null;
 						}
 					}
-
 				} //using
-
 			}
 			return (ResourceReference[])ret.ToArray(typeof(ResourceReference));
 		}
-
 
 		IPackedFileDescriptor Get3IDRResource(RecolorItem item)
 		{
 			if (item.PropertySet != null)
 			{
-				IPackedFileDescriptor[] pfds = Utility.FindFiles(item.PropertySet.Package, Data.MetaData.REF_FILE, item.PropertySet.FileDescriptor.Group, item.PropertySet.FileDescriptor.Instance);
+				IPackedFileDescriptor[] pfds = Utility.FindFiles(
+					item.PropertySet.Package,
+					Data.MetaData.REF_FILE,
+					item.PropertySet.FileDescriptor.Group,
+					item.PropertySet.FileDescriptor.Instance
+				);
 				if (pfds.Length == 1)
 					return pfds[0];
 			}
 			return null;
 		}
 
-
-
 		protected void SanitizeFilenames(PackageInfo pnfo)
 		{
-
 			foreach (RecolorItem item in pnfo.RecolorItems)
 			{
 				foreach (MaterialDefinitionRcol txmt in item.Materials)
 				{
-					txmt.FileName = String.Format("#0x{0:x8}!{1}", pnfo.PackageHash, Hashes.StripHashFromName(txmt.FileName));
+					txmt.FileName = String.Format(
+						"#0x{0:x8}!{1}",
+						pnfo.PackageHash,
+						Hashes.StripHashFromName(txmt.FileName)
+					);
 
 					foreach (Txtr txtr in txmt.Textures)
 					{
-						try 
+						try
 						{
-							txtr.FileName = String.Format("#0x{0:x8}!{1}", pnfo.PackageHash, Hashes.StripHashFromName(txtr.FileName));
+							txtr.FileName = String.Format(
+								"#0x{0:x8}!{1}",
+								pnfo.PackageHash,
+								Hashes.StripHashFromName(txtr.FileName)
+							);
 						}
 						catch (Exception x)
 						{
 							x.GetType();
 						}
-						finally
-						{
-						}
+						finally { }
 					}
-				
 				}
-				
 			}
-
 		}
-
 
 		/// <summary>
 		/// This is where color binning happens...
@@ -667,7 +697,7 @@ namespace SimPe.Plugin
 		protected virtual GeneratableFile ProcessPackage(HairColor key)
 		{
 			GeneratableFile ret = null;
-			
+
 			PackageInfo pnfo = this.packages[key];
 			if (pnfo != null)
 			{
@@ -675,7 +705,7 @@ namespace SimPe.Plugin
 				//this.SanitizeFilenames(pnfo);
 				ret = pnfo.Package as GeneratableFile;
 			}
-			
+
 			if (ret != null)
 			{
 				Guid hairtoneGuid = new Guid((uint)key, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -685,11 +715,11 @@ namespace SimPe.Plugin
 				RecolorItem[] items = this.GetRecolorItems(key);
 				foreach (RecolorItem item in items)
 				{
-                    item.Pinned = this.settings.KeepDisabledItems;
+					item.Pinned = this.settings.KeepDisabledItems;
 
 					// used to check if a given set of textures can be deleted
 					IPackedFileDescriptor[] txtr = GetTextureDescriptor(item.Materials);
-					
+
 					if (item.Enabled || item.Pinned)
 					{
 						keep.AddRange(txtr);
@@ -706,10 +736,8 @@ namespace SimPe.Plugin
 
 					item.Family = this.settings.FamilyGuid;
 
-					
 					switch (this.settings.PackageType)
 					{
-
 						// this is the hairtone processing
 						case RecolorType.Hairtone:
 						case RecolorType.TextureOverlay:
@@ -717,28 +745,35 @@ namespace SimPe.Plugin
 
 							if (
 								(
-								item.Type == RecolorType.TextureOverlay ||
-								item.Type == RecolorType.MeshOverlay
-								) && 
-								(
-								item.TextureOverlayType != TextureOverlayTypes.EyeBrow &&
-								item.TextureOverlayType != TextureOverlayTypes.Beard)
+									item.Type == RecolorType.TextureOverlay
+									|| item.Type == RecolorType.MeshOverlay
 								)
+								&& (
+									item.TextureOverlayType
+										!= TextureOverlayTypes.EyeBrow
+									&& item.TextureOverlayType
+										!= TextureOverlayTypes.Beard
+								)
+							)
 								goto default;
 
-                            if (key == HairColor.Unbinned)
-							hairtoneGuid = item.Family;
+							if (key == HairColor.Unbinned)
+								hairtoneGuid = item.Family;
 
 							// special case
 							// TODO: re-check conditions
-							if (item.Age == SimPe.Data.Ages.Elder && key != HairColor.Unbinned)
+							if (
+								item.Age == SimPe.Data.Ages.Elder
+								&& key != HairColor.Unbinned
+							)
 								item.Hairtone = Utility.HairtoneGuid.Grey;
 							else
 								item.Hairtone = hairtoneGuid;
 
 							#region New name
 							string oldName = item.Name;
-							System.Text.StringBuilder str = new System.Text.StringBuilder();
+							System.Text.StringBuilder str =
+								new System.Text.StringBuilder();
 							str.Append(oldName.Split('_')[0]);
 							str.Append("_");
 							// special case (again)
@@ -756,55 +791,51 @@ namespace SimPe.Plugin
 					}
 
 					// process textures
-                    if (this.settings.CompressTextures)
+					if (this.settings.CompressTextures)
 						foreach (MaterialDefinitionRcol mmat in item.Materials)
-							foreach (Txtr textr in mmat.Textures)
-								if (textr.Package == pnfo.Package) // this is important!!
-									textr.FileDescriptor.MarkForReCompress = true;
-
+						foreach (Txtr textr in mmat.Textures)
+							if (textr.Package == pnfo.Package) // this is important!!
+								textr.FileDescriptor.MarkForReCompress = true;
 
 					item.CommitChanges();
 				}
 
 				// textures deemed unnecessary are now marked for deletion
-				IPackedFileDescriptor[] textureFiles = ret.FindFiles(SimPe.Data.MetaData.TXTR);
+				IPackedFileDescriptor[] textureFiles = ret.FindFiles(
+					SimPe.Data.MetaData.TXTR
+				);
 				foreach (IPackedFileDescriptor pfd in textureFiles)
 					if (!keep.Contains(pfd))
 						pfd.MarkForDelete = true;
-				
 
 				if (pnfo.PropertySet != null)
 				{
-
 					if (pnfo.Type == RecolorType.Hairtone)
 					{
 						HairtoneSettings hset = (HairtoneSettings)this.settings;
 
 						pnfo.Name = key.ToString();
-                       if (key != HairColor.Unbinned)
-						pnfo.SetValue("proxy", hairtoneGuid.ToString());
-					   else
-							if (hset.DefaultProxy != Guid.Empty)
+						if (key != HairColor.Unbinned)
+							pnfo.SetValue("proxy", hairtoneGuid.ToString());
+						else if (hset.DefaultProxy != Guid.Empty)
 							pnfo.SetValue("proxy", hset.DefaultProxy.ToString());
 					}
-					else
-						if (pnfo.Type == RecolorType.Skintone)
+					else if (pnfo.Type == RecolorType.Skintone)
 					{
 						SkintoneSettings sset = (SkintoneSettings)this.settings;
-						pnfo.PropertySet.GetItem("genetic").SingleValue = sset.GeneticWeight;
+						pnfo.PropertySet.GetItem("genetic").SingleValue =
+							sset.GeneticWeight;
 					}
 
 					pnfo.Family = this.settings.FamilyGuid;
-				
 				}
 
 				pnfo.Description = this.settings.Description;
-				
+
 				pnfo.CommitChanges();
 			}
 			return ret;
 		}
-
 
 		/// <summary>
 		/// Processes all color keys and saves the files,
@@ -812,13 +843,12 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="fileName"></param>
 		/// <returns></returns>
-        public int ProcessPackages(string fileName, bool namechange) // namechange is true for Save As - will be applied to make single package and RenameFiles
+		public int ProcessPackages(string fileName, bool namechange) // namechange is true for Save As - will be applied to make single package and RenameFiles
 		{
 			int ret = 0;
 			Array values = Enum.GetValues(typeof(HairColor));
 			ListDictionary files = new ListDictionary();
 
-			
 			// intermediate step: determine which color keys have packages
 			int i = -1;
 			while (++i < values.Length)
@@ -829,7 +859,7 @@ namespace SimPe.Plugin
 					files.Add(key, file);
 			}
 
-            if (namechange) //  if Save As then is true, will go no further than this
+			if (namechange) //  if Save As then is true, will go no further than this
 			{
 				// create THE output file
 				GeneratableFile file = GeneratableFile.LoadFromFile(null);
@@ -841,7 +871,12 @@ namespace SimPe.Plugin
 						if (!pfd.MarkForDelete)
 						{
 							IPackedFile fl = package.Read(pfd);
-							IPackedFileDescriptor newpfd = file.NewDescriptor(pfd.Type, pfd.SubType, pfd.Group, pfd.Instance);
+							IPackedFileDescriptor newpfd = file.NewDescriptor(
+								pfd.Type,
+								pfd.SubType,
+								pfd.Group,
+								pfd.Instance
+							);
 							newpfd.UserData = fl.UncompressedData;
 							newpfd.MarkForReCompress = pfd.MarkForReCompress;
 							file.Add(newpfd);
@@ -850,7 +885,6 @@ namespace SimPe.Plugin
 				}
 
 				this.SaveFile(file, fileName); // done!
-
 			}
 			else
 			{
@@ -862,12 +896,12 @@ namespace SimPe.Plugin
 					SaveFile(package, fileName, key);
 				}
 			}
-            return ret;
+			return ret;
 		}
 
 		private void SaveFile(GeneratableFile file, string fileName, HairColor key)
 		{
-            string filename = Convert.ToString(this.loadedFiles[key]); /* here we lose the fileName parameter if not Rename files
+			string filename = Convert.ToString(this.loadedFiles[key]); /* here we lose the fileName parameter if not Rename files
             if (this.settings.RenameFiles) // namechange ?? -will never get here
 			{
 				// generate new name
@@ -885,7 +919,8 @@ namespace SimPe.Plugin
 			}
 			StreamFactory.CloseStream(fileName);
 		}
-        /*
+
+		/*
 		private void DisablePackage(HairColor key)
 		{
 			string originalFilePath = "";
@@ -906,7 +941,7 @@ namespace SimPe.Plugin
 		}
 
 		const string DisabledPackageFileExtension = ".packagedisabled";
-        */
+		*/
 		protected override void Dispose(bool disposing)
 		{
 			if (disposing)
@@ -916,9 +951,7 @@ namespace SimPe.Plugin
 					file.Dispose();
 				this.Clear();
 			}
-			base.Dispose (disposing);
+			base.Dispose(disposing);
 		}
 	}
-
-
 }

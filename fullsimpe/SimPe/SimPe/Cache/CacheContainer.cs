@@ -25,27 +25,27 @@ namespace SimPe.Cache
 	/// <summary>
 	/// What type have the items stored in the container
 	/// </summary>
-	public enum ContainerType :byte
+	public enum ContainerType : byte
 	{
 		None = 0x00,
 		Object = 0x01,
-		MaterialOverride = 0x02,		
+		MaterialOverride = 0x02,
 		Want = 0x03,
 		Memory = 0x04,
 		Package = 0x05,
-        Rcol = 0x06,
-        Goal = 0x07
+		Rcol = 0x06,
+		Goal = 0x07,
 	};
 
 	/// <summary>
-	/// Detailed Information about the Valid State of the Container 
+	/// Detailed Information about the Valid State of the Container
 	/// </summary>
 	public enum ContainerValid : byte
 	{
 		Yes = 0x04,
 		FileNotFound = 0x01,
 		Modified = 0x02,
-		UnknownVersion = 0x03
+		UnknownVersion = 0x03,
 	}
 
 	/// <summary>
@@ -70,19 +70,19 @@ namespace SimPe.Cache
 			valid = ContainerValid.Yes;
 
 			items = new CacheItems();
-		}		
+		}
 
 		byte version;
 		ContainerType type;
 		ContainerValid valid;
-		
+
 		DateTime added;
 		string filename;
 
 		/// <summary>
 		/// Returns the Version of the File
 		/// </summary>
-		public byte Version 
+		public byte Version
 		{
 			get { return version; }
 		}
@@ -90,13 +90,14 @@ namespace SimPe.Cache
 		/// <summary>
 		/// Returns the Version of the File
 		/// </summary>
-		public DateTime Added 
+		public DateTime Added
 		{
 			get { return added; }
 			set { added = value; }
 		}
-		
+
 		CacheItems items;
+
 		/// <summary>
 		/// Return all available Items
 		/// </summary>
@@ -116,15 +117,15 @@ namespace SimPe.Cache
 		/// <summary>
 		/// True if this Container is still valid
 		/// </summary>
-		public bool Valid 
+		public bool Valid
 		{
-			get { return (valid==ContainerValid.Yes); }
+			get { return (valid == ContainerValid.Yes); }
 		}
 
-		public ContainerValid ValidState 
+		public ContainerValid ValidState
 		{
-            get { return valid; }
-            set { valid = value; }
+			get { return valid; }
+			set { valid = value; }
 		}
 
 		/// <summary>
@@ -140,7 +141,7 @@ namespace SimPe.Cache
 		/// Load the Container from the Stream
 		/// </summary>
 		/// <param name="reader">the Stream Reader</param>
-		internal void Load(System.IO.BinaryReader reader) 
+		internal void Load(System.IO.BinaryReader reader)
 		{
 			valid = ContainerValid.FileNotFound;
 			items.Clear();
@@ -150,113 +151,124 @@ namespace SimPe.Cache
 			int count = reader.ReadInt32();
 
 			long pos = reader.BaseStream.Position;
-			try 
+			try
 			{
-				if (version<=VERSION) 
+				if (version <= VERSION)
 				{
 					reader.BaseStream.Seek(offset, System.IO.SeekOrigin.Begin);
 					added = DateTime.FromFileTime(reader.ReadInt64());
 					filename = reader.ReadString();
 
-					if (System.IO.File.Exists(filename)) 
+					if (System.IO.File.Exists(filename))
 					{
 						DateTime mod = System.IO.File.GetLastWriteTime(filename);
-						if (mod<=added) valid = ContainerValid.Yes;
-						else valid = ContainerValid.Modified;
+						if (mod <= added)
+							valid = ContainerValid.Yes;
+						else
+							valid = ContainerValid.Modified;
 					}
 
-					if (valid == ContainerValid.Yes || System.Windows.Forms.Application.ExecutablePath.Trim().ToLower().EndsWith("settingmanager.exe")) 
+					if (
+						valid == ContainerValid.Yes
+						|| System
+							.Windows.Forms.Application.ExecutablePath.Trim()
+							.ToLower()
+							.EndsWith("settingmanager.exe")
+					)
 					{
-						switch (type) 
+						switch (type)
 						{
 							case ContainerType.Object:
-							{	
-								for (int i=0; i<count; i++) 
+							{
+								for (int i = 0; i < count; i++)
 								{
 									ObjectCacheItem oci = new ObjectCacheItem();
 									oci.Load(reader);
 									items.Add(oci);
 								}
-							
+
 								break;
 							}
 							case ContainerType.MaterialOverride:
-							{														
-								for (int i=0; i<count; i++) 
+							{
+								for (int i = 0; i < count; i++)
 								{
 									MMATCacheItem oci = new MMATCacheItem();
 									oci.Load(reader);
 									items.Add(oci);
 								}
-							
+
 								break;
-							}	
+							}
 							case ContainerType.Rcol:
-							{														
-								for (int i=0; i<count; i++) 
+							{
+								for (int i = 0; i < count; i++)
 								{
 									RcolCacheItem oci = new RcolCacheItem();
 									oci.Load(reader);
 									items.Add(oci);
 								}
-							
+
 								break;
 							}
 							case ContainerType.Want:
-							{														
-								for (int i=0; i<count; i++) 
+							{
+								for (int i = 0; i < count; i++)
 								{
 									WantCacheItem oci = new WantCacheItem();
 									oci.Load(reader);
 									items.Add(oci);
 								}
-							
-								break;
-                            }
-                            case ContainerType.Goal:
-                            {
-                                for (int i = 0; i < count; i++)
-                                {
-                                    GoalCacheItem oci = new GoalCacheItem();
-                                    oci.Load(reader);
-                                    items.Add(oci);
-                                }
 
-                                break;
-                            }
+								break;
+							}
+							case ContainerType.Goal:
+							{
+								for (int i = 0; i < count; i++)
+								{
+									GoalCacheItem oci = new GoalCacheItem();
+									oci.Load(reader);
+									items.Add(oci);
+								}
+
+								break;
+							}
 							case ContainerType.Memory:
-							{								
-								for (int i=0; i<count; i++) 
+							{
+								for (int i = 0; i < count; i++)
 								{
 									MemoryCacheItem oci = new MemoryCacheItem();
 									oci.Load(reader);
 									oci.ParentCacheContainer = this;
-									if (oci.Version >= MemoryCacheItem.DISCARD_VERSIONS_SMALLER_THAN) 																			
-										items.Add(oci);									
+									if (
+										oci.Version
+										>= MemoryCacheItem.DISCARD_VERSIONS_SMALLER_THAN
+									)
+										items.Add(oci);
 								}
-							
+
 								break;
-							}	
+							}
 							case ContainerType.Package:
-							{														
-								for (int i=0; i<count; i++) 
+							{
+								for (int i = 0; i < count; i++)
 								{
 									PackageCacheItem oci = new PackageCacheItem();
 									oci.Load(reader);
 									items.Add(oci);
 								}
-							
+
 								break;
-							}	
+							}
 						} //switch
 					} // if valid
 				} //if VERSION
-				else 
+				else
 				{
 					valid = ContainerValid.UnknownVersion;
 				}
-			} 
-			finally 
+			}
+			finally
 			{
 				reader.BaseStream.Seek(pos, System.IO.SeekOrigin.Begin);
 			}
@@ -266,25 +278,26 @@ namespace SimPe.Cache
 		/// Save the Container to the Stream
 		/// </summary>
 		/// <param name="writer">the Stream Writer</param>
-		internal void Save(System.IO.BinaryWriter writer, int offset) 
-		{			
+		internal void Save(System.IO.BinaryWriter writer, int offset)
+		{
 			writer.Write(offset);
-			
+
 			//prewrite Phase
-			if (offset==-1) 
-			{				
+			if (offset == -1)
+			{
 				version = VERSION;
-				writer.Write(version);			
+				writer.Write(version);
 				writer.Write((byte)type);
-				writer.Write((int)items.Count);											
-			} 
+				writer.Write((int)items.Count);
+			}
 			else //Item writing Phase
 			{
 				writer.Seek(offset, System.IO.SeekOrigin.Begin);
 				writer.Write(added.ToFileTime());
 				writer.Write(filename);
-				
-				for (int i=0; i<items.Count; i++) items[i].Save(writer);				
+
+				for (int i = 0; i < items.Count; i++)
+					items[i].Save(writer);
 			}
 		}
 
@@ -292,9 +305,9 @@ namespace SimPe.Cache
 
 		public virtual void Dispose()
 		{
-			if (items!=null) 
+			if (items != null)
 			{
-				foreach (object o in items) 
+				foreach (object o in items)
 					if (o is IDisposable)
 						((IDisposable)o).Dispose();
 

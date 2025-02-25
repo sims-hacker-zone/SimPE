@@ -25,20 +25,20 @@ namespace SimPe.Interfaces
 	/// Summary description for ICommandLineRegistry.
 	/// </summary>
 	public interface ICommandLineRegistry
-	{		
+	{
 		/// <summary>
 		/// Registers a CommandLine to the Registry
 		/// </summary>
 		/// <param name="CommandLine">The CommandLine to register</param>
 		/// <remarks>The CommandLine must only be added if the Registry doesnt already contain it</remarks>
-        void RegisterCommandLines(ICommandLine CommandLine);	
-	
+		void RegisterCommandLines(ICommandLine CommandLine);
+
 		/// <summary>
 		/// Registers all listed CommandLines with this Registry
 		/// </summary>
 		/// <param name="CommandLines">The CommandLines to register</param>
 		/// <remarks>The CommandLine must only be added if the Registry doesnt already contain it</remarks>
-        void RegisterCommandLines(ICommandLine[] CommandLines);
+		void RegisterCommandLines(ICommandLine[] CommandLines);
 
 		/// <summary>
 		/// Registers all CommandLines supported by the Factory
@@ -51,9 +51,6 @@ namespace SimPe.Interfaces
 		/// Returns the List of Known CommandLines
 		/// </summary>
 		/// <remarks>The CommandLines should be Returned in Order of Priority starting with the lowest!</remarks>
-		ICommandLine[] CommandLines 
-		{
-			get;
-		}
+		ICommandLine[] CommandLines { get; }
 	}
 }

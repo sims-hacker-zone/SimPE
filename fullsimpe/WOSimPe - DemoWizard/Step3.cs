@@ -5,12 +5,10 @@ namespace SimPe.Wizards
 	/// <summary>
 	/// Zusammenfassung für Step1.
 	/// </summary>
-	public class Step3 :IWizardFinish
+	public class Step3 : IWizardFinish
 	{
-		public Step3()
-		{
-			
-		}
+		public Step3() { }
+
 		#region IWizardFinish Member
 		public void Finit()
 		{
@@ -22,10 +20,7 @@ namespace SimPe.Wizards
 
 		public System.Windows.Forms.Panel WizardWindow
 		{
-			get
-			{
-				return Step1.Form.pnwizard3;
-			}
+			get { return Step1.Form.pnwizard3; }
 		}
 
 		public bool Init(SimPe.Wizards.ChangedContent fkt)
@@ -35,34 +30,22 @@ namespace SimPe.Wizards
 
 		public string WizardMessage
 		{
-			get
-			{
-				return "This will be your last Step with the Wizards of SimPE";
-			}
+			get { return "This will be your last Step with the Wizards of SimPE"; }
 		}
 
 		public bool CanContinue
 		{
-			get
-			{
-				return true;
-			}
+			get { return true; }
 		}
 
 		public int WizardStep
 		{
-			get
-			{
-				return 4;
-			}
+			get { return 4; }
 		}
 
 		public IWizardForm Next
 		{
-			get
-			{
-				return null;
-			}
+			get { return null; }
 		}
 
 		#endregion

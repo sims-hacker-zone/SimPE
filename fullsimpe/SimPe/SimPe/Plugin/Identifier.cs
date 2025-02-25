@@ -27,20 +27,20 @@ namespace SimPe.Plugin
 	/// </summary>
 	internal class NeighborhoodIdentifier : IIdentifier
 	{
-		public NeighborhoodIdentifier() {}
+		public NeighborhoodIdentifier() { }
 
 		#region IIdentifierBase Member
-		public uint Version 
+		public uint Version
 		{
 			get { return 1; }
 		}
 
-		public int Index 
+		public int Index
 		{
 			get { return 500; }
 		}
 
-		public ScannerPluginType PluginType 
+		public ScannerPluginType PluginType
 		{
 			get { return ScannerPluginType.Identifier; }
 		}
@@ -50,10 +50,14 @@ namespace SimPe.Plugin
 
 		public SimPe.Cache.PackageType GetType(SimPe.Interfaces.Files.IPackageFile pkg)
 		{
-			if (pkg.FindFiles(Data.MetaData.IDNO).Length!=0) return SimPe.Cache.PackageType.Neighbourhood;
-            if (pkg.FileName.Contains("Tutorial_Neighborhood")) return SimPe.Cache.PackageType.Neighbourhood;
-            if (pkg.FindFiles(Data.MetaData.HOUS).Length != 0) return SimPe.Cache.PackageType.Lot;
-            if (pkg.FindFiles(Data.MetaData.GINV).Length != 0) return SimPe.Cache.PackageType.GameInventory;
+			if (pkg.FindFiles(Data.MetaData.IDNO).Length != 0)
+				return SimPe.Cache.PackageType.Neighbourhood;
+			if (pkg.FileName.Contains("Tutorial_Neighborhood"))
+				return SimPe.Cache.PackageType.Neighbourhood;
+			if (pkg.FindFiles(Data.MetaData.HOUS).Length != 0)
+				return SimPe.Cache.PackageType.Lot;
+			if (pkg.FindFiles(Data.MetaData.GINV).Length != 0)
+				return SimPe.Cache.PackageType.GameInventory;
 			return SimPe.Cache.PackageType.Unknown;
 		}
 

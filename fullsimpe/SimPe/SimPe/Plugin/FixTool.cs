@@ -25,13 +25,13 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for ImportSemiTool.
 	/// </summary>
-    public class FixTool : Interfaces.AbstractTool, Interfaces.ITool
+	public class FixTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
 		/// <summary>
 		/// Windows Registry Link
 		/// </summary>
 		static SimPe.Registry registry;
-		internal static Registry WindowsRegistry 
+		internal static Registry WindowsRegistry
 		{
 			get { return registry; }
 		}
@@ -39,48 +39,57 @@ namespace SimPe.Plugin
 		IWrapperRegistry reg;
 		IProviderRegistry prov;
 
-		internal FixTool(IWrapperRegistry reg, IProviderRegistry prov) 
+		internal FixTool(IWrapperRegistry reg, IProviderRegistry prov)
 		{
 			this.reg = reg;
 			this.prov = prov;
 
-			if (registry==null) registry = Helper.WindowsRegistry;
+			if (registry == null)
+				registry = Helper.WindowsRegistry;
 		}
 
 		#region ITool Member
 
-		public bool IsEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
+		public bool IsEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
-			if (package==null) return false;
+			if (package == null)
+				return false;
 			return true;
 		}
 
-		public Interfaces.Plugin.IToolResult ShowDialog(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package)
-		{		
+		public Interfaces.Plugin.IToolResult ShowDialog(
+			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			ref SimPe.Interfaces.Files.IPackageFile package
+		)
+		{
 			FixObject fo = new FixObject(package, FixVersion.UniversityReady, false);
-			try 
+			try
 			{
 				System.Collections.Hashtable map = fo.GetNameMap(false);
-				if (map==null) return new ToolResult(false, false);
+				if (map == null)
+					return new ToolResult(false, false);
 
 				WaitingScreen.Wait();
-				
+
 				fo.Fix(map, false);
 				fo.CleanUp();
 				fo.FixGroup();
-			} 
+			}
 			catch (Exception ex)
 			{
 				Helper.ExceptionMessage("", ex);
-			} 
-			finally 
+			}
+			finally
 			{
 				WaitingScreen.Stop();
 			}
 
 			if (Helper.StartedGui != Executable.Classic)
 				return new ToolResult(false, false);
-			else 
+			else
 				return new ToolResult(false, true);
 		}
 
@@ -89,16 +98,13 @@ namespace SimPe.Plugin
 			return "Object Tool\\Fix Integrity";
 		}
 
-        #endregion
+		#endregion
 
-        #region IToolExt Member
-        public override System.Drawing.Image Icon
-        {
-            get
-            {
-                return SimPe.GetIcon.FixIntegrity;
-            }
-        }
-        #endregion
+		#region IToolExt Member
+		public override System.Drawing.Image Icon
+		{
+			get { return SimPe.GetIcon.FixIntegrity; }
+		}
+		#endregion
 	}
 }

@@ -4,16 +4,16 @@ using System.Text;
 
 namespace SimPe.PackedFiles.Wrapper.SCOR
 {
-    class ScorItemTokenDefault : IScorItemToken
-    {
-        public byte[] UnserializeToken(ScorItem si, System.IO.BinaryReader reader)
-        {
-            return ScorItem.UnserializeDefaultToken(reader);
-        }
+	class ScorItemTokenDefault : IScorItemToken
+	{
+		public byte[] UnserializeToken(ScorItem si, System.IO.BinaryReader reader)
+		{
+			return ScorItem.UnserializeDefaultToken(reader);
+		}
 
-        public SCOR.AScorItem ActivatedGUI
-        {
-            get { return null; }
-        }
-    }
+		public SCOR.AScorItem ActivatedGUI
+		{
+			get { return null; }
+		}
+	}
 }

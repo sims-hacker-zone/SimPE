@@ -23,8 +23,8 @@ using System;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
-{	
-	/// <summary> 
+{
+	/// <summary>
 	/// This class is used to fill the UI for this File Type with Data
 	/// </summary>
 	public class GlobUI : IPackedFileUI
@@ -34,24 +34,25 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Holds a reference to the Form containing the UI Panel
 		/// </summary>
-        private GlobCtrl form;
+		private GlobCtrl form;
 
 		/// <summary>
 		/// Constructor for the Class
 		/// </summary>
 		public GlobUI()
 		{
-            form = new GlobCtrl();
+			form = new GlobCtrl();
 			form.cbseminame.Items.Clear();
 
-            System.Collections.ArrayList names = new System.Collections.ArrayList();
-            foreach (SimPe.Data.SemiGlobalAlias sga in SimPe.Data.MetaData.SemiGlobals)
-                if (!names.Contains(sga.Name.Trim().ToLower()))
-                {
-                    if (sga.Known) form.cbseminame.Items.Add(sga);
-                    names.Add(sga.Name.Trim().ToLower());
-                }
-        }
+			System.Collections.ArrayList names = new System.Collections.ArrayList();
+			foreach (SimPe.Data.SemiGlobalAlias sga in SimPe.Data.MetaData.SemiGlobals)
+				if (!names.Contains(sga.Name.Trim().ToLower()))
+				{
+					if (sga.Known)
+						form.cbseminame.Items.Add(sga);
+					names.Add(sga.Name.Trim().ToLower());
+				}
+		}
 		#endregion
 
 		#region IPackedFileUI Member
@@ -61,10 +62,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public System.Windows.Forms.Control GUIHandle
 		{
-			get
-			{
-                return form;
-			}
+			get { return form; }
 		}
 
 		/// <summary>
@@ -73,37 +71,39 @@ namespace SimPe.Plugin
 		/// passed Wrapper.
 		/// </summary>
 		/// <param name="wrapper">The Attributes of this Wrapper have to be displayed</param>
-        public void UpdateGUI(IFileWrapper wrapper)
-        {
-            form.wrapper = (IFileWrapperSaveExtension)wrapper;
-            Glob wrp = (Glob)wrapper;
-            form.cbseminame.Tag = true;
-            form.lbglobfile.Text = wrp.FileName;
-            form.tbfilenm.Text = wrp.FileName;
-            form.cbseminame.Text = wrp.SemiGlobalName;
-            form.tbgroup.ForeColor = System.Drawing.Color.BlueViolet;
-            form.tbgroup.Text = "0x" + Helper.HexString(Hashes.GroupHash(wrp.SemiGlobalName));
-            form.lbBug.Visible = wrp.faulty;
-            form.lbBloat.Visible = (wrp.bloaty && !wrp.faulty);
-            for (int i = 0; i < form.cbseminame.Items.Count; i++)
-            {
-                Data.SemiGlobalAlias a = form.cbseminame.Items[i] as Data.SemiGlobalAlias;
-                if (a.Name.ToLower() == form.cbseminame.Text.ToLower())
-                {
-                    form.cbseminame.SelectedIndex = i;
-                    form.tbgroup.Text = "0x" + Helper.HexString(a.Id);
-                    if (a.Id == Hashes.GroupHash(wrp.SemiGlobalName))
-                        form.tbgroup.ForeColor = System.Drawing.SystemColors.WindowText;
-                    else
-                        form.tbgroup.ForeColor = System.Drawing.Color.Red;
-                    break;
-                }
-            }
-            form.cbseminame.Tag = null;
-        }
+		public void UpdateGUI(IFileWrapper wrapper)
+		{
+			form.wrapper = (IFileWrapperSaveExtension)wrapper;
+			Glob wrp = (Glob)wrapper;
+			form.cbseminame.Tag = true;
+			form.lbglobfile.Text = wrp.FileName;
+			form.tbfilenm.Text = wrp.FileName;
+			form.cbseminame.Text = wrp.SemiGlobalName;
+			form.tbgroup.ForeColor = System.Drawing.Color.BlueViolet;
+			form.tbgroup.Text =
+				"0x" + Helper.HexString(Hashes.GroupHash(wrp.SemiGlobalName));
+			form.lbBug.Visible = wrp.faulty;
+			form.lbBloat.Visible = (wrp.bloaty && !wrp.faulty);
+			for (int i = 0; i < form.cbseminame.Items.Count; i++)
+			{
+				Data.SemiGlobalAlias a =
+					form.cbseminame.Items[i] as Data.SemiGlobalAlias;
+				if (a.Name.ToLower() == form.cbseminame.Text.ToLower())
+				{
+					form.cbseminame.SelectedIndex = i;
+					form.tbgroup.Text = "0x" + Helper.HexString(a.Id);
+					if (a.Id == Hashes.GroupHash(wrp.SemiGlobalName))
+						form.tbgroup.ForeColor = System.Drawing.SystemColors.WindowText;
+					else
+						form.tbgroup.ForeColor = System.Drawing.Color.Red;
+					break;
+				}
+			}
+			form.cbseminame.Tag = null;
+		}
 
 		#endregion
-		
+
 		#region IDisposable Member
 		public virtual void Dispose()
 		{

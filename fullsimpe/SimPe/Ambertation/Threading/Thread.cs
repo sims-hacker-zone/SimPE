@@ -10,7 +10,9 @@ namespace Ambertation.Threading
 	{
 		bool async;
 
-		public StoppableThread() : this(SimPe.Helper.WindowsRegistry.AsynchronLoad) {}
+		public StoppableThread()
+			: this(SimPe.Helper.WindowsRegistry.AsynchronLoad) { }
+
 		public StoppableThread(bool async)
 		{
 			this.async = async;
@@ -21,35 +23,38 @@ namespace Ambertation.Threading
 		protected ManualResetEvent stop;
 		protected ManualResetEvent ended;
 
-        /// <summary>
+		/// <summary>
 		/// block until the loader thread is cancled
 		/// </summary>
-        protected void WaitForEnd()
-        {
-            WaitForEnd(SimPe.Wait.TIMEOUT / 100);
-        }
+		protected void WaitForEnd()
+		{
+			WaitForEnd(SimPe.Wait.TIMEOUT / 100);
+		}
 
 		/// <summary>
 		/// block until the loader thread is cancled
 		/// </summary>
 		protected bool WaitForEnd(int timeout)
 		{
-			if (!async) return true;
-            if (stop == null) return true;
-            if (worker == null) return true;
+			if (!async)
+				return true;
+			if (stop == null)
+				return true;
+			if (worker == null)
+				return true;
 
 			stop.Set();
-			int ct=0;
-            while (worker.IsAlive && (ct <= timeout || timeout<0)) 
+			int ct = 0;
+			while (worker.IsAlive && (ct <= timeout || timeout < 0))
 			{
 				ct++;
 				stop.Set();
 				System.Windows.Forms.Application.DoEvents();
-                Thread.Sleep(100);
+				Thread.Sleep(100);
 			}
-            
+
 			ended.Set();
-            return !worker.IsAlive;
+			return !worker.IsAlive;
 		}
 
 		public virtual void Dispose()
@@ -62,13 +67,13 @@ namespace Ambertation.Threading
 		void ThreadEntry()
 		{
 			stop.Reset();
-            ended.Reset();
+			ended.Reset();
 
-			try 
+			try
 			{
 				StartThread();
-			} 
-			finally 
+			}
+			finally
 			{
 				ended.Set();
 			}
@@ -76,10 +81,11 @@ namespace Ambertation.Threading
 
 		protected bool HaveToStop
 		{
-			get 
+			get
 			{
 				if (async)
-					if (stop.WaitOne(0, true)) return true;
+					if (stop.WaitOne(0, true))
+						return true;
 				return false;
 			}
 		}
@@ -94,32 +100,45 @@ namespace Ambertation.Threading
 			ExecuteThread(tp, name, sync, true, 500);
 		}
 
-		protected void ExecuteThread(ThreadPriority tp, string name, bool sync, bool events)
+		protected void ExecuteThread(
+			ThreadPriority tp,
+			string name,
+			bool sync,
+			bool events
+		)
 		{
 			ExecuteThread(tp, name, sync, events, 500);
 		}
 
-        protected Thread worker;
-		protected void ExecuteThread(ThreadPriority tp, string name, bool sync, bool events, int synctime)
+		protected Thread worker;
+
+		protected void ExecuteThread(
+			ThreadPriority tp,
+			string name,
+			bool sync,
+			bool events,
+			int synctime
+		)
 		{
 			WaitForEnd();
-			if (!async) 
+			if (!async)
 			{
 				ThreadEntry();
-			} 
-			else 
+			}
+			else
 			{
-                worker = new Thread(new ThreadStart(ThreadEntry));
-                worker.Priority = tp;
-                worker.Name = name;
-                //worker.SetApartmentState(ApartmentState.STA);
-                worker.Start();
+				worker = new Thread(new ThreadStart(ThreadEntry));
+				worker.Priority = tp;
+				worker.Name = name;
+				//worker.SetApartmentState(ApartmentState.STA);
+				worker.Start();
 
 				if (sync)
-                    while (worker.IsAlive) 
+					while (worker.IsAlive)
 					{
-                        worker.Join(synctime);
-						if (events) System.Windows.Forms.Application.DoEvents();
+						worker.Join(synctime);
+						if (events)
+							System.Windows.Forms.Application.DoEvents();
 					}
 			}
 		}

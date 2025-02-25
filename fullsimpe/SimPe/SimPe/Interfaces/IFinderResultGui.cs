@@ -24,24 +24,22 @@ using System.Text;
 
 namespace SimPe.Interfaces
 {
-    public interface IFinderResultGui
-    {
-        void AddResult(SimPe.Interfaces.Files.IPackageFile pkg, SimPe.Interfaces.Files.IPackedFileDescriptor pfd);
-        void AddResult(string group, SimPe.Interfaces.Files.IPackageFile pkg, SimPe.Interfaces.Files.IPackedFileDescriptor pfd);
+	public interface IFinderResultGui
+	{
+		void AddResult(
+			SimPe.Interfaces.Files.IPackageFile pkg,
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+		);
+		void AddResult(
+			string group,
+			SimPe.Interfaces.Files.IPackageFile pkg,
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+		);
 
-        void StartSearch(AFinderTool sender);
-        void StopSearch();
+		void StartSearch(AFinderTool sender);
+		void StopSearch();
 
-        bool ForcedStop
-        {
-            get;
-        }
-        bool Searching
-        {
-            get;
-        }
-    }
-    
-
-    
+		bool ForcedStop { get; }
+		bool Searching { get; }
+	}
 }

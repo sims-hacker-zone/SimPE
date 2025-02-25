@@ -18,20 +18,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Interfaces;
 using SimPe.Events;
+using SimPe.Interfaces;
 
 namespace SimPe.Plugin.Tool
 {
 	/// <summary>
 	/// Zusammenfassung für LoadSims2PackTool.
 	/// </summary>
-	public class LoadSims2PackTool : SimPe.Interfaces.IToolPlus	
+	public class LoadSims2PackTool : SimPe.Interfaces.IToolPlus
 	{
-		internal LoadSims2PackTool() 
-		{
-			
-		}		
+		internal LoadSims2PackTool() { }
 
 		#region ITool Member
 
@@ -42,22 +39,30 @@ namespace SimPe.Plugin.Tool
 
 		public void Execute(object sender, ResourceEventArgs es)
 		{
-			if (!ChangeEnabledStateEventHandler(sender, es)) return;
+			if (!ChangeEnabledStateEventHandler(sender, es))
+				return;
 
-			System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog();
-			ofd.Filter = SimPe.ExtensionProvider.BuildFilterString(new SimPe.ExtensionType[] {ExtensionType.Sim2Pack, ExtensionType.AllFiles});
-			if (ofd.ShowDialog()==System.Windows.Forms.DialogResult.OK) 
+			System.Windows.Forms.OpenFileDialog ofd =
+				new System.Windows.Forms.OpenFileDialog();
+			ofd.Filter = SimPe.ExtensionProvider.BuildFilterString(
+				new SimPe.ExtensionType[]
+				{
+					ExtensionType.Sim2Pack,
+					ExtensionType.AllFiles,
+				}
+			);
+			if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 			{
-				SimPe.Packages.S2CPDescriptor[] ds = SimPe.Packages.Sims2CommunityPack.ShowSimpleOpenDialog( ofd.FileName, System.Windows.Forms.SelectionMode.One);
-				if (ds!=null) 
-					foreach (SimPe.Packages.S2CPDescriptor d in ds) 				
-						SimPe.RemoteControl.OpenMemoryPackage(d.Package);				
+				SimPe.Packages.S2CPDescriptor[] ds =
+					SimPe.Packages.Sims2CommunityPack.ShowSimpleOpenDialog(
+						ofd.FileName,
+						System.Windows.Forms.SelectionMode.One
+					);
+				if (ds != null)
+					foreach (SimPe.Packages.S2CPDescriptor d in ds)
+						SimPe.RemoteControl.OpenMemoryPackage(d.Package);
 			}
-			
 		}
-
-		
-
 
 		public override string ToString()
 		{
@@ -69,23 +74,17 @@ namespace SimPe.Plugin.Tool
 		#region IToolExt Member
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.None;
-			}
+			get { return System.Windows.Forms.Shortcut.None; }
 		}
 
 		public System.Drawing.Image Icon
 		{
-			get
-			{
-				return SimPe.GetIcon.S2packOpen;
-			}
+			get { return SimPe.GetIcon.S2packOpen; }
 		}
 
-		public virtual bool Visible 
+		public virtual bool Visible
 		{
-			get {return true;}
+			get { return true; }
 		}
 
 		#endregion

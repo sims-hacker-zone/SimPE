@@ -21,14 +21,13 @@ using System;
 using SimPe.Interfaces.Files;
 using SimPe.Plugin;
 
-
 namespace SimPe.Interfaces.Plugin.Scanner
 {
 	/// <summary>
 	/// Implements one scanner
 	/// </summary>
 	public interface IScanner : IScannerPluginBase
-	{		
+	{
 		/// <summary>
 		/// Set the Delegate that should be called when a ControlClick (from an OperationControl) was executed
 		/// </summary>
@@ -47,7 +46,11 @@ namespace SimPe.Interfaces.Plugin.Scanner
 		/// <param name="ps">The State of this File for this Scanner</param>
 		/// <param name="lvi">The ListView Item that is used to display</param>
 		/// <remarks>This needs to update the cache Item!</remarks>
-		void ScanPackage(ScannerItem si, SimPe.Cache.PackageState ps, System.Windows.Forms.ListViewItem lvi);
+		void ScanPackage(
+			ScannerItem si,
+			SimPe.Cache.PackageState ps,
+			System.Windows.Forms.ListViewItem lvi
+		);
 
 		/// <summary>
 		/// Called if a Cached Item was found that should be displayed
@@ -55,7 +58,11 @@ namespace SimPe.Interfaces.Plugin.Scanner
 		/// <param name="si">The Object representing the ScannedFile</param>
 		/// <param name="ps">The State of this File for this Scanner</param>
 		/// <param name="lvi">The ListView Item that is used to display</param>
-		void UpdateState(ScannerItem si, SimPe.Cache.PackageState ps, System.Windows.Forms.ListViewItem lvi);
+		void UpdateState(
+			ScannerItem si,
+			SimPe.Cache.PackageState ps,
+			System.Windows.Forms.ListViewItem lvi
+		);
 
 		/// <summary>
 		/// Called after the Scan was Finished completley
@@ -65,34 +72,22 @@ namespace SimPe.Interfaces.Plugin.Scanner
 		/// <summary>
 		/// The uid that was assigned to the scanner
 		/// </summary>
-		uint Uid 
-		{
-			get;
-		}
+		uint Uid { get; }
 
 		/// <summary>
 		/// Returns true, if this scanner should be activated by Default
 		/// </summary>
-		bool IsActiveByDefault
-		{
-			get;
-		}
+		bool IsActiveByDefault { get; }
 
 		/// <summary>
 		/// Returns true, if this Scanner should be listed on the Top of the List
 		/// </summary>
-		bool OnTop 
-		{
-			get;
-		}
+		bool OnTop { get; }
 
 		/// <summary>
 		/// Returns null or a valid Control, that will be displayed on the Controls Tab
 		/// </summary>
-		System.Windows.Forms.Control OperationControl
-		{
-			get;
-		}
+		System.Windows.Forms.Control OperationControl { get; }
 
 		/// <summary>
 		/// This is called, when the Selection of the ListView was changed, or a Scan was started

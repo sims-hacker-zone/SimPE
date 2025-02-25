@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SimPe.Plugin
@@ -33,6 +33,7 @@ namespace SimPe.Plugin
 		private System.Windows.Forms.ListBox lb;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.LinkLabel linkLabel1;
+
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -46,28 +47,28 @@ namespace SimPe.Plugin
 			InitializeComponent();
 
 			//
-			// TODO: Fügen Sie den Konstruktorcode nach dem Aufruf von InitializeComponent hinzu
+			// TODO: Fï¿½gen Sie den Konstruktorcode nach dem Aufruf von InitializeComponent hinzu
 			//
 		}
 
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
-				if(components != null)
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
 
 		#region Windows Form Designer generated code
 		/// <summary>
-		/// Required method for Designer support - do not modify 
+		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
@@ -76,12 +77,21 @@ namespace SimPe.Plugin
 			this.label1 = new System.Windows.Forms.Label();
 			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
 			this.SuspendLayout();
-			// 
+			//
 			// lb
-			// 
-			this.lb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.lb.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							(
+								System.Windows.Forms.AnchorStyles.Top
+								| System.Windows.Forms.AnchorStyles.Bottom
+							) | System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.lb.HorizontalScrollbar = true;
 			this.lb.IntegralHeight = false;
 			this.lb.Location = new System.Drawing.Point(8, 40);
@@ -90,97 +100,138 @@ namespace SimPe.Plugin
 			this.lb.Size = new System.Drawing.Size(232, 200);
 			this.lb.Sorted = true;
 			this.lb.TabIndex = 0;
-			// 
+			//
 			// label1
-			// 
-			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.label1.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							System.Windows.Forms.AnchorStyles.Top
+							| System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
 			this.label1.Location = new System.Drawing.Point(8, 8);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(224, 32);
 			this.label1.TabIndex = 1;
-			this.label1.Text = "Select the SubSet you want to create a new Colour Option for.";
-			// 
+			this.label1.Text =
+				"Select the SubSet you want to create a new Colour Option for.";
+			//
 			// linkLabel1
-			// 
-			this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.linkLabel1.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Bottom
+						| System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.linkLabel1.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.linkLabel1.Location = new System.Drawing.Point(197, 240);
 			this.linkLabel1.Name = "linkLabel1";
 			this.linkLabel1.Size = new System.Drawing.Size(43, 17);
 			this.linkLabel1.TabIndex = 2;
 			this.linkLabel1.TabStop = true;
 			this.linkLabel1.Text = "Select";
-			this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-			// 
+			this.linkLabel1.LinkClicked +=
+				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+					this.linkLabel1_LinkClicked
+				);
+			//
 			// Listing
-			// 
+			//
 			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
 			this.ClientSize = new System.Drawing.Size(248, 270);
 			this.Controls.Add(this.linkLabel1);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.lb);
-			this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+			this.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
+			this.FormBorderStyle = System
+				.Windows
+				.Forms
+				.FormBorderStyle
+				.SizableToolWindow;
 			this.Name = "Listing";
 			this.ShowInTaskbar = false;
 			this.Text = "Listing";
 			this.ResumeLayout(false);
-
 		}
 		#endregion
 
-		public WorkshopMMAT[] Execute(WorkshopMMAT[] list) 
+		public WorkshopMMAT[] Execute(WorkshopMMAT[] list)
 		{
 			lb.Items.Clear();
-			foreach (WorkshopMMAT s in list) 
+			foreach (WorkshopMMAT s in list)
 			{
 				lb.Items.Add(s);
 			}
-			if (lb.Items.Count>0) lb.SelectedIndex=0;
+			if (lb.Items.Count > 0)
+				lb.SelectedIndex = 0;
 
 			this.ShowDialog();
 
 			WorkshopMMAT[] str;
-			if (lb.SelectedItems.Count>0)  
+			if (lb.SelectedItems.Count > 0)
 			{
 				str = new WorkshopMMAT[lb.SelectedItems.Count];
-				for (int i=0; i<lb.SelectedItems.Count; i++) str[i] = (WorkshopMMAT)lb.SelectedItems[i];
-			}  
-			else 
+				for (int i = 0; i < lb.SelectedItems.Count; i++)
+					str[i] = (WorkshopMMAT)lb.SelectedItems[i];
+			}
+			else
 			{
 				str = new WorkshopMMAT[0];
 			}
 			return str;
 		}
 
-		public string[] Execute(string[] list) 
+		public string[] Execute(string[] list)
 		{
 			lb.Items.Clear();
-			foreach (string s in list) 
+			foreach (string s in list)
 			{
 				lb.Items.Add(s);
 			}
-			if (lb.Items.Count>0) lb.SelectedIndex=0;
+			if (lb.Items.Count > 0)
+				lb.SelectedIndex = 0;
 
 			this.ShowDialog();
 
 			string[] str;
-			if (lb.SelectedItems.Count>0)  
+			if (lb.SelectedItems.Count > 0)
 			{
 				str = new string[lb.SelectedItems.Count];
-				for (int i=0; i<lb.SelectedItems.Count; i++) str[i] = (string)lb.SelectedItems[i];
-			}  
-			else 
+				for (int i = 0; i < lb.SelectedItems.Count; i++)
+					str[i] = (string)lb.SelectedItems[i];
+			}
+			else
 			{
 				str = new string[0];
 			}
 			return str;
 		}
 
-		private void linkLabel1_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		private void linkLabel1_LinkClicked(
+			object sender,
+			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		)
 		{
 			Close();
 		}

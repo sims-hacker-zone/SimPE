@@ -18,11 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Resources;
 using System.Globalization;
+using System.Resources;
 using System.Threading;
-
-
 
 namespace SimPe
 {
@@ -39,13 +37,13 @@ namespace SimPe
 		/// <summary>
 		/// Initializes the Resource
 		/// </summary>
-		protected static void Initialize() 
-		{					
+		protected static void Initialize()
+		{
 			Localization l = new Localization();
 			System.Reflection.Assembly myAssembly;
-			myAssembly = l.GetType().Assembly;			
+			myAssembly = l.GetType().Assembly;
 
-			resource = new ResourceManager(typeof(Localization));					
+			resource = new ResourceManager(typeof(Localization));
 		}
 
 		/// <summary>
@@ -57,8 +55,10 @@ namespace SimPe
 		public static string GetString(string name)
 		{
 			string res = Manager.GetString(name);
-			if (res==null) res = Manager.GetString(name.Trim().ToLower());
-			if (res==null) res = name;
+			if (res == null)
+				res = Manager.GetString(name.Trim().ToLower());
+			if (res == null)
+				res = name;
 
 			return res;
 		}
@@ -66,18 +66,20 @@ namespace SimPe
 		/// <summary>
 		/// Returns the currrent Resource Manager
 		/// </summary>
-		public static ResourceManager Manager 
+		public static ResourceManager Manager
 		{
-			get { 
-				if (resource==null) Initialize();
-				return resource; 
+			get
+			{
+				if (resource == null)
+					Initialize();
+				return resource;
 			}
 		}
 
 		/// <summary>
 		/// Returns the current Culture
 		/// </summary>
-		public static CultureInfo Culture 
+		public static CultureInfo Culture
 		{
 			get { return Thread.CurrentThread.CurrentUICulture; }
 		}

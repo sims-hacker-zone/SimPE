@@ -32,18 +32,20 @@ namespace SimPe.Plugin.Anim
 		/// Ignore the Animation
 		/// </summary>
 		Nothing = 0x00,
+
 		/// <summary>
 		/// Replace the existing Animation <see cref="ImportedFrameBlock.Target"/> with the one stored in the <see cref="ImportedFrameBlock.FrameBlock"/> Member
 		/// </summary>
 		Replace = 0x01,
+
 		/// <summary>
 		/// Add the Animation stored in the <see cref="ImportedFrameBlock.FrameBlock"/> Member
 		/// </summary>
-		Add = 0x02		
+		Add = 0x02,
 	}
 
 	/// <summary>
-	/// This class contains all Data Needed to import one <see cref="AnimationFrameBlock"/> 
+	/// This class contains all Data Needed to import one <see cref="AnimationFrameBlock"/>
 	/// </summary>
 	public class ImportedFrameBlock
 	{
@@ -51,21 +53,20 @@ namespace SimPe.Plugin.Anim
 		/// internal Attribute
 		/// </summary>
 		AnimImporterAction action;
+
 		/// <summary>
 		/// Returns/Sets the action that should be performed
 		/// </summary>
-		public AnimImporterAction Action 
+		public AnimImporterAction Action
 		{
 			get { return action; }
 			set { action = value; }
-		}		
-
-		
+		}
 
 		/// <summary>
-		/// The name of the Imported Bone		
+		/// The name of the Imported Bone
 		/// </summary>
-		public string ImportedName 
+		public string ImportedName
 		{
 			get { return afb.Name; }
 		}
@@ -78,13 +79,14 @@ namespace SimPe.Plugin.Anim
 		/// <summary>
 		/// The Animation that should get Replaced
 		/// </summary>
-		public AnimationFrameBlock Target 
+		public AnimationFrameBlock Target
 		{
 			get { return target; }
 			set { target = value; }
 		}
 
 		bool dz;
+
 		/// <summary>
 		/// true if the First Frame (TimeCode 0) should be ignored during the Import
 		/// </summary>
@@ -95,6 +97,7 @@ namespace SimPe.Plugin.Anim
 		}
 
 		bool ruf;
+
 		/// <summary>
 		/// Remove all Keyframes that are not needed by the Animation?
 		/// </summary>
@@ -105,26 +108,29 @@ namespace SimPe.Plugin.Anim
 		}
 
 		AnimationFrameBlock afb;
+
 		/// <summary>
 		/// The new Bone
 		/// </summary>
 		public AnimationFrameBlock FrameBlock
 		{
 			get { return afb; }
-		}				
-		
+		}
+
 		/// <summary>
 		/// Returns the color that should be used to display this Group in the "Import Groups" ListView
 		/// </summary>
-		public System.Drawing.Color MarkColor 
+		public System.Drawing.Color MarkColor
 		{
-			get 
-			{				
-				if (Action==AnimImporterAction.Nothing) return System.Drawing.Color.Silver;
-				if (Target==null) return System.Drawing.Color.Red;
+			get
+			{
+				if (Action == AnimImporterAction.Nothing)
+					return System.Drawing.Color.Silver;
+				if (Target == null)
+					return System.Drawing.Color.Red;
 				return System.Drawing.Color.DarkBlue;
 			}
-		}		
+		}
 
 		/// <summary>
 		/// Create a new Instance
@@ -134,9 +140,9 @@ namespace SimPe.Plugin.Anim
 		{
 			dz = false;
 			ruf = true;
-			this.afb = afb;				
+			this.afb = afb;
 			action = AnimImporterAction.Nothing;
-		}		
+		}
 
 		/// <summary>
 		/// Tries to find a <see cref="AnimationFrameBlock"/>  with the same Name in the passed <see cref="AnimationMeshBlock" />.
@@ -158,21 +164,21 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		public void ReplaceFrames()
 		{
-			if (Target==null) return;
+			if (Target == null)
+				return;
 			Target.ClearFrames();
 			Target.CreateBaseAxisSet(AnimationTokenType.SixByte);
 
-			for (int i=0; i< Math.Min(Target.AxisCount, FrameBlock.AxisCount); i++)
+			for (int i = 0; i < Math.Min(Target.AxisCount, FrameBlock.AxisCount); i++)
 				Target.AxisSet[i].Locked = FrameBlock.AxisSet[i].Locked;
 
 			Target.TransformationType = FrameBlock.TransformationType;
 			foreach (AnimationFrame af in FrameBlock.Frames)
-				if (!this.DiscardZeroFrame || af.TimeCode!=0)
+				if (!this.DiscardZeroFrame || af.TimeCode != 0)
 					Target.AddFrame(af.TimeCode, af.X, af.Y, af.Z, af.Linear);
 
-			
-
-			if (ruf) Target.RemoveUnneededFrames();
+			if (ruf)
+				Target.RemoveUnneededFrames();
 
 			Target.Duration = Target.GetDuration();
 		}
@@ -182,11 +188,13 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		public void AddFrameBlock(AnimationMeshBlock amb)
 		{
-			if (amb==null) return;
+			if (amb == null)
+				return;
 
 			amb.Part2 = (AnimationFrameBlock[])Helper.Add(amb.Part2, FrameBlock);
-			
-			if (ruf) FrameBlock.RemoveUnneededFrames();
+
+			if (ruf)
+				FrameBlock.RemoveUnneededFrames();
 			FrameBlock.Duration = FrameBlock.GetDuration();
 		}
 	}
@@ -195,13 +203,13 @@ namespace SimPe.Plugin.Anim
 	/// <summary>
 	/// Typesave ArrayList for <see cref="ImportedGroup"/> Objects
 	/// </summary>
-	public class ImportedFrameBlocks : ArrayList 
+	public class ImportedFrameBlocks : ArrayList
 	{
 		bool correctauskel;
 		public bool AuskelCorrection
 		{
-			get {return correctauskel;}
-			set {correctauskel = value;}
+			get { return correctauskel; }
+			set { correctauskel = value; }
 		}
 
 		/// <summary>
@@ -259,12 +267,12 @@ namespace SimPe.Plugin.Anim
 		public bool Contains(ImportedFrameBlock item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -276,7 +284,8 @@ namespace SimPe.Plugin.Anim
 		public override object Clone()
 		{
 			ImportedFrameBlocks list = new ImportedFrameBlocks();
-			foreach (ImportedFrameBlock item in this) list.Add(item);
+			foreach (ImportedFrameBlock item in this)
+				list.Add(item);
 
 			return list;
 		}

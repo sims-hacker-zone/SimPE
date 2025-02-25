@@ -18,20 +18,21 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Packages;
-using System.Threading;
-using System.Diagnostics;
-using Microsoft.Win32;
 using System.Collections;
+using System.Diagnostics;
+using System.Threading;
+using Microsoft.Win32;
+using SimPe.Packages;
 
 namespace SimPe
 {
 	/// <summary>
 	/// just a Little class with a shorter ToString output
 	/// </summary>
-	public class ToolLoaderListBoxItemExt : ToolLoaderItemExt 
+	public class ToolLoaderListBoxItemExt : ToolLoaderItemExt
 	{
-		public ToolLoaderListBoxItemExt(ToolLoaderItemExt tli) : base (tli.Name) 
+		public ToolLoaderListBoxItemExt(ToolLoaderItemExt tli)
+			: base(tli.Name)
 		{
 			name = tli.Name;
 			filename = tli.FileName;
@@ -43,13 +44,12 @@ namespace SimPe
 		{
 			return Name;
 		}
-
 	}
 
 	/// <summary>
 	/// This class contains all Information neede for one ExternalTool
 	/// </summary>
-	public class ToolLoaderItemExt 
+	public class ToolLoaderItemExt
 	{
 		/// <summary>
 		/// Creates a new Instance
@@ -64,19 +64,21 @@ namespace SimPe
 		}
 
 		protected string name;
+
 		/// <summary>
 		/// Returnsthe Name of a Plugin
 		/// </summary>
-		public string Name 
+		public string Name
 		{
 			get { return name; }
 		}
 
 		protected string filename;
+
 		/// <summary>
 		/// Returns/sets the FileName of the External Application
 		/// </summary>
-		public string FileName 
+		public string FileName
 		{
 			get { return filename; }
 			set { filename = value; }
@@ -86,28 +88,30 @@ namespace SimPe
 		/// Returns/sets the FileName of the External Application
 		/// </summary>
 		/// <remarks>the Palceholder {simple} will be replaced with the real Simpe Installation Path</remarks>
-		public string RealFileName 
+		public string RealFileName
 		{
 			get { return filename.Replace("{simpe}", Helper.SimPePath); }
 		}
 
 		protected string arguments;
+
 		/// <summary>
 		/// Returns/sets the Arguments we have to send to the Application
 		/// </summary>
 		/// <remarks>use "{tempname}" as a Plcaeholder for the Filename simPe uses to store the Temporary File</remarks>
-		public string Attributes 
+		public string Attributes
 		{
 			get { return arguments; }
 			set { arguments = value; }
 		}
 
 		protected uint type;
+
 		/// <summary>
 		/// Returns the Type of the Packged File this Application can be used with
 		/// </summary>
 		/// <remarks>0xfffffff for all Types</remarks>
-		public uint Type 
+		public uint Type
 		{
 			get { return type; }
 			set { type = value; }
@@ -118,10 +122,15 @@ namespace SimPe
 		/// </summary>
 		/// <param name="filename"></param>
 		/// <param name="dscfile"></param>
-		public static void SavePackedFile(string filename, bool dscfile, SimPe.Packages.PackedFileDescriptor pfd, SimPe.Packages.GeneratableFile package)
+		public static void SavePackedFile(
+			string filename,
+			bool dscfile,
+			SimPe.Packages.PackedFileDescriptor pfd,
+			SimPe.Packages.GeneratableFile package
+		)
 		{
 #if !DEBUG
-			try 
+			try
 #endif
 			{
 				pfd.Path = System.IO.Path.GetDirectoryName(filename);
@@ -130,10 +139,13 @@ namespace SimPe
 				package.SavePackedFile(filename, null, pfd, dscfile);
 			}
 #if !DEBUG
-			catch (Exception ex) 
+			catch (Exception ex)
 			{
-				Helper.ExceptionMessage(Localization.Manager.GetString("errwritingfile")+filename, ex);
-			} 
+				Helper.ExceptionMessage(
+					Localization.Manager.GetString("errwritingfile") + filename,
+					ex
+				);
+			}
 #endif
 		}
 
@@ -144,84 +156,98 @@ namespace SimPe
 		/// <param name="pfd">Descriptor of the Target File</param>
 		/// <param name="package">The package the Fille sould be added to</param>
 		/// <returns>true if succesfull</returns>
-		public static bool OpenPackedFile(string filename, ref Packages.PackedFileDescriptor pfd) 
-		{			
-			try 
+		public static bool OpenPackedFile(
+			string filename,
+			ref Packages.PackedFileDescriptor pfd
+		)
+		{
+			try
 			{
-				try 
+				try
 				{
-					if (filename.ToLower().EndsWith(".xml")) 
+					if (filename.ToLower().EndsWith(".xml"))
 					{
 						pfd = XmlPackageReader.OpenExtractedPackedFile(filename);
 						filename = System.IO.Path.Combine(pfd.Path, pfd.Filename);
-					} 
-					else 
+					}
+					else
 					{
-						string[] part = System.IO.Path.GetFileNameWithoutExtension(filename).Split("-".ToCharArray(), 4);
-						try 
+						string[] part = System
+							.IO.Path.GetFileNameWithoutExtension(filename)
+							.Split("-".ToCharArray(), 4);
+						try
 						{
 							pfd.Type = Convert.ToUInt32(part[0].Trim(), 16);
 							pfd.SubType = Convert.ToUInt32(part[1].Trim(), 16);
 							pfd.Group = Convert.ToUInt32(part[2].Trim(), 16);
 							pfd.Instance = Convert.ToUInt32(part[3].Trim(), 16);
-						} 
-						catch (Exception) {
-							part = System.IO.Path.GetFileNameWithoutExtension(filename).Split("-".ToCharArray(), 5);
+						}
+						catch (Exception)
+						{
+							part = System
+								.IO.Path.GetFileNameWithoutExtension(filename)
+								.Split("-".ToCharArray(), 5);
 
-							try 
+							try
 							{
 								pfd.Type = Convert.ToUInt32(part[0].Trim(), 16);
 								pfd.SubType = Convert.ToUInt32(part[2].Trim(), 16);
 								pfd.Group = Convert.ToUInt32(part[3].Trim(), 16);
 								pfd.Instance = Convert.ToUInt32(part[4].Trim(), 16);
-							} 
-							catch (Exception) 
-							{}
+							}
+							catch (Exception) { }
 						}
 
 						try
 						{
-							part = System.IO.Path.GetDirectoryName(filename).Split("\\".ToCharArray());
-							if (part.Length>0) 
+							part = System
+								.IO.Path.GetDirectoryName(filename)
+								.Split("\\".ToCharArray());
+							if (part.Length > 0)
 							{
-								string last = part[part.Length-1];
+								string last = part[part.Length - 1];
 								part = last.Split("-".ToCharArray(), 2);
 								pfd.Type = Convert.ToUInt32(part[0].Trim(), 16);
 							}
-						} 
-						catch (Exception) {}
-
-						
+						}
+						catch (Exception) { }
 					}
 				}
-				catch (Exception) 
-				{
-				}
-					
-				System.IO.FileStream fs = System.IO.File.OpenRead(filename);			
+				catch (Exception) { }
 
-				try 
-				{														
+				System.IO.FileStream fs = System.IO.File.OpenRead(filename);
+
+				try
+				{
 					System.IO.BinaryReader mbr = new System.IO.BinaryReader(fs);
 					byte[] data = new byte[mbr.BaseStream.Length];
-					for (int i=0; i<data.Length; i++) data[i] = mbr.ReadByte();
+					for (int i = 0; i < data.Length; i++)
+						data[i] = mbr.ReadByte();
 					pfd.UserData = data;
-				} 
-				catch (Exception ex) 
+				}
+				catch (Exception ex)
 				{
-					Helper.ExceptionMessage(Localization.Manager.GetString("err003").Replace("{0}", filename), ex);
+					Helper.ExceptionMessage(
+						Localization
+							.Manager.GetString("err003")
+							.Replace("{0}", filename),
+						ex
+					);
 					return false;
 				}
-				finally 
+				finally
 				{
 					fs.Close();
 					fs.Dispose();
 					fs = null;
 				}
 			}
-			catch (Exception ex) 
+			catch (Exception ex)
 			{
-				Helper.ExceptionMessage(Localization.Manager.GetString("erropenfile")+" "+filename, ex);
+				Helper.ExceptionMessage(
+					Localization.Manager.GetString("erropenfile") + " " + filename,
+					ex
+				);
 				return false;
 			}
 			return true;
@@ -232,61 +258,80 @@ namespace SimPe
 		/// </summary>
 		/// <param name="pfd">File Descriptor of the Selected File</param>
 		/// <param name="package">The package the File is stored in</param>
-		public void Execute(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item) 
+		public void Execute(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item)
 		{
-			if (item==null) return;
-			if (item.FileDescriptor==null) return;
-			if (item.Package==null) return;
+			if (item == null)
+				return;
+			if (item.FileDescriptor == null)
+				return;
+			if (item.Package == null)
+				return;
 
-			string extfile = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "simpe");			
+			string extfile = System.IO.Path.Combine(
+				System.IO.Path.GetTempPath(),
+				"simpe"
+			);
 			uint ct = 0;
-			while (System.IO.File.Exists(extfile+Helper.HexString(ct)+".tmp")) ct++;
-			extfile = extfile+Helper.HexString(ct)+".tmp";
+			while (System.IO.File.Exists(extfile + Helper.HexString(ct) + ".tmp"))
+				ct++;
+			extfile = extfile + Helper.HexString(ct) + ".tmp";
 
-			try 
+			try
 			{
-				SavePackedFile(extfile, false, (SimPe.Packages.PackedFileDescriptor)item.FileDescriptor, (SimPe.Packages.GeneratableFile)item.Package);
-			
+				SavePackedFile(
+					extfile,
+					false,
+					(SimPe.Packages.PackedFileDescriptor)item.FileDescriptor,
+					(SimPe.Packages.GeneratableFile)item.Package
+				);
+
 				Process p = new Process();
 				p.StartInfo.FileName = RealFileName;
-				p.StartInfo.Arguments = Attributes.Replace("{tempname}", "\""+extfile+"\"").Replace("{tempfile}", "\""+extfile+"\"");
+				p.StartInfo.Arguments = Attributes
+					.Replace("{tempname}", "\"" + extfile + "\"")
+					.Replace("{tempfile}", "\"" + extfile + "\"");
 
 				p.Start();
 
 				p.WaitForExit();
 				p.Close();
 
-				SimPe.Packages.PackedFileDescriptor pfd = (SimPe.Packages.PackedFileDescriptor)item.FileDescriptor;
+				SimPe.Packages.PackedFileDescriptor pfd =
+					(SimPe.Packages.PackedFileDescriptor)item.FileDescriptor;
 				OpenPackedFile(extfile, ref pfd);
 				pfd.Filename = null;
 				pfd.Path = null;
-			} 
-			finally 
+			}
+			finally
 			{
-				try 
+				try
 				{
 					System.IO.File.Delete(extfile);
-				} 
-				catch (Exception) {}
+				}
+				catch (Exception) { }
 			}
 		}
 
 		/// <summary>
 		/// Remove the Registry Settings
 		/// </summary>
-		public void DeleteSettings() 
+		public void DeleteSettings()
 		{
-			XmlRegistryKey rk = Helper.WindowsRegistry.RegistryKey.CreateSubKey("ExtTools");
-			rk.DeleteSubKey(Helper.HexString(type)+"-"+name, false);
+			XmlRegistryKey rk = Helper.WindowsRegistry.RegistryKey.CreateSubKey(
+				"ExtTools"
+			);
+			rk.DeleteSubKey(Helper.HexString(type) + "-" + name, false);
 		}
 
 		/// <summary>
 		/// Put the Settings to the Registry
 		/// </summary>
-		public void SaveSettings() 
+		public void SaveSettings()
 		{
-			XmlRegistryKey rk = Helper.WindowsRegistry.RegistryKey.CreateSubKey("ExtTools");
-			rk = rk.CreateSubKey(Helper.HexString(type)+"-"+name);
+			XmlRegistryKey rk = Helper.WindowsRegistry.RegistryKey.CreateSubKey(
+				"ExtTools"
+			);
+			rk = rk.CreateSubKey(Helper.HexString(type) + "-" + name);
 
 			rk.SetValue("name", Name);
 			rk.SetValue("type", Type);
@@ -299,11 +344,13 @@ namespace SimPe
 		/// </summary>
 		/// <param name="regname">Name of the Registry SubKey</param>
 		/// <returns></returns>
-		public static string SplitName(string regname) 
+		public static string SplitName(string regname)
 		{
 			string[] str = regname.Split("-".ToCharArray(), 2);
-			if (str.Length>1) return str[1];
-			else return Localization.Manager.GetString("Unknown");
+			if (str.Length > 1)
+				return str[1];
+			else
+				return Localization.Manager.GetString("Unknown");
 		}
 
 		/// <summary>
@@ -312,9 +359,15 @@ namespace SimPe
 		/// <returns></returns>
 		public override string ToString()
 		{
-			return Name + " (0x"+Helper.HexString(type)+", "+FileName+" "+Attributes+")";
+			return Name
+				+ " (0x"
+				+ Helper.HexString(type)
+				+ ", "
+				+ FileName
+				+ " "
+				+ Attributes
+				+ ")";
 		}
-
 	}
 
 	/// <summary>
@@ -327,20 +380,25 @@ namespace SimPe
 		/// <summary>
 		/// List of all available Items
 		/// </summary>
-		public static ToolLoaderItemExt[] Items 
+		public static ToolLoaderItemExt[] Items
 		{
-			get { if (items==null) Load(); return items; }
+			get
+			{
+				if (items == null)
+					Load();
+				return items;
+			}
 			set { items = value; }
 		}
-
 
 		/// <summary>
 		/// Add the Passed item
 		/// </summary>
 		/// <param name="tli"></param>
-		public static void Add(ToolLoaderItemExt tli) 
+		public static void Add(ToolLoaderItemExt tli)
 		{
-			if (items==null) Load();
+			if (items == null)
+				Load();
 			items = (ToolLoaderItemExt[])Helper.Add(items, tli);
 		}
 
@@ -348,9 +406,10 @@ namespace SimPe
 		/// Remove the passed Item
 		/// </summary>
 		/// <param name="tli"></param>
-		public static void Remove(ToolLoaderItemExt tli) 
+		public static void Remove(ToolLoaderItemExt tli)
 		{
-			if (items==null) Load();
+			if (items == null)
+				Load();
 			items = (ToolLoaderItemExt[])Helper.Delete(items, tli);
 		}
 
@@ -359,31 +418,40 @@ namespace SimPe
 		/// </summary>
 		public static void StoreTools()
 		{
-			if (items==null) return;
+			if (items == null)
+				return;
 
-			string[] names = Helper.WindowsRegistry.RegistryKey.CreateSubKey("ExtTools").GetSubKeyNames();
+			string[] names = Helper
+				.WindowsRegistry.RegistryKey.CreateSubKey("ExtTools")
+				.GetSubKeyNames();
 
-			foreach (string name in names) 
+			foreach (string name in names)
 			{
-				Helper.WindowsRegistry.RegistryKey.CreateSubKey("ExtTools").DeleteSubKey(name, false);
+				Helper
+					.WindowsRegistry.RegistryKey.CreateSubKey("ExtTools")
+					.DeleteSubKey(name, false);
 			}
 			Helper.WindowsRegistry.RegistryKey.DeleteSubKey("ExtTools", false);
-			XmlRegistryKey rk = Helper.WindowsRegistry.RegistryKey.CreateSubKey("ExtTools");
+			XmlRegistryKey rk = Helper.WindowsRegistry.RegistryKey.CreateSubKey(
+				"ExtTools"
+			);
 
-			foreach (ToolLoaderItemExt tli in items) 
+			foreach (ToolLoaderItemExt tli in items)
 			{
 				tli.SaveSettings();
 			}
 		}
 
-		protected static void Load() 
+		protected static void Load()
 		{
 			ArrayList list = new ArrayList();
 
-			XmlRegistryKey rk = Helper.WindowsRegistry.RegistryKey.CreateSubKey("ExtTools");
+			XmlRegistryKey rk = Helper.WindowsRegistry.RegistryKey.CreateSubKey(
+				"ExtTools"
+			);
 			string[] names = rk.GetSubKeyNames();
 
-			foreach (string name in names) 
+			foreach (string name in names)
 			{
 				string rname = ToolLoaderItemExt.SplitName(name);
 				XmlRegistryKey srk = rk.CreateSubKey(name);
@@ -406,13 +474,19 @@ namespace SimPe
 		/// </summary>
 		/// <param name="type"></param>
 		/// <returns></returns>
-		public static ToolLoaderItemExt[] UsableItems(uint type) 
+		public static ToolLoaderItemExt[] UsableItems(uint type)
 		{
-			if (items==null) Load();
+			if (items == null)
+				Load();
 
 			ArrayList list = new ArrayList();
-			if (type!=0xffffffff) foreach (ToolLoaderItemExt tli in items) if (tli.Type == type) list.Add(tli);
-			foreach (ToolLoaderItemExt tli in items) if (tli.Type == 0xffffffff) list.Add(tli);
+			if (type != 0xffffffff)
+				foreach (ToolLoaderItemExt tli in items)
+					if (tli.Type == type)
+						list.Add(tli);
+			foreach (ToolLoaderItemExt tli in items)
+				if (tli.Type == 0xffffffff)
+					list.Add(tli);
 
 			ToolLoaderItemExt[] ret = new ToolLoaderItemExt[list.Count];
 			list.CopyTo(ret);

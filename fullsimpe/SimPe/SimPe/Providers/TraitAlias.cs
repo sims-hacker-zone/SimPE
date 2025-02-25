@@ -23,31 +23,31 @@ using System.Text;
 
 namespace SimPe.Providers
 {
-    public class TraitAlias
-    {
-        private string name;
-        public string Name
-        {
-            get { return name; }
-        }
+	public class TraitAlias
+	{
+		private string name;
+		public string Name
+		{
+			get { return name; }
+		}
 
-        private ulong id;
-        public ulong Id
-        {
-            get { return id; }
-        }
+		private ulong id;
+		public ulong Id
+		{
+			get { return id; }
+		}
 
+		public TraitAlias(ulong id, string name)
+		{
+			this.id = id;
+			this.name = name;
+		}
 
-        public TraitAlias(ulong id, string name)
-        {
-            this.id = id;
-            this.name = name;
-         }
-
-        public override string ToString()
-        {
-            if (Helper.WindowsRegistry.HiddenMode) return name + " (0x" + Helper.HexString(id) + ")";
-            return name;
-        }
-    }
+		public override string ToString()
+		{
+			if (Helper.WindowsRegistry.HiddenMode)
+				return name + " (0x" + Helper.HexString(id) + ")";
+			return name;
+		}
+	}
 }

@@ -11,7 +11,6 @@ namespace SimPe.Wizards
 		/// The Update delegate
 		/// </summary>
 		protected SimPe.Wizards.ChangedContent update;
-		
 
 		/// <summary>
 		/// Triggers the Update Delegate
@@ -26,29 +25,22 @@ namespace SimPe.Wizards
 		/// </summary>
 		public void Update(bool autonext)
 		{
-			if (update!=null) update(this, autonext);
+			if (update != null)
+				update(this, autonext);
 		}
 
 		/// <summary>
 		/// Called in the normal Init method
 		/// </summary>
 		protected abstract bool Init();
+
 		#region IWizardForm Member
 
-		public abstract System.Windows.Forms.Panel WizardWindow
-		{
-			get;
-		}
+		public abstract System.Windows.Forms.Panel WizardWindow { get; }
 
-		public abstract string WizardMessage
-		{
-			get;
-		}
+		public abstract string WizardMessage { get; }
 
-		public abstract int WizardStep
-		{
-			get;
-		}
+		public abstract int WizardStep { get; }
 
 		public bool Init(SimPe.Wizards.ChangedContent fkt)
 		{
@@ -56,15 +48,9 @@ namespace SimPe.Wizards
 			return Init();
 		}
 
-		public abstract IWizardForm Next
-		{
-			get;
-		}
+		public abstract IWizardForm Next { get; }
 
-		public abstract bool CanContinue
-		{
-			get;
-		}
+		public abstract bool CanContinue { get; }
 
 		#endregion
 	}

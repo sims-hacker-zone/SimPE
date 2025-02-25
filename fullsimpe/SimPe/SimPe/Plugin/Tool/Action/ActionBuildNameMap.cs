@@ -26,74 +26,103 @@ namespace SimPe.Plugin.Tool.Action
 	/// </summary>
 	public class ActionBuildNameMap : SimPe.Interfaces.IToolAction
 	{
-		
 		#region IToolAction Member
 
-        public virtual bool ChangeEnabledStateEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
-        {
-            return true;
-        }
-
-        private bool RealChangeEnabledStateEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
-        {
-            return es.HasFileDescriptor && es.Loaded;
-        }
-
-		public void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
+		public virtual bool ChangeEnabledStateEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs es
+		)
 		{
-            if (!RealChangeEnabledStateEventHandler(null, es))
-            {
-                System.Windows.Forms.MessageBox.Show(Localization.GetString("This is not an appropriate context in which to use this tool"),
-                    Localization.GetString(this.ToString()));
-                return;
-            }
-			
+			return true;
+		}
+
+		private bool RealChangeEnabledStateEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs es
+		)
+		{
+			return es.HasFileDescriptor && es.Loaded;
+		}
+
+		public void ExecuteEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs es
+		)
+		{
+			if (!RealChangeEnabledStateEventHandler(null, es))
+			{
+				System.Windows.Forms.MessageBox.Show(
+					Localization.GetString(
+						"This is not an appropriate context in which to use this tool"
+					),
+					Localization.GetString(this.ToString())
+				);
+				return;
+			}
+
 			SimPe.Interfaces.Files.IPackedFileDescriptor pfd = null;
-			for (int i=0; i<es.Count; i++) if (es[i].HasFileDescriptor) { pfd = es[i].Resource.FileDescriptor; break; }
+			for (int i = 0; i < es.Count; i++)
+				if (es[i].HasFileDescriptor)
+				{
+					pfd = es[i].Resource.FileDescriptor;
+					break;
+				}
 
 			Data.TypeAlias a = Helper.TGILoader.GetByType(pfd.Type);
-			if (Data.MetaData.RcolList.Contains(a.Id)) 
+			if (Data.MetaData.RcolList.Contains(a.Id))
 			{
-				SimPe.Packages.PackedFileDescriptor fd = new SimPe.Packages.PackedFileDescriptor();
+				SimPe.Packages.PackedFileDescriptor fd =
+					new SimPe.Packages.PackedFileDescriptor();
 				fd.Type = Data.MetaData.NAME_MAP;
 				fd.Group = 0x52737256;
 				fd.Instance = a.Id;
 				fd.SubType = 0;
-					
-				SimPe.Plugin.Nmap nmap = new SimPe.Plugin.Nmap(FileTable.ProviderRegistry);
+
+				SimPe.Plugin.Nmap nmap = new SimPe.Plugin.Nmap(
+					FileTable.ProviderRegistry
+				);
 				nmap.FileDescriptor = fd;
 				bool add = false;
-				if (es.LoadedPackage.Package.FindFile(fd)==null) add = true;
-					
+				if (es.LoadedPackage.Package.FindFile(fd) == null)
+					add = true;
+
 				System.Collections.ArrayList list = new System.Collections.ArrayList();
 				foreach (SimPe.Events.ResourceContainer e in es)
 				{
-					if (!e.HasFileDescriptor) continue;
-					if (e.Resource.FileDescriptor.Type!=a.Id) continue;
-					try 
+					if (!e.HasFileDescriptor)
+						continue;
+					if (e.Resource.FileDescriptor.Type != a.Id)
+						continue;
+					try
 					{
-						SimPe.Packages.PackedFileDescriptor p = (SimPe.Packages.PackedFileDescriptor)e.Resource.FileDescriptor;
+						SimPe.Packages.PackedFileDescriptor p =
+							(SimPe.Packages.PackedFileDescriptor)
+								e.Resource.FileDescriptor;
 
-						SimPe.Plugin.Rcol rcol = new SimPe.Plugin.GenericRcol(null, false);
+						SimPe.Plugin.Rcol rcol = new SimPe.Plugin.GenericRcol(
+							null,
+							false
+						);
 						rcol.ProcessData(p, es.LoadedPackage.Package);
 
 						p.Filename = rcol.FileName;
 						list.Add(p);
-					} 
-					catch (Exception) {}
+					}
+					catch (Exception) { }
 				} //foreach
 
 				nmap.Items = new SimPe.Packages.PackedFileDescriptor[list.Count];
 				list.CopyTo(nmap.Items);
 
 				nmap.SynchronizeUserData();
-				if (add) es.LoadedPackage.Package.Add(nmap.FileDescriptor);
+				if (add)
+					es.LoadedPackage.Package.Add(nmap.FileDescriptor);
 			}
 		}
 
-		#endregion		
+		#endregion
 
-		
+
 		#region IToolPlugin Member
 		public override string ToString()
 		{
@@ -104,23 +133,17 @@ namespace SimPe.Plugin.Tool.Action
 		#region IToolExt Member
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.None;
-			}
+			get { return System.Windows.Forms.Shortcut.None; }
 		}
 
 		public System.Drawing.Image Icon
 		{
-			get
-			{
-                return SimPe.GetIcon.NameMap;
-			}
+			get { return SimPe.GetIcon.NameMap; }
 		}
 
-		public virtual bool Visible 
+		public virtual bool Visible
 		{
-			get {return true;}
+			get { return true; }
 		}
 
 		#endregion

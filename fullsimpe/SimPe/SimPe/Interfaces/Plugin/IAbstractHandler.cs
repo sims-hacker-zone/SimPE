@@ -18,26 +18,30 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Interfaces.Plugin.Internal;
 using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin.Internal;
 
 namespace SimPe.Interfaces.Plugin
 {
 	/// <summary>
-	/// The Abstarct Handler implements some common Methods of the 
-	/// SimPe.Interfaces.IPackedFileWrapper and SimPe.Interfaces.IPackedFileSaveExtension 
+	/// The Abstarct Handler implements some common Methods of the
+	/// SimPe.Interfaces.IPackedFileWrapper and SimPe.Interfaces.IPackedFileSaveExtension
 	/// Interface. This is the easiest Way to Implement a Plugin.
 	/// </summary>
-	public abstract class AbstractWrapper : IWrapper, IPackedFileWrapper, IPackedFileSaveExtension
+	public abstract class AbstractWrapper
+		: IWrapper,
+			IPackedFileWrapper,
+			IPackedFileSaveExtension
 	{
 		protected bool processed;
+
 		/// <summary>
 		/// true if <see cref="ProcessData"/> was called once
 		/// </summary>
-		public bool Processed 
+		public bool Processed
 		{
 			get { return processed; }
-		}		
+		}
 
 		/// <summary>
 		/// Stores the FileDescriptor
@@ -77,64 +81,63 @@ namespace SimPe.Interfaces.Plugin
 		protected abstract IPackedFileUI CreateDefaultUIHandler();
 
 		/// <summary>
-		/// Called when the data Stored in the Wrappers Attributes must be written to a Stream 
+		/// Called when the data Stored in the Wrappers Attributes must be written to a Stream
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be written to</param>
-		/// <remarks>This implemenation wont save anything, you have to reimplement 
+		/// <remarks>This implemenation wont save anything, you have to reimplement
 		/// this in your class. </remarks>
-		protected virtual void Serialize(System.IO.BinaryWriter writer) 
-		{
-		}
+		protected virtual void Serialize(System.IO.BinaryWriter writer) { }
 
 		/// <summary>
 		/// Creates a new Wrapper Infor Object
 		/// </summary>
 		/// <returns></returns>
-		protected virtual IWrapperInfo CreateWrapperInfo() 
+		protected virtual IWrapperInfo CreateWrapperInfo()
 		{
 			return new AbstractWrapperInfo(
 				Localization.Manager.GetString("unnamed"),
 				Localization.Manager.GetString("unknown"),
 				base.ToString(),
 				1
-				); 
+			);
 		}
-		
+
 		/// <summary>
 		/// Creates a new Instance
 		/// </summary>
-		public AbstractWrapper () 
+		public AbstractWrapper()
 		{
 			processed = false;
 			changed = false;
 			this.ui = null;
-		}	
-	
+		}
+
 		private string ExceptionMessage(string msg)
 		{
-            if (msg == null) msg = "";
+			if (msg == null)
+				msg = "";
 			msg += "\n\nPackage: ";
 			if (this.Package != null)
 				msg += this.Package.FileName;
-			else 
+			else
 				msg += "null";
 
 			msg += "\nFile: ";
-			if (this.FileDescriptor!=null) 
+			if (this.FileDescriptor != null)
 			{
 				msg += this.FileDescriptor.ExceptionString;
-			} 
-			else 
+			}
+			else
 				msg += "null";
 
 			return msg;
 		}
-		
+
 		private void ExceptionMessage(string msg, Exception ex)
 		{
 			msg = ExceptionMessage(msg);
 			Helper.ExceptionMessage(msg, ex);
-		}			
+		}
 
 		#region IWrapper Member
 
@@ -143,42 +146,50 @@ namespace SimPe.Interfaces.Plugin
 			registry.Register((IWrapper)this);
 		}
 
-		public virtual bool CheckVersion(uint version) 
+		public virtual bool CheckVersion(uint version)
 		{
 			return false;
 		}
 
-		public IWrapperInfo WrapperDescription 
+		public IWrapperInfo WrapperDescription
 		{
-			get 
-			{ 
-				if (wrapperinfo==null) wrapperinfo = this.CreateWrapperInfo();
-				return wrapperinfo; 
+			get
+			{
+				if (wrapperinfo == null)
+					wrapperinfo = this.CreateWrapperInfo();
+				return wrapperinfo;
 			}
 		}
 
 		public override string ToString()
 		{
-			return WrapperDescription.Name + " (Author="
-				+WrapperDescription.Author +", Version="
-				+WrapperDescription.Version.ToString()+", GUID="
-				+Helper.HexString(WrapperDescription.UID)+", FileName="
-				+WrapperFileName+", Type="
-				+this.GetType()+")";
+			return WrapperDescription.Name
+				+ " (Author="
+				+ WrapperDescription.Author
+				+ ", Version="
+				+ WrapperDescription.Version.ToString()
+				+ ", GUID="
+				+ Helper.HexString(WrapperDescription.UID)
+				+ ", FileName="
+				+ WrapperFileName
+				+ ", Type="
+				+ this.GetType()
+				+ ")";
 		}
 
-		public string WrapperFileName 
+		public string WrapperFileName
 		{
-			get 
+			get
 			{
 				string i = this.GetType().Assembly.FullName;
 				string[] p = i.Split(",".ToCharArray(), 2);
-				
-				if (p.Length>0) return p[0].Trim();
-				else return SimPe.Localization.GetString("unknown");
+
+				if (p.Length > 0)
+					return p[0].Trim();
+				else
+					return SimPe.Localization.GetString("unknown");
 			}
 		}
-
 
 		#endregion
 
@@ -186,7 +197,7 @@ namespace SimPe.Interfaces.Plugin
 
 		public System.IO.MemoryStream CurrentStateData
 		{
-			get 
+			get
 			{
 				System.IO.MemoryStream ms = new System.IO.MemoryStream();
 				Serialize(new System.IO.BinaryWriter(ms));
@@ -203,29 +214,32 @@ namespace SimPe.Interfaces.Plugin
 		{
 			SynchronizeUserData(catchex, false);
 		}
-		
+
 		public void SynchronizeUserData(bool catchex, bool fire)
 		{
-			if (pfd==null) 
+			if (pfd == null)
 			{
 				changed = false;
 				return;
 			}
 
-			if (catchex) 
+			if (catchex)
 			{
-				try 
-				{				
+				try
+				{
 					//set UserData, but do not fire a change Event!
 					pfd.SetUserData(CurrentStateData.ToArray(), fire);
 					changed = false;
 				}
-				catch (Exception ex) 
+				catch (Exception ex)
 				{
-					ExceptionMessage(Localization.Manager.GetString("errwritingfile"), ex);				
+					ExceptionMessage(
+						Localization.Manager.GetString("errwritingfile"),
+						ex
+					);
 				}
-			} 
-			else 
+			}
+			else
 			{
 				//set UserData, but do not fire a change Event!
 				pfd.SetUserData(CurrentStateData.ToArray(), false);
@@ -235,15 +249,17 @@ namespace SimPe.Interfaces.Plugin
 
 		public void Save(IPackedFileDescriptor pfd)
 		{
-			try 
+			try
 			{
-				System.IO.BinaryWriter bw = new System.IO.BinaryWriter(new System.IO.MemoryStream());
+				System.IO.BinaryWriter bw = new System.IO.BinaryWriter(
+					new System.IO.MemoryStream()
+				);
 				int size = Save(bw);
 				System.IO.BinaryReader br = new System.IO.BinaryReader(bw.BaseStream);
 				br.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
 				pfd.UserData = br.ReadBytes(size);
 			}
-			catch (Exception ex) 
+			catch (Exception ex)
 			{
 				ExceptionMessage(Localization.Manager.GetString("errwritingfile"), ex);
 			}
@@ -252,11 +268,11 @@ namespace SimPe.Interfaces.Plugin
 		public int Save(System.IO.BinaryWriter writer)
 		{
 			long pos = writer.BaseStream.Position;
-			try 
+			try
 			{
 				Serialize(writer);
-			} 
-			catch (Exception ex) 
+			}
+			catch (Exception ex)
 			{
 				ExceptionMessage(Localization.Manager.GetString("errwritingfile"), ex);
 			}
@@ -264,7 +280,7 @@ namespace SimPe.Interfaces.Plugin
 		}
 
 		bool changed;
-		public virtual bool Changed 
+		public virtual bool Changed
 		{
 			get { return changed; }
 			set { changed = value; }
@@ -272,25 +288,25 @@ namespace SimPe.Interfaces.Plugin
 		#endregion
 
 		#region IPackedFileLoadExtension Member
-		public virtual void Fix(IWrapperRegistry registry) 
-		{
-		}
+		public virtual void Fix(IWrapperRegistry registry) { }
 
-		public IPackedFileDescriptor FileDescriptor 
+		public IPackedFileDescriptor FileDescriptor
 		{
 			get { return pfd; }
-			set { 
+			set
+			{
 				processed = false;
-				pfd = value; 
+				pfd = value;
 			}
 		}
 
 		public IPackedFileUI UIHandler
 		{
 			get
-			{ 
-				if (ui==null) ui = CreateDefaultUIHandler();
-				return ui; 
+			{
+				if (ui == null)
+					ui = CreateDefaultUIHandler();
+				return ui;
 			}
 			set { ui = value; }
 		}
@@ -298,18 +314,23 @@ namespace SimPe.Interfaces.Plugin
 		public IPackageFile Package
 		{
 			get { return package; }
-			set { 
+			set
+			{
 				processed = false;
-				package = value; 
+				package = value;
 			}
 		}
 
-		public void ProcessData(IPackedFileDescriptor pfd, IPackageFile package, IPackedFile file)
-		{			
-			ProcessData(pfd, package, file, true);	
+		public void ProcessData(
+			IPackedFileDescriptor pfd,
+			IPackageFile package,
+			IPackedFile file
+		)
+		{
+			ProcessData(pfd, package, file, true);
 		}
 
-		public void ProcessData(Interfaces.Scenegraph.IScenegraphFileIndexItem item) 
+		public void ProcessData(Interfaces.Scenegraph.IScenegraphFileIndexItem item)
 		{
 			ProcessData(item, true);
 		}
@@ -319,91 +340,109 @@ namespace SimPe.Interfaces.Plugin
 			ProcessData(pfd, package, true);
 		}
 
-		public void ProcessData(IPackedFileDescriptor pfd, IPackageFile package, IPackedFile file, bool catchex)
-		{			
+		public void ProcessData(
+			IPackedFileDescriptor pfd,
+			IPackageFile package,
+			IPackedFile file,
+			bool catchex
+		)
+		{
 			changed = false;
-			if (pfd==null) return;
-			if (package==null) return;
-			if (catchex) 
+			if (pfd == null)
+				return;
+			if (package == null)
+				return;
+			if (catchex)
 			{
-				try 
+				try
 				{
-					if (file!=null) 
+					if (file != null)
 					{
 						this.pfd = pfd;
 						this.package = package;
 						file = package.Read(pfd);
-						System.IO.MemoryStream ms = new System.IO.MemoryStream(file.UncompressedData);
-						if (ms.Length>0) 
+						System.IO.MemoryStream ms = new System.IO.MemoryStream(
+							file.UncompressedData
+						);
+						if (ms.Length > 0)
 						{
 							Unserialize(new System.IO.BinaryReader(ms));
 							processed = true;
 						}
-					} 
-					else 
+					}
+					else
 					{
 						ProcessData(pfd, package);
 					}
-				} 
-				catch (Exception ex) 
+				}
+				catch (Exception ex)
 				{
-
 					ExceptionMessage(Localization.Manager.GetString("erropenfile"), ex);
 				}
-			} 
-			else 
+			}
+			else
 			{
-				if (file!=null) 
+				if (file != null)
 				{
 					this.pfd = pfd;
 					this.package = package;
 					file = package.Read(pfd);
-					System.IO.MemoryStream ms = new System.IO.MemoryStream(file.UncompressedData);
-					if (ms.Length>0) 
+					System.IO.MemoryStream ms = new System.IO.MemoryStream(
+						file.UncompressedData
+					);
+					if (ms.Length > 0)
 					{
 						Unserialize(new System.IO.BinaryReader(ms));
 						processed = true;
 					}
-				} 
-				else 
+				}
+				else
 				{
 					ProcessData(pfd, package);
 				}
 			}
-			
 		}
 
-		public void ProcessData(Interfaces.Scenegraph.IScenegraphFileIndexItem item, bool catchex) 
+		public void ProcessData(
+			Interfaces.Scenegraph.IScenegraphFileIndexItem item,
+			bool catchex
+		)
 		{
 			ProcessData(item.FileDescriptor, item.Package, catchex);
 		}
 
-		public void ProcessData(IPackedFileDescriptor pfd, IPackageFile package, bool catchex)
+		public void ProcessData(
+			IPackedFileDescriptor pfd,
+			IPackageFile package,
+			bool catchex
+		)
 		{
-			if (pfd==null) return;
-			if (package==null) return;
-			if (catchex) 
+			if (pfd == null)
+				return;
+			if (package == null)
+				return;
+			if (catchex)
 			{
-				try 
+				try
 				{
 					this.pfd = pfd;
-					this.package = package;	
-					if (StoredData.BaseStream.Length>0) 
+					this.package = package;
+					if (StoredData.BaseStream.Length > 0)
 					{
 						Unserialize(StoredData);
 						processed = true;
 					}
 				}
-				catch (Exception ex) 
+				catch (Exception ex)
 				{
-					ExceptionMessage(Localization.Manager.GetString("erropenfile"), ex);					
+					ExceptionMessage(Localization.Manager.GetString("erropenfile"), ex);
 				}
-			} 
+			}
 			else
-            {
+			{
 				this.pfd = pfd;
-				this.package = package;	
-				if (StoredData.BaseStream.Length>0) 
+				this.package = package;
+				if (StoredData.BaseStream.Length > 0)
 				{
 					Unserialize(StoredData);
 					processed = true;
@@ -411,19 +450,21 @@ namespace SimPe.Interfaces.Plugin
 			}
 		}
 
-		public System.IO.BinaryReader StoredData 
+		public System.IO.BinaryReader StoredData
 		{
 			get
 			{
-				if ((pfd!=null) && (package!=null))
+				if ((pfd != null) && (package != null))
 				{
 					IPackedFile file = package.Read(pfd);
-					return new System.IO.BinaryReader(new System.IO.MemoryStream(file.UncompressedData));
-                    
-                    /*IPackedFile file = package.GetStream(pfd);
-                    return new System.IO.BinaryReader(file.UncompressedStream);*/
-				} 
-				else 
+					return new System.IO.BinaryReader(
+						new System.IO.MemoryStream(file.UncompressedData)
+					);
+
+					/*IPackedFile file = package.GetStream(pfd);
+					return new System.IO.BinaryReader(file.UncompressedStream);*/
+				}
+				else
 				{
 					return new System.IO.BinaryReader(new System.IO.MemoryStream());
 				}
@@ -432,46 +473,58 @@ namespace SimPe.Interfaces.Plugin
 
 		public virtual bool AllowMultipleInstances
 		{
-			get 
+			get
 			{
-				return (GetType().GetInterface("SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper", false)==typeof(SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper));
+				return (
+					GetType()
+						.GetInterface(
+							"SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper",
+							false
+						) == typeof(SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper)
+				);
 			}
 		}
 
-        public virtual bool ReferencesResources
-        {
-            get
-            {
-                return (GetType().GetInterface("SimPe.Interfaces.Plugin.IWrapperReferencedResources", false) == typeof(SimPe.Interfaces.Plugin.IWrapperReferencedResources));
-            }
-        }
-		
-
-		public void RefreshUI() 
+		public virtual bool ReferencesResources
 		{
-			if (UIHandler!=null) 
+			get
+			{
+				return (
+					GetType()
+						.GetInterface(
+							"SimPe.Interfaces.Plugin.IWrapperReferencedResources",
+							false
+						) == typeof(SimPe.Interfaces.Plugin.IWrapperReferencedResources)
+				);
+			}
+		}
+
+		public void RefreshUI()
+		{
+			if (UIHandler != null)
 			{
 				UIHandler.UpdateGUI((IFileWrapper)this);
 			}
 		}
-		public void Refresh() 
+
+		public void Refresh()
 		{
 			this.ProcessData(this.FileDescriptor, this.Package);
 			RefreshUI();
 		}
 
 		public void LoadUI()
-		{			
-			 RefreshUI();
-		}		
+		{
+			RefreshUI();
+		}
 
 		/// <summary>
 		/// The Priority of a Wrapper in the Registry
 		/// </summary>
-		public int Priority 
+		public int Priority
 		{
 			get { return priority; }
-			set { priority = value;}
+			set { priority = value; }
 		}
 
 		/// <summary>
@@ -479,10 +532,7 @@ namespace SimPe.Interfaces.Plugin
 		/// </summary>
 		public virtual string Description
 		{
-			get
-			{
-				return "";
-			}
+			get { return ""; }
 		}
 
 		/// <summary>
@@ -490,10 +540,7 @@ namespace SimPe.Interfaces.Plugin
 		/// </summary>
 		public virtual string DescriptionHeader
 		{
-			get
-			{
-				return "";
-			}
+			get { return ""; }
 		}
 
 		/// <summary>
@@ -503,15 +550,18 @@ namespace SimPe.Interfaces.Plugin
 		/// <returns></returns>
 		string GetEmbeddedFileName(Data.TypeAlias ta)
 		{
-			if (Package==null) return null;
-			if (FileDescriptor==null) return null;
+			if (Package == null)
+				return null;
+			if (FileDescriptor == null)
+				return null;
 
-            if (ta.containsfilename)
-            {
-                SimPe.Interfaces.Files.IPackedFile pf = Package.Read(FileDescriptor);
-                return Helper.ToString(pf.GetUncompressedData(0x40));                
-            }
-            else return null;
+			if (ta.containsfilename)
+			{
+				SimPe.Interfaces.Files.IPackedFile pf = Package.Read(FileDescriptor);
+				return Helper.ToString(pf.GetUncompressedData(0x40));
+			}
+			else
+				return null;
 		}
 
 		/// <summary>
@@ -530,37 +580,57 @@ namespace SimPe.Interfaces.Plugin
 		public string ResourceName
 		{
 			get
-			{		
+			{
 				string res = null;
-				if (FileDescriptor!=null) 
+				if (FileDescriptor != null)
 				{
-                    Data.TypeAlias ta = Helper.TGILoader.GetByType(FileDescriptor.Type);
-                    if (ta != null)
-                    {
-
-                        if (Helper.WindowsRegistry.ResourceListFormat == Registry.ResourceListFormats.JustLongType) { res = ta.Name; if (res == "") res = null; }
-                        else res = GetResourceName(ta);
-                        if (res == null) res = GetEmbeddedFileName(ta);
-                        if (res == null) res = FileDescriptor.ToResListString();
-                        else if (ta.Name == null) res = SimPe.Localization.GetString("Unknown") + ": " + res;
-                        else
-                        {
-                            if (Helper.WindowsRegistry.ResourceListFormat == Registry.ResourceListFormats.LongTypeNames)
-                                res = ta.Name + ": " + res;
-                            else if (Helper.WindowsRegistry.ResourceListFormat == Registry.ResourceListFormats.ShortTypeNames)
-                                res = ta.shortname + ": " + res;
-                            else if (res.Trim() == "")
-                                res = "[" + ta.Name + "]";
-                        }
-                    }
-                    else
-                        res = SimPe.Localization.GetString("Unknown") + ": " + FileDescriptor.ToResListString();
+					Data.TypeAlias ta = Helper.TGILoader.GetByType(FileDescriptor.Type);
+					if (ta != null)
+					{
+						if (
+							Helper.WindowsRegistry.ResourceListFormat
+							== Registry.ResourceListFormats.JustLongType
+						)
+						{
+							res = ta.Name;
+							if (res == "")
+								res = null;
+						}
+						else
+							res = GetResourceName(ta);
+						if (res == null)
+							res = GetEmbeddedFileName(ta);
+						if (res == null)
+							res = FileDescriptor.ToResListString();
+						else if (ta.Name == null)
+							res = SimPe.Localization.GetString("Unknown") + ": " + res;
+						else
+						{
+							if (
+								Helper.WindowsRegistry.ResourceListFormat
+								== Registry.ResourceListFormats.LongTypeNames
+							)
+								res = ta.Name + ": " + res;
+							else if (
+								Helper.WindowsRegistry.ResourceListFormat
+								== Registry.ResourceListFormats.ShortTypeNames
+							)
+								res = ta.shortname + ": " + res;
+							else if (res.Trim() == "")
+								res = "[" + ta.Name + "]";
+						}
+					}
+					else
+						res =
+							SimPe.Localization.GetString("Unknown")
+							+ ": "
+							+ FileDescriptor.ToResListString();
 				}
-				else 
+				else
 				{
 					res = SimPe.Localization.GetString("Unknown");
 				}
-				 
+
 				return res;
 			}
 		}
@@ -570,10 +640,7 @@ namespace SimPe.Interfaces.Plugin
 		/// </summary>
 		public virtual System.IO.MemoryStream Content
 		{
-			get
-			{
-				return null;
-			}
+			get { return null; }
 		}
 
 		/// <summary>
@@ -589,8 +656,9 @@ namespace SimPe.Interfaces.Plugin
 		#endregion
 
 		IFileWrapper guiwrapper;
+
 		/// <summary>
-		/// This is used to initialize single Gui Wrappers, in 
+		/// This is used to initialize single Gui Wrappers, in
 		/// order to not corrupted when ResourceName is called
 		/// </summary>
 		public IFileWrapper SingleGuiWrapper
@@ -599,7 +667,7 @@ namespace SimPe.Interfaces.Plugin
 		}
 
 		#region IMultiplePackedFileWrapper Member
-		
+
 
 		/// <summary>
 		/// Create a new Instance of the Wrapper
@@ -607,15 +675,21 @@ namespace SimPe.Interfaces.Plugin
 		/// <returns>the new Instance</returns>
 		public virtual IFileWrapper Activate()
 		{
-			if (!this.AllowMultipleInstances) 
+			if (!this.AllowMultipleInstances)
 			{
-				if (guiwrapper==null) guiwrapper = (IFileWrapper)Activator.CreateInstance(this.GetType());
+				if (guiwrapper == null)
+					guiwrapper = (IFileWrapper)Activator.CreateInstance(this.GetType());
 				return guiwrapper;
-			} 
-			else 
+			}
+			else
 			{
-				SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper me = (SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper)this;
-				return (IFileWrapper)Activator.CreateInstance(this.GetType(), me.GetConstructorArguments());
+				SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper me =
+					(SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper)this;
+				return (IFileWrapper)
+					Activator.CreateInstance(
+						this.GetType(),
+						me.GetConstructorArguments()
+					);
 			}
 		}
 
@@ -627,13 +701,15 @@ namespace SimPe.Interfaces.Plugin
 		{
 			return new object[0];
 		}
-		#endregion		
+		#endregion
 
 		#region IDisposable Member
 		public virtual void Dispose()
 		{
-			if (wrapperinfo!=null) wrapperinfo.Dispose();
-			if (ui!=null) ui.Dispose();
+			if (wrapperinfo != null)
+				wrapperinfo.Dispose();
+			if (ui != null)
+				ui.Dispose();
 			ui = null;
 			package = null;
 			pfd = null;

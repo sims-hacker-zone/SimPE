@@ -58,18 +58,12 @@ namespace SimPe.Interfaces.Providers
 		/// <summary>
 		/// Returns availabl SDSC Files by SimGUID
 		/// </summary>
-		Hashtable SimGuidMap
-		{
-			get;
-		}
+		Hashtable SimGuidMap { get; }
 
 		/// <summary>
 		/// Returns availabl SDSC Files by Instance
 		/// </summary>
-		Hashtable SimInstance
-		{
-			get;
-		}
+		Hashtable SimInstance { get; }
 
 		/// <summary>
 		/// Returns a List containing all Household Names
@@ -87,10 +81,10 @@ namespace SimPe.Interfaces.Providers
 		#region Nightlife
 		/// <summary>
 		/// Returns the name of a Turnon/Turnoff
-		/// </summary>		
+		/// </summary>
 		/// <param name="val1">stored Number for TurnOns1</param>
-        /// <param name="val2">stored Number for TurnOns2</param>
-        /// <param name="val3">stored Number for TurnOns3</param>
+		/// <param name="val2">stored Number for TurnOns2</param>
+		/// <param name="val3">stored Number for TurnOns3</param>
 		/// <returns></returns>
 		string GetTurnOnName(ushort val1, ushort val2, ushort val3);
 
@@ -99,7 +93,7 @@ namespace SimPe.Interfaces.Providers
 		/// </summary>
 		/// <param name="val1"></param>
 		/// <param name="val2"></param>
-        /// <param name="val3"></param>
+		/// <param name="val3"></param>
 		/// <returns></returns>
 		ulong BuildTurnOnIndex(ushort val1, ushort val2, ushort val3);
 
@@ -117,40 +111,40 @@ namespace SimPe.Interfaces.Providers
 		SimPe.Providers.TraitAlias[] GetAllTurnOns();
 		#endregion
 
-        #region BonVoyage
-        /// <summary>
-        /// Returns the name of a Vacation Collectibles
-        /// </summary>		
-        /// <param name="val1">stored Number for Collectible1</param>
-        /// <param name="val2">stored Number for Collectible2</param>
-        /// <param name="val3">stored Number for Collectible3</param>
-        /// <param name="val4">stored Number for Collectible4</param>
-        /// <returns></returns>
-        string GetCollectibleName(ushort val1, ushort val2, ushort val3, ushort val4);
+		#region BonVoyage
+		/// <summary>
+		/// Returns the name of a Vacation Collectibles
+		/// </summary>
+		/// <param name="val1">stored Number for Collectible1</param>
+		/// <param name="val2">stored Number for Collectible2</param>
+		/// <param name="val3">stored Number for Collectible3</param>
+		/// <param name="val4">stored Number for Collectible4</param>
+		/// <returns></returns>
+		string GetCollectibleName(ushort val1, ushort val2, ushort val3, ushort val4);
 
-        /// <summary>
-        /// Create the Index from the passed Numbers
-        /// </summary>
-        /// <param name="val1"></param>
-        /// <param name="val2"></param>
-        /// <param name="val3"></param>
-        /// <param name="val4"></param>
-        /// <returns></returns>
-        ulong BuildCollectibleIndex(ushort val1, ushort val2, ushort val3, ushort val4);
+		/// <summary>
+		/// Create the Index from the passed Numbers
+		/// </summary>
+		/// <param name="val1"></param>
+		/// <param name="val2"></param>
+		/// <param name="val3"></param>
+		/// <param name="val4"></param>
+		/// <returns></returns>
+		ulong BuildCollectibleIndex(ushort val1, ushort val2, ushort val3, ushort val4);
 
-        /// <summary>
-        /// Invers Operation to <see cref="BuildCollectibleIndex"/>
-        /// </summary>
-        /// <param name="index"></param>
-        /// <param name="nr"></param>
-        /// <returns>val1 - val4</returns>
-        ushort[] GetFromCollectibleIndex(ulong index);
+		/// <summary>
+		/// Invers Operation to <see cref="BuildCollectibleIndex"/>
+		/// </summary>
+		/// <param name="index"></param>
+		/// <param name="nr"></param>
+		/// <returns>val1 - val4</returns>
+		ushort[] GetFromCollectibleIndex(ulong index);
 
-        /// <summary>
-        /// Returns a List of all available Collectibles
-        /// </summary>
-        /// <returns></returns>
-        SimPe.Providers.CollectibleAlias[] GetAllCollectibles();
-        #endregion
+		/// <summary>
+		/// Returns a List of all available Collectibles
+		/// </summary>
+		/// <returns></returns>
+		SimPe.Providers.CollectibleAlias[] GetAllCollectibles();
+		#endregion
 	}
 }

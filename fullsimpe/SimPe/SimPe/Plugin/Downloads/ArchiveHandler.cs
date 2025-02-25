@@ -12,16 +12,16 @@ namespace SimPe.Plugin.Downloads
 		PackageInfoCollection nfos;
 		protected PackageInfoCollection Nfos
 		{
-			get {return nfos;}
+			get { return nfos; }
 		}
 
 		protected string ArchiveName
 		{
-			get {return flname;}
+			get { return flname; }
 		}
-		
-		public ArchiveHandler(string filename)		
-		{		
+
+		public ArchiveHandler(string filename)
+		{
 			DoInit(filename);
 		}
 
@@ -37,24 +37,20 @@ namespace SimPe.Plugin.Downloads
 		{
 			Reset();
 		}
-			
-		
-		
-		protected virtual void OnReset()
-		{
-		}
+
+		protected virtual void OnReset() { }
 
 		protected abstract SimPe.StringArrayList ExtractArchive();
 
 		protected void LoadContent()
-		{			
+		{
 			Wait.Message = "Extracting Archive";
 			SimPe.StringArrayList files = ExtractArchive();
 
 			Wait.SubStart(files.Count);
-			
+
 			files = SortFilesByType(files);
-			LoadFiles(files);			
+			LoadFiles(files);
 
 			Wait.SubStop();
 		}
@@ -65,16 +61,19 @@ namespace SimPe.Plugin.Downloads
 			foreach (string file in files)
 			{
 				Wait.Progress = nr++;
-				Wait.Message = System.IO.Path.GetFileName(file);				
-				
-				if (!FileTable.FileIndex.Contains(file))
-					SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.AddIndexFromPackage(file);
+				Wait.Message = System.IO.Path.GetFileName(file);
 
-				Downloads.IPackageHandler hnd = HandlerRegistry.Global.LoadFileHandler(file);
-				if (hnd!=null)				
-					nfos.AddRange(hnd.Objects);	
-			
-				
+				if (!FileTable.FileIndex.Contains(file))
+					SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.AddIndexFromPackage(
+						file
+					);
+
+				Downloads.IPackageHandler hnd = HandlerRegistry.Global.LoadFileHandler(
+					file
+				);
+				if (hnd != null)
+					nfos.AddRange(hnd.Objects);
+
 				SimPe.Packages.StreamFactory.CloseStream(file);
 			}
 		}
@@ -87,40 +86,43 @@ namespace SimPe.Plugin.Downloads
 			{
 				if (file.EndsWith(".package", true, null))
 				{
-				SimPe.Cache.PackageType type = PackageInfo.ClassifyPackage(file);
-				SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.AddIndexFromPackage(file);
+					SimPe.Cache.PackageType type = PackageInfo.ClassifyPackage(file);
+					SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.AddIndexFromPackage(
+						file
+					);
 
-				if (type == SimPe.Cache.PackageType.CustomObject || type == SimPe.Cache.PackageType.Object || type == SimPe.Cache.PackageType.Sim)
-					objects.Add(file);
-				else
-					other.Add(file);
+					if (
+						type == SimPe.Cache.PackageType.CustomObject
+						|| type == SimPe.Cache.PackageType.Object
+						|| type == SimPe.Cache.PackageType.Sim
+					)
+						objects.Add(file);
+					else
+						other.Add(file);
 				}
 			}
 			objects.AddRange(other);
-			other.Clear(); other = null;
-			files.Clear(); files=null;
+			other.Clear();
+			other = null;
+			files.Clear();
+			files = null;
 
 			return objects;
 		}
 
-		public virtual void FreeResources()
-		{
-		}
-		
+		public virtual void FreeResources() { }
+
 		protected void Reset()
-		{														
-			OnReset();	
-			nfos.Clear();	
+		{
+			OnReset();
+			nfos.Clear();
 		}
 
 		#region IPackageHandler Member
 
 		public IPackageInfo[] Objects
 		{
-			get
-			{
-				return nfos.ToArray();
-			}
+			get { return nfos.ToArray(); }
 		}
 
 		#endregion
@@ -129,9 +131,10 @@ namespace SimPe.Plugin.Downloads
 
 		public void Dispose()
 		{
-			if (nfos!=null) nfos.Clear();
+			if (nfos != null)
+				nfos.Clear();
 			nfos = null;
-			flname = null;			
+			flname = null;
 		}
 
 		#endregion

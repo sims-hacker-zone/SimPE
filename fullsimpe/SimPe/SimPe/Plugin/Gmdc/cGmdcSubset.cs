@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.IO;
-using System.Globalization;
 using System.Collections;
+using System.Globalization;
+using System.IO;
 using SimPe.Geometry;
 
 namespace SimPe.Plugin.Gmdc
@@ -30,7 +30,7 @@ namespace SimPe.Plugin.Gmdc
 	/// </summary>
 	public class GmdcJoint : GmdcLinkBlock
 	{
-		#region Attributes	
+		#region Attributes
 		/// <summary>
 		/// Number of Vertices stored in this SubSet
 		/// </summary>
@@ -40,20 +40,22 @@ namespace SimPe.Plugin.Gmdc
 		}
 
 		Vectors3f verts;
+
 		/// <summary>
 		/// Vertex Definitions for this SubSet
 		/// </summary>
-		public Vectors3f Vertices 
+		public Vectors3f Vertices
 		{
 			get { return verts; }
 			set { verts = value; }
 		}
 
 		IntArrayList items;
+
 		/// <summary>
 		/// Some additional Index Data (yet unknown)
 		/// </summary>
-		public IntArrayList Items 
+		public IntArrayList Items
 		{
 			get { return items; }
 			set { items = value; }
@@ -63,7 +65,8 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public GmdcJoint(GeometryDataContainer parent) : base(parent)
+		public GmdcJoint(GeometryDataContainer parent)
+			: base(parent)
 		{
 			verts = new Vectors3f();
 			items = new IntArrayList();
@@ -73,17 +76,17 @@ namespace SimPe.Plugin.Gmdc
 		/// Unserializes a BinaryStream into the Attributes of this Instance
 		/// </summary>
 		/// <param name="reader">The Stream that contains the FileData</param>
-		public  void Unserialize(System.IO.BinaryReader reader)
+		public void Unserialize(System.IO.BinaryReader reader)
 		{
 			int vcount = reader.ReadInt32();
 
-			if (vcount>0) 
+			if (vcount > 0)
 			{
-				try 
+				try
 				{
 					int count = reader.ReadInt32();
 					verts.Clear();
-					for (int i=0; i<vcount; i++)
+					for (int i = 0; i < vcount; i++)
 					{
 						Vector3f f = new Vector3f();
 						f.Unserialize(reader);
@@ -91,7 +94,8 @@ namespace SimPe.Plugin.Gmdc
 					}
 
 					items.Clear();
-					for (int i=0; i<count; i++) items.Add(this.ReadValue(reader));
+					for (int i = 0; i < count; i++)
+						items.Add(this.ReadValue(reader));
 				}
 				catch (Exception ex)
 				{
@@ -105,33 +109,35 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
-		public  void Serialize(System.IO.BinaryWriter writer)
+		public void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write((int)verts.Count);
 
-			if (verts.Count>0) 
-			{	
+			if (verts.Count > 0)
+			{
 				writer.Write((int)items.Length);
-				for (int i=0; i<verts.Count; i++) verts[i].Serialize(writer);
-				for (int i=0; i<items.Length; i++) this.WriteValue(writer, items[i]);
-			}	
+				for (int i = 0; i < verts.Count; i++)
+					verts[i].Serialize(writer);
+				for (int i = 0; i < items.Length; i++)
+					this.WriteValue(writer, items[i]);
+			}
 		}
 
 		/// <summary>
-		/// The Index of this Joint in the Parent's joint List (-1 indicates 
+		/// The Index of this Joint in the Parent's joint List (-1 indicates
 		/// that the Joint was not found within the Parent)
 		/// </summary>
-		public int Index 
+		public int Index
 		{
-			get 
+			get
 			{
 				int index = -1;
-				for (int i=0; i<parent.Joints.Count; i++) 
+				for (int i = 0; i < parent.Joints.Count; i++)
 				{
-					if (parent.Joints[i]==this) 
+					if (parent.Joints[i] == this)
 					{
 						index = i;
 						break;
@@ -143,14 +149,16 @@ namespace SimPe.Plugin.Gmdc
 		}
 
 		TransformNode reftn;
+
 		/// <summary>
 		/// Returns the first TransformNode assigned to this Joint or null if none was found
 		/// </summary>
 		public TransformNode AssignedTransformNode
 		{
-			get 
+			get
 			{
-				if (reftn==null) reftn=GetAssignedTransformNode(Index);
+				if (reftn == null)
+					reftn = GetAssignedTransformNode(Index);
 				return reftn;
 			}
 		}
@@ -158,15 +166,16 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Reads the Name from the TransformNode or generates a default Name based on the Index
 		/// </summary>
-		public string Name 
+		public string Name
 		{
-			get 
+			get
 			{
-				if (AssignedTransformNode!=null) return AssignedTransformNode.ObjectGraphNode.FileName;
-				return "Joint"+Index.ToString();
+				if (AssignedTransformNode != null)
+					return AssignedTransformNode.ObjectGraphNode.FileName;
+				return "Joint" + Index.ToString();
 			}
 		}
-		
+
 		/// <summary>
 		/// Returns the assigned TransformNode
 		/// </summary>
@@ -174,15 +183,17 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns>null or a TransformNode</returns>
 		protected TransformNode GetAssignedTransformNode(int index)
 		{
-			if  (parent.ParentResourceNode==null) return null;
+			if (parent.ParentResourceNode == null)
+				return null;
 			Rcol cres = parent.ParentResourceNode.Parent;
 
-			foreach (SimPe.Interfaces.Scenegraph.IRcolBlock irb in cres.Blocks) 
+			foreach (SimPe.Interfaces.Scenegraph.IRcolBlock irb in cres.Blocks)
 			{
-				if (irb.GetType()==typeof(TransformNode)) 
+				if (irb.GetType() == typeof(TransformNode))
 				{
 					TransformNode tn = (TransformNode)irb;
-					if (tn.JointReference==index) return tn;
+					if (tn.JointReference == index)
+						return tn;
 				}
 			}
 
@@ -192,13 +203,14 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Applies the initial Joint Transformation to the passed Vertex
 		/// </summary>
-		/// <param name="index">Index of the current Joint withi itÄs parent</param>
+		/// <param name="index">Index of the current Joint withi itï¿½s parent</param>
 		/// <param name="v">The Vertex you want to Transform</param>
 		/// <returns>Transformed Vertex</returns>
-		protected Vector3f Transform(int index, Vector3f v) 
+		protected Vector3f Transform(int index, Vector3f v)
 		{
 			//no Parent -> no Transform
-			if (parent==null) return v;
+			if (parent == null)
+				return v;
 
 			//Hashtable map = parent.LoadJointRelationMap();
 			//TransformNode tn = AssignedTransformNode(index);
@@ -207,7 +219,7 @@ namespace SimPe.Plugin.Gmdc
 			VectorTransformations t = new VectorTransformations();
 			t.Add(parent.Model.Transformations[index]);
 			/*
-			while (index>=0) 
+			while (index>=0)
 			{
 				t.Add(parent.Model.Transformations[index]);
 				if (map.ContainsKey(index)) index = (int)map[index];
@@ -215,10 +227,11 @@ namespace SimPe.Plugin.Gmdc
 			}*/
 
 			//Apply Transformations
-			for (int i=t.Count-1; i>=0; i--) v = t[i].Transform(v);
-			
+			for (int i = t.Count - 1; i >= 0; i--)
+				v = t[i].Transform(v);
+
 			return v;
-		}		
+		}
 
 		/// <summary>
 		/// Adjusts the Vertex List, from all Elements Vertices that are assigned to this joint
@@ -231,37 +244,49 @@ namespace SimPe.Plugin.Gmdc
 			this.Vertices.Clear();
 			this.Items.Clear();
 
-			if (index==-1) return; //not within Parent!
+			if (index == -1)
+				return; //not within Parent!
 
 			//scan all Groups in the Parent for Joint Assignements
-			foreach (GmdcGroup g in parent.Groups) 
+			foreach (GmdcGroup g in parent.Groups)
 			{
 				GmdcLink l = parent.Links[g.LinkIndex];
 				GmdcElement joints = l.FindElementType(ElementIdentity.BoneAssignment);
-				
+
 				GmdcElement vertices = l.FindElementType(ElementIdentity.Vertex);
 				int vindex = l.GetElementNr(vertices);
 
-				if (joints==null || vertices==null) continue;
-				for (int i=0; i<g.UsedJoints.Count; i++) 
+				if (joints == null || vertices == null)
+					continue;
+				for (int i = 0; i < g.UsedJoints.Count; i++)
 				{
 					//this Bone is a Match, so add all assigned vertices
-					if (g.UsedJoints[i]==index) 
+					if (g.UsedJoints[i] == index)
 					{
 						Hashtable indices = new Hashtable();
 						Hashtable empty = new Hashtable();
 
 						//load the vertices
-						for (int k=0; k<joints.Values.Count; k++)						 
-						{							
-							GmdcElementValueOneInt voi = (GmdcElementValueOneInt)joints.Values[k];
+						for (int k = 0; k < joints.Values.Count; k++)
+						{
+							GmdcElementValueOneInt voi = (GmdcElementValueOneInt)
+								joints.Values[k];
 
 							//All vertices either are within the empty or indices map
-							if (voi.Bytes[0]==(byte)i)  
+							if (voi.Bytes[0] == (byte)i)
 							{
 								indices.Add(k, this.Vertices.Count);
-								this.Vertices.Add(Transform(index, new Vector3f(vertices.Values[k].Data[0], vertices.Values[k].Data[1], vertices.Values[k].Data[2])));
-							} 
+								this.Vertices.Add(
+									Transform(
+										index,
+										new Vector3f(
+											vertices.Values[k].Data[0],
+											vertices.Values[k].Data[1],
+											vertices.Values[k].Data[2]
+										)
+									)
+								);
+							}
 							else //all unassigned Vertices get 0
 							{
 								empty.Add(k, this.Vertices.Count);
@@ -270,29 +295,44 @@ namespace SimPe.Plugin.Gmdc
 						}
 
 						//now all faces where at least one vertex is assigned to a Bone
-						for (int f=0; f<g.Faces.Count-2; f+=3) 
+						for (int f = 0; f < g.Faces.Count - 2; f += 3)
 						{
-							if (indices.ContainsKey(l.GetRealIndex(vindex, g.Faces[f])) ||
-								indices.ContainsKey(l.GetRealIndex(vindex, g.Faces[f+1])) ||
-								indices.ContainsKey(l.GetRealIndex(vindex, g.Faces[f+2])) ) 
+							if (
+								indices.ContainsKey(l.GetRealIndex(vindex, g.Faces[f]))
+								|| indices.ContainsKey(
+									l.GetRealIndex(vindex, g.Faces[f + 1])
+								)
+								|| indices.ContainsKey(
+									l.GetRealIndex(vindex, g.Faces[f + 2])
+								)
+							)
 							{
-								for (int k=0; k<3; k++) 
+								for (int k = 0; k < 3; k++)
 								{
-									int nr = l.GetRealIndex(vindex, g.Faces[f+k]);
+									int nr = l.GetRealIndex(vindex, g.Faces[f + k]);
 									int face_index = -1;
 
-									//this Vertex was empty and is now needed, 
+									//this Vertex was empty and is now needed,
 									//so add it to the available List
-									if (!indices.ContainsKey(nr)) 
+									if (!indices.ContainsKey(nr))
 									{
-										if (empty.ContainsKey(nr))	face_index = (int)empty[nr];
-										else face_index = nr;
+										if (empty.ContainsKey(nr))
+											face_index = (int)empty[nr];
+										else
+											face_index = nr;
 
 										indices.Add(nr, face_index);
-										this.Vertices[face_index] = Transform(index, new Vector3f(vertices.Values[nr].Data[0], vertices.Values[nr].Data[1], vertices.Values[nr].Data[2]));
+										this.Vertices[face_index] = Transform(
+											index,
+											new Vector3f(
+												vertices.Values[nr].Data[0],
+												vertices.Values[nr].Data[1],
+												vertices.Values[nr].Data[2]
+											)
+										);
 									}
-									
-									face_index = (int)indices[nr];									
+
+									face_index = (int)indices[nr];
 									this.Items.Add(face_index);
 								}
 							}
@@ -309,19 +349,19 @@ namespace SimPe.Plugin.Gmdc
 		public override string ToString()
 		{
 			string s = "";
-			if (Helper.WindowsRegistry.ShowJointNames) s += this.Name+": ";
-			s += this.Vertices.Count.ToString()+", "+this.Items.Count.ToString();
+			if (Helper.WindowsRegistry.ShowJointNames)
+				s += this.Name + ": ";
+			s += this.Vertices.Count.ToString() + ", " + this.Items.Count.ToString();
 
 			return s;
 		}
-
 	}
-	
+
 	#region Container
 	/// <summary>
 	/// Typesave ArrayList for GmdcJoint Objects
 	/// </summary>
-	public class GmdcJoints : ArrayList 
+	public class GmdcJoints : ArrayList
 	{
 		/// <summary>
 		/// Integer Indexer
@@ -378,7 +418,7 @@ namespace SimPe.Plugin.Gmdc
 		public bool Contains(GmdcJoint item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
 		/// <summary>
 		/// Checks weteher or not a Joint with the passed name is stored in the List
@@ -389,7 +429,7 @@ namespace SimPe.Plugin.Gmdc
 		{
 			name = name.Trim().ToLower();
 			foreach (GmdcJoint gj in this)
-				if (gj.Name.Trim().ToLower()==name) 
+				if (gj.Name.Trim().ToLower() == name)
 					return true;
 
 			return false;
@@ -398,7 +438,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -410,7 +450,8 @@ namespace SimPe.Plugin.Gmdc
 		public override object Clone()
 		{
 			GmdcJoints list = new GmdcJoints();
-			foreach (GmdcJoint item in this) list.Add(item);
+			foreach (GmdcJoint item in this)
+				list.Add(item);
 
 			return list;
 		}

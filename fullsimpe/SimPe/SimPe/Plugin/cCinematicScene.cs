@@ -21,7 +21,7 @@ using System;
 
 namespace SimPe.Plugin
 {
-	public class CinematicSceneItem 
+	public class CinematicSceneItem
 	{
 		#region Attributes
 		string description;
@@ -33,7 +33,7 @@ namespace SimPe.Plugin
 		string animfile;
 		#endregion
 
-		public CinematicSceneItem() 
+		public CinematicSceneItem()
 		{
 			description = "";
 			name = "";
@@ -61,7 +61,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public void Serialize(System.IO.BinaryWriter writer)
@@ -79,8 +79,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for cCinematicScene.
 	/// </summary>
-	public class CinematicScene
-		: AbstractRcolBlock
+	public class CinematicScene : AbstractRcolBlock
 	{
 		#region Attributes
 
@@ -89,12 +88,13 @@ namespace SimPe.Plugin
 		int unknown1;
 		int unknown2;
 		#endregion
-		
+
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public CinematicScene(Rcol parent) : base(parent)
+		public CinematicScene(Rcol parent)
+			: base(parent)
 		{
 			sgres = new SGResource(null);
 			desc = "";
@@ -102,7 +102,7 @@ namespace SimPe.Plugin
 			items = new CinematicSceneItem[0];
 			BlockID = 0x4D51F042;
 		}
-		
+
 		#region IRcolBlock Member
 
 		/// <summary>
@@ -114,14 +114,14 @@ namespace SimPe.Plugin
 			version = reader.ReadUInt32();
 
 			string name = reader.ReadString();
-			uint myid = reader.ReadUInt32();		
+			uint myid = reader.ReadUInt32();
 			sgres.Unserialize(reader);
 			sgres.BlockID = myid;
 
 			desc = reader.ReadString();
 
 			items = new CinematicSceneItem[reader.ReadInt32()];
-			for (int i=0; i<items.Length; i++) 
+			for (int i = 0; i < items.Length; i++)
 			{
 				items[i] = new CinematicSceneItem();
 				items[i].Unserialize(reader);
@@ -136,7 +136,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public override void Serialize(System.IO.BinaryWriter writer)
@@ -150,7 +150,8 @@ namespace SimPe.Plugin
 			writer.Write(desc);
 
 			writer.Write((int)items.Length);
-			for (int i=0; i<items.Length; i++) items[i].Serialize(writer);
+			for (int i = 0; i < items.Length; i++)
+				items[i].Serialize(writer);
 
 			writer.Write(unknown1);
 			writer.Write(unknown2);
@@ -160,10 +161,7 @@ namespace SimPe.Plugin
 
 		#region IDisposable Member
 
-		public override void Dispose()
-		{
-			
-		}
+		public override void Dispose() { }
 
 		#endregion
 	}

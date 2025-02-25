@@ -36,26 +36,25 @@ namespace SimPe.Cache
 		internal const byte DISCARD_VERSIONS_SMALLER_THAN = 3;
 
 		public MemoryCacheItem()
-		{			
+		{
 			version = VERSION;
 			name = "";
 			pfd = new Packages.PackedFileDescriptor();
 			valuenames = new string[0];
 		}
 
-		byte version;		
+		byte version;
 		Interfaces.Files.IPackedFileDescriptor pfd;
-		
-		
 
 		/// <summary>
 		/// Returns an (unitialized) FileDescriptor
 		/// </summary>
 		public Interfaces.Files.IPackedFileDescriptor FileDescriptor
 		{
-			get { 
+			get
+			{
 				pfd.Tag = this;
-				return pfd; 
+				return pfd;
 			}
 			set { pfd = value; }
 		}
@@ -65,8 +64,8 @@ namespace SimPe.Cache
 		{
 			get { return guid; }
 			set { guid = value; }
-		}		
-		
+		}
+
 		SimPe.Data.ObjectTypes type;
 		public SimPe.Data.ObjectTypes ObjectType
 		{
@@ -84,37 +83,44 @@ namespace SimPe.Cache
 		string[] valuenames;
 		public string[] ValueNames
 		{
-			get {return valuenames;}
-			set {
+			get { return valuenames; }
+			set
+			{
 				valuenames = value;
-				if (valuenames==null) valuenames = new string[0];
+				if (valuenames == null)
+					valuenames = new string[0];
 			}
 		}
 
 		string objdname;
 		public string ObjdName
 		{
-			get { 
-				if (objdname==null) return Name;
-				return objdname; 
+			get
+			{
+				if (objdname == null)
+					return Name;
+				return objdname;
 			}
 			set { objdname = value; }
 		}
 
 		Image thumb;
 		static Image emptyimg;
+
 		/// <summary>
 		/// Returns the loaded Icon, or an Empty Image if no Icon was found
 		/// </summary>
 		public Image Image
 		{
-			get { 
-				if (Icon==null) 
+			get
+			{
+				if (Icon == null)
 				{
-					if (emptyimg==null) emptyimg = new Bitmap(1, 1);
+					if (emptyimg == null)
+						emptyimg = new Bitmap(1, 1);
 					return emptyimg;
 				}
-				return Icon; 
+				return Icon;
 			}
 			set { Icon = value; }
 		}
@@ -130,37 +136,77 @@ namespace SimPe.Cache
 
 		public bool IsToken
 		{
-			get { return IsAspiration || ((ObjdName.Trim().ToLower().StartsWith("token") || ObjdName.Trim().ToLower().StartsWith("cs - token")) && (this.ObjectType == Data.ObjectTypes.Normal || this.ObjectType == Data.ObjectTypes.Memory)); }
+			get
+			{
+				return IsAspiration
+					|| (
+						(
+							ObjdName.Trim().ToLower().StartsWith("token")
+							|| ObjdName.Trim().ToLower().StartsWith("cs - token")
+						)
+						&& (
+							this.ObjectType == Data.ObjectTypes.Normal
+							|| this.ObjectType == Data.ObjectTypes.Memory
+						)
+					);
+			}
 		}
 
 		public bool IsJobData
 		{
-			get { return ObjdName.Trim().ToLower().StartsWith("jobdata") && this.ObjectType == Data.ObjectTypes.Normal;}
+			get
+			{
+				return ObjdName.Trim().ToLower().StartsWith("jobdata")
+					&& this.ObjectType == Data.ObjectTypes.Normal;
+			}
 		}
 
 		public bool IsMemory
 		{
 			get { return IsToken || this.ObjectType == Data.ObjectTypes.Memory; }
-		}		
+		}
 
 		public bool IsBadge
 		{
-			get { return (ObjdName.ToLower().Trim().StartsWith("token - badge") || ObjdName.ToLower().Trim().StartsWith("cs - token - badge")) && this.ObjectType == Data.ObjectTypes.Normal; }
+			get
+			{
+				return (
+						ObjdName.ToLower().Trim().StartsWith("token - badge")
+						|| ObjdName.ToLower().Trim().StartsWith("cs - token - badge")
+					)
+					&& this.ObjectType == Data.ObjectTypes.Normal;
+			}
 		}
 
 		public bool IsSkill
 		{
-			get { return (ObjdName.ToLower().Trim().IndexOf("skill")>=0) && this.ObjectType == Data.ObjectTypes.Normal && IsToken;}
+			get
+			{
+				return (ObjdName.ToLower().Trim().IndexOf("skill") >= 0)
+					&& this.ObjectType == Data.ObjectTypes.Normal
+					&& IsToken;
+			}
 		}
 
 		public bool IsAspiration
 		{
-			get { return ObjdName.Trim().ToLower().StartsWith("aspiration") && this.ObjectType == Data.ObjectTypes.Normal;}
+			get
+			{
+				return ObjdName.Trim().ToLower().StartsWith("aspiration")
+					&& this.ObjectType == Data.ObjectTypes.Normal;
+			}
 		}
 
 		public bool IsInventory
 		{
-			get { return !IsAspiration && !IsToken && !IsJobData && !IsMemory && this.ObjectType == Data.ObjectTypes.Normal; }
+			get
+			{
+				return !IsAspiration
+					&& !IsToken
+					&& !IsJobData
+					&& !IsMemory
+					&& this.ObjectType == Data.ObjectTypes.Normal;
+			}
 		}
 
 		SimPe.Cache.CacheContainer cc;
@@ -170,30 +216,32 @@ namespace SimPe.Cache
 			set { cc = value; }
 		}
 
-
 		public override string ToString()
 		{
-			return "name="+Name;
+			return "name=" + Name;
 		}
 
 		#region ICacheItem Member
 
-		public void Load(System.IO.BinaryReader reader) 
+		public void Load(System.IO.BinaryReader reader)
 		{
 			version = reader.ReadByte();
-			if (version>VERSION) throw new CacheException("Unknown CacheItem Version.", null, version);
-							
+			if (version > VERSION)
+				throw new CacheException("Unknown CacheItem Version.", null, version);
+
 			name = reader.ReadString();
-			if (version>=2) objdname = reader.ReadString();
-			else objdname = null;
-			if (version>=3)
+			if (version >= 2)
+				objdname = reader.ReadString();
+			else
+				objdname = null;
+			if (version >= 3)
 			{
 				int ct = reader.ReadUInt16();
 				valuenames = new string[ct];
-				for (int i=0; i<ct; i++)
+				for (int i = 0; i < ct; i++)
 					valuenames[i] = reader.ReadString();
-			} 
-			else 
+			}
+			else
 			{
 				valuenames = new string[0];
 			}
@@ -201,44 +249,44 @@ namespace SimPe.Cache
 			type = (SimPe.Data.ObjectTypes)reader.ReadUInt16();
 			pfd = new Packages.PackedFileDescriptor();
 			pfd.Type = reader.ReadUInt32();
-			pfd.Group = reader.ReadUInt32();			
-			pfd.LongInstance = reader.ReadUInt64();			
+			pfd.Group = reader.ReadUInt32();
+			pfd.LongInstance = reader.ReadUInt64();
 			guid = reader.ReadUInt32();
-			
 
 			int size = reader.ReadInt32();
-			if (size==0) 
+			if (size == 0)
 			{
 				thumb = null;
-			} 
-			else 
+			}
+			else
 			{
 				byte[] data = reader.ReadBytes(size);
 				MemoryStream ms = new MemoryStream(data);
 
-				thumb = Image.FromStream(ms);				
+				thumb = Image.FromStream(ms);
 			}
 		}
 
-		public void Save(System.IO.BinaryWriter writer) 
+		public void Save(System.IO.BinaryWriter writer)
 		{
 			version = VERSION;
 			writer.Write(version);
 			writer.Write(name);
 			writer.Write(objdname);
 			writer.Write((ushort)valuenames.Length);
-			foreach (string s in valuenames) writer.Write(s);
-			writer.Write((ushort)type);			
+			foreach (string s in valuenames)
+				writer.Write(s);
+			writer.Write((ushort)type);
 			writer.Write(pfd.Type);
 			writer.Write(pfd.Group);
 			writer.Write(pfd.LongInstance);
 			writer.Write(guid);
 
-			if (thumb==null) 
+			if (thumb == null)
 			{
 				writer.Write((int)0);
-			} 
-			else 
+			}
+			else
 			{
 				MemoryStream ms = new MemoryStream();
 				thumb.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
@@ -250,10 +298,7 @@ namespace SimPe.Cache
 
 		public byte Version
 		{
-			get
-			{
-				return version;
-			}
+			get { return version; }
 		}
 
 		#endregion

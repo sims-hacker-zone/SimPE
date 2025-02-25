@@ -26,31 +26,32 @@ namespace SimPe.Plugin.Anim
 	/// <summary>
 	/// contains an Animation Ressource
 	/// </summary>
-	public class AnimResourceConst
-		: AbstractRcolBlock
+	public class AnimResourceConst : AbstractRcolBlock
 	{
 		#region Attributes
 
 		byte[] unknowndata;
-		internal byte[] Data 
+		internal byte[] Data
 		{
 			get { return unknowndata; }
 			set { unknowndata = value; }
 		}
 
 		short unknown1;
+
 		[DescriptionAttribute("The Time the Animation takes to play (probably in ms)")]
-		public short TotalTime 
+		public short TotalTime
 		{
 			get { return unknown1; }
 			set { unknown1 = value; }
 		}
-		
+
 		public Ambertation.BaseChangeShort B_Unknown1
 		{
 			get { return new Ambertation.BaseChangeShort(unknown1); }
 		}
 		byte[] headerb;
+
 		[DescriptionAttribute("Index 0 and 5 contain string Lengths.")]
 		public byte[] HeaderBytes
 		{
@@ -58,29 +59,30 @@ namespace SimPe.Plugin.Anim
 		}
 
 		uint[] headeri;
-		public uint[] HeaderInts 
+		public uint[] HeaderInts
 		{
 			get { return headeri; }
 		}
 
-		float[] headerf;		
-		public float[] HeaderFloats 
+		float[] headerf;
+		public float[] HeaderFloats
 		{
 			get { return headerf; }
 		}
-		
-		string objname;		
-		public string ObjName 
+
+		string objname;
+		public string ObjName
 		{
 			get { return objname; }
 		}
-		string objmod;		
-		public string ObjMod 
+		string objmod;
+		public string ObjMod
 		{
 			get { return objmod; }
 		}
 
 		AnimationMeshBlock[] ab1;
+
 		[Browsable(false)]
 		public AnimationMeshBlock[] MeshBlock
 		{
@@ -89,12 +91,13 @@ namespace SimPe.Plugin.Anim
 
 		AnimBlock6[] ab6;
 		#endregion
-		
+
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public AnimResourceConst(Rcol parent) : base(parent)
+		public AnimResourceConst(Rcol parent)
+			: base(parent)
 		{
 			sgres = new SGResource(null);
 			unknowndata = new byte[0];
@@ -107,10 +110,10 @@ namespace SimPe.Plugin.Anim
 			objname = "";
 			objmod = "";
 
-			ab1 = new AnimationMeshBlock[0];	
+			ab1 = new AnimationMeshBlock[0];
 			ab6 = new AnimBlock6[0];
 		}
-		
+
 		#region IRcolBlock Member
 
 		/// <summary>
@@ -122,16 +125,18 @@ namespace SimPe.Plugin.Anim
 			version = reader.ReadUInt32();
 
 			string name = reader.ReadString();
-			uint myid = reader.ReadUInt32();		
+			uint myid = reader.ReadUInt32();
 			sgres.Unserialize(reader);
 			sgres.BlockID = myid;
-					
+
 			int len = reader.ReadInt32();
 			byte[] data = reader.ReadBytes(len);
 
 			//now read the Data
-			System.IO.BinaryReader br = new System.IO.BinaryReader(new System.IO.MemoryStream(data));
-			UnserializeData(br);			
+			System.IO.BinaryReader br = new System.IO.BinaryReader(
+				new System.IO.MemoryStream(data)
+			);
+			UnserializeData(br);
 		}
 
 		/// <summary>
@@ -139,7 +144,7 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public override void Serialize(System.IO.BinaryWriter writer)
@@ -150,10 +155,11 @@ namespace SimPe.Plugin.Anim
 			writer.Write(sgres.BlockID);
 			sgres.Serialize(writer);
 
-
 			//now read the Data
-			System.IO.BinaryWriter bw = new System.IO.BinaryWriter(new System.IO.MemoryStream());
-			SerializeData(bw);	
+			System.IO.BinaryWriter bw = new System.IO.BinaryWriter(
+				new System.IO.MemoryStream()
+			);
+			SerializeData(bw);
 			byte[] data = ((System.IO.MemoryStream)bw.BaseStream).ToArray();
 
 			writer.Write((int)data.Length);
@@ -169,14 +175,15 @@ namespace SimPe.Plugin.Anim
 		static int Align(int ct)
 		{
 			int add = 0;
-			if (ct%2==0) //even
+			if (ct % 2 == 0) //even
 			{
-				add = (ct%4);
-			} 
+				add = (ct % 4);
+			}
 			else //uneven
 			{
-				add = ct%2;
-				if (((add+ct)%4)==0) add += 2;
+				add = ct % 2;
+				if (((add + ct) % 4) == 0)
+					add += 2;
 			}
 
 			return add;
@@ -188,9 +195,10 @@ namespace SimPe.Plugin.Anim
 		/// <param name="reader">The reader you want to align</param>
 		/// <param name="ct">Number of Characters that were read (including terminating 0)</param>
 		static void Align(System.IO.BinaryReader reader, int ct)
-		{			
+		{
 			int add = Align(ct);
-			for (int i=0; i<add; i++) reader.ReadByte();
+			for (int i = 0; i < add; i++)
+				reader.ReadByte();
 		}
 
 		/// <summary>
@@ -201,7 +209,8 @@ namespace SimPe.Plugin.Anim
 		static void Align(System.IO.BinaryWriter writer, int ct)
 		{
 			int add = Align(ct);
-			for (int i=0; i<add; i++) writer.Write((byte)i);
+			for (int i = 0; i < add; i++)
+				writer.Write((byte)i);
 		}
 		#endregion
 
@@ -212,59 +221,71 @@ namespace SimPe.Plugin.Anim
 			short ct2 = reader.ReadInt16();
 
 			headerb = reader.ReadBytes(headerb.Length);
-			for (int i=0;i<headeri.Length; i++) headeri[i] = reader.ReadUInt32();
-			for (int i=0;i<headerf.Length; i++) headerf[i] = reader.ReadSingle();
-			
+			for (int i = 0; i < headeri.Length; i++)
+				headeri[i] = reader.ReadUInt32();
+			for (int i = 0; i < headerf.Length; i++)
+				headerf[i] = reader.ReadSingle();
+
 			objname = Helper.ToString(reader.ReadBytes(headerb[5]));
 			reader.ReadByte(); //read the terminating 0
 			objmod = Helper.ToString(reader.ReadBytes(headerb[0]));
 			reader.ReadByte(); //read the terminating 0
 
 			int ct = headerb[0] + headerb[5];
-			Align(reader, ct+2);
-			
+			Align(reader, ct + 2);
+
 			//--- part1 ---
 			ab1 = new AnimationMeshBlock[ct1];
-			int len = 0;	
-			for (int i=0; i<ab1.Length; i++) 
+			int len = 0;
+			for (int i = 0; i < ab1.Length; i++)
 			{
 				ab1[i] = new AnimationMeshBlock(this.Parent);
 				ab1[i].UnserializeData(reader);
 			}
-			for (int i=0; i<ab1.Length; i++) len += ab1[i].UnserializeName(reader);
+			for (int i = 0; i < ab1.Length; i++)
+				len += ab1[i].UnserializeName(reader);
 			Align(reader, len);
 
 			//--- part2 ---
 			len = 0;
-			for (int i=0; i<ab1.Length; i++) ab1[i].UnserializePart2Data(reader);
-			for (int i=0; i<ab1.Length; i++) len += ab1[i].UnserializePart2Name(reader);						
+			for (int i = 0; i < ab1.Length; i++)
+				ab1[i].UnserializePart2Data(reader);
+			for (int i = 0; i < ab1.Length; i++)
+				len += ab1[i].UnserializePart2Name(reader);
 			Align(reader, len);
 
-			try 
+			try
 			{
 				//--- part3 ---
-				for (int i=0; i<ab1.Length; i++) ab1[i].UnserializePart3Data(reader);
-				for (int i=0; i<ab1.Length; i++) ab1[i].UnserializePart3AddonData(reader);
+				for (int i = 0; i < ab1.Length; i++)
+					ab1[i].UnserializePart3Data(reader);
+				for (int i = 0; i < ab1.Length; i++)
+					ab1[i].UnserializePart3AddonData(reader);
 
 				//--- part4 ---
-				for (int i=0; i<ab1.Length; i++) ab1[i].UnserializePart4Data(reader);
-			
+				for (int i = 0; i < ab1.Length; i++)
+					ab1[i].UnserializePart4Data(reader);
+
 				//--- part5 ---
-				for (int i=0; i<ab1.Length; i++) ab1[i].UnserializePart5Data(reader);
+				for (int i = 0; i < ab1.Length; i++)
+					ab1[i].UnserializePart5Data(reader);
 
 				//--- part6 ---
 				ab6 = new AnimBlock6[ct2];
 				len = 0;
-				for (int i=0; i<ab6.Length; i++) 
+				for (int i = 0; i < ab6.Length; i++)
 				{
 					ab6[i] = new AnimBlock6();
 					ab6[i].UnserializeData(reader);
 				}
-				for (int i=0; i<ab6.Length; i++) len += ab6[i].UnserializeName(reader);	
-			} 
-			catch {}
-		
-			unknowndata = reader.ReadBytes((int)(reader.BaseStream.Length - reader.BaseStream.Position));
+				for (int i = 0; i < ab6.Length; i++)
+					len += ab6[i].UnserializeName(reader);
+			}
+			catch { }
+
+			unknowndata = reader.ReadBytes(
+				(int)(reader.BaseStream.Length - reader.BaseStream.Position)
+			);
 		}
 
 		public void SerializeData(System.IO.BinaryWriter writer)
@@ -281,54 +302,69 @@ namespace SimPe.Plugin.Anim
 			headerb[0] = (byte)bobjmod.Length;
 			headerb[5] = (byte)bobjname.Length;
 
-			for (int i=0;i<headeri.Length; i++) writer.Write(headeri[i]);
-			for (int i=0;i<headerf.Length; i++) writer.Write(headerf[i]);
-			
-			foreach (byte b in bobjname) writer.Write(b);
+			for (int i = 0; i < headeri.Length; i++)
+				writer.Write(headeri[i]);
+			for (int i = 0; i < headerf.Length; i++)
+				writer.Write(headerf[i]);
+
+			foreach (byte b in bobjname)
+				writer.Write(b);
 			writer.Write((byte)0);
-			foreach (byte b in bobjmod) writer.Write(b);
-			writer.Write((byte)0);			
+			foreach (byte b in bobjmod)
+				writer.Write(b);
+			writer.Write((byte)0);
 
 			int ct = headerb[0] + headerb[5];
-			Align(writer, ct+2);
-			
+			Align(writer, ct + 2);
+
 			//--- part1 ---
-			int len = 0;	
-			for (int i=0; i<ab1.Length; i++) ab1[i].SerializeData(writer);
-			for (int i=0; i<ab1.Length; i++) len += ab1[i].SerializeName(writer);
+			int len = 0;
+			for (int i = 0; i < ab1.Length; i++)
+				ab1[i].SerializeData(writer);
+			for (int i = 0; i < ab1.Length; i++)
+				len += ab1[i].SerializeName(writer);
 			Align(writer, len);
 
 			//--- part2 ---
 			len = 0;
-			for (int i=0; i<ab1.Length; i++) ab1[i].SerializePart2Data(writer);
-			for (int i=0; i<ab1.Length; i++) len += ab1[i].SerializePart2Name(writer);						
+			for (int i = 0; i < ab1.Length; i++)
+				ab1[i].SerializePart2Data(writer);
+			for (int i = 0; i < ab1.Length; i++)
+				len += ab1[i].SerializePart2Name(writer);
 			Align(writer, len);
 
 			//--- part3 ---
-			for (int i=0; i<ab1.Length; i++) ab1[i].SerializePart3Data(writer);
-			for (int i=0; i<ab1.Length; i++) ab1[i].SerializePart3AddonData(writer);
+			for (int i = 0; i < ab1.Length; i++)
+				ab1[i].SerializePart3Data(writer);
+			for (int i = 0; i < ab1.Length; i++)
+				ab1[i].SerializePart3AddonData(writer);
 
 			//--- part4 ---
-			for (int i=0; i<ab1.Length; i++) ab1[i].SerializePart4Data(writer);
-			
+			for (int i = 0; i < ab1.Length; i++)
+				ab1[i].SerializePart4Data(writer);
+
 			//--- part5 ---
-			for (int i=0; i<ab1.Length; i++) ab1[i].SerializePart5Data(writer);
+			for (int i = 0; i < ab1.Length; i++)
+				ab1[i].SerializePart5Data(writer);
 
 			//--- part6 ---
-			for (int i=0; i<ab6.Length; i++) ab6[i].SerializeData(writer);
-			for (int i=0; i<ab6.Length; i++) ab6[i].SerializeName(writer);	
-		
-			writer.Write(unknowndata);
-		}		
+			for (int i = 0; i < ab6.Length; i++)
+				ab6[i].SerializeData(writer);
+			for (int i = 0; i < ab6.Length; i++)
+				ab6[i].SerializeName(writer);
 
+			writer.Write(unknowndata);
+		}
 
 		fAnimResourceConst form = null;
+
 		[BrowsableAttribute(false)]
 		public override System.Windows.Forms.TabPage TabPage
 		{
 			get
 			{
-				if (form==null) form = new fAnimResourceConst(); 
+				if (form == null)
+					form = new fAnimResourceConst();
 				return form.tMesh;
 			}
 		}
@@ -337,12 +373,15 @@ namespace SimPe.Plugin.Anim
 		/// <summary>
 		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
 		/// </summary>
-		protected override void InitTabPage() 
+		protected override void InitTabPage()
 		{
-			if (form==null) form = new fAnimResourceConst(); 
-			
+			if (form == null)
+				form = new fAnimResourceConst();
+
 			form.tv.Nodes.Clear();
-			System.Windows.Forms.TreeNode btn = new System.Windows.Forms.TreeNode("Header");
+			System.Windows.Forms.TreeNode btn = new System.Windows.Forms.TreeNode(
+				"Header"
+			);
 			btn.Tag = this;
 			form.tv.Nodes.Add(btn);
 			// can get a null reference exception here, it seems some AnimationMeshBlocks may not be readable
@@ -350,24 +389,28 @@ namespace SimPe.Plugin.Anim
 			{
 				try
 				{
-					System.Windows.Forms.TreeNode tn = new System.Windows.Forms.TreeNode(ab.ToString());
+					System.Windows.Forms.TreeNode tn =
+						new System.Windows.Forms.TreeNode(ab.ToString());
 					tn.Tag = ab;
 					form.tv.Nodes.Add(tn);
 
 					foreach (AnimationFrameBlock ab2 in ab.Part2)
 					{
-						System.Windows.Forms.TreeNode tn2 = new System.Windows.Forms.TreeNode(ab2.ToString());
+						System.Windows.Forms.TreeNode tn2 =
+							new System.Windows.Forms.TreeNode(ab2.ToString());
 						tn2.Tag = ab2;
 						tn.Nodes.Add(tn2);
 						foreach (AnimationAxisTransformBlock ab3 in ab2.AxisSet)
 						{
-							System.Windows.Forms.TreeNode tn3 = new System.Windows.Forms.TreeNode(ab3.ToString());
+							System.Windows.Forms.TreeNode tn3 =
+								new System.Windows.Forms.TreeNode(ab3.ToString());
 							tn3.Tag = ab3;
 							tn2.Nodes.Add(tn3);
 
 							foreach (AnimationAxisTransform ab4 in ab3)
 							{
-								System.Windows.Forms.TreeNode tn4 = new System.Windows.Forms.TreeNode(ab4.ToString());
+								System.Windows.Forms.TreeNode tn4 =
+									new System.Windows.Forms.TreeNode(ab4.ToString());
 								tn4.Tag = ab4;
 								tn3.Nodes.Add(tn4);
 							}
@@ -376,14 +419,16 @@ namespace SimPe.Plugin.Anim
 						//Add a FrameList
 						if (ab2.FrameCount > 0)
 						{
-							System.Windows.Forms.TreeNode frames = new System.Windows.Forms.TreeNode("Frames");
+							System.Windows.Forms.TreeNode frames =
+								new System.Windows.Forms.TreeNode("Frames");
 							tn2.Nodes.Add(frames);
 							AnimationFrame[] afs = ab2.Frames;
 
 							for (int i = 0; i < afs.Length; i++)
 							{
 								AnimationFrame af = afs[i];
-								System.Windows.Forms.TreeNode tnf = new System.Windows.Forms.TreeNode(af.ToString());
+								System.Windows.Forms.TreeNode tnf =
+									new System.Windows.Forms.TreeNode(af.ToString());
 								tnf.Tag = af;
 								frames.Nodes.Add(tnf);
 							}
@@ -393,14 +438,18 @@ namespace SimPe.Plugin.Anim
 						//Add a FrameList
 						if (ab2.FrameCount > 0 && (UserVerification.HaveUserId))
 						{
-							System.Windows.Forms.TreeNode frames = new System.Windows.Forms.TreeNode("Interpolated Frames");
+							System.Windows.Forms.TreeNode frames =
+								new System.Windows.Forms.TreeNode(
+									"Interpolated Frames"
+								);
 							tn2.Nodes.Add(frames);
 							AnimationFrame[] afs = ab2.InterpolateMissingFrames();
 
 							for (int i = 0; i < afs.Length; i++)
 							{
 								AnimationFrame af = afs[i];
-								System.Windows.Forms.TreeNode tnf = new System.Windows.Forms.TreeNode(af.ToString());
+								System.Windows.Forms.TreeNode tnf =
+									new System.Windows.Forms.TreeNode(af.ToString());
 								tnf.Tag = af;
 								frames.Nodes.Add(tnf);
 							}
@@ -410,29 +459,36 @@ namespace SimPe.Plugin.Anim
 
 					foreach (AnimBlock4 ab4 in ab.Part4)
 					{
-						System.Windows.Forms.TreeNode tn4 = new System.Windows.Forms.TreeNode(ab4.ToString());
+						System.Windows.Forms.TreeNode tn4 =
+							new System.Windows.Forms.TreeNode(ab4.ToString());
 						tn4.Tag = ab4;
 						tn.Nodes.Add(tn4);
 						foreach (AnimBlock5 ab5 in ab4.Part5)
 						{
-							System.Windows.Forms.TreeNode tn5 = new System.Windows.Forms.TreeNode(ab5.ToString());
+							System.Windows.Forms.TreeNode tn5 =
+								new System.Windows.Forms.TreeNode(ab5.ToString());
 							tn5.Tag = ab5;
 							tn4.Nodes.Add(tn5);
 						}
 					}
 				}
-				catch { btn.Text = "Header (faulty)"; }
+				catch
+				{
+					btn.Text = "Header (faulty)";
+				}
 			}
 
-			foreach (AnimBlock6 ab in this.ab6) 
+			foreach (AnimBlock6 ab in this.ab6)
 			{
-				System.Windows.Forms.TreeNode tn = new System.Windows.Forms.TreeNode(ab.ToString());
+				System.Windows.Forms.TreeNode tn = new System.Windows.Forms.TreeNode(
+					ab.ToString()
+				);
 				tn.Tag = ab;
 				form.tv.Nodes.Add(tn);
 			}
 
 			form.tb_arc_ver.Tag = true;
-			form.tb_arc_ver.Text = "0x"+Helper.HexString(this.version);			
+			form.tb_arc_ver.Text = "0x" + Helper.HexString(this.version);
 			form.tb_arc_ver.Tag = null;
 
 			form.ambc.MeshBlocks = this.ab1;
@@ -440,25 +496,26 @@ namespace SimPe.Plugin.Anim
 
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
-			if (form==null) form = new fAnimResourceConst(); 
-			base.ExtendTabControl (tc);
+			if (form == null)
+				form = new fAnimResourceConst();
+			base.ExtendTabControl(tc);
 
 			form.tMisc.Tag = this;
 			tc.TabPages.Add(form.tMisc);
 
 			form.tAnimResourceConst.Tag = this;
-			if (UserVerification.HaveUserId) tc.TabPages.Add(form.tAnimResourceConst);
+			if (UserVerification.HaveUserId)
+				tc.TabPages.Add(form.tAnimResourceConst);
 		}
-
 
 		#region IDisposable Member
 
 		public override void Dispose()
 		{
-			if (this.form!=null) this.form.Dispose();
+			if (this.form != null)
+				this.form.Dispose();
 		}
 
 		#endregion
 	}
-
 }

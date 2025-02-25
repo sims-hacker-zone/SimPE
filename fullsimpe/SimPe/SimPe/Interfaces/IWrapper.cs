@@ -29,14 +29,11 @@ namespace SimPe.Interfaces
 		/// <summary>
 		/// true, if the UIHandler for this Wrapper is able to display more than one Instance at once
 		/// </summary>
-		bool AllowMultipleInstances
-		{
-			get;
-		}
+		bool AllowMultipleInstances { get; }
 
 		/// <summary>
 		/// Registers the Wrapper with the passed Registry
-		/// </summary>		
+		/// </summary>
 		/// <param name="registry">The Registry you want to registre this Wrapper with</param>
 		void Register(IWrapperRegistry registry);
 
@@ -54,20 +51,13 @@ namespace SimPe.Interfaces
 		/// <summary>
 		/// Returns a Human Readable Description of the Wrapper
 		/// </summary>
-		Plugin.IWrapperInfo WrapperDescription 
-		{
-			get;
-		}
+		Plugin.IWrapperInfo WrapperDescription { get; }
 
 		/// <summary>
 		/// The Priority of a Wrapper in the Registry
 		/// </summary>
 		/// <remarks>Wrappers with low Numbers are more likley choosen to handle a specific File</remarks>
-		int Priority 
-		{
-			get;
-			set;
-		}
+		int Priority { get; set; }
 
 		/// <remarks>
 		/// This is explicit listed in the Interface description, as you should return a String (best would be Name)
@@ -80,9 +70,6 @@ namespace SimPe.Interfaces
 		/// <summary>
 		/// Returns sets the Name of the File where this wrapper is located in
 		/// </summary>
-		string WrapperFileName
-		{
-			get;
-		}
+		string WrapperFileName { get; }
 	}
 }

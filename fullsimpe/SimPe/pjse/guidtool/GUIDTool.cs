@@ -18,12 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
-using System.Windows.Forms;
+using System.Drawing;
 using System.Threading;
+using System.Windows.Forms;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
@@ -34,40 +34,42 @@ namespace pjse.guidtool
 	/// <summary>
 	/// Summary description for GUIDTool.
 	/// </summary>
-    public class GUIDTool : AbstractTool, ITool
-    {
+	public class GUIDTool : AbstractTool, ITool
+	{
+		#region ITool Members
 
-        #region ITool Members
+		public bool IsEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
+		{
+			return true;
+		}
 
-        public bool IsEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
-        {
-            return true;
-        }
+		public SimPe.Interfaces.Plugin.IToolResult ShowDialog(
+			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			ref SimPe.Interfaces.Files.IPackageFile package
+		)
+		{
+			GUIDForm form = new GUIDForm(package != null);
+			form.Show();
+			return new SimPe.Plugin.ToolResult(false, false);
+		}
 
-        public SimPe.Interfaces.Plugin.IToolResult ShowDialog(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package)
-        {
-            GUIDForm form = new GUIDForm(package != null);
-            form.Show();
-            return new SimPe.Plugin.ToolResult(false, false);
-        }
+		#endregion
 
-        #endregion
+		#region IToolPlugin Members
 
-        #region IToolPlugin Members
+		public override string ToString()
+		{
+			return "PJSE\\" + pjse.Localization.GetString("gt_ResourceFinder");
+		}
 
-        public override string ToString()
-        {
-            return "PJSE\\" + pjse.Localization.GetString("gt_ResourceFinder");
-        }
+		#endregion
 
-        #endregion
-
-        public override System.Drawing.Image Icon
-        {
-            get
-            {
-                return SimPe.GetIcon.pjSearch;
-            }
-        }
+		public override System.Drawing.Image Icon
+		{
+			get { return SimPe.GetIcon.pjSearch; }
+		}
 	}
 }

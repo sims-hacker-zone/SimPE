@@ -18,13 +18,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Windows.Forms;
 using System.Drawing;
-using SimPe.Events;
+using System.Windows.Forms;
 using Ambertation.Windows.Forms;
+using SimPe.Events;
 
 namespace SimPe.Interfaces
-{	
+{
 	/// <summary>
 	/// defines an Object that can be put into Dock of the Main Form
 	/// </summary>
@@ -44,11 +44,11 @@ namespace SimPe.Interfaces
 		DockPanel GetDockableControl();
 
 		/// <summary>
-		/// This EventHandler will be connected to the ChangeResource Event of the Caller, you can set 
+		/// This EventHandler will be connected to the ChangeResource Event of the Caller, you can set
 		/// the Enabled State here
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		void RefreshDock(object sender, ResourceEventArgs e);				
+		void RefreshDock(object sender, ResourceEventArgs e);
 	}
 }

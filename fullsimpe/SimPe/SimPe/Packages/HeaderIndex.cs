@@ -24,13 +24,18 @@ namespace SimPe.Packages
 	/// <summary>
 	/// Index Informations stored in the Header
 	/// </summary>
-	public class HeaderIndex : HeaderHole, SimPe.Interfaces.Files.IPackageHeaderIndex, System.IDisposable
+	public class HeaderIndex
+		: HeaderHole,
+			SimPe.Interfaces.Files.IPackageHeaderIndex,
+			System.IDisposable
 	{
 		Interfaces.Files.IPackageHeader parent;
-		internal HeaderIndex(Interfaces.Files.IPackageHeader hd) 
+
+		internal HeaderIndex(Interfaces.Files.IPackageHeader hd)
 		{
 			this.parent = hd;
 		}
+
 		/// <summary>
 		/// IndexType of the File
 		/// </summary>
@@ -42,47 +47,40 @@ namespace SimPe.Packages
 		/// <remarks>This value should be 7</remarks>
 		public int Type
 		{
-			get 
-			{
-				return type;
-			}
-			set 
-			{
-				type = value; 
-			}
-		}		
+			get { return type; }
+			set { type = value; }
+		}
 
 		public override int ItemSize
 		{
 			get
 			{
 				if (parent.IndexType == SimPe.Data.MetaData.IndexTypes.ptLongFileIndex)
-					return 6*4;
-				else if (parent.IndexType == SimPe.Data.MetaData.IndexTypes.ptShortFileIndex)
-					return 5*4;
+					return 6 * 4;
+				else if (
+					parent.IndexType == SimPe.Data.MetaData.IndexTypes.ptShortFileIndex
+				)
+					return 5 * 4;
 				return base.ItemSize;
 			}
 		}
 
 		internal Interfaces.Files.IPackageHeader Parent
 		{
-			get {return parent;}
+			get { return parent; }
 		}
 
 		internal void UseInParent()
 		{
-			if (parent==null) return;
-			if (parent is HeaderData) 
+			if (parent == null)
+				return;
+			if (parent is HeaderData)
 			{
-				HeaderData hd = parent as HeaderData;			
+				HeaderData hd = parent as HeaderData;
 				hd.index = this;
 			}
 		}
 
-		public virtual void Dispose()
-		{
-			
-		}
+		public virtual void Dispose() { }
 	}
-
 }

@@ -18,12 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using Ambertation.Collections;
-using Ambertation.Windows.Forms;
-using Ambertation.Windows.Forms.Graph;
-using Ambertation.Drawing;
 using System.Collections;
 using System.Collections.Generic;
+using Ambertation.Collections;
+using Ambertation.Drawing;
+using Ambertation.Windows.Forms;
+using Ambertation.Windows.Forms.Graph;
 
 namespace SimPe.PackedFiles.Wrapper
 {
@@ -35,8 +35,8 @@ namespace SimPe.PackedFiles.Wrapper
 	{
 		public SimPoolControl()
 		{
-            details = false;
-            rightclicksel = false;
+			details = false;
+			rightclicksel = false;
 			InitializeComponent();
 		}
 
@@ -46,13 +46,15 @@ namespace SimPe.PackedFiles.Wrapper
 		private System.Windows.Forms.ColumnHeader columnHeader3;
 		private System.Windows.Forms.ColumnHeader columnHeader4;
 		private System.Windows.Forms.ColumnHeader chHouse;
-        internal System.Windows.Forms.ComboBox cbhousehold;
-        private System.ComponentModel.IContainer components;
+		internal System.Windows.Forms.ComboBox cbhousehold;
+		private System.ComponentModel.IContainer components;
 
 		public SimPe.PackedFiles.Wrapper.SDesc SelectedElement
 		{
-			get { 
-				if (gp.SelectedItems.Count<1) return null;
+			get
+			{
+				if (gp.SelectedItems.Count < 1)
+					return null;
 				return (SimPe.PackedFiles.Wrapper.ExtSDesc)gp.SelectedItems[0].Tag;
 			}
 			set { FindItem(value); }
@@ -60,9 +62,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public SimPe.PackedFiles.Wrapper.ExtSDesc SelectedSim
 		{
-			get 
-			{ 
-				if (gp.SelectedItems.Count<1) return null;
+			get
+			{
+				if (gp.SelectedItems.Count < 1)
+					return null;
 				return (SimPe.PackedFiles.Wrapper.ExtSDesc)gp.SelectedItems[0].Tag;
 			}
 			set { FindItem(value); }
@@ -71,233 +74,292 @@ namespace SimPe.PackedFiles.Wrapper
 		SimPe.Interfaces.Files.IPackageFile pkg;
 		public SimPe.Interfaces.Files.IPackageFile Package
 		{
-			get { return pkg;}
-			set 
+			get { return pkg; }
+			set
 			{
-				if (pkg!=value)
+				if (pkg != value)
 				{
-					if (value==null) pkg=value;
-					else if (Helper.IsNeighborhoodFile(value.FileName)) pkg=value;
-					else return;
+					if (value == null)
+						pkg = value;
+					else if (Helper.IsNeighborhoodFile(value.FileName))
+						pkg = value;
+					else
+						return;
 
 					UpdateContent();
 				}
 			}
 		}
 
-        protected void UpdateContent()
-        {
-            SimPe.PackedFiles.Wrapper.ExtSDesc selectedSim = this.SelectedSim;
-            string house = selectedSim == null ? "" : selectedSim.HouseholdName;
+		protected void UpdateContent()
+		{
+			SimPe.PackedFiles.Wrapper.ExtSDesc selectedSim = this.SelectedSim;
+			string house = selectedSim == null ? "" : selectedSim.HouseholdName;
 
-            this.cbhousehold.Items.Clear();
-            this.cbhousehold.Items.Add(SimPe.Localization.GetString("[All Households]"));
+			this.cbhousehold.Items.Clear();
+			this.cbhousehold.Items.Add(
+				SimPe.Localization.GetString("[All Households]")
+			);
 
-            if (pkg == null)
-            {
-                cbhousehold.SelectedIndex = 0;
-                return;
-            }
+			if (pkg == null)
+			{
+				cbhousehold.SelectedIndex = 0;
+				return;
+			}
 
-            string chouse;
-            List<string> names = new List<string>((string[])FileTable.ProviderRegistry.SimDescriptionProvider.GetHouseholdNames(out chouse).ToArray(typeof(String)));
-            this.cbhousehold.Items.AddRange(names.ToArray());
+			string chouse;
+			List<string> names = new List<string>(
+				(string[])
+					FileTable
+						.ProviderRegistry.SimDescriptionProvider.GetHouseholdNames(
+							out chouse
+						)
+						.ToArray(typeof(String))
+			);
+			this.cbhousehold.Items.AddRange(names.ToArray());
 
-            int index = names.IndexOf(house);
-            if (index < 0) index = names.IndexOf(chouse);
-            cbhousehold.SelectedIndex = index + 1;
-            this.SelectedSim = selectedSim;
-        }
+			int index = names.IndexOf(house);
+			if (index < 0)
+				index = names.IndexOf(chouse);
+			cbhousehold.SelectedIndex = index + 1;
+			this.SelectedSim = selectedSim;
+		}
 
-        bool details;
-        public bool SimDetails
-        {
-            get { return details; }
-            set
-            {
-                if (details != value)
-                {
-                    details = value;
-                    this.SetViewMode();
-                }
-            }
-        }
-        public class AddSimToPoolEventArgs : System.EventArgs
-        {
-            SimPe.PackedFiles.Wrapper.ExtSDesc sdsc;
-            public SimPe.PackedFiles.Wrapper.ExtSDesc SimDescription
-            {
-                get { return sdsc; }
-            }
+		bool details;
+		public bool SimDetails
+		{
+			get { return details; }
+			set
+			{
+				if (details != value)
+				{
+					details = value;
+					this.SetViewMode();
+				}
+			}
+		}
 
-            string name;
-            public string Name
-            {
-                get { return name; }
-            }
+		public class AddSimToPoolEventArgs : System.EventArgs
+		{
+			SimPe.PackedFiles.Wrapper.ExtSDesc sdsc;
+			public SimPe.PackedFiles.Wrapper.ExtSDesc SimDescription
+			{
+				get { return sdsc; }
+			}
 
-            string household;
-            public string Household
-            {
-                get { return household; }
-            }
+			string name;
+			public string Name
+			{
+				get { return name; }
+			}
 
-            bool cancel;
-            public bool Cancel
-            {
-                get { return cancel; }
-                set { cancel = value; }
-            }
+			string household;
+			public string Household
+			{
+				get { return household; }
+			}
 
-            System.Drawing.Image img;
-            public System.Drawing.Image Image
-            {
-                get { return img; }                
-            }
+			bool cancel;
+			public bool Cancel
+			{
+				get { return cancel; }
+				set { cancel = value; }
+			}
 
-            int grpid;
-            public int GroupIndex
-            {
-                get { return grpid; }
-                set { grpid = value; }
-            }
+			System.Drawing.Image img;
+			public System.Drawing.Image Image
+			{
+				get { return img; }
+			}
 
-            internal AddSimToPoolEventArgs(SimPe.PackedFiles.Wrapper.ExtSDesc sdsc, string name, string household, System.Drawing.Image img, int groupindex)
-            {
-                this.sdsc = sdsc;
-                this.name = name;
-                this.img = img;
-                this.household = household;
-                this.grpid = groupindex;
-                
+			int grpid;
+			public int GroupIndex
+			{
+				get { return grpid; }
+				set { grpid = value; }
+			}
 
-                cancel = false;
-            }
+			internal AddSimToPoolEventArgs(
+				SimPe.PackedFiles.Wrapper.ExtSDesc sdsc,
+				string name,
+				string household,
+				System.Drawing.Image img,
+				int groupindex
+			)
+			{
+				this.sdsc = sdsc;
+				this.name = name;
+				this.img = img;
+				this.household = household;
+				this.grpid = groupindex;
 
-            public override string ToString()
-            {
-                return Name;
-            }
-        }
+				cancel = false;
+			}
 
-        public delegate void AddSimToPoolEvent(object sender, AddSimToPoolEventArgs e);
-        public event AddSimToPoolEvent AddSimToPool;
+			public override string ToString()
+			{
+				return Name;
+			}
+		}
 
-       
-        protected virtual void OnAddSimToPool(AddSimToPoolEventArgs e)
-        {            
-        }
+		public delegate void AddSimToPoolEvent(object sender, AddSimToPoolEventArgs e);
+		public event AddSimToPoolEvent AddSimToPool;
 
-        AddSimToPoolEventArgs DoAddSimToPool(SimPe.PackedFiles.Wrapper.ExtSDesc sdsc, string name, string household, System.Drawing.Image img)
-        {
-            AddSimToPoolEventArgs e = new AddSimToPoolEventArgs(sdsc, name, household, img, 0);
-            OnAddSimToPool(e);
-            if (AddSimToPool != null) AddSimToPool(this, e);             
-            return e;
-        }
+		protected virtual void OnAddSimToPool(AddSimToPoolEventArgs e) { }
 
-        protected virtual System.Drawing.Color GetBackgroundColor(SimPe.PackedFiles.Wrapper.ExtSDesc sdsc)
-        {
-            return GetImagePanelColor(sdsc);
-        }
+		AddSimToPoolEventArgs DoAddSimToPool(
+			SimPe.PackedFiles.Wrapper.ExtSDesc sdsc,
+			string name,
+			string household,
+			System.Drawing.Image img
+		)
+		{
+			AddSimToPoolEventArgs e = new AddSimToPoolEventArgs(
+				sdsc,
+				name,
+				household,
+				img,
+				0
+			);
+			OnAddSimToPool(e);
+			if (AddSimToPool != null)
+				AddSimToPool(this, e);
+			return e;
+		}
+
+		protected virtual System.Drawing.Color GetBackgroundColor(
+			SimPe.PackedFiles.Wrapper.ExtSDesc sdsc
+		)
+		{
+			return GetImagePanelColor(sdsc);
+		}
 
 		void UpdateSimList(string household)
 		{
-            SimPe.PackedFiles.Wrapper.ExtSDesc selectedSim = this.SelectedSim;
-            if (household != null && selectedSim != null && selectedSim.HouseholdName != household) selectedSim = null;
-            
-            gp.BeginUpdate();
-			gp.Clear();
-            lastsel = null;
+			SimPe.PackedFiles.Wrapper.ExtSDesc selectedSim = this.SelectedSim;
+			if (
+				household != null
+				&& selectedSim != null
+				&& selectedSim.HouseholdName != household
+			)
+				selectedSim = null;
 
-            Hashtable ht = FileTable.ProviderRegistry.SimDescriptionProvider.SimInstance;
-			Wait.SubStart(ht.Count);						
-			int ct=0;
+			gp.BeginUpdate();
+			gp.Clear();
+			lastsel = null;
+
+			Hashtable ht = FileTable
+				.ProviderRegistry
+				.SimDescriptionProvider
+				.SimInstance;
+			Wait.SubStart(ht.Count);
+			int ct = 0;
 
 			System.Collections.SortedList map = new System.Collections.SortedList();
-			
-			foreach(SimPe.PackedFiles.Wrapper.ExtSDesc sdsc in ht.Values)
-			{	
+
+			foreach (SimPe.PackedFiles.Wrapper.ExtSDesc sdsc in ht.Values)
+			{
 				if (household != null)
 					if (household != sdsc.HouseholdName)
 						continue;
 
-				string name = sdsc.SimName+" "+sdsc.SimFamilyName;
-                System.Drawing.Image simimg = gp.GetSimIcon(sdsc, GetBackgroundColor(sdsc));
-                AddSimToPoolEventArgs ret = DoAddSimToPool(sdsc, name, household, simimg);
+				string name = sdsc.SimName + " " + sdsc.SimFamilyName;
+				System.Drawing.Image simimg = gp.GetSimIcon(
+					sdsc,
+					GetBackgroundColor(sdsc)
+				);
+				AddSimToPoolEventArgs ret = DoAddSimToPool(
+					sdsc,
+					name,
+					household,
+					simimg
+				);
 
-                if (!ret.Cancel)
-                {
-                    SteepValley.Windows.Forms.XPListViewItem eip = gp.Add(sdsc, simimg);
-                    eip.Tag = sdsc;
-                    eip.GroupIndex = ret.GroupIndex;
+				if (!ret.Cancel)
+				{
+					SteepValley.Windows.Forms.XPListViewItem eip = gp.Add(sdsc, simimg);
+					eip.Tag = sdsc;
+					eip.GroupIndex = ret.GroupIndex;
 
+					if (map.ContainsKey(name))
+						name += " (" + sdsc.FileDescriptor.Instance.ToString() + ")";
+					map[name] = eip;
+					Wait.Message = eip.Text;
+				}
 
-                    if (map.ContainsKey(name)) name += " (" + sdsc.FileDescriptor.Instance.ToString() + ")";
-                    map[name] = eip;
-                    Wait.Message = eip.Text;	
-                }
-				
 				Wait.Progress = ct++;
-							
 			}
 
-            SetViewMode();
+			SetViewMode();
 
-			if (gp.Items.Count>0) 
+			if (gp.Items.Count > 0)
 			{
-                if (selectedSim != null) SelectedSim = selectedSim;
-                else gp.Items[0].Selected=true;
-                try
-                {
-                    if (SelectedSimChanged!=null)
-                        SelectedSimChanged(this, ((SimPe.PackedFiles.Wrapper.ExtSDesc)gp.Items[0].Tag).Image, (Wrapper.SDesc)((SimPe.PackedFiles.Wrapper.ExtSDesc)gp.Items[0].Tag));
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                }
+				if (selectedSim != null)
+					SelectedSim = selectedSim;
+				else
+					gp.Items[0].Selected = true;
+				try
+				{
+					if (SelectedSimChanged != null)
+						SelectedSimChanged(
+							this,
+							((SimPe.PackedFiles.Wrapper.ExtSDesc)gp.Items[0].Tag).Image,
+							(Wrapper.SDesc)(
+								(SimPe.PackedFiles.Wrapper.ExtSDesc)gp.Items[0].Tag
+							)
+						);
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex);
+				}
 			}
-			
+
 			gp.EndUpdate();
 			Wait.SubStop();
 		}
 
-        private void SetViewMode()
-        {
-            gp.TileSize = new System.Drawing.Size(00, 00);
+		private void SetViewMode()
+		{
+			gp.TileSize = new System.Drawing.Size(00, 00);
 
-            gp.TileColumns = new int[] { 1, 2, 6, 3, 4, 5 };
-            gp.SetColumnStyle(1, gp.Font, System.Drawing.Color.Gray);
-            gp.SetColumnStyle(2, gp.Font, System.Drawing.Color.Gray);
-            gp.SetColumnStyle(3, gp.Font, System.Drawing.Color.Gray);
-            gp.SetColumnStyle(4, gp.Font, System.Drawing.Color.Gray);
+			gp.TileColumns = new int[] { 1, 2, 6, 3, 4, 5 };
+			gp.SetColumnStyle(1, gp.Font, System.Drawing.Color.Gray);
+			gp.SetColumnStyle(2, gp.Font, System.Drawing.Color.Gray);
+			gp.SetColumnStyle(3, gp.Font, System.Drawing.Color.Gray);
+			gp.SetColumnStyle(4, gp.Font, System.Drawing.Color.Gray);
 
-            if (details)
-            {
-                gp.View = SteepValley.Windows.Forms.ExtendedView.Tile;
-            }
-            else
-            {
-                gp.View = SteepValley.Windows.Forms.ExtendedView.LargeIcon;
-            }
-        }
+			if (details)
+			{
+				gp.View = SteepValley.Windows.Forms.ExtendedView.Tile;
+			}
+			else
+			{
+				gp.View = SteepValley.Windows.Forms.ExtendedView.LargeIcon;
+			}
+		}
 
 		public static System.Drawing.Color GetImagePanelColor(SDesc sdesc)
 		{
-            if (sdesc.Unlinked != 0)
-            {
-                if (!sdesc.AvailableCharacterData)
-                    return System.Drawing.Color.FromArgb(72,0,72);
-                else
-                    return System.Drawing.Color.DarkBlue;
-            }
-            else if (!sdesc.AvailableCharacterData && !sdesc.IsCharSplit)
-                return System.Drawing.Color.DarkRed;
-            else if (System.IO.Path.GetFileNameWithoutExtension(sdesc.CharacterFileName) == "objects")
-                return System.Drawing.Color.DarkGoldenrod;
-            else if (sdesc.CharacterDescription.GhostFlag.IsGhost && sdesc.FamilyInstance == 0)
-                return System.Drawing.Color.Black;
+			if (sdesc.Unlinked != 0)
+			{
+				if (!sdesc.AvailableCharacterData)
+					return System.Drawing.Color.FromArgb(72, 0, 72);
+				else
+					return System.Drawing.Color.DarkBlue;
+			}
+			else if (!sdesc.AvailableCharacterData && !sdesc.IsCharSplit)
+				return System.Drawing.Color.DarkRed;
+			else if (
+				System.IO.Path.GetFileNameWithoutExtension(sdesc.CharacterFileName)
+				== "objects"
+			)
+				return System.Drawing.Color.DarkGoldenrod;
+			else if (
+				sdesc.CharacterDescription.GhostFlag.IsGhost
+				&& sdesc.FamilyInstance == 0
+			)
+				return System.Drawing.Color.Black;
 			return System.Drawing.SystemColors.ControlDarkDark;
 		}
 
@@ -306,31 +368,42 @@ namespace SimPe.PackedFiles.Wrapper
 			eip.ImagePanelColor = System.Drawing.Color.Black;
 			eip.Fade = 0.5f;
 			eip.FadeColor = System.Drawing.Color.Transparent;
-			
-			eip.Tag = sdesc;			
-			try 
-			{				
-				eip.Text = sdesc.SimName+" "+sdesc.SimFamilyName;
-				
-				System.Drawing.Image img = sdesc.Image;
-				if (img.Width<8) img=null;
-                if (img == null)
-                {
-                    img = SimPe.GetImage.NoOne;
-                }
-                else if (Helper.WindowsRegistry.GraphQuality) img = Ambertation.Drawing.GraphicRoutines.KnockoutImage(img, new System.Drawing.Point(0, 0), System.Drawing.Color.Magenta);					
-				
-				eip.Image = Ambertation.Drawing.GraphicRoutines.ScaleImage(img, 48, 48, Helper.WindowsRegistry.GraphQuality);
 
-				eip.ImagePanelColor = GetImagePanelColor(sdesc);				
+			eip.Tag = sdesc;
+			try
+			{
+				eip.Text = sdesc.SimName + " " + sdesc.SimFamilyName;
+
+				System.Drawing.Image img = sdesc.Image;
+				if (img.Width < 8)
+					img = null;
+				if (img == null)
+				{
+					img = SimPe.GetImage.NoOne;
+				}
+				else if (Helper.WindowsRegistry.GraphQuality)
+					img = Ambertation.Drawing.GraphicRoutines.KnockoutImage(
+						img,
+						new System.Drawing.Point(0, 0),
+						System.Drawing.Color.Magenta
+					);
+
+				eip.Image = Ambertation.Drawing.GraphicRoutines.ScaleImage(
+					img,
+					48,
+					48,
+					Helper.WindowsRegistry.GraphQuality
+				);
+
+				eip.ImagePanelColor = GetImagePanelColor(sdesc);
 			}
-			catch {	}
+			catch { }
 			/*
 			if (sdesc.CharacterDescription.Gender==Data.MetaData.Gender.Female)
 				eip.PanelColor = System.Drawing.Color.LightPink;
 			else
 				eip.PanelColor = System.Drawing.Color.PowderBlue;
-            */
+			*/
 		}
 
 		public static ExtendedImagePanel CreateItem(Wrapper.SDesc sdesc)
@@ -349,19 +422,19 @@ namespace SimPe.PackedFiles.Wrapper
 			eip.ImagePanelColor = System.Drawing.Color.Black;
 			eip.Fade = 0.5f;
 			eip.FadeColor = System.Drawing.Color.Transparent;
-			
-			eip.Tag = sdesc;			
-			try 
+
+			eip.Tag = sdesc;
+			try
 			{
-				eip.Properties["GUID"].Value = "0x"+Helper.HexString(sdesc.SimId);
-                eip.Properties["Instance"].Value = "0x" + Helper.HexString(sdesc.FileDescriptor.Instance);
+				eip.Properties["GUID"].Value = "0x" + Helper.HexString(sdesc.SimId);
+				eip.Properties["Instance"].Value =
+					"0x" + Helper.HexString(sdesc.FileDescriptor.Instance);
 				eip.Properties["Household"].Value = sdesc.HouseholdName;
 				/*eip.Properties["Life Stage"].Value = ((Data.LocalizedLifeSections)sdesc.CharacterDescription.LifeSection).ToString();
 				eip.Properties["Career"].Value = ((Data.LocalizedCareers)sdesc.CharacterDescription.Career).ToString();
 				eip.Properties["Zodiac Sign"].Value = ((Data.LocalizedZodiacSignes)sdesc.CharacterDescription.ZodiacSign).ToString();*/
-				
-			} 
-			catch (Exception ex) 
+			}
+			catch (Exception ex)
 			{
 				eip.Properties["Error"].Value = ex.Message;
 			}
@@ -369,19 +442,23 @@ namespace SimPe.PackedFiles.Wrapper
 			CreateItem(eip, sdesc);
 		}
 
-		protected ExtendedImagePanel CreateItem(Interfaces.Files.IPackedFileDescriptor pfd, int left, int top)
+		protected ExtendedImagePanel CreateItem(
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			int left,
+			int top
+		)
 		{
 			ExtendedImagePanel eip = new ExtendedImagePanel();
 			eip.BeginUpdate();
 			eip.SetBounds(left, top, 216, 80);
-            Wrapper.SDesc sdesc = new SDesc();			
-			try 
+			Wrapper.SDesc sdesc = new SDesc();
+			try
 			{
 				sdesc.ProcessData(pfd, pkg);
-				
+
 				PrepareItem(eip, sdesc);
-			} 
-			catch (Exception ex) 
+			}
+			catch (Exception ex)
 			{
 				eip.Properties["Error"].Value = ex.Message;
 			}
@@ -389,15 +466,19 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		#region Events
-		public delegate void SelectedSimHandler(object sender, System.Drawing.Image thumb, Wrapper.SDesc sdesc);
+		public delegate void SelectedSimHandler(
+			object sender,
+			System.Drawing.Image thumb,
+			Wrapper.SDesc sdesc
+		);
 		public event SelectedSimHandler SelectedSimChanged;
 		public event SelectedSimHandler ClickOverSim;
 		public event SelectedSimHandler DoubleClickSim;
 		#endregion
 
 		private void gp_SelectedIndexChanged(object sender, System.EventArgs e)
-		{			
-			if (SelectedSimChanged!=null && gp.SelectedItems.Count>0) 
+		{
+			if (SelectedSimChanged != null && gp.SelectedItems.Count > 0)
 			{
 				//SelectedSimChanged(this, gp.LargeImageList.Images[gp.SelectedItems[0].ImageIndex], (Wrapper.SDesc)((SimPe.PackedFiles.Wrapper.ExtSDesc)gp.SelectedItems[0].Tag));
 			}
@@ -405,120 +486,161 @@ namespace SimPe.PackedFiles.Wrapper
 
 		private void gp_DoubleClick(object sender, System.EventArgs e)
 		{
-			if (DoubleClickSim!=null && gp.SelectedItems.Count>0) 
+			if (DoubleClickSim != null && gp.SelectedItems.Count > 0)
 			{
-				DoubleClickSim(this, gp.LargeImageList.Images[gp.SelectedItems[0].ImageIndex], (Wrapper.SDesc)((SimPe.PackedFiles.Wrapper.ExtSDesc)gp.SelectedItems[0].Tag));
+				DoubleClickSim(
+					this,
+					gp.LargeImageList.Images[gp.SelectedItems[0].ImageIndex],
+					(Wrapper.SDesc)(
+						(SimPe.PackedFiles.Wrapper.ExtSDesc)gp.SelectedItems[0].Tag
+					)
+				);
 			}
 		}
 
 		SteepValley.Windows.Forms.XPListViewItem lastsel;
-        bool rightclicksel;
-        public bool RightClickSelect
-        {
-            get { return rightclicksel; }
-            set { rightclicksel = value; }
-        }
+		bool rightclicksel;
+		public bool RightClickSelect
+		{
+			get { return rightclicksel; }
+			set { rightclicksel = value; }
+		}
 
 		private void gp_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
-			SteepValley.Windows.Forms.XPListViewItem item = (SteepValley.Windows.Forms.XPListViewItem)gp.GetItemAt(e.X, e.Y);
-			if (ClickOverSim!=null && item!=null) 
+			SteepValley.Windows.Forms.XPListViewItem item =
+				(SteepValley.Windows.Forms.XPListViewItem)gp.GetItemAt(e.X, e.Y);
+			if (ClickOverSim != null && item != null)
 			{
-				ClickOverSim(this, ((SimPe.PackedFiles.Wrapper.ExtSDesc)item.Tag).Image, (Wrapper.SDesc)((SimPe.PackedFiles.Wrapper.ExtSDesc)item.Tag));
+				ClickOverSim(
+					this,
+					((SimPe.PackedFiles.Wrapper.ExtSDesc)item.Tag).Image,
+					(Wrapper.SDesc)((SimPe.PackedFiles.Wrapper.ExtSDesc)item.Tag)
+				);
 			}
 
-            if (SelectedSimChanged != null && item != null && (e.Button == System.Windows.Forms.MouseButtons.Left || (e.Button == System.Windows.Forms.MouseButtons.Right && rightclicksel))) 
+			if (
+				SelectedSimChanged != null
+				&& item != null
+				&& (
+					e.Button == System.Windows.Forms.MouseButtons.Left
+					|| (
+						e.Button == System.Windows.Forms.MouseButtons.Right
+						&& rightclicksel
+					)
+				)
+			)
 			{
 				gp.SelectedItems.Clear();
 				item.Selected = true;
 				lastsel = item;
-				SelectedSimChanged(this, ((SimPe.PackedFiles.Wrapper.ExtSDesc)item.Tag).Image, (Wrapper.SDesc)((SimPe.PackedFiles.Wrapper.ExtSDesc)item.Tag));				
-			} 
+				SelectedSimChanged(
+					this,
+					((SimPe.PackedFiles.Wrapper.ExtSDesc)item.Tag).Image,
+					(Wrapper.SDesc)((SimPe.PackedFiles.Wrapper.ExtSDesc)item.Tag)
+				);
+			}
 			//if (lastsel!=null && e.Button!=System.Windows.Forms.MouseButtons.Left) lastsel.Selected = true;
 		}
-		
 
 		#region Designer
 		private void InitializeComponent()
 		{
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SimPoolControl));
-            SteepValley.Windows.Forms.XPListViewGroup xpListViewGroup1 = new SteepValley.Windows.Forms.XPListViewGroup("Unrelated", 0);
-            SteepValley.Windows.Forms.XPListViewGroup xpListViewGroup2 = new SteepValley.Windows.Forms.XPListViewGroup("Related", 1);
-            this.cbhousehold = new System.Windows.Forms.ComboBox();
-            this.gp = new SimPe.PackedFiles.Wrapper.SimListView();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.chHouse = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
-            this.SuspendLayout();
-            // 
-            // cbhousehold
-            // 
-            resources.ApplyResources(this.cbhousehold, "cbhousehold");
-            this.cbhousehold.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbhousehold.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cbhousehold.Name = "cbhousehold";
-            this.cbhousehold.SelectedIndexChanged += new System.EventHandler(this.cbhousehold_SelectedIndexChanged);
-            // 
-            // gp
-            // 
-            this.gp.BackColor = System.Drawing.SystemColors.Info;
-            this.gp.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.gp.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.chHouse,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
-            resources.ApplyResources(this.gp, "gp");
-            this.gp.FullRowSelect = true;
-            xpListViewGroup1.GroupIndex = 0;
-            xpListViewGroup1.GroupText = "Unrelated";
-            xpListViewGroup2.GroupIndex = 1;
-            xpListViewGroup2.GroupText = "Related";
-            this.gp.Groups.Add(xpListViewGroup1);
-            this.gp.Groups.Add(xpListViewGroup2);
-            this.gp.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.gp.HideSelection = false;
-            this.gp.MultiSelect = false;
-            this.gp.Name = "gp";
-            this.gp.TileColumns = new int[] {
-        1};
-            this.gp.UseCompatibleStateImageBehavior = false;
-            this.gp.SelectedIndexChanged += new System.EventHandler(this.gp_SelectedIndexChanged);
-            this.gp.DoubleClick += new System.EventHandler(this.gp_DoubleClick);
-            this.gp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gp_MouseDown);
-            // 
-            // columnHeader1
-            // 
-            resources.ApplyResources(this.columnHeader1, "columnHeader1");
-            // 
-            // chHouse
-            // 
-            resources.ApplyResources(this.chHouse, "chHouse");
-            // 
-            // columnHeader2
-            // 
-            resources.ApplyResources(this.columnHeader2, "columnHeader2");
-            // 
-            // columnHeader3
-            // 
-            resources.ApplyResources(this.columnHeader3, "columnHeader3");
-            // 
-            // columnHeader4
-            // 
-            resources.ApplyResources(this.columnHeader4, "columnHeader4");
-            // 
-            // SimPoolControl
-            // 
-            this.Controls.Add(this.gp);
-            this.Controls.Add(this.cbhousehold);
-            resources.ApplyResources(this, "$this");
-            this.Name = "SimPoolControl";
-            this.ResumeLayout(false);
-
+			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources =
+				new System.ComponentModel.ComponentResourceManager(
+					typeof(SimPoolControl)
+				);
+			SteepValley.Windows.Forms.XPListViewGroup xpListViewGroup1 =
+				new SteepValley.Windows.Forms.XPListViewGroup("Unrelated", 0);
+			SteepValley.Windows.Forms.XPListViewGroup xpListViewGroup2 =
+				new SteepValley.Windows.Forms.XPListViewGroup("Related", 1);
+			this.cbhousehold = new System.Windows.Forms.ComboBox();
+			this.gp = new SimPe.PackedFiles.Wrapper.SimListView();
+			this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+			this.chHouse = new System.Windows.Forms.ColumnHeader();
+			this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+			this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
+			this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
+			this.SuspendLayout();
+			//
+			// cbhousehold
+			//
+			resources.ApplyResources(this.cbhousehold, "cbhousehold");
+			this.cbhousehold.DropDownStyle = System
+				.Windows
+				.Forms
+				.ComboBoxStyle
+				.DropDownList;
+			this.cbhousehold.ForeColor = System.Drawing.SystemColors.ControlText;
+			this.cbhousehold.Name = "cbhousehold";
+			this.cbhousehold.SelectedIndexChanged += new System.EventHandler(
+				this.cbhousehold_SelectedIndexChanged
+			);
+			//
+			// gp
+			//
+			this.gp.BackColor = System.Drawing.SystemColors.Info;
+			this.gp.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.gp.Columns.AddRange(
+				new System.Windows.Forms.ColumnHeader[]
+				{
+					this.columnHeader1,
+					this.chHouse,
+					this.columnHeader2,
+					this.columnHeader3,
+					this.columnHeader4,
+				}
+			);
+			resources.ApplyResources(this.gp, "gp");
+			this.gp.FullRowSelect = true;
+			xpListViewGroup1.GroupIndex = 0;
+			xpListViewGroup1.GroupText = "Unrelated";
+			xpListViewGroup2.GroupIndex = 1;
+			xpListViewGroup2.GroupText = "Related";
+			this.gp.Groups.Add(xpListViewGroup1);
+			this.gp.Groups.Add(xpListViewGroup2);
+			this.gp.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+			this.gp.HideSelection = false;
+			this.gp.MultiSelect = false;
+			this.gp.Name = "gp";
+			this.gp.TileColumns = new int[] { 1 };
+			this.gp.UseCompatibleStateImageBehavior = false;
+			this.gp.SelectedIndexChanged += new System.EventHandler(
+				this.gp_SelectedIndexChanged
+			);
+			this.gp.DoubleClick += new System.EventHandler(this.gp_DoubleClick);
+			this.gp.MouseDown += new System.Windows.Forms.MouseEventHandler(
+				this.gp_MouseDown
+			);
+			//
+			// columnHeader1
+			//
+			resources.ApplyResources(this.columnHeader1, "columnHeader1");
+			//
+			// chHouse
+			//
+			resources.ApplyResources(this.chHouse, "chHouse");
+			//
+			// columnHeader2
+			//
+			resources.ApplyResources(this.columnHeader2, "columnHeader2");
+			//
+			// columnHeader3
+			//
+			resources.ApplyResources(this.columnHeader3, "columnHeader3");
+			//
+			// columnHeader4
+			//
+			resources.ApplyResources(this.columnHeader4, "columnHeader4");
+			//
+			// SimPoolControl
+			//
+			this.Controls.Add(this.gp);
+			this.Controls.Add(this.cbhousehold);
+			resources.ApplyResources(this, "$this");
+			this.Name = "SimPoolControl";
+			this.ResumeLayout(false);
 		}
 		#endregion
 
@@ -529,7 +651,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <returns></returns>
 		public void FindItem(Wrapper.SDesc sdsc)
 		{
-			if (sdsc==null) 
+			if (sdsc == null)
 			{
 				gp.SelectedItems.Clear();
 				return;
@@ -539,11 +661,15 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				if (gpe.Tag is Wrapper.SDesc)
 				{
-					if (sdsc.Equals((Wrapper.SDesc)gpe.Tag)) 
+					if (sdsc.Equals((Wrapper.SDesc)gpe.Tag))
 					{
 						gpe.Selected = true;
 						gpe.EnsureVisible();
-						SelectedSimChanged(this, ((Wrapper.SDesc)gpe.Tag).Image, ((Wrapper.SDesc)gpe.Tag));
+						SelectedSimChanged(
+							this,
+							((Wrapper.SDesc)gpe.Tag).Image,
+							((Wrapper.SDesc)gpe.Tag)
+						);
 					}
 					else
 						gpe.Selected = false;
@@ -551,37 +677,36 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-        /// <summary>
-        /// Refresh the LIst of displayed Sims
-        /// </summary>
-        public void UpdateSimList()
-        {
-            if (this.cbhousehold.SelectedIndex > 0)
-                this.UpdateSimList(this.cbhousehold.Text);
-            else
-                this.UpdateSimList(null);
-        }
+		/// <summary>
+		/// Refresh the LIst of displayed Sims
+		/// </summary>
+		public void UpdateSimList()
+		{
+			if (this.cbhousehold.SelectedIndex > 0)
+				this.UpdateSimList(this.cbhousehold.Text);
+			else
+				this.UpdateSimList(null);
+		}
 
 		private void cbhousehold_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-            UpdateSimList();
+			UpdateSimList();
 		}
 
-		
 		public void SelectHousehold(string name)
 		{
-			int index=0;
-			for (int i=1; i<this.cbhousehold.Items.Count; i++)
+			int index = 0;
+			for (int i = 1; i < this.cbhousehold.Items.Count; i++)
 			{
-				if (this.cbhousehold.Items[i].ToString()==name) 
+				if (this.cbhousehold.Items[i].ToString() == name)
 				{
-					index=i;
+					index = i;
 					break;
 				}
 			}
 			this.cbhousehold.SelectedIndex = index;
 		}
-		
+
 		public new void Refresh()
 		{
 			Refresh(true);
@@ -589,48 +714,53 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public void Refresh(bool full)
 		{
-			if (full) this.UpdateContent();
+			if (full)
+				this.UpdateContent();
 			base.Refresh();
 		}
 
-        internal SteepValley.Windows.Forms.XPListViewItemCollection Items
-        {
-            get { return this.gp.Items; }
-        }
+		internal SteepValley.Windows.Forms.XPListViewItemCollection Items
+		{
+			get { return this.gp.Items; }
+		}
 
-        internal System.Windows.Forms.ListView.SelectedIndexCollection SelectedIndices
-        {
-            get { return gp.SelectedIndices; }
-        }
+		internal System.Windows.Forms.ListView.SelectedIndexCollection SelectedIndices
+		{
+			get { return gp.SelectedIndices; }
+		}
 
-        internal System.Windows.Forms.ListView.SelectedListViewItemCollection SelectedItems
-        {
-            get { return gp.SelectedItems; }
-        }
+		internal System.Windows.Forms.ListView.SelectedListViewItemCollection SelectedItems
+		{
+			get { return gp.SelectedItems; }
+		}
 
-        internal void Sort()
-        {
-        }
+		internal void Sort() { }
 
-        internal SteepValley.Windows.Forms.XPListViewItem Add(PackedFiles.Wrapper.ExtSDesc o)
-        {
-            return gp.Add(o);
-        }
+		internal SteepValley.Windows.Forms.XPListViewItem Add(
+			PackedFiles.Wrapper.ExtSDesc o
+		)
+		{
+			return gp.Add(o);
+		}
 
-        public void SetColumnStyle(int column, System.Drawing.Font font, System.Drawing.Color cl)
-        {
-            gp.SetColumnStyle(column, font, cl);
-        }
+		public void SetColumnStyle(
+			int column,
+			System.Drawing.Font font,
+			System.Drawing.Color cl
+		)
+		{
+			gp.SetColumnStyle(column, font, cl);
+		}
 
-        public int[] TileColumns
-        {
-            get { return gp.TileColumns; }
-            set { gp.TileColumns = value; }
-        }
+		public int[] TileColumns
+		{
+			get { return gp.TileColumns; }
+			set { gp.TileColumns = value; }
+		}
 
-        public void EnsureVisible(int index)
-        {
-            gp.EnsureVisible(index);
-        }
+		public void EnsureVisible(int index)
+		{
+			gp.EnsureVisible(index);
+		}
 	}
 }

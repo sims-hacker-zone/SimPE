@@ -27,7 +27,7 @@ namespace SimPe.Interfaces.Providers
 	/// Interface to obtain the SimFamilyNames Alias List from the Type Registry
 	/// </summary>
 	public interface ISimFamilyNames : ICommonPackage
-	{		
+	{
 		/// <summary>
 		/// Returns the the Alias with the specified Type
 		/// </summary>

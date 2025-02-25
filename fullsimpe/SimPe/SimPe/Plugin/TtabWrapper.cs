@@ -22,17 +22,19 @@ using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
 {
-	
 	/// <summary>
 	/// This is the actual FileWrapper
 	/// </summary>
 	/// <remarks>
-	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads 
+	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
 	public class Ttab : SimPe.PackedFiles.Wrapper.Ttab
-    {
-        public Ttab(SimPe.Interfaces.Providers.IOpcodeProvider prv) : base() { }
-        public Ttab() : base() { }
+	{
+		public Ttab(SimPe.Interfaces.Providers.IOpcodeProvider prv)
+			: base() { }
+
+		public Ttab()
+			: base() { }
 	}
 }

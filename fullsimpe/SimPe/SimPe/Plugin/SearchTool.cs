@@ -18,21 +18,21 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Interfaces;
 using System.Drawing;
+using SimPe.Interfaces;
 
 namespace SimPe.Plugin
 {
 	/// <summary>
 	/// Summary description for ImportSemiTool.
 	/// </summary>
-    public class SearchTool : Interfaces.AbstractTool, Interfaces.ITool
+	public class SearchTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
 		/// <summary>
 		/// Windows Registry Link
 		/// </summary>
 		static SimPe.Registry registry;
-		internal static Registry WindowsRegistry 
+		internal static Registry WindowsRegistry
 		{
 			get { return registry; }
 		}
@@ -42,7 +42,7 @@ namespace SimPe.Plugin
 		Search sc;
 		string flname;
 
-		internal SearchTool(IWrapperRegistry reg, IProviderRegistry prov) 
+		internal SearchTool(IWrapperRegistry reg, IProviderRegistry prov)
 		{
 			this.reg = reg;
 			this.prov = prov;
@@ -50,46 +50,64 @@ namespace SimPe.Plugin
 			sc.prov = prov;
 			flname = "";
 
-			if (registry==null) registry = Helper.WindowsRegistry;
+			if (registry == null)
+				registry = Helper.WindowsRegistry;
 		}
 
 		#region ITool Member
 
-        public bool IsEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
-        {
-            if (package == null || package.FileName==null) return false;
-            else return true;
-        }
-
-		private bool IsReallyEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
+		public bool IsEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
-			if (package==null || package.FileName==null) 
+			if (package == null || package.FileName == null)
+				return false;
+			else
+				return true;
+		}
+
+		private bool IsReallyEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
+		{
+			if (package == null || package.FileName == null)
 			{
 				return false;
 			}
 
-			if (flname.ToLower().Trim()!=package.FileName.ToLower().Trim()) sc.Reset();
+			if (flname.ToLower().Trim() != package.FileName.ToLower().Trim())
+				sc.Reset();
 			flname = package.FileName;
 			return true;
 		}
 
-		public Interfaces.Plugin.IToolResult ShowDialog(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package)
+		public Interfaces.Plugin.IToolResult ShowDialog(
+			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			ref SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
-            if (!IsReallyEnabled(pfd, package))
-            {
-                System.Windows.Forms.MessageBox.Show(Localization.GetString("This is not an appropriate context in which to use this tool"),
-                    this.ToString());
-                return new ToolResult(false, false);
-            }
-			if (flname.ToLower().Trim()!=package.FileName.ToLower().Trim()) sc.Reset();
+			if (!IsReallyEnabled(pfd, package))
+			{
+				System.Windows.Forms.MessageBox.Show(
+					Localization.GetString(
+						"This is not an appropriate context in which to use this tool"
+					),
+					this.ToString()
+				);
+				return new ToolResult(false, false);
+			}
+			if (flname.ToLower().Trim() != package.FileName.ToLower().Trim())
+				sc.Reset();
 			SimPe.Interfaces.Files.IPackedFileDescriptor selpfd = sc.Execute(package);
 
-			if (selpfd!=null) 
+			if (selpfd != null)
 			{
 				pfd = selpfd;
 				return new ToolResult(true, false);
-			} 
-			else 
+			}
+			else
 			{
 				return new ToolResult(false, false);
 			}
@@ -98,17 +116,20 @@ namespace SimPe.Plugin
 		public override string ToString()
 		{
 			return Localization.GetString("Search Current File...");
-        }
+		}
 
-        #endregion
-        #region IToolExt Member
-        public override System.Drawing.Image Icon
-        {
-            get
-            {
-                return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.search.png"));
-            }
-        }
-        #endregion
+		#endregion
+		#region IToolExt Member
+		public override System.Drawing.Image Icon
+		{
+			get
+			{
+				return System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream("SimPe.img.search.png")
+				);
+			}
+		}
+		#endregion
 	}
 }

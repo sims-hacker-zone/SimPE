@@ -18,156 +18,158 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Reflection;
 using System.Collections;
 using System.IO;
+using System.Reflection;
+using System.Windows.Forms;
+using SimPe.Events;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
-using SimPe.Events;
-using System.Windows.Forms;
 
 namespace SimPe
 {
-    public class MyButtonItem : ToolStripButton
-    {
-        static int counter = 0;
+	public class MyButtonItem : ToolStripButton
+	{
+		static int counter = 0;
 
-        #region Layout stuff
-        public static void GetLayoutInformations(Control b)
-        {
-            ArrayList list = Helper.WindowsRegistry.Layout.VisibleToolbarButtons;
-            GetLayoutInformations(b, list);
-        }
+		#region Layout stuff
+		public static void GetLayoutInformations(Control b)
+		{
+			ArrayList list = Helper.WindowsRegistry.Layout.VisibleToolbarButtons;
+			GetLayoutInformations(b, list);
+		}
 
-        static void GetLayoutInformations(Control b, ArrayList list)
-        {
-            foreach (Control c in b.Controls)
-                GetLayoutInformations(c, list);
+		static void GetLayoutInformations(Control b, ArrayList list)
+		{
+			foreach (Control c in b.Controls)
+				GetLayoutInformations(c, list);
 
-            ToolStrip tb = b as ToolStrip;
-            if (tb != null)
-            {
-                foreach (object o in tb.Items)
-                {
-                    MyButtonItem mbi = o as MyButtonItem;
-                    if (mbi != null)
-                        //if (!mbi.HaveDock)
-                        mbi.Visible = list.Contains(mbi.Name);
-                }
-            }
+			ToolStrip tb = b as ToolStrip;
+			if (tb != null)
+			{
+				foreach (object o in tb.Items)
+				{
+					MyButtonItem mbi = o as MyButtonItem;
+					if (mbi != null)
+						//if (!mbi.HaveDock)
+						mbi.Visible = list.Contains(mbi.Name);
+				}
+			}
+		}
 
-        }
+		public static void SetLayoutInformations(Control b)
+		{
+			ArrayList list = new ArrayList();
+			SetLayoutInformations(b, list);
 
-        public static void SetLayoutInformations(Control b)
-        {
-            ArrayList list = new ArrayList();
-            SetLayoutInformations(b, list);
+			Helper.WindowsRegistry.Layout.VisibleToolbarButtons = list;
+		}
 
-            Helper.WindowsRegistry.Layout.VisibleToolbarButtons = list;
-        }
+		static void SetLayoutInformations(Control b, ArrayList list)
+		{
+			foreach (Control c in b.Controls)
+				SetLayoutInformations(c, list);
 
-        static void SetLayoutInformations(Control b, ArrayList list)
-        {
-            foreach (Control c in b.Controls)
-                SetLayoutInformations(c, list);
+			ToolStrip tb = b as ToolStrip;
+			if (tb != null)
+			{
+				foreach (object o in tb.Items)
+				{
+					MyButtonItem mbi = o as MyButtonItem;
+					if (mbi != null)
+						if (
+							mbi.Visible /*&& !mbi.HaveDock*/
+						)
+							list.Add(mbi.Name);
+				}
+			}
+		}
+		#endregion
+		static int namect = 0;
+		string name;
+		public new string Name
+		{
+			get { return name; }
+		}
 
-            ToolStrip tb = b as ToolStrip;
-            if (tb != null)
-            {
-                foreach (object o in tb.Items)
-                {
-                    MyButtonItem mbi = o as MyButtonItem;
-                    if (mbi != null)
-                        if (mbi.Visible /*&& !mbi.HaveDock*/)
-                            list.Add(mbi.Name);
-                }
-            }
+		bool havedock;
+		public bool HaveDock
+		{
+			get { return havedock; }
+		}
 
-        }
-        #endregion
-        static int namect = 0;
-        string name;
-        public new string Name
-        {
-            get { return name; }
-        }
+		public MyButtonItem(string name)
+			: this(null, name) { }
 
-        bool havedock;
-        public bool HaveDock
-        {
-            get { return havedock; }
-        }
+		internal MyButtonItem(ToolStripMenuItem item)
+			: this(item, null) { }
 
-        public MyButtonItem(string name)
-            : this(null, name) { }
+		ToolStripMenuItem refitem;
 
-        internal MyButtonItem(ToolStripMenuItem item)
-            : this(item, null) { }
+		MyButtonItem(ToolStripMenuItem item, string name)
+			: base()
+		{
+			if (name == "")
+			{
+				name = "AButtonItem_" + namect;
+				namect++;
+			}
 
-        ToolStripMenuItem refitem;
-        MyButtonItem(ToolStripMenuItem item, string name)
-            : base()
-        {
-            if (name == "")
-            {
-                name = "AButtonItem_" + namect;
-                namect++;
-            }
+			refitem = item;
+			if (item != null)
+			{
+				this.Image = item.Image;
+				this.Visible = (item.Image != null);
+				if (this.Image == null)
+					this.Text = item.Text;
+				this.ToolTipText = item.Text.Replace("&", "");
+				this.Enabled = item.Enabled;
+				this.Click += new EventHandler(MyButtonItem_Activate);
+				item.CheckedChanged += new EventHandler(item_CheckedChanged);
+				item.EnabledChanged += new EventHandler(item_EnabledChanged);
 
-            refitem = item;
-            if (item != null)
-            {
-                this.Image = item.Image;
-                this.Visible = (item.Image != null);
-                if (this.Image == null) this.Text = item.Text;
-                this.ToolTipText = item.Text.Replace("&", "");
-                this.Enabled = item.Enabled;
-                this.Click += new EventHandler(MyButtonItem_Activate);
-                item.CheckedChanged += new EventHandler(item_CheckedChanged);
-                item.EnabledChanged += new EventHandler(item_EnabledChanged);
+				this.ToolTipText = item.Text;
+				this.Enabled = item.Enabled;
+				this.Checked = item.Checked;
 
-                this.ToolTipText = item.Text;
-                this.Enabled = item.Enabled;
-                this.Checked = item.Checked;
+				havedock = false;
+				ToolMenuItemExt tmie = item as ToolMenuItemExt;
+				if (tmie != null)
+					this.name = tmie.Name;
+				else
+				{
+					Ambertation.Windows.Forms.DockPanel dw =
+						item.Tag as Ambertation.Windows.Forms.DockPanel;
 
-                havedock = false;
-                ToolMenuItemExt tmie = item as ToolMenuItemExt;
-                if (tmie != null) this.name = tmie.Name;
-                else
-                {
-                    Ambertation.Windows.Forms.DockPanel dw = item.Tag as Ambertation.Windows.Forms.DockPanel;
+					if (dw != null)
+					{
+						this.name = dw.Name;
+						havedock = true;
+					}
+					else
+						this.name = "Button_" + (counter++);
+				}
+			}
+			else
+			{
+				havedock = false;
+				this.name = name;
+			}
+		}
 
-                    if (dw != null)
-                    {
-                        this.name = dw.Name;
-                        havedock = true;
-                    }
-                    else this.name = "Button_" + (counter++);
-                }
-            }
-            else
-            {
-                havedock = false;
-                this.name = name;
-            }
+		void item_EnabledChanged(object sender, EventArgs e)
+		{
+			this.Enabled = ((ToolStripMenuItem)sender).Enabled;
+		}
 
+		void item_CheckedChanged(object sender, EventArgs e)
+		{
+			this.Checked = ((ToolStripMenuItem)sender).Checked;
+		}
 
-
-        }
-
-        void item_EnabledChanged(object sender, EventArgs e)
-        {
-            this.Enabled = ((ToolStripMenuItem)sender).Enabled;
-        }
-
-        void item_CheckedChanged(object sender, EventArgs e)
-        {
-            this.Checked = ((ToolStripMenuItem)sender).Checked;
-        }
-
-        void MyButtonItem_Activate(object sender, EventArgs e)
-        {
-            refitem.PerformClick();
-        }
-    }
+		void MyButtonItem_Activate(object sender, EventArgs e)
+		{
+			refitem.PerformClick();
+		}
+	}
 }

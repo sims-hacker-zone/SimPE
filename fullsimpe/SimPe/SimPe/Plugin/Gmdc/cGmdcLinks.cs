@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.IO;
-using System.Globalization;
 using System.Collections;
+using System.Globalization;
+using System.IO;
 
 namespace SimPe.Plugin.Gmdc
 {
@@ -31,7 +31,8 @@ namespace SimPe.Plugin.Gmdc
 	{
 		#region Attributes
 
-		IntArrayList items1;	
+		IntArrayList items1;
+
 		/// <summary>
 		/// This returns the List of all used <see cref="GmdcElement"/> Items. The Values are Indices
 		/// for the <see cref="GeometryDataContainer.Elements"/> Property.
@@ -43,66 +44,70 @@ namespace SimPe.Plugin.Gmdc
 		}
 
 		int unknown1;
+
 		/// <summary>
 		/// The Number of Elements that are Referenced by this Link
 		/// </summary>
-		public int ReferencedSize 
+		public int ReferencedSize
 		{
 			get { return unknown1; }
 			set { unknown1 = value; }
 		}
 
 		int unknown2;
+
 		/// <summary>
 		/// How many <see cref="GmdcElement"/> Items are referenced by this Link
 		/// </summary>
-		public int ActiveElements 
+		public int ActiveElements
 		{
 			get { return unknown2; }
 			set { unknown2 = value; }
 		}
 
 		IntArrayList[] refs;
+
 		/// <summary>
-		/// This Array Contains three <see cref="IntArrayList"/> Items. Each Item has to be interporeted as 
+		/// This Array Contains three <see cref="IntArrayList"/> Items. Each Item has to be interporeted as
 		/// Element Index Alias.
-		/// The <see cref="GmdcGroup"/> is referencing the Vertices that form a Face by an Index. If one of 
-		/// this Lists is set, it means, that whenever you pares an Index, read the value stored at that Index 
+		/// The <see cref="GmdcGroup"/> is referencing the Vertices that form a Face by an Index. If one of
+		/// this Lists is set, it means, that whenever you pares an Index, read the value stored at that Index
 		/// in one of this Lists. The Value read from there is then thge actual <see cref="GmdcElement"/> Index.
-		/// 
+		///
 		/// The first List store here is an Alias Map for the first referenced <see cref="GmdcElement"/> in the
 		/// <see cref="ReferencedElement"/> Property.
 		/// </summary>
 		public IntArrayList[] AliasValues
 		{
 			get { return refs; }
-		}		
+		}
 		#endregion
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public GmdcLink(GeometryDataContainer parent) : base(parent)
+		public GmdcLink(GeometryDataContainer parent)
+			: base(parent)
 		{
 			items1 = new IntArrayList();
 			refs = new IntArrayList[3];
-			for (int i=0; i< refs.Length; i++) refs[i] = new IntArrayList();
+			for (int i = 0; i < refs.Length; i++)
+				refs[i] = new IntArrayList();
 		}
 
-		
-			
 		/// <summary>
 		/// Unserializes a BinaryStream into the Attributes of this Instance
 		/// </summary>
 		/// <param name="reader">The Stream that contains the FileData</param>
-		public  void Unserialize(System.IO.BinaryReader reader)
+		public void Unserialize(System.IO.BinaryReader reader)
 		{
 			ReadBlock(reader, items1);
 
 			unknown1 = reader.ReadInt32();
 			unknown2 = reader.ReadInt32();
-			
-			for (int i=0; i< refs.Length; i++) ReadBlock(reader, refs[i]);
+
+			for (int i = 0; i < refs.Length; i++)
+				ReadBlock(reader, refs[i]);
 		}
 
 		/// <summary>
@@ -110,17 +115,18 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
-		public  void Serialize(System.IO.BinaryWriter writer)
+		public void Serialize(System.IO.BinaryWriter writer)
 		{
 			WriteBlock(writer, items1);
 
 			writer.Write(unknown1);
 			writer.Write(unknown2);
 
-			for (int i=0; i< refs.Length; i++) WriteBlock(writer, refs[i]);
+			for (int i = 0; i < refs.Length; i++)
+				WriteBlock(writer, refs[i]);
 		}
 
 		/// <summary>
@@ -130,12 +136,13 @@ namespace SimPe.Plugin.Gmdc
 		public override string ToString()
 		{
 			string s = items1.Length.ToString();
-			for (int i=0; i< refs.Length; i++) s += ", "+refs[i].Length;
+			for (int i = 0; i < refs.Length; i++)
+				s += ", " + refs[i].Length;
 			return s;
 		}
 
 		/// <summary>
-		/// Returns the first Element Referenced from this Link that implements 
+		/// Returns the first Element Referenced from this Link that implements
 		/// the passed <see cref="ElementIdentity"/>.
 		/// </summary>
 		/// <param name="id">Identity you are looking for</param>
@@ -144,7 +151,8 @@ namespace SimPe.Plugin.Gmdc
 		{
 			foreach (int i in this.ReferencedElement)
 			{
-				if (parent.Elements[i].Identity==id) return parent.Elements[i];
+				if (parent.Elements[i].Identity == id)
+					return parent.Elements[i];
 			}
 
 			return null;
@@ -155,15 +163,17 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="e">Element you are looking for</param>
 		/// <returns>
-		/// -1 if the Element is not referenced from this Link or the index of that Element in the 
+		/// -1 if the Element is not referenced from this Link or the index of that Element in the
 		/// ReferenceElement Member
 		/// </returns>
 		public int GetElementNr(GmdcElement e)
 		{
-			if (e==null) return -1;
-			for (int i=0; i<this.items1.Length; i++) 
-				if (parent.Elements[items1[i]]==e) return i;
-			
+			if (e == null)
+				return -1;
+			for (int i = 0; i < this.items1.Length; i++)
+				if (parent.Elements[items1[i]] == e)
+					return i;
+
 			return -1;
 		}
 
@@ -176,7 +186,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <remarks>To retrieve the correct number for an Element, see the GetElementNr() Method</remarks>
 		public SimPe.Plugin.Gmdc.GmdcElementValueBase GetValue(int nr, int index)
 		{
-			try 
+			try
 			{
 				//if (nr>=this.items1.Length) return null;
 				int enr = this.items1[nr];
@@ -185,18 +195,18 @@ namespace SimPe.Plugin.Gmdc
 				GmdcElement e = this.parent.Elements[enr];
 
 				//Higher Number
-				if (nr>=refs.Length) 
+				if (nr >= refs.Length)
 				{
 					//if (index>=e.Values.Length) return null;
 					return e.Values[index];
 				}
-			
+
 				//Do we have aliases?
-				if (refs[nr].Length==0) //no
+				if (refs[nr].Length == 0) //no
 				{
 					//if (index>=e.Values.Length) return null;
 					return e.Values[index];
-				} 
+				}
 				else //yes
 				{
 					//if (index>=this.refs.Length) return null;
@@ -204,8 +214,8 @@ namespace SimPe.Plugin.Gmdc
 					//if (index>=e.Values.Length) return null;
 					return e.Values[index];
 				}
-			} 
-			catch 
+			}
+			catch
 			{
 				return null;
 			}
@@ -220,20 +230,23 @@ namespace SimPe.Plugin.Gmdc
 		/// <remarks>To retrieve the correct number for an Element, see the GetElementNr() Method</remarks>
 		public int GetRealIndex(int nr, int index)
 		{
-			try 
+			try
 			{
 				int enr = this.items1[nr];
 
 				GmdcElement e = this.parent.Elements[enr];
 
 				//Higher Number
-				if (nr>=refs.Length) return index;				
-			
+				if (nr >= refs.Length)
+					return index;
+
 				//Do we have aliases?
-				if (refs[nr].Length==0) return index; 
-				else return refs[nr][index];				
-			} 
-			catch 
+				if (refs[nr].Length == 0)
+					return index;
+				else
+					return refs[nr][index];
+			}
+			catch
 			{
 				return -1;
 			}
@@ -247,20 +260,24 @@ namespace SimPe.Plugin.Gmdc
 		{
 			int minct = int.MaxValue;
 			//add all populated Element Lists
-			for (int k=0; k<this.items1.Count; k++) 
+			for (int k = 0; k < this.items1.Count; k++)
 			{
 				int id = items1[k];
-				if (parent.Elements[id].Values.Length>0)
+				if (parent.Elements[id].Values.Length > 0)
 					minct = Math.Min(minct, parent.Elements[id].Values.Count);
 			} // for k
-			if (minct==int.MaxValue) minct=0;
+			if (minct == int.MaxValue)
+				minct = 0;
 
 			int res = minct;
 
 			//If we have AliasLists, the we need that Number as Reference Count!
 			minct = int.MaxValue;
-			for (int i=0; i<AliasValues.Length; i++) if (AliasValues[i].Length>0) minct = Math.Min(minct, AliasValues[i].Length);
-			if (minct!=int.MaxValue) res = minct;
+			for (int i = 0; i < AliasValues.Length; i++)
+				if (AliasValues[i].Length > 0)
+					minct = Math.Min(minct, AliasValues[i].Length);
+			if (minct != int.MaxValue)
+				res = minct;
 
 			return res;
 		}
@@ -274,9 +291,9 @@ namespace SimPe.Plugin.Gmdc
 			GmdcElement vt = new GmdcElement(this.parent);
 
 			GmdcElement ovn = this.FindElementType(ElementIdentity.Normal);
-			GmdcElement ovt = this.FindElementType(ElementIdentity.UVCoordinate);						
+			GmdcElement ovt = this.FindElementType(ElementIdentity.UVCoordinate);
 
-			//contains a List of all additional Elements assigned to this Link, which 
+			//contains a List of all additional Elements assigned to this Link, which
 			//are related to the Vertex Element (like BoneWeights)
 			GmdcElements ovelements = new GmdcElements();
 			GmdcElements velements = new GmdcElements();
@@ -288,38 +305,48 @@ namespace SimPe.Plugin.Gmdc
 			int nvt = this.GetElementNr(ovt);
 
 			//add all other Elements
-			foreach(int i in this.ReferencedElement)
+			foreach (int i in this.ReferencedElement)
 			{
-				if (ovelements.Contains(parent.Elements[i]) || parent.Elements[i]==ovn || parent.Elements[i]==ovt) continue;
+				if (
+					ovelements.Contains(parent.Elements[i])
+					|| parent.Elements[i] == ovn
+					|| parent.Elements[i] == ovt
+				)
+					continue;
 				ovelements.Add(parent.Elements[i]);
 				velements.Add(new GmdcElement(this.Parent));
 			}
 
-			for (int i=0; i<this.ReferencedSize; i++)
+			for (int i = 0; i < this.ReferencedSize; i++)
 			{
-				for (int j=0; j<velements.Length; j++) velements[j].Values.Add(ovelements[j].Values[this.GetRealIndex(nv, i)]);
+				for (int j = 0; j < velements.Length; j++)
+					velements[j]
+						.Values.Add(ovelements[j].Values[this.GetRealIndex(nv, i)]);
 
-				if (ovn!=null) vn.Values.Add(ovn.Values[this.GetRealIndex(nvn, i)]);
-				if (ovt!=null) vt.Values.Add(ovt.Values[this.GetRealIndex(nvt, i)]);
+				if (ovn != null)
+					vn.Values.Add(ovn.Values[this.GetRealIndex(nvn, i)]);
+				if (ovt != null)
+					vt.Values.Add(ovt.Values[this.GetRealIndex(nvt, i)]);
 			}
 
-			for (int i=0; i<velements.Length; i++) 
+			for (int i = 0; i < velements.Length; i++)
 			{
 				ovelements[i].Values = velements[i].Values;
 				ovelements[i].Number = velements[i].Number;
 			}
-			if (ovn!=null) 
+			if (ovn != null)
 			{
 				ovn.Values = vn.Values;
 				ovn.Number = ReferencedSize;
 			}
-			if (ovt!=null) 
+			if (ovt != null)
 			{
 				ovt.Values = vt.Values;
 				ovt.Number = ReferencedSize;
 			}
 
-			for (int i=0; i<this.AliasValues.Length; i++) this.AliasValues[i].Clear();			
+			for (int i = 0; i < this.AliasValues.Length; i++)
+				this.AliasValues[i].Clear();
 		}
 	}
 
@@ -327,7 +354,7 @@ namespace SimPe.Plugin.Gmdc
 	/// <summary>
 	/// Typesave ArrayList for GmdcLink Objects
 	/// </summary>
-	public class GmdcLinks : ArrayList 
+	public class GmdcLinks : ArrayList
 	{
 		/// <summary>
 		/// Integer Indexer
@@ -384,12 +411,12 @@ namespace SimPe.Plugin.Gmdc
 		public bool Contains(GmdcLink item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -401,7 +428,8 @@ namespace SimPe.Plugin.Gmdc
 		public override object Clone()
 		{
 			GmdcLinks list = new GmdcLinks();
-			foreach (GmdcLink item in this) list.Add(item);
+			foreach (GmdcLink item in this)
+				list.Add(item);
 
 			return list;
 		}

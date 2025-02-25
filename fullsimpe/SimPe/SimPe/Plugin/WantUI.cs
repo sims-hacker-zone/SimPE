@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Interfaces.Plugin;
 using System.Windows.Forms;
+using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
 {
@@ -41,11 +41,11 @@ namespace SimPe.Plugin
 		public WantsUI()
 		{
 			//form = WrapperFactory.form;
-			if (form==null) 
+			if (form == null)
 			{
 				form = new WantsForm();
-			
-				form.cbtype.Items.Add(WantType.Undefined);			
+
+				form.cbtype.Items.Add(WantType.Undefined);
 				form.cbtype.Items.Add(WantType.None);
 				form.cbtype.Items.Add(WantType.Sim);
 				form.cbtype.Items.Add(WantType.Object);
@@ -55,7 +55,9 @@ namespace SimPe.Plugin
 
 				form.ListWants();
 
-				WantLoader.WantNameLoader.AddObjects(SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache.List);
+				WantLoader.WantNameLoader.AddObjects(
+					SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache.List
+				);
 			}
 		}
 		#endregion
@@ -67,22 +69,20 @@ namespace SimPe.Plugin
 		/// </summary>
 		public System.Windows.Forms.Control GUIHandle
 		{
-			get
-			{
-				return form.wantsPanel;
-			}
+			get { return form.wantsPanel; }
 		}
 
 		static string oldpkg = "";
+
 		/// <summary>
 		/// true if the package was changed since the last run
 		/// </summary>
 		/// <param name="wrp">The File that will be loaded (contains a valid Package witha FileName)</param>
 		/// <returns>true, if the package Name changed</returns>
-		public static bool ChangedNeighborhood(Want wrp) 
+		public static bool ChangedNeighborhood(Want wrp)
 		{
 			string newpkg = wrp.Package.FileName.Trim().ToString();
-			if (newpkg!=oldpkg) 
+			if (newpkg != oldpkg)
 			{
 				oldpkg = newpkg;
 				return true;
@@ -99,76 +99,83 @@ namespace SimPe.Plugin
 		/// <param name="wrapper">The Attributes of this Wrapper have to be displayed</param>
 		public void UpdateGUI(IFileWrapper wrapper)
 		{
-			Want wrp = (Want) wrapper;
+			Want wrp = (Want)wrapper;
 			form.wrapper = wrp;
 			form.Tag = true;
 
-			try 
+			try
 			{
-				if (ChangedNeighborhood(wrp)) WantLoader.WantNameLoader.AddSimNames();
+				if (ChangedNeighborhood(wrp))
+					WantLoader.WantNameLoader.AddSimNames();
 
 				SimPe.Interfaces.Wrapper.ISDesc sdsc = wrp.SimDescription;
-				if (sdsc!=null)
+				if (sdsc != null)
 					form.lbsimname.Text = sdsc.SimName + " " + sdsc.SimFamilyName;
-				else 
+				else
 					form.lbsimname.Text = Localization.Manager.GetString("Unknown");
 
 				form.lastwi = null;
 				form.lastlvi = null;
 
-                Wait.SubStart();			
+				Wait.SubStart();
 				form.lvwant.Items.Clear();
 				form.iwant.Images.Clear();
-				foreach (WantItem wi in wrp.Wants) form.AddWantToList(form.lvwant, form.iwant, wi);
+				foreach (WantItem wi in wrp.Wants)
+					form.AddWantToList(form.lvwant, form.iwant, wi);
 
 				form.lvfear.Items.Clear();
 				form.ifear.Images.Clear();
-				foreach (WantItem wi in wrp.Fears) form.AddWantToList(form.lvfear, form.ifear, wi);
+				foreach (WantItem wi in wrp.Fears)
+					form.AddWantToList(form.lvfear, form.ifear, wi);
 
 				form.lvlife.Items.Clear();
 				form.ilife.Images.Clear();
-				foreach (WantItem wi in wrp.LifetimeWants) form.AddWantToList(form.lvlife, form.ilife, wi);
+				foreach (WantItem wi in wrp.LifetimeWants)
+					form.AddWantToList(form.lvlife, form.ilife, wi);
 
 				form.tvhist.Nodes.Clear();
-				form.ihist.Images.Clear();			
-				form.ihist.Images.Add(new System.Drawing.Bitmap(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.nothumb.png")));
+				form.ihist.Images.Clear();
+				form.ihist.Images.Add(
+					new System.Drawing.Bitmap(
+						this.GetType()
+							.Assembly.GetManifestResourceStream("SimPe.img.nothumb.png")
+					)
+				);
 
-				if (wrp.Version >= 0x06) 
+				if (wrp.Version >= 0x06)
 				{
-					if (!form.tabControl1.TabPages.Contains(form.tblife)) 
+					if (!form.tabControl1.TabPages.Contains(form.tblife))
 					{
 						form.tabControl1.TabPages.Add(form.tblife);
 						form.tabControl1.SelectedIndex = 3;
 					}
-				} 
-				else 
+				}
+				else
 				{
-					if (form.tabControl1.TabPages.Contains(form.tblife)) 
+					if (form.tabControl1.TabPages.Contains(form.tblife))
 					{
 						form.tabControl1.TabPages.Remove(form.tblife);
 						form.tabControl1.SelectedIndex = 0;
 					}
 				}
-				
+
 				WantInformation.SaveCache();
 			}
-			catch (Exception ex) 
+			catch (Exception ex)
 			{
 				Helper.ExceptionMessage("", ex);
 			}
-			finally 
+			finally
 			{
 				form.Tag = null;
-                Wait.SubStop();				
+				Wait.SubStop();
 			}
-		}		
+		}
 
 		#endregion
-		
+
 		#region IDisposable Member
-		public virtual void Dispose()
-		{
-		}
+		public virtual void Dispose() { }
 		#endregion
 	}
 }

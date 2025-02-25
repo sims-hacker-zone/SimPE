@@ -18,12 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Windows.Forms;
 using System.Drawing;
-using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces;
-using SimPe.PackedFiles.Wrapper.Supporting;
+using System.Windows.Forms;
 using SimPe.Data;
+using SimPe.Interfaces;
+using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Wrapper.Supporting;
 
 namespace SimPe.PackedFiles.UserInterface
 {
@@ -33,6 +33,7 @@ namespace SimPe.PackedFiles.UserInterface
 	public class ExtFamilyTies : IPackedFileUI
 	{
 		FamilyTiesForm form;
+
 		public ExtFamilyTies()
 		{
 			form = new FamilyTiesForm();
@@ -42,10 +43,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public Control GUIHandle
 		{
-			get 
-			{
-				return form.pnfamt;
-			}
+			get { return form.pnfamt; }
 		}
 
 		public void UpdateGUI(SimPe.Interfaces.Plugin.IFileWrapper wrapper)
@@ -53,15 +51,14 @@ namespace SimPe.PackedFiles.UserInterface
 			Wrapper.ExtFamilyTies famt = (Wrapper.ExtFamilyTies)wrapper;
 			form.wrapper = famt;
 
-            form.cbLock.Checked = false;
+			form.cbLock.Checked = false;
 			form.pool.SelectedElement = null;
 			form.pool.Package = null;
-			form.pool_SelectedSimChanged(null, null, null);				
+			form.pool_SelectedSimChanged(null, null, null);
 			form.pool.Package = wrapper.Package;
 		}
 
-		
-		#endregion		
+		#endregion
 
 		#region IDisposable Member
 		public virtual void Dispose()

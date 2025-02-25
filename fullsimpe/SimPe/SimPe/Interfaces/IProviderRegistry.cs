@@ -29,46 +29,28 @@ namespace SimPe.Interfaces
 		/// <summary>
 		/// Returns the Provider for SimNames
 		/// </summary>
-		SimPe.Interfaces.Providers.ISimNames SimNameProvider 
-		{
-			get;
-		}
+		SimPe.Interfaces.Providers.ISimNames SimNameProvider { get; }
 
 		/// <summary>
 		/// Returns the Provider for Sim Family Names
 		/// </summary>
-		SimPe.Interfaces.Providers.ISimFamilyNames SimFamilynameProvider 
-		{
-			get;
-		}
+		SimPe.Interfaces.Providers.ISimFamilyNames SimFamilynameProvider { get; }
 
 		/// <summary>
 		/// Returns the Provider for SimDescription Files
 		/// </summary>
-		SimPe.Interfaces.Providers.ISimDescriptions SimDescriptionProvider 
-		{
-			get;
-		}
+		SimPe.Interfaces.Providers.ISimDescriptions SimDescriptionProvider { get; }
 
 		/// <summary>
 		/// Returns the Provider for Opcode Names
 		/// </summary>
-		SimPe.Interfaces.Providers.IOpcodeProvider OpcodeProvider
-		{
-			get;
-		}
+		SimPe.Interfaces.Providers.IOpcodeProvider OpcodeProvider { get; }
 
 		/// <summary>
 		/// Returns the Provider for Skin Data
 		/// </summary>
-		Interfaces.Providers.ISkinProvider SkinProvider
-		{
-			get;
-		}
+		Interfaces.Providers.ISkinProvider SkinProvider { get; }
 
-		SimPe.Interfaces.Providers.ILotProvider LotProvider 
-		{
-			get;
-		}
+		SimPe.Interfaces.Providers.ILotProvider LotProvider { get; }
 	}
 }

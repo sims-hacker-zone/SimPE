@@ -20,9 +20,9 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Data;
 using System.Windows.Forms;
 using Ambertation.Collections;
 
@@ -33,13 +33,10 @@ namespace Ambertation.Windows.Forms.Graph
 	/// </summary>
 	public class GraphItem : PropertyPanel
 	{
-		
-		public GraphItem() : this(new PropertyItems()) 
-		{
-		}
+		public GraphItem()
+			: this(new PropertyItems()) { }
 
-		public GraphItem(PropertyItems properties) :base (properties)
-		{				
-		}		
+		public GraphItem(PropertyItems properties)
+			: base(properties) { }
 	}
 }

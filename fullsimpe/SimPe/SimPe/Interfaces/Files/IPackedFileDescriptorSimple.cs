@@ -18,14 +18,15 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 namespace SimPe.Interfaces.Files
 {
-    public interface IPackedFileDescriptorSimple
-    {
-        uint Group { get;  }
-        uint Instance { get;  }
-        uint SubType { get; }
-        uint Type { get;  }
-        SimPe.Data.TypeAlias TypeName { get; }
-    }
+	public interface IPackedFileDescriptorSimple
+	{
+		uint Group { get; }
+		uint Instance { get; }
+		uint SubType { get; }
+		uint Type { get; }
+		SimPe.Data.TypeAlias TypeName { get; }
+	}
 }

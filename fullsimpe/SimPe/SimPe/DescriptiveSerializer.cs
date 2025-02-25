@@ -27,14 +27,12 @@ namespace SimPe
 	/// </summary>
 	public class DescriptiveSerializer : AbstractSerializer
 	{
-		public DescriptiveSerializer() : base()
-		{
-			
-		}
+		public DescriptiveSerializer()
+			: base() { }
 
-		public override string Seperator 
+		public override string Seperator
 		{
-			get { return  ";"; }
+			get { return ";"; }
 		}
 
 		public override string SaveStr(string val)
@@ -44,21 +42,23 @@ namespace SimPe
 
 		public override string SubProperty(string name, string val)
 		{
-			if (val==null) val="";
-			return name+"={"+val+"}";
+			if (val == null)
+				val = "";
+			return name + "={" + val + "}";
 		}
 
 		public override string Property(string name, string val)
 		{
-			if (val==null) val="";
-			return name+"="+SaveStr(val)+"";
+			if (val == null)
+				val = "";
+			return name + "=" + SaveStr(val) + "";
 		}
 
 		public override string NullProperty(string name)
 		{
 			return Property(name, "NULL");
-		}	
-	
+		}
+
 		public override string SerializeHeader(Object o, Type t, PropertyInfo[] ps)
 		{
 			return "";
@@ -73,6 +73,5 @@ namespace SimPe
 		{
 			return "";
 		}
-
 	}
 }

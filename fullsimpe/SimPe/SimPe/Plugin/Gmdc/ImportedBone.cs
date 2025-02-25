@@ -23,7 +23,6 @@ using SimPe.Geometry;
 
 namespace SimPe.Plugin.Gmdc
 {
-	
 	/// <summary>
 	/// This class contains all Data Needed to import one Bone (Joint)
 	/// </summary>
@@ -33,22 +32,24 @@ namespace SimPe.Plugin.Gmdc
 		/// internal Attribute
 		/// </summary>
 		GmdcImporterAction action;
+
 		/// <summary>
 		/// Returns/Sets the action that should be performed
 		/// </summary>
-		public GmdcImporterAction Action 
+		public GmdcImporterAction Action
 		{
 			get { return action; }
 			set { action = value; }
-		}		
+		}
 
 		int index;
+
 		/// <summary>
-		/// If action is <see cref="GmdcImporterAction.Replace"/> or 
-		/// <see cref="GmdcImporterAction.Update"/> this Member stores the 
+		/// If action is <see cref="GmdcImporterAction.Replace"/> or
+		/// <see cref="GmdcImporterAction.Update"/> this Member stores the
 		/// Index of the Target Joint (read/write)
 		/// </summary>
-		public int TargetIndex 
+		public int TargetIndex
 		{
 			get { return index; }
 			set { index = value; }
@@ -60,9 +61,9 @@ namespace SimPe.Plugin.Gmdc
 		string name;
 
 		/// <summary>
-		/// The name of the Imported Bone		
+		/// The name of the Imported Bone
 		/// </summary>
-		public string ImportedName 
+		public string ImportedName
 		{
 			get { return name; }
 			set { name = value; }
@@ -74,15 +75,16 @@ namespace SimPe.Plugin.Gmdc
 		string parentname;
 
 		/// <summary>
-		/// The name of the Parent Bone		
+		/// The name of the Parent Bone
 		/// </summary>
-		public string ParentName 
+		public string ParentName
 		{
 			get { return parentname; }
 			set { parentname = value; }
 		}
 
 		GmdcJoint bone;
+
 		/// <summary>
 		/// The new Bone
 		/// </summary>
@@ -91,8 +93,8 @@ namespace SimPe.Plugin.Gmdc
 			get { return bone; }
 		}
 
-		
-		VectorTransformation sourcepos;	
+		VectorTransformation sourcepos;
+
 		/// <summary>
 		/// The initial Transformation for this Joint
 		/// </summary>
@@ -101,23 +103,25 @@ namespace SimPe.Plugin.Gmdc
 			get { return sourcepos; }
 			set { sourcepos = value; }
 		}
-		
+
 		/// <summary>
 		/// Returns the color that should be used to display this Group in the "Import Groups" ListView
 		/// </summary>
-		public System.Drawing.Color MarkColor 
+		public System.Drawing.Color MarkColor
 		{
-			get 
+			get
 			{
-				if (Action==GmdcImporterAction.Nothing) return System.Drawing.Color.Silver;
+				if (Action == GmdcImporterAction.Nothing)
+					return System.Drawing.Color.Silver;
 				return System.Drawing.Color.DarkBlue;
 			}
-		}		
+		}
 
 		/// <summary>
 		/// internal Attribute
 		/// </summary>
 		float scale;
+
 		/// <summary>
 		/// Returns/Sets the scale Factor that should be applied to this group
 		/// </summary>
@@ -127,20 +131,21 @@ namespace SimPe.Plugin.Gmdc
 			set { scale = value; }
 		}
 
-
 		/// <summary>
 		/// Create a new Instance
 		/// </summary>
 		/// <param name="parent">The gmdc that should act as Parent</param>
 		public ImportedBone(GeometryDataContainer parent)
 		{
-			bone = new GmdcJoint(parent);			
+			bone = new GmdcJoint(parent);
 			name = "";
 			parentname = "";
 			index = -1;
 			action = GmdcImporterAction.Add;
-			sourcepos = new VectorTransformation(SimPe.Geometry.VectorTransformation.TransformOrder.TranslateRotate);
-			
+			sourcepos = new VectorTransformation(
+				SimPe.Geometry.VectorTransformation.TransformOrder.TranslateRotate
+			);
+
 			scale = (float)(1.0);
 		}
 
@@ -149,14 +154,16 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="bones">List of Bones, where we should look for Parents</param>
 		/// <returns>null if no Parent is available or the Parent Bone</returns>
-		public ImportedBone GetParentFrom(ImportedBones bones) 
+		public ImportedBone GetParentFrom(ImportedBones bones)
 		{
 			parentname = parentname.Trim();
-			if (parentname.Trim()=="") return null;
+			if (parentname.Trim() == "")
+				return null;
 
-			foreach (ImportedBone b in bones) 
+			foreach (ImportedBone b in bones)
 			{
-				if (b.ImportedName.Trim()==parentname) return b;
+				if (b.ImportedName.Trim() == parentname)
+					return b;
 			}
 
 			return null;
@@ -174,9 +181,9 @@ namespace SimPe.Plugin.Gmdc
 		protected void FindBestFitJoint(SimPe.Plugin.Gmdc.GmdcJoints joints)
 		{
 			int ct = 0;
-			foreach (SimPe.Plugin.Gmdc.GmdcJoint j in joints) 
+			foreach (SimPe.Plugin.Gmdc.GmdcJoint j in joints)
 			{
-				if (j.Name==this.ImportedName)
+				if (j.Name == this.ImportedName)
 				{
 					this.TargetIndex = ct;
 					return;
@@ -190,7 +197,7 @@ namespace SimPe.Plugin.Gmdc
 	/// <summary>
 	/// Typesave ArrayList for <see cref="ImportedGroup"/> Objects
 	/// </summary>
-	public class ImportedBones : ArrayList 
+	public class ImportedBones : ArrayList
 	{
 		/// <summary>
 		/// Integer Indexer
@@ -247,12 +254,12 @@ namespace SimPe.Plugin.Gmdc
 		public bool Contains(ImportedBone item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -264,7 +271,8 @@ namespace SimPe.Plugin.Gmdc
 		public override object Clone()
 		{
 			ImportedBones list = new ImportedBones();
-			foreach (ImportedBone item in this) list.Add(item);
+			foreach (ImportedBone item in this)
+				list.Add(item);
 
 			return list;
 		}

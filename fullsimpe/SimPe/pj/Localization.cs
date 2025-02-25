@@ -22,21 +22,26 @@ using System.Resources;
 
 namespace pj
 {
-    public class L
-    {
-        private static ResourceManager resource = null;
+	public class L
+	{
+		private static ResourceManager resource = null;
 
-        static L() { resource = new ResourceManager(typeof(L)); }
+		static L()
+		{
+			resource = new ResourceManager(typeof(L));
+		}
 
-        public static string Get(string name)
-        {
-            string res = resource.GetString(name);
+		public static string Get(string name)
+		{
+			string res = resource.GetString(name);
 #if DEBUG
-            if (res == null) res = "<<" + name + ">>";
+			if (res == null)
+				res = "<<" + name + ">>";
 #else
-            if (res == null) res = name;
+			if (res == null)
+				res = name;
 #endif
-            return res;
-        }
-    }
+			return res;
+		}
+	}
 }

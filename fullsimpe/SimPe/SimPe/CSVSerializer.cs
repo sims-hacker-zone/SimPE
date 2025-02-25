@@ -27,14 +27,12 @@ namespace SimPe
 	/// </summary>
 	public class CsvSerializer : AbstractSerializer
 	{
-		public CsvSerializer() : base()
-		{
-			
-		}
+		public CsvSerializer()
+			: base() { }
 
-		public override string Seperator 
+		public override string Seperator
 		{
-			get { return  ","; }
+			get { return ","; }
 		}
 
 		public override string SaveStr(string val)
@@ -44,20 +42,21 @@ namespace SimPe
 
 		public override string SubProperty(string name, string val)
 		{
-			if (val==null) val="";
+			if (val == null)
+				val = "";
 			return val;
 		}
 
 		public override string Property(string name, string val)
 		{
-			if (val==null) val="";
+			if (val == null)
+				val = "";
 			return SaveStr(val);
 		}
 
 		public override string NullProperty(string name)
 		{
 			return "NULL";
-		}				
-
+		}
 	}
 }

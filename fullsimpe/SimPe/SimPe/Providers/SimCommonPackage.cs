@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Interfaces.Providers;
 using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Providers;
 
 namespace SimPe.Providers
 {
@@ -38,30 +38,26 @@ namespace SimPe.Providers
 		/// </summary>
 		/// <param name="folder">The Folder with the Character Files</param>
 		public SimCommonPackage(IPackageFile package)
-		{			
+		{
 			BasePackage = package;
 		}
-		
+
 		public event EventHandler ChangedPackage;
+
 		/// <summary>
 		/// Returns or sets the Folder where the Character Files are stored
 		/// </summary>
 		/// <remarks>Sets the names List to null</remarks>
 		public IPackageFile BasePackage
 		{
-			get 
+			get { return package; }
+			set
 			{
-				return package;
-			}
-			set 
-			{
-				if (package != value) 
+				if (package != value)
 				{
-
 					BasePackageChanged();
 				}
 				package = value;
-				
 			}
 		}
 
@@ -69,9 +65,10 @@ namespace SimPe.Providers
 		/// Called if the BaseBackae was changed
 		/// </summary>
 		protected void BasePackageChanged()
-		{			
+		{
 			OnChangedPackage();
-			if (ChangedPackage!=null) ChangedPackage(this, new EventArgs());
+			if (ChangedPackage != null)
+				ChangedPackage(this, new EventArgs());
 		}
 
 		protected abstract void OnChangedPackage();

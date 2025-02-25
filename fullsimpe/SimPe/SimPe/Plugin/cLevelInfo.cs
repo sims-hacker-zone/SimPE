@@ -18,22 +18,20 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
 using System.Collections;
+using System.Drawing;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
 {
-	
 	/// <summary>
 	/// This is the actual FileWrapper
 	/// </summary>
 	/// <remarks>
-	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads 
+	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public class LevelInfo
-		: AbstractRcolBlock
+	public class LevelInfo : AbstractRcolBlock
 	{
 		#region Attributes
 		byte[] data;
@@ -42,56 +40,66 @@ namespace SimPe.Plugin
 		int zlevel;
 		Image img;
 		MipMapType datatype;
-		
 
-		public Size TextureSize 
+		public Size TextureSize
 		{
 			get { return texturesize; }
 		}
 
-		public int ZLevel 
+		public int ZLevel
 		{
 			get { return zlevel; }
-			set {zlevel = value; }
+			set { zlevel = value; }
 		}
 
-		public ImageLoader.TxtrFormats Format 
+		public ImageLoader.TxtrFormats Format
 		{
 			get { return format; }
 			set { format = value; }
 		}
 
-		public Image Texture 
+		public Image Texture
 		{
-			get { 
-				if (img==null) 
+			get
+			{
+				if (img == null)
 				{
-					System.IO.BinaryReader sr = new System.IO.BinaryReader(new System.IO.MemoryStream(data));
-					img = ImageLoader.Load(this.TextureSize, data.Length, format, sr, 1, -1);
+					System.IO.BinaryReader sr = new System.IO.BinaryReader(
+						new System.IO.MemoryStream(data)
+					);
+					img = ImageLoader.Load(
+						this.TextureSize,
+						data.Length,
+						format,
+						sr,
+						1,
+						-1
+					);
 				}
-				return img; 
+				return img;
 			}
-			set 
-			{ 
+			set
+			{
 				datatype = MipMapType.Texture;
 				data = null;
-				img = value; 
+				img = value;
 			}
 		}
 
-		public byte[] Data 
+		public byte[] Data
 		{
 			get { return data; }
-			set { 
+			set
+			{
 				datatype = MipMapType.SimPE_PlainData;
-				data = value; 
+				data = value;
 			}
 		}
 
 		#endregion
 
 		//Rcol parent;
-		/*public Rcol Parent 
+		/*public Rcol Parent
 		{
 			get { return parent; }
 		}*/
@@ -99,16 +107,17 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public LevelInfo(Rcol parent) : base(parent)
+		public LevelInfo(Rcol parent)
+			: base(parent)
 		{
 			texturesize = new Size(0, 0);
-			zlevel =0;
+			zlevel = 0;
 			sgres = new SGResource(null);
 			BlockID = 0xED534136;
 			data = new byte[0];
 			datatype = MipMapType.SimPE_PlainData;
 		}
-		
+
 		#region IRcolBlock Member
 
 		/// <summary>
@@ -117,14 +126,11 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		public override void Unserialize(System.IO.BinaryReader reader)
 		{
-            version = reader.ReadUInt32();
+			version = reader.ReadUInt32();
 			string s = reader.ReadString();
 
 			sgres.BlockID = reader.ReadUInt32();
 			sgres.Unserialize(reader);
-			
-
-			
 
 			int w = reader.ReadInt32();
 			int h = reader.ReadInt32();
@@ -133,32 +139,35 @@ namespace SimPe.Plugin
 
 			int size = reader.ReadInt32();
 
-            if (Parent.Fast)
-            {
-                reader.BaseStream.Seek(size, System.IO.SeekOrigin.Current);
-                texturesize = new Size(0, 0);
-                img = null;
-                return;
-            }
+			if (Parent.Fast)
+			{
+				reader.BaseStream.Seek(size, System.IO.SeekOrigin.Current);
+				texturesize = new Size(0, 0);
+				img = null;
+				return;
+			}
 			/*if (size == w*h) format = ImageLoader.TxtrFormats.DXT3Format;
-			else*/ format = ImageLoader.TxtrFormats.DXT1Format;
+			else*/
+			format = ImageLoader.TxtrFormats.DXT1Format;
 			//Pumckl Contribution
 			//-- 8< --------------------------------------------- 8< -----
-			if (size == 4 * w * h) format = ImageLoader.TxtrFormats.Raw32Bit;
-			else if (size == 3 * w * h) format = ImageLoader.TxtrFormats.Raw24Bit;
-			else if (size == w * h)  // could be RAW8, DXT3 or DXT5
-			{ 
+			if (size == 4 * w * h)
+				format = ImageLoader.TxtrFormats.Raw32Bit;
+			else if (size == 3 * w * h)
+				format = ImageLoader.TxtrFormats.Raw24Bit;
+			else if (size == w * h) // could be RAW8, DXT3 or DXT5
+			{
 				// it seems to be difficult to determine the right format
-				if (sgres.FileName.IndexOf("bump")>0)
+				if (sgres.FileName.IndexOf("bump") > 0)
 				{ // its a bump-map
 					format = ImageLoader.TxtrFormats.Raw8Bit;
 				}
 				else
 				{
 					// i expect the upper left 4x4 corner of the pichture have
-					// all the same alpha so i can determine if it's DXT5 
+					// all the same alpha so i can determine if it's DXT5
 					// i guess, it's somewhat dirty but what can i do else?
-					long pos = reader.BaseStream.Position;  
+					long pos = reader.BaseStream.Position;
 					ulong alpha = reader.ReadUInt64(); // read the first 8 byte of the image
 					reader.BaseStream.Position = pos;
 					// on DXT5 if all alpha are the same the bytes 0 or 1 are not zero
@@ -169,17 +178,18 @@ namespace SimPe.Plugin
 						format = ImageLoader.TxtrFormats.DXT3Format;
 				}
 			}
-			else format = ImageLoader.TxtrFormats.DXT1Format; // size < w*h
+			else
+				format = ImageLoader.TxtrFormats.DXT1Format; // size < w*h
 			//-- 8< --------------------------------------------- 8< -----
 
-			
-			long p1 =reader.BaseStream.Position;
-			size = (int)(reader.BaseStream.Length-p1);
+
+			long p1 = reader.BaseStream.Position;
+			size = (int)(reader.BaseStream.Length - p1);
 			{
 				datatype = MipMapType.SimPE_PlainData;
 			}
-			
-			data = reader.ReadBytes(size);			
+
+			data = reader.ReadBytes(size);
 		}
 
 		/// <summary>
@@ -187,7 +197,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public override void Serialize(System.IO.BinaryWriter writer)
@@ -202,9 +212,11 @@ namespace SimPe.Plugin
 			writer.Write((int)texturesize.Height);
 			writer.Write(zlevel);
 
-			if (datatype == MipMapType.Texture) data = ImageLoader.Save(format, img);
-			
-			if (data==null) data = new byte[0];
+			if (datatype == MipMapType.Texture)
+				data = ImageLoader.Save(format, img);
+
+			if (data == null)
+				data = new byte[0];
 			writer.Write((int)data.Length);
 			writer.Write(data);
 		}
@@ -212,12 +224,8 @@ namespace SimPe.Plugin
 
 		#region IDisposable Member
 
-		public override void Dispose()
-		{
-			
-		}
+		public override void Dispose() { }
 
 		#endregion
-
 	}
 }

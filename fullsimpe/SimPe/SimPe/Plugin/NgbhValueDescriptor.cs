@@ -1,4 +1,4 @@
-using System;	
+using System;
 
 namespace SimPe.Plugin
 {
@@ -6,26 +6,75 @@ namespace SimPe.Plugin
 	{
 		Skill,
 		ToddlerSkill,
-		Badge
+		Badge,
 	}
+
 	/// <summary>
 	/// Describes Skills, and Badges
 	/// </summary>
 	public class NgbhValueDescriptor
 	{
-		
 		string name;
-		uint guid, fullguid;
-		int valuenr, fullnr;
-		short min, max;
+		uint guid,
+			fullguid;
+		int valuenr,
+			fullnr;
+		short min,
+			max;
 		NgbhValueDescriptorType type;
 		bool intern;
-		
-		public NgbhValueDescriptor(string name, bool intern, NgbhValueDescriptorType type, uint guid, int valuenr, short min, short max, int fullnr) : this (name, intern, type, guid, valuenr, min, max, guid, fullnr) {}
-		public NgbhValueDescriptor(string name, bool intern, NgbhValueDescriptorType type, uint guid) : this (name, intern, type, guid, 0, -1, -1, 0xffffffff, -1) {}		
-		public NgbhValueDescriptor(string name, bool intern, NgbhValueDescriptorType type, uint guid, int valuenr) : this (name, intern, type, guid, valuenr, -1, -1, 0xffffffff, -1) {}		
-		public NgbhValueDescriptor(string name, bool intern, NgbhValueDescriptorType type, uint guid, int valuenr, short min, short max) : this (name, intern, type, guid, valuenr, min, max, 0xffffffff, -1) {}		
-		NgbhValueDescriptor(string name, bool intern, NgbhValueDescriptorType type, uint guid, int valuenr, short min, short max, uint fullguid, int fullnr)
+
+		public NgbhValueDescriptor(
+			string name,
+			bool intern,
+			NgbhValueDescriptorType type,
+			uint guid,
+			int valuenr,
+			short min,
+			short max,
+			int fullnr
+		)
+			: this(name, intern, type, guid, valuenr, min, max, guid, fullnr) { }
+
+		public NgbhValueDescriptor(
+			string name,
+			bool intern,
+			NgbhValueDescriptorType type,
+			uint guid
+		)
+			: this(name, intern, type, guid, 0, -1, -1, 0xffffffff, -1) { }
+
+		public NgbhValueDescriptor(
+			string name,
+			bool intern,
+			NgbhValueDescriptorType type,
+			uint guid,
+			int valuenr
+		)
+			: this(name, intern, type, guid, valuenr, -1, -1, 0xffffffff, -1) { }
+
+		public NgbhValueDescriptor(
+			string name,
+			bool intern,
+			NgbhValueDescriptorType type,
+			uint guid,
+			int valuenr,
+			short min,
+			short max
+		)
+			: this(name, intern, type, guid, valuenr, min, max, 0xffffffff, -1) { }
+
+		NgbhValueDescriptor(
+			string name,
+			bool intern,
+			NgbhValueDescriptorType type,
+			uint guid,
+			int valuenr,
+			short min,
+			short max,
+			uint fullguid,
+			int fullnr
+		)
 		{
 			this.name = name;
 			this.guid = guid;
@@ -40,57 +89,52 @@ namespace SimPe.Plugin
 
 		public bool Intern
 		{
-			get {return intern;}
+			get { return intern; }
 		}
 
 		public NgbhValueDescriptorType Type
 		{
-			get 
-			{
-				return type;
-			}
+			get { return type; }
 		}
 
 		public bool HasComplededFlag
 		{
-			get {return fullnr>=0;}
+			get { return fullnr >= 0; }
 		}
 
-		 uint CompletedGuid
+		uint CompletedGuid
 		{
-			get {return fullguid;}
+			get { return fullguid; }
 		}
 
 		public uint Guid
 		{
-			get {return guid;}
+			get { return guid; }
 		}
 
 		public int CompletedDataNumber
 		{
-			get {return fullnr;}
+			get { return fullnr; }
 		}
 
 		public int DataNumber
 		{
-			get {return valuenr;}
+			get { return valuenr; }
 		}
 
 		public short Minimum
 		{
-			get {return min;}
+			get { return min; }
 		}
 
 		public short Maximum
 		{
-			get {return max;}
+			get { return max; }
 		}
-
 
 		public override string ToString()
 		{
 			return name;
 		}
-
 	}
 }

@@ -5,134 +5,174 @@ using System.Text;
 
 namespace SimPe.Plugin
 {
-    public class Subhoods
-    {
-        public Dictionary<uint, string> SuburbNameFromID = new Dictionary<uint, string>();
-        public Dictionary<uint, string> SimNamesNids = new Dictionary<uint, string>();
+	public class Subhoods
+	{
+		public Dictionary<uint, string> SuburbNameFromID =
+			new Dictionary<uint, string>();
+		public Dictionary<uint, string> SimNamesNids = new Dictionary<uint, string>();
 
-        string fnme = "";
+		string fnme = "";
 
-        /// <summary>
-        /// Convert the Subhood Id to a name
-        /// </summary>
-        public string SuburbName(uint id)
-        {
-            if (SuburbNameFromID.ContainsKey(id)) return SuburbNameFromID[id];
-            return "not found";
-        }
+		/// <summary>
+		/// Convert the Subhood Id to a name
+		/// </summary>
+		public string SuburbName(uint id)
+		{
+			if (SuburbNameFromID.ContainsKey(id))
+				return SuburbNameFromID[id];
+			return "not found";
+		}
 
-        /// <summary>
-        /// Convert the name to an id for Subhoods, for easy combobox use the string is object
-        /// </summary>
-        public uint GetSuburbId(object ob)
-        {
-            string val = Convert.ToString(ob);
-            if (SuburbNameFromID.ContainsValue(val))
-                foreach (KeyValuePair<uint, string> kvp in SuburbNameFromID)
-                    if (kvp.Value == val) return kvp.Key;
+		/// <summary>
+		/// Convert the name to an id for Subhoods, for easy combobox use the string is object
+		/// </summary>
+		public uint GetSuburbId(object ob)
+		{
+			string val = Convert.ToString(ob);
+			if (SuburbNameFromID.ContainsValue(val))
+				foreach (KeyValuePair<uint, string> kvp in SuburbNameFromID)
+					if (kvp.Value == val)
+						return kvp.Key;
 
-            return 0;
-        }
+			return 0;
+		}
 
-        public void InitializeSuburbNameFromID(string filename)
-        {
-            if (fnme == filename) return;
-            fnme = filename;
-            SuburbNameFromID.Clear();
-            SuburbNameFromID.Add(0, "-none-");
-            if (!File.Exists(filename)) return;
-            if (!Helper.IsNeighborhoodFile(filename)) return;
-            string subh;
-            string[] overs = Directory.GetFiles(Path.GetDirectoryName(filename), "*.package", SearchOption.TopDirectoryOnly);
-            if (overs.Length > 0)
-            {
-                uint uid;
-                SimPe.Packages.GeneratableFile pkg;
-                foreach (string file in overs)
-                {
-                    subh = Localization.Manager.GetString("unknown");
-                    pkg = SimPe.Packages.File.LoadFromFile(file);
-                    SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFileAnyGroup(Data.MetaData.IDNO, 0, 1);
-                    if (pfd != null)
-                    {
-                        Idno idno = new Idno();
-                        idno.ProcessData(pfd, pkg);
-                        uid = idno.Uid;
+		public void InitializeSuburbNameFromID(string filename)
+		{
+			if (fnme == filename)
+				return;
+			fnme = filename;
+			SuburbNameFromID.Clear();
+			SuburbNameFromID.Add(0, "-none-");
+			if (!File.Exists(filename))
+				return;
+			if (!Helper.IsNeighborhoodFile(filename))
+				return;
+			string subh;
+			string[] overs = Directory.GetFiles(
+				Path.GetDirectoryName(filename),
+				"*.package",
+				SearchOption.TopDirectoryOnly
+			);
+			if (overs.Length > 0)
+			{
+				uint uid;
+				SimPe.Packages.GeneratableFile pkg;
+				foreach (string file in overs)
+				{
+					subh = Localization.Manager.GetString("unknown");
+					pkg = SimPe.Packages.File.LoadFromFile(file);
+					SimPe.Interfaces.Files.IPackedFileDescriptor pfd =
+						pkg.FindFileAnyGroup(Data.MetaData.IDNO, 0, 1);
+					if (pfd != null)
+					{
+						Idno idno = new Idno();
+						idno.ProcessData(pfd, pkg);
+						uid = idno.Uid;
 
-                        pfd = pkg.FindFileAnyGroup(Data.MetaData.CTSS_FILE, 0, 1);
-                        if (pfd != null)
-                        {
-                            SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
-                            str.ProcessData(pfd, pkg);
-                            SimPe.PackedFiles.Wrapper.StrItemList items = str.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
-                            if (items.Length > 0) subh = items[0].Title;
-                        }
-                        if (!SuburbNameFromID.ContainsKey(uid)) SuburbNameFromID.Add(uid, subh);
-                    }
-                }
-            }
-        }
+						pfd = pkg.FindFileAnyGroup(Data.MetaData.CTSS_FILE, 0, 1);
+						if (pfd != null)
+						{
+							SimPe.PackedFiles.Wrapper.Str str =
+								new SimPe.PackedFiles.Wrapper.Str();
+							str.ProcessData(pfd, pkg);
+							SimPe.PackedFiles.Wrapper.StrItemList items =
+								str.FallbackedLanguageItems(
+									Helper.WindowsRegistry.LanguageCode
+								);
+							if (items.Length > 0)
+								subh = items[0].Title;
+						}
+						if (!SuburbNameFromID.ContainsKey(uid))
+							SuburbNameFromID.Add(uid, subh);
+					}
+				}
+			}
+		}
 
-        /// <summary>
-        /// Convert the Sim Nid to a name
-        /// </summary>
-        public string SimmyName(uint id)
-        {
-            if (SimNamesNids.ContainsKey(id)) return SimNamesNids[id];
-            return "not found";
-        }
+		/// <summary>
+		/// Convert the Sim Nid to a name
+		/// </summary>
+		public string SimmyName(uint id)
+		{
+			if (SimNamesNids.ContainsKey(id))
+				return SimNamesNids[id];
+			return "not found";
+		}
 
-        /// <summary>
-        /// Convert the sim name to an Nid, for easy combobox use the string is object
-        /// </summary>
-        public uint GetSimmyId(object ob)
-        {
-            string val = Convert.ToString(ob);
-            if (SimNamesNids.ContainsValue(val))
-                foreach (KeyValuePair<uint, string> kvp in SimNamesNids)
-                    if (kvp.Value == val) return kvp.Key;
-            return 0;
-        }
+		/// <summary>
+		/// Convert the sim name to an Nid, for easy combobox use the string is object
+		/// </summary>
+		public uint GetSimmyId(object ob)
+		{
+			string val = Convert.ToString(ob);
+			if (SimNamesNids.ContainsValue(val))
+				foreach (KeyValuePair<uint, string> kvp in SimNamesNids)
+					if (kvp.Value == val)
+						return kvp.Key;
+			return 0;
+		}
 
-        public void InitializeSimNamesNids()
-        {
-            SimNamesNids.Clear();
-            SimNamesNids.Add(0, "-none-");
-            try
-            {
-                foreach (SimPe.PackedFiles.Wrapper.SDesc simdesc in FileTable.ProviderRegistry.SimDescriptionProvider.SimInstance.Values)
-                {
-                    if (!simdesc.SimFamilyName.Contains("(NPC)") && simdesc.Nightlife.IsHuman && !simdesc.CharacterDescription.GhostFlag.IsGhost)
-                        SimNamesNids.Add(simdesc.Instance, simdesc.SimName + " " + simdesc.SimFamilyName);
-                }
-            }
-            catch { }
-        }
+		public void InitializeSimNamesNids()
+		{
+			SimNamesNids.Clear();
+			SimNamesNids.Add(0, "-none-");
+			try
+			{
+				foreach (
+					SimPe.PackedFiles.Wrapper.SDesc simdesc in FileTable
+						.ProviderRegistry
+						.SimDescriptionProvider
+						.SimInstance
+						.Values
+				)
+				{
+					if (
+						!simdesc.SimFamilyName.Contains("(NPC)")
+						&& simdesc.Nightlife.IsHuman
+						&& !simdesc.CharacterDescription.GhostFlag.IsGhost
+					)
+						SimNamesNids.Add(
+							simdesc.Instance,
+							simdesc.SimName + " " + simdesc.SimFamilyName
+						);
+				}
+			}
+			catch { }
+		}
 
-        public static bool GuidExists(uint gooee)
-        {
-            if (!pjse.GUIDIndex.TheGUIDIndex.IsLoaded) pjse.GUIDIndex.TheGUIDIndex.Load();
-            return pjse.GUIDIndex.TheGUIDIndex.ContainsKey(gooee);
-        }
+		public static bool GuidExists(uint gooee)
+		{
+			if (!pjse.GUIDIndex.TheGUIDIndex.IsLoaded)
+				pjse.GUIDIndex.TheGUIDIndex.Load();
+			return pjse.GUIDIndex.TheGUIDIndex.ContainsKey(gooee);
+		}
 
-        public static bool GuidAdd(uint gooee, uint group, ushort type, string name)
-        {
-            if (!pjse.GUIDIndex.TheGUIDIndex.IsLoaded) pjse.GUIDIndex.TheGUIDIndex.Load();
-            if (pjse.GUIDIndex.TheGUIDIndex.ContainsKey(gooee)) return false;
-            try
-            {
-                pjse.GUIDIndex.TheGUIDIndex.Add(gooee, group, type, name);
-                return true;
-            }
-            catch { return false; }
-        }
+		public static bool GuidAdd(uint gooee, uint group, ushort type, string name)
+		{
+			if (!pjse.GUIDIndex.TheGUIDIndex.IsLoaded)
+				pjse.GUIDIndex.TheGUIDIndex.Load();
+			if (pjse.GUIDIndex.TheGUIDIndex.ContainsKey(gooee))
+				return false;
+			try
+			{
+				pjse.GUIDIndex.TheGUIDIndex.Add(gooee, group, type, name);
+				return true;
+			}
+			catch
+			{
+				return false;
+			}
+		}
 
-        public static string getgooee(uint gooee)
-        {
-            if (!pjse.GUIDIndex.TheGUIDIndex.IsLoaded) pjse.GUIDIndex.TheGUIDIndex.Load();
-            string ret = pjse.GUIDIndex.TheGUIDIndex[gooee];
-            if (ret == null) ret = "";
-            return ret;
-        }
-    }
+		public static string getgooee(uint gooee)
+		{
+			if (!pjse.GUIDIndex.TheGUIDIndex.IsLoaded)
+				pjse.GUIDIndex.TheGUIDIndex.Load();
+			string ret = pjse.GUIDIndex.TheGUIDIndex[gooee];
+			if (ret == null)
+				ret = "";
+			return ret;
+		}
+	}
 }

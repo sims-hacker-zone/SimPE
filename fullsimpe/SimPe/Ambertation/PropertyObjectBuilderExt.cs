@@ -19,26 +19,23 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using System.Threading;
+using System.ComponentModel;
+using System.Drawing;
+using System.Globalization;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.ComponentModel;
-using System.Globalization;
 using System.Resources;
-using System.Drawing;
+using System.Threading;
 
 namespace Ambertation
 {
-	
-
-	
-
 	/// <summary>
 	/// Meta Descriptions for a Property
 	/// </summary>
-	public class PropertyDescription 
+	public class PropertyDescription
 	{
 		string desc;
+
 		/// <summary>
 		/// The Description of the Property (=Help Text)
 		/// </summary>
@@ -48,97 +45,123 @@ namespace Ambertation
 		}
 
 		string cat;
+
 		/// <summary>
-		/// The Category of the Property 
+		/// The Category of the Property
 		/// </summary>
 		public string Category
 		{
 			get { return cat; }
-		}		
+		}
 
 		bool ro;
+
 		/// <summary>
 		/// Tru iof this Property is ReadOnly
 		/// </summary>
 		public bool ReadOnly
 		{
-			get {return ro;}
+			get { return ro; }
 		}
 
 		object prop;
+
 		/// <summary>
 		/// The Property (=Content)
 		/// </summary>
 		public object Property
 		{
-			get { 
-				if (prop.GetType()==typeof(byte) ||
-					prop.GetType()==typeof(short) ||
-					prop.GetType()==typeof(ushort) ||
-					prop.GetType()==typeof(int) ||
-					prop.GetType()==typeof(uint) ||
-					prop.GetType()==typeof(long) ||
-					prop.GetType()==typeof(ulong)
-					) 
+			get
+			{
+				if (
+					prop.GetType() == typeof(byte)
+					|| prop.GetType() == typeof(short)
+					|| prop.GetType() == typeof(ushort)
+					|| prop.GetType() == typeof(int)
+					|| prop.GetType() == typeof(uint)
+					|| prop.GetType() == typeof(long)
+					|| prop.GetType() == typeof(ulong)
+				)
 				{
 					return new BaseChangeableNumber(prop);
 				}
-				/*else if (prop.GetType()==typeof(Ambertation.FloatColor)) 
+				/*else if (prop.GetType()==typeof(Ambertation.FloatColor))
 				{
 					return ((FloatColor)prop).Color;
 				}*/
-				return prop; 
+				return prop;
 			}
-			set { 
-				if (value.GetType()==typeof(BaseChangeableNumber)) 
+			set
+			{
+				if (value.GetType() == typeof(BaseChangeableNumber))
 				{
 					prop = ((BaseChangeableNumber)value).ObjectValue;
-				} 
-				else { 
-					try 
+				}
+				else
+				{
+					try
 					{
-						if (type.IsEnum) 
+						if (type.IsEnum)
 						{
-							if (value.GetType()==typeof(int))				
+							if (value.GetType() == typeof(int))
+								prop = System.Enum.ToObject(
+									type,
+									System.Convert.ToInt32(value)
+								);
+							/*else if (value.GetType()==typeof(uint))
 								prop = System.Enum.ToObject(type, System.Convert.ToInt32(value));
-							/*else if (value.GetType()==typeof(uint))				
+							else if (value.GetType()==typeof(short))
 								prop = System.Enum.ToObject(type, System.Convert.ToInt32(value));
-							else if (value.GetType()==typeof(short))								
-								prop = System.Enum.ToObject(type, System.Convert.ToInt32(value));
-							else if (value.GetType()==typeof(ushort))								
+							else if (value.GetType()==typeof(ushort))
 								prop = System.Enum.ToObject(type, System.Convert.ToInt32(value));*/
 							else
-								prop = System.Enum.ToObject(type, type.GetField(value.ToString()).GetValue(null));
-
-						} 
-						else if ((type == typeof(FloatColor)) && (value.GetType()==typeof(string)))
+								prop = System.Enum.ToObject(
+									type,
+									type.GetField(value.ToString()).GetValue(null)
+								);
+						}
+						else if (
+							(type == typeof(FloatColor))
+							&& (value.GetType() == typeof(string))
+						)
 						{
 							prop = FloatColor.FromString(value.ToString());
 						}
-						else if ((type == typeof(FloatColor)) && (value.GetType()==typeof(Color)))
+						else if (
+							(type == typeof(FloatColor))
+							&& (value.GetType() == typeof(Color))
+						)
 						{
 							prop = FloatColor.FromColor((Color)value);
-						} 	
-						else if (type.GetInterface("Ambertation.IPropertyClass") == typeof(Ambertation.IPropertyClass))
-						{
-							prop = System.Activator.CreateInstance(type, new object[] {value});
 						}
-						else 
+						else if (
+							type.GetInterface("Ambertation.IPropertyClass")
+							== typeof(Ambertation.IPropertyClass)
+						)
 						{
-							prop = System.Convert.ChangeType(value, type); 							
+							prop = System.Activator.CreateInstance(
+								type,
+								new object[] { value }
+							);
 						}
-					} 
-					catch 
+						else
+						{
+							prop = System.Convert.ChangeType(value, type);
+						}
+					}
+					catch
 					{
 						//this is a special Handle for Booleans
-						if (type==typeof(bool) && value.GetType()==typeof(string)) 
+						if (type == typeof(bool) && value.GetType() == typeof(string))
 						{
-							string s=(string)value;
-							s=s.Trim();
-							if (s=="0") prop = false;
-							else prop = true;
-						} 
-						else 
+							string s = (string)value;
+							s = s.Trim();
+							if (s == "0")
+								prop = false;
+							else
+								prop = true;
+						}
+						else
 						{
 							prop = value;
 							type = value.GetType();
@@ -149,14 +172,23 @@ namespace Ambertation
 		}
 
 		Type type;
+
 		/// <summary>
 		/// Returns the Type of the Object
 		/// </summary>
-		public Type Type 
+		public Type Type
 		{
 			get { return type; }
 		}
 
+		/// <summary>
+		/// Creates a new Instance
+		/// </summary>
+		/// <param name="category"></param>
+		/// <param name="description"></param>
+		/// <param name="property"></param>
+		public PropertyDescription(string category, string description, object property)
+			: this(category, description, property, property.GetType(), false) { }
 
 		/// <summary>
 		/// Creates a new Instance
@@ -164,22 +196,13 @@ namespace Ambertation
 		/// <param name="category"></param>
 		/// <param name="description"></param>
 		/// <param name="property"></param>
-		public PropertyDescription(string category, string description, object property) :
-			this(category, description, property, property.GetType(), false)
-		{
-			
-		}
-
-		/// <summary>
-		/// Creates a new Instance
-		/// </summary>
-		/// <param name="category"></param>
-		/// <param name="description"></param>
-		/// <param name="property"></param>
-		public PropertyDescription(string category, string description, object property, bool ro) :
-			this(category, description, property, property.GetType(), ro)
-		{
-		}
+		public PropertyDescription(
+			string category,
+			string description,
+			object property,
+			bool ro
+		)
+			: this(category, description, property, property.GetType(), ro) { }
 
 		/// <summary>
 		/// Creates a new Instance
@@ -189,7 +212,13 @@ namespace Ambertation
 		/// <param name="property"></param>
 		/// <param name="type">type of the Object</param>
 		/// <param name="ro">ReadOnly?</param>
-		public PropertyDescription(string category, string description, object property, Type type, bool ro) 
+		public PropertyDescription(
+			string category,
+			string description,
+			object property,
+			Type type,
+			bool ro
+		)
 		{
 			desc = description;
 			cat = category;
@@ -202,7 +231,7 @@ namespace Ambertation
 		/// Create a clone (this will NOT copy the property, but set it to null!!!)
 		/// </summary>
 		/// <returns>The cloned Object</returns>
-		public PropertyDescription Clone() 
+		public PropertyDescription Clone()
 		{
 			return new PropertyDescription(cat, desc, null, type, ro);
 		}
@@ -224,29 +253,41 @@ namespace Ambertation
 			AssemblyName myAsmName = new AssemblyName();
 			myAsmName.Name = "EmittedAssembly";
 
-			AssemblyBuilder myAsmBuilder = myDomain.DefineDynamicAssembly(myAsmName,
-				AssemblyBuilderAccess.Run);
+			AssemblyBuilder myAsmBuilder = myDomain.DefineDynamicAssembly(
+				myAsmName,
+				AssemblyBuilderAccess.Run
+			);
 
-			ModuleBuilder myModBuilder = myAsmBuilder.DefineDynamicModule("EmittedModule");
+			ModuleBuilder myModBuilder = myAsmBuilder.DefineDynamicModule(
+				"EmittedModule"
+			);
 
-			TypeBuilder myTypeBuilder = myModBuilder.DefineType("Ambertation", 
-				TypeAttributes.Public);
+			TypeBuilder myTypeBuilder = myModBuilder.DefineType(
+				"Ambertation",
+				TypeAttributes.Public
+			);
 
-			
 			//Add all properties
-			foreach (string k in ht.Keys) 
+			foreach (string k in ht.Keys)
 			{
 				object o = ht[k];
-				if (o.GetType()==typeof(PropertyDescription)) 
+				if (o.GetType() == typeof(PropertyDescription))
 				{
 					PropertyDescription pd = (PropertyDescription)o;
 					o = pd.Property;
-					if (o.GetType()== typeof(FloatColor)) 
+					if (o.GetType() == typeof(FloatColor))
 						o = ((FloatColor)o).Color;
 
-					AddProperty(k, myTypeBuilder, o, pd.Description, pd.Category, pd.ReadOnly);
-				} 
-				else 
+					AddProperty(
+						k,
+						myTypeBuilder,
+						o,
+						pd.Description,
+						pd.Category,
+						pd.ReadOnly
+					);
+				}
+				else
 				{
 					AddProperty(k, myTypeBuilder, o, "[Unknown Property]", null, false);
 				}
@@ -255,29 +296,27 @@ namespace Ambertation
 			//Creat type and an Instance
 			custDataType = myTypeBuilder.CreateType();
 			instance = Activator.CreateInstance(custDataType);
-			
-			foreach (string k in ht.Keys) 
+
+			foreach (string k in ht.Keys)
 			{
 				Object val = ht[k];
 
-				if (val.GetType()==typeof(PropertyDescription))  
+				if (val.GetType() == typeof(PropertyDescription))
 				{
 					PropertyDescription pd = (PropertyDescription)val;
 					val = pd.Property;
-					if (val.GetType()== typeof(FloatColor)) val = ((FloatColor)val).Color;
-
-				} 
+					if (val.GetType() == typeof(FloatColor))
+						val = ((FloatColor)val).Color;
+				}
 
 				custDataType.InvokeMember(
-						k, 
-						BindingFlags.SetProperty,
-						null, 
-						instance, 
-						new object[]{ val }
-						);
-								
+					k,
+					BindingFlags.SetProperty,
+					null,
+					instance,
+					new object[] { val }
+				);
 			}
-    
 		}
 
 		/// <summary>
@@ -286,13 +325,19 @@ namespace Ambertation
 		/// <param name="custNamePropBldr"></param>
 		/// <param name="attrType"></param>
 		/// <param name="val"></param>
-		internal static void AddAttribute(PropertyBuilder custNamePropBldr, Type attrType, string val)
+		internal static void AddAttribute(
+			PropertyBuilder custNamePropBldr,
+			Type attrType,
+			string val
+		)
 		{
-			ConstructorInfo classCtorCat =
-				attrType.GetConstructor(new Type[] { typeof(string) });
+			ConstructorInfo classCtorCat = attrType.GetConstructor(
+				new Type[] { typeof(string) }
+			);
 			CustomAttributeBuilder myCABuilder = new CustomAttributeBuilder(
 				classCtorCat,
-				new object[] { val });
+				new object[] { val }
+			);
 			custNamePropBldr.SetCustomAttribute(myCABuilder);
 		}
 
@@ -302,13 +347,19 @@ namespace Ambertation
 		/// <param name="custNamePropBldr"></param>
 		/// <param name="attrType"></param>
 		/// <param name="val"></param>
-		internal static void AddAttribute(PropertyBuilder custNamePropBldr, Type attrType, bool val)
+		internal static void AddAttribute(
+			PropertyBuilder custNamePropBldr,
+			Type attrType,
+			bool val
+		)
 		{
-			ConstructorInfo classCtorCat =
-				attrType.GetConstructor(new Type[] { typeof(bool) });
+			ConstructorInfo classCtorCat = attrType.GetConstructor(
+				new Type[] { typeof(bool) }
+			);
 			CustomAttributeBuilder myCABuilder = new CustomAttributeBuilder(
 				classCtorCat,
-				new object[] { val });
+				new object[] { val }
+			);
 			custNamePropBldr.SetCustomAttribute(myCABuilder);
 		}
 
@@ -318,13 +369,20 @@ namespace Ambertation
 		/// <param name="custNamePropBldr"></param>
 		/// <param name="attrType"></param>
 		/// <param name="val"></param>
-		internal static void AddAttribute(PropertyBuilder custNamePropBldr, Type attrType, object val, bool a)
+		internal static void AddAttribute(
+			PropertyBuilder custNamePropBldr,
+			Type attrType,
+			object val,
+			bool a
+		)
 		{
-			ConstructorInfo classCtorCat =
-				attrType.GetConstructor(new Type[] { val.GetType() });
+			ConstructorInfo classCtorCat = attrType.GetConstructor(
+				new Type[] { val.GetType() }
+			);
 			CustomAttributeBuilder myCABuilder = new CustomAttributeBuilder(
 				classCtorCat,
-				new object[] { val });
+				new object[] { val }
+			);
 			custNamePropBldr.SetCustomAttribute(myCABuilder);
 		}
 
@@ -337,34 +395,52 @@ namespace Ambertation
 		/// <param name="category">Category the Property is assigned to</param>
 		/// <param name="description">Description for this Category</param>
 		/// <param name="ro">true if this Item should be ReadOnly</param>
-		public static void AddProperty(string name, TypeBuilder myTypeBuilder, object o, string description, string category, bool ro)
+		public static void AddProperty(
+			string name,
+			TypeBuilder myTypeBuilder,
+			object o,
+			string description,
+			string category,
+			bool ro
+		)
 		{
 			Type type = o.GetType();
-			FieldBuilder customerNameBldr = myTypeBuilder.DefineField("_"+name.ToLower(),
+			FieldBuilder customerNameBldr = myTypeBuilder.DefineField(
+				"_" + name.ToLower(),
 				type,
-				FieldAttributes.Private);
+				FieldAttributes.Private
+			);
 
-			
 			PropertyBuilder custNamePropBldr = myTypeBuilder.DefineProperty(
 				name,
 				PropertyAttributes.HasDefault,
 				type,
-				new Type[] { });			
+				new Type[] { }
+			);
 
 			//Define Category-Attribute
-			if (category!=null) if (category!="") AddAttribute(custNamePropBldr, typeof(CategoryAttribute), category);
+			if (category != null)
+				if (category != "")
+					AddAttribute(custNamePropBldr, typeof(CategoryAttribute), category);
 
 			//Define Description-Attribute
-			if (description!=null) AddAttribute(custNamePropBldr, typeof(DescriptionAttribute), description);
+			if (description != null)
+				AddAttribute(
+					custNamePropBldr,
+					typeof(DescriptionAttribute),
+					description
+				);
 			AddAttribute(custNamePropBldr, typeof(ReadOnlyAttribute), ro);
 			//AddAttribute(custNamePropBldr, typeof(DefaultValueAttribute), o, true);
-			
+
 
 			// First, we'll define the behavior of the "get" property for CustomerName as a method.
-			MethodBuilder custNameGetPropMthdBldr = myTypeBuilder.DefineMethod("Get"+name,
-				MethodAttributes.Public,    
+			MethodBuilder custNameGetPropMthdBldr = myTypeBuilder.DefineMethod(
+				"Get" + name,
+				MethodAttributes.Public,
 				type,
-				new Type[] { });
+				new Type[] { }
+			);
 
 			ILGenerator custNameGetIL = custNameGetPropMthdBldr.GetILGenerator();
 
@@ -373,23 +449,24 @@ namespace Ambertation
 			custNameGetIL.Emit(OpCodes.Ret);
 
 			// Now, we'll define the behavior of the "set" property for CustomerName.
-			MethodBuilder custNameSetPropMthdBldr = myTypeBuilder.DefineMethod("Set"+name,
-				MethodAttributes.Public,    
+			MethodBuilder custNameSetPropMthdBldr = myTypeBuilder.DefineMethod(
+				"Set" + name,
+				MethodAttributes.Public,
 				null,
-				new Type[] { type });
+				new Type[] { type }
+			);
 
 			ILGenerator custNameSetIL = custNameSetPropMthdBldr.GetILGenerator();
 
-			
 			custNameSetIL.Emit(OpCodes.Ldarg_0);
 			custNameSetIL.Emit(OpCodes.Ldarg_1);
 			custNameSetIL.Emit(OpCodes.Stfld, customerNameBldr);
 			custNameSetIL.Emit(OpCodes.Ret);
 
-			// Last, we must map the two methods created above to our PropertyBuilder to 
-			// their corresponding behaviors, "get" and "set" respectively. 
+			// Last, we must map the two methods created above to our PropertyBuilder to
+			// their corresponding behaviors, "get" and "set" respectively.
 			custNamePropBldr.SetGetMethod(custNameGetPropMthdBldr);
-			custNamePropBldr.SetSetMethod(custNameSetPropMthdBldr);				
+			custNamePropBldr.SetSetMethod(custNameSetPropMthdBldr);
 		}
 
 		/// <summary>
@@ -397,21 +474,29 @@ namespace Ambertation
 		/// </summary>
 		public Hashtable Properties
 		{
-			get 
+			get
 			{
-				if (instance == null) return new Hashtable();
+				if (instance == null)
+					return new Hashtable();
 
 				Hashtable ret = new Hashtable();
-				foreach (string k in ht.Keys) 
+				foreach (string k in ht.Keys)
 				{
-					object val = custDataType.InvokeMember(k, BindingFlags.GetProperty,
-						null, instance, new object[]{ });
+					object val = custDataType.InvokeMember(
+						k,
+						BindingFlags.GetProperty,
+						null,
+						instance,
+						new object[] { }
+					);
 
-					if (val.GetType()==typeof(BaseChangeableNumber)) val = ((BaseChangeableNumber)val).ObjectValue;
-					else if (val is Color) val = FloatColor.FromColor((Color)val);
+					if (val.GetType() == typeof(BaseChangeableNumber))
+						val = ((BaseChangeableNumber)val).ObjectValue;
+					else if (val is Color)
+						val = FloatColor.FromColor((Color)val);
 					ret[k] = val;
 				}
-				
+
 				return ret;
 			}
 		}
@@ -421,10 +506,7 @@ namespace Ambertation
 		/// </summary>
 		public object Instance
 		{
-			get 
-			{
-				return instance;
-			}
+			get { return instance; }
 		}
 	}
 }

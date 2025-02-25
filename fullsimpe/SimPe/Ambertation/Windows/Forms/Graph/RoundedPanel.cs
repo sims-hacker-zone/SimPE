@@ -17,14 +17,14 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-using Ambertation.Drawing;
- using System;
+using System;
 using System.Collections;
 using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Data;
 using System.Windows.Forms;
+using Ambertation.Drawing;
 
 namespace Ambertation.Windows.Forms.Graph
 {
@@ -33,7 +33,8 @@ namespace Ambertation.Windows.Forms.Graph
 	/// </summary>
 	public abstract class RoundedPanel : GraphItemBase
 	{
-		public RoundedPanel() :base ()
+		public RoundedPanel()
+			: base()
 		{
 			base.BackColor = Color.Transparent;
 			bg = Color.DarkOrange;
@@ -41,20 +42,17 @@ namespace Ambertation.Windows.Forms.Graph
 			bdcl = Color.FromArgb(90, Color.Black);
 			fadecl = Color.FromArgb(80, Color.White);
 			fade = 0.9f;
-		}		
+		}
 
 		#region public Properties
 
 		Color bg;
 		public Color PanelColor
 		{
-			get
-			{
-				return bg;
-			}
+			get { return bg; }
 			set
 			{
-				if (bg != value) 
+				if (bg != value)
 				{
 					bg = value;
 					Invalidate();
@@ -65,9 +63,10 @@ namespace Ambertation.Windows.Forms.Graph
 		float fade;
 		public float Fade
 		{
-			get {return fade;}
-			set {
-				if (fade != value) 
+			get { return fade; }
+			set
+			{
+				if (fade != value)
 				{
 					fade = value;
 					Invalidate();
@@ -78,10 +77,10 @@ namespace Ambertation.Windows.Forms.Graph
 		Color fadecl;
 		public Color FadeColor
 		{
-			get {return fadecl;}
-			set 
+			get { return fadecl; }
+			set
 			{
-				if (fadecl != value) 
+				if (fadecl != value)
 				{
 					fadecl = value;
 					Invalidate();
@@ -92,10 +91,10 @@ namespace Ambertation.Windows.Forms.Graph
 		Color gradcl;
 		public Color GradientColor
 		{
-			get {return gradcl;}
-			set 
+			get { return gradcl; }
+			set
 			{
-				if (gradcl != value) 
+				if (gradcl != value)
 				{
 					gradcl = value;
 					Invalidate();
@@ -106,10 +105,10 @@ namespace Ambertation.Windows.Forms.Graph
 		Color bdcl;
 		public Color BorderColor
 		{
-			get {return bdcl;}
-			set 
+			get { return bdcl; }
+			set
 			{
-				if (bdcl != value) 
+				if (bdcl != value)
 				{
 					bdcl = value;
 					Invalidate();
@@ -118,109 +117,196 @@ namespace Ambertation.Windows.Forms.Graph
 		}
 		#endregion
 
-		#region Event Override		
-		protected override void OnPaint(System.Drawing.Graphics g, Image canvas, Rectangle dst, Rectangle src)
-		{			
-			if (!Focused && fade<1)
+		#region Event Override
+		protected override void OnPaint(
+			System.Drawing.Graphics g,
+			Image canvas,
+			Rectangle dst,
+			Rectangle src
+		)
+		{
+			if (!Focused && fade < 1)
 			{
-				System.Drawing.Imaging.ImageAttributes imgAttributes = SetupImageAttr(fade);
-				g.DrawImage(canvas, dst, src.Left, src.Top, src.Width, src.Height, System.Drawing.GraphicsUnit.Pixel, imgAttributes);
-			} 
-			else 
+				System.Drawing.Imaging.ImageAttributes imgAttributes = SetupImageAttr(
+					fade
+				);
+				g.DrawImage(
+					canvas,
+					dst,
+					src.Left,
+					src.Top,
+					src.Width,
+					src.Height,
+					System.Drawing.GraphicsUnit.Pixel,
+					imgAttributes
+				);
+			}
+			else
 			{
 				g.DrawImage(canvas, dst, src, System.Drawing.GraphicsUnit.Pixel);
-			}			
-		}		
+			}
+		}
 
 		internal override void OnLostFocus(EventArgs e)
 		{
-			base.OnLostFocus (e);	
+			base.OnLostFocus(e);
 			this.CompleteRedraw();
-			Refresh();	
+			Refresh();
 		}
 
 		internal override void OnGotFocus(EventArgs e)
 		{
 			//this.SendToFront();
-			base.OnGotFocus (e);	
+			base.OnGotFocus(e);
 			this.CompleteRedraw();
-			Refresh();	
-		}		
-		
+			Refresh();
+		}
+
 		#endregion
 
 		#region Basic Draw Methods
 		static System.Drawing.Imaging.ImageAttributes SetupImageAttr(float alpha)
 		{
-			float[][] ptsArray ={ 
-									new float[] {1, 0, 0, 0, 0},
-									new float[] {0, 1, 0, 0, 0},
-									new float[] {0, 0, 1, 0, 0},
-									new float[] {0, 0, 0, alpha, 0}, 
-									new float[] {0, 0, 0, 0, 1}}; 
-			System.Drawing.Imaging.ColorMatrix clrMatrix = new System.Drawing.Imaging.ColorMatrix(ptsArray);
-			System.Drawing.Imaging.ImageAttributes imgAttributes = new System.Drawing.Imaging.ImageAttributes();
-			imgAttributes.SetColorMatrix(clrMatrix,
+			float[][] ptsArray =
+			{
+				new float[] { 1, 0, 0, 0, 0 },
+				new float[] { 0, 1, 0, 0, 0 },
+				new float[] { 0, 0, 1, 0, 0 },
+				new float[] { 0, 0, 0, alpha, 0 },
+				new float[] { 0, 0, 0, 0, 1 },
+			};
+			System.Drawing.Imaging.ColorMatrix clrMatrix =
+				new System.Drawing.Imaging.ColorMatrix(ptsArray);
+			System.Drawing.Imaging.ImageAttributes imgAttributes =
+				new System.Drawing.Imaging.ImageAttributes();
+			imgAttributes.SetColorMatrix(
+				clrMatrix,
 				System.Drawing.Imaging.ColorMatrixFlag.Default,
-				System.Drawing.Imaging.ColorAdjustType.Bitmap);
+				System.Drawing.Imaging.ColorAdjustType.Bitmap
+			);
 
 			return imgAttributes;
 		}
 
-		protected void DrawNiceRoundRect(System.Drawing.Graphics gr, int left, int top, int width, int height)
+		protected void DrawNiceRoundRect(
+			System.Drawing.Graphics gr,
+			int left,
+			int top,
+			int width,
+			int height
+		)
 		{
-			int rad = Math.Min(Math.Min(20, height/2), width/2);
+			int rad = Math.Min(Math.Min(20, height / 2), width / 2);
 			DrawNiceRoundRect(gr, left, top, width, height, rad, PanelColor);
 		}
 
-		protected void DrawNiceRoundRect(System.Drawing.Graphics gr, int left, int top, int width, int height, int rad, Color panelColor)
-		{			
-			DrawNiceRoundRectStart(gr, left, top, width, height, rad, panelColor, BorderColor, GradientColor, FadeColor, Focused);
+		protected void DrawNiceRoundRect(
+			System.Drawing.Graphics gr,
+			int left,
+			int top,
+			int width,
+			int height,
+			int rad,
+			Color panelColor
+		)
+		{
+			DrawNiceRoundRectStart(
+				gr,
+				left,
+				top,
+				width,
+				height,
+				rad,
+				panelColor,
+				BorderColor,
+				GradientColor,
+				FadeColor,
+				Focused
+			);
 			this.DrawText(gr);
-			DrawNiceRoundRectEnd(gr, left, top, width, height, rad, panelColor, BorderColor, GradientColor, FadeColor, Focused);
+			DrawNiceRoundRectEnd(
+				gr,
+				left,
+				top,
+				width,
+				height,
+				rad,
+				panelColor,
+				BorderColor,
+				GradientColor,
+				FadeColor,
+				Focused
+			);
 		}
 
-		protected static void DrawNiceRoundRectStart(System.Drawing.Graphics gr, int left, int top, int width, int height, int rad, Color bg, Color borderColor, Color gradientColor, Color fadeColor, bool focused)
+		protected static void DrawNiceRoundRectStart(
+			System.Drawing.Graphics gr,
+			int left,
+			int top,
+			int width,
+			int height,
+			int rad,
+			Color bg,
+			Color borderColor,
+			Color gradientColor,
+			Color fadeColor,
+			bool focused
+		)
 		{
-			Rectangle srect = new Rectangle(left, top, width-1, height-1);
+			Rectangle srect = new Rectangle(left, top, width - 1, height - 1);
 
-			
 			Pen linepen = new Pen(borderColor);
-			if (focused) 
+			if (focused)
 			{
-				
 				LinearGradientBrush linGrBrush = new LinearGradientBrush(
-					new Point(left, top+height),
-					new Point(left, top),					
+					new Point(left, top + height),
+					new Point(left, top),
 					bg,
-					gradientColor); 
+					gradientColor
+				);
 
-
-				float[] relativeIntensities = {0.0f, 0.05f, 0.3f};
-				float[] relativePositions   = {0.0f, 0.65f, 1.0f};
+				float[] relativeIntensities = { 0.0f, 0.05f, 0.3f };
+				float[] relativePositions = { 0.0f, 0.65f, 1.0f };
 
 				//Create a Blend object and assign it to linGrBrush.
 				Blend blend = new Blend();
 				blend.Factors = relativeIntensities;
 				blend.Positions = relativePositions;
-				linGrBrush.Blend = blend;							
-				
-				Ambertation.Drawing.GraphicRoutines.FillRoundRect(gr, linGrBrush, srect, rad);			
+				linGrBrush.Blend = blend;
+
+				Ambertation.Drawing.GraphicRoutines.FillRoundRect(
+					gr,
+					linGrBrush,
+					srect,
+					rad
+				);
 				linGrBrush.Dispose();
-			} 
-			else 
+			}
+			else
 			{
 				Brush b = new SolidBrush(bg);
-				Ambertation.Drawing.GraphicRoutines.FillRoundRect(gr, b, srect, rad);	
-				b.Dispose();				
+				Ambertation.Drawing.GraphicRoutines.FillRoundRect(gr, b, srect, rad);
+				b.Dispose();
 			}
 
 			linepen.Dispose();
 		}
 
-		protected static void DrawNiceRoundRectEnd(System.Drawing.Graphics gr, int left, int top, int width, int height, int rad, Color bg, Color borderColor, Color gradientColor, Color fadeColor, bool focused)
+		protected static void DrawNiceRoundRectEnd(
+			System.Drawing.Graphics gr,
+			int left,
+			int top,
+			int width,
+			int height,
+			int rad,
+			Color bg,
+			Color borderColor,
+			Color gradientColor,
+			Color fadeColor,
+			bool focused
+		)
 		{
-			Rectangle srect = new Rectangle(left, top, width-1, height-1);
+			Rectangle srect = new Rectangle(left, top, width - 1, height - 1);
 			Pen linepen = new Pen(borderColor);
 			Ambertation.Drawing.GraphicRoutines.DrawRoundRect(gr, linepen, srect, rad);
 			linepen.Dispose();
@@ -228,20 +314,17 @@ namespace Ambertation.Windows.Forms.Graph
 			if (!focused)
 			{
 				Brush b = new SolidBrush(fadeColor);
-				Ambertation.Drawing.GraphicRoutines.FillRoundRect(gr, b, srect, rad);	
+				Ambertation.Drawing.GraphicRoutines.FillRoundRect(gr, b, srect, rad);
 				b.Dispose();
 			}
 		}
 
 		protected override void UserDraw(System.Drawing.Graphics gr)
 		{
-			
-			DrawNiceRoundRect(gr, 0, 0, Width, Height);		
+			DrawNiceRoundRect(gr, 0, 0, Width, Height);
 		}
 
-		protected virtual void DrawText(System.Drawing.Graphics gr)
-		{
-		}
+		protected virtual void DrawText(System.Drawing.Graphics gr) { }
 		#endregion
 	}
 }

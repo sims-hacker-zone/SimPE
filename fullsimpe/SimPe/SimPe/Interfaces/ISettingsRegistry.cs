@@ -25,14 +25,14 @@ namespace SimPe.Interfaces
 	/// Summary description for ISettingsRegistry.
 	/// </summary>
 	public interface ISettingsRegistry
-	{		
+	{
 		/// <summary>
 		/// Registers Settings to the Registry
 		/// </summary>
 		/// <param name="settings">The Topic to register</param>
 		/// <remarks>The tool must only be added if the Registry doesnt already contain it</remarks>
-		void RegisterSettings(SimPe.Interfaces.ISettings settings);	
-	
+		void RegisterSettings(SimPe.Interfaces.ISettings settings);
+
 		/// <summary>
 		/// Registers all listed Settings with this Registry
 		/// </summary>
@@ -47,13 +47,9 @@ namespace SimPe.Interfaces
 		/// <remarks>The tool must only be added if the Registry doesnt already contain it</remarks>
 		void Register(Plugin.ISettingsFactory factory);
 
-		
 		/// <summary>
 		/// Returns the List of Known Settings
 		/// </summary>
-		ISettings[] Settings
-		{
-			get;
-		}		
+		ISettings[] Settings { get; }
 	}
 }

@@ -8,16 +8,16 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class XWant : SimPe.PackedFiles.Wrapper.Cpf
 	{
-		
 		static Hashtable wanttypelookup;
 		static Hashtable wantnamelookup;
 
 		/// <summary>
 		/// creates a new Instance
 		/// </summary>
-		public XWant():base()
+		public XWant()
+			: base()
 		{
-			if (wanttypelookup==null) 
+			if (wanttypelookup == null)
 			{
 				wanttypelookup = new Hashtable();
 				wantnamelookup = new Hashtable();
@@ -38,7 +38,7 @@ namespace SimPe.Plugin
 				wanttypelookup["sim"] = WantType.Sim;
 
 				wantnamelookup[(byte)WantType.Skill] = "Skill";
-				wanttypelookup["skill"] = WantType.Skill;				
+				wanttypelookup["skill"] = WantType.Skill;
 			}
 		}
 
@@ -53,7 +53,7 @@ namespace SimPe.Plugin
 				"Quaxi",
 				"---",
 				2
-				);   
+			);
 		}
 
 		/// <summary>
@@ -63,13 +63,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				uint[] types = {
-								   Data.MetaData.XWNT
-							   };
-			
+				uint[] types = { Data.MetaData.XWNT };
+
 				return types;
 			}
-		}		
+		}
 
 		#region Default Attribute
 		public uint StringInstance
@@ -126,21 +124,22 @@ namespace SimPe.Plugin
 			set { this.GetSaveItem("nodeText").StringValue = value; }
 		}
 
-		
 		public WantType WantType
 		{
-			get { 
+			get
+			{
 				object o = wanttypelookup[ObjectType.Trim().ToLower()];
-				if (o!=null)
-					if (o.GetType()!=typeof(string)) 
+				if (o != null)
+					if (o.GetType() != typeof(string))
 						return (WantType)o;
 
 				return WantType.None;
 			}
-			set { 
+			set
+			{
 				object o = wantnamelookup[(byte)value];
-				if (o!=null)
-					if (o.GetType()==typeof(string)) 
+				if (o != null)
+					if (o.GetType() == typeof(string))
 						ObjectType = (string)o;
 				ObjectType = "None";
 			}
@@ -148,12 +147,14 @@ namespace SimPe.Plugin
 
 		public Interfaces.Files.IPackedFileDescriptor IconFileDescriptor
 		{
-			get 
+			get
 			{
-				SimPe.Packages.PackedFileDescriptor pfd = new SimPe.Packages.PackedFileDescriptor();
+				SimPe.Packages.PackedFileDescriptor pfd =
+					new SimPe.Packages.PackedFileDescriptor();
 				pfd.Type = Data.MetaData.SIM_IMAGE_FILE;
 				pfd.LongInstance = IconInstance;
-				if (pfd.Instance==0) pfd.Instance = SecondaryIconInstance;
+				if (pfd.Instance == 0)
+					pfd.Instance = SecondaryIconInstance;
 				pfd.Group = 0x499DB772;
 
 				return pfd;
@@ -165,14 +166,20 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return "GUID=0x"+Helper.HexString(this.FileDescriptor.Instance)+", Folder="+this.Folder+", ObjectType="+this.ObjectType;
+				return "GUID=0x"
+					+ Helper.HexString(this.FileDescriptor.Instance)
+					+ ", Folder="
+					+ this.Folder
+					+ ", ObjectType="
+					+ this.ObjectType;
 			}
 		}
 
 		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
 		{
-			if (!this.Processed) ProcessData(FileDescriptor, Package);
-			return this.Folder+" / "+this.NodeText+" ("+this.ObjectType+")";
+			if (!this.Processed)
+				ProcessData(FileDescriptor, Package);
+			return this.Folder + " / " + this.NodeText + " (" + this.ObjectType + ")";
 		}
 	}
 }

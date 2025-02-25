@@ -19,31 +19,35 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Wrapper;
 
 namespace SimPe.PackedFiles.Wrapper
 {
 	/// <summary>
 	/// Used to decode the Group Cache
-	/// </summary>	
+	/// </summary>
 	public class GroupCache
-		: AbstractWrapper				//Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-		, IFileWrapper					//This Interface is used when loading a File
-		, IFileWrapperSaveExtension		//This Interface (if available) will be used to store a File	
-		, IGroupCache
+		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
+			,
+			IFileWrapper //This Interface is used when loading a File
+			,
+			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
+			,
+			IGroupCache
 	{
 		#region Attributes
 		uint id;
 		GroupCacheItems items;
+
 		/// <summary>
 		/// Returns the Items stored in the FIle
 		/// </summary>
 		/// <remarks>Do not add Items based on this List! use the Add Method!!</remarks>
-		internal GroupCacheItems Items 
+		internal GroupCacheItems Items
 		{
-			get {return items;}
+			get { return items; }
 		}
 
 		Hashtable map;
@@ -54,8 +58,9 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public GroupCache() : base()
-		{		
+		public GroupCache()
+			: base()
+		{
 			id = 0x05;
 			items = new GroupCacheItems();
 			map = new Hashtable();
@@ -70,24 +75,32 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <returns></returns>
 		string AbsoluteFileName(string flname)
 		{
-            flname = flname.Replace("%userdatadir%", PathProvider.SimSavegameFolder.Trim().ToLower());
-            foreach (ExpansionItem ei in PathProvider.Global.Expansions)
-            {
-                string add = ei.Version.ToString();
-                if (add == "0") add = "";
-                flname = flname.Replace("%gamedatadir"+add+"%", ei.InstallFolder.Trim().ToLower());
-            }
+			flname = flname.Replace(
+				"%userdatadir%",
+				PathProvider.SimSavegameFolder.Trim().ToLower()
+			);
+			foreach (ExpansionItem ei in PathProvider.Global.Expansions)
+			{
+				string add = ei.Version.ToString();
+				if (add == "0")
+					add = "";
+				flname = flname.Replace(
+					"%gamedatadir" + add + "%",
+					ei.InstallFolder.Trim().ToLower()
+				);
+			}
 
 			return flname;
 		}
-		
+
 		/// <summary>
 		/// Add a new Item
 		/// </summary>
 		/// <param name="gci">The Item to Add</param>
-		public void Add(GroupCacheItem gci) 
+		public void Add(GroupCacheItem gci)
 		{
-			if (gci.LocalGroup>maxgroup) maxgroup = gci.LocalGroup;
+			if (gci.LocalGroup > maxgroup)
+				maxgroup = gci.LocalGroup;
 			items.Add(gci);
 			map[AbsoluteFileName(gci.FileName)] = gci;
 		}
@@ -96,7 +109,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Remove a Item
 		/// </summary>
 		/// <param name="gci">The Item you want to remove</param>
-		public void Remove(GroupCacheItem gci) 
+		public void Remove(GroupCacheItem gci)
 		{
 			items.Remove(gci);
 			map.Remove(AbsoluteFileName(gci.FileName));
@@ -110,23 +123,24 @@ namespace SimPe.PackedFiles.Wrapper
 		public IGroupCacheItem GetItem(string flname)
 		{
 			GroupCacheItem gci = (GroupCacheItem)map[flname.Trim().ToLower()];
-			if (gci==null) 
+			if (gci == null)
 			{
 				gci = new GroupCacheItem();
 				gci.FileName = flname;
-				gci.LocalGroup = maxgroup+1;
+				gci.LocalGroup = maxgroup + 1;
 				Add(gci);
 			}
 
 			return gci;
 		}
-		
 
-		
 		#region IWrapper member
-		public override bool CheckVersion(uint version) { return true; }
+		public override bool CheckVersion(uint version)
+		{
+			return true;
+		}
 		#endregion
-		
+
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
@@ -139,12 +153,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <returns>Human Readable Description</returns>
 		protected override IWrapperInfo CreateWrapperInfo()
 		{
-			return new AbstractWrapperInfo(
-				"Group Cache Wrapper",
-				"Quaxi",
-				"---",
-				1
-				);   
+			return new AbstractWrapperInfo("Group Cache Wrapper", "Quaxi", "---", 1);
 		}
 
 		/// <summary>
@@ -156,31 +165,31 @@ namespace SimPe.PackedFiles.Wrapper
 			maxgroup = 0x6f000000;
 			items.Clear();
 			map.Clear();
-            //return;
+			//return;
 			id = reader.ReadUInt32();
 			uint ct = reader.ReadUInt32();
-			
-			for (int i=0; i<ct; i++) 
+
+			for (int i = 0; i < ct; i++)
 			{
-				try 
-				{					
+				try
+				{
 					GroupCacheItem gci = new GroupCacheItem();
 					gci.Unserialize(reader);
 					Add(gci);
 				}
 #if DEBUG
-                catch (Exception ex) 
+				catch (Exception ex)
 				{
 					Helper.ExceptionMessage("", ex);
-                }
+				}
 #else
-                catch (Exception) 
-				{
-                }
+				catch (Exception) { }
 #endif
-            }
+			}
 
-			over = reader.ReadBytes((int)(reader.BaseStream.Length - reader.BaseStream.Position));
+			over = reader.ReadBytes(
+				(int)(reader.BaseStream.Length - reader.BaseStream.Position)
+			);
 		}
 
 		/// <summary>
@@ -188,20 +197,21 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
-		{	
+		{
 			writer.Write(id);
-		
-			writer.Write((uint)items.Length);			
-			for (int i=0; i<items.Length; i++) items[i].Serialize(writer);	
+
+			writer.Write((uint)items.Length);
+			for (int i = 0; i < items.Length; i++)
+				items[i].Serialize(writer);
 			writer.Write(over);
 		}
 		#endregion
 
-		#region IFileWrapperSaveExtension Member		
+		#region IFileWrapperSaveExtension Member
 		//all covered by Serialize()
 		#endregion
 
@@ -214,9 +224,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				Byte[] sig = {
-								 
-							 };
+				Byte[] sig = { };
 				return sig;
 			}
 		}
@@ -228,14 +236,15 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				uint[] types = {
-								  0x54535053	//group
-							   };
-			
+				uint[] types =
+				{
+					0x54535053, //group
+				};
+
 				return types;
 			}
 		}
 
-		#endregion		
+		#endregion
 	}
 }

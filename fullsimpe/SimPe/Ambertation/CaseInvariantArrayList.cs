@@ -33,47 +33,48 @@ namespace Ambertation
 		/// <returns>true, if it was found</returns>
 		public override bool Contains(object o)
 		{
-			if (o is string) 
+			if (o is string)
 			{
 				string s = (string)o;
 				s = s.ToLower();
-				foreach(object i in this) 
+				foreach (object i in this)
 				{
-					if (i==null) continue;
-					if (i is string) 
-						if (((string)i).ToLower() == s) 
+					if (i == null)
+						continue;
+					if (i is string)
+						if (((string)i).ToLower() == s)
 							return true;
 				}
 
 				return false;
 			}
-			else return base.Contains(o);
-		}	
+			else
+				return base.Contains(o);
+		}
 
 		public override void Remove(object obj)
 		{
-			if (obj is string) 
+			if (obj is string)
 			{
 				string s = (string)obj;
 				s = s.ToLower();
-				for (int k=0; k<this.Count; k++)
+				for (int k = 0; k < this.Count; k++)
 				{
 					object i = this[k];
-					if (i==null) continue;
-					if (i is string) 
-						if (((string)i).ToLower() == s) 
+					if (i == null)
+						continue;
+					if (i is string)
+						if (((string)i).ToLower() == s)
 						{
 							base.RemoveAt(k);
 							return;
 						}
 				}
-					
-			} 
-			else 
+			}
+			else
 			{
-				base.Remove (obj);
+				base.Remove(obj);
 			}
 		}
-
 	}
 }

@@ -1,7 +1,7 @@
 using System;
-using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SimPe
@@ -23,6 +23,7 @@ namespace SimPe
 		private System.Windows.Forms.Panel panel3;
 		private System.Windows.Forms.LinkLabel linkLabel2;
 		private System.Windows.Forms.TextBox tbsup;
+
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -43,26 +44,29 @@ namespace SimPe
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
-				if(components != null)
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
 
 		#region Windows Form Designer generated code
 		/// <summary>
-		/// Required method for Designer support - do not modify 
+		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExceptionForm));
+			System.ComponentModel.ComponentResourceManager resources =
+				new System.ComponentModel.ComponentResourceManager(
+					typeof(ExceptionForm)
+				);
 			this.lberr = new System.Windows.Forms.Label();
 			this.gbdetail = new System.Windows.Forms.GroupBox();
 			this.rtb = new System.Windows.Forms.RichTextBox();
@@ -80,102 +84,117 @@ namespace SimPe
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.SuspendLayout();
-			// 
+			//
 			// lberr
-			// 
+			//
 			resources.ApplyResources(this.lberr, "lberr");
 			this.lberr.BackColor = System.Drawing.Color.Transparent;
 			this.lberr.ForeColor = System.Drawing.Color.Black;
 			this.lberr.Name = "lberr";
-			// 
+			//
 			// gbdetail
-			// 
+			//
 			resources.ApplyResources(this.gbdetail, "gbdetail");
 			this.gbdetail.Controls.Add(this.rtb);
 			this.gbdetail.Controls.Add(this.linkLabel1);
 			this.gbdetail.FlatStyle = System.Windows.Forms.FlatStyle.System;
 			this.gbdetail.Name = "gbdetail";
 			this.gbdetail.TabStop = false;
-			// 
+			//
 			// rtb
-			// 
+			//
 			resources.ApplyResources(this.rtb, "rtb");
 			this.rtb.BackColor = System.Drawing.SystemColors.ControlLightLight;
 			this.rtb.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.rtb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+			this.rtb.ForeColor = System.Drawing.Color.FromArgb(
+				((int)(((byte)(64)))),
+				((int)(((byte)(64)))),
+				((int)(((byte)(64))))
+			);
 			this.rtb.Name = "rtb";
 			this.rtb.ReadOnly = true;
-			// 
+			//
 			// linkLabel1
-			// 
+			//
 			resources.ApplyResources(this.linkLabel1, "linkLabel1");
 			this.linkLabel1.Name = "linkLabel1";
 			this.linkLabel1.TabStop = true;
-			this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.CopyToClipboard);
-			// 
+			this.linkLabel1.LinkClicked +=
+				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+					this.CopyToClipboard
+				);
+			//
 			// pictureBox1
-			// 
+			//
 			resources.ApplyResources(this.pictureBox1, "pictureBox1");
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.TabStop = false;
-			// 
+			//
 			// lldetail
-			// 
+			//
 			resources.ApplyResources(this.lldetail, "lldetail");
 			this.lldetail.Name = "lldetail";
 			this.lldetail.TabStop = true;
-			this.lldetail.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ShowDetail);
-			// 
+			this.lldetail.LinkClicked +=
+				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+					this.ShowDetail
+				);
+			//
 			// panel1
-			// 
+			//
 			this.panel1.Controls.Add(this.pictureBox1);
 			this.panel1.Controls.Add(this.lberr);
 			this.panel1.Controls.Add(this.lldetail);
 			resources.ApplyResources(this.panel1, "panel1");
 			this.panel1.Name = "panel1";
-			// 
+			//
 			// panel2
-			// 
+			//
 			this.panel2.Controls.Add(this.linkLabel2);
 			this.panel2.Controls.Add(this.panel3);
 			this.panel2.Controls.Add(this.button1);
 			this.panel2.Controls.Add(this.tbsup);
 			resources.ApplyResources(this.panel2, "panel2");
 			this.panel2.Name = "panel2";
-			// 
+			//
 			// linkLabel2
-			// 
+			//
 			resources.ApplyResources(this.linkLabel2, "linkLabel2");
 			this.linkLabel2.Name = "linkLabel2";
 			this.linkLabel2.TabStop = true;
 			this.linkLabel2.UseCompatibleTextRendering = true;
-			this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Support);
-			// 
+			this.linkLabel2.LinkClicked +=
+				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Support);
+			//
 			// panel3
-			// 
+			//
 			this.panel3.BackColor = System.Drawing.SystemColors.Control;
 			resources.ApplyResources(this.panel3, "panel3");
 			this.panel3.Name = "panel3";
-			// 
+			//
 			// button1
-			// 
+			//
 			resources.ApplyResources(this.button1, "button1");
 			this.button1.Name = "button1";
 			this.button1.Click += new System.EventHandler(this.button1_Click);
-			// 
+			//
 			// tbsup
-			// 
+			//
 			resources.ApplyResources(this.tbsup, "tbsup");
 			this.tbsup.Name = "tbsup";
-			// 
+			//
 			// ExceptionForm
-			// 
+			//
 			resources.ApplyResources(this, "$this");
 			this.BackColor = System.Drawing.SystemColors.ControlLightLight;
 			this.Controls.Add(this.panel2);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.gbdetail);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+			this.FormBorderStyle = System
+				.Windows
+				.Forms
+				.FormBorderStyle
+				.SizableToolWindow;
 			this.Name = "ExceptionForm";
 			this.gbdetail.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -184,7 +203,6 @@ namespace SimPe
 			this.panel2.ResumeLayout(false);
 			this.panel2.PerformLayout();
 			this.ResumeLayout(false);
-
 		}
 		#endregion
 
@@ -192,28 +210,35 @@ namespace SimPe
 		/// Show an Exception Message
 		/// </summary>
 		/// <param name="ex">The Exception that as thrown</param>
-		public static void Execute(Exception ex) 
+		public static void Execute(Exception ex)
 		{
 			Execute(ex.Message, ex);
 		}
 
-		private void Support(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		private void Support(
+			object sender,
+			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		)
 		{
-			try 
+			try
 			{
 				System.Windows.Forms.Help.ShowHelp(this, this.tbsup.Text);
-			} 
-			catch (Exception ex) 
+			}
+			catch (Exception ex)
 			{
 				Helper.ExceptionMessage("", ex);
 			}
 		}
 
 		[STAThread]
-		private void CopyToClipboard(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
-		{     
+		private void CopyToClipboard(
+			object sender,
+			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		)
+		{
 			string text = "";
-			foreach (string line in rtb.Lines) text += line + "\r\n"; // RichTextBox converts line breaks to seperate arrays, we need to put the line breaks back (CJH)
+			foreach (string line in rtb.Lines)
+				text += line + "\r\n"; // RichTextBox converts line breaks to seperate arrays, we need to put the line breaks back (CJH)
 			Clipboard.SetDataObject(text, true);
 			// Clipboard.SetDataObject(rtb.Text, true);
 		}
@@ -223,11 +248,17 @@ namespace SimPe
 			Close();
 		}
 
-		private void ShowDetail(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		private void ShowDetail(
+			object sender,
+			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		)
 		{
 			lldetail.Visible = false;
 			gbdetail.Visible = true;
-			this.Location = new System.Drawing.Point(this.Location.X - 168, this.Location.Y - 186);
+			this.Location = new System.Drawing.Point(
+				this.Location.X - 168,
+				this.Location.Y - 186
+			);
 			this.Size = new System.Drawing.Size(800, 600);
 			this.Refresh();
 		}
@@ -237,77 +268,126 @@ namespace SimPe
 		/// </summary>
 		/// <param name="message">The Message you want to display</param>
 		/// <param name="ex">The Exception that as thrown</param>
-		public static void Execute(string message, Exception ex) 
+		public static void Execute(string message, Exception ex)
 		{
-			if (Helper.NoErrors) return;
+			if (Helper.NoErrors)
+				return;
 
-			if (message==null) message = "";
-			if (message.Trim()=="") message = ex.Message;
+			if (message == null)
+				message = "";
+			if (message.Trim() == "")
+				message = ex.Message;
 
 			if (message.Contains("Microsoft.DirectX"))
 			{
-				ex = new Warning("You need to install MANAGED DirectX", "In order to perfrom some Operations, you need to install Managed DirectX (which is an additional set of libraries for the DirectX you installed with The Sims 2).\n\nPlease read http://www.modthesims2.com/index.php? for more Details.", ex);
+				ex = new Warning(
+					"You need to install MANAGED DirectX",
+					"In order to perfrom some Operations, you need to install Managed DirectX (which is an additional set of libraries for the DirectX you installed with The Sims 2).\n\nPlease read http://www.modthesims2.com/index.php? for more Details.",
+					ex
+				);
 				message = ex.Message;
 			}
 
 			Exception myex = ex;
 			string extrace = "";
-			while (myex!=null) 
+			while (myex != null)
 			{
-				extrace += myex.ToString()/*+": "+myex.Message*/+Helper.lbr;
+				extrace +=
+					myex.ToString() /*+": "+myex.Message*/
+					+ Helper.lbr;
 				myex = myex.InnerException;
 			}
 
 			ExceptionForm frm = new ExceptionForm();
 
-			frm.lberr.Text= message.Trim();
+			frm.lberr.Text = message.Trim();
 
 			string text = "";
-			text += @"{\rtf1\ansi\ansicpg1252\deff0\deflang1031{\fonttbl{\f0\fswiss\fprq2\fcharset0 Verdana;}}";
+			text +=
+				@"{\rtf1\ansi\ansicpg1252\deff0\deflang1031{\fonttbl{\f0\fswiss\fprq2\fcharset0 Verdana;}}";
 			text += @"{\colortbl ;\red90\green90\blue90;}";
-			if (ex.GetType()==typeof(Warning)) 
+			if (ex.GetType() == typeof(Warning))
 			{
 				frm.Text = "Warning";
-				frm.lberr.Text = "Warning: "+frm.lberr.Text;
+				frm.lberr.Text = "Warning: " + frm.lberr.Text;
 				frm.linkLabel2.Visible = false;
-				text += @"\viewkind4\uc1\pard\cf1\b\f0\fs16 This is just a Warning. It is supposed to keep you informed about a Problem. Most of the time this is not a Bug!\b0\par";				
+				text +=
+					@"\viewkind4\uc1\pard\cf1\b\f0\fs16 This is just a Warning. It is supposed to keep you informed about a Problem. Most of the time this is not a Bug!\b0\par";
 				text += @"\pard\par";
-				text += @"\pard\li284 "+((Warning)ex).Details.Trim().Replace("\\", "\\\\").Replace("\n", @"\par\pard\li284")+@"\par" ;
-			} 
+				text +=
+					@"\pard\li284 "
+					+ ((Warning)ex)
+						.Details.Trim()
+						.Replace("\\", "\\\\")
+						.Replace("\n", @"\par\pard\li284")
+					+ @"\par";
+			}
 #if DEBUG
-#else		
-			else 
+#else
+			else
 #endif
-			{				
+			{
 				text += @"\viewkind4\uc1\pard\cf1\b\f0\fs16 Message:\b0\par";
-				text += @"\pard\li284 "+message.Trim().Replace("\\", "\\\\").Replace("\n", @"\par\pard\li284")+@"\par" ;
-			
+				text +=
+					@"\pard\li284 "
+					+ message
+						.Trim()
+						.Replace("\\", "\\\\")
+						.Replace("\n", @"\par\pard\li284")
+					+ @"\par";
 
-				try 
+				try
 				{
 					text += @"\pard\par";
 					text += @"\b SimPe Version:\par";
-					text += @"\pard\li284\b0 "+Helper.StartedGui.ToString()+" ("+Helper.SimPeVersion.ProductMajorPart.ToString()+"."+Helper.SimPeVersion.ProductMinorPart.ToString()+"."+Helper.SimPeVersion.ProductBuildPart.ToString()+"."+Helper.SimPeVersion.ProductPrivatePart.ToString()+")."+@"\par";
-				} 
-				catch {}
+					text +=
+						@"\pard\li284\b0 "
+						+ Helper.StartedGui.ToString()
+						+ " ("
+						+ Helper.SimPeVersion.ProductMajorPart.ToString()
+						+ "."
+						+ Helper.SimPeVersion.ProductMinorPart.ToString()
+						+ "."
+						+ Helper.SimPeVersion.ProductBuildPart.ToString()
+						+ "."
+						+ Helper.SimPeVersion.ProductPrivatePart.ToString()
+						+ ")."
+						+ @"\par";
+				}
+				catch { }
 
 				text += @"\pard\par";
 				text += @"\b Exception Stack:\par";
-				text += @"\pard\li284\b0 "+extrace.Trim().Replace("\\", "\\\\").Replace("\n", @"\par\pard\li284")+@"\par";
-		
+				text +=
+					@"\pard\li284\b0 "
+					+ extrace
+						.Trim()
+						.Replace("\\", "\\\\")
+						.Replace("\n", @"\par\pard\li284")
+					+ @"\par";
 
-				if (ex.Source!=null) 
+				if (ex.Source != null)
 				{
 					text += @"\pard\par";
 					text += @"\b Source:\par";
-					text += @"\pard\li284\b0 "+ex.Source.Trim().Replace("\\", "\\\\").Replace("\n", @"\par\pard\li284")+@"\par";
+					text +=
+						@"\pard\li284\b0 "
+						+ ex.Source.Trim()
+							.Replace("\\", "\\\\")
+							.Replace("\n", @"\par\pard\li284")
+						+ @"\par";
 				}
-			
-				if (ex.StackTrace!=null) 
+
+				if (ex.StackTrace != null)
 				{
 					text += @"\pard\par";
 					text += @"\b Execution Stack:\par";
-					text += @"\pard\li284\b0 "+ex.StackTrace.Trim().Replace("\\", "\\\\").Replace("\n", @"\par\pard\li284")+@"\par";
+					text +=
+						@"\pard\li284\b0 "
+						+ ex.StackTrace.Trim()
+							.Replace("\\", "\\\\")
+							.Replace("\n", @"\par\pard\li284")
+						+ @"\par";
 				}
 			}
 
@@ -315,7 +395,10 @@ namespace SimPe
 			{
 				text += @"\pard\par";
 				text += @"\b Windows Version:\par";
-				text += @"\pard\li284\b0 " + Ambertation.Windows.Forms.APIHelp.GetVersionEx() + @"\par";
+				text +=
+					@"\pard\li284\b0 "
+					+ Ambertation.Windows.Forms.APIHelp.GetVersionEx()
+					+ @"\par";
 			}
 			catch { }
 
@@ -323,9 +406,15 @@ namespace SimPe
 			{
 				text += @"\pard\par";
 				text += @"\b .NET Version:\par";
-				text += @"\pard\li284\b0 " + System.Environment.Version.ToString().Replace("\\", "\\\\").Replace("\n", @"\par\pard\li284") + @"\par";
+				text +=
+					@"\pard\li284\b0 "
+					+ System
+						.Environment.Version.ToString()
+						.Replace("\\", "\\\\")
+						.Replace("\n", @"\par\pard\li284")
+					+ @"\par";
 			}
-			catch { }           
+			catch { }
 
 			text += @"}";
 
@@ -335,13 +424,13 @@ namespace SimPe
 			if (Helper.WindowsRegistry.HiddenMode)
 			{
 				frm.lldetail.Visible = false;
-			} 
-			else 
+			}
+			else
 			{
 				frm.gbdetail.Visible = false;
 				frm.Height -= frm.gbdetail.Height;
 			}
-			
+
 			frm.ShowDialog();
 		}
 	}

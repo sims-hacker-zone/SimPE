@@ -26,7 +26,7 @@ namespace SimPe.PackedFiles.UserInterface
 	/// <summary>
 	/// UI Handler for a Str Wrapper
 	/// </summary>
-	public class SlotUI : IPackedFileUI	
+	public class SlotUI : IPackedFileUI
 	{
 		#region Code to Startup the UI
 
@@ -34,21 +34,24 @@ namespace SimPe.PackedFiles.UserInterface
 		/// Holds a reference to the Form containing the UI Panel
 		/// </summary>
 		static SlotForm form;
+
 		/// <summary>
 		/// Constructor for the Class
 		/// </summary>
 		public SlotUI()
 		{
-			if (form==null) form = new SlotForm();
+			if (form == null)
+				form = new SlotForm();
 
-			SlotItemType[] vals = (SlotItemType[])System.Enum.GetValues(typeof(SlotItemType));
-			foreach (SlotItemType v in vals) 
+			SlotItemType[] vals = (SlotItemType[])
+				System.Enum.GetValues(typeof(SlotItemType));
+			foreach (SlotItemType v in vals)
 			{
 				form.cbtype.Items.Add(v);
 			}
 		}
 		#endregion
-		
+
 		#region IPackedFileUI Member
 
 		/// <summary>
@@ -56,10 +59,7 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		public System.Windows.Forms.Control GUIHandle
 		{
-			get
-			{
-				return form.pnslot;
-			}
+			get { return form.pnslot; }
 		}
 
 		/// <summary>
@@ -69,138 +69,181 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		/// <param name="wrapper">The Attributes of this Wrapper have to be displayed</param>
 		public void UpdateGUI(IFileWrapper wrapper)
-		{			
-			Slot wrp = (Slot) wrapper;
+		{
+			Slot wrp = (Slot)wrapper;
 			form.wrapper = wrp;
 			form.Tag = true;
-            int unyt = 10;
+			int unyt = 10;
 
-            form.tabControl1.Controls.Remove(form.tabPage1);
-            form.tabControl1.Controls.Remove(form.tabPage2);
-            form.tabControl1.Controls.Remove(form.tabPage3);
-            form.tabControl1.Controls.Remove(form.tabPage4);
-            form.tabControl1.Controls.Remove(form.tabPage5);
-            form.tabControl1.Controls.Remove(form.tabPageA);
-            form.tabControl1.Controls.Remove(form.tabPage6);
-            form.tabControl1.Controls.Remove(form.tabPage7);
+			form.tabControl1.Controls.Remove(form.tabPage1);
+			form.tabControl1.Controls.Remove(form.tabPage2);
+			form.tabControl1.Controls.Remove(form.tabPage3);
+			form.tabControl1.Controls.Remove(form.tabPage4);
+			form.tabControl1.Controls.Remove(form.tabPage5);
+			form.tabControl1.Controls.Remove(form.tabPageA);
+			form.tabControl1.Controls.Remove(form.tabPage6);
+			form.tabControl1.Controls.Remove(form.tabPage7);
 
-            if (wrp.Version >= 5)
-                form.tabControl1.Controls.Add(form.tabPage1);
-            if (wrp.Version >= 6)
-                form.tabControl1.Controls.Add(form.tabPage2);
-            if (wrp.Version >= 7)
-                form.tabControl1.Controls.Add(form.tabPage3);
-            if (wrp.Version >= 8)
-                form.tabControl1.Controls.Add(form.tabPage4);
-            if (wrp.Version >= 9)
-                form.tabControl1.Controls.Add(form.tabPage5);
-            if (wrp.Version == 10)
-                form.tabControl1.Controls.Add(form.tabPageA);
-            if (wrp.Version >= 0x10)
-                form.tabControl1.Controls.Add(form.tabPage6);
-            if (wrp.Version >= 0x40)
-                form.tabControl1.Controls.Add(form.tabPage7);
+			if (wrp.Version >= 5)
+				form.tabControl1.Controls.Add(form.tabPage1);
+			if (wrp.Version >= 6)
+				form.tabControl1.Controls.Add(form.tabPage2);
+			if (wrp.Version >= 7)
+				form.tabControl1.Controls.Add(form.tabPage3);
+			if (wrp.Version >= 8)
+				form.tabControl1.Controls.Add(form.tabPage4);
+			if (wrp.Version >= 9)
+				form.tabControl1.Controls.Add(form.tabPage5);
+			if (wrp.Version == 10)
+				form.tabControl1.Controls.Add(form.tabPageA);
+			if (wrp.Version >= 0x10)
+				form.tabControl1.Controls.Add(form.tabPage6);
+			if (wrp.Version >= 0x40)
+				form.tabControl1.Controls.Add(form.tabPage7);
 
-			try 
+			try
 			{
-                unyt = (form.lv.Width - 100) / 75;
-				form.tbver.Text = "0x"+Helper.HexString(wrp.Version);
+				unyt = (form.lv.Width - 100) / 75;
+				form.tbver.Text = "0x" + Helper.HexString(wrp.Version);
 				form.tbname.Text = wrp.FileName;
 
 				form.lv.BeginUpdate();
 				form.lv.Items.Clear();
 				form.lv.Columns.Clear();
 
-                // x40 = 9
-                // x30 = 9
-                // x60 = 2 = 750 so width / 75 is units of ten
-                // + 1 @ 100 = 850 so width / 85 is units of ten
+				// x40 = 9
+				// x30 = 9
+				// x60 = 2 = 750 so width / 75 is units of ten
+				// + 1 @ 100 = 850 so width / 85 is units of ten
 
-				System.Windows.Forms.ColumnHeader c = new System.Windows.Forms.ColumnHeader();
-                c.Text = "Type"; c.Width = 100; form.lv.Columns.Add(c);
+				System.Windows.Forms.ColumnHeader c =
+					new System.Windows.Forms.ColumnHeader();
+				c.Text = "Type";
+				c.Width = 100;
+				form.lv.Columns.Add(c);
 				c = new System.Windows.Forms.ColumnHeader();
-                c.Text = "Float1"; c.Width = unyt * 4; form.lv.Columns.Add(c);
+				c.Text = "Float1";
+				c.Width = unyt * 4;
+				form.lv.Columns.Add(c);
 				c = new System.Windows.Forms.ColumnHeader();
-                c.Text = "Float2"; c.Width = unyt * 4; form.lv.Columns.Add(c);
+				c.Text = "Float2";
+				c.Width = unyt * 4;
+				form.lv.Columns.Add(c);
 				c = new System.Windows.Forms.ColumnHeader();
-                c.Text = "Float3"; c.Width = unyt * 4; form.lv.Columns.Add(c);
+				c.Text = "Float3";
+				c.Width = unyt * 4;
+				form.lv.Columns.Add(c);
 				c = new System.Windows.Forms.ColumnHeader();
-                c.Text = "Int1"; c.Width = unyt * 3; form.lv.Columns.Add(c);
+				c.Text = "Int1";
+				c.Width = unyt * 3;
+				form.lv.Columns.Add(c);
 				c = new System.Windows.Forms.ColumnHeader();
-                c.Text = "Int2"; c.Width = unyt * 3; form.lv.Columns.Add(c);
+				c.Text = "Int2";
+				c.Width = unyt * 3;
+				form.lv.Columns.Add(c);
 				c = new System.Windows.Forms.ColumnHeader();
-                c.Text = "Int3"; c.Width = unyt * 3; form.lv.Columns.Add(c);
+				c.Text = "Int3";
+				c.Width = unyt * 3;
+				form.lv.Columns.Add(c);
 				c = new System.Windows.Forms.ColumnHeader();
-                c.Text = "Int4"; c.Width = unyt * 4; form.lv.Columns.Add(c);
+				c.Text = "Int4";
+				c.Width = unyt * 4;
+				form.lv.Columns.Add(c);
 				c = new System.Windows.Forms.ColumnHeader();
-                c.Text = "Int5"; c.Width = unyt * 3; form.lv.Columns.Add(c);
-				if (wrp.Version>=5) 
+				c.Text = "Int5";
+				c.Width = unyt * 3;
+				form.lv.Columns.Add(c);
+				if (wrp.Version >= 5)
 				{
 					c = new System.Windows.Forms.ColumnHeader();
-                    c.Text = "Float4"; c.Width = unyt * 4; form.lv.Columns.Add(c);
+					c.Text = "Float4";
+					c.Width = unyt * 4;
+					form.lv.Columns.Add(c);
 					c = new System.Windows.Forms.ColumnHeader();
-                    c.Text = "Float5"; c.Width = unyt * 4; form.lv.Columns.Add(c);
+					c.Text = "Float5";
+					c.Width = unyt * 4;
+					form.lv.Columns.Add(c);
 					c = new System.Windows.Forms.ColumnHeader();
-                    c.Text = "Float6"; c.Width = unyt * 4; form.lv.Columns.Add(c);
+					c.Text = "Float6";
+					c.Width = unyt * 4;
+					form.lv.Columns.Add(c);
 					c = new System.Windows.Forms.ColumnHeader();
-                    c.Text = "Int6"; c.Width = unyt * 3; form.lv.Columns.Add(c);
+					c.Text = "Int6";
+					c.Width = unyt * 3;
+					form.lv.Columns.Add(c);
 				}
-				if (wrp.Version>=6) 
+				if (wrp.Version >= 6)
 				{
 					c = new System.Windows.Forms.ColumnHeader();
-                    c.Text = "Shrt1"; c.Width = unyt * 3; form.lv.Columns.Add(c);
+					c.Text = "Shrt1";
+					c.Width = unyt * 3;
+					form.lv.Columns.Add(c);
 					c = new System.Windows.Forms.ColumnHeader();
-                    c.Text = "Shrt2"; c.Width = unyt * 3; form.lv.Columns.Add(c);
+					c.Text = "Shrt2";
+					c.Width = unyt * 3;
+					form.lv.Columns.Add(c);
 				}
-				if (wrp.Version>=7) 
+				if (wrp.Version >= 7)
 				{
 					c = new System.Windows.Forms.ColumnHeader();
-                    c.Text = "Float7"; c.Width = unyt * 6; form.lv.Columns.Add(c);
+					c.Text = "Float7";
+					c.Width = unyt * 6;
+					form.lv.Columns.Add(c);
 				}
-				if (wrp.Version>=8) 
+				if (wrp.Version >= 8)
 				{
 					c = new System.Windows.Forms.ColumnHeader();
-                    c.Text = "Int7"; c.Width = unyt * 3; form.lv.Columns.Add(c);
+					c.Text = "Int7";
+					c.Width = unyt * 3;
+					form.lv.Columns.Add(c);
 				}
-				if (wrp.Version>=9) 
+				if (wrp.Version >= 9)
 				{
 					c = new System.Windows.Forms.ColumnHeader();
-                    c.Text = "Int8"; c.Width = unyt * 4; form.lv.Columns.Add(c);
-                }
-                if (wrp.Version == 10)
-                {
-                    c = new System.Windows.Forms.ColumnHeader();
-                    c.Text = "Shrt3"; c.Width = unyt * 3; form.lv.Columns.Add(c);
-                }
-				if (wrp.Version>=0x10) 
-				{
-					c = new System.Windows.Forms.ColumnHeader();
-                    c.Text = "Float8"; c.Width = unyt * 6; form.lv.Columns.Add(c);
+					c.Text = "Int8";
+					c.Width = unyt * 4;
+					form.lv.Columns.Add(c);
 				}
-				if (wrp.Version>=0x40) 
+				if (wrp.Version == 10)
 				{
 					c = new System.Windows.Forms.ColumnHeader();
-                    c.Text = "Int9"; c.Width = unyt * 3; form.lv.Columns.Add(c);
+					c.Text = "Shrt3";
+					c.Width = unyt * 3;
+					form.lv.Columns.Add(c);
+				}
+				if (wrp.Version >= 0x10)
+				{
 					c = new System.Windows.Forms.ColumnHeader();
-                    c.Text = "Int10"; c.Width = unyt * 4; form.lv.Columns.Add(c);
+					c.Text = "Float8";
+					c.Width = unyt * 6;
+					form.lv.Columns.Add(c);
+				}
+				if (wrp.Version >= 0x40)
+				{
+					c = new System.Windows.Forms.ColumnHeader();
+					c.Text = "Int9";
+					c.Width = unyt * 3;
+					form.lv.Columns.Add(c);
+					c = new System.Windows.Forms.ColumnHeader();
+					c.Text = "Int10";
+					c.Width = unyt * 4;
+					form.lv.Columns.Add(c);
 				}
 
-				foreach (SlotItem i in wrp.Items) form.ShowItem(i);
+				foreach (SlotItem i in wrp.Items)
+					form.ShowItem(i);
 				form.lv.EndUpdate();
-			} 
-			finally 
+			}
+			finally
 			{
 				form.Tag = null;
 			}
-		}		
+		}
 
 		#endregion
-		
+
 		#region IDisposable Member
-		public virtual void Dispose()
-		{
-			
-		}
+		public virtual void Dispose() { }
 		#endregion
 	}
 }

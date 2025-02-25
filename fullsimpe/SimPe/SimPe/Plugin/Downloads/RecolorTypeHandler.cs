@@ -8,10 +8,8 @@ namespace SimPe.Plugin.Downloads
 	public class RecolorTypeHandler : Downloads.ITypeHandler, System.IDisposable
 	{
 		protected PackageInfo nfo;
-		public RecolorTypeHandler()
-		{
-			
-		}
+
+		public RecolorTypeHandler() { }
 
 		protected void PostponedRender(object sender, EventArgs e)
 		{
@@ -20,72 +18,109 @@ namespace SimPe.Plugin.Downloads
 			PackageInfo nfo = sender as PackageInfo;
 			object[] data = nfo.RenderData as object[];
 			tmppkg = SimPe.Packages.GeneratableFile.LoadFromFile(data[1].ToString());
-			if (tmppkg==null) return;
-			
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fii = SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.AddNewChild();
+			if (tmppkg == null)
+				return;
+
+			SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fii =
+				SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.AddNewChild();
 			SimPe.Plugin.MmatWrapper mmat = data[0] as SimPe.Plugin.MmatWrapper;
 
 			mmat.ProcessData(mmat.FileDescriptor, tmppkg);
-			if (mmat!=null) 
-			{					
+			if (mmat != null)
+			{
 				fii.AddIndexFromPackage(mmat.Package, true);
-				if (System.IO.File.Exists(System.IO.Path.Combine(SimPe.Helper.SimPePluginPath, "simpe.workshop.plugin.dll")))
+				if (
+					System.IO.File.Exists(
+						System.IO.Path.Combine(
+							SimPe.Helper.SimPePluginPath,
+							"simpe.workshop.plugin.dll"
+						)
+					)
+				)
 				{
 					try
 					{
-						Ambertation.Scenes.Scene scn = SimPe.Plugin.PreviewForm.RenderScene(mmat); // depends on simpe.workshop.plugin.dll, pity as that may not exist
-						nfo.RenderedImage = Downloads.DefaultTypeHandler.Get3dPreview(scn);
+						Ambertation.Scenes.Scene scn =
+							SimPe.Plugin.PreviewForm.RenderScene(mmat); // depends on simpe.workshop.plugin.dll, pity as that may not exist
+						nfo.RenderedImage = Downloads.DefaultTypeHandler.Get3dPreview(
+							scn
+						);
 						scn.Dispose();
 						mmat.Dispose();
 					}
 					catch { }
 				}
-				else nfo.RenderedImage = GetImage.Demo;
-
+				else
+					nfo.RenderedImage = GetImage.Demo;
 			}
-
 
 			fii.CloseAssignedPackages();
 			SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.RemoveChild(fii);
-			
+
 			this.DisposeTmpPkg();
 			Wait.SubStop();
 		}
 
-		SimPe.Interfaces.Files.IPackageFile tmppkg;		
-		protected virtual bool BeforeLoadContent(SimPe.Cache.PackageType type, SimPe.Interfaces.Files.IPackageFile pkg)
-		{			
+		SimPe.Interfaces.Files.IPackageFile tmppkg;
+
+		protected virtual bool BeforeLoadContent(
+			SimPe.Cache.PackageType type,
+			SimPe.Interfaces.Files.IPackageFile pkg
+		)
+		{
 			bool ret = false;
 			DisposeTmpPkg();
-			
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(Data.MetaData.MMAT);
-			if (pfds.Length>0)
+
+			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
+				Data.MetaData.MMAT
+			);
+			if (pfds.Length > 0)
 			{
 				SimPe.Plugin.MmatWrapper mmat = new MmatWrapper();
 				mmat.ProcessData(pfds[0], pkg);
-				nfo.Name = mmat.ModelName+", "+mmat.SubsetName;
+				nfo.Name = mmat.ModelName + ", " + mmat.SubsetName;
 
-				if (SimPe.Plugin.DownloadsToolFactory.Settings.LoadBasedataForRecolors) 
+				if (SimPe.Plugin.DownloadsToolFactory.Settings.LoadBasedataForRecolors)
 				{
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fii = SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.AddNewChild();	
-					if (System.IO.File.Exists(pkg.SaveFileName)) 
+					SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fii =
+						SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.AddNewChild();
+					if (System.IO.File.Exists(pkg.SaveFileName))
 					{
 						string dir = System.IO.Path.GetDirectoryName(pkg.SaveFileName);
-						string[]files = System.IO.Directory.GetFiles(dir);
+						string[] files = System.IO.Directory.GetFiles(dir);
 						foreach (string file in files)
-							if (file.EndsWith(".package")||file.EndsWith(".sims"))
-									if (!FileTable.FileIndex.Contains(file))
-										fii.AddIndexFromPackage(file);
+							if (file.EndsWith(".package") || file.EndsWith(".sims"))
+								if (!FileTable.FileIndex.Contains(file))
+									fii.AddIndexFromPackage(file);
 					}
-					if (System.IO.File.Exists(System.IO.Path.Combine(SimPe.Helper.SimPePluginPath, "simpe.workshop.plugin.dll")))
+					if (
+						System.IO.File.Exists(
+							System.IO.Path.Combine(
+								SimPe.Helper.SimPePluginPath,
+								"simpe.workshop.plugin.dll"
+							)
+						)
+					)
 					{
 						//SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.WriteContentToConsole();
-						tmppkg = SimPe.Plugin.Tool.Dockable.ObjectWorkshopHelper.CreatCloneByGuid(mmat.ObjectGUID); // depends on simpe.workshop.plugin.dll, pity as that may not exist
-						if (SimPe.Plugin.DownloadsToolFactory.Settings.BuildPreviewForRecolors)
+						tmppkg =
+							SimPe.Plugin.Tool.Dockable.ObjectWorkshopHelper.CreatCloneByGuid(
+								mmat.ObjectGUID
+							); // depends on simpe.workshop.plugin.dll, pity as that may not exist
+						if (
+							SimPe
+								.Plugin
+								.DownloadsToolFactory
+								.Settings
+								.BuildPreviewForRecolors
+						)
 						{
-							if (tmppkg.Index.Length > 0) ret = true;
+							if (tmppkg.Index.Length > 0)
+								ret = true;
 							tmppkg.CopyDescriptors(pkg);
-							foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in tmppkg.Index)
+							foreach (
+								SimPe.Interfaces.Files.IPackedFileDescriptor pfd in tmppkg.Index
+							)
 								if (pfd.Equals(mmat.FileDescriptor))
 									mmat.ProcessData(pfd, tmppkg);
 
@@ -95,7 +130,10 @@ namespace SimPe.Plugin.Downloads
 							string rname = null;
 							do
 							{
-								rname = System.IO.Path.Combine(Helper.SimPeTeleportPath, index + "_" + name);
+								rname = System.IO.Path.Combine(
+									Helper.SimPeTeleportPath,
+									index + "_" + name
+								);
 								index++;
 							} while (System.IO.File.Exists(rname));
 							tmppkg.Save(rname);
@@ -105,21 +143,27 @@ namespace SimPe.Plugin.Downloads
 						}
 					}
 
-					fii.CloseAssignedPackages();	
-					SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.RemoveChild(fii);				
+					fii.CloseAssignedPackages();
+					SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.RemoveChild(
+						fii
+					);
 				}
 			}
 
 			return ret;
 		}
-		protected virtual void AfterLoadContent(SimPe.Cache.PackageType type, SimPe.Interfaces.Files.IPackageFile pkg)
+
+		protected virtual void AfterLoadContent(
+			SimPe.Cache.PackageType type,
+			SimPe.Interfaces.Files.IPackageFile pkg
+		)
 		{
 			DisposeTmpPkg();
 		}
 
 		void DisposeTmpPkg()
 		{
-			if (tmppkg!=null) 
+			if (tmppkg != null)
 			{
 				tmppkg.Close();
 				SimPe.Packages.StreamFactory.CloseStream(tmppkg.SaveFileName);
@@ -129,27 +173,33 @@ namespace SimPe.Plugin.Downloads
 			tmppkg = null;
 		}
 
-
-		
-
 		#region ITypeHandler Member
 
-		
 
-		public void LoadContent(SimPe.Cache.PackageType type, SimPe.Interfaces.Files.IPackageFile pkg)
+
+		public void LoadContent(
+			SimPe.Cache.PackageType type,
+			SimPe.Interfaces.Files.IPackageFile pkg
+		)
 		{
 			nfo = new PackageInfo(pkg);
-			bool hasprev = BeforeLoadContent(type, pkg);			
-			
-			if (tmppkg!=null) 
+			bool hasprev = BeforeLoadContent(type, pkg);
+
+			if (tmppkg != null)
 			{
-				Downloads.XTypeHandler hnd = new XTypeHandler(SimPe.Cache.PackageType.CustomObject, tmppkg, false, false);
-				if (hnd.Objects.Length>0) 
+				Downloads.XTypeHandler hnd = new XTypeHandler(
+					SimPe.Cache.PackageType.CustomObject,
+					tmppkg,
+					false,
+					false
+				);
+				if (hnd.Objects.Length > 0)
 				{
 					PackageInfo snfo = hnd.Objects[0] as PackageInfo;
-					if (snfo!=null)
+					if (snfo != null)
 					{
-						if (snfo.Name.Trim()=="") snfo.Name = nfo.Name;
+						if (snfo.Name.Trim() == "")
+							snfo.Name = nfo.Name;
 						snfo.Image = nfo.Image;
 						snfo.RenderedImage = nfo.RenderedImage;
 						snfo.RenderData = nfo.RenderData;
@@ -157,26 +207,23 @@ namespace SimPe.Plugin.Downloads
 						nfo.Dispose();
 						nfo = snfo;
 						nfo.ClearGuidList();
-					}				
+					}
 				}
 				hnd.Dispose();
 			}
 
-			if (!hasprev) 
+			if (!hasprev)
 			{
 				nfo.Image = WallpaperTypeHandler.SetFromTxtr(pkg);
 				nfo.KnockoutThumbnail = false;
 			}
 
 			AfterLoadContent(type, pkg);
-		}		
+		}
 
 		public IPackageInfo[] Objects
 		{
-			get
-			{
-				return new IPackageInfo[] {nfo};
-			}
+			get { return new IPackageInfo[] { nfo }; }
 		}
 
 		#endregion
@@ -186,6 +233,5 @@ namespace SimPe.Plugin.Downloads
 			nfo = null;
 			DisposeTmpPkg();
 		}
-
 	}
 }

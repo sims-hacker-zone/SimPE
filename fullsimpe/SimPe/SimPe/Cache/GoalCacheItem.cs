@@ -16,21 +16,25 @@ namespace SimPe.Cache
 		public const byte VERSION = 1;
 
 		public GoalCacheItem()
-		{			
+		{
 			version = VERSION;
 			name = "";
 			pfd = new Packages.PackedFileDescriptor();
 		}
 
-		byte version;		
-		Interfaces.Files.IPackedFileDescriptor pfd;		
+		byte version;
+		Interfaces.Files.IPackedFileDescriptor pfd;
 
 		/// <summary>
 		/// Returns an (unitialized) FileDescriptor
 		/// </summary>
 		public Interfaces.Files.IPackedFileDescriptor FileDescriptor
 		{
-			get { pfd.Tag = this; return pfd; }
+			get
+			{
+				pfd.Tag = this;
+				return pfd;
+			}
 			set { pfd = value; }
 		}
 
@@ -69,43 +73,43 @@ namespace SimPe.Cache
 			set { thumb = value; }
 		}
 
-
 		public override string ToString()
 		{
-			return "name="+Name;
+			return "name=" + Name;
 		}
 
 		#region ICacheItem Member
 
-		public void Load(System.IO.BinaryReader reader) 
+		public void Load(System.IO.BinaryReader reader)
 		{
 			version = reader.ReadByte();
-			if (version>VERSION) throw new CacheException("Unknown CacheItem Version.", null, version);
-							
+			if (version > VERSION)
+				throw new CacheException("Unknown CacheItem Version.", null, version);
+
 			name = reader.ReadString();
 			pfd = new Packages.PackedFileDescriptor();
 			pfd.Type = reader.ReadUInt32();
-			pfd.Group = reader.ReadUInt32();			
+			pfd.Group = reader.ReadUInt32();
 			pfd.LongInstance = reader.ReadUInt64();
 			influence = reader.ReadInt32();
 			score = reader.ReadInt32();
-			guid = reader.ReadUInt32();			
+			guid = reader.ReadUInt32();
 
 			int size = reader.ReadInt32();
-			if (size==0) 
+			if (size == 0)
 			{
 				thumb = null;
-			} 
-			else 
+			}
+			else
 			{
 				byte[] data = reader.ReadBytes(size);
 				MemoryStream ms = new MemoryStream(data);
 
-				thumb = Image.FromStream(ms);				
+				thumb = Image.FromStream(ms);
 			}
 		}
 
-		public void Save(System.IO.BinaryWriter writer) 
+		public void Save(System.IO.BinaryWriter writer)
 		{
 			version = VERSION;
 			writer.Write(version);
@@ -117,11 +121,11 @@ namespace SimPe.Cache
 			writer.Write(score);
 			writer.Write(guid);
 
-			if (thumb==null) 
+			if (thumb == null)
 			{
 				writer.Write((int)0);
-			} 
-			else 
+			}
+			else
 			{
 				MemoryStream ms = new MemoryStream();
 				thumb.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
@@ -133,10 +137,7 @@ namespace SimPe.Cache
 
 		public byte Version
 		{
-			get
-			{
-				return version;
-			}
+			get { return version; }
 		}
 
 		#endregion

@@ -18,13 +18,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
 using System.Collections;
+using System.Drawing;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
 {
-	public class ObjectGraphNodeItem 
+	public class ObjectGraphNodeItem
 	{
 		byte enabled;
 		byte depend;
@@ -64,7 +64,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public void Serialize(System.IO.BinaryWriter writer)
@@ -76,23 +76,25 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			return index.ToString()+": 0x"+Helper.HexString(enabled)+", 0x"+Helper.HexString(depend);
+			return index.ToString()
+				+ ": 0x"
+				+ Helper.HexString(enabled)
+				+ ", 0x"
+				+ Helper.HexString(depend);
 		}
-
 	}
 
 	/// <summary>
 	/// This is the actual FileWrapper
 	/// </summary>
 	/// <remarks>
-	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads 
+	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public class ObjectGraphNode
-		: AbstractRcolBlock
+	public class ObjectGraphNode : AbstractRcolBlock
 	{
 		#region Attributes
-		
+
 
 		ObjectGraphNodeItem[] items;
 		public ObjectGraphNodeItem[] Items
@@ -102,13 +104,13 @@ namespace SimPe.Plugin
 		}
 
 		string filename;
-		public string FileName 
+		public string FileName
 		{
 			get { return filename; }
 			set { filename = value; }
 		}
 		#endregion
-		/*public Rcol Parent 
+		/*public Rcol Parent
 		{
 			get { return parent; }
 		}*/
@@ -116,13 +118,14 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public ObjectGraphNode(Rcol parent) : base(parent)
+		public ObjectGraphNode(Rcol parent)
+			: base(parent)
 		{
 			items = new ObjectGraphNodeItem[0];
 			filename = this.BlockName;
 			version = 4;
 		}
-		
+
 		#region IRcolBlock Member
 
 		/// <summary>
@@ -134,14 +137,16 @@ namespace SimPe.Plugin
 			version = reader.ReadUInt32();
 
 			items = new ObjectGraphNodeItem[reader.ReadUInt32()];
-			for (int i=0; i<items.Length; i++)
+			for (int i = 0; i < items.Length; i++)
 			{
 				items[i] = new ObjectGraphNodeItem();
 				items[i].Unserialize(reader);
 			}
 
-			if (version == 0x04) filename = reader.ReadString(); 
-			else filename = "cObjectGraphNode";
+			if (version == 0x04)
+				filename = reader.ReadString();
+			else
+				filename = "cObjectGraphNode";
 		}
 
 		/// <summary>
@@ -149,7 +154,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public override void Serialize(System.IO.BinaryWriter writer)
@@ -157,20 +162,22 @@ namespace SimPe.Plugin
 			writer.Write(version);
 
 			writer.Write((uint)items.Length);
-			for (int i=0; i<items.Length; i++)
+			for (int i = 0; i < items.Length; i++)
 			{
 				items[i].Serialize(writer);
 			}
 
-			if (version == 0x04) writer.Write(filename); 
+			if (version == 0x04)
+				writer.Write(filename);
 		}
-		
+
 		TabPage.ObjectGraphNode tObjectGraphNode;
 		public override System.Windows.Forms.TabPage TabPage
 		{
 			get
 			{
-				if (tObjectGraphNode==null) tObjectGraphNode = new SimPe.Plugin.TabPage.ObjectGraphNode();
+				if (tObjectGraphNode == null)
+					tObjectGraphNode = new SimPe.Plugin.TabPage.ObjectGraphNode();
 				return tObjectGraphNode;
 			}
 		}
@@ -179,15 +186,17 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
 		/// </summary>
-		protected override void InitTabPage() 
+		protected override void InitTabPage()
 		{
-			if (tObjectGraphNode==null) tObjectGraphNode = new SimPe.Plugin.TabPage.ObjectGraphNode();
-			
+			if (tObjectGraphNode == null)
+				tObjectGraphNode = new SimPe.Plugin.TabPage.ObjectGraphNode();
+
 			tObjectGraphNode.lb_ogn.Items.Clear();
-			for(int i=0; i<this.items.Length; i++) tObjectGraphNode.lb_ogn.Items.Add(items[i]);
+			for (int i = 0; i < this.items.Length; i++)
+				tObjectGraphNode.lb_ogn.Items.Add(items[i]);
 
 			tObjectGraphNode.tb_ogn_file.Text = this.filename;
-			tObjectGraphNode.tb_ogn_ver.Text = "0x"+Helper.HexString(this.version);
+			tObjectGraphNode.tb_ogn_ver.Text = "0x" + Helper.HexString(this.version);
 		}
 
 		public override string ToString()
@@ -199,11 +208,11 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (this.tObjectGraphNode!=null) this.tObjectGraphNode.Dispose();
+			if (this.tObjectGraphNode != null)
+				this.tObjectGraphNode.Dispose();
 			tObjectGraphNode = null;
 		}
 
 		#endregion
-
 	}
 }

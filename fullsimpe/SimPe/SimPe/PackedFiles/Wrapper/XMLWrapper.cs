@@ -25,7 +25,10 @@ namespace SimPe.PackedFiles.Wrapper
 	/// <summary>
 	/// Represents a PackedFile in XmlFormat
 	/// </summary>
-	public class Xml : AbstractWrapper, SimPe.Interfaces.Plugin.IFileWrapper, SimPe.Interfaces.Plugin.IFileWrapperSaveExtension
+	public class Xml
+		: AbstractWrapper,
+			SimPe.Interfaces.Plugin.IFileWrapper,
+			SimPe.Interfaces.Plugin.IFileWrapperSaveExtension
 	{
 		/// <summary>
 		/// the xml text
@@ -37,25 +40,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public string Text
 		{
-			get
-			{
-				return text;
-			}
-			set 
-			{
-				text = value;
-			}
+			get { return text; }
+			set { text = value; }
 		}
-		
+
 		#region IWrapper Member
 		protected override IWrapperInfo CreateWrapperInfo()
 		{
-			return new AbstractWrapperInfo(
-				"Default XML Wrapper",
-				"Quaxi",
-				"---",
-				1
-				); 
+			return new AbstractWrapperInfo("Default XML Wrapper", "Quaxi", "---", 1);
 		}
 		#endregion
 
@@ -65,19 +57,20 @@ namespace SimPe.PackedFiles.Wrapper
 			return new SimPe.PackedFiles.UserInterface.Xml();
 		}
 
-		public Xml() : base(){}
+		public Xml()
+			: base() { }
 
 		protected override void Unserialize(System.IO.BinaryReader reader)
-		{						
+		{
 			System.IO.StreamReader sr = new System.IO.StreamReader(reader.BaseStream);
 			text = sr.ReadToEnd();
 		}
 
-		protected override void Serialize(System.IO.BinaryWriter writer) 
+		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			byte[] data = new byte[Text.Length];
-            for (int i = 0; i < Text.Length; i++)
-            data[i] = (byte)Text[i];
+			for (int i = 0; i < Text.Length; i++)
+				data[i] = (byte)Text[i];
 			writer.Write(data);
 		}
 		#endregion
@@ -86,33 +79,27 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint[] AssignableTypes
 		{
-			get 
+			get
 			{
-				uint[] Types = {
-								 0x00000000, //UI Data 
-							     0xCD7FE87A, //Material Shaders                                 
-                                 0x7181C501, //Pet Unknown
-                                 0x0B9EB87E // Track Settings
-							   };
+				uint[] Types =
+				{
+					0x00000000, //UI Data
+					0xCD7FE87A, //Material Shaders
+					0x7181C501, //Pet Unknown
+					0x0B9EB87E, // Track Settings
+				};
 				return Types;
 			}
 		}
 
 		public Byte[] FileSignature
 		{
-			get 
+			get
 			{
-				Byte[] sig = {
-								 (byte)'<',
-								 (byte)'?',
-								 (byte)'x',
-								 (byte)'m',
-								 (byte)'l'								 
-							 };
+				Byte[] sig = { (byte)'<', (byte)'?', (byte)'x', (byte)'m', (byte)'l' };
 				return sig;
 			}
 		}
-
 
 		#endregion
 	}

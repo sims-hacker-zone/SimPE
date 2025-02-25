@@ -27,16 +27,17 @@ namespace SimPe.Plugin
 	/// This is the actual FileWrapper
 	/// </summary>
 	/// <remarks>
-	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads 
+	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
 	public class Want
-		: AbstractWrapper				//Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-		, IFileWrapper					//This Interface is used when loading a File
-		, IFileWrapperSaveExtension		//This Interface (if available) will be used to store a File
-		//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
+			,
+			IFileWrapper //This Interface is used when loading a File
+			,
+			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
+	//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 	{
-
 		#region Attributes
 		uint version;
 		public uint Version
@@ -50,7 +51,6 @@ namespace SimPe.Plugin
 			get { return lifewants; }
 			set { lifewants = value; }
 		}
-
 
 		WantItem[] wants;
 		public WantItem[] Wants
@@ -83,15 +83,24 @@ namespace SimPe.Plugin
 		/// </summary>
 		public SimPe.Interfaces.Wrapper.ISDesc SimDescription
 		{
-			get 
+			get
 			{
 				if (Package != null)
 				{
 					//return provider.SimDescriptionProvider.FindSim((ushort)this.FileDescriptor.Instance);
-					Interfaces.Files.IPackedFileDescriptor[] pfds = Package.FindFile(Data.MetaData.SIM_DESCRIPTION_FILE, 0, this.FileDescriptor.Instance);
-					if (pfds.Length>0)
+					Interfaces.Files.IPackedFileDescriptor[] pfds = Package.FindFile(
+						Data.MetaData.SIM_DESCRIPTION_FILE,
+						0,
+						this.FileDescriptor.Instance
+					);
+					if (pfds.Length > 0)
 					{
-						SimPe.PackedFiles.Wrapper.SDesc sdsc = new SimPe.PackedFiles.Wrapper.SDesc(provider.SimNameProvider, provider.SimFamilynameProvider, provider.SimDescriptionProvider);
+						SimPe.PackedFiles.Wrapper.SDesc sdsc =
+							new SimPe.PackedFiles.Wrapper.SDesc(
+								provider.SimNameProvider,
+								provider.SimFamilynameProvider,
+								provider.SimDescriptionProvider
+							);
 						sdsc.ProcessData(pfds[0], Package);
 
 						return sdsc;
@@ -104,7 +113,7 @@ namespace SimPe.Plugin
 
 		byte[] overhead;
 		Interfaces.IProviderRegistry provider;
-		public Interfaces.IProviderRegistry Provider 
+		public Interfaces.IProviderRegistry Provider
 		{
 			get { return provider; }
 		}
@@ -112,7 +121,8 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public Want(Interfaces.IProviderRegistry provider) : base()
+		public Want(Interfaces.IProviderRegistry provider)
+			: base()
 		{
 			this.provider = provider;
 
@@ -126,11 +136,12 @@ namespace SimPe.Plugin
 		}
 
 		#region IWrapper member
-		public override bool CheckVersion(uint version) 
+		public override bool CheckVersion(uint version)
 		{
-			if ( (version==0012) //0.10
-				|| (version==0013) //0.12
-				) 
+			if (
+				(version == 0012) //0.10
+				|| (version == 0013) //0.12
+			)
 			{
 				return true;
 			}
@@ -138,7 +149,7 @@ namespace SimPe.Plugin
 			return false;
 		}
 		#endregion
-		
+
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
@@ -156,8 +167,11 @@ namespace SimPe.Plugin
 				"Quaxi",
 				"---",
 				4,
-				System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.kweather.png"))
-				); 
+				System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream("SimPe.img.kweather.png")
+				)
+			);
 		}
 
 		/// <summary>
@@ -168,52 +182,57 @@ namespace SimPe.Plugin
 		{
 			version = reader.ReadUInt32();
 
-			if (version>=0x05) 
+			if (version >= 0x05)
 			{
 				lifewants = new WantItem[reader.ReadUInt32()];
-				for (int i=0; i<lifewants.Length; i++)
+				for (int i = 0; i < lifewants.Length; i++)
 				{
 					lifewants[i] = new WantItem(provider);
 					lifewants[i].Unserialize(reader);
 				}
 
 				maxwants = reader.ReadUInt32();
-			} 
-			else 
+			}
+			else
 			{
 				maxwants = 4;
 				lifewants = new WantItem[0];
 			}
 
 			wants = new WantItem[reader.ReadUInt32()];
-			for (int i=0; i<wants.Length; i++)
+			for (int i = 0; i < wants.Length; i++)
 			{
 				wants[i] = new WantItem(provider);
 				wants[i].Unserialize(reader);
 			}
 
-			if (version>=0x05) maxfears = reader.ReadUInt32();
-			else maxfears = 3;
+			if (version >= 0x05)
+				maxfears = reader.ReadUInt32();
+			else
+				maxfears = 3;
 
 			fears = new WantItem[reader.ReadUInt32()];
-			for (int i=0; i<fears.Length; i++)
+			for (int i = 0; i < fears.Length; i++)
 			{
 				fears[i] = new WantItem(provider);
 				fears[i].Unserialize(reader);
 			}
 
-			if (version>=0x05) unknown5 = reader.ReadUInt32();
+			if (version >= 0x05)
+				unknown5 = reader.ReadUInt32();
 			unknown1 = reader.ReadUInt32();
 			unknown2 = reader.ReadUInt32();
-			
+
 			items = new WantItemContainer[reader.ReadUInt32()];
-			for (int i=0; i<items.Length; i++)
+			for (int i = 0; i < items.Length; i++)
 			{
 				items[i] = new WantItemContainer(provider);
 				items[i].Unserialize(reader);
 			}
 
-			overhead = reader.ReadBytes((int)(reader.BaseStream.Length - reader.BaseStream.Position));
+			overhead = reader.ReadBytes(
+				(int)(reader.BaseStream.Length - reader.BaseStream.Position)
+			);
 		}
 
 		/// <summary>
@@ -221,50 +240,53 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(version);
 
-			if (version>=0x05) 
+			if (version >= 0x05)
 			{
-				writer.Write((uint)lifewants.Length);				
-				for (int i=0; i<lifewants.Length; i++)
+				writer.Write((uint)lifewants.Length);
+				for (int i = 0; i < lifewants.Length; i++)
 				{
 					lifewants[i].Serialize(writer);
 				}
 
 				writer.Write(maxwants);
-			} 
-			else 
+			}
+			else
 			{
 				maxwants = 4;
 				lifewants = new WantItem[0];
 			}
 
 			writer.Write((uint)wants.Length);
-			for (int i=0; i<wants.Length; i++)
+			for (int i = 0; i < wants.Length; i++)
 			{
 				wants[i].Serialize(writer);
 			}
 
-			if (version>=0x05) writer.Write(maxfears);
-			else maxfears = 3;
+			if (version >= 0x05)
+				writer.Write(maxfears);
+			else
+				maxfears = 3;
 
 			writer.Write((uint)fears.Length);
-			for (int i=0; i<fears.Length; i++)
+			for (int i = 0; i < fears.Length; i++)
 			{
 				fears[i].Serialize(writer);
 			}
 
-			if (version>=0x05) writer.Write(unknown5);
+			if (version >= 0x05)
+				writer.Write(unknown5);
 			writer.Write(unknown1);
 			writer.Write(unknown2);
-			
+
 			writer.Write((uint)items.Length);
-			for (int i=0; i<items.Length; i++)
+			for (int i = 0; i < items.Length; i++)
 			{
 				items[i].Serialize(writer);
 			}
@@ -273,7 +295,7 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		#region IFileWrapperSaveExtension Member		
+		#region IFileWrapperSaveExtension Member
 		//all covered by Serialize()
 		#endregion
 
@@ -284,10 +306,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get
-			{
-				return new byte[0];
-			}
+			get { return new byte[0]; }
 		}
 
 		/// <summary>
@@ -297,13 +316,14 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				uint[] types = {
-								   0xCD95548E   //handles the Want Files
-							   };
+				uint[] types =
+				{
+					0xCD95548E, //handles the Want Files
+				};
 				return types;
 			}
 		}
 
-		#endregion		
+		#endregion
 	}
 }

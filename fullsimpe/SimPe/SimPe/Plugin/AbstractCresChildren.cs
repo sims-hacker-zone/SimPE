@@ -20,22 +20,28 @@
 using System;
 using System.Collections;
 using System.Windows.Forms;
-using SimPe.Plugin;
-using SimPe.Interfaces.Scenegraph;
 using SimPe.Geometry;
+using SimPe.Interfaces.Scenegraph;
+using SimPe.Plugin;
 
 namespace SimPe.Plugin
 {
 	/// <summary>
 	/// Implemented common Methods of the ICresChildren Interface
 	/// </summary>
-	public abstract class AbstractCresChildren : AbstractRcolBlock, ICresChildren, System.Collections.IEnumerable, System.Collections.IEnumerator
+	public abstract class AbstractCresChildren
+		: AbstractRcolBlock,
+			ICresChildren,
+			System.Collections.IEnumerable,
+			System.Collections.IEnumerator
 	{
 		public abstract string GetName();
+
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public AbstractCresChildren(Rcol parent) : base(parent) 
+		public AbstractCresChildren(Rcol parent)
+			: base(parent)
 		{
 			this.Reset();
 		}
@@ -45,31 +51,39 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="index"></param>
 		/// <returns></returns>
-		public ICresChildren GetBlock(int index) 
+		public ICresChildren GetBlock(int index)
 		{
-			if (Parent==null) return null;
+			if (Parent == null)
+				return null;
 
-			if (index<0) return null;
-			if (index>= this.Parent.Blocks.Length) return null;
+			if (index < 0)
+				return null;
+			if (index >= this.Parent.Blocks.Length)
+				return null;
 
 			object o = Parent.Blocks[index];
 
-			if (o.GetType().GetInterface("ICresChildren", false) == typeof(ICresChildren)) 
+			if (
+				o.GetType().GetInterface("ICresChildren", false)
+				== typeof(ICresChildren)
+			)
 				return (ICresChildren)o;
-			
+
 			return null;
 		}
 
 		/// <summary>
 		/// Get the Index Number of this Block in the Parent
 		/// </summary>
-		public int Index 
+		public int Index
 		{
-			get 
+			get
 			{
-				if (parent==null) return -1;
-				for (int i=0; i<parent.Blocks.Length; i++)
-					if (parent.Blocks[i]==this) return i;
+				if (parent == null)
+					return -1;
+				for (int i = 0; i < parent.Blocks.Length; i++)
+					if (parent.Blocks[i] == this)
+						return i;
 				return -1;
 			}
 		}
@@ -81,13 +95,18 @@ namespace SimPe.Plugin
 		public IntArrayList GetParentBlocks()
 		{
 			IntArrayList l = new IntArrayList();
-			for (int i=0; i<parent.Blocks.Length; i++)			
+			for (int i = 0; i < parent.Blocks.Length; i++)
 			{
-				SimPe.Interfaces.Scenegraph.IRcolBlock irb = (SimPe.Interfaces.Scenegraph.IRcolBlock)parent.Blocks[i];
-				if (irb.GetType().GetInterface("ICresChildren", false) == typeof(ICresChildren)) 
+				SimPe.Interfaces.Scenegraph.IRcolBlock irb =
+					(SimPe.Interfaces.Scenegraph.IRcolBlock)parent.Blocks[i];
+				if (
+					irb.GetType().GetInterface("ICresChildren", false)
+					== typeof(ICresChildren)
+				)
 				{
 					SimPe.Interfaces.Scenegraph.ICresChildren icc = (ICresChildren)irb;
-					if (icc.ChildBlocks.Contains(Index)) l.Add(i);
+					if (icc.ChildBlocks.Contains(Index))
+						l.Add(i);
 				}
 			}
 			return l;
@@ -100,34 +119,25 @@ namespace SimPe.Plugin
 		public SimPe.Interfaces.Scenegraph.ICresChildren GetFirstParent()
 		{
 			IntArrayList l = GetParentBlocks();
-			if (l.Length==0) return null;
+			if (l.Length == 0)
+				return null;
 			return (SimPe.Interfaces.Scenegraph.ICresChildren)parent.Blocks[l[0]];
 		}
 
 		/// <summary>
 		/// Returns a List of all Child Blocks referenced by this Element
 		/// </summary>
-		public abstract IntArrayList ChildBlocks 
-		{
-			get;
-		}	
-	
+		public abstract IntArrayList ChildBlocks { get; }
+
 		/// <summary>
 		/// Returns an ImageIndex used to display the CRES Hirarchy
 		/// </summary>
-		public abstract int ImageIndex 
-		{
-			get;
-		}
-
+		public abstract int ImageIndex { get; }
 
 		/// <summary>
 		/// Returns the stored Transformation Node
 		/// </summary>
-		public abstract TransformNode StoredTransformNode
-		{
-			get;
-		}
+		public abstract TransformNode StoredTransformNode { get; }
 
 		/// <summary>
 		/// Contains all bones that were seen during the recursin
@@ -139,31 +149,37 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="bs">List of known Bones</param>
 		/// <param name="b">The bone you want o get the Absolute position for</param>
-		/// <param name="v">The offset for the calculation</param>		
+		/// <param name="v">The offset for the calculation</param>
 		/// <param name="eo">ElementOrder we want to use</param>
-		VectorTransformations GetAbsoluteTransformation(ICresChildren node, VectorTransformations v) 
+		VectorTransformations GetAbsoluteTransformation(
+			ICresChildren node,
+			VectorTransformations v
+		)
 		{
-			if (v==null) v = new VectorTransformations();
-			if (node == null) return v;
-			if (node.StoredTransformNode == null) return v;
-			if (seenbones.Contains(node.Index)) return v;
-			
+			if (v == null)
+				v = new VectorTransformations();
+			if (node == null)
+				return v;
+			if (node.StoredTransformNode == null)
+				return v;
+			if (seenbones.Contains(node.Index))
+				return v;
+
 			seenbones.Add(node.Index);
-			
+
 			/*v.Rotation = node.StoredTransformNode.Rotation * v.Rotation;
 			v.Rotation.MakeUnitQuaternion();
 
-			v.Translation = 
+			v.Translation =
 				node.StoredTransformNode.Rotation.Rotate(v.Translation + node.StoredTransformNode.Translation);					 */
-							
-			
-			v.Add(node.StoredTransformNode.Transformation);									
+
+
+			v.Add(node.StoredTransformNode.Transformation);
 			v = GetAbsoluteTransformation(node.GetFirstParent(), v);
-			
-							
+
 			return v;
 		}
-		
+
 		/// <summary>
 		/// Returns the effective Transformation, that is described by the CresHirarchy
 		/// </summary>
@@ -171,7 +187,7 @@ namespace SimPe.Plugin
 		public VectorTransformations GetHirarchyTransformations()
 		{
 			seenbones = new ArrayList();
-			return GetAbsoluteTransformation(this, null);				 
+			return GetAbsoluteTransformation(this, null);
 		}
 
 		/// <summary>
@@ -180,44 +196,39 @@ namespace SimPe.Plugin
 		/// <returns></returns>
 		public VectorTransformation GetEffectiveTransformation()
 		{
-			VectorTransformations list = GetHirarchyTransformations();	
-			VectorTransformation v = new VectorTransformation();			
+			VectorTransformations list = GetHirarchyTransformations();
+			VectorTransformation v = new VectorTransformation();
 
 #if DEBUG
 			System.IO.StreamWriter sw = System.IO.File.CreateText(@"G:\effect.txt");
 #endif
-			try 
+			try
 			{
 #if DEBUG
 				sw.WriteLine("-----------------------------------");
-				sw.WriteLine("    "+v.ToString());
+				sw.WriteLine("    " + v.ToString());
 #endif
-				
-			
-			VectorTransformation l = null;
-			for (int i=list.Length-1; i>=0; i--)			
-			{
-				VectorTransformation t = list[i];
-				t.Rotation.MakeUnitQuaternion();
+				VectorTransformation l = null;
+				for (int i = list.Length - 1; i >= 0; i--)
+				{
+					VectorTransformation t = list[i];
+					t.Rotation.MakeUnitQuaternion();
 
-				
-			
-				v.Rotation = v.Rotation * t.Rotation;
-				v.Translation =  t.Rotation.Rotate((v.Translation )) - t.Rotation.Rotate((t.Translation));				
-				//v.Rotation.MakeUnitQuaternion();
+					v.Rotation = v.Rotation * t.Rotation;
+					v.Translation =
+						t.Rotation.Rotate((v.Translation))
+						- t.Rotation.Rotate((t.Translation));
+					//v.Rotation.MakeUnitQuaternion();
 
 
 #if DEBUG
-				sw.WriteLine("++++"+t.ToString()+" "+t.Name);
-				sw.WriteLine("    "+v.ToString());
+					sw.WriteLine("++++" + t.ToString() + " " + t.Name);
+					sw.WriteLine("    " + v.ToString());
 #endif
 
-				
-				
-				l = t;
+					l = t;
+				}
 			}
-
-			} 
 			finally
 			{
 #if DEBUG
@@ -229,6 +240,7 @@ namespace SimPe.Plugin
 
 			return v;
 		}
+
 		#region IEnumerable Member
 
 		public IEnumerator GetEnumerator()
@@ -241,6 +253,7 @@ namespace SimPe.Plugin
 		#region IEnumerator Member
 
 		int pos;
+
 		public void Reset()
 		{
 			pos = -1;
@@ -250,7 +263,8 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (pos<this.ChildBlocks.Count && pos>=0) return this.GetBlock(this.ChildBlocks[pos]);
+				if (pos < this.ChildBlocks.Count && pos >= 0)
+					return this.GetBlock(this.ChildBlocks[pos]);
 				return null;
 			}
 		}
@@ -258,7 +272,7 @@ namespace SimPe.Plugin
 		public bool MoveNext()
 		{
 			pos++;
-			return  (pos<this.ChildBlocks.Count);
+			return (pos < this.ChildBlocks.Count);
 		}
 
 		#endregion

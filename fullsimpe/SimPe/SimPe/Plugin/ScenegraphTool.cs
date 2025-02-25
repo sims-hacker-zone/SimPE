@@ -25,45 +25,50 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Zusammenfassung für ImportSemiTool.
 	/// </summary>
-	public class ScenegraphTool : Interfaces.AbstractTool, Interfaces.ITool	
+	public class ScenegraphTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
 		IWrapperRegistry reg;
 		IProviderRegistry prov;
 		ScenegraphForm sg;
 
-		internal ScenegraphTool(IWrapperRegistry reg, IProviderRegistry prov) 
+		internal ScenegraphTool(IWrapperRegistry reg, IProviderRegistry prov)
 		{
 			this.reg = reg;
 			this.prov = prov;
-
 
 			sg = new ScenegraphForm();
 		}
 
 		#region ITool Member
 
-		public bool IsEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
+		public bool IsEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
-			return (package!=null);
+			return (package != null);
 		}
 
-		public Interfaces.Plugin.IToolResult ShowDialog(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package)
+		public Interfaces.Plugin.IToolResult ShowDialog(
+			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			ref SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
 			SimPe.Interfaces.Files.IPackedFileDescriptor opfd = pfd;
 			sg.Execute(prov, package, ref pfd);
 
-			if ((pfd==null) && (opfd==null)) return new ToolResult(false, false);
-			if ((pfd!=null) && (opfd==null)) return new ToolResult(true, false);
+			if ((pfd == null) && (opfd == null))
+				return new ToolResult(false, false);
+			if ((pfd != null) && (opfd == null))
+				return new ToolResult(true, false);
 			return new ToolResult(!pfd.Equals(opfd), false);
-			
-			
 		}
 
 		public override string ToString()
 		{
 			return "Object Tool\\Scenegrapher...";
 		}
-		
+
 		#endregion
 
 		#region IToolExt Member
@@ -71,16 +76,18 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.scenegrapher.png"));
+				return System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream(
+							"SimPe.img.scenegrapher.png"
+						)
+				);
 			}
 		}
 
 		public override System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.CtrlG;
-			}
+			get { return System.Windows.Forms.Shortcut.CtrlG; }
 		}
 		#endregion
 	}

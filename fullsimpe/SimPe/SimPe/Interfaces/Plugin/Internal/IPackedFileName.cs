@@ -31,25 +31,16 @@ namespace SimPe.Interfaces.Plugin.Internal
 		/// <summary>
 		/// Get the Name of a Resource
 		/// </summary>
-		string ResourceName
-		{
-			get;
-		}
+		string ResourceName { get; }
 
 		/// <summary>
 		/// Get a Description for this Package
 		/// </summary>
-		string Description
-		{
-			get;
-		}	
+		string Description { get; }
 
 		/// <summary>
 		/// Get the Header for this Description(i.e. Fieldnames)
 		/// </summary>
-		string DescriptionHeader
-		{
-			get;
-		}	
-	}	
+		string DescriptionHeader { get; }
+	}
 }

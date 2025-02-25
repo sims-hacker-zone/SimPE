@@ -21,25 +21,27 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces.Plugin.Internal;
+using System.Collections.Generic;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
-using System.Collections.Generic;
+using SimPe.Interfaces.Plugin;
+using SimPe.Interfaces.Plugin.Internal;
 
 namespace SimPe.Collections
 {
-    internal class InternalListeners : SimPe.Collections.Listeners
-    {
-        internal InternalListeners() : base() { }
-        internal void Add(IListener lst)
-        {
-            list.Add(lst);
-        }
+	internal class InternalListeners : SimPe.Collections.Listeners
+	{
+		internal InternalListeners()
+			: base() { }
 
-        internal void Clear()
-        {
-            list.Clear();
-        }
-    }
+		internal void Add(IListener lst)
+		{
+			list.Add(lst);
+		}
+
+		internal void Clear()
+		{
+			list.Clear();
+		}
+	}
 }

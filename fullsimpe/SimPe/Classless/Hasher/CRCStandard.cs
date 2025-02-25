@@ -41,15 +41,17 @@
  *
  * Contributor(s):
  *		Jason Simeone (jay@classless.net)
- * 
+ *
  * ***** END LICENSE BLOCK ***** */
 #endregion
 
 using System;
 
-namespace Classless.Hasher {
+namespace Classless.Hasher
+{
 	/// <summary>Predefined standards for CRC algorithms.</summary>
-	public enum CRCStandard {
+	public enum CRCStandard
+	{
 		/// <summary>The standard CRC8 algorithm.</summary>
 		CRC8,
 
@@ -90,6 +92,6 @@ namespace Classless.Hasher {
 		CRC32_BZIP2,
 
 		/// <summary>A variation on the CRC32 algorithm. Used in CAS.</summary>
-		CRC32_CAS
+		CRC32_CAS,
 	}
 }

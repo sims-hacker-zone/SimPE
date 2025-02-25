@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SimPe.Packages
@@ -35,7 +35,8 @@ namespace SimPe.Packages
 		private System.Windows.Forms.Button btdelete;
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.Button btadd;
-        private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Panel panel1;
+
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -46,143 +47,194 @@ namespace SimPe.Packages
 			//
 			// Required designer variable.
 			//
-            InitializeComponent();
+			InitializeComponent();
 		}
 
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
-				if(components != null)
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
 
 		#region Windows Form Designer generated code
 		/// <summary>
-		/// Required method for Designer support - do not modify 
+		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.btadd = new System.Windows.Forms.Button();
-            this.lblist = new System.Windows.Forms.ListBox();
-            this.ofd = new System.Windows.Forms.OpenFileDialog();
-            this.btdelete = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // btadd
-            // 
-            this.btadd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btadd.BackColor = System.Drawing.Color.Transparent;
-            this.btadd.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btadd.Location = new System.Drawing.Point(288, 189);
-            this.btadd.Name = "btadd";
-            this.btadd.Size = new System.Drawing.Size(75, 23);
-            this.btadd.TabIndex = 4;
-            this.btadd.Text = "Add...";
-            this.btadd.UseVisualStyleBackColor = false;
-            this.btadd.Click += new System.EventHandler(this.AddPackage);
-            // 
-            // lblist
-            // 
-            this.lblist.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblist.IntegralHeight = false;
-            this.lblist.Location = new System.Drawing.Point(8, 8);
-            this.lblist.Name = "lblist";
-            this.lblist.Size = new System.Drawing.Size(448, 179);
-            this.lblist.TabIndex = 3;
-            this.lblist.SelectedIndexChanged += new System.EventHandler(this.Select);
-            // 
-            // btdelete
-            // 
-            this.btdelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btdelete.BackColor = System.Drawing.Color.Transparent;
-            this.btdelete.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btdelete.Location = new System.Drawing.Point(198, 189);
-            this.btdelete.Name = "btdelete";
-            this.btdelete.Size = new System.Drawing.Size(75, 23);
-            this.btdelete.TabIndex = 5;
-            this.btdelete.Text = "Delete...";
-            this.btdelete.UseVisualStyleBackColor = false;
-            this.btdelete.Click += new System.EventHandler(this.DeletePackage);
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button2.Location = new System.Drawing.Point(384, 189);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "OK";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.btdelete);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.btadd);
-            this.panel1.Controls.Add(this.lblist);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(465, 219);
-            this.panel1.TabIndex = 7;
-            // 
-            // DepSims2Community
-            // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-            this.ClientSize = new System.Drawing.Size(464, 218);
-            this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Name = "DepSims2Community";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Dependencies";
-            this.panel1.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+			this.btadd = new System.Windows.Forms.Button();
+			this.lblist = new System.Windows.Forms.ListBox();
+			this.ofd = new System.Windows.Forms.OpenFileDialog();
+			this.btdelete = new System.Windows.Forms.Button();
+			this.button2 = new System.Windows.Forms.Button();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.panel1.SuspendLayout();
+			this.SuspendLayout();
+			//
+			// btadd
+			//
+			this.btadd.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Bottom
+						| System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
+			this.btadd.BackColor = System.Drawing.Color.Transparent;
+			this.btadd.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btadd.Location = new System.Drawing.Point(288, 189);
+			this.btadd.Name = "btadd";
+			this.btadd.Size = new System.Drawing.Size(75, 23);
+			this.btadd.TabIndex = 4;
+			this.btadd.Text = "Add...";
+			this.btadd.UseVisualStyleBackColor = false;
+			this.btadd.Click += new System.EventHandler(this.AddPackage);
+			//
+			// lblist
+			//
+			this.lblist.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							(
+								System.Windows.Forms.AnchorStyles.Top
+								| System.Windows.Forms.AnchorStyles.Bottom
+							) | System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
+			this.lblist.IntegralHeight = false;
+			this.lblist.Location = new System.Drawing.Point(8, 8);
+			this.lblist.Name = "lblist";
+			this.lblist.Size = new System.Drawing.Size(448, 179);
+			this.lblist.TabIndex = 3;
+			this.lblist.SelectedIndexChanged += new System.EventHandler(this.Select);
+			//
+			// btdelete
+			//
+			this.btdelete.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Bottom
+						| System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
+			this.btdelete.BackColor = System.Drawing.Color.Transparent;
+			this.btdelete.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btdelete.Location = new System.Drawing.Point(198, 189);
+			this.btdelete.Name = "btdelete";
+			this.btdelete.Size = new System.Drawing.Size(75, 23);
+			this.btdelete.TabIndex = 5;
+			this.btdelete.Text = "Delete...";
+			this.btdelete.UseVisualStyleBackColor = false;
+			this.btdelete.Click += new System.EventHandler(this.DeletePackage);
+			//
+			// button2
+			//
+			this.button2.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Bottom
+						| System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
+			this.button2.BackColor = System.Drawing.Color.Transparent;
+			this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button2.Location = new System.Drawing.Point(384, 189);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(75, 23);
+			this.button2.TabIndex = 6;
+			this.button2.Text = "OK";
+			this.button2.UseVisualStyleBackColor = false;
+			this.button2.Click += new System.EventHandler(this.button2_Click);
+			//
+			// panel1
+			//
+			this.panel1.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							(
+								System.Windows.Forms.AnchorStyles.Top
+								| System.Windows.Forms.AnchorStyles.Bottom
+							) | System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
+			this.panel1.Controls.Add(this.btdelete);
+			this.panel1.Controls.Add(this.button2);
+			this.panel1.Controls.Add(this.btadd);
+			this.panel1.Controls.Add(this.lblist);
+			this.panel1.Location = new System.Drawing.Point(0, 0);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(465, 219);
+			this.panel1.TabIndex = 7;
+			//
+			// DepSims2Community
+			//
+			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
+			this.ClientSize = new System.Drawing.Size(464, 218);
+			this.Controls.Add(this.panel1);
+			this.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
+			this.FormBorderStyle = System
+				.Windows
+				.Forms
+				.FormBorderStyle
+				.SizableToolWindow;
+			this.Name = "DepSims2Community";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.Text = "Dependencies";
+			this.panel1.ResumeLayout(false);
+			this.ResumeLayout(false);
 		}
 		#endregion
 		bool ok;
 
-		public void Execute(SimPe.Packages.S2CPDescriptor s2cp, bool ronly) 
+		public void Execute(SimPe.Packages.S2CPDescriptor s2cp, bool ronly)
 		{
 			lblist.Items.Clear();
 
 			this.btdelete.Visible = !ronly;
 			this.btadd.Visible = !ronly;
 
-			foreach (S2CPDescriptorBase s2cpb in s2cp.Dependency) 
+			foreach (S2CPDescriptorBase s2cpb in s2cp.Dependency)
 			{
 				lblist.Items.Add(s2cpb);
 			}
 
-			if (lblist.Items.Count>0) lblist.SelectedIndex=0;
-			btdelete.Enabled = (lblist.SelectedIndex>=0);
+			if (lblist.Items.Count > 0)
+				lblist.SelectedIndex = 0;
+			btdelete.Enabled = (lblist.SelectedIndex >= 0);
 
 			this.ShowDialog();
 
-			if (ok) 
+			if (ok)
 			{
-				S2CPDescriptorBase[] s2cpbs = new S2CPDescriptorBase[lblist.Items.Count];
-				for (int i=0; i<s2cpbs.Length; i++) 
+				S2CPDescriptorBase[] s2cpbs = new S2CPDescriptorBase[
+					lblist.Items.Count
+				];
+				for (int i = 0; i < s2cpbs.Length; i++)
 				{
 					s2cpbs[i] = (S2CPDescriptorBase)lblist.Items[i];
 				}
@@ -191,22 +243,28 @@ namespace SimPe.Packages
 			}
 		}
 
-
 		private void AddPackage(object sender, System.EventArgs e)
 		{
 			ofd.Filter = "Sims 2 Package (*.package)|*.package|All Files (*.*)|*.*";
-			if (ofd.ShowDialog()==DialogResult.OK) 
+			if (ofd.ShowDialog() == DialogResult.OK)
 			{
-				SimPe.Packages.GeneratableFile package = GeneratableFile.LoadFromFile(ofd.FileName);
+				SimPe.Packages.GeneratableFile package = GeneratableFile.LoadFromFile(
+					ofd.FileName
+				);
 				S2CPDescriptorBase s2cpb = new S2CPDescriptorBase(package);
-				if (s2cpb.Guid==null) MessageBox.Show("This Package does not contain a valid GlobalGUID.\nYou can create one by including this File in a diffrent Sims2Community Package or by adding a 'Sims2Comunity Identifier' to the Package.");
-				else lblist.Items.Add(s2cpb);
+				if (s2cpb.Guid == null)
+					MessageBox.Show(
+						"This Package does not contain a valid GlobalGUID.\nYou can create one by including this File in a diffrent Sims2Community Package or by adding a 'Sims2Comunity Identifier' to the Package."
+					);
+				else
+					lblist.Items.Add(s2cpb);
 			}
 		}
 
 		private void DeletePackage(object sender, System.EventArgs e)
 		{
-			if (lblist.SelectedIndex<0) return;
+			if (lblist.SelectedIndex < 0)
+				return;
 
 			lblist.Items.RemoveAt(lblist.SelectedIndex);
 		}
@@ -214,7 +272,8 @@ namespace SimPe.Packages
 		private void Select(object sender, System.EventArgs e)
 		{
 			btdelete.Enabled = false;
-			if (lblist.SelectedIndex<0) return;
+			if (lblist.SelectedIndex < 0)
+				return;
 			btdelete.Enabled = true;
 		}
 

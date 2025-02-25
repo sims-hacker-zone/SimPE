@@ -27,6 +27,7 @@ namespace SimPe.Plugin.Tool.Dockable
 	public class WrapperDockTool : SimPe.Interfaces.IDockableTool
 	{
 		ResourceDock rd;
+
 		public WrapperDockTool(ResourceDock rd)
 		{
 			this.rd = rd;
@@ -34,7 +35,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		#region IDockableTool Member
 
-        public Ambertation.Windows.Forms.DockPanel GetDockableControl()
+		public Ambertation.Windows.Forms.DockPanel GetDockableControl()
 		{
 			return rd.dcWrapper;
 		}
@@ -45,21 +46,26 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			if (!es.Empty)
 				if (es.HasFileDescriptor)
-					{
-						SimPe.Interfaces.IWrapper wrp = FileTable.WrapperRegistry.FindHandler(es[0].Resource.FileDescriptor.Type);
+				{
+					SimPe.Interfaces.IWrapper wrp =
+						FileTable.WrapperRegistry.FindHandler(
+							es[0].Resource.FileDescriptor.Type
+						);
 
-						if (wrp!=null) 
-						{
-							rd.lbName.Text = wrp.WrapperDescription.Name;
-							rd.lbAuthor.Text = wrp.WrapperDescription.Author;
-							rd.lbVersion.Text = wrp.WrapperDescription.Version.ToString();
-							rd.lbDesc.Text = wrp.WrapperDescription.Description;
-							rd.pb.Image = wrp.WrapperDescription.Icon;
-							if (rd.pb.Image!=null) rd.lbName.Left = rd.pb.Right+4;
-							else rd.lbName.Left = rd.pb.Left;
-							return;
-						}
+					if (wrp != null)
+					{
+						rd.lbName.Text = wrp.WrapperDescription.Name;
+						rd.lbAuthor.Text = wrp.WrapperDescription.Author;
+						rd.lbVersion.Text = wrp.WrapperDescription.Version.ToString();
+						rd.lbDesc.Text = wrp.WrapperDescription.Description;
+						rd.pb.Image = wrp.WrapperDescription.Icon;
+						if (rd.pb.Image != null)
+							rd.lbName.Left = rd.pb.Right + 4;
+						else
+							rd.lbName.Left = rd.pb.Left;
+						return;
 					}
+				}
 
 			rd.lbName.Text = SimPe.Localization.GetString("Unknown");
 			rd.lbAuthor.Text = SimPe.Localization.GetString("Unknown");
@@ -84,23 +90,20 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.None;
-			}
+			get { return System.Windows.Forms.Shortcut.None; }
 		}
 
 		public System.Drawing.Image Icon
 		{
+			get { return rd.dcWrapper.TabImage; }
+		}
+
+		public virtual bool Visible
+		{
 			get
 			{
-				return rd.dcWrapper.TabImage;
+				return GetDockableControl().IsDocked || GetDockableControl().IsFloating;
 			}
-		}	
-
-		public virtual bool Visible 
-		{
-			get { return GetDockableControl().IsDocked ||  GetDockableControl().IsFloating; }
 		}
 
 		#endregion

@@ -20,14 +20,14 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
-using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces;
-using SimPe.PackedFiles.Wrapper.Supporting;
-using SimPe.Data;
 using Ambertation.Windows.Forms;
+using SimPe.Data;
+using SimPe.Interfaces;
+using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Wrapper.Supporting;
 
 namespace SimPe.PackedFiles.UserInterface
 {
@@ -40,7 +40,8 @@ namespace SimPe.PackedFiles.UserInterface
 		private System.Windows.Forms.Label lbsims;
 		private SimPe.PackedFiles.UserInterface.CommonSrel sc;
 		private System.Windows.Forms.PictureBox pb;
-		/// <summary> 
+
+		/// <summary>
 		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
@@ -55,7 +56,7 @@ namespace SimPe.PackedFiles.UserInterface
 				this.lbsims.Font = new System.Drawing.Font("Tahoma", 12);
 		}
 
-		/// <summary> 
+		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose(bool disposing)
@@ -71,49 +72,50 @@ namespace SimPe.PackedFiles.UserInterface
 		}
 
 		#region Windows Form Designer generated code
-		/// <summary> 
-		/// Required method for Designer support - do not modify 
+		/// <summary>
+		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExtSrel));
+			System.ComponentModel.ComponentResourceManager resources =
+				new System.ComponentModel.ComponentResourceManager(typeof(ExtSrel));
 			this.label1 = new System.Windows.Forms.Label();
 			this.lbsims = new System.Windows.Forms.Label();
 			this.sc = new SimPe.PackedFiles.UserInterface.CommonSrel();
 			this.pb = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
 			this.SuspendLayout();
-			// 
+			//
 			// label1
-			// 
+			//
 			this.label1.AutoEllipsis = true;
 			this.label1.BackColor = System.Drawing.Color.Transparent;
 			resources.ApplyResources(this.label1, "label1");
 			this.label1.Name = "label1";
-			// 
+			//
 			// lbsims
-			// 
+			//
 			resources.ApplyResources(this.lbsims, "lbsims");
 			this.lbsims.BackColor = System.Drawing.Color.Transparent;
 			this.lbsims.Name = "lbsims";
-			// 
+			//
 			// sc
-			// 
+			//
 			resources.ApplyResources(this.sc, "sc");
 			this.sc.BackColor = System.Drawing.Color.Transparent;
 			this.sc.Name = "sc";
 			this.sc.Srel = null;
-			// 
+			//
 			// pb
-			// 
+			//
 			this.pb.BackColor = System.Drawing.Color.Transparent;
 			resources.ApplyResources(this.pb, "pb");
 			this.pb.Name = "pb";
 			this.pb.TabStop = false;
-			// 
+			//
 			// ExtSrel
-			// 
+			//
 			this.Controls.Add(this.pb);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.sc);
@@ -128,7 +130,6 @@ namespace SimPe.PackedFiles.UserInterface
 			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
-
 		}
 		#endregion
 
@@ -142,10 +143,30 @@ namespace SimPe.PackedFiles.UserInterface
 			base.RefreshGUI();
 			sc.Srel = this.Srel;
 
-			this.lbsims.Text = sc.SourceSimName + " " + SimPe.Localization.GetString("towards") + " " + sc.TargetSimName;
-			this.pb.Image = Ambertation.Drawing.GraphicRoutines.ScaleImage(sc.Image, pb.Size, true);
+			this.lbsims.Text =
+				sc.SourceSimName
+				+ " "
+				+ SimPe.Localization.GetString("towards")
+				+ " "
+				+ sc.TargetSimName;
+			this.pb.Image = Ambertation.Drawing.GraphicRoutines.ScaleImage(
+				sc.Image,
+				pb.Size,
+				true
+			);
 
-			pb.Image = Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(sc.Image, pb.Size, 12, Color.FromArgb(90, Color.Black), SimPe.ThemeManager.Global.ThemeColorDark, Color.White, Color.FromArgb(80, Color.White), true, 2, 0);
+			pb.Image = Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(
+				sc.Image,
+				pb.Size,
+				12,
+				Color.FromArgb(90, Color.Black),
+				SimPe.ThemeManager.Global.ThemeColorDark,
+				Color.White,
+				Color.FromArgb(80, Color.White),
+				true,
+				2,
+				0
+			);
 		}
 
 		private void ExtSrel_Commited(object sender, System.EventArgs e)

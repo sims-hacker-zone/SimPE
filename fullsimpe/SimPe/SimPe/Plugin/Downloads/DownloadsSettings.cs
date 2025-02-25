@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Resources;
 using System.Globalization;
+using System.Resources;
 
 namespace SimPe.Plugin.Downloads
 {
@@ -28,19 +28,20 @@ namespace SimPe.Plugin.Downloads
 	/// </summary>
 	public class DownloadsSettings : SimPe.GlobalizedObject, SimPe.Interfaces.ISettings
 	{
-		
-		static ResourceManager  rm = new ResourceManager(typeof(DownloadsSettings));
+		static ResourceManager rm = new ResourceManager(typeof(DownloadsSettings));
 		const string BASENAME = "DownloadsPlugin";
-		XmlRegistryKey xrk;			
-		public DownloadsSettings() : base(rm)
+		XmlRegistryKey xrk;
+
+		public DownloadsSettings()
+			: base(rm)
 		{
 			xrk = Helper.WindowsRegistry.PluginRegistryKey;
 		}
 
 		[System.ComponentModel.Category("Other")]
-		public  bool BuildPreviewForObjects
+		public bool BuildPreviewForObjects
 		{
-			get 
+			get
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
 				object o = rkf.GetValue("BuildPreviewForObjects", true);
@@ -54,9 +55,9 @@ namespace SimPe.Plugin.Downloads
 		}
 
 		[System.ComponentModel.Category("Recolors")]
-		public  bool BuildPreviewForRecolors
+		public bool BuildPreviewForRecolors
 		{
-			get 
+			get
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
 				object o = rkf.GetValue("BuildPreviewForRecolors", true);
@@ -67,14 +68,15 @@ namespace SimPe.Plugin.Downloads
 				XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
 				rkf.SetValue("BuildPreviewForRecolors", value);
 
-				if (value) LoadBasedataForRecolors = true;
+				if (value)
+					LoadBasedataForRecolors = true;
 			}
 		}
 
 		[System.ComponentModel.Category("Recolors")]
 		public bool LoadBasedataForRecolors
 		{
-			get 
+			get
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
 				object o = rkf.GetValue("LoadBasedataForRecolors", true);
@@ -85,7 +87,8 @@ namespace SimPe.Plugin.Downloads
 				XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
 				rkf.SetValue("LoadBasedataForRecolors", value);
 
-				if (!value) BuildPreviewForRecolors = false;
+				if (!value)
+					BuildPreviewForRecolors = false;
 			}
 		}
 

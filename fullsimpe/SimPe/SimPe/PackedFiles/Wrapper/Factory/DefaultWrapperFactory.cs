@@ -18,12 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces;
+using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper.Factory
 {
-
 	/// <summary>
 	/// The Wrapper Factory for Default Wrappers that ship with SimPe
 	/// </summary>
@@ -33,48 +32,56 @@ namespace SimPe.PackedFiles.Wrapper.Factory
 		public override SimPe.Interfaces.IWrapper[] KnownWrappers
 		{
 			get
-            {
-                if (Helper.NoPlugins)
-                {
-                    return new IWrapper[0];
-                }
-				if (Helper.StartedGui == Executable.Classic) 
+			{
+				if (Helper.NoPlugins)
 				{
-                    IWrapper[] wrappers = {
-											  new SimPe.PackedFiles.Wrapper.Picture(),
-											  new SimPe.PackedFiles.Wrapper.Xml(),
-											  new SimPe.PackedFiles.Wrapper.Fami(this.LinkedProvider.SimNameProvider),
-											  new SimPe.PackedFiles.Wrapper.SRel(),
-											  new SimPe.PackedFiles.Wrapper.Cpf(),
-											  new SimPe.PackedFiles.Wrapper.FamilyTies(this.LinkedProvider.SimNameProvider),
-											  new SimPe.PackedFiles.Wrapper.Nref(),
-											  new SimPe.PackedFiles.Wrapper.Objd(this.LinkedProvider.OpcodeProvider),
-											  new SimPe.Plugin.Glob(),
-											  new SimPe.PackedFiles.Wrapper.ObjLua(),
-                                              new SimPe.PackedFiles.Wrapper.CompressedFileList(),
-                                          new SimPe.PackedFiles.Wrapper.Str()
-                                          };
-					return wrappers;
-				} 
-				else 
+					return new IWrapper[0];
+				}
+				if (Helper.StartedGui == Executable.Classic)
 				{
-					IWrapper[] wrappers = {
-											  new SimPe.PackedFiles.Wrapper.Picture(),
-											  new SimPe.PackedFiles.Wrapper.Xml(),								 
-											  new SimPe.PackedFiles.Wrapper.Fami(this.LinkedProvider.SimNameProvider),
-											  new SimPe.PackedFiles.Wrapper.Cpf(),
-											  new SimPe.PackedFiles.Wrapper.Nref(),
-											  new SimPe.PackedFiles.Wrapper.ExtObjd(),
-											  new SimPe.Plugin.Glob(),
-											  new SimPe.PackedFiles.Wrapper.ObjLua()
-										  };
+					IWrapper[] wrappers =
+					{
+						new SimPe.PackedFiles.Wrapper.Picture(),
+						new SimPe.PackedFiles.Wrapper.Xml(),
+						new SimPe.PackedFiles.Wrapper.Fami(
+							this.LinkedProvider.SimNameProvider
+						),
+						new SimPe.PackedFiles.Wrapper.SRel(),
+						new SimPe.PackedFiles.Wrapper.Cpf(),
+						new SimPe.PackedFiles.Wrapper.FamilyTies(
+							this.LinkedProvider.SimNameProvider
+						),
+						new SimPe.PackedFiles.Wrapper.Nref(),
+						new SimPe.PackedFiles.Wrapper.Objd(
+							this.LinkedProvider.OpcodeProvider
+						),
+						new SimPe.Plugin.Glob(),
+						new SimPe.PackedFiles.Wrapper.ObjLua(),
+						new SimPe.PackedFiles.Wrapper.CompressedFileList(),
+						new SimPe.PackedFiles.Wrapper.Str(),
+					};
 					return wrappers;
 				}
-				
+				else
+				{
+					IWrapper[] wrappers =
+					{
+						new SimPe.PackedFiles.Wrapper.Picture(),
+						new SimPe.PackedFiles.Wrapper.Xml(),
+						new SimPe.PackedFiles.Wrapper.Fami(
+							this.LinkedProvider.SimNameProvider
+						),
+						new SimPe.PackedFiles.Wrapper.Cpf(),
+						new SimPe.PackedFiles.Wrapper.Nref(),
+						new SimPe.PackedFiles.Wrapper.ExtObjd(),
+						new SimPe.Plugin.Glob(),
+						new SimPe.PackedFiles.Wrapper.ObjLua(),
+					};
+					return wrappers;
+				}
 			}
 		}
 
 		#endregion
-
-    }
+	}
 }

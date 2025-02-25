@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace SimPe
 {
-	[AttributeUsage(AttributeTargets.Property, AllowMultiple=false, Inherited=true)]
+	[AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
 	public class GlobalizedPropertyAttribute : Attribute
 	{
 		private String resourceName = "";
@@ -21,22 +21,21 @@ namespace SimPe
 
 		public String Name
 		{
-			get {  return resourceName;  }
-			set {  resourceName = value;  }
+			get { return resourceName; }
+			set { resourceName = value; }
 		}
 
 		public String Description
 		{
-			get {  return resourceDescription;  }
-			set {  resourceDescription = value;  }
+			get { return resourceDescription; }
+			set { resourceDescription = value; }
 		}
 
 		public String Table
 		{
-			get { return resourceTable;  }
+			get { return resourceTable; }
 			set { resourceTable = value; }
 		}
-
 	}
 
 	#region GlobalizedPropertyDescriptor
@@ -48,12 +47,16 @@ namespace SimPe
 	public class GlobalizedPropertyDescriptor : PropertyDescriptor
 	{
 		protected System.Resources.ResourceManager resource;
-		private PropertyDescriptor basePropertyDescriptor; 
+		private PropertyDescriptor basePropertyDescriptor;
 		private String localizedName = "";
 		private String localizedDescription = "";
 		private String localizedCategory = "";
 
-		public GlobalizedPropertyDescriptor(System.Resources.ResourceManager resource, PropertyDescriptor basePropertyDescriptor) : base(basePropertyDescriptor)
+		public GlobalizedPropertyDescriptor(
+			System.Resources.ResourceManager resource,
+			PropertyDescriptor basePropertyDescriptor
+		)
+			: base(basePropertyDescriptor)
 		{
 			this.resource = resource;
 			this.basePropertyDescriptor = basePropertyDescriptor;
@@ -71,15 +74,15 @@ namespace SimPe
 
 		public override string DisplayName
 		{
-			get 
+			get
 			{
-				// First lookup the property if GlobalizedPropertyAttribute instances are available. 
+				// First lookup the property if GlobalizedPropertyAttribute instances are available.
 				// If yes, then try to get resource table name and display name id from that attribute.
 				string tableName = "";
 				string displayName = "";
-				foreach( Attribute oAttrib in this.basePropertyDescriptor.Attributes )
+				foreach (Attribute oAttrib in this.basePropertyDescriptor.Attributes)
 				{
-					if( oAttrib.GetType().Equals(typeof(GlobalizedPropertyAttribute)) )
+					if (oAttrib.GetType().Equals(typeof(GlobalizedPropertyAttribute)))
 					{
 						displayName = ((GlobalizedPropertyAttribute)oAttrib).Name;
 						tableName = ((GlobalizedPropertyAttribute)oAttrib).Table;
@@ -87,18 +90,21 @@ namespace SimPe
 				}
 
 				// If no resource table specified by attribute, then build it itself by using namespace and class name.
-				if( tableName.Length == 0 )
-					tableName = basePropertyDescriptor.ComponentType.Namespace + "." + basePropertyDescriptor.ComponentType.Name;
+				if (tableName.Length == 0)
+					tableName =
+						basePropertyDescriptor.ComponentType.Namespace
+						+ "."
+						+ basePropertyDescriptor.ComponentType.Name;
 
-				// If no display name id is specified by attribute, then construct it by using default display name (usually the property name) 
-				if( displayName.Length == 0 )
+				// If no display name id is specified by attribute, then construct it by using default display name (usually the property name)
+				if (displayName.Length == 0)
 					displayName = this.basePropertyDescriptor.DisplayName;
-				
-				
-				// Get the string from the resources. 
-				// If this fails, then use default display name (usually the property name) 
-				string s = resource.GetString("[Property:"+displayName+"]");
-				this.localizedName = (s!=null)? s : this.basePropertyDescriptor.DisplayName; 
+
+				// Get the string from the resources.
+				// If this fails, then use default display name (usually the property name)
+				string s = resource.GetString("[Property:" + displayName + "]");
+				this.localizedName =
+					(s != null) ? s : this.basePropertyDescriptor.DisplayName;
 
 				return this.localizedName;
 			}
@@ -108,65 +114,73 @@ namespace SimPe
 			get
 			{
 				// First lookup the property if there are GlobalizedPropertyAttribute instances
-				// are available. 
+				// are available.
 				// If yes, try to get resource table name and display name id from that attribute.
 				string tableName = "";
 				string displayName = "";
-				foreach( Attribute oAttrib in this.basePropertyDescriptor.Attributes )
+				foreach (Attribute oAttrib in this.basePropertyDescriptor.Attributes)
 				{
-					if( oAttrib.GetType().Equals(typeof(GlobalizedPropertyAttribute)) )
+					if (oAttrib.GetType().Equals(typeof(GlobalizedPropertyAttribute)))
 					{
-						displayName = ((GlobalizedPropertyAttribute)oAttrib).Description;
+						displayName = (
+							(GlobalizedPropertyAttribute)oAttrib
+						).Description;
 						tableName = ((GlobalizedPropertyAttribute)oAttrib).Table;
 					}
 				}
 
 				// If no resource table specified by attribute, then build it itself by using namespace and class name.
-				if( tableName.Length == 0 )
-					tableName = basePropertyDescriptor.ComponentType.Namespace + "." + basePropertyDescriptor.ComponentType.Name;
-				
-				// If no display name id is specified by attribute, then construct it by using default display name (usually the property name) 
-				if( displayName.Length == 0 )
+				if (tableName.Length == 0)
+					tableName =
+						basePropertyDescriptor.ComponentType.Namespace
+						+ "."
+						+ basePropertyDescriptor.ComponentType.Name;
+
+				// If no display name id is specified by attribute, then construct it by using default display name (usually the property name)
+				if (displayName.Length == 0)
 					displayName = this.basePropertyDescriptor.Category;
-				
-				// Get the string from the resources. 
-				// If this fails, then use default empty string indictating 'no description' 
-				string s = resource.GetString("[Category:"+displayName+"]");
-				this.localizedCategory = (s!=null)? s : ""; 
+
+				// Get the string from the resources.
+				// If this fails, then use default empty string indictating 'no description'
+				string s = resource.GetString("[Category:" + displayName + "]");
+				this.localizedCategory = (s != null) ? s : "";
 
 				return this.localizedCategory;
 			}
 		}
-
 
 		public override string Description
 		{
 			get
 			{
 				// First lookup the property if there are GlobalizedPropertyAttribute instances
-				// are available. 
+				// are available.
 				// If yes, try to get resource table name and display name id from that attribute.
 				string tableName = "";
 				string displayName = "";
-				foreach( Attribute oAttrib in this.basePropertyDescriptor.Attributes )
+				foreach (Attribute oAttrib in this.basePropertyDescriptor.Attributes)
 				{
-					if( oAttrib.GetType().Equals(typeof(GlobalizedPropertyAttribute)) )
+					if (oAttrib.GetType().Equals(typeof(GlobalizedPropertyAttribute)))
 					{
-						displayName = ((GlobalizedPropertyAttribute)oAttrib).Description;
+						displayName = (
+							(GlobalizedPropertyAttribute)oAttrib
+						).Description;
 						tableName = ((GlobalizedPropertyAttribute)oAttrib).Table;
 					}
 				}
 
 				// If no resource table specified by attribute, then build it itself by using namespace and class name.
-				if( tableName.Length == 0 )
-					tableName = basePropertyDescriptor.ComponentType.Namespace + "." + basePropertyDescriptor.ComponentType.Name;
+				if (tableName.Length == 0)
+					tableName =
+						basePropertyDescriptor.ComponentType.Namespace
+						+ "."
+						+ basePropertyDescriptor.ComponentType.Name;
 
-				// If no display name id is specified by attribute, then construct it by using default display name (usually the property name) 
-				if( displayName.Length == 0 )
+				// If no display name id is specified by attribute, then construct it by using default display name (usually the property name)
+				if (displayName.Length == 0)
 					displayName = this.basePropertyDescriptor.DisplayName;
-				
-				
-				// Get the string from the resources. 
+
+				// Get the string from the resources.
 				// If this fails, then use default empty string indictating 'no description'
 				string s = resource.GetString("[Description:" + displayName + "]");
 				this.localizedDescription = (s != null) ? s : "";
@@ -215,29 +229,34 @@ namespace SimPe
 	#region GlobalizedObject
 
 	/// <summary>
-	/// GlobalizedObject implements ICustomTypeDescriptor to enable 
+	/// GlobalizedObject implements ICustomTypeDescriptor to enable
 	/// required functionality to describe a type (class).<br></br>
-	/// The main task of this class is to instantiate our own property descriptor 
-	/// of type GlobalizedPropertyDescriptor.  
+	/// The main task of this class is to instantiate our own property descriptor
+	/// of type GlobalizedPropertyDescriptor.
 	/// </summary>
 	public class GlobalizedObject : ICustomTypeDescriptor
 	{
 		System.Resources.ResourceManager resource;
-		public GlobalizedObject() : this (SimPe.Localization.Manager) {}
-		public GlobalizedObject(System.Resources.ResourceManager resource) : base()
+
+		public GlobalizedObject()
+			: this(SimPe.Localization.Manager) { }
+
+		public GlobalizedObject(System.Resources.ResourceManager resource)
+			: base()
 		{
 			this.resource = resource;
 		}
+
 		private PropertyDescriptorCollection globalizedProps;
 
 		public String GetClassName()
 		{
-			return TypeDescriptor.GetClassName(this,true);
+			return TypeDescriptor.GetClassName(this, true);
 		}
 
 		public AttributeCollection GetAttributes()
 		{
-			return TypeDescriptor.GetAttributes(this,true);
+			return TypeDescriptor.GetAttributes(this, true);
 		}
 
 		public String GetComponentName()
@@ -250,22 +269,22 @@ namespace SimPe
 			return TypeDescriptor.GetConverter(this, true);
 		}
 
-		public EventDescriptor GetDefaultEvent() 
+		public EventDescriptor GetDefaultEvent()
 		{
 			return TypeDescriptor.GetDefaultEvent(this, true);
 		}
 
-		public PropertyDescriptor GetDefaultProperty() 
+		public PropertyDescriptor GetDefaultProperty()
 		{
 			return TypeDescriptor.GetDefaultProperty(this, true);
 		}
 
-		public object GetEditor(Type editorBaseType) 
+		public object GetEditor(Type editorBaseType)
 		{
 			return TypeDescriptor.GetEditor(this, editorBaseType, true);
 		}
 
-		public EventDescriptorCollection GetEvents(Attribute[] attributes) 
+		public EventDescriptorCollection GetEvents(Attribute[] attributes)
 		{
 			return TypeDescriptor.GetEvents(this, attributes, true);
 		}
@@ -282,17 +301,23 @@ namespace SimPe
 		/// <returns></returns>
 		public PropertyDescriptorCollection GetProperties(Attribute[] attributes)
 		{
-			if ( globalizedProps == null) 
+			if (globalizedProps == null)
 			{
 				// Get the collection of properties
-				PropertyDescriptorCollection baseProps = TypeDescriptor.GetProperties(this, attributes, true);
+				PropertyDescriptorCollection baseProps = TypeDescriptor.GetProperties(
+					this,
+					attributes,
+					true
+				);
 
 				globalizedProps = new PropertyDescriptorCollection(null);
 
 				// For each property use a property descriptor of our own that is able to be globalized
-				foreach( PropertyDescriptor oProp in baseProps )
+				foreach (PropertyDescriptor oProp in baseProps)
 				{
-					globalizedProps.Add(new GlobalizedPropertyDescriptor(resource, oProp));
+					globalizedProps.Add(
+						new GlobalizedPropertyDescriptor(resource, oProp)
+					);
 				}
 			}
 			return globalizedProps;
@@ -301,22 +326,27 @@ namespace SimPe
 		public PropertyDescriptorCollection GetProperties()
 		{
 			// Only do once
-			if ( globalizedProps == null) 
+			if (globalizedProps == null)
 			{
 				// Get the collection of properties
-				PropertyDescriptorCollection baseProps = TypeDescriptor.GetProperties(this, true);
+				PropertyDescriptorCollection baseProps = TypeDescriptor.GetProperties(
+					this,
+					true
+				);
 				globalizedProps = new PropertyDescriptorCollection(null);
 
 				// For each property use a property descriptor of our own that is able to be globalized
-				foreach( PropertyDescriptor oProp in baseProps )
+				foreach (PropertyDescriptor oProp in baseProps)
 				{
-					globalizedProps.Add(new GlobalizedPropertyDescriptor(resource, oProp));
+					globalizedProps.Add(
+						new GlobalizedPropertyDescriptor(resource, oProp)
+					);
 				}
 			}
 			return globalizedProps;
 		}
 
-		public object GetPropertyOwner(PropertyDescriptor pd) 
+		public object GetPropertyOwner(PropertyDescriptor pd)
 		{
 			return this;
 		}

@@ -19,9 +19,13 @@ namespace SimPe.Plugin
 		public Cpf PropertySet
 		{
 			get { return this.propertySet; }
-			set {
+			set
+			{
 				if (value == null)
-					throw new ArgumentNullException("PropertySet", "The provided Cpf instance cannot be null");
+					throw new ArgumentNullException(
+						"PropertySet",
+						"The provided Cpf instance cannot be null"
+					);
 				this.propertySet = value;
 			}
 		}
@@ -54,19 +58,18 @@ namespace SimPe.Plugin
 			get
 			{
 				RecolorType ret = RecolorType.Unsupported;
-				if (this.propertySet != null) 
+				if (this.propertySet != null)
 				{
 					try
 					{
-						ret = (RecolorType)Enum.Parse(
-							typeof(RecolorType),
-							CpfItem("type").StringValue,
-							true
+						ret = (RecolorType)
+							Enum.Parse(
+								typeof(RecolorType),
+								CpfItem("type").StringValue,
+								true
 							);
 					}
-					catch
-					{
-					}
+					catch { }
 				}
 				return ret;
 			}
@@ -74,26 +77,24 @@ namespace SimPe.Plugin
 
 		public Guid Family
 		{
-			get {
+			get
+			{
 				if (this.propertySet != null)
 					return ParseGuidValue(CpfItem("family"));
 				return Guid.Empty;
 			}
-			set {
-				this.SetValue("family", value.ToString());
-			}
+			set { this.SetValue("family", value.ToString()); }
 		}
 
 		public string Name
 		{
-			get {
+			get
+			{
 				if (this.propertySet != null)
 					return CpfItem("name").StringValue;
 				return null;
 			}
-			set {
-				this.SetValue("name", value);
-			}
+			set { this.SetValue("name", value); }
 		}
 
 		#endregion
@@ -103,7 +104,8 @@ namespace SimPe.Plugin
 			this.enabled = true;
 		}
 
-		public AbstractCpfInfo(Cpf propertySet) : this()
+		public AbstractCpfInfo(Cpf propertySet)
+			: this()
 		{
 			this.PropertySet = propertySet;
 		}
@@ -140,7 +142,7 @@ namespace SimPe.Plugin
 			if (this.propertySet != null)
 			{
 				CpfItem item = this.CpfItem(propertyName);
-				if (item.StringValue != value) 
+				if (item.StringValue != value)
 				{
 					item.StringValue = value;
 					this.changed = true;
@@ -185,7 +187,7 @@ namespace SimPe.Plugin
 					if (!Utility.IsNullOrEmpty(guid))
 						ret = new Guid(guid);
 				}
-				catch {}
+				catch { }
 			}
 			return ret;
 		}
@@ -204,7 +206,7 @@ namespace SimPe.Plugin
 						this.propertySet.FileDescriptor.MarkForDelete = true;
 					else
 					{
-                        this.propertySet.SynchronizeUserData();
+						this.propertySet.SynchronizeUserData();
 					}
 				}
 			}

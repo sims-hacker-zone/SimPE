@@ -30,20 +30,14 @@ namespace SimPe.Interfaces.Plugin
 		/// <summary>
 		/// Returns a List of all File Types this Class can Handel
 		/// </summary>
-		uint[] AssignableTypes
-		{
-			get;
-		}
+		uint[] AssignableTypes { get; }
 
 		/// <summary>
 		/// Some Handler identify theier Target Files not with a Type but by a PackedFile Header, when this
-		/// Method does not retun an empty Array, all files starting with the passed Signature will 
+		/// Method does not retun an empty Array, all files starting with the passed Signature will
 		/// be passed to the Handler
 		/// </summary>
-		Byte[] FileSignature
-		{
-			get;
-		}			
+		Byte[] FileSignature { get; }
 	}
 
 	/// <summary>

@@ -23,29 +23,24 @@ using SimPe.Interfaces.Plugin;
 
 namespace pj
 {
-    class tObjKeyTool : AbstractWrapperFactory, IToolFactory, IHelpFactory
-    {
-        #region IToolFactory Members
+	class tObjKeyTool : AbstractWrapperFactory, IToolFactory, IHelpFactory
+	{
+		#region IToolFactory Members
 
-        public IToolPlugin[] KnownTools
-        {
-            get
-            {
-                return new IToolPlugin[] {
-                    new cObjKeyTool()
-                };
-            }
-        }
+		public IToolPlugin[] KnownTools
+		{
+			get { return new IToolPlugin[] { new cObjKeyTool() }; }
+		}
 
-        #endregion
+		#endregion
 
-        #region IHelpFactory Members
+		#region IHelpFactory Members
 
-        public IHelp[] KnownHelpTopics
-        {
-            get { return new IHelp[] { new hObjKeyHelp() }; }
-        }
+		public IHelp[] KnownHelpTopics
+		{
+			get { return new IHelp[] { new hObjKeyHelp() }; }
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 }

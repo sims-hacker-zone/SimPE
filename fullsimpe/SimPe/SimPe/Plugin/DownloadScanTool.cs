@@ -31,7 +31,7 @@ namespace SimPe.Plugin
 		/// Windows Registry Link
 		/// </summary>
 		static SimPe.Registry registry;
-		internal static Registry WindowsRegistry 
+		internal static Registry WindowsRegistry
 		{
 			get { return registry; }
 		}
@@ -40,12 +40,13 @@ namespace SimPe.Plugin
 		IProviderRegistry prov;
 		DownloadScan ds;
 
-		internal DownloadScanTool(IWrapperRegistry reg, IProviderRegistry prov) 
+		internal DownloadScanTool(IWrapperRegistry reg, IProviderRegistry prov)
 		{
 			this.reg = reg;
 			this.prov = prov;
 
-			if (registry==null) registry = Helper.WindowsRegistry;
+			if (registry == null)
+				registry = Helper.WindowsRegistry;
 
 			ds = new DownloadScan();
 			ds.prov = this.prov;
@@ -53,19 +54,27 @@ namespace SimPe.Plugin
 
 		#region ITool Member
 
-		public bool IsEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
+		public bool IsEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
 			return true;
 		}
 
-		public Interfaces.Plugin.IToolResult ShowDialog(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package)
+		public Interfaces.Plugin.IToolResult ShowDialog(
+			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			ref SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
 			ds.ShowDialog();
 
-			if (ds.FileName==null) return new ToolResult(false, false);
-			else 
+			if (ds.FileName == null)
+				return new ToolResult(false, false);
+			else
 			{
-				SimPe.Packages.GeneratableFile gf = SimPe.Packages.GeneratableFile.LoadFromFile(ds.FileName);
+				SimPe.Packages.GeneratableFile gf =
+					SimPe.Packages.GeneratableFile.LoadFromFile(ds.FileName);
 				package = gf;
 				return new ToolResult(false, true);
 			}

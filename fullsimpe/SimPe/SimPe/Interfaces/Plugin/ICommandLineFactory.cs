@@ -28,12 +28,9 @@ namespace SimPe.Interfaces.Plugin
 	/// <remarks>
 	/// </remarks>
 	public interface ICommandLineFactory
-	{		
+	{
 		/// <summary>
 		/// </summary>
-        ICommandLine[] KnownCommandLines
-		{
-			get;
-		}
+		ICommandLine[] KnownCommandLines { get; }
 	}
 }

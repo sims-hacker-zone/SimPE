@@ -39,6 +39,7 @@ namespace SimPe
 		}
 
 		int index;
+
 		internal CountedListItem(int index, object obj, bool hex)
 		{
 			this.obj = obj;
@@ -48,18 +49,20 @@ namespace SimPe
 
 		public override string ToString()
 		{
-			if (hex) 
+			if (hex)
 			{
-				return "0x"+index.ToString("X")+": "+obj.ToString();
-			} else return index.ToString()+": "+obj.ToString();
+				return "0x" + index.ToString("X") + ": " + obj.ToString();
+			}
+			else
+				return index.ToString() + ": " + obj.ToString();
 		}
 
-
 		static int offset = 0;
+
 		/// <summary>
 		/// Returns/Sets the lowest Number used for the Index
 		/// </summary>
-		public static int Offset 
+		public static int Offset
 		{
 			get { return offset; }
 			set { offset = value; }
@@ -70,9 +73,9 @@ namespace SimPe
 		/// </summary>
 		/// <param name="cb">The ComboBox</param>
 		/// <param name="obj">The Item you want to add</param>
-		public static void Add(System.Windows.Forms.ComboBox cb, object obj) 
+		public static void Add(System.Windows.Forms.ComboBox cb, object obj)
 		{
-			cb.Items.Add(new CountedListItem(cb.Items.Count+offset, obj, false));
+			cb.Items.Add(new CountedListItem(cb.Items.Count + offset, obj, false));
 		}
 
 		/// <summary>
@@ -80,9 +83,9 @@ namespace SimPe
 		/// </summary>
 		/// <param name="lb">The ListBox</param>
 		/// <param name="obj">The Item you want to add</param>
-		public static void Add(System.Windows.Forms.ListBox lb, object obj) 
+		public static void Add(System.Windows.Forms.ListBox lb, object obj)
 		{
-			lb.Items.Add(new CountedListItem(lb.Items.Count+offset, obj, false));
+			lb.Items.Add(new CountedListItem(lb.Items.Count + offset, obj, false));
 		}
 
 		/// <summary>
@@ -90,9 +93,9 @@ namespace SimPe
 		/// </summary>
 		/// <param name="cb">The ComboBox</param>
 		/// <param name="obj">The Item you want to add</param>
-		public static void AddHex(System.Windows.Forms.ComboBox cb, object obj) 
+		public static void AddHex(System.Windows.Forms.ComboBox cb, object obj)
 		{
-			cb.Items.Add(new CountedListItem(cb.Items.Count+offset, obj, true));
+			cb.Items.Add(new CountedListItem(cb.Items.Count + offset, obj, true));
 		}
 
 		/// <summary>
@@ -100,9 +103,9 @@ namespace SimPe
 		/// </summary>
 		/// <param name="lb">The ListBox</param>
 		/// <param name="obj">The Item you want to add</param>
-		public static void AddHex(System.Windows.Forms.ListBox lb, object obj) 
+		public static void AddHex(System.Windows.Forms.ListBox lb, object obj)
 		{
-			lb.Items.Add(new CountedListItem(lb.Items.Count+offset, obj, true));
+			lb.Items.Add(new CountedListItem(lb.Items.Count + offset, obj, true));
 		}
 
 		#region IDisposable Member

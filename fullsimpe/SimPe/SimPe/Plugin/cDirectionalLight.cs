@@ -24,12 +24,11 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for StandardLightBase.
 	/// </summary>
-	public class DirectionalLight
-		: AbstractRcolBlock
+	public class DirectionalLight : AbstractRcolBlock
 	{
 		#region Attributes
 
-		StandardLightBase slb;		
+		StandardLightBase slb;
 		public StandardLightBase StandardLightBase
 		{
 			get { return slb; }
@@ -51,63 +50,62 @@ namespace SimPe.Plugin
 		}
 
 		ObjectGraphNode ogn;
-		public ObjectGraphNode ObjectGraphNode 
+		public ObjectGraphNode ObjectGraphNode
 		{
 			get { return ogn; }
 			set { ogn = value; }
 		}
 
-
 		string unknown2;
-		public string Name 
+		public string Name
 		{
 			get { return unknown2; }
 			set { unknown2 = value; }
 		}
 
 		float unknown3;
-		public float Val1 
+		public float Val1
 		{
 			get { return unknown3; }
 			set { unknown3 = value; }
 		}
 
 		float unknown4;
-		public float Val2 
+		public float Val2
 		{
 			get { return unknown4; }
 			set { unknown4 = value; }
 		}
 
 		float red;
-		public float Red 
+		public float Red
 		{
 			get { return red; }
 			set { red = value; }
 		}
 
 		float green;
-		public float Green 
+		public float Green
 		{
 			get { return green; }
 			set { green = value; }
 		}
 
 		float blue;
-		public float Blue 
+		public float Blue
 		{
 			get { return blue; }
 			set { blue = value; }
 		}
 
-
 		#endregion
-		
+
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public DirectionalLight(Rcol parent) : base(parent)
+		public DirectionalLight(Rcol parent)
+			: base(parent)
 		{
 			version = 1;
 			BlockID = 0xC9C81BA3;
@@ -120,7 +118,7 @@ namespace SimPe.Plugin
 
 			unknown2 = "";
 		}
-		
+
 		#region IRcolBlock Member
 
 		/// <summary>
@@ -132,23 +130,23 @@ namespace SimPe.Plugin
 			version = reader.ReadUInt32();
 
 			slb.BlockName = reader.ReadString();
-			slb.BlockID = reader.ReadUInt32();			
+			slb.BlockID = reader.ReadUInt32();
 			slb.Unserialize(reader);
 
 			sgres.BlockName = reader.ReadString();
-			sgres.BlockID = reader.ReadUInt32();			
+			sgres.BlockID = reader.ReadUInt32();
 			sgres.Unserialize(reader);
 
 			lt.BlockName = reader.ReadString();
-			lt.BlockID = reader.ReadUInt32();			
+			lt.BlockID = reader.ReadUInt32();
 			lt.Unserialize(reader);
 
 			rn.BlockName = reader.ReadString();
-			rn.BlockID = reader.ReadUInt32();			
+			rn.BlockID = reader.ReadUInt32();
 			rn.Unserialize(reader);
 
 			ogn.BlockName = reader.ReadString();
-			ogn.BlockID = reader.ReadUInt32();			
+			ogn.BlockID = reader.ReadUInt32();
 			ogn.Unserialize(reader);
 
 			unknown2 = reader.ReadString();
@@ -164,7 +162,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public override void Serialize(System.IO.BinaryWriter writer)
@@ -204,7 +202,8 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (tDirectionalLight==null) tDirectionalLight = new SimPe.Plugin.TabPage.DirectionalLight();
+				if (tDirectionalLight == null)
+					tDirectionalLight = new SimPe.Plugin.TabPage.DirectionalLight();
 				return tDirectionalLight;
 			}
 		}
@@ -213,10 +212,11 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
 		/// </summary>
-		protected override void InitTabPage() 
+		protected override void InitTabPage()
 		{
-			if (tDirectionalLight==null) tDirectionalLight = new SimPe.Plugin.TabPage.DirectionalLight();
-			tDirectionalLight.tb_l_ver.Text = "0x"+Helper.HexString(this.version);
+			if (tDirectionalLight == null)
+				tDirectionalLight = new SimPe.Plugin.TabPage.DirectionalLight();
+			tDirectionalLight.tb_l_ver.Text = "0x" + Helper.HexString(this.version);
 			tDirectionalLight.tb_l_name.Text = unknown2;
 
 			tDirectionalLight.tb_l_1.Text = unknown3.ToString();
@@ -238,7 +238,7 @@ namespace SimPe.Plugin
 
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
-			base.ExtendTabControl (tc);
+			base.ExtendTabControl(tc);
 			this.slb.AddToTabControl(tc);
 			this.lt.AddToTabControl(tc);
 			this.rn.AddToTabControl(tc);
@@ -249,7 +249,8 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (this.tDirectionalLight!=null) this.tDirectionalLight.Dispose();
+			if (this.tDirectionalLight != null)
+				this.tDirectionalLight.Dispose();
 			tDirectionalLight = null;
 		}
 

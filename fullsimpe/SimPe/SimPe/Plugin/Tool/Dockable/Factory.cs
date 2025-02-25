@@ -27,15 +27,18 @@ namespace SimPe.Plugin.Tool.Dockable
 	/// Lists all Plugins (=FileType Wrappers) available in this Package
 	/// </summary>
 	/// <remarks>
-	/// GetWrappers() has to return a list of all Plugins provided by this Library. 
+	/// GetWrappers() has to return a list of all Plugins provided by this Library.
 	/// If a Plugin isn't returned, SimPe won't recognize it!
 	/// </remarks>
-	public class DockboxFactory : SimPe.Interfaces.Plugin.AbstractWrapperFactory, SimPe.Interfaces.Plugin.IToolFactory
+	public class DockboxFactory
+		: SimPe.Interfaces.Plugin.AbstractWrapperFactory,
+			SimPe.Interfaces.Plugin.IToolFactory
 	{
 		#region Specific Attributes / Methods
 		ResourceDock rd;
 
-		public DockboxFactory() : base ()
+		public DockboxFactory()
+			: base()
 		{
 			rd = new ResourceDock();
 		}
@@ -48,11 +51,9 @@ namespace SimPe.Plugin.Tool.Dockable
 		/// <returns>A List of all provided Plugins (=FileType Wrappers)</returns>
 		public override SimPe.Interfaces.IWrapper[] KnownWrappers
 		{
-			get 
+			get
 			{
-				IWrapper[] wrappers = {
-										  
-									  };
+				IWrapper[] wrappers = { };
 				return wrappers;
 			}
 		}
@@ -64,24 +65,26 @@ namespace SimPe.Plugin.Tool.Dockable
 		public IToolPlugin[] KnownTools
 		{
 			get
-			{				
-				IToolPlugin[] tools = {
-								    new PackageDockTool(rd),
-									new ResourceDockTool(rd),
-									new WrapperDockTool(rd),
-									new HexDecConverterTool(rd),
-									new ActionReloadFiletable(),
-									new ActionUniqueInstance(),
-									new CreateListFromPackageTool(),
-									new CreateListFromSelectionTool(),
-								    new HexDockTool(rd),
-									new FinderDock(),
-									new SaveSims2PackTool(),
-									new LoadSims2PackTool()
+			{
+				IToolPlugin[] tools =
+				{
+					new PackageDockTool(rd),
+					new ResourceDockTool(rd),
+					new WrapperDockTool(rd),
+					new HexDecConverterTool(rd),
+					new ActionReloadFiletable(),
+					new ActionUniqueInstance(),
+					new CreateListFromPackageTool(),
+					new CreateListFromSelectionTool(),
+					new HexDockTool(rd),
+					new FinderDock(),
+					new SaveSims2PackTool(),
+					new LoadSims2PackTool()
 #if DEBUG
-										  , new ActionCheckFiletable()
-										  , new ActionBuildPhpGuidList()
-										  , new DebugDock()
+					,
+					new ActionCheckFiletable(),
+					new ActionBuildPhpGuidList(),
+					new DebugDock()
 #endif
 				};
 				return tools;

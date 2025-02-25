@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Providers;
-using SimPe.Interfaces;
 
 namespace SimPe.Plugin
 {
@@ -28,14 +28,16 @@ namespace SimPe.Plugin
 	/// This is the actual FileWrapper
 	/// </summary>
 	/// <remarks>
-	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads 
+	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
 	public class Nmap
-		: AbstractWrapper				//Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-		, IFileWrapper					//This Interface is used when loading a File
-		, IFileWrapperSaveExtension		//This Interface (if available) will be used to store a File
-		//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
+			,
+			IFileWrapper //This Interface is used when loading a File
+			,
+			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
+	//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 	{
 		#region Attributes
 		/// <summary>
@@ -46,24 +48,25 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns / Sets the Header
 		/// </summary>
-		public Interfaces.Files.IPackedFileDescriptor[] Items 
+		public Interfaces.Files.IPackedFileDescriptor[] Items
 		{
-			get { return items;	}			
+			get { return items; }
 			set { items = value; }
 		}
 
 		#endregion
 
 		IProviderRegistry provider;
-		public IProviderRegistry Provider 
+		public IProviderRegistry Provider
 		{
-			get {return provider; }
+			get { return provider; }
 		}
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public Nmap(IProviderRegistry provider) : base()
+		public Nmap(IProviderRegistry provider)
+			: base()
 		{
 			this.provider = provider;
 			items = new Interfaces.Files.IPackedFileDescriptor[0];
@@ -74,27 +77,29 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="start">The string the FIlename starts with</param>
 		/// <returns>A List of File Descriptors</returns>
-		public Interfaces.Files.IPackedFileDescriptor[] FindFiles(string start) 
+		public Interfaces.Files.IPackedFileDescriptor[] FindFiles(string start)
 		{
 			start = start.Trim().ToLower();
 			System.Collections.ArrayList a = new System.Collections.ArrayList();
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in items) 
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in items)
 			{
-				if (pfd.Filename.Trim().ToLower().StartsWith(start)) a.Add(pfd);
+				if (pfd.Filename.Trim().ToLower().StartsWith(start))
+					a.Add(pfd);
 			}
 
-			Interfaces.Files.IPackedFileDescriptor[] pfds = new Interfaces.Files.IPackedFileDescriptor[a.Count];
+			Interfaces.Files.IPackedFileDescriptor[] pfds =
+				new Interfaces.Files.IPackedFileDescriptor[a.Count];
 			a.CopyTo(pfds);
 			return pfds;
 		}
 
 		#region IWrapper member
-		public override bool CheckVersion(uint version) 
+		public override bool CheckVersion(uint version)
 		{
 			return true;
 		}
 		#endregion
-		
+
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
@@ -112,8 +117,11 @@ namespace SimPe.Plugin
 				"Quaxi",
 				"---",
 				4,
-				System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.view_tree.png"))
-				); 
+				System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream("SimPe.img.view_tree.png")
+				)
+			);
 		}
 
 		/// <summary>
@@ -124,7 +132,7 @@ namespace SimPe.Plugin
 		{
 			items = new Interfaces.Files.IPackedFileDescriptor[reader.ReadUInt32()];
 
-			for (int i=0; i<items.Length; i++)
+			for (int i = 0; i < items.Length; i++)
 			{
 				NmapItem pfd = new NmapItem(this);
 				pfd.Group = reader.ReadUInt32();
@@ -142,14 +150,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write((uint)items.Length);
 
-			for (int i=0; i<items.Length; i++)
+			for (int i = 0; i < items.Length; i++)
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = items[i];
 				writer.Write(pfd.Group);
@@ -168,10 +176,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get
-			{
-				return new byte[0];
-			}
+			get { return new byte[0]; }
 		}
 
 		/// <summary>
@@ -181,13 +186,14 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				uint[] types = {
-								   Data.MetaData.NAME_MAP   //handles the NMAP File
-							   };
+				uint[] types =
+				{
+					Data.MetaData.NAME_MAP, //handles the NMAP File
+				};
 				return types;
 			}
 		}
 
-		#endregion		
+		#endregion
 	}
 }

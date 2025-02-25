@@ -19,8 +19,8 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Wrapper;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -34,17 +34,17 @@ namespace SimPe.PackedFiles.Wrapper
 		Location = 1,
 		Unknown = 2,
 		Routing = 3,
-		Target = 4
+		Target = 4,
 	}
 
 	/// <summary>
 	/// contains a Slot Item
 	/// </summary>
-	public class SlotItem 
+	public class SlotItem
 	{
 		#region Attributes
 		SlotItemType type;
-		public SlotItemType Type 
+		public SlotItemType Type
 		{
 			get { return type; }
 			set { type = value; }
@@ -52,162 +52,163 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#endregion
 		Slot parent;
-		public Slot Parent 
+		public Slot Parent
 		{
 			get { return parent; }
 		}
 
-		float unknownf1;		
+		float unknownf1;
 		public float UnknownFloat1
 		{
 			get { return unknownf1; }
 			set { unknownf1 = value; }
 		}
 
-		float unknownf2;		
+		float unknownf2;
 		public float UnknownFloat2
 		{
 			get { return unknownf2; }
 			set { unknownf2 = value; }
 		}
 
-		float unknownf3;		
+		float unknownf3;
 		public float UnknownFloat3
 		{
 			get { return unknownf3; }
 			set { unknownf3 = value; }
 		}
 
-		float unknownf4;		
+		float unknownf4;
 		public float UnknownFloat4
 		{
 			get { return unknownf4; }
 			set { unknownf4 = value; }
 		}
 
-		float unknownf5;		
+		float unknownf5;
 		public float UnknownFloat5
 		{
 			get { return unknownf5; }
 			set { unknownf5 = value; }
 		}
 
-		float unknownf6;		
+		float unknownf6;
 		public float UnknownFloat6
 		{
 			get { return unknownf6; }
 			set { unknownf6 = value; }
 		}
 
-		float unknownf7;		
+		float unknownf7;
 		public float UnknownFloat7
 		{
 			get { return unknownf7; }
 			set { unknownf7 = value; }
 		}
 
-		float unknownf8;		
+		float unknownf8;
 		public float UnknownFloat8
 		{
 			get { return unknownf8; }
 			set { unknownf8 = value; }
 		}
 
-		int unknowni1;		
+		int unknowni1;
 		public int UnknownInt1
 		{
 			get { return unknowni1; }
 			set { unknowni1 = value; }
 		}
 
-		int unknowni2;		
+		int unknowni2;
 		public int UnknownInt2
 		{
 			get { return unknowni2; }
 			set { unknowni2 = value; }
 		}
 
-		int unknowni3;		
+		int unknowni3;
 		public int UnknownInt3
 		{
 			get { return unknowni3; }
 			set { unknowni3 = value; }
 		}
 
-		int unknowni4;		
+		int unknowni4;
 		public int UnknownInt4
 		{
 			get { return unknowni4; }
 			set { unknowni4 = value; }
 		}
 
-		int unknowni5;		
+		int unknowni5;
 		public int UnknownInt5
 		{
 			get { return unknowni5; }
 			set { unknowni5 = value; }
 		}
 
-		int unknowni6;		
+		int unknowni6;
 		public int UnknownInt6
 		{
 			get { return unknowni6; }
 			set { unknowni6 = value; }
 		}
 
-		int unknowni7;		
+		int unknowni7;
 		public int UnknownInt7
 		{
 			get { return unknowni7; }
 			set { unknowni7 = value; }
 		}
 
-		int unknowni8;		
+		int unknowni8;
 		public int UnknownInt8
 		{
 			get { return unknowni8; }
 			set { unknowni8 = value; }
 		}
 
-		int unknowni9;		
+		int unknowni9;
 		public int UnknownInt9
 		{
 			get { return unknowni9; }
 			set { unknowni9 = value; }
 		}
 
-		int unknowni10;		
+		int unknowni10;
 		public int UnknownInt10
 		{
 			get { return unknowni10; }
 			set { unknowni10 = value; }
 		}
 
-		short unknowns1;		
+		short unknowns1;
 		public short UnknownShort1
 		{
 			get { return unknowns1; }
 			set { unknowns1 = value; }
 		}
 
-		short unknowns2;		
+		short unknowns2;
 		public short UnknownShort2
 		{
 			get { return unknowns2; }
 			set { unknowns2 = value; }
-        }
+		}
 
-        short unknowns3;
-        public short UnknownShort3
-        {
-            get { return unknowns3; }
-            set { unknowns3 = value; }
-        }
+		short unknowns3;
+		public short UnknownShort3
+		{
+			get { return unknowns3; }
+			set { unknowns3 = value; }
+		}
 
-		public SlotItem(Slot parent) 
+		public SlotItem(Slot parent)
 		{
 			this.parent = parent;
 		}
+
 		/// <summary>
 		/// Unserializes a BinaryStream into the Attributes of this Instance
 		/// </summary>
@@ -226,7 +227,7 @@ namespace SimPe.PackedFiles.Wrapper
 			unknowni4 = reader.ReadInt32();
 			unknowni5 = reader.ReadInt32();
 
-			if (parent.Version>=5) 
+			if (parent.Version >= 5)
 			{
 				unknownf4 = reader.ReadSingle();
 				unknownf5 = reader.ReadSingle();
@@ -235,24 +236,28 @@ namespace SimPe.PackedFiles.Wrapper
 				unknowni6 = reader.ReadInt32();
 			}
 
-			if (parent.Version>=6) 
+			if (parent.Version >= 6)
 			{
 				unknowns1 = reader.ReadInt16();
 				unknowns2 = reader.ReadInt16();
 			}
 
-			if (parent.Version>=7) unknownf7 = reader.ReadSingle();
-			if (parent.Version>=8) unknowni7 = reader.ReadInt32();
-            if (parent.Version >= 9) unknowni8 = reader.ReadInt32();
-            if (parent.Version == 10) unknowns3 = reader.ReadInt16();// this is in test, before making full use of I need to test, test and fucking test
-			if (parent.Version>=0x10) unknownf8 = reader.ReadSingle();
+			if (parent.Version >= 7)
+				unknownf7 = reader.ReadSingle();
+			if (parent.Version >= 8)
+				unknowni7 = reader.ReadInt32();
+			if (parent.Version >= 9)
+				unknowni8 = reader.ReadInt32();
+			if (parent.Version == 10)
+				unknowns3 = reader.ReadInt16(); // this is in test, before making full use of I need to test, test and fucking test
+			if (parent.Version >= 0x10)
+				unknownf8 = reader.ReadSingle();
 
-			if (parent.Version>=0x40) 
+			if (parent.Version >= 0x40)
 			{
 				unknowni9 = reader.ReadInt32();
 				unknowni10 = reader.ReadInt32();
 			}
-			
 		}
 
 		/// <summary>
@@ -260,11 +265,11 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		internal void Serialize(System.IO.BinaryWriter writer, Slot parent)
-		{	
+		{
 			this.parent = parent;
 			writer.Write((ushort)type);
 
@@ -278,7 +283,7 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write(unknowni4);
 			writer.Write(unknowni5);
 
-			if (parent.Version>=5) 
+			if (parent.Version >= 5)
 			{
 				writer.Write(unknownf4);
 				writer.Write(unknownf5);
@@ -287,19 +292,24 @@ namespace SimPe.PackedFiles.Wrapper
 				writer.Write(unknowni6);
 			}
 
-			if (parent.Version>=6) 
+			if (parent.Version >= 6)
 			{
 				writer.Write(unknowns1);
 				writer.Write(unknowns2);
 			}
 
-			if (parent.Version>=7) writer.Write(unknownf7);
-			if (parent.Version>=8) writer.Write(unknowni7);
-            if (parent.Version >= 9) writer.Write(unknowni8);
-            if (parent.Version == 10) writer.Write(unknowns3);
-			if (parent.Version>=0x10) writer.Write(unknownf8);
+			if (parent.Version >= 7)
+				writer.Write(unknownf7);
+			if (parent.Version >= 8)
+				writer.Write(unknowni7);
+			if (parent.Version >= 9)
+				writer.Write(unknowni8);
+			if (parent.Version == 10)
+				writer.Write(unknowns3);
+			if (parent.Version >= 0x10)
+				writer.Write(unknownf8);
 
-			if (parent.Version>=0x40) 
+			if (parent.Version >= 0x40)
 			{
 				writer.Write(unknowni9);
 				writer.Write(unknowni10);
@@ -310,13 +320,12 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			return Type.ToString();
 		}
-
 	}
 
 	/// <summary>
 	/// Typesave ArrayList for StrIte Objects
 	/// </summary>
-	public class SlotItems : ArrayList 
+	public class SlotItems : ArrayList
 	{
 		public new SlotItem this[int index]
 		{
@@ -348,9 +357,9 @@ namespace SimPe.PackedFiles.Wrapper
 		public bool Contains(SlotItem item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -358,10 +367,10 @@ namespace SimPe.PackedFiles.Wrapper
 		public override object Clone()
 		{
 			SlotItems list = new SlotItems();
-			foreach (SlotItem item in this) list.Add(item);
+			foreach (SlotItem item in this)
+				list.Add(item);
 
 			return list;
 		}
-
 	}
 }

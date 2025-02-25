@@ -18,10 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Windows.Forms;
 using System.Drawing;
-using SimPe.Interfaces.Plugin;
+using System.Windows.Forms;
 using SimPe.Interfaces;
+using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.UserInterface
 {
@@ -30,25 +30,20 @@ namespace SimPe.PackedFiles.UserInterface
 	/// </summary>
 	public class Xml : UIBase, IPackedFileUI
 	{
-		
 		#region IPackedFileHandler Member
 
 		public Control GUIHandle
 		{
-			get 
-			{
-				return form.xmlPanel;
-			}
+			get { return form.xmlPanel; }
 		}
 
 		public void UpdateGUI(SimPe.Interfaces.Plugin.IFileWrapper wrapper)
 		{
-			Wrapper.Xml xml = (Wrapper.Xml)wrapper;	
+			Wrapper.Xml xml = (Wrapper.Xml)wrapper;
 			form.wrapper = xml;
 			form.rtb.Text = xml.Text;
 		}
 
-		
-		#endregion		
+		#endregion
 	}
 }

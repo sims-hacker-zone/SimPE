@@ -23,19 +23,19 @@ using System.IO;
 using System.Xml;
 using Microsoft.Win32;
 
-
 namespace SimPe
 {
 	/// <summary>
 	/// Handles Application Settings stored in the Registry
 	/// </summary>
-	/// <remarks>You cannot create instance of this class, use the 
+	/// <remarks>You cannot create instance of this class, use the
 	/// <see cref="SimPe.Helper.WindowsRegistry"/> Field to acces the Registry</remarks>
 	public class Registry
 	{
 		#region Attributes
 		///Number of Recent Files stored in the Reg
 		public const byte RECENT_COUNT = 15;
+
 		/// <summary>
 		/// The Root Registry Kex for this Application
 		/// </summary>
@@ -51,26 +51,27 @@ namespace SimPe
 		/// </summary>
 		XmlRegistryKey xrk;
 
-        /// <summary>
-        /// The registery for the MRU list
-        /// </summary>
-        XmlRegistry mru;
+		/// <summary>
+		/// The registery for the MRU list
+		/// </summary>
+		XmlRegistry mru;
 
-        /// <summary>
-        /// The Root Registry Key for this Application
-        /// </summary>
-        XmlRegistryKey mrk;
+		/// <summary>
+		/// The Root Registry Key for this Application
+		/// </summary>
+		XmlRegistryKey mrk;
 
 		LayoutRegistry lr;
+
 		/// <summary>
 		/// Returns the LayoutRegistry
 		/// </summary>
-		public LayoutRegistry Layout 
+		public LayoutRegistry Layout
 		{
-			get {return lr;}
+			get { return lr; }
 		}
-        long pver;
-        // int pep, pepct; long pver; - seem not to be used will comment all out
+		long pver;
+		// int pep, pepct; long pver; - seem not to be used will comment all out
 		#endregion
 
 		#region Management
@@ -79,12 +80,15 @@ namespace SimPe
 		/// </summary>
 		internal Registry()
 		{
-			rk = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Ambertation\\SimPe");
+			rk = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(
+				"Software\\Ambertation\\SimPe"
+			);
 			pver = this.GetPreviousVersion();
-            // pep = -1;
+			// pep = -1;
 			// pepct = this.GetPreviousEpCount();
 			Reload();
-			if (Helper.QARelease) this.WasQAUser=true;
+			if (Helper.QARelease)
+				this.WasQAUser = true;
 		}
 
 		/// <summary>
@@ -92,41 +96,52 @@ namespace SimPe
 		/// </summary>
 		public void Reload()
 		{
-            reg = new XmlRegistry(Helper.DataFolder.SimPeXREG, Helper.DataFolder.SimPeXREGW, true);
+			reg = new XmlRegistry(
+				Helper.DataFolder.SimPeXREG,
+				Helper.DataFolder.SimPeXREGW,
+				true
+			);
 			xrk = reg.CurrentUser.CreateSubKey(@"Software\Ambertation\SimPe");
 			ReloadLayout();
-            mru = new XmlRegistry(Helper.DataFolder.MRUXREG, Helper.DataFolder.MRUXREGW, true);
-            mrk = mru.CurrentUser.CreateSubKey(@"Software\Ambertation\SimPe");
-        }
+			mru = new XmlRegistry(
+				Helper.DataFolder.MRUXREG,
+				Helper.DataFolder.MRUXREGW,
+				true
+			);
+			mrk = mru.CurrentUser.CreateSubKey(@"Software\Ambertation\SimPe");
+		}
 
 		/// <summary>
 		/// Reload the SimPe Registry
 		/// </summary>
 		public void ReloadLayout()
 		{
-            //lr = new LayoutRegistry(xrk.CreateSubKey("Layout"));
-            lr = new LayoutRegistry(null);
+			//lr = new LayoutRegistry(xrk.CreateSubKey("Layout"));
+			lr = new LayoutRegistry(null);
 		}
 
 		/// <summary>
-		/// Descturtor 
+		/// Descturtor
 		/// </summary>
 		/// <remarks>
 		/// Will flsuh the XmlRegistry to the disk
 		/// </remarks>
 		~Registry()
-		{			
+		{
 			//Flush();
 		}
 
 		/// <summary>
 		/// Write the Settings to the Disk
 		/// </summary>
-		public void Flush() 
+		public void Flush()
 		{
-			if (lr!=null) lr.Flush();
-			if (reg!=null) reg.Flush();
-            if (mru != null) mru.Flush();
+			if (lr != null)
+				lr.Flush();
+			if (reg != null)
+				reg.Flush();
+			if (mru != null)
+				mru.Flush();
 		}
 
 		/// <summary>
@@ -134,10 +149,7 @@ namespace SimPe
 		/// </summary>
 		public XmlRegistryKey PluginRegistryKey
 		{
-			get 
-			{
-				return xrk.CreateSubKey("PluginSettings");
-			}
+			get { return xrk.CreateSubKey("PluginSettings"); }
 		}
 
 		/// <summary>
@@ -145,10 +157,7 @@ namespace SimPe
 		/// </summary>
 		public XmlRegistryKey RegistryKey
 		{
-			get 
-			{
-				return xrk;
-			}
+			get { return xrk; }
 		}
 		#endregion
 
@@ -161,7 +170,7 @@ namespace SimPe
 			rkf.SetValue("Path", Helper.SimPePath);
 			rkf.SetValue("DataPath", Helper.SimPeDataPath);
 			rkf.SetValue("PluginPath", Helper.SimPePluginPath);
-            rkf.SetValue("LastVersion", Helper.SimPeVersionLong);
+			rkf.SetValue("LastVersion", Helper.SimPeVersionLong);
 		}
 
 		/// <summary>
@@ -171,23 +180,23 @@ namespace SimPe
 		{
 			get
 			{
-				RegistryKey rkf = rk.CreateSubKey("Settings");	
+				RegistryKey rkf = rk.CreateSubKey("Settings");
 				return rkf.GetValue("DataPath", "").ToString();
 			}
-        }
+		}
 
-        public string GetPreviousData()
-        {
-            RegistryKey rkf = rk.CreateSubKey("Settings");
-            return rkf.GetValue("DataPath", "").ToString();
-        }
-		
+		public string GetPreviousData()
+		{
+			RegistryKey rkf = rk.CreateSubKey("Settings");
+			return rkf.GetValue("DataPath", "").ToString();
+		}
+
 		/// <summary>
 		/// Returns the SimPe Version as set by the last SimPe run
 		/// </summary>
-        public long GetPreviousVersion()
+		public long GetPreviousVersion()
 		{
-			RegistryKey rkf = rk.CreateSubKey("Settings");	
+			RegistryKey rkf = rk.CreateSubKey("Settings");
 			return Convert.ToInt64(rkf.GetValue("LastVersion", (long)0));
 		}
 
@@ -196,263 +205,290 @@ namespace SimPe
 		/// </summary>
 		public long PreviousVersion
 		{
-			get
-			{
-				return pver;
-			}
+			get { return pver; }
 		}
 
 		#region EP Handler
 		public bool FoundUnknownEP()
 		{
 			string[] inst = InstalledEPExecutables;
-			if (inst.Length==0) return false;
-            string[] eenames ={
-            "sims2.exe",
-            "sims2ep1.exe",
-            "sims2ep2.exe",
-            "sims2ep3.exe", 
-            "sims2sp1.exe",
-            "sims2sp2.exe",
-            "sims2ep4.exe",
-            "sims2ep5.exe",
-            "sims2sp4.exe",
-            "sims2sp5.exe",
-            "sims2ep6.exe",
-            "sims2sp6.exe",
-            "sims2ecc.exe",
-            "sims2ep7.exe",
-            "sims2sp7.exe",
-            "sims2sp8.exe",
-            "sims2ep8.exe",
-            "sims2ep9.exe",
-            "sims2sc.exe"
-            };
+			if (inst.Length == 0)
+				return false;
+			string[] eenames =
+			{
+				"sims2.exe",
+				"sims2ep1.exe",
+				"sims2ep2.exe",
+				"sims2ep3.exe",
+				"sims2sp1.exe",
+				"sims2sp2.exe",
+				"sims2ep4.exe",
+				"sims2ep5.exe",
+				"sims2sp4.exe",
+				"sims2sp5.exe",
+				"sims2ep6.exe",
+				"sims2sp6.exe",
+				"sims2ecc.exe",
+				"sims2ep7.exe",
+				"sims2sp7.exe",
+				"sims2sp8.exe",
+				"sims2ep8.exe",
+				"sims2ep9.exe",
+				"sims2sc.exe",
+			};
 
 			foreach (string si in inst)
 			{
-				if (si=="") continue;
-                bool found = false;
-                foreach (string n in eenames)
-                {
-                    if (si == n)
-                    {
-                        found = true;
-                        break;
-                    }
-                }
-                if (!found) return true;
+				if (si == "")
+					continue;
+				bool found = false;
+				foreach (string n in eenames)
+				{
+					if (si == n)
+					{
+						found = true;
+						break;
+					}
+				}
+				if (!found)
+					return true;
 			}
 			return false;
 		}
 
-        public string[] InstalledEPExecutables
+		public string[] InstalledEPExecutables
 		{
-			get 
+			get
 			{
-                Microsoft.Win32.RegistryKey tk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Sims2.exe", false);
-                if (tk == null) return new string[0];
-                object gr = tk.GetValue("Game Registry", false);
-                Microsoft.Win32.RegistryKey rk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey((string)gr, false);
-                if (rk != null)
+				Microsoft.Win32.RegistryKey tk =
+					Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
+						"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Sims2.exe",
+						false
+					);
+				if (tk == null)
+					return new string[0];
+				object gr = tk.GetValue("Game Registry", false);
+				Microsoft.Win32.RegistryKey rk =
+					Microsoft.Win32.Registry.LocalMachine.OpenSubKey((string)gr, false);
+				if (rk != null)
 				{
 					object o = rk.GetValue("EPsInstalled", "");
-					if (o==null) return new string[0];
+					if (o == null)
+						return new string[0];
 
 					string s = o.ToString();
-				
-					string[] ret = s.Split(new char[] {','});
-					for (int i=0; i<ret.Length; i++)
+
+					string[] ret = s.Split(new char[] { ',' });
+					for (int i = 0; i < ret.Length; i++)
 						ret[i] = ret[i].ToLower().Trim();
 
 					return ret;
 				}
-				else return new string[0];
+				else
+					return new string[0];
 			}
 		}
 
 		#endregion
 
-        /// <summary>
-        /// true, if the user wants File Table Simple Selection - Fixed now but Setting Manager has to be re-started for change to show
-        /// </summary>
-        public bool FileTableSimpleSelectUseGroups
-        {
-            get
-            {
-                if (HiddenMode) return false;
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("FileTableSimpleSelectUseGroups", true);
-                return Convert.ToBoolean(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("FileTableSimpleSelectUseGroups", value);
-            }
-        }
+		/// <summary>
+		/// true, if the user wants File Table Simple Selection - Fixed now but Setting Manager has to be re-started for change to show
+		/// </summary>
+		public bool FileTableSimpleSelectUseGroups
+		{
+			get
+			{
+				if (HiddenMode)
+					return false;
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("FileTableSimpleSelectUseGroups", true);
+				return Convert.ToBoolean(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("FileTableSimpleSelectUseGroups", value);
+			}
+		}
 
-        /// <summary>
-        /// true, if the user wants the Wait bar to always be visible
-        /// </summary>
-        public bool ShowWaitBarPermanent
-        {
-            get
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("ShowWaitBarPermanent", true);
-                return Convert.ToBoolean(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("ShowWaitBarPermanent", value);
-            }
-        }
+		/// <summary>
+		/// true, if the user wants the Wait bar to always be visible
+		/// </summary>
+		public bool ShowWaitBarPermanent
+		{
+			get
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("ShowWaitBarPermanent", true);
+				return Convert.ToBoolean(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("ShowWaitBarPermanent", value);
+			}
+		}
 
-        /// <summary>
-        /// true, if user want all neighbourhoods available
-        /// </summary>
-        [System.ComponentModel.Description("Enable this to load sim story neighbourhoods as well as default")]
-        public bool LoadAllNeighbourhoods
-        {
-            get
-            {
-                if (Helper.WindowsRegistry.Layout.IsClassicPreset || LoadOnlySimsStory > 0) return false;
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("LoadAllHoods", false);
-                return Convert.ToBoolean(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("LoadAllHoods", value);
-            }
-        }
+		/// <summary>
+		/// true, if user want all neighbourhoods available
+		/// </summary>
+		[System.ComponentModel.Description(
+			"Enable this to load sim story neighbourhoods as well as default"
+		)]
+		public bool LoadAllNeighbourhoods
+		{
+			get
+			{
+				if (
+					Helper.WindowsRegistry.Layout.IsClassicPreset
+					|| LoadOnlySimsStory > 0
+				)
+					return false;
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("LoadAllHoods", false);
+				return Convert.ToBoolean(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("LoadAllHoods", value);
+			}
+		}
 
-        /// <summary>
-        /// true, if new Store Edition needs to be supported
-        /// </summary>
-        public bool UseExpansions2
-        {
-            get
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("UseExpansions2", false);
-                return Convert.ToBoolean(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("UseExpansions2", value);
-            }
-        }
+		/// <summary>
+		/// true, if new Store Edition needs to be supported
+		/// </summary>
+		public bool UseExpansions2
+		{
+			get
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("UseExpansions2", false);
+				return Convert.ToBoolean(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("UseExpansions2", value);
+			}
+		}
 
-        /// <summary>
-        /// Set to an ST value to set all except that Sims Story Edition as not installed
-        /// </summary>
-        public int LoadOnlySimsStory
-        {
-            get
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("LoadOnlySimsStory", 0);
-                return Convert.ToInt32(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("LoadOnlySimsStory", value);
-            }
-        }
+		/// <summary>
+		/// Set to an ST value to set all except that Sims Story Edition as not installed
+		/// </summary>
+		public int LoadOnlySimsStory
+		{
+			get
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("LoadOnlySimsStory", 0);
+				return Convert.ToInt32(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("LoadOnlySimsStory", value);
+			}
+		}
 
-        /// <summary>
-        /// true, if user likes bigger Icons on the main tool bars
-        /// </summary>
-        [System.ComponentModel.Description("Enable this for larger Icons on the main toolbar and larger fonts in some areas")]
-        public bool UseBigIcons
-        {
-            get
-            {
-                if (Helper.WindowsRegistry.Layout.IsClassicPreset) return false;
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("UseBigIcons", false);
-                return Convert.ToBoolean(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("UseBigIcons", value);
-            }
-        }
+		/// <summary>
+		/// true, if user likes bigger Icons on the main tool bars
+		/// </summary>
+		[System.ComponentModel.Description(
+			"Enable this for larger Icons on the main toolbar and larger fonts in some areas"
+		)]
+		public bool UseBigIcons
+		{
+			get
+			{
+				if (Helper.WindowsRegistry.Layout.IsClassicPreset)
+					return false;
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("UseBigIcons", false);
+				return Convert.ToBoolean(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("UseBigIcons", value);
+			}
+		}
 
-        /// <summary>
-        /// true, if user uses the custom Music and Art sim Skills
-        /// </summary>
-        [System.ComponentModel.Description("Enable this if you use the Custom Music and Art Skills for your sims")]
-        public bool ShowMoreSkills
-        {
-            get
-            {
-                if (Helper.WindowsRegistry.Layout.IsClassicPreset) return false;
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("ShowMoreSkills", false);
-                return Convert.ToBoolean(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("ShowMoreSkills", value);
-            }
-        }
+		/// <summary>
+		/// true, if user uses the custom Music and Art sim Skills
+		/// </summary>
+		[System.ComponentModel.Description(
+			"Enable this if you use the Custom Music and Art Skills for your sims"
+		)]
+		public bool ShowMoreSkills
+		{
+			get
+			{
+				if (Helper.WindowsRegistry.Layout.IsClassicPreset)
+					return false;
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("ShowMoreSkills", false);
+				return Convert.ToBoolean(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("ShowMoreSkills", value);
+			}
+		}
 
-        /// <summary>
-        /// true, if user uses the Dog Show or Training Items
-        /// </summary>
-        [System.ComponentModel.Description("Enable this if you use the Pet Stories Dog Show or Training Items for your pets")]
-        public bool ShowPetAbilities
-        {
-            get
-            {
-                if (Helper.WindowsRegistry.Layout.IsClassicPreset) return false;
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("ShowPetAbilities", "false");
-                return Convert.ToBoolean(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("ShowPetAbilities", value);
-            }
-        }
+		/// <summary>
+		/// true, if user uses the Dog Show or Training Items
+		/// </summary>
+		[System.ComponentModel.Description(
+			"Enable this if you use the Pet Stories Dog Show or Training Items for your pets"
+		)]
+		public bool ShowPetAbilities
+		{
+			get
+			{
+				if (Helper.WindowsRegistry.Layout.IsClassicPreset)
+					return false;
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("ShowPetAbilities", "false");
+				return Convert.ToBoolean(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("ShowPetAbilities", value);
+			}
+		}
 
-        /// <summary>
-        /// true to load the main file table at startup
-        /// </summary>
-        [System.ComponentModel.Description("Enable this to load the main file table at startup instead of when first needed")]
-        public bool LoadTableAtStartup
-        {
-            get
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("loadAtStartup", false);
-                return Convert.ToBoolean(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("loadAtStartup", value);
-            }
-        }
+		/// <summary>
+		/// true to load the main file table at startup
+		/// </summary>
+		[System.ComponentModel.Description(
+			"Enable this to load the main file table at startup instead of when first needed"
+		)]
+		public bool LoadTableAtStartup
+		{
+			get
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("loadAtStartup", false);
+				return Convert.ToBoolean(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("loadAtStartup", value);
+			}
+		}
 
 		/// <summary>
 		/// true, if user wants to activate the Cache
 		/// </summary>
-		public  bool UseCache
+		public bool UseCache
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("UseCache", true);
 				return Convert.ToBoolean(o);
 			}
@@ -463,32 +499,32 @@ namespace SimPe
 			}
 		}
 
-        /// <summary>
-        /// true, if user wants see the startup splash screen
-        /// </summary>
-        public bool ShowStartupSplash
-        {
-            get
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("ShowStartupSplash", true);
-                return Convert.ToBoolean(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("ShowStartupSplash", value);
-            }
-        }
+		/// <summary>
+		/// true, if user wants see the startup splash screen
+		/// </summary>
+		public bool ShowStartupSplash
+		{
+			get
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("ShowStartupSplash", true);
+				return Convert.ToBoolean(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("ShowStartupSplash", value);
+			}
+		}
 
 		/// <summary>
 		/// true, if user wants to show the OBJD Filenames in OW
 		/// </summary>
-		public  bool ShowObjdNames
+		public bool ShowObjdNames
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("ShowObjdNames", false);
 				return Convert.ToBoolean(o);
 			}
@@ -499,33 +535,34 @@ namespace SimPe
 			}
 		}
 
-        /// <summary>
-        /// true, if we allow Users to change the secondary aspiraions.
-        /// </summary>
-        public bool AllowChangeOfSecondaryAspiration
-        {
-            get
-            {
-                if (Helper.WindowsRegistry.Layout.IsClassicPreset) return false;
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("AllowChangeOfSecondaryAspiration", true);
-                return Convert.ToBoolean(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("AllowChangeOfSecondaryAspiration", value);
-            }
-        }
+		/// <summary>
+		/// true, if we allow Users to change the secondary aspiraions.
+		/// </summary>
+		public bool AllowChangeOfSecondaryAspiration
+		{
+			get
+			{
+				if (Helper.WindowsRegistry.Layout.IsClassicPreset)
+					return false;
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("AllowChangeOfSecondaryAspiration", true);
+				return Convert.ToBoolean(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("AllowChangeOfSecondaryAspiration", value);
+			}
+		}
 
 		/// <summary>
 		/// true, if user wants to show the Name of a Joint in the GMDC Plugin
 		/// </summary>
-		public  bool ShowJointNames
+		public bool ShowJointNames
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("ShowJointNames", true);
 				return Convert.ToBoolean(o);
 			}
@@ -539,11 +576,11 @@ namespace SimPe
 		/// <summary>
 		/// the Scaling Factor that is used by the Gmdc Importer/Exporter
 		/// </summary>
-		public  float ImportExportScaleFactor
+		public float ImportExportScaleFactor
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("ImExportScale", 1.0f);
 				return Convert.ToSingle(o);
 			}
@@ -559,9 +596,9 @@ namespace SimPe
 		/// </summary>
 		public bool HiddenMode
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("EnableSimPEHiddenMode", false);
 				return Convert.ToBoolean(o);
 			}
@@ -572,34 +609,37 @@ namespace SimPe
 			}
 		}
 
-        /// <summary>
-        /// true, if Groups cache is going to be used
-        /// </summary>
-        [System.ComponentModel.Description("Enable this if some thumbnails from custom packages do not load right. This will slow down the loading of the first package in a SimPe Session")]
-        public bool UseMaxisGroupsCache
-        {
-            get
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("UseMaxisGroupsCache", false);
-                return Convert.ToBoolean(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("UseMaxisGroupsCache", value);
-            }
-        }
+		/// <summary>
+		/// true, if Groups cache is going to be used
+		/// </summary>
+		[System.ComponentModel.Description(
+			"Enable this if some thumbnails from custom packages do not load right. This will slow down the loading of the first package in a SimPe Session"
+		)]
+		public bool UseMaxisGroupsCache
+		{
+			get
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("UseMaxisGroupsCache", false);
+				return Convert.ToBoolean(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("UseMaxisGroupsCache", value);
+			}
+		}
 
 		/// <summary>
 		/// true, if the user wanted to decode Filenames
 		/// </summary>
-		public  bool DecodeFilenamesState 
+		public bool DecodeFilenamesState
 		{
-			get 
+			get
 			{
-                if (Helper.WindowsRegistry.Layout.IsClassicPreset) return false;
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				if (Helper.WindowsRegistry.Layout.IsClassicPreset)
+					return false;
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("DecodeFilenames", true);
 				return Convert.ToBoolean(o);
 			}
@@ -615,9 +655,9 @@ namespace SimPe
 		/// </summary>
 		public string Username
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("Username", "");
 				return o.ToString();
 			}
@@ -633,9 +673,9 @@ namespace SimPe
 		/// </summary>
 		public uint CachedUserId
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("CUi", 0);
 				return Convert.ToUInt32(o);
 			}
@@ -644,19 +684,21 @@ namespace SimPe
 				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				rkf.SetValue("CUi", value);
 			}
-		}		
+		}
 
 		/// <summary>
-        /// Language Code for SimPe
+		/// Language Code for SimPe
 		/// </summary>
 		public Data.MetaData.Languages LanguageCode
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("Language");
-				if (o==null) return Helper.GetMatchingLanguage();
-				else return (Data.MetaData.Languages)Convert.ToByte(o);
+				if (o == null)
+					return Helper.GetMatchingLanguage();
+				else
+					return (Data.MetaData.Languages)Convert.ToByte(o);
 			}
 			set
 			{
@@ -670,74 +712,71 @@ namespace SimPe
 		/// </summary>
 		public string Password
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("Password", "");
-                return o.ToString();
-                //return descramble(o.ToString());
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("Password", "");
+				return o.ToString();
+				//return descramble(o.ToString());
 			}
 			set
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("Password", value);
-                //rkf.SetValue("Password", scramble(value));
+				rkf.SetValue("Password", value);
+				//rkf.SetValue("Password", scramble(value));
 			}
 		}
 
 		/// <summary>
-		/// This was not used and always return zero, I have 
-        /// Made it return the Current SimPe Version, 
-        /// Was an int which may cause an issue if an old
-        /// addon did call it
+		/// This was not used and always return zero, I have
+		/// Made it return the Current SimPe Version,
+		/// Was an int which may cause an issue if an old
+		/// addon did call it
 		/// </summary>
 		public long Version
 		{
-			get
-            {
-                return Helper.SimPeVersionLong;
-			}
+			get { return Helper.SimPeVersionLong; }
 		}
 
-        /// <summary>
-        /// Returns the maximum number of search results to show
-        /// </summary>
-        public int MaxSearchResults
-        {
-            get
-            {
-                try
-                {
-                    XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                    object o = rkf.GetValue("MaxSearchResults", 2000);
-                    return (int)o;
-                }
-                catch (Exception)
-                {
-                    return 16;
-                }
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("MaxSearchResults", value);
-            }
-        }
+		/// <summary>
+		/// Returns the maximum number of search results to show
+		/// </summary>
+		public int MaxSearchResults
+		{
+			get
+			{
+				try
+				{
+					XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+					object o = rkf.GetValue("MaxSearchResults", 2000);
+					return (int)o;
+				}
+				catch (Exception)
+				{
+					return 16;
+				}
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("MaxSearchResults", value);
+			}
+		}
 
 		/// <summary>
 		/// Returns the Thumbnail Size for Treeview Items in Object Workshop
 		/// </summary>
 		public int OWThumbSize
 		{
-			get 
+			get
 			{
-				try 
+				try
 				{
-					XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+					XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 					object o = rkf.GetValue("OWThumbSize", 24);
 					return (int)o;
-				} 
-				catch (Exception) 
+				}
+				catch (Exception)
 				{
 					return 24;
 				}
@@ -747,66 +786,66 @@ namespace SimPe
 				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				rkf.SetValue("OWThumbSize", value);
 			}
-        }
-
-        /// <summary>
-        /// Returns the Thumbnail Size for Treeview Items in Object Workshop
-        /// </summary>
-        public bool OWincludewalls
-        {
-            get
-            {
-                try
-                {
-                    XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                    object o = rkf.GetValue("OWWallsFloors", false);
-                    return (bool)o;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("OWWallsFloors", value);
-            }
-        }
-
-        /// <summary>
-        /// Trim junk from names for Treeview Items in Object Workshop
-        /// </summary>
-        public bool OWtrimnames
-        {
-            get
-            {
-                try
-                {
-                    XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                    object o = rkf.GetValue("OWTrimNames", false);
-                    return (bool)o;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("OWTrimNames", value);
-            }
-        }
+		}
 
 		/// <summary>
-        /// true, if the user wants to Load Meta Information
+		/// Returns the Thumbnail Size for Treeview Items in Object Workshop
 		/// </summary>
-		public bool LoadMetaInfo 
+		public bool OWincludewalls
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				try
+				{
+					XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+					object o = rkf.GetValue("OWWallsFloors", false);
+					return (bool)o;
+				}
+				catch (Exception)
+				{
+					return false;
+				}
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("OWWallsFloors", value);
+			}
+		}
+
+		/// <summary>
+		/// Trim junk from names for Treeview Items in Object Workshop
+		/// </summary>
+		public bool OWtrimnames
+		{
+			get
+			{
+				try
+				{
+					XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+					object o = rkf.GetValue("OWTrimNames", false);
+					return (bool)o;
+				}
+				catch (Exception)
+				{
+					return false;
+				}
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("OWTrimNames", value);
+			}
+		}
+
+		/// <summary>
+		/// true, if the user wants to Load Meta Information
+		/// </summary>
+		public bool LoadMetaInfo
+		{
+			get
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("LoadMetaInfos", true);
 				return Convert.ToBoolean(o);
 			}
@@ -820,11 +859,11 @@ namespace SimPe
 		/// <summary>
 		/// true, if the user want's to start the Game with Sound
 		/// </summary>
-		public bool EnableSound 
+		public bool EnableSound
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("EnableSound", true);
 				return Convert.ToBoolean(o);
 			}
@@ -838,11 +877,11 @@ namespace SimPe
 		/// <summary>
 		/// true, if the user wants .bak files to be generated
 		/// </summary>
-		public bool AutoBackup 
+		public bool AutoBackup
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("AutoBackup", false);
 				return Convert.ToBoolean(o);
 			}
@@ -856,9 +895,9 @@ namespace SimPe
 		/// <summary>
 		/// true, if the user wants the Waiting Screen
 		/// </summary>
-		public bool WaitingScreen 
+		public bool WaitingScreen
 		{
-			get 
+			get
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("WaitingScreen", true);
@@ -876,7 +915,7 @@ namespace SimPe
 		/// </summary>
 		public bool WaitingScreenTopMost
 		{
-			get 
+			get
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("WaitingScreenTopMost", false);
@@ -892,11 +931,11 @@ namespace SimPe
 		/// <summary>
 		/// true, if the user wants to load Object Workshop fast
 		/// </summary>
-		public bool LoadOWFast 
+		public bool LoadOWFast
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("LoadOWFast", false);
 				return Convert.ToBoolean(o);
 			}
@@ -910,11 +949,11 @@ namespace SimPe
 		/// <summary>
 		/// true, if the user wants to use the package Maintainer
 		/// </summary>
-		public bool UsePackageMaintainer 
+		public bool UsePackageMaintainer
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("UsePkgMaintainer", true);
 				return Convert.ToBoolean(o);
 			}
@@ -926,13 +965,13 @@ namespace SimPe
 		}
 
 		/// <summary>
-        /// true, if the user wants to be able to have Multiple Files open
+		/// true, if the user wants to be able to have Multiple Files open
 		/// </summary>
 		public bool MultipleFiles
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("MultipleFiles", true);
 				return Convert.ToBoolean(o);
 			}
@@ -948,9 +987,9 @@ namespace SimPe
 		/// </summary>
 		public bool SimpleResourceSelect
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("SimpleResourceSelect", true);
 				return Convert.ToBoolean(o);
 			}
@@ -959,16 +998,16 @@ namespace SimPe
 				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				rkf.SetValue("SimpleResourceSelect", value);
 			}
-		}		
+		}
 
 		/// <summary>
 		/// true, if the user want's to control the Tabs like done in FireFox
 		/// </summary>
 		public bool FirefoxTabbing
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("FirefoxTabbing", true);
 				return Convert.ToBoolean(o);
 			}
@@ -984,9 +1023,9 @@ namespace SimPe
 		/// </summary>
 		public bool WasQAUser
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("WasQAUser", false);
 				return Convert.ToBoolean(o);
 			}
@@ -1002,16 +1041,16 @@ namespace SimPe
 		/// </summary>
 		public int BigPackageResourceCount
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("BigPackageResourceCount", 2000);
 				return Convert.ToInt32(o);
 			}
 			set
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("BigPackageResourceCount", value);
+				rkf.SetValue("BigPackageResourceCount", value);
 			}
 		}
 
@@ -1020,9 +1059,9 @@ namespace SimPe
 		/// </summary>
 		public int GraphLineMode
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("GraphLineMode", 0x02);
 				return Convert.ToInt16(o);
 			}
@@ -1038,9 +1077,9 @@ namespace SimPe
 		/// </summary>
 		public bool GraphQuality
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("GraphQuality", true);
 				return Convert.ToBoolean(o);
 			}
@@ -1049,34 +1088,34 @@ namespace SimPe
 				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				rkf.SetValue("GraphQuality", value);
 			}
-        }
+		}
 
-        /// <summary>
-        /// should we prioritize mmat over cres
-        /// </summary>
-        public bool CresPrioritize
-        {
-            get
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("CresPrioritize", true);
-                return Convert.ToBoolean(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("CresPrioritize", value);
-            }
-        }
+		/// <summary>
+		/// should we prioritize mmat over cres
+		/// </summary>
+		public bool CresPrioritize
+		{
+			get
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("CresPrioritize", true);
+				return Convert.ToBoolean(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("CresPrioritize", value);
+			}
+		}
 
 		/// <summary>
 		/// returns the last Extension used during a GMDC import/export
 		/// </summary>
 		public string GmdcExtension
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("GmdcExtension", ".obj");
 				string s = o.ToString();
 				return s.Replace("*", "");
@@ -1093,9 +1132,9 @@ namespace SimPe
 		/// </summary>
 		public bool CorrectJointDefinitionOnExport
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("CorrectJointDefinitionOnExport", false);
 				return Convert.ToBoolean(o);
 			}
@@ -1111,9 +1150,9 @@ namespace SimPe
 		/// </summary>
 		public bool DeepSimScan
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("DeepSimScan", true);
 				return Convert.ToBoolean(o);
 			}
@@ -1129,9 +1168,9 @@ namespace SimPe
 		/// </summary>
 		public bool DeepSimTemplateScan
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("DeepSimTemplateScan", false);
 				return Convert.ToBoolean(o) && DeepSimScan;
 			}
@@ -1142,32 +1181,32 @@ namespace SimPe
 			}
 		}
 
-        /// <summary>
-        /// True, if you want to see the progress of a package loading
-        /// </summary>
-        public bool ShowProgressWhenPackageLoads
-        {
-            get
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("ShowProgressWhenPackageLoads", false);
-                return Convert.ToBoolean(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("ShowProgressWhenPackageLoads", value);
-            }
-        }
+		/// <summary>
+		/// True, if you want to see the progress of a package loading
+		/// </summary>
+		public bool ShowProgressWhenPackageLoads
+		{
+			get
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("ShowProgressWhenPackageLoads", false);
+				return Convert.ToBoolean(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("ShowProgressWhenPackageLoads", value);
+			}
+		}
 
 		/// <summary>
 		/// Should we load Stuff Asynchron to the main Thread?
 		/// </summary>
 		public bool AsynchronLoad
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("AsynchronLoad", false);
 				return Convert.ToBoolean(o);
 			}
@@ -1178,86 +1217,86 @@ namespace SimPe
 			}
 		}
 
-        /// <summary>
-        /// Should we sort Stuff Asynchron to the main Thread?
-        /// </summary>
-        public bool AsynchronSort
-        {
-            get
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("AsynchronSort", true);
-                return Convert.ToBoolean(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("AsynchronSort", value);
-            }
-        }
+		/// <summary>
+		/// Should we sort Stuff Asynchron to the main Thread?
+		/// </summary>
+		public bool AsynchronSort
+		{
+			get
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("AsynchronSort", true);
+				return Convert.ToBoolean(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("AsynchronSort", value);
+			}
+		}
 
-        /// <summary>
-        /// True, if you allways want to select a type in a resource tree when a package is loaded
-        /// </summary>
-        public bool ResoruceTreeAllwaysAutoselect
-        {
-            get
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("ResoruceTreeAllwaysAutoselect", true);
-                return Convert.ToBoolean(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("ResoruceTreeAllwaysAutoselect", value);
-            }
-        }
+		/// <summary>
+		/// True, if you allways want to select a type in a resource tree when a package is loaded
+		/// </summary>
+		public bool ResoruceTreeAllwaysAutoselect
+		{
+			get
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("ResoruceTreeAllwaysAutoselect", true);
+				return Convert.ToBoolean(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("ResoruceTreeAllwaysAutoselect", value);
+			}
+		}
 
-        /// <summary>
-        /// How many threads do we start when we sort by name?
-        /// </summary>
-        public int SortProcessCount
-        {
-            get
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("SortProcessCount", 16);
-                return Convert.ToInt32(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("SortProcessCount", value);
-            }
-        }
+		/// <summary>
+		/// How many threads do we start when we sort by name?
+		/// </summary>
+		public int SortProcessCount
+		{
+			get
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("SortProcessCount", 16);
+				return Convert.ToInt32(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("SortProcessCount", value);
+			}
+		}
 
-        /// <summary>
-        /// True, if you want to rebuild the ResourceTree whenever the type of a loaded Resource changes
-        /// </summary>
-        public  bool UpdateResourceListWhenTGIChanges
-        {
-            get
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("UpdateResourceListWhenTGIChanges", true);
-                return Convert.ToBoolean(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("UpdateResourceListWhenTGIChanges", value);
-            }
-        }
+		/// <summary>
+		/// True, if you want to rebuild the ResourceTree whenever the type of a loaded Resource changes
+		/// </summary>
+		public bool UpdateResourceListWhenTGIChanges
+		{
+			get
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("UpdateResourceListWhenTGIChanges", true);
+				return Convert.ToBoolean(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("UpdateResourceListWhenTGIChanges", value);
+			}
+		}
 
 		/// <summary>
 		/// Schould we lock the Docks?
 		/// </summary>
 		public bool LockDocks
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("LockDocks", false);
 				return Convert.ToBoolean(o);
 			}
@@ -1266,150 +1305,184 @@ namespace SimPe
 				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				rkf.SetValue("LockDocks", value);
 			}
-        }
+		}
 
-        /// <summary>
-        /// set this true to allow families in the family bin to count as having a Lot
-        /// </summary>
-        [System.ComponentModel.Description("Enable this to allow the family bin to count as a Lot")]
-        public bool AllowLotZero
-        {
-            get
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("allowlotzero", true);
-                return Convert.ToBoolean(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("allowlotzero", value);
-            }
-        }
+		/// <summary>
+		/// set this true to allow families in the family bin to count as having a Lot
+		/// </summary>
+		[System.ComponentModel.Description(
+			"Enable this to allow the family bin to count as a Lot"
+		)]
+		public bool AllowLotZero
+		{
+			get
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("allowlotzero", true);
+				return Convert.ToBoolean(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("allowlotzero", value);
+			}
+		}
 
-        #region ResourceList
-        public enum ResourceListFormats : int
-        {          
-            LongTypeNames,
-            ShortTypeNames,
-            JustNames,
-            JustLongType
-        }
+		#region ResourceList
+		public enum ResourceListFormats : int
+		{
+			LongTypeNames,
+			ShortTypeNames,
+			JustNames,
+			JustLongType,
+		}
 
-        public enum ResourceListUnnamedFormats : int
-        {
-            Instance,
-            GroupInstance,
-            FullTGI
-        }
+		public enum ResourceListUnnamedFormats : int
+		{
+			Instance,
+			GroupInstance,
+			FullTGI,
+		}
 
-        public enum ResourceListExtensionFormats : int
-        {
-            Hex,
-            Short,
-            Long,
-            None
-        }
+		public enum ResourceListExtensionFormats : int
+		{
+			Hex,
+			Short,
+			Long,
+			None,
+		}
 
-        public enum ResourceListInstanceFormats : int
-        {
-            HexOnly,
-            DecOnly,
-            HexDec,
-        }
+		public enum ResourceListInstanceFormats : int
+		{
+			HexOnly,
+			DecOnly,
+			HexDec,
+		}
 
-        /// <summary>
-        /// How do we display the name column?
-        /// </summary>
-        public ResourceListFormats ResourceListFormat
-        {
-            get
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("ResourceListFormat", (int)ResourceListFormats.JustNames);
-                return (ResourceListFormats)Convert.ToInt32(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("ResourceListFormat", (int)value);
-            }
-        }
+		/// <summary>
+		/// How do we display the name column?
+		/// </summary>
+		public ResourceListFormats ResourceListFormat
+		{
+			get
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue(
+					"ResourceListFormat",
+					(int)ResourceListFormats.JustNames
+				);
+				return (ResourceListFormats)Convert.ToInt32(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("ResourceListFormat", (int)value);
+			}
+		}
 
-        /// <summary>
-        /// How do we display the name column?
-        /// </summary>
-        public ResourceListUnnamedFormats ResourceListUnknownDescriptionFormat
-        {
-            get
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("ResourceListUnknownDescriptionFormat", (int)ResourceListUnnamedFormats.GroupInstance);
-                return (ResourceListUnnamedFormats)Convert.ToInt32(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("ResourceListUnknownDescriptionFormat", (int)value);
-            }
-        }
+		/// <summary>
+		/// How do we display the name column?
+		/// </summary>
+		public ResourceListUnnamedFormats ResourceListUnknownDescriptionFormat
+		{
+			get
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue(
+					"ResourceListUnknownDescriptionFormat",
+					(int)ResourceListUnnamedFormats.GroupInstance
+				);
+				return (ResourceListUnnamedFormats)Convert.ToInt32(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("ResourceListUnknownDescriptionFormat", (int)value);
+			}
+		}
 
-        /// <summary>
-        /// How do we display the instance column?
-        /// </summary>
-        public ResourceListInstanceFormats ResourceListInstanceFormat
-        {
-            get
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("ResourceListInstanceFormat", (int)ResourceListInstanceFormats.HexDec);
-                return (ResourceListInstanceFormats)Convert.ToInt32(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("ResourceListInstanceFormat", (int)value);
-            }
-        }
-        public bool ResourceListInstanceFormatHexOnly { get { return ResourceListInstanceFormat == ResourceListInstanceFormats.HexOnly; } }
-        public bool ResourceListInstanceFormatDecOnly { get { return ResourceListInstanceFormat == ResourceListInstanceFormats.DecOnly; } }
-        public bool ResourceListInstanceFormatHexDec { get { return ResourceListInstanceFormat == ResourceListInstanceFormats.HexDec; } }
+		/// <summary>
+		/// How do we display the instance column?
+		/// </summary>
+		public ResourceListInstanceFormats ResourceListInstanceFormat
+		{
+			get
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue(
+					"ResourceListInstanceFormat",
+					(int)ResourceListInstanceFormats.HexDec
+				);
+				return (ResourceListInstanceFormats)Convert.ToInt32(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("ResourceListInstanceFormat", (int)value);
+			}
+		}
+		public bool ResourceListInstanceFormatHexOnly
+		{
+			get
+			{
+				return ResourceListInstanceFormat
+					== ResourceListInstanceFormats.HexOnly;
+			}
+		}
+		public bool ResourceListInstanceFormatDecOnly
+		{
+			get
+			{
+				return ResourceListInstanceFormat
+					== ResourceListInstanceFormats.DecOnly;
+			}
+		}
+		public bool ResourceListInstanceFormatHexDec
+		{
+			get
+			{
+				return ResourceListInstanceFormat == ResourceListInstanceFormats.HexDec;
+			}
+		}
 
-        /// <summary>
-        /// How do we display the name column?
-        /// </summary>
-        public ResourceListExtensionFormats ResourceListExtensionFormat
-        {
-            get
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("ResourceListExtensionFormat", (int)ResourceListExtensionFormats.Short);
-                return (ResourceListExtensionFormats)Convert.ToInt32(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("ResourceListExtensionFormat", (int)value);
-            }
-        }
+		/// <summary>
+		/// How do we display the name column?
+		/// </summary>
+		public ResourceListExtensionFormats ResourceListExtensionFormat
+		{
+			get
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue(
+					"ResourceListExtensionFormat",
+					(int)ResourceListExtensionFormats.Short
+				);
+				return (ResourceListExtensionFormats)Convert.ToInt32(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("ResourceListExtensionFormat", (int)value);
+			}
+		}
 
-        /// <summary>
-        /// Schould we disaplay the resource extensions in the list?
-        /// </summary>
-        public bool ResourceListShowExtensions
-        {
-            get
-            {
-                return ResourceListExtensionFormat != ResourceListExtensionFormats.None;
-            }
-        }
-        #endregion
+		/// <summary>
+		/// Schould we disaplay the resource extensions in the list?
+		/// </summary>
+		public bool ResourceListShowExtensions
+		{
+			get
+			{
+				return ResourceListExtensionFormat != ResourceListExtensionFormats.None;
+			}
+		}
+		#endregion
 
-        #region Report Format
-        public enum ReportFormats : int
+		#region Report Format
+		public enum ReportFormats : int
 		{
 			Descriptive,
-			CSV
+			CSV,
 		}
 
 		/// <summary>
@@ -1417,9 +1490,9 @@ namespace SimPe
 		/// </summary>
 		public ReportFormats ReportFormat
 		{
-			get 
+			get
 			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("ReportFormat", (int)ReportFormats.Descriptive);
 				return (ReportFormats)Convert.ToInt32(o);
 			}
@@ -1439,10 +1512,12 @@ namespace SimPe
 		/// <returns>Priority for the Wrapper</returns>
 		public int GetWrapperPriority(ulong uid)
 		{
-			XmlRegistryKey  rkf = xrk.CreateSubKey("Priorities");
+			XmlRegistryKey rkf = xrk.CreateSubKey("Priorities");
 			object o = rkf.GetValue(Helper.HexString(uid));
-			if (o==null) return 0x00000000;
-			else return Convert.ToInt32(o);
+			if (o == null)
+				return 0x00000000;
+			else
+				return Convert.ToInt32(o);
 		}
 
 		/// <summary>
@@ -1450,7 +1525,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="uid">uique id of the Wrapper</param>
 		/// <param name="priority">the new Priority</param>
-		public void SetWrapperPriority(ulong uid, int priority) 
+		public void SetWrapperPriority(ulong uid, int priority)
 		{
 			XmlRegistryKey rkf = xrk.CreateSubKey("Priorities");
 			rkf.SetValue(Helper.HexString(uid), priority);
@@ -1469,10 +1544,11 @@ namespace SimPe
 		/// Returns a List of recently opened Files
 		/// </summary>
 		/// <returns>List of Filenames</returns>
-		public string[] GetRecentFiles() 
+		public string[] GetRecentFiles()
 		{
-			XmlRegistryKey  rkf = mrk.CreateSubKey("Listings");
-			Ambertation.CaseInvariantArrayList al = (Ambertation.CaseInvariantArrayList)rkf.GetValue("RecentFiles", new Ambertation.CaseInvariantArrayList());
+			XmlRegistryKey rkf = mrk.CreateSubKey("Listings");
+			Ambertation.CaseInvariantArrayList al = (Ambertation.CaseInvariantArrayList)
+				rkf.GetValue("RecentFiles", new Ambertation.CaseInvariantArrayList());
 
 			string[] res = new string[al.Count];
 			al.CopyTo(res);
@@ -1483,98 +1559,122 @@ namespace SimPe
 		/// Adds a File to the List of recently opened Files
 		/// </summary>
 		/// <param name="filename">The Filename</param>
-		public void AddRecentFile(string filename) 
+		public void AddRecentFile(string filename)
 		{
-			if (filename==null) return;
-			if (filename.Trim()=="") return;
-			if (!System.IO.File.Exists(filename)) return;
-			
+			if (filename == null)
+				return;
+			if (filename.Trim() == "")
+				return;
+			if (!System.IO.File.Exists(filename))
+				return;
+
 			filename = filename.Trim();
 			XmlRegistryKey rkf = mrk.CreateSubKey("Listings");
-			
-			Ambertation.CaseInvariantArrayList al = (Ambertation.CaseInvariantArrayList)rkf.GetValue("RecentFiles", new Ambertation.CaseInvariantArrayList());	
-			if (al.Contains(filename)) 
+
+			Ambertation.CaseInvariantArrayList al = (Ambertation.CaseInvariantArrayList)
+				rkf.GetValue("RecentFiles", new Ambertation.CaseInvariantArrayList());
+			if (al.Contains(filename))
 				al.Remove(filename);
-			
-			al.Insert(0, filename);			
-			while (al.Count>RECENT_COUNT) al.RemoveAt(al.Count-1);
+
+			al.Insert(0, filename);
+			while (al.Count > RECENT_COUNT)
+				al.RemoveAt(al.Count - 1);
 			rkf.SetValue("RecentFiles", al);
 			mru.Flush();
 		}
-		#endregion		
+		#endregion
 
 		#region Starup Cheat File
 		/// <summary>
 		/// Returns true if the Game will start in Debug Mode
 		/// </summary>
-		public bool GameDebug 
+		public bool GameDebug
 		{
-			get 
+			get
 			{
-				if (!System.IO.File.Exists(PathProvider.Global.StartupCheatFile)) return false;
+				if (!System.IO.File.Exists(PathProvider.Global.StartupCheatFile))
+					return false;
 
-				try 
+				try
 				{
-                    System.IO.TextReader fs = System.IO.File.OpenText(PathProvider.Global.StartupCheatFile);
+					System.IO.TextReader fs = System.IO.File.OpenText(
+						PathProvider.Global.StartupCheatFile
+					);
 					string cont = fs.ReadToEnd();
 					fs.Close();
 					fs.Dispose();
 					fs = null;
 					string[] lines = cont.Split("\n".ToCharArray());
 
-					foreach (string line in lines) 
+					foreach (string line in lines)
 					{
 						string pline = line.ToLower().Trim();
-						while (pline.IndexOf("  ")!=-1) pline = pline.Replace("  ", " ");
+						while (pline.IndexOf("  ") != -1)
+							pline = pline.Replace("  ", " ");
 						string[] tokens = pline.Split(" ".ToCharArray());
 
-						if (tokens.Length==3) 
+						if (tokens.Length == 3)
 						{
-							if ( (tokens[0]=="boolprop") &&
-								(tokens[1]=="testingcheatsenabled") &&
-								(tokens[2]=="true") 
-								) return true;
+							if (
+								(tokens[0] == "boolprop")
+								&& (tokens[1] == "testingcheatsenabled")
+								&& (tokens[2] == "true")
+							)
+								return true;
 						}
 					}
-				} 
-				catch (Exception) {}
+				}
+				catch (Exception) { }
 
 				return false;
 			}
-
-			set 
+			set
 			{
-                if (!System.IO.Directory.Exists(System.IO.Path.GetDirectoryName(PathProvider.Global.StartupCheatFile))) return;
-				try 
+				if (
+					!System.IO.Directory.Exists(
+						System.IO.Path.GetDirectoryName(
+							PathProvider.Global.StartupCheatFile
+						)
+					)
+				)
+					return;
+				try
 				{
 					string newcont = "";
 					bool found = false;
-                    if (System.IO.File.Exists(PathProvider.Global.StartupCheatFile)) 
+					if (System.IO.File.Exists(PathProvider.Global.StartupCheatFile))
 					{
-                        System.IO.TextReader fs = System.IO.File.OpenText(PathProvider.Global.StartupCheatFile);
+						System.IO.TextReader fs = System.IO.File.OpenText(
+							PathProvider.Global.StartupCheatFile
+						);
 						string cont = fs.ReadToEnd();
 						fs.Close();
 						fs.Dispose();
 						fs = null;
-						
+
 						string[] lines = cont.Split("\n".ToCharArray());
 
-						foreach (string line in lines) 
+						foreach (string line in lines)
 						{
 							string pline = line.ToLower().Trim();
-							while (pline.IndexOf("  ")!=-1) pline = pline.Replace("  ", " ");
+							while (pline.IndexOf("  ") != -1)
+								pline = pline.Replace("  ", " ");
 							string[] tokens = pline.Split(" ".ToCharArray());
 
-							if (tokens.Length==3) 
+							if (tokens.Length == 3)
 							{
-								if ( (tokens[0]=="boolprop") &&
-									(tokens[1]=="testingcheatsenabled") 
-									) 
+								if (
+									(tokens[0] == "boolprop")
+									&& (tokens[1] == "testingcheatsenabled")
+								)
 								{
-									if (!found) 
+									if (!found)
 									{
 										newcont += "boolProp testingCheatsEnabled ";
-										if (value) newcont += "true"; else newcont += "false";
+										if (value)
+											newcont += "true";
+										else
+											newcont += "false";
 										newcont += Helper.lbr;
 										found = true;
 									}
@@ -1585,33 +1685,38 @@ namespace SimPe
 							newcont += Helper.lbr;
 						}
 
-                        System.IO.File.Delete(PathProvider.Global.StartupCheatFile);
+						System.IO.File.Delete(PathProvider.Global.StartupCheatFile);
 					}
 
-					if (!found) 
+					if (!found)
 					{
 						newcont += "boolProp testingCheatsEnabled ";
-						if (value) newcont += "true"; else newcont += "false";
+						if (value)
+							newcont += "true";
+						else
+							newcont += "false";
 						newcont += Helper.lbr;
 					}
 
-                    System.IO.TextWriter fw = System.IO.File.CreateText(PathProvider.Global.StartupCheatFile);
+					System.IO.TextWriter fw = System.IO.File.CreateText(
+						PathProvider.Global.StartupCheatFile
+					);
 					fw.Write(newcont.Trim());
 					fw.Close();
 					fw.Dispose();
 					fw = null;
 				}
-				catch (Exception) {}
+				catch (Exception) { }
 			}
-		}		
+		}
 		#endregion
 
 		#region Censor Patch
 		/// <summary>
 		/// Returns true if the Game will start in Debug Mode
 		/// </summary>
-        [System.ComponentModel.ReadOnly(true)]
-		public bool BlurNudity 
+		[System.ComponentModel.ReadOnly(true)]
+		public bool BlurNudity
 		{
 			get { return PathProvider.Global.BlurNudity; }
 			set { PathProvider.Global.BlurNudity = value; }
@@ -1619,35 +1724,35 @@ namespace SimPe
 
 		public void BlurNudityUpdate()
 		{
-            PathProvider.Global.BlurNudityUpdate();
+			PathProvider.Global.BlurNudityUpdate();
 		}
 		#endregion
-        /*
+		/*
 		#region Obsolete
-        
+		
 		/// <summary>
-        /// Returns the latest number of the Expansion used so far - seems not to be used ever
+		/// Returns the latest number of the Expansion used so far - seems not to be used ever
 		/// </summary>
 		public int PreviousEpCount
 		{
 			get
 			{
-                if (pep == -1) pep = this.GetPreviousEp();
+				if (pep == -1) pep = this.GetPreviousEp();
 				return pep;
 			}
 		}
 		protected int EPCount
 		{
-			get 
+			get
 			{
-                int cints = 0;
-                string[] cinst = InstalledEPExecutables;
-                if (cinst.Length == 0) return 0;
-                foreach (string csi in cinst)
-                {
-                    if (csi != "") cints += 1;
-                }
-                return cints;
+				int cints = 0;
+				string[] cinst = InstalledEPExecutables;
+				if (cinst.Length == 0) return 0;
+				foreach (string csi in cinst)
+				{
+					if (csi != "") cints += 1;
+				}
+				return cints;
 			}
 		}
 
@@ -1656,7 +1761,7 @@ namespace SimPe
 		/// </summary>
 		protected int GetPreviousEpCount()
 		{
-			RegistryKey rkf = rk.CreateSubKey("Settings");	
+			RegistryKey rkf = rk.CreateSubKey("Settings");
 			int res = Convert.ToInt32(rkf.GetValue("LastEPCount", this.EPCount));
 
 			rkf.SetValue("LastEPCount", this.EPCount);
@@ -1667,51 +1772,51 @@ namespace SimPe
 		/// </summary>
 		protected int GetPreviousEp()
 		{
-			RegistryKey rkf = rk.CreateSubKey("Settings");	
+			RegistryKey rkf = rk.CreateSubKey("Settings");
 			int res = Convert.ToInt32(rkf.GetValue("LatestEP", 0));
 
 			//rkf.SetValue("LatestEP", PathProvider.Global.EPInstalled);
-            rkf.SetValue("LatestEP", PathProvider.Global.GameVersion);
+			rkf.SetValue("LatestEP", PathProvider.Global.GameVersion);
 			return res;
 		}
-        
-        private string scramble(string rey)
-        {
-            byte[] b = Helper.ToBytes(rey);
-            return Helper.BytesToHexList(b);
-        }
+		
+		private string scramble(string rey)
+		{
+			byte[] b = Helper.ToBytes(rey);
+			return Helper.BytesToHexList(b);
+		}
 
-        private string descramble(string rey)
-        {
-            string ret = "";
-            byte[] b = Helper.HexListToBytes(rey);
-            foreach (byte f in b) ret += (char)f;
-            return ret;
-        }
-        /// <summary>
-        /// oboslete??? True, if you want to see items added to the resoruceList at once (ie. no BeginUpdate)
-        /// </summary>
-        private bool ShowResourceListContentAtOnce
-        {
-            get
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                object o = rkf.GetValue("ShowResourceListContentAtOnce", false);
-                return Convert.ToBoolean(o);
-            }
-            set
-            {
-                XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-                rkf.SetValue("ShowResourceListContentAtOnce", value);
-            }
-        }
+		private string descramble(string rey)
+		{
+			string ret = "";
+			byte[] b = Helper.HexListToBytes(rey);
+			foreach (byte f in b) ret += (char)f;
+			return ret;
+		}
+		/// <summary>
+		/// oboslete??? True, if you want to see items added to the resoruceList at once (ie. no BeginUpdate)
+		/// </summary>
+		private bool ShowResourceListContentAtOnce
+		{
+			get
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				object o = rkf.GetValue("ShowResourceListContentAtOnce", false);
+				return Convert.ToBoolean(o);
+			}
+			set
+			{
+				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				rkf.SetValue("ShowResourceListContentAtOnce", value);
+			}
+		}
 
 		/// <summary>
 		/// true, if user wants to activate the Cache
 		/// </summary>
 		public  bool XPStyle
 		{
-			get 
+			get
 			{
 				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("XPStyle", true);
@@ -1726,9 +1831,9 @@ namespace SimPe
 		/// <summary>
 		/// true, if the user wanted to use the HexViewer
 		/// </summary>
-		public  bool HexViewState 
+		public  bool HexViewState
 		{
-			get 
+			get
 			{
 				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("HexViewEnabled", false);
@@ -1739,28 +1844,28 @@ namespace SimPe
 				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				rkf.SetValue("HexViewEnabled", value);
 			}
-		}        
+		}
 		/// <summary>
 		/// Obsolete, Since there is no updates will always get/set false
 		/// </summary>
-		public bool CheckForUpdates 
+		public bool CheckForUpdates
 		{
-			get 
+			get
 			{
-                return false;
+				return false;
 			}
 			set
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				rkf.SetValue("CheckForUpdates", false);
 			}
-		}        
+		}
 		/// <summary>
 		/// When did whe perform the last UpdateCheck? Obsolete always returns the default
 		/// </summary>
 		public DateTime LastUpdateCheck
 		{
-			get 
+			get
 			{
 				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
 				object o = rkf.GetValue("LastUpdateCheck", DateTime.Now.Subtract(new TimeSpan(2, 0, 0, 0, 0)));
@@ -1771,366 +1876,366 @@ namespace SimPe
 				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
 				rkf.SetValue("LastUpdateCheck", value);
 			}
-        }        
-        public class ObsoleteWarning : Warning
-        {
-            internal ObsoleteWarning(string message, string detail) : base(message, detail) { }
-        }
+		}
+		public class ObsoleteWarning : Warning
+		{
+			internal ObsoleteWarning(string message, string detail) : base(message, detail) { }
+		}
 
-        protected static void WarnObsolete()
-        {
-            // if (Helper.DebugMode)
-                throw new SimPe.Registry.ObsoleteWarning("This call is obsolete!", "The Call to this method is obsolete.\n\n Please use the matching version in SimPe.PathProvider.Global, or see http://www.modthesims2.com/index.php? for details.");
-        }
-		/// <summary>
-		/// Obsolete! 
-		/// </summary>
-		public string RealEP1GamePath 
+		protected static void WarnObsolete()
 		{
-			get 
-			{
-                WarnObsolete();
-                return SimPe.PathProvider.Global[Expansions.University].RealInstallFolder;
-			}
+			// if (Helper.DebugMode)
+				throw new SimPe.Registry.ObsoleteWarning("This call is obsolete!", "The Call to this method is obsolete.\n\n Please use the matching version in SimPe.PathProvider.Global, or see http://www.modthesims2.com/index.php? for details.");
 		}
 		/// <summary>
-		/// Obsolete! 
+		/// Obsolete!
 		/// </summary>
-		public string RealEP2GamePath 
+		public string RealEP1GamePath
 		{
-			get 
+			get
 			{
-                WarnObsolete();
-                return SimPe.PathProvider.Global[Expansions.Nightlife].RealInstallFolder;
-			}
-		}
-		/// <summary>
-		/// Obsolete! 
-		/// </summary>
-		public string RealEP3GamePath 
-		{
-			get 
-			{
-                WarnObsolete();
-                return SimPe.PathProvider.Global[Expansions.Business].RealInstallFolder;
+				WarnObsolete();
+				return SimPe.PathProvider.Global[Expansions.University].RealInstallFolder;
 			}
 		}
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
-		public string RealSP1GamePath  
+		public string RealEP2GamePath
 		{
-			get 
+			get
 			{
-                WarnObsolete();
-                return SimPe.PathProvider.Global[Expansions.FamilyFun].RealInstallFolder;
+				WarnObsolete();
+				return SimPe.PathProvider.Global[Expansions.Nightlife].RealInstallFolder;
 			}
 		}
-        /// <summary>
-        /// Obsolete!
-        /// </summary>
-        public string RealSP2GamePath 
-        {
-            get
-            {
-                WarnObsolete();
-                return SimPe.PathProvider.Global[Expansions.Glamour].RealInstallFolder;
-            }
-        }
-        /// <summary>
-        /// Obsolete!
-        /// </summary>
+		/// <summary>
+		/// Obsolete!
+		/// </summary>
+		public string RealEP3GamePath
+		{
+			get
+			{
+				WarnObsolete();
+				return SimPe.PathProvider.Global[Expansions.Business].RealInstallFolder;
+			}
+		}
+		/// <summary>
+		/// Obsolete!
+		/// </summary>
+		public string RealSP1GamePath
+		{
+			get
+			{
+				WarnObsolete();
+				return SimPe.PathProvider.Global[Expansions.FamilyFun].RealInstallFolder;
+			}
+		}
+		/// <summary>
+		/// Obsolete!
+		/// </summary>
+		public string RealSP2GamePath
+		{
+			get
+			{
+				WarnObsolete();
+				return SimPe.PathProvider.Global[Expansions.Glamour].RealInstallFolder;
+			}
+		}
+		/// <summary>
+		/// Obsolete!
+		/// </summary>
 		public int InstalledVersions
 		{
 			get
-            {
-                WarnObsolete();       
+			{
+				WarnObsolete();
 				int ret = EPInstalled;
 				ret |= SPInstalled<<16;
 				return ret;
 			}
 		}
-        /// <summary>
-        /// Obsolete!
-        /// </summary>
-		public int GameVersion 
-		{
-			get 
-			{
-                WarnObsolete();
-                return SimPe.PathProvider.Global.GameVersion;			
-			}
-		}
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
-		public int EPInstalled 
+		public int GameVersion
 		{
 			get
-            {
-                WarnObsolete();
-                return SimPe.PathProvider.Global.EPInstalled;
+			{
+				WarnObsolete();
+				return SimPe.PathProvider.Global.GameVersion;
 			}
 		}
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
-		public int SPInstalled 
+		public int EPInstalled
 		{
-			get 
+			get
 			{
-                WarnObsolete();
-                return PathProvider.Global.SPInstalled;
+				WarnObsolete();
+				return SimPe.PathProvider.Global.EPInstalled;
 			}
-        }
-        /// <summary>
-        /// Obsolete!
-        /// </summary>
-        public int STInstalled
-        {
-            get
-            {
-                WarnObsolete();
-                return PathProvider.Global.STInstalled;
-            }
-        }
-        /// <summary>
-        /// Obsolete!
-        /// </summary>
-        public string RealSavegamePath 
-		{
-			get 
-			{
-                WarnObsolete();
-				return SimPe.PathProvider.RealSavegamePath;
-			}
-		}         
+		}
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
-		public string RealGamePath 
+		public int SPInstalled
 		{
-			get 
+			get
 			{
-                WarnObsolete();
+				WarnObsolete();
+				return PathProvider.Global.SPInstalled;
+			}
+		}
+		/// <summary>
+		/// Obsolete!
+		/// </summary>
+		public int STInstalled
+		{
+			get
+			{
+				WarnObsolete();
+				return PathProvider.Global.STInstalled;
+			}
+		}
+		/// <summary>
+		/// Obsolete!
+		/// </summary>
+		public string RealSavegamePath
+		{
+			get
+			{
+				WarnObsolete();
+				return SimPe.PathProvider.RealSavegamePath;
+			}
+		}
+		/// <summary>
+		/// Obsolete!
+		/// </summary>
+		public string RealGamePath
+		{
+			get
+			{
+				WarnObsolete();
 				return SimPe.PathProvider.Global[Expansions.BaseGame].RealInstallFolder;
 			}
 		}
-        /// <summary>
-        /// Obsolete!
-        /// </summary>
-        public string SimsPath
-        {
-            get
-            {
-                WarnObsolete();
-                return SimPe.PathProvider.Global[Expansions.BaseGame].InstallFolder;
-            }
-            set
-            {
-                 WarnObsolete();
-                SimPe.PathProvider.Global[Expansions.BaseGame].InstallFolder = value;
-            }
-        }
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
-		public string NvidiaDDSTool 
+		public string SimsPath
 		{
-			get 
+			get
 			{
-                WarnObsolete();
+				WarnObsolete();
+				return SimPe.PathProvider.Global[Expansions.BaseGame].InstallFolder;
+			}
+			set
+			{
+				 WarnObsolete();
+				SimPe.PathProvider.Global[Expansions.BaseGame].InstallFolder = value;
+			}
+		}
+		/// <summary>
+		/// Obsolete!
+		/// </summary>
+		public string NvidiaDDSTool
+		{
+			get
+			{
+				WarnObsolete();
 				return PathProvider.Global.NvidiaDDSTool;
 			}
 		}
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
-		public string StartupCheatFile 
+		public string StartupCheatFile
 		{
-			get 
+			get
 			{
-                WarnObsolete();
+				WarnObsolete();
 				return PathProvider.Global.StartupCheatFile;
 			}
 		}
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
-		public string NeighborhoodFolder 
+		public string NeighborhoodFolder
 		{
 			get
-            {
-                WarnObsolete();
+			{
+				WarnObsolete();
 				return PathProvider.Global.NeighborhoodFolder;
 			}
 		}
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
-		public string BackupFolder 
+		public string BackupFolder
 		{
-			get 
+			get
 			{
-                WarnObsolete();
-                return PathProvider.Global.BackupFolder;
-			}
-		}
-        /// <summary>
-		/// Obsolete!
-		/// </summary>
-		public string NvidiaDDSPath 
-		{
-			get 
-			{
-                WarnObsolete();
-                return PathProvider.Global.NvidiaDDSPath;
-			}
-			set
-			{
-                WarnObsolete();
-                PathProvider.Global.NvidiaDDSPath = value;
-			}
-		}		
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public string SimsEP1Path 
-		{
-			get 
-			{
-                WarnObsolete();
-                return PathProvider.Global[Expansions.University].InstallFolder;
-			}
-			set
-			{
-                WarnObsolete();
-                PathProvider.Global[Expansions.University].InstallFolder = value;
+				WarnObsolete();
+				return PathProvider.Global.BackupFolder;
 			}
 		}
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
-		public string SimsEP2Path 
+		public string NvidiaDDSPath
 		{
-			get 
+			get
 			{
-                WarnObsolete();
-                return PathProvider.Global[Expansions.Nightlife].InstallFolder;
+				WarnObsolete();
+				return PathProvider.Global.NvidiaDDSPath;
 			}
 			set
 			{
-                WarnObsolete();
-                PathProvider.Global[Expansions.Nightlife].InstallFolder = value;
+				WarnObsolete();
+				PathProvider.Global.NvidiaDDSPath = value;
 			}
 		}
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
-		public string SimsEP3Path 
+		public string SimsEP1Path
 		{
-			get 
+			get
 			{
-                WarnObsolete();
-                return PathProvider.Global[Expansions.Business].InstallFolder;
+				WarnObsolete();
+				return PathProvider.Global[Expansions.University].InstallFolder;
 			}
 			set
 			{
-                WarnObsolete();
-                PathProvider.Global[Expansions.Business].InstallFolder = value;
+				WarnObsolete();
+				PathProvider.Global[Expansions.University].InstallFolder = value;
+			}
+		}
+		/// <summary>
+		/// Obsolete!
+		/// </summary>
+		public string SimsEP2Path
+		{
+			get
+			{
+				WarnObsolete();
+				return PathProvider.Global[Expansions.Nightlife].InstallFolder;
+			}
+			set
+			{
+				WarnObsolete();
+				PathProvider.Global[Expansions.Nightlife].InstallFolder = value;
+			}
+		}
+		/// <summary>
+		/// Obsolete!
+		/// </summary>
+		public string SimsEP3Path
+		{
+			get
+			{
+				WarnObsolete();
+				return PathProvider.Global[Expansions.Business].InstallFolder;
+			}
+			set
+			{
+				WarnObsolete();
+				PathProvider.Global[Expansions.Business].InstallFolder = value;
 			}
 		}
 		/// <summary>
 		///Obsolete !
 		/// </summary>
-		public string SimsSP1Path 
+		public string SimsSP1Path
 		{
-			get 
+			get
 			{
-                WarnObsolete();
-                return PathProvider.Global[Expansions.FamilyFun].InstallFolder;
+				WarnObsolete();
+				return PathProvider.Global[Expansions.FamilyFun].InstallFolder;
 			}
 			set
 			{
-                WarnObsolete();
-                PathProvider.Global[Expansions.FamilyFun].InstallFolder = value;
+				WarnObsolete();
+				PathProvider.Global[Expansions.FamilyFun].InstallFolder = value;
 			}
-		}
-        /// <summary>
-        /// Obsolete!
-        /// </summary>
-        public string SimsSP2Path 
-        {
-            get 
-			{
-                WarnObsolete();
-                return PathProvider.Global[Expansions.Glamour].InstallFolder;
-			}
-			set
-			{
-                WarnObsolete();
-                PathProvider.Global[Expansions.Glamour].InstallFolder = value;
-			}  
-        }
-		protected static int GetVersion(int index) {
-            if ((index & 0xFFFF0000) == 0x00020000) return 5;
-			if ((index & 0xFFFF0000) == 0x00010000) return 4;
-			if ((index & 0x0000FFFF) == 0x00000003) return 3;			
-			if ((index & 0x0000FFFF) == 0x00000002) return 2;
-			if ((index & 0x0000FFFF) == 0x00000001) return 1;
-            return 0;
-        }		
-        /// <summary>
-        /// Obsolete!
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
-		public static string GetEpName(int index)
-		{
-
-            WarnObsolete();
-            return PathProvider.Global[GetVersion(index)].Name;			
-		}
-        /// <summary>
-        /// Obsolete!
-        /// </summary>
-		public string CurrentEPName 
-		{
-            get
-            {
-                WarnObsolete();
-                return SimPe.PathProvider.Global.Latest.DisplayName;
-            }
-		}
-        /// <summary>
-        /// Obsolete!
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
-		public static string GetExecutableName(int index)
-		{
-            WarnObsolete();
-            return PathProvider.Global[GetVersion(index)].ExeName;	
-		}		 
-        /// <summary>
-        /// Obsolete!
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
-		public string GetExecutableFolder(int index)
-		{
-            WarnObsolete();
-            return PathProvider.Global[GetVersion(index)].InstallFolder;
 		}
 		/// <summary>
 		/// Obsolete!
 		/// </summary>
-		public string SimsApplication 
+		public string SimsSP2Path
 		{
-			get 
+			get
 			{
-                WarnObsolete();
-                return PathProvider.Global.SimsApplication;
+				WarnObsolete();
+				return PathProvider.Global[Expansions.Glamour].InstallFolder;
+			}
+			set
+			{
+				WarnObsolete();
+				PathProvider.Global[Expansions.Glamour].InstallFolder = value;
+			}
+		}
+		protected static int GetVersion(int index) {
+			if ((index & 0xFFFF0000) == 0x00020000) return 5;
+			if ((index & 0xFFFF0000) == 0x00010000) return 4;
+			if ((index & 0x0000FFFF) == 0x00000003) return 3;
+			if ((index & 0x0000FFFF) == 0x00000002) return 2;
+			if ((index & 0x0000FFFF) == 0x00000001) return 1;
+			return 0;
+		}
+		/// <summary>
+		/// Obsolete!
+		/// </summary>
+		/// <param name="index"></param>
+		/// <returns></returns>
+		public static string GetEpName(int index)
+		{
+
+			WarnObsolete();
+			return PathProvider.Global[GetVersion(index)].Name;
+		}
+		/// <summary>
+		/// Obsolete!
+		/// </summary>
+		public string CurrentEPName
+		{
+			get
+			{
+				WarnObsolete();
+				return SimPe.PathProvider.Global.Latest.DisplayName;
+			}
+		}
+		/// <summary>
+		/// Obsolete!
+		/// </summary>
+		/// <param name="index"></param>
+		/// <returns></returns>
+		public static string GetExecutableName(int index)
+		{
+			WarnObsolete();
+			return PathProvider.Global[GetVersion(index)].ExeName;
+		}
+		/// <summary>
+		/// Obsolete!
+		/// </summary>
+		/// <param name="index"></param>
+		/// <returns></returns>
+		public string GetExecutableFolder(int index)
+		{
+			WarnObsolete();
+			return PathProvider.Global[GetVersion(index)].InstallFolder;
+		}
+		/// <summary>
+		/// Obsolete!
+		/// </summary>
+		public string SimsApplication
+		{
+			get
+			{
+				WarnObsolete();
+				return PathProvider.Global.SimsApplication;
 			}
 			
 		}
@@ -2139,18 +2244,18 @@ namespace SimPe
 		/// </summary>
 		public string SimSavegameFolder
 		{
-			get 
+			get
 			{
-                WarnObsolete();
-                return PathProvider.SimSavegameFolder;
+				WarnObsolete();
+				return PathProvider.SimSavegameFolder;
 			}
-			set 
+			set
 			{
-                WarnObsolete();
-                PathProvider.SimSavegameFolder = value;
+				WarnObsolete();
+				PathProvider.SimSavegameFolder = value;
 			}
 		}
 		#endregion
-         */
+		 */
 	}
 }

@@ -18,13 +18,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Geometry;
-using System.ComponentModel;
 using System.Collections;
+using System.ComponentModel;
+using SimPe.Geometry;
 
 namespace SimPe.Plugin
 {
-	public class TransformNodeItem 
+	public class TransformNodeItem
 	{
 		public TransformNodeItem()
 		{
@@ -33,17 +33,17 @@ namespace SimPe.Plugin
 		}
 
 		ushort unknown1;
-		public ushort Unknown1 
+		public ushort Unknown1
 		{
 			get { return unknown1; }
 			set { unknown1 = value; }
 		}
 
 		int unknown2;
-		public int ChildNode 
+		public int ChildNode
 		{
 			get { return unknown2; }
-			set { unknown2= value; }
+			set { unknown2 = value; }
 		}
 
 		/// <summary>
@@ -61,7 +61,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public void Serialize(System.IO.BinaryWriter writer)
@@ -72,101 +72,103 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			return "0x"+Helper.HexString((ushort)unknown1) + " 0x" + Helper.HexString((uint)unknown2);
+			return "0x"
+				+ Helper.HexString((ushort)unknown1)
+				+ " 0x"
+				+ Helper.HexString((uint)unknown2);
 		}
 	}
 
 	/// <summary>
 	/// Summary description for cTransformNode.
 	/// </summary>
-	public class TransformNode
-		: AbstractCresChildren
+	public class TransformNode : AbstractCresChildren
 	{
 		/// <summary>
-		/// this value in Joint Reference tells us that the 
+		/// this value in Joint Reference tells us that the
 		/// Node is not directly linked to a joint
 		/// </summary>
-		public const int NO_JOINT= 0x7fffffff;
+		public const int NO_JOINT = 0x7fffffff;
+
 		#region Attributes
-		
+
 		CompositionTreeNode ctn;
 		ObjectGraphNode ogn;
-		
+
 		TransformNodeItems items;
-		public TransformNodeItems Items 
+		public TransformNodeItems Items
 		{
 			get { return items; }
 			set { items = value; }
 		}
 
-		public ObjectGraphNode ObjectGraphNode 
+		public ObjectGraphNode ObjectGraphNode
 		{
 			get { return ogn; }
 		}
 
-		public CompositionTreeNode CompositionTreeNode 
+		public CompositionTreeNode CompositionTreeNode
 		{
 			get { return ctn; }
 		}
 
 		VectorTransformation trans;
-		public VectorTransformation Transformation 
+		public VectorTransformation Transformation
 		{
 			get { return trans; }
 			set { trans = value; }
 		}
 		int unknown;
 
-		public Vector3f Translation 
+		public Vector3f Translation
 		{
-			get { return trans.Translation; }			
+			get { return trans.Translation; }
 		}
 
-		public float TransformX 
+		public float TransformX
 		{
 			get { return (float)trans.Translation.X; }
 			set { trans.Translation.X = value; }
 		}
-		public float TransformY 
+		public float TransformY
 		{
 			get { return (float)trans.Translation.Y; }
 			set { trans.Translation.Y = value; }
 		}
-		public float TransformZ 
+		public float TransformZ
 		{
 			get { return (float)trans.Translation.Z; }
 			set { trans.Translation.Z = value; }
 		}
 
-		
-		public float RotationX 
+		public float RotationX
 		{
 			get { return (float)trans.Rotation.X; }
 			set { trans.Rotation.X = value; }
 		}
-		public float RotationY 
+		public float RotationY
 		{
 			get { return (float)trans.Rotation.Y; }
 			set { trans.Rotation.Y = value; }
 		}
-		public float RotationZ 
+		public float RotationZ
 		{
 			get { return (float)trans.Rotation.Z; }
 			set { trans.Rotation.Z = value; }
 		}
-		public float RotationW 
+		public float RotationW
 		{
 			get { return (float)trans.Rotation.W; }
 			set { trans.Rotation.W = value; }
 		}
 
-		public Quaternion Rotation 
+		public Quaternion Rotation
 		{
 			get { return trans.Rotation; }
-			set { trans.Rotation= value; }
+			set { trans.Rotation = value; }
 		}
 
-		public int JointReference 
+		public int JointReference
 		{
 			get { return unknown; }
 			set { unknown = value; }
@@ -178,18 +180,21 @@ namespace SimPe.Plugin
 			get { return this; }
 		}
 		#endregion
-		
+
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public TransformNode(Rcol parent) : base(parent)
+		public TransformNode(Rcol parent)
+			: base(parent)
 		{
 			ctn = new CompositionTreeNode(parent);
 			ogn = new ObjectGraphNode(parent);
 
 			items = new TransformNodeItems();
 
-			trans = new VectorTransformation(VectorTransformation.TransformOrder.TranslateRotate);
+			trans = new VectorTransformation(
+				VectorTransformation.TransformOrder.TranslateRotate
+			);
 
 			version = 0x07;
 			BlockID = 0x65246462;
@@ -202,33 +207,36 @@ namespace SimPe.Plugin
 		{
 			return ogn.FileName;
 		}
+
 		/// <summary>
 		/// Returns a List of all Child Blocks referenced by this Element
 		/// </summary>
 		[BrowsableAttribute(false)]
-		public override IntArrayList ChildBlocks 
+		public override IntArrayList ChildBlocks
 		{
-			get 
+			get
 			{
 				IntArrayList l = new IntArrayList();
-				foreach (TransformNodeItem tni in items) 
+				foreach (TransformNodeItem tni in items)
 				{
 					l.Add(tni.ChildNode);
 				}
 				return l;
 			}
 		}
-	
+
 		[BrowsableAttribute(false)]
-		public override int ImageIndex 
+		public override int ImageIndex
 		{
-			get { 
-				if (unknown==NO_JOINT) return 0; //clear
+			get
+			{
+				if (unknown == NO_JOINT)
+					return 0; //clear
 				return 1; //bone
 			}
-		}		
+		}
 		#endregion
-		
+
 		#region IRcolBlock Member
 
 		/// <summary>
@@ -240,19 +248,19 @@ namespace SimPe.Plugin
 			version = reader.ReadUInt32();
 
 			string name = reader.ReadString();
-			uint myid = reader.ReadUInt32();		
+			uint myid = reader.ReadUInt32();
 			ctn.Unserialize(reader);
 			ctn.BlockID = myid;
 
 			name = reader.ReadString();
-			myid = reader.ReadUInt32();		
+			myid = reader.ReadUInt32();
 			ogn.Unserialize(reader);
 			ogn.BlockID = myid;
 
 			//items = new TransformNodeItem[];
 			uint count = reader.ReadUInt32();
 			items.Clear();
-			for(int i=0; i<count; i++)
+			for (int i = 0; i < count; i++)
 			{
 				TransformNodeItem tni = new TransformNodeItem();
 				tni.Unserialize(reader);
@@ -265,7 +273,7 @@ namespace SimPe.Plugin
 			trans.Name = this.ogn.FileName;
 #endif
 			//trans.Rotation = Quaternion.FromAxisAngle(trans.Rotation.X, trans.Rotation.Y, trans.Rotation.Z, Quaternion.DegToRad(trans.Rotation.W));
-			
+
 
 			unknown = reader.ReadInt32();
 		}
@@ -275,7 +283,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public override void Serialize(System.IO.BinaryWriter writer)
@@ -291,7 +299,7 @@ namespace SimPe.Plugin
 			ogn.Serialize(writer);
 
 			writer.Write((uint)items.Length);
-			for(int i=0; i<items.Length; i++)
+			for (int i = 0; i < items.Length; i++)
 			{
 				items[i].Serialize(writer);
 			}
@@ -307,7 +315,8 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (tTransformNode==null) tTransformNode = new SimPe.Plugin.TabPage.TransformNode();
+				if (tTransformNode == null)
+					tTransformNode = new SimPe.Plugin.TabPage.TransformNode();
 				return tTransformNode;
 			}
 		}
@@ -316,16 +325,18 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
 		/// </summary>
-		protected override void InitTabPage() 
+		protected override void InitTabPage()
 		{
-			if (tTransformNode==null) tTransformNode = new SimPe.Plugin.TabPage.TransformNode();
+			if (tTransformNode == null)
+				tTransformNode = new SimPe.Plugin.TabPage.TransformNode();
 			tTransformNode.tb_tn_a.Tag = true;
-			
-			tTransformNode.lb_tn.Items.Clear();
-			for(int i=0; i<this.items.Length; i++) tTransformNode.lb_tn.Items.Add(items[i]);
 
-			tTransformNode.tb_tn_ver.Text = "0x"+Helper.HexString(this.version);
-			tTransformNode.tb_tn_ukn.Text = "0x"+Helper.HexString(this.unknown);
+			tTransformNode.lb_tn.Items.Clear();
+			for (int i = 0; i < this.items.Length; i++)
+				tTransformNode.lb_tn.Items.Add(items[i]);
+
+			tTransformNode.tb_tn_ver.Text = "0x" + Helper.HexString(this.version);
+			tTransformNode.tb_tn_ukn.Text = "0x" + Helper.HexString(this.unknown);
 
 			tTransformNode.tb_tn_tx.Text = trans.Translation.X.ToString("N6");
 			tTransformNode.tb_tn_ty.Text = trans.Translation.Y.ToString("N6");
@@ -347,18 +358,19 @@ namespace SimPe.Plugin
 
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
-			base.ExtendTabControl (tc);
+			base.ExtendTabControl(tc);
 			this.ogn.AddToTabControl(tc);
 			this.ctn.AddToTabControl(tc);
 		}
 
 		public override string ToString()
 		{
-			string s ="";
-			if (this.unknown!=NO_JOINT) s += "[Joint"+this.unknown.ToString()+"] - ";
+			string s = "";
+			if (this.unknown != NO_JOINT)
+				s += "[Joint" + this.unknown.ToString() + "] - ";
 			s += this.ogn.FileName;
-			
-			s += ": "+trans.ToString() + " ("+base.ToString ()+")";
+
+			s += ": " + trans.ToString() + " (" + base.ToString() + ")";
 			return s;
 		}
 
@@ -367,11 +379,11 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="index"></param>
 		/// <returns>True, when the Child was found</returns>
-		public bool RemoveChild(int index) 
+		public bool RemoveChild(int index)
 		{
-			for (int i=0; i<Items.Length; i++) 
+			for (int i = 0; i < Items.Length; i++)
 			{
-				if (Items[i].ChildNode == index) 
+				if (Items[i].ChildNode == index)
 				{
 					Items.RemoveAt(i);
 					return true;
@@ -386,11 +398,11 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="index"></param>
 		/// <returns>True, when the Child was added</returns>
-		public bool AddChild(int index) 
+		public bool AddChild(int index)
 		{
-			for (int i=0; i<Items.Length; i++) 
+			for (int i = 0; i < Items.Length; i++)
 			{
-				if (Items[i].ChildNode == index) 
+				if (Items[i].ChildNode == index)
 				{
 					return false;
 				}
@@ -406,7 +418,8 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (this.tTransformNode!=null) this.tTransformNode.Dispose();
+			if (this.tTransformNode != null)
+				this.tTransformNode.Dispose();
 			tTransformNode = null;
 			ctn = null;
 			ogn = null;
@@ -421,7 +434,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Typesave ArrayList for TransformNodeItem Objects
 	/// </summary>
-	public class TransformNodeItems : ArrayList 
+	public class TransformNodeItems : ArrayList
 	{
 		/// <summary>
 		/// Integer Indexer
@@ -478,12 +491,12 @@ namespace SimPe.Plugin
 		public bool Contains(TransformNodeItem item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -495,12 +508,11 @@ namespace SimPe.Plugin
 		public override object Clone()
 		{
 			TransformNodeItems list = new TransformNodeItems();
-			foreach (TransformNodeItem item in this) list.Add(item);
+			foreach (TransformNodeItem item in this)
+				list.Add(item);
 
 			return list;
 		}
-
-		
 	}
 	#endregion
 }

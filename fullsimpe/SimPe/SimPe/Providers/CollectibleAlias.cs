@@ -23,49 +23,49 @@ using System.Text;
 
 namespace SimPe.Providers
 {
-    public class CollectibleAlias
-    {
-        private string name;
-        public string Name
-        {
-            get { return name; }
-        }
+	public class CollectibleAlias
+	{
+		private string name;
+		public string Name
+		{
+			get { return name; }
+		}
 
-        private ulong id;
-        public ulong Id
-        {
-            get { return id; }
-        }
+		private ulong id;
+		public ulong Id
+		{
+			get { return id; }
+		}
 
-        private int nr;
-        public int Nr
-        {
-            get { return nr; }
-        }
+		private int nr;
+		public int Nr
+		{
+			get { return nr; }
+		}
 
-        private System.Drawing.Image img;
-        public System.Drawing.Image Image
-        {
-            get { return img; }
-        }
+		private System.Drawing.Image img;
+		public System.Drawing.Image Image
+		{
+			get { return img; }
+		}
 
+		public CollectibleAlias(ulong id, int nr, string name, System.Drawing.Image img)
+		{
+			this.id = id;
+			this.nr = nr;
+			this.name = name;
+			if (img == null)
+			{
+				img = new System.Drawing.Bitmap(32, 32);
+			}
+			this.img = img;
+		}
 
-        public CollectibleAlias(ulong id, int nr, string name, System.Drawing.Image img)
-        {
-            this.id = id;
-            this.nr = nr;
-            this.name = name;
-            if (img == null)
-            {
-                img = new System.Drawing.Bitmap(32, 32);
-            }
-            this.img = img;
-        }
-
-        public override string ToString()
-        {
-            if (Helper.WindowsRegistry.HiddenMode) return name + " (0x" + Helper.HexString(id) + ", " + nr + ")";
-            return name;
-        }
-    }
+		public override string ToString()
+		{
+			if (Helper.WindowsRegistry.HiddenMode)
+				return name + " (0x" + Helper.HexString(id) + ", " + nr + ")";
+			return name;
+		}
+	}
 }

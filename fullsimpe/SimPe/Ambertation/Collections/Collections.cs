@@ -19,32 +19,32 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using Ambertation.Windows.Forms.Graph;
 using System.Drawing;
+using Ambertation.Windows.Forms.Graph;
 
 namespace Ambertation.Collections
 {
-	public class GraphItemChangedEventArgs : System.EventArgs 
+	public class GraphItemChangedEventArgs : System.EventArgs
 	{
 		GraphItemBase gi;
 		public GraphItemBase GraphItem
 		{
-			get {return gi; }
+			get { return gi; }
 		}
 
 		string txt;
-		public string Text 
+		public string Text
 		{
 			get { return txt; }
 		}
 		bool add;
-		public  bool Added
+		public bool Added
 		{
-			get {return add;}
+			get { return add; }
 		}
-		public  bool Removed
+		public bool Removed
 		{
-			get {return !add;}
+			get { return !add; }
 		}
 
 		bool inter;
@@ -53,7 +53,12 @@ namespace Ambertation.Collections
 			get { return inter; }
 		}
 
-		internal GraphItemChangedEventArgs(GraphItemBase gi, string text, bool add, bool inter)
+		internal GraphItemChangedEventArgs(
+			GraphItemBase gi,
+			string text,
+			bool add,
+			bool inter
+		)
 		{
 			this.gi = gi;
 			this.add = add;
@@ -62,12 +67,15 @@ namespace Ambertation.Collections
 		}
 	}
 
-	public delegate void GraphItemsChanged(GraphItems sender, GraphItemChangedEventArgs e);
+	public delegate void GraphItemsChanged(
+		GraphItems sender,
+		GraphItemChangedEventArgs e
+	);
 
 	/// <summary>
 	/// Typesave ArrayList for GraphItem Objects
 	/// </summary>
-	public class GraphItems : ArrayList 
+	public class GraphItems : ArrayList
 	{
 		public event GraphItemsChanged ItemsChanged;
 
@@ -109,12 +117,16 @@ namespace Ambertation.Collections
 			return SilentAdd(item, "", false);
 		}
 
-		internal int SilentAdd(GraphItemBase item, string text, bool inter) 
+		internal int SilentAdd(GraphItemBase item, string text, bool inter)
 		{
-			if (this.Contains(item)) 
-				return -1;			
-			int res =  base.Add(item);
-			if (this.ItemsChanged!=null) this.ItemsChanged(this, new GraphItemChangedEventArgs(item, text, true, inter));
+			if (this.Contains(item))
+				return -1;
+			int res = base.Add(item);
+			if (this.ItemsChanged != null)
+				this.ItemsChanged(
+					this,
+					new GraphItemChangedEventArgs(item, text, true, inter)
+				);
 			return res;
 		}
 
@@ -125,9 +137,14 @@ namespace Ambertation.Collections
 		/// <param name="item">The object that should be inserted</param>
 		public void Insert(int index, string text, GraphItemBase item)
 		{
-			if (this.Contains(item)) return;			
+			if (this.Contains(item))
+				return;
 			base.Insert(index, item);
-			if (this.ItemsChanged!=null) this.ItemsChanged(this, new GraphItemChangedEventArgs(item, text, true, false));
+			if (this.ItemsChanged != null)
+				this.ItemsChanged(
+					this,
+					new GraphItemChangedEventArgs(item, text, true, false)
+				);
 		}
 
 		/// <summary>
@@ -137,9 +154,14 @@ namespace Ambertation.Collections
 		/// <param name="item">The object that should be inserted</param>
 		public void Insert(int index, GraphItemBase item)
 		{
-			if (this.Contains(item)) return;			
+			if (this.Contains(item))
+				return;
 			base.Insert(index, item);
-			if (this.ItemsChanged!=null) this.ItemsChanged(this, new GraphItemChangedEventArgs(item, "", true, false));
+			if (this.ItemsChanged != null)
+				this.ItemsChanged(
+					this,
+					new GraphItemChangedEventArgs(item, "", true, false)
+				);
 		}
 
 		/// <summary>
@@ -151,10 +173,14 @@ namespace Ambertation.Collections
 			this.SilentRemove(item, false);
 		}
 
-		internal void SilentRemove(GraphItemBase item,  bool inter)
+		internal void SilentRemove(GraphItemBase item, bool inter)
 		{
 			base.Remove(item);
-			if (this.ItemsChanged!=null) this.ItemsChanged(this, new GraphItemChangedEventArgs(item, "", false, inter));
+			if (this.ItemsChanged != null)
+				this.ItemsChanged(
+					this,
+					new GraphItemChangedEventArgs(item, "", false, inter)
+				);
 		}
 
 		/// <summary>
@@ -165,12 +191,12 @@ namespace Ambertation.Collections
 		public bool Contains(GraphItemBase item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -182,7 +208,8 @@ namespace Ambertation.Collections
 		public override object Clone()
 		{
 			GraphItems list = new GraphItems();
-			foreach (GraphItemBase item in this) list.Add(item);
+			foreach (GraphItemBase item in this)
+				list.Add(item);
 
 			return list;
 		}
@@ -191,7 +218,7 @@ namespace Ambertation.Collections
 	/// <summary>
 	/// Typesave ArrayList for GraphItem Objects
 	/// </summary>
-	public class GraphElements : ArrayList 
+	public class GraphElements : ArrayList
 	{
 		public event System.EventHandler ItemsChanged;
 
@@ -220,15 +247,16 @@ namespace Ambertation.Collections
 		/// <returns>The index it was added on</returns>
 		public int Add(GraphPanelElement item)
 		{
-			return SilentAdd(item,  false);
+			return SilentAdd(item, false);
 		}
 
-		internal int SilentAdd(GraphPanelElement item, bool inter) 
+		internal int SilentAdd(GraphPanelElement item, bool inter)
 		{
-			if (this.Contains(item)) 
-				return -1;			
-			int res =  base.Add(item);
-			if (this.ItemsChanged!=null) this.ItemsChanged(this, new System.EventArgs());
+			if (this.Contains(item))
+				return -1;
+			int res = base.Add(item);
+			if (this.ItemsChanged != null)
+				this.ItemsChanged(this, new System.EventArgs());
 			return res;
 		}
 
@@ -239,9 +267,11 @@ namespace Ambertation.Collections
 		/// <param name="item">The object that should be inserted</param>
 		public void Insert(int index, GraphPanelElement item)
 		{
-			if (this.Contains(item)) return;			
+			if (this.Contains(item))
+				return;
 			base.Insert(index, item);
-			if (this.ItemsChanged!=null) this.ItemsChanged(this, new System.EventArgs());
+			if (this.ItemsChanged != null)
+				this.ItemsChanged(this, new System.EventArgs());
 		}
 
 		/// <summary>
@@ -256,7 +286,8 @@ namespace Ambertation.Collections
 		internal void SilentRemove(GraphPanelElement item, bool inter)
 		{
 			base.Remove(item);
-			if (this.ItemsChanged!=null) this.ItemsChanged(this, new System.EventArgs());
+			if (this.ItemsChanged != null)
+				this.ItemsChanged(this, new System.EventArgs());
 		}
 
 		/// <summary>
@@ -267,12 +298,12 @@ namespace Ambertation.Collections
 		public bool Contains(GraphPanelElement item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -284,7 +315,8 @@ namespace Ambertation.Collections
 		public override object Clone()
 		{
 			GraphElements list = new GraphElements();
-			foreach (GraphPanelElement item in this) list.Add(item);
+			foreach (GraphPanelElement item in this)
+				list.Add(item);
 
 			return list;
 		}
@@ -293,8 +325,8 @@ namespace Ambertation.Collections
 	/// <summary>
 	/// Typesave ArrayList for PropertyItem Objects
 	/// </summary>
-	public class PropertyItems : ArrayList 
-	{		
+	public class PropertyItems : ArrayList
+	{
 		/// <summary>
 		/// Integer Indexer
 		/// </summary>
@@ -318,18 +350,23 @@ namespace Ambertation.Collections
 		/// </summary>
 		public PropertyItem this[string name]
 		{
-			get { 
+			get
+			{
 				int index = this.GetIndexOf(name);
-				if (index>=0) return this[index]; 
+				if (index >= 0)
+					return this[index];
 
 				PropertyItem pi = new PropertyItem(name, null);
 				Add(pi);
 				return pi;
 			}
-			set { 
+			set
+			{
 				int index = this.GetIndexOf(name);
-				if (index>=0) this[index] = value; 
-				else Add(name, value);
+				if (index >= 0)
+					this[index] = value;
+				else
+					Add(name, value);
 			}
 		}
 
@@ -340,7 +377,7 @@ namespace Ambertation.Collections
 		/// <returns>The index it was added on</returns>
 		public int Add(PropertyItem item)
 		{
-			return base.Add(item);			
+			return base.Add(item);
 		}
 
 		public int Add(string name, object val)
@@ -355,13 +392,12 @@ namespace Ambertation.Collections
 		/// <param name="item">The object that should be inserted</param>
 		public void Insert(int index, PropertyItem item)
 		{
-			base.Insert(index, item);			
+			base.Insert(index, item);
 		}
 
 		public void Insert(int index, string name, object val)
 		{
-			
-			base.Insert(index, new PropertyItem(name, val));			
+			base.Insert(index, new PropertyItem(name, val));
 		}
 
 		/// <summary>
@@ -370,20 +406,22 @@ namespace Ambertation.Collections
 		/// <param name="item">The object that should be removed</param>
 		public void Remove(PropertyItem item)
 		{
-			base.Remove(item);			
+			base.Remove(item);
 		}
 
 		public void Remove(string name)
 		{
 			int index = GetIndexOf(name);
-			if (index>=0) base.RemoveAt(index);			
+			if (index >= 0)
+				base.RemoveAt(index);
 		}
 
 		public int GetIndexOf(string name)
 		{
 			name = name.Trim().ToLower();
-			for (int i=0; i<this.Count; i++)
-				if (this[i].Name.Trim().ToLower() == name) return i;
+			for (int i = 0; i < this.Count; i++)
+				if (this[i].Name.Trim().ToLower() == name)
+					return i;
 			return -1;
 		}
 
@@ -396,38 +434,40 @@ namespace Ambertation.Collections
 		{
 			return base.Contains(item);
 		}
-		
+
 		public bool Contains(string name)
 		{
-			return (GetIndexOf(name)>=0);
+			return (GetIndexOf(name) >= 0);
 		}
 
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
 
 		public string[] Keys
 		{
-			get 
+			get
 			{
 				string[] res = new string[this.Count];
-				int ct=0;
-				foreach (PropertyItem item in this) res[ct++] = item.Name;
+				int ct = 0;
+				foreach (PropertyItem item in this)
+					res[ct++] = item.Name;
 				return res;
 			}
 		}
 
 		public object[] Values
 		{
-			get 
+			get
 			{
 				object[] res = new object[this.Count];
-				int ct=0;
-				foreach (PropertyItem item in this) res[ct++] = item.Value;
+				int ct = 0;
+				foreach (PropertyItem item in this)
+					res[ct++] = item.Value;
 				return res;
 			}
 		}
@@ -439,18 +479,18 @@ namespace Ambertation.Collections
 		public override object Clone()
 		{
 			PropertyItems list = new PropertyItems();
-			foreach (PropertyItem item in this) list.Add(item);
+			foreach (PropertyItem item in this)
+				list.Add(item);
 
 			return list;
 		}
-	}	
+	}
 
 	/// <summary>
 	/// Typesave ArrayList for Image Objects
 	/// </summary>
 	public class Images : ArrayList
 	{
-		
 		/// <summary>
 		/// Integer Indexer
 		/// </summary>
@@ -476,7 +516,7 @@ namespace Ambertation.Collections
 		/// <returns>The index it was added on</returns>
 		public int Add(Image item)
 		{
-			return base.Add(item);			
+			return base.Add(item);
 		}
 
 		/// <summary>
@@ -486,7 +526,7 @@ namespace Ambertation.Collections
 		/// <param name="item">The object that should be inserted</param>
 		public void Insert(int index, Image item)
 		{
-			base.Insert(index, item);			
+			base.Insert(index, item);
 		}
 
 		/// <summary>
@@ -495,7 +535,7 @@ namespace Ambertation.Collections
 		/// <param name="item">The object that should be removed</param>
 		public void Remove(Image item)
 		{
-			base.Remove(item);			
+			base.Remove(item);
 		}
 
 		/// <summary>
@@ -506,12 +546,12 @@ namespace Ambertation.Collections
 		public bool Contains(Image item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -523,7 +563,8 @@ namespace Ambertation.Collections
 		public override object Clone()
 		{
 			Images list = new Images();
-			foreach (Image item in this) list.Add(item);
+			foreach (Image item in this)
+				list.Add(item);
 
 			return list;
 		}

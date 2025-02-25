@@ -30,24 +30,29 @@ namespace SimPe.Plugin.Tool.Dockable
 		/// Open the Resource in SimPE
 		/// </summary>
 		/// <returns>true, if the Resource was opened</returns>
-		bool OpenResource();		
+		bool OpenResource();
 	}
 
 	/// <summary>
 	/// Represents one found Resource, you need to override <see cref="Open"/> with a specific Implementation.
 	/// </summary>
-	internal class FinderResultItem : SteepValley.Windows.Forms.XPListViewItem, IFinderResultItem
+	internal class FinderResultItem
+		: SteepValley.Windows.Forms.XPListViewItem,
+			IFinderResultItem
 	{
-		public FinderResultItem() : this("") {}
-		public FinderResultItem(string text) : base()
+		public FinderResultItem()
+			: this("") { }
+
+		public FinderResultItem(string text)
+			: base()
 		{
-			this.Text = text;			
+			this.Text = text;
 		}
 
 		public virtual bool OpenResource()
 		{
 			return true;
-		}		
+		}
 	}
 
 	/// <summary>
@@ -56,42 +61,48 @@ namespace SimPe.Plugin.Tool.Dockable
 	internal class ScenegraphResultItem : FinderResultItem
 	{
 		SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii;
-        public ScenegraphResultItem(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii)
-            : base(SimPe.Localization.GetString("Unknown")) 
+
+		public ScenegraphResultItem(
+			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii
+		)
+			: base(SimPe.Localization.GetString("Unknown"))
 		{
-            this.fii = fii;
-            SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper wrp = FileTable.WrapperRegistry.FindHandler(fii.FileDescriptor.Type);
-            if (wrp != null)
-            {
-                ((SimPe.Interfaces.Plugin.AbstractWrapper)wrp).Package = fii.Package;
-                ((SimPe.Interfaces.Plugin.AbstractWrapper)wrp).FileDescriptor = fii.FileDescriptor;
-                this.Text = wrp.ResourceName;
-            }
-            else this.Text = fii.FileDescriptor.ToString();
+			this.fii = fii;
+			SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper wrp =
+				FileTable.WrapperRegistry.FindHandler(fii.FileDescriptor.Type);
+			if (wrp != null)
+			{
+				((SimPe.Interfaces.Plugin.AbstractWrapper)wrp).Package = fii.Package;
+				((SimPe.Interfaces.Plugin.AbstractWrapper)wrp).FileDescriptor =
+					fii.FileDescriptor;
+				this.Text = wrp.ResourceName;
+			}
+			else
+				this.Text = fii.FileDescriptor.ToString();
 
-            this.SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.Type));
-            this.SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.Group));
-            this.SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.LongInstance));
-            this.SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.Offset));
-            this.SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.Size));
-            this.SubItems.Add(fii.Package.SaveFileName);
-            /*this.SubItems.Add("    Type: 0x"+Helper.HexString(fii.FileDescriptor.Type));
-            this.SubItems.Add("    Group: 0x"+Helper.HexString(fii.FileDescriptor.Group));
-            this.SubItems.Add("    Instance: 0x"+Helper.HexString(fii.FileDescriptor.LongInstance));						
-            this.SubItems.Add("    Offset: 0x"+Helper.HexString(fii.FileDescriptor.Offset));
-            this.SubItems.Add("    Size: 0x"+Helper.HexString(fii.FileDescriptor.Size));
-            this.SubItems.Add("    "+fii.Package.SaveFileName);*/
-        }
-
-        public ScenegraphResultItem(SimPe.Interfaces.Files.IPackageFile pkg, SimPe.Interfaces.Files.IPackedFileDescriptor pfd)
-            : this(new FileIndexItem(pfd, pkg))
-        {
-			
+			this.SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.Type));
+			this.SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.Group));
+			this.SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.LongInstance));
+			this.SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.Offset));
+			this.SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.Size));
+			this.SubItems.Add(fii.Package.SaveFileName);
+			/*this.SubItems.Add("    Type: 0x"+Helper.HexString(fii.FileDescriptor.Type));
+			this.SubItems.Add("    Group: 0x"+Helper.HexString(fii.FileDescriptor.Group));
+			this.SubItems.Add("    Instance: 0x"+Helper.HexString(fii.FileDescriptor.LongInstance));
+			this.SubItems.Add("    Offset: 0x"+Helper.HexString(fii.FileDescriptor.Offset));
+			this.SubItems.Add("    Size: 0x"+Helper.HexString(fii.FileDescriptor.Size));
+			this.SubItems.Add("    "+fii.Package.SaveFileName);*/
 		}
+
+		public ScenegraphResultItem(
+			SimPe.Interfaces.Files.IPackageFile pkg,
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+		)
+			: this(new FileIndexItem(pfd, pkg)) { }
 
 		public override bool OpenResource()
 		{
-			return SimPe.RemoteControl.OpenPackedFileFkt(this.fii);	
-		}		
+			return SimPe.RemoteControl.OpenPackedFileFkt(this.fii);
+		}
 	}
 }

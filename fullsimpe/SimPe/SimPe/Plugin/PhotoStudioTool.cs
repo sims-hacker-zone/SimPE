@@ -31,7 +31,7 @@ namespace SimPe.Plugin
 		/// Windows Registry Link
 		/// </summary>
 		static SimPe.Registry registry;
-		internal static Registry WindowsRegistry 
+		internal static Registry WindowsRegistry
 		{
 			get { return registry; }
 		}
@@ -40,31 +40,43 @@ namespace SimPe.Plugin
 		IProviderRegistry prov;
 		PhotoStudio ps;
 
-		internal PhotoStudioTool(IWrapperRegistry reg, IProviderRegistry prov) 
+		internal PhotoStudioTool(IWrapperRegistry reg, IProviderRegistry prov)
 		{
 			this.reg = reg;
 			this.prov = prov;
 
-			if (registry==null) registry = Helper.WindowsRegistry;
+			if (registry == null)
+				registry = Helper.WindowsRegistry;
 			ps = null;
 		}
 
 		#region ITool Member
 
-		public bool IsEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
+		public bool IsEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
 			return true;
 		}
 
-        public bool IsReallyEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
-        {
-            return true;
-        }
-
-		public Interfaces.Plugin.IToolResult ShowDialog(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package)
+		public bool IsReallyEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
-            if (!IsReallyEnabled(pfd, package)) return new SimPe.Plugin.ToolResult(false, false);
-			if (ps==null) ps = new PhotoStudio();
+			return true;
+		}
+
+		public Interfaces.Plugin.IToolResult ShowDialog(
+			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			ref SimPe.Interfaces.Files.IPackageFile package
+		)
+		{
+			if (!IsReallyEnabled(pfd, package))
+				return new SimPe.Plugin.ToolResult(false, false);
+			if (ps == null)
+				ps = new PhotoStudio();
 			return ps.Execute(ref pfd, ref package, prov);
 		}
 
@@ -78,18 +90,12 @@ namespace SimPe.Plugin
 		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
-			get
-            {
-                return SimPe.GetIcon.Camera;
-			}
+			get { return SimPe.GetIcon.Camera; }
 		}
 
 		public override System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.CtrlP;
-			}
+			get { return System.Windows.Forms.Shortcut.CtrlP; }
 		}
 		#endregion
 	}

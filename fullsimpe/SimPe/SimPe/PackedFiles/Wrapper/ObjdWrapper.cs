@@ -23,7 +23,7 @@ using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
 {
-	internal class ObjdItem 
+	internal class ObjdItem
 	{
 		public ushort val;
 		public long position;
@@ -32,45 +32,48 @@ namespace SimPe.PackedFiles.Wrapper
 	/// <summary>
 	/// Represents a PackedFile in SDsc Format
 	/// </summary>
-	public class Objd : AbstractWrapper, SimPe.Interfaces.Plugin.IFileWrapper, SimPe.Interfaces.Plugin.IFileWrapperSaveExtension
+	public class Objd
+		: AbstractWrapper,
+			SimPe.Interfaces.Plugin.IFileWrapper,
+			SimPe.Interfaces.Plugin.IFileWrapperSaveExtension
 	{
 		/// <summary>
-		///the stored Filename		
+		///the stored Filename
 		/// </summary>
-        private byte[] filename;
+		private byte[] filename;
 
 		/// <summary>
 		/// The Type of this File
 		/// </summary>
-		private ushort type; 
+		private ushort type;
 
 		/// <summary>
 		/// Spaces of unknown Data
 		/// </summary>
 		private byte[] reserved_01;
+
 		/// <summary>
 		/// Spaces of unknown Data
 		/// </summary>
 		private byte[] reserved_02;
-		
 
 		/// <summary>
 		/// Returns the Name of a Sim
 		/// </summary>
 		/*public string SimName
 		{
-			get 
+			get
 			{
 				string n = FileName;
 				int p = n.IndexOf(" - ");
 				if (p==-1) return "Unknown";
-				else 
+				else
 				{
 					p += 3;
 					return n.Substring(p, n.Length - p).Trim();
 				}
 				
-			}			
+			}
 		}*/
 
 
@@ -79,26 +82,23 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public string FileName
 		{
-			get 
+			get
 			{
 				/*string s = "";
 				System.IO.MemoryStream ms = new System.IO.MemoryStream(filename);
 				System.IO.BinaryReader br = new System.IO.BinaryReader(ms);
-				try 
+				try
 				{
 					while (br.BaseStream.Position < br.BaseStream.Length)
 					{
 						if (br.PeekChar()==0) break;
 						s += br.ReadChar();
 					}
-				} 
+				}
 				catch (Exception) {};*/
 				return Helper.ToString(filename);
-			}		
-			set 
-			{
-				filename = Helper.SetLength(Helper.ToBytes(value, 64), 64);
 			}
+			set { filename = Helper.SetLength(Helper.ToBytes(value, 64), 64); }
 		}
 
 		/// <summary>
@@ -110,7 +110,9 @@ namespace SimPe.PackedFiles.Wrapper
 			set { SimId = value; }
 		}
 
-		uint guid, proxyguid, originalguid;
+		uint guid,
+			proxyguid,
+			originalguid;
 		ushort ctssid;
 
 		/// <summary>
@@ -145,19 +147,26 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		protected uint InternalGUID
 		{
-			get { 
-				uint simid = (uint)((GetAttributeShort("guid_2 - Read Only") << 16) + GetAttributeShort("guid_1 - Read Only"));
-				return simid;	
+			get
+			{
+				uint simid = (uint)(
+					(GetAttributeShort("guid_2 - Read Only") << 16)
+					+ GetAttributeShort("guid_1 - Read Only")
+				);
+				return simid;
 			}
-			set { 
-				uint simid = value; 
+			set
+			{
+				uint simid = value;
 				ObjdItem guid1 = (ObjdItem)attr["guid_1 - Read Only"];
-				if (guid1==null) guid1 = new ObjdItem();
+				if (guid1 == null)
+					guid1 = new ObjdItem();
 				guid1.val = (ushort)(simid & 0xffff);
 				attr["guid_1 - Read Only"] = guid1;
 
 				ObjdItem guid2 = (ObjdItem)attr["guid_2 - Read Only"];
-				if (guid2==null) guid1 = new ObjdItem();
+				if (guid2 == null)
+					guid1 = new ObjdItem();
 				guid2.val = (ushort)((simid >> 16) & 0xffff);
 				attr["guid_2 - Read Only"] = guid2;
 			}
@@ -168,21 +177,26 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		protected uint InternalTemplateGUID
 		{
-			get 
-			{ 
-				uint simid = (uint)((GetAttributeShort("Proxy GUID 2") << 16) + GetAttributeShort("Proxy GUID 1"));
-				return simid;	
+			get
+			{
+				uint simid = (uint)(
+					(GetAttributeShort("Proxy GUID 2") << 16)
+					+ GetAttributeShort("Proxy GUID 1")
+				);
+				return simid;
 			}
-			set 
-			{ 
-				uint simid = value; 
+			set
+			{
+				uint simid = value;
 				ObjdItem guid1 = (ObjdItem)attr["Proxy GUID 1"];
-				if (guid1==null) guid1 = new ObjdItem();
+				if (guid1 == null)
+					guid1 = new ObjdItem();
 				guid1.val = (ushort)(simid & 0xffff);
 				attr["guid_1 - Read Only"] = guid1;
 
 				ObjdItem guid2 = (ObjdItem)attr["Proxy GUID 2"];
-				if (guid2==null) guid1 = new ObjdItem();
+				if (guid2 == null)
+					guid1 = new ObjdItem();
 				guid2.val = (ushort)((simid >> 16) & 0xffff);
 				attr["guid_2 - Read Only"] = guid2;
 			}
@@ -193,31 +207,35 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		protected uint InternalOriginalGUID
 		{
-			get 
-			{ 
-				uint simid = (uint)((GetAttributeShort("original guid 2 - Read Only") << 16) + GetAttributeShort("original guid 1 - Read Only"));
-				return simid;	
+			get
+			{
+				uint simid = (uint)(
+					(GetAttributeShort("original guid 2 - Read Only") << 16)
+					+ GetAttributeShort("original guid 1 - Read Only")
+				);
+				return simid;
 			}
-			set 
-			{ 
-				uint simid = value; 
+			set
+			{
+				uint simid = value;
 				ObjdItem guid1 = (ObjdItem)attr["original guid 1 - Read Only"];
-				if (guid1==null) guid1 = new ObjdItem();
+				if (guid1 == null)
+					guid1 = new ObjdItem();
 				guid1.val = (ushort)(simid & 0xffff);
 				attr["guid_1 - Read Only"] = guid1;
 
 				ObjdItem guid2 = (ObjdItem)attr["original guid 2 - Read Only"];
-				if (guid2==null) guid1 = new ObjdItem();
+				if (guid2 == null)
+					guid1 = new ObjdItem();
 				guid2.val = (ushort)((simid >> 16) & 0xffff);
 				attr["guid_2 - Read Only"] = guid2;
 			}
 		}
 
-
 		/// <summary>
 		/// returns the Instance of the assigned Catalog Description
 		/// </summary>
-		public ushort CTSSId 
+		public ushort CTSSId
 		{
 			get { return ctssid; }
 		}
@@ -225,7 +243,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Retursn / Sets the Type of an Object
 		/// </summary>
-		public ushort Type 
+		public ushort Type
 		{
 			get { return type; }
 			set { type = value; }
@@ -236,11 +254,13 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		/// <param name="name"></param>
 		/// <returns></returns>
-		public ushort GetAttributeShort(string name) 
+		public ushort GetAttributeShort(string name)
 		{
 			object o = attr[name];
-			if (o==null) return 0;
-			else return ((ObjdItem)o).val;
+			if (o == null)
+				return 0;
+			else
+				return ((ObjdItem)o).val;
 		}
 
 		/// <summary>
@@ -248,22 +268,19 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		/// <param name="name">Name of the Attribute</param>
 		/// <returns></returns>
-		public long GetAttributePosition(string name) 
+		public long GetAttributePosition(string name)
 		{
 			object o = attr[name];
-			if (o==null) return 0;
-			else return ((ObjdItem)o).position;
+			if (o == null)
+				return 0;
+			else
+				return ((ObjdItem)o).position;
 		}
 
 		#region IWrapper Member
 		protected override IWrapperInfo CreateWrapperInfo()
 		{
-			return new AbstractWrapperInfo(
-				"OBJD Wrapper",
-				"Quaxi",
-				"---",
-				3
-				); 
+			return new AbstractWrapperInfo("OBJD Wrapper", "Quaxi", "---", 3);
 		}
 		#endregion
 
@@ -274,8 +291,10 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		Interfaces.Providers.IOpcodeProvider opcodes;
-		public Objd(Interfaces.Providers.IOpcodeProvider opcodes) : base()
-		{			
+
+		public Objd(Interfaces.Providers.IOpcodeProvider opcodes)
+			: base()
+		{
 			filename = new byte[0];
 			reserved_01 = new byte[0];
 			reserved_02 = new byte[0];
@@ -286,53 +305,58 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		protected override void Unserialize(System.IO.BinaryReader reader)
-		{						
+		{
 			attr = new Hashtable();
-			filename = reader.ReadBytes(0x40);	
+			filename = reader.ReadBytes(0x40);
 			long pos = reader.BaseStream.Position;
-			if (reader.BaseStream.Length>=0x54) 
+			if (reader.BaseStream.Length >= 0x54)
 			{
 				reader.BaseStream.Seek(0x52, System.IO.SeekOrigin.Begin);
 				type = reader.ReadUInt16();
-			} 
-			else type = 0;
+			}
+			else
+				type = 0;
 
-			if (reader.BaseStream.Length>=0x60) 
+			if (reader.BaseStream.Length >= 0x60)
 			{
 				reader.BaseStream.Seek(0x5C, System.IO.SeekOrigin.Begin);
 				guid = reader.ReadUInt32();
-			} 
-			else guid = 0;
+			}
+			else
+				guid = 0;
 
-			if (reader.BaseStream.Length>=0x7E) 
+			if (reader.BaseStream.Length >= 0x7E)
 			{
 				reader.BaseStream.Seek(0x7A, System.IO.SeekOrigin.Begin);
 				proxyguid = reader.ReadUInt32();
-			} 
-			else proxyguid = 0;
+			}
+			else
+				proxyguid = 0;
 
-			if (reader.BaseStream.Length>=0x94) 
+			if (reader.BaseStream.Length >= 0x94)
 			{
 				reader.BaseStream.Seek(0x92, System.IO.SeekOrigin.Begin);
 				ctssid = reader.ReadUInt16();
-			} 
-			else ctssid = 0;
+			}
+			else
+				ctssid = 0;
 
-			if (reader.BaseStream.Length>=0xD0) 
+			if (reader.BaseStream.Length >= 0xD0)
 			{
 				reader.BaseStream.Seek(0xCC, System.IO.SeekOrigin.Begin);
 				originalguid = reader.ReadUInt32();
-			} 
-			else originalguid = 0;
-			
-			
+			}
+			else
+				originalguid = 0;
+
 			reader.BaseStream.Seek(pos, System.IO.SeekOrigin.Begin);
 
-			ArrayList names = new ArrayList();			
-			if (opcodes!=null) names = opcodes.OBJDDescription(type);
+			ArrayList names = new ArrayList();
+			if (opcodes != null)
+				names = opcodes.OBJDDescription(type);
 			if (names.Count == 0)
 			{
-				/*reserved_01 = reader.ReadBytes(0x1C);			
+				/*reserved_01 = reader.ReadBytes(0x1C);
 				//simid = reader.ReadUInt32();
 				ObjdItem item = new ObjdItem();
 				item.position = reader.BaseStream.Position;
@@ -342,12 +366,12 @@ namespace SimPe.PackedFiles.Wrapper
 				item = new ObjdItem();
 				item.position = reader.BaseStream.Position;
 				item.val = reader.ReadUInt16();
-				attr["guid_2 - Read Only"] = item;				
+				attr["guid_2 - Read Only"] = item;
 				reserved_02 = reader.ReadBytes((int)(reader.BaseStream.Length - (reader.BaseStream.Position)));
 
 				item = new ObjdItem();
 				item.position = reader.BaseStream.Position;
-				if (reader.BaseStream.Length>=0x90) 
+				if (reader.BaseStream.Length>=0x90)
 				{
 					reader.BaseStream.Seek(0x8E, System.IO.SeekOrigin.Begin);
 					item.val = reader.ReadUInt16();
@@ -356,31 +380,32 @@ namespace SimPe.PackedFiles.Wrapper
 					item2.position = reader.BaseStream.Position;
 					item2.val = reader.ReadUInt16();
 					attr["function sort flags"] = item2;
-				} 
+				}
 				else item.val = 0;
 				attr["room sort flags"] = item;
 
 				item = new ObjdItem();
 				item.position = reader.BaseStream.Position;
-				if (reader.BaseStream.Length>=0x94) 
+				if (reader.BaseStream.Length>=0x94)
 				{
 					reader.BaseStream.Seek(0x92, System.IO.SeekOrigin.Begin);
 					item.val = reader.ReadUInt16();
-				} 
+				}
 				else item.val = 0;
-				attr["catalog strings id"] = item;	*/			
-			} 
-			else 
+				attr["catalog strings id"] = item;	*/
+			}
+			else
 			{
-								
-				foreach (string name in names) 
+				foreach (string name in names)
 				{
-					if (reader.BaseStream.Position > reader.BaseStream.Length-2) break;
+					if (reader.BaseStream.Position > reader.BaseStream.Length - 2)
+						break;
 					ObjdItem item = new ObjdItem();
 					item.position = reader.BaseStream.Position;
 					item.val = reader.ReadUInt16();
 					string sname = name;
-					if (name.Trim()=="") sname = "0x"+Helper.HexString((uint)item.position);
+					if (name.Trim() == "")
+						sname = "0x" + Helper.HexString((uint)item.position);
 					attr[sname] = item;
 				}
 
@@ -390,32 +415,33 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		protected override void Serialize(System.IO.BinaryWriter writer) 
-		{		
+		protected override void Serialize(System.IO.BinaryWriter writer)
+		{
 			writer.Write(filename);
 
-			ArrayList names = new ArrayList();			
-			if (opcodes!=null) names = opcodes.OBJDDescription(type);
-			if (names.Count == 0) 
+			ArrayList names = new ArrayList();
+			if (opcodes != null)
+				names = opcodes.OBJDDescription(type);
+			if (names.Count == 0)
 			{
-				writer.Write(reserved_01);			
+				writer.Write(reserved_01);
 				//writer.Write(simid);
 				writer.Write(this.GetAttributeShort("guid_1 - Read Only"));
 				writer.Write(this.GetAttributeShort("guid_2 - Read Only"));
-				writer.Write(reserved_02);	
-			} 
-			else 
+				writer.Write(reserved_02);
+			}
+			else
 			{
 				/*this.InternalGUID = guid;
 				this.InternalOriginalGUID = originalguid;
 				this.InternalTemplateGUID = proxyguid;*/
-				foreach (string name in names) 
+				foreach (string name in names)
 				{
-					
 					string sname = name;
-					if (sname.Trim()=="") 
-						sname = "0x"+Helper.HexString((uint)writer.BaseStream.Position);
-					if (attr[sname]==null) 
+					if (sname.Trim() == "")
+						sname =
+							"0x" + Helper.HexString((uint)writer.BaseStream.Position);
+					if (attr[sname] == null)
 						break;
 					writer.Write(this.GetAttributeShort(sname));
 				}
@@ -443,27 +469,21 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint[] AssignableTypes
 		{
-			get 
+			get
 			{
-				uint[] Types = {
-								   0x4F424A44
-							   };
+				uint[] Types = { 0x4F424A44 };
 				return Types;
 			}
 		}
 
-
 		public Byte[] FileSignature
 		{
-			get 
+			get
 			{
-				Byte[] sig = {					 
-							 };
+				Byte[] sig = { };
 				return sig;
 			}
-		}		
-
-		
+		}
 
 		#endregion
 
@@ -471,6 +491,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		Hashtable attr;
 		ArrayList items;
+
 		/*public IPackedFileProperties[] Items
 		{
 			get
@@ -486,7 +507,8 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				if (attr==null) attr = new Hashtable();
+				if (attr == null)
+					attr = new Hashtable();
 				return attr;
 			}
 		}

@@ -1,9 +1,8 @@
 using System;
-using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
-
 
 namespace SimPe.Plugin.Tool.Window
 {
@@ -11,16 +10,15 @@ namespace SimPe.Plugin.Tool.Window
 	/// Tool that should automatically repair corrupted packages
 	/// </summary>
 	public class PackageRepairTool : SimPe.Interfaces.IToolPlus
-	{		
-		public PackageRepairTool()
-		{
-		}
+	{
+		public PackageRepairTool() { }
+
 		#region IToolPlus Member
 
 		public void Execute(object sender, SimPe.Events.ResourceEventArgs e)
 		{
 			PackageRepairForm f = new PackageRepairForm();
-			if (e.Loaded) 
+			if (e.Loaded)
 			{
 				string flname = e.LoadedPackage.Package.SaveFileName;
 				e.LoadedPackage.Package.Close(true);
@@ -29,10 +27,13 @@ namespace SimPe.Plugin.Tool.Window
 			RemoteControl.ShowSubForm(f);
 		}
 
-		public bool ChangeEnabledStateEventHandler(object sender, SimPe.Events.ResourceEventArgs e)
+		public bool ChangeEnabledStateEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs e
+		)
 		{
-            // return !e.Loaded;
-            return true;
+			// return !e.Loaded;
+			return true;
 		}
 
 		#endregion
@@ -41,25 +42,22 @@ namespace SimPe.Plugin.Tool.Window
 
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{				
-				return System.Windows.Forms.Shortcut.None;
-			}
+			get { return System.Windows.Forms.Shortcut.None; }
 		}
 
 		public bool Visible
 		{
-			get
-			{
-				return true;
-			}
+			get { return true; }
 		}
 
 		public Image Icon
 		{
 			get
 			{
-				return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.repair.png"));
+				return System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream("SimPe.img.repair.png")
+				);
 			}
 		}
 
@@ -69,7 +67,7 @@ namespace SimPe.Plugin.Tool.Window
 
 		public override string ToString()
 		{
-            return "Object Tools\\Repair Package Index...";
+			return "Object Tools\\Repair Package Index...";
 		}
 
 		#endregion

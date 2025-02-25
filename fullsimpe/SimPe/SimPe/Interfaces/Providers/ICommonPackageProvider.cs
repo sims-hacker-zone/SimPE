@@ -31,11 +31,7 @@ namespace SimPe.Interfaces.Providers
 		/// Returns or sets the Folder where the Character Files are stored
 		/// </summary>
 		/// <remarks>Sets the names List to null</remarks>
-		IPackageFile BasePackage
-		{
-			get;
-			set;
-		}
+		IPackageFile BasePackage { get; set; }
 
 		/// <summary>
 		/// Fired, whenever the <see cref="BasePackage"/> was changed

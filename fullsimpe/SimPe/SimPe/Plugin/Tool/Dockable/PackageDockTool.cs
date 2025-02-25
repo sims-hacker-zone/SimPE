@@ -21,14 +21,13 @@ using System;
 
 namespace SimPe.Plugin.Tool.Dockable
 {
-	
-
 	/// <summary>
 	/// Dockable Tool that displays Package specific Informations
 	/// </summary>
 	public class PackageDockTool : SimPe.Interfaces.IDockableTool
 	{
 		ResourceDock rd;
+
 		public PackageDockTool(ResourceDock rd)
 		{
 			this.rd = rd;
@@ -44,39 +43,42 @@ namespace SimPe.Plugin.Tool.Dockable
 		public event SimPe.Events.ChangedResourceEvent ShowNewResource;
 
 		SimPe.Interfaces.Files.IPackageFile pkg;
-		
+
 		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es)
 		{
-			if (es.LoadedPackage!=null)
-				if (es.LoadedPackage.Loaded) 
+			if (es.LoadedPackage != null)
+				if (es.LoadedPackage.Loaded)
 				{
-					bool newpkg = (pkg==null);
-					if (!newpkg) newpkg = !es.LoadedPackage.Package.Equals(pkg);
-			
-					
-					if (newpkg) 
+					bool newpkg = (pkg == null);
+					if (!newpkg)
+						newpkg = !es.LoadedPackage.Package.Equals(pkg);
+
+					if (newpkg)
 					{
-						SimPe.Packages.PackageRepair pr = new SimPe.Packages.PackageRepair(es.LoadedPackage.Package);
+						SimPe.Packages.PackageRepair pr =
+							new SimPe.Packages.PackageRepair(es.LoadedPackage.Package);
 						if (Helper.WindowsRegistry.HiddenMode)
 							rd.pgHead.SelectedObject = pr.IndexDetailsAdvanced;
 						else
-							rd.pgHead.SelectedObject = pr.IndexDetails;					
-						
+							rd.pgHead.SelectedObject = pr.IndexDetails;
+
 						pkg = es.LoadedPackage.Package;
-						
-						rd.lv.Items.Clear();						
-						for (uint i=0; i<pkg.Header.HoleIndex.Count; i++) 
+
+						rd.lv.Items.Clear();
+						for (uint i = 0; i < pkg.Header.HoleIndex.Count; i++)
 						{
-							System.Windows.Forms.ListViewItem lvi = new System.Windows.Forms.ListViewItem();
-							SimPe.Packages.HoleIndexItem hii = es.LoadedPackage.Package.GetHoleIndex(i);
-							lvi.Text = "0x"+Helper.HexString(hii.Offset);
-							lvi.SubItems.Add("0x"+Helper.HexString(hii.Size));
+							System.Windows.Forms.ListViewItem lvi =
+								new System.Windows.Forms.ListViewItem();
+							SimPe.Packages.HoleIndexItem hii =
+								es.LoadedPackage.Package.GetHoleIndex(i);
+							lvi.Text = "0x" + Helper.HexString(hii.Offset);
+							lvi.SubItems.Add("0x" + Helper.HexString(hii.Size));
 							rd.lv.Items.Add(lvi);
 						}
 					}
 					return;
 				}
-			
+
 			pkg = null;
 			rd.pgHead.SelectedObject = null;
 			rd.lv.Items.Clear();
@@ -97,23 +99,20 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.None;
-			}
+			get { return System.Windows.Forms.Shortcut.None; }
 		}
 
 		public System.Drawing.Image Icon
 		{
+			get { return rd.dcPackage.TabImage; }
+		}
+
+		public virtual bool Visible
+		{
 			get
 			{
-				return rd.dcPackage.TabImage;
+				return GetDockableControl().IsDocked || GetDockableControl().IsFloating;
 			}
-		}	
-
-		public virtual bool Visible 
-		{
-			get { return GetDockableControl().IsDocked ||  GetDockableControl().IsFloating; }
 		}
 
 		#endregion

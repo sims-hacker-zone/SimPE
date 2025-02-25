@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SimPe
@@ -32,7 +32,9 @@ namespace SimPe
 	{
 		class FolderWrapper
 		{
-			string name, folder;
+			string name,
+				folder;
+
 			public FolderWrapper(string name, string folder)
 			{
 				this.name = SimPe.Localization.GetString(name);
@@ -49,8 +51,8 @@ namespace SimPe
 				return folder;
 				//return name+": "+folder;
 			}
-
 		}
+
 		private SteepValley.Windows.Forms.XPGradientPanel xpGradientPanel1;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button button1;
@@ -58,11 +60,12 @@ namespace SimPe
 		private System.Windows.Forms.ComboBox tbFolder;
 		private System.Windows.Forms.Button btCancel;
 		private System.Windows.Forms.Button btOK;
-        private SteepValley.Windows.Forms.XPLine xpLine1;
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.Container components = null;
+		private SteepValley.Windows.Forms.XPLine xpLine1;
+
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.Container components = null;
 
 		public SelectSimFolder()
 		{
@@ -73,7 +76,9 @@ namespace SimPe
 
 			foreach (ExpansionItem ei in PathProvider.Global.Expansions)
 			{
-				this.tbFolder.Items.Add(new FolderWrapper(ei.Name, ei.RealInstallFolder));
+				this.tbFolder.Items.Add(
+					new FolderWrapper(ei.Name, ei.RealInstallFolder)
+				);
 			}
 		}
 
@@ -94,7 +99,7 @@ namespace SimPe
 
 		#region Windows Form Designer generated code
 		/// <summary>
-		/// Required method for Designer support - do not modify 
+		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
@@ -109,9 +114,9 @@ namespace SimPe
 			this.fbd = new System.Windows.Forms.FolderBrowserDialog();
 			this.xpGradientPanel1.SuspendLayout();
 			this.SuspendLayout();
-			// 
+			//
 			// xpGradientPanel1
-			// 
+			//
 			this.xpGradientPanel1.Controls.Add(this.btOK);
 			this.xpGradientPanel1.Controls.Add(this.btCancel);
 			this.xpGradientPanel1.Controls.Add(this.xpLine1);
@@ -123,10 +128,17 @@ namespace SimPe
 			this.xpGradientPanel1.Name = "xpGradientPanel1";
 			this.xpGradientPanel1.Size = new System.Drawing.Size(674, 80);
 			this.xpGradientPanel1.TabIndex = 0;
-			// 
+			//
 			// btOK
-			// 
-			this.btOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.btOK.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Top
+						| System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.btOK.FlatStyle = System.Windows.Forms.FlatStyle.System;
 			this.btOK.Location = new System.Drawing.Point(512, 52);
 			this.btOK.Name = "btOK";
@@ -134,10 +146,17 @@ namespace SimPe
 			this.btOK.TabIndex = 6;
 			this.btOK.Text = "OK";
 			this.btOK.Click += new System.EventHandler(this.btOK_Click);
-			// 
+			//
 			// btCancel
-			// 
-			this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.btCancel.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Top
+						| System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.btCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.btCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
 			this.btCancel.Location = new System.Drawing.Point(592, 52);
@@ -146,11 +165,19 @@ namespace SimPe
 			this.btCancel.TabIndex = 5;
 			this.btCancel.Text = "Cancel";
 			this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
-			// 
+			//
 			// xpLine1
-			// 
-			this.xpLine1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.xpLine1.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							System.Windows.Forms.AnchorStyles.Top
+							| System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.xpLine1.BackColor = System.Drawing.Color.Transparent;
 			this.xpLine1.ForeColor = System.Drawing.SystemColors.Desktop;
 			this.xpLine1.LineColor = System.Drawing.SystemColors.Desktop;
@@ -159,19 +186,34 @@ namespace SimPe
 			this.xpLine1.ShadowColor = System.Drawing.Color.Transparent;
 			this.xpLine1.Size = new System.Drawing.Size(672, 16);
 			this.xpLine1.TabIndex = 4;
-			// 
+			//
 			// tbFolder
-			// 
-			this.tbFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.tbFolder.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							System.Windows.Forms.AnchorStyles.Top
+							| System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.tbFolder.Location = new System.Drawing.Point(64, 8);
 			this.tbFolder.Name = "tbFolder";
 			this.tbFolder.Size = new System.Drawing.Size(520, 21);
 			this.tbFolder.TabIndex = 3;
-			// 
+			//
 			// button1
-			// 
-			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.button1.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Top
+						| System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
 			this.button1.Location = new System.Drawing.Point(592, 8);
 			this.button1.Name = "button1";
@@ -179,26 +221,38 @@ namespace SimPe
 			this.button1.TabIndex = 2;
 			this.button1.Text = "Browse...";
 			this.button1.Click += new System.EventHandler(this.button1_Click);
-			// 
+			//
 			// label1
-			// 
+			//
 			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Font = new System.Drawing.Font(
+				"Tahoma",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.label1.Location = new System.Drawing.Point(8, 8);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(48, 23);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Folder:";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-			// 
+			//
 			// SelectSimFolder
-			// 
+			//
 			this.AcceptButton = this.btOK;
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
 			this.CancelButton = this.btCancel;
 			this.ClientSize = new System.Drawing.Size(674, 80);
 			this.Controls.Add(this.xpGradientPanel1);
-			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.Font = new System.Drawing.Font(
+				"Tahoma",
+				8.25F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "SelectSimFolder";
 			this.ShowInTaskbar = false;
@@ -206,7 +260,6 @@ namespace SimPe
 			this.Text = "Select Sim Folder";
 			this.xpGradientPanel1.ResumeLayout(false);
 			this.ResumeLayout(false);
-
 		}
 		#endregion
 
@@ -229,7 +282,7 @@ namespace SimPe
 			if (fbd.ShowDialog() == DialogResult.OK)
 				tbFolder.Text = fbd.SelectedPath;
 		}
-		
+
 		private void btOK_Click(object sender, System.EventArgs e)
 		{
 			this.DialogResult = DialogResult.OK;
@@ -242,23 +295,19 @@ namespace SimPe
 			Close();
 		}
 	}
+
 	/// <summary>
 	/// a type editor for db connections
 	/// </summary>
-	public class SelectSimFolderUITypeEditor : 
-		System.Drawing.Design.UITypeEditor 
+	public class SelectSimFolderUITypeEditor : System.Drawing.Design.UITypeEditor
 	{
-		
 		/// <summary>
 		/// constructor
 		/// </summary>
-		public SelectSimFolderUITypeEditor() 
-		{
-				
-		}
+		public SelectSimFolderUITypeEditor() { }
 
 		/// <summary>
-		/// display a modal form 
+		/// display a modal form
 		/// </summary>
 		/// <param name="context">
 		/// see documentation on ITypeDescriptorContext
@@ -267,10 +316,10 @@ namespace SimPe
 		/// the style of the editor
 		/// </returns>
 		public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(
-			System.ComponentModel.ITypeDescriptorContext context) 
+			System.ComponentModel.ITypeDescriptorContext context
+		)
 		{
-
-			return System.Drawing.Design.UITypeEditorEditStyle.Modal ;
+			return System.Drawing.Design.UITypeEditorEditStyle.Modal;
 		}
 
 		/// <summary>
@@ -290,14 +339,15 @@ namespace SimPe
 		/// </returns>
 		public override object EditValue(
 			System.ComponentModel.ITypeDescriptorContext context,
-			System.IServiceProvider provider, 
-			object value) 
+			System.IServiceProvider provider,
+			object value
+		)
 		{
 			return this.EditValue(value as string);
-		}			
+		}
 
 		/// <summary>
-		/// show the form for the new connection 
+		/// show the form for the new connection
 		/// string based on an an existing one
 		/// </summary>
 		/// <param name="value">
@@ -306,7 +356,7 @@ namespace SimPe
 		/// <returns>
 		/// the new connection string after editing
 		/// </returns>
-		public string EditValue(string value) 
+		public string EditValue(string value)
 		{
 			return SimPe.SelectSimFolder.ShowDialog(value);
 		}

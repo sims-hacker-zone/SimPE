@@ -29,10 +29,11 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public AmbientLight(Rcol parent) : base(parent)
+		public AmbientLight(Rcol parent)
+			: base(parent)
 		{
 			version = 1;
 			BlockID = 0xc9c81b9b;
-		}		
+		}
 	}
 }

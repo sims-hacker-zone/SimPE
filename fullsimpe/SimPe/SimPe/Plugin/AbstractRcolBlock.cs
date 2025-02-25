@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
-using System.Windows.Forms;
 using System.ComponentModel;
+using System.Windows.Forms;
 using SimPe.Interfaces.Scenegraph;
 
 namespace SimPe.Plugin
@@ -12,6 +12,7 @@ namespace SimPe.Plugin
 	public abstract class AbstractRcolBlock : IRcolBlock
 	{
 		protected SGResource sgres;
+
 		/// <summary>
 		/// Returns / Sets the cSGResource of this Block, or null if none is avilable
 		/// </summary>
@@ -20,19 +21,21 @@ namespace SimPe.Plugin
 		{
 			get { return sgres; }
 			set { sgres = value; }
-		}		
+		}
 
 		protected uint version;
+
 		[ReadOnly(true)]
-		public uint Version 
+		public uint Version
 		{
 			get { return version; }
 			set { version = value; }
 		}
 
 		protected Rcol parent;
+
 		[BrowsableAttribute(false)]
-		public Rcol Parent 
+		public Rcol Parent
 		{
 			get { return parent; }
 			set { parent = value; }
@@ -46,52 +49,48 @@ namespace SimPe.Plugin
 		}
 
 		public AbstractRcolBlock(Rcol parent)
-		{			
+		{
 			this.parent = (Rcol)parent;
-			if (parent!=null) this.Register(Rcol.Tokens);
+			if (parent != null)
+				this.Register(Rcol.Tokens);
 			sgres = null;
 			blockid = 0;
 			version = 0;
 		}
-		
 
 		/// <summary>
 		/// Data was changed
 		/// </summary>
 		[BrowsableAttribute(false)]
-		public bool Changed 
+		public bool Changed
 		{
 			get { return parent.Changed; }
-			set { 
-				if (parent!=null)
-					parent.Changed = value; 
+			set
+			{
+				if (parent != null)
+					parent.Changed = value;
 			}
 		}
 
 		/// <summary>
 		/// Refresh the Display
 		/// </summary>
-		public void Refresh() 
+		public void Refresh()
 		{
 			//parent.CallWhenTabPageChanged = null;
-			InitTabPage(); 
+			InitTabPage();
 			InitResourceTabPage();
 		}
-
 
 		/// <summary>
 		/// You can use this to setop the Controls on a TabPage before it is displayed
 		/// </summary>
-		protected virtual void InitTabPage() 
-		{
-		}
+		protected virtual void InitTabPage() { }
 
 		/// <summary>
 		/// You can use this to setop the Controls on a ResourceTabPage before it is displayed
 		/// </summary>
-		protected virtual void InitResourceTabPage() 
-		{
-		}
+		protected virtual void InitResourceTabPage() { }
 
 		/// <summary>
 		/// Adds the Ressource TabPage to the Form
@@ -99,20 +98,21 @@ namespace SimPe.Plugin
 		/// <param name="tc">The TabControl you want to add the resourceTabPage to</param>
 		/// <param name="cb">The ComboBox that selects the SubBlocks</param>
 		/// <returns></returns>
-		internal virtual void AddToResourceTabControl(TabControl tc, ComboBox cb) 
-		{		
+		internal virtual void AddToResourceTabControl(TabControl tc, ComboBox cb)
+		{
 			tc.Tag = cb;
 
 			//remove all additional Pages
-			for (int i=tc.TabPages.Count-1; i>=0; i--) 
-				if (tc.TabPages[i].Tag!=null) tc.TabPages.RemoveAt(i);
+			for (int i = tc.TabPages.Count - 1; i >= 0; i--)
+				if (tc.TabPages[i].Tag != null)
+					tc.TabPages.RemoveAt(i);
 
-			if (ResourceTabPage!=null) 
+			if (ResourceTabPage != null)
 			{
 				ResourceTabPage.Tag = null;
 				InitResourceTabPage();
 				ResourceTabPage.Tag = this;
-				tc.TabPages.Add(ResourceTabPage);				
+				tc.TabPages.Add(ResourceTabPage);
 			}
 		}
 
@@ -122,9 +122,9 @@ namespace SimPe.Plugin
 		/// <param name="tc">The tabControl the Page will be added to</param>
 		public void AddToTabControl(TabControl tc)
 		{
-			if (parent!=null) 
+			if (parent != null)
 				parent.ClearTabPageChanged();
-			if (TabPage!=null) 
+			if (TabPage != null)
 			{
 				TabPage.Tag = null;
 				InitTabPage();
@@ -140,7 +140,7 @@ namespace SimPe.Plugin
 		/// <param name="rb">The RcolBlock</param>
 		public static void AddToTabControl(TabControl tc, IRcolBlock rb)
 		{
-			if (rb.TabPage!=null) 
+			if (rb.TabPage != null)
 			{
 				rb.TabPage.Tag = rb;
 				rb.TabPage.Text = rb.BlockName;
@@ -160,7 +160,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public abstract void Serialize(System.IO.BinaryWriter writer);
@@ -210,7 +210,9 @@ namespace SimPe.Plugin
 		public string Register(Hashtable listing)
 		{
 			string name = BlockName;
-			if (listing!=null) if (!listing.ContainsKey(name)) listing.Add(name, this.GetType());
+			if (listing != null)
+				if (!listing.ContainsKey(name))
+					listing.Add(name, this.GetType());
 			return name;
 		}
 
@@ -222,7 +224,7 @@ namespace SimPe.Plugin
 		[BrowsableAttribute(false)]
 		public uint BlockID
 		{
-			get{ return blockid; }
+			get { return blockid; }
 			set { blockid = value; }
 		}
 
@@ -232,15 +234,16 @@ namespace SimPe.Plugin
 		/// if not null this is the default name for the Block in the Rcol
 		/// </summary>
 		[BrowsableAttribute(false)]
-		public virtual string BlockName 
+		public virtual string BlockName
 		{
-			get 
+			get
 			{
-				if (blockname==null) 
+				if (blockname == null)
 				{
-					return "c"+this.GetType().Name;
-				} 
-				else return blockname;
+					return "c" + this.GetType().Name;
+				}
+				else
+					return blockname;
 			}
 			set { blockname = value; }
 		}
@@ -249,17 +252,17 @@ namespace SimPe.Plugin
 		/// Returns a tabPage that contains a GUI for this Element
 		/// </summary>
 		[BrowsableAttribute(false)]
-		public virtual System.Windows.Forms.TabPage TabPage 
+		public virtual System.Windows.Forms.TabPage TabPage
 		{
 			get { return null; }
 		}
 
 		/// <summary>
-		/// Returns a tabPage that will be displayed in the top TabControl on the Rcol 
+		/// Returns a tabPage that will be displayed in the top TabControl on the Rcol
 		/// Page if the Block is is the first one
 		/// </summary>
 		[BrowsableAttribute(false)]
-		public virtual System.Windows.Forms.TabPage ResourceTabPage 
+		public virtual System.Windows.Forms.TabPage ResourceTabPage
 		{
 			get { return null; }
 		}
@@ -268,20 +271,21 @@ namespace SimPe.Plugin
 		/// Adds more TabPages (which are needed to process the Class) to the Control
 		/// </summary>
 		/// <param name="tc">The TabControl the Pages will be added to</param>
-		public virtual void ExtendTabControl(TabControl tc) {}
+		public virtual void ExtendTabControl(TabControl tc) { }
 		#endregion
 
-		public override string ToString() 
+		public override string ToString()
 		{
-			if (this.sgres==null) 
+			if (this.sgres == null)
 			{
 				return this.BlockName;
-			} 
-			else 
+			}
+			else
 			{
-				return sgres.FileName + " ("+this.BlockName+")";
+				return sgres.FileName + " (" + this.BlockName + ")";
 			}
 		}
+
 		/// <summary>
 		/// Returns the RCOL which lists this Resource in it's ReferencedFiles Attribute
 		/// </summary>
@@ -289,24 +293,30 @@ namespace SimPe.Plugin
 		/// <returns>null or the RCOl Ressource</returns>
 		public Rcol FindReferencingParent(uint type)
 		{
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndex nfi = FileTable.FileIndex.AddNewChild();
+			SimPe.Interfaces.Scenegraph.IScenegraphFileIndex nfi =
+				FileTable.FileIndex.AddNewChild();
 			nfi.AddIndexFromPackage(this.Parent.Package);
 			Rcol rcol = FindReferencingParent_NoLoad(type);
 			FileTable.FileIndex.RemoveChild(nfi);
 			nfi.Clear();
 
-			if (rcol==null&& !FileTable.FileIndex.Loaded) 
+			if (rcol == null && !FileTable.FileIndex.Loaded)
 			{
 				FileTable.FileIndex.Load();
 				rcol = FindReferencingParent_NoLoad(type);
 			}
 
-			if (rcol==null) throw new Warning("No Parent was found in the Search Path!", "Either there is no Scenegraph Resource that is referencing the File, or the package containing that Resource is not in the FileTable (see Extra->Preferences...)");
-			return rcol;			
+			if (rcol == null)
+				throw new Warning(
+					"No Parent was found in the Search Path!",
+					"Either there is no Scenegraph Resource that is referencing the File, or the package containing that Resource is not in the FileTable (see Extra->Preferences...)"
+				);
+			return rcol;
 		}
 
-        delegate void WaitMessasge(string message);
-        /// <summary>
+		delegate void WaitMessasge(string message);
+
+		/// <summary>
 		/// Returns the RCOL which lists this Resource in it's ReferencedFiles Attribute
 		/// </summary>
 		/// <param name="type">the Type of the ressource youar looking for</param>
@@ -314,40 +324,69 @@ namespace SimPe.Plugin
 		/// <remarks>This Version will not load the FileTable</remarks>
 		public Rcol FindReferencingParent_NoLoad(uint type)
 		{
-            WaitMessasge wm;
+			WaitMessasge wm;
 
-            Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFile(type, true);
-            try
-            {
-                if (Wait.Running) { wm = delegate(string message) { Wait.Message = message; Wait.Progress++; }; Wait.SubStart(items.Length); }
-                else wm = delegate(string message) { };
+			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+				FileTable.FileIndex.FindFile(type, true);
+			try
+			{
+				if (Wait.Running)
+				{
+					wm = delegate(string message)
+					{
+						Wait.Message = message;
+						Wait.Progress++;
+					};
+					Wait.SubStart(items.Length);
+				}
+				else
+					wm = delegate(string message) { };
 
-                foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
-                {
-                    wm("");
-                    Rcol r = new GenericRcol(null, false);
+				foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
+				{
+					wm("");
+					Rcol r = new GenericRcol(null, false);
 
-                    //try to open the File in the same package, not in the FileTable Package!
-                    if (item.Package.SaveFileName.Trim().ToLower() == parent.Package.SaveFileName.Trim().ToLower())
-                        r.ProcessData(parent.Package.FindFile(item.FileDescriptor), parent.Package);
-                    else
-                        r.ProcessData(item);
+					//try to open the File in the same package, not in the FileTable Package!
+					if (
+						item.Package.SaveFileName.Trim().ToLower()
+						== parent.Package.SaveFileName.Trim().ToLower()
+					)
+						r.ProcessData(
+							parent.Package.FindFile(item.FileDescriptor),
+							parent.Package
+						);
+					else
+						r.ProcessData(item);
 
-                    foreach (Interfaces.Files.IPackedFileDescriptor pfd in r.ReferencedFiles)
-                    {
-                        if (
-                            pfd.Type == this.Parent.FileDescriptor.Type &&
-                            (pfd.Group == this.Parent.FileDescriptor.Group || (pfd.Group == Data.MetaData.GLOBAL_GROUP && Parent.FileDescriptor.Group == Data.MetaData.LOCAL_GROUP)) &&
-                            pfd.SubType == this.Parent.FileDescriptor.SubType &&
-                            pfd.Instance == this.Parent.FileDescriptor.Instance
-                            )
-                        {
-                            return r;
-                        }
-                    }
-                }
-            }
-            finally { if (Wait.Running) Wait.SubStop(); }
+					foreach (
+						Interfaces.Files.IPackedFileDescriptor pfd in r.ReferencedFiles
+					)
+					{
+						if (
+							pfd.Type == this.Parent.FileDescriptor.Type
+							&& (
+								pfd.Group == this.Parent.FileDescriptor.Group
+								|| (
+									pfd.Group == Data.MetaData.GLOBAL_GROUP
+									&& Parent.FileDescriptor.Group
+										== Data.MetaData.LOCAL_GROUP
+								)
+							)
+							&& pfd.SubType == this.Parent.FileDescriptor.SubType
+							&& pfd.Instance == this.Parent.FileDescriptor.Instance
+						)
+						{
+							return r;
+						}
+					}
+				}
+			}
+			finally
+			{
+				if (Wait.Running)
+					Wait.SubStop();
+			}
 
 			return null;
 		}

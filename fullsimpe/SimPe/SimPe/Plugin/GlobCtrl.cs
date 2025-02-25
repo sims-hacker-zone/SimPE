@@ -18,76 +18,81 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
 {
-    public partial class GlobCtrl : UserControl
-    {
-        public GlobCtrl()
-        {
-            InitializeComponent();
-        }
-        /// <summary>
-        /// Stores the currently active Wrapper
-        /// </summary>
-        internal IFileWrapperSaveExtension wrapper = null;	
+	public partial class GlobCtrl : UserControl
+	{
+		public GlobCtrl()
+		{
+			InitializeComponent();
+		}
 
-        #region GLOB
-        private void GlobCommit(object sender, System.EventArgs e)
-        {
-            try
-            {
-                Glob wrp = (Glob)wrapper;
-                wrp.SemiGlobalName = this.cbseminame.Text;
-                wrp.FileName = tbfilenm.Text;
-                lbBloat.Visible = lbBug.Visible = false;
-                wrapper.SynchronizeUserData();
-                MessageBox.Show(Localization.Manager.GetString("commited"));
-            }
-            catch (Exception ex)
-            {
-                Helper.ExceptionMessage(Localization.Manager.GetString("errwritingfile"), ex);
-            }
-        }
+		/// <summary>
+		/// Stores the currently active Wrapper
+		/// </summary>
+		internal IFileWrapperSaveExtension wrapper = null;
 
-        private void SemiGlobalChanged(object sender, System.EventArgs e)
-        {
-            if (cbseminame.Tag == null)
-            {
-                tbgroup.ForeColor = System.Drawing.SystemColors.WindowText;
-                tbgroup.Text = "0x" + Helper.HexString(Hashes.GroupHash(cbseminame.Text));
-                try
-                {
-                    Glob wrp = (Glob)wrapper;
-                    wrp.SemiGlobalName = this.cbseminame.Text;
-                    wrapper.Changed = true;
-                }
-                catch (Exception ex)
-                {
-                    Helper.ExceptionMessage("", ex);
-                }
-            }
-        }
+		#region GLOB
+		private void GlobCommit(object sender, System.EventArgs e)
+		{
+			try
+			{
+				Glob wrp = (Glob)wrapper;
+				wrp.SemiGlobalName = this.cbseminame.Text;
+				wrp.FileName = tbfilenm.Text;
+				lbBloat.Visible = lbBug.Visible = false;
+				wrapper.SynchronizeUserData();
+				MessageBox.Show(Localization.Manager.GetString("commited"));
+			}
+			catch (Exception ex)
+			{
+				Helper.ExceptionMessage(
+					Localization.Manager.GetString("errwritingfile"),
+					ex
+				);
+			}
+		}
 
-        private void tbfilenm_TextChanged(object sender, EventArgs e)
-        {
-            if (cbseminame.Tag == null)
-            {
-                try
-                {
-                    Glob wrp = (Glob)wrapper;
-                    wrp.FileName = tbfilenm.Text;
-                    wrapper.Changed = true;
-                }
-                catch { }
-            }
-        }
+		private void SemiGlobalChanged(object sender, System.EventArgs e)
+		{
+			if (cbseminame.Tag == null)
+			{
+				tbgroup.ForeColor = System.Drawing.SystemColors.WindowText;
+				tbgroup.Text =
+					"0x" + Helper.HexString(Hashes.GroupHash(cbseminame.Text));
+				try
+				{
+					Glob wrp = (Glob)wrapper;
+					wrp.SemiGlobalName = this.cbseminame.Text;
+					wrapper.Changed = true;
+				}
+				catch (Exception ex)
+				{
+					Helper.ExceptionMessage("", ex);
+				}
+			}
+		}
 
-        #endregion
-    }
+		private void tbfilenm_TextChanged(object sender, EventArgs e)
+		{
+			if (cbseminame.Tag == null)
+			{
+				try
+				{
+					Glob wrp = (Glob)wrapper;
+					wrp.FileName = tbfilenm.Text;
+					wrapper.Changed = true;
+				}
+				catch { }
+			}
+		}
+
+		#endregion
+	}
 }

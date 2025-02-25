@@ -25,14 +25,13 @@ namespace SimPe.Packages
 	/// Structure of an HoleIndex Item
 	/// </summary>
 	public class HoleIndexItem
-	{		
-
+	{
 		/// <summary>
 		/// Constructor
 		/// </summary>
 		/// <param name="offset">the offset of the Hole</param>
 		/// <param name="size">the size of the Hole</param>
-		public HoleIndexItem (uint offset, int size) 
+		public HoleIndexItem(uint offset, int size)
 		{
 			this.offset = offset;
 			this.size = size;
@@ -41,7 +40,8 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		internal HoleIndexItem () {
+		internal HoleIndexItem()
+		{
 			this.offset = 0;
 			this.size = 0;
 		}
@@ -56,16 +56,13 @@ namespace SimPe.Packages
 		/// </summary>
 		public uint Offset
 		{
-			get 
-			{
-				return offset;
-			}
+			get { return offset; }
 			set { offset = value; }
 		}
 
 		/// <summary>
 		/// Size of the compressed File
-		/// </summary>		
+		/// </summary>
 		internal int size;
 
 		/// <summary>
@@ -73,11 +70,8 @@ namespace SimPe.Packages
 		/// </summary>
 		public virtual int Size
 		{
-			get 
-			{
-				return size;
-			}
-			set { size = value;}
+			get { return size; }
+			set { size = value; }
 		}
 
 		/// <summary>
@@ -85,9 +79,9 @@ namespace SimPe.Packages
 		/// </summary>
 		/// <param name="hii">another Hole</param>
 		/// <returns>true if it follows the current Hole</returns>
-		public bool IsMyFollowup(HoleIndexItem hii) 
+		public bool IsMyFollowup(HoleIndexItem hii)
 		{
-			return((offset+size)==hii.Offset);
+			return ((offset + size) == hii.Offset);
 		}
 	}
 }

@@ -26,26 +26,22 @@ namespace SimPe.Interfaces
 	/// </summary>
 	public abstract class AbstractTool : SimPe.Interfaces.IToolExt
 	{
-		
 		#region IToolExt Member
 
 		public virtual System.Drawing.Image Icon
 		{
-			get {return null;}
+			get { return null; }
 		}
 
 		public virtual System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.None;
-			}
+			get { return System.Windows.Forms.Shortcut.None; }
 		}
 
 		public virtual bool Visible
 		{
 			get { return true; }
 		}
-		#endregion				
+		#endregion
 	}
 }

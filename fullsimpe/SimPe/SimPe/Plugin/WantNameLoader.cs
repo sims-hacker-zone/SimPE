@@ -19,10 +19,9 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using SimPe.Interfaces.Plugin;
 using System.Windows.Forms;
 using System.Xml;
-
+using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
 {
@@ -46,6 +45,7 @@ namespace SimPe.Plugin
 	public class WantNameLoader
 	{
 		Hashtable map;
+
 		/// <summary>
 		/// Returns a List with all known Names
 		/// </summary>
@@ -57,9 +57,8 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Create a New Instance
 		/// </summary>
-		public WantNameLoader() : this(SimPe.PackedFiles.Wrapper.SDescVersions.Nightlife) 
-		{
-		}
+		public WantNameLoader()
+			: this(SimPe.PackedFiles.Wrapper.SDescVersions.Nightlife) { }
 
 		/// <summary>
 		/// Create a New Instance
@@ -88,11 +87,14 @@ namespace SimPe.Plugin
 		Hashtable ParseSubNode(string name, XmlNode node, int numberbase)
 		{
 			Hashtable ht = new Hashtable();
-			foreach (XmlNode subnode in node) 
+			foreach (XmlNode subnode in node)
 			{
-				if (subnode.Name==name) 
+				if (subnode.Name == name)
 				{
-					uint id = Convert.ToUInt32(subnode.Attributes["id"].Value, numberbase);
+					uint id = Convert.ToUInt32(
+						subnode.Attributes["id"].Value,
+						numberbase
+					);
 					string n = subnode.Attributes["name"].Value;
 
 					ht[id] = n;
@@ -100,58 +102,68 @@ namespace SimPe.Plugin
 			}
 
 			return ht;
-		}		
-
+		}
 
 		/// <summary>
 		/// Create a HashTable with the needed Names from the UI xml File
 		/// </summary>
 		/// <param name="version">Version where you want to load the Description from</param>
 		void ParseXml(SimPe.PackedFiles.Wrapper.SDescVersions version)
-        {
-            // version is Sdsc version - must be converted to EP version
-            ExpansionItem ei = SimPe.PackedFiles.Wrapper.SDesc.GetIEVersion(version);
-            if (ei != null)
-            {
-                SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(System.IO.Path.Combine(ei.InstallFolder, "TSData\\Res\\Wants\\WantTuning.package"));
-                if (pkg != null) // if it is null then what?
-                {
-                    SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(0x00000000, 0, 0xCDA53B6F, 0x2D7EE26B);
-                    if (pfd != null)
-                    {
-                        SimPe.PackedFiles.Wrapper.Xml xml = new SimPe.PackedFiles.Wrapper.Xml();
-                        xml.ProcessData(pfd, pkg);
-                        ParseXml(xml.Text);
-                    }
-                }
-            }
-            /*
-			map = new Hashtable();			
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFile(0x00000000, 0xCDA53B6F, 0x2D7EE26B, null);
-            
-            System.Collections.Generic.Dictionary<SimPe.PackedFiles.Wrapper.SDescVersions,string> vmap = new System.Collections.Generic.Dictionary<SimPe.PackedFiles.Wrapper.SDescVersions,string>();
-
-            vmap[version] = PathProvider.Global.Latest.InstallFolder.Trim().ToLower();
-            foreach (ExpansionItem ei in PathProvider.Global.Expansions) {
-                if (ei.Flag.Class == ExpansionItem.Classes.ExpansionPack) {
-                    
-                    SimPe.PackedFiles.Wrapper.SDescVersions ver = SimPe.PackedFiles.Wrapper.SDesc.GetMinVersion(ei.Expansion);
-
-                    vmap [ver] = ei.InstallFolder.Trim().ToLower();
-                    if (ver == SimPe.PackedFiles.Wrapper.SDescVersions.Voyage) 
-                        vmap[SimPe.PackedFiles.Wrapper.SDescVersions.VoyageB] = ei.InstallFolder.Trim().ToLower(); 
-                }
-            }
-			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items) 			
+		{
+			// version is Sdsc version - must be converted to EP version
+			ExpansionItem ei = SimPe.PackedFiles.Wrapper.SDesc.GetIEVersion(version);
+			if (ei != null)
 			{
-                if (!vmap.ContainsKey(version)) continue;
+				SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+					System.IO.Path.Combine(
+						ei.InstallFolder,
+						"TSData\\Res\\Wants\\WantTuning.package"
+					)
+				);
+				if (pkg != null) // if it is null then what?
+				{
+					SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
+						0x00000000,
+						0,
+						0xCDA53B6F,
+						0x2D7EE26B
+					);
+					if (pfd != null)
+					{
+						SimPe.PackedFiles.Wrapper.Xml xml =
+							new SimPe.PackedFiles.Wrapper.Xml();
+						xml.ProcessData(pfd, pkg);
+						ParseXml(xml.Text);
+					}
+				}
+			}
+			/*
+			map = new Hashtable();
+			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFile(0x00000000, 0xCDA53B6F, 0x2D7EE26B, null);
+			
+			System.Collections.Generic.Dictionary<SimPe.PackedFiles.Wrapper.SDescVersions,string> vmap = new System.Collections.Generic.Dictionary<SimPe.PackedFiles.Wrapper.SDescVersions,string>();
 
-                string s = vmap[version];
-                if (s!=null && s!="") {
-                    if (!item.Package.SaveFileName.Trim().ToLower().StartsWith(s)) continue;
-                }
+			vmap[version] = PathProvider.Global.Latest.InstallFolder.Trim().ToLower();
+			foreach (ExpansionItem ei in PathProvider.Global.Expansions) {
+				if (ei.Flag.Class == ExpansionItem.Classes.ExpansionPack) {
+					
+					SimPe.PackedFiles.Wrapper.SDescVersions ver = SimPe.PackedFiles.Wrapper.SDesc.GetMinVersion(ei.Expansion);
+
+					vmap [ver] = ei.InstallFolder.Trim().ToLower();
+					if (ver == SimPe.PackedFiles.Wrapper.SDescVersions.Voyage)
+						vmap[SimPe.PackedFiles.Wrapper.SDescVersions.VoyageB] = ei.InstallFolder.Trim().ToLower();
+				}
+			}
+			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
+			{
+				if (!vmap.ContainsKey(version)) continue;
+
+				string s = vmap[version];
+				if (s!=null && s!="") {
+					if (!item.Package.SaveFileName.Trim().ToLower().StartsWith(s)) continue;
+				}
 				
-                SimPe.PackedFiles.Wrapper.Xml xml = new SimPe.PackedFiles.Wrapper.Xml();
+				SimPe.PackedFiles.Wrapper.Xml xml = new SimPe.PackedFiles.Wrapper.Xml();
 				xml.ProcessData(item);
 
 				ParseXml(xml.Text);
@@ -171,19 +183,23 @@ namespace SimPe.Plugin
 			xmlfile.LoadXml(xml);
 
 			//seek Root Node
-			XmlNodeList XMLData = xmlfile.GetElementsByTagName("wantSimulator");					
+			XmlNodeList XMLData = xmlfile.GetElementsByTagName("wantSimulator");
 
 			//Process all Root Node Entries
-			for (int i=0; i<XMLData.Count; i++)
+			for (int i = 0; i < XMLData.Count; i++)
 			{
-				XmlNode node = XMLData.Item(i);	
-				foreach (XmlNode subnode in node) 
+				XmlNode node = XMLData.Item(i);
+				foreach (XmlNode subnode in node)
 				{
-					switch (subnode.Name) 
-					{							
-						case "categories": 
+					switch (subnode.Name)
+					{
+						case "categories":
 						{
-							map[WantType.Category] = ParseSubNode("category", subnode, 10);
+							map[WantType.Category] = ParseSubNode(
+								"category",
+								subnode,
+								10
+							);
 							break;
 						}
 						case "skills":
@@ -198,33 +214,51 @@ namespace SimPe.Plugin
 						}
 						case "persondata":
 						{
-							map[WantType.Undefined] = ParseSubNode("persondata", subnode, 10);
+							map[WantType.Undefined] = ParseSubNode(
+								"persondata",
+								subnode,
+								10
+							);
 							break;
 						}
 					} //switch
 				}
 			} //for i
-		
 		}
 
 		/// <summary>
 		/// Adds the currently Available SimNames to the Map
 		/// </summary>
 		/// <remarks>Feeds the IProviderRegistry set in the FileTable!</remarks>
-		public void AddSimNames() 
+		public void AddSimNames()
 		{
 			Hashtable ht = new Hashtable();
 			map[WantType.Sim] = ht;
 
-			if (FileTable.ProviderRegistry==null) return;
+			if (FileTable.ProviderRegistry == null)
+				return;
 
-			foreach (ushort inst in FileTable.ProviderRegistry.SimDescriptionProvider.SimInstance.Keys) 
+			foreach (
+				ushort inst in FileTable
+					.ProviderRegistry
+					.SimDescriptionProvider
+					.SimInstance
+					.Keys
+			)
 			{
-				SimPe.Interfaces.Wrapper.ISDesc isdsc = FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(inst);
-				SimPe.PackedFiles.Wrapper.SDesc sdsc = (SimPe.PackedFiles.Wrapper.SDesc)isdsc;
+				SimPe.Interfaces.Wrapper.ISDesc isdsc =
+					FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(inst);
+				SimPe.PackedFiles.Wrapper.SDesc sdsc =
+					(SimPe.PackedFiles.Wrapper.SDesc)isdsc;
 				sdsc.SetProviders(FileTable.ProviderRegistry);
 				//Data.Alias a = new SimPe.Data.Alias(inst, sdsc.SimName+" "+sdsc.SimFamilyName+" ("+sdsc.HouseholdName+")");
-				ht[(uint)inst] = sdsc.SimName+" "+sdsc.SimFamilyName+" ("+sdsc.HouseholdName+")";//a.Name;
+				ht[(uint)inst] =
+					sdsc.SimName
+					+ " "
+					+ sdsc.SimFamilyName
+					+ " ("
+					+ sdsc.HouseholdName
+					+ ")"; //a.Name;
 			}
 		}
 
@@ -232,13 +266,13 @@ namespace SimPe.Plugin
 		/// Adds all available Object Names
 		/// </summary>
 		/// <param name="list">A List of MemoryCacheItems</param>
-		public void AddObjects(ArrayList list) 
+		public void AddObjects(ArrayList list)
 		{
 			Hashtable ht = new Hashtable();
 			map[WantType.Object] = ht;
-			foreach (SimPe.Cache.MemoryCacheItem mci in list) 
+			foreach (SimPe.Cache.MemoryCacheItem mci in list)
 			{
-				if (mci.ObjectType == Data.ObjectTypes.Normal) 
+				if (mci.ObjectType == Data.ObjectTypes.Normal)
 				{
 					//Data.Alias a = new SimPe.Data.Alias(mci.Guid, mci.Name);
 					ht[mci.Guid] = mci.Name;
@@ -254,15 +288,15 @@ namespace SimPe.Plugin
 		/// <returns>The Name or null</returns>
 		public string FindName(WantType wt, uint id)
 		{
-            try
-            {
-                Hashtable ht = (Hashtable)Map[wt];
-                if (ht != null)
-                {
-                    return (string)ht[id];
-                }
-            }
-            catch { }
+			try
+			{
+				Hashtable ht = (Hashtable)Map[wt];
+				if (ht != null)
+				{
+					return (string)ht[id];
+				}
+			}
+			catch { }
 			return null;
 		}
 
@@ -271,22 +305,22 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="wt">The Type of the Want</param>
 		/// <returns>List of Alias Items</returns>
-		public ArrayList GetNames(WantType wt) 
+		public ArrayList GetNames(WantType wt)
 		{
 			ArrayList ret = new ArrayList();
-            try
-            {
-                Hashtable ht = (Hashtable)Map[wt];
-                if (ht != null)
-                {
-                    foreach (uint t in ht.Keys)
-                    {
-                        Data.Alias a = new SimPe.Data.Alias(t, (string)ht[t], "{name}");
-                        ret.Add(a);
-                    }
-                }
-            }
-            catch { }
+			try
+			{
+				Hashtable ht = (Hashtable)Map[wt];
+				if (ht != null)
+				{
+					foreach (uint t in ht.Keys)
+					{
+						Data.Alias a = new SimPe.Data.Alias(t, (string)ht[t], "{name}");
+						ret.Add(a);
+					}
+				}
+			}
+			catch { }
 			return ret;
 		}
 	}

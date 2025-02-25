@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SimPe.Plugin
@@ -41,6 +41,7 @@ namespace SimPe.Plugin
 		private Button btcopy;
 		private CheckBox cbTrim;
 		private Label lbnamer;
+
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -57,26 +58,27 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
-				if(components != null)
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
 
 		#region Windows Form Designer generated code
 		/// <summary>
-		/// Required method for Designer support - do not modify 
+		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Hash));
+			System.ComponentModel.ComponentResourceManager resources =
+				new System.ComponentModel.ComponentResourceManager(typeof(Hash));
 			this.label1 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.tbtext = new System.Windows.Forms.TextBox();
@@ -90,35 +92,55 @@ namespace SimPe.Plugin
 			this.lbnamer = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
-			// 
+			//
 			// label1
-			// 
+			//
 			this.label1.AutoSize = true;
 			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.label1.Location = new System.Drawing.Point(37, 19);
 			this.label1.Name = "label1";
 			this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.label1.Size = new System.Drawing.Size(50, 13);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "String:";
-			// 
+			//
 			// label4
-			// 
+			//
 			this.label4.AutoSize = true;
 			this.label4.BackColor = System.Drawing.Color.Transparent;
-			this.label4.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label4.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.label4.Location = new System.Drawing.Point(4, 83);
 			this.label4.Name = "label4";
 			this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.label4.Size = new System.Drawing.Size(83, 13);
 			this.label4.TabIndex = 3;
 			this.label4.Text = "Hash Value:";
-			// 
+			//
 			// tbtext
-			// 
-			this.tbtext.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.tbtext.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							System.Windows.Forms.AnchorStyles.Top
+							| System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.tbtext.Location = new System.Drawing.Point(92, 15);
 			this.tbtext.Name = "tbtext";
 			this.tbtext.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -126,9 +148,9 @@ namespace SimPe.Plugin
 			this.tbtext.TabIndex = 4;
 			this.tbtext.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.tbtext.TextChanged += new System.EventHandler(this.tbtext_TextChanged);
-			// 
+			//
 			// tbhash
-			// 
+			//
 			this.tbhash.Location = new System.Drawing.Point(92, 79);
 			this.tbhash.Name = "tbhash";
 			this.tbhash.ReadOnly = true;
@@ -137,9 +159,9 @@ namespace SimPe.Plugin
 			this.tbhash.TabIndex = 7;
 			this.tbhash.Text = "0xB00B0069";
 			this.tbhash.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
+			//
 			// rb24
-			// 
+			//
 			this.rb24.BackColor = System.Drawing.Color.Transparent;
 			this.rb24.Checked = true;
 			this.rb24.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -152,10 +174,12 @@ namespace SimPe.Plugin
 			this.rb24.Text = "CRC 24";
 			this.rb24.UseVisualStyleBackColor = false;
 			this.rb24.Click += new System.EventHandler(this.tbtext_TextChanged);
-			this.rb24.CheckedChanged += new System.EventHandler(this.rb14_CheckedChanged);
-			// 
+			this.rb24.CheckedChanged += new System.EventHandler(
+				this.rb14_CheckedChanged
+			);
+			//
 			// rb32
-			// 
+			//
 			this.rb32.BackColor = System.Drawing.Color.Transparent;
 			this.rb32.FlatStyle = System.Windows.Forms.FlatStyle.System;
 			this.rb32.Location = new System.Drawing.Point(320, 42);
@@ -166,10 +190,12 @@ namespace SimPe.Plugin
 			this.rb32.Text = "CRC 32";
 			this.rb32.UseVisualStyleBackColor = false;
 			this.rb32.Click += new System.EventHandler(this.tbtext_TextChanged);
-			this.rb32.CheckedChanged += new System.EventHandler(this.rb32_CheckedChanged);
-			// 
+			this.rb32.CheckedChanged += new System.EventHandler(
+				this.rb32_CheckedChanged
+			);
+			//
 			// radioButton1
-			// 
+			//
 			this.radioButton1.BackColor = System.Drawing.Color.Transparent;
 			this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.System;
 			this.radioButton1.Location = new System.Drawing.Point(400, 42);
@@ -179,10 +205,12 @@ namespace SimPe.Plugin
 			this.radioButton1.TabIndex = 10;
 			this.radioButton1.Text = "GUID";
 			this.radioButton1.UseVisualStyleBackColor = false;
-			this.radioButton1.CheckedChanged += new System.EventHandler(this.guid_CheckedChanged);
-			// 
+			this.radioButton1.CheckedChanged += new System.EventHandler(
+				this.guid_CheckedChanged
+			);
+			//
 			// panel1
-			// 
+			//
 			this.panel1.BackColor = System.Drawing.Color.Transparent;
 			this.panel1.Controls.Add(this.lbnamer);
 			this.panel1.Controls.Add(this.cbTrim);
@@ -194,15 +222,21 @@ namespace SimPe.Plugin
 			this.panel1.Controls.Add(this.tbhash);
 			this.panel1.Controls.Add(this.tbtext);
 			this.panel1.Controls.Add(this.label4);
-			this.panel1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.panel1.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Name = "panel1";
 			this.panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.panel1.Size = new System.Drawing.Size(496, 146);
 			this.panel1.TabIndex = 11;
-			// 
+			//
 			// btcopy
-			// 
+			//
 			this.btcopy.Location = new System.Drawing.Point(389, 109);
 			this.btcopy.Name = "btcopy";
 			this.btcopy.Size = new System.Drawing.Size(75, 23);
@@ -210,9 +244,9 @@ namespace SimPe.Plugin
 			this.btcopy.Text = "Copy";
 			this.btcopy.UseVisualStyleBackColor = true;
 			this.btcopy.Click += new System.EventHandler(this.btcopy_Click);
-			// 
+			//
 			// cbTrim
-			// 
+			//
 			this.cbTrim.AutoSize = true;
 			this.cbTrim.Checked = true;
 			this.cbTrim.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -222,10 +256,12 @@ namespace SimPe.Plugin
 			this.cbTrim.TabIndex = 12;
 			this.cbTrim.Text = "Use Lower Case Only";
 			this.cbTrim.UseVisualStyleBackColor = true;
-			this.cbTrim.CheckedChanged += new System.EventHandler(this.cbTrim_CheckedChanged);
-			// 
+			this.cbTrim.CheckedChanged += new System.EventHandler(
+				this.cbTrim_CheckedChanged
+			);
+			//
 			// lbnamer
-			// 
+			//
 			this.lbnamer.AutoSize = true;
 			this.lbnamer.Location = new System.Drawing.Point(4, 114);
 			this.lbnamer.Name = "lbnamer";
@@ -233,13 +269,19 @@ namespace SimPe.Plugin
 			this.lbnamer.TabIndex = 13;
 			this.lbnamer.Text = "Available";
 			this.lbnamer.Visible = false;
-			// 
+			//
 			// Hash
-			// 
+			//
 			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
 			this.ClientSize = new System.Drawing.Size(494, 144);
 			this.Controls.Add(this.panel1);
-			this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "Hash";
@@ -247,16 +289,17 @@ namespace SimPe.Plugin
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
 			this.ResumeLayout(false);
-
 		}
 		#endregion
 
-		public void Execute(Interfaces.Files.IPackageFile package) 
+		public void Execute(Interfaces.Files.IPackageFile package)
 		{
 			if (package != null)
 			{
 				if (package.FileName != null)
-					this.tbtext.Text = System.IO.Path.GetFileNameWithoutExtension(package.FileName).ToLower();
+					this.tbtext.Text = System
+						.IO.Path.GetFileNameWithoutExtension(package.FileName)
+						.ToLower();
 				this.tbtext.Text = "Generate Hashes";
 			}
 			else
@@ -269,25 +312,39 @@ namespace SimPe.Plugin
 
 		private void tbtext_TextChanged(object sender, System.EventArgs e)
 		{
-			try 
+			try
 			{
 				ulong hash = 0;
 				if (cbTrim.Checked)
 				{
-					if (rb24.Checked) hash = Hashes.ToLong(Hashes.Crc24.ComputeHash(Helper.ToBytes(tbtext.Text.ToLower())));
-					else hash = Hashes.ToLong(Hashes.Crc32.ComputeHash(Helper.ToBytes(tbtext.Text.ToLower())));
+					if (rb24.Checked)
+						hash = Hashes.ToLong(
+							Hashes.Crc24.ComputeHash(
+								Helper.ToBytes(tbtext.Text.ToLower())
+							)
+						);
+					else
+						hash = Hashes.ToLong(
+							Hashes.Crc32.ComputeHash(
+								Helper.ToBytes(tbtext.Text.ToLower())
+							)
+						);
 				}
 				else
 				{
-					if (rb24.Checked) hash = Hashes.ToLong(Hashes.Crc24.ComputeHash(Helper.ToBytes(tbtext.Text)));
-					else hash = Hashes.ToLong(Hashes.Crc32.ComputeHash(Helper.ToBytes(tbtext.Text)));
+					if (rb24.Checked)
+						hash = Hashes.ToLong(
+							Hashes.Crc24.ComputeHash(Helper.ToBytes(tbtext.Text))
+						);
+					else
+						hash = Hashes.ToLong(
+							Hashes.Crc32.ComputeHash(Helper.ToBytes(tbtext.Text))
+						);
 				}
-				tbhash.Text = "0x"+Helper.HexString((uint)hash);
+				tbhash.Text = "0x" + Helper.HexString((uint)hash);
 				setupinuse(hash);
-			} 
-			catch (Exception) 
-			{
 			}
+			catch (Exception) { }
 		}
 
 		private void rb32_CheckedChanged(object sender, System.EventArgs e)
@@ -314,7 +371,8 @@ namespace SimPe.Plugin
 
 		private void cbTrim_CheckedChanged(object sender, EventArgs e)
 		{
-			if (!radioButton1.Checked) tbtext_TextChanged(sender, e);
+			if (!radioButton1.Checked)
+				tbtext_TextChanged(sender, e);
 		}
 
 		private void setupinuse(ulong vid)

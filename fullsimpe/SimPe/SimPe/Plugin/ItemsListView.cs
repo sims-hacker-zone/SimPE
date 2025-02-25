@@ -18,54 +18,71 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 using SimPe;
 using SimPe.Cache;
 
 namespace SimPe.Plugin
 {
 	public class NgbhItemsListViewItem : ListViewItem, System.IDisposable
-	{				
+	{
 		NgbhItemsListView parent;
 		NgbhItem item;
 		public NgbhItem Item
 		{
-			get {return item;}
+			get { return item; }
 		}
 
-		public NgbhItemsListViewItem(NgbhItemsListView parent, NgbhItem item) : this(parent, item, true) {}
-		public NgbhItemsListViewItem(NgbhItemsListView parent, NgbhItem item, bool autoadd) : base()
+		public NgbhItemsListViewItem(NgbhItemsListView parent, NgbhItem item)
+			: this(parent, item, true) { }
+
+		public NgbhItemsListViewItem(
+			NgbhItemsListView parent,
+			NgbhItem item,
+			bool autoadd
+		)
+			: base()
 		{
 			this.item = item;
 			this.parent = parent;
 			//mci = NgbhUI.ObjectCache.FindItem(item.Guid);
-						
-						
-			
+
+
+
 			Update();
-			if (autoadd) parent.Items.Add(this);
+			if (autoadd)
+				parent.Items.Add(this);
 		}
 
 		internal void Update()
 		{
-			this.Text = item.ToString();			
-			if (!item.Flags.IsVisible) this.ForeColor = Color.SteelBlue;
-			if (item.Flags.IsControler) this.ForeColor = Color.Gray;
-			if (item.IsInventory) this.ForeColor = Color.MediumSeaGreen;
-			if (item.IsGossip) this.Font = new Font(this.Font.FontFamily, this.Font.Size, FontStyle.Italic, this.Font.Unit);
+			this.Text = item.ToString();
+			if (!item.Flags.IsVisible)
+				this.ForeColor = Color.SteelBlue;
+			if (item.Flags.IsControler)
+				this.ForeColor = Color.Gray;
+			if (item.IsInventory)
+				this.ForeColor = Color.MediumSeaGreen;
+			if (item.IsGossip)
+				this.Font = new Font(
+					this.Font.FontFamily,
+					this.Font.Size,
+					FontStyle.Italic,
+					this.Font.Unit
+				);
 
-			if (parent.SmallImageList!=null) 
+			if (parent.SmallImageList != null)
 			{
 				Image i = item.Icon;
-				if (i!=null) 
+				if (i != null)
 				{
-					if (this.ImageIndex>=0)
+					if (this.ImageIndex >= 0)
 						parent.SmallImageList.Images[this.ImageIndex] = i;
-					else 
+					else
 					{
-						parent.SmallImageList.Images.Add(i);					
-						this.ImageIndex = parent.SmallImageList.Images.Count-1;
+						parent.SmallImageList.Images.Add(i);
+						this.ImageIndex = parent.SmallImageList.Images.Count - 1;
 					}
 				}
 			}
@@ -80,5 +97,5 @@ namespace SimPe.Plugin
 		}
 
 		#endregion
-	}	
+	}
 }

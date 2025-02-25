@@ -19,7 +19,7 @@
  ***************************************************************************/
 using System;
 
-namespace SimPe.PackedFiles.UserInterface 
+namespace SimPe.PackedFiles.UserInterface
 {
 	/// <summary>
 	/// Abstract Base for some UIHandlers
@@ -34,16 +34,14 @@ namespace SimPe.PackedFiles.UserInterface
 		/// <summary>
 		/// Constructor for the Class
 		/// </summary>
-		public UIBase ()
+		public UIBase()
 		{
-			if (form==null)	form = new Elements();			
+			if (form == null)
+				form = new Elements();
 		}
 
 		#region IDisposable Member
-		public virtual void Dispose()
-		{
-
-		}
+		public virtual void Dispose() { }
 		#endregion
 	}
 }

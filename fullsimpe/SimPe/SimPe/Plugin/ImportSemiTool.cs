@@ -25,11 +25,12 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for ImportSemiTool.
 	/// </summary>
-    public class ImportSemiTool : Interfaces.AbstractTool, Interfaces.ITool
+	public class ImportSemiTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
 		IWrapperRegistry reg;
 		IProviderRegistry prov;
-		internal ImportSemiTool(IWrapperRegistry reg, IProviderRegistry prov) 
+
+		internal ImportSemiTool(IWrapperRegistry reg, IProviderRegistry prov)
 		{
 			this.reg = reg;
 			this.prov = prov;
@@ -37,20 +38,31 @@ namespace SimPe.Plugin
 
 		#region ITool Member
 
-		public bool IsEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
+		public bool IsEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
-			if (prov==null) return false;
-			if (prov.OpcodeProvider==null) return false;
+			if (prov == null)
+				return false;
+			if (prov.OpcodeProvider == null)
+				return false;
 
-			if (package==null) return false;			
+			if (package == null)
+				return false;
 
 			return true;
 		}
 
 		ImportSemi isg;
-		public Interfaces.Plugin.IToolResult ShowDialog(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package)
+
+		public Interfaces.Plugin.IToolResult ShowDialog(
+			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			ref SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
-			if (isg==null) isg = new ImportSemi();
+			if (isg == null)
+				isg = new ImportSemi();
 
 			isg.Execute(package, this.reg, this.prov);
 			return new SimPe.Plugin.ToolResult(false, true);
@@ -63,14 +75,11 @@ namespace SimPe.Plugin
 
 		#endregion
 
-        #region IToolExt Member
-        public override System.Drawing.Image Icon
-        {
-            get
-            {
-                return SimPe.GetIcon.ImportSemi;
-            }
-        }
-        #endregion
+		#region IToolExt Member
+		public override System.Drawing.Image Icon
+		{
+			get { return SimPe.GetIcon.ImportSemi; }
+		}
+		#endregion
 	}
 }

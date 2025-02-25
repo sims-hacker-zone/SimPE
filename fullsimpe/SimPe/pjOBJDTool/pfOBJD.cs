@@ -23,88 +23,138 @@ using System.Text;
 
 namespace pjOBJDTool
 {
-    public class pfOBJD : pjse.ExtendedWrapper<pfOBJDItem, pfOBJD>
-    {
-        private byte[] filename = null;
-        private byte[] endName = null;
-        public string Filename
-        {
-            get { return SimPe.Helper.ToString(filename); }
-            set
-            {
-                if (!SimPe.Helper.ToString(filename).Equals(value))
-                {
-                    filename = SimPe.Helper.ToBytes(value, 0x40);
-                    OnWrapperChanged(this, new EventArgs());
-                }
-            }
-        }
+	public class pfOBJD : pjse.ExtendedWrapper<pfOBJDItem, pfOBJD>
+	{
+		private byte[] filename = null;
+		private byte[] endName = null;
+		public string Filename
+		{
+			get { return SimPe.Helper.ToString(filename); }
+			set
+			{
+				if (!SimPe.Helper.ToString(filename).Equals(value))
+				{
+					filename = SimPe.Helper.ToBytes(value, 0x40);
+					OnWrapperChanged(this, new EventArgs());
+				}
+			}
+		}
 
-        protected override void Unserialize(System.IO.BinaryReader reader)
-        {
-            filename = null;
-            endName = null;
-            items = new List<pfOBJDItem>();
+		protected override void Unserialize(System.IO.BinaryReader reader)
+		{
+			filename = null;
+			endName = null;
+			items = new List<pfOBJDItem>();
 
-            filename = reader.ReadBytes(0x40);
+			filename = reader.ReadBytes(0x40);
 
-            long limit = reader.BaseStream.Length - reader.BaseStream.Position - Filename.Length;
-            while (items.Count * 2 < limit - 1)
-                items.Add(reader.ReadUInt16());
+			long limit =
+				reader.BaseStream.Length - reader.BaseStream.Position - Filename.Length;
+			while (items.Count * 2 < limit - 1)
+				items.Add(reader.ReadUInt16());
 
-            endName = reader.ReadBytes((int)(reader.BaseStream.Length - reader.BaseStream.Position));
-            if (!Filename.Equals(SimPe.Helper.ToString(endName)))
-                throw new InvalidOperationException("Trailing filename (\"" + SimPe.Helper.ToString(endName) +
-                    "\") not equal to Filename (\"" + Filename + "\")");
-        }
+			endName = reader.ReadBytes(
+				(int)(reader.BaseStream.Length - reader.BaseStream.Position)
+			);
+			if (!Filename.Equals(SimPe.Helper.ToString(endName)))
+				throw new InvalidOperationException(
+					"Trailing filename (\""
+						+ SimPe.Helper.ToString(endName)
+						+ "\") not equal to Filename (\""
+						+ Filename
+						+ "\")"
+				);
+		}
 
-        protected override void Serialize(System.IO.BinaryWriter writer)
-        {
-            writer.Write(filename);
-            foreach (pfOBJDItem i in items) writer.Write((ushort)i);
-            writer.Write(endName);
-        }
+		protected override void Serialize(System.IO.BinaryWriter writer)
+		{
+			writer.Write(filename);
+			foreach (pfOBJDItem i in items)
+				writer.Write((ushort)i);
+			writer.Write(endName);
+		}
 
-        protected override SimPe.Interfaces.Plugin.IPackedFileUI CreateDefaultUIHandler()
-        {
-            throw new Exception("The method or operation is not implemented.");
-        }
-    }
+		protected override SimPe.Interfaces.Plugin.IPackedFileUI CreateDefaultUIHandler()
+		{
+			throw new Exception("The method or operation is not implemented.");
+		}
+	}
 
-    public class pfOBJDItem : pjse.ExtendedWrapperItem<pfOBJD, pfOBJDItem>
-        , IComparable<ushort>, IEquatable<ushort>, IComparable<pfOBJDItem>
-    {
-        private UInt16 value;
-        public pfOBJDItem(UInt16 value) { this.value = value; }
+	public class pfOBJDItem
+		: pjse.ExtendedWrapperItem<pfOBJD, pfOBJDItem>,
+			IComparable<ushort>,
+			IEquatable<ushort>,
+			IComparable<pfOBJDItem>
+	{
+		private UInt16 value;
 
-        #region Conversions
-        public static explicit operator byte(pfOBJDItem i) { return (byte)i.value; }
-        public static explicit operator short(pfOBJDItem i) { return (short)i.value; }
-        public static implicit operator ushort(pfOBJDItem i) { return i.value; }
-        public static explicit operator pfOBJDItem(short i) { return new pfOBJDItem((ushort)i); }
-        public static implicit operator pfOBJDItem(ushort i) { return new pfOBJDItem(i); }
+		public pfOBJDItem(UInt16 value)
+		{
+			this.value = value;
+		}
 
-        public override string ToString() { return value.ToString(); }
-        #endregion
+		#region Conversions
+		public static explicit operator byte(pfOBJDItem i)
+		{
+			return (byte)i.value;
+		}
 
-        public override bool Equals(pfOBJDItem other) { return value.Equals(other.value); }
+		public static explicit operator short(pfOBJDItem i)
+		{
+			return (short)i.value;
+		}
 
-        #region IComparable<ushort> Members
+		public static implicit operator ushort(pfOBJDItem i)
+		{
+			return i.value;
+		}
 
-        public int CompareTo(ushort other) { return value.CompareTo(other); }
+		public static explicit operator pfOBJDItem(short i)
+		{
+			return new pfOBJDItem((ushort)i);
+		}
 
-        #endregion
+		public static implicit operator pfOBJDItem(ushort i)
+		{
+			return new pfOBJDItem(i);
+		}
 
-        #region IEquatable<ushort> Members
+		public override string ToString()
+		{
+			return value.ToString();
+		}
+		#endregion
 
-        public bool Equals(ushort other) { return value.Equals(other); }
+		public override bool Equals(pfOBJDItem other)
+		{
+			return value.Equals(other.value);
+		}
 
-        #endregion
+		#region IComparable<ushort> Members
 
-        #region IComparable<pfOBJDItem> Members
+		public int CompareTo(ushort other)
+		{
+			return value.CompareTo(other);
+		}
 
-        public int CompareTo(pfOBJDItem other) { return value.CompareTo(other.value); }
+		#endregion
 
-        #endregion
-    }
+		#region IEquatable<ushort> Members
+
+		public bool Equals(ushort other)
+		{
+			return value.Equals(other);
+		}
+
+		#endregion
+
+		#region IComparable<pfOBJDItem> Members
+
+		public int CompareTo(pfOBJDItem other)
+		{
+			return value.CompareTo(other.value);
+		}
+
+		#endregion
+	}
 }

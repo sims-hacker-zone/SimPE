@@ -24,8 +24,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for cGeometryNode.
 	/// </summary>
-	public class ViewerRefNode
-		: AbstractRcolBlock
+	public class ViewerRefNode : AbstractRcolBlock
 	{
 		#region Attributes
 		ViewerRefNodeBase vrnb;
@@ -34,7 +33,7 @@ namespace SimPe.Plugin
 		TransformNode tn;
 
 		short unknown1;
-		public short Unknown1 
+		public short Unknown1
 		{
 			get { return unknown1; }
 			set { unknown1 = value; }
@@ -48,19 +47,20 @@ namespace SimPe.Plugin
 		}
 
 		byte[] unknown2;
-		public byte[] Unknown2 
+		public byte[] Unknown2
 		{
 			get { return unknown2; }
 			set { unknown2 = value; }
 		}
 
 		#endregion
-		
+
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public ViewerRefNode( Rcol parent) : base(parent)
+		public ViewerRefNode(Rcol parent)
+			: base(parent)
 		{
 			vrnb = new ViewerRefNodeBase(null);
 			rn = new RenderableNode(null);
@@ -73,7 +73,7 @@ namespace SimPe.Plugin
 			version = 0x0c;
 			BlockID = 0x7BA3838C;
 		}
-		
+
 		#region IRcolBlock Member
 
 		/// <summary>
@@ -85,28 +85,29 @@ namespace SimPe.Plugin
 			version = reader.ReadUInt32();
 
 			string name = reader.ReadString();
-			uint myid = reader.ReadUInt32();		
+			uint myid = reader.ReadUInt32();
 			vrnb.Unserialize(reader);
 			vrnb.BlockID = myid;
 
 			name = reader.ReadString();
-			myid = reader.ReadUInt32();		
+			myid = reader.ReadUInt32();
 			rn.Unserialize(reader);
 			rn.BlockID = myid;
 
 			name = reader.ReadString();
-			myid = reader.ReadUInt32();		
+			myid = reader.ReadUInt32();
 			bn.Unserialize(reader);
 			bn.BlockID = myid;
 
 			name = reader.ReadString();
-			myid = reader.ReadUInt32();		
+			myid = reader.ReadUInt32();
 			tn.Unserialize(reader);
 			tn.BlockID = myid;
 
 			unknown1 = reader.ReadInt16();
 			names = new string[reader.ReadInt32()];
-			for (int i=0; i<names.Length; i++) names[i] = reader.ReadString();
+			for (int i = 0; i < names.Length; i++)
+				names[i] = reader.ReadString();
 
 			unknown2 = reader.ReadBytes(0xA0);
 		}
@@ -116,7 +117,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public override void Serialize(System.IO.BinaryWriter writer)
@@ -141,7 +142,8 @@ namespace SimPe.Plugin
 
 			writer.Write(unknown1);
 			writer.Write((int)names.Length);
-			for (int i=0; i<names.Length; i++) writer.Write(names[i]);
+			for (int i = 0; i < names.Length; i++)
+				writer.Write(names[i]);
 
 			writer.Write(unknown2);
 		}
@@ -152,7 +154,8 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (tGenericRcol==null) tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+				if (tGenericRcol == null)
+					tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
 				return tGenericRcol;
 			}
 		}
@@ -161,16 +164,17 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
 		/// </summary>
-		protected override void InitTabPage() 
+		protected override void InitTabPage()
 		{
-			if (tGenericRcol==null) tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
-			tGenericRcol.tb_ver.Text = "0x"+Helper.HexString(this.version);
+			if (tGenericRcol == null)
+				tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(this.version);
 			tGenericRcol.gen_pg.SelectedObject = this;
 		}
 
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
-			base.ExtendTabControl (tc);
+			base.ExtendTabControl(tc);
 			this.vrnb.AddToTabControl(tc);
 			this.rn.AddToTabControl(tc);
 			this.bn.AddToTabControl(tc);
@@ -181,7 +185,8 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (this.tGenericRcol!=null) this.tGenericRcol.Dispose();
+			if (this.tGenericRcol != null)
+				this.tGenericRcol.Dispose();
 			tGenericRcol = null;
 		}
 

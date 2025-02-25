@@ -18,11 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
-using System.Windows.Forms;
+using System.Collections;
 using System.ComponentModel;
 using System.ComponentModel.Design;
-using System.Collections;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace SimPe.Wizards
 {
@@ -31,7 +31,6 @@ namespace SimPe.Wizards
 		public WizardDesigner()
 		{
 			wz = null;
-			
 		}
 
 		private DesignerVerbCollection actions;
@@ -39,34 +38,58 @@ namespace SimPe.Wizards
 		{
 			get
 			{
-				if(actions == null)
-				{                     
-					actions = new DesignerVerbCollection();                      
-					actions.Add(new DesignerVerb("&Add Step", new EventHandler(AddStep)));   
-					actions.Add(new DesignerVerb("Show &First Step", new EventHandler(ShowFirstStep)));			          
-					actions.Add(new DesignerVerb("Show &Prev. Step", new EventHandler(ShowPrevStep)));
-          			actions.Add(new DesignerVerb("Show &Next Step", new EventHandler(ShowNextStep)));		          
-					actions.Add(new DesignerVerb("Show &Last Step", new EventHandler(ShowLastStep)));	
-				}          
+				if (actions == null)
+				{
+					actions = new DesignerVerbCollection();
+					actions.Add(
+						new DesignerVerb("&Add Step", new EventHandler(AddStep))
+					);
+					actions.Add(
+						new DesignerVerb(
+							"Show &First Step",
+							new EventHandler(ShowFirstStep)
+						)
+					);
+					actions.Add(
+						new DesignerVerb(
+							"Show &Prev. Step",
+							new EventHandler(ShowPrevStep)
+						)
+					);
+					actions.Add(
+						new DesignerVerb(
+							"Show &Next Step",
+							new EventHandler(ShowNextStep)
+						)
+					);
+					actions.Add(
+						new DesignerVerb(
+							"Show &Last Step",
+							new EventHandler(ShowLastStep)
+						)
+					);
+				}
 
-				return actions;     
+				return actions;
 			}
 		}
 
 		Wizard wz;
+
 		public override void Initialize(IComponent component)
 		{
-			base.Initialize (component);
+			base.Initialize(component);
 			wz = (Wizard)component;
-			
+
 			// Hook up events
-			ISelectionService s = (ISelectionService) GetService(
-				typeof(ISelectionService));
-			IComponentChangeService c = (IComponentChangeService)
-				GetService(typeof(IComponentChangeService));
+			ISelectionService s = (ISelectionService)GetService(
+				typeof(ISelectionService)
+			);
+			IComponentChangeService c = (IComponentChangeService)GetService(
+				typeof(IComponentChangeService)
+			);
 			s.SelectionChanged += new EventHandler(OnSelectionChanged);
-			c.ComponentRemoving += new ComponentEventHandler(
-				OnComponentRemoving);
+			c.ComponentRemoving += new ComponentEventHandler(OnComponentRemoving);
 		}
 
 		private void OnSelectionChanged(object sender, System.EventArgs e)
@@ -75,16 +98,17 @@ namespace SimPe.Wizards
 		}
 
 		private void OnComponentRemoving(object sender, ComponentEventArgs e)
-		{					
-			IComponentChangeService c = (IComponentChangeService)
-				GetService(typeof(IComponentChangeService));
+		{
+			IComponentChangeService c = (IComponentChangeService)GetService(
+				typeof(IComponentChangeService)
+			);
 			WizardStepPanel button;
-			IDesignerHost h = (IDesignerHost) GetService(typeof(IDesignerHost));
-	
+			IDesignerHost h = (IDesignerHost)GetService(typeof(IDesignerHost));
+
 			// If the user is removing a button
 			if (e.Component is WizardStepPanel)
 			{
-				button = (WizardStepPanel) e.Component;
+				button = (WizardStepPanel)e.Component;
 				if (wz.Contains(button))
 				{
 					c.OnComponentChanging(wz, null);
@@ -109,23 +133,21 @@ namespace SimPe.Wizards
 
 		protected override void Dispose(bool disposing)
 		{
-			ISelectionService s = (ISelectionService) GetService(
-				typeof(ISelectionService));
-			IComponentChangeService c = (IComponentChangeService)
-				GetService(typeof(IComponentChangeService));
+			ISelectionService s = (ISelectionService)GetService(
+				typeof(ISelectionService)
+			);
+			IComponentChangeService c = (IComponentChangeService)GetService(
+				typeof(IComponentChangeService)
+			);
 			// Unhook events
 			s.SelectionChanged -= new EventHandler(OnSelectionChanged);
-			c.ComponentRemoving -= new ComponentEventHandler(
-				OnComponentRemoving);
+			c.ComponentRemoving -= new ComponentEventHandler(OnComponentRemoving);
 			base.Dispose(disposing);
 		}
 
 		public override System.Collections.ICollection AssociatedComponents
 		{
-			get
-			{
-				return wz.Controls;
-			}
+			get { return wz.Controls; }
 		}
 
 		private void ShowNextStep(object sender, System.EventArgs e)
@@ -145,35 +167,43 @@ namespace SimPe.Wizards
 
 		private void ShowLastStep(object sender, System.EventArgs e)
 		{
-			wz.JumpToStep(wz.StepCount-1);
+			wz.JumpToStep(wz.StepCount - 1);
 		}
 
 		private void AddStep(object sender, System.EventArgs e)
 		{
 			WizardStepPanel pn;
-			IDesignerHost h = (IDesignerHost) GetService(typeof(IDesignerHost));
-	
+			IDesignerHost h = (IDesignerHost)GetService(typeof(IDesignerHost));
+
 			DesignerTransaction dt;
-			IComponentChangeService c = (IComponentChangeService)
-				GetService(typeof(IComponentChangeService));
+			IComponentChangeService c = (IComponentChangeService)GetService(
+				typeof(IComponentChangeService)
+			);
 
 			// Add a new button to the collection
 			dt = h.CreateTransaction("Add Step");
-			pn = (WizardStepPanel) h.CreateComponent(typeof(WizardStepPanel));
-			((ComponentDesigner) h.GetDesigner(pn)).OnSetComponentDefaults();
+			pn = (WizardStepPanel)h.CreateComponent(typeof(WizardStepPanel));
+			((ComponentDesigner)h.GetDesigner(pn)).OnSetComponentDefaults();
 
-			c.OnComponentChanging(wz, TypeDescriptor.GetProperties(this.wz)["Controls"]);
+			c.OnComponentChanging(
+				wz,
+				TypeDescriptor.GetProperties(this.wz)["Controls"]
+			);
 			c.OnComponentChanging(pn, null);
-			wz.Controls.Add(pn);			
+			wz.Controls.Add(pn);
 			c.OnComponentChanged(pn, null, null, null);
-			c.OnComponentChanged(wz, TypeDescriptor.GetProperties(this.wz)["Controls"], null, null);
+			c.OnComponentChanged(
+				wz,
+				TypeDescriptor.GetProperties(this.wz)["Controls"],
+				null,
+				null
+			);
 			dt.Commit();
-		}		
+		}
 
 		/*public override void OnSetComponentDefaults()
 		{
 			base.OnSetComponentDefaults ();
 		}*/
-
 	}
 }

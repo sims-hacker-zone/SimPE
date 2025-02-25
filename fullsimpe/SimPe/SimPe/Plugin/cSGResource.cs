@@ -27,32 +27,32 @@ namespace SimPe.Plugin
 	/// This is the actual FileWrapper
 	/// </summary>
 	/// <remarks>
-	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads 
+	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public class SGResource
-		: AbstractRcolBlock
+	public class SGResource : AbstractRcolBlock
 	{
 		#region Attributes
 		string flname;
 
-		public string FileName 
+		public string FileName
 		{
 			get { return flname; }
 			set { flname = value; }
 		}
 		#endregion
-		
+
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public SGResource(Rcol parent) : base(parent)
+		public SGResource(Rcol parent)
+			: base(parent)
 		{
 			version = 0x02;
 			flname = "";
 		}
-		
+
 		#region IRcolBlock Member
 
 		/// <summary>
@@ -70,7 +70,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public override void Serialize(System.IO.BinaryWriter writer)
@@ -82,10 +82,7 @@ namespace SimPe.Plugin
 
 		#region IDisposable Member
 
-		public override void Dispose()
-		{
-			
-		}
+		public override void Dispose() { }
 
 		#endregion
 	}

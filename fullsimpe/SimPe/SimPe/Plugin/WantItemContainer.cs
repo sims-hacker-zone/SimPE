@@ -37,23 +37,20 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns Informations about the Selected want
 		/// </summary>
-		public WantInformation Information 
+		public WantInformation Information
 		{
-			get 
-			{
-				return WantInformation.LoadWant(guid);
-			}
+			get { return WantInformation.LoadWant(guid); }
 		}
 
 		Interfaces.IProviderRegistry provider;
-		public Interfaces.IProviderRegistry Provider 
+		public Interfaces.IProviderRegistry Provider
 		{
 			get { return provider; }
 		}
 
 		public WantItemContainer(Interfaces.IProviderRegistry provider)
 		{
-			items = new WantItem[0];	
+			items = new WantItem[0];
 			this.provider = provider;
 		}
 
@@ -61,12 +58,12 @@ namespace SimPe.Plugin
 		/// Unserializes a BinaryStream into the Attributes of this Instance
 		/// </summary>
 		/// <param name="reader">The Stream that contains the FileData</param>
-		public  void Unserialize(System.IO.BinaryReader reader)
+		public void Unserialize(System.IO.BinaryReader reader)
 		{
 			guid = reader.ReadUInt32();
 			items = new WantItem[reader.ReadUInt32()];
 
-			for (int i=0; i<items.Length; i++) 
+			for (int i = 0; i < items.Length; i++)
 			{
 				items[i] = new WantItem(provider);
 				items[i].Unserialize(reader);
@@ -78,15 +75,15 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
-		public  void Serialize(System.IO.BinaryWriter writer)
+		public void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(guid);
 			writer.Write((uint)items.Length);
 
-			for (int i=0; i<items.Length; i++) 
+			for (int i = 0; i < items.Length; i++)
 			{
 				items[i].Serialize(writer);
 			}
@@ -94,7 +91,7 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			return Information.Name+ " (count="+items.Length.ToString()+")";
+			return Information.Name + " (count=" + items.Length.ToString() + ")";
 		}
 	}
 }

@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Interfaces.Plugin;
 using System.Windows.Forms;
+using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
 {
@@ -52,10 +52,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public System.Windows.Forms.Control GUIHandle
 		{
-			get
-			{
-				return form.wrapperPanel;
-			}
+			get { return form.wrapperPanel; }
 		}
 
 		/// <summary>
@@ -66,19 +63,19 @@ namespace SimPe.Plugin
 		/// <param name="wrapper">The Attributes of this Wrapper have to be displayed</param>
 		public void UpdateGUI(IFileWrapper wrapper)
 		{
-			Nmap wrp = (Nmap) wrapper;
+			Nmap wrp = (Nmap)wrapper;
 			form.wrapper = wrp;
 
 			form.lblist.Items.Clear();
 
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in wrp.Items) 
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in wrp.Items)
 			{
 				form.lblist.Items.Add(pfd);
 			}
-		}		
+		}
 
 		#endregion
-		
+
 		#region IDisposable Member
 		public virtual void Dispose()
 		{

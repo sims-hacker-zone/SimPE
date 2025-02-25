@@ -1,13 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Text;
-
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Packages;
 using SimPe.PackedFiles.Wrapper;
-using System.Collections.Generic;
-
 
 namespace SimPe.Plugin
 {
@@ -18,7 +16,7 @@ namespace SimPe.Plugin
 	{
 		private RcolTable txmt;
 		private HairColor colorBin;
-		
+
 		public RcolTable Materials
 		{
 			get { return this.txmt; }
@@ -28,7 +26,8 @@ namespace SimPe.Plugin
 		public HairColor ColorBin
 		{
 			get { return this.colorBin; }
-			set {
+			set
+			{
 				this.colorBin = value;
 				if (!Utility.IsNullOrEmpty(this.txmt))
 					foreach (MaterialDefinitionRcol mmat in this.txmt)
@@ -36,25 +35,24 @@ namespace SimPe.Plugin
 			}
 		}
 
-
 		#region Lazy properties...
 
-        public MetaData.Bodyshape Figure
-        {            
+		public MetaData.Bodyshape Figure
+		{
 			get { return (MetaData.Bodyshape)CpfItem("product").UIntegerValue; }
-            set
-            {
-                this.SetValue("product", Convert.ToUInt32(value));
-                if (Convert.ToUInt32(value) > 0)
-                this.SetValue("creator", "00000000-0000-0000-0000-000000000000");
-            }
-        }
+			set
+			{
+				this.SetValue("product", Convert.ToUInt32(value));
+				if (Convert.ToUInt32(value) > 0)
+					this.SetValue("creator", "00000000-0000-0000-0000-000000000000");
+			}
+		}
 
-        public uint Flaggery
-        {
-            get { return this.CpfItem("flags").UIntegerValue; }
-            set { this.CpfItem("flags").UIntegerValue = value; }
-        }
+		public uint Flaggery
+		{
+			get { return this.CpfItem("flags").UIntegerValue; }
+			set { this.CpfItem("flags").UIntegerValue = value; }
+		}
 
 		public Guid Hairtone
 		{
@@ -68,7 +66,7 @@ namespace SimPe.Plugin
 			set { this.SetValue("age", Convert.ToUInt32(value)); }
 		}
 
-		public SimGender Gender 
+		public SimGender Gender
 		{
 			get { return (SimGender)CpfItem("gender").UIntegerValue; }
 			set { this.SetValue("gender", Convert.ToUInt32(value)); }
@@ -77,7 +75,7 @@ namespace SimPe.Plugin
 		public TextureOverlayTypes TextureOverlayType
 		{
 			get
-            {
+			{
 				if (this.ContainsItem("subtype"))
 					return (TextureOverlayTypes)CpfItem("subtype").UIntegerValue;
 				return TextureOverlayTypes.EyeBrow;
@@ -91,9 +89,8 @@ namespace SimPe.Plugin
 			{
 				if (this.ContainsItem("outfit"))
 					return (OutfitType)CpfItem("outfit").UIntegerValue;
-				else
-					if (this.ContainsItem("parts"))
-						return (OutfitType)CpfItem("parts").UIntegerValue;
+				else if (this.ContainsItem("parts"))
+					return (OutfitType)CpfItem("parts").UIntegerValue;
 				return OutfitType.None;
 			}
 			set
@@ -116,22 +113,23 @@ namespace SimPe.Plugin
 		#endregion
 
 
-		public RecolorItem(Cpf propertySet) : base(propertySet)
+		public RecolorItem(Cpf propertySet)
+			: base(propertySet)
 		{
 			this.txmt = new RcolTable();
 			this.colorBin = (HairColor)0;
 		}
 
-		public RecolorItem(Cpf propertySet, RcolTable txmt) : base(propertySet)
+		public RecolorItem(Cpf propertySet, RcolTable txmt)
+			: base(propertySet)
 		{
 			this.txmt = txmt;
 		}
 
-
 		public override void CommitChanges()
 		{
 			base.CommitChanges();
-			if (this.txmt != null)	
+			if (this.txmt != null)
 			{
 				if (!this.Enabled)
 				{
@@ -141,17 +139,12 @@ namespace SimPe.Plugin
 							rcol.FileDescriptor.MarkForDelete = true;
 						return;
 					}
-
 				}
-				
+
 				this.txmt.SynchronizeAll();
-
 			}
-
 		}
-
 	}
-
 
 	/// <remarks>
 	/// These values are used in different contexts:
@@ -166,7 +159,6 @@ namespace SimPe.Plugin
 		Skintone,
 		Skin,
 		TextureOverlay,
-		MeshOverlay
+		MeshOverlay,
 	}
-
 }

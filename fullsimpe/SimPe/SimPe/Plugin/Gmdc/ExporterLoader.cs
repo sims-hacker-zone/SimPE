@@ -28,83 +28,105 @@ namespace SimPe.Plugin.Gmdc
 	public class ExporterLoader
 	{
 		static IGmdcExporter[] exporters;
+
 		/// <summary>
 		/// Return a List of all available Exporters
 		/// </summary>
-		public static IGmdcExporter[] Exporters 
+		public static IGmdcExporter[] Exporters
 		{
-			get { 
-				if (exporters==null) LoadExporters();
-				return exporters; 
+			get
+			{
+				if (exporters == null)
+					LoadExporters();
+				return exporters;
 			}
 		}
 
 		static IGmdcImporter[] importers;
+
 		/// <summary>
 		/// Return a List of all available Importers
 		/// </summary>
-		public static IGmdcImporter[] Importers 
+		public static IGmdcImporter[] Importers
 		{
-			get 
-			{ 
-				if (importers==null) LoadExporters();
-				return importers; 
+			get
+			{
+				if (importers == null)
+					LoadExporters();
+				return importers;
 			}
 		}
 
-        /// <summary>
-        /// Returns a list of Exporters stored in th epassed file
-        /// </summary>
-        /// <param name="file"></param>
-        /// <returns></returns>
-        public static List<IGmdcExporter> GetExporters(string file)
-        {
-            List<IGmdcExporter> list = new List<IGmdcExporter>();
+		/// <summary>
+		/// Returns a list of Exporters stored in th epassed file
+		/// </summary>
+		/// <param name="file"></param>
+		/// <returns></returns>
+		public static List<IGmdcExporter> GetExporters(string file)
+		{
+			List<IGmdcExporter> list = new List<IGmdcExporter>();
 
-            object[] plugs = SimPe.LoadFileWrappers.LoadPlugins(file, typeof(SimPe.Plugin.Gmdc.IGmdcExporter));
-            foreach (IGmdcExporter p in plugs)            
-                list.Add(p);            
+			object[] plugs = SimPe.LoadFileWrappers.LoadPlugins(
+				file,
+				typeof(SimPe.Plugin.Gmdc.IGmdcExporter)
+			);
+			foreach (IGmdcExporter p in plugs)
+				list.Add(p);
 
-            return list;
-        }
+			return list;
+		}
 
-        /// <summary>
-        /// Returns a list of Exporters stored in th epassed file
-        /// </summary>
-        /// <param name="file"></param>
-        /// <returns></returns>
-        public static List<IGmdcImporter> GetImporters(string file)
-        {
-            List<IGmdcImporter> list = new List<IGmdcImporter>();
+		/// <summary>
+		/// Returns a list of Exporters stored in th epassed file
+		/// </summary>
+		/// <param name="file"></param>
+		/// <returns></returns>
+		public static List<IGmdcImporter> GetImporters(string file)
+		{
+			List<IGmdcImporter> list = new List<IGmdcImporter>();
 
-            object[] plugs = SimPe.LoadFileWrappers.LoadPlugins(file, typeof(SimPe.Plugin.Gmdc.IGmdcImporter));
-            foreach (IGmdcImporter p in plugs)
-                list.Add(p);
+			object[] plugs = SimPe.LoadFileWrappers.LoadPlugins(
+				file,
+				typeof(SimPe.Plugin.Gmdc.IGmdcImporter)
+			);
+			foreach (IGmdcImporter p in plugs)
+				list.Add(p);
 
-            return list;
-        }
+			return list;
+		}
 
 		/// <summary>
 		/// Find all available Exporters in the Plugin Folder (everything with the Extension *.exporter.dll)
 		/// </summary>
 		static void LoadExporters()
 		{
-			string[] files = System.IO.Directory.GetFiles(Helper.SimPePluginPath, "*.exporter.dll");
+			string[] files = System.IO.Directory.GetFiles(
+				Helper.SimPePluginPath,
+				"*.exporter.dll"
+			);
 
 			System.Collections.ArrayList list = new System.Collections.ArrayList();
 			System.Collections.ArrayList imlist = new System.Collections.ArrayList();
-			foreach (string file in files) 
+			foreach (string file in files)
 			{
-				object[] plugs = SimPe.LoadFileWrappers.LoadPlugins(file, typeof(SimPe.Plugin.Gmdc.IGmdcExporter));
-				foreach (IGmdcExporter p in plugs) 
+				object[] plugs = SimPe.LoadFileWrappers.LoadPlugins(
+					file,
+					typeof(SimPe.Plugin.Gmdc.IGmdcExporter)
+				);
+				foreach (IGmdcExporter p in plugs)
 				{
-					if (p.Version==1) list.Add(p);					
+					if (p.Version == 1)
+						list.Add(p);
 				} //foreach
 
-				plugs = SimPe.LoadFileWrappers.LoadPlugins(file, typeof(SimPe.Plugin.Gmdc.IGmdcImporter));
-				foreach (IGmdcImporter p in plugs) 
+				plugs = SimPe.LoadFileWrappers.LoadPlugins(
+					file,
+					typeof(SimPe.Plugin.Gmdc.IGmdcImporter)
+				);
+				foreach (IGmdcImporter p in plugs)
 				{
-					if (p.Version==1) imlist.Add(p);					
+					if (p.Version == 1)
+						imlist.Add(p);
 				} //foreach
 			}
 
@@ -123,8 +145,10 @@ namespace SimPe.Plugin.Gmdc
 		public static IGmdcExporter FindExporterByExtension(string fileext)
 		{
 			int res = FindFirstIndexByExtension(fileext);
-			if (res==-1) return null;
-			else return Exporters[res];
+			if (res == -1)
+				return null;
+			else
+				return Exporters[res];
 		}
 
 		/// <summary>
@@ -135,11 +159,11 @@ namespace SimPe.Plugin.Gmdc
 		public static int FindFirstIndexByExtension(string fileext)
 		{
 			int[] res = FindIndexByExtension(fileext);
-			if (res.Length==0) return -1;
-			else return res[0];
+			if (res.Length == 0)
+				return -1;
+			else
+				return res[0];
 		}
-
-
 
 		/// <summary>
 		/// Finds the Exporter that registred for the passed File Extension
@@ -149,13 +173,15 @@ namespace SimPe.Plugin.Gmdc
 		public static int[] FindIndexByExtension(string fileext)
 		{
 			fileext = fileext.Trim().ToLower();
-			if (!fileext.StartsWith(".")) fileext = "."+fileext;
+			if (!fileext.StartsWith("."))
+				fileext = "." + fileext;
 
 			System.Collections.ArrayList list = new System.Collections.ArrayList();
-			for (int i=0; i<Exporters.Length; i++)
+			for (int i = 0; i < Exporters.Length; i++)
 			{
 				IGmdcExporter e = Exporters[i];
-				if (e.FileExtension.Trim().ToLower()==fileext) list.Add(i);
+				if (e.FileExtension.Trim().ToLower() == fileext)
+					list.Add(i);
 			}
 
 			int[] res = new int[list.Count];
@@ -172,10 +198,11 @@ namespace SimPe.Plugin.Gmdc
 		public static int FindFirstImporterIndexByExtension(string fileext)
 		{
 			int[] res = FindImporterIndexByExtension(fileext);
-			if (res.Length==0) return -1;
-			else return res[0];
+			if (res.Length == 0)
+				return -1;
+			else
+				return res[0];
 		}
-
 
 		/// <summary>
 		/// Finds the Exporter that registred for the passed File Extension
@@ -185,13 +212,15 @@ namespace SimPe.Plugin.Gmdc
 		public static int[] FindImporterIndexByExtension(string fileext)
 		{
 			fileext = fileext.Trim().ToLower();
-			if (!fileext.StartsWith(".")) fileext = "."+fileext;
+			if (!fileext.StartsWith("."))
+				fileext = "." + fileext;
 
 			System.Collections.ArrayList list = new System.Collections.ArrayList();
-			for (int i=0; i<Importers.Length; i++)
+			for (int i = 0; i < Importers.Length; i++)
 			{
 				IGmdcImporter e = Importers[i];
-				if (e.FileExtension.Trim().ToLower()==fileext) list.Add(i);
+				if (e.FileExtension.Trim().ToLower() == fileext)
+					list.Add(i);
 			}
 
 			int[] res = new int[list.Count];

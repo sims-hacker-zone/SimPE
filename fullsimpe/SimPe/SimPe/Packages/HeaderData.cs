@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.IO;
 using System.ComponentModel;
+using System.IO;
 
 namespace SimPe.Packages
 {
@@ -31,7 +31,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Constructor for the class
 		/// </summary>
-		internal HeaderData ()
+		internal HeaderData()
 		{
 			lidl = false;
 			index = new HeaderIndex(this);
@@ -49,8 +49,8 @@ namespace SimPe.Packages
 			minorversion = 1;
 			index.Type = 7;
 
-            epicon = 0;
-            showicon = 0;
+			epicon = 0;
+			showicon = 0;
 
 			indextype = Data.MetaData.IndexTypes.ptLongFileIndex;
 		}
@@ -64,54 +64,51 @@ namespace SimPe.Packages
 		/// Returns the Identifier of the File
 		/// </summary>
 		/// <remarks>This value should be DBPF</remarks>
-		[DescriptionAttribute("Package Identifier"), DefaultValueAttribute("DBPF")]		
+		[DescriptionAttribute("Package Identifier"), DefaultValueAttribute("DBPF")]
 		public string Identifier
 		{
-			get 
+			get
 			{
 				string ret = "";
-				foreach (char c in id) ret += c;
+				foreach (char c in id)
+					ret += c;
 				return ret;
 			}
 		}
 
-        /// <summary>
-        /// The Icon to display (for lot packages)
-        /// </summary>	
-        internal Int16 epicon;
+		/// <summary>
+		/// The Icon to display (for lot packages)
+		/// </summary>
+		internal Int16 epicon;
 
-        [DescriptionAttribute("The Icon to display for this Package"), CategoryAttribute("Icon"), DefaultValueAttribute(0)]	
-        public Int16 Epicon
-        {
-            get
-            {
-                return epicon;
-            }
-            set
-            {
-                epicon = value;
-            }
-        }
+		[
+			DescriptionAttribute("The Icon to display for this Package"),
+			CategoryAttribute("Icon"),
+			DefaultValueAttribute(0)
+		]
+		public Int16 Epicon
+		{
+			get { return epicon; }
+			set { epicon = value; }
+		}
 
-        /// <summary>
-        /// Should the defined Icon be shown : 1 is true (for lot packages)
-        /// </summary>
-        internal Int16 showicon;
+		/// <summary>
+		/// Should the defined Icon be shown : 1 is true (for lot packages)
+		/// </summary>
+		internal Int16 showicon;
 
-        [DescriptionAttribute("Should an Icon display for this Package"), CategoryAttribute("Icon"), DefaultValueAttribute(0)]
-        public Int16 Showicon
-        {
-            get
-            {
-                return showicon;
-            }
-            set
-            {
-                showicon = value;
-            }
-        }
-        
-        /// <summary>
+		[
+			DescriptionAttribute("Should an Icon display for this Package"),
+			CategoryAttribute("Icon"),
+			DefaultValueAttribute(0)
+		]
+		public Int16 Showicon
+		{
+			get { return showicon; }
+			set { showicon = value; }
+		}
+
+		/// <summary>
 		/// The Major Version (part before the .) of the Package File Format
 		/// </summary>
 		internal Int32 majorversion;
@@ -120,13 +117,14 @@ namespace SimPe.Packages
 		/// Returns the Major Version of The Packages FileFormat
 		/// </summary>
 		/// <remarks>This value should be 1</remarks>
-		[DescriptionAttribute("Major Version Number of this Package"), CategoryAttribute("Version"), DefaultValueAttribute(1)]		
+		[
+			DescriptionAttribute("Major Version Number of this Package"),
+			CategoryAttribute("Version"),
+			DefaultValueAttribute(1)
+		]
 		public Int32 MajorVersion
 		{
-			get
-			{
-				return majorversion;
-			}
+			get { return majorversion; }
 		}
 
 		/// <summary>
@@ -135,28 +133,30 @@ namespace SimPe.Packages
 		internal Int32 minorversion;
 
 		/// <summary>
-		/// Returns the Minor Version of The Packages FileFormat 
+		/// Returns the Minor Version of The Packages FileFormat
 		/// </summary>
 		/// <remarks>This value should be 0 or 1</remarks>
-		[DescriptionAttribute("Minor Version Number of this Package"), CategoryAttribute("Version"), DefaultValueAttribute(1)]		
+		[
+			DescriptionAttribute("Minor Version Number of this Package"),
+			CategoryAttribute("Version"),
+			DefaultValueAttribute(1)
+		]
 		public Int32 MinorVersion
 		{
-			get
-			{
-				return minorversion;
-			}
+			get { return minorversion; }
 		}
 
 		/// <summary>
 		/// Returns the Overall Version of this Package
 		/// </summary>
-		[DescriptionAttribute("Overall Versionnumber of this Package"), CategoryAttribute("Version"), DefaultValueAttribute(4294967297)]		
-		public long Version 
+		[
+			DescriptionAttribute("Overall Versionnumber of this Package"),
+			CategoryAttribute("Version"),
+			DefaultValueAttribute(4294967297)
+		]
+		public long Version
 		{
-			get 
-			{
-				return (long)((ulong)MajorVersion << 0x20) | (uint)MinorVersion;
-			}
+			get { return (long)((ulong)MajorVersion << 0x20) | (uint)MinorVersion; }
 		}
 
 		/// <summary>
@@ -174,17 +174,25 @@ namespace SimPe.Packages
 #if DEBUG
 		public uint created;
 
-		[DescriptionAttribute("Creation Date of the Package"), CategoryAttribute("Debug"), ReadOnly(true)]						
-		
+		[
+			DescriptionAttribute("Creation Date of the Package"),
+			CategoryAttribute("Debug"),
+			ReadOnly(true)
+		]
 #else
 		public uint Ident
 		{
-			get {return Created;}
+			get { return Created; }
 		}
 		internal uint created;
-		[DescriptionAttribute("Creation Date of the Package"), CategoryAttribute("Debug"), Browsable(false)]
+
+		[
+			DescriptionAttribute("Creation Date of the Package"),
+			CategoryAttribute("Debug"),
+			Browsable(false)
+		]
 #endif
-		public uint Created 
+		public uint Created
 		{
 			get { return created; }
 			set { created = value; }
@@ -196,8 +204,11 @@ namespace SimPe.Packages
 #if DEBUG
 		public Int32 modified;
 
-		[DescriptionAttribute("Modification Date of the Package"), CategoryAttribute("Debug")]						
-		public Int32 Modified 
+		[
+			DescriptionAttribute("Modification Date of the Package"),
+			CategoryAttribute("Debug")
+		]
+		public Int32 Modified
 		{
 			get { return modified; }
 		}
@@ -205,11 +216,10 @@ namespace SimPe.Packages
 		internal Int32 modified;
 #endif
 
-
 		/// <summary>
 		/// holds Index Informations stored in the Header
 		/// </summary>
-		internal HeaderIndex index;		
+		internal HeaderIndex index;
 
 		/// <summary>
 		/// Returns Index Informations stored in the Header
@@ -217,10 +227,7 @@ namespace SimPe.Packages
 		[BrowsableAttribute(false)]
 		public SimPe.Interfaces.Files.IPackageHeaderIndex Index
 		{
-			get 
-			{
-				return index;
-			}
+			get { return index; }
 		}
 
 		/// <summary>
@@ -234,10 +241,7 @@ namespace SimPe.Packages
 		[BrowsableAttribute(false)]
 		public SimPe.Interfaces.Files.IPackageHeaderHoleIndex HoleIndex
 		{
-			get
-			{
-				return hole;
-			}
+			get { return hole; }
 		}
 
 		/// <summary>
@@ -248,17 +252,16 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns or Sets the Type of the Package
 		/// </summary>
-		[DescriptionAttribute("The Indextype used in the Package. ptLongFileIndex allows the use of the \"Instance (high)\" Value."), DefaultValueAttribute(Data.MetaData.IndexTypes.ptLongFileIndex)]				
+		[
+			DescriptionAttribute(
+				"The Indextype used in the Package. ptLongFileIndex allows the use of the \"Instance (high)\" Value."
+			),
+			DefaultValueAttribute(Data.MetaData.IndexTypes.ptLongFileIndex)
+		]
 		public Data.MetaData.IndexTypes IndexType
 		{
-			get 
-			{
-				return (Data.MetaData.IndexTypes)indextype;				
-			}
-			set 
-			{
-				indextype = value;
-			}
+			get { return (Data.MetaData.IndexTypes)indextype; }
+			set { indextype = value; }
 		}
 
 		/// <summary>
@@ -267,35 +270,38 @@ namespace SimPe.Packages
 #if DEBUG
 		public Int32[] reserved_02;
 
-		[DescriptionAttribute("Reserved Values"), CategoryAttribute("Debug")]						
-		public Int32[] Reserved 
+		[DescriptionAttribute("Reserved Values"), CategoryAttribute("Debug")]
+		public Int32[] Reserved
 		{
 			get { return reserved_02; }
 		}
 #else
 		internal Int32[] reserved_02;
 #endif
+
 		/// <summary>
 		/// true if the version is greater or equal than 1.1
 		/// </summary>
 		[BrowsableAttribute(false)]
 		public bool IsVersion0101
 		{
-			get 
+			get
 			{
-				return (Version>=0x100000001);//((majorversion>1) || ((majorversion==1) && (minorversion>=1)));
+				return (Version >= 0x100000001); //((majorversion>1) || ((majorversion==1) && (minorversion>=1)));
 			}
 		}
 
 		bool lidl;
 		internal bool LockIndexDuringLoad
 		{
-			get {return lidl;}
-			set {lidl = value;}
+			get { return lidl; }
+			set { lidl = value; }
 		}
 
 		#region File Processing Methods
-        static string spore = "\r\n\r\nSimPe is a package editor for Sims2 packages only.";
+		static string spore =
+			"\r\n\r\nSimPe is a package editor for Sims2 packages only.";
+
 		/// <summary>
 		/// Initializes the Structure from a BinaryReader
 		/// </summary>
@@ -304,62 +310,74 @@ namespace SimPe.Packages
 		internal void Load(BinaryReader reader)
 		{
 			//this.id = new char[4];
-			for (uint i=0; i<this.id.Length; i++) this.id[i] = reader.ReadChar();
-            if (!Helper.AnyPackage && Identifier != "DBPF")
-                throw new InvalidOperationException("SimPe does not support this type of file." + spore);
-			
+			for (uint i = 0; i < this.id.Length; i++)
+				this.id[i] = reader.ReadChar();
+			if (!Helper.AnyPackage && Identifier != "DBPF")
+				throw new InvalidOperationException(
+					"SimPe does not support this type of file." + spore
+				);
+
 			this.majorversion = reader.ReadInt32();
-            if (!Helper.AnyPackage && this.majorversion > 1)
-                throw new InvalidOperationException("SimPe does not support this version of DBPF file." + spore);
+			if (!Helper.AnyPackage && this.majorversion > 1)
+				throw new InvalidOperationException(
+					"SimPe does not support this version of DBPF file." + spore
+				);
 
 			this.minorversion = reader.ReadInt32();
 
 			//this.reserved_00 = new Int32[3];
-			for (uint i=0; i<this.reserved_00.Length; i++) this.reserved_00[i] = reader.ReadInt32();
+			for (uint i = 0; i < this.reserved_00.Length; i++)
+				this.reserved_00[i] = reader.ReadInt32();
 
 			this.created = reader.ReadUInt32();
 			this.modified = reader.ReadInt32();
-			
+
 			this.index.type = reader.ReadInt32();
 			if (!lidl)
 			{
 				this.index.count = reader.ReadInt32();
 				this.index.offset = reader.ReadUInt32();
 				this.index.size = reader.ReadInt32();
-			} 
-			else 
+			}
+			else
 			{
-				reader.ReadInt32(); reader.ReadInt32(); reader.ReadInt32(); //count, offset, size
+				reader.ReadInt32();
+				reader.ReadInt32();
+				reader.ReadInt32(); //count, offset, size
 			}
 
 			this.hole.count = reader.ReadInt32();
 			this.hole.offset = reader.ReadUInt32();
 			this.hole.size = reader.ReadInt32();
 
-			if (IsVersion0101) this.indextype = (Data.MetaData.IndexTypes)reader.ReadUInt32();
+			if (IsVersion0101)
+				this.indextype = (Data.MetaData.IndexTypes)reader.ReadUInt32();
 
-            this.epicon = reader.ReadInt16();
-            this.showicon = reader.ReadInt16();
+			this.epicon = reader.ReadInt16();
+			this.showicon = reader.ReadInt16();
 
 			//this.reserved_02 = new Int32[8];
-			for (uint i=0; i<this.reserved_02.Length; i++) this.reserved_02[i] = reader.ReadInt32();
+			for (uint i = 0; i < this.reserved_02.Length; i++)
+				this.reserved_02[i] = reader.ReadInt32();
 		}
 
 		/// <summary>
-		/// 
+		///
 		/// </summary>
 		/// <param name="writer"></param>
 		/// <remarks>Writer must be on the correct Position since no Positioning is performed</remarks>
-		internal void Save(BinaryWriter writer) 
+		internal void Save(BinaryWriter writer)
 		{
-			for (uint i=0; i<this.id.Length; i++) writer.Write(this.id[i]);
-			
+			for (uint i = 0; i < this.id.Length; i++)
+				writer.Write(this.id[i]);
+
 			writer.Write(this.majorversion);
 			writer.Write(this.minorversion);
 
-			for (uint i=0; i<this.reserved_00.Length; i++) writer.Write(this.reserved_00[i]);
+			for (uint i = 0; i < this.reserved_00.Length; i++)
+				writer.Write(this.reserved_00[i]);
 
-			writer.Write(this.created );
+			writer.Write(this.created);
 			writer.Write(this.modified);
 
 			writer.Write(this.index.type);
@@ -371,11 +389,13 @@ namespace SimPe.Packages
 			writer.Write(this.hole.offset);
 			writer.Write(this.hole.size);
 
-			if (IsVersion0101) writer.Write((uint)this.IndexType);
-            writer.Write(this.epicon);
-            writer.Write(this.showicon);
+			if (IsVersion0101)
+				writer.Write((uint)this.IndexType);
+			writer.Write(this.epicon);
+			writer.Write(this.showicon);
 
-			for (uint i=0; i<this.reserved_02.Length; i++) writer.Write(this.reserved_02[i]);
+			for (uint i = 0; i < this.reserved_02.Length; i++)
+				writer.Write(this.reserved_02[i]);
 		}
 		#endregion
 
@@ -405,8 +425,8 @@ namespace SimPe.Packages
 			iph.reserved_00 = this.reserved_00;
 			iph.reserved_02 = this.reserved_02;
 
-            iph.epicon = this.epicon;
-            iph.showicon = this.showicon;			
+			iph.epicon = this.epicon;
+			iph.showicon = this.showicon;
 			return (SimPe.Interfaces.Files.IPackageHeader)iph;
 		}
 	}

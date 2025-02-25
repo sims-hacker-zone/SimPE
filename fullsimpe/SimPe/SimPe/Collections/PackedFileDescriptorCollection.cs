@@ -17,17 +17,17 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+using System;
 using System.Collections;
 using SimPe.Interfaces.Files;
-using System;
 
 namespace SimPe.Collections
-{	
+{
 	/// <summary>
 	/// Typesave ArrayList for IPackedFileDescriptor Objects
 	/// </summary>
-	public class PackedFileDescriptors : ArrayList 
-	{		
+	public class PackedFileDescriptors : ArrayList
+	{
 		/// <summary>
 		/// Integer Indexer
 		/// </summary>
@@ -82,20 +82,22 @@ namespace SimPe.Collections
 		/// <returns>true, if it was found</returns>
 		public bool Contains(IPackedFileDescriptor item)
 		{
-			if (item==null) return false;
-			foreach (IPackedFileDescriptor pfd in this) 
+			if (item == null)
+				return false;
+			foreach (IPackedFileDescriptor pfd in this)
 			{
-				if (item.SameAs(pfd)) return true;
+				if (item.SameAs(pfd))
+					return true;
 			}
 
 			return false;
 			//return base.Contains(item);
-		}		
+		}
 
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -107,10 +109,10 @@ namespace SimPe.Collections
 		public override object Clone()
 		{
 			PackedFileDescriptors list = new PackedFileDescriptors();
-			foreach (IPackedFileDescriptor item in this) list.Add(item);
+			foreach (IPackedFileDescriptor item in this)
+				list.Add(item);
 
 			return list;
 		}
 	}
-
 }

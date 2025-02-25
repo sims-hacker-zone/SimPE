@@ -18,10 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+using System.Collections;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.Collections;
 using System.Runtime.InteropServices;
 
 namespace Ambertation.Drawing
@@ -92,7 +92,7 @@ namespace Ambertation.Drawing
 		}
 
 		static bool Compare(Point pos, BitmapData bmd, Color c2, int toler)
-		{						
+		{
 			if (!CheckPixel(pos, bmd))  return false;
 			Color c1 = GetPixel(pos, bmd);
 			if (c1==c2) return true;
@@ -110,7 +110,7 @@ namespace Ambertation.Drawing
 		///all connected pixels of this color are exhausted</param>
 		private static void FillPixel(Point pos, BitmapData bmd, Color c, Color
 			org)
-		{			
+		{
 			stack.Push(pos);
 			Point currpos=new Point(0,0);
 			stack.Push(pos);
@@ -119,7 +119,7 @@ namespace Ambertation.Drawing
 			do
 			{
 				currpos=(Point)stack.Pop();
-				if (ran.Contains(currpos)) 
+				if (ran.Contains(currpos))
 					continue;
 				ran.Add(currpos);
 				SetPixel(currpos,bmd,c);
@@ -131,7 +131,7 @@ namespace Ambertation.Drawing
 					stack.Push(new Point(currpos.X-1,currpos.Y));
 				if (Compare(new Point(currpos.X,currpos.Y+1), bmd, org, toler))
 					stack.Push(new Point(currpos.X,currpos.Y+1));
-			} while (stack.Count>0);		
+			} while (stack.Count>0);
 		}
 
 		/// <summary>
@@ -183,23 +183,49 @@ namespace Ambertation.Drawing
 	public class GraphicRoutines
 	{
 		#region RoundRect Routines
-		public static void DrawRoundRect(System.Drawing.Graphics g,Pen p, Rectangle rect, int radius)
+		public static void DrawRoundRect(
+			System.Drawing.Graphics g,
+			Pen p,
+			Rectangle rect,
+			int radius
+		)
 		{
 			DrawRoundRect(g, p, rect.X, rect.Y, rect.Width, rect.Height, radius);
 		}
 
-		public static void FillRoundRect(System.Drawing.Graphics g, Brush b, Rectangle rect, int radius)
+		public static void FillRoundRect(
+			System.Drawing.Graphics g,
+			Brush b,
+			Rectangle rect,
+			int radius
+		)
 		{
 			FillRoundRect(g, b, rect.X, rect.Y, rect.Width, rect.Height, radius);
 		}
 
-		public static void DrawRoundRect(System.Drawing.Graphics g, Pen p, int x, int y, int width, int height, int radius)
-		{			
+		public static void DrawRoundRect(
+			System.Drawing.Graphics g,
+			Pen p,
+			int x,
+			int y,
+			int width,
+			int height,
+			int radius
+		)
+		{
 			g.DrawPath(p, RoundRectPath(x, y, width, height, radius));
 		}
 
-		public static void FillRoundRect(System.Drawing.Graphics g, Brush b, int x, int y, int width, int height, int radius)
-		{			
+		public static void FillRoundRect(
+			System.Drawing.Graphics g,
+			Brush b,
+			int x,
+			int y,
+			int width,
+			int height,
+			int radius
+		)
+		{
 			g.FillPath(b, RoundRectPath(x, y, width, height, radius));
 		}
 
@@ -208,26 +234,46 @@ namespace Ambertation.Drawing
 			return RoundRectPath(rect.X, rect.Y, rect.Width, rect.Height, radius);
 		}
 
-		public static GraphicsPath GethRoundRectPath(int x, int y, int width, int height, int radius)
+		public static GraphicsPath GethRoundRectPath(
+			int x,
+			int y,
+			int width,
+			int height,
+			int radius
+		)
 		{
 			return RoundRectPath(x, y, width, height, radius);
 		}
-		static GraphicsPath RoundRectPath(int x, int y, int width, int height, int radius)
+
+		static GraphicsPath RoundRectPath(
+			int x,
+			int y,
+			int width,
+			int height,
+			int radius
+		)
 		{
 			GraphicsPath gp = new GraphicsPath();
-			if (radius>1) 
+			if (radius > 1)
 			{
 				gp.AddLine(x + radius, y, x + width - radius, y);
 				gp.AddArc(x + width - radius, y, radius, radius, 270, 90);
 				gp.AddLine(x + width, y + radius, x + width, y + height - radius);
-				gp.AddArc(x + width - radius, y + height - radius, radius, radius, 0, 90);
+				gp.AddArc(
+					x + width - radius,
+					y + height - radius,
+					radius,
+					radius,
+					0,
+					90
+				);
 				gp.AddLine(x + width - radius, y + height, x + radius, y + height);
 				gp.AddArc(x, y + height - radius, radius, radius, 90, 90);
 				gp.AddLine(x, y + height - radius, x, y + radius);
 				gp.AddArc(x, y, radius, radius, 180, 90);
 				gp.CloseFigure();
-			} 
-			else 
+			}
+			else
 			{
 				gp.AddRectangle(new Rectangle(x, y, width, height));
 			}
@@ -238,7 +284,7 @@ namespace Ambertation.Drawing
 
 		public static ColorMap[] CloseColors(Color cl, float tolerance, Color target)
 		{
-			int sub = (int)Math.Floor(0xff*tolerance);
+			int sub = (int)Math.Floor(0xff * tolerance);
 			int minr = Math.Max(0, Math.Min(0xff, cl.R - sub));
 			int maxr = Math.Max(0, Math.Min(0xff, cl.R + sub));
 
@@ -250,15 +296,15 @@ namespace Ambertation.Drawing
 
 			ArrayList cmap = new ArrayList();
 
-			for (int r=minr; r<maxr; r++)
-				for (int g=ming; g<maxg; g++)
-					for (int b=minb; b<maxb; b++) 
-					{
-						ColorMap c = new ColorMap();
-						c.NewColor = target;
-						c.OldColor = Color.FromArgb(r, g, b);
-						cmap.Add(c);
-					}
+			for (int r = minr; r < maxr; r++)
+			for (int g = ming; g < maxg; g++)
+			for (int b = minb; b < maxb; b++)
+			{
+				ColorMap c = new ColorMap();
+				c.NewColor = target;
+				c.OldColor = Color.FromArgb(r, g, b);
+				cmap.Add(c);
+			}
 
 			ColorMap[] res = new ColorMap[cmap.Count];
 			cmap.CopyTo(res);
@@ -268,7 +314,7 @@ namespace Ambertation.Drawing
 
 		public static ArrayList CloseColors(Color cl, float tolerance)
 		{
-			int sub = (int)Math.Floor(0xff*tolerance);
+			int sub = (int)Math.Floor(0xff * tolerance);
 			int minr = Math.Max(0, Math.Min(0xff, cl.R - sub));
 			int maxr = Math.Max(0, Math.Min(0xff, cl.R + sub));
 
@@ -280,59 +326,93 @@ namespace Ambertation.Drawing
 
 			ArrayList cmap = new ArrayList();
 
-			for (int r=minr; r<maxr; r++)
-				for (int g=ming; g<maxg; g++)
-					for (int b=minb; b<maxb; b++) 
-					{
-						cmap.Add(Color.FromArgb(r, g, b));
-					}
+			for (int r = minr; r < maxr; r++)
+			for (int g = ming; g < maxg; g++)
+			for (int b = minb; b < maxb; b++)
+			{
+				cmap.Add(Color.FromArgb(r, g, b));
+			}
 
 			return cmap;
 		}
-
 
 		public static Image MakeTransparent(Image img, Color cl, bool quality)
 		{
 			return MakeTransparent(img, cl, 0.05f, quality);
 		}
 
-		public static Image MakeTransparent(Image img, Color cl, float tolerance, bool quality)
+		public static Image MakeTransparent(
+			Image img,
+			Color cl,
+			float tolerance,
+			bool quality
+		)
 		{
 			Bitmap bm = new Bitmap(img.Width, img.Height);
-			
+
 			// Set the image attribute's color mappings
 			ColorMap[] colorMap = CloseColors(cl, tolerance, Color.Transparent);
 
 			ImageAttributes attr = new ImageAttributes();
-			attr.SetRemapTable(colorMap);	 
- 
+			attr.SetRemapTable(colorMap);
+
 			System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bm);
-			Ambertation.Windows.Forms.Graph.GraphPanelElement.SetGraphicsMode(g, !quality);
+			Ambertation.Windows.Forms.Graph.GraphPanelElement.SetGraphicsMode(
+				g,
+				!quality
+			);
 			Rectangle rect = new Rectangle(0, 0, img.Width, img.Height);
-			g.DrawImage(img, rect, rect.Left, rect.Top, rect.Width, rect.Height, GraphicsUnit.Pixel, attr);
+			g.DrawImage(
+				img,
+				rect,
+				rect.Left,
+				rect.Top,
+				rect.Width,
+				rect.Height,
+				GraphicsUnit.Pixel,
+				attr
+			);
 			g.Dispose();
 
 			return bm;
 		}
-		[DllImport("gdi32")] 
-		public static extern int ExtFloodFill(IntPtr hDC, int x, int y, int crColor, int wFillType);
-		
+
+		[DllImport("gdi32")]
+		public static extern int ExtFloodFill(
+			IntPtr hDC,
+			int x,
+			int y,
+			int crColor,
+			int wFillType
+		);
+
 		[DllImport("gdi32")]
 		static extern IntPtr SelectObject(IntPtr hdc, IntPtr hgdiobj);
 
-		[DllImport("gdi32")] 
+		[DllImport("gdi32")]
 		static extern int DeleteObject(IntPtr hObject);
 
 		[DllImport("gdi32")]
 		static extern IntPtr CreateSolidBrush(int crColor);
 
-		public static void FloodFill(Image img, Point pos, Color backColor, Color limitColor)
+		public static void FloodFill(
+			Image img,
+			Point pos,
+			Color backColor,
+			Color limitColor
+		)
 		{
 			System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(img);
 			FloodFill(g, pos, backColor, limitColor);
 			g.Dispose();
 		}
-		public static void FloodFill(System.Drawing.Graphics g, Point pos, Color backColor, Color limitColor)
+
+		public static void FloodFill(
+			System.Drawing.Graphics g,
+			Point pos,
+			Color backColor,
+			Color limitColor
+		)
 		{
 			// g.DrawRectangle(pens.Black,20,20,50,50);
 			IntPtr p = g.GetHdc();
@@ -351,22 +431,35 @@ namespace Ambertation.Drawing
 		public static Image KnockoutImage(Image img, Point pos, Color fillcl, bool save)
 		{
 			Bitmap bm = null;
-			if (!save) 
+			if (!save)
 				bm = new Bitmap(img.Width, img.Height);
-			else 			
-				bm = new Bitmap(img.Width+2, img.Height+2);							
+			else
+				bm = new Bitmap(img.Width + 2, img.Height + 2);
 
-			System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bm);						
-			if (save) 
+			System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bm);
+			if (save)
 			{
-				g.FillRectangle(new SolidBrush(((Bitmap)img).GetPixel(pos.X, pos.Y)), 0, 0, bm.Width, bm.Height);
-				g.DrawImage(img, new Rectangle(1, 1, img.Width, img.Height), new Rectangle(0, 0, img.Width, img.Height), GraphicsUnit.Pixel);
-			} else g.DrawImageUnscaled(img, 0, 0);
-			
+				g.FillRectangle(
+					new SolidBrush(((Bitmap)img).GetPixel(pos.X, pos.Y)),
+					0,
+					0,
+					bm.Width,
+					bm.Height
+				);
+				g.DrawImage(
+					img,
+					new Rectangle(1, 1, img.Width, img.Height),
+					new Rectangle(0, 0, img.Width, img.Height),
+					GraphicsUnit.Pixel
+				);
+			}
+			else
+				g.DrawImageUnscaled(img, 0, 0);
+
 			g.Dispose();
 
 			FloodFiller ff = new FloodFiller();
-			ff.FillColor = fillcl;			
+			ff.FillColor = fillcl;
 			ff.FloodFill(bm, pos);
 			((Bitmap)img).MakeTransparent(fillcl);
 
@@ -380,17 +473,26 @@ namespace Ambertation.Drawing
 
 		public static Image ScaleImage(Image img, int width, int height, bool quality)
 		{
-			if (img==null) return img;
+			if (img == null)
+				return img;
 
 			Bitmap bm = new Bitmap(width, height);
-			
-			System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bm);						
-			Ambertation.Windows.Forms.Graph.GraphPanelElement.SetGraphicsMode(g, !quality);
-			g.DrawImage(img, new Rectangle(0, 0, width, height), new Rectangle(0, 0, img.Width, img.Height), GraphicsUnit.Pixel);
+
+			System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bm);
+			Ambertation.Windows.Forms.Graph.GraphPanelElement.SetGraphicsMode(
+				g,
+				!quality
+			);
+			g.DrawImage(
+				img,
+				new Rectangle(0, 0, width, height),
+				new Rectangle(0, 0, img.Width, img.Height),
+				GraphicsUnit.Pixel
+			);
 			g.Dispose();
-			
+
 			return bm;
-		}		
+		}
 
 		public static Color InterpolateColors(Color src, Color dst, float percentage)
 		{
@@ -400,9 +502,9 @@ namespace Ambertation.Drawing
 			int r2 = dst.R;
 			int g2 = dst.G;
 			int b2 = dst.B;
-			byte r = Convert.ToByte((float) (r1 + ((r2 - r1) * percentage)));
-			byte g = Convert.ToByte((float) (g1 + ((g2 - g1) * percentage)));
-			byte b = Convert.ToByte((float) (b1 + ((b2 - b1) * percentage)));
+			byte r = Convert.ToByte((float)(r1 + ((r2 - r1) * percentage)));
+			byte g = Convert.ToByte((float)(g1 + ((g2 - g1) * percentage)));
+			byte b = Convert.ToByte((float)(b1 + ((b2 - b1) * percentage)));
 			return Color.FromArgb(r, g, b);
 		}
 	}

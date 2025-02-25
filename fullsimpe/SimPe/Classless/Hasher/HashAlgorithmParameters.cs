@@ -41,14 +41,14 @@
  *
  * Contributor(s):
  *		Jason Simeone (jay@classless.net)
- * 
+ *
  * ***** END LICENSE BLOCK ***** */
 #endregion
 
 using System;
 
-namespace Classless.Hasher {
+namespace Classless.Hasher
+{
 	/// <summary>An abstract class that represents the parameters necessary to initialize a hashing algorithm.</summary>
-	abstract public class HashAlgorithmParameters {
-	}
+	abstract public class HashAlgorithmParameters { }
 }

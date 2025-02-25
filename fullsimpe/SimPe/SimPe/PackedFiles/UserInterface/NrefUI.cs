@@ -26,7 +26,7 @@ namespace SimPe.PackedFiles.UserInterface
 	/// <summary>
 	/// UI Handler for a Str Wrapper
 	/// </summary>
-	public class NrefUI : IPackedFileUI	
+	public class NrefUI : IPackedFileUI
 	{
 		#region Code to Startup the UI
 
@@ -43,7 +43,7 @@ namespace SimPe.PackedFiles.UserInterface
 			form = new Elements2();
 		}
 		#endregion
-		
+
 		#region IPackedFileUI Member
 
 		/// <summary>
@@ -51,10 +51,7 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		public System.Windows.Forms.Control GUIHandle
 		{
-			get
-			{
-				return form.NrefPanel;
-			}
+			get { return form.NrefPanel; }
 		}
 
 		/// <summary>
@@ -66,12 +63,12 @@ namespace SimPe.PackedFiles.UserInterface
 		public void UpdateGUI(IFileWrapper wrapper)
 		{
 			form.wrapper = (IFileWrapperSaveExtension)wrapper;
-			Nref wrp = (Nref) wrapper;
+			Nref wrp = (Nref)wrapper;
 
 			form.tbNref.Tag = true;
 			form.tbNref.Text = wrp.FileName;
 			form.tbNref.Tag = null;
-		}		
+		}
 
 		#endregion
 

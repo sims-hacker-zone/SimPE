@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 using SimPe.Interfaces.Plugin;
 
@@ -29,61 +29,62 @@ namespace SimPe.Plugin.TabPage
 	/// <summary>
 	/// Summary description for MatdForm.
 	/// </summary>
-	public class MaterialDefinitionCategories : 
-		System.Windows.Forms.TabPage
-		//System.Windows.Forms.UserControl
+	public class MaterialDefinitionCategories : System.Windows.Forms.TabPage
+	//System.Windows.Forms.UserControl
 	{
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		private System.ComponentModel.Container components = null;		
+		private System.ComponentModel.Container components = null;
 
 		public MaterialDefinitionCategories()
 		{
 			SetStyle(
-				ControlStyles.SupportsTransparentBackColor |
-				ControlStyles.AllPaintingInWmPaint |
-				//ControlStyles.Opaque |
-				ControlStyles.UserPaint |
-				ControlStyles.ResizeRedraw 
-				| ControlStyles.DoubleBuffer
-				,true);
+				ControlStyles.SupportsTransparentBackColor
+					| ControlStyles.AllPaintingInWmPaint
+					|
+					//ControlStyles.Opaque |
+					ControlStyles.UserPaint
+					| ControlStyles.ResizeRedraw
+					| ControlStyles.DoubleBuffer,
+				true
+			);
 			//
 			// Required designer variable.
 			//
-            InitializeComponent();
+			InitializeComponent();
 
-            this.UseVisualStyleBackColor = true;
+			this.UseVisualStyleBackColor = true;
 		}
 
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
 				Tag = null;
-				if(components != null)
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
 
 		#region Windows Form Designer generated code
 		/// <summary>
-		/// Required method for Designer support - do not modify 
+		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.pg = new System.Windows.Forms.PropertyGrid();			
+			this.pg = new System.Windows.Forms.PropertyGrid();
 			this.SuspendLayout();
-			// 
+			//
 			// tMaterialDefinitionCategories
-			// 
+			//
 			this.BackColor = System.Drawing.SystemColors.ControlLightLight;
 			this.Controls.Add(this.pg);
 			this.Location = new System.Drawing.Point(4, 22);
@@ -91,12 +92,21 @@ namespace SimPe.Plugin.TabPage
 			this.Size = new System.Drawing.Size(744, 238);
 			this.TabIndex = 3;
 			this.Text = "Categorized Properties";
-			// 
+			//
 			// pg
-			// 
-			this.pg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
+			//
+			this.pg.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							(
+								System.Windows.Forms.AnchorStyles.Top
+								| System.Windows.Forms.AnchorStyles.Bottom
+							) | System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
 			this.pg.CommandsBackColor = System.Drawing.SystemColors.ControlLightLight;
 			this.pg.CommandsVisibleIfAvailable = true;
 			this.pg.HelpVisible = false;
@@ -109,37 +119,33 @@ namespace SimPe.Plugin.TabPage
 			this.pg.Text = "MaterialDefinition Properties";
 			this.pg.ToolbarVisible = false;
 			this.pg.ViewBackColor = System.Drawing.SystemColors.Window;
-			this.pg.ViewForeColor = System.Drawing.SystemColors.WindowText;			
-			this.pg.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.pg_PropertyValueChanged);
-			// 
+			this.pg.ViewForeColor = System.Drawing.SystemColors.WindowText;
+			this.pg.PropertyValueChanged +=
+				new System.Windows.Forms.PropertyValueChangedEventHandler(
+					this.pg_PropertyValueChanged
+				);
+			//
 			// MatdForm
-			// 			
+			//
 			this.ResumeLayout(false);
-
 		}
 		#endregion
 
-		
+
 		private System.Windows.Forms.PropertyGrid pg;
-
-
-						
-				
-
-		
 
 		/*private void SelectListFile(object sender, System.EventArgs e)
 		{
 			if (tblistfile.Tag!=null) return;
 			if (lbfl.SelectedIndex<0) return;
 			
-			try 
+			try
 			{
 				tblistfile.Tag = true;
 				tblistfile.Text = (string)lbfl.Items[lbfl.SelectedIndex];
-			} 
+			}
 			catch (Exception) {}
-			finally 
+			finally
 			{
 				tblistfile.Tag = null;
 			}
@@ -151,7 +157,7 @@ namespace SimPe.Plugin.TabPage
 			if (tblistfile.Tag!=null) return;
 			if (lbfl.SelectedIndex<0) return;
 			
-			try 
+			try
 			{
 				tblistfile.Tag = true;
 				lbfl.Items[lbfl.SelectedIndex] = tblistfile.Text;
@@ -160,9 +166,9 @@ namespace SimPe.Plugin.TabPage
 				md.Listing[lbfl.SelectedIndex] = tblistfile.Text;
 
 				md.Changed = true;
-			} 
+			}
 			catch (Exception) {}
-			finally 
+			finally
 			{
 				tblistfile.Tag = null;
 			}
@@ -177,7 +183,7 @@ namespace SimPe.Plugin.TabPage
 
 			lbfl.Items.Remove(lbfl.Items[lbfl.SelectedIndex]);
 
-			md.Changed = true;			
+			md.Changed = true;
 		}
 
 		private void Add(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
@@ -190,9 +196,10 @@ namespace SimPe.Plugin.TabPage
 			md.Listing = (string[])Helper.Add(md.Listing, tblistfile.Text);
 
 			md.Changed = true;
-		}	*/	
+		}	*/
 
 		Ambertation.PropertyObjectBuilderExt pob;
+
 		internal void SetupGrid(SimPe.Plugin.MaterialDefinition md)
 		{
 			pg.SelectedObject = null;
@@ -202,15 +209,24 @@ namespace SimPe.Plugin.TabPage
 			//Build the table for the current MMAT
 			Hashtable ht = new Hashtable();
 
-			foreach (MaterialDefinitionProperty mdp in md.Properties) 
+			foreach (MaterialDefinitionProperty mdp in md.Properties)
 			{
-				if (SimPe.Plugin.MaterialDefinition.PropertyParser.Properties.ContainsKey(mdp.Name)) 
+				if (
+					SimPe.Plugin.MaterialDefinition.PropertyParser.Properties.ContainsKey(
+						mdp.Name
+					)
+				)
 				{
-					Ambertation.PropertyDescription pd = ((Ambertation.PropertyDescription)SimPe.Plugin.MaterialDefinition.PropertyParser.Properties[mdp.Name]).Clone();
+					Ambertation.PropertyDescription pd = (
+						(Ambertation.PropertyDescription)
+							SimPe.Plugin.MaterialDefinition.PropertyParser.Properties[
+								mdp.Name
+							]
+					).Clone();
 					pd.Property = mdp.Value;
 					ht[mdp.Name] = pd;
-				} 
-				else 
+				}
+				else
 				{
 					ht[mdp.Name] = mdp.Value;
 				}
@@ -220,30 +236,43 @@ namespace SimPe.Plugin.TabPage
 			pg.SelectedObject = pob.Instance;
 		}
 
-		private void pg_PropertyValueChanged(object s, System.Windows.Forms.PropertyValueChangedEventArgs e)
+		private void pg_PropertyValueChanged(
+			object s,
+			System.Windows.Forms.PropertyValueChangedEventArgs e
+		)
 		{
-			if (this.Tag==null) return;
-			if (pob==null) return;
-			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)this.Tag;
+			if (this.Tag == null)
+				return;
+			if (pob == null)
+				return;
+			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
+				this.Tag;
 			object o = pob.Properties[e.ChangedItem.Label];
 			if (o is Boolean)
 			{
-				if ((bool)o) md.GetProperty(e.ChangedItem.Label).Value = "1";
-				else md.GetProperty(e.ChangedItem.Label).Value = "0";
-			} else md.GetProperty(e.ChangedItem.Label).Value = o.ToString();
+				if ((bool)o)
+					md.GetProperty(e.ChangedItem.Label).Value = "1";
+				else
+					md.GetProperty(e.ChangedItem.Label).Value = "0";
+			}
+			else
+				md.GetProperty(e.ChangedItem.Label).Value = o.ToString();
 
 			md.Parent.Changed = true;
 		}
 
 		internal void TxmtChangeTab(object sender, System.EventArgs e)
 		{
-			if (this.Tag==null) return;
-			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)this.Tag;
-			if (Parent==null) return;
-			if (((TabControl)Parent).SelectedTab == this) 
+			if (this.Tag == null)
+				return;
+			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
+				this.Tag;
+			if (Parent == null)
+				return;
+			if (((TabControl)Parent).SelectedTab == this)
 			{
 				md.Refresh();
-			} 
-		}		
+			}
+		}
 	}
 }

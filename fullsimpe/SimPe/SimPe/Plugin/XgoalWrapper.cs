@@ -8,13 +8,11 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class XGoal : SimPe.PackedFiles.Wrapper.Cpf
 	{
-
 		/// <summary>
 		/// creates a new Instance
 		/// </summary>
-		public XGoal():base()
-		{
-		}
+		public XGoal()
+			: base() { }
 
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper
@@ -26,9 +24,9 @@ namespace SimPe.Plugin
 				"Goal Wrapper",
 				"Chris",
 				"To view Castaway Story Goals",
-                1,
-                SimPe.GetIcon.Writable
-				);
+				1,
+				SimPe.GetIcon.Writable
+			);
 		}
 
 		/// <summary>
@@ -38,13 +36,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				uint[] types = {
-								   0xBEEF7B4D
-							   };
-			
+				uint[] types = { 0xBEEF7B4D };
+
 				return types;
 			}
-		}		
+		}
 
 		#region Default Attribute
 		public uint StringInstance
@@ -90,12 +86,14 @@ namespace SimPe.Plugin
 
 		public Interfaces.Files.IPackedFileDescriptor IconFileDescriptor
 		{
-			get 
+			get
 			{
-				SimPe.Packages.PackedFileDescriptor pfd = new SimPe.Packages.PackedFileDescriptor();
+				SimPe.Packages.PackedFileDescriptor pfd =
+					new SimPe.Packages.PackedFileDescriptor();
 				pfd.Type = Data.MetaData.SIM_IMAGE_FILE;
 				pfd.LongInstance = IconInstance;
-				if (pfd.Instance==0) pfd.Instance = SecondaryIconInstance;
+				if (pfd.Instance == 0)
+					pfd.Instance = SecondaryIconInstance;
 				pfd.Group = 0x499DB772;
 
 				return pfd;
@@ -105,15 +103,13 @@ namespace SimPe.Plugin
 
 		public override string Description
 		{
-			get
-			{
-				return "GUID=0x"+Helper.HexString(this.FileDescriptor.Instance);
-			}
+			get { return "GUID=0x" + Helper.HexString(this.FileDescriptor.Instance); }
 		}
 
 		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
 		{
-			if (!this.Processed) ProcessData(FileDescriptor, Package);
+			if (!this.Processed)
+				ProcessData(FileDescriptor, Package);
 			return this.NodeText;
 		}
 	}

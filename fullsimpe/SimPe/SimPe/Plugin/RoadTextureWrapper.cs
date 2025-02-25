@@ -27,28 +27,32 @@ namespace SimPe.Plugin
 	/// This is the actual FileWrapper
 	/// </summary>
 	/// <remarks>
-	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads 
+	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
 	public class RoadTexture
-		: AbstractWrapper				//Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-		, IFileWrapper					//This Interface is used when loading a File
-		, IFileWrapperSaveExtension		//This Interface (if available) will be used to store a File
-		, SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper
-		, System.Collections.IEnumerable
-		
+		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
+			,
+			IFileWrapper //This Interface is used when loading a File
+			,
+			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
+			,
+			SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper,
+			System.Collections.IEnumerable
 	{
-		public enum RoadTextureType : byte 
+		public enum RoadTextureType : byte
 		{
 			Materials = 0x1,
-			Unknown = 0x2
+			Unknown = 0x2,
 		}
 
 		#region Attributes
 		Hashtable values;
 		string flname;
 
-		uint uk1, uk2, uk3;		
+		uint uk1,
+			uk2,
+			uk3;
 		RoadTextureType type;
 
 		public RoadTextureType Type
@@ -61,7 +65,7 @@ namespace SimPe.Plugin
 		{
 			get { return flname; }
 			set { flname = value; }
-		}		
+		}
 
 		public uint Id
 		{
@@ -81,27 +85,28 @@ namespace SimPe.Plugin
 			set { uk3 = value; }
 		}
 
-
 		#endregion
 
-		
+
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public RoadTexture() : base()
-		{		
+		public RoadTexture()
+			: base()
+		{
 			values = new Hashtable();
 			flname = "";
 			type = RoadTextureType.Materials;
 		}
 
 		#region IWrapper member
-		public override bool CheckVersion(uint version) 
+		public override bool CheckVersion(uint version)
 		{
-			if ( (version==0012) //0.10
-				|| (version==0013) //0.12
-				) 
+			if (
+				(version == 0012) //0.10
+				|| (version == 0013) //0.12
+			)
 			{
 				return true;
 			}
@@ -109,7 +114,7 @@ namespace SimPe.Plugin
 			return false;
 		}
 		#endregion
-		
+
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
@@ -128,7 +133,7 @@ namespace SimPe.Plugin
 				"This Files describes the used Road Materials.",
 				1,
 				null
-				); 
+			);
 		}
 
 		/// <summary>
@@ -149,9 +154,9 @@ namespace SimPe.Plugin
 			uint ct = reader.ReadUInt32();
 
 			long pos = reader.BaseStream.Position;
-			try 
+			try
 			{
-				for (int i=0; i<ct; i++) 
+				for (int i = 0; i < ct; i++)
 				{
 					string k = reader.ReadString();
 					string v = reader.ReadString();
@@ -159,12 +164,13 @@ namespace SimPe.Plugin
 				}
 
 				type = RoadTextureType.Materials;
-			} 
-			catch {
+			}
+			catch
+			{
 				type = RoadTextureType.Unknown;
 				reader.BaseStream.Seek(pos, System.IO.SeekOrigin.Begin);
 
-				for (int i=0; i<ct; i++) 
+				for (int i = 0; i < ct; i++)
 				{
 					uint k = reader.ReadUInt32();
 					uint v = reader.ReadUInt32();
@@ -178,7 +184,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
@@ -195,16 +201,16 @@ namespace SimPe.Plugin
 			if (type == RoadTextureType.Materials)
 			{
 				foreach (string k in values.Keys)
-				{				
+				{
 					string v = (string)values[k];
 					writer.Write(v);
 					writer.Write(k);
 				}
-			} 
-			else 
+			}
+			else
 			{
 				foreach (uint k in values.Keys)
-				{				
+				{
 					uint v = (uint)values[k];
 					writer.Write(v);
 					writer.Write(k);
@@ -213,7 +219,7 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		#region IFileWrapperSaveExtension Member		
+		#region IFileWrapperSaveExtension Member
 		//all covered by Serialize()
 		#endregion
 
@@ -224,10 +230,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get
-			{
-				return new byte[0];
-			}
+			get { return new byte[0]; }
 		}
 
 		/// <summary>
@@ -237,36 +240,31 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				uint[] types = {
-								   0xACE46235   //handles the RTEX File
-							   };
+				uint[] types =
+				{
+					0xACE46235, //handles the RTEX File
+				};
 				return types;
 			}
 		}
 
-		#endregion		
+		#endregion
 
 		#region IMultiplePackedFileWrapper Member
 
 		public override object[] GetConstructorArguments()
 		{
 			return new object[0];
-		}		
+		}
 
-		#endregion		
+		#endregion
 
 		#region IEnumerable Member
 
 		public object this[object key]
 		{
-			get 
-			{
-				return values[key];
-			}
-			set 
-			{
-				values[key] = value;
-			}
+			get { return values[key]; }
+			set { values[key] = value; }
 		}
 
 		public IEnumerator GetEnumerator()

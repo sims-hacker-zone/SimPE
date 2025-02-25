@@ -29,7 +29,6 @@ namespace SimPe
 	/// </summary>
 	public class ObjLuaLoader
 	{
-
 		static SimPe.Packages.GeneratableFile pkg;
 
 		/// <summary>
@@ -39,19 +38,21 @@ namespace SimPe
 		{
 			pkg = SimPe.Packages.File.CreateNew();
 
-            foreach (ExpansionItem ei in PathProvider.Global.Expansions)
-            {
-                if (ei.Flag.LuaFolders)
-                {
-                    string path = System.IO.Path.Combine(ei.InstallFolder, "TSData/Res/ObjectScripts");
-                    if (System.IO.Directory.Exists(path))
-                    {
-                        LoadFromFolder(path, "globalObjLua", true);
-                        LoadFromFolder(path, "ObjLua", false);
-                    }
-                }
-            }
-			
+			foreach (ExpansionItem ei in PathProvider.Global.Expansions)
+			{
+				if (ei.Flag.LuaFolders)
+				{
+					string path = System.IO.Path.Combine(
+						ei.InstallFolder,
+						"TSData/Res/ObjectScripts"
+					);
+					if (System.IO.Directory.Exists(path))
+					{
+						LoadFromFolder(path, "globalObjLua", true);
+						LoadFromFolder(path, "ObjLua", false);
+					}
+				}
+			}
 		}
 
 		/// <summary>
@@ -63,52 +64,60 @@ namespace SimPe
 		/// <remarks>Instance of the loaded resources will be the hash over the FeleName</remarks>
 		static void LoadFromFolder(string dir, string ext, bool global)
 		{
-			if (!System.IO.Directory.Exists(dir)) return;
-			
-			string[] fls = System.IO.Directory.GetFiles(dir, "*."+ext);
+			if (!System.IO.Directory.Exists(dir))
+				return;
+
+			string[] fls = System.IO.Directory.GetFiles(dir, "*." + ext);
 			foreach (string fl in fls)
 			{
 				string name = System.IO.Path.GetFileName(fl);
-				System.IO.BinaryWriter bw = new System.IO.BinaryWriter(new System.IO.MemoryStream());
-				try 
+				System.IO.BinaryWriter bw = new System.IO.BinaryWriter(
+					new System.IO.MemoryStream()
+				);
+				try
 				{
 					bw.Write((int)0);
 					bw.Write((int)name.Length);
 					bw.Write(Helper.ToBytes(name, name.Length));
 
-                    System.IO.FileStream fs = System.IO.File.Open(fl, System.IO.FileMode.Open);
+					System.IO.FileStream fs = System.IO.File.Open(
+						fl,
+						System.IO.FileMode.Open
+					);
 					System.IO.BinaryReader br = new System.IO.BinaryReader(fs);
-					try 
+					try
 					{
 						bw.Write(br.ReadBytes((int)br.BaseStream.Length));
-					} 
-					finally 
+					}
+					finally
 					{
-                        br.Close();
-                        br = null;
-                        fs.Close();
-                        fs.Dispose();
-                        fs = null;
-                    }
+						br.Close();
+						br = null;
+						fs.Close();
+						fs.Dispose();
+						fs = null;
+					}
 
 					br = new System.IO.BinaryReader(bw.BaseStream);
 					br.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
 
 					uint type = SimPe.Data.MetaData.OLUA;
-					if (global) type = SimPe.Data.MetaData.GLUA;
-					
-					SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.NewDescriptor(
-						type, 
-						Hashes.SubTypeHash(name),
-						SimPe.Data.MetaData.LOCAL_GROUP,
-						Hashes.InstanceHash(name)
+					if (global)
+						type = SimPe.Data.MetaData.GLUA;
+
+					SimPe.Interfaces.Files.IPackedFileDescriptor pfd =
+						pkg.NewDescriptor(
+							type,
+							Hashes.SubTypeHash(name),
+							SimPe.Data.MetaData.LOCAL_GROUP,
+							Hashes.InstanceHash(name)
 						);
 
 					pfd.UserData = br.ReadBytes((int)br.BaseStream.Length);
 					pfd.Changed = false;
 					pkg.Add(pfd);
-				} 
-				finally 
+				}
+				finally
 				{
 					bw.Close();
 				}
@@ -120,9 +129,10 @@ namespace SimPe
 		/// </summary>
 		public static SimPe.Packages.GeneratableFile VirtualPackage
 		{
-			get 
+			get
 			{
-				if (pkg==null) CreatePackge();
+				if (pkg == null)
+					CreatePackge();
 				return pkg;
 			}
 		}

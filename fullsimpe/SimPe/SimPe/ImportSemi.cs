@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SimPe
@@ -40,7 +40,7 @@ namespace SimPe
 		private System.Windows.Forms.CheckBox cbfix;
 		private System.Windows.Forms.ToolTip toolTip1;
 		private System.Windows.Forms.CheckBox cbname;
-        private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Panel panel1;
 		private System.ComponentModel.IContainer components;
 
 		public ImportSemi()
@@ -51,222 +51,345 @@ namespace SimPe
 			InitializeComponent();
 
 			WaitingScreen.Wait();
-            try
-            {
-                WaitingScreen.UpdateMessage("getting all SemiGlobal Groups");
-                FileTable.FileIndex.Load();
+			try
+			{
+				WaitingScreen.UpdateMessage("getting all SemiGlobal Groups");
+				FileTable.FileIndex.Load();
 
-                Interfaces.Scenegraph.IScenegraphFileIndexItem[] globs = FileTable.FileIndex.FindFile(Data.MetaData.GLOB_FILE, true);
-                ArrayList names = new ArrayList();
-                string max = " / " + globs.Length.ToString();
-                int ct = 0;
-                foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in globs)
-                {
-                    if (ct % 17 == 0) WaitingScreen.UpdateMessage(ct.ToString() + max);
-                    ct++;
+				Interfaces.Scenegraph.IScenegraphFileIndexItem[] globs =
+					FileTable.FileIndex.FindFile(Data.MetaData.GLOB_FILE, true);
+				ArrayList names = new ArrayList();
+				string max = " / " + globs.Length.ToString();
+				int ct = 0;
+				foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in globs)
+				{
+					if (ct % 17 == 0)
+						WaitingScreen.UpdateMessage(ct.ToString() + max);
+					ct++;
 
-                    SimPe.Plugin.NamedGlob glob = new SimPe.Plugin.NamedGlob();
-                    glob.ProcessData(item.FileDescriptor, item.Package);
+					SimPe.Plugin.NamedGlob glob = new SimPe.Plugin.NamedGlob();
+					glob.ProcessData(item.FileDescriptor, item.Package);
 
-                    if (!names.Contains(glob.SemiGlobalName.Trim().ToLower()))
-                    {
-                        cbsemi.Items.Add(glob);
-                        names.Add(glob.SemiGlobalName.Trim().ToLower());
-                    }
-                }
-                cbsemi.Sorted = true;
-            }
-            finally { WaitingScreen.Stop(); }
+					if (!names.Contains(glob.SemiGlobalName.Trim().ToLower()))
+					{
+						cbsemi.Items.Add(glob);
+						names.Add(glob.SemiGlobalName.Trim().ToLower());
+					}
+				}
+				cbsemi.Sorted = true;
+			}
+			finally
+			{
+				WaitingScreen.Stop();
+			}
 		}
 
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
-				if(components != null)
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
 
 		#region Windows Form Designer generated code
 		/// <summary>
-		/// Required method for Designer support - do not modify 
+		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportSemi));
-            this.btimport = new System.Windows.Forms.Button();
-            this.cbsemi = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.llscan = new System.Windows.Forms.LinkLabel();
-            this.lbfiles = new System.Windows.Forms.CheckedListBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.cbfix = new System.Windows.Forms.CheckBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.cbname = new System.Windows.Forms.CheckBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // btimport
-            // 
-            this.btimport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btimport.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btimport.Location = new System.Drawing.Point(698, 471);
-            this.btimport.Name = "btimport";
-            this.btimport.Size = new System.Drawing.Size(75, 23);
-            this.btimport.TabIndex = 1;
-            this.btimport.Text = "Import";
-            this.btimport.Click += new System.EventHandler(this.ImportFiles);
-            // 
-            // cbsemi
-            // 
-            this.cbsemi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbsemi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbsemi.Location = new System.Drawing.Point(16, 32);
-            this.cbsemi.Name = "cbsemi";
-            this.cbsemi.Size = new System.Drawing.Size(758, 24);
-            this.cbsemi.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 23);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Semi Global:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // llscan
-            // 
-            this.llscan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.llscan.AutoSize = true;
-            this.llscan.BackColor = System.Drawing.Color.Transparent;
-            this.llscan.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llscan.Location = new System.Drawing.Point(730, 59);
-            this.llscan.Name = "llscan";
-            this.llscan.Size = new System.Drawing.Size(42, 16);
-            this.llscan.TabIndex = 4;
-            this.llscan.TabStop = true;
-            this.llscan.Text = "scan";
-            this.llscan.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ScanSemiGlobals);
-            // 
-            // lbfiles
-            // 
-            this.lbfiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbfiles.CheckOnClick = true;
-            this.lbfiles.HorizontalScrollbar = true;
-            this.lbfiles.IntegralHeight = false;
-            this.lbfiles.Location = new System.Drawing.Point(16, 96);
-            this.lbfiles.Name = "lbfiles";
-            this.lbfiles.Size = new System.Drawing.Size(758, 365);
-            this.lbfiles.TabIndex = 5;
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(16, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 23);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Files:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(16, 471);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(89, 16);
-            this.linkLabel1.TabIndex = 7;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "uncheck all";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // cbfix
-            // 
-            this.cbfix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbfix.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cbfix.Location = new System.Drawing.Point(506, 470);
-            this.cbfix.Name = "cbfix";
-            this.cbfix.Size = new System.Drawing.Size(176, 24);
-            this.cbfix.TabIndex = 8;
-            this.cbfix.Text = "Fix Package References";
-            this.toolTip1.SetToolTip(this.cbfix, "Check this Option if you want to Fix references form TTABs and BHAVs in this pack" +
-                    "age to the imported SemiGLobals.");
-            // 
-            // cbname
-            // 
-            this.cbname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbname.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cbname.Location = new System.Drawing.Point(362, 470);
-            this.cbname.Name = "cbname";
-            this.cbname.Size = new System.Drawing.Size(128, 24);
-            this.cbname.TabIndex = 9;
-            this.cbname.Text = "Add name Prefix";
-            this.toolTip1.SetToolTip(this.cbname, "Check this Option if you want to Fix references form TTABs and BHAVs in this pack" +
-                    "age to the imported SemiGLobals.");
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.lbfiles);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.cbname);
-            this.panel1.Controls.Add(this.cbfix);
-            this.panel1.Controls.Add(this.llscan);
-            this.panel1.Controls.Add(this.linkLabel1);
-            this.panel1.Controls.Add(this.cbsemi);
-            this.panel1.Controls.Add(this.btimport);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(787, 503);
-            this.panel1.TabIndex = 10;
-            // 
-            // ImportSemi
-            // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-            this.ClientSize = new System.Drawing.Size(784, 501);
-            this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "ImportSemi";
-            this.Text = "Import SemiGlobals";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.ResumeLayout(false);
-
+			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources =
+				new System.ComponentModel.ComponentResourceManager(typeof(ImportSemi));
+			this.btimport = new System.Windows.Forms.Button();
+			this.cbsemi = new System.Windows.Forms.ComboBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.llscan = new System.Windows.Forms.LinkLabel();
+			this.lbfiles = new System.Windows.Forms.CheckedListBox();
+			this.label2 = new System.Windows.Forms.Label();
+			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+			this.cbfix = new System.Windows.Forms.CheckBox();
+			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+			this.cbname = new System.Windows.Forms.CheckBox();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.panel1.SuspendLayout();
+			this.SuspendLayout();
+			//
+			// btimport
+			//
+			this.btimport.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Bottom
+						| System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
+			this.btimport.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btimport.Location = new System.Drawing.Point(698, 471);
+			this.btimport.Name = "btimport";
+			this.btimport.Size = new System.Drawing.Size(75, 23);
+			this.btimport.TabIndex = 1;
+			this.btimport.Text = "Import";
+			this.btimport.Click += new System.EventHandler(this.ImportFiles);
+			//
+			// cbsemi
+			//
+			this.cbsemi.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							System.Windows.Forms.AnchorStyles.Top
+							| System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
+			this.cbsemi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbsemi.Location = new System.Drawing.Point(16, 32);
+			this.cbsemi.Name = "cbsemi";
+			this.cbsemi.Size = new System.Drawing.Size(758, 24);
+			this.cbsemi.TabIndex = 2;
+			//
+			// label1
+			//
+			this.label1.BackColor = System.Drawing.Color.Transparent;
+			this.label1.Font = new System.Drawing.Font(
+				"Verdana",
+				9.75F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
+			this.label1.Location = new System.Drawing.Point(16, 6);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(100, 23);
+			this.label1.TabIndex = 3;
+			this.label1.Text = "Semi Global:";
+			this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+			//
+			// llscan
+			//
+			this.llscan.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Top
+						| System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
+			this.llscan.AutoSize = true;
+			this.llscan.BackColor = System.Drawing.Color.Transparent;
+			this.llscan.Font = new System.Drawing.Font(
+				"Verdana",
+				9.75F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
+			this.llscan.Location = new System.Drawing.Point(730, 59);
+			this.llscan.Name = "llscan";
+			this.llscan.Size = new System.Drawing.Size(42, 16);
+			this.llscan.TabIndex = 4;
+			this.llscan.TabStop = true;
+			this.llscan.Text = "scan";
+			this.llscan.LinkClicked +=
+				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+					this.ScanSemiGlobals
+				);
+			//
+			// lbfiles
+			//
+			this.lbfiles.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							(
+								System.Windows.Forms.AnchorStyles.Top
+								| System.Windows.Forms.AnchorStyles.Bottom
+							) | System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
+			this.lbfiles.CheckOnClick = true;
+			this.lbfiles.HorizontalScrollbar = true;
+			this.lbfiles.IntegralHeight = false;
+			this.lbfiles.Location = new System.Drawing.Point(16, 96);
+			this.lbfiles.Name = "lbfiles";
+			this.lbfiles.Size = new System.Drawing.Size(758, 365);
+			this.lbfiles.TabIndex = 5;
+			//
+			// label2
+			//
+			this.label2.BackColor = System.Drawing.Color.Transparent;
+			this.label2.Font = new System.Drawing.Font(
+				"Verdana",
+				9.75F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
+			this.label2.Location = new System.Drawing.Point(16, 70);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(100, 23);
+			this.label2.TabIndex = 6;
+			this.label2.Text = "Files:";
+			this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+			//
+			// linkLabel1
+			//
+			this.linkLabel1.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Bottom
+						| System.Windows.Forms.AnchorStyles.Left
+					)
+				)
+			);
+			this.linkLabel1.AutoSize = true;
+			this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
+			this.linkLabel1.Font = new System.Drawing.Font(
+				"Verdana",
+				9.75F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
+			this.linkLabel1.Location = new System.Drawing.Point(16, 471);
+			this.linkLabel1.Name = "linkLabel1";
+			this.linkLabel1.Size = new System.Drawing.Size(89, 16);
+			this.linkLabel1.TabIndex = 7;
+			this.linkLabel1.TabStop = true;
+			this.linkLabel1.Text = "uncheck all";
+			this.linkLabel1.LinkClicked +=
+				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+					this.linkLabel1_LinkClicked
+				);
+			//
+			// cbfix
+			//
+			this.cbfix.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Bottom
+						| System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
+			this.cbfix.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbfix.Location = new System.Drawing.Point(506, 470);
+			this.cbfix.Name = "cbfix";
+			this.cbfix.Size = new System.Drawing.Size(176, 24);
+			this.cbfix.TabIndex = 8;
+			this.cbfix.Text = "Fix Package References";
+			this.toolTip1.SetToolTip(
+				this.cbfix,
+				"Check this Option if you want to Fix references form TTABs and BHAVs in this pack"
+					+ "age to the imported SemiGLobals."
+			);
+			//
+			// cbname
+			//
+			this.cbname.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						System.Windows.Forms.AnchorStyles.Bottom
+						| System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
+			this.cbname.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbname.Location = new System.Drawing.Point(362, 470);
+			this.cbname.Name = "cbname";
+			this.cbname.Size = new System.Drawing.Size(128, 24);
+			this.cbname.TabIndex = 9;
+			this.cbname.Text = "Add name Prefix";
+			this.toolTip1.SetToolTip(
+				this.cbname,
+				"Check this Option if you want to Fix references form TTABs and BHAVs in this pack"
+					+ "age to the imported SemiGLobals."
+			);
+			//
+			// panel1
+			//
+			this.panel1.Anchor = (
+				(System.Windows.Forms.AnchorStyles)(
+					(
+						(
+							(
+								System.Windows.Forms.AnchorStyles.Top
+								| System.Windows.Forms.AnchorStyles.Bottom
+							) | System.Windows.Forms.AnchorStyles.Left
+						) | System.Windows.Forms.AnchorStyles.Right
+					)
+				)
+			);
+			this.panel1.BackColor = System.Drawing.Color.Transparent;
+			this.panel1.Controls.Add(this.lbfiles);
+			this.panel1.Controls.Add(this.label2);
+			this.panel1.Controls.Add(this.cbname);
+			this.panel1.Controls.Add(this.cbfix);
+			this.panel1.Controls.Add(this.llscan);
+			this.panel1.Controls.Add(this.linkLabel1);
+			this.panel1.Controls.Add(this.cbsemi);
+			this.panel1.Controls.Add(this.btimport);
+			this.panel1.Controls.Add(this.label1);
+			this.panel1.Font = new System.Drawing.Font(
+				"Verdana",
+				9.75F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
+			this.panel1.Location = new System.Drawing.Point(0, 0);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(787, 503);
+			this.panel1.TabIndex = 10;
+			//
+			// ImportSemi
+			//
+			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
+			this.ClientSize = new System.Drawing.Size(784, 501);
+			this.Controls.Add(this.panel1);
+			this.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((byte)(0))
+			);
+			this.FormBorderStyle = System
+				.Windows
+				.Forms
+				.FormBorderStyle
+				.SizableToolWindow;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Name = "ImportSemi";
+			this.Text = "Import SemiGlobals";
+			this.panel1.ResumeLayout(false);
+			this.panel1.PerformLayout();
+			this.ResumeLayout(false);
 		}
 		#endregion
 
 		SimPe.Interfaces.Files.IPackageFile package;
 		SimPe.Interfaces.IWrapperRegistry reg;
 		SimPe.Interfaces.IProviderRegistry prov;
-		public void Execute(SimPe.Interfaces.Files.IPackageFile package, SimPe.Interfaces.IWrapperRegistry reg, SimPe.Interfaces.IProviderRegistry prov) 
+
+		public void Execute(
+			SimPe.Interfaces.Files.IPackageFile package,
+			SimPe.Interfaces.IWrapperRegistry reg,
+			SimPe.Interfaces.IProviderRegistry prov
+		)
 		{
 			this.package = package;
 			this.reg = reg;
@@ -277,56 +400,87 @@ namespace SimPe
 			this.ShowDialog();
 		}
 
-		private void ScanSemiGlobals(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		private void ScanSemiGlobals(
+			object sender,
+			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		)
 		{
 			this.Cursor = Cursors.WaitCursor;
 			lbfiles.Items.Clear();
 			this.btimport.Enabled = false;
 
-			if (cbsemi.SelectedIndex<0) return;
+			if (cbsemi.SelectedIndex < 0)
+				return;
 			ArrayList loaded = new ArrayList();
 
-			try 
+			try
 			{
-				SimPe.Plugin.NamedGlob glob = (SimPe.Plugin.NamedGlob)cbsemi.Items[cbsemi.SelectedIndex];
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFileByGroup(glob.SemiGlobalGroup);
-				
+				SimPe.Plugin.NamedGlob glob = (SimPe.Plugin.NamedGlob)
+					cbsemi.Items[cbsemi.SelectedIndex];
+				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+					FileTable.FileIndex.FindFileByGroup(glob.SemiGlobalGroup);
+
 				lbfiles.Sorted = false;
-				foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items) 
+				foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
 				{
-					if (item.FileDescriptor.Type == Data.MetaData.BHAV_FILE) 
+					if (item.FileDescriptor.Type == Data.MetaData.BHAV_FILE)
 					{
 						SimPe.Plugin.Bhav bhav = new SimPe.Plugin.Bhav(null);
 						bhav.ProcessData(item);
-						item.FileDescriptor.Filename = item.FileDescriptor.TypeName.shortname + ": " + bhav.FileName + " ("+item.FileDescriptor.ToString()+")";
-					} 
-					else if (item.FileDescriptor.Type == Data.MetaData.STRING_FILE)  
+						item.FileDescriptor.Filename =
+							item.FileDescriptor.TypeName.shortname
+							+ ": "
+							+ bhav.FileName
+							+ " ("
+							+ item.FileDescriptor.ToString()
+							+ ")";
+					}
+					else if (item.FileDescriptor.Type == Data.MetaData.STRING_FILE)
 					{
-						SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+						SimPe.PackedFiles.Wrapper.Str str =
+							new SimPe.PackedFiles.Wrapper.Str();
 						str.ProcessData(item);
-						item.FileDescriptor.Filename = item.FileDescriptor.TypeName.shortname + ": " + str.FileName + " ("+item.FileDescriptor.ToString()+")";
-					} 
-					else if (item.FileDescriptor.Type == 0x42434F4E)  //BCON
+						item.FileDescriptor.Filename =
+							item.FileDescriptor.TypeName.shortname
+							+ ": "
+							+ str.FileName
+							+ " ("
+							+ item.FileDescriptor.ToString()
+							+ ")";
+					}
+					else if (item.FileDescriptor.Type == 0x42434F4E) //BCON
 					{
 						SimPe.Plugin.Bcon bcon = new SimPe.Plugin.Bcon();
 						bcon.ProcessData(item);
-						item.FileDescriptor.Filename = item.FileDescriptor.TypeName.shortname + ": " + bcon.FileName + " ("+item.FileDescriptor.ToString()+")";
+						item.FileDescriptor.Filename =
+							item.FileDescriptor.TypeName.shortname
+							+ ": "
+							+ bcon.FileName
+							+ " ("
+							+ item.FileDescriptor.ToString()
+							+ ")";
 					}
-					else 
+					else
 					{
 						item.FileDescriptor.Filename = item.FileDescriptor.ToString();
 					}
 
-					if (!loaded.Contains(item.FileDescriptor)) 
+					if (!loaded.Contains(item.FileDescriptor))
 					{
-						lbfiles.Items.Add(item, ((item.FileDescriptor.Type==Data.MetaData.BHAV_FILE) || (item.FileDescriptor.Type==0x42434F4E)));
+						lbfiles.Items.Add(
+							item,
+							(
+								(item.FileDescriptor.Type == Data.MetaData.BHAV_FILE)
+								|| (item.FileDescriptor.Type == 0x42434F4E)
+							)
+						);
 						loaded.Add(item.FileDescriptor);
 					}
 				}
 				lbfiles.Sorted = true;
-				this.btimport.Enabled = (lbfiles.Items.Count>0);
-			} 
-			catch (Exception){}
+				this.btimport.Enabled = (lbfiles.Items.Count > 0);
+			}
+			catch (Exception) { }
 
 			this.Cursor = Cursors.Default;
 		}
@@ -336,35 +490,46 @@ namespace SimPe
 			this.Cursor = Cursors.WaitCursor;
 
 			//first find the highest Instance of a BHAV, BCON in the package
-			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(Data.MetaData.BHAV_FILE);
+			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
+				Data.MetaData.BHAV_FILE
+			);
 			uint maxbhavinst = 0x1000;
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds) if ((pfd.Instance<0x2000) && (pfd.Instance>maxbhavinst)) maxbhavinst = pfd.Instance;
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				if ((pfd.Instance < 0x2000) && (pfd.Instance > maxbhavinst))
+					maxbhavinst = pfd.Instance;
 			Hashtable bhavalias = new Hashtable();
 			maxbhavinst++;
-			
+
 			//her is the BCOn part
 			pfds = package.FindFiles(0x42434F4E);
 			uint maxbconinst = 0x1000;
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds) if ((pfd.Instance<0x2000) && (pfd.Instance>maxbconinst)) maxbconinst = pfd.Instance;
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				if ((pfd.Instance < 0x2000) && (pfd.Instance > maxbconinst))
+					maxbconinst = pfd.Instance;
 			Hashtable bconalias = new Hashtable();
 			maxbconinst++;
 
-
 			ArrayList bhavs = new ArrayList();
-			ArrayList ttabs = new ArrayList();	
+			ArrayList ttabs = new ArrayList();
 			package.BeginUpdate();
-			try 
+			try
 			{
-				for (int i=0; i<lbfiles.Items.Count; i++) 
+				for (int i = 0; i < lbfiles.Items.Count; i++)
 				{
-					if (!lbfiles.GetItemChecked(i)) continue;
-					Interfaces.Scenegraph.IScenegraphFileIndexItem item = (Interfaces.Scenegraph.IScenegraphFileIndexItem)lbfiles.Items[i];
-					SimPe.Packages.PackedFileDescriptor npfd = new SimPe.Packages.PackedFileDescriptor();
+					if (!lbfiles.GetItemChecked(i))
+						continue;
+					Interfaces.Scenegraph.IScenegraphFileIndexItem item =
+						(Interfaces.Scenegraph.IScenegraphFileIndexItem)
+							lbfiles.Items[i];
+					SimPe.Packages.PackedFileDescriptor npfd =
+						new SimPe.Packages.PackedFileDescriptor();
 					npfd.Type = item.FileDescriptor.Type;
 					npfd.Group = item.FileDescriptor.Group;
 					npfd.Instance = item.FileDescriptor.Instance;
 					npfd.SubType = item.FileDescriptor.SubType;
-					npfd.UserData = item.Package.Read(item.FileDescriptor).UncompressedData;
+					npfd.UserData = item
+						.Package.Read(item.FileDescriptor)
+						.UncompressedData;
 					package.Add(npfd);
 
 					if (npfd.Type == Data.MetaData.BHAV_FILE)
@@ -374,13 +539,16 @@ namespace SimPe
 						bhavalias[(ushort)npfd.Instance] = (ushort)maxbhavinst;
 						npfd.Instance = maxbhavinst;
 
-						SimPe.Plugin.Bhav bhav = new SimPe.Plugin.Bhav(prov.OpcodeProvider);
+						SimPe.Plugin.Bhav bhav = new SimPe.Plugin.Bhav(
+							prov.OpcodeProvider
+						);
 						bhav.ProcessData(npfd, package);
-						if (cbname.Checked)	bhav.FileName = "["+cbsemi.Text+"] "+bhav.FileName;
+						if (cbname.Checked)
+							bhav.FileName = "[" + cbsemi.Text + "] " + bhav.FileName;
 						bhav.SynchronizeUserData();
 
 						bhavs.Add(bhav);
-					} 
+					}
 					else if (npfd.Type == 0x42434F4E) //BCON
 					{
 						npfd.Instance = maxbconinst++;
@@ -389,33 +557,40 @@ namespace SimPe
 
 						SimPe.Plugin.Bcon bcon = new SimPe.Plugin.Bcon();
 						bcon.ProcessData(npfd, package);
-						if (cbname.Checked)	bcon.FileName = "["+cbsemi.Text+"] "+bcon.FileName;
+						if (cbname.Checked)
+							bcon.FileName = "[" + cbsemi.Text + "] " + bcon.FileName;
 						bcon.SynchronizeUserData();
-					} 
-					else if  (npfd.Type == 0x54544142) //TTAB
+					}
+					else if (npfd.Type == 0x54544142) //TTAB
 					{
-						SimPe.Plugin.Ttab ttab = new SimPe.Plugin.Ttab(prov.OpcodeProvider);
+						SimPe.Plugin.Ttab ttab = new SimPe.Plugin.Ttab(
+							prov.OpcodeProvider
+						);
 						ttab.ProcessData(npfd, package);
 
 						ttabs.Add(ttab);
-					}	
+					}
 				}
 
-				if (cbfix.Checked) 
+				if (cbfix.Checked)
 				{
 					pfds = package.FindFiles(Data.MetaData.BHAV_FILE);
-					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds) 
+					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 					{
-						SimPe.Plugin.Bhav bhav = new SimPe.Plugin.Bhav(prov.OpcodeProvider);
+						SimPe.Plugin.Bhav bhav = new SimPe.Plugin.Bhav(
+							prov.OpcodeProvider
+						);
 						bhav.ProcessData(pfd, package);
 
 						bhavs.Add(bhav);
 					}
 
 					pfds = package.FindFiles(0x54544142);
-					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds) 
+					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 					{
-						SimPe.Plugin.Ttab ttab = new SimPe.Plugin.Ttab(prov.OpcodeProvider);
+						SimPe.Plugin.Ttab ttab = new SimPe.Plugin.Ttab(
+							prov.OpcodeProvider
+						);
 						ttab.ProcessData(pfd, package);
 
 						ttabs.Add(ttab);
@@ -423,28 +598,30 @@ namespace SimPe
 				}
 
 				//Relink all SemiGlobals in imported BHAV's
-				foreach (SimPe.Plugin.Bhav bhav in bhavs) 
+				foreach (SimPe.Plugin.Bhav bhav in bhavs)
 				{
 					foreach (SimPe.PackedFiles.Wrapper.Instruction i in bhav)
 					{
-						if (bhavalias.Contains(i.OpCode)) i.OpCode = (ushort)bhavalias[i.OpCode];
+						if (bhavalias.Contains(i.OpCode))
+							i.OpCode = (ushort)bhavalias[i.OpCode];
 					}
 					bhav.SynchronizeUserData();
 				}
 
 				//Relink all TTAbs
-				foreach (SimPe.Plugin.Ttab ttab in ttabs) 
+				foreach (SimPe.Plugin.Ttab ttab in ttabs)
 				{
-                    foreach (SimPe.PackedFiles.Wrapper.TtabItem item in ttab)
+					foreach (SimPe.PackedFiles.Wrapper.TtabItem item in ttab)
 					{
-						if (bhavalias.Contains(item.Guardian)) item.Guardian = (ushort)bhavalias[item.Guardian];
-						if (bhavalias.Contains(item.Action)) item.Action = (ushort)bhavalias[item.Action];
+						if (bhavalias.Contains(item.Guardian))
+							item.Guardian = (ushort)bhavalias[item.Guardian];
+						if (bhavalias.Contains(item.Action))
+							item.Action = (ushort)bhavalias[item.Action];
 					}
 					ttab.SynchronizeUserData();
 				}
-		
-			} 
-			finally 
+			}
+			finally
 			{
 				package.EndUpdate();
 			}
@@ -452,9 +629,12 @@ namespace SimPe
 			Close();
 		}
 
-		private void linkLabel1_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		private void linkLabel1_LinkClicked(
+			object sender,
+			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		)
 		{
-			for (int i=0; i<lbfiles.Items.Count; i++)
+			for (int i = 0; i < lbfiles.Items.Count; i++)
 			{
 				lbfiles.SetItemChecked(i, false);
 			}

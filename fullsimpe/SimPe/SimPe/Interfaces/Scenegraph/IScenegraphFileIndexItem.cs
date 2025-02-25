@@ -30,11 +30,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// The Descriptor of that File
 		/// </summary>
 		/// <remarks>Contains the original Group </remarks>
-		SimPe.Interfaces.Files.IPackedFileDescriptor FileDescriptor
-		{
-			get;
-			set;
-		}
+		SimPe.Interfaces.Files.IPackedFileDescriptor FileDescriptor { get; set; }
 
 		/// <summary>
 		/// The Descriptor of that File, with a real Group value
@@ -46,17 +42,11 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <summary>
 		/// The package the File is stored in
 		/// </summary>
-		SimPe.Interfaces.Files.IPackageFile Package
-		{
-			get;
-		}
+		SimPe.Interfaces.Files.IPackageFile Package { get; }
 
 		/// <summary>
 		/// Get the Local Group alue used for this Package
 		/// </summary>
-		uint LocalGroup
-		{
-			get;
-		}
+		uint LocalGroup { get; }
 	}
 }

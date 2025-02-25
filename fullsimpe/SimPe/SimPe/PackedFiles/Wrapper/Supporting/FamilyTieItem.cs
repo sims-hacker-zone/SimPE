@@ -25,7 +25,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 	/// <summary>
 	/// This Class handles the instance -> Name assignemnet
 	/// </summary>
-	public class FamilyTieCommon 
+	public class FamilyTieCommon
 	{
 		/// <summary>
 		/// The Parent Wrapper
@@ -37,7 +37,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// </summary>
 		/// <param name="siminstance">Instance of the Sim</param>
 		/// <param name="famt">The Parent Wrapper</param>
-		public FamilyTieCommon(ushort siminstance, Wrapper.FamilyTies famt) 
+		public FamilyTieCommon(ushort siminstance, Wrapper.FamilyTies famt)
 		{
 			this.siminstance = siminstance;
 			this.famt = famt;
@@ -52,13 +52,14 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// <summary>
 		/// Returns / Sets the Instance of the Target Sim
 		/// </summary>
-		public ushort Instance 
+		public ushort Instance
 		{
 			get { return siminstance; }
-			set 
-			{ 
-				if (siminstance != value) sdesc = null;
-				siminstance = value; 
+			set
+			{
+				if (siminstance != value)
+					sdesc = null;
+				siminstance = value;
 			}
 		}
 
@@ -72,25 +73,31 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// </summary>
 		protected void LoadSDesc()
 		{
-			if (sdesc==null) 
+			if (sdesc == null)
 			{
 				sdesc = new SDesc(famt.NameProvider, null, null);
 
-				try 
+				try
 				{
-					SimPe.Interfaces.Files.IPackedFileDescriptor pfd = famt.Package.FindFile(MetaData.SIM_DESCRIPTION_FILE, 0, famt.FileDescriptor.Group, siminstance);
-					sdesc.ProcessData(pfd, famt.Package);					
-				} 
-				catch (Exception) {}
+					SimPe.Interfaces.Files.IPackedFileDescriptor pfd =
+						famt.Package.FindFile(
+							MetaData.SIM_DESCRIPTION_FILE,
+							0,
+							famt.FileDescriptor.Group,
+							siminstance
+						);
+					sdesc.ProcessData(pfd, famt.Package);
+				}
+				catch (Exception) { }
 			}
 		}
 
 		/// <summary>
 		/// Returns the Name of the sim
 		/// </summary>
-		public string SimName 
+		public string SimName
 		{
-			get 
+			get
 			{
 				LoadSDesc();
 				return sdesc.SimName;
@@ -99,7 +106,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 
 		public SDesc SimDescription
 		{
-			get 
+			get
 			{
 				LoadSDesc();
 				return sdesc;
@@ -109,9 +116,9 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// <summary>
 		/// Returns the Name of the sim
 		/// </summary>
-		public string SimFamilyName 
+		public string SimFamilyName
 		{
-			get 
+			get
 			{
 				LoadSDesc();
 				return sdesc.SimFamilyName;
@@ -124,7 +131,12 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// <returns>A String describing the Object</returns>
 		public override string ToString()
 		{
-			return SimName+" "+SimFamilyName+" (0x"+Helper.HexString(siminstance)+")";
+			return SimName
+				+ " "
+				+ SimFamilyName
+				+ " (0x"
+				+ Helper.HexString(siminstance)
+				+ ")";
 		}
 	}
 
@@ -132,7 +144,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 	/// A Sim that is stored within a FamilyTie File
 	/// </summary>
 	public class FamilyTieSim : FamilyTieCommon
-	{		
+	{
 		/// <summary>
 		/// The ties he perticipates in
 		/// </summary>
@@ -143,26 +155,27 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// </summary>
 		int blockdelimiter;
 
-		
-
 		/// <summary>
 		/// Constructor for a new participation sim
 		/// </summary>
 		/// <param name="siminstance">Instance of the Sim</param>
 		/// <param name="ties">the ties he perticipates in</param>
 		/// <param name="famt">The Parent Wrapper</param>
-		public FamilyTieSim(ushort siminstance, FamilyTieItem[] ties, Wrapper.FamilyTies famt) : base(siminstance, famt) 
+		public FamilyTieSim(
+			ushort siminstance,
+			FamilyTieItem[] ties,
+			Wrapper.FamilyTies famt
+		)
+			: base(siminstance, famt)
 		{
 			this.ties = ties;
 			blockdelimiter = 0x00000001;
 		}
 
-		
-
 		/// <summary>
 		/// Returns / Sets the ties he perticipates in
 		/// </summary>
-		public FamilyTieItem[] Ties 
+		public FamilyTieItem[] Ties
 		{
 			get { return ties; }
 			set { ties = value; }
@@ -171,12 +184,12 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// <summary>
 		/// Returns / Sets the Block Delimiter
 		/// </summary>
-		internal int BlockDelimiter 
+		internal int BlockDelimiter
 		{
 			get { return blockdelimiter; }
 			set { blockdelimiter = value; }
-		}	
-	
+		}
+
 		/// <summary>
 		/// Returns the avaqilable <see cref="FamilyTieItem"/> for the passed Sim
 		/// </summary>
@@ -184,9 +197,11 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// <returns>null or the <see cref="FamilyTieItem"/> for that Sim</returns>
 		public FamilyTieItem FindTie(SDesc sdsc)
 		{
-			if (sdsc==null) return null;
-			foreach (FamilyTieItem s in ties)			
-				if (s.Instance == sdsc.Instance) return s;			
+			if (sdsc == null)
+				return null;
+			foreach (FamilyTieItem s in ties)
+				if (s.Instance == sdsc.Instance)
+					return s;
 
 			return null;
 		}
@@ -199,7 +214,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		public FamilyTieItem CreateTie(SDesc sdsc, Data.MetaData.FamilyTieTypes type)
 		{
 			FamilyTieItem s = FindTie(sdsc);
-			if (s==null) 
+			if (s == null)
 			{
 				s = new FamilyTieItem(type, sdsc.Instance, this.famt);
 				ties = (FamilyTieItem[])Helper.Add(ties, s);
@@ -215,9 +230,9 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// <returns>true, if the Tie was removed</returns>
 		public bool RemoveTie(FamilyTieItem fti)
 		{
-			int len = ties.Length;			
+			int len = ties.Length;
 			ties = (FamilyTieItem[])Helper.Delete(ties, fti);
-			return (ties.Length<len);
+			return (ties.Length < len);
 		}
 	}
 
@@ -237,7 +252,12 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// <param name="type">The Type of the tie</param>
 		/// <param name="siminstance">The instance of the Target sim</param>
 		/// <param name="famt">The Parent Wrapper</param>
-		public FamilyTieItem(MetaData.FamilyTieTypes type, ushort siminstance, Wrapper.FamilyTies famt) : base(siminstance, famt)
+		public FamilyTieItem(
+			MetaData.FamilyTieTypes type,
+			ushort siminstance,
+			Wrapper.FamilyTies famt
+		)
+			: base(siminstance, famt)
 		{
 			this.type = type;
 		}
@@ -257,8 +277,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// <returns>A String describing the Object</returns>
 		public override string ToString()
 		{
-			return ((LocalizedFamilyTieTypes)type).ToString()+": "+base.ToString ();
+			return ((LocalizedFamilyTieTypes)type).ToString() + ": " + base.ToString();
 		}
-
 	}
 }

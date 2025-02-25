@@ -25,36 +25,35 @@ namespace SimPe.PackedFiles.Wrapper
 	/// <summary>
 	/// The Name Reference Files
 	/// </summary>
-	public class Nref 
-		: AbstractWrapper				//Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-		, IFileWrapper					//This Interface is used when loading a File
-		, IFileWrapperSaveExtension		//This Interface (if available) will be used to store a File
-		, IMultiplePackedFileWrapper	//Allow Multiple Instances
+	public class Nref
+		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
+			,
+			IFileWrapper //This Interface is used when loading a File
+			,
+			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
+			,
+			IMultiplePackedFileWrapper //Allow Multiple Instances
 	{
 		byte[] data;
+
 		/// <summary>
 		/// The Filename stored in the NREF File
 		/// </summary>
-		public string FileName 
+		public string FileName
 		{
 			get { return Helper.ToString(data); }
 			set { data = Helper.ToBytes(value); }
 		}
 
-		public uint Group 
+		public uint Group
 		{
 			get { return Hashes.GroupHash(this.FileName); }
 		}
-		
+
 		#region IWrapper Member
 		protected override IWrapperInfo CreateWrapperInfo()
 		{
-			return  new AbstractWrapperInfo(
-				"Name Reference Wrapper",
-				"Quaxi",
-				"---",
-				3
-				); 
+			return new AbstractWrapperInfo("Name Reference Wrapper", "Quaxi", "---", 3);
 		}
 		#endregion
 
@@ -78,7 +77,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
@@ -87,7 +86,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 		#endregion
 
-		#region IFileWrapperSaveExtension Member		
+		#region IFileWrapperSaveExtension Member
 		//all covered by Serialize()
 		#endregion
 
@@ -97,7 +96,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				return "Name="+this.FileName+", Group=0x"+Helper.HexString(Group);
+				return "Name=" + this.FileName + ", Group=0x" + Helper.HexString(Group);
 			}
 		}
 
@@ -106,10 +105,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get
-			{
-				return new byte[0];
-			}
+			get { return new byte[0]; }
 		}
 
 		/// <summary>
@@ -119,14 +115,15 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				uint[] types = {
-								   0x4E524546 //NREF
-							   }; //handles the Version Information File
+				uint[] types =
+				{
+					0x4E524546, //NREF
+				}; //handles the Version Information File
 				return types;
 			}
 		}
 
-		#endregion		
+		#endregion
 
 		#region IMultiplePackedFileWrapper
 		public override object[] GetConstructorArguments()

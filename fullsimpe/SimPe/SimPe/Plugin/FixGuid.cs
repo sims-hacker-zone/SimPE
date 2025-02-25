@@ -19,15 +19,15 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using SimPe.Packages;
 using SimPe.Interfaces.Files;
+using SimPe.Packages;
 
 namespace SimPe.Plugin
 {
 	/// <summary>
 	/// Set of old and new Guid
 	/// </summary>
-	public class GuidSet 
+	public class GuidSet
 	{
 		public uint oldguid;
 		public uint guid;
@@ -56,21 +56,25 @@ namespace SimPe.Plugin
 		/// Changes all guids (Depends on the passed Replacement Map)
 		/// </summary>
 		/// <param name="guids">List of GuidSet Objects</param>
-		public void FixGuids(ArrayList guids) 
+		public void FixGuids(ArrayList guids)
 		{
-			Interfaces.Files.IPackedFileDescriptor[] mpfds = package.FindFiles(Data.MetaData.MMAT);	
+			Interfaces.Files.IPackedFileDescriptor[] mpfds = package.FindFiles(
+				Data.MetaData.MMAT
+			);
 
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in mpfds) 
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in mpfds)
 			{
-				SimPe.PackedFiles.Wrapper.Cpf mmat = new SimPe.PackedFiles.Wrapper.Cpf();
+				SimPe.PackedFiles.Wrapper.Cpf mmat =
+					new SimPe.PackedFiles.Wrapper.Cpf();
 				mmat.ProcessData(pfd, package);
 
-
-				if (guids!=null) 
+				if (guids != null)
 				{
-					foreach (GuidSet sget in guids) 
+					foreach (GuidSet sget in guids)
 					{
-						if (mmat.GetSaveItem("objectGUID").UIntegerValue == sget.oldguid) 
+						if (
+							mmat.GetSaveItem("objectGUID").UIntegerValue == sget.oldguid
+						)
 						{
 							mmat.GetSaveItem("objectGUID").UIntegerValue = sget.guid;
 							mmat.SynchronizeUserData();
@@ -84,13 +88,16 @@ namespace SimPe.Plugin
 		/// Changes all guids (ignore the current GUID)
 		/// </summary>
 		/// <param name="newguid">The new GUID</param>
-		public void FixGuids(uint newguid) 
+		public void FixGuids(uint newguid)
 		{
-			Interfaces.Files.IPackedFileDescriptor[] mpfds = package.FindFiles(Data.MetaData.MMAT);
+			Interfaces.Files.IPackedFileDescriptor[] mpfds = package.FindFiles(
+				Data.MetaData.MMAT
+			);
 
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in mpfds) 
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in mpfds)
 			{
-				SimPe.PackedFiles.Wrapper.Cpf mmat = new SimPe.PackedFiles.Wrapper.Cpf();
+				SimPe.PackedFiles.Wrapper.Cpf mmat =
+					new SimPe.PackedFiles.Wrapper.Cpf();
 				mmat.ProcessData(pfd, package);
 
 				mmat.GetSaveItem("objectGUID").UIntegerValue = newguid;

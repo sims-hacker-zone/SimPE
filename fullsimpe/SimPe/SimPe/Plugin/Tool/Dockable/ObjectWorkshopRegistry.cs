@@ -7,16 +7,25 @@ namespace SimPe.Plugin.Tool.Dockable
 	/// </summary>
 	class ObjectWorkshopRegistry : System.IDisposable
 	{
-		XmlRegistryKey xrk;		
+		XmlRegistryKey xrk;
 		dcObjectWorkshop dock;
+
 		public ObjectWorkshopRegistry(dcObjectWorkshop dock)
 		{
 			this.dock = dock;
 			xrk = Helper.WindowsRegistry.PluginRegistryKey;
-			
-			try { dock.cbTask.SelectedIndex = LastOWAction;	} 
-			catch {	dock.cbTask.SelectedIndex = 0;}
-			dock.cbTask.SelectedIndexChanged += new EventHandler(cbTask_SelectedIndexChanged);
+
+			try
+			{
+				dock.cbTask.SelectedIndex = LastOWAction;
+			}
+			catch
+			{
+				dock.cbTask.SelectedIndex = 0;
+			}
+			dock.cbTask.SelectedIndexChanged += new EventHandler(
+				cbTask_SelectedIndexChanged
+			);
 
 			dock.cbDesc.Checked = ChangeDescription;
 			dock.cbDesc.CheckedChanged += new EventHandler(cbDesc_CheckedChanged);
@@ -24,56 +33,58 @@ namespace SimPe.Plugin.Tool.Dockable
 			dock.cbgid.Checked = SetCustomGroup;
 			dock.cbgid.CheckedChanged += new EventHandler(cbgid_CheckedChanged);
 
-            dock.cbfix.Checked = FixCloned;
+			dock.cbfix.Checked = FixCloned;
 			dock.cbfix.CheckedChanged += new EventHandler(cbfix_CheckedChanged);
 
-            dock.cbclean.Checked = FixCloned;
+			dock.cbclean.Checked = FixCloned;
 			dock.cbclean.CheckedChanged += new EventHandler(cbclean_CheckedChanged);
 
-            dock.cbRemTxt.Checked = RemoveNoneDefaultLangaugeStrings;
+			dock.cbRemTxt.Checked = RemoveNoneDefaultLangaugeStrings;
 			dock.cbRemTxt.CheckedChanged += new EventHandler(cbRemTxt_CheckedChanged);
 
-            dock.cbparent.Checked = CreateStandAlone;
+			dock.cbparent.Checked = CreateStandAlone;
 			dock.cbparent.CheckedChanged += new EventHandler(cbparent_CheckedChanged);
 
-            dock.cbdefault.Checked = PullDefaultColorOnly;
+			dock.cbdefault.Checked = PullDefaultColorOnly;
 			dock.cbdefault.CheckedChanged += new EventHandler(cbdefault_CheckedChanged);
 
-            dock.cbwallmask.Checked = PullWallmasks;
-			dock.cbwallmask.CheckedChanged += new EventHandler(cbwallmask_CheckedChanged);
+			dock.cbwallmask.Checked = PullWallmasks;
+			dock.cbwallmask.CheckedChanged += new EventHandler(
+				cbwallmask_CheckedChanged
+			);
 
-            dock.cbanim.Checked = PullAnimations;
+			dock.cbanim.Checked = PullAnimations;
 			dock.cbanim.CheckedChanged += new EventHandler(cbanim_CheckedChanged);
 
-            dock.cbstrlink.Checked = PullStrLinkedResources;
+			dock.cbstrlink.Checked = PullStrLinkedResources;
 			dock.cbstrlink.CheckedChanged += new EventHandler(cbstrlink_CheckedChanged);
 
-            dock.cbOrgGmdc.Checked = ReferenceOriginalMesh;
+			dock.cbOrgGmdc.Checked = ReferenceOriginalMesh;
 			dock.cbOrgGmdc.CheckedChanged += new EventHandler(cbOrgGmdc_CheckedChanged);
 		}
 
-        public void SetDefaults()
-        {
-            dock.cbDesc.Checked = true;
-            dock.cbgid.Checked = true;
-            dock.cbfix.Checked = true;
-            dock.cbclean.Checked = true;
-            dock.cbRemTxt.Checked = true;
-            dock.cbparent.Checked = false;
-            dock.cbdefault.Checked = true;
-            dock.cbwallmask.Checked = true;
-            dock.cbanim.Checked = false;
-            dock.cbstrlink.Checked = true;
-            dock.cbOrgGmdc.Checked = false;			
-        }
+		public void SetDefaults()
+		{
+			dock.cbDesc.Checked = true;
+			dock.cbgid.Checked = true;
+			dock.cbfix.Checked = true;
+			dock.cbclean.Checked = true;
+			dock.cbRemTxt.Checked = true;
+			dock.cbparent.Checked = false;
+			dock.cbdefault.Checked = true;
+			dock.cbwallmask.Checked = true;
+			dock.cbanim.Checked = false;
+			dock.cbstrlink.Checked = true;
+			dock.cbOrgGmdc.Checked = false;
+		}
 
 		#region Properties
 		/// <summary>
 		/// true, if user wants to show the OBJD Filenames in OW
 		/// </summary>
-		public  int LastOWAction
+		public int LastOWAction
 		{
-			get 
+			get
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
 				object o = rkf.GetValue("LastOWAction", 0);
@@ -86,9 +97,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 		}
 
-		public bool ChangeDescription 
+		public bool ChangeDescription
 		{
-			get 
+			get
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
 				object o = rkf.GetValue("ChangeDescription", true);
@@ -99,11 +110,11 @@ namespace SimPe.Plugin.Tool.Dockable
 				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
 				rkf.SetValue("ChangeDescription", value);
 			}
-		}		
+		}
 
-		public bool SetCustomGroup 
+		public bool SetCustomGroup
 		{
-			get 
+			get
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
 				object o = rkf.GetValue("SetCustomGroup", true);
@@ -116,9 +127,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 		}
 
-		public bool FixCloned 
+		public bool FixCloned
 		{
-			get 
+			get
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
 				object o = rkf.GetValue("FixCloned", true);
@@ -131,9 +142,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 		}
 
-		public bool Cleanup 
+		public bool Cleanup
 		{
-			get 
+			get
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
 				object o = rkf.GetValue("Cleanup", true);
@@ -146,9 +157,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 		}
 
-		public bool RemoveNoneDefaultLangaugeStrings 
+		public bool RemoveNoneDefaultLangaugeStrings
 		{
-			get 
+			get
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
 				object o = rkf.GetValue("RemoveNoneDefaultLangaugeStrings", true);
@@ -161,9 +172,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 		}
 
-		public bool CreateStandAlone 
+		public bool CreateStandAlone
 		{
-			get 
+			get
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
 				object o = rkf.GetValue("CreateStandAlone", false);
@@ -176,9 +187,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 		}
 
-		public bool PullDefaultColorOnly 
+		public bool PullDefaultColorOnly
 		{
-			get 
+			get
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
 				object o = rkf.GetValue("PullDefaultColorOnly", true);
@@ -193,7 +204,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public bool PullWallmasks
 		{
-			get 
+			get
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
 				object o = rkf.GetValue("PullWallmaks", true);
@@ -208,7 +219,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public bool PullAnimations
 		{
-			get 
+			get
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
 				object o = rkf.GetValue("PullAnimations", false);
@@ -223,7 +234,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public bool PullStrLinkedResources
 		{
-			get 
+			get
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
 				object o = rkf.GetValue("PullStrLinkedResources", true);
@@ -238,7 +249,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public bool ReferenceOriginalMesh
 		{
-			get 
+			get
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
 				object o = rkf.GetValue("ReferenceOriginalMesh", false);
@@ -252,13 +263,15 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		#endregion
-		
+
 
 		#region IDisposable Member
 
 		public void Dispose()
 		{
-			dock.cbTask.SelectedIndexChanged -= new EventHandler(cbTask_SelectedIndexChanged);
+			dock.cbTask.SelectedIndexChanged -= new EventHandler(
+				cbTask_SelectedIndexChanged
+			);
 			dock.cbDesc.CheckedChanged -= new EventHandler(cbDesc_CheckedChanged);
 			dock.cbgid.CheckedChanged -= new EventHandler(cbgid_CheckedChanged);
 			dock.cbfix.CheckedChanged -= new EventHandler(cbfix_CheckedChanged);
@@ -266,7 +279,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			dock.cbRemTxt.CheckedChanged -= new EventHandler(cbRemTxt_CheckedChanged);
 			dock.cbparent.CheckedChanged -= new EventHandler(cbparent_CheckedChanged);
 			dock.cbdefault.CheckedChanged -= new EventHandler(cbdefault_CheckedChanged);
-			dock.cbwallmask.CheckedChanged -= new EventHandler(cbwallmask_CheckedChanged);
+			dock.cbwallmask.CheckedChanged -= new EventHandler(
+				cbwallmask_CheckedChanged
+			);
 			dock.cbanim.CheckedChanged -= new EventHandler(cbanim_CheckedChanged);
 			dock.cbstrlink.CheckedChanged -= new EventHandler(cbstrlink_CheckedChanged);
 			dock.cbOrgGmdc.CheckedChanged -= new EventHandler(cbOrgGmdc_CheckedChanged);
@@ -277,7 +292,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		#endregion
 
-		
+
 		#region Events
 		private void cbDesc_CheckedChanged(object sender, EventArgs e)
 		{
@@ -293,7 +308,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		private void cbTask_SelectedIndexChanged(object sender, EventArgs e)
 		{
-            System.Windows.Forms.ComboBox cb = sender as System.Windows.Forms.ComboBox;
+			System.Windows.Forms.ComboBox cb = sender as System.Windows.Forms.ComboBox;
 			LastOWAction = cb.SelectedIndex;
 		}
 

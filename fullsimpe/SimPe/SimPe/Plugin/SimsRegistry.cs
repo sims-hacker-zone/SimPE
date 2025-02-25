@@ -7,15 +7,18 @@ namespace SimPe.Plugin
 	/// </summary>
 	class SimsRegistry : System.IDisposable
 	{
-		XmlRegistryKey xrk;		
+		XmlRegistryKey xrk;
 		Sims form;
+
 		public SimsRegistry(Sims form)
 		{
 			this.form = form;
 			xrk = Helper.WindowsRegistry.PluginRegistryKey;
 
 			form.ckbPlayable.Checked = this.ShowPlayable;
-			form.ckbPlayable.CheckedChanged += new EventHandler(ckbPlayable_CheckedChanged);
+			form.ckbPlayable.CheckedChanged += new EventHandler(
+				ckbPlayable_CheckedChanged
+			);
 
 			form.cbTownie.Checked = this.ShowTownies;
 			form.cbTownie.CheckedChanged += new EventHandler(cbTownie_CheckedChanged);
@@ -24,7 +27,9 @@ namespace SimPe.Plugin
 			form.cbNpc.CheckedChanged += new EventHandler(cbNpc_CheckedChanged);
 
 			form.ckbUnEditable.Checked = this.ShowUnEditable;
-			form.ckbUnEditable.CheckedChanged += new EventHandler(ckbUnEditable_CheckedChanged);
+			form.ckbUnEditable.CheckedChanged += new EventHandler(
+				ckbUnEditable_CheckedChanged
+			);
 
 			form.cbdetail.Checked = this.ShowDetails;
 			form.cbdetail.CheckedChanged += new EventHandler(cbdetail_CheckedChanged);
@@ -74,7 +79,7 @@ namespace SimPe.Plugin
 
 		public bool ShowNPCs
 		{
-			get 
+			get
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("SimBrowser");
 				object o = rkf.GetValue("ShowNPCs", false);
@@ -104,7 +109,7 @@ namespace SimPe.Plugin
 
 		public bool ShowDetails
 		{
-			get 
+			get
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("SimBrowser");
 				object o = rkf.GetValue("ShowDetails", true);
@@ -149,7 +154,7 @@ namespace SimPe.Plugin
 
 		public int SortedColumn
 		{
-			get 
+			get
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("SimBrowser");
 				object o = rkf.GetValue("SortedColumn", 3);
@@ -164,10 +169,13 @@ namespace SimPe.Plugin
 
 		public System.Windows.Forms.SortOrder SortOrder
 		{
-			get 
+			get
 			{
 				XmlRegistryKey rkf = xrk.CreateSubKey("SimBrowser");
-				object o = rkf.GetValue("SortOrder", (int)System.Windows.Forms.SortOrder.Ascending);
+				object o = rkf.GetValue(
+					"SortOrder",
+					(int)System.Windows.Forms.SortOrder.Ascending
+				);
 				return (System.Windows.Forms.SortOrder)Convert.ToInt32(o);
 			}
 			set
@@ -178,14 +186,12 @@ namespace SimPe.Plugin
 		}
 
 		#endregion
-		
+
 
 		#region IDisposable Member
 
 		public void Dispose()
 		{
-			
-
 			form = null;
 			xrk = null;
 		}

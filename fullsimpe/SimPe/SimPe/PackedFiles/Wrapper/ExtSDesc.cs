@@ -18,26 +18,26 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces;
-using SimPe.PackedFiles.Wrapper.Supporting;
-using SimPe.Data;
 using System.Collections;
+using SimPe.Data;
+using SimPe.Interfaces;
+using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Wrapper.Supporting;
 
 namespace SimPe.PackedFiles.Wrapper
 {
 	/// <summary>
-    /// Summary description for ExtSDesc.
+	/// Summary description for ExtSDesc.
 	/// </summary>
-	public class ExtSDesc : SDesc/*, SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper*/
+	public class ExtSDesc : SDesc /*, SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper*/
 	{
-		public ExtSDesc() : base()
+		public ExtSDesc()
+			: base()
 		{
 			crmap = new Hashtable();
 			locked = false;
 		}
 
-		
 		protected override IWrapperInfo CreateWrapperInfo()
 		{
 			return new AbstractWrapperInfo(
@@ -45,8 +45,11 @@ namespace SimPe.PackedFiles.Wrapper
 				"Quaxi",
 				"This File contains Settings (like interests, friendships, money, age, gender...) for one Sim.",
 				8,
-				System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.sdsc.png"))				
-				); 
+				System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream("SimPe.img.sdsc.png")
+				)
+			);
 		}
 
 		protected override IPackedFileUI CreateDefaultUIHandler()
@@ -60,17 +63,19 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <remarks>null, if no File was found</remarks>
 		public bool IsNPC
 		{
-			get 
+			get
 			{
-				if (FileTable.ProviderRegistry.SimNameProvider!=null) 
+				if (FileTable.ProviderRegistry.SimNameProvider != null)
 				{
-					object o = FileTable.ProviderRegistry.SimNameProvider.FindName(SimId).Tag;
-					if (o!=null) 
+					object o = FileTable
+						.ProviderRegistry.SimNameProvider.FindName(SimId)
+						.Tag;
+					if (o != null)
 					{
 						object[] tags = (object[])o;
-						return tags[4]!=null;
+						return tags[4] != null;
 					}
-				} 
+				}
 				return false;
 			}
 		}
@@ -81,20 +86,25 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <remarks>null, if no File was found</remarks>
 		public bool IsTownie
 		{
-			get 
+			get
 			{
-				return (((this.FamilyInstance & 0x7f00) == 0x7f00) || this.FamilyInstance==0) && !IsNPC;
+				return (
+						((this.FamilyInstance & 0x7f00) == 0x7f00)
+						|| this.FamilyInstance == 0
+					) && !IsNPC;
 			}
 		}
-		
+
 		public override string CharacterFileName
 		{
 			get
 			{
 				if (IsNPC)
 				{
-					object o = FileTable.ProviderRegistry.SimNameProvider.FindName(SimId).Tag;
-					if (o!=null) 
+					object o = FileTable
+						.ProviderRegistry.SimNameProvider.FindName(SimId)
+						.Tag;
+					if (o != null)
 					{
 						object[] tags = (object[])o;
 						return tags[4].ToString();
@@ -105,12 +115,14 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		bool chgname;
-		string sname, sfname;
+		string sname,
+			sfname;
 		public override string SimFamilyName
 		{
 			get
 			{
-				if (sfname==null) return base.SimFamilyName;
+				if (sfname == null)
+					return base.SimFamilyName;
 				return sfname;
 			}
 			set
@@ -124,10 +136,11 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				if (sname==null) return base.SimName;
+				if (sname == null)
+					return base.SimName;
 				return sname;
 			}
-			set 
+			set
 			{
 				chgname = true;
 				sname = value;
@@ -135,35 +148,43 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		bool locked;
+
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-            //lock (SimPe.Helper.WindowsRegistry)
-            {
-                if (locked) { return; }
-                base.Unserialize(reader);
-                chgname = false;
-                crmap.Clear();
-                }
+			//lock (SimPe.Helper.WindowsRegistry)
+			{
+				if (locked)
+				{
+					return;
+				}
+				base.Unserialize(reader);
+				chgname = false;
+				crmap.Clear();
+			}
 		}
 
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-            //lock (SimPe.Helper.WindowsRegistry)
-            {
-                if (locked) { return; }
-                base.Serialize(writer);
-                if (chgname) ChangeName();
-                SaveRelations();
-            }
+			//lock (SimPe.Helper.WindowsRegistry)
+			{
+				if (locked)
+				{
+					return;
+				}
+				base.Serialize(writer);
+				if (chgname)
+					ChangeName();
+				SaveRelations();
+			}
 		}
 
 		protected virtual void ChangeName()
 		{
-			if (!this.IsNPC) 
-				if (ChangeNames(SimName, SimFamilyName)) 
+			if (!this.IsNPC)
+				if (ChangeNames(SimName, SimFamilyName))
 					chgname = false;
 
-			if (!chgname) 
+			if (!chgname)
 			{
 				sname = null;
 				sfname = null;
@@ -172,7 +193,6 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool HasRelationWith(ExtSDesc sdsc)
 		{
-			
 			foreach (uint inst in this.Relations.SimInstances)
 				if (sdsc.FileDescriptor.Instance == inst)
 					return true;
@@ -183,15 +203,24 @@ namespace SimPe.PackedFiles.Wrapper
 		public void AddRelation(ExtSDesc sdesc)
 		{
 			foreach (ushort inst in Relations.SimInstances)
-				if (inst == (ushort)sdesc.FileDescriptor.Instance) return;
+				if (inst == (ushort)sdesc.FileDescriptor.Instance)
+					return;
 
-			Relations.SimInstances = (ushort[])Helper.Add(Relations.SimInstances, (ushort)sdesc.FileDescriptor.Instance);
+			Relations.SimInstances = (ushort[])
+				Helper.Add(
+					Relations.SimInstances,
+					(ushort)sdesc.FileDescriptor.Instance
+				);
 			this.Changed = true;
 		}
 
 		public void RemoveRelation(ExtSDesc sdesc)
 		{
-			Relations.SimInstances = (ushort[])Helper.Delete(Relations.SimInstances, (ushort)sdesc.FileDescriptor.Instance);
+			Relations.SimInstances = (ushort[])
+				Helper.Delete(
+					Relations.SimInstances,
+					(ushort)sdesc.FileDescriptor.Instance
+				);
 			this.Changed = true;
 		}
 
@@ -200,7 +229,8 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				foreach (ExtSrel srel in crmap.Values)
-					if (srel.Changed) return true;
+					if (srel.Changed)
+						return true;
 
 				return base.Changed;
 			}
@@ -214,59 +244,65 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		Hashtable crmap;
-        void SaveRelations()
-        {
-            if (locked) return;
-            SimPe.Collections.PackedFileDescriptors pfds = new SimPe.Collections.PackedFileDescriptors();
-            locked = true;
 
-            try
-            {
-                foreach (ExtSrel srel in crmap.Values)
-                {
-                    if (srel.Package != null) srel.SynchronizeUserData();
-                    else
-                    {
-                        srel.Package = this.Package;
-                        srel.SynchronizeUserData();
-                        pfds.Add(srel.FileDescriptor);
-                    }
+		void SaveRelations()
+		{
+			if (locked)
+				return;
+			SimPe.Collections.PackedFileDescriptors pfds =
+				new SimPe.Collections.PackedFileDescriptors();
+			locked = true;
 
-                    if (!this.Equals(srel.SourceSim))
-                    {
-                        if (srel.SourceSim != null)
-                            if (srel.SourceSim.Changed)
-                                srel.SourceSim.SynchronizeUserData();
-                    }
-                }
+			try
+			{
+				foreach (ExtSrel srel in crmap.Values)
+				{
+					if (srel.Package != null)
+						srel.SynchronizeUserData();
+					else
+					{
+						srel.Package = this.Package;
+						srel.SynchronizeUserData();
+						pfds.Add(srel.FileDescriptor);
+					}
 
-                crmap.Clear();
+					if (!this.Equals(srel.SourceSim))
+					{
+						if (srel.SourceSim != null)
+							if (srel.SourceSim.Changed)
+								srel.SourceSim.SynchronizeUserData();
+					}
+				}
 
-                locked = false;
+				crmap.Clear();
 
-                this.Package.BeginUpdate();
-                try
-                {
-                    for (int i = pfds.Count - 1; i >= 0; i--)
-                    {
-                        if (i == 0) this.Package.ForgetUpdate();
-                        this.Package.Add(pfds[i], true);
-                    }
-                }
-                finally
-                {
-                    this.Package.EndUpdate();
-                }
-            }
-            finally
-            {
-                locked = false;
-            }
-        }
+				locked = false;
+
+				this.Package.BeginUpdate();
+				try
+				{
+					for (int i = pfds.Count - 1; i >= 0; i--)
+					{
+						if (i == 0)
+							this.Package.ForgetUpdate();
+						this.Package.Add(pfds[i], true);
+					}
+				}
+				finally
+				{
+					this.Package.EndUpdate();
+				}
+			}
+			finally
+			{
+				locked = false;
+			}
+		}
 
 		internal ExtSrel GetCachedRelation(uint inst)
 		{
-			if (crmap.ContainsKey(inst)) return (ExtSrel)crmap[inst];
+			if (crmap.ContainsKey(inst))
+				return (ExtSrel)crmap[inst];
 			return null;
 		}
 
@@ -277,18 +313,23 @@ namespace SimPe.PackedFiles.Wrapper
 
 		internal void AddRelationToCache(ExtSrel srel)
 		{
-			if (srel==null) return;
-			if (srel.FileDescriptor==null) return;
+			if (srel == null)
+				return;
+			if (srel.FileDescriptor == null)
+				return;
 
-			if (!crmap.ContainsKey(srel.FileDescriptor.Instance)) crmap[srel.FileDescriptor.Instance] = srel;
+			if (!crmap.ContainsKey(srel.FileDescriptor.Instance))
+				crmap[srel.FileDescriptor.Instance] = srel;
 		}
 
 		internal void RemoveRelationFromCache(ExtSrel srel)
 		{
-			if (srel==null) return;
-			if (srel.FileDescriptor==null) return;
+			if (srel == null)
+				return;
+			if (srel.FileDescriptor == null)
+				return;
 
-			if (crmap.ContainsKey(srel.FileDescriptor.Instance)) 
+			if (crmap.ContainsKey(srel.FileDescriptor.Instance))
 				crmap.Remove(srel.FileDescriptor.Instance);
 		}
 
@@ -299,17 +340,23 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public static ExtSrel FindRelation(ExtSDesc cache, ExtSDesc src, ExtSDesc dst)
 		{
-			uint sinst = src.GetRelationInstance(dst);	
+			uint sinst = src.GetRelationInstance(dst);
 			SimPe.PackedFiles.Wrapper.ExtSrel srel = cache.GetCachedRelation(sinst);
-			if (srel==null) 
+			if (srel == null)
 			{
-				SimPe.Interfaces.Files.IPackedFileDescriptor spfd = cache.Package.FindFile(Data.MetaData.RELATION_FILE, 0, cache.FileDescriptor.Group, sinst);
-				
-				if (spfd!=null) 
+				SimPe.Interfaces.Files.IPackedFileDescriptor spfd =
+					cache.Package.FindFile(
+						Data.MetaData.RELATION_FILE,
+						0,
+						cache.FileDescriptor.Group,
+						sinst
+					);
+
+				if (spfd != null)
 				{
 					srel = new SimPe.PackedFiles.Wrapper.ExtSrel();
 					srel.ProcessData(spfd, cache.Package);
-				} 
+				}
 			}
 
 			return srel;
@@ -322,14 +369,20 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint GetRelationInstance(ExtSDesc sdesc)
 		{
-			return ((this.FileDescriptor.Instance & 0xffff) << 16) | (sdesc.FileDescriptor.Instance & 0xffff);
+			return ((this.FileDescriptor.Instance & 0xffff) << 16)
+				| (sdesc.FileDescriptor.Instance & 0xffff);
 		}
 
 		public ExtSrel CreateRelation(ExtSDesc sdesc)
 		{
 			ExtSrel srel = new ExtSrel();
 			uint inst = GetRelationInstance(sdesc);
-			srel.FileDescriptor = package.NewDescriptor(Data.MetaData.RELATION_FILE, 0, this.FileDescriptor.Group, inst);
+			srel.FileDescriptor = package.NewDescriptor(
+				Data.MetaData.RELATION_FILE,
+				0,
+				this.FileDescriptor.Group,
+				inst
+			);
 			srel.RelationState.IsKnown = true;
 
 			return srel;
@@ -343,13 +396,14 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public override bool Equals(object obj)
 		{
-			if (obj==null) return false;
-			if (obj is SDesc) 
+			if (obj == null)
+				return false;
+			if (obj is SDesc)
 			{
 				SDesc s = (SDesc)obj;
-				return (s.SimId==SimId);
+				return (s.SimId == SimId);
 			}
-			return base.Equals (obj);
+			return base.Equals(obj);
 		}
 
 		public override string DescriptionHeader
@@ -363,9 +417,14 @@ namespace SimPe.PackedFiles.Wrapper
 				list.Add("Household ");
 				list.Add("isNPC");
 				list.Add("isTownie");
-				list.Add(SimPe.Serializer.SerializeTypeHeader(this.CharacterDescription));
+				list.Add(
+					SimPe.Serializer.SerializeTypeHeader(this.CharacterDescription)
+				);
 				list.Add(SimPe.Serializer.SerializeTypeHeader(this.Character));
-				list.Add("Genetic"+SimPe.Serializer.SerializeTypeHeader(this.GeneticCharacter));
+				list.Add(
+					"Genetic"
+						+ SimPe.Serializer.SerializeTypeHeader(this.GeneticCharacter)
+				);
 				list.Add(SimPe.Serializer.SerializeTypeHeader(this.Interests));
 				list.Add(SimPe.Serializer.SerializeTypeHeader(this.Skills));
 				list.Add("Version");
@@ -374,8 +433,7 @@ namespace SimPe.PackedFiles.Wrapper
 					list.Add(SimPe.Serializer.SerializeTypeHeader(this.University));
 
 				if ((int)this.Version >= (int)SDescVersions.Nightlife)
-					list.Add(SimPe.Serializer.SerializeTypeHeader(this.Nightlife));				
-				
+					list.Add(SimPe.Serializer.SerializeTypeHeader(this.Nightlife));
 
 				return Serializer.ConcatHeader(Serializer.ConvertArrayList(list));
 			}
@@ -390,41 +448,43 @@ namespace SimPe.PackedFiles.Wrapper
 				 *		Lifetime Want
 				 *		Alive/Dead
 				 *		Traits, turnon, turnoff
-				 *		Personality, Skills, User Character File, Mother, Father, Children, Best Friends, Household Wealth, Household Funds 
+				 *		Personality, Skills, User Character File, Mother, Father, Children, Best Friends, Household Wealth, Household Funds
 				**/
 
 				ArrayList list = new ArrayList();
-				list.Add(Serializer.Property("GUID", "0x"+Helper.HexString(this.SimId)));
+				list.Add(
+					Serializer.Property("GUID", "0x" + Helper.HexString(this.SimId))
+				);
 				list.Add(Serializer.Property("Filename", this.CharacterFileName));
-				list.Add(Serializer.Property("Name", this.SimName+" "+this.SimFamilyName));
+				list.Add(
+					Serializer.Property("Name", this.SimName + " " + this.SimFamilyName)
+				);
 				list.Add(Serializer.Property("Household ", this.HouseholdName));
-				list.Add(Serializer.Property("isNPC" ,this.IsNPC.ToString()));
-				list.Add(Serializer.Property("isTownie" , this.IsTownie.ToString()));
+				list.Add(Serializer.Property("isNPC", this.IsNPC.ToString()));
+				list.Add(Serializer.Property("isTownie", this.IsTownie.ToString()));
 				list.Add(this.CharacterDescription.ToString());
 				list.Add(this.Character.ToString());
 				list.Add(this.GeneticCharacter.ToString());
 				list.Add(this.Interests.ToString());
 				list.Add(this.Skills.ToString());
-				
+
 				list.Add(Serializer.Property("Version", this.Version.ToString()));
 
 				if ((int)this.Version >= (int)SDescVersions.University)
 					list.Add(this.University.ToString());
 
 				if ((int)this.Version >= (int)SDescVersions.Nightlife)
-					list.Add(this.Nightlife.ToString());				
-				
+					list.Add(this.Nightlife.ToString());
+
 				return Serializer.Concat(Serializer.ConvertArrayList(list));
 			}
 		}
-
 	}
 
 	public class LinkedSDesc : ExtSDesc
 	{
-		public LinkedSDesc() : base()
-		{			
-		}
+		public LinkedSDesc()
+			: base() { }
 
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
@@ -436,17 +496,21 @@ namespace SimPe.PackedFiles.Wrapper
 		SimPe.PackedFiles.Wrapper.SimDNA sdna;
 		public SimPe.PackedFiles.Wrapper.SimDNA SimDNA
 		{
-			get 
+			get
 			{
-				if (sdna==null) 
+				if (sdna == null)
 				{
-					SimPe.Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(Data.MetaData.SDNA, 0, Data.MetaData.LOCAL_GROUP, this.FileDescriptor.Instance);
-					if (pfd!=null) 
+					SimPe.Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
+						Data.MetaData.SDNA,
+						0,
+						Data.MetaData.LOCAL_GROUP,
+						this.FileDescriptor.Instance
+					);
+					if (pfd != null)
 					{
 						sdna = new SimDNA();
 						sdna.ProcessData(pfd, this.package, true);
 					}
-
 				}
 
 				return sdna;
@@ -455,31 +519,34 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public SimPe.Interfaces.Providers.ILotItem[] BusinessList
 		{
-			get 
+			get
 			{
-				if ((uint)this.Version < (uint)SDescVersions.Business) return new SimPe.Interfaces.Providers.ILotItem[0];
+				if ((uint)this.Version < (uint)SDescVersions.Business)
+					return new SimPe.Interfaces.Providers.ILotItem[0];
 
-				return FileTable.ProviderRegistry.LotProvider.FindLotsOwnedBySim(this.Instance);
+				return FileTable.ProviderRegistry.LotProvider.FindLotsOwnedBySim(
+					this.Instance
+				);
 			}
 		}
 
 		public override string DescriptionHeader
 		{
 			get
-			{				
+			{
 				ArrayList list = new ArrayList();
 				list.Add(base.DescriptionHeader);
-				if (this.SimDNA!=null)
+				if (this.SimDNA != null)
 					list.Add(this.SimDNA.DescriptionHeader);
 
 				if ((int)this.Version >= (int)SDescVersions.Business)
 					list.Add(SimPe.Serializer.SerializeTypeHeader(this.Business));
 
-                if ((int)this.Version >= (int)SDescVersions.Pets)
-                    list.Add(SimPe.Serializer.SerializeTypeHeader(this.Pets));
+				if ((int)this.Version >= (int)SDescVersions.Pets)
+					list.Add(SimPe.Serializer.SerializeTypeHeader(this.Pets));
 
-                if ((int)this.Version >= (int)SDescVersions.Voyage)
-                    list.Add(SimPe.Serializer.SerializeTypeHeader(this.Voyage));
+				if ((int)this.Version >= (int)SDescVersions.Voyage)
+					list.Add(SimPe.Serializer.SerializeTypeHeader(this.Voyage));
 
 				return Serializer.ConcatHeader(Serializer.ConvertArrayList(list));
 			}
@@ -488,24 +555,23 @@ namespace SimPe.PackedFiles.Wrapper
 		public override string Description
 		{
 			get
-			{				
+			{
 				ArrayList list = new ArrayList();
 				list.Add(base.Description);
-				if (this.SimDNA!=null)
+				if (this.SimDNA != null)
 					list.Add(Serializer.SubProperty("DNA", this.SimDNA.Description));
 
 				if ((int)this.Version >= (int)SDescVersions.Business)
 					list.Add(this.Business.ToString());
 
-                if ((int)this.Version >= (int)SDescVersions.Pets)
-                    list.Add(this.Pets.ToString());
+				if ((int)this.Version >= (int)SDescVersions.Pets)
+					list.Add(this.Pets.ToString());
 
-                if ((int)this.Version >= (int)SDescVersions.Voyage)
-                    list.Add(this.Voyage.ToString());
-				
-                return Serializer.Concat(Serializer.ConvertArrayList(list));
+				if ((int)this.Version >= (int)SDescVersions.Voyage)
+					list.Add(this.Voyage.ToString());
+
+				return Serializer.Concat(Serializer.ConvertArrayList(list));
 			}
 		}
-
 	}
 }

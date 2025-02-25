@@ -27,22 +27,26 @@ namespace SimPe
 	public class Warning : Exception
 	{
 		string details;
-		public string Details 
+		public string Details
 		{
-			get { 
-				if (details==null) return "";
-				return details; 
+			get
+			{
+				if (details == null)
+					return "";
+				return details;
 			}
 		}
 
-		public Warning(string message, string details) : base(message)
+		public Warning(string message, string details)
+			: base(message)
 		{
-			this.details = details;	
+			this.details = details;
 		}
 
-		public Warning(string message, string details, Exception inner) : base(message, inner)
+		public Warning(string message, string details, Exception inner)
+			: base(message, inner)
 		{
-			this.details = details;		
+			this.details = details;
 		}
-	}	
+	}
 }

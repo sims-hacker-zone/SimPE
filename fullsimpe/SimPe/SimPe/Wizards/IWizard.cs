@@ -23,35 +23,36 @@ using System.Windows.Forms;
 
 namespace SimPe.Wizards
 {
-	public class WizardEventArgs : System.EventArgs 
+	public class WizardEventArgs : System.EventArgs
 	{
 		WizardStepPanel step;
-		bool enablenext, enableprev, c, canfin;
+		bool enablenext,
+			enableprev,
+			c,
+			canfin;
 
 		public WizardStepPanel Step
 		{
-			get {return step;}
+			get { return step; }
 		}
 
 		public bool EnableNext
 		{
 			get { return this.enablenext; }
-			set {this.enablenext = value; }
+			set { this.enablenext = value; }
 		}
 
 		public bool EnablePrev
 		{
 			get { return this.enableprev; }
-			set {this.enableprev = value; }
+			set { this.enableprev = value; }
 		}
 
 		public bool CanFinish
 		{
 			get { return this.canfin; }
-			set {this.canfin = value; }
+			set { this.canfin = value; }
 		}
-
-		
 
 		public bool Cancel
 		{
@@ -59,7 +60,12 @@ namespace SimPe.Wizards
 			set { c = value; }
 		}
 
-		public WizardEventArgs(WizardStepPanel step, bool ennext, bool enprev, bool canfin)
+		public WizardEventArgs(
+			WizardStepPanel step,
+			bool ennext,
+			bool enprev,
+			bool canfin
+		)
 		{
 			this.step = step;
 			this.enablenext = ennext;
@@ -73,5 +79,9 @@ namespace SimPe.Wizards
 	public delegate void WizardShowedHandle(Wizard sender, int source);
 	public delegate void WizardChangeHandle(Wizard sender, WizardEventArgs e);
 	public delegate void WizardStepHandle(Wizard sender, WizardStepPanel step);
-	public delegate void WizardStepChangeHandle(Wizard sender, WizardStepPanel step, int target);	
+	public delegate void WizardStepChangeHandle(
+		Wizard sender,
+		WizardStepPanel step,
+		int target
+	);
 }

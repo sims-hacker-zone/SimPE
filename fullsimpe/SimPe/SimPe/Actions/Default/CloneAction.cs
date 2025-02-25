@@ -22,27 +22,33 @@ using System;
 namespace SimPe.Actions.Default
 {
 	/// <summary>
-    /// Summary description for CloneAction.
+	/// Summary description for CloneAction.
 	/// </summary>
 	public class CloneAction : AbstractActionDefault
 	{
-		public CloneAction()
-		{
-			
-		}
-		#region IToolAction Member		
+		public CloneAction() { }
 
-		public override void ExecuteEventHandler(object sender, Events.ResourceEventArgs es)
-		{
-			if (!ChangeEnabledStateEventHandler(null, es)) return;
+		#region IToolAction Member
 
-			foreach (Events.ResourceContainer e in es) 
+		public override void ExecuteEventHandler(
+			object sender,
+			Events.ResourceEventArgs es
+		)
+		{
+			if (!ChangeEnabledStateEventHandler(null, es))
+				return;
+
+			foreach (Events.ResourceContainer e in es)
 			{
-				if (e.HasFileDescriptor)					
+				if (e.HasFileDescriptor)
 				{
-					Interfaces.Files.IPackedFileDescriptor pfd = (Interfaces.Files.IPackedFileDescriptor)e.Resource.FileDescriptor.Clone();
-					
-					pfd.UserData = es.LoadedPackage.Package.Read(e.Resource.FileDescriptor).UncompressedData;
+					Interfaces.Files.IPackedFileDescriptor pfd =
+						(Interfaces.Files.IPackedFileDescriptor)
+							e.Resource.FileDescriptor.Clone();
+
+					pfd.UserData = es
+						.LoadedPackage.Package.Read(e.Resource.FileDescriptor)
+						.UncompressedData;
 					es.LoadedPackage.Package.Add(pfd, true);
 				}
 			}
@@ -59,22 +65,16 @@ namespace SimPe.Actions.Default
 
 		#endregion
 
-		#region IToolExt Member		
+		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
-			get
-            {
-                return GetIcon.actionClone;
-			}
-        }
+			get { return GetIcon.actionClone; }
+		}
 
-        public override System.Windows.Forms.Shortcut Shortcut
-        {
-            get
-            {
-                return System.Windows.Forms.Shortcut.ShiftIns;
-            }
-        }
+		public override System.Windows.Forms.Shortcut Shortcut
+		{
+			get { return System.Windows.Forms.Shortcut.ShiftIns; }
+		}
 		#endregion
 	}
 }

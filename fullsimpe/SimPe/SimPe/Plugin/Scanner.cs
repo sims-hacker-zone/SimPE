@@ -19,9 +19,9 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+using System.Drawing;
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin.Scanner;
-using System.Drawing;
 using SimPe.Plugin.Scanner;
 
 namespace SimPe.Plugin
@@ -32,37 +32,46 @@ namespace SimPe.Plugin
 	internal class NeighborhoodScanner : AbstractScanner, IScanner
 	{
 		ArrayList ids;
-		public NeighborhoodScanner () : base () 
+
+		public NeighborhoodScanner()
+			: base()
 		{
 			ids = new ArrayList();
 		}
 
-		public void LoadThumbnail(ScannerItem si, SimPe.Cache.PackageState ps) 
+		public void LoadThumbnail(ScannerItem si, SimPe.Cache.PackageState ps)
 		{
-			if (si.PackageCacheItem.Type == PackageType.Neighbourhood) 
+			if (si.PackageCacheItem.Type == PackageType.Neighbourhood)
 			{
-				string name = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(si.FileName), System.IO.Path.GetFileNameWithoutExtension(si.FileName))+".png";
+				string name =
+					System.IO.Path.Combine(
+						System.IO.Path.GetDirectoryName(si.FileName),
+						System.IO.Path.GetFileNameWithoutExtension(si.FileName)
+					) + ".png";
 				if (System.IO.File.Exists(name))
 				{
 					Image img = Image.FromFile(name);
-					si.PackageCacheItem.Thumbnail = ImageLoader.Preview(img, AbstractScanner.ThumbnailSize);
+					si.PackageCacheItem.Thumbnail = ImageLoader.Preview(
+						img,
+						AbstractScanner.ThumbnailSize
+					);
 				}
 			}
 		}
-		
+
 		#region IScannerBase Member
-		public uint Version 
+		public uint Version
 		{
 			get { return 1; }
 		}
 
-		public int Index 
+		public int Index
 		{
 			get { return 700; }
 		}
 		#endregion
-		
-		#region IScanner Member		
+
+		#region IScanner Member
 		protected override void DoInitScan()
 		{
 			ListView.SmallImageList = ListView.LargeImageList;
@@ -71,12 +80,18 @@ namespace SimPe.Plugin
 			AbstractScanner.AddColumn(this.ListView, "Neighbourhood UID", 80);
 		}
 
-		public void ScanPackage(ScannerItem si, SimPe.Cache.PackageState ps, System.Windows.Forms.ListViewItem lvi)
+		public void ScanPackage(
+			ScannerItem si,
+			SimPe.Cache.PackageState ps,
+			System.Windows.Forms.ListViewItem lvi
+		)
 		{
 			this.LoadThumbnail(si, ps);
-			if (si.PackageCacheItem.Type == PackageType.Neighbourhood) 
+			if (si.PackageCacheItem.Type == PackageType.Neighbourhood)
 			{
-				Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(Data.MetaData.IDNO);
+				Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
+					Data.MetaData.IDNO
+				);
 				if (pfds.Length > 0)
 				{
 					Idno idno = new Idno();
@@ -87,8 +102,13 @@ namespace SimPe.Plugin
 					ps.Data[1] = idno.Uid;
 
 					//check for duplicates
-					if (ids.Contains(idno.Uid) && SimPe.PathProvider.Global.EPInstalled < 18) ps.State = TriState.False;
-					else ps.State = TriState.True;
+					if (
+						ids.Contains(idno.Uid)
+						&& SimPe.PathProvider.Global.EPInstalled < 18
+					)
+						ps.State = TriState.False;
+					else
+						ps.State = TriState.True;
 				}
 				else
 				{
@@ -102,57 +122,85 @@ namespace SimPe.Plugin
 			UpdateState(si, ps, lvi);
 		}
 
-		public void UpdateState(ScannerItem si, SimPe.Cache.PackageState ps, System.Windows.Forms.ListViewItem lvi)
-		{		
-			AbstractScanner.SetSubItem(lvi, this.StartColum+1, "");
-			if (si.PackageCacheItem.Type == PackageType.Neighbourhood) 
+		public void UpdateState(
+			ScannerItem si,
+			SimPe.Cache.PackageState ps,
+			System.Windows.Forms.ListViewItem lvi
+		)
+		{
+			AbstractScanner.SetSubItem(lvi, this.StartColum + 1, "");
+			if (si.PackageCacheItem.Type == PackageType.Neighbourhood)
 			{
-				if (si.PackageCacheItem.Thumbnail==null) this.LoadThumbnail(si, ps);			
+				if (si.PackageCacheItem.Thumbnail == null)
+					this.LoadThumbnail(si, ps);
 
 				//Add the Thumbnail if available
-				if (si.PackageCacheItem.Thumbnail!=null) 
+				if (si.PackageCacheItem.Thumbnail != null)
 				{
 					ListView.SmallImageList.Images.Add(si.PackageCacheItem.Thumbnail);
-					lvi.ImageIndex = ListView.SmallImageList.Images.Count-1;
-				} 
+					lvi.ImageIndex = ListView.SmallImageList.Images.Count - 1;
+				}
 
-				if (ps.Data.Length>1) 
-				{		
+				if (ps.Data.Length > 1)
+				{
 					ids.Add(ps.Data[1]);
-					AbstractScanner.SetSubItem(lvi, this.StartColum, ((NeighborhoodType)ps.Data[0]).ToString().Replace("_", " "));					
-					AbstractScanner.SetSubItem(lvi, this.StartColum+1, "0x"+Helper.HexString(ps.Data[1]), ps);
+					AbstractScanner.SetSubItem(
+						lvi,
+						this.StartColum,
+						((NeighborhoodType)ps.Data[0]).ToString().Replace("_", " ")
+					);
+					AbstractScanner.SetSubItem(
+						lvi,
+						this.StartColum + 1,
+						"0x" + Helper.HexString(ps.Data[1]),
+						ps
+					);
 				}
 			}
 		}
 
 		public void FinishScan() { }
-		
+
 		protected override System.Windows.Forms.Control CreateOperationControl()
 		{
 			if (SimPe.PathProvider.Global.EPInstalled >= 18)
 			{
 				System.Windows.Forms.Label ll = new System.Windows.Forms.Label();
 				ll.AutoSize = true;
-				ll.Text = "Create Unique ID - Disabled:\r\nChanging Neighbourhood IDs Destroys Neighbourhood Stories\r\nYour game will correctly fix Neighbourhood IDs if needed";
-				ll.Font = new System.Drawing.Font("Verdana", ll.Font.Size, System.Drawing.FontStyle.Bold);
+				ll.Text =
+					"Create Unique ID - Disabled:\r\nChanging Neighbourhood IDs Destroys Neighbourhood Stories\r\nYour game will correctly fix Neighbourhood IDs if needed";
+				ll.Font = new System.Drawing.Font(
+					"Verdana",
+					ll.Font.Size,
+					System.Drawing.FontStyle.Bold
+				);
 				return ll;
 			}
 			else
 			{
-				System.Windows.Forms.LinkLabel ll = new System.Windows.Forms.LinkLabel();
+				System.Windows.Forms.LinkLabel ll =
+					new System.Windows.Forms.LinkLabel();
 				ll.AutoSize = true;
 				ll.Text = "Create Unique ID";
-				ll.Font = new System.Drawing.Font("Verdana", ll.Font.Size, System.Drawing.FontStyle.Bold);
-				ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(MakeUnique);
+				ll.Font = new System.Drawing.Font(
+					"Verdana",
+					ll.Font.Size,
+					System.Drawing.FontStyle.Bold
+				);
+				ll.LinkClicked +=
+					new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+						MakeUnique
+					);
 				return ll;
 			}
 		}
 
 		ScannerItem[] selection;
+
 		public override void EnableControl(ScannerItem[] items, bool active)
 		{
 			selection = items;
-			if (!active) 
+			if (!active)
 			{
 				this.OperationControl.Enabled = false;
 				return;
@@ -170,7 +218,6 @@ namespace SimPe.Plugin
 			OperationControl.Enabled = en;
 		}
 
-
 		#endregion
 
 		public override string ToString()
@@ -178,9 +225,13 @@ namespace SimPe.Plugin
 			return "Neighbourhood Scanner";
 		}
 
-		private void MakeUnique(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		private void MakeUnique(
+			object sender,
+			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		)
 		{
-			if (selection == null || SimPe.PathProvider.Global.EPInstalled >= 18) return;
+			if (selection == null || SimPe.PathProvider.Global.EPInstalled >= 18)
+				return;
 
 			WaitingScreen.Wait();
 			bool chg = false;
@@ -191,17 +242,22 @@ namespace SimPe.Plugin
 				{
 					WaitingScreen.UpdateMessage(si.FileName);
 
-					SimPe.Cache.PackageState ps = si.PackageCacheItem.FindState(this.Uid, true);
+					SimPe.Cache.PackageState ps = si.PackageCacheItem.FindState(
+						this.Uid,
+						true
+					);
 					if (si.PackageCacheItem.Type == PackageType.Neighbourhood)
 					{
-						Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(Data.MetaData.IDNO);
+						Interfaces.Files.IPackedFileDescriptor[] pfds =
+							si.Package.FindFiles(Data.MetaData.IDNO);
 						if (pfds.Length > 0)
 						{
 							Idno idno = new Idno();
 							idno.ProcessData(pfds[0], si.Package);
 							idno.MakeUnique(ids);
 
-							if (ps.Data.Length < 2) ps.Data = new uint[2];
+							if (ps.Data.Length < 2)
+								ps.Data = new uint[2];
 							if (idno.Uid != ps.Data[1])
 							{
 								idno.SynchronizeUserData();
@@ -215,12 +271,19 @@ namespace SimPe.Plugin
 					}
 				}
 
-				if (chg && this.CallbackFinish != null) this.CallbackFinish(false, false);
+				if (chg && this.CallbackFinish != null)
+					this.CallbackFinish(false, false);
 			}
 #if !DEBUG
-			catch (Exception ex) { Helper.ExceptionMessage("", ex); }
+			catch (Exception ex)
+			{
+				Helper.ExceptionMessage("", ex);
+			}
 #endif
-			finally { WaitingScreen.Stop(); }
+			finally
+			{
+				WaitingScreen.Stop();
+			}
 		}
 	}
 }

@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Interfaces.Plugin;
 using System.Collections;
+using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
 {
@@ -28,7 +28,8 @@ namespace SimPe.PackedFiles.Wrapper
 	/// </summary>
 	public class ExtFamilyTies : FamilyTies
 	{
-		public ExtFamilyTies():base(FileTable.ProviderRegistry.SimNameProvider)
+		public ExtFamilyTies()
+			: base(FileTable.ProviderRegistry.SimNameProvider)
 		{
 			//
 			// TODO: Fügen Sie hier die Konstruktorlogik hinzu
@@ -43,8 +44,11 @@ namespace SimPe.PackedFiles.Wrapper
 				"Quaxi",
 				"Contains all Familyties that are stored in a Neighborhood.",
 				2,
-				System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.familyties.png"))
-				); 
+				System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream("SimPe.img.familyties.png")
+				)
+			);
 		}
 		#endregion
 
@@ -64,11 +68,18 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			ArrayList list = new ArrayList();
 			SimPe.PackedFiles.Wrapper.Supporting.FamilyTieSim fts = this.FindTies(sdsc);
-			if (fts!=null) 
-				foreach (SimPe.PackedFiles.Wrapper.Supporting.FamilyTieItem fti in fts.Ties)
+			if (fts != null)
+				foreach (
+					SimPe.PackedFiles.Wrapper.Supporting.FamilyTieItem fti in fts.Ties
+				)
 				{
-					if (fti.SimDescription==null) continue;
-					if (fti.Type == Data.MetaData.FamilyTieTypes.MyMotherIs || fti.Type == Data.MetaData.FamilyTieTypes.MyFatherIs) list.Add(fti.SimDescription);
+					if (fti.SimDescription == null)
+						continue;
+					if (
+						fti.Type == Data.MetaData.FamilyTieTypes.MyMotherIs
+						|| fti.Type == Data.MetaData.FamilyTieTypes.MyFatherIs
+					)
+						list.Add(fti.SimDescription);
 				}
 
 			Wrapper.SDesc[] ret = new SDesc[list.Count];
@@ -86,11 +97,18 @@ namespace SimPe.PackedFiles.Wrapper
 			ArrayList list = new ArrayList();
 			SimPe.PackedFiles.Wrapper.Supporting.FamilyTieSim fts = this.FindTies(sdsc);
 
-			if (fts!=null) 
-				foreach (SimPe.PackedFiles.Wrapper.Supporting.FamilyTieItem fti in fts.Ties)
+			if (fts != null)
+				foreach (
+					SimPe.PackedFiles.Wrapper.Supporting.FamilyTieItem fti in fts.Ties
+				)
 				{
-					if (fti.SimDescription==null) continue;
-					if (fti.Type == Data.MetaData.FamilyTieTypes.ImMarriedTo || fti.Type == Data.MetaData.FamilyTieTypes.MySiblingIs) list.Add(fti.SimDescription);
+					if (fti.SimDescription == null)
+						continue;
+					if (
+						fti.Type == Data.MetaData.FamilyTieTypes.ImMarriedTo
+						|| fti.Type == Data.MetaData.FamilyTieTypes.MySiblingIs
+					)
+						list.Add(fti.SimDescription);
 				}
 
 			Wrapper.SDesc[] ret = new SDesc[list.Count];
@@ -108,40 +126,46 @@ namespace SimPe.PackedFiles.Wrapper
 			ArrayList list = new ArrayList();
 			SimPe.PackedFiles.Wrapper.Supporting.FamilyTieSim fts = this.FindTies(sdsc);
 
-			if (fts!=null) 
-				foreach (SimPe.PackedFiles.Wrapper.Supporting.FamilyTieItem fti in fts.Ties)
+			if (fts != null)
+				foreach (
+					SimPe.PackedFiles.Wrapper.Supporting.FamilyTieItem fti in fts.Ties
+				)
 				{
-					if (fti.SimDescription==null) continue;
-					if (fti.Type == Data.MetaData.FamilyTieTypes.MyChildIs ) list.Add(fti.SimDescription);
+					if (fti.SimDescription == null)
+						continue;
+					if (fti.Type == Data.MetaData.FamilyTieTypes.MyChildIs)
+						list.Add(fti.SimDescription);
 				}
-			
 
 			Wrapper.SDesc[] ret = new SDesc[list.Count];
 			list.CopyTo(ret);
 			return ret;
 		}
 
-        /// <summary>
-        /// returns a List of Spouse Sims
-        /// </summary>
-        /// <param name="sdsc"></param>
-        /// <returns></returns>
-        public Wrapper.SDesc[] SpouseSims(Wrapper.SDesc sdsc)
-        {
-            ArrayList list = new ArrayList();
-            SimPe.PackedFiles.Wrapper.Supporting.FamilyTieSim fts = this.FindTies(sdsc);
+		/// <summary>
+		/// returns a List of Spouse Sims
+		/// </summary>
+		/// <param name="sdsc"></param>
+		/// <returns></returns>
+		public Wrapper.SDesc[] SpouseSims(Wrapper.SDesc sdsc)
+		{
+			ArrayList list = new ArrayList();
+			SimPe.PackedFiles.Wrapper.Supporting.FamilyTieSim fts = this.FindTies(sdsc);
 
-            if (fts != null)
-                foreach (SimPe.PackedFiles.Wrapper.Supporting.FamilyTieItem fti in fts.Ties)
-                {
-                    if (fti.SimDescription == null) continue;
-                    if (fti.Type == Data.MetaData.FamilyTieTypes.ImMarriedTo) list.Add(fti.SimDescription);
-                }
+			if (fts != null)
+				foreach (
+					SimPe.PackedFiles.Wrapper.Supporting.FamilyTieItem fti in fts.Ties
+				)
+				{
+					if (fti.SimDescription == null)
+						continue;
+					if (fti.Type == Data.MetaData.FamilyTieTypes.ImMarriedTo)
+						list.Add(fti.SimDescription);
+				}
 
-
-            Wrapper.SDesc[] ret = new SDesc[list.Count];
-            list.CopyTo(ret);
-            return ret;
-        }
-    }
+			Wrapper.SDesc[] ret = new SDesc[list.Count];
+			list.CopyTo(ret);
+			return ret;
+		}
+	}
 }

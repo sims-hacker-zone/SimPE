@@ -6,9 +6,12 @@ namespace SimPe.Plugin.Downloads
 	/// <summary>
 	/// Summary description for PackageInfoCollection.
 	/// </summary>
-	public class PackageInfoCollection : System.IDisposable, System.Collections.IEnumerable
+	public class PackageInfoCollection
+		: System.IDisposable,
+			System.Collections.IEnumerable
 	{
 		ArrayList list;
+
 		public PackageInfoCollection()
 		{
 			list = new ArrayList();
@@ -16,7 +19,7 @@ namespace SimPe.Plugin.Downloads
 
 		public int Count
 		{
-			get {return list.Count;}
+			get { return list.Count; }
 		}
 
 		public void Clear()
@@ -52,8 +55,8 @@ namespace SimPe.Plugin.Downloads
 
 		public IPackageInfo this[int index]
 		{
-			get {return list[index] as IPackageInfo;}
-			set {list[index] = value;}
+			get { return list[index] as IPackageInfo; }
+			set { list[index] = value; }
 		}
 
 		public IPackageInfo[] ToArray()
@@ -67,7 +70,8 @@ namespace SimPe.Plugin.Downloads
 
 		public void Dispose()
 		{
-			if (list!=null) list.Clear();
+			if (list != null)
+				list.Clear();
 			list = null;
 		}
 

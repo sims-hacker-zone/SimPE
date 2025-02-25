@@ -18,18 +18,21 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Interfaces.Files;
 using System.Collections;
+using SimPe.Interfaces.Files;
 
 namespace SimPe.Collections.IO
 {
 	/// <summary>
 	/// Typesave ArrayList for IPackedFileDescriptor Objects
 	/// </summary>
-	public class PackedFileDescriptors: ArrayList 
+	public class PackedFileDescriptors : ArrayList
 	{
-		public PackedFileDescriptors(int capacity) : base(capacity) {}
-		public PackedFileDescriptors() : base() {}
+		public PackedFileDescriptors(int capacity)
+			: base(capacity) { }
+
+		public PackedFileDescriptors()
+			: base() { }
 
 		/// <summary>
 		/// Integer Indexer
@@ -86,12 +89,12 @@ namespace SimPe.Collections.IO
 		public bool Contains(IPackedFileDescriptor item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -103,7 +106,8 @@ namespace SimPe.Collections.IO
 		public override object Clone()
 		{
 			PackedFileDescriptors list = new PackedFileDescriptors();
-			foreach (IPackedFileDescriptor item in this) list.Add(item);
+			foreach (IPackedFileDescriptor item in this)
+				list.Add(item);
 
 			return list;
 		}

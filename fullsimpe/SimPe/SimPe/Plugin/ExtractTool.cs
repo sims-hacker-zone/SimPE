@@ -4,15 +4,15 @@ using SimPe.Interfaces;
 namespace SimPe.Plugin
 {
 	/// <summary>
-    /// Summary description for ExtractTool.
+	/// Summary description for ExtractTool.
 	/// </summary>
-    public class ExtractTool : Interfaces.AbstractTool, Interfaces.ITool
+	public class ExtractTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
 		/// <summary>
 		/// Windows Registry Link
 		/// </summary>
 		static SimPe.Registry registry;
-		internal static Registry WindowsRegistry 
+		internal static Registry WindowsRegistry
 		{
 			get { return registry; }
 		}
@@ -20,64 +20,82 @@ namespace SimPe.Plugin
 		IWrapperRegistry reg;
 		IProviderRegistry prov;
 
-		internal ExtractTool(IWrapperRegistry reg, IProviderRegistry prov) 
+		internal ExtractTool(IWrapperRegistry reg, IProviderRegistry prov)
 		{
 			this.reg = reg;
 			this.prov = prov;
 
-			if (registry==null) registry = Helper.WindowsRegistry;
+			if (registry == null)
+				registry = Helper.WindowsRegistry;
 		}
 
 		#region ITool Member
 
-        public bool IsEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
-        {
-            if (package == null || package.FileName == null) return false;
-            return true;
-        }
-
-        private bool IsReallyEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
-        {
-            if (package == null || package.FileName == null) return false;
-
-            if (package.FindFiles(0x53545223).Length > 0) return true; //Strings (STR#)
-            if (package.FindFiles(0x54544173).Length > 0) return true; //Pie String (TTAB)
-            if (package.FindFiles(0x43545353).Length > 0) return true; //Catalogue Description (CTSS)
-
-            System.Windows.Forms.MessageBox.Show("This package does not contain any Text Files.");
-            return false;
-        }
-
-		public Interfaces.Plugin.IToolResult ShowDialog(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package)
+		public bool IsEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
-            if (!IsReallyEnabled(pfd, package)) return new SimPe.Plugin.ToolResult(false, false);
-            
-            LanguageExtrator languagextrator = new LanguageExtrator();
-            return languagextrator.Execute(ref pfd, ref package, prov);
-        }
+			if (package == null || package.FileName == null)
+				return false;
+			return true;
+		}
+
+		private bool IsReallyEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
+		{
+			if (package == null || package.FileName == null)
+				return false;
+
+			if (package.FindFiles(0x53545223).Length > 0)
+				return true; //Strings (STR#)
+			if (package.FindFiles(0x54544173).Length > 0)
+				return true; //Pie String (TTAB)
+			if (package.FindFiles(0x43545353).Length > 0)
+				return true; //Catalogue Description (CTSS)
+
+			System.Windows.Forms.MessageBox.Show(
+				"This package does not contain any Text Files."
+			);
+			return false;
+		}
+
+		public Interfaces.Plugin.IToolResult ShowDialog(
+			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			ref SimPe.Interfaces.Files.IPackageFile package
+		)
+		{
+			if (!IsReallyEnabled(pfd, package))
+				return new SimPe.Plugin.ToolResult(false, false);
+
+			LanguageExtrator languagextrator = new LanguageExtrator();
+			return languagextrator.Execute(ref pfd, ref package, prov);
+		}
 
 		public override string ToString()
 		{
-            return "Object Tool\\Single Language Extractor...";
-        }
+			return "Object Tool\\Single Language Extractor...";
+		}
 
-        #endregion
+		#endregion
 
-        #region IToolExt Member
-        public override System.Drawing.Image Icon
-        {
-            get
-            {
-                return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.Extractor.png"));
-            }
-        }
-        public override System.Windows.Forms.Shortcut Shortcut
-        {
-            get
-            {
-                return System.Windows.Forms.Shortcut.None;
-            }
-        }
-        #endregion
-    }
+		#region IToolExt Member
+		public override System.Drawing.Image Icon
+		{
+			get
+			{
+				return System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream("SimPe.img.Extractor.png")
+				);
+			}
+		}
+		public override System.Windows.Forms.Shortcut Shortcut
+		{
+			get { return System.Windows.Forms.Shortcut.None; }
+		}
+		#endregion
+	}
 }

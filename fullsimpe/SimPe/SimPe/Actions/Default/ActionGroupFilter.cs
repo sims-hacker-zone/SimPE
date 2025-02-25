@@ -23,61 +23,72 @@ using System.Text;
 
 namespace SimPe.Actions.Default
 {
-    class ActionGroupFilter : AbstractActionDefault
-    {
-        private SimPe.Windows.Forms.ResourceListViewExt lv = null;
-        private ViewFilter Filter { get { return (ViewFilter)((lv == null) ? null : lv.Filter); } }
-        public ActionGroupFilter(SimPe.Windows.Forms.ResourceListViewExt value) { lv = value; }
+	class ActionGroupFilter : AbstractActionDefault
+	{
+		private SimPe.Windows.Forms.ResourceListViewExt lv = null;
+		private ViewFilter Filter
+		{
+			get { return (ViewFilter)((lv == null) ? null : lv.Filter); }
+		}
 
-        public override bool ChangeEnabledStateEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
-        {
-            bool res = base.ChangeEnabledStateEventHandler(sender, es);
-            return (Filter != null && Filter.FilterGroup) || (res && es.Count == 1);
-        }
+		public ActionGroupFilter(SimPe.Windows.Forms.ResourceListViewExt value)
+		{
+			lv = value;
+		}
 
-        #region IToolAction Member
+		public override bool ChangeEnabledStateEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs es
+		)
+		{
+			bool res = base.ChangeEnabledStateEventHandler(sender, es);
+			return (Filter != null && Filter.FilterGroup) || (res && es.Count == 1);
+		}
 
-        public override void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
-        {
-            if (!ChangeEnabledStateEventHandler(sender, es)) return;
+		#region IToolAction Member
 
-            if (Filter != null && Filter.FilterGroup)
-            {
-                Filter.FilterGroup = false;
-            }
-            else
-            {
-                Filter.Group = es.GetDescriptors()[0].Group;
-                Filter.FilterGroup = true;
-            }
-        }
+		public override void ExecuteEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs es
+		)
+		{
+			if (!ChangeEnabledStateEventHandler(sender, es))
+				return;
 
-        #endregion
+			if (Filter != null && Filter.FilterGroup)
+			{
+				Filter.FilterGroup = false;
+			}
+			else
+			{
+				Filter.Group = es.GetDescriptors()[0].Group;
+				Filter.FilterGroup = true;
+			}
+		}
 
-        #region IToolPlugin Member
-        public override string ToString()
-        {
-            return Localization.GetString("GroupFilterSet");
-        }
-        
 		#endregion
 
-		#region IToolExt Member		
-       public override System.Drawing.Image Icon
-        {
-            get
-            {
-                return SimPe.GetIcon.actionFilter;
-            }
-        }
+		#region IToolPlugin Member
+		public override string ToString()
+		{
+			return Localization.GetString("GroupFilterSet");
+		}
 
-        public override System.Windows.Forms.Shortcut Shortcut
-        {
-            get
-            {
-                return System.Windows.Forms.Shortcut.CtrlT; // for "Toggle"...
-            }
-        }
-        #endregion
-    }
+		#endregion
+
+		#region IToolExt Member
+		public override System.Drawing.Image Icon
+		{
+			get { return SimPe.GetIcon.actionFilter; }
+		}
+
+		public override System.Windows.Forms.Shortcut Shortcut
+		{
+			get
+			{
+				return System.Windows.Forms.Shortcut.CtrlT; // for "Toggle"...
+			}
+		}
+		#endregion
+	}
 }

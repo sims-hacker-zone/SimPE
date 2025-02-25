@@ -27,7 +27,7 @@ namespace SimPe.Plugin
 	/// This is the actual FileWrapper
 	/// </summary>
 	/// <remarks>
-	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads 
+	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
 	public class Lifo : Rcol
@@ -35,11 +35,9 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public Lifo(Interfaces.IProviderRegistry provider, bool fast) : base(provider, fast)
-		{
-		}
+		public Lifo(Interfaces.IProviderRegistry provider, bool fast)
+			: base(provider, fast) { }
 
-		
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
@@ -54,11 +52,14 @@ namespace SimPe.Plugin
 		{
 			return new AbstractWrapperInfo(
 				"LIFO Wrapper",
-                "Pumuckl, Quaxi",
-                "This File is part of the Scenegraph. It contains a large image for a Texture.",
+				"Pumuckl, Quaxi",
+				"This File is part of the Scenegraph. It contains a large image for a Texture.",
 				5,
-                System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.lifo.png"))
-				); 
+				System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream("SimPe.img.lifo.png")
+				)
+			);
 		}
 		#endregion
 
@@ -72,13 +73,14 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				uint[] types = {
-								   0xED534136   //LIFO Files
-							   };
+				uint[] types =
+				{
+					0xED534136, //LIFO Files
+				};
 				return types;
 			}
 		}
 
-		#endregion		
+		#endregion
 	}
 }

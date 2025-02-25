@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SimPe.Wizards
@@ -31,6 +31,7 @@ namespace SimPe.Wizards
 	public class FormStep1 : System.Windows.Forms.Form, IWizardForm
 	{
 		private System.Windows.Forms.Panel pnwizard;
+
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -46,7 +47,7 @@ namespace SimPe.Wizards
 			WizardSelector ws = new WizardSelector();
 
 			int top = 16;
-			foreach (IWizardEntry we in ws.Wizards) 
+			foreach (IWizardEntry we in ws.Wizards)
 			{
 				Panel pn = BuildWizardPanel(we);
 				pn.Visible = true;
@@ -56,18 +57,18 @@ namespace SimPe.Wizards
 			}
 
 			pnwizard.Height = top;
-			if (Helper.WindowsRegistry.UseBigIcons) this.Font = new System.Drawing.Font("Tahoma", 12F);
+			if (Helper.WindowsRegistry.UseBigIcons)
+				this.Font = new System.Drawing.Font("Tahoma", 12F);
 		}
 
 		Panel BuildWizardPanel(IWizardEntry we)
 		{
 			Panel pn = new Panel();
-			
+
 			pn.Parent = pnwizard;
 			pn.Width = pnwizard.Width - 148;
 			pn.Left = 24;
 			pn.Height = 64;
-
 
 			PictureBox pb = new PictureBox();
 			pb.Parent = pn;
@@ -84,7 +85,11 @@ namespace SimPe.Wizards
 			lb1.Top = 0;
 			lb1.AutoSize = true;
 			lb1.Text = we.WizardCaption;
-			lb1.Font = new Font("Georgia", (float)10, FontStyle.Bold | FontStyle.Italic);
+			lb1.Font = new Font(
+				"Georgia",
+				(float)10,
+				FontStyle.Bold | FontStyle.Italic
+			);
 			lb1.LinkColor = Color.FromArgb(0xE5, 0x53, 0x00);
 			lb1.Tag = we;
 			lb1.LinkClicked += new LinkLabelLinkClickedEventHandler(StartWizard);
@@ -103,45 +108,44 @@ namespace SimPe.Wizards
 			lb2.Text = we.WizardDescription;
 			lb2.Visible = true;
 
-
 			return pn;
 		}
 
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
-				if(components != null)
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
 
 		#region Windows Form Designer generated code
 		/// <summary>
-		/// Required method for Designer support - do not modify 
+		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
 			this.pnwizard = new System.Windows.Forms.Panel();
 			this.SuspendLayout();
-			// 
+			//
 			// pnwizard
-			// 
+			//
 			this.pnwizard.BackColor = System.Drawing.Color.White;
 			this.pnwizard.Location = new System.Drawing.Point(0, 0);
 			this.pnwizard.Name = "pnwizard";
 			this.pnwizard.Size = new System.Drawing.Size(1022, 626);
 			this.pnwizard.TabIndex = 8;
-			// 
+			//
 			// FormStep1
-			// 
+			//
 			this.AutoScaleBaseSize = new System.Drawing.Size(7, 16);
 			this.ClientSize = new System.Drawing.Size(1022, 626);
 			this.Controls.Add(this.pnwizard);
@@ -149,22 +153,21 @@ namespace SimPe.Wizards
 			this.Name = "FormStep1";
 			this.Text = "FormStep1";
 			this.ResumeLayout(false);
-
 		}
 		#endregion
 
 		#region IWizardWindow Members
-		public Panel WizardWindow 
+		public Panel WizardWindow
 		{
 			get { return this.pnwizard; }
 		}
 
 		public string WizardMessage
 		{
-			get { return "Please select the Task you want to perform.";}
+			get { return "Please select the Task you want to perform."; }
 		}
 
-		public int WizardStep 
+		public int WizardStep
 		{
 			get { return 1; }
 		}
@@ -177,18 +180,12 @@ namespace SimPe.Wizards
 		IWizardForm wizard;
 		public IWizardForm Next
 		{
-			get 
-			{
-				return wizard;
-			}
+			get { return wizard; }
 		}
 
 		public bool CanContinue
 		{
-			get 
-			{
-				return false;
-			}
+			get { return false; }
 		}
 		#endregion
 

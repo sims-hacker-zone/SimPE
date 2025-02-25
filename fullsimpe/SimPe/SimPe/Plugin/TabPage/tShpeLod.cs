@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SimPe.Plugin.TabPage
@@ -28,7 +28,8 @@ namespace SimPe.Plugin.TabPage
 	/// <summary>
 	/// Summary description for fShapeRefNode.
 	/// </summary>
-	public class ShpeLod : 
+	public class ShpeLod
+		:
 		//System.Windows.Forms.UserControl
 		System.Windows.Forms.TabPage
 	{
@@ -37,7 +38,7 @@ namespace SimPe.Plugin.TabPage
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.LinkLabel linkLabel3;
 		private System.Windows.Forms.LinkLabel linkLabel4;
-		
+
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -46,40 +47,42 @@ namespace SimPe.Plugin.TabPage
 		public ShpeLod()
 		{
 			SetStyle(
-				ControlStyles.SupportsTransparentBackColor |
-				ControlStyles.AllPaintingInWmPaint |
-				//ControlStyles.Opaque |
-				ControlStyles.UserPaint |
-				ControlStyles.ResizeRedraw 
-				| ControlStyles.DoubleBuffer
-				,true);
+				ControlStyles.SupportsTransparentBackColor
+					| ControlStyles.AllPaintingInWmPaint
+					|
+					//ControlStyles.Opaque |
+					ControlStyles.UserPaint
+					| ControlStyles.ResizeRedraw
+					| ControlStyles.DoubleBuffer,
+				true
+			);
 			//
 			// Required designer variable.
 			//
-            InitializeComponent();
+			InitializeComponent();
 
-            this.UseVisualStyleBackColor = true;
+			this.UseVisualStyleBackColor = true;
 		}
 
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
 				Tag = null;
-				if(components != null)
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
 
 		#region Windows Form Designer generated code
 		/// <summary>
-		/// Required method for Designer support - do not modify 
+		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
@@ -88,11 +91,11 @@ namespace SimPe.Plugin.TabPage
 			this.linkLabel3 = new System.Windows.Forms.LinkLabel();
 			this.tbunk = new System.Windows.Forms.TextBox();
 			this.lbunk = new System.Windows.Forms.ListBox();
-			this.label1 = new System.Windows.Forms.Label();			
+			this.label1 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
-			// 
+			//
 			// tShpeLod
-			// 
+			//
 			this.Controls.Add(this.linkLabel4);
 			this.Controls.Add(this.linkLabel3);
 			this.Controls.Add(this.tbunk);
@@ -103,94 +106,135 @@ namespace SimPe.Plugin.TabPage
 			this.Size = new System.Drawing.Size(536, 254);
 			this.TabIndex = 0;
 			this.Text = "Level of Detail Listing";
-			// 
+			//
 			// linkLabel4
-			// 
+			//
 			this.linkLabel4.AutoSize = true;
-			this.linkLabel4.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.linkLabel4.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.linkLabel4.Location = new System.Drawing.Point(188, 56);
 			this.linkLabel4.Name = "linkLabel4";
 			this.linkLabel4.Size = new System.Drawing.Size(44, 17);
 			this.linkLabel4.TabIndex = 7;
 			this.linkLabel4.TabStop = true;
 			this.linkLabel4.Text = "delete";
-			this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
-			// 
+			this.linkLabel4.LinkClicked +=
+				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+					this.linkLabel4_LinkClicked
+				);
+			//
 			// linkLabel3
-			// 
+			//
 			this.linkLabel3.AutoSize = true;
-			this.linkLabel3.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.linkLabel3.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.linkLabel3.Location = new System.Drawing.Point(160, 56);
 			this.linkLabel3.Name = "linkLabel3";
 			this.linkLabel3.Size = new System.Drawing.Size(28, 17);
 			this.linkLabel3.TabIndex = 6;
 			this.linkLabel3.TabStop = true;
 			this.linkLabel3.Text = "add";
-			this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
-			// 
+			this.linkLabel3.LinkClicked +=
+				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+					this.linkLabel3_LinkClicked
+				);
+			//
 			// tbunk
-			// 
-			this.tbunk.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			//
+			this.tbunk.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.tbunk.Location = new System.Drawing.Point(144, 32);
 			this.tbunk.Name = "tbunk";
 			this.tbunk.Size = new System.Drawing.Size(88, 21);
 			this.tbunk.TabIndex = 4;
 			this.tbunk.Text = "0x00000000";
 			this.tbunk.TextChanged += new System.EventHandler(this.ChangeUnknown);
-			// 
+			//
 			// lbunk
-			// 
-			this.lbunk.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			//
+			this.lbunk.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Regular,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.lbunk.IntegralHeight = false;
 			this.lbunk.Location = new System.Drawing.Point(8, 8);
 			this.lbunk.Name = "lbunk";
 			this.lbunk.Size = new System.Drawing.Size(120, 104);
 			this.lbunk.TabIndex = 3;
-			this.lbunk.SelectedIndexChanged += new System.EventHandler(this.SelectUnknown);
-			// 
+			this.lbunk.SelectedIndexChanged += new System.EventHandler(
+				this.SelectUnknown
+			);
+			//
 			// label1
-			// 
+			//
 			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label1.Font = new System.Drawing.Font(
+				"Verdana",
+				8.25F,
+				System.Drawing.FontStyle.Bold,
+				System.Drawing.GraphicsUnit.Point,
+				((System.Byte)(0))
+			);
 			this.label1.Location = new System.Drawing.Point(136, 16);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(44, 17);
 			this.label1.TabIndex = 5;
 			this.label1.Text = "Value:";
-			// 
+			//
 			// ShpeForm
-			// 
-			
-			this.ResumeLayout(false);
+			//
 
+			this.ResumeLayout(false);
 		}
-		#endregion		
+		#endregion
 
 		private void UpdateLists()
 		{
-			try 
+			try
 			{
 				SimPe.Plugin.Shape shape = (SimPe.Plugin.Shape)this.Tag;
 
 				uint[] unknown = new uint[lbunk.Items.Count];
-				for (int i=0; i<unknown.Length; i++) unknown[i] = (uint)lbunk.Items[i];
-				shape.Unknwon = unknown;				
-			} 
-			catch (Exception){}
+				for (int i = 0; i < unknown.Length; i++)
+					unknown[i] = (uint)lbunk.Items[i];
+				shape.Unknwon = unknown;
+			}
+			catch (Exception) { }
 		}
 
 		private void SelectUnknown(object sender, System.EventArgs e)
 		{
-			if (tbunk.Tag!=null) return;
-			if (lbunk.SelectedIndex<0) return;
+			if (tbunk.Tag != null)
+				return;
+			if (lbunk.SelectedIndex < 0)
+				return;
 
-			try 
+			try
 			{
 				tbunk.Tag = true;
-				tbunk.Text = "0x"+Helper.HexString((uint)lbunk.Items[lbunk.SelectedIndex]);
+				tbunk.Text =
+					"0x" + Helper.HexString((uint)lbunk.Items[lbunk.SelectedIndex]);
 			}
-			catch (Exception) {}
-			finally 
+			catch (Exception) { }
+			finally
 			{
 				tbunk.Tag = null;
 			}
@@ -198,34 +242,44 @@ namespace SimPe.Plugin.TabPage
 
 		private void ChangeUnknown(object sender, System.EventArgs e)
 		{
-			if (tbunk.Tag!=null) return;
-			if (lbunk.SelectedIndex<0) return;
+			if (tbunk.Tag != null)
+				return;
+			if (lbunk.SelectedIndex < 0)
+				return;
 
-			try 
+			try
 			{
 				tbunk.Tag = true;
-				lbunk.Items[lbunk.SelectedIndex] = Convert.ToUInt32(tbunk.Text, 16);}
-			catch (Exception) {}
-			finally 
+				lbunk.Items[lbunk.SelectedIndex] = Convert.ToUInt32(tbunk.Text, 16);
+			}
+			catch (Exception) { }
+			finally
 			{
 				tbunk.Tag = null;
 			}
 		}
 
-		private void linkLabel3_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		private void linkLabel3_LinkClicked(
+			object sender,
+			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		)
 		{
-			try 
+			try
 			{
 				uint val = Convert.ToUInt32(tbunk.Text, 16);
 				lbunk.Items.Add(val);
 				UpdateLists();
 			}
-			catch (Exception) {}
+			catch (Exception) { }
 		}
 
-		private void linkLabel4_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		private void linkLabel4_LinkClicked(
+			object sender,
+			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		)
 		{
-			if (lbunk.SelectedIndex < 0) return;
+			if (lbunk.SelectedIndex < 0)
+				return;
 			lbunk.Items.RemoveAt(lbunk.SelectedIndex);
 			UpdateLists();
 		}

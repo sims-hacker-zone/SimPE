@@ -35,7 +35,7 @@ namespace SimPe.Cache
 		public const byte VERSION = 1;
 
 		public MMATCacheItem()
-		{			
+		{
 			version = VERSION;
 			modelname = "";
 			family = "";
@@ -54,9 +54,10 @@ namespace SimPe.Cache
 		/// </summary>
 		public Interfaces.Files.IPackedFileDescriptor FileDescriptor
 		{
-			get { 
+			get
+			{
 				pfd.Tag = this;
-				return pfd; 
+				return pfd;
 			}
 			set { pfd = value; }
 		}
@@ -68,7 +69,7 @@ namespace SimPe.Cache
 		{
 			get { return def; }
 			set { def = value; }
-		}				
+		}
 
 		/// <summary>
 		/// Returns the ModeName for this Object
@@ -87,31 +88,30 @@ namespace SimPe.Cache
 			get { return family; }
 			set { family = value; }
 		}
-		
 
 		public override string ToString()
 		{
-			return "modelname="+ModelName+", family="+family;
+			return "modelname=" + ModelName + ", family=" + family;
 		}
-
 
 		#region ICacheItem Member
 
-		public void Load(System.IO.BinaryReader reader) 
+		public void Load(System.IO.BinaryReader reader)
 		{
 			version = reader.ReadByte();
-			if (version>VERSION) throw new CacheException("Unknown CacheItem Version.", null, version);
-										
+			if (version > VERSION)
+				throw new CacheException("Unknown CacheItem Version.", null, version);
+
 			modelname = reader.ReadString();
 			family = reader.ReadString();
 			def = reader.ReadBoolean();
 			pfd = new Packages.PackedFileDescriptor();
 			pfd.Type = reader.ReadUInt32();
 			pfd.Group = reader.ReadUInt32();
-			pfd.LongInstance = reader.ReadUInt64();			
+			pfd.LongInstance = reader.ReadUInt64();
 		}
 
-		public void Save(System.IO.BinaryWriter writer) 
+		public void Save(System.IO.BinaryWriter writer)
 		{
 			version = VERSION;
 			writer.Write(version);
@@ -120,15 +120,12 @@ namespace SimPe.Cache
 			writer.Write(def);
 			writer.Write(pfd.Type);
 			writer.Write(pfd.Group);
-			writer.Write(pfd.LongInstance);			
+			writer.Write(pfd.LongInstance);
 		}
 
 		public byte Version
 		{
-			get
-			{
-				return version;
-			}
+			get { return version; }
 		}
 
 		#endregion

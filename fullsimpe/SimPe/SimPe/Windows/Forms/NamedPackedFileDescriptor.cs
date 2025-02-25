@@ -4,92 +4,102 @@ using System.Text;
 
 namespace SimPe.Windows.Forms
 {
-    public class NamedPackedFileDescriptor
-    {
-        SimPe.Interfaces.Files.IPackedFileDescriptor pfd;
-        SimPe.Interfaces.Files.IPackageFile pkg;
-        SimPe.Plugin.FileIndexItem fii;
-        string realname;
-        public NamedPackedFileDescriptor(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile pkg)
-        {
-            this.pfd = pfd;
-            this.pkg = pkg;
-            this.fii = new SimPe.Plugin.FileIndexItem(pfd, pkg);
-            realname = null;
-        }
+	public class NamedPackedFileDescriptor
+	{
+		SimPe.Interfaces.Files.IPackedFileDescriptor pfd;
+		SimPe.Interfaces.Files.IPackageFile pkg;
+		SimPe.Plugin.FileIndexItem fii;
+		string realname;
 
-        public SimPe.Plugin.FileIndexItem Resource
-        {
-            get { return fii; }
-        }
+		public NamedPackedFileDescriptor(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile pkg
+		)
+		{
+			this.pfd = pfd;
+			this.pkg = pkg;
+			this.fii = new SimPe.Plugin.FileIndexItem(pfd, pkg);
+			realname = null;
+		}
 
-        public SimPe.Interfaces.Files.IPackedFileDescriptor Descriptor
-        {
-            get { return pfd; }
-        }
+		public SimPe.Plugin.FileIndexItem Resource
+		{
+			get { return fii; }
+		}
 
-        public bool RealNameLoaded
-        {
-            get { return realname != null; }
-        }
+		public SimPe.Interfaces.Files.IPackedFileDescriptor Descriptor
+		{
+			get { return pfd; }
+		}
 
-        public void ResetRealName()
-        {
-            realname = null;
-        }
+		public bool RealNameLoaded
+		{
+			get { return realname != null; }
+		}
 
-        public string GetRealName()
-        {
-            if (realname == null)
-            {
-                if (Helper.WindowsRegistry.DecodeFilenamesState)
-                {                    
-                    SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper wrp = FileTable.WrapperRegistry.FindHandler(pfd.Type);
-                    if (wrp != null)
-                    {      
-                        lock (wrp)
-                        {
-                            //System.Diagnostics.Debug.WriteLine("Processing " + pfd.Type.ToString("X")+" "+pfd.Offset.ToString("X"));
-                            SimPe.Interfaces.Files.IPackedFileDescriptor bakpfd = null;
-                            SimPe.Interfaces.Files.IPackageFile bakpkg = null;
-                            if (wrp is SimPe.Interfaces.Plugin.AbstractWrapper)
-                            {
-                                SimPe.Interfaces.Plugin.AbstractWrapper awrp = (SimPe.Interfaces.Plugin.AbstractWrapper)wrp;
-                                if (!awrp.AllowMultipleInstances)
-                                {
-                                    bakpfd = awrp.FileDescriptor;
-                                    bakpkg = awrp.Package;
-                                }
+		public void ResetRealName()
+		{
+			realname = null;
+		}
 
-                                awrp.FileDescriptor = pfd;
-                                awrp.Package = pkg;
-                            }
-                            try
-                            {
-                                realname = wrp.ResourceName;                                
-                            }
-                            catch{ realname = pfd.ToResListString();}
-                            finally
-                            {
-                                if (bakpfd != null || bakpkg != null)
-                                    if (wrp is SimPe.Interfaces.Plugin.AbstractWrapper)
-                                    {
-                                        SimPe.Interfaces.Plugin.AbstractWrapper awrp = (SimPe.Interfaces.Plugin.AbstractWrapper)wrp;
-                                        if (!awrp.AllowMultipleInstances)
-                                        {
-                                            awrp.FileDescriptor = bakpfd;
-                                            awrp.Package = bakpkg;
-                                        }
-                                    }
-                            }
-                        } //lock
-                    }
+		public string GetRealName()
+		{
+			if (realname == null)
+			{
+				if (Helper.WindowsRegistry.DecodeFilenamesState)
+				{
+					SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper wrp =
+						FileTable.WrapperRegistry.FindHandler(pfd.Type);
+					if (wrp != null)
+					{
+						lock (wrp)
+						{
+							//System.Diagnostics.Debug.WriteLine("Processing " + pfd.Type.ToString("X")+" "+pfd.Offset.ToString("X"));
+							SimPe.Interfaces.Files.IPackedFileDescriptor bakpfd = null;
+							SimPe.Interfaces.Files.IPackageFile bakpkg = null;
+							if (wrp is SimPe.Interfaces.Plugin.AbstractWrapper)
+							{
+								SimPe.Interfaces.Plugin.AbstractWrapper awrp =
+									(SimPe.Interfaces.Plugin.AbstractWrapper)wrp;
+								if (!awrp.AllowMultipleInstances)
+								{
+									bakpfd = awrp.FileDescriptor;
+									bakpkg = awrp.Package;
+								}
 
-                }
-                if (realname == null) realname = pfd.ToResListString();
-            }
+								awrp.FileDescriptor = pfd;
+								awrp.Package = pkg;
+							}
+							try
+							{
+								realname = wrp.ResourceName;
+							}
+							catch
+							{
+								realname = pfd.ToResListString();
+							}
+							finally
+							{
+								if (bakpfd != null || bakpkg != null)
+									if (wrp is SimPe.Interfaces.Plugin.AbstractWrapper)
+									{
+										SimPe.Interfaces.Plugin.AbstractWrapper awrp =
+											(SimPe.Interfaces.Plugin.AbstractWrapper)wrp;
+										if (!awrp.AllowMultipleInstances)
+										{
+											awrp.FileDescriptor = bakpfd;
+											awrp.Package = bakpkg;
+										}
+									}
+							}
+						} //lock
+					}
+				}
+				if (realname == null)
+					realname = pfd.ToResListString();
+			}
 
-            return realname;
-        }
-    }
+			return realname;
+		}
+	}
 }

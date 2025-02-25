@@ -24,24 +24,25 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// this is basicall te same as StandardLightBase
 	/// </summary>
-	public class LightT : StandardLightBase , System.IDisposable
+	public class LightT : StandardLightBase, System.IDisposable
 	{
 		#region Attributes
 
 		#endregion
-		
+
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public LightT(Rcol parent) : base(parent)
+		public LightT(Rcol parent)
+			: base(parent)
 		{
 			version = 11;
 			BlockID = 0;
 
 			sgres = new SGResource(null);
 		}
-		
+
 		#region IRcolBlock Member
 
 		/// <summary>
@@ -53,7 +54,7 @@ namespace SimPe.Plugin
 			version = reader.ReadUInt32();
 
 			sgres.BlockName = reader.ReadString();
-			sgres.BlockID = reader.ReadUInt32();			
+			sgres.BlockID = reader.ReadUInt32();
 			sgres.Unserialize(reader);
 		}
 
@@ -62,7 +63,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public override void Serialize(System.IO.BinaryWriter writer)
@@ -79,7 +80,8 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (tLightT==null) tLightT = new SimPe.Plugin.TabPage.LightT();
+				if (tLightT == null)
+					tLightT = new SimPe.Plugin.TabPage.LightT();
 				return tLightT;
 			}
 		}
@@ -88,10 +90,11 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
 		/// </summary>
-		protected override void InitTabPage() 
+		protected override void InitTabPage()
 		{
-			if (tLightT==null) tLightT = new SimPe.Plugin.TabPage.LightT();
-			tLightT.tb_lt_ver.Text = "0x"+Helper.HexString(this.version);
+			if (tLightT == null)
+				tLightT = new SimPe.Plugin.TabPage.LightT();
+			tLightT.tb_lt_ver.Text = "0x" + Helper.HexString(this.version);
 			tLightT.tb_lt_name.Text = sgres.FileName;
 		}
 
@@ -99,7 +102,8 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (tLightT!=null) tLightT.Dispose();
+			if (tLightT != null)
+				tLightT.Dispose();
 			tLightT = null;
 		}
 

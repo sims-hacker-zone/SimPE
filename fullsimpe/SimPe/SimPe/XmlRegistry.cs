@@ -27,15 +27,15 @@ namespace SimPe
 	/// <summary>
 	/// Represents one Key in the XML Registry
 	/// </summary>
-	public class XmlRegistryKey 
+	public class XmlRegistryKey
 	{
-		Hashtable tree ;
+		Hashtable tree;
 		string name;
 
 		/// <summary>
 		/// Returns the Name of this Key
 		/// </summary>
-		public string Name 
+		public string Name
 		{
 			get { return name; }
 		}
@@ -78,22 +78,26 @@ namespace SimPe
 		/// <param name="create">create it if it does not exist</param>
 		/// <returns>the opened/created subKey (null if created is false and the key does not exist)</returns>
 		/// <exception cref="Exception">Thrown if the passed Element is not a Key but a value</exception>
-		XmlRegistryKey OpenLocalSubKey(string name, bool create) 
+		XmlRegistryKey OpenLocalSubKey(string name, bool create)
 		{
-			if (tree.ContainsKey(name)) 
+			if (tree.ContainsKey(name))
 			{
 				object o = tree[name];
-				if (o!=null) if (o.GetType()!=typeof(XmlRegistryKey)) throw new Exception("The SubElement "+name+" is not a Key!");
+				if (o != null)
+					if (o.GetType() != typeof(XmlRegistryKey))
+						throw new Exception(
+							"The SubElement " + name + " is not a Key!"
+						);
 
 				return (XmlRegistryKey)o;
 			}
 
-			if (create) 
+			if (create)
 			{
 				XmlRegistryKey xrk = new XmlRegistryKey();
 				xrk.name = name;
 				tree[name] = xrk;
-				return CreateSubKey(name);		
+				return CreateSubKey(name);
 			}
 
 			return null;
@@ -106,7 +110,7 @@ namespace SimPe
 		/// <param name="create">create it if it does not exist</param>
 		/// <returns>the opened/created subKey (null if created is false and the key does not exist)</returns>
 		/// <exception cref="Exception">Thrown if the passed Element is not a Key but a value</exception>
-		public XmlRegistryKey OpenSubKey(string name, bool create) 
+		public XmlRegistryKey OpenSubKey(string name, bool create)
 		{
 			return OpenSubKey(this.GetPath(name), create);
 		}
@@ -118,16 +122,17 @@ namespace SimPe
 		/// <param name="create">create it if it does not exist</param>
 		/// <returns>the opened/created subKey (null if created is false and the key does not exist)</returns>
 		/// <exception cref="Exception">Thrown if the passed Element is not a Key but a value</exception>
-		XmlRegistryKey OpenSubKey(string[] path, bool create) 
+		XmlRegistryKey OpenSubKey(string[] path, bool create)
 		{
 			XmlRegistryKey key = this;
 
 			string curkey = "";
-			for (int i=0; i<path.Length; i++) 
+			for (int i = 0; i < path.Length; i++)
 			{
 				key = key.OpenLocalSubKey(path[i], create);
-				curkey += "\\"+path[i];
-				if (key==null) return null; //throw new Exception("The Key "+curkey+" was not found!");
+				curkey += "\\" + path[i];
+				if (key == null)
+					return null; //throw new Exception("The Key "+curkey+" was not found!");
 			}
 
 			return key;
@@ -138,7 +143,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="name"></param>
 		/// <param name="throwOnException"></param>
-		public void DeleteSubKey(string name, bool throwOnException) 
+		public void DeleteSubKey(string name, bool throwOnException)
 		{
 			DeleteSubKey(GetPath(name), throwOnException);
 		}
@@ -148,27 +153,32 @@ namespace SimPe
 		/// </summary>
 		/// <param name="path"></param>
 		/// <param name="throwOnException"></param>
-		void DeleteSubKey(string[] path, bool throwOnException) 
+		void DeleteSubKey(string[] path, bool throwOnException)
 		{
-			if (path.Length<1) return;
+			if (path.Length < 1)
+				return;
 
 			XmlRegistryKey key = this;
 
 			string curkey = "";
-			for (int i=0; i<path.Length-1; i++) 
+			for (int i = 0; i < path.Length - 1; i++)
 			{
 				key = key.OpenLocalSubKey(path[i], false);
-				curkey += "\\"+path[i];
-				if (key==null) 
+				curkey += "\\" + path[i];
+				if (key == null)
 				{
-					if (throwOnException) throw new Exception("The Key "+curkey+" was not found!");
-					else return;
+					if (throwOnException)
+						throw new Exception("The Key " + curkey + " was not found!");
+					else
+						return;
 				}
 			}
 
-			string name = path[path.Length-1];
-			if (!key.tree.Contains(name) && throwOnException) throw new Exception("The Key "+curkey+" was not found!");
-			if (key.tree.Contains(name)) key.tree.Remove(name);
+			string name = path[path.Length - 1];
+			if (!key.tree.Contains(name) && throwOnException)
+				throw new Exception("The Key " + curkey + " was not found!");
+			if (key.tree.Contains(name))
+				key.tree.Remove(name);
 		}
 		#endregion
 
@@ -189,11 +199,11 @@ namespace SimPe
 		/// <param name="name">name of the Value</param>
 		/// <returns>null or the stored value</returns>
 		/// <exception cref="Exception">Thrown if the specified Value is a SubKey</exception>
-		public object GetValue(string name) 
+		public object GetValue(string name)
 		{
 			return GetValue(name, null);
 		}
-		
+
 		/// <summary>
 		/// Returns the value stored in the passed Element
 		/// </summary>
@@ -201,11 +211,14 @@ namespace SimPe
 		/// <param name="def">Default Value</param>
 		/// <returns>null or the stored value</returns>
 		/// <exception cref="Exception">Thrown if the specified Value is a SubKey</exception>
-		public object GetValue(string name, object def) 
+		public object GetValue(string name, object def)
 		{
 			object o = tree[name];
-			if (def!=null && o==null) o = def;
-			if (o!=null) if (o.GetType()==typeof(XmlRegistryKey)) throw new Exception("The SubElement "+name+" is a Key!");
+			if (def != null && o == null)
+				o = def;
+			if (o != null)
+				if (o.GetType() == typeof(XmlRegistryKey))
+					throw new Exception("The SubElement " + name + " is a Key!");
 			return o;
 		}
 		#endregion
@@ -218,9 +231,10 @@ namespace SimPe
 		{
 			ArrayList l = new ArrayList();
 
-			foreach (string s in tree.Keys) 
-				if (tree[s] is XmlRegistryKey) l.Add(s);
-			
+			foreach (string s in tree.Keys)
+				if (tree[s] is XmlRegistryKey)
+					l.Add(s);
+
 			string[] res = new string[l.Count];
 			l.CopyTo(res);
 			return res;
@@ -234,9 +248,10 @@ namespace SimPe
 		{
 			ArrayList l = new ArrayList();
 
-			foreach (string s in tree.Keys) 
-				if (!(tree[s] is XmlRegistryKey)) l.Add(s);
-			
+			foreach (string s in tree.Keys)
+				if (!(tree[s] is XmlRegistryKey))
+					l.Add(s);
+
 			string[] res = new string[l.Count];
 			l.CopyTo(res);
 			return res;
@@ -250,14 +265,14 @@ namespace SimPe
 	{
 		string filename;
 		XmlRegistryKey root;
-		
+
 		/// <summary>
 		/// Returns the CurrentUser Registry Key
 		/// </summary>
-		public XmlRegistryKey CurrentUser 
+		public XmlRegistryKey CurrentUser
 		{
-			get {return root; }
-		}		
+			get { return root; }
+		}
 
 		/// <summary>
 		/// Load the Registry from the passed File
@@ -267,29 +282,35 @@ namespace SimPe
 		public XmlRegistry(string infilename, string outfilename, bool create)
 		{
 			root = new XmlRegistryKey();
-			if (create) 
+			if (create)
 			{
-                if (!System.IO.Directory.Exists(System.IO.Path.GetDirectoryName(outfilename)))
-                    System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(outfilename));
-                if (!System.IO.File.Exists(outfilename))
-                    Flush(outfilename);
+				if (
+					!System.IO.Directory.Exists(
+						System.IO.Path.GetDirectoryName(outfilename)
+					)
+				)
+					System.IO.Directory.CreateDirectory(
+						System.IO.Path.GetDirectoryName(outfilename)
+					);
+				if (!System.IO.File.Exists(outfilename))
+					Flush(outfilename);
 			}
 
-            this.filename = outfilename;
+			this.filename = outfilename;
 
 			//read XML File
 			System.Xml.XmlDocument xmlfile = new XmlDocument();
-            xmlfile.Load(infilename);
+			xmlfile.Load(infilename);
 
 			//seek Root Node
-			XmlNodeList XMLData = xmlfile.GetElementsByTagName("registry");					
+			XmlNodeList XMLData = xmlfile.GetElementsByTagName("registry");
 
 			//Process all Root Node Entries
-			for (int i=0; i<XMLData.Count; i++)
+			for (int i = 0; i < XMLData.Count; i++)
 			{
-				XmlNode node = XMLData.Item(i);	
-				ParseSubNode(node, root);				
-			}				
+				XmlNode node = XMLData.Item(i);
+				ParseSubNode(node, root);
+			}
 		}
 
 		/// <summary>
@@ -299,14 +320,22 @@ namespace SimPe
 		/// <param name="subkey"></param>
 		void ParseValues(XmlNode subnode, XmlRegistryKey subkey)
 		{
-			if (subnode.Name=="string") ParseStringValue(subnode, subkey);
-			if (subnode.Name=="int") ParseIntValue(subnode, subkey);
-			if (subnode.Name=="uint") ParseUIntValue(subnode, subkey);
-			if (subnode.Name=="long") ParseLongValue(subnode, subkey);
-			if (subnode.Name=="ulong") ParseULongValue(subnode, subkey);
-			if (subnode.Name=="bool") ParseBoolValue(subnode, subkey);
-			if (subnode.Name=="float") ParseFloatValue(subnode, subkey);
-			if (subnode.Name=="datetime") ParseDateTimeValue(subnode, subkey);
+			if (subnode.Name == "string")
+				ParseStringValue(subnode, subkey);
+			if (subnode.Name == "int")
+				ParseIntValue(subnode, subkey);
+			if (subnode.Name == "uint")
+				ParseUIntValue(subnode, subkey);
+			if (subnode.Name == "long")
+				ParseLongValue(subnode, subkey);
+			if (subnode.Name == "ulong")
+				ParseULongValue(subnode, subkey);
+			if (subnode.Name == "bool")
+				ParseBoolValue(subnode, subkey);
+			if (subnode.Name == "float")
+				ParseFloatValue(subnode, subkey);
+			if (subnode.Name == "datetime")
+				ParseDateTimeValue(subnode, subkey);
 		}
 
 		/// <summary>
@@ -314,19 +343,23 @@ namespace SimPe
 		/// </summary>
 		/// <param name="node">The current Node</param>
 		/// <param name="key">The current SubTree</param>
-		void ParseSubNode(XmlNode node, XmlRegistryKey key) 
+		void ParseSubNode(XmlNode node, XmlRegistryKey key)
 		{
 			XmlRegistryKey subkey = key;
-			
+
 			//Remember the Name of the Node
-			if (node.Name=="key") subkey = key.CreateSubKey(node.Attributes["name"].Value);
-			
-			foreach (XmlNode subnode in node) 
+			if (node.Name == "key")
+				subkey = key.CreateSubKey(node.Attributes["name"].Value);
+
+			foreach (XmlNode subnode in node)
 			{
-				if (subnode.Name=="key") ParseSubNode(subnode, subkey);	
+				if (subnode.Name == "key")
+					ParseSubNode(subnode, subkey);
 				ParseValues(subnode, subkey);
-				if (subnode.Name=="list") ParseListNode(subnode, subkey, false);				
-				if (subnode.Name=="cilist") ParseListNode(subnode, subkey, true);
+				if (subnode.Name == "list")
+					ParseListNode(subnode, subkey, false);
+				if (subnode.Name == "cilist")
+					ParseListNode(subnode, subkey, true);
 			}
 		}
 
@@ -336,23 +369,26 @@ namespace SimPe
 		/// <param name="node">The current Node</param>
 		/// <param name="key">The current SubTree</param>
 		/// <param name="caseinvariant">true if you want a case Invariant List</param>
-		void ParseListNode(XmlNode node, XmlRegistryKey key, bool caseinvariant) 
-		{			
+		void ParseListNode(XmlNode node, XmlRegistryKey key, bool caseinvariant)
+		{
 			XmlRegistryKey subkey = new XmlRegistryKey();
 			ArrayList names = new ArrayList();
-			foreach (XmlNode subnode in node) 
+			foreach (XmlNode subnode in node)
 			{
-                if (subnode.Attributes == null) continue;
+				if (subnode.Attributes == null)
+					continue;
 				names.Add(subnode.Attributes["name"].Value);
-				ParseValues(subnode, subkey);			
+				ParseValues(subnode, subkey);
 			}
 
 			ArrayList list = null;
-			if (!caseinvariant) list = new ArrayList();			
-			else list = new Ambertation.CaseInvariantArrayList();
+			if (!caseinvariant)
+				list = new ArrayList();
+			else
+				list = new Ambertation.CaseInvariantArrayList();
 
-			foreach (string s in names) 
-				list.Add(subkey.GetValue(s));			
+			foreach (string s in names)
+				list.Add(subkey.GetValue(s));
 
 			key.SetValue(node.Attributes["name"].Value, list);
 		}
@@ -363,29 +399,30 @@ namespace SimPe
 		/// </summary>
 		/// <param name="node">The current Node</param>
 		/// <param name="key">The current SubTree</param>
-		void ParseDateTimeValue(XmlNode node, XmlRegistryKey key) 
+		void ParseDateTimeValue(XmlNode node, XmlRegistryKey key)
 		{
 			DateTime val = DateTime.Now;
-			try 
+			try
 			{
 				val = Convert.ToDateTime(node.InnerText);
-			} 
-			catch {}
+			}
+			catch { }
 			key.SetValue(node.Attributes["name"].Value, val);
 		}
+
 		/// <summary>
 		/// Add an Integer Value
 		/// </summary>
 		/// <param name="node">The current Node</param>
 		/// <param name="key">The current SubTree</param>
-		void ParseIntValue(XmlNode node, XmlRegistryKey key) 
+		void ParseIntValue(XmlNode node, XmlRegistryKey key)
 		{
 			int val = 0;
-			try 
+			try
 			{
 				val = Convert.ToInt32(node.InnerText);
-			} 
-			catch {}
+			}
+			catch { }
 			key.SetValue(node.Attributes["name"].Value, val);
 		}
 
@@ -394,14 +431,14 @@ namespace SimPe
 		/// </summary>
 		/// <param name="node">The current Node</param>
 		/// <param name="key">The current SubTree</param>
-		void ParseUIntValue(XmlNode node, XmlRegistryKey key) 
+		void ParseUIntValue(XmlNode node, XmlRegistryKey key)
 		{
 			uint val = 0;
-			try 
+			try
 			{
 				val = Convert.ToUInt32(node.InnerText);
-			} 
-			catch {}
+			}
+			catch { }
 			key.SetValue(node.Attributes["name"].Value, val);
 		}
 
@@ -410,14 +447,14 @@ namespace SimPe
 		/// </summary>
 		/// <param name="node">The current Node</param>
 		/// <param name="key">The current SubTree</param>
-		void ParseLongValue(XmlNode node, XmlRegistryKey key) 
+		void ParseLongValue(XmlNode node, XmlRegistryKey key)
 		{
 			long val = 0;
-			try 
+			try
 			{
 				val = Convert.ToInt64(node.InnerText);
-			} 
-			catch {}
+			}
+			catch { }
 			key.SetValue(node.Attributes["name"].Value, val);
 		}
 
@@ -426,14 +463,14 @@ namespace SimPe
 		/// </summary>
 		/// <param name="node">The current Node</param>
 		/// <param name="key">The current SubTree</param>
-		void ParseULongValue(XmlNode node, XmlRegistryKey key) 
+		void ParseULongValue(XmlNode node, XmlRegistryKey key)
 		{
 			ulong val = 0;
-			try 
+			try
 			{
 				val = Convert.ToUInt64(node.InnerText);
-			} 
-			catch {}
+			}
+			catch { }
 			key.SetValue(node.Attributes["name"].Value, val);
 		}
 
@@ -442,14 +479,14 @@ namespace SimPe
 		/// </summary>
 		/// <param name="node">The current Node</param>
 		/// <param name="key">The current SubTree</param>
-		void ParseFloatValue(XmlNode node, XmlRegistryKey key) 
+		void ParseFloatValue(XmlNode node, XmlRegistryKey key)
 		{
 			float val = 0;
-			try 
+			try
 			{
 				val = Convert.ToSingle(node.InnerText);
-			} 
-			catch {}
+			}
+			catch { }
 			key.SetValue(node.Attributes["name"].Value, val);
 		}
 
@@ -458,16 +495,18 @@ namespace SimPe
 		/// </summary>
 		/// <param name="node">The current Node</param>
 		/// <param name="key">The current SubTree</param>
-		void ParseBoolValue(XmlNode node, XmlRegistryKey key) 
+		void ParseBoolValue(XmlNode node, XmlRegistryKey key)
 		{
 			bool val = false;
-			try 
+			try
 			{
 				string s = node.InnerText.Trim().ToLower();
-				if (s=="false" || s=="no" || s=="off" || s=="0") val=false;
-				else val=true;
-			} 
-			catch {}
+				if (s == "false" || s == "no" || s == "off" || s == "0")
+					val = false;
+				else
+					val = true;
+			}
+			catch { }
 			key.SetValue(node.Attributes["name"].Value, val);
 		}
 
@@ -476,7 +515,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="node">The current Node</param>
 		/// <param name="key">The current SubTree</param>
-		void ParseStringValue(XmlNode node, XmlRegistryKey key) 
+		void ParseStringValue(XmlNode node, XmlRegistryKey key)
 		{
 			string val = node.InnerText;
 			key.SetValue(node.Attributes["name"].Value, val);
@@ -497,35 +536,44 @@ namespace SimPe
 		/// </summary>
 		/// <param name="filename">The name of the File you want to flush to</param>
 		void Flush(string filename)
-		{			
-			try 
+		{
+			try
 			{
 				string dir = System.IO.Path.GetDirectoryName(filename);
-				if (!System.IO.Directory.Exists(dir)) throw new Exception("Directory \""+dir+"\"not found!");
+				if (!System.IO.Directory.Exists(dir))
+					throw new Exception("Directory \"" + dir + "\"not found!");
 				System.IO.StreamWriter sw = System.IO.File.CreateText(filename);
-				
-				try 
+
+				try
 				{
 					//root.CreateSubKey("META").SetValue("Version", (int)1);
 					sw.WriteLine("<?xml version=\"1.0\" encoding=\"utf-8\" ?>");
 					sw.WriteLine("<registry>");
 
-					
 					WriteKey(sw, root);
 
 					sw.WriteLine("</registry>");
-				} 
-				finally 
+				}
+				finally
 				{
 					sw.Flush();
 					sw.Close();
 					sw.Dispose();
 					sw = null;
 				}
-			} 
+			}
 			catch (Exception ex)
 			{
-				Helper.ExceptionMessage("", new Warning("Unable to create settings File.", "SimPe was unable to create the file "+filename+".\n\nYour Settings won't not be saved!", ex));
+				Helper.ExceptionMessage(
+					"",
+					new Warning(
+						"Unable to create settings File.",
+						"SimPe was unable to create the file "
+							+ filename
+							+ ".\n\nYour Settings won't not be saved!",
+						ex
+					)
+				);
 			}
 		}
 
@@ -536,18 +584,19 @@ namespace SimPe
 		/// <param name="key"></param>
 		void WriteKey(System.IO.StreamWriter sw, XmlRegistryKey key)
 		{
-			if (key!=root) sw.WriteLine("<key name=\""+key.Name+"\">");
+			if (key != root)
+				sw.WriteLine("<key name=\"" + key.Name + "\">");
 
 			string[] keys = key.GetSubKeyNames();
-			foreach (string s in keys) 
+			foreach (string s in keys)
 				WriteKey(sw, key.OpenSubKey(s, false));
 
 			string[] values = key.GetValueNames();
-			foreach (string s in values) 
-				WriteValue(sw, s, key.GetValue(s));			
-			
+			foreach (string s in values)
+				WriteValue(sw, s, key.GetValue(s));
 
-			if (key!=root) sw.WriteLine("</key>");
+			if (key != root)
+				sw.WriteLine("</key>");
 		}
 
 		/// <summary>
@@ -558,36 +607,55 @@ namespace SimPe
 		/// <param name="o"></param>
 		void WriteValue(System.IO.StreamWriter sw, string name, object o)
 		{
-			if (o==null) return;
+			if (o == null)
+				return;
 			string tag = "string";
 			string val = o.ToString();
 
-			if (o is Int32 || o is Int16 || o is byte) { tag = "int"; }
-			else if (o is UInt32 || o is UInt16) { tag = "uint"; }
-			else if (o is Int64 ) tag = "long"; 
-			else if (o is UInt64) tag = "ulong"; 
-			else if (o is Boolean) 
+			if (o is Int32 || o is Int16 || o is byte)
+			{
+				tag = "int";
+			}
+			else if (o is UInt32 || o is UInt16)
+			{
+				tag = "uint";
+			}
+			else if (o is Int64)
+				tag = "long";
+			else if (o is UInt64)
+				tag = "ulong";
+			else if (o is Boolean)
 			{
 				tag = "bool";
-				if ((bool)o) val = "true"; else val = "false";
-			} 
-			else if (o is float) { tag = "float"; }
-			else if (o is DateTime) { tag = "datetime";	}
-			else if (o is Ambertation.CaseInvariantArrayList) 
+				if ((bool)o)
+					val = "true";
+				else
+					val = "false";
+			}
+			else if (o is float)
 			{
-				WriteList(sw, name, (ArrayList)o, true); 
-				return;
-			}			
-			else if (o is ArrayList) 
+				tag = "float";
+			}
+			else if (o is DateTime)
 			{
-				WriteList(sw, name, (ArrayList)o, false); 
+				tag = "datetime";
+			}
+			else if (o is Ambertation.CaseInvariantArrayList)
+			{
+				WriteList(sw, name, (ArrayList)o, true);
 				return;
 			}
-							  
+			else if (o is ArrayList)
+			{
+				WriteList(sw, name, (ArrayList)o, false);
+				return;
+			}
 
 			val = val.Replace("&", "&amp;");
 			val = val.Replace("<", "&lt;").Replace(">", "&gt;");
-			sw.WriteLine("<"+tag+" name=\""+name+"\">"+val+"</"+tag+">");
+			sw.WriteLine(
+				"<" + tag + " name=\"" + name + "\">" + val + "</" + tag + ">"
+			);
 		}
 
 		/// <summary>
@@ -597,20 +665,31 @@ namespace SimPe
 		/// <param name="name"></param>
 		/// <param name="list"></param>
 		/// <param name="caseinvariant"></param>
-		void WriteList(System.IO.StreamWriter sw, string name, ArrayList list, bool caseinvariant)
+		void WriteList(
+			System.IO.StreamWriter sw,
+			string name,
+			ArrayList list,
+			bool caseinvariant
+		)
 		{
-			if (!caseinvariant)	sw.WriteLine("<list name=\""+name+"\">");
-			else sw.WriteLine("<cilist name=\""+name+"\">");
+			if (!caseinvariant)
+				sw.WriteLine("<list name=\"" + name + "\">");
+			else
+				sw.WriteLine("<cilist name=\"" + name + "\">");
 			int ct = -1;
-			foreach (object o in list) 
+			foreach (object o in list)
 			{
 				ct++;
-				if (o==null) continue;
-				if (o is ArrayList) continue;
-				WriteValue(sw, ct.ToString(), o);				
+				if (o == null)
+					continue;
+				if (o is ArrayList)
+					continue;
+				WriteValue(sw, ct.ToString(), o);
 			}
-			if (!caseinvariant)	 sw.WriteLine("</list>");
-			else sw.WriteLine("</cilist>");
+			if (!caseinvariant)
+				sw.WriteLine("</list>");
+			else
+				sw.WriteLine("</cilist>");
 		}
 		#endregion
 	}

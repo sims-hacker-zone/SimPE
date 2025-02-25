@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using SimPe.Interfaces.Plugin.Scanner;
+
 namespace SimPe.Plugin.Scanner
 {
 	/// <summary>
@@ -9,6 +10,7 @@ namespace SimPe.Plugin.Scanner
 	public class ScannerCollection : System.Collections.IEnumerable, System.IDisposable
 	{
 		ArrayList list;
+
 		internal ScannerCollection()
 		{
 			list = new ArrayList();
@@ -16,13 +18,14 @@ namespace SimPe.Plugin.Scanner
 
 		public virtual void Add(IScannerPluginBase item)
 		{
-			if (item==null) return;
+			if (item == null)
+				return;
 			list.Add(item);
 		}
 
 		public int Count
 		{
-			get {return list.Count;}
+			get { return list.Count; }
 		}
 
 		public bool Contains(IScannerPluginBase item)
@@ -42,7 +45,7 @@ namespace SimPe.Plugin.Scanner
 
 		public IScannerPluginBase this[int index]
 		{
-			get {return list[index] as IScannerPluginBase;}
+			get { return list[index] as IScannerPluginBase; }
 		}
 
 		#region IEnumerable Member
@@ -58,7 +61,8 @@ namespace SimPe.Plugin.Scanner
 
 		public void Dispose()
 		{
-			if (list!=null) list.Clear();
+			if (list != null)
+				list.Clear();
 			list = null;
 		}
 

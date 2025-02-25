@@ -26,7 +26,7 @@ namespace SimPe
 	/// <summary>
 	/// Typesave ArrayList for int Objects
 	/// </summary>
-	public class IntArrayList : ArrayList 
+	public class IntArrayList : ArrayList
 	{
 		/// <summary>
 		/// Integer Indexer
@@ -83,12 +83,12 @@ namespace SimPe
 		public bool Contains(int item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -100,7 +100,8 @@ namespace SimPe
 		public override object Clone()
 		{
 			IntArrayList list = new IntArrayList();
-			foreach (int item in this) list.Add(item);
+			foreach (int item in this)
+				list.Add(item);
 
 			return list;
 		}
@@ -109,7 +110,7 @@ namespace SimPe
 	/// <summary>
 	/// Typesave ArrayList for string Objects
 	/// </summary>
-	public class StringArrayList : ArrayList 
+	public class StringArrayList : ArrayList
 	{
 		/// <summary>
 		/// stringeger Indexer
@@ -166,12 +167,12 @@ namespace SimPe
 		public bool Contains(string item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -183,7 +184,8 @@ namespace SimPe
 		public override object Clone()
 		{
 			StringArrayList list = new StringArrayList();
-			foreach (string item in this) list.Add(item);
+			foreach (string item in this)
+				list.Add(item);
 
 			return list;
 		}

@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.IO;
-using System.Globalization;
 using System.Collections;
+using System.Globalization;
+using System.IO;
 
 namespace SimPe.Plugin.Gmdc
 {
@@ -30,17 +30,20 @@ namespace SimPe.Plugin.Gmdc
 	/// </summary>
 	public class GmdcElementValueBase
 	{
-
 		/// <summary>
 		/// Scalar Multiplication
 		/// </summary>
 		/// <param name="evb">First Value</param>
 		/// <param name="d">Scalar Factor</param>
 		/// <returns>The resulting Value</returns>
-		public static GmdcElementValueBase operator *(GmdcElementValueBase evb, double d) 
+		public static GmdcElementValueBase operator *(
+			GmdcElementValueBase evb,
+			double d
+		)
 		{
 			GmdcElementValueBase n = evb.Clone();
-			for (int i=0; i<n.data.Length; i++) n.data[i] = (float)(n.data[i] * d);
+			for (int i = 0; i < n.data.Length; i++)
+				n.data[i] = (float)(n.data[i] * d);
 			return n;
 		}
 
@@ -50,12 +53,15 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="evb">First Value</param>
 		/// <param name="d">Scalar Factor</param>
 		/// <returns>The resulting Value</returns>
-		public static GmdcElementValueBase operator *(double d, GmdcElementValueBase evb) 
+		public static GmdcElementValueBase operator *(
+			double d,
+			GmdcElementValueBase evb
+		)
 		{
-			return evb*d;
+			return evb * d;
 		}
 
-		float[] data;		
+		float[] data;
 
 		/// <summary>
 		/// The plain stored Data
@@ -64,14 +70,14 @@ namespace SimPe.Plugin.Gmdc
 		{
 			get { return data; }
 			set { data = value; }
-		}	
-	
+		}
+
 		/// <summary>
 		/// Returns the number of Float Elements stored here
 		/// </summary>
-		internal virtual byte Size 
+		internal virtual byte Size
 		{
-			get {return 0;}
+			get { return 0; }
 		}
 
 		public GmdcElementValueBase()
@@ -85,7 +91,8 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal virtual void Unserialize(System.IO.BinaryReader reader)
 		{
-			for (int i=0; i<data.Length; i++) data[i] = reader.ReadSingle();			
+			for (int i = 0; i < data.Length; i++)
+				data[i] = reader.ReadSingle();
 		}
 
 		/// <summary>
@@ -93,12 +100,13 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		internal virtual void Serialize(System.IO.BinaryWriter writer)
 		{
-			for (int i=0; i<data.Length; i++) writer.Write(data[i]);
+			for (int i = 0; i < data.Length; i++)
+				writer.Write(data[i]);
 		}
 
 		/// <summary>
@@ -108,9 +116,10 @@ namespace SimPe.Plugin.Gmdc
 		public override string ToString()
 		{
 			string s = "";
-			for (int i=0; i<data.Length; i++) 
+			for (int i = 0; i < data.Length; i++)
 			{
-				if (i!=0) s+=", ";
+				if (i != 0)
+					s += ", ";
 				s += data[i].ToString("N6");
 			}
 			return s;
@@ -129,36 +138,39 @@ namespace SimPe.Plugin.Gmdc
 		/// This Method supports the Internal process of creating a Clone
 		/// </summary>
 		/// <param name="dest">The object that should receive the copied Data</param>
-		protected void Clone(GmdcElementValueBase dest) 
+		protected void Clone(GmdcElementValueBase dest)
 		{
-			for (int i=0; i<data.Length; i++) dest.Data[i] = data[i];
+			for (int i = 0; i < data.Length; i++)
+				dest.Data[i] = data[i];
 		}
 
 		public override int GetHashCode()
 		{
 			int f = 0;
-			for (int i=0; i<data.Length; i++) f += data[i].GetHashCode();
+			for (int i = 0; i < data.Length; i++)
+				f += data[i].GetHashCode();
 			return f;
 		}
 
-
 		public override bool Equals(object obj)
 		{
-			if (obj==null) return false;
-			if (obj is GmdcElementValueBase) 
+			if (obj == null)
+				return false;
+			if (obj is GmdcElementValueBase)
 			{
-				float epsilon = float.Epsilon*10;
+				float epsilon = float.Epsilon * 10;
 				GmdcElementValueBase g = (GmdcElementValueBase)obj;
-				if (g.data.Length!=data.Length) return false;
+				if (g.data.Length != data.Length)
+					return false;
 
-				for (int i=0; i<data.Length; i++)				
-					if (Math.Abs(g.data[i]-data[i])>epsilon) return false;				
+				for (int i = 0; i < data.Length; i++)
+					if (Math.Abs(g.data[i] - data[i]) > epsilon)
+						return false;
 
 				return true;
 			}
-			return base.Equals (obj);
+			return base.Equals(obj);
 		}
-
 	}
 
 	/// <summary>
@@ -168,10 +180,12 @@ namespace SimPe.Plugin.Gmdc
 	{
 		internal override byte Size
 		{
-			get {return 1;}
+			get { return 1; }
 		}
 
-		internal GmdcElementValueOneFloat() : base() {}
+		internal GmdcElementValueOneFloat()
+			: base() { }
+
 		/// <summary>
 		/// Create an Instance of this class
 		/// </summary>
@@ -192,8 +206,7 @@ namespace SimPe.Plugin.Gmdc
 			Clone(dest);
 			return dest;
 		}
-
-	}	
+	}
 
 	/// <summary>
 	/// Contains a two gloat Value
@@ -202,10 +215,12 @@ namespace SimPe.Plugin.Gmdc
 	{
 		internal override byte Size
 		{
-			get {return 2;}
+			get { return 2; }
 		}
 
-		internal GmdcElementValueTwoFloat() : base() {}
+		internal GmdcElementValueTwoFloat()
+			: base() { }
+
 		/// <summary>
 		/// Create an Instance of this class
 		/// </summary>
@@ -235,12 +250,14 @@ namespace SimPe.Plugin.Gmdc
 	/// </summary>
 	public class GmdcElementValueThreeFloat : GmdcElementValueBase
 	{
-		internal  override byte Size
+		internal override byte Size
 		{
-			get {return 3;}
+			get { return 3; }
 		}
 
-		internal GmdcElementValueThreeFloat() : base() {}
+		internal GmdcElementValueThreeFloat()
+			: base() { }
+
 		/// <summary>
 		/// Create an Instance of this class
 		/// </summary>
@@ -265,19 +282,21 @@ namespace SimPe.Plugin.Gmdc
 			Clone(dest);
 			return dest;
 		}
-	}	
+	}
 
 	/// <summary>
 	/// Contains a two gloat Value
 	/// </summary>
 	public class GmdcElementValueOneInt : GmdcElementValueBase
 	{
-		internal  override byte Size
+		internal override byte Size
 		{
-			get {return 1;}
+			get { return 1; }
 		}
 
-		internal GmdcElementValueOneInt() : base() {}
+		internal GmdcElementValueOneInt()
+			: base() { }
+
 		/// <summary>
 		/// Create an Instance of this class
 		/// </summary>
@@ -291,12 +310,14 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Returns /Sets the stored Value
 		/// </summary>
-		public int Value 
+		public int Value
 		{
-			get {
-				return val;//(int)Data[0];
+			get
+			{
+				return val; //(int)Data[0];
 			}
-			set {
+			set
+			{
 				Data[0] = (float)value;
 				val = value;
 			}
@@ -306,19 +327,13 @@ namespace SimPe.Plugin.Gmdc
 		/// Returns / Sets the Bytes that are stored as one Dword Value
 		/// </summary>
 		/// <remarks>
-		/// Changein one of the passed Bytes will NOT effect the stored Value, you have to 
+		/// Changein one of the passed Bytes will NOT effect the stored Value, you have to
 		/// write a complete Array back into this Property to change the stored Value!
 		/// </remarks>
-		public byte[] Bytes 
+		public byte[] Bytes
 		{
-			get 
-			{				
-				return BitConverter.GetBytes(Value);
-			}
-			set 
-			{
-				Value = BitConverter.ToInt32(value, 0);
-			}
+			get { return BitConverter.GetBytes(Value); }
+			set { Value = BitConverter.ToInt32(value, 0); }
 		}
 
 		public void SetByte(int index, byte val)
@@ -336,7 +351,8 @@ namespace SimPe.Plugin.Gmdc
 		{
 			string s = Value.ToString() + " (";
 			byte[] b = Bytes;
-			for (int i=0; i<b.Length; i++) s += b[i].ToString()+ " ";
+			for (int i = 0; i < b.Length; i++)
+				s += b[i].ToString() + " ";
 			s = s.Trim() + ")";
 			return s;
 		}
@@ -348,6 +364,7 @@ namespace SimPe.Plugin.Gmdc
 		}
 
 		int val;
+
 		internal override void Unserialize(BinaryReader reader)
 		{
 			val = reader.ReadInt32();
@@ -364,8 +381,6 @@ namespace SimPe.Plugin.Gmdc
 			Clone(dest);
 			return dest;
 		}
-
-
 	}
 	#endregion
 
@@ -377,61 +392,67 @@ namespace SimPe.Plugin.Gmdc
 		#region Attributes
 
 		int number;
+
 		/// <summary>
 		/// Number of stored <see cref="Values"/> that can be used
 		/// </summary>
-		public int Number 
+		public int Number
 		{
 			get { return number; }
 			set { number = value; }
 		}
 
 		ElementIdentity identity;
+
 		/// <summary>
 		/// The Type of Data that is stored in <see cref="Values"/>.
 		/// </summary>
-		public ElementIdentity Identity 
+		public ElementIdentity Identity
 		{
 			get { return identity; }
 			set { identity = value; }
 		}
 
 		int repeat;
+
 		/// <summary>
-		/// If one <see cref="GmdcLink"/> is referenceing more than one <see cref="GmdcElement"/> 
+		/// If one <see cref="GmdcLink"/> is referenceing more than one <see cref="GmdcElement"/>
 		/// of the same <see cref="Identity"/>, this value is used to differ them. (Zero based)
 		/// </summary>
-		public int GroupId 
+		public int GroupId
 		{
 			get { return repeat; }
 			set { repeat = value; }
 		}
 
 		BlockFormat blockformat;
+
 		/// <summary>
 		/// What Type are the <see cref="Values"/> stored in.
 		/// </summary>
-		/// <remarks>This Filed Determins which SubClass of <see cref="GmdcElementValueBase"/> is used for 
+		/// <remarks>This Filed Determins which SubClass of <see cref="GmdcElementValueBase"/> is used for
 		/// the <see cref="Values"/> Members</remarks>
-		public BlockFormat BlockFormat 
+		public BlockFormat BlockFormat
 		{
 			get { return blockformat; }
 			set { blockformat = value; }
 		}
 
 		SetFormat setformat;
+
 		/// <summary>
 		/// Describes the Elemnet
 		/// </summary>
-		public SetFormat SetFormat 
+		public SetFormat SetFormat
 		{
 			get { return setformat; }
 			set { setformat = value; }
 		}
 
-		GmdcElementValues data;	
+		GmdcElementValues data;
+
 		/// <summary>
-		/// Contains a List of <see cref="GmdcElementValueBase"/> Values. The Type of the Elements 
+		/// Contains a List of <see cref="GmdcElementValueBase"/> Values. The Type of the Elements
 		/// is determined by the <see cref="BlockFormat"/> Property.
 		/// </summary>
 		public GmdcElementValues Values
@@ -440,7 +461,8 @@ namespace SimPe.Plugin.Gmdc
 			set { data = value; }
 		}
 
-		IntArrayList items;	
+		IntArrayList items;
+
 		/// <summary>
 		/// Yet unknown what this is doing
 		/// </summary>
@@ -454,10 +476,11 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public GmdcElement(GeometryDataContainer parent) : base (parent)
+		public GmdcElement(GeometryDataContainer parent)
+			: base(parent)
 		{
 			data = new GmdcElementValues();
-			items = new IntArrayList();			
+			items = new IntArrayList();
 		}
 
 		/// <summary>
@@ -466,11 +489,10 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns>A class Instance</returns>
 		/// <remarks>The Type of the instance is determined using the SubType</remarks>
 		public GmdcElementValueBase GetValueInstance()
-		{			
-			switch (blockformat) 
+		{
+			switch (blockformat)
 			{
-					
-				case BlockFormat.OneDword :
+				case BlockFormat.OneDword:
 					return new Gmdc.GmdcElementValueOneInt();
 				case BlockFormat.OneFloat:
 					return new Gmdc.GmdcElementValueOneFloat();
@@ -482,12 +504,12 @@ namespace SimPe.Plugin.Gmdc
 
 			return new Gmdc.GmdcElementValueOneFloat();
 		}
-			
+
 		/// <summary>
 		/// Unserializes a BinaryStream into the Attributes of this Instance
 		/// </summary>
 		/// <param name="reader">The Stream that contains the FileData</param>
-		public  void Unserialize(System.IO.BinaryReader reader)
+		public void Unserialize(System.IO.BinaryReader reader)
 		{
 			number = reader.ReadInt32();
 			uint id = reader.ReadUInt32();
@@ -495,12 +517,12 @@ namespace SimPe.Plugin.Gmdc
 			repeat = reader.ReadInt32();
 			blockformat = (SimPe.Plugin.Gmdc.BlockFormat)reader.ReadInt32();
 			setformat = (SimPe.Plugin.Gmdc.SetFormat)reader.ReadInt32();
-			
+
 			GmdcElementValueBase dummy = GetValueInstance();
 			int len = reader.ReadInt32() / (4 * dummy.Size);
 			data.Clear();
-			for (int i=0; i<len; i++) 
-			{				
+			for (int i = 0; i < len; i++)
+			{
 				dummy = GetValueInstance();
 				dummy.Unserialize(reader);
 				data.Add(dummy);
@@ -514,20 +536,21 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
-		public  void Serialize(System.IO.BinaryWriter writer)
+		public void Serialize(System.IO.BinaryWriter writer)
 		{
-            //automatically keep the Number Field correct
-            if (items.Length == 0)
-            {
-                number = data.Length;
-                foreach (int i in this.items)
-                    if (i > number) number = i - 1;
-            }
+			//automatically keep the Number Field correct
+			if (items.Length == 0)
+			{
+				number = data.Length;
+				foreach (int i in this.items)
+					if (i > number)
+						number = i - 1;
+			}
 
-            writer.Write(number); 
+			writer.Write(number);
 
 			writer.Write((int)identity);
 			writer.Write(repeat);
@@ -535,14 +558,15 @@ namespace SimPe.Plugin.Gmdc
 			writer.Write((uint)setformat);
 
 			int size = 1;
-			if (data.Length>0) size = data[0].Size;
+			if (data.Length > 0)
+				size = data[0].Size;
 
 			writer.Write((int)(data.Length * 4 * size));
-			for (int i=0; i<data.Length; i++) 
+			for (int i = 0; i < data.Length; i++)
 			{
 				data[i].Serialize(writer);
 			}
-			
+
 			this.WriteBlock(writer, items);
 		}
 
@@ -552,16 +576,22 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns>A String Describing the Data</returns>
 		public override string ToString()
 		{
-			return this.Identity.ToString()+", "+this.SetFormat.ToString()+", "+this.BlockFormat.ToString()+" ("+this.Values.Count.ToString()+")";
+			return this.Identity.ToString()
+				+ ", "
+				+ this.SetFormat.ToString()
+				+ ", "
+				+ this.BlockFormat.ToString()
+				+ " ("
+				+ this.Values.Count.ToString()
+				+ ")";
 		}
-
 	}
 
 	#region Container
 	/// <summary>
 	/// Typesave ArrayList for GmdcElementValueBase Objects
 	/// </summary>
-	public class GmdcElementValues : ArrayList 
+	public class GmdcElementValues : ArrayList
 	{
 		/// <summary>
 		/// Integer Indexer
@@ -618,12 +648,12 @@ namespace SimPe.Plugin.Gmdc
 		public bool Contains(GmdcElementValueBase item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -635,7 +665,8 @@ namespace SimPe.Plugin.Gmdc
 		public override object Clone()
 		{
 			GmdcElementValues list = new GmdcElementValues();
-			foreach (GmdcElementValueBase item in this) list.Add(item);
+			foreach (GmdcElementValueBase item in this)
+				list.Add(item);
 
 			return list;
 		}
@@ -644,7 +675,7 @@ namespace SimPe.Plugin.Gmdc
 	/// <summary>
 	/// Typesave ArrayList for GmdcElement Objects
 	/// </summary>
-	public class GmdcElements : ArrayList 
+	public class GmdcElements : ArrayList
 	{
 		/// <summary>
 		/// Integer Indexer
@@ -701,12 +732,12 @@ namespace SimPe.Plugin.Gmdc
 		public bool Contains(GmdcElement item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -718,7 +749,8 @@ namespace SimPe.Plugin.Gmdc
 		public override object Clone()
 		{
 			GmdcElements list = new GmdcElements();
-			foreach (GmdcElement item in this) list.Add(item);
+			foreach (GmdcElement item in this)
+				list.Add(item);
 
 			return list;
 		}

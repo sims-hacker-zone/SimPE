@@ -29,10 +29,7 @@ namespace SimPe.Interfaces.Files
 		/// <summary>
 		/// Returns the Offset within the Package File
 		/// </summary>
-		uint Offset
-		{
-			get; 			
-		}
+		uint Offset { get; }
 
 		/// <summary>
 		/// Returns the Size of the referenced File
@@ -40,172 +37,104 @@ namespace SimPe.Interfaces.Files
 		/// <remarks>
 		/// This must return either the size stored in the Index or the Size of the Userdata (if defined)
 		/// </remarks>
-		int Size
-		{
-			get; 			
-		}
+		int Size { get; }
 
 		/// <summary>
 		/// Returns the Size of the File as stored in the Index
 		/// </summary>
 		/// <remarks>
-		/// This must return the size of the File as it was stored in the Fileindex, 
+		/// This must return the size of the File as it was stored in the Fileindex,
 		/// even if the Size did change! (it is used during the IncrementalBuild Methode of a Package File!)
 		/// If the file is new, this value must return 0.
 		/// </remarks>
-		int IndexedSize 
-		{
-			get;
-		}
-		
+		int IndexedSize { get; }
+
 		/// <summary>
 		/// Returns the Type of the referenced File
 		/// </summary>
-		UInt32 Type
-		{
-			get; 
-			set;
-		}
+		UInt32 Type { get; set; }
 
 		/// <summary>
 		/// Returns the Name of the represented Type
 		/// </summary>
-		Data.TypeAlias TypeName 
-		{
-			get;
-		}		
+		Data.TypeAlias TypeName { get; }
 
 		/// <summary>
 		/// Returns the Group the referenced file is assigned to
 		/// </summary>
-		UInt32 Group
-		{
-			get;
-			set;
-		}
-
-
+		UInt32 Group { get; set; }
 
 		/// <summary>
 		/// Returns the Instance Data
 		/// </summary>
-		UInt32 Instance
-		{
-			get;
-			set;
-		}
+		UInt32 Instance { get; set; }
 
 		/// <summary>
 		/// Returns the Long Instance
 		/// </summary>
 		/// <remarks>Combination of SubType and Instance</remarks>
-		UInt64 LongInstance
-		{
-			get;
-			set;
-		}
-
+		UInt64 LongInstance { get; set; }
 
 		/// <summary>
 		/// Returns an yet unknown Type
-		/// </summary>		
+		/// </summary>
 		/// <remarks>Only in Version 1.1 of package Files</remarks>
-		UInt32 SubType
-		{
-			get; 
-			set;
-		}
+		UInt32 SubType { get; set; }
 
 		/// <summary>
 		/// Returns or Sets the Filename
 		/// </summary>
 		/// <remarks>This is mostly of intrest when you extract packedFiles</remarks>
-		string Filename 
-		{
-			get;
-			set;
-		}
+		string Filename { get; set; }
 
 		/// <summary>
-		/// Returns the Filename that should be used when you create a single exported File 
+		/// Returns the Filename that should be used when you create a single exported File
 		/// </summary>
-		string ExportFileName
-		{
-			get;
-		}
+		string ExportFileName { get; }
 
 		/// <summary>
 		/// Returns or Setst the File Path
 		/// </summary>
 		/// <remarks>This is mostly of intrest when you extract packedFiles</remarks>
-		string Path
-		{
-			get;
-			set;
-		}
-
+		string Path { get; set; }
 
 		/// <summary>
 		/// Generates MetInformations about a Packed File
 		/// </summary>
 		/// <param name="pfd">The description of the File</param>
 		/// <returns>A String representing the Description as XML output</returns>
-		string GenerateXmlMetaInfo();	
-	
+		string GenerateXmlMetaInfo();
+
 		/// <summary>
 		/// Returns true if theis File was changed since the last Save
 		/// </summary>
-		bool Changed
-		{
-			get;
-			set;
-		}
+		bool Changed { get; set; }
 
 		/// <summary>
 		/// Returns true, if Userdate is available
 		/// </summary>
 		/// <remarks>This happens when a user assigns new Data</remarks>
-		bool HasUserdata
-		{
-			get;
-		}		
+		bool HasUserdata { get; }
 
 		/// <summary>
 		/// Puts Userdefined Data into the File. Setting this Property will fire a <see cref="ChangedUserData"/> Event.
 		/// </summary>
-		byte[] UserData 
-		{
-			get;
-			set;
-		}
-
-		
+		byte[] UserData { get; set; }
 
 		/// <summary>
 		/// Returns/sets if this file should be keept in the Index for the next Save
 		/// </summary>
-		bool MarkForDelete  
-		{
-			get;
-			set;
-		}
+		bool MarkForDelete { get; set; }
 
 		/// <summary>
 		/// Returns/sets if this File should be Recompressed during the next Save Operation
 		/// </summary>
-		bool MarkForReCompress
-		{
-			get;
-			set;
-		}
+		bool MarkForReCompress { get; set; }
 
 		/// <summary>
 		/// Returns true if the Resource was Compressed
 		/// </summary>
-		 bool WasCompressed
-		{
-			get;
-		}
+		bool WasCompressed { get; }
 
 		/// <summary>
 		/// Must override the Equals Method!
@@ -224,11 +153,7 @@ namespace SimPe.Interfaces.Files
 		/// <summary>
 		/// additional Data
 		/// </summary>
-		object Tag 
-		{
-			get;
-			set;
-		}
+		object Tag { get; set; }
 
 		/// <summary>
 		/// Close this Descriptor (make it invalid)
@@ -238,13 +163,10 @@ namespace SimPe.Interfaces.Files
 		/// <summary>
 		/// true, if this Descriptor is Invalid
 		/// </summary>
-		bool Invalid
-		{
-			get;
-		}		
+		bool Invalid { get; }
 
 		/// <summary>
-		/// Derefers <see cref="DescriptionChanged"/> and <see cref="ChangedData"/> 
+		/// Derefers <see cref="DescriptionChanged"/> and <see cref="ChangedData"/>
 		/// until <see cref="EndUpdate"/> is called
 		/// </summary>
 		void BeginUpdate();
@@ -257,9 +179,6 @@ namespace SimPe.Interfaces.Files
 		/// <summary>
 		/// Returns the Name of this Descripotr as used in Exception Messages
 		/// </summary>
-		string ExceptionString
-		{
-			get;
-		}
+		string ExceptionString { get; }
 	}
 }

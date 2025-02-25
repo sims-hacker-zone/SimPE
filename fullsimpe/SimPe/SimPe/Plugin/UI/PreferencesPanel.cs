@@ -1,28 +1,26 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
-
 
 namespace SimPe.Plugin.UI
 {
-
 	public class PreferencesPanel : System.Windows.Forms.TabPage
 	{
-		/// <summary> 
+		/// <summary>
 		/// Required designer variable.
 		/// </summary>
 		protected System.ComponentModel.Container components = null;
-        internal System.Windows.Forms.ToolTip toolTip1;
+		internal System.Windows.Forms.ToolTip toolTip1;
 
 		private PackageSettings settings;
 
 		public PackageSettings Settings
 		{
 			get { return this.settings; }
-			set 
+			set
 			{
 				this.settings = value;
 				this.OnSettingsChanged();
@@ -33,39 +31,32 @@ namespace SimPe.Plugin.UI
 		{
 			get { return this.toolTip1; }
 		}
-		
+
 		public PreferencesPanel()
 		{
 			this.components = new System.ComponentModel.Container();
-            this.toolTip1 = new ToolTip(this.components);
-            this.toolTip1.IsBalloon = true;
-            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+			this.toolTip1 = new ToolTip(this.components);
+			this.toolTip1.IsBalloon = true;
+			this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
 		}
 
+		protected virtual void OnSettingsChanged() { }
 
-		protected virtual void OnSettingsChanged()
-		{
-		}
+		public virtual void OnCommitSettings() { }
 
-		public virtual void OnCommitSettings()
-		{
-		}
-
-		/// <summary> 
+		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
-				if(components != null)
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
-
-
 	}
 }

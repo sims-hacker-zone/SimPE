@@ -25,14 +25,14 @@ namespace SimPe.Interfaces
 	/// Summary description for IToolRegistry.
 	/// </summary>
 	public interface IHelpRegistry
-	{		
+	{
 		/// <summary>
 		/// Registers a Help Topic to the Registry
 		/// </summary>
 		/// <param name="topic">The Topic to register</param>
 		/// <remarks>The tool must only be added if the Registry doesnt already contain it</remarks>
-		void RegisterHelpTopic(SimPe.Interfaces.IHelp topic);	
-	
+		void RegisterHelpTopic(SimPe.Interfaces.IHelp topic);
+
 		/// <summary>
 		/// Registers all listed Help Topics with this Registry
 		/// </summary>
@@ -47,13 +47,9 @@ namespace SimPe.Interfaces
 		/// <remarks>The tool must only be added if the Registry doesnt already contain it</remarks>
 		void Register(Plugin.IHelpFactory factory);
 
-		
 		/// <summary>
 		/// Returns the List of Known Help Topics
 		/// </summary>
-		IHelp[] HelpTopics
-		{
-			get;
-		}		
+		IHelp[] HelpTopics { get; }
 	}
 }

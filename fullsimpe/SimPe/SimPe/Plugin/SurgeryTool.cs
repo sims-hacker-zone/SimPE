@@ -31,7 +31,7 @@ namespace SimPe.Plugin
 		/// Windows Registry Link
 		/// </summary>
 		static SimPe.Registry registry;
-		internal static Registry WindowsRegistry 
+		internal static Registry WindowsRegistry
 		{
 			get { return registry; }
 		}
@@ -39,39 +39,63 @@ namespace SimPe.Plugin
 		IWrapperRegistry reg;
 		IProviderRegistry prov;
 
-		internal SurgeryTool(IWrapperRegistry reg, IProviderRegistry prov) 
+		internal SurgeryTool(IWrapperRegistry reg, IProviderRegistry prov)
 		{
 			this.reg = reg;
 			this.prov = prov;
 
-			if (registry==null) registry = Helper.WindowsRegistry;
+			if (registry == null)
+				registry = Helper.WindowsRegistry;
 		}
 
 		#region ITool Member
 
-		public bool IsEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
-        {
-            return (Helper.IsNeighborhoodFile(package?.FileName) || Helper.IsLotCatalogFile(package?.FileName));
-        }
+		public bool IsEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
+		{
+			return (
+				Helper.IsNeighborhoodFile(package?.FileName)
+				|| Helper.IsLotCatalogFile(package?.FileName)
+			);
+		}
 
-        private bool IsReallyEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
-        {
-            if (package == null) return false;
-            if (prov.SimNameProvider == null) return false;
-            return (Helper.IsNeighborhoodFile(package.FileName) || Helper.IsLotCatalogFile(package.FileName));
-        }
+		private bool IsReallyEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
+		{
+			if (package == null)
+				return false;
+			if (prov.SimNameProvider == null)
+				return false;
+			return (
+				Helper.IsNeighborhoodFile(package.FileName)
+				|| Helper.IsLotCatalogFile(package.FileName)
+			);
+		}
 
 		Surgery surg;
-		public Interfaces.Plugin.IToolResult ShowDialog(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package)
+
+		public Interfaces.Plugin.IToolResult ShowDialog(
+			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			ref SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
-            if (!IsReallyEnabled(pfd, package))
-            {
-                System.Windows.Forms.MessageBox.Show(SimPe.Localization.GetString("This is not an appropriate context in which to use this tool"),
-                    Localization.Manager.GetString("Sims Surgery Tool"));
-                return new Plugin.ToolResult(false, false);
-            }
-            if (surg == null) surg = new Surgery();
-            surg.Text = Localization.Manager.GetString("Sims Surgery Tool");
+			if (!IsReallyEnabled(pfd, package))
+			{
+				System.Windows.Forms.MessageBox.Show(
+					SimPe.Localization.GetString(
+						"This is not an appropriate context in which to use this tool"
+					),
+					Localization.Manager.GetString("Sims Surgery Tool")
+				);
+				return new Plugin.ToolResult(false, false);
+			}
+			if (surg == null)
+				surg = new Surgery();
+			surg.Text = Localization.Manager.GetString("Sims Surgery Tool");
 
 			return surg.Execute(ref pfd, ref package, prov);
 		}
@@ -79,25 +103,19 @@ namespace SimPe.Plugin
 		public override string ToString()
 		{
 			return "Neighbourhood\\Sims Surgery...";
-        }
+		}
 
-        #endregion
+		#endregion
 
-        #region IToolExt Member
-        public override System.Drawing.Image Icon
-        {
-            get
-            {
-                return SimPe.GetIcon.SimSurgery;
-            }
-        }
+		#region IToolExt Member
+		public override System.Drawing.Image Icon
+		{
+			get { return SimPe.GetIcon.SimSurgery; }
+		}
 		public override System.Windows.Forms.Shortcut Shortcut
 		{
-            get
-            {
-                return System.Windows.Forms.Shortcut.None;
-            }
-        }
-        #endregion
+			get { return System.Windows.Forms.Shortcut.None; }
+		}
+		#endregion
 	}
 }

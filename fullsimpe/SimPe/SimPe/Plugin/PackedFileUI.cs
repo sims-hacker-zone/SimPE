@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Interfaces.Plugin;
 using System.Windows.Forms;
+using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
 {
@@ -43,7 +43,8 @@ namespace SimPe.Plugin
 			//form = WrapperFactory.form;
 			form = new RefFileForm();
 
-			foreach (Interfaces.IAlias alias in SimPe.Helper.TGILoader.FileTypes) form.cbtypes.Items.Add(alias);
+			foreach (Interfaces.IAlias alias in SimPe.Helper.TGILoader.FileTypes)
+				form.cbtypes.Items.Add(alias);
 		}
 		#endregion
 
@@ -54,10 +55,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public System.Windows.Forms.Control GUIHandle
 		{
-			get
-			{
-				return form.wrapperPanel;
-			}
+			get { return form.wrapperPanel; }
 		}
 
 		/// <summary>
@@ -71,7 +69,7 @@ namespace SimPe.Plugin
 			FileTable.FileIndex.Load();
 			form.wrapper = (IFileWrapperSaveExtension)wrapper;
 
-			RefFile mywrapper = (RefFile) wrapper;
+			RefFile mywrapper = (RefFile)wrapper;
 
 			form.llcommit.Enabled = false;
 			form.lldelete.Enabled = false;
@@ -79,14 +77,14 @@ namespace SimPe.Plugin
 			form.btdown.Enabled = false;
 			form.miRem.Enabled = false;
 			form.lblist.Items.Clear();
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in mywrapper.Items) 
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in mywrapper.Items)
 			{
 				form.lblist.Items.Add(pfd);
 			}
-		}		
+		}
 
 		#endregion
-		
+
 		#region IDisposable Member
 		public virtual void Dispose()
 		{

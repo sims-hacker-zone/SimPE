@@ -48,14 +48,13 @@ namespace SimPe.PackedFiles.Wrapper
 			this.lid = lid;
 		}
 
-
 		#region Accessor methods
 		/// <summary>
 		/// Returns/Sets the Language Id
 		/// </summary>
 		public byte Id
 		{
-			get { return lid;}
+			get { return lid; }
 		}
 
 		/// <summary>
@@ -66,8 +65,9 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				string enumName = ((Data.MetaData.Languages)lid).ToString();
-				string s = Localization.Manager.GetString( enumName );
-				if (s != null) return s;
+				string s = Localization.Manager.GetString(enumName);
+				if (s != null)
+					return s;
 				return enumName;
 			}
 		}
@@ -113,15 +113,22 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <returns>Comparison value or "equal" if invalid object types passed</returns>
 		public int Compare(object x, object y)
 		{
-			int a, b;
+			int a,
+				b;
 
-			if (x.GetType() == typeof(StrLanguage))	a = ((StrLanguage)x).Id;
-			else if (x.GetType()==typeof(byte))		a = (byte)x;
-			else									return 0;
+			if (x.GetType() == typeof(StrLanguage))
+				a = ((StrLanguage)x).Id;
+			else if (x.GetType() == typeof(byte))
+				a = (byte)x;
+			else
+				return 0;
 
-			if (y.GetType() == typeof(StrLanguage))	b = ((StrLanguage)y).Id;
-			else if (y.GetType()==typeof(byte))		b = (byte)y;
-			else									return 0;
+			if (y.GetType() == typeof(StrLanguage))
+				b = ((StrLanguage)y).Id;
+			else if (y.GetType() == typeof(byte))
+				b = (byte)y;
+			else
+				return 0;
 
 			return b - a;
 		}
@@ -186,6 +193,7 @@ namespace SimPe.PackedFiles.Wrapper
 		StrLanguage lid;
 		string title;
 		string desc;
+
 		/// <summary>
 		/// Indicates whether the object has been updated since creation (can't be cleared!)
 		/// </summary>
@@ -207,12 +215,12 @@ namespace SimPe.PackedFiles.Wrapper
 			dirty = false;
 		}
 
-
 		#region Accessor methods
 		internal int Index
 		{
-			get {return index; }
+			get { return index; }
 		}
+
 		/// <summary>
 		/// Language is read-only
 		/// </summary>
@@ -224,13 +232,27 @@ namespace SimPe.PackedFiles.Wrapper
 		public string Title
 		{
 			get { return title; }
-			set { if (title != value) { title = value; dirty = true; } }
+			set
+			{
+				if (title != value)
+				{
+					title = value;
+					dirty = true;
+				}
+			}
 		}
 
 		public string Description
 		{
 			get { return desc; }
-			set { if (desc != value) { desc = value; dirty = true; } }
+			set
+			{
+				if (desc != value)
+				{
+					desc = value;
+					dirty = true;
+				}
+			}
 		}
 
 		/// <summary>
@@ -256,18 +278,29 @@ namespace SimPe.PackedFiles.Wrapper
 			string title = StreamHelper.ReadPChar(reader);
 			string desc = StreamHelper.ReadPChar(reader);
 
-			if (lines[lid.Id] == null) lines[lid.Id] = new StrItemList(); // Add a new StrItemList if needed
+			if (lines[lid.Id] == null)
+				lines[lid.Id] = new StrItemList(); // Add a new StrItemList if needed
 
-			((StrItemList)lines[lid.Id]).Add(new StrToken(((StrItemList)lines[lid.Id]).Count, lid, title, desc));
+			((StrItemList)lines[lid.Id]).Add(
+				new StrToken(((StrItemList)lines[lid.Id]).Count, lid, title, desc)
+			);
 		}
-
 
 		internal void Serialize(BinaryWriter writer)
 		{
-			if (lid   != null) writer.Write(lid.Id); else writer.Write((byte)0);
-            if (title != null) StreamHelper.WritePChar(writer, title); else StreamHelper.WritePChar(writer, "");
-            if (desc != null) StreamHelper.WritePChar(writer, desc); else StreamHelper.WritePChar(writer, "");
-//			dirty = false;
+			if (lid != null)
+				writer.Write(lid.Id);
+			else
+				writer.Write((byte)0);
+			if (title != null)
+				StreamHelper.WritePChar(writer, title);
+			else
+				StreamHelper.WritePChar(writer, "");
+			if (desc != null)
+				StreamHelper.WritePChar(writer, desc);
+			else
+				StreamHelper.WritePChar(writer, "");
+			//			dirty = false;
 			// Mmm, "dirty" means what?  OK, so I added it...
 		}
 		#endregion
@@ -276,7 +309,6 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			return "0x" + index.ToString("X") + " - " + this.Title;
 		}
-
 	}
 	#endregion
 
@@ -327,11 +359,11 @@ namespace SimPe.PackedFiles.Wrapper
 		public override object Clone()
 		{
 			StrItemList sil = new StrItemList();
-			foreach (StrToken si in this) sil.Add(si);
+			foreach (StrToken si in this)
+				sil.Add(si);
 
 			return sil;
 		}
-
 	}
 	#endregion
 }

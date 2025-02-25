@@ -18,35 +18,38 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.IO;
 using System.Collections;
+using System.IO;
 using SimPe;
 using SimPe.Plugin;
-
 
 namespace SimPe.Cache
 {
 	/// <summary>
 	/// Contains an Instance of a CacheFile
 	/// </summary>
-	public class MMATCacheFile: CacheFile
+	public class MMATCacheFile : CacheFile
 	{
 		/// <summary>
 		/// Creaet a new Instance for an empty File
 		/// </summary>
-		public MMATCacheFile() : base()
+		public MMATCacheFile()
+			: base()
 		{
 			DEFAULT_TYPE = ContainerType.MaterialOverride;
-		}		
+		}
 
 		/// <summary>
 		/// Add a MaterialOverride to the Cache
 		/// </summary>
 		/// <param name="mmat">The Material Override to add</param>
-		public void AddItem(SimPe.Plugin.MmatWrapper mmat) 
+		public void AddItem(SimPe.Plugin.MmatWrapper mmat)
 		{
-			CacheContainer mycc = this.UseConatiner(ContainerType.MaterialOverride, mmat.Package.FileName);
-			
+			CacheContainer mycc = this.UseConatiner(
+				ContainerType.MaterialOverride,
+				mmat.Package.FileName
+			);
+
 			MMATCacheItem mci = new MMATCacheItem();
 
 			mci.Default = mmat.DefaultMaterial;
@@ -58,14 +61,17 @@ namespace SimPe.Cache
 		}
 
 		FileIndex fi;
+
 		/// <summary>
 		/// Return the FileIndex represented by the Cached Files
 		/// </summary>
-		public FileIndex FileIndex 
+		public FileIndex FileIndex
 		{
-			get { 
-				if (fi==null) LoadOverrides();
-				return fi; 
+			get
+			{
+				if (fi == null)
+					LoadOverrides();
+				return fi;
 			}
 		}
 
@@ -74,27 +80,30 @@ namespace SimPe.Cache
 		/// </summary>
 		/// <returns>the FileIndex</returns>
 		/// <remarks>
-		/// The Tags of the FileDescriptions contain the MMATCachItem Object, 
+		/// The Tags of the FileDescriptions contain the MMATCachItem Object,
 		/// the FileNames of the FileDescriptions contain the Name of the package File
 		/// </remarks>
 		public void LoadOverrides()
 		{
 			fi = new FileIndex(new ArrayList());
 			fi.Duplicates = true;
-			
 
-			foreach (CacheContainer cc in Containers) 
+			foreach (CacheContainer cc in Containers)
 			{
-				if (cc.Type==ContainerType.MaterialOverride && cc.Valid) 
+				if (cc.Type == ContainerType.MaterialOverride && cc.Valid)
 				{
-					foreach (MMATCacheItem mci in cc.Items) 
+					foreach (MMATCacheItem mci in cc.Items)
 					{
 						Interfaces.Files.IPackedFileDescriptor pfd = mci.FileDescriptor;
 						pfd.Filename = cc.FileName;
-						fi.AddIndexFromPfd(pfd, null, FileIndex.GetLocalGroup(pfd.Filename));
+						fi.AddIndexFromPfd(
+							pfd,
+							null,
+							FileIndex.GetLocalGroup(pfd.Filename)
+						);
 					}
 				}
-			}//foreach
+			} //foreach
 		}
 
 		Hashtable defaultmap;
@@ -105,9 +114,10 @@ namespace SimPe.Cache
 		/// </summary>
 		public Hashtable DefaultMap
 		{
-			get 
+			get
 			{
-				if (defaultmap==null) LoadOverrideMaps();
+				if (defaultmap == null)
+					LoadOverrideMaps();
 				return defaultmap;
 			}
 		}
@@ -117,9 +127,10 @@ namespace SimPe.Cache
 		/// </summary>
 		public Hashtable ModelMap
 		{
-			get 
+			get
 			{
-				if (modelmap==null) LoadOverrideMaps();
+				if (modelmap == null)
+					LoadOverrideMaps();
 				return modelmap;
 			}
 		}
@@ -134,17 +145,17 @@ namespace SimPe.Cache
 
 			defaultmap[true] = new CacheItems();
 			defaultmap[false] = new CacheItems();
-			foreach (CacheContainer cc in Containers) 
+			foreach (CacheContainer cc in Containers)
 			{
-				if (cc.Type==ContainerType.MaterialOverride && cc.Valid) 
+				if (cc.Type == ContainerType.MaterialOverride && cc.Valid)
 				{
-					foreach (MMATCacheItem mci in cc.Items) 
+					foreach (MMATCacheItem mci in cc.Items)
 					{
 						CacheItems l = (CacheItems)defaultmap[mci.Default];
 						l.Add(mci);
 
 						l = (CacheItems)modelmap[mci.ModelName];
-						if (l==null) 
+						if (l == null)
 						{
 							l = new CacheItems();
 							modelmap[mci.ModelName] = l;
@@ -152,7 +163,7 @@ namespace SimPe.Cache
 						l.Add(mci);
 					}
 				}
-			}//foreach
+			} //foreach
 		}
 	}
 }

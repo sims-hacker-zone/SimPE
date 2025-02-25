@@ -20,12 +20,11 @@
 using System;
 using System.Collections;
 
-
 namespace SimPe.Geometry
 {
 	/// <summary>
 	/// Determins the type of the passed Arguments
-	/// </summary>	
+	/// </summary>
 	internal enum QuaternionParameterType : byte
 	{
 		/*/// <summary>
@@ -36,15 +35,19 @@ namespace SimPe.Geometry
 		/// Arguments represent a (unit-)Axis/Angle Pair
 		/// </summary>
 		UnitAxisAngle = 0x01,
+
 		/// <summary>
 		/// Arguments represent the Imaginary koeef. of a Quaternion and the Real Part
 		/// </summary>
-		ImaginaryReal = 0x02
+		ImaginaryReal = 0x02,
 	}
+
 	/// <summary>
 	/// Summary description for Quaternion.
 	/// </summary>
-	[System.ComponentModel.TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
+	[System.ComponentModel.TypeConverter(
+		typeof(System.ComponentModel.ExpandableObjectConverter)
+	)]
 	public class Quaternion : Vector4f
 	{
 		/// <summary>
@@ -55,13 +58,23 @@ namespace SimPe.Geometry
 		/// <param name="y">Y-Imaginary Part/Y-Axis</param>
 		/// <param name="z">Z-Imaginary Part/Z-Axis</param>
 		/// <param name="w">RealPart/Angle</param>
-		internal Quaternion (QuaternionParameterType p, double x, double y, double z, double w) : base ()
+		internal Quaternion(
+			QuaternionParameterType p,
+			double x,
+			double y,
+			double z,
+			double w
+		)
+			: base()
 		{
-			if (p==QuaternionParameterType.ImaginaryReal) 
+			if (p == QuaternionParameterType.ImaginaryReal)
 			{
-				X = x; Y = y; Z = z; W = w;
-			} 
-			else if (p==QuaternionParameterType.UnitAxisAngle) 
+				X = x;
+				Y = y;
+				Z = z;
+				W = w;
+			}
+			else if (p == QuaternionParameterType.UnitAxisAngle)
 			{
 				this.SetFromAxisAngle(new Vector3f(x, y, z), w);
 			}
@@ -73,29 +86,34 @@ namespace SimPe.Geometry
 		/// <param name="p">How do you want to create the Quaternion</param>
 		/// <param name="v">The (unit) Axis for the Rotation/Imaginary part</param>
 		/// <param name="a">The angle (in Radiants)/Real Part</param>
-		internal Quaternion (QuaternionParameterType p, Vector3f v, double a)  : base()
+		internal Quaternion(QuaternionParameterType p, Vector3f v, double a)
+			: base()
 		{
-			if (p==QuaternionParameterType.ImaginaryReal) 
+			if (p == QuaternionParameterType.ImaginaryReal)
 			{
-				X = v.X; Y = v.Y; Z = v.Z; W = a;
-			} 
-			else if (p==QuaternionParameterType.UnitAxisAngle) 
+				X = v.X;
+				Y = v.Y;
+				Z = v.Z;
+				W = a;
+			}
+			else if (p == QuaternionParameterType.UnitAxisAngle)
 			{
 				this.SetFromAxisAngle(v, a);
 			}
-		}			
-	
+		}
+
 		/// <summary>
 		/// Creates a new Identity Quaternion
 		/// </summary>
-		public Quaternion () : base () {}
+		public Quaternion()
+			: base() { }
 
 		/// <summary>
 		/// Returns the Norm of the Quaternion
 		/// </summary>
-		public new double Norm 
+		public new double Norm
 		{
-			get 
+			get
 			{
 				double n = Imaginary.Norm + Math.Pow(W, 2);
 				return (double)n;
@@ -105,22 +123,23 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// Returns the Length of the Quaternion
 		/// </summary>
-		public new double Length 
+		public new double Length
 		{
-			get 
-			{
-				return (double)Math.Sqrt(Norm);
-			}
+			get { return (double)Math.Sqrt(Norm); }
 		}
 
 		/// <summary>
 		/// Returns the Conjugate for this Quaternion
 		/// </summary>
-		public Quaternion Conjugate 
+		public Quaternion Conjugate
 		{
-			get 
+			get
 			{
-				return new Quaternion(QuaternionParameterType.ImaginaryReal, -1*this.Imaginary, this.W);				
+				return new Quaternion(
+					QuaternionParameterType.ImaginaryReal,
+					-1 * this.Imaginary,
+					this.W
+				);
 			}
 		}
 
@@ -128,33 +147,50 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// returns the Euler Angles
 		/// </summary>
-		public Vector3f Euler 
+		public Vector3f Euler
 		{
-			get 
-			{
-				return this.GetEulerAngles();
-			}
+			get { return this.GetEulerAngles(); }
 		}
 
 		public bool IsComplex(double z)
 		{
-			return ((Math.Pow(X+Y+Z+W, 2) - 4.0*(Norm-z)) <0.0);
+			return ((Math.Pow(X + Y + Z + W, 2) - 4.0 * (Norm - z)) < 0.0);
 		}
 
 		public double GetMovePlus(double z)
 		{
-			double d1 = ((-2.0 * (X+Y+Z+W)) + (2*Math.Sqrt(Math.Pow(X+Y+Z+W, 2) - 4.0*(Norm-z)))) / 8.0;
-			double d2 = ((-2.0 * (X+Y+Z+W)) - (2*Math.Sqrt(Math.Pow(X+Y+Z+W, 2) - 4.0*(Norm-z)))) / 8.0;
-			if (d1<d2) return d2;
-			else return d1;
+			double d1 =
+				(
+					(-2.0 * (X + Y + Z + W))
+					+ (2 * Math.Sqrt(Math.Pow(X + Y + Z + W, 2) - 4.0 * (Norm - z)))
+				) / 8.0;
+			double d2 =
+				(
+					(-2.0 * (X + Y + Z + W))
+					- (2 * Math.Sqrt(Math.Pow(X + Y + Z + W, 2) - 4.0 * (Norm - z)))
+				) / 8.0;
+			if (d1 < d2)
+				return d2;
+			else
+				return d1;
 		}
 
 		public double GetMoveMinus(double z)
 		{
-			double d1 = ((-2.0 * (X+Y+Z+W)) + (2*Math.Sqrt(Math.Pow(X+Y+Z+W, 2) - 4.0*(Norm-z)))) / 8.0;
-			double d2 = ((-2.0 * (X+Y+Z+W)) - (2*Math.Sqrt(Math.Pow(X+Y+Z+W, 2) - 4.0*(Norm-z)))) / 8.0;
-			if (d1>d2) return d2;
-			else return d1;
+			double d1 =
+				(
+					(-2.0 * (X + Y + Z + W))
+					+ (2 * Math.Sqrt(Math.Pow(X + Y + Z + W, 2) - 4.0 * (Norm - z)))
+				) / 8.0;
+			double d2 =
+				(
+					(-2.0 * (X + Y + Z + W))
+					- (2 * Math.Sqrt(Math.Pow(X + Y + Z + W, 2) - 4.0 * (Norm - z)))
+				) / 8.0;
+			if (d1 > d2)
+				return d2;
+			else
+				return d1;
 		}
 #endif
 
@@ -172,9 +208,9 @@ namespace SimPe.Geometry
 		/// Returns the Inverse of this Quaternion
 		/// </summary>
 		/// <returns>Inverted Quaternion</returns>
-		public new Quaternion GetInverse() 
+		public new Quaternion GetInverse()
 		{
-			return Conjugate * (double)(1.0 / this.Norm);			
+			return Conjugate * (double)(1.0 / this.Norm);
 		}
 
 		/// <summary>
@@ -183,12 +219,15 @@ namespace SimPe.Geometry
 		/// <param name="q1">First Quaternion</param>
 		/// <param name="q2">Second Quaternion</param>
 		/// <returns>The resulting Quaternion</returns>
-		public static Quaternion operator *(Quaternion q2, Quaternion q1) 
+		public static Quaternion operator *(Quaternion q2, Quaternion q1)
 		{
-			return new Quaternion( 
-				QuaternionParameterType.ImaginaryReal, 				
-				(q1.Imaginary | q2.Imaginary) + (q2.W*q1.Imaginary) + (q1.W*q2.Imaginary),
-				q1.W*q2.W - ((Vector3f)q1.Imaginary & (Vector3f)q2.Imaginary));			
+			return new Quaternion(
+				QuaternionParameterType.ImaginaryReal,
+				(q1.Imaginary | q2.Imaginary)
+					+ (q2.W * q1.Imaginary)
+					+ (q1.W * q2.Imaginary),
+				q1.W * q2.W - ((Vector3f)q1.Imaginary & (Vector3f)q2.Imaginary)
+			);
 		}
 
 		/// <summary>
@@ -197,9 +236,9 @@ namespace SimPe.Geometry
 		/// <param name="q1">First Quaternion</param>
 		/// <param name="q2">Second Quaternion</param>
 		/// <returns>The resulting Quaternion</returns>
-		public static double operator &(Quaternion q1, Quaternion q2) 
+		public static double operator &(Quaternion q1, Quaternion q2)
 		{
-			return q1.W*q2.W + ((Vector3f)q1.Imaginary&(Vector3f)q2.Imaginary);
+			return q1.W * q2.W + ((Vector3f)q1.Imaginary & (Vector3f)q2.Imaginary);
 		}
 
 		/// <summary>
@@ -208,9 +247,13 @@ namespace SimPe.Geometry
 		/// <param name="q1">First Quaternion</param>
 		/// <param name="q2">Second Quaternion</param>
 		/// <returns>The resulting Quaternion</returns>
-		public static Quaternion operator |(Quaternion q1, Quaternion q2) 
+		public static Quaternion operator |(Quaternion q1, Quaternion q2)
 		{
-			return new Quaternion(QuaternionParameterType.ImaginaryReal, (Vector3f)q2.Imaginary|(Vector3f)q1.Imaginary, 0);
+			return new Quaternion(
+				QuaternionParameterType.ImaginaryReal,
+				(Vector3f)q2.Imaginary | (Vector3f)q1.Imaginary,
+				0
+			);
 		}
 
 		/// <summary>
@@ -219,9 +262,13 @@ namespace SimPe.Geometry
 		/// <param name="q1">First Quaternion</param>
 		/// <param name="d">a Scalar Value</param>
 		/// <returns>The resulting Quaternion</returns>
-		public static Quaternion operator *(Quaternion q1, double d) 
-		{			
-			return new Quaternion(QuaternionParameterType.ImaginaryReal, (Vector3f)q1.Imaginary * d, q1.W * d);
+		public static Quaternion operator *(Quaternion q1, double d)
+		{
+			return new Quaternion(
+				QuaternionParameterType.ImaginaryReal,
+				(Vector3f)q1.Imaginary * d,
+				q1.W * d
+			);
 		}
 
 		/// <summary>
@@ -230,7 +277,7 @@ namespace SimPe.Geometry
 		/// <param name="q1">First Quaternion</param>
 		/// <param name="d">a Scalar Value</param>
 		/// <returns>The resulting Quaternion</returns>
-		public static Quaternion operator *(double d, Quaternion q1) 
+		public static Quaternion operator *(double d, Quaternion q1)
 		{
 			return q1 * d;
 		}
@@ -241,41 +288,63 @@ namespace SimPe.Geometry
 		/// <param name="q1">First Quaternion</param>
 		/// <param name="q2">Second Quaternion</param>
 		/// <returns>The resulting Quaternion</returns>
-		public static Quaternion operator +(Quaternion q1, Quaternion q2) 
+		public static Quaternion operator +(Quaternion q1, Quaternion q2)
 		{
-			return new Quaternion(QuaternionParameterType.ImaginaryReal, q1.Imaginary + q2.Imaginary, q1.W + q2.W);
+			return new Quaternion(
+				QuaternionParameterType.ImaginaryReal,
+				q1.Imaginary + q2.Imaginary,
+				q1.W + q2.W
+			);
 		}
 
 		/// <summary>
 		/// Returns the Imaginary Part of the Quaternion
 		/// </summary>
-		public Vector3f Imaginary 
+		public Vector3f Imaginary
 		{
-			get { return (Vector3f)this;}
+			get { return (Vector3f)this; }
 		}
 
 		/// <summary>
 		/// Returns an Identity Quaternion
 		/// </summary>
-		public static Quaternion Identity 
+		public static Quaternion Identity
 		{
-			get { return new Quaternion(QuaternionParameterType.ImaginaryReal, 0, 0, 0, 1); }
-		}	
+			get
+			{
+				return new Quaternion(
+					QuaternionParameterType.ImaginaryReal,
+					0,
+					0,
+					0,
+					1
+				);
+			}
+		}
 
 		/// <summary>
 		/// Returns an Empty Quaternion
 		/// </summary>
-		public static new Quaternion Zero 
+		public static new Quaternion Zero
 		{
-			get { return new Quaternion(QuaternionParameterType.ImaginaryReal, 0, 0, 0, 0); }
-		}	
+			get
+			{
+				return new Quaternion(
+					QuaternionParameterType.ImaginaryReal,
+					0,
+					0,
+					0,
+					0
+				);
+			}
+		}
 
 		/// <summary>
 		/// Returns an Angle in Degree
 		/// </summary>
 		/// <param name="rad">Angle in Radiants</param>
 		/// <returns>Angle in Degree</returns>
-		public static double RadToDeg(double rad) 
+		public static double RadToDeg(double rad)
 		{
 			return (double)((rad * 180.0) / Math.PI);
 		}
@@ -285,29 +354,29 @@ namespace SimPe.Geometry
 		/// </summary>
 		/// <param name="deg">Angle in Degree</param>
 		/// <returns>Angle in Radiants</returns>
-		public static double DegToRad(double deg) 
+		public static double DegToRad(double deg)
 		{
 			return (double)((deg * Math.PI) / 180.0);
 		}
-	
+
 		/// <summary>
 		/// Makes sure this Quaternion is a Unit Quaternion (Length=1)
 		/// </summary>
 		public void MakeUnitQuaternion()
 		{
 			double l = Length;
-			if (l!=0)
+			if (l != 0)
 			{
-				X = X/l;
-				Y = Y/l;
-				Z = Z/l;
-				W = W/l;
+				X = X / l;
+				Y = Y / l;
+				Z = Z / l;
+				W = W / l;
 			}
 		}
 
 		bool IsNear(double val, double near, double delta)
 		{
-			return (Math.Abs(Math.Abs(val)-near)<delta);
+			return (Math.Abs(Math.Abs(val) - near) < delta);
 		}
 
 		protected double MakeRobustAngle(double rad)
@@ -321,14 +390,11 @@ namespace SimPe.Geometry
 			return DegToRad(sgn*rad);*/
 		}
 
-		protected void MakeRobust()
-		{
-		}
+		protected void MakeRobust() { }
 
 		protected void DoMakeRobust()
 		{
-			
-			/*const float percision = 100000;			
+			/*const float percision = 100000;
 
 			X = (float)((int)(X*percision))/percision;
 			Y = (float)((int)(Y*percision))/percision;
@@ -340,15 +406,15 @@ namespace SimPe.Geometry
 			{
 				if (IsNear(Z, 0.7, 0.09))
 				{
-					double sgnz = 1; if (Z!=0) sgnz = Z/Math.Abs(Z);				
+					double sgnz = 1; if (Z!=0) sgnz = Z/Math.Abs(Z);
 				
 					X = 0;
 					Y = 0;
 					Z = Z - (Math.Pow(X, 2) + Math.Pow(Y, 2) ) *sgnz;
-				} 
+				}
 				else  if (IsNear(Y, 0.7, 0.09))
 				{
-					double sgny = 1; if (Y!=0) sgny = Y/Math.Abs(Y);				
+					double sgny = 1; if (Y!=0) sgny = Y/Math.Abs(Y);
 				
 					X = 0;
 					Y = Y - (Math.Pow(X, 2) + Math.Pow(Z, 2) ) *sgny;
@@ -356,7 +422,7 @@ namespace SimPe.Geometry
 				}
 				else  if (IsNear(X, 0.7, 0.09))
 				{
-					double sgnx = 1; if (X!=0) sgnx = X/Math.Abs(X);				
+					double sgnx = 1; if (X!=0) sgnx = X/Math.Abs(X);
 									
 					X = X - (Math.Pow(Y, 2) + Math.Pow(Z, 2) ) *sgnx;
 					Y = 0;
@@ -373,10 +439,10 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// Returns the Rotation Angle (in Radiants)
 		/// </summary>
-		public double Angle 
+		public double Angle
 		{
-			get 
-			{				
+			get
+			{
 				MakeRobust();
 				this.MakeUnitQuaternion();
 				//if (W==0) return 0;
@@ -387,17 +453,18 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// Returns the rotation (unit-)Axis
 		/// </summary>
-		public Vector3f Axis 
+		public Vector3f Axis
 		{
-			get 
-			{				
+			get
+			{
 				MakeRobust();
 				this.MakeUnitQuaternion();
 				//if (W==0) return new Vector3f(0, 0, 1);
-				double sina = Math.Sqrt(1-Math.Pow(W, 2)); //(double)Math.Sin(Angle/2.0);
+				double sina = Math.Sqrt(1 - Math.Pow(W, 2)); //(double)Math.Sin(Angle/2.0);
 
-				if (sina == 0) return new Vector3f(0, 0, 0);		
-				return new Vector3f(X / sina, Y /sina, Z / sina);
+				if (sina == 0)
+					return new Vector3f(0, 0, 0);
+				return new Vector3f(X / sina, Y / sina, Z / sina);
 			}
 		}
 
@@ -406,16 +473,16 @@ namespace SimPe.Geometry
 		/// </summary>
 		/// <param name="axis">The (unit-)Axis</param>
 		/// <param name="a">The rotation Angle</param>
-		public void SetFromAxisAngle(Vector3f axis, double a) 
+		public void SetFromAxisAngle(Vector3f axis, double a)
 		{
 			axis.MakeUnitVector();
 
-			double sina = (double)Math.Sin(a/2.0);
+			double sina = (double)Math.Sin(a / 2.0);
 			X = axis.X * sina;
 			Y = axis.Y * sina;
 			Z = axis.Z * sina;
 
-			W = (double)Math.Cos(a/2.0);
+			W = (double)Math.Cos(a / 2.0);
 			MakeRobust();
 			this.MakeUnitQuaternion();
 		}
@@ -424,7 +491,7 @@ namespace SimPe.Geometry
 		{
 			Quaternion q = this.Clone();
 			q.DoMakeRobust();
-			Vector3f v =  q.GetEulerAnglesZYX();
+			Vector3f v = q.GetEulerAnglesZYX();
 
 			v.X = MakeRobustAngle(v.X);
 			v.Y = MakeRobustAngle(v.Y);
@@ -434,8 +501,10 @@ namespace SimPe.Geometry
 
 		protected double Clip1(double d)
 		{
-			if (d<-1) return -1;
-			if (d>1) return 1;
+			if (d < -1)
+				return -1;
+			if (d > 1)
+				return 1;
 			return d;
 		}
 
@@ -448,30 +517,30 @@ namespace SimPe.Geometry
 		/// Z=Roll
 		/// </remarks>
 		public Vector3f GetEulerAnglesYXZ()
-		{			
+		{
 			Matrixd m = this.Matrix;
 			Vector3f v = new Vector3f(0, 0, 0);
 
 			v.X = Math.Asin(-Clip1(m[1, 2]));
 			if (v.X < Math.PI / 2.0)
 			{
-				if (v.X > Math.PI / -2.0) 
+				if (v.X > Math.PI / -2.0)
 				{
 					v.Y = (float)Math.Atan2(Clip1(m[0, 2]), Clip1(m[2, 2]));
 					v.Z = (float)Math.Atan2(Clip1(m[1, 0]), Clip1(m[1, 1]));
-				} 
-				else 
+				}
+				else
 				{
 					v.Y = (float)(-1 * Math.Atan2(-Clip1(m[0, 1]), Clip1(m[0, 0])));
 				}
-			} 
-			else 
+			}
+			else
 			{
-				v.Y = (float)Math.Atan2(-Clip1(m[0, 1]), Clip1(m[0,0]));
+				v.Y = (float)Math.Atan2(-Clip1(m[0, 1]), Clip1(m[0, 0]));
 			}
 
 			return v;
-		}		
+		}
 
 		/// <summary>
 		/// Get the Euler Angles represented by this Quaternion
@@ -482,26 +551,26 @@ namespace SimPe.Geometry
 		/// Z=Roll
 		/// </remarks>
 		public Vector3f GetEulerAnglesZXY()
-		{			
+		{
 			Matrixd m = this.Matrix;
 			Vector3f v = new Vector3f(0, 0, 0);
 
 			v.X = Math.Asin(m[2, 1]);
 			if (v.X < Math.PI / 2.0)
 			{
-				if (v.X > Math.PI / -2.0) 
+				if (v.X > Math.PI / -2.0)
 				{
 					v.Z = (float)Math.Atan2(-m[0, 1], m[1, 1]);
 					v.Y = (float)Math.Atan2(-m[2, 0], m[2, 2]);
-				} 
-				else 
+				}
+				else
 				{
 					v.Z = (float)(-1 * Math.Atan2(-m[0, 2], m[0, 0]));
 				}
-			} 
-			else 
+			}
+			else
 			{
-				v.Z = (float)Math.Atan2(m[0, 2], m[0,0]);
+				v.Z = (float)Math.Atan2(m[0, 2], m[0, 0]);
 			}
 
 			return v;
@@ -516,26 +585,26 @@ namespace SimPe.Geometry
 		/// Z=Roll
 		/// </remarks>
 		public Vector3f GetEulerAnglesZYX()
-		{			
+		{
 			Matrixd m = this.Matrix;
 			Vector3f v = new Vector3f(0, 0, 0);
 
 			v.Y = Math.Asin(-m[2, 0]);
 			if (v.Y < Math.PI / 2.0)
 			{
-				if (v.Y > Math.PI / -2.0) 
+				if (v.Y > Math.PI / -2.0)
 				{
 					v.Z = (float)Math.Atan2(m[1, 0], m[0, 0]);
 					v.X = (float)Math.Atan2(m[2, 1], m[2, 2]);
-				} 
-				else 
+				}
+				else
 				{
 					v.Z = (float)(-1 * Math.Atan2(-m[0, 1], m[0, 2]));
 				}
-			} 
-			else 
+			}
+			else
 			{
-				v.Z = (float)Math.Atan2(-m[0, 1], m[0,2]);
+				v.Z = (float)Math.Atan2(-m[0, 1], m[0, 2]);
 			}
 
 			return v;
@@ -543,48 +612,50 @@ namespace SimPe.Geometry
 
 		public static Quaternion FromRotationMatrix(Matrixd r)
 		{
-			double x=0, y=0, z=0, w = 0;
+			double x = 0,
+				y = 0,
+				z = 0,
+				w = 0;
 
 			double t = r.Trace;
-			if (t>0)
+			if (t > 0)
 			{
-				w = Math.Sqrt(t)/2;
-				x = (r[2,1] - r[1,2]) / (4 * w);
-				y = (r[0,2] - r[2,0]) / (4 * w);
-				z = (r[1,0] - r[0,1]) / (4 * w);
-			} 
-			else 
+				w = Math.Sqrt(t) / 2;
+				x = (r[2, 1] - r[1, 2]) / (4 * w);
+				y = (r[0, 2] - r[2, 0]) / (4 * w);
+				z = (r[1, 0] - r[0, 1]) / (4 * w);
+			}
+			else
 			{
-				if (r[0,0]>=r[1,1] && r[0,0]>=r[2,2]) 
+				if (r[0, 0] >= r[1, 1] && r[0, 0] >= r[2, 2])
 				{
-					x = Math.Sqrt(r[0,0] - r[1,1] - r[2,2] + 1)/2;
-					w = (r[1,2] - r[2,1]) / (4 * x);					
-					y = (r[0,1] - r[1,0]) / (4 * x);
-					z = (r[2,0] - r[0,2]) / (4 * x);
+					x = Math.Sqrt(r[0, 0] - r[1, 1] - r[2, 2] + 1) / 2;
+					w = (r[1, 2] - r[2, 1]) / (4 * x);
+					y = (r[0, 1] - r[1, 0]) / (4 * x);
+					z = (r[2, 0] - r[0, 2]) / (4 * x);
 				}
-				else if (r[1,1]>=r[0,0] && r[1,1]>=r[2,2]) 
+				else if (r[1, 1] >= r[0, 0] && r[1, 1] >= r[2, 2])
 				{
-					y = Math.Sqrt(r[1,1] - r[0,0] - r[2,2] + 1)/2;
-					w = (r[2,0] - r[0,2]) / (4 * y);					
-					x = (r[0,1] - r[1,0]) / (4 * y);
-					z = (r[1,2] - r[2,1]) / (4 * y);
+					y = Math.Sqrt(r[1, 1] - r[0, 0] - r[2, 2] + 1) / 2;
+					w = (r[2, 0] - r[0, 2]) / (4 * y);
+					x = (r[0, 1] - r[1, 0]) / (4 * y);
+					z = (r[1, 2] - r[2, 1]) / (4 * y);
 				}
-				else if (r[2,2]>=r[0,0] && r[2,2]>=r[1,1]) 
+				else if (r[2, 2] >= r[0, 0] && r[2, 2] >= r[1, 1])
 				{
-					z = Math.Sqrt(r[2,2] - r[0,0] - r[1,1] + 1)/2;
-					w = (r[0,1] - r[1,0]) / (4 * z);					
-					x = (r[2,0] - r[0,2]) / (4 * z);					
-					y = (r[1,2] - r[2,1]) / (4 * z);
+					z = Math.Sqrt(r[2, 2] - r[0, 0] - r[1, 1] + 1) / 2;
+					w = (r[0, 1] - r[1, 0]) / (4 * z);
+					x = (r[2, 0] - r[0, 2]) / (4 * z);
+					y = (r[1, 2] - r[2, 1]) / (4 * z);
 				}
 			}
 
-			Quaternion ret =  Quaternion.FromImaginaryReal(x, y, z, w);
+			Quaternion ret = Quaternion.FromImaginaryReal(x, y, z, w);
 			ret.MakeRobust();
 			ret.MakeUnitQuaternion();
 			//Console.WriteLine(ret.Length+" "+ret);
 			return ret;
 		}
-
 
 		/// <summary>
 		/// Set the quaternion based on the passed Euler Angles
@@ -595,45 +666,81 @@ namespace SimPe.Geometry
 		/// Y=Yaw
 		/// Z=Roll
 		/// </remarks>
-		public static Quaternion FromEulerAngles(Vector3f ea) 
-		{	
-			return FromRotationMatrix(Matrixd.RotateZ(ea.Z) * Matrixd.RotateY(ea.Y) * Matrixd.RotateX(ea.X));			
+		public static Quaternion FromEulerAngles(Vector3f ea)
+		{
+			return FromRotationMatrix(
+				Matrixd.RotateZ(ea.Z) * Matrixd.RotateY(ea.Y) * Matrixd.RotateX(ea.X)
+			);
 		}
 
 		/// <summary>
 		/// Set the quaternion based on the passed Euler Angles
 		/// </summary>
-		public static Quaternion FromEulerAngles(double yaw, double pitch, double roll) 
-		{			
-			return FromEulerAngles(new Vector3f(pitch, yaw, roll));		
+		public static Quaternion FromEulerAngles(double yaw, double pitch, double roll)
+		{
+			return FromEulerAngles(new Vector3f(pitch, yaw, roll));
 		}
 
 		public static Quaternion FromAxisAngle(Vector3f v, double angle)
 		{
 			v.MakeUnitVector();
-			return new Quaternion(QuaternionParameterType.UnitAxisAngle, v.X, v.Y, v.Z, angle);
+			return new Quaternion(
+				QuaternionParameterType.UnitAxisAngle,
+				v.X,
+				v.Y,
+				v.Z,
+				angle
+			);
 		}
 
-		public static Quaternion FromAxisAngle(double x, double y, double z, double angle)
+		public static Quaternion FromAxisAngle(
+			double x,
+			double y,
+			double z,
+			double angle
+		)
 		{
-			return new Quaternion(QuaternionParameterType.UnitAxisAngle, x, y, z, angle);
+			return new Quaternion(
+				QuaternionParameterType.UnitAxisAngle,
+				x,
+				y,
+				z,
+				angle
+			);
 		}
 
 		public static Quaternion FromImaginaryReal(Vector3f v, double w)
-		{			
-			return new Quaternion(QuaternionParameterType.ImaginaryReal, v.X, v.Y, v.Z, w);
+		{
+			return new Quaternion(
+				QuaternionParameterType.ImaginaryReal,
+				v.X,
+				v.Y,
+				v.Z,
+				w
+			);
 		}
 
 		public static Quaternion FromImaginaryReal(Vector4f v)
-		{			
-			return new Quaternion(QuaternionParameterType.ImaginaryReal, v.X, v.Y, v.Z, v.W);
+		{
+			return new Quaternion(
+				QuaternionParameterType.ImaginaryReal,
+				v.X,
+				v.Y,
+				v.Z,
+				v.W
+			);
 		}
 
-		public static Quaternion FromImaginaryReal(double x, double y, double z, double w)
+		public static Quaternion FromImaginaryReal(
+			double x,
+			double y,
+			double z,
+			double w
+		)
 		{
 			return new Quaternion(QuaternionParameterType.ImaginaryReal, x, y, z, w);
 		}
-		
+
 		/// <summary>
 		/// Makes sure that the passed Radius has only one Pi cycle. Result is in Intervall [-Pi; +PI]
 		/// </summary>
@@ -641,41 +748,51 @@ namespace SimPe.Geometry
 		/// <returns></returns>
 		double NormalizeRad(double rad)
 		{
-			while (rad>Math.PI) rad -= 2*Math.PI;
-			while (rad<-Math.PI) rad += 2*Math.PI;
+			while (rad > Math.PI)
+				rad -= 2 * Math.PI;
+			while (rad < -Math.PI)
+				rad += 2 * Math.PI;
 
 			return rad;
 		}
-		
-
-
-		
-
-		
 
 		public string ToLinedString()
 		{
-			string s ="";
-			s+= "X: "+X.ToString()+"\n";
-			s+= "Y: "+Y.ToString()+"\n";
-			s+= "Z: "+Z.ToString()+"\n";
-			s+= "W: "+W.ToString()+"\n";
-			s+= "-----\n";
-			s+= "X: "+Axis.X.ToString()+"\n";
-			s+= "Y: "+Axis.Y.ToString()+"\n";
-			s+= "Z: "+Axis.Z.ToString()+"\n";
-			s+= "A: "+RadToDeg(Angle)+"\n";
-			s+= "-----\n";
-			s+= "Y: "+RadToDeg(GetEulerAngles().Y)+"\n";
-			s+= "P: "+RadToDeg(GetEulerAngles().X)+"\n";
-			s+= "R: "+RadToDeg(GetEulerAngles().Z)+"\n";
+			string s = "";
+			s += "X: " + X.ToString() + "\n";
+			s += "Y: " + Y.ToString() + "\n";
+			s += "Z: " + Z.ToString() + "\n";
+			s += "W: " + W.ToString() + "\n";
+			s += "-----\n";
+			s += "X: " + Axis.X.ToString() + "\n";
+			s += "Y: " + Axis.Y.ToString() + "\n";
+			s += "Z: " + Axis.Z.ToString() + "\n";
+			s += "A: " + RadToDeg(Angle) + "\n";
+			s += "-----\n";
+			s += "Y: " + RadToDeg(GetEulerAngles().Y) + "\n";
+			s += "P: " + RadToDeg(GetEulerAngles().X) + "\n";
+			s += "R: " + RadToDeg(GetEulerAngles().Z) + "\n";
 			return s;
 		}
-	
 
 		public override string ToString()
 		{
-			return base.ToString() + " (X=" +Axis.X.ToString("N2") + ", Y=" + Axis.Y.ToString("N2") + ", Z=" + Axis.Z.ToString("N2") + ", a=" + RadToDeg(Angle).ToString("N1")+"    euler=y:"+Quaternion.RadToDeg(GetEulerAngles().Y).ToString("N1")+"; p:"+Quaternion.RadToDeg(GetEulerAngles().X).ToString("N1")+"; r:"+Quaternion.RadToDeg(GetEulerAngles().Z).ToString("N1") + ")";
+			return base.ToString()
+				+ " (X="
+				+ Axis.X.ToString("N2")
+				+ ", Y="
+				+ Axis.Y.ToString("N2")
+				+ ", Z="
+				+ Axis.Z.ToString("N2")
+				+ ", a="
+				+ RadToDeg(Angle).ToString("N1")
+				+ "    euler=y:"
+				+ Quaternion.RadToDeg(GetEulerAngles().Y).ToString("N1")
+				+ "; p:"
+				+ Quaternion.RadToDeg(GetEulerAngles().X).ToString("N1")
+				+ "; r:"
+				+ Quaternion.RadToDeg(GetEulerAngles().Z).ToString("N1")
+				+ ")";
 		}
 
 		/// <summary>
@@ -684,10 +801,15 @@ namespace SimPe.Geometry
 		/// <param name="v">Vector you want to rotate</param>
 		/// <returns>rotated Vector</returns>
 		/// <remarks>Make sure the Quaternion is normalized before you rotate a Vector!</remarks>
-		public Vector3f Rotate(Vector3f v) 
+		public Vector3f Rotate(Vector3f v)
 		{
-			
-			Quaternion vq = new Quaternion(QuaternionParameterType.ImaginaryReal, v.X, v.Y, v.Z, 0);			
+			Quaternion vq = new Quaternion(
+				QuaternionParameterType.ImaginaryReal,
+				v.X,
+				v.Y,
+				v.Z,
+				0
+			);
 			vq = this * vq * this.Conjugate;
 			return new Vector3f(vq.X, vq.Y, vq.Z);
 
@@ -700,24 +822,28 @@ namespace SimPe.Geometry
 		/// Create a clone of this Quaternion
 		/// </summary>
 		/// <returns></returns>
-		public new Quaternion Clone() 
+		public new Quaternion Clone()
 		{
-			Quaternion q = new Quaternion(QuaternionParameterType.ImaginaryReal, this.X, this.Y, this.Z, this.W);
+			Quaternion q = new Quaternion(
+				QuaternionParameterType.ImaginaryReal,
+				this.X,
+				this.Y,
+				this.Z,
+				this.W
+			);
 			return q;
 		}
 
-		
-
 		/// <summary>
-		/// Returns the Matirx for this Quaternion. 		
+		/// Returns the Matirx for this Quaternion.
 		/// </summary>
 		/// <remarks>
 		/// Before the Matrix is generated, the Quaternion will get Normalized!!!
 		/// </remarks>
 		public Matrixd Matrix
 		{
-			get 
-			{				
+			get
+			{
 				MakeRobust();
 				this.MakeUnitQuaternion();
 
@@ -726,10 +852,22 @@ namespace SimPe.Geometry
 				double sy = Math.Pow(Y, 2);
 				double sz = Math.Pow(Z, 2);
 				double sw = Math.Pow(W, 2);
-				m[0, 0] = 1 - 2*(sy+sz);	m[0, 1] = 2*(X*Y - W*Z);	m[0, 2] = 2*(X*Z + W*Y);	m[0, 3] = 0;
-				m[1, 0] = 2*(X*Y + W*Z);	m[1, 1] = 1 - 2*(sx+sz);	m[1, 2] = 2*(Y*Z - W*X);	m[1, 3] = 0;
-				m[2, 0] = 2*(X*Z - W*Y);	m[2, 1] = 2*(Y*Z + W*X);	m[2, 2] = 1 - 2*(sx+sy);	m[2, 3] = 0;
-				m[3, 0] = 0;				m[3, 1] = 0;				m[3, 2] = 0;				m[3, 3] = 1;
+				m[0, 0] = 1 - 2 * (sy + sz);
+				m[0, 1] = 2 * (X * Y - W * Z);
+				m[0, 2] = 2 * (X * Z + W * Y);
+				m[0, 3] = 0;
+				m[1, 0] = 2 * (X * Y + W * Z);
+				m[1, 1] = 1 - 2 * (sx + sz);
+				m[1, 2] = 2 * (Y * Z - W * X);
+				m[1, 3] = 0;
+				m[2, 0] = 2 * (X * Z - W * Y);
+				m[2, 1] = 2 * (Y * Z + W * X);
+				m[2, 2] = 1 - 2 * (sx + sy);
+				m[2, 3] = 0;
+				m[3, 0] = 0;
+				m[3, 1] = 0;
+				m[3, 2] = 0;
+				m[3, 3] = 1;
 
 				return m;
 			}
@@ -742,6 +880,7 @@ namespace SimPe.Geometry
 			//Y = Z;
 			//Z = -Z;
 		}
+
 		/// <summary>
 		/// Unserializes a BinaryStream into the Attributes of this Instance
 		/// </summary>
@@ -749,7 +888,7 @@ namespace SimPe.Geometry
 		public override void Unserialize(System.IO.BinaryReader reader)
 		{
 			base.Unserialize(reader);
-			
+
 			LoadCorrection();
 		}
 
@@ -758,13 +897,13 @@ namespace SimPe.Geometry
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public override void Serialize(System.IO.BinaryWriter writer)
 		{
 			LoadCorrection();
-			base.Serialize(writer);	
+			base.Serialize(writer);
 			LoadCorrection();
 		}
 	}
@@ -773,7 +912,7 @@ namespace SimPe.Geometry
 	/// <summary>
 	/// Typesave ArrayList for Quaternion Objects
 	/// </summary>
-	public class Quaternions : ArrayList 
+	public class Quaternions : ArrayList
 	{
 		/// <summary>
 		/// Integer Indexer
@@ -830,12 +969,12 @@ namespace SimPe.Geometry
 		public bool Contains(Quaternion item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -847,11 +986,11 @@ namespace SimPe.Geometry
 		public override object Clone()
 		{
 			Quaternions list = new Quaternions();
-			foreach (Quaternion item in this) list.Add(item);
+			foreach (Quaternion item in this)
+				list.Add(item);
 
 			return list;
-		}		
-
+		}
 	}
 	#endregion
 }

@@ -1,8 +1,8 @@
 using System;
-using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces.Files;
 using System.Drawing;
 using System.IO;
+using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
 {
@@ -10,11 +10,13 @@ namespace SimPe.Plugin
 	/// This is the actual FileWrapper
 	/// </summary>
 	/// <remarks>
-	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads 
+	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
 	public class FamiuPackedFileWrapper
-		: AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension
+		: AbstractWrapper,
+			IFileWrapper,
+			IFileWrapperSaveExtension
 	{
 		#region File Attribute
 		/// <summary>
@@ -71,31 +73,47 @@ namespace SimPe.Plugin
 				string name = Localization.Manager.GetString("unknown");
 				try
 				{
-					IPackedFileDescriptor pfd = package.FindFile(Data.MetaData.STRING_FILE, 0, this.FileDescriptor.Group, this.FileDescriptor.Instance);
+					IPackedFileDescriptor pfd = package.FindFile(
+						Data.MetaData.STRING_FILE,
+						0,
+						this.FileDescriptor.Group,
+						this.FileDescriptor.Instance
+					);
 					if (pfd != null)
 					{
-						SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+						SimPe.PackedFiles.Wrapper.Str str =
+							new SimPe.PackedFiles.Wrapper.Str();
 						str.ProcessData(pfd, package);
-						SimPe.PackedFiles.Wrapper.StrItemList items = str.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
-						if (items.Length > 0) name = items[0].Title;
+						SimPe.PackedFiles.Wrapper.StrItemList items =
+							str.FallbackedLanguageItems(
+								Helper.WindowsRegistry.LanguageCode
+							);
+						if (items.Length > 0)
+							name = items[0].Title;
 					}
 				}
 				catch (Exception) { }
 				return name;
 			}
 		}
-		
 
 		/// <summary>
 		/// Returns the Suburb of the Lot
 		/// </summary>
 		public string Subhood(uint instc)
 		{
-			if (Helper.StartedGui == Executable.Classic || package.FileName == null) return null;
+			if (Helper.StartedGui == Executable.Classic || package.FileName == null)
+				return null;
 			string subh = Localization.Manager.GetString("unknown");
-			if (!Helper.IsNeighborhoodFile(package.FileName)) return subh;
-			if (instc == 0) return "-Homeless-";
-			string[] overs = Directory.GetFiles(Path.GetDirectoryName(package.FileName), "*.package", SearchOption.TopDirectoryOnly);
+			if (!Helper.IsNeighborhoodFile(package.FileName))
+				return subh;
+			if (instc == 0)
+				return "-Homeless-";
+			string[] overs = Directory.GetFiles(
+				Path.GetDirectoryName(package.FileName),
+				"*.package",
+				SearchOption.TopDirectoryOnly
+			);
 			if (overs.Length > 0)
 			{
 				SimPe.Packages.GeneratableFile pkg;
@@ -104,22 +122,31 @@ namespace SimPe.Plugin
 					pkg = SimPe.Packages.File.LoadFromFile(file);
 					if (pkg.FindFileAnyGroup(0x0BF999E7, 0, instc) != null)
 					{
-						IPackedFileDescriptor pfd = pkg.FindFileAnyGroup(Data.MetaData.CTSS_FILE, 0, 1);
+						IPackedFileDescriptor pfd = pkg.FindFileAnyGroup(
+							Data.MetaData.CTSS_FILE,
+							0,
+							1
+						);
 						if (pfd != null)
 						{
-							SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+							SimPe.PackedFiles.Wrapper.Str str =
+								new SimPe.PackedFiles.Wrapper.Str();
 							str.ProcessData(pfd, pkg);
-							SimPe.PackedFiles.Wrapper.StrItemList items = str.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
-							if (items.Length > 0) subh = items[0].Title;
+							SimPe.PackedFiles.Wrapper.StrItemList items =
+								str.FallbackedLanguageItems(
+									Helper.WindowsRegistry.LanguageCode
+								);
+							if (items.Length > 0)
+								subh = items[0].Title;
 						}
-						else subh = "Tutorial";
+						else
+							subh = "Tutorial";
 						return subh;
 					}
 				}
 			}
 			return subh;
 		}
-
 
 		/// <summary>
 		/// Returns the Image for the Family
@@ -128,21 +155,46 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (Helper.StartedGui == Executable.Classic || package.FileName == null) return null;
-				if (!Helper.IsNeighborhoodFile(package.FileName)) return null;
-				int inxy = System.IO.Path.GetFileNameWithoutExtension(package.FileName).IndexOf("_") + 1;
-				string suyt = System.IO.Path.GetFileNameWithoutExtension(package.FileName).Substring(0, inxy);
-				SimPe.Packages.File fumbs = SimPe.Packages.File.LoadFromFile(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(package.FileName), "Thumbnails\\" + suyt + "FamilyThumbnails.package"));
-				Interfaces.Files.IPackedFileDescriptor pfd = fumbs.FindFileAnyGroup(0x8C3CE95A, 0, this.FileDescriptor.Instance);
+				if (Helper.StartedGui == Executable.Classic || package.FileName == null)
+					return null;
+				if (!Helper.IsNeighborhoodFile(package.FileName))
+					return null;
+				int inxy =
+					System
+						.IO.Path.GetFileNameWithoutExtension(package.FileName)
+						.IndexOf("_") + 1;
+				string suyt = System
+					.IO.Path.GetFileNameWithoutExtension(package.FileName)
+					.Substring(0, inxy);
+				SimPe.Packages.File fumbs = SimPe.Packages.File.LoadFromFile(
+					System.IO.Path.Combine(
+						System.IO.Path.GetDirectoryName(package.FileName),
+						"Thumbnails\\" + suyt + "FamilyThumbnails.package"
+					)
+				);
+				Interfaces.Files.IPackedFileDescriptor pfd = fumbs.FindFileAnyGroup(
+					0x8C3CE95A,
+					0,
+					this.FileDescriptor.Instance
+				);
 				if (pfd != null)
 				{
 					try
 					{
-						SimPe.PackedFiles.Wrapper.Picture pic = new SimPe.PackedFiles.Wrapper.Picture();
+						SimPe.PackedFiles.Wrapper.Picture pic =
+							new SimPe.PackedFiles.Wrapper.Picture();
 						pic.ProcessData(pfd, fumbs);
-						return Ambertation.Drawing.GraphicRoutines.MakeTransparent(pic.Image, Color.Black, 0.05f, true);
+						return Ambertation.Drawing.GraphicRoutines.MakeTransparent(
+							pic.Image,
+							Color.Black,
+							0.05f,
+							true
+						);
 					}
-					catch (Exception) { return null; }
+					catch (Exception)
+					{
+						return null;
+					}
 				}
 				return null;
 			}
@@ -153,7 +205,8 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public FamiuPackedFileWrapper() : base() {}
+		public FamiuPackedFileWrapper()
+			: base() { }
 
 		#region IWrapper member
 		public override bool CheckVersion(uint version)
@@ -167,6 +220,7 @@ namespace SimPe.Plugin
 		{
 			return new FamiuPackedFileUI();
 		}
+
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper
 		/// </summary>
@@ -178,13 +232,17 @@ namespace SimPe.Plugin
 				"Chris",
 				"Contains the history of a well played family",
 				1,
-				System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.book.png"))
-				);
+				System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream("SimPe.img.book.png")
+				)
+			);
 		}
 
 		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
 		{
-			if (!this.Processed) ProcessData(FileDescriptor, Package);
+			if (!this.Processed)
+				ProcessData(FileDescriptor, Package);
 			return this.Name + " History";
 		}
 
@@ -214,7 +272,17 @@ namespace SimPe.Plugin
 					fval[(i * 42) + 41] = Convert.ToUInt16(reader.ReadByte());
 
 					if (Helper.WindowsRegistry.AllowLotZero || fval[i * 42] > 0)
-						if ((fval[(i * 42) + 1] < 33) && (fval[(i * 42) + 2] + fval[(i * 42) + 3] + fval[(i * 42) + 4] + fval[(i * 42) + 5] == fval[(i * 42) + 1])) goodsections++;
+						if (
+							(fval[(i * 42) + 1] < 33)
+							&& (
+								fval[(i * 42) + 2]
+									+ fval[(i * 42) + 3]
+									+ fval[(i * 42) + 4]
+									+ fval[(i * 42) + 5]
+								== fval[(i * 42) + 1]
+							)
+						)
+							goodsections++;
 				}
 			}
 			catch { }
@@ -225,7 +293,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
@@ -244,8 +312,8 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		#region IFileWrapperSaveExtension Member		
-			//all covered by Serialize()
+		#region IFileWrapperSaveExtension Member
+		//all covered by Serialize()
 		#endregion
 
 		#region IFileWrapper Member
@@ -257,12 +325,7 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				Byte[] sig = {
-								(byte)'h',
-								(byte)'M',
-								(byte)'A',
-								(byte)'F'
-							 };
+				Byte[] sig = { (byte)'h', (byte)'M', (byte)'A', (byte)'F' };
 				return sig;
 			}
 		}

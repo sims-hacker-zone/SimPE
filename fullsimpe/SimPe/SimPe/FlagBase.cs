@@ -25,45 +25,48 @@ namespace SimPe
 	/// <summary>
 	/// Basic Class you can use if you have to implement Flags
 	/// </summary>
-	[TypeConverterAttribute(typeof(FlagBaseConverter)),
-	DescriptionAttribute("This Property contains some Flags")]
+	[
+		TypeConverterAttribute(typeof(FlagBaseConverter)),
+		DescriptionAttribute("This Property contains some Flags")
+	]
 	public class FlagBase : Serializer, Ambertation.IPropertyClass
 	{
-		public FlagBase(ushort flags) 
+		public FlagBase(ushort flags)
 		{
 			this.flags = flags;
 		}
 
-		public FlagBase(object flags) 
+		public FlagBase(object flags)
 		{
 			this.flags = 0;
-			try 
+			try
 			{
 				this.flags = Convert.ToUInt16(flags);
-			} 
-			catch {}
+			}
+			catch { }
 		}
 
 		ushort flags;
 
 		[System.ComponentModel.Browsable(false)]
-		public ushort Value 
+		public ushort Value
 		{
 			get { return flags; }
 			set { flags = value; }
 		}
 
-		protected bool GetBit(byte nr) 
+		protected bool GetBit(byte nr)
 		{
 			ushort mask = (ushort)(1 << nr);
-			return ((flags & mask) != 0); 
+			return ((flags & mask) != 0);
 		}
 
 		protected void SetBit(byte nr, bool val)
 		{
 			ushort mask = (ushort)(1 << nr);
 			flags = (ushort)(flags | mask);
-			if (!val) flags -= mask;
+			if (!val)
+				flags -= mask;
 		}
 
 		public override string ToString()
@@ -79,8 +82,6 @@ namespace SimPe
 		public static implicit operator short(FlagBase m)
 		{
 			return (short)m.flags;
-		}		
-
-
+		}
 	}
 }

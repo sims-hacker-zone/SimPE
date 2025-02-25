@@ -27,16 +27,10 @@ namespace SimPe
 	/// This is the default descriptive Serializer
 	/// </summary>
 	public abstract class AbstractSerializer : SimPe.Interfaces.ISerializeFormater
-	{		
+	{
+		public abstract string Seperator { get; }
 
-		public abstract string Seperator 
-		{
-			get ;
-		}
-
-		public abstract string SaveStr(string val);		
-
-		
+		public abstract string SaveStr(string val);
 
 		/// <summary>
 		/// Format a SubProerty of the Object (a Property that contains another serializable Object)
@@ -60,28 +54,39 @@ namespace SimPe
 		/// <param name="name"></param>
 		/// <returns></returns>
 		public abstract string NullProperty(string name);
-		
+
 		public virtual string SerializeTGIHeader()
 		{
-			return "Name"+Seperator+"Type"+Seperator+"Group"+Seperator+"InstanceHi"+Seperator+"Instance"+Seperator;
+			return "Name"
+				+ Seperator
+				+ "Type"
+				+ Seperator
+				+ "Group"
+				+ Seperator
+				+ "InstanceHi"
+				+ Seperator
+				+ "Instance"
+				+ Seperator;
 		}
 
 		public virtual string SerializeHeader(Object o, Type t, PropertyInfo[] ps)
-		{			
+		{
 			string s = "";
-			
+
 			foreach (PropertyInfo p in ps)
 			{
-				if (!p.CanRead) continue;
+				if (!p.CanRead)
+					continue;
 
-				try 
+				try
 				{
-					if (s!="") s += Seperator;									
+					if (s != "")
+						s += Seperator;
 					s += p.Name;
 
 					object v = p.GetValue(o, null);
 					string ss = "";
-					if (v is IPackedFileName) 	
+					if (v is IPackedFileName)
 					{
 						ss = ((IPackedFileName)v).DescriptionHeader;
 						s += ss;
@@ -93,32 +98,31 @@ namespace SimPe
 				{
 					Helper.ExceptionMessage(ex);
 				}
-				finally 
-				{
-				}
+				finally { }
 			}
 			return s;
 		}
 
 		public virtual string Serialize(Object o, Type t, PropertyInfo[] ps)
-		{			
+		{
 			string s = "";
 			foreach (PropertyInfo p in ps)
 			{
-				if (!p.CanRead) continue;
+				if (!p.CanRead)
+					continue;
 
-				try 
+				try
 				{
-					if (s!="") s += Seperator;
-					
-				
+					if (s != "")
+						s += Seperator;
+
 					object v = p.GetValue(o, null);
-					if (v==null) s += NullProperty(p.Name);
-					
-					
-					if (v is Serializer) 					
-						s += ((Serializer)v).ToString(p.Name);						
-					else 
+					if (v == null)
+						s += NullProperty(p.Name);
+
+					if (v is Serializer)
+						s += ((Serializer)v).ToString(p.Name);
+					else
 					{
 						s += Property(p.Name, v.ToString());
 					}
@@ -127,26 +131,27 @@ namespace SimPe
 				{
 					Helper.ExceptionMessage(ex);
 				}
-				finally 
-				{
-				}
+				finally { }
 			}
 
 			return s;
 		}
 
-		public virtual string SerializeTGI(SimPe.Interfaces.Plugin.Internal.IPackedFileName wrapper, SimPe.Interfaces.Files.IPackedFileDescriptorBasic pfd)
+		public virtual string SerializeTGI(
+			SimPe.Interfaces.Plugin.Internal.IPackedFileName wrapper,
+			SimPe.Interfaces.Files.IPackedFileDescriptorBasic pfd
+		)
 		{
 			string s = "";
-			if (wrapper!=null)
+			if (wrapper != null)
 				s += SaveStr(wrapper.ResourceName) + Seperator;
 			else
-				s +=  SaveStr(pfd.TypeName.ToString()) + Seperator;		
+				s += SaveStr(pfd.TypeName.ToString()) + Seperator;
 
-			s += "0x" + Helper.HexString(pfd.Type) + Seperator;		
-			s += "0x" + Helper.HexString(pfd.Group) + Seperator;		
-			s += "0x" + Helper.HexString(pfd.SubType) + Seperator;		
-			s += "0x" + Helper.HexString(pfd.Instance) + Seperator;										
+			s += "0x" + Helper.HexString(pfd.Type) + Seperator;
+			s += "0x" + Helper.HexString(pfd.Group) + Seperator;
+			s += "0x" + Helper.HexString(pfd.SubType) + Seperator;
+			s += "0x" + Helper.HexString(pfd.Instance) + Seperator;
 
 			return s;
 		}
@@ -154,9 +159,10 @@ namespace SimPe
 		public virtual string Concat(string[] props)
 		{
 			string s = "";
-			foreach(string p in props)
+			foreach (string p in props)
 			{
-				if (s!="") s+= Seperator;
+				if (s != "")
+					s += Seperator;
 				s += p;
 			}
 			return s;

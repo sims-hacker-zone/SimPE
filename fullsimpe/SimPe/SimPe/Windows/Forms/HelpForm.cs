@@ -22,60 +22,70 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
+using System.Text;
+using System.Windows.Forms;
 using Ambertation.Windows.Forms;
 
 namespace SimPe.Windows.Forms
 {
-    public partial class HelpForm : TransparentForm //Ambertation.Windows.Forms.LayeredForm
-    {
-        
-        static Image top, bottom, center;
-        Rectangle headerrect;
+	public partial class HelpForm : TransparentForm //Ambertation.Windows.Forms.LayeredForm
+	{
+		static Image top,
+			bottom,
+			center;
+		Rectangle headerrect;
 
-        public HelpForm()
-            : base()//Color.Transparent, new Size(781, 475))
-        {
-            InitializeComponent();
-            this.MinimumSize = new Size(1024, 661);
-            this.MaximumSize = new Size(1024, 2048);
-        }
+		public HelpForm()
+			: base() //Color.Transparent, new Size(781, 475))
+		{
+			InitializeComponent();
+			this.MinimumSize = new Size(1024, 661);
+			this.MaximumSize = new Size(1024, 2048);
+		}
 
-        protected override void OnCreateBitmap(Graphics g, Bitmap b)
-        {
-            //base.OnCreateBitmap(g, b);
-            if (top == null)
-            {
-                top = Image.FromStream(typeof(HelpForm).Assembly.GetManifestResourceStream("SimPe.img.top.png"));
-                center = Image.FromStream(typeof(HelpForm).Assembly.GetManifestResourceStream("SimPe.img.center.png"));
-                bottom = Image.FromStream(typeof(HelpForm).Assembly.GetManifestResourceStream("SimPe.img.bottom.png"));
-            }
-            headerrect = new Rectangle(0, 0, top.Width, top.Height);
+		protected override void OnCreateBitmap(Graphics g, Bitmap b)
+		{
+			//base.OnCreateBitmap(g, b);
+			if (top == null)
+			{
+				top = Image.FromStream(
+					typeof(HelpForm).Assembly.GetManifestResourceStream(
+						"SimPe.img.top.png"
+					)
+				);
+				center = Image.FromStream(
+					typeof(HelpForm).Assembly.GetManifestResourceStream(
+						"SimPe.img.center.png"
+					)
+				);
+				bottom = Image.FromStream(
+					typeof(HelpForm).Assembly.GetManifestResourceStream(
+						"SimPe.img.bottom.png"
+					)
+				);
+			}
+			headerrect = new Rectangle(0, 0, top.Width, top.Height);
 
-            // g.DrawImage(top, new Point(0, 0)); // this goes wonky if you scale up Windows Fonts
-            g.DrawImage(top, headerrect);
-            int y = top.Height;
-            int my = b.Height - bottom.Height;
-            while (y < my)
-            {
-                g.DrawImage(center, new Point(0, y));
-                y += center.Height;
-            }
-            g.DrawImage(bottom, new Point(0, my));
+			// g.DrawImage(top, new Point(0, 0)); // this goes wonky if you scale up Windows Fonts
+			g.DrawImage(top, headerrect);
+			int y = top.Height;
+			int my = b.Height - bottom.Height;
+			while (y < my)
+			{
+				g.DrawImage(center, new Point(0, y));
+				y += center.Height;
+			}
+			g.DrawImage(bottom, new Point(0, my));
 
-            g.Dispose();
-        }
+			g.Dispose();
+		}
 
-        protected override Rectangle HeaderRect
-        {
-            get
-            {
-                return headerrect;
-            }
-        }
-    }
+		protected override Rectangle HeaderRect
+		{
+			get { return headerrect; }
+		}
+	}
 }

@@ -41,8 +41,8 @@ namespace SimPe.Interfaces.Scenegraph
 		/// Forces a Reload of the FileIndex
 		/// </summary>
 		/// <remarks>
-		/// Use Load() if you want to make sure that the FileIndex is available, 
-		/// use ForceReload() if you want to reload the FileIndex (for example, 
+		/// Use Load() if you want to make sure that the FileIndex is available,
+		/// use ForceReload() if you want to reload the FileIndex (for example,
 		/// becuase the Files changed)
 		/// </remarks>
 		void ForceReload();
@@ -57,8 +57,8 @@ namespace SimPe.Interfaces.Scenegraph
 		/// Load the FileIndex if it is not available yet
 		/// </summary>
 		/// <remarks>
-		/// Use Load() if you want to make sure that the FileIndex is available, 
-		/// use ForceReload() if you want to reload the FileIndex (for example, 
+		/// Use Load() if you want to make sure that the FileIndex is available,
+		/// use ForceReload() if you want to reload the FileIndex (for example,
 		/// becuase the Files changed)
 		/// </remarks>
 		void Load();
@@ -80,15 +80,18 @@ namespace SimPe.Interfaces.Scenegraph
 		/// Add all Files stored in the passed package
 		/// </summary>
 		/// <param name="package">The package File</param>
-		/// <param name="overwrite">true, if the file should be 
+		/// <param name="overwrite">true, if the file should be
 		/// added even if it already a Part of the FileIndex</param>
-		void AddIndexFromPackage(SimPe.Interfaces.Files.IPackageFile package, bool overwrite);
+		void AddIndexFromPackage(
+			SimPe.Interfaces.Files.IPackageFile package,
+			bool overwrite
+		);
 
 		/// <summary>
 		/// Add all Files stored in the passed package
 		/// </summary>
 		/// <param name="package">The package File</param>
-		/// 
+		///
 		void AddIndexFromPackage(SimPe.Interfaces.Files.IPackageFile package);
 
 		/// <summary>
@@ -97,15 +100,21 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <param name="package">The package File</param>
 		/// <param name="type">Resources of this Type will get added</param>
 		/// <param name="overwrite">true, if an existing Instance of that File should be overwritten</param>
-		void AddTypesIndexFromPackage(SimPe.Interfaces.Files.IPackageFile package, uint type, bool overwrite);
-		
+		void AddTypesIndexFromPackage(
+			SimPe.Interfaces.Files.IPackageFile package,
+			uint type,
+			bool overwrite
+		);
 
 		/// <summary>
 		/// Add a Filedescriptor to the Index
 		/// </summary>
 		/// <param name="pfd">The Descriptor</param>
 		/// <param name="package">The File</param>
-		void AddIndexFromPfd(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package);
+		void AddIndexFromPfd(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		);
 
 		/// <summary>
 		/// Add a Filedescriptor to the Index
@@ -113,7 +122,11 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <param name="pfd">The Descriptor</param>
 		/// <param name="package">The File</param>
 		/// <param name="localgroup">use this groupa as replacement for 0xffffffff</param>
-		void AddIndexFromPfd(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package, uint localgroup);
+		void AddIndexFromPfd(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package,
+			uint localgroup
+		);
 
 		/// <summary>
 		/// Used to Debug the Filetable
@@ -128,7 +141,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <summary>
 		/// Clears the FileTable, and Closes all packages it did refern to
 		/// </summary>
-		void CloseAssignedPackages();		
+		void CloseAssignedPackages();
 
 		/// <summary>
 		/// Removes an Item from the Table
@@ -141,7 +154,10 @@ namespace SimPe.Interfaces.Scenegraph
 		/// </summary>
 		/// <param name="pfd">The File you are looking for</param>
 		/// <returns>all FileIndexItems</returns>
-		IScenegraphFileIndexItem[] FindFile(Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile pkg);
+		IScenegraphFileIndexItem[] FindFile(
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile pkg
+		);
 
 		/// <summary>
 		/// Returns all matching FileIndexItems for the passed type
@@ -165,7 +181,10 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <param name="group">The Group you are looking for</param>
 		/// <param name="instance">The instance you are looking for</param>
 		/// <returns>all FileIndexItems</returns>
-		IScenegraphFileIndexItem[] FindFileByGroupAndInstance(uint group, ulong instance);
+		IScenegraphFileIndexItem[] FindFileByGroupAndInstance(
+			uint group,
+			ulong instance
+		);
 
 		/// <summary>
 		/// Returns all matching FileIndexItems for the passed type
@@ -174,7 +193,12 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <param name="group">the Group of the Files</param>
 		/// <param name="instance">Instance Number of the File</param>
 		/// <returns>all FileIndexItems</returns>
-		IScenegraphFileIndexItem[] FindFile(uint type, uint group, ulong instance, SimPe.Interfaces.Files.IPackageFile pkg);
+		IScenegraphFileIndexItem[] FindFile(
+			uint type,
+			uint group,
+			ulong instance,
+			SimPe.Interfaces.Files.IPackageFile pkg
+		);
 
 		/// <summary>
 		/// Returns all matching FileIndexItems for the passed type
@@ -183,14 +207,21 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <param name="group">the Group of the Files</param>
 		/// <param name="instance">Instance Number of the File</param>
 		/// <returns>all FileIndexItems</returns>
-		IScenegraphFileIndexItem[] FindFileDiscardingHighInstance(uint type, uint group, uint instance, SimPe.Interfaces.Files.IPackageFile pkg);
+		IScenegraphFileIndexItem[] FindFileDiscardingHighInstance(
+			uint type,
+			uint group,
+			uint instance,
+			SimPe.Interfaces.Files.IPackageFile pkg
+		);
 
 		/// <summary>
 		/// Returns all matching FileIndexItems while Ignoring the Group
 		/// </summary>
 		/// <param name="pfd">The File you are looking for</param>
 		/// <returns>all FileIndexItems</returns>
-		IScenegraphFileIndexItem[] FindFileDiscardingGroup(Interfaces.Files.IPackedFileDescriptor pfd);
+		IScenegraphFileIndexItem[] FindFileDiscardingGroup(
+			Interfaces.Files.IPackedFileDescriptor pfd
+		);
 
 		/// <summary>
 		/// Returns all matching FileIndexItems for the passed type
@@ -213,7 +244,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <param name="group">The Group you are looking for</param>
 		/// <returns>all FileIndexItems</returns>
 		IScenegraphFileIndexItem[] FindFileByGroup(uint group);
-		
+
 		/// <summary>
 		/// Looks for a File based on the Filename
 		/// </summary>
@@ -221,23 +252,32 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <param name="type">The Type of the File you are looking for</param>
 		/// <param name="defgroup">If the Filename has no group Hash, use this one</param>
 		/// <param name="betolerant">
-		/// set true if you want to enable a 
+		/// set true if you want to enable a
 		/// fallback Algorithm in case of the precice Search failing
 		/// </param>
 		/// <returns>The first matching File or null if none</returns>
-		IScenegraphFileIndexItem FindFileByName(string filename, uint type, uint defgroup, bool betolerant);
+		IScenegraphFileIndexItem FindFileByName(
+			string filename,
+			uint type,
+			uint defgroup,
+			bool betolerant
+		);
 
 		/// <summary>
 		/// Looks for a File based on the Filename
 		/// </summary>
 		/// <param name="pfd">The FileDescriptor</param>
 		/// <param name="betolerant">
-		/// set true if you want to enable a 
+		/// set true if you want to enable a
 		/// fallback Algorithm in case of the precice Search failing
 		/// </param>
 		/// <returns>The first matching File or null if none</returns>
-		IScenegraphFileIndexItem FindSingleFile(Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile pkg, bool betolerant);
-	
+		IScenegraphFileIndexItem FindSingleFile(
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile pkg,
+			bool betolerant
+		);
+
 		/// <summary>
 		/// Sort the Files in this type ascending by instance value
 		/// </summary>
@@ -246,7 +286,7 @@ namespace SimPe.Interfaces.Scenegraph
 
 		/// <summary>
 		/// Stores the current State of the FileIndex.
-		/// 
+		///
 		/// You can revert to the last stored state by calling RestoreLastState()
 		/// </summary>
 		void StoreCurrentState();
@@ -262,8 +302,11 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <param name="pfd"></param>
 		/// <param name="pkg"></param>
 		/// <returns></returns>
-		SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem CreateFileIndexItem(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile pkg);
-		
+		SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem CreateFileIndexItem(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile pkg
+		);
+
 		/// <summary>
 		/// Remove the trace of a Package from the FileTable
 		/// </summary>
@@ -273,26 +316,17 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <summary>
 		/// Returns the List of all Folders this FileIndex is processing
 		/// </summary>
-		System.Collections.ArrayList BaseFolders
-		{
-			get;set;
-		}
+		System.Collections.ArrayList BaseFolders { get; set; }
 
 		/// <summary>
 		/// Returns true, if the FileTable is Loaded
 		/// </summary>
-		bool Loaded
-		{
-			get;
-		}
+		bool Loaded { get; }
 
 		/// <summary>
 		/// prevent PJSE FileTable from auto loading with SimPe FileTable
 		/// </summary>
-		bool AllowEvent
-		{
-			get; set;
-		}
+		bool AllowEvent { get; set; }
 
 		#region FileTable Childs
 		/// <summary>
@@ -326,8 +360,8 @@ namespace SimPe.Interfaces.Scenegraph
 		/// Add a new FileIndex as a Child.
 		/// </summary>
 		/// <param name="cld">The Child Index</param>
-		/// <remarks>Make sure, that you do not cretae circular dependecies! When 
-		/// searchin Resources, all Child FileTables will get search too, so 
+		/// <remarks>Make sure, that you do not cretae circular dependecies! When
+		/// searchin Resources, all Child FileTables will get search too, so
 		/// keep the list small, otherwise you might increas searchtime!</remarks>
 		void AddChild(IScenegraphFileIndex cld);
 

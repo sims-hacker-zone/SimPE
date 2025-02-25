@@ -19,16 +19,16 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Windows.Forms;
 using System.Collections.Generic;
-using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces;
-using SimPe.PackedFiles.Wrapper.Supporting;
-using SimPe.Data;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
 using Ambertation.Windows.Forms;
+using SimPe.Data;
+using SimPe.Interfaces;
+using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Wrapper.Supporting;
 using SimPe.Windows.Forms;
 
 namespace SimPe.PackedFiles.UserInterface
@@ -36,16 +36,19 @@ namespace SimPe.PackedFiles.UserInterface
 	/// <summary>
 	/// Summary description for ExtSDescUI.
 	/// </summary>
-	public partial class ExtSDesc : 
-		//System.Windows.Forms.UserControl 
-		SimPe.Windows.Forms.WrapperBaseControl, IPackedFileUI
-	{		
+	public partial class ExtSDesc
+		:
+		//System.Windows.Forms.UserControl
+		SimPe.Windows.Forms.WrapperBaseControl,
+			IPackedFileUI
+	{
 		System.Resources.ResourceManager strresources;
+
 		public ExtSDesc()
 		{
 			strresources = new System.Resources.ResourceManager(typeof(ExtSDesc));
 			Text = SimPe.Localization.GetString("Sim Description Editor");
-			
+
 			// Required designer variable.
 			InitializeComponent();
 			Initialize();
@@ -108,7 +111,14 @@ namespace SimPe.PackedFiles.UserInterface
 			SelectButton(biId);
 
 			intern = true;
-			if (System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName=="en")
+			if (
+				System
+					.Threading
+					.Thread
+					.CurrentThread
+					.CurrentUICulture
+					.TwoLetterISOLanguageName == "en"
+			)
 				pbLastGrade.DisplayOffset = 0;
 			else
 				pbLastGrade.DisplayOffset = 1;
@@ -116,6 +126,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			lv.SimDetails = true;
 		}
+
 		Image pnimage = null;
 		bool intern;
 		bool loadedRel;
@@ -125,38 +136,46 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			if (Helper.WindowsRegistry.UseBigIcons)
 			{
-				this.llep3openinfo.Font = new System.Drawing.Font("Tahoma", 12, System.Drawing.FontStyle.Bold);
+				this.llep3openinfo.Font = new System.Drawing.Font(
+					"Tahoma",
+					12,
+					System.Drawing.FontStyle.Bold
+				);
 				this.llep3openinfo.Height = 24;
 				this.lbTraits.Font = new System.Drawing.Font("Tahoma", 11);
 				this.lbTurnOn.Font = new System.Drawing.Font("Tahoma", 11);
 				this.lbTurnOff.Font = new System.Drawing.Font("Tahoma", 11);
 				if (Screen.PrimaryScreen.WorkingArea.Width > 1600)
 					this.ilCollectibles.ImageSize = new System.Drawing.Size(64, 64);
-
 			}
 			else
 			{
-				this.llep3openinfo.Font = new System.Drawing.Font("Tahoma", this.llep3openinfo.Font.Size, System.Drawing.FontStyle.Bold);
+				this.llep3openinfo.Font = new System.Drawing.Font(
+					"Tahoma",
+					this.llep3openinfo.Font.Size,
+					System.Drawing.FontStyle.Bold
+				);
 				this.llep3openinfo.Height = 16;
 			}
 			//this.llep3openinfo.Icon = SimPe.GetIcon.BnfoIco;
 
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(ExtSDesc));
+			System.Resources.ResourceManager resources =
+				new System.Resources.ResourceManager(typeof(ExtSDesc));
 			this.Commited += new System.EventHandler(this.ExtSDesc_Commited);
 
 			this.srcRel = new SimPe.PackedFiles.UserInterface.CommonSrel();
 			this.dstRel = new SimPe.PackedFiles.UserInterface.CommonSrel();
-			// 
+			//
 			// srcRel
-			// 
+			//
 			this.srcRel.Dock = DockStyle.Fill;
 			this.srcRel.Enabled = false;
 			this.srcRel.Name = "srcRed";
 			this.srcRel.Srel = null;
 			this.srcRel.Visible = true;
-			// 
+			//
 			// dstRel
-			// 
+			//
 			this.dstRel.Dock = DockStyle.Fill;
 			this.dstRel.Enabled = false;
 			this.dstRel.Name = "dstRel";
@@ -171,38 +190,48 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public void SelectButton(ToolStripButton b)
 		{
-			for (int i=0; i<this.toolBar1.Items.Count; i++)
+			for (int i = 0; i < this.toolBar1.Items.Count; i++)
 			{
-				if (toolBar1.Items[i] is ToolStripButton ) 
+				if (toolBar1.Items[i] is ToolStripButton)
 				{
-					ToolStripButton item = (ToolStripButton )toolBar1.Items[i];
-					item.Checked = (item==b);
-					
-					if (item.Tag!=null)
+					ToolStripButton item = (ToolStripButton)toolBar1.Items[i];
+					item.Checked = (item == b);
+
+					if (item.Tag != null)
 					{
 						Panel pn = (Panel)item.Tag;
-						
+
 						if (pn == pnChar)
 						{
-							SetCharacterAttributesVisibility(); 
-						}                        
-						pn.Visible = item.Checked;                        
+							SetCharacterAttributesVisibility();
+						}
+						pn.Visible = item.Checked;
 					}
 				}
 			}
 
-			mbiMax.Enabled = miRand.Enabled = pnSkill.Visible || pnChar.Visible || pnInt.Visible || pnRel.Visible;
-			this.miOpenSCOR.Enabled = (int)PathProvider.Global.Latest.Expansion >= (int)Expansions.Business;
+			mbiMax.Enabled = miRand.Enabled =
+				pnSkill.Visible || pnChar.Visible || pnInt.Visible || pnRel.Visible;
+			this.miOpenSCOR.Enabled =
+				(int)PathProvider.Global.Latest.Expansion >= (int)Expansions.Business;
 		}
-		
+
 		private void ChoosePage(object sender, System.EventArgs e)
 		{
 			SelectButton((ToolStripButton)sender);
 		}
 
-		void AddAspiration(ComboBox cb, Data.MetaData.AspirationTypes exclude, Data.MetaData.AspirationTypes asp)
+		void AddAspiration(
+			ComboBox cb,
+			Data.MetaData.AspirationTypes exclude,
+			Data.MetaData.AspirationTypes asp
+		)
 		{
-			if ((ushort)exclude == 0xFFFF || exclude == MetaData.AspirationTypes.Nothing || asp != exclude)
+			if (
+				(ushort)exclude == 0xFFFF
+				|| exclude == MetaData.AspirationTypes.Nothing
+				|| asp != exclude
+			)
 				cb.Items.Add(new LocalizedAspirationTypes(asp));
 		}
 
@@ -212,8 +241,8 @@ namespace SimPe.PackedFiles.UserInterface
 		}
 
 		void SetAspirations(ComboBox cb, Data.MetaData.AspirationTypes exclude)
-		{            
-			cb.Items.Clear();            
+		{
+			cb.Items.Clear();
 			AddAspiration(cb, exclude, Data.MetaData.AspirationTypes.Nothing);
 			AddAspiration(cb, exclude, Data.MetaData.AspirationTypes.Fortune);
 			AddAspiration(cb, exclude, Data.MetaData.AspirationTypes.Family);
@@ -228,162 +257,399 @@ namespace SimPe.PackedFiles.UserInterface
 
 		void SelectAspiration(ComboBox cb, Data.MetaData.AspirationTypes val)
 		{
-			if (cb.Items.Count == 0) return;
+			if (cb.Items.Count == 0)
+				return;
 			cb.SelectedIndex = 0;
 			for (int i = 0; i < cb.Items.Count; i++)
 			{
-				Data.MetaData.AspirationTypes at = (LocalizedAspirationTypes)cb.Items[i];
+				Data.MetaData.AspirationTypes at = (LocalizedAspirationTypes)
+					cb.Items[i];
 				if (at == val)
 				{
 					cb.SelectedIndex = i;
 					break;
 				}
-			}	
+			}
 		}
 
 		void InitDropDowns()
 		{
 			SetAspirations(cbaspiration);
 			SetAspirations(cbaspiration2);
-			
+
 			this.cblifesection.Items.Clear();
-			this.cblifesection.Items.Add(new LocalizedLifeSections(Data.MetaData.LifeSections.Unknown));
-			this.cblifesection.Items.Add(new LocalizedLifeSections(Data.MetaData.LifeSections.Baby));
-			this.cblifesection.Items.Add(new LocalizedLifeSections(Data.MetaData.LifeSections.Toddler));
-			this.cblifesection.Items.Add(new LocalizedLifeSections(Data.MetaData.LifeSections.Child));
-			this.cblifesection.Items.Add(new LocalizedLifeSections(Data.MetaData.LifeSections.Teen));
-			this.cblifesection.Items.Add(new LocalizedLifeSections(Data.MetaData.LifeSections.Adult));
-			this.cblifesection.Items.Add(new LocalizedLifeSections(Data.MetaData.LifeSections.Elder));
+			this.cblifesection.Items.Add(
+				new LocalizedLifeSections(Data.MetaData.LifeSections.Unknown)
+			);
+			this.cblifesection.Items.Add(
+				new LocalizedLifeSections(Data.MetaData.LifeSections.Baby)
+			);
+			this.cblifesection.Items.Add(
+				new LocalizedLifeSections(Data.MetaData.LifeSections.Toddler)
+			);
+			this.cblifesection.Items.Add(
+				new LocalizedLifeSections(Data.MetaData.LifeSections.Child)
+			);
+			this.cblifesection.Items.Add(
+				new LocalizedLifeSections(Data.MetaData.LifeSections.Teen)
+			);
+			this.cblifesection.Items.Add(
+				new LocalizedLifeSections(Data.MetaData.LifeSections.Adult)
+			);
+			this.cblifesection.Items.Add(
+				new LocalizedLifeSections(Data.MetaData.LifeSections.Elder)
+			);
 
 			this.cbcareer.Items.Clear();
-			foreach (SimPe.Interfaces.IAlias a in SimPe.PackedFiles.Wrapper.SDesc.AddonCarrers) this.cbcareer.Items.Add(a);
-			this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Unknown));
-			this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Unemployed));
-			if (Helper.WindowsRegistry.LoadOnlySimsStory == 28 && !Helper.WindowsRegistry.HiddenMode)
+			foreach (
+				SimPe.Interfaces.IAlias a in SimPe
+					.PackedFiles
+					.Wrapper
+					.SDesc
+					.AddonCarrers
+			)
+				this.cbcareer.Items.Add(a);
+			this.cbcareer.Items.Add(
+				new LocalizedCareers(Data.MetaData.Careers.Unknown)
+			);
+			this.cbcareer.Items.Add(
+				new LocalizedCareers(Data.MetaData.Careers.Unemployed)
+			);
+			if (
+				Helper.WindowsRegistry.LoadOnlySimsStory == 28
+				&& !Helper.WindowsRegistry.HiddenMode
+			)
 			{
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Crafter));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Gatherer));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Hunter));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.OrangutanCrafter));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.OrangutanGatherer));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.OrangutanHunter));
-				
-				for (int j = 0; j < this.cbcareer.Items.Count; j++)
-				{ this.cbRetirement.Items.Add(this.cbcareer.Items[j]); }
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.Crafter)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.Gatherer)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.Hunter)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.OrangutanCrafter)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.OrangutanGatherer)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.OrangutanHunter)
+				);
 
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderCrafter));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderGatherer));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderHunter));
+				for (int j = 0; j < this.cbcareer.Items.Count; j++)
+				{
+					this.cbRetirement.Items.Add(this.cbcareer.Items[j]);
+				}
+
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.TeenElderCrafter)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.TeenElderGatherer)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.TeenElderHunter)
+				);
 			}
 			else
 			{
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Science));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Medical));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Politics));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Athletic));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.LawEnforcement));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Culinary));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Economy));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Slacker));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Criminal));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Military));
-				if (PathProvider.Global.GetExpansion(SimPe.Expansions.University).Exists || (Helper.WindowsRegistry.HiddenMode))
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.Science)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.Medical)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.Politics)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.Athletic)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.LawEnforcement)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.Culinary)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.Economy)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.Slacker)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.Criminal)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.Military)
+				);
+				if (
+					PathProvider.Global.GetExpansion(SimPe.Expansions.University).Exists
+					|| (Helper.WindowsRegistry.HiddenMode)
+				)
 				{
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Paranormal));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.NaturalScientist));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.ShowBiz));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Artist));
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.Paranormal)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.NaturalScientist)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.ShowBiz)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.Artist)
+					);
 				}
-				if (PathProvider.Global.GetExpansion(SimPe.Expansions.IslandStories).Exists || Helper.WindowsRegistry.HiddenMode)
+				if (
+					PathProvider
+						.Global.GetExpansion(SimPe.Expansions.IslandStories)
+						.Exists || Helper.WindowsRegistry.HiddenMode
+				)
 				{
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Crafter));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Gatherer));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Hunter));
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.Crafter)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.Gatherer)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.Hunter)
+					);
 				}
-				if (PathProvider.Global.GetExpansion(SimPe.Expansions.Seasons).Exists || (Helper.WindowsRegistry.HiddenMode))
+				if (
+					PathProvider.Global.GetExpansion(SimPe.Expansions.Seasons).Exists
+					|| (Helper.WindowsRegistry.HiddenMode)
+				)
 				{
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Adventurer));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Education));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Gamer));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Journalism));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Law));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Music));
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.Adventurer)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.Education)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.Gamer)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.Journalism)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.Law)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.Music)
+					);
 				}
-				if (PathProvider.Global.GetExpansion(SimPe.Expansions.FreeTime).Exists || (Helper.WindowsRegistry.HiddenMode))
+				if (
+					PathProvider.Global.GetExpansion(SimPe.Expansions.FreeTime).Exists
+					|| (Helper.WindowsRegistry.HiddenMode)
+				)
 				{
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Construction));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Dance));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Entertainment));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Intelligence));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.Ocenography));
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.Construction)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.Dance)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.Entertainment)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.Intelligence)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.Ocenography)
+					);
 				}
-				if (PathProvider.Global.GetExpansion(SimPe.Expansions.LifeStories).Exists || Helper.WindowsRegistry.HiddenMode)
+				if (
+					PathProvider
+						.Global.GetExpansion(SimPe.Expansions.LifeStories)
+						.Exists || Helper.WindowsRegistry.HiddenMode
+				)
 				{
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.EntertainLS));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.GameDevelopment));
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.EntertainLS)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.GameDevelopment)
+					);
 				}
-				if (PathProvider.Global.GetExpansion(SimPe.Expansions.Business).Exists || (Helper.WindowsRegistry.HiddenMode))
+				if (
+					PathProvider.Global.GetExpansion(SimPe.Expansions.Business).Exists
+					|| (Helper.WindowsRegistry.HiddenMode)
+				)
 				{
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.OwnedBuss));
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.OwnedBuss)
+					);
 				}
 
 				for (int i = 0; i < this.cbcareer.Items.Count; i++)
-				{ this.cbRetirement.Items.Add(this.cbcareer.Items[i]); }
+				{
+					this.cbRetirement.Items.Add(this.cbcareer.Items[i]);
+				}
 
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderAthletic));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderBusiness));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderCriminal));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderCulinary));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderLawEnforcement));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderMedical));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderMilitary));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderPolitics));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderScience));
-				this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderSlacker));
-				if (PathProvider.Global.GetExpansion(SimPe.Expansions.Seasons).Exists || (Helper.WindowsRegistry.HiddenMode))
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.TeenElderAthletic)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.TeenElderBusiness)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.TeenElderCriminal)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.TeenElderCulinary)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.TeenElderLawEnforcement)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.TeenElderMedical)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.TeenElderMilitary)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.TeenElderPolitics)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.TeenElderScience)
+				);
+				this.cbcareer.Items.Add(
+					new LocalizedCareers(Data.MetaData.Careers.TeenElderSlacker)
+				);
+				if (
+					PathProvider.Global.GetExpansion(SimPe.Expansions.Seasons).Exists
+					|| (Helper.WindowsRegistry.HiddenMode)
+				)
 				{
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderAdventurer));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderEducation));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderGamer));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderJournalism));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderLaw));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderMusic));
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.TeenElderAdventurer)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.TeenElderEducation)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.TeenElderGamer)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.TeenElderJournalism)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.TeenElderLaw)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.TeenElderMusic)
+					);
 				}
-				if (PathProvider.Global.GetExpansion(SimPe.Expansions.IslandStories).Exists || Helper.WindowsRegistry.HiddenMode)
+				if (
+					PathProvider
+						.Global.GetExpansion(SimPe.Expansions.IslandStories)
+						.Exists || Helper.WindowsRegistry.HiddenMode
+				)
 				{
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderCrafter));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderGatherer));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderHunter));
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.TeenElderCrafter)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.TeenElderGatherer)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.TeenElderHunter)
+					);
 				}
-				if (PathProvider.Global.GetExpansion(SimPe.Expansions.FreeTime).Exists || (Helper.WindowsRegistry.HiddenMode))
+				if (
+					PathProvider.Global.GetExpansion(SimPe.Expansions.FreeTime).Exists
+					|| (Helper.WindowsRegistry.HiddenMode)
+				)
 				{
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderConstruction));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderDance));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderEntertainment));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderIntelligence));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenElderOcenography));
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(
+							Data.MetaData.Careers.TeenElderConstruction
+						)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.TeenElderDance)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(
+							Data.MetaData.Careers.TeenElderEntertainment
+						)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(
+							Data.MetaData.Careers.TeenElderIntelligence
+						)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.TeenElderOcenography)
+					);
 				}
-				if (PathProvider.Global.GetExpansion(SimPe.Expansions.Business).Exists || (Helper.WindowsRegistry.HiddenMode))
+				if (
+					PathProvider.Global.GetExpansion(SimPe.Expansions.Business).Exists
+					|| (Helper.WindowsRegistry.HiddenMode)
+				)
 				{
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.TeenOwnedBuss));
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.TeenOwnedBuss)
+					);
 				}
-				if (PathProvider.Global.GetExpansion(SimPe.Expansions.Pets).Exists || PathProvider.Global.GetExpansion(SimPe.Expansions.PetStories).Exists || (Helper.WindowsRegistry.HiddenMode))
+				if (
+					PathProvider.Global.GetExpansion(SimPe.Expansions.Pets).Exists
+					|| PathProvider
+						.Global.GetExpansion(SimPe.Expansions.PetStories)
+						.Exists
+					|| (Helper.WindowsRegistry.HiddenMode)
+				)
 				{
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.PetSecurity));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.PetService));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.PetShowBiz));
-					this.cbRetirement.Items.Add(new LocalizedCareers(Data.MetaData.Careers.PetSecurity));
-					this.cbRetirement.Items.Add(new LocalizedCareers(Data.MetaData.Careers.PetService));
-					this.cbRetirement.Items.Add(new LocalizedCareers(Data.MetaData.Careers.PetShowBiz));
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.PetSecurity)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.PetService)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.PetShowBiz)
+					);
+					this.cbRetirement.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.PetSecurity)
+					);
+					this.cbRetirement.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.PetService)
+					);
+					this.cbRetirement.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.PetShowBiz)
+					);
 				}
-				if (PathProvider.Global.GetExpansion(SimPe.Expansions.IslandStories).Exists || Helper.WindowsRegistry.HiddenMode)
+				if (
+					PathProvider
+						.Global.GetExpansion(SimPe.Expansions.IslandStories)
+						.Exists || Helper.WindowsRegistry.HiddenMode
+				)
 				{
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.OrangutanCrafter));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.OrangutanGatherer));
-					this.cbcareer.Items.Add(new LocalizedCareers(Data.MetaData.Careers.OrangutanHunter));
-					this.cbRetirement.Items.Add(new LocalizedCareers(Data.MetaData.Careers.OrangutanCrafter));
-					this.cbRetirement.Items.Add(new LocalizedCareers(Data.MetaData.Careers.OrangutanGatherer));
-					this.cbRetirement.Items.Add(new LocalizedCareers(Data.MetaData.Careers.OrangutanHunter));
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.OrangutanCrafter)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.OrangutanGatherer)
+					);
+					this.cbcareer.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.OrangutanHunter)
+					);
+					this.cbRetirement.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.OrangutanCrafter)
+					);
+					this.cbRetirement.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.OrangutanGatherer)
+					);
+					this.cbRetirement.Items.Add(
+						new LocalizedCareers(Data.MetaData.Careers.OrangutanHunter)
+					);
 				}
 			}
 
@@ -404,135 +670,349 @@ namespace SimPe.PackedFiles.UserInterface
 			this.cbgrade.Items.Add(new LocalizedGrades(Data.MetaData.Grades.F));
 
 			this.cbmajor.Items.Clear();
-			foreach (SimPe.Interfaces.IAlias a in SimPe.PackedFiles.Wrapper.SDesc.AddonMajors) this.cbmajor.Items.Add(a);
+			foreach (
+				SimPe.Interfaces.IAlias a in SimPe.PackedFiles.Wrapper.SDesc.AddonMajors
+			)
+				this.cbmajor.Items.Add(a);
 			System.Array majors = System.Enum.GetValues(typeof(Data.Majors));
-			foreach (Data.Majors c in majors) this.cbmajor.Items.Add(c);
+			foreach (Data.Majors c in majors)
+				this.cbmajor.Items.Add(c);
 
 			this.cbschooltype.Items.Clear();
-			foreach (SimPe.Interfaces.IAlias a in SimPe.PackedFiles.Wrapper.SDesc.AddonSchools) this.cbschooltype.Items.Add(a);
-			this.cbschooltype.Items.Add(new LocalizedSchoolType(Data.MetaData.SchoolTypes.NoSchool));
-			this.cbschooltype.Items.Add(new LocalizedSchoolType(Data.MetaData.SchoolTypes.PrivateSchool));
-			this.cbschooltype.Items.Add(new LocalizedSchoolType(Data.MetaData.SchoolTypes.PublicSchool));
+			foreach (
+				SimPe.Interfaces.IAlias a in SimPe
+					.PackedFiles
+					.Wrapper
+					.SDesc
+					.AddonSchools
+			)
+				this.cbschooltype.Items.Add(a);
+			this.cbschooltype.Items.Add(
+				new LocalizedSchoolType(Data.MetaData.SchoolTypes.NoSchool)
+			);
+			this.cbschooltype.Items.Add(
+				new LocalizedSchoolType(Data.MetaData.SchoolTypes.PrivateSchool)
+			);
+			this.cbschooltype.Items.Add(
+				new LocalizedSchoolType(Data.MetaData.SchoolTypes.PublicSchool)
+			);
 
 			this.cbzodiac.Items.Clear();
-			for (ushort i = 0x01; i <= 0x0C; i++) this.cbzodiac.Items.Add(new LocalizedZodiacSignes((Data.MetaData.ZodiacSignes)i));
+			for (ushort i = 0x01; i <= 0x0C; i++)
+				this.cbzodiac.Items.Add(
+					new LocalizedZodiacSignes((Data.MetaData.ZodiacSignes)i)
+				);
 
 			this.cbservice.Items.Clear();
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Normal));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Bartenderb));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Bartenderp));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Boss));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Burglar));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Driver));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Streaker));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Coach));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.LunchLady));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Cop));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Delivery));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Exterminator));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.FireFighter));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Gardener));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Barista));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Grim));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Handy));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Headmistress));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Matchmaker));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Maid));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.MailCarrier));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Nanny));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Paper));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Pizza));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Professor));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.EvilMascot));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Repo));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.CheerLeader));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Mascot));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.SocialBunny));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.SocialWorker));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Register));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Therapist));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Chinese));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Podium));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Waitress));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Chef));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.DJ));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Crumplebottom));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Vampyre));
-			if ((PathProvider.Global.GetExpansion(SimPe.Expansions.Business).Exists || SimPe.PathProvider.Global.STInstalled >= 28) || Helper.WindowsRegistry.HiddenMode)
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Normal)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Bartenderb)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Bartenderp)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Boss)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Burglar)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Driver)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Streaker)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Coach)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.LunchLady)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Cop)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Delivery)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Exterminator)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.FireFighter)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Gardener)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Barista)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Grim)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Handy)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Headmistress)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Matchmaker)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Maid)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.MailCarrier)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Nanny)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Paper)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Pizza)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Professor)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.EvilMascot)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Repo)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.CheerLeader)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Mascot)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.SocialBunny)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.SocialWorker)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Register)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Therapist)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Chinese)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Podium)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Waitress)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Chef)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.DJ)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Crumplebottom)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Vampyre)
+			);
+			if (
+				(
+					PathProvider.Global.GetExpansion(SimPe.Expansions.Business).Exists
+					|| SimPe.PathProvider.Global.STInstalled >= 28
+				) || Helper.WindowsRegistry.HiddenMode
+			)
 			{
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Servo));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Reporter));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Salon));
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Servo)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Reporter)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Salon)
+				);
 			}
-			if ((PathProvider.Global.GetExpansion(SimPe.Expansions.Pets).Exists || SimPe.PathProvider.Global.STInstalled >= 28) || Helper.WindowsRegistry.HiddenMode)
+			if (
+				(
+					PathProvider.Global.GetExpansion(SimPe.Expansions.Pets).Exists
+					|| SimPe.PathProvider.Global.STInstalled >= 28
+				) || Helper.WindowsRegistry.HiddenMode
+			)
 			{
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Wolf));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.WolfLOTP));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Skunk));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.AnimalControl));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Obedience));
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Wolf)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.WolfLOTP)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Skunk)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.AnimalControl)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Obedience)
+				);
 			}
-			if ((PathProvider.Global.GetExpansion(SimPe.Expansions.Voyage).Exists || PathProvider.Global.GetExpansion(SimPe.Expansions.IslandStories).Exists || PathProvider.Global.GetExpansion(SimPe.Expansions.PetStories).Exists) || Helper.WindowsRegistry.HiddenMode)
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Masseuse));
-			if ((PathProvider.Global.GetExpansion(SimPe.Expansions.Voyage).Exists || PathProvider.Global.GetExpansion(SimPe.Expansions.IslandStories).Exists) || Helper.WindowsRegistry.HiddenMode)
+			if (
+				(
+					PathProvider.Global.GetExpansion(SimPe.Expansions.Voyage).Exists
+					|| PathProvider
+						.Global.GetExpansion(SimPe.Expansions.IslandStories)
+						.Exists
+					|| PathProvider
+						.Global.GetExpansion(SimPe.Expansions.PetStories)
+						.Exists
+				) || Helper.WindowsRegistry.HiddenMode
+			)
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Masseuse)
+				);
+			if (
+				(
+					PathProvider.Global.GetExpansion(SimPe.Expansions.Voyage).Exists
+					|| PathProvider
+						.Global.GetExpansion(SimPe.Expansions.IslandStories)
+						.Exists
+				) || Helper.WindowsRegistry.HiddenMode
+			)
 			{
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Bellhop));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Villain));
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Bellhop)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Villain)
+				);
 			}
-			if (PathProvider.Global.GetExpansion(SimPe.Expansions.Voyage).Exists || Helper.WindowsRegistry.HiddenMode)
+			if (
+				PathProvider.Global.GetExpansion(SimPe.Expansions.Voyage).Exists
+				|| Helper.WindowsRegistry.HiddenMode
+			)
 			{
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.TourGuide));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Hermit));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Ninja));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.BigFoot));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Housekeeper));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.FoodStandChef));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.FireDancer));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.WitchDoctor));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.GhostCaptain));
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.TourGuide)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Hermit)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Ninja)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.BigFoot)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Housekeeper)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.FoodStandChef)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.FireDancer)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.WitchDoctor)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.GhostCaptain)
+				);
 			}
-			if (PathProvider.Global.GetExpansion(SimPe.Expansions.FreeTime).Exists || (Helper.WindowsRegistry.HiddenMode))
+			if (
+				PathProvider.Global.GetExpansion(SimPe.Expansions.FreeTime).Exists
+				|| (Helper.WindowsRegistry.HiddenMode)
+			)
 			{
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.FoodJudge));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Genie));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.exDJ));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.exGypsy));
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.FoodJudge)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Genie)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.exDJ)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.exGypsy)
+				);
 			}
-			if (PathProvider.Global.GetExpansion(SimPe.Expansions.Apartments).Exists || (Helper.WindowsRegistry.HiddenMode))
+			if (
+				PathProvider.Global.GetExpansion(SimPe.Expansions.Apartments).Exists
+				|| (Helper.WindowsRegistry.HiddenMode)
+			)
 			{
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Witch1));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Breakdancer));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.SpectralCat));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Statue));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Landlord));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Butler));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.hotdogchef));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.assistant));
-				this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.exWitch2));
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Witch1)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Breakdancer)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.SpectralCat)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Statue)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Landlord)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Butler)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.hotdogchef)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.assistant)
+				);
+				this.cbservice.Items.Add(
+					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.exWitch2)
+				);
 			}
 
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.icontrol));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Pandora));
-			this.cbservice.Items.Add(new LocalizedServiceTypes(Data.MetaData.ServiceTypes.DMASim));
-			
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.icontrol)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Pandora)
+			);
+			this.cbservice.Items.Add(
+				new LocalizedServiceTypes(Data.MetaData.ServiceTypes.DMASim)
+			);
+
 			this.cbEp3Asgn.ResourceManager = SimPe.Localization.Manager;
 			this.cbEp3Asgn.Enum = typeof(Wrapper.JobAssignment);
 
 			this.cbSpecies.ResourceManager = SimPe.Localization.Manager;
-			this.cbSpecies.Enum = typeof(SimPe.PackedFiles.Wrapper.SdscNightlife.SpeciesType);
+			this.cbSpecies.Enum =
+				typeof(SimPe.PackedFiles.Wrapper.SdscNightlife.SpeciesType);
 
 			cbHobbyPre.ResourceManager = SimPe.Localization.Manager;
 			cbHobbyPre.Enum = typeof(SimPe.PackedFiles.Wrapper.Hobbies);
 
 			for (int i = 0; i < cbHobbyEnth.Items.Count; i++)
 			{
-				SimPe.PackedFiles.Wrapper.Hobbies hb = SimPe.PackedFiles.Wrapper.SdscFreetime.IndexToHobbies((ushort)i);
+				SimPe.PackedFiles.Wrapper.Hobbies hb =
+					SimPe.PackedFiles.Wrapper.SdscFreetime.IndexToHobbies((ushort)i);
 				Type type = typeof(SimPe.PackedFiles.Wrapper.Hobbies);
-				cbHobbyEnth.Items[i] = SimPe.Localization.GetString(type.Namespace + "." + type.Name + "." + hb.ToString());
+				cbHobbyEnth.Items[i] = SimPe.Localization.GetString(
+					type.Namespace + "." + type.Name + "." + hb.ToString()
+				);
 			}
 
 			string es = SimPe.Data.MetaData.GetTitleName(4); // to intialize the dictionary
-			foreach (KeyValuePair<short, string> kvp in SimPe.Data.MetaData.TitlePostName)
+			foreach (
+				KeyValuePair<short, string> kvp in SimPe.Data.MetaData.TitlePostName
+			)
 				this.cbpostTitle.Items.Add(kvp.Value);
 		}
 
@@ -550,22 +1030,45 @@ namespace SimPe.PackedFiles.UserInterface
 			this.intern = true;
 			try
 			{
-				base.RefreshGUI ();
+				base.RefreshGUI();
 
-				miOpenChar.Enabled = (System.IO.File.Exists(Sdesc.CharacterFileName) && !Sdesc.IsNPC);
-				miRelink.Enabled = ((UserVerification.HaveUserId) && !Sdesc.IsNPC && Helper.IsNeighborhoodFile(Sdesc.Package.FileName));
+				miOpenChar.Enabled = (
+					System.IO.File.Exists(Sdesc.CharacterFileName) && !Sdesc.IsNPC
+				);
+				miRelink.Enabled = (
+					(UserVerification.HaveUserId)
+					&& !Sdesc.IsNPC
+					&& Helper.IsNeighborhoodFile(Sdesc.Package.FileName)
+				);
 				miOpenDNA.Enabled = miOpenCloth.Enabled = !Sdesc.IsNPC;
-				this.tbsimdescname.ReadOnly = this.tbsimdescfamname.ReadOnly = Sdesc.IsNPC;
+				this.tbsimdescname.ReadOnly = this.tbsimdescfamname.ReadOnly =
+					Sdesc.IsNPC;
 				this.btOriGuid.Visible = this.lbFixedRes.Visible = false;
 
 				if (System.IO.File.Exists(Sdesc.CharacterFileName))
-					miOpenChar.Text = strresources.GetString("miOpenChar.Text")+" ("+System.IO.Path.GetFileNameWithoutExtension(Sdesc.CharacterFileName)+")";
+					miOpenChar.Text =
+						strresources.GetString("miOpenChar.Text")
+						+ " ("
+						+ System.IO.Path.GetFileNameWithoutExtension(
+							Sdesc.CharacterFileName
+						)
+						+ ")";
 				else
 					miOpenChar.Text = strresources.GetString("miOpenChar.Text");
 
-				if ((int)Sdesc.Version >= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Apartment && Sdesc.Nightlife.Species == 0 && Helper.StartedGui == Executable.Default)
+				if (
+					(int)Sdesc.Version
+						>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Apartment
+					&& Sdesc.Nightlife.Species == 0
+					&& Helper.StartedGui == Executable.Default
+				)
 				{
-					this.HeaderText = Sdesc.SimName + " " + SimPe.Data.MetaData.GetTitleName(Sdesc.Apartment.TitlePostName);
+					this.HeaderText =
+						Sdesc.SimName
+						+ " "
+						+ SimPe.Data.MetaData.GetTitleName(
+							Sdesc.Apartment.TitlePostName
+						);
 					pnimage = null;
 				}
 				else
@@ -581,32 +1084,85 @@ namespace SimPe.PackedFiles.UserInterface
 				RefreshCharcter(Sdesc);
 				RefreshInterests(Sdesc);
 				RefreshMisc(Sdesc);
-				
+
 				this.biRel.Enabled = Helper.IsNeighborhoodFile(Sdesc.Package.FileName);
-				this.biEP1.Enabled = ((int)Sdesc.Version >= (int)SimPe.PackedFiles.Wrapper.SDescVersions.University && Sdesc.Nightlife.Species == 0 && (int)Sdesc.Version != (int)SimPe.PackedFiles.Wrapper.SDescVersions.Castaway);
-				this.biEP2.Enabled = ((int)Sdesc.Version >= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Nightlife && Sdesc.Nightlife.Species == 0);
-				this.biEP3.Enabled = ((int)Sdesc.Version >= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Business && Sdesc.Nightlife.Species == 0 && (int)Sdesc.Version != (int)SimPe.PackedFiles.Wrapper.SDescVersions.Castaway);
-				this.biEP6.Enabled = ((int)Sdesc.Version >= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Voyage && Sdesc.Nightlife.Species == 0 && SimPe.PathProvider.Global.EPInstalled > 9);
-				this.biEP7.Enabled = ((int)Sdesc.Version >= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Freetime && Sdesc.Nightlife.Species == 0);
-				this.biEP9.Enabled = ((int)Sdesc.Version >= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Apartment && Sdesc.Nightlife.Species == 0);
-				this.cbSpecies.Enabled = ((int)Sdesc.Version >= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Pets);
-				if (pnRel.Visible && !biRel.Enabled) this.SelectButton(biId);
-				if (pnEP1.Visible && !biEP1.Enabled) this.SelectButton(biId);
-				if (pnEP2.Visible && !biEP2.Enabled) this.SelectButton(biId);
-				if (pnEP3.Visible && !biEP3.Enabled) this.SelectButton(biId);
-				if (pnVoyage.Visible && !biEP6.Enabled) this.SelectButton(biId);
-				if (pnEP7.Visible && !biEP7.Enabled) this.SelectButton(biId);
-				if (pnEP9.Visible && !biEP9.Enabled) this.SelectButton(biId);
-				if (biRel.Enabled) pnRel_VisibleChanged(null, null);
-				if (biEP1.Enabled) RefreshEP1(Sdesc);
-				if (biEP2.Enabled || cbSpecies.Enabled) RefreshEP2(Sdesc);
-				if (biEP3.Enabled) RefreshEP3(Sdesc);
-				if (cbSpecies.Enabled) RefreshEP4(Sdesc); else cbSpecies.SelectedValue = SimPe.PackedFiles.Wrapper.SdscNightlife.SpeciesType.Human;
-				if (biEP6.Enabled) RefreshEP6(Sdesc);
-				if (biEP7.Enabled) RefreshEP7(Sdesc);
+				this.biEP1.Enabled = (
+					(int)Sdesc.Version
+						>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.University
+					&& Sdesc.Nightlife.Species == 0
+					&& (int)Sdesc.Version
+						!= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Castaway
+				);
+				this.biEP2.Enabled = (
+					(int)Sdesc.Version
+						>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Nightlife
+					&& Sdesc.Nightlife.Species == 0
+				);
+				this.biEP3.Enabled = (
+					(int)Sdesc.Version
+						>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Business
+					&& Sdesc.Nightlife.Species == 0
+					&& (int)Sdesc.Version
+						!= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Castaway
+				);
+				this.biEP6.Enabled = (
+					(int)Sdesc.Version
+						>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Voyage
+					&& Sdesc.Nightlife.Species == 0
+					&& SimPe.PathProvider.Global.EPInstalled > 9
+				);
+				this.biEP7.Enabled = (
+					(int)Sdesc.Version
+						>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Freetime
+					&& Sdesc.Nightlife.Species == 0
+				);
+				this.biEP9.Enabled = (
+					(int)Sdesc.Version
+						>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Apartment
+					&& Sdesc.Nightlife.Species == 0
+				);
+				this.cbSpecies.Enabled = (
+					(int)Sdesc.Version
+					>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Pets
+				);
+				if (pnRel.Visible && !biRel.Enabled)
+					this.SelectButton(biId);
+				if (pnEP1.Visible && !biEP1.Enabled)
+					this.SelectButton(biId);
+				if (pnEP2.Visible && !biEP2.Enabled)
+					this.SelectButton(biId);
+				if (pnEP3.Visible && !biEP3.Enabled)
+					this.SelectButton(biId);
+				if (pnVoyage.Visible && !biEP6.Enabled)
+					this.SelectButton(biId);
+				if (pnEP7.Visible && !biEP7.Enabled)
+					this.SelectButton(biId);
+				if (pnEP9.Visible && !biEP9.Enabled)
+					this.SelectButton(biId);
+				if (biRel.Enabled)
+					pnRel_VisibleChanged(null, null);
+				if (biEP1.Enabled)
+					RefreshEP1(Sdesc);
+				if (biEP2.Enabled || cbSpecies.Enabled)
+					RefreshEP2(Sdesc);
+				if (biEP3.Enabled)
+					RefreshEP3(Sdesc);
+				if (cbSpecies.Enabled)
+					RefreshEP4(Sdesc);
+				else
+					cbSpecies.SelectedValue = SimPe
+						.PackedFiles
+						.Wrapper
+						.SdscNightlife
+						.SpeciesType
+						.Human;
+				if (biEP6.Enabled)
+					RefreshEP6(Sdesc);
+				if (biEP7.Enabled)
+					RefreshEP7(Sdesc);
 				//if (biEP9.Enabled) RefreshEP9(Sdesc);
 			}
-			finally 
+			finally
 			{
 				SetCharacterAttributesVisibility();
 				this.intern = false;
@@ -616,23 +1172,25 @@ namespace SimPe.PackedFiles.UserInterface
 		void RefreshEP1(Wrapper.ExtSDesc sdesc)
 		{
 			this.cbmajor.SelectedIndex = 0;
-			this.tbmajor.Text = "0x"+Helper.HexString((uint)sdesc.University.Major);
-			this.cbmajor.SelectedIndex = this.cbmajor.Items.Count -1;
-			for (int i=0;i<this.cbmajor.Items.Count;i++)
-			{					 
+			this.tbmajor.Text = "0x" + Helper.HexString((uint)sdesc.University.Major);
+			this.cbmajor.SelectedIndex = this.cbmajor.Items.Count - 1;
+			for (int i = 0; i < this.cbmajor.Items.Count; i++)
+			{
 				object o = this.cbmajor.Items[i];
 				Data.Majors at;
-				if (o.GetType()==typeof(Alias)) at = (Data.Majors)((uint)((Alias)o).Id);
-				else at = (Data.Majors)o;
-					
-				if (at==sdesc.University.Major)
+				if (o.GetType() == typeof(Alias))
+					at = (Data.Majors)((uint)((Alias)o).Id);
+				else
+					at = (Data.Majors)o;
+
+				if (at == sdesc.University.Major)
 				{
 					this.cbmajor.SelectedIndex = i;
 					break;
 				}
 			}
 
-			this.cboncampus.Checked = (sdesc.University.OnCampus==0x1);
+			this.cboncampus.Checked = (sdesc.University.OnCampus == 0x1);
 			this.pbEffort.Value = sdesc.University.Effort;
 			this.pbLastGrade.Value = sdesc.University.Grade;
 
@@ -659,7 +1217,19 @@ namespace SimPe.PackedFiles.UserInterface
 			// should not be reading Nightlife.Species if version is below Pets !!
 			if ((int)Sdesc.Version >= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Pets)
 			{
-				if (((int)Sdesc.Nightlife.Species == 1 || (int)Sdesc.Nightlife.Species == 2) && ((Helper.WindowsRegistry.ShowPetAbilities && Helper.WindowsRegistry.LoadOnlySimsStory == 0) || Helper.WindowsRegistry.LoadOnlySimsStory == 29))
+				if (
+					(
+						(int)Sdesc.Nightlife.Species == 1
+						|| (int)Sdesc.Nightlife.Species == 2
+					)
+					&& (
+						(
+							Helper.WindowsRegistry.ShowPetAbilities
+							&& Helper.WindowsRegistry.LoadOnlySimsStory == 0
+						)
+						|| Helper.WindowsRegistry.LoadOnlySimsStory == 29
+					)
+				)
 				{
 					this.pbPupbody.Value = sdesc.Skills.Body;
 					this.pbPupCharisma.Value = sdesc.Skills.Charisma;
@@ -735,7 +1305,10 @@ namespace SimPe.PackedFiles.UserInterface
 						this.pbReputate.Visible = true;
 						this.pbMech.Visible = true;
 						this.pbCooking.Visible = true;
-						if ((int)Sdesc.Version >= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Apartment)
+						if (
+							(int)Sdesc.Version
+							>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Apartment
+						)
 						{
 							this.pbReputate.Value = sdesc.Apartment.Reputation;
 							this.pbReputate.Visible = true;
@@ -779,15 +1352,31 @@ namespace SimPe.PackedFiles.UserInterface
 
 		void RefreshMisc(Wrapper.ExtSDesc sdesc)
 		{
-			this.tbdecScratc.Visible = this.lbdecScratc.Visible = (sdesc.Nightlife.Species > 0);
-			this.tbdecShop.Visible = this.lbdecShop.Visible = (sdesc.Nightlife.Species == 0);
+			this.tbdecScratc.Visible = this.lbdecScratc.Visible = (
+				sdesc.Nightlife.Species > 0
+			);
+			this.tbdecShop.Visible = this.lbdecShop.Visible = (
+				sdesc.Nightlife.Species == 0
+			);
 
 			//ghostflags
 			this.cbisghost.Checked = sdesc.CharacterDescription.GhostFlag.IsGhost;
-			this.cbpassobject.Checked = sdesc.CharacterDescription.GhostFlag.CanPassThroughObjects;
-			this.cbpasswalls.Checked = sdesc.CharacterDescription.GhostFlag.CanPassThroughWalls;
-			this.cbpasspeople.Checked = sdesc.CharacterDescription.GhostFlag.CanPassThroughPeople;
-			this.cbignoretraversal.Checked = sdesc.CharacterDescription.GhostFlag.IgnoreTraversalCosts;
+			this.cbpassobject.Checked = sdesc
+				.CharacterDescription
+				.GhostFlag
+				.CanPassThroughObjects;
+			this.cbpasswalls.Checked = sdesc
+				.CharacterDescription
+				.GhostFlag
+				.CanPassThroughWalls;
+			this.cbpasspeople.Checked = sdesc
+				.CharacterDescription
+				.GhostFlag
+				.CanPassThroughPeople;
+			this.cbignoretraversal.Checked = sdesc
+				.CharacterDescription
+				.GhostFlag
+				.IgnoreTraversalCosts;
 
 			//body flags
 			this.cbfit.Checked = sdesc.CharacterDescription.BodyFlag.Fit;
@@ -799,11 +1388,15 @@ namespace SimPe.PackedFiles.UserInterface
 			//misc
 			this.tbprevdays.Text = sdesc.CharacterDescription.PrevAgeDays.ToString();
 			this.tbagedur.Text = sdesc.CharacterDescription.AgeDuration.ToString();
-			this.tbunlinked.Text = "0x"+Helper.HexString(sdesc.Unlinked);
-			this.tbvoice.Text = "0x"+Helper.HexString(sdesc.CharacterDescription.VoiceType);
-			this.tbautonomy.Text = "0x" + Helper.HexString(sdesc.CharacterDescription.AutonomyLevel);
-			this.tbnpc.Text = "0x"+Helper.HexString(sdesc.CharacterDescription.NPCType);
-			this.tbstatmot.Text = "0x" + Helper.HexString(sdesc.CharacterDescription.MotivesStatic);
+			this.tbunlinked.Text = "0x" + Helper.HexString(sdesc.Unlinked);
+			this.tbvoice.Text =
+				"0x" + Helper.HexString(sdesc.CharacterDescription.VoiceType);
+			this.tbautonomy.Text =
+				"0x" + Helper.HexString(sdesc.CharacterDescription.AutonomyLevel);
+			this.tbnpc.Text =
+				"0x" + Helper.HexString(sdesc.CharacterDescription.NPCType);
+			this.tbstatmot.Text =
+				"0x" + Helper.HexString(sdesc.CharacterDescription.MotivesStatic);
 
 			//motive decays
 			this.tbdecHunger.Text = Convert.ToString(sdesc.Decay.Hunger);
@@ -817,24 +1410,76 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbdecAmor.Text = Convert.ToString(sdesc.Decay.Amorous);
 			this.tbdecScratc.Text = Convert.ToString(sdesc.Decay.ScratchC);
 
-			if ((int)sdesc.Version >= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Nightlife)
+			if (
+				(int)sdesc.Version
+				>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Nightlife
+			)
 			{
 				this.tbpersonflags.Visible = tbMotiveDec.Visible = true;
-				this.cbpflycar.Visible = this.cbpflyact.Visible = this.cbpfrunaw.Visible = this.cbpfPlant.Visible = ((int)sdesc.Version >= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Pets);
-				this.cbpfBigf.Visible = ((int)sdesc.Version >= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Voyage);
-				this.cbpfwitch.Visible = this.cbpfroomy.Visible = ((int)sdesc.Version >= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Apartment);
-				this.cbpfZomb.Checked = sdesc.CharacterDescription.PersonFlags1.IsZombie;
-				this.cbpfperma.Checked = sdesc.CharacterDescription.PersonFlags1.PermaPlatinum;
-				this.cbpfvamp.Checked = sdesc.CharacterDescription.PersonFlags1.IsVampire;
-				this.cbpfvsmoke.Checked = sdesc.CharacterDescription.PersonFlags1.VampireSmoke;
-				this.cbpfwants.Checked = sdesc.CharacterDescription.PersonFlags1.WantHistory;
-				this.cbpflycar.Checked = sdesc.CharacterDescription.PersonFlags1.LycanCarrier;
-				this.cbpflyact.Checked = sdesc.CharacterDescription.PersonFlags1.LycanActive;
-				this.cbpfrunaw.Checked = sdesc.CharacterDescription.PersonFlags1.IsRunaway;
-				this.cbpfPlant.Checked = sdesc.CharacterDescription.PersonFlags1.IsPlantsim;
-				this.cbpfBigf.Checked = sdesc.CharacterDescription.PersonFlags1.IsBigfoot;
-				this.cbpfwitch.Checked = sdesc.CharacterDescription.PersonFlags1.IsWitch;
-				this.cbpfroomy.Checked = sdesc.CharacterDescription.PersonFlags1.IsRoomate;
+				this.cbpflycar.Visible =
+					this.cbpflyact.Visible =
+					this.cbpfrunaw.Visible =
+					this.cbpfPlant.Visible =
+						(
+							(int)sdesc.Version
+							>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Pets
+						);
+				this.cbpfBigf.Visible = (
+					(int)sdesc.Version
+					>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Voyage
+				);
+				this.cbpfwitch.Visible = this.cbpfroomy.Visible = (
+					(int)sdesc.Version
+					>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Apartment
+				);
+				this.cbpfZomb.Checked = sdesc
+					.CharacterDescription
+					.PersonFlags1
+					.IsZombie;
+				this.cbpfperma.Checked = sdesc
+					.CharacterDescription
+					.PersonFlags1
+					.PermaPlatinum;
+				this.cbpfvamp.Checked = sdesc
+					.CharacterDescription
+					.PersonFlags1
+					.IsVampire;
+				this.cbpfvsmoke.Checked = sdesc
+					.CharacterDescription
+					.PersonFlags1
+					.VampireSmoke;
+				this.cbpfwants.Checked = sdesc
+					.CharacterDescription
+					.PersonFlags1
+					.WantHistory;
+				this.cbpflycar.Checked = sdesc
+					.CharacterDescription
+					.PersonFlags1
+					.LycanCarrier;
+				this.cbpflyact.Checked = sdesc
+					.CharacterDescription
+					.PersonFlags1
+					.LycanActive;
+				this.cbpfrunaw.Checked = sdesc
+					.CharacterDescription
+					.PersonFlags1
+					.IsRunaway;
+				this.cbpfPlant.Checked = sdesc
+					.CharacterDescription
+					.PersonFlags1
+					.IsPlantsim;
+				this.cbpfBigf.Checked = sdesc
+					.CharacterDescription
+					.PersonFlags1
+					.IsBigfoot;
+				this.cbpfwitch.Checked = sdesc
+					.CharacterDescription
+					.PersonFlags1
+					.IsWitch;
+				this.cbpfroomy.Checked = sdesc
+					.CharacterDescription
+					.PersonFlags1
+					.IsRoomate;
 			}
 			else
 				this.tbpersonflags.Visible = tbMotiveDec.Visible = false;
@@ -853,13 +1498,19 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbfaminst.Text = "0x" + Helper.HexString(sdesc.FamilyInstance);
 			this.tbsinstance.Text = "0x" + Helper.HexString(sdesc.Instance);
 			this.lbHousname.Text = "(" + sdesc.HouseholdName + ")";
-			this.btOriGuid.Enabled = (!sdesc.IsNPC && System.IO.File.Exists(sdesc.CharacterFileName)); // may need to disable more
-			
+			this.btOriGuid.Enabled = (
+				!sdesc.IsNPC && System.IO.File.Exists(sdesc.CharacterFileName)
+			); // may need to disable more
+
 			Image img = null;
-			
-			if (sdesc.Image!=null) 
-				if (sdesc.Image.Width>5) 
-					img = Ambertation.Drawing.GraphicRoutines.KnockoutImage(sdesc.Image, new Point(0,0), Color.Magenta);
+
+			if (sdesc.Image != null)
+				if (sdesc.Image.Width > 5)
+					img = Ambertation.Drawing.GraphicRoutines.KnockoutImage(
+						sdesc.Image,
+						new Point(0, 0),
+						Color.Magenta
+					);
 
 			if (img == null)
 			{
@@ -869,23 +1520,39 @@ namespace SimPe.PackedFiles.UserInterface
 					img = SimPe.GetImage.NoOne;
 			}
 
-			img = Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(img, pbImage.Size, 12, Color.FromArgb(90, Color.Black), SimPe.PackedFiles.Wrapper.SimPoolControl.GetImagePanelColor(Sdesc), Color.White, Color.FromArgb(80, Color.White), true, 4, 0);
+			img = Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(
+				img,
+				pbImage.Size,
+				12,
+				Color.FromArgb(90, Color.Black),
+				SimPe.PackedFiles.Wrapper.SimPoolControl.GetImagePanelColor(Sdesc),
+				Color.White,
+				Color.FromArgb(80, Color.White),
+				true,
+				4,
+				0
+			);
 			this.pbImage.Image = img;
 
 			//Lifesection
 			this.cblifesection.SelectedIndex = 0;
-			for (int i=0;i<this.cblifesection.Items.Count;i++)
+			for (int i = 0; i < this.cblifesection.Items.Count; i++)
 			{
-				Data.MetaData.LifeSections at = (LocalizedLifeSections)this.cblifesection.Items[i];
-				if (at==sdesc.CharacterDescription.LifeSection)
+				Data.MetaData.LifeSections at = (LocalizedLifeSections)
+					this.cblifesection.Items[i];
+				if (at == sdesc.CharacterDescription.LifeSection)
 				{
 					this.cblifesection.SelectedIndex = i;
 					break;
 				}
 			}
 
-			this.rbfemale.Checked = (sdesc.CharacterDescription.Gender == Data.MetaData.Gender.Female);
-			this.rbmale.Checked = (sdesc.CharacterDescription.Gender == Data.MetaData.Gender.Male);
+			this.rbfemale.Checked = (
+				sdesc.CharacterDescription.Gender == Data.MetaData.Gender.Female
+			);
+			this.rbmale.Checked = (
+				sdesc.CharacterDescription.Gender == Data.MetaData.Gender.Male
+			);
 
 			//NPC Type
 			this.cbservice.SelectedIndex = 0;
@@ -893,8 +1560,10 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				object o = this.cbservice.Items[i];
 				Data.MetaData.ServiceTypes at;
-				if (o.GetType() == typeof(Alias)) at = (Data.LocalizedServiceTypes)((uint)((Alias)o).Id);
-				else at = (Data.LocalizedServiceTypes)o;
+				if (o.GetType() == typeof(Alias))
+					at = (Data.LocalizedServiceTypes)((uint)((Alias)o).Id);
+				else
+					at = (Data.LocalizedServiceTypes)o;
 
 				if (at == sdesc.CharacterDescription.ServiceTypes)
 				{
@@ -903,35 +1572,65 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 			}
 
-			if ((int)sdesc.Version == (int)SimPe.PackedFiles.Wrapper.SDescVersions.Castaway && sdesc.Castaway.Subspecies > 0)
+			if (
+				(int)sdesc.Version
+					== (int)SimPe.PackedFiles.Wrapper.SDescVersions.Castaway
+				&& sdesc.Castaway.Subspecies > 0
+			)
 			{
-				if (sdesc.Castaway.Subspecies == 2) { this.lbsubspec.Text = "Sub Species: Orang-utan"; this.lbsubspec.Visible = true; }
-				if (sdesc.Castaway.Subspecies == 1 && (int)sdesc.Nightlife.Species == 3) { this.lbsubspec.Text = "Sub Species: Leopard"; this.lbsubspec.Visible = true; }
-				if (sdesc.Castaway.Subspecies == 1 && (int)sdesc.Nightlife.Species < 3) { this.lbsubspec.Text = "Sub Species: Wild Dog"; this.lbsubspec.Visible = true; }
+				if (sdesc.Castaway.Subspecies == 2)
+				{
+					this.lbsubspec.Text = "Sub Species: Orang-utan";
+					this.lbsubspec.Visible = true;
+				}
+				if (sdesc.Castaway.Subspecies == 1 && (int)sdesc.Nightlife.Species == 3)
+				{
+					this.lbsubspec.Text = "Sub Species: Leopard";
+					this.lbsubspec.Visible = true;
+				}
+				if (sdesc.Castaway.Subspecies == 1 && (int)sdesc.Nightlife.Species < 3)
+				{
+					this.lbsubspec.Text = "Sub Species: Wild Dog";
+					this.lbsubspec.Visible = true;
+				}
 			}
-			else this.lbsubspec.Visible = false;
+			else
+				this.lbsubspec.Visible = false;
 
-			if (sdesc.IsCharSplit) this.lbSplitChar.Visible = true; else this.lbSplitChar.Visible = false;
+			if (sdesc.IsCharSplit)
+				this.lbSplitChar.Visible = true;
+			else
+				this.lbSplitChar.Visible = false;
 		}
 
 		void RefreshCareer(Wrapper.ExtSDesc sdesc)
 		{
-			this.lpRetirement.Enabled = this.cbRetirement.Enabled = this.tbpension.Enabled = sdesc.CharacterDescription.Realage > 19;
+			this.lpRetirement.Enabled =
+				this.cbRetirement.Enabled =
+				this.tbpension.Enabled =
+					sdesc.CharacterDescription.Realage > 19;
 			this.pbCareerLevel.Value = sdesc.CharacterDescription.CareerLevel;
 			this.lpRetirement.Value = sdesc.CharacterDescription.RetiredLevel;
-			this.pbCareerPerformance.Value = sdesc.CharacterDescription.CareerPerformance;
-			this.tbaccholidays.Text = Convert.ToString((float)sdesc.CharacterDescription.PTO / 100);
+			this.pbCareerPerformance.Value = sdesc
+				.CharacterDescription
+				.CareerPerformance;
+			this.tbaccholidays.Text = Convert.ToString(
+				(float)sdesc.CharacterDescription.PTO / 100
+			);
 			this.tbpension.Text = sdesc.CharacterDescription.Pension.ToString();
 
 			//Career
-			this.tbcareervalue.Text = "0x"+Helper.HexString((uint)sdesc.CharacterDescription.Career);
+			this.tbcareervalue.Text =
+				"0x" + Helper.HexString((uint)sdesc.CharacterDescription.Career);
 			this.cbcareer.SelectedIndex = 0;
 			for (int i = 0; i < this.cbcareer.Items.Count; i++)
 			{
 				object o = this.cbcareer.Items[i];
 				Data.MetaData.Careers at;
-				if (o.GetType() == typeof(Alias)) at = (Data.LocalizedCareers)((uint)((Alias)o).Id);
-				else at = (Data.LocalizedCareers)o;
+				if (o.GetType() == typeof(Alias))
+					at = (Data.LocalizedCareers)((uint)((Alias)o).Id);
+				else
+					at = (Data.LocalizedCareers)o;
 
 				if (at == sdesc.CharacterDescription.Career)
 				{
@@ -945,8 +1644,10 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				object o = this.cbRetirement.Items[i];
 				Data.MetaData.Careers at;
-				if (o.GetType() == typeof(Alias)) at = (Data.LocalizedCareers)((uint)((Alias)o).Id);
-				else at = (Data.LocalizedCareers)o;
+				if (o.GetType() == typeof(Alias))
+					at = (Data.LocalizedCareers)((uint)((Alias)o).Id);
+				else
+					at = (Data.LocalizedCareers)o;
 
 				if (at == sdesc.CharacterDescription.Retired)
 				{
@@ -954,35 +1655,43 @@ namespace SimPe.PackedFiles.UserInterface
 					break;
 				}
 			}
-				
+
 			//school
 			this.cbschooltype.SelectedIndex = 0;
 			this.tbschooltype.Visible = true;
-			for(int i=0; i<this.cbschooltype.Items.Count; i++)
+			for (int i = 0; i < this.cbschooltype.Items.Count; i++)
 			{
 				Data.LocalizedSchoolType type;
 				object o = this.cbschooltype.Items[i];
-				if (o.GetType()==typeof(Alias)) type = (Data.LocalizedSchoolType)((uint)((Alias)o).Id); 
-				else type = (Data.LocalizedSchoolType)o;
-				
-				if (sdesc.CharacterDescription.SchoolType == (Data.MetaData.SchoolTypes)type) 
+				if (o.GetType() == typeof(Alias))
+					type = (Data.LocalizedSchoolType)((uint)((Alias)o).Id);
+				else
+					type = (Data.LocalizedSchoolType)o;
+
+				if (
+					sdesc.CharacterDescription.SchoolType
+					== (Data.MetaData.SchoolTypes)type
+				)
 				{
 					this.cbschooltype.SelectedIndex = i;
 					break;
 				}
 			}
 
-			this.tbschooltype.Text = "0x"+Helper.HexString((uint)sdesc.CharacterDescription.SchoolType);
+			this.tbschooltype.Text =
+				"0x" + Helper.HexString((uint)sdesc.CharacterDescription.SchoolType);
 
 			//grades and school
 			this.cbgrade.SelectedIndex = 0;
-			for(int i=0; i<this.cbgrade.Items.Count; i++)
+			for (int i = 0; i < this.cbgrade.Items.Count; i++)
 			{
 				Data.MetaData.Grades grade;
 				object o = this.cbgrade.Items[i];
-				if (o.GetType()==typeof(Alias)) grade = (Data.LocalizedGrades)((uint)((Alias)o).Id); 
-				else grade = (Data.LocalizedGrades)o;
-				if (sdesc.CharacterDescription.Grade == (Data.MetaData.Grades)grade) 
+				if (o.GetType() == typeof(Alias))
+					grade = (Data.LocalizedGrades)((uint)((Alias)o).Id);
+				else
+					grade = (Data.LocalizedGrades)o;
+				if (sdesc.CharacterDescription.Grade == (Data.MetaData.Grades)grade)
 				{
 					this.cbgrade.SelectedIndex = i;
 					break;
@@ -991,12 +1700,20 @@ namespace SimPe.PackedFiles.UserInterface
 			//Aspiration
 			this.pbAspBliz.Value = sdesc.CharacterDescription.BlizLifelinePoints;
 			this.pbAspCur.Value = sdesc.CharacterDescription.LifelinePoints;
-			SelectAspiration(cbaspiration, sdesc.Freetime.PrimaryAspiration);					
-			this.tblifelinescore.Text = sdesc.CharacterDescription.LifelineScore.ToString();
+			SelectAspiration(cbaspiration, sdesc.Freetime.PrimaryAspiration);
+			this.tblifelinescore.Text =
+				sdesc.CharacterDescription.LifelineScore.ToString();
 			this.pnCareer.BackgroundImage = pnimage;
-			if ((int)sdesc.Version >= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Freetime && !SimPe.Helper.WindowsRegistry.AllowChangeOfSecondaryAspiration)
-				this.cbaspiration.Enabled = sdesc.Freetime.SecondaryAspiration == MetaData.AspirationTypes.Nothing;
-			else this.cbaspiration.Enabled = true;
+			if (
+				(int)sdesc.Version
+					>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Freetime
+				&& !SimPe.Helper.WindowsRegistry.AllowChangeOfSecondaryAspiration
+			)
+				this.cbaspiration.Enabled =
+					sdesc.Freetime.SecondaryAspiration
+					== MetaData.AspirationTypes.Nothing;
+			else
+				this.cbaspiration.Enabled = true;
 		}
 
 		void RefreshInterests(Wrapper.ExtSDesc sdesc)
@@ -1005,7 +1722,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.pbCrime.Value = sdesc.Interests.Crime;
 			this.pbCulture.Value = sdesc.Interests.Culture;
 			this.pbEntertainment.Value = sdesc.Interests.Entertainment;
-			this.pbEnvironment.Value = sdesc.Interests.Environment; 
+			this.pbEnvironment.Value = sdesc.Interests.Environment;
 			this.pbFashion.Value = sdesc.Interests.Fashion;
 			this.pbFood.Value = sdesc.Interests.Food;
 			this.pbHealth.Value = sdesc.Interests.Health;
@@ -1014,7 +1731,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.pbPolitics.Value = sdesc.Interests.Politics;
 			this.pbSchool.Value = sdesc.Interests.School;
 			this.pbSciFi.Value = sdesc.Interests.Scifi;
-			this.pbSports.Value = sdesc.Interests.Sports ;
+			this.pbSports.Value = sdesc.Interests.Sports;
 			this.pbToys.Value = sdesc.Interests.Toys;
 			this.pbTravel.Value = sdesc.Interests.Travel;
 			this.pbWeather.Value = sdesc.Interests.Weather;
@@ -1035,8 +1752,9 @@ namespace SimPe.PackedFiles.UserInterface
 
 		void RefreshCharcter(Wrapper.ExtSDesc sdesc)
 		{
-			
-			this.cbzodiac.SelectedIndex = ((ushort)sdesc.CharacterDescription.ZodiacSign-1);
+			this.cbzodiac.SelectedIndex = (
+				(ushort)sdesc.CharacterDescription.ZodiacSign - 1
+			);
 
 			//Character
 			this.pbNeat.Value = sdesc.Character.Neat;
@@ -1059,32 +1777,35 @@ namespace SimPe.PackedFiles.UserInterface
 		#endregion
 
 		private void Activate_biMax(object sender, System.EventArgs e)
-		{			
+		{
 			if (this.pnSkill.Visible)
 			{
 				intern = true;
 				foreach (Control c in pnSkill.Controls)
 				{
-					if (c == this.pbFat) 
+					if (c == this.pbFat)
 					{
 						((LabeledProgressBar)c).Value = 0;
-					} 
+					}
 					else if (c is LabeledProgressBar && c.Visible == true)
 					{
-						((LabeledProgressBar)c).Value = ((LabeledProgressBar)c).Maximum-1;
+						((LabeledProgressBar)c).Value =
+							((LabeledProgressBar)c).Maximum - 1;
 					}
 				}
-				intern = false;	this.ChangedSkill(null, null);
-			} 
-			else if(this.pnChar.Visible) 
+				intern = false;
+				this.ChangedSkill(null, null);
+			}
+			else if (this.pnChar.Visible)
 			{
 				intern = true;
 				foreach (Control c in this.pnHumanChar.Controls)
 					if (c is LabeledProgressBar)
 						((LabeledProgressBar)c).Value = ((LabeledProgressBar)c).Maximum;
-				intern = false;	this.ChangedChar(null, null);
+				intern = false;
+				this.ChangedChar(null, null);
 			}
-			else if(this.pnInt.Visible) 
+			else if (this.pnInt.Visible)
 			{
 				intern = true;
 				foreach (Control c in this.pnPetInt.Controls)
@@ -1093,28 +1814,28 @@ namespace SimPe.PackedFiles.UserInterface
 				foreach (Control c in this.pnSimInt.Controls)
 					if (c is LabeledProgressBar)
 						((LabeledProgressBar)c).Value = ((LabeledProgressBar)c).Maximum;
-				intern = false;	this.ChangedInt(null, null);
-			} 
+				intern = false;
+				this.ChangedInt(null, null);
+			}
 			else if (this.pnRel.Visible)
 			{
 				int index = -1;
-				if (lv.SelectedIndices.Count>0)
+				if (lv.SelectedIndices.Count > 0)
 					index = lv.SelectedIndices[0];
 				foreach (SteepValley.Windows.Forms.XPListViewItem lvi in lv.Items)
 				{
-					
-					if (lvi.GroupIndex!=1) 
+					if (lvi.GroupIndex != 1)
 					{
 						lvi.Selected = true;
 						lv_SelectedSimChanged(lv, null, null);
-						if (this.srcRel.Srel!=null) 
+						if (this.srcRel.Srel != null)
 						{
 							srcRel.Srel.Longterm = 100;
 							srcRel.Srel.Shortterm = 100;
 							srcRel.Srel.Changed = true;
 						}
 
-						if (this.dstRel.Srel!=null) 
+						if (this.dstRel.Srel != null)
 						{
 							dstRel.Srel.Longterm = 100;
 							dstRel.Srel.Shortterm = 100;
@@ -1122,8 +1843,10 @@ namespace SimPe.PackedFiles.UserInterface
 						}
 					}
 				}
-				if (index>=0) lv.Items[index].Selected = true;
-				else if (lv.Items.Count>0) lv.Items[0].Selected= true;
+				if (index >= 0)
+					lv.Items[index].Selected = true;
+				else if (lv.Items.Count > 0)
+					lv.Items[0].Selected = true;
 			}
 			else if (this.pnEP9.Visible)
 			{
@@ -1134,61 +1857,84 @@ namespace SimPe.PackedFiles.UserInterface
 		}
 
 		private void Activate_biRand(object sender, System.EventArgs e)
-		{			
+		{
 			Random rnd = new Random();
 			if (this.pnSkill.Visible)
 			{
 				intern = true;
-				foreach (Control c in pnSkill.Controls)	
+				foreach (Control c in pnSkill.Controls)
 					if (c is LabeledProgressBar)
-						((LabeledProgressBar)c).Value = rnd.Next(((LabeledProgressBar)c).Maximum);
-				
-				intern = false;	this.ChangedSkill(null, null);
-			} 
-			else if(this.pnChar.Visible)
+						((LabeledProgressBar)c).Value = rnd.Next(
+							((LabeledProgressBar)c).Maximum
+						);
+
+				intern = false;
+				this.ChangedSkill(null, null);
+			}
+			else if (this.pnChar.Visible)
 			{
 				intern = true;
 				foreach (Control c in pnHumanChar.Controls)
 					if (c is LabeledProgressBar)
-						((LabeledProgressBar)c).Value = rnd.Next(((LabeledProgressBar)c).Maximum);
-				intern = false;	this.ChangedSkill(null, null);
+						((LabeledProgressBar)c).Value = rnd.Next(
+							((LabeledProgressBar)c).Maximum
+						);
+				intern = false;
+				this.ChangedSkill(null, null);
 			}
-			else if(this.pnInt.Visible) 
+			else if (this.pnInt.Visible)
 			{
 				intern = true;
 				foreach (Control c in pnPetInt.Controls)
 					if (c is LabeledProgressBar)
-						((LabeledProgressBar)c).Value = rnd.Next(((LabeledProgressBar)c).Maximum);
+						((LabeledProgressBar)c).Value = rnd.Next(
+							((LabeledProgressBar)c).Maximum
+						);
 				foreach (Control c in pnSimInt.Controls)
 					if (c is LabeledProgressBar)
-						((LabeledProgressBar)c).Value = rnd.Next(((LabeledProgressBar)c).Maximum);
-				intern = false;	this.ChangedSkill(null, null);
+						((LabeledProgressBar)c).Value = rnd.Next(
+							((LabeledProgressBar)c).Maximum
+						);
+				intern = false;
+				this.ChangedSkill(null, null);
 			}
 			else if (this.pnRel.Visible)
 			{
 				foreach (SteepValley.Windows.Forms.XPListViewItem lvi in lv.Items)
 				{
-					
-					if (lvi.GroupIndex!=1) 
+					if (lvi.GroupIndex != 1)
 					{
 						lvi.Selected = true;
-						int baseval = rnd.Next(200)-100;
-						if (this.srcRel.Srel!=null) 
+						int baseval = rnd.Next(200) - 100;
+						if (this.srcRel.Srel != null)
 						{
-							srcRel.Srel.Longterm = Math.Max(-100, Math.Min(100, baseval + rnd.Next(40)-20));
-							srcRel.Srel.Shortterm = Math.Max(-100, Math.Min(100, baseval + rnd.Next(40)-20));
+							srcRel.Srel.Longterm = Math.Max(
+								-100,
+								Math.Min(100, baseval + rnd.Next(40) - 20)
+							);
+							srcRel.Srel.Shortterm = Math.Max(
+								-100,
+								Math.Min(100, baseval + rnd.Next(40) - 20)
+							);
 							srcRel.Srel.Changed = true;
 						}
 
-						if (this.dstRel.Srel!=null) 
+						if (this.dstRel.Srel != null)
 						{
-							dstRel.Srel.Longterm = Math.Max(-100, Math.Min(100, baseval + rnd.Next(40)-20));
-							dstRel.Srel.Shortterm = Math.Max(-100, Math.Min(100, baseval + rnd.Next(40)-20));
+							dstRel.Srel.Longterm = Math.Max(
+								-100,
+								Math.Min(100, baseval + rnd.Next(40) - 20)
+							);
+							dstRel.Srel.Shortterm = Math.Max(
+								-100,
+								Math.Min(100, baseval + rnd.Next(40) - 20)
+							);
 							dstRel.Srel.Changed = true;
 						}
 					}
 				}
-				if (lv.Items.Count>0) lv.Items[0].Selected= true;
+				if (lv.Items.Count > 0)
+					lv.Items[0].Selected = true;
 			}
 		}
 
@@ -1199,22 +1945,27 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void cbmajor_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if (cbmajor.SelectedIndex<0) return;
+			if (cbmajor.SelectedIndex < 0)
+				return;
 			object o = cbmajor.Items[cbmajor.SelectedIndex];
 			Data.Majors v;
-			if (o.GetType()==typeof(Data.Alias)) v = (Data.Majors)((Data.Alias)o).Id; 
-			else v = (Data.Majors)o;
-			
-			if ( v == Data.Majors.Unknown) return;
+			if (o.GetType() == typeof(Data.Alias))
+				v = (Data.Majors)((Data.Alias)o).Id;
+			else
+				v = (Data.Majors)o;
 
-			tbmajor.Text = "0x"+Helper.HexString((uint)v);
+			if (v == Data.Majors.Unknown)
+				return;
+
+			tbmajor.Text = "0x" + Helper.HexString((uint)v);
 		}
 
 		private void cbcareer_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if (cbcareer.SelectedIndex<0) return;
+			if (cbcareer.SelectedIndex < 0)
+				return;
 			object o = cbcareer.Items[cbcareer.SelectedIndex];
-			if (o.GetType()!=typeof(Data.Alias)) 
+			if (o.GetType() != typeof(Data.Alias))
 			{
 				Data.MetaData.Careers career = (Data.LocalizedCareers)o;
 				if (career != Data.MetaData.Careers.Unknown)
@@ -1222,17 +1973,22 @@ namespace SimPe.PackedFiles.UserInterface
 					tbcareervalue.Text = "0x" + Helper.HexString((uint)career);
 				}
 			}
-			else 
+			else
 			{
 				Data.Alias a = (Data.Alias)o;
-				tbcareervalue.Text = "0x"+Helper.HexString((uint)a.Id);
+				tbcareervalue.Text = "0x" + Helper.HexString((uint)a.Id);
 			}
 		}
 
-		private void cbRetirement_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void cbRetirement_SelectedIndexChanged(
+			object sender,
+			System.EventArgs e
+		)
 		{
-			if (intern) return;
-			if (cbRetirement.SelectedIndex < 0) return;
+			if (intern)
+				return;
+			if (cbRetirement.SelectedIndex < 0)
+				return;
 			uint rec = 0;
 			object o = cbRetirement.Items[cbRetirement.SelectedIndex];
 			if (o.GetType() != typeof(Data.Alias))
@@ -1249,22 +2005,26 @@ namespace SimPe.PackedFiles.UserInterface
 			Sdesc.CharacterDescription.Retired = (SimPe.Data.MetaData.Careers)rec;
 		}
 
-		private void cbschooltype_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void cbschooltype_SelectedIndexChanged(
+			object sender,
+			System.EventArgs e
+		)
 		{
-			if (cbschooltype.SelectedIndex<0) return;
+			if (cbschooltype.SelectedIndex < 0)
+				return;
 			object o = cbschooltype.Items[cbschooltype.SelectedIndex];
-			if (o.GetType()!=typeof(Data.Alias)) 
+			if (o.GetType() != typeof(Data.Alias))
 			{
 				Data.MetaData.SchoolTypes st = (Data.LocalizedSchoolType)o;
-				if (st != Data.MetaData.SchoolTypes.Unknown) 
+				if (st != Data.MetaData.SchoolTypes.Unknown)
 				{
-					tbschooltype.Text = "0x"+Helper.HexString((uint)st);
+					tbschooltype.Text = "0x" + Helper.HexString((uint)st);
 				}
-			} 
-			else 
+			}
+			else
 			{
 				Data.Alias a = (Data.Alias)o;
-				tbschooltype.Text = "0x"+Helper.HexString((uint)a.Id);
+				tbschooltype.Text = "0x" + Helper.HexString((uint)a.Id);
 			}
 		}
 
@@ -1275,7 +2035,12 @@ namespace SimPe.PackedFiles.UserInterface
 			SimPe.PackedFiles.Wrapper.SimDNA sdna;
 			Random slt = new Random();
 			uint booty = 0;
-			Interfaces.Files.IPackedFileDescriptor pfd = Sdesc.Package.NewDescriptor(Data.MetaData.SDNA, Sdesc.FileDescriptor.SubType, Sdesc.FileDescriptor.Group, Sdesc.FileDescriptor.Instance);
+			Interfaces.Files.IPackedFileDescriptor pfd = Sdesc.Package.NewDescriptor(
+				Data.MetaData.SDNA,
+				Sdesc.FileDescriptor.SubType,
+				Sdesc.FileDescriptor.Group,
+				Sdesc.FileDescriptor.Instance
+			);
 			pfd = Sdesc.Package.FindFile(pfd);
 			if (pfd != null)
 			{
@@ -1283,7 +2048,8 @@ namespace SimPe.PackedFiles.UserInterface
 				sdna.ProcessData(pfd, Sdesc.Package, true);
 				booty = SimPe.Data.MetaData.GetBodyShapeid(sdna.Dominant.Skintone);
 			}
-			else booty = 0;
+			else
+				booty = 0;
 
 			Sdesc.Interests.Animals = (ushort)slt.Next(400, 600);
 			Sdesc.Interests.Crime = (ushort)slt.Next(400, 600);
@@ -1355,7 +2121,8 @@ namespace SimPe.PackedFiles.UserInterface
 			Sdesc.Nightlife.AttractionTurnOffs2 = 0;
 			Sdesc.Nightlife.AttractionTurnOffs3 = 0;
 
-			if (Sdesc.FamilyInstance > 32512) Sdesc.CharacterDescription.PersonFlags1.WantHistory = true;
+			if (Sdesc.FamilyInstance > 32512)
+				Sdesc.CharacterDescription.PersonFlags1.WantHistory = true;
 
 			RefreshSkills(Sdesc);
 			RefreshCharcter(Sdesc);
@@ -1370,46 +2137,89 @@ namespace SimPe.PackedFiles.UserInterface
 		#region Changing Data
 		protected bool InternalChange
 		{
-			get {return intern;}
-			set {intern = value;}
+			get { return intern; }
+			set { intern = value; }
 		}
 
 		private void ChangedId(object sender, System.EventArgs e)
 		{
-			if (intern) return;
+			if (intern)
+				return;
 			intern = true;
-			try 
+			try
 			{
 				Sdesc.SimId = Helper.StringToUInt32(this.tbsim.Text, Sdesc.SimId, 16);
-				Sdesc.FamilyInstance = Helper.StringToUInt16(this.tbfaminst.Text, Sdesc.FamilyInstance, 16);
-				Sdesc.Instance = Helper.StringToUInt16(this.tbsinstance.Text, Sdesc.Instance, 16);
+				Sdesc.FamilyInstance = Helper.StringToUInt16(
+					this.tbfaminst.Text,
+					Sdesc.FamilyInstance,
+					16
+				);
+				Sdesc.Instance = Helper.StringToUInt16(
+					this.tbsinstance.Text,
+					Sdesc.Instance,
+					16
+				);
 
-				Sdesc.CharacterDescription.Age = Helper.StringToUInt16(this.tbage.Text, Sdesc.CharacterDescription.Age, 10);
-				if (Sdesc.SimName!=tbsimdescname.Text) Sdesc.SimName = this.tbsimdescname.Text;
-				if (Sdesc.SimFamilyName!=tbsimdescfamname.Text) Sdesc.SimFamilyName = this.tbsimdescfamname.Text;
+				Sdesc.CharacterDescription.Age = Helper.StringToUInt16(
+					this.tbage.Text,
+					Sdesc.CharacterDescription.Age,
+					10
+				);
+				if (Sdesc.SimName != tbsimdescname.Text)
+					Sdesc.SimName = this.tbsimdescname.Text;
+				if (Sdesc.SimFamilyName != tbsimdescfamname.Text)
+					Sdesc.SimFamilyName = this.tbsimdescfamname.Text;
 
 				this.tbsim.ReadOnly = !UserVerification.HaveUserId;
 
 				//Lifesection
-				Sdesc.CharacterDescription.LifeSection = (Data.LocalizedLifeSections)this.cblifesection.SelectedItem;
+				Sdesc.CharacterDescription.LifeSection = (Data.LocalizedLifeSections)
+					this.cblifesection.SelectedItem;
 
-				if (this.rbfemale.Checked) Sdesc.CharacterDescription.Gender = Data.MetaData.Gender.Female;
-				else Sdesc.CharacterDescription.Gender = Data.MetaData.Gender.Male;
-				Sdesc.Nightlife.Species = (SimPe.PackedFiles.Wrapper.SdscNightlife.SpeciesType)cbSpecies.SelectedValue;
+				if (this.rbfemale.Checked)
+					Sdesc.CharacterDescription.Gender = Data.MetaData.Gender.Female;
+				else
+					Sdesc.CharacterDescription.Gender = Data.MetaData.Gender.Male;
+				Sdesc.Nightlife.Species =
+					(SimPe.PackedFiles.Wrapper.SdscNightlife.SpeciesType)
+						cbSpecies.SelectedValue;
 
-				if ((int)Sdesc.Version == (int)SimPe.PackedFiles.Wrapper.SDescVersions.Castaway && Sdesc.Castaway.Subspecies > 0)
+				if (
+					(int)Sdesc.Version
+						== (int)SimPe.PackedFiles.Wrapper.SDescVersions.Castaway
+					&& Sdesc.Castaway.Subspecies > 0
+				)
 				{
-					if (Sdesc.Castaway.Subspecies == 2) { this.lbsubspec.Text = "Sub Species: Orang-utan"; this.lbsubspec.Visible = true; }
-					if (Sdesc.Castaway.Subspecies == 1 && (int)Sdesc.Nightlife.Species == 3) { this.lbsubspec.Text = "Sub Species: Leopard"; this.lbsubspec.Visible = true; }
-					if (Sdesc.Castaway.Subspecies == 1 && (int)Sdesc.Nightlife.Species < 3) { this.lbsubspec.Text = "Sub Species: Wild Dog"; this.lbsubspec.Visible = true; }
+					if (Sdesc.Castaway.Subspecies == 2)
+					{
+						this.lbsubspec.Text = "Sub Species: Orang-utan";
+						this.lbsubspec.Visible = true;
+					}
+					if (
+						Sdesc.Castaway.Subspecies == 1
+						&& (int)Sdesc.Nightlife.Species == 3
+					)
+					{
+						this.lbsubspec.Text = "Sub Species: Leopard";
+						this.lbsubspec.Visible = true;
+					}
+					if (
+						Sdesc.Castaway.Subspecies == 1
+						&& (int)Sdesc.Nightlife.Species < 3
+					)
+					{
+						this.lbsubspec.Text = "Sub Species: Wild Dog";
+						this.lbsubspec.Visible = true;
+					}
 				}
-				else this.lbsubspec.Visible = false;
+				else
+					this.lbsubspec.Visible = false;
 
 				Sdesc.Changed = true;
 
 				//if (biEP9.Enabled) RefreshEP9(Sdesc);
 			}
-			finally 
+			finally
 			{
 				intern = false;
 			}
@@ -1417,13 +2227,17 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void cbservice_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if (intern) return;
+			if (intern)
+				return;
 			intern = true;
 			try
 			{
-				Sdesc.CharacterDescription.NPCType = (ushort)(Data.LocalizedServiceTypes)this.cbservice.SelectedItem;
-				this.tbnpc.Text = "0x" + Helper.HexString(Sdesc.CharacterDescription.NPCType);
-				if (this.btOriGuid.Enabled) this.btOriGuid.Visible = true;
+				Sdesc.CharacterDescription.NPCType = (ushort)
+					(Data.LocalizedServiceTypes)this.cbservice.SelectedItem;
+				this.tbnpc.Text =
+					"0x" + Helper.HexString(Sdesc.CharacterDescription.NPCType);
+				if (this.btOriGuid.Enabled)
+					this.btOriGuid.Visible = true;
 				Sdesc.Changed = true;
 			}
 			finally
@@ -1434,12 +2248,11 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void ChangedRel(object sender, System.EventArgs e)
 		{
-			if (intern) return;
+			if (intern)
+				return;
 			intern = true;
-			try 
-			{
-			} 
-			finally 
+			try { }
+			finally
 			{
 				intern = false;
 			}
@@ -1447,9 +2260,10 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void ChangedInt(object sender, System.EventArgs e)
 		{
-			if (intern) return;
+			if (intern)
+				return;
 			intern = true;
-			try 
+			try
 			{
 				if (IsHumanoid())
 				{
@@ -1486,8 +2300,8 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 
 				Sdesc.Changed = true;
-			} 
-			finally 
+			}
+			finally
 			{
 				intern = false;
 			}
@@ -1495,36 +2309,65 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void ChangedCareer(object sender, System.EventArgs e)
 		{
-			if (intern) return;
+			if (intern)
+				return;
 			intern = true;
-			try 
+			try
 			{
-				Sdesc.CharacterDescription.CareerLevel = (ushort)this.pbCareerLevel.Value;
-				Sdesc.CharacterDescription.CareerPerformance = (short)this.pbCareerPerformance.Value;
-				Sdesc.CharacterDescription.RetiredLevel = (ushort)this.lpRetirement.Value;
-				Sdesc.CharacterDescription.Pension = Convert.ToUInt16(this.tbpension.Text);
+				Sdesc.CharacterDescription.CareerLevel = (ushort)
+					this.pbCareerLevel.Value;
+				Sdesc.CharacterDescription.CareerPerformance = (short)
+					this.pbCareerPerformance.Value;
+				Sdesc.CharacterDescription.RetiredLevel = (ushort)
+					this.lpRetirement.Value;
+				Sdesc.CharacterDescription.Pension = Convert.ToUInt16(
+					this.tbpension.Text
+				);
 
 				//Career
-				Sdesc.CharacterDescription.Career = (SimPe.Data.MetaData.Careers)Helper.StringToUInt32(this.tbcareervalue.Text, (uint)Sdesc.CharacterDescription.Career, 16);
-				
+				Sdesc.CharacterDescription.Career = (SimPe.Data.MetaData.Careers)
+					Helper.StringToUInt32(
+						this.tbcareervalue.Text,
+						(uint)Sdesc.CharacterDescription.Career,
+						16
+					);
+
 				//school
-				Sdesc.CharacterDescription.SchoolType = (SimPe.Data.MetaData.SchoolTypes)Helper.StringToUInt32(this.tbschooltype.Text, (uint)Sdesc.CharacterDescription.SchoolType, 16);
+				Sdesc.CharacterDescription.SchoolType =
+					(SimPe.Data.MetaData.SchoolTypes)
+						Helper.StringToUInt32(
+							this.tbschooltype.Text,
+							(uint)Sdesc.CharacterDescription.SchoolType,
+							16
+						);
 
 				//grades and school
-				Sdesc.CharacterDescription.Grade = (Data.LocalizedGrades)cbgrade.SelectedItem;
+				Sdesc.CharacterDescription.Grade = (Data.LocalizedGrades)
+					cbgrade.SelectedItem;
 
 				// Accrued Hoildays
-				Sdesc.CharacterDescription.PTO = (ushort)(Helper.StringToFloat(this.tbaccholidays.Text, Sdesc.CharacterDescription.PTO) * 100);
+				Sdesc.CharacterDescription.PTO = (ushort)(
+					Helper.StringToFloat(
+						this.tbaccholidays.Text,
+						Sdesc.CharacterDescription.PTO
+					) * 100
+				);
 
 				//Aspiration
-				Sdesc.CharacterDescription.BlizLifelinePoints = (ushort)this.pbAspBliz.Value;
+				Sdesc.CharacterDescription.BlizLifelinePoints = (ushort)
+					this.pbAspBliz.Value;
 				Sdesc.CharacterDescription.LifelinePoints = (short)this.pbAspCur.Value;
-				Sdesc.Freetime.PrimaryAspiration = (LocalizedAspirationTypes)this.cbaspiration.SelectedItem;				
-				Sdesc.CharacterDescription.LifelineScore = Helper.StringToUInt32(this.tblifelinescore.Text, (uint)Sdesc.CharacterDescription.LifelineScore, 10);
+				Sdesc.Freetime.PrimaryAspiration = (LocalizedAspirationTypes)
+					this.cbaspiration.SelectedItem;
+				Sdesc.CharacterDescription.LifelineScore = Helper.StringToUInt32(
+					this.tblifelinescore.Text,
+					(uint)Sdesc.CharacterDescription.LifelineScore,
+					10
+				);
 
 				Sdesc.Changed = true;
-			} 
-			finally 
+			}
+			finally
 			{
 				intern = false;
 			}
@@ -1532,11 +2375,14 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void ChangedChar(object sender, System.EventArgs e)
 		{
-			if (intern) return;
+			if (intern)
+				return;
 			intern = true;
-			try 
+			try
 			{
-				Sdesc.CharacterDescription.ZodiacSign = (Data.MetaData.ZodiacSignes)(this.cbzodiac.SelectedIndex+1);
+				Sdesc.CharacterDescription.ZodiacSign = (Data.MetaData.ZodiacSignes)(
+					this.cbzodiac.SelectedIndex + 1
+				);
 
 				//Character
 				Sdesc.Character.Neat = (ushort)this.pbNeat.Value;
@@ -1556,8 +2402,8 @@ namespace SimPe.PackedFiles.UserInterface
 				Sdesc.Interests.MalePreference = (short)pbMan.Value;
 
 				Sdesc.Changed = true;
-			} 
-			finally 
+			}
+			finally
 			{
 				intern = false;
 			}
@@ -1565,14 +2411,30 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void ChangedSkill(object sender, System.EventArgs e) // Updated Dog skills only for T&A, A&N or Pet Story
 		{
-			if (intern) return;
+			if (intern)
+				return;
 			intern = true;
 			try
 			{
 				// should not be reading Nightlife.Species if version is below Pets !!
-				if ((int)Sdesc.Version >= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Pets)
+				if (
+					(int)Sdesc.Version
+					>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Pets
+				)
 				{
-					if (((int)Sdesc.Nightlife.Species == 1 || (int)Sdesc.Nightlife.Species == 2) && ((Helper.WindowsRegistry.ShowPetAbilities && Helper.WindowsRegistry.LoadOnlySimsStory == 0) || Helper.WindowsRegistry.LoadOnlySimsStory == 29))
+					if (
+						(
+							(int)Sdesc.Nightlife.Species == 1
+							|| (int)Sdesc.Nightlife.Species == 2
+						)
+						&& (
+							(
+								Helper.WindowsRegistry.ShowPetAbilities
+								&& Helper.WindowsRegistry.LoadOnlySimsStory == 0
+							)
+							|| Helper.WindowsRegistry.LoadOnlySimsStory == 29
+						)
+					)
 					{
 						Sdesc.Skills.Body = (ushort)this.pbPupbody.Value;
 						Sdesc.Skills.Charisma = (ushort)this.pbPupCharisma.Value;
@@ -1631,8 +2493,10 @@ namespace SimPe.PackedFiles.UserInterface
 							Sdesc.Skills.Logic = (ushort)this.pbLogic.Value;
 							Sdesc.Skills.Mechanical = (ushort)this.pbMech.Value;
 							Sdesc.Skills.Fatness = (ushort)this.pbFat.Value;
-							if (Helper.WindowsRegistry.ShowMoreSkills) Sdesc.Skills.Music = (ushort)this.pbMusic.Value;
-							if (Helper.WindowsRegistry.ShowMoreSkills) Sdesc.Skills.Art = (ushort)this.pbArty.Value;
+							if (Helper.WindowsRegistry.ShowMoreSkills)
+								Sdesc.Skills.Music = (ushort)this.pbMusic.Value;
+							if (Helper.WindowsRegistry.ShowMoreSkills)
+								Sdesc.Skills.Art = (ushort)this.pbArty.Value;
 							this.pbPupbody.Visible = false;
 							this.pbPupCharisma.Visible = false;
 							this.pbPupClean.Visible = false;
@@ -1647,10 +2511,20 @@ namespace SimPe.PackedFiles.UserInterface
 							this.pbReputate.Visible = true;
 							this.pbMech.Visible = true;
 							this.pbCooking.Visible = true;
-							this.pbMusic.Visible = Helper.WindowsRegistry.ShowMoreSkills;
+							this.pbMusic.Visible = Helper
+								.WindowsRegistry
+								.ShowMoreSkills;
 							this.pbArty.Visible = Helper.WindowsRegistry.ShowMoreSkills;
-							if ((int)Sdesc.Version >= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Apartment)
-							{ Sdesc.Apartment.Reputation = (short)this.pbReputate.Value; this.pbReputate.Visible = true; }
+							if (
+								(int)Sdesc.Version
+								>= (int)
+									SimPe.PackedFiles.Wrapper.SDescVersions.Apartment
+							)
+							{
+								Sdesc.Apartment.Reputation = (short)
+									this.pbReputate.Value;
+								this.pbReputate.Visible = true;
+							}
 							else
 								this.pbReputate.Visible = false;
 						}
@@ -1666,8 +2540,10 @@ namespace SimPe.PackedFiles.UserInterface
 					Sdesc.Skills.Logic = (ushort)this.pbLogic.Value;
 					Sdesc.Skills.Mechanical = (ushort)this.pbMech.Value;
 					Sdesc.Skills.Fatness = (ushort)this.pbFat.Value;
-					if (Helper.WindowsRegistry.ShowMoreSkills) Sdesc.Skills.Music = (ushort)this.pbMusic.Value;
-					if (Helper.WindowsRegistry.ShowMoreSkills) Sdesc.Skills.Art = (ushort)this.pbArty.Value;
+					if (Helper.WindowsRegistry.ShowMoreSkills)
+						Sdesc.Skills.Music = (ushort)this.pbMusic.Value;
+					if (Helper.WindowsRegistry.ShowMoreSkills)
+						Sdesc.Skills.Art = (ushort)this.pbArty.Value;
 					this.pbPupbody.Visible = false;
 					this.pbPupCharisma.Visible = false;
 					this.pbPupClean.Visible = false;
@@ -1696,44 +2572,120 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void ChangedOther(object sender, System.EventArgs e)
 		{
-			if (intern) return;
+			if (intern)
+				return;
 			intern = true;
-			try 
+			try
 			{
 				//ghostflags
 				Sdesc.CharacterDescription.GhostFlag.IsGhost = this.cbisghost.Checked;
-				Sdesc.CharacterDescription.GhostFlag.CanPassThroughObjects = this.cbpassobject.Checked;
-				Sdesc.CharacterDescription.GhostFlag.CanPassThroughWalls = this.cbpasswalls.Checked;
-				Sdesc.CharacterDescription.GhostFlag.CanPassThroughPeople = this.cbpasspeople.Checked;
-				Sdesc.CharacterDescription.GhostFlag.IgnoreTraversalCosts = this.cbignoretraversal.Checked;
+				Sdesc.CharacterDescription.GhostFlag.CanPassThroughObjects =
+					this.cbpassobject.Checked;
+				Sdesc.CharacterDescription.GhostFlag.CanPassThroughWalls =
+					this.cbpasswalls.Checked;
+				Sdesc.CharacterDescription.GhostFlag.CanPassThroughPeople =
+					this.cbpasspeople.Checked;
+				Sdesc.CharacterDescription.GhostFlag.IgnoreTraversalCosts =
+					this.cbignoretraversal.Checked;
 
 				//body flags
 				Sdesc.CharacterDescription.BodyFlag.Fit = this.cbfit.Checked;
 				Sdesc.CharacterDescription.BodyFlag.Fat = this.cbfat.Checked;
-				Sdesc.CharacterDescription.BodyFlag.PregnantFull = this.cbpregfull.Checked;
-				Sdesc.CharacterDescription.BodyFlag.PregnantHalf = this.cbpreghalf.Checked;
-				Sdesc.CharacterDescription.BodyFlag.PregnantHidden = this.cbpreginv.Checked;
+				Sdesc.CharacterDescription.BodyFlag.PregnantFull =
+					this.cbpregfull.Checked;
+				Sdesc.CharacterDescription.BodyFlag.PregnantHalf =
+					this.cbpreghalf.Checked;
+				Sdesc.CharacterDescription.BodyFlag.PregnantHidden =
+					this.cbpreginv.Checked;
 
 				//misc
-				Sdesc.CharacterDescription.PrevAgeDays = Helper.StringToUInt16(this.tbprevdays.Text, Sdesc.CharacterDescription.PrevAgeDays, 10);
-				Sdesc.CharacterDescription.AgeDuration = Helper.StringToUInt16(this.tbagedur.Text, Sdesc.CharacterDescription.AgeDuration, 10);
-				Sdesc.Unlinked = Helper.StringToUInt16(this.tbunlinked.Text, Sdesc.Unlinked, 16);
-				Sdesc.CharacterDescription.VoiceType = Helper.StringToUInt16(this.tbvoice.Text, Sdesc.CharacterDescription.VoiceType, 16);
-				Sdesc.CharacterDescription.AutonomyLevel = Helper.StringToUInt16(this.tbautonomy.Text, Sdesc.CharacterDescription.AutonomyLevel, 16);
-				Sdesc.CharacterDescription.NPCType = Helper.StringToUInt16(this.tbnpc.Text, Sdesc.CharacterDescription.NPCType, 16);
-				Sdesc.CharacterDescription.MotivesStatic = Helper.StringToUInt16(this.tbstatmot.Text, Sdesc.CharacterDescription.MotivesStatic, 16);
+				Sdesc.CharacterDescription.PrevAgeDays = Helper.StringToUInt16(
+					this.tbprevdays.Text,
+					Sdesc.CharacterDescription.PrevAgeDays,
+					10
+				);
+				Sdesc.CharacterDescription.AgeDuration = Helper.StringToUInt16(
+					this.tbagedur.Text,
+					Sdesc.CharacterDescription.AgeDuration,
+					10
+				);
+				Sdesc.Unlinked = Helper.StringToUInt16(
+					this.tbunlinked.Text,
+					Sdesc.Unlinked,
+					16
+				);
+				Sdesc.CharacterDescription.VoiceType = Helper.StringToUInt16(
+					this.tbvoice.Text,
+					Sdesc.CharacterDescription.VoiceType,
+					16
+				);
+				Sdesc.CharacterDescription.AutonomyLevel = Helper.StringToUInt16(
+					this.tbautonomy.Text,
+					Sdesc.CharacterDescription.AutonomyLevel,
+					16
+				);
+				Sdesc.CharacterDescription.NPCType = Helper.StringToUInt16(
+					this.tbnpc.Text,
+					Sdesc.CharacterDescription.NPCType,
+					16
+				);
+				Sdesc.CharacterDescription.MotivesStatic = Helper.StringToUInt16(
+					this.tbstatmot.Text,
+					Sdesc.CharacterDescription.MotivesStatic,
+					16
+				);
 
 				// motive decays
-				Sdesc.Decay.Hunger = Helper.StringToInt16(this.tbdecHunger.Text, Sdesc.Decay.Hunger, 10);
-				Sdesc.Decay.Comfort = Helper.StringToInt16(this.tbdecComfort.Text, Sdesc.Decay.Comfort, 10);
-				Sdesc.Decay.Bladder = Helper.StringToInt16(this.tbdecBladder.Text, Sdesc.Decay.Bladder, 10);
-				Sdesc.Decay.Energy = Helper.StringToInt16(this.tbdecEnergy.Text, Sdesc.Decay.Energy, 10);
-				Sdesc.Decay.Hygiene = Helper.StringToInt16(this.tbdecHygiene.Text, Sdesc.Decay.Hygiene, 10);
-				Sdesc.Decay.Social = Helper.StringToInt16(this.tbdecSocial.Text, Sdesc.Decay.Social, 10);
-				Sdesc.Decay.Shopping = Helper.StringToInt16(this.tbdecShop.Text, Sdesc.Decay.Shopping, 10);
-				Sdesc.Decay.Fun = Helper.StringToInt16(this.tbdecFun.Text, Sdesc.Decay.Fun, 10);
-				Sdesc.Decay.Amorous = Helper.StringToInt16(this.tbdecAmor.Text, Sdesc.Decay.Amorous, 10);
-				Sdesc.Decay.ScratchC = Helper.StringToInt16(this.tbdecScratc.Text, Sdesc.Decay.ScratchC, 10);
+				Sdesc.Decay.Hunger = Helper.StringToInt16(
+					this.tbdecHunger.Text,
+					Sdesc.Decay.Hunger,
+					10
+				);
+				Sdesc.Decay.Comfort = Helper.StringToInt16(
+					this.tbdecComfort.Text,
+					Sdesc.Decay.Comfort,
+					10
+				);
+				Sdesc.Decay.Bladder = Helper.StringToInt16(
+					this.tbdecBladder.Text,
+					Sdesc.Decay.Bladder,
+					10
+				);
+				Sdesc.Decay.Energy = Helper.StringToInt16(
+					this.tbdecEnergy.Text,
+					Sdesc.Decay.Energy,
+					10
+				);
+				Sdesc.Decay.Hygiene = Helper.StringToInt16(
+					this.tbdecHygiene.Text,
+					Sdesc.Decay.Hygiene,
+					10
+				);
+				Sdesc.Decay.Social = Helper.StringToInt16(
+					this.tbdecSocial.Text,
+					Sdesc.Decay.Social,
+					10
+				);
+				Sdesc.Decay.Shopping = Helper.StringToInt16(
+					this.tbdecShop.Text,
+					Sdesc.Decay.Shopping,
+					10
+				);
+				Sdesc.Decay.Fun = Helper.StringToInt16(
+					this.tbdecFun.Text,
+					Sdesc.Decay.Fun,
+					10
+				);
+				Sdesc.Decay.Amorous = Helper.StringToInt16(
+					this.tbdecAmor.Text,
+					Sdesc.Decay.Amorous,
+					10
+				);
+				Sdesc.Decay.ScratchC = Helper.StringToInt16(
+					this.tbdecScratc.Text,
+					Sdesc.Decay.ScratchC,
+					10
+				);
 
 				//NPC Type
 				this.cbservice.SelectedIndex = 0;
@@ -1741,18 +2693,20 @@ namespace SimPe.PackedFiles.UserInterface
 				{
 					object o = this.cbservice.Items[i];
 					Data.MetaData.ServiceTypes at;
-					if (o.GetType() == typeof(Alias)) at = (Data.LocalizedServiceTypes)((uint)((Alias)o).Id);
-					else at = (Data.LocalizedServiceTypes)o;
+					if (o.GetType() == typeof(Alias))
+						at = (Data.LocalizedServiceTypes)((uint)((Alias)o).Id);
+					else
+						at = (Data.LocalizedServiceTypes)o;
 
 					if (at == Sdesc.CharacterDescription.ServiceTypes)
 					{
 						this.cbservice.SelectedIndex = i;
 						break;
 					}
-				}                
+				}
 				Sdesc.Changed = true;
-			} 
-			finally 
+			}
+			finally
 			{
 				intern = false;
 			}
@@ -1760,25 +2714,49 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void ChangedEP1(object sender, System.EventArgs e)
 		{
-			if (intern) return;
+			if (intern)
+				return;
 			intern = true;
-			try 
-			{				
-				Sdesc.University.Major = (Data.Majors)Helper.StringToUInt32(this.tbmajor.Text, (uint)Sdesc.University.Major, 16);						
-				
-				if (this.cboncampus.Checked) Sdesc.University.OnCampus=0x1;
-				else Sdesc.University.OnCampus=0x0;
+			try
+			{
+				Sdesc.University.Major = (Data.Majors)
+					Helper.StringToUInt32(
+						this.tbmajor.Text,
+						(uint)Sdesc.University.Major,
+						16
+					);
+
+				if (this.cboncampus.Checked)
+					Sdesc.University.OnCampus = 0x1;
+				else
+					Sdesc.University.OnCampus = 0x0;
 
 				Sdesc.University.Effort = (ushort)this.pbEffort.Value;
 				Sdesc.University.Grade = (ushort)this.pbLastGrade.Value;
 
 				Sdesc.University.Time = (ushort)this.pbUniTime.Value;
-				Sdesc.University.Influence = Helper.StringToUInt16(this.tbinfluence.Text, Sdesc.University.Influence, 10);
-				Sdesc.University.Semester = Helper.StringToUInt16(this.tbsemester.Text, Sdesc.University.Semester, 10);
-				if (!this.cbfreshman.Checked && !this.cbSopho.Checked && !this.cbJunior.Checked && !this.cbSenior.Checked)
+				Sdesc.University.Influence = Helper.StringToUInt16(
+					this.tbinfluence.Text,
+					Sdesc.University.Influence,
+					10
+				);
+				Sdesc.University.Semester = Helper.StringToUInt16(
+					this.tbsemester.Text,
+					Sdesc.University.Semester,
+					10
+				);
+				if (
+					!this.cbfreshman.Checked
+					&& !this.cbSopho.Checked
+					&& !this.cbJunior.Checked
+					&& !this.cbSenior.Checked
+				)
 				{
 					Sdesc.University.SemesterFlag.Freshman = true;
-					Sdesc.University.SemesterFlag.Sophomore = Sdesc.University.SemesterFlag.Junior = Sdesc.University.SemesterFlag.Senior = false;
+					Sdesc.University.SemesterFlag.Sophomore =
+						Sdesc.University.SemesterFlag.Junior =
+						Sdesc.University.SemesterFlag.Senior =
+							false;
 				}
 				else
 				{
@@ -1795,8 +2773,8 @@ namespace SimPe.PackedFiles.UserInterface
 				Sdesc.University.SemesterFlag.Expelled = this.cbexpelled.Checked;
 
 				Sdesc.Changed = true;
-			} 
-			finally 
+			}
+			finally
 			{
 				intern = false;
 			}
@@ -1804,11 +2782,15 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void Changedfreshman(object sender, System.EventArgs e)
 		{
-			if (intern) return;
+			if (intern)
+				return;
 			intern = true;
 			if (this.cbfreshman.Checked)
 			{
-				this.cbSopho.Checked = this.cbJunior.Checked = this.cbSenior.Checked = false;
+				this.cbSopho.Checked =
+					this.cbJunior.Checked =
+					this.cbSenior.Checked =
+						false;
 			}
 			intern = false;
 			ChangedEP1(sender, e);
@@ -1816,11 +2798,15 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void ChangedSopho(object sender, System.EventArgs e)
 		{
-			if (intern) return;
+			if (intern)
+				return;
 			intern = true;
 			if (this.cbSopho.Checked)
 			{
-				this.cbfreshman.Checked = this.cbJunior.Checked = this.cbSenior.Checked = false;
+				this.cbfreshman.Checked =
+					this.cbJunior.Checked =
+					this.cbSenior.Checked =
+						false;
 			}
 			intern = false;
 			ChangedEP1(sender, e);
@@ -1828,11 +2814,15 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void ChangedJunior(object sender, System.EventArgs e)
 		{
-			if (intern) return;
+			if (intern)
+				return;
 			intern = true;
 			if (this.cbJunior.Checked)
 			{
-				this.cbSopho.Checked = this.cbfreshman.Checked = this.cbSenior.Checked = false;
+				this.cbSopho.Checked =
+					this.cbfreshman.Checked =
+					this.cbSenior.Checked =
+						false;
 			}
 			intern = false;
 			ChangedEP1(sender, e);
@@ -1840,11 +2830,15 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void ChangedSenior(object sender, System.EventArgs e)
 		{
-			if (intern) return;
+			if (intern)
+				return;
 			intern = true;
 			if (this.cbSenior.Checked)
 			{
-				this.cbSopho.Checked = this.cbJunior.Checked = this.cbfreshman.Checked = false;
+				this.cbSopho.Checked =
+					this.cbJunior.Checked =
+					this.cbfreshman.Checked =
+						false;
 			}
 			intern = false;
 			ChangedEP1(sender, e);
@@ -1856,25 +2850,48 @@ namespace SimPe.PackedFiles.UserInterface
 			this.lbFixedRes.Text = SimOriGuid.FixResult();
 			this.lbFixedRes.Visible = true;
 			cbSpecies.SelectedValue = Sdesc.Nightlife.Species;
-			if ((int)Sdesc.Version == (int)SimPe.PackedFiles.Wrapper.SDescVersions.Castaway && Sdesc.Castaway.Subspecies > 0)
+			if (
+				(int)Sdesc.Version
+					== (int)SimPe.PackedFiles.Wrapper.SDescVersions.Castaway
+				&& Sdesc.Castaway.Subspecies > 0
+			)
 			{
-				if (Sdesc.Castaway.Subspecies == 2) { this.lbsubspec.Text = "Sub Species: Orang-utan"; this.lbsubspec.Visible = true; }
-				if (Sdesc.Castaway.Subspecies == 1 && (int)Sdesc.Nightlife.Species == 3) { this.lbsubspec.Text = "Sub Species: Leopard"; this.lbsubspec.Visible = true; }
-				if (Sdesc.Castaway.Subspecies == 1 && (int)Sdesc.Nightlife.Species < 3) { this.lbsubspec.Text = "Sub Species: Wild Dog"; this.lbsubspec.Visible = true; }
+				if (Sdesc.Castaway.Subspecies == 2)
+				{
+					this.lbsubspec.Text = "Sub Species: Orang-utan";
+					this.lbsubspec.Visible = true;
+				}
+				if (Sdesc.Castaway.Subspecies == 1 && (int)Sdesc.Nightlife.Species == 3)
+				{
+					this.lbsubspec.Text = "Sub Species: Leopard";
+					this.lbsubspec.Visible = true;
+				}
+				if (Sdesc.Castaway.Subspecies == 1 && (int)Sdesc.Nightlife.Species < 3)
+				{
+					this.lbsubspec.Text = "Sub Species: Wild Dog";
+					this.lbsubspec.Visible = true;
+				}
 			}
-			else this.lbsubspec.Visible = false;
+			else
+				this.lbsubspec.Visible = false;
 		}
 
 		private void cbdataflag1_CheckedChanged(object sender, EventArgs e)
 		{
-			if (intern) return;
+			if (intern)
+				return;
 			Sdesc.CharacterDescription.PersonFlags1.IsZombie = this.cbpfZomb.Checked;
-			Sdesc.CharacterDescription.PersonFlags1.PermaPlatinum = this.cbpfperma.Checked;
+			Sdesc.CharacterDescription.PersonFlags1.PermaPlatinum =
+				this.cbpfperma.Checked;
 			Sdesc.CharacterDescription.PersonFlags1.IsVampire = this.cbpfvamp.Checked;
-			Sdesc.CharacterDescription.PersonFlags1.VampireSmoke = this.cbpfvsmoke.Checked;
-			Sdesc.CharacterDescription.PersonFlags1.WantHistory = this.cbpfwants.Checked;
-			Sdesc.CharacterDescription.PersonFlags1.LycanCarrier = this.cbpflycar.Checked;
-			Sdesc.CharacterDescription.PersonFlags1.LycanActive = this.cbpflyact.Checked;
+			Sdesc.CharacterDescription.PersonFlags1.VampireSmoke =
+				this.cbpfvsmoke.Checked;
+			Sdesc.CharacterDescription.PersonFlags1.WantHistory =
+				this.cbpfwants.Checked;
+			Sdesc.CharacterDescription.PersonFlags1.LycanCarrier =
+				this.cbpflycar.Checked;
+			Sdesc.CharacterDescription.PersonFlags1.LycanActive =
+				this.cbpflyact.Checked;
 			Sdesc.CharacterDescription.PersonFlags1.IsRunaway = this.cbpfrunaw.Checked;
 			Sdesc.CharacterDescription.PersonFlags1.IsPlantsim = this.cbpfPlant.Checked;
 			Sdesc.CharacterDescription.PersonFlags1.IsBigfoot = this.cbpfBigf.Checked;
@@ -1882,14 +2899,20 @@ namespace SimPe.PackedFiles.UserInterface
 			Sdesc.CharacterDescription.PersonFlags1.IsRoomate = this.cbpfroomy.Checked;
 			Sdesc.Changed = true;
 		}
-		#endregion	
+		#endregion
 
 		#region More Menu
 		private void activate_miOpenScore(object sender, EventArgs e)
 		{
 			try
 			{
-				Interfaces.Files.IPackedFileDescriptor pfd = Sdesc.Package.NewDescriptor(0x3053CF74, Sdesc.FileDescriptor.Type, Sdesc.FileDescriptor.Group, Sdesc.FileDescriptor.Instance); //try a SCOR File
+				Interfaces.Files.IPackedFileDescriptor pfd =
+					Sdesc.Package.NewDescriptor(
+						0x3053CF74,
+						Sdesc.FileDescriptor.Type,
+						Sdesc.FileDescriptor.Group,
+						Sdesc.FileDescriptor.Instance
+					); //try a SCOR File
 				pfd = Sdesc.Package.FindFile(pfd);
 				SimPe.RemoteControl.OpenPackedFile(pfd, Sdesc.Package);
 			}
@@ -1906,20 +2929,21 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void Activate_biMore(object sender, System.EventArgs e)
 		{
-			if (biMore.Text=="More")
-				mbiLink.Show(this.toolBar1, new Point(443, toolBar1.Height-2));
-			else mbiLink.Show(this.toolBar1, new Point(507, toolBar1.Height-2));
+			if (biMore.Text == "More")
+				mbiLink.Show(this.toolBar1, new Point(443, toolBar1.Height - 2));
+			else
+				mbiLink.Show(this.toolBar1, new Point(507, toolBar1.Height - 2));
 		}
 
 		private void Activate_miRelink(object sender, System.EventArgs e)
 		{
-			this.tbsim.Text = "0x"+Helper.HexString(SimRelinkForm.Execute(Sdesc));
+			this.tbsim.Text = "0x" + Helper.HexString(SimRelinkForm.Execute(Sdesc));
 			this.btOriGuid.Visible = true;
 		}
 
 		private void Activate_miOpenCHar(object sender, System.EventArgs e)
 		{
-			try 
+			try
 			{
 				SimPe.RemoteControl.OpenPackage(Sdesc.CharacterFileName);
 			}
@@ -1934,25 +2958,32 @@ namespace SimPe.PackedFiles.UserInterface
 			try
 			{
 				uint inst = Convert.ToUInt32(this.tbfaminst.Text, 16);
-				Interfaces.Files.IPackedFileDescriptor pfd = Sdesc.Package.NewDescriptor(0x6C4F359D, Sdesc.FileDescriptor.SubType, Sdesc.FileDescriptor.Group, inst); //try a Collection File
+				Interfaces.Files.IPackedFileDescriptor pfd =
+					Sdesc.Package.NewDescriptor(
+						0x6C4F359D,
+						Sdesc.FileDescriptor.SubType,
+						Sdesc.FileDescriptor.Group,
+						inst
+					); //try a Collection File
 				pfd = Sdesc.Package.FindFile(pfd);
-				if (pfd != null) SimPe.RemoteControl.OpenPackedFile(pfd, Sdesc.Package);
+				if (pfd != null)
+					SimPe.RemoteControl.OpenPackedFile(pfd, Sdesc.Package);
 				/*
 				// this don't work and can never have worked, just opens character file
-				if (System.IO.File.Exists(Sdesc.CharacterFileName)) 
+				if (System.IO.File.Exists(Sdesc.CharacterFileName))
 				{
-					uint inst = Convert.ToUInt32(this.tbfaminst.Text, 16);					
+					uint inst = Convert.ToUInt32(this.tbfaminst.Text, 16);
 					SimPe.Packages.GeneratableFile fl = SimPe.Packages.GeneratableFile.LoadFromFile(Sdesc.CharacterFileName);
 
 					Interfaces.Files.IPackedFileDescriptor[] pfds = fl.FindFile(0xAC506764, 0, 0x1);
-					if (pfds.Length>0) 
+					if (pfds.Length>0)
 					{
-						SimPe.RemoteControl.OpenPackage(Sdesc.CharacterFileName);						
+						SimPe.RemoteControl.OpenPackage(Sdesc.CharacterFileName);
 						SimPe.RemoteControl.OpenPackedFile(pfds[0], fl);
 					}
 				}*/
-			} 
-			catch (Exception ex) 
+			}
+			catch (Exception ex)
 			{
 				Helper.ExceptionMessage(ex);
 			}
@@ -1960,14 +2991,20 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void Activate_miFamily(object sender, System.EventArgs e)
 		{
-			try 
+			try
 			{
 				uint inst = Convert.ToUInt32(this.tbfaminst.Text, 16);
-				Interfaces.Files.IPackedFileDescriptor pfd = Sdesc.Package.NewDescriptor(0x46414D49, Sdesc.FileDescriptor.SubType, Sdesc.FileDescriptor.Group, inst); //try a Fami File
+				Interfaces.Files.IPackedFileDescriptor pfd =
+					Sdesc.Package.NewDescriptor(
+						0x46414D49,
+						Sdesc.FileDescriptor.SubType,
+						Sdesc.FileDescriptor.Group,
+						inst
+					); //try a Fami File
 				pfd = Sdesc.Package.FindFile(pfd);
 				SimPe.RemoteControl.OpenPackedFile(pfd, Sdesc.Package);
-			} 
-			catch (Exception ex) 
+			}
+			catch (Exception ex)
 			{
 				Helper.ExceptionMessage(ex);
 			}
@@ -1975,14 +3012,20 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void Activate_miOpenWf(object sender, System.EventArgs e)
 		{
-			try 
+			try
 			{
 				//Open File
-				Interfaces.Files.IPackedFileDescriptor pfd = Sdesc.Package.NewDescriptor(0xCD95548E, Sdesc.FileDescriptor.SubType, Sdesc.FileDescriptor.Group, Sdesc.FileDescriptor.Instance); //try a W&f File
+				Interfaces.Files.IPackedFileDescriptor pfd =
+					Sdesc.Package.NewDescriptor(
+						0xCD95548E,
+						Sdesc.FileDescriptor.SubType,
+						Sdesc.FileDescriptor.Group,
+						Sdesc.FileDescriptor.Instance
+					); //try a W&f File
 				pfd = Sdesc.Package.FindFile(pfd);
 				SimPe.RemoteControl.OpenPackedFile(pfd, Sdesc.Package);
 			}
-			catch (Exception ex) 
+			catch (Exception ex)
 			{
 				Helper.ExceptionMessage(ex);
 			}
@@ -1990,17 +3033,30 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void Activate_miOpenMem(object sender, System.EventArgs e)
 		{
-			try 
+			try
 			{
 				//Open File
-				Interfaces.Files.IPackedFileDescriptor pfd = Sdesc.Package.NewDescriptor(0x4E474248, 0, Data.MetaData.LOCAL_GROUP, 1); //try the memory Resource
-				pfd = Sdesc.Package.FindFile(pfd);				
-				SimPe.RemoteControl.OpenPackedFile(pfd, Sdesc.Package);				
+				Interfaces.Files.IPackedFileDescriptor pfd =
+					Sdesc.Package.NewDescriptor(
+						0x4E474248,
+						0,
+						Data.MetaData.LOCAL_GROUP,
+						1
+					); //try the memory Resource
+				pfd = Sdesc.Package.FindFile(pfd);
+				SimPe.RemoteControl.OpenPackedFile(pfd, Sdesc.Package);
 
-				object[] data = new object[] {Sdesc.FileDescriptor.Instance, Data.NeighborhoodSlots.Sims}; 
-				SimPe.RemoteControl.AddMessage(this, new SimPe.RemoteControl.ControlEventArgs(0x4E474248, data));
+				object[] data = new object[]
+				{
+					Sdesc.FileDescriptor.Instance,
+					Data.NeighborhoodSlots.Sims,
+				};
+				SimPe.RemoteControl.AddMessage(
+					this,
+					new SimPe.RemoteControl.ControlEventArgs(0x4E474248, data)
+				);
 			}
-			catch (Exception ex) 
+			catch (Exception ex)
 			{
 				Helper.ExceptionMessage(ex);
 			}
@@ -2008,17 +3064,30 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void Activate_miOpenBadge(object sender, System.EventArgs e)
 		{
-			try 
+			try
 			{
 				//Open File
-				Interfaces.Files.IPackedFileDescriptor pfd = Sdesc.Package.NewDescriptor(0x4E474248, 0, Data.MetaData.LOCAL_GROUP, 1); //try the memory Resource
-				pfd = Sdesc.Package.FindFile(pfd);				
-				SimPe.RemoteControl.OpenPackedFile(pfd, Sdesc.Package);				
+				Interfaces.Files.IPackedFileDescriptor pfd =
+					Sdesc.Package.NewDescriptor(
+						0x4E474248,
+						0,
+						Data.MetaData.LOCAL_GROUP,
+						1
+					); //try the memory Resource
+				pfd = Sdesc.Package.FindFile(pfd);
+				SimPe.RemoteControl.OpenPackedFile(pfd, Sdesc.Package);
 
-				object[] data = new object[] {Sdesc.FileDescriptor.Instance, Data.NeighborhoodSlots.SimsIntern}; 
-				SimPe.RemoteControl.AddMessage(this, new SimPe.RemoteControl.ControlEventArgs(0x4E474248, data));
+				object[] data = new object[]
+				{
+					Sdesc.FileDescriptor.Instance,
+					Data.NeighborhoodSlots.SimsIntern,
+				};
+				SimPe.RemoteControl.AddMessage(
+					this,
+					new SimPe.RemoteControl.ControlEventArgs(0x4E474248, data)
+				);
 			}
-			catch (Exception ex) 
+			catch (Exception ex)
 			{
 				Helper.ExceptionMessage(ex);
 			}
@@ -2026,13 +3095,19 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void Activate_miOpenDNA(object sender, System.EventArgs e)
 		{
-			try 
+			try
 			{
-				Interfaces.Files.IPackedFileDescriptor pfd = Sdesc.Package.NewDescriptor(0xEBFEE33F, Sdesc.FileDescriptor.SubType, Sdesc.FileDescriptor.Group, Sdesc.FileDescriptor.Instance); //try a DNA File
+				Interfaces.Files.IPackedFileDescriptor pfd =
+					Sdesc.Package.NewDescriptor(
+						0xEBFEE33F,
+						Sdesc.FileDescriptor.SubType,
+						Sdesc.FileDescriptor.Group,
+						Sdesc.FileDescriptor.Instance
+					); //try a DNA File
 				pfd = Sdesc.Package.FindFile(pfd);
 				SimPe.RemoteControl.OpenPackedFile(pfd, Sdesc.Package);
-			} 
-			catch (Exception ex) 
+			}
+			catch (Exception ex)
 			{
 				Helper.ExceptionMessage(ex);
 			}
@@ -2041,23 +3116,29 @@ namespace SimPe.PackedFiles.UserInterface
 
 		#region Relations
 		SimPe.Interfaces.Files.IPackageFile lastpkg;
+
 		private void pnRel_VisibleChanged(object sender, System.EventArgs e)
 		{
-			if (pnRel.Visible) 
+			if (pnRel.Visible)
 			{
-				if (lastpkg==null) LoadRelList();
-				else if (!lastpkg.Equals(Sdesc.Package)) LoadRelList();
-				else if (!loadedRel) UpdateRelList();
-				
+				if (lastpkg == null)
+					LoadRelList();
+				else if (!lastpkg.Equals(Sdesc.Package))
+					LoadRelList();
+				else if (!loadedRel)
+					UpdateRelList();
+
 				lastpkg = Sdesc.Package;
 			}
-		}	
-	
+		}
+
 		void LoadRelList()
 		{
-			lv.Sim = Sdesc; 
-			if (Sdesc == null) lv.Package = null;
-			else lv.Package = Sdesc.Package;
+			lv.Sim = Sdesc;
+			if (Sdesc == null)
+				lv.Package = null;
+			else
+				lv.Package = Sdesc.Package;
 			ResetLabel();
 			loadedRel = true;
 		}
@@ -2068,20 +3149,26 @@ namespace SimPe.PackedFiles.UserInterface
 			lv.UpdateSimList();
 			loadedRel = true;
 		}
-		
+
 		void AddUnknownToRelList(ArrayList insts)
 		{
 			foreach (ushort inst in Sdesc.Relations.SimInstances)
 			{
 				if (!insts.Contains(inst))
 				{
-					PackedFiles.Wrapper.ExtSDesc sdesc = new SimPe.PackedFiles.Wrapper.ExtSDesc();
-					sdesc.FileDescriptor = Sdesc.Package.NewDescriptor(Data.MetaData.SIM_DESCRIPTION_FILE, 0, Sdesc.FileDescriptor.Group, inst);
+					PackedFiles.Wrapper.ExtSDesc sdesc =
+						new SimPe.PackedFiles.Wrapper.ExtSDesc();
+					sdesc.FileDescriptor = Sdesc.Package.NewDescriptor(
+						Data.MetaData.SIM_DESCRIPTION_FILE,
+						0,
+						Sdesc.FileDescriptor.Group,
+						inst
+					);
 					sdesc.Package = Sdesc.Package;
 					SteepValley.Windows.Forms.XPListViewItem lvi = lv.Add(sdesc);
-					lvi.GroupIndex=2;					
+					lvi.GroupIndex = 2;
 
-					lvi.Tag = sdesc;					
+					lvi.Tag = sdesc;
 				}
 			}
 		}
@@ -2096,118 +3183,180 @@ namespace SimPe.PackedFiles.UserInterface
 		void UpdateLabel()
 		{
 			Image img = null;
-			srcTb.HeaderText = srcRel.SourceSimName + " " + SimPe.Localization.GetString("towards") +" " +srcRel.TargetSimName;
-			if (srcRel.TargetSim==null)img  = null;
-			else  img = (Image)srcRel.Image;
-			if (img!=null) 
+			srcTb.HeaderText =
+				srcRel.SourceSimName
+				+ " "
+				+ SimPe.Localization.GetString("towards")
+				+ " "
+				+ srcRel.TargetSimName;
+			if (srcRel.TargetSim == null)
+				img = null;
+			else
+				img = (Image)srcRel.Image;
+			if (img != null)
 			{
 				//img = Ambertation.Drawing.GraphicRoutines.KnockoutImage(img, new Point(0,0), Color.Magenta);
-				img = Ambertation.Drawing.GraphicRoutines.ScaleImage(img, srcTb.IconSize.Width, srcTb.IconSize.Height, true);
+				img = Ambertation.Drawing.GraphicRoutines.ScaleImage(
+					img,
+					srcTb.IconSize.Width,
+					srcTb.IconSize.Height,
+					true
+				);
 			}
 			srcTb.Icon = img;
 
-			dstTb.HeaderText = dstRel.SourceSimName + " " + SimPe.Localization.GetString("towards") +" " +dstRel.TargetSimName;
-			if (dstRel.TargetSim==null) img = null;
-			else img = (Image)dstRel.Image.Clone();
-			if (img!=null) 
+			dstTb.HeaderText =
+				dstRel.SourceSimName
+				+ " "
+				+ SimPe.Localization.GetString("towards")
+				+ " "
+				+ dstRel.TargetSimName;
+			if (dstRel.TargetSim == null)
+				img = null;
+			else
+				img = (Image)dstRel.Image.Clone();
+			if (img != null)
 			{
 				//img = Ambertation.Drawing.GraphicRoutines.KnockoutImage(img, new Point(0,0), Color.Magenta);
-				img = Ambertation.Drawing.GraphicRoutines.ScaleImage(img, srcTb.IconSize.Width, srcTb.IconSize.Height, true);
+				img = Ambertation.Drawing.GraphicRoutines.ScaleImage(
+					img,
+					srcTb.IconSize.Width,
+					srcTb.IconSize.Height,
+					true
+				);
 			}
 			dstTb.Icon = img;
 		}
 
-		SimPe.PackedFiles.Wrapper.ExtSrel FindRelation(PackedFiles.Wrapper.ExtSDesc src, PackedFiles.Wrapper.ExtSDesc dst)
+		SimPe.PackedFiles.Wrapper.ExtSrel FindRelation(
+			PackedFiles.Wrapper.ExtSDesc src,
+			PackedFiles.Wrapper.ExtSDesc dst
+		)
 		{
 			return SimPe.PackedFiles.Wrapper.ExtSDesc.FindRelation(Sdesc, src, dst);
 		}
 
-		void DiplayRelation(PackedFiles.Wrapper.ExtSDesc src, PackedFiles.Wrapper.ExtSDesc dst, CommonSrel c)
+		void DiplayRelation(
+			PackedFiles.Wrapper.ExtSDesc src,
+			PackedFiles.Wrapper.ExtSDesc dst,
+			CommonSrel c
+		)
 		{
-			if (src.Equals(dst) && (c==dstRel || !Helper.WindowsRegistry.HiddenMode)) 
+			if (src.Equals(dst) && (c == dstRel || !Helper.WindowsRegistry.HiddenMode))
 			{
 				c.Srel = null;
-			} 
-			else 
+			}
+			else
 			{
-				SimPe.PackedFiles.Wrapper.ExtSrel srel = FindRelation(src, dst);			
+				SimPe.PackedFiles.Wrapper.ExtSrel srel = FindRelation(src, dst);
 				c.Srel = srel;
 				Sdesc.AddRelationToCache(srel);
 			}
 		}
 
-		void lv_SelectedSimChanged(object sender, Image thumb, SimPe.PackedFiles.Wrapper.SDesc sdesc)
+		void lv_SelectedSimChanged(
+			object sender,
+			Image thumb,
+			SimPe.PackedFiles.Wrapper.SDesc sdesc
+		)
 		{
 			SelectedSimRelationChanged(sender, null);
 		}
 
 		private void SelectedSimRelationChanged(object sender, System.EventArgs e)
 		{
-			if (lv.SelectedItems.Count!=1) return;
+			if (lv.SelectedItems.Count != 1)
+				return;
 
-			PackedFiles.Wrapper.ExtSDesc sdesc = (PackedFiles.Wrapper.ExtSDesc)lv.SelectedItems[0].Tag;
-			
+			PackedFiles.Wrapper.ExtSDesc sdesc = (PackedFiles.Wrapper.ExtSDesc)
+				lv.SelectedItems[0].Tag;
+
 			DiplayRelation(Sdesc, sdesc, srcRel);
 			DiplayRelation(sdesc, Sdesc, dstRel);
 			UpdateLabel();
 		}
-		
-		
 
 		private void miRel_BeforePopup(object sender, System.EventArgs e)
 		{
-			if (lv.SelectedItems.Count==1) 
+			if (lv.SelectedItems.Count == 1)
 			{
 				if (Helper.WindowsRegistry.HiddenMode)
-					this.miAddRelation.Enabled = ((SteepValley.Windows.Forms.XPListViewItem)lv.SelectedItems[0]).GroupIndex==1;
+					this.miAddRelation.Enabled =
+						(
+							(SteepValley.Windows.Forms.XPListViewItem)
+								lv.SelectedItems[0]
+						).GroupIndex == 1;
 				else
-					this.miAddRelation.Enabled = ((SteepValley.Windows.Forms.XPListViewItem)lv.SelectedItems[0]).GroupIndex==1 && !Sdesc.Equals(lv.SelectedItems[0].Tag);
+					this.miAddRelation.Enabled =
+						(
+							(SteepValley.Windows.Forms.XPListViewItem)
+								lv.SelectedItems[0]
+						).GroupIndex == 1
+						&& !Sdesc.Equals(lv.SelectedItems[0].Tag);
 
-				this.miRemRelation.Enabled = ((SteepValley.Windows.Forms.XPListViewItem)lv.SelectedItems[0]).GroupIndex!=1;
-			
-				string name = SimPe.Localization.GetString("AddRelationCaption").Replace("{name}", lv.SelectedItems[0].Text);
+				this.miRemRelation.Enabled =
+					(
+						(SteepValley.Windows.Forms.XPListViewItem)lv.SelectedItems[0]
+					).GroupIndex != 1;
+
+				string name = SimPe
+					.Localization.GetString("AddRelationCaption")
+					.Replace("{name}", lv.SelectedItems[0].Text);
 				this.miAddRelation.Text = name;
 
-				name = SimPe.Localization.GetString("RemoveRelationCaption").Replace("{name}", lv.SelectedItems[0].Text);
+				name = SimPe
+					.Localization.GetString("RemoveRelationCaption")
+					.Replace("{name}", lv.SelectedItems[0].Text);
 				this.miRemRelation.Text = name;
 
-				name = SimPe.Localization.GetString("Max Relation to this Sim").Replace("{name}", lv.SelectedItems[0].Text);
+				name = SimPe
+					.Localization.GetString("Max Relation to this Sim")
+					.Replace("{name}", lv.SelectedItems[0].Text);
 				this.mbiMaxThisRel.Text = name;
 				this.mbiMaxThisRel.Enabled = this.miRemRelation.Enabled;
 
 				this.mbiMaxKnownRel.Enabled = true;
-			} 
-			else 
+			}
+			else
 			{
 				this.miAddRelation.Enabled = false;
 				this.miRemRelation.Enabled = false;
 				this.mbiMaxThisRel.Enabled = false;
 				this.mbiMaxKnownRel.Enabled = true;
 
-				string name = SimPe.Localization.GetString("AddRelationCaption").Replace("{name}", SimPe.Localization.GetString("Unknown"));
+				string name = SimPe
+					.Localization.GetString("AddRelationCaption")
+					.Replace("{name}", SimPe.Localization.GetString("Unknown"));
 				this.miAddRelation.Text = name;
 
-				name = SimPe.Localization.GetString("RemoveRelationCaption").Replace("{name}", SimPe.Localization.GetString("Unknown"));
+				name = SimPe
+					.Localization.GetString("RemoveRelationCaption")
+					.Replace("{name}", SimPe.Localization.GetString("Unknown"));
 				this.miRemRelation.Text = name;
 			}
 		}
 
 		private void Activate_miAddRelation(object sender, System.EventArgs e)
 		{
-			if (lv.SelectedItems.Count!=1) return;
-			PackedFiles.Wrapper.ExtSDesc sdesc = (PackedFiles.Wrapper.ExtSDesc)lv.SelectedItems[0].Tag;
+			if (lv.SelectedItems.Count != 1)
+				return;
+			PackedFiles.Wrapper.ExtSDesc sdesc = (PackedFiles.Wrapper.ExtSDesc)
+				lv.SelectedItems[0].Tag;
 
 			SimPe.PackedFiles.Wrapper.ExtSrel srel = FindRelation(Sdesc, sdesc);
-			if (srel==null) srel = Sdesc.CreateRelation(sdesc);
+			if (srel == null)
+				srel = Sdesc.CreateRelation(sdesc);
 			Sdesc.AddRelationToCache(srel);
 			Sdesc.AddRelation(sdesc);
 
 			srel = FindRelation(sdesc, Sdesc);
-			if (srel==null) srel = sdesc.CreateRelation(Sdesc);
+			if (srel == null)
+				srel = sdesc.CreateRelation(Sdesc);
 			Sdesc.AddRelationToCache(srel);
 			sdesc.AddRelation(Sdesc);
 
-			((SteepValley.Windows.Forms.XPListViewItem)lv.SelectedItems[0]).GroupIndex=0;
+			((SteepValley.Windows.Forms.XPListViewItem)lv.SelectedItems[0]).GroupIndex =
+				0;
 			lv.EnsureVisible(lv.SelectedItems[0].Index);
 			lv.UpdateIcon();
 			SelectedSimRelationChanged(lv, null);
@@ -2215,24 +3364,34 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void Activate_miRemRelation(object sender, System.EventArgs e)
 		{
-			if (lv.SelectedItems.Count!=1) return;
-			PackedFiles.Wrapper.ExtSDesc sdesc = (PackedFiles.Wrapper.ExtSDesc)lv.SelectedItems[0].Tag;
+			if (lv.SelectedItems.Count != 1)
+				return;
+			PackedFiles.Wrapper.ExtSDesc sdesc = (PackedFiles.Wrapper.ExtSDesc)
+				lv.SelectedItems[0].Tag;
 
 			SimPe.PackedFiles.Wrapper.ExtSrel srel = FindRelation(Sdesc, sdesc);
-			if (srel!=null) Sdesc.RemoveRelationFromCache(srel);				
+			if (srel != null)
+				Sdesc.RemoveRelationFromCache(srel);
 			Sdesc.RemoveRelation(sdesc);
-			
 
 			srel = FindRelation(sdesc, Sdesc);
-			if (srel!=null) Sdesc.RemoveRelationFromCache(srel);
+			if (srel != null)
+				Sdesc.RemoveRelationFromCache(srel);
 			sdesc.RemoveRelation(Sdesc);
-			
 
-			if (((SteepValley.Windows.Forms.XPListViewItem)lv.SelectedItems[0]).GroupIndex==2)
-				lv.Items.Remove((SteepValley.Windows.Forms.XPListViewItem)lv.SelectedItems[0]);
-			else 			
-				((SteepValley.Windows.Forms.XPListViewItem)lv.SelectedItems[0]).GroupIndex=1;
-			
+			if (
+				(
+					(SteepValley.Windows.Forms.XPListViewItem)lv.SelectedItems[0]
+				).GroupIndex == 2
+			)
+				lv.Items.Remove(
+					(SteepValley.Windows.Forms.XPListViewItem)lv.SelectedItems[0]
+				);
+			else
+				(
+					(SteepValley.Windows.Forms.XPListViewItem)lv.SelectedItems[0]
+				).GroupIndex = 1;
+
 			lv.EnsureVisible(lv.SelectedItems[0].Index);
 			lv.UpdateIcon();
 			SelectedSimRelationChanged(lv, null);
@@ -2241,42 +3400,42 @@ namespace SimPe.PackedFiles.UserInterface
 		private void Activate_mbiMaxThisRel(object sender, System.EventArgs e)
 		{
 			foreach (SteepValley.Windows.Forms.XPListViewItem lvi in lv.SelectedItems)
-			{					
-				if (lvi.GroupIndex!=1) 
+			{
+				if (lvi.GroupIndex != 1)
 				{
-					if (this.srcRel.Srel!=null) 
+					if (this.srcRel.Srel != null)
 					{
 						srcRel.Srel.Longterm = 100;
 						srcRel.Srel.Shortterm = 100;
-						srcRel.Srel.Changed = true;						
+						srcRel.Srel.Changed = true;
 					}
 
-					if (this.dstRel.Srel!=null) 
-					{						
+					if (this.dstRel.Srel != null)
+					{
 						dstRel.Srel.Longterm = 100;
 						dstRel.Srel.Shortterm = 100;
-						dstRel.Srel.Changed = true;					
+						dstRel.Srel.Changed = true;
 					}
 				}
-			}	
-		
+			}
+
 			this.SelectedSimRelationChanged(lv, null);
 		}
 
 		private void Activate_mbiMaxKnownRel(object sender, System.EventArgs e)
 		{
 			int index = -1;
-			if (lv.SelectedIndices.Count>0)
+			if (lv.SelectedIndices.Count > 0)
 				index = lv.SelectedIndices[0];
 			foreach (SteepValley.Windows.Forms.XPListViewItem lvi in lv.Items)
-			{					
-				if (lvi.GroupIndex!=1) 
+			{
+				if (lvi.GroupIndex != 1)
 				{
 					lvi.Selected = true;
 					this.lv_SelectedSimChanged(lv, null, null);
-					if (this.srcRel.Srel!=null) 
+					if (this.srcRel.Srel != null)
 					{
-						if (srcRel.Srel.RelationState.IsKnown) 
+						if (srcRel.Srel.RelationState.IsKnown)
 						{
 							srcRel.Srel.Longterm = 100;
 							srcRel.Srel.Shortterm = 100;
@@ -2284,9 +3443,9 @@ namespace SimPe.PackedFiles.UserInterface
 						}
 					}
 
-					if (this.dstRel.Srel!=null) 
+					if (this.dstRel.Srel != null)
 					{
-						if (dstRel.Srel.RelationState.IsKnown) 
+						if (dstRel.Srel.RelationState.IsKnown)
 						{
 							dstRel.Srel.Longterm = 100;
 							dstRel.Srel.Shortterm = 100;
@@ -2296,29 +3455,42 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 			}
 
-			if (index>=0) lv.Items[index].Selected = true;
+			if (index >= 0)
+				lv.Items[index].Selected = true;
 		}
 		#endregion
 
 		#region Nightlife
-		void FillNightlifeListBox(System.Windows.Forms.CheckedListBox clb) 
+		void FillNightlifeListBox(System.Windows.Forms.CheckedListBox clb)
 		{
-			if (clb.Items.Count>0) return;
+			if (clb.Items.Count > 0)
+				return;
 
-			SimPe.Providers.TraitAlias[] al = FileTable.ProviderRegistry.SimDescriptionProvider.GetAllTurnOns();
+			SimPe.Providers.TraitAlias[] al =
+				FileTable.ProviderRegistry.SimDescriptionProvider.GetAllTurnOns();
 			foreach (SimPe.Providers.TraitAlias a in al)
 				clb.Items.Add(a);
 		}
 
-		void SelectNightlifeItems(System.Windows.Forms.CheckedListBox clb, ushort v1, ushort v2, ushort v3)
+		void SelectNightlifeItems(
+			System.Windows.Forms.CheckedListBox clb,
+			ushort v1,
+			ushort v2,
+			ushort v3
+		)
 		{
 			FillNightlifeListBox(clb);
 
-			ulong cur = FileTable.ProviderRegistry.SimDescriptionProvider.BuildTurnOnIndex(v1, v2, v3);
-			for (int i=0; i<clb.Items.Count; i++)
+			ulong cur =
+				FileTable.ProviderRegistry.SimDescriptionProvider.BuildTurnOnIndex(
+					v1,
+					v2,
+					v3
+				);
+			for (int i = 0; i < clb.Items.Count; i++)
 			{
 				ulong val = ((SimPe.Providers.TraitAlias)clb.Items[i]).Id;
-				clb.SetItemChecked(i, ((cur&val)==val)&&val!=0);
+				clb.SetItemChecked(i, ((cur & val) == val) && val != 0);
 			}
 		}
 
@@ -2327,16 +3499,34 @@ namespace SimPe.PackedFiles.UserInterface
 			cbSpecies.SelectedValue = sdesc.Nightlife.Species;
 			if (biEP2.Enabled) // sim is not a pet
 			{
-				SelectNightlifeItems(this.lbTraits, sdesc.Nightlife.AttractionTraits1, sdesc.Nightlife.AttractionTraits2, sdesc.Nightlife.AttractionTraits3);
-				SelectNightlifeItems(this.lbTurnOn, sdesc.Nightlife.AttractionTurnOns1, sdesc.Nightlife.AttractionTurnOns2, sdesc.Nightlife.AttractionTurnOns3);
-				SelectNightlifeItems(this.lbTurnOff, sdesc.Nightlife.AttractionTurnOffs1, sdesc.Nightlife.AttractionTurnOffs2, sdesc.Nightlife.AttractionTurnOffs3);
+				SelectNightlifeItems(
+					this.lbTraits,
+					sdesc.Nightlife.AttractionTraits1,
+					sdesc.Nightlife.AttractionTraits2,
+					sdesc.Nightlife.AttractionTraits3
+				);
+				SelectNightlifeItems(
+					this.lbTurnOn,
+					sdesc.Nightlife.AttractionTurnOns1,
+					sdesc.Nightlife.AttractionTurnOns2,
+					sdesc.Nightlife.AttractionTurnOns3
+				);
+				SelectNightlifeItems(
+					this.lbTurnOff,
+					sdesc.Nightlife.AttractionTurnOffs1,
+					sdesc.Nightlife.AttractionTurnOffs2,
+					sdesc.Nightlife.AttractionTurnOffs3
+				);
 				this.tbNTPerfume.Text = sdesc.Nightlife.PerfumeDuration.ToString();
 				this.tbNTLove.Text = sdesc.Nightlife.LovePotionDuration.ToString();
 				this.pnEP2.BackgroundImage = pnimage;
 			}
 		}
 
-		ulong SumSelection(System.Windows.Forms.CheckedListBox clb, ItemCheckEventArgs e)
+		ulong SumSelection(
+			System.Windows.Forms.CheckedListBox clb,
+			ItemCheckEventArgs e
+		)
 		{
 			ulong val = 0;
 			foreach (int i in clb.CheckedIndices)
@@ -2351,11 +3541,20 @@ namespace SimPe.PackedFiles.UserInterface
 
 		void cklb_ItemCheck(object sender, ItemCheckEventArgs e)
 		{
-			if (intern) return;
-			if (e.CurrentValue == e.NewValue) return;
-			int which = (new System.Collections.Generic.List<CheckedListBox>(new CheckedListBox[] { lbTraits, lbTurnOn, lbTurnOff })).IndexOf((CheckedListBox)sender);
+			if (intern)
+				return;
+			if (e.CurrentValue == e.NewValue)
+				return;
+			int which = (
+				new System.Collections.Generic.List<CheckedListBox>(
+					new CheckedListBox[] { lbTraits, lbTurnOn, lbTurnOff }
+				)
+			).IndexOf((CheckedListBox)sender);
 
-			ushort[] v = FileTable.ProviderRegistry.SimDescriptionProvider.GetFromTurnOnIndex(SumSelection((CheckedListBox)sender, e));
+			ushort[] v =
+				FileTable.ProviderRegistry.SimDescriptionProvider.GetFromTurnOnIndex(
+					SumSelection((CheckedListBox)sender, e)
+				);
 			switch (which)
 			{
 				case 0:
@@ -2376,15 +3575,16 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-
 		private void lbTraits_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			pbtraits.Image = SimOriGuid.LoadTurnOnsIcon(lbTraits.SelectedIndex);
 		}
+
 		private void lbTurnOn_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			pbtraits.Image = SimOriGuid.LoadTurnOnsIcon(lbTurnOn.SelectedIndex);
 		}
+
 		private void lbTurnOff_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			pbtraits.Image = SimOriGuid.LoadTurnOnsIcon(lbTurnOff.SelectedIndex);
@@ -2392,13 +3592,24 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void ChangedEP2(object sender, System.EventArgs e)
 		{
-			if (intern) return;
+			if (intern)
+				return;
 			intern = true;
 			try
 			{
-				Sdesc.Nightlife.PerfumeDuration = Helper.StringToUInt16(this.tbNTPerfume.Text, Sdesc.Nightlife.PerfumeDuration, 10);
-				Sdesc.Nightlife.LovePotionDuration = Helper.StringToUInt16(this.tbNTLove.Text, Sdesc.Nightlife.LovePotionDuration, 10);
-				Sdesc.Nightlife.Species = (SimPe.PackedFiles.Wrapper.SdscNightlife.SpeciesType)cbSpecies.SelectedValue;
+				Sdesc.Nightlife.PerfumeDuration = Helper.StringToUInt16(
+					this.tbNTPerfume.Text,
+					Sdesc.Nightlife.PerfumeDuration,
+					10
+				);
+				Sdesc.Nightlife.LovePotionDuration = Helper.StringToUInt16(
+					this.tbNTLove.Text,
+					Sdesc.Nightlife.LovePotionDuration,
+					10
+				);
+				Sdesc.Nightlife.Species =
+					(SimPe.PackedFiles.Wrapper.SdscNightlife.SpeciesType)
+						cbSpecies.SelectedValue;
 
 				Sdesc.Changed = true;
 			}
@@ -2412,43 +3623,60 @@ namespace SimPe.PackedFiles.UserInterface
 		#region Bon Voyage
 		void ShowAllCollectibles()
 		{
-			if (lvCollectibles.Items.Count > 0) return;
-			SimPe.Providers.CollectibleAlias[] al = FileTable.ProviderRegistry.SimDescriptionProvider.GetAllCollectibles();
+			if (lvCollectibles.Items.Count > 0)
+				return;
+			SimPe.Providers.CollectibleAlias[] al =
+				FileTable.ProviderRegistry.SimDescriptionProvider.GetAllCollectibles();
 			foreach (SimPe.Providers.CollectibleAlias a in al)
 			{
 				ilCollectibles.Images.Add(a.Image);
-				ListViewItem lvi = new ListViewItem(a.ToString(), ilCollectibles.Images.Count-1);
+				ListViewItem lvi = new ListViewItem(
+					a.ToString(),
+					ilCollectibles.Images.Count - 1
+				);
 				lvi.Tag = a;
 				lvCollectibles.Items.Add(lvi);
 			}
 		}
-
 
 		void RefreshEP6(Wrapper.ExtSDesc sdesc)
 		{
 			ShowAllCollectibles();
 			tbhdaysleft.Text = sdesc.Voyage.DaysLeft.ToString();
 
-			foreach (ListViewItem lvi in lvCollectibles.Items){
-				SimPe.Providers.CollectibleAlias a = (SimPe.Providers.CollectibleAlias)lvi.Tag;
+			foreach (ListViewItem lvi in lvCollectibles.Items)
+			{
+				SimPe.Providers.CollectibleAlias a = (SimPe.Providers.CollectibleAlias)
+					lvi.Tag;
 				lvi.Checked = (a.Id & sdesc.Voyage.CollectiblesPlain) == a.Id;
 			}
 		}
 
 		private void ChangedEP6(object sender, System.EventArgs e)
 		{
-			if (intern) return;
+			if (intern)
+				return;
 			intern = true;
 			try
 			{
-				if ((int)Sdesc.Version >= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Voyage)
+				if (
+					(int)Sdesc.Version
+					>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Voyage
+				)
 				{
 					Sdesc.Voyage.CollectiblesPlain = 0;
-					Sdesc.Voyage.DaysLeft = Helper.StringToUInt16(tbhdaysleft.Text, Sdesc.Voyage.DaysLeft, 10);
+					Sdesc.Voyage.DaysLeft = Helper.StringToUInt16(
+						tbhdaysleft.Text,
+						Sdesc.Voyage.DaysLeft,
+						10
+					);
 					foreach (ListViewItem lvi in lvCollectibles.Items)
 					{
-						SimPe.Providers.CollectibleAlias a = (SimPe.Providers.CollectibleAlias)lvi.Tag;
-						if (lvi.Checked) Sdesc.Voyage.CollectiblesPlain = Sdesc.Voyage.CollectiblesPlain | a.Id;
+						SimPe.Providers.CollectibleAlias a =
+							(SimPe.Providers.CollectibleAlias)lvi.Tag;
+						if (lvi.Checked)
+							Sdesc.Voyage.CollectiblesPlain =
+								Sdesc.Voyage.CollectiblesPlain | a.Id;
 					}
 
 					Sdesc.Changed = true;
@@ -2469,7 +3697,10 @@ namespace SimPe.PackedFiles.UserInterface
 		#region EP3
 		void RefreshEP3(Wrapper.ExtSDesc sdesc)
 		{
-			this.tbEp3Flag.Text = Helper.MinStrLength(Convert.ToString(sdesc.Business.Flags, 2), 16);
+			this.tbEp3Flag.Text = Helper.MinStrLength(
+				Convert.ToString(sdesc.Business.Flags, 2),
+				16
+			);
 			this.tbEp3Lot.Text = Helper.HexString(sdesc.Business.LotID);
 			this.tbEp3Salery.Text = sdesc.Business.Salary.ToString();
 
@@ -2478,21 +3709,35 @@ namespace SimPe.PackedFiles.UserInterface
 			this.llep3openinfo.Links[0].Enabled = (sblb.SelectedBusiness != null);
 			this.pnEP3.BackgroundImage = pnimage;
 		}
-		
+
 		private void ChangedEP3(object sender, System.EventArgs e)
 		{
-			if (intern) return;
+			if (intern)
+				return;
 			intern = true;
-			try 
-			{								
-				Sdesc.Business.Salary = Helper.StringToUInt16(this.tbEp3Salery.Text, Sdesc.Business.Salary, 10);
-				Sdesc.Business.LotID = Helper.StringToUInt16(this.tbEp3Lot.Text, Sdesc.Business.LotID, 16);
-				Sdesc.Business.Flags = Helper.StringToUInt16(this.tbEp3Flag.Text, Sdesc.Business.Flags, 2);
-				Sdesc.Business.Assignment = (Wrapper.JobAssignment)this.cbEp3Asgn.SelectedValue;
+			try
+			{
+				Sdesc.Business.Salary = Helper.StringToUInt16(
+					this.tbEp3Salery.Text,
+					Sdesc.Business.Salary,
+					10
+				);
+				Sdesc.Business.LotID = Helper.StringToUInt16(
+					this.tbEp3Lot.Text,
+					Sdesc.Business.LotID,
+					16
+				);
+				Sdesc.Business.Flags = Helper.StringToUInt16(
+					this.tbEp3Flag.Text,
+					Sdesc.Business.Flags,
+					2
+				);
+				Sdesc.Business.Assignment = (Wrapper.JobAssignment)
+					this.cbEp3Asgn.SelectedValue;
 
 				Sdesc.Changed = true;
-			} 
-			finally 
+			}
+			finally
 			{
 				intern = false;
 			}
@@ -2503,13 +3748,15 @@ namespace SimPe.PackedFiles.UserInterface
 			this.llep3openinfo.Links[0].Enabled = (sblb.SelectedBusiness != null);
 			if (sblb.SelectedBusiness != null)
 			{
-				if (sblb.SelectedBusiness.BnfoFileIndexItem == null) llep3openinfo.Links[0].Enabled = false;
+				if (sblb.SelectedBusiness.BnfoFileIndexItem == null)
+					llep3openinfo.Links[0].Enabled = false;
 			}
 		}
 
 		private void llep3openinfo_LinkClicked(object sender, System.EventArgs e)
 		{
-			if (sblb.SelectedBusiness == null) return;
+			if (sblb.SelectedBusiness == null)
+				return;
 
 			SimPe.RemoteControl.OpenPackedFile(sblb.SelectedBusiness.BnfoFileIndexItem);
 		}
@@ -2527,11 +3774,15 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void ChangedEP4(object sender, System.EventArgs e)
 		{
-			if (intern) return;
+			if (intern)
+				return;
 			intern = true;
 			try
 			{
-				if ((int)Sdesc.Version >= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Pets)
+				if (
+					(int)Sdesc.Version
+					>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Pets
+				)
 				{
 					this.ptGifted.UpdateTraits(0, 1, Sdesc.Pets.PetTraits);
 					this.ptHyper.UpdateTraits(2, 3, Sdesc.Pets.PetTraits);
@@ -2553,13 +3804,17 @@ namespace SimPe.PackedFiles.UserInterface
 			pnSimInt.Visible = pnHumanChar.Visible = showsim;
 			btProfile.Visible = (showsim && !Helper.WindowsRegistry.HiddenMode);
 			pnPetChar.Visible = pnPetInt.Visible = !showsim;
-			if (!intern && this.btOriGuid.Enabled) btOriGuid.Visible = true;
+			if (!intern && this.btOriGuid.Enabled)
+				btOriGuid.Visible = true;
 		}
 
 		private bool IsHumanoid()
 		{
-			SimPe.PackedFiles.Wrapper.SdscNightlife.SpeciesType sp = (SimPe.PackedFiles.Wrapper.SdscNightlife.SpeciesType)cbSpecies.SelectedValue;
-			bool showsim = sp == SimPe.PackedFiles.Wrapper.SdscNightlife.SpeciesType.Human;
+			SimPe.PackedFiles.Wrapper.SdscNightlife.SpeciesType sp =
+				(SimPe.PackedFiles.Wrapper.SdscNightlife.SpeciesType)
+					cbSpecies.SelectedValue;
+			bool showsim =
+				sp == SimPe.PackedFiles.Wrapper.SdscNightlife.SpeciesType.Human;
 			return showsim;
 		}
 
@@ -2572,9 +3827,13 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			else
 			{
-				if ((int)Sdesc.Version >= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Pets)
+				if (
+					(int)Sdesc.Version
+					>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Pets
+				)
 					showsim = Sdesc.Nightlife.IsHuman;
-				else showsim = true;
+				else
+					showsim = true;
 			}
 			pnSimInt.Visible = pnHumanChar.Visible = showsim;
 			btProfile.Visible = (showsim && !Helper.WindowsRegistry.HiddenMode);
@@ -2589,31 +3848,36 @@ namespace SimPe.PackedFiles.UserInterface
 			pnPetChar.Visible = pnPetInt.Visible = !showsim;
 		}
 
-		private void pnSimInt_VisibleChanged(object sender, EventArgs e)
-		{
-		}
+		private void pnSimInt_VisibleChanged(object sender, EventArgs e) { }
 		#endregion
 
 		#region Freetime
 		void RefreshEP7(Wrapper.ExtSDesc sdesc)
 		{
 			intern = true;
-			cbaspiration2.Enabled = Helper.WindowsRegistry.AllowChangeOfSecondaryAspiration;
-			
-			if (cbHobbyEnth.SelectedIndex<0) cbHobbyEnth.SelectedIndex = 0;
-			else this.EnthusiasmIndexChanged(cbHobbyEnth, null);
+			cbaspiration2.Enabled = Helper
+				.WindowsRegistry
+				.AllowChangeOfSecondaryAspiration;
+
+			if (cbHobbyEnth.SelectedIndex < 0)
+				cbHobbyEnth.SelectedIndex = 0;
+			else
+				this.EnthusiasmIndexChanged(cbHobbyEnth, null);
 			cbHobbyPre.SelectedValue = sdesc.Freetime.HobbyPredistined;
 			this.tbBugColl.Text = "0x" + Helper.HexString(sdesc.Freetime.BugCollection);
-			this.tbLtAsp.Text = "0x" + Helper.HexString(sdesc.Freetime.LongtermAspiration);
-			this.tbUnlockPts.Text = sdesc.Freetime.LongtermAspirationUnlockPoints.ToString();
-			this.tbUnlocksUsed.Text = sdesc.Freetime.LongtermAspirationUnlocksSpent.ToString();
+			this.tbLtAsp.Text =
+				"0x" + Helper.HexString(sdesc.Freetime.LongtermAspiration);
+			this.tbUnlockPts.Text =
+				sdesc.Freetime.LongtermAspirationUnlockPoints.ToString();
+			this.tbUnlocksUsed.Text =
+				sdesc.Freetime.LongtermAspirationUnlocksSpent.ToString();
 			this.tb7hunger.Text = sdesc.Freetime.HungerDecayModifier.ToString();
 			this.tb7comfort.Text = sdesc.Freetime.ComfortDecayModifier.ToString();
 			this.tb7bladder.Text = sdesc.Freetime.BladderDecayModifier.ToString();
 			this.tb7energy.Text = sdesc.Freetime.EnergyDecayModifier.ToString();
 			this.tb7hygiene.Text = sdesc.Freetime.HygieneDecayModifier.ToString();
 			this.tb7fun.Text = sdesc.Freetime.FunDecayModifier.ToString();
-			this.tb7social.Text = sdesc.Freetime.SocialPublicDecayModifier.ToString();         
+			this.tb7social.Text = sdesc.Freetime.SocialPublicDecayModifier.ToString();
 			SelectAspiration(cbaspiration2, sdesc.Freetime.SecondaryAspiration);
 
 			this.pnEP7.BackgroundImage = pnimage;
@@ -2625,7 +3889,8 @@ namespace SimPe.PackedFiles.UserInterface
 			SetAspirations(cbaspiration2, Sdesc.Freetime.PrimaryAspiration);
 		}
 
-		void ChangedAspiration(object sender, EventArgs e){
+		void ChangedAspiration(object sender, EventArgs e)
+		{
 			ChangedCareer(sender, e);
 			UpdateSecAspDropDown();
 			SelectAspiration(cbaspiration2, Sdesc.Freetime.SecondaryAspiration);
@@ -2638,30 +3903,89 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void ChangedEP7(object sender, System.EventArgs e)
 		{
-			if (intern) return;
+			if (intern)
+				return;
 			intern = true;
 			try
 			{
-				if ((int)Sdesc.Version >= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Freetime)
+				if (
+					(int)Sdesc.Version
+					>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Freetime
+				)
 				{
-					if (cbHobbyEnth.SelectedIndex >= 0 && cbHobbyEnth.SelectedIndex < Sdesc.Freetime.HobbyEnthusiasm.Count)
-						Sdesc.Freetime.HobbyEnthusiasm[cbHobbyEnth.SelectedIndex] = (ushort)pbhbenth.Value;
-					 
-					Sdesc.Freetime.BugCollection = Helper.StringToUInt32(this.tbBugColl.Text, Sdesc.Freetime.BugCollection, 16);
-					Sdesc.Freetime.LongtermAspiration = Helper.StringToUInt16(this.tbLtAsp.Text, Sdesc.Freetime.LongtermAspiration, 16);
-					Sdesc.Freetime.LongtermAspirationUnlockPoints = Helper.StringToUInt16(this.tbUnlockPts.Text, Sdesc.Freetime.LongtermAspirationUnlockPoints, 10);
-					Sdesc.Freetime.LongtermAspirationUnlocksSpent = Helper.StringToUInt16(this.tbUnlocksUsed.Text, Sdesc.Freetime.LongtermAspirationUnlocksSpent, 10);
+					if (
+						cbHobbyEnth.SelectedIndex >= 0
+						&& cbHobbyEnth.SelectedIndex
+							< Sdesc.Freetime.HobbyEnthusiasm.Count
+					)
+						Sdesc.Freetime.HobbyEnthusiasm[cbHobbyEnth.SelectedIndex] =
+							(ushort)pbhbenth.Value;
 
-					Sdesc.Freetime.HungerDecayModifier = Helper.StringToUInt16(this.tb7hunger.Text, Sdesc.Freetime.HungerDecayModifier, 10);
-					Sdesc.Freetime.ComfortDecayModifier = Helper.StringToUInt16(this.tb7comfort.Text, Sdesc.Freetime.ComfortDecayModifier, 10);
-					Sdesc.Freetime.BladderDecayModifier = Helper.StringToUInt16(this.tb7bladder.Text, Sdesc.Freetime.BladderDecayModifier, 10);
-					Sdesc.Freetime.EnergyDecayModifier = Helper.StringToUInt16(this.tb7energy.Text, Sdesc.Freetime.EnergyDecayModifier, 10);
-					Sdesc.Freetime.HygieneDecayModifier = Helper.StringToUInt16(this.tb7hygiene.Text, Sdesc.Freetime.HygieneDecayModifier, 10);
-					Sdesc.Freetime.FunDecayModifier = Helper.StringToUInt16(this.tb7fun.Text, Sdesc.Freetime.FunDecayModifier, 10);
-					Sdesc.Freetime.SocialPublicDecayModifier = Helper.StringToUInt16(this.tb7social.Text, Sdesc.Freetime.SocialPublicDecayModifier, 10);
+					Sdesc.Freetime.BugCollection = Helper.StringToUInt32(
+						this.tbBugColl.Text,
+						Sdesc.Freetime.BugCollection,
+						16
+					);
+					Sdesc.Freetime.LongtermAspiration = Helper.StringToUInt16(
+						this.tbLtAsp.Text,
+						Sdesc.Freetime.LongtermAspiration,
+						16
+					);
+					Sdesc.Freetime.LongtermAspirationUnlockPoints =
+						Helper.StringToUInt16(
+							this.tbUnlockPts.Text,
+							Sdesc.Freetime.LongtermAspirationUnlockPoints,
+							10
+						);
+					Sdesc.Freetime.LongtermAspirationUnlocksSpent =
+						Helper.StringToUInt16(
+							this.tbUnlocksUsed.Text,
+							Sdesc.Freetime.LongtermAspirationUnlocksSpent,
+							10
+						);
 
-					Sdesc.Freetime.HobbyPredistined = SimPe.PackedFiles.Wrapper.SdscFreetime.IndexToHobbies(cbHobbyPre.SelectedIndex);
-					Sdesc.Freetime.SecondaryAspiration = (LocalizedAspirationTypes)this.cbaspiration2.SelectedItem;
+					Sdesc.Freetime.HungerDecayModifier = Helper.StringToUInt16(
+						this.tb7hunger.Text,
+						Sdesc.Freetime.HungerDecayModifier,
+						10
+					);
+					Sdesc.Freetime.ComfortDecayModifier = Helper.StringToUInt16(
+						this.tb7comfort.Text,
+						Sdesc.Freetime.ComfortDecayModifier,
+						10
+					);
+					Sdesc.Freetime.BladderDecayModifier = Helper.StringToUInt16(
+						this.tb7bladder.Text,
+						Sdesc.Freetime.BladderDecayModifier,
+						10
+					);
+					Sdesc.Freetime.EnergyDecayModifier = Helper.StringToUInt16(
+						this.tb7energy.Text,
+						Sdesc.Freetime.EnergyDecayModifier,
+						10
+					);
+					Sdesc.Freetime.HygieneDecayModifier = Helper.StringToUInt16(
+						this.tb7hygiene.Text,
+						Sdesc.Freetime.HygieneDecayModifier,
+						10
+					);
+					Sdesc.Freetime.FunDecayModifier = Helper.StringToUInt16(
+						this.tb7fun.Text,
+						Sdesc.Freetime.FunDecayModifier,
+						10
+					);
+					Sdesc.Freetime.SocialPublicDecayModifier = Helper.StringToUInt16(
+						this.tb7social.Text,
+						Sdesc.Freetime.SocialPublicDecayModifier,
+						10
+					);
+
+					Sdesc.Freetime.HobbyPredistined =
+						SimPe.PackedFiles.Wrapper.SdscFreetime.IndexToHobbies(
+							cbHobbyPre.SelectedIndex
+						);
+					Sdesc.Freetime.SecondaryAspiration = (LocalizedAspirationTypes)
+						this.cbaspiration2.SelectedItem;
 
 					Sdesc.Changed = true;
 				}
@@ -2674,16 +3998,23 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void PredistinedHobbyIndexChanged(object sender, EventArgs e)
 		{
-			SimPe.PackedFiles.Wrapper.Hobbies hb = SimPe.PackedFiles.Wrapper.SdscFreetime.IndexToHobbies(cbHobbyPre.SelectedIndex);
+			SimPe.PackedFiles.Wrapper.Hobbies hb =
+				SimPe.PackedFiles.Wrapper.SdscFreetime.IndexToHobbies(
+					cbHobbyPre.SelectedIndex
+				);
 			ChangedEP7(sender, e);
 		}
 
 		private void EnthusiasmIndexChanged(object sender, EventArgs e)
 		{
-			if (cbHobbyEnth.SelectedIndex >= 0 && cbHobbyEnth.SelectedIndex < Sdesc.Freetime.HobbyEnthusiasm.Count)
+			if (
+				cbHobbyEnth.SelectedIndex >= 0
+				&& cbHobbyEnth.SelectedIndex < Sdesc.Freetime.HobbyEnthusiasm.Count
+			)
 			{
-
-				this.pbhbenth.Value = Sdesc.Freetime.HobbyEnthusiasm[cbHobbyEnth.SelectedIndex];
+				this.pbhbenth.Value = Sdesc.Freetime.HobbyEnthusiasm[
+					cbHobbyEnth.SelectedIndex
+				];
 				this.pbhbenth.Enabled = true;
 			}
 			else
@@ -2693,6 +4024,5 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 		#endregion
-
 	}
 }

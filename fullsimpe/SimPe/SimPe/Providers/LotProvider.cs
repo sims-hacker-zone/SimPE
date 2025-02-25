@@ -18,15 +18,15 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.IO;
 using System.Collections;
-using SimPe.Data;
-using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces.Plugin.Internal;
-using SimPe.Interfaces;
-using SimPe.Interfaces.Files;
+using System.IO;
 using System.Threading;
 using Ambertation.Threading;
+using SimPe.Data;
+using SimPe.Interfaces;
+using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin;
+using SimPe.Interfaces.Plugin.Internal;
 
 namespace SimPe.Providers
 {
@@ -39,11 +39,18 @@ namespace SimPe.Providers
 		{
 			string name;
 			System.Drawing.Image img;
-			uint inst, owner;
-			
+			uint inst,
+				owner;
+
 			System.Collections.ArrayList tags;
 			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii;
-			internal LotItem(uint inst, string name, System.Drawing.Image img, SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii)
+
+			internal LotItem(
+				uint inst,
+				string name,
+				System.Drawing.Image img,
+				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii
+			)
 			{
 				this.name = name;
 				this.img = img;
@@ -55,39 +62,41 @@ namespace SimPe.Providers
 
 			public object FindTag(System.Type tp)
 			{
-				foreach (object o in tags)				
+				foreach (object o in tags)
 				{
-					if (o==null) continue;
-					if (tp == o.GetType()) return o;
+					if (o == null)
+						continue;
+					if (tp == o.GetType())
+						return o;
 				}
 
-				return null;				
+				return null;
 			}
 
 			public System.Collections.ArrayList Tags
 			{
-				get {return tags;}
+				get { return tags; }
 			}
 
 			public uint Owner
 			{
-				get {return owner;}
-				set {owner = value;}
+				get { return owner; }
+				set { owner = value; }
 			}
 
 			public uint Instance
 			{
-				get {return inst;}
+				get { return inst; }
 			}
 
 			public System.Drawing.Image Image
 			{
-				get {return img;}
+				get { return img; }
 			}
 
 			public string Name
 			{
-				get {return name;}
+				get { return name; }
 			}
 
 			public override int GetHashCode()
@@ -102,46 +111,74 @@ namespace SimPe.Providers
 
 			public SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem LtxtFileIndexItem
 			{
-				get {return fii;}
-				set {fii = value;}
+				get { return fii; }
+				set { fii = value; }
 			}
 
 			public SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem BnfoFileIndexItem
 			{
-				get {
-					if (LtxtFileIndexItem==null) return null;
-					
-					SimPe.Interfaces.Files.IPackedFileDescriptor pfd = LtxtFileIndexItem.Package.FindFile(0x104F6A6E, 0, Data.MetaData.LOCAL_GROUP, this.Instance);
-					if (pfd==null) return null;
+				get
+				{
+					if (LtxtFileIndexItem == null)
+						return null;
 
-					return new SimPe.Plugin.FileIndexItem(pfd, LtxtFileIndexItem.Package);
-				}			
+					SimPe.Interfaces.Files.IPackedFileDescriptor pfd =
+						LtxtFileIndexItem.Package.FindFile(
+							0x104F6A6E,
+							0,
+							Data.MetaData.LOCAL_GROUP,
+							this.Instance
+						);
+					if (pfd == null)
+						return null;
+
+					return new SimPe.Plugin.FileIndexItem(
+						pfd,
+						LtxtFileIndexItem.Package
+					);
+				}
 			}
 
 			public SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem StrFileIndexItem
 			{
-				get 
+				get
 				{
-					if (LtxtFileIndexItem==null) return null;
-					
-					SimPe.Interfaces.Files.IPackedFileDescriptor pfd = LtxtFileIndexItem.Package.FindFile(Data.MetaData.STRING_FILE, 0, Data.MetaData.LOCAL_GROUP, this.Instance | 0x8000);
-					if (pfd==null) return null;
+					if (LtxtFileIndexItem == null)
+						return null;
 
-					return new SimPe.Plugin.FileIndexItem(pfd, LtxtFileIndexItem.Package);
-				}			
+					SimPe.Interfaces.Files.IPackedFileDescriptor pfd =
+						LtxtFileIndexItem.Package.FindFile(
+							Data.MetaData.STRING_FILE,
+							0,
+							Data.MetaData.LOCAL_GROUP,
+							this.Instance | 0x8000
+						);
+					if (pfd == null)
+						return null;
+
+					return new SimPe.Plugin.FileIndexItem(
+						pfd,
+						LtxtFileIndexItem.Package
+					);
+				}
 			}
 
 			public string LotName
 			{
-				get 
+				get
 				{
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem stri = StrFileIndexItem;
-					if (stri!=null)
+					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem stri =
+						StrFileIndexItem;
+					if (stri != null)
 					{
-						SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+						SimPe.PackedFiles.Wrapper.Str str =
+							new SimPe.PackedFiles.Wrapper.Str();
 						str.ProcessData(stri);
-						SimPe.PackedFiles.Wrapper.StrItemList items = str.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);						
-						if (items.Length>0) 
+						SimPe.PackedFiles.Wrapper.StrItemList items =
+							str.FallbackedLanguageItems(
+								Helper.WindowsRegistry.LanguageCode
+							);
+						if (items.Length > 0)
 						{
 							string ret = items[0].Title;
 							str.Dispose();
@@ -149,7 +186,8 @@ namespace SimPe.Providers
 						}
 						str.Dispose();
 					}
-					else if (this.Instance == 0) return "Family Bin";
+					else if (this.Instance == 0)
+						return "Family Bin";
 
 					return Name;
 				}
@@ -161,14 +199,17 @@ namespace SimPe.Providers
 			{
 				img = null;
 				name = null;
-				if (tags!=null) tags.Clear();
+				if (tags != null)
+					tags.Clear();
 				tags = null;
 				fii = null;
 			}
 
 			#endregion
 		}
+
 		Hashtable content;
+
 		/// <summary>
 		/// The Folder from where the SimInformation was loaded
 		/// </summary>
@@ -185,8 +226,9 @@ namespace SimPe.Providers
 		/// Creates the List for the specific Folder
 		/// </summary>
 		/// <param name="folder">The Folder with the Character Files</param>
-		public LotProvider(string folder) : base()
-		{			
+		public LotProvider(string folder)
+			: base()
+		{
 			BaseFolder = folder;
 
 			ArrayList folders = new ArrayList();
@@ -197,10 +239,8 @@ namespace SimPe.Providers
 		/// <summary>
 		/// Creates the List for the specific Folder
 		/// </summary>
-		public LotProvider() : this("")
-		{			
-		}
-
+		public LotProvider()
+			: this("") { }
 
 		/// <summary>
 		/// Returns or sets the Folder where the Lot Files are stored
@@ -208,111 +248,130 @@ namespace SimPe.Providers
 		/// <remarks>Sets the content List to null</remarks>
 		public string BaseFolder
 		{
-			get 
+			get { return dir; }
+			set
 			{
-				return dir;
-			}
-			set 
-			{
-				if (dir!=value)
+				if (dir != value)
 				{
 					WaitForEnd(); // wait for any other stoppable threads to end
 					if (dir != value) // if other thread has set dir then it has also set content so lets not wipe it out
-						content = null;		
+						content = null;
 				}
 				dir = value;
-				string[] pe = dir.Split(new char[] {'/','\\'});
+				string[] pe = dir.Split(new char[] { '/', '\\' });
 				ngbh = pe.Length > 1 ? pe[pe.Length - 2] : null;
 			}
-		}		
+		}
 
 		protected uint GetInstanceFromFilename(string flname)
 		{
 			flname = System.IO.Path.GetFileNameWithoutExtension(flname).ToLower();
 			int pos = flname.IndexOf("_lot");
-			flname = flname.Substring(pos+4);
+			flname = flname.Substring(pos + 4);
 
 			return Helper.StringToUInt32(flname, 0, 10);
 		}
 
-		
 		public event SimPe.Interfaces.Providers.LoadLotData LoadingLot;
+
 		protected override void StartThread()
 		{
 			lotfi.Load();
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = lotfi.FindFile(0x856DDBAC, Data.MetaData.LOCAL_GROUP, 0x35CA0002, null);
+			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+				lotfi.FindFile(0x856DDBAC, Data.MetaData.LOCAL_GROUP, 0x35CA0002, null);
 			bool run = Wait.Running;
-			if (!run) Wait.Start();
+			if (!run)
+				Wait.Start();
 			Wait.SubStart(items.Length);
-			try 
+			try
 			{
 				int ct = 0;
 				int step = Math.Max(2, Wait.MaxProgress / 100);
-				foreach(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items) 
+				foreach (
+					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
+				)
 				{
-					if (this.HaveToStop) 
+					if (this.HaveToStop)
 						break;
-					
+
 					SimPe.Interfaces.Files.IPackageFile pkg = item.Package;
-					
-					SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(Data.MetaData.STRING_FILE, 0, Data.MetaData.LOCAL_GROUP, 0x00000A46);
+
+					SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
+						Data.MetaData.STRING_FILE,
+						0,
+						Data.MetaData.LOCAL_GROUP,
+						0x00000A46
+					);
 					string name = SimPe.Localization.GetString("Unknown");
-					if (pfd!=null) 
+					if (pfd != null)
 					{
-						SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+						SimPe.PackedFiles.Wrapper.Str str =
+							new SimPe.PackedFiles.Wrapper.Str();
 						str.ProcessData(pfd, pkg);
 
-						SimPe.PackedFiles.Wrapper.StrItemList list = str.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
-						if (list.Count>0) name = list[0].Title;
+						SimPe.PackedFiles.Wrapper.StrItemList list =
+							str.FallbackedLanguageItems(
+								Helper.WindowsRegistry.LanguageCode
+							);
+						if (list.Count > 0)
+							name = list[0].Title;
 					}
 
-					SimPe.PackedFiles.Wrapper.Picture pic = new SimPe.PackedFiles.Wrapper.Picture();
+					SimPe.PackedFiles.Wrapper.Picture pic =
+						new SimPe.PackedFiles.Wrapper.Picture();
 					pic.ProcessData(item);
 
 					uint inst = GetInstanceFromFilename(pkg.SaveFileName);
 
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] ltxtitems = ngbhfi.FindFile(0x0BF999E7, Data.MetaData.LOCAL_GROUP, inst, null);
+					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] ltxtitems =
+						ngbhfi.FindFile(
+							0x0BF999E7,
+							Data.MetaData.LOCAL_GROUP,
+							inst,
+							null
+						);
 					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem ltxt = null;
-					if (ltxtitems.Length>0) ltxt = ltxtitems[0];
+					if (ltxtitems.Length > 0)
+						ltxt = ltxtitems[0];
 
 					LotItem li = new LotItem(inst, name, pic.Image, ltxt);
-					if (LoadingLot!=null) LoadingLot(this, li);
+					if (LoadingLot != null)
+						LoadingLot(this, li);
 					content[li.Instance] = li;
 					ct++;
-					if (ct%step==0)
+					if (ct % step == 0)
 					{
 						Wait.Message = name;
 						Wait.Progress = ct;
 					}
-
-				}//foreach				
-			}  
+				} //foreach
+			}
 #if !DEBUG
 			catch (Exception ex)
 			{
 				Helper.ExceptionMessage(ex);
-			} 
+			}
 #endif
-			finally 
+			finally
 			{
 				Wait.SubStop();
-				if (!run)Wait.Stop(true);
+				if (!run)
+					Wait.Stop(true);
 			}
-				
+
 			ended.Set();
-			
 		}
 
-		
 		object sync = new object();
 
 		void AddHoodsToFileIndex()
 		{
-			string mydir = System.IO.Directory.GetParent(dir).FullName;			
+			string mydir = System.IO.Directory.GetParent(dir).FullName;
 			string[] names = System.IO.Directory.GetFiles(mydir, ngbh + "_*.package");
 			foreach (string name in names)
 			{
-				SimPe.Packages.GeneratableFile pkg = SimPe.Packages.GeneratableFile.LoadFromFile(name);
+				SimPe.Packages.GeneratableFile pkg =
+					SimPe.Packages.GeneratableFile.LoadFromFile(name);
 				ngbhfi.AddTypesIndexFromPackage(pkg, 0x0BF999E7, false);
 			}
 		}
@@ -323,22 +382,26 @@ namespace SimPe.Providers
 			string[] names = System.IO.Directory.GetFiles(dir, ngbh + "*_Lot*.package");
 			foreach (string name in names)
 			{
-				SimPe.Packages.GeneratableFile pkg = SimPe.Packages.GeneratableFile.LoadFromFile(name);
-				ngbhfi.AddTypesIndexFromPackage(pkg, 0x856DDBAC, false);				
+				SimPe.Packages.GeneratableFile pkg =
+					SimPe.Packages.GeneratableFile.LoadFromFile(name);
+				ngbhfi.AddTypesIndexFromPackage(pkg, 0x856DDBAC, false);
 			}
 		}
 
 		/// <summary>
 		/// Loads all package Files in the directory and scans them for Name Informations
 		/// </summary>
-		public void LoadLotsFromFolder() 
+		public void LoadLotsFromFolder()
 		{
 			WaitForEnd(); // wait for any other stoppable threads to end
-			if (content != null) return; // if content was set by other thread then lets not do it again
+			if (content != null)
+				return; // if content was set by other thread then lets not do it again
 			content = new Hashtable();
-			
-			if (Helper.StartedGui==Executable.Classic) return;
-			if (!Directory.Exists(dir)) return;
+
+			if (Helper.StartedGui == Executable.Classic)
+				return;
+			if (!Directory.Exists(dir))
+				return;
 
 			Wait.SubStart();
 			ngbhfi.Clear();
@@ -346,14 +409,20 @@ namespace SimPe.Providers
 			AddLotsToFileIndex();
 			AddHoodsToFileIndex();
 			Wait.SubStop();
-			
+
 			this.ExecuteThread(ThreadPriority.AboveNormal, "Lot Provider", true, true);
 		}
 
 		public SimPe.Interfaces.Providers.ILotItem FindLot(uint inst)
 		{
 			object o = StoredData[inst];
-			if (o==null) return new LotItem(inst, SimPe.Localization.GetString("Unknown"), null, null);
+			if (o == null)
+				return new LotItem(
+					inst,
+					SimPe.Localization.GetString("Unknown"),
+					null,
+					null
+				);
 			return o as SimPe.Interfaces.Providers.ILotItem;
 		}
 
@@ -363,9 +432,11 @@ namespace SimPe.Providers
 
 			Hashtable ht = this.StoredData;
 			foreach (SimPe.Interfaces.Providers.ILotItem item in ht.Values)
-				if (item.Owner == siminst) list.Add(item);
+				if (item.Owner == siminst)
+					list.Add(item);
 
-			SimPe.Interfaces.Providers.ILotItem[] ret = new SimPe.Interfaces.Providers.ILotItem[list.Count];
+			SimPe.Interfaces.Providers.ILotItem[] ret =
+				new SimPe.Interfaces.Providers.ILotItem[list.Count];
 			list.CopyTo(ret);
 			return ret;
 		}
@@ -374,33 +445,27 @@ namespace SimPe.Providers
 		{
 			Hashtable c = StoredData;
 			string[] ret = new string[c.Values.Count];
-			int ct=0;
-			foreach (LotItem li in c.Values) 			
+			int ct = 0;
+			foreach (LotItem li in c.Values)
 				ret[ct++] = li.Name;
-			
+
 			return ret;
 		}
 
 		/// <summary>
 		/// Returrns the stored Alias Data
 		/// </summary>
-		public Hashtable StoredData 
+		public Hashtable StoredData
 		{
 			get
 			{
-				if (content==null) LoadLotsFromFolder();
+				if (content == null)
+					LoadLotsFromFolder();
 				return content;
 			}
-			set 
-			{
-				content = value;
-			}
+			set { content = value; }
 		}
 
-		
-		internal void sdescprovider_ChangedPackage(object sender, EventArgs e)
-		{
-
-		}
+		internal void sdescprovider_ChangedPackage(object sender, EventArgs e) { }
 	}
 }

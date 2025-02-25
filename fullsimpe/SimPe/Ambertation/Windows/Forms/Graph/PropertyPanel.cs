@@ -20,9 +20,9 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Data;
 using System.Windows.Forms;
 using Ambertation.Collections;
 
@@ -33,24 +33,22 @@ namespace Ambertation.Windows.Forms.Graph
 	/// </summary>
 	public abstract class PropertyPanel : RoundedPanel
 	{
-		
-		public PropertyPanel() : this(new PropertyItems()) 
-		{
-			
-		}
+		public PropertyPanel()
+			: this(new PropertyItems()) { }
 
-		public PropertyPanel(PropertyItems properties) :base ()
+		public PropertyPanel(PropertyItems properties)
+			: base()
 		{
-			this.properties = properties;	
+			this.properties = properties;
 			txt = "";
 		}
 
 		#region public Properties
-		PropertyItems properties;		
-		public PropertyItems Properties 
+		PropertyItems properties;
+		public PropertyItems Properties
 		{
-			get { return properties;}
-			set 
+			get { return properties; }
+			set
 			{
 				if (value != properties)
 				{
@@ -64,7 +62,7 @@ namespace Ambertation.Windows.Forms.Graph
 		public Image Thumbnail
 		{
 			get { return thumb; }
-			set 
+			set
 			{
 				thumb = value;
 				Invalidate();
@@ -75,7 +73,7 @@ namespace Ambertation.Windows.Forms.Graph
 		public string Text
 		{
 			get { return txt; }
-			set 
+			set
 			{
 				txt = value;
 				Invalidate();
@@ -88,7 +86,8 @@ namespace Ambertation.Windows.Forms.Graph
 
 		protected override void DrawText(System.Drawing.Graphics gr)
 		{
-			if (this.properties==null) return;
+			if (this.properties == null)
+				return;
 			LinkGraphic.SetGraphicsMode(gr, !Quality);
 
 			Pen linepen = new Pen(Color.FromArgb(90, Color.Black));
@@ -98,59 +97,78 @@ namespace Ambertation.Windows.Forms.Graph
 			StringFormat sf = new StringFormat();
 			sf.FormatFlags = StringFormatFlags.NoWrap;
 			Font ftb = new Font(Font.FontFamily, Font.Size, FontStyle.Bold, Font.Unit);
-			gr.DrawString(Text, ftb, new Pen(this.ForeColor).Brush, new RectangleF(new PointF(4, 4), new SizeF(Width-8, Height-8)), sf);
-			ftb.Dispose();	
+			gr.DrawString(
+				Text,
+				ftb,
+				new Pen(this.ForeColor).Brush,
+				new RectangleF(new PointF(4, 4), new SizeF(Width - 8, Height - 8)),
+				sf
+			);
+			ftb.Dispose();
 			int top = 24;
-			Size indent = new Size(0,0);
-			if (thumb!=null) 
+			Size indent = new Size(0, 0);
+			if (thumb != null)
 			{
 				gr.DrawImageUnscaled(thumb, 4, top, thumb.Width, thumb.Height);
-				indent = new Size(thumb.Width+4, top+thumb.Height+4);
+				indent = new Size(thumb.Width + 4, top + thumb.Height + 4);
 			}
-				
+
 			//Hashtable ht = new Hashtable();
-			foreach (string k in properties.Keys) 
+			foreach (string k in properties.Keys)
 			{
 				PropertyItem o = properties[k];
-				if (o==null) continue;				
-				string val = "";				
-				val = (string)o.Value;			
-					
-				if (val!=null) 
+				if (o == null)
+					continue;
+				string val = "";
+				val = (string)o.Value;
+
+				if (val != null)
 				{
 					int indentx = 0;
-					if (top<indent.Height) indentx = indent.Width;
-					Font ft = new Font(Font.FontFamily, Font.Size, FontStyle.Italic, Font.Unit);
-					
+					if (top < indent.Height)
+						indentx = indent.Width;
+					Font ft = new Font(
+						Font.FontFamily,
+						Font.Size,
+						FontStyle.Italic,
+						Font.Unit
+					);
 
 					gr.DrawString(
-						k+":", 
-						ft, 
-						new Pen(Color.FromArgb(160, this.ForeColor)).Brush, 
-						new RectangleF(new PointF(indentx+10, top), new SizeF(Width-(24+indentx), top+16)), 
-						sf);
-					SizeF sz = gr.MeasureString(
-						k+":", 
-						ft);
+						k + ":",
+						ft,
+						new Pen(Color.FromArgb(160, this.ForeColor)).Brush,
+						new RectangleF(
+							new PointF(indentx + 10, top),
+							new SizeF(Width - (24 + indentx), top + 16)
+						),
+						sf
+					);
+					SizeF sz = gr.MeasureString(k + ":", ft);
 
 					gr.DrawString(
-						val, 
-						Font, 
-						new Pen(Color.FromArgb(140, this.ForeColor)).Brush, 
-						new RectangleF(new PointF(indentx+12+sz.Width, top), new SizeF(Width-(24+sz.Width+indentx), top+16)), 
-						sf);
-					SizeF sz2 = gr.MeasureString(
-						val, 
-						Font);
-						
-					Rectangle rect = new Rectangle(new Point((int)(indentx+12+sz.Width), top), new Size((int)(Width-(24+sz.Width+indentx)), top+16));					
+						val,
+						Font,
+						new Pen(Color.FromArgb(140, this.ForeColor)).Brush,
+						new RectangleF(
+							new PointF(indentx + 12 + sz.Width, top),
+							new SizeF(Width - (24 + sz.Width + indentx), top + 16)
+						),
+						sf
+					);
+					SizeF sz2 = gr.MeasureString(val, Font);
+
+					Rectangle rect = new Rectangle(
+						new Point((int)(indentx + 12 + sz.Width), top),
+						new Size((int)(Width - (24 + sz.Width + indentx)), top + 16)
+					);
 
 					top += (int)Math.Max(sz.Height, sz2.Height);
 					ft.Dispose();
 				}
 			}
 		}
-		
+
 		#endregion
 	}
 }

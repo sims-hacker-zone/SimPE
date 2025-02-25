@@ -25,26 +25,29 @@ namespace SimPe.Geometry
 	/// <summary>
 	/// One basic Vector Transformation
 	/// </summary>
-	public class VectorTransformation 
+	public class VectorTransformation
 	{
 		public const double SMALL_NUMBER = 0.000001;
+
 		/// <summary>
 		/// What Order should the Transformation be applied
 		/// </summary>
-		public enum TransformOrder : byte 
+		public enum TransformOrder : byte
 		{
 			/// <summary>
 			/// Rotate then Translate
 			/// </summary>
 			RotateTranslate = 0,
+
 			/// <summary>
 			/// Translate then Rotate (rigid Body)
 			/// </summary>
-			TranslateRotate = 1
+			TranslateRotate = 1,
 		};
 
 		#region Attributes
 		TransformOrder o;
+
 		/// <summary>
 		/// Returns / Sets the current Order
 		/// </summary>
@@ -54,23 +57,25 @@ namespace SimPe.Geometry
 			set { o = value; }
 		}
 		Vector3f trans;
+
 		/// <summary>
 		/// The Translation
 		/// </summary>
 		public Vector3f Translation
 		{
 			get { return trans; }
-			set {trans = value; }
+			set { trans = value; }
 		}
 
 		Quaternion quat;
+
 		/// <summary>
 		/// The Rotation
 		/// </summary>
-		public Quaternion Rotation  
+		public Quaternion Rotation
 		{
 			get { return quat; }
-			set {quat = value; }
+			set { quat = value; }
 		}
 		#endregion
 
@@ -78,7 +83,7 @@ namespace SimPe.Geometry
 		/// Create a new Instance
 		/// </summary>
 		/// <param name="o">The order of the Transform</param>
-		public VectorTransformation(TransformOrder o) 
+		public VectorTransformation(TransformOrder o)
 		{
 			this.o = o;
 			trans = new Vector3f();
@@ -89,13 +94,12 @@ namespace SimPe.Geometry
 		/// Create a new Instance
 		/// </summary>
 		/// <remarks>Order is implicit set to <see cref="TransformOrder.TranslateRotate"/></remarks>
-		public VectorTransformation() : this (TransformOrder.TranslateRotate)
-		{
-		}
+		public VectorTransformation()
+			: this(TransformOrder.TranslateRotate) { }
 
 		public override string ToString()
 		{
-			return "trans="+trans.ToString()+"    rot="+quat.ToString();
+			return "trans=" + trans.ToString() + "    rot=" + quat.ToString();
 		}
 
 		/// <summary>
@@ -104,15 +108,15 @@ namespace SimPe.Geometry
 		/// <param name="reader">The Stream that contains the FileData</param>
 		public virtual void Unserialize(System.IO.BinaryReader reader)
 		{
-			if (o==TransformOrder.RotateTranslate) 
+			if (o == TransformOrder.RotateTranslate)
 			{
 				quat.Unserialize(reader);
 				trans.Unserialize(reader);
-			} 
-			else 
+			}
+			else
 			{
 				trans.Unserialize(reader);
-				quat.Unserialize(reader);				
+				quat.Unserialize(reader);
 			}
 		}
 
@@ -121,17 +125,17 @@ namespace SimPe.Geometry
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public virtual void Serialize(System.IO.BinaryWriter writer)
 		{
-			if (o==TransformOrder.RotateTranslate) 
+			if (o == TransformOrder.RotateTranslate)
 			{
 				quat.Serialize(writer);
 				trans.Serialize(writer);
-			} 
-			else 
+			}
+			else
 			{
 				trans.Serialize(writer);
 				quat.Serialize(writer);
@@ -143,19 +147,19 @@ namespace SimPe.Geometry
 		/// </summary>
 		/// <param name="v">The Vertex you want to Transform</param>
 		/// <returns>Transformed Vertex</returns>
-		public Vector3f Transform(Vector3f v) 
+		public Vector3f Transform(Vector3f v)
 		{
-			if (o==TransformOrder.RotateTranslate) 
+			if (o == TransformOrder.RotateTranslate)
 			{
 				v = quat.Rotate(v);
 				return v + trans;
-			} 
-			else 
+			}
+			else
 			{
 				v += trans;
 				return quat.Rotate(v);
 			}
-		}	
+		}
 
 		/// <summary>
 		/// Create a Clone of this Transformation Set
@@ -184,7 +188,7 @@ namespace SimPe.Geometry
 	/// <summary>
 	/// Typesave ArrayList for VectorTransformation Objects
 	/// </summary>
-	public class VectorTransformations : ArrayList 
+	public class VectorTransformations : ArrayList
 	{
 		/// <summary>
 		/// Integer Indexer
@@ -241,12 +245,12 @@ namespace SimPe.Geometry
 		public bool Contains(VectorTransformation item)
 		{
 			return base.Contains(item);
-		}		
+		}
 
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length 
+		public int Length
 		{
 			get { return this.Count; }
 		}
@@ -258,7 +262,8 @@ namespace SimPe.Geometry
 		public override object Clone()
 		{
 			VectorTransformations list = new VectorTransformations();
-			foreach (VectorTransformation item in this) list.Add(item);
+			foreach (VectorTransformation item in this)
+				list.Add(item);
 
 			return list;
 		}

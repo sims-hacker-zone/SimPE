@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 using SimPe.Events;
 
 namespace SimPe.Interfaces
@@ -31,7 +31,7 @@ namespace SimPe.Interfaces
 	{
 		/// <summary>
 		/// This Eventhandler will be connected to the ExecuteAction Event of the Caller, you should
-		/// perform the Action here. You can notify the caller of Changes when setting the apropriate 
+		/// perform the Action here. You can notify the caller of Changes when setting the apropriate
 		/// Attributes in e
 		/// </summary>
 		/// <param name="sender"></param>
@@ -39,11 +39,11 @@ namespace SimPe.Interfaces
 		void ExecuteEventHandler(object sender, ResourceEventArgs e);
 
 		/// <summary>
-		/// This EventHandler will be connected to the ChangeResource Event of the Caller, you can set 
+		/// This EventHandler will be connected to the ChangeResource Event of the Caller, you can set
 		/// the Enabled State here
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		bool ChangeEnabledStateEventHandler(object sender, ResourceEventArgs e);		
+		bool ChangeEnabledStateEventHandler(object sender, ResourceEventArgs e);
 	}
 }

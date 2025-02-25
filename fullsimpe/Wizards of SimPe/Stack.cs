@@ -42,7 +42,7 @@ namespace SimPe.Wizards
 		/// </summary>
 		public bool IsEmpty
 		{
-			get { return stack.Count==0; }
+			get { return stack.Count == 0; }
 		}
 
 		/// <summary>
@@ -61,14 +61,15 @@ namespace SimPe.Wizards
 		{
 			stack.Add(obj);
 		}
+
 		/// <summary>
 		/// Returns the last Item put on the STack
 		/// </summary>
 		/// <returns>null or the last Item</returns>
 		public IWizardForm Tail()
 		{
-			if (!IsEmpty) 
-				return (IWizardForm)stack[stack.Count-1];
+			if (!IsEmpty)
+				return (IWizardForm)stack[stack.Count - 1];
 
 			return null;
 		}
@@ -80,7 +81,7 @@ namespace SimPe.Wizards
 		/// <remarks>Returns null if the stack was empty</remarks>
 		public IWizardForm Pop()
 		{
-			if (!IsEmpty) 
+			if (!IsEmpty)
 			{
 				IWizardForm wf = Tail();
 				stack.Remove(wf);

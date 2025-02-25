@@ -19,38 +19,46 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using System.Resources;
 using System.Collections.Generic;
-using System.Text;
-using System.IO;
 using System.ComponentModel;
+using System.IO;
+using System.Resources;
+using System.Text;
 
 namespace pj
 {
-    class Settings : SimPe.GlobalizedObject
-    {
-        const string BASENAME = "PJSE\\BMtool";
-        SimPe.XmlRegistryKey xrk = SimPe.Helper.WindowsRegistry.PluginRegistryKey;
-        SimPe.XmlRegistryKey rkf = SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(BASENAME);
-        public Settings() : base(new ResourceManager(typeof(Settings))) { }
+	class Settings : SimPe.GlobalizedObject
+	{
+		const string BASENAME = "PJSE\\BMtool";
+		SimPe.XmlRegistryKey xrk = SimPe.Helper.WindowsRegistry.PluginRegistryKey;
+		SimPe.XmlRegistryKey rkf =
+			SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(BASENAME);
 
-        private static Settings settings = new Settings();
+		public Settings()
+			: base(new ResourceManager(typeof(Settings))) { }
 
-        [Category("PJSE")]
-        public static bool BodyMeshExtractUseCres
-        {
-            get
-            {
-                SimPe.XmlRegistryKey rkf = SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(BASENAME);
-                object o = rkf.GetValue("meshexttractusecres", false);
-                return Convert.ToBoolean(o);
-            }
+		private static Settings settings = new Settings();
 
-            set
-            {
-                SimPe.XmlRegistryKey rkf = SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(BASENAME);
-                rkf.SetValue("meshexttractusecres", value);
-            }
-        }
-    }
+		[Category("PJSE")]
+		public static bool BodyMeshExtractUseCres
+		{
+			get
+			{
+				SimPe.XmlRegistryKey rkf =
+					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
+						BASENAME
+					);
+				object o = rkf.GetValue("meshexttractusecres", false);
+				return Convert.ToBoolean(o);
+			}
+			set
+			{
+				SimPe.XmlRegistryKey rkf =
+					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
+						BASENAME
+					);
+				rkf.SetValue("meshexttractusecres", value);
+			}
+		}
+	}
 }

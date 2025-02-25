@@ -1,12 +1,10 @@
 using System;
 using System.Collections;
-
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Scenegraph;
 using SimPe.Packages;
 using SimPe.PackedFiles.Wrapper;
-
 
 namespace SimPe.Plugin
 {
@@ -36,14 +34,15 @@ namespace SimPe.Plugin
 		{
 			uint c = Convert.ToUInt32(compositeValue);
 			uint d = Convert.ToUInt32(discreteValue);
-			if (d == 0) return (c == 0);
+			if (d == 0)
+				return (c == 0);
 			return (c & d) == d;
-        }
+		}
 
-        public static bool EnumCheck(Enum compValue, Enum disValue)
-        {
-            return Convert.ToUInt32(compValue) == Convert.ToUInt32(disValue);
-        }
+		public static bool EnumCheck(Enum compValue, Enum disValue)
+		{
+			return Convert.ToUInt32(compValue) == Convert.ToUInt32(disValue);
+		}
 
 		/// <summary>
 		/// Finds file descriptors of a given type, group or instance in a given package.
@@ -53,7 +52,12 @@ namespace SimPe.Plugin
 		/// <param name="group">Optional group id (optional=0)</param>
 		/// <param name="instance">Optional instance id (optional=0)</param>
 		/// <returns></returns>
-		public static IPackedFileDescriptor[] FindFiles(IPackageFile package, uint type, uint group, uint instance)
+		public static IPackedFileDescriptor[] FindFiles(
+			IPackageFile package,
+			uint type,
+			uint group,
+			uint instance
+		)
 		{
 			ArrayList ret = new ArrayList();
 			IPackedFileDescriptor[] files = package.FindFiles(type);
@@ -61,14 +65,22 @@ namespace SimPe.Plugin
 			{
 				switch (group)
 				{
-					case 0: break;
-					default: if (group != file.Group) continue; break;
+					case 0:
+						break;
+					default:
+						if (group != file.Group)
+							continue;
+						break;
 				}
 
 				switch (instance)
 				{
-					case 0: break;
-					default: if (instance != file.Instance) continue; break;
+					case 0:
+						break;
+					default:
+						if (instance != file.Instance)
+							continue;
+						break;
 				}
 
 				ret.Add(file);
@@ -87,16 +99,72 @@ namespace SimPe.Plugin
 
 		public sealed class HairtoneGuid
 		{
-			public static readonly Guid Black = new Guid(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-			public static readonly Guid Brown = new Guid(2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-			public static readonly Guid Blond = new Guid(3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-			public static readonly Guid Red   = new Guid(4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            public static readonly Guid Grey = new Guid(5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            public static readonly Guid Custom = new Guid(6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+			public static readonly Guid Black = new Guid(
+				1,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			);
+			public static readonly Guid Brown = new Guid(
+				2,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			);
+			public static readonly Guid Blond = new Guid(
+				3,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			);
+			public static readonly Guid Red = new Guid(4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+			public static readonly Guid Grey = new Guid(
+				5,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			);
+			public static readonly Guid Custom = new Guid(
+				6,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			);
 		}
-
 	}
-
-
-
 }

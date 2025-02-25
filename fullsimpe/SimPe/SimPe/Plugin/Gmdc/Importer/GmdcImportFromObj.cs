@@ -18,23 +18,24 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.IO;
-using System.Globalization;
 using System.Collections;
-using SimPe.Plugin.Gmdc;
+using System.Globalization;
+using System.IO;
 using SimPe.Geometry;
+using SimPe.Plugin.Gmdc;
 
 namespace SimPe.Plugin.Gmdc.Importer
 {
 	/// <summary>
 	/// This class provides the functionality to Import Data from the .obj FileFormat
-	/// </summary>	
+	/// </summary>
 	public class GmdcImportFromObj : GmdcImporterBase
-	{		
+	{
 		/// <summary>
 		/// Default Constructor
 		/// </summary>
-		public GmdcImportFromObj() : base() {}
+		public GmdcImportFromObj()
+			: base() { }
 
 		#region AbstractGmdcImporter Implementation
 		/// <summary>
@@ -42,7 +43,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 		/// </summary>
 		public override string FileExtension
 		{
-			get {return ".obj";}
+			get { return ".obj"; }
 		}
 
 		/// <summary>
@@ -50,19 +51,19 @@ namespace SimPe.Plugin.Gmdc.Importer
 		/// </summary>
 		public override string FileDescription
 		{
-			get {return "Maya Object File";}
-		}		
+			get { return "Maya Object File"; }
+		}
 
 		/// <summary>
 		/// Returns the name of the Author
 		/// </summary>
 		public override string Author
 		{
-			get {return "Emily";}
+			get { return "Emily"; }
 		}
 		#endregion
-		
-		string lineerror;	
+
+		string lineerror;
 		string groupname;
 
 		/// <summary>
@@ -70,7 +71,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 		/// </summary>
 		protected override void LoadLists()
 		{
-			error = "";			
+			error = "";
 			vertices = new ArrayList();
 			normals = new ArrayList();
 			uvmaps = new ArrayList();
@@ -78,10 +79,10 @@ namespace SimPe.Plugin.Gmdc.Importer
 			//Begin with a global Group
 			groups = new Hashtable();
 			StartGroup("SimPEGlobal");
-			
+
 			int linect = 0;
 
-			while (Input.Peek()!=-1) 
+			while (Input.Peek() != -1)
 			{
 				linect++;
 				string line = Input.ReadLine();
@@ -89,43 +90,67 @@ namespace SimPe.Plugin.Gmdc.Importer
 
 				//cut off comments
 				int pos = line.IndexOf("#");
-				if (pos>=0) line = line.Substring(0, pos);
+				if (pos >= 0)
+					line = line.Substring(0, pos);
 				line = line.Trim().ToLower();
-				
+
 				pos = line.IndexOf(" ");
 				string content = "";
-				if (pos!=-1) 
+				if (pos != -1)
 				{
-					content = line.Substring(pos+1).Trim();
+					content = line.Substring(pos + 1).Trim();
 					line = line.Substring(0, pos).Trim();
 				}
 
-				if (content.Trim()=="") continue;
+				if (content.Trim() == "")
+					continue;
 
 				//remove double whitespaces
-				while (content.IndexOf("  ")!=-1) content = content.Replace("  ", " ");
+				while (content.IndexOf("  ") != -1)
+					content = content.Replace("  ", " ");
 
 				lineerror = null;
-				
-				if (line == "v") ParseTriplets(vertices, content, false); //Vertex
-				else if (line == "vn") ParseTriplets(normals, content, true); //Vertex Normal
-				else if (line == "vt") ParsePair(uvmaps, content); // Vertex Texture
-				else if (line == "g") StartGroup(content);  // new Group
-				else if (line == "f") ProcessFaceList(content); // Face
-				else if (line == "s") { ; }//smoothing Group;
-				else if (line == "mtllib") { ; }//material file;
-				else if (line == "usemtl") { ; }//material assignement;
-				else if (Helper.WindowsRegistry.HiddenMode) lineerror = "[Warning:] Unknown token. (will be ignored)";
 
-
-				if (lineerror!=null) 
+				if (line == "v")
+					ParseTriplets(vertices, content, false); //Vertex
+				else if (line == "vn")
+					ParseTriplets(normals, content, true); //Vertex Normal
+				else if (line == "vt")
+					ParsePair(uvmaps, content); // Vertex Texture
+				else if (line == "g")
+					StartGroup(content); // new Group
+				else if (line == "f")
+					ProcessFaceList(content); // Face
+				else if (line == "s")
 				{
-					error += "Line "+linect.ToString()+": "+lineerror+" ("+oline+")"+Helper.lbr;
+					;
+				} //smoothing Group;
+				else if (line == "mtllib")
+				{
+					;
+				} //material file;
+				else if (line == "usemtl")
+				{
+					;
+				} //material assignement;
+				else if (Helper.WindowsRegistry.HiddenMode)
+					lineerror = "[Warning:] Unknown token. (will be ignored)";
+
+				if (lineerror != null)
+				{
+					error +=
+						"Line "
+						+ linect.ToString()
+						+ ": "
+						+ lineerror
+						+ " ("
+						+ oline
+						+ ")"
+						+ Helper.lbr;
 				}
 			}
 		}
 
-			
 		/// <summary>
 		/// Pares a Line containing three Float Values and add them to the given List
 		/// </summary>
@@ -135,28 +160,42 @@ namespace SimPe.Plugin.Gmdc.Importer
 		void ParseTriplets(ArrayList list, string line, bool normal)
 		{
 			string[] tokens = line.Split(" ".ToCharArray());
-			if (tokens.Length>=3) 
+			if (tokens.Length >= 3)
 			{
 				float[] data = new float[3];
-				try 
+				try
 				{
-					for (int i=0; i<3; i++) 
-						data[i] = Convert.ToSingle(tokens[i], AbstractGmdcImporter.DefaultCulture);
+					for (int i = 0; i < 3; i++)
+						data[i] = Convert.ToSingle(
+							tokens[i],
+							AbstractGmdcImporter.DefaultCulture
+						);
 
 					Vector3f vec = new Vector3f(data[0], data[1], data[2]);
-					if (!normal) vec = Component.InverseTransformScaled(vec);
-					else vec = Component.InverseTransformNormal(vec);
-					SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat v = new GmdcElementValueThreeFloat((float)vec.X, (float)vec.Y, (float)vec.Z);
+					if (!normal)
+						vec = Component.InverseTransformScaled(vec);
+					else
+						vec = Component.InverseTransformNormal(vec);
+					SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat v =
+						new GmdcElementValueThreeFloat(
+							(float)vec.X,
+							(float)vec.Y,
+							(float)vec.Z
+						);
 					list.Add(v);
-				} 
-				catch 
-				{				
+				}
+				catch
+				{
 					lineerror = "Unable to pares float Value.";
 					return;
 				}
-			} 
+			}
 
-			if (tokens.Length<3 || (tokens.Length!=3 && Helper.WindowsRegistry.HiddenMode))  lineerror = "No FloatTriplet line";
+			if (
+				tokens.Length < 3
+				|| (tokens.Length != 3 && Helper.WindowsRegistry.HiddenMode)
+			)
+				lineerror = "No FloatTriplet line";
 		}
 
 		/// <summary>
@@ -167,39 +206,51 @@ namespace SimPe.Plugin.Gmdc.Importer
 		void ParsePair(ArrayList list, string line)
 		{
 			string[] tokens = line.Split(" ".ToCharArray());
-			if (tokens.Length>=2) 
+			if (tokens.Length >= 2)
 			{
 				float[] data = new float[2];
-				try 
+				try
 				{
-					for (int i=0; i<2; i++) data[i] = Convert.ToSingle(tokens[i], AbstractGmdcImporter.DefaultCulture);
+					for (int i = 0; i < 2; i++)
+						data[i] = Convert.ToSingle(
+							tokens[i],
+							AbstractGmdcImporter.DefaultCulture
+						);
 
-					SimPe.Plugin.Gmdc.GmdcElementValueTwoFloat v = new GmdcElementValueTwoFloat(data[0], -data[1]);
+					SimPe.Plugin.Gmdc.GmdcElementValueTwoFloat v =
+						new GmdcElementValueTwoFloat(data[0], -data[1]);
 					list.Add(v);
-				} 
+				}
 				catch
 				{
 					lineerror = "Unable to pares float Value.";
 					return;
 				}
-			} 
+			}
 
-			if (tokens.Length<2 || (tokens.Length!=2 && Helper.WindowsRegistry.HiddenMode)) lineerror = "No FloatPair line";
+			if (
+				tokens.Length < 2
+				|| (tokens.Length != 2 && Helper.WindowsRegistry.HiddenMode)
+			)
+				lineerror = "No FloatPair line";
 		}
 
 		/// <summary>
 		/// Start a new Group
 		/// </summary>
 		/// <param name="name"></param>
-		void StartGroup(string name) 
-		{			
+		void StartGroup(string name)
+		{
 			//make the name unique
 			if (groups.Contains(name))
 			{
-				int i=1;
-				while (groups.Contains(name+"_"+i.ToString())) { i++; }
-				lineerror = "Duplicate Groupname. Changed "+name+" to ";
-				name += "_"+i.ToString();
+				int i = 1;
+				while (groups.Contains(name + "_" + i.ToString()))
+				{
+					i++;
+				}
+				lineerror = "Duplicate Groupname. Changed " + name + " to ";
+				name += "_" + i.ToString();
 				lineerror += name;
 			}
 
@@ -215,7 +266,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 		void ProcessFaceList(string content)
 		{
 			string[] tokens = content.Split(" ".ToCharArray());
-			if (tokens.Length==4) //process a Quad (only convex quads are supported)
+			if (tokens.Length == 4) //process a Quad (only convex quads are supported)
 			{
 				string s = tokens[0] + " " + tokens[1] + " " + tokens[2];
 				ProcessFaceList(s);
@@ -223,33 +274,36 @@ namespace SimPe.Plugin.Gmdc.Importer
 				s = tokens[2] + " " + tokens[3] + " " + tokens[0];
 				ProcessFaceList(s);
 			}
-			else if (tokens.Length==3) //process triangle
+			else if (tokens.Length == 3) //process triangle
 			{
-				
-				try 
+				try
 				{
-					for (int i=0; i<3; i++) 
+					for (int i = 0; i < 3; i++)
 					{
 						float[] data = new float[3];
-						data[0] = 0; data[1] = 0; data[2] = 0;
+						data[0] = 0;
+						data[1] = 0;
+						data[2] = 0;
 
 						string[] items = tokens[i].Split("/".ToCharArray());
-						for (int j=0; j<Math.Min(items.Length, 3); j++) 
+						for (int j = 0; j < Math.Min(items.Length, 3); j++)
 						{
-							if (items[j].Trim()=="") items[j] = "0";
+							if (items[j].Trim() == "")
+								items[j] = "0";
 							data[j] = Convert.ToInt32(items[j]);
 						}
-						SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat v = new GmdcElementValueThreeFloat(data[0], data[1], data[2]);
+						SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat v =
+							new GmdcElementValueThreeFloat(data[0], data[1], data[2]);
 						faces.Add(v);
-					}					
-				} 
-				catch 
+					}
+				}
+				catch
 				{
 					lineerror = "Unable to pares index Value.";
 					return;
 				}
-			} 
-			else 
+			}
+			else
 			{
 				lineerror = "No valid Face List.";
 			}

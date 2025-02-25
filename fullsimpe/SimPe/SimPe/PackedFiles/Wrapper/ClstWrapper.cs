@@ -19,8 +19,8 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
 {
@@ -28,17 +28,20 @@ namespace SimPe.PackedFiles.Wrapper
 	/// This is the actual FileWrapper
 	/// </summary>
 	/// <remarks>
-	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads 
+	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
 	public class CompressedFileList
-		: AbstractWrapper				//Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-		, IFileWrapper					//This Interface is used when loading a File
-		, IFileWrapperSaveExtension		//This Interface (if available) will be used to store a File
-		//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
+			,
+			IFileWrapper //This Interface is used when loading a File
+			,
+			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
+	//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 	{
 		#region Attributes
 		Data.MetaData.IndexTypes iformat;
+
 		/// <summary>
 		/// Returns or Sets wether the type of the Index
 		/// </summary>
@@ -48,11 +51,9 @@ namespace SimPe.PackedFiles.Wrapper
 			set { iformat = value; }
 		}
 
-		
-
 		/// <summary>
 		/// Contains all available Items
-		/// </summary>		
+		/// </summary>
 		private ClstItem[] items;
 
 		/// <summary>
@@ -60,21 +61,17 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public ClstItem[] Items
 		{
-			get { 
-				return items;	
-			}
-			set 
-			{
-				items = value;
-			}
+			get { return items; }
+			set { items = value; }
 		}
 		#endregion
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		internal CompressedFileList() : base()
-		{		
+		internal CompressedFileList()
+			: base()
+		{
 			iformat = Data.MetaData.IndexTypes.ptShortFileIndex;
 			items = new ClstItem[0];
 		}
@@ -83,8 +80,9 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Constructor
 		/// </summary>
 		/// <param name="type">ize of the Package Index</param>
-		public CompressedFileList(Data.MetaData.IndexTypes type) : base()
-		{		
+		public CompressedFileList(Data.MetaData.IndexTypes type)
+			: base()
+		{
 			iformat = type;
 			items = new ClstItem[0];
 		}
@@ -95,8 +93,9 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="type">ize of the Package Index</param>
 		/// <param name="pfd"></param>
 		/// <param name="package"></param>
-		public CompressedFileList(IPackedFileDescriptor pfd, IPackageFile package) : base()
-		{		
+		public CompressedFileList(IPackedFileDescriptor pfd, IPackageFile package)
+			: base()
+		{
 			iformat = package.Header.IndexType;
 			items = new ClstItem[0];
 			this.ProcessData(pfd, package);
@@ -109,17 +108,22 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <returns>-1 if none was foudn or the index number of the first matching file</returns>
 		public int FindFile(IPackedFileDescriptor pfd)
 		{
-			if (items == null) 
+			if (items == null)
 				return -1;
-			for(int i=0; i<this.items.Length; i++) 
+			for (int i = 0; i < this.items.Length; i++)
 			{
 				ClstItem lfi = items[i];
 
-				if (	(lfi.Group == pfd.Group) &&
-					(lfi.Instance == pfd.Instance) &&
-					((lfi.SubType == pfd.SubType) || (iformat==Data.MetaData.IndexTypes.ptShortFileIndex) ) && 
-					(lfi.Type == pfd.Type) ) return i;
-
+				if (
+					(lfi.Group == pfd.Group)
+					&& (lfi.Instance == pfd.Instance)
+					&& (
+						(lfi.SubType == pfd.SubType)
+						|| (iformat == Data.MetaData.IndexTypes.ptShortFileIndex)
+					)
+					&& (lfi.Type == pfd.Type)
+				)
+					return i;
 			}
 
 			return -1;
@@ -134,20 +138,22 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Adds a new File to the Items
 		/// </summary>
 		/// <param name="item">the new File</param>
-		public void Add(ClstItem item) 
+		public void Add(ClstItem item)
 		{
 			ClstItem[] its = new ClstItem[items.Length + 1];
 			items.CopyTo(its, 0);
-			its[its.Length-1] = item;
+			its[its.Length - 1] = item;
 
 			items = its;
 		}
 
-		
 		#region IWrapper member
-		public override bool CheckVersion(uint version) { return true; }
+		public override bool CheckVersion(uint version)
+		{
+			return true;
+		}
 		#endregion
-		
+
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
@@ -165,8 +171,11 @@ namespace SimPe.PackedFiles.Wrapper
 				"Quaxi",
 				"This File contains a List of all compressed Files that are stored within this Package.",
 				2,
-				System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.clst.png"))
-				);   
+				System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream("SimPe.img.clst.png")
+				)
+			);
 		}
 
 		/// <summary>
@@ -177,7 +186,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			this.IndexType = package.Header.IndexType;
 			long count = 0;
-			if(iformat == Data.MetaData.IndexTypes.ptLongFileIndex) 
+			if (iformat == Data.MetaData.IndexTypes.ptLongFileIndex)
 				count = reader.BaseStream.Length / 0x14;
 			else
 				count = reader.BaseStream.Length / 0x10;
@@ -185,20 +194,28 @@ namespace SimPe.PackedFiles.Wrapper
 
 			long pos = reader.BaseStream.Position;
 			bool switch_t = false;
-			for (int i=0; i< count; i++) 
+			for (int i = 0; i < count; i++)
 			{
 				ClstItem item = new ClstItem(this.IndexType);
 				item.Unserialize(reader);
-				
 
-				if ((i==2)  && (!switch_t))
+				if ((i == 2) && (!switch_t))
 				{
 					switch_t = true;
-					if (Package.FindFile(item.Type, item.SubType, item.Group, item.Instance)==null) 
+					if (
+						Package.FindFile(
+							item.Type,
+							item.SubType,
+							item.Group,
+							item.Instance
+						) == null
+					)
 					{
-						i=0;
-						if (iformat == Data.MetaData.IndexTypes.ptLongFileIndex) iformat = Data.MetaData.IndexTypes.ptShortFileIndex;
-						else iformat = Data.MetaData.IndexTypes.ptLongFileIndex;
+						i = 0;
+						if (iformat == Data.MetaData.IndexTypes.ptLongFileIndex)
+							iformat = Data.MetaData.IndexTypes.ptShortFileIndex;
+						else
+							iformat = Data.MetaData.IndexTypes.ptLongFileIndex;
 
 						reader.BaseStream.Seek(pos, System.IO.SeekOrigin.Begin);
 						item = new ClstItem(this.IndexType);
@@ -215,19 +232,19 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
-		{			
-			for (int i=0; i< items.Length; i++) 
+		{
+			for (int i = 0; i < items.Length; i++)
 			{
 				items[i].Serialize(writer, this.IndexType);
 			}
 		}
 		#endregion
 
-		#region IFileWrapperSaveExtension Member		
+		#region IFileWrapperSaveExtension Member
 		//all covered by Serialize()
 		#endregion
 
@@ -240,9 +257,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				Byte[] sig = {
-								 
-							 };
+				Byte[] sig = { };
 				return sig;
 			}
 		}
@@ -254,14 +269,15 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				uint[] types = {
-								  0xE86B1EEF	//clst 	
-							   };
-			
+				uint[] types =
+				{
+					0xE86B1EEF, //clst
+				};
+
 				return types;
 			}
 		}
 
-		#endregion		
+		#endregion
 	}
 }

@@ -19,30 +19,33 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Wrapper;
 
 namespace SimPe.PackedFiles.Wrapper
 {
 	/// <summary>
 	/// Used to decode the Group Cache
-	/// </summary>	
+	/// </summary>
 	public class Slot
-		: AbstractWrapper				//Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-		, IFileWrapper					//This Interface is used when loading a File
-		, IFileWrapperSaveExtension		//This Interface (if available) will be used to store a File
+		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
+			,
+			IFileWrapper //This Interface is used when loading a File
+			,
+			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
 	{
 		#region Attributes
 		uint id;
 		SlotItems items;
+
 		/// <summary>
 		/// Returns the Items stored in the FIle
 		/// </summary>
 		/// <remarks>Do not add Items based on this List! use the Add Method!!</remarks>
-		public SlotItems Items 
+		public SlotItems Items
 		{
-			get {return items;}
+			get { return items; }
 		}
 
 		string filename;
@@ -71,19 +74,22 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public Slot() : base()
-		{		
+		public Slot()
+			: base()
+		{
 			items = new SlotItems();
 			filename = "";
 			id = 0x534C4F54;
 			version = 4;
 		}
 
-		
 		#region IWrapper member
-		public override bool CheckVersion(uint version) { return true; }
+		public override bool CheckVersion(uint version)
+		{
+			return true;
+		}
 		#endregion
-		
+
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
@@ -101,8 +107,11 @@ namespace SimPe.PackedFiles.Wrapper
 				"Quaxi",
 				"",
 				1,
-				System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.slot.png"))
-				);   
+				System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream("SimPe.img.slot.png")
+				)
+			);
 		}
 
 		/// <summary>
@@ -118,7 +127,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 			int ct = reader.ReadInt32();
 			items.Clear();
-			for (int i=0; i<ct; i++) 
+			for (int i = 0; i < ct; i++)
 			{
 				SlotItem item = new SlotItem(this);
 				item.Unserialize(reader);
@@ -132,25 +141,25 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
-		{	
+		{
 			writer.Write(Helper.ToBytes(filename, 0x40));
 			writer.Write(id);
 			writer.Write(version);
 			writer.Write(unknown);
 
 			writer.Write((int)items.Length);
-			for (int i=0; i<items.Length; i++) 
+			for (int i = 0; i < items.Length; i++)
 			{
 				items[i].Serialize(writer, this);
 			}
 		}
 		#endregion
 
-		#region IFileWrapperSaveExtension Member		
+		#region IFileWrapperSaveExtension Member
 		//all covered by Serialize()
 		#endregion
 
@@ -159,7 +168,12 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				return "FileName="+this.FileName+", Version="+this.Version+", Items="+items.Count.ToString();
+				return "FileName="
+					+ this.FileName
+					+ ", Version="
+					+ this.Version
+					+ ", Items="
+					+ items.Count.ToString();
 			}
 		}
 
@@ -170,9 +184,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				Byte[] sig = {
-								 
-							 };
+				Byte[] sig = { };
 				return sig;
 			}
 		}
@@ -184,14 +196,12 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				uint[] types = {
-								  Data.MetaData.SLOT
-							   };
-			
+				uint[] types = { Data.MetaData.SLOT };
+
 				return types;
 			}
 		}
 
-		#endregion		
+		#endregion
 	}
 }

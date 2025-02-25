@@ -18,11 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces;
-using SimPe.PackedFiles.Wrapper.Supporting;
-using SimPe.Data;
 using System.Collections;
+using SimPe.Data;
+using SimPe.Interfaces;
+using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Wrapper.Supporting;
 
 namespace SimPe.PackedFiles.Wrapper
 {
@@ -30,66 +30,74 @@ namespace SimPe.PackedFiles.Wrapper
 	/// Summary description for ScorWrapper.
 	/// </summary>
 	public class Scor
-		: AbstractWrapper				//Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-		, IFileWrapper					//This Interface is used when loading a File
-		, IFileWrapperSaveExtension		//This Interface (if available) will be used to store a File
-		, IMultiplePackedFileWrapper
-        , System.Collections.Generic.IEnumerable<ScorItem>
-	{		
-
+		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
+			,
+			IFileWrapper //This Interface is used when loading a File
+			,
+			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
+			,
+			IMultiplePackedFileWrapper,
+			System.Collections.Generic.IEnumerable<ScorItem>
+	{
 		#region Attributes
 		ScorItems items;
 		protected ScorItems Items
 		{
-			get {return items;}
+			get { return items; }
 		}
 		uint version;
+
 		/// <summary>
 		/// Returns the Version of this File
 		/// </summary>
-		public uint Version 
+		public uint Version
 		{
 			get { return version; }
-		}		
+		}
 
-		uint unk1, unk2;
+		uint unk1,
+			unk2;
 
 		public uint Unknown1
 		{
-			get {return unk1;}
+			get { return unk1; }
 		}
 
 		public uint Unknown2
 		{
-			get {return unk2;}
+			get { return unk2; }
 		}
 		#endregion
-				
+
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public Scor() : base()
+		public Scor()
+			: base()
 		{
 			version = 0;
 			items = new ScorItems();
 		}
 
 		#region IWrapper member
-		public override bool CheckVersion(uint version) 
+		public override bool CheckVersion(uint version)
 		{
 			return true;
 		}
 		#endregion
 
-        protected override string GetResourceName(TypeAlias ta)
-        {
-            ExtSDesc sdsc = FileTable.ProviderRegistry.SimDescriptionProvider.FindSim((ushort)this.FileDescriptor.Instance) as ExtSDesc;
-            if (sdsc == null)
-                return base.GetResourceName(ta);
-            else
-                return sdsc.SimName + " " + sdsc.SimFamilyName + " (Scores)";
-        }
-		
+		protected override string GetResourceName(TypeAlias ta)
+		{
+			ExtSDesc sdsc =
+				FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(
+					(ushort)this.FileDescriptor.Instance
+				) as ExtSDesc;
+			if (sdsc == null)
+				return base.GetResourceName(ta);
+			else
+				return sdsc.SimName + " " + sdsc.SimFamilyName + " (Scores)";
+		}
+
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
@@ -108,7 +116,7 @@ namespace SimPe.PackedFiles.Wrapper
 				"Seems to contain some sort of Scores for a specific Sim",
 				2,
 				null
-				); 
+			);
 		}
 
 		/// <summary>
@@ -122,7 +130,7 @@ namespace SimPe.PackedFiles.Wrapper
 			unk2 = reader.ReadUInt32();
 
 			items.Clear();
-			while (reader.BaseStream.Position<reader.BaseStream.Length) 
+			while (reader.BaseStream.Position < reader.BaseStream.Length)
 			{
 				ScorItem si = new ScorItem(this);
 				si.Unserialize(reader);
@@ -130,17 +138,16 @@ namespace SimPe.PackedFiles.Wrapper
 				items.Add(si);
 			}
 
-            if (LoadedNewResource != null) LoadedNewResource(this, new EventArgs());
+			if (LoadedNewResource != null)
+				LoadedNewResource(this, new EventArgs());
 		}
-
-        
 
 		/// <summary>
 		/// Serializes a the Attributes stored in this Instance to the BinaryStream
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
@@ -149,15 +156,15 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write(unk1);
 			writer.Write(unk2);
 
-			for (int i=0; i<items.Count; i++) 
+			for (int i = 0; i < items.Count; i++)
 			{
 				ScorItem si = items[i];
-				si.Serialize(writer, (i==items.Count-1));
+				si.Serialize(writer, (i == items.Count - 1));
 			}
 		}
 		#endregion
 
-		#region IFileWrapperSaveExtension Member		
+		#region IFileWrapperSaveExtension Member
 		//all covered by Serialize()
 		#endregion
 
@@ -168,10 +175,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get
-			{
-				return new byte[0];
-			}
+			get { return new byte[0]; }
 		}
 
 		/// <summary>
@@ -181,76 +185,79 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				uint[] types = {
-								  0x3053CF74
-							   };
+				uint[] types = { 0x3053CF74 };
 				return types;
 			}
 		}
 
-		#endregion		
+		#endregion
 
-        public class ChangedListEventArgs : EventArgs{
-            ScorItem si;
-            public ChangedListEventArgs(ScorItem si)
-            {
-                this.si = si;
-            }
+		public class ChangedListEventArgs : EventArgs
+		{
+			ScorItem si;
 
-            public ScorItem Item
-            {
-                get { return si; }
-            }
-        }
-        public delegate void ChangedListHandler(Scor sender, ChangedListEventArgs e);
-        public event ChangedListHandler AddedItem;
-        public event ChangedListHandler RemovedItem;
-        public event System.EventHandler LoadedNewResource;
+			public ChangedListEventArgs(ScorItem si)
+			{
+				this.si = si;
+			}
 
-        public void Add(string name)
-        {
-            ChangedListEventArgs e = new ChangedListEventArgs(new ScorItem(name, this));
-            this.Items.Add(e.Item);
-            if (AddedItem != null) AddedItem(this, e);
-            this.Changed = true;
-        }
+			public ScorItem Item
+			{
+				get { return si; }
+			}
+		}
 
-        public void Remove(ScorItem si)
-        {
-            if (si == null) return;
-            items.Remove(si);
-            ChangedListEventArgs e = new ChangedListEventArgs(si);
-            if (RemovedItem != null) RemovedItem(this, e);
-            this.Changed = true;
-        }
+		public delegate void ChangedListHandler(Scor sender, ChangedListEventArgs e);
+		public event ChangedListHandler AddedItem;
+		public event ChangedListHandler RemovedItem;
+		public event System.EventHandler LoadedNewResource;
 
-        public ScorItem this[int index]
-        {
-            get { return items[index]; }
-        }
+		public void Add(string name)
+		{
+			ChangedListEventArgs e = new ChangedListEventArgs(new ScorItem(name, this));
+			this.Items.Add(e.Item);
+			if (AddedItem != null)
+				AddedItem(this, e);
+			this.Changed = true;
+		}
 
+		public void Remove(ScorItem si)
+		{
+			if (si == null)
+				return;
+			items.Remove(si);
+			ChangedListEventArgs e = new ChangedListEventArgs(si);
+			if (RemovedItem != null)
+				RemovedItem(this, e);
+			this.Changed = true;
+		}
 
-        public int Count
-        {
-            get { return items.Count; }
-        }
+		public ScorItem this[int index]
+		{
+			get { return items[index]; }
+		}
 
-        #region IEnumerable Members
+		public int Count
+		{
+			get { return items.Count; }
+		}
 
-        public IEnumerator GetEnumerator()
-        {
-            return items.GetEnumerator();
-        }
+		#region IEnumerable Members
 
-        #endregion
+		public IEnumerator GetEnumerator()
+		{
+			return items.GetEnumerator();
+		}
 
-        #region IEnumerable<ScorItem> Members
+		#endregion
 
-        System.Collections.Generic.IEnumerator<ScorItem> System.Collections.Generic.IEnumerable<ScorItem>.GetEnumerator()
-        {
-            return items.GetScorItemEnumerator();
-        }
+		#region IEnumerable<ScorItem> Members
 
-        #endregion
-    }
+		System.Collections.Generic.IEnumerator<ScorItem> System.Collections.Generic.IEnumerable<ScorItem>.GetEnumerator()
+		{
+			return items.GetScorItemEnumerator();
+		}
+
+		#endregion
+	}
 }

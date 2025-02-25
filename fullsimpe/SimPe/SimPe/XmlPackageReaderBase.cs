@@ -18,10 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Xml;
-using System.IO;
 using System.Collections;
+using System.IO;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace SimPe
 {
@@ -30,12 +30,15 @@ namespace SimPe
 	/// </summary>
 	public abstract class XmlPackageReaderBase
 	{
-		protected void ClearFileIndex(SimPe.Packages.GeneratableFile file) 
+		protected void ClearFileIndex(SimPe.Packages.GeneratableFile file)
 		{
 			file.ClearFileIndex();
 		}
 
-		protected void AddToFileIndex(SimPe.Packages.GeneratableFile file, SimPe.Packages.PackedFileDescriptor pfd)
+		protected void AddToFileIndex(
+			SimPe.Packages.GeneratableFile file,
+			SimPe.Packages.PackedFileDescriptor pfd
+		)
 		{
 			file.Add(pfd);
 		}

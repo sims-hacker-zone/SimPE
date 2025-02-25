@@ -27,10 +27,7 @@ namespace SimPe.Interfaces
 	/// </summary>
 	public interface ISerializeFormater
 	{
-		string Seperator 
-		{
-			get;
-		}
+		string Seperator { get; }
 
 		string SaveStr(string val);
 
@@ -81,7 +78,10 @@ namespace SimPe.Interfaces
 		/// <param name="wrapper"></param>
 		/// <param name="pfd"></param>
 		/// <returns></returns>
-		string SerializeTGI(SimPe.Interfaces.Plugin.Internal.IPackedFileName wrapper, SimPe.Interfaces.Files.IPackedFileDescriptorBasic pfd);
+		string SerializeTGI(
+			SimPe.Interfaces.Plugin.Internal.IPackedFileName wrapper,
+			SimPe.Interfaces.Files.IPackedFileDescriptorBasic pfd
+		);
 
 		string SerializeTGIHeader();
 

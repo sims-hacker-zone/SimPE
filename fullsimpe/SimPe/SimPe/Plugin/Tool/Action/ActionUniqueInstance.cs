@@ -63,50 +63,59 @@ namespace SimPe.Plugin.Tool.Action
 	/// </summary>
 	public class ActionUniqueInstance : SimPe.Interfaces.IToolAction
 	{
-		
 		#region IToolAction Member
 
-        public virtual bool ChangeEnabledStateEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
-        {
-            return true;
-        }
+		public virtual bool ChangeEnabledStateEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs es
+		)
+		{
+			return true;
+		}
 
-        private bool RealChangeEnabledStateEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
-        {
-            return es.HasFileDescriptor;
-        }
+		private bool RealChangeEnabledStateEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs es
+		)
+		{
+			return es.HasFileDescriptor;
+		}
 
 		public void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs e)
 		{
-            if (!RealChangeEnabledStateEventHandler(null, e))
-            {
-                System.Windows.Forms.MessageBox.Show(Localization.GetString("This is not an appropriate context in which to use this tool"),
-                    Localization.GetString(this.ToString()));
-                return;
-            }
-					
+			if (!RealChangeEnabledStateEventHandler(null, e))
+			{
+				System.Windows.Forms.MessageBox.Show(
+					Localization.GetString(
+						"This is not an appropriate context in which to use this tool"
+					),
+					Localization.GetString(this.ToString())
+				);
+				return;
+			}
+
 			SimPe.Collections.PackedFileDescriptors pfds = e.GetDescriptors();
 			bool first = true;
 			uint inst = 0x8000;
 			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				if (first) 
+				if (first)
 				{
-					first =false;
+					first = false;
 					inst = pfd.Instance;
-				} 
-				else 
+				}
+				else
 				{
 					pfd.Instance = inst;
 				}
 
-				inst ++;
+				inst++;
 			}
 		}
 
-		#endregion		
+		#endregion
 
-		
+
 		#region IToolPlugin Member
 		public override string ToString()
 		{
@@ -117,23 +126,23 @@ namespace SimPe.Plugin.Tool.Action
 		#region IToolExt Member
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.None;
-			}
+			get { return System.Windows.Forms.Shortcut.None; }
 		}
 
 		public System.Drawing.Image Icon
 		{
 			get
 			{
-				return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.agent.png"));
+				return System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream("SimPe.img.agent.png")
+				);
 			}
 		}
 
-		public virtual bool Visible 
+		public virtual bool Visible
 		{
-			get {return true;}
+			get { return true; }
 		}
 
 		#endregion

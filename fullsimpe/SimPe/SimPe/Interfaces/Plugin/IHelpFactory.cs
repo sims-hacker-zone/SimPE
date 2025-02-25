@@ -25,13 +25,10 @@ namespace SimPe.Interfaces.Plugin
 	/// If a class inyour .dll implements this Interface, your Plugins can add a Menu into the Help Topics.
 	/// </summary>
 	public interface IHelpFactory
-	{		
+	{
 		/// <summary>
 		/// Returns all Plugin (dockable) Tools the Factory knows
 		/// </summary>
-		IHelp[] KnownHelpTopics
-		{
-			get;
-		}		
+		IHelp[] KnownHelpTopics { get; }
 	}
 }

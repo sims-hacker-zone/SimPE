@@ -27,20 +27,22 @@ namespace SimPe.Plugin
 	/// This is the actual FileWrapper
 	/// </summary>
 	/// <remarks>
-	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads 
+	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
 	public class Tatt
-		: AbstractWrapper				//Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-		, IFileWrapper					//This Interface is used when loading a File
-		, IFileWrapperSaveExtension		//This Interface (if available) will be used to store a File
-		, SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper
-		, System.Collections.IEnumerable
+		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
+			,
+			IFileWrapper //This Interface is used when loading a File
+			,
+			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
+			,
+			SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper,
+			System.Collections.IEnumerable
 	{
-		
-
 		#region Attributes
 		string flname;
+
 		/// <summary>
 		/// The FileName
 		/// </summary>
@@ -53,6 +55,7 @@ namespace SimPe.Plugin
 
 		byte[] id;
 		uint version;
+
 		/// <summary>
 		/// The Version
 		/// </summary>
@@ -62,6 +65,7 @@ namespace SimPe.Plugin
 			set { version = value; }
 		}
 		uint reserved;
+
 		/// <summary>
 		/// Reserved
 		/// </summary>
@@ -73,13 +77,14 @@ namespace SimPe.Plugin
 		ArrayList items;
 		#endregion
 
-		
+
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public Tatt() : base()
+		public Tatt()
+			: base()
 		{
-			id = new byte[] {(byte)'T', (byte)'T', (byte)'A', (byte)'T'};
+			id = new byte[] { (byte)'T', (byte)'T', (byte)'A', (byte)'T' };
 			flname = "";
 			version = 0x4f;
 
@@ -87,11 +92,12 @@ namespace SimPe.Plugin
 		}
 
 		#region IWrapper member
-		public override bool CheckVersion(uint version) 
+		public override bool CheckVersion(uint version)
 		{
-			if ( (version==0012) //0.10
-				|| (version==0013) //0.12
-				) 
+			if (
+				(version == 0012) //0.10
+				|| (version == 0013) //0.12
+			)
 			{
 				return true;
 			}
@@ -99,7 +105,7 @@ namespace SimPe.Plugin
 			return false;
 		}
 		#endregion
-		
+
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
@@ -118,7 +124,7 @@ namespace SimPe.Plugin
 				"Content of this File is unknown.",
 				1,
 				null
-				); 
+			);
 		}
 
 		/// <summary>
@@ -135,7 +141,7 @@ namespace SimPe.Plugin
 			reserved = reader.ReadUInt32();
 
 			uint ct = reader.ReadUInt32();
-			for (int i=0; i<ct; i++)
+			for (int i = 0; i < ct; i++)
 			{
 				TattItem ti = new TattItem();
 				ti.Unserialize(reader);
@@ -149,7 +155,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
@@ -166,7 +172,7 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		#region IFileWrapperSaveExtension Member		
+		#region IFileWrapperSaveExtension Member
 		//all covered by Serialize()
 		#endregion
 
@@ -177,10 +183,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get
-			{
-				return new byte[0];
-			}
+			get { return new byte[0]; }
 		}
 
 		/// <summary>
@@ -190,14 +193,15 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				uint[] types = {
-								   0x54415454   //handles the TATT File
-							   };
+				uint[] types =
+				{
+					0x54415454, //handles the TATT File
+				};
 				return types;
 			}
 		}
 
-		#endregion		
+		#endregion
 
 		#region IMultiplePackedFileWrapper Member
 
@@ -209,7 +213,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public int Count
 		{
-			get {return items.Count; }
+			get { return items.Count; }
 		}
 
 		public TattItem this[int index]
@@ -218,7 +222,7 @@ namespace SimPe.Plugin
 			set { items[index] = value; }
 		}
 
-		public  System.Collections.IEnumerator GetEnumerator (  )
+		public System.Collections.IEnumerator GetEnumerator()
 		{
 			return items.GetEnumerator();
 		}

@@ -46,7 +46,9 @@ namespace SimPe.Data
 		/// </summary>
 		/// <param name="item">the value</param>
 		/// <returns>the new Object</returns>
-		public static implicit operator LocalizedRelationshipTypes(MetaData.RelationshipTypes item)
+		public static implicit operator LocalizedRelationshipTypes(
+			MetaData.RelationshipTypes item
+		)
 		{
 			return new LocalizedRelationshipTypes(item);
 		}
@@ -56,7 +58,9 @@ namespace SimPe.Data
 		/// </summary>
 		/// <param name="item">the value</param>
 		/// <returns>the new Object</returns>
-		public static implicit operator MetaData.RelationshipTypes(LocalizedRelationshipTypes item)
+		public static implicit operator MetaData.RelationshipTypes(
+			LocalizedRelationshipTypes item
+		)
 		{
 			return item.data;
 		}
@@ -87,79 +91,105 @@ namespace SimPe.Data
 		/// <returns></returns>
 		public override string ToString()
 		{
-			string s = Localization.Manager.GetString("RT_"+data.ToString());
-			if (s!=null) return s;
-			else return data.ToString();
+			string s = Localization.Manager.GetString("RT_" + data.ToString());
+			if (s != null)
+				return s;
+			else
+				return data.ToString();
 		}
 
 		public override bool Equals(object obj)
-		{	bool ret = base.Equals(obj);
-			if (ret) ret = (((LocalizedRelationshipTypes)obj).data == data);
+		{
+			bool ret = base.Equals(obj);
+			if (ret)
+				ret = (((LocalizedRelationshipTypes)obj).data == data);
 			return ret;
 		}
 
-		public static bool operator ==(MetaData.RelationshipTypes op1, LocalizedRelationshipTypes op2)
+		public static bool operator ==(
+			MetaData.RelationshipTypes op1,
+			LocalizedRelationshipTypes op2
+		)
 		{
 			return (op1 == op2.data);
 		}
 
-		public static bool operator !=(MetaData.RelationshipTypes op1, LocalizedRelationshipTypes op2)
+		public static bool operator !=(
+			MetaData.RelationshipTypes op1,
+			LocalizedRelationshipTypes op2
+		)
 		{
 			return (op1 != op2.data);
 		}
 
-		public static bool operator ==(LocalizedRelationshipTypes op1, MetaData.RelationshipTypes op2)
+		public static bool operator ==(
+			LocalizedRelationshipTypes op1,
+			MetaData.RelationshipTypes op2
+		)
 		{
 			return (op1.data == op2);
 		}
 
-		public static bool operator !=(LocalizedRelationshipTypes op1, MetaData.RelationshipTypes op2)
+		public static bool operator !=(
+			LocalizedRelationshipTypes op1,
+			MetaData.RelationshipTypes op2
+		)
 		{
 			return (op1.data != op2);
 		}
 
-		public static bool operator ==(LocalizedRelationshipTypes op1, LocalizedRelationshipTypes op2)
+		public static bool operator ==(
+			LocalizedRelationshipTypes op1,
+			LocalizedRelationshipTypes op2
+		)
 		{
 			return (op1.data == op2.data);
 		}
 
-		public static bool operator !=(LocalizedRelationshipTypes op1, LocalizedRelationshipTypes op2)
+		public static bool operator !=(
+			LocalizedRelationshipTypes op1,
+			LocalizedRelationshipTypes op2
+		)
 		{
 			return (op1.data != op2.data);
 		}
 
 		public static bool operator ==(object op1, LocalizedRelationshipTypes op2)
 		{
-			if (op1.GetType() != typeof(LocalizedRelationshipTypes)) return false;
+			if (op1.GetType() != typeof(LocalizedRelationshipTypes))
+				return false;
 			LocalizedRelationshipTypes op = (LocalizedRelationshipTypes)op1;
 			return (op.data == op2.data);
 		}
 
 		public static bool operator !=(object op1, LocalizedRelationshipTypes op2)
 		{
-			if (op1.GetType() != typeof(LocalizedRelationshipTypes)) return true;
+			if (op1.GetType() != typeof(LocalizedRelationshipTypes))
+				return true;
 			LocalizedRelationshipTypes op = (LocalizedRelationshipTypes)op1;
 			return (op.data != op2.data);
 		}
 
 		public static bool operator ==(LocalizedRelationshipTypes op2, object op1)
 		{
-			if (op1.GetType() != typeof(LocalizedRelationshipTypes)) return false;
+			if (op1.GetType() != typeof(LocalizedRelationshipTypes))
+				return false;
 			LocalizedRelationshipTypes op = (LocalizedRelationshipTypes)op1;
 			return (op.data == op2.data);
 		}
 
 		public static bool operator !=(LocalizedRelationshipTypes op2, object op1)
 		{
-			if (op1.GetType() != typeof(LocalizedRelationshipTypes)) return true;
+			if (op1.GetType() != typeof(LocalizedRelationshipTypes))
+				return true;
 			LocalizedRelationshipTypes op = (LocalizedRelationshipTypes)op1;
 			return (op.data != op2.data);
 		}
 
 		public override int GetHashCode()
 		{
-			return base.GetHashCode ();
-		}		
+			return base.GetHashCode();
+		}
 	}
 
 	/// <summary>
@@ -227,13 +257,13 @@ namespace SimPe.Data
 		/// <returns></returns>
 		public override string ToString()
 		{
-			string s = Localization.Manager.GetString("Grade_"+data.ToString());
-			if (s!=null) return s;
-			else return data.ToString();
+			string s = Localization.Manager.GetString("Grade_" + data.ToString());
+			if (s != null)
+				return s;
+			else
+				return data.ToString();
 		}
-
 	}
-
 
 	/// <summary>
 	/// Localized Version of the SchoolType Enum
@@ -301,232 +331,244 @@ namespace SimPe.Data
 		public override string ToString()
 		{
 			string s = Localization.Manager.GetString(data.ToString());
-			if (s!=null) return s;
-			else return data.ToString();
+			if (s != null)
+				return s;
+			else
+				return data.ToString();
 		}
-
 	}
 
-    /// <summary>
-    /// Localized Version of the Bodyshape Enum
-    /// </summary>
-    public class LocalizedBodyshape
-    {
-        /// <summary>
-        /// Contains the value
-        /// </summary>
-        MetaData.Bodyshape data;
+	/// <summary>
+	/// Localized Version of the Bodyshape Enum
+	/// </summary>
+	public class LocalizedBodyshape
+	{
+		/// <summary>
+		/// Contains the value
+		/// </summary>
+		MetaData.Bodyshape data;
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="data">The Value of the Enum</param>
-        public LocalizedBodyshape(MetaData.Bodyshape data)
-        {
-            this.data = data;
-        }
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="data">The Value of the Enum</param>
+		public LocalizedBodyshape(MetaData.Bodyshape data)
+		{
+			this.data = data;
+		}
 
-        /// <summary>
-        /// Implicit Assignement of Enum Values
-        /// </summary>
-        /// <param name="item">the value</param>
-        /// <returns>the new Object</returns>
-        public static implicit operator LocalizedBodyshape(MetaData.Bodyshape item)
-        {
-            return new LocalizedBodyshape(item);
-        }
+		/// <summary>
+		/// Implicit Assignement of Enum Values
+		/// </summary>
+		/// <param name="item">the value</param>
+		/// <returns>the new Object</returns>
+		public static implicit operator LocalizedBodyshape(MetaData.Bodyshape item)
+		{
+			return new LocalizedBodyshape(item);
+		}
 
-        /// <summary>
-        /// Implicit Assignement of Enum Values
-        /// </summary>
-        /// <param name="item">the value</param>
-        /// <returns>the new Object</returns>
-        public static implicit operator MetaData.Bodyshape(LocalizedBodyshape item)
-        {
-            return item.data;
-        }
+		/// <summary>
+		/// Implicit Assignement of Enum Values
+		/// </summary>
+		/// <param name="item">the value</param>
+		/// <returns>the new Object</returns>
+		public static implicit operator MetaData.Bodyshape(LocalizedBodyshape item)
+		{
+			return item.data;
+		}
 
-        /// <summary>
-        /// Implicit Assignement of Enum Values
-        /// </summary>
-        /// <param name="item">the value</param>
-        /// <returns>the new Object</returns>
-        public static implicit operator LocalizedBodyshape(uint item)
-        {
-            return new LocalizedBodyshape((MetaData.Bodyshape)item);
-        }
+		/// <summary>
+		/// Implicit Assignement of Enum Values
+		/// </summary>
+		/// <param name="item">the value</param>
+		/// <returns>the new Object</returns>
+		public static implicit operator LocalizedBodyshape(uint item)
+		{
+			return new LocalizedBodyshape((MetaData.Bodyshape)item);
+		}
 
-        /// <summary>
-        /// Implicit Assignement of Enum Values
-        /// </summary>
-        /// <param name="item">the value</param>
-        /// <returns>the new Object</returns>
-        public static implicit operator uint(LocalizedBodyshape item)
-        {
-            return (uint)item.data;
-        }
+		/// <summary>
+		/// Implicit Assignement of Enum Values
+		/// </summary>
+		/// <param name="item">the value</param>
+		/// <returns>the new Object</returns>
+		public static implicit operator uint(LocalizedBodyshape item)
+		{
+			return (uint)item.data;
+		}
 
-        /// <summary>
-        /// Overrides the Default to string Members
-        /// </summary>
-        /// <returns></returns>
-        public override string ToString()
-        {
-            string s = Localization.Manager.GetString(data.ToString());
-            if (s != null) return s;
-            else return data.ToString();
-        }
+		/// <summary>
+		/// Overrides the Default to string Members
+		/// </summary>
+		/// <returns></returns>
+		public override string ToString()
+		{
+			string s = Localization.Manager.GetString(data.ToString());
+			if (s != null)
+				return s;
+			else
+				return data.ToString();
+		}
+	}
 
-    }
+	/// <summary>
+	/// Localized Version of the Available EPs
+	/// </summary>
+	public class LocalizedNeighbourhoodEP
+	{
+		/// <summary>
+		/// Contains the value
+		/// </summary>
+		MetaData.NeighbourhoodEP data;
 
-    /// <summary>
-    /// Localized Version of the Available EPs
-    /// </summary>
-    public class LocalizedNeighbourhoodEP
-    {
-        /// <summary>
-        /// Contains the value
-        /// </summary>
-        MetaData.NeighbourhoodEP data;
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="data">The Value of the Enum</param>
+		public LocalizedNeighbourhoodEP(MetaData.NeighbourhoodEP data)
+		{
+			this.data = data;
+		}
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="data">The Value of the Enum</param>
-        public LocalizedNeighbourhoodEP(MetaData.NeighbourhoodEP data)
-        {
-            this.data = data;
-        }
+		/// <summary>
+		/// Implicit Assignement of Enum Values
+		/// </summary>
+		/// <param name="item">the value</param>
+		/// <returns>the new Object</returns>
+		public static implicit operator LocalizedNeighbourhoodEP(
+			MetaData.NeighbourhoodEP item
+		)
+		{
+			return new LocalizedNeighbourhoodEP(item);
+		}
 
-        /// <summary>
-        /// Implicit Assignement of Enum Values
-        /// </summary>
-        /// <param name="item">the value</param>
-        /// <returns>the new Object</returns>
-        public static implicit operator LocalizedNeighbourhoodEP(MetaData.NeighbourhoodEP item)
-        {
-            return new LocalizedNeighbourhoodEP(item);
-        }
+		/// <summary>
+		/// Implicit Assignement of Enum Values
+		/// </summary>
+		/// <param name="item">the value</param>
+		/// <returns>the new Object</returns>
+		public static implicit operator MetaData.NeighbourhoodEP(
+			LocalizedNeighbourhoodEP item
+		)
+		{
+			return item.data;
+		}
 
-        /// <summary>
-        /// Implicit Assignement of Enum Values
-        /// </summary>
-        /// <param name="item">the value</param>
-        /// <returns>the new Object</returns>
-        public static implicit operator MetaData.NeighbourhoodEP(LocalizedNeighbourhoodEP item)
-        {
-            return item.data;
-        }
+		/// <summary>
+		/// Implicit Assignement of Enum Values
+		/// </summary>
+		/// <param name="item">the value</param>
+		/// <returns>the new Object</returns>
+		public static implicit operator LocalizedNeighbourhoodEP(uint item)
+		{
+			return new LocalizedNeighbourhoodEP((MetaData.NeighbourhoodEP)item);
+		}
 
-        /// <summary>
-        /// Implicit Assignement of Enum Values
-        /// </summary>
-        /// <param name="item">the value</param>
-        /// <returns>the new Object</returns>
-        public static implicit operator LocalizedNeighbourhoodEP(uint item)
-        {
-            return new LocalizedNeighbourhoodEP((MetaData.NeighbourhoodEP)item);
-        }
+		/// <summary>
+		/// Implicit Assignement of Enum Values
+		/// </summary>
+		/// <param name="item">the value</param>
+		/// <returns>the new Object</returns>
+		public static implicit operator uint(LocalizedNeighbourhoodEP item)
+		{
+			return (uint)item.data;
+		}
 
-        /// <summary>
-        /// Implicit Assignement of Enum Values
-        /// </summary>
-        /// <param name="item">the value</param>
-        /// <returns>the new Object</returns>
-        public static implicit operator uint(LocalizedNeighbourhoodEP item)
-        {
-            return (uint)item.data;
-        }
+		/// <summary>
+		/// Overrides the Default to string Members
+		/// </summary>
+		/// <returns></returns>
+		public override string ToString()
+		{
+			string s = Localization.Manager.GetString(data.ToString());
+			if (s != null)
+			{
+				if (Helper.WindowsRegistry.LoadOnlySimsStory == 28 && s == "Seasons")
+					s = "Castaway";
 
-        /// <summary>
-        /// Overrides the Default to string Members
-        /// </summary>
-        /// <returns></returns>
-        public override string ToString()
-        {
-            string s = Localization.Manager.GetString(data.ToString());
-            if (s != null)
-            {
-                if (Helper.WindowsRegistry.LoadOnlySimsStory == 28 && s == "Seasons") s = "Castaway";
+				return s;
+			}
+			else
+				return data.ToString();
+		}
+	}
 
-                return s;
-            }
-            else return data.ToString();
-        }
+	/// <summary>
+	/// Localized Version of the ServiceTypes Enum
+	/// </summary>
+	public class LocalizedServiceTypes
+	{
+		/// <summary>
+		/// Contains the value
+		/// </summary>
+		MetaData.ServiceTypes data;
 
-    }
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="data">The Value of the Enum</param>
+		public LocalizedServiceTypes(MetaData.ServiceTypes data)
+		{
+			this.data = data;
+		}
 
-    /// <summary>
-    /// Localized Version of the ServiceTypes Enum
-    /// </summary>
-    public class LocalizedServiceTypes
-    {
-        /// <summary>
-        /// Contains the value
-        /// </summary>
-        MetaData.ServiceTypes data;
+		/// <summary>
+		/// Implicit Assignement of Enum Values
+		/// </summary>
+		/// <param name="item">the value</param>
+		/// <returns>the new Object</returns>
+		public static implicit operator LocalizedServiceTypes(
+			MetaData.ServiceTypes item
+		)
+		{
+			return new LocalizedServiceTypes(item);
+		}
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="data">The Value of the Enum</param>
-        public LocalizedServiceTypes(MetaData.ServiceTypes data)
-        {
-            this.data = data;
-        }
+		/// <summary>
+		/// Implicit Assignement of Enum Values
+		/// </summary>
+		/// <param name="item">the value</param>
+		/// <returns>the new Object</returns>
+		public static implicit operator MetaData.ServiceTypes(
+			LocalizedServiceTypes item
+		)
+		{
+			return item.data;
+		}
 
-        /// <summary>
-        /// Implicit Assignement of Enum Values
-        /// </summary>
-        /// <param name="item">the value</param>
-        /// <returns>the new Object</returns>
-        public static implicit operator LocalizedServiceTypes(MetaData.ServiceTypes item)
-        {
-            return new LocalizedServiceTypes(item);
-        }
+		/// <summary>
+		/// Implicit Assignement of Enum Values
+		/// </summary>
+		/// <param name="item">the value</param>
+		/// <returns>the new Object</returns>
+		public static implicit operator LocalizedServiceTypes(uint item)
+		{
+			return new LocalizedServiceTypes((MetaData.ServiceTypes)item);
+		}
 
-        /// <summary>
-        /// Implicit Assignement of Enum Values
-        /// </summary>
-        /// <param name="item">the value</param>
-        /// <returns>the new Object</returns>
-        public static implicit operator MetaData.ServiceTypes(LocalizedServiceTypes item)
-        {
-            return item.data;
-        }   
+		/// <summary>
+		/// Implicit Assignement of Enum Values
+		/// </summary>
+		/// <param name="item">the value</param>
+		/// <returns>the new Object</returns>
+		public static implicit operator uint(LocalizedServiceTypes item)
+		{
+			return (uint)item.data;
+		}
 
-        /// <summary>
-        /// Implicit Assignement of Enum Values
-        /// </summary>
-        /// <param name="item">the value</param>
-        /// <returns>the new Object</returns>
-        public static implicit operator LocalizedServiceTypes(uint item)
-        {
-            return new LocalizedServiceTypes((MetaData.ServiceTypes)item);
-        }
-
-        /// <summary>
-        /// Implicit Assignement of Enum Values
-        /// </summary>
-        /// <param name="item">the value</param>
-        /// <returns>the new Object</returns>
-        public static implicit operator uint(LocalizedServiceTypes item)
-        {
-            return (uint)item.data;
-        }
-
-        /// <summary>
-        /// Overrides the Default to string Members
-        /// </summary>
-        /// <returns></returns>
-        public override string ToString()
-        {
-            string s = Localization.Manager.GetString(data.ToString());
-            if (s != null) return s;
-            else return data.ToString();
-        }
-
-    }
+		/// <summary>
+		/// Overrides the Default to string Members
+		/// </summary>
+		/// <returns></returns>
+		public override string ToString()
+		{
+			string s = Localization.Manager.GetString(data.ToString());
+			if (s != null)
+				return s;
+			else
+				return data.ToString();
+		}
+	}
 
 	/// <summary>
 	/// Localized Version of the AspirationType Enum
@@ -552,7 +594,9 @@ namespace SimPe.Data
 		/// </summary>
 		/// <param name="item">the value</param>
 		/// <returns>the new Object</returns>
-		public static implicit operator LocalizedAspirationTypes(MetaData.AspirationTypes item)
+		public static implicit operator LocalizedAspirationTypes(
+			MetaData.AspirationTypes item
+		)
 		{
 			return new LocalizedAspirationTypes(item);
 		}
@@ -562,7 +606,9 @@ namespace SimPe.Data
 		/// </summary>
 		/// <param name="item">the value</param>
 		/// <returns>the new Object</returns>
-		public static implicit operator MetaData.AspirationTypes(LocalizedAspirationTypes item)
+		public static implicit operator MetaData.AspirationTypes(
+			LocalizedAspirationTypes item
+		)
 		{
 			return item.data;
 		}
@@ -593,11 +639,14 @@ namespace SimPe.Data
 		/// <returns></returns>
 		public override string ToString()
 		{
-			string s = Localization.Manager.GetString("SimPe.Data.MetaData.AspirationTypes."+data.ToString());
-			if (s!=null) return s;
-			else return data.ToString();
+			string s = Localization.Manager.GetString(
+				"SimPe.Data.MetaData.AspirationTypes." + data.ToString()
+			);
+			if (s != null)
+				return s;
+			else
+				return data.ToString();
 		}
-
 	}
 
 	/// <summary>
@@ -624,7 +673,9 @@ namespace SimPe.Data
 		/// </summary>
 		/// <param name="item">the value</param>
 		/// <returns>the new Object</returns>
-		public static implicit operator LocalizedZodiacSignes(MetaData.ZodiacSignes item)
+		public static implicit operator LocalizedZodiacSignes(
+			MetaData.ZodiacSignes item
+		)
 		{
 			return new LocalizedZodiacSignes(item);
 		}
@@ -634,7 +685,9 @@ namespace SimPe.Data
 		/// </summary>
 		/// <param name="item">the value</param>
 		/// <returns>the new Object</returns>
-		public static implicit operator MetaData.ZodiacSignes(LocalizedZodiacSignes item)
+		public static implicit operator MetaData.ZodiacSignes(
+			LocalizedZodiacSignes item
+		)
 		{
 			return item.data;
 		}
@@ -666,8 +719,10 @@ namespace SimPe.Data
 		public override string ToString()
 		{
 			string s = Localization.Manager.GetString(data.ToString());
-			if (s!=null) return s;
-			else return data.ToString();
+			if (s != null)
+				return s;
+			else
+				return data.ToString();
 		}
 	}
 
@@ -695,7 +750,9 @@ namespace SimPe.Data
 		/// </summary>
 		/// <param name="item">the value</param>
 		/// <returns>the new Object</returns>
-		public static implicit operator LocalizedLifeSections(MetaData.LifeSections item)
+		public static implicit operator LocalizedLifeSections(
+			MetaData.LifeSections item
+		)
 		{
 			return new LocalizedLifeSections(item);
 		}
@@ -705,7 +762,9 @@ namespace SimPe.Data
 		/// </summary>
 		/// <param name="item">the value</param>
 		/// <returns>the new Object</returns>
-		public static implicit operator MetaData.LifeSections(LocalizedLifeSections item)
+		public static implicit operator MetaData.LifeSections(
+			LocalizedLifeSections item
+		)
 		{
 			return item.data;
 		}
@@ -737,8 +796,10 @@ namespace SimPe.Data
 		public override string ToString()
 		{
 			string s = Localization.Manager.GetString(data.ToString());
-			if (s!=null) return s;
-			else return data.ToString();
+			if (s != null)
+				return s;
+			else
+				return data.ToString();
 		}
 	}
 
@@ -808,13 +869,13 @@ namespace SimPe.Data
 		public override string ToString()
 		{
 			string s = Localization.Manager.GetString(data.ToString());
-            if (s != null)
-            {
-                return s;
-            }
-            else return data.ToString();
+			if (s != null)
+			{
+				return s;
+			}
+			else
+				return data.ToString();
 		}
-
 	}
 
 	/// <summary>
@@ -841,7 +902,9 @@ namespace SimPe.Data
 		/// </summary>
 		/// <param name="item">the value</param>
 		/// <returns>the new Object</returns>
-		public static implicit operator LocalizedFamilyTieTypes(MetaData.FamilyTieTypes item)
+		public static implicit operator LocalizedFamilyTieTypes(
+			MetaData.FamilyTieTypes item
+		)
 		{
 			return new LocalizedFamilyTieTypes(item);
 		}
@@ -851,7 +914,9 @@ namespace SimPe.Data
 		/// </summary>
 		/// <param name="item">the value</param>
 		/// <returns>the new Object</returns>
-		public static implicit operator MetaData.FamilyTieTypes(LocalizedFamilyTieTypes item)
+		public static implicit operator MetaData.FamilyTieTypes(
+			LocalizedFamilyTieTypes item
+		)
 		{
 			return item.data;
 		}
@@ -882,91 +947,98 @@ namespace SimPe.Data
 		/// <returns></returns>
 		public override string ToString()
 		{
-			if (Helper.StartedGui == Executable.Default) 
+			if (Helper.StartedGui == Executable.Default)
 			{
 				Type type = typeof(MetaData.FamilyTieTypes);
-				string s = Localization.Manager.GetString(type.Namespace+"."+type.Name+"."+data.ToString());
-				if (s!=null) return s;
-				else return data.ToString();
-			} 
-			else 
+				string s = Localization.Manager.GetString(
+					type.Namespace + "." + type.Name + "." + data.ToString()
+				);
+				if (s != null)
+					return s;
+				else
+					return data.ToString();
+			}
+			else
 			{
 				string s = Localization.Manager.GetString(data.ToString());
-				if (s!=null) return s;
-				else return data.ToString();
+				if (s != null)
+					return s;
+				else
+					return data.ToString();
 			}
 		}
-
 	}
 
-    /// <summary>
-    /// Localized Version of the BuildSubSort Enum
-    /// </summary>
-    public class LocalizedBuildSubSort
-    {
-        /// <summary>
-        /// Contains the value
-        /// </summary>
-        BuildFunctionSubSort data;
+	/// <summary>
+	/// Localized Version of the BuildSubSort Enum
+	/// </summary>
+	public class LocalizedBuildSubSort
+	{
+		/// <summary>
+		/// Contains the value
+		/// </summary>
+		BuildFunctionSubSort data;
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="data">The Value of the Enum</param>
-        public LocalizedBuildSubSort(BuildFunctionSubSort data)
-        {
-            this.data = data;
-        }
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="data">The Value of the Enum</param>
+		public LocalizedBuildSubSort(BuildFunctionSubSort data)
+		{
+			this.data = data;
+		}
 
-        /// <summary>
-        /// Implicit Assignement of Enum Values
-        /// </summary>
-        /// <param name="item">the value</param>
-        /// <returns>the new Object</returns>
-        public static implicit operator LocalizedBuildSubSort(BuildFunctionSubSort item)
-        {
-            return new LocalizedBuildSubSort(item);
-        }
+		/// <summary>
+		/// Implicit Assignement of Enum Values
+		/// </summary>
+		/// <param name="item">the value</param>
+		/// <returns>the new Object</returns>
+		public static implicit operator LocalizedBuildSubSort(BuildFunctionSubSort item)
+		{
+			return new LocalizedBuildSubSort(item);
+		}
 
-        /// <summary>
-        /// Implicit Assignement of Enum Values
-        /// </summary>
-        /// <param name="item">the value</param>
-        /// <returns>the new Object</returns>
-        public static implicit operator BuildFunctionSubSort(LocalizedBuildSubSort item)
-        {
-            return item.data;
-        }
+		/// <summary>
+		/// Implicit Assignement of Enum Values
+		/// </summary>
+		/// <param name="item">the value</param>
+		/// <returns>the new Object</returns>
+		public static implicit operator BuildFunctionSubSort(LocalizedBuildSubSort item)
+		{
+			return item.data;
+		}
 
-        /// <summary>
-        /// Implicit Assignement of Enum Values
-        /// </summary>
-        /// <param name="item">the value</param>
-        /// <returns>the new Object</returns>
-        public static implicit operator LocalizedBuildSubSort(uint item)
-        {
-            return new LocalizedBuildSubSort((BuildFunctionSubSort)item);
-        }
+		/// <summary>
+		/// Implicit Assignement of Enum Values
+		/// </summary>
+		/// <param name="item">the value</param>
+		/// <returns>the new Object</returns>
+		public static implicit operator LocalizedBuildSubSort(uint item)
+		{
+			return new LocalizedBuildSubSort((BuildFunctionSubSort)item);
+		}
 
-        /// <summary>
-        /// Implicit Assignement of Enum Values
-        /// </summary>
-        /// <param name="item">the value</param>
-        /// <returns>the new Object</returns>
-        public static implicit operator uint(LocalizedBuildSubSort item)
-        {
-            return (uint)item.data;
-        }
+		/// <summary>
+		/// Implicit Assignement of Enum Values
+		/// </summary>
+		/// <param name="item">the value</param>
+		/// <returns>the new Object</returns>
+		public static implicit operator uint(LocalizedBuildSubSort item)
+		{
+			return (uint)item.data;
+		}
 
-        /// <summary>
-        /// Overrides the Default to string Members
-        /// </summary>
-        /// <returns></returns>
-        public override string ToString()
-        {
-            string s = Localization.Manager.GetString(data.ToString());
-            if (s != null) return s;
-            else return data.ToString();
-        }
-    }
+		/// <summary>
+		/// Overrides the Default to string Members
+		/// </summary>
+		/// <returns></returns>
+		public override string ToString()
+		{
+			string s = Localization.Manager.GetString(data.ToString());
+			if (s != null)
+				return s;
+			else
+				return data.ToString();
+		}
+	}
 }

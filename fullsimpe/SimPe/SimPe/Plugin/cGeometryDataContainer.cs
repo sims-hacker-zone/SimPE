@@ -18,80 +18,85 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.IO;
-using System.Globalization;
-using SimPe.Plugin.Gmdc;
 using System.Collections;
+using System.Globalization;
+using System.IO;
 using SimPe.Geometry;
 using SimPe.Plugin.Anim;
+using SimPe.Plugin.Gmdc;
 
 namespace SimPe.Plugin
 {
 	/// <summary>
 	/// This class contains the Geometric Data of an Object
 	/// </summary>
-	public class GeometryDataContainer
-		: AbstractRcolBlock
+	public class GeometryDataContainer : AbstractRcolBlock
 	{
 		#region Attributes
 
 		GmdcElements elements;
+
 		/// <summary>
 		/// Returns a List of stored Elements
 		/// </summary>
-		public GmdcElements Elements 
+		public GmdcElements Elements
 		{
 			get { return elements; }
 			set { elements = value; }
 		}
 
 		GmdcLinks links;
+
 		/// <summary>
 		/// Returns a List of stored Links
 		/// </summary>
-		public GmdcLinks Links 
+		public GmdcLinks Links
 		{
 			get { return links; }
 			set { links = value; }
 		}
 
 		GmdcGroups groups;
+
 		/// <summary>
 		/// Returns a List of stored Groups
 		/// </summary>
-		public GmdcGroups Groups 
+		public GmdcGroups Groups
 		{
 			get { return groups; }
 			set { groups = value; }
 		}
 
 		GmdcModel model;
+
 		/// <summary>
 		/// Returns the stored Model
 		/// </summary>
-		public GmdcModel Model 
+		public GmdcModel Model
 		{
 			get { return model; }
 			set { model = value; }
 		}
 
 		GmdcJoints joints;
+
 		/// <summary>
 		/// Returns a List of stored Joints
 		/// </summary>
-		public GmdcJoints Joints 
+		public GmdcJoints Joints
 		{
 			get { return joints; }
 			set { joints = value; }
 		}
 		#endregion
-				
+
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public GeometryDataContainer(Rcol parent) : base(parent)
+		public GeometryDataContainer(Rcol parent)
+			: base(parent)
 		{
-			sgres = new SGResource(null);			
+			sgres = new SGResource(null);
 
 			version = 0x04;
 			BlockID = 0xAC4F8687;
@@ -103,9 +108,9 @@ namespace SimPe.Plugin
 			model = new GmdcModel(this);
 
 			joints = new GmdcJoints();
-            tried = false;
+			tried = false;
 		}
-		
+
 		#region IRcolBlock Member
 
 		/// <summary>
@@ -114,26 +119,26 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		public override void Unserialize(System.IO.BinaryReader reader)
 		{
-            tried = false;
+			tried = false;
 			version = reader.ReadUInt32();
 
 			string name = reader.ReadString();
-			uint myid = reader.ReadUInt32();		
+			uint myid = reader.ReadUInt32();
 			sgres.Unserialize(reader);
 			sgres.BlockID = myid;
 
-            if (Parent.Fast)
-            {
-                elements.Clear();
-                links.Clear();
-                groups.Clear();
-                joints.Clear();
-                return;
-            }
+			if (Parent.Fast)
+			{
+				elements.Clear();
+				links.Clear();
+				groups.Clear();
+				joints.Clear();
+				return;
+			}
 
 			int count = reader.ReadInt32();
 			elements.Clear();
-			for (int i=0; i<count; i++)
+			for (int i = 0; i < count; i++)
 			{
 				GmdcElement e = new GmdcElement(this);
 				e.Unserialize(reader);
@@ -142,7 +147,7 @@ namespace SimPe.Plugin
 
 			count = reader.ReadInt32();
 			links.Clear();
-			for (int i=0; i<count; i++)
+			for (int i = 0; i < count; i++)
 			{
 				GmdcLink l = new GmdcLink(this);
 				l.Unserialize(reader);
@@ -151,7 +156,7 @@ namespace SimPe.Plugin
 
 			count = reader.ReadInt32();
 			groups.Clear();
-			for (int i=0; i<count; i++)
+			for (int i = 0; i < count; i++)
 			{
 				GmdcGroup g = new GmdcGroup(this);
 				g.Unserialize(reader);
@@ -159,16 +164,15 @@ namespace SimPe.Plugin
 			}
 
 			model.Unserialize(reader);
-			
+
 			count = reader.ReadInt32();
 			joints.Clear();
-			for (int i=0; i<count; i++)
+			for (int i = 0; i < count; i++)
 			{
 				GmdcJoint s = new GmdcJoint(this);
 				s.Unserialize(reader);
 				joints.Add(s);
 			}
-
 		}
 
 		/// <summary>
@@ -176,7 +180,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public override void Serialize(System.IO.BinaryWriter writer)
@@ -186,23 +190,23 @@ namespace SimPe.Plugin
 			writer.Write(sgres.BlockName);
 			writer.Write(sgres.BlockID);
 			sgres.Serialize(writer);
-			
+
 			writer.Write((int)elements.Length);
-			for (int i=0; i<elements.Length; i++) 
+			for (int i = 0; i < elements.Length; i++)
 			{
 				elements[i].Parent = this;
 				elements[i].Serialize(writer);
 			}
 
 			writer.Write((int)links.Length);
-			for (int i=0; i<links.Length; i++) 
+			for (int i = 0; i < links.Length; i++)
 			{
 				links[i].Parent = this;
 				links[i].Serialize(writer);
 			}
-			
+
 			writer.Write((int)groups.Length);
-			for (int i=0; i<groups.Length; i++) 
+			for (int i = 0; i < groups.Length; i++)
 			{
 				groups[i].Parent = this;
 				groups[i].Serialize(writer);
@@ -210,26 +214,28 @@ namespace SimPe.Plugin
 
 			model.Parent = this;
 			model.Serialize(writer);
-			
+
 			writer.Write((int)joints.Length);
-			for (int i=0; i<joints.Length; i++) 
+			for (int i = 0; i < joints.Length; i++)
 			{
 				joints[i].Parent = this;
-				joints[i].Serialize(writer);			
+				joints[i].Serialize(writer);
 			}
 		}
 
 		fGeometryDataContainer form = null;
+
 		/// <summary>
-		/// Returns null or the Instance of a <see cref="System.Windows.Forms.TabPage"/> that 
+		/// Returns null or the Instance of a <see cref="System.Windows.Forms.TabPage"/> that
 		/// should be displayed as Primary Interface
 		/// </summary>
 		public override System.Windows.Forms.TabPage TabPage
 		{
 			get
-			{			
-				if (form==null) form = new fGeometryDataContainer();
-				return form.tMesh;				
+			{
+				if (form == null)
+					form = new fGeometryDataContainer();
+				return form.tMesh;
 			}
 		}
 		#endregion
@@ -237,75 +243,90 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
 		/// </summary>
-		protected override void InitTabPage() 
+		protected override void InitTabPage()
 		{
-			if (form==null) form = new fGeometryDataContainer(); 
+			if (form == null)
+				form = new fGeometryDataContainer();
 			form.ResetPreview();
-			form.tb_ver.Text = "0x"+Helper.HexString(this.version);
+			form.tb_ver.Text = "0x" + Helper.HexString(this.version);
 
-            if (UserVerification.HaveUserId) 
+			if (UserVerification.HaveUserId)
 			{
-				form.label_elements.Text = "Elements: "+elements.Length.ToString();
+				form.label_elements.Text = "Elements: " + elements.Length.ToString();
 				form.list_elements.Items.Clear();
-				foreach(GmdcElement e in elements) SimPe.CountedListItem.Add(form.list_elements, e);
+				foreach (GmdcElement e in elements)
+					SimPe.CountedListItem.Add(form.list_elements, e);
 
-				form.label_links.Text = "Links: "+links.Length.ToString();
+				form.label_links.Text = "Links: " + links.Length.ToString();
 				form.list_links.Items.Clear();
-				foreach(GmdcLink l in links) SimPe.CountedListItem.Add(form.list_links, l);
+				foreach (GmdcLink l in links)
+					SimPe.CountedListItem.Add(form.list_links, l);
 
-				form.label_groups.Text = "Groups: "+groups.Length.ToString();
+				form.label_groups.Text = "Groups: " + groups.Length.ToString();
 				form.list_groups.Items.Clear();
-				foreach(GmdcGroup g in groups) SimPe.CountedListItem.Add(form.list_groups, g);
+				foreach (GmdcGroup g in groups)
+					SimPe.CountedListItem.Add(form.list_groups, g);
 
-				form.label_subsets.Text = "Joints: "+joints.Length.ToString();
+				form.label_subsets.Text = "Joints: " + joints.Length.ToString();
 				form.list_subsets.Items.Clear();
-				foreach(GmdcJoint s in joints) SimPe.CountedListItem.Add(form.list_subsets, s);
+				foreach (GmdcJoint s in joints)
+					SimPe.CountedListItem.Add(form.list_subsets, s);
 			}
 
-			try 
+			try
 			{
-				form.lb_models.Text = "Models (Faces="+this.TotalFaceCount.ToString()+", Vertices="+this.TotalUsedVertices.ToString()+"):";
+				form.lb_models.Text =
+					"Models (Faces="
+					+ this.TotalFaceCount.ToString()
+					+ ", Vertices="
+					+ this.TotalUsedVertices.ToString()
+					+ "):";
 				form.lb_itemsc2.Items.Clear();
 				form.lb_itemsc3.Items.Clear();
 				form.lb_itemsc.Items.Clear();
 				form.lbmodel.Items.Clear();
-				foreach (GmdcGroup g in groups) 
+				foreach (GmdcGroup g in groups)
 				{
-					form.lbmodel.Items.Add(g, g.Opacity>=0x10);
-					form.lb_itemsc.Items.Add(g); 
+					form.lbmodel.Items.Add(g, g.Opacity >= 0x10);
+					form.lb_itemsc.Items.Add(g);
 				}
 
 				form.lb_itemsa2.Items.Clear();
 				form.lb_itemsa.Items.Clear();
-				foreach (GmdcElement i in this.elements) SimPe.CountedListItem.Add(form.lb_itemsa, i);
+				foreach (GmdcElement i in this.elements)
+					SimPe.CountedListItem.Add(form.lb_itemsa, i);
 
 				form.lb_itemsb2.Items.Clear();
 				form.lb_itemsb3.Items.Clear();
 				form.lb_itemsb4.Items.Clear();
 				form.lb_itemsb5.Items.Clear();
 				form.lb_itemsb.Items.Clear();
-				foreach (GmdcLink i in this.links) SimPe.CountedListItem.Add(form.lb_itemsb, i);
+				foreach (GmdcLink i in this.links)
+					SimPe.CountedListItem.Add(form.lb_itemsb, i);
 
 				form.lb_subsets.Items.Clear();
 				form.lb_sub_faces.Items.Clear();
 				form.lb_sub_items.Items.Clear();
 				form.cbGroupJoint.Items.Clear();
-				foreach (GmdcJoint i in this.joints) 
+				foreach (GmdcJoint i in this.joints)
 				{
 					SimPe.CountedListItem.Add(form.lb_subsets, i);
 					SimPe.CountedListItem.Add(form.cbGroupJoint, i);
 				}
 
 				form.lb_model_faces.Items.Clear();
-				foreach (Vector3f i in this.model.BoundingMesh.Vertices) SimPe.CountedListItem.Add(form.lb_model_faces, i);
+				foreach (Vector3f i in this.model.BoundingMesh.Vertices)
+					SimPe.CountedListItem.Add(form.lb_model_faces, i);
 				form.lb_model_items.Items.Clear();
-				foreach (int i in this.model.BoundingMesh.Items) SimPe.CountedListItem.Add(form.lb_model_items, i);
+				foreach (int i in this.model.BoundingMesh.Items)
+					SimPe.CountedListItem.Add(form.lb_model_items, i);
 				form.lb_model_names.Items.Clear();
-				foreach (GmdcNamePair i in this.model.BlendGroupDefinition) SimPe.CountedListItem.Add(form.lb_model_names, i);
+				foreach (GmdcNamePair i in this.model.BlendGroupDefinition)
+					SimPe.CountedListItem.Add(form.lb_model_names, i);
 				form.lb_model_trans.Items.Clear();
-				foreach (VectorTransformation i in this.model.Transformations) SimPe.CountedListItem.Add(form.lb_model_trans, i);
-				
-			} 
+				foreach (VectorTransformation i in this.model.Transformations)
+					SimPe.CountedListItem.Add(form.lb_model_trans, i);
+			}
 			catch (Exception ex)
 			{
 				Helper.ExceptionMessage("", ex);
@@ -333,7 +354,7 @@ namespace SimPe.Plugin
 			form.tSubset.Tag = this;
 			tc.TabPages.Add(form.tSubset);
 
-            if (UserVerification.HaveUserId) 
+			if (UserVerification.HaveUserId)
 			{
 				form.tAdvncd.Tag = this;
 				tc.TabPages.Add(form.tAdvncd);
@@ -348,8 +369,9 @@ namespace SimPe.Plugin
 		/// <returns>The content of the x File</returns>
 		public MemoryStream GenerateX(GmdcGroups models)
 		{
-			IGmdcExporter exporter = ExporterLoader.FindExporterByExtension(".x");			
-			if (exporter==null) throw new Exception("No valid Direct X Exporter plugin was found!");
+			IGmdcExporter exporter = ExporterLoader.FindExporterByExtension(".x");
+			if (exporter == null)
+				throw new Exception("No valid Direct X Exporter plugin was found!");
 
 			exporter.Component.Sorting = ElementSorting.Preview;
 			exporter.Process(this, models);
@@ -364,7 +386,7 @@ namespace SimPe.Plugin
 		/// <param name="index">The index of the Element</param>
 		public void RemoveGroup(int index)
 		{
-			if (index<groups.Count) 
+			if (index < groups.Count)
 			{
 				GmdcGroup g = groups[index];
 				int n = g.LinkIndex;
@@ -374,24 +396,28 @@ namespace SimPe.Plugin
 				groups.RemoveAt(index);
 			}
 		}
-		
+
 		/// <summary>
 		/// Remove the Link with the given Index from the File
 		/// </summary>
 		/// <param name="index">The index of the Element</param>
 		/// <returns>true if the link was removed</returns>
 		/// <remarks>
-		/// A Link will not be removed, if it is still referenced 
+		/// A Link will not be removed, if it is still referenced
 		/// in one or more Groups!
 		/// </remarks>
 		public bool RemoveLink(int index)
 		{
-			foreach(GmdcGroup g in groups) if (g.LinkIndex==index) return false;
-			
-			GmdcLink l = links[index];
-			foreach(GmdcGroup g in groups) if (g.LinkIndex>index) g.LinkIndex--;
+			foreach (GmdcGroup g in groups)
+				if (g.LinkIndex == index)
+					return false;
 
-			for (int i=0; i<l.ReferencedElement.Count; i++)
+			GmdcLink l = links[index];
+			foreach (GmdcGroup g in groups)
+				if (g.LinkIndex > index)
+					g.LinkIndex--;
+
+			for (int i = 0; i < l.ReferencedElement.Count; i++)
 			{
 				int n = l.ReferencedElement[i];
 				l.ReferencedElement[i] = -1; //make sure the reference is removed first
@@ -407,21 +433,25 @@ namespace SimPe.Plugin
 		/// <param name="index">The index of the Element</param>
 		/// <returns>true if the element was removed</returns>
 		/// <remarks>
-		/// A Element will not be removed, if it is still referenced 
+		/// A Element will not be removed, if it is still referenced
 		/// in one or more Links!
 		/// </remarks>
 		public bool RemoveElement(int index)
 		{
 			//Can we remove this Element?
-			foreach (GmdcLink l in links) 
+			foreach (GmdcLink l in links)
 			{
-				foreach (int i in l.ReferencedElement) if (i==index) return false;
+				foreach (int i in l.ReferencedElement)
+					if (i == index)
+						return false;
 			}
 
 			//Adjust the References
-			foreach (GmdcLink l in links) 
+			foreach (GmdcLink l in links)
 			{
-				for (int i=0; i<l.ReferencedElement.Count; i++) if (l.ReferencedElement[i]>index) l.ReferencedElement[i]--;
+				for (int i = 0; i < l.ReferencedElement.Count; i++)
+					if (l.ReferencedElement[i] > index)
+						l.ReferencedElement[i]--;
 			}
 
 			elements.RemoveAt(index);
@@ -431,12 +461,13 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the total Face Count for this Mesh
 		/// </summary>
-		public int TotalFaceCount 
+		public int TotalFaceCount
 		{
-			get 
+			get
 			{
 				int ct = 0;
-				foreach (GmdcGroup g in groups) ct += g.FaceCount;
+				foreach (GmdcGroup g in groups)
+					ct += g.FaceCount;
 
 				return ct;
 			}
@@ -447,10 +478,11 @@ namespace SimPe.Plugin
 		/// </summary>
 		public int TotalUsedVertices
 		{
-			get 
+			get
 			{
 				int ct = 0;
-				foreach (GmdcGroup g in groups) ct += g.UsedVertexCount;
+				foreach (GmdcGroup g in groups)
+					ct += g.UsedVertexCount;
 
 				return ct;
 			}
@@ -461,10 +493,11 @@ namespace SimPe.Plugin
 		/// </summary>
 		public int TotalReferencedVertices
 		{
-			get 
+			get
 			{
 				int ct = 0;
-				foreach (GmdcGroup g in groups) ct += g.ReferencedVertexCount;
+				foreach (GmdcGroup g in groups)
+					ct += g.ReferencedVertexCount;
 
 				return ct;
 			}
@@ -478,18 +511,20 @@ namespace SimPe.Plugin
 			ArrayList usebones = new ArrayList();
 
 			///Assemble a List of used Joints
-			foreach (GmdcElement e in elements) 
+			foreach (GmdcElement e in elements)
 			{
-				if (e.Identity == ElementIdentity.BoneAssignment) 
-					foreach (GmdcElementValueOneInt v in e.Values) 
+				if (e.Identity == ElementIdentity.BoneAssignment)
+					foreach (GmdcElementValueOneInt v in e.Values)
 					{
-						if (!usebones.Contains(v.Value&0xff)) usebones.Add(v.Value&0xff);
+						if (!usebones.Contains(v.Value & 0xff))
+							usebones.Add(v.Value & 0xff);
 					}
 			}
 
-			for (int i=joints.Length-1; i>=0; i--)
+			for (int i = joints.Length - 1; i >= 0; i--)
 			{
-				if (!usebones.Contains(i)) RemoveBone(i);
+				if (!usebones.Contains(i))
+					RemoveBone(i);
 			}
 		}
 
@@ -498,21 +533,21 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <remarks>Vertices referencing this Bone will be unassigned! </remarks>
 		/// <param name="index"></param>
-		public void RemoveBone(int index) 
+		public void RemoveBone(int index)
 		{
-			//Update the Assignments 
-			foreach (GmdcElement e in elements) 
+			//Update the Assignments
+			foreach (GmdcElement e in elements)
 			{
-				if (e.Identity == ElementIdentity.BoneAssignment) 
-					foreach (GmdcElementValueOneInt v in e.Values) 
-					{						
-						if ((int)v.Bytes[0]==index) 
+				if (e.Identity == ElementIdentity.BoneAssignment)
+					foreach (GmdcElementValueOneInt v in e.Values)
+					{
+						if ((int)v.Bytes[0] == index)
 						{
-							byte[]b = v.Bytes;
+							byte[] b = v.Bytes;
 							b[0] = 0xff;
 							v.Bytes = b;
 						}
-						/*else if ((int)v.Bytes[0]>index) 
+						/*else if ((int)v.Bytes[0]>index)
 						{
 							byte[]b = v.Bytes;
 							b[0]--;
@@ -522,12 +557,14 @@ namespace SimPe.Plugin
 			}
 
 			//Update the Bone List in the Groups Section
-			foreach (GmdcGroup g in groups) 
+			foreach (GmdcGroup g in groups)
 			{
-				for (int i=g.UsedJoints.Count-1; i>=0; i--)
+				for (int i = g.UsedJoints.Count - 1; i >= 0; i--)
 				{
-					if (g.UsedJoints[i]==index) g.UsedJoints.RemoveAt(i);
-					else if (g.UsedJoints[i]>index) g.UsedJoints[i]--;
+					if (g.UsedJoints[i] == index)
+						g.UsedJoints.RemoveAt(i);
+					else if (g.UsedJoints[i] > index)
+						g.UsedJoints[i]--;
 				}
 			}
 
@@ -540,12 +577,13 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="name">The name of the Group</param>
 		/// <returns>-1 if the Grou is not foudn or the Index in <see cref="Groups"/></returns>
-		public int FindGroupByName(string name) 
+		public int FindGroupByName(string name)
 		{
 			name = name.Trim().ToLower();
-			for (int i=0; i<Groups.Count; i++)
+			for (int i = 0; i < Groups.Count; i++)
 			{
-				if (Groups[i].Name.Trim().ToLower() == name) return i;				
+				if (Groups[i].Name.Trim().ToLower() == name)
+					return i;
 			}
 
 			return -1;
@@ -556,12 +594,13 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="name">The name of the Joint</param>
 		/// <returns>-1 if the Joint is not found or the Index in <see cref="Joints"/></returns>
-		public int FindJointByName(string name) 
+		public int FindJointByName(string name)
 		{
 			name = name.Trim().ToLower();
-			for (int i=0; i<Joints.Count; i++)
+			for (int i = 0; i < Joints.Count; i++)
 			{
-				if (Joints[i].Name.Trim().ToLower() == name) return i;				
+				if (Joints[i].Name.Trim().ToLower() == name)
+					return i;
 			}
 
 			return -1;
@@ -570,27 +609,30 @@ namespace SimPe.Plugin
 		#region LinkedCRES
 
 		Rcol cres;
-        bool tried;
-        public bool TriedToLoadParentResourceNode
-        {
-            get { return tried; }
-            set { tried = value; }
-        }
+		bool tried;
+		public bool TriedToLoadParentResourceNode
+		{
+			get { return tried; }
+			set { tried = value; }
+		}
 
 		/// <summary>
 		/// Get the attached ResourceNode
 		/// </summary>
-		public  ResourceNode ParentResourceNode 
+		public ResourceNode ParentResourceNode
 		{
-			get {
-                if (!tried)
-                {
-                    if (cres == null) cres = FindReferencingCRES();
-                    tried = true;                                        
-                }
+			get
+			{
+				if (!tried)
+				{
+					if (cres == null)
+						cres = FindReferencingCRES();
+					tried = true;
+				}
 
-                if (cres == null) return null;
-				return (ResourceNode) cres.Blocks[0]; 
+				if (cres == null)
+					return null;
+				return (ResourceNode)cres.Blocks[0];
 			}
 		}
 
@@ -598,51 +640,59 @@ namespace SimPe.Plugin
 		/// Returns the RCOL which lists this Resource in it's ReferencedFiles Attribute
 		/// </summary>
 		/// <returns>null or the RCOl Ressource</returns>
-        public Rcol FindReferencingCRES()
-        {
-            Wait.SubStart();
-            //WaitingScreen.Wait();
-            try
-            {
-                SimPe.Interfaces.Scenegraph.IScenegraphFileIndex nfi = FileTable.FileIndex.AddNewChild();
-                nfi.AddIndexFromPackage(this.Parent.Package);
-                Rcol cres = FindReferencingCRES_Int();
-                FileTable.FileIndex.RemoveChild(nfi);
-                nfi.Clear();
+		public Rcol FindReferencingCRES()
+		{
+			Wait.SubStart();
+			//WaitingScreen.Wait();
+			try
+			{
+				SimPe.Interfaces.Scenegraph.IScenegraphFileIndex nfi =
+					FileTable.FileIndex.AddNewChild();
+				nfi.AddIndexFromPackage(this.Parent.Package);
+				Rcol cres = FindReferencingCRES_Int();
+				FileTable.FileIndex.RemoveChild(nfi);
+				nfi.Clear();
 
-                if (cres == null && !FileTable.FileIndex.Loaded)
-                {
-                    FileTable.FileIndex.Load();
-                    cres = FindReferencingCRES_Int();
-                }
+				if (cres == null && !FileTable.FileIndex.Loaded)
+				{
+					FileTable.FileIndex.Load();
+					cres = FindReferencingCRES_Int();
+				}
 
+				return cres;
+			}
+			finally
+			{
+				Wait.SubStop(); /*WaitingScreen.Stop();*/
+			}
+		}
 
-                return cres;
-            }
-            finally { Wait.SubStop(); /*WaitingScreen.Stop();*/ }
-        }
 		/// <summary>
 		/// Returns the RCOL which lists this Resource in it's ReferencedFiles Attribute
 		/// </summary>
 		/// <returns>null or the RCOl Ressource</returns>
 		Rcol FindReferencingCRES_Int()
 		{
-            //WaitingScreen.UpdateMessage("Loading Geometry Node");
-            Wait.Message = "Loading Geometry Node";
+			//WaitingScreen.UpdateMessage("Loading Geometry Node");
+			Wait.Message = "Loading Geometry Node";
 			Rcol step = FindReferencingParent_NoLoad(Data.MetaData.GMND);
-			if (step==null) return null;
+			if (step == null)
+				return null;
 
-
-            //WaitingScreen.UpdateMessage("Loading Shape");
-            Wait.Message = "Loading Shape";
+			//WaitingScreen.UpdateMessage("Loading Shape");
+			Wait.Message = "Loading Shape";
 			step = ((GeometryNode)step.Blocks[0]).FindReferencingSHPE_NoLoad();
-			if (step==null) return null;
+			if (step == null)
+				return null;
 
-            //WaitingScreen.UpdateMessage("Loading ResourceNode");
-            Wait.Message = "Loading ResourceNode";
-			step = ((AbstractRcolBlock)step.Blocks[0]).FindReferencingParent_NoLoad(Data.MetaData.CRES);
-			if (step==null) return null;									
-			
+			//WaitingScreen.UpdateMessage("Loading ResourceNode");
+			Wait.Message = "Loading ResourceNode";
+			step = ((AbstractRcolBlock)step.Blocks[0]).FindReferencingParent_NoLoad(
+				Data.MetaData.CRES
+			);
+			if (step == null)
+				return null;
+
 			return step;
 		}
 
@@ -652,14 +702,19 @@ namespace SimPe.Plugin
 		/// <param name="parentmap">Hasttable that will contain the Child (key) -> Parent (value) Relation</param>
 		/// <param name="parent">the current Parent id (-1=none)</param>
 		/// <param name="c">the current Block we process</param>
-		protected void LoadJointRelationRec(System.Collections.Hashtable parentmap, int parent, SimPe.Interfaces.Scenegraph.ICresChildren c)
+		protected void LoadJointRelationRec(
+			System.Collections.Hashtable parentmap,
+			int parent,
+			SimPe.Interfaces.Scenegraph.ICresChildren c
+		)
 		{
-			if (c==null) return;
+			if (c == null)
+				return;
 
-			if (c.GetType()==typeof(TransformNode))
+			if (c.GetType() == typeof(TransformNode))
 			{
 				TransformNode tn = (TransformNode)c;
-				if (tn.JointReference!=TransformNode.NO_JOINT) 
+				if (tn.JointReference != TransformNode.NO_JOINT)
 				{
 					parentmap[tn.JointReference] = parent;
 					parent = tn.JointReference;
@@ -672,7 +727,6 @@ namespace SimPe.Plugin
 				SimPe.Interfaces.Scenegraph.ICresChildren cl = c.GetBlock(i);
 				LoadJointRelationRec(parentmap, parent, cl);
 			}
-			
 		}
 
 		/// <summary>
@@ -686,19 +740,25 @@ namespace SimPe.Plugin
 			ResourceNode rn = this.ParentResourceNode;
 
 			System.Collections.Hashtable parentmap = new System.Collections.Hashtable();
-            if (rn == null)
-            {
-                Message.Show(SimPe.Localization.GetString("NO_CRES_FOUND"), SimPe.Localization.GetString("Information"), System.Windows.Forms.MessageBoxButtons.OK);
-                return parentmap;
-            }
-            else LoadJointRelationRec(parentmap, -1, rn);
+			if (rn == null)
+			{
+				Message.Show(
+					SimPe.Localization.GetString("NO_CRES_FOUND"),
+					SimPe.Localization.GetString("Information"),
+					System.Windows.Forms.MessageBoxButtons.OK
+				);
+				return parentmap;
+			}
+			else
+				LoadJointRelationRec(parentmap, -1, rn);
 
 			//make sure Bones not defined in the CRES are listed here too
-			for (int i=0; i<Joints.Count; i++)
-				if (parentmap[i]==null) parentmap[i] = -1;
+			for (int i = 0; i < Joints.Count; i++)
+				if (parentmap[i] == null)
+					parentmap[i] = -1;
 
 			return parentmap;
-		}		
+		}
 
 		/// <summary>
 		/// Recusrivley add all SubJoints
@@ -706,14 +766,21 @@ namespace SimPe.Plugin
 		/// <param name="start"></param>
 		/// <param name="relmap"></param>
 		/// <param name="l"></param>
-		static void SortJointsRec(int start, System.Collections.Hashtable relmap, IntArrayList l)
+		static void SortJointsRec(
+			int start,
+			System.Collections.Hashtable relmap,
+			IntArrayList l
+		)
 		{
-			if (start==-1) return;
-			if (l.Contains(start)) return;
+			if (start == -1)
+				return;
+			if (l.Contains(start))
+				return;
 			l.Add(start);
 
 			foreach (int k in relmap.Keys)
-				if ((int)relmap[k]==start) SortJointsRec(k, relmap, l);
+				if ((int)relmap[k] == start)
+					SortJointsRec(k, relmap, l);
 		}
 
 		/// <summary>
@@ -722,32 +789,37 @@ namespace SimPe.Plugin
 		/// <param name="joints"><see cref="Joints"/></param>
 		/// <param name="relmap"><see cref="LoadJointRelationMap"/></param>
 		/// <returns></returns>
-		public static IntArrayList SortJoints(GmdcJoints joints, System.Collections.Hashtable relmap)
+		public static IntArrayList SortJoints(
+			GmdcJoints joints,
+			System.Collections.Hashtable relmap
+		)
 		{
 			int start = -1;
 			foreach (int k in relmap.Keys)
-				if ((int)relmap[k]==-1) 
+				if ((int)relmap[k] == -1)
 				{
 					start = k;
 					break;
 				}
 
-			if (start!=-1) 
+			if (start != -1)
 			{
 				IntArrayList l = new IntArrayList();
 				SortJointsRec(start, relmap, l);
 
 				//check if there are some Joint's that were not added so far
-				System.Collections.Hashtable nrelmap = (System.Collections.Hashtable)relmap.Clone();
+				System.Collections.Hashtable nrelmap = (System.Collections.Hashtable)
+					relmap.Clone();
 				foreach (int v in l)
-					if (nrelmap.ContainsKey(v)) 
+					if (nrelmap.ContainsKey(v))
 						nrelmap.Remove(v);
 
 				//recursivley process remaing joints
-				if (nrelmap.Count>0) 
+				if (nrelmap.Count > 0)
 				{
 					IntArrayList l2 = SortJoints(joints, nrelmap);
-					foreach (int i in l2) l.Add(i);
+					foreach (int i in l2)
+						l.Add(i);
 				}
 
 				return l;
@@ -762,7 +834,7 @@ namespace SimPe.Plugin
 
 		/// <summary>
 		/// Sort the passed list of Joints so that parent joints allways come first
-		/// </summary>		
+		/// </summary>
 		/// <returns></returns>
 		public IntArrayList SortJoints()
 		{
@@ -771,7 +843,7 @@ namespace SimPe.Plugin
 
 		/// <summary>
 		/// Sort the passed list of Joints so that parent joints allways come first
-		/// </summary>		
+		/// </summary>
 		/// <param name="relmap"></param>
 		/// <returns></returns>
 		public IntArrayList SortJoints(System.Collections.Hashtable relmap)
@@ -791,7 +863,8 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (this.form!=null) this.form.Dispose();
+			if (this.form != null)
+				this.form.Dispose();
 		}
 
 		#endregion

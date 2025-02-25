@@ -7,21 +7,13 @@ namespace SimPe.Wizards
 	/// </summary>
 	public class Step2 : AWizardForm
 	{
-		
-
-		public Step2()
-		{
-			
-		}
+		public Step2() { }
 
 		#region IWizardForm Member
 
 		public override System.Windows.Forms.Panel WizardWindow
 		{
-			get
-			{
-				return Step1.Form.pnwizard2;
-			}
+			get { return Step1.Form.pnwizard2; }
 		}
 
 		protected override bool Init()
@@ -31,26 +23,17 @@ namespace SimPe.Wizards
 
 		public override string WizardMessage
 		{
-			get
-			{
-				return "This will be your second Step with the Wizards of SimPE";
-			}
+			get { return "This will be your second Step with the Wizards of SimPE"; }
 		}
 
 		public override bool CanContinue
 		{
-			get
-			{
-				return Step1.Form.cbstep2.Checked;
-			}
+			get { return Step1.Form.cbstep2.Checked; }
 		}
 
 		public override int WizardStep
 		{
-			get
-			{
-				return 3;
-			}
+			get { return 3; }
 		}
 
 		Step3 step3;
@@ -58,7 +41,8 @@ namespace SimPe.Wizards
 		{
 			get
 			{
-				if (step3==null) step3 = new Step3();
+				if (step3 == null)
+					step3 = new Step3();
 				return step3;
 			}
 		}

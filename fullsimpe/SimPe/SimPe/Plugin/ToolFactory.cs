@@ -26,15 +26,14 @@ namespace SimPe.Plugin
 	/// Lists all Plugins (=FileType Wrappers) available in this Package
 	/// </summary>
 	/// <remarks>
-	/// GetWrappers() has to return a list of all Plugins provided by this Library. 
+	/// GetWrappers() has to return a list of all Plugins provided by this Library.
 	/// If a Plugin isn't returned, SimPe won't recognize it!
 	/// </remarks>
-	public class ToolFactory3D : SimPe.Interfaces.Plugin.AbstractWrapperFactory, SimPe.Interfaces.Plugin.IToolFactory
+	public class ToolFactory3D
+		: SimPe.Interfaces.Plugin.AbstractWrapperFactory,
+			SimPe.Interfaces.Plugin.IToolFactory
 	{
-		public ToolFactory3D()
-		{
-			
-		}
+		public ToolFactory3D() { }
 
 		#region AbstractWrapperFactory Member
 		/// <summary>
@@ -43,12 +42,10 @@ namespace SimPe.Plugin
 		/// <returns>A List of all provided Plugins (=FileType Wrappers)</returns>
 		public override SimPe.Interfaces.IWrapper[] KnownWrappers
 		{
-			get 
+			get
 			{
 				// TODO:  You can add more Wrappers here
-				IWrapper[] wrappers = {
-										  
-									  };
+				IWrapper[] wrappers = { };
 				return wrappers;
 			}
 		}
@@ -62,9 +59,7 @@ namespace SimPe.Plugin
 			get
 			{
 				IToolPlugin[] tools = null;
-				tools =  new IToolPlugin[]{
-											  new SimPe.Plugin.Tool.AnimTool()											  
-										  };				
+				tools = new IToolPlugin[] { new SimPe.Plugin.Tool.AnimTool() };
 				return tools;
 			}
 		}

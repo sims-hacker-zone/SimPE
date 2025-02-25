@@ -11,7 +11,7 @@ namespace SimPe.Plugin
 		Red = 4,
 		Grey = 5,
 		Custom = 6,
-		Unbinned = 7
+		Unbinned = 7,
 	}
 
 	public enum SimGender
@@ -19,7 +19,7 @@ namespace SimPe.Plugin
 		Unspecified = 0,
 		Female = 1,
 		Male = 2,
-		Both = Female | Male
+		Both = Female | Male,
 	}
 
 	public enum ShoeType : uint
@@ -30,7 +30,7 @@ namespace SimPe.Plugin
 		Heeled = 3,
 		Normal = 4,
 		Sandal = 5,
-		Armoured = 7
+		Armoured = 7,
 	}
 
 	public enum OutfitType : int
@@ -49,7 +49,7 @@ namespace SimPe.Plugin
 		BrushTailLong = 0x0400,
 		BrushTailShort = 0x0800,
 		SpitzTail = 0x1000,
-		BrushSpitzTail = 0x2000
+		BrushSpitzTail = 0x2000,
 	}
 
 	public enum SpeciesType : uint
@@ -59,6 +59,6 @@ namespace SimPe.Plugin
 		LargeDog = 0x02,
 		SmallDog = 0x04,
 		Wolf = 0x06,
-		Cat = 0x08
+		Cat = 0x08,
 	}
 }

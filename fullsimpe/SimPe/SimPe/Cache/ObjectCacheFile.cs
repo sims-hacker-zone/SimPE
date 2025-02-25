@@ -18,47 +18,50 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.IO;
 using System.Collections;
+using System.IO;
 using SimPe;
 using SimPe.Plugin;
-
 
 namespace SimPe.Cache
 {
 	/// <summary>
 	/// Contains an Instance of a CacheFile
 	/// </summary>
-	public class ObjectCacheFile: CacheFile
+	public class ObjectCacheFile : CacheFile
 	{
 		/// <summary>
 		/// Creaet a new Instance for an empty File
 		/// </summary>
-		public ObjectCacheFile() : base()
+		public ObjectCacheFile()
+			: base()
 		{
 			DEFAULT_TYPE = ContainerType.Object;
-		}		
+		}
 
 		/// <summary>
 		/// Add a Object Item to the Cache
 		/// </summary>
 		/// <param name="oci">The Cache Item</param>
 		/// <param name="filename">name of the package File where the Object was in</param>
-		public void AddItem(ObjectCacheItem oci, string filename) 
+		public void AddItem(ObjectCacheItem oci, string filename)
 		{
-			CacheContainer mycc = this.UseConatiner(ContainerType.Object, filename);						
+			CacheContainer mycc = this.UseConatiner(ContainerType.Object, filename);
 			mycc.Items.Add(oci);
 		}
 
 		FileIndex fi;
+
 		/// <summary>
 		/// Return the FileIndex represented by the Cached Files
 		/// </summary>
-		public FileIndex FileIndex 
+		public FileIndex FileIndex
 		{
-			get { 
-				if (fi==null) LoadObjects();
-				return fi; 
+			get
+			{
+				if (fi == null)
+					LoadObjects();
+				return fi;
 			}
 		}
 
@@ -67,27 +70,30 @@ namespace SimPe.Cache
 		/// </summary>
 		/// <returns>the FileIndex</returns>
 		/// <remarks>
-		/// The Tags of the FileDescriptions contain the MMATCachItem Object, 
+		/// The Tags of the FileDescriptions contain the MMATCachItem Object,
 		/// the FileNames of the FileDescriptions contain the Name of the package File
 		/// </remarks>
 		public void LoadObjects()
 		{
 			fi = new FileIndex(new ArrayList());
 			fi.Duplicates = true;
-			
-			foreach (CacheContainer cc in Containers) 
+
+			foreach (CacheContainer cc in Containers)
 			{
-				if (cc.Type==ContainerType.Object && cc.Valid) 
+				if (cc.Type == ContainerType.Object && cc.Valid)
 				{
-					foreach (ObjectCacheItem mci in cc.Items) 
+					foreach (ObjectCacheItem mci in cc.Items)
 					{
 						Interfaces.Files.IPackedFileDescriptor pfd = mci.FileDescriptor;
 						pfd.Filename = cc.FileName;
-						fi.AddIndexFromPfd(pfd, null, FileIndex.GetLocalGroup(pfd.Filename));
+						fi.AddIndexFromPfd(
+							pfd,
+							null,
+							FileIndex.GetLocalGroup(pfd.Filename)
+						);
 					}
 				}
-			}//foreach
+			} //foreach
 		}
-
 	}
 }

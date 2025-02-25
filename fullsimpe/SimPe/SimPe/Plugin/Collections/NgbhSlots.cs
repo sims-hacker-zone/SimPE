@@ -33,8 +33,9 @@ namespace SimPe.Plugin.Collections
 		Data.NeighborhoodSlots type;
 		public Data.NeighborhoodSlots Type
 		{
-			get {return type;}
+			get { return type; }
 		}
+
 		internal NgbhSlots(Ngbh parent, Data.NeighborhoodSlots type)
 		{
 			list = new ArrayList();
@@ -55,25 +56,29 @@ namespace SimPe.Plugin.Collections
 		public void Add(NgbhSlot item)
 		{
 			list.Add(item);
-			if (parent!=null) parent.Changed = true;
+			if (parent != null)
+				parent.Changed = true;
 		}
 
 		public void Remove(NgbhSlot item)
 		{
 			list.Remove(item);
-			if (parent!=null) parent.Changed = true;
+			if (parent != null)
+				parent.Changed = true;
 		}
 
 		public void RemoveAt(int index)
 		{
 			list.RemoveAt(index);
-			if (parent!=null) parent.Changed = true;
+			if (parent != null)
+				parent.Changed = true;
 		}
 
 		public void Clear()
 		{
 			list.Clear();
-			if (parent!=null) parent.Changed = true;
+			if (parent != null)
+				parent.Changed = true;
 		}
 
 		public bool Contains(NgbhSlot item)
@@ -83,21 +88,23 @@ namespace SimPe.Plugin.Collections
 
 		public NgbhSlot this[int index]
 		{
-			get {return list[index] as NgbhSlot;}
-			set {
+			get { return list[index] as NgbhSlot; }
+			set
+			{
 				list[index] = value;
-				if (parent!=null) parent.Changed = true;
+				if (parent != null)
+					parent.Changed = true;
 			}
 		}
 
 		public int Count
 		{
-			get {return list.Count;}
+			get { return list.Count; }
 		}
 
 		public int Length
 		{
-			get {return list.Count;}
+			get { return list.Count; }
 		}
 
 		public NgbhSlots Clone()
@@ -133,11 +140,13 @@ namespace SimPe.Plugin.Collections
 		/// <returns>the Slot for the given Sim or null</returns>
 		public NgbhSlot GetInstanceSlot(uint instance, bool create)
 		{
-			foreach (NgbhSlot s in list) if (s.SlotID == instance) return s;
+			foreach (NgbhSlot s in list)
+				if (s.SlotID == instance)
+					return s;
 
-			if (create)			
+			if (create)
 				return this.AddNew(instance);
-			
+
 			return null;
 		}
 
@@ -145,7 +154,8 @@ namespace SimPe.Plugin.Collections
 
 		public void Dispose()
 		{
-			if (list!=null) list.Clear();
+			if (list != null)
+				list.Clear();
 			list = null;
 		}
 

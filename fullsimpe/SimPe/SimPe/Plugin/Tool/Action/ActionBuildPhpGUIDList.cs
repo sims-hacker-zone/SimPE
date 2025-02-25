@@ -20,59 +20,74 @@
 using System;
 
 namespace SimPe.Plugin.Tool.Action
-{	
+{
 	/// <summary>
 	/// The ReloadFileTable Action
 	/// </summary>
 	public class ActionBuildPhpGuidList : SimPe.Interfaces.IToolAction
 	{
-		
 		#region IToolAction Member
 
-		public virtual bool ChangeEnabledStateEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
+		public virtual bool ChangeEnabledStateEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs es
+		)
 		{
-			return true;								
+			return true;
 		}
-		
+
 		public void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs e)
 		{
-			if (!ChangeEnabledStateEventHandler(null, e)) return;
-			
+			if (!ChangeEnabledStateEventHandler(null, e))
+				return;
+
 			SimPe.FileTable.FileIndex.Load();
-			
-			System.IO.StreamWriter sw = new System.IO.StreamWriter(new System.IO.MemoryStream());
-			try 
+
+			System.IO.StreamWriter sw = new System.IO.StreamWriter(
+				new System.IO.MemoryStream()
+			);
+			try
 			{
 				System.Collections.ArrayList guids = new System.Collections.ArrayList();
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = SimPe.FileTable.FileIndex.FindFile(Data.MetaData.OBJD_FILE, true);
+				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+					SimPe.FileTable.FileIndex.FindFile(Data.MetaData.OBJD_FILE, true);
 				sw.WriteLine("<?");
 				sw.WriteLine("$guids = array(");
 				sw.Write("    ");
 				Wait.SubStart(items.Length);
 				int ct = 0;
-				foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items) 
+				foreach (
+					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
+				)
 				{
-					
-					
-					
-					SimPe.PackedFiles.Wrapper.ExtObjd objd = new SimPe.PackedFiles.Wrapper.ExtObjd();
+					SimPe.PackedFiles.Wrapper.ExtObjd objd =
+						new SimPe.PackedFiles.Wrapper.ExtObjd();
 					objd.ProcessData(item);
 
-					if (guids.Contains(objd.Guid)) continue;
-					if (objd.Type == SimPe.Data.ObjectTypes.Memory) continue;
-					if (objd.Type == SimPe.Data.ObjectTypes.Person) continue;
-					
-					if (ct>0) sw.Write(",");
+					if (guids.Contains(objd.Guid))
+						continue;
+					if (objd.Type == SimPe.Data.ObjectTypes.Memory)
+						continue;
+					if (objd.Type == SimPe.Data.ObjectTypes.Person)
+						continue;
+
+					if (ct > 0)
+						sw.Write(",");
 					ct++;
 					Wait.Progress = ct;
 					sw.Write("array(");
-					sw.Write("0x"+Helper.HexString(objd.Guid));
+					sw.Write("0x" + Helper.HexString(objd.Guid));
 					guids.Add(objd.Guid);
 					sw.Write(", '");
-					sw.Write("Maxis: "+objd.FileName.Replace("'", "").Replace("\\", "").Replace("\"", ""));
+					sw.Write(
+						"Maxis: "
+							+ objd.FileName.Replace("'", "")
+								.Replace("\\", "")
+								.Replace("\"", "")
+					);
 					/*SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] list = SimPe.FileTable.FileIndex.FindFile(Data.MetaData.CTSS_FILE, objd.FileDescriptor.Group, objd.CTSSInstance, null);
 					if (list.Length==0) sw.Write(objd.FileName.Replace("'", "").Replace("\\", "").Replace("\"", ""));
-					else 
+					else
 					{
 						SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str(1);
 						str.ProcessData(list[0]);
@@ -89,15 +104,15 @@ namespace SimPe.Plugin.Tool.Action
 				Report f = new Report();
 				f.Execute(sw);
 			}
-			finally 
+			finally
 			{
 				sw.Close();
 			}
 		}
 
-		#endregion		
+		#endregion
 
-		
+
 		#region IToolPlugin Member
 		public override string ToString()
 		{
@@ -108,26 +123,19 @@ namespace SimPe.Plugin.Tool.Action
 		#region IToolExt Member
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.None;
-			}
+			get { return System.Windows.Forms.Shortcut.None; }
 		}
 
 		public System.Drawing.Image Icon
 		{
-			get
-			{
-				return null;
-			}
+			get { return null; }
 		}
 
-		public virtual bool Visible 
+		public virtual bool Visible
 		{
-			get {return true;}
+			get { return true; }
 		}
 
 		#endregion
 	}
 }
-

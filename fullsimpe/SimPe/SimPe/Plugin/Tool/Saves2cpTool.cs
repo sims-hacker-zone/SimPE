@@ -18,40 +18,44 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using SimPe.Interfaces;
 using SimPe.Events;
+using SimPe.Interfaces;
 
 namespace SimPe.Plugin.Tool
 {
 	/// <summary>
 	/// Summary description for Saves2cpTool.
 	/// </summary>
-	public class Saves2cpTool : SimPe.Interfaces.IToolPlus	
+	public class Saves2cpTool : SimPe.Interfaces.IToolPlus
 	{
-		internal Saves2cpTool() 
-		{
-			
-		}		
+		internal Saves2cpTool() { }
 
 		#region ITool Member
 
 		public bool ChangeEnabledStateEventHandler(object sender, ResourceEventArgs e)
 		{
-            return true;
+			return true;
 		}
 
 		public void Execute(object sender, ResourceEventArgs es)
 		{
-			if (!ChangeEnabledStateEventHandler(sender, es)) return;
+			if (!ChangeEnabledStateEventHandler(sender, es))
+				return;
 
-            if (es.Loaded)
-            {
-                    SimPe.Packages.Sims2CommunityPack.ShowSaveDialog(new SimPe.Packages.GeneratableFile[] { es.LoadedPackage.Package }, true);
-            }
-            else
-            {
-                    SimPe.Packages.Sims2CommunityPack.ShowSaveDialog(new SimPe.Packages.GeneratableFile[0], true);
-            }
+			if (es.Loaded)
+			{
+				SimPe.Packages.Sims2CommunityPack.ShowSaveDialog(
+					new SimPe.Packages.GeneratableFile[] { es.LoadedPackage.Package },
+					true
+				);
+			}
+			else
+			{
+				SimPe.Packages.Sims2CommunityPack.ShowSaveDialog(
+					new SimPe.Packages.GeneratableFile[0],
+					true
+				);
+			}
 		}
 
 		public override string ToString()
@@ -64,23 +68,17 @@ namespace SimPe.Plugin.Tool
 		#region IToolExt Member
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.None;
-			}
+			get { return System.Windows.Forms.Shortcut.None; }
 		}
 
 		public System.Drawing.Image Icon
 		{
-			get
-            {
-                return SimPe.GetIcon.S2pc;
-			}
+			get { return SimPe.GetIcon.S2pc; }
 		}
 
 		public virtual bool Visible
 		{
-            get { return true; }
+			get { return true; }
 		}
 
 		#endregion

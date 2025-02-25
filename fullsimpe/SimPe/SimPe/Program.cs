@@ -18,96 +18,129 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Drawing;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Windows.Forms;
 using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
 using SimPe.Events;
+
 //using Ambertation.Windows.Forms;
 
 namespace SimPe
 {
-    partial class MainForm
-    {
-        public static MainForm Global;
-        /// <summary>
-        /// Der Haupteinstiegspunkt für die Anwendung.
-        /// </summary>
-        [STAThread]
-        static void Main(string[] args)
-        {
-            if (System.Environment.Version.Major < 2)
-            {
-                Message.Show(SimPe.Localization.GetString("NoDotNet").Replace("{VERSION}", System.Environment.Version.ToString()));
-                return;
-            }
+	partial class MainForm
+	{
+		public static MainForm Global;
 
-            List<string> argv = new List<string>(args);
-            if (Commandline.PreSplash(argv)) return;
+		/// <summary>
+		/// Der Haupteinstiegspunkt für die Anwendung.
+		/// </summary>
+		[STAThread]
+		static void Main(string[] args)
+		{
+			if (System.Environment.Version.Major < 2)
+			{
+				Message.Show(
+					SimPe
+						.Localization.GetString("NoDotNet")
+						.Replace("{VERSION}", System.Environment.Version.ToString())
+				);
+				return;
+			}
 
-            Commandline.CheckFiles();
+			List<string> argv = new List<string>(args);
+			if (Commandline.PreSplash(argv))
+				return;
 
-            /* Test for a New or Unknown EP, probably pointless now  */
-            if (Helper.WindowsRegistry.FoundUnknownEP())
-            {
-                if (Message.Show(SimPe.Localization.GetString("Unknown EP found").Replace("{name}", SimPe.PathProvider.Global.GetExpansion(SimPe.PathProvider.Global.LastKnown).Name), SimPe.Localization.GetString("Warning"), System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.No)
-                    return;
-            }
-            
-            try
-            {
-                SimPe.Splash.Screen.SetMessage(SimPe.Localization.GetString("Starting SimPe..."));
+			Commandline.CheckFiles();
 
-                Application.DoEvents();
+			/* Test for a New or Unknown EP, probably pointless now  */
+			if (Helper.WindowsRegistry.FoundUnknownEP())
+			{
+				if (
+					Message.Show(
+						SimPe
+							.Localization.GetString("Unknown EP found")
+							.Replace(
+								"{name}",
+								SimPe
+									.PathProvider.Global.GetExpansion(
+										SimPe.PathProvider.Global.LastKnown
+									)
+									.Name
+							),
+						SimPe.Localization.GetString("Warning"),
+						System.Windows.Forms.MessageBoxButtons.YesNo
+					) == System.Windows.Forms.DialogResult.No
+				)
+					return;
+			}
 
-                Helper.WindowsRegistry.UpdateSimPEDirectory();
-                Global = new MainForm();
-                if (!Commandline.FullEnvStart(argv))
-                {
-                    //load Files passed on the commandline
-                    SimPe.Splash.Screen.SetMessage(SimPe.Localization.GetString("Load or Import Files"));
-                    // Tashiketh
-                    if (argv.Count > 0)
-                    {
-                        if (argv[0] != "-load") Global.package.LoadOrImportFiles(argv.ToArray(), true);
-                        else Global.package.LoadOrImportFiles(argv.ToArray(), false);
-                    }
-                    // Global.package.LoadOrImportFiles(argv.ToArray(), true);
-                    Application.Run(Global);
-                }
+			try
+			{
+				SimPe.Splash.Screen.SetMessage(
+					SimPe.Localization.GetString("Starting SimPe...")
+				);
 
-                Helper.WindowsRegistry.Flush();
-                Helper.WindowsRegistry.Layout.Flush();
-                // ExpansionLoader.Global.Flush(); SimPe should not edit this File!
-            }
+				Application.DoEvents();
 
-            catch (Exception ex)
-            {
-                try
-                {
-                    SimPe.Splash.Screen.Stop();
-                    Helper.ExceptionMessage("SimPe will shutdown due to an unhandled Exception.", ex);
-                }
-                catch (Exception ex2)
-                {
-                    MessageBox.Show("SimPe will shutdown due to an unhandled Exception.\n\nMessage: " + ex2.Message);
-                }
-            }
-            
-            finally
-            {
-                if (SimPe.Splash.Running) SimPe.Splash.Screen.ShutDown();
-            }
+				Helper.WindowsRegistry.UpdateSimPEDirectory();
+				Global = new MainForm();
+				if (!Commandline.FullEnvStart(argv))
+				{
+					//load Files passed on the commandline
+					SimPe.Splash.Screen.SetMessage(
+						SimPe.Localization.GetString("Load or Import Files")
+					);
+					// Tashiketh
+					if (argv.Count > 0)
+					{
+						if (argv[0] != "-load")
+							Global.package.LoadOrImportFiles(argv.ToArray(), true);
+						else
+							Global.package.LoadOrImportFiles(argv.ToArray(), false);
+					}
+					// Global.package.LoadOrImportFiles(argv.ToArray(), true);
+					Application.Run(Global);
+				}
 
-            try
-            {
-                SimPe.Packages.StreamFactory.UnlockAll();
-                SimPe.Packages.StreamFactory.CloseAll(true);
-                SimPe.Packages.StreamFactory.CleanupTeleport();
-            }
-            catch { }
-        }
-    }
+				Helper.WindowsRegistry.Flush();
+				Helper.WindowsRegistry.Layout.Flush();
+				// ExpansionLoader.Global.Flush(); SimPe should not edit this File!
+			}
+			catch (Exception ex)
+			{
+				try
+				{
+					SimPe.Splash.Screen.Stop();
+					Helper.ExceptionMessage(
+						"SimPe will shutdown due to an unhandled Exception.",
+						ex
+					);
+				}
+				catch (Exception ex2)
+				{
+					MessageBox.Show(
+						"SimPe will shutdown due to an unhandled Exception.\n\nMessage: "
+							+ ex2.Message
+					);
+				}
+			}
+			finally
+			{
+				if (SimPe.Splash.Running)
+					SimPe.Splash.Screen.ShutDown();
+			}
+
+			try
+			{
+				SimPe.Packages.StreamFactory.UnlockAll();
+				SimPe.Packages.StreamFactory.CloseAll(true);
+				SimPe.Packages.StreamFactory.CleanupTeleport();
+			}
+			catch { }
+		}
+	}
 }

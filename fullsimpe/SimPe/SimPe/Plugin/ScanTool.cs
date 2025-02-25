@@ -29,28 +29,33 @@ namespace SimPe.Plugin
 	{
 		static ScannerForm ds;
 
-		internal ScanerTool() 
-		{		
-
-			
-		}
+		internal ScanerTool() { }
 
 		#region ITool Member
 
-		public bool IsEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
+		public bool IsEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
 			return true;
 		}
 
-		public Interfaces.Plugin.IToolResult ShowDialog(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package)
+		public Interfaces.Plugin.IToolResult ShowDialog(
+			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			ref SimPe.Interfaces.Files.IPackageFile package
+		)
 		{
-			if (ds==null) ds = new ScannerForm();
+			if (ds == null)
+				ds = new ScannerForm();
 			RemoteControl.ShowSubForm(ds);
 
-			if (ds.FileName==null) return new ToolResult(false, false);
-			else 
+			if (ds.FileName == null)
+				return new ToolResult(false, false);
+			else
 			{
-				SimPe.Packages.GeneratableFile gf = SimPe.Packages.GeneratableFile.LoadFromFile(ds.FileName);
+				SimPe.Packages.GeneratableFile gf =
+					SimPe.Packages.GeneratableFile.LoadFromFile(ds.FileName);
 				package = gf;
 				return new ToolResult(false, true);
 			}
@@ -68,16 +73,16 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.scanfolder.png"));
+				return System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream("SimPe.img.scanfolder.png")
+				);
 			}
 		}
 
 		public override System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.CtrlF;
-			}
+			get { return System.Windows.Forms.Shortcut.CtrlF; }
 		}
 		#endregion
 	}

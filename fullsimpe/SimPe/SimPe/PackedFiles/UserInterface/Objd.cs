@@ -19,10 +19,10 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using System.Windows.Forms;
 using System.Drawing;
-using SimPe.Interfaces.Plugin;
+using System.Windows.Forms;
 using SimPe.Interfaces;
+using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.UserInterface
 {
@@ -31,16 +31,11 @@ namespace SimPe.PackedFiles.UserInterface
 	/// </summary>
 	public class Objd : UIBase, IPackedFileUI
 	{
-		
-
 		#region IPackedFileHandler Member
 
 		public Control GUIHandle
 		{
-			get 
-			{
-				return form.objdPanel;
-			}
+			get { return form.objdPanel; }
 		}
 
 		public void UpdateGUI(SimPe.Interfaces.Plugin.IFileWrapper wrapper)
@@ -48,11 +43,11 @@ namespace SimPe.PackedFiles.UserInterface
 			Wrapper.Objd objd = (Wrapper.Objd)wrapper;
 			form.wrapper = objd;
 
-			form.tbsimid.Text = "0x"+Helper.HexString(objd.SimId);	
+			form.tbsimid.Text = "0x" + Helper.HexString(objd.SimId);
 			form.tbsimname.Text = objd.FileName;
-			form.tblottype.Text = "0x"+Helper.HexString(objd.Type);
+			form.tblottype.Text = "0x" + Helper.HexString(objd.Type);
 			form.lbtypename.Text = ((Data.ObjectTypes)objd.Type).ToString().Trim();
-			form.tborgguid.Text = "0x"+Helper.HexString(objd.OriginalGuid);
+			form.tborgguid.Text = "0x" + Helper.HexString(objd.OriginalGuid);
 			form.tbproxguid.Text = "0x" + Helper.HexString(objd.ProxyGuid);
 
 			Hashtable list = objd.Attributes;
@@ -60,7 +55,13 @@ namespace SimPe.PackedFiles.UserInterface
 
 			int top = 4;
 			ArrayList keys = new ArrayList();
-			foreach (string k in list.Keys) keys.Add("0x"+Helper.HexString((ushort)objd.GetAttributePosition(k))+": "+k);
+			foreach (string k in list.Keys)
+				keys.Add(
+					"0x"
+						+ Helper.HexString((ushort)objd.GetAttributePosition(k))
+						+ ": "
+						+ k
+				);
 			keys.Sort();
 
 			foreach (string k in keys)
@@ -69,7 +70,7 @@ namespace SimPe.PackedFiles.UserInterface
 				Label lb = new Label();
 				lb.Parent = form.pnelements;
 				lb.AutoSize = true;
-				lb.Text = k+" = ";
+				lb.Text = k + " = ";
 				lb.Top = top;
 				lb.Visible = true;
 
@@ -79,9 +80,9 @@ namespace SimPe.PackedFiles.UserInterface
 				tb.Left = lb.Left + lb.Width;
 				tb.Top = lb.Bottom - tb.Height;
 				tb.Width = 50;
-				tb.Text = "0x"+Helper.HexString(objd.GetAttributeShort(s[1].Trim()));
+				tb.Text = "0x" + Helper.HexString(objd.GetAttributeShort(s[1].Trim()));
 				tb.Tag = s[1].Trim();
-				tb.Visible = true;				
+				tb.Visible = true;
 				tb.TextChanged += new EventHandler(HexTextChanged);
 
 				TextBox tb2 = new TextBox();
@@ -94,13 +95,11 @@ namespace SimPe.PackedFiles.UserInterface
 				tb2.Tag = null;
 				tb2.Visible = true;
 				tb2.TextChanged += new EventHandler(DecTextChanged);
-				
 
 				top += Math.Max(lb.Height, tb.Height) + 2;
 			}
 		}
 
-		
 		#endregion
 
 		bool systentextupdate = false;
@@ -112,22 +111,23 @@ namespace SimPe.PackedFiles.UserInterface
 		/// <param name="e"></param>
 		private void HexTextChanged(object sender, EventArgs e)
 		{
-			if (systentextupdate) return;
+			if (systentextupdate)
+				return;
 			systentextupdate = true;
-			TextBox tb = (TextBox) sender;
+			TextBox tb = (TextBox)sender;
 
-			foreach (Control c in tb.Parent.Controls) 
+			foreach (Control c in tb.Parent.Controls)
 			{
-				if (c.GetType()==typeof(TextBox)) 
+				if (c.GetType() == typeof(TextBox))
 				{
 					TextBox tb2 = (TextBox)c;
-					if ((tb2.Top == tb.Top) && (tb2!=tb))
+					if ((tb2.Top == tb.Top) && (tb2 != tb))
 					{
-						try 
+						try
 						{
 							tb2.Text = Convert.ToInt16(tb.Text, 16).ToString();
-						} 
-						catch (Exception) {}
+						}
+						catch (Exception) { }
 						break;
 					}
 				}
@@ -142,22 +142,25 @@ namespace SimPe.PackedFiles.UserInterface
 		/// <param name="e"></param>
 		private void DecTextChanged(object sender, EventArgs e)
 		{
-			if (systentextupdate) return;
+			if (systentextupdate)
+				return;
 			systentextupdate = true;
-			TextBox tb = (TextBox) sender;
+			TextBox tb = (TextBox)sender;
 
-			foreach (Control c in tb.Parent.Controls) 
+			foreach (Control c in tb.Parent.Controls)
 			{
-				if (c.GetType()==typeof(TextBox)) 
+				if (c.GetType() == typeof(TextBox))
 				{
 					TextBox tb2 = (TextBox)c;
-					if ((tb2.Top == tb.Top) && (tb2!=tb))
+					if ((tb2.Top == tb.Top) && (tb2 != tb))
 					{
-						try 
+						try
 						{
-							tb2.Text = "0x"+Helper.HexString((ushort)Convert.ToInt16(tb.Text));
-						} 
-						catch (Exception) {}
+							tb2.Text =
+								"0x"
+								+ Helper.HexString((ushort)Convert.ToInt16(tb.Text));
+						}
+						catch (Exception) { }
 						break;
 					}
 				}

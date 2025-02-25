@@ -22,41 +22,50 @@ using System;
 namespace SimPe.Actions.Default
 {
 	/// <summary>
-    /// Summary description for DeleteAction.
+	/// Summary description for DeleteAction.
 	/// </summary>
 	public class DeleteAction : AbstractActionDefault
 	{
-		public DeleteAction()
-		{
-			
-		}
-		#region IToolAction Member		
+		public DeleteAction() { }
 
-		public override bool ChangeEnabledStateEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
+		#region IToolAction Member
+
+		public override bool ChangeEnabledStateEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs es
+		)
 		{
-			bool res = base.ChangeEnabledStateEventHandler (sender, es);
-			if (res) 
+			bool res = base.ChangeEnabledStateEventHandler(sender, es);
+			if (res)
 			{
 				res = false;
 				foreach (SimPe.Events.ResourceContainer e in es)
-					if (e.HasFileDescriptor) 
-						if (!e.Resource.FileDescriptor.MarkForDelete) return true;								
+					if (e.HasFileDescriptor)
+						if (!e.Resource.FileDescriptor.MarkForDelete)
+							return true;
 			}
 			return false;
 		}
 
-		public override void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
+		public override void ExecuteEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs es
+		)
 		{
-			if (!ChangeEnabledStateEventHandler(null, es)) return;
+			if (!ChangeEnabledStateEventHandler(null, es))
+				return;
 
-            if (es.Loaded) es.LoadedPackage.Package.BeginUpdate();
-            foreach (SimPe.Events.ResourceContainer e in es)
-            {
-                if (es.Loaded) es.LoadedPackage.Package.ForgetUpdate();
-                e.Resource.FileDescriptor.MarkForDelete = true;
-            }
+			if (es.Loaded)
+				es.LoadedPackage.Package.BeginUpdate();
+			foreach (SimPe.Events.ResourceContainer e in es)
+			{
+				if (es.Loaded)
+					es.LoadedPackage.Package.ForgetUpdate();
+				e.Resource.FileDescriptor.MarkForDelete = true;
+			}
 
-            if (es.Loaded) es.LoadedPackage.Package.EndUpdate();
+			if (es.Loaded)
+				es.LoadedPackage.Package.EndUpdate();
 		}
 
 		#endregion
@@ -70,21 +79,15 @@ namespace SimPe.Actions.Default
 
 		#endregion
 
-		#region IToolExt Member		
+		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
-			get
-            {
-                return SimPe.GetIcon.actionDelete;
-			}
+			get { return SimPe.GetIcon.actionDelete; }
 		}
 
 		public override System.Windows.Forms.Shortcut Shortcut
 		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.ShiftDel;
-			}
+			get { return System.Windows.Forms.Shortcut.ShiftDel; }
 		}
 
 		#endregion

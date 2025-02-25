@@ -19,62 +19,82 @@
  ***************************************************************************/
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Resources;
 using System.Globalization;
+using System.Resources;
+using System.Text;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Custom
 {
-    public class Settings : GlobalizedObject, ISettings
-    {
-        static ResourceManager rm = new ResourceManager(typeof(SimPe.Localization));
+	public class Settings : GlobalizedObject, ISettings
+	{
+		static ResourceManager rm = new ResourceManager(typeof(SimPe.Localization));
 
-        private static Settings settings;
-        static Settings() { settings = new Settings(); }
-        public static bool Persistent { get { return settings.KeepFilesOpen; } }
+		private static Settings settings;
 
-        public Settings() : base(rm) { }
+		static Settings()
+		{
+			settings = new Settings();
+		}
 
-        const string BASENAME = "Settings";
-        SimPe.XmlRegistryKey xrk = SimPe.Helper.WindowsRegistry.RegistryKey;
+		public static bool Persistent
+		{
+			get { return settings.KeepFilesOpen; }
+		}
 
-        [System.ComponentModel.Category("SimPE")]
-        public bool KeepFilesOpen
-        {
-            get
-            {
-                SimPe.XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
-                object o = rkf.GetValue("keepFilesOpen", true);
-                return Convert.ToBoolean(o);
-            }
+		public Settings()
+			: base(rm) { }
 
-            set
-            {
-                SimPe.XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
-                rkf.SetValue("keepFilesOpen", value);
-            }
-        }
+		const string BASENAME = "Settings";
+		SimPe.XmlRegistryKey xrk = SimPe.Helper.WindowsRegistry.RegistryKey;
 
-        #region ISettings Members
+		[System.ComponentModel.Category("SimPE")]
+		public bool KeepFilesOpen
+		{
+			get
+			{
+				SimPe.XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
+				object o = rkf.GetValue("keepFilesOpen", true);
+				return Convert.ToBoolean(o);
+			}
+			set
+			{
+				SimPe.XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
+				rkf.SetValue("keepFilesOpen", value);
+			}
+		}
 
-        public override string ToString() { return "SimPE"; }
+		#region ISettings Members
 
-        [System.ComponentModel.Browsable(false)]
-        public System.Drawing.Image Icon { get { return null; } }
+		public override string ToString()
+		{
+			return "SimPE";
+		}
 
-        object ISettings.GetSettingsObject() { return this; }
+		[System.ComponentModel.Browsable(false)]
+		public System.Drawing.Image Icon
+		{
+			get { return null; }
+		}
 
-        #endregion
-    }
+		object ISettings.GetSettingsObject()
+		{
+			return this;
+		}
 
-    public class SettingsFactory : AbstractWrapperFactory, ISettingsFactory
-    {
-        #region ISettingsFactory Members
+		#endregion
+	}
 
-        public ISettings[] KnownSettings { get { return new ISettings[] { new Settings() }; } }
+	public class SettingsFactory : AbstractWrapperFactory, ISettingsFactory
+	{
+		#region ISettingsFactory Members
 
-        #endregion
-    }
+		public ISettings[] KnownSettings
+		{
+			get { return new ISettings[] { new Settings() }; }
+		}
+
+		#endregion
+	}
 }

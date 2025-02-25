@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.IO;
-using System.Globalization;
 using System.Collections;
+using System.Globalization;
+using System.IO;
 
 namespace SimPe.Plugin.Gmdc
 {
@@ -29,20 +29,20 @@ namespace SimPe.Plugin.Gmdc
 	/// </summary>
 	public abstract class AbstractGmdcExporter : IGmdcExporter
 	{
-
 		static CultureInfo expcult;
+
 		/// <summary>
 		/// Returns the Culture that should be used during the Export
 		/// </summary>
-		/// <remarks>The Culure is needed whenever you write floatingpoint 
+		/// <remarks>The Culure is needed whenever you write floatingpoint
 		/// Values to a Text File</remarks>
-		public static CultureInfo DefaultCulture 
-		{			
-			get 
+		public static CultureInfo DefaultCulture
+		{
+			get
 			{
-				if (expcult==null) 
+				if (expcult == null)
 				{
-					expcult = (CultureInfo)CultureInfo.InvariantCulture.Clone();					
+					expcult = (CultureInfo)CultureInfo.InvariantCulture.Clone();
 				}
 
 				return expcult;
@@ -50,81 +50,90 @@ namespace SimPe.Plugin.Gmdc
 		}
 
 		GeometryDataContainer gmdc;
+
 		/// <summary>
 		/// Returns the assigned Gmdc File
 		/// </summary>
 		protected GeometryDataContainer Gmdc
 		{
-			get {return gmdc; }
+			get { return gmdc; }
 		}
 
 		GmdcGroups groups;
+
 		/// <summary>
 		/// Returns the MeshGroups that should be processed
 		/// </summary>
-		protected GmdcGroups Groups 
+		protected GmdcGroups Groups
 		{
-			get {return groups; }
+			get { return groups; }
 		}
 
 		GmdcElement vertex;
+
 		/// <summary>
 		/// Returns null or the Element that contains the Vertex Data
 		/// </summary>
-		protected GmdcElement VertexElement 
+		protected GmdcElement VertexElement
 		{
 			get { return vertex; }
 		}
 
 		GmdcElement normal;
+
 		/// <summary>
-		/// Returns null or the Element that contains the Vertex Data 
+		/// Returns null or the Element that contains the Vertex Data
 		/// </summary>
-		protected GmdcElement NormalElement 
+		protected GmdcElement NormalElement
 		{
 			get { return normal; }
 		}
 
 		GmdcElement uvmap;
+
 		/// <summary>
-		/// Returns null or the Element that contains the UVMap Data 
+		/// Returns null or the Element that contains the UVMap Data
 		/// </summary>
-		protected GmdcElement UVCoordinateElement 
+		protected GmdcElement UVCoordinateElement
 		{
 			get { return uvmap; }
 		}
 
 		GmdcLink link;
+
 		/// <summary>
 		/// Returns the Link that is used for the current Group (can be null)
-		/// </summary> 
-		protected GmdcLink Link 
+		/// </summary>
+		protected GmdcLink Link
 		{
 			get { return link; }
 		}
 
 		GmdcGroup group;
+
 		/// <summary>
 		/// Returns the curent group (can be null)
 		/// </summary>
-		protected GmdcGroup Group 
+		protected GmdcGroup Group
 		{
 			get { return group; }
 		}
 
 		ElementOrder order;
+
 		/// <summary>
 		/// Which Order is used for the Components
 		/// </summary>
-		public ElementOrder Component 
+		public ElementOrder Component
 		{
 			get { return order; }
 			set { order = value; }
 		}
 
 		bool cjs;
+
 		/// <summary>
-		/// true, if you want SimPe to correct the Joint definitions, moving all rotations to the _root node, 
+		/// true, if you want SimPe to correct the Joint definitions, moving all rotations to the _root node,
 		/// and all translations to the _trans node of a Joint pair.
 		/// </summary>
 		public bool CorrectJointSetup
@@ -138,19 +147,19 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="gmdc">The gmdc File you want to use</param>
 		/// <param name="groups"></param>
-		public AbstractGmdcExporter(GeometryDataContainer gmdc, GmdcGroups groups) : this()
+		public AbstractGmdcExporter(GeometryDataContainer gmdc, GmdcGroups groups)
+			: this()
 		{
 			this.gmdc = gmdc;
-			LoadGroups(groups);			
+			LoadGroups(groups);
 		}
 
 		/// <summary>
 		/// Create a new Instance
 		/// </summary>
 		/// <param name="gmdc">The gmdc File you want to use</param>
-		public AbstractGmdcExporter(GeometryDataContainer gmdc) : this(gmdc, gmdc.Groups)
-		{
-		}
+		public AbstractGmdcExporter(GeometryDataContainer gmdc)
+			: this(gmdc, gmdc.Groups) { }
 
 		/// <summary>
 		/// Create a New Instace
@@ -197,19 +206,19 @@ namespace SimPe.Plugin.Gmdc
 			LoadSpecialElements(null);
 			InitFile();
 
-
-			foreach (GmdcGroup g in groups) 
+			foreach (GmdcGroup g in groups)
 			{
 				LoadSpecialElements(g);
 
-				if (group!=null && vertex!=null && link!=null) ProcessGroup();
+				if (group != null && vertex != null && link != null)
+					ProcessGroup();
 			}
 
 			FinishFile();
 			writer.Flush();
 			writer.BaseStream.Seek(0, SeekOrigin.Begin);
-		}	
-	
+		}
+
 		/// <summary>
 		/// Load Data into the Vertex, Normal an UVCoordinateElement members
 		/// </summary>
@@ -222,20 +231,25 @@ namespace SimPe.Plugin.Gmdc
 			link = null;
 			this.group = group;
 
-			if (group==null) return;
-			if (gmdc==null) return;
+			if (group == null)
+				return;
+			if (gmdc == null)
+				return;
 
-			if (group.LinkIndex<Gmdc.Links.Length) 
+			if (group.LinkIndex < Gmdc.Links.Length)
 			{
 				link = Gmdc.Links[group.LinkIndex];
-				foreach (int i in link.ReferencedElement) 
+				foreach (int i in link.ReferencedElement)
 				{
-					if (i<Gmdc.Elements.Length) 
+					if (i < Gmdc.Elements.Length)
 					{
 						GmdcElement e = Gmdc.Elements[i];
-						if (e.Identity == ElementIdentity.Vertex) vertex = e;
-						else if (e.Identity == ElementIdentity.Normal) normal = e;
-						else if (e.Identity == ElementIdentity.UVCoordinate) uvmap = e;
+						if (e.Identity == ElementIdentity.Vertex)
+							vertex = e;
+						else if (e.Identity == ElementIdentity.Normal)
+							normal = e;
+						else if (e.Identity == ElementIdentity.UVCoordinate)
+							uvmap = e;
 					}
 				} //foreach
 			}
@@ -249,7 +263,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Returns the Content of the File base on the last loaded GroupSet
 		/// </summary>
-		public System.IO.StreamWriter FileContent 
+		public System.IO.StreamWriter FileContent
 		{
 			get { return writer; }
 		}
@@ -257,41 +271,32 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Returns a Version Number for the used Interface
 		/// </summary>
-		public int Version 
+		public int Version
 		{
-			get {return 1;}
-		}		
+			get { return 1; }
+		}
 
 		#region Abstract Methods
 		/// <summary>
 		/// Returns the suggested File Extension (including the . like .obj or .3ds)
 		/// </summary>
-		public abstract string FileExtension
-		{
-			get;
-		}
+		public abstract string FileExtension { get; }
 
 		/// <summary>
 		/// Returns the File Description (the Name of the exported FileType)
 		/// </summary>
-		public abstract string FileDescription
-		{
-			get;
-		}
+		public abstract string FileDescription { get; }
 
 		/// <summary>
 		/// Returns the name of the Author
 		/// </summary>
-		public abstract string Author
-		{
-			get;
-		}
+		public abstract string Author { get; }
 
 		/// <summary>
 		/// Called when a new File is started
 		/// </summary>
 		/// <remarks>
-		/// you should use this to write Header Informations. 
+		/// you should use this to write Header Informations.
 		/// Use the <see cref="writer"/> member to write to the File
 		/// </remarks>
 		protected abstract void InitFile();
@@ -300,13 +305,13 @@ namespace SimPe.Plugin.Gmdc
 		/// This is called whenever a Group (=subSet) needs to processed
 		/// </summary>
 		/// <remarks>
-		/// You can use the <see cref="UVCoordinateElement"/>,  <see cref="NormalElement"/>, 
-		///  <see cref="VertexElement"/>,  <see cref="Group"/> and  <see cref="Link"/> Members in this Method. 
-		/// 
-		/// This Method is only called, when the <see cref="Group"/>, <see cref="Link"/> and 
-		/// Vertex Members are set (not null). The other still can 
+		/// You can use the <see cref="UVCoordinateElement"/>,  <see cref="NormalElement"/>,
+		///  <see cref="VertexElement"/>,  <see cref="Group"/> and  <see cref="Link"/> Members in this Method.
+		///
+		/// This Method is only called, when the <see cref="Group"/>, <see cref="Link"/> and
+		/// Vertex Members are set (not null). The other still can
 		/// be Null!
-		/// 
+		///
 		/// Use the <see cref="writer"/> member to write to the File.
 		/// </remarks>
 		protected abstract void ProcessGroup();
@@ -314,7 +319,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Called when the export was finished
 		/// </summary>
-		/// <remarks>you should use this to write Footer Informations. 
+		/// <remarks>you should use this to write Footer Informations.
 		/// Use the <see cref="writer"/> member to write to the File</remarks>
 		protected abstract void FinishFile();
 		#endregion
@@ -322,11 +327,13 @@ namespace SimPe.Plugin.Gmdc
 		string flname;
 		public string FileName
 		{
-			get {
-				if (flname==null) flname= "";
+			get
+			{
+				if (flname == null)
+					flname = "";
 				return flname;
 			}
-			set {flname=value;}
+			set { flname = value; }
 		}
 	}
 }

@@ -33,77 +33,88 @@ namespace SimPe
 		{
 			doinst = false;
 			dogrp = false;
-			
-			act = dogrp||doinst;
+
+			act = dogrp || doinst;
 		}
 
 		uint inst;
 		bool doinst;
+
 		/// <summary>
 		/// The Filter Instance
 		/// </summary>
 		public uint Instance
 		{
 			get { return inst; }
-			set{
-                if (inst != value)
-                {
-                    inst = value;
-                    if (ChangedFilter != null && FilterInstance) ChangedFilter(this, new EventArgs());
-                }
-            }
+			set
+			{
+				if (inst != value)
+				{
+					inst = value;
+					if (ChangedFilter != null && FilterInstance)
+						ChangedFilter(this, new EventArgs());
+				}
+			}
 		}
 
 		/// <summary>
 		/// true if you want to filter by Instance
 		/// </summary>
-		public bool FilterInstance 
+		public bool FilterInstance
 		{
 			get { return doinst; }
-			set{
-                if (doinst != value)
-                {
-                    doinst = value;
-                    act = dogrp || doinst;
-                    if (ChangedFilter != null) ChangedFilter(this, new EventArgs());
-                }
+			set
+			{
+				if (doinst != value)
+				{
+					doinst = value;
+					act = dogrp || doinst;
+					if (ChangedFilter != null)
+						ChangedFilter(this, new EventArgs());
+				}
 			}
 		}
 
 		uint grp;
 		bool dogrp;
+
 		/// <summary>
 		/// The Filter Instance
 		/// </summary>
 		public uint Group
 		{
 			get { return grp; }
-			set{
-                if (grp != value)
-                {
-                    grp = value;
-                    if (ChangedFilter != null && FilterGroup) ChangedFilter(this, new EventArgs());
-                }
-            }
+			set
+			{
+				if (grp != value)
+				{
+					grp = value;
+					if (ChangedFilter != null && FilterGroup)
+						ChangedFilter(this, new EventArgs());
+				}
+			}
 		}
 
 		/// <summary>
 		/// true if you want to filter by Instance
 		/// </summary>
-		public bool FilterGroup 
+		public bool FilterGroup
 		{
 			get { return dogrp; }
-			set{
-                if (dogrp != value)
-                {
-                    dogrp = value;
-                    act = dogrp || doinst;
-                    if (ChangedFilter != null ) ChangedFilter(this, new EventArgs());
-                }
+			set
+			{
+				if (dogrp != value)
+				{
+					dogrp = value;
+					act = dogrp || doinst;
+					if (ChangedFilter != null)
+						ChangedFilter(this, new EventArgs());
+				}
 			}
 		}
 
 		bool act;
+
 		/// <summary>
 		/// true, if at least one Filter is active
 		/// </summary>
@@ -111,16 +122,21 @@ namespace SimPe
 		{
 			get { return act; }
 		}
+
 		/// <summary>
 		/// returns true, if the passed Item should be filtered
 		/// </summary>
 		public bool IsFiltered(SimPe.Interfaces.Files.IPackedFileDescriptor pfd)
 		{
-			if (dogrp) if (pfd.Group!=grp) return true;
-			if (doinst) if (pfd.Instance!=inst) return true;
-			return false; 
+			if (dogrp)
+				if (pfd.Group != grp)
+					return true;
+			if (doinst)
+				if (pfd.Instance != inst)
+					return true;
+			return false;
 		}
 
-        public event EventHandler ChangedFilter;
+		public event EventHandler ChangedFilter;
 	}
 }

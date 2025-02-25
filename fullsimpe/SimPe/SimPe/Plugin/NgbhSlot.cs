@@ -22,7 +22,6 @@ using System.Collections;
 
 namespace SimPe.Plugin
 {
-
 	/// <summary>
 	/// A Slot contains a number of NgbhItem Objects
 	/// </summary>
@@ -31,22 +30,21 @@ namespace SimPe.Plugin
 		uint version;
 		public NgbhVersion Version
 		{
-			get {return (NgbhVersion)version; }
+			get { return (NgbhVersion)version; }
 			set { version = (uint)value; }
 		}
 
 		Ngbh parent;
 		public Ngbh Parent
 		{
-			get {return parent;}
+			get { return parent; }
 		}
 
-		
 		public NgbhSlotList(Ngbh parent)
 		{
-			if (parent!=null) 
+			if (parent != null)
 				this.Version = parent.Version;
-			else 
+			else
 				this.Version = NgbhVersion.University;
 			this.parent = parent;
 			itemsa = new SimPe.Plugin.Collections.NgbhItems(this);
@@ -64,11 +62,13 @@ namespace SimPe.Plugin
 		public uint SlotID
 		{
 			get { return slotid; }
-			set { 
-				if (slotid!=value)
+			set
+			{
+				if (slotid != value)
 				{
-					slotid = value; 
-					if (parent!=null) parent.Changed = true;
+					slotid = value;
+					if (parent != null)
+						parent.Changed = true;
 				}
 			}
 		}
@@ -81,12 +81,14 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns / Sets the stored NgbhItem
 		/// </summary>
-		public Collections.NgbhItems ItemsA 
+		public Collections.NgbhItems ItemsA
 		{
 			get { return itemsa; }
-			set { 
-				itemsa = value; 
-				if (parent!=null) parent.Changed = true;
+			set
+			{
+				itemsa = value;
+				if (parent != null)
+					parent.Changed = true;
 			}
 		}
 
@@ -98,23 +100,28 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns / Sets the stored NgbhItem
 		/// </summary>
-		public Collections.NgbhItems ItemsB 
+		public Collections.NgbhItems ItemsB
 		{
 			get { return itemsb; }
-			set { 
-				itemsb = value; 
-				if (parent!=null) parent.Changed = true;
+			set
+			{
+				itemsb = value;
+				if (parent != null)
+					parent.Changed = true;
 			}
-		}	
-	
+		}
+
 		public Collections.NgbhItems GetItems(Data.NeighborhoodSlots id)
 		{
-			if (id==Data.NeighborhoodSlots.Families || id==Data.NeighborhoodSlots.Lots || id==Data.NeighborhoodSlots.Sims)
-				return ItemsB;			
+			if (
+				id == Data.NeighborhoodSlots.Families
+				|| id == Data.NeighborhoodSlots.Lots
+				|| id == Data.NeighborhoodSlots.Sims
+			)
+				return ItemsB;
 
 			return ItemsA;
-		}	
-		
+		}
 
 		/// <summary>
 		/// Unserializes a BinaryStream into the Attributes of this Instance
@@ -122,27 +129,27 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal virtual void Unserialize(System.IO.BinaryReader reader)
 		{
-			if ((uint)parent.Version>=(uint)NgbhVersion.Nightlife) version = reader.ReadUInt32();
-            
+			if ((uint)parent.Version >= (uint)NgbhVersion.Nightlife)
+				version = reader.ReadUInt32();
+
 			uint ct = reader.ReadUInt32();
-			itemsa.Clear();			
-			for (int j=0; j<ct; j++) 
+			itemsa.Clear();
+			for (int j = 0; j < ct; j++)
 			{
 				NgbhItem item = itemsa.AddNew();
-				item.Unserialize(reader);				
+				item.Unserialize(reader);
 			}
-
-			
 
 			ct = reader.ReadUInt32();
 			itemsb.Clear();
-			for (int j=0; j<ct; j++) 
+			for (int j = 0; j < ct; j++)
 			{
 				NgbhItem item = itemsb.AddNew();
 				item.Unserialize(reader);
 			}
 
-			if (parent!=null) parent.Changed = false;
+			if (parent != null)
+				parent.Changed = false;
 		}
 
 		/// <summary>
@@ -150,37 +157,45 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		internal virtual void Serialize(System.IO.BinaryWriter writer)
 		{
-			if ((uint)parent.Version>=(uint)NgbhVersion.Nightlife) writer.Write(version);
+			if ((uint)parent.Version >= (uint)NgbhVersion.Nightlife)
+				writer.Write(version);
 
 			writer.Write((uint)itemsa.Length);
-			for (int j=0; j<itemsa.Length; j++) itemsa[j].Serialize(writer);
-			
+			for (int j = 0; j < itemsa.Length; j++)
+				itemsa[j].Serialize(writer);
+
 			writer.Write((uint)itemsb.Length);
-			for (int j=0; j<itemsb.Length; j++) itemsb[j].Serialize(writer);
+			for (int j = 0; j < itemsb.Length; j++)
+				itemsb[j].Serialize(writer);
 		}
 
 		public uint GetNextInventoryNumber()
 		{
-			return Math.Max(itemsa.GetMaxInventoryNumber(), itemsb.GetMaxInventoryNumber()) + 1;			
+			return Math.Max(
+					itemsa.GetMaxInventoryNumber(),
+					itemsb.GetMaxInventoryNumber()
+				) + 1;
 		}
 
 		public NgbhItem FindItem(uint guid)
 		{
 			NgbhItem res = itemsa.FindItemByGuid(guid);
-			if (res==null) res = itemsb.FindItemByGuid(guid);
+			if (res == null)
+				res = itemsb.FindItemByGuid(guid);
 			return res;
 		}
 
-        public int CountItem(uint guid)
-        {
-            int wooh = itemsa.CountItemsByGuid(guid);
-            if (wooh == 0) wooh = itemsb.CountItemsByGuid(guid);
-            return wooh;
+		public int CountItem(uint guid)
+		{
+			int wooh = itemsa.CountItemsByGuid(guid);
+			if (wooh == 0)
+				wooh = itemsb.CountItemsByGuid(guid);
+			return wooh;
 		}
 	}
 
@@ -192,11 +207,11 @@ namespace SimPe.Plugin
 		Data.NeighborhoodSlots type;
 		public Data.NeighborhoodSlots Type
 		{
-			get {return type;}
+			get { return type; }
 		}
 
-
-		internal NgbhSlot(Ngbh parent, Data.NeighborhoodSlots type) : base(parent)
+		internal NgbhSlot(Ngbh parent, Data.NeighborhoodSlots type)
+			: base(parent)
 		{
 			this.type = type;
 		}
@@ -208,7 +223,6 @@ namespace SimPe.Plugin
 		internal override void Unserialize(System.IO.BinaryReader reader)
 		{
 			this.SlotID = reader.ReadUInt32();
-			
 
 			base.Unserialize(reader);
 		}
@@ -218,7 +232,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		internal override void Serialize(System.IO.BinaryWriter writer)
@@ -230,7 +244,12 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			return "0x"+Helper.HexString(SlotID)+": "+this.ItemsA.Count +", "+this.ItemsB.Count;
+			return "0x"
+				+ Helper.HexString(SlotID)
+				+ ": "
+				+ this.ItemsA.Count
+				+ ", "
+				+ this.ItemsB.Count;
 		}
 
 		#region extension by Theo
@@ -242,34 +261,33 @@ namespace SimPe.Plugin
 		public int RemoveMemoriesAboutMe()
 		{
 			int deletedCount = 0;
-			Collections.NgbhItems memoriesToRemove = new SimPe.Plugin.Collections.NgbhItems(null);
+			Collections.NgbhItems memoriesToRemove =
+				new SimPe.Plugin.Collections.NgbhItems(null);
 
 			Collections.NgbhSlots slots = Parent.GetSlots(Data.NeighborhoodSlots.Sims);
 			foreach (NgbhSlot slot in slots)
 			{
-				memoriesToRemove.Clear(); 
+				memoriesToRemove.Clear();
 				foreach (NgbhItem simMemory in slot.ItemsB)
-				{	
+				{
 					if (
-						simMemory.IsMemory && (
-								
-						//1,
-						simMemory.SimInstance == this.SlotID ||
-
-						//2.
-						simMemory.OwnerInstance == this.SlotID
+						simMemory.IsMemory
+						&& (
+							//1,
+							simMemory.SimInstance == this.SlotID
+							||
+							//2.
+							simMemory.OwnerInstance == this.SlotID
 						)
-						)
-
+					)
 						memoriesToRemove.Add(simMemory);
 				}
-
 
 				if (memoriesToRemove.Count > 0)
 				{
 					deletedCount += memoriesToRemove.Count;
 					slot.ItemsB.Remove(memoriesToRemove);
-				}				
+				}
 			}
 
 			return deletedCount;

@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 using SimPe.Events;
 
 namespace SimPe.Interfaces
@@ -30,29 +30,30 @@ namespace SimPe.Interfaces
 	public interface IListener : IToolPlugin
 	{
 		/// <summary>
-		/// This EventHandler will be connected to the ChangeResource Event of the Caller, you can set 
+		/// This EventHandler will be connected to the ChangeResource Event of the Caller, you can set
 		/// the Enabled State here
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		/// <returns>
-		/// Should allways return true for listeners. 
+		/// Should allways return true for listeners.
 		/// Tools displayed in a Menu or ActionList, should only return true, when they are
 		/// enabled for the passed Selection and package
 		/// </returns>
-		void SelectionChangedHandler(object sender, SimPe.Events.ResourceEventArgs e);				
+		void SelectionChangedHandler(object sender, SimPe.Events.ResourceEventArgs e);
 	}
 }
 
-namespace SimPe.Collections 
+namespace SimPe.Collections
 {
 	public class Listeners : System.Collections.IEnumerable
 	{
 		protected System.Collections.ArrayList list;
+
 		protected Listeners()
 		{
 			list = new System.Collections.ArrayList();
-		}		
+		}
 
 		public bool Contains(SimPe.Interfaces.IListener lst)
 		{
@@ -75,7 +76,7 @@ namespace SimPe.Collections
 		{
 			get { return ((SimPe.Interfaces.IListener)list[(int)index]); }
 			set { list[(int)index] = value; }
-		}		
+		}
 
 		#region IEnumerable Member
 

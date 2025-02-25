@@ -23,27 +23,25 @@ using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Wants
 {
-    public class WrapperFactory : AbstractWrapperFactory
-    {
-        /// <summary>
-        /// Returns a list of supported File Wrappers
-        /// </summary>
-        /// <returns>A List of all provided Plugins (=FileType Wrappers)</returns>
-        public override IWrapper[] KnownWrappers
-        {
-            get
-            {
-                if (Helper.StartedGui == Executable.Classic)
-                {
-                    return new IWrapper[0];
-                }
-                else
-                {
-                    return new IWrapper[] {
-                    new SWAFWrapper(),
-                    new XWNTWrapper(),};
-                }
-            }
-        }
-    }
+	public class WrapperFactory : AbstractWrapperFactory
+	{
+		/// <summary>
+		/// Returns a list of supported File Wrappers
+		/// </summary>
+		/// <returns>A List of all provided Plugins (=FileType Wrappers)</returns>
+		public override IWrapper[] KnownWrappers
+		{
+			get
+			{
+				if (Helper.StartedGui == Executable.Classic)
+				{
+					return new IWrapper[0];
+				}
+				else
+				{
+					return new IWrapper[] { new SWAFWrapper(), new XWNTWrapper() };
+				}
+			}
+		}
+	}
 }

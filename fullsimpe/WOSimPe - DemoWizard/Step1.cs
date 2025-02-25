@@ -5,7 +5,7 @@ namespace SimPe.Wizards
 	/// <summary>
 	/// Zusammenfassung für Step1.
 	/// </summary>
-	public class Step1 :IWizardEntry
+	public class Step1 : IWizardEntry
 	{
 		static DemoWizardForm dwf;
 
@@ -14,16 +14,15 @@ namespace SimPe.Wizards
 		/// </summary>
 		public static DemoWizardForm Form
 		{
-			get { 
-				if (dwf==null) dwf = new DemoWizardForm();
-				return dwf; 
+			get
+			{
+				if (dwf == null)
+					dwf = new DemoWizardForm();
+				return dwf;
 			}
 		}
 
-		public Step1()
-		{
-			
-		}
+		public Step1() { }
 
 		#region IWizardEntry Member
 
@@ -37,18 +36,12 @@ namespace SimPe.Wizards
 
 		public string WizardCaption
 		{
-			get
-			{
-				return "Start the Demo";
-			}
+			get { return "Start the Demo"; }
 		}
 
 		public System.Drawing.Image WizardImage
 		{
-			get
-			{
-				return Form.pb.Image;
-			}
+			get { return Form.pb.Image; }
 		}
 
 		#endregion
@@ -57,46 +50,35 @@ namespace SimPe.Wizards
 
 		public System.Windows.Forms.Panel WizardWindow
 		{
-			get
-			{
-				return Form.pnwizard1;
-			}
+			get { return Form.pnwizard1; }
 		}
 
 		public bool Init(SimPe.Wizards.ChangedContent fkt)
-		{			
+		{
 			return true;
 		}
 
 		public string WizardMessage
 		{
-			get
-			{
-				return "This will be your first Step with the Wizards of SimPE";
-			}
+			get { return "This will be your first Step with the Wizards of SimPE"; }
 		}
 
 		public bool CanContinue
 		{
-			get
-			{
-				return true;
-			}
+			get { return true; }
 		}
 
 		public int WizardStep
 		{
-			get
-			{
-				return 2;
-			}
+			get { return 2; }
 		}
 
 		public IWizardForm Next
 		{
 			get
 			{
-				if (Form.step2==null) Form.step2 = new Step2();
+				if (Form.step2 == null)
+					Form.step2 = new Step2();
 				return Form.step2;
 			}
 		}

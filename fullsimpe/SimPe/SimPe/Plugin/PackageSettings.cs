@@ -9,14 +9,13 @@ using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.Plugin
 {
-
 	[Serializable]
 	public class PackageSettings : IPackageSettings
-    {
+	{
 		Guid familyGuid;
-        string description;
-        bool pinheadMode = false;
-        bool reCompressTextures = false;
+		string description;
+		bool pinheadMode = false;
+		bool reCompressTextures = false;
 		RecolorType mode = RecolorType.Unsupported;
 
 		[Category("Package")]
@@ -31,44 +30,43 @@ namespace SimPe.Plugin
 		{
 			get { return this.description; }
 			set { this.description = value; }
-        }
+		}
 
-        [Category("Package")]
-        public bool KeepDisabledItems
-        {
-            get { return this.pinheadMode; }
-            set { this.pinheadMode = value; }
-        }
+		[Category("Package")]
+		public bool KeepDisabledItems
+		{
+			get { return this.pinheadMode; }
+			set { this.pinheadMode = value; }
+		}
 
-        [Category("Package")]
-        public bool CompressTextures
-        {
-            get { return this.reCompressTextures; }
-            set { this.reCompressTextures = value; }
-        }
+		[Category("Package")]
+		public bool CompressTextures
+		{
+			get { return this.reCompressTextures; }
+			set { this.reCompressTextures = value; }
+		}
 
 		public virtual RecolorType PackageType
 		{
 			get { return this.mode; }
 		}
 
-		public PackageSettings()
-		{
-		}
+		public PackageSettings() { }
 
 		public PackageSettings(PackageSettings settings)
 		{
 			if (settings != null)
 			{
 				this.description = settings.description;
-                this.familyGuid = settings.familyGuid;
-                this.pinheadMode = settings.pinheadMode;
-                this.reCompressTextures = settings.reCompressTextures;
+				this.familyGuid = settings.familyGuid;
+				this.pinheadMode = settings.pinheadMode;
+				this.reCompressTextures = settings.reCompressTextures;
 				this.mode = settings.mode;
 			}
 		}
 
-		public PackageSettings(PackageSettings settings, RecolorType type) : this(settings)
+		public PackageSettings(PackageSettings settings, RecolorType type)
+			: this(settings)
 		{
 			this.mode = type;
 		}
@@ -79,7 +77,7 @@ namespace SimPe.Plugin
 		Guid defaultProxy;
 
 		/// <summary>
-		/// Gets or sets the value that is applied to the proxy property 
+		/// Gets or sets the value that is applied to the proxy property
 		/// of the HairtoneXML resource of custom hair packages.
 		/// </summary>
 		[Category("Hairtone")]
@@ -100,11 +98,10 @@ namespace SimPe.Plugin
 			get { return RecolorType.Hairtone; }
 		}
 
-		public HairtoneSettings()
-		{
-		}
+		public HairtoneSettings() { }
 
-		public HairtoneSettings(PackageSettings settings) : base(settings)
+		public HairtoneSettings(PackageSettings settings)
+			: base(settings)
 		{
 			if (settings is HairtoneSettings)
 			{
@@ -123,17 +120,16 @@ namespace SimPe.Plugin
 			get { return this.genetic; }
 			set { this.genetic = value; }
 		}
-		
+
 		public override RecolorType PackageType
 		{
 			get { return RecolorType.Skintone; }
 		}
 
-		public SkintoneSettings()
-		{
-		}
+		public SkintoneSettings() { }
 
-		public SkintoneSettings(PackageSettings settings) : base(settings)
+		public SkintoneSettings(PackageSettings settings)
+			: base(settings)
 		{
 			if (settings is SkintoneSettings)
 			{
@@ -146,14 +142,14 @@ namespace SimPe.Plugin
 	{
 		ShoeType shoe;
 		OutfitType outfit;
-        SkinCategories category;
-        OutfitCats outfitcat;
+		SkinCategories category;
+		OutfitCats outfitcat;
 		SimGender gender;
 		Ages age;
 		SpeciesType species;
 		TextureOverlayTypes overlayType;
-        MetaData.Bodyshape figure;
-        uint flaggery;
+		MetaData.Bodyshape figure;
+		uint flaggery;
 
 		public TextureOverlayTypes OverlayType
 		{
@@ -183,19 +179,19 @@ namespace SimPe.Plugin
 		{
 			get { return this.category; }
 			set { this.category = value; }
-        }
+		}
 
-        public OutfitCats OutfitCat
-        {
-            get { return this.outfitcat; }
-            set { this.outfitcat = value; }
-        }
+		public OutfitCats OutfitCat
+		{
+			get { return this.outfitcat; }
+			set { this.outfitcat = value; }
+		}
 
-        public MetaData.Bodyshape Figure
-        {
-            get { return this.figure; }
-            set { this.figure = value; }
-        }
+		public MetaData.Bodyshape Figure
+		{
+			get { return this.figure; }
+			set { this.figure = value; }
+		}
 
 		public SimGender Gender
 		{
@@ -209,35 +205,34 @@ namespace SimPe.Plugin
 			set { this.age = value; }
 		}
 
-        public uint Flaggery
-        {
-            get { return this.flaggery; }
-            set { this.flaggery = value; }
-        }
+		public uint Flaggery
+		{
+			get { return this.flaggery; }
+			set { this.flaggery = value; }
+		}
 
 		public override RecolorType PackageType
 		{
 			get { return RecolorType.Skin; }
 		}
 
-		public ClothingSettings()
-		{
-		}
+		public ClothingSettings() { }
 
-		public ClothingSettings(PackageSettings settings) : base(settings)
+		public ClothingSettings(PackageSettings settings)
+			: base(settings)
 		{
 			if (settings is ClothingSettings)
 			{
 				ClothingSettings cSettings = (ClothingSettings)settings;
 				this.age = cSettings.age;
-                this.category = cSettings.category;
-                this.outfitcat = cSettings.outfitcat;
+				this.category = cSettings.category;
+				this.outfitcat = cSettings.outfitcat;
 				this.gender = cSettings.gender;
 				this.shoe = cSettings.shoe;
 				this.outfit = cSettings.outfit;
-                this.species = cSettings.species;
-                this.figure = cSettings.figure;
-                this.flaggery = cSettings.flaggery;
+				this.species = cSettings.species;
+				this.figure = cSettings.figure;
+				this.flaggery = cSettings.flaggery;
 			}
 		}
 	}
@@ -245,7 +240,7 @@ namespace SimPe.Plugin
 	public interface IPackageSettings
 	{
 		Guid FamilyGuid { get; set; }
-		string Description	{ get; set; }
+		string Description { get; set; }
 		RecolorType PackageType { get; }
 	}
 }

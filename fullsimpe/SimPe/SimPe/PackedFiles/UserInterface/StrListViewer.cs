@@ -20,14 +20,14 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
-using SimPe.Interfaces.Files;
-using SimPe.Interfaces.Wrapper;
 using SimPe.Data;
-using SimPe.PackedFiles.Wrapper;
+using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
+using SimPe.Interfaces.Wrapper;
+using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.PackedFiles.UserInterface
 {
@@ -50,22 +50,21 @@ namespace SimPe.PackedFiles.UserInterface
 			InitializeComponent();
 
 			// TODO: Add any initialization after the InitializeComponent call
-
 		}
 
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
-				if(components != null)
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
 
 		private System.Windows.Forms.TreeView treeView1;
@@ -83,7 +82,6 @@ namespace SimPe.PackedFiles.UserInterface
 		private System.Windows.Forms.MenuItem menuItem5;
 		private System.Windows.Forms.MenuItem menuItem6;
 
-
 		#region Str
 		/// <summary>
 		/// The Str wrapper handling the packed file data
@@ -98,7 +96,6 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private StrLanguage currentLang = null;
 
-
 		internal void UpdateGUI(Str wrp)
 		{
 			wrapper = wrp;
@@ -111,7 +108,6 @@ namespace SimPe.PackedFiles.UserInterface
 				node.Text = l.ToString();
 				this.treeView1.Nodes.Add(node);
 			}
-
 		}
 		#endregion
 
@@ -155,17 +151,23 @@ namespace SimPe.PackedFiles.UserInterface
 			this.treeView1.Size = new System.Drawing.Size(216, 144);
 			this.treeView1.Sorted = true;
 			this.treeView1.TabIndex = 0;
-			this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+			this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(
+				this.treeView1_AfterSelect
+			);
 			//
 			// cmLangList
 			//
-			this.cmLangList.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																					   this.menuItem1,
-																					   this.menuItem2,
-																					   this.menuItem7,
-																					   this.menuItem3,
-																					   this.menuItem8,
-																					   this.menuItem9});
+			this.cmLangList.MenuItems.AddRange(
+				new System.Windows.Forms.MenuItem[]
+				{
+					this.menuItem1,
+					this.menuItem2,
+					this.menuItem7,
+					this.menuItem3,
+					this.menuItem8,
+					this.menuItem9,
+				}
+			);
 			//
 			// menuItem1
 			//
@@ -194,15 +196,23 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// listView1
 			//
-			this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-																						this.colLine,
-																						this.colTitle,
-																						this.colDesc});
+			this.listView1.Columns.AddRange(
+				new System.Windows.Forms.ColumnHeader[]
+				{
+					this.colLine,
+					this.colTitle,
+					this.colDesc,
+				}
+			);
 			this.listView1.ContextMenu = this.cmStrList;
 			this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.listView1.FullRowSelect = true;
 			this.listView1.GridLines = true;
-			this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+			this.listView1.HeaderStyle = System
+				.Windows
+				.Forms
+				.ColumnHeaderStyle
+				.Nonclickable;
 			this.listView1.Location = new System.Drawing.Point(219, 0);
 			this.listView1.Name = "listView1";
 			this.listView1.Size = new System.Drawing.Size(621, 144);
@@ -226,13 +236,17 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// cmStrList
 			//
-			this.cmStrList.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																					  this.menuItem10,
-																					  this.menuItem4,
-																					  this.menuItem5,
-																					  this.menuItem6,
-																					  this.menuItem11,
-																					  this.menuItem12});
+			this.cmStrList.MenuItems.AddRange(
+				new System.Windows.Forms.MenuItem[]
+				{
+					this.menuItem10,
+					this.menuItem4,
+					this.menuItem5,
+					this.menuItem6,
+					this.menuItem11,
+					this.menuItem12,
+				}
+			);
 			//
 			// menuItem4
 			//
@@ -294,20 +308,22 @@ namespace SimPe.PackedFiles.UserInterface
 			this.Name = "StrListViewer";
 			this.Size = new System.Drawing.Size(840, 144);
 			this.ResumeLayout(false);
-
 		}
 		#endregion
 
-		private void treeView1_AfterSelect(object sender, System.Windows.Forms.TreeViewEventArgs e)
+		private void treeView1_AfterSelect(
+			object sender,
+			System.Windows.Forms.TreeViewEventArgs e
+		)
 		{
 			this.listView1.Items.Clear();
-			StrLanguage l = (StrLanguage) e.Node.Tag;
+			StrLanguage l = (StrLanguage)e.Node.Tag;
 			StrItemList items = wrapper.LanguageItems(l);
-			if (items == null) return;
+			if (items == null)
+				return;
 
 			for (int i = 0; i < items.Length; i++)
 			{
-
 				StrToken s = items[i];
 				string[] ss = new string[3];
 				ss[0] = i.ToString();

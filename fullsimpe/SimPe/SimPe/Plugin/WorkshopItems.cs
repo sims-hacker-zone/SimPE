@@ -21,18 +21,16 @@ using System;
 
 namespace SimPe.Plugin
 {
-	
 	/// <summary>
 	/// Summary description for WorkshopItems.
 	/// </summary>
 	public class WorkshopMMAT
 	{
-
 		/// <summary>
 		/// Constructore
 		/// </summary>
 		/// <param name="subset">initial Name of the Subset</param>
-		public WorkshopMMAT(string subset) 
+		public WorkshopMMAT(string subset)
 		{
 			this.subset = subset;
 			this.mmats = new SimPe.PackedFiles.Wrapper.Cpf[0];
@@ -40,10 +38,11 @@ namespace SimPe.Plugin
 		}
 
 		object[] tag;
+
 		/// <summary>
 		/// Arbitary Data
 		/// </summary>
-		public object[] Tag 
+		public object[] Tag
 		{
 			get { return tag; }
 			set { tag = value; }
@@ -64,6 +63,7 @@ namespace SimPe.Plugin
 		}
 
 		SimPe.PackedFiles.Wrapper.Cpf[] mmats;
+
 		/// <summary>
 		/// The stored MMATs
 		/// </summary>
@@ -76,16 +76,17 @@ namespace SimPe.Plugin
 		/// adds the passed value if it doesn't already exist
 		/// </summary>
 		/// <param name="val">The value to add</param>
-		public bool AddMMAT(SimPe.PackedFiles.Wrapper.Cpf mmat) 
-		{			
-			if (this.AddObjectStateIndex(mmat.GetItem("objectStateIndex").UIntegerValue))
+		public bool AddMMAT(SimPe.PackedFiles.Wrapper.Cpf mmat)
+		{
+			if (
+				this.AddObjectStateIndex(mmat.GetItem("objectStateIndex").UIntegerValue)
+			)
 			{
 				mmats = (SimPe.PackedFiles.Wrapper.Cpf[])Helper.Add(mmats, mmat);
 				return true;
 			}
 			return false;
 		}
-		
 
 		/*/// <summary>
 		/// all known Objects
@@ -96,12 +97,12 @@ namespace SimPe.Plugin
 		/// adds the passed value if it doesn't already exist
 		/// </summary>
 		/// <param name="val">The value to add</param>
-		public bool AddMaterialStateFlags(uint val) 
+		public bool AddMaterialStateFlags(uint val)
 		{
 			bool check = false;
-			foreach (uint i in materialStateFlags) 
+			foreach (uint i in materialStateFlags)
 			{
-				if (i==val) 
+				if (i==val)
 				{
 					check = true;
 					break;
@@ -130,19 +131,20 @@ namespace SimPe.Plugin
 		/// adds the passed value if it doesn't already exist
 		/// </summary>
 		/// <param name="val">The value to add</param>
-		public bool AddObjectStateIndex(uint val) 
+		public bool AddObjectStateIndex(uint val)
 		{
 			bool check = false;
-			foreach (uint i in objectStateIndex) 
+			foreach (uint i in objectStateIndex)
 			{
-				if (i==val) 
+				if (i == val)
 				{
 					check = true;
 					break;
 				}
 			}
 
-			if (!check) objectStateIndex = (uint[])Helper.Add(objectStateIndex, val);
+			if (!check)
+				objectStateIndex = (uint[])Helper.Add(objectStateIndex, val);
 
 			return !check;
 		}
@@ -157,8 +159,7 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			return subset + " ("+this.objectStateIndex.Length.ToString()+")";
+			return subset + " (" + this.objectStateIndex.Length.ToString() + ")";
 		}
-
 	}
 }

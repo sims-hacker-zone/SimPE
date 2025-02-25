@@ -22,31 +22,37 @@ using System;
 namespace SimPe.Actions.Default
 {
 	/// <summary>
-    /// Summary description for AddAction.
+	/// Summary description for AddAction.
 	/// </summary>
 	public class AddAction : ReplaceAction
 	{
-		public AddAction()
-		{
-			
-		}
-		#region IToolAction Member		
+		public AddAction() { }
 
-		public override bool ChangeEnabledStateEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
+		#region IToolAction Member
+
+		public override bool ChangeEnabledStateEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs es
+		)
 		{
-			if (es.LoadedPackage==null) return false;
+			if (es.LoadedPackage == null)
+				return false;
 			return es.LoadedPackage.Loaded;
 		}
 
-		public override void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs es)
+		public override void ExecuteEventHandler(
+			object sender,
+			SimPe.Events.ResourceEventArgs es
+		)
 		{
-			if (!ChangeEnabledStateEventHandler(null, es)) return;
+			if (!ChangeEnabledStateEventHandler(null, es))
+				return;
 
 			SimPe.Collections.PackedFileDescriptors pfds = this.LoadDescriptors(true);
-            es.LoadedPackage.Package.BeginUpdate();
+			es.LoadedPackage.Package.BeginUpdate();
 			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				es.LoadedPackage.Package.Add(pfd);
-            es.LoadedPackage.Package.EndUpdate();
+			es.LoadedPackage.Package.EndUpdate();
 		}
 
 		#endregion
@@ -63,11 +69,8 @@ namespace SimPe.Actions.Default
 		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
-			get
-			{
-                return SimPe.GetIcon.actionImport;
-			}
-        }
+			get { return SimPe.GetIcon.actionImport; }
+		}
 		#endregion
 	}
 }

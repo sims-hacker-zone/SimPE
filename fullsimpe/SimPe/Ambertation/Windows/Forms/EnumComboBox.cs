@@ -20,46 +20,51 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Ambertation.Windows.Forms
 {
-    internal class EnumComboBoxItem
-    {
-        string name;
-        object obj;
+	internal class EnumComboBoxItem
+	{
+		string name;
+		object obj;
 
-        public object Content
-        {
-            get { return obj; }
-        }
+		public object Content
+		{
+			get { return obj; }
+		}
 
-        public string Name
-        {
-            get { return name; }
-        }
+		public string Name
+		{
+			get { return name; }
+		}
 
-        internal EnumComboBoxItem(Type type, object obj, System.Resources.ResourceManager rm)
-        {
-            this.name = obj.ToString();
-            if (rm != null)
-            {
-                string nname = rm.GetString(type.Namespace + "." + type.Name + "." + obj.ToString());
-                if (nname != null)
-                    name = nname;
+		internal EnumComboBoxItem(
+			Type type,
+			object obj,
+			System.Resources.ResourceManager rm
+		)
+		{
+			this.name = obj.ToString();
+			if (rm != null)
+			{
+				string nname = rm.GetString(
+					type.Namespace + "." + type.Name + "." + obj.ToString()
+				);
+				if (nname != null)
+					name = nname;
+			}
+			this.obj = obj;
+		}
 
-            }
-            this.obj = obj;
-        }
+		public override string ToString()
+		{
+			return Name;
+		}
+	}
 
-        public override string ToString()
-        {
-            return Name;
-        }
-    }
-    
 	/// <summary>
 	/// Summary description for UserControl1.
 	/// </summary>
@@ -71,34 +76,34 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
-        public EnumComboBox()
-        {
-            InitializeComponent();
-        }
+		public EnumComboBox()
+		{
+			InitializeComponent();
+		}
 
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
-				if( components != null )
+				if (components != null)
 					components.Dispose();
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
 
 		#region public Properties
 		Type myenum;
-		public Type Enum 
+		public Type Enum
 		{
-			get {return myenum;}
-			set 
+			get { return myenum; }
+			set
 			{
-				if (value!=myenum) 
+				if (value != myenum)
 				{
-					myenum=value;
+					myenum = value;
 					UpdateContent(false);
 				}
 			}
@@ -108,9 +113,9 @@ namespace Ambertation.Windows.Forms
 		public System.Resources.ResourceManager ResourceManager
 		{
 			get { return rm; }
-			set 
+			set
 			{
-				if (value!=rm)
+				if (value != rm)
 				{
 					rm = value;
 					UpdateContent(true);
@@ -120,9 +125,10 @@ namespace Ambertation.Windows.Forms
 
 		public new object SelectedValue
 		{
-			get 
+			get
 			{
-				if (this.SelectedIndex<0) return null;
+				if (this.SelectedIndex < 0)
+					return null;
 				object o = Items[SelectedIndex];
 				if (o is EnumComboBoxItem)
 					return ((EnumComboBoxItem)o).Content;
@@ -130,21 +136,22 @@ namespace Ambertation.Windows.Forms
 			}
 			set
 			{
-				if (value==null) 
+				if (value == null)
 				{
 					SelectedIndex = -1;
-				} 
-				else 
+				}
+				else
 				{
-					Type vtype = value.GetType();					
+					Type vtype = value.GetType();
 					int sel = -1;
 					if (vtype.IsEnum)
 					{
-						for (int i=0; i<Items.Count; i++) 
+						for (int i = 0; i < Items.Count; i++)
 						{
 							object o = Items[i];
-							if (o is EnumComboBoxItem) o = ((EnumComboBoxItem)o).Content;
-							if (((System.Enum)o).CompareTo(value)==0) 
+							if (o is EnumComboBoxItem)
+								o = ((EnumComboBoxItem)o).Content;
+							if (((System.Enum)o).CompareTo(value) == 0)
 							{
 								sel = i;
 								break;
@@ -159,16 +166,15 @@ namespace Ambertation.Windows.Forms
 
 		#region Windows Form Designer generated code
 		/// <summary>
-		/// Required method for Designer support - do not modify 
+		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-			// 
+			//
 			// EnumComboBox
-			// 
+			//
 			this.Name = "EnumComboBox";
-
 		}
 		#endregion
 
@@ -176,10 +182,10 @@ namespace Ambertation.Windows.Forms
 		{
 			this.Items.Clear();
 			int last = this.SelectedIndex;
-			if (myenum!=null) 
+			if (myenum != null)
 			{
 				Array ls = System.Enum.GetValues(myenum);
-				
+
 				foreach (object o in ls)
 				{
 					Items.Add(new EnumComboBoxItem(myenum, o, rm));
@@ -188,9 +194,11 @@ namespace Ambertation.Windows.Forms
 
 			if (keepselection)
 			{
-				if ( last<this.Items.Count) this.SelectedIndex = last;
-				else this.SelectedIndex = Items.Count-1;
+				if (last < this.Items.Count)
+					this.SelectedIndex = last;
+				else
+					this.SelectedIndex = Items.Count - 1;
 			}
 		}
-    }
+	}
 }

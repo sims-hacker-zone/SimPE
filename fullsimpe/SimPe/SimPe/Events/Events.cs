@@ -20,467 +20,496 @@
 using System;
 using System.Collections;
 
-namespace SimPe.Events 
+namespace SimPe.Events
 {
 	/// <summary>
-	/// Used whenever the content 
+	/// Used whenever the content
 	/// of a <see cref="SimPe.Interfaces.Files.IPackedFileDescriptor"/> changed
-	/// </summary>	
-	public delegate void PackedFileChanged(SimPe.Interfaces.Files.IPackedFileDescriptor sender);
+	/// </summary>
+	public delegate void PackedFileChanged(
+		SimPe.Interfaces.Files.IPackedFileDescriptor sender
+	);
 
-    /*/// <summary>
+	/*/// <summary>
 	/// Used whenever a <see cref="SimPe.Interfaces.Files.IPackedFileDescriptor"/> got closed
-	/// </summary>	
+	/// </summary>
 	public delegate void PackedFileClosed(SimPe.Interfaces.Files.IPackedFileDescriptor sender);*/
 
-    #region Resource Events
-    /// <summary>
-    /// Fired when a Resource was changed by a ToolPlugin
-    /// </summary>
-    public delegate void ChangedResourceEvent(object sender, ResourceEventArgs e);
+	#region Resource Events
+	/// <summary>
+	/// Fired when a Resource was changed by a ToolPlugin
+	/// </summary>
+	public delegate void ChangedResourceEvent(object sender, ResourceEventArgs e);
 
-    /// <summary>
-    /// Fired when a Resource was changed by a ToolPlugin and the Enabled state needs to be changed
-    /// </summary>
-    public delegate bool ChangeEnabledStateEvent(object sender, ResourceEventArgs e);
+	/// <summary>
+	/// Fired when a Resource was changed by a ToolPlugin and the Enabled state needs to be changed
+	/// </summary>
+	public delegate bool ChangeEnabledStateEvent(object sender, ResourceEventArgs e);
 
-    /// <summary>
-    /// Used by <see cref="ChangedResourceEvent"/>
-    /// </summary>
-    public class ResourceEventArgs : System.EventArgs, IEnumerable, SimPe.Interfaces.Plugin.IToolResult
-    {
-        LoadedPackage lp;
-        ResourceContainers list;
+	/// <summary>
+	/// Used by <see cref="ChangedResourceEvent"/>
+	/// </summary>
+	public class ResourceEventArgs
+		: System.EventArgs,
+			IEnumerable,
+			SimPe.Interfaces.Plugin.IToolResult
+	{
+		LoadedPackage lp;
+		ResourceContainers list;
 
-        /// <summary>
-        /// Create a new Isntance
-        /// </summary>
-        /// <param name="lp"></param>
-        public ResourceEventArgs(LoadedPackage lp)
-        {
-            this.lp = lp;
-            list = new ResourceContainers();
-        }
+		/// <summary>
+		/// Create a new Isntance
+		/// </summary>
+		/// <param name="lp"></param>
+		public ResourceEventArgs(LoadedPackage lp)
+		{
+			this.lp = lp;
+			list = new ResourceContainers();
+		}
 
-        /// <summary>
-        /// Returns the stored List
-        /// </summary>
-        public ResourceContainers Items
-        {
-            get { return list; }
-        }
+		/// <summary>
+		/// Returns the stored List
+		/// </summary>
+		public ResourceContainers Items
+		{
+			get { return list; }
+		}
 
-        /// <summary>
-        /// Integer Indexer
-        /// </summary>
-        public ResourceContainer this[int index]
-        {
-            get { return list[index]; }
-            set { list[index] = value; }
-        }
+		/// <summary>
+		/// Integer Indexer
+		/// </summary>
+		public ResourceContainer this[int index]
+		{
+			get { return list[index]; }
+			set { list[index] = value; }
+		}
 
-        /// <summary>
-        /// unsigned Integer Indexer
-        /// </summary>
-        public ResourceContainer this[uint index]
-        {
-            get { return list[index]; }
-            set { list[index] = value; }
-        }
+		/// <summary>
+		/// unsigned Integer Indexer
+		/// </summary>
+		public ResourceContainer this[uint index]
+		{
+			get { return list[index]; }
+			set { list[index] = value; }
+		}
 
-        /// <summary>
-        /// Returns the loaded package
-        /// </summary>
-        public LoadedPackage LoadedPackage
-        {
-            get { return lp; }
-        }
+		/// <summary>
+		/// Returns the loaded package
+		/// </summary>
+		public LoadedPackage LoadedPackage
+		{
+			get { return lp; }
+		}
 
-        /// <summary>
-        /// true if the stored List is Empty
-        /// </summary>
-        public new bool Empty
-        {
-            get
-            {
-                return list.Count == 0;
-            }
-        }
+		/// <summary>
+		/// true if the stored List is Empty
+		/// </summary>
+		public new bool Empty
+		{
+			get { return list.Count == 0; }
+		}
 
-        /// <summary>
-        /// true, if at least one of the stored <see cref="ResourceContainer"/> has a valid Resource
-        /// </summary>
-        public bool HasResource
-        {
-            get
-            {
-                foreach (ResourceContainer r in list) if (r.HasResource) return true;
-                return false;
-            }
-        }
+		/// <summary>
+		/// true, if at least one of the stored <see cref="ResourceContainer"/> has a valid Resource
+		/// </summary>
+		public bool HasResource
+		{
+			get
+			{
+				foreach (ResourceContainer r in list)
+					if (r.HasResource)
+						return true;
+				return false;
+			}
+		}
 
-        /// <summary>
-        /// true, if at least one of the stored <see cref="ResourceContainer"/> has a valid FileDescriptor
-        /// </summary>
-        public bool HasFileDescriptor
-        {
-            get
-            {
-                foreach (ResourceContainer r in list) if (r.HasFileDescriptor) return true;
-                return false;
-            }
-        }
+		/// <summary>
+		/// true, if at least one of the stored <see cref="ResourceContainer"/> has a valid FileDescriptor
+		/// </summary>
+		public bool HasFileDescriptor
+		{
+			get
+			{
+				foreach (ResourceContainer r in list)
+					if (r.HasFileDescriptor)
+						return true;
+				return false;
+			}
+		}
 
-        /// <summary>
-        /// true, if at least one of the stored <see cref="ResourceContainer"/> has a valid Package
-        /// </summary>
-        public bool HasPackage
-        {
-            get
-            {
-                foreach (ResourceContainer r in list) if (r.HasPackage) return true;
-                return false;
-            }
-        }
+		/// <summary>
+		/// true, if at least one of the stored <see cref="ResourceContainer"/> has a valid Package
+		/// </summary>
+		public bool HasPackage
+		{
+			get
+			{
+				foreach (ResourceContainer r in list)
+					if (r.HasPackage)
+						return true;
+				return false;
+			}
+		}
 
-        /// <summary>
-        /// true, if a package was loaded
-        /// </summary>
-        public bool Loaded
-        {
-            get
-            {
-                if (this.lp == null) return false;
-                return lp.Loaded;
-            }
-        }
+		/// <summary>
+		/// true, if a package was loaded
+		/// </summary>
+		public bool Loaded
+		{
+			get
+			{
+				if (this.lp == null)
+					return false;
+				return lp.Loaded;
+			}
+		}
 
-        /// <summary>
-        /// Number of stored Items
-        /// </summary>
-        public int Count
-        {
-            get { return list.Count; }
-        }
+		/// <summary>
+		/// Number of stored Items
+		/// </summary>
+		public int Count
+		{
+			get { return list.Count; }
+		}
 
-        #region IEnumerable Member
+		#region IEnumerable Member
 
-        public IEnumerator GetEnumerator()
-        {
-            return list.GetEnumerator();
-        }
+		public IEnumerator GetEnumerator()
+		{
+			return list.GetEnumerator();
+		}
 
-        #endregion
+		#endregion
 
-        #region IToolResult Member
+		#region IToolResult Member
 
-        public bool ChangedPackage
-        {
-            get
-            {
-                foreach (ResourceContainer c in list)
-                    if (c.ChangedPackage) return true;
-                return false;
-            }
-        }
+		public bool ChangedPackage
+		{
+			get
+			{
+				foreach (ResourceContainer c in list)
+					if (c.ChangedPackage)
+						return true;
+				return false;
+			}
+		}
 
-        public bool ChangedFile
-        {
-            get
-            {
-                foreach (ResourceContainer c in list)
-                    if (c.ChangedFile) return true;
-                return false;
-            }
-        }
+		public bool ChangedFile
+		{
+			get
+			{
+				foreach (ResourceContainer c in list)
+					if (c.ChangedFile)
+						return true;
+				return false;
+			}
+		}
 
-        public bool ChangedAny
-        {
-            get
-            {
-                return false;
-            }
-        }
+		public bool ChangedAny
+		{
+			get { return false; }
+		}
 
-        #endregion
+		#endregion
 
-        public SimPe.Collections.PackedFileDescriptors GetDescriptors()
-        {
-            SimPe.Collections.PackedFileDescriptors pfds = new SimPe.Collections.PackedFileDescriptors();
-            foreach (SimPe.Events.ResourceContainer e in list)
-            {
-                if (e.HasFileDescriptor) pfds.Add(e.Resource.FileDescriptor);
-            }
-            return pfds;
-        }
-    }
+		public SimPe.Collections.PackedFileDescriptors GetDescriptors()
+		{
+			SimPe.Collections.PackedFileDescriptors pfds =
+				new SimPe.Collections.PackedFileDescriptors();
+			foreach (SimPe.Events.ResourceContainer e in list)
+			{
+				if (e.HasFileDescriptor)
+					pfds.Add(e.Resource.FileDescriptor);
+			}
+			return pfds;
+		}
+	}
 
-    /// <summary>
-    /// Used as Item in <see cref="ResourceEventArgs"/>
-    /// </summary>
-    public class ResourceContainer : SimPe.Interfaces.Plugin.IToolResult, System.IDisposable
-    {
-        public ResourceContainer(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item)
-        {
-            this.item = item;
-            cpfd = false;
-            cpkg = false;
-        }
+	/// <summary>
+	/// Used as Item in <see cref="ResourceEventArgs"/>
+	/// </summary>
+	public class ResourceContainer
+		: SimPe.Interfaces.Plugin.IToolResult,
+			System.IDisposable
+	{
+		public ResourceContainer(
+			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item
+		)
+		{
+			this.item = item;
+			cpfd = false;
+			cpkg = false;
+		}
 
-        SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item;
+		SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item;
 
-        /// <summary>
-        /// Returns the Resource
-        /// </summary>
-        public SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem Resource
-        {
-            get { return item; }
-        }
+		/// <summary>
+		/// Returns the Resource
+		/// </summary>
+		public SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem Resource
+		{
+			get { return item; }
+		}
 
+		bool cpfd,
+			cpkg;
 
-        bool cpfd, cpkg;
-        #region IToolResult Member
+		#region IToolResult Member
 
-        public bool ChangedPackage
-        {
-            get { return this.cpkg; }
-            set { cpkg = value; }
-        }
+		public bool ChangedPackage
+		{
+			get { return this.cpkg; }
+			set { cpkg = value; }
+		}
 
-        public bool ChangedFile
-        {
-            get { return this.cpfd; }
-            set { cpfd = value; }
-        }
+		public bool ChangedFile
+		{
+			get { return this.cpfd; }
+			set { cpfd = value; }
+		}
 
-        public bool ChangedAny
-        {
-            get
-            {
-                return (ChangedPackage || ChangedFile);
-            }
-        }
+		public bool ChangedAny
+		{
+			get { return (ChangedPackage || ChangedFile); }
+		}
 
-        #endregion
+		#endregion
 
-        public override int GetHashCode()
-        {
-            if (this.Resource == null) return base.GetHashCode();
-            return this.Resource.GetHashCode();
-        }
+		public override int GetHashCode()
+		{
+			if (this.Resource == null)
+				return base.GetHashCode();
+			return this.Resource.GetHashCode();
+		}
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            if (!(obj is ResourceContainer)) return false;
+		public override bool Equals(object obj)
+		{
+			if (obj == null)
+				return false;
+			if (!(obj is ResourceContainer))
+				return false;
 
-            ResourceContainer e = (ResourceContainer)obj;
+			ResourceContainer e = (ResourceContainer)obj;
 
-            if (e.Resource == null)
-            {
-                return (this.Resource == null);
-            }
-            else if (this.Resource == null) return false;
+			if (e.Resource == null)
+			{
+				return (this.Resource == null);
+			}
+			else if (this.Resource == null)
+				return false;
 
-            return (e.Resource.Equals(this.Resource));
-        }
+			return (e.Resource.Equals(this.Resource));
+		}
 
-        /// <summary>
-        /// true if the stored Resource is accessible
-        /// </summary>
-        public bool HasResource
-        {
-            get
-            {
-                if (Resource == null) return false;
-                return true;
-            }
-        }
+		/// <summary>
+		/// true if the stored Resource is accessible
+		/// </summary>
+		public bool HasResource
+		{
+			get
+			{
+				if (Resource == null)
+					return false;
+				return true;
+			}
+		}
 
-        /// <summary>
-        /// true if the FileDescriptor of the stored Resource is accessible
-        /// </summary>
-        public bool HasFileDescriptor
-        {
-            get
-            {
-                if (!HasResource) return false;
-                if (Resource.FileDescriptor == null) return false;
-                return true;
-            }
-        }
+		/// <summary>
+		/// true if the FileDescriptor of the stored Resource is accessible
+		/// </summary>
+		public bool HasFileDescriptor
+		{
+			get
+			{
+				if (!HasResource)
+					return false;
+				if (Resource.FileDescriptor == null)
+					return false;
+				return true;
+			}
+		}
 
-        /// <summary>
-        /// true if the Package of the stored Resource is accessible
-        /// </summary>
-        public bool HasPackage
-        {
-            get
-            {
-                if (!HasResource) return false;
-                if (Resource.Package == null) return false;
-                return true;
-            }
-        }
+		/// <summary>
+		/// true if the Package of the stored Resource is accessible
+		/// </summary>
+		public bool HasPackage
+		{
+			get
+			{
+				if (!HasResource)
+					return false;
+				if (Resource.Package == null)
+					return false;
+				return true;
+			}
+		}
 
-        /// <summary>
-        /// Returns the FileName of the store package (will never return null)
-        /// </summary>
-        public string FileName
-        {
-            get
-            {
-                if (!HasPackage) return "";
-                if (Resource.Package.FileName == null) return "";
-                return Resource.Package.FileName;
-            }
-        }
+		/// <summary>
+		/// Returns the FileName of the store package (will never return null)
+		/// </summary>
+		public string FileName
+		{
+			get
+			{
+				if (!HasPackage)
+					return "";
+				if (Resource.Package.FileName == null)
+					return "";
+				return Resource.Package.FileName;
+			}
+		}
 
-        #region IDisposable Member
+		#region IDisposable Member
 
-        public void Dispose()
-        {
-            this.item = null;
-        }
+		public void Dispose()
+		{
+			this.item = null;
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 
-    #region ResourceContainers  
-    /// <summary>
-    /// Typesave ArrayList for <see cref="ResourceContainer"/> Objects
-    /// </summary>
-    public class ResourceContainers : ArrayList
-    {
-        /// <summary>
-        /// Integer Indexer
-        /// </summary>
-        public new ResourceContainer this[int index]
-        {
-            get { return ((ResourceContainer)base[index]); }
-            set { base[index] = value; }
-        }
+	#region ResourceContainers
+	/// <summary>
+	/// Typesave ArrayList for <see cref="ResourceContainer"/> Objects
+	/// </summary>
+	public class ResourceContainers : ArrayList
+	{
+		/// <summary>
+		/// Integer Indexer
+		/// </summary>
+		public new ResourceContainer this[int index]
+		{
+			get { return ((ResourceContainer)base[index]); }
+			set { base[index] = value; }
+		}
 
-        /// <summary>
-        /// unsigned Integer Indexer
-        /// </summary>
-        public ResourceContainer this[uint index]
-        {
-            get { return ((ResourceContainer)base[(int)index]); }
-            set { base[(int)index] = value; }
-        }
+		/// <summary>
+		/// unsigned Integer Indexer
+		/// </summary>
+		public ResourceContainer this[uint index]
+		{
+			get { return ((ResourceContainer)base[(int)index]); }
+			set { base[(int)index] = value; }
+		}
 
-        /// <summary>
-        /// add a new Element
-        /// </summary>
-        /// <param name="item">The object you want to add</param>
-        /// <returns>The index it was added on</returns>
-        public int Add(ResourceContainer item)
-        {
-            return base.Add(item);
-        }
+		/// <summary>
+		/// add a new Element
+		/// </summary>
+		/// <param name="item">The object you want to add</param>
+		/// <returns>The index it was added on</returns>
+		public int Add(ResourceContainer item)
+		{
+			return base.Add(item);
+		}
 
-        /// <summary>
-        /// insert a new Element
-        /// </summary>
-        /// <param name="index">The Index where the Element should be stored</param>
-        /// <param name="item">The object that should be inserted</param>
-        public void Insert(int index, ResourceContainer item)
-        {
-            base.Insert(index, item);
-        }
+		/// <summary>
+		/// insert a new Element
+		/// </summary>
+		/// <param name="index">The Index where the Element should be stored</param>
+		/// <param name="item">The object that should be inserted</param>
+		public void Insert(int index, ResourceContainer item)
+		{
+			base.Insert(index, item);
+		}
 
-        /// <summary>
-        /// remove an Element
-        /// </summary>
-        /// <param name="item">The object that should be removed</param>
-        public void Remove(ResourceContainer item)
-        {
-            base.Remove(item);
-        }
+		/// <summary>
+		/// remove an Element
+		/// </summary>
+		/// <param name="item">The object that should be removed</param>
+		public void Remove(ResourceContainer item)
+		{
+			base.Remove(item);
+		}
 
-        /// <summary>
-        /// Checks wether or not the object is already stored in the List
-        /// </summary>
-        /// <param name="item">The Object you are looking for</param>
-        /// <returns>true, if it was found</returns>
-        public bool Contains(ResourceContainer item)
-        {
-            return base.Contains(item);
-        }
+		/// <summary>
+		/// Checks wether or not the object is already stored in the List
+		/// </summary>
+		/// <param name="item">The Object you are looking for</param>
+		/// <returns>true, if it was found</returns>
+		public bool Contains(ResourceContainer item)
+		{
+			return base.Contains(item);
+		}
 
-        /// <summary>
-        /// Number of stored Elements
-        /// </summary>
-        public int Length
-        {
-            get { return this.Count; }
-        }
+		/// <summary>
+		/// Number of stored Elements
+		/// </summary>
+		public int Length
+		{
+			get { return this.Count; }
+		}
 
-        /// <summary>
-        /// Create a clone of this Object
-        /// </summary>
-        /// <returns>The clone</returns>
-        public override object Clone()
-        {
-            ResourceContainers list = new ResourceContainers();
-            foreach (ResourceContainer item in this) list.Add(item);
+		/// <summary>
+		/// Create a clone of this Object
+		/// </summary>
+		/// <returns>The clone</returns>
+		public override object Clone()
+		{
+			ResourceContainers list = new ResourceContainers();
+			foreach (ResourceContainer item in this)
+				list.Add(item);
 
-            return list;
-        }
-    }
-    #endregion
+			return list;
+		}
+	}
+	#endregion
 
-    #endregion
+	#endregion
 
-    #region File Events
-    /// <summary>
-    /// Passed as Event Argument in <see cref="PackageFileLoadEvent"/>
-    /// </summary>
-    public class FileNameEventArg : System.EventArgs
-    {
-        public FileNameEventArg(string filename)
-        {
-            cancel = false;
-            this.filename = filename;
-        }
+	#region File Events
+	/// <summary>
+	/// Passed as Event Argument in <see cref="PackageFileLoadEvent"/>
+	/// </summary>
+	public class FileNameEventArg : System.EventArgs
+	{
+		public FileNameEventArg(string filename)
+		{
+			cancel = false;
+			this.filename = filename;
+		}
 
-        string filename;
-        public string FileName
-        {
-            get { return filename; }
-            set { filename = value; }
-        }
+		string filename;
+		public string FileName
+		{
+			get { return filename; }
+			set { filename = value; }
+		}
 
-        bool cancel;
-        public bool Cancel
-        {
-            get { return cancel; }
-            set { cancel = value; }
-        }
-    }
-    /// <summary>
-    /// A function that can be executed when a new File has to be loaded
-    /// </summary>
-    public delegate void PackageFileLoadEvent(LoadedPackage sender, FileNameEventArg e);
+		bool cancel;
+		public bool Cancel
+		{
+			get { return cancel; }
+			set { cancel = value; }
+		}
+	}
 
-    /// <summary>
-    /// A function that can be executed when a new File has to be closed
-    /// </summary>
-    public delegate void PackageFileCloseEvent(LoadedPackage sender, FileNameEventArg e);
+	/// <summary>
+	/// A function that can be executed when a new File has to be loaded
+	/// </summary>
+	public delegate void PackageFileLoadEvent(LoadedPackage sender, FileNameEventArg e);
 
-    /// <summary>
-    /// A function that can be executed when a new File hwas loaded
-    /// </summary>
-    public delegate void PackageFileLoadedEvent(LoadedPackage sender);
-    /// <summary>
-    /// A function that can be executed when a File has to be saved
-    /// </summary>
-    public delegate void PackageFileSaveEvent(LoadedPackage sender, FileNameEventArg e);
+	/// <summary>
+	/// A function that can be executed when a new File has to be closed
+	/// </summary>
+	public delegate void PackageFileCloseEvent(
+		LoadedPackage sender,
+		FileNameEventArg e
+	);
 
-    /// <summary>
-    /// A function that can be executed when a File was saved
-    /// </summary>
-    public delegate void PackageFileSavedEvent(LoadedPackage sender);
-    #endregion
+	/// <summary>
+	/// A function that can be executed when a new File hwas loaded
+	/// </summary>
+	public delegate void PackageFileLoadedEvent(LoadedPackage sender);
+
+	/// <summary>
+	/// A function that can be executed when a File has to be saved
+	/// </summary>
+	public delegate void PackageFileSaveEvent(LoadedPackage sender, FileNameEventArg e);
+
+	/// <summary>
+	/// A function that can be executed when a File was saved
+	/// </summary>
+	public delegate void PackageFileSavedEvent(LoadedPackage sender);
+	#endregion
 }

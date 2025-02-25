@@ -46,17 +46,18 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public SpotLight(Rcol parent) : base(parent)
+		public SpotLight(Rcol parent)
+			: base(parent)
 		{
 			version = 1;
 			BlockID = 0xc9c81bad;
-		}		
+		}
 
 		public override void Unserialize(System.IO.BinaryReader reader)
 		{
 			base.Unserialize(reader);
 			unknown10 = reader.ReadSingle();
-			unknown11= reader.ReadSingle();
+			unknown11 = reader.ReadSingle();
 		}
 
 		public override void Serialize(System.IO.BinaryWriter writer)
@@ -69,12 +70,12 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
 		/// </summary>
-		protected override void InitTabPage() 
+		protected override void InitTabPage()
 		{
 			base.InitTabPage();
 			tDirectionalLight.tb_l_8.Text = unknown10.ToString();
 			tDirectionalLight.tb_l_9.Text = unknown11.ToString();
-			
+
 			tDirectionalLight.label45.Visible = true;
 			tDirectionalLight.label46.Visible = true;
 

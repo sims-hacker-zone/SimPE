@@ -27,38 +27,49 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class FixUidTool : Interfaces.ITool
 	{
-		
-		internal FixUidTool() 
-		{
-		
-		}
+		internal FixUidTool() { }
 
 		#region ITool Member
 
-		public bool IsEnabled(SimPe.Interfaces.Files.IPackedFileDescriptor pfd, SimPe.Interfaces.Files.IPackageFile package)
-		{			
+		public bool IsEnabled(
+			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			SimPe.Interfaces.Files.IPackageFile package
+		)
+		{
 			return true;
 		}
 
-		public Interfaces.Plugin.IToolResult ShowDialog(ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd, ref SimPe.Interfaces.Files.IPackageFile package)
-		{		
-			System.Windows.Forms.DialogResult dr =
-                System.Windows.Forms.MessageBox.Show("Using this Tool can serioulsy mess up all of your Neighbourhoods and Neighbourhood Stories, it can acheive nothing usefull.\n\nMake sure you have a Backup of ALL your Neighbourhoods before starting this Tool!\n\nDo you want to start this Tool?", "Confirmation", System.Windows.Forms.MessageBoxButtons.YesNo);
+		public Interfaces.Plugin.IToolResult ShowDialog(
+			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			ref SimPe.Interfaces.Files.IPackageFile package
+		)
+		{
+			System.Windows.Forms.DialogResult dr = System.Windows.Forms.MessageBox.Show(
+				"Using this Tool can serioulsy mess up all of your Neighbourhoods and Neighbourhood Stories, it can acheive nothing usefull.\n\nMake sure you have a Backup of ALL your Neighbourhoods before starting this Tool!\n\nDo you want to start this Tool?",
+				"Confirmation",
+				System.Windows.Forms.MessageBoxButtons.YesNo
+			);
 
-
-			if (dr == System.Windows.Forms.DialogResult.Yes) 
+			if (dr == System.Windows.Forms.DialogResult.Yes)
 			{
-                Wait.SubStop();
-				try 
+				Wait.SubStop();
+				try
 				{
-                    System.Collections.Hashtable ht = Idno.FindUids(PathProvider.SimSavegameFolder, true);
-					foreach (string file in ht.Keys) 
+					System.Collections.Hashtable ht = Idno.FindUids(
+						PathProvider.SimSavegameFolder,
+						true
+					);
+					foreach (string file in ht.Keys)
 					{
 						Wait.Message = file;
 
-						SimPe.Packages.GeneratableFile fl = SimPe.Packages.GeneratableFile.LoadFromFile(file);
-						SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = fl.FindFiles(Data.MetaData.IDNO);
-						foreach (SimPe.Interfaces.Files.IPackedFileDescriptor spfd in pfds) 
+						SimPe.Packages.GeneratableFile fl =
+							SimPe.Packages.GeneratableFile.LoadFromFile(file);
+						SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds =
+							fl.FindFiles(Data.MetaData.IDNO);
+						foreach (
+							SimPe.Interfaces.Files.IPackedFileDescriptor spfd in pfds
+						)
 						{
 							Idno idno = new Idno();
 							idno.ProcessData(spfd, fl);
@@ -70,13 +81,13 @@ namespace SimPe.Plugin
 						fl.Save();
 					}
 				}
-				catch (Exception ex) 
+				catch (Exception ex)
 				{
 					Helper.ExceptionMessage("", ex);
 				}
-				finally 
+				finally
 				{
-                    Wait.SubStop();
+					Wait.SubStop();
 				}
 			}
 			return new ToolResult(false, false);

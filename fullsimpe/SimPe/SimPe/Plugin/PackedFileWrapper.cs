@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Providers;
-using SimPe.Interfaces;
 
 namespace SimPe.Plugin
 {
@@ -28,14 +28,16 @@ namespace SimPe.Plugin
 	/// This is the actual FileWrapper
 	/// </summary>
 	/// <remarks>
-	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads 
+	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
 	public class RefFile
-		: AbstractWrapper				//Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-		, IFileWrapper					//This Interface is used when loading a File
-		, IFileWrapperSaveExtension		//This Interface (if available) will be used to store a File
-		//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
+			,
+			IFileWrapper //This Interface is used when loading a File
+			,
+			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
+	//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 	{
 		#region Attributes
 		/// <summary>
@@ -56,9 +58,9 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// List of Stored References
 		/// </summary>
-		public Interfaces.Files.IPackedFileDescriptor[] Items 
+		public Interfaces.Files.IPackedFileDescriptor[] Items
 		{
-			get { return items;	}			
+			get { return items; }
 			set { items = value; }
 		}
 
@@ -67,19 +69,21 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public RefFile() : base()
+		public RefFile()
+			: base()
 		{
 			items = new Interfaces.Files.IPackedFileDescriptor[0];
-            id = 0xDEADBEEF;
-            type = Data.MetaData.IndexTypes.ptLongFileIndex;
+			id = 0xDEADBEEF;
+			type = Data.MetaData.IndexTypes.ptLongFileIndex;
 		}
 
 		#region IWrapper member
-		public override bool CheckVersion(uint version) 
+		public override bool CheckVersion(uint version)
 		{
-			if ( (version==0009) //0.00
-				|| (version==0010) //0.10
-				) 
+			if (
+				(version == 0009) //0.00
+				|| (version == 0010) //0.10
+			)
 			{
 				return true;
 			}
@@ -87,7 +91,7 @@ namespace SimPe.Plugin
 			return false;
 		}
 		#endregion
-		
+
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
@@ -105,8 +109,11 @@ namespace SimPe.Plugin
 				"Quaxi",
 				"This File contains References to 3D Elements (from the Scenegraph) of a Sim, Skin or Clothing.",
 				5,
-				System.Drawing.Image.FromStream(this.GetType().Assembly.GetManifestResourceStream("SimPe.img.3didr.png"))
-				); 
+				System.Drawing.Image.FromStream(
+					this.GetType()
+						.Assembly.GetManifestResourceStream("SimPe.img.3didr.png")
+				)
+			);
 		}
 
 		/// <summary>
@@ -120,18 +127,20 @@ namespace SimPe.Plugin
 
 			items = new Interfaces.Files.IPackedFileDescriptor[reader.ReadUInt32()];
 
-			for (int i=0; i<items.Length; i++) 
+			for (int i = 0; i < items.Length; i++)
 			{
 				RefFileItem pfd = new RefFileItem(this);
-				
+
 				pfd.Type = reader.ReadUInt32();
 				pfd.Group = reader.ReadUInt32();
 				pfd.Instance = reader.ReadUInt32();
-				if(type==Data.MetaData.IndexTypes.ptLongFileIndex) pfd.SubType = reader.ReadUInt32();
+				if (type == Data.MetaData.IndexTypes.ptLongFileIndex)
+					pfd.SubType = reader.ReadUInt32();
 
 				/*Interfaces.Files.IPackedFileDescriptor ppfd = Package.FindFile(pfd.Type, pfd.SubType, pfd.Group, pfd.Instance);
-				if (ppfd!=null) items[i]=ppfd;					
-				else*/ items[i] = pfd;
+				if (ppfd!=null) items[i]=ppfd;
+				else*/
+				items[i] = pfd;
 			}
 		}
 
@@ -140,7 +149,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
@@ -148,21 +157,22 @@ namespace SimPe.Plugin
 			writer.Write(id);
 			writer.Write((uint)type);
 			writer.Write((uint)items.Length);
-			
-			for (int i=0; i<items.Length; i++) 
+
+			for (int i = 0; i < items.Length; i++)
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = items[i];
-				
+
 				writer.Write(pfd.Type);
 				writer.Write(pfd.Group);
 				writer.Write(pfd.Instance);
-				if(type==Data.MetaData.IndexTypes.ptLongFileIndex) writer.Write(pfd.SubType);
-			}		
+				if (type == Data.MetaData.IndexTypes.ptLongFileIndex)
+					writer.Write(pfd.SubType);
+			}
 		}
 		#endregion
 
-		#region IFileWrapperSaveExtension Member		
-			//all covered by Serialize()
+		#region IFileWrapperSaveExtension Member
+		//all covered by Serialize()
 		#endregion
 
 		#region IFileWrapper Member
@@ -172,10 +182,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get
-			{
-				return new byte[0];
-			}
+			get { return new byte[0]; }
 		}
 
 		/// <summary>
@@ -185,13 +192,14 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				uint[] types = {
-								   0xAC506764   //handles the 3IDR File
-							   };
+				uint[] types =
+				{
+					0xAC506764, //handles the 3IDR File
+				};
 				return types;
 			}
 		}
 
-		#endregion		
+		#endregion
 	}
 }

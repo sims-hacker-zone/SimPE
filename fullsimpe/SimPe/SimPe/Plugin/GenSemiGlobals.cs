@@ -27,64 +27,76 @@ using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
 {
-    class GenSemiGlobals : ICommandLine
-    {
-        #region ICommandLine Members
+	class GenSemiGlobals : ICommandLine
+	{
+		#region ICommandLine Members
 
-        public bool Parse(List<string> argv)
-        {
-            if (!argv.Remove("-gensemiglob")) return false;
+		public bool Parse(List<string> argv)
+		{
+			if (!argv.Remove("-gensemiglob"))
+				return false;
 
-            System.Collections.Generic.List<uint> added = new System.Collections.Generic.List<uint>();
-            Splash.Screen.SetMessage("Loading FileTable...");
-            SimPe.FileTable.FileIndex.Load();
-            Splash.Screen.SetMessage("Looking for GLOB Resources...");
-            SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] resources = SimPe.FileTable.FileIndex.FindFile(SimPe.Data.MetaData.GLOB_FILE, true);
+			System.Collections.Generic.List<uint> added =
+				new System.Collections.Generic.List<uint>();
+			Splash.Screen.SetMessage("Loading FileTable...");
+			SimPe.FileTable.FileIndex.Load();
+			Splash.Screen.SetMessage("Looking for GLOB Resources...");
+			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] resources =
+				SimPe.FileTable.FileIndex.FindFile(SimPe.Data.MetaData.GLOB_FILE, true);
 
-            Splash.Screen.SetMessage("Found " + resources.Length + " GLOB Resources");
-            string fl = Helper.SimPeSemiGlobalFile;
-//            Console.WriteLine("Opening " + fl);
-            System.IO.StreamWriter sw = new System.IO.StreamWriter(fl, false);
-            sw.WriteLine("<semiglobals>");
+			Splash.Screen.SetMessage("Found " + resources.Length + " GLOB Resources");
+			string fl = Helper.SimPeSemiGlobalFile;
+			//            Console.WriteLine("Opening " + fl);
+			System.IO.StreamWriter sw = new System.IO.StreamWriter(fl, false);
+			sw.WriteLine("<semiglobals>");
 
-            int ct = 0;
-            int unq = 0;
-            foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in resources)
-            {
-                if (ct % 23 == 0) Splash.Screen.SetMessage("Wrote " + ct + " (" + unq + " unique) entries");
-                ct++;
+			int ct = 0;
+			int unq = 0;
+			foreach (
+				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in resources
+			)
+			{
+				if (ct % 23 == 0)
+					Splash.Screen.SetMessage(
+						"Wrote " + ct + " (" + unq + " unique) entries"
+					);
+				ct++;
 
-                SimPe.Plugin.Glob glb = new SimPe.Plugin.Glob();
-                glb.ProcessData(item);
+				SimPe.Plugin.Glob glb = new SimPe.Plugin.Glob();
+				glb.ProcessData(item);
 
-                if (!added.Contains(glb.SemiGlobalGroup))
-                {
-                    sw.WriteLine("  <semiglobal>");
-                    sw.WriteLine("    <known />");
-                    sw.WriteLine("    <group>" + Helper.HexString(glb.SemiGlobalGroup) + "</group>");
-                    sw.WriteLine("    <name>" + glb.SemiGlobalName + "</name>");
-                    sw.WriteLine("  </semiglobal>");
-                    added.Add(glb.SemiGlobalGroup);
-                    unq++;
-                }
-            }
-//            Console.WriteLine("Wrote " + ct + " (" + unq + " unique) entries");
-            sw.WriteLine("</semiglobals>");
-//            Console.WriteLine("Finished writing to " + fl);
-            sw.Close();
-            sw.Dispose();
-            sw = null;
-//            Console.WriteLine("Closed File");
-            Splash.Screen.SetMessage("");
+				if (!added.Contains(glb.SemiGlobalGroup))
+				{
+					sw.WriteLine("  <semiglobal>");
+					sw.WriteLine("    <known />");
+					sw.WriteLine(
+						"    <group>"
+							+ Helper.HexString(glb.SemiGlobalGroup)
+							+ "</group>"
+					);
+					sw.WriteLine("    <name>" + glb.SemiGlobalName + "</name>");
+					sw.WriteLine("  </semiglobal>");
+					added.Add(glb.SemiGlobalGroup);
+					unq++;
+				}
+			}
+			//            Console.WriteLine("Wrote " + ct + " (" + unq + " unique) entries");
+			sw.WriteLine("</semiglobals>");
+			//            Console.WriteLine("Finished writing to " + fl);
+			sw.Close();
+			sw.Dispose();
+			sw = null;
+			//            Console.WriteLine("Closed File");
+			Splash.Screen.SetMessage("");
 
-            return true;
-        }
+			return true;
+		}
 
-        public string[] Help()
-        {
-            return new string[] { "-gensemiglob", null };
-        }
+		public string[] Help()
+		{
+			return new string[] { "-gensemiglob", null };
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 }

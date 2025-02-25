@@ -19,25 +19,25 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using SimPe.Interfaces.Plugin;
 using System.ComponentModel;
+using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
 {
-	public class ResourceNodeItem 
+	public class ResourceNodeItem
 	{
 		short unknown1;
-		public short Unknown1 
+		public short Unknown1
 		{
 			get { return unknown1; }
 			set { unknown1 = value; }
 		}
 
 		int unknown2;
-		public int Unknown2 
+		public int Unknown2
 		{
 			get { return unknown2; }
-			set { unknown2= value; }
+			set { unknown2 = value; }
 		}
 
 		/// <summary>
@@ -55,7 +55,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public void Serialize(System.IO.BinaryWriter writer)
@@ -66,56 +66,57 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			return "0x"+Helper.HexString((ushort)unknown1) + " 0x" + Helper.HexString((uint)unknown2);
+			return "0x"
+				+ Helper.HexString((ushort)unknown1)
+				+ " 0x"
+				+ Helper.HexString((uint)unknown2);
 		}
-
 	}
 
 	/// <summary>
 	/// This is the actual FileWrapper
 	/// </summary>
 	/// <remarks>
-	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads 
+	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public class ResourceNode
-		: AbstractCresChildren
+	public class ResourceNode : AbstractCresChildren
 	{
 		#region Attributes
 		byte typecode;
-		public byte TypeCode 
+		public byte TypeCode
 		{
 			get { return typecode; }
 		}
 
 		ObjectGraphNode ogn;
-		public ObjectGraphNode GraphNode 
+		public ObjectGraphNode GraphNode
 		{
 			get { return ogn; }
 		}
 
 		CompositionTreeNode ctn;
-		public CompositionTreeNode TreeNode 
+		public CompositionTreeNode TreeNode
 		{
 			get { return ctn; }
 		}
 
 		ResourceNodeItem[] items;
-		public ResourceNodeItem[] Items 
+		public ResourceNodeItem[] Items
 		{
 			get { return items; }
 			set { items = value; }
 		}
 
 		int unknown1;
-		public int Unknown1 
+		public int Unknown1
 		{
 			get { return unknown1; }
 			set { unknown1 = value; }
 		}
 
 		int unknown2;
-		public int Unknown2 
+		public int Unknown2
 		{
 			get { return unknown2; }
 			set { unknown2 = value; }
@@ -127,12 +128,13 @@ namespace SimPe.Plugin
 			get { return null; }
 		}
 		#endregion
-		
+
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public ResourceNode(Rcol parent) : base(parent)
+		public ResourceNode(Rcol parent)
+			: base(parent)
 		{
 			sgres = new SGResource(null);
 			ogn = new ObjectGraphNode(null);
@@ -144,35 +146,34 @@ namespace SimPe.Plugin
 			BlockID = 0xE519C933;
 		}
 
-
-
 		#region AbstractCresChildren Member
 		public override string GetName()
 		{
 			return ogn.FileName;
 		}
+
 		/// <summary>
 		/// Returns a List of all Child Blocks referenced by this Element
 		/// </summary>
-		public override IntArrayList ChildBlocks 
+		public override IntArrayList ChildBlocks
 		{
-			get 
+			get
 			{
 				IntArrayList l = new IntArrayList();
-				foreach (ResourceNodeItem rni in items) 
+				foreach (ResourceNodeItem rni in items)
 				{
 					l.Add((rni.Unknown2 >> 24) & 0xff);
 				}
 				return l;
 			}
-		}	
+		}
 
 		[BrowsableAttribute(false)]
-		public override int ImageIndex 
+		public override int ImageIndex
 		{
-			get 
-			{ 
-				return 3; //mesh 
+			get
+			{
+				return 3; //mesh
 			}
 		}
 
@@ -182,12 +183,18 @@ namespace SimPe.Plugin
 		/// <param name="parent">The parent TreeNode</param>
 		/// <param name="index">The Index of the Child Block in the Parent</param>
 		/// <param name="child">The ChildBlock (can be null)</param>
-		protected void AddChildNode(System.Windows.Forms.TreeNodeCollection parent, int index, SimPe.Interfaces.Scenegraph.ICresChildren child) 
+		protected void AddChildNode(
+			System.Windows.Forms.TreeNodeCollection parent,
+			int index,
+			SimPe.Interfaces.Scenegraph.ICresChildren child
+		)
 		{
 			//Make the user aware, that a Node was left out!
-			if (child==null) 
+			if (child == null)
 			{
-				System.Windows.Forms.TreeNode unode = new System.Windows.Forms.TreeNode("[Error: Unsupported Child on Index "+index.ToString()+"]");
+				System.Windows.Forms.TreeNode unode = new System.Windows.Forms.TreeNode(
+					"[Error: Unsupported Child on Index " + index.ToString() + "]"
+				);
 				unode.Tag = index;
 				unode.ImageIndex = 4;
 				unode.SelectedImageIndex = 4;
@@ -195,16 +202,19 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			System.Windows.Forms.TreeNode node = new System.Windows.Forms.TreeNode("0x"+index.ToString("X")+": "+child.ToString());
+			System.Windows.Forms.TreeNode node = new System.Windows.Forms.TreeNode(
+				"0x" + index.ToString("X") + ": " + child.ToString()
+			);
 			node.Tag = index;
 			node.ImageIndex = child.ImageIndex;
 			node.SelectedImageIndex = node.ImageIndex;
 			parent.Add(node);
 
-			foreach (int i in child.ChildBlocks) AddChildNode(node.Nodes, i, child.GetBlock(i));
+			foreach (int i in child.ChildBlocks)
+				AddChildNode(node.Nodes, i, child.GetBlock(i));
 		}
 		#endregion
-		
+
 		#region IRcolBlock Member
 
 		/// <summary>
@@ -219,7 +229,7 @@ namespace SimPe.Plugin
 			string fldsc = reader.ReadString();
 			uint myid = reader.ReadUInt32();
 
-			if (typecode==0x01) 
+			if (typecode == 0x01)
 			{
 				sgres.Unserialize(reader);
 				sgres.BlockID = myid;
@@ -235,14 +245,14 @@ namespace SimPe.Plugin
 				ogn.BlockID = myid;
 
 				items = new ResourceNodeItem[reader.ReadByte()];
-				for (int i=0; i<items.Length; i++) 
+				for (int i = 0; i < items.Length; i++)
 				{
 					items[i] = new ResourceNodeItem();
 					items[i].Unserialize(reader);
 				}
 				unknown1 = reader.ReadInt32();
-			} 
-			else if (typecode==0x00) 
+			}
+			else if (typecode == 0x00)
 			{
 				ogn.Unserialize(reader);
 				ogn.BlockID = myid;
@@ -250,10 +260,15 @@ namespace SimPe.Plugin
 				items = new ResourceNodeItem[1];
 				items[0] = new ResourceNodeItem();
 				items[0].Unserialize(reader);
-			} 
-			else 
+			}
+			else
 			{
-				throw new Exception("Unknown ResourceNode 0x"+Helper.HexString(version)+", 0x"+Helper.HexString(typecode));
+				throw new Exception(
+					"Unknown ResourceNode 0x"
+						+ Helper.HexString(version)
+						+ ", 0x"
+						+ Helper.HexString(typecode)
+				);
 			}
 			unknown2 = reader.ReadInt32();
 		}
@@ -263,7 +278,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be stored to</param>
 		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on 
+		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
 		public override void Serialize(System.IO.BinaryWriter writer)
@@ -271,7 +286,7 @@ namespace SimPe.Plugin
 			writer.Write(version);
 			writer.Write(typecode);
 
-			if (typecode==0x01) 
+			if (typecode == 0x01)
 			{
 				writer.Write(sgres.BlockName);
 				writer.Write(sgres.BlockID);
@@ -286,32 +301,40 @@ namespace SimPe.Plugin
 				ogn.Serialize(writer);
 
 				writer.Write((byte)items.Length);
-				for (int i=0; i<items.Length; i++) items[i].Serialize(writer);
-				
+				for (int i = 0; i < items.Length; i++)
+					items[i].Serialize(writer);
+
 				writer.Write(unknown1);
-			} 
-			else if (typecode==0x00) 
+			}
+			else if (typecode == 0x00)
 			{
 				writer.Write(ogn.BlockName);
 				writer.Write(ogn.BlockID);
 				ogn.Serialize(writer);
 
-				if (items.Length<1) items = new ResourceNodeItem[1];
+				if (items.Length < 1)
+					items = new ResourceNodeItem[1];
 				items[0].Serialize(writer);
-			} 
-			else 
+			}
+			else
 			{
-				throw new Exception("Unknown ResourceNode 0x"+Helper.HexString(version)+", 0x"+Helper.HexString(typecode));
+				throw new Exception(
+					"Unknown ResourceNode 0x"
+						+ Helper.HexString(version)
+						+ ", 0x"
+						+ Helper.HexString(typecode)
+				);
 			}
 			writer.Write(unknown2);
 		}
 
-		TabPage.ResourceNode tResourceNode;		
+		TabPage.ResourceNode tResourceNode;
 		public override System.Windows.Forms.TabPage TabPage
 		{
 			get
 			{
-				if (tResourceNode==null) tResourceNode = new SimPe.Plugin.TabPage.ResourceNode();
+				if (tResourceNode == null)
+					tResourceNode = new SimPe.Plugin.TabPage.ResourceNode();
 				return tResourceNode;
 			}
 		}
@@ -321,7 +344,8 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (tCres==null) tCres = new SimPe.Plugin.TabPage.Cres();
+				if (tCres == null)
+					tCres = new SimPe.Plugin.TabPage.Cres();
 				return tCres;
 			}
 		}
@@ -333,8 +357,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		protected override void InitResourceTabPage()
 		{
-			if (tResourceNode==null) tResourceNode = new SimPe.Plugin.TabPage.ResourceNode();
-			if (tCres==null) tCres = new SimPe.Plugin.TabPage.Cres();
+			if (tResourceNode == null)
+				tResourceNode = new SimPe.Plugin.TabPage.ResourceNode();
+			if (tCres == null)
+				tCres = new SimPe.Plugin.TabPage.Cres();
 
 			this.tCres.cres_tv.Nodes.Clear();
 			tCres.tbfjoint.Text = "";
@@ -345,22 +371,25 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
 		/// </summary>
-		protected override void InitTabPage() 
+		protected override void InitTabPage()
 		{
-			if (tResourceNode==null) tResourceNode = new SimPe.Plugin.TabPage.ResourceNode();
-			
-			tResourceNode.lb_rn.Items.Clear();
-			for(int i=0; i<this.items.Length; i++) tResourceNode.lb_rn.Items.Add(items[i]);
+			if (tResourceNode == null)
+				tResourceNode = new SimPe.Plugin.TabPage.ResourceNode();
 
-			tResourceNode.tb_rn_uk1.Text = "0x"+Helper.HexString((uint)this.unknown1);
-			tResourceNode.tb_rn_uk2.Text = "0x"+Helper.HexString((uint)this.unknown2);
-			tResourceNode.tb_rn_ver.Text = "0x"+Helper.HexString(this.version);
+			tResourceNode.lb_rn.Items.Clear();
+			for (int i = 0; i < this.items.Length; i++)
+				tResourceNode.lb_rn.Items.Add(items[i]);
+
+			tResourceNode.tb_rn_uk1.Text = "0x" + Helper.HexString((uint)this.unknown1);
+			tResourceNode.tb_rn_uk2.Text = "0x" + Helper.HexString((uint)this.unknown2);
+			tResourceNode.tb_rn_ver.Text = "0x" + Helper.HexString(this.version);
 		}
 
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
-			base.ExtendTabControl (tc);
-			if (typecode==0x1)this.ctn.AddToTabControl(tc);
+			base.ExtendTabControl(tc);
+			if (typecode == 0x1)
+				this.ctn.AddToTabControl(tc);
 			this.ogn.AddToTabControl(tc);
 		}
 
@@ -368,9 +397,11 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (this.tResourceNode!=null) this.tResourceNode.Dispose();
+			if (this.tResourceNode != null)
+				this.tResourceNode.Dispose();
 			tResourceNode = null;
-			if (tCres!=null) tCres.Dispose();
+			if (tCres != null)
+				tCres.Dispose();
 			tCres = null;
 			sgres = null;
 			ogn = null;
