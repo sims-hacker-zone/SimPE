@@ -1,0 +1,14 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "msbuild",
+            "type": "process",
+            "args": [
+                "${workspaceFolder}/fullsimpe/SimPe/SimPe.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

@@ -2,12 +2,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wizards of SimPe", "Wizards of SimPe\Wizards of SimPe.csproj", "{9C10B224-7ABC-46D1-9ADC-58A817D6AF59}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WOSimPe - Recolor", "__NonCore\WOSimPe - Recolor\WOSimPe - Recolor.csproj", "{55A67A5D-43E8-4290-B52F-230233B1439D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WOSimPE - Interfaces", "WOSimPE - Interfaces\WOSimPE - Interfaces.csproj", "{833C3B98-5A2D-476B-8B4B-C9548C1C99B6}"
-EndProject
+# Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wizards of SimPe", "Wizards of SimPe\Wizards of SimPe.csproj", "{9C10B224-7ABC-46D1-9ADC-58A817D6AF59}"
+# EndProject
+# Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WOSimPe - Recolor", "__NonCore\WOSimPe - Recolor\WOSimPe - Recolor.csproj", "{55A67A5D-43E8-4290-B52F-230233B1439D}"
+# EndProject
+# Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WOSimPE - Interfaces", "WOSimPE - Interfaces\WOSimPE - Interfaces.csproj", "{833C3B98-5A2D-476B-8B4B-C9548C1C99B6}"
+# EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPe", "SimPe\SimPe.csproj", "{C62B5A09-3F7E-49E9-9A74-CC3634550179}"
 EndProject
 Global

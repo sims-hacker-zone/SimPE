@@ -5,6 +5,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>SimPe</RootNamespace>
     <AssemblyName>SimPe</AssemblyName>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <ApplicationIcon>img\Simpe2.ico</ApplicationIcon>
     <StartupObject>SimPe.MainForm</StartupObject>
@@ -1793,9 +1794,6 @@
     <Compile Include="SimPe\PackedFiles\Wrapper\Factory\SimFactory.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SimPe\PackedFiles\Wrapper\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="SimPe\PackedFiles\Wrapper\ExtFamilyTiesWrapper.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -2495,6 +2493,7 @@
     <Compile Include="Ambertation\Viewer\LoadTGAClass.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SimPe\About.resx">

@@ -5,5 +5,8 @@
   "[xml]": {
     "editor.defaultFormatter": "csharpier.csharpier-vscode"
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "dotnet.server.useOmnisharp": true,
+  "omnisharp.useModernNet": false,
+  "omnisharp.enableEditorConfigSupport": true
 }
