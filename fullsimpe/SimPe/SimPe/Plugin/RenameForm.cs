@@ -352,10 +352,7 @@ namespace SimPe.Plugin
 
 			if (lv != null)
 				lv.Items.Clear();
-			Hashtable ht = new Hashtable(
-				CaseInsensitiveHashCodeProvider.DefaultInvariant,
-				CaseInsensitiveComparer.DefaultInvariant
-			);
+			Hashtable ht = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
 			string old = Hashes.StripHashFromName(
 				FindMainOldName(package).ToLower().Trim()
 			);
@@ -428,10 +425,7 @@ namespace SimPe.Plugin
 
 		protected Hashtable GetReplacementMap()
 		{
-			Hashtable ht = new Hashtable(
-				CaseInsensitiveHashCodeProvider.DefaultInvariant,
-				CaseInsensitiveComparer.DefaultInvariant
-			);
+			Hashtable ht = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
 			foreach (ListViewItem lvi in lv.Items)
 			{
 				string oldname = lvi.SubItems[2].Text.Trim().ToLower();
