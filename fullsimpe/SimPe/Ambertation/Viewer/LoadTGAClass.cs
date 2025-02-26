@@ -38,6 +38,11 @@ namespace Ambertation.Viewer
 				Length = br.ReadUInt16();
 				EntrySize = br.ReadByte();
 			}
+
+			public override string ToString()
+			{
+				return $"(FirstEntryIndex={FirstEntryIndex}, Length={Length}, EntrySize={EntrySize})";
+			}
 		}
 
 		struct tgaImageSpec
@@ -70,6 +75,11 @@ namespace Ambertation.Viewer
 				get { return (Descriptor & 0x20) == 0x20; }
 				set { Descriptor = (byte)((Descriptor & ~0x20) | (value ? 0x20 : 0)); }
 			}
+
+			public override string ToString()
+			{
+				return $"(XOrigin={XOrigin}, YOrigin={YOrigin}, Width={Width}, Height={Height}, PixelDepth={PixelDepth}, Descriptor={Descriptor})";
+			}
 		}
 
 		struct tgaHeader
@@ -95,6 +105,11 @@ namespace Ambertation.Viewer
 			public bool RleEncoded
 			{
 				get { return ImageType >= 9; }
+			}
+
+			public override string ToString()
+			{
+				return $"(IdLength={IdLength}, ColorMapType={ColorMapType}, ImageType={ImageType}, ColorMap={ColorMap}, ImageSpec={ImageSpec})";
 			}
 		}
 
@@ -448,6 +463,7 @@ namespace Ambertation.Viewer
 
 		public static System.Drawing.Bitmap LoadTGA(System.IO.Stream source)
 		{
+			source.Seek(0, System.IO.SeekOrigin.Begin);
 			byte[] buffer = new byte[source.Length];
 			source.Read(buffer, 0, buffer.Length);
 
@@ -467,7 +483,8 @@ namespace Ambertation.Viewer
 				throw new ArgumentException(
 					"Not a supported tga file. (Pixeldepth="
 						+ header.ImageSpec.PixelDepth
-						+ ")"
+						+ ") "
+						+ header.ToString()
 				);
 
 			if (header.ImageSpec.AlphaBits > 8)
