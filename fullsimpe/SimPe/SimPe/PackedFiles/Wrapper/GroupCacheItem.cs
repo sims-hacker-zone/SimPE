@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Wrapper;
@@ -38,8 +39,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public string FileName
 		{
-			get { return flname.Trim().ToLower(); }
-			set { flname = value.Trim().ToLower(); }
+			get
+			{
+				return flname.Trim().ToLower();
+			}
+			set
+			{
+				flname = value.Trim().ToLower();
+			}
 		}
 
 		uint unknown1;
@@ -50,8 +57,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint LocalGroup
 		{
-			get { return localgroup; }
-			set { localgroup = value; }
+			get
+			{
+				return localgroup;
+			}
+			set
+			{
+				localgroup = value;
+			}
 		}
 		uint[] unknown2;
 		#endregion
@@ -131,14 +144,26 @@ namespace SimPe.PackedFiles.Wrapper
 	{
 		public new GroupCacheItem this[int index]
 		{
-			get { return ((GroupCacheItem)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((GroupCacheItem)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		public GroupCacheItem this[uint index]
 		{
-			get { return ((GroupCacheItem)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((GroupCacheItem)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		public int Add(GroupCacheItem item)
@@ -163,7 +188,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		public override object Clone()

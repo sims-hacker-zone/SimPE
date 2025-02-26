@@ -88,8 +88,14 @@ namespace SimPe.Packages
 		]
 		public Int16 Epicon
 		{
-			get { return epicon; }
-			set { epicon = value; }
+			get
+			{
+				return epicon;
+			}
+			set
+			{
+				epicon = value;
+			}
 		}
 
 		/// <summary>
@@ -104,8 +110,14 @@ namespace SimPe.Packages
 		]
 		public Int16 Showicon
 		{
-			get { return showicon; }
-			set { showicon = value; }
+			get
+			{
+				return showicon;
+			}
+			set
+			{
+				showicon = value;
+			}
 		}
 
 		/// <summary>
@@ -124,7 +136,10 @@ namespace SimPe.Packages
 		]
 		public Int32 MajorVersion
 		{
-			get { return majorversion; }
+			get
+			{
+				return majorversion;
+			}
 		}
 
 		/// <summary>
@@ -143,7 +158,10 @@ namespace SimPe.Packages
 		]
 		public Int32 MinorVersion
 		{
-			get { return minorversion; }
+			get
+			{
+				return minorversion;
+			}
 		}
 
 		/// <summary>
@@ -156,7 +174,10 @@ namespace SimPe.Packages
 		]
 		public long Version
 		{
-			get { return (long)((ulong)MajorVersion << 0x20) | (uint)MinorVersion; }
+			get
+			{
+				return (long)((ulong)MajorVersion << 0x20) | (uint)MinorVersion;
+			}
 		}
 
 		/// <summary>
@@ -182,7 +203,10 @@ namespace SimPe.Packages
 #else
 		public uint Ident
 		{
-			get { return Created; }
+			get
+			{
+				return Created;
+			}
 		}
 		internal uint created;
 
@@ -194,8 +218,14 @@ namespace SimPe.Packages
 #endif
 		public uint Created
 		{
-			get { return created; }
-			set { created = value; }
+			get
+			{
+				return created;
+			}
+			set
+			{
+				created = value;
+			}
 		}
 
 		/// <summary>
@@ -227,7 +257,10 @@ namespace SimPe.Packages
 		[BrowsableAttribute(false)]
 		public SimPe.Interfaces.Files.IPackageHeaderIndex Index
 		{
-			get { return index; }
+			get
+			{
+				return index;
+			}
 		}
 
 		/// <summary>
@@ -241,7 +274,10 @@ namespace SimPe.Packages
 		[BrowsableAttribute(false)]
 		public SimPe.Interfaces.Files.IPackageHeaderHoleIndex HoleIndex
 		{
-			get { return hole; }
+			get
+			{
+				return hole;
+			}
 		}
 
 		/// <summary>
@@ -260,8 +296,14 @@ namespace SimPe.Packages
 		]
 		public Data.MetaData.IndexTypes IndexType
 		{
-			get { return (Data.MetaData.IndexTypes)indextype; }
-			set { indextype = value; }
+			get
+			{
+				return (Data.MetaData.IndexTypes)indextype;
+			}
+			set
+			{
+				indextype = value;
+			}
 		}
 
 		/// <summary>
@@ -294,8 +336,14 @@ namespace SimPe.Packages
 		bool lidl;
 		internal bool LockIndexDuringLoad
 		{
-			get { return lidl; }
-			set { lidl = value; }
+			get
+			{
+				return lidl;
+			}
+			set
+			{
+				lidl = value;
+			}
 		}
 
 		#region File Processing Methods

@@ -22,6 +22,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
@@ -669,20 +670,20 @@ namespace pj
 				{
 					rcolChain.Add(txtr);
 					foreach (SimPe.Plugin.ImageData id in txtr.Blocks)
-					foreach (SimPe.Plugin.MipMapBlock mmb in id.MipMapBlocks)
-					foreach (SimPe.Plugin.MipMap mm in mmb.MipMaps)
-						if (
-							mm.DataType == SimPe.Plugin.MipMapType.LifoReference
-							&& mm.LifoFile.Length > 0
-						)
-						{
-							SimPe.Plugin.GenericRcol lifo = getRcol(
-								mm.LifoFile,
-								lifopkg
-							);
-							if (lifo != null)
-								rcolChain.Add(lifo);
-						}
+						foreach (SimPe.Plugin.MipMapBlock mmb in id.MipMapBlocks)
+							foreach (SimPe.Plugin.MipMap mm in mmb.MipMaps)
+								if (
+									mm.DataType == SimPe.Plugin.MipMapType.LifoReference
+									&& mm.LifoFile.Length > 0
+								)
+								{
+									SimPe.Plugin.GenericRcol lifo = getRcol(
+										mm.LifoFile,
+										lifopkg
+									);
+									if (lifo != null)
+										rcolChain.Add(lifo);
+								}
 				}
 			}
 		}
@@ -885,7 +886,10 @@ namespace pj
 		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
-			get { return SimPe.GetIcon.ObjKeyTool; }
+			get
+			{
+				return SimPe.GetIcon.ObjKeyTool;
+			}
 		}
 		#endregion
 	}

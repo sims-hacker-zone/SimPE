@@ -32,7 +32,10 @@ namespace pjOBJDTool
 		private pfOBJD value = null;
 		public pfOBJD Value
 		{
-			get { return value; }
+			get
+			{
+				return value;
+			}
 		}
 		List<pfOBJD> items = null;
 

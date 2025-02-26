@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Windows.Forms;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Scenegraph;
@@ -199,7 +200,10 @@ namespace pj
 		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
-			get { return SimPe.GetIcon.BMlinker; }
+			get
+			{
+				return SimPe.GetIcon.BMlinker;
+			}
 		}
 		#endregion
 	}

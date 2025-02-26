@@ -30,8 +30,14 @@ namespace SimPe.Plugin
 		WantItem[] items;
 		public WantItem[] Items
 		{
-			get { return items; }
-			set { items = value; }
+			get
+			{
+				return items;
+			}
+			set
+			{
+				items = value;
+			}
 		}
 
 		/// <summary>
@@ -39,13 +45,19 @@ namespace SimPe.Plugin
 		/// </summary>
 		public WantInformation Information
 		{
-			get { return WantInformation.LoadWant(guid); }
+			get
+			{
+				return WantInformation.LoadWant(guid);
+			}
 		}
 
 		Interfaces.IProviderRegistry provider;
 		public Interfaces.IProviderRegistry Provider
 		{
-			get { return provider; }
+			get
+			{
+				return provider;
+			}
 		}
 
 		public WantItemContainer(Interfaces.IProviderRegistry provider)

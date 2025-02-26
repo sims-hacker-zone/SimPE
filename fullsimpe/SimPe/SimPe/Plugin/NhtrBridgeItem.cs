@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Geometry;
 
 namespace SimPe.Plugin
@@ -20,12 +21,18 @@ namespace SimPe.Plugin
 
 		public byte[] Data2
 		{
-			get { return data2; }
+			get
+			{
+				return data2;
+			}
 		}
 
 		public byte Marker3
 		{
-			get { return marker3; }
+			get
+			{
+				return marker3;
+			}
 		}
 
 		protected override void DoUnserialize(System.IO.BinaryReader reader)

@@ -13,7 +13,10 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 
 		public SCOR.AScorItem ActivatedGUI
 		{
-			get { return null; }
+			get
+			{
+				return null;
+			}
 		}
 	}
 }

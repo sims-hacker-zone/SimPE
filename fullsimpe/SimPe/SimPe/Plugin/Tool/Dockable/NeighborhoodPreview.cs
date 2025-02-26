@@ -211,7 +211,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		[Browsable(false)]
 		public bool Loaded
 		{
-			get { return loaded; }
+			get
+			{
+				return loaded;
+			}
 		}
 
 		SimPe.Interfaces.Files.IPackageFile pkg;
@@ -219,7 +222,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		[Browsable(false)]
 		public SimPe.Interfaces.Files.IPackageFile Package
 		{
-			get { return pkg; }
+			get
+			{
+				return pkg;
+			}
 		}
 		#endregion
 

@@ -75,9 +75,13 @@ namespace SimPe.Plugin.Downloads
 			this.SetFromPackage(pkg);
 		}
 
-		protected virtual void OnLoadContent() { }
+		protected virtual void OnLoadContent()
+		{
+		}
 
-		protected virtual void UpdateScreen() { }
+		protected virtual void UpdateScreen()
+		{
+		}
 
 		#region Thumbnails
 		/// <summary>
@@ -553,7 +557,10 @@ namespace SimPe.Plugin.Downloads
 
 		public IPackageInfo[] Objects
 		{
-			get { return new IPackageInfo[] { nfo }; }
+			get
+			{
+				return new IPackageInfo[] { nfo };
+			}
 		}
 
 		#endregion

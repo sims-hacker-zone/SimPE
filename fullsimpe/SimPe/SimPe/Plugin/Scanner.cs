@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.Drawing;
+
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin.Scanner;
 using SimPe.Plugin.Scanner;
@@ -62,12 +63,18 @@ namespace SimPe.Plugin
 		#region IScannerBase Member
 		public uint Version
 		{
-			get { return 1; }
+			get
+			{
+				return 1;
+			}
 		}
 
 		public int Index
 		{
-			get { return 700; }
+			get
+			{
+				return 700;
+			}
 		}
 		#endregion
 
@@ -159,7 +166,9 @@ namespace SimPe.Plugin
 			}
 		}
 
-		public void FinishScan() { }
+		public void FinishScan()
+		{
+		}
 
 		protected override System.Windows.Forms.Control CreateOperationControl()
 		{

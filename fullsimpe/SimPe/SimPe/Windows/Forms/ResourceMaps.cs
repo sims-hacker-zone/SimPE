@@ -6,10 +6,14 @@ namespace SimPe.Windows.Forms
 {
 	public class ResourceMaps
 	{
-		public class IntMap : Dictionary<uint, ResourceViewManager.ResourceNameList> { }
+		public class IntMap : Dictionary<uint, ResourceViewManager.ResourceNameList>
+		{
+		}
 
 		public class LongMap
-			: Dictionary<ulong, ResourceViewManager.ResourceNameList> { }
+			: Dictionary<ulong, ResourceViewManager.ResourceNameList>
+		{
+		}
 
 		public ResourceMaps()
 		{
@@ -26,21 +30,33 @@ namespace SimPe.Windows.Forms
 
 		public ResourceViewManager.ResourceNameList Everything
 		{
-			get { return all; }
+			get
+			{
+				return all;
+			}
 		}
 
 		internal IntMap ByGroup
 		{
-			get { return groupmap; }
+			get
+			{
+				return groupmap;
+			}
 		}
 		internal IntMap ByType
 		{
-			get { return typemap; }
+			get
+			{
+				return typemap;
+			}
 		}
 
 		public LongMap ByInstance
 		{
-			get { return instmap; }
+			get
+			{
+				return instmap;
+			}
 		}
 
 		public void Clear()

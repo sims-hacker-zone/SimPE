@@ -147,7 +147,10 @@ namespace pj
 
 		public String MeshName
 		{
-			get { return tbMeshName.Text; }
+			get
+			{
+				return tbMeshName.Text;
+			}
 		}
 
 		private void cbusecres_CheckedChanged(object sender, EventArgs e)

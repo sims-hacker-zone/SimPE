@@ -31,12 +31,18 @@ namespace SimPe.Interfaces.Providers
 		/// Returns or sets the Folder where the Character Files are stored
 		/// </summary>
 		/// <remarks>Automatically Updates the stored Names</remarks>
-		string BaseFolder { get; set; }
+		string BaseFolder
+		{
+			get; set;
+		}
 
 		/// <summary>
 		/// Returrns the stored Alias Data (key is the simid, value an IAlias Object)
 		/// </summary>
-		Hashtable StoredData { get; set; }
+		Hashtable StoredData
+		{
+			get; set;
+		}
 
 		/// <summary>
 		/// Returns the the Alias with the specified Type

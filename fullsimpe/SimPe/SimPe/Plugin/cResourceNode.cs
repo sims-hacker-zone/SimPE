@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -29,15 +30,27 @@ namespace SimPe.Plugin
 		short unknown1;
 		public short Unknown1
 		{
-			get { return unknown1; }
-			set { unknown1 = value; }
+			get
+			{
+				return unknown1;
+			}
+			set
+			{
+				unknown1 = value;
+			}
 		}
 
 		int unknown2;
 		public int Unknown2
 		{
-			get { return unknown2; }
-			set { unknown2 = value; }
+			get
+			{
+				return unknown2;
+			}
+			set
+			{
+				unknown2 = value;
+			}
 		}
 
 		/// <summary>
@@ -86,46 +99,76 @@ namespace SimPe.Plugin
 		byte typecode;
 		public byte TypeCode
 		{
-			get { return typecode; }
+			get
+			{
+				return typecode;
+			}
 		}
 
 		ObjectGraphNode ogn;
 		public ObjectGraphNode GraphNode
 		{
-			get { return ogn; }
+			get
+			{
+				return ogn;
+			}
 		}
 
 		CompositionTreeNode ctn;
 		public CompositionTreeNode TreeNode
 		{
-			get { return ctn; }
+			get
+			{
+				return ctn;
+			}
 		}
 
 		ResourceNodeItem[] items;
 		public ResourceNodeItem[] Items
 		{
-			get { return items; }
-			set { items = value; }
+			get
+			{
+				return items;
+			}
+			set
+			{
+				items = value;
+			}
 		}
 
 		int unknown1;
 		public int Unknown1
 		{
-			get { return unknown1; }
-			set { unknown1 = value; }
+			get
+			{
+				return unknown1;
+			}
+			set
+			{
+				unknown1 = value;
+			}
 		}
 
 		int unknown2;
 		public int Unknown2
 		{
-			get { return unknown2; }
-			set { unknown2 = value; }
+			get
+			{
+				return unknown2;
+			}
+			set
+			{
+				unknown2 = value;
+			}
 		}
 
 		[BrowsableAttribute(false)]
 		public override TransformNode StoredTransformNode
 		{
-			get { return null; }
+			get
+			{
+				return null;
+			}
 		}
 		#endregion
 

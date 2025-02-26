@@ -131,7 +131,10 @@ namespace System
 
 		public int Length
 		{
-			get { return bitset.Length; }
+			get
+			{
+				return bitset.Length;
+			}
 		}
 
 		public bool Matches(string mask)

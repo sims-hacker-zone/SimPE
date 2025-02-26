@@ -33,6 +33,7 @@
 
 using System;
 using System.Collections;
+
 using SimPe.PackedFiles.Wrapper;
 
 namespace pjse.BhavNameWizards
@@ -206,7 +207,10 @@ namespace pjse.BhavNameWizards
 
 		protected override string OpcodeName
 		{
-			get { return readStr(GS.BhavStr.Primitives, instruction.OpCode); }
+			get
+			{
+				return readStr(GS.BhavStr.Primitives, instruction.OpCode);
+			}
 		}
 	}
 

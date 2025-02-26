@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Interfaces;
 
 namespace SimPe.Plugin
@@ -41,7 +42,10 @@ namespace SimPe.Plugin
 		{
 			public System.Drawing.Image Icon
 			{
-				get { return null; }
+				get
+				{
+					return null;
+				}
 			}
 
 			public override string ToString()

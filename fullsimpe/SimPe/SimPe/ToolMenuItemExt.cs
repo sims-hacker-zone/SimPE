@@ -22,6 +22,7 @@ using System.Collections;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+
 using SimPe.Events;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
@@ -88,14 +89,23 @@ namespace SimPe
 
 		ExternalToolNotify ChangeHandler
 		{
-			get { return chghandler; }
-			set { chghandler = value; }
+			get
+			{
+				return chghandler;
+			}
+			set
+			{
+				chghandler = value;
+			}
 		}
 
 		string name;
 		public new string Name
 		{
-			get { return name; }
+			get
+			{
+				return name;
+			}
 		}
 
 		public ToolMenuItemExt(IToolPlus tool, ExternalToolNotify chghnd)
@@ -212,14 +222,26 @@ namespace SimPe
 
 		public Interfaces.Files.IPackedFileDescriptor FileDescriptor
 		{
-			get { return pfd; }
-			set { pfd = value; }
+			get
+			{
+				return pfd;
+			}
+			set
+			{
+				pfd = value;
+			}
 		}
 
 		public Interfaces.Files.IPackageFile Package
 		{
-			get { return package; }
-			set { package = value; }
+			get
+			{
+				return package;
+			}
+			set
+			{
+				package = value;
+			}
 		}
 
 		void UpdateEnabledState()

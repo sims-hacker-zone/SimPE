@@ -73,18 +73,30 @@ namespace SimPe.Plugin.Collections
 
 		public BnfoCustomerItem this[int index]
 		{
-			get { return list[index] as BnfoCustomerItem; }
-			set { list[index] = value; }
+			get
+			{
+				return list[index] as BnfoCustomerItem;
+			}
+			set
+			{
+				list[index] = value;
+			}
 		}
 
 		public int Count
 		{
-			get { return list.Count; }
+			get
+			{
+				return list.Count;
+			}
 		}
 
 		public int Length
 		{
-			get { return list.Count; }
+			get
+			{
+				return list.Count;
+			}
 		}
 
 		public BnfoCustomerItems Clone()

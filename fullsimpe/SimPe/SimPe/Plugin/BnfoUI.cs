@@ -23,7 +23,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 using Ambertation.Windows.Forms;
+
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
@@ -1231,7 +1233,10 @@ namespace SimPe.Plugin
 
 		public Bnfo Bnfo
 		{
-			get { return (Bnfo)Wrapper; }
+			get
+			{
+				return (Bnfo)Wrapper;
+			}
 		}
 
 		bool intern;
@@ -2115,7 +2120,7 @@ namespace SimPe.Plugin
 				return false; // Alpine Locals
 			if (sdsc.IsNPC)
 				return false; // NPC unique
-			// not if is NPC repoter - those are in service sim family and already excluded anyway
+							  // not if is NPC repoter - those are in service sim family and already excluded anyway
 			return sdsc.Nightlife.IsHuman; // no pets
 		}
 

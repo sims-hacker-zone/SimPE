@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.Windows.Forms;
+
 using SimPe.Plugin;
 
 namespace SimPe.Interfaces.Scenegraph
@@ -32,12 +33,18 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <summary>
 		/// Returns a List of all Child Blocks referenced by this Element
 		/// </summary>
-		IntArrayList ChildBlocks { get; }
+		IntArrayList ChildBlocks
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Index of this node within it's Parent (-1 if not found)
 		/// </summary>
-		int Index { get; }
+		int Index
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns a List of all Parent Nodes
@@ -53,12 +60,18 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <summary>
 		/// Returns the TransformNode Object of this Node (can be null!)
 		/// </summary>
-		TransformNode StoredTransformNode { get; }
+		TransformNode StoredTransformNode
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the parent RCol Container
 		/// </summary>
-		Rcol Parent { get; }
+		Rcol Parent
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Child Block with the given Index from the Parent Rcol
@@ -77,7 +90,10 @@ namespace SimPe.Interfaces.Scenegraph
 		/// 3 = Shape
 		/// 4 = Error
 		/// </remarks>
-		int ImageIndex { get; }
+		int ImageIndex
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the effective Transformation, that is described by the CresHirarchy

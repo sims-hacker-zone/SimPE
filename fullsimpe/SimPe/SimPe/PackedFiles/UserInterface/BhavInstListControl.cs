@@ -26,6 +26,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;
 
@@ -142,7 +143,10 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		public int SelectedIndex
 		{
-			get { return csel; }
+			get
+			{
+				return csel;
+			}
 			set
 			{
 				if (
@@ -744,7 +748,8 @@ namespace SimPe.PackedFiles.UserInterface
 		private void bhavInst_Unselected(
 			object sender,
 			System.EventArgs e
-		) { /* SelectedIndex = -1; */
+		)
+		{ /* SelectedIndex = -1; */
 		}
 
 		private void bhavInst_TargetClick(
@@ -846,7 +851,10 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		private int InOffset
 		{
-			get { return 0 + (truerule ? 0 : 1); }
+			get
+			{
+				return 0 + (truerule ? 0 : 1);
+			}
 		}
 
 		/// <summary>
@@ -854,7 +862,10 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		private int OutOffset
 		{
-			get { return 2 + (truerule ? 1 : 0); }
+			get
+			{
+				return 2 + (truerule ? 1 : 0);
+			}
 		}
 
 		/// <summary>
@@ -862,7 +873,10 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		private int Top
 		{
-			get { return Math.Min(start * 4 + OutOffset, stop * 4 + InOffset); }
+			get
+			{
+				return Math.Min(start * 4 + OutOffset, stop * 4 + InOffset);
+			}
 		}
 
 		/// <summary>
@@ -870,7 +884,10 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		private int Bottom
 		{
-			get { return Math.Max(start * 4 + OutOffset, stop * 4 + InOffset); }
+			get
+			{
+				return Math.Max(start * 4 + OutOffset, stop * 4 + InOffset);
+			}
 		}
 
 		/// <summary>
@@ -886,8 +903,8 @@ namespace SimPe.PackedFiles.UserInterface
 				c1.lane = -1;
 				if (c1.stop * 2 > connectors.Length)
 					continue; // off end, doesn't use a lane
-				//if (c1.stop == c1.start + 1) continue; // next line, doesn't use a lane
-				//if (c1.stop == c1.start) continue; // same line, doesn't use a lane
+							  //if (c1.stop == c1.start + 1) continue; // next line, doesn't use a lane
+							  //if (c1.stop == c1.start) continue; // same line, doesn't use a lane
 
 				ArrayList used = new ArrayList();
 				foreach (Connector c2 in connectors)
@@ -899,7 +916,7 @@ namespace SimPe.PackedFiles.UserInterface
 						continue; // c1 completely before c2 - skip
 					if (c2.Bottom < c1.Top)
 						continue; // c1 completely after c2 - skip
-					//if (c2.truerule == c1.truerule && c2.stop == c1.stop) continue; // same target - skip
+								  //if (c2.truerule == c1.truerule && c2.stop == c1.stop) continue; // same target - skip
 
 					// At this point c2 could be using a lane c1 wants to use
 					used.Add((Int16)c2.lane);

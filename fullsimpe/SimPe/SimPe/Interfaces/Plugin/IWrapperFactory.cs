@@ -36,16 +36,25 @@ namespace SimPe.Interfaces.Plugin
 		/// <summary>
 		/// Returns all Wrappers the Factory knows
 		/// </summary>
-		IWrapper[] KnownWrappers { get; }
+		IWrapper[] KnownWrappers
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns or sets the Registry this Plugin was last registred with
 		/// </summary>
-		IWrapperRegistry LinkedRegistry { get; set; }
+		IWrapperRegistry LinkedRegistry
+		{
+			get; set;
+		}
 
 		/// <summary>
 		/// Returns or sets the Provider this Plugin can use
 		/// </summary>
-		IProviderRegistry LinkedProvider { get; set; }
+		IProviderRegistry LinkedProvider
+		{
+			get; set;
+		}
 	}
 }

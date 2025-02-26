@@ -37,8 +37,14 @@ namespace Ambertation
 		System.Drawing.Color cl;
 		public System.Drawing.Color Color
 		{
-			get { return cl; }
-			set { cl = value; }
+			get
+			{
+				return cl;
+			}
+			set
+			{
+				cl = value;
+			}
 		}
 
 		FloatColor(System.Drawing.Color cl)
@@ -333,7 +339,10 @@ namespace Ambertation
 
 		internal Type Type
 		{
-			get { return type; }
+			get
+			{
+				return type;
+			}
 		}
 
 		static int digitbase = 16;
@@ -343,8 +352,14 @@ namespace Ambertation
 		/// </summary>
 		public static int DigitBase
 		{
-			get { return digitbase; }
-			set { digitbase = value; }
+			get
+			{
+				return digitbase;
+			}
+			set
+			{
+				digitbase = value;
+			}
 		}
 
 		/// <summary>
@@ -438,7 +453,10 @@ namespace Ambertation
 				return (short)(val & 0xffff);
 				;
 			}
-			set { val = (short)(value & 0xffff); }
+			set
+			{
+				val = (short)(value & 0xffff);
+			}
 		}
 
 		/// <summary>
@@ -446,8 +464,14 @@ namespace Ambertation
 		/// </summary>
 		public int IntegerValue
 		{
-			get { return (int)val; }
-			set { val = value; }
+			get
+			{
+				return (int)val;
+			}
+			set
+			{
+				val = value;
+			}
 		}
 
 		/// <summary>
@@ -455,8 +479,14 @@ namespace Ambertation
 		/// </summary>
 		public long LongValue
 		{
-			get { return val; }
-			set { val = value; }
+			get
+			{
+				return val;
+			}
+			set
+			{
+				val = value;
+			}
 		}
 
 		internal void SetValue(object o, Type t)
@@ -488,7 +518,10 @@ namespace Ambertation
 		/// </summary>
 		public object ObjectValue
 		{
-			set { SetValue(value, value.GetType()); }
+			set
+			{
+				SetValue(value, value.GetType());
+			}
 			get
 			{
 				if (type == typeof(int))

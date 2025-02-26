@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Text;
+
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
@@ -23,7 +24,10 @@ namespace SimPe.Plugin
 					this.textures = new RcolTable();
 				return this.textures;
 			}
-			set { this.textures = value; }
+			set
+			{
+				this.textures = value;
+			}
 		}
 
 		public MaterialDefinition MaterialDefinition
@@ -41,8 +45,14 @@ namespace SimPe.Plugin
 
 		public HairColor ColorBin
 		{
-			get { return this.colorBin; }
-			set { this.colorBin = value; }
+			get
+			{
+				return this.colorBin;
+			}
+			set
+			{
+				this.colorBin = value;
+			}
 		}
 
 		public string BaseTextureName
@@ -75,7 +85,9 @@ namespace SimPe.Plugin
 			}
 		}
 
-		public MaterialDefinitionRcol() { }
+		public MaterialDefinitionRcol()
+		{
+		}
 
 		public Hashtable GetTextureDescriptor()
 		{

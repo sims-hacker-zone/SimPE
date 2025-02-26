@@ -20,6 +20,7 @@
 using System;
 using System.Globalization;
 using System.IO;
+
 using SimPe.Geometry;
 using SimPe.Plugin.Gmdc;
 
@@ -70,7 +71,10 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		/// </summary>
 		public override string FileExtension
 		{
-			get { return ".xsi"; }
+			get
+			{
+				return ".xsi";
+			}
 		}
 
 		/// <summary>
@@ -78,7 +82,10 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		/// </summary>
 		public override string FileDescription
 		{
-			get { return "Softimage/3D dotXSI"; }
+			get
+			{
+				return "Softimage/3D dotXSI";
+			}
 		}
 
 		/// <summary>
@@ -86,7 +93,10 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		/// </summary>
 		public override string Author
 		{
-			get { return "Quaxi"; }
+			get
+			{
+				return "Quaxi";
+			}
 		}
 
 		/// <summary>
@@ -130,13 +140,17 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		///
 		/// Use the writer member to write to the File.
 		/// </remarks>
-		protected override void ProcessGroup() { }
+		protected override void ProcessGroup()
+		{
+		}
 
 		/// <summary>
 		/// Called when the export was finished
 		/// </summary>
 		/// <remarks>you should use this to write Footer Informations.
 		/// Use the writer member to write to the File</remarks>
-		protected override void FinishFile() { }
+		protected override void FinishFile()
+		{
+		}
 	}
 }

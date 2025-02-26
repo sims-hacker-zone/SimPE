@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Windows.Forms;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -59,7 +60,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public System.Windows.Forms.Control GUIHandle
 		{
-			get { return form.LifoPanel; }
+			get
+			{
+				return form.LifoPanel;
+			}
 		}
 
 		/// <summary>

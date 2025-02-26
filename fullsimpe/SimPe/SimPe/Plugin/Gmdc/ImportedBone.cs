@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Geometry;
 
 namespace SimPe.Plugin.Gmdc
@@ -38,8 +39,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcImporterAction Action
 		{
-			get { return action; }
-			set { action = value; }
+			get
+			{
+				return action;
+			}
+			set
+			{
+				action = value;
+			}
 		}
 
 		int index;
@@ -51,8 +58,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public int TargetIndex
 		{
-			get { return index; }
-			set { index = value; }
+			get
+			{
+				return index;
+			}
+			set
+			{
+				index = value;
+			}
 		}
 
 		/// <summary>
@@ -65,8 +78,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public string ImportedName
 		{
-			get { return name; }
-			set { name = value; }
+			get
+			{
+				return name;
+			}
+			set
+			{
+				name = value;
+			}
 		}
 
 		/// <summary>
@@ -79,8 +98,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public string ParentName
 		{
-			get { return parentname; }
-			set { parentname = value; }
+			get
+			{
+				return parentname;
+			}
+			set
+			{
+				parentname = value;
+			}
 		}
 
 		GmdcJoint bone;
@@ -90,7 +115,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcJoint Bone
 		{
-			get { return bone; }
+			get
+			{
+				return bone;
+			}
 		}
 
 		VectorTransformation sourcepos;
@@ -100,8 +128,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public VectorTransformation Transformation
 		{
-			get { return sourcepos; }
-			set { sourcepos = value; }
+			get
+			{
+				return sourcepos;
+			}
+			set
+			{
+				sourcepos = value;
+			}
 		}
 
 		/// <summary>
@@ -127,8 +161,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public float Scale
 		{
-			get { return scale; }
-			set { scale = value; }
+			get
+			{
+				return scale;
+			}
+			set
+			{
+				scale = value;
+			}
 		}
 
 		/// <summary>
@@ -204,8 +244,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public new ImportedBone this[int index]
 		{
-			get { return ((ImportedBone)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((ImportedBone)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -213,8 +259,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public ImportedBone this[uint index]
 		{
-			get { return ((ImportedBone)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((ImportedBone)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -261,7 +313,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		/// <summary>

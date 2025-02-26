@@ -31,7 +31,10 @@ namespace SimPe.Interfaces.Scenegraph
 		/// Returns all Referenced Scenegraph Resources sorted by type of Reference
 		/// </summary>
 		/// <remarks>The Key is the name of the Reference Type, the value is an ArrayList containing all ReferencedFiles</remarks>
-		Hashtable ReferenceChains { get; }
+		Hashtable ReferenceChains
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the first Referenced RCOL Resource for the passed Type

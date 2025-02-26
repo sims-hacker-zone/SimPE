@@ -58,12 +58,18 @@ namespace SimPe.Interfaces.Providers
 		/// <summary>
 		/// Returns availabl SDSC Files by SimGUID
 		/// </summary>
-		Hashtable SimGuidMap { get; }
+		Hashtable SimGuidMap
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns availabl SDSC Files by Instance
 		/// </summary>
-		Hashtable SimInstance { get; }
+		Hashtable SimInstance
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns a List containing all Household Names

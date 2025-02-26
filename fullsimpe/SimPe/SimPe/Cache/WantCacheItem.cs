@@ -20,6 +20,7 @@
 using System;
 using System.Drawing;
 using System.IO;
+
 using SimPe;
 
 namespace SimPe.Cache
@@ -56,56 +57,101 @@ namespace SimPe.Cache
 				pfd.Tag = this;
 				return pfd;
 			}
-			set { pfd = value; }
+			set
+			{
+				pfd = value;
+			}
 		}
 
 		uint guid;
 		public uint Guid
 		{
-			get { return guid; }
-			set { guid = value; }
+			get
+			{
+				return guid;
+			}
+			set
+			{
+				guid = value;
+			}
 		}
 
 		string folder;
 		public string Folder
 		{
-			get { return folder; }
-			set { folder = value; }
+			get
+			{
+				return folder;
+			}
+			set
+			{
+				folder = value;
+			}
 		}
 
 		int score;
 		public int Score
 		{
-			get { return score; }
-			set { score = value; }
+			get
+			{
+				return score;
+			}
+			set
+			{
+				score = value;
+			}
 		}
 
 		int influence;
 		public int Influence
 		{
-			get { return influence; }
-			set { influence = value; }
+			get
+			{
+				return influence;
+			}
+			set
+			{
+				influence = value;
+			}
 		}
 
 		string type;
 		public string ObjectType
 		{
-			get { return type; }
-			set { type = value; }
+			get
+			{
+				return type;
+			}
+			set
+			{
+				type = value;
+			}
 		}
 
 		string name;
 		public string Name
 		{
-			get { return name; }
-			set { name = value; }
+			get
+			{
+				return name;
+			}
+			set
+			{
+				name = value;
+			}
 		}
 
 		Image thumb;
 		public Image Icon
 		{
-			get { return thumb; }
-			set { thumb = value; }
+			get
+			{
+				return thumb;
+			}
+			set
+			{
+				thumb = value;
+			}
 		}
 
 		public override string ToString()
@@ -176,7 +222,10 @@ namespace SimPe.Cache
 
 		public byte Version
 		{
-			get { return version; }
+			get
+			{
+				return version;
+			}
 		}
 
 		#endregion

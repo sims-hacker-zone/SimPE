@@ -70,12 +70,18 @@ namespace SimPe.Plugin
 
 		public int Count
 		{
-			get { return list.Count; }
+			get
+			{
+				return list.Count;
+			}
 		}
 
 		public NhtrItem this[int index]
 		{
-			get { return list[index] as NhtrItem; }
+			get
+			{
+				return list[index] as NhtrItem;
+			}
 			//	set {list[index] = value;}
 		}
 

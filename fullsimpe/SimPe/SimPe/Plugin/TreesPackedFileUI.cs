@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -13,11 +14,17 @@ namespace SimPe.Plugin
 	{
 		protected new TreesPackedFileWrapper Wrapper
 		{
-			get { return base.Wrapper as TreesPackedFileWrapper; }
+			get
+			{
+				return base.Wrapper as TreesPackedFileWrapper;
+			}
 		}
 		public TreesPackedFileWrapper TPFW
 		{
-			get { return (TreesPackedFileWrapper)Wrapper; }
+			get
+			{
+				return (TreesPackedFileWrapper)Wrapper;
+			}
 		}
 
 		#region WrapperBaseControl Member
@@ -90,7 +97,10 @@ namespace SimPe.Plugin
 		#region IPackedFileUI Member
 		System.Windows.Forms.Control IPackedFileUI.GUIHandle
 		{
-			get { return this; }
+			get
+			{
+				return this;
+			}
 		}
 		#endregion
 
@@ -102,7 +112,9 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		private void clearimup() { }
+		private void clearimup()
+		{
+		}
 
 		private void fillimupList()
 		{

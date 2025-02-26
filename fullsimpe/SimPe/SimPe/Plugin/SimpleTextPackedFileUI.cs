@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -10,11 +11,17 @@ namespace SimPe.Plugin
 	{
 		protected new SimpleTextPackedFileWrapper Wrapper
 		{
-			get { return base.Wrapper as SimpleTextPackedFileWrapper; }
+			get
+			{
+				return base.Wrapper as SimpleTextPackedFileWrapper;
+			}
 		}
 		public SimpleTextPackedFileWrapper TPFW
 		{
-			get { return (SimpleTextPackedFileWrapper)Wrapper; }
+			get
+			{
+				return (SimpleTextPackedFileWrapper)Wrapper;
+			}
 		}
 
 		#region WrapperBaseControl Member
@@ -41,7 +48,10 @@ namespace SimPe.Plugin
 		#region IPackedFileUI Member
 		System.Windows.Forms.Control IPackedFileUI.GUIHandle
 		{
-			get { return this; }
+			get
+			{
+				return this;
+			}
 		}
 		#endregion
 

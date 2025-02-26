@@ -32,15 +32,27 @@ namespace SimPe.Plugin
 		ushort unknown1;
 		public ushort Unknown1
 		{
-			get { return unknown1; }
-			set { unknown1 = value; }
+			get
+			{
+				return unknown1;
+			}
+			set
+			{
+				unknown1 = value;
+			}
 		}
 
 		int unknown2;
 		public int Unknown2
 		{
-			get { return unknown2; }
-			set { unknown2 = value; }
+			get
+			{
+				return unknown2;
+			}
+			set
+			{
+				unknown2 = value;
+			}
 		}
 
 		/// <summary>
@@ -81,15 +93,27 @@ namespace SimPe.Plugin
 		int unknown1;
 		public int Unknown1
 		{
-			get { return unknown1; }
-			set { unknown1 = value; }
+			get
+			{
+				return unknown1;
+			}
+			set
+			{
+				unknown1 = value;
+			}
 		}
 
 		string data;
 		public string Name
 		{
-			get { return data; }
-			set { data = value; }
+			get
+			{
+				return data;
+			}
+			set
+			{
+				data = value;
+			}
 		}
 
 		public ShapeRefNodeItem_B()
@@ -116,77 +140,140 @@ namespace SimPe.Plugin
 		short unknown1;
 		public short Unknown1
 		{
-			get { return unknown1; }
-			set { unknown1 = value; }
+			get
+			{
+				return unknown1;
+			}
+			set
+			{
+				unknown1 = value;
+			}
 		}
 
 		int unknown2;
 		public int Unknown2
 		{
-			get { return unknown2; }
-			set { unknown2 = value; }
+			get
+			{
+				return unknown2;
+			}
+			set
+			{
+				unknown2 = value;
+			}
 		}
 
 		string name;
 		public string Name
 		{
-			get { return name; }
-			set { name = value; }
+			get
+			{
+				return name;
+			}
+			set
+			{
+				name = value;
+			}
 		}
 
 		int unknown3;
 		public int Unknown3
 		{
-			get { return unknown3; }
-			set { unknown3 = value; }
+			get
+			{
+				return unknown3;
+			}
+			set
+			{
+				unknown3 = value;
+			}
 		}
 
 		byte unknown4;
 		public byte Unknown4
 		{
-			get { return unknown4; }
-			set { unknown4 = value; }
+			get
+			{
+				return unknown4;
+			}
+			set
+			{
+				unknown4 = value;
+			}
 		}
 
 		ShapeRefNodeItem_A[] itemsa;
 		public ShapeRefNodeItem_A[] ItemsA
 		{
-			get { return itemsa; }
-			set { itemsa = value; }
+			get
+			{
+				return itemsa;
+			}
+			set
+			{
+				itemsa = value;
+			}
 		}
 
 		int unknown5;
 		public int Unknown5
 		{
-			get { return unknown5; }
-			set { unknown5 = value; }
+			get
+			{
+				return unknown5;
+			}
+			set
+			{
+				unknown5 = value;
+			}
 		}
 
 		ShapeRefNodeItem_B[] itemsb;
 		public ShapeRefNodeItem_B[] ItemsB
 		{
-			get { return itemsb; }
-			set { itemsb = value; }
+			get
+			{
+				return itemsb;
+			}
+			set
+			{
+				itemsb = value;
+			}
 		}
 
 		byte[] data;
 		public byte[] Data
 		{
-			get { return data; }
-			set { data = value; }
+			get
+			{
+				return data;
+			}
+			set
+			{
+				data = value;
+			}
 		}
 
 		int unknown6;
 		public int Unknown6
 		{
-			get { return unknown6; }
-			set { unknown6 = value; }
+			get
+			{
+				return unknown6;
+			}
+			set
+			{
+				unknown6 = value;
+			}
 		}
 
 		[BrowsableAttribute(false)]
 		public override TransformNode StoredTransformNode
 		{
-			get { return tn; }
+			get
+			{
+				return tn;
+			}
 		}
 		#endregion
 
@@ -354,7 +441,10 @@ namespace SimPe.Plugin
 		[BrowsableAttribute(false)]
 		public override IntArrayList ChildBlocks
 		{
-			get { return tn.ChildBlocks; }
+			get
+			{
+				return tn.ChildBlocks;
+			}
 		}
 
 		[BrowsableAttribute(false)]

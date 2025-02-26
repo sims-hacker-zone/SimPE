@@ -29,20 +29,38 @@ namespace SimPe
 	/// </summary>
 	public interface IWaitingBarControl
 	{
-		bool Running { get; }
+		bool Running
+		{
+			get;
+		}
 
-		string Message { get; set; }
+		string Message
+		{
+			get; set;
+		}
 
-		Image Image { get; set; }
+		Image Image
+		{
+			get; set;
+		}
 
-		int MaxProgress { get; set; }
+		int MaxProgress
+		{
+			get; set;
+		}
 
-		int Progress { get; set; }
+		int Progress
+		{
+			get; set;
+		}
 
 		void Wait();
 		void Wait(int max);
 		void Stop();
 
-		bool ShowProgress { get; set; }
+		bool ShowProgress
+		{
+			get; set;
+		}
 	}
 }

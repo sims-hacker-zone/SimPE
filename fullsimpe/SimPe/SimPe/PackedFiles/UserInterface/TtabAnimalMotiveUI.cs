@@ -23,6 +23,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.PackedFiles.UserInterface
@@ -70,7 +71,10 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public TtabItemAnimalMotiveItem Motive
 		{
-			get { return item; }
+			get
+			{
+				return item;
+			}
 			set
 			{
 				if (this.item != value)

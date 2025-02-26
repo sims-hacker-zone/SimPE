@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.PackedFiles.Wrapper.Supporting;
 
 namespace SimPe.PackedFiles.UserInterface
@@ -1214,7 +1215,7 @@ namespace SimPe.PackedFiles.UserInterface
 					xml.Text = "";
 					foreach (string clit in rtb.Lines)
 						xml.Text += clit + "\r\n"; // RichTextBox converts line breaks to seperate arrays, we need to put the line breaks back (CJH)
-					// xml.Text = rtb.Text;
+												   // xml.Text = rtb.Text;
 					wrapper.SynchronizeUserData();
 					MessageBox.Show(Localization.Manager.GetString("commited"));
 				}

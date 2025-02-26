@@ -22,6 +22,7 @@
 using System;
 using System.Collections;
 using System.Xml;
+
 using SimPe.Interfaces.Wrapper;
 
 namespace SimPe
@@ -38,8 +39,14 @@ namespace SimPe
 		/// </summary>
 		public static SimPe.Interfaces.IToolRegistry ToolRegistry
 		{
-			get { return treg; }
-			set { treg = value; }
+			get
+			{
+				return treg;
+			}
+			set
+			{
+				treg = value;
+			}
 		}
 
 		static SimPe.Interfaces.IHelpRegistry hreg;
@@ -49,8 +56,14 @@ namespace SimPe
 		/// </summary>
 		public static SimPe.Interfaces.IHelpRegistry HelpTopicRegistry
 		{
-			get { return hreg; }
-			set { hreg = value; }
+			get
+			{
+				return hreg;
+			}
+			set
+			{
+				hreg = value;
+			}
 		}
 
 		static SimPe.Interfaces.ISettingsRegistry sreg;
@@ -60,15 +73,27 @@ namespace SimPe
 		/// </summary>
 		public static SimPe.Interfaces.ISettingsRegistry SettingsRegistry
 		{
-			get { return sreg; }
-			set { sreg = value; }
+			get
+			{
+				return sreg;
+			}
+			set
+			{
+				sreg = value;
+			}
 		}
 
 		static SimPe.Interfaces.ICommandLineRegistry clreg;
 		public static SimPe.Interfaces.ICommandLineRegistry CommandLineRegistry
 		{
-			get { return clreg; }
-			set { clreg = value; }
+			get
+			{
+				return clreg;
+			}
+			set
+			{
+				clreg = value;
+			}
 		}
 
 		public static void Reload()

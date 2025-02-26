@@ -68,8 +68,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public float[] Data
 		{
-			get { return data; }
-			set { data = value; }
+			get
+			{
+				return data;
+			}
+			set
+			{
+				data = value;
+			}
 		}
 
 		/// <summary>
@@ -77,7 +83,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		internal virtual byte Size
 		{
-			get { return 0; }
+			get
+			{
+				return 0;
+			}
 		}
 
 		public GmdcElementValueBase()
@@ -180,7 +189,10 @@ namespace SimPe.Plugin.Gmdc
 	{
 		internal override byte Size
 		{
-			get { return 1; }
+			get
+			{
+				return 1;
+			}
 		}
 
 		internal GmdcElementValueOneFloat()
@@ -215,7 +227,10 @@ namespace SimPe.Plugin.Gmdc
 	{
 		internal override byte Size
 		{
-			get { return 2; }
+			get
+			{
+				return 2;
+			}
 		}
 
 		internal GmdcElementValueTwoFloat()
@@ -252,7 +267,10 @@ namespace SimPe.Plugin.Gmdc
 	{
 		internal override byte Size
 		{
-			get { return 3; }
+			get
+			{
+				return 3;
+			}
 		}
 
 		internal GmdcElementValueThreeFloat()
@@ -291,7 +309,10 @@ namespace SimPe.Plugin.Gmdc
 	{
 		internal override byte Size
 		{
-			get { return 1; }
+			get
+			{
+				return 1;
+			}
 		}
 
 		internal GmdcElementValueOneInt()
@@ -332,8 +353,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </remarks>
 		public byte[] Bytes
 		{
-			get { return BitConverter.GetBytes(Value); }
-			set { Value = BitConverter.ToInt32(value, 0); }
+			get
+			{
+				return BitConverter.GetBytes(Value);
+			}
+			set
+			{
+				Value = BitConverter.ToInt32(value, 0);
+			}
 		}
 
 		public void SetByte(int index, byte val)
@@ -398,8 +425,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public int Number
 		{
-			get { return number; }
-			set { number = value; }
+			get
+			{
+				return number;
+			}
+			set
+			{
+				number = value;
+			}
 		}
 
 		ElementIdentity identity;
@@ -409,8 +442,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public ElementIdentity Identity
 		{
-			get { return identity; }
-			set { identity = value; }
+			get
+			{
+				return identity;
+			}
+			set
+			{
+				identity = value;
+			}
 		}
 
 		int repeat;
@@ -421,8 +460,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public int GroupId
 		{
-			get { return repeat; }
-			set { repeat = value; }
+			get
+			{
+				return repeat;
+			}
+			set
+			{
+				repeat = value;
+			}
 		}
 
 		BlockFormat blockformat;
@@ -434,8 +479,14 @@ namespace SimPe.Plugin.Gmdc
 		/// the <see cref="Values"/> Members</remarks>
 		public BlockFormat BlockFormat
 		{
-			get { return blockformat; }
-			set { blockformat = value; }
+			get
+			{
+				return blockformat;
+			}
+			set
+			{
+				blockformat = value;
+			}
 		}
 
 		SetFormat setformat;
@@ -445,8 +496,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public SetFormat SetFormat
 		{
-			get { return setformat; }
-			set { setformat = value; }
+			get
+			{
+				return setformat;
+			}
+			set
+			{
+				setformat = value;
+			}
 		}
 
 		GmdcElementValues data;
@@ -457,8 +514,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcElementValues Values
 		{
-			get { return data; }
-			set { data = value; }
+			get
+			{
+				return data;
+			}
+			set
+			{
+				data = value;
+			}
 		}
 
 		IntArrayList items;
@@ -468,8 +531,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public IntArrayList Items
 		{
-			get { return items; }
-			set { items = value; }
+			get
+			{
+				return items;
+			}
+			set
+			{
+				items = value;
+			}
 		}
 		#endregion
 
@@ -598,8 +667,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public new GmdcElementValueBase this[int index]
 		{
-			get { return ((GmdcElementValueBase)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((GmdcElementValueBase)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -607,8 +682,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcElementValueBase this[uint index]
 		{
-			get { return ((GmdcElementValueBase)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((GmdcElementValueBase)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -655,7 +736,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		/// <summary>
@@ -682,8 +766,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public new GmdcElement this[int index]
 		{
-			get { return ((GmdcElement)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((GmdcElement)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -691,8 +781,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcElement this[uint index]
 		{
-			get { return ((GmdcElement)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((GmdcElement)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -739,7 +835,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		/// <summary>

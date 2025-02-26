@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -49,8 +50,14 @@ namespace SimPe.Plugin
 
 		public string FileName
 		{
-			get { return flname; }
-			set { flname = value; }
+			get
+			{
+				return flname;
+			}
+			set
+			{
+				flname = value;
+			}
 		}
 
 		byte[] id;
@@ -61,8 +68,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public uint Version
 		{
-			get { return version; }
-			set { version = value; }
+			get
+			{
+				return version;
+			}
+			set
+			{
+				version = value;
+			}
 		}
 		uint reserved;
 
@@ -71,8 +84,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public uint Reserved
 		{
-			get { return reserved; }
-			set { reserved = value; }
+			get
+			{
+				return reserved;
+			}
+			set
+			{
+				reserved = value;
+			}
 		}
 		ArrayList items;
 		#endregion
@@ -183,7 +202,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		/// <summary>
@@ -213,13 +235,22 @@ namespace SimPe.Plugin
 		/// </summary>
 		public int Count
 		{
-			get { return items.Count; }
+			get
+			{
+				return items.Count;
+			}
 		}
 
 		public TattItem this[int index]
 		{
-			get { return ((TattItem)items[index]); }
-			set { items[index] = value; }
+			get
+			{
+				return ((TattItem)items[index]);
+			}
+			set
+			{
+				items[index] = value;
+			}
 		}
 
 		public System.Collections.IEnumerator GetEnumerator()

@@ -390,7 +390,10 @@ namespace SimPe.Plugin
 		[System.ComponentModel.Browsable(false)]
 		public NgbhSlot Slot
 		{
-			get { return slot; }
+			get
+			{
+				return slot;
+			}
 			set
 			{
 				slot = value;
@@ -407,7 +410,10 @@ namespace SimPe.Plugin
 		[System.ComponentModel.Browsable(false)]
 		public Ngbh NgbhResource
 		{
-			get { return ngbh; }
+			get
+			{
+				return ngbh;
+			}
 			set
 			{
 				ngbh = value;
@@ -419,7 +425,10 @@ namespace SimPe.Plugin
 		SimPe.PackedFiles.Wrapper.SimPoolControl pc;
 		public SimPe.PackedFiles.Wrapper.SimPoolControl SimPoolControl
 		{
-			get { return pc; }
+			get
+			{
+				return pc;
+			}
 			set
 			{
 				if (pc != null)

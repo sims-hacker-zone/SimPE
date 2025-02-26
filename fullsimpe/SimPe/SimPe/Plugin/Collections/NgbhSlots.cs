@@ -33,7 +33,10 @@ namespace SimPe.Plugin.Collections
 		Data.NeighborhoodSlots type;
 		public Data.NeighborhoodSlots Type
 		{
-			get { return type; }
+			get
+			{
+				return type;
+			}
 		}
 
 		internal NgbhSlots(Ngbh parent, Data.NeighborhoodSlots type)
@@ -88,7 +91,10 @@ namespace SimPe.Plugin.Collections
 
 		public NgbhSlot this[int index]
 		{
-			get { return list[index] as NgbhSlot; }
+			get
+			{
+				return list[index] as NgbhSlot;
+			}
 			set
 			{
 				list[index] = value;
@@ -99,12 +105,18 @@ namespace SimPe.Plugin.Collections
 
 		public int Count
 		{
-			get { return list.Count; }
+			get
+			{
+				return list.Count;
+			}
 		}
 
 		public int Length
 		{
-			get { return list.Count; }
+			get
+			{
+				return list.Count;
+			}
 		}
 
 		public NgbhSlots Clone()

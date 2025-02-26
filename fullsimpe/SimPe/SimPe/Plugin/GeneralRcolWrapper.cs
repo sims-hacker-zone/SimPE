@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
 
@@ -110,7 +111,9 @@ namespace SimPe.Plugin
 		/// Subcallses can reimplement this Method to add additional References
 		/// </summary>
 		/// <param name="refmap">The Reference Map, Keys are the name of the Reference type, values are ArrayLists containing IPackedFileDescriptors</param>
-		protected virtual void FindReferences(Hashtable refmap) { }
+		protected virtual void FindReferences(Hashtable refmap)
+		{
+		}
 
 		/// <summary>
 		/// Add te References stored in the Reference Section
@@ -144,44 +147,44 @@ namespace SimPe.Plugin
 		)
 		{
 			foreach (ArrayList list in ReferenceChains.Values)
-			foreach (object o in list)
-			{
-				SimPe.Interfaces.Files.IPackedFileDescriptor opfd =
-					(SimPe.Interfaces.Files.IPackedFileDescriptor)o;
-				if (opfd.Type == type)
+				foreach (object o in list)
 				{
-					SimPe.Interfaces.Files.IPackedFileDescriptor pfd = Package.FindFile(
-						opfd
-					);
-					if (pfd == null)
+					SimPe.Interfaces.Files.IPackedFileDescriptor opfd =
+						(SimPe.Interfaces.Files.IPackedFileDescriptor)o;
+					if (opfd.Type == type)
 					{
-						opfd.Group = this.FileDescriptor.Group;
-						pfd = Package.FindFile(opfd);
-					}
-					if (pfd == null)
-					{
-						opfd.Group = Data.MetaData.LOCAL_GROUP;
-						pfd = Package.FindFile(opfd);
-					}
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item = null;
-					if (pfd == null)
-					{
-						FileTable.FileIndex.Load();
-						SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-							FileTable.FileIndex.FindFile(
-								(SimPe.Interfaces.Files.IPackedFileDescriptor)o,
-								null
-							);
-						if (items.Length > 0)
-							item = items[0];
-					}
-					else
-						item = FileTable.FileIndex.CreateFileIndexItem(pfd, Package);
+						SimPe.Interfaces.Files.IPackedFileDescriptor pfd = Package.FindFile(
+							opfd
+						);
+						if (pfd == null)
+						{
+							opfd.Group = this.FileDescriptor.Group;
+							pfd = Package.FindFile(opfd);
+						}
+						if (pfd == null)
+						{
+							opfd.Group = Data.MetaData.LOCAL_GROUP;
+							pfd = Package.FindFile(opfd);
+						}
+						SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item = null;
+						if (pfd == null)
+						{
+							FileTable.FileIndex.Load();
+							SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+								FileTable.FileIndex.FindFile(
+									(SimPe.Interfaces.Files.IPackedFileDescriptor)o,
+									null
+								);
+							if (items.Length > 0)
+								item = items[0];
+						}
+						else
+							item = FileTable.FileIndex.CreateFileIndexItem(pfd, Package);
 
-					if (item != null)
-						return item;
+						if (item != null)
+							return item;
+					}
 				}
-			}
 			return null;
 		}
 

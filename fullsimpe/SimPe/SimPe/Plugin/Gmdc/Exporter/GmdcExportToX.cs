@@ -20,6 +20,7 @@
 using System;
 using System.Globalization;
 using System.IO;
+
 using SimPe.Geometry;
 using SimPe.Plugin.Gmdc;
 
@@ -71,7 +72,10 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		/// </summary>
 		public override string FileExtension
 		{
-			get { return ".x"; }
+			get
+			{
+				return ".x";
+			}
 		}
 
 		/// <summary>
@@ -79,7 +83,10 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		/// </summary>
 		public override string FileDescription
 		{
-			get { return "Direct X Mesh"; }
+			get
+			{
+				return "Direct X Mesh";
+			}
 		}
 
 		/// <summary>
@@ -87,7 +94,10 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		/// </summary>
 		public override string Author
 		{
-			get { return "Quaxi"; }
+			get
+			{
+				return "Quaxi";
+			}
 		}
 
 		/// <summary>

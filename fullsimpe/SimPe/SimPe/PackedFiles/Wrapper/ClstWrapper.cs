@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 
@@ -37,7 +38,7 @@ namespace SimPe.PackedFiles.Wrapper
 			IFileWrapper //This Interface is used when loading a File
 			,
 			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-	//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 	{
 		#region Attributes
 		Data.MetaData.IndexTypes iformat;
@@ -47,8 +48,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public Data.MetaData.IndexTypes IndexType
 		{
-			get { return iformat; }
-			set { iformat = value; }
+			get
+			{
+				return iformat;
+			}
+			set
+			{
+				iformat = value;
+			}
 		}
 
 		/// <summary>
@@ -61,8 +68,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public ClstItem[] Items
 		{
-			get { return items; }
-			set { items = value; }
+			get
+			{
+				return items;
+			}
+			set
+			{
+				items = value;
+			}
 		}
 		#endregion
 

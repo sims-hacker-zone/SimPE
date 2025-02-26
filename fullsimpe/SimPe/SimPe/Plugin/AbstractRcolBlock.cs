@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
+
 using SimPe.Interfaces.Scenegraph;
 
 namespace SimPe.Plugin
@@ -19,8 +20,14 @@ namespace SimPe.Plugin
 		[BrowsableAttribute(false)]
 		public SGResource NameResource
 		{
-			get { return sgres; }
-			set { sgres = value; }
+			get
+			{
+				return sgres;
+			}
+			set
+			{
+				sgres = value;
+			}
 		}
 
 		protected uint version;
@@ -28,8 +35,14 @@ namespace SimPe.Plugin
 		[ReadOnly(true)]
 		public uint Version
 		{
-			get { return version; }
-			set { version = value; }
+			get
+			{
+				return version;
+			}
+			set
+			{
+				version = value;
+			}
 		}
 
 		protected Rcol parent;
@@ -37,8 +50,14 @@ namespace SimPe.Plugin
 		[BrowsableAttribute(false)]
 		public Rcol Parent
 		{
-			get { return parent; }
-			set { parent = value; }
+			get
+			{
+				return parent;
+			}
+			set
+			{
+				parent = value;
+			}
 		}
 
 		public AbstractRcolBlock()
@@ -64,7 +83,10 @@ namespace SimPe.Plugin
 		[BrowsableAttribute(false)]
 		public bool Changed
 		{
-			get { return parent.Changed; }
+			get
+			{
+				return parent.Changed;
+			}
 			set
 			{
 				if (parent != null)
@@ -85,12 +107,16 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// You can use this to setop the Controls on a TabPage before it is displayed
 		/// </summary>
-		protected virtual void InitTabPage() { }
+		protected virtual void InitTabPage()
+		{
+		}
 
 		/// <summary>
 		/// You can use this to setop the Controls on a ResourceTabPage before it is displayed
 		/// </summary>
-		protected virtual void InitResourceTabPage() { }
+		protected virtual void InitResourceTabPage()
+		{
+		}
 
 		/// <summary>
 		/// Adds the Ressource TabPage to the Form
@@ -224,8 +250,14 @@ namespace SimPe.Plugin
 		[BrowsableAttribute(false)]
 		public uint BlockID
 		{
-			get { return blockid; }
-			set { blockid = value; }
+			get
+			{
+				return blockid;
+			}
+			set
+			{
+				blockid = value;
+			}
 		}
 
 		protected string blockname;
@@ -245,7 +277,10 @@ namespace SimPe.Plugin
 				else
 					return blockname;
 			}
-			set { blockname = value; }
+			set
+			{
+				blockname = value;
+			}
 		}
 
 		/// <summary>
@@ -254,7 +289,10 @@ namespace SimPe.Plugin
 		[BrowsableAttribute(false)]
 		public virtual System.Windows.Forms.TabPage TabPage
 		{
-			get { return null; }
+			get
+			{
+				return null;
+			}
 		}
 
 		/// <summary>
@@ -264,14 +302,19 @@ namespace SimPe.Plugin
 		[BrowsableAttribute(false)]
 		public virtual System.Windows.Forms.TabPage ResourceTabPage
 		{
-			get { return null; }
+			get
+			{
+				return null;
+			}
 		}
 
 		/// <summary>
 		/// Adds more TabPages (which are needed to process the Class) to the Control
 		/// </summary>
 		/// <param name="tc">The TabControl the Pages will be added to</param>
-		public virtual void ExtendTabControl(TabControl tc) { }
+		public virtual void ExtendTabControl(TabControl tc)
+		{
+		}
 		#endregion
 
 		public override string ToString()
@@ -332,7 +375,7 @@ namespace SimPe.Plugin
 			{
 				if (Wait.Running)
 				{
-					wm = delegate(string message)
+					wm = delegate (string message)
 					{
 						Wait.Message = message;
 						Wait.Progress++;
@@ -340,7 +383,9 @@ namespace SimPe.Plugin
 					Wait.SubStart(items.Length);
 				}
 				else
-					wm = delegate(string message) { };
+					wm = delegate (string message)
+					{
+					};
 
 				foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
 				{

@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
+
 using SimPe.Geometry;
 
 namespace SimPe.Plugin.Anim
@@ -53,7 +54,10 @@ namespace SimPe.Plugin.Anim
 		]
 		public int Index
 		{
-			get { return index; }
+			get
+			{
+				return index;
+			}
 		}
 
 		public AnimationAxisTransformBlock parent;
@@ -64,7 +68,10 @@ namespace SimPe.Plugin.Anim
 		[Browsable(false)]
 		public AnimationAxisTransformBlock Parent
 		{
-			get { return parent; }
+			get
+			{
+				return parent;
+			}
 		}
 
 		ushort tc;
@@ -75,8 +82,14 @@ namespace SimPe.Plugin.Anim
 		[Description("When should this Frame get displayed?"), Category("Information")]
 		public short TimeCode
 		{
-			get { return (short)(tc & 0x7fff); }
-			set { tc = (ushort)((tc & 0x8000) | (ushort)(value & 0x7fff)); }
+			get
+			{
+				return (short)(tc & 0x7fff);
+			}
+			set
+			{
+				tc = (ushort)((tc & 0x8000) | (ushort)(value & 0x7fff));
+			}
 		}
 
 		/// <summary>
@@ -85,7 +98,10 @@ namespace SimPe.Plugin.Anim
 		[Description("Use this KeyFrame as a Linear Pole."), Category("Information")]
 		public bool Linear
 		{
-			get { return ((tc & 0x8000) == 0x8000); }
+			get
+			{
+				return ((tc & 0x8000) == 0x8000);
+			}
 			set
 			{
 				tc = (ushort)(tc & 0x7fff);
@@ -106,7 +122,10 @@ namespace SimPe.Plugin.Anim
 					return true;
 				return parent.Locked;
 			}
-			set { parent.Locked = value; }
+			set
+			{
+				parent.Locked = value;
+			}
 		}
 
 		short param;
@@ -120,8 +139,14 @@ namespace SimPe.Plugin.Anim
 		]
 		public short Parameter
 		{
-			get { return param; }
-			set { param = value; }
+			get
+			{
+				return param;
+			}
+			set
+			{
+				param = value;
+			}
 		}
 
 		/// <summary>
@@ -133,22 +158,40 @@ namespace SimPe.Plugin.Anim
 		]
 		public float ParameterFloat
 		{
-			get { return this.GetCompressedFloat(Parameter); }
-			set { Parameter = this.FromCompressedFloat(value); }
+			get
+			{
+				return this.GetCompressedFloat(Parameter);
+			}
+			set
+			{
+				Parameter = this.FromCompressedFloat(value);
+			}
 		}
 
 		short u1;
 		public short Unknown1
 		{
-			get { return u1; }
-			set { u1 = value; }
+			get
+			{
+				return u1;
+			}
+			set
+			{
+				u1 = value;
+			}
 		}
 
 		short u2;
 		public short Unknown2
 		{
-			get { return u2; }
-			set { u2 = value; }
+			get
+			{
+				return u2;
+			}
+			set
+			{
+				u2 = value;
+			}
 		}
 		#endregion
 

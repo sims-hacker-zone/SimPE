@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.IO;
+
 using SimPe;
 using SimPe.Packages;
 
@@ -204,7 +205,10 @@ namespace SimPe.Cache
 		/// </summary>
 		public byte Version
 		{
-			get { return version; }
+			get
+			{
+				return version;
+			}
 		}
 
 		/// <summary>
@@ -212,7 +216,10 @@ namespace SimPe.Cache
 		/// </summary>
 		public string FileName
 		{
-			get { return filename; }
+			get
+			{
+				return filename;
+			}
 		}
 
 		/// <summary>
@@ -220,7 +227,10 @@ namespace SimPe.Cache
 		/// </summary>
 		public ulong Signature
 		{
-			get { return sig; }
+			get
+			{
+				return sig;
+			}
 		}
 
 		/// <summary>
@@ -228,7 +238,10 @@ namespace SimPe.Cache
 		/// </summary>
 		public CacheContainers Containers
 		{
-			get { return containers; }
+			get
+			{
+				return containers;
+			}
 		}
 
 		/// <summary>

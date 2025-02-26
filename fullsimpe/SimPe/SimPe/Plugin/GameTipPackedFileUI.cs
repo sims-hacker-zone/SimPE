@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -9,11 +10,17 @@ namespace SimPe.Plugin
 	{
 		protected new GametipPackedFileWrapper Wrapper
 		{
-			get { return base.Wrapper as GametipPackedFileWrapper; }
+			get
+			{
+				return base.Wrapper as GametipPackedFileWrapper;
+			}
 		}
 		public GametipPackedFileWrapper TPFW
 		{
-			get { return (GametipPackedFileWrapper)Wrapper; }
+			get
+			{
+				return (GametipPackedFileWrapper)Wrapper;
+			}
 		}
 
 		ushort gtipname;
@@ -68,7 +75,10 @@ namespace SimPe.Plugin
 		#region IPackedFileUI Member
 		System.Windows.Forms.Control IPackedFileUI.GUIHandle
 		{
-			get { return this; }
+			get
+			{
+				return this;
+			}
 		}
 		#endregion
 

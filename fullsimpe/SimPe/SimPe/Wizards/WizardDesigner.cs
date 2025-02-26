@@ -147,7 +147,10 @@ namespace SimPe.Wizards
 
 		public override System.Collections.ICollection AssociatedComponents
 		{
-			get { return wz.Controls; }
+			get
+			{
+				return wz.Controls;
+			}
 		}
 
 		private void ShowNextStep(object sender, System.EventArgs e)

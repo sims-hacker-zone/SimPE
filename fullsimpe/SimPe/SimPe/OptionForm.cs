@@ -355,7 +355,9 @@ namespace SimPe
 			);
 		}
 
-		private void ChangedThemeHandler(object sender, System.EventArgs e) { }
+		private void ChangedThemeHandler(object sender, System.EventArgs e)
+		{
+		}
 
 		private void cbexthemes_CheckedChanged(object sender, EventArgs e)
 		{
@@ -1402,7 +1404,9 @@ namespace SimPe
 		private void lbfolder_SelectedIndexChanged(
 			object sender,
 			System.EventArgs e
-		) { }
+		)
+		{
+		}
 
 		void ChangeFileTable(CheckBox cb, FileTableItemType epver)
 		{
@@ -1650,7 +1654,9 @@ namespace SimPe
 				);
 		}
 
-		class MyPropertyGrid : PropertyGrid { }
+		class MyPropertyGrid : PropertyGrid
+		{
+		}
 
 		private void lbAboot_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{

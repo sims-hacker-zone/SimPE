@@ -43,7 +43,9 @@ namespace System.Windows.Forms
 
 		private ArrayList _embeddedControls = new ArrayList();
 
-		public ListViewEx() { }
+		public ListViewEx()
+		{
+		}
 
 		/// <summary>
 		/// Retrieve the order in which columns appear
@@ -204,7 +206,10 @@ namespace System.Windows.Forms
 		[DefaultValue(View.LargeIcon)]
 		public new View View
 		{
-			get { return base.View; }
+			get
+			{
+				return base.View;
+			}
 			set
 			{
 				// Embedded controls are rendered only when we're in Details mode

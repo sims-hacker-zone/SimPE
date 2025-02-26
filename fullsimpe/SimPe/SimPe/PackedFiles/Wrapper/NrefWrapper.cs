@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -41,13 +42,22 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public string FileName
 		{
-			get { return Helper.ToString(data); }
-			set { data = Helper.ToBytes(value); }
+			get
+			{
+				return Helper.ToString(data);
+			}
+			set
+			{
+				data = Helper.ToBytes(value);
+			}
 		}
 
 		public uint Group
 		{
-			get { return Hashes.GroupHash(this.FileName); }
+			get
+			{
+				return Hashes.GroupHash(this.FileName);
+			}
 		}
 
 		#region IWrapper Member
@@ -105,7 +115,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		/// <summary>

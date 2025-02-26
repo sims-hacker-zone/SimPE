@@ -20,6 +20,7 @@
 using System;
 using System.Drawing;
 using System.IO;
+
 using SimPe;
 
 namespace SimPe.Cache
@@ -56,34 +57,58 @@ namespace SimPe.Cache
 				pfd.Tag = this;
 				return pfd;
 			}
-			set { pfd = value; }
+			set
+			{
+				pfd = value;
+			}
 		}
 
 		uint guid;
 		public uint Guid
 		{
-			get { return guid; }
-			set { guid = value; }
+			get
+			{
+				return guid;
+			}
+			set
+			{
+				guid = value;
+			}
 		}
 
 		SimPe.Data.ObjectTypes type;
 		public SimPe.Data.ObjectTypes ObjectType
 		{
-			get { return type; }
-			set { type = value; }
+			get
+			{
+				return type;
+			}
+			set
+			{
+				type = value;
+			}
 		}
 
 		string name;
 		public string Name
 		{
-			get { return name; }
-			set { name = value; }
+			get
+			{
+				return name;
+			}
+			set
+			{
+				name = value;
+			}
 		}
 
 		string[] valuenames;
 		public string[] ValueNames
 		{
-			get { return valuenames; }
+			get
+			{
+				return valuenames;
+			}
 			set
 			{
 				valuenames = value;
@@ -101,7 +126,10 @@ namespace SimPe.Cache
 					return Name;
 				return objdname;
 			}
-			set { objdname = value; }
+			set
+			{
+				objdname = value;
+			}
 		}
 
 		Image thumb;
@@ -122,7 +150,10 @@ namespace SimPe.Cache
 				}
 				return Icon;
 			}
-			set { Icon = value; }
+			set
+			{
+				Icon = value;
+			}
 		}
 
 		/// <summary>
@@ -130,8 +161,14 @@ namespace SimPe.Cache
 		/// </summary>
 		public Image Icon
 		{
-			get { return thumb; }
-			set { thumb = value; }
+			get
+			{
+				return thumb;
+			}
+			set
+			{
+				thumb = value;
+			}
 		}
 
 		public bool IsToken
@@ -163,7 +200,10 @@ namespace SimPe.Cache
 
 		public bool IsMemory
 		{
-			get { return IsToken || this.ObjectType == Data.ObjectTypes.Memory; }
+			get
+			{
+				return IsToken || this.ObjectType == Data.ObjectTypes.Memory;
+			}
 		}
 
 		public bool IsBadge
@@ -212,8 +252,14 @@ namespace SimPe.Cache
 		SimPe.Cache.CacheContainer cc;
 		public CacheContainer ParentCacheContainer
 		{
-			get { return cc; }
-			set { cc = value; }
+			get
+			{
+				return cc;
+			}
+			set
+			{
+				cc = value;
+			}
 		}
 
 		public override string ToString()
@@ -298,7 +344,10 @@ namespace SimPe.Cache
 
 		public byte Version
 		{
-			get { return version; }
+			get
+			{
+				return version;
+			}
 		}
 
 		#endregion

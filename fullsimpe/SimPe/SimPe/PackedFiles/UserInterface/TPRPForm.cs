@@ -22,9 +22,11 @@ using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;
 using SimPe.Plugin;
+
 using Bhav = SimPe.PackedFiles.Wrapper.Bhav;
 
 namespace SimPe.PackedFiles.UserInterface
@@ -409,7 +411,10 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		public Control GUIHandle
 		{
-			get { return tprpPanel; }
+			get
+			{
+				return tprpPanel;
+			}
 		}
 
 		/// <summary>

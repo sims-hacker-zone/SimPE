@@ -53,9 +53,13 @@ namespace SimPe.Plugin.Downloads
 		protected virtual void OnLoadContent(
 			SimPe.Interfaces.Files.IPackageFile pkg,
 			SimPe.Cache.PackageType type
-		) { }
+		)
+		{
+		}
 
-		protected virtual void OnReset(SimPe.Cache.PackageType type) { }
+		protected virtual void OnReset(SimPe.Cache.PackageType type)
+		{
+		}
 
 		protected void LoadContent(SimPe.Interfaces.Files.IPackageFile pkg)
 		{
@@ -80,7 +84,10 @@ namespace SimPe.Plugin.Downloads
 
 		public IPackageInfo[] Objects
 		{
-			get { return hnd.Objects; }
+			get
+			{
+				return hnd.Objects;
+			}
 		}
 
 		#endregion

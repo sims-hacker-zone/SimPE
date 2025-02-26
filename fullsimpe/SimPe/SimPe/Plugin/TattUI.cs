@@ -23,6 +23,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -575,7 +576,10 @@ namespace SimPe.Plugin
 
 		public Tatt Tatt
 		{
-			get { return (Tatt)Wrapper; }
+			get
+			{
+				return (Tatt)Wrapper;
+			}
 		}
 
 		//bool inter;

@@ -27,6 +27,7 @@ using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
+
 using Ambertation.Windows.Forms;
 
 namespace SimPe.Windows.Forms
@@ -85,7 +86,10 @@ namespace SimPe.Windows.Forms
 
 		protected override Rectangle HeaderRect
 		{
-			get { return headerrect; }
+			get
+			{
+				return headerrect;
+			}
 		}
 	}
 }

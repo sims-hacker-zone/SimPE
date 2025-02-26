@@ -21,7 +21,9 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Threading;
+
 using Ambertation.Threading;
+
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
@@ -104,7 +106,10 @@ namespace SimPe.Providers
 		/// <remarks>Sets the names List to null</remarks>
 		public string BaseFolder
 		{
-			get { return dir; }
+			get
+			{
+				return dir;
+			}
 			set
 			{
 				if (dir != value)
@@ -435,7 +440,10 @@ namespace SimPe.Providers
 					LoadSimsFromFolder();
 				return names;
 			}
-			set { names = value; }
+			set
+			{
+				names = value;
+			}
 		}
 	}
 }

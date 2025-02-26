@@ -47,8 +47,14 @@ namespace SimPe.Packages
 		/// <remarks>This value should be 7</remarks>
 		public int Type
 		{
-			get { return type; }
-			set { type = value; }
+			get
+			{
+				return type;
+			}
+			set
+			{
+				type = value;
+			}
 		}
 
 		public override int ItemSize
@@ -67,7 +73,10 @@ namespace SimPe.Packages
 
 		internal Interfaces.Files.IPackageHeader Parent
 		{
-			get { return parent; }
+			get
+			{
+				return parent;
+			}
 		}
 
 		internal void UseInParent()
@@ -81,6 +90,8 @@ namespace SimPe.Packages
 			}
 		}
 
-		public virtual void Dispose() { }
+		public virtual void Dispose()
+		{
+		}
 	}
 }

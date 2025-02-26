@@ -20,13 +20,18 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+
 using SimPe.Interfaces.Files;
 
 namespace SimPe.Interfaces.Plugin
 {
-	public class ReferenceList : List<IPackedFileDescriptorSimple> { }
+	public class ReferenceList : List<IPackedFileDescriptorSimple>
+	{
+	}
 
-	public interface IReferenceList : IList<IPackedFileDescriptorSimple> { }
+	public interface IReferenceList : IList<IPackedFileDescriptorSimple>
+	{
+	}
 
 	public interface IWrapperReferencedResources
 	{

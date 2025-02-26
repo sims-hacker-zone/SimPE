@@ -44,8 +44,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public object[] Tag
 		{
-			get { return tag; }
-			set { tag = value; }
+			get
+			{
+				return tag;
+			}
+			set
+			{
+				tag = value;
+			}
 		}
 
 		/// <summary>
@@ -58,8 +64,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string Subset
 		{
-			get { return subset; }
-			set { subset = value; }
+			get
+			{
+				return subset;
+			}
+			set
+			{
+				subset = value;
+			}
 		}
 
 		SimPe.PackedFiles.Wrapper.Cpf[] mmats;
@@ -69,7 +81,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public SimPe.PackedFiles.Wrapper.Cpf[] MMATs
 		{
-			get { return mmats; }
+			get
+			{
+				return mmats;
+			}
 		}
 
 		/// <summary>
@@ -154,7 +169,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public uint[] ObjectStateIndex
 		{
-			get { return objectStateIndex; }
+			get
+			{
+				return objectStateIndex;
+			}
 		}
 
 		public override string ToString()

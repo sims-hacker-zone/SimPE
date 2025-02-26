@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+
 using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.Plugin.Tool.Dockable.Finder
@@ -22,7 +23,10 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 
 		public override bool ProcessParalell
 		{
-			get { return true; }
+			get
+			{
+				return true;
+			}
 		}
 
 		public override void SearchPackage(

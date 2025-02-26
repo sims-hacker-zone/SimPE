@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Specialized;
+
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
@@ -157,9 +158,9 @@ namespace SimPe.Plugin
 		public MeshInfo FindMeshByName(string name)
 		{
 			foreach (MeshInfo[] meshes in this.loadedReferences.Values)
-			foreach (MeshInfo mesh in meshes)
-				if (String.Compare(mesh.Description, name, true) == 0)
-					return mesh;
+				foreach (MeshInfo mesh in meshes)
+					if (String.Compare(mesh.Description, name, true) == 0)
+						return mesh;
 			return null;
 		}
 
@@ -337,26 +338,50 @@ namespace SimPe.Plugin
 
 			public IPackedFileDescriptor ResourceNode
 			{
-				get { return this.cresFile; }
-				set { this.cresFile = value; }
+				get
+				{
+					return this.cresFile;
+				}
+				set
+				{
+					this.cresFile = value;
+				}
 			}
 
 			public IPackedFileDescriptor ShapeFile
 			{
-				get { return this.shpeFile; }
-				set { this.shpeFile = value; }
+				get
+				{
+					return this.shpeFile;
+				}
+				set
+				{
+					this.shpeFile = value;
+				}
 			}
 
 			public string Description
 			{
-				get { return this.description; }
-				set { this.description = value; }
+				get
+				{
+					return this.description;
+				}
+				set
+				{
+					this.description = value;
+				}
 			}
 
 			public string FileName
 			{
-				get { return this.fileName; }
-				set { this.fileName = value; }
+				get
+				{
+					return this.fileName;
+				}
+				set
+				{
+					this.fileName = value;
+				}
 			}
 		}
 	}

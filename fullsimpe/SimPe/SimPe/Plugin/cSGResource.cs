@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -37,8 +38,14 @@ namespace SimPe.Plugin
 
 		public string FileName
 		{
-			get { return flname; }
-			set { flname = value; }
+			get
+			{
+				return flname;
+			}
+			set
+			{
+				flname = value;
+			}
 		}
 		#endregion
 
@@ -82,7 +89,9 @@ namespace SimPe.Plugin
 
 		#region IDisposable Member
 
-		public override void Dispose() { }
+		public override void Dispose()
+		{
+		}
 
 		#endregion
 	}

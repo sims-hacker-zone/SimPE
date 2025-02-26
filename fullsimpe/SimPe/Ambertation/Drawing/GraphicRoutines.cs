@@ -297,14 +297,14 @@ namespace Ambertation.Drawing
 			ArrayList cmap = new ArrayList();
 
 			for (int r = minr; r < maxr; r++)
-			for (int g = ming; g < maxg; g++)
-			for (int b = minb; b < maxb; b++)
-			{
-				ColorMap c = new ColorMap();
-				c.NewColor = target;
-				c.OldColor = Color.FromArgb(r, g, b);
-				cmap.Add(c);
-			}
+				for (int g = ming; g < maxg; g++)
+					for (int b = minb; b < maxb; b++)
+					{
+						ColorMap c = new ColorMap();
+						c.NewColor = target;
+						c.OldColor = Color.FromArgb(r, g, b);
+						cmap.Add(c);
+					}
 
 			ColorMap[] res = new ColorMap[cmap.Count];
 			cmap.CopyTo(res);
@@ -327,11 +327,11 @@ namespace Ambertation.Drawing
 			ArrayList cmap = new ArrayList();
 
 			for (int r = minr; r < maxr; r++)
-			for (int g = ming; g < maxg; g++)
-			for (int b = minb; b < maxb; b++)
-			{
-				cmap.Add(Color.FromArgb(r, g, b));
-			}
+				for (int g = ming; g < maxg; g++)
+					for (int b = minb; b < maxb; b++)
+					{
+						cmap.Add(Color.FromArgb(r, g, b));
+					}
 
 			return cmap;
 		}

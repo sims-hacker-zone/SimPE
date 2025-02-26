@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -14,11 +15,17 @@ namespace SimPe.Plugin
 	{
 		protected new WallLayerPackedFileWrapper Wrapper
 		{
-			get { return base.Wrapper as WallLayerPackedFileWrapper; }
+			get
+			{
+				return base.Wrapper as WallLayerPackedFileWrapper;
+			}
 		}
 		public WallLayerPackedFileWrapper TPFW
 		{
-			get { return (WallLayerPackedFileWrapper)Wrapper; }
+			get
+			{
+				return (WallLayerPackedFileWrapper)Wrapper;
+			}
 		}
 
 		#region WrapperBaseControl Member
@@ -169,7 +176,10 @@ namespace SimPe.Plugin
 		#region IPackedFileUI Member
 		System.Windows.Forms.Control IPackedFileUI.GUIHandle
 		{
-			get { return this; }
+			get
+			{
+				return this;
+			}
 		}
 		#endregion
 

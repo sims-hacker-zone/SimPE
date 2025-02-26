@@ -24,7 +24,9 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
+
 using Ambertation.Windows.Forms;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
@@ -335,7 +337,9 @@ namespace pjse.guidtool
 				}
 				else // group == 0
 				{
-					if (type[6] || type[10]) { } // no results for group == 0
+					if (type[6] || type[10])
+					{
+					} // no results for group == 0
 					else
 					#region Search without group
 					{
@@ -1178,7 +1182,10 @@ namespace pjse.guidtool
 
 		private bool isCkbObjdGUIDEnabled
 		{
-			get { return !ckbCallsToBHAV.Checked && !ckbGLOB.Checked; }
+			get
+			{
+				return !ckbCallsToBHAV.Checked && !ckbGLOB.Checked;
+			}
 		}
 		private bool isCkbCallsToBHAVEnabled
 		{
@@ -1200,7 +1207,10 @@ namespace pjse.guidtool
 		}
 		private bool isFlpNamesEnabled
 		{
-			get { return !ckbCallsToBHAV.Checked && !ckbGLOB.Checked; }
+			get
+			{
+				return !ckbCallsToBHAV.Checked && !ckbGLOB.Checked;
+			}
 		}
 
 		private static bool isChecked(CheckBox cb)
@@ -1210,7 +1220,10 @@ namespace pjse.guidtool
 
 		private bool isCkbSomeTextChecked
 		{
-			get { return isCkbSomeNameChecked || isCkbSomeStringChecked; }
+			get
+			{
+				return isCkbSomeNameChecked || isCkbSomeStringChecked;
+			}
 		}
 		private bool isCkbSomeNameChecked
 		{

@@ -1,4 +1,5 @@
 using System;
+
 using Ambertation.Scenes;
 
 namespace SimPe.Plugin.Gmdc
@@ -55,17 +56,26 @@ namespace SimPe.Plugin.Gmdc
 
 		public ElementOrder Component
 		{
-			get { return eo; }
+			get
+			{
+				return eo;
+			}
 		}
 
 		public Scene Scene
 		{
-			get { return scn; }
+			get
+			{
+				return scn;
+			}
 		}
 
 		public GeometryDataContainer Gmdc
 		{
-			get { return gmdc; }
+			get
+			{
+				return gmdc;
+			}
 		}
 
 		public bool Run()

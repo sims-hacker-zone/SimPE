@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces.Plugin.Scanner;
 
 namespace SimPe.Plugin.Identifiers
@@ -53,22 +54,33 @@ namespace SimPe.Plugin.Identifiers
 	/// </summary>
 	internal class CepIdentifier : IIdentifier
 	{
-		public CepIdentifier() { }
+		public CepIdentifier()
+		{
+		}
 
 		#region IIdentifierBase Member
 		public uint Version
 		{
-			get { return 1; }
+			get
+			{
+				return 1;
+			}
 		}
 
 		public int Index
 		{
-			get { return 100; }
+			get
+			{
+				return 100;
+			}
 		}
 
 		public ScannerPluginType PluginType
 		{
-			get { return ScannerPluginType.Identifier; }
+			get
+			{
+				return ScannerPluginType.Identifier;
+			}
 		}
 		#endregion
 
@@ -104,22 +116,33 @@ namespace SimPe.Plugin.Identifiers
 	/// </summary>
 	internal class SimIdentifier : IIdentifier
 	{
-		public SimIdentifier() { }
+		public SimIdentifier()
+		{
+		}
 
 		#region IIdentifierBase Member
 		public uint Version
 		{
-			get { return 1; }
+			get
+			{
+				return 1;
+			}
 		}
 
 		public int Index
 		{
-			get { return 300; }
+			get
+			{
+				return 300;
+			}
 		}
 
 		public ScannerPluginType PluginType
 		{
-			get { return ScannerPluginType.Identifier; }
+			get
+			{
+				return ScannerPluginType.Identifier;
+			}
 		}
 		#endregion
 
@@ -142,22 +165,33 @@ namespace SimPe.Plugin.Identifiers
 	/// </summary>
 	internal class ObjectIdentifier : IIdentifier
 	{
-		public ObjectIdentifier() { }
+		public ObjectIdentifier()
+		{
+		}
 
 		#region IIdentifierBase Member
 		public uint Version
 		{
-			get { return 1; }
+			get
+			{
+				return 1;
+			}
 		}
 
 		public int Index
 		{
-			get { return 600; }
+			get
+			{
+				return 600;
+			}
 		}
 
 		public ScannerPluginType PluginType
 		{
-			get { return ScannerPluginType.Identifier; }
+			get
+			{
+				return ScannerPluginType.Identifier;
+			}
 		}
 		#endregion
 
@@ -184,22 +218,33 @@ namespace SimPe.Plugin.Identifiers
 	/// </summary>
 	internal class CpfIdentifier : IIdentifier
 	{
-		public CpfIdentifier() { }
+		public CpfIdentifier()
+		{
+		}
 
 		#region IIdentifierBase Member
 		public uint Version
 		{
-			get { return 1; }
+			get
+			{
+				return 1;
+			}
 		}
 
 		public int Index
 		{
-			get { return 400; }
+			get
+			{
+				return 400;
+			}
 		}
 
 		public ScannerPluginType PluginType
 		{
-			get { return ScannerPluginType.Identifier; }
+			get
+			{
+				return ScannerPluginType.Identifier;
+			}
 		}
 		#endregion
 
@@ -329,22 +374,33 @@ namespace SimPe.Plugin.Identifiers
 	/// </summary>
 	internal class ReColorIdentifier : IIdentifier
 	{
-		public ReColorIdentifier() { }
+		public ReColorIdentifier()
+		{
+		}
 
 		#region IIdentifierBase Member
 		public uint Version
 		{
-			get { return 1; }
+			get
+			{
+				return 1;
+			}
 		}
 
 		public int Index
 		{
-			get { return 200; }
+			get
+			{
+				return 200;
+			}
 		}
 
 		public ScannerPluginType PluginType
 		{
-			get { return ScannerPluginType.Identifier; }
+			get
+			{
+				return ScannerPluginType.Identifier;
+			}
 		}
 		#endregion
 

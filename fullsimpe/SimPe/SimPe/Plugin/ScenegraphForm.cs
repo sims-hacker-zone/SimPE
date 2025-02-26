@@ -22,8 +22,10 @@ using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+
 using Ambertation.Windows.Forms;
 using Ambertation.Windows.Forms.Graph;
+
 using SimPe.Interfaces;
 
 namespace SimPe.Plugin
@@ -445,10 +447,10 @@ namespace SimPe.Plugin
 
 			if (ht != null)
 				foreach (string s in ht.Keys)
-				foreach (Interfaces.Files.IPackedFileDescriptor pfd in (ArrayList)ht[s])
-				{
-					this.cbrefnames.Items.Add(pfd.Filename);
-				}
+					foreach (Interfaces.Files.IPackedFileDescriptor pfd in (ArrayList)ht[s])
+					{
+						this.cbrefnames.Items.Add(pfd.Filename);
+					}
 
 			if (cbrefnames.Items.Count > 0)
 				cbrefnames.SelectedIndex = 0;

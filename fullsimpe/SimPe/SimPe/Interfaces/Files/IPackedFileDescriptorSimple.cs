@@ -1,4 +1,4 @@
-﻿/***************************************************************************
+/***************************************************************************
  *   Copyright (C) 2005 by Ambertation                                     *
  *   quaxi@ambertation.de                                                  *
  *                                                                         *
@@ -23,10 +23,25 @@ namespace SimPe.Interfaces.Files
 {
 	public interface IPackedFileDescriptorSimple
 	{
-		uint Group { get; }
-		uint Instance { get; }
-		uint SubType { get; }
-		uint Type { get; }
-		SimPe.Data.TypeAlias TypeName { get; }
+		uint Group
+		{
+			get;
+		}
+		uint Instance
+		{
+			get;
+		}
+		uint SubType
+		{
+			get;
+		}
+		uint Type
+		{
+			get;
+		}
+		SimPe.Data.TypeAlias TypeName
+		{
+			get;
+		}
 	}
 }

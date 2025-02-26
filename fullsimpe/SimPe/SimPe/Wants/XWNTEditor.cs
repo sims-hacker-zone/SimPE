@@ -24,6 +24,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Wants
@@ -144,7 +145,10 @@ namespace SimPe.Wants
 
 		public Control GUIHandle
 		{
-			get { return pnXWNTEditor; }
+			get
+			{
+				return pnXWNTEditor;
+			}
 		}
 
 		public void UpdateGUI(IFileWrapper wrp)
@@ -205,7 +209,9 @@ namespace SimPe.Wants
 			internalchg = true;
 			try
 			{
-				if (sender.Equals(wrapper)) { }
+				if (sender.Equals(wrapper))
+				{
+				}
 				else
 				{
 					List<string> keys = new List<string>(

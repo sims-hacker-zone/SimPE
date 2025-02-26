@@ -37,7 +37,10 @@ namespace SimPe
 
 		public static IWaitingBarControl Bar
 		{
-			set { bar = value; }
+			set
+			{
+				bar = value;
+			}
 		}
 
 		public static bool Running

@@ -22,7 +22,9 @@ using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+
 using Ambertation.Windows.Forms;
+
 using SimPe.Interfaces.Plugin.Scanner;
 using SimPe.Plugin.Scanner;
 
@@ -182,7 +184,10 @@ namespace SimPe.Plugin
 
 		public string FileName
 		{
-			get { return flname; }
+			get
+			{
+				return flname;
+			}
 		}
 
 		/// <summary>
@@ -264,7 +269,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		internal ScannerItem SelectedScannerItem
 		{
-			get { return lastitem; }
+			get
+			{
+				return lastitem;
+			}
 		}
 
 		/// <summary>

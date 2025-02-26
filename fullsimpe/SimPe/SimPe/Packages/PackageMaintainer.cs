@@ -50,7 +50,10 @@ namespace SimPe.Packages
 		/// </summary>
 		public SimPe.Interfaces.Scenegraph.IScenegraphFileIndex FileIndex
 		{
-			get { return localfileindex; }
+			get
+			{
+				return localfileindex;
+			}
 			set
 			{
 				if (localfileindex == null)

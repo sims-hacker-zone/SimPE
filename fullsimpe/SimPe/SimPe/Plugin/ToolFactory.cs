@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces;
 
 namespace SimPe.Plugin
@@ -33,7 +34,9 @@ namespace SimPe.Plugin
 		: SimPe.Interfaces.Plugin.AbstractWrapperFactory,
 			SimPe.Interfaces.Plugin.IToolFactory
 	{
-		public ToolFactory3D() { }
+		public ToolFactory3D()
+		{
+		}
 
 		#region AbstractWrapperFactory Member
 		/// <summary>

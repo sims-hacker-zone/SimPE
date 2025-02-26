@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces.Scenegraph;
 
 namespace SimPe.Plugin
@@ -32,40 +33,73 @@ namespace SimPe.Plugin
 
 		public ObjectGraphNode ObjectGraphNode
 		{
-			get { return ogn; }
-			set { ogn = value; }
+			get
+			{
+				return ogn;
+			}
+			set
+			{
+				ogn = value;
+			}
 		}
 
 		short unknown1;
 		public short Unknown1
 		{
-			get { return unknown1; }
-			set { unknown1 = value; }
+			get
+			{
+				return unknown1;
+			}
+			set
+			{
+				unknown1 = value;
+			}
 		}
 
 		short unknown2;
 		public short Unknown2
 		{
-			get { return unknown2; }
-			set { unknown2 = value; }
+			get
+			{
+				return unknown2;
+			}
+			set
+			{
+				unknown2 = value;
+			}
 		}
 
 		byte unknown3;
 		public byte Unknown3
 		{
-			get { return unknown3; }
-			set { unknown3 = value; }
+			get
+			{
+				return unknown3;
+			}
+			set
+			{
+				unknown3 = value;
+			}
 		}
 
 		IRcolBlock[] data;
 		public int Count
 		{
-			get { return data.Length; }
+			get
+			{
+				return data.Length;
+			}
 		}
 		public IRcolBlock[] Blocks
 		{
-			get { return data; }
-			set { data = value; }
+			get
+			{
+				return data;
+			}
+			set
+			{
+				data = value;
+			}
 		}
 		#endregion
 

@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Providers;
@@ -37,7 +38,7 @@ namespace SimPe.Plugin
 			IFileWrapper //This Interface is used when loading a File
 			,
 			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-	//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 	{
 		#region Attributes
 		/// <summary>
@@ -50,8 +51,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public Interfaces.Files.IPackedFileDescriptor[] Items
 		{
-			get { return items; }
-			set { items = value; }
+			get
+			{
+				return items;
+			}
+			set
+			{
+				items = value;
+			}
 		}
 
 		#endregion
@@ -59,7 +66,10 @@ namespace SimPe.Plugin
 		IProviderRegistry provider;
 		public IProviderRegistry Provider
 		{
-			get { return provider; }
+			get
+			{
+				return provider;
+			}
 		}
 
 		/// <summary>
@@ -176,7 +186,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		/// <summary>

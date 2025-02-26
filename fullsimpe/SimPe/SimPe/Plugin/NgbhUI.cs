@@ -20,6 +20,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin;
 
@@ -35,7 +36,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		internal static MemoryCacheFile ObjectCache
 		{
-			get { return SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache; }
+			get
+			{
+				return SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache;
+			}
 		}
 
 		#region Code to Startup the UI
@@ -98,7 +102,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public System.Windows.Forms.Control GUIHandle
 		{
-			get { return form.ngbhPanel; }
+			get
+			{
+				return form.ngbhPanel;
+			}
 		}
 
 		/// <summary>
@@ -239,7 +246,9 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region IDisposable Member
-		public virtual void Dispose() { }
+		public virtual void Dispose()
+		{
+		}
 		#endregion
 	}
 }

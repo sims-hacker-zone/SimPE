@@ -24,6 +24,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+
 using Ambertation.Collections;
 
 namespace Ambertation.Windows.Forms.Graph
@@ -46,7 +47,10 @@ namespace Ambertation.Windows.Forms.Graph
 		PropertyItems properties;
 		public PropertyItems Properties
 		{
-			get { return properties; }
+			get
+			{
+				return properties;
+			}
 			set
 			{
 				if (value != properties)

@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.IO;
+
 using SimPe.Collections.IO;
 using SimPe.Data;
 using SimPe.Events;
@@ -100,7 +101,10 @@ namespace SimPe.Packages
 		/// </summary>
 		public bool Persistent
 		{
-			get { return persistent; }
+			get
+			{
+				return persistent;
+			}
 			set
 			{
 				/*if (!persistent && value) this.OpenReader();
@@ -120,7 +124,7 @@ namespace SimPe.Packages
 				this.flname,
 				System.IO.FileAccess.Read
 			); // seams to be no problem, is after all just a reader, not a writer
-			//StreamItem si = StreamFactory.UseStream(this.flname, System.IO.FileAccess.ReadWrite); // can be an issue with read onlu files, never used to be but suddenly is
+			   //StreamItem si = StreamFactory.UseStream(this.flname, System.IO.FileAccess.ReadWrite); // can be an issue with read onlu files, never used to be but suddenly is
 			reader = new BinaryReader(si.FileStream);
 		}
 
@@ -386,7 +390,10 @@ namespace SimPe.Packages
 		/// </summary>
 		public Interfaces.Files.IPackageHeader Header
 		{
-			get { return header; }
+			get
+			{
+				return header;
+			}
 		}
 
 		#endregion
@@ -534,7 +541,10 @@ namespace SimPe.Packages
 		/// </summary>
 		internal long NextFreeOffset
 		{
-			get { return higestoffset; }
+			get
+			{
+				return higestoffset;
+			}
 		}
 
 		/// <summary>
@@ -643,7 +653,10 @@ namespace SimPe.Packages
 		/// </summary>
 		public PackedFileDescriptor FileList
 		{
-			get { return filelist; }
+			get
+			{
+				return filelist;
+			}
 			set
 			{
 				filelist = value;
@@ -708,7 +721,10 @@ namespace SimPe.Packages
 		/// </summary>
 		public bool LoadedCompressedState
 		{
-			get { return lcs; }
+			get
+			{
+				return lcs;
+			}
 		}
 
 		/// <summary>
@@ -825,7 +841,10 @@ namespace SimPe.Packages
 		/// </summary>
 		public string FileName
 		{
-			get { return flname; }
+			get
+			{
+				return flname;
+			}
 			set
 			{
 				flname = value;

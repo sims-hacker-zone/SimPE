@@ -21,7 +21,9 @@ using System;
 using System.Collections;
 using System.Diagnostics;
 using System.Threading;
+
 using Microsoft.Win32;
+
 using SimPe.Packages;
 
 namespace SimPe
@@ -70,7 +72,10 @@ namespace SimPe
 		/// </summary>
 		public string Name
 		{
-			get { return name; }
+			get
+			{
+				return name;
+			}
 		}
 
 		protected string filename;
@@ -80,8 +85,14 @@ namespace SimPe
 		/// </summary>
 		public string FileName
 		{
-			get { return filename; }
-			set { filename = value; }
+			get
+			{
+				return filename;
+			}
+			set
+			{
+				filename = value;
+			}
 		}
 
 		/// <summary>
@@ -90,7 +101,10 @@ namespace SimPe
 		/// <remarks>the Palceholder {simple} will be replaced with the real Simpe Installation Path</remarks>
 		public string RealFileName
 		{
-			get { return filename.Replace("{simpe}", Helper.SimPePath); }
+			get
+			{
+				return filename.Replace("{simpe}", Helper.SimPePath);
+			}
 		}
 
 		protected string arguments;
@@ -101,8 +115,14 @@ namespace SimPe
 		/// <remarks>use "{tempname}" as a Plcaeholder for the Filename simPe uses to store the Temporary File</remarks>
 		public string Attributes
 		{
-			get { return arguments; }
-			set { arguments = value; }
+			get
+			{
+				return arguments;
+			}
+			set
+			{
+				arguments = value;
+			}
 		}
 
 		protected uint type;
@@ -113,8 +133,14 @@ namespace SimPe
 		/// <remarks>0xfffffff for all Types</remarks>
 		public uint Type
 		{
-			get { return type; }
-			set { type = value; }
+			get
+			{
+				return type;
+			}
+			set
+			{
+				type = value;
+			}
 		}
 
 		/// <summary>
@@ -388,7 +414,10 @@ namespace SimPe
 					Load();
 				return items;
 			}
-			set { items = value; }
+			set
+			{
+				items = value;
+			}
 		}
 
 		/// <summary>

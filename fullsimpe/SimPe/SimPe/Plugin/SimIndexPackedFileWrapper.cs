@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -13,12 +14,21 @@ namespace SimPe.Plugin
 		private ushort sciname;
 		public ushort Sciname
 		{
-			get { return sciname; }
-			set { sciname = value; }
+			get
+			{
+				return sciname;
+			}
+			set
+			{
+				sciname = value;
+			}
 		}
 		public bool IsOK
 		{
-			get { return isok; }
+			get
+			{
+				return isok;
+			}
 		}
 		#endregion
 
@@ -85,7 +95,10 @@ namespace SimPe.Plugin
 
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		public uint[] AssignableTypes

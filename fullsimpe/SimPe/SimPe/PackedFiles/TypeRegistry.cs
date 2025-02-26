@@ -1,4 +1,4 @@
-﻿/***************************************************************************
+/***************************************************************************
  *   Copyright (C) 2005 by Ambertation                                     *
  *   quaxi@ambertation.de                                                  *
  *   Copyright (C) 2008 by Peter L Jones                                   *
@@ -22,6 +22,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
@@ -282,7 +283,10 @@ namespace SimPe.PackedFiles
 		/// </summary>
 		public System.Windows.Forms.ImageList WrapperImageList
 		{
-			get { return il; }
+			get
+			{
+				return il;
+			}
 		}
 		#endregion
 
@@ -348,7 +352,10 @@ namespace SimPe.PackedFiles
 		SimPe.Providers.LotProvider lotprov;
 		public SimPe.Interfaces.Providers.ILotProvider LotProvider
 		{
-			get { return lotprov; }
+			get
+			{
+				return lotprov;
+			}
 		}
 
 		/// <summary>
@@ -361,7 +368,10 @@ namespace SimPe.PackedFiles
 		/// </summary>
 		public SimPe.Interfaces.Providers.ISimNames SimNameProvider
 		{
-			get { return simnames; }
+			get
+			{
+				return simnames;
+			}
 		}
 
 		/// <summary>
@@ -374,7 +384,10 @@ namespace SimPe.PackedFiles
 		/// </summary>
 		public SimPe.Interfaces.Providers.ISimFamilyNames SimFamilynameProvider
 		{
-			get { return simfamilynames; }
+			get
+			{
+				return simfamilynames;
+			}
 		}
 
 		/// <summary>
@@ -387,7 +400,10 @@ namespace SimPe.PackedFiles
 		/// </summary>
 		public SimPe.Interfaces.Providers.ISimDescriptions SimDescriptionProvider
 		{
-			get { return sdescprovider; }
+			get
+			{
+				return sdescprovider;
+			}
 		}
 
 		/// <summary>
@@ -400,7 +416,10 @@ namespace SimPe.PackedFiles
 		/// </summary>
 		public SimPe.Interfaces.Providers.IOpcodeProvider OpcodeProvider
 		{
-			get { return opcodeprovider; }
+			get
+			{
+				return opcodeprovider;
+			}
 		}
 
 		Interfaces.Providers.ISkinProvider skinprovider;
@@ -410,7 +429,10 @@ namespace SimPe.PackedFiles
 		/// </summary>
 		public Interfaces.Providers.ISkinProvider SkinProvider
 		{
-			get { return skinprovider; }
+			get
+			{
+				return skinprovider;
+			}
 		}
 		#endregion
 
@@ -497,7 +519,10 @@ namespace SimPe.PackedFiles
 
 		public SimPe.Collections.Listeners Listeners
 		{
-			get { return listeners; }
+			get
+			{
+				return listeners;
+			}
 		}
 
 		public ITool[] Tools

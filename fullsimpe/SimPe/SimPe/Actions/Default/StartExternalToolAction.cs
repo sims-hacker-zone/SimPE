@@ -83,7 +83,10 @@ namespace SimPe.Actions.Default
 		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
-			get { return SimPe.GetIcon.actionStart; }
+			get
+			{
+				return SimPe.GetIcon.actionStart;
+			}
 		}
 		#endregion
 	}

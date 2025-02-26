@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Scenegraph;
 
 namespace SimPe.Plugin
@@ -37,8 +38,14 @@ namespace SimPe.Plugin
 		/// <remarks>Contains the original Group (can be 0xffffffff)</remarks>
 		public SimPe.Interfaces.Files.IPackedFileDescriptor FileDescriptor
 		{
-			get { return pfd; }
-			set { pfd = value; }
+			get
+			{
+				return pfd;
+			}
+			set
+			{
+				pfd = value;
+			}
 		}
 
 		/// <summary>
@@ -61,7 +68,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public SimPe.Interfaces.Files.IPackageFile Package
 		{
-			get { return package; }
+			get
+			{
+				return package;
+			}
 		}
 
 		/// <summary>
@@ -199,14 +209,26 @@ namespace SimPe.Plugin
 	{
 		public new FileIndexItem this[int index]
 		{
-			get { return ((FileIndexItem)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((FileIndexItem)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		public FileIndexItem this[uint index]
 		{
-			get { return ((FileIndexItem)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((FileIndexItem)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		public int Add(FileIndexItem fii)
@@ -235,7 +257,10 @@ namespace SimPe.Plugin
 
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		public override void Sort()
@@ -308,8 +333,14 @@ namespace SimPe.Plugin
 
 		public bool Duplicates
 		{
-			get { return duplicates; }
-			set { duplicates = value; }
+			get
+			{
+				return duplicates;
+			}
+			set
+			{
+				duplicates = value;
+			}
 		}
 
 		/// <summary>
@@ -394,8 +425,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public ArrayList BaseFolders
 		{
-			get { return folders; }
-			set { folders = value; }
+			get
+			{
+				return folders;
+			}
+			set
+			{
+				folders = value;
+			}
 		}
 
 		ArrayList ignoredfl;
@@ -484,7 +521,10 @@ namespace SimPe.Plugin
 		bool loaded;
 		public bool Loaded
 		{
-			get { return loaded; }
+			get
+			{
+				return loaded;
+			}
 		}
 
 		/// <summary>
@@ -524,8 +564,14 @@ namespace SimPe.Plugin
 		bool allowevent;
 		public bool AllowEvent
 		{
-			get { return allowevent; }
-			set { allowevent = value; }
+			get
+			{
+				return allowevent;
+			}
+			set
+			{
+				allowevent = value;
+			}
 		}
 
 		/// <summary>

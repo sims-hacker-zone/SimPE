@@ -24,7 +24,9 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+
 using pjse.BhavNameWizards;
+
 using SimPe.PackedFiles.Wrapper;
 
 namespace pjse.BhavOperandWizards.WizBhav
@@ -268,7 +270,10 @@ namespace pjse.BhavOperandWizards.WizBhav
 
 		private bool useParams
 		{
-			get { return nodeVersion > 0 && (operands[12] & 0x03) == 0x02; }
+			get
+			{
+				return nodeVersion > 0 && (operands[12] & 0x03) == 0x02;
+			}
 		}
 		private bool newFormat
 		{
@@ -280,7 +285,10 @@ namespace pjse.BhavOperandWizards.WizBhav
 		}
 		private bool oldFormat
 		{
-			get { return !newFormat && !useParams; }
+			get
+			{
+				return !newFormat && !useParams;
+			}
 		}
 		private bool useTemps
 		{
@@ -296,7 +304,10 @@ namespace pjse.BhavOperandWizards.WizBhav
 		#region iBhavOperandWizForm
 		public Panel WizPanel
 		{
-			get { return this.pnWizBhav; }
+			get
+			{
+				return this.pnWizBhav;
+			}
 		}
 
 		public void Execute(Instruction inst)

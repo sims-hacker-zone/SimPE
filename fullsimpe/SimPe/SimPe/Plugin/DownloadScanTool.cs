@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces;
 
 namespace SimPe.Plugin
@@ -33,7 +34,10 @@ namespace SimPe.Plugin
 		static SimPe.Registry registry;
 		internal static Registry WindowsRegistry
 		{
-			get { return registry; }
+			get
+			{
+				return registry;
+			}
 		}
 
 		IWrapperRegistry reg;

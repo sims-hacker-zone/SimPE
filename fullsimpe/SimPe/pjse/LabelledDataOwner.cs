@@ -104,8 +104,14 @@ namespace pjse
 		[EditorBrowsable(0)]
 		public string Label
 		{
-			get { return lbLabel.Text; }
-			set { lbLabel.Text = value; }
+			get
+			{
+				return lbLabel.Text;
+			}
+			set
+			{
+				lbLabel.Text = value;
+			}
 		}
 
 		[Category("Behavior")]
@@ -113,8 +119,14 @@ namespace pjse
 		[Description("True if the Label text should be visible.")]
 		public bool LabelVisible
 		{
-			get { return lbLabel.Visible; }
-			set { lbLabel.Visible = value; }
+			get
+			{
+				return lbLabel.Visible;
+			}
+			set
+			{
+				lbLabel.Visible = value;
+			}
 		}
 
 		[Category("Layout")]
@@ -122,8 +134,14 @@ namespace pjse
 		[Description("True if the Label should resize automatically.")]
 		public bool LabelAutoSize
 		{
-			get { return lbLabel.AutoSize; }
-			set { lbLabel.AutoSize = value; }
+			get
+			{
+				return lbLabel.AutoSize;
+			}
+			set
+			{
+				lbLabel.AutoSize = value;
+			}
 		}
 
 		[Category("Layout")]
@@ -131,8 +149,14 @@ namespace pjse
 		[Description("Size of the label in pixels.")]
 		public Size LabelSize
 		{
-			get { return lbLabel.Size; }
-			set { lbLabel.Size = value; }
+			get
+			{
+				return lbLabel.Size;
+			}
+			set
+			{
+				lbLabel.Size = value;
+			}
 		}
 
 		[Category("Behavior")]
@@ -140,8 +164,14 @@ namespace pjse
 		[Description("True if the Instance Label text should be visible.")]
 		public bool InstanceLabelVisible
 		{
-			get { return lbInstance.Visible; }
-			set { lbInstance.Visible = value; }
+			get
+			{
+				return lbInstance.Visible;
+			}
+			set
+			{
+				lbInstance.Visible = value;
+			}
 		}
 
 		/// <summary>
@@ -154,8 +184,14 @@ namespace pjse
 		)]
 		public bool Decimal
 		{
-			get { return ckbDecimal.Checked; }
-			set { ckbDecimal.Checked = value; }
+			get
+			{
+				return ckbDecimal.Checked;
+			}
+			set
+			{
+				ckbDecimal.Checked = value;
+			}
 		}
 
 		[Category("Behavior")]
@@ -163,8 +199,14 @@ namespace pjse
 		[Description("True if the Decimal Checkbox should be visible.")]
 		public bool DecimalVisible
 		{
-			get { return ckbDecimal.Visible; }
-			set { ckbDecimal.Visible = value; }
+			get
+			{
+				return ckbDecimal.Visible;
+			}
+			set
+			{
+				ckbDecimal.Visible = value;
+			}
 		}
 
 		/// <summary>
@@ -177,8 +219,14 @@ namespace pjse
 		)]
 		public bool UseInstancePicker
 		{
-			get { return ckbUseInstancePicker.Checked; }
-			set { ckbUseInstancePicker.Checked = value; }
+			get
+			{
+				return ckbUseInstancePicker.Checked;
+			}
+			set
+			{
+				ckbUseInstancePicker.Checked = value;
+			}
 		}
 
 		[Category("Behavior")]
@@ -186,8 +234,14 @@ namespace pjse
 		[Description("True if the Instance Picker Checkbox should be visible.")]
 		public bool UseInstancePickerVisible
 		{
-			get { return ckbUseInstancePicker.Visible; }
-			set { ckbUseInstancePicker.Visible = value; }
+			get
+			{
+				return ckbUseInstancePicker.Visible;
+			}
+			set
+			{
+				ckbUseInstancePicker.Visible = value;
+			}
 		}
 
 		[Category("Behavior")]
@@ -197,8 +251,14 @@ namespace pjse
 		)]
 		public bool UseFlagNames
 		{
-			get { return doc.UseFlagNames; }
-			set { doc.UseFlagNames = value; }
+			get
+			{
+				return doc.UseFlagNames;
+			}
+			set
+			{
+				doc.UseFlagNames = value;
+			}
 		}
 
 		/// <summary>
@@ -211,7 +271,10 @@ namespace pjse
 		)]
 		public IDataOwner FlagsFor
 		{
-			get { return doc.FlagsFor; }
+			get
+			{
+				return doc.FlagsFor;
+			}
 			set
 			{
 				if (value as LabelledDataOwner != null)
@@ -227,8 +290,14 @@ namespace pjse
 		[Browsable(false)]
 		public BhavWiz Instruction
 		{
-			get { return doc.Instruction; }
-			set { doc.Instruction = value; }
+			get
+			{
+				return doc.Instruction;
+			}
+			set
+			{
+				doc.Instruction = value;
+			}
 		}
 
 		[Category("Behavior")]
@@ -236,8 +305,14 @@ namespace pjse
 		[Description("Indicates whether the Data Owner combo box can be changed.")]
 		public bool DataOwnerEnabled
 		{
-			get { return cbDataOwner.Enabled; }
-			set { cbDataOwner.Enabled = value; }
+			get
+			{
+				return cbDataOwner.Enabled;
+			}
+			set
+			{
+				cbDataOwner.Enabled = value;
+			}
 		}
 
 		[Category("Behavior")]
@@ -245,8 +320,14 @@ namespace pjse
 		[Description("True if hex values should use \"0x\" prefix.")]
 		public bool Use0xPrefix
 		{
-			get { return doc.Use0xPrefix; }
-			set { doc.Use0xPrefix = value; }
+			get
+			{
+				return doc.Use0xPrefix;
+			}
+			set
+			{
+				doc.Use0xPrefix = value;
+			}
 		}
 
 		[Category("Behavior")]
@@ -254,8 +335,14 @@ namespace pjse
 		[Description("True if the value should be treated as a byte.")]
 		public bool ValueIsByte
 		{
-			get { return doc.ValueIsByte; }
-			set { doc.ValueIsByte = value; }
+			get
+			{
+				return doc.ValueIsByte;
+			}
+			set
+			{
+				doc.ValueIsByte = value;
+			}
 		}
 
 		#region IDataOwner Members
@@ -267,7 +354,10 @@ namespace pjse
 		[DefaultValue((byte)0)]
 		public byte DataOwner
 		{
-			get { return doc.DataOwner; }
+			get
+			{
+				return doc.DataOwner;
+			}
 			set
 			{
 				if (value >= cbDataOwner.Items.Count)
@@ -284,7 +374,10 @@ namespace pjse
 		[DefaultValue((ushort)0)]
 		public ushort Value
 		{
-			get { return doc.Value; }
+			get
+			{
+				return doc.Value;
+			}
 			set
 			{
 				if (doc.Decimal)

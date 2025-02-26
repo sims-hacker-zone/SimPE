@@ -23,6 +23,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+
 using SimPe.Geometry;
 using SimPe.Plugin.Anim;
 using SimPe.Plugin.Gmdc;
@@ -66,7 +67,10 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		/// </summary>
 		public override string FileExtension
 		{
-			get { return ".map"; }
+			get
+			{
+				return ".map";
+			}
 		}
 
 		/// <summary>
@@ -74,7 +78,10 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		/// </summary>
 		public override string FileDescription
 		{
-			get { return "BumpMapNormals"; }
+			get
+			{
+				return "BumpMapNormals";
+			}
 		}
 
 		/// <summary>
@@ -82,7 +89,10 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		/// </summary>
 		public override string Author
 		{
-			get { return "Skankyboy"; }
+			get
+			{
+				return "Skankyboy";
+			}
 		}
 
 		/// <summary>
@@ -297,6 +307,8 @@ namespace SimPe.Plugin.Gmdc.Exporter
 			//Algo creation inspired by the one found here : http://www.c4engine.com/code/tangent.html
 		}
 
-		protected override void FinishFile() { }
+		protected override void FinishFile()
+		{
+		}
 	}
 }

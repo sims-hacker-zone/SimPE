@@ -36,21 +36,33 @@ namespace SimPe.Interfaces.Plugin
 		/// <summary>
 		/// Returns all Plugin (dockable) Tools the Factory knows
 		/// </summary>
-		IToolPlugin[] KnownTools { get; }
+		IToolPlugin[] KnownTools
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns or sets the Registry this Plugin was last registred with
 		/// </summary>
-		IWrapperRegistry LinkedRegistry { get; set; }
+		IWrapperRegistry LinkedRegistry
+		{
+			get; set;
+		}
 
 		/// <summary>
 		/// Returns or sets the Provider this Plugin can use
 		/// </summary>
-		IProviderRegistry LinkedProvider { get; set; }
+		IProviderRegistry LinkedProvider
+		{
+			get; set;
+		}
 
 		/// <summary>
 		/// Returns sets the Name of the File where this wrapper is located in
 		/// </summary>
-		string FileName { get; }
+		string FileName
+		{
+			get;
+		}
 	}
 }

@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.Globalization;
 using System.IO;
+
 using SimPe.Geometry;
 using SimPe.Plugin.Gmdc;
 
@@ -35,27 +36,42 @@ namespace SimPe.Plugin.Gmdc.Importer
 
 		public int Version
 		{
-			get { return 1; }
+			get
+			{
+				return 1;
+			}
 		}
 
 		public string FileExtension
 		{
-			get { return ".xsi"; }
+			get
+			{
+				return ".xsi";
+			}
 		}
 
 		public string FileDescription
 		{
-			get { return "Softimage/3D dotXSI"; }
+			get
+			{
+				return "Softimage/3D dotXSI";
+			}
 		}
 
 		public string Author
 		{
-			get { return "Quaxi"; }
+			get
+			{
+				return "Quaxi";
+			}
 		}
 
 		public string ErrorMessage
 		{
-			get { return ""; }
+			get
+			{
+				return "";
+			}
 		}
 
 		string flname;
@@ -67,7 +83,10 @@ namespace SimPe.Plugin.Gmdc.Importer
 					return "";
 				return flname;
 			}
-			set { flname = value; }
+			set
+			{
+				flname = value;
+			}
 		}
 
 		ElementOrder cmp;
@@ -79,7 +98,10 @@ namespace SimPe.Plugin.Gmdc.Importer
 					cmp = new ElementOrder(Gmdc.ElementSorting.XZY);
 				return cmp;
 			}
-			set { cmp = value; }
+			set
+			{
+				cmp = value;
+			}
 		}
 
 		public bool Process(

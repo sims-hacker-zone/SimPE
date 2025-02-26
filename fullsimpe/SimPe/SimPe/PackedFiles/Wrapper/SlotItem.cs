@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Wrapper;
@@ -46,162 +47,297 @@ namespace SimPe.PackedFiles.Wrapper
 		SlotItemType type;
 		public SlotItemType Type
 		{
-			get { return type; }
-			set { type = value; }
+			get
+			{
+				return type;
+			}
+			set
+			{
+				type = value;
+			}
 		}
 
 		#endregion
 		Slot parent;
 		public Slot Parent
 		{
-			get { return parent; }
+			get
+			{
+				return parent;
+			}
 		}
 
 		float unknownf1;
 		public float UnknownFloat1
 		{
-			get { return unknownf1; }
-			set { unknownf1 = value; }
+			get
+			{
+				return unknownf1;
+			}
+			set
+			{
+				unknownf1 = value;
+			}
 		}
 
 		float unknownf2;
 		public float UnknownFloat2
 		{
-			get { return unknownf2; }
-			set { unknownf2 = value; }
+			get
+			{
+				return unknownf2;
+			}
+			set
+			{
+				unknownf2 = value;
+			}
 		}
 
 		float unknownf3;
 		public float UnknownFloat3
 		{
-			get { return unknownf3; }
-			set { unknownf3 = value; }
+			get
+			{
+				return unknownf3;
+			}
+			set
+			{
+				unknownf3 = value;
+			}
 		}
 
 		float unknownf4;
 		public float UnknownFloat4
 		{
-			get { return unknownf4; }
-			set { unknownf4 = value; }
+			get
+			{
+				return unknownf4;
+			}
+			set
+			{
+				unknownf4 = value;
+			}
 		}
 
 		float unknownf5;
 		public float UnknownFloat5
 		{
-			get { return unknownf5; }
-			set { unknownf5 = value; }
+			get
+			{
+				return unknownf5;
+			}
+			set
+			{
+				unknownf5 = value;
+			}
 		}
 
 		float unknownf6;
 		public float UnknownFloat6
 		{
-			get { return unknownf6; }
-			set { unknownf6 = value; }
+			get
+			{
+				return unknownf6;
+			}
+			set
+			{
+				unknownf6 = value;
+			}
 		}
 
 		float unknownf7;
 		public float UnknownFloat7
 		{
-			get { return unknownf7; }
-			set { unknownf7 = value; }
+			get
+			{
+				return unknownf7;
+			}
+			set
+			{
+				unknownf7 = value;
+			}
 		}
 
 		float unknownf8;
 		public float UnknownFloat8
 		{
-			get { return unknownf8; }
-			set { unknownf8 = value; }
+			get
+			{
+				return unknownf8;
+			}
+			set
+			{
+				unknownf8 = value;
+			}
 		}
 
 		int unknowni1;
 		public int UnknownInt1
 		{
-			get { return unknowni1; }
-			set { unknowni1 = value; }
+			get
+			{
+				return unknowni1;
+			}
+			set
+			{
+				unknowni1 = value;
+			}
 		}
 
 		int unknowni2;
 		public int UnknownInt2
 		{
-			get { return unknowni2; }
-			set { unknowni2 = value; }
+			get
+			{
+				return unknowni2;
+			}
+			set
+			{
+				unknowni2 = value;
+			}
 		}
 
 		int unknowni3;
 		public int UnknownInt3
 		{
-			get { return unknowni3; }
-			set { unknowni3 = value; }
+			get
+			{
+				return unknowni3;
+			}
+			set
+			{
+				unknowni3 = value;
+			}
 		}
 
 		int unknowni4;
 		public int UnknownInt4
 		{
-			get { return unknowni4; }
-			set { unknowni4 = value; }
+			get
+			{
+				return unknowni4;
+			}
+			set
+			{
+				unknowni4 = value;
+			}
 		}
 
 		int unknowni5;
 		public int UnknownInt5
 		{
-			get { return unknowni5; }
-			set { unknowni5 = value; }
+			get
+			{
+				return unknowni5;
+			}
+			set
+			{
+				unknowni5 = value;
+			}
 		}
 
 		int unknowni6;
 		public int UnknownInt6
 		{
-			get { return unknowni6; }
-			set { unknowni6 = value; }
+			get
+			{
+				return unknowni6;
+			}
+			set
+			{
+				unknowni6 = value;
+			}
 		}
 
 		int unknowni7;
 		public int UnknownInt7
 		{
-			get { return unknowni7; }
-			set { unknowni7 = value; }
+			get
+			{
+				return unknowni7;
+			}
+			set
+			{
+				unknowni7 = value;
+			}
 		}
 
 		int unknowni8;
 		public int UnknownInt8
 		{
-			get { return unknowni8; }
-			set { unknowni8 = value; }
+			get
+			{
+				return unknowni8;
+			}
+			set
+			{
+				unknowni8 = value;
+			}
 		}
 
 		int unknowni9;
 		public int UnknownInt9
 		{
-			get { return unknowni9; }
-			set { unknowni9 = value; }
+			get
+			{
+				return unknowni9;
+			}
+			set
+			{
+				unknowni9 = value;
+			}
 		}
 
 		int unknowni10;
 		public int UnknownInt10
 		{
-			get { return unknowni10; }
-			set { unknowni10 = value; }
+			get
+			{
+				return unknowni10;
+			}
+			set
+			{
+				unknowni10 = value;
+			}
 		}
 
 		short unknowns1;
 		public short UnknownShort1
 		{
-			get { return unknowns1; }
-			set { unknowns1 = value; }
+			get
+			{
+				return unknowns1;
+			}
+			set
+			{
+				unknowns1 = value;
+			}
 		}
 
 		short unknowns2;
 		public short UnknownShort2
 		{
-			get { return unknowns2; }
-			set { unknowns2 = value; }
+			get
+			{
+				return unknowns2;
+			}
+			set
+			{
+				unknowns2 = value;
+			}
 		}
 
 		short unknowns3;
 		public short UnknownShort3
 		{
-			get { return unknowns3; }
-			set { unknowns3 = value; }
+			get
+			{
+				return unknowns3;
+			}
+			set
+			{
+				unknowns3 = value;
+			}
 		}
 
 		public SlotItem(Slot parent)
@@ -329,14 +465,26 @@ namespace SimPe.PackedFiles.Wrapper
 	{
 		public new SlotItem this[int index]
 		{
-			get { return ((SlotItem)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((SlotItem)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		public SlotItem this[uint index]
 		{
-			get { return ((SlotItem)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((SlotItem)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		public int Add(SlotItem item)
@@ -361,7 +509,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		public override object Clone()

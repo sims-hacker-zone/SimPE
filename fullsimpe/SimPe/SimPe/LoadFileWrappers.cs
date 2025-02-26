@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Reflection;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 
@@ -31,22 +32,40 @@ namespace SimPe
 		Interfaces.Files.IPackageFile package;
 		public Interfaces.Files.IPackageFile Package
 		{
-			get { return package; }
-			set { package = value; }
+			get
+			{
+				return package;
+			}
+			set
+			{
+				package = value;
+			}
 		}
 
 		Interfaces.Files.IPackedFileDescriptor pfd;
 		public Interfaces.Files.IPackedFileDescriptor FileDescriptor
 		{
-			get { return pfd; }
-			set { pfd = value; }
+			get
+			{
+				return pfd;
+			}
+			set
+			{
+				pfd = value;
+			}
 		}
 
 		Interfaces.Plugin.IToolResult res;
 		public Interfaces.Plugin.IToolResult Result
 		{
-			get { return res; }
-			set { res = value; }
+			get
+			{
+				return res;
+			}
+			set
+			{
+				res = value;
+			}
 		}
 	}
 
@@ -63,8 +82,14 @@ namespace SimPe
 
 		EventHandler ChangeHandler
 		{
-			get { return chghandler; }
-			set { chghandler = value; }
+			get
+			{
+				return chghandler;
+			}
+			set
+			{
+				chghandler = value;
+			}
 		}
 
 		public ToolMenuItem(ITool tool, EventHandler chghnd)
@@ -124,14 +149,26 @@ namespace SimPe
 
 		public Interfaces.Files.IPackedFileDescriptor FileDescriptor
 		{
-			get { return pfd; }
-			set { pfd = value; }
+			get
+			{
+				return pfd;
+			}
+			set
+			{
+				pfd = value;
+			}
 		}
 
 		public Interfaces.Files.IPackageFile Package
 		{
-			get { return package; }
-			set { package = value; }
+			get
+			{
+				return package;
+			}
+			set
+			{
+				package = value;
+			}
 		}
 
 		public void UpdateEnabledState()

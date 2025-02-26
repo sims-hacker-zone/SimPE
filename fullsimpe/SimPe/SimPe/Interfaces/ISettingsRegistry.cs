@@ -50,6 +50,9 @@ namespace SimPe.Interfaces
 		/// <summary>
 		/// Returns the List of Known Settings
 		/// </summary>
-		ISettings[] Settings { get; }
+		ISettings[] Settings
+		{
+			get;
+		}
 	}
 }

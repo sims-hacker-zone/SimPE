@@ -22,6 +22,7 @@
 using System;
 using System.Collections;
 using System.Xml;
+
 using SimPe.Interfaces.Wrapper;
 
 namespace SimPe
@@ -39,8 +40,14 @@ namespace SimPe
 		/// <remarks>This will be initialized by the RCOL Factory</remarks>
 		public static Interfaces.Scenegraph.IScenegraphFileIndex FileIndex
 		{
-			get { return fileindex; }
-			set { fileindex = value; }
+			get
+			{
+				return fileindex;
+			}
+			set
+			{
+				fileindex = value;
+			}
 		}
 
 		/// <summary>
@@ -434,8 +441,14 @@ namespace SimPe
 		/// </summary>
 		public static SimPe.Interfaces.IWrapperRegistry WrapperRegistry
 		{
-			get { return wreg; }
-			set { wreg = value; }
+			get
+			{
+				return wreg;
+			}
+			set
+			{
+				wreg = value;
+			}
 		}
 
 		static SimPe.Interfaces.IProviderRegistry preg;
@@ -445,8 +458,14 @@ namespace SimPe
 		/// </summary>
 		public static SimPe.Interfaces.IProviderRegistry ProviderRegistry
 		{
-			get { return preg; }
-			set { preg = value; }
+			get
+			{
+				return preg;
+			}
+			set
+			{
+				preg = value;
+			}
 		}
 
 		static IGroupCache gc;
@@ -456,8 +475,14 @@ namespace SimPe
 		/// </summary>
 		public static IGroupCache GroupCache
 		{
-			get { return gc; }
-			set { gc = value; }
+			get
+			{
+				return gc;
+			}
+			set
+			{
+				gc = value;
+			}
 		}
 	}
 }

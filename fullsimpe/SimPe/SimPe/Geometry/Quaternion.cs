@@ -125,7 +125,10 @@ namespace SimPe.Geometry
 		/// </summary>
 		public new double Length
 		{
-			get { return (double)Math.Sqrt(Norm); }
+			get
+			{
+				return (double)Math.Sqrt(Norm);
+			}
 		}
 
 		/// <summary>
@@ -302,7 +305,10 @@ namespace SimPe.Geometry
 		/// </summary>
 		public Vector3f Imaginary
 		{
-			get { return (Vector3f)this; }
+			get
+			{
+				return (Vector3f)this;
+			}
 		}
 
 		/// <summary>
@@ -390,7 +396,9 @@ namespace SimPe.Geometry
 			return DegToRad(sgn*rad);*/
 		}
 
-		protected void MakeRobust() { }
+		protected void MakeRobust()
+		{
+		}
 
 		protected void DoMakeRobust()
 		{
@@ -919,8 +927,14 @@ namespace SimPe.Geometry
 		/// </summary>
 		public new Quaternion this[int index]
 		{
-			get { return ((Quaternion)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((Quaternion)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -928,8 +942,14 @@ namespace SimPe.Geometry
 		/// </summary>
 		public Quaternion this[uint index]
 		{
-			get { return ((Quaternion)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((Quaternion)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -976,7 +996,10 @@ namespace SimPe.Geometry
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		/// <summary>

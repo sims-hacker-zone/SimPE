@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -12,11 +13,17 @@ namespace SimPe.Plugin
 	{
 		protected new LotexturePackedFileWrapper Wrapper
 		{
-			get { return base.Wrapper as LotexturePackedFileWrapper; }
+			get
+			{
+				return base.Wrapper as LotexturePackedFileWrapper;
+			}
 		}
 		public LotexturePackedFileWrapper TPFW
 		{
-			get { return (LotexturePackedFileWrapper)Wrapper; }
+			get
+			{
+				return (LotexturePackedFileWrapper)Wrapper;
+			}
 		}
 
 		string hoodtype;
@@ -180,7 +187,10 @@ namespace SimPe.Plugin
 		#region IPackedFileUI Member
 		System.Windows.Forms.Control IPackedFileUI.GUIHandle
 		{
-			get { return this; }
+			get
+			{
+				return this;
+			}
 		}
 		#endregion
 

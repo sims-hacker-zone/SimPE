@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Interfaces;
 
 namespace SimPe.Plugin
@@ -14,7 +15,10 @@ namespace SimPe.Plugin
 		static SimPe.Registry registry;
 		internal static Registry WindowsRegistry
 		{
-			get { return registry; }
+			get
+			{
+				return registry;
+			}
 		}
 
 		IWrapperRegistry reg;
@@ -94,7 +98,10 @@ namespace SimPe.Plugin
 		}
 		public override System.Windows.Forms.Shortcut Shortcut
 		{
-			get { return System.Windows.Forms.Shortcut.None; }
+			get
+			{
+				return System.Windows.Forms.Shortcut.None;
+			}
 		}
 		#endregion
 	}

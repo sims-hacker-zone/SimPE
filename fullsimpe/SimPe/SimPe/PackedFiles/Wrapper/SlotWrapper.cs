@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Wrapper;
@@ -45,28 +46,49 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <remarks>Do not add Items based on this List! use the Add Method!!</remarks>
 		public SlotItems Items
 		{
-			get { return items; }
+			get
+			{
+				return items;
+			}
 		}
 
 		string filename;
 		public string FileName
 		{
-			get { return filename; }
-			set { filename = value; }
+			get
+			{
+				return filename;
+			}
+			set
+			{
+				filename = value;
+			}
 		}
 
 		uint version;
 		public uint Version
 		{
-			get { return version; }
-			set { version = value; }
+			get
+			{
+				return version;
+			}
+			set
+			{
+				version = value;
+			}
 		}
 
 		uint unknown;
 		public uint Unknown
 		{
-			get { return unknown; }
-			set { unknown = value; }
+			get
+			{
+				return unknown;
+			}
+			set
+			{
+				unknown = value;
+			}
 		}
 
 		#endregion

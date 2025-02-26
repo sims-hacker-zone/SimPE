@@ -47,7 +47,10 @@ namespace SimPe
 		static ExpansionItem nil = new ExpansionItem(null);
 		public static ExpansionItem Nil
 		{
-			get { return nil; }
+			get
+			{
+				return nil;
+			}
 		}
 
 		XmlRegistry reg;
@@ -56,7 +59,10 @@ namespace SimPe
 		List<string> paths;
 		public List<ExpansionItem> Expansions
 		{
-			get { return exps; }
+			get
+			{
+				return exps;
+			}
 		}
 
 		Dictionary<Expansions, ExpansionItem> map;
@@ -220,7 +226,10 @@ namespace SimPe
 
 		public Expansions LastKnown
 		{
-			get { return lastknown; }
+			get
+			{
+				return lastknown;
+			}
 		}
 
 		public int GameVersion // if Ts2 not installed will return a Story Version if installed
@@ -240,17 +249,26 @@ namespace SimPe
 
 		public int EPInstalled
 		{
-			get { return epver; }
+			get
+			{
+				return epver;
+			}
 		}
 
 		public int SPInstalled
 		{
-			get { return spver; }
+			get
+			{
+				return spver;
+			}
 		}
 
 		public int STInstalled
 		{
-			get { return stver; }
+			get
+			{
+				return stver;
+			}
 		}
 
 		/// <summary>
@@ -324,7 +342,10 @@ namespace SimPe
 		/// </summary>
 		public ExpansionItem Latest
 		{
-			get { return latest; }
+			get
+			{
+				return latest;
+			}
 		}
 
 		protected ExpansionItem GetLatestExpansion()
@@ -405,12 +426,18 @@ namespace SimPe
 
 		public ExpansionItem this[Expansions ep]
 		{
-			get { return GetExpansion(ep); }
+			get
+			{
+				return GetExpansion(ep);
+			}
 		}
 
 		public ExpansionItem this[int ver]
 		{
-			get { return GetExpansion(ver); }
+			get
+			{
+				return GetExpansion(ver);
+			}
 		}
 
 		/// <summary>
@@ -418,7 +445,10 @@ namespace SimPe
 		/// </summary>
 		public long AvailableGroups
 		{
-			get { return avlgrp; }
+			get
+			{
+				return avlgrp;
+			}
 		}
 
 		/// <summary>
@@ -426,7 +456,10 @@ namespace SimPe
 		/// </summary>
 		public int CurrentGroup
 		{
-			get { return GetExpansion(GameVersion).Group; }
+			get
+			{
+				return GetExpansion(GameVersion).Group;
+			}
 		}
 
 		#region Censor Patch
@@ -471,8 +504,14 @@ namespace SimPe
 
 		protected bool BlurNudityPostEP2
 		{
-			get { return GetBlurNudity(); }
-			set { SetBlurNudity(value, latest.CensorFile, false); }
+			get
+			{
+				return GetBlurNudity();
+			}
+			set
+			{
+				SetBlurNudity(value, latest.CensorFile, false);
+			}
 		}
 
 		internal void BlurNudityUpdate()
@@ -978,7 +1017,10 @@ namespace SimPe
 		/// </summary>
 		public string NvidiaDDSTool
 		{
-			get { return System.IO.Path.Combine(NvidiaDDSPath, "nvdxt.exe"); }
+			get
+			{
+				return System.IO.Path.Combine(NvidiaDDSPath, "nvdxt.exe");
+			}
 		}
 
 		/// <summary>
@@ -1057,7 +1099,10 @@ namespace SimPe
 
 		public string Current
 		{
-			get { throw new Exception("The method or operation is not implemented."); }
+			get
+			{
+				throw new Exception("The method or operation is not implemented.");
+			}
 		}
 
 		#endregion

@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;
 
@@ -808,7 +809,10 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		public Control GUIHandle
 		{
-			get { return strPanel; }
+			get
+			{
+				return strPanel;
+			}
 		}
 
 		/// <summary>
@@ -1531,6 +1535,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.StringFile(sender.Equals(this.btnImport));
 		}
 
-		private void strPanel_Paint(object sender, PaintEventArgs e) { }
+		private void strPanel_Paint(object sender, PaintEventArgs e)
+		{
+		}
 	}
 }

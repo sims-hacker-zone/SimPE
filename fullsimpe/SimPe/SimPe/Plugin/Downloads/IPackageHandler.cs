@@ -8,7 +8,10 @@ namespace SimPe.Plugin.Downloads
 	/// <remarks>Defining classes must have a public Constructur that takes a Filename stirng</remarks>
 	public interface IPackageHandler
 	{
-		IPackageInfo[] Objects { get; }
+		IPackageInfo[] Objects
+		{
+			get;
+		}
 
 		void FreeResources();
 	}

@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using Classless.Hasher;
 
 namespace SimPe
@@ -37,17 +38,26 @@ namespace SimPe
 
 		public static CRC Crc24
 		{
-			get { return crc24; }
+			get
+			{
+				return crc24;
+			}
 		}
 
 		public static CRC Crc32
 		{
-			get { return crc32; }
+			get
+			{
+				return crc32;
+			}
 		}
 
 		public static CRC Crc32_cas
 		{
-			get { return crc32_cas; }
+			get
+			{
+				return crc32_cas;
+			}
 		}
 
 		/// <summary>
@@ -319,7 +329,10 @@ namespace SimPe
 
 		public static uint UserId
 		{
-			get { return Helper.WindowsRegistry.CachedUserId; }
+			get
+			{
+				return Helper.WindowsRegistry.CachedUserId;
+			}
 		}
 	}
 }

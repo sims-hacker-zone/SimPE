@@ -50,6 +50,9 @@ namespace SimPe.Interfaces
 		/// <summary>
 		/// Returns the List of Known Help Topics
 		/// </summary>
-		IHelp[] HelpTopics { get; }
+		IHelp[] HelpTopics
+		{
+			get;
+		}
 	}
 }

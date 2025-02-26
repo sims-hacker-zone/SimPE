@@ -32,7 +32,10 @@ namespace SimPe.Plugin
 
 		public SimPe.PackedFiles.Wrapper.Cpf Cpf
 		{
-			get { return cpf; }
+			get
+			{
+				return cpf;
+			}
 		}
 
 		public uint Category
@@ -492,7 +495,10 @@ namespace SimPe.Plugin
 				}
 				return skin;
 			}
-			set { skin = value; }
+			set
+			{
+				skin = value;
+			}
 		}
 
 		public override string ToString()
@@ -545,12 +551,18 @@ namespace SimPe.Plugin
 
 		public new string Name
 		{
-			get { return name; }
+			get
+			{
+				return name;
+			}
 		}
 
 		internal SimPe.PackedFiles.Wrapper.Cpf File
 		{
-			get { return cpf; }
+			get
+			{
+				return cpf;
+			}
 		}
 
 		public override string ToString()

@@ -91,8 +91,14 @@ namespace SimPe
 		/// </summary>
 		public static Parameters CommandlineParameters
 		{
-			get { return param; }
-			set { param = value; }
+			get
+			{
+				return param;
+			}
+			set
+			{
+				param = value;
+			}
 		}
 
 		/// <summary>
@@ -500,7 +506,10 @@ namespace SimPe
 		/// </summary>
 		public static string SimPeLanguageCache
 		{
-			get { return GetSimPeLanguageCache("objcache_"); }
+			get
+			{
+				return GetSimPeLanguageCache("objcache_");
+			}
 		}
 
 		/// <summary>
@@ -520,14 +529,23 @@ namespace SimPe
 		/// </summary>
 		public static string SimPeCache
 		{
-			get { return GetSimPeCache("objcache"); }
+			get
+			{
+				return GetSimPeCache("objcache");
+			}
 		}
 
 		private static string profile = "";
 		public static string Profile
 		{
-			get { return profile; }
-			set { profile = value; }
+			get
+			{
+				return profile;
+			}
+			set
+			{
+				profile = value;
+			}
 		}
 
 		/// <summary>
@@ -595,7 +613,10 @@ namespace SimPe
 			/// </summary>
 			public static string SimPeXREGW
 			{
-				get { return ProfilePath("simpe.xreg"); }
+				get
+				{
+					return ProfilePath("simpe.xreg");
+				}
 			}
 
 			/// <summary>
@@ -603,7 +624,10 @@ namespace SimPe
 			/// </summary>
 			public static string SimPeXREG
 			{
-				get { return ProfilePath("simpe.xreg", true); }
+				get
+				{
+					return ProfilePath("simpe.xreg", true);
+				}
 			}
 
 			/// <summary>
@@ -611,7 +635,10 @@ namespace SimPe
 			/// </summary>
 			public static string SimPeLayoutW
 			{
-				get { return ProfilePath("simpe.layout"); }
+				get
+				{
+					return ProfilePath("simpe.layout");
+				}
 			}
 
 			/// <summary>
@@ -619,7 +646,10 @@ namespace SimPe
 			/// </summary>
 			public static string SimPeLayout
 			{
-				get { return ProfilePath("simpe.layout", true); }
+				get
+				{
+					return ProfilePath("simpe.layout", true);
+				}
 			}
 
 			/// <summary>
@@ -627,7 +657,10 @@ namespace SimPe
 			/// </summary>
 			public static string Layout2XREGW
 			{
-				get { return ProfilePath("layout2.xreg"); }
+				get
+				{
+					return ProfilePath("layout2.xreg");
+				}
 			}
 
 			/// <summary>
@@ -635,7 +668,10 @@ namespace SimPe
 			/// </summary>
 			public static string Layout2XREG
 			{
-				get { return ProfilePath("layout2.xreg", true); }
+				get
+				{
+					return ProfilePath("layout2.xreg", true);
+				}
 			}
 
 			/// <summary>
@@ -643,7 +679,10 @@ namespace SimPe
 			/// </summary>
 			public static string FoldersXREGW
 			{
-				get { return ProfilePath("folders.xreg"); }
+				get
+				{
+					return ProfilePath("folders.xreg");
+				}
 			}
 
 			/// <summary>
@@ -651,7 +690,10 @@ namespace SimPe
 			/// </summary>
 			public static string FoldersXREG
 			{
-				get { return ProfilePath("folders.xreg", true); }
+				get
+				{
+					return ProfilePath("folders.xreg", true);
+				}
 			}
 
 			/// <summary>
@@ -687,7 +729,10 @@ namespace SimPe
 			/// </summary>
 			public static string MRUXREGW
 			{
-				get { return ProfilePath("mru.xreg"); }
+				get
+				{
+					return ProfilePath("mru.xreg");
+				}
 			}
 
 			/// <summary>
@@ -695,7 +740,10 @@ namespace SimPe
 			/// </summary>
 			public static string MRUXREG
 			{
-				get { return MRUXREGW; }
+				get
+				{
+					return MRUXREGW;
+				}
 			} // Only one global MRU list, held in the Data folder
 		}
 
@@ -722,12 +770,18 @@ namespace SimPe
 		/// </summary>
 		public static string SimPeViewportFile
 		{
-			get { return Path.Combine(SimPeDataPath, "vport.set"); }
+			get
+			{
+				return Path.Combine(SimPeDataPath, "vport.set");
+			}
 		}
 
 		public static string SimPeSemiGlobalFile
 		{
-			get { return Path.Combine(SimPe.Helper.SimPeDataPath, "semiglobals.xml"); }
+			get
+			{
+				return Path.Combine(SimPe.Helper.SimPeDataPath, "semiglobals.xml");
+			}
 		}
 
 		/// <summary>
@@ -749,8 +803,14 @@ namespace SimPe
 		/// </summary>
 		public static bool LocalMode
 		{
-			get { return RunModeFlag[(int)RunModeFlags.localmode]; }
-			set { RunModeFlag[(int)RunModeFlags.localmode] = value; }
+			get
+			{
+				return RunModeFlag[(int)RunModeFlags.localmode];
+			}
+			set
+			{
+				RunModeFlag[(int)RunModeFlags.localmode] = value;
+			}
 		}
 
 		/// <summary>
@@ -758,8 +818,14 @@ namespace SimPe
 		/// </summary>
 		public static bool NoPlugins
 		{
-			get { return RunModeFlag[(int)RunModeFlags.noplugins]; }
-			set { RunModeFlag[(int)RunModeFlags.noplugins] = value; }
+			get
+			{
+				return RunModeFlag[(int)RunModeFlags.noplugins];
+			}
+			set
+			{
+				RunModeFlag[(int)RunModeFlags.noplugins] = value;
+			}
 		}
 
 		/// <summary>
@@ -767,8 +833,14 @@ namespace SimPe
 		/// </summary>
 		public static bool FileFormat
 		{
-			get { return RunModeFlag[(int)RunModeFlags.fileformat]; }
-			set { RunModeFlag[(int)RunModeFlags.fileformat] = value; }
+			get
+			{
+				return RunModeFlag[(int)RunModeFlags.fileformat];
+			}
+			set
+			{
+				RunModeFlag[(int)RunModeFlags.fileformat] = value;
+			}
 		}
 
 		/// <summary>
@@ -776,8 +848,14 @@ namespace SimPe
 		/// </summary>
 		public static bool NoErrors
 		{
-			get { return RunModeFlag[(int)RunModeFlags.noerrors]; }
-			set { RunModeFlag[(int)RunModeFlags.noerrors] = value; }
+			get
+			{
+				return RunModeFlag[(int)RunModeFlags.noerrors];
+			}
+			set
+			{
+				RunModeFlag[(int)RunModeFlags.noerrors] = value;
+			}
 		}
 
 		/// <summary>
@@ -785,8 +863,14 @@ namespace SimPe
 		/// </summary>
 		public static bool AnyPackage
 		{
-			get { return RunModeFlag[(int)RunModeFlags.anypackage]; }
-			set { RunModeFlag[(int)RunModeFlags.anypackage] = value; }
+			get
+			{
+				return RunModeFlag[(int)RunModeFlags.anypackage];
+			}
+			set
+			{
+				RunModeFlag[(int)RunModeFlags.anypackage] = value;
+			}
 		}
 
 		/// <summary>
@@ -843,7 +927,10 @@ namespace SimPe
 		/// </summary>
 		public static long SimPeVersionLong
 		{
-			get { return VersionToLong(SimPeVersion); }
+			get
+			{
+				return VersionToLong(SimPeVersion);
+			}
 		}
 
 		/// <summary>
@@ -925,7 +1012,10 @@ namespace SimPe
 		/// </summary>
 		public static bool QARelease
 		{
-			get { return ((SimPeVersion.ProductMinorPart % 2) == 1); }
+			get
+			{
+				return ((SimPeVersion.ProductMinorPart % 2) == 1);
+			}
 		}
 
 		/// <summary>
@@ -1454,7 +1544,10 @@ namespace SimPe
 		/// </summary>
 		public static bool DebugMode
 		{
-			get { return Helper.WindowsRegistry.HiddenMode; }
+			get
+			{
+				return Helper.WindowsRegistry.HiddenMode;
+			}
 		}
 
 		/// <summary>
@@ -1562,7 +1655,10 @@ namespace SimPe
 		/// <returns></returns>
 		public static string NewestGamePath
 		{
-			get { return PathProvider.Global.Latest.InstallFolder; }
+			get
+			{
+				return PathProvider.Global.Latest.InstallFolder;
+			}
 		}
 
 		static SimPe.TGILoader tgiload;

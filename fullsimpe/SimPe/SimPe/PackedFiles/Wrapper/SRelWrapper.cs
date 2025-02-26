@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -29,62 +30,122 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool IsEnemy
 		{
-			get { return GetBit((byte)Data.MetaData.RelationshipStateBits.Enemy); }
-			set { SetBit((byte)Data.MetaData.RelationshipStateBits.Enemy, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.RelationshipStateBits.Enemy);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.RelationshipStateBits.Enemy, value);
+			}
 		}
 
 		public bool IsFriend
 		{
-			get { return GetBit((byte)Data.MetaData.RelationshipStateBits.Friends); }
-			set { SetBit((byte)Data.MetaData.RelationshipStateBits.Friends, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.RelationshipStateBits.Friends);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.RelationshipStateBits.Friends, value);
+			}
 		}
 
 		public bool IsBuddie
 		{
-			get { return GetBit((byte)Data.MetaData.RelationshipStateBits.Buddies); }
-			set { SetBit((byte)Data.MetaData.RelationshipStateBits.Buddies, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.RelationshipStateBits.Buddies);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.RelationshipStateBits.Buddies, value);
+			}
 		}
 
 		public bool HasCrush
 		{
-			get { return GetBit((byte)Data.MetaData.RelationshipStateBits.Crush); }
-			set { SetBit((byte)Data.MetaData.RelationshipStateBits.Crush, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.RelationshipStateBits.Crush);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.RelationshipStateBits.Crush, value);
+			}
 		}
 
 		public bool InLove
 		{
-			get { return GetBit((byte)Data.MetaData.RelationshipStateBits.Love); }
-			set { SetBit((byte)Data.MetaData.RelationshipStateBits.Love, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.RelationshipStateBits.Love);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.RelationshipStateBits.Love, value);
+			}
 		}
 
 		public bool GoSteady
 		{
-			get { return GetBit((byte)Data.MetaData.RelationshipStateBits.Steady); }
-			set { SetBit((byte)Data.MetaData.RelationshipStateBits.Steady, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.RelationshipStateBits.Steady);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.RelationshipStateBits.Steady, value);
+			}
 		}
 
 		public bool IsEngaged
 		{
-			get { return GetBit((byte)Data.MetaData.RelationshipStateBits.Engaged); }
-			set { SetBit((byte)Data.MetaData.RelationshipStateBits.Engaged, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.RelationshipStateBits.Engaged);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.RelationshipStateBits.Engaged, value);
+			}
 		}
 
 		public bool IsMarried
 		{
-			get { return GetBit((byte)Data.MetaData.RelationshipStateBits.Married); }
-			set { SetBit((byte)Data.MetaData.RelationshipStateBits.Married, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.RelationshipStateBits.Married);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.RelationshipStateBits.Married, value);
+			}
 		}
 
 		public bool IsFamilyMember
 		{
-			get { return GetBit((byte)Data.MetaData.RelationshipStateBits.Family); }
-			set { SetBit((byte)Data.MetaData.RelationshipStateBits.Family, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.RelationshipStateBits.Family);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.RelationshipStateBits.Family, value);
+			}
 		}
 
 		public bool IsKnown
 		{
-			get { return GetBit((byte)Data.MetaData.RelationshipStateBits.Known); }
-			set { SetBit((byte)Data.MetaData.RelationshipStateBits.Known, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.RelationshipStateBits.Known);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.RelationshipStateBits.Known, value);
+			}
 		}
 	}
 
@@ -95,8 +156,14 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool isBFF
 		{
-			get { return GetBit((byte)Data.MetaData.UIFlags2Names.BestFriendForever); }
-			set { SetBit((byte)Data.MetaData.UIFlags2Names.BestFriendForever, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.UIFlags2Names.BestFriendForever);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.UIFlags2Names.BestFriendForever, value);
+			}
 		}
 	}
 
@@ -113,7 +180,7 @@ namespace SimPe.PackedFiles.Wrapper
 			IFileWrapper //This Interface is used when loading a File
 			,
 			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-	//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 	{
 		#region Attribute
 		/// <summary>
@@ -131,8 +198,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public int Shortterm
 		{
-			get { return GetValue(0); }
-			set { PutValue(0, value); }
+			get
+			{
+				return GetValue(0);
+			}
+			set
+			{
+				PutValue(0, value);
+			}
 		}
 
 		RelationshipFlags flags = new RelationshipFlags(
@@ -145,7 +218,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <remarks>The Meaning of the Bits is stored in MataData.RelationshipStateBits</remarks>
 		public RelationshipFlags RelationState
 		{
-			get { return flags; }
+			get
+			{
+				return flags;
+			}
 		}
 
 		/// <summary>
@@ -153,8 +229,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public int Longterm
 		{
-			get { return GetValue(2); }
-			set { PutValue(2, value); }
+			get
+			{
+				return GetValue(2);
+			}
+			set
+			{
+				PutValue(2, value);
+			}
 		}
 
 		/// <summary>
@@ -162,8 +244,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public Data.MetaData.RelationshipTypes FamilyRelation
 		{
-			get { return (Data.MetaData.RelationshipTypes)GetValue(3); }
-			set { PutValue(3, (int)value); }
+			get
+			{
+				return (Data.MetaData.RelationshipTypes)GetValue(3);
+			}
+			set
+			{
+				PutValue(3, (int)value);
+			}
 		}
 
 		UIFlags2 flags2 = new UIFlags2(0);
@@ -174,7 +262,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <remarks>The Meaning of the Bits is given by MetaData.UIFlags2Names</remarks>
 		public UIFlags2 RelationState2
 		{
-			get { return values.Length > 9 ? flags2 : null; }
+			get
+			{
+				return values.Length > 9 ? flags2 : null;
+			}
 		}
 		#endregion
 

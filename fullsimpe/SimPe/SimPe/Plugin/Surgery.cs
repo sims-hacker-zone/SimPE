@@ -1208,8 +1208,8 @@ namespace SimPe.Plugin
 			list.Add(Data.MetaData.GZPS); //GZPS, Property Set
 			list.Add(0xAC598EACu); //AGED
 			list.Add(0xCCCEF852u); //LxNR, Face
-			// For now we disregard the user options, and consider
-			// all these types mandatory.
+								   // For now we disregard the user options, and consider
+								   // all these types mandatory.
 			for (
 				int i = 0;
 				i < list.Count && (ret = ContainsType(archeFile.Index, (uint)list[i]));
@@ -1414,7 +1414,10 @@ namespace SimPe.Plugin
 		[Category("General")]
 		public SimPe.Data.Ages Age
 		{
-			get { return (SimPe.Data.Ages)ageData.GetItem("age").UIntegerValue; }
+			get
+			{
+				return (SimPe.Data.Ages)ageData.GetItem("age").UIntegerValue;
+			}
 		}
 
 		[Category("General")]
@@ -1429,31 +1432,46 @@ namespace SimPe.Plugin
 		[Category("General")]
 		public string Name
 		{
-			get { return this.name; }
+			get
+			{
+				return this.name;
+			}
 		}
 
 		[Category("General")]
 		public string Filename
 		{
-			get { return this.filename; }
+			get
+			{
+				return this.filename;
+			}
 		}
 
 		[Category("Genetics")]
 		public string Hair
 		{
-			get { return ageData.GetItem("haircolor").StringValue; }
+			get
+			{
+				return ageData.GetItem("haircolor").StringValue;
+			}
 		}
 
 		[Category("Genetics")]
 		public string Eyes
 		{
-			get { return ageData.GetItem("eyecolor").StringValue; }
+			get
+			{
+				return ageData.GetItem("eyecolor").StringValue;
+			}
 		}
 
 		[Category("Genetics")]
 		public string Skin
 		{
-			get { return ageData.GetItem("skincolor").StringValue; }
+			get
+			{
+				return ageData.GetItem("skincolor").StringValue;
+			}
 		}
 
 		[Category("Genetics")]

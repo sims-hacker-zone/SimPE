@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -42,8 +43,14 @@ namespace SimPe.PackedFiles.Wrapper
 		string flname;
 		public string FileName
 		{
-			get { return flname; }
-			set { flname = value; }
+			get
+			{
+				return flname;
+			}
+			set
+			{
+				flname = value;
+			}
 		}
 		uint resversion;
 
@@ -56,79 +63,124 @@ namespace SimPe.PackedFiles.Wrapper
 		byte operandbits;
 		public byte OpcodeBits
 		{
-			get { return operandbits; }
+			get
+			{
+				return operandbits;
+			}
 		}
 
 		byte bits1;
 		public byte ABits
 		{
-			get { return bits1; }
+			get
+			{
+				return bits1;
+			}
 		}
 		byte bits2;
 		public byte BBits
 		{
-			get { return bits2; }
+			get
+			{
+				return bits2;
+			}
 		}
 		byte bits3;
 		public byte CBits
 		{
-			get { return bits3; }
+			get
+			{
+				return bits3;
+			}
 		}
 
 		byte nrsz;
 		public byte NumberSize
 		{
-			get { return nrsz; }
+			get
+			{
+				return nrsz;
+			}
 		}
 		byte[] sample;
 
 		ObjLuaFunction root;
 		public ObjLuaFunction Root
 		{
-			get { return root; }
+			get
+			{
+				return root;
+			}
 		}
 		#endregion
 
 		#region Code Properties
 		internal uint OpcodeMaks
 		{
-			get { return (uint)Math.Pow(2, this.OpcodeBits) - 1; }
+			get
+			{
+				return (uint)Math.Pow(2, this.OpcodeBits) - 1;
+			}
 		}
 		internal byte OpcodeShift
 		{
-			get { return 0; }
+			get
+			{
+				return 0;
+			}
 		}
 
 		internal uint AMaks
 		{
-			get { return (uint)Math.Pow(2, this.ABits) - 1; }
+			get
+			{
+				return (uint)Math.Pow(2, this.ABits) - 1;
+			}
 		}
 		internal byte AShift
 		{
-			get { return (byte)(this.BShift + this.BBits); }
+			get
+			{
+				return (byte)(this.BShift + this.BBits);
+			}
 		}
 
 		internal uint BMaks
 		{
-			get { return (uint)Math.Pow(2, this.BBits) - 1; }
+			get
+			{
+				return (uint)Math.Pow(2, this.BBits) - 1;
+			}
 		}
 		internal byte BShift
 		{
-			get { return (byte)(this.CShift + this.CBits); }
+			get
+			{
+				return (byte)(this.CShift + this.CBits);
+			}
 		}
 
 		internal uint CMaks
 		{
-			get { return (uint)Math.Pow(2, this.CBits) - 1; }
+			get
+			{
+				return (uint)Math.Pow(2, this.CBits) - 1;
+			}
 		}
 		internal byte CShift
 		{
-			get { return (byte)(this.OpcodeShift + this.OpcodeBits); }
+			get
+			{
+				return (byte)(this.OpcodeShift + this.OpcodeBits);
+			}
 		}
 
 		internal int Bias
 		{
-			get { return ((int)Math.Pow(2, BBits + CBits) - 1) / 2; }
+			get
+			{
+				return ((int)Math.Pow(2, BBits + CBits) - 1) / 2;
+			}
 		}
 		#endregion
 
@@ -381,7 +433,10 @@ namespace SimPe.PackedFiles.Wrapper
 		ObjLua parent;
 		public ObjLua Parent
 		{
-			get { return parent; }
+			get
+			{
+				return parent;
+			}
 		}
 
 		string name;
@@ -390,13 +445,19 @@ namespace SimPe.PackedFiles.Wrapper
 		byte argc;
 		public byte ArgumentCount
 		{
-			get { return argc; }
+			get
+			{
+				return argc;
+			}
 		}
 		byte isinout;
 		byte stacksz;
 		public byte StackSize
 		{
-			get { return stacksz; }
+			get
+			{
+				return stacksz;
+			}
 		}
 
 		ArrayList contants,
@@ -408,32 +469,50 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ArrayList Constants
 		{
-			get { return contants; }
+			get
+			{
+				return contants;
+			}
 		}
 
 		public ArrayList UpValues
 		{
-			get { return upval; }
+			get
+			{
+				return upval;
+			}
 		}
 
 		public ArrayList Locals
 		{
-			get { return local; }
+			get
+			{
+				return local;
+			}
 		}
 
 		public ArrayList SourceLine
 		{
-			get { return srcln; }
+			get
+			{
+				return srcln;
+			}
 		}
 
 		public ArrayList Functions
 		{
-			get { return functions; }
+			get
+			{
+				return functions;
+			}
 		}
 
 		public ArrayList Codes
 		{
-			get { return codes; }
+			get
+			{
+				return codes;
+			}
 		}
 		#endregion
 
@@ -801,28 +880,49 @@ namespace SimPe.PackedFiles.Wrapper
 		ObjLuaFunction parent;
 		public ObjLuaFunction Parent
 		{
-			get { return parent; }
+			get
+			{
+				return parent;
+			}
 		}
 
 		Type type;
 		public Type InstructionType
 		{
-			get { return type; }
-			set { type = value; }
+			get
+			{
+				return type;
+			}
+			set
+			{
+				type = value;
+			}
 		}
 
 		string str;
 		public string String
 		{
-			get { return str; }
-			set { str = value; }
+			get
+			{
+				return str;
+			}
+			set
+			{
+				str = value;
+			}
 		}
 
 		double dval;
 		public double Value
 		{
-			get { return dval; }
-			set { dval = value; }
+			get
+			{
+				return dval;
+			}
+			set
+			{
+				dval = value;
+			}
 		}
 
 		uint[] bdata;
@@ -869,7 +969,9 @@ namespace SimPe.PackedFiles.Wrapper
 							+ " is not supported!"
 					);
 			}
-			else if (type == Type.Empty) { }
+			else if (type == Type.Empty)
+			{
+			}
 			else
 			{
 				throw new Exception(
@@ -906,7 +1008,9 @@ namespace SimPe.PackedFiles.Wrapper
 							+ " is not supported!"
 					);
 			}
-			else if (type == Type.Empty) { }
+			else if (type == Type.Empty)
+			{
+			}
 			else
 			{
 				throw new Exception(
@@ -952,8 +1056,14 @@ namespace SimPe.PackedFiles.Wrapper
 		uint val;
 		public uint Value
 		{
-			get { return val; }
-			set { val = value; }
+			get
+			{
+				return val;
+			}
+			set
+			{
+				val = value;
+			}
 		}
 
 		#endregion
@@ -975,7 +1085,9 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#region IDisposable Member
 
-		public void Dispose() { }
+		public void Dispose()
+		{
+		}
 
 		#endregion
 
@@ -994,21 +1106,39 @@ namespace SimPe.PackedFiles.Wrapper
 			end;
 		public uint Start
 		{
-			get { return start; }
-			set { start = value; }
+			get
+			{
+				return start;
+			}
+			set
+			{
+				start = value;
+			}
 		}
 
 		public uint End
 		{
-			get { return end; }
-			set { end = value; }
+			get
+			{
+				return end;
+			}
+			set
+			{
+				end = value;
+			}
 		}
 
 		string name;
 		public string Name
 		{
-			get { return name; }
-			set { name = value; }
+			get
+			{
+				return name;
+			}
+			set
+			{
+				name = value;
+			}
 		}
 
 		#endregion
@@ -1208,14 +1338,23 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected ObjLuaFunction Parent
 		{
-			get { return parent; }
+			get
+			{
+				return parent;
+			}
 		}
 
 		uint val;
 		public uint Value
 		{
-			get { return val; }
-			set { val = value; }
+			get
+			{
+				return val;
+			}
+			set
+			{
+				val = value;
+			}
 		}
 
 		protected static byte GetOpCode(uint val, ObjLuaFunction parent)
@@ -1241,7 +1380,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public byte Opcode
 		{
-			get { return GetOpCode(val, this.parent); }
+			get
+			{
+				return GetOpCode(val, this.parent);
+			}
 			/*set
 			{
 				SetOpcode(value);
@@ -1319,7 +1461,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public int SBX
 		{
-			get { return (int)((long)BX - parent.Parent.Bias); }
+			get
+			{
+				return (int)((long)BX - parent.Parent.Bias);
+			}
 		}
 
 		public static string GetOpcodeName(byte oc)
@@ -1528,7 +1673,9 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#region IDisposable Member
 
-		public void Dispose() { }
+		public void Dispose()
+		{
+		}
 
 		#endregion
 

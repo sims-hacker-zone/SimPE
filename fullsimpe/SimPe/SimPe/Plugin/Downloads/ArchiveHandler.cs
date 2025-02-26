@@ -12,12 +12,18 @@ namespace SimPe.Plugin.Downloads
 		PackageInfoCollection nfos;
 		protected PackageInfoCollection Nfos
 		{
-			get { return nfos; }
+			get
+			{
+				return nfos;
+			}
 		}
 
 		protected string ArchiveName
 		{
-			get { return flname; }
+			get
+			{
+				return flname;
+			}
 		}
 
 		public ArchiveHandler(string filename)
@@ -38,7 +44,9 @@ namespace SimPe.Plugin.Downloads
 			Reset();
 		}
 
-		protected virtual void OnReset() { }
+		protected virtual void OnReset()
+		{
+		}
 
 		protected abstract SimPe.StringArrayList ExtractArchive();
 
@@ -110,7 +118,9 @@ namespace SimPe.Plugin.Downloads
 			return objects;
 		}
 
-		public virtual void FreeResources() { }
+		public virtual void FreeResources()
+		{
+		}
 
 		protected void Reset()
 		{
@@ -122,7 +132,10 @@ namespace SimPe.Plugin.Downloads
 
 		public IPackageInfo[] Objects
 		{
-			get { return nfos.ToArray(); }
+			get
+			{
+				return nfos.ToArray();
+			}
 		}
 
 		#endregion

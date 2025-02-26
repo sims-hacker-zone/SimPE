@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Windows.Forms;
+
 using SimPe.Collections;
 using SimPe.Events;
 
@@ -32,7 +33,9 @@ namespace SimPe
 		/// <summary>
 		/// Creates a new Instance
 		/// </summary>
-		public LoadedPackage() { }
+		public LoadedPackage()
+		{
+		}
 
 		/// <summary>
 		/// Maximum Number of Characters in the Recent File Menu
@@ -103,7 +106,10 @@ namespace SimPe
 		/// </summary>
 		public SimPe.Packages.GeneratableFile Package
 		{
-			get { return pkg; }
+			get
+			{
+				return pkg;
+			}
 		}
 
 		/// <summary>
@@ -111,7 +117,10 @@ namespace SimPe
 		/// </summary>
 		public bool Loaded
 		{
-			get { return pkg != null; }
+			get
+			{
+				return pkg != null;
+			}
 		}
 
 		/// <summary>
@@ -764,7 +773,9 @@ namespace SimPe
 
 		#region IDisposable Member
 
-		public void Dispose() { }
+		public void Dispose()
+		{
+		}
 
 		#endregion
 	}

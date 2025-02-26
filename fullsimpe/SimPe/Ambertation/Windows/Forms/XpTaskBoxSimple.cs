@@ -75,7 +75,10 @@ namespace Ambertation.Windows.Forms
 			htc;
 		public Color LeftHeaderColor
 		{
-			get { return lhc; }
+			get
+			{
+				return lhc;
+			}
 			set
 			{
 				if (lhc != value)
@@ -88,7 +91,10 @@ namespace Ambertation.Windows.Forms
 
 		public Color RightHeaderColor
 		{
-			get { return rhc; }
+			get
+			{
+				return rhc;
+			}
 			set
 			{
 				if (rhc != value)
@@ -101,7 +107,10 @@ namespace Ambertation.Windows.Forms
 
 		public Color BorderColor
 		{
-			get { return bc; }
+			get
+			{
+				return bc;
+			}
 			set
 			{
 				if (bc != value)
@@ -114,7 +123,10 @@ namespace Ambertation.Windows.Forms
 
 		public Color HeaderTextColor
 		{
-			get { return htc; }
+			get
+			{
+				return htc;
+			}
 			set
 			{
 				if (htc != value)
@@ -127,7 +139,10 @@ namespace Ambertation.Windows.Forms
 
 		public Color BodyColor
 		{
-			get { return bodc; }
+			get
+			{
+				return bodc;
+			}
 			set
 			{
 				if (bodc != value)
@@ -141,7 +156,10 @@ namespace Ambertation.Windows.Forms
 		Font font;
 		public Font HeaderFont
 		{
-			get { return font; }
+			get
+			{
+				return font;
+			}
 			set
 			{
 				if (font != value)
@@ -189,7 +207,10 @@ namespace Ambertation.Windows.Forms
 		Size icsz;
 		public Size IconSize
 		{
-			get { return icsz; }
+			get
+			{
+				return icsz;
+			}
 			set
 			{
 				if (icsz != value)
@@ -203,7 +224,10 @@ namespace Ambertation.Windows.Forms
 		Point icpt;
 		public Point IconLocation
 		{
-			get { return icpt; }
+			get
+			{
+				return icpt;
+			}
 			set
 			{
 				if (icpt != value)
@@ -339,7 +363,10 @@ namespace Ambertation.Windows.Forms
 		]
 		public string HeaderText
 		{
-			get { return this.mstrHeaderText; }
+			get
+			{
+				return this.mstrHeaderText;
+			}
 			set
 			{
 				this.mstrHeaderText = value;
@@ -355,7 +382,10 @@ namespace Ambertation.Windows.Forms
 		]
 		public System.Drawing.Image Icon
 		{
-			get { return this.mIcon; }
+			get
+			{
+				return this.mIcon;
+			}
 			set
 			{
 				this.mIcon = value;
@@ -373,7 +403,10 @@ namespace Ambertation.Windows.Forms
 		]
 		public int HeaderHeight
 		{
-			get { return headerh; }
+			get
+			{
+				return headerh;
+			}
 			set
 			{
 				headerh = value;

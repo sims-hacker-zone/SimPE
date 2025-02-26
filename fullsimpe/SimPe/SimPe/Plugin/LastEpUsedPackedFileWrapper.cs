@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -17,19 +18,37 @@ namespace SimPe.Plugin
 
 		public bool GotMore
 		{
-			get { return gotmore; }
-			set { gotmore = value; }
+			get
+			{
+				return gotmore;
+			}
+			set
+			{
+				gotmore = value;
+			}
 		}
 
 		public ushort Vershin
 		{
-			get { return vershin; }
-			set { vershin = value; }
+			get
+			{
+				return vershin;
+			}
+			set
+			{
+				vershin = value;
+			}
 		}
 		public ushort Prevep
 		{
-			get { return prevep; }
-			set { prevep = value; }
+			get
+			{
+				return prevep;
+			}
+			set
+			{
+				prevep = value;
+			}
 		}
 		#endregion
 
@@ -189,7 +208,10 @@ namespace SimPe.Plugin
 
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		public uint[] AssignableTypes

@@ -999,7 +999,7 @@ namespace SimPe.Packages
 				tbgameguid.Text = s2cp.GameGuid;
 				tbtitle.Text = s2cp.Title;
 				lldep.Enabled = cb2cp.Checked || s2cp.Dependency.Length > 0; // CJH
-				// tbtitle.Color = HotPink;
+																			 // tbtitle.Color = HotPink;
 				cbcompress.SelectedIndex = cbcompress.Items.Count - 1;
 				for (int i = 0; i < cbcompress.Items.Count; i++)
 				{
@@ -1205,7 +1205,9 @@ namespace SimPe.Packages
 			}
 		}
 
-		private void SaveSims2CommunityPack_Load(object sender, System.EventArgs e) { }
+		private void SaveSims2CommunityPack_Load(object sender, System.EventArgs e)
+		{
+		}
 
 		private void Checks2cp(object sender, System.EventArgs e)
 		{

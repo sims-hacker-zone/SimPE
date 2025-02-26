@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.IO;
+
 using SimPe.Collections.IO;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
@@ -275,8 +276,8 @@ namespace SimPe.Packages
 			this.LockStream();
 			OpenReader();
 			System.IO.MemoryStream ms = new MemoryStream(16384); // Fuck
-			// was MemoryStream(10000) : 10000 is odd , assuming bigger is faster is now 16kb
-			// But.. out of mem error can be caused by larger caches so increasing this may be not good
+																 // was MemoryStream(10000) : 10000 is odd , assuming bigger is faster is now 16kb
+																 // But.. out of mem error can be caused by larger caches so increasing this may be not good
 			System.IO.BinaryWriter writer = new BinaryWriter(ms);
 
 			//make sure we write the correct Version!

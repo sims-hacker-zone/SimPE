@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.PackedFiles.Wrapper;
 
 namespace pjse.BhavOperandWizards.WizAnimate
@@ -453,7 +454,10 @@ namespace pjse.BhavOperandWizards.WizAnimate
 		#region iBhavOperandWizForm
 		public Panel WizPanel
 		{
-			get { return this.pnWizAnimate; }
+			get
+			{
+				return this.pnWizAnimate;
+			}
 		}
 
 		public void Execute(Instruction inst)

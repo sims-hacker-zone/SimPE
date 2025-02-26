@@ -30,22 +30,34 @@ namespace SimPe.Interfaces.Files
 		/// <summary>
 		/// Returns true if the PackedFile is compressed
 		/// </summary>
-		bool IsCompressed { get; }
+		bool IsCompressed
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Size of the File
 		/// </summary>
-		int Size { get; }
+		int Size
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Size of the File
 		/// </summary>
-		ushort Signature { get; }
+		ushort Signature
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Uncompressed Filesize
 		/// </summary>
-		uint UncompressedSize { get; }
+		uint UncompressedSize
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Plain File Data (might be compressed)
@@ -54,7 +66,10 @@ namespace SimPe.Interfaces.Files
 		/// All Header Informations are Cut from the Data, so you really
 		/// get the Data Stored in the PackedFile
 		/// </remarks>
-		Byte[] Data { get; }
+		Byte[] Data
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Plain File Data (might be compressed)
@@ -62,12 +77,18 @@ namespace SimPe.Interfaces.Files
 		/// <remarks>
 		/// Header Informations are Included
 		/// </remarks>
-		Byte[] PlainData { get; }
+		Byte[] PlainData
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Plain File Data. If the Packed File is compress it will be decompressed
 		/// </summary>
-		byte[] UncompressedData { get; }
+		byte[] UncompressedData
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Uncompressed Data
@@ -86,6 +107,9 @@ namespace SimPe.Interfaces.Files
 		/// <summary>
 		/// Returns the Plain File Data. If the Packed File is compress it will be decompressed
 		/// </summary>
-		System.IO.Stream UncompressedStream { get; }
+		System.IO.Stream UncompressedStream
+		{
+			get;
+		}
 	}
 }

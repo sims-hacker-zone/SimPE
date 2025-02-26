@@ -28,7 +28,10 @@ namespace SimPe.Actions.Default
 		private SimPe.Windows.Forms.ResourceListViewExt lv = null;
 		private ViewFilter Filter
 		{
-			get { return (ViewFilter)((lv == null) ? null : lv.Filter); }
+			get
+			{
+				return (ViewFilter)((lv == null) ? null : lv.Filter);
+			}
 		}
 
 		public ActionGroupFilter(SimPe.Windows.Forms.ResourceListViewExt value)
@@ -79,7 +82,10 @@ namespace SimPe.Actions.Default
 		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
-			get { return SimPe.GetIcon.actionFilter; }
+			get
+			{
+				return SimPe.GetIcon.actionFilter;
+			}
 		}
 
 		public override System.Windows.Forms.Shortcut Shortcut

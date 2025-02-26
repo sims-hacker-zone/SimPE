@@ -39,8 +39,14 @@ namespace SimPe.Plugin
 
 		public bool Locked
 		{
-			get { return GetBit((byte)WantFlagValues.Locked); }
-			set { SetBit((byte)WantFlagValues.Locked, value); }
+			get
+			{
+				return GetBit((byte)WantFlagValues.Locked);
+			}
+			set
+			{
+				SetBit((byte)WantFlagValues.Locked, value);
+			}
 		}
 	}
 
@@ -53,77 +59,140 @@ namespace SimPe.Plugin
 		uint version;
 		public uint Version
 		{
-			get { return version; }
-			set { version = value; }
+			get
+			{
+				return version;
+			}
+			set
+			{
+				version = value;
+			}
 		}
 
 		ushort siminst;
 		public ushort SimInstance
 		{
-			get { return siminst; }
-			set { siminst = value; }
+			get
+			{
+				return siminst;
+			}
+			set
+			{
+				siminst = value;
+			}
 		}
 
 		uint guid;
 		public uint Guid
 		{
-			get { return guid; }
-			set { guid = value; }
+			get
+			{
+				return guid;
+			}
+			set
+			{
+				guid = value;
+			}
 		}
 
 		WantType type;
 		public WantType Type
 		{
-			get { return type; }
-			set { type = value; }
+			get
+			{
+				return type;
+			}
+			set
+			{
+				type = value;
+			}
 		}
 
 		uint data;
 		public uint Value
 		{
-			get { return data; }
-			set { data = value; }
+			get
+			{
+				return data;
+			}
+			set
+			{
+				data = value;
+			}
 		}
 
 		ushort property;
 		public ushort Property
 		{
-			get { return property; }
-			set { property = value; }
+			get
+			{
+				return property;
+			}
+			set
+			{
+				property = value;
+			}
 		}
 
 		uint counter;
 		public uint Index
 		{
-			get { return counter; }
-			set { counter = value; }
+			get
+			{
+				return counter;
+			}
+			set
+			{
+				counter = value;
+			}
 		}
 
 		int score;
 		public int Score
 		{
-			get { return score; }
-			set { score = value; }
+			get
+			{
+				return score;
+			}
+			set
+			{
+				score = value;
+			}
 		}
 
 		WantFlags flag;
 		public WantFlags Flag
 		{
-			get { return flag; }
-			set { flag = value; }
+			get
+			{
+				return flag;
+			}
+			set
+			{
+				flag = value;
+			}
 		}
 
 		int influence;
 		public int Influence
 		{
-			get { return influence; }
-			set { influence = value; }
+			get
+			{
+				return influence;
+			}
+			set
+			{
+				influence = value;
+			}
 		}
 
 		Interfaces.IProviderRegistry provider;
 		public Interfaces.IProviderRegistry Provider
 		{
-			get { return provider; }
+			get
+			{
+				return provider;
+			}
 		}
 
 		/// <summary>
@@ -131,7 +200,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public WantInformation Information
 		{
-			get { return WantInformation.LoadWant(guid); }
+			get
+			{
+				return WantInformation.LoadWant(guid);
+			}
 		}
 		#endregion
 

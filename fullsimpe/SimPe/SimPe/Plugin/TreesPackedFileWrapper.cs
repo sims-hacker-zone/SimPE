@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -39,48 +40,102 @@ namespace SimPe.Plugin
 
 		public uint Vershin
 		{
-			get { return version; }
-			set { version = value; }
+			get
+			{
+				return version;
+			}
+			set
+			{
+				version = value;
+			}
 		}
 		internal uint Header
 		{
-			get { return header; }
-			set { header = value; }
+			get
+			{
+				return header;
+			}
+			set
+			{
+				header = value;
+			}
 		}
 		internal uint Unk0
 		{
-			get { return unknown_0; }
-			set { unknown_0 = value; }
+			get
+			{
+				return unknown_0;
+			}
+			set
+			{
+				unknown_0 = value;
+			}
 		}
 		internal uint Unk1
 		{
-			get { return unknown_1; }
-			set { unknown_1 = value; }
+			get
+			{
+				return unknown_1;
+			}
+			set
+			{
+				unknown_1 = value;
+			}
 		}
 		internal uint Unk2
 		{
-			get { return unknown_2; }
-			set { unknown_2 = value; }
+			get
+			{
+				return unknown_2;
+			}
+			set
+			{
+				unknown_2 = value;
+			}
 		}
 		internal uint Unk3
 		{
-			get { return unknown_3; }
-			set { unknown_3 = value; }
+			get
+			{
+				return unknown_3;
+			}
+			set
+			{
+				unknown_3 = value;
+			}
 		}
 		internal uint Unk4
 		{
-			get { return unknown_4; }
-			set { unknown_4 = value; }
+			get
+			{
+				return unknown_4;
+			}
+			set
+			{
+				unknown_4 = value;
+			}
 		}
 		internal uint Unk5
 		{
-			get { return unknown_5; }
-			set { unknown_5 = value; }
+			get
+			{
+				return unknown_5;
+			}
+			set
+			{
+				unknown_5 = value;
+			}
 		}
 		public string FileNam
 		{
-			get { return filename; }
-			set { filename = value; }
+			get
+			{
+				return filename;
+			}
+			set
+			{
+				filename = value;
+			}
 		}
 
 		/// <summary>
@@ -88,8 +143,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string[] Items
 		{
-			get { return items; }
-			set { items = value; }
+			get
+			{
+				return items;
+			}
+			set
+			{
+				items = value;
+			}
 		}
 
 		/// <summary>
@@ -97,7 +158,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public int Count
 		{
-			get { return count; }
+			get
+			{
+				return count;
+			}
 			set
 			{
 				count = value;
@@ -356,7 +420,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		/// <summary>

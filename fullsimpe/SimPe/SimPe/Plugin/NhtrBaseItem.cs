@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Geometry;
 
 namespace SimPe.Plugin
@@ -24,25 +25,46 @@ namespace SimPe.Plugin
 
 		public Vector3f Position
 		{
-			get { return pos; }
-			set { pos = value; }
+			get
+			{
+				return pos;
+			}
+			set
+			{
+				pos = value;
+			}
 		}
 
 		public Vector2f BoundingBoxMinimum
 		{
-			get { return min; }
-			set { min = value; }
+			get
+			{
+				return min;
+			}
+			set
+			{
+				min = value;
+			}
 		}
 
 		public Vector2f BoundingBoxMaximum
 		{
-			get { return max; }
-			set { max = value; }
+			get
+			{
+				return max;
+			}
+			set
+			{
+				max = value;
+			}
 		}
 
 		public byte Marker2
 		{
-			get { return marker2; }
+			get
+			{
+				return marker2;
+			}
 		}
 
 		protected abstract void DoUnserialize(System.IO.BinaryReader reader);

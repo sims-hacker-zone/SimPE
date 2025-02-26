@@ -27,12 +27,18 @@ namespace SimPe.Windows.Forms
 
 		public ResourceViewManager.ResourceNameList Resources
 		{
-			get { return list; }
+			get
+			{
+				return list;
+			}
 		}
 
 		public virtual ulong ID
 		{
-			get { return id; }
+			get
+			{
+				return id;
+			}
 		}
 
 		#region IComparable<ResResourceTreeNodeExt> Member

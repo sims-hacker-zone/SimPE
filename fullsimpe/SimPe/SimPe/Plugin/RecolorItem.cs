@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
@@ -19,13 +20,22 @@ namespace SimPe.Plugin
 
 		public RcolTable Materials
 		{
-			get { return this.txmt; }
-			set { this.txmt = value; }
+			get
+			{
+				return this.txmt;
+			}
+			set
+			{
+				this.txmt = value;
+			}
 		}
 
 		public HairColor ColorBin
 		{
-			get { return this.colorBin; }
+			get
+			{
+				return this.colorBin;
+			}
 			set
 			{
 				this.colorBin = value;
@@ -39,7 +49,10 @@ namespace SimPe.Plugin
 
 		public MetaData.Bodyshape Figure
 		{
-			get { return (MetaData.Bodyshape)CpfItem("product").UIntegerValue; }
+			get
+			{
+				return (MetaData.Bodyshape)CpfItem("product").UIntegerValue;
+			}
 			set
 			{
 				this.SetValue("product", Convert.ToUInt32(value));
@@ -50,26 +63,50 @@ namespace SimPe.Plugin
 
 		public uint Flaggery
 		{
-			get { return this.CpfItem("flags").UIntegerValue; }
-			set { this.CpfItem("flags").UIntegerValue = value; }
+			get
+			{
+				return this.CpfItem("flags").UIntegerValue;
+			}
+			set
+			{
+				this.CpfItem("flags").UIntegerValue = value;
+			}
 		}
 
 		public Guid Hairtone
 		{
-			get { return ParseGuidValue(CpfItem("hairtone")); }
-			set { this.SetValue("hairtone", value.ToString()); }
+			get
+			{
+				return ParseGuidValue(CpfItem("hairtone"));
+			}
+			set
+			{
+				this.SetValue("hairtone", value.ToString());
+			}
 		}
 
 		public Ages Age
 		{
-			get { return (Ages)CpfItem("age").UIntegerValue; }
-			set { this.SetValue("age", Convert.ToUInt32(value)); }
+			get
+			{
+				return (Ages)CpfItem("age").UIntegerValue;
+			}
+			set
+			{
+				this.SetValue("age", Convert.ToUInt32(value));
+			}
 		}
 
 		public SimGender Gender
 		{
-			get { return (SimGender)CpfItem("gender").UIntegerValue; }
-			set { this.SetValue("gender", Convert.ToUInt32(value)); }
+			get
+			{
+				return (SimGender)CpfItem("gender").UIntegerValue;
+			}
+			set
+			{
+				this.SetValue("gender", Convert.ToUInt32(value));
+			}
 		}
 
 		public TextureOverlayTypes TextureOverlayType
@@ -80,7 +117,10 @@ namespace SimPe.Plugin
 					return (TextureOverlayTypes)CpfItem("subtype").UIntegerValue;
 				return TextureOverlayTypes.EyeBrow;
 			}
-			set { this.SetValue("subtype", Convert.ToUInt32(value)); }
+			set
+			{
+				this.SetValue("subtype", Convert.ToUInt32(value));
+			}
 		}
 
 		public OutfitType OutfitType
@@ -106,8 +146,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public uint Version
 		{
-			get { return this.CpfItem("version").UIntegerValue; }
-			set { this.CpfItem("version").UIntegerValue = value; }
+			get
+			{
+				return this.CpfItem("version").UIntegerValue;
+			}
+			set
+			{
+				this.CpfItem("version").UIntegerValue = value;
+			}
 		}
 
 		#endregion

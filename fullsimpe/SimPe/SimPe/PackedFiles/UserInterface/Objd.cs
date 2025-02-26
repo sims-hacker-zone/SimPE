@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 
@@ -35,7 +36,10 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public Control GUIHandle
 		{
-			get { return form.objdPanel; }
+			get
+			{
+				return form.objdPanel;
+			}
 		}
 
 		public void UpdateGUI(SimPe.Interfaces.Plugin.IFileWrapper wrapper)

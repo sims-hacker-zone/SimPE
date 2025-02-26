@@ -85,12 +85,18 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get { return System.Windows.Forms.Shortcut.None; }
+			get
+			{
+				return System.Windows.Forms.Shortcut.None;
+			}
 		}
 
 		public System.Drawing.Image Icon
 		{
-			get { return rd.dcResource.TabImage; }
+			get
+			{
+				return rd.dcResource.TabImage;
+			}
 		}
 
 		public virtual bool Visible

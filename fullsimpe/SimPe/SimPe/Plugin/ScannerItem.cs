@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Cache;
 
 namespace SimPe.Plugin
@@ -30,7 +31,10 @@ namespace SimPe.Plugin
 		PackageCacheItem pci;
 		public PackageCacheItem PackageCacheItem
 		{
-			get { return pci; }
+			get
+			{
+				return pci;
+			}
 		}
 
 		string filename;
@@ -40,7 +44,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string FileName
 		{
-			get { return filename; }
+			get
+			{
+				return filename;
+			}
 			set
 			{
 				if (filename.Trim().ToLower() != value.Trim().ToLower())
@@ -52,7 +59,10 @@ namespace SimPe.Plugin
 		SimPe.Cache.CacheContainer cc;
 		public SimPe.Cache.CacheContainer ParentContainer
 		{
-			get { return cc; }
+			get
+			{
+				return cc;
+			}
 		}
 
 		SimPe.Packages.GeneratableFile pkg = null;
@@ -71,7 +81,10 @@ namespace SimPe.Plugin
 
 				return pkg;
 			}
-			set { pkg = value; }
+			set
+			{
+				pkg = value;
+			}
 		}
 
 		public ScannerItem(PackageCacheItem pci, SimPe.Cache.CacheContainer cc)
@@ -84,8 +97,14 @@ namespace SimPe.Plugin
 		System.Windows.Forms.ListViewItem lvi;
 		public System.Windows.Forms.ListViewItem ListViewItem
 		{
-			get { return lvi; }
-			set { lvi = value; }
+			get
+			{
+				return lvi;
+			}
+			set
+			{
+				lvi = value;
+			}
 		}
 	}
 }

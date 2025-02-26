@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -20,8 +21,14 @@ namespace SimPe.Plugin
 		private ushort trunned; // trunned is Tips Run-ed)
 		public ushort Trunned
 		{
-			get { return trunned; }
-			set { trunned = value; }
+			get
+			{
+				return trunned;
+			}
+			set
+			{
+				trunned = value;
+			}
 		}
 		#endregion
 
@@ -101,7 +108,9 @@ namespace SimPe.Plugin
 			}
 		}
 
-		protected override void Serialize(System.IO.BinaryWriter writer) { }
+		protected override void Serialize(System.IO.BinaryWriter writer)
+		{
+		}
 		#endregion
 
 		#region IFileWrapperSaveExtension Member
@@ -112,7 +121,10 @@ namespace SimPe.Plugin
 
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		public uint[] AssignableTypes

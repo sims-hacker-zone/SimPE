@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.Drawing;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -32,20 +33,38 @@ namespace SimPe.Plugin
 
 		public byte Enabled
 		{
-			get { return enabled; }
-			set { enabled = value; }
+			get
+			{
+				return enabled;
+			}
+			set
+			{
+				enabled = value;
+			}
 		}
 
 		public byte Dependant
 		{
-			get { return depend; }
-			set { depend = value; }
+			get
+			{
+				return depend;
+			}
+			set
+			{
+				depend = value;
+			}
 		}
 
 		public uint Index
 		{
-			get { return index; }
-			set { index = value; }
+			get
+			{
+				return index;
+			}
+			set
+			{
+				index = value;
+			}
 		}
 
 		/// <summary>
@@ -99,15 +118,27 @@ namespace SimPe.Plugin
 		ObjectGraphNodeItem[] items;
 		public ObjectGraphNodeItem[] Items
 		{
-			get { return items; }
-			set { items = value; }
+			get
+			{
+				return items;
+			}
+			set
+			{
+				items = value;
+			}
 		}
 
 		string filename;
 		public string FileName
 		{
-			get { return filename; }
-			set { filename = value; }
+			get
+			{
+				return filename;
+			}
+			set
+			{
+				filename = value;
+			}
 		}
 		#endregion
 		/*public Rcol Parent

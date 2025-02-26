@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Data;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -60,8 +61,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint Type
 		{
-			get { return type; }
-			set { type = value; }
+			get
+			{
+				return type;
+			}
+			set
+			{
+				type = value;
+			}
 		}
 
 		/// <summary>
@@ -69,7 +76,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public Data.TypeAlias TypeName
 		{
-			get { return Data.MetaData.FindTypeAlias(Type); }
+			get
+			{
+				return Data.MetaData.FindTypeAlias(Type);
+			}
 		}
 
 		uint group;
@@ -79,8 +89,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint Group
 		{
-			get { return group; }
-			set { group = value; }
+			get
+			{
+				return group;
+			}
+			set
+			{
+				group = value;
+			}
 		}
 
 		uint instance;
@@ -90,8 +106,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint Instance
 		{
-			get { return instance; }
-			set { instance = value; }
+			get
+			{
+				return instance;
+			}
+			set
+			{
+				instance = value;
+			}
 		}
 
 		uint subtype;
@@ -102,8 +124,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <remarks>Only in Version 1.1 of package Files</remarks>
 		public uint SubType
 		{
-			get { return subtype; }
-			set { subtype = value; }
+			get
+			{
+				return subtype;
+			}
+			set
+			{
+				subtype = value;
+			}
 		}
 
 		uint uncsize;
@@ -113,8 +141,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint UncompressedSize
 		{
-			get { return uncsize; }
-			set { uncsize = value; }
+			get
+			{
+				return uncsize;
+			}
+			set
+			{
+				uncsize = value;
+			}
 		}
 
 		public override int GetHashCode()

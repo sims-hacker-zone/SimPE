@@ -285,6 +285,8 @@ namespace SimPe
 			}
 		}
 
-		private void tbName_TextChanged(object sender, System.EventArgs e) { }
+		private void tbName_TextChanged(object sender, System.EventArgs e)
+		{
+		}
 	}
 }

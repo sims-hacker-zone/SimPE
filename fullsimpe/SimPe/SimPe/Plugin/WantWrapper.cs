@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -36,34 +37,55 @@ namespace SimPe.Plugin
 			IFileWrapper //This Interface is used when loading a File
 			,
 			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-	//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 	{
 		#region Attributes
 		uint version;
 		public uint Version
 		{
-			get { return version; }
+			get
+			{
+				return version;
+			}
 		}
 
 		WantItem[] lifewants;
 		public WantItem[] LifetimeWants
 		{
-			get { return lifewants; }
-			set { lifewants = value; }
+			get
+			{
+				return lifewants;
+			}
+			set
+			{
+				lifewants = value;
+			}
 		}
 
 		WantItem[] wants;
 		public WantItem[] Wants
 		{
-			get { return wants; }
-			set { wants = value; }
+			get
+			{
+				return wants;
+			}
+			set
+			{
+				wants = value;
+			}
 		}
 
 		WantItem[] fears;
 		public WantItem[] Fears
 		{
-			get { return fears; }
-			set { fears = value; }
+			get
+			{
+				return fears;
+			}
+			set
+			{
+				fears = value;
+			}
 		}
 		uint unknown1;
 		uint unknown2;
@@ -74,8 +96,14 @@ namespace SimPe.Plugin
 		WantItemContainer[] items;
 		public WantItemContainer[] History
 		{
-			get { return items; }
-			set { items = value; }
+			get
+			{
+				return items;
+			}
+			set
+			{
+				items = value;
+			}
 		}
 
 		/// <summary>
@@ -115,7 +143,10 @@ namespace SimPe.Plugin
 		Interfaces.IProviderRegistry provider;
 		public Interfaces.IProviderRegistry Provider
 		{
-			get { return provider; }
+			get
+			{
+				return provider;
+			}
 		}
 
 		/// <summary>
@@ -306,7 +337,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		/// <summary>

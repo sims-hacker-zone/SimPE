@@ -308,33 +308,33 @@ namespace SimPe.Plugin.Gmdc
 				try
 				{
 #endif
-					int c = g.Elements[0].Values.Count;
-					if (o == null)
+				int c = g.Elements[0].Values.Count;
+				if (o == null)
+				{
+					if (fc.V >= 0)
 					{
-						if (fc.V >= 0)
+						int cv = -1;
+						if (g.KeepOrder)
 						{
-							int cv = -1;
-							if (g.KeepOrder)
-							{
-								if (f.Data[0] > 0)
-									c = (int)f.Data[0] - 1;
-								cv = c;
-							}
-
-							AddElement(g, 0, vertices[fc.V], cv);
-							AddElement(g, 1, normals[fc.VN], cv);
-							AddElement(g, 2, uvmaps[fc.VU], cv);
+							if (f.Data[0] > 0)
+								c = (int)f.Data[0] - 1;
+							cv = c;
 						}
 
-						facealias[fc] = c;
-					}
-					else
-					{
-						c = (int)o;
+						AddElement(g, 0, vertices[fc.V], cv);
+						AddElement(g, 1, normals[fc.VN], cv);
+						AddElement(g, 2, uvmaps[fc.VU], cv);
 					}
 
-					if (fc.V >= 0 || fc.VN >= 0 || fc.VU >= 0)
-						g.Group.Faces.Add(c);
+					facealias[fc] = c;
+				}
+				else
+				{
+					c = (int)o;
+				}
+
+				if (fc.V >= 0 || fc.VN >= 0 || fc.VU >= 0)
+					g.Group.Faces.Add(c);
 #if DEBUG
 				}
 				catch (Exception ex)
@@ -449,39 +449,39 @@ namespace SimPe.Plugin.Gmdc
 					if (faces.Count < 0x1000)
 					{
 						for (int i = 0; i < lv.Count; i++)
-						for (int j = 0; j < lvn.Count; j++)
-						for (int k = 0; k < lvt.Count; k++)
-						{
-							if (
-								(
-									(int)lv[i] == (int)lvn[j]
-									|| (int)lv[i] == -1
-									|| (int)lvn[j] == -1
-								)
-								&& (
-									(int)lv[i] == (int)lvt[k]
-									|| (int)lv[i] == -1
-									|| (int)lvt[k] == -1
-								)
-								&& (
-									(int)lvn[j] == (int)lvt[k]
-									|| (int)lvt[k] == -1
-									|| (int)lvn[j] == -1
-								)
-							)
-							{
-								int val = (int)lv[i];
-								if (val == -1)
-									val = (int)lvn[j];
-								if (val == -1)
-									val = (int)lvt[k];
-								if (val != -1)
+							for (int j = 0; j < lvn.Count; j++)
+								for (int k = 0; k < lvt.Count; k++)
 								{
-									g.Group.Faces.Add(val);
-									found = true;
+									if (
+										(
+											(int)lv[i] == (int)lvn[j]
+											|| (int)lv[i] == -1
+											|| (int)lvn[j] == -1
+										)
+										&& (
+											(int)lv[i] == (int)lvt[k]
+											|| (int)lv[i] == -1
+											|| (int)lvt[k] == -1
+										)
+										&& (
+											(int)lvn[j] == (int)lvt[k]
+											|| (int)lvt[k] == -1
+											|| (int)lvn[j] == -1
+										)
+									)
+									{
+										int val = (int)lv[i];
+										if (val == -1)
+											val = (int)lvn[j];
+										if (val == -1)
+											val = (int)lvt[k];
+										if (val != -1)
+										{
+											g.Group.Faces.Add(val);
+											found = true;
+										}
+									}
 								}
-							}
-						}
 					}
 
 					//unfortunatley we did not find matching pairs, so add new Elements

@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -12,11 +13,17 @@ namespace SimPe.Plugin
 	{
 		protected new CregPackedFileWrapper Wrapper
 		{
-			get { return base.Wrapper as CregPackedFileWrapper; }
+			get
+			{
+				return base.Wrapper as CregPackedFileWrapper;
+			}
 		}
 		public CregPackedFileWrapper TPFW
 		{
-			get { return (CregPackedFileWrapper)Wrapper; }
+			get
+			{
+				return (CregPackedFileWrapper)Wrapper;
+			}
 		}
 
 		#region WrapperBaseControl Member
@@ -76,7 +83,10 @@ namespace SimPe.Plugin
 		#region IPackedFileUI Member
 		System.Windows.Forms.Control IPackedFileUI.GUIHandle
 		{
-			get { return this; }
+			get
+			{
+				return this;
+			}
 		}
 		#endregion
 

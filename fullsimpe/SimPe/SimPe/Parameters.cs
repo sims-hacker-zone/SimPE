@@ -52,7 +52,10 @@ namespace SimPe
 		/// </summary>
 		public string[] Files
 		{
-			get { return files; }
+			get
+			{
+				return files;
+			}
 		}
 	}
 }

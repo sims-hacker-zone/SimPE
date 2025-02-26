@@ -21,6 +21,9 @@ namespace SimPe.Plugin.Downloads
 		/// <summary>
 		/// Returns informations about the Content stored in the package
 		/// </summary>
-		IPackageInfo[] Objects { get; }
+		IPackageInfo[] Objects
+		{
+			get;
+		}
 	}
 }

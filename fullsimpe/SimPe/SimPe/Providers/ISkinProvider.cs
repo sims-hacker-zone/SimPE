@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Files;
 
 namespace SimPe.Interfaces.Providers
@@ -40,7 +41,10 @@ namespace SimPe.Interfaces.Providers
 		/// <summary>
 		/// Returns a list of all known memories
 		/// </summary>
-		ArrayList StoredSkins { get; }
+		ArrayList StoredSkins
+		{
+			get;
+		}
 
 		string FindTxtrName(Interfaces.Files.IPackedFileDescriptor spfd);
 		string FindTxtrName(string matdname);

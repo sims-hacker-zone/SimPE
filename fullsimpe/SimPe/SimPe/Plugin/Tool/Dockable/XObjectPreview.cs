@@ -29,7 +29,10 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public override bool Loaded
 		{
-			get { return base.Loaded || (cpf != null); }
+			get
+			{
+				return base.Loaded || (cpf != null);
+			}
 		}
 
 		SimPe.PackedFiles.Wrapper.Cpf cpf;
@@ -37,7 +40,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		[Browsable(false)]
 		public SimPe.PackedFiles.Wrapper.Cpf SelectedXObject
 		{
-			get { return cpf; }
+			get
+			{
+				return cpf;
+			}
 			set
 			{
 				if (cpf != value)

@@ -23,7 +23,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 using Ambertation.Windows.Forms;
+
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
@@ -135,7 +137,10 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public SimPe.PackedFiles.Wrapper.ExtSrel Srel
 		{
-			get { return (SimPe.PackedFiles.Wrapper.ExtSrel)Wrapper; }
+			get
+			{
+				return (SimPe.PackedFiles.Wrapper.ExtSrel)Wrapper;
+			}
 		}
 
 		protected override void RefreshGUI()

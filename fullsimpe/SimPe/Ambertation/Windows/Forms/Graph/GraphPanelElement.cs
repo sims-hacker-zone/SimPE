@@ -57,7 +57,10 @@ namespace Ambertation.Windows.Forms.Graph
 			fg;
 		public Color BackColor
 		{
-			get { return bg; }
+			get
+			{
+				return bg;
+			}
 			set
 			{
 				if (bg != value)
@@ -71,7 +74,10 @@ namespace Ambertation.Windows.Forms.Graph
 
 		public Color ForeColor
 		{
-			get { return fg; }
+			get
+			{
+				return fg;
+			}
 			set
 			{
 				if (fg != value)
@@ -89,54 +95,90 @@ namespace Ambertation.Windows.Forms.Graph
 			height;
 		public int Left
 		{
-			get { return left; }
+			get
+			{
+				return left;
+			}
 		}
 
 		public int Top
 		{
-			get { return top; }
+			get
+			{
+				return top;
+			}
 		}
 
 		public int Width
 		{
-			get { return width; }
+			get
+			{
+				return width;
+			}
 		}
 
 		public int Height
 		{
-			get { return height; }
+			get
+			{
+				return height;
+			}
 		}
 
 		public int Right
 		{
-			get { return this.BoundingRectangle.Right; }
+			get
+			{
+				return this.BoundingRectangle.Right;
+			}
 		}
 
 		public int Bottom
 		{
-			get { return this.BoundingRectangle.Bottom; }
+			get
+			{
+				return this.BoundingRectangle.Bottom;
+			}
 		}
 		public Point Location
 		{
-			get { return new Point(Left, Top); }
-			set { this.SetBounds(value.X, value.Y, Width, Height); }
+			get
+			{
+				return new Point(Left, Top);
+			}
+			set
+			{
+				this.SetBounds(value.X, value.Y, Width, Height);
+			}
 		}
 
 		public Size Size
 		{
-			get { return new Size(Width, Height); }
-			set { this.SetBounds(Left, Top, value.Width, value.Height); }
+			get
+			{
+				return new Size(Width, Height);
+			}
+			set
+			{
+				this.SetBounds(Left, Top, value.Width, value.Height);
+			}
 		}
 
 		public Rectangle BoundingRectangle
 		{
-			get { return new Rectangle(left, top, width, height); }
+			get
+			{
+				return new Rectangle(left, top, width, height);
+			}
 		}
 
 		GraphPanel parent;
 		public GraphPanel Parent
 		{
-			get { return parent; }
+			get
+			{
+				return parent;
+			}
 			set
 			{
 				if (parent != value)
@@ -163,7 +205,10 @@ namespace Ambertation.Windows.Forms.Graph
 		/// </summary>
 		public virtual bool Quality
 		{
-			get { return quality; }
+			get
+			{
+				return quality;
+			}
 			set
 			{
 				if (quality != value)
@@ -177,8 +222,14 @@ namespace Ambertation.Windows.Forms.Graph
 		bool savebound;
 		public virtual bool SaveBounds
 		{
-			get { return savebound; }
-			set { savebound = value; }
+			get
+			{
+				return savebound;
+			}
+			set
+			{
+				savebound = value;
+			}
 		}
 		#endregion
 
@@ -364,7 +415,10 @@ namespace Ambertation.Windows.Forms.Graph
 
 		public Image SourceImage
 		{
-			get { return cachedimage; }
+			get
+			{
+				return cachedimage;
+			}
 		}
 
 		protected void CompleteRedraw(System.Drawing.Graphics g)
@@ -419,9 +473,13 @@ namespace Ambertation.Windows.Forms.Graph
 		}
 
 		#region Events
-		protected virtual void OnMove() { }
+		protected virtual void OnMove()
+		{
+		}
 
-		protected virtual void OnSizeChanged() { }
+		protected virtual void OnSizeChanged()
+		{
+		}
 
 		public event System.EventHandler GotFocus;
 		public event System.EventHandler LostFocus;
@@ -433,7 +491,10 @@ namespace Ambertation.Windows.Forms.Graph
 		bool update;
 		public bool Updating
 		{
-			get { return update; }
+			get
+			{
+				return update;
+			}
 		}
 
 		public void BeginUpdate()

@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.IO;
+
 using SimPe;
 using SimPe.Plugin;
 
@@ -32,7 +33,10 @@ namespace SimPe.Cache
 	{
 		public static string CacheFileName
 		{
-			get { return Helper.GetSimPeLanguageCache("scanner_"); }
+			get
+			{
+				return Helper.GetSimPeLanguageCache("scanner_");
+			}
 		}
 
 		/// <summary>

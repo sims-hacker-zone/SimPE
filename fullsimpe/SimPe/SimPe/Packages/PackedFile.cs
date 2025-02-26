@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
@@ -85,7 +86,10 @@ namespace SimPe.Packages
 		/// </summary>
 		public int Size
 		{
-			get { return size; }
+			get
+			{
+				return size;
+			}
 		}
 
 		/// <summary>
@@ -98,13 +102,19 @@ namespace SimPe.Packages
 		/// </summary>
 		public ushort Signature
 		{
-			get { return signature; }
+			get
+			{
+				return signature;
+			}
 		}
 
 		internal uint datastart;
 		public uint DataStart
 		{
-			get { return datastart; }
+			get
+			{
+				return datastart;
+			}
 		}
 
 		/// <summary>
@@ -117,7 +127,10 @@ namespace SimPe.Packages
 		/// </summary>
 		public uint DataSize
 		{
-			get { return datasize; }
+			get
+			{
+				return datasize;
+			}
 		}
 
 		/// <summary>
@@ -133,7 +146,10 @@ namespace SimPe.Packages
 		internal uint uncsize;
 		public uint UncompressedSize
 		{
-			get { return uncsize; }
+			get
+			{
+				return uncsize;
+			}
 		}
 
 		/// <summary>
@@ -166,7 +182,10 @@ namespace SimPe.Packages
 		/// </summary>
 		public Byte[] PlainData
 		{
-			get { return data; }
+			get
+			{
+				return data;
+			}
 		}
 
 		class OffsetStream : System.IO.Stream
@@ -184,17 +203,26 @@ namespace SimPe.Packages
 
 			public override bool CanRead
 			{
-				get { return s.CanRead; }
+				get
+				{
+					return s.CanRead;
+				}
 			}
 
 			public override bool CanSeek
 			{
-				get { return s.CanSeek; }
+				get
+				{
+					return s.CanSeek;
+				}
 			}
 
 			public override bool CanWrite
 			{
-				get { return s.CanWrite; }
+				get
+				{
+					return s.CanWrite;
+				}
 			}
 
 			public override void Flush()
@@ -204,13 +232,22 @@ namespace SimPe.Packages
 
 			public override long Length
 			{
-				get { return sz; }
+				get
+				{
+					return sz;
+				}
 			}
 
 			public override long Position
 			{
-				get { return s.Position - o; }
-				set { s.Position = value + o; }
+				get
+				{
+					return s.Position - o;
+				}
+				set
+				{
+					s.Position = value + o;
+				}
 			}
 
 			public override int Read(byte[] buffer, int offset, int count)
@@ -767,8 +804,14 @@ namespace SimPe.Packages
 		/// </summary>
 		public static int CompressionStrength
 		{
-			get { return compstrength; }
-			set { compstrength = value; }
+			get
+			{
+				return compstrength;
+			}
+			set
+			{
+				compstrength = value;
+			}
 		}
 
 		/// <summary>

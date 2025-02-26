@@ -31,13 +31,22 @@ namespace Ambertation.Windows.Forms.Graph
 
 		public string Name
 		{
-			get { return name; }
+			get
+			{
+				return name;
+			}
 		}
 
 		public object Value
 		{
-			get { return val; }
-			set { val = value; }
+			get
+			{
+				return val;
+			}
+			set
+			{
+				val = value;
+			}
 		}
 
 		public PropertyItem(string name, object val)

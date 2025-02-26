@@ -20,7 +20,9 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+
 using Ambertation.Windows.Forms;
+
 using SimPe.Events;
 
 namespace SimPe.Interfaces

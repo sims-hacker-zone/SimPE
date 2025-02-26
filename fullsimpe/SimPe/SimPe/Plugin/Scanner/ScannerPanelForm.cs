@@ -1149,6 +1149,8 @@ namespace SimPe.Plugin.Scanner
 			);
 		}
 
-		private void cbact_CheckedChanged(object sender, EventArgs e) { }
+		private void cbact_CheckedChanged(object sender, EventArgs e)
+		{
+		}
 	}
 }

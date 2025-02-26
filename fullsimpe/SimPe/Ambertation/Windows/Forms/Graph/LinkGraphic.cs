@@ -42,19 +42,34 @@ namespace Ambertation.Windows.Forms.Graph
 		int y;
 		public int X
 		{
-			get { return x; }
-			set { x = value; }
+			get
+			{
+				return x;
+			}
+			set
+			{
+				x = value;
+			}
 		}
 		public int Y
 		{
-			get { return y; }
-			set { y = value; }
+			get
+			{
+				return y;
+			}
+			set
+			{
+				y = value;
+			}
 		}
 
 		LinkControlType lct;
 		public LinkControlType Type
 		{
-			get { return lct; }
+			get
+			{
+				return lct;
+			}
 		}
 
 		public double Distance(DockPoint d)
@@ -153,7 +168,10 @@ namespace Ambertation.Windows.Forms.Graph
 		Font fnt;
 		public Font Font
 		{
-			get { return fnt; }
+			get
+			{
+				return fnt;
+			}
 			set
 			{
 				if (fnt != value)
@@ -172,7 +190,10 @@ namespace Ambertation.Windows.Forms.Graph
 		/// </summary>
 		public GraphItemBase StartElement
 		{
-			get { return sc; }
+			get
+			{
+				return sc;
+			}
 			set
 			{
 				if (sc != value)
@@ -193,7 +214,10 @@ namespace Ambertation.Windows.Forms.Graph
 		/// </summary>
 		public GraphItemBase EndElement
 		{
-			get { return ec; }
+			get
+			{
+				return ec;
+			}
 			set
 			{
 				if (ec != value)
@@ -217,7 +241,10 @@ namespace Ambertation.Windows.Forms.Graph
 		/// </summary>
 		public LinkControlSnapAnchor StartAnchorSnap
 		{
-			get { return ssa; }
+			get
+			{
+				return ssa;
+			}
 			set
 			{
 				if (ssa != value)
@@ -236,7 +263,10 @@ namespace Ambertation.Windows.Forms.Graph
 		/// </summary>
 		public LinkControlSnapAnchor EndAnchorSnap
 		{
-			get { return esa; }
+			get
+			{
+				return esa;
+			}
 			set
 			{
 				if (esa != value)
@@ -258,7 +288,10 @@ namespace Ambertation.Windows.Forms.Graph
 		/// </summary>
 		public byte StartAnchor
 		{
-			get { return sa; }
+			get
+			{
+				return sa;
+			}
 			set
 			{
 				if (sa != value)
@@ -275,7 +308,10 @@ namespace Ambertation.Windows.Forms.Graph
 		/// </summary>
 		public byte EndAnchor
 		{
-			get { return ea; }
+			get
+			{
+				return ea;
+			}
 			set
 			{
 				if (ea != value)
@@ -295,7 +331,10 @@ namespace Ambertation.Windows.Forms.Graph
 		/// </summary>
 		public int LineWidth
 		{
-			get { return lw; }
+			get
+			{
+				return lw;
+			}
 			set
 			{
 				if (lw != value)
@@ -315,7 +354,10 @@ namespace Ambertation.Windows.Forms.Graph
 		/// </summary>
 		public LinkControlCapType StartCap
 		{
-			get { return psa; }
+			get
+			{
+				return psa;
+			}
 			set
 			{
 				if (psa != value)
@@ -332,7 +374,10 @@ namespace Ambertation.Windows.Forms.Graph
 		/// </summary>
 		public LinkControlCapType EndCap
 		{
-			get { return pea; }
+			get
+			{
+				return pea;
+			}
 			set
 			{
 				if (pea != value)
@@ -351,7 +396,10 @@ namespace Ambertation.Windows.Forms.Graph
 		/// </summary>
 		public LinkControlLineMode LineMode
 		{
-			get { return lclm; }
+			get
+			{
+				return lclm;
+			}
 			set
 			{
 				if (lclm != value)
@@ -366,7 +414,10 @@ namespace Ambertation.Windows.Forms.Graph
 		string txt;
 		public string Text
 		{
-			get { return txt; }
+			get
+			{
+				return txt;
+			}
 			set
 			{
 				txt = value;
@@ -379,7 +430,10 @@ namespace Ambertation.Windows.Forms.Graph
 			tfg;
 		public Color TextBackColor
 		{
-			get { return tbg; }
+			get
+			{
+				return tbg;
+			}
 			set
 			{
 				if (tbg != value)
@@ -393,7 +447,10 @@ namespace Ambertation.Windows.Forms.Graph
 
 		public Color TextForeColor
 		{
-			get { return tfg; }
+			get
+			{
+				return tfg;
+			}
 			set
 			{
 				if (tfg != value)
@@ -410,7 +467,10 @@ namespace Ambertation.Windows.Forms.Graph
 		[Browsable(false)]
 		public int SnapThreshhold
 		{
-			get { return 12; }
+			get
+			{
+				return 12;
+			}
 		}
 		#endregion
 
@@ -479,12 +539,18 @@ namespace Ambertation.Windows.Forms.Graph
 		#region Placement
 		public static Size ArrowSize
 		{
-			get { return new Size(8, 8); }
+			get
+			{
+				return new Size(8, 8);
+			}
 		}
 
 		public static Size HalfArrowSize
 		{
-			get { return new Size(ArrowSize.Width / 2, ArrowSize.Height / 2); }
+			get
+			{
+				return new Size(ArrowSize.Width / 2, ArrowSize.Height / 2);
+			}
 		}
 
 		protected Point GetAnchorLocation(byte lca, GraphItemBase c)

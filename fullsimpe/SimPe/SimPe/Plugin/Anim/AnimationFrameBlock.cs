@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
+
 using SimPe.Geometry;
 
 namespace SimPe.Plugin.Anim
@@ -35,7 +36,10 @@ namespace SimPe.Plugin.Anim
 		[Browsable(false)]
 		public AnimationMeshBlock Parent
 		{
-			get { return parent; }
+			get
+			{
+				return parent;
+			}
 		}
 
 		AnimationAxisTransformBlock[] ab3;
@@ -43,7 +47,10 @@ namespace SimPe.Plugin.Anim
 		[BrowsableAttribute(false)]
 		public AnimationAxisTransformBlock[] AxisSet
 		{
-			get { return ab3; }
+			get
+			{
+				return ab3;
+			}
 		}
 
 		[
@@ -52,7 +59,10 @@ namespace SimPe.Plugin.Anim
 		]
 		public int AxisCount
 		{
-			get { return ab3.Length; }
+			get
+			{
+				return ab3.Length;
+			}
 		}
 
 		internal int MaxAxisFrameCount
@@ -73,7 +83,10 @@ namespace SimPe.Plugin.Anim
 		]
 		public int FrameCount
 		{
-			get { return Frames.Length; }
+			get
+			{
+				return Frames.Length;
+			}
 		}
 
 		public void InterpolateMissingBlocks(AnimationFrame[] frames, short maxtime)
@@ -82,9 +95,9 @@ namespace SimPe.Plugin.Anim
 				return;
 
 			for (int i = 0; i < frames.Length; i++)
-			for (int j = 0; j < frames[i].Blocks.Length; j++)
-				if (frames[i].Blocks[j] == null)
-					Interpolate(frames, i, j, maxtime);
+				for (int j = 0; j < frames[i].Blocks.Length; j++)
+					if (frames[i].Blocks[j] == null)
+						Interpolate(frames, i, j, maxtime);
 		}
 
 		public AnimationFrame[] InterpolateMissingFrames()
@@ -161,7 +174,10 @@ namespace SimPe.Plugin.Anim
 		]
 		public AnimationFrame[] Frames
 		{
-			get { return GetFrames(false); }
+			get
+			{
+				return GetFrames(false);
+			}
 		}
 
 		[
@@ -186,8 +202,14 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown1
 		{
-			get { return datai[0]; }
-			set { datai[0] = value; }
+			get
+			{
+				return datai[0];
+			}
+			set
+			{
+				datai[0] = value;
+			}
 		}
 
 		[
@@ -197,8 +219,14 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown2
 		{
-			get { return datai[1]; }
-			set { datai[1] = value; }
+			get
+			{
+				return datai[1];
+			}
+			set
+			{
+				datai[1] = value;
+			}
 		}
 
 		[
@@ -208,8 +236,14 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint NameChecksum
 		{
-			get { return datai[2]; }
-			set { datai[2] = value; }
+			get
+			{
+				return datai[2];
+			}
+			set
+			{
+				datai[2] = value;
+			}
 		}
 
 #if DEBUG
@@ -233,8 +267,14 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown4
 		{
-			get { return datai[3]; }
-			set { datai[3] = value; }
+			get
+			{
+				return datai[3];
+			}
+			set
+			{
+				datai[3] = value;
+			}
 		}
 
 		[
@@ -281,7 +321,10 @@ namespace SimPe.Plugin.Anim
 
 		public override string Name
 		{
-			get { return base.Name; }
+			get
+			{
+				return base.Name;
+			}
 			set
 			{
 				base.Name = value;
@@ -294,8 +337,14 @@ namespace SimPe.Plugin.Anim
 		)]
 		public uint Unknown5
 		{
-			get { return datai[4]; }
-			set { datai[4] = value; }
+			get
+			{
+				return datai[4];
+			}
+			set
+			{
+				datai[4] = value;
+			}
 		}
 
 		[DescriptionAttribute("Bits 24-28 of Unknown5")]
@@ -338,7 +387,10 @@ namespace SimPe.Plugin.Anim
 		)]
 		public string Unknown5Hex
 		{
-			get { return "0x" + Helper.HexString(Unknown5); }
+			get
+			{
+				return "0x" + Helper.HexString(Unknown5);
+			}
 		}
 
 		[
@@ -348,8 +400,14 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown6
 		{
-			get { return datai[5]; }
-			set { datai[5] = value; }
+			get
+			{
+				return datai[5];
+			}
+			set
+			{
+				datai[5] = value;
+			}
 		}
 		#endregion
 

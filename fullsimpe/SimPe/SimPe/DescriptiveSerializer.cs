@@ -32,7 +32,10 @@ namespace SimPe
 
 		public override string Seperator
 		{
-			get { return ";"; }
+			get
+			{
+				return ";";
+			}
 		}
 
 		public override string SaveStr(string val)

@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.Globalization;
 using System.IO;
+
 using SimPe.Geometry;
 
 namespace SimPe.Plugin.Gmdc
@@ -36,7 +37,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public int VertexCount
 		{
-			get { return verts.Length; }
+			get
+			{
+				return verts.Length;
+			}
 		}
 
 		Vectors3f verts;
@@ -46,8 +50,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public Vectors3f Vertices
 		{
-			get { return verts; }
-			set { verts = value; }
+			get
+			{
+				return verts;
+			}
+			set
+			{
+				verts = value;
+			}
 		}
 
 		IntArrayList items;
@@ -57,8 +67,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public IntArrayList Items
 		{
-			get { return items; }
-			set { items = value; }
+			get
+			{
+				return items;
+			}
+			set
+			{
+				items = value;
+			}
 		}
 		#endregion
 
@@ -368,8 +384,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public new GmdcJoint this[int index]
 		{
-			get { return ((GmdcJoint)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((GmdcJoint)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -377,8 +399,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcJoint this[uint index]
 		{
-			get { return ((GmdcJoint)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((GmdcJoint)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -440,7 +468,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		/// <summary>

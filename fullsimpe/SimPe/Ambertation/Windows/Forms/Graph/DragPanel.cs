@@ -55,19 +55,28 @@ namespace Ambertation.Windows.Forms.Graph
 		[Browsable(false)]
 		public bool Down
 		{
-			get { return down; }
+			get
+			{
+				return down;
+			}
 		}
 
 		bool focused;
 		public bool Focused
 		{
-			get { return focused; }
+			get
+			{
+				return focused;
+			}
 		}
 
 		bool lk;
 		public bool Movable
 		{
-			get { return lk; }
+			get
+			{
+				return lk;
+			}
 			set
 			{
 				if (lk != value)
@@ -81,7 +90,10 @@ namespace Ambertation.Windows.Forms.Graph
 		Font fnt;
 		public Font Font
 		{
-			get { return fnt; }
+			get
+			{
+				return fnt;
+			}
 			set
 			{
 				if (fnt != value)

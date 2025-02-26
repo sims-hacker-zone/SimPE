@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Geometry;
 
 namespace SimPe.Plugin
@@ -30,29 +31,53 @@ namespace SimPe.Plugin
 		[System.ComponentModel.Category("Placement")]
 		public NhtrLocation TopLeft
 		{
-			get { return topleft; }
-			set { topleft = value; }
+			get
+			{
+				return topleft;
+			}
+			set
+			{
+				topleft = value;
+			}
 		}
 
 		[System.ComponentModel.Category("Placement")]
 		public NhtrLocation TopRight
 		{
-			get { return topright; }
-			set { topright = value; }
+			get
+			{
+				return topright;
+			}
+			set
+			{
+				topright = value;
+			}
 		}
 
 		[System.ComponentModel.Category("Placement")]
 		public NhtrLocation BottomLeft
 		{
-			get { return botleft; }
-			set { botleft = value; }
+			get
+			{
+				return botleft;
+			}
+			set
+			{
+				botleft = value;
+			}
 		}
 
 		[System.ComponentModel.Category("Placement")]
 		public NhtrLocation BottomRight
 		{
-			get { return botright; }
-			set { botright = value; }
+			get
+			{
+				return botright;
+			}
+			set
+			{
+				botright = value;
+			}
 		}
 
 		[System.ComponentModel.TypeConverter(
@@ -60,13 +85,22 @@ namespace SimPe.Plugin
 		)]
 		public uint Texture
 		{
-			get { return texture; }
-			set { texture = value; }
+			get
+			{
+				return texture;
+			}
+			set
+			{
+				texture = value;
+			}
 		}
 
 		public byte[] Data
 		{
-			get { return data; }
+			get
+			{
+				return data;
+			}
 		}
 
 		protected override void DoUnserialize(System.IO.BinaryReader reader)

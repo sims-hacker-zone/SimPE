@@ -22,6 +22,7 @@ using System.Collections;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+
 using SimPe.Events;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
@@ -89,13 +90,19 @@ namespace SimPe
 		string name;
 		public new string Name
 		{
-			get { return name; }
+			get
+			{
+				return name;
+			}
 		}
 
 		bool havedock;
 		public bool HaveDock
 		{
-			get { return havedock; }
+			get
+			{
+				return havedock;
+			}
 		}
 
 		public MyButtonItem(string name)

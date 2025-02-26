@@ -23,6 +23,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -63,7 +64,7 @@ namespace SimPe.Plugin
 			IFileWrapper //This Interface is used when loading a File
 			,
 			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-	//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 	{
 		public enum LotType : byte
 		{
@@ -94,29 +95,55 @@ namespace SimPe.Plugin
 			uint apartmentSublot;
 			public uint ApartmentSublot
 			{
-				get { return apartmentSublot; }
-				set { apartmentSublot = value; }
+				get
+				{
+					return apartmentSublot;
+				}
+				set
+				{
+					apartmentSublot = value;
+				}
 			}
 			uint family;
 			public uint Family
 			{
-				get { return family; }
-				set { family = value; }
+				get
+				{
+					return family;
+				}
+				set
+				{
+					family = value;
+				}
 			}
 			uint unknown_2;
 			internal uint Unknown2
 			{
-				get { return unknown_2; }
-				set { unknown_2 = value; }
+				get
+				{
+					return unknown_2;
+				}
+				set
+				{
+					unknown_2 = value;
+				}
 			}
 			uint unknown_3;
 			internal uint Unknown3
 			{
-				get { return unknown_3; }
-				set { unknown_3 = value; }
+				get
+				{
+					return unknown_3;
+				}
+				set
+				{
+					unknown_3 = value;
+				}
 			}
 
-			internal SubLot() { }
+			internal SubLot()
+			{
+			}
 
 			internal SubLot(System.IO.BinaryReader reader)
 			{
@@ -185,66 +212,138 @@ namespace SimPe.Plugin
 		#region Accessor methods
 		public LtxtVersion Version
 		{
-			get { return (LtxtVersion)ver; }
-			set { ver = (ushort)value; }
+			get
+			{
+				return (LtxtVersion)ver;
+			}
+			set
+			{
+				ver = (ushort)value;
+			}
 		}
 		internal LtxtSubVersion SubVersion
 		{
-			get { return (LtxtSubVersion)subver; }
-			set { subver = (ushort)value; }
+			get
+			{
+				return (LtxtSubVersion)subver;
+			}
+			set
+			{
+				subver = (ushort)value;
+			}
 		}
 		public Size LotSize
 		{
-			get { return sz; }
-			set { sz = value; }
+			get
+			{
+				return sz;
+			}
+			set
+			{
+				sz = value;
+			}
 		}
 		public LotType Type
 		{
-			get { return type; }
-			set { type = value; }
+			get
+			{
+				return type;
+			}
+			set
+			{
+				type = value;
+			}
 		}
 		public byte LotRoads
 		{
-			get { return roads; }
-			set { roads = value; }
+			get
+			{
+				return roads;
+			}
+			set
+			{
+				roads = value;
+			}
 		}
 		public byte LotRotation
 		{
-			get { return (byte)rotation; }
-			set { rotation = (Rotation)value; }
+			get
+			{
+				return (byte)rotation;
+			}
+			set
+			{
+				rotation = (Rotation)value;
+			}
 		}
 		public uint Unknown0
 		{
-			get { return unknown_0; }
-			set { unknown_0 = value; }
+			get
+			{
+				return unknown_0;
+			}
+			set
+			{
+				unknown_0 = value;
+			}
 		} // Lot Flags, Use as Boolset
 		public string LotName
 		{
-			get { return lotname; }
-			set { lotname = value; }
+			get
+			{
+				return lotname;
+			}
+			set
+			{
+				lotname = value;
+			}
 		}
 		public string LotDesc
 		{
-			get { return description; }
-			set { description = value; }
+			get
+			{
+				return description;
+			}
+			set
+			{
+				description = value;
+			}
 		}
 		internal List<float> Unknown1
 		{
-			get { return unknown_1; }
+			get
+			{
+				return unknown_1;
+			}
 		}
 		internal Single Unknown3
 		{
-			get { return unknown_3; }
-			set { unknown_3 = value; }
+			get
+			{
+				return unknown_3;
+			}
+			set
+			{
+				unknown_3 = value;
+			}
 		}
 		public uint Unknown4
 		{
-			get { return unknown_4; }
-			set { unknown_4 = value; }
+			get
+			{
+				return unknown_4;
+			}
+			set
+			{
+				unknown_4 = value;
+			}
 		} // Lot Hobby Flags, Use as Boolset
 		internal byte[] Unknown5
 		{
-			get { return unknown_5; }
+			get
+			{
+				return unknown_5;
+			}
 			set
 			{
 				unknown_5 = new byte[9];
@@ -254,58 +353,121 @@ namespace SimPe.Plugin
 		}
 		public uint LotClass
 		{
-			get { return lotclass; }
-			set { lotclass = value; }
+			get
+			{
+				return lotclass;
+			}
+			set
+			{
+				lotclass = value;
+			}
 		}
 		internal byte Clset
 		{
-			get { return clset; }
-			set { clset = value; }
+			get
+			{
+				return clset;
+			}
+			set
+			{
+				clset = value;
+			}
 		}
 
 		public Point LotPosition
 		{
-			get { return loc; }
-			set { loc = value; }
+			get
+			{
+				return loc;
+			}
+			set
+			{
+				loc = value;
+			}
 		}
 		public float LotElevation
 		{
-			get { return elevation; }
-			set { elevation = value; }
+			get
+			{
+				return elevation;
+			}
+			set
+			{
+				elevation = value;
+			}
 		}
 		public uint LotInstance
 		{
-			get { return lotInstance; }
-			set { lotInstance = value; }
+			get
+			{
+				return lotInstance;
+			}
+			set
+			{
+				lotInstance = value;
+			}
 		}
 		public LotOrientation Orientation
 		{
-			get { return orient; }
-			set { orient = value; }
+			get
+			{
+				return orient;
+			}
+			set
+			{
+				orient = value;
+			}
 		}
 		public string Texture
 		{
-			get { return texture; }
-			set { texture = value; }
+			get
+			{
+				return texture;
+			}
+			set
+			{
+				texture = value;
+			}
 		}
 		internal byte Unknown2
 		{
-			get { return unknown_2; }
-			set { unknown_2 = value; }
+			get
+			{
+				return unknown_2;
+			}
+			set
+			{
+				unknown_2 = value;
+			}
 		}
 		public uint OwnerInstance
 		{
-			get { return owner; }
-			set { owner = value; }
+			get
+			{
+				return owner;
+			}
+			set
+			{
+				owner = value;
+			}
 		}
 		public uint ApartmentBase
 		{
-			get { return apartmentBase; }
-			set { apartmentBase = value; }
+			get
+			{
+				return apartmentBase;
+			}
+			set
+			{
+				apartmentBase = value;
+			}
 		}
 		internal byte[] Unknown6
 		{
-			get { return unknown_6; }
+			get
+			{
+				return unknown_6;
+			}
 			set
 			{
 				unknown_6 = new byte[9];
@@ -315,16 +477,28 @@ namespace SimPe.Plugin
 		}
 		public List<SubLot> SubLots
 		{
-			get { return subLots; }
+			get
+			{
+				return subLots;
+			}
 		}
 		public List<uint> Unknown7
 		{
-			get { return unknown_7; }
+			get
+			{
+				return unknown_7;
+			}
 		}
 		internal byte[] Followup
 		{
-			get { return followup; }
-			set { followup = value; }
+			get
+			{
+				return followup;
+			}
+			set
+			{
+				followup = value;
+			}
 		}
 		internal string appendage
 		{
@@ -363,7 +537,10 @@ namespace SimPe.Plugin
 		Interfaces.IProviderRegistry provider;
 		public Interfaces.IProviderRegistry Provider
 		{
-			get { return provider; }
+			get
+			{
+				return provider;
+			}
 		}
 
 		public Ltxt()
@@ -603,7 +780,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		/// <summary>
@@ -611,7 +791,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public uint[] AssignableTypes
 		{
-			get { return new uint[] { Ltxttype }; }
+			get
+			{
+				return new uint[] { Ltxttype };
+			}
 		}
 
 		#endregion

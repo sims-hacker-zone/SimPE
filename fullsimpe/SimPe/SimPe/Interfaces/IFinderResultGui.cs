@@ -39,7 +39,13 @@ namespace SimPe.Interfaces
 		void StartSearch(AFinderTool sender);
 		void StopSearch();
 
-		bool ForcedStop { get; }
-		bool Searching { get; }
+		bool ForcedStop
+		{
+			get;
+		}
+		bool Searching
+		{
+			get;
+		}
 	}
 }

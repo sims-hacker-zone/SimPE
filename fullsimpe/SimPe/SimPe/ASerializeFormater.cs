@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Reflection;
+
 using SimPe.Interfaces.Plugin.Internal;
 
 namespace SimPe
@@ -28,7 +29,10 @@ namespace SimPe
 	/// </summary>
 	public abstract class AbstractSerializer : SimPe.Interfaces.ISerializeFormater
 	{
-		public abstract string Seperator { get; }
+		public abstract string Seperator
+		{
+			get;
+		}
 
 		public abstract string SaveStr(string val);
 

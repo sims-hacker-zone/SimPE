@@ -26,7 +26,9 @@ namespace SimPe.Actions.Default
 	/// </summary>
 	public class AddAction : ReplaceAction
 	{
-		public AddAction() { }
+		public AddAction()
+		{
+		}
 
 		#region IToolAction Member
 
@@ -69,7 +71,10 @@ namespace SimPe.Actions.Default
 		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
-			get { return SimPe.GetIcon.actionImport; }
+			get
+			{
+				return SimPe.GetIcon.actionImport;
+			}
 		}
 		#endregion
 	}

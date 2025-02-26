@@ -27,7 +27,10 @@ namespace SimPe.Interfaces
 	/// </summary>
 	public interface ISerializeFormater
 	{
-		string Seperator { get; }
+		string Seperator
+		{
+			get;
+		}
 
 		string SaveStr(string val);
 

@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Data;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -43,8 +44,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public MetaData.DataTypes Datatype
 		{
-			get { return dt; }
-			set { dt = value; }
+			get
+			{
+				return dt;
+			}
+			set
+			{
+				dt = value;
+			}
 		}
 
 		byte[] name;
@@ -54,8 +61,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public string Name
 		{
-			get { return Helper.ToString(name); }
-			set { name = Helper.ToBytes(value, 0); }
+			get
+			{
+				return Helper.ToString(name);
+			}
+			set
+			{
+				name = Helper.ToBytes(value, 0);
+			}
 		}
 
 		/// <summary>
@@ -63,8 +76,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public byte[] PlainName
 		{
-			get { return name; }
-			set { name = value; }
+			get
+			{
+				return name;
+			}
+			set
+			{
+				name = value;
+			}
 		}
 
 		#region value Handling
@@ -75,8 +94,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public Byte[] Value
 		{
-			get { return val; }
-			set { val = value; }
+			get
+			{
+				return val;
+			}
+			set
+			{
+				val = value;
+			}
 		}
 
 		/// <summary>

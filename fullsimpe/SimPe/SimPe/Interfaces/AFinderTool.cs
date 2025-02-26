@@ -49,7 +49,10 @@ namespace SimPe.Interfaces
 
 		protected SimPe.ThemeManager ThemeManager
 		{
-			get { return tm; }
+			get
+			{
+				return tm;
+			}
 		}
 
 		/// <summary>
@@ -58,8 +61,14 @@ namespace SimPe.Interfaces
 		[System.ComponentModel.Localizable(true)]
 		public string Title
 		{
-			get { return grp.HeaderText; }
-			set { grp.HeaderText = value; }
+			get
+			{
+				return grp.HeaderText;
+			}
+			set
+			{
+				grp.HeaderText = value;
+			}
 		}
 
 		/// <summary>
@@ -67,7 +76,10 @@ namespace SimPe.Interfaces
 		/// </summary>
 		protected IFinderResultGui ResultGui
 		{
-			get { return rgui; }
+			get
+			{
+				return rgui;
+			}
 		}
 
 		internal void SetResultGui(IFinderResultGui gui)
@@ -81,7 +93,10 @@ namespace SimPe.Interfaces
 		/// </summary>
 		public System.Windows.Forms.Control SearchGui
 		{
-			get { return this; }
+			get
+			{
+				return this;
+			}
 		}
 
 		/// <summary>
@@ -130,7 +145,10 @@ namespace SimPe.Interfaces
 		/// </summary>
 		public virtual bool ProcessParalell
 		{
-			get { return true; }
+			get
+			{
+				return true;
+			}
 		}
 
 		/// <summary>
@@ -141,7 +159,9 @@ namespace SimPe.Interfaces
 		public virtual void SearchPackage(
 			SimPe.Interfaces.Files.IPackageFile pkg,
 			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
-		) { }
+		)
+		{
+		}
 
 		protected virtual bool OnPrepareStart()
 		{

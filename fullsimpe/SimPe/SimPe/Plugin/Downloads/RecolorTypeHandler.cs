@@ -9,7 +9,9 @@ namespace SimPe.Plugin.Downloads
 	{
 		protected PackageInfo nfo;
 
-		public RecolorTypeHandler() { }
+		public RecolorTypeHandler()
+		{
+		}
 
 		protected void PostponedRender(object sender, EventArgs e)
 		{
@@ -223,7 +225,10 @@ namespace SimPe.Plugin.Downloads
 
 		public IPackageInfo[] Objects
 		{
-			get { return new IPackageInfo[] { nfo }; }
+			get
+			{
+				return new IPackageInfo[] { nfo };
+			}
 		}
 
 		#endregion

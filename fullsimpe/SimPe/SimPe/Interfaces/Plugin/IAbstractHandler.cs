@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin.Internal;
 
@@ -40,7 +41,10 @@ namespace SimPe.Interfaces.Plugin
 		/// </summary>
 		public bool Processed
 		{
-			get { return processed; }
+			get
+			{
+				return processed;
+			}
 		}
 
 		/// <summary>
@@ -86,7 +90,9 @@ namespace SimPe.Interfaces.Plugin
 		/// <param name="writer">The Stream the Data should be written to</param>
 		/// <remarks>This implemenation wont save anything, you have to reimplement
 		/// this in your class. </remarks>
-		protected virtual void Serialize(System.IO.BinaryWriter writer) { }
+		protected virtual void Serialize(System.IO.BinaryWriter writer)
+		{
+		}
 
 		/// <summary>
 		/// Creates a new Wrapper Infor Object
@@ -282,17 +288,28 @@ namespace SimPe.Interfaces.Plugin
 		bool changed;
 		public virtual bool Changed
 		{
-			get { return changed; }
-			set { changed = value; }
+			get
+			{
+				return changed;
+			}
+			set
+			{
+				changed = value;
+			}
 		}
 		#endregion
 
 		#region IPackedFileLoadExtension Member
-		public virtual void Fix(IWrapperRegistry registry) { }
+		public virtual void Fix(IWrapperRegistry registry)
+		{
+		}
 
 		public IPackedFileDescriptor FileDescriptor
 		{
-			get { return pfd; }
+			get
+			{
+				return pfd;
+			}
 			set
 			{
 				processed = false;
@@ -308,12 +325,18 @@ namespace SimPe.Interfaces.Plugin
 					ui = CreateDefaultUIHandler();
 				return ui;
 			}
-			set { ui = value; }
+			set
+			{
+				ui = value;
+			}
 		}
 
 		public IPackageFile Package
 		{
-			get { return package; }
+			get
+			{
+				return package;
+			}
 			set
 			{
 				processed = false;
@@ -523,8 +546,14 @@ namespace SimPe.Interfaces.Plugin
 		/// </summary>
 		public int Priority
 		{
-			get { return priority; }
-			set { priority = value; }
+			get
+			{
+				return priority;
+			}
+			set
+			{
+				priority = value;
+			}
 		}
 
 		/// <summary>
@@ -532,7 +561,10 @@ namespace SimPe.Interfaces.Plugin
 		/// </summary>
 		public virtual string Description
 		{
-			get { return ""; }
+			get
+			{
+				return "";
+			}
 		}
 
 		/// <summary>
@@ -540,7 +572,10 @@ namespace SimPe.Interfaces.Plugin
 		/// </summary>
 		public virtual string DescriptionHeader
 		{
-			get { return ""; }
+			get
+			{
+				return "";
+			}
 		}
 
 		/// <summary>
@@ -640,7 +675,10 @@ namespace SimPe.Interfaces.Plugin
 		/// </summary>
 		public virtual System.IO.MemoryStream Content
 		{
-			get { return null; }
+			get
+			{
+				return null;
+			}
 		}
 
 		/// <summary>
@@ -663,7 +701,10 @@ namespace SimPe.Interfaces.Plugin
 		/// </summary>
 		public IFileWrapper SingleGuiWrapper
 		{
-			set { guiwrapper = value; }
+			set
+			{
+				guiwrapper = value;
+			}
 		}
 
 		#region IMultiplePackedFileWrapper Member

@@ -26,10 +26,19 @@ namespace SimPe.Interfaces.Plugin
 	/// </summary>
 	public interface IToolResult
 	{
-		bool ChangedPackage { get; }
+		bool ChangedPackage
+		{
+			get;
+		}
 
-		bool ChangedFile { get; }
+		bool ChangedFile
+		{
+			get;
+		}
 
-		bool ChangedAny { get; }
+		bool ChangedAny
+		{
+			get;
+		}
 	}
 }

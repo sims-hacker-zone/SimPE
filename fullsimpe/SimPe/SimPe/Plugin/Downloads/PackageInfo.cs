@@ -160,29 +160,53 @@ namespace SimPe.Plugin.Downloads
 		Expansions exp;
 		public Expansions FirstExpansion
 		{
-			get { return exp; }
-			set { exp = value; }
+			get
+			{
+				return exp;
+			}
+			set
+			{
+				exp = value;
+			}
 		}
 
 		string name;
 		public string Name
 		{
-			get { return name; }
-			set { name = value; }
+			get
+			{
+				return name;
+			}
+			set
+			{
+				name = value;
+			}
 		}
 
 		string desc;
 		public string Description
 		{
-			get { return desc; }
-			set { desc = value; }
+			get
+			{
+				return desc;
+			}
+			set
+			{
+				desc = value;
+			}
 		}
 
 		string cat;
 		public string Category
 		{
-			get { return cat; }
-			set { cat = value; }
+			get
+			{
+				return cat;
+			}
+			set
+			{
+				cat = value;
+			}
 		}
 
 		Image img;
@@ -200,53 +224,95 @@ namespace SimPe.Plugin.Downloads
 
 				return img;
 			}
-			set { img = value; }
+			set
+			{
+				img = value;
+			}
 		}
 
 		public bool HasThumbnail
 		{
-			get { return img != null; }
+			get
+			{
+				return img != null;
+			}
 		}
 		public Image RenderedImage
 		{
-			get { return myrender; }
-			set { myrender = value; }
+			get
+			{
+				return myrender;
+			}
+			set
+			{
+				myrender = value;
+			}
 		}
 
 		int vertct;
 		public int VertexCount
 		{
-			get { return vertct; }
-			set { vertct = value; }
+			get
+			{
+				return vertct;
+			}
+			set
+			{
+				vertct = value;
+			}
 		}
 		public bool HighVertexCount
 		{
-			get { return (VertexCount > 8000); }
+			get
+			{
+				return (VertexCount > 8000);
+			}
 		}
 
 		int facect;
 		public int FaceCount
 		{
-			get { return facect; }
-			set { facect = value; }
+			get
+			{
+				return facect;
+			}
+			set
+			{
+				facect = value;
+			}
 		}
 		public bool HighFaceCount
 		{
-			get { return (FaceCount > 8000); }
+			get
+			{
+				return (FaceCount > 8000);
+			}
 		}
 
 		int price;
 		public int Price
 		{
-			get { return price; }
-			set { price = value; }
+			get
+			{
+				return price;
+			}
+			set
+			{
+				price = value;
+			}
 		}
 
 		uint[] guid;
 		public uint[] Guids
 		{
-			get { return guid; }
-			set { guid = value; }
+			get
+			{
+				return guid;
+			}
+			set
+			{
+				guid = value;
+			}
 		}
 
 		internal void ClearGuidList()
@@ -262,8 +328,14 @@ namespace SimPe.Plugin.Downloads
 		SimPe.Cache.PackageType type;
 		public SimPe.Cache.PackageType Type
 		{
-			get { return type; }
-			set { type = value; }
+			get
+			{
+				return type;
+			}
+			set
+			{
+				type = value;
+			}
 		}
 
 		public void Reset()
@@ -344,8 +416,14 @@ namespace SimPe.Plugin.Downloads
 		/// </summary>
 		public bool KnockoutThumbnail
 		{
-			get { return knockout; }
-			set { knockout = value; }
+			get
+			{
+				return knockout;
+			}
+			set
+			{
+				knockout = value;
+			}
 		}
 
 		public Image GetThumbnail()
@@ -369,8 +447,14 @@ namespace SimPe.Plugin.Downloads
 		object rd;
 		internal object RenderData
 		{
-			get { return rd; }
-			set { rd = value; }
+			get
+			{
+				return rd;
+			}
+			set
+			{
+				rd = value;
+			}
 		}
 		internal System.EventHandler PostponedRenderer;
 

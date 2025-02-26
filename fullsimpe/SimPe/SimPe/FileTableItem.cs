@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Xml;
+
 using SimPe.Interfaces.Wrapper;
 
 namespace SimPe
@@ -42,8 +43,14 @@ namespace SimPe
 
 		public bool Ignore
 		{
-			get { return ignore; }
-			set { ignore = value; }
+			get
+			{
+				return ignore;
+			}
+			set
+			{
+				ignore = value;
+			}
 		}
 
 		public FileTableItem(string path, bool rec, bool fl)
@@ -165,8 +172,14 @@ namespace SimPe
 
 		public FileTableItemType Type
 		{
-			get { return type; }
-			set { this.type = value; }
+			get
+			{
+				return type;
+			}
+			set
+			{
+				this.type = value;
+			}
 		}
 
 		/// <summary>
@@ -174,30 +187,54 @@ namespace SimPe
 		/// </summary>
 		public bool Use
 		{
-			get { return IsAvail && !Ignore && IsUseable; }
+			get
+			{
+				return IsAvail && !Ignore && IsUseable;
+			}
 		}
 
 		public bool IsRecursive
 		{
-			get { return recursive; }
-			set { recursive = value; }
+			get
+			{
+				return recursive;
+			}
+			set
+			{
+				recursive = value;
+			}
 		}
 
 		public bool IsFile
 		{
-			get { return file; }
-			set { file = value; }
+			get
+			{
+				return file;
+			}
+			set
+			{
+				file = value;
+			}
 		}
 
 		public bool IsUseable
 		{
-			get { return ver == -1 || ver == PathProvider.Global.GameVersion; }
+			get
+			{
+				return ver == -1 || ver == PathProvider.Global.GameVersion;
+			}
 		}
 
 		public int EpVersion
 		{
-			get { return ver; }
-			set { ver = value; }
+			get
+			{
+				return ver;
+			}
+			set
+			{
+				ver = value;
+			}
 		}
 
 		public bool IsAvail
@@ -240,7 +277,10 @@ namespace SimPe
 						ret = ret.Substring(0, ret.Length - 1);
 				return ret;
 			}
-			set { SetName(value); }
+			set
+			{
+				SetName(value);
+			}
 		}
 
 		public string RelativePath

@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces;
 
 namespace SimPe.Plugin
@@ -33,7 +34,10 @@ namespace SimPe.Plugin
 		static SimPe.Registry registry;
 		internal static Registry WindowsRegistry
 		{
-			get { return registry; }
+			get
+			{
+				return registry;
+			}
 		}
 
 		IWrapperRegistry reg;
@@ -90,12 +94,18 @@ namespace SimPe.Plugin
 		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
-			get { return SimPe.GetIcon.Camera; }
+			get
+			{
+				return SimPe.GetIcon.Camera;
+			}
 		}
 
 		public override System.Windows.Forms.Shortcut Shortcut
 		{
-			get { return System.Windows.Forms.Shortcut.CtrlP; }
+			get
+			{
+				return System.Windows.Forms.Shortcut.CtrlP;
+			}
 		}
 		#endregion
 	}

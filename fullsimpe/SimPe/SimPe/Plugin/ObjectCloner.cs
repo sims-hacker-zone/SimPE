@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Scenegraph;
 using SimPe.Packages;
@@ -37,17 +38,26 @@ namespace SimPe.Plugin
 
 			public uint Type
 			{
-				get { return (uint)Tag[0]; }
+				get
+				{
+					return (uint)Tag[0];
+				}
 			}
 
 			public uint Instance
 			{
-				get { return this.Id; }
+				get
+				{
+					return this.Id;
+				}
 			}
 
 			public string Extension
 			{
-				get { return Name; }
+				get
+				{
+					return Name;
+				}
 			}
 		}
 
@@ -71,8 +81,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public BaseResourceType BaseResource
 		{
-			get { return use3idr; }
-			set { use3idr = value; }
+			get
+			{
+				return use3idr;
+			}
+			set
+			{
+				use3idr = value;
+			}
 		}
 
 		/// <summary>
@@ -80,8 +96,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public bool KeepOriginalMesh
 		{
-			get { return keepmesh; }
-			set { keepmesh = value; }
+			get
+			{
+				return keepmesh;
+			}
+			set
+			{
+				keepmesh = value;
+			}
 		}
 
 		/// <summary>
@@ -89,8 +111,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public bool IncludeWallmask
 		{
-			get { return includeWallmask; }
-			set { includeWallmask = value; }
+			get
+			{
+				return includeWallmask;
+			}
+			set
+			{
+				includeWallmask = value;
+			}
 		}
 
 		/// <summary>
@@ -98,8 +126,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public bool OnlyDefaultMmats
 		{
-			get { return onlydefault; }
-			set { onlydefault = value; }
+			get
+			{
+				return onlydefault;
+			}
+			set
+			{
+				onlydefault = value;
+			}
 		}
 
 		/// <summary>
@@ -107,8 +141,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public bool UpdateMmatGuids
 		{
-			get { return updateguid; }
-			set { updateguid = value; }
+			get
+			{
+				return updateguid;
+			}
+			set
+			{
+				updateguid = value;
+			}
 		}
 
 		/// <summary>
@@ -116,8 +156,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public bool ThrowExceptions
 		{
-			get { return exception; }
-			set { exception = value; }
+			get
+			{
+				return exception;
+			}
+			set
+			{
+				exception = value;
+			}
 		}
 
 		/// <summary>
@@ -125,8 +171,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public bool IncludeAnimationResources
 		{
-			get { return loadanim; }
-			set { loadanim = value; }
+			get
+			{
+				return loadanim;
+			}
+			set
+			{
+				loadanim = value;
+			}
 		}
 
 		StrIntsanceAlias[] pullfromstrinst;
@@ -136,8 +188,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public StrIntsanceAlias[] StrInstances
 		{
-			get { return pullfromstrinst; }
-			set { pullfromstrinst = value; }
+			get
+			{
+				return pullfromstrinst;
+			}
+			set
+			{
+				pullfromstrinst = value;
+			}
 		}
 
 		bool pullfromstr;
@@ -148,8 +206,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public bool PullResourcesByStr
 		{
-			get { return pullfromstr; }
-			set { pullfromstr = value; }
+			get
+			{
+				return pullfromstr;
+			}
+			set
+			{
+				pullfromstr = value;
+			}
 		}
 
 		/// <summary>
@@ -187,7 +251,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public IPackageFile Package
 		{
-			get { return package; }
+			get
+			{
+				return package;
+			}
 		}
 
 		CloneSettings setup;
@@ -197,8 +264,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public CloneSettings Setup
 		{
-			get { return setup; }
-			set { setup = value; }
+			get
+			{
+				return setup;
+			}
+			set
+			{
+				setup = value;
+			}
 		}
 
 		/// <summary>
@@ -645,12 +718,12 @@ namespace SimPe.Plugin
 
 								Hashtable ht = fl.ReferenceChains;
 								foreach (string k in ht.Keys)
-								foreach (
-									Interfaces.Files.IPackedFileDescriptor lpfd in (ArrayList)
-										ht[k]
-								)
-									if (!names.Contains(lpfd))
-										names.Add(lpfd);
+									foreach (
+										Interfaces.Files.IPackedFileDescriptor lpfd in (ArrayList)
+											ht[k]
+									)
+										if (!names.Contains(lpfd))
+											names.Add(lpfd);
 							}
 						} //while
 					}

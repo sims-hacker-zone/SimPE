@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -10,11 +11,17 @@ namespace SimPe.Plugin
 	{
 		protected new Lot Wrapper
 		{
-			get { return base.Wrapper as Lot; }
+			get
+			{
+				return base.Wrapper as Lot;
+			}
 		}
 		public Lot TPFW
 		{
-			get { return (Lot)Wrapper; }
+			get
+			{
+				return (Lot)Wrapper;
+			}
 		}
 
 		#region WrapperBaseControl Member
@@ -145,7 +152,10 @@ namespace SimPe.Plugin
 		#region IPackedFileUI Member
 		System.Windows.Forms.Control IPackedFileUI.GUIHandle
 		{
-			get { return this; }
+			get
+			{
+				return this;
+			}
 		}
 		#endregion
 

@@ -20,10 +20,12 @@
 using System;
 using System.Collections;
 using System.Drawing;
+
 using Ambertation.Collections;
 using Ambertation.Drawing;
 using Ambertation.Windows.Forms;
 using Ambertation.Windows.Forms.Graph;
+
 using SimPe.PackedFiles.Wrapper.Supporting;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -51,7 +53,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public ImagePanel MainSimElement
 		{
-			get { return baseip; }
+			get
+			{
+				return baseip;
+			}
 		}
 
 		public void UpdateGraph(Wrapper.SDesc sdsc, Wrapper.ExtFamilyTies famt)
@@ -323,7 +328,10 @@ namespace SimPe.PackedFiles.Wrapper
 		Size isz;
 		protected Size ItemSize
 		{
-			get { return isz; }
+			get
+			{
+				return isz;
+			}
 		}
 
 		protected ImagePanel CreateItem(Wrapper.SDesc sdesc, int left, int top)

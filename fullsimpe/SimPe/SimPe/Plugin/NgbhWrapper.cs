@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -46,13 +47,16 @@ namespace SimPe.Plugin
 			IFileWrapper //This Interface is used when loading a File
 			,
 			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-	//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 	{
 		#region Attributes
 		uint version;
 		public NgbhVersion Version
 		{
-			get { return (NgbhVersion)version; }
+			get
+			{
+				return (NgbhVersion)version;
+			}
 			set
 			{
 				version = (uint)value;
@@ -75,7 +79,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public NgbhSlotList[] PreItems
 		{
-			get { return preitems; }
+			get
+			{
+				return preitems;
+			}
 			set
 			{
 				preitems = value;
@@ -88,7 +95,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public Collections.NgbhSlots Lots //SlotsA
 		{
-			get { return slota; }
+			get
+			{
+				return slota;
+			}
 			set
 			{
 				slota = value;
@@ -101,7 +111,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public Collections.NgbhSlots Families //SlotsB
 		{
-			get { return slotb; }
+			get
+			{
+				return slotb;
+			}
 			set
 			{
 				slotb = value;
@@ -114,7 +127,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public Collections.NgbhSlots Sims //SlotsC
 		{
-			get { return slotc; }
+			get
+			{
+				return slotc;
+			}
 			set
 			{
 				slotc = value;
@@ -127,7 +143,10 @@ namespace SimPe.Plugin
 		Interfaces.IProviderRegistry provider;
 		public Interfaces.IProviderRegistry Provider
 		{
-			get { return provider; }
+			get
+			{
+				return provider;
+			}
 		}
 
 		/// <summary>
@@ -388,7 +407,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		/// <summary>

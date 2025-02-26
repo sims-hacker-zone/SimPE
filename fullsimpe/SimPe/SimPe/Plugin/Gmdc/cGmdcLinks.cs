@@ -39,8 +39,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public IntArrayList ReferencedElement
 		{
-			get { return items1; }
-			set { items1 = value; }
+			get
+			{
+				return items1;
+			}
+			set
+			{
+				items1 = value;
+			}
 		}
 
 		int unknown1;
@@ -50,8 +56,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public int ReferencedSize
 		{
-			get { return unknown1; }
-			set { unknown1 = value; }
+			get
+			{
+				return unknown1;
+			}
+			set
+			{
+				unknown1 = value;
+			}
 		}
 
 		int unknown2;
@@ -61,8 +73,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public int ActiveElements
 		{
-			get { return unknown2; }
-			set { unknown2 = value; }
+			get
+			{
+				return unknown2;
+			}
+			set
+			{
+				unknown2 = value;
+			}
 		}
 
 		IntArrayList[] refs;
@@ -79,7 +97,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public IntArrayList[] AliasValues
 		{
-			get { return refs; }
+			get
+			{
+				return refs;
+			}
 		}
 		#endregion
 
@@ -361,8 +382,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public new GmdcLink this[int index]
 		{
-			get { return ((GmdcLink)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((GmdcLink)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -370,8 +397,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcLink this[uint index]
 		{
-			get { return ((GmdcLink)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((GmdcLink)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -418,7 +451,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		/// <summary>

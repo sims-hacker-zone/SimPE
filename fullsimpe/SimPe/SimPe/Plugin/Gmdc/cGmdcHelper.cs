@@ -211,8 +211,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		internal GeometryDataContainer Parent
 		{
-			get { return parent; }
-			set { parent = value; }
+			get
+			{
+				return parent;
+			}
+			set
+			{
+				parent = value;
+			}
 		}
 
 		/// <summary>

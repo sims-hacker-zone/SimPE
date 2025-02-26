@@ -49,7 +49,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public DialogResult Result
 		{
-			get { return res; }
+			get
+			{
+				return res;
+			}
 		}
 
 		bool cleangroups;
@@ -59,7 +62,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public bool CleanGroups
 		{
-			get { return cleangroups; }
+			get
+			{
+				return cleangroups;
+			}
 		}
 
 		bool cleanbones;
@@ -69,7 +75,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public bool CleanBones
 		{
-			get { return cleanbones; }
+			get
+			{
+				return cleanbones;
+			}
 		}
 
 		bool updatecres;
@@ -79,7 +88,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public bool UpdateCres
 		{
-			get { return updatecres; }
+			get
+			{
+				return updatecres;
+			}
 		}
 	}
 }

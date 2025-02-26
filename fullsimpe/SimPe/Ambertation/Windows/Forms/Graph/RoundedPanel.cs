@@ -24,6 +24,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+
 using Ambertation.Drawing;
 
 namespace Ambertation.Windows.Forms.Graph
@@ -49,7 +50,10 @@ namespace Ambertation.Windows.Forms.Graph
 		Color bg;
 		public Color PanelColor
 		{
-			get { return bg; }
+			get
+			{
+				return bg;
+			}
 			set
 			{
 				if (bg != value)
@@ -63,7 +67,10 @@ namespace Ambertation.Windows.Forms.Graph
 		float fade;
 		public float Fade
 		{
-			get { return fade; }
+			get
+			{
+				return fade;
+			}
 			set
 			{
 				if (fade != value)
@@ -77,7 +84,10 @@ namespace Ambertation.Windows.Forms.Graph
 		Color fadecl;
 		public Color FadeColor
 		{
-			get { return fadecl; }
+			get
+			{
+				return fadecl;
+			}
 			set
 			{
 				if (fadecl != value)
@@ -91,7 +101,10 @@ namespace Ambertation.Windows.Forms.Graph
 		Color gradcl;
 		public Color GradientColor
 		{
-			get { return gradcl; }
+			get
+			{
+				return gradcl;
+			}
 			set
 			{
 				if (gradcl != value)
@@ -105,7 +118,10 @@ namespace Ambertation.Windows.Forms.Graph
 		Color bdcl;
 		public Color BorderColor
 		{
-			get { return bdcl; }
+			get
+			{
+				return bdcl;
+			}
 			set
 			{
 				if (bdcl != value)
@@ -324,7 +340,9 @@ namespace Ambertation.Windows.Forms.Graph
 			DrawNiceRoundRect(gr, 0, 0, Width, Height);
 		}
 
-		protected virtual void DrawText(System.Drawing.Graphics gr) { }
+		protected virtual void DrawText(System.Drawing.Graphics gr)
+		{
+		}
 		#endregion
 	}
 }

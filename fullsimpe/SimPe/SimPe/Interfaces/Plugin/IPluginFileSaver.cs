@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces.Plugin.Internal;
 
 namespace SimPe.Interfaces.Plugin
@@ -25,5 +26,7 @@ namespace SimPe.Interfaces.Plugin
 	/// <summary>
 	/// Interface for Filehanders that are able to save their content to a BinaryStream
 	/// </summary>
-	public interface IFileWrapperSaveExtension : IPackedFileSaveExtension { }
+	public interface IFileWrapperSaveExtension : IPackedFileSaveExtension
+	{
+	}
 }

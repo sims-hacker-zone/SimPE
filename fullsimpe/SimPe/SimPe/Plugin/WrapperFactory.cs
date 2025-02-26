@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;
@@ -218,7 +219,10 @@ namespace SimPe.Plugin
 
 		public ICommandLine[] KnownCommandLines
 		{
-			get { return new ICommandLine[] { new BuildTxtr(), new FixPackage() }; }
+			get
+			{
+				return new ICommandLine[] { new BuildTxtr(), new FixPackage() };
+			}
 		}
 
 		#endregion

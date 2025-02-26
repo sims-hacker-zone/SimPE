@@ -96,7 +96,10 @@ namespace SimPe.PackedFiles.Wrapper
 		LinkedSDesc sdsc;
 		public SimPe.Interfaces.Wrapper.ISDesc SimDescription
 		{
-			get { return sdsc; }
+			get
+			{
+				return sdsc;
+			}
 			set
 			{
 				sdsc = value as LinkedSDesc;
@@ -127,7 +130,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public SimPe.Interfaces.Providers.ILotItem SelectedBusiness
 		{
-			get { return cb.SelectedItem as SimPe.Interfaces.Providers.ILotItem; }
+			get
+			{
+				return cb.SelectedItem as SimPe.Interfaces.Providers.ILotItem;
+			}
 		}
 
 		private void cb_SelectedIndexChanged(object sender, System.EventArgs e)

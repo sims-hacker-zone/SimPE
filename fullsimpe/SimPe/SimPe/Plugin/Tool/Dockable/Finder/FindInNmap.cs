@@ -41,7 +41,10 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 
 		public override bool ProcessParalell
 		{
-			get { return false; }
+			get
+			{
+				return false;
+			}
 		}
 
 		public override void SearchPackage(

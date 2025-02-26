@@ -145,7 +145,10 @@ namespace SimPe.Windows.Forms
 		[Localizable(true)]
 		public string HeaderText
 		{
-			get { return txt; }
+			get
+			{
+				return txt;
+			}
 			set
 			{
 				if (txt != value)
@@ -158,7 +161,10 @@ namespace SimPe.Windows.Forms
 
 		public override string Text
 		{
-			get { return base.Text; }
+			get
+			{
+				return base.Text;
+			}
 			set
 			{
 				base.Text = value;
@@ -173,7 +179,10 @@ namespace SimPe.Windows.Forms
 
 		public Color HeadBackColor
 		{
-			get { return headcol; }
+			get
+			{
+				return headcol;
+			}
 			set
 			{
 				if (value != headcol)
@@ -186,7 +195,10 @@ namespace SimPe.Windows.Forms
 
 		public Color HeadEndColor
 		{
-			get { return headend; }
+			get
+			{
+				return headend;
+			}
 			set
 			{
 				if (value != headend)
@@ -199,7 +211,10 @@ namespace SimPe.Windows.Forms
 
 		public Color HeadForeColor
 		{
-			get { return headforecol; }
+			get
+			{
+				return headforecol;
+			}
 			set
 			{
 				if (value != headforecol)
@@ -212,7 +227,10 @@ namespace SimPe.Windows.Forms
 
 		public Font HeadFont
 		{
-			get { return headfont; }
+			get
+			{
+				return headfont;
+			}
 			set
 			{
 				if (value != headfont)
@@ -225,7 +243,10 @@ namespace SimPe.Windows.Forms
 
 		public int HeaderHeight
 		{
-			get { return 24; }
+			get
+			{
+				return 24;
+			}
 		}
 
 		private System.Windows.Forms.Button btCommit;
@@ -241,7 +262,10 @@ namespace SimPe.Windows.Forms
 
 		public Color GradientColor
 		{
-			get { return gradcol; }
+			get
+			{
+				return gradcol;
+			}
 			set
 			{
 				if (value != gradcol)
@@ -254,7 +278,10 @@ namespace SimPe.Windows.Forms
 
 		public Color MiddleColor
 		{
-			get { return midcol; }
+			get
+			{
+				return midcol;
+			}
 			set
 			{
 				if (value != midcol)
@@ -267,7 +294,10 @@ namespace SimPe.Windows.Forms
 
 		public float GradCentre
 		{
-			get { return mCentre; }
+			get
+			{
+				return mCentre;
+			}
 			set
 			{
 				mCentre = value;
@@ -277,14 +307,23 @@ namespace SimPe.Windows.Forms
 
 		public LinearGradientMode Gradient
 		{
-			get { return this.mGradient; }
-			set { this.mGradient = value; }
+			get
+			{
+				return this.mGradient;
+			}
+			set
+			{
+				this.mGradient = value;
+			}
 		}
 
 		bool cc;
 		public bool CanCommit
 		{
-			get { return cc; }
+			get
+			{
+				return cc;
+			}
 			set
 			{
 				cc = value;
@@ -294,7 +333,10 @@ namespace SimPe.Windows.Forms
 
 		public bool BackgroundImageZoomToFit
 		{
-			get { return mPicFit; }
+			get
+			{
+				return mPicFit;
+			}
 			set
 			{
 				mPicFit = value;
@@ -303,7 +345,10 @@ namespace SimPe.Windows.Forms
 		}
 		public float BackgroundImageScale
 		{
-			get { return mPicZoom; }
+			get
+			{
+				return mPicZoom;
+			}
 			set
 			{
 				if (!mPicFit)
@@ -315,7 +360,10 @@ namespace SimPe.Windows.Forms
 		}
 		public System.Drawing.Point BackgroundImageLocation
 		{
-			get { return mPicloc; }
+			get
+			{
+				return mPicloc;
+			}
 			set
 			{
 				if (bklayout != ImageLayout.Centered)
@@ -327,7 +375,10 @@ namespace SimPe.Windows.Forms
 		}
 		public ImageLayout BackgroundImageAnchor
 		{
-			get { return bklayout; }
+			get
+			{
+				return bklayout;
+			}
 			set
 			{
 				bklayout = value;
@@ -336,7 +387,10 @@ namespace SimPe.Windows.Forms
 		}
 		public float BackgroundImageOpacity
 		{
-			get { return mPicOpacity; }
+			get
+			{
+				return mPicOpacity;
+			}
 			set
 			{
 				mPicOpacity = value;
@@ -348,7 +402,10 @@ namespace SimPe.Windows.Forms
 		[Browsable(false)]
 		public override System.Windows.Forms.ImageLayout BackgroundImageLayout
 		{
-			get { return System.Windows.Forms.ImageLayout.Zoom; }
+			get
+			{
+				return System.Windows.Forms.ImageLayout.Zoom;
+			}
 		}
 
 		#endregion
@@ -359,7 +416,10 @@ namespace SimPe.Windows.Forms
 		[Browsable(false)]
 		public SimPe.ThemeManager ThemeManager
 		{
-			get { return tm; }
+			get
+			{
+				return tm;
+			}
 		}
 
 		public class WrapperChangedEventArgs : EventArgs
@@ -378,12 +438,18 @@ namespace SimPe.Windows.Forms
 
 			public SimPe.Interfaces.Plugin.IFileWrapper OldWrapper
 			{
-				get { return owrp; }
+				get
+				{
+					return owrp;
+				}
 			}
 
 			public SimPe.Interfaces.Plugin.IFileWrapper NewWrapper
 			{
-				get { return nwrp; }
+				get
+				{
+					return nwrp;
+				}
 			}
 		}
 
@@ -398,7 +464,10 @@ namespace SimPe.Windows.Forms
 		[Browsable(false)]
 		public SimPe.Interfaces.Plugin.IFileWrapper Wrapper
 		{
-			get { return wrp; }
+			get
+			{
+				return wrp;
+			}
 		}
 		#endregion
 
@@ -701,7 +770,9 @@ namespace SimPe.Windows.Forms
 			}
 		}
 
-		public virtual void OnCommit() { }
+		public virtual void OnCommit()
+		{
+		}
 
 		private void btCommit_Click(object sender, System.EventArgs e)
 		{
@@ -716,10 +787,15 @@ namespace SimPe.Windows.Forms
 		/// </summary>
 		public System.Windows.Forms.Control GUIHandle
 		{
-			get { return this; }
+			get
+			{
+				return this;
+			}
 		}
 
-		protected virtual void OnWrapperChanged(WrapperChangedEventArgs e) { }
+		protected virtual void OnWrapperChanged(WrapperChangedEventArgs e)
+		{
+		}
 
 		/// <summary>
 		/// Is called by SimPe (through the Wrapper) when the Panel is going to be displayed, so
@@ -750,7 +826,9 @@ namespace SimPe.Windows.Forms
 		/// <summary>
 		/// Implement this Method in derrived classes
 		/// </summary>
-		protected virtual void RefreshGUI() { }
+		protected virtual void RefreshGUI()
+		{
+		}
 
 		protected override void OnResize(EventArgs e)
 		{

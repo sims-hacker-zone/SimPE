@@ -22,9 +22,11 @@ using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;
 using SimPe.Plugin;
+
 using Bcon = SimPe.PackedFiles.Wrapper.Bcon;
 
 namespace SimPe.PackedFiles.UserInterface
@@ -508,7 +510,10 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		public Control GUIHandle
 		{
-			get { return trcnPanel; }
+			get
+			{
+				return trcnPanel;
+			}
 		}
 
 		/// <summary>

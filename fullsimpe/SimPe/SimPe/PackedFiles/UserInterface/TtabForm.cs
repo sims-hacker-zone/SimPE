@@ -26,9 +26,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 using pjse;
+
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;
+
 using Str = pjse.Str;
 
 namespace SimPe.PackedFiles.UserInterface
@@ -714,7 +717,10 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		public Control GUIHandle
 		{
-			get { return ttabPanel; }
+			get
+			{
+				return ttabPanel;
+			}
 		}
 
 		/// <summary>
@@ -1931,7 +1937,9 @@ namespace SimPe.PackedFiles.UserInterface
 		}
 
 		// Format is a hex32 field, currently handled with ttabItem
-		private void doFormat() { }
+		private void doFormat()
+		{
+		}
 
 		// -------------- wrapper[]
 		//

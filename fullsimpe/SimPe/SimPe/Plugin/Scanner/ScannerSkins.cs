@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin.Scanner;
 using SimPe.PackedFiles.Wrapper;
@@ -38,18 +39,26 @@ namespace SimPe.Plugin.Scanner
 		#region IScannerBase Member
 		public uint Version
 		{
-			get { return 1; }
+			get
+			{
+				return 1;
+			}
 		}
 
 		public int Index
 		{
-			get { return 800; }
+			get
+			{
+				return 800;
+			}
 		}
 		#endregion
 
 		#region IScanner Member
 
-		protected override void DoInitScan() { }
+		protected override void DoInitScan()
+		{
+		}
 
 		public void ScanPackage(
 			ScannerItem si,
@@ -64,13 +73,20 @@ namespace SimPe.Plugin.Scanner
 			ScannerItem si,
 			SimPe.Cache.PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
-		) { }
+		)
+		{
+		}
 
-		public void FinishScan() { }
+		public void FinishScan()
+		{
+		}
 
 		public override bool IsActiveByDefault
 		{
-			get { return true; }
+			get
+			{
+				return true;
+			}
 		}
 
 		ScannerItem[] selection;

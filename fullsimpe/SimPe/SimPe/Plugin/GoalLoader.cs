@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Windows.Forms;
+
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin;
 
@@ -65,13 +66,19 @@ namespace SimPe.Plugin
 		System.Drawing.Image icon;
 		public override System.Drawing.Image Icon
 		{
-			get { return icon; }
+			get
+			{
+				return icon;
+			}
 		}
 
 		string name;
 		public override string Name
 		{
-			get { return name; }
+			get
+			{
+				return name;
+			}
 		}
 	}
 
@@ -91,7 +98,9 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Use GoalInformation::LoadGoal() to create a new Instance
 		/// </summary>
-		protected GoalInformation() { }
+		protected GoalInformation()
+		{
+		}
 
 		/// <summary>
 		/// Use WGoalInformation::LoadGoal() to create a new Instance
@@ -178,7 +187,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public XGoal XGoal
 		{
-			get { return wnt; }
+			get
+			{
+				return wnt;
+			}
 		}
 
 		/// <summary>
@@ -215,7 +227,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public uint Guid
 		{
-			get { return guid; }
+			get
+			{
+				return guid;
+			}
 		}
 
 		public override string ToString()

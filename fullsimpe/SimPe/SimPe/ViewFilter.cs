@@ -45,7 +45,10 @@ namespace SimPe
 		/// </summary>
 		public uint Instance
 		{
-			get { return inst; }
+			get
+			{
+				return inst;
+			}
 			set
 			{
 				if (inst != value)
@@ -62,7 +65,10 @@ namespace SimPe
 		/// </summary>
 		public bool FilterInstance
 		{
-			get { return doinst; }
+			get
+			{
+				return doinst;
+			}
 			set
 			{
 				if (doinst != value)
@@ -83,7 +89,10 @@ namespace SimPe
 		/// </summary>
 		public uint Group
 		{
-			get { return grp; }
+			get
+			{
+				return grp;
+			}
 			set
 			{
 				if (grp != value)
@@ -100,7 +109,10 @@ namespace SimPe
 		/// </summary>
 		public bool FilterGroup
 		{
-			get { return dogrp; }
+			get
+			{
+				return dogrp;
+			}
 			set
 			{
 				if (dogrp != value)
@@ -120,7 +132,10 @@ namespace SimPe
 		/// </summary>
 		public bool Active
 		{
-			get { return act; }
+			get
+			{
+				return act;
+			}
 		}
 
 		/// <summary>

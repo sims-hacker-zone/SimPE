@@ -30,13 +30,19 @@ namespace SimPe.Interfaces.Files
 		/// <summary>
 		/// Returns the File Reader
 		/// </summary>
-		System.IO.BinaryReader Reader { get; }
+		System.IO.BinaryReader Reader
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Set/returns the Persistent state of this Package
 		/// </summary>
 		/// <remarks>If persistent the FileHandle won't be closed!</remarks>
-		bool Persistent { get; set; }
+		bool Persistent
+		{
+			get; set;
+		}
 
 		/// <summary>
 		/// Create a Clone of this Package File
@@ -102,7 +108,10 @@ namespace SimPe.Interfaces.Files
 		/// <summary>
 		/// Returns or Changes the stored Fileindex
 		/// </summary>
-		IPackedFileDescriptor[] Index { get; }
+		IPackedFileDescriptor[] Index
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Creates a new File descriptor
@@ -215,31 +224,46 @@ namespace SimPe.Interfaces.Files
 		/// <summary>
 		/// The Structural Data of the Header
 		/// </summary>
-		Interfaces.Files.IPackageHeader Header { get; }
+		Interfaces.Files.IPackageHeader Header
+		{
+			get;
+		}
 		#endregion
 
 		#region File Handling
 		/// <summary>
 		/// True if the User has changed a PackedFile
 		/// </summary>
-		bool HasUserChanges { get; }
+		bool HasUserChanges
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the FileName of the Current Package
 		/// </summary>
 		/// <remarks>Can be null if a Memory stream was opened as package</remarks>
-		string FileName { get; }
+		string FileName
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the FileName of the Current Package
 		/// </summary>
 		/// <remarks>Will never return null</remarks>
-		string SaveFileName { get; }
+		string SaveFileName
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the hash Group Value for this File
 		/// </summary>
-		uint FileGroupHash { get; }
+		uint FileGroupHash
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Reads the File specified by the given itemIndex

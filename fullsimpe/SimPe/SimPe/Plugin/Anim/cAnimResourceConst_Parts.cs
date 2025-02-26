@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
+
 using SimPe.Geometry;
 
 namespace SimPe.Plugin.Anim
@@ -76,8 +77,14 @@ namespace SimPe.Plugin.Anim
 		[DescriptionAttribute("Name of the selected Item")]
 		public virtual string Name
 		{
-			get { return name; }
-			set { name = value; }
+			get
+			{
+				return name;
+			}
+			set
+			{
+				name = value;
+			}
 		}
 
 		internal AnimBlock()
@@ -133,7 +140,10 @@ namespace SimPe.Plugin.Anim
 		[BrowsableAttribute(false)]
 		public AnimBlock5[] Part5
 		{
-			get { return ab5; }
+			get
+			{
+				return ab5;
+			}
 		}
 
 		[
@@ -142,7 +152,10 @@ namespace SimPe.Plugin.Anim
 		]
 		public int Part5Count
 		{
-			get { return ab5.Length; }
+			get
+			{
+				return ab5.Length;
+			}
 		}
 
 		uint[] datai;
@@ -154,8 +167,14 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown1
 		{
-			get { return datai[0]; }
-			set { datai[0] = value; }
+			get
+			{
+				return datai[0];
+			}
+			set
+			{
+				datai[0] = value;
+			}
 		}
 
 		[
@@ -165,8 +184,14 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown2
 		{
-			get { return datai[1]; }
-			set { datai[1] = value; }
+			get
+			{
+				return datai[1];
+			}
+			set
+			{
+				datai[1] = value;
+			}
 		}
 
 		[
@@ -176,8 +201,14 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown3
 		{
-			get { return datai[2]; }
-			set { datai[2] = value; }
+			get
+			{
+				return datai[2];
+			}
+			set
+			{
+				datai[2] = value;
+			}
 		}
 
 		byte[] data;
@@ -187,7 +218,10 @@ namespace SimPe.Plugin.Anim
 		)]
 		public byte[] AddonData
 		{
-			get { return data; }
+			get
+			{
+				return data;
+			}
 		}
 		#endregion
 
@@ -302,14 +336,26 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown1
 		{
-			get { return datai[0]; }
-			set { datai[0] = value; }
+			get
+			{
+				return datai[0];
+			}
+			set
+			{
+				datai[0] = value;
+			}
 		}
 
 		public uint Unknown2
 		{
-			get { return datai[1]; }
-			set { datai[1] = value; }
+			get
+			{
+				return datai[1];
+			}
+			set
+			{
+				datai[1] = value;
+			}
 		}
 
 		public string Unknown2Binary
@@ -330,13 +376,19 @@ namespace SimPe.Plugin.Anim
 
 		public string Unknown2Hex
 		{
-			get { return "0x" + Helper.HexString(Unknown2); }
+			get
+			{
+				return "0x" + Helper.HexString(Unknown2);
+			}
 		}
 
 		byte[] data;
 		public byte[] AddonData
 		{
-			get { return data; }
+			get
+			{
+				return data;
+			}
 		}
 		#endregion
 
@@ -403,8 +455,14 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown1
 		{
-			get { return datai[0]; }
-			set { datai[0] = value; }
+			get
+			{
+				return datai[0];
+			}
+			set
+			{
+				datai[0] = value;
+			}
 		}
 
 		[
@@ -414,25 +472,49 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown2
 		{
-			get { return datai[1]; }
-			set { datai[1] = value; }
+			get
+			{
+				return datai[1];
+			}
+			set
+			{
+				datai[1] = value;
+			}
 		}
 
 		short[] datas;
 		public short SUnknown1
 		{
-			get { return datas[0]; }
-			set { datas[0] = value; }
+			get
+			{
+				return datas[0];
+			}
+			set
+			{
+				datas[0] = value;
+			}
 		}
 		public short SUnknown2
 		{
-			get { return datas[1]; }
-			set { datas[1] = value; }
+			get
+			{
+				return datas[1];
+			}
+			set
+			{
+				datas[1] = value;
+			}
 		}
 		public short SUnknown3
 		{
-			get { return datas[2]; }
-			set { datas[2] = value; }
+			get
+			{
+				return datas[2];
+			}
+			set
+			{
+				datas[2] = value;
+			}
 		}
 		#endregion
 

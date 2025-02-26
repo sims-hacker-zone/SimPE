@@ -88,7 +88,10 @@ namespace SimPe.Plugin
 		[System.ComponentModel.Browsable(false)]
 		public Collections.BnfoCustomerItems Items
 		{
-			get { return items; }
+			get
+			{
+				return items;
+			}
 			set
 			{
 				items = value;
@@ -109,7 +112,10 @@ namespace SimPe.Plugin
 
 		public BnfoCustomerItem SelectedItem
 		{
-			get { return lb.SelectedItem as BnfoCustomerItem; }
+			get
+			{
+				return lb.SelectedItem as BnfoCustomerItem;
+			}
 		}
 
 		public new void Refresh()

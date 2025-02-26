@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.Globalization;
 using System.IO;
+
 using SimPe.Geometry;
 using SimPe.Plugin.Anim;
 
@@ -55,7 +56,10 @@ namespace SimPe.Plugin.Gmdc
 		/// Values from a Text File</remarks>
 		public static CultureInfo DefaultCulture
 		{
-			get { return AbstractGmdcExporter.DefaultCulture; }
+			get
+			{
+				return AbstractGmdcExporter.DefaultCulture;
+			}
 		}
 
 		/// <summary>
@@ -73,7 +77,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public int Version
 		{
-			get { return 1; }
+			get
+			{
+				return 1;
+			}
 		}
 
 		/// <summary>
@@ -96,8 +103,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public ElementOrder Component
 		{
-			get { return order; }
-			set { order = value; }
+			get
+			{
+				return order;
+			}
+			set
+			{
+				order = value;
+			}
 		}
 
 		/// <summary>
@@ -117,17 +130,26 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Returns the suggested File Extension (including the . like .obj or .3ds)
 		/// </summary>
-		public abstract string FileExtension { get; }
+		public abstract string FileExtension
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the File Description (the Name of the exported FileType)
 		/// </summary>
-		public abstract string FileDescription { get; }
+		public abstract string FileDescription
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the name of the Author
 		/// </summary>
-		public abstract string Author { get; }
+		public abstract string Author
+		{
+			get;
+		}
 
 		/// <summary>
 		/// This Method is called during the Import to process the input Data and
@@ -161,7 +183,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public string ErrorMessage
 		{
-			get { return error; }
+			get
+			{
+				return error;
+			}
 		}
 
 		System.IO.StreamReader input;
@@ -171,7 +196,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		protected System.IO.StreamReader Input
 		{
-			get { return input; }
+			get
+			{
+				return input;
+			}
 		}
 
 		GeometryDataContainer gmdc;
@@ -181,13 +209,19 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		protected GeometryDataContainer Gmdc
 		{
-			get { return gmdc; }
+			get
+			{
+				return gmdc;
+			}
 		}
 
 		ImportedFrameBlocks ab1;
 		protected ImportedFrameBlocks AnimationBlocks
 		{
-			get { return ab1; }
+			get
+			{
+				return ab1;
+			}
 		}
 
 		/// <summary>
@@ -225,7 +259,10 @@ namespace SimPe.Plugin.Gmdc
 		bool animonly;
 		public bool AnimationOnly
 		{
-			get { return animonly; }
+			get
+			{
+				return animonly;
+			}
 		}
 		ImportOptions importoptionsresult;
 
@@ -248,7 +285,10 @@ namespace SimPe.Plugin.Gmdc
 					);
 				return importoptionsresult;
 			}
-			set { importoptionsresult = value; }
+			set
+			{
+				importoptionsresult = value;
+			}
 		}
 
 		/// <summary>
@@ -274,7 +314,7 @@ namespace SimPe.Plugin.Gmdc
 					if (g.Elements[k].Values.Length > 0)
 						g.Link.ReferencedElement.Add(k);
 				} // for k
-				//if (minct==int.MaxValue) minct=0;
+				  //if (minct==int.MaxValue) minct=0;
 			}
 
 			if (Helper.WindowsRegistry.ShowJointNames)
@@ -796,7 +836,10 @@ namespace SimPe.Plugin.Gmdc
 					flname = "";
 				return flname;
 			}
-			set { flname = value; }
+			set
+			{
+				flname = value;
+			}
 		}
 	}
 }

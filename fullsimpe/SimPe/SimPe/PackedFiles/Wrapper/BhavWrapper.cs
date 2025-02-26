@@ -22,6 +22,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 
@@ -44,7 +45,7 @@ namespace SimPe.PackedFiles.Wrapper
 			IFileWrapper //This Interface is used when loading a File
 			,
 			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-	//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 	{
 		#region Attributes
 		/// <summary>
@@ -64,7 +65,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public string FileName
 		{
-			get { return Helper.ToString(filename); }
+			get
+			{
+				return Helper.ToString(filename);
+			}
 			set
 			{
 				if (!Helper.ToString(filename).Equals(value))
@@ -80,7 +84,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public BhavHeader Header
 		{
-			get { return header; }
+			get
+			{
+				return header;
+			}
 		}
 		#endregion
 
@@ -282,7 +289,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint[] AssignableTypes
 		{
-			get { return new uint[] { Bhavtype }; }
+			get
+			{
+				return new uint[] { Bhavtype };
+			}
 		}
 
 		/// <summary>
@@ -290,7 +300,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		#endregion
@@ -335,7 +348,10 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Accessor methods
 		public ushort Format
 		{
-			get { return format; }
+			get
+			{
+				return format;
+			}
 			set
 			{
 				if (format != value)
@@ -348,7 +364,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort InstructionCount
 		{
-			get { return count; }
+			get
+			{
+				return count;
+			}
 			set
 			{
 				if (count != value)
@@ -361,7 +380,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public byte Type
 		{
-			get { return type; }
+			get
+			{
+				return type;
+			}
 			set
 			{
 				if (type != value)
@@ -374,7 +396,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public byte ArgumentCount
 		{
-			get { return argc; }
+			get
+			{
+				return argc;
+			}
 			set
 			{
 				if (argc != value)
@@ -387,7 +412,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public byte LocalVarCount
 		{
-			get { return locals; }
+			get
+			{
+				return locals;
+			}
 			set
 			{
 				if (locals != value)
@@ -400,7 +428,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public byte HeaderFlag
 		{
-			get { return headerflag; }
+			get
+			{
+				return headerflag;
+			}
 			set
 			{
 				if (headerflag != value)
@@ -413,7 +444,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint TreeVersion
 		{
-			get { return treeversion; }
+			get
+			{
+				return treeversion;
+			}
 			set
 			{
 				if (treeversion != value)
@@ -426,7 +460,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public byte CacheFlags
 		{
-			get { return cacheflags; }
+			get
+			{
+				return cacheflags;
+			}
 			set
 			{
 				if (cacheflags != value)
@@ -509,7 +546,10 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Accessor methods
 		public ushort OpCode
 		{
-			get { return opcode; }
+			get
+			{
+				return opcode;
+			}
 			set
 			{
 				if (opcode != value)
@@ -522,7 +562,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort Target1
 		{
-			get { return addr1; }
+			get
+			{
+				return addr1;
+			}
 			set
 			{
 				if (addr1 != value)
@@ -535,7 +578,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort Target2
 		{
-			get { return addr2; }
+			get
+			{
+				return addr2;
+			}
 			set
 			{
 				if (addr2 != value)
@@ -548,7 +594,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public byte NodeVersion
 		{
-			get { return nodeversion; }
+			get
+			{
+				return nodeversion;
+			}
 			set
 			{
 				if (nodeversion != value)
@@ -561,12 +610,18 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public wrappedByteArray Operands
 		{
-			get { return operands; }
+			get
+			{
+				return operands;
+			}
 		}
 
 		public wrappedByteArray Reserved1
 		{
-			get { return reserved_01; }
+			get
+			{
+				return reserved_01;
+			}
 		}
 		#endregion
 
@@ -769,7 +824,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public byte this[int index]
 		{
-			get { return array[index]; }
+			get
+			{
+				return array[index];
+			}
 			set
 			{
 				if (array[index] != value)
@@ -793,7 +851,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		internal Instruction Parent
 		{
-			set { parent = value; }
+			set
+			{
+				parent = value;
+			}
 		}
 
 		private void Unserialize(System.IO.BinaryReader reader)

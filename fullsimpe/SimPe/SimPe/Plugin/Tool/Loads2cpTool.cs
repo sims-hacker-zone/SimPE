@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Events;
 using SimPe.Interfaces;
 
@@ -28,7 +29,9 @@ namespace SimPe.Plugin.Tool
 	/// </summary>
 	public class Loads2cpTool : SimPe.Interfaces.IToolPlus
 	{
-		internal Loads2cpTool() { }
+		internal Loads2cpTool()
+		{
+		}
 
 		#region ITool Member
 
@@ -74,17 +77,26 @@ namespace SimPe.Plugin.Tool
 		#region IToolExt Member
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get { return System.Windows.Forms.Shortcut.None; }
+			get
+			{
+				return System.Windows.Forms.Shortcut.None;
+			}
 		}
 
 		public System.Drawing.Image Icon
 		{
-			get { return SimPe.GetIcon.S2pcOpen; }
+			get
+			{
+				return SimPe.GetIcon.S2pcOpen;
+			}
 		}
 
 		public virtual bool Visible
 		{
-			get { return true; }
+			get
+			{
+				return true;
+			}
 		}
 
 		#endregion

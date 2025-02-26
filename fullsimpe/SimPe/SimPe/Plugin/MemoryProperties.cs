@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.Cache;
 
 namespace SimPe.Plugin
@@ -673,7 +674,10 @@ namespace SimPe.Plugin
 		[System.ComponentModel.Browsable(false)]
 		public NgbhItem Item
 		{
-			get { return item; }
+			get
+			{
+				return item;
+			}
 			set
 			{
 				item = value;
@@ -684,7 +688,10 @@ namespace SimPe.Plugin
 		Plugin.NgbhItemsListView nilv;
 		public Plugin.NgbhItemsListView NgbhItemsListView
 		{
-			get { return nilv; }
+			get
+			{
+				return nilv;
+			}
 			set
 			{
 				if (nilv != null)

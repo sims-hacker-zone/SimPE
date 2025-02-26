@@ -28,7 +28,10 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 
 		public override bool ProcessParalell
 		{
-			get { return false; }
+			get
+			{
+				return false;
+			}
 		}
 
 		uint type;

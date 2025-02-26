@@ -19,7 +19,10 @@ namespace SimPe.Plugin.UI
 
 		public PackageSettings Settings
 		{
-			get { return this.settings; }
+			get
+			{
+				return this.settings;
+			}
 			set
 			{
 				this.settings = value;
@@ -29,7 +32,10 @@ namespace SimPe.Plugin.UI
 
 		protected ToolTip ToolTipControl
 		{
-			get { return this.toolTip1; }
+			get
+			{
+				return this.toolTip1;
+			}
 		}
 
 		public PreferencesPanel()
@@ -40,9 +46,13 @@ namespace SimPe.Plugin.UI
 			this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
 		}
 
-		protected virtual void OnSettingsChanged() { }
+		protected virtual void OnSettingsChanged()
+		{
+		}
 
-		public virtual void OnCommitSettings() { }
+		public virtual void OnCommitSettings()
+		{
+		}
 
 		/// <summary>
 		/// Clean up any resources being used.

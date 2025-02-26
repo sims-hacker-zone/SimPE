@@ -26,6 +26,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
+
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;
 
@@ -542,9 +543,9 @@ namespace SimPe.Wants
 				if (incItem(i.ItemType))
 					lvItems.Items.Add(MakeLVI(i));
 			foreach (KeyValuePair<uint, List<SWAFItem>> kvp in history)
-			foreach (SWAFItem i in kvp.Value)
-				if (incItem(i.ItemType))
-					lvItems.Items.Add(MakeLVI(i));
+				foreach (SWAFItem i in kvp.Value)
+					if (incItem(i.ItemType))
+						lvItems.Items.Add(MakeLVI(i));
 			lvItems.EndUpdate();
 		}
 
@@ -741,7 +742,10 @@ namespace SimPe.Wants
 
 		public Control GUIHandle
 		{
-			get { return pnSWAFEditor; }
+			get
+			{
+				return pnSWAFEditor;
+			}
 		}
 
 		public void UpdateGUI(IFileWrapper wrp)
@@ -806,8 +810,12 @@ namespace SimPe.Wants
 			internalchg = true;
 			try
 			{
-				if (sender.Equals(wrapper)) { }
-				else { }
+				if (sender.Equals(wrapper))
+				{
+				}
+				else
+				{
+				}
 			}
 			finally
 			{
@@ -1225,8 +1233,8 @@ namespace SimPe.Wants
 						ckb.CheckState = CheckState.Indeterminate;
 					foreach (CheckBox ckb in lincs)
 						ckb.Enabled = !ckb.Checked; //false;
-					//gbSelectedItem.Icon = null;
-					//gbSelectedItem.HeaderText = "Selected Item";
+													//gbSelectedItem.Icon = null;
+													//gbSelectedItem.HeaderText = "Selected Item";
 				}
 				else
 				{

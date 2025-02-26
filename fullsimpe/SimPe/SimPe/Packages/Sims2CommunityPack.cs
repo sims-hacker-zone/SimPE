@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Xml;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
@@ -96,7 +97,7 @@ namespace SimPe.Packages
 		protected static void Decompress(Stream instream, Stream outstream)
 		{
 			ICSharpCode.SharpZipLib.BZip2.BZip2.Decompress(instream, outstream, false); // newer ICSharpCode.SharpZipLib requires three parameters, param three means is the stream already in the app
-			//ICSharpCode.SharpZipLib.BZip2.BZip2.Decompress(instream, outstream); // older ICSharpCode.SharpZipLib requires two parameters
+																						//ICSharpCode.SharpZipLib.BZip2.BZip2.Decompress(instream, outstream); // older ICSharpCode.SharpZipLib requires two parameters
 			outstream.Seek(0, System.IO.SeekOrigin.Begin);
 		}
 

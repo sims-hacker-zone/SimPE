@@ -40,7 +40,10 @@ namespace SimPe.Interfaces
 		/// a 32x32 Image, that is displayed as an Icon for this Custom Setting
 		/// </summary>
 		/// <returns>null or a valid Image</returns>
-		System.Drawing.Image Icon { get; }
+		System.Drawing.Image Icon
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Called whenever the Settings get displayed. The Object is passed to a PropertyGrid,

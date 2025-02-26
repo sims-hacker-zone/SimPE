@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -39,8 +40,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string Weaname
 		{
-			get { return weaname; }
-			set { weaname = value; }
+			get
+			{
+				return weaname;
+			}
+			set
+			{
+				weaname = value;
+			}
 		}
 		#endregion
 

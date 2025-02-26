@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
+
 using SimPe.Geometry;
 
 namespace SimPe.Plugin
@@ -33,27 +34,51 @@ namespace SimPe.Plugin
 		Vectors3f v1;
 		public Vectors3f Vectors1
 		{
-			get { return v1; }
-			set { v1 = value; }
+			get
+			{
+				return v1;
+			}
+			set
+			{
+				v1 = value;
+			}
 		}
 		Vectors3f v2;
 		public Vectors3f Vectors2
 		{
-			get { return v2; }
-			set { v2 = value; }
+			get
+			{
+				return v2;
+			}
+			set
+			{
+				v2 = value;
+			}
 		}
 		short u1;
 		public short Unknown1
 		{
-			get { return u1; }
-			set { u1 = value; }
+			get
+			{
+				return u1;
+			}
+			set
+			{
+				u1 = value;
+			}
 		}
 
 		int u2;
 		public int Unknown2
 		{
-			get { return u2; }
-			set { u2 = value; }
+			get
+			{
+				return u2;
+			}
+			set
+			{
+				u2 = value;
+			}
 		}
 		#endregion
 
@@ -124,26 +149,47 @@ namespace SimPe.Plugin
 		int u1;
 		public int Unknown1
 		{
-			get { return u1; }
-			set { u1 = value; }
+			get
+			{
+				return u1;
+			}
+			set
+			{
+				u1 = value;
+			}
 		}
 		byte u2;
 		public byte Unknown2
 		{
-			get { return u2; }
-			set { u2 = value; }
+			get
+			{
+				return u2;
+			}
+			set
+			{
+				u2 = value;
+			}
 		}
 		int u3;
 		public int Unknown3
 		{
-			get { return u3; }
-			set { u3 = value; }
+			get
+			{
+				return u3;
+			}
+			set
+			{
+				u3 = value;
+			}
 		}
 
 		TSFaceGeometryBuilderItems items;
 		public TSFaceGeometryBuilderItems Items
 		{
-			get { return items; }
+			get
+			{
+				return items;
+			}
 		}
 		#endregion
 
@@ -276,8 +322,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public new TSFaceGeometryBuilderItem this[int index]
 		{
-			get { return ((TSFaceGeometryBuilderItem)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((TSFaceGeometryBuilderItem)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -285,8 +337,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public TSFaceGeometryBuilderItem this[uint index]
 		{
-			get { return ((TSFaceGeometryBuilderItem)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((TSFaceGeometryBuilderItem)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -343,7 +401,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		/// <summary>

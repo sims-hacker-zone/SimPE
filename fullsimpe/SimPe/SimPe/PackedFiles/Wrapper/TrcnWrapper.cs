@@ -22,6 +22,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -42,7 +43,7 @@ namespace SimPe.PackedFiles.Wrapper
 			IFileWrapper //This Interface is used when loading a File
 			,
 			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-	//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 	{
 		#region Attributes
 		/// <summary>
@@ -62,7 +63,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public string FileName
 		{
-			get { return Helper.ToString(filename); }
+			get
+			{
+				return Helper.ToString(filename);
+			}
 			set
 			{
 				if (!Helper.ToString(filename).Equals(value))
@@ -78,7 +82,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint Version
 		{
-			get { return header[1]; }
+			get
+			{
+				return header[1];
+			}
 			set
 			{
 				if (header[1] != value)
@@ -92,7 +99,10 @@ namespace SimPe.PackedFiles.Wrapper
 		private bool duff = false;
 		public bool TextOnly
 		{
-			get { return (duff || (header[1] != 0x1 && header[1] < 0x3f)); }
+			get
+			{
+				return (duff || (header[1] != 0x1 && header[1] < 0x3f));
+			}
 		}
 		#endregion
 
@@ -227,7 +237,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint[] AssignableTypes
 		{
-			get { return new uint[] { Trcntype }; }
+			get
+			{
+				return new uint[] { Trcntype };
+			}
 		}
 
 		/// <summary>
@@ -235,7 +248,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		#endregion
@@ -285,7 +301,10 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Accessor methods
 		public uint Used
 		{
-			get { return used; }
+			get
+			{
+				return used;
+			}
 			set
 			{
 				if (used != value)
@@ -298,7 +317,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint ConstId
 		{
-			get { return constId; }
+			get
+			{
+				return constId;
+			}
 			set
 			{
 				if (constId != value)
@@ -311,7 +333,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public string ConstName
 		{
-			get { return constName; }
+			get
+			{
+				return constName;
+			}
 			set
 			{
 				if (constName != value)
@@ -324,7 +349,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public string ConstDesc
 		{
-			get { return constDesc; }
+			get
+			{
+				return constDesc;
+			}
 			set
 			{
 				if (constDesc != value)
@@ -337,7 +365,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort DefValue
 		{
-			get { return defValue; }
+			get
+			{
+				return defValue;
+			}
 			set
 			{
 				if (defValue != value)
@@ -350,7 +381,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort MinValue
 		{
-			get { return minValue; }
+			get
+			{
+				return minValue;
+			}
 			set
 			{
 				if (minValue != value)
@@ -363,7 +397,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort MaxValue
 		{
-			get { return maxValue; }
+			get
+			{
+				return maxValue;
+			}
 			set
 			{
 				if (maxValue != value)

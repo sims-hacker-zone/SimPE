@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -10,11 +11,17 @@ namespace SimPe.Plugin
 	{
 		protected new AudioRefPackedFileWrapper Wrapper
 		{
-			get { return base.Wrapper as AudioRefPackedFileWrapper; }
+			get
+			{
+				return base.Wrapper as AudioRefPackedFileWrapper;
+			}
 		}
 		public AudioRefPackedFileWrapper TPFW
 		{
-			get { return (AudioRefPackedFileWrapper)Wrapper; }
+			get
+			{
+				return (AudioRefPackedFileWrapper)Wrapper;
+			}
 		}
 
 		#region WrapperBaseControl Member
@@ -41,7 +48,10 @@ namespace SimPe.Plugin
 		#region IPackedFileUI Member
 		System.Windows.Forms.Control IPackedFileUI.GUIHandle
 		{
-			get { return this; }
+			get
+			{
+				return this;
+			}
 		}
 		#endregion
 

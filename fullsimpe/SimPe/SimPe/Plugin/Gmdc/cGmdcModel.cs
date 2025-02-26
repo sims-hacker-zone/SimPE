@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.Globalization;
 using System.IO;
+
 using SimPe.Geometry;
 
 namespace SimPe.Plugin.Gmdc
@@ -37,8 +38,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public string BlendGroupName
 		{
-			get { return blendname; }
-			set { blendname = value; }
+			get
+			{
+				return blendname;
+			}
+			set
+			{
+				blendname = value;
+			}
 		}
 
 		string elementname;
@@ -48,8 +55,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public string AssignedElementName
 		{
-			get { return elementname; }
-			set { elementname = value; }
+			get
+			{
+				return elementname;
+			}
+			set
+			{
+				elementname = value;
+			}
 		}
 
 		internal GmdcNamePair()
@@ -116,8 +129,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public VectorTransformations Transformations
 		{
-			get { return transforms; }
-			set { transforms = value; }
+			get
+			{
+				return transforms;
+			}
+			set
+			{
+				transforms = value;
+			}
 		}
 
 		GmdcNamePairs names;
@@ -127,8 +146,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcNamePairs BlendGroupDefinition
 		{
-			get { return names; }
-			set { names = value; }
+			get
+			{
+				return names;
+			}
+			set
+			{
+				names = value;
+			}
 		}
 
 		GmdcJoint subset;
@@ -138,8 +163,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcJoint BoundingMesh
 		{
-			get { return subset; }
-			set { subset = value; }
+			get
+			{
+				return subset;
+			}
+			set
+			{
+				subset = value;
+			}
 		}
 		#endregion
 
@@ -260,8 +291,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public new GmdcModel this[int index]
 		{
-			get { return ((GmdcModel)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((GmdcModel)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -269,8 +306,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcModel this[uint index]
 		{
-			get { return ((GmdcModel)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((GmdcModel)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -317,7 +360,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		/// <summary>
@@ -344,8 +390,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public new GmdcNamePair this[int index]
 		{
-			get { return ((GmdcNamePair)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((GmdcNamePair)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -353,8 +405,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcNamePair this[uint index]
 		{
-			get { return ((GmdcNamePair)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((GmdcNamePair)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -401,7 +459,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		/// <summary>

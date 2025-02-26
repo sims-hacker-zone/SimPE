@@ -283,7 +283,10 @@ namespace SimPe.Plugin
 		SimPe.Data.NeighborhoodSlots st;
 		public SimPe.Data.NeighborhoodSlots SlotType
 		{
-			get { return st; }
+			get
+			{
+				return st;
+			}
 			set
 			{
 				if (st != value)
@@ -301,7 +304,10 @@ namespace SimPe.Plugin
 		[Browsable(true)]
 		public bool ShowGossip
 		{
-			get { return cc; }
+			get
+			{
+				return cc;
+			}
 			set
 			{
 				cc = value;
@@ -332,7 +338,10 @@ namespace SimPe.Plugin
 		[System.ComponentModel.Browsable(false)]
 		public Collections.NgbhItems NgbhItems
 		{
-			get { return items; }
+			get
+			{
+				return items;
+			}
 			set
 			{
 				items = value;
@@ -466,7 +475,10 @@ namespace SimPe.Plugin
 		[System.ComponentModel.Browsable(false)]
 		public bool SelectedMultiple
 		{
-			get { return lv.SelectedItems.Count > 1; }
+			get
+			{
+				return lv.SelectedItems.Count > 1;
+			}
 		}
 
 		internal void UpdateSelected(NgbhItem item)
@@ -482,13 +494,19 @@ namespace SimPe.Plugin
 
 		public ListView.ListViewItemCollection Items
 		{
-			get { return lv.Items; }
+			get
+			{
+				return lv.Items;
+			}
 		}
 
 		ImageList sil;
 		public ImageList SmallImageList
 		{
-			get { return sil; }
+			get
+			{
+				return sil;
+			}
 			set
 			{
 				lv.SmallImageList = value;

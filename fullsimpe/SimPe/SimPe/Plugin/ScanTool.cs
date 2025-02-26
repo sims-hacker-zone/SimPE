@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces;
 
 namespace SimPe.Plugin
@@ -29,7 +30,9 @@ namespace SimPe.Plugin
 	{
 		static ScannerForm ds;
 
-		internal ScanerTool() { }
+		internal ScanerTool()
+		{
+		}
 
 		#region ITool Member
 
@@ -82,7 +85,10 @@ namespace SimPe.Plugin
 
 		public override System.Windows.Forms.Shortcut Shortcut
 		{
-			get { return System.Windows.Forms.Shortcut.CtrlF; }
+			get
+			{
+				return System.Windows.Forms.Shortcut.CtrlF;
+			}
 		}
 		#endregion
 	}

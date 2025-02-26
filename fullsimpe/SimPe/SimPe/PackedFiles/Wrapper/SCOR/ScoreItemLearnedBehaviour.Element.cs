@@ -17,29 +17,53 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 			byte unk1;
 			public byte Unknown1
 			{
-				get { return unk1; }
-				set { unk1 = value; }
+				get
+				{
+					return unk1;
+				}
+				set
+				{
+					unk1 = value;
+				}
 			}
 
 			uint guid;
 			public uint Guid
 			{
-				get { return guid; }
-				set { guid = value; }
+				get
+				{
+					return guid;
+				}
+				set
+				{
+					guid = value;
+				}
 			}
 
 			uint val;
 			public uint Value
 			{
-				get { return val; }
-				set { val = value; }
+				get
+				{
+					return val;
+				}
+				set
+				{
+					val = value;
+				}
 			}
 
 			byte unk3;
 			public byte Unknown3
 			{
-				get { return unk3; }
-				set { unk3 = value; }
+				get
+				{
+					return unk3;
+				}
+				set
+				{
+					unk3 = value;
+				}
 			}
 
 			public void LoadData(System.IO.BinaryReader reader)

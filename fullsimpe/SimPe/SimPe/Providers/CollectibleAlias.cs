@@ -28,25 +28,37 @@ namespace SimPe.Providers
 		private string name;
 		public string Name
 		{
-			get { return name; }
+			get
+			{
+				return name;
+			}
 		}
 
 		private ulong id;
 		public ulong Id
 		{
-			get { return id; }
+			get
+			{
+				return id;
+			}
 		}
 
 		private int nr;
 		public int Nr
 		{
-			get { return nr; }
+			get
+			{
+				return nr;
+			}
 		}
 
 		private System.Drawing.Image img;
 		public System.Drawing.Image Image
 		{
-			get { return img; }
+			get
+			{
+				return img;
+			}
 		}
 
 		public CollectibleAlias(ulong id, int nr, string name, System.Drawing.Image img)

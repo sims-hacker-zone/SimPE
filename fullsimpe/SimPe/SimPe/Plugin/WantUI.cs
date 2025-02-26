@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Windows.Forms;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -69,7 +70,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public System.Windows.Forms.Control GUIHandle
 		{
-			get { return form.wantsPanel; }
+			get
+			{
+				return form.wantsPanel;
+			}
 		}
 
 		static string oldpkg = "";
@@ -175,7 +179,9 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region IDisposable Member
-		public virtual void Dispose() { }
+		public virtual void Dispose()
+		{
+		}
 		#endregion
 	}
 }

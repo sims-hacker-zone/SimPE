@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.Drawing;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -43,19 +44,34 @@ namespace SimPe.Plugin
 
 		public Size TextureSize
 		{
-			get { return texturesize; }
+			get
+			{
+				return texturesize;
+			}
 		}
 
 		public int ZLevel
 		{
-			get { return zlevel; }
-			set { zlevel = value; }
+			get
+			{
+				return zlevel;
+			}
+			set
+			{
+				zlevel = value;
+			}
 		}
 
 		public ImageLoader.TxtrFormats Format
 		{
-			get { return format; }
-			set { format = value; }
+			get
+			{
+				return format;
+			}
+			set
+			{
+				format = value;
+			}
 		}
 
 		public Image Texture
@@ -88,7 +104,10 @@ namespace SimPe.Plugin
 
 		public byte[] Data
 		{
-			get { return data; }
+			get
+			{
+				return data;
+			}
 			set
 			{
 				datatype = MipMapType.SimPE_PlainData;
@@ -180,7 +199,7 @@ namespace SimPe.Plugin
 			}
 			else
 				format = ImageLoader.TxtrFormats.DXT1Format; // size < w*h
-			//-- 8< --------------------------------------------- 8< -----
+															 //-- 8< --------------------------------------------- 8< -----
 
 
 			long p1 = reader.BaseStream.Position;
@@ -224,7 +243,9 @@ namespace SimPe.Plugin
 
 		#region IDisposable Member
 
-		public override void Dispose() { }
+		public override void Dispose()
+		{
+		}
 
 		#endregion
 	}

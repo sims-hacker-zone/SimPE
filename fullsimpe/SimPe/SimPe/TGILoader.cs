@@ -162,7 +162,10 @@ namespace SimPe
 		/// </summary>
 		public Data.TypeAlias[] FileTypes
 		{
-			get { return list; }
+			get
+			{
+				return list;
+			}
 		}
 	}
 }

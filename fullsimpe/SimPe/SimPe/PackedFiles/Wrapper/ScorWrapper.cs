@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
@@ -43,7 +44,10 @@ namespace SimPe.PackedFiles.Wrapper
 		ScorItems items;
 		protected ScorItems Items
 		{
-			get { return items; }
+			get
+			{
+				return items;
+			}
 		}
 		uint version;
 
@@ -52,7 +56,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint Version
 		{
-			get { return version; }
+			get
+			{
+				return version;
+			}
 		}
 
 		uint unk1,
@@ -60,12 +67,18 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint Unknown1
 		{
-			get { return unk1; }
+			get
+			{
+				return unk1;
+			}
 		}
 
 		public uint Unknown2
 		{
-			get { return unk2; }
+			get
+			{
+				return unk2;
+			}
 		}
 		#endregion
 
@@ -175,7 +188,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		/// <summary>
@@ -203,7 +219,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 			public ScorItem Item
 			{
-				get { return si; }
+				get
+				{
+					return si;
+				}
 			}
 		}
 
@@ -234,12 +253,18 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ScorItem this[int index]
 		{
-			get { return items[index]; }
+			get
+			{
+				return items[index];
+			}
 		}
 
 		public int Count
 		{
-			get { return items.Count; }
+			get
+			{
+				return items.Count;
+			}
 		}
 
 		#region IEnumerable Members

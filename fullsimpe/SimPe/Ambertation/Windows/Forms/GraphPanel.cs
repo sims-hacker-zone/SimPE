@@ -23,6 +23,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 using Ambertation.Windows.Forms.Graph;
 
 namespace Ambertation.Windows.Forms
@@ -41,12 +42,18 @@ namespace Ambertation.Windows.Forms
 		Ambertation.Collections.GraphElements li;
 		internal Ambertation.Collections.GraphElements LinkItems
 		{
-			get { return li; }
+			get
+			{
+				return li;
+			}
 		}
 
 		public Ambertation.Collections.GraphElements Items
 		{
-			get { return li; }
+			get
+			{
+				return li;
+			}
 		}
 
 		public GraphPanel()
@@ -120,7 +127,10 @@ namespace Ambertation.Windows.Forms
 		#region Properties
 		public new Control Parent
 		{
-			get { return base.Parent; }
+			get
+			{
+				return base.Parent;
+			}
 			set
 			{
 				if (base.Parent != value)
@@ -140,7 +150,10 @@ namespace Ambertation.Windows.Forms
 		bool lk;
 		public bool LockItems
 		{
-			get { return lk; }
+			get
+			{
+				return lk;
+			}
 			set
 			{
 				if (lk != value)
@@ -153,14 +166,23 @@ namespace Ambertation.Windows.Forms
 		bool savebound;
 		public virtual bool SaveBounds
 		{
-			get { return savebound; }
-			set { savebound = value; }
+			get
+			{
+				return savebound;
+			}
+			set
+			{
+				savebound = value;
+			}
 		}
 
 		bool autosz;
 		public override bool AutoSize
 		{
-			get { return autosz; }
+			get
+			{
+				return autosz;
+			}
 			set
 			{
 				autosz = value;
@@ -175,7 +197,10 @@ namespace Ambertation.Windows.Forms
 		Ambertation.Windows.Forms.Graph.LinkControlLineMode lm;
 		public Ambertation.Windows.Forms.Graph.LinkControlLineMode LineMode
 		{
-			get { return lm; }
+			get
+			{
+				return lm;
+			}
 			set
 			{
 				lm = value;
@@ -186,7 +211,10 @@ namespace Ambertation.Windows.Forms
 		bool quality;
 		public bool Quality
 		{
-			get { return quality; }
+			get
+			{
+				return quality;
+			}
 			set
 			{
 				quality = value;
@@ -232,8 +260,13 @@ namespace Ambertation.Windows.Forms
 		[Browsable(false)]
 		public override bool AutoScroll
 		{
-			get { return base.AutoScroll; }
-			set { }
+			get
+			{
+				return base.AutoScroll;
+			}
+			set
+			{
+			}
 		}
 
 		[Browsable(false)]

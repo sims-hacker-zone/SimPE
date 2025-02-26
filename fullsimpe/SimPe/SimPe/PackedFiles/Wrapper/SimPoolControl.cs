@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using Ambertation.Collections;
 using Ambertation.Drawing;
 using Ambertation.Windows.Forms;
@@ -57,7 +58,10 @@ namespace SimPe.PackedFiles.Wrapper
 					return null;
 				return (SimPe.PackedFiles.Wrapper.ExtSDesc)gp.SelectedItems[0].Tag;
 			}
-			set { FindItem(value); }
+			set
+			{
+				FindItem(value);
+			}
 		}
 
 		public SimPe.PackedFiles.Wrapper.ExtSDesc SelectedSim
@@ -68,13 +72,19 @@ namespace SimPe.PackedFiles.Wrapper
 					return null;
 				return (SimPe.PackedFiles.Wrapper.ExtSDesc)gp.SelectedItems[0].Tag;
 			}
-			set { FindItem(value); }
+			set
+			{
+				FindItem(value);
+			}
 		}
 
 		SimPe.Interfaces.Files.IPackageFile pkg;
 		public SimPe.Interfaces.Files.IPackageFile Package
 		{
-			get { return pkg; }
+			get
+			{
+				return pkg;
+			}
 			set
 			{
 				if (pkg != value)
@@ -128,7 +138,10 @@ namespace SimPe.PackedFiles.Wrapper
 		bool details;
 		public bool SimDetails
 		{
-			get { return details; }
+			get
+			{
+				return details;
+			}
 			set
 			{
 				if (details != value)
@@ -144,39 +157,63 @@ namespace SimPe.PackedFiles.Wrapper
 			SimPe.PackedFiles.Wrapper.ExtSDesc sdsc;
 			public SimPe.PackedFiles.Wrapper.ExtSDesc SimDescription
 			{
-				get { return sdsc; }
+				get
+				{
+					return sdsc;
+				}
 			}
 
 			string name;
 			public string Name
 			{
-				get { return name; }
+				get
+				{
+					return name;
+				}
 			}
 
 			string household;
 			public string Household
 			{
-				get { return household; }
+				get
+				{
+					return household;
+				}
 			}
 
 			bool cancel;
 			public bool Cancel
 			{
-				get { return cancel; }
-				set { cancel = value; }
+				get
+				{
+					return cancel;
+				}
+				set
+				{
+					cancel = value;
+				}
 			}
 
 			System.Drawing.Image img;
 			public System.Drawing.Image Image
 			{
-				get { return img; }
+				get
+				{
+					return img;
+				}
 			}
 
 			int grpid;
 			public int GroupIndex
 			{
-				get { return grpid; }
-				set { grpid = value; }
+				get
+				{
+					return grpid;
+				}
+				set
+				{
+					grpid = value;
+				}
 			}
 
 			internal AddSimToPoolEventArgs(
@@ -205,7 +242,9 @@ namespace SimPe.PackedFiles.Wrapper
 		public delegate void AddSimToPoolEvent(object sender, AddSimToPoolEventArgs e);
 		public event AddSimToPoolEvent AddSimToPool;
 
-		protected virtual void OnAddSimToPool(AddSimToPoolEventArgs e) { }
+		protected virtual void OnAddSimToPool(AddSimToPoolEventArgs e)
+		{
+		}
 
 		AddSimToPoolEventArgs DoAddSimToPool(
 			SimPe.PackedFiles.Wrapper.ExtSDesc sdsc,
@@ -502,8 +541,14 @@ namespace SimPe.PackedFiles.Wrapper
 		bool rightclicksel;
 		public bool RightClickSelect
 		{
-			get { return rightclicksel; }
-			set { rightclicksel = value; }
+			get
+			{
+				return rightclicksel;
+			}
+			set
+			{
+				rightclicksel = value;
+			}
 		}
 
 		private void gp_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -721,20 +766,31 @@ namespace SimPe.PackedFiles.Wrapper
 
 		internal SteepValley.Windows.Forms.XPListViewItemCollection Items
 		{
-			get { return this.gp.Items; }
+			get
+			{
+				return this.gp.Items;
+			}
 		}
 
 		internal System.Windows.Forms.ListView.SelectedIndexCollection SelectedIndices
 		{
-			get { return gp.SelectedIndices; }
+			get
+			{
+				return gp.SelectedIndices;
+			}
 		}
 
 		internal System.Windows.Forms.ListView.SelectedListViewItemCollection SelectedItems
 		{
-			get { return gp.SelectedItems; }
+			get
+			{
+				return gp.SelectedItems;
+			}
 		}
 
-		internal void Sort() { }
+		internal void Sort()
+		{
+		}
 
 		internal SteepValley.Windows.Forms.XPListViewItem Add(
 			PackedFiles.Wrapper.ExtSDesc o
@@ -754,8 +810,14 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public int[] TileColumns
 		{
-			get { return gp.TileColumns; }
-			set { gp.TileColumns = value; }
+			get
+			{
+				return gp.TileColumns;
+			}
+			set
+			{
+				gp.TileColumns = value;
+			}
 		}
 
 		public void EnsureVisible(int index)

@@ -102,8 +102,8 @@ namespace SimPe.Geometry
 		{
 			Matrixd res = new Matrixd(Columns, Rows);
 			for (int r = 0; r < Rows; r++)
-			for (int c = 0; c < Columns; c++)
-				res[c, r] = this[r, c];
+				for (int c = 0; c < Columns; c++)
+					res[c, r] = this[r, c];
 
 			return res;
 		}
@@ -119,13 +119,13 @@ namespace SimPe.Geometry
 			Matrixd i = new Matrixd(row, col);
 
 			for (int r = 0; r < row; r++)
-			for (int c = 0; c < col; c++)
-			{
-				if (r == c)
-					i[r, c] = 1;
-				else
-					i[r, c] = 0;
-			}
+				for (int c = 0; c < col; c++)
+				{
+					if (r == c)
+						i[r, c] = 1;
+					else
+						i[r, c] = 0;
+				}
 
 			return i;
 		}
@@ -135,7 +135,10 @@ namespace SimPe.Geometry
 		/// </summary>
 		public int Rows
 		{
-			get { return m.Length; }
+			get
+			{
+				return m.Length;
+			}
 		}
 
 		/// <summary>
@@ -156,7 +159,10 @@ namespace SimPe.Geometry
 		/// </summary>
 		public double this[int row, int col]
 		{
-			get { return m[row][col]; }
+			get
+			{
+				return m[row][col];
+			}
 			set
 			{
 				m[row][col] = value;
@@ -206,15 +212,15 @@ namespace SimPe.Geometry
 
 			Matrixd m = new Matrixd(m1.Rows, m2.Columns);
 			for (int r = 0; r < m.Rows; r++)
-			for (int c = 0; c < m.Columns; c++)
-			{
-				double res = 0;
+				for (int c = 0; c < m.Columns; c++)
+				{
+					double res = 0;
 
-				for (int i = 0; i < m1.Columns; i++)
-					res += m1[r, i] * m2[i, c];
+					for (int i = 0; i < m1.Columns; i++)
+						res += m1[r, i] * m2[i, c];
 
-				m[r, c] = res;
-			} //for m
+					m[r, c] = res;
+				} //for m
 			return m;
 		}
 
@@ -228,8 +234,8 @@ namespace SimPe.Geometry
 		{
 			Matrixd m = new Matrixd(m1.Rows, m1.Columns);
 			for (int r = 0; r < m.Rows; r++)
-			for (int c = 0; c < m.Columns; c++)
-				m[r, c] = m1[r, c] * d;
+				for (int c = 0; c < m.Columns; c++)
+					m[r, c] = m1[r, c] * d;
 			return m;
 		}
 
@@ -257,8 +263,8 @@ namespace SimPe.Geometry
 				throw new GeometryException("Unable to divide by Zero.");
 			Matrixd m = new Matrixd(m1.Rows, m1.Columns);
 			for (int r = 0; r < m.Rows; r++)
-			for (int c = 0; c < m.Columns; c++)
-				m[r, c] = m1[r, c] / d;
+				for (int c = 0; c < m.Columns; c++)
+					m[r, c] = m1[r, c] / d;
 			return m;
 		}
 
@@ -316,8 +322,8 @@ namespace SimPe.Geometry
 			Matrixd result = new Matrixd(m1.Rows, m1.Columns);
 
 			for (int i = 0; i < m1.Rows; i++)
-			for (int j = 0; j < m1.Columns; j++)
-				result[i, j] = m1[i, j] + m2[i, j];
+				for (int j = 0; j < m1.Columns; j++)
+					result[i, j] = m1[i, j] + m2[i, j];
 
 			return result;
 		}
@@ -341,8 +347,8 @@ namespace SimPe.Geometry
 			Matrixd result = new Matrixd(m1.Rows, m1.Columns);
 
 			for (int i = 0; i < m1.Rows; i++)
-			for (int j = 0; j < m1.Columns; j++)
-				result[i, j] = m1[i, j] - m2[i, j];
+				for (int j = 0; j < m1.Columns; j++)
+					result[i, j] = m1[i, j] - m2[i, j];
 
 			return result;
 		}
@@ -403,8 +409,8 @@ namespace SimPe.Geometry
 			double result = 0;
 
 			for (int i = 0; i < Rows; i++)
-			for (int j = 0; j < Columns; j++)
-				result += this[i, j];
+				for (int j = 0; j < Columns; j++)
+					result += this[i, j];
 
 			return (int)result;
 		}
@@ -424,9 +430,9 @@ namespace SimPe.Geometry
 				return false;
 
 			for (int i = 0; i < this.Rows; i++)
-			for (int j = 0; j < this.Columns; j++)
-				if (this[i, j] != m1[i, j])
-					return false;
+				for (int j = 0; j < this.Columns; j++)
+					if (this[i, j] != m1[i, j])
+						return false;
 
 			return true;
 		}
@@ -549,13 +555,13 @@ namespace SimPe.Geometry
 			Matrixd adjMtx = new Matrixd(this.Columns, this.Rows);
 
 			for (int i = 0; i < this.Rows; i++)
-			for (int j = 0; j < this.Columns; j++)
-			{
-				tempMtx = this.Minor(i, j);
+				for (int j = 0; j < this.Columns; j++)
+				{
+					tempMtx = this.Minor(i, j);
 
-				//put the determinent of the minor in the transposed position
-				adjMtx[j, i] = (int)Math.Pow(-1, i + j) * tempMtx.Determinant();
-			}
+					//put the determinent of the minor in the transposed position
+					adjMtx[j, i] = (int)Math.Pow(-1, i + j) * tempMtx.Determinant();
+				}
 
 			return adjMtx;
 		}
@@ -614,19 +620,19 @@ namespace SimPe.Geometry
 					return false;
 
 				for (int i = 0; i < Rows; i++)
-				for (int j = 0; j < Columns; j++)
-				{
-					if (i == j)
+					for (int j = 0; j < Columns; j++)
 					{
-						if (this[i, j] != 1.0f)
-							return false;
+						if (i == j)
+						{
+							if (this[i, j] != 1.0f)
+								return false;
+						}
+						else
+						{
+							if (this[i, j] != 0.0f)
+								return false;
+						}
 					}
-					else
-					{
-						if (this[i, j] != 0.0f)
-							return false;
-					}
-				}
 
 				return true;
 			}
@@ -637,7 +643,10 @@ namespace SimPe.Geometry
 		/// </summary>
 		public bool Invertable
 		{
-			get { return (this.Determinant() != 0); }
+			get
+			{
+				return (this.Determinant() != 0);
+			}
 		}
 
 		/// <summary>
@@ -834,8 +843,8 @@ namespace SimPe.Geometry
 			Matrixd m = Matrixd.GetIdentity(3, 3);
 
 			for (int r = 0; r < Math.Min(3, this.Rows); r++)
-			for (int c = 0; c < Math.Min(3, this.Columns); c++)
-				m[r, c] = this[r, c];
+				for (int c = 0; c < Math.Min(3, this.Columns); c++)
+					m[r, c] = this[r, c];
 
 			return m;
 		}

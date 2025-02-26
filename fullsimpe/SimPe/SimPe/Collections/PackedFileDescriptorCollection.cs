@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Files;
 
 namespace SimPe.Collections
@@ -33,8 +34,14 @@ namespace SimPe.Collections
 		/// </summary>
 		public new IPackedFileDescriptor this[int index]
 		{
-			get { return ((IPackedFileDescriptor)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((IPackedFileDescriptor)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -42,8 +49,14 @@ namespace SimPe.Collections
 		/// </summary>
 		public IPackedFileDescriptor this[uint index]
 		{
-			get { return ((IPackedFileDescriptor)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((IPackedFileDescriptor)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -99,7 +112,10 @@ namespace SimPe.Collections
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		/// <summary>

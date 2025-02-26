@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -103,7 +104,7 @@ namespace SimPe.Plugin
 			IFileWrapper //This Interface is used when loading a File
 			,
 			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-	//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 	{
 		#region Attributes
 		uint version;
@@ -113,7 +114,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public NeighborhoodVersion Version
 		{
-			get { return (NeighborhoodVersion)version; }
+			get
+			{
+				return (NeighborhoodVersion)version;
+			}
 		}
 
 		NeighborhoodType type;
@@ -123,8 +127,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public NeighborhoodType Type
 		{
-			get { return type; }
-			set { type = value; }
+			get
+			{
+				return type;
+			}
+			set
+			{
+				type = value;
+			}
 		}
 
 		Data.MetaData.NeighbourhoodEP reqep;
@@ -134,8 +144,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public Data.MetaData.NeighbourhoodEP Reqep
 		{
-			get { return reqep; }
-			set { reqep = value; }
+			get
+			{
+				return reqep;
+			}
+			set
+			{
+				reqep = value;
+			}
 		}
 
 		Data.MetaData.NeighbourhoodEP subep;
@@ -145,8 +161,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public Data.MetaData.NeighbourhoodEP Subep
 		{
-			get { return subep; }
-			set { subep = value; }
+			get
+			{
+				return subep;
+			}
+			set
+			{
+				subep = value;
+			}
 		}
 
 		NhSeasons quada;
@@ -156,8 +178,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public NhSeasons Quada
 		{
-			get { return quada; }
-			set { quada = value; }
+			get
+			{
+				return quada;
+			}
+			set
+			{
+				quada = value;
+			}
 		}
 
 		NhSeasons quadb;
@@ -167,8 +195,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public NhSeasons Quadb
 		{
-			get { return quadb; }
-			set { quadb = value; }
+			get
+			{
+				return quadb;
+			}
+			set
+			{
+				quadb = value;
+			}
 		}
 
 		NhSeasons quadc;
@@ -178,8 +212,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public NhSeasons Quadc
 		{
-			get { return quadc; }
-			set { quadc = value; }
+			get
+			{
+				return quadc;
+			}
+			set
+			{
+				quadc = value;
+			}
 		}
 
 		NhSeasons quadd;
@@ -189,8 +229,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public NhSeasons Quadd
 		{
-			get { return quadd; }
-			set { quadd = value; }
+			get
+			{
+				return quadd;
+			}
+			set
+			{
+				quadd = value;
+			}
 		}
 
 		string name;
@@ -200,8 +246,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string OwnerName
 		{
-			get { return name; }
-			set { name = value; }
+			get
+			{
+				return name;
+			}
+			set
+			{
+				name = value;
+			}
 		}
 
 		uint uid;
@@ -211,8 +263,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public uint Uid
 		{
-			get { return uid; }
-			set { uid = value; }
+			get
+			{
+				return uid;
+			}
+			set
+			{
+				uid = value;
+			}
 		}
 
 		uint idflags;
@@ -222,8 +280,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public uint Idflags
 		{
-			get { return idflags; }
-			set { idflags = value; }
+			get
+			{
+				return idflags;
+			}
+			set
+			{
+				idflags = value;
+			}
 		}
 
 		uint subtype;
@@ -233,8 +297,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public uint Subtype
 		{
-			get { return subtype; }
-			set { subtype = value; }
+			get
+			{
+				return subtype;
+			}
+			set
+			{
+				subtype = value;
+			}
 		}
 
 		string subname;
@@ -244,8 +314,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string SubName
 		{
-			get { return subname; }
-			set { subname = value; }
+			get
+			{
+				return subname;
+			}
+			set
+			{
+				subname = value;
+			}
 		}
 
 		byte[] over;
@@ -623,7 +699,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		/// <summary>

@@ -20,9 +20,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using pjse.BhavNameWizards;
+
 using SimPe.PackedFiles.Wrapper;
 using SimPe.Plugin;
+
 using Bhav = SimPe.PackedFiles.Wrapper.Bhav;
 
 namespace pjse
@@ -396,7 +399,10 @@ namespace pjse
 
 		public Instruction Instruction
 		{
-			get { return instruction; }
+			get
+			{
+				return instruction;
+			}
 		}
 
 		public override string ToString()
@@ -406,12 +412,18 @@ namespace pjse
 
 		public virtual string ShortName
 		{
-			get { return Name + " (" + Operands(false) + ")"; }
+			get
+			{
+				return Name + " (" + Operands(false) + ")";
+			}
 		}
 
 		public virtual string LongName
 		{
-			get { return Name + " (" + Operands(true) + ")"; }
+			get
+			{
+				return Name + " (" + Operands(true) + ")";
+			}
 		}
 
 		public virtual ABhavOperandWiz Wizard()
@@ -434,10 +446,16 @@ namespace pjse
 
 		protected virtual string Prefix
 		{
-			get { return prefix; }
+			get
+			{
+				return prefix;
+			}
 		}
 
-		protected abstract string OpcodeName { get; }
+		protected abstract string OpcodeName
+		{
+			get;
+		}
 
 		protected abstract string Operands(bool lng);
 
@@ -1418,7 +1436,7 @@ namespace pjse
 				case 2:
 					b += 0x0100;
 					break; // global
-				//case 3: b |= 0xF5BA; break; // do nothing
+						   //case 3: b |= 0xF5BA; break; // do nothing
 			}
 
 			result[0] = (ushort)b;
@@ -1546,8 +1564,14 @@ namespace pjse
 
 	public interface IDataOwner
 	{
-		byte DataOwner { get; }
-		ushort Value { get; }
+		byte DataOwner
+		{
+			get;
+		}
+		ushort Value
+		{
+			get;
+		}
 		event EventHandler DataOwnerControlChanged;
 	}
 }

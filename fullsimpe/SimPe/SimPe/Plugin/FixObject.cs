@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Files;
 using SimPe.Packages;
 
@@ -42,15 +43,27 @@ namespace SimPe.Plugin
 		FixVersion ver;
 		public FixVersion FixVersion
 		{
-			get { return ver; }
-			set { ver = value; }
+			get
+			{
+				return ver;
+			}
+			set
+			{
+				ver = value;
+			}
 		}
 
 		bool rndtr;
 		public bool RemoveNonDefaultTextReferences
 		{
-			get { return rndtr; }
-			set { rndtr = value; }
+			get
+			{
+				return rndtr;
+			}
+			set
+			{
+				rndtr = value;
+			}
 		}
 
 		/// <summary>

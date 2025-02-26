@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.Globalization;
 using System.IO;
+
 using SimPe.Geometry;
 using SimPe.Plugin.Anim;
 using SimPe.Plugin.Gmdc;
@@ -64,7 +65,10 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		/// </summary>
 		public override string FileExtension
 		{
-			get { return ".txt"; }
+			get
+			{
+				return ".txt";
+			}
 		}
 
 		/// <summary>
@@ -72,7 +76,10 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		/// </summary>
 		public override string FileDescription
 		{
-			get { return "Milkshape 3D ASCII"; }
+			get
+			{
+				return "Milkshape 3D ASCII";
+			}
 		}
 
 		/// <summary>
@@ -80,7 +87,10 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		/// </summary>
 		public override string Author
 		{
-			get { return "Emily"; }
+			get
+			{
+				return "Emily";
+			}
 		}
 
 		/// <summary>

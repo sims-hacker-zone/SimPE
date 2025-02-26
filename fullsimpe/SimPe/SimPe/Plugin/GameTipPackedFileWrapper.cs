@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -17,28 +18,58 @@ namespace SimPe.Plugin
 
 		public ushort Tipname
 		{
-			get { return tipname; }
-			set { tipname = value; }
+			get
+			{
+				return tipname;
+			}
+			set
+			{
+				tipname = value;
+			}
 		}
 		public ushort Tipheader
 		{
-			get { return tipheader; }
-			set { tipheader = value; }
+			get
+			{
+				return tipheader;
+			}
+			set
+			{
+				tipheader = value;
+			}
 		}
 		public ushort Tipbody
 		{
-			get { return tipbody; }
-			set { tipbody = value; }
+			get
+			{
+				return tipbody;
+			}
+			set
+			{
+				tipbody = value;
+			}
 		}
 		public ushort Tipep
 		{
-			get { return tipep; }
-			set { tipep = value; }
+			get
+			{
+				return tipep;
+			}
+			set
+			{
+				tipep = value;
+			}
 		}
 		public uint Tipicon
 		{
-			get { return tipicon; }
-			set { tipicon = value; }
+			get
+			{
+				return tipicon;
+			}
+			set
+			{
+				tipicon = value;
+			}
 		}
 		#endregion
 
@@ -99,7 +130,10 @@ namespace SimPe.Plugin
 
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		public uint[] AssignableTypes

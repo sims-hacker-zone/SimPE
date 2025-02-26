@@ -86,19 +86,34 @@ namespace SimPe.Data
 
 		public uint Id
 		{
-			get { return id; }
+			get
+			{
+				return id;
+			}
 		}
 
 		public string Name
 		{
-			get { return name; }
-			set { name = value; }
+			get
+			{
+				return name;
+			}
+			set
+			{
+				name = value;
+			}
 		}
 
 		public object[] Tag
 		{
-			get { return tag; }
-			set { tag = value; }
+			get
+			{
+				return tag;
+			}
+			set
+			{
+				tag = value;
+			}
 		}
 
 		#endregion

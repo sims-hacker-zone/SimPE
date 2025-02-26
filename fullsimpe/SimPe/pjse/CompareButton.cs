@@ -22,7 +22,9 @@ using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+
 using pjse;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
@@ -36,7 +38,10 @@ namespace pjse
 		private pjse.ExtendedWrapper wrapper = null;
 		public pjse.ExtendedWrapper Wrapper
 		{
-			get { return wrapper; }
+			get
+			{
+				return wrapper;
+			}
 			set
 			{
 				wrapper = value;
@@ -48,8 +53,14 @@ namespace pjse
 		private string wrapperName;
 		public string WrapperName
 		{
-			get { return wrapperName; }
-			set { wrapperName = value; }
+			get
+			{
+				return wrapperName;
+			}
+			set
+			{
+				wrapperName = value;
+			}
 		}
 
 		/// <summary>
@@ -61,11 +72,17 @@ namespace pjse
 			private SimPe.ExpansionItem exp = null;
 			public pjse.FileTable.Entry Item
 			{
-				get { return item; }
+				get
+				{
+					return item;
+				}
 			}
 			public SimPe.ExpansionItem ExpansionItem
 			{
-				get { return exp; }
+				get
+				{
+					return exp;
+				}
 			}
 
 			public CompareWithEventArgs(

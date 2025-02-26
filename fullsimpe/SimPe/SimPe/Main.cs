@@ -24,7 +24,9 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+
 using Ambertation.Windows.Forms;
+
 using SimPe.Events;
 
 namespace SimPe

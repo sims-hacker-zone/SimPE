@@ -69,7 +69,10 @@ namespace SimPe.Wizards
 		[Browsable(false)]
 		public System.Windows.Forms.Control Client
 		{
-			get { return this; }
+			get
+			{
+				return this;
+			}
 		}
 
 		internal void SetupParent(Wizard parent)
@@ -98,27 +101,45 @@ namespace SimPe.Wizards
 		Wizard parent;
 		public Wizard ParentWizard
 		{
-			get { return parent; }
+			get
+			{
+				return parent;
+			}
 		}
 
 		bool first;
 		public bool First
 		{
-			get { return first; }
-			set { first = value; }
+			get
+			{
+				return first;
+			}
+			set
+			{
+				first = value;
+			}
 		}
 
 		bool last;
 		public bool Last
 		{
-			get { return last; }
-			set { last = value; }
+			get
+			{
+				return last;
+			}
+			set
+			{
+				last = value;
+			}
 		}
 
 		int index;
 		public int Index
 		{
-			get { return index; }
+			get
+			{
+				return index;
+			}
 		}
 
 		protected void OnLoaded(Wizard sender)

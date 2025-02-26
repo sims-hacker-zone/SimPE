@@ -52,7 +52,10 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 
 		public SCOR.AScorItem ActivatedGUI
 		{
-			get { return gui; }
+			get
+			{
+				return gui;
+			}
 		}
 	}
 }

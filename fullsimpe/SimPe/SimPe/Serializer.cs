@@ -37,7 +37,10 @@ namespace SimPe
 					ResetFormater();
 				return formater;
 			}
-			set { formater = value; }
+			set
+			{
+				formater = value;
+			}
 		}
 
 		public static void ResetFormater()
@@ -127,7 +130,10 @@ namespace SimPe
 
 		public static string Seperator
 		{
-			get { return Formater.Seperator; }
+			get
+			{
+				return Formater.Seperator;
+			}
 		}
 
 		public static string SerializeTypeHeader(object o)

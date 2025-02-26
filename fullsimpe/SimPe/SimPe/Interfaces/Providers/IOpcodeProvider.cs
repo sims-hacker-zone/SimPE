@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Files;
 
 namespace SimPe.Interfaces.Providers
@@ -38,7 +39,10 @@ namespace SimPe.Interfaces.Providers
 		// <summary>
 		/// Returns the List of known Primitivess
 		/// </summary>
-		ArrayList StoredPrimitives { get; }
+		ArrayList StoredPrimitives
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the the name of the Expression Operator
@@ -75,7 +79,10 @@ namespace SimPe.Interfaces.Providers
 		/// <summary>
 		/// Returns a list of all known memories
 		/// </summary>
-		Hashtable StoredMemories { get; }
+		Hashtable StoredMemories
+		{
+			get;
+		}
 
 		/// <summary>
 		/// returns null or a Matching global BHAV File
@@ -106,22 +113,34 @@ namespace SimPe.Interfaces.Providers
 		/// <summary>
 		/// Returns a list of all known Objf Lines
 		/// </summary>
-		ArrayList StoredObjfLines { get; }
+		ArrayList StoredObjfLines
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the names Operatores in Expression Primitives
 		/// </summary>
-		ArrayList StoredExpressionOperators { get; }
+		ArrayList StoredExpressionOperators
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the names of the Data in an Expression Primitive
 		/// </summary>
-		ArrayList StoredDataNames { get; }
+		ArrayList StoredDataNames
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the List of known Motives
 		/// </summary>
-		ArrayList StoredMotives { get; }
+		ArrayList StoredMotives
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Call this to manually initialize the BasePacakhe

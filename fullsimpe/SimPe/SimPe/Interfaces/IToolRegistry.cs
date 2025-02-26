@@ -50,28 +50,43 @@ namespace SimPe.Interfaces
 		/// <summary>
 		/// Return a Collection of loaded Listeners
 		/// </summary>
-		SimPe.Collections.Listeners Listeners { get; }
+		SimPe.Collections.Listeners Listeners
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the List of Known Tools
 		/// </summary>
 		/// <remarks>The Tools should be Returned in Order of Priority starting with the lowest!</remarks>
-		ITool[] Tools { get; }
+		ITool[] Tools
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the List of Known Tools
 		/// </summary>
 		/// <remarks>The Tools should be Returned in Order of Priority starting with the lowest!</remarks>
-		IToolPlus[] ToolsPlus { get; }
+		IToolPlus[] ToolsPlus
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns a List of Know Doackable Tools
 		/// </summary>
-		IDockableTool[] Docks { get; }
+		IDockableTool[] Docks
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns a List of Know Action Tool
 		/// </summary>
-		IToolAction[] Actions { get; }
+		IToolAction[] Actions
+		{
+			get;
+		}
 	}
 }

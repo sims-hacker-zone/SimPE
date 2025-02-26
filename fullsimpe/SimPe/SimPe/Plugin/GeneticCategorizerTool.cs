@@ -1,6 +1,7 @@
 using System;
 using System.Drawing;
 using System.Threading;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
@@ -24,7 +25,10 @@ namespace SimPe.Plugin
 
 		public override bool Visible
 		{
-			get { return true; }
+			get
+			{
+				return true;
+			}
 		}
 
 		#region ITool Members

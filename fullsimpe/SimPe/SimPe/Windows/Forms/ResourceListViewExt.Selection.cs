@@ -184,7 +184,10 @@ namespace SimPe.Windows.Forms
 			bool ctrldn;
 			public bool CtrlDown
 			{
-				get { return ctrldn; }
+				get
+				{
+					return ctrldn;
+				}
 			}
 
 			internal SelectResourceEventArgs(bool ctrldn)

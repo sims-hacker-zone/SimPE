@@ -120,7 +120,10 @@ namespace SimPe.Plugin
 		[System.ComponentModel.Browsable(false)]
 		public Ngbh NgbhResource
 		{
-			get { return ngbh; }
+			get
+			{
+				return ngbh;
+			}
 			set
 			{
 				ngbh = value;
@@ -141,7 +144,10 @@ namespace SimPe.Plugin
 
 		public NgbhSlot SelectedSlot
 		{
-			get { return lv.SelectedSlot; }
+			get
+			{
+				return lv.SelectedSlot;
+			}
 		}
 
 		public Data.NeighborhoodSlots SlotType

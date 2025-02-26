@@ -24,7 +24,10 @@ namespace SimPe.Windows.Forms
 
 		public uint Type
 		{
-			get { return type; }
+			get
+			{
+				return type;
+			}
 		}
 
 		#region IComparable<ResResourceTreeNodeExt> Member

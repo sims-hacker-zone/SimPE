@@ -37,58 +37,91 @@ namespace SimPe.Interfaces.Files
 		/// Returns the Identifier of the File
 		/// </summary>
 		/// <remarks>This value should be DBPF</remarks>
-		string Identifier { get; }
+		string Identifier
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Major Version of The Packages FileFormat
 		/// </summary>
 		/// <remarks>This value should be 1</remarks>
-		Int32 MajorVersion { get; }
+		Int32 MajorVersion
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Minor Version of The Packages FileFormat
 		/// </summary>
 		/// <remarks>This value should be 0 or 1</remarks>
-		Int32 MinorVersion { get; }
+		Int32 MinorVersion
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Overall Version of this Package
 		/// </summary>
-		long Version { get; }
+		long Version
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns or Sets the Type of the Package
 		/// </summary>
-		Data.MetaData.IndexTypes IndexType { get; set; }
+		Data.MetaData.IndexTypes IndexType
+		{
+			get; set;
+		}
 
 		/// <summary>
 		/// The Icon to display (for lot packages)
 		/// </summary>
-		Int16 Epicon { get; set; }
+		Int16 Epicon
+		{
+			get; set;
+		}
 
 		/// <summary>
 		/// Should the defined Icon be shown : 1 is true (for lot packages)
 		/// </summary>
-		Int16 Showicon { get; set; }
+		Int16 Showicon
+		{
+			get; set;
+		}
 
 		/// <summary>
 		/// true if the version is greater or equal than 1.1
 		/// </summary>
-		bool IsVersion0101 { get; }
+		bool IsVersion0101
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns Index Informations stored in the Header
 		/// </summary>
-		IPackageHeaderIndex Index { get; }
+		IPackageHeaderIndex Index
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns Hole Index Informations stored in the Header
 		/// </summary>
-		IPackageHeaderHoleIndex HoleIndex { get; }
+		IPackageHeaderHoleIndex HoleIndex
+		{
+			get;
+		}
 
 		/// <summary>
 		/// This is missused in SimPe as a Unique Creator ID
 		/// </summary>
-		uint Created { get; set; }
+		uint Created
+		{
+			get; set;
+		}
 	}
 }

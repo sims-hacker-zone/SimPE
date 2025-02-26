@@ -21,31 +21,52 @@ namespace SimPe
 
 			protected bool RegularExpansion
 			{
-				get { return this.GetBit(0); }
+				get
+				{
+					return this.GetBit(0);
+				}
 			}
 			protected bool StuffPack
 			{
-				get { return this.GetBit(1); }
+				get
+				{
+					return this.GetBit(1);
+				}
 			}
 			public bool LuaFolders
 			{
-				get { return this.GetBit(2); }
+				get
+				{
+					return this.GetBit(2);
+				}
 			}
 			public bool LoadWantText
 			{
-				get { return this.GetBit(3); }
+				get
+				{
+					return this.GetBit(3);
+				}
 			}
 			public bool SimStory
 			{
-				get { return this.GetBit(4); }
+				get
+				{
+					return this.GetBit(4);
+				}
 			}
 			public bool FullObjectsPackage
 			{
-				get { return !this.GetBit(5); }
+				get
+				{
+					return !this.GetBit(5);
+				}
 			}
 			public bool HasNgbhProfiles
 			{
-				get { return this.GetBit(6); }
+				get
+				{
+					return this.GetBit(6);
+				}
 			}
 
 			public Classes Class
@@ -406,7 +427,9 @@ namespace SimPe
 		#region Neighborhood Path
 		private IniRegistry profilesini = null;
 
-		public class NeighborhoodPaths : List<NeighborhoodPath> { }
+		public class NeighborhoodPaths : List<NeighborhoodPath>
+		{
+		}
 
 		public class NeighborhoodPath
 		{
@@ -430,19 +453,31 @@ namespace SimPe
 
 			public string Lable
 			{
-				get { return name; }
+				get
+				{
+					return name;
+				}
 			}
 			public string Path
 			{
-				get { return path; }
+				get
+				{
+					return path;
+				}
 			}
 			public ExpansionItem Expansion
 			{
-				get { return ei; }
+				get
+				{
+					return ei;
+				}
 			}
 			public bool Default
 			{
-				get { return def; }
+				get
+				{
+					return def;
+				}
 			}
 
 			public override int GetHashCode()
@@ -551,12 +586,18 @@ namespace SimPe
 
 		public string DisplayName
 		{
-			get { return PathProvider.GetDisplayedNameForExpansion(this); }
+			get
+			{
+				return PathProvider.GetDisplayedNameForExpansion(this);
+			}
 		}
 
 		public Ambertation.CaseInvariantArrayList SimNameDeepSearch
 		{
-			get { return simnamedeep; }
+			get
+			{
+				return simnamedeep;
+			}
 		}
 
 		public string Name
@@ -571,12 +612,18 @@ namespace SimPe
 
 		public Ambertation.CaseInvariantArrayList FileTableFolders
 		{
-			get { return filtablefolders; }
+			get
+			{
+				return filtablefolders;
+			}
 		}
 
 		public Ambertation.CaseInvariantArrayList PreObjectFileTableFolders
 		{
-			get { return preobjectfiltablefolders; }
+			get
+			{
+				return preobjectfiltablefolders;
+			}
 		}
 
 		internal string CensorFile
@@ -603,47 +650,74 @@ namespace SimPe
 
 		internal string CensorFileName
 		{
-			get { return censor; }
+			get
+			{
+				return censor;
+			}
 		}
 
 		public bool Exists
 		{
-			get { return (tk != null && isfound == true); }
+			get
+			{
+				return (tk != null && isfound == true);
+			}
 		}
 
 		public int Version
 		{
-			get { return version; }
+			get
+			{
+				return version;
+			}
 		}
 
 		public int PreferedRuntimeVersion
 		{
-			get { return runtimeversion; }
+			get
+			{
+				return runtimeversion;
+			}
 		}
 
 		public Expansions Expansion
 		{
-			get { return exp; }
+			get
+			{
+				return exp;
+			}
 		}
 
 		public Microsoft.Win32.RegistryKey Registry
 		{
-			get { return rk; }
+			get
+			{
+				return rk;
+			}
 		}
 
 		public string ExeName
 		{
-			get { return exe; }
+			get
+			{
+				return exe;
+			}
 		}
 
 		public IList<long> Groups
 		{
-			get { return groups; }
+			get
+			{
+				return groups;
+			}
 		}
 
 		public int Group
 		{
-			get { return group; }
+			get
+			{
+				return group;
+			}
 		}
 
 		public bool ShareOneGroup(ExpansionItem ei)
@@ -692,12 +766,18 @@ namespace SimPe
 		/// </summary>
 		public string ObjectsSubFolder
 		{
-			get { return objfolder; }
+			get
+			{
+				return objfolder;
+			}
 		}
 
 		public string IdKey
 		{
-			get { return System.IO.Path.GetFileNameWithoutExtension(ExeName); }
+			get
+			{
+				return System.IO.Path.GetFileNameWithoutExtension(ExeName);
+			}
 		}
 
 		protected string GetShortName()
@@ -710,7 +790,10 @@ namespace SimPe
 
 		public string ShortId
 		{
-			get { return sname; }
+			get
+			{
+				return sname;
+			}
 		}
 
 		public string NameShort
@@ -725,17 +808,26 @@ namespace SimPe
 
 		public string NameSortNumber
 		{
-			get { return namelistnr; }
+			get
+			{
+				return namelistnr;
+			}
 		}
 
 		public string NameShorter
 		{
-			get { return shortername; }
+			get
+			{
+				return shortername;
+			}
 		}
 
 		public Flags Flag
 		{
-			get { return flag; }
+			get
+			{
+				return flag;
+			}
 		}
 
 		public string RealInstallFolder

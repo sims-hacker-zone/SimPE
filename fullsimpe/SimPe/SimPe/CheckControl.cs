@@ -110,8 +110,14 @@ namespace SimPe
 		}
 		public static bool CaCleared
 		{
-			get { return cacleared; }
-			set { cacleared = value; }
+			get
+			{
+				return cacleared;
+			}
+			set
+			{
+				cacleared = value;
+			}
 		}
 
 		/// <summary>

@@ -31,71 +31,131 @@ namespace SimPe.Plugin
 		StandardLightBase slb;
 		public StandardLightBase StandardLightBase
 		{
-			get { return slb; }
-			set { slb = value; }
+			get
+			{
+				return slb;
+			}
+			set
+			{
+				slb = value;
+			}
 		}
 
 		LightT lt;
 		public LightT LightT
 		{
-			get { return lt; }
-			set { lt = value; }
+			get
+			{
+				return lt;
+			}
+			set
+			{
+				lt = value;
+			}
 		}
 
 		ReferentNode rn;
 		public ReferentNode ReferentNode
 		{
-			get { return rn; }
-			set { rn = value; }
+			get
+			{
+				return rn;
+			}
+			set
+			{
+				rn = value;
+			}
 		}
 
 		ObjectGraphNode ogn;
 		public ObjectGraphNode ObjectGraphNode
 		{
-			get { return ogn; }
-			set { ogn = value; }
+			get
+			{
+				return ogn;
+			}
+			set
+			{
+				ogn = value;
+			}
 		}
 
 		string unknown2;
 		public string Name
 		{
-			get { return unknown2; }
-			set { unknown2 = value; }
+			get
+			{
+				return unknown2;
+			}
+			set
+			{
+				unknown2 = value;
+			}
 		}
 
 		float unknown3;
 		public float Val1
 		{
-			get { return unknown3; }
-			set { unknown3 = value; }
+			get
+			{
+				return unknown3;
+			}
+			set
+			{
+				unknown3 = value;
+			}
 		}
 
 		float unknown4;
 		public float Val2
 		{
-			get { return unknown4; }
-			set { unknown4 = value; }
+			get
+			{
+				return unknown4;
+			}
+			set
+			{
+				unknown4 = value;
+			}
 		}
 
 		float red;
 		public float Red
 		{
-			get { return red; }
-			set { red = value; }
+			get
+			{
+				return red;
+			}
+			set
+			{
+				red = value;
+			}
 		}
 
 		float green;
 		public float Green
 		{
-			get { return green; }
-			set { green = value; }
+			get
+			{
+				return green;
+			}
+			set
+			{
+				green = value;
+			}
 		}
 
 		float blue;
 		public float Blue
 		{
-			get { return blue; }
-			set { blue = value; }
+			get
+			{
+				return blue;
+			}
+			set
+			{
+				blue = value;
+			}
 		}
 
 		#endregion

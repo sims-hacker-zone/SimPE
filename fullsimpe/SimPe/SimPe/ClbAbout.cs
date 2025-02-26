@@ -28,7 +28,9 @@ namespace SimPe
 			wb.AllowNavigation = true;
 		}
 
-		void wb_Navigated(object sender, WebBrowserNavigatedEventArgs e) { }
+		void wb_Navigated(object sender, WebBrowserNavigatedEventArgs e)
+		{
+		}
 
 		void wb_Navigating(object sender, WebBrowserNavigatingEventArgs e)
 		{

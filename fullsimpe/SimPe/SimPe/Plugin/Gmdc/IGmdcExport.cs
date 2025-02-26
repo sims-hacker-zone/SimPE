@@ -49,42 +49,66 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Retunrs or sets the FileName that is used to create the File
 		/// </summary>
-		string FileName { get; set; }
+		string FileName
+		{
+			get; set;
+		}
 
 		/// <summary>
 		/// Returns the Content of the File base on the last loaded GroupSet
 		/// </summary>
-		System.IO.StreamWriter FileContent { get; }
+		System.IO.StreamWriter FileContent
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns a Version Number for the used Interface
 		/// </summary>
-		int Version { get; }
+		int Version
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the suggested File Extension (including the . like .obj or .3ds)
 		/// </summary>
-		string FileExtension { get; }
+		string FileExtension
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the File Description (the Name of the exported FileType)
 		/// </summary>
-		string FileDescription { get; }
+		string FileDescription
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the name of the Author
 		/// </summary>
-		string Author { get; }
+		string Author
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Which Order is used for the Components (determins the Transformation that should be applied on export)
 		/// </summary>
-		ElementOrder Component { get; set; }
+		ElementOrder Component
+		{
+			get; set;
+		}
 
 		/// <summary>
 		/// true, if you want SimPe to correct the Joint definitions, moving all rotations to the _root node,
 		/// and all translations to the _trans node of a Joint pair.
 		/// </summary>
-		bool CorrectJointSetup { get; set; }
+		bool CorrectJointSetup
+		{
+			get; set;
+		}
 	}
 }

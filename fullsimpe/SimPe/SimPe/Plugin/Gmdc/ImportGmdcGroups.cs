@@ -1294,7 +1294,9 @@ namespace SimPe.Plugin.Gmdc
 			}
 		}
 
-		private void ImportGmdcGroupsForm_Load(object sender, System.EventArgs e) { }
+		private void ImportGmdcGroupsForm_Load(object sender, System.EventArgs e)
+		{
+		}
 
 		private void cbBMesh_CheckedChanged(object sender, System.EventArgs e)
 		{

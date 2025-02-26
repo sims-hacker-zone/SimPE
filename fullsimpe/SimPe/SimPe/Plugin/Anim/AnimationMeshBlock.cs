@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
+
 using SimPe.Geometry;
 
 namespace SimPe.Plugin.Anim
@@ -33,20 +34,32 @@ namespace SimPe.Plugin.Anim
 		Rcol parent;
 		public Rcol Parent
 		{
-			get { return parent; }
+			get
+			{
+				return parent;
+			}
 		}
 
 		public AnimResourceConst Animation
 		{
-			get { return (AnimResourceConst)parent.Blocks[0]; }
+			get
+			{
+				return (AnimResourceConst)parent.Blocks[0];
+			}
 		}
 		AnimationFrameBlock[] ab2;
 
 		[BrowsableAttribute(false)]
 		public AnimationFrameBlock[] Part2
 		{
-			get { return ab2; }
-			set { ab2 = value; }
+			get
+			{
+				return ab2;
+			}
+			set
+			{
+				ab2 = value;
+			}
 		}
 
 		[
@@ -55,7 +68,10 @@ namespace SimPe.Plugin.Anim
 		]
 		public int Part2Count
 		{
-			get { return ab2.Length; }
+			get
+			{
+				return ab2.Length;
+			}
 		}
 
 		AnimBlock4[] ab4;
@@ -63,7 +79,10 @@ namespace SimPe.Plugin.Anim
 		[BrowsableAttribute(false)]
 		public AnimBlock4[] Part4
 		{
-			get { return ab4; }
+			get
+			{
+				return ab4;
+			}
 		}
 
 		[
@@ -72,7 +91,10 @@ namespace SimPe.Plugin.Anim
 		]
 		public int Part4Count
 		{
-			get { return ab4.Length; }
+			get
+			{
+				return ab4.Length;
+			}
 		}
 
 		uint[] datai;
@@ -84,8 +106,14 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown1
 		{
-			get { return datai[0]; }
-			set { datai[0] = value; }
+			get
+			{
+				return datai[0];
+			}
+			set
+			{
+				datai[0] = value;
+			}
 		}
 
 		[
@@ -95,8 +123,14 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown2
 		{
-			get { return datai[1]; }
-			set { datai[1] = value; }
+			get
+			{
+				return datai[1];
+			}
+			set
+			{
+				datai[1] = value;
+			}
 		}
 
 		[
@@ -106,8 +140,14 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown3
 		{
-			get { return datai[2]; }
-			set { datai[2] = value; }
+			get
+			{
+				return datai[2];
+			}
+			set
+			{
+				datai[2] = value;
+			}
 		}
 
 		[
@@ -117,8 +157,14 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown4
 		{
-			get { return datai[3]; }
-			set { datai[3] = value; }
+			get
+			{
+				return datai[3];
+			}
+			set
+			{
+				datai[3] = value;
+			}
 		}
 
 		[
@@ -128,21 +174,36 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown5
 		{
-			get { return datai[4]; }
-			set { datai[4] = value; }
+			get
+			{
+				return datai[4];
+			}
+			set
+			{
+				datai[4] = value;
+			}
 		}
 
 		short[] datas;
 		public short SUnknown1
 		{
-			get { return datas[0]; }
-			set { datas[0] = value; }
+			get
+			{
+				return datas[0];
+			}
+			set
+			{
+				datas[0] = value;
+			}
 		}
 
 		[DescriptionAttribute("Number of assigned AnimationFrameBlock Items")]
 		public short AnimatedBoneCount
 		{
-			get { return datas[1]; }
+			get
+			{
+				return datas[1];
+			}
 		}
 
 		[DescriptionAttribute(
@@ -150,13 +211,25 @@ namespace SimPe.Plugin.Anim
 		)]
 		public short SUnknown3
 		{
-			get { return datas[2]; }
-			set { datas[2] = value; }
+			get
+			{
+				return datas[2];
+			}
+			set
+			{
+				datas[2] = value;
+			}
 		}
 		public short SUnknown4
 		{
-			get { return datas[3]; }
-			set { datas[3] = value; }
+			get
+			{
+				return datas[3];
+			}
+			set
+			{
+				datas[3] = value;
+			}
 		}
 		#endregion
 

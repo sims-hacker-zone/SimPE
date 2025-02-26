@@ -21,6 +21,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -81,8 +82,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public string FileName
 		{
-			get { return Helper.ToString(filename); }
-			set { filename = Helper.SetLength(Helper.ToBytes(value, 64), 64); }
+			get
+			{
+				return Helper.ToString(filename);
+			}
+			set
+			{
+				filename = Helper.SetLength(Helper.ToBytes(value, 64), 64);
+			}
 		}
 
 		/// <summary>
@@ -90,8 +97,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public short[] Data
 		{
-			get { return data; }
-			set { data = value; }
+			get
+			{
+				return data;
+			}
+			set
+			{
+				data = value;
+			}
 		}
 
 		/// <summary>
@@ -99,8 +112,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint Guid
 		{
-			get { return guid; }
-			set { guid = value; }
+			get
+			{
+				return guid;
+			}
+			set
+			{
+				guid = value;
+			}
 		}
 
 		/// <summary>
@@ -108,8 +127,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint ProxyGuid
 		{
-			get { return proxyguid; }
-			set { proxyguid = value; }
+			get
+			{
+				return proxyguid;
+			}
+			set
+			{
+				proxyguid = value;
+			}
 		}
 
 		/// <summary>
@@ -117,8 +142,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint OriginalGuid
 		{
-			get { return originalguid; }
-			set { originalguid = value; }
+			get
+			{
+				return originalguid;
+			}
+			set
+			{
+				originalguid = value;
+			}
 		}
 
 		/// <summary>
@@ -126,8 +157,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint DiagonalGuid
 		{
-			get { return diagonalguid; }
-			set { diagonalguid = value; }
+			get
+			{
+				return diagonalguid;
+			}
+			set
+			{
+				diagonalguid = value;
+			}
 		}
 
 		/// <summary>
@@ -135,8 +172,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint GridAlignedGuid
 		{
-			get { return gridalignguid; }
-			set { gridalignguid = value; }
+			get
+			{
+				return gridalignguid;
+			}
+			set
+			{
+				gridalignguid = value;
+			}
 		}
 
 		/// <summary>
@@ -203,8 +246,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public ObjCatalogueUse CatalogueUse
 		{
-			get { return usort; }
-			set { usort = value; }
+			get
+			{
+				return usort;
+			}
+			set
+			{
+				usort = value;
+			}
 		}
 
 		/// <summary>
@@ -212,14 +261,26 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public ObjRoomSort RoomSort
 		{
-			get { return rsort; }
-			set { rsort = value; }
+			get
+			{
+				return rsort;
+			}
+			set
+			{
+				rsort = value;
+			}
 		}
 
 		public ComRoomSort CommSort
 		{
-			get { return csort; }
-			set { csort = value; }
+			get
+			{
+				return csort;
+			}
+			set
+			{
+				csort = value;
+			}
 		}
 
 		/// <summary>
@@ -227,8 +288,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public ObjFunctionSort FunctionSort
 		{
-			get { return fsort; }
-			set { fsort = value; }
+			get
+			{
+				return fsort;
+			}
+			set
+			{
+				fsort = value;
+			}
 		}
 
 		/// <summary>
@@ -236,8 +303,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public ObjBuildType BuildType
 		{
-			get { return btype; }
-			set { btype = value; }
+			get
+			{
+				return btype;
+			}
+			set
+			{
+				btype = value;
+			}
 		}
 
 		/// <summary>
@@ -245,8 +318,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public Epsreq1 EpRequired1
 		{
-			get { return epone; }
-			set { epone = value; }
+			get
+			{
+				return epone;
+			}
+			set
+			{
+				epone = value;
+			}
 		}
 
 		/// <summary>
@@ -254,8 +333,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public Epsreq2 EpRequired2
 		{
-			get { return eptwo; }
-			set { eptwo = value; }
+			get
+			{
+				return eptwo;
+			}
+			set
+			{
+				eptwo = value;
+			}
 		}
 
 		public Data.BuildFunctionSubSort BuildSubSort
@@ -307,13 +392,22 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public short Price
 		{
-			get { return data[0x12]; }
-			set { data[0x12] = value; }
+			get
+			{
+				return data[0x12];
+			}
+			set
+			{
+				data[0x12] = value;
+			}
 		}
 
 		public short Version
 		{
-			get { return data[0x00]; }
+			get
+			{
+				return data[0x00];
+			}
 		}
 
 		/// <summary>
@@ -321,12 +415,18 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		protected int Length
 		{
-			get { return (int)(data.Length * 2 + 0x40); }
+			get
+			{
+				return (int)(data.Length * 2 + 0x40);
+			}
 		}
 
 		public ObjdHealth Ok
 		{
-			get { return ok; }
+			get
+			{
+				return ok;
+			}
 		}
 
 		/// <summary>
@@ -635,38 +735,74 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool AdultsOnly
 		{
-			get { return GetBit((byte)Data.ObjCatalogueUseBits.Adults); }
-			set { SetBit((byte)Data.ObjCatalogueUseBits.Adults, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjCatalogueUseBits.Adults);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjCatalogueUseBits.Adults, value);
+			}
 		}
 
 		public bool ChildrenOnly
 		{
-			get { return GetBit((byte)Data.ObjCatalogueUseBits.Children); }
-			set { SetBit((byte)Data.ObjCatalogueUseBits.Children, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjCatalogueUseBits.Children);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjCatalogueUseBits.Children, value);
+			}
 		}
 
 		public bool GroupActivity
 		{
-			get { return GetBit((byte)Data.ObjCatalogueUseBits.Group); }
-			set { SetBit((byte)Data.ObjCatalogueUseBits.Group, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjCatalogueUseBits.Group);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjCatalogueUseBits.Group, value);
+			}
 		}
 
 		public bool TeensOnly
 		{
-			get { return GetBit((byte)Data.ObjCatalogueUseBits.Teens); }
-			set { SetBit((byte)Data.ObjCatalogueUseBits.Teens, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjCatalogueUseBits.Teens);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjCatalogueUseBits.Teens, value);
+			}
 		}
 
 		public bool EldersOnly
 		{
-			get { return GetBit((byte)Data.ObjCatalogueUseBits.Elders); }
-			set { SetBit((byte)Data.ObjCatalogueUseBits.Elders, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjCatalogueUseBits.Elders);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjCatalogueUseBits.Elders, value);
+			}
 		}
 
 		public bool ToddlersOnly
 		{
-			get { return GetBit((byte)Data.ObjCatalogueUseBits.Toddlers); }
-			set { SetBit((byte)Data.ObjCatalogueUseBits.Toddlers, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjCatalogueUseBits.Toddlers);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjCatalogueUseBits.Toddlers, value);
+			}
 		}
 	}
 	#endregion
@@ -682,56 +818,110 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool InBathroom
 		{
-			get { return GetBit((byte)Data.ObjRoomSortBits.Bathroom); }
-			set { SetBit((byte)Data.ObjRoomSortBits.Bathroom, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjRoomSortBits.Bathroom);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjRoomSortBits.Bathroom, value);
+			}
 		}
 
 		public bool InBedroom
 		{
-			get { return GetBit((byte)Data.ObjRoomSortBits.Bedroom); }
-			set { SetBit((byte)Data.ObjRoomSortBits.Bedroom, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjRoomSortBits.Bedroom);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjRoomSortBits.Bedroom, value);
+			}
 		}
 
 		public bool InDiningRoom
 		{
-			get { return GetBit((byte)Data.ObjRoomSortBits.DiningRoom); }
-			set { SetBit((byte)Data.ObjRoomSortBits.DiningRoom, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjRoomSortBits.DiningRoom);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjRoomSortBits.DiningRoom, value);
+			}
 		}
 
 		public bool InKitchen
 		{
-			get { return GetBit((byte)Data.ObjRoomSortBits.Kitchen); }
-			set { SetBit((byte)Data.ObjRoomSortBits.Kitchen, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjRoomSortBits.Kitchen);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjRoomSortBits.Kitchen, value);
+			}
 		}
 
 		public bool InLivingRoom
 		{
-			get { return GetBit((byte)Data.ObjRoomSortBits.LivingRoom); }
-			set { SetBit((byte)Data.ObjRoomSortBits.LivingRoom, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjRoomSortBits.LivingRoom);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjRoomSortBits.LivingRoom, value);
+			}
 		}
 
 		public bool InMisc
 		{
-			get { return GetBit((byte)Data.ObjRoomSortBits.Misc); }
-			set { SetBit((byte)Data.ObjRoomSortBits.Misc, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjRoomSortBits.Misc);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjRoomSortBits.Misc, value);
+			}
 		}
 
 		public bool InOutside
 		{
-			get { return GetBit((byte)Data.ObjRoomSortBits.Outside); }
-			set { SetBit((byte)Data.ObjRoomSortBits.Outside, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjRoomSortBits.Outside);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjRoomSortBits.Outside, value);
+			}
 		}
 
 		public bool InStudy
 		{
-			get { return GetBit((byte)Data.ObjRoomSortBits.Study); }
-			set { SetBit((byte)Data.ObjRoomSortBits.Study, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjRoomSortBits.Study);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjRoomSortBits.Study, value);
+			}
 		}
 
 		public bool InKids
 		{
-			get { return GetBit((byte)Data.ObjRoomSortBits.Kids); }
-			set { SetBit((byte)Data.ObjRoomSortBits.Kids, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjRoomSortBits.Kids);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjRoomSortBits.Kids, value);
+			}
 		}
 	}
 	#endregion
@@ -747,32 +937,62 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool InDining
 		{
-			get { return GetBit((byte)Data.CommRoomSortBits.Dining); }
-			set { SetBit((byte)Data.CommRoomSortBits.Dining, value); }
+			get
+			{
+				return GetBit((byte)Data.CommRoomSortBits.Dining);
+			}
+			set
+			{
+				SetBit((byte)Data.CommRoomSortBits.Dining, value);
+			}
 		}
 
 		public bool InShopping
 		{
-			get { return GetBit((byte)Data.CommRoomSortBits.Shopping); }
-			set { SetBit((byte)Data.CommRoomSortBits.Shopping, value); }
+			get
+			{
+				return GetBit((byte)Data.CommRoomSortBits.Shopping);
+			}
+			set
+			{
+				SetBit((byte)Data.CommRoomSortBits.Shopping, value);
+			}
 		}
 
 		public bool InOutdoors
 		{
-			get { return GetBit((byte)Data.CommRoomSortBits.Outdoor); }
-			set { SetBit((byte)Data.CommRoomSortBits.Outdoor, value); }
+			get
+			{
+				return GetBit((byte)Data.CommRoomSortBits.Outdoor);
+			}
+			set
+			{
+				SetBit((byte)Data.CommRoomSortBits.Outdoor, value);
+			}
 		}
 
 		public bool InStreet
 		{
-			get { return GetBit((byte)Data.CommRoomSortBits.Street); }
-			set { SetBit((byte)Data.CommRoomSortBits.Street, value); }
+			get
+			{
+				return GetBit((byte)Data.CommRoomSortBits.Street);
+			}
+			set
+			{
+				SetBit((byte)Data.CommRoomSortBits.Street, value);
+			}
 		}
 
 		public bool InMiscel
 		{
-			get { return GetBit((byte)Data.CommRoomSortBits.Misc); }
-			set { SetBit((byte)Data.CommRoomSortBits.Misc, value); }
+			get
+			{
+				return GetBit((byte)Data.CommRoomSortBits.Misc);
+			}
+			set
+			{
+				SetBit((byte)Data.CommRoomSortBits.Misc, value);
+			}
 		}
 	}
 	#endregion
@@ -788,68 +1008,134 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool InAppliances
 		{
-			get { return GetBit((byte)Data.ObjFunctionSortBits.Appliances); }
-			set { SetBit((byte)Data.ObjFunctionSortBits.Appliances, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjFunctionSortBits.Appliances);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjFunctionSortBits.Appliances, value);
+			}
 		}
 
 		public bool InDecorative
 		{
-			get { return GetBit((byte)Data.ObjFunctionSortBits.Decorative); }
-			set { SetBit((byte)Data.ObjFunctionSortBits.Decorative, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjFunctionSortBits.Decorative);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjFunctionSortBits.Decorative, value);
+			}
 		}
 
 		public bool InElectronics
 		{
-			get { return GetBit((byte)Data.ObjFunctionSortBits.Electronics); }
-			set { SetBit((byte)Data.ObjFunctionSortBits.Electronics, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjFunctionSortBits.Electronics);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjFunctionSortBits.Electronics, value);
+			}
 		}
 
 		public bool InGeneral
 		{
-			get { return GetBit((byte)Data.ObjFunctionSortBits.General); }
-			set { SetBit((byte)Data.ObjFunctionSortBits.General, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjFunctionSortBits.General);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjFunctionSortBits.General, value);
+			}
 		}
 
 		public bool InLighting
 		{
-			get { return GetBit((byte)Data.ObjFunctionSortBits.Lighting); }
-			set { SetBit((byte)Data.ObjFunctionSortBits.Lighting, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjFunctionSortBits.Lighting);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjFunctionSortBits.Lighting, value);
+			}
 		}
 
 		public bool InPlumbing
 		{
-			get { return GetBit((byte)Data.ObjFunctionSortBits.Plumbing); }
-			set { SetBit((byte)Data.ObjFunctionSortBits.Plumbing, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjFunctionSortBits.Plumbing);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjFunctionSortBits.Plumbing, value);
+			}
 		}
 
 		public bool InSeating
 		{
-			get { return GetBit((byte)Data.ObjFunctionSortBits.Seating); }
-			set { SetBit((byte)Data.ObjFunctionSortBits.Seating, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjFunctionSortBits.Seating);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjFunctionSortBits.Seating, value);
+			}
 		}
 
 		public bool InSurfaces
 		{
-			get { return GetBit((byte)Data.ObjFunctionSortBits.Surfaces); }
-			set { SetBit((byte)Data.ObjFunctionSortBits.Surfaces, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjFunctionSortBits.Surfaces);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjFunctionSortBits.Surfaces, value);
+			}
 		}
 
 		public bool InHobbies
 		{
-			get { return GetBit((byte)Data.ObjFunctionSortBits.Hobbies); }
-			set { SetBit((byte)Data.ObjFunctionSortBits.Hobbies, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjFunctionSortBits.Hobbies);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjFunctionSortBits.Hobbies, value);
+			}
 		}
 
 		public bool InAspirationRewards
 		{
-			get { return GetBit((byte)Data.ObjFunctionSortBits.AspirationRewards); }
-			set { SetBit((byte)Data.ObjFunctionSortBits.AspirationRewards, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjFunctionSortBits.AspirationRewards);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjFunctionSortBits.AspirationRewards, value);
+			}
 		}
 
 		public bool InCareerRewards
 		{
-			get { return GetBit((byte)Data.ObjFunctionSortBits.CareerRewards); }
-			set { SetBit((byte)Data.ObjFunctionSortBits.CareerRewards, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjFunctionSortBits.CareerRewards);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjFunctionSortBits.CareerRewards, value);
+			}
 		}
 	}
 	#endregion
@@ -865,26 +1151,50 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool InGeneral
 		{
-			get { return GetBit((byte)Data.ObjBuildTypeBits.General); }
-			set { SetBit((byte)Data.ObjBuildTypeBits.General, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjBuildTypeBits.General);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjBuildTypeBits.General, value);
+			}
 		}
 
 		public bool InUnknown
 		{
-			get { return GetBit((byte)Data.ObjBuildTypeBits.unknown); }
-			set { SetBit((byte)Data.ObjBuildTypeBits.unknown, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjBuildTypeBits.unknown);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjBuildTypeBits.unknown, value);
+			}
 		}
 
 		public bool InGarden
 		{
-			get { return GetBit((byte)Data.ObjBuildTypeBits.Garden); }
-			set { SetBit((byte)Data.ObjBuildTypeBits.Garden, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjBuildTypeBits.Garden);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjBuildTypeBits.Garden, value);
+			}
 		}
 
 		public bool InOpenings
 		{
-			get { return GetBit((byte)Data.ObjBuildTypeBits.Openings); }
-			set { SetBit((byte)Data.ObjBuildTypeBits.Openings, value); }
+			get
+			{
+				return GetBit((byte)Data.ObjBuildTypeBits.Openings);
+			}
+			set
+			{
+				SetBit((byte)Data.ObjBuildTypeBits.Openings, value);
+			}
 		}
 	}
 	#endregion
@@ -900,98 +1210,194 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool Basegame
 		{
-			get { return GetBit((byte)Data.MetaData.NeighbourhoodEP.BaseGame); }
-			set { SetBit((byte)Data.MetaData.NeighbourhoodEP.BaseGame, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.NeighbourhoodEP.BaseGame);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.NeighbourhoodEP.BaseGame, value);
+			}
 		}
 
 		public bool University
 		{
-			get { return GetBit((byte)Data.MetaData.NeighbourhoodEP.University); }
-			set { SetBit((byte)Data.MetaData.NeighbourhoodEP.University, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.NeighbourhoodEP.University);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.NeighbourhoodEP.University, value);
+			}
 		}
 
 		public bool Nightlife
 		{
-			get { return GetBit((byte)Data.MetaData.NeighbourhoodEP.Nightlife); }
-			set { SetBit((byte)Data.MetaData.NeighbourhoodEP.Nightlife, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.NeighbourhoodEP.Nightlife);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.NeighbourhoodEP.Nightlife, value);
+			}
 		}
 
 		public bool Business
 		{
-			get { return GetBit((byte)Data.MetaData.NeighbourhoodEP.Business); }
-			set { SetBit((byte)Data.MetaData.NeighbourhoodEP.Business, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.NeighbourhoodEP.Business);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.NeighbourhoodEP.Business, value);
+			}
 		}
 
 		public bool FamilyFun
 		{
-			get { return GetBit((byte)Data.MetaData.NeighbourhoodEP.FamilyFun); }
-			set { SetBit((byte)Data.MetaData.NeighbourhoodEP.FamilyFun, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.NeighbourhoodEP.FamilyFun);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.NeighbourhoodEP.FamilyFun, value);
+			}
 		}
 
 		public bool GlamourLife
 		{
-			get { return GetBit((byte)Data.MetaData.NeighbourhoodEP.GlamourLife); }
-			set { SetBit((byte)Data.MetaData.NeighbourhoodEP.GlamourLife, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.NeighbourhoodEP.GlamourLife);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.NeighbourhoodEP.GlamourLife, value);
+			}
 		}
 
 		public bool Pets
 		{
-			get { return GetBit((byte)Data.MetaData.NeighbourhoodEP.Pets); }
-			set { SetBit((byte)Data.MetaData.NeighbourhoodEP.Pets, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.NeighbourhoodEP.Pets);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.NeighbourhoodEP.Pets, value);
+			}
 		}
 
 		public bool Seasons
 		{
-			get { return GetBit((byte)Data.MetaData.NeighbourhoodEP.Seasons); }
-			set { SetBit((byte)Data.MetaData.NeighbourhoodEP.Seasons, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.NeighbourhoodEP.Seasons);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.NeighbourhoodEP.Seasons, value);
+			}
 		}
 
 		public bool Celebration
 		{
-			get { return GetBit((byte)Data.MetaData.NeighbourhoodEP.Celebration); }
-			set { SetBit((byte)Data.MetaData.NeighbourhoodEP.Celebration, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.NeighbourhoodEP.Celebration);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.NeighbourhoodEP.Celebration, value);
+			}
 		}
 
 		public bool Fashion
 		{
-			get { return GetBit((byte)Data.MetaData.NeighbourhoodEP.Fashion); }
-			set { SetBit((byte)Data.MetaData.NeighbourhoodEP.Fashion, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.NeighbourhoodEP.Fashion);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.NeighbourhoodEP.Fashion, value);
+			}
 		}
 
 		public bool BonVoyage
 		{
-			get { return GetBit((byte)Data.MetaData.NeighbourhoodEP.BonVoyage); }
-			set { SetBit((byte)Data.MetaData.NeighbourhoodEP.BonVoyage, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.NeighbourhoodEP.BonVoyage);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.NeighbourhoodEP.BonVoyage, value);
+			}
 		}
 
 		public bool TeenStyle
 		{
-			get { return GetBit((byte)Data.MetaData.NeighbourhoodEP.TeenStyle); }
-			set { SetBit((byte)Data.MetaData.NeighbourhoodEP.TeenStyle, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.NeighbourhoodEP.TeenStyle);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.NeighbourhoodEP.TeenStyle, value);
+			}
 		}
 
 		public bool StoreEdition_old
 		{
-			get { return GetBit((byte)Data.MetaData.NeighbourhoodEP.StoreEdition_old); }
-			set { SetBit((byte)Data.MetaData.NeighbourhoodEP.StoreEdition_old, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.NeighbourhoodEP.StoreEdition_old);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.NeighbourhoodEP.StoreEdition_old, value);
+			}
 		}
 
 		public bool Freetime
 		{
-			get { return GetBit((byte)Data.MetaData.NeighbourhoodEP.Freetime); }
-			set { SetBit((byte)Data.MetaData.NeighbourhoodEP.Freetime, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.NeighbourhoodEP.Freetime);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.NeighbourhoodEP.Freetime, value);
+			}
 		}
 
 		public bool KitchenBath
 		{
-			get { return GetBit((byte)Data.MetaData.NeighbourhoodEP.KitchenBath); }
-			set { SetBit((byte)Data.MetaData.NeighbourhoodEP.KitchenBath, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.NeighbourhoodEP.KitchenBath);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.NeighbourhoodEP.KitchenBath, value);
+			}
 		}
 
 		public bool IkeaHome
 		{
-			get { return GetBit((byte)Data.MetaData.NeighbourhoodEP.IkeaHome); }
-			set { SetBit((byte)Data.MetaData.NeighbourhoodEP.IkeaHome, value); }
+			get
+			{
+				return GetBit((byte)Data.MetaData.NeighbourhoodEP.IkeaHome);
+			}
+			set
+			{
+				SetBit((byte)Data.MetaData.NeighbourhoodEP.IkeaHome, value);
+			}
 		}
 	}
 	#endregion
@@ -1007,20 +1413,38 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool ApartmentLife
 		{
-			get { return GetBit((byte)0); }
-			set { SetBit((byte)0, value); }
+			get
+			{
+				return GetBit((byte)0);
+			}
+			set
+			{
+				SetBit((byte)0, value);
+			}
 		}
 
 		public bool MansionGarden
 		{
-			get { return GetBit((byte)1); }
-			set { SetBit((byte)1, value); }
+			get
+			{
+				return GetBit((byte)1);
+			}
+			set
+			{
+				SetBit((byte)1, value);
+			}
 		}
 
 		public bool StoreEdition
 		{
-			get { return GetBit((byte)0xf); }
-			set { SetBit((byte)0xf, value); }
+			get
+			{
+				return GetBit((byte)0xf);
+			}
+			set
+			{
+				SetBit((byte)0xf, value);
+			}
 		}
 	}
 	#endregion

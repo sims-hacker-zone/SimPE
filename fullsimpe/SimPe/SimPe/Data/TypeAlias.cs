@@ -188,7 +188,10 @@ namespace SimPe.Data
 		/// </summary>
 		public bool Known
 		{
-			get { return knowntype; }
+			get
+			{
+				return knowntype;
+			}
 		}
 
 		/// <summary>
@@ -196,7 +199,10 @@ namespace SimPe.Data
 		/// </summary>
 		public bool IgnoreDuringCacheBuild
 		{
-			get { return nodecompforcache; }
+			get
+			{
+				return nodecompforcache;
+			}
 		}
 	}
 }

@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.Windows.Forms;
 using System.Xml;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -51,7 +52,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public Hashtable Map
 		{
-			get { return map; }
+			get
+			{
+				return map;
+			}
 		}
 
 		/// <summary>

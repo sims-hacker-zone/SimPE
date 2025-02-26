@@ -67,7 +67,10 @@ namespace SimPe
 
 		public GuiTheme CurrentTheme
 		{
-			get { return ctheme; }
+			get
+			{
+				return ctheme;
+			}
 			set
 			{
 				if (ctheme != value)
@@ -437,7 +440,10 @@ namespace SimPe
 		/// </summary>
 		public ThemeManager Parent
 		{
-			get { return parent; }
+			get
+			{
+				return parent;
+			}
 			set
 			{
 				if (parent != null)

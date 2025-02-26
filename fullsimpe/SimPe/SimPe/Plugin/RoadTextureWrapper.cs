@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -57,32 +58,62 @@ namespace SimPe.Plugin
 
 		public RoadTextureType Type
 		{
-			get { return type; }
-			set { type = value; }
+			get
+			{
+				return type;
+			}
+			set
+			{
+				type = value;
+			}
 		}
 
 		public string FileName
 		{
-			get { return flname; }
-			set { flname = value; }
+			get
+			{
+				return flname;
+			}
+			set
+			{
+				flname = value;
+			}
 		}
 
 		public uint Id
 		{
-			get { return uk1; }
-			set { uk1 = value; }
+			get
+			{
+				return uk1;
+			}
+			set
+			{
+				uk1 = value;
+			}
 		}
 
 		public uint Unknown2
 		{
-			get { return uk2; }
-			set { uk2 = value; }
+			get
+			{
+				return uk2;
+			}
+			set
+			{
+				uk2 = value;
+			}
 		}
 
 		public uint Unknown3
 		{
-			get { return uk3; }
-			set { uk3 = value; }
+			get
+			{
+				return uk3;
+			}
+			set
+			{
+				uk3 = value;
+			}
 		}
 
 		#endregion
@@ -230,7 +261,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		/// <summary>
@@ -263,8 +297,14 @@ namespace SimPe.Plugin
 
 		public object this[object key]
 		{
-			get { return values[key]; }
-			set { values[key] = value; }
+			get
+			{
+				return values[key];
+			}
+			set
+			{
+				values[key] = value;
+			}
 		}
 
 		public IEnumerator GetEnumerator()

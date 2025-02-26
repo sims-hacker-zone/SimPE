@@ -356,7 +356,7 @@ namespace SimPe.PackedFiles.UserInterface
 			int to1 = 13;
 			if (Helper.WindowsRegistry.LoadOnlySimsStory > 0)
 				to1 = 12; // All Sims Story Editions Don't use Tattoos
-			// images don't have a to f, go straight from 0x09 to 0x10
+						  // images don't have a to f, go straight from 0x09 to 0x10
 			if (i <= to1)
 			{
 				j = Convert.ToUInt32(0x30010001 + i);

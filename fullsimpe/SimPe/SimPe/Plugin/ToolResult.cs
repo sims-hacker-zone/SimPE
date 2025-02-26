@@ -38,17 +38,26 @@ namespace SimPe.Plugin
 		#region IToolResult Member
 		public bool ChangedPackage
 		{
-			get { return this.package; }
+			get
+			{
+				return this.package;
+			}
 		}
 
 		public bool ChangedFile
 		{
-			get { return this.pfd; }
+			get
+			{
+				return this.pfd;
+			}
 		}
 
 		public bool ChangedAny
 		{
-			get { return (ChangedPackage || ChangedFile); }
+			get
+			{
+				return (ChangedPackage || ChangedFile);
+			}
 		}
 		#endregion
 	}

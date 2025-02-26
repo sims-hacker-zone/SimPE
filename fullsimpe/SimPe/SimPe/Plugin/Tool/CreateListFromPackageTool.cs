@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Events;
 using SimPe.Interfaces;
 
@@ -28,7 +29,9 @@ namespace SimPe.Plugin.Tool
 	/// </summary>
 	public class CreateListFromPackageTool : SimPe.Interfaces.IToolPlus
 	{
-		internal CreateListFromPackageTool() { }
+		internal CreateListFromPackageTool()
+		{
+		}
 
 		#region ITool Member
 
@@ -68,7 +71,10 @@ namespace SimPe.Plugin.Tool
 		#region IToolExt Member
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get { return System.Windows.Forms.Shortcut.CtrlShiftD; }
+			get
+			{
+				return System.Windows.Forms.Shortcut.CtrlShiftD;
+			}
 		}
 
 		public System.Drawing.Image Icon
@@ -84,7 +90,10 @@ namespace SimPe.Plugin.Tool
 
 		public virtual bool Visible
 		{
-			get { return true; }
+			get
+			{
+				return true;
+			}
 		}
 
 		#endregion

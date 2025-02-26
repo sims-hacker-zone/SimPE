@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Providers;
 
@@ -50,7 +51,10 @@ namespace SimPe.Providers
 		/// <remarks>Sets the names List to null</remarks>
 		public IPackageFile BasePackage
 		{
-			get { return package; }
+			get
+			{
+				return package;
+			}
 			set
 			{
 				if (package != value)

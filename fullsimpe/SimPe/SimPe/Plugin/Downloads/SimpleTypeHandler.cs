@@ -9,7 +9,9 @@ namespace SimPe.Plugin.Downloads
 	{
 		protected PackageInfo nfo;
 
-		public SimpleTypeHandler() { }
+		public SimpleTypeHandler()
+		{
+		}
 
 		protected abstract void SetName(SimPe.Interfaces.Files.IPackageFile pkg);
 		protected abstract void SetImage(SimPe.Interfaces.Files.IPackageFile pkg);
@@ -44,12 +46,16 @@ namespace SimPe.Plugin.Downloads
 		protected virtual void BeforeLoadContent(
 			SimPe.Cache.PackageType type,
 			SimPe.Interfaces.Files.IPackageFile pkg
-		) { }
+		)
+		{
+		}
 
 		protected virtual void AfterLoadContent(
 			SimPe.Cache.PackageType type,
 			SimPe.Interfaces.Files.IPackageFile pkg
-		) { }
+		)
+		{
+		}
 
 		#region ITypeHandler Member
 
@@ -69,7 +75,10 @@ namespace SimPe.Plugin.Downloads
 
 		public IPackageInfo[] Objects
 		{
-			get { return new IPackageInfo[] { nfo }; }
+			get
+			{
+				return new IPackageInfo[] { nfo };
+			}
 		}
 
 		#endregion

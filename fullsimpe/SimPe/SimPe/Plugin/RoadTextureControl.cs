@@ -23,6 +23,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -430,7 +431,10 @@ namespace SimPe.Plugin
 
 		public RoadTexture RoadTextureWrapper
 		{
-			get { return (RoadTexture)this.Wrapper; }
+			get
+			{
+				return (RoadTexture)this.Wrapper;
+			}
 		}
 
 		protected override void RefreshGUI()

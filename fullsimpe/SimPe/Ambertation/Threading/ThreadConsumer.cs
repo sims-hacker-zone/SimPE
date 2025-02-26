@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Threading;
+
 using SimPe;
 
 namespace Ambertation.Threading
@@ -179,7 +180,10 @@ namespace Ambertation.Threading
 
 		internal bool Canceled
 		{
-			get { return canceled; }
+			get
+			{
+				return canceled;
+			}
 			set
 			{
 				canceled = value;
@@ -255,7 +259,9 @@ namespace Ambertation.Threading
 		/// </summary>
 		protected abstract void Produce();
 
-		protected virtual void OnFinish() { }
+		protected virtual void OnFinish()
+		{
+		}
 
 		public void start()
 		{

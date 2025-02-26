@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.Data;
 
 namespace SimPe.Plugin.UI
@@ -42,8 +43,14 @@ namespace SimPe.Plugin.UI
 		public event EventHandler SettingsChanged;
 		public new ClothingSettings Settings
 		{
-			get { return base.Settings as ClothingSettings; }
-			set { base.Settings = value; }
+			get
+			{
+				return base.Settings as ClothingSettings;
+			}
+			set
+			{
+				base.Settings = value;
+			}
 		}
 		public RecolorType Tipe = RecolorType.Unsupported;
 

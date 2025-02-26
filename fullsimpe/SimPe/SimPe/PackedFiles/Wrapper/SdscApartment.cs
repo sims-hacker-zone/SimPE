@@ -22,18 +22,36 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public short Reputation
 		{
-			get { return reputation; }
-			set { reputation = value; }
+			get
+			{
+				return reputation;
+			}
+			set
+			{
+				reputation = value;
+			}
 		}
 		public short ProbabilityToAppear
 		{
-			get { return probabilityToAppear; }
-			set { probabilityToAppear = value; }
+			get
+			{
+				return probabilityToAppear;
+			}
+			set
+			{
+				probabilityToAppear = value;
+			}
 		}
 		public short TitlePostName
 		{
-			get { return titlePostName; }
-			set { titlePostName = value; }
+			get
+			{
+				return titlePostName;
+			}
+			set
+			{
+				titlePostName = value;
+			}
 		}
 
 		internal void Unserialize(BinaryReader reader)

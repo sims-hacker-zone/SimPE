@@ -28,13 +28,19 @@ namespace SimPe.Providers
 		private string name;
 		public string Name
 		{
-			get { return name; }
+			get
+			{
+				return name;
+			}
 		}
 
 		private ulong id;
 		public ulong Id
 		{
-			get { return id; }
+			get
+			{
+				return id;
+			}
 		}
 
 		public TraitAlias(ulong id, string name)

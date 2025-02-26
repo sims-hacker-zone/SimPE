@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -38,7 +39,7 @@ namespace SimPe.Plugin
 			IFileWrapper //This Interface is used when loading a File
 			,
 			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-	//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 	{
 		#region Attributes
 		byte[] filename = null;
@@ -60,60 +61,123 @@ namespace SimPe.Plugin
 		#region Accessor methods
 		public string FileName
 		{
-			get { return Helper.ToString(filename); }
-			set { filename = Helper.ToBytes(value, 0x40); }
+			get
+			{
+				return Helper.ToString(filename);
+			}
+			set
+			{
+				filename = Helper.ToBytes(value, 0x40);
+			}
 		}
 		public LtxtSubVersion SubVersion
 		{
-			get { return (LtxtSubVersion)subver; }
-			set { subver = (ushort)value; }
+			get
+			{
+				return (LtxtSubVersion)subver;
+			}
+			set
+			{
+				subver = (ushort)value;
+			}
 		}
 		public Size LotSize
 		{
-			get { return sz; }
-			set { sz = value; }
+			get
+			{
+				return sz;
+			}
+			set
+			{
+				sz = value;
+			}
 		}
 		public Ltxt.LotType Type
 		{
-			get { return type; }
-			set { type = value; }
+			get
+			{
+				return type;
+			}
+			set
+			{
+				type = value;
+			}
 		}
 		public byte LotRoads
 		{
-			get { return roads; }
-			set { roads = value; }
+			get
+			{
+				return roads;
+			}
+			set
+			{
+				roads = value;
+			}
 		}
 		public byte LotRotation
 		{
-			get { return (byte)rotation; }
-			set { rotation = (Ltxt.Rotation)value; }
+			get
+			{
+				return (byte)rotation;
+			}
+			set
+			{
+				rotation = (Ltxt.Rotation)value;
+			}
 		}
 		internal UInt32 Unknown0
 		{
-			get { return unknown_0; }
-			set { unknown_0 = value; }
+			get
+			{
+				return unknown_0;
+			}
+			set
+			{
+				unknown_0 = value;
+			}
 		}
 		public string LotName
 		{
-			get { return lotname; }
-			set { lotname = value; }
+			get
+			{
+				return lotname;
+			}
+			set
+			{
+				lotname = value;
+			}
 		}
 		public string LotDesc
 		{
-			get { return description; }
-			set { description = value; }
+			get
+			{
+				return description;
+			}
+			set
+			{
+				description = value;
+			}
 		}
 		internal List<UInt32> Unknown1
 		{
-			get { return unknown_1; }
+			get
+			{
+				return unknown_1;
+			}
 		}
 		internal float Unknown2
 		{
-			get { return unknown_2; }
+			get
+			{
+				return unknown_2;
+			}
 		}
 		internal UInt32 Unknown3
 		{
-			get { return unknown_3; }
+			get
+			{
+				return unknown_3;
+			}
 		}
 		#endregion
 
@@ -240,7 +304,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		/// <summary>
@@ -248,7 +315,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public uint[] AssignableTypes
 		{
-			get { return new uint[] { Lottype }; }
+			get
+			{
+				return new uint[] { Lottype };
+			}
 		}
 
 		#endregion

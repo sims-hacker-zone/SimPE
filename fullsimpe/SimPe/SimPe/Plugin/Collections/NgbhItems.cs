@@ -32,7 +32,10 @@ namespace SimPe.Plugin.Collections
 		Ngbh ngbh;
 		public NgbhSlotList Parent
 		{
-			get { return parent; }
+			get
+			{
+				return parent;
+			}
 		}
 
 		internal NgbhItems(NgbhSlotList parent)
@@ -143,7 +146,10 @@ namespace SimPe.Plugin.Collections
 
 		public NgbhItem this[int index]
 		{
-			get { return list[index] as NgbhItem; }
+			get
+			{
+				return list[index] as NgbhItem;
+			}
 			set
 			{
 				list[index] = value;
@@ -154,12 +160,18 @@ namespace SimPe.Plugin.Collections
 
 		public int Count
 		{
-			get { return list.Count; }
+			get
+			{
+				return list.Count;
+			}
 		}
 
 		public int Length
 		{
-			get { return list.Count; }
+			get
+			{
+				return list.Count;
+			}
 		}
 
 		public NgbhItems Clone()

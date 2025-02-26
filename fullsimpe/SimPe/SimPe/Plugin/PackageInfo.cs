@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Specialized;
 using System.Text;
+
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
@@ -22,7 +23,10 @@ namespace SimPe.Plugin
 
 		public IPackageFile Package
 		{
-			get { return package; }
+			get
+			{
+				return package;
+			}
 			set
 			{
 				package = value;
@@ -66,17 +70,31 @@ namespace SimPe.Plugin
 
 		public RecolorItem[] RecolorItems
 		{
-			get { return this.items; }
-			set { this.items = value; }
+			get
+			{
+				return this.items;
+			}
+			set
+			{
+				this.items = value;
+			}
 		}
 
 		public uint PackageHash
 		{
-			get { return this.packageHash; }
-			set { this.packageHash = value; }
+			get
+			{
+				return this.packageHash;
+			}
+			set
+			{
+				this.packageHash = value;
+			}
 		}
 
-		private PackageInfo() { }
+		private PackageInfo()
+		{
+		}
 
 		public PackageInfo(IPackageFile package)
 		{
@@ -252,11 +270,19 @@ namespace SimPe.Plugin
 
 		public new PackageInfo this[object key]
 		{
-			get { return base[key] as PackageInfo; }
-			set { base[key] = value; }
+			get
+			{
+				return base[key] as PackageInfo;
+			}
+			set
+			{
+				base[key] = value;
+			}
 		}
 
-		public PackageInfoTable() { }
+		public PackageInfoTable()
+		{
+		}
 
 		public void Add(object key, PackageInfo pnfo)
 		{

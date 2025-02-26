@@ -20,6 +20,7 @@
 using System;
 using System.Drawing;
 using System.IO;
+
 using SimPe;
 
 namespace SimPe.Cache
@@ -67,14 +68,23 @@ namespace SimPe.Cache
 				pfd.Tag = this;
 				return pfd;
 			}
-			set { pfd = value; }
+			set
+			{
+				pfd = value;
+			}
 		}
 
 		RcolCacheItemType rtp;
 		public RcolCacheItemType RcolType
 		{
-			get { return rtp; }
-			set { rtp = value; }
+			get
+			{
+				return rtp;
+			}
+			set
+			{
+				rtp = value;
+			}
 		}
 
 		/// <summary>
@@ -82,8 +92,14 @@ namespace SimPe.Cache
 		/// </summary>
 		public string ResourceName
 		{
-			get { return resourcename; }
-			set { resourcename = value; }
+			get
+			{
+				return resourcename;
+			}
+			set
+			{
+				resourcename = value;
+			}
 		}
 
 		/// <summary>
@@ -91,8 +107,14 @@ namespace SimPe.Cache
 		/// </summary>
 		public string ModelName
 		{
-			get { return modelname; }
-			set { modelname = value; }
+			get
+			{
+				return modelname;
+			}
+			set
+			{
+				modelname = value;
+			}
 		}
 
 		public override string ToString()
@@ -134,7 +156,10 @@ namespace SimPe.Cache
 
 		public byte Version
 		{
-			get { return version; }
+			get
+			{
+				return version;
+			}
 		}
 
 		#endregion

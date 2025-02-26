@@ -21,9 +21,11 @@ using System;
 using System.Collections;
 using System.Globalization;
 using System.IO;
+
 using Ambertation.Collections;
 using Ambertation.Scenes;
 using Ambertation.Scenes.Collections;
+
 using SimPe.Geometry;
 using SimPe.Plugin.Anim;
 using SimPe.Plugin.Gmdc;
@@ -51,7 +53,10 @@ namespace SimPe.Plugin
 
 		public GeometryDataContainer Gmdc
 		{
-			get { return gmdc; }
+			get
+			{
+				return gmdc;
+			}
 		}
 
 		Hashtable txtrmap,
@@ -65,7 +70,10 @@ namespace SimPe.Plugin
 		/// that hold the TXMT for that Subset</remarks>
 		public Hashtable UserTxtrMap
 		{
-			get { return txtrmap; }
+			get
+			{
+				return txtrmap;
+			}
 		}
 
 		/// <summary>
@@ -76,7 +84,10 @@ namespace SimPe.Plugin
 		/// that hold the TXTR for that Subset</remarks>
 		public Hashtable UserTxmtMap
 		{
-			get { return txmtmap; }
+			get
+			{
+				return txmtmap;
+			}
 		}
 
 		public Ambertation.Scenes.Scene GetScene(

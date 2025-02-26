@@ -20,6 +20,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.Events;
 
 namespace SimPe.Interfaces
@@ -41,7 +42,10 @@ namespace SimPe.Interfaces
 		/// a 16x16 Image, that is displayed as an Icon for the Help Topic (by defualt this is a questionmark)
 		/// </summary>
 		/// <returns>null for the derfault, or a custom Image</returns>
-		System.Drawing.Image Icon { get; }
+		System.Drawing.Image Icon
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Executed, when the User decided to show the Help

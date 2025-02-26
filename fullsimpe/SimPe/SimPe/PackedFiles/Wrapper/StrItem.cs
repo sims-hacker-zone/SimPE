@@ -54,7 +54,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public byte Id
 		{
-			get { return lid; }
+			get
+			{
+				return lid;
+			}
 		}
 
 		/// <summary>
@@ -145,8 +148,14 @@ namespace SimPe.PackedFiles.Wrapper
 	{
 		public new StrLanguage this[int index]
 		{
-			get { return ((StrLanguage)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((StrLanguage)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		public int Add(StrLanguage strlng)
@@ -171,7 +180,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		public override void Sort()
@@ -218,7 +230,10 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Accessor methods
 		internal int Index
 		{
-			get { return index; }
+			get
+			{
+				return index;
+			}
 		}
 
 		/// <summary>
@@ -226,12 +241,18 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public StrLanguage Language
 		{
-			get { return lid; }
+			get
+			{
+				return lid;
+			}
 		}
 
 		public string Title
 		{
-			get { return title; }
+			get
+			{
+				return title;
+			}
 			set
 			{
 				if (title != value)
@@ -244,7 +265,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public string Description
 		{
-			get { return desc; }
+			get
+			{
+				return desc;
+			}
 			set
 			{
 				if (desc != value)
@@ -260,7 +284,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public bool IsDirty
 		{
-			get { return dirty; }
+			get
+			{
+				return dirty;
+			}
 		}
 		#endregion
 
@@ -321,14 +348,26 @@ namespace SimPe.PackedFiles.Wrapper
 	{
 		public new StrToken this[int index]
 		{
-			get { return ((StrToken)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((StrToken)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		public StrToken this[uint index]
 		{
-			get { return ((StrToken)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((StrToken)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		public int Add(StrToken stritem)
@@ -353,7 +392,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		public override object Clone()

@@ -239,8 +239,14 @@ namespace SimPe.Packages
 		/// </summary>
 		public bool Optional
 		{
-			get { return optional; }
-			set { optional = value; }
+			get
+			{
+				return optional;
+			}
+			set
+			{
+				optional = value;
+			}
 		}
 
 		/// <summary>
@@ -253,8 +259,14 @@ namespace SimPe.Packages
 		/// </summary>
 		public string Name
 		{
-			get { return name; }
-			set { name = value; }
+			get
+			{
+				return name;
+			}
+			set
+			{
+				name = value;
+			}
 		}
 
 		/// <summary>
@@ -267,8 +279,14 @@ namespace SimPe.Packages
 		/// </summary>
 		public string ObjectVersion
 		{
-			get { return objectversion; }
-			set { objectversion = value; }
+			get
+			{
+				return objectversion;
+			}
+			set
+			{
+				objectversion = value;
+			}
 		}
 
 		/// <summary>
@@ -281,8 +299,14 @@ namespace SimPe.Packages
 		/// </summary>
 		public string Guid
 		{
-			get { return guid; }
-			set { guid = value; }
+			get
+			{
+				return guid;
+			}
+			set
+			{
+				guid = value;
+			}
 		}
 
 		/// <summary>
@@ -295,8 +319,14 @@ namespace SimPe.Packages
 		/// </summary>
 		public GeneratableFile Package
 		{
-			get { return package; }
-			set { package = value; }
+			get
+			{
+				return package;
+			}
+			set
+			{
+				package = value;
+			}
 		}
 
 		/// <summary>
@@ -677,8 +707,14 @@ namespace SimPe.Packages
 		/// </summary>
 		public S2CPDescriptorBase[] Dependency
 		{
-			get { return dep; }
-			set { dep = value; }
+			get
+			{
+				return dep;
+			}
+			set
+			{
+				dep = value;
+			}
 		}
 
 		/// <summary>
@@ -691,8 +727,14 @@ namespace SimPe.Packages
 		/// </summary>
 		public string Title
 		{
-			get { return title; }
-			set { title = value; }
+			get
+			{
+				return title;
+			}
+			set
+			{
+				title = value;
+			}
 		}
 
 		/// <summary>
@@ -705,8 +747,14 @@ namespace SimPe.Packages
 		/// </summary>
 		public string Type
 		{
-			get { return type; }
-			set { type = value; }
+			get
+			{
+				return type;
+			}
+			set
+			{
+				type = value;
+			}
 		}
 
 		/// <summary>
@@ -719,8 +767,14 @@ namespace SimPe.Packages
 		/// </summary>
 		public string GameVersion
 		{
-			get { return gameversion; }
-			set { gameversion = value; }
+			get
+			{
+				return gameversion;
+			}
+			set
+			{
+				gameversion = value;
+			}
 		}
 
 		/// <summary>
@@ -733,8 +787,14 @@ namespace SimPe.Packages
 		/// </summary>
 		public string Crc
 		{
-			get { return crc; }
-			set { crc = value; }
+			get
+			{
+				return crc;
+			}
+			set
+			{
+				crc = value;
+			}
 		}
 
 		/// <summary>
@@ -747,8 +807,14 @@ namespace SimPe.Packages
 		/// </summary>
 		public string Description
 		{
-			get { return description; }
-			set { description = value; }
+			get
+			{
+				return description;
+			}
+			set
+			{
+				description = value;
+			}
 		}
 
 		/// <summary>
@@ -761,8 +827,14 @@ namespace SimPe.Packages
 		/// </summary>
 		public string Author
 		{
-			get { return author; }
-			set { author = value; }
+			get
+			{
+				return author;
+			}
+			set
+			{
+				author = value;
+			}
 		}
 
 		/// <summary>
@@ -775,8 +847,14 @@ namespace SimPe.Packages
 		/// </summary>
 		public string Contact
 		{
-			get { return contact; }
-			set { contact = value; }
+			get
+			{
+				return contact;
+			}
+			set
+			{
+				contact = value;
+			}
 		}
 
 		string gameguid;
@@ -808,7 +886,10 @@ namespace SimPe.Packages
 
 				return gameguid.Trim();
 			}
-			set { gameguid = value; }
+			set
+			{
+				gameguid = value;
+			}
 		}
 
 		/// <summary>
@@ -823,8 +904,14 @@ namespace SimPe.Packages
 		/// Indicates if the Package was compressed or not</remarks>
 		public Sims2CommunityPack.CompressionStrength Compressed
 		{
-			get { return compressed; }
-			set { compressed = value; }
+			get
+			{
+				return compressed;
+			}
+			set
+			{
+				compressed = value;
+			}
 		}
 
 		/// <summary>

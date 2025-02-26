@@ -33,8 +33,14 @@ namespace SimPe.Plugin.Anim
 		byte[] unknowndata;
 		internal byte[] Data
 		{
-			get { return unknowndata; }
-			set { unknowndata = value; }
+			get
+			{
+				return unknowndata;
+			}
+			set
+			{
+				unknowndata = value;
+			}
 		}
 
 		short unknown1;
@@ -42,43 +48,67 @@ namespace SimPe.Plugin.Anim
 		[DescriptionAttribute("The Time the Animation takes to play (probably in ms)")]
 		public short TotalTime
 		{
-			get { return unknown1; }
-			set { unknown1 = value; }
+			get
+			{
+				return unknown1;
+			}
+			set
+			{
+				unknown1 = value;
+			}
 		}
 
 		public Ambertation.BaseChangeShort B_Unknown1
 		{
-			get { return new Ambertation.BaseChangeShort(unknown1); }
+			get
+			{
+				return new Ambertation.BaseChangeShort(unknown1);
+			}
 		}
 		byte[] headerb;
 
 		[DescriptionAttribute("Index 0 and 5 contain string Lengths.")]
 		public byte[] HeaderBytes
 		{
-			get { return headerb; }
+			get
+			{
+				return headerb;
+			}
 		}
 
 		uint[] headeri;
 		public uint[] HeaderInts
 		{
-			get { return headeri; }
+			get
+			{
+				return headeri;
+			}
 		}
 
 		float[] headerf;
 		public float[] HeaderFloats
 		{
-			get { return headerf; }
+			get
+			{
+				return headerf;
+			}
 		}
 
 		string objname;
 		public string ObjName
 		{
-			get { return objname; }
+			get
+			{
+				return objname;
+			}
 		}
 		string objmod;
 		public string ObjMod
 		{
-			get { return objmod; }
+			get
+			{
+				return objmod;
+			}
 		}
 
 		AnimationMeshBlock[] ab1;
@@ -86,7 +116,10 @@ namespace SimPe.Plugin.Anim
 		[Browsable(false)]
 		public AnimationMeshBlock[] MeshBlock
 		{
-			get { return ab1; }
+			get
+			{
+				return ab1;
+			}
 		}
 
 		AnimBlock6[] ab6;

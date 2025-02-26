@@ -24,7 +24,9 @@ using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+
 using pjse;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
@@ -373,7 +375,7 @@ namespace SimPe.PackedFiles.UserInterface
 				wrapper.FileDescriptor.Instance,
 				npfd,
 				ai,
-				delegate(pjse.FileTable.Entry i, IPackedFileDescriptor pfd)
+				delegate (pjse.FileTable.Entry i, IPackedFileDescriptor pfd)
 				{
 					return (
 						i.Group != pfd.Group
@@ -547,7 +549,10 @@ namespace SimPe.PackedFiles.UserInterface
 		}
 		private string callerID
 		{
-			get { return getValueFromTag("callerID"); }
+			get
+			{
+				return getValueFromTag("callerID");
+			}
 		}
 		private string expName
 		{
@@ -1218,7 +1223,10 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		public Control GUIHandle
 		{
-			get { return bhavPanel; }
+			get
+			{
+				return bhavPanel;
+			}
 		}
 
 		/// <summary>

@@ -29,6 +29,9 @@ namespace SimPe.Interfaces.Plugin
 		/// <summary>
 		/// Returns all Plugin (dockable) Tools the Factory knows
 		/// </summary>
-		IHelp[] KnownHelpTopics { get; }
+		IHelp[] KnownHelpTopics
+		{
+			get;
+		}
 	}
 }

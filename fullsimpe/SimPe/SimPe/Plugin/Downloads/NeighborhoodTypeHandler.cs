@@ -7,7 +7,9 @@ namespace SimPe.Plugin.Downloads
 	/// </summary>
 	public class NeighborhoodTypeHandler : SimpleTypeHandler
 	{
-		public NeighborhoodTypeHandler() { }
+		public NeighborhoodTypeHandler()
+		{
+		}
 
 		protected override void SetName(SimPe.Interfaces.Files.IPackageFile pkg)
 		{

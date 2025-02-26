@@ -61,7 +61,10 @@ namespace Classless.Hasher
 		/// <summary>Gets or sets the order of the CRC (e.g., how many bits).</summary>
 		public int Order
 		{
-			get { return order; }
+			get
+			{
+				return order;
+			}
 			set
 			{
 				if (((value % 8) != 0) || (value < 8) || (value > 64))
@@ -82,29 +85,53 @@ namespace Classless.Hasher
 		/// <summary>Gets or sets the polynomial to use in the CRC calculations.</summary>
 		public long Polynomial
 		{
-			get { return polynomial; }
-			set { polynomial = value; }
+			get
+			{
+				return polynomial;
+			}
+			set
+			{
+				polynomial = value;
+			}
 		}
 
 		/// <summary>Gets or sets the initial value of the CRC.</summary>
 		public long InitialValue
 		{
-			get { return initial; }
-			set { initial = value; }
+			get
+			{
+				return initial;
+			}
+			set
+			{
+				initial = value;
+			}
 		}
 
 		/// <summary>Gets or sets the final value to XOR with the CRC.</summary>
 		public long FinalXORValue
 		{
-			get { return finalXOR; }
-			set { finalXOR = value; }
+			get
+			{
+				return finalXOR;
+			}
+			set
+			{
+				finalXOR = value;
+			}
 		}
 
 		/// <summary>Gets or sets the value dictating whether or not to reflect the incoming data before calculating. (UART)</summary>
 		public bool ReflectInput
 		{
-			get { return reflectIn; }
-			set { reflectIn = value; }
+			get
+			{
+				return reflectIn;
+			}
+			set
+			{
+				reflectIn = value;
+			}
 		}
 
 		/// <summary>Initializes a new instance of the CRCParamters class.</summary>

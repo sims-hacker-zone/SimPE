@@ -207,7 +207,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			RefreshDock(null, null);
 		}
 
-		private void label2_Click(object sender, System.EventArgs e) { }
+		private void label2_Click(object sender, System.EventArgs e)
+		{
+		}
 
 		private void label1_Click(object sender, System.EventArgs e)
 		{
@@ -267,17 +269,26 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get { return System.Windows.Forms.Shortcut.None; }
+			get
+			{
+				return System.Windows.Forms.Shortcut.None;
+			}
 		}
 
 		public System.Drawing.Image Icon
 		{
-			get { return this.TabImage; }
+			get
+			{
+				return this.TabImage;
+			}
 		}
 
 		public new virtual bool Visible
 		{
-			get { return this.IsDocked || this.IsFloating; }
+			get
+			{
+				return this.IsDocked || this.IsFloating;
+			}
 		}
 
 		#endregion

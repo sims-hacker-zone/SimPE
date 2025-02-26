@@ -34,7 +34,10 @@ namespace pjse
 		private static Settings settings;
 		public static Settings PJSE
 		{
-			get { return settings; }
+			get
+			{
+				return settings;
+			}
 		}
 
 		static Settings()
@@ -219,7 +222,10 @@ namespace pjse
 		[System.ComponentModel.Browsable(false)]
 		public System.Drawing.Image Icon
 		{
-			get { return null; }
+			get
+			{
+				return null;
+			}
 		}
 
 		#endregion

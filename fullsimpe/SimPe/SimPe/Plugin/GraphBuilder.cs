@@ -20,8 +20,10 @@
 using System;
 using System.Collections;
 using System.Drawing;
+
 using Ambertation.Windows.Forms;
 using Ambertation.Windows.Forms.Graph;
+
 using SimPe.Interfaces;
 
 namespace SimPe.Plugin
@@ -35,7 +37,10 @@ namespace SimPe.Plugin
 		GraphPanel gc;
 		public GraphPanel Graph
 		{
-			get { return gc; }
+			get
+			{
+				return gc;
+			}
 		}
 		System.EventHandler click;
 
@@ -237,12 +242,12 @@ namespace SimPe.Plugin
 						{
 							Hashtable ht = item.ReferenceChains;
 							foreach (ArrayList list in ht.Values)
-							foreach (
-								SimPe.Interfaces.Files.IPackedFileDescriptor spfd in list
-							)
-							{
-								AddItem(spfd, pkg, gi, fileindex);
-							}
+								foreach (
+									SimPe.Interfaces.Files.IPackedFileDescriptor spfd in list
+								)
+								{
+									AddItem(spfd, pkg, gi, fileindex);
+								}
 						}
 					}
 				}

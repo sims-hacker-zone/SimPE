@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -12,8 +13,14 @@ namespace SimPe.Plugin
 		public string strung; // the actaul string,
 		public string Strung
 		{
-			get { return strung; }
-			set { strung = value; }
+			get
+			{
+				return strung;
+			}
+			set
+			{
+				strung = value;
+			}
 		}
 		#endregion
 
@@ -82,7 +89,10 @@ namespace SimPe.Plugin
 
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		public uint[] AssignableTypes

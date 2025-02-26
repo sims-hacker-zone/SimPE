@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Geometry;
 
 namespace SimPe.Plugin
@@ -19,14 +20,26 @@ namespace SimPe.Plugin
 		)]
 		public uint GUID
 		{
-			get { return guid; }
-			set { guid = value; }
+			get
+			{
+				return guid;
+			}
+			set
+			{
+				guid = value;
+			}
 		}
 
 		public float Rotation
 		{
-			get { return rot; }
-			set { rot = value; }
+			get
+			{
+				return rot;
+			}
+			set
+			{
+				rot = value;
+			}
 		}
 
 		protected override void DoUnserialize(System.IO.BinaryReader reader)

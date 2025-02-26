@@ -45,14 +45,26 @@ namespace SimPe.Plugin
 
 		public bool IsVisible
 		{
-			get { return GetBit(0); }
-			set { SetBit(0, value); }
+			get
+			{
+				return GetBit(0);
+			}
+			set
+			{
+				SetBit(0, value);
+			}
 		}
 
 		public bool IsControler
 		{
-			get { return !GetBit(1); }
-			set { SetBit(1, !value); }
+			get
+			{
+				return !GetBit(1);
+			}
+			set
+			{
+				SetBit(1, !value);
+			}
 		}
 	}
 
@@ -184,7 +196,10 @@ namespace SimPe.Plugin
 		ushort unknown2;
 		public uint InventoryNumber
 		{
-			get { return invnr; }
+			get
+			{
+				return invnr;
+			}
 			set
 			{
 				if (invnr != value)
@@ -198,7 +213,10 @@ namespace SimPe.Plugin
 
 		public ushort UnknownNumber
 		{
-			get { return unknown2; }
+			get
+			{
+				return unknown2;
+			}
 			set
 			{
 				unknown2 = value;
@@ -214,7 +232,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public NgbhSlotList ParentSlot
 		{
-			get { return parentslot; }
+			get
+			{
+				return parentslot;
+			}
 		}
 
 		/// <summary>
@@ -222,7 +243,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public uint Guid
 		{
-			get { return guid; }
+			get
+			{
+				return guid;
+			}
 			set
 			{
 				if (guid != value)
@@ -242,7 +266,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public NgbhItemFlags Flags
 		{
-			get { return flags; }
+			get
+			{
+				return flags;
+			}
 			set
 			{
 				flags = value;
@@ -256,7 +283,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public ushort[] Data
 		{
-			get { return data; }
+			get
+			{
+				return data;
+			}
 			set
 			{
 				data = value;
@@ -326,7 +356,10 @@ namespace SimPe.Plugin
 
 		public bool IsInventory
 		{
-			get { return this.InventoryNumber != 0; }
+			get
+			{
+				return this.InventoryNumber != 0;
+			}
 		}
 		public bool IsGossip
 		{
@@ -398,7 +431,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public bool IsSpam
 		{
-			get { return NgbhMetaData.Memory.IsSpamMemory(this.guid); }
+			get
+			{
+				return NgbhMetaData.Memory.IsSpamMemory(this.guid);
+			}
 		}
 
 		/// <summary>
@@ -406,8 +442,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public ushort Value
 		{
-			get { return this.GetValue(0x00); }
-			set { this.PutValue(0x00, value); }
+			get
+			{
+				return this.GetValue(0x00);
+			}
+			set
+			{
+				this.PutValue(0x00, value);
+			}
 		}
 
 		/// <summary>
@@ -415,7 +457,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public ushort OwnerInstance
 		{
-			get { return this.GetValue(0x04); }
+			get
+			{
+				return this.GetValue(0x04);
+			}
 			set
 			{
 				this.PutValue(0x04, value);
@@ -425,8 +470,14 @@ namespace SimPe.Plugin
 
 		public uint SubjectGuid
 		{
-			get { return SimID; }
-			set { SimID = value; }
+			get
+			{
+				return SimID;
+			}
+			set
+			{
+				SimID = value;
+			}
 		}
 
 		/// <summary>
@@ -475,13 +526,22 @@ namespace SimPe.Plugin
 		/// </summary>
 		public ushort SimInstance
 		{
-			get { return this.GetValue(0x0C); }
-			set { this.PutValue(0x0C, value); }
+			get
+			{
+				return this.GetValue(0x0C);
+			}
+			set
+			{
+				this.PutValue(0x0C, value);
+			}
 		}
 
 		public bool IsSimSubject
 		{
-			get { return this.SimInstance > 0; }
+			get
+			{
+				return this.SimInstance > 0;
+			}
 		}
 
 		public void SetSubject(ushort inst, uint guid)

@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces;
 
 namespace SimPe.Plugin
@@ -140,7 +141,10 @@ namespace SimPe.Plugin
 		{
 			public System.Drawing.Image Icon
 			{
-				get { return null; }
+				get
+				{
+					return null;
+				}
 			}
 
 			public override string ToString()

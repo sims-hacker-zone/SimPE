@@ -24,6 +24,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+
 using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.Plugin
@@ -62,47 +63,80 @@ namespace SimPe.Plugin
 		[EditorBrowsable(0)]
 		public int DropDownHeight
 		{
-			get { return cbKnownObjects.DropDownHeight; }
-			set { cbKnownObjects.DropDownHeight = value; }
+			get
+			{
+				return cbKnownObjects.DropDownHeight;
+			}
+			set
+			{
+				cbKnownObjects.DropDownHeight = value;
+			}
 		}
 
 		[Browsable(true)]
 		[EditorBrowsable(0)]
 		public int DropDownWidth
 		{
-			get { return cbKnownObjects.DropDownWidth; }
-			set { cbKnownObjects.DropDownWidth = value; }
+			get
+			{
+				return cbKnownObjects.DropDownWidth;
+			}
+			set
+			{
+				cbKnownObjects.DropDownWidth = value;
+			}
 		}
 
 		[Browsable(true)]
 		[EditorBrowsable(0)]
 		public int ComboBoxWidth
 		{
-			get { return cbKnownObjects.Width; }
-			set { cbKnownObjects.Width = value; }
+			get
+			{
+				return cbKnownObjects.Width;
+			}
+			set
+			{
+				cbKnownObjects.Width = value;
+			}
 		}
 
 		[Browsable(true)]
 		[EditorBrowsable(0)]
 		public ComboBoxStyle DropDownStyle
 		{
-			get { return cbKnownObjects.DropDownStyle; }
-			set { cbKnownObjects.DropDownStyle = value; }
+			get
+			{
+				return cbKnownObjects.DropDownStyle;
+			}
+			set
+			{
+				cbKnownObjects.DropDownStyle = value;
+			}
 		}
 
 		[Browsable(true)]
 		[EditorBrowsable(0)]
 		public string Label
 		{
-			get { return lbLabel.Text; }
-			set { lbLabel.Text = value; }
+			get
+			{
+				return lbLabel.Text;
+			}
+			set
+			{
+				lbLabel.Text = value;
+			}
 		}
 
 		[Browsable(true)]
 		[EditorBrowsable(0)]
 		public UInt32 Value
 		{
-			get { return currentValue; }
+			get
+			{
+				return currentValue;
+			}
 			set
 			{
 				if (currentValue == value)

@@ -30,15 +30,27 @@ namespace SimPe.Plugin
 		float unknown8;
 		public float Val6
 		{
-			get { return unknown8; }
-			set { unknown8 = value; }
+			get
+			{
+				return unknown8;
+			}
+			set
+			{
+				unknown8 = value;
+			}
 		}
 
 		float unknown9;
 		public float Val7
 		{
-			get { return unknown9; }
-			set { unknown9 = value; }
+			get
+			{
+				return unknown9;
+			}
+			set
+			{
+				unknown9 = value;
+			}
 		}
 
 		#endregion

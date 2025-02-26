@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -16,11 +17,17 @@ namespace SimPe.Plugin
 	{
 		protected new FamiuPackedFileWrapper Wrapper
 		{
-			get { return base.Wrapper as FamiuPackedFileWrapper; }
+			get
+			{
+				return base.Wrapper as FamiuPackedFileWrapper;
+			}
 		}
 		public FamiuPackedFileWrapper TPFW
 		{
-			get { return (FamiuPackedFileWrapper)Wrapper; }
+			get
+			{
+				return (FamiuPackedFileWrapper)Wrapper;
+			}
 		}
 
 		ushort[] filedata;
@@ -98,7 +105,10 @@ namespace SimPe.Plugin
 		#region IPackedFileUI Member
 		System.Windows.Forms.Control IPackedFileUI.GUIHandle
 		{
-			get { return this; }
+			get
+			{
+				return this;
+			}
 		}
 		#endregion
 

@@ -20,6 +20,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.Events;
 
 namespace SimPe.Interfaces
@@ -65,8 +66,14 @@ namespace SimPe.Collections
 		/// </summary>
 		public SimPe.Interfaces.IListener this[int index]
 		{
-			get { return ((SimPe.Interfaces.IListener)list[index]); }
-			set { list[index] = value; }
+			get
+			{
+				return ((SimPe.Interfaces.IListener)list[index]);
+			}
+			set
+			{
+				list[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -74,8 +81,14 @@ namespace SimPe.Collections
 		/// </summary>
 		public SimPe.Interfaces.IListener this[uint index]
 		{
-			get { return ((SimPe.Interfaces.IListener)list[(int)index]); }
-			set { list[(int)index] = value; }
+			get
+			{
+				return ((SimPe.Interfaces.IListener)list[(int)index]);
+			}
+			set
+			{
+				list[(int)index] = value;
+			}
 		}
 
 		#region IEnumerable Member

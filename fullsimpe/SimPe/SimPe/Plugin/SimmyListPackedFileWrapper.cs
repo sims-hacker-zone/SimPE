@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -15,13 +16,25 @@ namespace SimPe.Plugin
 		public string strung; // the actaul string,
 		public string Strung
 		{
-			get { return strung; }
-			set { strung = value; }
+			get
+			{
+				return strung;
+			}
+			set
+			{
+				strung = value;
+			}
 		}
 		public string Twine
 		{
-			get { return twine; }
-			set { twine = value; }
+			get
+			{
+				return twine;
+			}
+			set
+			{
+				twine = value;
+			}
 		}
 		#endregion
 
@@ -151,7 +164,9 @@ namespace SimPe.Plugin
 			}
 		}
 
-		protected override void Serialize(System.IO.BinaryWriter writer) { }
+		protected override void Serialize(System.IO.BinaryWriter writer)
+		{
+		}
 		#endregion
 
 		#region IFileWrapperSaveExtension Member
@@ -162,7 +177,10 @@ namespace SimPe.Plugin
 
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		public uint[] AssignableTypes

@@ -42,8 +42,14 @@ namespace SimPe
 		/// </summary>
 		public static System.Drawing.Image Image
 		{
-			get { return scr == null ? null : scr.prevImage; }
-			set { Screen.doUpdate(value); }
+			get
+			{
+				return scr == null ? null : scr.prevImage;
+			}
+			set
+			{
+				Screen.doUpdate(value);
+			}
 		}
 
 		/// <summary>
@@ -60,8 +66,14 @@ namespace SimPe
 		/// </summary>
 		public static string Message
 		{
-			get { return scr == null ? "" : scr.prevMessage; }
-			set { Screen.doUpdate(value); }
+			get
+			{
+				return scr == null ? "" : scr.prevMessage;
+			}
+			set
+			{
+				Screen.doUpdate(value);
+			}
 		}
 
 		/// <summary>
@@ -115,7 +127,10 @@ namespace SimPe
 		/// </summary>
 		public static bool Running
 		{
-			get { return count > 0; }
+			get
+			{
+				return count > 0;
+			}
 		}
 
 		/// <summary>
@@ -123,7 +138,10 @@ namespace SimPe
 		/// </summary>
 		public static System.Drawing.Size ImageSize
 		{
-			get { return new System.Drawing.Size(64, 64); }
+			get
+			{
+				return new System.Drawing.Size(64, 64);
+			}
 		}
 
 		static WaitingScreen scr;

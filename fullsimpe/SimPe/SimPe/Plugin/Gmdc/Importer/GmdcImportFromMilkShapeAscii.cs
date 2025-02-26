@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.Globalization;
 using System.IO;
+
 using SimPe.Geometry;
 using SimPe.Plugin.Anim;
 using SimPe.Plugin.Gmdc;
@@ -44,7 +45,10 @@ namespace SimPe.Plugin.Gmdc.Importer
 		/// </summary>
 		public override string FileExtension
 		{
-			get { return ".txt"; }
+			get
+			{
+				return ".txt";
+			}
 		}
 
 		/// <summary>
@@ -52,7 +56,10 @@ namespace SimPe.Plugin.Gmdc.Importer
 		/// </summary>
 		public override string FileDescription
 		{
-			get { return "Milkshape 3D ASCII"; }
+			get
+			{
+				return "Milkshape 3D ASCII";
+			}
 		}
 
 		/// <summary>
@@ -60,7 +67,10 @@ namespace SimPe.Plugin.Gmdc.Importer
 		/// </summary>
 		public override string Author
 		{
-			get { return "Emily"; }
+			get
+			{
+				return "Emily";
+			}
 		}
 
 		/// <summary>
@@ -727,9 +737,9 @@ namespace SimPe.Plugin.Gmdc.Importer
 		bool UseAliasTables(ImportedGroup g)
 		{
 			for (int k = 1; k < g.Link.AliasValues.Length; k++)
-			for (int i = 0; i < g.Link.AliasValues[0].Length; i++)
-				if (g.Link.AliasValues[k - 1][i] != g.Link.AliasValues[k][i])
-					return true;
+				for (int i = 0; i < g.Link.AliasValues[0].Length; i++)
+					if (g.Link.AliasValues[k - 1][i] != g.Link.AliasValues[k][i])
+						return true;
 
 			return false;
 		}

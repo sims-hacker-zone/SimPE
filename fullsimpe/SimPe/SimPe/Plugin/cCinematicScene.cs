@@ -161,7 +161,9 @@ namespace SimPe.Plugin
 
 		#region IDisposable Member
 
-		public override void Dispose() { }
+		public override void Dispose()
+		{
+		}
 
 		#endregion
 	}

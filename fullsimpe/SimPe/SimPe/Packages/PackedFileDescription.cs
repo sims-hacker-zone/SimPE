@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Events;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
@@ -50,7 +51,10 @@ namespace SimPe.Packages
 		/// </summary>
 		public UInt32 Type
 		{
-			get { return type; }
+			get
+			{
+				return type;
+			}
 			set
 			{
 				if (type != value)
@@ -66,7 +70,10 @@ namespace SimPe.Packages
 		/// </summary>
 		public Data.TypeAlias TypeName
 		{
-			get { return Data.MetaData.FindTypeAlias(Type); }
+			get
+			{
+				return Data.MetaData.FindTypeAlias(Type);
+			}
 		}
 
 		/// <summary>
@@ -79,7 +86,10 @@ namespace SimPe.Packages
 		/// </summary>
 		public UInt32 Group
 		{
-			get { return group; }
+			get
+			{
+				return group;
+			}
 			set
 			{
 				if (group != value)
@@ -100,7 +110,10 @@ namespace SimPe.Packages
 		/// </summary>
 		public UInt32 Instance
 		{
-			get { return instance; }
+			get
+			{
+				return instance;
+			}
 			set
 			{
 				if (instance != value)
@@ -123,7 +136,10 @@ namespace SimPe.Packages
 		/// <remarks>Only in Version 1.1 of package Files</remarks>
 		public UInt32 SubType
 		{
-			get { return subtype; }
+			get
+			{
+				return subtype;
+			}
 			set
 			{
 				if (subtype != value)
@@ -134,7 +150,9 @@ namespace SimPe.Packages
 			}
 		}
 
-		protected virtual void DescriptionChangedFkt() { }
+		protected virtual void DescriptionChangedFkt()
+		{
+		}
 	}
 
 	/// <summary>
@@ -195,7 +213,10 @@ namespace SimPe.Packages
 				else
 					return (int)userdata.Length;
 			}
-			set { size = value; }
+			set
+			{
+				size = value;
+			}
 		}
 
 		/// <summary>
@@ -203,7 +224,10 @@ namespace SimPe.Packages
 		/// </summary>
 		public int IndexedSize
 		{
-			get { return size; }
+			get
+			{
+				return size;
+			}
 		}
 
 		/// <summary>
@@ -216,8 +240,14 @@ namespace SimPe.Packages
 		/// </summary>
 		public uint Offset
 		{
-			get { return offset; }
-			set { offset = value; }
+			get
+			{
+				return offset;
+			}
+			set
+			{
+				offset = value;
+			}
 		}
 
 		/// <summary>
@@ -277,12 +307,18 @@ namespace SimPe.Packages
 
 				return filename;
 			}
-			set { filename = value; }
+			set
+			{
+				filename = value;
+			}
 		}
 
 		public string ExportFileName
 		{
-			get { return Helper.HexString(Type) + "-" + this.Filename; }
+			get
+			{
+				return Helper.HexString(Type) + "-" + this.Filename;
+			}
 		}
 
 		/// <summary>
@@ -312,7 +348,10 @@ namespace SimPe.Packages
 
 				return path;
 			}
-			set { path = value; }
+			set
+			{
+				path = value;
+			}
 		}
 
 		/// <summary>
@@ -558,8 +597,14 @@ namespace SimPe.Packages
 		object tag;
 		public object Tag
 		{
-			get { return tag; }
-			set { tag = value; }
+			get
+			{
+				return tag;
+			}
+			set
+			{
+				tag = value;
+			}
 		}
 
 		#region UserData Extensions
@@ -573,7 +618,10 @@ namespace SimPe.Packages
 		/// </summary>
 		public bool MarkForDelete
 		{
-			get { return markdeleted; }
+			get
+			{
+				return markdeleted;
+			}
 			set
 			{
 				if (value != markdeleted)
@@ -593,7 +641,10 @@ namespace SimPe.Packages
 		/// </summary>
 		public bool MarkForReCompress
 		{
-			get { return markcompress; }
+			get
+			{
+				return markcompress;
+			}
 			set
 			{
 				if (markcompress != value)
@@ -611,7 +662,10 @@ namespace SimPe.Packages
 		/// </summary>
 		public bool WasCompressed
 		{
-			get { return wascomp; }
+			get
+			{
+				return wascomp;
+			}
 			set
 			{
 				if (wascomp != value)
@@ -628,7 +682,10 @@ namespace SimPe.Packages
 		/// <remarks>This happens when a user assigns new Data</remarks>
 		public bool HasUserdata
 		{
-			get { return (userdata != null); }
+			get
+			{
+				return (userdata != null);
+			}
 		}
 
 		/// <summary>
@@ -641,8 +698,14 @@ namespace SimPe.Packages
 		/// </summary>
 		public Byte[] UserData
 		{
-			get { return userdata; }
-			set { SetUserData(value, true); }
+			get
+			{
+				return userdata;
+			}
+			set
+			{
+				SetUserData(value, true);
+			}
 		}
 
 		public void SetUserData(byte[] data, bool fire)
@@ -667,7 +730,10 @@ namespace SimPe.Packages
 		/// <remarks>Fires the <see cref="ChangedData"/> Event</remarks>
 		public bool Changed
 		{
-			get { return changed; }
+			get
+			{
+				return changed;
+			}
 			set
 			{
 				if (value != changed)
@@ -701,7 +767,10 @@ namespace SimPe.Packages
 		/// </summary>
 		public bool Invalid
 		{
-			get { return !valid; }
+			get
+			{
+				return !valid;
+			}
 		}
 
 		#region Events
@@ -736,8 +805,14 @@ namespace SimPe.Packages
 		/// </remarks>
 		internal PackedFileChanged PackageInternalUserDataChange
 		{
-			get { return changedUserData; }
-			set { changedUserData = value; }
+			get
+			{
+				return changedUserData;
+			}
+			set
+			{
+				changedUserData = value;
+			}
 		}
 
 		/// <summary>

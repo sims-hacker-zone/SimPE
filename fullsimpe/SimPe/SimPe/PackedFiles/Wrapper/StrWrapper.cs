@@ -23,6 +23,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -43,7 +44,7 @@ namespace SimPe.PackedFiles.Wrapper
 			IFileWrapper //This Interface is used when loading a File
 			,
 			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-	//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 	{
 		#region Attributes
 		/// <summary>
@@ -69,7 +70,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public string FileName
 		{
-			get { return Helper.ToString(filename); }
+			get
+			{
+				return Helper.ToString(filename);
+			}
 			set
 			{
 				if (!Helper.ToString(filename).Equals(value))
@@ -85,7 +89,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public ushort Format
 		{
-			get { return format; }
+			get
+			{
+				return format;
+			}
 			set
 			{
 				if (format != value)
@@ -263,7 +270,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint[] AssignableTypes
 		{
-			get { return new uint[] { Strtype, TTAstype, CTSStype }; }
+			get
+			{
+				return new uint[] { Strtype, TTAstype, CTSStype };
+			}
 		}
 
 		/// <summary>
@@ -271,7 +281,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		#endregion
@@ -481,7 +494,10 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Accessor methods
 		public byte LanguageID
 		{
-			get { return lid; }
+			get
+			{
+				return lid;
+			}
 			set
 			{
 				if (lid != value)
@@ -495,7 +511,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public string Title
 		{
-			get { return title; }
+			get
+			{
+				return title;
+			}
 			set
 			{
 				if (title != value)
@@ -509,7 +528,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public string Description
 		{
-			get { return desc; }
+			get
+			{
+				return desc;
+			}
 			set
 			{
 				if (desc != value)

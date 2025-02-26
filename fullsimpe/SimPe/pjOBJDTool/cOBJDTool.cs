@@ -24,7 +24,9 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+
 using pjse.BhavOperandWizards;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 
@@ -382,7 +384,10 @@ namespace pjOBJDTool
 
 		pfOBJD CurrentOBJD
 		{
-			get { return wrapper; }
+			get
+			{
+				return wrapper;
+			}
 			set
 			{
 				if (wrapper == value)

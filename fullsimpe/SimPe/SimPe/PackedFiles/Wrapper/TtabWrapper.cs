@@ -22,6 +22,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -42,7 +43,7 @@ namespace SimPe.PackedFiles.Wrapper
 			IFileWrapper //This Interface is used when loading a File
 			,
 			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-	//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 	{
 		#region Attributes
 		private byte[] filename = new byte[64];
@@ -53,7 +54,10 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Accessor methods
 		public string FileName
 		{
-			get { return Helper.ToString(filename); }
+			get
+			{
+				return Helper.ToString(filename);
+			}
 			set
 			{
 				if (!Helper.ToString(filename).Equals(value))
@@ -65,7 +69,10 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 		public uint Format
 		{
-			get { return header[1]; }
+			get
+			{
+				return header[1];
+			}
 			set
 			{
 				if (header[1] != value)
@@ -77,7 +84,10 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 		public uint Unknown
 		{
-			get { return header[2]; }
+			get
+			{
+				return header[2];
+			}
 			set
 			{
 				if (header[2] != value)
@@ -222,7 +232,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		#endregion
@@ -272,7 +285,10 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Accessor Methods
 		public ushort Action
 		{
-			get { return action; }
+			get
+			{
+				return action;
+			}
 			set
 			{
 				if (action != value)
@@ -286,7 +302,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort Guardian
 		{
-			get { return guard; }
+			get
+			{
+				return guard;
+			}
 			set
 			{
 				if (guard != value)
@@ -300,7 +319,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort Flags
 		{
-			get { return flags; }
+			get
+			{
+				return flags;
+			}
 			set
 			{
 				if (flags != value)
@@ -314,7 +336,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort Flags2
 		{
-			get { return flags2; }
+			get
+			{
+				return flags2;
+			}
 			set
 			{
 				if (flags2 != value)
@@ -328,7 +353,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint StringIndex
 		{
-			get { return strindex; }
+			get
+			{
+				return strindex;
+			}
 			set
 			{
 				if (strindex != value)
@@ -342,7 +370,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint AttenuationCode
 		{
-			get { return attenuationcode; }
+			get
+			{
+				return attenuationcode;
+			}
 			set
 			{
 				if (attenuationcode != value)
@@ -356,7 +387,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public float AttenuationValue
 		{
-			get { return attenuationvalue; }
+			get
+			{
+				return attenuationvalue;
+			}
 			set
 			{
 				if (attenuationvalue != value)
@@ -370,7 +404,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint Autonomy
 		{
-			get { return autonomy; }
+			get
+			{
+				return autonomy;
+			}
 			set
 			{
 				if (autonomy != value)
@@ -384,7 +421,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint JoinIndex
 		{
-			get { return joinindex; }
+			get
+			{
+				return joinindex;
+			}
 			set
 			{
 				if (joinindex != value)
@@ -398,7 +438,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort UIDisplayType
 		{
-			get { return uidisplaytype; }
+			get
+			{
+				return uidisplaytype;
+			}
 			set
 			{
 				if (uidisplaytype != value)
@@ -412,7 +455,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint FacialAnimationID
 		{
-			get { return facialanimation; }
+			get
+			{
+				return facialanimation;
+			}
 			set
 			{
 				if (facialanimation != value)
@@ -426,7 +472,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public float MemoryIterativeMultiplier
 		{
-			get { return memoryitermult; }
+			get
+			{
+				return memoryitermult;
+			}
 			set
 			{
 				if (!memoryitermult.Equals(value))
@@ -440,7 +489,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint ObjectType
 		{
-			get { return objecttype; }
+			get
+			{
+				return objecttype;
+			}
 			set
 			{
 				if (objecttype != value)
@@ -454,7 +506,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint ModelTableID
 		{
-			get { return modeltableid; }
+			get
+			{
+				return modeltableid;
+			}
 			set
 			{
 				if (modeltableid != value)
@@ -468,7 +523,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public TtabItemMotiveTable HumanMotives
 		{
-			get { return humanGroups; }
+			get
+			{
+				return humanGroups;
+			}
 			set
 			{
 				if (humanGroups != value)
@@ -482,7 +540,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public TtabItemMotiveTable AnimalMotives
 		{
-			get { return animalGroups; }
+			get
+			{
+				return animalGroups;
+			}
 			set
 			{
 				if (animalGroups != value)
@@ -666,7 +727,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool InUse
 		{
-			get { return true; }
+			get
+			{
+				return true;
+			}
 		}
 	}
 
@@ -682,16 +746,28 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Accessor Methods
 		public Ttab Wrapper
 		{
-			get { return parent == null ? null : parent.Parent; }
+			get
+			{
+				return parent == null ? null : parent.Parent;
+			}
 		}
 		public TtabItem Parent
 		{
-			get { return parent; }
-			set { this.parent = value; }
+			get
+			{
+				return parent;
+			}
+			set
+			{
+				this.parent = value;
+			}
 		}
 		public TtabItemMotiveTableType Type
 		{
-			get { return type; }
+			get
+			{
+				return type;
+			}
 			set
 			{
 				if (type != value)
@@ -807,8 +883,14 @@ namespace SimPe.PackedFiles.Wrapper
 
 			public new TtabItemMotiveGroup this[int index]
 			{
-				get { return (TtabItemMotiveGroup)base[index]; }
-				set { base[index] = value; }
+				get
+				{
+					return (TtabItemMotiveGroup)base[index];
+				}
+				set
+				{
+					base[index] = value;
+				}
 			}
 
 			public TtabItemMotiveGroupArrayList Clone(TtabItemMotiveTable parent)
@@ -874,7 +956,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public TtabItemMotiveGroup this[int index]
 		{
-			get { return items[index]; }
+			get
+			{
+				return items[index];
+			}
 			set
 			{
 				if (items[index] != value)
@@ -905,17 +990,26 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public int Count
 		{
-			get { return items.Count; }
+			get
+			{
+				return items.Count;
+			}
 		}
 
 		public bool IsSynchronized
 		{
-			get { return items.IsSynchronized; }
+			get
+			{
+				return items.IsSynchronized;
+			}
 		}
 
 		public object SyncRoot
 		{
-			get { return items.SyncRoot; }
+			get
+			{
+				return items.SyncRoot;
+			}
 		}
 
 		#region IEnumerable Members
@@ -940,12 +1034,21 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Accessor Methods
 		public Ttab Wrapper
 		{
-			get { return parent == null ? null : parent.Wrapper; }
+			get
+			{
+				return parent == null ? null : parent.Wrapper;
+			}
 		}
 		public TtabItemMotiveTable Parent
 		{
-			get { return parent; }
-			set { parent = value; }
+			get
+			{
+				return parent;
+			}
+			set
+			{
+				parent = value;
+			}
 		}
 		#endregion
 
@@ -1042,7 +1145,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public int EntriesInUse
 		{
-			get { return items.EntriesInUse; }
+			get
+			{
+				return items.EntriesInUse;
+			}
 		}
 
 		private class TtabItemMotiveItemArrayList : ArrayList
@@ -1058,8 +1164,14 @@ namespace SimPe.PackedFiles.Wrapper
 
 			public new TtabItemMotiveItem this[int index]
 			{
-				get { return (TtabItemMotiveItem)base[index]; }
-				set { base[index] = value; }
+				get
+				{
+					return (TtabItemMotiveItem)base[index];
+				}
+				set
+				{
+					base[index] = value;
+				}
 			}
 
 			/// <summary>
@@ -1131,7 +1243,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public TtabItemMotiveItem this[int index]
 		{
-			get { return items[index]; }
+			get
+			{
+				return items[index];
+			}
 			set
 			{
 				if (items[index] != value)
@@ -1162,17 +1277,26 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public int Count
 		{
-			get { return items.Count; }
+			get
+			{
+				return items.Count;
+			}
 		}
 
 		public bool IsSynchronized
 		{
-			get { return items.IsSynchronized; }
+			get
+			{
+				return items.IsSynchronized;
+			}
 		}
 
 		public object SyncRoot
 		{
-			get { return items.SyncRoot; }
+			get
+			{
+				return items.SyncRoot;
+			}
 		}
 
 		#region IEnumerable Members
@@ -1194,12 +1318,21 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Accessor Methods
 		public Ttab Wrapper
 		{
-			get { return parent == null ? null : parent.Wrapper; }
+			get
+			{
+				return parent == null ? null : parent.Wrapper;
+			}
 		}
 		public TtabItemMotiveGroup Parent
 		{
-			get { return parent; }
-			set { parent = value; }
+			get
+			{
+				return parent;
+			}
+			set
+			{
+				parent = value;
+			}
 		}
 		#endregion
 
@@ -1233,7 +1366,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected abstract void Unserialize(System.IO.BinaryReader reader);
 		internal abstract void Serialize(System.IO.BinaryWriter writer);
-		public abstract bool InUse { get; }
+		public abstract bool InUse
+		{
+			get;
+		}
 	}
 
 	public class TtabItemAnimalMotiveItem : TtabItemMotiveItem, ICollection
@@ -1315,8 +1451,14 @@ namespace SimPe.PackedFiles.Wrapper
 
 			public new TtabItemSingleMotiveItem this[int index]
 			{
-				get { return (TtabItemSingleMotiveItem)base[index]; }
-				set { base[index] = value; }
+				get
+				{
+					return (TtabItemSingleMotiveItem)base[index];
+				}
+				set
+				{
+					base[index] = value;
+				}
 			}
 
 			/// <summary>
@@ -1385,7 +1527,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public TtabItemSingleMotiveItem this[int index]
 		{
-			get { return items[index]; }
+			get
+			{
+				return items[index];
+			}
 			set
 			{
 				if (items[index] != value)
@@ -1416,17 +1561,26 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public int Count
 		{
-			get { return items.Count; }
+			get
+			{
+				return items.Count;
+			}
 		}
 
 		public bool IsSynchronized
 		{
-			get { return items.IsSynchronized; }
+			get
+			{
+				return items.IsSynchronized;
+			}
 		}
 
 		public object SyncRoot
 		{
-			get { return items.SyncRoot; }
+			get
+			{
+				return items.SyncRoot;
+			}
 		}
 
 		#region IEnumerable Members
@@ -1448,18 +1602,36 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Accessor Methods
 		public short Min
 		{
-			get { return this[0]; }
-			set { this[0] = value; }
+			get
+			{
+				return this[0];
+			}
+			set
+			{
+				this[0] = value;
+			}
 		}
 		public short Delta
 		{
-			get { return items[1]; }
-			set { this[1] = value; }
+			get
+			{
+				return items[1];
+			}
+			set
+			{
+				this[1] = value;
+			}
 		}
 		public short Type
 		{
-			get { return items[2]; }
-			set { this[2] = value; }
+			get
+			{
+				return items[2];
+			}
+			set
+			{
+				this[2] = value;
+			}
 		}
 		#endregion
 
@@ -1502,12 +1674,18 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public override bool InUse
 		{
-			get { return (items[0] != 0 || items[1] != 0 || items[2] != 0); }
+			get
+			{
+				return (items[0] != 0 || items[1] != 0 || items[2] != 0);
+			}
 		}
 
 		private short this[int index]
 		{
-			get { return items[index]; }
+			get
+			{
+				return items[index];
+			}
 			set
 			{
 				if (items[index] != value)

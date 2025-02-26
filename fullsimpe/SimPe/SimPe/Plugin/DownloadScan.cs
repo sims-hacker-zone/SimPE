@@ -968,7 +968,10 @@ namespace SimPe.Plugin
 		string filename = null;
 		public string FileName
 		{
-			get { return filename; }
+			get
+			{
+				return filename;
+			}
 		}
 
 		private void Select(object sender, System.EventArgs e)

@@ -201,7 +201,10 @@ namespace SimPe
 
 		public static string ReleaseDir
 		{
-			get { return Helper.SimPePath; }
+			get
+			{
+				return Helper.SimPePath;
+			}
 		}
 
 		/// <summary>
@@ -538,25 +541,37 @@ namespace SimPe
 		string bp;
 		public string FileName
 		{
-			get { return flname.Replace(infocheck.ReleaseDir.Trim() + @"\", ""); }
+			get
+			{
+				return flname.Replace(infocheck.ReleaseDir.Trim() + @"\", "");
+			}
 		}
 
 		System.Diagnostics.FileVersionInfo ver;
 		public System.Diagnostics.FileVersionInfo Version
 		{
-			get { return ver; }
+			get
+			{
+				return ver;
+			}
 		}
 
 		long size;
 		public long Size
 		{
-			get { return size; }
+			get
+			{
+				return size;
+			}
 		}
 
 		bool exists;
 		public bool Exists
 		{
-			get { return exists; }
+			get
+			{
+				return exists;
+			}
 		}
 
 		public FileDescriptor(string basepath, string filename)

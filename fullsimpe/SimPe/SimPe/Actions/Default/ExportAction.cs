@@ -26,7 +26,9 @@ namespace SimPe.Actions.Default
 	/// </summary>
 	public class ExportAction : AbstractActionDefault
 	{
-		public ExportAction() { }
+		public ExportAction()
+		{
+		}
 
 		/// <summary>
 		/// presents the SaveDialog and returns the selected Filename (or null)
@@ -274,12 +276,18 @@ namespace SimPe.Actions.Default
 		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
-			get { return SimPe.GetIcon.actionExport; }
+			get
+			{
+				return SimPe.GetIcon.actionExport;
+			}
 		}
 
 		public override System.Windows.Forms.Shortcut Shortcut
 		{
-			get { return System.Windows.Forms.Shortcut.ShiftIns; }
+			get
+			{
+				return System.Windows.Forms.Shortcut.ShiftIns;
+			}
 		}
 		#endregion
 	}

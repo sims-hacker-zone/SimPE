@@ -43,7 +43,10 @@ namespace SimPe.Plugin
 
 		public Interfaces.Files.IPackedFileDescriptor Descriptor
 		{
-			get { return pfd; }
+			get
+			{
+				return pfd;
+			}
 		}
 
 		public string FileName

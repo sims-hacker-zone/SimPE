@@ -25,6 +25,7 @@ using System.Reflection;
 using System.Reflection.Emit;
 using System.Threading;
 using System.Xml;
+
 using Ambertation;
 
 namespace Ambertation
@@ -212,7 +213,9 @@ namespace Ambertation
 		/// <param name="node"></param>
 		/// <param name="node"></param>
 		/// <param name="pd"></param>
-		protected virtual void HandleProperty(XmlNode node, PropertyDescription pd) { }
+		protected virtual void HandleProperty(XmlNode node, PropertyDescription pd)
+		{
+		}
 
 		/// <summary>
 		/// Read a Property Node

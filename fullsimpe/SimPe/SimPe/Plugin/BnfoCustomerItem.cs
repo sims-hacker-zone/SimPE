@@ -10,7 +10,10 @@ namespace SimPe.Plugin
 		ushort siminst;
 		public ushort SimInstance
 		{
-			get { return siminst; }
+			get
+			{
+				return siminst;
+			}
 			set
 			{
 				siminst = value;
@@ -20,28 +23,49 @@ namespace SimPe.Plugin
 		int loyalty;
 		public int LoyaltyScore
 		{
-			get { return loyalty; }
-			set { loyalty = value; }
+			get
+			{
+				return loyalty;
+			}
+			set
+			{
+				loyalty = value;
+			}
 		}
 
 		public int LoyaltyStars
 		{
-			get { return (int)Math.Ceiling((float)LoyaltyScore / 200.0); }
-			set { LoyaltyScore = (value * 200); }
+			get
+			{
+				return (int)Math.Ceiling((float)LoyaltyScore / 200.0);
+			}
+			set
+			{
+				LoyaltyScore = (value * 200);
+			}
 		}
 
 		int lloyalty;
 		public int LoadedLoyalty
 		{
-			get { return loyalty; }
-			set { loyalty = value; }
+			get
+			{
+				return loyalty;
+			}
+			set
+			{
+				loyalty = value;
+			}
 		}
 
 		byte[] data;
 
 		internal byte[] Data
 		{
-			get { return data; }
+			get
+			{
+				return data;
+			}
 		}
 
 		Bnfo parent;

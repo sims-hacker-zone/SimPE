@@ -19,7 +19,10 @@ namespace SimPe.Plugin.Downloads
 
 		public int Count
 		{
-			get { return list.Count; }
+			get
+			{
+				return list.Count;
+			}
 		}
 
 		public void Clear()
@@ -55,8 +58,14 @@ namespace SimPe.Plugin.Downloads
 
 		public IPackageInfo this[int index]
 		{
-			get { return list[index] as IPackageInfo; }
-			set { list[index] = value; }
+			get
+			{
+				return list[index] as IPackageInfo;
+			}
+			set
+			{
+				list[index] = value;
+			}
 		}
 
 		public IPackageInfo[] ToArray()

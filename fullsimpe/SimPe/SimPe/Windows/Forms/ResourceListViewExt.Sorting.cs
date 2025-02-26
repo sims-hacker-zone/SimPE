@@ -17,7 +17,10 @@ namespace SimPe.Windows.Forms
 
 		public ResourceViewManager.SortColumn SortedColumn
 		{
-			get { return sc; }
+			get
+			{
+				return sc;
+			}
 			set
 			{
 				//if (sc != value)

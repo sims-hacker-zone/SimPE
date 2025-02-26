@@ -33,36 +33,57 @@ namespace SimPe.Interfaces.Plugin
 		/// <summary>
 		/// The Name of this Wrapper
 		/// </summary>
-		string Name { get; }
+		string Name
+		{
+			get;
+		}
 
 		/// <summary>
 		/// The Description of this Wrapper
 		/// </summary>
-		string Description { get; }
+		string Description
+		{
+			get;
+		}
 
 		/// <summary>
 		/// The Author of this Wrapper
 		/// </summary>
-		string Author { get; }
+		string Author
+		{
+			get;
+		}
 
 		/// <summary>
 		/// The Version of this Wrapper
 		/// </summary>
-		int Version { get; }
+		int Version
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns a Unique ID for this Wrapper
 		/// </summary>
-		ulong UID { get; }
+		ulong UID
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns a Icon that should be presented for that resource
 		/// </summary>
-		System.Drawing.Image Icon { get; }
+		System.Drawing.Image Icon
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Index of the Wrapepr icon in the ImageList of the Registry
 		/// </summary>
-		int IconIndex { get; }
+		int IconIndex
+		{
+			get;
+		}
 	}
 }

@@ -46,7 +46,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public List<ushort> HobbyEnthusiasm
 		{
-			get { return enthusiasm; }
+			get
+			{
+				return enthusiasm;
+			}
 		}
 
 		public static ushort HobbiesToIndex(Hobbies hb)
@@ -66,74 +69,146 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public Hobbies HobbyPredistined
 		{
-			get { return (Hobbies)predestined; }
-			set { predestined = (ushort)value; }
+			get
+			{
+				return (Hobbies)predestined;
+			}
+			set
+			{
+				predestined = (ushort)value;
+			}
 		}
 
 		public ushort LongtermAspiration
 		{
-			get { return ltasp; }
-			set { ltasp = value; }
+			get
+			{
+				return ltasp;
+			}
+			set
+			{
+				ltasp = value;
+			}
 		}
 
 		public ushort LongtermAspirationUnlockPoints
 		{
-			get { return unlockpts; }
-			set { unlockpts = value; }
+			get
+			{
+				return unlockpts;
+			}
+			set
+			{
+				unlockpts = value;
+			}
 		}
 
 		public ushort LongtermAspirationUnlocksSpent
 		{
-			get { return unlocksspent; }
-			set { unlocksspent = value; }
+			get
+			{
+				return unlocksspent;
+			}
+			set
+			{
+				unlocksspent = value;
+			}
 		}
 
 		public ushort HungerDecayModifier
 		{
-			get { return decays[0]; }
-			set { decays[0] = value; }
+			get
+			{
+				return decays[0];
+			}
+			set
+			{
+				decays[0] = value;
+			}
 		}
 
 		public ushort ComfortDecayModifier
 		{
-			get { return decays[1]; }
-			set { decays[1] = value; }
+			get
+			{
+				return decays[1];
+			}
+			set
+			{
+				decays[1] = value;
+			}
 		}
 
 		public ushort BladderDecayModifier
 		{
-			get { return decays[2]; }
-			set { decays[2] = value; }
+			get
+			{
+				return decays[2];
+			}
+			set
+			{
+				decays[2] = value;
+			}
 		}
 
 		public ushort EnergyDecayModifier
 		{
-			get { return decays[3]; }
-			set { decays[3] = value; }
+			get
+			{
+				return decays[3];
+			}
+			set
+			{
+				decays[3] = value;
+			}
 		}
 
 		public ushort HygieneDecayModifier
 		{
-			get { return decays[4]; }
-			set { decays[4] = value; }
+			get
+			{
+				return decays[4];
+			}
+			set
+			{
+				decays[4] = value;
+			}
 		}
 
 		public ushort FunDecayModifier
 		{
-			get { return decays[5]; }
-			set { decays[5] = value; }
+			get
+			{
+				return decays[5];
+			}
+			set
+			{
+				decays[5] = value;
+			}
 		}
 
 		public ushort SocialPublicDecayModifier
 		{
-			get { return decays[6]; }
-			set { decays[6] = value; }
+			get
+			{
+				return decays[6];
+			}
+			set
+			{
+				decays[6] = value;
+			}
 		}
 
 		public uint BugCollection
 		{
-			get { return bugcollection; }
-			set { bugcollection = value; }
+			get
+			{
+				return bugcollection;
+			}
+			set
+			{
+				bugcollection = value;
+			}
 		}
 
 		internal void Unserialize(BinaryReader reader)
@@ -252,8 +327,14 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public SimPe.Data.MetaData.AspirationTypes SecondaryAspiration
 		{
-			get { return sa; }
-			set { sa = value; }
+			get
+			{
+				return sa;
+			}
+			set
+			{
+				sa = value;
+			}
 		}
 	}
 }

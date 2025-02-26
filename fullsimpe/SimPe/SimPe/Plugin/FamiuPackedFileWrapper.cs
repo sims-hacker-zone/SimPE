@@ -1,6 +1,7 @@
 using System;
 using System.Drawing;
 using System.IO;
+
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 
@@ -34,8 +35,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public ushort[] FVal
 		{
-			get { return fval; }
-			set { fval = value; }
+			get
+			{
+				return fval;
+			}
+			set
+			{
+				fval = value;
+			}
 		}
 
 		/// <summary>
@@ -43,8 +50,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public int Sections
 		{
-			get { return sections; }
-			set { sections = value; }
+			get
+			{
+				return sections;
+			}
+			set
+			{
+				sections = value;
+			}
 		}
 
 		/// <summary>
@@ -52,7 +65,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public int GoodSections
 		{
-			get { return goodsections; }
+			get
+			{
+				return goodsections;
+			}
 		}
 
 		/// <summary>
@@ -60,7 +76,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public byte Version
 		{
-			get { return version; }
+			get
+			{
+				return version;
+			}
 		}
 
 		/// <summary>

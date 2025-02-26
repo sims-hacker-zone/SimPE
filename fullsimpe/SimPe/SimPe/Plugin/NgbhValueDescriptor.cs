@@ -89,47 +89,74 @@ namespace SimPe.Plugin
 
 		public bool Intern
 		{
-			get { return intern; }
+			get
+			{
+				return intern;
+			}
 		}
 
 		public NgbhValueDescriptorType Type
 		{
-			get { return type; }
+			get
+			{
+				return type;
+			}
 		}
 
 		public bool HasComplededFlag
 		{
-			get { return fullnr >= 0; }
+			get
+			{
+				return fullnr >= 0;
+			}
 		}
 
 		uint CompletedGuid
 		{
-			get { return fullguid; }
+			get
+			{
+				return fullguid;
+			}
 		}
 
 		public uint Guid
 		{
-			get { return guid; }
+			get
+			{
+				return guid;
+			}
 		}
 
 		public int CompletedDataNumber
 		{
-			get { return fullnr; }
+			get
+			{
+				return fullnr;
+			}
 		}
 
 		public int DataNumber
 		{
-			get { return valuenr; }
+			get
+			{
+				return valuenr;
+			}
 		}
 
 		public short Minimum
 		{
-			get { return min; }
+			get
+			{
+				return min;
+			}
 		}
 
 		public short Maximum
 		{
-			get { return max; }
+			get
+			{
+				return max;
+			}
 		}
 
 		public override string ToString()

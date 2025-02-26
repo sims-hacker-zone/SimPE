@@ -23,6 +23,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.PackedFiles.UserInterface
@@ -84,14 +85,23 @@ namespace SimPe.PackedFiles.UserInterface
 		private TtabItemMotiveGroup item = null;
 		public String MGName
 		{
-			get { return this.gbMotiveGroup.Text; }
-			set { this.gbMotiveGroup.Text = value; }
+			get
+			{
+				return this.gbMotiveGroup.Text;
+			}
+			set
+			{
+				this.gbMotiveGroup.Text = value;
+			}
 		}
 
 		private ArrayList tops = new ArrayList();
 		public int[] Tops
 		{
-			get { return (int[])tops.ToArray(typeof(Int32)); }
+			get
+			{
+				return (int[])tops.ToArray(typeof(Int32));
+			}
 		}
 		#endregion
 
@@ -99,7 +109,10 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public TtabItemMotiveGroup MotiveGroup
 		{
-			get { return item; }
+			get
+			{
+				return item;
+			}
 			set
 			{
 				if (this.item != value)
@@ -266,7 +279,10 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public int Motive
 		{
-			get { return motive; }
+			get
+			{
+				return motive;
+			}
 		}
 	}
 

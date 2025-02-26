@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 
@@ -45,7 +46,10 @@ namespace pj
 
 		public IHelp[] KnownHelpTopics
 		{
-			get { return new IHelp[] { new BodyMeshHelp() }; }
+			get
+			{
+				return new IHelp[] { new BodyMeshHelp() };
+			}
 		}
 
 		#endregion

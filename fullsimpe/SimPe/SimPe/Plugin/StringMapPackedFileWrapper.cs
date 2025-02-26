@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -30,13 +31,25 @@ namespace SimPe.Plugin
 
 		public ushort[] Datas
 		{
-			get { return datas; }
-			set { datas = value; }
+			get
+			{
+				return datas;
+			}
+			set
+			{
+				datas = value;
+			}
 		}
 		public uint[] TyPes
 		{
-			get { return types; }
-			set { types = value; }
+			get
+			{
+				return types;
+			}
+			set
+			{
+				types = value;
+			}
 		}
 
 		/// <summary>
@@ -45,8 +58,14 @@ namespace SimPe.Plugin
 		///
 		public string[] Strings
 		{
-			get { return strins; }
-			set { strins = value; }
+			get
+			{
+				return strins;
+			}
+			set
+			{
+				strins = value;
+			}
 		}
 
 		/// <summary>
@@ -54,7 +73,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string FileName
 		{
-			get { return Helper.ToString(filename); }
+			get
+			{
+				return Helper.ToString(filename);
+			}
 			set
 			{
 				if (!Helper.ToString(filename).Equals(value))

@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Geometry;
 
 namespace SimPe.Plugin
@@ -22,20 +23,38 @@ namespace SimPe.Plugin
 
 		public Vector3f Position
 		{
-			get { return pos; }
-			set { pos = value; }
+			get
+			{
+				return pos;
+			}
+			set
+			{
+				pos = value;
+			}
 		}
 
 		public float Orientation1
 		{
-			get { return o1; }
-			set { o1 = value; }
+			get
+			{
+				return o1;
+			}
+			set
+			{
+				o1 = value;
+			}
 		}
 
 		public float Orientation2
 		{
-			get { return o2; }
-			set { o2 = value; }
+			get
+			{
+				return o2;
+			}
+			set
+			{
+				o2 = value;
+			}
 		}
 
 		internal void Unserialize(System.IO.BinaryReader reader)

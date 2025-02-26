@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces.Plugin.Scanner;
 
 namespace SimPe.Plugin
@@ -27,22 +28,33 @@ namespace SimPe.Plugin
 	/// </summary>
 	internal class NeighborhoodIdentifier : IIdentifier
 	{
-		public NeighborhoodIdentifier() { }
+		public NeighborhoodIdentifier()
+		{
+		}
 
 		#region IIdentifierBase Member
 		public uint Version
 		{
-			get { return 1; }
+			get
+			{
+				return 1;
+			}
 		}
 
 		public int Index
 		{
-			get { return 500; }
+			get
+			{
+				return 500;
+			}
 		}
 
 		public ScannerPluginType PluginType
 		{
-			get { return ScannerPluginType.Identifier; }
+			get
+			{
+				return ScannerPluginType.Identifier;
+			}
 		}
 		#endregion
 

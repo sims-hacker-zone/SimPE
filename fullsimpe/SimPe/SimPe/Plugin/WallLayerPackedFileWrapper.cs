@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -30,7 +31,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public int ItemCount
 		{
-			get { return bcount; }
+			get
+			{
+				return bcount;
+			}
 		}
 		#endregion
 

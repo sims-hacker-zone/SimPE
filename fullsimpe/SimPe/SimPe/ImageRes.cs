@@ -15,7 +15,10 @@ namespace SimPe
 		/// </summary>
 		public static Image NoOne
 		{
-			get { return global::SimPe.Properties.Resources.noone; }
+			get
+			{
+				return global::SimPe.Properties.Resources.noone;
+			}
 		}
 
 		/// <summary>
@@ -23,7 +26,10 @@ namespace SimPe
 		/// </summary>
 		public static Image SheOne
 		{
-			get { return global::SimPe.Properties.Resources.sheone; }
+			get
+			{
+				return global::SimPe.Properties.Resources.sheone;
+			}
 		}
 
 		/// <summary>
@@ -31,7 +37,10 @@ namespace SimPe
 		/// </summary>
 		public static Image Network
 		{
-			get { return global::SimPe.Properties.Resources.network; }
+			get
+			{
+				return global::SimPe.Properties.Resources.network;
+			}
 		}
 
 		/// <summary>
@@ -39,7 +48,10 @@ namespace SimPe
 		/// </summary>
 		public static Image Demo
 		{
-			get { return global::SimPe.Properties.Resources.demo; }
+			get
+			{
+				return global::SimPe.Properties.Resources.demo;
+			}
 		}
 
 		/// <summary>
@@ -47,7 +59,10 @@ namespace SimPe
 		/// </summary>
 		public static Image Cassie
 		{
-			get { return global::SimPe.Properties.Resources.CAF; }
+			get
+			{
+				return global::SimPe.Properties.Resources.CAF;
+			}
 		}
 
 		/// <summary>

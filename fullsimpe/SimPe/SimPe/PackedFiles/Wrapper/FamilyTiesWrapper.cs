@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
@@ -43,7 +44,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		internal SimPe.Interfaces.Providers.ISimNames NameProvider
 		{
-			get { return nameprovider; }
+			get
+			{
+				return nameprovider;
+			}
 		}
 
 		#region Attributes

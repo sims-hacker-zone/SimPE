@@ -65,7 +65,10 @@ namespace SimPe.Packages
 		/// </summary>
 		public FileStream FileStream
 		{
-			get { return fs; }
+			get
+			{
+				return fs;
+			}
 		}
 
 		/// <summary>

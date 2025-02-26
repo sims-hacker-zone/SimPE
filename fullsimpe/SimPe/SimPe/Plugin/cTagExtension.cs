@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
+
 using SimPe.Geometry;
 
 namespace SimPe.Plugin
@@ -37,8 +38,14 @@ namespace SimPe.Plugin
 		string s1;
 		public string Name
 		{
-			get { return s1; }
-			set { s1 = value; }
+			get
+			{
+				return s1;
+			}
+			set
+			{
+				s1 = value;
+			}
 		}
 		#endregion
 

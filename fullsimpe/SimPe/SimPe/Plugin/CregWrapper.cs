@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -36,55 +37,115 @@ namespace SimPe.Plugin
 		///
 		public int[] GD1
 		{
-			get { return gd1; }
-			set { gd1 = value; }
+			get
+			{
+				return gd1;
+			}
+			set
+			{
+				gd1 = value;
+			}
 		}
 		public int[] GD2
 		{
-			get { return gd2; }
-			set { gd2 = value; }
+			get
+			{
+				return gd2;
+			}
+			set
+			{
+				gd2 = value;
+			}
 		}
 		public int[] GD3
 		{
-			get { return gd3; }
-			set { gd3 = value; }
+			get
+			{
+				return gd3;
+			}
+			set
+			{
+				gd3 = value;
+			}
 		}
 		public int[] GD4
 		{
-			get { return gd4; }
-			set { gd4 = value; }
+			get
+			{
+				return gd4;
+			}
+			set
+			{
+				gd4 = value;
+			}
 		}
 		public string[] Conent
 		{
-			get { return content; }
-			set { content = value; }
+			get
+			{
+				return content;
+			}
+			set
+			{
+				content = value;
+			}
 		}
 
 		public int Qunty
 		{
-			get { return qnty; }
-			set { qnty = value; }
+			get
+			{
+				return qnty;
+			}
+			set
+			{
+				qnty = value;
+			}
 		}
 
 		public int Vesion
 		{
-			get { return ves; }
-			set { ves = value; }
+			get
+			{
+				return ves;
+			}
+			set
+			{
+				ves = value;
+			}
 		}
 		public string GooiVal
 		{
-			get { return gooival; }
-			set { gooival = value; }
+			get
+			{
+				return gooival;
+			}
+			set
+			{
+				gooival = value;
+			}
 		}
 		public string CRCVal
 		{
-			get { return crcval; }
-			set { crcval = value; }
+			get
+			{
+				return crcval;
+			}
+			set
+			{
+				crcval = value;
+			}
 		}
 		public string VersVal
 		{
-			get { return versval; }
-			set { versval = value; }
+			get
+			{
+				return versval;
+			}
+			set
+			{
+				versval = value;
+			}
 		}
 		#endregion
 

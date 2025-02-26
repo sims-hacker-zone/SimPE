@@ -119,19 +119,34 @@ namespace pjse
 
 		public uint Value
 		{
-			get { return (selectedRB >= 0) ? ldoc[selectedRB].Value : (ushort)0xffff; }
+			get
+			{
+				return (selectedRB >= 0) ? ldoc[selectedRB].Value : (ushort)0xffff;
+			}
 		}
 
 		public String Title
 		{
-			get { return this.Text; }
-			set { this.Text = value; }
+			get
+			{
+				return this.Text;
+			}
+			set
+			{
+				this.Text = value;
+			}
 		}
 
 		public String Prompt
 		{
-			get { return this.label1.Text; }
-			set { this.label1.Text = value; }
+			get
+			{
+				return this.label1.Text;
+			}
+			set
+			{
+				this.label1.Text = value;
+			}
 		}
 
 		private void radioButton1_CheckedChanged(object sender, EventArgs e)

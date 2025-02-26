@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Drawing;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -41,7 +42,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public System.Drawing.Image Image
 		{
-			get { return image; }
+			get
+			{
+				return image;
+			}
 		}
 
 		#region IWrapper Member
@@ -173,7 +177,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public Byte[] FileSignature
 		{
-			get { return new Byte[0]; }
+			get
+			{
+				return new Byte[0];
+			}
 		}
 
 		#endregion

@@ -21,7 +21,9 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Threading;
+
 using Ambertation.Threading;
+
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
@@ -75,28 +77,46 @@ namespace SimPe.Providers
 
 			public System.Collections.ArrayList Tags
 			{
-				get { return tags; }
+				get
+				{
+					return tags;
+				}
 			}
 
 			public uint Owner
 			{
-				get { return owner; }
-				set { owner = value; }
+				get
+				{
+					return owner;
+				}
+				set
+				{
+					owner = value;
+				}
 			}
 
 			public uint Instance
 			{
-				get { return inst; }
+				get
+				{
+					return inst;
+				}
 			}
 
 			public System.Drawing.Image Image
 			{
-				get { return img; }
+				get
+				{
+					return img;
+				}
 			}
 
 			public string Name
 			{
-				get { return name; }
+				get
+				{
+					return name;
+				}
 			}
 
 			public override int GetHashCode()
@@ -111,8 +131,14 @@ namespace SimPe.Providers
 
 			public SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem LtxtFileIndexItem
 			{
-				get { return fii; }
-				set { fii = value; }
+				get
+				{
+					return fii;
+				}
+				set
+				{
+					fii = value;
+				}
 			}
 
 			public SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem BnfoFileIndexItem
@@ -248,7 +274,10 @@ namespace SimPe.Providers
 		/// <remarks>Sets the content List to null</remarks>
 		public string BaseFolder
 		{
-			get { return dir; }
+			get
+			{
+				return dir;
+			}
 			set
 			{
 				if (dir != value)
@@ -463,9 +492,14 @@ namespace SimPe.Providers
 					LoadLotsFromFolder();
 				return content;
 			}
-			set { content = value; }
+			set
+			{
+				content = value;
+			}
 		}
 
-		internal void sdescprovider_ChangedPackage(object sender, EventArgs e) { }
+		internal void sdescprovider_ChangedPackage(object sender, EventArgs e)
+		{
+		}
 	}
 }

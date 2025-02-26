@@ -37,7 +37,10 @@ namespace SimPe
 
 		public string Value
 		{
-			get { return cbProfiles.Text; }
+			get
+			{
+				return cbProfiles.Text;
+			}
 		}
 
 		private void ProfileChooser_Activated(object sender, EventArgs e)

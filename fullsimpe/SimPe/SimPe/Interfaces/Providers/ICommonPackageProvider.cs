@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces.Files;
 
 namespace SimPe.Interfaces.Providers
@@ -31,7 +32,10 @@ namespace SimPe.Interfaces.Providers
 		/// Returns or sets the Folder where the Character Files are stored
 		/// </summary>
 		/// <remarks>Sets the names List to null</remarks>
-		IPackageFile BasePackage { get; set; }
+		IPackageFile BasePackage
+		{
+			get; set;
+		}
 
 		/// <summary>
 		/// Fired, whenever the <see cref="BasePackage"/> was changed

@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 
@@ -32,14 +33,20 @@ namespace pjHoodTool
 		#region IToolFactory Members
 		public IToolPlugin[] KnownTools
 		{
-			get { return new IToolPlugin[] { new cHoodTool() }; }
+			get
+			{
+				return new IToolPlugin[] { new cHoodTool() };
+			}
 		}
 		#endregion
 
 		#region IHelpFactory Members
 		public IHelp[] KnownHelpTopics
 		{
-			get { return new IHelp[] { new hHoodHelp() }; }
+			get
+			{
+				return new IHelp[] { new hHoodHelp() };
+			}
 		}
 		#endregion
 
@@ -47,7 +54,10 @@ namespace pjHoodTool
 
 		public ICommandLine[] KnownCommandLines
 		{
-			get { return new ICommandLine[] { new cHoodTool() }; }
+			get
+			{
+				return new ICommandLine[] { new cHoodTool() };
+			}
 		}
 
 		#endregion

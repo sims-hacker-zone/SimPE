@@ -114,7 +114,10 @@ namespace SimPe.Plugin
 		[System.ComponentModel.Browsable(false)]
 		public BnfoCustomerItem Item
 		{
-			get { return item; }
+			get
+			{
+				return item;
+			}
 			set
 			{
 				/*if (item!=null)
@@ -131,7 +134,10 @@ namespace SimPe.Plugin
 
 		public BnfoCustomerItemsUI BnfoCustomerItemsUI
 		{
-			get { return ui; }
+			get
+			{
+				return ui;
+			}
 			set
 			{
 				if (ui != null)
@@ -172,7 +178,9 @@ namespace SimPe.Plugin
 			Item = ui.SelectedItem;
 		}
 
-		private void tb_TextChanged(object sender, System.EventArgs e) { }
+		private void tb_TextChanged(object sender, System.EventArgs e)
+		{
+		}
 
 		private void pb_Changed(object sender, System.EventArgs e)
 		{

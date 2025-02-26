@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Files;
 using SimPe.Packages;
 
@@ -44,7 +45,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public IPackageFile Package
 		{
-			get { return package; }
+			get
+			{
+				return package;
+			}
 		}
 
 		/// <summary>
@@ -72,24 +76,24 @@ namespace SimPe.Plugin
 		)
 		{
 			foreach (string k in slavemap.Keys)
-			foreach (string slave in (ArrayList)slavemap[k])
-			{
-				string newname = txmtname.Replace("_" + k + "_", "_" + slave + "_");
-				if (newname != txmtname)
+				foreach (string slave in (ArrayList)slavemap[k])
 				{
-					Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFile(
-						newname,
-						Data.MetaData.TXMT
-					);
-					if (pfds.Length > 0)
+					string newname = txmtname.Replace("_" + k + "_", "_" + slave + "_");
+					if (newname != txmtname)
 					{
-						GenericRcol txmt = new GenericRcol(null, false);
-						txmt.ProcessData(pfds[0], package);
+						Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFile(
+							newname,
+							Data.MetaData.TXMT
+						);
+						if (pfds.Length > 0)
+						{
+							GenericRcol txmt = new GenericRcol(null, false);
+							txmt.ProcessData(pfds[0], package);
 
-						AddTxmt(newpkg, mmat, txmt, null, unique, null);
+							AddTxmt(newpkg, mmat, txmt, null, unique, null);
+						}
 					}
 				}
-			}
 		}
 
 		/// <summary>

@@ -22,6 +22,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -42,7 +43,7 @@ namespace SimPe.PackedFiles.Wrapper
 			IFileWrapper //This Interface is used when loading a File
 			,
 			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-	//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 	{
 		#region Attributes
 		/// <summary>
@@ -87,7 +88,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public string FileName
 		{
-			get { return Helper.ToString(filename); }
+			get
+			{
+				return Helper.ToString(filename);
+			}
 			set
 			{
 				if (!Helper.ToString(filename).Equals(value))
@@ -103,7 +107,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint Version
 		{
-			get { return header[1]; }
+			get
+			{
+				return header[1];
+			}
 			set
 			{
 				if (header[1] != value)
@@ -117,17 +124,26 @@ namespace SimPe.PackedFiles.Wrapper
 		private bool duff = false;
 		public bool TextOnly
 		{
-			get { return (duff); }
+			get
+			{
+				return (duff);
+			}
 		}
 
 		public int ParamCount
 		{
-			get { return duff ? 0 : paramCount; }
+			get
+			{
+				return duff ? 0 : paramCount;
+			}
 		}
 
 		public int LocalCount
 		{
-			get { return duff ? 0 : localCount; }
+			get
+			{
+				return duff ? 0 : localCount;
+			}
 		}
 
 		#endregion
@@ -349,7 +365,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint[] AssignableTypes
 		{
-			get { return new uint[] { TPRPtype }; }
+			get
+			{
+				return new uint[] { TPRPtype };
+			}
 		}
 
 		/// <summary>
@@ -357,7 +376,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		#endregion
@@ -390,7 +412,10 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Accessor methods
 		public string Label
 		{
-			get { return label; }
+			get
+			{
+				return label;
+			}
 			set
 			{
 				if (label != value)
@@ -403,12 +428,18 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool IsParamLabel
 		{
-			get { return (pORl == false); }
+			get
+			{
+				return (pORl == false);
+			}
 		}
 
 		public bool IsLocalLabel
 		{
-			get { return (pORl == true); }
+			get
+			{
+				return (pORl == true);
+			}
 		}
 		#endregion
 
@@ -473,7 +504,10 @@ namespace SimPe.PackedFiles.Wrapper
 		private byte pData = 0x01;
 		public byte PData
 		{
-			get { return pData; }
+			get
+			{
+				return pData;
+			}
 		}
 
 		/// <summary>

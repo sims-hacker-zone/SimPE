@@ -26,6 +26,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+
 using Ambertation.Windows.Forms;
 
 namespace SimPe.Windows.Forms
@@ -74,7 +75,10 @@ namespace SimPe.Windows.Forms
 		string msg;
 		public string Message
 		{
-			get { return msg; }
+			get
+			{
+				return msg;
+			}
 			set
 			{
 				lock (msg)

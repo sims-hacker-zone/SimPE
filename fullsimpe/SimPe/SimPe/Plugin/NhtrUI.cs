@@ -23,7 +23,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 using Ambertation.Windows.Forms;
+
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
@@ -171,7 +173,10 @@ namespace SimPe.Plugin
 
 		public Nhtr Nhtr
 		{
-			get { return (Nhtr)Wrapper; }
+			get
+			{
+				return (Nhtr)Wrapper;
+			}
 		}
 
 		bool intern;
@@ -195,7 +200,9 @@ namespace SimPe.Plugin
 				lb.Enabled = true;
 				this.Enabled = true;
 			}
-			else { }
+			else
+			{
+			}
 
 			intern = false;
 		}

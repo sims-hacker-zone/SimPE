@@ -19,6 +19,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 
@@ -74,7 +75,10 @@ namespace pjOBJDTool
 		{
 			public System.Drawing.Image Icon
 			{
-				get { return null; }
+				get
+				{
+					return null;
+				}
 			}
 
 			public override string ToString()

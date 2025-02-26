@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Geometry;
 
 namespace SimPe.Plugin.Anim
@@ -59,8 +60,14 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		public AnimImporterAction Action
 		{
-			get { return action; }
-			set { action = value; }
+			get
+			{
+				return action;
+			}
+			set
+			{
+				action = value;
+			}
 		}
 
 		/// <summary>
@@ -68,7 +75,10 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		public string ImportedName
 		{
-			get { return afb.Name; }
+			get
+			{
+				return afb.Name;
+			}
 		}
 
 		/// <summary>
@@ -81,8 +91,14 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		public AnimationFrameBlock Target
 		{
-			get { return target; }
-			set { target = value; }
+			get
+			{
+				return target;
+			}
+			set
+			{
+				target = value;
+			}
 		}
 
 		bool dz;
@@ -92,8 +108,14 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		public bool DiscardZeroFrame
 		{
-			get { return dz; }
-			set { dz = value; }
+			get
+			{
+				return dz;
+			}
+			set
+			{
+				dz = value;
+			}
 		}
 
 		bool ruf;
@@ -103,8 +125,14 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		public bool RemoveUnneeded
 		{
-			get { return ruf; }
-			set { ruf = value; }
+			get
+			{
+				return ruf;
+			}
+			set
+			{
+				ruf = value;
+			}
 		}
 
 		AnimationFrameBlock afb;
@@ -114,7 +142,10 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		public AnimationFrameBlock FrameBlock
 		{
-			get { return afb; }
+			get
+			{
+				return afb;
+			}
 		}
 
 		/// <summary>
@@ -208,8 +239,14 @@ namespace SimPe.Plugin.Anim
 		bool correctauskel;
 		public bool AuskelCorrection
 		{
-			get { return correctauskel; }
-			set { correctauskel = value; }
+			get
+			{
+				return correctauskel;
+			}
+			set
+			{
+				correctauskel = value;
+			}
 		}
 
 		/// <summary>
@@ -217,8 +254,14 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		public new ImportedFrameBlock this[int index]
 		{
-			get { return ((ImportedFrameBlock)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((ImportedFrameBlock)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -226,8 +269,14 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		public ImportedFrameBlock this[uint index]
 		{
-			get { return ((ImportedFrameBlock)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((ImportedFrameBlock)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -274,7 +323,10 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		/// <summary>

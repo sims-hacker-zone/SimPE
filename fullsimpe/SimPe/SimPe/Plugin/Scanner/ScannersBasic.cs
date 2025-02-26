@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.Drawing;
+
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin.Scanner;
 using SimPe.PackedFiles.Wrapper;
@@ -138,7 +139,10 @@ namespace SimPe.Plugin.Scanner
 		#region IScannerPluginBase Member
 		public ScannerPluginType PluginType
 		{
-			get { return ScannerPluginType.Scanner; }
+			get
+			{
+				return ScannerPluginType.Scanner;
+			}
 		}
 		#endregion
 
@@ -181,7 +185,10 @@ namespace SimPe.Plugin.Scanner
 
 		protected SimPe.Interfaces.Scenegraph.IScenegraphFileIndex FileIndex
 		{
-			get { return MyFileIndex; }
+			get
+			{
+				return MyFileIndex;
+			}
 		}
 		#endregion
 
@@ -199,7 +206,10 @@ namespace SimPe.Plugin.Scanner
 		/// </remarks>
 		public uint Uid
 		{
-			get { return uid; }
+			get
+			{
+				return uid;
+			}
 		}
 
 		/// <summary>
@@ -207,7 +217,10 @@ namespace SimPe.Plugin.Scanner
 		/// </summary>
 		public virtual bool OnTop
 		{
-			get { return false; }
+			get
+			{
+				return false;
+			}
 		}
 
 		int startcolumn;
@@ -217,7 +230,10 @@ namespace SimPe.Plugin.Scanner
 		/// </summary>
 		protected int StartColum
 		{
-			get { return startcolumn; }
+			get
+			{
+				return startcolumn;
+			}
 		}
 
 		System.Windows.Forms.ListView lv;
@@ -227,7 +243,10 @@ namespace SimPe.Plugin.Scanner
 		/// </summary>
 		protected System.Windows.Forms.ListView ListView
 		{
-			get { return lv; }
+			get
+			{
+				return lv;
+			}
 		}
 
 		protected AbstractScanner()
@@ -249,7 +268,10 @@ namespace SimPe.Plugin.Scanner
 
 		public virtual bool IsActiveByDefault
 		{
-			get { return false; }
+			get
+			{
+				return false;
+			}
 		}
 
 		System.Windows.Forms.Control mycontrol;
@@ -294,7 +316,10 @@ namespace SimPe.Plugin.Scanner
 		/// </summary>
 		protected SimPe.Plugin.Scanner.AbstractScanner.UpdateList CallbackFinish
 		{
-			get { return finishcallback; }
+			get
+			{
+				return finishcallback;
+			}
 		}
 
 		public void SetFinishCallback(
@@ -339,19 +364,28 @@ namespace SimPe.Plugin.Scanner
 		#region IScannerBase Member
 		public uint Version
 		{
-			get { return 1; }
+			get
+			{
+				return 1;
+			}
 		}
 
 		public int Index
 		{
-			get { return 100; }
+			get
+			{
+				return 100;
+			}
 		}
 		#endregion
 
 		#region IScanner Member
 		public override bool OnTop
 		{
-			get { return true; }
+			get
+			{
+				return true;
+			}
 		}
 
 		protected override void DoInitScan()
@@ -425,11 +459,16 @@ namespace SimPe.Plugin.Scanner
 			AbstractScanner.SetSubItem(lvi, this.StartColum, si.PackageCacheItem.Name);
 		}
 
-		public void FinishScan() { }
+		public void FinishScan()
+		{
+		}
 
 		public override bool IsActiveByDefault
 		{
-			get { return true; }
+			get
+			{
+				return true;
+			}
 		}
 
 		#endregion
@@ -451,19 +490,28 @@ namespace SimPe.Plugin.Scanner
 		#region IScannerBase Member
 		public uint Version
 		{
-			get { return 1; }
+			get
+			{
+				return 1;
+			}
 		}
 
 		public int Index
 		{
-			get { return 200; }
+			get
+			{
+				return 200;
+			}
 		}
 		#endregion
 
 		#region IScanner Member
 		public override bool OnTop
 		{
-			get { return true; }
+			get
+			{
+				return true;
+			}
 		}
 
 		protected override void DoInitScan()
@@ -600,11 +648,16 @@ namespace SimPe.Plugin.Scanner
 			}
 		}
 
-		public void FinishScan() { }
+		public void FinishScan()
+		{
+		}
 
 		public override bool IsActiveByDefault
 		{
-			get { return true; }
+			get
+			{
+				return true;
+			}
 		}
 		#endregion
 
@@ -679,12 +732,18 @@ namespace SimPe.Plugin.Scanner
 		#region IScannerBase Member
 		public uint Version
 		{
-			get { return 1; }
+			get
+			{
+				return 1;
+			}
 		}
 
 		public int Index
 		{
-			get { return 300; }
+			get
+			{
+				return 300;
+			}
 		}
 		#endregion
 
@@ -833,11 +892,16 @@ namespace SimPe.Plugin.Scanner
 			AbstractScanner.SetSubItem(lvi, this.StartColum + 2, ff);
 		}
 
-		public void FinishScan() { }
+		public void FinishScan()
+		{
+		}
 
 		public override bool IsActiveByDefault
 		{
-			get { return false; }
+			get
+			{
+				return false;
+			}
 		}
 		#endregion
 
@@ -860,12 +924,18 @@ namespace SimPe.Plugin.Scanner
 		#region IScannerBase Member
 		public uint Version
 		{
-			get { return 1; }
+			get
+			{
+				return 1;
+			}
 		}
 
 		public int Index
 		{
-			get { return 900; }
+			get
+			{
+				return 900;
+			}
 		}
 		#endregion
 
@@ -944,11 +1014,16 @@ namespace SimPe.Plugin.Scanner
 			AbstractScanner.SetSubItem(lvi, this.StartColum, text, ps);
 		}
 
-		public void FinishScan() { }
+		public void FinishScan()
+		{
+		}
 
 		public override bool IsActiveByDefault
 		{
-			get { return false; }
+			get
+			{
+				return false;
+			}
 		}
 		#endregion
 
@@ -971,12 +1046,18 @@ namespace SimPe.Plugin.Scanner
 		#region IScannerBase Member
 		public uint Version
 		{
-			get { return 1; }
+			get
+			{
+				return 1;
+			}
 		}
 
 		public int Index
 		{
-			get { return 850; }
+			get
+			{
+				return 850;
+			}
 		}
 		#endregion
 
@@ -1034,11 +1115,16 @@ namespace SimPe.Plugin.Scanner
 			AbstractScanner.SetSubItem(lvi, this.StartColum + 1, fct.ToString(), ps);
 		}
 
-		public void FinishScan() { }
+		public void FinishScan()
+		{
+		}
 
 		public override bool IsActiveByDefault
 		{
-			get { return false; }
+			get
+			{
+				return false;
+			}
 		}
 		#endregion
 

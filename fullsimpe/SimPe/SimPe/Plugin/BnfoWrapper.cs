@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -41,61 +42,112 @@ namespace SimPe.Plugin
 		uint ver;
 		public BnfoVersions Version
 		{
-			get { return (BnfoVersions)ver; }
-			set { ver = (uint)value; }
+			get
+			{
+				return (BnfoVersions)ver;
+			}
+			set
+			{
+				ver = (uint)value;
+			}
 		}
 
 		uint level1,
 			level2;
 		public uint CurrentBusinessState
 		{
-			get { return level1; }
-			set { level1 = value; }
+			get
+			{
+				return level1;
+			}
+			set
+			{
+				level1 = value;
+			}
 		}
 		public uint MaxSeenBusinessState
 		{
-			get { return level2; }
-			set { level2 = value; }
+			get
+			{
+				return level2;
+			}
+			set
+			{
+				level2 = value;
+			}
 		}
 		int wt;
 		public int EmployeeCount
 		{
-			get { return wt; }
-			set { wt = value; }
+			get
+			{
+				return wt;
+			}
+			set
+			{
+				wt = value;
+			}
 		}
 		ushort[] empls;
 		public ushort[] Employees
 		{
-			get { return empls; }
-			set { empls = value; }
+			get
+			{
+				return empls;
+			}
+			set
+			{
+				empls = value;
+			}
 		}
 		int[] pr;
 		public int[] PayRate //doesn't need to be int, could just be byte but int is easier to work with. 0 to 6 inclusive
 		{
-			get { return pr; }
-			set { pr = value; }
+			get
+			{
+				return pr;
+			}
+			set
+			{
+				pr = value;
+			}
 		}
 		uint[] a;
 		public uint[] A // Fair Pay - should never be below 15
 		{
-			get { return a; }
-			set { a = value; }
+			get
+			{
+				return a;
+			}
+			set
+			{
+				a = value;
+			}
 		}
 
 		int[] reven;
 		public int[] Revenue
 		{
-			get { return reven; }
+			get
+			{
+				return reven;
+			}
 		}
 		int[] expe;
 		public int[] Expences
 		{
-			get { return expe; }
+			get
+			{
+				return expe;
+			}
 		}
 		int hct;
 		public int HistoryCount
 		{
-			get { return hct; }
+			get
+			{
+				return hct;
+			}
 		}
 
 		uint unk1,
@@ -105,7 +157,10 @@ namespace SimPe.Plugin
 		Collections.BnfoCustomerItems citems;
 		public Collections.BnfoCustomerItems CustomerItems
 		{
-			get { return citems; }
+			get
+			{
+				return citems;
+			}
 		}
 		#endregion
 

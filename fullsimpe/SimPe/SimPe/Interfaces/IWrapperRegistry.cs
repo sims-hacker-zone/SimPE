@@ -54,13 +54,19 @@ namespace SimPe.Interfaces
 		/// Returns the List of Known Wrappers (without Wrappers having a Priority &lt; 0!)
 		/// </summary>
 		/// <remarks>The Wrappers should be Returned in Order of Priority starting with the lowest!</remarks>
-		IWrapper[] Wrappers { get; }
+		IWrapper[] Wrappers
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the List of all Known Wrappers including Wrappers with Priority &lt; 0
 		/// </summary>
 		/// <remarks>The Wrappers should be Returned in Order of Priority starting with the lowest!</remarks>
-		IWrapper[] AllWrappers { get; }
+		IWrapper[] AllWrappers
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the first Handler capable of processing a File of the given Type
@@ -83,6 +89,9 @@ namespace SimPe.Interfaces
 		/// <summary>
 		/// Contains a Listing of all available Wrapper Icons
 		/// </summary>
-		System.Windows.Forms.ImageList WrapperImageList { get; }
+		System.Windows.Forms.ImageList WrapperImageList
+		{
+			get;
+		}
 	}
 }

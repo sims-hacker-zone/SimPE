@@ -38,7 +38,10 @@ namespace SimPe.Packages
 		/// <remarks>This value should be DBPF</remarks>
 		public string Identifier
 		{
-			get { return hd.Identifier; }
+			get
+			{
+				return hd.Identifier;
+			}
 		}
 
 		/// <summary>
@@ -46,7 +49,10 @@ namespace SimPe.Packages
 		/// </summary>
 		public string Version
 		{
-			get { return "0x" + Helper.HexString(hd.Version); }
+			get
+			{
+				return "0x" + Helper.HexString(hd.Version);
+			}
 		}
 
 		/// <summary>
@@ -54,8 +60,14 @@ namespace SimPe.Packages
 		/// </summary>
 		public SimPe.Data.MetaData.IndexTypes IndexType
 		{
-			get { return hd.IndexType; }
-			set { hd.IndexType = value; }
+			get
+			{
+				return hd.IndexType;
+			}
+			set
+			{
+				hd.IndexType = value;
+			}
 		}
 
 		/// <summary>
@@ -63,7 +75,10 @@ namespace SimPe.Packages
 		/// </summary>
 		public string Ident
 		{
-			get { return "0x" + Helper.HexString(hd.Created); }
+			get
+			{
+				return "0x" + Helper.HexString(hd.Created);
+			}
 		}
 
 		/// <summary>
@@ -71,8 +86,14 @@ namespace SimPe.Packages
 		/// </summary>
 		public short EPIcon
 		{
-			get { return hd.Epicon; }
-			set { hd.Epicon = value; }
+			get
+			{
+				return hd.Epicon;
+			}
+			set
+			{
+				hd.Epicon = value;
+			}
 		}
 
 		/// <summary>
@@ -80,7 +101,10 @@ namespace SimPe.Packages
 		/// </summary>
 		public short ShowIcon
 		{
-			get { return hd.Showicon; }
+			get
+			{
+				return hd.Showicon;
+			}
 			set
 			{
 				if (value > 0)
@@ -98,22 +122,34 @@ namespace SimPe.Packages
 
 		public string IndexOffset
 		{
-			get { return "0x" + Helper.HexString(hd.Index.Offset); }
+			get
+			{
+				return "0x" + Helper.HexString(hd.Index.Offset);
+			}
 		}
 
 		public string IndexSize
 		{
-			get { return "0x" + Helper.HexString(hd.Index.Size); }
+			get
+			{
+				return "0x" + Helper.HexString(hd.Index.Size);
+			}
 		}
 
 		public int ResourceCount
 		{
-			get { return hd.Index.Count; }
+			get
+			{
+				return hd.Index.Count;
+			}
 		}
 
 		public string IndexVersion
 		{
-			get { return "0x" + Helper.HexString(hd.Index.Type); }
+			get
+			{
+				return "0x" + Helper.HexString(hd.Index.Type);
+			}
 		}
 
 		public string IndexItemSize
@@ -134,7 +170,10 @@ namespace SimPe.Packages
 		/// <remarks>This value should be 1</remarks>
 		public int MajorVersion
 		{
-			get { return hd.MajorVersion; }
+			get
+			{
+				return hd.MajorVersion;
+			}
 		}
 
 		/// <summary>
@@ -143,7 +182,10 @@ namespace SimPe.Packages
 		/// <remarks>This value should be 0 or 1</remarks>
 		public int MinorVersion
 		{
-			get { return hd.MinorVersion; }
+			get
+			{
+				return hd.MinorVersion;
+			}
 		}
 	}
 
@@ -276,12 +318,18 @@ namespace SimPe.Packages
 
 		public IndexDetails IndexDetails
 		{
-			get { return new IndexDetails(pkg.Header); }
+			get
+			{
+				return new IndexDetails(pkg.Header);
+			}
 		}
 
 		public IndexDetailsAdvanced IndexDetailsAdvanced
 		{
-			get { return new IndexDetailsAdvanced(pkg.Header); }
+			get
+			{
+				return new IndexDetailsAdvanced(pkg.Header);
+			}
 		}
 
 		public SimPe.Packages.GeneratableFile Package

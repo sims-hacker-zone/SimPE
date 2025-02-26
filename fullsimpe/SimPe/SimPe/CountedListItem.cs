@@ -34,8 +34,14 @@ namespace SimPe
 		/// </summary>
 		public object Object
 		{
-			get { return obj; }
-			set { obj = value; }
+			get
+			{
+				return obj;
+			}
+			set
+			{
+				obj = value;
+			}
 		}
 
 		int index;
@@ -64,8 +70,14 @@ namespace SimPe
 		/// </summary>
 		public static int Offset
 		{
-			get { return offset; }
-			set { offset = value; }
+			get
+			{
+				return offset;
+			}
+			set
+			{
+				offset = value;
+			}
 		}
 
 		/// <summary>

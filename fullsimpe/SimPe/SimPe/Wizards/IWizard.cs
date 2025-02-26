@@ -33,31 +33,58 @@ namespace SimPe.Wizards
 
 		public WizardStepPanel Step
 		{
-			get { return step; }
+			get
+			{
+				return step;
+			}
 		}
 
 		public bool EnableNext
 		{
-			get { return this.enablenext; }
-			set { this.enablenext = value; }
+			get
+			{
+				return this.enablenext;
+			}
+			set
+			{
+				this.enablenext = value;
+			}
 		}
 
 		public bool EnablePrev
 		{
-			get { return this.enableprev; }
-			set { this.enableprev = value; }
+			get
+			{
+				return this.enableprev;
+			}
+			set
+			{
+				this.enableprev = value;
+			}
 		}
 
 		public bool CanFinish
 		{
-			get { return this.canfin; }
-			set { this.canfin = value; }
+			get
+			{
+				return this.canfin;
+			}
+			set
+			{
+				this.canfin = value;
+			}
 		}
 
 		public bool Cancel
 		{
-			get { return c; }
-			set { c = value; }
+			get
+			{
+				return c;
+			}
+			set
+			{
+				c = value;
+			}
 		}
 
 		public WizardEventArgs(

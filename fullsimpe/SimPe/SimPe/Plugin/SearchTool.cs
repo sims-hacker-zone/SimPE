@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Drawing;
+
 using SimPe.Interfaces;
 
 namespace SimPe.Plugin
@@ -34,7 +35,10 @@ namespace SimPe.Plugin
 		static SimPe.Registry registry;
 		internal static Registry WindowsRegistry
 		{
-			get { return registry; }
+			get
+			{
+				return registry;
+			}
 		}
 
 		IWrapperRegistry reg;

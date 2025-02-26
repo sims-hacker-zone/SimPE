@@ -51,6 +51,9 @@ namespace SimPe.Interfaces
 		/// Returns the List of Known CommandLines
 		/// </summary>
 		/// <remarks>The CommandLines should be Returned in Order of Priority starting with the lowest!</remarks>
-		ICommandLine[] CommandLines { get; }
+		ICommandLine[] CommandLines
+		{
+			get;
+		}
 	}
 }

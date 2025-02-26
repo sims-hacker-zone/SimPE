@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces.Files;
 
 namespace SimPe.Interfaces.Plugin.Internal
@@ -31,16 +32,25 @@ namespace SimPe.Interfaces.Plugin.Internal
 		/// <summary>
 		/// Get the Name of a Resource
 		/// </summary>
-		string ResourceName { get; }
+		string ResourceName
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Get a Description for this Package
 		/// </summary>
-		string Description { get; }
+		string Description
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Get the Header for this Description(i.e. Fieldnames)
 		/// </summary>
-		string DescriptionHeader { get; }
+		string DescriptionHeader
+		{
+			get;
+		}
 	}
 }

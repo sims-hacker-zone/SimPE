@@ -32,16 +32,25 @@ namespace SimPe.Interfaces
 		/// Returns null or the Icon that should be dispalyed for this Menu Item (can be null)
 		/// </summary>
 		/// <returns></returns>
-		System.Drawing.Image Icon { get; }
+		System.Drawing.Image Icon
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the wanted Shortcut
 		/// </summary>
-		System.Windows.Forms.Shortcut Shortcut { get; }
+		System.Windows.Forms.Shortcut Shortcut
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns true if the Tool is curently visible on the GUI
 		/// </summary>
-		bool Visible { get; }
+		bool Visible
+		{
+			get;
+		}
 	}
 }

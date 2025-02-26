@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -36,7 +37,10 @@ namespace SimPe.Plugin
 		Extension ext;
 		public Extension Extension
 		{
-			get { return ext; }
+			get
+			{
+				return ext;
+			}
 		}
 
 		#endregion

@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Drawing;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
@@ -51,26 +52,50 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool HasPhone
 		{
-			get { return GetBit((byte)0); }
-			set { SetBit((byte)0, value); }
+			get
+			{
+				return GetBit((byte)0);
+			}
+			set
+			{
+				SetBit((byte)0, value);
+			}
 		}
 
 		public bool HasBaby
 		{
-			get { return GetBit((byte)1); }
-			set { SetBit((byte)1, value); }
+			get
+			{
+				return GetBit((byte)1);
+			}
+			set
+			{
+				SetBit((byte)1, value);
+			}
 		}
 
 		public bool NewLot
 		{
-			get { return GetBit((byte)2); }
-			set { SetBit((byte)2, value); }
+			get
+			{
+				return GetBit((byte)2);
+			}
+			set
+			{
+				SetBit((byte)2, value);
+			}
 		}
 
 		public bool HasComputer
 		{
-			get { return GetBit((byte)3); }
-			set { SetBit((byte)3, value); }
+			get
+			{
+				return GetBit((byte)3);
+			}
+			set
+			{
+				SetBit((byte)3, value);
+			}
 		}
 	}
 
@@ -119,7 +144,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public FamiVersions Version
 		{
-			get { return version; }
+			get
+			{
+				return version;
+			}
 		}
 
 		/// <summary>
@@ -127,8 +155,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint Flags
 		{
-			get { return flags; }
-			set { flags = value; }
+			get
+			{
+				return flags;
+			}
+			set
+			{
+				flags = value;
+			}
 		}
 
 		/// <summary>
@@ -136,8 +170,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint AlbumGUID
 		{
-			get { return albumGUID; }
-			set { albumGUID = value; }
+			get
+			{
+				return albumGUID;
+			}
+			set
+			{
+				albumGUID = value;
+			}
 		}
 
 		/// <summary>
@@ -145,8 +185,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public int BusinessMoney
 		{
-			get { return businessmoney; }
-			set { businessmoney = value; }
+			get
+			{
+				return businessmoney;
+			}
+			set
+			{
+				businessmoney = value;
+			}
 		}
 
 		/// <summary>
@@ -154,26 +200,50 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public int Money
 		{
-			get { return money; }
-			set { money = value; }
+			get
+			{
+				return money;
+			}
+			set
+			{
+				money = value;
+			}
 		}
 
 		public int CastAwayResources
 		{
-			get { return ca_resources; }
-			set { ca_resources = value; }
+			get
+			{
+				return ca_resources;
+			}
+			set
+			{
+				ca_resources = value;
+			}
 		}
 
 		public int CastAwayFood
 		{
-			get { return ca_food; }
-			set { ca_food = value; }
+			get
+			{
+				return ca_food;
+			}
+			set
+			{
+				ca_food = value;
+			}
 		}
 
 		public int CastAwayFoodDecay
 		{
-			get { return ca_food_decay; }
-			set { ca_food_decay = value; }
+			get
+			{
+				return ca_food_decay;
+			}
+			set
+			{
+				ca_food_decay = value;
+			}
 		}
 
 		/// <summary>
@@ -181,8 +251,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint Friends
 		{
-			get { return friends; }
-			set { friends = value; }
+			get
+			{
+				return friends;
+			}
+			set
+			{
+				friends = value;
+			}
 		}
 
 		/// <summary>
@@ -190,7 +266,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint[] Members
 		{
-			get { return sims; }
+			get
+			{
+				return sims;
+			}
 			set
 			{
 				sims = value;
@@ -224,8 +303,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint LotInstance
 		{
-			get { return lotinstance; }
-			set { lotinstance = value; }
+			get
+			{
+				return lotinstance;
+			}
+			set
+			{
+				lotinstance = value;
+			}
 		}
 
 		/// <summary>
@@ -233,8 +318,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint VacationLotInstance
 		{
-			get { return vacationlot; }
-			set { vacationlot = value; }
+			get
+			{
+				return vacationlot;
+			}
+			set
+			{
+				vacationlot = value;
+			}
 		}
 
 		/// <summary>
@@ -242,15 +333,27 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint CurrentlyOnLotInstance
 		{
-			get { return businesslot; }
-			set { businesslot = value; }
+			get
+			{
+				return businesslot;
+			}
+			set
+			{
+				businesslot = value;
+			}
 		}
 
 		uint subhood;
 		public uint SubHoodNumber
 		{
-			get { return subhood; }
-			set { subhood = value; }
+			get
+			{
+				return subhood;
+			}
+			set
+			{
+				subhood = value;
+			}
 		}
 
 		/// <summary>
@@ -417,7 +520,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		internal SimPe.Interfaces.Providers.ISimNames NameProvider
 		{
-			get { return nameprovider; }
+			get
+			{
+				return nameprovider;
+			}
 		}
 
 		/// <summary>

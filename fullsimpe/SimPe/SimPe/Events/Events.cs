@@ -72,7 +72,10 @@ namespace SimPe.Events
 		/// </summary>
 		public ResourceContainers Items
 		{
-			get { return list; }
+			get
+			{
+				return list;
+			}
 		}
 
 		/// <summary>
@@ -80,8 +83,14 @@ namespace SimPe.Events
 		/// </summary>
 		public ResourceContainer this[int index]
 		{
-			get { return list[index]; }
-			set { list[index] = value; }
+			get
+			{
+				return list[index];
+			}
+			set
+			{
+				list[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -89,8 +98,14 @@ namespace SimPe.Events
 		/// </summary>
 		public ResourceContainer this[uint index]
 		{
-			get { return list[index]; }
-			set { list[index] = value; }
+			get
+			{
+				return list[index];
+			}
+			set
+			{
+				list[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -98,7 +113,10 @@ namespace SimPe.Events
 		/// </summary>
 		public LoadedPackage LoadedPackage
 		{
-			get { return lp; }
+			get
+			{
+				return lp;
+			}
 		}
 
 		/// <summary>
@@ -106,7 +124,10 @@ namespace SimPe.Events
 		/// </summary>
 		public new bool Empty
 		{
-			get { return list.Count == 0; }
+			get
+			{
+				return list.Count == 0;
+			}
 		}
 
 		/// <summary>
@@ -169,7 +190,10 @@ namespace SimPe.Events
 		/// </summary>
 		public int Count
 		{
-			get { return list.Count; }
+			get
+			{
+				return list.Count;
+			}
 		}
 
 		#region IEnumerable Member
@@ -207,7 +231,10 @@ namespace SimPe.Events
 
 		public bool ChangedAny
 		{
-			get { return false; }
+			get
+			{
+				return false;
+			}
 		}
 
 		#endregion
@@ -248,7 +275,10 @@ namespace SimPe.Events
 		/// </summary>
 		public SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem Resource
 		{
-			get { return item; }
+			get
+			{
+				return item;
+			}
 		}
 
 		bool cpfd,
@@ -258,19 +288,34 @@ namespace SimPe.Events
 
 		public bool ChangedPackage
 		{
-			get { return this.cpkg; }
-			set { cpkg = value; }
+			get
+			{
+				return this.cpkg;
+			}
+			set
+			{
+				cpkg = value;
+			}
 		}
 
 		public bool ChangedFile
 		{
-			get { return this.cpfd; }
-			set { cpfd = value; }
+			get
+			{
+				return this.cpfd;
+			}
+			set
+			{
+				cpfd = value;
+			}
 		}
 
 		public bool ChangedAny
 		{
-			get { return (ChangedPackage || ChangedFile); }
+			get
+			{
+				return (ChangedPackage || ChangedFile);
+			}
 		}
 
 		#endregion
@@ -380,8 +425,14 @@ namespace SimPe.Events
 		/// </summary>
 		public new ResourceContainer this[int index]
 		{
-			get { return ((ResourceContainer)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((ResourceContainer)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -389,8 +440,14 @@ namespace SimPe.Events
 		/// </summary>
 		public ResourceContainer this[uint index]
 		{
-			get { return ((ResourceContainer)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((ResourceContainer)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -437,7 +494,10 @@ namespace SimPe.Events
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		/// <summary>
@@ -472,15 +532,27 @@ namespace SimPe.Events
 		string filename;
 		public string FileName
 		{
-			get { return filename; }
-			set { filename = value; }
+			get
+			{
+				return filename;
+			}
+			set
+			{
+				filename = value;
+			}
 		}
 
 		bool cancel;
 		public bool Cancel
 		{
-			get { return cancel; }
-			set { cancel = value; }
+			get
+			{
+				return cancel;
+			}
+			set
+			{
+				cancel = value;
+			}
 		}
 	}
 

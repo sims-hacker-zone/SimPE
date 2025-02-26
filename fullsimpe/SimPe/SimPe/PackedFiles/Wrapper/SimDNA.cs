@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -64,37 +65,70 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public string Hair
 		{
-			get { return GetItem(1); }
-			set { SetItem(1, value); }
+			get
+			{
+				return GetItem(1);
+			}
+			set
+			{
+				SetItem(1, value);
+			}
 		}
 
 		public string SkintoneRange
 		{
-			get { return GetItem(2); }
-			set { SetItem(2, value); }
+			get
+			{
+				return GetItem(2);
+			}
+			set
+			{
+				SetItem(2, value);
+			}
 		}
 
 		public string Eye
 		{
-			get { return GetItem(3); }
-			set { SetItem(3, value); }
+			get
+			{
+				return GetItem(3);
+			}
+			set
+			{
+				SetItem(3, value);
+			}
 		}
 
 		public string FacialFeature
 		{
-			get { return GetItem(5); }
-			set { SetItem(5, value); }
+			get
+			{
+				return GetItem(5);
+			}
+			set
+			{
+				SetItem(5, value);
+			}
 		}
 
 		public string Skintone
 		{
-			get { return GetItem(6); }
-			set { SetItem(6, value); }
+			get
+			{
+				return GetItem(6);
+			}
+			set
+			{
+				SetItem(6, value);
+			}
 		}
 
 		internal string Description
 		{
-			get { return SimPe.Serializer.Serialize(this); }
+			get
+			{
+				return SimPe.Serializer.Serialize(this);
+			}
 		}
 	}
 
@@ -115,12 +149,18 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public Gene Dominant
 		{
-			get { return dominant; }
+			get
+			{
+				return dominant;
+			}
 		}
 
 		public Gene Recessive
 		{
-			get { return recessive; }
+			get
+			{
+				return recessive;
+			}
 		}
 
 		protected override IPackedFileUI CreateDefaultUIHandler()
@@ -148,12 +188,18 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public override byte[] FileSignature
 		{
-			get { return new Byte[0]; }
+			get
+			{
+				return new Byte[0];
+			}
 		}
 
 		public override uint[] AssignableTypes
 		{
-			get { return new uint[] { Data.MetaData.SDNA }; }
+			get
+			{
+				return new uint[] { Data.MetaData.SDNA };
+			}
 		}
 
 		public override string DescriptionHeader

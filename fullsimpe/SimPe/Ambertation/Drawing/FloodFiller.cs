@@ -38,7 +38,9 @@ namespace Ambertation.Drawing
 		/// <summary>
 		/// Default constructor - initializes all fields to default values
 		/// </summary>
-		public FloodFiller() { }
+		public FloodFiller()
+		{
+		}
 
 		///<summary>initializes the FloodFill operation</summary>
 		public override void FloodFill(Bitmap bmp, Point pt)

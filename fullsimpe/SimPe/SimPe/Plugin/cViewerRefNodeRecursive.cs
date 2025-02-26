@@ -35,43 +35,79 @@ namespace SimPe.Plugin
 		short unknown1;
 		public short Unknown1
 		{
-			get { return unknown1; }
-			set { unknown1 = value; }
+			get
+			{
+				return unknown1;
+			}
+			set
+			{
+				unknown1 = value;
+			}
 		}
 
 		string[] names;
 		public string[] Names
 		{
-			get { return names; }
-			set { names = value; }
+			get
+			{
+				return names;
+			}
+			set
+			{
+				names = value;
+			}
 		}
 
 		int unknown2;
 		public int Unknown2
 		{
-			get { return unknown2; }
-			set { unknown2 = value; }
+			get
+			{
+				return unknown2;
+			}
+			set
+			{
+				unknown2 = value;
+			}
 		}
 
 		short unknown3;
 		public short Unknown3
 		{
-			get { return unknown3; }
-			set { unknown3 = value; }
+			get
+			{
+				return unknown3;
+			}
+			set
+			{
+				unknown3 = value;
+			}
 		}
 
 		string unknown4;
 		public string Unknown4
 		{
-			get { return unknown4; }
-			set { unknown4 = value; }
+			get
+			{
+				return unknown4;
+			}
+			set
+			{
+				unknown4 = value;
+			}
 		}
 
 		byte[] unknown5;
 		public byte[] Unknown5
 		{
-			get { return unknown5; }
-			set { unknown5 = value; }
+			get
+			{
+				return unknown5;
+			}
+			set
+			{
+				unknown5 = value;
+			}
 		}
 
 		#endregion

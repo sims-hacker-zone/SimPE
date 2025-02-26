@@ -25,6 +25,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.PackedFiles.Wrapper;
 
 namespace pjse
@@ -168,7 +169,10 @@ namespace pjse
 
 	public interface iBhavOperandWizForm
 	{
-		Panel WizPanel { get; }
+		Panel WizPanel
+		{
+			get;
+		}
 		void Execute(Instruction inst);
 		Instruction Write(Instruction inst);
 	}
@@ -191,7 +195,10 @@ namespace pjse
 
 		public virtual Panel bhavPrimWizPanel
 		{
-			get { return myForm.WizPanel; }
+			get
+			{
+				return myForm.WizPanel;
+			}
 		}
 
 		public virtual void Execute()
@@ -539,12 +546,18 @@ namespace pjse.BhavOperandWizards
 		private ushort instance = 0;
 		public byte DataOwner
 		{
-			get { return dataOwner; }
+			get
+			{
+				return dataOwner;
+			}
 		}
 
 		public ushort Value
 		{
-			get { return instance; }
+			get
+			{
+				return instance;
+			}
 		}
 
 		public event EventHandler DataOwnerControlChanged;
@@ -758,7 +771,10 @@ namespace pjse.BhavOperandWizards
 
 		public BhavWiz Instruction
 		{
-			get { return this.inst; }
+			get
+			{
+				return this.inst;
+			}
 			set
 			{
 				if (this.inst != value)
@@ -772,7 +788,10 @@ namespace pjse.BhavOperandWizards
 		private int bitsInValue = 16;
 		public bool ValueIsByte
 		{
-			get { return bitsInValue == 8; }
+			get
+			{
+				return bitsInValue == 8;
+			}
 			set
 			{
 				if ((bitsInValue == 8) != value)
@@ -806,7 +825,10 @@ namespace pjse.BhavOperandWizards
 		private bool use0xPrefix = true;
 		public bool Use0xPrefix
 		{
-			get { return use0xPrefix; }
+			get
+			{
+				return use0xPrefix;
+			}
 			set
 			{
 				if (use0xPrefix != value)
@@ -827,7 +849,10 @@ namespace pjse.BhavOperandWizards
 		private bool isDecimal = false;
 		public bool Decimal
 		{
-			get { return this.isDecimal; }
+			get
+			{
+				return this.isDecimal;
+			}
 			set
 			{
 				if (isDecimal != value)
@@ -848,7 +873,10 @@ namespace pjse.BhavOperandWizards
 		private bool useInstancePicker = true;
 		public bool UseInstancePicker
 		{
-			get { return this.useInstancePicker; }
+			get
+			{
+				return this.useInstancePicker;
+			}
 			set
 			{
 				if (useInstancePicker != value)
@@ -862,7 +890,10 @@ namespace pjse.BhavOperandWizards
 		private bool useFlagNames = false;
 		public bool UseFlagNames
 		{
-			get { return this.useFlagNames; }
+			get
+			{
+				return this.useFlagNames;
+			}
 			set
 			{
 				if (useFlagNames != value)
@@ -876,7 +907,10 @@ namespace pjse.BhavOperandWizards
 		private IDataOwner flagsFor = null;
 		public IDataOwner FlagsFor
 		{
-			get { return flagsFor; }
+			get
+			{
+				return flagsFor;
+			}
 			set
 			{
 				if (flagsFor != value)

@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
@@ -132,7 +133,10 @@ namespace SimPe.PackedFiles.Wrapper
 		Scor parent;
 		public Scor Parent
 		{
-			get { return parent; }
+			get
+			{
+				return parent;
+			}
 		}
 
 		/// <summary>
@@ -269,7 +273,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public int Count
 		{
-			get { return list.Count; }
+			get
+			{
+				return list.Count;
+			}
 		}
 
 		public bool Contains(ScorItem si)
@@ -288,14 +295,26 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ScorItem this[string name]
 		{
-			get { return list[FindIndex(name)] as ScorItem; }
-			set { list[FindIndex(name)] = value; }
+			get
+			{
+				return list[FindIndex(name)] as ScorItem;
+			}
+			set
+			{
+				list[FindIndex(name)] = value;
+			}
 		}
 
 		public ScorItem this[int index]
 		{
-			get { return list[index] as ScorItem; }
-			set { list[index] = value; }
+			get
+			{
+				return list[index] as ScorItem;
+			}
+			set
+			{
+				list[index] = value;
+			}
 		}
 
 		#region IEnumerable Member

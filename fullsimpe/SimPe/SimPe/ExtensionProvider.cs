@@ -75,7 +75,10 @@ namespace SimPe
 		/// </summary>
 		public ArrayList Extensions
 		{
-			get { return extensions; }
+			get
+			{
+				return extensions;
+			}
 		}
 
 		string text;
@@ -85,7 +88,10 @@ namespace SimPe
 		/// </summary>
 		public string Text
 		{
-			get { return text; }
+			get
+			{
+				return text;
+			}
 		}
 
 		/// <summary>

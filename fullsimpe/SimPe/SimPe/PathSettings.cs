@@ -163,7 +163,10 @@ namespace SimPe
 					PathProvider.RealSavegamePath
 				);
 			}
-			set { PathProvider.SimSavegameFolder = value; }
+			set
+			{
+				PathProvider.SimSavegameFolder = value;
+			}
 		}
 	}
 }

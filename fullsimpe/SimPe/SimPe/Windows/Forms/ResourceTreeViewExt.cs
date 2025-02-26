@@ -29,7 +29,9 @@ namespace SimPe.Windows.Forms
 			last = null;
 		}
 
-		~ResourceTreeViewExt() { }
+		~ResourceTreeViewExt()
+		{
+		}
 
 		internal void SetManager(ResourceViewManager manager)
 		{

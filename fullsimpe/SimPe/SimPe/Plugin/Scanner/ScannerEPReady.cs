@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin.Scanner;
 using SimPe.PackedFiles.Wrapper;
@@ -43,12 +44,18 @@ namespace SimPe.Plugin.Scanner
 		#region IScannerBase Member
 		public uint Version
 		{
-			get { return 1; }
+			get
+			{
+				return 1;
+			}
 		}
 
 		public int Index
 		{
-			get { return 500; }
+			get
+			{
+				return 500;
+			}
 		}
 		#endregion
 
@@ -116,11 +123,16 @@ namespace SimPe.Plugin.Scanner
 			}
 		}
 
-		public void FinishScan() { }
+		public void FinishScan()
+		{
+		}
 
 		public override bool IsActiveByDefault
 		{
-			get { return false; }
+			get
+			{
+				return false;
+			}
 		}
 
 		ScannerItem[] selection;

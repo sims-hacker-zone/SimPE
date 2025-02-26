@@ -7,7 +7,9 @@ namespace SimPe.Plugin.Downloads
 	/// </summary>
 	public class SimTypeHandler : SimpleTypeHandler
 	{
-		public SimTypeHandler() { }
+		public SimTypeHandler()
+		{
+		}
 
 		protected override void SetName(SimPe.Interfaces.Files.IPackageFile pkg)
 		{

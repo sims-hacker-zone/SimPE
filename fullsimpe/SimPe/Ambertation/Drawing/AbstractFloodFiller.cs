@@ -60,47 +60,88 @@ namespace Ambertation.Drawing
 		/// <summary>
 		/// Default constructor - initializes all fields to default values
 		/// </summary>
-		public AbstractFloodFiller() { }
+		public AbstractFloodFiller()
+		{
+		}
 
 		public Color FillColor
 		{
-			get { return m_fillcolorcolor; }
-			set { m_fillcolorcolor = value; }
+			get
+			{
+				return m_fillcolorcolor;
+			}
+			set
+			{
+				m_fillcolorcolor = value;
+			}
 		}
 
 		public byte[] Tolerance
 		{
-			get { return m_Tolerance; }
-			set { m_Tolerance = value; }
+			get
+			{
+				return m_Tolerance;
+			}
+			set
+			{
+				m_Tolerance = value;
+			}
 		}
 
 		public int TimeBenchmark
 		{
-			get { return m_TimeBenchmark; }
+			get
+			{
+				return m_TimeBenchmark;
+			}
 		}
 
 		public bool FillDiagonal
 		{
-			get { return m_FillDiagonal; }
-			set { m_FillDiagonal = value; }
+			get
+			{
+				return m_FillDiagonal;
+			}
+			set
+			{
+				m_FillDiagonal = value;
+			}
 		}
 
 		public FloodFillStyle FillStyle
 		{
-			get { return m_FillStyle; }
-			set { m_FillStyle = value; }
+			get
+			{
+				return m_FillStyle;
+			}
+			set
+			{
+				m_FillStyle = value;
+			}
 		}
 
 		public Bitmap Bmp
 		{
-			get { return m_Bmp; }
-			set { m_Bmp = value; }
+			get
+			{
+				return m_Bmp;
+			}
+			set
+			{
+				m_Bmp = value;
+			}
 		}
 
 		public Point Pt
 		{
-			get { return m_Pt; }
-			set { m_Pt = value; }
+			get
+			{
+				return m_Pt;
+			}
+			set
+			{
+				m_Pt = value;
+			}
 		}
 
 		public void FloodFill()
@@ -210,7 +251,10 @@ namespace Ambertation.Drawing
 
 		public Exception exception
 		{
-			get { return m_exception; }
+			get
+			{
+				return m_exception;
+			}
 		}
 	}
 }

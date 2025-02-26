@@ -41,7 +41,9 @@ namespace SimPe.PackedFiles.UserInterface
 		}
 
 		#region IDisposable Member
-		public virtual void Dispose() { }
+		public virtual void Dispose()
+		{
+		}
 		#endregion
 	}
 }

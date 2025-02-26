@@ -23,7 +23,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 using Ambertation.Windows.Forms;
+
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
@@ -474,7 +476,10 @@ namespace SimPe.Plugin
 
 		public ExtNgbh Ngbh
 		{
-			get { return (ExtNgbh)Wrapper; }
+			get
+			{
+				return (ExtNgbh)Wrapper;
+			}
 		}
 
 		protected override void RefreshGUI()
@@ -511,7 +516,9 @@ namespace SimPe.Plugin
 			UpdateEnabledState();
 		}
 
-		void UpdateEnabledState() { }
+		void UpdateEnabledState()
+		{
+		}
 
 		private void ChoosePage(object sender, System.EventArgs e)
 		{

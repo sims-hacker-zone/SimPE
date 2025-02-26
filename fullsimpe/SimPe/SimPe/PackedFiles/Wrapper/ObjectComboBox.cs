@@ -23,6 +23,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.Cache;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -192,7 +193,10 @@ namespace SimPe.PackedFiles.Wrapper
 			sk;
 		public bool ShowTokens
 		{
-			get { return st; }
+			get
+			{
+				return st;
+			}
 			set
 			{
 				if (st != value)
@@ -205,7 +209,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool ShowAspiration
 		{
-			get { return sa; }
+			get
+			{
+				return sa;
+			}
 			set
 			{
 				if (sa != value)
@@ -218,7 +225,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool ShowBadge
 		{
-			get { return sb; }
+			get
+			{
+				return sb;
+			}
 			set
 			{
 				if (sb != value)
@@ -231,7 +241,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool ShowSkill
 		{
-			get { return sk; }
+			get
+			{
+				return sk;
+			}
 			set
 			{
 				if (sk != value)
@@ -244,7 +257,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool ShowMemories
 		{
-			get { return sm; }
+			get
+			{
+				return sm;
+			}
 			set
 			{
 				if (sm != value)
@@ -257,7 +273,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool ShowInventory
 		{
-			get { return si; }
+			get
+			{
+				return si;
+			}
 			set
 			{
 				if (si != value)
@@ -270,7 +289,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool ShowJobData
 		{
-			get { return sjd; }
+			get
+			{
+				return sjd;
+			}
 			set
 			{
 				if (sjd != value)

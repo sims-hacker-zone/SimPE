@@ -40,19 +40,34 @@ namespace SimPe.Plugin.Tool.Dockable
 			remndeftxt;
 		public bool OpenWithRemoteControl
 		{
-			get { return remote; }
-			set { remote = value; }
+			get
+			{
+				return remote;
+			}
+			set
+			{
+				remote = value;
+			}
 		}
 
 		public bool RemoveNonDefaultTextReferences
 		{
-			get { return remndeftxt; }
-			set { remndeftxt = value; }
+			get
+			{
+				return remndeftxt;
+			}
+			set
+			{
+				remndeftxt = value;
+			}
 		}
 
 		public bool RemoteResult
 		{
-			get { return remoteres; }
+			get
+			{
+				return remoteres;
+			}
 		}
 
 		internal void SetRemoteResult(bool res)
@@ -88,32 +103,62 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public bool CustomGroup
 		{
-			get { return grp; }
-			set { grp = value; }
+			get
+			{
+				return grp;
+			}
+			set
+			{
+				grp = value;
+			}
 		}
 
 		public bool FixResources
 		{
-			get { return fix; }
-			set { fix = value; }
+			get
+			{
+				return fix;
+			}
+			set
+			{
+				fix = value;
+			}
 		}
 
 		public bool RemoveUselessResource
 		{
-			get { return rem; }
-			set { rem = value; }
+			get
+			{
+				return rem;
+			}
+			set
+			{
+				rem = value;
+			}
 		}
 
 		public bool StandAloneObject
 		{
-			get { return alone; }
-			set { alone = value; }
+			get
+			{
+				return alone;
+			}
+			set
+			{
+				alone = value;
+			}
 		}
 
 		public bool ChangeObjectDescription
 		{
-			get { return updatedesc; }
-			set { updatedesc = value; }
+			get
+			{
+				return updatedesc;
+			}
+			set
+			{
+				updatedesc = value;
+			}
 		}
 
 		short price;
@@ -121,20 +166,38 @@ namespace SimPe.Plugin.Tool.Dockable
 			title;
 		public short Price
 		{
-			get { return price; }
-			set { price = value; }
+			get
+			{
+				return price;
+			}
+			set
+			{
+				price = value;
+			}
 		}
 
 		public string Title
 		{
-			get { return title; }
-			set { title = value; }
+			get
+			{
+				return title;
+			}
+			set
+			{
+				title = value;
+			}
 		}
 
 		public string Description
 		{
-			get { return desc; }
-			set { desc = value; }
+			get
+			{
+				return desc;
+			}
+			set
+			{
+				desc = value;
+			}
 		}
 	}
 

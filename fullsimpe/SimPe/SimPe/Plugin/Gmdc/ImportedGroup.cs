@@ -38,19 +38,34 @@ namespace SimPe.Plugin.Gmdc
 
 		public string Name
 		{
-			get { return name; }
-			set { name = value; }
+			get
+			{
+				return name;
+			}
+			set
+			{
+				name = value;
+			}
 		}
 
 		public int Index
 		{
-			get { return index; }
-			set { index = value; }
+			get
+			{
+				return index;
+			}
+			set
+			{
+				index = value;
+			}
 		}
 
 		public bool HasIndex
 		{
-			get { return (index >= 0); }
+			get
+			{
+				return (index >= 0);
+			}
 		}
 	}
 
@@ -103,8 +118,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GroupDescriptor Target
 		{
-			get { return newname; }
-			set { newname = value; }
+			get
+			{
+				return newname;
+			}
+			set
+			{
+				newname = value;
+			}
 		}
 
 		/// <summary>
@@ -117,8 +138,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcImporterAction Action
 		{
-			get { return action; }
-			set { action = value; }
+			get
+			{
+				return action;
+			}
+			set
+			{
+				action = value;
+			}
 		}
 
 		/// <summary>
@@ -131,8 +158,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public float Scale
 		{
-			get { return scale; }
-			set { scale = value; }
+			get
+			{
+				return scale;
+			}
+			set
+			{
+				scale = value;
+			}
 		}
 
 		/// <summary>
@@ -159,7 +192,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcGroup Group
 		{
-			get { return group; }
+			get
+			{
+				return group;
+			}
 		}
 
 		GmdcLink link;
@@ -169,7 +205,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcLink Link
 		{
-			get { return link; }
+			get
+			{
+				return link;
+			}
 		}
 
 		GmdcElements elements;
@@ -179,7 +218,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcElements Elements
 		{
-			get { return elements; }
+			get
+			{
+				return elements;
+			}
 		}
 
 		/// <summary>
@@ -203,7 +245,10 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns></returns>
 		public int FaceCount
 		{
-			get { return this.Group.Faces.Length / 3; }
+			get
+			{
+				return this.Group.Faces.Length / 3;
+			}
 		}
 
 		bool useinbmesh;
@@ -213,8 +258,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public bool UseInBoundingMesh
 		{
-			get { return useinbmesh; }
-			set { useinbmesh = value; }
+			get
+			{
+				return useinbmesh;
+			}
+			set
+			{
+				useinbmesh = value;
+			}
 		}
 
 		bool keeporder;
@@ -226,7 +277,10 @@ namespace SimPe.Plugin.Gmdc
 
 		public bool KeepOrder
 		{
-			get { return keeporder; }
+			get
+			{
+				return keeporder;
+			}
 		}
 
 		/// <summary>
@@ -272,8 +326,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public new ImportedGroup this[int index]
 		{
-			get { return ((ImportedGroup)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((ImportedGroup)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -281,8 +341,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public ImportedGroup this[uint index]
 		{
-			get { return ((ImportedGroup)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((ImportedGroup)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -329,7 +395,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		/// <summary>

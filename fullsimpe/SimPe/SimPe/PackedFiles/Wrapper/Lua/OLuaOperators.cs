@@ -45,8 +45,14 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public object Value
 		{
-			get { return val; }
-			set { val = value; }
+			get
+			{
+				return val;
+			}
+			set
+			{
+				val = value;
+			}
 		}
 
 		public override string ToString()
@@ -75,7 +81,10 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public object this[object index]
 		{
-			get { return data[index]; }
+			get
+			{
+				return data[index];
+			}
 			set
 			{
 				object o = value;
@@ -129,7 +138,10 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		static NULL nil = new NULL();
 		public static object Nil
 		{
-			get { return nil; }
+			get
+			{
+				return nil;
+			}
 		}
 
 		object[] regs;
@@ -140,7 +152,10 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		string indent;
 		public string Indent
 		{
-			get { return indent; }
+			get
+			{
+				return indent;
+			}
 		}
 
 		public Context()
@@ -419,7 +434,10 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public int PC
 		{
-			get { return pc; }
+			get
+			{
+				return pc;
+			}
 		}
 
 		public ObjLuaCode CurrentLine
@@ -485,11 +503,16 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		bool LoadsRegister(ushort regnr);
 	}
 
-	interface IIfOperator { }
+	interface IIfOperator
+	{
+	}
 
 	interface IAddEnd
 	{
-		int Offset { get; }
+		int Offset
+		{
+			get;
+		}
 	}
 
 	abstract class Operator : ObjLuaCode
@@ -1295,7 +1318,9 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		public EQ(uint val, ObjLuaFunction parent)
 			: base("==", "~=", val, parent) { }
 
-		public void Run(Context cx) { }
+		public void Run(Context cx)
+		{
+		}
 	}
 
 	class LE : IF, IOperator
@@ -1303,7 +1328,9 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		public LE(uint val, ObjLuaFunction parent)
 			: base("<=", ">", val, parent) { }
 
-		public void Run(Context cx) { }
+		public void Run(Context cx)
+		{
+		}
 	}
 
 	class GE : IF, IOperator
@@ -1311,7 +1338,9 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		public GE(uint val, ObjLuaFunction parent)
 			: base(">=", "<", val, parent) { }
 
-		public void Run(Context cx) { }
+		public void Run(Context cx)
+		{
+		}
 	}
 
 	class LT : IF, IOperator
@@ -1319,7 +1348,9 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		public LT(uint val, ObjLuaFunction parent)
 			: base("<", ">=", val, parent) { }
 
-		public void Run(Context cx) { }
+		public void Run(Context cx)
+		{
+		}
 	}
 
 	class GT : IF, IOperator
@@ -1327,7 +1358,9 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		public GT(uint val, ObjLuaFunction parent)
 			: base(">", "<=", val, parent) { }
 
-		public void Run(Context cx) { }
+		public void Run(Context cx)
+		{
+		}
 	}
 
 	class SELF : Operator, IOperator
@@ -1407,7 +1440,10 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public int Offset
 		{
-			get { return 1; }
+			get
+			{
+				return 1;
+			}
 		}
 	}
 
@@ -1416,7 +1452,9 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		public TFORREP(uint val, ObjLuaFunction parent)
 			: base(val, parent) { }
 
-		public void Run(Context cx) { }
+		public void Run(Context cx)
+		{
+		}
 
 		public override string ToString(Context cx)
 		{
@@ -1434,8 +1472,14 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		TFORLOOP tfl;
 		public TFORLOOP TFORLOOP
 		{
-			get { return tfl; }
-			set { tfl = value; }
+			get
+			{
+				return tfl;
+			}
+			set
+			{
+				tfl = value;
+			}
 		}
 
 		protected override string ToAsmString()
@@ -1458,7 +1502,9 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		public TFORLOOP(uint val, ObjLuaFunction parent)
 			: base(val, parent) { }
 
-		public void Run(Context cx) { }
+		public void Run(Context cx)
+		{
+		}
 
 		public void Setup(Context cx)
 		{
@@ -1497,13 +1543,21 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		public FORLOOP(uint val, ObjLuaFunction parent)
 			: base(val, parent) { }
 
-		public void Run(Context cx) { }
+		public void Run(Context cx)
+		{
+		}
 
 		bool istart;
 		public bool IsStart
 		{
-			get { return istart; }
-			set { istart = value; }
+			get
+			{
+				return istart;
+			}
+			set
+			{
+				istart = value;
+			}
 		}
 
 		public override string ToString(Context cx)
@@ -1546,7 +1600,9 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 			this.txt = txt;
 		}
 
-		public void Run(Context cx) { }
+		public void Run(Context cx)
+		{
+		}
 
 		public override string ToString(Context cx)
 		{

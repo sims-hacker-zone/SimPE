@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.Plugin.Downloads;
 
 namespace SimPe.Plugin
@@ -392,7 +393,10 @@ namespace SimPe.Plugin
 
 		protected Downloads.IPackageInfo SelectedPackageInfo
 		{
-			get { return cb.SelectedItem as Downloads.IPackageInfo; }
+			get
+			{
+				return cb.SelectedItem as Downloads.IPackageInfo;
+			}
 		}
 
 		private void SelectedInfo(object sender, EventArgs e)

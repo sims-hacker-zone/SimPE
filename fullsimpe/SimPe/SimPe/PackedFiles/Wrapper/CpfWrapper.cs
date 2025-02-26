@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.Xml;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -51,7 +52,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public byte[] Id
 		{
-			get { return id; }
+			get
+			{
+				return id;
+			}
 		}
 
 		/// <summary>
@@ -64,8 +68,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public CpfItem[] Items
 		{
-			get { return items; }
-			set { items = value; }
+			get
+			{
+				return items;
+			}
+			set
+			{
+				items = value;
+			}
 		}
 		#endregion
 
@@ -379,7 +389,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public virtual byte[] FileSignature
 		{
-			get { return SIGNATURE; }
+			get
+			{
+				return SIGNATURE;
+			}
 		}
 
 		public bool CanHandleType(uint type)

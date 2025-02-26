@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces;
 
 namespace SimPe.Plugin
@@ -115,7 +116,10 @@ namespace SimPe.Plugin
 
 		public ISettings[] KnownSettings
 		{
-			get { return new ISettings[] { Settings }; }
+			get
+			{
+				return new ISettings[] { Settings };
+			}
 		}
 
 		#endregion

@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
 
@@ -39,29 +40,53 @@ namespace SimPe.Plugin
 		string fldsc;
 		public string FileDescription
 		{
-			get { return fldsc; }
-			set { fldsc = value; }
+			get
+			{
+				return fldsc;
+			}
+			set
+			{
+				fldsc = value;
+			}
 		}
 
 		string mattype;
 		public string MatterialType
 		{
-			get { return mattype; }
-			set { mattype = value; }
+			get
+			{
+				return mattype;
+			}
+			set
+			{
+				mattype = value;
+			}
 		}
 
 		MaterialDefinitionProperty[] properties;
 		public MaterialDefinitionProperty[] Properties
 		{
-			get { return properties; }
-			set { properties = value; }
+			get
+			{
+				return properties;
+			}
+			set
+			{
+				properties = value;
+			}
 		}
 
 		string[] listing;
 		public string[] Listing
 		{
-			get { return listing; }
-			set { listing = value; }
+			get
+			{
+				return listing;
+			}
+			set
+			{
+				listing = value;
+			}
 		}
 		#endregion
 
@@ -443,15 +468,15 @@ namespace SimPe.Plugin
 		public void Sort()
 		{
 			for (int i = 0; i < this.properties.Length - 1; i++)
-			for (int j = i + 1; j < this.properties.Length; j++)
-			{
-				if (properties[i].Name.CompareTo(properties[j].Name) > 0)
+				for (int j = i + 1; j < this.properties.Length; j++)
 				{
-					MaterialDefinitionProperty dum = properties[i];
-					properties[i] = properties[j];
-					properties[j] = dum;
+					if (properties[i].Name.CompareTo(properties[j].Name) > 0)
+					{
+						MaterialDefinitionProperty dum = properties[i];
+						properties[i] = properties[j];
+						properties[j] = dum;
+					}
 				}
-			}
 		}
 
 		/// <summary>
@@ -619,14 +644,26 @@ namespace SimPe.Plugin
 
 		public string Name
 		{
-			get { return name; }
-			set { name = value; }
+			get
+			{
+				return name;
+			}
+			set
+			{
+				name = value;
+			}
 		}
 
 		public string Value
 		{
-			get { return val; }
-			set { val = value; }
+			get
+			{
+				return val;
+			}
+			set
+			{
+				val = value;
+			}
 		}
 		#endregion
 

@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces;
 
 namespace SimPe.Plugin
@@ -27,7 +28,9 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class FixUidTool : Interfaces.ITool
 	{
-		internal FixUidTool() { }
+		internal FixUidTool()
+		{
+		}
 
 		#region ITool Member
 

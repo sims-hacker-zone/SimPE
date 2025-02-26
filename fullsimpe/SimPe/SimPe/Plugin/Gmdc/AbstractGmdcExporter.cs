@@ -56,7 +56,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		protected GeometryDataContainer Gmdc
 		{
-			get { return gmdc; }
+			get
+			{
+				return gmdc;
+			}
 		}
 
 		GmdcGroups groups;
@@ -66,7 +69,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		protected GmdcGroups Groups
 		{
-			get { return groups; }
+			get
+			{
+				return groups;
+			}
 		}
 
 		GmdcElement vertex;
@@ -76,7 +82,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		protected GmdcElement VertexElement
 		{
-			get { return vertex; }
+			get
+			{
+				return vertex;
+			}
 		}
 
 		GmdcElement normal;
@@ -86,7 +95,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		protected GmdcElement NormalElement
 		{
-			get { return normal; }
+			get
+			{
+				return normal;
+			}
 		}
 
 		GmdcElement uvmap;
@@ -96,7 +108,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		protected GmdcElement UVCoordinateElement
 		{
-			get { return uvmap; }
+			get
+			{
+				return uvmap;
+			}
 		}
 
 		GmdcLink link;
@@ -106,7 +121,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		protected GmdcLink Link
 		{
-			get { return link; }
+			get
+			{
+				return link;
+			}
 		}
 
 		GmdcGroup group;
@@ -116,7 +134,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		protected GmdcGroup Group
 		{
-			get { return group; }
+			get
+			{
+				return group;
+			}
 		}
 
 		ElementOrder order;
@@ -126,8 +147,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public ElementOrder Component
 		{
-			get { return order; }
-			set { order = value; }
+			get
+			{
+				return order;
+			}
+			set
+			{
+				order = value;
+			}
 		}
 
 		bool cjs;
@@ -138,8 +165,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public bool CorrectJointSetup
 		{
-			get { return cjs; }
-			set { cjs = value; }
+			get
+			{
+				return cjs;
+			}
+			set
+			{
+				cjs = value;
+			}
 		}
 
 		/// <summary>
@@ -265,7 +298,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public System.IO.StreamWriter FileContent
 		{
-			get { return writer; }
+			get
+			{
+				return writer;
+			}
 		}
 
 		/// <summary>
@@ -273,24 +309,36 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public int Version
 		{
-			get { return 1; }
+			get
+			{
+				return 1;
+			}
 		}
 
 		#region Abstract Methods
 		/// <summary>
 		/// Returns the suggested File Extension (including the . like .obj or .3ds)
 		/// </summary>
-		public abstract string FileExtension { get; }
+		public abstract string FileExtension
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the File Description (the Name of the exported FileType)
 		/// </summary>
-		public abstract string FileDescription { get; }
+		public abstract string FileDescription
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the name of the Author
 		/// </summary>
-		public abstract string Author { get; }
+		public abstract string Author
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Called when a new File is started
@@ -333,7 +381,10 @@ namespace SimPe.Plugin.Gmdc
 					flname = "";
 				return flname;
 			}
-			set { flname = value; }
+			set
+			{
+				flname = value;
+			}
 		}
 	}
 }

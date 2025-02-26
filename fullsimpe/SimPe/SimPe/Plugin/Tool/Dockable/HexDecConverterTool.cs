@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces;
 
 namespace SimPe.Plugin.Tool.Dockable
@@ -43,7 +44,9 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public event SimPe.Events.ChangedResourceEvent ShowNewResource;
 
-		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es) { }
+		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es)
+		{
+		}
 
 		#endregion
 
@@ -60,12 +63,18 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get { return System.Windows.Forms.Shortcut.CtrlH; }
+			get
+			{
+				return System.Windows.Forms.Shortcut.CtrlH;
+			}
 		}
 
 		public System.Drawing.Image Icon
 		{
-			get { return rd.dcConvert.TabImage; }
+			get
+			{
+				return rd.dcConvert.TabImage;
+			}
 		}
 
 		public virtual bool Visible

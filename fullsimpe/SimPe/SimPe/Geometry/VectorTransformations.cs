@@ -53,8 +53,14 @@ namespace SimPe.Geometry
 		/// </summary>
 		public TransformOrder Order
 		{
-			get { return o; }
-			set { o = value; }
+			get
+			{
+				return o;
+			}
+			set
+			{
+				o = value;
+			}
 		}
 		Vector3f trans;
 
@@ -63,8 +69,14 @@ namespace SimPe.Geometry
 		/// </summary>
 		public Vector3f Translation
 		{
-			get { return trans; }
-			set { trans = value; }
+			get
+			{
+				return trans;
+			}
+			set
+			{
+				trans = value;
+			}
 		}
 
 		Quaternion quat;
@@ -74,8 +86,14 @@ namespace SimPe.Geometry
 		/// </summary>
 		public Quaternion Rotation
 		{
-			get { return quat; }
-			set { quat = value; }
+			get
+			{
+				return quat;
+			}
+			set
+			{
+				quat = value;
+			}
 		}
 		#endregion
 
@@ -195,8 +213,14 @@ namespace SimPe.Geometry
 		/// </summary>
 		public new VectorTransformation this[int index]
 		{
-			get { return ((VectorTransformation)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((VectorTransformation)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -204,8 +228,14 @@ namespace SimPe.Geometry
 		/// </summary>
 		public VectorTransformation this[uint index]
 		{
-			get { return ((VectorTransformation)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((VectorTransformation)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -252,7 +282,10 @@ namespace SimPe.Geometry
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		/// <summary>

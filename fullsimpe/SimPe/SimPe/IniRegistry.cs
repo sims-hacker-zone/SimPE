@@ -32,7 +32,9 @@ namespace SimPe
 		: IEnumerable<String>,
 			IEnumerable<IniRegistry.SectionContent>
 	{
-		class Sectionlist : Dictionary<String, SectionContent> { }
+		class Sectionlist : Dictionary<String, SectionContent>
+		{
+		}
 
 		bool fileIsReadonly = true;
 		string iniFile = null;
@@ -92,8 +94,14 @@ namespace SimPe
 
 		public String IniFile
 		{
-			get { return iniFile; }
-			set { iniFile = value; }
+			get
+			{
+				return iniFile;
+			}
+			set
+			{
+				iniFile = value;
+			}
 		}
 
 		public bool Flush()
@@ -196,24 +204,38 @@ namespace SimPe
 
 		public Sectionlist.KeyCollection Sections
 		{
-			get { return reg.Keys; }
+			get
+			{
+				return reg.Keys;
+			}
 		}
 
 		public SectionContent this[string section]
 		{
-			get { return Section(section, false); }
+			get
+			{
+				return Section(section, false);
+			}
 		}
 		public string this[string section, string key]
 		{
-			get { return GetValue(section, key); }
-			set { SetValue(section, key, value, true); }
+			get
+			{
+				return GetValue(section, key);
+			}
+			set
+			{
+				SetValue(section, key, value, true);
+			}
 		}
 		#endregion
 
 		#region keys
 		public class SectionContent : IEnumerable<String>
 		{
-			class List : Dictionary<String, String> { }
+			class List : Dictionary<String, String>
+			{
+			}
 
 			List list;
 
@@ -255,7 +277,10 @@ namespace SimPe
 
 			public List.KeyCollection Keys
 			{
-				get { return list.Keys; }
+				get
+				{
+					return list.Keys;
+				}
 			}
 
 			public string GetValue(string key)
@@ -314,8 +339,14 @@ namespace SimPe
 
 			public string this[string key]
 			{
-				get { return GetValue(key); }
-				set { SetValue(key, value, true); }
+				get
+				{
+					return GetValue(key);
+				}
+				set
+				{
+					SetValue(key, value, true);
+				}
 			}
 
 			#region IEnumerable<string> Member

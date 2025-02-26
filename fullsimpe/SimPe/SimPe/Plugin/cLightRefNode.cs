@@ -36,28 +36,46 @@ namespace SimPe.Plugin
 		short unknown1;
 		public short Unknown1
 		{
-			get { return unknown1; }
-			set { unknown1 = value; }
+			get
+			{
+				return unknown1;
+			}
+			set
+			{
+				unknown1 = value;
+			}
 		}
 
 		string[] items;
 		public string[] Strings
 		{
-			get { return items; }
-			set { items = value; }
+			get
+			{
+				return items;
+			}
+			set
+			{
+				items = value;
+			}
 		}
 
 		byte[] unknown2;
 		public byte[] Unknown2
 		{
-			get { return unknown2; }
+			get
+			{
+				return unknown2;
+			}
 			//set { unknown2 = value; }
 		}
 
 		[BrowsableAttribute(false)]
 		public override TransformNode StoredTransformNode
 		{
-			get { return tn; }
+			get
+			{
+				return tn;
+			}
 		}
 		#endregion
 
@@ -91,7 +109,10 @@ namespace SimPe.Plugin
 		[BrowsableAttribute(false)]
 		public override IntArrayList ChildBlocks
 		{
-			get { return tn.ChildBlocks; }
+			get
+			{
+				return tn.ChildBlocks;
+			}
 		}
 
 		[BrowsableAttribute(false)]

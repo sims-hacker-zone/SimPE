@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Scenegraph;
 
 namespace SimPe.Plugin
@@ -19,8 +20,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public static ArrayList FileExcludeList
 		{
-			get { return excludefiles; }
-			set { excludefiles = value; }
+			get
+			{
+				return excludefiles;
+			}
+			set
+			{
+				excludefiles = value;
+			}
 		}
 
 		/// <summary>
@@ -61,7 +68,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public ArrayList ExcludedReferences
 		{
-			get { return exclude; }
+			get
+			{
+				return exclude;
+			}
 		}
 
 		/// <summary>
@@ -377,38 +387,38 @@ namespace SimPe.Plugin
 		{
 			string name = rcol.FileName.Trim().ToLower();
 			foreach (string k in slaves.Keys)
-			foreach (string sub in (ArrayList)slaves[k])
-			{
-				string slavename = name.Replace("_" + k + "_", "_" + sub + "_");
-				if (slavename != name)
+				foreach (string sub in (ArrayList)slaves[k])
 				{
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item =
-						FileTable.FileIndex.FindFileByName(
-							slavename,
-							Data.MetaData.TXMT,
-							Data.MetaData.LOCAL_GROUP,
-							true
-						);
-					if (item != null)
+					string slavename = name.Replace("_" + k + "_", "_" + sub + "_");
+					if (slavename != name)
 					{
-						GenericRcol txmt = new GenericRcol(null, false);
-						txmt.ProcessData(item);
-						txmt.FileDescriptor = (Interfaces.Files.IPackedFileDescriptor)
-							item.FileDescriptor.Clone();
+						SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item =
+							FileTable.FileIndex.FindFileByName(
+								slavename,
+								Data.MetaData.TXMT,
+								Data.MetaData.LOCAL_GROUP,
+								true
+							);
+						if (item != null)
+						{
+							GenericRcol txmt = new GenericRcol(null, false);
+							txmt.ProcessData(item);
+							txmt.FileDescriptor = (Interfaces.Files.IPackedFileDescriptor)
+								item.FileDescriptor.Clone();
 
-						LoadReferenced(
-							modelnames,
-							ex,
-							list,
-							itemlist,
-							txmt,
-							item,
-							true,
-							null
-						);
+							LoadReferenced(
+								modelnames,
+								ex,
+								list,
+								itemlist,
+								txmt,
+								item,
+								true,
+								null
+							);
+						}
 					}
 				}
-			}
 		}
 
 		/// <summary>

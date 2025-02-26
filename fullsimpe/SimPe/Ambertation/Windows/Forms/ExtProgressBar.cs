@@ -105,8 +105,14 @@ namespace Ambertation.Windows.Forms
 		bool usetokenbuffer;
 		public bool UseTokenBuffer
 		{
-			get { return usetokenbuffer; }
-			set { usetokenbuffer = value; }
+			get
+			{
+				return usetokenbuffer;
+			}
+			set
+			{
+				usetokenbuffer = value;
+			}
 		}
 
 		ProgresBarStyle style;
@@ -114,7 +120,10 @@ namespace Ambertation.Windows.Forms
 		//[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
 		public ProgresBarStyle Style
 		{
-			get { return style; }
+			get
+			{
+				return style;
+			}
 			set
 			{
 				if (value != style)
@@ -141,7 +150,10 @@ namespace Ambertation.Windows.Forms
 			val;
 		public int Minimum
 		{
-			get { return min; }
+			get
+			{
+				return min;
+			}
 			set
 			{
 				if (value != min)
@@ -154,7 +166,10 @@ namespace Ambertation.Windows.Forms
 		}
 		public int Maximum
 		{
-			get { return max; }
+			get
+			{
+				return max;
+			}
 			set
 			{
 				if (value != max)
@@ -168,7 +183,10 @@ namespace Ambertation.Windows.Forms
 
 		public int Value
 		{
-			get { return val; }
+			get
+			{
+				return val;
+			}
 			set
 			{
 				if (value != val)
@@ -183,7 +201,10 @@ namespace Ambertation.Windows.Forms
 		bool quality;
 		public bool Quality
 		{
-			get { return quality; }
+			get
+			{
+				return quality;
+			}
 			set
 			{
 				if (value != quality)
@@ -199,7 +220,10 @@ namespace Ambertation.Windows.Forms
 			bcol;
 		public Color UnselectedColor
 		{
-			get { return col; }
+			get
+			{
+				return col;
+			}
 			set
 			{
 				if (value != col)
@@ -211,7 +235,10 @@ namespace Ambertation.Windows.Forms
 		}
 		public Color SelectedColor
 		{
-			get { return selcol; }
+			get
+			{
+				return selcol;
+			}
 			set
 			{
 				if (value != selcol)
@@ -224,7 +251,10 @@ namespace Ambertation.Windows.Forms
 
 		public Color BorderColor
 		{
-			get { return bcol; }
+			get
+			{
+				return bcol;
+			}
 			set
 			{
 				if (value != bcol)
@@ -241,7 +271,10 @@ namespace Ambertation.Windows.Forms
 
 		public Color ProgressBackColor
 		{
-			get { return bgcol; }
+			get
+			{
+				return bgcol;
+			}
 			set
 			{
 				if (value != bgcol)
@@ -256,7 +289,10 @@ namespace Ambertation.Windows.Forms
 
 		public Color GradientStartColor
 		{
-			get { return startgradcol; }
+			get
+			{
+				return startgradcol;
+			}
 			set
 			{
 				if (value != startgradcol)
@@ -269,7 +305,10 @@ namespace Ambertation.Windows.Forms
 
 		public Color GradientEndColor
 		{
-			get { return endgradcol; }
+			get
+			{
+				return endgradcol;
+			}
 			set
 			{
 				if (value != endgradcol)
@@ -282,8 +321,14 @@ namespace Ambertation.Windows.Forms
 
 		public LinearGradientMode Gradient
 		{
-			get { return this.mGradient; }
-			set { this.mGradient = value; }
+			get
+			{
+				return this.mGradient;
+			}
+			set
+			{
+				this.mGradient = value;
+			}
 		}
 		#endregion
 
@@ -886,7 +931,10 @@ namespace Ambertation.Windows.Forms
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public int TokenWidth
 		{
-			get { return tw; }
+			get
+			{
+				return tw;
+			}
 		}
 
 		int tc;
@@ -911,7 +959,10 @@ namespace Ambertation.Windows.Forms
 					return tc - 1;
 				return tc;
 			}
-			set { SetTokenCount(value, false); }
+			set
+			{
+				SetTokenCount(value, false);
+			}
 		}
 
 		public double TokenMinSpacing
@@ -930,8 +981,14 @@ namespace Ambertation.Windows.Forms
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public override int TokenCount
 		{
-			get { return base.TokenCount; }
-			set { base.TokenCount = value; }
+			get
+			{
+				return base.TokenCount;
+			}
+			set
+			{
+				base.TokenCount = value;
+			}
 		}
 	}
 }

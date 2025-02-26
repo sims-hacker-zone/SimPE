@@ -22,9 +22,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;
 using SimPe.Plugin;
+
 using Bhav = SimPe.PackedFiles.Wrapper.Bhav;
 
 namespace pjse
@@ -92,7 +94,10 @@ namespace pjse
 		/// </summary>
 		public uint GlobalGroup
 		{
-			get { return (uint)pjse.Group.Global; }
+			get
+			{
+				return (uint)pjse.Group.Global;
+			}
 		}
 
 		public Scope Context
@@ -132,7 +137,10 @@ namespace pjse
 
 		public uint GroupForContext
 		{
-			get { return GroupForScope(Context); }
+			get
+			{
+				return GroupForScope(Context);
+			}
 		}
 
 		public pjse.FileTable.Entry ResourceByInstance(uint type, uint instance)
@@ -207,7 +215,10 @@ namespace pjse
 
 		public T this[int index]
 		{
-			get { return items[index]; }
+			get
+			{
+				return items[index];
+			}
 			set
 			{
 				if (!items[index].Equals(value))
@@ -301,11 +312,17 @@ namespace pjse
 
 		public int Count
 		{
-			get { return items.Count; }
+			get
+			{
+				return items.Count;
+			}
 		}
 		public bool IsReadOnly
 		{
-			get { return false; }
+			get
+			{
+				return false;
+			}
 		}
 
 		public void Insert(int index, T item)
@@ -429,7 +446,10 @@ namespace pjse
 
 		public bool IsFixedSize
 		{
-			get { throw new Exception("The method or operation is not implemented."); }
+			get
+			{
+				throw new Exception("The method or operation is not implemented.");
+			}
 		}
 
 		public void Remove(object value)
@@ -439,8 +459,14 @@ namespace pjse
 
 		object IList.this[int index]
 		{
-			get { throw new Exception("The method or operation is not implemented."); }
-			set { throw new Exception("The method or operation is not implemented."); }
+			get
+			{
+				throw new Exception("The method or operation is not implemented.");
+			}
+			set
+			{
+				throw new Exception("The method or operation is not implemented.");
+			}
 		}
 
 		#endregion
@@ -454,12 +480,18 @@ namespace pjse
 
 		public bool IsSynchronized
 		{
-			get { throw new Exception("The method or operation is not implemented."); }
+			get
+			{
+				throw new Exception("The method or operation is not implemented.");
+			}
 		}
 
 		public object SyncRoot
 		{
-			get { throw new Exception("The method or operation is not implemented."); }
+			get
+			{
+				throw new Exception("The method or operation is not implemented.");
+			}
 		}
 
 		#endregion
@@ -489,7 +521,10 @@ namespace pjse
 		protected T parent = default(T);
 		public T Parent
 		{
-			get { return parent; }
+			get
+			{
+				return parent;
+			}
 			set
 			{
 				if (parent != value)

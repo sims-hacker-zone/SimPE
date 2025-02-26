@@ -15,11 +15,17 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 		string name;
 		public string TokenName
 		{
-			get { return name; }
+			get
+			{
+				return name;
+			}
 		}
 		public ScorItem ParentItem
 		{
-			get { return parent; }
+			get
+			{
+				return parent;
+			}
 		}
 
 		[
@@ -63,7 +69,9 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 				DoSetData(name, reader);
 		}
 
-		protected virtual void DoSetData(string name, System.IO.BinaryReader reader) { }
+		protected virtual void DoSetData(string name, System.IO.BinaryReader reader)
+		{
+		}
 
 		internal virtual void Serialize(System.IO.BinaryWriter writer, bool last)
 		{

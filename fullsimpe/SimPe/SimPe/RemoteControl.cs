@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces;
 
 namespace SimPe
@@ -49,7 +50,10 @@ namespace SimPe
 
 			public uint TargetType
 			{
-				get { return target; }
+				get
+				{
+					return target;
+				}
 			}
 
 			public object Item
@@ -65,7 +69,10 @@ namespace SimPe
 
 			public object Items
 			{
-				get { return data; }
+				get
+				{
+					return data;
+				}
 			}
 		}
 
@@ -146,7 +153,10 @@ namespace SimPe
 		/// </summary>
 		public static System.Windows.Forms.Form ApplicationForm
 		{
-			get { return appform; }
+			get
+			{
+				return appform;
+			}
 			set
 			{
 				appform = value;
@@ -249,8 +259,14 @@ namespace SimPe
 		/// </summary>
 		public static ShowDockDelegate ShowDockFkt
 		{
-			get { return sdd; }
-			set { sdd = value; }
+			get
+			{
+				return sdd;
+			}
+			set
+			{
+				sdd = value;
+			}
 		}
 
 		static OpenPackedFileDelegate opf;
@@ -260,8 +276,14 @@ namespace SimPe
 		/// </summary>
 		public static OpenPackedFileDelegate OpenPackedFileFkt
 		{
-			get { return opf; }
-			set { opf = value; }
+			get
+			{
+				return opf;
+			}
+			set
+			{
+				opf = value;
+			}
 		}
 
 		static OpenPackageDelegate op;
@@ -271,8 +293,14 @@ namespace SimPe
 		/// </summary>
 		public static OpenPackageDelegate OpenPackageFkt
 		{
-			get { return op; }
-			set { op = value; }
+			get
+			{
+				return op;
+			}
+			set
+			{
+				op = value;
+			}
 		}
 
 		/// <summary>
@@ -320,8 +348,14 @@ namespace SimPe
 		/// </summary>
 		public static OpenMemPackageDelegate OpenMemoryPackageFkt
 		{
-			get { return omp; }
-			set { omp = value; }
+			get
+			{
+				return omp;
+			}
+			set
+			{
+				omp = value;
+			}
 		}
 
 		/// <summary>

@@ -33,7 +33,10 @@ namespace SimPe
 
 		Color CheckedColor
 		{
-			get { return Color.YellowGreen; }
+			get
+			{
+				return Color.YellowGreen;
+			}
 		}
 
 		protected override void OnRenderButtonBackground(ToolStripItemRenderEventArgs e)
@@ -132,11 +135,17 @@ namespace SimPe
 	{
 		public override Color ToolStripGradientBegin
 		{
-			get { return Color.FromArgb(0xFD, 0xFD, 0xFB); }
+			get
+			{
+				return Color.FromArgb(0xFD, 0xFD, 0xFB);
+			}
 		}
 		public override Color ToolStripGradientEnd
 		{
-			get { return Color.FromArgb(0xB9, 0xB9, 0xA3); }
+			get
+			{
+				return Color.FromArgb(0xB9, 0xB9, 0xA3);
+			}
 		}
 	}
 
@@ -145,17 +154,26 @@ namespace SimPe
 		#region Checker
 		public override Color CheckBackground
 		{
-			get { return Color.FromArgb(0xE1, 0xE6, 0xE8); }
+			get
+			{
+				return Color.FromArgb(0xE1, 0xE6, 0xE8);
+			}
 		}
 
 		public override Color CheckPressedBackground
 		{
-			get { return Color.FromArgb(0x31, 0x6A, 0xC5); }
+			get
+			{
+				return Color.FromArgb(0x31, 0x6A, 0xC5);
+			}
 		}
 
 		public override Color CheckSelectedBackground
 		{
-			get { return CheckPressedBackground; }
+			get
+			{
+				return CheckPressedBackground;
+			}
 		}
 
 		#endregion
@@ -163,12 +181,18 @@ namespace SimPe
 		#region Seperator
 		public override Color SeparatorDark
 		{
-			get { return Color.FromArgb(0xC5, 0xC2, 0xB8); }
+			get
+			{
+				return Color.FromArgb(0xC5, 0xC2, 0xB8);
+			}
 		}
 
 		public override Color SeparatorLight
 		{
-			get { return Color.FromArgb(0xFC, 0xFC, 0xF9); }
+			get
+			{
+				return Color.FromArgb(0xFC, 0xFC, 0xF9);
+			}
 		}
 		#endregion
 
@@ -176,7 +200,10 @@ namespace SimPe
 
 		public override System.Drawing.Color MenuStripGradientBegin
 		{
-			get { return Color.FromArgb(0xE5, 0xE5, 0xD7); }
+			get
+			{
+				return Color.FromArgb(0xE5, 0xE5, 0xD7);
+			}
 		}
 
 		public override System.Drawing.Color MenuStripGradientEnd
@@ -190,78 +217,120 @@ namespace SimPe
 
 		public override Color MenuBorder
 		{
-			get { return Color.FromArgb(0x8A, 0x86, 0x7A); }
+			get
+			{
+				return Color.FromArgb(0x8A, 0x86, 0x7A);
+			}
 		}
 		#endregion
 
 		#region ToolStrip
 		public override System.Drawing.Color ToolStripGradientBegin
 		{
-			get { return Color.FromArgb(0xFD, 0xFD, 0xFB); }
+			get
+			{
+				return Color.FromArgb(0xFD, 0xFD, 0xFB);
+			}
 		}
 
 		public override System.Drawing.Color ToolStripGradientMiddle
 		{
-			get { return Color.FromArgb(0xEC, 0xEC, 0xE5); }
+			get
+			{
+				return Color.FromArgb(0xEC, 0xEC, 0xE5);
+			}
 		}
 
 		public override System.Drawing.Color ToolStripGradientEnd
 		{
-			get { return Color.FromArgb(0xBE, 0xBE, 0xA7); }
+			get
+			{
+				return Color.FromArgb(0xBE, 0xBE, 0xA7);
+			}
 		}
 
 		public override Color ToolStripBorder
 		{
-			get { return Color.FromArgb(0xA3, 0xA3, 0x7C); }
+			get
+			{
+				return Color.FromArgb(0xA3, 0xA3, 0x7C);
+			}
 		}
 		#endregion
 
 		#region Overflow
 		public override Color OverflowButtonGradientBegin
 		{
-			get { return Color.FromArgb(0xEF, 0xEE, 0xEB); }
+			get
+			{
+				return Color.FromArgb(0xEF, 0xEE, 0xEB);
+			}
 		}
 
 		public override Color OverflowButtonGradientMiddle
 		{
-			get { return Color.FromArgb(0xE1, 0xE1, 0xDA); }
+			get
+			{
+				return Color.FromArgb(0xE1, 0xE1, 0xDA);
+			}
 		}
 
 		public override Color OverflowButtonGradientEnd
 		{
-			get { return Color.FromArgb(0x92, 0x92, 0x76); }
+			get
+			{
+				return Color.FromArgb(0x92, 0x92, 0x76);
+			}
 		}
 		#endregion
 
 		#region Image Margin
 		public override Color ImageMarginGradientBegin
 		{
-			get { return Color.FromArgb(0xFE, 0xFE, 0xFB); }
+			get
+			{
+				return Color.FromArgb(0xFE, 0xFE, 0xFB);
+			}
 		}
 
 		public override Color ImageMarginGradientEnd
 		{
-			get { return Color.FromArgb(0xC4, 0xC3, 0xAC); }
+			get
+			{
+				return Color.FromArgb(0xC4, 0xC3, 0xAC);
+			}
 		}
 
 		public override Color ImageMarginGradientMiddle
 		{
-			get { return Color.FromArgb(0xED, 0xE9, 0xE2); }
+			get
+			{
+				return Color.FromArgb(0xED, 0xE9, 0xE2);
+			}
 		}
 
 		public override Color ImageMarginRevealedGradientBegin
 		{
-			get { return ImageMarginGradientBegin; }
+			get
+			{
+				return ImageMarginGradientBegin;
+			}
 		}
 
 		public override Color ImageMarginRevealedGradientEnd
 		{
-			get { return ImageMarginGradientEnd; }
+			get
+			{
+				return ImageMarginGradientEnd;
+			}
 		}
 
 		public override Color ImageMarginRevealedGradientMiddle
 		{
-			get { return ImageMarginGradientMiddle; }
+			get
+			{
+				return ImageMarginGradientMiddle;
+			}
 		}
 
 		#endregion
@@ -269,122 +338,188 @@ namespace SimPe
 		#region Pressed MenuItem
 		public override Color MenuItemPressedGradientBegin
 		{
-			get { return Color.FromArgb(0xFB, 0xFB, 0xF9); }
+			get
+			{
+				return Color.FromArgb(0xFB, 0xFB, 0xF9);
+			}
 		}
 
 		public override Color MenuItemPressedGradientEnd
 		{
-			get { return Color.FromArgb(0xF7, 0xF5, 0xEF); }
+			get
+			{
+				return Color.FromArgb(0xF7, 0xF5, 0xEF);
+			}
 		}
 
 		public override Color MenuItemPressedGradientMiddle
 		{
-			get { return Color.FromArgb(0xF9, 0xF8, 0xF4); }
+			get
+			{
+				return Color.FromArgb(0xF9, 0xF8, 0xF4);
+			}
 		}
 		#endregion
 
 		#region Selected MenuItem
 		public override Color MenuItemBorder
 		{
-			get { return ButtonSelectedBorder; }
+			get
+			{
+				return ButtonSelectedBorder;
+			}
 		}
 
 		public override Color MenuItemSelected
 		{
-			get { return ButtonSelectedGradientBegin; }
+			get
+			{
+				return ButtonSelectedGradientBegin;
+			}
 		}
 
 		public override Color MenuItemSelectedGradientBegin
 		{
-			get { return ButtonSelectedGradientBegin; }
+			get
+			{
+				return ButtonSelectedGradientBegin;
+			}
 		}
 
 		public override Color MenuItemSelectedGradientEnd
 		{
-			get { return ButtonSelectedGradientBegin; }
+			get
+			{
+				return ButtonSelectedGradientBegin;
+			}
 		}
 		#endregion
 
 		#region Selected Button
 		public override Color ButtonSelectedGradientBegin
 		{
-			get { return Color.FromArgb(0xC1, 0xD2, 0xEE); }
+			get
+			{
+				return Color.FromArgb(0xC1, 0xD2, 0xEE);
+			}
 		}
 
 		public override Color ButtonSelectedGradientMiddle
 		{
-			get { return ButtonSelectedGradientBegin; }
+			get
+			{
+				return ButtonSelectedGradientBegin;
+			}
 		}
 
 		public override Color ButtonSelectedGradientEnd
 		{
-			get { return ButtonSelectedGradientBegin; }
+			get
+			{
+				return ButtonSelectedGradientBegin;
+			}
 		}
 
 		public override Color ButtonSelectedBorder
 		{
-			get { return Color.FromArgb(0x31, 0x6A, 0xC5); }
+			get
+			{
+				return Color.FromArgb(0x31, 0x6A, 0xC5);
+			}
 		}
 		#endregion
 
 		#region Pressed Button
 		public override Color ButtonPressedGradientBegin
 		{
-			get { return Color.FromArgb(0x98, 0xB5, 0xE2); }
+			get
+			{
+				return Color.FromArgb(0x98, 0xB5, 0xE2);
+			}
 		}
 
 		public override Color ButtonPressedGradientMiddle
 		{
-			get { return ButtonPressedGradientBegin; }
+			get
+			{
+				return ButtonPressedGradientBegin;
+			}
 		}
 
 		public override Color ButtonPressedGradientEnd
 		{
-			get { return ButtonPressedGradientBegin; }
+			get
+			{
+				return ButtonPressedGradientBegin;
+			}
 		}
 
 		public override Color ButtonPressedBorder
 		{
-			get { return Color.FromArgb(0x4B, 0x4B, 0x6F); }
+			get
+			{
+				return Color.FromArgb(0x4B, 0x4B, 0x6F);
+			}
 		}
 		#endregion
 
 		#region Checked Button
 		public override Color ButtonCheckedGradientBegin
 		{
-			get { return Color.FromArgb(0xE1, 0xE6, 0xE8); }
+			get
+			{
+				return Color.FromArgb(0xE1, 0xE6, 0xE8);
+			}
 		}
 
 		public override Color ButtonCheckedGradientMiddle
 		{
-			get { return ButtonCheckedGradientBegin; }
+			get
+			{
+				return ButtonCheckedGradientBegin;
+			}
 		}
 
 		public override Color ButtonCheckedGradientEnd
 		{
-			get { return ButtonCheckedGradientBegin; }
+			get
+			{
+				return ButtonCheckedGradientBegin;
+			}
 		}
 
 		public override Color ButtonCheckedHighlightBorder
 		{
-			get { return Color.FromArgb(0x4B, 0x4B, 0x6F); }
+			get
+			{
+				return Color.FromArgb(0x4B, 0x4B, 0x6F);
+			}
 		}
 
 		public override Color ButtonCheckedHighlight
 		{
-			get { return Color.FromArgb(0x98, 0xB5, 0xE2); }
+			get
+			{
+				return Color.FromArgb(0x98, 0xB5, 0xE2);
+			}
 		}
 		#endregion
 
 		#region ToolStripPanel
 		public override Color ToolStripPanelGradientBegin
 		{
-			get { return MenuStripGradientBegin; }
+			get
+			{
+				return MenuStripGradientBegin;
+			}
 		}
 
 		public override Color ToolStripPanelGradientEnd
 		{
-			get { return MenuStripGradientEnd; }
+			get
+			{
+				return MenuStripGradientEnd;
+			}
 		}
 		#endregion
 	}

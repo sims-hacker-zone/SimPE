@@ -55,7 +55,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public ElementSorting Sorting
 		{
-			get { return s; }
+			get
+			{
+				return s;
+			}
 			set
 			{
 				s = value;
@@ -124,12 +127,18 @@ namespace SimPe.Plugin.Gmdc
 
 		public SimPe.Geometry.Matrixd TransformMatrix
 		{
-			get { return m; }
+			get
+			{
+				return m;
+			}
 		}
 
 		public SimPe.Geometry.Matrixd ScaleMatrix
 		{
-			get { return ms; }
+			get
+			{
+				return ms;
+			}
 		}
 
 		public SimPe.Geometry.Quaternion TransformRotation(SimPe.Geometry.Quaternion q)

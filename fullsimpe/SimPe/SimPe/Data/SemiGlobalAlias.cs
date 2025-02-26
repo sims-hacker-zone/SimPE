@@ -48,7 +48,10 @@ namespace SimPe.Data
 		/// </summary>
 		public bool Known
 		{
-			get { return known; }
+			get
+			{
+				return known;
+			}
 		}
 
 		public override string ToString()

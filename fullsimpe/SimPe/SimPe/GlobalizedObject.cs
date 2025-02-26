@@ -21,20 +21,38 @@ namespace SimPe
 
 		public String Name
 		{
-			get { return resourceName; }
-			set { resourceName = value; }
+			get
+			{
+				return resourceName;
+			}
+			set
+			{
+				resourceName = value;
+			}
 		}
 
 		public String Description
 		{
-			get { return resourceDescription; }
-			set { resourceDescription = value; }
+			get
+			{
+				return resourceDescription;
+			}
+			set
+			{
+				resourceDescription = value;
+			}
 		}
 
 		public String Table
 		{
-			get { return resourceTable; }
-			set { resourceTable = value; }
+			get
+			{
+				return resourceTable;
+			}
+			set
+			{
+				resourceTable = value;
+			}
 		}
 	}
 
@@ -69,7 +87,10 @@ namespace SimPe
 
 		public override Type ComponentType
 		{
-			get { return basePropertyDescriptor.ComponentType; }
+			get
+			{
+				return basePropertyDescriptor.ComponentType;
+			}
 		}
 
 		public override string DisplayName
@@ -196,17 +217,26 @@ namespace SimPe
 
 		public override bool IsReadOnly
 		{
-			get { return this.basePropertyDescriptor.IsReadOnly; }
+			get
+			{
+				return this.basePropertyDescriptor.IsReadOnly;
+			}
 		}
 
 		public override string Name
 		{
-			get { return this.basePropertyDescriptor.Name; }
+			get
+			{
+				return this.basePropertyDescriptor.Name;
+			}
 		}
 
 		public override Type PropertyType
 		{
-			get { return this.basePropertyDescriptor.PropertyType; }
+			get
+			{
+				return this.basePropertyDescriptor.PropertyType;
+			}
 		}
 
 		public override void ResetValue(object component)

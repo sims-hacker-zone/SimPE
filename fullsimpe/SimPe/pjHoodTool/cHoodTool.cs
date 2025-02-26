@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Text;
+
 using SimPe;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
@@ -1064,7 +1065,7 @@ namespace pjHoodTool
 			try
 			{
 				SimPe.WaitingScreen.Wait();
-				splash = delegate(string message)
+				splash = delegate (string message)
 				{
 					SimPe.WaitingScreen.UpdateMessage(message);
 				};
@@ -1100,7 +1101,10 @@ namespace pjHoodTool
 		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
-			get { return SimPe.GetIcon.HoodTool; }
+			get
+			{
+				return SimPe.GetIcon.HoodTool;
+			}
 		}
 		#endregion
 
@@ -1167,7 +1171,7 @@ namespace pjHoodTool
 				}
 			}
 
-			splash = delegate(string message)
+			splash = delegate (string message)
 			{
 				SimPe.Splash.Screen.SetMessage(message);
 			};

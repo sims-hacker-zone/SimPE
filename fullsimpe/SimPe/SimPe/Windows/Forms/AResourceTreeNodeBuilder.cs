@@ -19,8 +19,14 @@ namespace SimPe.Windows.Forms
 
 		public ulong LastSelectedId
 		{
-			get { return last; }
-			set { last = value; }
+			get
+			{
+				return last;
+			}
+			set
+			{
+				last = value;
+			}
 		}
 
 		#endregion

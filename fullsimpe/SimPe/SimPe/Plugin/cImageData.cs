@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.Drawing;
+
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
 
@@ -48,7 +49,10 @@ namespace SimPe.Plugin
 
 		public MipMapType DataType
 		{
-			get { return datatype; }
+			get
+			{
+				return datatype;
+			}
 		}
 
 		/// <summary>
@@ -92,7 +96,10 @@ namespace SimPe.Plugin
 
 		public byte[] Data
 		{
-			get { return data; }
+			get
+			{
+				return data;
+			}
 			set
 			{
 				if (value != null)
@@ -103,7 +110,10 @@ namespace SimPe.Plugin
 
 		public string LifoFile
 		{
-			get { return lifofile; }
+			get
+			{
+				return lifofile;
+			}
 			set
 			{
 				if (value != null)
@@ -365,8 +375,14 @@ namespace SimPe.Plugin
 
 		public MipMap[] MipMaps
 		{
-			get { return mipmaps; }
-			set { mipmaps = value; }
+			get
+			{
+				return mipmaps;
+			}
+			set
+			{
+				mipmaps = value;
+			}
 		}
 
 		#endregion
@@ -589,36 +605,57 @@ namespace SimPe.Plugin
 
 		public MipMapBlock[] MipMapBlocks
 		{
-			get { return mipmapblocks; }
-			set { mipmapblocks = value; }
+			get
+			{
+				return mipmapblocks;
+			}
+			set
+			{
+				mipmapblocks = value;
+			}
 		}
 
 		public Size TextureSize
 		{
-			get { return texturesize; }
-			set { texturesize = value; }
+			get
+			{
+				return texturesize;
+			}
+			set
+			{
+				texturesize = value;
+			}
 		}
 
 		public uint MipMapLevels
 		{
-			get { return mipmaplevels; }
-			set { mipmaplevels = value; }
+			get
+			{
+				return mipmaplevels;
+			}
+			set
+			{
+				mipmaplevels = value;
+			}
 		}
 
 		public ImageLoader.TxtrFormats Format
 		{
-			get { return format; }
+			get
+			{
+				return format;
+			}
 			set
 			{
 				if (format != value)
 				{
 					//when the Format changes we need to get the Picturedta FIRST
 					foreach (MipMapBlock mmp in this.MipMapBlocks)
-					foreach (MipMap mm in mmp.MipMaps)
-					{
-						Image img = mm.Texture;
-						mm.Texture = img;
-					}
+						foreach (MipMap mm in mmp.MipMaps)
+						{
+							Image img = mm.Texture;
+							mm.Texture = img;
+						}
 				}
 				format = value;
 			}
@@ -626,8 +663,14 @@ namespace SimPe.Plugin
 
 		public string FileNameRepeat
 		{
-			get { return filenamerep; }
-			set { filenamerep = value; }
+			get
+			{
+				return filenamerep;
+			}
+			set
+			{
+				filenamerep = value;
+			}
 		}
 
 		#endregion

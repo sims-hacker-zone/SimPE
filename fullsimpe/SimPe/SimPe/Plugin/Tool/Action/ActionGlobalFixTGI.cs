@@ -80,17 +80,26 @@ namespace SimPe.Plugin.Tool.Action
 		#region IToolExt Member
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get { return System.Windows.Forms.Shortcut.None; }
+			get
+			{
+				return System.Windows.Forms.Shortcut.None;
+			}
 		}
 
 		public System.Drawing.Image Icon
 		{
-			get { return SimPe.GetIcon.actionFixTGI; }
+			get
+			{
+				return SimPe.GetIcon.actionFixTGI;
+			}
 		}
 
 		public virtual bool Visible
 		{
-			get { return true; }
+			get
+			{
+				return true;
+			}
 		}
 
 		#endregion

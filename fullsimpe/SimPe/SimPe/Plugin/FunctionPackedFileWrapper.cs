@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -17,8 +18,14 @@ namespace SimPe.Plugin
 		public string[] comnt; // the comment, can be a very long string
 		public ushort Quanty
 		{
-			get { return quanty; }
-			set { quanty = value; }
+			get
+			{
+				return quanty;
+			}
+			set
+			{
+				quanty = value;
+			}
 		}
 		#endregion
 
@@ -98,7 +105,10 @@ namespace SimPe.Plugin
 
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		public uint[] AssignableTypes

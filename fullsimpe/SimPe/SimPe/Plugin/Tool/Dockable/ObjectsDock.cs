@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
+
 using Ambertation.Windows.Forms;
 
 namespace SimPe.Plugin.Tool.Dockable
@@ -1469,7 +1470,9 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void wizardStepPanel3_Activated(
 			SimPe.Wizards.Wizard sender,
 			SimPe.Wizards.WizardStepPanel step
-		) { }
+		)
+		{
+		}
 
 		private void wizardStepPanel5_Activate(
 			SimPe.Wizards.Wizard sender,
@@ -1487,13 +1490,17 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void wizardStepPanel5_Activated(
 			SimPe.Wizards.Wizard sender,
 			SimPe.Wizards.WizardStepPanel step
-		) { }
+		)
+		{
+		}
 
 		private void wizard1_PrepareStep(
 			SimPe.Wizards.Wizard sender,
 			SimPe.Wizards.WizardStepPanel step,
 			int target
-		) { }
+		)
+		{
+		}
 
 		private void wizard1_ShowedStep(SimPe.Wizards.Wizard sender, int source)
 		{
@@ -1514,7 +1521,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			cbTask_SelectedIndexChanged(this.cbTask, null);
 		}
 
-		private void lberr_Click(object sender, System.EventArgs e) { }
+		private void lberr_Click(object sender, System.EventArgs e)
+		{
+		}
 
 		bool onlybase;
 

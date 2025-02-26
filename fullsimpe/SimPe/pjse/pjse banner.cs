@@ -45,7 +45,10 @@ namespace pjse
 		[Localizable(true)]
 		public string FormatText
 		{
-			get { return format; }
+			get
+			{
+				return format;
+			}
 			set
 			{
 				format = value;
@@ -59,7 +62,10 @@ namespace pjse
 		[Localizable(true)]
 		public string TitleText
 		{
-			get { return title; }
+			get
+			{
+				return title;
+			}
 			set
 			{
 				title = value;
@@ -73,8 +79,14 @@ namespace pjse
 		[Localizable(true)]
 		public string TreeText
 		{
-			get { return btnTree.Text; }
-			set { btnTree.Text = value; }
+			get
+			{
+				return btnTree.Text;
+			}
+			set
+			{
+				btnTree.Text = value;
+			}
 		}
 
 		[Category("Behavior")]
@@ -82,8 +94,14 @@ namespace pjse
 		[Description("True if the View Comment Tree button should be enabled.")]
 		public bool TreeEnabled
 		{
-			get { return btnTree.Enabled; }
-			set { btnTree.Enabled = value; }
+			get
+			{
+				return btnTree.Enabled;
+			}
+			set
+			{
+				btnTree.Enabled = value;
+			}
 		}
 
 		[Category("Behavior")]
@@ -91,8 +109,14 @@ namespace pjse
 		[Description("True if the View Comment Tree button should be visible.")]
 		public bool TreeVisible
 		{
-			get { return btnTree.Visible; }
-			set { btnTree.Visible = value; }
+			get
+			{
+				return btnTree.Visible;
+			}
+			set
+			{
+				btnTree.Visible = value;
+			}
 		}
 
 		[Category("Action")]
@@ -113,8 +137,14 @@ namespace pjse
 		[Localizable(true)]
 		public string SiblingText
 		{
-			get { return btnSibling.Text; }
-			set { btnSibling.Text = value; }
+			get
+			{
+				return btnSibling.Text;
+			}
+			set
+			{
+				btnSibling.Text = value;
+			}
 		}
 
 		[Category("Behavior")]
@@ -122,8 +152,14 @@ namespace pjse
 		[Description("True if the View Sibling button should be enabled.")]
 		public bool SiblingEnabled
 		{
-			get { return btnSibling.Enabled; }
-			set { btnSibling.Enabled = value; }
+			get
+			{
+				return btnSibling.Enabled;
+			}
+			set
+			{
+				btnSibling.Enabled = value;
+			}
 		}
 
 		[Category("Behavior")]
@@ -131,8 +167,14 @@ namespace pjse
 		[Description("True if the View Sibling button should be visible.")]
 		public bool SiblingVisible
 		{
-			get { return btnSibling.Visible; }
-			set { btnSibling.Visible = value; }
+			get
+			{
+				return btnSibling.Visible;
+			}
+			set
+			{
+				btnSibling.Visible = value;
+			}
 		}
 
 		[Category("Action")]
@@ -153,8 +195,14 @@ namespace pjse
 		[Localizable(true)]
 		public string ViewText
 		{
-			get { return btnView.Text; }
-			set { btnView.Text = value; }
+			get
+			{
+				return btnView.Text;
+			}
+			set
+			{
+				btnView.Text = value;
+			}
 		}
 
 		[Category("Behavior")]
@@ -162,8 +210,14 @@ namespace pjse
 		[Description("True if the View button should be visible.")]
 		public bool ViewVisible
 		{
-			get { return btnView.Visible; }
-			set { btnView.Visible = value; }
+			get
+			{
+				return btnView.Visible;
+			}
+			set
+			{
+				btnView.Visible = value;
+			}
 		}
 
 		[Category("Action")]
@@ -184,8 +238,14 @@ namespace pjse
 		[Localizable(true)]
 		public string FloatText
 		{
-			get { return btnFloat.Text; }
-			set { btnFloat.Text = value; }
+			get
+			{
+				return btnFloat.Text;
+			}
+			set
+			{
+				btnFloat.Text = value;
+			}
 		}
 
 		[Category("Behavior")]
@@ -193,8 +253,14 @@ namespace pjse
 		[Description("True if the Float button should be visible.")]
 		public bool FloatVisible
 		{
-			get { return btnFloat.Visible; }
-			set { btnFloat.Visible = value; }
+			get
+			{
+				return btnFloat.Visible;
+			}
+			set
+			{
+				btnFloat.Visible = value;
+			}
 		}
 
 		[Category("Action")]
@@ -223,8 +289,14 @@ namespace pjse
 		[Description("True if the Extract button should be visible.")]
 		public bool ExtractVisible
 		{
-			get { return btnExtract.Visible; }
-			set { btnExtract.Visible = value; }
+			get
+			{
+				return btnExtract.Visible;
+			}
+			set
+			{
+				btnExtract.Visible = value;
+			}
 		}
 
 		[Category("Action")]
@@ -245,8 +317,14 @@ namespace pjse
 		[Localizable(true)]
 		public string RFTText
 		{
-			get { return btnRefreshFT.Text; }
-			set { btnRefreshFT.Text = value; }
+			get
+			{
+				return btnRefreshFT.Text;
+			}
+			set
+			{
+				btnRefreshFT.Text = value;
+			}
 		}
 
 		[Category("Appearance")]
@@ -255,8 +333,14 @@ namespace pjse
 		[Localizable(true)]
 		public string HelpText
 		{
-			get { return btnHelp.Text; }
-			set { btnHelp.Text = value; }
+			get
+			{
+				return btnHelp.Text;
+			}
+			set
+			{
+				btnHelp.Text = value;
+			}
 		}
 
 		[Category("Behavior")]
@@ -265,8 +349,14 @@ namespace pjse
 		[Localizable(true)]
 		public string HelpTarget
 		{
-			get { return helpTarget; }
-			set { this.helpTarget = value; }
+			get
+			{
+				return helpTarget;
+			}
+			set
+			{
+				this.helpTarget = value;
+			}
 		}
 
 		private void btnTree_Click(object sender, EventArgs e)

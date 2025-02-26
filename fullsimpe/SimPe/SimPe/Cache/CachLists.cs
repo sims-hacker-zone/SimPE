@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe;
 
 namespace SimPe.Cache
@@ -30,14 +31,26 @@ namespace SimPe.Cache
 	{
 		public new ICacheItem this[int index]
 		{
-			get { return ((ICacheItem)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((ICacheItem)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		public ICacheItem this[uint index]
 		{
-			get { return ((ICacheItem)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((ICacheItem)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		public int Add(ICacheItem item)
@@ -62,7 +75,10 @@ namespace SimPe.Cache
 
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		public override object Clone()
@@ -82,14 +98,26 @@ namespace SimPe.Cache
 	{
 		public new CacheContainer this[int index]
 		{
-			get { return ((CacheContainer)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((CacheContainer)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		public CacheContainer this[uint index]
 		{
-			get { return ((CacheContainer)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((CacheContainer)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		public int Add(CacheContainer item)
@@ -114,7 +142,10 @@ namespace SimPe.Cache
 
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		public override object Clone()

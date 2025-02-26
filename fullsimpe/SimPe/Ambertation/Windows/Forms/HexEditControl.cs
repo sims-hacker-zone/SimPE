@@ -42,7 +42,10 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public HexViewControl Viewer
 		{
-			get { return hvc; }
+			get
+			{
+				return hvc;
+			}
 			set
 			{
 				if (hvc != null)
@@ -72,7 +75,10 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public Font LabelFont
 		{
-			get { return efont; }
+			get
+			{
+				return efont;
+			}
 			set
 			{
 				if (efont != value)
@@ -91,7 +97,10 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public Font TextBoxFont
 		{
-			get { return tfont; }
+			get
+			{
+				return tfont;
+			}
 			set
 			{
 				if (tfont != value)
@@ -110,7 +119,10 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public bool Vertical
 		{
-			get { return vert; }
+			get
+			{
+				return vert;
+			}
 			set
 			{
 				if (vert != value)
@@ -129,7 +141,10 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public HexViewControl.ViewState View
 		{
-			get { return vs; }
+			get
+			{
+				return vs;
+			}
 			set
 			{
 				if (vs != value)
@@ -908,7 +923,9 @@ namespace Ambertation.Windows.Forms
 		}
 		#endregion
 
-		private void lb_LocationChanged(object sender, EventArgs e) { }
+		private void lb_LocationChanged(object sender, EventArgs e)
+		{
+		}
 
 		private void ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{

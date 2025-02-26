@@ -25,6 +25,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+
 using SimPe.PackedFiles.UserInterface;
 using SimPe.PackedFiles.Wrapper;
 
@@ -105,7 +106,10 @@ namespace pjse
 		private int nrItems = 0;
 		public int Count
 		{
-			get { return nrItems; }
+			get
+			{
+				return nrItems;
+			}
 			set
 			{
 				if (value < 0 || value > 16)

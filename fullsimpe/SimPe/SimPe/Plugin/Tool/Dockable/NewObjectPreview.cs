@@ -58,7 +58,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		[Browsable(false)]
 		public SimPe.PackedFiles.Wrapper.ExtObjd SelectedObject
 		{
-			get { return objd; }
+			get
+			{
+				return objd;
+			}
 			set
 			{
 				if (objd != value || value == null)
@@ -72,26 +75,41 @@ namespace SimPe.Plugin.Tool.Dockable
 		bool loadimg;
 		public bool LoadCustomImage
 		{
-			get { return loadimg; }
-			set { loadimg = value; }
+			get
+			{
+				return loadimg;
+			}
+			set
+			{
+				loadimg = value;
+			}
 		}
 
 		[Browsable(false)]
 		public virtual bool Loaded
 		{
-			get { return objd != null; }
+			get
+			{
+				return objd != null;
+			}
 		}
 
 		[Browsable(false)]
 		public string Title
 		{
-			get { return this.lbName.Text; }
+			get
+			{
+				return this.lbName.Text;
+			}
 		}
 
 		[Browsable(false)]
 		public string Description
 		{
-			get { return this.lbAbout.Text; }
+			get
+			{
+				return this.lbAbout.Text;
+			}
 		}
 
 		[Browsable(false)]

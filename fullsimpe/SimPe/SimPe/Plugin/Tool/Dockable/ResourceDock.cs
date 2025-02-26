@@ -22,6 +22,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+
 using Ambertation.Windows.Forms;
 
 namespace SimPe.Plugin.Tool.Dockable
@@ -780,7 +781,9 @@ namespace SimPe.Plugin.Tool.Dockable
 		internal SimPe.Events.ResourceEventArgs items;
 		internal LoadedPackage guipackage;
 
-		private void ResourceDock_Load(object sender, System.EventArgs e) { }
+		private void ResourceDock_Load(object sender, System.EventArgs e)
+		{
+		}
 
 		private void cbtypes_SelectedIndexChanged(object sender, System.EventArgs e)
 		{

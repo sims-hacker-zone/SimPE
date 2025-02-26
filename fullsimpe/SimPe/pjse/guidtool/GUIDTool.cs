@@ -24,6 +24,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
@@ -69,7 +70,10 @@ namespace pjse.guidtool
 
 		public override System.Drawing.Image Icon
 		{
-			get { return SimPe.GetIcon.pjSearch; }
+			get
+			{
+				return SimPe.GetIcon.pjSearch;
+			}
 		}
 	}
 }

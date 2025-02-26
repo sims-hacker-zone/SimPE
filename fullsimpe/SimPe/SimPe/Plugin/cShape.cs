@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.Drawing;
+
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
 
@@ -30,21 +31,36 @@ namespace SimPe.Plugin
 		string type;
 		public string Subset
 		{
-			get { return type; }
-			set { type = value; }
+			get
+			{
+				return type;
+			}
+			set
+			{
+				type = value;
+			}
 		}
 
 		string desc;
 		public string FileName
 		{
-			get { return desc; }
-			set { desc = value; }
+			get
+			{
+				return desc;
+			}
+			set
+			{
+				desc = value;
+			}
 		}
 
 		byte[] data;
 		public byte[] Data
 		{
-			get { return data; }
+			get
+			{
+				return data;
+			}
 			set
 			{
 				if (value.Length == 9)
@@ -116,36 +132,66 @@ namespace SimPe.Plugin
 		int unknown1;
 		public int Unknown1
 		{
-			get { return unknown1; }
-			set { unknown1 = value; }
+			get
+			{
+				return unknown1;
+			}
+			set
+			{
+				unknown1 = value;
+			}
 		}
 
 		byte unknown2;
 		public byte Unknown2
 		{
-			get { return unknown2; }
-			set { unknown2 = value; }
+			get
+			{
+				return unknown2;
+			}
+			set
+			{
+				unknown2 = value;
+			}
 		}
 
 		int unknown3;
 		public int Unknown3
 		{
-			get { return unknown3; }
-			set { unknown3 = value; }
+			get
+			{
+				return unknown3;
+			}
+			set
+			{
+				unknown3 = value;
+			}
 		}
 
 		byte unknown4;
 		public byte Unknown4
 		{
-			get { return unknown4; }
-			set { unknown4 = value; }
+			get
+			{
+				return unknown4;
+			}
+			set
+			{
+				unknown4 = value;
+			}
 		}
 
 		string filename;
 		public string FileName
 		{
-			get { return filename; }
-			set { filename = value; }
+			get
+			{
+				return filename;
+			}
+			set
+			{
+				filename = value;
+			}
 		}
 
 		public ShapeItem(Shape parent)
@@ -230,35 +276,62 @@ namespace SimPe.Plugin
 		uint[] unknown;
 		public uint[] Unknwon
 		{
-			get { return unknown; }
-			set { unknown = value; }
+			get
+			{
+				return unknown;
+			}
+			set
+			{
+				unknown = value;
+			}
 		}
 
 		ShapeItem[] items;
 		public ShapeItem[] Items
 		{
-			get { return items; }
-			set { items = value; }
+			get
+			{
+				return items;
+			}
+			set
+			{
+				items = value;
+			}
 		}
 
 		ShapePart[] parts;
 		public ShapePart[] Parts
 		{
-			get { return parts; }
-			set { parts = value; }
+			get
+			{
+				return parts;
+			}
+			set
+			{
+				parts = value;
+			}
 		}
 
 		ObjectGraphNode ogn;
 		public ObjectGraphNode GraphNode
 		{
-			get { return ogn; }
-			set { ogn = value; }
+			get
+			{
+				return ogn;
+			}
+			set
+			{
+				ogn = value;
+			}
 		}
 
 		ReferentNode refnode;
 		public ReferentNode RefNode
 		{
-			get { return refnode; }
+			get
+			{
+				return refnode;
+			}
 		}
 		#endregion
 		/*public Rcol Parent

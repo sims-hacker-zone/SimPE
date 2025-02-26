@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using SimPe.PackedFiles.Wrapper;
 
 namespace pjse
@@ -45,23 +46,38 @@ namespace pjse
 
 		public Scope Scope
 		{
-			get { return scope; }
+			get
+			{
+				return scope;
+			}
 		}
 		public ExtendedWrapper Parent
 		{
-			get { return parent; }
+			get
+			{
+				return parent;
+			}
 		}
 		public uint Group
 		{
-			get { return group; }
+			get
+			{
+				return group;
+			}
 		}
 		public uint Instance
 		{
-			get { return instance; }
+			get
+			{
+				return instance;
+			}
 		}
 		public uint Type
 		{
-			get { return type; }
+			get
+			{
+				return type;
+			}
 		}
 
 		public Str(Scope scope, ExtendedWrapper parent, uint instance, bool fallback)
@@ -71,7 +87,9 @@ namespace pjse
 				parent.GroupForScope(scope),
 				instance,
 				SimPe.Data.MetaData.STRING_FILE
-			) { }
+			)
+		{
+		}
 
 		public Str(Scope scope, ExtendedWrapper parent, uint instance)
 			: this(
@@ -80,7 +98,9 @@ namespace pjse
 				parent.GroupForScope(scope),
 				instance,
 				SimPe.Data.MetaData.STRING_FILE
-			) { }
+			)
+		{
+		}
 
 		public Str(GS.BhavStr instance)
 			: this(
@@ -89,7 +109,9 @@ namespace pjse
 				(uint)pjse.Group.Parsing,
 				(uint)instance,
 				SimPe.Data.MetaData.STRING_FILE
-			) { }
+			)
+		{
+		}
 
 		public Str(ExtendedWrapper parent, uint instance, uint type)
 			: this(Scope.Private, parent, parent.PrivateGroup, instance, type) { }
@@ -126,8 +148,14 @@ namespace pjse
 			private Hashtable groupHash = new Hashtable();
 			public Str this[uint group, uint instance]
 			{
-				get { return this[group, instance, SimPe.Data.MetaData.STRING_FILE]; }
-				set { this[group, instance, SimPe.Data.MetaData.STRING_FILE] = value; }
+				get
+				{
+					return this[group, instance, SimPe.Data.MetaData.STRING_FILE];
+				}
+				set
+				{
+					this[group, instance, SimPe.Data.MetaData.STRING_FILE] = value;
+				}
 			}
 
 			public Str this[uint group, uint instance, uint type]
@@ -311,7 +339,10 @@ namespace pjse
 
 		public FallbackStrItem this[int sid]
 		{
-			get { return this[1, sid]; }
+			get
+			{
+				return this[1, sid];
+			}
 		}
 
 		public FallbackStrItem this[byte lid, int sid]

@@ -23,6 +23,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.UserInterface
@@ -320,7 +321,10 @@ namespace SimPe.PackedFiles.UserInterface
 		SimPe.PackedFiles.Wrapper.ObjLua lua;
 		protected SimPe.PackedFiles.Wrapper.ObjLua Wrapper
 		{
-			get { return lua; }
+			get
+			{
+				return lua;
+			}
 		}
 
 		#region IPackedFileUI Member
@@ -338,7 +342,10 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public Control GUIHandle
 		{
-			get { return this; }
+			get
+			{
+				return this;
+			}
 		}
 
 		#endregion

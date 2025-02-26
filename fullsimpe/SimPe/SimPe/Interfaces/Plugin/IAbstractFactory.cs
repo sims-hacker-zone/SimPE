@@ -47,8 +47,14 @@ namespace SimPe.Interfaces.Plugin
 		/// </summary>
 		public virtual IWrapperRegistry LinkedRegistry
 		{
-			get { return registry; }
-			set { registry = value; }
+			get
+			{
+				return registry;
+			}
+			set
+			{
+				registry = value;
+			}
 		}
 
 		/// <summary>
@@ -56,8 +62,14 @@ namespace SimPe.Interfaces.Plugin
 		/// </summary>
 		public virtual IProviderRegistry LinkedProvider
 		{
-			get { return provider; }
-			set { provider = value; }
+			get
+			{
+				return provider;
+			}
+			set
+			{
+				provider = value;
+			}
 		}
 
 		/// <summary>
@@ -75,7 +87,10 @@ namespace SimPe.Interfaces.Plugin
 
 		public string FileName
 		{
-			get { return this.GetType().Assembly.FullName; }
+			get
+			{
+				return this.GetType().Assembly.FullName;
+			}
 		}
 
 		#endregion

@@ -24,6 +24,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+
 using Ambertation.Collections;
 
 namespace Ambertation.Windows.Forms.Graph
@@ -47,7 +48,10 @@ namespace Ambertation.Windows.Forms.Graph
 		PropertyItems properties;
 		public PropertyItems Properties
 		{
-			get { return properties; }
+			get
+			{
+				return properties;
+			}
 			set
 			{
 				if (value != properties)
@@ -61,7 +65,10 @@ namespace Ambertation.Windows.Forms.Graph
 		Image thumb;
 		public Image Thumbnail
 		{
-			get { return thumb; }
+			get
+			{
+				return thumb;
+			}
 			set
 			{
 				thumb = value;
@@ -72,7 +79,10 @@ namespace Ambertation.Windows.Forms.Graph
 		string txt;
 		public string Text
 		{
-			get { return txt; }
+			get
+			{
+				return txt;
+			}
 			set
 			{
 				txt = value;

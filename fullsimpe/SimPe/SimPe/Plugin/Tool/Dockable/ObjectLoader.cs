@@ -22,6 +22,7 @@ using System.Collections;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
+
 using Ambertation.Threading;
 
 namespace SimPe.Plugin.Tool.Dockable
@@ -44,7 +45,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		/// </summary>
 		string CacheFileName
 		{
-			get { return Helper.SimPeLanguageCache; }
+			get
+			{
+				return Helper.SimPeLanguageCache;
+			}
 		}
 
 		/// <summary>

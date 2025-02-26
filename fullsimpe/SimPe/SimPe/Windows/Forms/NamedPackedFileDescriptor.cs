@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -24,17 +24,26 @@ namespace SimPe.Windows.Forms
 
 		public SimPe.Plugin.FileIndexItem Resource
 		{
-			get { return fii; }
+			get
+			{
+				return fii;
+			}
 		}
 
 		public SimPe.Interfaces.Files.IPackedFileDescriptor Descriptor
 		{
-			get { return pfd; }
+			get
+			{
+				return pfd;
+			}
 		}
 
 		public bool RealNameLoaded
 		{
-			get { return realname != null; }
+			get
+			{
+				return realname != null;
+			}
 		}
 
 		public void ResetRealName()

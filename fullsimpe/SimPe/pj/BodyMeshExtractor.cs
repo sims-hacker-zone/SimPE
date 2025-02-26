@@ -22,6 +22,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Scenegraph;
@@ -360,7 +361,7 @@ namespace pj
 						);
 						return;
 					}
-				#endregion
+					#endregion
 
 					#region Get the mesh name(s)
 					bool prompted = false;
@@ -483,7 +484,10 @@ namespace pj
 		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
-			get { return SimPe.GetIcon.BMExtract; }
+			get
+			{
+				return SimPe.GetIcon.BMExtract;
+			}
 		}
 		#endregion
 	}

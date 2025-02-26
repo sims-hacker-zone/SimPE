@@ -23,6 +23,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.PackedFiles.UserInterface
@@ -322,7 +323,10 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public Wrapper.Scor Scor
 		{
-			get { return (SimPe.PackedFiles.Wrapper.Scor)Wrapper; }
+			get
+			{
+				return (SimPe.PackedFiles.Wrapper.Scor)Wrapper;
+			}
 		}
 
 		protected override void RefreshGUI()

@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Geometry;
 using SimPe.Interfaces.Plugin;
 
@@ -81,8 +82,14 @@ namespace SimPe.Plugin
 		ItemTypes typecode;
 		public ItemTypes Typecode
 		{
-			get { return typecode; }
-			set { typecode = value; }
+			get
+			{
+				return typecode;
+			}
+			set
+			{
+				typecode = value;
+			}
 		}
 
 		string varname;
@@ -94,56 +101,101 @@ namespace SimPe.Plugin
 					return "";
 				return varname;
 			}
-			set { varname = value; }
+			set
+			{
+				varname = value;
+			}
 		}
 
 		int val;
 		public int Value
 		{
-			get { return val; }
-			set { val = value; }
+			get
+			{
+				return val;
+			}
+			set
+			{
+				val = value;
+			}
 		}
 
 		float single;
 		public float Single
 		{
-			get { return single; }
-			set { single = value; }
+			get
+			{
+				return single;
+			}
+			set
+			{
+				single = value;
+			}
 		}
 
 		Vector3f translation;
 		public Vector3f Translation
 		{
-			get { return translation; }
-			set { translation = value; }
+			get
+			{
+				return translation;
+			}
+			set
+			{
+				translation = value;
+			}
 		}
 
 		string str;
 		public string String
 		{
-			get { return str; }
-			set { str = value; }
+			get
+			{
+				return str;
+			}
+			set
+			{
+				str = value;
+			}
 		}
 
 		ExtensionItem[] ei;
 		public ExtensionItem[] Items
 		{
-			get { return ei; }
-			set { ei = value; }
+			get
+			{
+				return ei;
+			}
+			set
+			{
+				ei = value;
+			}
 		}
 
 		Quaternion rotation;
 		public Quaternion Rotation
 		{
-			get { return rotation; }
-			set { rotation = value; }
+			get
+			{
+				return rotation;
+			}
+			set
+			{
+				rotation = value;
+			}
 		}
 
 		byte[] data;
 		public byte[] Data
 		{
-			get { return data; }
-			set { data = value; }
+			get
+			{
+				return data;
+			}
+			set
+			{
+				data = value;
+			}
 		}
 
 		#endregion
@@ -346,8 +398,14 @@ namespace SimPe.Plugin
 		byte typecode;
 		public byte TypeCode
 		{
-			get { return typecode; }
-			set { typecode = value; }
+			get
+			{
+				return typecode;
+			}
+			set
+			{
+				typecode = value;
+			}
 		}
 
 		string varname;
@@ -359,14 +417,23 @@ namespace SimPe.Plugin
 					return "";
 				return varname;
 			}
-			set { varname = value; }
+			set
+			{
+				varname = value;
+			}
 		}
 
 		ExtensionItem[] items;
 		public ExtensionItem[] Items
 		{
-			get { return items; }
-			set { items = value; }
+			get
+			{
+				return items;
+			}
+			set
+			{
+				items = value;
+			}
 		}
 
 		byte[] data;

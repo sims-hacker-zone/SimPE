@@ -24,6 +24,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+
 using Ambertation.Collections;
 
 namespace Ambertation.Windows.Forms.Graph
@@ -74,14 +75,23 @@ namespace Ambertation.Windows.Forms.Graph
 		object tag;
 		public object Tag
 		{
-			get { return tag; }
-			set { tag = value; }
+			get
+			{
+				return tag;
+			}
+			set
+			{
+				tag = value;
+			}
 		}
 
 		Ambertation.Windows.Forms.Graph.LinkControlLineMode lm;
 		public Ambertation.Windows.Forms.Graph.LinkControlLineMode LineMode
 		{
-			get { return lm; }
+			get
+			{
+				return lm;
+			}
 			set
 			{
 				lm = value;
@@ -91,7 +101,10 @@ namespace Ambertation.Windows.Forms.Graph
 
 		public override bool Quality
 		{
-			get { return base.Quality; }
+			get
+			{
+				return base.Quality;
+			}
 			set
 			{
 				base.Quality = value;
@@ -101,7 +114,10 @@ namespace Ambertation.Windows.Forms.Graph
 		Color lcol;
 		public Color LinkColor
 		{
-			get { return lcol; }
+			get
+			{
+				return lcol;
+			}
 			set
 			{
 				if (lcol != value)
@@ -115,7 +131,10 @@ namespace Ambertation.Windows.Forms.Graph
 		Color alcol;
 		public Color ActiveOutgoingLinkColor
 		{
-			get { return alcol; }
+			get
+			{
+				return alcol;
+			}
 			set
 			{
 				if (alcol != value)
@@ -128,7 +147,10 @@ namespace Ambertation.Windows.Forms.Graph
 		Color ainlcol;
 		public Color ActiveIncomingLinkColor
 		{
-			get { return ainlcol; }
+			get
+			{
+				return ainlcol;
+			}
 			set
 			{
 				if (ainlcol != value)
@@ -142,8 +164,14 @@ namespace Ambertation.Windows.Forms.Graph
 		bool tofront;
 		public bool AutoBringToFront
 		{
-			get { return tofront; }
-			set { tofront = value; }
+			get
+			{
+				return tofront;
+			}
+			set
+			{
+				tofront = value;
+			}
 		}
 
 		#endregion
@@ -154,7 +182,10 @@ namespace Ambertation.Windows.Forms.Graph
 		[Browsable(false)]
 		public GraphItems ChildItems
 		{
-			get { return childs; }
+			get
+			{
+				return childs;
+			}
 		}
 
 		GraphItems parents;
@@ -162,7 +193,10 @@ namespace Ambertation.Windows.Forms.Graph
 		[Browsable(false)]
 		public GraphItems ParentItems
 		{
-			get { return parents; }
+			get
+			{
+				return parents;
+			}
 		}
 		#endregion
 

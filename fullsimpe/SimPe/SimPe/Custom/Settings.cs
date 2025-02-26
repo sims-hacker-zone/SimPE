@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Resources;
 using System.Text;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 
@@ -40,7 +41,10 @@ namespace SimPe.Custom
 
 		public static bool Persistent
 		{
-			get { return settings.KeepFilesOpen; }
+			get
+			{
+				return settings.KeepFilesOpen;
+			}
 		}
 
 		public Settings()
@@ -75,7 +79,10 @@ namespace SimPe.Custom
 		[System.ComponentModel.Browsable(false)]
 		public System.Drawing.Image Icon
 		{
-			get { return null; }
+			get
+			{
+				return null;
+			}
 		}
 
 		object ISettings.GetSettingsObject()
@@ -92,7 +99,10 @@ namespace SimPe.Custom
 
 		public ISettings[] KnownSettings
 		{
-			get { return new ISettings[] { new Settings() }; }
+			get
+			{
+				return new ISettings[] { new Settings() };
+			}
 		}
 
 		#endregion

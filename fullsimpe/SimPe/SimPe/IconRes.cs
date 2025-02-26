@@ -14,7 +14,10 @@ namespace SimPe
 		/// </summary>
 		public static Image Fail
 		{
-			get { return global::SimPe.Properties.Resources.whfail; }
+			get
+			{
+				return global::SimPe.Properties.Resources.whfail;
+			}
 		}
 
 		/// <summary>
@@ -22,7 +25,10 @@ namespace SimPe
 		/// </summary>
 		public static Image OK
 		{
-			get { return global::SimPe.Properties.Resources.whok; }
+			get
+			{
+				return global::SimPe.Properties.Resources.whok;
+			}
 		}
 
 		/// <summary>
@@ -30,7 +36,10 @@ namespace SimPe
 		/// </summary>
 		public static Image Unk
 		{
-			get { return global::SimPe.Properties.Resources.whunk; }
+			get
+			{
+				return global::SimPe.Properties.Resources.whunk;
+			}
 		}
 
 		/// <summary>
@@ -38,7 +47,10 @@ namespace SimPe
 		/// </summary>
 		public static Image Warn
 		{
-			get { return global::SimPe.Properties.Resources.whwarn; }
+			get
+			{
+				return global::SimPe.Properties.Resources.whwarn;
+			}
 		}
 
 		/// <summary>
@@ -46,7 +58,10 @@ namespace SimPe
 		/// </summary>
 		public static Image Support
 		{
-			get { return global::SimPe.Properties.Resources.support; }
+			get
+			{
+				return global::SimPe.Properties.Resources.support;
+			}
 		}
 
 		/// <summary>
@@ -741,7 +756,10 @@ namespace SimPe
 		/// </summary>
 		public static Image GameTit
 		{
-			get { return global::SimPe.Properties.Resources.gametip; }
+			get
+			{
+				return global::SimPe.Properties.Resources.gametip;
+			}
 		}
 
 		/// <summary>
@@ -749,7 +767,10 @@ namespace SimPe
 		/// </summary>
 		public static Image ReadOnly
 		{
-			get { return global::SimPe.Properties.Resources.readim; }
+			get
+			{
+				return global::SimPe.Properties.Resources.readim;
+			}
 		}
 
 		/// <summary>
@@ -757,7 +778,10 @@ namespace SimPe
 		/// </summary>
 		public static Image Writable
 		{
-			get { return global::SimPe.Properties.Resources.stxt; }
+			get
+			{
+				return global::SimPe.Properties.Resources.stxt;
+			}
 		}
 
 		/// <summary>

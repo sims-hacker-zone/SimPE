@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Events;
 using SimPe.Interfaces;
 
@@ -28,7 +29,9 @@ namespace SimPe.Plugin.Tool
 	/// </summary>
 	public class AnimTool : SimPe.Interfaces.IToolPlus
 	{
-		internal AnimTool() { }
+		internal AnimTool()
+		{
+		}
 
 		#region ITool Member
 
@@ -70,17 +73,26 @@ namespace SimPe.Plugin.Tool
 		#region IToolExt Member
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get { return System.Windows.Forms.Shortcut.CtrlShiftA; }
+			get
+			{
+				return System.Windows.Forms.Shortcut.CtrlShiftA;
+			}
 		}
 
 		public System.Drawing.Image Icon
 		{
-			get { return SimPe.GetIcon.AnimCamera; }
+			get
+			{
+				return SimPe.GetIcon.AnimCamera;
+			}
 		}
 
 		public virtual bool Visible
 		{
-			get { return true; }
+			get
+			{
+				return true;
+			}
 		}
 
 		#endregion

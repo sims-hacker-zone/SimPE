@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Specialized;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Packages;
@@ -15,11 +16,19 @@ namespace SimPe.Plugin
 	{
 		public Rcol this[int index]
 		{
-			get { return this.List[index] as Rcol; }
-			set { this.List[index] = value; }
+			get
+			{
+				return this.List[index] as Rcol;
+			}
+			set
+			{
+				this.List[index] = value;
+			}
 		}
 
-		public RcolTable() { }
+		public RcolTable()
+		{
+		}
 
 		public int Add(Rcol rcol)
 		{

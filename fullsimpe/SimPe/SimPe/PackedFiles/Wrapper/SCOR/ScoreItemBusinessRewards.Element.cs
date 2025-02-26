@@ -39,13 +39,22 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 
 			public string Name
 			{
-				get { return name; }
-				set { name = value; }
+				get
+				{
+					return name;
+				}
+				set
+				{
+					name = value;
+				}
 			}
 
 			internal byte[] Data
 			{
-				get { return data; }
+				get
+				{
+					return data;
+				}
 			}
 
 			public void LoadData(System.IO.BinaryReader reader)

@@ -33,12 +33,18 @@ namespace Ambertation.Windows.Forms
 
 		public object Content
 		{
-			get { return obj; }
+			get
+			{
+				return obj;
+			}
 		}
 
 		public string Name
 		{
-			get { return name; }
+			get
+			{
+				return name;
+			}
 		}
 
 		internal EnumComboBoxItem(
@@ -98,7 +104,10 @@ namespace Ambertation.Windows.Forms
 		Type myenum;
 		public Type Enum
 		{
-			get { return myenum; }
+			get
+			{
+				return myenum;
+			}
 			set
 			{
 				if (value != myenum)
@@ -112,7 +121,10 @@ namespace Ambertation.Windows.Forms
 		System.Resources.ResourceManager rm;
 		public System.Resources.ResourceManager ResourceManager
 		{
-			get { return rm; }
+			get
+			{
+				return rm;
+			}
 			set
 			{
 				if (value != rm)

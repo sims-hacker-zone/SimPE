@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.IO;
+
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
@@ -86,7 +87,9 @@ namespace SimPe.Providers
 			ArrayList list,
 			ref Hashtable memories,
 			SimPe.Interfaces.Files.IPackageFile BasePackage
-		) { }
+		)
+		{
+		}
 
 		/// <summary>
 		/// Loads Memory Files form the Object Package
@@ -205,7 +208,7 @@ namespace SimPe.Providers
 						WaitingScreen.Stop();
 				}
 			} // if items>0
-			//System.Threading.Thread.CurrentThread.Priority = System.Threading.ThreadPriority.Normal;
+			  //System.Threading.Thread.CurrentThread.Priority = System.Threading.ThreadPriority.Normal;
 		}
 
 		/// <summary>
@@ -521,7 +524,10 @@ namespace SimPe.Providers
 		/// </summary>
 		public ArrayList StoredExpressionOperators
 		{
-			get { return operands; }
+			get
+			{
+				return operands;
+			}
 		}
 
 		/// <summary>
@@ -553,7 +559,10 @@ namespace SimPe.Providers
 		/// </summary>
 		public ArrayList StoredDataNames
 		{
-			get { return dataowners; }
+			get
+			{
+				return dataowners;
+			}
 		}
 
 		/// <summary>

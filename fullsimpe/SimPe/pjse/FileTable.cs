@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Resources;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
@@ -202,7 +203,10 @@ namespace pjse
 		private IPackageFile currentPackage = null;
 		public IPackageFile CurrentPackage
 		{
-			get { return currentPackage; }
+			get
+			{
+				return currentPackage;
+			}
 			set
 			{
 				if (currentPackage != value)
@@ -519,37 +523,58 @@ namespace pjse
 
 			public IPackageFile Package
 			{
-				get { return package; }
+				get
+				{
+					return package;
+				}
 			}
 
 			public IPackedFileDescriptor PFD
 			{
-				get { return pfd; }
+				get
+				{
+					return pfd;
+				}
 			}
 
 			public uint Type
 			{
-				get { return pfd.Type; }
+				get
+				{
+					return pfd.Type;
+				}
 			}
 
 			public uint Group
 			{
-				get { return pfd.Group; }
+				get
+				{
+					return pfd.Group;
+				}
 			}
 
 			public uint Instance
 			{
-				get { return pfd.Instance; }
+				get
+				{
+					return pfd.Instance;
+				}
 			}
 
 			public bool IsMaxis
 			{
-				get { return isMaxis; }
+				get
+				{
+					return isMaxis;
+				}
 			}
 
 			public bool IsFixed
 			{
-				get { return isFixed; }
+				get
+				{
+					return isFixed;
+				}
 			}
 
 			public AbstractWrapper Wrapper
@@ -618,7 +643,10 @@ namespace pjse
 
 			public IPackedFileDescriptor FileDescriptor
 			{
-				get { return PFD; }
+				get
+				{
+					return PFD;
+				}
 				set
 				{
 					throw new Exception("The method or operation is not implemented.");
@@ -632,7 +660,10 @@ namespace pjse
 
 			public uint LocalGroup
 			{
-				get { return fii.LocalGroup; }
+				get
+				{
+					return fii.LocalGroup;
+				}
 			}
 
 			#endregion
@@ -680,7 +711,10 @@ namespace pjse
 
 		public Entry[] this[uint packedFileType]
 		{
-			get { return this[packedFileType, Source.Any]; }
+			get
+			{
+				return this[packedFileType, Source.Any];
+			}
 		}
 		public Entry[] this[uint packedFileType, Source where]
 		{
@@ -720,7 +754,10 @@ namespace pjse
 
 		public Entry[] this[uint packedFileType, uint group, uint instance]
 		{
-			get { return this[packedFileType, group, instance, Source.Any]; }
+			get
+			{
+				return this[packedFileType, group, instance, Source.Any];
+			}
 		}
 		public Entry[] this[
 			uint packedFileType,
@@ -856,7 +893,10 @@ namespace pjse
 		private static FileTableSettings fts;
 		public static FileTableSettings FTS
 		{
-			get { return fts; }
+			get
+			{
+				return fts;
+			}
 		}
 
 		static FileTableSettings()
@@ -907,7 +947,10 @@ namespace pjse
 		[System.ComponentModel.Browsable(false)]
 		public System.Drawing.Image Icon
 		{
-			get { return null; }
+			get
+			{
+				return null;
+			}
 		}
 
 		#endregion
@@ -922,7 +965,10 @@ namespace pjse
 
 		public IToolPlugin[] KnownTools
 		{
-			get { return new IToolPlugin[] { new pjse.FileTableTool() }; }
+			get
+			{
+				return new IToolPlugin[] { new pjse.FileTableTool() };
+			}
 		}
 
 		#endregion
@@ -931,7 +977,10 @@ namespace pjse
 
 		public ISettings[] KnownSettings
 		{
-			get { return new ISettings[] { FileTableSettings.FTS }; }
+			get
+			{
+				return new ISettings[] { FileTableSettings.FTS };
+			}
 		}
 
 		#endregion

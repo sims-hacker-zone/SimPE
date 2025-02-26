@@ -30,14 +30,23 @@ namespace SimPe.Plugin
 		uint version;
 		public NgbhVersion Version
 		{
-			get { return (NgbhVersion)version; }
-			set { version = (uint)value; }
+			get
+			{
+				return (NgbhVersion)version;
+			}
+			set
+			{
+				version = (uint)value;
+			}
 		}
 
 		Ngbh parent;
 		public Ngbh Parent
 		{
-			get { return parent; }
+			get
+			{
+				return parent;
+			}
 		}
 
 		public NgbhSlotList(Ngbh parent)
@@ -61,7 +70,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public uint SlotID
 		{
-			get { return slotid; }
+			get
+			{
+				return slotid;
+			}
 			set
 			{
 				if (slotid != value)
@@ -83,7 +95,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public Collections.NgbhItems ItemsA
 		{
-			get { return itemsa; }
+			get
+			{
+				return itemsa;
+			}
 			set
 			{
 				itemsa = value;
@@ -102,7 +117,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public Collections.NgbhItems ItemsB
 		{
-			get { return itemsb; }
+			get
+			{
+				return itemsb;
+			}
 			set
 			{
 				itemsb = value;
@@ -207,7 +225,10 @@ namespace SimPe.Plugin
 		Data.NeighborhoodSlots type;
 		public Data.NeighborhoodSlots Type
 		{
-			get { return type; }
+			get
+			{
+				return type;
+			}
 		}
 
 		internal NgbhSlot(Ngbh parent, Data.NeighborhoodSlots type)

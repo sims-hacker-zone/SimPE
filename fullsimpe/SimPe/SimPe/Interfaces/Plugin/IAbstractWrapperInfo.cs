@@ -78,7 +78,10 @@ namespace SimPe.Interfaces.Plugin
 		/// </summary>
 		public string Name
 		{
-			get { return name; }
+			get
+			{
+				return name;
+			}
 		}
 
 		/// <summary>
@@ -86,7 +89,10 @@ namespace SimPe.Interfaces.Plugin
 		/// </summary>
 		public string Description
 		{
-			get { return description; }
+			get
+			{
+				return description;
+			}
 		}
 
 		/// <summary>
@@ -94,7 +100,10 @@ namespace SimPe.Interfaces.Plugin
 		/// </summary>
 		public string Author
 		{
-			get { return author; }
+			get
+			{
+				return author;
+			}
 		}
 
 		/// <summary>
@@ -102,7 +111,10 @@ namespace SimPe.Interfaces.Plugin
 		/// </summary>
 		public int Version
 		{
-			get { return version; }
+			get
+			{
+				return version;
+			}
 		}
 
 		/// <summary>
@@ -110,8 +122,14 @@ namespace SimPe.Interfaces.Plugin
 		/// </summary>
 		public System.Drawing.Image Icon
 		{
-			get { return img; }
-			set { img = value; }
+			get
+			{
+				return img;
+			}
+			set
+			{
+				img = value;
+			}
 		}
 
 		int ii;
@@ -122,8 +140,14 @@ namespace SimPe.Interfaces.Plugin
 		/// <remarks>Do nover set this yourself, it is set automatically by the Registry</remarks>
 		public int IconIndex
 		{
-			get { return ii; }
-			set { ii = value; }
+			get
+			{
+				return ii;
+			}
+			set
+			{
+				ii = value;
+			}
 		}
 
 		// <summary>

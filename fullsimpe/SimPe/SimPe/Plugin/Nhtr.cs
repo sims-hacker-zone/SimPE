@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -42,14 +43,23 @@ namespace SimPe.Plugin
 
 		public NhtrVersions Version
 		{
-			get { return (NhtrVersions)ver; }
-			set { ver = (uint)value; }
+			get
+			{
+				return (NhtrVersions)ver;
+			}
+			set
+			{
+				ver = (uint)value;
+			}
 		}
 
 		NhtrList[] items;
 		public NhtrList[] Items
 		{
-			get { return items; }
+			get
+			{
+				return items;
+			}
 		}
 
 		#endregion

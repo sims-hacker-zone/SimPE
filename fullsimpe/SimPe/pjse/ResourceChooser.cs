@@ -23,11 +23,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;
 using SimPe.Plugin;
+
 using Bhav = SimPe.PackedFiles.Wrapper.Bhav;
 
 namespace pjse
@@ -771,11 +773,11 @@ namespace pjse
 		{
 			ChooserOrder = e.Column;
 			foreach (TabPage tp in tcResources.TabPages)
-			foreach (Control c in tp.Controls)
-				if (c is ListView)
-					((ListView)c).ListViewItemSorter = new ListViewItemComparer(
-						e.Column
-					);
+				foreach (Control c in tp.Controls)
+					if (c is ListView)
+						((ListView)c).ListViewItemSorter = new ListViewItemComparer(
+							e.Column
+						);
 		}
 
 		private void tcResources_SelectedIndexChanged(object sender, EventArgs e)
@@ -821,7 +823,9 @@ namespace pjse
 								MessageBoxDefaultButton.Button3
 							);
 
-							if (dr == DialogResult.Yes) { }
+							if (dr == DialogResult.Yes)
+							{
+							}
 							else if (dr == DialogResult.No)
 							{
 								lv.SelectedItems[0].Tag = f;

@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces.Files;
 
 namespace SimPe.Interfaces.Plugin.Internal
@@ -31,7 +32,9 @@ namespace SimPe.Interfaces.Plugin.Internal
 		/// <summary>
 		/// Returns the Package where this File is assigned to (can be null)
 		/// </summary>
-		IPackageFile Package { get;
+		IPackageFile Package
+		{
+			get;
 			//set;
 		}
 
@@ -41,7 +44,10 @@ namespace SimPe.Interfaces.Plugin.Internal
 		/// <remarks>
 		/// When the Descriptor is returned, make sure that the userdata is not out of Data;
 		/// </remarks>
-		IPackedFileDescriptor FileDescriptor { get; }
+		IPackedFileDescriptor FileDescriptor
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Processe the Data stored in the sent File
@@ -105,13 +111,19 @@ namespace SimPe.Interfaces.Plugin.Internal
 		/// <summary>
 		/// Will return current Data
 		/// </summary>
-		System.IO.BinaryReader StoredData { get; }
+		System.IO.BinaryReader StoredData
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns / Sets the assigned UI Handler (can be null!)
 		/// </summary>
 		/// <remarks>If you set this value to null, it will Return the Default UIHandler or null if no default exists</remarks>
-		IPackedFileUI UIHandler { get; set; }
+		IPackedFileUI UIHandler
+		{
+			get; set;
+		}
 
 		/// <summary>
 		/// Processes the stored Data again and Sends an Update Request to the assigned UI Handler (if not null)
@@ -137,12 +149,18 @@ namespace SimPe.Interfaces.Plugin.Internal
 		/// <summary>
 		/// Return the content of the Files
 		/// </summary>
-		System.IO.MemoryStream Content { get; }
+		System.IO.MemoryStream Content
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the default Extension for this File
 		/// </summary>
-		string FileExtension { get; }
+		string FileExtension
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Allways returns <see cref="this"/> Object.

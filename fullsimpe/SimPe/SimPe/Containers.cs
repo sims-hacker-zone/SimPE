@@ -33,8 +33,14 @@ namespace SimPe
 		/// </summary>
 		public new int this[int index]
 		{
-			get { return ((int)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((int)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -42,8 +48,14 @@ namespace SimPe
 		/// </summary>
 		public int this[uint index]
 		{
-			get { return ((int)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((int)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -90,7 +102,10 @@ namespace SimPe
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		/// <summary>
@@ -117,8 +132,14 @@ namespace SimPe
 		/// </summary>
 		public new string this[int index]
 		{
-			get { return ((string)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((string)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -126,8 +147,14 @@ namespace SimPe
 		/// </summary>
 		public string this[uint index]
 		{
-			get { return ((string)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((string)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -174,7 +201,10 @@ namespace SimPe
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		/// <summary>

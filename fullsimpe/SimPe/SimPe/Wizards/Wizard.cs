@@ -57,24 +57,39 @@ namespace SimPe.Wizards
 		[Browsable(false)]
 		public Control WizardContainer
 		{
-			get { return this; }
+			get
+			{
+				return this;
+			}
 		}
 
 		Image img;
 		public virtual System.Drawing.Image Image
 		{
-			get { return img; }
-			set { img = value; }
+			get
+			{
+				return img;
+			}
+			set
+			{
+				img = value;
+			}
 		}
 
 		public int StepCount
 		{
-			get { return Controls.Count; }
+			get
+			{
+				return Controls.Count;
+			}
 		}
 
 		public int CurrentStepNumber
 		{
-			get { return cur; }
+			get
+			{
+				return cur;
+			}
 			set
 			{
 				if (value == cur)
@@ -85,7 +100,10 @@ namespace SimPe.Wizards
 		[Browsable(false)]
 		public WizardStepPanel CurrentStep
 		{
-			get { return (WizardStepPanel)Controls[cur]; }
+			get
+			{
+				return (WizardStepPanel)Controls[cur];
+			}
 		}
 
 		bool ne;
@@ -93,7 +111,10 @@ namespace SimPe.Wizards
 		[Browsable(false)]
 		public bool NextEnabled
 		{
-			get { return ne; }
+			get
+			{
+				return ne;
+			}
 			set
 			{
 				if (value != ne)
@@ -110,7 +131,10 @@ namespace SimPe.Wizards
 		[Browsable(false)]
 		public bool PrevEnabled
 		{
-			get { return pe; }
+			get
+			{
+				return pe;
+			}
 			set
 			{
 				if (value != pe)
@@ -127,7 +151,10 @@ namespace SimPe.Wizards
 		[Browsable(false)]
 		public bool FinishEnabled
 		{
-			get { return fe; }
+			get
+			{
+				return fe;
+			}
 			set
 			{
 				if (value != fe)
@@ -261,7 +288,10 @@ namespace SimPe.Wizards
 
 		internal string HintName
 		{
-			get { return Text + " (" + Name + ")"; }
+			get
+			{
+				return Text + " (" + Name + ")";
+			}
 		}
 
 		protected override void OnPaint(PaintEventArgs e)

@@ -24,6 +24,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
+
 using SimPe.Geometry;
 using SimPe.Plugin.Gmdc;
 
@@ -3962,7 +3963,9 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void fGeometryDataContainer_Load(object sender, System.EventArgs e) { }
+		private void fGeometryDataContainer_Load(object sender, System.EventArgs e)
+		{
+		}
 
 		private void RebuildJointVertices(
 			object sender,

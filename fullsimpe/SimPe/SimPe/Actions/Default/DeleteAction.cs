@@ -26,7 +26,9 @@ namespace SimPe.Actions.Default
 	/// </summary>
 	public class DeleteAction : AbstractActionDefault
 	{
-		public DeleteAction() { }
+		public DeleteAction()
+		{
+		}
 
 		#region IToolAction Member
 
@@ -82,12 +84,18 @@ namespace SimPe.Actions.Default
 		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
-			get { return SimPe.GetIcon.actionDelete; }
+			get
+			{
+				return SimPe.GetIcon.actionDelete;
+			}
 		}
 
 		public override System.Windows.Forms.Shortcut Shortcut
 		{
-			get { return System.Windows.Forms.Shortcut.ShiftDel; }
+			get
+			{
+				return System.Windows.Forms.Shortcut.ShiftDel;
+			}
 		}
 
 		#endregion

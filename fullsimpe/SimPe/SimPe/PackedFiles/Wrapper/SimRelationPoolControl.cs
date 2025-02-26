@@ -103,7 +103,10 @@ namespace SimPe.PackedFiles.Wrapper
 			shownorel;
 		public bool ShowRelatedSims
 		{
-			get { return showrel; }
+			get
+			{
+				return showrel;
+			}
 			set
 			{
 				if (value != showrel)
@@ -119,7 +122,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool ShowNotRelatedSims
 		{
-			get { return shownorel; }
+			get
+			{
+				return shownorel;
+			}
 			set
 			{
 				if (value != shownorel)
@@ -136,7 +142,10 @@ namespace SimPe.PackedFiles.Wrapper
 		[Browsable(false)]
 		public bool FilteredBySim
 		{
-			get { return !ShowNotRelatedSims || !ShowRelatedSims; }
+			get
+			{
+				return !ShowNotRelatedSims || !ShowRelatedSims;
+			}
 		}
 
 		ExtSDesc sim;
@@ -144,7 +153,10 @@ namespace SimPe.PackedFiles.Wrapper
 		[Browsable(false)]
 		public ExtSDesc Sim
 		{
-			get { return sim; }
+			get
+			{
+				return sim;
+			}
 			set
 			{
 				// It seems that once set, "sim" somehow tracks "value"

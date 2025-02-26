@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
 
@@ -37,7 +38,7 @@ namespace SimPe.Plugin
 			IFileWrapper //This Interface is used when loading a File
 			,
 			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-			//,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 			,
 			IMultiplePackedFileWrapper //Allow Multiple Instances
 			,
@@ -65,7 +66,10 @@ namespace SimPe.Plugin
 		IRcolBlock[] blocks;
 		public IRcolBlock[] Blocks
 		{
-			get { return duff ? new IRcolBlock[0] : blocks; }
+			get
+			{
+				return duff ? new IRcolBlock[0] : blocks;
+			}
 			set
 			{
 				if (duff)
@@ -77,14 +81,20 @@ namespace SimPe.Plugin
 		uint count;
 		public uint Count
 		{
-			get { return count; }
+			get
+			{
+				return count;
+			}
 		}
 
 		bool duff = false;
 		Exception e = null;
 		public bool Duff
 		{
-			get { return duff; }
+			get
+			{
+				return duff;
+			}
 		}
 		#endregion
 
@@ -123,7 +133,10 @@ namespace SimPe.Plugin
 		Interfaces.IProviderRegistry provider;
 		public Interfaces.IProviderRegistry Provider
 		{
-			get { return provider; }
+			get
+			{
+				return provider;
+			}
 		}
 
 		/// <summary>
@@ -155,8 +168,14 @@ namespace SimPe.Plugin
 		bool fast;
 		public bool Fast
 		{
-			get { return fast; }
-			set { fast = value; }
+			get
+			{
+				return fast;
+			}
+			set
+			{
+				fast = value;
+			}
 		}
 
 		/// <summary>
@@ -479,7 +498,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public virtual byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		/// <summary>

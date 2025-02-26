@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.Windows.Forms;
+
 using SimPe.Geometry;
 using SimPe.Interfaces.Scenegraph;
 using SimPe.Plugin;
@@ -127,17 +128,26 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a List of all Child Blocks referenced by this Element
 		/// </summary>
-		public abstract IntArrayList ChildBlocks { get; }
+		public abstract IntArrayList ChildBlocks
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns an ImageIndex used to display the CRES Hirarchy
 		/// </summary>
-		public abstract int ImageIndex { get; }
+		public abstract int ImageIndex
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the stored Transformation Node
 		/// </summary>
-		public abstract TransformNode StoredTransformNode { get; }
+		public abstract TransformNode StoredTransformNode
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Contains all bones that were seen during the recursin

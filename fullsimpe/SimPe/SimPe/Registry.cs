@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Xml;
+
 using Microsoft.Win32;
 
 namespace SimPe
@@ -68,7 +69,10 @@ namespace SimPe
 		/// </summary>
 		public LayoutRegistry Layout
 		{
-			get { return lr; }
+			get
+			{
+				return lr;
+			}
 		}
 		long pver;
 		// int pep, pepct; long pver; - seem not to be used will comment all out
@@ -149,7 +153,10 @@ namespace SimPe
 		/// </summary>
 		public XmlRegistryKey PluginRegistryKey
 		{
-			get { return xrk.CreateSubKey("PluginSettings"); }
+			get
+			{
+				return xrk.CreateSubKey("PluginSettings");
+			}
 		}
 
 		/// <summary>
@@ -157,7 +164,10 @@ namespace SimPe
 		/// </summary>
 		public XmlRegistryKey RegistryKey
 		{
-			get { return xrk; }
+			get
+			{
+				return xrk;
+			}
 		}
 		#endregion
 
@@ -205,7 +215,10 @@ namespace SimPe
 		/// </summary>
 		public long PreviousVersion
 		{
-			get { return pver; }
+			get
+			{
+				return pver;
+			}
 		}
 
 		#region EP Handler
@@ -735,7 +748,10 @@ namespace SimPe
 		/// </summary>
 		public long Version
 		{
-			get { return Helper.SimPeVersionLong; }
+			get
+			{
+				return Helper.SimPeVersionLong;
+			}
 		}
 
 		/// <summary>
@@ -1718,8 +1734,14 @@ namespace SimPe
 		[System.ComponentModel.ReadOnly(true)]
 		public bool BlurNudity
 		{
-			get { return PathProvider.Global.BlurNudity; }
-			set { PathProvider.Global.BlurNudity = value; }
+			get
+			{
+				return PathProvider.Global.BlurNudity;
+			}
+			set
+			{
+				PathProvider.Global.BlurNudity = value;
+			}
 		}
 
 		public void BlurNudityUpdate()

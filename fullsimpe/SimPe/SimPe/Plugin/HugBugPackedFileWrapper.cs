@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -35,8 +36,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public bool IsCorrupt
 		{
-			get { return corrpt; }
-			set { corrpt = value; }
+			get
+			{
+				return corrpt;
+			}
+			set
+			{
+				corrpt = value;
+			}
 		}
 
 		/// <summary>
@@ -44,8 +51,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public bool IsSims
 		{
-			get { return issims; }
-			set { issims = value; }
+			get
+			{
+				return issims;
+			}
+			set
+			{
+				issims = value;
+			}
 		}
 
 		/// <summary>
@@ -53,8 +66,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public bool HasCustom
 		{
-			get { return customcrap; }
-			set { customcrap = value; }
+			get
+			{
+				return customcrap;
+			}
+			set
+			{
+				customcrap = value;
+			}
 		}
 		#endregion
 
@@ -210,7 +229,9 @@ namespace SimPe.Plugin
 		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
-		protected override void Serialize(System.IO.BinaryWriter writer) { }
+		protected override void Serialize(System.IO.BinaryWriter writer)
+		{
+		}
 		#endregion
 
 		#region IFileWrapperSaveExtension Member

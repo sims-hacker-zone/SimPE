@@ -29,6 +29,9 @@ namespace SimPe.Interfaces.Plugin
 		/// <summary>
 		/// Returns all Settings the Facory knows about
 		/// </summary>
-		ISettings[] KnownSettings { get; }
+		ISettings[] KnownSettings
+		{
+			get;
+		}
 	}
 }

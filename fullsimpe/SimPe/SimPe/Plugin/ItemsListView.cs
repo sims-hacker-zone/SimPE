@@ -20,6 +20,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe;
 using SimPe.Cache;
 
@@ -31,7 +32,10 @@ namespace SimPe.Plugin
 		NgbhItem item;
 		public NgbhItem Item
 		{
-			get { return item; }
+			get
+			{
+				return item;
+			}
 		}
 
 		public NgbhItemsListViewItem(NgbhItemsListView parent, NgbhItem item)

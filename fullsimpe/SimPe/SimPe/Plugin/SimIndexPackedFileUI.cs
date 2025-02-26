@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -9,11 +10,17 @@ namespace SimPe.Plugin
 	{
 		protected new SimindexPackedFileWrapper Wrapper
 		{
-			get { return base.Wrapper as SimindexPackedFileWrapper; }
+			get
+			{
+				return base.Wrapper as SimindexPackedFileWrapper;
+			}
 		}
 		public SimindexPackedFileWrapper TPFW
 		{
-			get { return (SimindexPackedFileWrapper)Wrapper; }
+			get
+			{
+				return (SimindexPackedFileWrapper)Wrapper;
+			}
 		}
 
 		ushort scinstance;
@@ -47,7 +54,10 @@ namespace SimPe.Plugin
 		#region IPackedFileUI Member
 		System.Windows.Forms.Control IPackedFileUI.GUIHandle
 		{
-			get { return this; }
+			get
+			{
+				return this;
+			}
 		}
 		#endregion
 

@@ -23,6 +23,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.Events;
 
 namespace SimPe
@@ -193,9 +194,9 @@ namespace SimPe
 				eep = 6; //Castaway
 			if (eep == 29)
 				eep = 6; //Pet Stories
-			//Life Stories and Base game = No Icon
-			//if (GetImage.GetExpansionIcon((byte)eep) == null || Helper.StartedGui == Executable.Classic) this.miRunSims.Image = global::SimPe.Properties.Resources.Sims2;
-			//else
+						 //Life Stories and Base game = No Icon
+						 //if (GetImage.GetExpansionIcon((byte)eep) == null || Helper.StartedGui == Executable.Classic) this.miRunSims.Image = global::SimPe.Properties.Resources.Sims2;
+						 //else
 			this.miRunSims.Image = GetImage.GetExpansionIcon((byte)eep);
 			this.miRunSims.Text = "Run " + PathProvider.Global.Latest.NameShorter;
 

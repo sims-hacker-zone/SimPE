@@ -316,17 +316,26 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <summary>
 		/// Returns the List of all Folders this FileIndex is processing
 		/// </summary>
-		System.Collections.ArrayList BaseFolders { get; set; }
+		System.Collections.ArrayList BaseFolders
+		{
+			get; set;
+		}
 
 		/// <summary>
 		/// Returns true, if the FileTable is Loaded
 		/// </summary>
-		bool Loaded { get; }
+		bool Loaded
+		{
+			get;
+		}
 
 		/// <summary>
 		/// prevent PJSE FileTable from auto loading with SimPe FileTable
 		/// </summary>
-		bool AllowEvent { get; set; }
+		bool AllowEvent
+		{
+			get; set;
+		}
 
 		#region FileTable Childs
 		/// <summary>

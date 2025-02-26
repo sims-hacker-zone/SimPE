@@ -38,7 +38,10 @@ namespace SimPe
 		/// </summary>
 		public LinkLabel LinkLabel
 		{
-			get { return ll; }
+			get
+			{
+				return ll;
+			}
 		}
 
 		System.Windows.Forms.ToolStripButton bi;
@@ -48,7 +51,10 @@ namespace SimPe
 		/// </summary>
 		public System.Windows.Forms.ToolStripButton ToolBarButton
 		{
-			get { return bi; }
+			get
+			{
+				return bi;
+			}
 		}
 
 		System.Windows.Forms.ToolStripMenuItem mi;
@@ -58,7 +64,10 @@ namespace SimPe
 		/// </summary>
 		public System.Windows.Forms.ToolStripMenuItem MenuButton
 		{
-			get { return mi; }
+			get
+			{
+				return mi;
+			}
 		}
 
 		/// <summary>

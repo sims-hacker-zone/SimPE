@@ -197,7 +197,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public ArrayList ListViews
 		{
-			get { return listviews; }
+			get
+			{
+				return listviews;
+			}
 		}
 
 		public static Size ImageSize = new Size(128, 128);

@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Data;
 
 namespace SimPe.PackedFiles.Wrapper.Supporting
@@ -54,7 +55,10 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// </summary>
 		public ushort Instance
 		{
-			get { return siminstance; }
+			get
+			{
+				return siminstance;
+			}
 			set
 			{
 				if (siminstance != value)
@@ -177,8 +181,14 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// </summary>
 		public FamilyTieItem[] Ties
 		{
-			get { return ties; }
-			set { ties = value; }
+			get
+			{
+				return ties;
+			}
+			set
+			{
+				ties = value;
+			}
 		}
 
 		/// <summary>
@@ -186,8 +196,14 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// </summary>
 		internal int BlockDelimiter
 		{
-			get { return blockdelimiter; }
-			set { blockdelimiter = value; }
+			get
+			{
+				return blockdelimiter;
+			}
+			set
+			{
+				blockdelimiter = value;
+			}
 		}
 
 		/// <summary>
@@ -267,8 +283,14 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// </summary>
 		public MetaData.FamilyTieTypes Type
 		{
-			get { return type; }
-			set { type = value; }
+			get
+			{
+				return type;
+			}
+			set
+			{
+				type = value;
+			}
 		}
 
 		/// <summary>

@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces.Files;
 
 namespace SimPe.Interfaces.Plugin.Internal
@@ -34,7 +35,10 @@ namespace SimPe.Interfaces.Plugin.Internal
 		/// <remarks>
 		/// When the Descriptor is returned, make sure that the userdata is not out of Data;
 		/// </remarks>
-		IPackedFileDescriptor FileDescriptor { get; set; }
+		IPackedFileDescriptor FileDescriptor
+		{
+			get; set;
+		}
 
 		/// <summary>
 		/// Returns the current Stream (the Data that is stored in the Attributes of the wrapper)
@@ -43,7 +47,10 @@ namespace SimPe.Interfaces.Plugin.Internal
 		/// This Property is used to process the SynchronizeUserData() Command, and returns
 		/// the BinaryStream representation of the current State of this Wrapper.
 		/// </remarks>
-		System.IO.MemoryStream CurrentStateData { get; }
+		System.IO.MemoryStream CurrentStateData
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Used to update the UserData contained in a Packed File
@@ -66,6 +73,9 @@ namespace SimPe.Interfaces.Plugin.Internal
 		/// <summary>
 		/// true if the stored Data was changed but SynchronizeUserData wasn't called
 		/// </summary>
-		bool Changed { get; set; }
+		bool Changed
+		{
+			get; set;
+		}
 	}
 }

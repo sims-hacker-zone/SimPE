@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -12,11 +13,17 @@ namespace SimPe.Plugin
 	{
 		protected new LastEPusePackedFileWrapper Wrapper
 		{
-			get { return base.Wrapper as LastEPusePackedFileWrapper; }
+			get
+			{
+				return base.Wrapper as LastEPusePackedFileWrapper;
+			}
 		}
 		public LastEPusePackedFileWrapper TPFW
 		{
-			get { return (LastEPusePackedFileWrapper)Wrapper; }
+			get
+			{
+				return (LastEPusePackedFileWrapper)Wrapper;
+			}
 		}
 
 		Dictionary<uint, uint> Chap01 = new Dictionary<uint, uint>();
@@ -300,7 +307,10 @@ namespace SimPe.Plugin
 		#region IPackedFileUI Member
 		System.Windows.Forms.Control IPackedFileUI.GUIHandle
 		{
-			get { return this; }
+			get
+			{
+				return this;
+			}
 		}
 		#endregion
 

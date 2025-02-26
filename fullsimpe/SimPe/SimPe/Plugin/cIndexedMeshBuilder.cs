@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
+
 using SimPe.Geometry;
 
 namespace SimPe.Plugin
@@ -33,29 +34,53 @@ namespace SimPe.Plugin
 		string s1;
 		public string String1
 		{
-			get { return s1; }
-			set { s1 = value; }
+			get
+			{
+				return s1;
+			}
+			set
+			{
+				s1 = value;
+			}
 		}
 
 		string s2;
 		public string String2
 		{
-			get { return s2; }
-			set { s2 = value; }
+			get
+			{
+				return s2;
+			}
+			set
+			{
+				s2 = value;
+			}
 		}
 
 		Vectors4f v1;
 		public Vectors4f Vectors
 		{
-			get { return v1; }
-			set { v1 = value; }
+			get
+			{
+				return v1;
+			}
+			set
+			{
+				v1 = value;
+			}
 		}
 
 		int u1;
 		public int Unknown1
 		{
-			get { return u1; }
-			set { u1 = value; }
+			get
+			{
+				return u1;
+			}
+			set
+			{
+				u1 = value;
+			}
 		}
 		#endregion
 
@@ -116,172 +141,313 @@ namespace SimPe.Plugin
 		Vectors3f v1;
 		public Vectors3f Vectors1
 		{
-			get { return v1; }
-			set { v1 = value; }
+			get
+			{
+				return v1;
+			}
+			set
+			{
+				v1 = value;
+			}
 		}
 
 		Vectors3f v2;
 		public Vectors3f Vectors2
 		{
-			get { return v2; }
-			set { v2 = value; }
+			get
+			{
+				return v2;
+			}
+			set
+			{
+				v2 = value;
+			}
 		}
 
 		Vectors2f v3;
 		public Vectors2f Vectors3
 		{
-			get { return v3; }
-			set { v3 = value; }
+			get
+			{
+				return v3;
+			}
+			set
+			{
+				v3 = value;
+			}
 		}
 
 		Vectors2f v4;
 		public Vectors2f Vectors4
 		{
-			get { return v4; }
-			set { v4 = value; }
+			get
+			{
+				return v4;
+			}
+			set
+			{
+				v4 = value;
+			}
 		}
 
 		Vectors2f v5;
 		public Vectors2f Vectors5
 		{
-			get { return v5; }
-			set { v5 = value; }
+			get
+			{
+				return v5;
+			}
+			set
+			{
+				v5 = value;
+			}
 		}
 
 		Vectors2f v6;
 		public Vectors2f Vectors6
 		{
-			get { return v6; }
-			set { v6 = value; }
+			get
+			{
+				return v6;
+			}
+			set
+			{
+				v6 = value;
+			}
 		}
 
 		IntArrayList ia1;
 		public IntArrayList Numbers1
 		{
-			get { return ia1; }
-			set { ia1 = value; }
+			get
+			{
+				return ia1;
+			}
+			set
+			{
+				ia1 = value;
+			}
 		}
 
 		IntArrayList ia2;
 		public IntArrayList Numbers2
 		{
-			get { return ia2; }
-			set { ia2 = value; }
+			get
+			{
+				return ia2;
+			}
+			set
+			{
+				ia2 = value;
+			}
 		}
 
 		IntArrayList ia3;
 		public IntArrayList Numbers3
 		{
-			get { return ia3; }
-			set { ia3 = value; }
+			get
+			{
+				return ia3;
+			}
+			set
+			{
+				ia3 = value;
+			}
 		}
 
 		IntArrayList ia4;
 		public IntArrayList Numbers4
 		{
-			get { return ia4; }
-			set { ia4 = value; }
+			get
+			{
+				return ia4;
+			}
+			set
+			{
+				ia4 = value;
+			}
 		}
 
 		byte[] zero1;
 		public byte[] Zero1
 		{
-			get { return zero1; }
+			get
+			{
+				return zero1;
+			}
 		}
 
 		byte[] zero2;
 		public byte[] Zero2
 		{
-			get { return zero2; }
+			get
+			{
+				return zero2;
+			}
 		}
 
 		int refcount;
 		public int ReferencedCount
 		{
-			get { return refcount; }
-			set { refcount = value; }
+			get
+			{
+				return refcount;
+			}
+			set
+			{
+				refcount = value;
+			}
 		}
 		int u1;
 		public int Unknown1
 		{
-			get { return u1; }
-			set { u1 = value; }
+			get
+			{
+				return u1;
+			}
+			set
+			{
+				u1 = value;
+			}
 		}
 
 		float[] u2;
 		public float[] Unknown2
 		{
-			get { return u2; }
+			get
+			{
+				return u2;
+			}
 		}
 
 		IndexedMeshBuilderItems mbi;
 		public IndexedMeshBuilderItems Items
 		{
-			get { return mbi; }
-			set { mbi = value; }
+			get
+			{
+				return mbi;
+			}
+			set
+			{
+				mbi = value;
+			}
 		}
 
 		int u3;
 		public int Unknown3
 		{
-			get { return u3; }
-			set { u3 = value; }
+			get
+			{
+				return u3;
+			}
+			set
+			{
+				u3 = value;
+			}
 		}
 
 		int u4;
 		public int Unknown4
 		{
-			get { return u4; }
-			set { u4 = value; }
+			get
+			{
+				return u4;
+			}
+			set
+			{
+				u4 = value;
+			}
 		}
 
 		int u5;
 		public int Unknown5
 		{
-			get { return u5; }
-			set { u5 = value; }
+			get
+			{
+				return u5;
+			}
+			set
+			{
+				u5 = value;
+			}
 		}
 
 		int u6;
 		public int Unknown6
 		{
-			get { return u6; }
-			set { u6 = value; }
+			get
+			{
+				return u6;
+			}
+			set
+			{
+				u6 = value;
+			}
 		}
 
 		int u7;
 		public int Unknown7
 		{
-			get { return u7; }
-			set { u7 = value; }
+			get
+			{
+				return u7;
+			}
+			set
+			{
+				u7 = value;
+			}
 		}
 
 		int u8;
 		public int Unknown8
 		{
-			get { return u8; }
-			set { u8 = value; }
+			get
+			{
+				return u8;
+			}
+			set
+			{
+				u8 = value;
+			}
 		}
 
 		int u9;
 		public int Unknown9
 		{
-			get { return u9; }
-			set { u9 = value; }
+			get
+			{
+				return u9;
+			}
+			set
+			{
+				u9 = value;
+			}
 		}
 
 		int u10;
 		public int Unknown10
 		{
-			get { return u10; }
-			set { u10 = value; }
+			get
+			{
+				return u10;
+			}
+			set
+			{
+				u10 = value;
+			}
 		}
 
 		string s1;
 		public string Name
 		{
-			get { return s1; }
-			set { s1 = value; }
+			get
+			{
+				return s1;
+			}
+			set
+			{
+				s1 = value;
+			}
 		}
 
 		#endregion
@@ -570,8 +736,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public new IndexedMeshBuilderItem this[int index]
 		{
-			get { return ((IndexedMeshBuilderItem)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((IndexedMeshBuilderItem)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -579,8 +751,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public IndexedMeshBuilderItem this[uint index]
 		{
-			get { return ((IndexedMeshBuilderItem)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((IndexedMeshBuilderItem)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -627,7 +805,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		/// <summary>

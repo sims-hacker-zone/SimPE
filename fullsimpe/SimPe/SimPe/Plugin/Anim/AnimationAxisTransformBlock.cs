@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
+
 using SimPe.Geometry;
 
 namespace SimPe.Plugin.Anim
@@ -37,8 +38,14 @@ namespace SimPe.Plugin.Anim
 		[Browsable(false)]
 		public AnimationFrameBlock Parent
 		{
-			get { return parent; }
-			set { parent = value; }
+			get
+			{
+				return parent;
+			}
+			set
+			{
+				parent = value;
+			}
 		}
 
 		uint[] datai;
@@ -51,8 +58,14 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown1
 		{
-			get { return datai[0]; }
-			set { datai[0] = value; }
+			get
+			{
+				return datai[0];
+			}
+			set
+			{
+				datai[0] = value;
+			}
 		}
 
 		[
@@ -63,7 +76,10 @@ namespace SimPe.Plugin.Anim
 		]
 		public bool Locked
 		{
-			get { return ((Unknown1 >> 0x12) & 1) == 1; }
+			get
+			{
+				return ((Unknown1 >> 0x12) & 1) == 1;
+			}
 			set
 			{
 				uint i = 0;
@@ -80,7 +96,10 @@ namespace SimPe.Plugin.Anim
 		[DescriptionAttribute("Unknown Parts of Unknown1.")]
 		public uint Unknown1Bits
 		{
-			get { return Unknown1 >> 0x12; }
+			get
+			{
+				return Unknown1 >> 0x12;
+			}
 			set
 			{
 				Unknown1 = (uint)(
@@ -107,7 +126,10 @@ namespace SimPe.Plugin.Anim
 
 		public string Unknown1Hex
 		{
-			get { return "0x" + Helper.HexString(Unknown1Bits); }
+			get
+			{
+				return "0x" + Helper.HexString(Unknown1Bits);
+			}
 		}
 
 		[
@@ -117,8 +139,14 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown2
 		{
-			get { return datai[1]; }
-			set { datai[1] = value; }
+			get
+			{
+				return datai[1];
+			}
+			set
+			{
+				datai[1] = value;
+			}
 		}
 
 		ArrayList items;
@@ -131,8 +159,14 @@ namespace SimPe.Plugin.Anim
 		]
 		public AnimationTokenType Type
 		{
-			get { return (AnimationTokenType)type; }
-			set { type = (byte)value; }
+			get
+			{
+				return (AnimationTokenType)type;
+			}
+			set
+			{
+				type = (byte)value;
+			}
 		}
 
 		[
@@ -197,7 +231,10 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint AddonTokenUnknown
 		{
-			get { return Unknown1 >> 0x13; }
+			get
+			{
+				return Unknown1 >> 0x13;
+			}
 		}
 
 		[
@@ -206,7 +243,10 @@ namespace SimPe.Plugin.Anim
 		]
 		public int Count
 		{
-			get { return items.Count; }
+			get
+			{
+				return items.Count;
+			}
 		}
 		#endregion
 
@@ -605,8 +645,14 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		public AnimationAxisTransform this[int index]
 		{
-			get { return ((AnimationAxisTransform)items[index]); }
-			set { items[index] = value; }
+			get
+			{
+				return ((AnimationAxisTransform)items[index]);
+			}
+			set
+			{
+				items[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -614,8 +660,14 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		public AnimationAxisTransform this[uint index]
 		{
-			get { return ((AnimationAxisTransform)items[(int)index]); }
-			set { items[(int)index] = value; }
+			get
+			{
+				return ((AnimationAxisTransform)items[(int)index]);
+			}
+			set
+			{
+				items[(int)index] = value;
+			}
 		}
 
 		/// <summary>

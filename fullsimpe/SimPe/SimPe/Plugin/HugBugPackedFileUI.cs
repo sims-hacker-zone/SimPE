@@ -1,5 +1,6 @@
 using System;
 using System.Media;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -13,11 +14,17 @@ namespace SimPe.Plugin
 	{
 		protected new HugBugPackedFileWrapper Wrapper
 		{
-			get { return base.Wrapper as HugBugPackedFileWrapper; }
+			get
+			{
+				return base.Wrapper as HugBugPackedFileWrapper;
+			}
 		}
 		public HugBugPackedFileWrapper TPFW
 		{
-			get { return (HugBugPackedFileWrapper)Wrapper; }
+			get
+			{
+				return (HugBugPackedFileWrapper)Wrapper;
+			}
 		}
 
 		#region WrapperBaseControl Member
@@ -66,7 +73,10 @@ namespace SimPe.Plugin
 		#region IPackedFileUI Member
 		System.Windows.Forms.Control IPackedFileUI.GUIHandle
 		{
-			get { return this; }
+			get
+			{
+				return this;
+			}
 		}
 		#endregion
 

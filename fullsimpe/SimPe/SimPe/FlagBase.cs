@@ -51,8 +51,14 @@ namespace SimPe
 		[System.ComponentModel.Browsable(false)]
 		public ushort Value
 		{
-			get { return flags; }
-			set { flags = value; }
+			get
+			{
+				return flags;
+			}
+			set
+			{
+				flags = value;
+			}
 		}
 
 		protected bool GetBit(byte nr)

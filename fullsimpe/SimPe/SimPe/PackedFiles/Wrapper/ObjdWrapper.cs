@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -98,7 +99,10 @@ namespace SimPe.PackedFiles.Wrapper
 				catch (Exception) {};*/
 				return Helper.ToString(filename);
 			}
-			set { filename = Helper.SetLength(Helper.ToBytes(value, 64), 64); }
+			set
+			{
+				filename = Helper.SetLength(Helper.ToBytes(value, 64), 64);
+			}
 		}
 
 		/// <summary>
@@ -106,8 +110,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint Guid
 		{
-			get { return SimId; }
-			set { SimId = value; }
+			get
+			{
+				return SimId;
+			}
+			set
+			{
+				SimId = value;
+			}
 		}
 
 		uint guid,
@@ -120,8 +130,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint SimId
 		{
-			get { return guid; }
-			set { guid = value; }
+			get
+			{
+				return guid;
+			}
+			set
+			{
+				guid = value;
+			}
 		}
 
 		/// <summary>
@@ -129,8 +145,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint ProxyGuid
 		{
-			get { return proxyguid; }
-			set { proxyguid = value; }
+			get
+			{
+				return proxyguid;
+			}
+			set
+			{
+				proxyguid = value;
+			}
 		}
 
 		/// <summary>
@@ -138,8 +160,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint OriginalGuid
 		{
-			get { return originalguid; }
-			set { originalguid = value; }
+			get
+			{
+				return originalguid;
+			}
+			set
+			{
+				originalguid = value;
+			}
 		}
 
 		/// <summary>
@@ -237,7 +265,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public ushort CTSSId
 		{
-			get { return ctssid; }
+			get
+			{
+				return ctssid;
+			}
 		}
 
 		/// <summary>
@@ -245,8 +276,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public ushort Type
 		{
-			get { return type; }
-			set { type = value; }
+			get
+			{
+				return type;
+			}
+			set
+			{
+				type = value;
+			}
 		}
 
 		/// <summary>

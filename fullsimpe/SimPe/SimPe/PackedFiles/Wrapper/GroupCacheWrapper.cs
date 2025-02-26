@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Wrapper;
@@ -47,7 +48,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <remarks>Do not add Items based on this List! use the Add Method!!</remarks>
 		internal GroupCacheItems Items
 		{
-			get { return items; }
+			get
+			{
+				return items;
+			}
 		}
 
 		Hashtable map;

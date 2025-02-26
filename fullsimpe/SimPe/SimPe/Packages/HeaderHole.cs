@@ -39,8 +39,14 @@ namespace SimPe.Packages
 		/// </summary>
 		public int Count
 		{
-			get { return count; }
-			set { count = value; }
+			get
+			{
+				return count;
+			}
+			set
+			{
+				count = value;
+			}
 		}
 
 		/// <summary>
@@ -53,8 +59,14 @@ namespace SimPe.Packages
 		/// </summary>
 		public uint Offset
 		{
-			get { return offset; }
-			set { offset = value; }
+			get
+			{
+				return offset;
+			}
+			set
+			{
+				offset = value;
+			}
 		}
 
 		/// <summary>
@@ -67,8 +79,14 @@ namespace SimPe.Packages
 		/// </summary>
 		public int Size
 		{
-			get { return size; }
-			set { size = value; }
+			get
+			{
+				return size;
+			}
+			set
+			{
+				size = value;
+			}
 		}
 
 		/// <summary>

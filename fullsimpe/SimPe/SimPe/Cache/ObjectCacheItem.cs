@@ -20,6 +20,7 @@
 using System;
 using System.Drawing;
 using System.IO;
+
 using SimPe;
 
 namespace SimPe.Cache
@@ -90,8 +91,14 @@ namespace SimPe.Cache
 
 		public Object Tag
 		{
-			get { return tag; }
-			set { tag = value; }
+			get
+			{
+				return tag;
+			}
+			set
+			{
+				tag = value;
+			}
 		}
 
 		public ObjectCacheItemVersions ObjectVersion
@@ -123,7 +130,10 @@ namespace SimPe.Cache
 				pfd.Tag = this;
 				return pfd;
 			}
-			set { pfd = value; }
+			set
+			{
+				pfd = value;
+			}
 		}
 
 		/// <summary>
@@ -131,8 +141,14 @@ namespace SimPe.Cache
 		/// </summary>
 		public Data.ObjectTypes ObjectType
 		{
-			get { return objtype; }
-			set { objtype = value; }
+			get
+			{
+				return objtype;
+			}
+			set
+			{
+				objtype = value;
+			}
 		}
 
 		/// <summary>
@@ -140,8 +156,14 @@ namespace SimPe.Cache
 		/// </summary>
 		public ObjectClass Class
 		{
-			get { return oclass; }
-			set { oclass = value; }
+			get
+			{
+				return oclass;
+			}
+			set
+			{
+				oclass = value;
+			}
 		}
 
 		/// <summary>
@@ -149,8 +171,14 @@ namespace SimPe.Cache
 		/// </summary>
 		public uint ObjectFunctionSort
 		{
-			get { return objfuncsort; }
-			set { objfuncsort = value; }
+			get
+			{
+				return objfuncsort;
+			}
+			set
+			{
+				objfuncsort = value;
+			}
 		}
 
 		/// <summary>
@@ -158,8 +186,14 @@ namespace SimPe.Cache
 		/// </summary>
 		public uint ObjBuildType
 		{
-			get { return objbuildtipe; }
-			set { objbuildtipe = value; }
+			get
+			{
+				return objbuildtipe;
+			}
+			set
+			{
+				objbuildtipe = value;
+			}
 		}
 
 		public static string[][] GetCategory(
@@ -364,8 +398,14 @@ namespace SimPe.Cache
 		/// </summary>
 		public uint LocalGroup
 		{
-			get { return localgroup; }
-			set { localgroup = value; }
+			get
+			{
+				return localgroup;
+			}
+			set
+			{
+				localgroup = value;
+			}
 		}
 
 		/// <summary>
@@ -373,8 +413,14 @@ namespace SimPe.Cache
 		/// </summary>
 		public string Name
 		{
-			get { return name; }
-			set { name = value; }
+			get
+			{
+				return name;
+			}
+			set
+			{
+				name = value;
+			}
 		}
 
 		/// <summary>
@@ -382,8 +428,14 @@ namespace SimPe.Cache
 		/// </summary>
 		public string ObjectFileName
 		{
-			get { return objname; }
-			set { objname = value; }
+			get
+			{
+				return objname;
+			}
+			set
+			{
+				objname = value;
+			}
 		}
 
 		/// <summary>
@@ -391,8 +443,14 @@ namespace SimPe.Cache
 		/// </summary>
 		public bool Useable
 		{
-			get { return use; }
-			set { use = value; }
+			get
+			{
+				return use;
+			}
+			set
+			{
+				use = value;
+			}
 		}
 
 		/// <summary>
@@ -400,8 +458,14 @@ namespace SimPe.Cache
 		/// </summary>
 		public string ModelName
 		{
-			get { return modelname; }
-			set { modelname = value; }
+			get
+			{
+				return modelname;
+			}
+			set
+			{
+				modelname = value;
+			}
 		}
 
 		/// <summary>
@@ -409,8 +473,14 @@ namespace SimPe.Cache
 		/// </summary>
 		public Image Thumbnail
 		{
-			get { return thumb; }
-			set { thumb = value; }
+			get
+			{
+				return thumb;
+			}
+			set
+			{
+				thumb = value;
+			}
 		}
 
 		public override string ToString()
@@ -518,7 +588,10 @@ namespace SimPe.Cache
 
 		public byte Version
 		{
-			get { return version; }
+			get
+			{
+				return version;
+			}
 		}
 
 		#endregion

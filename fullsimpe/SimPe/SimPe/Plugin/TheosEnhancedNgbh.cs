@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;
@@ -62,10 +63,15 @@ namespace SimPe.Plugin
 
 			public override string Message
 			{
-				get { return msg.ToString(); }
+				get
+				{
+					return msg.ToString();
+				}
 			}
 
-			public ExceptionBuilder() { }
+			public ExceptionBuilder()
+			{
+			}
 
 			public void Append(string str)
 			{
@@ -80,7 +86,9 @@ namespace SimPe.Plugin
 
 		class AliasList : CollectionBase
 		{
-			public AliasList() { }
+			public AliasList()
+			{
+			}
 
 			public int Add(IAlias alias)
 			{
@@ -309,7 +317,9 @@ namespace SimPe.Plugin
 	{
 		internal sealed class Memory
 		{
-			Memory() { }
+			Memory()
+			{
+			}
 
 			/// <summary>
 			/// A memory's subject can be of three different types

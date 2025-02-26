@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -39,16 +40,28 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string Hoodtexture
 		{
-			get { return hoodtexture; }
-			set { hoodtexture = value; }
+			get
+			{
+				return hoodtexture;
+			}
+			set
+			{
+				hoodtexture = value;
+			}
 		}
 		public int Itemnumber
 		{
-			get { return itemnum; }
+			get
+			{
+				return itemnum;
+			}
 		}
 		public int Badges
 		{
-			get { return badges; }
+			get
+			{
+				return badges;
+			}
 		}
 		#endregion
 

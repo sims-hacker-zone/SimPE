@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Interfaces.Files;
 using SimPe.Plugin;
 
@@ -72,22 +73,34 @@ namespace SimPe.Interfaces.Plugin.Scanner
 		/// <summary>
 		/// The uid that was assigned to the scanner
 		/// </summary>
-		uint Uid { get; }
+		uint Uid
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns true, if this scanner should be activated by Default
 		/// </summary>
-		bool IsActiveByDefault { get; }
+		bool IsActiveByDefault
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns true, if this Scanner should be listed on the Top of the List
 		/// </summary>
-		bool OnTop { get; }
+		bool OnTop
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns null or a valid Control, that will be displayed on the Controls Tab
 		/// </summary>
-		System.Windows.Forms.Control OperationControl { get; }
+		System.Windows.Forms.Control OperationControl
+		{
+			get;
+		}
 
 		/// <summary>
 		/// This is called, when the Selection of the ListView was changed, or a Scan was started

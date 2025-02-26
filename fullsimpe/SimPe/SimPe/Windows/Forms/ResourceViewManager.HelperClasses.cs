@@ -24,7 +24,9 @@ namespace SimPe.Windows.Forms
 		}
 
 		public class ResourceList
-			: List<SimPe.Interfaces.Files.IPackedFileDescriptor> { }
+			: List<SimPe.Interfaces.Files.IPackedFileDescriptor>
+		{
+		}
 
 		public class ResourceNameList : List<NamedPackedFileDescriptor>
 		{
@@ -49,14 +51,26 @@ namespace SimPe.Windows.Forms
 
 				public SortColumn Column
 				{
-					get { return sc; }
-					set { sc = value; }
+					get
+					{
+						return sc;
+					}
+					set
+					{
+						sc = value;
+					}
 				}
 
 				public bool Asc
 				{
-					get { return asc; }
-					set { asc = value; }
+					get
+					{
+						return asc;
+					}
+					set
+					{
+						asc = value;
+					}
 				}
 
 				#region IComparer<NamedPackedFileDescriptor> Member

@@ -221,7 +221,10 @@ namespace pjse
 
 		public bool IsLoaded
 		{
-			get { return guidIndex != null; }
+			get
+			{
+				return guidIndex != null;
+			}
 		}
 
 		#region IDictionary<uint,string> Members
@@ -253,7 +256,10 @@ namespace pjse
 
 		public ICollection<uint> Keys
 		{
-			get { return guidIndex.Keys; }
+			get
+			{
+				return guidIndex.Keys;
+			}
 		}
 
 		public bool Remove(uint key)
@@ -298,7 +304,10 @@ namespace pjse
 					? null
 					: s;
 			}
-			set { throw new Exception("The method or operation is not implemented."); }
+			set
+			{
+				throw new Exception("The method or operation is not implemented.");
+			}
 		}
 
 		#endregion
@@ -331,12 +340,18 @@ namespace pjse
 
 		public int Count
 		{
-			get { return guidIndex.Count; }
+			get
+			{
+				return guidIndex.Count;
+			}
 		}
 
 		public bool IsReadOnly
 		{
-			get { return true; }
+			get
+			{
+				return true;
+			}
 		}
 
 		public bool Remove(KeyValuePair<uint, string> item)

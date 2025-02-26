@@ -11,7 +11,9 @@ namespace SimPe.Plugin.Tool.Window
 	/// </summary>
 	public class PackageRepairTool : SimPe.Interfaces.IToolPlus
 	{
-		public PackageRepairTool() { }
+		public PackageRepairTool()
+		{
+		}
 
 		#region IToolPlus Member
 
@@ -42,12 +44,18 @@ namespace SimPe.Plugin.Tool.Window
 
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get { return System.Windows.Forms.Shortcut.None; }
+			get
+			{
+				return System.Windows.Forms.Shortcut.None;
+			}
 		}
 
 		public bool Visible
 		{
-			get { return true; }
+			get
+			{
+				return true;
+			}
 		}
 
 		public Image Icon

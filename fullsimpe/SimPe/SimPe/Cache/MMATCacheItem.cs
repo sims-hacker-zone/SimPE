@@ -20,6 +20,7 @@
 using System;
 using System.Drawing;
 using System.IO;
+
 using SimPe;
 
 namespace SimPe.Cache
@@ -59,7 +60,10 @@ namespace SimPe.Cache
 				pfd.Tag = this;
 				return pfd;
 			}
-			set { pfd = value; }
+			set
+			{
+				pfd = value;
+			}
 		}
 
 		/// <summary>
@@ -67,8 +71,14 @@ namespace SimPe.Cache
 		/// </summary>
 		public bool Default
 		{
-			get { return def; }
-			set { def = value; }
+			get
+			{
+				return def;
+			}
+			set
+			{
+				def = value;
+			}
 		}
 
 		/// <summary>
@@ -76,8 +86,14 @@ namespace SimPe.Cache
 		/// </summary>
 		public string ModelName
 		{
-			get { return modelname; }
-			set { modelname = value; }
+			get
+			{
+				return modelname;
+			}
+			set
+			{
+				modelname = value;
+			}
 		}
 
 		/// <summary>
@@ -85,8 +101,14 @@ namespace SimPe.Cache
 		/// </summary>
 		public string Family
 		{
-			get { return family; }
-			set { family = value; }
+			get
+			{
+				return family;
+			}
+			set
+			{
+				family = value;
+			}
 		}
 
 		public override string ToString()
@@ -125,7 +147,10 @@ namespace SimPe.Cache
 
 		public byte Version
 		{
-			get { return version; }
+			get
+			{
+				return version;
+			}
 		}
 
 		#endregion

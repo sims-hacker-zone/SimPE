@@ -28,7 +28,10 @@ namespace SimPe.Windows.Forms
 		ResourceListViewExt lv;
 		public ResourceListViewExt ListView
 		{
-			get { return lv; }
+			get
+			{
+				return lv;
+			}
 			set
 			{
 				if (lv != value)
@@ -45,7 +48,10 @@ namespace SimPe.Windows.Forms
 		ResourceTreeViewExt tv;
 		public ResourceTreeViewExt TreeView
 		{
-			get { return tv; }
+			get
+			{
+				return tv;
+			}
 			set
 			{
 				if (tv != value)
@@ -61,7 +67,10 @@ namespace SimPe.Windows.Forms
 
 		public bool Available
 		{
-			get { return (tv != null && lv != null); }
+			get
+			{
+				return (tv != null && lv != null);
+			}
 		}
 
 		SimPe.Interfaces.Files.IPackageFile pkg;
@@ -69,13 +78,19 @@ namespace SimPe.Windows.Forms
 		[System.ComponentModel.Browsable(false)]
 		public ResourceViewManager.ResourceNameList Everything
 		{
-			get { return maps.Everything; }
+			get
+			{
+				return maps.Everything;
+			}
 		}
 
 		[System.ComponentModel.Browsable(false)]
 		public SimPe.Interfaces.Files.IPackageFile Package
 		{
-			get { return pkg; }
+			get
+			{
+				return pkg;
+			}
 			set
 			{
 				if (pkg != value)

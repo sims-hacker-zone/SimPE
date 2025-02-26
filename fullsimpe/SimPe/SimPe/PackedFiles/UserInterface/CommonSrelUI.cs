@@ -23,7 +23,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+
 using Ambertation.Windows.Forms;
+
 using SimPe;
 using SimPe.Data;
 using SimPe.Interfaces;
@@ -350,7 +352,10 @@ namespace SimPe.PackedFiles.UserInterface
 		SimPe.PackedFiles.Wrapper.ExtSrel srel;
 		public SimPe.PackedFiles.Wrapper.ExtSrel Srel
 		{
-			get { return srel; }
+			get
+			{
+				return srel;
+			}
 			set
 			{
 				srel = value;

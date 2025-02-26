@@ -100,7 +100,10 @@ namespace SimPe.Plugin
 			tskill;
 		public bool ShowBadges
 		{
-			get { return badge; }
+			get
+			{
+				return badge;
+			}
 			set
 			{
 				if (badge != value)
@@ -112,7 +115,10 @@ namespace SimPe.Plugin
 		}
 		public bool ShowSkills
 		{
-			get { return skill; }
+			get
+			{
+				return skill;
+			}
 			set
 			{
 				if (skill != value)
@@ -124,7 +130,10 @@ namespace SimPe.Plugin
 		}
 		public bool ShowToddlerSkills
 		{
-			get { return tskill; }
+			get
+			{
+				return tskill;
+			}
 			set
 			{
 				if (tskill != value)
@@ -164,7 +173,10 @@ namespace SimPe.Plugin
 
 		public NgbhValueDescriptor SelectedDescriptor
 		{
-			get { return cb.SelectedItem as NgbhValueDescriptor; }
+			get
+			{
+				return cb.SelectedItem as NgbhValueDescriptor;
+			}
 		}
 
 		public event EventHandler SelectedDescriptorChanged;

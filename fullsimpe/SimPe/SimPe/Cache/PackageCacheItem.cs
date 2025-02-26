@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.Drawing;
 using System.IO;
+
 using SimPe;
 
 namespace SimPe.Cache
@@ -175,20 +176,38 @@ namespace SimPe.Cache
 
 		public TriState State
 		{
-			get { return state; }
-			set { state = value; }
+			get
+			{
+				return state;
+			}
+			set
+			{
+				state = value;
+			}
 		}
 
 		public uint Uid
 		{
-			get { return uid; }
-			set { uid = value; }
+			get
+			{
+				return uid;
+			}
+			set
+			{
+				uid = value;
+			}
 		}
 
 		public string Info
 		{
-			get { return info; }
-			set { info = value; }
+			get
+			{
+				return info;
+			}
+			set
+			{
+				info = value;
+			}
 		}
 
 		public uint[] Data
@@ -199,7 +218,10 @@ namespace SimPe.Cache
 					data = new uint[0];
 				return data;
 			}
-			set { data = value; }
+			set
+			{
+				data = value;
+			}
 		}
 
 		internal virtual void Load(System.IO.BinaryReader reader)
@@ -240,14 +262,26 @@ namespace SimPe.Cache
 	{
 		public new PackageState this[int index]
 		{
-			get { return ((PackageState)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((PackageState)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		public PackageState this[uint index]
 		{
-			get { return ((PackageState)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((PackageState)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		public int Add(PackageState item)
@@ -272,7 +306,10 @@ namespace SimPe.Cache
 
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		public override object Clone()
@@ -309,41 +346,74 @@ namespace SimPe.Cache
 		uint[] guids;
 		public uint[] Guids
 		{
-			get { return guids; }
-			set { guids = value; }
+			get
+			{
+				return guids;
+			}
+			set
+			{
+				guids = value;
+			}
 		}
 
 		PackageType type;
 		public PackageType Type
 		{
-			get { return type; }
-			set { type = value; }
+			get
+			{
+				return type;
+			}
+			set
+			{
+				type = value;
+			}
 		}
 
 		string name;
 		public string Name
 		{
-			get { return name; }
-			set { name = value; }
+			get
+			{
+				return name;
+			}
+			set
+			{
+				name = value;
+			}
 		}
 
 		Image thumb;
 		public Image Thumbnail
 		{
-			get { return thumb; }
-			set { thumb = value; }
+			get
+			{
+				return thumb;
+			}
+			set
+			{
+				thumb = value;
+			}
 		}
 
 		PackageStates states;
 		public PackageStates States
 		{
-			get { return states; }
-			set { states = value; }
+			get
+			{
+				return states;
+			}
+			set
+			{
+				states = value;
+			}
 		}
 
 		public int StateCount
 		{
-			get { return states.Count; }
+			get
+			{
+				return states.Count;
+			}
 		}
 
 		/// <summary>
@@ -375,8 +445,14 @@ namespace SimPe.Cache
 		bool enabled;
 		public bool Enabled
 		{
-			get { return enabled; }
-			set { enabled = value; }
+			get
+			{
+				return enabled;
+			}
+			set
+			{
+				enabled = value;
+			}
 		}
 
 		public override string ToString()
@@ -456,7 +532,10 @@ namespace SimPe.Cache
 
 		public byte Version
 		{
-			get { return version; }
+			get
+			{
+				return version;
+			}
 		}
 
 		#endregion

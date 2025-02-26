@@ -461,7 +461,10 @@ namespace SimPe.Plugin
 		[System.ComponentModel.Browsable(false)]
 		public NgbhSlot Slot
 		{
-			get { return slot; }
+			get
+			{
+				return slot;
+			}
 			set
 			{
 				slot = value;
@@ -481,7 +484,10 @@ namespace SimPe.Plugin
 		[System.ComponentModel.Browsable(false)]
 		public NgbhValueDescriptor NgbhValueDescriptor
 		{
-			get { return des; }
+			get
+			{
+				return des;
+			}
 			set
 			{
 				des = value;
@@ -492,7 +498,10 @@ namespace SimPe.Plugin
 		NgbhValueDescriptorSelection vds;
 		public NgbhValueDescriptorSelection NgbhValueDescriptorSelection
 		{
-			get { return vds; }
+			get
+			{
+				return vds;
+			}
 			set
 			{
 				if (vds != null)
@@ -557,7 +566,9 @@ namespace SimPe.Plugin
 			this.NgbhValueDescriptor = vds.SelectedDescriptor;
 		}
 
-		private void pb_Resize(object sender, System.EventArgs e) { }
+		private void pb_Resize(object sender, System.EventArgs e)
+		{
+		}
 
 		protected override void OnResize(EventArgs e)
 		{
@@ -631,6 +642,8 @@ namespace SimPe.Plugin
 				ChangedItem(this, new EventArgs());
 		}
 
-		private void pb_Load(object sender, System.EventArgs e) { }
+		private void pb_Load(object sender, System.EventArgs e)
+		{
+		}
 	}
 }

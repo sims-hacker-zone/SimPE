@@ -43,7 +43,10 @@ namespace SimPe
 
 			public string Folder
 			{
-				get { return folder; }
+				get
+				{
+					return folder;
+				}
 			}
 
 			public override string ToString()
@@ -304,7 +307,9 @@ namespace SimPe
 		/// <summary>
 		/// constructor
 		/// </summary>
-		public SelectSimFolderUITypeEditor() { }
+		public SelectSimFolderUITypeEditor()
+		{
+		}
 
 		/// <summary>
 		/// display a modal form

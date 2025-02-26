@@ -56,8 +56,14 @@ namespace System.Windows.Forms
 		[Description("Show or Hide the All/None buttons")]
 		public bool ButtonsVisible
 		{
-			get { return btnAll.Visible && btnNone.Visible; }
-			set { btnAll.Visible = btnNone.Visible = value; }
+			get
+			{
+				return btnAll.Visible && btnNone.Visible;
+			}
+			set
+			{
+				btnAll.Visible = btnNone.Visible = value;
+			}
 		}
 
 		[Browsable(true)]
@@ -65,7 +71,10 @@ namespace System.Windows.Forms
 		[Description("The unsigned short value representing the bit set to be edited")]
 		public ushort Value
 		{
-			get { return (ushort)boolset; }
+			get
+			{
+				return (ushort)boolset;
+			}
 			set
 			{
 				ushort oldvalue = boolset;
@@ -98,7 +107,10 @@ namespace System.Windows.Forms
 		[Description("The collection representing the labels for the bits")]
 		public List<string> Labels
 		{
-			get { return labels; }
+			get
+			{
+				return labels;
+			}
 			set
 			{
 				labels = value;

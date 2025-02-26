@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Globalization;
+
 using SimPe.Interfaces.Files;
 
 namespace SimPe.Plugin
@@ -18,7 +19,10 @@ namespace SimPe.Plugin
 
 		public IPackedFileDescriptor FileDescriptor
 		{
-			get { return this.pfd; }
+			get
+			{
+				return this.pfd;
+			}
 		}
 
 		public ResourceReference(IPackedFileDescriptor file)

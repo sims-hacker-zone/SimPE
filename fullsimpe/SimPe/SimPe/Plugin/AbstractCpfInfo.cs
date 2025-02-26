@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Text;
+
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
@@ -18,7 +19,10 @@ namespace SimPe.Plugin
 
 		public Cpf PropertySet
 		{
-			get { return this.propertySet; }
+			get
+			{
+				return this.propertySet;
+			}
 			set
 			{
 				if (value == null)
@@ -32,14 +36,26 @@ namespace SimPe.Plugin
 
 		public bool Enabled
 		{
-			get { return this.enabled; }
-			set { this.enabled = value; }
+			get
+			{
+				return this.enabled;
+			}
+			set
+			{
+				this.enabled = value;
+			}
 		}
 
 		public bool HasChanges
 		{
-			get { return this.changed; }
-			set { this.changed = value; }
+			get
+			{
+				return this.changed;
+			}
+			set
+			{
+				this.changed = value;
+			}
 		}
 
 		/// <summary>
@@ -47,8 +63,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public bool Pinned
 		{
-			get { return this.pinned; }
-			set { this.pinned = value; }
+			get
+			{
+				return this.pinned;
+			}
+			set
+			{
+				this.pinned = value;
+			}
 		}
 
 		#region Lazy properties, use them sparingly
@@ -83,7 +105,10 @@ namespace SimPe.Plugin
 					return ParseGuidValue(CpfItem("family"));
 				return Guid.Empty;
 			}
-			set { this.SetValue("family", value.ToString()); }
+			set
+			{
+				this.SetValue("family", value.ToString());
+			}
 		}
 
 		public string Name
@@ -94,7 +119,10 @@ namespace SimPe.Plugin
 					return CpfItem("name").StringValue;
 				return null;
 			}
-			set { this.SetValue("name", value); }
+			set
+			{
+				this.SetValue("name", value);
+			}
 		}
 
 		#endregion

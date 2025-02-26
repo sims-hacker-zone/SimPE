@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe.Plugin.Anim;
 
 namespace SimPe.Plugin
@@ -41,17 +42,26 @@ namespace SimPe.Plugin
 
 		public AnimationMeshBlock ANIMBlock
 		{
-			get { return amb; }
+			get
+			{
+				return amb;
+			}
 		}
 
 		public SimPe.Plugin.GenericRcol CRES
 		{
-			get { return cres; }
+			get
+			{
+				return cres;
+			}
 		}
 
 		public SimPe.Plugin.GenericRcol GMDC
 		{
-			get { return gmdc; }
+			get
+			{
+				return gmdc;
+			}
 		}
 
 		public override string ToString()

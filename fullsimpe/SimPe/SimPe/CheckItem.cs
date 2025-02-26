@@ -512,7 +512,10 @@ namespace SimPe
 		bool cf;
 		public bool CanFix
 		{
-			get { return cf; }
+			get
+			{
+				return cf;
+			}
 			set
 			{
 				if (cf != value)
@@ -528,7 +531,10 @@ namespace SimPe
 		[System.ComponentModel.Localizable(true)]
 		public string Caption
 		{
-			get { return txt; }
+			get
+			{
+				return txt;
+			}
 			set
 			{
 				txt = value;
@@ -539,7 +545,10 @@ namespace SimPe
 		CheckItemState cs;
 		public CheckItemState CheckState
 		{
-			get { return cs; }
+			get
+			{
+				return cs;
+			}
 			set
 			{
 				cs = value;
@@ -559,7 +568,10 @@ namespace SimPe
 		string det;
 		public string Details
 		{
-			get { return det; }
+			get
+			{
+				return det;
+			}
 			set
 			{
 				det = value;
@@ -576,7 +588,9 @@ namespace SimPe
 			this.Refresh();
 		}
 
-		protected virtual void OnFix() { }
+		protected virtual void OnFix()
+		{
+		}
 
 		public void Reset()
 		{

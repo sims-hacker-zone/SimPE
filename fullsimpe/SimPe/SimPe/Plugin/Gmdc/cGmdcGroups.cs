@@ -59,8 +59,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public PrimitiveType PrimitiveType
 		{
-			get { return unknown1; }
-			set { unknown1 = value; }
+			get
+			{
+				return unknown1;
+			}
+			set
+			{
+				unknown1 = value;
+			}
 		}
 
 		int alternate;
@@ -70,8 +76,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public int LinkIndex
 		{
-			get { return alternate; }
-			set { alternate = value; }
+			get
+			{
+				return alternate;
+			}
+			set
+			{
+				alternate = value;
+			}
 		}
 
 		/// <summary>
@@ -97,8 +109,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public String Name
 		{
-			get { return name; }
-			set { name = value; }
+			get
+			{
+				return name;
+			}
+			set
+			{
+				name = value;
+			}
 		}
 
 		IntArrayList items1;
@@ -108,8 +126,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public IntArrayList Faces
 		{
-			get { return items1; }
-			set { items1 = value; }
+			get
+			{
+				return items1;
+			}
+			set
+			{
+				items1 = value;
+			}
 		}
 
 		uint opacity;
@@ -119,8 +143,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public uint Opacity
 		{
-			get { return opacity; }
-			set { opacity = value; }
+			get
+			{
+				return opacity;
+			}
+			set
+			{
+				opacity = value;
+			}
 		}
 
 		IntArrayList items2;
@@ -130,8 +160,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public IntArrayList UsedJoints
 		{
-			get { return items2; }
-			set { items2 = value; }
+			get
+			{
+				return items2;
+			}
+			set
+			{
+				items2 = value;
+			}
 		}
 		#endregion
 
@@ -198,7 +234,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public int FaceCount
 		{
-			get { return this.Faces.Count / 3; }
+			get
+			{
+				return this.Faces.Count / 3;
+			}
 		}
 
 		/// <summary>
@@ -416,8 +455,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public new GmdcGroup this[int index]
 		{
-			get { return ((GmdcGroup)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((GmdcGroup)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -425,8 +470,14 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcGroup this[uint index]
 		{
-			get { return ((GmdcGroup)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((GmdcGroup)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -473,7 +524,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		/// <summary>

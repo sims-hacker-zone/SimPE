@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Drawing;
+
 using SimPe.Interfaces;
 
 namespace SimPe.Plugin
@@ -71,7 +72,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public Interfaces.Files.IPackageFile Package
 		{
-			get { return package; }
+			get
+			{
+				return package;
+			}
 		}
 
 		/// <summary>
@@ -100,7 +104,10 @@ namespace SimPe.Plugin
 		/// </remarks>
 		public uint Type
 		{
-			get { return pset.GetSaveItem("type").UIntegerValue; }
+			get
+			{
+				return pset.GetSaveItem("type").UIntegerValue;
+			}
 		}
 
 		/// <summary>
@@ -108,7 +115,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string TxtrFile
 		{
-			get { return pset.GetSaveItem("texture").StringValue; }
+			get
+			{
+				return pset.GetSaveItem("texture").StringValue;
+			}
 		}
 
 		/// <summary>
@@ -149,7 +159,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string MatdFile
 		{
-			get { return pset.GetSaveItem("materialDescription").StringValue; }
+			get
+			{
+				return pset.GetSaveItem("materialDescription").StringValue;
+			}
 		}
 
 		/// <summary>
@@ -158,7 +171,10 @@ namespace SimPe.Plugin
 		/// <remarks>group=0xffffffff, subType=0x00000000</remarks>
 		public uint MmatInstance
 		{
-			get { return pset.GetSaveItem("materialOverride").UIntegerValue; }
+			get
+			{
+				return pset.GetSaveItem("materialOverride").UIntegerValue;
+			}
 		}
 
 		/// <summary>

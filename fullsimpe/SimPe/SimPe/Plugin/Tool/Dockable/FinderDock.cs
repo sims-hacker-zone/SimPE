@@ -23,6 +23,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 using Ambertation.Windows.Forms;
 
 namespace SimPe.Plugin.Tool.Dockable
@@ -235,23 +236,34 @@ namespace SimPe.Plugin.Tool.Dockable
 			((ListView)sender).Sort();
 		}
 
-		private void lv_SelectedIndexChanged(object sender, System.EventArgs e) { }
+		private void lv_SelectedIndexChanged(object sender, System.EventArgs e)
+		{
+		}
 
 		#region IToolExt Member
 
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get { return System.Windows.Forms.Shortcut.None; }
+			get
+			{
+				return System.Windows.Forms.Shortcut.None;
+			}
 		}
 
 		public System.Drawing.Image Icon
 		{
-			get { return this.TabImage; }
+			get
+			{
+				return this.TabImage;
+			}
 		}
 
 		public new bool Visible
 		{
-			get { return this.IsDocked || this.IsFloating; }
+			get
+			{
+				return this.IsDocked || this.IsFloating;
+			}
 		}
 
 		#endregion
@@ -261,7 +273,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		bool forcestop;
 		public bool ForcedStop
 		{
-			get { return forcestop; }
+			get
+			{
+				return forcestop;
+			}
 			set
 			{
 				if (value)
@@ -388,7 +403,10 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public bool Searching
 		{
-			get { return runningthreads > 0; }
+			get
+			{
+				return runningthreads > 0;
+			}
 		}
 
 		public void StopSearch()

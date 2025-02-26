@@ -240,12 +240,18 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public Wrapper.SimDNA Sdna
 		{
-			get { return (SimPe.PackedFiles.Wrapper.SimDNA)Wrapper; }
+			get
+			{
+				return (SimPe.PackedFiles.Wrapper.SimDNA)Wrapper;
+			}
 		}
 
 		private SimPe.PackedFiles.Wrapper.Cpf wrp
 		{
-			get { return (SimPe.PackedFiles.Wrapper.Cpf)Wrapper; }
+			get
+			{
+				return (SimPe.PackedFiles.Wrapper.Cpf)Wrapper;
+			}
 		}
 
 		protected override void RefreshGUI()

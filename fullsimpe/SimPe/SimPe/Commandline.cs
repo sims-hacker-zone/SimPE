@@ -22,6 +22,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 using SimPe.Plugin;
@@ -786,7 +787,10 @@ namespace SimPe
 
 		public ICommandLine[] KnownCommandLines
 		{
-			get { return new ICommandLine[] { new CommandlineHelp() }; }
+			get
+			{
+				return new ICommandLine[] { new CommandlineHelp() };
+			}
 		}
 
 		#endregion

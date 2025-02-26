@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -13,11 +14,17 @@ namespace SimPe.Plugin
 	{
 		protected new StringMapPackedFileWrapper Wrapper
 		{
-			get { return base.Wrapper as StringMapPackedFileWrapper; }
+			get
+			{
+				return base.Wrapper as StringMapPackedFileWrapper;
+			}
 		}
 		public StringMapPackedFileWrapper TPFW
 		{
-			get { return (StringMapPackedFileWrapper)Wrapper; }
+			get
+			{
+				return (StringMapPackedFileWrapper)Wrapper;
+			}
 		}
 
 		#region WrapperBaseControl Member
@@ -59,7 +66,10 @@ namespace SimPe.Plugin
 		#region IPackedFileUI Member
 		System.Windows.Forms.Control IPackedFileUI.GUIHandle
 		{
-			get { return this; }
+			get
+			{
+				return this;
+			}
 		}
 		#endregion
 

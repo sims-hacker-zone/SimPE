@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -10,11 +11,17 @@ namespace SimPe.Plugin
 	{
 		protected new SimmyListPackedFileWrapper Wrapper
 		{
-			get { return base.Wrapper as SimmyListPackedFileWrapper; }
+			get
+			{
+				return base.Wrapper as SimmyListPackedFileWrapper;
+			}
 		}
 		public SimmyListPackedFileWrapper TPFW
 		{
-			get { return (SimmyListPackedFileWrapper)Wrapper; }
+			get
+			{
+				return (SimmyListPackedFileWrapper)Wrapper;
+			}
 		}
 
 		#region WrapperBaseControl Member
@@ -32,13 +39,18 @@ namespace SimPe.Plugin
 			this.TBsting.Text = Wrapper.Strung;
 		}
 
-		public override void OnCommit() { }
+		public override void OnCommit()
+		{
+		}
 		#endregion
 
 		#region IPackedFileUI Member
 		System.Windows.Forms.Control IPackedFileUI.GUIHandle
 		{
-			get { return this; }
+			get
+			{
+				return this;
+			}
 		}
 		#endregion
 

@@ -37,7 +37,10 @@ namespace SimPe
 		/// </summary>
 		public string Name
 		{
-			get { return name; }
+			get
+			{
+				return name;
+			}
 		}
 
 		/// <summary>
@@ -271,7 +274,10 @@ namespace SimPe
 		/// </summary>
 		public XmlRegistryKey CurrentUser
 		{
-			get { return root; }
+			get
+			{
+				return root;
+			}
 		}
 
 		/// <summary>

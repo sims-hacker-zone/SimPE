@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+
 using SimPe;
 
 namespace SimPe.Cache
@@ -84,7 +85,10 @@ namespace SimPe.Cache
 		/// </summary>
 		public byte Version
 		{
-			get { return version; }
+			get
+			{
+				return version;
+			}
 		}
 
 		/// <summary>
@@ -92,8 +96,14 @@ namespace SimPe.Cache
 		/// </summary>
 		public DateTime Added
 		{
-			get { return added; }
-			set { added = value; }
+			get
+			{
+				return added;
+			}
+			set
+			{
+				added = value;
+			}
 		}
 
 		CacheItems items;
@@ -103,7 +113,10 @@ namespace SimPe.Cache
 		/// </summary>
 		public CacheItems Items
 		{
-			get { return items; }
+			get
+			{
+				return items;
+			}
 		}
 
 		/// <summary>
@@ -111,7 +124,10 @@ namespace SimPe.Cache
 		/// </summary>
 		public ContainerType Type
 		{
-			get { return type; }
+			get
+			{
+				return type;
+			}
 		}
 
 		/// <summary>
@@ -119,13 +135,22 @@ namespace SimPe.Cache
 		/// </summary>
 		public bool Valid
 		{
-			get { return (valid == ContainerValid.Yes); }
+			get
+			{
+				return (valid == ContainerValid.Yes);
+			}
 		}
 
 		public ContainerValid ValidState
 		{
-			get { return valid; }
-			set { valid = value; }
+			get
+			{
+				return valid;
+			}
+			set
+			{
+				valid = value;
+			}
 		}
 
 		/// <summary>
@@ -133,8 +158,14 @@ namespace SimPe.Cache
 		/// </summary>
 		public string FileName
 		{
-			get { return filename; }
-			set { filename = value.Trim().ToLower(); }
+			get
+			{
+				return filename;
+			}
+			set
+			{
+				filename = value.Trim().ToLower();
+			}
 		}
 
 		/// <summary>

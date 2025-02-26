@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.Drawing;
+
 using Ambertation.Windows.Forms.Graph;
 
 namespace Ambertation.Collections
@@ -29,28 +30,43 @@ namespace Ambertation.Collections
 		GraphItemBase gi;
 		public GraphItemBase GraphItem
 		{
-			get { return gi; }
+			get
+			{
+				return gi;
+			}
 		}
 
 		string txt;
 		public string Text
 		{
-			get { return txt; }
+			get
+			{
+				return txt;
+			}
 		}
 		bool add;
 		public bool Added
 		{
-			get { return add; }
+			get
+			{
+				return add;
+			}
 		}
 		public bool Removed
 		{
-			get { return !add; }
+			get
+			{
+				return !add;
+			}
 		}
 
 		bool inter;
 		public bool Internal
 		{
-			get { return inter; }
+			get
+			{
+				return inter;
+			}
 		}
 
 		internal GraphItemChangedEventArgs(
@@ -84,8 +100,14 @@ namespace Ambertation.Collections
 		/// </summary>
 		public new GraphItemBase this[int index]
 		{
-			get { return ((GraphItemBase)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((GraphItemBase)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -93,8 +115,14 @@ namespace Ambertation.Collections
 		/// </summary>
 		public GraphItemBase this[uint index]
 		{
-			get { return ((GraphItemBase)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((GraphItemBase)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -198,7 +226,10 @@ namespace Ambertation.Collections
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		/// <summary>
@@ -227,8 +258,14 @@ namespace Ambertation.Collections
 		/// </summary>
 		public new GraphPanelElement this[int index]
 		{
-			get { return ((GraphPanelElement)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((GraphPanelElement)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -236,8 +273,14 @@ namespace Ambertation.Collections
 		/// </summary>
 		public GraphPanelElement this[uint index]
 		{
-			get { return ((GraphPanelElement)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((GraphPanelElement)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -305,7 +348,10 @@ namespace Ambertation.Collections
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		/// <summary>
@@ -332,8 +378,14 @@ namespace Ambertation.Collections
 		/// </summary>
 		public new PropertyItem this[int index]
 		{
-			get { return ((PropertyItem)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((PropertyItem)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -341,8 +393,14 @@ namespace Ambertation.Collections
 		/// </summary>
 		public PropertyItem this[uint index]
 		{
-			get { return ((PropertyItem)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((PropertyItem)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -445,7 +503,10 @@ namespace Ambertation.Collections
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		public string[] Keys
@@ -496,8 +557,14 @@ namespace Ambertation.Collections
 		/// </summary>
 		public new Image this[int index]
 		{
-			get { return ((Image)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((Image)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -505,8 +572,14 @@ namespace Ambertation.Collections
 		/// </summary>
 		public Image this[uint index]
 		{
-			get { return ((Image)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((Image)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -553,7 +626,10 @@ namespace Ambertation.Collections
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		/// <summary>

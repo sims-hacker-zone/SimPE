@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Wants
@@ -37,7 +38,10 @@ namespace SimPe.Wants
 		#region Accessor Methods
 		public string Version
 		{
-			get { return version; }
+			get
+			{
+				return version;
+			}
 			set
 			{
 				if (version != value)
@@ -266,7 +270,10 @@ namespace SimPe.Wants
 		/// </summary>
 		public uint[] AssignableTypes
 		{
-			get { return new uint[] { XWNTType, 0xBEEF7B4D }; }
+			get
+			{
+				return new uint[] { XWNTType, 0xBEEF7B4D };
+			}
 		}
 
 		/// <summary>
@@ -274,7 +281,10 @@ namespace SimPe.Wants
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		#endregion
@@ -322,7 +332,10 @@ namespace SimPe.Wants
 		#region Accessor Methods
 		public string Key
 		{
-			get { return key; }
+			get
+			{
+				return key;
+			}
 			set
 			{
 				if (key != value)
@@ -343,7 +356,10 @@ namespace SimPe.Wants
 
 		public string Stype
 		{
-			get { return type; }
+			get
+			{
+				return type;
+			}
 			set
 			{
 				if (type != value)
@@ -364,7 +380,10 @@ namespace SimPe.Wants
 
 		public string Utype
 		{
-			get { return utype; }
+			get
+			{
+				return utype;
+			}
 			set
 			{
 				if (utype != value)
@@ -385,7 +404,10 @@ namespace SimPe.Wants
 
 		public string Value
 		{
-			get { return value; }
+			get
+			{
+				return value;
+			}
 			set
 			{
 				if (this.value != value)
@@ -540,7 +562,10 @@ namespace SimPe.Wants
 		}
 		public static List<string> ValidKeys
 		{
-			get { return new List<string>(KeyType.Keys); }
+			get
+			{
+				return new List<string>(KeyType.Keys);
+			}
 		}
 
 		private static bool IsValidKey(string value)
@@ -577,11 +602,17 @@ namespace SimPe.Wants
 		}
 		public static List<string> ValidTypes
 		{
-			get { return new List<string>(TypeUtype.Keys); }
+			get
+			{
+				return new List<string>(TypeUtype.Keys);
+			}
 		}
 		public static List<string> ValidUtypes
 		{
-			get { return new List<string>(TypeUtype.Values); }
+			get
+			{
+				return new List<string>(TypeUtype.Values);
+			}
 		}
 
 		private static bool IsValidType(string value)

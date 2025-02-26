@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -62,7 +63,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string FileName
 		{
-			get { return Helper.ToString(filename); }
+			get
+			{
+				return Helper.ToString(filename);
+			}
 			set
 			{
 				if (!Helper.ToString(filename).Equals(value))
@@ -82,7 +86,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string SemiGlobalName
 		{
-			get { return Helper.ToString(semiglobal); }
+			get
+			{
+				return Helper.ToString(semiglobal);
+			}
 			set
 			{
 				semiglobal = Helper.ToBytes(value, 0);
@@ -132,7 +139,10 @@ namespace SimPe.Plugin
 		/// <remarks>Each Attribute is unique!</remarks>
 		public Hashtable Attributes
 		{
-			get { return attributes; }
+			get
+			{
+				return attributes;
+			}
 		}
 
 		/*/// <summary>
@@ -245,7 +255,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public byte[] FileSignature
 		{
-			get { return new byte[0]; }
+			get
+			{
+				return new byte[0];
+			}
 		}
 
 		/// <summary>

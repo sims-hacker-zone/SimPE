@@ -26,7 +26,9 @@ namespace SimPe.Actions.Default
 	/// </summary>
 	public class RestoreAction : AbstractActionDefault
 	{
-		public RestoreAction() { }
+		public RestoreAction()
+		{
+		}
 
 		#region IToolAction Member
 
@@ -82,7 +84,10 @@ namespace SimPe.Actions.Default
 
 		public override System.Windows.Forms.Shortcut Shortcut
 		{
-			get { return System.Windows.Forms.Shortcut.ShiftIns; }
+			get
+			{
+				return System.Windows.Forms.Shortcut.ShiftIns;
+			}
 		}
 		#endregion
 	}

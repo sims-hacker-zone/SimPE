@@ -31,6 +31,9 @@ namespace SimPe.Interfaces.Plugin
 	{
 		/// <summary>
 		/// </summary>
-		ICommandLine[] KnownCommandLines { get; }
+		ICommandLine[] KnownCommandLines
+		{
+			get;
+		}
 	}
 }

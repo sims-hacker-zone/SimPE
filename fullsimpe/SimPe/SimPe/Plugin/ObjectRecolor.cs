@@ -19,6 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Scenegraph;
 using SimPe.Packages;
@@ -40,19 +41,28 @@ namespace SimPe.Plugin
 		/// </summary>
 		public IPackageFile Package
 		{
-			get { return package; }
+			get
+			{
+				return package;
+			}
 		}
 
 		SimPe.Packages.GeneratableFile dn_pkg;
 		public IPackageFile GMNDPackage
 		{
-			get { return dn_pkg; }
+			get
+			{
+				return dn_pkg;
+			}
 		}
 
 		SimPe.Packages.GeneratableFile gm_pkg;
 		public IPackageFile MMATPackage
 		{
-			get { return gm_pkg; }
+			get
+			{
+				return gm_pkg;
+			}
 		}
 
 		/// <summary>

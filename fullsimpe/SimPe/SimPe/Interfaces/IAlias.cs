@@ -29,16 +29,25 @@ namespace SimPe.Interfaces
 		/// <summary>
 		/// The id Value
 		/// </summary>
-		uint Id { get; }
+		uint Id
+		{
+			get;
+		}
 
 		/// <summary>
 		/// The long Name
 		/// </summary>
-		string Name { get; }
+		string Name
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Can be used to Store Meta Informations with an Alias Entry
 		/// </summary>
-		object[] Tag { get; set; }
+		object[] Tag
+		{
+			get; set;
+		}
 	}
 }

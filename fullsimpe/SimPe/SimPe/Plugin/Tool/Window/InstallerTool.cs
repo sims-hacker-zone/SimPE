@@ -11,7 +11,9 @@ namespace SimPe.Plugin.Tool.Window
 	/// </summary>
 	public class InstallerTool : SimPe.Interfaces.IToolPlus
 	{
-		public InstallerTool() { }
+		public InstallerTool()
+		{
+		}
 
 		#region IToolPlus Member
 
@@ -35,17 +37,26 @@ namespace SimPe.Plugin.Tool.Window
 
 		public System.Windows.Forms.Shortcut Shortcut
 		{
-			get { return System.Windows.Forms.Shortcut.CtrlShiftI; }
+			get
+			{
+				return System.Windows.Forms.Shortcut.CtrlShiftI;
+			}
 		}
 
 		public bool Visible
 		{
-			get { return true; }
+			get
+			{
+				return true;
+			}
 		}
 
 		public Image Icon
 		{
-			get { return SimPe.GetIcon.ContentPreview; }
+			get
+			{
+				return SimPe.GetIcon.ContentPreview;
+			}
 		}
 
 		#endregion

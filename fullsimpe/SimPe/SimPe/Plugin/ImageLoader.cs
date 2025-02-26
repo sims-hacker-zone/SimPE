@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.Drawing;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -66,8 +67,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public ImageLoader.TxtrFormats Format
 		{
-			get { return format; }
-			set { format = value; }
+			get
+			{
+				return format;
+			}
+			set
+			{
+				format = value;
+			}
 		}
 
 		//image Size
@@ -78,8 +85,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public Size ParentSize
 		{
-			get { return size; }
-			set { size = value; }
+			get
+			{
+				return size;
+			}
+			set
+			{
+				size = value;
+			}
 		}
 
 		/// <summary>
@@ -92,8 +105,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public byte[] Data
 		{
-			get { return data; }
-			set { data = value; }
+			get
+			{
+				return data;
+			}
+			set
+			{
+				data = value;
+			}
 		}
 
 		Image img;

@@ -26,7 +26,9 @@ namespace SimPe.Actions.Default
 	/// </summary>
 	public class CreateAction : AbstractActionDefault
 	{
-		public CreateAction() { }
+		public CreateAction()
+		{
+		}
 
 		#region IToolAction Member
 
@@ -73,7 +75,10 @@ namespace SimPe.Actions.Default
 		#region IToolExt Member
 		public override System.Drawing.Image Icon
 		{
-			get { return SimPe.GetIcon.actionCreate; }
+			get
+			{
+				return SimPe.GetIcon.actionCreate;
+			}
 		}
 		#endregion
 	}

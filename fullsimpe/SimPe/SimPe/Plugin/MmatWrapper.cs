@@ -14,8 +14,14 @@ namespace SimPe.Plugin
 		static SimPe.PackedFiles.UserInterface.CpfUI.ExecutePreview prev;
 		public static SimPe.PackedFiles.UserInterface.CpfUI.ExecutePreview GlobalCpfPreview
 		{
-			get { return prev; }
-			set { prev = value; }
+			get
+			{
+				return prev;
+			}
+			set
+			{
+				prev = value;
+			}
 		}
 
 		#region IScenegraphBlock Member
@@ -304,7 +310,9 @@ namespace SimPe.Plugin
 			}
 		}
 
-		protected void FindRcolr(Interfaces.Files.IPackedFileDescriptor pfd) { }
+		protected void FindRcolr(Interfaces.Files.IPackedFileDescriptor pfd)
+		{
+		}
 
 		protected GenericRcol GetGmdc()
 		{
@@ -386,7 +394,10 @@ namespace SimPe.Plugin
 		/// </remarks>
 		public GenericRcol GMDC
 		{
-			get { return GetGmdc(); }
+			get
+			{
+				return GetGmdc();
+			}
 		}
 
 		public override string Description
@@ -437,62 +448,122 @@ namespace SimPe.Plugin
 		#region Default Attribute
 		public string Creator
 		{
-			get { return this.GetSaveItem("creator").StringValue; }
-			set { this.GetSaveItem("creator").StringValue = value; }
+			get
+			{
+				return this.GetSaveItem("creator").StringValue;
+			}
+			set
+			{
+				this.GetSaveItem("creator").StringValue = value;
+			}
 		}
 
 		public bool DefaultMaterial
 		{
-			get { return this.GetSaveItem("defaultMaterial").BooleanValue; }
-			set { this.GetSaveItem("defaultMaterial").BooleanValue = value; }
+			get
+			{
+				return this.GetSaveItem("defaultMaterial").BooleanValue;
+			}
+			set
+			{
+				this.GetSaveItem("defaultMaterial").BooleanValue = value;
+			}
 		}
 
 		public string Family
 		{
-			get { return this.GetSaveItem("family").StringValue; }
-			set { this.GetSaveItem("family").StringValue = value; }
+			get
+			{
+				return this.GetSaveItem("family").StringValue;
+			}
+			set
+			{
+				this.GetSaveItem("family").StringValue = value;
+			}
 		}
 
 		public uint Flags
 		{
-			get { return this.GetSaveItem("flags").UIntegerValue; }
-			set { this.GetSaveItem("flags").UIntegerValue = value; }
+			get
+			{
+				return this.GetSaveItem("flags").UIntegerValue;
+			}
+			set
+			{
+				this.GetSaveItem("flags").UIntegerValue = value;
+			}
 		}
 
 		public uint MaterialStateFlags
 		{
-			get { return this.GetSaveItem("materialStateFlags").UIntegerValue; }
-			set { this.GetSaveItem("materialStateFlags").UIntegerValue = value; }
+			get
+			{
+				return this.GetSaveItem("materialStateFlags").UIntegerValue;
+			}
+			set
+			{
+				this.GetSaveItem("materialStateFlags").UIntegerValue = value;
+			}
 		}
 
 		public string ModelName
 		{
-			get { return this.GetSaveItem("modelName").StringValue; }
-			set { this.GetSaveItem("modelName").StringValue = value; }
+			get
+			{
+				return this.GetSaveItem("modelName").StringValue;
+			}
+			set
+			{
+				this.GetSaveItem("modelName").StringValue = value;
+			}
 		}
 
 		public string Name
 		{
-			get { return this.GetSaveItem("name").StringValue; }
-			set { this.GetSaveItem("name").StringValue = value; }
+			get
+			{
+				return this.GetSaveItem("name").StringValue;
+			}
+			set
+			{
+				this.GetSaveItem("name").StringValue = value;
+			}
 		}
 
 		public uint ObjectGUID
 		{
-			get { return this.GetSaveItem("objectGUID").UIntegerValue; }
-			set { this.GetSaveItem("objectGUID").UIntegerValue = value; }
+			get
+			{
+				return this.GetSaveItem("objectGUID").UIntegerValue;
+			}
+			set
+			{
+				this.GetSaveItem("objectGUID").UIntegerValue = value;
+			}
 		}
 
 		public int ObjectStateIndex
 		{
-			get { return this.GetSaveItem("objectStateIndex").IntegerValue; }
-			set { this.GetSaveItem("objectStateIndex").IntegerValue = value; }
+			get
+			{
+				return this.GetSaveItem("objectStateIndex").IntegerValue;
+			}
+			set
+			{
+				this.GetSaveItem("objectStateIndex").IntegerValue = value;
+			}
 		}
 
 		public string SubsetName
 		{
-			get { return this.GetSaveItem("subsetName").StringValue; }
-			set { this.GetSaveItem("subsetName").StringValue = value; }
+			get
+			{
+				return this.GetSaveItem("subsetName").StringValue;
+			}
+			set
+			{
+				this.GetSaveItem("subsetName").StringValue = value;
+			}
 		}
 		#endregion
 	}

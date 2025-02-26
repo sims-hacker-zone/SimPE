@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
+
 using SimPe.Data;
 using SimPe.Events;
 using SimPe.Interfaces;
@@ -44,13 +45,22 @@ namespace SimPe.Plugin
 
 		public PackageSettings Settings
 		{
-			get { return this.settings; }
-			set { this.settings = value; }
+			get
+			{
+				return this.settings;
+			}
+			set
+			{
+				this.settings = value;
+			}
 		}
 
 		public bool IsEmpty
 		{
-			get { return this.packages.Count == 0; }
+			get
+			{
+				return this.packages.Count == 0;
+			}
 		}
 
 		public GeneticCategorizer()
@@ -793,9 +803,9 @@ namespace SimPe.Plugin
 					// process textures
 					if (this.settings.CompressTextures)
 						foreach (MaterialDefinitionRcol mmat in item.Materials)
-						foreach (Txtr textr in mmat.Textures)
-							if (textr.Package == pnfo.Package) // this is important!!
-								textr.FileDescriptor.MarkForReCompress = true;
+							foreach (Txtr textr in mmat.Textures)
+								if (textr.Package == pnfo.Package) // this is important!!
+									textr.FileDescriptor.MarkForReCompress = true;
 
 					item.CommitChanges();
 				}

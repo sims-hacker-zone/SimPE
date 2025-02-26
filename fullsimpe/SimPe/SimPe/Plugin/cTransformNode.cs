@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
+
 using SimPe.Geometry;
 
 namespace SimPe.Plugin
@@ -35,15 +36,27 @@ namespace SimPe.Plugin
 		ushort unknown1;
 		public ushort Unknown1
 		{
-			get { return unknown1; }
-			set { unknown1 = value; }
+			get
+			{
+				return unknown1;
+			}
+			set
+			{
+				unknown1 = value;
+			}
 		}
 
 		int unknown2;
 		public int ChildNode
 		{
-			get { return unknown2; }
-			set { unknown2 = value; }
+			get
+			{
+				return unknown2;
+			}
+			set
+			{
+				unknown2 = value;
+			}
 		}
 
 		/// <summary>
@@ -98,86 +111,164 @@ namespace SimPe.Plugin
 		TransformNodeItems items;
 		public TransformNodeItems Items
 		{
-			get { return items; }
-			set { items = value; }
+			get
+			{
+				return items;
+			}
+			set
+			{
+				items = value;
+			}
 		}
 
 		public ObjectGraphNode ObjectGraphNode
 		{
-			get { return ogn; }
+			get
+			{
+				return ogn;
+			}
 		}
 
 		public CompositionTreeNode CompositionTreeNode
 		{
-			get { return ctn; }
+			get
+			{
+				return ctn;
+			}
 		}
 
 		VectorTransformation trans;
 		public VectorTransformation Transformation
 		{
-			get { return trans; }
-			set { trans = value; }
+			get
+			{
+				return trans;
+			}
+			set
+			{
+				trans = value;
+			}
 		}
 		int unknown;
 
 		public Vector3f Translation
 		{
-			get { return trans.Translation; }
+			get
+			{
+				return trans.Translation;
+			}
 		}
 
 		public float TransformX
 		{
-			get { return (float)trans.Translation.X; }
-			set { trans.Translation.X = value; }
+			get
+			{
+				return (float)trans.Translation.X;
+			}
+			set
+			{
+				trans.Translation.X = value;
+			}
 		}
 		public float TransformY
 		{
-			get { return (float)trans.Translation.Y; }
-			set { trans.Translation.Y = value; }
+			get
+			{
+				return (float)trans.Translation.Y;
+			}
+			set
+			{
+				trans.Translation.Y = value;
+			}
 		}
 		public float TransformZ
 		{
-			get { return (float)trans.Translation.Z; }
-			set { trans.Translation.Z = value; }
+			get
+			{
+				return (float)trans.Translation.Z;
+			}
+			set
+			{
+				trans.Translation.Z = value;
+			}
 		}
 
 		public float RotationX
 		{
-			get { return (float)trans.Rotation.X; }
-			set { trans.Rotation.X = value; }
+			get
+			{
+				return (float)trans.Rotation.X;
+			}
+			set
+			{
+				trans.Rotation.X = value;
+			}
 		}
 		public float RotationY
 		{
-			get { return (float)trans.Rotation.Y; }
-			set { trans.Rotation.Y = value; }
+			get
+			{
+				return (float)trans.Rotation.Y;
+			}
+			set
+			{
+				trans.Rotation.Y = value;
+			}
 		}
 		public float RotationZ
 		{
-			get { return (float)trans.Rotation.Z; }
-			set { trans.Rotation.Z = value; }
+			get
+			{
+				return (float)trans.Rotation.Z;
+			}
+			set
+			{
+				trans.Rotation.Z = value;
+			}
 		}
 		public float RotationW
 		{
-			get { return (float)trans.Rotation.W; }
-			set { trans.Rotation.W = value; }
+			get
+			{
+				return (float)trans.Rotation.W;
+			}
+			set
+			{
+				trans.Rotation.W = value;
+			}
 		}
 
 		public Quaternion Rotation
 		{
-			get { return trans.Rotation; }
-			set { trans.Rotation = value; }
+			get
+			{
+				return trans.Rotation;
+			}
+			set
+			{
+				trans.Rotation = value;
+			}
 		}
 
 		public int JointReference
 		{
-			get { return unknown; }
-			set { unknown = value; }
+			get
+			{
+				return unknown;
+			}
+			set
+			{
+				unknown = value;
+			}
 		}
 
 		[BrowsableAttribute(false)]
 		public override TransformNode StoredTransformNode
 		{
-			get { return this; }
+			get
+			{
+				return this;
+			}
 		}
 		#endregion
 
@@ -441,8 +532,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public new TransformNodeItem this[int index]
 		{
-			get { return ((TransformNodeItem)base[index]); }
-			set { base[index] = value; }
+			get
+			{
+				return ((TransformNodeItem)base[index]);
+			}
+			set
+			{
+				base[index] = value;
+			}
 		}
 
 		/// <summary>
@@ -450,8 +547,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public TransformNodeItem this[uint index]
 		{
-			get { return ((TransformNodeItem)base[(int)index]); }
-			set { base[(int)index] = value; }
+			get
+			{
+				return ((TransformNodeItem)base[(int)index]);
+			}
+			set
+			{
+				base[(int)index] = value;
+			}
 		}
 
 		/// <summary>
@@ -498,7 +601,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		public int Length
 		{
-			get { return this.Count; }
+			get
+			{
+				return this.Count;
+			}
 		}
 
 		/// <summary>

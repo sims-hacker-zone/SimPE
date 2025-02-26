@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.Globalization;
 using System.IO;
+
 using SimPe.Geometry;
 using SimPe.Plugin.Anim;
 using SimPe.Plugin.Gmdc;
@@ -41,8 +42,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public GmdcElements Elements
 		{
-			get { return elements; }
-			set { elements = value; }
+			get
+			{
+				return elements;
+			}
+			set
+			{
+				elements = value;
+			}
 		}
 
 		GmdcLinks links;
@@ -52,8 +59,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public GmdcLinks Links
 		{
-			get { return links; }
-			set { links = value; }
+			get
+			{
+				return links;
+			}
+			set
+			{
+				links = value;
+			}
 		}
 
 		GmdcGroups groups;
@@ -63,8 +76,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public GmdcGroups Groups
 		{
-			get { return groups; }
-			set { groups = value; }
+			get
+			{
+				return groups;
+			}
+			set
+			{
+				groups = value;
+			}
 		}
 
 		GmdcModel model;
@@ -74,8 +93,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public GmdcModel Model
 		{
-			get { return model; }
-			set { model = value; }
+			get
+			{
+				return model;
+			}
+			set
+			{
+				model = value;
+			}
 		}
 
 		GmdcJoints joints;
@@ -85,8 +110,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public GmdcJoints Joints
 		{
-			get { return joints; }
-			set { joints = value; }
+			get
+			{
+				return joints;
+			}
+			set
+			{
+				joints = value;
+			}
 		}
 		#endregion
 
@@ -612,8 +643,14 @@ namespace SimPe.Plugin
 		bool tried;
 		public bool TriedToLoadParentResourceNode
 		{
-			get { return tried; }
-			set { tried = value; }
+			get
+			{
+				return tried;
+			}
+			set
+			{
+				tried = value;
+			}
 		}
 
 		/// <summary>
@@ -855,8 +892,14 @@ namespace SimPe.Plugin
 		AnimationMeshBlock la;
 		public AnimationMeshBlock LinkedAnimation
 		{
-			get { return la; }
-			set { la = value; }
+			get
+			{
+				return la;
+			}
+			set
+			{
+				la = value;
+			}
 		}
 
 		#region IDisposable Member

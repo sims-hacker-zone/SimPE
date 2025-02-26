@@ -24,6 +24,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.PackedFiles.Wrapper;
 
 namespace pjse.BhavOperandWizards.WizRaw
@@ -69,7 +70,10 @@ namespace pjse.BhavOperandWizards.WizRaw
 		#region iBhavOperandWizForm
 		public Panel WizPanel
 		{
-			get { return this.pnWizRaw; }
+			get
+			{
+				return this.pnWizRaw;
+			}
 		}
 
 		public void Execute(Instruction inst)

@@ -66,14 +66,26 @@ namespace Ambertation.Viewer
 
 			public byte AlphaBits
 			{
-				get { return (byte)(Descriptor & 0xF); }
-				set { Descriptor = (byte)((Descriptor & ~0xF) | (value & 0xF)); }
+				get
+				{
+					return (byte)(Descriptor & 0xF);
+				}
+				set
+				{
+					Descriptor = (byte)((Descriptor & ~0xF) | (value & 0xF));
+				}
 			}
 
 			public bool BottomUp
 			{
-				get { return (Descriptor & 0x20) == 0x20; }
-				set { Descriptor = (byte)((Descriptor & ~0x20) | (value ? 0x20 : 0)); }
+				get
+				{
+					return (Descriptor & 0x20) == 0x20;
+				}
+				set
+				{
+					Descriptor = (byte)((Descriptor & ~0x20) | (value ? 0x20 : 0));
+				}
 			}
 
 			public override string ToString()
@@ -104,7 +116,10 @@ namespace Ambertation.Viewer
 
 			public bool RleEncoded
 			{
-				get { return ImageType >= 9; }
+				get
+				{
+					return ImageType >= 9;
+				}
 			}
 
 			public override string ToString()

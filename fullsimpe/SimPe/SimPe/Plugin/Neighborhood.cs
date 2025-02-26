@@ -23,6 +23,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -230,28 +231,49 @@ namespace SimPe.Plugin
 		bool lodesubs = true;
 		public bool ShowSubHoods
 		{
-			get { return lodesubs; }
-			set { lodesubs = value; }
+			get
+			{
+				return lodesubs;
+			}
+			set
+			{
+				lodesubs = value;
+			}
 		}
 
 		bool ngbhBUMgr = true;
 		public bool ShowBackupManager
 		{
-			get { return ngbhBUMgr; }
-			set { ngbhBUMgr = value; }
+			get
+			{
+				return ngbhBUMgr;
+			}
+			set
+			{
+				ngbhBUMgr = value;
+			}
 		}
 
 		bool loadNgbh = true;
 		public bool LoadNgbh
 		{
-			get { return loadNgbh; }
-			set { loadNgbh = value; }
+			get
+			{
+				return loadNgbh;
+			}
+			set
+			{
+				loadNgbh = value;
+			}
 		}
 
 		NgbhType ngbh = null;
 		public string SelectedNgbh
 		{
-			get { return ngbh == null ? null : ngbh.FileName; }
+			get
+			{
+				return ngbh == null ? null : ngbh.FileName;
+			}
 		}
 
 		SimPe.Packages.GeneratableFile package;
@@ -521,7 +543,10 @@ namespace SimPe.Plugin
 
 			public string FileName
 			{
-				get { return file; }
+				get
+				{
+					return file;
+				}
 			}
 
 			public NgbhType(string file, string name, NeighborhoodType type)

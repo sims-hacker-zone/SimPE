@@ -24,7 +24,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 using Ambertation.Windows.Forms;
+
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
@@ -1019,7 +1021,10 @@ namespace SimPe.PackedFiles.UserInterface
 		#region IPackedFileUI Member
 		public Wrapper.ExtSDesc Sdesc
 		{
-			get { return (SimPe.PackedFiles.Wrapper.ExtSDesc)Wrapper; }
+			get
+			{
+				return (SimPe.PackedFiles.Wrapper.ExtSDesc)Wrapper;
+			}
 		}
 
 		SimPe.Plugin.Subhoods shs = new SimPe.Plugin.Subhoods();
@@ -2137,8 +2142,14 @@ namespace SimPe.PackedFiles.UserInterface
 		#region Changing Data
 		protected bool InternalChange
 		{
-			get { return intern; }
-			set { intern = value; }
+			get
+			{
+				return intern;
+			}
+			set
+			{
+				intern = value;
+			}
 		}
 
 		private void ChangedId(object sender, System.EventArgs e)
@@ -2251,7 +2262,9 @@ namespace SimPe.PackedFiles.UserInterface
 			if (intern)
 				return;
 			intern = true;
-			try { }
+			try
+			{
+			}
 			finally
 			{
 				intern = false;
@@ -3848,7 +3861,9 @@ namespace SimPe.PackedFiles.UserInterface
 			pnPetChar.Visible = pnPetInt.Visible = !showsim;
 		}
 
-		private void pnSimInt_VisibleChanged(object sender, EventArgs e) { }
+		private void pnSimInt_VisibleChanged(object sender, EventArgs e)
+		{
+		}
 		#endregion
 
 		#region Freetime

@@ -20,6 +20,7 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
+
 using SimPe.Geometry;
 
 namespace SimPe.Plugin
@@ -35,15 +36,27 @@ namespace SimPe.Plugin
 		short u1;
 		public short Unknown1
 		{
-			get { return u1; }
-			set { u1 = value; }
+			get
+			{
+				return u1;
+			}
+			set
+			{
+				u1 = value;
+			}
 		}
 
 		int u2;
 		public int Unknown2
 		{
-			get { return u2; }
-			set { u2 = value; }
+			get
+			{
+				return u2;
+			}
+			set
+			{
+				u2 = value;
+			}
 		}
 		#endregion
 

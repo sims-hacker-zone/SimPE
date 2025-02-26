@@ -39,7 +39,10 @@ namespace SimPe.Interfaces.Plugin
 		/// Passes the Panel that should present the Data
 		/// </summary>
 		/// <returns>The Panel Displaying the PackedFile Data</returns>
-		Control GUIHandle { get; }
+		Control GUIHandle
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Processes the Data and displays it within the GUI
@@ -75,6 +78,9 @@ namespace SimPe.Interfaces.Plugin
 		/// Passes the Control that should present the Data
 		/// </summary>
 		/// <returns>The Panel Displaying the PackedFile Data</returns>
-		Control GuiControl { get; }
+		Control GuiControl
+		{
+			get;
+		}
 	}
 }

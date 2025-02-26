@@ -1,4 +1,5 @@
 using System;
+
 using SimPe.Interfaces.Plugin.Scanner;
 
 namespace SimPe.Plugin.Scanner
@@ -110,12 +111,18 @@ namespace SimPe.Plugin.Scanner
 
 		public ScannerCollection Scanners
 		{
-			get { return scanners; }
+			get
+			{
+				return scanners;
+			}
 		}
 
 		public ScannerCollection Identifiers
 		{
-			get { return identifiers; }
+			get
+			{
+				return identifiers;
+			}
 		}
 	}
 }
