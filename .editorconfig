@@ -1,8 +1,11 @@
+root = true
+
+[*.cs]
+
 indent_size = 4
 indent_style = tab
 trim_trailing_whitespace = true
 charset = utf-8
-root = true
 insert_final_newline = true
 
 ### CSharpier-compatible settings ###
@@ -53,7 +56,7 @@ csharp_space_between_square_brackets = false
 
 # C# formatting settings - Wrap options
 # https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/csharp-formatting-options#wrap-options
-csharp_preserve_single_line_blocks = true
+csharp_preserve_single_line_blocks = false
 csharp_preserve_single_line_statements = false
 
 # undocumented
