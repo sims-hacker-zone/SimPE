@@ -5,5 +5,8 @@
   "editor.formatOnSave": true,
   "dotnet.server.useOmnisharp": true,
   "omnisharp.useModernNet": false,
-  "omnisharp.enableEditorConfigSupport": true
+  "omnisharp.enableEditorConfigSupport": true,
+  "files.associations": {
+    ".globalconfig": "editorconfig"
+  }
 }
