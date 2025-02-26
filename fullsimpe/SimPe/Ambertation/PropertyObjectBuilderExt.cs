@@ -41,7 +41,10 @@ namespace Ambertation
 		/// </summary>
 		public string Description
 		{
-			get { return desc; }
+			get
+			{
+				return desc;
+			}
 		}
 
 		string cat;
@@ -51,7 +54,10 @@ namespace Ambertation
 		/// </summary>
 		public string Category
 		{
-			get { return cat; }
+			get
+			{
+				return cat;
+			}
 		}
 
 		bool ro;
@@ -61,7 +67,10 @@ namespace Ambertation
 		/// </summary>
 		public bool ReadOnly
 		{
-			get { return ro; }
+			get
+			{
+				return ro;
+			}
 		}
 
 		object prop;
@@ -178,7 +187,10 @@ namespace Ambertation
 		/// </summary>
 		public Type Type
 		{
-			get { return type; }
+			get
+			{
+				return type;
+			}
 		}
 
 		/// <summary>
@@ -506,7 +518,10 @@ namespace Ambertation
 		/// </summary>
 		public object Instance
 		{
-			get { return instance; }
+			get
+			{
+				return instance;
+			}
 		}
 	}
 }

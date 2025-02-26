@@ -114,8 +114,14 @@ namespace Ambertation
 		/// </summary>
 		public static int DigitBase
 		{
-			get { return digitbase; }
-			set { digitbase = value; }
+			get
+			{
+				return digitbase;
+			}
+			set
+			{
+				digitbase = value;
+			}
 		}
 
 		/// <summary>
@@ -190,7 +196,10 @@ namespace Ambertation
 				return (short)(val & 0xffff);
 				;
 			}
-			set { val = (short)(value & 0xffff); }
+			set
+			{
+				val = (short)(value & 0xffff);
+			}
 		}
 
 		/// <summary>
@@ -198,8 +207,14 @@ namespace Ambertation
 		/// </summary>
 		public int IntegerValue
 		{
-			get { return val; }
-			set { val = value; }
+			get
+			{
+				return val;
+			}
+			set
+			{
+				val = value;
+			}
 		}
 
 		/// <summary>
@@ -360,7 +375,10 @@ namespace Ambertation
 		/// </summary>
 		public object Instance
 		{
-			get { return instance; }
+			get
+			{
+				return instance;
+			}
 		}
 	}
 }
