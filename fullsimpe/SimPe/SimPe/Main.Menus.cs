@@ -190,8 +190,10 @@ namespace SimPe
 			tbTools.Visible = !Helper.NoPlugins;
 			tbWindow.Visible = false;
 
-			ArrayList exclude = new ArrayList();
-			exclude.Add(this.miNewDc);
+			ArrayList exclude = new ArrayList
+			{
+				this.miNewDc
+			};
 			SimPe.LoadFileWrappersExt.BuildToolBar(
 				tbWindow,
 				miWindow.DropDownItems,

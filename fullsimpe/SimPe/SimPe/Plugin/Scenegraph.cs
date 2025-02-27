@@ -22,8 +22,10 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				ArrayList ret = new ArrayList();
-				ret.Add("simple_mirror_reflection_txmt");
+				ArrayList ret = new ArrayList
+				{
+					"simple_mirror_reflection_txmt"
+				};
 				return ret;
 			}
 		}

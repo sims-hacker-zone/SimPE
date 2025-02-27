@@ -474,10 +474,12 @@ namespace SimPe.Plugin
 			//Add alternate Groups
 			if (alternaiveGroups == null)
 			{
-				alternaiveGroups = new ArrayList();
-				alternaiveGroups.Add(Data.MetaData.CUSTOM_GROUP);
-				alternaiveGroups.Add(Data.MetaData.GLOBAL_GROUP);
-				alternaiveGroups.Add(Data.MetaData.LOCAL_GROUP);
+				alternaiveGroups = new ArrayList
+				{
+					Data.MetaData.CUSTOM_GROUP,
+					Data.MetaData.GLOBAL_GROUP,
+					Data.MetaData.LOCAL_GROUP
+				};
 			}
 
 			index = new Hashtable();

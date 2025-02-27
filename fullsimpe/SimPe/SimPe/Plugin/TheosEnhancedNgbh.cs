@@ -348,42 +348,44 @@ namespace SimPe.Plugin
 
 			static Hashtable BuildMemorySubjectTypeCache()
 			{
-				Hashtable ret = new Hashtable();
-
-				// reached top of $career
-				ret[0x2323232] = Career;
-				// learned how to make $food
-				ret[0x3248932] = Food;
-				// burned $food
-				ret[0x2378482] = Food;
+				Hashtable ret = new Hashtable
+				{
+					// reached top of $career
+					[0x2323232] = Career,
+					// learned how to make $food
+					[0x3248932] = Food,
+					// burned $food
+					[0x2378482] = Food
+				};
 
 				return ret;
 			}
 
 			static ArrayList BuildSpamMemoryList()
 			{
-				ArrayList ret = new ArrayList();
+				ArrayList ret = new ArrayList
+				{
+					// Had family reunion
+					0x2DD3B15Fu,
 
-				// Had family reunion
-				ret.Add(0x2DD3B15Fu);
+					// got A+
+					0x4CAB11D3u,
 
-				// got A+
-				ret.Add(0x4CAB11D3u);
+					// subject got A+
+					0x8DB6545Du,
 
-				// subject got A+
-				ret.Add(0x8DB6545Du);
+					// got D
+					0xEDB65A89u,
 
-				// got D
-				ret.Add(0xEDB65A89u);
+					// subject got D
+					0X6DB654ACu,
 
-				// subject got D
-				ret.Add(0X6DB654ACu);
+					// subject got abducted
+					0xEDD35A61u,
 
-				// subject got abducted
-				ret.Add(0xEDD35A61u);
-
-				// vermin!
-				ret.Add(0x6CAB0E82u);
+					// vermin!
+					0x6CAB0E82u
+				};
 
 				return ret;
 			}

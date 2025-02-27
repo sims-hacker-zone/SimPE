@@ -3013,20 +3013,21 @@ namespace SimPe.Data
 			{
 				if (rcollist == null)
 				{
-					rcollist = new ArrayList();
-
-					rcollist.Add((uint)GMDC); //GMDC
-					rcollist.Add((uint)TXTR); //TXTR
-					rcollist.Add((uint)LIFO); //LIFO
-					rcollist.Add((uint)TXMT); //MATD
-					rcollist.Add((uint)ANIM); //ANIM
-					rcollist.Add((uint)GMND); //GMND
-					rcollist.Add((uint)SHPE); //SHPE
-					rcollist.Add((uint)CRES); //CRES
-					rcollist.Add(LDIR);
-					rcollist.Add(LAMB);
-					rcollist.Add(LSPT);
-					rcollist.Add(LPNT);
+					rcollist = new ArrayList
+					{
+						(uint)GMDC, //GMDC
+						(uint)TXTR, //TXTR
+						(uint)LIFO, //LIFO
+						(uint)TXMT, //MATD
+						(uint)ANIM, //ANIM
+						(uint)GMND, //GMND
+						(uint)SHPE, //SHPE
+						(uint)CRES, //CRES
+						LDIR,
+						LAMB,
+						LSPT,
+						LPNT
+					};
 				}
 				return rcollist;
 			}

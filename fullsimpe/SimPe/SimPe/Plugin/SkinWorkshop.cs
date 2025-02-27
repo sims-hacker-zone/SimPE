@@ -847,10 +847,11 @@ namespace SimPe.Plugin
 			//Get the Base Object Data from the Objects.package File
 			string[] modelname = BaseClone(pfd, localgroup, package);
 			ObjectCloner objclone = new ObjectCloner(package);
-			ArrayList exclude = new ArrayList();
-
-			exclude.Add("tsMaterialsMeshName");
-			exclude.Add("TXTR");
+			ArrayList exclude = new ArrayList
+			{
+				"tsMaterialsMeshName",
+				"TXTR"
+			};
 
 			//do the recolor
 			objclone.Setup.OnlyDefaultMmats = onlydefault;

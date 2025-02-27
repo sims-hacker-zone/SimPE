@@ -1065,41 +1065,42 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected static void PrepareOpcodeMap()
 		{
-			ocmap = new Hashtable();
+			ocmap = new Hashtable
+			{
+				["MOVE"] = typeof(Lua.MOVE),
+				["LOADNIL"] = typeof(Lua.LOADNIL),
+				["LOADK"] = typeof(Lua.LOADK),
+				["LOADBOOL"] = typeof(Lua.LOADBOOL),
+				["SETGLOBAL"] = typeof(Lua.SETGLOBAL),
+				["GETGLOBAL"] = typeof(Lua.GETGLOBAL),
+				["CALL"] = typeof(Lua.CALL),
+				["CLOSURE"] = typeof(Lua.CLOSURE),
+				["CONCAT"] = typeof(Lua.CONCAT),
+				["NEWTABLE"] = typeof(Lua.NEWTABLE),
+				["SELF"] = typeof(Lua.SELF),
+				["SETTABLE"] = typeof(Lua.SETTABLE),
+				["TEST"] = typeof(Lua.TEST),
+				["TFORLOOP"] = typeof(Lua.TFORLOOP),
+				["TFORREP"] = typeof(Lua.TFORREP),
+				["FORLOOP"] = typeof(Lua.FORLOOP),
+				["GETTABLE"] = typeof(Lua.GETTABLE),
+				["RETURN"] = typeof(Lua.RETURN),
+				["ADD"] = typeof(Lua.ADD),
+				["SUB"] = typeof(Lua.SUB),
+				["MUL"] = typeof(Lua.MUL),
+				["POW"] = typeof(Lua.POW),
+				["DIV"] = typeof(Lua.DIV),
+				["UNM"] = typeof(Lua.UNM),
+				["NOT"] = typeof(Lua.NOT),
+				["GETUPVAL"] = typeof(Lua.GETUPVAL),
 
-			ocmap["MOVE"] = typeof(Lua.MOVE);
-			ocmap["LOADNIL"] = typeof(Lua.LOADNIL);
-			ocmap["LOADK"] = typeof(Lua.LOADK);
-			ocmap["LOADBOOL"] = typeof(Lua.LOADBOOL);
-			ocmap["SETGLOBAL"] = typeof(Lua.SETGLOBAL);
-			ocmap["GETGLOBAL"] = typeof(Lua.GETGLOBAL);
-			ocmap["CALL"] = typeof(Lua.CALL);
-			ocmap["CLOSURE"] = typeof(Lua.CLOSURE);
-			ocmap["CONCAT"] = typeof(Lua.CONCAT);
-			ocmap["NEWTABLE"] = typeof(Lua.NEWTABLE);
-			ocmap["SELF"] = typeof(Lua.SELF);
-			ocmap["SETTABLE"] = typeof(Lua.SETTABLE);
-			ocmap["TEST"] = typeof(Lua.TEST);
-			ocmap["TFORLOOP"] = typeof(Lua.TFORLOOP);
-			ocmap["TFORREP"] = typeof(Lua.TFORREP);
-			ocmap["FORLOOP"] = typeof(Lua.FORLOOP);
-			ocmap["GETTABLE"] = typeof(Lua.GETTABLE);
-			ocmap["RETURN"] = typeof(Lua.RETURN);
-			ocmap["ADD"] = typeof(Lua.ADD);
-			ocmap["SUB"] = typeof(Lua.SUB);
-			ocmap["MUL"] = typeof(Lua.MUL);
-			ocmap["POW"] = typeof(Lua.POW);
-			ocmap["DIV"] = typeof(Lua.DIV);
-			ocmap["UNM"] = typeof(Lua.UNM);
-			ocmap["NOT"] = typeof(Lua.NOT);
-			ocmap["GETUPVAL"] = typeof(Lua.GETUPVAL);
-
-			ocmap["JMP"] = typeof(Lua.JMP);
-			ocmap["EQ"] = typeof(Lua.EQ);
-			ocmap["LE"] = typeof(Lua.LE);
-			ocmap["GE"] = typeof(Lua.GE);
-			ocmap["LT"] = typeof(Lua.LT);
-			ocmap["GT"] = typeof(Lua.GT);
+				["JMP"] = typeof(Lua.JMP),
+				["EQ"] = typeof(Lua.EQ),
+				["LE"] = typeof(Lua.LE),
+				["GE"] = typeof(Lua.GE),
+				["LT"] = typeof(Lua.LT),
+				["GT"] = typeof(Lua.GT)
+			};
 		}
 
 		protected static Type GetOpcodeType(byte opcode)

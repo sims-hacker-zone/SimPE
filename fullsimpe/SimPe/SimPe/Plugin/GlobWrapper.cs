@@ -210,10 +210,11 @@ namespace SimPe.Plugin
 			}
 
 			semiglobal = reader.ReadBytes(len);
-			Attributes = new Hashtable();
-
-			Attributes["SemiGlobalName"] = this.SemiGlobalName;
-			Attributes["SemiGlobalGroup"] = this.SemiGlobalGroup;
+			Attributes = new Hashtable
+			{
+				["SemiGlobalName"] = this.SemiGlobalName,
+				["SemiGlobalGroup"] = this.SemiGlobalGroup
+			};
 		}
 
 		/// <summary>

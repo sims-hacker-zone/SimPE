@@ -37,34 +37,26 @@ namespace SimPe.Wizards
 			{
 				if (actions == null)
 				{
-					actions = new DesignerVerbCollection();
-					actions.Add(
-						new DesignerVerb("&Add Step", new EventHandler(AddStep))
-					);
-					actions.Add(
+					actions = new DesignerVerbCollection
+					{
+						new DesignerVerb("&Add Step", new EventHandler(AddStep)),
 						new DesignerVerb(
 							"Show &First Step",
 							new EventHandler(ShowFirstStep)
-						)
-					);
-					actions.Add(
+						),
 						new DesignerVerb(
 							"Show &Prev. Step",
 							new EventHandler(ShowPrevStep)
-						)
-					);
-					actions.Add(
+						),
 						new DesignerVerb(
 							"Show &Next Step",
 							new EventHandler(ShowNextStep)
-						)
-					);
-					actions.Add(
+						),
 						new DesignerVerb(
 							"Show &Last Step",
 							new EventHandler(ShowLastStep)
 						)
-					);
+					};
 				}
 
 				return actions;

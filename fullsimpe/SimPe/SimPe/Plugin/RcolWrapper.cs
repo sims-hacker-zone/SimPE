@@ -208,8 +208,10 @@ namespace SimPe.Plugin
 			{
 				if (assemblies == null)
 				{
-					assemblies = new ArrayList();
-					assemblies.Add(typeof(Rcol).Assembly);
+					assemblies = new ArrayList
+					{
+						typeof(Rcol).Assembly
+					};
 				}
 				return assemblies;
 			}

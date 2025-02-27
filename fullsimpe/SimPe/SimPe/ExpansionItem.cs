@@ -401,8 +401,10 @@ namespace SimPe
 				Version = -1;
 				PreferedRuntimeVersion = -1;
 				SimNameDeepSearch = new Ambertation.CaseInvariantArrayList();
-				savegames = new Ambertation.CaseInvariantArrayList();
-				savegames.Add(PathProvider.SimSavegameFolder);
+				savegames = new Ambertation.CaseInvariantArrayList
+				{
+					PathProvider.SimSavegameFolder
+				};
 				SetDefaultFileTableFolders();
 				ObjectsSubFolder =
 					"TSData" + Helper.PATH_SEP + "Res" + Helper.PATH_SEP + "Objects";

@@ -446,13 +446,15 @@ namespace SimPe.Plugin
 										);
 										if (slavemmat != null)
 										{
-											Hashtable slaveht = new Hashtable();
-											slaveht[
+											Hashtable slaveht = new Hashtable
+											{
+												[
 												"simpe_slave_loader_"
 													+ subset
 													+ "-"
 													+ ct.ToString()
-											] = slavemmat;
+											] = slavemmat
+											};
 											newmap[subset] = slaveht;
 											ct++;
 										}

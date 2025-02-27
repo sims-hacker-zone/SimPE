@@ -359,42 +359,42 @@ namespace SimPe.Plugin
 			string refname = this.GetProperty("stdMatBaseTextureName").Value;
 			if (refname.Trim() != "")
 			{
-				list = new ArrayList();
-				list.Add(
+				list = new ArrayList
+				{
 					ScenegraphHelper.BuildPfd(
 						refname + "_txtr",
 						SimPe.Plugin.ScenegraphHelper.TXTR,
 						parentgroup
 					)
-				);
+				};
 				refmap["stdMatBaseTextureName"] = list;
 			}
 
 			refname = this.GetProperty("stdMatNormalMapTextureName").Value;
 			if (refname.Trim() != "")
 			{
-				list = new ArrayList();
-				list.Add(
+				list = new ArrayList
+				{
 					ScenegraphHelper.BuildPfd(
 						refname + "_txtr",
 						SimPe.Plugin.ScenegraphHelper.TXTR,
 						parentgroup
 					)
-				);
+				};
 				refmap["stdMatNormalMapTextureName"] = list;
 			}
 
 			refname = this.GetProperty("stdMatEnvCubeTextureName").Value;
 			if (refname.Trim() != "")
 			{
-				list = new ArrayList();
-				list.Add(
+				list = new ArrayList
+				{
 					ScenegraphHelper.BuildPfd(
 						refname + "_txtr",
 						SimPe.Plugin.ScenegraphHelper.TXTR,
 						parentgroup
 					)
-				);
+				};
 				refmap["stdMatEnvCubeTextureName"] = list;
 			}
 

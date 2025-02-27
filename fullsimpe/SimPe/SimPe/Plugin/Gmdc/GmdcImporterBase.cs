@@ -432,8 +432,10 @@ namespace SimPe.Plugin.Gmdc
 					//new Element, so add it to the Map and the List
 					if (!valias.ContainsKey(v))
 					{
-						ArrayList l = new ArrayList();
-						l.Add(g.Elements[0].Values.Count);
+						ArrayList l = new ArrayList
+						{
+							g.Elements[0].Values.Count
+						};
 						valias[v] = l;
 						AddElement(g, 0, vertices[v - 1], -1);
 						newv = true;
@@ -444,8 +446,10 @@ namespace SimPe.Plugin.Gmdc
 						//new Element, so add it to the Map and the List
 						if (!vnalias.ContainsKey(vn))
 						{
-							ArrayList l = new ArrayList();
-							l.Add(g.Elements[1].Values.Count);
+							ArrayList l = new ArrayList
+							{
+								g.Elements[1].Values.Count
+							};
 							vnalias[vn] = l;
 							AddElement(g, 1, normals[vn - 1], -1);
 							newvn = true;
@@ -457,8 +461,10 @@ namespace SimPe.Plugin.Gmdc
 						//new Element, so add it to the Map and the List
 						if (!vtalias.ContainsKey(vt))
 						{
-							ArrayList l = new ArrayList();
-							l.Add(g.Elements[2].Values.Count);
+							ArrayList l = new ArrayList
+							{
+								g.Elements[2].Values.Count
+							};
 							vtalias[vt] = l;
 							AddElement(g, 2, uvmaps[vt - 1], -1);
 							newvt = true;
@@ -469,20 +475,26 @@ namespace SimPe.Plugin.Gmdc
 					ArrayList lv = (ArrayList)valias[v];
 					if (lv == null)
 					{
-						lv = new ArrayList();
-						lv.Add(-1);
+						lv = new ArrayList
+						{
+							-1
+						};
 					}
 					ArrayList lvn = (ArrayList)vnalias[vn];
 					if (lvn == null)
 					{
-						lvn = new ArrayList();
-						lvn.Add(-1);
+						lvn = new ArrayList
+						{
+							-1
+						};
 					}
 					ArrayList lvt = (ArrayList)vtalias[vt];
 					if (lvt == null)
 					{
-						lvt = new ArrayList();
-						lvt.Add(-1);
+						lvt = new ArrayList
+						{
+							-1
+						};
 					}
 
 					//We need something where als stored Indices are the same, so look for that

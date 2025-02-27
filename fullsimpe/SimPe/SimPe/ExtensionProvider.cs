@@ -149,55 +149,57 @@ namespace SimPe
 		/// </summary>
 		static void BuildMap()
 		{
-			map = new Hashtable();
-			map.Add(
-				ExtensionType.Package,
-				new ExtensionDescriptor(
+			map = new Hashtable
+			{
+				{
+					ExtensionType.Package,
+					new ExtensionDescriptor(
 					"DBPF Package",
 					"*.package;*.cache;*.template;*.sims"
 				)
-			);
-			map.Add(
-				ExtensionType.DisabledPackage,
-				new ExtensionDescriptor(
+				},
+				{
+					ExtensionType.DisabledPackage,
+					new ExtensionDescriptor(
 					"Disabled DBPF Package",
 					"*.packagedisabled;*.simpedis"
 				)
-			);
-			map.Add(
-				ExtensionType.ExtractedFile,
-				new ExtensionDescriptor("Extracted File", GetExtractExtensions(""))
-			);
-			map.Add(
-				ExtensionType.ExtractedFileDescriptor,
-				new ExtensionDescriptor(
+				},
+				{
+					ExtensionType.ExtractedFile,
+					new ExtensionDescriptor("Extracted File", GetExtractExtensions(""))
+				},
+				{
+					ExtensionType.ExtractedFileDescriptor,
+					new ExtensionDescriptor(
 					"Extracted File Descriptor",
 					GetExtractExtensions(".xml")
 				)
-			);
-			map.Add(
-				ExtensionType.ExtrackedPackageDescriptor,
-				new ExtensionDescriptor("Extracted Package", "package.xml")
-			);
-			map.Add(
-				ExtensionType.Sim2Pack,
-				new ExtensionDescriptor("Packed Objects", "*.sims2pack")
-			);
-			map.Add(
-				ExtensionType.Sim2PackCommunity,
-				new ExtensionDescriptor("Sims 2 Community Package", "*.s2cp")
-			);
-			map.Add(
-				ExtensionType.AllFiles,
-				new ExtensionDescriptor("All Files", "*.*")
-			);
-			map.Add(
-				ExtensionType.LuaScript,
-				new ExtensionDescriptor(
+				},
+				{
+					ExtensionType.ExtrackedPackageDescriptor,
+					new ExtensionDescriptor("Extracted Package", "package.xml")
+				},
+				{
+					ExtensionType.Sim2Pack,
+					new ExtensionDescriptor("Packed Objects", "*.sims2pack")
+				},
+				{
+					ExtensionType.Sim2PackCommunity,
+					new ExtensionDescriptor("Sims 2 Community Package", "*.s2cp")
+				},
+				{
+					ExtensionType.AllFiles,
+					new ExtensionDescriptor("All Files", "*.*")
+				},
+				{
+					ExtensionType.LuaScript,
+					new ExtensionDescriptor(
 					"LUA Script",
 					"*.lua;*.globalObjLua;*.objLua;luac.out"
 				)
-			);
+				}
+			};
 		}
 
 		/// <summary>
@@ -206,8 +208,10 @@ namespace SimPe
 		/// <returns></returns>
 		static ArrayList GetExtractExtensions(string suffix)
 		{
-			ArrayList exts = new ArrayList();
-			exts.Add("*.simpe" + suffix);
+			ArrayList exts = new ArrayList
+			{
+				"*.simpe" + suffix
+			};
 
 			SimPe.Data.TypeAlias[] types = Helper.TGILoader.FileTypes;
 			foreach (SimPe.Data.TypeAlias type in types)

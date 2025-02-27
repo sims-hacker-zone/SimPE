@@ -735,28 +735,30 @@ namespace pjse
 
 		private static Hashtable staticInitialiser()
 		{
-			Hashtable t = new Hashtable();
-			t.Add((byte)0x03, GS.BhavStr.DataLabels);
-			t.Add((byte)0x04, GS.BhavStr.DataLabels);
-			t.Add((byte)0x06, GS.BhavStr.GlobalLabels);
-			t.Add((byte)0x0c, GS.BhavStr.Motives);
-			t.Add((byte)0x0e, GS.BhavStr.Motives);
-			t.Add((byte)0x0f, GS.BhavStr.Motives);
-			t.Add((byte)0x1c, GS.BhavStr.Motives);
-			t.Add((byte)0x1d, GS.BhavStr.Motives);
-			t.Add((byte)0x12, GS.BhavStr.PersonData);
-			t.Add((byte)0x13, GS.BhavStr.PersonData);
-			t.Add((byte)0x20, GS.BhavStr.PersonData);
-			t.Add((byte)0x15, GS.BhavStr.OBJDDescs);
-			t.Add((byte)0x26, GS.BhavStr.OBJDDescs);
-			t.Add((byte)0x33, GS.BhavStr.OBJDDescs);
-			t.Add((byte)0x17, GS.BhavStr.RoomValues);
-			t.Add((byte)0x18, GS.BhavStr.NeighborData);
-			t.Add((byte)0x21, GS.BhavStr.JobData);
-			t.Add((byte)0x22, GS.BhavStr.NeighborhoodData);
-			t.Add((byte)0x23, GS.BhavStr.OBJFDescs);
-			t.Add((byte)0x27, GS.BhavStr.InventoryDialog);
-			t.Add((byte)0x28, GS.BhavStr.InventoryDialog);
+			Hashtable t = new Hashtable
+			{
+				{ (byte)0x03, GS.BhavStr.DataLabels },
+				{ (byte)0x04, GS.BhavStr.DataLabels },
+				{ (byte)0x06, GS.BhavStr.GlobalLabels },
+				{ (byte)0x0c, GS.BhavStr.Motives },
+				{ (byte)0x0e, GS.BhavStr.Motives },
+				{ (byte)0x0f, GS.BhavStr.Motives },
+				{ (byte)0x1c, GS.BhavStr.Motives },
+				{ (byte)0x1d, GS.BhavStr.Motives },
+				{ (byte)0x12, GS.BhavStr.PersonData },
+				{ (byte)0x13, GS.BhavStr.PersonData },
+				{ (byte)0x20, GS.BhavStr.PersonData },
+				{ (byte)0x15, GS.BhavStr.OBJDDescs },
+				{ (byte)0x26, GS.BhavStr.OBJDDescs },
+				{ (byte)0x33, GS.BhavStr.OBJDDescs },
+				{ (byte)0x17, GS.BhavStr.RoomValues },
+				{ (byte)0x18, GS.BhavStr.NeighborData },
+				{ (byte)0x21, GS.BhavStr.JobData },
+				{ (byte)0x22, GS.BhavStr.NeighborhoodData },
+				{ (byte)0x23, GS.BhavStr.OBJFDescs },
+				{ (byte)0x27, GS.BhavStr.InventoryDialog },
+				{ (byte)0x28, GS.BhavStr.InventoryDialog }
+			};
 			return t;
 		}
 		// for Data Owners 0x12, 0x13, 0x20:
@@ -1119,87 +1121,95 @@ namespace pjse
 			Hashtable f = new Hashtable();
 
 			// ObjectData flags
-			Hashtable o = new Hashtable();
-			o.Add((ushort)0x04, GS.BhavStr.AllowedHeightFlags); // allowed height flags
-			o.Add((ushort)0x05, GS.BhavStr.WallAdjFlags);
-			o.Add((ushort)0x08, GS.BhavStr.Flags1);
-			o.Add((ushort)0x0d, GS.BhavStr.WallRequirementFlags);
-			o.Add((ushort)0x16, GS.BhavStr.UnknownFlags); // Door route blocker flags
-			o.Add((ushort)0x22, GS.BhavStr.HiddenFlags);
-			o.Add((ushort)0x28, GS.BhavStr.Flags2);
-			o.Add((ushort)0x2a, GS.BhavStr.PlacementFlags);
-			o.Add((ushort)0x2b, GS.BhavStr.MoveFlags);
-			o.Add((ushort)0x3f, GS.BhavStr.ExclPlacementFlags);
-			o.Add((ushort)0x45, GS.BhavStr.WallCutoutFlags);
-			o.Add((ushort)0x47, GS.BhavStr.UnknownFlags); // Render Flags
-			o.Add((ushort)0x52, GS.BhavStr.PlacementFlags2);
-			o.Add((ushort)0x62, GS.BhavStr.Flags3);
-			o.Add((ushort)0x65, GS.BhavStr.UnknownFlags); // UI Icon Flags
-			o.Add((ushort)0x67, GS.BhavStr.UnknownFlags); // Invisible wall placement flags
-			o.Add((ushort)0x6a, GS.BhavStr.UnknownFlags); // For Sale Flags
+			Hashtable o = new Hashtable
+			{
+				{ (ushort)0x04, GS.BhavStr.AllowedHeightFlags }, // allowed height flags
+				{ (ushort)0x05, GS.BhavStr.WallAdjFlags },
+				{ (ushort)0x08, GS.BhavStr.Flags1 },
+				{ (ushort)0x0d, GS.BhavStr.WallRequirementFlags },
+				{ (ushort)0x16, GS.BhavStr.UnknownFlags }, // Door route blocker flags
+				{ (ushort)0x22, GS.BhavStr.HiddenFlags },
+				{ (ushort)0x28, GS.BhavStr.Flags2 },
+				{ (ushort)0x2a, GS.BhavStr.PlacementFlags },
+				{ (ushort)0x2b, GS.BhavStr.MoveFlags },
+				{ (ushort)0x3f, GS.BhavStr.ExclPlacementFlags },
+				{ (ushort)0x45, GS.BhavStr.WallCutoutFlags },
+				{ (ushort)0x47, GS.BhavStr.UnknownFlags }, // Render Flags
+				{ (ushort)0x52, GS.BhavStr.PlacementFlags2 },
+				{ (ushort)0x62, GS.BhavStr.Flags3 },
+				{ (ushort)0x65, GS.BhavStr.UnknownFlags }, // UI Icon Flags
+				{ (ushort)0x67, GS.BhavStr.UnknownFlags }, // Invisible wall placement flags
+				{ (ushort)0x6a, GS.BhavStr.UnknownFlags } // For Sale Flags
+			};
 			f.Add((byte)0x03, o); // 0x03 "My"
 			f.Add((byte)0x04, o); // 0x04 "Stack Object's"
 
 			// PersonData flags
-			o = new Hashtable();
-			o.Add((ushort)0x13, GS.BhavStr.UnknownFlags); // Group Talk State Flags
-			o.Add((ushort)0x1e, GS.BhavStr.CensorFlags);
-			o.Add((ushort)0x34, GS.BhavStr.UnknownFlags); // Sim UI Icon Flags
-			o.Add((ushort)0x44, GS.BhavStr.GhostFlags);
-			o.Add((ushort)0x4a, GS.BhavStr.UnknownFlags); // Render Display Flags
-			o.Add((ushort)0x51, GS.BhavStr.BodyFlags);
-			o.Add((ushort)0x54, GS.BhavStr.PersonFlags1);
-			o.Add((ushort)0x9e, GS.BhavStr.SelectionFlags);
-			o.Add((ushort)0x9f, GS.BhavStr.PersonFlags2);
-			o.Add((ushort)0xad, GS.BhavStr.SemesterInfoFlags);
-			o.Add((ushort)0xb4, GS.BhavStr.AttractionFlags1); // Traits1
-			o.Add((ushort)0xb5, GS.BhavStr.AttractionFlags2); // Traits2
-			o.Add((ushort)0xb6, GS.BhavStr.AttractionFlags1); // TurnOns1
-			o.Add((ushort)0xb7, GS.BhavStr.AttractionFlags2); // TurnOns2
-			o.Add((ushort)0xb8, GS.BhavStr.AttractionFlags1); // TurnOffs1
-			o.Add((ushort)0xb9, GS.BhavStr.AttractionFlags2); // TurnOffs2
-			o.Add((ushort)0xc7, GS.BhavStr.PetTraitFlags);
-			o.Add((ushort)0xc9, GS.BhavStr.AttractionFlags3); // Traits3
-			o.Add((ushort)0xca, GS.BhavStr.AttractionFlags3); // TurnOns3
-			o.Add((ushort)0xcb, GS.BhavStr.AttractionFlags3); // TurnOffs3
+			o = new Hashtable
+			{
+				{ (ushort)0x13, GS.BhavStr.UnknownFlags }, // Group Talk State Flags
+				{ (ushort)0x1e, GS.BhavStr.CensorFlags },
+				{ (ushort)0x34, GS.BhavStr.UnknownFlags }, // Sim UI Icon Flags
+				{ (ushort)0x44, GS.BhavStr.GhostFlags },
+				{ (ushort)0x4a, GS.BhavStr.UnknownFlags }, // Render Display Flags
+				{ (ushort)0x51, GS.BhavStr.BodyFlags },
+				{ (ushort)0x54, GS.BhavStr.PersonFlags1 },
+				{ (ushort)0x9e, GS.BhavStr.SelectionFlags },
+				{ (ushort)0x9f, GS.BhavStr.PersonFlags2 },
+				{ (ushort)0xad, GS.BhavStr.SemesterInfoFlags },
+				{ (ushort)0xb4, GS.BhavStr.AttractionFlags1 }, // Traits1
+				{ (ushort)0xb5, GS.BhavStr.AttractionFlags2 }, // Traits2
+				{ (ushort)0xb6, GS.BhavStr.AttractionFlags1 }, // TurnOns1
+				{ (ushort)0xb7, GS.BhavStr.AttractionFlags2 }, // TurnOns2
+				{ (ushort)0xb8, GS.BhavStr.AttractionFlags1 }, // TurnOffs1
+				{ (ushort)0xb9, GS.BhavStr.AttractionFlags2 }, // TurnOffs2
+				{ (ushort)0xc7, GS.BhavStr.PetTraitFlags },
+				{ (ushort)0xc9, GS.BhavStr.AttractionFlags3 }, // Traits3
+				{ (ushort)0xca, GS.BhavStr.AttractionFlags3 }, // TurnOns3
+				{ (ushort)0xcb, GS.BhavStr.AttractionFlags3 } // TurnOffs3
+			};
 			f.Add((byte)0x12, o); // 0x12 "My Person Data"
 			f.Add((byte)0x13, o); // 0x13 "Stack Object's Person Data"
 			f.Add((byte)0x20, o); // 0x20 "Neighbour's Person Data"
 
 			// ObjectDefinition flags
-			o = new Hashtable();
-			o.Add((ushort)0x03, GS.BhavStr.WallAdjFlags); // Default Wall Adjacent Flags (guess same as WallAdjFlags)
-			o.Add((ushort)0x04, GS.BhavStr.PlacementFlags); // Default Placement Flags (guess same as PlacementFlags)
-			o.Add((ushort)0x05, GS.BhavStr.WallRequirementFlags); // Default Wall Placement Flags (guess same as WallPlacementFlags)
-			o.Add((ushort)0x06, GS.BhavStr.UnknownFlags); // Default Allowed Height Flags
-			o.Add((ushort)0x11, GS.BhavStr.UnknownFlags); // Catalog Use Flags
-			o.Add((ushort)0x19, GS.BhavStr.UnknownFlags); // Object ownership flags
-			o.Add((ushort)0x20, GS.BhavStr.UnknownFlags); // Aspiration Flags
-			o.Add((ushort)0x27, GS.BhavStr.RoomSortFlags);
-			o.Add((ushort)0x28, GS.BhavStr.FunctionSortFlags);
-			o.Add((ushort)0x3c, GS.BhavStr.UnknownFlags); // For Sale Flags
-			o.Add((ushort)0x40, GS.BhavStr.ValidEPFlags1); // Valid EPs 1 bit field
-			o.Add((ushort)0x41, GS.BhavStr.ValidEPFlags2); // Valid EPs 2 bit field
-			o.Add((ushort)0x42, GS.BhavStr.UnknownFlags); // chair entry flags
-			o.Add((ushort)0x45, GS.BhavStr.BuildModeType);
-			o.Add((ushort)0x4a, GS.BhavStr.UnknownFlags); // Build Sub-sort flags (depends on ObjDef 0x45)
-			o.Add((ushort)0x59, GS.BhavStr.UnknownFlags); // ratingSkillFlags
-			o.Add((ushort)0x5b, GS.BhavStr.CommunitySortFlags);
-			o.Add((ushort)0x5e, GS.BhavStr.UnknownFlags); // Function Sub-sort flags (depends on ObjDef 0x28)
-			o.Add((ushort)0x64, GS.BhavStr.UnknownFlags); // misc flags
+			o = new Hashtable
+			{
+				{ (ushort)0x03, GS.BhavStr.WallAdjFlags }, // Default Wall Adjacent Flags (guess same as WallAdjFlags)
+				{ (ushort)0x04, GS.BhavStr.PlacementFlags }, // Default Placement Flags (guess same as PlacementFlags)
+				{ (ushort)0x05, GS.BhavStr.WallRequirementFlags }, // Default Wall Placement Flags (guess same as WallPlacementFlags)
+				{ (ushort)0x06, GS.BhavStr.UnknownFlags }, // Default Allowed Height Flags
+				{ (ushort)0x11, GS.BhavStr.UnknownFlags }, // Catalog Use Flags
+				{ (ushort)0x19, GS.BhavStr.UnknownFlags }, // Object ownership flags
+				{ (ushort)0x20, GS.BhavStr.UnknownFlags }, // Aspiration Flags
+				{ (ushort)0x27, GS.BhavStr.RoomSortFlags },
+				{ (ushort)0x28, GS.BhavStr.FunctionSortFlags },
+				{ (ushort)0x3c, GS.BhavStr.UnknownFlags }, // For Sale Flags
+				{ (ushort)0x40, GS.BhavStr.ValidEPFlags1 }, // Valid EPs 1 bit field
+				{ (ushort)0x41, GS.BhavStr.ValidEPFlags2 }, // Valid EPs 2 bit field
+				{ (ushort)0x42, GS.BhavStr.UnknownFlags }, // chair entry flags
+				{ (ushort)0x45, GS.BhavStr.BuildModeType },
+				{ (ushort)0x4a, GS.BhavStr.UnknownFlags }, // Build Sub-sort flags (depends on ObjDef 0x45)
+				{ (ushort)0x59, GS.BhavStr.UnknownFlags }, // ratingSkillFlags
+				{ (ushort)0x5b, GS.BhavStr.CommunitySortFlags },
+				{ (ushort)0x5e, GS.BhavStr.UnknownFlags }, // Function Sub-sort flags (depends on ObjDef 0x28)
+				{ (ushort)0x64, GS.BhavStr.UnknownFlags } // misc flags
+			};
 			f.Add((byte)0x15, o); // 0x15 "stack object's definition"
 			f.Add((byte)0x26, o); // 0x26 "Neighbor's Object Definition"
 			f.Add((byte)0x33, o); // 0x33 "Stack Object's Master Definition"
 
 			// SimulatorGlobal flags
-			o = new Hashtable();
-			o.Add((ushort)0x14, GS.BhavStr.GameEditionFlags); // Game edition flags
-			o.Add((ushort)0x19, GS.BhavStr.UnknownFlags); // Debug flags
-			o.Add((ushort)0x21, GS.BhavStr.UnknownFlags); // Demo flags
-			o.Add((ushort)0x25, GS.BhavStr.UnknownFlags); // Utility available flags
-			o.Add((ushort)0x33, GS.BhavStr.UnknownFlags); // Object error flags
-			o.Add((ushort)0x35, GS.BhavStr.UnknownFlags); // Instant write once flags
-			o.Add((ushort)0x3a, GS.BhavStr.GameEditionFlags2); // Game edition flags 2
+			o = new Hashtable
+			{
+				{ (ushort)0x14, GS.BhavStr.GameEditionFlags }, // Game edition flags
+				{ (ushort)0x19, GS.BhavStr.UnknownFlags }, // Debug flags
+				{ (ushort)0x21, GS.BhavStr.UnknownFlags }, // Demo flags
+				{ (ushort)0x25, GS.BhavStr.UnknownFlags }, // Utility available flags
+				{ (ushort)0x33, GS.BhavStr.UnknownFlags }, // Object error flags
+				{ (ushort)0x35, GS.BhavStr.UnknownFlags }, // Instant write once flags
+				{ (ushort)0x3a, GS.BhavStr.GameEditionFlags2 } // Game edition flags 2
+			};
 			f.Add((byte)0x06, o); // 0x81 "Global"
 
 			return f;

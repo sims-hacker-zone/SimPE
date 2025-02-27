@@ -792,12 +792,13 @@ namespace SimPe.Plugin.Gmdc
 				return;
 			}
 
-			ajcor = new Hashtable();
-
-			ajcor["l_thigh"] = new Vector3f(-Quaternion.DegToRad(180), 0, 0);
-			ajcor["r_thigh"] = new Vector3f(-Quaternion.DegToRad(180), 0, 0);
-			ajcor["l_clavicle"] = new Vector3f(0, 0, Quaternion.DegToRad(90));
-			ajcor["r_clavicle"] = new Vector3f(0, 0, -Quaternion.DegToRad(90));
+			ajcor = new Hashtable
+			{
+				["l_thigh"] = new Vector3f(-Quaternion.DegToRad(180), 0, 0),
+				["r_thigh"] = new Vector3f(-Quaternion.DegToRad(180), 0, 0),
+				["l_clavicle"] = new Vector3f(0, 0, Quaternion.DegToRad(90)),
+				["r_clavicle"] = new Vector3f(0, 0, -Quaternion.DegToRad(90))
+			};
 		}
 
 		/// <summary>

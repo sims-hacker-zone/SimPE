@@ -170,15 +170,17 @@ namespace SimPe
 
 		void CreateIgnoreList()
 		{
-			ignore = new ArrayList();
-			ignore.Add("simpe.3d.plugin.dll");
-			ignore.Add("pjse.filetable.plugin.dll");
-			ignore.Add("pjse.guidtool.plugin.dll");
-			ignore.Add("pjse.coder.plugin.dll");
-			ignore.Add("simpe.actiondeletesim.plugin.dll");
-			ignore.Add("theos.simsurgery.plugin.dll");
-			ignore.Add("theo.meshscanner.plugin.dll");
-			ignore.Add("simpe.ngbh.plugin.dll");
+			ignore = new ArrayList
+			{
+				"simpe.3d.plugin.dll",
+				"pjse.filetable.plugin.dll",
+				"pjse.guidtool.plugin.dll",
+				"pjse.coder.plugin.dll",
+				"simpe.actiondeletesim.plugin.dll",
+				"theos.simsurgery.plugin.dll",
+				"theo.meshscanner.plugin.dll",
+				"simpe.ngbh.plugin.dll"
+			};
 		}
 
 		/// <summary>

@@ -19,9 +19,10 @@ namespace SimPe.Plugin
 			if (wanttypelookup == null)
 			{
 				wanttypelookup = new Hashtable();
-				wantnamelookup = new Hashtable();
-
-				wantnamelookup[(byte)WantType.Career] = "Career";
+				wantnamelookup = new Hashtable
+				{
+					[(byte)WantType.Career] = "Career"
+				};
 				wanttypelookup["career"] = WantType.Career;
 
 				wantnamelookup[(byte)WantType.Category] = "Category";

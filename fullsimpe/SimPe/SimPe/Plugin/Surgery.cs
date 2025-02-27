@@ -1083,17 +1083,19 @@ namespace SimPe.Plugin
 			try
 			{
 				//list of all Files top copy from the Archetype
-				ArrayList list = new ArrayList();
-				list.Add((uint)0xAC506764); //3IDR
-				list.Add((uint)0xE519C933); //CRES
-				list.Add((uint)0xEBCF3E27); //GZPS, Property Set
-				list.Add((uint)0xAC598EAC); //AGED
-				list.Add((uint)0xCCCEF852); //LxNR, Face
-				list.Add((uint)0x0C560F39); //BINX
-				list.Add((uint)0xAC4F8687); //GMDC
-				list.Add((uint)0x7BA3838C); //GMND
-				list.Add((uint)0x49596978); //MATD
-				list.Add((uint)0xFC6EB1F7); //SHPE
+				ArrayList list = new ArrayList
+				{
+					(uint)0xAC506764, //3IDR
+					(uint)0xE519C933, //CRES
+					(uint)0xEBCF3E27, //GZPS, Property Set
+					(uint)0xAC598EAC, //AGED
+					(uint)0xCCCEF852, //LxNR, Face
+					(uint)0x0C560F39, //BINX
+					(uint)0xAC4F8687, //GMDC
+					(uint)0x7BA3838C, //GMND
+					(uint)0x49596978, //MATD
+					(uint)0xFC6EB1F7 //SHPE
+				};
 
 				System.IO.BinaryReader br1 = new System.IO.BinaryReader(
 					this.GetType()
@@ -1311,11 +1313,13 @@ namespace SimPe.Plugin
 
 			// Build a list of required file types.
 			// Could this list be static?
-			ArrayList list = new ArrayList();
-			list.Add(0xAC506764u); //3IDR
-			list.Add(Data.MetaData.GZPS); //GZPS, Property Set
-			list.Add(0xAC598EACu); //AGED
-			list.Add(0xCCCEF852u); //LxNR, Face
+			ArrayList list = new ArrayList
+			{
+				0xAC506764u, //3IDR
+				Data.MetaData.GZPS, //GZPS, Property Set
+				0xAC598EACu, //AGED
+				0xCCCEF852u //LxNR, Face
+			};
 								   // For now we disregard the user options, and consider
 								   // all these types mandatory.
 			for (

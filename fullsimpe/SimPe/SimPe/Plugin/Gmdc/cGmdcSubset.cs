@@ -226,8 +226,10 @@ namespace SimPe.Plugin.Gmdc
 			//TransformNode tn = AssignedTransformNode(index);
 
 			//Get the Transformation Hirarchy
-			VectorTransformations t = new VectorTransformations();
-			t.Add(parent.Model.Transformations[index]);
+			VectorTransformations t = new VectorTransformations
+			{
+				parent.Model.Transformations[index]
+			};
 			/*
 			while (index>=0)
 			{

@@ -70,11 +70,13 @@ namespace SimPe.Plugin
 			this.RemoveNonDefaultTextReferences = remndeftxt;
 			if (types == null)
 			{
-				types = new ArrayList();
-				types.Add(Data.MetaData.TXMT);
-				types.Add(Data.MetaData.TXTR);
-				types.Add(Data.MetaData.LIFO);
-				types.Add(Data.MetaData.GMND);
+				types = new ArrayList
+				{
+					Data.MetaData.TXMT,
+					Data.MetaData.TXTR,
+					Data.MetaData.LIFO,
+					Data.MetaData.GMND
+				};
 				//types.Add(Data.MetaData.MMAT);
 			}
 		}

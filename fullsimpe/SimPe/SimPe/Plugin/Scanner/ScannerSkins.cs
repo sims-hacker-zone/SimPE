@@ -213,13 +213,15 @@ namespace SimPe.Plugin.Scanner
 					WaitingScreen.UpdateMessage(cpf.GetSaveItem("name").StringValue);
 				}
 
-				ArrayList compare = new ArrayList();
-				compare.Add("age");
-				//compare.Add("category");
-				compare.Add("fitness");
-				compare.Add("gender");
-				//compare.Add("outfit");
-				compare.Add("override0subset");
+				ArrayList compare = new ArrayList
+				{
+					"age",
+					//compare.Add("category");
+					"fitness",
+					"gender",
+					//compare.Add("outfit");
+					"override0subset"
+				};
 				//compare.Add("override0resourcekeyidx");
 				//compare.Add("shapekeyidx");
 

@@ -487,8 +487,10 @@ namespace SimPe.Plugin
 
 				if (lv.SelectedItems.Count > 0)
 				{
-					Hashtable sub = new Hashtable();
-					sub["user-selection"] = lv.SelectedItems[0].Tag;
+					Hashtable sub = new Hashtable
+					{
+						["user-selection"] = lv.SelectedItems[0].Tag
+					};
 					ret[(string)lv.Tag] = sub;
 				}
 			}

@@ -575,10 +575,12 @@ namespace SimPe.Wants
 			{
 				if (lLongUint32 == null)
 				{
-					lLongUint32 = new Dictionary<string, bool>();
-					lLongUint32.Add("id", true);
-					lLongUint32.Add("primaryIcon", true);
-					lLongUint32.Add("secondaryIcon", true);
+					lLongUint32 = new Dictionary<string, bool>
+					{
+						{ "id", true },
+						{ "primaryIcon", true },
+						{ "secondaryIcon", true }
+					};
 				}
 				return lLongUint32;
 			}
@@ -598,27 +600,29 @@ namespace SimPe.Wants
 			{
 				if (lKeyType == null)
 				{
-					lKeyType = new Dictionary<string, string>();
-					lKeyType.Add("checkTree", "AnyString");
-					lKeyType.Add("deprecated", "AnyBoolean");
-					lKeyType.Add("eventRequiresObject", "AnyBoolean");
-					lKeyType.Add("eventRequiresSim", "AnyBoolean");
-					lKeyType.Add("feedbackTree", "AnyString");
-					lKeyType.Add("folder", "AnyString");
-					lKeyType.Add("gameVersionFlags", "AnyUint32");
-					lKeyType.Add("id", "AnyUint32");
-					lKeyType.Add("influence", "AnySint32");
-					lKeyType.Add("integerMultiplier", "AnySint32");
-					lKeyType.Add("integerOperator", "AnyString");
-					lKeyType.Add("integerType", "AnyString");
-					lKeyType.Add("level", "AnyString");
-					lKeyType.Add("nodeText", "AnyString");
-					lKeyType.Add("objectType", "AnyString");
-					lKeyType.Add("primaryIcon", "AnyUint32");
-					lKeyType.Add("score", "AnySint32");
-					lKeyType.Add("secondaryIcon", "AnyUint32");
-					lKeyType.Add("simArrayTree", "AnyString");
-					lKeyType.Add("stringSet", "AnyUint32");
+					lKeyType = new Dictionary<string, string>
+					{
+						{ "checkTree", "AnyString" },
+						{ "deprecated", "AnyBoolean" },
+						{ "eventRequiresObject", "AnyBoolean" },
+						{ "eventRequiresSim", "AnyBoolean" },
+						{ "feedbackTree", "AnyString" },
+						{ "folder", "AnyString" },
+						{ "gameVersionFlags", "AnyUint32" },
+						{ "id", "AnyUint32" },
+						{ "influence", "AnySint32" },
+						{ "integerMultiplier", "AnySint32" },
+						{ "integerOperator", "AnyString" },
+						{ "integerType", "AnyString" },
+						{ "level", "AnyString" },
+						{ "nodeText", "AnyString" },
+						{ "objectType", "AnyString" },
+						{ "primaryIcon", "AnyUint32" },
+						{ "score", "AnySint32" },
+						{ "secondaryIcon", "AnyUint32" },
+						{ "simArrayTree", "AnyString" },
+						{ "stringSet", "AnyUint32" }
+					};
 				}
 				return lKeyType;
 			}
@@ -652,11 +656,13 @@ namespace SimPe.Wants
 			{
 				if (lTypeUtype == null)
 				{
-					lTypeUtype = new Dictionary<string, string>();
-					lTypeUtype.Add("AnyBoolean", "0xcba908e1");
-					lTypeUtype.Add("AnySint32", "0x0c264712");
-					lTypeUtype.Add("AnyString", "0x0b8bea18");
-					lTypeUtype.Add("AnyUint32", "0xeb61e4f7");
+					lTypeUtype = new Dictionary<string, string>
+					{
+						{ "AnyBoolean", "0xcba908e1" },
+						{ "AnySint32", "0x0c264712" },
+						{ "AnyString", "0x0b8bea18" },
+						{ "AnyUint32", "0xeb61e4f7" }
+					};
 				}
 				return lTypeUtype;
 			}

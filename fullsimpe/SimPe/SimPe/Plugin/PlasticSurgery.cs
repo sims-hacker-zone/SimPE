@@ -76,13 +76,15 @@ namespace SimPe.Plugin
 			SimPe.Packages.GeneratableFile ret =
 				SimPe.Packages.GeneratableFile.LoadFromFile((string)null);
 
-			ArrayList list = new ArrayList();
-			list.Add((uint)0xAC506764); //3IDR
-			list.Add(Data.MetaData.GZPS); //GZPS, Property Set
-			list.Add((uint)0xAC598EAC); //AGED
-			list.Add((uint)0xCCCEF852); //LxNR, Face
-			list.Add((uint)0x856DDBAC); //IMG
-			list.Add((uint)0x534C4F54); //SLOT
+			ArrayList list = new ArrayList
+			{
+				(uint)0xAC506764, //3IDR
+				Data.MetaData.GZPS, //GZPS, Property Set
+				(uint)0xAC598EAC, //AGED
+				(uint)0xCCCEF852, //LxNR, Face
+				(uint)0x856DDBAC, //IMG
+				(uint)0x534C4F54 //SLOT
+			};
 			list.AddRange(Data.MetaData.RcolList);
 
 			uint hashgroup = this.GetPatientHash();
@@ -434,24 +436,25 @@ namespace SimPe.Plugin
 			)
 			{
 				//the values that are checked for equality to find a matching Property Set in the target skintone
-				Hashtable props = new Hashtable();
-
-				props.Add(
-					"fitness",
-					skinfile.GetSaveItem("fitness").StringValue.Trim().ToLower()
-				);
-				props.Add(
-					"gender",
-					skinfile.GetSaveItem("gender").StringValue.Trim().ToLower()
-				);
-				props.Add(
-					"outfit",
-					skinfile.GetSaveItem("outfit").StringValue.Trim().ToLower()
-				);
-				props.Add(
-					"override0subset",
-					skinfile.GetSaveItem("override0subset").StringValue.Trim().ToLower()
-				);
+				Hashtable props = new Hashtable
+				{
+					{
+						"fitness",
+						skinfile.GetSaveItem("fitness").StringValue.Trim().ToLower()
+					},
+					{
+						"gender",
+						skinfile.GetSaveItem("gender").StringValue.Trim().ToLower()
+					},
+					{
+						"outfit",
+						skinfile.GetSaveItem("outfit").StringValue.Trim().ToLower()
+					},
+					{
+						"override0subset",
+						skinfile.GetSaveItem("override0subset").StringValue.Trim().ToLower()
+					}
+				};
 
 				foreach (Cpf newcpf in (ArrayList)skinfiles[skin])
 				{
@@ -730,8 +733,10 @@ namespace SimPe.Plugin
 				SimPe.Packages.GeneratableFile.LoadFromFile((string)null);
 			string pskin = GetSkintone(this.patient);
 
-			ArrayList list = new ArrayList();
-			list.Add((uint)0xE86B1EEF); //make sure the compressed Directory won't be copied!
+			ArrayList list = new ArrayList
+			{
+				(uint)0xE86B1EEF //make sure the compressed Directory won't be copied!
+			};
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in patient.Index)
 			{
 				if (!list.Contains(pfd.Type))
@@ -839,8 +844,10 @@ namespace SimPe.Plugin
 			SimPe.Packages.GeneratableFile ret =
 				SimPe.Packages.GeneratableFile.LoadFromFile((string)null);
 
-			ArrayList list = new ArrayList();
-			list.Add((uint)0xCCCEF852); //LxNR, Face
+			ArrayList list = new ArrayList
+			{
+				(uint)0xCCCEF852 //LxNR, Face
+			};
 
 			uint hashgroup = this.GetPatientHash();
 
@@ -1044,8 +1051,10 @@ namespace SimPe.Plugin
 			SimPe.Packages.GeneratableFile ret =
 				SimPe.Packages.GeneratableFile.LoadFromFile((string)null);
 
-			ArrayList list = new ArrayList();
-			list.Add((uint)0xE86B1EEF); //make sure the compressed Directory won't be copied!
+			ArrayList list = new ArrayList
+			{
+				(uint)0xE86B1EEF //make sure the compressed Directory won't be copied!
+			};
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in patient.Index)
 			{
 				if (!list.Contains(pfd.Type))

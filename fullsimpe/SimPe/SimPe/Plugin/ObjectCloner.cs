@@ -392,11 +392,13 @@ namespace SimPe.Plugin
 		/// <returns></returns>
 		public string[] GetAnimNames()
 		{
-			ArrayList instances = new ArrayList();
-			instances.Add((uint)0x81);
-			instances.Add((uint)0x82);
-			instances.Add((uint)0x86);
-			instances.Add((uint)0x192);
+			ArrayList instances = new ArrayList
+			{
+				(uint)0x81,
+				(uint)0x82,
+				(uint)0x86,
+				(uint)0x192
+			};
 
 			return GetNames(instances, "_anim");
 		}
@@ -537,11 +539,13 @@ namespace SimPe.Plugin
 				names.Add(s);
 			}
 
-			ArrayList types = new ArrayList();
-			types.Add(Data.MetaData.MMAT);
-			types.Add(Data.MetaData.TXMT);
-			types.Add(Data.MetaData.TXTR);
-			types.Add(Data.MetaData.LIFO);
+			ArrayList types = new ArrayList
+			{
+				Data.MetaData.MMAT,
+				Data.MetaData.TXMT,
+				Data.MetaData.TXTR,
+				Data.MetaData.LIFO
+			};
 
 			foreach (uint type in types)
 			{

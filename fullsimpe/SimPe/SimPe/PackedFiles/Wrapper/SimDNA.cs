@@ -185,10 +185,11 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				System.Collections.ArrayList list = new System.Collections.ArrayList();
-
-				list.Add("Dominant " + Serializer.SerializeTypeHeader(this.Dominant));
-				list.Add("Recessive " + Serializer.SerializeTypeHeader(this.Recessive));
+				System.Collections.ArrayList list = new System.Collections.ArrayList
+				{
+					"Dominant " + Serializer.SerializeTypeHeader(this.Dominant),
+					"Recessive " + Serializer.SerializeTypeHeader(this.Recessive)
+				};
 
 				return Serializer.ConcatHeader(Serializer.ConvertArrayList(list));
 			}
@@ -198,9 +199,11 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				System.Collections.ArrayList list = new System.Collections.ArrayList();
-				list.Add(this.Dominant.ToString("Dominant"));
-				list.Add(this.Recessive.ToString("Recessive"));
+				System.Collections.ArrayList list = new System.Collections.ArrayList
+				{
+					this.Dominant.ToString("Dominant"),
+					this.Recessive.ToString("Recessive")
+				};
 
 				return Serializer.Concat(Serializer.ConvertArrayList(list));
 			}
