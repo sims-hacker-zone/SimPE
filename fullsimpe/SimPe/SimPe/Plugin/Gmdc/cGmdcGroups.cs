@@ -52,38 +52,20 @@ namespace SimPe.Plugin.Gmdc
 	{
 		#region Attributes
 
-		PrimitiveType unknown1;
-
 		/// <summary>
 		/// Determins the Primitive Type of the Faces
 		/// </summary>
 		public PrimitiveType PrimitiveType
 		{
-			get
-			{
-				return unknown1;
-			}
-			set
-			{
-				unknown1 = value;
-			}
+			get; set;
 		}
-
-		int alternate;
 
 		/// <summary>
 		/// The Index of the <see cref="GmdcLink"/> Object that is referenced by this Group. (Index into the <see cref="GeometryDataContainer.Links"/> Property.
 		/// </summary>
 		public int LinkIndex
 		{
-			get
-			{
-				return alternate;
-			}
-			set
-			{
-				alternate = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -102,72 +84,36 @@ namespace SimPe.Plugin.Gmdc
 			}
 		}
 
-		string name;
-
 		/// <summary>
 		/// The Name of this Group
 		/// </summary>
 		public String Name
 		{
-			get
-			{
-				return name;
-			}
-			set
-			{
-				name = value;
-			}
+			get; set;
 		}
-
-		IntArrayList items1;
 
 		/// <summary>
 		/// The Index of the used Vertices
 		/// </summary>
 		public IntArrayList Faces
 		{
-			get
-			{
-				return items1;
-			}
-			set
-			{
-				items1 = value;
-			}
+			get; set;
 		}
-
-		uint opacity;
 
 		/// <summary>
 		/// The opacity of this Group (0=transparent; 3=shadow; -1=opaque)
 		/// </summary>
 		public uint Opacity
 		{
-			get
-			{
-				return opacity;
-			}
-			set
-			{
-				opacity = value;
-			}
+			get; set;
 		}
-
-		IntArrayList items2;
 
 		/// <summary>
 		/// List all Joints used by this Group
 		/// </summary>
 		public IntArrayList UsedJoints
 		{
-			get
-			{
-				return items2;
-			}
-			set
-			{
-				items2 = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -177,10 +123,10 @@ namespace SimPe.Plugin.Gmdc
 		public GmdcGroup(GeometryDataContainer parent)
 			: base(parent)
 		{
-			items1 = new IntArrayList();
-			items2 = new IntArrayList();
-			name = "";
-			alternate = -1;
+			Faces = new IntArrayList();
+			UsedJoints = new IntArrayList();
+			Name = "";
+			LinkIndex = -1;
 		}
 
 		/// <summary>
@@ -189,21 +135,21 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="reader">The Stream that contains the FileData</param>
 		public void Unserialize(System.IO.BinaryReader reader)
 		{
-			unknown1 = (PrimitiveType)reader.ReadUInt32();
-			alternate = reader.ReadInt32();
-			name = reader.ReadString();
+			PrimitiveType = (PrimitiveType)reader.ReadUInt32();
+			LinkIndex = reader.ReadInt32();
+			Name = reader.ReadString();
 
-			ReadBlock(reader, items1);
+			ReadBlock(reader, Faces);
 
 			if (parent.Version != 0x03)
-				opacity = reader.ReadUInt32();
+				Opacity = reader.ReadUInt32();
 			else
-				opacity = 0;
+				Opacity = 0;
 
 			if (parent.Version != 0x01)
-				ReadBlock(reader, items2);
+				ReadBlock(reader, UsedJoints);
 			else
-				items2.Clear();
+				UsedJoints.Clear();
 		}
 
 		/// <summary>
@@ -216,17 +162,17 @@ namespace SimPe.Plugin.Gmdc
 		/// </remarks>
 		public void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write((uint)unknown1);
-			writer.Write(alternate);
-			writer.Write(name);
+			writer.Write((uint)PrimitiveType);
+			writer.Write(LinkIndex);
+			writer.Write(Name);
 
-			WriteBlock(writer, items1);
+			WriteBlock(writer, Faces);
 
 			if (parent.Version != 0x03)
-				writer.Write((uint)opacity);
+				writer.Write((uint)Opacity);
 
 			if (parent.Version != 0x01)
-				WriteBlock(writer, items2);
+				WriteBlock(writer, UsedJoints);
 		}
 
 		/// <summary>
@@ -276,14 +222,14 @@ namespace SimPe.Plugin.Gmdc
 		public override string ToString()
 		{
 			if (this.Faces.Count < 0x2000 || UserVerification.HaveUserId)
-				return name
+				return Name
 					+ " (FaceCount="
 					+ (FaceCount).ToString()
 					+ ", VertexCount="
 					+ UsedVertexCount.ToString()
 					+ ")";
 			else
-				return name
+				return Name
 					+ " (FaceCount="
 					+ (FaceCount).ToString()
 					+ ", VertexCount=too many Faces)";

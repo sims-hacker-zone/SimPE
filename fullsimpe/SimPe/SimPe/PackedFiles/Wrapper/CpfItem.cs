@@ -33,28 +33,17 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public CpfItem()
 		{
-			name = new byte[0];
-			val = new byte[0];
+			PlainName = new byte[0];
+			Value = new byte[0];
 		}
-
-		Data.MetaData.DataTypes dt;
 
 		/// <summary>
 		/// Returns the
 		/// </summary>
 		public MetaData.DataTypes Datatype
 		{
-			get
-			{
-				return dt;
-			}
-			set
-			{
-				dt = value;
-			}
+			get; set;
 		}
-
-		byte[] name;
 
 		/// <summary>
 		/// Returns the Name
@@ -63,11 +52,11 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				return Helper.ToString(name);
+				return Helper.ToString(PlainName);
 			}
 			set
 			{
-				name = Helper.ToBytes(value, 0);
+				PlainName = Helper.ToBytes(value, 0);
 			}
 		}
 
@@ -76,32 +65,17 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public byte[] PlainName
 		{
-			get
-			{
-				return name;
-			}
-			set
-			{
-				name = value;
-			}
+			get; set;
 		}
 
 		#region value Handling
-		byte[] val;
 
 		/// <summary>
 		/// Returns the
 		/// </summary>
 		public Byte[] Value
 		{
-			get
-			{
-				return val;
-			}
-			set
-			{
-				val = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -134,8 +108,8 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 			set
 			{
-				dt = Data.MetaData.DataTypes.dtString;
-				val = Helper.ToBytes(value, 0);
+				Datatype = Data.MetaData.DataTypes.dtString;
+				Value = Helper.ToBytes(value, 0);
 			}
 		}
 
@@ -175,14 +149,14 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 			set
 			{
-				dt = Data.MetaData.DataTypes.dtUInteger;
+				Datatype = Data.MetaData.DataTypes.dtUInteger;
 				System.IO.BinaryWriter bw = new System.IO.BinaryWriter(
 					new System.IO.MemoryStream()
 				);
 				bw.Write(value);
 				System.IO.BinaryReader br = new System.IO.BinaryReader(bw.BaseStream);
 				br.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
-				val = br.ReadBytes((int)br.BaseStream.Length);
+				Value = br.ReadBytes((int)br.BaseStream.Length);
 			}
 		}
 
@@ -222,14 +196,14 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 			set
 			{
-				dt = Data.MetaData.DataTypes.dtInteger;
+				Datatype = Data.MetaData.DataTypes.dtInteger;
 				System.IO.BinaryWriter bw = new System.IO.BinaryWriter(
 					new System.IO.MemoryStream()
 				);
 				bw.Write(value);
 				System.IO.BinaryReader br = new System.IO.BinaryReader(bw.BaseStream);
 				br.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
-				val = br.ReadBytes((int)br.BaseStream.Length);
+				Value = br.ReadBytes((int)br.BaseStream.Length);
 			}
 		}
 
@@ -269,14 +243,14 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 			set
 			{
-				dt = Data.MetaData.DataTypes.dtSingle;
+				Datatype = Data.MetaData.DataTypes.dtSingle;
 				System.IO.BinaryWriter bw = new System.IO.BinaryWriter(
 					new System.IO.MemoryStream()
 				);
 				bw.Write(value);
 				System.IO.BinaryReader br = new System.IO.BinaryReader(bw.BaseStream);
 				br.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
-				val = br.ReadBytes((int)br.BaseStream.Length);
+				Value = br.ReadBytes((int)br.BaseStream.Length);
 			}
 		}
 
@@ -320,14 +294,14 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 			set
 			{
-				dt = Data.MetaData.DataTypes.dtBoolean;
+				Datatype = Data.MetaData.DataTypes.dtBoolean;
 				System.IO.BinaryWriter bw = new System.IO.BinaryWriter(
 					new System.IO.MemoryStream()
 				);
 				bw.Write(value);
 				System.IO.BinaryReader br = new System.IO.BinaryReader(bw.BaseStream);
 				br.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
-				val = br.ReadBytes((int)br.BaseStream.Length);
+				Value = br.ReadBytes((int)br.BaseStream.Length);
 			}
 		}
 
@@ -338,7 +312,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				switch (dt)
+				switch (Datatype)
 				{
 					case Data.MetaData.DataTypes.dtUInteger:
 					{
@@ -375,7 +349,7 @@ namespace SimPe.PackedFiles.Wrapper
 			try
 			{
 				System.IO.BinaryReader br = new System.IO.BinaryReader(
-					new System.IO.MemoryStream(val)
+					new System.IO.MemoryStream(Value)
 				);
 				return br.ReadInt32();
 			}
@@ -394,7 +368,7 @@ namespace SimPe.PackedFiles.Wrapper
 			try
 			{
 				System.IO.BinaryReader br = new System.IO.BinaryReader(
-					new System.IO.MemoryStream(val)
+					new System.IO.MemoryStream(Value)
 				);
 				return br.ReadUInt32();
 			}
@@ -466,15 +440,15 @@ namespace SimPe.PackedFiles.Wrapper
 		internal void Unserialize(System.IO.BinaryReader reader)
 		{
 			//Load Datatype
-			dt = (MetaData.DataTypes)reader.ReadUInt32();
+			Datatype = (MetaData.DataTypes)reader.ReadUInt32();
 
 			//Load the Name
 			int namelength = reader.ReadInt32();
-			name = reader.ReadBytes(namelength);
+			PlainName = reader.ReadBytes(namelength);
 
 			//Load Value
 			int valuelength;
-			switch (dt)
+			switch (Datatype)
 			{
 				case (MetaData.DataTypes.dtString):
 				{
@@ -492,7 +466,7 @@ namespace SimPe.PackedFiles.Wrapper
 					break;
 				}
 			} //switch
-			val = reader.ReadBytes(valuelength);
+			Value = reader.ReadBytes(valuelength);
 		}
 
 		/// <summary>
@@ -502,24 +476,24 @@ namespace SimPe.PackedFiles.Wrapper
 		internal void Serialize(System.IO.BinaryWriter writer)
 		{
 			//Store Datatype
-			writer.Write((uint)dt);
+			writer.Write((uint)Datatype);
 
 			//Store the Name
-			writer.Write((uint)name.Length);
-			writer.Write(name);
+			writer.Write((uint)PlainName.Length);
+			writer.Write(PlainName);
 
 			//Store the Value
-			switch (dt)
+			switch (Datatype)
 			{
 				case (MetaData.DataTypes.dtString):
 				{
-					writer.Write((uint)val.Length);
-					writer.Write(val);
+					writer.Write((uint)Value.Length);
+					writer.Write(Value);
 					break;
 				}
 				default:
 				{
-					writer.Write(val);
+					writer.Write(Value);
 					break;
 				}
 			} //switch
@@ -528,7 +502,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public override string ToString()
 		{
-			string ret = Name + " (" + dt.ToString() + ") = ";
+			string ret = Name + " (" + Datatype.ToString() + ") = ";
 
 			switch (this.Datatype)
 			{
@@ -551,10 +525,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public void Dispose()
 		{
-			this.val = new byte[0];
-			this.val = null;
-			this.name = new byte[0];
-			this.name = null;
+			this.Value = new byte[0];
+			this.Value = null;
+			this.PlainName = new byte[0];
+			this.PlainName = null;
 		}
 	}
 }

@@ -34,12 +34,10 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// The Base Package
 		/// </summary>
-		IPackageFile package;
-
-		/// <summary>
-		/// The Base Package
-		/// </summary>
-		public IPackageFile Package => package;
+		public IPackageFile Package
+		{
+			get;
+		}
 
 		SimPe.Packages.GeneratableFile dn_pkg;
 		public IPackageFile GMNDPackage => dn_pkg;
@@ -53,7 +51,7 @@ namespace SimPe.Plugin
 		/// <param name="package">The Object you want to Recolor</param>
 		public ObjectRecolor(IPackageFile package)
 		{
-			this.package = package;
+			this.Package = package;
 
 			if (System.IO.File.Exists(ScenegraphHelper.GMND_PACKAGE))
 				dn_pkg = SimPe.Packages.GeneratableFile.LoadFromFile(
@@ -127,14 +125,14 @@ namespace SimPe.Plugin
 		protected SimPe.Plugin.Rcol[] GetGeometryNodes()
 		{
 			ArrayList list = new ArrayList();
-			Interfaces.Files.IPackedFileDescriptor[] pfds = this.package.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = this.Package.FindFiles(
 				0x7BA3838C
 			);
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				SimPe.Plugin.Rcol gmnd = new GenericRcol(null, false);
-				gmnd.ProcessData(pfd, package);
+				gmnd.ProcessData(pfd, Package);
 				foreach (IRcolBlock rb in gmnd.Blocks)
 				{
 					if (rb.BlockName == "cDataListExtension")
@@ -164,14 +162,14 @@ namespace SimPe.Plugin
 		protected SimPe.Plugin.Rcol[] GetReferingShape(SimPe.Plugin.Rcol gmnd)
 		{
 			ArrayList list = new ArrayList();
-			Interfaces.Files.IPackedFileDescriptor[] pfds = this.package.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = this.Package.FindFiles(
 				0xFC6EB1F7
 			);
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				SimPe.Plugin.Rcol shpe = new GenericRcol(null, false);
-				shpe.ProcessData(pfd, package);
+				shpe.ProcessData(pfd, Package);
 				SimPe.Plugin.Shape sh = (SimPe.Plugin.Shape)shpe.Blocks[0];
 
 				foreach (SimPe.Plugin.ShapeItem item in sh.Items)
@@ -230,7 +228,7 @@ namespace SimPe.Plugin
 		/// <returns></returns>
 		protected SimPe.Plugin.Rcol FindResourceNode(SimPe.Plugin.Rcol shpe)
 		{
-			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = Package.FindFiles(
 				0xE519C933
 			);
 			Interfaces.Files.IPackedFileDescriptor pfd = shpe.FileDescriptor;
@@ -238,7 +236,7 @@ namespace SimPe.Plugin
 			foreach (Interfaces.Files.IPackedFileDescriptor cpfd in pfds)
 			{
 				SimPe.Plugin.Rcol cres = new GenericRcol(null, false);
-				cres.ProcessData(cpfd, package);
+				cres.ProcessData(cpfd, Package);
 
 				foreach (
 					Interfaces.Files.IPackedFileDescriptor rpfd in cres.ReferencedFiles
@@ -289,14 +287,14 @@ namespace SimPe.Plugin
 						continue;
 
 					//Read the MATD
-					Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFile(
+					Interfaces.Files.IPackedFileDescriptor[] pfds = Package.FindFile(
 						part.FileName + "_txmt",
 						0x49596978
 					);
 					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 					{
 						SimPe.Plugin.Rcol matd = new GenericRcol(null, false);
-						matd.ProcessData(pfd, package);
+						matd.ProcessData(pfd, Package);
 						SimPe.Plugin.MaterialDefinition md =
 							(SimPe.Plugin.MaterialDefinition)matd.Blocks[0];
 
@@ -305,7 +303,7 @@ namespace SimPe.Plugin
 						{
 							//check that the Material references a texture
 							if (
-								package
+								Package
 									.FindFile(
 										md.GetProperty("stdMatBaseTextureName").Value
 											+ "_txtr",
@@ -390,9 +388,9 @@ namespace SimPe.Plugin
 			pfd1.Type = 0x4C697E5A; //MMAT
 			pfd1.UserData = br.ReadBytes((int)br.BaseStream.Length);
 
-			package.Add(pfd1);
+			Package.Add(pfd1);
 			SimPe.PackedFiles.Wrapper.Cpf mmat = new SimPe.PackedFiles.Wrapper.Cpf();
-			mmat.ProcessData(pfd1, package);
+			mmat.ProcessData(pfd1, Package);
 
 			if (!substate)
 				mmat.GetSaveItem("family").StringValue = System
@@ -406,7 +404,7 @@ namespace SimPe.Plugin
 			mmat.GetSaveItem("modelName").StringValue = cresname;
 
 			//Get the GUID
-			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = Package.FindFiles(
 				Data.MetaData.OBJD_FILE
 			);
 			mmat.GetSaveItem("objectGUID").UIntegerValue = 0x00000000;
@@ -414,7 +412,7 @@ namespace SimPe.Plugin
 			{
 				SimPe.PackedFiles.Wrapper.Objd objd =
 					new SimPe.PackedFiles.Wrapper.Objd(null);
-				objd.ProcessData(pfds[0], package);
+				objd.ProcessData(pfds[0], Package);
 				mmat.GetSaveItem("objectGUID").UIntegerValue = objd.SimId;
 
 				if (pfd.Instance == 0x000041A7)
@@ -430,13 +428,13 @@ namespace SimPe.Plugin
 			if (!substate)
 			{
 				string name = mmat.GetSaveItem("name").StringValue;
-				pfds = ObjectCloner.FindStateMatchingMatd(name, package);
+				pfds = ObjectCloner.FindStateMatchingMatd(name, Package);
 
 				if (pfds != null)
 					if (pfds.Length > 0)
 					{
 						SimPe.Plugin.Rcol submatd = new GenericRcol(null, false);
-						submatd.ProcessData(pfds[0], package);
+						submatd.ProcessData(pfds[0], Package);
 
 						SimPe.PackedFiles.Wrapper.Cpf mmat2 = AddMMAT(
 							submatd,
@@ -501,9 +499,9 @@ namespace SimPe.Plugin
 				if (matd.FileName.Trim().ToLower() == flname.Trim().ToLower())
 				{
 					matd.SynchronizeUserData();
-					if (package.FindFile(matd.FileDescriptor) == null)
+					if (Package.FindFile(matd.FileDescriptor) == null)
 					{
-						package.Add(matd.FileDescriptor);
+						Package.Add(matd.FileDescriptor);
 					}
 				}
 			}
@@ -526,7 +524,7 @@ namespace SimPe.Plugin
 			{
 				SimPe.PackedFiles.Wrapper.Cpf mmat =
 					new SimPe.PackedFiles.Wrapper.Cpf();
-				mmat.ProcessData(pfd, package);
+				mmat.ProcessData(pfd, Package);
 				AddMATD(mmat);
 			}
 			//WaitingScreen.Stop();
@@ -537,7 +535,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public void LoadReferencedMATDs()
 		{
-			this.LoadReferencedMATDs(package.FindFiles(0x4C697E5A));
+			this.LoadReferencedMATDs(Package.FindFiles(0x4C697E5A));
 		}
 	}
 }

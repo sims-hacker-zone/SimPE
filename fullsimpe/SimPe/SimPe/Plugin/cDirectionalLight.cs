@@ -28,134 +28,54 @@ namespace SimPe.Plugin
 	{
 		#region Attributes
 
-		StandardLightBase slb;
 		public StandardLightBase StandardLightBase
 		{
-			get
-			{
-				return slb;
-			}
-			set
-			{
-				slb = value;
-			}
+			get; set;
 		}
 
-		LightT lt;
 		public LightT LightT
 		{
-			get
-			{
-				return lt;
-			}
-			set
-			{
-				lt = value;
-			}
+			get; set;
 		}
 
-		ReferentNode rn;
 		public ReferentNode ReferentNode
 		{
-			get
-			{
-				return rn;
-			}
-			set
-			{
-				rn = value;
-			}
+			get; set;
 		}
 
-		ObjectGraphNode ogn;
 		public ObjectGraphNode ObjectGraphNode
 		{
-			get
-			{
-				return ogn;
-			}
-			set
-			{
-				ogn = value;
-			}
+			get; set;
 		}
 
-		string unknown2;
 		public string Name
 		{
-			get
-			{
-				return unknown2;
-			}
-			set
-			{
-				unknown2 = value;
-			}
+			get; set;
 		}
 
-		float unknown3;
 		public float Val1
 		{
-			get
-			{
-				return unknown3;
-			}
-			set
-			{
-				unknown3 = value;
-			}
+			get; set;
 		}
 
-		float unknown4;
 		public float Val2
 		{
-			get
-			{
-				return unknown4;
-			}
-			set
-			{
-				unknown4 = value;
-			}
+			get; set;
 		}
 
-		float red;
 		public float Red
 		{
-			get
-			{
-				return red;
-			}
-			set
-			{
-				red = value;
-			}
+			get; set;
 		}
 
-		float green;
 		public float Green
 		{
-			get
-			{
-				return green;
-			}
-			set
-			{
-				green = value;
-			}
+			get; set;
 		}
 
-		float blue;
 		public float Blue
 		{
-			get
-			{
-				return blue;
-			}
-			set
-			{
-				blue = value;
-			}
+			get; set;
 		}
 
 		#endregion
@@ -170,13 +90,13 @@ namespace SimPe.Plugin
 			version = 1;
 			BlockID = 0xC9C81BA3;
 
-			slb = new StandardLightBase(null);
+			StandardLightBase = new StandardLightBase(null);
 			sgres = new SGResource(null);
-			lt = new LightT(null);
-			rn = new ReferentNode(null);
-			ogn = new ObjectGraphNode(null);
+			LightT = new LightT(null);
+			ReferentNode = new ReferentNode(null);
+			ObjectGraphNode = new ObjectGraphNode(null);
 
-			unknown2 = "";
+			Name = "";
 		}
 
 		#region IRcolBlock Member
@@ -189,32 +109,32 @@ namespace SimPe.Plugin
 		{
 			version = reader.ReadUInt32();
 
-			slb.BlockName = reader.ReadString();
-			slb.BlockID = reader.ReadUInt32();
-			slb.Unserialize(reader);
+			StandardLightBase.BlockName = reader.ReadString();
+			StandardLightBase.BlockID = reader.ReadUInt32();
+			StandardLightBase.Unserialize(reader);
 
 			sgres.BlockName = reader.ReadString();
 			sgres.BlockID = reader.ReadUInt32();
 			sgres.Unserialize(reader);
 
-			lt.BlockName = reader.ReadString();
-			lt.BlockID = reader.ReadUInt32();
-			lt.Unserialize(reader);
+			LightT.BlockName = reader.ReadString();
+			LightT.BlockID = reader.ReadUInt32();
+			LightT.Unserialize(reader);
 
-			rn.BlockName = reader.ReadString();
-			rn.BlockID = reader.ReadUInt32();
-			rn.Unserialize(reader);
+			ReferentNode.BlockName = reader.ReadString();
+			ReferentNode.BlockID = reader.ReadUInt32();
+			ReferentNode.Unserialize(reader);
 
-			ogn.BlockName = reader.ReadString();
-			ogn.BlockID = reader.ReadUInt32();
-			ogn.Unserialize(reader);
+			ObjectGraphNode.BlockName = reader.ReadString();
+			ObjectGraphNode.BlockID = reader.ReadUInt32();
+			ObjectGraphNode.Unserialize(reader);
 
-			unknown2 = reader.ReadString();
-			unknown3 = reader.ReadSingle();
-			unknown4 = reader.ReadSingle();
-			red = reader.ReadSingle();
-			green = reader.ReadSingle();
-			blue = reader.ReadSingle();
+			Name = reader.ReadString();
+			Val1 = reader.ReadSingle();
+			Val2 = reader.ReadSingle();
+			Red = reader.ReadSingle();
+			Green = reader.ReadSingle();
+			Blue = reader.ReadSingle();
 		}
 
 		/// <summary>
@@ -229,32 +149,32 @@ namespace SimPe.Plugin
 		{
 			writer.Write(version);
 
-			writer.Write(slb.BlockName);
-			writer.Write(slb.BlockID);
-			slb.Serialize(writer);
+			writer.Write(StandardLightBase.BlockName);
+			writer.Write(StandardLightBase.BlockID);
+			StandardLightBase.Serialize(writer);
 
 			writer.Write(sgres.BlockName);
 			writer.Write(sgres.BlockID);
 			sgres.Serialize(writer);
 
-			writer.Write(lt.BlockName);
-			writer.Write(lt.BlockID);
-			lt.Serialize(writer);
+			writer.Write(LightT.BlockName);
+			writer.Write(LightT.BlockID);
+			LightT.Serialize(writer);
 
-			writer.Write(rn.BlockName);
-			writer.Write(rn.BlockID);
-			rn.Serialize(writer);
+			writer.Write(ReferentNode.BlockName);
+			writer.Write(ReferentNode.BlockID);
+			ReferentNode.Serialize(writer);
 
-			writer.Write(ogn.BlockName);
-			writer.Write(ogn.BlockID);
-			ogn.Serialize(writer);
+			writer.Write(ObjectGraphNode.BlockName);
+			writer.Write(ObjectGraphNode.BlockID);
+			ObjectGraphNode.Serialize(writer);
 
-			writer.Write(unknown2);
-			writer.Write(unknown3);
-			writer.Write(unknown4);
-			writer.Write(red);
-			writer.Write(green);
-			writer.Write(blue);
+			writer.Write(Name);
+			writer.Write(Val1);
+			writer.Write(Val2);
+			writer.Write(Red);
+			writer.Write(Green);
+			writer.Write(Blue);
 		}
 
 		protected TabPage.DirectionalLight tDirectionalLight;
@@ -277,13 +197,13 @@ namespace SimPe.Plugin
 			if (tDirectionalLight == null)
 				tDirectionalLight = new SimPe.Plugin.TabPage.DirectionalLight();
 			tDirectionalLight.tb_l_ver.Text = "0x" + Helper.HexString(this.version);
-			tDirectionalLight.tb_l_name.Text = unknown2;
+			tDirectionalLight.tb_l_name.Text = Name;
 
-			tDirectionalLight.tb_l_1.Text = unknown3.ToString();
-			tDirectionalLight.tb_l_2.Text = unknown4.ToString();
-			tDirectionalLight.tb_l_3.Text = red.ToString();
-			tDirectionalLight.tb_l_4.Text = green.ToString();
-			tDirectionalLight.tb_l_5.Text = blue.ToString();
+			tDirectionalLight.tb_l_1.Text = Val1.ToString();
+			tDirectionalLight.tb_l_2.Text = Val2.ToString();
+			tDirectionalLight.tb_l_3.Text = Red.ToString();
+			tDirectionalLight.tb_l_4.Text = Green.ToString();
+			tDirectionalLight.tb_l_5.Text = Blue.ToString();
 
 			tDirectionalLight.label39.Visible = false;
 			tDirectionalLight.label44.Visible = false;
@@ -299,10 +219,10 @@ namespace SimPe.Plugin
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
 			base.ExtendTabControl(tc);
-			this.slb.AddToTabControl(tc);
-			this.lt.AddToTabControl(tc);
-			this.rn.AddToTabControl(tc);
-			this.ogn.AddToTabControl(tc);
+			this.StandardLightBase.AddToTabControl(tc);
+			this.LightT.AddToTabControl(tc);
+			this.ReferentNode.AddToTabControl(tc);
+			this.ObjectGraphNode.AddToTabControl(tc);
 		}
 
 		#region IDisposable Member

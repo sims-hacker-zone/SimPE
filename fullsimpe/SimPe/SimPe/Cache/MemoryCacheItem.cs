@@ -38,13 +38,12 @@ namespace SimPe.Cache
 
 		public MemoryCacheItem()
 		{
-			version = VERSION;
-			name = "";
+			Version = VERSION;
+			Name = "";
 			pfd = new Packages.PackedFileDescriptor();
 			valuenames = new string[0];
 		}
 
-		byte version;
 		Interfaces.Files.IPackedFileDescriptor pfd;
 
 		/// <summary>
@@ -63,43 +62,19 @@ namespace SimPe.Cache
 			}
 		}
 
-		uint guid;
 		public uint Guid
 		{
-			get
-			{
-				return guid;
-			}
-			set
-			{
-				guid = value;
-			}
+			get; set;
 		}
 
-		SimPe.Data.ObjectTypes type;
 		public SimPe.Data.ObjectTypes ObjectType
 		{
-			get
-			{
-				return type;
-			}
-			set
-			{
-				type = value;
-			}
+			get; set;
 		}
 
-		string name;
 		public string Name
 		{
-			get
-			{
-				return name;
-			}
-			set
-			{
-				name = value;
-			}
+			get; set;
 		}
 
 		string[] valuenames;
@@ -132,7 +107,6 @@ namespace SimPe.Cache
 			}
 		}
 
-		Image thumb;
 		static Image emptyimg;
 
 		/// <summary>
@@ -161,14 +135,7 @@ namespace SimPe.Cache
 		/// </summary>
 		public Image Icon
 		{
-			get
-			{
-				return thumb;
-			}
-			set
-			{
-				thumb = value;
-			}
+			get; set;
 		}
 
 		public bool IsToken => IsAspiration
@@ -207,17 +174,9 @@ namespace SimPe.Cache
 					&& !IsMemory
 					&& this.ObjectType == Data.ObjectTypes.Normal;
 
-		SimPe.Cache.CacheContainer cc;
 		public CacheContainer ParentCacheContainer
 		{
-			get
-			{
-				return cc;
-			}
-			set
-			{
-				cc = value;
-			}
+			get; set;
 		}
 
 		public override string ToString()
@@ -229,16 +188,16 @@ namespace SimPe.Cache
 
 		public void Load(System.IO.BinaryReader reader)
 		{
-			version = reader.ReadByte();
-			if (version > VERSION)
-				throw new CacheException("Unknown CacheItem Version.", null, version);
+			Version = reader.ReadByte();
+			if (Version > VERSION)
+				throw new CacheException("Unknown CacheItem Version.", null, Version);
 
-			name = reader.ReadString();
-			if (version >= 2)
+			Name = reader.ReadString();
+			if (Version >= 2)
 				objdname = reader.ReadString();
 			else
 				objdname = null;
-			if (version >= 3)
+			if (Version >= 3)
 			{
 				int ct = reader.ReadUInt16();
 				valuenames = new string[ct];
@@ -250,57 +209,60 @@ namespace SimPe.Cache
 				valuenames = new string[0];
 			}
 
-			type = (SimPe.Data.ObjectTypes)reader.ReadUInt16();
+			ObjectType = (SimPe.Data.ObjectTypes)reader.ReadUInt16();
 			pfd = new Packages.PackedFileDescriptor();
 			pfd.Type = reader.ReadUInt32();
 			pfd.Group = reader.ReadUInt32();
 			pfd.LongInstance = reader.ReadUInt64();
-			guid = reader.ReadUInt32();
+			Guid = reader.ReadUInt32();
 
 			int size = reader.ReadInt32();
 			if (size == 0)
 			{
-				thumb = null;
+				Icon = null;
 			}
 			else
 			{
 				byte[] data = reader.ReadBytes(size);
 				MemoryStream ms = new MemoryStream(data);
 
-				thumb = Image.FromStream(ms);
+				Icon = Image.FromStream(ms);
 			}
 		}
 
 		public void Save(System.IO.BinaryWriter writer)
 		{
-			version = VERSION;
-			writer.Write(version);
-			writer.Write(name);
+			Version = VERSION;
+			writer.Write(Version);
+			writer.Write(Name);
 			writer.Write(objdname);
 			writer.Write((ushort)valuenames.Length);
 			foreach (string s in valuenames)
 				writer.Write(s);
-			writer.Write((ushort)type);
+			writer.Write((ushort)ObjectType);
 			writer.Write(pfd.Type);
 			writer.Write(pfd.Group);
 			writer.Write(pfd.LongInstance);
-			writer.Write(guid);
+			writer.Write(Guid);
 
-			if (thumb == null)
+			if (Icon == null)
 			{
 				writer.Write((int)0);
 			}
 			else
 			{
 				MemoryStream ms = new MemoryStream();
-				thumb.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+				Icon.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
 				byte[] data = ms.ToArray();
 				writer.Write(data.Length);
 				writer.Write(data);
 			}
 		}
 
-		public byte Version => version;
+		public byte Version
+		{
+			get; private set;
+		}
 
 		#endregion
 
@@ -308,9 +270,9 @@ namespace SimPe.Cache
 
 		public void Dispose()
 		{
-			thumb = null;
+			Icon = null;
 			pfd = null;
-			name = null;
+			Name = null;
 		}
 
 		#endregion

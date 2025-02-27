@@ -965,8 +965,7 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		string filename = null;
-		public string FileName => filename;
+		public string FileName { get; private set; } = null;
 
 		private void Select(object sender, System.EventArgs e)
 		{
@@ -1507,18 +1506,18 @@ namespace SimPe.Plugin
 		{
 			if (lv.SelectedItems.Count != 1)
 				return;
-			this.filename = System.IO.Path.Combine(
+			this.FileName = System.IO.Path.Combine(
 				lbdir.Text,
 				lv.SelectedItems[0].Text + ".package"
 			);
-			if (!System.IO.File.Exists(filename))
-				filename = System.IO.Path.Combine(
+			if (!System.IO.File.Exists(FileName))
+				FileName = System.IO.Path.Combine(
 					lbdir.Text,
 					lv.SelectedItems[0].Text + ".simpedis"
 				);
 
-			if (!System.IO.File.Exists(filename))
-				filename = null;
+			if (!System.IO.File.Exists(FileName))
+				FileName = null;
 			else
 				Close();
 		}
@@ -1658,20 +1657,20 @@ namespace SimPe.Plugin
 					|| (lvi.SubItems[4].Text.IndexOf(STR_COMP_SIZE) != -1)
 				)
 				{
-					this.filename = System.IO.Path.Combine(
+					this.FileName = System.IO.Path.Combine(
 						lbdir.Text,
 						lvi.Text + ".package"
 					);
-					if (!System.IO.File.Exists(filename))
-						filename = System.IO.Path.Combine(
+					if (!System.IO.File.Exists(FileName))
+						FileName = System.IO.Path.Combine(
 							lbdir.Text,
 							lvi.Text + ".simpedis"
 						);
 
-					if (System.IO.File.Exists(filename))
+					if (System.IO.File.Exists(FileName))
 					{
 						SimPe.Packages.GeneratableFile pkg =
-							SimPe.Packages.GeneratableFile.LoadFromFile(filename);
+							SimPe.Packages.GeneratableFile.LoadFromFile(FileName);
 						foreach (
 							SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pkg.Index
 						)

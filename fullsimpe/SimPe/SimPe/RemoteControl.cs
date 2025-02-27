@@ -31,7 +31,6 @@ namespace SimPe
 		public class ControlEventArgs : System.EventArgs
 		{
 			object[] data;
-			uint target;
 
 			public ControlEventArgs(uint target)
 				: this(target, new object[0]) { }
@@ -45,10 +44,13 @@ namespace SimPe
 					data = new object[0];
 				this.data = data;
 
-				this.target = target;
+				this.TargetType = target;
 			}
 
-			public uint TargetType => target;
+			public uint TargetType
+			{
+				get;
+			}
 
 			public object Item
 			{
@@ -240,55 +242,29 @@ namespace SimPe
 		}
 		#endregion
 
-		static ShowDockDelegate sdd;
 
 		/// <summary>
 		/// Returns/Sets the ShowDock Delegate
 		/// </summary>
 		public static ShowDockDelegate ShowDockFkt
 		{
-			get
-			{
-				return sdd;
-			}
-			set
-			{
-				sdd = value;
-			}
+			get; set;
 		}
-
-		static OpenPackedFileDelegate opf;
 
 		/// <summary>
 		/// Returns/Sets the Function that should be called if you want to open a PackedFile
 		/// </summary>
 		public static OpenPackedFileDelegate OpenPackedFileFkt
 		{
-			get
-			{
-				return opf;
-			}
-			set
-			{
-				opf = value;
-			}
+			get; set;
 		}
-
-		static OpenPackageDelegate op;
 
 		/// <summary>
 		/// Returns/Sets the Function that should be called if you want to open a PackedFile
 		/// </summary>
 		public static OpenPackageDelegate OpenPackageFkt
 		{
-			get
-			{
-				return op;
-			}
-			set
-			{
-				op = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -298,9 +274,9 @@ namespace SimPe
 		/// <param name="hide"></param>
 		public static void ShowDock(Ambertation.Windows.Forms.DockPanel doc, bool hide)
 		{
-			if (sdd == null)
+			if (ShowDockFkt == null)
 				return;
-			sdd(doc, hide);
+			ShowDockFkt(doc, hide);
 		}
 
 		/// <summary>
@@ -310,12 +286,12 @@ namespace SimPe
 		/// <returns>true, if the package was opened</returns>
 		public static bool OpenPackage(string filename)
 		{
-			if (op == null)
+			if (OpenPackageFkt == null)
 				return false;
 
 			try
 			{
-				return op(filename);
+				return OpenPackageFkt(filename);
 			}
 			catch (Exception ex)
 			{
@@ -329,21 +305,12 @@ namespace SimPe
 			return false;
 		}
 
-		static OpenMemPackageDelegate omp;
-
 		/// <summary>
 		/// Returns/Sets the Function that should be called if you want to open a PackedFile
 		/// </summary>
 		public static OpenMemPackageDelegate OpenMemoryPackageFkt
 		{
-			get
-			{
-				return omp;
-			}
-			set
-			{
-				omp = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -353,12 +320,12 @@ namespace SimPe
 		/// <returns>true, if the package was opened</returns>
 		public static bool OpenMemoryPackage(SimPe.Interfaces.Files.IPackageFile pkg)
 		{
-			if (omp == null)
+			if (OpenMemoryPackageFkt == null)
 				return false;
 
 			try
 			{
-				return omp(pkg);
+				return OpenMemoryPackageFkt(pkg);
 			}
 			catch (Exception ex)
 			{
@@ -395,12 +362,12 @@ namespace SimPe
 			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii
 		)
 		{
-			if (opf == null)
+			if (OpenPackedFileFkt == null)
 				return false;
 
 			try
 			{
-				return opf(fii);
+				return OpenPackedFileFkt(fii);
 			}
 			catch (Exception ex)
 			{

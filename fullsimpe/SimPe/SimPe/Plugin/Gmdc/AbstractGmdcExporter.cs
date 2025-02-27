@@ -49,73 +49,69 @@ namespace SimPe.Plugin.Gmdc
 			}
 		}
 
-		GeometryDataContainer gmdc;
-
 		/// <summary>
 		/// Returns the assigned Gmdc File
 		/// </summary>
-		protected GeometryDataContainer Gmdc => gmdc;
-
-		GmdcGroups groups;
+		protected GeometryDataContainer Gmdc
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Returns the MeshGroups that should be processed
 		/// </summary>
-		protected GmdcGroups Groups => groups;
-
-		GmdcElement vertex;
-
-		/// <summary>
-		/// Returns null or the Element that contains the Vertex Data
-		/// </summary>
-		protected GmdcElement VertexElement => vertex;
-
-		GmdcElement normal;
+		protected GmdcGroups Groups
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Returns null or the Element that contains the Vertex Data
 		/// </summary>
-		protected GmdcElement NormalElement => normal;
+		protected GmdcElement VertexElement
+		{
+			get; private set;
+		}
 
-		GmdcElement uvmap;
+		/// <summary>
+		/// Returns null or the Element that contains the Vertex Data
+		/// </summary>
+		protected GmdcElement NormalElement
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Returns null or the Element that contains the UVMap Data
 		/// </summary>
-		protected GmdcElement UVCoordinateElement => uvmap;
-
-		GmdcLink link;
+		protected GmdcElement UVCoordinateElement
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Returns the Link that is used for the current Group (can be null)
 		/// </summary>
-		protected GmdcLink Link => link;
-
-		GmdcGroup group;
+		protected GmdcLink Link
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Returns the curent group (can be null)
 		/// </summary>
-		protected GmdcGroup Group => group;
-
-		ElementOrder order;
+		protected GmdcGroup Group
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Which Order is used for the Components
 		/// </summary>
 		public ElementOrder Component
 		{
-			get
-			{
-				return order;
-			}
-			set
-			{
-				order = value;
-			}
+			get; set;
 		}
-
-		bool cjs;
 
 		/// <summary>
 		/// true, if you want SimPe to correct the Joint definitions, moving all rotations to the _root node,
@@ -123,14 +119,7 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public bool CorrectJointSetup
 		{
-			get
-			{
-				return cjs;
-			}
-			set
-			{
-				cjs = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -141,7 +130,7 @@ namespace SimPe.Plugin.Gmdc
 		public AbstractGmdcExporter(GeometryDataContainer gmdc, GmdcGroups groups)
 			: this()
 		{
-			this.gmdc = gmdc;
+			this.Gmdc = gmdc;
 			LoadGroups(groups);
 		}
 
@@ -157,9 +146,9 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public AbstractGmdcExporter()
 		{
-			this.gmdc = null;
-			this.order = new ElementOrder(ElementSorting.XZY);
-			this.cjs = false;
+			this.Gmdc = null;
+			this.Component = new ElementOrder(ElementSorting.XZY);
+			this.CorrectJointSetup = false;
 		}
 
 		/// <summary>
@@ -180,7 +169,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns>The created Stream</returns>
 		public System.IO.Stream Process(GeometryDataContainer gmdc, GmdcGroups groups)
 		{
-			this.gmdc = gmdc;
+			this.Gmdc = gmdc;
 			LoadGroups(groups);
 
 			return this.FileContent.BaseStream;
@@ -193,7 +182,7 @@ namespace SimPe.Plugin.Gmdc
 		void LoadGroups(GmdcGroups groups)
 		{
 			writer = new StreamWriter(new MemoryStream());
-			this.groups = groups;
+			this.Groups = groups;
 			LoadSpecialElements(null);
 			InitFile();
 
@@ -201,7 +190,7 @@ namespace SimPe.Plugin.Gmdc
 			{
 				LoadSpecialElements(g);
 
-				if (group != null && vertex != null && link != null)
+				if (Group != null && VertexElement != null && Link != null)
 					ProcessGroup();
 			}
 
@@ -216,31 +205,31 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="group"></param>
 		void LoadSpecialElements(GmdcGroup group)
 		{
-			vertex = null;
-			normal = null;
-			uvmap = null;
-			link = null;
-			this.group = group;
+			VertexElement = null;
+			NormalElement = null;
+			UVCoordinateElement = null;
+			Link = null;
+			this.Group = group;
 
 			if (group == null)
 				return;
-			if (gmdc == null)
+			if (Gmdc == null)
 				return;
 
 			if (group.LinkIndex < Gmdc.Links.Length)
 			{
-				link = Gmdc.Links[group.LinkIndex];
-				foreach (int i in link.ReferencedElement)
+				Link = Gmdc.Links[group.LinkIndex];
+				foreach (int i in Link.ReferencedElement)
 				{
 					if (i < Gmdc.Elements.Length)
 					{
 						GmdcElement e = Gmdc.Elements[i];
 						if (e.Identity == ElementIdentity.Vertex)
-							vertex = e;
+							VertexElement = e;
 						else if (e.Identity == ElementIdentity.Normal)
-							normal = e;
+							NormalElement = e;
 						else if (e.Identity == ElementIdentity.UVCoordinate)
-							uvmap = e;
+							UVCoordinateElement = e;
 					}
 				} //foreach
 			}

@@ -6,11 +6,9 @@ namespace SimPe.Windows.Forms
 {
 	public abstract class AResourceTreeNodeBuilder : IResourceTreeNodeBuilder
 	{
-		ulong last;
-
 		public AResourceTreeNodeBuilder()
 		{
-			last = 0;
+			LastSelectedId = 0;
 		}
 
 		#region IResourceTreeNodeBuilder Member
@@ -19,14 +17,7 @@ namespace SimPe.Windows.Forms
 
 		public ulong LastSelectedId
 		{
-			get
-			{
-				return last;
-			}
-			set
-			{
-				last = value;
-			}
+			get; set;
 		}
 
 		#endregion

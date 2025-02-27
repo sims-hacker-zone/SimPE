@@ -40,37 +40,20 @@ namespace SimPe.Windows.Forms
 
 			class DescriptorSort : IComparer<NamedPackedFileDescriptor>
 			{
-				SortColumn sc;
-				bool asc;
-
 				public DescriptorSort()
 				{
-					sc = SortColumn.Offset;
-					asc = true;
+					Column = SortColumn.Offset;
+					Asc = true;
 				}
 
 				public SortColumn Column
 				{
-					get
-					{
-						return sc;
-					}
-					set
-					{
-						sc = value;
-					}
+					get; set;
 				}
 
 				public bool Asc
 				{
-					get
-					{
-						return asc;
-					}
-					set
-					{
-						asc = value;
-					}
+					get; set;
 				}
 
 				#region IComparer<NamedPackedFileDescriptor> Member
@@ -80,50 +63,50 @@ namespace SimPe.Windows.Forms
 					NamedPackedFileDescriptor y
 				)
 				{
-					if (asc)
+					if (Asc)
 					{
-						if (sc == SortColumn.Name)
+						if (Column == SortColumn.Name)
 							return x.GetRealName().CompareTo(y.GetRealName());
-						if (sc == SortColumn.Type || sc == SortColumn.Extension)
+						if (Column == SortColumn.Type || Column == SortColumn.Extension)
 							return x.Descriptor.Type.CompareTo(y.Descriptor.Type);
-						if (sc == SortColumn.Group)
+						if (Column == SortColumn.Group)
 							return x.Descriptor.Group.CompareTo(y.Descriptor.Group);
-						if (sc == SortColumn.InstanceHi)
+						if (Column == SortColumn.InstanceHi)
 							return x.Descriptor.SubType.CompareTo(y.Descriptor.SubType);
-						if (sc == SortColumn.InstanceLo)
+						if (Column == SortColumn.InstanceLo)
 							return x.Descriptor.Instance.CompareTo(
 								y.Descriptor.Instance
 							);
-						if (sc == SortColumn.Instance)
+						if (Column == SortColumn.Instance)
 							return x.Descriptor.LongInstance.CompareTo(
 								y.Descriptor.LongInstance
 							);
-						if (sc == SortColumn.Offset)
+						if (Column == SortColumn.Offset)
 							return x.Descriptor.Offset.CompareTo(y.Descriptor.Offset);
-						if (sc == SortColumn.Size)
+						if (Column == SortColumn.Size)
 							return x.Descriptor.Size.CompareTo(y.Descriptor.Size);
 					}
 					else
 					{
-						if (sc == SortColumn.Name)
+						if (Column == SortColumn.Name)
 							return y.GetRealName().CompareTo(x.GetRealName());
-						if (sc == SortColumn.Type || sc == SortColumn.Extension)
+						if (Column == SortColumn.Type || Column == SortColumn.Extension)
 							return y.Descriptor.Type.CompareTo(x.Descriptor.Type);
-						if (sc == SortColumn.Group)
+						if (Column == SortColumn.Group)
 							return y.Descriptor.Group.CompareTo(x.Descriptor.Group);
-						if (sc == SortColumn.InstanceHi)
+						if (Column == SortColumn.InstanceHi)
 							return y.Descriptor.SubType.CompareTo(x.Descriptor.SubType);
-						if (sc == SortColumn.InstanceLo)
+						if (Column == SortColumn.InstanceLo)
 							return y.Descriptor.Instance.CompareTo(
 								x.Descriptor.Instance
 							);
-						if (sc == SortColumn.Instance)
+						if (Column == SortColumn.Instance)
 							return y.Descriptor.LongInstance.CompareTo(
 								x.Descriptor.LongInstance
 							);
-						if (sc == SortColumn.Offset)
+						if (Column == SortColumn.Offset)
 							return y.Descriptor.Offset.CompareTo(x.Descriptor.Offset);
-						if (sc == SortColumn.Size)
+						if (Column == SortColumn.Size)
 							return y.Descriptor.Size.CompareTo(x.Descriptor.Size);
 					}
 					return 0;

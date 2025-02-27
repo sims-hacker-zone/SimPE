@@ -10,66 +10,26 @@ namespace SimPe.Plugin
 			IFileWrapperSaveExtension
 	{
 		#region Gametip Attribute
-		private ushort tipname;
-		private ushort tipheader;
-		private ushort tipbody;
-		private ushort tipep;
-		private uint tipicon;
 
 		public ushort Tipname
 		{
-			get
-			{
-				return tipname;
-			}
-			set
-			{
-				tipname = value;
-			}
+			get; set;
 		}
 		public ushort Tipheader
 		{
-			get
-			{
-				return tipheader;
-			}
-			set
-			{
-				tipheader = value;
-			}
+			get; set;
 		}
 		public ushort Tipbody
 		{
-			get
-			{
-				return tipbody;
-			}
-			set
-			{
-				tipbody = value;
-			}
+			get; set;
 		}
 		public ushort Tipep
 		{
-			get
-			{
-				return tipep;
-			}
-			set
-			{
-				tipep = value;
-			}
+			get; set;
 		}
 		public uint Tipicon
 		{
-			get
-			{
-				return tipicon;
-			}
-			set
-			{
-				tipicon = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -103,22 +63,22 @@ namespace SimPe.Plugin
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			reader.BaseStream.Seek(0x2, System.IO.SeekOrigin.Begin);
-			tipname = reader.ReadUInt16();
-			tipheader = reader.ReadUInt16();
-			tipbody = reader.ReadUInt16();
-			tipep = reader.ReadUInt16();
-			tipicon = reader.ReadUInt32();
+			Tipname = reader.ReadUInt16();
+			Tipheader = reader.ReadUInt16();
+			Tipbody = reader.ReadUInt16();
+			Tipep = reader.ReadUInt16();
+			Tipicon = reader.ReadUInt32();
 		}
 
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			ushort vershin = 2;
 			writer.Write(vershin);
-			writer.Write(tipname);
-			writer.Write(tipheader);
-			writer.Write(tipbody);
-			writer.Write(tipep);
-			writer.Write(tipicon);
+			writer.Write(Tipname);
+			writer.Write(Tipheader);
+			writer.Write(Tipbody);
+			writer.Write(Tipep);
+			writer.Write(Tipicon);
 		}
 		#endregion
 

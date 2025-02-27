@@ -29,11 +29,9 @@ namespace SimPe.Packages
 			SimPe.Interfaces.Files.IPackageHeaderIndex,
 			System.IDisposable
 	{
-		Interfaces.Files.IPackageHeader parent;
-
 		internal HeaderIndex(Interfaces.Files.IPackageHeader hd)
 		{
-			this.parent = hd;
+			this.Parent = hd;
 		}
 
 		/// <summary>
@@ -61,25 +59,28 @@ namespace SimPe.Packages
 		{
 			get
 			{
-				if (parent.IndexType == SimPe.Data.MetaData.IndexTypes.ptLongFileIndex)
+				if (Parent.IndexType == SimPe.Data.MetaData.IndexTypes.ptLongFileIndex)
 					return 6 * 4;
 				else if (
-					parent.IndexType == SimPe.Data.MetaData.IndexTypes.ptShortFileIndex
+					Parent.IndexType == SimPe.Data.MetaData.IndexTypes.ptShortFileIndex
 				)
 					return 5 * 4;
 				return base.ItemSize;
 			}
 		}
 
-		internal Interfaces.Files.IPackageHeader Parent => parent;
+		internal Interfaces.Files.IPackageHeader Parent
+		{
+			get;
+		}
 
 		internal void UseInParent()
 		{
-			if (parent == null)
+			if (Parent == null)
 				return;
-			if (parent is HeaderData)
+			if (Parent is HeaderData)
 			{
-				HeaderData hd = parent as HeaderData;
+				HeaderData hd = Parent as HeaderData;
 				hd.index = this;
 			}
 		}

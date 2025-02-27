@@ -47,7 +47,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			);
 
 			BackColor = Color.Transparent;
-			loaded = false;
+			Loaded = false;
 
 			// Required designer variable.
 			InitializeComponent();
@@ -206,15 +206,18 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		#region Public Properties
 
-		bool loaded;
 
 		[Browsable(false)]
-		public bool Loaded => loaded;
-
-		SimPe.Interfaces.Files.IPackageFile pkg;
+		public bool Loaded
+		{
+			get; private set;
+		}
 
 		[Browsable(false)]
-		public SimPe.Interfaces.Files.IPackageFile Package => pkg;
+		public SimPe.Interfaces.Files.IPackageFile Package
+		{
+			get; private set;
+		}
 		#endregion
 
 
@@ -242,14 +245,14 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public void SetFromPackage(SimPe.Interfaces.Files.IPackageFile pkg)
 		{
-			loaded = false;
+			Loaded = false;
 			ClearScreen();
-			this.pkg = pkg;
+			this.Package = pkg;
 			if (pkg == null)
 				return;
 			if (!Helper.IsNeighborhoodFile(pkg.FileName))
 				return;
-			loaded = true;
+			Loaded = true;
 
 			try
 			{
@@ -384,10 +387,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			get
 			{
-				if (pkg == null)
+				if (Package == null)
 					return null;
 				if (ctss == null)
-					ctss = pkg.FindFile(
+					ctss = Package.FindFile(
 						Data.MetaData.CTSS_FILE,
 						0,
 						Data.MetaData.LOCAL_GROUP,
@@ -399,7 +402,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		protected void ShowVersion()
 		{
-			SimPe.Plugin.Idno idno = SimPe.Plugin.Idno.FromPackage(pkg);
+			SimPe.Plugin.Idno idno = SimPe.Plugin.Idno.FromPackage(Package);
 			if (idno != null)
 			{
 				this.lbVer.Text = idno.Version.ToString().Replace("_", " ");
@@ -420,7 +423,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					ctss_ChangedUserData
 				);
 				SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
-				str.ProcessData(ctss, pkg);
+				str.ProcessData(ctss, Package);
 
 				return str.LanguageItems(Helper.WindowsRegistry.LanguageCode);
 			}
@@ -438,7 +441,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			SimPe.Interfaces.Files.IPackedFileDescriptor sender
 		)
 		{
-			SetFromPackage(this.pkg);
+			SetFromPackage(this.Package);
 		}
 	}
 }

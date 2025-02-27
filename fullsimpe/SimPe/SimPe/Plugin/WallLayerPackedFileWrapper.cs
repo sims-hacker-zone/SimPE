@@ -20,7 +20,6 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Contains the Data of the File
 		/// </summary>
-		private int bcount;
 		private uint[] bindex;
 		public uint[] bwallid;
 		public ushort[] lpaint;
@@ -29,7 +28,10 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns/Sets the Data of the File
 		/// </summary>
-		public int ItemCount => bcount;
+		public int ItemCount
+		{
+			get; private set;
+		}
 		#endregion
 
 		/// <summary>
@@ -79,12 +81,12 @@ namespace SimPe.Plugin
 		{
 			reader.BaseStream.Seek(83, System.IO.SeekOrigin.Begin);
 
-			bcount = reader.ReadInt32();
-			Array.Resize<uint>(ref bindex, bcount);
-			Array.Resize<uint>(ref bwallid, bcount);
-			Array.Resize<ushort>(ref lpaint, bcount);
-			Array.Resize<ushort>(ref rpaint, bcount);
-			for (int i = 0; i < bcount; i++)
+			ItemCount = reader.ReadInt32();
+			Array.Resize<uint>(ref bindex, ItemCount);
+			Array.Resize<uint>(ref bwallid, ItemCount);
+			Array.Resize<ushort>(ref lpaint, ItemCount);
+			Array.Resize<ushort>(ref rpaint, ItemCount);
+			for (int i = 0; i < ItemCount; i++)
 			{
 				bindex[i] = reader.ReadUInt32();
 				bwallid[i] = reader.ReadUInt32();
@@ -114,8 +116,8 @@ namespace SimPe.Plugin
 			writer.Write(blok);
 			writer.Write(vershin);
 			writer.Write(named);
-			writer.Write(bcount);
-			for (int i = 0; i < bcount; i++)
+			writer.Write(ItemCount);
+			for (int i = 0; i < ItemCount; i++)
 			{
 				writer.Write(bindex[i]);
 				writer.Write(bwallid[i]);

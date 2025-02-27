@@ -11,24 +11,9 @@ namespace SimPe.Plugin
 	public class Scenegraph
 	{
 		/// <summary>
-		/// A List of Files you the Reference Check should exclude
-		/// </summary>
-		static ArrayList excludefiles = new ArrayList();
-
-		/// <summary>
 		/// A List of Files the SceneGraph will ignore when following a Reference
 		/// </summary>
-		public static ArrayList FileExcludeList
-		{
-			get
-			{
-				return excludefiles;
-			}
-			set
-			{
-				excludefiles = value;
-			}
-		}
+		public static ArrayList FileExcludeList { get; set; } = new ArrayList();
 
 		/// <summary>
 		/// The Default List for FileExcludeList
@@ -59,14 +44,12 @@ namespace SimPe.Plugin
 		ArrayList itemlist;
 
 		/// <summary>
-		/// List of all References that should not be followed
-		/// </summary>
-		ArrayList exclude;
-
-		/// <summary>
 		/// Returns a List of a References that should be excluded
 		/// </summary>
-		public ArrayList ExcludedReferences => exclude;
+		public ArrayList ExcludedReferences
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Create a clone of the Descriptor, so changes won't affect the source Package anymore!
@@ -259,7 +242,7 @@ namespace SimPe.Plugin
 								);
 
 								if (
-									Scenegraph.excludefiles.Contains(
+									Scenegraph.FileExcludeList.Contains(
 										sub.FileName.Trim().ToLower()
 									)
 								)
@@ -324,7 +307,7 @@ namespace SimPe.Plugin
 		/// <param name="ex">List of all ReferenceNames that should be excluded from the chain</param>
 		public void Init(string[] modelnames, ArrayList ex)
 		{
-			exclude = ex;
+			ExcludedReferences = ex;
 			this.modelnames = new ArrayList();
 			ArrayList cres = LoadCres(modelnames);
 
@@ -428,7 +411,7 @@ namespace SimPe.Plugin
 				if (rcol.FileDescriptor.Type == Data.MetaData.TXMT)
 					AddSlaveTxmts(
 						this.modelnames,
-						this.exclude,
+						this.ExcludedReferences,
 						files,
 						itemlist,
 						rcol,
@@ -625,7 +608,7 @@ namespace SimPe.Plugin
 											ArrayList newfiles = new ArrayList();
 											LoadReferenced(
 												this.modelnames,
-												this.exclude,
+												this.ExcludedReferences,
 												newfiles,
 												itemlist,
 												sub,
@@ -1026,7 +1009,7 @@ namespace SimPe.Plugin
 					sub.ProcessData(item);
 					LoadReferenced(
 						this.modelnames,
-						this.exclude,
+						this.ExcludedReferences,
 						files,
 						itemlist,
 						sub,
@@ -1141,7 +1124,7 @@ namespace SimPe.Plugin
 					sub.ProcessData(item);
 					LoadReferenced(
 						this.modelnames,
-						this.exclude,
+						this.ExcludedReferences,
 						files,
 						itemlist,
 						sub,
@@ -1199,7 +1182,7 @@ namespace SimPe.Plugin
 					sub.ProcessData(item);
 					LoadReferenced(
 						this.modelnames,
-						this.exclude,
+						this.ExcludedReferences,
 						files,
 						itemlist,
 						sub,
@@ -1242,7 +1225,7 @@ namespace SimPe.Plugin
 							sub.ProcessData(item);
 							LoadReferenced(
 								this.modelnames,
-								this.exclude,
+								this.ExcludedReferences,
 								files,
 								itemlist,
 								sub,
@@ -1384,7 +1367,7 @@ namespace SimPe.Plugin
 					sub.ProcessData(item);
 					LoadReferenced(
 						this.modelnames,
-						this.exclude,
+						this.ExcludedReferences,
 						files,
 						itemlist,
 						sub,

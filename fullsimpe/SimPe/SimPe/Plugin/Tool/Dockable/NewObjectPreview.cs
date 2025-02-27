@@ -44,7 +44,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			);
 
 			BackColor = Color.Transparent;
-			loadimg = true;
+			LoadCustomImage = true;
 
 			InitializeComponent();
 
@@ -72,17 +72,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 		}
 
-		bool loadimg;
 		public bool LoadCustomImage
 		{
-			get
-			{
-				return loadimg;
-			}
-			set
-			{
-				loadimg = value;
-			}
+			get; set;
 		}
 
 		[Browsable(false)]

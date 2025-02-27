@@ -114,208 +114,100 @@ namespace SimPe.Plugin
 		/// </summary>
 		public NeighborhoodVersion Version => (NeighborhoodVersion)version;
 
-		NeighborhoodType type;
-
 		/// <summary>
 		/// Returns the Type of this Neighbourhood
 		/// </summary>
 		public NeighborhoodType Type
 		{
-			get
-			{
-				return type;
-			}
-			set
-			{
-				type = value;
-			}
+			get; set;
 		}
-
-		Data.MetaData.NeighbourhoodEP reqep;
 
 		/// <summary>
 		/// Returns the required EP of this Neighbourhood
 		/// </summary>
 		public Data.MetaData.NeighbourhoodEP Reqep
 		{
-			get
-			{
-				return reqep;
-			}
-			set
-			{
-				reqep = value;
-			}
+			get; set;
 		}
-
-		Data.MetaData.NeighbourhoodEP subep;
 
 		/// <summary>
 		/// Returns the affiliated EP of this Neighbourhood
 		/// </summary>
 		public Data.MetaData.NeighbourhoodEP Subep
 		{
-			get
-			{
-				return subep;
-			}
-			set
-			{
-				subep = value;
-			}
+			get; set;
 		}
-
-		NhSeasons quada;
 
 		/// <summary>
 		/// Returns the 1st season qaudrant of this Neighbourhood
 		/// </summary>
 		public NhSeasons Quada
 		{
-			get
-			{
-				return quada;
-			}
-			set
-			{
-				quada = value;
-			}
+			get; set;
 		}
-
-		NhSeasons quadb;
 
 		/// <summary>
 		/// Returns the 2nd season qaudrant of this Neighbourhood
 		/// </summary>
 		public NhSeasons Quadb
 		{
-			get
-			{
-				return quadb;
-			}
-			set
-			{
-				quadb = value;
-			}
+			get; set;
 		}
-
-		NhSeasons quadc;
 
 		/// <summary>
 		/// Returns the 3rd season qaudrant of this Neighbourhood
 		/// </summary>
 		public NhSeasons Quadc
 		{
-			get
-			{
-				return quadc;
-			}
-			set
-			{
-				quadc = value;
-			}
+			get; set;
 		}
-
-		NhSeasons quadd;
 
 		/// <summary>
 		/// Returns the 4th season qaudrant of this Neighbourhood
 		/// </summary>
 		public NhSeasons Quadd
 		{
-			get
-			{
-				return quadd;
-			}
-			set
-			{
-				quadd = value;
-			}
+			get; set;
 		}
-
-		string name;
 
 		/// <summary>
 		/// Returns the nametag of this Neighbourhood
 		/// </summary>
 		public string OwnerName
 		{
-			get
-			{
-				return name;
-			}
-			set
-			{
-				name = value;
-			}
+			get; set;
 		}
-
-		uint uid;
 
 		/// <summary>
 		/// Returns the UID of this owning Neighbourhood
 		/// </summary>
 		public uint Uid
 		{
-			get
-			{
-				return uid;
-			}
-			set
-			{
-				uid = value;
-			}
+			get; set;
 		}
-
-		uint idflags;
 
 		/// <summary>
 		/// Returns the flag settings of this Neighbourhood
 		/// </summary>
 		public uint Idflags
 		{
-			get
-			{
-				return idflags;
-			}
-			set
-			{
-				idflags = value;
-			}
+			get; set;
 		}
-
-		uint subtype;
 
 		/// <summary>
 		/// Returns the subtype of this Neighbourhood
 		/// </summary>
 		public uint Subtype
 		{
-			get
-			{
-				return subtype;
-			}
-			set
-			{
-				subtype = value;
-			}
+			get; set;
 		}
-
-		string subname;
 
 		/// <summary>
 		/// Returns the nametag of this Neighbourhood
 		/// </summary>
 		public string SubName
 		{
-			get
-			{
-				return subname;
-			}
-			set
-			{
-				subname = value;
-			}
+			get; set;
 		}
 
 		byte[] over;
@@ -561,12 +453,12 @@ namespace SimPe.Plugin
 			else
 				this.version = (uint)NeighborhoodVersion.Sims2;
 
-			this.type = NeighborhoodType.Normal;
+			this.Type = NeighborhoodType.Normal;
 			over = new byte[0];
 
-			uid = 0;
-			name = "Nxxx";
-			subname = "";
+			Uid = 0;
+			OwnerName = "Nxxx";
+			SubName = "";
 		}
 
 		#region IWrapper member
@@ -608,30 +500,30 @@ namespace SimPe.Plugin
 		{
 			version = reader.ReadUInt32();
 			int ct = reader.ReadInt32();
-			name = Helper.ToString(reader.ReadBytes(ct));
-			uid = reader.ReadUInt32();
+			OwnerName = Helper.ToString(reader.ReadBytes(ct));
+			Uid = reader.ReadUInt32();
 
 			if (version >= (int)NeighborhoodVersion.Sims2_University)
 			{
-				type = (NeighborhoodType)reader.ReadUInt32();
-				subtype = reader.ReadUInt32();
-				if (subtype > 0)
-					subname = Helper.ToString(reader.ReadBytes((int)subtype)); // CJH - was ReadBytes(ct) -ct is parent name length -EndOfStream error when ct is longer than 4 chars
+				Type = (NeighborhoodType)reader.ReadUInt32();
+				Subtype = reader.ReadUInt32();
+				if (Subtype > 0)
+					SubName = Helper.ToString(reader.ReadBytes((int)Subtype)); // CJH - was ReadBytes(ct) -ct is parent name length -EndOfStream error when ct is longer than 4 chars
 				if (version >= (int)NeighborhoodVersion.Sims2_Seasons)
 				{
 					ct = reader.ReadInt32();
-					reqep = (Data.MetaData.NeighbourhoodEP)reader.ReadUInt32();
-					subep = (Data.MetaData.NeighbourhoodEP)reader.ReadUInt32();
-					idflags = reader.ReadUInt32();
-					quada = (NhSeasons)reader.ReadByte();
-					quadb = (NhSeasons)reader.ReadByte();
-					quadc = (NhSeasons)reader.ReadByte();
-					quadd = (NhSeasons)reader.ReadByte();
+					Reqep = (Data.MetaData.NeighbourhoodEP)reader.ReadUInt32();
+					Subep = (Data.MetaData.NeighbourhoodEP)reader.ReadUInt32();
+					Idflags = reader.ReadUInt32();
+					Quada = (NhSeasons)reader.ReadByte();
+					Quadb = (NhSeasons)reader.ReadByte();
+					Quadc = (NhSeasons)reader.ReadByte();
+					Quadd = (NhSeasons)reader.ReadByte();
 				}
 			}
 			else
 			{
-				type = NeighborhoodType.Normal;
+				Type = NeighborhoodType.Normal;
 			}
 			over = reader.ReadBytes(
 				(int)(reader.BaseStream.Length - reader.BaseStream.Position)
@@ -650,32 +542,32 @@ namespace SimPe.Plugin
 		{
 			writer.Write(version);
 
-			byte[] b = Helper.ToBytes(name, 0);
+			byte[] b = Helper.ToBytes(OwnerName, 0);
 			writer.Write((int)b.Length);
 			writer.Write(b);
-			writer.Write(uid);
+			writer.Write(Uid);
 
 			if (version >= (int)NeighborhoodVersion.Sims2_University)
 			{
-				writer.Write((uint)type);
-				if (subtype > 0)
+				writer.Write((uint)Type);
+				if (Subtype > 0)
 				{
-					b = Helper.ToBytes(subname, 0);
+					b = Helper.ToBytes(SubName, 0);
 					writer.Write((int)b.Length);
 					writer.Write(b);
 				}
 				else
-					writer.Write((int)subtype);
+					writer.Write((int)Subtype);
 				if (version >= (int)NeighborhoodVersion.Sims2_Seasons)
 				{
 					writer.Write((int)0);
-					writer.Write((int)reqep);
-					writer.Write((int)subep);
-					writer.Write((int)idflags);
-					writer.Write((byte)quada);
-					writer.Write((byte)quadb);
-					writer.Write((byte)quadc);
-					writer.Write((byte)quadd);
+					writer.Write((int)Reqep);
+					writer.Write((int)Subep);
+					writer.Write((int)Idflags);
+					writer.Write((byte)Quada);
+					writer.Write((byte)Quadb);
+					writer.Write((byte)Quadc);
+					writer.Write((byte)Quadd);
 				}
 			}
 			writer.Write(over);

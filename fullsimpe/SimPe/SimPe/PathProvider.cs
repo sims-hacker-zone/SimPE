@@ -44,25 +44,20 @@ namespace SimPe
 	public class PathProvider : IEnumerable<string>
 	{
 		internal const int GROUP_COUNT = 32;
-		static ExpansionItem nil = new ExpansionItem(null);
-		public static ExpansionItem Nil => nil;
+
+		public static ExpansionItem Nil { get; } = new ExpansionItem(null);
 
 		XmlRegistry reg;
 		XmlRegistryKey xrk;
-		List<ExpansionItem> exps;
 		List<string> paths;
-		public List<ExpansionItem> Expansions => exps;
+		public List<ExpansionItem> Expansions
+		{
+			get;
+		}
 
 		Dictionary<Expansions, ExpansionItem> map;
-		int spver,
-			epver,
-			stver;
-		ExpansionItem latest;
 		List<string> censorfiles;
-		Expansions lastknown;
 		Dictionary<long, Ambertation.CaseInvariantArrayList> savgamemap;
-
-		long avlgrp;
 
 		public static string ExpansionFile // CJH
 		{
@@ -100,11 +95,11 @@ namespace SimPe
 		{
 			reg = new XmlRegistry(ExpansionFile, ExpansionFile, true);
 			xrk = reg.CurrentUser.CreateSubKey("Expansions");
-			exps = new List<ExpansionItem>();
+			Expansions = new List<ExpansionItem>();
 			map = new Dictionary<Expansions, ExpansionItem>();
 			savgamemap = new Dictionary<long, Ambertation.CaseInvariantArrayList>();
 			censorfiles = new List<string>();
-			avlgrp = 0;
+			AvailableGroups = 0;
 
 			Load();
 		}
@@ -125,12 +120,12 @@ namespace SimPe
 			);
 			string[] names = xrk.GetSubKeyNames();
 			int ver = -1;
-			avlgrp = 0;
+			AvailableGroups = 0;
 			System.Diagnostics.Debug.WriteLine("\r\n----\r\nExpansionItems");
 			foreach (string name in names)
 			{
 				ExpansionItem i = new ExpansionItem(xrk.OpenSubKey(name, false));
-				exps.Add(i);
+				Expansions.Add(i);
 				map[i.Expansion] = i;
 				if (i.Flag.Class == ExpansionItem.Classes.Story)
 					continue;
@@ -152,23 +147,23 @@ namespace SimPe
 				if (i.Version > ver)
 				{
 					ver = i.Version;
-					lastknown = i.Expansion;
+					LastKnown = i.Expansion;
 				}
-				avlgrp = avlgrp | (uint)i.Group;
+				AvailableGroups = AvailableGroups | (uint)i.Group;
 			}
 			System.Diagnostics.Debug.WriteLine("----\r\n");
 
-			spver = GetMaxVersion(ExpansionItem.Classes.StuffPack);
-			epver = GetMaxVersion(ExpansionItem.Classes.ExpansionPack);
-			stver = GetMaxVersion(ExpansionItem.Classes.Story);
-			latest = this.GetLatestExpansion();
+			SPInstalled = GetMaxVersion(ExpansionItem.Classes.StuffPack);
+			EPInstalled = GetMaxVersion(ExpansionItem.Classes.ExpansionPack);
+			STInstalled = GetMaxVersion(ExpansionItem.Classes.Story);
+			Latest = this.GetLatestExpansion();
 
-			exps.Sort();
+			Expansions.Sort();
 
 			CreateSaveGameMap();
 
 			paths = new List<string>();
-			foreach (ExpansionItem ei in exps)
+			foreach (ExpansionItem ei in Expansions)
 				if (ei.Exists)
 					if (System.IO.Directory.Exists(ei.InstallFolder))
 						paths.Add(ei.InstallFolder);
@@ -176,7 +171,7 @@ namespace SimPe
 
 		private void CreateSaveGameMap()
 		{
-			foreach (ExpansionItem ei in exps)
+			foreach (ExpansionItem ei in Expansions)
 			{
 				foreach (long grp in ei.Groups)
 				{
@@ -197,7 +192,7 @@ namespace SimPe
 		protected int GetMaxVersion(ExpansionItem.Classes sp)
 		{
 			int ret = 0;
-			foreach (ExpansionItem i in exps)
+			foreach (ExpansionItem i in Expansions)
 			{
 				if (i.Exists || i.InstallFolder != "")
 				{
@@ -212,7 +207,10 @@ namespace SimPe
 			return ret;
 		}
 
-		public Expansions LastKnown => lastknown;
+		public Expansions LastKnown
+		{
+			get; private set;
+		}
 
 		public int GameVersion // if Ts2 not installed will return a Story Version if installed
 		{
@@ -220,20 +218,29 @@ namespace SimPe
 			{
 				if (
 					!GetExpansion(SimPe.Expansions.BaseGame).Exists
-					&& epver == 0
-					&& spver == 0
-					&& stver > 0
+					&& EPInstalled == 0
+					&& SPInstalled == 0
+					&& STInstalled > 0
 				)
-					return stver;
-				return Math.Max(epver, spver);
+					return STInstalled;
+				return Math.Max(EPInstalled, SPInstalled);
 			}
 		}
 
-		public int EPInstalled => epver;
+		public int EPInstalled
+		{
+			get; private set;
+		}
 
-		public int SPInstalled => spver;
+		public int SPInstalled
+		{
+			get; private set;
+		}
 
-		public int STInstalled => stver;
+		public int STInstalled
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Name of the Sims Application
@@ -294,7 +301,7 @@ namespace SimPe
 
 		public void SetDefaultPaths()
 		{
-			foreach (ExpansionItem i in exps)
+			foreach (ExpansionItem i in Expansions)
 			{
 				i.InstallFolder = i.RealInstallFolder;
 			}
@@ -304,7 +311,10 @@ namespace SimPe
 		/// <summary>
 		/// Returns the object describing the highest Expansion available on the System
 		/// </summary>
-		public ExpansionItem Latest => latest;
+		public ExpansionItem Latest
+		{
+			get; private set;
+		}
 
 		protected ExpansionItem GetLatestExpansion()
 		{
@@ -401,7 +411,10 @@ namespace SimPe
 		/// <summary>
 		/// Bit-wise OR of the groups (from expansions.xreg) of all known games
 		/// </summary>
-		public long AvailableGroups => avlgrp;
+		public long AvailableGroups
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// The group (from expansions.xreg) for the current GameVersion
@@ -418,7 +431,7 @@ namespace SimPe
 			{
 				if (PathProvider.Global.EPInstalled < 18)
 				{
-					if (latest.CensorFile == "")
+					if (Latest.CensorFile == "")
 						return BlurNudityPreEP2;
 					else
 						return BlurNudityPostEP2;
@@ -430,7 +443,7 @@ namespace SimPe
 			{
 				if (PathProvider.Global.EPInstalled < 18)
 				{
-					if (latest.CensorFile == "")
+					if (Latest.CensorFile == "")
 					{
 						BlurNudityPostEP2 = false;
 						BlurNudityPreEP2 = value;
@@ -456,7 +469,7 @@ namespace SimPe
 			}
 			set
 			{
-				SetBlurNudity(value, latest.CensorFile, false);
+				SetBlurNudity(value, Latest.CensorFile, false);
 			}
 		}
 
@@ -464,8 +477,8 @@ namespace SimPe
 		{
 			if (EPInstalled >= 3 && !GetBlurNudity())
 			{
-				SetBlurNudity(true, latest.CensorFile, true);
-				SetBlurNudity(false, latest.CensorFile, true);
+				SetBlurNudity(true, Latest.CensorFile, true);
+				SetBlurNudity(false, Latest.CensorFile, true);
 			}
 		}
 
@@ -484,8 +497,8 @@ namespace SimPe
 				silent = true;
 			if (!value)
 			{
-				string fl = latest.CensorFile;
-				string f2 = latest.SensorFile;
+				string fl = Latest.CensorFile;
+				string f2 = Latest.SensorFile;
 				string folder = System.IO.Path.GetDirectoryName(fl);
 
 				if (System.IO.File.Exists(fl) || System.IO.File.Exists(f2))
@@ -515,7 +528,7 @@ namespace SimPe
 						if (
 							name.Trim()
 								.ToLower()
-								.EndsWith(latest.CensorFileName.Trim().ToLower())
+								.EndsWith(Latest.CensorFileName.Trim().ToLower())
 						)
 							s = typeof(Helper).Assembly.GetManifestResourceStream(name);
 					}

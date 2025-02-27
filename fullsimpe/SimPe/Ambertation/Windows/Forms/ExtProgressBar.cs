@@ -66,10 +66,10 @@ namespace Ambertation.Windows.Forms
 			min = 0;
 			max = 100;
 			val = 0;
-			tw = 6;
+			TokenWidth = 6;
 			quality = true;
 
-			usetokenbuffer = true;
+			UseTokenBuffer = true;
 			style = ProgresBarStyle.Flat;
 			startgradcol = Color.White;
 			endgradcol = Color.White;
@@ -77,7 +77,7 @@ namespace Ambertation.Windows.Forms
 			bcol = Color.FromArgb(100, Color.Black);
 			col = Color.Black;
 			selcol = Color.YellowGreen;
-			this.mGradient = LinearGradientMode.Vertical;
+			this.Gradient = LinearGradientMode.Vertical;
 
 			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
 			InitializeComponent();
@@ -102,17 +102,9 @@ namespace Ambertation.Windows.Forms
 		}
 
 		#region public Properties
-		bool usetokenbuffer;
 		public bool UseTokenBuffer
 		{
-			get
-			{
-				return usetokenbuffer;
-			}
-			set
-			{
-				usetokenbuffer = value;
-			}
+			get; set;
 		}
 
 		ProgresBarStyle style;
@@ -285,8 +277,6 @@ namespace Ambertation.Windows.Forms
 			}
 		}
 
-		LinearGradientMode mGradient;
-
 		public Color GradientStartColor
 		{
 			get
@@ -321,14 +311,7 @@ namespace Ambertation.Windows.Forms
 
 		public LinearGradientMode Gradient
 		{
-			get
-			{
-				return this.mGradient;
-			}
-			set
-			{
-				this.mGradient = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -371,7 +354,7 @@ namespace Ambertation.Windows.Forms
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			System.Diagnostics.Debug.WriteLine(
-				"Painting " + Size + ", " + tw + ", " + tc + ", " + style
+				"Painting " + Size + ", " + TokenWidth + ", " + tc + ", " + style
 			);
 			double p =
 				(float)(this.Value - this.Minimum) / (this.Maximum - this.Minimum);
@@ -494,7 +477,7 @@ namespace Ambertation.Windows.Forms
 			}
 
 			System.Diagnostics.Debug.WriteLine(
-				"Redraw " + Size + ", " + tw + ", " + tc + ", " + style
+				"Redraw " + Size + ", " + TokenWidth + ", " + tc + ", " + style
 			);
 
 			SetGraphicsMode(g, true);
@@ -566,7 +549,7 @@ namespace Ambertation.Windows.Forms
 		)
 		{
 			//System.Diagnostics.Debug.WriteLine("Tokens " + width + ", " + height);
-			if (!usetokenbuffer)
+			if (!UseTokenBuffer)
 			{
 				DoDrawTokens(g, gsel, left, top, width, height);
 				return;
@@ -916,20 +899,21 @@ namespace Ambertation.Windows.Forms
 			return (int)Math.Floor(nr * (TokenWidth + Math.Floor(TokenMinSpacing)));
 		}
 
-		int tw;
-
 		void SetTokenWidth(int val)
 		{
-			if (tw == val)
+			if (TokenWidth == val)
 				return;
-			tw = Math.Max(4, val);
-			tc = Math.Max(2, (int)Math.Floor((double)((Width - 1) / (tw + 2))));
+			TokenWidth = Math.Max(4, val);
+			tc = Math.Max(2, (int)Math.Floor((double)((Width - 1) / (TokenWidth + 2))));
 			CompleteRedraw();
 			Invalidate();
 		}
 
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public int TokenWidth => tw;
+		public int TokenWidth
+		{
+			get; private set;
+		}
 
 		int tc;
 
@@ -940,7 +924,7 @@ namespace Ambertation.Windows.Forms
 			//System.Diagnostics.Debug.WriteLine("Set Token Count from " + tc + " to " + val);
 			tc = Math.Max(2, val);
 
-			tw = Math.Max(4, ((Width - 1) / tc) - 2);
+			TokenWidth = Math.Max(4, ((Width - 1) / tc) - 2);
 			CompleteRedraw();
 			Invalidate();
 		}

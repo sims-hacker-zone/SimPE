@@ -6,9 +6,7 @@ namespace SimPe.Windows.Forms
 {
 	public class NamedPackedFileDescriptor
 	{
-		SimPe.Interfaces.Files.IPackedFileDescriptor pfd;
 		SimPe.Interfaces.Files.IPackageFile pkg;
-		SimPe.Plugin.FileIndexItem fii;
 		string realname;
 
 		public NamedPackedFileDescriptor(
@@ -16,15 +14,21 @@ namespace SimPe.Windows.Forms
 			SimPe.Interfaces.Files.IPackageFile pkg
 		)
 		{
-			this.pfd = pfd;
+			this.Descriptor = pfd;
 			this.pkg = pkg;
-			this.fii = new SimPe.Plugin.FileIndexItem(pfd, pkg);
+			this.Resource = new SimPe.Plugin.FileIndexItem(pfd, pkg);
 			realname = null;
 		}
 
-		public SimPe.Plugin.FileIndexItem Resource => fii;
+		public SimPe.Plugin.FileIndexItem Resource
+		{
+			get;
+		}
 
-		public SimPe.Interfaces.Files.IPackedFileDescriptor Descriptor => pfd;
+		public SimPe.Interfaces.Files.IPackedFileDescriptor Descriptor
+		{
+			get;
+		}
 
 		public bool RealNameLoaded => realname != null;
 
@@ -40,7 +44,7 @@ namespace SimPe.Windows.Forms
 				if (Helper.WindowsRegistry.DecodeFilenamesState)
 				{
 					SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper wrp =
-						FileTable.WrapperRegistry.FindHandler(pfd.Type);
+						FileTable.WrapperRegistry.FindHandler(Descriptor.Type);
 					if (wrp != null)
 					{
 						lock (wrp)
@@ -58,7 +62,7 @@ namespace SimPe.Windows.Forms
 									bakpkg = awrp.Package;
 								}
 
-								awrp.FileDescriptor = pfd;
+								awrp.FileDescriptor = Descriptor;
 								awrp.Package = pkg;
 							}
 							try
@@ -67,7 +71,7 @@ namespace SimPe.Windows.Forms
 							}
 							catch
 							{
-								realname = pfd.ToResListString();
+								realname = Descriptor.ToResListString();
 							}
 							finally
 							{
@@ -87,7 +91,7 @@ namespace SimPe.Windows.Forms
 					}
 				}
 				if (realname == null)
-					realname = pfd.ToResListString();
+					realname = Descriptor.ToResListString();
 			}
 
 			return realname;

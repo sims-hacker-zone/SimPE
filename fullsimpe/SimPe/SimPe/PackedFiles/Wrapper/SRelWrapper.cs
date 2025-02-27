@@ -208,15 +208,16 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		RelationshipFlags flags = new RelationshipFlags(
-			(ushort)(1 << (byte)Data.MetaData.RelationshipStateBits.Known)
-		);
-
 		/// <summary>
 		/// Returns the Relationship Values.
 		/// </summary>
 		/// <remarks>The Meaning of the Bits is stored in MataData.RelationshipStateBits</remarks>
-		public RelationshipFlags RelationState => flags;
+		public RelationshipFlags RelationState
+		{
+			get;
+		} = new RelationshipFlags(
+			(ushort)(1 << (byte)Data.MetaData.RelationshipStateBits.Known)
+		);
 
 		/// <summary>
 		/// Returns the Shortterm Relationship
@@ -317,7 +318,7 @@ namespace SimPe.PackedFiles.Wrapper
 				values[i] = reader.ReadInt32();
 
 			//set some special Attributes
-			flags.Value = (ushort)values[1];
+			RelationState.Value = (ushort)values[1];
 			if (9 < values.Length)
 				flags2.Value = (ushort)values[9];
 		}
@@ -333,7 +334,7 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			//set some special Attributes
-			values[1] = (int)((values[1] & 0xffff0000) | flags.Value);
+			values[1] = (int)((values[1] & 0xffff0000) | RelationState.Value);
 			if (9 < values.Length)
 				values[9] = (int)((values[9] & 0xffff0000) | flags2.Value);
 

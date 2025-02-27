@@ -54,21 +54,12 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		uint type;
-
 		/// <summary>
 		/// Returns the Type of the referenced File
 		/// </summary>
 		public uint Type
 		{
-			get
-			{
-				return type;
-			}
-			set
-			{
-				type = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -76,41 +67,21 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public Data.TypeAlias TypeName => Data.MetaData.FindTypeAlias(Type);
 
-		uint group;
-
 		/// <summary>
 		/// Returns the Group the referenced file is assigned to
 		/// </summary>
 		public uint Group
 		{
-			get
-			{
-				return group;
-			}
-			set
-			{
-				group = value;
-			}
+			get; set;
 		}
-
-		uint instance;
 
 		/// <summary>
 		/// Returns the Instance Data
 		/// </summary>
 		public uint Instance
 		{
-			get
-			{
-				return instance;
-			}
-			set
-			{
-				instance = value;
-			}
+			get; set;
 		}
-
-		uint subtype;
 
 		/// <summary>
 		/// Returns an yet unknown Type
@@ -118,31 +89,15 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <remarks>Only in Version 1.1 of package Files</remarks>
 		public uint SubType
 		{
-			get
-			{
-				return subtype;
-			}
-			set
-			{
-				subtype = value;
-			}
+			get; set;
 		}
-
-		uint uncsize;
 
 		/// <summary>
 		/// Returns the (real) uncompressed Size of the File
 		/// </summary>
 		public uint UncompressedSize
 		{
-			get
-			{
-				return uncsize;
-			}
-			set
-			{
-				uncsize = value;
-			}
+			get; set;
 		}
 
 		public override int GetHashCode()
@@ -160,7 +115,7 @@ namespace SimPe.PackedFiles.Wrapper
 				return (
 					ci.Group == Group
 					&& ci.Instance == Instance
-					&& ci.Type == type
+					&& ci.Type == Type
 					&& (
 						ci.SubType == SubType
 						|| ci.format == Data.MetaData.IndexTypes.ptShortFileIndex
@@ -175,7 +130,7 @@ namespace SimPe.PackedFiles.Wrapper
 				return (
 					ci.Group == Group
 					&& ci.Instance == Instance
-					&& ci.Type == type
+					&& ci.Type == Type
 					&& (
 						ci.SubType == SubType
 						|| format == Data.MetaData.IndexTypes.ptShortFileIndex
@@ -207,14 +162,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal void Unserialize(System.IO.BinaryReader reader)
 		{
-			type = reader.ReadUInt32();
-			group = reader.ReadUInt32();
-			instance = reader.ReadUInt32();
+			Type = reader.ReadUInt32();
+			Group = reader.ReadUInt32();
+			Instance = reader.ReadUInt32();
 			if (format == Data.MetaData.IndexTypes.ptLongFileIndex)
-				subtype = reader.ReadUInt32();
+				SubType = reader.ReadUInt32();
 			else
-				subtype = 0;
-			uncsize = reader.ReadUInt32();
+				SubType = 0;
+			UncompressedSize = reader.ReadUInt32();
 		}
 
 		/// <summary>
@@ -228,12 +183,12 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			this.format = format;
 
-			writer.Write(type);
-			writer.Write(group);
-			writer.Write(instance);
+			writer.Write(Type);
+			writer.Write(Group);
+			writer.Write(Instance);
 			if (format == Data.MetaData.IndexTypes.ptLongFileIndex)
-				writer.Write(subtype);
-			writer.Write(uncsize);
+				writer.Write(SubType);
+			writer.Write(UncompressedSize);
 		}
 	}
 }

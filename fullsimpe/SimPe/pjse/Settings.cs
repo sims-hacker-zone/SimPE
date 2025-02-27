@@ -31,12 +31,14 @@ namespace pjse
 	{
 		static ResourceManager rm = new ResourceManager(typeof(pjse.Localization));
 
-		private static Settings settings;
-		public static Settings PJSE => settings;
+		public static Settings PJSE
+		{
+			get; private set;
+		}
 
 		static Settings()
 		{
-			settings = new Settings();
+			PJSE = new Settings();
 		}
 
 		const string BASENAME = "PJSE\\Bhav";

@@ -20,16 +20,16 @@ namespace SimPe.Plugin
 				sdsc = null;
 			}
 		}
-		int loyalty;
+
 		public int LoyaltyScore
 		{
 			get
 			{
-				return loyalty;
+				return LoadedLoyalty;
 			}
 			set
 			{
-				loyalty = value;
+				LoadedLoyalty = value;
 			}
 		}
 
@@ -48,19 +48,13 @@ namespace SimPe.Plugin
 		int lloyalty;
 		public int LoadedLoyalty
 		{
-			get
-			{
-				return loyalty;
-			}
-			set
-			{
-				loyalty = value;
-			}
+			get; set;
 		}
 
-		byte[] data;
-
-		internal byte[] Data => data;
+		internal byte[] Data
+		{
+			get; private set;
+		}
 
 		Bnfo parent;
 		SimPe.PackedFiles.Wrapper.ExtSDesc sdsc;
@@ -80,7 +74,7 @@ namespace SimPe.Plugin
 		internal BnfoCustomerItem(Bnfo parent)
 		{
 			this.parent = parent;
-			data = new byte[0x60];
+			Data = new byte[0x60];
 		}
 
 		long endpos;
@@ -88,8 +82,8 @@ namespace SimPe.Plugin
 		internal void Unserialize(System.IO.BinaryReader reader)
 		{
 			SimInstance = reader.ReadUInt16();
-			loyalty = reader.ReadInt32();
-			data = reader.ReadBytes(data.Length);
+			LoadedLoyalty = reader.ReadInt32();
+			Data = reader.ReadBytes(Data.Length);
 			lloyalty = reader.ReadInt32();
 			endpos = reader.BaseStream.Position;
 		}
@@ -97,8 +91,8 @@ namespace SimPe.Plugin
 		internal void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(siminst);
-			writer.Write(loyalty);
-			writer.Write(data);
+			writer.Write(LoadedLoyalty);
+			writer.Write(Data);
 			writer.Write(this.LoyaltyStars);
 		}
 
@@ -121,7 +115,7 @@ namespace SimPe.Plugin
 					+ Helper.HexString(SimInstance)
 					+ "): "
 					+ " "
-					+ loyalty.ToString()
+					+ LoadedLoyalty.ToString()
 					+ " ("
 					+ this.LoyaltyStars.ToString()
 					+ ")";

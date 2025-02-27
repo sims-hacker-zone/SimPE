@@ -34,26 +34,29 @@ namespace Ambertation
 	/// </summary>
 	public class PropertyDescription
 	{
-		string desc;
-
 		/// <summary>
 		/// The Description of the Property (=Help Text)
 		/// </summary>
-		public string Description => desc;
-
-		string cat;
+		public string Description
+		{
+			get;
+		}
 
 		/// <summary>
 		/// The Category of the Property
 		/// </summary>
-		public string Category => cat;
-
-		bool ro;
+		public string Category
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Tru iof this Property is ReadOnly
 		/// </summary>
-		public bool ReadOnly => ro;
+		public bool ReadOnly
+		{
+			get;
+		}
 
 		object prop;
 
@@ -92,11 +95,11 @@ namespace Ambertation
 				{
 					try
 					{
-						if (type.IsEnum)
+						if (Type.IsEnum)
 						{
 							if (value.GetType() == typeof(int))
 								prop = System.Enum.ToObject(
-									type,
+									Type,
 									System.Convert.ToInt32(value)
 								);
 							/*else if (value.GetType()==typeof(uint))
@@ -107,43 +110,43 @@ namespace Ambertation
 								prop = System.Enum.ToObject(type, System.Convert.ToInt32(value));*/
 							else
 								prop = System.Enum.ToObject(
-									type,
-									type.GetField(value.ToString()).GetValue(null)
+									Type,
+									Type.GetField(value.ToString()).GetValue(null)
 								);
 						}
 						else if (
-							(type == typeof(FloatColor))
+							(Type == typeof(FloatColor))
 							&& (value.GetType() == typeof(string))
 						)
 						{
 							prop = FloatColor.FromString(value.ToString());
 						}
 						else if (
-							(type == typeof(FloatColor))
+							(Type == typeof(FloatColor))
 							&& (value.GetType() == typeof(Color))
 						)
 						{
 							prop = FloatColor.FromColor((Color)value);
 						}
 						else if (
-							type.GetInterface("Ambertation.IPropertyClass")
+							Type.GetInterface("Ambertation.IPropertyClass")
 							== typeof(Ambertation.IPropertyClass)
 						)
 						{
 							prop = System.Activator.CreateInstance(
-								type,
+								Type,
 								new object[] { value }
 							);
 						}
 						else
 						{
-							prop = System.Convert.ChangeType(value, type);
+							prop = System.Convert.ChangeType(value, Type);
 						}
 					}
 					catch
 					{
 						//this is a special Handle for Booleans
-						if (type == typeof(bool) && value.GetType() == typeof(string))
+						if (Type == typeof(bool) && value.GetType() == typeof(string))
 						{
 							string s = (string)value;
 							s = s.Trim();
@@ -155,19 +158,20 @@ namespace Ambertation
 						else
 						{
 							prop = value;
-							type = value.GetType();
+							Type = value.GetType();
 						}
 					}
 				}
 			}
 		}
 
-		Type type;
-
 		/// <summary>
 		/// Returns the Type of the Object
 		/// </summary>
-		public Type Type => type;
+		public Type Type
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Creates a new Instance
@@ -208,11 +212,11 @@ namespace Ambertation
 			bool ro
 		)
 		{
-			desc = description;
-			cat = category;
+			Description = description;
+			Category = category;
 			prop = property;
-			this.ro = ro;
-			this.type = type;
+			this.ReadOnly = ro;
+			this.Type = type;
 		}
 
 		/// <summary>
@@ -221,7 +225,7 @@ namespace Ambertation
 		/// <returns>The cloned Object</returns>
 		public PropertyDescription Clone()
 		{
-			return new PropertyDescription(cat, desc, null, type, ro);
+			return new PropertyDescription(Category, Description, null, Type, ReadOnly);
 		}
 	}
 
@@ -231,7 +235,6 @@ namespace Ambertation
 	public class PropertyObjectBuilderExt
 	{
 		Type custDataType;
-		object instance = null;
 		Hashtable ht;
 
 		public PropertyObjectBuilderExt(Hashtable ht)
@@ -283,7 +286,7 @@ namespace Ambertation
 
 			//Creat type and an Instance
 			custDataType = myTypeBuilder.CreateType();
-			instance = Activator.CreateInstance(custDataType);
+			Instance = Activator.CreateInstance(custDataType);
 
 			foreach (string k in ht.Keys)
 			{
@@ -301,7 +304,7 @@ namespace Ambertation
 					k,
 					BindingFlags.SetProperty,
 					null,
-					instance,
+					Instance,
 					new object[] { val }
 				);
 			}
@@ -464,7 +467,7 @@ namespace Ambertation
 		{
 			get
 			{
-				if (instance == null)
+				if (Instance == null)
 					return new Hashtable();
 
 				Hashtable ret = new Hashtable();
@@ -474,7 +477,7 @@ namespace Ambertation
 						k,
 						BindingFlags.GetProperty,
 						null,
-						instance,
+						Instance,
 						new object[] { }
 					);
 
@@ -492,6 +495,6 @@ namespace Ambertation
 		/// <summary>
 		/// Returns the created Object
 		/// </summary>
-		public object Instance => instance;
+		public object Instance { get; } = null;
 	}
 }

@@ -30,26 +30,12 @@ namespace SimPe.Plugin.Gmdc
 	public class ImportedBone
 	{
 		/// <summary>
-		/// internal Attribute
-		/// </summary>
-		GmdcImporterAction action;
-
-		/// <summary>
 		/// Returns/Sets the action that should be performed
 		/// </summary>
 		public GmdcImporterAction Action
 		{
-			get
-			{
-				return action;
-			}
-			set
-			{
-				action = value;
-			}
+			get; set;
 		}
-
-		int index;
 
 		/// <summary>
 		/// If action is <see cref="GmdcImporterAction.Replace"/> or
@@ -58,78 +44,39 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public int TargetIndex
 		{
-			get
-			{
-				return index;
-			}
-			set
-			{
-				index = value;
-			}
+			get; set;
 		}
-
-		/// <summary>
-		/// internal Attribute
-		/// </summary>
-		string name;
 
 		/// <summary>
 		/// The name of the Imported Bone
 		/// </summary>
 		public string ImportedName
 		{
-			get
-			{
-				return name;
-			}
-			set
-			{
-				name = value;
-			}
+			get; set;
 		}
-
-		/// <summary>
-		/// internal Attribute
-		/// </summary>
-		string parentname;
 
 		/// <summary>
 		/// The name of the Parent Bone
 		/// </summary>
 		public string ParentName
 		{
-			get
-			{
-				return parentname;
-			}
-			set
-			{
-				parentname = value;
-			}
+			get; set;
 		}
-
-		GmdcJoint bone;
 
 		/// <summary>
 		/// The new Bone
 		/// </summary>
-		public GmdcJoint Bone => bone;
-
-		VectorTransformation sourcepos;
+		public GmdcJoint Bone
+		{
+			get;
+		}
 
 		/// <summary>
 		/// The initial Transformation for this Joint
 		/// </summary>
 		public VectorTransformation Transformation
 		{
-			get
-			{
-				return sourcepos;
-			}
-			set
-			{
-				sourcepos = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -146,23 +93,11 @@ namespace SimPe.Plugin.Gmdc
 		}
 
 		/// <summary>
-		/// internal Attribute
-		/// </summary>
-		float scale;
-
-		/// <summary>
 		/// Returns/Sets the scale Factor that should be applied to this group
 		/// </summary>
 		public float Scale
 		{
-			get
-			{
-				return scale;
-			}
-			set
-			{
-				scale = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -171,16 +106,16 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="parent">The gmdc that should act as Parent</param>
 		public ImportedBone(GeometryDataContainer parent)
 		{
-			bone = new GmdcJoint(parent);
-			name = "";
-			parentname = "";
-			index = -1;
-			action = GmdcImporterAction.Add;
-			sourcepos = new VectorTransformation(
+			Bone = new GmdcJoint(parent);
+			ImportedName = "";
+			ParentName = "";
+			TargetIndex = -1;
+			Action = GmdcImporterAction.Add;
+			Transformation = new VectorTransformation(
 				SimPe.Geometry.VectorTransformation.TransformOrder.TranslateRotate
 			);
 
-			scale = (float)(1.0);
+			Scale = (float)(1.0);
 		}
 
 		/// <summary>
@@ -190,13 +125,13 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns>null if no Parent is available or the Parent Bone</returns>
 		public ImportedBone GetParentFrom(ImportedBones bones)
 		{
-			parentname = parentname.Trim();
-			if (parentname.Trim() == "")
+			ParentName = ParentName.Trim();
+			if (ParentName.Trim() == "")
 				return null;
 
 			foreach (ImportedBone b in bones)
 			{
-				if (b.ImportedName.Trim() == parentname)
+				if (b.ImportedName.Trim() == ParentName)
 					return b;
 			}
 

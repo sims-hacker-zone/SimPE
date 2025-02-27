@@ -135,16 +135,17 @@ namespace SimPe.Plugin.Anim
 	public class AnimBlock4
 	{
 		#region Attributes
-		AnimBlock5[] ab5;
-
 		[BrowsableAttribute(false)]
-		public AnimBlock5[] Part5 => ab5;
+		public AnimBlock5[] Part5
+		{
+			get; private set;
+		}
 
 		[
 			DescriptionAttribute("Number of loaded AnimBlock4 Items"),
 			CategoryAttribute("Information")
 		]
-		public int Part5Count => ab5.Length;
+		public int Part5Count => Part5.Length;
 
 		uint[] datai;
 
@@ -199,19 +200,20 @@ namespace SimPe.Plugin.Anim
 			}
 		}
 
-		byte[] data;
-
 		[DescriptionAttribute(
 			"On Index 2 the Number of assigned AnimBlock5 Items is stored"
 		)]
-		public byte[] AddonData => data;
+		public byte[] AddonData
+		{
+			get; private set;
+		}
 		#endregion
 
 		internal AnimBlock4()
 		{
 			datai = new uint[3];
-			data = new byte[0x3A];
-			ab5 = new AnimBlock5[0];
+			AddonData = new byte[0x3A];
+			Part5 = new AnimBlock5[0];
 		}
 
 		/// <summary>
@@ -221,12 +223,12 @@ namespace SimPe.Plugin.Anim
 		internal void UnserializeData(System.IO.BinaryReader reader)
 		{
 			long pos = reader.BaseStream.Position;
-			if (reader.BaseStream.Length - pos < 4 + 4 + data.Length + 4)
+			if (reader.BaseStream.Length - pos < 4 + 4 + AddonData.Length + 4)
 				return;
 
 			datai[0] = reader.ReadUInt32();
 			datai[1] = reader.ReadUInt32();
-			data = reader.ReadBytes(data.Length);
+			AddonData = reader.ReadBytes(AddonData.Length);
 			datai[2] = reader.ReadUInt32();
 
 			if (datai[2] != datai[1])
@@ -242,11 +244,11 @@ namespace SimPe.Plugin.Anim
 		/// <param name="writer">The Stream that receives the Data</param>
 		internal void SerializeData(System.IO.BinaryWriter writer)
 		{
-			this.SetPart5Count(ab5.Length);
+			this.SetPart5Count(Part5.Length);
 
 			writer.Write(datai[0]);
 			writer.Write(datai[1]);
-			writer.Write(data);
+			writer.Write(AddonData);
 			writer.Write(datai[2]);
 		}
 
@@ -256,11 +258,11 @@ namespace SimPe.Plugin.Anim
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal void UnserializePart5Data(System.IO.BinaryReader reader)
 		{
-			ab5 = new AnimBlock5[GetPart5Count()];
-			for (int i = 0; i < ab5.Length; i++)
+			Part5 = new AnimBlock5[GetPart5Count()];
+			for (int i = 0; i < Part5.Length; i++)
 			{
-				ab5[i] = new AnimBlock5();
-				ab5[i].UnserializeData(reader);
+				Part5[i] = new AnimBlock5();
+				Part5[i].UnserializeData(reader);
 			}
 		}
 
@@ -270,8 +272,8 @@ namespace SimPe.Plugin.Anim
 		/// <param name="writer">The Stream that receives the Data</param>
 		internal void SerializePart5Data(System.IO.BinaryWriter writer)
 		{
-			for (int i = 0; i < ab5.Length; i++)
-				ab5[i].SerializeData(writer);
+			for (int i = 0; i < Part5.Length; i++)
+				Part5[i].SerializeData(writer);
 		}
 
 		/// <summary>
@@ -280,7 +282,7 @@ namespace SimPe.Plugin.Anim
 		/// <returns>Number of Items</returns>
 		int GetPart5Count()
 		{
-			return (data[2]);
+			return (AddonData[2]);
 		}
 
 		/// <summary>
@@ -291,7 +293,7 @@ namespace SimPe.Plugin.Anim
 		{
 			if (ct > 0xff)
 				ct = 0xff;
-			data[2] = (byte)(ct & 0xff);
+			AddonData[2] = (byte)(ct & 0xff);
 		}
 
 		public override string ToString()
@@ -358,14 +360,16 @@ namespace SimPe.Plugin.Anim
 
 		public string Unknown2Hex => "0x" + Helper.HexString(Unknown2);
 
-		byte[] data;
-		public byte[] AddonData => data;
+		public byte[] AddonData
+		{
+			get; private set;
+		}
 		#endregion
 
 		internal AnimBlock5()
 		{
 			datai = new uint[2];
-			data = new byte[0x23];
+			AddonData = new byte[0x23];
 		}
 
 		/// <summary>
@@ -381,7 +385,7 @@ namespace SimPe.Plugin.Anim
 
 			datai[0] = reader.ReadUInt32();
 			datai[1] = reader.ReadUInt32();
-			data = reader.ReadBytes(data.Length);
+			AddonData = reader.ReadBytes(AddonData.Length);
 
 			/*if (datai[0]!=0x11BA05F0 || datai[1]!=0x11BA05F0)
 			{
@@ -398,7 +402,7 @@ namespace SimPe.Plugin.Anim
 		{
 			writer.Write(datai[0]);
 			writer.Write(datai[1]);
-			writer.Write(data);
+			writer.Write(AddonData);
 		}
 
 		public override string ToString()

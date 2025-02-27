@@ -31,59 +31,30 @@ namespace SimPe.Plugin.Gmdc
 	{
 		#region Attributes
 
-		IntArrayList items1;
-
 		/// <summary>
 		/// This returns the List of all used <see cref="GmdcElement"/> Items. The Values are Indices
 		/// for the <see cref="GeometryDataContainer.Elements"/> Property.
 		/// </summary>
 		public IntArrayList ReferencedElement
 		{
-			get
-			{
-				return items1;
-			}
-			set
-			{
-				items1 = value;
-			}
+			get; set;
 		}
-
-		int unknown1;
 
 		/// <summary>
 		/// The Number of Elements that are Referenced by this Link
 		/// </summary>
 		public int ReferencedSize
 		{
-			get
-			{
-				return unknown1;
-			}
-			set
-			{
-				unknown1 = value;
-			}
+			get; set;
 		}
-
-		int unknown2;
 
 		/// <summary>
 		/// How many <see cref="GmdcElement"/> Items are referenced by this Link
 		/// </summary>
 		public int ActiveElements
 		{
-			get
-			{
-				return unknown2;
-			}
-			set
-			{
-				unknown2 = value;
-			}
+			get; set;
 		}
-
-		IntArrayList[] refs;
 
 		/// <summary>
 		/// This Array Contains three <see cref="IntArrayList"/> Items. Each Item has to be interporeted as
@@ -95,7 +66,10 @@ namespace SimPe.Plugin.Gmdc
 		/// The first List store here is an Alias Map for the first referenced <see cref="GmdcElement"/> in the
 		/// <see cref="ReferencedElement"/> Property.
 		/// </summary>
-		public IntArrayList[] AliasValues => refs;
+		public IntArrayList[] AliasValues
+		{
+			get;
+		}
 		#endregion
 
 		/// <summary>
@@ -104,10 +78,10 @@ namespace SimPe.Plugin.Gmdc
 		public GmdcLink(GeometryDataContainer parent)
 			: base(parent)
 		{
-			items1 = new IntArrayList();
-			refs = new IntArrayList[3];
-			for (int i = 0; i < refs.Length; i++)
-				refs[i] = new IntArrayList();
+			ReferencedElement = new IntArrayList();
+			AliasValues = new IntArrayList[3];
+			for (int i = 0; i < AliasValues.Length; i++)
+				AliasValues[i] = new IntArrayList();
 		}
 
 		/// <summary>
@@ -116,13 +90,13 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="reader">The Stream that contains the FileData</param>
 		public void Unserialize(System.IO.BinaryReader reader)
 		{
-			ReadBlock(reader, items1);
+			ReadBlock(reader, ReferencedElement);
 
-			unknown1 = reader.ReadInt32();
-			unknown2 = reader.ReadInt32();
+			ReferencedSize = reader.ReadInt32();
+			ActiveElements = reader.ReadInt32();
 
-			for (int i = 0; i < refs.Length; i++)
-				ReadBlock(reader, refs[i]);
+			for (int i = 0; i < AliasValues.Length; i++)
+				ReadBlock(reader, AliasValues[i]);
 		}
 
 		/// <summary>
@@ -135,13 +109,13 @@ namespace SimPe.Plugin.Gmdc
 		/// </remarks>
 		public void Serialize(System.IO.BinaryWriter writer)
 		{
-			WriteBlock(writer, items1);
+			WriteBlock(writer, ReferencedElement);
 
-			writer.Write(unknown1);
-			writer.Write(unknown2);
+			writer.Write(ReferencedSize);
+			writer.Write(ActiveElements);
 
-			for (int i = 0; i < refs.Length; i++)
-				WriteBlock(writer, refs[i]);
+			for (int i = 0; i < AliasValues.Length; i++)
+				WriteBlock(writer, AliasValues[i]);
 		}
 
 		/// <summary>
@@ -150,9 +124,9 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns>A String Describing the Data</returns>
 		public override string ToString()
 		{
-			string s = items1.Length.ToString();
-			for (int i = 0; i < refs.Length; i++)
-				s += ", " + refs[i].Length;
+			string s = ReferencedElement.Length.ToString();
+			for (int i = 0; i < AliasValues.Length; i++)
+				s += ", " + AliasValues[i].Length;
 			return s;
 		}
 
@@ -185,8 +159,8 @@ namespace SimPe.Plugin.Gmdc
 		{
 			if (e == null)
 				return -1;
-			for (int i = 0; i < this.items1.Length; i++)
-				if (parent.Elements[items1[i]] == e)
+			for (int i = 0; i < this.ReferencedElement.Length; i++)
+				if (parent.Elements[ReferencedElement[i]] == e)
 					return i;
 
 			return -1;
@@ -204,20 +178,20 @@ namespace SimPe.Plugin.Gmdc
 			try
 			{
 				//if (nr>=this.items1.Length) return null;
-				int enr = this.items1[nr];
+				int enr = this.ReferencedElement[nr];
 
 				//if (enr>=this.parent.Elements.Length) return null;
 				GmdcElement e = this.parent.Elements[enr];
 
 				//Higher Number
-				if (nr >= refs.Length)
+				if (nr >= AliasValues.Length)
 				{
 					//if (index>=e.Values.Length) return null;
 					return e.Values[index];
 				}
 
 				//Do we have aliases?
-				if (refs[nr].Length == 0) //no
+				if (AliasValues[nr].Length == 0) //no
 				{
 					//if (index>=e.Values.Length) return null;
 					return e.Values[index];
@@ -225,7 +199,7 @@ namespace SimPe.Plugin.Gmdc
 				else //yes
 				{
 					//if (index>=this.refs.Length) return null;
-					index = refs[nr][index];
+					index = AliasValues[nr][index];
 					//if (index>=e.Values.Length) return null;
 					return e.Values[index];
 				}
@@ -247,19 +221,19 @@ namespace SimPe.Plugin.Gmdc
 		{
 			try
 			{
-				int enr = this.items1[nr];
+				int enr = this.ReferencedElement[nr];
 
 				GmdcElement e = this.parent.Elements[enr];
 
 				//Higher Number
-				if (nr >= refs.Length)
+				if (nr >= AliasValues.Length)
 					return index;
 
 				//Do we have aliases?
-				if (refs[nr].Length == 0)
+				if (AliasValues[nr].Length == 0)
 					return index;
 				else
-					return refs[nr][index];
+					return AliasValues[nr][index];
 			}
 			catch
 			{
@@ -275,9 +249,9 @@ namespace SimPe.Plugin.Gmdc
 		{
 			int minct = int.MaxValue;
 			//add all populated Element Lists
-			for (int k = 0; k < this.items1.Count; k++)
+			for (int k = 0; k < this.ReferencedElement.Count; k++)
 			{
-				int id = items1[k];
+				int id = ReferencedElement[k];
 				if (parent.Elements[id].Values.Length > 0)
 					minct = Math.Min(minct, parent.Elements[id].Values.Count);
 			} // for k

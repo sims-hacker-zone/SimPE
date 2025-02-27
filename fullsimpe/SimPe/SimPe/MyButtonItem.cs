@@ -87,11 +87,16 @@ namespace SimPe
 		}
 		#endregion
 		static int namect = 0;
-		string name;
-		public new string Name => name;
 
-		bool havedock;
-		public bool HaveDock => havedock;
+		public new string Name
+		{
+			get;
+		}
+
+		public bool HaveDock
+		{
+			get;
+		}
 
 		public MyButtonItem(string name)
 			: this(null, name) { }
@@ -127,10 +132,10 @@ namespace SimPe
 				this.Enabled = item.Enabled;
 				this.Checked = item.Checked;
 
-				havedock = false;
+				HaveDock = false;
 				ToolMenuItemExt tmie = item as ToolMenuItemExt;
 				if (tmie != null)
-					this.name = tmie.Name;
+					this.Name = tmie.Name;
 				else
 				{
 					Ambertation.Windows.Forms.DockPanel dw =
@@ -138,17 +143,17 @@ namespace SimPe
 
 					if (dw != null)
 					{
-						this.name = dw.Name;
-						havedock = true;
+						this.Name = dw.Name;
+						HaveDock = true;
 					}
 					else
-						this.name = "Button_" + (counter++);
+						this.Name = "Button_" + (counter++);
 				}
 			}
 			else
 			{
-				havedock = false;
-				this.name = name;
+				HaveDock = false;
+				this.Name = name;
 			}
 		}
 

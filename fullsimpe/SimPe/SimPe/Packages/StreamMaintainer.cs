@@ -49,7 +49,6 @@ namespace SimPe.Packages
 	/// </summary>
 	public class StreamItem
 	{
-		FileStream fs;
 
 		/// <summary>
 		/// Creates a new Instance
@@ -63,7 +62,10 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns the FIleStream
 		/// </summary>
-		public FileStream FileStream => fs;
+		public FileStream FileStream
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Change the internal FileStream
@@ -71,7 +73,7 @@ namespace SimPe.Packages
 		/// <param name="fs"></param>
 		internal void SetFileStream(FileStream fs)
 		{
-			this.fs = fs;
+			this.FileStream = fs;
 		}
 
 		/// <summary>
@@ -82,32 +84,32 @@ namespace SimPe.Packages
 		/// <returns>true if the FIleMode was changed</returns>
 		public bool SetFileAccess(FileAccess fa)
 		{
-			if (fs == null)
+			if (FileStream == null)
 				return false;
 
 			switch (fa)
 			{
 				case FileAccess.Read:
 				{
-					if (fs.CanRead)
+					if (FileStream.CanRead)
 						return true;
-					if (fs.CanWrite)
+					if (FileStream.CanWrite)
 						fa = FileAccess.ReadWrite;
 					break;
 				}
 
 				case FileAccess.Write:
 				{
-					if (fs.CanWrite)
+					if (FileStream.CanWrite)
 						return true;
-					if (fs.CanRead)
+					if (FileStream.CanRead)
 						fa = FileAccess.ReadWrite;
 					break;
 				}
 
 				default:
 				{
-					if (fs.CanRead && fs.CanWrite)
+					if (FileStream.CanRead && FileStream.CanWrite)
 						return true;
 					break;
 				}
@@ -116,11 +118,11 @@ namespace SimPe.Packages
 			try
 			{
 				if (this.StreamState == StreamState.Opened)
-					fs.Close();
+					FileStream.Close();
 
-				string name = fs.Name;
-				fs = null;
-				fs = new FileStream(name, System.IO.FileMode.OpenOrCreate, fa);
+				string name = FileStream.Name;
+				FileStream = null;
+				FileStream = new FileStream(name, System.IO.FileMode.OpenOrCreate, fa);
 			}
 			catch (Exception ex)
 			{
@@ -138,10 +140,10 @@ namespace SimPe.Packages
 		{
 			get
 			{
-				if (fs == null)
+				if (FileStream == null)
 					return StreamState.Removed;
 
-				if (fs.CanSeek)
+				if (FileStream.CanSeek)
 					return StreamState.Opened;
 				return StreamState.Closed;
 			}
@@ -152,11 +154,11 @@ namespace SimPe.Packages
 		/// </summary>
 		public void Close()
 		{
-			if (fs != null)
+			if (FileStream != null)
 			{
-				fs.Close();
-				fs.Dispose();
-				fs = null;
+				FileStream.Close();
+				FileStream.Dispose();
+				FileStream = null;
 			}
 		}
 	}

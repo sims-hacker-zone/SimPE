@@ -44,299 +44,125 @@ namespace SimPe.PackedFiles.Wrapper
 	public class SlotItem
 	{
 		#region Attributes
-		SlotItemType type;
 		public SlotItemType Type
 		{
-			get
-			{
-				return type;
-			}
-			set
-			{
-				type = value;
-			}
+			get; set;
 		}
 
 		#endregion
-		Slot parent;
-		public Slot Parent => parent;
+		public Slot Parent
+		{
+			get; private set;
+		}
 
-		float unknownf1;
 		public float UnknownFloat1
 		{
-			get
-			{
-				return unknownf1;
-			}
-			set
-			{
-				unknownf1 = value;
-			}
+			get; set;
 		}
 
-		float unknownf2;
 		public float UnknownFloat2
 		{
-			get
-			{
-				return unknownf2;
-			}
-			set
-			{
-				unknownf2 = value;
-			}
+			get; set;
 		}
 
-		float unknownf3;
 		public float UnknownFloat3
 		{
-			get
-			{
-				return unknownf3;
-			}
-			set
-			{
-				unknownf3 = value;
-			}
+			get; set;
 		}
 
-		float unknownf4;
 		public float UnknownFloat4
 		{
-			get
-			{
-				return unknownf4;
-			}
-			set
-			{
-				unknownf4 = value;
-			}
+			get; set;
 		}
 
-		float unknownf5;
 		public float UnknownFloat5
 		{
-			get
-			{
-				return unknownf5;
-			}
-			set
-			{
-				unknownf5 = value;
-			}
+			get; set;
 		}
 
-		float unknownf6;
 		public float UnknownFloat6
 		{
-			get
-			{
-				return unknownf6;
-			}
-			set
-			{
-				unknownf6 = value;
-			}
+			get; set;
 		}
 
-		float unknownf7;
 		public float UnknownFloat7
 		{
-			get
-			{
-				return unknownf7;
-			}
-			set
-			{
-				unknownf7 = value;
-			}
+			get; set;
 		}
 
-		float unknownf8;
 		public float UnknownFloat8
 		{
-			get
-			{
-				return unknownf8;
-			}
-			set
-			{
-				unknownf8 = value;
-			}
+			get; set;
 		}
 
-		int unknowni1;
 		public int UnknownInt1
 		{
-			get
-			{
-				return unknowni1;
-			}
-			set
-			{
-				unknowni1 = value;
-			}
+			get; set;
 		}
 
-		int unknowni2;
 		public int UnknownInt2
 		{
-			get
-			{
-				return unknowni2;
-			}
-			set
-			{
-				unknowni2 = value;
-			}
+			get; set;
 		}
 
-		int unknowni3;
 		public int UnknownInt3
 		{
-			get
-			{
-				return unknowni3;
-			}
-			set
-			{
-				unknowni3 = value;
-			}
+			get; set;
 		}
 
-		int unknowni4;
 		public int UnknownInt4
 		{
-			get
-			{
-				return unknowni4;
-			}
-			set
-			{
-				unknowni4 = value;
-			}
+			get; set;
 		}
 
-		int unknowni5;
 		public int UnknownInt5
 		{
-			get
-			{
-				return unknowni5;
-			}
-			set
-			{
-				unknowni5 = value;
-			}
+			get; set;
 		}
 
-		int unknowni6;
 		public int UnknownInt6
 		{
-			get
-			{
-				return unknowni6;
-			}
-			set
-			{
-				unknowni6 = value;
-			}
+			get; set;
 		}
 
-		int unknowni7;
 		public int UnknownInt7
 		{
-			get
-			{
-				return unknowni7;
-			}
-			set
-			{
-				unknowni7 = value;
-			}
+			get; set;
 		}
 
-		int unknowni8;
 		public int UnknownInt8
 		{
-			get
-			{
-				return unknowni8;
-			}
-			set
-			{
-				unknowni8 = value;
-			}
+			get; set;
 		}
 
-		int unknowni9;
 		public int UnknownInt9
 		{
-			get
-			{
-				return unknowni9;
-			}
-			set
-			{
-				unknowni9 = value;
-			}
+			get; set;
 		}
 
-		int unknowni10;
 		public int UnknownInt10
 		{
-			get
-			{
-				return unknowni10;
-			}
-			set
-			{
-				unknowni10 = value;
-			}
+			get; set;
 		}
 
-		short unknowns1;
 		public short UnknownShort1
 		{
-			get
-			{
-				return unknowns1;
-			}
-			set
-			{
-				unknowns1 = value;
-			}
+			get; set;
 		}
 
-		short unknowns2;
 		public short UnknownShort2
 		{
-			get
-			{
-				return unknowns2;
-			}
-			set
-			{
-				unknowns2 = value;
-			}
+			get; set;
 		}
 
-		short unknowns3;
 		public short UnknownShort3
 		{
-			get
-			{
-				return unknowns3;
-			}
-			set
-			{
-				unknowns3 = value;
-			}
+			get; set;
 		}
 
 		public SlotItem(Slot parent)
 		{
-			this.parent = parent;
+			this.Parent = parent;
 		}
 
 		/// <summary>
@@ -345,48 +171,48 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal void Unserialize(System.IO.BinaryReader reader)
 		{
-			type = (SlotItemType)reader.ReadUInt16();
+			Type = (SlotItemType)reader.ReadUInt16();
 
-			unknownf1 = reader.ReadSingle();
-			unknownf2 = reader.ReadSingle();
-			unknownf3 = reader.ReadSingle();
+			UnknownFloat1 = reader.ReadSingle();
+			UnknownFloat2 = reader.ReadSingle();
+			UnknownFloat3 = reader.ReadSingle();
 
-			unknowni1 = reader.ReadInt32();
-			unknowni2 = reader.ReadInt32();
-			unknowni3 = reader.ReadInt32();
-			unknowni4 = reader.ReadInt32();
-			unknowni5 = reader.ReadInt32();
+			UnknownInt1 = reader.ReadInt32();
+			UnknownInt2 = reader.ReadInt32();
+			UnknownInt3 = reader.ReadInt32();
+			UnknownInt4 = reader.ReadInt32();
+			UnknownInt5 = reader.ReadInt32();
 
-			if (parent.Version >= 5)
+			if (Parent.Version >= 5)
 			{
-				unknownf4 = reader.ReadSingle();
-				unknownf5 = reader.ReadSingle();
-				unknownf6 = reader.ReadSingle();
+				UnknownFloat4 = reader.ReadSingle();
+				UnknownFloat5 = reader.ReadSingle();
+				UnknownFloat6 = reader.ReadSingle();
 
-				unknowni6 = reader.ReadInt32();
+				UnknownInt6 = reader.ReadInt32();
 			}
 
-			if (parent.Version >= 6)
+			if (Parent.Version >= 6)
 			{
-				unknowns1 = reader.ReadInt16();
-				unknowns2 = reader.ReadInt16();
+				UnknownShort1 = reader.ReadInt16();
+				UnknownShort2 = reader.ReadInt16();
 			}
 
-			if (parent.Version >= 7)
-				unknownf7 = reader.ReadSingle();
-			if (parent.Version >= 8)
-				unknowni7 = reader.ReadInt32();
-			if (parent.Version >= 9)
-				unknowni8 = reader.ReadInt32();
-			if (parent.Version == 10)
-				unknowns3 = reader.ReadInt16(); // this is in test, before making full use of I need to test, test and fucking test
-			if (parent.Version >= 0x10)
-				unknownf8 = reader.ReadSingle();
+			if (Parent.Version >= 7)
+				UnknownFloat7 = reader.ReadSingle();
+			if (Parent.Version >= 8)
+				UnknownInt7 = reader.ReadInt32();
+			if (Parent.Version >= 9)
+				UnknownInt8 = reader.ReadInt32();
+			if (Parent.Version == 10)
+				UnknownShort3 = reader.ReadInt16(); // this is in test, before making full use of I need to test, test and fucking test
+			if (Parent.Version >= 0x10)
+				UnknownFloat8 = reader.ReadSingle();
 
-			if (parent.Version >= 0x40)
+			if (Parent.Version >= 0x40)
 			{
-				unknowni9 = reader.ReadInt32();
-				unknowni10 = reader.ReadInt32();
+				UnknownInt9 = reader.ReadInt32();
+				UnknownInt10 = reader.ReadInt32();
 			}
 		}
 
@@ -400,49 +226,49 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </remarks>
 		internal void Serialize(System.IO.BinaryWriter writer, Slot parent)
 		{
-			this.parent = parent;
-			writer.Write((ushort)type);
+			this.Parent = parent;
+			writer.Write((ushort)Type);
 
-			writer.Write(unknownf1);
-			writer.Write(unknownf2);
-			writer.Write(unknownf3);
+			writer.Write(UnknownFloat1);
+			writer.Write(UnknownFloat2);
+			writer.Write(UnknownFloat3);
 
-			writer.Write(unknowni1);
-			writer.Write(unknowni2);
-			writer.Write(unknowni3);
-			writer.Write(unknowni4);
-			writer.Write(unknowni5);
+			writer.Write(UnknownInt1);
+			writer.Write(UnknownInt2);
+			writer.Write(UnknownInt3);
+			writer.Write(UnknownInt4);
+			writer.Write(UnknownInt5);
 
 			if (parent.Version >= 5)
 			{
-				writer.Write(unknownf4);
-				writer.Write(unknownf5);
-				writer.Write(unknownf6);
+				writer.Write(UnknownFloat4);
+				writer.Write(UnknownFloat5);
+				writer.Write(UnknownFloat6);
 
-				writer.Write(unknowni6);
+				writer.Write(UnknownInt6);
 			}
 
 			if (parent.Version >= 6)
 			{
-				writer.Write(unknowns1);
-				writer.Write(unknowns2);
+				writer.Write(UnknownShort1);
+				writer.Write(UnknownShort2);
 			}
 
 			if (parent.Version >= 7)
-				writer.Write(unknownf7);
+				writer.Write(UnknownFloat7);
 			if (parent.Version >= 8)
-				writer.Write(unknowni7);
+				writer.Write(UnknownInt7);
 			if (parent.Version >= 9)
-				writer.Write(unknowni8);
+				writer.Write(UnknownInt8);
 			if (parent.Version == 10)
-				writer.Write(unknowns3);
+				writer.Write(UnknownShort3);
 			if (parent.Version >= 0x10)
-				writer.Write(unknownf8);
+				writer.Write(UnknownFloat8);
 
 			if (parent.Version >= 0x40)
 			{
-				writer.Write(unknowni9);
-				writer.Write(unknowni10);
+				writer.Write(UnknownInt9);
+				writer.Write(UnknownInt10);
 			}
 		}
 

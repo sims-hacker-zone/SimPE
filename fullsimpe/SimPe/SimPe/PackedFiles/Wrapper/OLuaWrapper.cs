@@ -40,17 +40,9 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		#region Attributes
-		string flname;
 		public string FileName
 		{
-			get
-			{
-				return flname;
-			}
-			set
-			{
-				flname = value;
-			}
+			get; set;
 		}
 		uint resversion;
 
@@ -60,22 +52,37 @@ namespace SimPe.PackedFiles.Wrapper
 		byte intsz;
 		byte sztsz;
 		byte instsz;
-		byte operandbits;
-		public byte OpcodeBits => operandbits;
 
-		byte bits1;
-		public byte ABits => bits1;
-		byte bits2;
-		public byte BBits => bits2;
-		byte bits3;
-		public byte CBits => bits3;
+		public byte OpcodeBits
+		{
+			get; private set;
+		}
 
-		byte nrsz;
-		public byte NumberSize => nrsz;
+		public byte ABits
+		{
+			get; private set;
+		}
+
+		public byte BBits
+		{
+			get; private set;
+		}
+
+		public byte CBits
+		{
+			get; private set;
+		}
+
+		public byte NumberSize
+		{
+			get; private set;
+		}
 		byte[] sample;
 
-		ObjLuaFunction root;
-		public ObjLuaFunction Root => root;
+		public ObjLuaFunction Root
+		{
+			get;
+		}
 		#endregion
 
 		#region Code Properties
@@ -123,24 +130,24 @@ namespace SimPe.PackedFiles.Wrapper
 			intsz = 4;
 			sztsz = 4;
 			instsz = 4;
-			operandbits = 6;
-			bits1 = 8;
-			bits2 = 9;
-			bits3 = 9;
-			nrsz = 8;
+			OpcodeBits = 6;
+			ABits = 8;
+			BBits = 9;
+			CBits = 9;
+			NumberSize = 8;
 			id = 0x61754C1B;
 			sample = new byte[] { 0xb6, 0x09, 0x93, 0x68, 0xe7, 0xf5, 0x7d, 0x41 };
 
-			flname = "";
+			FileName = "";
 
-			root = new ObjLuaFunction(this);
+			Root = new ObjLuaFunction(this);
 		}
 
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			resversion = reader.ReadUInt32();
 			int ct = reader.ReadInt32();
-			flname = Helper.ToString(reader.ReadBytes(ct));
+			FileName = Helper.ToString(reader.ReadBytes(ct));
 
 			UnserializeLua(reader);
 		}
@@ -148,9 +155,9 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(resversion);
-			int ct = flname.Length;
+			int ct = FileName.Length;
 			writer.Write(ct);
-			writer.Write(Helper.ToBytes(flname, ct));
+			writer.Write(Helper.ToBytes(FileName, ct));
 			SerializeLua(writer);
 		}
 
@@ -168,7 +175,7 @@ namespace SimPe.PackedFiles.Wrapper
 						regs[i] = "";
 
 					Lua.Context cx = new SimPe.PackedFiles.Wrapper.Lua.Context();
-					root.ToSource(sw, cx);
+					Root.ToSource(sw, cx);
 					sw.Flush();
 
 					System.IO.StreamReader sr = new System.IO.StreamReader(
@@ -251,15 +258,15 @@ namespace SimPe.PackedFiles.Wrapper
 			sztsz = reader.ReadByte();
 			instsz = reader.ReadByte();
 
-			operandbits = reader.ReadByte();
-			bits1 = reader.ReadByte();
-			bits2 = reader.ReadByte();
-			bits3 = reader.ReadByte();
+			OpcodeBits = reader.ReadByte();
+			ABits = reader.ReadByte();
+			BBits = reader.ReadByte();
+			CBits = reader.ReadByte();
 
-			nrsz = reader.ReadByte();
+			NumberSize = reader.ReadByte();
 			sample = reader.ReadBytes(sample.Length);
 
-			root.Unserialize(reader);
+			Root.Unserialize(reader);
 		}
 
 		protected void SerializeLua(System.IO.BinaryWriter writer)
@@ -273,15 +280,15 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write(sztsz);
 			writer.Write(instsz);
 
-			writer.Write(operandbits);
-			writer.Write(bits1);
-			writer.Write(bits2);
-			writer.Write(bits3);
+			writer.Write(OpcodeBits);
+			writer.Write(ABits);
+			writer.Write(BBits);
+			writer.Write(CBits);
 
-			writer.Write(nrsz);
+			writer.Write(NumberSize);
 			writer.Write(sample);
 
-			root.Serialize(writer);
+			Root.Serialize(writer);
 		}
 
 		internal static string ReadString(System.IO.BinaryReader reader)
@@ -331,7 +338,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			if (!this.Processed)
 				ProcessData(FileDescriptor, Package);
-			return flname;
+			return FileName;
 		}
 	}
 
@@ -340,49 +347,68 @@ namespace SimPe.PackedFiles.Wrapper
 		internal static bool DEBUG = false;
 
 		#region Attributes
-		ObjLua parent;
-		public ObjLua Parent => parent;
+		public ObjLua Parent
+		{
+			get; private set;
+		}
 
 		string name;
 		uint linedef;
 		byte nups;
-		byte argc;
-		public byte ArgumentCount => argc;
+
+		public byte ArgumentCount
+		{
+			get; private set;
+		}
 		byte isinout;
-		byte stacksz;
-		public byte StackSize => stacksz;
 
-		ArrayList contants,
-			functions,
-			codes,
-			srcln,
-			upval,
-			local;
+		public byte StackSize
+		{
+			get; private set;
+		}
 
-		public ArrayList Constants => contants;
+		public ArrayList Constants
+		{
+			get; private set;
+		}
 
-		public ArrayList UpValues => upval;
+		public ArrayList UpValues
+		{
+			get;
+		}
 
-		public ArrayList Locals => local;
+		public ArrayList Locals
+		{
+			get;
+		}
 
-		public ArrayList SourceLine => srcln;
+		public ArrayList SourceLine
+		{
+			get;
+		}
 
-		public ArrayList Functions => functions;
+		public ArrayList Functions
+		{
+			get;
+		}
 
-		public ArrayList Codes => codes;
+		public ArrayList Codes
+		{
+			get;
+		}
 		#endregion
 
 		public ObjLuaFunction(ObjLua parent)
 		{
-			this.parent = parent;
+			this.Parent = parent;
 			name = "";
 
-			contants = new ArrayList();
-			functions = new ArrayList();
-			codes = new ArrayList();
-			srcln = new ArrayList();
-			local = new ArrayList();
-			upval = new ArrayList();
+			Constants = new ArrayList();
+			Functions = new ArrayList();
+			Codes = new ArrayList();
+			SourceLine = new ArrayList();
+			Locals = new ArrayList();
+			UpValues = new ArrayList();
 		}
 
 		#region Source Code
@@ -442,7 +468,7 @@ namespace SimPe.PackedFiles.Wrapper
 			ArrayList oplines = new ArrayList();
 			ArrayList sw = new ArrayList();
 			string pindent = "";
-			for (int i = 0; i < codes.Count - 1; i++)
+			for (int i = 0; i < Codes.Count - 1; i++)
 			{
 				oplines.Add(sw.Count);
 				cx.GoToLine(i);
@@ -563,9 +589,9 @@ namespace SimPe.PackedFiles.Wrapper
 		internal bool IsLocalRegister(ushort regnr, Lua.Context cx)
 		{
 			ObjLuaCode line = null;
-			for (int i = cx.PC + 1; i < codes.Count; i++)
+			for (int i = cx.PC + 1; i < Codes.Count; i++)
 			{
-				line = codes[i] as ObjLuaCode;
+				line = Codes[i] as ObjLuaCode;
 				if (line != null)
 					if (line is Lua.ILoadOperator)
 					{
@@ -581,20 +607,20 @@ namespace SimPe.PackedFiles.Wrapper
 
 		internal void Unserialize(System.IO.BinaryReader reader)
 		{
-			contants.Clear();
-			functions.Clear();
-			codes.Clear();
-			srcln.Clear();
-			local.Clear();
-			upval.Clear();
+			Constants.Clear();
+			Functions.Clear();
+			Codes.Clear();
+			SourceLine.Clear();
+			Locals.Clear();
+			UpValues.Clear();
 
 			name = ObjLua.ReadString(reader);
 
 			linedef = reader.ReadUInt32();
 			nups = reader.ReadByte();
-			argc = reader.ReadByte();
+			ArgumentCount = reader.ReadByte();
 			isinout = reader.ReadByte();
-			stacksz = reader.ReadByte();
+			StackSize = reader.ReadByte();
 
 			uint linenfosz = reader.ReadUInt32();
 			for (uint i = 0; i < linenfosz; i++)
@@ -602,7 +628,7 @@ namespace SimPe.PackedFiles.Wrapper
 				ObjLuaSourceLine item = new ObjLuaSourceLine(this);
 				item.Unserialize(reader);
 
-				srcln.Add(item);
+				SourceLine.Add(item);
 			}
 
 			uint locvarsz = reader.ReadUInt32();
@@ -611,7 +637,7 @@ namespace SimPe.PackedFiles.Wrapper
 				ObjLuaLocalVar item = new ObjLuaLocalVar(this);
 				item.Unserialize(reader);
 
-				local.Add(item);
+				Locals.Add(item);
 			}
 
 			uint upvalsz = reader.ReadUInt32();
@@ -620,7 +646,7 @@ namespace SimPe.PackedFiles.Wrapper
 				ObjLuaUpValue item = new ObjLuaUpValue(this);
 				item.Unserialize(reader);
 
-				upval.Add(item);
+				UpValues.Add(item);
 			}
 
 			uint constsz = reader.ReadUInt32();
@@ -629,16 +655,16 @@ namespace SimPe.PackedFiles.Wrapper
 				ObjLuaConstant item = new ObjLuaConstant(this);
 				item.Unserialize(reader);
 
-				contants.Add(item);
+				Constants.Add(item);
 			}
 
 			uint fncsz = reader.ReadUInt32();
 			for (uint i = 0; i < fncsz; i++)
 			{
-				ObjLuaFunction item = new ObjLuaFunction(this.parent);
+				ObjLuaFunction item = new ObjLuaFunction(this.Parent);
 				item.Unserialize(reader);
 
-				functions.Add(item);
+				Functions.Add(item);
 			}
 
 			uint codesz = reader.ReadUInt32();
@@ -646,7 +672,7 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				ObjLuaCode item = ObjLuaCode.Unserialize(reader, this);
 
-				codes.Add(item);
+				Codes.Add(item);
 			}
 		}
 
@@ -656,32 +682,32 @@ namespace SimPe.PackedFiles.Wrapper
 
 			writer.Write(linedef);
 			writer.Write(nups);
-			writer.Write(argc);
+			writer.Write(ArgumentCount);
 			writer.Write(isinout);
-			writer.Write(stacksz);
+			writer.Write(StackSize);
 
-			writer.Write((uint)srcln.Count);
-			foreach (ObjLuaSourceLine item in srcln)
+			writer.Write((uint)SourceLine.Count);
+			foreach (ObjLuaSourceLine item in SourceLine)
 				item.Serialize(writer);
 
-			writer.Write((uint)local.Count);
-			foreach (ObjLuaLocalVar item in local)
+			writer.Write((uint)Locals.Count);
+			foreach (ObjLuaLocalVar item in Locals)
 				item.Serialize(writer);
 
-			writer.Write((uint)upval.Count);
-			foreach (ObjLuaUpValue item in upval)
+			writer.Write((uint)UpValues.Count);
+			foreach (ObjLuaUpValue item in UpValues)
 				item.Serialize(writer);
 
-			writer.Write((uint)contants.Count);
-			foreach (ObjLuaConstant item in contants)
+			writer.Write((uint)Constants.Count);
+			foreach (ObjLuaConstant item in Constants)
 				item.Serialize(writer);
 
-			writer.Write((uint)functions.Count);
-			foreach (ObjLuaFunction item in functions)
+			writer.Write((uint)Functions.Count);
+			foreach (ObjLuaFunction item in Functions)
 				item.Serialize(writer);
 
-			writer.Write((uint)codes.Count);
-			foreach (ObjLuaCode item in codes)
+			writer.Write((uint)Codes.Count);
+			foreach (ObjLuaCode item in Codes)
 				item.Serialize(writer);
 		}
 
@@ -689,10 +715,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public void Dispose()
 		{
-			parent = null;
-			if (contants != null)
-				contants.Clear();
-			contants = null;
+			Parent = null;
+			if (Constants != null)
+				Constants.Clear();
+			Constants = null;
 		}
 
 		#endregion
@@ -701,15 +727,15 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			return name
 				+ ": "
-				+ this.argc.ToString()
+				+ this.ArgumentCount.ToString()
 				+ " Arguments, Stacksize "
-				+ this.stacksz.ToString()
+				+ this.StackSize.ToString()
 				+ ", "
-				+ contants.Count.ToString()
+				+ Constants.Count.ToString()
 				+ " Constants, "
-				+ functions.Count.ToString()
+				+ Functions.Count.ToString()
 				+ " SubFunctions, "
-				+ codes.Count.ToString()
+				+ Codes.Count.ToString()
 				+ " Instructions";
 		}
 
@@ -717,7 +743,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public IEnumerator GetEnumerator()
 		{
-			return contants.GetEnumerator();
+			return Constants.GetEnumerator();
 		}
 
 		#endregion
@@ -733,46 +759,24 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		#region Attributes
-		ObjLuaFunction parent;
-		public ObjLuaFunction Parent => parent;
+		public ObjLuaFunction Parent
+		{
+			get; private set;
+		}
 
-		Type type;
 		public Type InstructionType
 		{
-			get
-			{
-				return type;
-			}
-			set
-			{
-				type = value;
-			}
+			get; set;
 		}
 
-		string str;
 		public string String
 		{
-			get
-			{
-				return str;
-			}
-			set
-			{
-				str = value;
-			}
+			get; set;
 		}
 
-		double dval;
 		public double Value
 		{
-			get
-			{
-				return dval;
-			}
-			set
-			{
-				dval = value;
-			}
+			get; set;
 		}
 
 		uint[] bdata;
@@ -783,8 +787,8 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ObjLuaConstant(ObjLuaFunction parent)
 		{
-			this.parent = parent;
-			str = "";
+			this.Parent = parent;
+			String = "";
 
 			bdata = new uint[0];
 			badd = new byte[0];
@@ -793,40 +797,40 @@ namespace SimPe.PackedFiles.Wrapper
 
 		internal void Unserialize(System.IO.BinaryReader reader)
 		{
-			type = (Type)reader.ReadByte();
+			InstructionType = (Type)reader.ReadByte();
 
-			str = "";
+			String = "";
 			bdata = new uint[0];
 			badd = new byte[0];
-			if (type == Type.String)
+			if (InstructionType == Type.String)
 			{
-				str = ObjLua.ReadString(reader);
+				String = ObjLua.ReadString(reader);
 			}
-			else if (type == Type.Number)
+			else if (InstructionType == Type.Number)
 			{
-				if (parent.Parent.NumberSize == 8)
+				if (Parent.Parent.NumberSize == 8)
 				{
-					dval = reader.ReadDouble();
+					Value = reader.ReadDouble();
 				}
-				else if (parent.Parent.NumberSize == 4)
+				else if (Parent.Parent.NumberSize == 4)
 				{
-					dval = reader.ReadSingle();
+					Value = reader.ReadSingle();
 				}
 				else
 					throw new Exception(
 						"Number Size "
-							+ parent.Parent.NumberSize.ToString()
+							+ Parent.Parent.NumberSize.ToString()
 							+ " is not supported!"
 					);
 			}
-			else if (type == Type.Empty)
+			else if (InstructionType == Type.Empty)
 			{
 			}
 			else
 			{
 				throw new Exception(
 					"Unknown Constant Type: 0x"
-						+ Helper.HexString((byte)type)
+						+ Helper.HexString((byte)InstructionType)
 						+ ", 0x"
 						+ Helper.HexString(reader.BaseStream.Position - 0x40)
 				);
@@ -835,37 +839,37 @@ namespace SimPe.PackedFiles.Wrapper
 
 		internal void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write((byte)type);
+			writer.Write((byte)InstructionType);
 
-			if (type == Type.String)
+			if (InstructionType == Type.String)
 			{
-				ObjLua.WriteString(str, writer);
+				ObjLua.WriteString(String, writer);
 			}
-			else if (type == Type.Number)
+			else if (InstructionType == Type.Number)
 			{
-				if (parent.Parent.NumberSize == 8)
+				if (Parent.Parent.NumberSize == 8)
 				{
-					writer.Write((double)dval);
+					writer.Write((double)Value);
 				}
-				else if (parent.Parent.NumberSize == 4)
+				else if (Parent.Parent.NumberSize == 4)
 				{
-					writer.Write((float)dval);
+					writer.Write((float)Value);
 				}
 				else
 					throw new Exception(
 						"Number Size "
-							+ parent.Parent.NumberSize.ToString()
+							+ Parent.Parent.NumberSize.ToString()
 							+ " is not supported!"
 					);
 			}
-			else if (type == Type.Empty)
+			else if (InstructionType == Type.Empty)
 			{
 			}
 			else
 			{
 				throw new Exception(
 					"Unknown Constant Type: 0x"
-						+ Helper.HexString((byte)type)
+						+ Helper.HexString((byte)InstructionType)
 						+ ", 0x"
 						+ Helper.HexString(writer.BaseStream.Position - 0x40)
 				);
@@ -876,8 +880,8 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public void Dispose()
 		{
-			parent = null;
-			str = null;
+			Parent = null;
+			String = null;
 
 			badd = null;
 			bheader = null;
@@ -888,11 +892,11 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public override string ToString()
 		{
-			string s = type.ToString() + ": ";
-			if (type == Type.String)
-				s += str;
-			else if (type == Type.Number)
-				s += dval.ToString();
+			string s = InstructionType.ToString() + ": ";
+			if (InstructionType == Type.String)
+				s += String;
+			else if (InstructionType == Type.Number)
+				s += Value.ToString();
 
 			return s;
 		}
@@ -903,17 +907,9 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Attributes
 		ObjLuaFunction parent;
 
-		uint val;
 		public uint Value
 		{
-			get
-			{
-				return val;
-			}
-			set
-			{
-				val = value;
-			}
+			get; set;
 		}
 
 		#endregion
@@ -925,12 +921,12 @@ namespace SimPe.PackedFiles.Wrapper
 
 		internal void Unserialize(System.IO.BinaryReader reader)
 		{
-			val = reader.ReadUInt32();
+			Value = reader.ReadUInt32();
 		}
 
 		internal void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(val);
+			writer.Write(Value);
 		}
 
 		#region IDisposable Member
@@ -943,7 +939,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public override string ToString()
 		{
-			return "0x" + Helper.HexString(val);
+			return "0x" + Helper.HexString(Value);
 		}
 	}
 
@@ -952,43 +948,19 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Attributes
 		ObjLuaFunction parent;
 
-		uint start,
-			end;
 		public uint Start
 		{
-			get
-			{
-				return start;
-			}
-			set
-			{
-				start = value;
-			}
+			get; set;
 		}
 
 		public uint End
 		{
-			get
-			{
-				return end;
-			}
-			set
-			{
-				end = value;
-			}
+			get; set;
 		}
 
-		string name;
 		public string Name
 		{
-			get
-			{
-				return name;
-			}
-			set
-			{
-				name = value;
-			}
+			get; set;
 		}
 
 		#endregion
@@ -996,28 +968,28 @@ namespace SimPe.PackedFiles.Wrapper
 		public ObjLuaLocalVar(ObjLuaFunction parent)
 		{
 			this.parent = parent;
-			name = "";
+			Name = "";
 		}
 
 		internal void Unserialize(System.IO.BinaryReader reader)
 		{
-			name = ObjLua.ReadString(reader);
-			start = reader.ReadUInt32();
-			end = reader.ReadUInt32();
+			Name = ObjLua.ReadString(reader);
+			Start = reader.ReadUInt32();
+			End = reader.ReadUInt32();
 		}
 
 		internal void Serialize(System.IO.BinaryWriter writer)
 		{
-			ObjLua.WriteString(name, writer);
-			writer.Write(start);
-			writer.Write(end);
+			ObjLua.WriteString(Name, writer);
+			writer.Write(Start);
+			writer.Write(End);
 		}
 
 		#region IDisposable Member
 
 		public void Dispose()
 		{
-			name = null;
+			Name = null;
 		}
 
 		#endregion
@@ -1026,9 +998,9 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			return Name
 				+ ": 0x"
-				+ Helper.HexString(start)
+				+ Helper.HexString(Start)
 				+ " - 0x"
-				+ Helper.HexString(end);
+				+ Helper.HexString(End);
 		}
 	}
 
@@ -1184,21 +1156,15 @@ namespace SimPe.PackedFiles.Wrapper
 		#endregion
 
 		#region Attributes
-		ObjLuaFunction parent;
 
-		protected ObjLuaFunction Parent => parent;
+		protected ObjLuaFunction Parent
+		{
+			get;
+		}
 
-		uint val;
 		public uint Value
 		{
-			get
-			{
-				return val;
-			}
-			set
-			{
-				val = value;
-			}
+			get; set;
 		}
 
 		protected static byte GetOpCode(uint val, ObjLuaFunction parent)
@@ -1211,35 +1177,35 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected void SetOpcode(byte oc)
 		{
-			val = (
+			Value = (
 				(uint)(
-					val
+					Value
 					& (
 						0xFFFFFFFF
-						- (parent.Parent.OpcodeMaks << parent.Parent.OpcodeShift)
+						- (Parent.Parent.OpcodeMaks << Parent.Parent.OpcodeShift)
 					)
-				) | (uint)((oc & parent.Parent.OpcodeMaks) << parent.Parent.OpcodeShift)
+				) | (uint)((oc & Parent.Parent.OpcodeMaks) << Parent.Parent.OpcodeShift)
 			);
 		}
 
-		public byte Opcode => GetOpCode(val, this.parent);
+		public byte Opcode => GetOpCode(Value, this.Parent);
 
 		public ushort A
 		{
 			get
 			{
 				return (ushort)(
-					(val & (parent.Parent.AMaks << parent.Parent.AShift))
-					>> parent.Parent.AShift
+					(Value & (Parent.Parent.AMaks << Parent.Parent.AShift))
+					>> Parent.Parent.AShift
 				);
 			}
 			set
 			{
-				val = (
+				Value = (
 					(uint)(
-						val
-						& (0xFFFFFFFF - (parent.Parent.AMaks << parent.Parent.AShift))
-					) | (uint)((value & parent.Parent.AMaks) << parent.Parent.AShift)
+						Value
+						& (0xFFFFFFFF - (Parent.Parent.AMaks << Parent.Parent.AShift))
+					) | (uint)((value & Parent.Parent.AMaks) << Parent.Parent.AShift)
 				);
 			}
 		}
@@ -1249,17 +1215,17 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				return (ushort)(
-					(val & (parent.Parent.BMaks << parent.Parent.BShift))
-					>> parent.Parent.BShift
+					(Value & (Parent.Parent.BMaks << Parent.Parent.BShift))
+					>> Parent.Parent.BShift
 				);
 			}
 			set
 			{
-				val = (
+				Value = (
 					(uint)(
-						val
-						& (0xFFFFFFFF - (parent.Parent.BMaks << parent.Parent.BShift))
-					) | (uint)((value & parent.Parent.BMaks) << parent.Parent.BShift)
+						Value
+						& (0xFFFFFFFF - (Parent.Parent.BMaks << Parent.Parent.BShift))
+					) | (uint)((value & Parent.Parent.BMaks) << Parent.Parent.BShift)
 				);
 			}
 		}
@@ -1269,25 +1235,25 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				return (ushort)(
-					(val & (parent.Parent.CMaks << parent.Parent.CShift))
-					>> parent.Parent.CShift
+					(Value & (Parent.Parent.CMaks << Parent.Parent.CShift))
+					>> Parent.Parent.CShift
 				);
 			}
 			set
 			{
-				val = (
+				Value = (
 					(uint)(
-						val
-						& (0xFFFFFFFF - (parent.Parent.CMaks << parent.Parent.CShift))
-					) | (uint)((value & parent.Parent.CMaks) << parent.Parent.CShift)
+						Value
+						& (0xFFFFFFFF - (Parent.Parent.CMaks << Parent.Parent.CShift))
+					) | (uint)((value & Parent.Parent.CMaks) << Parent.Parent.CShift)
 				);
 			}
 		}
 
-		public uint BX => ((B & parent.Parent.BMaks) << parent.Parent.CBits)
-					| (C & parent.Parent.CMaks);
+		public uint BX => ((B & Parent.Parent.BMaks) << Parent.Parent.CBits)
+					| (C & Parent.Parent.CMaks);
 
-		public int SBX => (int)((long)BX - parent.Parent.Bias);
+		public int SBX => (int)((long)BX - Parent.Parent.Bias);
 
 		public static string GetOpcodeName(byte oc)
 		{
@@ -1405,9 +1371,9 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected string Kst(uint v)
 		{
-			if (v >= 0 && v < parent.Constants.Count)
+			if (v >= 0 && v < Parent.Constants.Count)
 			{
-				ObjLuaConstant oci = (ObjLuaConstant)parent.Constants[(int)v];
+				ObjLuaConstant oci = (ObjLuaConstant)Parent.Constants[(int)v];
 				if (oci.InstructionType == ObjLuaConstant.Type.String)
 					return oci.String;
 				else if (oci.InstructionType == ObjLuaConstant.Type.Number)
@@ -1420,8 +1386,8 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected string UpValue(ushort v)
 		{
-			if (v >= 0 && v < parent.UpValues.Count)
-				return parent.UpValues[v].ToString();
+			if (v >= 0 && v < Parent.UpValues.Count)
+				return Parent.UpValues[v].ToString();
 			return v.ToString();
 		}
 
@@ -1474,8 +1440,8 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ObjLuaCode(uint val, ObjLuaFunction parent)
 		{
-			this.parent = parent;
-			this.val = val;
+			this.Parent = parent;
+			this.Value = val;
 		}
 
 		internal static ObjLuaCode Unserialize(
@@ -1490,7 +1456,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		internal void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(val);
+			writer.Write(Value);
 		}
 
 		#region IDisposable Member

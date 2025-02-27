@@ -45,12 +45,13 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class WantNameLoader
 	{
-		Hashtable map;
-
 		/// <summary>
 		/// Returns a List with all known Names
 		/// </summary>
-		public Hashtable Map => map;
+		public Hashtable Map
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Create a New Instance
@@ -174,7 +175,7 @@ namespace SimPe.Plugin
 		/// <param name="xml">The Xml File </param>
 		void ParseXml(string xml)
 		{
-			map = new Hashtable();
+			Map = new Hashtable();
 
 			//read XML File
 			System.Xml.XmlDocument xmlfile = new XmlDocument();
@@ -193,7 +194,7 @@ namespace SimPe.Plugin
 					{
 						case "categories":
 						{
-							map[WantType.Category] = ParseSubNode(
+							Map[WantType.Category] = ParseSubNode(
 								"category",
 								subnode,
 								10
@@ -202,17 +203,17 @@ namespace SimPe.Plugin
 						}
 						case "skills":
 						{
-							map[WantType.Skill] = ParseSubNode("skill", subnode, 10);
+							Map[WantType.Skill] = ParseSubNode("skill", subnode, 10);
 							break;
 						}
 						case "careers":
 						{
-							map[WantType.Career] = ParseSubNode("career", subnode, 16);
+							Map[WantType.Career] = ParseSubNode("career", subnode, 16);
 							break;
 						}
 						case "persondata":
 						{
-							map[WantType.Undefined] = ParseSubNode(
+							Map[WantType.Undefined] = ParseSubNode(
 								"persondata",
 								subnode,
 								10
@@ -231,7 +232,7 @@ namespace SimPe.Plugin
 		public void AddSimNames()
 		{
 			Hashtable ht = new Hashtable();
-			map[WantType.Sim] = ht;
+			Map[WantType.Sim] = ht;
 
 			if (FileTable.ProviderRegistry == null)
 				return;
@@ -267,7 +268,7 @@ namespace SimPe.Plugin
 		public void AddObjects(ArrayList list)
 		{
 			Hashtable ht = new Hashtable();
-			map[WantType.Object] = ht;
+			Map[WantType.Object] = ht;
 			foreach (SimPe.Cache.MemoryCacheItem mci in list)
 			{
 				if (mci.ObjectType == Data.ObjectTypes.Normal)

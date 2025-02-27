@@ -38,18 +38,18 @@ namespace Ambertation.Windows.Forms.Graph
 
 			quality = true;
 			savebound = true;
-			update = false;
-			cachedimage = new System.Drawing.Bitmap(1, 1);
-			this.width = 48;
-			this.height = 48;
+			Updating = false;
+			SourceImage = new System.Drawing.Bitmap(1, 1);
+			this.Width = 48;
+			this.Height = 48;
 		}
 
 		public virtual void Dispose()
 		{
 			this.Parent = null;
 
-			if (this.cachedimage != null)
-				this.cachedimage.Dispose();
+			if (this.SourceImage != null)
+				this.SourceImage.Dispose();
 		}
 
 		#region Public Properties
@@ -89,17 +89,25 @@ namespace Ambertation.Windows.Forms.Graph
 			}
 		}
 
-		int left,
-			top,
-			width,
-			height;
-		public int Left => left;
+		public int Left
+		{
+			get; private set;
+		}
 
-		public int Top => top;
+		public int Top
+		{
+			get; private set;
+		}
 
-		public int Width => width;
+		public int Width
+		{
+			get; private set;
+		}
 
-		public int Height => height;
+		public int Height
+		{
+			get; private set;
+		}
 
 		public int Right => this.BoundingRectangle.Right;
 
@@ -128,7 +136,7 @@ namespace Ambertation.Windows.Forms.Graph
 			}
 		}
 
-		public Rectangle BoundingRectangle => new Rectangle(left, top, width, height);
+		public Rectangle BoundingRectangle => new Rectangle(Left, Top, Width, Height);
 
 		GraphPanel parent;
 		public GraphPanel Parent
@@ -232,7 +240,7 @@ namespace Ambertation.Windows.Forms.Graph
 				e.ClipRectangle.Height
 			);
 
-			OnPaint(e.Graphics, cachedimage, dst, src);
+			OnPaint(e.Graphics, SourceImage, dst, src);
 		}
 
 		protected virtual void OnPaint(
@@ -266,23 +274,23 @@ namespace Ambertation.Windows.Forms.Graph
 
 			Rectangle r = Rectangle.Union(src, dst);
 
-			left = x;
-			top = y;
-			width = wd;
-			height = hg;
+			Left = x;
+			Top = y;
+			Width = wd;
+			Height = hg;
 
 			if (parent != null && this.SaveBounds)
 			{
 				if (Right > parent.Width)
-					left = parent.Width - width;
+					Left = parent.Width - Width;
 				if (Bottom > parent.Height)
-					top = parent.Height - height;
-				if (left < 0)
-					left = 0;
-				if (top < 0)
-					top = 0;
+					Top = parent.Height - Height;
+				if (Left < 0)
+					Left = 0;
+				if (Top < 0)
+					Top = 0;
 
-				src = new Rectangle(left, top, width, height);
+				src = new Rectangle(Left, Top, Width, Height);
 			}
 
 			if (src.X != dst.X || src.Y != dst.Y)
@@ -344,34 +352,36 @@ namespace Ambertation.Windows.Forms.Graph
 		#region Basic Draw Methods
 
 
-		Image cachedimage;
 
 		protected void CompleteRedraw()
 		{
-			if (update)
+			if (Updating)
 				return;
 			if (Width <= 0)
 				return;
 			if (Height <= 0)
 				return;
-			if (cachedimage != null)
-				cachedimage.Dispose();
+			if (SourceImage != null)
+				SourceImage.Dispose();
 
 			try
 			{
-				cachedimage = new Bitmap(Width, Height);
+				SourceImage = new Bitmap(Width, Height);
 			}
 			catch
 			{
-				cachedimage = new Bitmap(1, 1);
+				SourceImage = new Bitmap(1, 1);
 				return;
 			}
-			System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(cachedimage);
+			System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(SourceImage);
 			CompleteRedraw(g);
 			g.Dispose();
 		}
 
-		public Image SourceImage => cachedimage;
+		public Image SourceImage
+		{
+			get; private set;
+		}
 
 		protected void CompleteRedraw(System.Drawing.Graphics g)
 		{
@@ -440,17 +450,19 @@ namespace Ambertation.Windows.Forms.Graph
 		#endregion
 
 		#region Update Control
-		bool update;
-		public bool Updating => update;
+		public bool Updating
+		{
+			get; private set;
+		}
 
 		public void BeginUpdate()
 		{
-			update = true;
+			Updating = true;
 		}
 
 		public void EndUpdate()
 		{
-			update = false;
+			Updating = false;
 			this.Invalidate();
 		}
 		#endregion

@@ -44,27 +44,20 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Stores the Header
 		/// </summary>
-		private Interfaces.Files.IPackedFileDescriptor[] items;
-
 		/// <summary>
 		/// Returns / Sets the Header
 		/// </summary>
 		public Interfaces.Files.IPackedFileDescriptor[] Items
 		{
-			get
-			{
-				return items;
-			}
-			set
-			{
-				items = value;
-			}
+			get; set;
 		}
 
 		#endregion
 
-		IProviderRegistry provider;
-		public IProviderRegistry Provider => provider;
+		public IProviderRegistry Provider
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Constructor
@@ -72,8 +65,8 @@ namespace SimPe.Plugin
 		public Nmap(IProviderRegistry provider)
 			: base()
 		{
-			this.provider = provider;
-			items = new Interfaces.Files.IPackedFileDescriptor[0];
+			this.Provider = provider;
+			Items = new Interfaces.Files.IPackedFileDescriptor[0];
 		}
 
 		/// <summary>
@@ -85,7 +78,7 @@ namespace SimPe.Plugin
 		{
 			start = start.Trim().ToLower();
 			System.Collections.ArrayList a = new System.Collections.ArrayList();
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in items)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in Items)
 			{
 				if (pfd.Filename.Trim().ToLower().StartsWith(start))
 					a.Add(pfd);
@@ -134,9 +127,9 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-			items = new Interfaces.Files.IPackedFileDescriptor[reader.ReadUInt32()];
+			Items = new Interfaces.Files.IPackedFileDescriptor[reader.ReadUInt32()];
 
-			for (int i = 0; i < items.Length; i++)
+			for (int i = 0; i < Items.Length; i++)
 			{
 				NmapItem pfd = new NmapItem(this);
 				pfd.Group = reader.ReadUInt32();
@@ -145,7 +138,7 @@ namespace SimPe.Plugin
 				uint len = reader.ReadUInt32();
 				pfd.Filename = Helper.ToString(reader.ReadBytes((int)len));
 
-				items[i] = pfd;
+				Items[i] = pfd;
 			}
 		}
 
@@ -159,11 +152,11 @@ namespace SimPe.Plugin
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write((uint)items.Length);
+			writer.Write((uint)Items.Length);
 
-			for (int i = 0; i < items.Length; i++)
+			for (int i = 0; i < Items.Length; i++)
 			{
-				Interfaces.Files.IPackedFileDescriptor pfd = items[i];
+				Interfaces.Files.IPackedFileDescriptor pfd = Items[i];
 				writer.Write(pfd.Group);
 				writer.Write(pfd.Instance);
 

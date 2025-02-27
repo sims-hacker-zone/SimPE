@@ -70,7 +70,7 @@ namespace SimPe.Plugin.Gmdc
 							-Math.PI / 2,
 							0
 						);
-					m = mt.To33Matrix();
+					TransformMatrix = mt.To33Matrix();
 
 					mt = SimPe.Geometry.Matrixd.RotateYawPitchRoll(
 						Math.PI,
@@ -81,11 +81,11 @@ namespace SimPe.Plugin.Gmdc
 				}
 				else
 				{
-					m = SimPe.Geometry.Matrixd.GetIdentity(3, 3);
+					TransformMatrix = SimPe.Geometry.Matrixd.GetIdentity(3, 3);
 					mi = SimPe.Geometry.Matrixd.GetIdentity(3, 3);
 				}
 
-				ms = SimPe
+				ScaleMatrix = SimPe
 					.Geometry.Matrixd.Scale(
 						Helper.WindowsRegistry.ImportExportScaleFactor
 					)
@@ -96,9 +96,9 @@ namespace SimPe.Plugin.Gmdc
 					)
 					.To33Matrix();
 
-				if (m.Orthogonal)
+				if (TransformMatrix.Orthogonal)
 				{
-					mn = m;
+					mn = TransformMatrix;
 					mni = mn.GetTranspose();
 				}
 				else
@@ -109,12 +109,9 @@ namespace SimPe.Plugin.Gmdc
 			}
 		}
 
-		SimPe.Geometry.Matrixd m,
-			mn,
+		SimPe.Geometry.Matrixd mn,
 			mi,
-			mni,
-			ms,
-			msi;
+			mni, msi;
 
 		/// <summary>
 		/// Create a new Class with the given Sorting
@@ -125,9 +122,15 @@ namespace SimPe.Plugin.Gmdc
 			Sorting = sorting;
 		}
 
-		public SimPe.Geometry.Matrixd TransformMatrix => m;
+		public SimPe.Geometry.Matrixd TransformMatrix
+		{
+			get; private set;
+		}
 
-		public SimPe.Geometry.Matrixd ScaleMatrix => ms;
+		public SimPe.Geometry.Matrixd ScaleMatrix
+		{
+			get; private set;
+		}
 
 		public SimPe.Geometry.Quaternion TransformRotation(SimPe.Geometry.Quaternion q)
 		{
@@ -156,7 +159,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns></returns>
 		public SimPe.Geometry.Vector3f Transform(SimPe.Geometry.Vector3f v)
 		{
-			return m * v;
+			return TransformMatrix * v;
 		}
 
 		/// <summary>
@@ -196,7 +199,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns></returns>
 		public SimPe.Geometry.Vector3f TransformScaled(SimPe.Geometry.Vector3f v)
 		{
-			return (m * ms) * v;
+			return (TransformMatrix * ScaleMatrix) * v;
 		}
 
 		/// <summary>
@@ -206,7 +209,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns></returns>
 		public SimPe.Geometry.Vector3f InverseTransformScaled(SimPe.Geometry.Vector3f v)
 		{
-			return !(m * ms) * v;
+			return !(TransformMatrix * ScaleMatrix) * v;
 		}
 
 		/// <summary>
@@ -216,7 +219,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns></returns>
 		public SimPe.Geometry.Vector3f Scale(SimPe.Geometry.Vector3f v)
 		{
-			return ms * v;
+			return ScaleMatrix * v;
 		}
 
 		/// <summary>

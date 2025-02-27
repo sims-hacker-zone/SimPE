@@ -34,27 +34,19 @@ namespace Ambertation
 	/// </summary>
 	public class FloatColor
 	{
-		System.Drawing.Color cl;
 		public System.Drawing.Color Color
 		{
-			get
-			{
-				return cl;
-			}
-			set
-			{
-				cl = value;
-			}
+			get; set;
 		}
 
 		FloatColor(System.Drawing.Color cl)
 		{
-			this.cl = cl;
+			this.Color = cl;
 		}
 
 		FloatColor(string s)
 		{
-			cl = ToColor(s);
+			Color = ToColor(s);
 		}
 
 		public static FloatColor FromColor(System.Drawing.Color cl)
@@ -75,13 +67,13 @@ namespace Ambertation
 
 		public override string ToString()
 		{
-			return ToFloat(cl.R)
+			return ToFloat(Color.R)
 					.ToString("N5", System.Globalization.CultureInfo.InvariantCulture)
 				+ ","
-				+ ToFloat(cl.G)
+				+ ToFloat(Color.G)
 					.ToString("N5", System.Globalization.CultureInfo.InvariantCulture)
 				+ ","
-				+ ToFloat(cl.B)
+				+ ToFloat(Color.B)
 					.ToString("N5", System.Globalization.CultureInfo.InvariantCulture);
 		}
 
@@ -332,29 +324,15 @@ namespace Ambertation
 	]
 	public class BaseChangeableNumber
 	{
-		/// <summary>
-		/// What kind of number was it to begin with?
-		/// </summary>
-		Type type;
-
-		internal Type Type => type;
-
-		static int digitbase = 16;
+		internal Type Type
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// The Number Base used for Display
 		/// </summary>
-		public static int DigitBase
-		{
-			get
-			{
-				return digitbase;
-			}
-			set
-			{
-				digitbase = value;
-			}
-		}
+		public static int DigitBase { get; set; } = 16;
 
 		/// <summary>
 		/// Name of this Number Representation
@@ -363,9 +341,9 @@ namespace Ambertation
 		{
 			get
 			{
-				if (digitbase == 16)
+				if (DigitBase == 16)
 					return "Hexadecimal";
-				if (digitbase == 2)
+				if (DigitBase == 2)
 					return "Binary";
 				return "Decimal";
 			}
@@ -417,13 +395,11 @@ namespace Ambertation
 			return new BaseChangeableNumber(val, type);
 		}
 
-		long val;
-
 		public BaseChangeableNumber(object v)
 		{
 			ObjectValue = v;
 			if (v != null)
-				type = v.GetType();
+				Type = v.GetType();
 		}
 
 		internal BaseChangeableNumber(object v, Type t)
@@ -433,8 +409,8 @@ namespace Ambertation
 
 		internal BaseChangeableNumber()
 		{
-			val = 0;
-			type = typeof(int);
+			LongValue = 0;
+			Type = typeof(int);
 		}
 
 		/// <summary>
@@ -444,12 +420,12 @@ namespace Ambertation
 		{
 			get
 			{
-				return (short)(val & 0xffff);
+				return (short)(LongValue & 0xffff);
 				;
 			}
 			set
 			{
-				val = (short)(value & 0xffff);
+				LongValue = (short)(value & 0xffff);
 			}
 		}
 
@@ -460,11 +436,11 @@ namespace Ambertation
 		{
 			get
 			{
-				return (int)val;
+				return (int)LongValue;
 			}
 			set
 			{
-				val = value;
+				LongValue = value;
 			}
 		}
 
@@ -473,38 +449,31 @@ namespace Ambertation
 		/// </summary>
 		public long LongValue
 		{
-			get
-			{
-				return val;
-			}
-			set
-			{
-				val = value;
-			}
+			get; set;
 		}
 
 		internal void SetValue(object o, Type t)
 		{
-			type = t; //o.GetType();
+			Type = t; //o.GetType();
 
-			if (type == typeof(byte))
-				val = System.Convert.ToByte(o);
-			else if (type == typeof(sbyte))
-				val = System.Convert.ToSByte(o);
-			else if (type == typeof(short))
-				val = System.Convert.ToInt16(o);
-			else if (type == typeof(ushort))
-				val = System.Convert.ToUInt16(o);
-			else if (type == typeof(int))
-				val = System.Convert.ToInt32(o);
-			else if (type == typeof(uint))
-				val = System.Convert.ToUInt32(o);
-			else if (type == typeof(long))
-				val = System.Convert.ToInt64(o);
+			if (Type == typeof(byte))
+				LongValue = System.Convert.ToByte(o);
+			else if (Type == typeof(sbyte))
+				LongValue = System.Convert.ToSByte(o);
+			else if (Type == typeof(short))
+				LongValue = System.Convert.ToInt16(o);
+			else if (Type == typeof(ushort))
+				LongValue = System.Convert.ToUInt16(o);
+			else if (Type == typeof(int))
+				LongValue = System.Convert.ToInt32(o);
+			else if (Type == typeof(uint))
+				LongValue = System.Convert.ToUInt32(o);
+			else if (Type == typeof(long))
+				LongValue = System.Convert.ToInt64(o);
 			else
-				val = (long)System.Convert.ToUInt64(o);
+				LongValue = (long)System.Convert.ToUInt64(o);
 
-			type = t;
+			Type = t;
 		}
 
 		/// <summary>
@@ -518,19 +487,19 @@ namespace Ambertation
 			}
 			get
 			{
-				if (type == typeof(int))
-					return (int)val;
-				if (type == typeof(uint))
-					return (uint)val;
-				if (type == typeof(short))
-					return (short)val;
-				if (type == typeof(ushort))
-					return (ushort)val;
-				if (type == typeof(byte))
-					return (byte)val;
-				if (type == typeof(ulong))
-					return (ulong)val;
-				return (long)val;
+				if (Type == typeof(int))
+					return (int)LongValue;
+				if (Type == typeof(uint))
+					return (uint)LongValue;
+				if (Type == typeof(short))
+					return (short)LongValue;
+				if (Type == typeof(ushort))
+					return (ushort)LongValue;
+				if (Type == typeof(byte))
+					return (byte)LongValue;
+				if (Type == typeof(ulong))
+					return (ulong)LongValue;
+				return (long)LongValue;
 			}
 		}
 
@@ -541,40 +510,40 @@ namespace Ambertation
 		public override string ToString()
 		{
 			int len = 64;
-			if (type == typeof(byte))
+			if (Type == typeof(byte))
 				len = 8;
-			else if (type == typeof(sbyte))
+			else if (Type == typeof(sbyte))
 				len = 8;
-			else if (type == typeof(short))
+			else if (Type == typeof(short))
 				len = 16;
-			else if (type == typeof(ushort))
+			else if (Type == typeof(ushort))
 				len = 16;
-			else if (type == typeof(int))
+			else if (Type == typeof(int))
 				len = 32;
-			else if (type == typeof(uint))
+			else if (Type == typeof(uint))
 				len = 32;
-			else if (type == typeof(long))
+			else if (Type == typeof(long))
 				len = 64;
-			else if (type == typeof(ulong))
+			else if (Type == typeof(ulong))
 				len = 64;
 
-			if (digitbase == 16)
+			if (DigitBase == 16)
 			{
 				len = len / 4;
-				return "0x" + SimPe.Helper.StrLength(val.ToString("x"), len, false);
+				return "0x" + SimPe.Helper.StrLength(LongValue.ToString("x"), len, false);
 			}
-			else if (digitbase == 2)
+			else if (DigitBase == 2)
 			{
 				return "b"
 					+ SimPe.Helper.StrLength(
-						System.Convert.ToString(val, 2),
+						System.Convert.ToString(LongValue, 2),
 						len,
 						false
 					);
 			}
 			else
 			{
-				return val.ToString();
+				return LongValue.ToString();
 			}
 		}
 

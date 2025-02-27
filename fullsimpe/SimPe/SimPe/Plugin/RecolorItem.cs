@@ -15,19 +15,11 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class RecolorItem : AbstractCpfInfo
 	{
-		private RcolTable txmt;
 		private HairColor colorBin;
 
 		public RcolTable Materials
 		{
-			get
-			{
-				return this.txmt;
-			}
-			set
-			{
-				this.txmt = value;
-			}
+			get; set;
 		}
 
 		public HairColor ColorBin
@@ -39,8 +31,8 @@ namespace SimPe.Plugin
 			set
 			{
 				this.colorBin = value;
-				if (!Utility.IsNullOrEmpty(this.txmt))
-					foreach (MaterialDefinitionRcol mmat in this.txmt)
+				if (!Utility.IsNullOrEmpty(this.Materials))
+					foreach (MaterialDefinitionRcol mmat in this.Materials)
 						mmat.ColorBin = value;
 			}
 		}
@@ -162,32 +154,32 @@ namespace SimPe.Plugin
 		public RecolorItem(Cpf propertySet)
 			: base(propertySet)
 		{
-			this.txmt = new RcolTable();
+			this.Materials = new RcolTable();
 			this.colorBin = (HairColor)0;
 		}
 
 		public RecolorItem(Cpf propertySet, RcolTable txmt)
 			: base(propertySet)
 		{
-			this.txmt = txmt;
+			this.Materials = txmt;
 		}
 
 		public override void CommitChanges()
 		{
 			base.CommitChanges();
-			if (this.txmt != null)
+			if (this.Materials != null)
 			{
 				if (!this.Enabled)
 				{
 					if (!this.Pinned)
 					{
-						foreach (Rcol rcol in this.txmt)
+						foreach (Rcol rcol in this.Materials)
 							rcol.FileDescriptor.MarkForDelete = true;
 						return;
 					}
 				}
 
-				this.txmt.SynchronizeAll();
+				this.Materials.SynchronizeAll();
 			}
 		}
 	}

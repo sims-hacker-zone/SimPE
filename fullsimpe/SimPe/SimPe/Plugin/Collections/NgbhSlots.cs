@@ -30,19 +30,21 @@ namespace SimPe.Plugin.Collections
 		ArrayList list = new ArrayList();
 		Ngbh parent;
 
-		Data.NeighborhoodSlots type;
-		public Data.NeighborhoodSlots Type => type;
+		public Data.NeighborhoodSlots Type
+		{
+			get;
+		}
 
 		internal NgbhSlots(Ngbh parent, Data.NeighborhoodSlots type)
 		{
 			list = new ArrayList();
 			this.parent = parent;
-			this.type = type;
+			this.Type = type;
 		}
 
 		public NgbhSlot AddNew(uint inst)
 		{
-			NgbhSlot s = new NgbhSlot(parent, type);
+			NgbhSlot s = new NgbhSlot(parent, Type);
 			s.SlotID = inst;
 
 			Add(s);
@@ -108,7 +110,7 @@ namespace SimPe.Plugin.Collections
 
 		public NgbhSlots Clone(Ngbh newparent)
 		{
-			NgbhSlots ret = new NgbhSlots(newparent, type);
+			NgbhSlots ret = new NgbhSlots(newparent, Type);
 			foreach (NgbhSlot s in list)
 				ret.Add(s);
 

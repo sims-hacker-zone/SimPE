@@ -27,17 +27,10 @@ namespace SimPe.Plugin
 	public class WantItemContainer
 	{
 		uint guid;
-		WantItem[] items;
+
 		public WantItem[] Items
 		{
-			get
-			{
-				return items;
-			}
-			set
-			{
-				items = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -45,13 +38,15 @@ namespace SimPe.Plugin
 		/// </summary>
 		public WantInformation Information => WantInformation.LoadWant(guid);
 
-		Interfaces.IProviderRegistry provider;
-		public Interfaces.IProviderRegistry Provider => provider;
+		public Interfaces.IProviderRegistry Provider
+		{
+			get;
+		}
 
 		public WantItemContainer(Interfaces.IProviderRegistry provider)
 		{
-			items = new WantItem[0];
-			this.provider = provider;
+			Items = new WantItem[0];
+			this.Provider = provider;
 		}
 
 		/// <summary>
@@ -61,12 +56,12 @@ namespace SimPe.Plugin
 		public void Unserialize(System.IO.BinaryReader reader)
 		{
 			guid = reader.ReadUInt32();
-			items = new WantItem[reader.ReadUInt32()];
+			Items = new WantItem[reader.ReadUInt32()];
 
-			for (int i = 0; i < items.Length; i++)
+			for (int i = 0; i < Items.Length; i++)
 			{
-				items[i] = new WantItem(provider);
-				items[i].Unserialize(reader);
+				Items[i] = new WantItem(Provider);
+				Items[i].Unserialize(reader);
 			}
 		}
 
@@ -81,17 +76,17 @@ namespace SimPe.Plugin
 		public void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(guid);
-			writer.Write((uint)items.Length);
+			writer.Write((uint)Items.Length);
 
-			for (int i = 0; i < items.Length; i++)
+			for (int i = 0; i < Items.Length; i++)
 			{
-				items[i].Serialize(writer);
+				Items[i].Serialize(writer);
 			}
 		}
 
 		public override string ToString()
 		{
-			return Information.Name + " (count=" + items.Length.ToString() + ")";
+			return Information.Name + " (count=" + Items.Length.ToString() + ")";
 		}
 	}
 }

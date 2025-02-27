@@ -39,10 +39,12 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
-		Ambertation.Collections.GraphElements li;
-		internal Ambertation.Collections.GraphElements LinkItems => li;
+		internal Ambertation.Collections.GraphElements LinkItems => Items;
 
-		public Ambertation.Collections.GraphElements Items => li;
+		public Ambertation.Collections.GraphElements Items
+		{
+			get;
+		}
 
 		public GraphPanel()
 		{
@@ -59,8 +61,8 @@ namespace Ambertation.Windows.Forms
 					| ControlStyles.DoubleBuffer,
 				true
 			);
-			li = new Ambertation.Collections.GraphElements();
-			li.ItemsChanged += new EventHandler(li_ItemsChanged);
+			Items = new Ambertation.Collections.GraphElements();
+			Items.ItemsChanged += new EventHandler(li_ItemsChanged);
 			this.BackColor = SystemColors.ControlLightLight;
 			lm = LinkControlLineMode.Bezier;
 			quality = true;
@@ -85,12 +87,12 @@ namespace Ambertation.Windows.Forms
 					components.Dispose();
 				}
 
-				if (li != null)
+				if (Items != null)
 				{
-					while (li.Count > 0)
+					while (Items.Count > 0)
 					{
-						GraphPanelElement l = li[0];
-						li.RemoveAt(0);
+						GraphPanelElement l = Items[0];
+						Items.RemoveAt(0);
 						l.Dispose();
 					}
 				}
@@ -174,7 +176,7 @@ namespace Ambertation.Windows.Forms
 			set
 			{
 				autosz = value;
-				this.li_ItemsChanged(li, null);
+				this.li_ItemsChanged(Items, null);
 				if (autosz)
 				{
 					Dock = DockStyle.None;
@@ -262,7 +264,7 @@ namespace Ambertation.Windows.Forms
 		{
 			get
 			{
-				foreach (GraphPanelElement gpe in li)
+				foreach (GraphPanelElement gpe in Items)
 					if (gpe is DragPanel)
 						if (((DragPanel)gpe).Focused)
 							return gpe;
@@ -276,10 +278,10 @@ namespace Ambertation.Windows.Forms
 				if (!(value is DragPanel))
 					return;
 
-				if (li.Contains(value))
+				if (Items.Contains(value))
 				{
-					GraphPanelElement[] elements = new GraphPanelElement[li.Count];
-					li.CopyTo(elements);
+					GraphPanelElement[] elements = new GraphPanelElement[Items.Count];
+					Items.CopyTo(elements);
 					foreach (GraphPanelElement gpe in elements)
 						if (gpe is DragPanel)
 						{
@@ -315,7 +317,7 @@ namespace Ambertation.Windows.Forms
 				return;
 			base.OnPaint(e);
 			GraphPanelElement.SetGraphicsMode(e.Graphics, true);
-			foreach (GraphPanelElement c in li)
+			foreach (GraphPanelElement c in Items)
 				c.OnPaint(e);
 		}
 
@@ -323,8 +325,8 @@ namespace Ambertation.Windows.Forms
 		{
 			base.OnMouseDown(e);
 			bool hit = false;
-			GraphPanelElement[] elements = new GraphPanelElement[li.Count];
-			li.CopyTo(elements);
+			GraphPanelElement[] elements = new GraphPanelElement[Items.Count];
+			Items.CopyTo(elements);
 			for (int i = elements.Length - 1; i >= 0; i--)
 			{
 				GraphPanelElement c = elements[i];
@@ -351,9 +353,9 @@ namespace Ambertation.Windows.Forms
 		protected override void OnMouseMove(MouseEventArgs e)
 		{
 			base.OnMouseMove(e);
-			for (int i = li.Count - 1; i >= 0; i--)
+			for (int i = Items.Count - 1; i >= 0; i--)
 			{
-				GraphPanelElement c = li[i];
+				GraphPanelElement c = Items[i];
 
 				if (c is DragPanel)
 				{
@@ -366,9 +368,9 @@ namespace Ambertation.Windows.Forms
 		protected override void OnMouseUp(MouseEventArgs e)
 		{
 			base.OnMouseUp(e);
-			for (int i = li.Count - 1; i >= 0; i--)
+			for (int i = Items.Count - 1; i >= 0; i--)
 			{
-				GraphPanelElement c = li[i];
+				GraphPanelElement c = Items[i];
 
 				if (c is DragPanel)
 				{
@@ -387,25 +389,25 @@ namespace Ambertation.Windows.Forms
 
 		void SetLinkLineMode()
 		{
-			foreach (GraphPanelElement gpe in li)
+			foreach (GraphPanelElement gpe in Items)
 				gpe.ChangedParent();
 		}
 
 		void SetLinkQuality()
 		{
-			foreach (GraphPanelElement gpe in li)
+			foreach (GraphPanelElement gpe in Items)
 				gpe.ChangedParent();
 		}
 
 		void SetSaveBound()
 		{
-			foreach (GraphPanelElement gpe in li)
+			foreach (GraphPanelElement gpe in Items)
 				gpe.SaveBounds = this.SaveBounds;
 		}
 
 		void SetLocked()
 		{
-			foreach (GraphPanelElement gpe in li)
+			foreach (GraphPanelElement gpe in Items)
 			{
 				if (gpe is DragPanel)
 					((DragPanel)gpe).Movable = !this.LockItems;
@@ -418,7 +420,7 @@ namespace Ambertation.Windows.Forms
 				return;
 			int mx = 0;
 			int my = 0;
-			foreach (GraphPanelElement gpe in li)
+			foreach (GraphPanelElement gpe in Items)
 			{
 				mx = Math.Max(mx, gpe.Right);
 				my = Math.Max(my, gpe.Bottom);
@@ -449,10 +451,10 @@ namespace Ambertation.Windows.Forms
 
 		public void Clear()
 		{
-			while (li.Count > 0)
+			while (Items.Count > 0)
 			{
-				GraphPanelElement l = li[0];
-				li.RemoveAt(0);
+				GraphPanelElement l = Items[0];
+				Items.RemoveAt(0);
 				l.Clear();
 				l.Parent = null;
 			}

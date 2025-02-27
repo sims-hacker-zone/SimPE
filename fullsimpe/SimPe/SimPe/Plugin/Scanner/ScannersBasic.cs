@@ -182,7 +182,6 @@ namespace SimPe.Plugin.Scanner
 
 		#region IScanner Implementations
 
-		uint uid;
 
 		/// <summary>
 		/// Returns the uid assigned to this specific Scanner
@@ -192,41 +191,46 @@ namespace SimPe.Plugin.Scanner
 		/// and visible Name of the Scanner. Changing either one of the, will
 		/// result in a new uid and force a rescan of the State
 		/// </remarks>
-		public uint Uid => uid;
+		public uint Uid
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns true, if this Scanner should be listed on the Top of the List
 		/// </summary>
 		public virtual bool OnTop => false;
 
-		int startcolumn;
-
 		/// <summary>
 		/// Returns the first Colum in the Listview that was used for this Scanner
 		/// </summary>
-		protected int StartColum => startcolumn;
-
-		System.Windows.Forms.ListView lv;
+		protected int StartColum
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Returns the ListView that was assigned to this Scanner
 		/// </summary>
-		protected System.Windows.Forms.ListView ListView => lv;
+		protected System.Windows.Forms.ListView ListView
+		{
+			get; private set;
+		}
 
 		protected AbstractScanner()
 		{
 			byte[] b = Helper.ToBytes(this.UniqueName);
-			this.uid = BitConverter.ToUInt32(
+			this.Uid = BitConverter.ToUInt32(
 				Hashes.Crc32.ComputeHash(b, 0, b.Length),
 				0
 			);
-			this.startcolumn = 0;
+			this.StartColum = 0;
 		}
 
 		public void InitScan(System.Windows.Forms.ListView lv)
 		{
-			this.lv = lv;
-			this.startcolumn = lv.Columns.Count;
+			this.ListView = lv;
+			this.StartColum = lv.Columns.Count;
 			DoInitScan();
 		}
 
@@ -267,18 +271,19 @@ namespace SimPe.Plugin.Scanner
 				OperationControl.Enabled = active;
 		}
 
-		SimPe.Plugin.Scanner.AbstractScanner.UpdateList finishcallback;
-
 		/// <summary>
 		/// Retunrs the Function that should be called after a OperatioControl Execution (can be null);
 		/// </summary>
-		protected SimPe.Plugin.Scanner.AbstractScanner.UpdateList CallbackFinish => finishcallback;
+		protected SimPe.Plugin.Scanner.AbstractScanner.UpdateList CallbackFinish
+		{
+			get; private set;
+		}
 
 		public void SetFinishCallback(
 			SimPe.Plugin.Scanner.AbstractScanner.UpdateList fkt
 		)
 		{
-			finishcallback = fkt;
+			CallbackFinish = fkt;
 		}
 		#endregion
 

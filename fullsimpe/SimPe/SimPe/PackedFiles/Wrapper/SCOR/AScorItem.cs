@@ -11,10 +11,14 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 	[System.ComponentModel.ToolboxItem(false)]
 	public partial class AScorItem : UserControl
 	{
-		ScorItem parent;
-		string name;
-		public string TokenName => name;
-		public ScorItem ParentItem => parent;
+		public string TokenName
+		{
+			get; private set;
+		}
+		public ScorItem ParentItem
+		{
+			get;
+		}
 
 		[
 			DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
@@ -24,35 +28,35 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 		{
 			get
 			{
-				if (parent != null)
-					if (parent.Parent != null)
-						return parent.Parent.Changed;
+				if (ParentItem != null)
+					if (ParentItem.Parent != null)
+						return ParentItem.Parent.Changed;
 
 				return false;
 			}
 			set
 			{
-				if (parent != null)
-					if (parent.Parent != null)
-						parent.Parent.Changed = value;
+				if (ParentItem != null)
+					if (ParentItem.Parent != null)
+						ParentItem.Parent.Changed = value;
 			}
 		}
 
 		internal AScorItem()
 			: this(new ScorItem(null))
 		{
-			name = "";
+			TokenName = "";
 		}
 
 		internal AScorItem(ScorItem si)
 		{
-			this.parent = si;
+			this.ParentItem = si;
 			InitializeComponent();
 		}
 
 		internal void SetData(string name, System.IO.BinaryReader reader)
 		{
-			this.name = name;
+			this.TokenName = name;
 			if (reader != null)
 				DoSetData(name, reader);
 		}
@@ -63,7 +67,7 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 
 		internal virtual void Serialize(System.IO.BinaryWriter writer, bool last)
 		{
-			StreamHelper.WriteString(writer, name);
+			StreamHelper.WriteString(writer, TokenName);
 		}
 	}
 }

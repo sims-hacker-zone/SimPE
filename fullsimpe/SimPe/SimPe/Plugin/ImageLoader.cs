@@ -46,9 +46,9 @@ namespace SimPe.Plugin
 			int count
 		)
 		{
-			this.format = format;
+			this.Format = format;
 			this.size = sz;
-			this.data = data;
+			this.Data = data;
 			img = null;
 			this.level = level;
 			this.count = count;
@@ -58,23 +58,11 @@ namespace SimPe.Plugin
 			count;
 
 		/// <summary>
-		/// Contains the Format of the Data
-		/// </summary>
-		ImageLoader.TxtrFormats format;
-
-		/// <summary>
 		/// Returns / Sets the format of the Textures
 		/// </summary>
 		public ImageLoader.TxtrFormats Format
 		{
-			get
-			{
-				return format;
-			}
-			set
-			{
-				format = value;
-			}
+			get; set;
 		}
 
 		//image Size
@@ -96,23 +84,11 @@ namespace SimPe.Plugin
 		}
 
 		/// <summary>
-		/// Image Data
-		/// </summary>
-		byte[] data;
-
-		/// <summary>
 		/// Returns sets the Image Data
 		/// </summary>
 		public byte[] Data
 		{
-			get
-			{
-				return data;
-			}
-			set
-			{
-				data = value;
-			}
+			get; set;
 		}
 
 		Image img;
@@ -127,9 +103,9 @@ namespace SimPe.Plugin
 				if (img == null)
 					img = ImageLoader.Load(
 						size,
-						data.Length,
-						format,
-						new System.IO.BinaryReader(new System.IO.MemoryStream(data)),
+						Data.Length,
+						Format,
+						new System.IO.BinaryReader(new System.IO.MemoryStream(Data)),
 						-1,
 						count
 					);

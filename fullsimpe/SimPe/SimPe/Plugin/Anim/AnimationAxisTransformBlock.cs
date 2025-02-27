@@ -33,19 +33,10 @@ namespace SimPe.Plugin.Anim
 			System.Collections.IEnumerable
 	{
 		#region Attributes
-		AnimationFrameBlock parent;
-
 		[Browsable(false)]
 		public AnimationFrameBlock Parent
 		{
-			get
-			{
-				return parent;
-			}
-			set
-			{
-				parent = value;
-			}
+			get; set;
 		}
 
 		uint[] datai;
@@ -260,7 +251,7 @@ namespace SimPe.Plugin.Anim
 		{
 			items = new ArrayList();
 			datai = new uint[2];
-			this.parent = parent;
+			this.Parent = parent;
 
 			this.Type = AnimationTokenType.SixByte;
 			this.Unknown1Bits = 0;
@@ -685,8 +676,8 @@ namespace SimPe.Plugin.Anim
 		public float GetScale()
 		{
 			FrameType ft = FrameType.Translation;
-			if (parent != null)
-				ft = parent.TransformationType;
+			if (Parent != null)
+				ft = Parent.TransformationType;
 
 			return GetScale(ft);
 		}

@@ -10,20 +10,14 @@ namespace SimPe.Plugin
 			IFileWrapperSaveExtension
 	{
 		#region CreationIndex Attribute
-		private bool isok;
-		private ushort sciname;
 		public ushort Sciname
 		{
-			get
-			{
-				return sciname;
-			}
-			set
-			{
-				sciname = value;
-			}
+			get; set;
 		}
-		public bool IsOK => isok;
+		public bool IsOK
+		{
+			get; private set;
+		}
 		#endregion
 
 		public SimindexPackedFileWrapper()
@@ -57,17 +51,17 @@ namespace SimPe.Plugin
 		{
 			SimPe.Plugin.Idno idno = SimPe.Plugin.Idno.FromPackage(package);
 			if (idno == null)
-				isok = true;
+				IsOK = true;
 			else
 			{
 				if (idno.Type == SimPe.Plugin.NeighborhoodType.Normal)
-					isok = true;
+					IsOK = true;
 				else
-					isok = false;
+					IsOK = false;
 			}
 
 			reader.BaseStream.Seek(0xc, System.IO.SeekOrigin.Begin);
-			sciname = reader.ReadUInt16();
+			Sciname = reader.ReadUInt16();
 		}
 
 		protected override void Serialize(System.IO.BinaryWriter writer)
@@ -77,7 +71,7 @@ namespace SimPe.Plugin
 			writer.Write(scitype);
 			writer.Write(scivers);
 			writer.BaseStream.Seek(0xc, System.IO.SeekOrigin.Begin);
-			writer.Write(sciname);
+			writer.Write(Sciname);
 		}
 		#endregion
 

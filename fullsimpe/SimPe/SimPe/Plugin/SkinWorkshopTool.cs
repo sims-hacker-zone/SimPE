@@ -28,19 +28,12 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class SkinWorkshopTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
-		/// <summary>
-		/// Windows Registry Link
-		/// </summary>
-		static SimPe.Registry registry;
-		internal static Registry WindowsRegistry => registry;
+		internal static Registry WindowsRegistry => Helper.WindowsRegistry;
 
 		SkinWorkshop ws;
 
 		internal SkinWorkshopTool()
 		{
-			if (registry == null)
-				registry = Helper.WindowsRegistry;
-
 			ws = new SkinWorkshop();
 		}
 

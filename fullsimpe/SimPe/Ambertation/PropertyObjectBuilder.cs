@@ -107,22 +107,10 @@ namespace Ambertation
 	]
 	public class BaseChangeShort
 	{
-		static int digitbase = 16;
-
 		/// <summary>
 		/// The Number Base used for Display
 		/// </summary>
-		public static int DigitBase
-		{
-			get
-			{
-				return digitbase;
-			}
-			set
-			{
-				digitbase = value;
-			}
-		}
+		public static int DigitBase { get; set; } = 16;
 
 		/// <summary>
 		/// Name of this Number Representation
@@ -131,9 +119,9 @@ namespace Ambertation
 		{
 			get
 			{
-				if (digitbase == 16)
+				if (DigitBase == 16)
 					return "Hexadecimal";
-				if (digitbase == 2)
+				if (DigitBase == 2)
 					return "Binary";
 				return "Decimal";
 			}
@@ -164,26 +152,24 @@ namespace Ambertation
 			return new BaseChangeShort(val);
 		}
 
-		int val;
-
 		public BaseChangeShort(int v)
 		{
-			val = v;
+			IntegerValue = v;
 		}
 
 		public BaseChangeShort(uint v)
 		{
-			val = (int)v;
+			IntegerValue = (int)v;
 		}
 
 		public BaseChangeShort(short v)
 		{
-			val = v;
+			IntegerValue = v;
 		}
 
 		internal BaseChangeShort()
 		{
-			val = 0;
+			IntegerValue = 0;
 		}
 
 		/// <summary>
@@ -193,12 +179,12 @@ namespace Ambertation
 		{
 			get
 			{
-				return (short)(val & 0xffff);
+				return (short)(IntegerValue & 0xffff);
 				;
 			}
 			set
 			{
-				val = (short)(value & 0xffff);
+				IntegerValue = (short)(value & 0xffff);
 			}
 		}
 
@@ -207,14 +193,7 @@ namespace Ambertation
 		/// </summary>
 		public int IntegerValue
 		{
-			get
-			{
-				return val;
-			}
-			set
-			{
-				val = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -223,17 +202,17 @@ namespace Ambertation
 		/// <returns>A String</returns>
 		public override string ToString()
 		{
-			if (digitbase == 16)
+			if (DigitBase == 16)
 			{
-				return "0x" + val.ToString("x");
+				return "0x" + IntegerValue.ToString("x");
 			}
-			else if (digitbase == 2)
+			else if (DigitBase == 2)
 			{
-				return "b" + System.Convert.ToString(val, 2);
+				return "b" + System.Convert.ToString(IntegerValue, 2);
 			}
 			else
 			{
-				return val.ToString();
+				return IntegerValue.ToString();
 			}
 		}
 	}
@@ -244,7 +223,6 @@ namespace Ambertation
 	public class PropertyObjectBuilder
 	{
 		Type custDataType;
-		object instance = null;
 		Hashtable ht;
 
 		public PropertyObjectBuilder(Hashtable ht)
@@ -272,7 +250,7 @@ namespace Ambertation
 
 			//Creat type and an Instance
 			custDataType = myTypeBuilder.CreateType();
-			instance = Activator.CreateInstance(custDataType);
+			Instance = Activator.CreateInstance(custDataType);
 
 			foreach (string k in ht.Keys)
 			{
@@ -281,7 +259,7 @@ namespace Ambertation
 					k,
 					BindingFlags.SetProperty,
 					null,
-					instance,
+					Instance,
 					new object[] { val }
 				);
 			}
@@ -349,7 +327,7 @@ namespace Ambertation
 		{
 			get
 			{
-				if (instance == null)
+				if (Instance == null)
 					return new Hashtable();
 
 				Hashtable ret = new Hashtable();
@@ -360,7 +338,7 @@ namespace Ambertation
 							k,
 							BindingFlags.GetProperty,
 							null,
-							instance,
+							Instance,
 							new object[] { }
 						);
 					ret[k] = val.Value;
@@ -373,6 +351,6 @@ namespace Ambertation
 		/// <summary>
 		/// Returns the created Object
 		/// </summary>
-		public object Instance => instance;
+		public object Instance { get; } = null;
 	}
 }

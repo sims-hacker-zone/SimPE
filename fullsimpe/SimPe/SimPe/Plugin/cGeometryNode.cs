@@ -29,71 +29,30 @@ namespace SimPe.Plugin
 	public class GeometryNode : AbstractRcolBlock
 	{
 		#region Attributes
-		ObjectGraphNode ogn;
-
 		public ObjectGraphNode ObjectGraphNode
 		{
-			get
-			{
-				return ogn;
-			}
-			set
-			{
-				ogn = value;
-			}
+			get; set;
 		}
 
-		short unknown1;
 		public short Unknown1
 		{
-			get
-			{
-				return unknown1;
-			}
-			set
-			{
-				unknown1 = value;
-			}
+			get; set;
 		}
 
-		short unknown2;
 		public short Unknown2
 		{
-			get
-			{
-				return unknown2;
-			}
-			set
-			{
-				unknown2 = value;
-			}
+			get; set;
 		}
 
-		byte unknown3;
 		public byte Unknown3
 		{
-			get
-			{
-				return unknown3;
-			}
-			set
-			{
-				unknown3 = value;
-			}
+			get; set;
 		}
 
-		IRcolBlock[] data;
-		public int Count => data.Length;
+		public int Count => Blocks.Length;
 		public IRcolBlock[] Blocks
 		{
-			get
-			{
-				return data;
-			}
-			set
-			{
-				data = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -104,13 +63,13 @@ namespace SimPe.Plugin
 		public GeometryNode(Rcol parent)
 			: base(parent)
 		{
-			ogn = new ObjectGraphNode(null);
+			ObjectGraphNode = new ObjectGraphNode(null);
 			this.sgres = new SGResource(null);
 
 			version = 0x0c;
 			BlockID = 0x7BA3838C;
 
-			data = new IRcolBlock[0];
+			Blocks = new IRcolBlock[0];
 		}
 
 		#region IRcolBlock Member
@@ -125,8 +84,8 @@ namespace SimPe.Plugin
 
 			string name = reader.ReadString();
 			uint myid = reader.ReadUInt32();
-			ogn.Unserialize(reader);
-			ogn.BlockID = myid;
+			ObjectGraphNode.Unserialize(reader);
+			ObjectGraphNode.BlockID = myid;
 
 			name = reader.ReadString();
 			myid = reader.ReadUInt32();
@@ -135,21 +94,21 @@ namespace SimPe.Plugin
 
 			if (version == 0x0b)
 			{
-				unknown1 = reader.ReadInt16();
+				Unknown1 = reader.ReadInt16();
 			}
 
 			if ((version == 0x0b) || (version == 0x0c))
 			{
-				unknown2 = reader.ReadInt16();
-				unknown3 = reader.ReadByte();
+				Unknown2 = reader.ReadInt16();
+				Unknown3 = reader.ReadByte();
 			}
 
 			int count = reader.ReadInt32();
-			data = new IRcolBlock[count];
+			Blocks = new IRcolBlock[count];
 			for (int i = 0; i < count; i++)
 			{
 				uint id = reader.ReadUInt32();
-				data[i] = Parent.ReadBlock(id, reader);
+				Blocks[i] = Parent.ReadBlock(id, reader);
 			}
 		}
 
@@ -165,9 +124,9 @@ namespace SimPe.Plugin
 		{
 			writer.Write(version);
 
-			writer.Write(ogn.BlockName);
-			writer.Write(ogn.BlockID);
-			ogn.Serialize(writer);
+			writer.Write(ObjectGraphNode.BlockName);
+			writer.Write(ObjectGraphNode.BlockID);
+			ObjectGraphNode.Serialize(writer);
 
 			writer.Write(sgres.BlockName);
 			writer.Write(sgres.BlockID);
@@ -175,20 +134,20 @@ namespace SimPe.Plugin
 
 			if (version == 0x0b)
 			{
-				writer.Write(unknown1);
+				writer.Write(Unknown1);
 			}
 
 			if ((version == 0x0b) || (version == 0x0c))
 			{
-				writer.Write(unknown2);
-				writer.Write(unknown3);
+				writer.Write(Unknown2);
+				writer.Write(Unknown3);
 			}
 
-			writer.Write((int)data.Length);
-			for (int i = 0; i < data.Length; i++)
+			writer.Write((int)Blocks.Length);
+			for (int i = 0; i < Blocks.Length; i++)
 			{
-				writer.Write(data[i].BlockID);
-				Parent.WriteBlock(data[i], writer);
+				writer.Write(Blocks[i].BlockID);
+				Parent.WriteBlock(Blocks[i], writer);
 			}
 		}
 
@@ -215,16 +174,16 @@ namespace SimPe.Plugin
 			tGeometryNode.tb_gn_ver.Text = "0x" + Helper.HexString(this.version);
 
 			tGeometryNode.tb_gn_uk1.Text =
-				"0x" + Helper.HexString((ushort)this.unknown1);
+				"0x" + Helper.HexString((ushort)this.Unknown1);
 			tGeometryNode.tb_gn_uk2.Text =
-				"0x" + Helper.HexString((ushort)this.unknown2);
-			tGeometryNode.tb_gn_uk3.Text = "0x" + Helper.HexString(this.unknown3);
+				"0x" + Helper.HexString((ushort)this.Unknown2);
+			tGeometryNode.tb_gn_uk3.Text = "0x" + Helper.HexString(this.Unknown3);
 
 			tGeometryNode.tb_gn_count.Text = Count.ToString();
 
 			tGeometryNode.cb_gn_list.Items.Clear();
 
-			foreach (IRcolBlock irb in this.data)
+			foreach (IRcolBlock irb in this.Blocks)
 				SimPe.CountedListItem.Add(tGeometryNode.cb_gn_list, irb);
 			if (tGeometryNode.cb_gn_list.Items.Count > 0)
 				tGeometryNode.cb_gn_list.SelectedIndex = 0;
@@ -235,7 +194,7 @@ namespace SimPe.Plugin
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
 			base.ExtendTabControl(tc);
-			this.ogn.AddToTabControl(tc);
+			this.ObjectGraphNode.AddToTabControl(tc);
 		}
 
 		#region ReferencingShape

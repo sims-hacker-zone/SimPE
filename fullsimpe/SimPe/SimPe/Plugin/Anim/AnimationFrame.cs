@@ -30,62 +30,29 @@ namespace SimPe.Plugin.Anim
 	/// </summary>
 	public class AnimationFrame
 	{
-		/*public const float SCALE = 1f/1000f;//10/(float)short.MaxValue;
-		public const float SCALEROT = (float)(((1f/180f) * Math.PI) / 64f);
-
-		public float GetCompressedFloat(short v)
-		{
-			return GetCompressedFloat(v,  this.tp);
-		}
-
-		public short FromCompressedFloat(float v)
-		{
-			return FromCompressedFloat(v, this.tp);
-		}
-
-		public static float GetCompressedFloat(short v, FrameType ft)
-		{
-			if ( ft == FrameType.Translation) return  GetCompressedFloat(v, SCALE);
-			else return  GetCompressedFloat(v, SCALEROT);
-		}
-
-		public static short FromCompressedFloat(float v, FrameType ft)
-		{
-			if ( ft == FrameType.Translation) return  FromCompressedFloat(v, SCALE);
-			else return  FromCompressedFloat(v, SCALEROT);
-		}
-
-		public static float GetCompressedFloat(short v, float scale)
-		{
-			return ((float)v * scale);
-		}
-
-		public static short FromCompressedFloat(float v, float scale)
-		{
-			return (short)(v / scale);
-		}		*/
-
-		AnimationAxisTransform[] block;
 		short tc;
 
 		public AnimationFrame(short tc, FrameType tp)
 		{
 			this.tc = tc;
-			this.tp = tp;
-			block = new AnimationAxisTransform[3];
+			this.Type = tp;
+			Blocks = new AnimationAxisTransform[3];
 		}
 
-		internal AnimationAxisTransform[] Blocks => block;
+		internal AnimationAxisTransform[] Blocks
+		{
+			get;
+		}
 
 		public AnimationAxisTransform XBlock
 		{
 			get
 			{
-				return block[0];
+				return Blocks[0];
 			}
 			set
 			{
-				block[0] = value;
+				Blocks[0] = value;
 			}
 		}
 
@@ -93,11 +60,11 @@ namespace SimPe.Plugin.Anim
 		{
 			get
 			{
-				return block[1];
+				return Blocks[1];
 			}
 			set
 			{
-				block[1] = value;
+				Blocks[1] = value;
 			}
 		}
 
@@ -105,11 +72,11 @@ namespace SimPe.Plugin.Anim
 		{
 			get
 			{
-				return block[2];
+				return Blocks[2];
 			}
 			set
 			{
-				block[2] = value;
+				Blocks[2] = value;
 			}
 		}
 
@@ -124,7 +91,7 @@ namespace SimPe.Plugin.Anim
 
 		public AnimationAxisTransform GetBlock(byte nr)
 		{
-			return block[nr];
+			return Blocks[nr];
 		}
 
 		[
@@ -253,12 +220,12 @@ namespace SimPe.Plugin.Anim
 				if (tc != value)
 				{
 					tc = value;
-					if (block[0] != null)
-						block[0].TimeCode = value;
-					if (block[1] != null)
-						block[1].TimeCode = value;
-					if (block[2] != null)
-						block[2].TimeCode = value;
+					if (Blocks[0] != null)
+						Blocks[0].TimeCode = value;
+					if (Blocks[1] != null)
+						Blocks[1].TimeCode = value;
+					if (Blocks[2] != null)
+						Blocks[2].TimeCode = value;
 				}
 			}
 		}
@@ -274,22 +241,22 @@ namespace SimPe.Plugin.Anim
 		{
 			get
 			{
-				if (block[0] != null)
-					return block[0].Linear;
-				if (block[1] != null)
-					return block[1].Linear;
-				if (block[2] != null)
-					return block[2].Linear;
+				if (Blocks[0] != null)
+					return Blocks[0].Linear;
+				if (Blocks[1] != null)
+					return Blocks[1].Linear;
+				if (Blocks[2] != null)
+					return Blocks[2].Linear;
 				return false;
 			}
 			set
 			{
-				if (block[0] != null)
-					block[0].Linear = value;
-				if (block[1] != null)
-					block[1].Linear = value;
-				if (block[2] != null)
-					block[2].Linear = value;
+				if (Blocks[0] != null)
+					Blocks[0].Linear = value;
+				if (Blocks[1] != null)
+					Blocks[1].Linear = value;
+				if (Blocks[2] != null)
+					Blocks[2].Linear = value;
 			}
 		}
 
@@ -387,14 +354,15 @@ namespace SimPe.Plugin.Anim
 			}
 		}
 
-		FrameType tp;
-
 		[
 			DescriptionAttribute(
 				"What kind of Transformation is performed. You can changes this in the Parent Node!"
 			),
 			CategoryAttribute("Information")
 		]
-		public FrameType Type => tp;
+		public FrameType Type
+		{
+			get;
+		}
 	}
 }

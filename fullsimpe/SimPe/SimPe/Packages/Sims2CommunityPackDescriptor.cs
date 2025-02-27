@@ -375,21 +375,21 @@ namespace SimPe.Packages
 		)
 			: base(p)
 		{
-			type = "Object";
-			gameversion = "2141707388.153.1";
+			Type = "Object";
+			GameVersion = "2141707388.153.1";
 			this.description = description;
-			this.compressed = compressed;
+			this.Compressed = compressed;
 			objectversion = "1.0";
-			crc = "0";
+			Crc = "0";
 			this.author = author;
 			this.contact = contact;
 			this.title = title;
 			gameguid = this.GameGuid;
 
 			if (dependency == null)
-				dep = new S2CPDescriptorBase[0];
+				Dependency = new S2CPDescriptorBase[0];
 			else
-				dep = dependency;
+				Dependency = dependency;
 
 			if (p != null)
 				guid = GetSetGlobalGuid(
@@ -698,23 +698,11 @@ namespace SimPe.Packages
 		}
 
 		/// <summary>
-		/// Returns a list of objects this one depends on
-		/// </summary>
-		S2CPDescriptorBase[] dep;
-
-		/// <summary>
 		/// Returns/Sets the  list of objects this one depends on
 		/// </summary>
 		public S2CPDescriptorBase[] Dependency
 		{
-			get
-			{
-				return dep;
-			}
-			set
-			{
-				dep = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -738,63 +726,27 @@ namespace SimPe.Packages
 		}
 
 		/// <summary>
-		/// Type of the Package
-		/// </summary>
-		string type;
-
-		/// <summary>
 		/// Returns/Sets the Type of the Package
 		/// </summary>
 		public string Type
 		{
-			get
-			{
-				return type;
-			}
-			set
-			{
-				type = value;
-			}
+			get; set;
 		}
-
-		/// <summary>
-		/// Versionnumber of the Game
-		/// </summary>
-		string gameversion;
 
 		/// <summary>
 		/// Returns/Sets the Versionnumber of the Game
 		/// </summary>
 		public string GameVersion
 		{
-			get
-			{
-				return gameversion;
-			}
-			set
-			{
-				gameversion = value;
-			}
+			get; set;
 		}
-
-		/// <summary>
-		/// Description for the File
-		/// </summary>
-		string crc;
 
 		/// <summary>
 		/// Returns/Sets the Description for the File
 		/// </summary>
 		public string Crc
 		{
-			get
-			{
-				return crc;
-			}
-			set
-			{
-				crc = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -893,25 +845,13 @@ namespace SimPe.Packages
 		}
 
 		/// <summary>
-		/// File is compressed
-		/// </summary>
-		Sims2CommunityPack.CompressionStrength compressed;
-
-		/// <summary>
 		/// Returns /Sets wether the File should be Compressed or Not
 		/// </summary>
 		/// <remarks>After the Description is loaded form a s2cp File, this Property
 		/// Indicates if the Package was compressed or not</remarks>
 		public Sims2CommunityPack.CompressionStrength Compressed
 		{
-			get
-			{
-				return compressed;
-			}
-			set
-			{
-				compressed = value;
-			}
+			get; set;
 		}
 
 		/// <summary>

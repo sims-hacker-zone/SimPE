@@ -26,11 +26,6 @@ namespace SimPe.Interfaces.Plugin
 	/// </summary>
 	public class AbstractWrapperInfo : IWrapperInfo
 	{
-		string name;
-		string author;
-		string description;
-		int version;
-		System.Drawing.Image img;
 
 		/// <summary>
 		/// Constructor
@@ -48,13 +43,13 @@ namespace SimPe.Interfaces.Plugin
 			System.Drawing.Image icon
 		)
 		{
-			this.name = name;
-			this.author = author;
-			this.description = description;
-			this.version = version;
-			this.img = icon;
+			this.Name = name;
+			this.Author = author;
+			this.Description = description;
+			this.Version = version;
+			this.Icon = icon;
 
-			ii = -1;
+			IconIndex = -1;
 		}
 
 		/// <summary>
@@ -76,39 +71,42 @@ namespace SimPe.Interfaces.Plugin
 		/// <summary>
 		/// The Name of this Wrapper
 		/// </summary>
-		public string Name => name;
+		public string Name
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// The Description of this Wrapper
 		/// </summary>
-		public string Description => description;
+		public string Description
+		{
+			get;
+		}
 
 		/// <summary>
 		/// The Author of this Wrapper
 		/// </summary>
-		public string Author => author;
+		public string Author
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// The Version of this Wrapper
 		/// </summary>
-		public int Version => version;
+		public int Version
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns a Icon that should be presented for that resource
 		/// </summary>
 		public System.Drawing.Image Icon
 		{
-			get
-			{
-				return img;
-			}
-			set
-			{
-				img = value;
-			}
+			get; set;
 		}
-
-		int ii;
 
 		/// <summary>
 		/// Returns / Setst the Index of the Wrapepr icon in the ImageList of the Registry
@@ -116,14 +114,7 @@ namespace SimPe.Interfaces.Plugin
 		/// <remarks>Do nover set this yourself, it is set automatically by the Registry</remarks>
 		public int IconIndex
 		{
-			get
-			{
-				return ii;
-			}
-			set
-			{
-				ii = value;
-			}
+			get; set;
 		}
 
 		// <summary>
@@ -165,11 +156,11 @@ namespace SimPe.Interfaces.Plugin
 		#region IDisposable Member
 		public virtual void Dispose()
 		{
-			if (this.img != null)
-				img.Dispose();
-			this.img = null;
-			this.name = null;
-			this.author = null;
+			if (this.Icon != null)
+				Icon.Dispose();
+			this.Icon = null;
+			this.Name = null;
+			this.Author = null;
 		}
 		#endregion
 	}

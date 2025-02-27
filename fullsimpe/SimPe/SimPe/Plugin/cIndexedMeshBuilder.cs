@@ -31,65 +31,33 @@ namespace SimPe.Plugin
 	public class IndexedMeshBuilderItem
 	{
 		#region Attributes
-		string s1;
 		public string String1
 		{
-			get
-			{
-				return s1;
-			}
-			set
-			{
-				s1 = value;
-			}
+			get; set;
 		}
 
-		string s2;
 		public string String2
 		{
-			get
-			{
-				return s2;
-			}
-			set
-			{
-				s2 = value;
-			}
+			get; set;
 		}
 
-		Vectors4f v1;
 		public Vectors4f Vectors
 		{
-			get
-			{
-				return v1;
-			}
-			set
-			{
-				v1 = value;
-			}
+			get; set;
 		}
 
-		int u1;
 		public int Unknown1
 		{
-			get
-			{
-				return u1;
-			}
-			set
-			{
-				u1 = value;
-			}
+			get; set;
 		}
 		#endregion
 
 		public IndexedMeshBuilderItem()
 		{
-			s1 = "";
-			s2 = "";
+			String1 = "";
+			String2 = "";
 
-			v1 = new Vectors4f();
+			Vectors = new Vectors4f();
 		}
 
 		/// <summary>
@@ -98,17 +66,17 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal virtual void Unserialize(System.IO.BinaryReader reader)
 		{
-			s1 = reader.ReadString();
-			s2 = reader.ReadString();
+			String1 = reader.ReadString();
+			String2 = reader.ReadString();
 			int count = reader.ReadInt32();
-			v1.Clear();
+			Vectors.Clear();
 			for (int i = 0; i < count; i++)
 			{
 				Vector4f o = new Vector4f();
 				o.Unserialize(reader);
-				v1.Add(o);
+				Vectors.Add(o);
 			}
-			u1 = reader.ReadInt32();
+			Unknown1 = reader.ReadInt32();
 		}
 
 		/// <summary>
@@ -121,12 +89,12 @@ namespace SimPe.Plugin
 		/// </remarks>
 		internal virtual void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(s1);
-			writer.Write(s2);
-			writer.Write((int)v1.Count);
-			for (int i = 0; i < v1.Count; i++)
-				v1[i].Serialize(writer);
-			writer.Write(u1);
+			writer.Write(String1);
+			writer.Write(String2);
+			writer.Write((int)Vectors.Count);
+			for (int i = 0; i < Vectors.Count; i++)
+				Vectors[i].Serialize(writer);
+			writer.Write(Unknown1);
 		}
 	}
 
@@ -138,298 +106,129 @@ namespace SimPe.Plugin
 		#region Attributes
 		GeometryBuilder gb;
 
-		Vectors3f v1;
 		public Vectors3f Vectors1
 		{
-			get
-			{
-				return v1;
-			}
-			set
-			{
-				v1 = value;
-			}
+			get; set;
 		}
 
-		Vectors3f v2;
 		public Vectors3f Vectors2
 		{
-			get
-			{
-				return v2;
-			}
-			set
-			{
-				v2 = value;
-			}
+			get; set;
 		}
 
-		Vectors2f v3;
 		public Vectors2f Vectors3
 		{
-			get
-			{
-				return v3;
-			}
-			set
-			{
-				v3 = value;
-			}
+			get; set;
 		}
 
-		Vectors2f v4;
 		public Vectors2f Vectors4
 		{
-			get
-			{
-				return v4;
-			}
-			set
-			{
-				v4 = value;
-			}
+			get; set;
 		}
 
-		Vectors2f v5;
 		public Vectors2f Vectors5
 		{
-			get
-			{
-				return v5;
-			}
-			set
-			{
-				v5 = value;
-			}
+			get; set;
 		}
 
-		Vectors2f v6;
 		public Vectors2f Vectors6
 		{
-			get
-			{
-				return v6;
-			}
-			set
-			{
-				v6 = value;
-			}
+			get; set;
 		}
 
-		IntArrayList ia1;
 		public IntArrayList Numbers1
 		{
-			get
-			{
-				return ia1;
-			}
-			set
-			{
-				ia1 = value;
-			}
+			get; set;
 		}
 
-		IntArrayList ia2;
 		public IntArrayList Numbers2
 		{
-			get
-			{
-				return ia2;
-			}
-			set
-			{
-				ia2 = value;
-			}
+			get; set;
 		}
 
-		IntArrayList ia3;
 		public IntArrayList Numbers3
 		{
-			get
-			{
-				return ia3;
-			}
-			set
-			{
-				ia3 = value;
-			}
+			get; set;
 		}
 
-		IntArrayList ia4;
 		public IntArrayList Numbers4
 		{
-			get
-			{
-				return ia4;
-			}
-			set
-			{
-				ia4 = value;
-			}
+			get; set;
 		}
 
-		byte[] zero1;
-		public byte[] Zero1 => zero1;
+		public byte[] Zero1
+		{
+			get; private set;
+		}
 
-		byte[] zero2;
-		public byte[] Zero2 => zero2;
+		public byte[] Zero2
+		{
+			get; private set;
+		}
 
-		int refcount;
 		public int ReferencedCount
 		{
-			get
-			{
-				return refcount;
-			}
-			set
-			{
-				refcount = value;
-			}
+			get; set;
 		}
-		int u1;
+
 		public int Unknown1
 		{
-			get
-			{
-				return u1;
-			}
-			set
-			{
-				u1 = value;
-			}
+			get; set;
 		}
 
-		float[] u2;
-		public float[] Unknown2 => u2;
+		public float[] Unknown2
+		{
+			get;
+		}
 
-		IndexedMeshBuilderItems mbi;
 		public IndexedMeshBuilderItems Items
 		{
-			get
-			{
-				return mbi;
-			}
-			set
-			{
-				mbi = value;
-			}
+			get; set;
 		}
 
-		int u3;
 		public int Unknown3
 		{
-			get
-			{
-				return u3;
-			}
-			set
-			{
-				u3 = value;
-			}
+			get; set;
 		}
 
-		int u4;
 		public int Unknown4
 		{
-			get
-			{
-				return u4;
-			}
-			set
-			{
-				u4 = value;
-			}
+			get; set;
 		}
 
-		int u5;
 		public int Unknown5
 		{
-			get
-			{
-				return u5;
-			}
-			set
-			{
-				u5 = value;
-			}
+			get; set;
 		}
 
-		int u6;
 		public int Unknown6
 		{
-			get
-			{
-				return u6;
-			}
-			set
-			{
-				u6 = value;
-			}
+			get; set;
 		}
 
-		int u7;
 		public int Unknown7
 		{
-			get
-			{
-				return u7;
-			}
-			set
-			{
-				u7 = value;
-			}
+			get; set;
 		}
 
-		int u8;
 		public int Unknown8
 		{
-			get
-			{
-				return u8;
-			}
-			set
-			{
-				u8 = value;
-			}
+			get; set;
 		}
 
-		int u9;
 		public int Unknown9
 		{
-			get
-			{
-				return u9;
-			}
-			set
-			{
-				u9 = value;
-			}
+			get; set;
 		}
 
-		int u10;
 		public int Unknown10
 		{
-			get
-			{
-				return u10;
-			}
-			set
-			{
-				u10 = value;
-			}
+			get; set;
 		}
 
-		string s1;
 		public string Name
 		{
-			get
-			{
-				return s1;
-			}
-			set
-			{
-				s1 = value;
-			}
+			get; set;
 		}
 
 		#endregion
@@ -444,25 +243,25 @@ namespace SimPe.Plugin
 			gb = new GeometryBuilder(null);
 			BlockID = 0x9bffc10d;
 
-			v1 = new Vectors3f();
-			v2 = new Vectors3f();
-			v3 = new Vectors2f();
-			v4 = new Vectors2f();
-			v5 = new Vectors2f();
-			v6 = new Vectors2f();
+			Vectors1 = new Vectors3f();
+			Vectors2 = new Vectors3f();
+			Vectors3 = new Vectors2f();
+			Vectors4 = new Vectors2f();
+			Vectors5 = new Vectors2f();
+			Vectors6 = new Vectors2f();
 
-			ia1 = new IntArrayList();
-			ia2 = new IntArrayList();
-			ia3 = new IntArrayList();
-			ia4 = new IntArrayList();
+			Numbers1 = new IntArrayList();
+			Numbers2 = new IntArrayList();
+			Numbers3 = new IntArrayList();
+			Numbers4 = new IntArrayList();
 
-			mbi = new IndexedMeshBuilderItems();
+			Items = new IndexedMeshBuilderItems();
 
-			zero1 = new byte[0x14];
-			zero2 = new byte[0x14];
+			Zero1 = new byte[0x14];
+			Zero2 = new byte[0x14];
 
-			u2 = new float[0x200];
-			s1 = "face";
+			Unknown2 = new float[0x200];
+			Name = "face";
 		}
 
 		#region IRcolBlock Member
@@ -481,107 +280,107 @@ namespace SimPe.Plugin
 			gb.BlockID = myid;
 
 			int count = reader.ReadInt32();
-			v1.Clear();
+			Vectors1.Clear();
 			for (int i = 0; i < count; i++)
 			{
 				Vector3f o = new Vector3f();
 				o.Unserialize(reader);
-				v1.Add(o);
+				Vectors1.Add(o);
 			}
 
 			count = reader.ReadInt32();
-			v2.Clear();
+			Vectors2.Clear();
 			for (int i = 0; i < count; i++)
 			{
 				Vector3f o = new Vector3f();
 				o.Unserialize(reader);
-				v2.Add(o);
+				Vectors2.Add(o);
 			}
 
 			count = reader.ReadInt32();
-			v3.Clear();
+			Vectors3.Clear();
 			for (int i = 0; i < count; i++)
 			{
 				Vector2f o = new Vector2f();
 				o.Unserialize(reader);
-				v3.Add(o);
+				Vectors3.Add(o);
 			}
 
-			zero1 = reader.ReadBytes(zero1.Length);
-			refcount = reader.ReadInt32();
-			u1 = reader.ReadInt32();
-			zero2 = reader.ReadBytes(zero2.Length);
+			Zero1 = reader.ReadBytes(Zero1.Length);
+			ReferencedCount = reader.ReadInt32();
+			Unknown1 = reader.ReadInt32();
+			Zero2 = reader.ReadBytes(Zero2.Length);
 
 			count = reader.ReadInt32();
-			v4.Clear();
+			Vectors4.Clear();
 			for (int i = 0; i < count; i++)
 			{
 				Vector2f o = new Vector2f();
 				o.Unserialize(reader);
-				v4.Add(o);
+				Vectors4.Add(o);
 			}
 
 			count = reader.ReadInt32();
-			v5.Clear();
+			Vectors5.Clear();
 			for (int i = 0; i < count; i++)
 			{
 				Vector2f o = new Vector2f();
 				o.Unserialize(reader);
-				v5.Add(o);
+				Vectors5.Add(o);
 			}
 
 			count = reader.ReadInt32();
-			v6.Clear();
+			Vectors6.Clear();
 			for (int i = 0; i < count; i++)
 			{
 				Vector2f o = new Vector2f();
 				o.Unserialize(reader);
-				v6.Add(o);
+				Vectors6.Add(o);
 			}
 
-			for (int i = 0; i < u2.Length; i++)
-				u2[i] = reader.ReadSingle();
+			for (int i = 0; i < Unknown2.Length; i++)
+				Unknown2[i] = reader.ReadSingle();
 
 			count = reader.ReadInt32();
-			mbi.Clear();
+			Items.Clear();
 			for (int i = 0; i < count; i++)
 			{
 				IndexedMeshBuilderItem o = new IndexedMeshBuilderItem();
 				o.Unserialize(reader);
-				mbi.Add(o);
+				Items.Add(o);
 			}
 
-			u3 = reader.ReadInt32();
-			u4 = reader.ReadInt32();
+			Unknown3 = reader.ReadInt32();
+			Unknown4 = reader.ReadInt32();
 
 			count = reader.ReadInt32();
-			ia1.Clear();
+			Numbers1.Clear();
 			for (int i = 0; i < count; i++)
-				ia1.Add(reader.ReadInt32());
+				Numbers1.Add(reader.ReadInt32());
 
 			count = reader.ReadInt32();
-			ia2.Clear();
+			Numbers2.Clear();
 			for (int i = 0; i < count; i++)
-				ia2.Add(reader.ReadInt32());
+				Numbers2.Add(reader.ReadInt32());
 
 			count = reader.ReadInt32();
-			ia3.Clear();
+			Numbers3.Clear();
 			for (int i = 0; i < count; i++)
-				ia3.Add(reader.ReadInt32());
+				Numbers3.Add(reader.ReadInt32());
 
 			count = reader.ReadInt32();
-			ia4.Clear();
+			Numbers4.Clear();
 			for (int i = 0; i < count; i++)
-				ia4.Add(reader.ReadInt32());
+				Numbers4.Add(reader.ReadInt32());
 
-			u5 = reader.ReadInt32();
-			u6 = reader.ReadInt32();
-			u7 = reader.ReadInt32();
-			u8 = reader.ReadInt32();
-			u9 = reader.ReadInt32();
-			u10 = reader.ReadInt32();
+			Unknown5 = reader.ReadInt32();
+			Unknown6 = reader.ReadInt32();
+			Unknown7 = reader.ReadInt32();
+			Unknown8 = reader.ReadInt32();
+			Unknown9 = reader.ReadInt32();
+			Unknown10 = reader.ReadInt32();
 
-			s1 = reader.ReadString();
+			Name = reader.ReadString();
 		}
 
 		/// <summary>
@@ -600,69 +399,69 @@ namespace SimPe.Plugin
 			writer.Write(gb.BlockID);
 			gb.Serialize(writer);
 
-			writer.Write((int)v1.Count);
-			for (int i = 0; i < v1.Count; i++)
-				v1[i].Serialize(writer);
+			writer.Write((int)Vectors1.Count);
+			for (int i = 0; i < Vectors1.Count; i++)
+				Vectors1[i].Serialize(writer);
 
-			writer.Write((int)v2.Count);
-			for (int i = 0; i < v2.Count; i++)
-				v2[i].Serialize(writer);
+			writer.Write((int)Vectors2.Count);
+			for (int i = 0; i < Vectors2.Count; i++)
+				Vectors2[i].Serialize(writer);
 
-			writer.Write((int)v3.Count);
-			for (int i = 0; i < v3.Count; i++)
-				v3[i].Serialize(writer);
+			writer.Write((int)Vectors3.Count);
+			for (int i = 0; i < Vectors3.Count; i++)
+				Vectors3[i].Serialize(writer);
 
-			writer.Write(zero1);
-			writer.Write(refcount);
-			writer.Write(u1);
-			writer.Write(zero2);
+			writer.Write(Zero1);
+			writer.Write(ReferencedCount);
+			writer.Write(Unknown1);
+			writer.Write(Zero2);
 
-			writer.Write((int)v4.Count);
-			for (int i = 0; i < v4.Count; i++)
-				v4[i].Serialize(writer);
+			writer.Write((int)Vectors4.Count);
+			for (int i = 0; i < Vectors4.Count; i++)
+				Vectors4[i].Serialize(writer);
 
-			writer.Write((int)v5.Count);
-			for (int i = 0; i < v5.Count; i++)
-				v5[i].Serialize(writer);
+			writer.Write((int)Vectors5.Count);
+			for (int i = 0; i < Vectors5.Count; i++)
+				Vectors5[i].Serialize(writer);
 
-			writer.Write((int)v6.Count);
-			for (int i = 0; i < v6.Count; i++)
-				v6[i].Serialize(writer);
+			writer.Write((int)Vectors6.Count);
+			for (int i = 0; i < Vectors6.Count; i++)
+				Vectors6[i].Serialize(writer);
 
-			for (int i = 0; i < u2.Length; i++)
-				writer.Write(u2[i]);
+			for (int i = 0; i < Unknown2.Length; i++)
+				writer.Write(Unknown2[i]);
 
-			writer.Write((int)mbi.Count);
-			for (int i = 0; i < mbi.Count; i++)
-				mbi[i].Serialize(writer);
+			writer.Write((int)Items.Count);
+			for (int i = 0; i < Items.Count; i++)
+				Items[i].Serialize(writer);
 
-			writer.Write(u3);
-			writer.Write(u4);
+			writer.Write(Unknown3);
+			writer.Write(Unknown4);
 
-			writer.Write((int)ia1.Count);
-			for (int i = 0; i < ia1.Count; i++)
-				writer.Write(ia1[i]);
+			writer.Write((int)Numbers1.Count);
+			for (int i = 0; i < Numbers1.Count; i++)
+				writer.Write(Numbers1[i]);
 
-			writer.Write((int)ia2.Count);
-			for (int i = 0; i < ia2.Count; i++)
-				writer.Write(ia2[i]);
+			writer.Write((int)Numbers2.Count);
+			for (int i = 0; i < Numbers2.Count; i++)
+				writer.Write(Numbers2[i]);
 
-			writer.Write((int)ia3.Count);
-			for (int i = 0; i < ia3.Count; i++)
-				writer.Write(ia3[i]);
+			writer.Write((int)Numbers3.Count);
+			for (int i = 0; i < Numbers3.Count; i++)
+				writer.Write(Numbers3[i]);
 
-			writer.Write((int)ia4.Count);
-			for (int i = 0; i < ia4.Count; i++)
-				writer.Write(ia4[i]);
+			writer.Write((int)Numbers4.Count);
+			for (int i = 0; i < Numbers4.Count; i++)
+				writer.Write(Numbers4[i]);
 
-			writer.Write(u5);
-			writer.Write(u6);
-			writer.Write(u7);
-			writer.Write(u8);
-			writer.Write(u9);
-			writer.Write(u10);
+			writer.Write(Unknown5);
+			writer.Write(Unknown6);
+			writer.Write(Unknown7);
+			writer.Write(Unknown8);
+			writer.Write(Unknown9);
+			writer.Write(Unknown10);
 
-			writer.Write(s1);
+			writer.Write(Name);
 		}
 
 		//fShapeRefNode form = null;

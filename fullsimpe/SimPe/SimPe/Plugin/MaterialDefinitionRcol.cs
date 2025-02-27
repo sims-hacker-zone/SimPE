@@ -14,7 +14,6 @@ namespace SimPe.Plugin
 	{
 		RcolTable textures;
 		MaterialDefinition mmatd;
-		HairColor colorBin;
 
 		public RcolTable Textures
 		{
@@ -45,14 +44,7 @@ namespace SimPe.Plugin
 
 		public HairColor ColorBin
 		{
-			get
-			{
-				return this.colorBin;
-			}
-			set
-			{
-				this.colorBin = value;
-			}
+			get; set;
 		}
 
 		public string BaseTextureName

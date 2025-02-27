@@ -23,13 +23,8 @@ namespace SimPe.Plugin.Gmdc
 			Update,
 		}
 
-		Scene scn;
-		GeometryDataContainer gmdc;
-
 		MeshListViewItemExt[] meshes;
 		BoneListViewItemExt[] bones;
-		ElementOrder eo;
-
 		public bool ClearGroupsOnImport;
 
 		internal void SetMeshList(MeshListViewItemExt[] m)
@@ -48,21 +43,30 @@ namespace SimPe.Plugin.Gmdc
 			ElementOrder component
 		)
 		{
-			eo = component;
-			this.scn = scn;
-			this.gmdc = gmdc;
+			Component = component;
+			this.Scene = scn;
+			this.Gmdc = gmdc;
 			ClearGroupsOnImport = false;
 		}
 
-		public ElementOrder Component => eo;
+		public ElementOrder Component
+		{
+			get;
+		}
 
-		public Scene Scene => scn;
+		public Scene Scene
+		{
+			get;
+		}
 
-		public GeometryDataContainer Gmdc => gmdc;
+		public GeometryDataContainer Gmdc
+		{
+			get;
+		}
 
 		public bool Run()
 		{
-			scn.ClearTags();
+			Scene.ClearTags();
 			meshes = new MeshListViewItemExt[0];
 			bones = new BoneListViewItemExt[0];
 
@@ -85,7 +89,7 @@ namespace SimPe.Plugin.Gmdc
 			foreach (MeshListViewItemExt m in meshes)
 				m.BuildGroup();
 
-			scn.ClearTags();
+			Scene.ClearTags();
 			return true;
 		}
 	}

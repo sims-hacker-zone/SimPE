@@ -110,53 +110,24 @@ namespace SimPe.PackedFiles.Wrapper
 		private uint strinstance;
 
 		/// <summary>
-		/// Instance Number of the Lot this Familie lives in
-		/// </summary>
-		private uint lotinstance,
-			businesslot,
-			vacationlot;
-
-		/// <summary>
-		/// Money of the Family
-		/// </summary>
-		private int money,
-			businessmoney;
-
-		/// <summary>
-		/// Friends of this Family
-		/// </summary>
-		private uint friends;
-
-		/// <summary>
 		/// The Members of this Family
 		/// </summary>
 		private uint[] sims;
 
 		private uint id;
-		private FamiVersions version;
 		private uint unknown;
-		private uint flags;
-		private uint albumGUID;
 
-		private int ca_resources;
-		private int ca_food,
-			ca_food_decay;
-
-		public FamiVersions Version => version;
+		public FamiVersions Version
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Returns/Sets the Flags
 		/// </summary>
 		public uint Flags
 		{
-			get
-			{
-				return flags;
-			}
-			set
-			{
-				flags = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -164,14 +135,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint AlbumGUID
 		{
-			get
-			{
-				return albumGUID;
-			}
-			set
-			{
-				albumGUID = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -179,14 +143,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public int BusinessMoney
 		{
-			get
-			{
-				return businessmoney;
-			}
-			set
-			{
-				businessmoney = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -194,50 +151,22 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public int Money
 		{
-			get
-			{
-				return money;
-			}
-			set
-			{
-				money = value;
-			}
+			get; set;
 		}
 
 		public int CastAwayResources
 		{
-			get
-			{
-				return ca_resources;
-			}
-			set
-			{
-				ca_resources = value;
-			}
+			get; set;
 		}
 
 		public int CastAwayFood
 		{
-			get
-			{
-				return ca_food;
-			}
-			set
-			{
-				ca_food = value;
-			}
+			get; set;
 		}
 
 		public int CastAwayFoodDecay
 		{
-			get
-			{
-				return ca_food_decay;
-			}
-			set
-			{
-				ca_food_decay = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -245,14 +174,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint Friends
 		{
-			get
-			{
-				return friends;
-			}
-			set
-			{
-				friends = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -281,11 +203,11 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				string[] names = new string[sims.Length];
-				if (nameprovider != null)
+				if (NameProvider != null)
 				{
 					for (int i = 0; i < sims.Length; i++)
 					{
-						names[i] = nameprovider.FindName(sims[i]).Name;
+						names[i] = NameProvider.FindName(sims[i]).Name;
 					}
 				}
 				return names;
@@ -297,14 +219,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint LotInstance
 		{
-			get
-			{
-				return lotinstance;
-			}
-			set
-			{
-				lotinstance = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -312,14 +227,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint VacationLotInstance
 		{
-			get
-			{
-				return vacationlot;
-			}
-			set
-			{
-				vacationlot = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -327,27 +235,12 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint CurrentlyOnLotInstance
 		{
-			get
-			{
-				return businesslot;
-			}
-			set
-			{
-				businesslot = value;
-			}
+			get; set;
 		}
 
-		uint subhood;
 		public uint SubHoodNumber
 		{
-			get
-			{
-				return subhood;
-			}
-			set
-			{
-				subhood = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -505,14 +398,12 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		/// <summary>
-		/// Stores null or a valid Name Provider
-		/// </summary>
-		SimPe.Interfaces.Providers.ISimNames nameprovider;
-
-		/// <summary>
 		/// Returns the Name Provider
 		/// </summary>
-		internal SimPe.Interfaces.Providers.ISimNames NameProvider => nameprovider;
+		internal SimPe.Interfaces.Providers.ISimNames NameProvider
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Returns the Description File for the passed Sim id
@@ -570,29 +461,29 @@ namespace SimPe.PackedFiles.Wrapper
 			: base()
 		{
 			id = 0x46414D49;
-			version = FamiVersions.Original;
+			Version = FamiVersions.Original;
 			unknown = 0;
-			nameprovider = names;
-			flags = 0x04;
+			NameProvider = names;
+			Flags = 0x04;
 		}
 
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			id = reader.ReadUInt32();
-			version = (FamiVersions)reader.ReadUInt32();
+			Version = (FamiVersions)reader.ReadUInt32();
 			unknown = reader.ReadUInt32(); // Always 0x0000
-			lotinstance = reader.ReadUInt32();
-			if ((int)version >= (int)FamiVersions.Business)
-				businesslot = reader.ReadUInt32();
-			if ((int)version >= (int)FamiVersions.Voyage)
-				vacationlot = reader.ReadUInt32();
+			LotInstance = reader.ReadUInt32();
+			if ((int)Version >= (int)FamiVersions.Business)
+				CurrentlyOnLotInstance = reader.ReadUInt32();
+			if ((int)Version >= (int)FamiVersions.Voyage)
+				VacationLotInstance = reader.ReadUInt32();
 
 			strinstance = reader.ReadUInt32();
-			money = reader.ReadInt32();
-			if ((int)version >= (int)FamiVersions.Castaway)
-				ca_food_decay = reader.ReadInt32();
-			friends = reader.ReadUInt32();
-			this.flags = reader.ReadUInt32();
+			Money = reader.ReadInt32();
+			if ((int)Version >= (int)FamiVersions.Castaway)
+				CastAwayFoodDecay = reader.ReadInt32();
+			Friends = reader.ReadUInt32();
+			this.Flags = reader.ReadUInt32();
 			uint count = reader.ReadUInt32();
 			sims = new uint[count];
 
@@ -600,41 +491,41 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				sims[i] = reader.ReadUInt32();
 			}
-			this.albumGUID = reader.ReadUInt32(); //relations??
-			if ((int)version >= (int)FamiVersions.University)
-				this.subhood = reader.ReadUInt32();
-			if ((int)version >= (int)FamiVersions.Castaway)
+			this.AlbumGUID = reader.ReadUInt32(); //relations??
+			if ((int)Version >= (int)FamiVersions.University)
+				this.SubHoodNumber = reader.ReadUInt32();
+			if ((int)Version >= (int)FamiVersions.Castaway)
 			{
-				ca_resources = reader.ReadInt32();
-				ca_food = reader.ReadInt32();
+				CastAwayResources = reader.ReadInt32();
+				CastAwayFood = reader.ReadInt32();
 			}
 
-			if ((int)version >= (int)FamiVersions.Business)
-				businessmoney = reader.ReadInt32();
+			if ((int)Version >= (int)FamiVersions.Business)
+				BusinessMoney = reader.ReadInt32();
 		}
 
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(id);
-			writer.Write((uint)version);
+			writer.Write((uint)Version);
 			writer.Write(unknown);
-			writer.Write(lotinstance);
-			if ((int)version >= (int)FamiVersions.Business)
-				writer.Write(businesslot);
-			if ((int)version >= (int)FamiVersions.Voyage)
-				writer.Write(vacationlot);
-			if ((int)version >= (int)FamiVersions.Castaway)
+			writer.Write(LotInstance);
+			if ((int)Version >= (int)FamiVersions.Business)
+				writer.Write(CurrentlyOnLotInstance);
+			if ((int)Version >= (int)FamiVersions.Voyage)
+				writer.Write(VacationLotInstance);
+			if ((int)Version >= (int)FamiVersions.Castaway)
 			{
-				writer.Write(ca_resources);
-				writer.Write(ca_food);
-				writer.Write(ca_food_decay);
+				writer.Write(CastAwayResources);
+				writer.Write(CastAwayFood);
+				writer.Write(CastAwayFoodDecay);
 			}
 			else
 			{
 				writer.Write(strinstance);
-				writer.Write(money);
+				writer.Write(Money);
 			}
-			writer.Write(friends);
+			writer.Write(Friends);
 			writer.Write((uint)this.Flags);
 			writer.Write((uint)sims.Length);
 
@@ -642,18 +533,18 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				writer.Write((uint)sims[i]);
 			}
-			writer.Write(this.albumGUID);
+			writer.Write(this.AlbumGUID);
 
-			if ((int)version >= (int)FamiVersions.University)
-				writer.Write(this.subhood);
-			if ((int)version >= (int)FamiVersions.Castaway)
+			if ((int)Version >= (int)FamiVersions.University)
+				writer.Write(this.SubHoodNumber);
+			if ((int)Version >= (int)FamiVersions.Castaway)
 			{
-				writer.Write(ca_resources);
-				writer.Write(ca_food);
-				writer.Write(ca_food_decay);
+				writer.Write(CastAwayResources);
+				writer.Write(CastAwayFood);
+				writer.Write(CastAwayFoodDecay);
 			}
-			else if ((int)version >= (int)FamiVersions.Business)
-				writer.Write(businessmoney);
+			else if ((int)Version >= (int)FamiVersions.Business)
+				writer.Write(BusinessMoney);
 		}
 		#endregion
 

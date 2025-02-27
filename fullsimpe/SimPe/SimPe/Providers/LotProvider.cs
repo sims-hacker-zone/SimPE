@@ -39,14 +39,6 @@ namespace SimPe.Providers
 	{
 		public class LotItem : SimPe.Interfaces.Providers.ILotItem, System.IDisposable
 		{
-			string name;
-			System.Drawing.Image img;
-			uint inst,
-				owner;
-
-			System.Collections.ArrayList tags;
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii;
-
 			internal LotItem(
 				uint inst,
 				string name,
@@ -54,17 +46,17 @@ namespace SimPe.Providers
 				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii
 			)
 			{
-				this.name = name;
-				this.img = img;
-				this.inst = inst;
-				owner = 0;
-				tags = new ArrayList();
-				this.fii = fii;
+				this.Name = name;
+				this.Image = img;
+				this.Instance = inst;
+				Owner = 0;
+				Tags = new ArrayList();
+				this.LtxtFileIndexItem = fii;
 			}
 
 			public object FindTag(System.Type tp)
 			{
-				foreach (object o in tags)
+				foreach (object o in Tags)
 				{
 					if (o == null)
 						continue;
@@ -75,29 +67,34 @@ namespace SimPe.Providers
 				return null;
 			}
 
-			public System.Collections.ArrayList Tags => tags;
+			public System.Collections.ArrayList Tags
+			{
+				get; private set;
+			}
 
 			public uint Owner
 			{
-				get
-				{
-					return owner;
-				}
-				set
-				{
-					owner = value;
-				}
+				get; set;
 			}
 
-			public uint Instance => inst;
+			public uint Instance
+			{
+				get;
+			}
 
-			public System.Drawing.Image Image => img;
+			public System.Drawing.Image Image
+			{
+				get; private set;
+			}
 
-			public string Name => name;
+			public string Name
+			{
+				get; private set;
+			}
 
 			public override int GetHashCode()
 			{
-				return (int)inst;
+				return (int)Instance;
 			}
 
 			public override string ToString()
@@ -107,14 +104,7 @@ namespace SimPe.Providers
 
 			public SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem LtxtFileIndexItem
 			{
-				get
-				{
-					return fii;
-				}
-				set
-				{
-					fii = value;
-				}
+				get; set;
 			}
 
 			public SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem BnfoFileIndexItem
@@ -199,12 +189,12 @@ namespace SimPe.Providers
 
 			public void Dispose()
 			{
-				img = null;
-				name = null;
-				if (tags != null)
-					tags.Clear();
-				tags = null;
-				fii = null;
+				Image = null;
+				Name = null;
+				if (Tags != null)
+					Tags.Clear();
+				Tags = null;
+				LtxtFileIndexItem = null;
 			}
 
 			#endregion

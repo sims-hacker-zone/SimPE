@@ -32,20 +32,22 @@ namespace SimPe
 	{
 		class FolderWrapper
 		{
-			string name,
-				folder;
+			string name;
 
 			public FolderWrapper(string name, string folder)
 			{
 				this.name = SimPe.Localization.GetString(name);
-				this.folder = folder;
+				this.Folder = folder;
 			}
 
-			public string Folder => folder;
+			public string Folder
+			{
+				get;
+			}
 
 			public override string ToString()
 			{
-				return folder;
+				return Folder;
 				//return name+": "+folder;
 			}
 		}

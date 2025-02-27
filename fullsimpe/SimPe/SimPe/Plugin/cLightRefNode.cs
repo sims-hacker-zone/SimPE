@@ -33,34 +33,20 @@ namespace SimPe.Plugin
 		BoundedNode bn;
 		TransformNode tn;
 
-		short unknown1;
 		public short Unknown1
 		{
-			get
-			{
-				return unknown1;
-			}
-			set
-			{
-				unknown1 = value;
-			}
+			get; set;
 		}
 
-		string[] items;
 		public string[] Strings
 		{
-			get
-			{
-				return items;
-			}
-			set
-			{
-				items = value;
-			}
+			get; set;
 		}
 
-		byte[] unknown2;
-		public byte[] Unknown2 => unknown2;
+		public byte[] Unknown2
+		{
+			get; private set;
+		}
 
 		[BrowsableAttribute(false)]
 		public override TransformNode StoredTransformNode => tn;
@@ -80,8 +66,8 @@ namespace SimPe.Plugin
 			bn = new BoundedNode(null);
 			tn = new TransformNode(null);
 
-			items = new string[0];
-			unknown2 = new byte[13];
+			Strings = new string[0];
+			Unknown2 = new byte[13];
 		}
 
 		#region AbstractCresChildren Member
@@ -125,14 +111,14 @@ namespace SimPe.Plugin
 			tn.Unserialize(reader);
 			tn.BlockID = myid;
 
-			unknown1 = reader.ReadInt16();
-			items = new string[reader.ReadUInt32()];
-			for (int i = 0; i < items.Length; i++)
+			Unknown1 = reader.ReadInt16();
+			Strings = new string[reader.ReadUInt32()];
+			for (int i = 0; i < Strings.Length; i++)
 			{
-				items[i] = reader.ReadString();
+				Strings[i] = reader.ReadString();
 			}
 
-			unknown2 = reader.ReadBytes(13);
+			Unknown2 = reader.ReadBytes(13);
 		}
 
 		/// <summary>
@@ -159,14 +145,14 @@ namespace SimPe.Plugin
 			writer.Write(tn.BlockID);
 			tn.Serialize(writer);
 
-			writer.Write(unknown1);
-			writer.Write((uint)items.Length);
-			for (int i = 0; i < items.Length; i++)
+			writer.Write(Unknown1);
+			writer.Write((uint)Strings.Length);
+			for (int i = 0; i < Strings.Length; i++)
 			{
-				writer.Write(items[i]);
+				writer.Write(Strings[i]);
 			}
 
-			writer.Write(unknown2);
+			writer.Write(Unknown2);
 		}
 
 		//fShapeRefNode form = null;

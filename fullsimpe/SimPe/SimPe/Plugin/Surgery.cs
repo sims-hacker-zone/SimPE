@@ -1408,8 +1408,6 @@ namespace SimPe.Plugin
 	internal sealed class SimInfo
 	{
 		SimPe.PackedFiles.Wrapper.Cpf ageData;
-		string name;
-		string filename;
 
 		[Category("General")]
 		public SimPe.Data.Ages Age => (SimPe.Data.Ages)ageData.GetItem("age").UIntegerValue;
@@ -1418,10 +1416,16 @@ namespace SimPe.Plugin
 		public SimPe.Data.SimGender Gender => (SimPe.Data.SimGender)ageData.GetItem("gender").UIntegerValue;
 
 		[Category("General")]
-		public string Name => this.name;
+		public string Name
+		{
+			get;
+		}
 
 		[Category("General")]
-		public string Filename => this.filename;
+		public string Filename
+		{
+			get;
+		}
 
 		[Category("Genetics")]
 		public string Hair => ageData.GetItem("haircolor").StringValue;
@@ -1444,8 +1448,8 @@ namespace SimPe.Plugin
 			if (aged == null)
 				throw new ArgumentNullException();
 			this.ageData = aged;
-			this.filename = filename;
-			this.name = name;
+			this.Filename = filename;
+			this.Name = name;
 		}
 	}
 }

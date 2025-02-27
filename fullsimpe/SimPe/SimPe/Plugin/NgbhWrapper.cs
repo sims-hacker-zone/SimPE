@@ -140,8 +140,10 @@ namespace SimPe.Plugin
 
 		#endregion
 
-		Interfaces.IProviderRegistry provider;
-		public Interfaces.IProviderRegistry Provider => provider;
+		public Interfaces.IProviderRegistry Provider
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Constructor
@@ -149,7 +151,7 @@ namespace SimPe.Plugin
 		public Ngbh(Interfaces.IProviderRegistry provider)
 			: base()
 		{
-			this.provider = provider;
+			this.Provider = provider;
 
 			this.id = new byte[] { (byte)'H', (byte)'B', (byte)'G', (byte)'N' };
 

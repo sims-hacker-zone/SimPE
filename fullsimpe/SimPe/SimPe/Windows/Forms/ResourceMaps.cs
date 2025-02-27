@@ -17,23 +17,30 @@ namespace SimPe.Windows.Forms
 
 		public ResourceMaps()
 		{
-			all = new ResourceViewManager.ResourceNameList();
-			typemap = new IntMap();
-			groupmap = new IntMap();
-			instmap = new LongMap();
+			Everything = new ResourceViewManager.ResourceNameList();
+			ByType = new IntMap();
+			ByGroup = new IntMap();
+			ByInstance = new LongMap();
 		}
 
-		IntMap typemap,
-			groupmap;
-		private LongMap instmap;
-		private ResourceViewManager.ResourceNameList all;
+		public ResourceViewManager.ResourceNameList Everything
+		{
+			get;
+		}
 
-		public ResourceViewManager.ResourceNameList Everything => all;
+		internal IntMap ByGroup
+		{
+			get;
+		}
+		internal IntMap ByType
+		{
+			get;
+		}
 
-		internal IntMap ByGroup => groupmap;
-		internal IntMap ByType => typemap;
-
-		public LongMap ByInstance => instmap;
+		public LongMap ByInstance
+		{
+			get;
+		}
 
 		public void Clear()
 		{
@@ -42,11 +49,11 @@ namespace SimPe.Windows.Forms
 
 		public void Clear(bool call)
 		{
-			typemap.Clear();
-			groupmap.Clear();
-			instmap.Clear();
+			ByType.Clear();
+			ByGroup.Clear();
+			ByInstance.Clear();
 			if (call)
-				all.Clear();
+				Everything.Clear();
 		}
 	}
 }

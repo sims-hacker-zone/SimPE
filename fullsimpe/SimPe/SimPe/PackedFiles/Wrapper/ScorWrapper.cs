@@ -41,21 +41,28 @@ namespace SimPe.PackedFiles.Wrapper
 			System.Collections.Generic.IEnumerable<ScorItem>
 	{
 		#region Attributes
-		ScorItems items;
-		protected ScorItems Items => items;
-		uint version;
+		protected ScorItems Items
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Version of this File
 		/// </summary>
-		public uint Version => version;
+		public uint Version
+		{
+			get; private set;
+		}
 
-		uint unk1,
-			unk2;
+		public uint Unknown1
+		{
+			get; private set;
+		}
 
-		public uint Unknown1 => unk1;
-
-		public uint Unknown2 => unk2;
+		public uint Unknown2
+		{
+			get; private set;
+		}
 		#endregion
 
 		/// <summary>
@@ -64,8 +71,8 @@ namespace SimPe.PackedFiles.Wrapper
 		public Scor()
 			: base()
 		{
-			version = 0;
-			items = new ScorItems();
+			Version = 0;
+			Items = new ScorItems();
 		}
 
 		#region IWrapper member
@@ -114,17 +121,17 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="reader">The Stream that contains the FileData</param>
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-			version = reader.ReadUInt32();
-			unk1 = reader.ReadUInt32();
-			unk2 = reader.ReadUInt32();
+			Version = reader.ReadUInt32();
+			Unknown1 = reader.ReadUInt32();
+			Unknown2 = reader.ReadUInt32();
 
-			items.Clear();
+			Items.Clear();
 			while (reader.BaseStream.Position < reader.BaseStream.Length)
 			{
 				ScorItem si = new ScorItem(this);
 				si.Unserialize(reader);
 
-				items.Add(si);
+				Items.Add(si);
 			}
 
 			if (LoadedNewResource != null)
@@ -141,14 +148,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(version);
-			writer.Write(unk1);
-			writer.Write(unk2);
+			writer.Write(Version);
+			writer.Write(Unknown1);
+			writer.Write(Unknown2);
 
-			for (int i = 0; i < items.Count; i++)
+			for (int i = 0; i < Items.Count; i++)
 			{
-				ScorItem si = items[i];
-				si.Serialize(writer, (i == items.Count - 1));
+				ScorItem si = Items[i];
+				si.Serialize(writer, (i == Items.Count - 1));
 			}
 		}
 		#endregion
@@ -180,14 +187,15 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public class ChangedListEventArgs : EventArgs
 		{
-			ScorItem si;
-
 			public ChangedListEventArgs(ScorItem si)
 			{
-				this.si = si;
+				this.Item = si;
 			}
 
-			public ScorItem Item => si;
+			public ScorItem Item
+			{
+				get;
+			}
 		}
 
 		public delegate void ChangedListHandler(Scor sender, ChangedListEventArgs e);
@@ -208,7 +216,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			if (si == null)
 				return;
-			items.Remove(si);
+			Items.Remove(si);
 			ChangedListEventArgs e = new ChangedListEventArgs(si);
 			if (RemovedItem != null)
 				RemovedItem(this, e);
@@ -219,17 +227,17 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				return items[index];
+				return Items[index];
 			}
 		}
 
-		public int Count => items.Count;
+		public int Count => Items.Count;
 
 		#region IEnumerable Members
 
 		public IEnumerator GetEnumerator()
 		{
-			return items.GetEnumerator();
+			return Items.GetEnumerator();
 		}
 
 		#endregion
@@ -238,7 +246,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		System.Collections.Generic.IEnumerator<ScorItem> System.Collections.Generic.IEnumerable<ScorItem>.GetEnumerator()
 		{
-			return items.GetScorItemEnumerator();
+			return Items.GetScorItemEnumerator();
 		}
 
 		#endregion

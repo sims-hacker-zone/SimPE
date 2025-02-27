@@ -28,7 +28,6 @@ namespace SimPe
 	internal class ActionToolDescriptor
 	{
 		SimPe.Interfaces.IToolAction tool;
-		LinkLabel ll;
 		LoadedPackage lp;
 
 		SimPe.Events.ResourceEventArgs lasteventarg;
@@ -36,21 +35,26 @@ namespace SimPe
 		/// <summary>
 		/// Returns the generated LinkLabel
 		/// </summary>
-		public LinkLabel LinkLabel => ll;
-
-		System.Windows.Forms.ToolStripButton bi;
+		public LinkLabel LinkLabel
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the generated ToolBar ButtonItem (can be null)
 		/// </summary>
-		public System.Windows.Forms.ToolStripButton ToolBarButton => bi;
-
-		System.Windows.Forms.ToolStripMenuItem mi;
+		public System.Windows.Forms.ToolStripButton ToolBarButton
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the generated MenuButtonItem
 		/// </summary>
-		public System.Windows.Forms.ToolStripMenuItem MenuButton => mi;
+		public System.Windows.Forms.ToolStripMenuItem MenuButton
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Create a new Instance
@@ -61,61 +65,61 @@ namespace SimPe
 			//this.lp = lp;
 			this.tool = tool;
 
-			ll = new LinkLabel();
-			ll.Name = tool.ToString();
+			LinkLabel = new LinkLabel();
+			LinkLabel.Name = tool.ToString();
 			if (Helper.WindowsRegistry.UseBigIcons)
 			{
-				ll.Font = new System.Drawing.Font(
+				LinkLabel.Font = new System.Drawing.Font(
 					"Verdana",
 					12,
 					System.Drawing.FontStyle.Bold
 				);
-				ll.Height = 24;
+				LinkLabel.Height = 24;
 			}
 			else
 			{
-				ll.Font = new System.Drawing.Font(
+				LinkLabel.Font = new System.Drawing.Font(
 					"Verdana",
-					ll.Font.Size,
+					LinkLabel.Font.Size,
 					System.Drawing.FontStyle.Bold
 				);
-				ll.Height = 16;
+				LinkLabel.Height = 16;
 			}
 			if (tool.Icon != null)
 				if (tool.Icon is System.Drawing.Bitmap)
 					//ll.Icon = System.Drawing.Icon.FromHandle(((System.Drawing.Bitmap)tool.Icon).GetHicon());
-					ll.Text = SimPe.Localization.GetString(tool.ToString());
-			ll.LinkArea = new System.Windows.Forms.LinkArea(0, ll.Text.Length);
-			ll.Font = new System.Drawing.Font(
+					LinkLabel.Text = SimPe.Localization.GetString(tool.ToString());
+			LinkLabel.LinkArea = new System.Windows.Forms.LinkArea(0, LinkLabel.Text.Length);
+			LinkLabel.Font = new System.Drawing.Font(
 				"Verdana",
-				ll.Font.Size,
+				LinkLabel.Font.Size,
 				System.Drawing.FontStyle.Bold
 			);
-			ll.Height = 16;
-			ll.AutoSize = true;
+			LinkLabel.Height = 16;
+			LinkLabel.AutoSize = true;
 
-			ll.LinkClicked += new LinkLabelLinkClickedEventHandler(LinkClicked);
+			LinkLabel.LinkClicked += new LinkLabelLinkClickedEventHandler(LinkClicked);
 
-			mi = new System.Windows.Forms.ToolStripMenuItem(ll.Text);
-			mi.Click += new EventHandler(LinkClicked);
-			mi.Image = tool.Icon;
-			LoadFileWrappersExt.SetShurtcutKey(mi, tool.Shortcut);
-			mi.EnabledChanged += new EventHandler(mi_EnabledChanged);
-			mi.CheckedChanged += new EventHandler(mi_CheckedChanged);
+			MenuButton = new System.Windows.Forms.ToolStripMenuItem(LinkLabel.Text);
+			MenuButton.Click += new EventHandler(LinkClicked);
+			MenuButton.Image = tool.Icon;
+			LoadFileWrappersExt.SetShurtcutKey(MenuButton, tool.Shortcut);
+			MenuButton.EnabledChanged += new EventHandler(mi_EnabledChanged);
+			MenuButton.CheckedChanged += new EventHandler(mi_CheckedChanged);
 
 			if (tool.Icon != null)
 			{
-				bi = new MyButtonItem(
+				ToolBarButton = new MyButtonItem(
 					"action." + tool.GetType().Namespace + "." + tool.GetType().Name
 				);
-				bi.Text = "";
+				ToolBarButton.Text = "";
 				//bi.ToolTipText = ll.Label;
-				bi.Image = tool.Icon;
+				ToolBarButton.Image = tool.Icon;
 				//bi.BuddyMenu = mi;
 
-				bi.Checked = mi.Checked;
-				bi.Enabled = mi.Enabled;
-				bi.Click += new EventHandler(LinkClicked);
+				ToolBarButton.Checked = MenuButton.Checked;
+				ToolBarButton.Enabled = MenuButton.Enabled;
+				ToolBarButton.Click += new EventHandler(LinkClicked);
 			}
 
 			//Make Sure the Action is disabled on StartUp
@@ -127,14 +131,14 @@ namespace SimPe
 
 		void mi_CheckedChanged(object sender, EventArgs e)
 		{
-			if (bi != null)
-				bi.Checked = mi.Checked;
+			if (ToolBarButton != null)
+				ToolBarButton.Checked = MenuButton.Checked;
 		}
 
 		void mi_EnabledChanged(object sender, EventArgs e)
 		{
-			if (bi != null)
-				bi.Enabled = mi.Enabled;
+			if (ToolBarButton != null)
+				ToolBarButton.Enabled = MenuButton.Enabled;
 		}
 
 		/// <summary>
@@ -146,8 +150,8 @@ namespace SimPe
 		)
 		{
 			lp = e.LoadedPackage;
-			ll.Links[0].Enabled = tool.ChangeEnabledStateEventHandler(sender, e);
-			mi.Enabled = tool.ChangeEnabledStateEventHandler(sender, e);
+			LinkLabel.Links[0].Enabled = tool.ChangeEnabledStateEventHandler(sender, e);
+			MenuButton.Enabled = tool.ChangeEnabledStateEventHandler(sender, e);
 
 			lasteventarg = e;
 		}

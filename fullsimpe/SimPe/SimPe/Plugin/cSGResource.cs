@@ -34,18 +34,9 @@ namespace SimPe.Plugin
 	public class SGResource : AbstractRcolBlock
 	{
 		#region Attributes
-		string flname;
-
 		public string FileName
 		{
-			get
-			{
-				return flname;
-			}
-			set
-			{
-				flname = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -57,7 +48,7 @@ namespace SimPe.Plugin
 			: base(parent)
 		{
 			version = 0x02;
-			flname = "";
+			FileName = "";
 		}
 
 		#region IRcolBlock Member
@@ -69,7 +60,7 @@ namespace SimPe.Plugin
 		public override void Unserialize(System.IO.BinaryReader reader)
 		{
 			version = reader.ReadUInt32();
-			flname = reader.ReadString();
+			FileName = reader.ReadString();
 		}
 
 		/// <summary>
@@ -83,7 +74,7 @@ namespace SimPe.Plugin
 		public override void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(version);
-			writer.Write(flname);
+			writer.Write(FileName);
 		}
 		#endregion
 

@@ -459,8 +459,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 	public class TPRPParamLabel : TPRPItem
 	{
-		private byte pData = 0x01;
-		public byte PData => pData;
+		public byte PData { get; private set; } = 0x01;
 
 		/// <summary>
 		/// For the time being, I'm explicitly preventing this value being adjusted
@@ -468,7 +467,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="reader">Stream containing a byte to read</param>
 		public void ReadPData(System.IO.BinaryReader reader)
 		{
-			pData = reader.ReadByte();
+			PData = reader.ReadByte();
 		}
 
 		public TPRPParamLabel(TPRP parent)

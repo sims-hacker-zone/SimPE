@@ -33,17 +33,9 @@ namespace SimPe.Plugin
 		#region Attributes
 		GeometryBuilder gb;
 
-		int u1;
 		public int Unknown1
 		{
-			get
-			{
-				return u1;
-			}
-			set
-			{
-				u1 = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -73,7 +65,7 @@ namespace SimPe.Plugin
 			gb.Unserialize(reader);
 			gb.BlockID = myid;
 
-			u1 = reader.ReadInt32();
+			Unknown1 = reader.ReadInt32();
 		}
 
 		/// <summary>
@@ -92,7 +84,7 @@ namespace SimPe.Plugin
 			writer.Write(gb.BlockID);
 			gb.Serialize(writer);
 
-			writer.Write(u1);
+			writer.Write(Unknown1);
 		}
 
 		//fShapeRefNode form = null;

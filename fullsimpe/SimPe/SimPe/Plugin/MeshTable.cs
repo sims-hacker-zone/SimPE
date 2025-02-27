@@ -331,57 +331,18 @@ namespace SimPe.Plugin
 
 		public class MeshInfo
 		{
-			IPackedFileDescriptor cresFile = null;
-			IPackedFileDescriptor shpeFile = null;
-			string description;
-			string fileName;
+			public IPackedFileDescriptor ResourceNode { get; set; } = null;
 
-			public IPackedFileDescriptor ResourceNode
-			{
-				get
-				{
-					return this.cresFile;
-				}
-				set
-				{
-					this.cresFile = value;
-				}
-			}
-
-			public IPackedFileDescriptor ShapeFile
-			{
-				get
-				{
-					return this.shpeFile;
-				}
-				set
-				{
-					this.shpeFile = value;
-				}
-			}
+			public IPackedFileDescriptor ShapeFile { get; set; } = null;
 
 			public string Description
 			{
-				get
-				{
-					return this.description;
-				}
-				set
-				{
-					this.description = value;
-				}
+				get; set;
 			}
 
 			public string FileName
 			{
-				get
-				{
-					return this.fileName;
-				}
-				set
-				{
-					this.fileName = value;
-				}
+				get; set;
 			}
 		}
 	}

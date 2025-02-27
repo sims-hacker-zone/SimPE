@@ -64,69 +64,57 @@ namespace SimPe.Cache
 		/// </summary>
 		public CacheContainer(ContainerType type)
 		{
-			version = VERSION;
-			this.type = type;
-			added = DateTime.Now;
+			Version = VERSION;
+			this.Type = type;
+			Added = DateTime.Now;
 			filename = "";
-			valid = ContainerValid.Yes;
+			ValidState = ContainerValid.Yes;
 
-			items = new CacheItems();
+			Items = new CacheItems();
 		}
 
-		byte version;
-		ContainerType type;
-		ContainerValid valid;
-
-		DateTime added;
 		string filename;
 
 		/// <summary>
 		/// Returns the Version of the File
 		/// </summary>
-		public byte Version => version;
+		public byte Version
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Returns the Version of the File
 		/// </summary>
 		public DateTime Added
 		{
-			get
-			{
-				return added;
-			}
-			set
-			{
-				added = value;
-			}
+			get; set;
 		}
-
-		CacheItems items;
 
 		/// <summary>
 		/// Return all available Items
 		/// </summary>
-		public CacheItems Items => items;
+		public CacheItems Items
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Returns the Type of this Container
 		/// </summary>
-		public ContainerType Type => type;
+		public ContainerType Type
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// True if this Container is still valid
 		/// </summary>
-		public bool Valid => (valid == ContainerValid.Yes);
+		public bool Valid => (ValidState == ContainerValid.Yes);
 
 		public ContainerValid ValidState
 		{
-			get
-			{
-				return valid;
-			}
-			set
-			{
-				valid = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -150,40 +138,40 @@ namespace SimPe.Cache
 		/// <param name="reader">the Stream Reader</param>
 		internal void Load(System.IO.BinaryReader reader)
 		{
-			valid = ContainerValid.FileNotFound;
-			items.Clear();
+			ValidState = ContainerValid.FileNotFound;
+			Items.Clear();
 			int offset = reader.ReadInt32();
-			version = reader.ReadByte();
-			type = (ContainerType)reader.ReadByte();
+			Version = reader.ReadByte();
+			Type = (ContainerType)reader.ReadByte();
 			int count = reader.ReadInt32();
 
 			long pos = reader.BaseStream.Position;
 			try
 			{
-				if (version <= VERSION)
+				if (Version <= VERSION)
 				{
 					reader.BaseStream.Seek(offset, System.IO.SeekOrigin.Begin);
-					added = DateTime.FromFileTime(reader.ReadInt64());
+					Added = DateTime.FromFileTime(reader.ReadInt64());
 					filename = reader.ReadString();
 
 					if (System.IO.File.Exists(filename))
 					{
 						DateTime mod = System.IO.File.GetLastWriteTime(filename);
-						if (mod <= added)
-							valid = ContainerValid.Yes;
+						if (mod <= Added)
+							ValidState = ContainerValid.Yes;
 						else
-							valid = ContainerValid.Modified;
+							ValidState = ContainerValid.Modified;
 					}
 
 					if (
-						valid == ContainerValid.Yes
+						ValidState == ContainerValid.Yes
 						|| System
 							.Windows.Forms.Application.ExecutablePath.Trim()
 							.ToLower()
 							.EndsWith("settingmanager.exe")
 					)
 					{
-						switch (type)
+						switch (Type)
 						{
 							case ContainerType.Object:
 							{
@@ -191,7 +179,7 @@ namespace SimPe.Cache
 								{
 									ObjectCacheItem oci = new ObjectCacheItem();
 									oci.Load(reader);
-									items.Add(oci);
+									Items.Add(oci);
 								}
 
 								break;
@@ -202,7 +190,7 @@ namespace SimPe.Cache
 								{
 									MMATCacheItem oci = new MMATCacheItem();
 									oci.Load(reader);
-									items.Add(oci);
+									Items.Add(oci);
 								}
 
 								break;
@@ -213,7 +201,7 @@ namespace SimPe.Cache
 								{
 									RcolCacheItem oci = new RcolCacheItem();
 									oci.Load(reader);
-									items.Add(oci);
+									Items.Add(oci);
 								}
 
 								break;
@@ -224,7 +212,7 @@ namespace SimPe.Cache
 								{
 									WantCacheItem oci = new WantCacheItem();
 									oci.Load(reader);
-									items.Add(oci);
+									Items.Add(oci);
 								}
 
 								break;
@@ -235,7 +223,7 @@ namespace SimPe.Cache
 								{
 									GoalCacheItem oci = new GoalCacheItem();
 									oci.Load(reader);
-									items.Add(oci);
+									Items.Add(oci);
 								}
 
 								break;
@@ -251,7 +239,7 @@ namespace SimPe.Cache
 										oci.Version
 										>= MemoryCacheItem.DISCARD_VERSIONS_SMALLER_THAN
 									)
-										items.Add(oci);
+										Items.Add(oci);
 								}
 
 								break;
@@ -262,7 +250,7 @@ namespace SimPe.Cache
 								{
 									PackageCacheItem oci = new PackageCacheItem();
 									oci.Load(reader);
-									items.Add(oci);
+									Items.Add(oci);
 								}
 
 								break;
@@ -272,7 +260,7 @@ namespace SimPe.Cache
 				} //if VERSION
 				else
 				{
-					valid = ContainerValid.UnknownVersion;
+					ValidState = ContainerValid.UnknownVersion;
 				}
 			}
 			finally
@@ -292,19 +280,19 @@ namespace SimPe.Cache
 			//prewrite Phase
 			if (offset == -1)
 			{
-				version = VERSION;
-				writer.Write(version);
-				writer.Write((byte)type);
-				writer.Write((int)items.Count);
+				Version = VERSION;
+				writer.Write(Version);
+				writer.Write((byte)Type);
+				writer.Write((int)Items.Count);
 			}
 			else //Item writing Phase
 			{
 				writer.Seek(offset, System.IO.SeekOrigin.Begin);
-				writer.Write(added.ToFileTime());
+				writer.Write(Added.ToFileTime());
 				writer.Write(filename);
 
-				for (int i = 0; i < items.Count; i++)
-					items[i].Save(writer);
+				for (int i = 0; i < Items.Count; i++)
+					Items[i].Save(writer);
 			}
 		}
 
@@ -312,15 +300,15 @@ namespace SimPe.Cache
 
 		public virtual void Dispose()
 		{
-			if (items != null)
+			if (Items != null)
 			{
-				foreach (object o in items)
+				foreach (object o in Items)
 					if (o is IDisposable)
 						((IDisposable)o).Dispose();
 
-				items.Clear();
+				Items.Clear();
 			}
-			items = null;
+			Items = null;
 		}
 
 		#endregion

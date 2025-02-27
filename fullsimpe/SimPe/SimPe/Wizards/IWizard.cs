@@ -25,60 +25,29 @@ namespace SimPe.Wizards
 {
 	public class WizardEventArgs : System.EventArgs
 	{
-		WizardStepPanel step;
-		bool enablenext,
-			enableprev,
-			c,
-			canfin;
-
-		public WizardStepPanel Step => step;
+		public WizardStepPanel Step
+		{
+			get;
+		}
 
 		public bool EnableNext
 		{
-			get
-			{
-				return this.enablenext;
-			}
-			set
-			{
-				this.enablenext = value;
-			}
+			get; set;
 		}
 
 		public bool EnablePrev
 		{
-			get
-			{
-				return this.enableprev;
-			}
-			set
-			{
-				this.enableprev = value;
-			}
+			get; set;
 		}
 
 		public bool CanFinish
 		{
-			get
-			{
-				return this.canfin;
-			}
-			set
-			{
-				this.canfin = value;
-			}
+			get; set;
 		}
 
 		public bool Cancel
 		{
-			get
-			{
-				return c;
-			}
-			set
-			{
-				c = value;
-			}
+			get; set;
 		}
 
 		public WizardEventArgs(
@@ -88,11 +57,11 @@ namespace SimPe.Wizards
 			bool canfin
 		)
 		{
-			this.step = step;
-			this.enablenext = ennext;
-			this.enableprev = enprev;
-			this.canfin = canfin;
-			c = false;
+			this.Step = step;
+			this.EnableNext = ennext;
+			this.EnablePrev = enprev;
+			this.CanFinish = canfin;
+			Cancel = false;
 		}
 	}
 

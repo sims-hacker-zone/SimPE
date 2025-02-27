@@ -180,8 +180,8 @@ namespace SimPe.Packages
 		/// <param name="br">The Stream</param>
 		protected void OpenByStream(BinaryReader br)
 		{
-			lcs = false;
-			higestoffset = 0;
+			LoadedCompressedState = false;
+			NextFreeOffset = 0;
 			fhg = 0;
 			reader = br;
 			if (header == null)
@@ -311,7 +311,7 @@ namespace SimPe.Packages
 			}
 
 			fl.header = (HeaderData)this.Header.Clone();
-			fl.lcs = this.lcs;
+			fl.LoadedCompressedState = this.LoadedCompressedState;
 			if (this.filelist != null)
 			{
 				fl.filelist = (SimPe.Packages.PackedFileDescriptor)
@@ -528,12 +528,13 @@ namespace SimPe.Packages
 			return pfd;
 		}
 
-		long higestoffset;
-
 		/// <summary>
 		/// Returns the next free offset in the File
 		/// </summary>
-		internal long NextFreeOffset => higestoffset;
+		internal long NextFreeOffset
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Copies the FileDescriptors form the passed Package to this one. The Method creats
@@ -590,8 +591,8 @@ namespace SimPe.Packages
 				((SimPe.Packages.PackedFileDescriptor)pfd).offset = (uint)
 					this.NextFreeOffset;
 
-			higestoffset = Math.Max(
-				higestoffset,
+			NextFreeOffset = Math.Max(
+				NextFreeOffset,
 				((SimPe.Packages.PackedFileDescriptor)pfd).offset
 					+ ((SimPe.Packages.PackedFileDescriptor)pfd).size
 			);
@@ -702,12 +703,13 @@ namespace SimPe.Packages
 				FileList = FileList;
 		}
 
-		bool lcs;
-
 		/// <summary>
 		/// true if the Compressed State for this package was loaded
 		/// </summary>
-		public bool LoadedCompressedState => lcs;
+		public bool LoadedCompressedState
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Reads the Compressed State for the package
@@ -729,7 +731,7 @@ namespace SimPe.Packages
 				CloseReader();
 				this.ForgetUpdate();
 				this.EndUpdate();
-				lcs = true;
+				LoadedCompressedState = true;
 			}
 		}
 
@@ -752,7 +754,7 @@ namespace SimPe.Packages
 			);
 			item.DescriptionChanged += new EventHandler(ResourceDescriptionChanged);
 
-			higestoffset = Math.Max(higestoffset, item.offset + item.size);
+			NextFreeOffset = Math.Max(NextFreeOffset, item.offset + item.size);
 
 			fileindex[position] = item;
 

@@ -53,7 +53,7 @@ namespace SimPe.Wizards
 		}
 
 		internal string HintName => "Step "
-					+ index.ToString()
+					+ Index.ToString()
 					+ " ("
 					+ Name /*+" in "+this.ParentWizard.Text*/
 					+ ")";
@@ -65,12 +65,12 @@ namespace SimPe.Wizards
 
 		internal void SetupParent(Wizard parent)
 		{
-			this.parent = parent;
-			index = 0;
+			this.ParentWizard = parent;
+			Index = 0;
 			if (parent == null)
 				return;
-			index = ((Wizard)parent).Controls.Count - 1;
-			first = (index == 0);
+			Index = ((Wizard)parent).Controls.Count - 1;
+			First = (Index == 0);
 
 			parent.Aborted += new WizardHandle(OnAborted);
 			parent.Finished += new WizardHandle(OnFinished);
@@ -86,37 +86,25 @@ namespace SimPe.Wizards
 			parent.Loaded -= new WizardHandle(OnLoaded);
 		}
 
-		Wizard parent;
-		public Wizard ParentWizard => parent;
+		public Wizard ParentWizard
+		{
+			get; private set;
+		}
 
-		bool first;
 		public bool First
 		{
-			get
-			{
-				return first;
-			}
-			set
-			{
-				first = value;
-			}
+			get; set;
 		}
 
-		bool last;
 		public bool Last
 		{
-			get
-			{
-				return last;
-			}
-			set
-			{
-				last = value;
-			}
+			get; set;
 		}
 
-		int index;
-		public int Index => index;
+		public int Index
+		{
+			get; private set;
+		}
 
 		protected void OnLoaded(Wizard sender)
 		{

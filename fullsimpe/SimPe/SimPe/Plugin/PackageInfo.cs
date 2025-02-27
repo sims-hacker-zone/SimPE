@@ -18,8 +18,6 @@ namespace SimPe.Plugin
 
 		private IPackageFile package;
 		private Str stringList;
-		private uint packageHash;
-		private RecolorItem[] items;
 
 		public IPackageFile Package
 		{
@@ -70,26 +68,12 @@ namespace SimPe.Plugin
 
 		public RecolorItem[] RecolorItems
 		{
-			get
-			{
-				return this.items;
-			}
-			set
-			{
-				this.items = value;
-			}
+			get; set;
 		}
 
 		public uint PackageHash
 		{
-			get
-			{
-				return this.packageHash;
-			}
-			set
-			{
-				this.packageHash = value;
-			}
+			get; set;
 		}
 
 		private PackageInfo()

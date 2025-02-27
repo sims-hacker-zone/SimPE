@@ -31,11 +31,6 @@ namespace SimPe.Plugin
 	public class ColorOptions
 	{
 		/// <summary>
-		/// The Base Package
-		/// </summary>
-		IPackageFile package;
-
-		/// <summary>
 		/// The tempory new package
 		/// </summary>
 		//IPackageFile newpkg;
@@ -43,7 +38,10 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// The Base Package
 		/// </summary>
-		public IPackageFile Package => package;
+		public IPackageFile Package
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Create a new Instance
@@ -51,7 +49,7 @@ namespace SimPe.Plugin
 		/// <param name="package">the source package</param>
 		public ColorOptions(IPackageFile package)
 		{
-			this.package = package;
+			this.Package = package;
 		}
 
 		/// <summary>
@@ -75,14 +73,14 @@ namespace SimPe.Plugin
 					string newname = txmtname.Replace("_" + k + "_", "_" + slave + "_");
 					if (newname != txmtname)
 					{
-						Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFile(
+						Interfaces.Files.IPackedFileDescriptor[] pfds = Package.FindFile(
 							newname,
 							Data.MetaData.TXMT
 						);
 						if (pfds.Length > 0)
 						{
 							GenericRcol txmt = new GenericRcol(null, false);
-							txmt.ProcessData(pfds[0], package);
+							txmt.ProcessData(pfds[0], Package);
 
 							AddTxmt(newpkg, mmat, txmt, null, unique, null);
 						}
@@ -309,7 +307,7 @@ namespace SimPe.Plugin
 			if (WaitingScreen.Running)
 				WaitingScreen.UpdateMessage("Loading Slave Subsets");
 			AddSlavesSubsets(map, fullmap);
-			Hashtable slaves = Scenegraph.GetSlaveSubsets(package);
+			Hashtable slaves = Scenegraph.GetSlaveSubsets(Package);
 
 			uint inst = 0x6000;
 			string unique = RenameForm.GetUniqueName(true);
@@ -383,7 +381,7 @@ namespace SimPe.Plugin
 		/// <remarks>The slave MMAT files will be added to the map</remarks>
 		protected void AddSlavesSubsets(Hashtable map, Hashtable fullmap)
 		{
-			Hashtable slavemap = Scenegraph.GetSlaveSubsets(package);
+			Hashtable slavemap = Scenegraph.GetSlaveSubsets(Package);
 			Hashtable newmap = new Hashtable();
 
 			int ct = 0;
@@ -457,9 +455,9 @@ namespace SimPe.Plugin
 				//this.newpkg = newpkg;
 
 				WaitingScreen.UpdateMessage("Loading available Color Options");
-				Hashtable fullmap = Scenegraph.GetMMATMap(package);
+				Hashtable fullmap = Scenegraph.GetMMATMap(Package);
 				Hashtable map = fullmap;
-				ArrayList allowedSubsets = Scenegraph.GetRecolorableSubsets(package);
+				ArrayList allowedSubsets = Scenegraph.GetRecolorableSubsets(Package);
 
 				//Check if the User can select a Subset
 				bool userselect = false;
@@ -503,9 +501,9 @@ namespace SimPe.Plugin
 				//this.newpkg = newpkg;
 
 				WaitingScreen.UpdateMessage("Loading available Color Options");
-				Hashtable fullmap = Scenegraph.GetMMATMap(package);
+				Hashtable fullmap = Scenegraph.GetMMATMap(Package);
 				Hashtable map = fullmap;
-				ArrayList allowedSubsets = Scenegraph.GetRecolorableSubsets(package);
+				ArrayList allowedSubsets = Scenegraph.GetRecolorableSubsets(Package);
 
 				//Check if the User can select a Subset
 				bool userselect = false;

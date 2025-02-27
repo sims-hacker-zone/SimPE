@@ -28,45 +28,38 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 	{
 		public class Element
 		{
-			string name;
-			byte[] data;
-
 			public Element()
 			{
-				name = "";
-				data = BitConverter.GetBytes((int)0x00000103);
+				Name = "";
+				Data = BitConverter.GetBytes((int)0x00000103);
 			}
 
 			public string Name
 			{
-				get
-				{
-					return name;
-				}
-				set
-				{
-					name = value;
-				}
+				get; set;
 			}
 
-			internal byte[] Data => data;
+			internal byte[] Data
+			{
+				get; private set;
+			}
 
 			public void LoadData(System.IO.BinaryReader reader)
 			{
-				name = StreamHelper.ReadString(reader);
-				data = ScorItem.UnserializeDefaultToken(reader);
+				Name = StreamHelper.ReadString(reader);
+				Data = ScorItem.UnserializeDefaultToken(reader);
 			}
 
 			public void SaveData(System.IO.BinaryWriter writer, bool last)
 			{
-				StreamHelper.WriteString(writer, name);
-				writer.Write(data);
+				StreamHelper.WriteString(writer, Name);
+				writer.Write(Data);
 				ScorItem.SerializeDefaultToken(writer, last);
 			}
 
 			public override string ToString()
 			{
-				string s = name + ": " + Helper.BytesToHexList(data);
+				string s = Name + ": " + Helper.BytesToHexList(Data);
 				return s;
 			}
 		}

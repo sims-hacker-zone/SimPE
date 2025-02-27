@@ -29,11 +29,7 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class SearchTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
-		/// <summary>
-		/// Windows Registry Link
-		/// </summary>
-		static SimPe.Registry registry;
-		internal static Registry WindowsRegistry => registry;
+		internal static Registry WindowsRegistry => Helper.WindowsRegistry;
 
 		IWrapperRegistry reg;
 		IProviderRegistry prov;
@@ -47,9 +43,6 @@ namespace SimPe.Plugin
 			sc = new Search();
 			sc.prov = prov;
 			flname = "";
-
-			if (registry == null)
-				registry = Helper.WindowsRegistry;
 		}
 
 		#region ITool Member

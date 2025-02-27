@@ -94,27 +94,22 @@ namespace SimPe.PackedFiles
 		Registry reg;
 
 		/// <summary>
-		/// Wrapper ImageList
-		/// </summary>
-		System.Windows.Forms.ImageList il;
-
-		/// <summary>
 		/// Constructor of the class
 		/// </summary>
 		public TypeRegistry()
 		{
 			reg = Helper.WindowsRegistry;
 			handlers = new ArrayList();
-			opcodeprovider = new SimPe.Providers.Opcodes();
-			simfamilynames = new SimPe.Providers.SimFamilyNames();
-			simnames = new SimPe.Providers.SimNames(null); //opcodeprovider
-			sdescprovider = new SimPe.Providers.SimDescriptions(
-				simnames,
-				simfamilynames
+			OpcodeProvider = new SimPe.Providers.Opcodes();
+			SimFamilynameProvider = new SimPe.Providers.SimFamilyNames();
+			SimNameProvider = new SimPe.Providers.SimNames(null); //opcodeprovider
+			SimDescriptionProvider = new SimPe.Providers.SimDescriptions(
+				SimNameProvider,
+				SimFamilynameProvider
 			);
-			skinprovider = new SimPe.Providers.Skins();
+			SkinProvider = new SimPe.Providers.Skins();
 			lotprov = new SimPe.Providers.LotProvider();
-			sdescprovider.ChangedPackage += new EventHandler(
+			SimDescriptionProvider.ChangedPackage += new EventHandler(
 				lotprov.sdescprovider_ChangedPackage
 			);
 
@@ -127,16 +122,16 @@ namespace SimPe.PackedFiles
 			settings = new ArrayList();
 			listeners = new SimPe.Collections.InternalListeners();
 
-			il = new System.Windows.Forms.ImageList();
-			il.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+			WrapperImageList = new System.Windows.Forms.ImageList();
+			WrapperImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
 
-			il.Images.Add(
+			WrapperImageList.Images.Add(
 				System.Drawing.Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.empty.png")
 				)
 			);
-			il.Images.Add(
+			WrapperImageList.Images.Add(
 				System.Drawing.Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.binary.png")
@@ -162,8 +157,8 @@ namespace SimPe.PackedFiles
 						{
 							(
 								(AbstractWrapperInfo)wrapper.WrapperDescription
-							).IconIndex = il.Images.Count;
-							il.Images.Add(wrapper.WrapperDescription.Icon);
+							).IconIndex = WrapperImageList.Images.Count;
+							WrapperImageList.Images.Add(wrapper.WrapperDescription.Icon);
 						}
 						else
 							(
@@ -281,7 +276,10 @@ namespace SimPe.PackedFiles
 		/// <summary>
 		/// Contains a Listing of all available Wrapper Icons
 		/// </summary>
-		public System.Windows.Forms.ImageList WrapperImageList => il;
+		public System.Windows.Forms.ImageList WrapperImageList
+		{
+			get;
+		}
 		#endregion
 
 		/// <summary>
@@ -347,51 +345,44 @@ namespace SimPe.PackedFiles
 		public SimPe.Interfaces.Providers.ILotProvider LotProvider => lotprov;
 
 		/// <summary>
-		/// Provider for Sim Names
-		/// </summary>
-		SimPe.Interfaces.Providers.ISimNames simnames;
-
-		/// <summary>
 		/// Returns the Provider for SimNames
 		/// </summary>
-		public SimPe.Interfaces.Providers.ISimNames SimNameProvider => simnames;
-
-		/// <summary>
-		/// Provider for Sim Family Names
-		/// </summary>
-		SimPe.Interfaces.Providers.ISimFamilyNames simfamilynames;
+		public SimPe.Interfaces.Providers.ISimNames SimNameProvider
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Provider for Sim Family Names
 		/// </summary>
-		public SimPe.Interfaces.Providers.ISimFamilyNames SimFamilynameProvider => simfamilynames;
-
-		/// <summary>
-		/// Provider for SimDescription Files
-		/// </summary>
-		SimPe.Interfaces.Providers.ISimDescriptions sdescprovider;
+		public SimPe.Interfaces.Providers.ISimFamilyNames SimFamilynameProvider
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Provider for SimDescription Files
 		/// </summary>
-		public SimPe.Interfaces.Providers.ISimDescriptions SimDescriptionProvider => sdescprovider;
-
-		/// <summary>
-		/// Provider for Opcode Names
-		/// </summary>
-		SimPe.Interfaces.Providers.IOpcodeProvider opcodeprovider;
+		public SimPe.Interfaces.Providers.ISimDescriptions SimDescriptionProvider
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Provider for Opcode Names
 		/// </summary>
-		public SimPe.Interfaces.Providers.IOpcodeProvider OpcodeProvider => opcodeprovider;
-
-		Interfaces.Providers.ISkinProvider skinprovider;
+		public SimPe.Interfaces.Providers.IOpcodeProvider OpcodeProvider
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Provider for Skin Data
 		/// </summary>
-		public Interfaces.Providers.ISkinProvider SkinProvider => skinprovider;
+		public Interfaces.Providers.ISkinProvider SkinProvider
+		{
+			get;
+		}
 		#endregion
 
 		#region IToolRegistry Member

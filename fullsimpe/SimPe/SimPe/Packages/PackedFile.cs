@@ -730,23 +730,10 @@ namespace SimPe.Packages
 		const int MAX_OFFSET = 0x20000;
 		const int MAX_COPY_COUNT = 0x404;
 
-		//used to finetune the lookup (small values increase the compression for Big Files)
-		static int compstrength = 0x80;
-
 		/// <summary>
 		/// Returns /Sets the compression Strength
 		/// </summary>
-		public static int CompressionStrength
-		{
-			get
-			{
-				return compstrength;
-			}
-			set
-			{
-				compstrength = value;
-			}
-		}
+		public static int CompressionStrength { get; set; } = 0x80;
 
 		/// <summary>
 		/// Compresses the passed content
@@ -814,7 +801,7 @@ namespace SimPe.Packages
 						int offsetcopycount = 0;
 						int loopcount = 1;
 						while (
-							(loopcount < indexlist.Count) && (loopcount < compstrength)
+							(loopcount < indexlist.Count) && (loopcount < CompressionStrength)
 						)
 						{
 							int foundindex = (int)

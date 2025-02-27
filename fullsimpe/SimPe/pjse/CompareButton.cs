@@ -50,17 +50,9 @@ namespace pjse
 			}
 		}
 
-		private string wrapperName;
 		public string WrapperName
 		{
-			get
-			{
-				return wrapperName;
-			}
-			set
-			{
-				wrapperName = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -68,10 +60,8 @@ namespace pjse
 		/// </summary>
 		public class CompareWithEventArgs : EventArgs
 		{
-			private pjse.FileTable.Entry item = null;
-			private SimPe.ExpansionItem exp = null;
-			public pjse.FileTable.Entry Item => item;
-			public SimPe.ExpansionItem ExpansionItem => exp;
+			public pjse.FileTable.Entry Item { get; } = null;
+			public SimPe.ExpansionItem ExpansionItem { get; } = null;
 
 			public CompareWithEventArgs(
 				pjse.FileTable.Entry item,
@@ -79,8 +69,8 @@ namespace pjse
 			)
 				: base()
 			{
-				this.item = item;
-				this.exp = exp;
+				this.Item = item;
+				this.ExpansionItem = exp;
 			}
 		}
 
@@ -151,7 +141,7 @@ namespace pjse
 				if (items == null || items.Length == 0)
 				{
 					MessageBox.Show(
-						pjse.Localization.GetString("cmpNFCurrent", wrapperName),
+						pjse.Localization.GetString("cmpNFCurrent", WrapperName),
 						this.Text,
 						MessageBoxButtons.OK,
 						MessageBoxIcon.Stop
@@ -182,7 +172,7 @@ namespace pjse
 				if (pfd == null)
 				{
 					MessageBox.Show(
-						pjse.Localization.GetString("cmpNFExp", wrapperName, exp.Name),
+						pjse.Localization.GetString("cmpNFExp", WrapperName, exp.Name),
 						this.Text,
 						MessageBoxButtons.OK,
 						MessageBoxIcon.Stop

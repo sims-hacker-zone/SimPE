@@ -30,7 +30,6 @@ namespace SimPe.Plugin
 	public class FileIndexItem : IScenegraphFileIndexItem, IComparer, System.IDisposable
 	{
 		uint localgr;
-		SimPe.Interfaces.Files.IPackedFileDescriptor pfd;
 
 		/// <summary>
 		/// The Descriptor of that File
@@ -38,14 +37,7 @@ namespace SimPe.Plugin
 		/// <remarks>Contains the original Group (can be 0xffffffff)</remarks>
 		public SimPe.Interfaces.Files.IPackedFileDescriptor FileDescriptor
 		{
-			get
-			{
-				return pfd;
-			}
-			set
-			{
-				pfd = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -56,17 +48,18 @@ namespace SimPe.Plugin
 		public SimPe.Interfaces.Files.IPackedFileDescriptor GetLocalFileDescriptor()
 		{
 			SimPe.Interfaces.Files.IPackedFileDescriptor p =
-				pfd.Clone() as SimPe.Interfaces.Files.IPackedFileDescriptor;
+				FileDescriptor.Clone() as SimPe.Interfaces.Files.IPackedFileDescriptor;
 			p.Group = this.LocalGroup;
 			return p;
 		}
 
-		SimPe.Interfaces.Files.IPackageFile package;
-
 		/// <summary>
 		/// The package the File is stored in
 		/// </summary>
-		public SimPe.Interfaces.Files.IPackageFile Package => package;
+		public SimPe.Interfaces.Files.IPackageFile Package
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Get the Local Group Value used for this Package
@@ -75,10 +68,10 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (pfd.Group == Data.MetaData.LOCAL_GROUP)
+				if (FileDescriptor.Group == Data.MetaData.LOCAL_GROUP)
 					return localgr;
 				else
-					return pfd.Group;
+					return FileDescriptor.Group;
 			}
 		}
 
@@ -98,16 +91,16 @@ namespace SimPe.Plugin
 				package = SimPe.Packages.GeneratableFile.LoadFromStream(
 					(System.IO.BinaryReader)null
 				);
-			this.pfd = pfd;
-			this.package = package;
+			this.FileDescriptor = pfd;
+			this.Package = package;
 
 			localgr = FileIndex.GetLocalGroup(package);
 		}
 
 		public override string ToString()
 		{
-			if (pfd != null)
-				return pfd.Filename;
+			if (FileDescriptor != null)
+				return FileDescriptor.Filename;
 			else
 				return Localization.Manager.GetString("unknown");
 		}
@@ -191,8 +184,8 @@ namespace SimPe.Plugin
 
 		public void Dispose()
 		{
-			this.pfd = null;
-			this.package = null;
+			this.FileDescriptor = null;
+			this.Package = null;
 		}
 	}
 
@@ -271,11 +264,6 @@ namespace SimPe.Plugin
 		Hashtable index;
 
 		/// <summary>
-		/// Contains a List of all Folders you want to check
-		/// </summary>
-		ArrayList folders;
-
-		/// <summary>
 		/// Contains a List of the Filenames of all added packages
 		/// </summary>
 		ArrayList addedfilenames;
@@ -314,21 +302,9 @@ namespace SimPe.Plugin
 		/// </summary>
 		static ArrayList alternaiveGroups;
 
-		/// <summary>
-		/// true if you want to have duplicate TGI's availabe
-		/// </summary>
-		bool duplicates;
-
 		public bool Duplicates
 		{
-			get
-			{
-				return duplicates;
-			}
-			set
-			{
-				duplicates = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -346,7 +322,7 @@ namespace SimPe.Plugin
 		public FileIndex(ArrayList folders)
 			: base()
 		{
-			loaded = false;
+			Loaded = false;
 			childs = new ArrayList();
 			paths = new ArrayList();
 			ignoredfl = new ArrayList();
@@ -361,10 +337,10 @@ namespace SimPe.Plugin
 		{
 			FileIndex ret = new FileIndex(new ArrayList());
 			ret.index = (Hashtable)this.index.Clone();
-			ret.folders = (ArrayList)this.folders.Clone();
+			ret.BaseFolders = (ArrayList)this.BaseFolders.Clone();
 			ret.addedfilenames = (ArrayList)this.addedfilenames.Clone();
-			ret.duplicates = this.duplicates;
-			ret.loaded = this.loaded;
+			ret.Duplicates = this.Duplicates;
+			ret.Loaded = this.Loaded;
 
 			return ret;
 		}
@@ -383,7 +359,7 @@ namespace SimPe.Plugin
 		{
 			oldnames = (ArrayList)this.addedfilenames.Clone();
 			oldindex = (Hashtable)this.index.Clone();
-			olddup = duplicates;
+			olddup = Duplicates;
 		}
 
 		/// <summary>
@@ -398,7 +374,7 @@ namespace SimPe.Plugin
 
 			addedfilenames = oldnames;
 			index = oldindex;
-			duplicates = olddup;
+			Duplicates = olddup;
 
 			oldnames = null;
 			oldindex = null;
@@ -413,14 +389,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public ArrayList BaseFolders
 		{
-			get
-			{
-				return folders;
-			}
-			set
-			{
-				folders = value;
-			}
+			get; set;
 		}
 
 		ArrayList ignoredfl;
@@ -436,9 +405,9 @@ namespace SimPe.Plugin
 			else
 				ignoredfl = new ArrayList();
 
-			if (folders != null)
+			if (BaseFolders != null)
 			{
-				foreach (FileTableItem fti in folders)
+				foreach (FileTableItem fti in BaseFolders)
 				{
 					if (fti.IsFile && fti.IsUseable && fti.Ignore)
 						ignoredfl.Add(fti.Name.Trim().ToLower());
@@ -454,7 +423,7 @@ namespace SimPe.Plugin
 		{
 			paths = new ArrayList();
 			addedfilenames = new ArrayList();
-			duplicates = false;
+			Duplicates = false;
 
 			//Add alternate Groups
 			if (alternaiveGroups == null)
@@ -470,7 +439,7 @@ namespace SimPe.Plugin
 
 			if (folders == null)
 				folders = FileTable.DefaultFolders;
-			this.folders = folders;
+			this.BaseFolders = folders;
 		}
 
 		/// <summary>
@@ -506,8 +475,10 @@ namespace SimPe.Plugin
 			return gci.LocalGroup;
 		}
 
-		bool loaded;
-		public bool Loaded => loaded;
+		public bool Loaded
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Load the FileIndex if it has not previously been loaded and not in LocalMode
@@ -518,7 +489,7 @@ namespace SimPe.Plugin
 		/// </remarks>
 		public void Load()
 		{
-			if (loaded)
+			if (Loaded)
 				return;
 
 			//We do NOT use the Filetable in LocalMode - a ForceReload is required
@@ -537,23 +508,15 @@ namespace SimPe.Plugin
 		public void ForceReload()
 		{
 			//this.WaitForEnd();
-			loaded = true;
+			Loaded = true;
 
 			//this.ExecuteThread(System.Threading.ThreadPriority.Normal, "FileTable Reload", true, true, 1000);
 			StartThread();
 		}
 
-		bool allowevent;
 		public bool AllowEvent
 		{
-			get
-			{
-				return allowevent;
-			}
-			set
-			{
-				allowevent = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -561,7 +524,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		protected override void StartThread()
 		{
-			Wait.SubStart(folders.Count);
+			Wait.SubStart(BaseFolders.Count);
 			Wait.Message = SimPe.Localization.GetString("Loading") + " Group Cache";
 			WrapperFactory.LoadGroupCache();
 
@@ -569,7 +532,7 @@ namespace SimPe.Plugin
 			this.LoadIgnoredFiles();
 
 			int ct = 0;
-			foreach (FileTableItem fti in folders)
+			foreach (FileTableItem fti in BaseFolders)
 			{
 				if (HaveToStop)
 					break;
@@ -578,10 +541,10 @@ namespace SimPe.Plugin
 			}
 
 			Wait.SubStop();
-			if (allowevent)
+			if (AllowEvent)
 				OnFILoad(this, new EventArgs()); // this triggers loading of PJSE filetable
 			else
-				allowevent = true;
+				AllowEvent = true;
 		}
 
 		/// <summary>
@@ -925,7 +888,7 @@ namespace SimPe.Plugin
 				instances[item.FileDescriptor.LongInstance] = files;
 			}
 
-			if (duplicates || (!files.Contains(item)))
+			if (Duplicates || (!files.Contains(item)))
 				files.Add(item);
 
 			//add it a second Time if it is a local Group
@@ -947,7 +910,7 @@ namespace SimPe.Plugin
 					instances[item.FileDescriptor.LongInstance] = files;
 				}
 
-				if (duplicates || (!files.Contains(item)))
+				if (Duplicates || (!files.Contains(item)))
 					files.Add(item);
 			}
 		}

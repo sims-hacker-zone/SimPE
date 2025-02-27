@@ -318,19 +318,21 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		SimPe.PackedFiles.Wrapper.ObjLua lua;
-		protected SimPe.PackedFiles.Wrapper.ObjLua Wrapper => lua;
+		protected SimPe.PackedFiles.Wrapper.ObjLua Wrapper
+		{
+			get; private set;
+		}
 
 		#region IPackedFileUI Member
 
 		public void UpdateGUI(IFileWrapper wrapper)
 		{
-			lua = (SimPe.PackedFiles.Wrapper.ObjLua)wrapper;
+			Wrapper = (SimPe.PackedFiles.Wrapper.ObjLua)wrapper;
 
 			tv.Nodes.Clear();
-			AddFunction(tv.Nodes, lua.Root);
+			AddFunction(tv.Nodes, Wrapper.Root);
 
-			tbName.Text = lua.FileName;
+			tbName.Text = Wrapper.FileName;
 			tv.ExpandAll();
 		}
 

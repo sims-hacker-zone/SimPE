@@ -32,7 +32,6 @@ namespace pjse
 	{
 		private string title = "file type";
 		private string format = "PJSE: {label} Editor";
-		private string helpTarget = "Contents";
 
 		public pjse_banner()
 		{
@@ -347,17 +346,7 @@ namespace pjse
 		[DefaultValue("Contents")]
 		[Description("The help file to display when the Help button is clicked.")]
 		[Localizable(true)]
-		public string HelpTarget
-		{
-			get
-			{
-				return helpTarget;
-			}
-			set
-			{
-				this.helpTarget = value;
-			}
-		}
+		public string HelpTarget { get; set; } = "Contents";
 
 		private void btnTree_Click(object sender, EventArgs e)
 		{
@@ -391,7 +380,7 @@ namespace pjse
 
 		private void btnHelp_Click(object sender, System.EventArgs e)
 		{
-			pjse.HelpHelper.Help(helpTarget);
+			pjse.HelpHelper.Help(HelpTarget);
 		}
 
 		#region Painting

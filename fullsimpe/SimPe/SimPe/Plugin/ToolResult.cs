@@ -26,19 +26,22 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class ToolResult : SimPe.Interfaces.Plugin.IToolResult
 	{
-		bool pfd;
-		bool package;
-
 		public ToolResult(bool pfd, bool package)
 		{
-			this.pfd = pfd;
-			this.package = package;
+			this.ChangedFile = pfd;
+			this.ChangedPackage = package;
 		}
 
 		#region IToolResult Member
-		public bool ChangedPackage => this.package;
+		public bool ChangedPackage
+		{
+			get;
+		}
 
-		public bool ChangedFile => this.pfd;
+		public bool ChangedFile
+		{
+			get;
+		}
 
 		public bool ChangedAny => (ChangedPackage || ChangedFile);
 		#endregion

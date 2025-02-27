@@ -90,7 +90,7 @@ namespace SimPe.Windows.Forms
 					this.Font.Unit
 				);
 
-				this.mGradient = LinearGradientMode.ForwardDiagonal;
+				this.Gradient = LinearGradientMode.ForwardDiagonal;
 				BackColor = Color.FromArgb(240, 236, 255);
 				midcol = Color.FromArgb(192, 192, 255);
 				gradcol = Color.FromArgb(252, 248, 255);
@@ -111,7 +111,7 @@ namespace SimPe.Windows.Forms
 
 		~WrapperBaseControl()
 		{
-			if (wrp != null)
+			if (Wrapper != null)
 				SetWrapper(null);
 		}
 
@@ -122,15 +122,15 @@ namespace SimPe.Windows.Forms
 		{
 			if (disposing)
 			{
-				if (wrp != null)
+				if (Wrapper != null)
 					SetWrapper(null);
-				if (tm != null)
+				if (ThemeManager != null)
 				{
-					tm.Parent = null;
-					tm.CreateChild();
-					tm.Dispose();
+					ThemeManager.Parent = null;
+					ThemeManager.CreateChild();
+					ThemeManager.Dispose();
 				}
-				tm = null;
+				ThemeManager = null;
 				if (components != null)
 				{
 					components.Dispose();
@@ -244,7 +244,6 @@ namespace SimPe.Windows.Forms
 		public int HeaderHeight => 24;
 
 		private System.Windows.Forms.Button btCommit;
-		LinearGradientMode mGradient;
 		Color gradcol;
 		Color midcol;
 		float mCentre;
@@ -301,14 +300,7 @@ namespace SimPe.Windows.Forms
 
 		public LinearGradientMode Gradient
 		{
-			get
-			{
-				return this.mGradient;
-			}
-			set
-			{
-				this.mGradient = value;
-			}
+			get; set;
 		}
 
 		bool cc;
@@ -399,28 +391,33 @@ namespace SimPe.Windows.Forms
 		#endregion
 
 		#region Properties
-		SimPe.ThemeManager tm;
 
 		[Browsable(false)]
-		public SimPe.ThemeManager ThemeManager => tm;
+		public SimPe.ThemeManager ThemeManager
+		{
+			get; private set;
+		}
 
 		public class WrapperChangedEventArgs : EventArgs
 		{
-			SimPe.Interfaces.Plugin.IFileWrapper owrp,
-				nwrp;
-
 			public WrapperChangedEventArgs(
 				SimPe.Interfaces.Plugin.IFileWrapper owrp,
 				SimPe.Interfaces.Plugin.IFileWrapper nwrp
 			)
 			{
-				this.owrp = owrp;
-				this.nwrp = nwrp;
+				this.OldWrapper = owrp;
+				this.NewWrapper = nwrp;
 			}
 
-			public SimPe.Interfaces.Plugin.IFileWrapper OldWrapper => owrp;
+			public SimPe.Interfaces.Plugin.IFileWrapper OldWrapper
+			{
+				get;
+			}
 
-			public SimPe.Interfaces.Plugin.IFileWrapper NewWrapper => nwrp;
+			public SimPe.Interfaces.Plugin.IFileWrapper NewWrapper
+			{
+				get;
+			}
 		}
 
 		public delegate void WrapperChangedHandle(
@@ -429,10 +426,11 @@ namespace SimPe.Windows.Forms
 		);
 		public event WrapperChangedHandle WrapperChanged;
 
-		SimPe.Interfaces.Plugin.IFileWrapper wrp;
-
 		[Browsable(false)]
-		public SimPe.Interfaces.Plugin.IFileWrapper Wrapper => wrp;
+		public SimPe.Interfaces.Plugin.IFileWrapper Wrapper
+		{
+			get; private set;
+		}
 		#endregion
 
 		#region Events
@@ -771,8 +769,8 @@ namespace SimPe.Windows.Forms
 
 		private void SetWrapper(SimPe.Interfaces.Plugin.IFileWrapper wrp)
 		{
-			SimPe.Interfaces.Plugin.IFileWrapper old = this.wrp;
-			this.wrp = wrp;
+			SimPe.Interfaces.Plugin.IFileWrapper old = this.Wrapper;
+			this.Wrapper = wrp;
 
 			WrapperChangedEventArgs e = new WrapperChangedEventArgs(old, wrp);
 			OnWrapperChanged(e);

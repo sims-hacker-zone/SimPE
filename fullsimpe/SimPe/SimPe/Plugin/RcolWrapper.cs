@@ -53,11 +53,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return duff ? new Interfaces.Files.IPackedFileDescriptor[0] : reffiles;
+				return Duff ? new Interfaces.Files.IPackedFileDescriptor[0] : reffiles;
 			}
 			set
 			{
-				if (duff)
+				if (Duff)
 					return;
 				reffiles = value;
 			}
@@ -68,22 +68,23 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return duff ? new IRcolBlock[0] : blocks;
+				return Duff ? new IRcolBlock[0] : blocks;
 			}
 			set
 			{
-				if (duff)
+				if (Duff)
 					return;
 				blocks = value;
 			}
 		}
 
-		uint count;
-		public uint Count => count;
+		public uint Count
+		{
+			get; private set;
+		}
 
-		bool duff = false;
 		Exception e = null;
-		public bool Duff => duff;
+		public bool Duff { get; private set; } = false;
 		#endregion
 
 		/// <summary>
@@ -118,8 +119,10 @@ namespace SimPe.Plugin
 			}
 		}
 
-		Interfaces.IProviderRegistry provider;
-		public Interfaces.IProviderRegistry Provider => provider;
+		public Interfaces.IProviderRegistry Provider
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Filename of the First Block (or an empty string)
@@ -128,7 +131,7 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (duff)
+				if (Duff)
 					return SimPe
 						.Localization.GetString("InvalidCRES")
 						.Replace("{0}", e.Message);
@@ -139,7 +142,7 @@ namespace SimPe.Plugin
 			}
 			set
 			{
-				if (duff)
+				if (Duff)
 					return;
 				if (blocks.Length > 0)
 					if (blocks[0].NameResource != null)
@@ -147,17 +150,9 @@ namespace SimPe.Plugin
 			}
 		}
 
-		bool fast;
 		public bool Fast
 		{
-			get
-			{
-				return fast;
-			}
-			set
-			{
-				fast = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -213,13 +208,13 @@ namespace SimPe.Plugin
 		public Rcol(Interfaces.IProviderRegistry provider, bool fast)
 			: base()
 		{
-			this.fast = fast;
-			this.provider = provider;
+			this.Fast = fast;
+			this.Provider = provider;
 			reffiles = new Interfaces.Files.IPackedFileDescriptor[0];
 			index = new uint[0];
 			blocks = new IRcolBlock[0];
 			oversize = new byte[0];
-			duff = false;
+			Duff = false;
 		}
 
 		public Rcol()
@@ -320,15 +315,15 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-			duff = false;
+			Duff = false;
 			this.e = null;
 
-			count = reader.ReadUInt32();
+			Count = reader.ReadUInt32();
 
 			try
 			{
 				reffiles = new Interfaces.Files.IPackedFileDescriptor[
-					count == 0xffff0001 ? reader.ReadUInt32() : count
+					Count == 0xffff0001 ? reader.ReadUInt32() : Count
 				];
 				for (int i = 0; i < reffiles.Length; i++)
 				{
@@ -337,7 +332,7 @@ namespace SimPe.Plugin
 
 					pfd.Group = reader.ReadUInt32();
 					pfd.Instance = reader.ReadUInt32();
-					pfd.SubType = (count == 0xffff0001) ? reader.ReadUInt32() : 0;
+					pfd.SubType = (Count == 0xffff0001) ? reader.ReadUInt32() : 0;
 					pfd.Type = reader.ReadUInt32();
 
 					reffiles[i] = pfd;
@@ -358,7 +353,7 @@ namespace SimPe.Plugin
 					blocks[i] = wrp;
 				}
 
-				if (!fast)
+				if (!Fast)
 				{
 					long size = reader.BaseStream.Length - reader.BaseStream.Position;
 					if (size > 0)
@@ -369,7 +364,7 @@ namespace SimPe.Plugin
 			}
 			catch (Exception e)
 			{
-				duff = true;
+				Duff = true;
 				this.e = e;
 				//SimPe.Helper.ExceptionMessage(e);
 			}
@@ -386,9 +381,9 @@ namespace SimPe.Plugin
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-			if (duff)
+			if (Duff)
 				return;
-			writer.Write(count == 0xffff0001 ? count : (uint)reffiles.Length);
+			writer.Write(Count == 0xffff0001 ? Count : (uint)reffiles.Length);
 			writer.Write((uint)reffiles.Length);
 			for (int i = 0; i < reffiles.Length; i++)
 			{
@@ -396,7 +391,7 @@ namespace SimPe.Plugin
 					(SimPe.Packages.PackedFileDescriptor)reffiles[i];
 				writer.Write(pfd.Group);
 				writer.Write(pfd.Instance);
-				if (count == 0xffff0001)
+				if (Count == 0xffff0001)
 					writer.Write(pfd.SubType);
 				writer.Write(pfd.Type);
 			}
@@ -509,8 +504,8 @@ namespace SimPe.Plugin
 		public override object[] GetConstructorArguments()
 		{
 			object[] o = new object[2];
-			o[0] = this.provider;
-			o[1] = this.fast;
+			o[0] = this.Provider;
+			o[1] = this.Fast;
 			return o;
 		}
 		#endregion

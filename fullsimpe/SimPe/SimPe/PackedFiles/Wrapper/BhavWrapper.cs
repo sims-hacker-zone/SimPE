@@ -52,11 +52,6 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Contains the Filename
 		/// </summary>
 		private byte[] filename = new byte[64];
-
-		/// <summary>
-		/// Stores the Header
-		/// </summary>
-		private BhavHeader header;
 		#endregion
 
 		#region Accessor methods
@@ -82,14 +77,17 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Header
 		/// </summary>
-		public BhavHeader Header => header;
+		public BhavHeader Header
+		{
+			get;
+		}
 		#endregion
 
 
 		public Bhav()
 			: base()
 		{
-			header = new BhavHeader(this);
+			Header = new BhavHeader(this);
 		}
 
 		private void SortSwap(int a, int b)
@@ -253,8 +251,8 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(filename);
-			header.InstructionCount = (ushort)items.Count; // oh please... because header doesn't have a parent (yet!)
-			header.Serialize(writer);
+			Header.InstructionCount = (ushort)items.Count; // oh please... because header doesn't have a parent (yet!)
+			Header.Serialize(writer);
 			foreach (Instruction i in items)
 				i.Serialize(writer);
 		}
@@ -266,7 +264,7 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			filename = reader.ReadBytes(0x40);
-			header.Unserialize(reader);
+			Header.Unserialize(reader);
 
 			items = new List<Instruction>();
 			while (items.Count < this.Header.InstructionCount)
@@ -510,8 +508,6 @@ namespace SimPe.PackedFiles.Wrapper
 		private ushort addr1 = 0;
 		private ushort addr2 = 0;
 		private byte nodeversion = 0;
-		private wrappedByteArray operands = null;
-		private wrappedByteArray reserved_01 = null;
 		private static readonly byte[] nooperands =
 		{
 			0xff,
@@ -590,9 +586,9 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public wrappedByteArray Operands => operands;
+		public wrappedByteArray Operands { get; private set; } = null;
 
-		public wrappedByteArray Reserved1 => reserved_01;
+		public wrappedByteArray Reserved1 { get; private set; } = null;
 		#endregion
 
 		/// <summary>
@@ -601,8 +597,8 @@ namespace SimPe.PackedFiles.Wrapper
 		public Instruction(Bhav parent)
 		{
 			this.parent = parent;
-			this.operands = new wrappedByteArray(this, (byte[])nooperands.Clone());
-			this.reserved_01 = new wrappedByteArray(this, new byte[8]);
+			this.Operands = new wrappedByteArray(this, (byte[])nooperands.Clone());
+			this.Reserved1 = new wrappedByteArray(this, new byte[8]);
 		}
 
 #if UNUSED
@@ -656,10 +652,10 @@ namespace SimPe.PackedFiles.Wrapper
 			clone.addr1 = this.addr1;
 			clone.addr2 = this.addr2;
 			clone.nodeversion = this.nodeversion;
-			clone.operands = operands.Clone();
-			clone.operands.Parent = clone;
-			clone.reserved_01 = reserved_01.Clone();
-			clone.reserved_01.Parent = clone;
+			clone.Operands = Operands.Clone();
+			clone.Operands.Parent = clone;
+			clone.Reserved1 = Reserved1.Clone();
+			clone.Reserved1.Parent = clone;
 			return clone;
 		}
 
@@ -702,20 +698,20 @@ namespace SimPe.PackedFiles.Wrapper
 			if (((Bhav)parent).Header.Format < 0x8003)
 			{
 				nodeversion = 0;
-				operands = new wrappedByteArray(this, reader);
-				reserved_01 = new wrappedByteArray(this, new byte[8]);
+				Operands = new wrappedByteArray(this, reader);
+				Reserved1 = new wrappedByteArray(this, new byte[8]);
 			}
 			else if (((Bhav)parent).Header.Format < 0x8005)
 			{
 				nodeversion = 0;
-				operands = new wrappedByteArray(this, reader);
-				reserved_01 = new wrappedByteArray(this, reader);
+				Operands = new wrappedByteArray(this, reader);
+				Reserved1 = new wrappedByteArray(this, reader);
 			}
 			else
 			{
 				nodeversion = reader.ReadByte();
-				operands = new wrappedByteArray(this, reader);
-				reserved_01 = new wrappedByteArray(this, reader);
+				Operands = new wrappedByteArray(this, reader);
+				Reserved1 = new wrappedByteArray(this, reader);
 			}
 		}
 
@@ -757,19 +753,19 @@ namespace SimPe.PackedFiles.Wrapper
 
 			if (((Bhav)parent).Header.Format < 0x8003)
 			{
-				operands.Serialize(writer);
+				Operands.Serialize(writer);
 			}
 			else if (((Bhav)parent).Header.Format < 0x8005)
 			{
-				operands.Serialize(writer);
+				Operands.Serialize(writer);
 				;
-				reserved_01.Serialize(writer);
+				Reserved1.Serialize(writer);
 			}
 			else
 			{
 				writer.Write(nodeversion);
-				operands.Serialize(writer);
-				reserved_01.Serialize(writer);
+				Operands.Serialize(writer);
+				Reserved1.Serialize(writer);
 			}
 		}
 	}

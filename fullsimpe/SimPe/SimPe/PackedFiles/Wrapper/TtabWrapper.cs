@@ -725,24 +725,16 @@ namespace SimPe.PackedFiles.Wrapper
 	public class TtabItemMotiveTable : ICollection
 	{
 		#region Attributes
-		private TtabItem parent;
 		private int[] counts = null;
 		private TtabItemMotiveTableType type;
 		private TtabItemMotiveGroupArrayList items = null;
 		#endregion
 
 		#region Accessor Methods
-		public Ttab Wrapper => parent == null ? null : parent.Parent;
+		public Ttab Wrapper => Parent == null ? null : Parent.Parent;
 		public TtabItem Parent
 		{
-			get
-			{
-				return parent;
-			}
-			set
-			{
-				this.parent = value;
-			}
+			get; set;
 		}
 		public TtabItemMotiveTableType Type
 		{
@@ -769,7 +761,7 @@ namespace SimPe.PackedFiles.Wrapper
 			TtabItemMotiveTableType type
 		)
 		{
-			this.parent = parent;
+			this.Parent = parent;
 			this.counts = counts;
 			this.type = type;
 
@@ -818,7 +810,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		private TtabItemMotiveTable Clone()
 		{
-			return Clone(parent);
+			return Clone(Parent);
 		}
 
 		private void Unserialize(System.IO.BinaryReader reader)
@@ -989,24 +981,16 @@ namespace SimPe.PackedFiles.Wrapper
 	public class TtabItemMotiveGroup : ICollection
 	{
 		#region Attributes
-		private TtabItemMotiveTable parent;
 		private int count;
 		private TtabItemMotiveTableType type;
 		private TtabItemMotiveItemArrayList items = null;
 		#endregion
 
 		#region Accessor Methods
-		public Ttab Wrapper => parent == null ? null : parent.Wrapper;
+		public Ttab Wrapper => Parent == null ? null : Parent.Wrapper;
 		public TtabItemMotiveTable Parent
 		{
-			get
-			{
-				return parent;
-			}
-			set
-			{
-				parent = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -1016,7 +1000,7 @@ namespace SimPe.PackedFiles.Wrapper
 			TtabItemMotiveTableType type
 		)
 		{
-			this.parent = parent;
+			this.Parent = parent;
 			this.count = count;
 			this.type = type;
 
@@ -1058,7 +1042,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public TtabItemMotiveGroup Clone()
 		{
-			return Clone(parent);
+			return Clone(Parent);
 		}
 
 		private void Unserialize(System.IO.BinaryReader reader)

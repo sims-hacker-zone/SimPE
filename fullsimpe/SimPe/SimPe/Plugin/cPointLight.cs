@@ -27,30 +27,14 @@ namespace SimPe.Plugin
 	public class PointLight : DirectionalLight
 	{
 		#region Attributes
-		float unknown8;
 		public float Val6
 		{
-			get
-			{
-				return unknown8;
-			}
-			set
-			{
-				unknown8 = value;
-			}
+			get; set;
 		}
 
-		float unknown9;
 		public float Val7
 		{
-			get
-			{
-				return unknown9;
-			}
-			set
-			{
-				unknown9 = value;
-			}
+			get; set;
 		}
 
 		#endregion
@@ -68,15 +52,15 @@ namespace SimPe.Plugin
 		public override void Unserialize(System.IO.BinaryReader reader)
 		{
 			base.Unserialize(reader);
-			unknown8 = reader.ReadSingle();
-			unknown9 = reader.ReadSingle();
+			Val6 = reader.ReadSingle();
+			Val7 = reader.ReadSingle();
 		}
 
 		public override void Serialize(System.IO.BinaryWriter writer)
 		{
 			base.Serialize(writer);
-			writer.Write(unknown8);
-			writer.Write(unknown9);
+			writer.Write(Val6);
+			writer.Write(Val7);
 		}
 
 		/// <summary>
@@ -85,8 +69,8 @@ namespace SimPe.Plugin
 		protected override void InitTabPage()
 		{
 			base.InitTabPage();
-			tDirectionalLight.tb_l_6.Text = unknown8.ToString();
-			tDirectionalLight.tb_l_7.Text = unknown9.ToString();
+			tDirectionalLight.tb_l_6.Text = Val6.ToString();
+			tDirectionalLight.tb_l_7.Text = Val7.ToString();
 
 			tDirectionalLight.label39.Visible = true;
 			tDirectionalLight.label44.Visible = true;

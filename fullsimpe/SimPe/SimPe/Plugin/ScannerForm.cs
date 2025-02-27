@@ -173,16 +173,16 @@ namespace SimPe.Plugin
 		}
 
 		SimPe.Cache.PackageCacheFile cachefile;
-
-		string flname;
 		string folder;
 		string errorlog;
 		bool cachechg;
 		ColumnSorter sorter;
 		int controltop = 0;
-		ScannerItem lastitem;
 
-		public string FileName => flname;
+		public string FileName
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Clean up any resources being used.
@@ -261,7 +261,10 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the last selected Scanner Item (can be null)
 		/// </summary>
-		internal ScannerItem SelectedScannerItem => lastitem;
+		internal ScannerItem SelectedScannerItem
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Displays the Information about this Scanenr Item
@@ -1298,7 +1301,7 @@ namespace SimPe.Plugin
 		{
 			try
 			{
-				lastitem = null;
+				SelectedScannerItem = null;
 				gbinfo.Enabled = (lv.SelectedItems.Count != 0);
 				pnop.Enabled = (lv.SelectedItems.Count != 0);
 
@@ -1307,7 +1310,7 @@ namespace SimPe.Plugin
 
 				ScannerItem si = (ScannerItem)lv.SelectedItems[0].Tag;
 				ShowInfo(si, lv.SelectedItems[0]);
-				lastitem = si;
+				SelectedScannerItem = si;
 
 				int encount = 0;
 
@@ -1490,10 +1493,10 @@ namespace SimPe.Plugin
 			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
 		)
 		{
-			if (lastitem == null)
+			if (SelectedScannerItem == null)
 				return;
 
-			this.flname = lastitem.FileName;
+			this.FileName = SelectedScannerItem.FileName;
 			Close();
 		}
 

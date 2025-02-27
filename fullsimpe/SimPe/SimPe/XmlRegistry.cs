@@ -30,12 +30,14 @@ namespace SimPe
 	public class XmlRegistryKey
 	{
 		Hashtable tree;
-		string name;
 
 		/// <summary>
 		/// Returns the Name of this Key
 		/// </summary>
-		public string Name => name;
+		public string Name
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Create a new Instance
@@ -92,7 +94,7 @@ namespace SimPe
 			if (create)
 			{
 				XmlRegistryKey xrk = new XmlRegistryKey();
-				xrk.name = name;
+				xrk.Name = name;
 				tree[name] = xrk;
 				return CreateSubKey(name);
 			}
@@ -261,12 +263,14 @@ namespace SimPe
 	public class XmlRegistry
 	{
 		string filename;
-		XmlRegistryKey root;
 
 		/// <summary>
 		/// Returns the CurrentUser Registry Key
 		/// </summary>
-		public XmlRegistryKey CurrentUser => root;
+		public XmlRegistryKey CurrentUser
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Load the Registry from the passed File
@@ -275,7 +279,7 @@ namespace SimPe
 		/// <param name="create">true, if you want to create the File if it does not exist</param>
 		public XmlRegistry(string infilename, string outfilename, bool create)
 		{
-			root = new XmlRegistryKey();
+			CurrentUser = new XmlRegistryKey();
 			if (create)
 			{
 				if (
@@ -303,7 +307,7 @@ namespace SimPe
 			for (int i = 0; i < XMLData.Count; i++)
 			{
 				XmlNode node = XMLData.Item(i);
-				ParseSubNode(node, root);
+				ParseSubNode(node, CurrentUser);
 			}
 		}
 
@@ -544,7 +548,7 @@ namespace SimPe
 					sw.WriteLine("<?xml version=\"1.0\" encoding=\"utf-8\" ?>");
 					sw.WriteLine("<registry>");
 
-					WriteKey(sw, root);
+					WriteKey(sw, CurrentUser);
 
 					sw.WriteLine("</registry>");
 				}
@@ -578,7 +582,7 @@ namespace SimPe
 		/// <param name="key"></param>
 		void WriteKey(System.IO.StreamWriter sw, XmlRegistryKey key)
 		{
-			if (key != root)
+			if (key != CurrentUser)
 				sw.WriteLine("<key name=\"" + key.Name + "\">");
 
 			string[] keys = key.GetSubKeyNames();
@@ -589,7 +593,7 @@ namespace SimPe
 			foreach (string s in values)
 				WriteValue(sw, s, key.GetValue(s));
 
-			if (key != root)
+			if (key != CurrentUser)
 				sw.WriteLine("</key>");
 		}
 

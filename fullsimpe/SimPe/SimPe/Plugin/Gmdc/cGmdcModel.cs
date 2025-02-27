@@ -31,44 +31,26 @@ namespace SimPe.Plugin.Gmdc
 	/// </summary>
 	public class GmdcNamePair
 	{
-		string blendname;
-
 		/// <summary>
 		/// The Name of the Belnding Group
 		/// </summary>
 		public string BlendGroupName
 		{
-			get
-			{
-				return blendname;
-			}
-			set
-			{
-				blendname = value;
-			}
+			get; set;
 		}
-
-		string elementname;
 
 		/// <summary>
 		/// The Name of the Element that should be assigned to that Group
 		/// </summary>
 		public string AssignedElementName
 		{
-			get
-			{
-				return elementname;
-			}
-			set
-			{
-				elementname = value;
-			}
+			get; set;
 		}
 
 		internal GmdcNamePair()
 		{
-			blendname = "";
-			elementname = "";
+			BlendGroupName = "";
+			AssignedElementName = "";
 		}
 
 		/// <summary>
@@ -78,8 +60,8 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="element">Name of the Element that should be assigned to that Blend Group</param>
 		public GmdcNamePair(string blend, string element)
 		{
-			blendname = blend;
-			elementname = element;
+			BlendGroupName = blend;
+			AssignedElementName = element;
 		}
 
 		/// <summary>
@@ -88,8 +70,8 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal virtual void Unserialize(System.IO.BinaryReader reader)
 		{
-			blendname = reader.ReadString();
-			elementname = reader.ReadString();
+			BlendGroupName = reader.ReadString();
+			AssignedElementName = reader.ReadString();
 		}
 
 		/// <summary>
@@ -102,8 +84,8 @@ namespace SimPe.Plugin.Gmdc
 		/// </remarks>
 		internal virtual void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(blendname);
-			writer.Write(elementname);
+			writer.Write(BlendGroupName);
+			writer.Write(AssignedElementName);
 		}
 
 		/// <summary>
@@ -112,7 +94,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns>A String Describing the Data</returns>
 		public override string ToString()
 		{
-			return blendname + ", " + elementname;
+			return BlendGroupName + ", " + AssignedElementName;
 		}
 	}
 
@@ -122,55 +104,28 @@ namespace SimPe.Plugin.Gmdc
 	public class GmdcModel : GmdcLinkBlock
 	{
 		#region Attributes
-		VectorTransformations transforms;
-
 		/// <summary>
 		/// Set of Transformations
 		/// </summary>
 		public VectorTransformations Transformations
 		{
-			get
-			{
-				return transforms;
-			}
-			set
-			{
-				transforms = value;
-			}
+			get; set;
 		}
-
-		GmdcNamePairs names;
 
 		/// <summary>
 		/// Groups to BlendGroup assignements
 		/// </summary>
 		public GmdcNamePairs BlendGroupDefinition
 		{
-			get
-			{
-				return names;
-			}
-			set
-			{
-				names = value;
-			}
+			get; set;
 		}
-
-		GmdcJoint subset;
 
 		/// <summary>
 		/// Some SubSet Data (yet unknown)
 		/// </summary>
 		public GmdcJoint BoundingMesh
 		{
-			get
-			{
-				return subset;
-			}
-			set
-			{
-				subset = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -180,9 +135,9 @@ namespace SimPe.Plugin.Gmdc
 		public GmdcModel(GeometryDataContainer parent)
 			: base(parent)
 		{
-			transforms = new VectorTransformations();
-			names = new GmdcNamePairs();
-			subset = new GmdcJoint(parent);
+			Transformations = new VectorTransformations();
+			BlendGroupDefinition = new GmdcNamePairs();
+			BoundingMesh = new GmdcJoint(parent);
 		}
 
 		/// <summary>
@@ -192,26 +147,26 @@ namespace SimPe.Plugin.Gmdc
 		public void Unserialize(System.IO.BinaryReader reader)
 		{
 			int count = reader.ReadInt32();
-			transforms.Clear();
+			Transformations.Clear();
 			for (int i = 0; i < count; i++)
 			{
 				VectorTransformation t = new VectorTransformation(
 					VectorTransformation.TransformOrder.RotateTranslate
 				);
 				t.Unserialize(reader);
-				transforms.Add(t);
+				Transformations.Add(t);
 			}
 
 			count = reader.ReadInt32();
-			names.Clear();
+			BlendGroupDefinition.Clear();
 			for (int i = 0; i < count; i++)
 			{
 				GmdcNamePair p = new GmdcNamePair();
 				p.Unserialize(reader);
-				names.Add(p);
+				BlendGroupDefinition.Add(p);
 			}
 
-			subset.Unserialize(reader);
+			BoundingMesh.Unserialize(reader);
 		}
 
 		/// <summary>
@@ -224,20 +179,20 @@ namespace SimPe.Plugin.Gmdc
 		/// </remarks>
 		public void Serialize(System.IO.BinaryWriter writer)
 		{
-			int count = transforms.Length;
+			int count = Transformations.Length;
 			writer.Write((int)count);
 			for (int i = 0; i < count; i++)
 			{
-				transforms[i].Order = VectorTransformation
+				Transformations[i].Order = VectorTransformation
 					.TransformOrder
 					.RotateTranslate;
-				transforms[i].Serialize(writer);
+				Transformations[i].Serialize(writer);
 			}
-			writer.Write((int)names.Length);
-			for (int i = 0; i < names.Length; i++)
-				names[i].Serialize(writer);
+			writer.Write((int)BlendGroupDefinition.Length);
+			for (int i = 0; i < BlendGroupDefinition.Length; i++)
+				BlendGroupDefinition[i].Serialize(writer);
 
-			subset.Serialize(writer);
+			BoundingMesh.Serialize(writer);
 		}
 
 		/// <summary>

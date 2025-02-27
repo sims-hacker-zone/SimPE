@@ -42,56 +42,31 @@ namespace SimPe.Plugin
 			System.Collections.IEnumerable
 	{
 		#region Attributes
-		string flname;
-
 		/// <summary>
 		/// The FileName
 		/// </summary>
 
 		public string FileName
 		{
-			get
-			{
-				return flname;
-			}
-			set
-			{
-				flname = value;
-			}
+			get; set;
 		}
 
 		byte[] id;
-		uint version;
 
 		/// <summary>
 		/// The Version
 		/// </summary>
 		public uint Version
 		{
-			get
-			{
-				return version;
-			}
-			set
-			{
-				version = value;
-			}
+			get; set;
 		}
-		uint reserved;
 
 		/// <summary>
 		/// Reserved
 		/// </summary>
 		public uint Reserved
 		{
-			get
-			{
-				return reserved;
-			}
-			set
-			{
-				reserved = value;
-			}
+			get; set;
 		}
 		ArrayList items;
 		#endregion
@@ -104,8 +79,8 @@ namespace SimPe.Plugin
 			: base()
 		{
 			id = new byte[] { (byte)'T', (byte)'T', (byte)'A', (byte)'T' };
-			flname = "";
-			version = 0x4f;
+			FileName = "";
+			Version = 0x4f;
 
 			items = new ArrayList();
 		}
@@ -153,11 +128,11 @@ namespace SimPe.Plugin
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			items.Clear();
-			flname = Helper.ToString(reader.ReadBytes(0x40));
+			FileName = Helper.ToString(reader.ReadBytes(0x40));
 
 			id = reader.ReadBytes(0x4);
-			version = reader.ReadUInt32();
-			reserved = reader.ReadUInt32();
+			Version = reader.ReadUInt32();
+			Reserved = reader.ReadUInt32();
 
 			uint ct = reader.ReadUInt32();
 			for (int i = 0; i < ct; i++)
@@ -179,11 +154,11 @@ namespace SimPe.Plugin
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(Helper.ToBytes(flname, 0x40));
+			writer.Write(Helper.ToBytes(FileName, 0x40));
 
 			writer.Write(id);
-			writer.Write(version);
-			writer.Write(reserved);
+			writer.Write(Version);
+			writer.Write(Reserved);
 
 			writer.Write((uint)items.Count);
 			foreach (TattItem ti in items)

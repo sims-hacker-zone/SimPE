@@ -33,7 +33,7 @@ namespace SimPe.Packages
 		/// </summary>
 		internal HeaderData()
 		{
-			lidl = false;
+			LockIndexDuringLoad = false;
 			index = new HeaderIndex(this);
 			hole = new HeaderHole();
 			id = new char[4];
@@ -291,17 +291,9 @@ namespace SimPe.Packages
 		[BrowsableAttribute(false)]
 		public bool IsVersion0101 => (Version >= 0x100000001); //((majorversion>1) || ((majorversion==1) && (minorversion>=1)));
 
-		bool lidl;
 		internal bool LockIndexDuringLoad
 		{
-			get
-			{
-				return lidl;
-			}
-			set
-			{
-				lidl = value;
-			}
+			get; set;
 		}
 
 		#region File Processing Methods
@@ -339,7 +331,7 @@ namespace SimPe.Packages
 			this.modified = reader.ReadInt32();
 
 			this.index.type = reader.ReadInt32();
-			if (!lidl)
+			if (!LockIndexDuringLoad)
 			{
 				this.index.count = reader.ReadInt32();
 				this.index.offset = reader.ReadUInt32();

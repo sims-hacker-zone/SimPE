@@ -10,45 +10,15 @@ namespace SimPe.Plugin
 			IFileWrapperSaveExtension
 	{
 		#region CreationIndex Attribute
-		private ushort vershin = 0;
-		private ushort prevep;
-		private bool gotmore = false;
 
 		public Array vdata = Array.CreateInstance(typeof(uint), 24, 14); // would never be more than 12 but have allowed 14 in case
 
-		public bool GotMore
-		{
-			get
-			{
-				return gotmore;
-			}
-			set
-			{
-				gotmore = value;
-			}
-		}
+		public bool GotMore { get; set; } = false;
 
-		public ushort Vershin
-		{
-			get
-			{
-				return vershin;
-			}
-			set
-			{
-				vershin = value;
-			}
-		}
+		public ushort Vershin { get; set; } = 0;
 		public ushort Prevep
 		{
-			get
-			{
-				return prevep;
-			}
-			set
-			{
-				prevep = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -81,20 +51,20 @@ namespace SimPe.Plugin
 
 		protected override void Unserialize(System.IO.BinaryReader reader) // if vershin == 9 then is Castaway Story (28) Pet Story is 3
 		{
-			gotmore = false;
-			vershin = reader.ReadUInt16();
-			if (vershin > 1)
+			GotMore = false;
+			Vershin = reader.ReadUInt16();
+			if (Vershin > 1)
 			{
 				reader.BaseStream.Seek(4, System.IO.SeekOrigin.Begin);
-				prevep = reader.ReadUInt16();
+				Prevep = reader.ReadUInt16();
 			}
 			else
-				prevep = 0;
+				Prevep = 0;
 
 			// Castaway has lots more stuff
 			if (
-				vershin == 9
-				&& prevep == 7
+				Vershin == 9
+				&& Prevep == 7
 				&& reader.BaseStream.Length > 600
 				&& PathProvider
 					.Global.GetExpansion(SimPe.Expansions.IslandStories)
@@ -111,7 +81,7 @@ namespace SimPe.Plugin
 				numba = reader.ReadInt32();
 				if (numba == -1)
 					return; // uninitialized this has to have a different value if story mode has ever run.
-				gotmore = true;
+				GotMore = true;
 				for (int n = 0; n < 24; n++) // clear previous use in case going from one player profile to another
 				{
 					for (int i = 0; i < 12; i++)
@@ -190,11 +160,11 @@ namespace SimPe.Plugin
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			ushort nuffin = 0;
-			writer.Write(vershin);
-			if (vershin > 1)
+			writer.Write(Vershin);
+			if (Vershin > 1)
 			{
 				writer.BaseStream.Seek(0x4, System.IO.SeekOrigin.Begin);
-				writer.Write(prevep);
+				writer.Write(Prevep);
 			}
 			writer.Write(nuffin);
 		}

@@ -43,17 +43,13 @@ namespace SimPe.Cache
 
 		public RcolCacheItem()
 		{
-			version = VERSION;
-			resourcename = "";
-			modelname = "";
-			rtp = RcolCacheItemType.Unknown;
+			Version = VERSION;
+			ResourceName = "";
+			ModelName = "";
+			RcolType = RcolCacheItemType.Unknown;
 
 			pfd = new Packages.PackedFileDescriptor();
 		}
-
-		byte version;
-		string modelname;
-		string resourcename;
 
 		//RcolCacheItemType type;
 		Interfaces.Files.IPackedFileDescriptor pfd;
@@ -74,17 +70,9 @@ namespace SimPe.Cache
 			}
 		}
 
-		RcolCacheItemType rtp;
 		public RcolCacheItemType RcolType
 		{
-			get
-			{
-				return rtp;
-			}
-			set
-			{
-				rtp = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -92,14 +80,7 @@ namespace SimPe.Cache
 		/// </summary>
 		public string ResourceName
 		{
-			get
-			{
-				return resourcename;
-			}
-			set
-			{
-				resourcename = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -107,14 +88,7 @@ namespace SimPe.Cache
 		/// </summary>
 		public string ModelName
 		{
-			get
-			{
-				return modelname;
-			}
-			set
-			{
-				modelname = value;
-			}
+			get; set;
 		}
 
 		public override string ToString()
@@ -131,12 +105,12 @@ namespace SimPe.Cache
 
 		public void Load(System.IO.BinaryReader reader)
 		{
-			version = reader.ReadByte();
-			if (version > VERSION)
-				throw new CacheException("Unknown CacheItem Version.", null, version);
+			Version = reader.ReadByte();
+			if (Version > VERSION)
+				throw new CacheException("Unknown CacheItem Version.", null, Version);
 
-			resourcename = reader.ReadString();
-			rtp = (RcolCacheItemType)reader.ReadByte();
+			ResourceName = reader.ReadString();
+			RcolType = (RcolCacheItemType)reader.ReadByte();
 			pfd = new Packages.PackedFileDescriptor();
 			pfd.Type = reader.ReadUInt32();
 			pfd.Group = reader.ReadUInt32();
@@ -145,16 +119,19 @@ namespace SimPe.Cache
 
 		public void Save(System.IO.BinaryWriter writer)
 		{
-			version = VERSION;
-			writer.Write(version);
-			writer.Write(resourcename);
-			writer.Write((byte)rtp);
+			Version = VERSION;
+			writer.Write(Version);
+			writer.Write(ResourceName);
+			writer.Write((byte)RcolType);
 			writer.Write(pfd.Type);
 			writer.Write(pfd.Group);
 			writer.Write(pfd.LongInstance);
 		}
 
-		public byte Version => version;
+		public byte Version
+		{
+			get; private set;
+		}
 
 		#endregion
 	}

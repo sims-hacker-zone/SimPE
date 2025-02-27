@@ -45,17 +45,7 @@ namespace SimPe.Plugin
 		byte[] filename = null;
 		ushort subver = 0;
 		Size sz;
-		Ltxt.LotType type = Ltxt.LotType.Residential;
-		byte roads = (byte)0x00; //noRoads = 0x00, atLeft = 0x01, atTop = 0x02, atRight = 0x04, atBottom = 0x08
 		Ltxt.Rotation rotation = Ltxt.Rotation.toLeft;
-		UInt32 unknown_0 = 0;
-		string lotname = ""; //7bitstr
-		string description = ""; //7bitstr
-
-		// DWORD length
-		List<UInt32> unknown_1;
-		float unknown_2 = 0f; // if ver == 7 or 8
-		UInt32 unknown_3 = 0; // if ver == 8
 		#endregion
 
 		#region Accessor methods
@@ -92,28 +82,8 @@ namespace SimPe.Plugin
 				sz = value;
 			}
 		}
-		public Ltxt.LotType Type
-		{
-			get
-			{
-				return type;
-			}
-			set
-			{
-				type = value;
-			}
-		}
-		public byte LotRoads
-		{
-			get
-			{
-				return roads;
-			}
-			set
-			{
-				roads = value;
-			}
-		}
+		public Ltxt.LotType Type { get; set; } = Ltxt.LotType.Residential;
+		public byte LotRoads { get; set; } = (byte)0x00;
 		public byte LotRotation
 		{
 			get
@@ -125,42 +95,15 @@ namespace SimPe.Plugin
 				rotation = (Ltxt.Rotation)value;
 			}
 		}
-		internal UInt32 Unknown0
+		internal UInt32 Unknown0 { get; set; } = 0;
+		public string LotName { get; set; } = "";
+		public string LotDesc { get; set; } = "";
+		internal List<UInt32> Unknown1
 		{
-			get
-			{
-				return unknown_0;
-			}
-			set
-			{
-				unknown_0 = value;
-			}
+			get; private set;
 		}
-		public string LotName
-		{
-			get
-			{
-				return lotname;
-			}
-			set
-			{
-				lotname = value;
-			}
-		}
-		public string LotDesc
-		{
-			get
-			{
-				return description;
-			}
-			set
-			{
-				description = value;
-			}
-		}
-		internal List<UInt32> Unknown1 => unknown_1;
-		internal float Unknown2 => unknown_2;
-		internal UInt32 Unknown3 => unknown_3;
+		internal float Unknown2 { get; private set; } = 0f;
+		internal UInt32 Unknown3 { get; private set; } = 0;
 		#endregion
 
 		/// <summary>
@@ -171,7 +114,7 @@ namespace SimPe.Plugin
 		{
 			filename = new byte[64];
 			sz = new Size(1, 1);
-			unknown_1 = new List<UInt32>();
+			Unknown1 = new List<UInt32>();
 		}
 
 		#region IWrapper member
@@ -215,28 +158,28 @@ namespace SimPe.Plugin
 			subver = reader.ReadUInt16();
 			sz.Width = reader.ReadInt32();
 			sz.Height = reader.ReadInt32();
-			type = (Ltxt.LotType)reader.ReadByte();
+			Type = (Ltxt.LotType)reader.ReadByte();
 
-			roads = reader.ReadByte();
+			LotRoads = reader.ReadByte();
 			rotation = (Ltxt.Rotation)reader.ReadByte();
-			unknown_0 = reader.ReadUInt32();
+			Unknown0 = reader.ReadUInt32();
 
-			lotname = reader.ReadString();
-			description = reader.ReadString();
+			LotName = reader.ReadString();
+			LotDesc = reader.ReadString();
 
-			unknown_1 = new List<UInt32>();
+			Unknown1 = new List<UInt32>();
 			int len = reader.ReadInt32();
 			for (int i = 0; i < len; i++)
-				this.unknown_1.Add(reader.ReadUInt32());
+				this.Unknown1.Add(reader.ReadUInt32());
 
 			if (subver >= (UInt16)LtxtSubVersion.Voyage)
-				unknown_2 = reader.ReadSingle();
+				Unknown2 = reader.ReadSingle();
 			else
-				unknown_2 = 0;
+				Unknown2 = 0;
 			if (subver >= (UInt16)LtxtSubVersion.Freetime)
-				unknown_3 = reader.ReadUInt32();
+				Unknown3 = reader.ReadUInt32();
 			else
-				unknown_3 = 0;
+				Unknown3 = 0;
 		}
 
 		/// <summary>
@@ -253,23 +196,23 @@ namespace SimPe.Plugin
 			writer.Write(subver);
 			writer.Write(sz.Width);
 			writer.Write(sz.Height);
-			writer.Write((byte)type);
+			writer.Write((byte)Type);
 
-			writer.Write((byte)roads);
+			writer.Write((byte)LotRoads);
 			writer.Write((byte)rotation);
-			writer.Write(unknown_0);
+			writer.Write(Unknown0);
 
-			writer.Write(lotname);
-			writer.Write(description);
+			writer.Write(LotName);
+			writer.Write(LotDesc);
 
-			writer.Write(unknown_1.Count);
-			foreach (UInt32 i in unknown_1)
+			writer.Write(Unknown1.Count);
+			foreach (UInt32 i in Unknown1)
 				writer.Write(i);
 
 			if (subver >= (UInt16)LtxtSubVersion.Voyage)
-				writer.Write(unknown_2);
+				writer.Write(Unknown2);
 			if (subver >= (UInt16)LtxtSubVersion.Freetime)
-				writer.Write(unknown_3);
+				writer.Write(Unknown3);
 		}
 		#endregion
 

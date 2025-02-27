@@ -24,43 +24,26 @@ namespace SimPe.Plugin.Gmdc
 {
 	public class GroupDescriptor
 	{
-		string name;
-		int index;
-
 		public GroupDescriptor(string name)
 			: this(name, -1) { }
 
 		public GroupDescriptor(string name, int index)
 		{
-			this.name = name;
-			this.index = index;
+			this.Name = name;
+			this.Index = index;
 		}
 
 		public string Name
 		{
-			get
-			{
-				return name;
-			}
-			set
-			{
-				name = value;
-			}
+			get; set;
 		}
 
 		public int Index
 		{
-			get
-			{
-				return index;
-			}
-			set
-			{
-				index = value;
-			}
+			get; set;
 		}
 
-		public bool HasIndex => (index >= 0);
+		public bool HasIndex => (Index >= 0);
 	}
 
 	/// <summary>
@@ -101,65 +84,29 @@ namespace SimPe.Plugin.Gmdc
 	public class GmdcGroupImporterAction
 	{
 		/// <summary>
-		/// internal Attribute
-		/// </summary>
-		GroupDescriptor newname;
-
-		/// <summary>
 		/// If action is <see cref="GmdcImporterAction.Replace"/>, <see cref="GmdcImporterAction.Update"/> or
 		/// <see cref="GmdcImporterAction.Rename"/>, this Member stores the
 		/// new Name for the current Group. (read/write)
 		/// </summary>
 		public GroupDescriptor Target
 		{
-			get
-			{
-				return newname;
-			}
-			set
-			{
-				newname = value;
-			}
+			get; set;
 		}
-
-		/// <summary>
-		/// internal Attribute
-		/// </summary>
-		GmdcImporterAction action;
 
 		/// <summary>
 		/// Returns/Sets the action that should be performed
 		/// </summary>
 		public GmdcImporterAction Action
 		{
-			get
-			{
-				return action;
-			}
-			set
-			{
-				action = value;
-			}
+			get; set;
 		}
-
-		/// <summary>
-		/// internal Attribute
-		/// </summary>
-		float scale;
 
 		/// <summary>
 		/// Returns/Sets the scale Factor that should be applied to this group
 		/// </summary>
 		public float Scale
 		{
-			get
-			{
-				return scale;
-			}
-			set
-			{
-				scale = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -167,10 +114,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcGroupImporterAction()
 		{
-			action = GmdcImporterAction.Add;
-			scale = (float)(1.0);
+			Action = GmdcImporterAction.Add;
+			Scale = (float)(1.0);
 
-			newname = new GroupDescriptor("");
+			Target = new GroupDescriptor("");
 		}
 	}
 
@@ -179,26 +126,29 @@ namespace SimPe.Plugin.Gmdc
 	/// </summary>
 	public class ImportedGroup : GmdcGroupImporterAction
 	{
-		GmdcGroup group;
-
 		/// <summary>
 		/// The new MeshGroup
 		/// </summary>
-		public GmdcGroup Group => group;
-
-		GmdcLink link;
+		public GmdcGroup Group
+		{
+			get;
+		}
 
 		/// <summary>
 		/// The new Link Section
 		/// </summary>
-		public GmdcLink Link => link;
-
-		GmdcElements elements;
+		public GmdcLink Link
+		{
+			get;
+		}
 
 		/// <summary>
 		/// All Elements used by this Group
 		/// </summary>
-		public GmdcElements Elements => elements;
+		public GmdcElements Elements
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Number of faces stored in the Group
@@ -221,31 +171,23 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns></returns>
 		public int FaceCount => this.Group.Faces.Length / 3;
 
-		bool useinbmesh;
-
 		/// <summary>
 		/// True, if this MEshGroup sould be added to the BoundingMesh
 		/// </summary>
 		public bool UseInBoundingMesh
 		{
-			get
-			{
-				return useinbmesh;
-			}
-			set
-			{
-				useinbmesh = value;
-			}
+			get; set;
 		}
-
-		bool keeporder;
 
 		internal void SetKeepOrder(bool val)
 		{
-			keeporder = val;
+			KeepOrder = val;
 		}
 
-		public bool KeepOrder => keeporder;
+		public bool KeepOrder
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Returns the color that should be used to display this Group in the "Import Groups" ListView
@@ -271,11 +213,11 @@ namespace SimPe.Plugin.Gmdc
 		public ImportedGroup(GeometryDataContainer parent)
 			: base()
 		{
-			keeporder = true;
-			group = new GmdcGroup(parent);
-			link = new GmdcLink(parent);
-			elements = new GmdcElements();
-			useinbmesh = false;
+			KeepOrder = true;
+			Group = new GmdcGroup(parent);
+			Link = new GmdcLink(parent);
+			Elements = new GmdcElements();
+			UseInBoundingMesh = false;
 		}
 	}
 

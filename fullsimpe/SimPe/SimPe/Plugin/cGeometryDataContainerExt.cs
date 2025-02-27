@@ -37,7 +37,6 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class GeometryDataContainerExt : System.IDisposable
 	{
-		GeometryDataContainer gmdc;
 		bool joints;
 
 		public GeometryDataContainerExt(GeometryDataContainer gmdc)
@@ -46,15 +45,15 @@ namespace SimPe.Plugin
 		public GeometryDataContainerExt(GeometryDataContainer gmdc, bool withjoints)
 		{
 			joints = withjoints;
-			this.gmdc = gmdc;
-			txtrmap = new Hashtable();
-			txmtmap = new Hashtable();
+			this.Gmdc = gmdc;
+			UserTxtrMap = new Hashtable();
+			UserTxmtMap = new Hashtable();
 		}
 
-		public GeometryDataContainer Gmdc => gmdc;
-
-		Hashtable txtrmap,
-			txmtmap;
+		public GeometryDataContainer Gmdc
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Used as a User Override for the automatically created List of TXMTs, which is used for
@@ -62,7 +61,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <remarks>Keyas are the SubSet Names, the Values are <see cref="GenericRcol"/> Instances,
 		/// that hold the TXMT for that Subset</remarks>
-		public Hashtable UserTxtrMap => txtrmap;
+		public Hashtable UserTxtrMap
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Used as a User Override for the automatically created List of TXTRs, which is used for
@@ -70,7 +72,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <remarks>Keyas are the SubSet Names, the Values are <see cref="GenericRcol"/> Instances,
 		/// that hold the TXTR for that Subset</remarks>
-		public Hashtable UserTxmtMap => txmtmap;
+		public Hashtable UserTxmtMap
+		{
+			get;
+		}
 
 		public Ambertation.Scenes.Scene GetScene(
 			string absimgpath,
@@ -78,7 +83,7 @@ namespace SimPe.Plugin
 			ElementOrder component
 		)
 		{
-			return GetScene(gmdc.Groups, absimgpath, imgfolder, component);
+			return GetScene(Gmdc.Groups, absimgpath, imgfolder, component);
 		}
 
 		public Ambertation.Scenes.Scene GetScene(
@@ -86,12 +91,12 @@ namespace SimPe.Plugin
 			ElementOrder component
 		)
 		{
-			return GetScene(gmdc.Groups, absimgpath, null, component);
+			return GetScene(Gmdc.Groups, absimgpath, null, component);
 		}
 
 		public Ambertation.Scenes.Scene GetScene(ElementOrder component)
 		{
-			return GetScene(gmdc.Groups, null, null, component);
+			return GetScene(Gmdc.Groups, null, null, component);
 		}
 
 		void AddJoint(
@@ -103,10 +108,10 @@ namespace SimPe.Plugin
 		{
 			if (!joints)
 				return;
-			if (index < 0 || index >= gmdc.Joints.Count)
+			if (index < 0 || index >= Gmdc.Joints.Count)
 				return;
 
-			GmdcJoint j = gmdc.Joints[index];
+			GmdcJoint j = Gmdc.Joints[index];
 			Ambertation.Scenes.Joint nj = parent.CreateChild(j.Name);
 			jointmap[index] = nj;
 
@@ -150,7 +155,7 @@ namespace SimPe.Plugin
 			if (!joints)
 				return new Hashtable();
 			IntArrayList js = new IntArrayList();
-			Hashtable relationmap = gmdc.LoadJointRelationMap();
+			Hashtable relationmap = Gmdc.LoadJointRelationMap();
 
 			foreach (int k in relationmap.Keys)
 				if ((int)relationmap[k] == -1)
@@ -216,19 +221,19 @@ namespace SimPe.Plugin
 				Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
 			}
 
-			TextureLocator tl = new TextureLocator(gmdc.Parent.Package);
-			System.Collections.Hashtable txmts = tl.FindMaterials(gmdc.Parent);
-			foreach (string key in txmtmap.Keys)
+			TextureLocator tl = new TextureLocator(Gmdc.Parent.Package);
+			System.Collections.Hashtable txmts = tl.FindMaterials(Gmdc.Parent);
+			foreach (string key in UserTxmtMap.Keys)
 			{
-				object o = txmtmap[key];
+				object o = UserTxmtMap[key];
 				if (o != null)
-					txmts[key] = txmtmap[key];
+					txmts[key] = UserTxmtMap[key];
 			}
 
 			Hashtable txtrs = tl.FindReferencedTXTR(txmts, null);
-			foreach (string key in txtrmap.Keys)
+			foreach (string key in UserTxtrMap.Keys)
 			{
-				object o = txtrmap[key];
+				object o = UserTxtrMap[key];
 				if (o != null)
 					txtrs[key] = o;
 			}
@@ -412,9 +417,9 @@ namespace SimPe.Plugin
 
 		public void Dispose()
 		{
-			txtrmap.Clear();
-			txmtmap.Clear();
-			gmdc = null;
+			UserTxtrMap.Clear();
+			UserTxmtMap.Clear();
+			Gmdc = null;
 		}
 
 		#endregion

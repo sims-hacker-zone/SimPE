@@ -33,17 +33,9 @@ namespace SimPe.Plugin
 		#region Attributes
 		GeometryBuilder gb;
 
-		byte[] u1;
 		public byte[] Unknown1
 		{
-			get
-			{
-				return u1;
-			}
-			set
-			{
-				u1 = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -57,7 +49,7 @@ namespace SimPe.Plugin
 			gb = new GeometryBuilder(null);
 			BlockID = 0x1cfeceb8;
 
-			u1 = new byte[5];
+			Unknown1 = new byte[5];
 		}
 
 		#region IRcolBlock Member
@@ -76,7 +68,7 @@ namespace SimPe.Plugin
 			gb.BlockID = myid;
 
 			if (version >= 0x2)
-				u1 = reader.ReadBytes(u1.Length);
+				Unknown1 = reader.ReadBytes(Unknown1.Length);
 		}
 
 		/// <summary>
@@ -96,7 +88,7 @@ namespace SimPe.Plugin
 			gb.Serialize(writer);
 
 			if (version >= 0x2)
-				writer.Write(u1);
+				writer.Write(Unknown1);
 		}
 
 		//fShapeRefNode form = null;

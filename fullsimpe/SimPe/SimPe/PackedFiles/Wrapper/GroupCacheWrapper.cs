@@ -40,13 +40,15 @@ namespace SimPe.PackedFiles.Wrapper
 	{
 		#region Attributes
 		uint id;
-		GroupCacheItems items;
 
 		/// <summary>
 		/// Returns the Items stored in the FIle
 		/// </summary>
 		/// <remarks>Do not add Items based on this List! use the Add Method!!</remarks>
-		internal GroupCacheItems Items => items;
+		internal GroupCacheItems Items
+		{
+			get;
+		}
 
 		Hashtable map;
 		uint maxgroup;
@@ -60,7 +62,7 @@ namespace SimPe.PackedFiles.Wrapper
 			: base()
 		{
 			id = 0x05;
-			items = new GroupCacheItems();
+			Items = new GroupCacheItems();
 			map = new Hashtable();
 			maxgroup = 0x6f000000;
 			over = new byte[0];
@@ -99,7 +101,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			if (gci.LocalGroup > maxgroup)
 				maxgroup = gci.LocalGroup;
-			items.Add(gci);
+			Items.Add(gci);
 			map[AbsoluteFileName(gci.FileName)] = gci;
 		}
 
@@ -109,7 +111,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="gci">The Item you want to remove</param>
 		public void Remove(GroupCacheItem gci)
 		{
-			items.Remove(gci);
+			Items.Remove(gci);
 			map.Remove(AbsoluteFileName(gci.FileName));
 		}
 
@@ -161,7 +163,7 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			maxgroup = 0x6f000000;
-			items.Clear();
+			Items.Clear();
 			map.Clear();
 			//return;
 			id = reader.ReadUInt32();
@@ -202,9 +204,9 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			writer.Write(id);
 
-			writer.Write((uint)items.Length);
-			for (int i = 0; i < items.Length; i++)
-				items[i].Serialize(writer);
+			writer.Write((uint)Items.Length);
+			for (int i = 0; i < Items.Length; i++)
+				Items[i].Serialize(writer);
 			writer.Write(over);
 		}
 		#endregion

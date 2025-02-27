@@ -30,55 +30,50 @@ namespace SimPe.Plugin.Anim
 	{
 		#region Attributes
 
-		byte[] unknowndata;
 		internal byte[] Data
 		{
-			get
-			{
-				return unknowndata;
-			}
-			set
-			{
-				unknowndata = value;
-			}
+			get; set;
 		}
-
-		short unknown1;
 
 		[DescriptionAttribute("The Time the Animation takes to play (probably in ms)")]
 		public short TotalTime
 		{
-			get
-			{
-				return unknown1;
-			}
-			set
-			{
-				unknown1 = value;
-			}
+			get; set;
 		}
 
-		public Ambertation.BaseChangeShort B_Unknown1 => new Ambertation.BaseChangeShort(unknown1);
-		byte[] headerb;
+		public Ambertation.BaseChangeShort B_Unknown1 => new Ambertation.BaseChangeShort(TotalTime);
 
 		[DescriptionAttribute("Index 0 and 5 contain string Lengths.")]
-		public byte[] HeaderBytes => headerb;
+		public byte[] HeaderBytes
+		{
+			get; private set;
+		}
 
-		uint[] headeri;
-		public uint[] HeaderInts => headeri;
+		public uint[] HeaderInts
+		{
+			get;
+		}
 
-		float[] headerf;
-		public float[] HeaderFloats => headerf;
+		public float[] HeaderFloats
+		{
+			get;
+		}
 
-		string objname;
-		public string ObjName => objname;
-		string objmod;
-		public string ObjMod => objmod;
+		public string ObjName
+		{
+			get; private set;
+		}
 
-		AnimationMeshBlock[] ab1;
+		public string ObjMod
+		{
+			get; private set;
+		}
 
 		[Browsable(false)]
-		public AnimationMeshBlock[] MeshBlock => ab1;
+		public AnimationMeshBlock[] MeshBlock
+		{
+			get; private set;
+		}
 
 		AnimBlock6[] ab6;
 		#endregion
@@ -91,17 +86,17 @@ namespace SimPe.Plugin.Anim
 			: base(parent)
 		{
 			sgres = new SGResource(null);
-			unknowndata = new byte[0];
+			Data = new byte[0];
 			BlockID = 0xfb00791e;
 
-			headerb = new byte[6];
-			headeri = new uint[4];
-			headerf = new float[9];
+			HeaderBytes = new byte[6];
+			HeaderInts = new uint[4];
+			HeaderFloats = new float[9];
 
-			objname = "";
-			objmod = "";
+			ObjName = "";
+			ObjMod = "";
 
-			ab1 = new AnimationMeshBlock[0];
+			MeshBlock = new AnimationMeshBlock[0];
 			ab6 = new AnimBlock6[0];
 		}
 
@@ -207,59 +202,59 @@ namespace SimPe.Plugin.Anim
 
 		public void UnserializeData(System.IO.BinaryReader reader)
 		{
-			unknown1 = reader.ReadInt16();
+			TotalTime = reader.ReadInt16();
 			short ct1 = reader.ReadInt16();
 			short ct2 = reader.ReadInt16();
 
-			headerb = reader.ReadBytes(headerb.Length);
-			for (int i = 0; i < headeri.Length; i++)
-				headeri[i] = reader.ReadUInt32();
-			for (int i = 0; i < headerf.Length; i++)
-				headerf[i] = reader.ReadSingle();
+			HeaderBytes = reader.ReadBytes(HeaderBytes.Length);
+			for (int i = 0; i < HeaderInts.Length; i++)
+				HeaderInts[i] = reader.ReadUInt32();
+			for (int i = 0; i < HeaderFloats.Length; i++)
+				HeaderFloats[i] = reader.ReadSingle();
 
-			objname = Helper.ToString(reader.ReadBytes(headerb[5]));
+			ObjName = Helper.ToString(reader.ReadBytes(HeaderBytes[5]));
 			reader.ReadByte(); //read the terminating 0
-			objmod = Helper.ToString(reader.ReadBytes(headerb[0]));
+			ObjMod = Helper.ToString(reader.ReadBytes(HeaderBytes[0]));
 			reader.ReadByte(); //read the terminating 0
 
-			int ct = headerb[0] + headerb[5];
+			int ct = HeaderBytes[0] + HeaderBytes[5];
 			Align(reader, ct + 2);
 
 			//--- part1 ---
-			ab1 = new AnimationMeshBlock[ct1];
+			MeshBlock = new AnimationMeshBlock[ct1];
 			int len = 0;
-			for (int i = 0; i < ab1.Length; i++)
+			for (int i = 0; i < MeshBlock.Length; i++)
 			{
-				ab1[i] = new AnimationMeshBlock(this.Parent);
-				ab1[i].UnserializeData(reader);
+				MeshBlock[i] = new AnimationMeshBlock(this.Parent);
+				MeshBlock[i].UnserializeData(reader);
 			}
-			for (int i = 0; i < ab1.Length; i++)
-				len += ab1[i].UnserializeName(reader);
+			for (int i = 0; i < MeshBlock.Length; i++)
+				len += MeshBlock[i].UnserializeName(reader);
 			Align(reader, len);
 
 			//--- part2 ---
 			len = 0;
-			for (int i = 0; i < ab1.Length; i++)
-				ab1[i].UnserializePart2Data(reader);
-			for (int i = 0; i < ab1.Length; i++)
-				len += ab1[i].UnserializePart2Name(reader);
+			for (int i = 0; i < MeshBlock.Length; i++)
+				MeshBlock[i].UnserializePart2Data(reader);
+			for (int i = 0; i < MeshBlock.Length; i++)
+				len += MeshBlock[i].UnserializePart2Name(reader);
 			Align(reader, len);
 
 			try
 			{
 				//--- part3 ---
-				for (int i = 0; i < ab1.Length; i++)
-					ab1[i].UnserializePart3Data(reader);
-				for (int i = 0; i < ab1.Length; i++)
-					ab1[i].UnserializePart3AddonData(reader);
+				for (int i = 0; i < MeshBlock.Length; i++)
+					MeshBlock[i].UnserializePart3Data(reader);
+				for (int i = 0; i < MeshBlock.Length; i++)
+					MeshBlock[i].UnserializePart3AddonData(reader);
 
 				//--- part4 ---
-				for (int i = 0; i < ab1.Length; i++)
-					ab1[i].UnserializePart4Data(reader);
+				for (int i = 0; i < MeshBlock.Length; i++)
+					MeshBlock[i].UnserializePart4Data(reader);
 
 				//--- part5 ---
-				for (int i = 0; i < ab1.Length; i++)
-					ab1[i].UnserializePart5Data(reader);
+				for (int i = 0; i < MeshBlock.Length; i++)
+					MeshBlock[i].UnserializePart5Data(reader);
 
 				//--- part6 ---
 				ab6 = new AnimBlock6[ct2];
@@ -274,29 +269,29 @@ namespace SimPe.Plugin.Anim
 			}
 			catch { }
 
-			unknowndata = reader.ReadBytes(
+			Data = reader.ReadBytes(
 				(int)(reader.BaseStream.Length - reader.BaseStream.Position)
 			);
 		}
 
 		public void SerializeData(System.IO.BinaryWriter writer)
 		{
-			writer.Write(unknown1);
-			writer.Write((short)ab1.Length);
+			writer.Write(TotalTime);
+			writer.Write((short)MeshBlock.Length);
 			writer.Write((short)ab6.Length);
 
-			writer.Write(headerb);
+			writer.Write(HeaderBytes);
 
 			//write lengths to the Header
-			byte[] bobjname = Helper.ToBytes(objname);
-			byte[] bobjmod = Helper.ToBytes(objmod);
-			headerb[0] = (byte)bobjmod.Length;
-			headerb[5] = (byte)bobjname.Length;
+			byte[] bobjname = Helper.ToBytes(ObjName);
+			byte[] bobjmod = Helper.ToBytes(ObjMod);
+			HeaderBytes[0] = (byte)bobjmod.Length;
+			HeaderBytes[5] = (byte)bobjname.Length;
 
-			for (int i = 0; i < headeri.Length; i++)
-				writer.Write(headeri[i]);
-			for (int i = 0; i < headerf.Length; i++)
-				writer.Write(headerf[i]);
+			for (int i = 0; i < HeaderInts.Length; i++)
+				writer.Write(HeaderInts[i]);
+			for (int i = 0; i < HeaderFloats.Length; i++)
+				writer.Write(HeaderFloats[i]);
 
 			foreach (byte b in bobjname)
 				writer.Write(b);
@@ -305,38 +300,38 @@ namespace SimPe.Plugin.Anim
 				writer.Write(b);
 			writer.Write((byte)0);
 
-			int ct = headerb[0] + headerb[5];
+			int ct = HeaderBytes[0] + HeaderBytes[5];
 			Align(writer, ct + 2);
 
 			//--- part1 ---
 			int len = 0;
-			for (int i = 0; i < ab1.Length; i++)
-				ab1[i].SerializeData(writer);
-			for (int i = 0; i < ab1.Length; i++)
-				len += ab1[i].SerializeName(writer);
+			for (int i = 0; i < MeshBlock.Length; i++)
+				MeshBlock[i].SerializeData(writer);
+			for (int i = 0; i < MeshBlock.Length; i++)
+				len += MeshBlock[i].SerializeName(writer);
 			Align(writer, len);
 
 			//--- part2 ---
 			len = 0;
-			for (int i = 0; i < ab1.Length; i++)
-				ab1[i].SerializePart2Data(writer);
-			for (int i = 0; i < ab1.Length; i++)
-				len += ab1[i].SerializePart2Name(writer);
+			for (int i = 0; i < MeshBlock.Length; i++)
+				MeshBlock[i].SerializePart2Data(writer);
+			for (int i = 0; i < MeshBlock.Length; i++)
+				len += MeshBlock[i].SerializePart2Name(writer);
 			Align(writer, len);
 
 			//--- part3 ---
-			for (int i = 0; i < ab1.Length; i++)
-				ab1[i].SerializePart3Data(writer);
-			for (int i = 0; i < ab1.Length; i++)
-				ab1[i].SerializePart3AddonData(writer);
+			for (int i = 0; i < MeshBlock.Length; i++)
+				MeshBlock[i].SerializePart3Data(writer);
+			for (int i = 0; i < MeshBlock.Length; i++)
+				MeshBlock[i].SerializePart3AddonData(writer);
 
 			//--- part4 ---
-			for (int i = 0; i < ab1.Length; i++)
-				ab1[i].SerializePart4Data(writer);
+			for (int i = 0; i < MeshBlock.Length; i++)
+				MeshBlock[i].SerializePart4Data(writer);
 
 			//--- part5 ---
-			for (int i = 0; i < ab1.Length; i++)
-				ab1[i].SerializePart5Data(writer);
+			for (int i = 0; i < MeshBlock.Length; i++)
+				MeshBlock[i].SerializePart5Data(writer);
 
 			//--- part6 ---
 			for (int i = 0; i < ab6.Length; i++)
@@ -344,7 +339,7 @@ namespace SimPe.Plugin.Anim
 			for (int i = 0; i < ab6.Length; i++)
 				ab6[i].SerializeName(writer);
 
-			writer.Write(unknowndata);
+			writer.Write(Data);
 		}
 
 		fAnimResourceConst form = null;
@@ -376,7 +371,7 @@ namespace SimPe.Plugin.Anim
 			btn.Tag = this;
 			form.tv.Nodes.Add(btn);
 			// can get a null reference exception here, it seems some AnimationMeshBlocks may not be readable
-			foreach (AnimationMeshBlock ab in this.ab1)
+			foreach (AnimationMeshBlock ab in this.MeshBlock)
 			{
 				try
 				{
@@ -482,7 +477,7 @@ namespace SimPe.Plugin.Anim
 			form.tb_arc_ver.Text = "0x" + Helper.HexString(this.version);
 			form.tb_arc_ver.Tag = null;
 
-			form.ambc.MeshBlocks = this.ab1;
+			form.ambc.MeshBlocks = this.MeshBlock;
 		}
 
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)

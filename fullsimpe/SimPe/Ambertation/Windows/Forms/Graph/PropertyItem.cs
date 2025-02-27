@@ -26,27 +26,20 @@ namespace Ambertation.Windows.Forms.Graph
 	/// </summary>
 	public class PropertyItem
 	{
-		string name;
-		object val;
-
-		public string Name => name;
+		public string Name
+		{
+			get;
+		}
 
 		public object Value
 		{
-			get
-			{
-				return val;
-			}
-			set
-			{
-				val = value;
-			}
+			get; set;
 		}
 
 		public PropertyItem(string name, object val)
 		{
-			this.name = name;
-			this.val = val;
+			this.Name = name;
+			this.Value = val;
 		}
 	}
 }

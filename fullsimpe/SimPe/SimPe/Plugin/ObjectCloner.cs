@@ -50,27 +50,12 @@ namespace SimPe.Plugin
 			Xml = 0x04,
 		}
 
-		bool includeWallmask;
-		bool onlydefault;
-		bool updateguid;
-		bool exception;
-		bool loadanim;
-		bool keepmesh;
-		BaseResourceType use3idr;
-
 		/// <summary>
 		/// true, if you want to load Files referenced by 3IDR Resoures
 		/// </summary>
 		public BaseResourceType BaseResource
 		{
-			get
-			{
-				return use3idr;
-			}
-			set
-			{
-				use3idr = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -78,14 +63,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public bool KeepOriginalMesh
 		{
-			get
-			{
-				return keepmesh;
-			}
-			set
-			{
-				keepmesh = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -93,14 +71,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public bool IncludeWallmask
 		{
-			get
-			{
-				return includeWallmask;
-			}
-			set
-			{
-				includeWallmask = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -108,14 +79,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public bool OnlyDefaultMmats
 		{
-			get
-			{
-				return onlydefault;
-			}
-			set
-			{
-				onlydefault = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -123,14 +87,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public bool UpdateMmatGuids
 		{
-			get
-			{
-				return updateguid;
-			}
-			set
-			{
-				updateguid = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -138,14 +95,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public bool ThrowExceptions
 		{
-			get
-			{
-				return exception;
-			}
-			set
-			{
-				exception = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -153,34 +103,16 @@ namespace SimPe.Plugin
 		/// </summary>
 		public bool IncludeAnimationResources
 		{
-			get
-			{
-				return loadanim;
-			}
-			set
-			{
-				loadanim = value;
-			}
+			get; set;
 		}
-
-		StrIntsanceAlias[] pullfromstrinst;
 
 		/// <summary>
 		/// The INstances of StrResources, that can contain valid Links to Scenegraph Resources
 		/// </summary>
 		public StrIntsanceAlias[] StrInstances
 		{
-			get
-			{
-				return pullfromstrinst;
-			}
-			set
-			{
-				pullfromstrinst = value;
-			}
+			get; set;
 		}
-
-		bool pullfromstr;
 
 		/// <summary>
 		/// If true, SimPe will check all Str resources with the instance listed in <see cref="PullFromStrInstances"/>
@@ -188,14 +120,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public bool PullResourcesByStr
 		{
-			get
-			{
-				return pullfromstr;
-			}
-			set
-			{
-				pullfromstr = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -203,18 +128,18 @@ namespace SimPe.Plugin
 		/// </summary>
 		public CloneSettings()
 		{
-			pullfromstrinst = new StrIntsanceAlias[]
+			StrInstances = new StrIntsanceAlias[]
 			{
 				new StrIntsanceAlias(0x88, Data.MetaData.TXMT, "_txmt"),
 			};
-			pullfromstr = true;
-			includeWallmask = true;
-			exception = true;
-			updateguid = true;
-			onlydefault = true;
-			loadanim = false;
-			keepmesh = false;
-			use3idr = BaseResourceType.Objd;
+			PullResourcesByStr = true;
+			IncludeWallmask = true;
+			ThrowExceptions = true;
+			UpdateMmatGuids = true;
+			OnlyDefaultMmats = true;
+			IncludeAnimationResources = false;
+			KeepOriginalMesh = false;
+			BaseResource = BaseResourceType.Objd;
 		}
 	}
 
@@ -226,28 +151,17 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// The Base Package
 		/// </summary>
-		IPackageFile package;
-
-		/// <summary>
-		/// The Base Package
-		/// </summary>
-		public IPackageFile Package => package;
-
-		CloneSettings setup;
+		public IPackageFile Package
+		{
+			get;
+		}
 
 		/// <summary>
 		/// The Settings for this Cloner
 		/// </summary>
 		public CloneSettings Setup
 		{
-			get
-			{
-				return setup;
-			}
-			set
-			{
-				setup = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -256,8 +170,8 @@ namespace SimPe.Plugin
 		/// <param name="package">The Package that should receive the Clone</param>
 		public ObjectCloner(IPackageFile package)
 		{
-			this.package = package;
-			setup = new CloneSettings();
+			this.Package = package;
+			Setup = new CloneSettings();
 		}
 
 		/// <summary>
@@ -265,8 +179,8 @@ namespace SimPe.Plugin
 		/// </summary>
 		public ObjectCloner()
 		{
-			package = GeneratableFile.LoadFromStream((System.IO.BinaryReader)null);
-			setup = new CloneSettings();
+			Package = GeneratableFile.LoadFromStream((System.IO.BinaryReader)null);
+			Setup = new CloneSettings();
 		}
 
 		/// <summary>
@@ -332,18 +246,18 @@ namespace SimPe.Plugin
 		public uint GetPrimaryGuid()
 		{
 			uint guid = 0;
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFile(
+			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = Package.FindFile(
 				Data.MetaData.OBJD_FILE,
 				0,
 				0x41A7
 			);
 			if (pfds.Length == 0)
-				pfds = package.FindFiles(Data.MetaData.OBJD_FILE);
+				pfds = Package.FindFiles(Data.MetaData.OBJD_FILE);
 			if (pfds.Length > 0)
 			{
 				SimPe.PackedFiles.Wrapper.ExtObjd objd =
 					new SimPe.PackedFiles.Wrapper.ExtObjd();
-				objd.ProcessData(pfds[0], package);
+				objd.ProcessData(pfds[0], Package);
 				guid = objd.Guid;
 			}
 			return guid;
@@ -356,7 +270,7 @@ namespace SimPe.Plugin
 		public ArrayList GetGuidList()
 		{
 			ArrayList list = new ArrayList();
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
+			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = Package.FindFiles(
 				Data.MetaData.OBJD_FILE
 			);
 
@@ -364,7 +278,7 @@ namespace SimPe.Plugin
 			{
 				SimPe.PackedFiles.Wrapper.ExtObjd objd =
 					new SimPe.PackedFiles.Wrapper.ExtObjd();
-				objd.ProcessData(pfd, package);
+				objd.ProcessData(pfd, Package);
 				list.Add(objd.Guid);
 			}
 
@@ -381,14 +295,14 @@ namespace SimPe.Plugin
 			if (primary == 0)
 				return;
 
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
+			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = Package.FindFiles(
 				Data.MetaData.MMAT
 			);
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				SimPe.Plugin.MmatWrapper mmat = new MmatWrapper();
-				mmat.ProcessData(pfd, package);
+				mmat.ProcessData(pfd, Package);
 
 				//this seems to cause problems with slave Objects
 				/*if (!guids.Contains(mmat.ObjectGUID))
@@ -492,7 +406,7 @@ namespace SimPe.Plugin
 			SimPe.FileTable.FileIndex.Load();
 			if (WaitingScreen.Running)
 				WaitingScreen.UpdateMessage("Walking Scenegraph");
-			Scenegraph sg = new Scenegraph(modelnames, exclude, this.setup);
+			Scenegraph sg = new Scenegraph(modelnames, exclude, this.Setup);
 			if (
 				(Setup.BaseResource & CloneSettings.BaseResourceType.Ref)
 				== CloneSettings.BaseResourceType.Ref
@@ -500,7 +414,7 @@ namespace SimPe.Plugin
 			{
 				if (WaitingScreen.Running)
 					WaitingScreen.UpdateMessage("Reading 3IDR References");
-				sg.AddFrom3IDR(package);
+				sg.AddFrom3IDR(Package);
 			}
 			if (
 				(Setup.BaseResource & CloneSettings.BaseResourceType.Xml)
@@ -509,7 +423,7 @@ namespace SimPe.Plugin
 			{
 				if (WaitingScreen.Running)
 					WaitingScreen.UpdateMessage("Reading XObject Definition");
-				sg.AddFromXml(package);
+				sg.AddFromXml(Package);
 			}
 			if (Setup.IncludeWallmask)
 			{
@@ -521,7 +435,7 @@ namespace SimPe.Plugin
 			{
 				if (WaitingScreen.Running)
 					WaitingScreen.UpdateMessage("Scanning for #Str-linked Resources");
-				sg.AddStrLinked(package, Setup.StrInstances);
+				sg.AddStrLinked(Package, Setup.StrInstances);
 			}
 			if (Setup.IncludeAnimationResources)
 			{
@@ -535,20 +449,20 @@ namespace SimPe.Plugin
 
 			if (WaitingScreen.Running)
 				WaitingScreen.UpdateMessage("Building Package");
-			sg.BuildPackage(package);
+			sg.BuildPackage(Package);
 			if (WaitingScreen.Running)
 				WaitingScreen.UpdateMessage("Collect MMAT Files");
 			sg.AddMaterialOverrides(
-				package,
-				setup.OnlyDefaultMmats,
+				Package,
+				Setup.OnlyDefaultMmats,
 				true,
-				setup.ThrowExceptions
+				Setup.ThrowExceptions
 			);
 			if (WaitingScreen.Running)
 				WaitingScreen.UpdateMessage("Collect Slave TXMTs");
-			Scenegraph.AddSlaveTxmts(package, Scenegraph.GetSlaveSubsets(package));
+			Scenegraph.AddSlaveTxmts(Package, Scenegraph.GetSlaveSubsets(Package));
 
-			if (setup.UpdateMmatGuids)
+			if (Setup.UpdateMmatGuids)
 			{
 				if (WaitingScreen.Running)
 					WaitingScreen.UpdateMessage("Fixing MMAT Files");
@@ -581,7 +495,7 @@ namespace SimPe.Plugin
 
 			foreach (uint type in types)
 			{
-				SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
+				SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = Package.FindFiles(
 					type
 				);
 				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
@@ -589,14 +503,14 @@ namespace SimPe.Plugin
 					if (pkg.FindFile(pfd) != null)
 						continue;
 
-					SimPe.Interfaces.Files.IPackedFile file = package.Read(pfd);
+					SimPe.Interfaces.Files.IPackedFile file = Package.Read(pfd);
 					pfd.UserData = file.UncompressedData;
 
 					//Update the modeName in the MMAT
 					if ((pfd.Type == Data.MetaData.MMAT) && (names.Count > 0))
 					{
 						SimPe.Plugin.MmatWrapper mmat = new MmatWrapper();
-						mmat.ProcessData(pfd, package);
+						mmat.ProcessData(pfd, Package);
 
 						string n = mmat.ModelName.Trim().ToLower();
 						if (!n.EndsWith("_cres"))
@@ -640,13 +554,13 @@ namespace SimPe.Plugin
 			}
 
 			bool deleted = false;
-			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = Package.FindFiles(
 				Data.MetaData.SHPE
 			);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				Rcol rcol = new GenericRcol(null, false);
-				rcol.ProcessData(pfd, package);
+				rcol.ProcessData(pfd, Package);
 
 				foreach (ShapePart p in ((Shape)rcol.Blocks[0]).Parts)
 				{
@@ -675,7 +589,7 @@ namespace SimPe.Plugin
 
 						ArrayList names = new ArrayList();
 						Interfaces.Files.IPackedFileDescriptor[] rpfds =
-							package.FindFile(n, Data.MetaData.TXMT);
+							Package.FindFile(n, Data.MetaData.TXMT);
 						foreach (Interfaces.Files.IPackedFileDescriptor rpfd in rpfds)
 							names.Add(rpfd);
 						int pos = 0;
@@ -683,14 +597,14 @@ namespace SimPe.Plugin
 						{
 							Interfaces.Files.IPackedFileDescriptor rpfd =
 								(Interfaces.Files.IPackedFileDescriptor)names[pos++];
-							rpfd = package.FindFile(rpfd);
+							rpfd = Package.FindFile(rpfd);
 
 							if (rpfd != null)
 							{
 								rpfd.MarkForDelete = true;
 								deleted = true;
 								GenericRcol fl = new GenericRcol(null, false);
-								fl.ProcessData(rpfd, package);
+								fl.ProcessData(rpfd, Package);
 
 								Hashtable ht = fl.ReferenceChains;
 								foreach (string k in ht.Keys)
@@ -708,7 +622,7 @@ namespace SimPe.Plugin
 
 			//now remova all deleted Files from the Index
 			if (deleted)
-				package.RemoveMarked();
+				Package.RemoveMarked();
 		}
 	}
 }

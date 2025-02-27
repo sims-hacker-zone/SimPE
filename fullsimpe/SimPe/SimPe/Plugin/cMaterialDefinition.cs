@@ -37,56 +37,24 @@ namespace SimPe.Plugin
 		#region Attributes
 
 
-		string fldsc;
 		public string FileDescription
 		{
-			get
-			{
-				return fldsc;
-			}
-			set
-			{
-				fldsc = value;
-			}
+			get; set;
 		}
 
-		string mattype;
 		public string MatterialType
 		{
-			get
-			{
-				return mattype;
-			}
-			set
-			{
-				mattype = value;
-			}
+			get; set;
 		}
 
-		MaterialDefinitionProperty[] properties;
 		public MaterialDefinitionProperty[] Properties
 		{
-			get
-			{
-				return properties;
-			}
-			set
-			{
-				properties = value;
-			}
+			get; set;
 		}
 
-		string[] listing;
 		public string[] Listing
 		{
-			get
-			{
-				return listing;
-			}
-			set
-			{
-				listing = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -98,12 +66,12 @@ namespace SimPe.Plugin
 		public MaterialDefinition(Rcol parent)
 			: base(parent)
 		{
-			properties = new MaterialDefinitionProperty[0];
-			listing = new String[0];
+			Properties = new MaterialDefinitionProperty[0];
+			Listing = new String[0];
 			sgres = new SGResource(null);
 			BlockID = 0x49596978;
-			fldsc = "";
-			mattype = "";
+			FileDescription = "";
+			MatterialType = "";
 		}
 
 		/// <summary>
@@ -114,7 +82,7 @@ namespace SimPe.Plugin
 		public MaterialDefinitionProperty FindProperty(string name)
 		{
 			name = name.Trim().ToLower();
-			foreach (MaterialDefinitionProperty mdp in properties)
+			foreach (MaterialDefinitionProperty mdp in Properties)
 			{
 				if (mdp.Name.Trim().ToLower() == name)
 					return mdp;
@@ -155,7 +123,7 @@ namespace SimPe.Plugin
 			if (!duplicate)
 			{
 				MaterialDefinitionProperty ex = null;
-				foreach (MaterialDefinitionProperty mdp in properties)
+				foreach (MaterialDefinitionProperty mdp in Properties)
 				{
 					if (mdp.Name.Trim().ToLower() == prop.Name.Trim().ToLower())
 					{
@@ -167,13 +135,13 @@ namespace SimPe.Plugin
 				if (ex != null)
 					ex.Value = prop.Value;
 				else
-					this.properties = (MaterialDefinitionProperty[])
-						Helper.Add(properties, prop);
+					this.Properties = (MaterialDefinitionProperty[])
+						Helper.Add(Properties, prop);
 			}
 			else
 			{
-				this.properties = (MaterialDefinitionProperty[])
-					Helper.Add(properties, prop);
+				this.Properties = (MaterialDefinitionProperty[])
+					Helper.Add(Properties, prop);
 			}
 		}
 
@@ -188,37 +156,37 @@ namespace SimPe.Plugin
 			version = reader.ReadUInt32();
 			/*byte len = reader.ReadByte();
 			fldsc = Helper.ToString(reader.ReadBytes(len));*/
-			fldsc = reader.ReadString();
+			FileDescription = reader.ReadString();
 			uint myid = reader.ReadUInt32();
 			sgres.Unserialize(reader);
 			sgres.BlockID = myid;
 
 			/*len = reader.ReadByte();
 			fldsc = Helper.ToString(reader.ReadBytes(len));*/
-			fldsc = reader.ReadString();
+			FileDescription = reader.ReadString();
 			/*len = reader.ReadByte();
 			mattype = Helper.ToString(reader.ReadBytes(len));*/
-			mattype = reader.ReadString();
+			MatterialType = reader.ReadString();
 
-			properties = new MaterialDefinitionProperty[reader.ReadUInt32()];
-			for (int i = 0; i < properties.Length; i++)
+			Properties = new MaterialDefinitionProperty[reader.ReadUInt32()];
+			for (int i = 0; i < Properties.Length; i++)
 			{
-				properties[i] = new MaterialDefinitionProperty();
-				properties[i].Unserialize(reader);
+				Properties[i] = new MaterialDefinitionProperty();
+				Properties[i].Unserialize(reader);
 			}
 
 			if (version == 8)
 			{
-				listing = new String[0];
+				Listing = new String[0];
 			}
 			else
 			{
-				listing = new String[reader.ReadUInt32()];
-				for (int i = 0; i < listing.Length; i++)
+				Listing = new String[reader.ReadUInt32()];
+				for (int i = 0; i < Listing.Length; i++)
 				{
 					/*len = reader.ReadByte();
 					listing[i] = Helper.ToString(reader.ReadBytes(len));*/
-					listing[i] = reader.ReadString();
+					Listing[i] = reader.ReadString();
 				}
 			}
 		}
@@ -245,23 +213,23 @@ namespace SimPe.Plugin
 			writer.Write(Helper.ToBytes(fldsc, (byte)fldsc.Length));
 			writer.Write((byte)mattype.Length);
 			writer.Write(Helper.ToBytes(mattype, (byte)mattype.Length));*/
-			writer.Write(fldsc);
-			writer.Write(mattype);
+			writer.Write(FileDescription);
+			writer.Write(MatterialType);
 
-			writer.Write((uint)properties.Length);
-			for (int i = 0; i < properties.Length; i++)
+			writer.Write((uint)Properties.Length);
+			for (int i = 0; i < Properties.Length; i++)
 			{
-				properties[i].Serialize(writer);
+				Properties[i].Serialize(writer);
 			}
 
 			if (version != 8)
 			{
-				writer.Write((uint)listing.Length);
-				for (int i = 0; i < listing.Length; i++)
+				writer.Write((uint)Listing.Length);
+				for (int i = 0; i < Listing.Length; i++)
 				{
 					/*writer.Write((byte)listing[i].Length);
 					writer.Write(Helper.ToBytes(listing[i], (byte)listing[i].Length));*/
-					writer.Write(listing[i]);
+					writer.Write(Listing[i]);
 				}
 			}
 		}
@@ -467,14 +435,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public void Sort()
 		{
-			for (int i = 0; i < this.properties.Length - 1; i++)
-				for (int j = i + 1; j < this.properties.Length; j++)
+			for (int i = 0; i < this.Properties.Length - 1; i++)
+				for (int j = i + 1; j < this.Properties.Length; j++)
 				{
-					if (properties[i].Name.CompareTo(properties[j].Name) > 0)
+					if (Properties[i].Name.CompareTo(Properties[j].Name) > 0)
 					{
-						MaterialDefinitionProperty dum = properties[i];
-						properties[i] = properties[j];
-						properties[j] = dum;
+						MaterialDefinitionProperty dum = Properties[i];
+						Properties[i] = Properties[j];
+						Properties[j] = dum;
 					}
 				}
 		}
@@ -546,7 +514,7 @@ namespace SimPe.Plugin
 				xw.WriteComment("Block name: " + this.BlockName);
 				xw.WriteComment("File description: " + this.FileDescription);
 				xw.WriteComment("Material Type: " + this.MatterialType);
-				foreach (MaterialDefinitionProperty p in this.properties)
+				foreach (MaterialDefinitionProperty p in this.Properties)
 				{
 					xw.WriteStartElement("materialDefinitionProperty");
 					xw.WriteAttributeString("name", p.Name);
@@ -568,7 +536,7 @@ namespace SimPe.Plugin
 		/// <param name="filename">The name of the file to import</param>
 		public void ImportProperties(string filename)
 		{
-			properties = new MaterialDefinitionProperty[0];
+			Properties = new MaterialDefinitionProperty[0];
 			MergeProperties(filename);
 		}
 
@@ -639,38 +607,22 @@ namespace SimPe.Plugin
 	public class MaterialDefinitionProperty
 	{
 		#region Attributes
-		string name;
-		string val;
 
 		public string Name
 		{
-			get
-			{
-				return name;
-			}
-			set
-			{
-				name = value;
-			}
+			get; set;
 		}
 
 		public string Value
 		{
-			get
-			{
-				return val;
-			}
-			set
-			{
-				val = value;
-			}
+			get; set;
 		}
 		#endregion
 
 		public MaterialDefinitionProperty()
 		{
-			name = "";
-			val = "";
+			Name = "";
+			Value = "";
 		}
 
 		/// <summary>
@@ -679,8 +631,8 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		public void Unserialize(System.IO.BinaryReader reader)
 		{
-			name = reader.ReadString();
-			val = reader.ReadString();
+			Name = reader.ReadString();
+			Value = reader.ReadString();
 		}
 
 		/// <summary>
@@ -693,8 +645,8 @@ namespace SimPe.Plugin
 		/// </remarks>
 		public void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(name);
-			writer.Write(val);
+			writer.Write(Name);
+			writer.Write(Value);
 		}
 
 		public double ToValue()
@@ -793,7 +745,7 @@ namespace SimPe.Plugin
 		{
 			Ambertation.Collections.DoubleCollection dc =
 				new Ambertation.Collections.DoubleCollection();
-			string[] parts = val.Split(new char[] { ',' });
+			string[] parts = Value.Split(new char[] { ',' });
 			foreach (string s in parts)
 				try
 				{
@@ -814,7 +766,7 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			return name + ": " + val;
+			return Name + ": " + Value;
 		}
 	}
 }

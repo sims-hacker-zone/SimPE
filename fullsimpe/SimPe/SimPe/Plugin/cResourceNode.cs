@@ -27,30 +27,14 @@ namespace SimPe.Plugin
 {
 	public class ResourceNodeItem
 	{
-		short unknown1;
 		public short Unknown1
 		{
-			get
-			{
-				return unknown1;
-			}
-			set
-			{
-				unknown1 = value;
-			}
+			get; set;
 		}
 
-		int unknown2;
 		public int Unknown2
 		{
-			get
-			{
-				return unknown2;
-			}
-			set
-			{
-				unknown2 = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -59,8 +43,8 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		public void Unserialize(System.IO.BinaryReader reader)
 		{
-			unknown1 = reader.ReadInt16();
-			unknown2 = reader.ReadInt32();
+			Unknown1 = reader.ReadInt16();
+			Unknown2 = reader.ReadInt32();
 		}
 
 		/// <summary>
@@ -73,16 +57,16 @@ namespace SimPe.Plugin
 		/// </remarks>
 		public void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(unknown1);
-			writer.Write(unknown2);
+			writer.Write(Unknown1);
+			writer.Write(Unknown2);
 		}
 
 		public override string ToString()
 		{
 			return "0x"
-				+ Helper.HexString((ushort)unknown1)
+				+ Helper.HexString((ushort)Unknown1)
 				+ " 0x"
-				+ Helper.HexString((uint)unknown2);
+				+ Helper.HexString((uint)Unknown2);
 		}
 	}
 
@@ -96,52 +80,34 @@ namespace SimPe.Plugin
 	public class ResourceNode : AbstractCresChildren
 	{
 		#region Attributes
-		byte typecode;
-		public byte TypeCode => typecode;
+		public byte TypeCode
+		{
+			get; private set;
+		}
 
-		ObjectGraphNode ogn;
-		public ObjectGraphNode GraphNode => ogn;
+		public ObjectGraphNode GraphNode
+		{
+			get; private set;
+		}
 
-		CompositionTreeNode ctn;
-		public CompositionTreeNode TreeNode => ctn;
+		public CompositionTreeNode TreeNode
+		{
+			get; private set;
+		}
 
-		ResourceNodeItem[] items;
 		public ResourceNodeItem[] Items
 		{
-			get
-			{
-				return items;
-			}
-			set
-			{
-				items = value;
-			}
+			get; set;
 		}
 
-		int unknown1;
 		public int Unknown1
 		{
-			get
-			{
-				return unknown1;
-			}
-			set
-			{
-				unknown1 = value;
-			}
+			get; set;
 		}
 
-		int unknown2;
 		public int Unknown2
 		{
-			get
-			{
-				return unknown2;
-			}
-			set
-			{
-				unknown2 = value;
-			}
+			get; set;
 		}
 
 		[BrowsableAttribute(false)]
@@ -156,19 +122,19 @@ namespace SimPe.Plugin
 			: base(parent)
 		{
 			sgres = new SGResource(null);
-			ogn = new ObjectGraphNode(null);
-			ctn = new CompositionTreeNode(null);
-			items = new ResourceNodeItem[0];
+			GraphNode = new ObjectGraphNode(null);
+			TreeNode = new CompositionTreeNode(null);
+			Items = new ResourceNodeItem[0];
 
 			version = 0x07;
-			typecode = 0x01;
+			TypeCode = 0x01;
 			BlockID = 0xE519C933;
 		}
 
 		#region AbstractCresChildren Member
 		public override string GetName()
 		{
-			return ogn.FileName;
+			return GraphNode.FileName;
 		}
 
 		/// <summary>
@@ -179,7 +145,7 @@ namespace SimPe.Plugin
 			get
 			{
 				IntArrayList l = new IntArrayList();
-				foreach (ResourceNodeItem rni in items)
+				foreach (ResourceNodeItem rni in Items)
 				{
 					l.Add((rni.Unknown2 >> 24) & 0xff);
 				}
@@ -237,42 +203,42 @@ namespace SimPe.Plugin
 		public override void Unserialize(System.IO.BinaryReader reader)
 		{
 			version = reader.ReadUInt32();
-			typecode = reader.ReadByte();
+			TypeCode = reader.ReadByte();
 
 			string fldsc = reader.ReadString();
 			uint myid = reader.ReadUInt32();
 
-			if (typecode == 0x01)
+			if (TypeCode == 0x01)
 			{
 				sgres.Unserialize(reader);
 				sgres.BlockID = myid;
 
 				fldsc = reader.ReadString();
 				myid = reader.ReadUInt32();
-				ctn.Unserialize(reader);
-				ctn.BlockID = myid;
+				TreeNode.Unserialize(reader);
+				TreeNode.BlockID = myid;
 
 				fldsc = reader.ReadString();
 				myid = reader.ReadUInt32();
-				ogn.Unserialize(reader);
-				ogn.BlockID = myid;
+				GraphNode.Unserialize(reader);
+				GraphNode.BlockID = myid;
 
-				items = new ResourceNodeItem[reader.ReadByte()];
-				for (int i = 0; i < items.Length; i++)
+				Items = new ResourceNodeItem[reader.ReadByte()];
+				for (int i = 0; i < Items.Length; i++)
 				{
-					items[i] = new ResourceNodeItem();
-					items[i].Unserialize(reader);
+					Items[i] = new ResourceNodeItem();
+					Items[i].Unserialize(reader);
 				}
-				unknown1 = reader.ReadInt32();
+				Unknown1 = reader.ReadInt32();
 			}
-			else if (typecode == 0x00)
+			else if (TypeCode == 0x00)
 			{
-				ogn.Unserialize(reader);
-				ogn.BlockID = myid;
+				GraphNode.Unserialize(reader);
+				GraphNode.BlockID = myid;
 
-				items = new ResourceNodeItem[1];
-				items[0] = new ResourceNodeItem();
-				items[0].Unserialize(reader);
+				Items = new ResourceNodeItem[1];
+				Items[0] = new ResourceNodeItem();
+				Items[0].Unserialize(reader);
 			}
 			else
 			{
@@ -280,10 +246,10 @@ namespace SimPe.Plugin
 					"Unknown ResourceNode 0x"
 						+ Helper.HexString(version)
 						+ ", 0x"
-						+ Helper.HexString(typecode)
+						+ Helper.HexString(TypeCode)
 				);
 			}
-			unknown2 = reader.ReadInt32();
+			Unknown2 = reader.ReadInt32();
 		}
 
 		/// <summary>
@@ -297,37 +263,37 @@ namespace SimPe.Plugin
 		public override void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(version);
-			writer.Write(typecode);
+			writer.Write(TypeCode);
 
-			if (typecode == 0x01)
+			if (TypeCode == 0x01)
 			{
 				writer.Write(sgres.BlockName);
 				writer.Write(sgres.BlockID);
 				sgres.Serialize(writer);
 
-				writer.Write(ctn.BlockName);
-				writer.Write(ctn.BlockID);
-				ctn.Serialize(writer);
+				writer.Write(TreeNode.BlockName);
+				writer.Write(TreeNode.BlockID);
+				TreeNode.Serialize(writer);
 
-				writer.Write(ogn.BlockName);
-				writer.Write(ogn.BlockID);
-				ogn.Serialize(writer);
+				writer.Write(GraphNode.BlockName);
+				writer.Write(GraphNode.BlockID);
+				GraphNode.Serialize(writer);
 
-				writer.Write((byte)items.Length);
-				for (int i = 0; i < items.Length; i++)
-					items[i].Serialize(writer);
+				writer.Write((byte)Items.Length);
+				for (int i = 0; i < Items.Length; i++)
+					Items[i].Serialize(writer);
 
-				writer.Write(unknown1);
+				writer.Write(Unknown1);
 			}
-			else if (typecode == 0x00)
+			else if (TypeCode == 0x00)
 			{
-				writer.Write(ogn.BlockName);
-				writer.Write(ogn.BlockID);
-				ogn.Serialize(writer);
+				writer.Write(GraphNode.BlockName);
+				writer.Write(GraphNode.BlockID);
+				GraphNode.Serialize(writer);
 
-				if (items.Length < 1)
-					items = new ResourceNodeItem[1];
-				items[0].Serialize(writer);
+				if (Items.Length < 1)
+					Items = new ResourceNodeItem[1];
+				Items[0].Serialize(writer);
 			}
 			else
 			{
@@ -335,10 +301,10 @@ namespace SimPe.Plugin
 					"Unknown ResourceNode 0x"
 						+ Helper.HexString(version)
 						+ ", 0x"
-						+ Helper.HexString(typecode)
+						+ Helper.HexString(TypeCode)
 				);
 			}
-			writer.Write(unknown2);
+			writer.Write(Unknown2);
 		}
 
 		TabPage.ResourceNode tResourceNode;
@@ -390,20 +356,20 @@ namespace SimPe.Plugin
 				tResourceNode = new SimPe.Plugin.TabPage.ResourceNode();
 
 			tResourceNode.lb_rn.Items.Clear();
-			for (int i = 0; i < this.items.Length; i++)
-				tResourceNode.lb_rn.Items.Add(items[i]);
+			for (int i = 0; i < this.Items.Length; i++)
+				tResourceNode.lb_rn.Items.Add(Items[i]);
 
-			tResourceNode.tb_rn_uk1.Text = "0x" + Helper.HexString((uint)this.unknown1);
-			tResourceNode.tb_rn_uk2.Text = "0x" + Helper.HexString((uint)this.unknown2);
+			tResourceNode.tb_rn_uk1.Text = "0x" + Helper.HexString((uint)this.Unknown1);
+			tResourceNode.tb_rn_uk2.Text = "0x" + Helper.HexString((uint)this.Unknown2);
 			tResourceNode.tb_rn_ver.Text = "0x" + Helper.HexString(this.version);
 		}
 
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
 			base.ExtendTabControl(tc);
-			if (typecode == 0x1)
-				this.ctn.AddToTabControl(tc);
-			this.ogn.AddToTabControl(tc);
+			if (TypeCode == 0x1)
+				this.TreeNode.AddToTabControl(tc);
+			this.GraphNode.AddToTabControl(tc);
 		}
 
 		#region IDisposable Member
@@ -417,9 +383,9 @@ namespace SimPe.Plugin
 				tCres.Dispose();
 			tCres = null;
 			sgres = null;
-			ogn = null;
-			ctn = null;
-			items = new ResourceNodeItem[0];
+			GraphNode = null;
+			TreeNode = null;
+			Items = new ResourceNodeItem[0];
 		}
 
 		#endregion

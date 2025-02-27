@@ -35,14 +35,12 @@ namespace SimPe.PackedFiles.Wrapper
 	public class FamilyTies : AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension
 	{
 		/// <summary>
-		/// Stores null or a valid Name Provider
-		/// </summary>
-		SimPe.Interfaces.Providers.ISimNames nameprovider;
-
-		/// <summary>
 		/// Returns the Name Provider
 		/// </summary>
-		internal SimPe.Interfaces.Providers.ISimNames NameProvider => nameprovider;
+		internal SimPe.Interfaces.Providers.ISimNames NameProvider
+		{
+			get;
+		}
 
 		#region Attributes
 		/// <summary>
@@ -89,7 +87,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public FamilyTies(SimPe.Interfaces.Providers.ISimNames names)
 			: base()
 		{
-			nameprovider = names;
+			NameProvider = names;
 			sims = new ArrayList();
 		}
 

@@ -20,31 +20,29 @@ namespace SimPe.PackedFiles.Wrapper
 		internal SdscFreetime(SDesc dsc)
 		{
 			parent = dsc;
-			enthusiasm = new List<ushort>();
+			HobbyEnthusiasm = new List<ushort>();
 			decays = new List<ushort>();
 
 			for (int i = 0; i < 11; i++)
-				enthusiasm.Add(0);
+				HobbyEnthusiasm.Add(0);
 			for (int i = 0; i < 7; i++)
 				decays.Add(0);
 
 			predestined = 0;
-			ltasp = 0;
-			unlockpts = 0;
-			unlocksspent = 0;
-			bugcollection = 0;
+			LongtermAspiration = 0;
+			LongtermAspirationUnlockPoints = 0;
+			LongtermAspirationUnlocksSpent = 0;
+			BugCollection = 0;
 		}
 
 		SDesc parent;
-		List<ushort> enthusiasm;
 		ushort predestined;
-		ushort ltasp;
-		ushort unlockpts;
-		ushort unlocksspent;
 		List<ushort> decays;
-		uint bugcollection;
 
-		public List<ushort> HobbyEnthusiasm => enthusiasm;
+		public List<ushort> HobbyEnthusiasm
+		{
+			get;
+		}
 
 		public static ushort HobbiesToIndex(Hobbies hb)
 		{
@@ -75,38 +73,17 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort LongtermAspiration
 		{
-			get
-			{
-				return ltasp;
-			}
-			set
-			{
-				ltasp = value;
-			}
+			get; set;
 		}
 
 		public ushort LongtermAspirationUnlockPoints
 		{
-			get
-			{
-				return unlockpts;
-			}
-			set
-			{
-				unlockpts = value;
-			}
+			get; set;
 		}
 
 		public ushort LongtermAspirationUnlocksSpent
 		{
-			get
-			{
-				return unlocksspent;
-			}
-			set
-			{
-				unlocksspent = value;
-			}
+			get; set;
 		}
 
 		public ushort HungerDecayModifier
@@ -195,35 +172,28 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint BugCollection
 		{
-			get
-			{
-				return bugcollection;
-			}
-			set
-			{
-				bugcollection = value;
-			}
+			get; set;
 		}
 
 		internal void Unserialize(BinaryReader reader)
 		{
 			reader.BaseStream.Seek(0x1A4, SeekOrigin.Begin);
-			for (int i = 0; i < enthusiasm.Count; i++)
+			for (int i = 0; i < HobbyEnthusiasm.Count; i++)
 			{
-				enthusiasm[i] = reader.ReadUInt16();
+				HobbyEnthusiasm[i] = reader.ReadUInt16();
 			}
 
 			predestined = reader.ReadUInt16();
-			ltasp = reader.ReadUInt16();
-			unlockpts = reader.ReadUInt16();
-			unlocksspent = reader.ReadUInt16();
+			LongtermAspiration = reader.ReadUInt16();
+			LongtermAspirationUnlockPoints = reader.ReadUInt16();
+			LongtermAspirationUnlocksSpent = reader.ReadUInt16();
 
 			for (int i = 0; i < decays.Count; i++)
 			{
 				decays[i] = reader.ReadUInt16();
 			}
 
-			bugcollection = reader.ReadUInt32();
+			BugCollection = reader.ReadUInt32();
 
 			LoadAspirations();
 		}
@@ -232,33 +202,32 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			writer.BaseStream.Seek(0x1A4, SeekOrigin.Begin);
 
-			for (int i = 0; i < enthusiasm.Count; i++)
+			for (int i = 0; i < HobbyEnthusiasm.Count; i++)
 			{
-				writer.Write((ushort)enthusiasm[i]);
+				writer.Write((ushort)HobbyEnthusiasm[i]);
 			}
 
 			writer.Write((ushort)predestined);
-			writer.Write((ushort)ltasp);
-			writer.Write((ushort)unlockpts);
-			writer.Write((ushort)unlocksspent);
+			writer.Write((ushort)LongtermAspiration);
+			writer.Write((ushort)LongtermAspirationUnlockPoints);
+			writer.Write((ushort)LongtermAspirationUnlocksSpent);
 
 			for (int i = 0; i < decays.Count; i++)
 			{
 				writer.Write((ushort)decays[i]);
 			}
 
-			writer.Write((uint)bugcollection);
+			writer.Write((uint)BugCollection);
 
 			StoreAspirations();
 		}
 
-		SimPe.Data.MetaData.AspirationTypes pa,
-			sa;
+		SimPe.Data.MetaData.AspirationTypes pa;
 
 		protected void LoadAspirations()
 		{
 			pa = SimPe.Data.MetaData.AspirationTypes.Nothing;
-			sa = SimPe.Data.MetaData.AspirationTypes.Nothing;
+			SecondaryAspiration = SimPe.Data.MetaData.AspirationTypes.Nothing;
 			if (parent == null)
 				return;
 			pa = parent.CharacterDescription.Aspiration;
@@ -274,7 +243,7 @@ namespace SimPe.PackedFiles.Wrapper
 			if (asps.Length > 0)
 				pa = asps[0];
 			if (asps.Length > 1)
-				sa = asps[1];
+				SecondaryAspiration = asps[1];
 		}
 
 		protected void StoreAspirations()
@@ -291,7 +260,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 			*/
 			SimPe.Data.MetaData.AspirationTypes[] asps =
-				new SimPe.Data.MetaData.AspirationTypes[] { pa, sa };
+				new SimPe.Data.MetaData.AspirationTypes[] { pa, SecondaryAspiration };
 			aspeditor.StoreAspirations(asps, parent);
 		}
 
@@ -321,14 +290,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public SimPe.Data.MetaData.AspirationTypes SecondaryAspiration
 		{
-			get
-			{
-				return sa;
-			}
-			set
-			{
-				sa = value;
-			}
+			get; set;
 		}
 	}
 }

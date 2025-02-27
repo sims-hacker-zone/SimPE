@@ -29,7 +29,6 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class PhotoStudioTemplate
 	{
-		Interfaces.Files.IPackageFile package;
 		SimPe.PackedFiles.Wrapper.Cpf pset;
 		SimPe.PackedFiles.Wrapper.Str ctss;
 
@@ -39,7 +38,7 @@ namespace SimPe.Plugin
 		/// <param name="package"></param>
 		public PhotoStudioTemplate(Interfaces.Files.IPackageFile package)
 		{
-			this.package = package;
+			this.Package = package;
 
 			Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
 				0xEBCF3E27,
@@ -70,7 +69,10 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// eturns the Base Package
 		/// </summary>
-		public Interfaces.Files.IPackageFile Package => package;
+		public Interfaces.Files.IPackageFile Package
+		{
+			get;
+		}
 
 		/// <summary>
 		/// The Title of this Package
@@ -80,13 +82,13 @@ namespace SimPe.Plugin
 			get
 			{
 				if (ctss == null)
-					return package.FileName;
+					return Package.FileName;
 				SimPe.PackedFiles.Wrapper.StrItemList items =
 					ctss.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
 				if (items.Length > 0)
 					return items[0].Title;
 
-				return package.FileName;
+				return Package.FileName;
 			}
 		}
 
@@ -115,13 +117,13 @@ namespace SimPe.Plugin
 					SimPe.Plugin.Txtr txtr = new Txtr(null, false);
 
 					//load TXTR
-					Interfaces.Files.IPackedFileDescriptor[] pfd = package.FindFile(
+					Interfaces.Files.IPackedFileDescriptor[] pfd = Package.FindFile(
 						TxtrFile + "_txtr",
 						0x1C4A276C
 					);
 					if (pfd.Length > 0)
 					{
-						txtr.ProcessData(pfd[0], package);
+						txtr.ProcessData(pfd[0], Package);
 					}
 
 					SimPe.Plugin.ImageData id = (SimPe.Plugin.ImageData)txtr.Blocks[0];

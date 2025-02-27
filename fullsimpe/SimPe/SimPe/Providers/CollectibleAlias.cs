@@ -25,35 +25,43 @@ namespace SimPe.Providers
 {
 	public class CollectibleAlias
 	{
-		private string name;
-		public string Name => name;
+		public string Name
+		{
+			get;
+		}
 
-		private ulong id;
-		public ulong Id => id;
+		public ulong Id
+		{
+			get;
+		}
 
-		private int nr;
-		public int Nr => nr;
+		public int Nr
+		{
+			get;
+		}
 
-		private System.Drawing.Image img;
-		public System.Drawing.Image Image => img;
+		public System.Drawing.Image Image
+		{
+			get;
+		}
 
 		public CollectibleAlias(ulong id, int nr, string name, System.Drawing.Image img)
 		{
-			this.id = id;
-			this.nr = nr;
-			this.name = name;
+			this.Id = id;
+			this.Nr = nr;
+			this.Name = name;
 			if (img == null)
 			{
 				img = new System.Drawing.Bitmap(32, 32);
 			}
-			this.img = img;
+			this.Image = img;
 		}
 
 		public override string ToString()
 		{
 			if (Helper.WindowsRegistry.HiddenMode)
-				return name + " (0x" + Helper.HexString(id) + ", " + nr + ")";
-			return name;
+				return Name + " (0x" + Helper.HexString(Id) + ", " + Nr + ")";
+			return Name;
 		}
 	}
 }

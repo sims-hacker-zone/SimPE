@@ -33,38 +33,24 @@ namespace Ambertation.Windows.Forms.Graph
 	{
 		public DockPoint(int x, int y, LinkControlType type)
 		{
-			this.x = x;
-			this.y = y;
-			this.lct = type;
+			this.X = x;
+			this.Y = y;
+			this.Type = type;
 		}
 
-		int x;
-		int y;
 		public int X
 		{
-			get
-			{
-				return x;
-			}
-			set
-			{
-				x = value;
-			}
+			get; set;
 		}
 		public int Y
 		{
-			get
-			{
-				return y;
-			}
-			set
-			{
-				y = value;
-			}
+			get; set;
 		}
 
-		LinkControlType lct;
-		public LinkControlType Type => lct;
+		public LinkControlType Type
+		{
+			get;
+		}
 
 		public double Distance(DockPoint d)
 		{
@@ -75,7 +61,7 @@ namespace Ambertation.Windows.Forms.Graph
 		{
 			get
 			{
-				int yl = ((byte)lct >> 2) & (byte)0x3;
+				int yl = ((byte)Type >> 2) & (byte)0x3;
 				return (yl == 0x2);
 			}
 		}
@@ -84,8 +70,8 @@ namespace Ambertation.Windows.Forms.Graph
 		{
 			get
 			{
-				int xl = (byte)lct & (byte)0x3;
-				int yl = ((byte)lct >> 2) & (byte)0x3;
+				int xl = (byte)Type & (byte)0x3;
+				int yl = ((byte)Type >> 2) & (byte)0x3;
 				return (yl == 0x2 || xl == 0x2);
 			}
 		}

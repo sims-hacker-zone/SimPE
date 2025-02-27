@@ -31,42 +31,28 @@ namespace SimPe.Plugin.Tool.Dockable
 		internal ObjectWorkshopSettings()
 			: base()
 		{
-			remote = true;
-			remoteres = false;
+			OpenWithRemoteControl = true;
+			RemoteResult = false;
 		}
 
-		bool remote,
-			remoteres,
-			remndeftxt;
 		public bool OpenWithRemoteControl
 		{
-			get
-			{
-				return remote;
-			}
-			set
-			{
-				remote = value;
-			}
+			get; set;
 		}
 
 		public bool RemoveNonDefaultTextReferences
 		{
-			get
-			{
-				return remndeftxt;
-			}
-			set
-			{
-				remndeftxt = value;
-			}
+			get; set;
 		}
 
-		public bool RemoteResult => remoteres;
+		public bool RemoteResult
+		{
+			get; private set;
+		}
 
 		internal void SetRemoteResult(bool res)
 		{
-			remoteres = res;
+			RemoteResult = res;
 		}
 	}
 
@@ -78,120 +64,54 @@ namespace SimPe.Plugin.Tool.Dockable
 		public OWCloneSettings()
 			: base()
 		{
-			grp = true;
-			fix = true;
-			rem = true;
-			alone = false;
-			updatedesc = false;
-			price = 0;
-			title = "";
-			desc = "";
+			CustomGroup = true;
+			FixResources = true;
+			RemoveUselessResource = true;
+			StandAloneObject = false;
+			ChangeObjectDescription = false;
+			Price = 0;
+			Title = "";
+			Description = "";
 			RemoveNonDefaultTextReferences = true;
 		}
 
-		bool grp,
-			fix,
-			rem,
-			alone,
-			updatedesc;
-
 		public bool CustomGroup
 		{
-			get
-			{
-				return grp;
-			}
-			set
-			{
-				grp = value;
-			}
+			get; set;
 		}
 
 		public bool FixResources
 		{
-			get
-			{
-				return fix;
-			}
-			set
-			{
-				fix = value;
-			}
+			get; set;
 		}
 
 		public bool RemoveUselessResource
 		{
-			get
-			{
-				return rem;
-			}
-			set
-			{
-				rem = value;
-			}
+			get; set;
 		}
 
 		public bool StandAloneObject
 		{
-			get
-			{
-				return alone;
-			}
-			set
-			{
-				alone = value;
-			}
+			get; set;
 		}
 
 		public bool ChangeObjectDescription
 		{
-			get
-			{
-				return updatedesc;
-			}
-			set
-			{
-				updatedesc = value;
-			}
+			get; set;
 		}
-
-		short price;
-		string desc,
-			title;
 		public short Price
 		{
-			get
-			{
-				return price;
-			}
-			set
-			{
-				price = value;
-			}
+			get; set;
 		}
 
 		public string Title
 		{
-			get
-			{
-				return title;
-			}
-			set
-			{
-				title = value;
-			}
+			get; set;
 		}
 
 		public string Description
 		{
-			get
-			{
-				return desc;
-			}
-			set
-			{
-				desc = value;
-			}
+			get; set;
 		}
 	}
 

@@ -37,8 +37,6 @@ namespace SimPe.Plugin
 		#region Attributes
 		byte[] data;
 		Size texturesize;
-		ImageLoader.TxtrFormats format;
-		int zlevel;
 		Image img;
 		MipMapType datatype;
 
@@ -46,26 +44,12 @@ namespace SimPe.Plugin
 
 		public int ZLevel
 		{
-			get
-			{
-				return zlevel;
-			}
-			set
-			{
-				zlevel = value;
-			}
+			get; set;
 		}
 
 		public ImageLoader.TxtrFormats Format
 		{
-			get
-			{
-				return format;
-			}
-			set
-			{
-				format = value;
-			}
+			get; set;
 		}
 
 		public Image Texture
@@ -80,7 +64,7 @@ namespace SimPe.Plugin
 					img = ImageLoader.Load(
 						this.TextureSize,
 						data.Length,
-						format,
+						Format,
 						sr,
 						1,
 						-1
@@ -124,7 +108,7 @@ namespace SimPe.Plugin
 			: base(parent)
 		{
 			texturesize = new Size(0, 0);
-			zlevel = 0;
+			ZLevel = 0;
 			sgres = new SGResource(null);
 			BlockID = 0xED534136;
 			data = new byte[0];
@@ -148,7 +132,7 @@ namespace SimPe.Plugin
 			int w = reader.ReadInt32();
 			int h = reader.ReadInt32();
 			texturesize = new Size(w, h);
-			zlevel = reader.ReadInt32();
+			ZLevel = reader.ReadInt32();
 
 			int size = reader.ReadInt32();
 
@@ -161,19 +145,19 @@ namespace SimPe.Plugin
 			}
 			/*if (size == w*h) format = ImageLoader.TxtrFormats.DXT3Format;
 			else*/
-			format = ImageLoader.TxtrFormats.DXT1Format;
+			Format = ImageLoader.TxtrFormats.DXT1Format;
 			//Pumckl Contribution
 			//-- 8< --------------------------------------------- 8< -----
 			if (size == 4 * w * h)
-				format = ImageLoader.TxtrFormats.Raw32Bit;
+				Format = ImageLoader.TxtrFormats.Raw32Bit;
 			else if (size == 3 * w * h)
-				format = ImageLoader.TxtrFormats.Raw24Bit;
+				Format = ImageLoader.TxtrFormats.Raw24Bit;
 			else if (size == w * h) // could be RAW8, DXT3 or DXT5
 			{
 				// it seems to be difficult to determine the right format
 				if (sgres.FileName.IndexOf("bump") > 0)
 				{ // its a bump-map
-					format = ImageLoader.TxtrFormats.Raw8Bit;
+					Format = ImageLoader.TxtrFormats.Raw8Bit;
 				}
 				else
 				{
@@ -186,13 +170,13 @@ namespace SimPe.Plugin
 					// on DXT5 if all alpha are the same the bytes 0 or 1 are not zero
 					// and the bytes 2-7 (codebits) ara all zero
 					if (((alpha & 0xffffffffffff0000) == 0) && ((alpha & 0xffff) != 0))
-						format = ImageLoader.TxtrFormats.DXT5Format;
+						Format = ImageLoader.TxtrFormats.DXT5Format;
 					else
-						format = ImageLoader.TxtrFormats.DXT3Format;
+						Format = ImageLoader.TxtrFormats.DXT3Format;
 				}
 			}
 			else
-				format = ImageLoader.TxtrFormats.DXT1Format; // size < w*h
+				Format = ImageLoader.TxtrFormats.DXT1Format; // size < w*h
 															 //-- 8< --------------------------------------------- 8< -----
 
 
@@ -223,10 +207,10 @@ namespace SimPe.Plugin
 
 			writer.Write((int)texturesize.Width);
 			writer.Write((int)texturesize.Height);
-			writer.Write(zlevel);
+			writer.Write(ZLevel);
 
 			if (datatype == MipMapType.Texture)
-				data = ImageLoader.Save(format, img);
+				data = ImageLoader.Save(Format, img);
 
 			if (data == null)
 				data = new byte[0];

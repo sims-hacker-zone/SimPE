@@ -44,11 +44,6 @@ namespace SimPe.PackedFiles.Wrapper
 		private byte[] filename;
 
 		/// <summary>
-		/// The Type of this File
-		/// </summary>
-		private ushort type;
-
-		/// <summary>
 		/// Spaces of unknown Data
 		/// </summary>
 		private byte[] reserved_01;
@@ -120,24 +115,12 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		uint guid,
-			proxyguid,
-			originalguid;
-		ushort ctssid;
-
 		/// <summary>
 		/// Returns the GUID of the Object
 		/// </summary>
 		public uint SimId
 		{
-			get
-			{
-				return guid;
-			}
-			set
-			{
-				guid = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -145,14 +128,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint ProxyGuid
 		{
-			get
-			{
-				return proxyguid;
-			}
-			set
-			{
-				proxyguid = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -160,14 +136,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint OriginalGuid
 		{
-			get
-			{
-				return originalguid;
-			}
-			set
-			{
-				originalguid = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -263,21 +232,17 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// returns the Instance of the assigned Catalog Description
 		/// </summary>
-		public ushort CTSSId => ctssid;
+		public ushort CTSSId
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Retursn / Sets the Type of an Object
 		/// </summary>
 		public ushort Type
 		{
-			get
-			{
-				return type;
-			}
-			set
-			{
-				type = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -332,7 +297,7 @@ namespace SimPe.PackedFiles.Wrapper
 			items = new ArrayList();
 			attr = new Hashtable();
 			this.opcodes = opcodes;
-			type = 1;
+			Type = 1;
 		}
 
 		protected override void Unserialize(System.IO.BinaryReader reader)
@@ -343,48 +308,48 @@ namespace SimPe.PackedFiles.Wrapper
 			if (reader.BaseStream.Length >= 0x54)
 			{
 				reader.BaseStream.Seek(0x52, System.IO.SeekOrigin.Begin);
-				type = reader.ReadUInt16();
+				Type = reader.ReadUInt16();
 			}
 			else
-				type = 0;
+				Type = 0;
 
 			if (reader.BaseStream.Length >= 0x60)
 			{
 				reader.BaseStream.Seek(0x5C, System.IO.SeekOrigin.Begin);
-				guid = reader.ReadUInt32();
+				SimId = reader.ReadUInt32();
 			}
 			else
-				guid = 0;
+				SimId = 0;
 
 			if (reader.BaseStream.Length >= 0x7E)
 			{
 				reader.BaseStream.Seek(0x7A, System.IO.SeekOrigin.Begin);
-				proxyguid = reader.ReadUInt32();
+				ProxyGuid = reader.ReadUInt32();
 			}
 			else
-				proxyguid = 0;
+				ProxyGuid = 0;
 
 			if (reader.BaseStream.Length >= 0x94)
 			{
 				reader.BaseStream.Seek(0x92, System.IO.SeekOrigin.Begin);
-				ctssid = reader.ReadUInt16();
+				CTSSId = reader.ReadUInt16();
 			}
 			else
-				ctssid = 0;
+				CTSSId = 0;
 
 			if (reader.BaseStream.Length >= 0xD0)
 			{
 				reader.BaseStream.Seek(0xCC, System.IO.SeekOrigin.Begin);
-				originalguid = reader.ReadUInt32();
+				OriginalGuid = reader.ReadUInt32();
 			}
 			else
-				originalguid = 0;
+				OriginalGuid = 0;
 
 			reader.BaseStream.Seek(pos, System.IO.SeekOrigin.Begin);
 
 			ArrayList names = new ArrayList();
 			if (opcodes != null)
-				names = opcodes.OBJDDescription(type);
+				names = opcodes.OBJDDescription(Type);
 			if (names.Count == 0)
 			{
 				/*reserved_01 = reader.ReadBytes(0x1C);
@@ -452,7 +417,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 			ArrayList names = new ArrayList();
 			if (opcodes != null)
-				names = opcodes.OBJDDescription(type);
+				names = opcodes.OBJDDescription(Type);
 			if (names.Count == 0)
 			{
 				writer.Write(reserved_01);
@@ -476,23 +441,23 @@ namespace SimPe.PackedFiles.Wrapper
 						break;
 					writer.Write(this.GetAttributeShort(sname));
 				}
-				ctssid = this.GetAttributeShort("catalog strings id");
+				CTSSId = this.GetAttributeShort("catalog strings id");
 			}
 
 			writer.BaseStream.Seek(0x52, System.IO.SeekOrigin.Begin);
-			writer.Write(type);
+			writer.Write(Type);
 
 			writer.BaseStream.Seek(0x5C, System.IO.SeekOrigin.Begin);
-			writer.Write(guid);
+			writer.Write(SimId);
 
 			writer.BaseStream.Seek(0x7A, System.IO.SeekOrigin.Begin);
-			writer.Write(proxyguid);
+			writer.Write(ProxyGuid);
 
 			writer.BaseStream.Seek(0x92, System.IO.SeekOrigin.Begin);
-			writer.Write(ctssid);
+			writer.Write(CTSSId);
 
 			writer.BaseStream.Seek(0xCC, System.IO.SeekOrigin.Begin);
-			writer.Write(originalguid);
+			writer.Write(OriginalGuid);
 		}
 		#endregion
 

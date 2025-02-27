@@ -46,12 +46,13 @@ namespace SimPe.PackedFiles.Wrapper
 			eip.Dispose();
 		}
 
-		ImagePanel baseip;
-
 		/// <summary>
 		/// returns the <see cref="ImagePanel"/> for the Sim that was used to build th Graph
 		/// </summary>
-		public ImagePanel MainSimElement => baseip;
+		public ImagePanel MainSimElement
+		{
+			get; private set;
+		}
 
 		public void UpdateGraph(Wrapper.SDesc sdsc, Wrapper.ExtFamilyTies famt)
 		{
@@ -68,7 +69,7 @@ namespace SimPe.PackedFiles.Wrapper
 				this.SaveBounds = false;
 				this.AutoSize = true;
 				this.Clear();
-				baseip = null;
+				MainSimElement = null;
 
 				if (famt == null || sdsc == null)
 				{
@@ -101,17 +102,17 @@ namespace SimPe.PackedFiles.Wrapper
 					Math.Max(this.Width / 2, (int)r + 16 + ItemSize.Width / 2),
 					Math.Max(this.Height / 2, (int)r + ItemSize.Height / 2)
 				);
-				baseip = CreateItem(sdsc, 0, 0);
-				baseip.Location = GraphPanel.GetCenterLocationOnPinCircle(
+				MainSimElement = CreateItem(sdsc, 0, 0);
+				MainSimElement.Location = GraphPanel.GetCenterLocationOnPinCircle(
 					center,
 					r,
 					ItemSize
 				);
-				baseip.Parent = this;
-				this.SelectedElement = baseip;
-				baseip.PanelColor = Color.Black;
-				baseip.ForeColor = Color.White;
-				baseip.EndUpdate();
+				MainSimElement.Parent = this;
+				this.SelectedElement = MainSimElement;
+				MainSimElement.PanelColor = Color.Black;
+				MainSimElement.ForeColor = Color.White;
+				MainSimElement.EndUpdate();
 
 				int ct = 0;
 
@@ -189,7 +190,7 @@ namespace SimPe.PackedFiles.Wrapper
 			this.BeginUpdate();
 
 			this.Clear();
-			baseip = null;
+			MainSimElement = null;
 
 			if (famt == null || sdsc == null)
 			{
@@ -219,12 +220,12 @@ namespace SimPe.PackedFiles.Wrapper
 			int top = prect.Height + (srect.Height - ItemSize.Height) / 2;
 			int left = (maxw - ItemSize.Width) / 2 + 32;
 
-			baseip = CreateItem(sdsc, left, top);
-			baseip.Parent = this;
-			this.SelectedElement = baseip;
-			baseip.PanelColor = Color.Black;
-			baseip.ForeColor = Color.White;
-			baseip.EndUpdate();
+			MainSimElement = CreateItem(sdsc, left, top);
+			MainSimElement.Parent = this;
+			this.SelectedElement = MainSimElement;
+			MainSimElement.PanelColor = Color.Black;
+			MainSimElement.ForeColor = Color.White;
+			MainSimElement.EndUpdate();
 
 			if (tie != null)
 			{
@@ -260,7 +261,7 @@ namespace SimPe.PackedFiles.Wrapper
 					if (ct == siblings.Length / 2 || siblings.Length == 1)
 					{
 						left += 70;
-						baseip.SetBounds(left, top + 24, baseip.Width, baseip.Height);
+						MainSimElement.SetBounds(left, top + 24, MainSimElement.Width, MainSimElement.Height);
 						left += ip.Width + 94;
 					}
 					else if (ct > siblings.Length / 2)
@@ -305,13 +306,13 @@ namespace SimPe.PackedFiles.Wrapper
 			bool isextern
 		)
 		{
-			if (baseip == null)
+			if (MainSimElement == null)
 				return null;
 
 			ImagePanel ip = CreateItem(sdsc, left, top);
 
 			string name = ((Data.LocalizedFamilyTieTypes)type).ToString();
-			ip.ParentItems.Add(baseip, name);
+			ip.ParentItems.Add(MainSimElement, name);
 			ip.Parent = this;
 			if (isextern)
 				ip.EndUpdate();

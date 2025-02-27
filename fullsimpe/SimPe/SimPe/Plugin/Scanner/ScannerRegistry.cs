@@ -20,13 +20,10 @@ namespace SimPe.Plugin.Scanner
 			}
 		}
 
-		ScannerCollection scanners,
-			identifiers;
-
 		ScannerRegistry()
 		{
-			scanners = new ScannerCollection();
-			identifiers = new ScannerCollection();
+			Scanners = new ScannerCollection();
+			Identifiers = new ScannerCollection();
 			LoadScanners();
 		}
 
@@ -40,7 +37,7 @@ namespace SimPe.Plugin.Scanner
 				Helper.SimPePluginPath,
 				"*.plugin.dll"
 			);
-			scanners.Clear();
+			Scanners.Clear();
 			foreach (string file in files)
 			{
 				if (ignore.Contains(System.IO.Path.GetFileName(file).ToLower()))
@@ -63,7 +60,7 @@ namespace SimPe.Plugin.Scanner
 							try
 							{
 								IScanner sc = (IScanner)isb;
-								scanners.Add(sc);
+								Scanners.Add(sc);
 							}
 							catch (Exception ex)
 							{
@@ -75,7 +72,7 @@ namespace SimPe.Plugin.Scanner
 							try
 							{
 								IIdentifier i = (IIdentifier)isb;
-								identifiers.Add(i);
+								Identifiers.Add(i);
 							}
 							catch (Exception ex)
 							{
@@ -89,8 +86,8 @@ namespace SimPe.Plugin.Scanner
 				}
 			}
 
-			scanners.Sort(new SimPe.Plugin.Identifiers.PluginScannerBaseComparer());
-			identifiers.Sort(new SimPe.Plugin.Identifiers.PluginScannerBaseComparer());
+			Scanners.Sort(new SimPe.Plugin.Identifiers.PluginScannerBaseComparer());
+			Identifiers.Sort(new SimPe.Plugin.Identifiers.PluginScannerBaseComparer());
 		}
 
 		//this is a manual List of Wrappers that are known to cause Problems
@@ -109,8 +106,14 @@ namespace SimPe.Plugin.Scanner
 			ignore.Add("simpe.ngbh.plugin.dll");
 		}
 
-		public ScannerCollection Scanners => scanners;
+		public ScannerCollection Scanners
+		{
+			get;
+		}
 
-		public ScannerCollection Identifiers => identifiers;
+		public ScannerCollection Identifiers
+		{
+			get;
+		}
 	}
 }

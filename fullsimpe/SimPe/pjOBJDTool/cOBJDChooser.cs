@@ -29,8 +29,7 @@ namespace pjOBJDTool
 {
 	public partial class cOBJDChooser : Form
 	{
-		private pfOBJD value = null;
-		public pfOBJD Value => value;
+		public pfOBJD Value { get; private set; } = null;
 		List<pfOBJD> items = null;
 
 		public cOBJDChooser()
@@ -41,7 +40,7 @@ namespace pjOBJDTool
 		public DialogResult Execute(List<pfOBJD> items)
 		{
 			this.items = items;
-			value = null;
+			Value = null;
 
 			lbItems.Items.Clear();
 			foreach (pfOBJD item in items)
@@ -62,7 +61,7 @@ namespace pjOBJDTool
 		private void lbItems_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (lbItems.SelectedIndex >= 0)
-				value = items[lbItems.SelectedIndex];
+				Value = items[lbItems.SelectedIndex];
 		}
 
 		private void lbItems_DoubleClick(object sender, EventArgs e)

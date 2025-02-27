@@ -33,10 +33,6 @@ namespace SimPe.PackedFiles.Wrapper
 	/// </summary>
 	public class StrLanguage : System.Collections.IComparer
 	{
-		/// <summary>
-		/// Language ID
-		/// </summary>
-		byte lid;
 
 		/// <summary>
 		/// Constructor
@@ -45,14 +41,17 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="lid">The Language ID</param>
 		public StrLanguage(byte lid)
 		{
-			this.lid = lid;
+			this.Id = lid;
 		}
 
 		#region Accessor methods
 		/// <summary>
 		/// Returns/Sets the Language Id
 		/// </summary>
-		public byte Id => lid;
+		public byte Id
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Language Name
@@ -61,7 +60,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				string enumName = ((Data.MetaData.Languages)lid).ToString();
+				string enumName = ((Data.MetaData.Languages)Id).ToString();
 				string s = Localization.Manager.GetString(enumName);
 				if (s != null)
 					return s;
@@ -73,7 +72,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Cast methods
 		public override string ToString()
 		{
-			return "0x" + Helper.HexString(lid) + " - " + this.Name;
+			return "0x" + Helper.HexString(Id) + " - " + this.Name;
 		}
 
 		// Enable casting byte to StrLanguage
@@ -92,7 +91,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public override bool Equals(object obj)
 		{
 			if (obj.GetType() == typeof(StrLanguage))
-				return (lid == ((StrLanguage)obj).Id);
+				return (Id == ((StrLanguage)obj).Id);
 			return base.Equals(obj);
 		}
 
@@ -189,15 +188,8 @@ namespace SimPe.PackedFiles.Wrapper
 	/// </summary>
 	public class StrToken
 	{
-		int index;
-		StrLanguage lid;
 		string title;
 		string desc;
-
-		/// <summary>
-		/// Indicates whether the object has been updated since creation (can't be cleared!)
-		/// </summary>
-		bool dirty;
 
 		/// <summary>
 		/// Constructor
@@ -208,20 +200,26 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="desc">Item Description</param>
 		public StrToken(int index, byte lid, string title, string desc)
 		{
-			this.index = index;
-			this.lid = new StrLanguage(lid);
+			this.Index = index;
+			this.Language = new StrLanguage(lid);
 			this.title = title;
 			this.desc = desc;
-			dirty = false;
+			IsDirty = false;
 		}
 
 		#region Accessor methods
-		internal int Index => index;
+		internal int Index
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Language is read-only
 		/// </summary>
-		public StrLanguage Language => lid;
+		public StrLanguage Language
+		{
+			get;
+		}
 
 		public string Title
 		{
@@ -234,7 +232,7 @@ namespace SimPe.PackedFiles.Wrapper
 				if (title != value)
 				{
 					title = value;
-					dirty = true;
+					IsDirty = true;
 				}
 			}
 		}
@@ -250,7 +248,7 @@ namespace SimPe.PackedFiles.Wrapper
 				if (desc != value)
 				{
 					desc = value;
-					dirty = true;
+					IsDirty = true;
 				}
 			}
 		}
@@ -258,7 +256,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Dirty is read-only
 		/// </summary>
-		public bool IsDirty => dirty;
+		public bool IsDirty
+		{
+			get; private set;
+		}
 		#endregion
 
 
@@ -285,8 +286,8 @@ namespace SimPe.PackedFiles.Wrapper
 
 		internal void Serialize(BinaryWriter writer)
 		{
-			if (lid != null)
-				writer.Write(lid.Id);
+			if (Language != null)
+				writer.Write(Language.Id);
 			else
 				writer.Write((byte)0);
 			if (title != null)
@@ -304,7 +305,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public override string ToString()
 		{
-			return "0x" + index.ToString("X") + " - " + this.Title;
+			return "0x" + Index.ToString("X") + " - " + this.Title;
 		}
 	}
 	#endregion

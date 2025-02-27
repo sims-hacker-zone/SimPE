@@ -28,19 +28,21 @@ namespace SimPe
 	/// </summary>
 	public class Hashes
 	{
-		static CRC crc24 = new CRC(CRCParameters.GetParameters(CRCStandard.CRC24));
-		static CRC crc32 = new CRC(
+		public static CRC Crc24 { get; } = new CRC(CRCParameters.GetParameters(CRCStandard.CRC24));
+
+		public static CRC Crc32
+		{
+			get;
+		} = new CRC(
 			new Classless.Hasher.CRCParameters(32, 0x04C11DB7, 0xffffffff, 0, false)
 		);
-		static CRC crc32_cas = new CRC(
+
+		public static CRC Crc32_cas
+		{
+			get;
+		} = new CRC(
 			CRCParameters.GetParameters(CRCStandard.CRC32_CAS)
 		);
-
-		public static CRC Crc24 => crc24;
-
-		public static CRC Crc32 => crc32;
-
-		public static CRC Crc32_cas => crc32_cas;
 
 		/// <summary>
 		/// Seed Value for Group CRC-24 hash
@@ -121,7 +123,7 @@ namespace SimPe
 		public static uint GroupHash(string name)
 		{
 			name = name.Trim().ToLower();
-			byte[] rt = crc24.ComputeHash(Helper.ToBytes(name, 0)); //CRC24Seed, CRC24Poly, filename.ToCharArray());
+			byte[] rt = Crc24.ComputeHash(Helper.ToBytes(name, 0)); //CRC24Seed, CRC24Poly, filename.ToCharArray());
 
 			return (uint)(ToLong(rt) | 0x7f000000);
 		}
@@ -134,7 +136,7 @@ namespace SimPe
 		public static uint InstanceHash(string filename)
 		{
 			filename = filename.Trim().ToLower();
-			byte[] rt = crc24.ComputeHash(Helper.ToBytes(filename, 0)); //CRC24Seed, CRC24Poly, filename.ToCharArray());
+			byte[] rt = Crc24.ComputeHash(Helper.ToBytes(filename, 0)); //CRC24Seed, CRC24Poly, filename.ToCharArray());
 
 			return (uint)(ToLong(rt) | 0xff000000);
 		}
@@ -147,7 +149,7 @@ namespace SimPe
 		public static uint SubTypeHash(string filename)
 		{
 			filename = filename.Trim().ToLower();
-			byte[] rt = crc32.ComputeHash(Helper.ToBytes(filename, 0)); //CRC24Seed, CRC24Poly, filename.ToCharArray());
+			byte[] rt = Crc32.ComputeHash(Helper.ToBytes(filename, 0)); //CRC24Seed, CRC24Poly, filename.ToCharArray());
 
 			return (uint)ToLong(rt);
 		}
@@ -159,7 +161,7 @@ namespace SimPe
 		/// <returns></returns>
 		public static uint GetCrc32CAS(string s)
 		{
-			byte[] rt = crc32_cas.ComputeHash(Helper.ToBytes(s, 0)); //CRC24Seed, CRC24Poly, filename.ToCharArray());
+			byte[] rt = Crc32_cas.ComputeHash(Helper.ToBytes(s, 0)); //CRC24Seed, CRC24Poly, filename.ToCharArray());
 
 			return (uint)ToLong(rt);
 		}
@@ -171,7 +173,7 @@ namespace SimPe
 		/// <returns></returns>
 		public static uint GetCrc32(string s)
 		{
-			byte[] rt = crc32.ComputeHash(Helper.ToBytes(s, 0)); //CRC24Seed, CRC24Poly, filename.ToCharArray());
+			byte[] rt = Crc32.ComputeHash(Helper.ToBytes(s, 0)); //CRC24Seed, CRC24Poly, filename.ToCharArray());
 
 			return (uint)ToLong(rt);
 		}
@@ -183,7 +185,7 @@ namespace SimPe
 		/// <returns></returns>
 		public static uint GetCrc24(string s)
 		{
-			byte[] rt = crc24.ComputeHash(Helper.ToBytes(s, 0)); //CRC24Seed, CRC24Poly, filename.ToCharArray());
+			byte[] rt = Crc24.ComputeHash(Helper.ToBytes(s, 0)); //CRC24Seed, CRC24Poly, filename.ToCharArray());
 
 			return (uint)ToLong(rt);
 		}

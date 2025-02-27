@@ -40,8 +40,10 @@ namespace SimPe.Plugin
 			}
 		}
 
-		Ngbh parent;
-		public Ngbh Parent => parent;
+		public Ngbh Parent
+		{
+			get;
+		}
 
 		public NgbhSlotList(Ngbh parent)
 		{
@@ -49,7 +51,7 @@ namespace SimPe.Plugin
 				this.Version = parent.Version;
 			else
 				this.Version = NgbhVersion.University;
-			this.parent = parent;
+			this.Parent = parent;
 			itemsa = new SimPe.Plugin.Collections.NgbhItems(this);
 			itemsb = new SimPe.Plugin.Collections.NgbhItems(this);
 		}
@@ -73,8 +75,8 @@ namespace SimPe.Plugin
 				if (slotid != value)
 				{
 					slotid = value;
-					if (parent != null)
-						parent.Changed = true;
+					if (Parent != null)
+						Parent.Changed = true;
 				}
 			}
 		}
@@ -96,8 +98,8 @@ namespace SimPe.Plugin
 			set
 			{
 				itemsa = value;
-				if (parent != null)
-					parent.Changed = true;
+				if (Parent != null)
+					Parent.Changed = true;
 			}
 		}
 
@@ -118,8 +120,8 @@ namespace SimPe.Plugin
 			set
 			{
 				itemsb = value;
-				if (parent != null)
-					parent.Changed = true;
+				if (Parent != null)
+					Parent.Changed = true;
 			}
 		}
 
@@ -141,7 +143,7 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal virtual void Unserialize(System.IO.BinaryReader reader)
 		{
-			if ((uint)parent.Version >= (uint)NgbhVersion.Nightlife)
+			if ((uint)Parent.Version >= (uint)NgbhVersion.Nightlife)
 				version = reader.ReadUInt32();
 
 			uint ct = reader.ReadUInt32();
@@ -160,8 +162,8 @@ namespace SimPe.Plugin
 				item.Unserialize(reader);
 			}
 
-			if (parent != null)
-				parent.Changed = false;
+			if (Parent != null)
+				Parent.Changed = false;
 		}
 
 		/// <summary>
@@ -174,7 +176,7 @@ namespace SimPe.Plugin
 		/// </remarks>
 		internal virtual void Serialize(System.IO.BinaryWriter writer)
 		{
-			if ((uint)parent.Version >= (uint)NgbhVersion.Nightlife)
+			if ((uint)Parent.Version >= (uint)NgbhVersion.Nightlife)
 				writer.Write(version);
 
 			writer.Write((uint)itemsa.Length);
@@ -216,13 +218,15 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class NgbhSlot : NgbhSlotList
 	{
-		Data.NeighborhoodSlots type;
-		public Data.NeighborhoodSlots Type => type;
+		public Data.NeighborhoodSlots Type
+		{
+			get;
+		}
 
 		internal NgbhSlot(Ngbh parent, Data.NeighborhoodSlots type)
 			: base(parent)
 		{
-			this.type = type;
+			this.Type = type;
 		}
 
 		/// <summary>

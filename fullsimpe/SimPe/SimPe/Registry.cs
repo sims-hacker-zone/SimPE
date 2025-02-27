@@ -48,11 +48,6 @@ namespace SimPe
 		XmlRegistry reg;
 
 		/// <summary>
-		/// The Root Registry Key for this Application
-		/// </summary>
-		XmlRegistryKey xrk;
-
-		/// <summary>
 		/// The registery for the MRU list
 		/// </summary>
 		XmlRegistry mru;
@@ -62,13 +57,14 @@ namespace SimPe
 		/// </summary>
 		XmlRegistryKey mrk;
 
-		LayoutRegistry lr;
-
 		/// <summary>
 		/// Returns the LayoutRegistry
 		/// </summary>
-		public LayoutRegistry Layout => lr;
-		long pver;
+		public LayoutRegistry Layout
+		{
+			get; private set;
+		}
+
 		// int pep, pepct; long pver; - seem not to be used will comment all out
 		#endregion
 
@@ -81,7 +77,7 @@ namespace SimPe
 			rk = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(
 				"Software\\Ambertation\\SimPe"
 			);
-			pver = this.GetPreviousVersion();
+			PreviousVersion = this.GetPreviousVersion();
 			// pep = -1;
 			// pepct = this.GetPreviousEpCount();
 			Reload();
@@ -99,7 +95,7 @@ namespace SimPe
 				Helper.DataFolder.SimPeXREGW,
 				true
 			);
-			xrk = reg.CurrentUser.CreateSubKey(@"Software\Ambertation\SimPe");
+			RegistryKey = reg.CurrentUser.CreateSubKey(@"Software\Ambertation\SimPe");
 			ReloadLayout();
 			mru = new XmlRegistry(
 				Helper.DataFolder.MRUXREG,
@@ -115,7 +111,7 @@ namespace SimPe
 		public void ReloadLayout()
 		{
 			//lr = new LayoutRegistry(xrk.CreateSubKey("Layout"));
-			lr = new LayoutRegistry(null);
+			Layout = new LayoutRegistry(null);
 		}
 
 		/// <summary>
@@ -134,8 +130,8 @@ namespace SimPe
 		/// </summary>
 		public void Flush()
 		{
-			if (lr != null)
-				lr.Flush();
+			if (Layout != null)
+				Layout.Flush();
 			if (reg != null)
 				reg.Flush();
 			if (mru != null)
@@ -145,12 +141,15 @@ namespace SimPe
 		/// <summary>
 		/// Returns the Registry Key you can use to store Optional Plugin Data
 		/// </summary>
-		public XmlRegistryKey PluginRegistryKey => xrk.CreateSubKey("PluginSettings");
+		public XmlRegistryKey PluginRegistryKey => RegistryKey.CreateSubKey("PluginSettings");
 
 		/// <summary>
 		/// Returns the Base Registry Key
 		/// </summary>
-		public XmlRegistryKey RegistryKey => xrk;
+		public XmlRegistryKey RegistryKey
+		{
+			get; private set;
+		}
 		#endregion
 
 		/// <summary>
@@ -195,7 +194,10 @@ namespace SimPe
 		/// <summary>
 		/// Returns the Version of the latest SimPe used so far
 		/// </summary>
-		public long PreviousVersion => pver;
+		public long PreviousVersion
+		{
+			get;
+		}
 
 		#region EP Handler
 		public bool FoundUnknownEP()
@@ -289,13 +291,13 @@ namespace SimPe
 			{
 				if (HiddenMode)
 					return false;
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("FileTableSimpleSelectUseGroups", true);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("FileTableSimpleSelectUseGroups", value);
 			}
 		}
@@ -307,13 +309,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("ShowWaitBarPermanent", true);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("ShowWaitBarPermanent", value);
 			}
 		}
@@ -333,13 +335,13 @@ namespace SimPe
 					|| LoadOnlySimsStory > 0
 				)
 					return false;
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("LoadAllHoods", false);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("LoadAllHoods", value);
 			}
 		}
@@ -351,13 +353,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("UseExpansions2", false);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("UseExpansions2", value);
 			}
 		}
@@ -369,13 +371,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("LoadOnlySimsStory", 0);
 				return Convert.ToInt32(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("LoadOnlySimsStory", value);
 			}
 		}
@@ -392,13 +394,13 @@ namespace SimPe
 			{
 				if (Helper.WindowsRegistry.Layout.IsClassicPreset)
 					return false;
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("UseBigIcons", false);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("UseBigIcons", value);
 			}
 		}
@@ -415,13 +417,13 @@ namespace SimPe
 			{
 				if (Helper.WindowsRegistry.Layout.IsClassicPreset)
 					return false;
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("ShowMoreSkills", false);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("ShowMoreSkills", value);
 			}
 		}
@@ -438,13 +440,13 @@ namespace SimPe
 			{
 				if (Helper.WindowsRegistry.Layout.IsClassicPreset)
 					return false;
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("ShowPetAbilities", "false");
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("ShowPetAbilities", value);
 			}
 		}
@@ -459,13 +461,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("loadAtStartup", false);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("loadAtStartup", value);
 			}
 		}
@@ -477,13 +479,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("UseCache", true);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("UseCache", value);
 			}
 		}
@@ -495,13 +497,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("ShowStartupSplash", true);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("ShowStartupSplash", value);
 			}
 		}
@@ -513,13 +515,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("ShowObjdNames", false);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("ShowObjdNames", value);
 			}
 		}
@@ -533,13 +535,13 @@ namespace SimPe
 			{
 				if (Helper.WindowsRegistry.Layout.IsClassicPreset)
 					return false;
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("AllowChangeOfSecondaryAspiration", true);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("AllowChangeOfSecondaryAspiration", value);
 			}
 		}
@@ -551,13 +553,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("ShowJointNames", true);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("ShowJointNames", value);
 			}
 		}
@@ -569,13 +571,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("ImExportScale", 1.0f);
 				return Convert.ToSingle(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("ImExportScale", value);
 			}
 		}
@@ -587,13 +589,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("EnableSimPEHiddenMode", false);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("EnableSimPEHiddenMode", value);
 			}
 		}
@@ -608,13 +610,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("UseMaxisGroupsCache", false);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("UseMaxisGroupsCache", value);
 			}
 		}
@@ -628,13 +630,13 @@ namespace SimPe
 			{
 				if (Helper.WindowsRegistry.Layout.IsClassicPreset)
 					return false;
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("DecodeFilenames", true);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("DecodeFilenames", value);
 			}
 		}
@@ -646,13 +648,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("Username", "");
 				return o.ToString();
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("Username", value);
 			}
 		}
@@ -664,13 +666,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("CUi", 0);
 				return Convert.ToUInt32(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("CUi", value);
 			}
 		}
@@ -682,7 +684,7 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("Language");
 				if (o == null)
 					return Helper.GetMatchingLanguage();
@@ -691,7 +693,7 @@ namespace SimPe
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("Language", (byte)value);
 			}
 		}
@@ -703,14 +705,14 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("Password", "");
 				return o.ToString();
 				//return descramble(o.ToString());
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("Password", value);
 				//rkf.SetValue("Password", scramble(value));
 			}
@@ -733,7 +735,7 @@ namespace SimPe
 			{
 				try
 				{
-					XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+					XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 					object o = rkf.GetValue("MaxSearchResults", 2000);
 					return (int)o;
 				}
@@ -744,7 +746,7 @@ namespace SimPe
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("MaxSearchResults", value);
 			}
 		}
@@ -758,7 +760,7 @@ namespace SimPe
 			{
 				try
 				{
-					XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+					XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 					object o = rkf.GetValue("OWThumbSize", 24);
 					return (int)o;
 				}
@@ -769,7 +771,7 @@ namespace SimPe
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("OWThumbSize", value);
 			}
 		}
@@ -783,7 +785,7 @@ namespace SimPe
 			{
 				try
 				{
-					XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+					XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 					object o = rkf.GetValue("OWWallsFloors", false);
 					return (bool)o;
 				}
@@ -794,7 +796,7 @@ namespace SimPe
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("OWWallsFloors", value);
 			}
 		}
@@ -808,7 +810,7 @@ namespace SimPe
 			{
 				try
 				{
-					XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+					XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 					object o = rkf.GetValue("OWTrimNames", false);
 					return (bool)o;
 				}
@@ -819,7 +821,7 @@ namespace SimPe
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("OWTrimNames", value);
 			}
 		}
@@ -831,13 +833,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("LoadMetaInfos", true);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("LoadMetaInfos", value);
 			}
 		}
@@ -849,13 +851,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("EnableSound", true);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("EnableSound", value);
 			}
 		}
@@ -867,13 +869,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("AutoBackup", false);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("AutoBackup", value);
 			}
 		}
@@ -885,13 +887,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("WaitingScreen", true);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("WaitingScreen", value);
 			}
 		}
@@ -903,13 +905,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("WaitingScreenTopMost", false);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("WaitingScreenTopMost", value);
 			}
 		}
@@ -921,13 +923,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("LoadOWFast", false);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("LoadOWFast", value);
 			}
 		}
@@ -939,13 +941,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("UsePkgMaintainer", true);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("UsePkgMaintainer", value);
 			}
 		}
@@ -957,13 +959,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("MultipleFiles", true);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("MultipleFiles", value);
 			}
 		}
@@ -975,13 +977,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("SimpleResourceSelect", true);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("SimpleResourceSelect", value);
 			}
 		}
@@ -993,13 +995,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("FirefoxTabbing", true);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("FirefoxTabbing", value);
 			}
 		}
@@ -1011,13 +1013,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("WasQAUser", false);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("WasQAUser", value);
 			}
 		}
@@ -1029,13 +1031,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("BigPackageResourceCount", 2000);
 				return Convert.ToInt32(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("BigPackageResourceCount", value);
 			}
 		}
@@ -1047,13 +1049,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("GraphLineMode", 0x02);
 				return Convert.ToInt16(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("GraphLineMode", value);
 			}
 		}
@@ -1065,13 +1067,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("GraphQuality", true);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("GraphQuality", value);
 			}
 		}
@@ -1083,13 +1085,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("CresPrioritize", true);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("CresPrioritize", value);
 			}
 		}
@@ -1101,14 +1103,14 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("GmdcExtension", ".obj");
 				string s = o.ToString();
 				return s.Replace("*", "");
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("GmdcExtension", value);
 			}
 		}
@@ -1120,13 +1122,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("CorrectJointDefinitionOnExport", false);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("CorrectJointDefinitionOnExport", value);
 			}
 		}
@@ -1138,13 +1140,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("DeepSimScan", true);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("DeepSimScan", value);
 			}
 		}
@@ -1156,13 +1158,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("DeepSimTemplateScan", false);
 				return Convert.ToBoolean(o) && DeepSimScan;
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("DeepSimTemplateScan", value);
 			}
 		}
@@ -1174,13 +1176,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("ShowProgressWhenPackageLoads", false);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("ShowProgressWhenPackageLoads", value);
 			}
 		}
@@ -1192,13 +1194,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("AsynchronLoad", false);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("AsynchronLoad", value);
 			}
 		}
@@ -1210,13 +1212,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("AsynchronSort", true);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("AsynchronSort", value);
 			}
 		}
@@ -1228,13 +1230,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("ResoruceTreeAllwaysAutoselect", true);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("ResoruceTreeAllwaysAutoselect", value);
 			}
 		}
@@ -1246,13 +1248,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("SortProcessCount", 16);
 				return Convert.ToInt32(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("SortProcessCount", value);
 			}
 		}
@@ -1264,13 +1266,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("UpdateResourceListWhenTGIChanges", true);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("UpdateResourceListWhenTGIChanges", value);
 			}
 		}
@@ -1282,13 +1284,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("LockDocks", false);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("LockDocks", value);
 			}
 		}
@@ -1303,13 +1305,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("allowlotzero", true);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("allowlotzero", value);
 			}
 		}
@@ -1352,7 +1354,7 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue(
 					"ResourceListFormat",
 					(int)ResourceListFormats.JustNames
@@ -1361,7 +1363,7 @@ namespace SimPe
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("ResourceListFormat", (int)value);
 			}
 		}
@@ -1373,7 +1375,7 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue(
 					"ResourceListUnknownDescriptionFormat",
 					(int)ResourceListUnnamedFormats.GroupInstance
@@ -1382,7 +1384,7 @@ namespace SimPe
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("ResourceListUnknownDescriptionFormat", (int)value);
 			}
 		}
@@ -1394,7 +1396,7 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue(
 					"ResourceListInstanceFormat",
 					(int)ResourceListInstanceFormats.HexDec
@@ -1403,7 +1405,7 @@ namespace SimPe
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("ResourceListInstanceFormat", (int)value);
 			}
 		}
@@ -1420,7 +1422,7 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue(
 					"ResourceListExtensionFormat",
 					(int)ResourceListExtensionFormats.Short
@@ -1429,7 +1431,7 @@ namespace SimPe
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("ResourceListExtensionFormat", (int)value);
 			}
 		}
@@ -1454,13 +1456,13 @@ namespace SimPe
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("ReportFormat", (int)ReportFormats.Descriptive);
 				return (ReportFormats)Convert.ToInt32(o);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
+				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("ReportFormat", (int)value);
 			}
 		}
@@ -1474,7 +1476,7 @@ namespace SimPe
 		/// <returns>Priority for the Wrapper</returns>
 		public int GetWrapperPriority(ulong uid)
 		{
-			XmlRegistryKey rkf = xrk.CreateSubKey("Priorities");
+			XmlRegistryKey rkf = RegistryKey.CreateSubKey("Priorities");
 			object o = rkf.GetValue(Helper.HexString(uid));
 			if (o == null)
 				return 0x00000000;
@@ -1489,7 +1491,7 @@ namespace SimPe
 		/// <param name="priority">the new Priority</param>
 		public void SetWrapperPriority(ulong uid, int priority)
 		{
-			XmlRegistryKey rkf = xrk.CreateSubKey("Priorities");
+			XmlRegistryKey rkf = RegistryKey.CreateSubKey("Priorities");
 			rkf.SetValue(Helper.HexString(uid), priority);
 		}
 		#endregion

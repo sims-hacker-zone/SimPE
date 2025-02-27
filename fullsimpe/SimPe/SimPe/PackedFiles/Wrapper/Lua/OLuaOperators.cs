@@ -35,24 +35,16 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 	class Global
 	{
 		string name;
-		object val;
 
 		public Global(string name, object val)
 		{
 			this.name = name;
-			this.val = val;
+			this.Value = val;
 		}
 
 		public object Value
 		{
-			get
-			{
-				return val;
-			}
-			set
-			{
-				val = value;
-			}
+			get; set;
 		}
 
 		public override string ToString()
@@ -107,7 +99,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public Context CreateSubContext(ObjLuaFunction fkt, out string paramlist)
 		{
-			Context c = new Context(globals, indent + "\t");
+			Context c = new Context(globals, Indent + "\t");
 
 			paramlist = "";
 			if (fkt != null)
@@ -142,16 +134,18 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		string[] sregs;
 		Hashtable globals,
 			localnames;
-		int pc;
-		string indent;
-		public string Indent => indent;
+
+		public string Indent
+		{
+			get;
+		}
 
 		public Context()
 			: this(new Hashtable(), "") { }
 
 		Context(Hashtable globals, string indent)
 		{
-			pc = 0;
+			PC = 0;
 			regs = new object[0xff];
 			sregs = new string[regs.Length];
 
@@ -163,7 +157,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 			this.globals = globals;
 			localnames = new Hashtable();
-			this.indent = indent;
+			this.Indent = indent;
 		}
 
 		public void SetSReg(ushort nr, string val)
@@ -417,17 +411,20 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		internal void Init(ObjLuaFunction parent)
 		{
 			this.parent = parent;
-			pc = -1;
+			PC = -1;
 		}
 
-		public int PC => pc;
+		public int PC
+		{
+			get; private set;
+		}
 
 		public ObjLuaCode CurrentLine
 		{
 			get
 			{
-				if (pc >= 0 && pc < parent.Codes.Count)
-					return parent.Codes[pc] as ObjLuaCode;
+				if (PC >= 0 && PC < parent.Codes.Count)
+					return parent.Codes[PC] as ObjLuaCode;
 				else
 					return null;
 			}
@@ -435,18 +432,18 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public ObjLuaCode NextLine()
 		{
-			pc++;
+			PC++;
 			return CurrentLine;
 		}
 
 		public void PrepareJumpToEnd()
 		{
-			pc = GoToLastLine();
+			PC = GoToLastLine();
 		}
 
 		public void PrepareJumpToLine(int linenr)
 		{
-			pc = GoToLine(linenr) - 1;
+			PC = GoToLine(linenr) - 1;
 		}
 
 		internal int GoToLastLine()
@@ -456,8 +453,8 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		internal int GoToLine(int linenr)
 		{
-			pc = linenr;
-			return pc;
+			PC = linenr;
+			return PC;
 		}
 		#endregion
 
@@ -1434,28 +1431,20 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public override string ToString(Context cx)
 		{
-			if (tfl == null)
+			if (TFORLOOP == null)
 				return "";
 
 			string str = "for ";
 
-			str += cx.ListSR(tfl.A + 2, tfl.A + 2 + tfl.C, "") + " in ";
+			str += cx.ListSR(TFORLOOP.A + 2, TFORLOOP.A + 2 + TFORLOOP.C, "") + " in ";
 			str += cx.SR(A) + " do ";
 
 			return str;
 		}
 
-		TFORLOOP tfl;
 		public TFORLOOP TFORLOOP
 		{
-			get
-			{
-				return tfl;
-			}
-			set
-			{
-				tfl = value;
-			}
+			get; set;
 		}
 
 		protected override string ToAsmString()
@@ -1523,22 +1512,14 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		{
 		}
 
-		bool istart;
 		public bool IsStart
 		{
-			get
-			{
-				return istart;
-			}
-			set
-			{
-				istart = value;
-			}
+			get; set;
 		}
 
 		public override string ToString(Context cx)
 		{
-			if (!istart)
+			if (!IsStart)
 				return "end";
 			else
 				return "for "

@@ -149,15 +149,6 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 	/// </summary>
 	public class FamilyTieSim : FamilyTieCommon
 	{
-		/// <summary>
-		/// The ties he perticipates in
-		/// </summary>
-		FamilyTieItem[] ties;
-
-		/// <summary>
-		/// This is only stored for Savety reasons
-		/// </summary>
-		int blockdelimiter;
 
 		/// <summary>
 		/// Constructor for a new participation sim
@@ -172,8 +163,8 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		)
 			: base(siminstance, famt)
 		{
-			this.ties = ties;
-			blockdelimiter = 0x00000001;
+			this.Ties = ties;
+			BlockDelimiter = 0x00000001;
 		}
 
 		/// <summary>
@@ -181,14 +172,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// </summary>
 		public FamilyTieItem[] Ties
 		{
-			get
-			{
-				return ties;
-			}
-			set
-			{
-				ties = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -196,14 +180,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// </summary>
 		internal int BlockDelimiter
 		{
-			get
-			{
-				return blockdelimiter;
-			}
-			set
-			{
-				blockdelimiter = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -215,7 +192,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		{
 			if (sdsc == null)
 				return null;
-			foreach (FamilyTieItem s in ties)
+			foreach (FamilyTieItem s in Ties)
 				if (s.Instance == sdsc.Instance)
 					return s;
 
@@ -233,7 +210,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 			if (s == null)
 			{
 				s = new FamilyTieItem(type, sdsc.Instance, this.famt);
-				ties = (FamilyTieItem[])Helper.Add(ties, s);
+				Ties = (FamilyTieItem[])Helper.Add(Ties, s);
 			}
 			s.Type = type;
 			return s;
@@ -246,9 +223,9 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// <returns>true, if the Tie was removed</returns>
 		public bool RemoveTie(FamilyTieItem fti)
 		{
-			int len = ties.Length;
-			ties = (FamilyTieItem[])Helper.Delete(ties, fti);
-			return (ties.Length < len);
+			int len = Ties.Length;
+			Ties = (FamilyTieItem[])Helper.Delete(Ties, fti);
+			return (Ties.Length < len);
 		}
 	}
 
@@ -257,10 +234,6 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 	/// </summary>
 	public class FamilyTieItem : FamilyTieCommon
 	{
-		/// <summary>
-		/// The Type of the tie
-		/// </summary>
-		MetaData.FamilyTieTypes type;
 
 		/// <summary>
 		/// Creates a new FamilyTie
@@ -275,7 +248,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		)
 			: base(siminstance, famt)
 		{
-			this.type = type;
+			this.Type = type;
 		}
 
 		/// <summary>
@@ -283,14 +256,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// </summary>
 		public MetaData.FamilyTieTypes Type
 		{
-			get
-			{
-				return type;
-			}
-			set
-			{
-				type = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -299,7 +265,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// <returns>A String describing the Object</returns>
 		public override string ToString()
 		{
-			return ((LocalizedFamilyTieTypes)type).ToString() + ": " + base.ToString();
+			return ((LocalizedFamilyTieTypes)Type).ToString() + ": " + base.ToString();
 		}
 	}
 }

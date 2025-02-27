@@ -24,10 +24,7 @@ namespace SimPe.Plugin
 		/// Contains the Data of the File
 		/// </summary>
 		private ushort[] fval;
-		private int sections = 0;
-		private int goodsections = 0;
 		private int signate = 0x46414d68;
-		private byte version = 85;
 		public bool isnew = true;
 
 		/// <summary>
@@ -48,27 +45,17 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns/Sets the number of blocks
 		/// </summary>
-		public int Sections
-		{
-			get
-			{
-				return sections;
-			}
-			set
-			{
-				sections = value;
-			}
-		}
+		public int Sections { get; set; } = 0;
 
 		/// <summary>
 		/// Returns the  the number of good blocks
 		/// </summary>
-		public int GoodSections => goodsections;
+		public int GoodSections { get; private set; } = 0;
 
 		/// <summary>
 		/// Returns the Version of the File
 		/// </summary>
-		public byte Version => version;
+		public byte Version { get; private set; } = 85;
 
 		/// <summary>
 		/// Returns the Name of the Family
@@ -260,18 +247,18 @@ namespace SimPe.Plugin
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			isnew = false; // empty files don't get Unserialize, this value shows the file as not empty
-			goodsections = 0;
+			GoodSections = 0;
 			signate = reader.ReadInt32();
-			version = reader.ReadByte(); // Versions match Fami Versions
+			Version = reader.ReadByte(); // Versions match Fami Versions
 			reader.BaseStream.Seek(13, System.IO.SeekOrigin.Begin);
-			sections = reader.ReadInt32();
-			int siser = sections * 42; // 83 bytes - 1 byte + 41 two bit bytes
+			Sections = reader.ReadInt32();
+			int siser = Sections * 42; // 83 bytes - 1 byte + 41 two bit bytes
 			Array.Resize<ushort>(ref fval, siser);
 
 			reader.BaseStream.Seek(17, System.IO.SeekOrigin.Begin);
 			try
 			{
-				for (int i = 0; i < sections; i++)
+				for (int i = 0; i < Sections; i++)
 				{
 					for (int j = 0; j < 41; j++)
 						fval[(i * 42) + j] = reader.ReadUInt16();
@@ -289,7 +276,7 @@ namespace SimPe.Plugin
 								== fval[(i * 42) + 1]
 							)
 						)
-							goodsections++;
+							GoodSections++;
 				}
 			}
 			catch { }
@@ -306,11 +293,11 @@ namespace SimPe.Plugin
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(signate);
-			writer.Write(version);
+			writer.Write(Version);
 			writer.Write((int)0);
 			writer.Write((int)0);
-			writer.Write(sections);
-			for (int i = 0; i < sections; i++)
+			writer.Write(Sections);
+			for (int i = 0; i < Sections; i++)
 			{
 				for (int j = 0; j < 41; j++)
 					writer.Write(fval[(i * 42) + j]);

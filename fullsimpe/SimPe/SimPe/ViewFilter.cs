@@ -34,7 +34,7 @@ namespace SimPe
 			doinst = false;
 			dogrp = false;
 
-			act = dogrp || doinst;
+			Active = dogrp || doinst;
 		}
 
 		uint inst;
@@ -74,7 +74,7 @@ namespace SimPe
 				if (doinst != value)
 				{
 					doinst = value;
-					act = dogrp || doinst;
+					Active = dogrp || doinst;
 					if (ChangedFilter != null)
 						ChangedFilter(this, new EventArgs());
 				}
@@ -118,19 +118,20 @@ namespace SimPe
 				if (dogrp != value)
 				{
 					dogrp = value;
-					act = dogrp || doinst;
+					Active = dogrp || doinst;
 					if (ChangedFilter != null)
 						ChangedFilter(this, new EventArgs());
 				}
 			}
 		}
 
-		bool act;
-
 		/// <summary>
 		/// true, if at least one Filter is active
 		/// </summary>
-		public bool Active => act;
+		public bool Active
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// returns true, if the passed Item should be filtered

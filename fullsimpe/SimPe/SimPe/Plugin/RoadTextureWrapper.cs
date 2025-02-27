@@ -49,71 +49,30 @@ namespace SimPe.Plugin
 
 		#region Attributes
 		Hashtable values;
-		string flname;
-
-		uint uk1,
-			uk2,
-			uk3;
-		RoadTextureType type;
 
 		public RoadTextureType Type
 		{
-			get
-			{
-				return type;
-			}
-			set
-			{
-				type = value;
-			}
+			get; set;
 		}
 
 		public string FileName
 		{
-			get
-			{
-				return flname;
-			}
-			set
-			{
-				flname = value;
-			}
+			get; set;
 		}
 
 		public uint Id
 		{
-			get
-			{
-				return uk1;
-			}
-			set
-			{
-				uk1 = value;
-			}
+			get; set;
 		}
 
 		public uint Unknown2
 		{
-			get
-			{
-				return uk2;
-			}
-			set
-			{
-				uk2 = value;
-			}
+			get; set;
 		}
 
 		public uint Unknown3
 		{
-			get
-			{
-				return uk3;
-			}
-			set
-			{
-				uk3 = value;
-			}
+			get; set;
 		}
 
 		#endregion
@@ -127,8 +86,8 @@ namespace SimPe.Plugin
 			: base()
 		{
 			values = new Hashtable();
-			flname = "";
-			type = RoadTextureType.Materials;
+			FileName = "";
+			Type = RoadTextureType.Materials;
 		}
 
 		#region IWrapper member
@@ -176,11 +135,11 @@ namespace SimPe.Plugin
 			values.Clear();
 
 			byte[] fname = reader.ReadBytes(0x40);
-			flname = Helper.ToString(fname);
+			FileName = Helper.ToString(fname);
 
-			uk1 = reader.ReadUInt32();
-			uk2 = reader.ReadUInt32();
-			uk3 = reader.ReadUInt32();
+			Id = reader.ReadUInt32();
+			Unknown2 = reader.ReadUInt32();
+			Unknown3 = reader.ReadUInt32();
 
 			uint ct = reader.ReadUInt32();
 
@@ -194,11 +153,11 @@ namespace SimPe.Plugin
 					values[k] = v;
 				}
 
-				type = RoadTextureType.Materials;
+				Type = RoadTextureType.Materials;
 			}
 			catch
 			{
-				type = RoadTextureType.Unknown;
+				Type = RoadTextureType.Unknown;
 				reader.BaseStream.Seek(pos, System.IO.SeekOrigin.Begin);
 
 				for (int i = 0; i < ct; i++)
@@ -220,16 +179,16 @@ namespace SimPe.Plugin
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-			byte[] fname = Helper.ToBytes(flname, 0x40);
+			byte[] fname = Helper.ToBytes(FileName, 0x40);
 			writer.Write(fname);
 
-			writer.Write(uk1);
-			writer.Write(uk2);
-			writer.Write(uk3);
+			writer.Write(Id);
+			writer.Write(Unknown2);
+			writer.Write(Unknown3);
 
 			writer.Write((uint)values.Count);
 
-			if (type == RoadTextureType.Materials)
+			if (Type == RoadTextureType.Materials)
 			{
 				foreach (string k in values.Keys)
 				{

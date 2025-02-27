@@ -27,30 +27,14 @@ namespace SimPe.Plugin
 	public class SpotLight : PointLight
 	{
 		#region Attributes
-		float unknown10;
 		public float Val8
 		{
-			get
-			{
-				return unknown10;
-			}
-			set
-			{
-				unknown10 = value;
-			}
+			get; set;
 		}
 
-		float unknown11;
 		public float Val9
 		{
-			get
-			{
-				return unknown11;
-			}
-			set
-			{
-				unknown11 = value;
-			}
+			get; set;
 		}
 
 		#endregion
@@ -68,15 +52,15 @@ namespace SimPe.Plugin
 		public override void Unserialize(System.IO.BinaryReader reader)
 		{
 			base.Unserialize(reader);
-			unknown10 = reader.ReadSingle();
-			unknown11 = reader.ReadSingle();
+			Val8 = reader.ReadSingle();
+			Val9 = reader.ReadSingle();
 		}
 
 		public override void Serialize(System.IO.BinaryWriter writer)
 		{
 			base.Serialize(writer);
-			writer.Write(unknown10);
-			writer.Write(unknown11);
+			writer.Write(Val8);
+			writer.Write(Val9);
 		}
 
 		/// <summary>
@@ -85,8 +69,8 @@ namespace SimPe.Plugin
 		protected override void InitTabPage()
 		{
 			base.InitTabPage();
-			tDirectionalLight.tb_l_8.Text = unknown10.ToString();
-			tDirectionalLight.tb_l_9.Text = unknown11.ToString();
+			tDirectionalLight.tb_l_8.Text = Val8.ToString();
+			tDirectionalLight.tb_l_9.Text = Val9.ToString();
 
 			tDirectionalLight.label45.Visible = true;
 			tDirectionalLight.label46.Visible = true;

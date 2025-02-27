@@ -28,7 +28,6 @@ namespace SimPe
 	/// </summary>
 	public class Parameters
 	{
-		string[] files;
 
 		/// <summary>
 		/// Create a new Instance
@@ -43,13 +42,16 @@ namespace SimPe
 					fllist.Add(s);
 			}
 
-			files = new string[fllist.Count];
-			fllist.CopyTo(files);
+			Files = new string[fllist.Count];
+			fllist.CopyTo(Files);
 		}
 
 		/// <summary>
 		/// Returns the Files passed on the Commandline
 		/// </summary>
-		public string[] Files => files;
+		public string[] Files
+		{
+			get;
+		}
 	}
 }

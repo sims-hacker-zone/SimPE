@@ -35,40 +35,22 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Number of Vertices stored in this SubSet
 		/// </summary>
-		public int VertexCount => verts.Length;
-
-		Vectors3f verts;
+		public int VertexCount => Vertices.Length;
 
 		/// <summary>
 		/// Vertex Definitions for this SubSet
 		/// </summary>
 		public Vectors3f Vertices
 		{
-			get
-			{
-				return verts;
-			}
-			set
-			{
-				verts = value;
-			}
+			get; set;
 		}
-
-		IntArrayList items;
 
 		/// <summary>
 		/// Some additional Index Data (yet unknown)
 		/// </summary>
 		public IntArrayList Items
 		{
-			get
-			{
-				return items;
-			}
-			set
-			{
-				items = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -78,8 +60,8 @@ namespace SimPe.Plugin.Gmdc
 		public GmdcJoint(GeometryDataContainer parent)
 			: base(parent)
 		{
-			verts = new Vectors3f();
-			items = new IntArrayList();
+			Vertices = new Vectors3f();
+			Items = new IntArrayList();
 		}
 
 		/// <summary>
@@ -95,17 +77,17 @@ namespace SimPe.Plugin.Gmdc
 				try
 				{
 					int count = reader.ReadInt32();
-					verts.Clear();
+					Vertices.Clear();
 					for (int i = 0; i < vcount; i++)
 					{
 						Vector3f f = new Vector3f();
 						f.Unserialize(reader);
-						verts.Add(f);
+						Vertices.Add(f);
 					}
 
-					items.Clear();
+					Items.Clear();
 					for (int i = 0; i < count; i++)
-						items.Add(this.ReadValue(reader));
+						Items.Add(this.ReadValue(reader));
 				}
 				catch (Exception ex)
 				{
@@ -124,15 +106,15 @@ namespace SimPe.Plugin.Gmdc
 		/// </remarks>
 		public void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write((int)verts.Count);
+			writer.Write((int)Vertices.Count);
 
-			if (verts.Count > 0)
+			if (Vertices.Count > 0)
 			{
-				writer.Write((int)items.Length);
-				for (int i = 0; i < verts.Count; i++)
-					verts[i].Serialize(writer);
-				for (int i = 0; i < items.Length; i++)
-					this.WriteValue(writer, items[i]);
+				writer.Write((int)Items.Length);
+				for (int i = 0; i < Vertices.Count; i++)
+					Vertices[i].Serialize(writer);
+				for (int i = 0; i < Items.Length; i++)
+					this.WriteValue(writer, Items[i]);
 			}
 		}
 

@@ -15,14 +15,6 @@ namespace SimPe.Plugin
 	public class NgbhValueDescriptor
 	{
 		string name;
-		uint guid,
-			fullguid;
-		int valuenr,
-			fullnr;
-		short min,
-			max;
-		NgbhValueDescriptorType type;
-		bool intern;
 
 		public NgbhValueDescriptor(
 			string name,
@@ -77,33 +69,57 @@ namespace SimPe.Plugin
 		)
 		{
 			this.name = name;
-			this.guid = guid;
-			this.fullguid = fullguid;
-			this.valuenr = valuenr;
-			this.fullnr = fullnr;
-			this.max = max;
-			this.min = min;
-			this.type = type;
-			this.intern = intern;
+			this.Guid = guid;
+			this.CompletedGuid = fullguid;
+			this.DataNumber = valuenr;
+			this.CompletedDataNumber = fullnr;
+			this.Maximum = max;
+			this.Minimum = min;
+			this.Type = type;
+			this.Intern = intern;
 		}
 
-		public bool Intern => intern;
+		public bool Intern
+		{
+			get;
+		}
 
-		public NgbhValueDescriptorType Type => type;
+		public NgbhValueDescriptorType Type
+		{
+			get;
+		}
 
-		public bool HasComplededFlag => fullnr >= 0;
+		public bool HasComplededFlag => CompletedDataNumber >= 0;
 
-		uint CompletedGuid => fullguid;
+		uint CompletedGuid
+		{
+			get;
+		}
 
-		public uint Guid => guid;
+		public uint Guid
+		{
+			get;
+		}
 
-		public int CompletedDataNumber => fullnr;
+		public int CompletedDataNumber
+		{
+			get;
+		}
 
-		public int DataNumber => valuenr;
+		public int DataNumber
+		{
+			get;
+		}
 
-		public short Minimum => min;
+		public short Minimum
+		{
+			get;
+		}
 
-		public short Maximum => max;
+		public short Maximum
+		{
+			get;
+		}
 
 		public override string ToString()
 		{

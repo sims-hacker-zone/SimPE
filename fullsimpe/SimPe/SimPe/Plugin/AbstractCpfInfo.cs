@@ -13,9 +13,6 @@ namespace SimPe.Plugin
 	public abstract class AbstractCpfInfo
 	{
 		private Cpf propertySet;
-		private bool enabled;
-		private bool pinned;
-		private bool changed;
 
 		public Cpf PropertySet
 		{
@@ -36,26 +33,12 @@ namespace SimPe.Plugin
 
 		public bool Enabled
 		{
-			get
-			{
-				return this.enabled;
-			}
-			set
-			{
-				this.enabled = value;
-			}
+			get; set;
 		}
 
 		public bool HasChanges
 		{
-			get
-			{
-				return this.changed;
-			}
-			set
-			{
-				this.changed = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -63,14 +46,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public bool Pinned
 		{
-			get
-			{
-				return this.pinned;
-			}
-			set
-			{
-				this.pinned = value;
-			}
+			get; set;
 		}
 
 		#region Lazy properties, use them sparingly
@@ -129,7 +105,7 @@ namespace SimPe.Plugin
 
 		protected AbstractCpfInfo()
 		{
-			this.enabled = true;
+			this.Enabled = true;
 		}
 
 		public AbstractCpfInfo(Cpf propertySet)
@@ -173,7 +149,7 @@ namespace SimPe.Plugin
 				if (item.StringValue != value)
 				{
 					item.StringValue = value;
-					this.changed = true;
+					this.HasChanges = true;
 				}
 			}
 		}
@@ -186,7 +162,7 @@ namespace SimPe.Plugin
 				if (item.UIntegerValue != value)
 				{
 					item.UIntegerValue = value;
-					this.changed = true;
+					this.HasChanges = true;
 				}
 			}
 		}
@@ -199,7 +175,7 @@ namespace SimPe.Plugin
 				if (item.SingleValue != value)
 				{
 					item.SingleValue = value;
-					this.changed = true;
+					this.HasChanges = true;
 				}
 			}
 		}
@@ -224,13 +200,13 @@ namespace SimPe.Plugin
 		{
 			if (this.propertySet != null)
 			{
-				if (this.enabled)
+				if (this.Enabled)
 				{
 					this.propertySet.SynchronizeUserData();
 				}
 				else
 				{
-					if (!this.pinned)
+					if (!this.Pinned)
 						this.propertySet.FileDescriptor.MarkForDelete = true;
 					else
 					{

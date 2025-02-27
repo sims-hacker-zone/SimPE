@@ -228,44 +228,11 @@ namespace SimPe.Plugin
 		#endregion
 
 
-		bool lodesubs = true;
-		public bool ShowSubHoods
-		{
-			get
-			{
-				return lodesubs;
-			}
-			set
-			{
-				lodesubs = value;
-			}
-		}
+		public bool ShowSubHoods { get; set; } = true;
 
-		bool ngbhBUMgr = true;
-		public bool ShowBackupManager
-		{
-			get
-			{
-				return ngbhBUMgr;
-			}
-			set
-			{
-				ngbhBUMgr = value;
-			}
-		}
+		public bool ShowBackupManager { get; set; } = true;
 
-		bool loadNgbh = true;
-		public bool LoadNgbh
-		{
-			get
-			{
-				return loadNgbh;
-			}
-			set
-			{
-				loadNgbh = value;
-			}
-		}
+		public bool LoadNgbh { get; set; } = true;
 
 		NgbhType ngbh = null;
 		public string SelectedNgbh => ngbh == null ? null : ngbh.FileName;
@@ -441,7 +408,7 @@ namespace SimPe.Plugin
 						if (!dir.Contains("Tutorial"))
 							AddNeighborhood(path, dir);
 				}
-				if (Helper.WindowsRegistry.LoadAllNeighbourhoods && loadNgbh)
+				if (Helper.WindowsRegistry.LoadAllNeighbourhoods && LoadNgbh)
 				{
 					if (
 						PathProvider
@@ -521,8 +488,8 @@ namespace SimPe.Plugin
 			changed = false;
 			UpdateList();
 			this.Cursor = Cursors.Default;
-			pnBackup.Visible = ngbhBUMgr;
-			pnOptions.Visible = lodesubs;
+			pnBackup.Visible = ShowBackupManager;
+			pnOptions.Visible = ShowSubHoods;
 			RemoteControl.ShowSubForm(this);
 			if (this.package != null)
 				package = this.package;
@@ -531,17 +498,19 @@ namespace SimPe.Plugin
 
 		class NgbhType
 		{
-			string name,
-				file;
+			string name;
 			NeighborhoodType type;
 
-			public string FileName => file;
+			public string FileName
+			{
+				get;
+			}
 
 			public NgbhType(string file, string name, NeighborhoodType type)
 			{
 				this.name = name;
 				this.type = type;
-				this.file = file;
+				this.FileName = file;
 			}
 
 			public override string ToString()
@@ -591,7 +560,7 @@ namespace SimPe.Plugin
 			ngbh = cbtypes.SelectedItem as NgbhType;
 			if (ngbh != null)
 			{
-				if (loadNgbh)
+				if (LoadNgbh)
 					package = SimPe.Packages.GeneratableFile.LoadFromFile(
 						ngbh.FileName
 					);
@@ -692,7 +661,7 @@ namespace SimPe.Plugin
 		private void cbtypes_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			btnOpen.Enabled = cbtypes.SelectedItem != null;
-			if (cbtypes.SelectedItem != null && lodesubs)
+			if (cbtypes.SelectedItem != null && ShowSubHoods)
 			{
 				ngbh = cbtypes.SelectedItem as NgbhType;
 				if (ngbh != null)
@@ -725,7 +694,7 @@ namespace SimPe.Plugin
 					this.pnBoPeep.BackgroundImage = null;
 				}
 			}
-			else if (lodesubs)
+			else if (ShowSubHoods)
 			{
 				this.pnBoPeep.BackgroundImage = null;
 			}

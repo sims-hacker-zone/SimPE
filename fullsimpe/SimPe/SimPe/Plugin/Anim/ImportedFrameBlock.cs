@@ -51,90 +51,49 @@ namespace SimPe.Plugin.Anim
 	public class ImportedFrameBlock
 	{
 		/// <summary>
-		/// internal Attribute
-		/// </summary>
-		AnimImporterAction action;
-
-		/// <summary>
 		/// Returns/Sets the action that should be performed
 		/// </summary>
 		public AnimImporterAction Action
 		{
-			get
-			{
-				return action;
-			}
-			set
-			{
-				action = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
 		/// The name of the Imported Bone
 		/// </summary>
-		public string ImportedName => afb.Name;
-
-		/// <summary>
-		/// internal Attribute
-		/// </summary>
-		AnimationFrameBlock target;
+		public string ImportedName => FrameBlock.Name;
 
 		/// <summary>
 		/// The Animation that should get Replaced
 		/// </summary>
 		public AnimationFrameBlock Target
 		{
-			get
-			{
-				return target;
-			}
-			set
-			{
-				target = value;
-			}
+			get; set;
 		}
-
-		bool dz;
 
 		/// <summary>
 		/// true if the First Frame (TimeCode 0) should be ignored during the Import
 		/// </summary>
 		public bool DiscardZeroFrame
 		{
-			get
-			{
-				return dz;
-			}
-			set
-			{
-				dz = value;
-			}
+			get; set;
 		}
-
-		bool ruf;
 
 		/// <summary>
 		/// Remove all Keyframes that are not needed by the Animation?
 		/// </summary>
 		public bool RemoveUnneeded
 		{
-			get
-			{
-				return ruf;
-			}
-			set
-			{
-				ruf = value;
-			}
+			get; set;
 		}
-
-		AnimationFrameBlock afb;
 
 		/// <summary>
 		/// The new Bone
 		/// </summary>
-		public AnimationFrameBlock FrameBlock => afb;
+		public AnimationFrameBlock FrameBlock
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the color that should be used to display this Group in the "Import Groups" ListView
@@ -157,10 +116,10 @@ namespace SimPe.Plugin.Anim
 		/// <param name="afb">The <see cref="AnimationFrameBlock"/> that was Imported</param>
 		public ImportedFrameBlock(AnimationFrameBlock afb)
 		{
-			dz = false;
-			ruf = true;
-			this.afb = afb;
-			action = AnimImporterAction.Nothing;
+			DiscardZeroFrame = false;
+			RemoveUnneeded = true;
+			this.FrameBlock = afb;
+			Action = AnimImporterAction.Nothing;
 		}
 
 		/// <summary>
@@ -168,12 +127,12 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		public void FindTarget(AnimationMeshBlock amb)
 		{
-			action = AnimImporterAction.Nothing;
+			Action = AnimImporterAction.Nothing;
 			foreach (AnimationFrameBlock afb in amb.Part2)
 				if (afb.Name == ImportedName)
 				{
-					action = AnimImporterAction.Replace;
-					target = afb;
+					Action = AnimImporterAction.Replace;
+					Target = afb;
 					break;
 				}
 		}
@@ -196,7 +155,7 @@ namespace SimPe.Plugin.Anim
 				if (!this.DiscardZeroFrame || af.TimeCode != 0)
 					Target.AddFrame(af.TimeCode, af.X, af.Y, af.Z, af.Linear);
 
-			if (ruf)
+			if (RemoveUnneeded)
 				Target.RemoveUnneededFrames();
 
 			Target.Duration = Target.GetDuration();
@@ -212,7 +171,7 @@ namespace SimPe.Plugin.Anim
 
 			amb.Part2 = (AnimationFrameBlock[])Helper.Add(amb.Part2, FrameBlock);
 
-			if (ruf)
+			if (RemoveUnneeded)
 				FrameBlock.RemoveUnneededFrames();
 			FrameBlock.Duration = FrameBlock.GetDuration();
 		}
@@ -224,17 +183,9 @@ namespace SimPe.Plugin.Anim
 	/// </summary>
 	public class ImportedFrameBlocks : ArrayList
 	{
-		bool correctauskel;
 		public bool AuskelCorrection
 		{
-			get
-			{
-				return correctauskel;
-			}
-			set
-			{
-				correctauskel = value;
-			}
+			get; set;
 		}
 
 		/// <summary>

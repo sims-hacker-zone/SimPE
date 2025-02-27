@@ -38,51 +38,29 @@ namespace SimPe.PackedFiles.Wrapper
 	{
 		#region Attributes
 		uint id;
-		SlotItems items;
 
 		/// <summary>
 		/// Returns the Items stored in the FIle
 		/// </summary>
 		/// <remarks>Do not add Items based on this List! use the Add Method!!</remarks>
-		public SlotItems Items => items;
+		public SlotItems Items
+		{
+			get;
+		}
 
-		string filename;
 		public string FileName
 		{
-			get
-			{
-				return filename;
-			}
-			set
-			{
-				filename = value;
-			}
+			get; set;
 		}
 
-		uint version;
 		public uint Version
 		{
-			get
-			{
-				return version;
-			}
-			set
-			{
-				version = value;
-			}
+			get; set;
 		}
 
-		uint unknown;
 		public uint Unknown
 		{
-			get
-			{
-				return unknown;
-			}
-			set
-			{
-				unknown = value;
-			}
+			get; set;
 		}
 
 		#endregion
@@ -93,10 +71,10 @@ namespace SimPe.PackedFiles.Wrapper
 		public Slot()
 			: base()
 		{
-			items = new SlotItems();
-			filename = "";
+			Items = new SlotItems();
+			FileName = "";
 			id = 0x534C4F54;
-			version = 4;
+			Version = 4;
 		}
 
 		#region IWrapper member
@@ -136,19 +114,19 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="reader">The Stream that contains the FileData</param>
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-			filename = Helper.ToString(reader.ReadBytes(0x40));
+			FileName = Helper.ToString(reader.ReadBytes(0x40));
 			id = reader.ReadUInt32();
-			version = reader.ReadUInt32();
-			unknown = reader.ReadUInt32();
+			Version = reader.ReadUInt32();
+			Unknown = reader.ReadUInt32();
 
 			int ct = reader.ReadInt32();
-			items.Clear();
+			Items.Clear();
 			for (int i = 0; i < ct; i++)
 			{
 				SlotItem item = new SlotItem(this);
 				item.Unserialize(reader);
 
-				items.Add(item);
+				Items.Add(item);
 			}
 		}
 
@@ -162,15 +140,15 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(Helper.ToBytes(filename, 0x40));
+			writer.Write(Helper.ToBytes(FileName, 0x40));
 			writer.Write(id);
-			writer.Write(version);
-			writer.Write(unknown);
+			writer.Write(Version);
+			writer.Write(Unknown);
 
-			writer.Write((int)items.Length);
-			for (int i = 0; i < items.Length; i++)
+			writer.Write((int)Items.Length);
+			for (int i = 0; i < Items.Length; i++)
 			{
-				items[i].Serialize(writer, this);
+				Items[i].Serialize(writer, this);
 			}
 		}
 		#endregion
@@ -185,7 +163,7 @@ namespace SimPe.PackedFiles.Wrapper
 					+ ", Version="
 					+ this.Version
 					+ ", Items="
-					+ items.Count.ToString();
+					+ Items.Count.ToString();
 
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin

@@ -18,17 +18,10 @@ namespace SimPe.Plugin
 		private ushort fnd; // temp variable for finding stuff
 		private ushort quanty; // amount of data in the token
 		private uint guide; // GUID of the token
-		private ushort trunned; // trunned is Tips Run-ed)
+
 		public ushort Trunned
 		{
-			get
-			{
-				return trunned;
-			}
-			set
-			{
-				trunned = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -69,11 +62,11 @@ namespace SimPe.Plugin
 			loweps = 0;
 			versh = reader.ReadUInt16(); // Version
 			reader.BaseStream.Seek(0xc, System.IO.SeekOrigin.Begin); // move to the Index (Number of tokens)
-			trunned = reader.ReadUInt16(); // Number of Tokens in inventory
-			if (trunned != 0)
+			Trunned = reader.ReadUInt16(); // Number of Tokens in inventory
+			if (Trunned != 0)
 			{
 				reader.BaseStream.Seek(0x2, System.IO.SeekOrigin.Current); // move to the first Token
-				for (int i = 0; i < trunned; i++)
+				for (int i = 0; i < Trunned; i++)
 				{
 					guide = reader.ReadUInt32(); // Gets the GUID of the token Game Tip or Novel
 					if (guide == 0xaef5633a)

@@ -93,8 +93,8 @@ namespace SimPe.Plugin
 			set
 			{
 				semiglobal = Helper.ToBytes(value, 0);
-				attributes["SemiGlobalName"] = value;
-				attributes["SemiGlobalGroup"] = this.SemiGlobalGroup;
+				Attributes["SemiGlobalName"] = value;
+				Attributes["SemiGlobalGroup"] = this.SemiGlobalGroup;
 			}
 		}
 
@@ -118,7 +118,7 @@ namespace SimPe.Plugin
 			: base()
 		{
 			//items = new IPackedFileProperties[0];
-			attributes = new Hashtable();
+			Attributes = new Hashtable();
 			semiglobal = new byte[0];
 			filename = new byte[64];
 		}
@@ -131,13 +131,15 @@ namespace SimPe.Plugin
 
 		#region IPackedFileProperties Member
 		//IPackedFileProperties[] items;
-		Hashtable attributes;
 
 		/// <summary>
 		/// Returns all Attributes tored in the File.
 		/// </summary>
 		/// <remarks>Each Attribute is unique!</remarks>
-		public Hashtable Attributes => attributes;
+		public Hashtable Attributes
+		{
+			get; private set;
+		}
 
 		/*/// <summary>
 		/// Returns all Items stored in the File (can be null)
@@ -206,10 +208,10 @@ namespace SimPe.Plugin
 				bloaty = true;
 
 			semiglobal = reader.ReadBytes(len);
-			attributes = new Hashtable();
+			Attributes = new Hashtable();
 
-			attributes["SemiGlobalName"] = this.SemiGlobalName;
-			attributes["SemiGlobalGroup"] = this.SemiGlobalGroup;
+			Attributes["SemiGlobalName"] = this.SemiGlobalName;
+			Attributes["SemiGlobalGroup"] = this.SemiGlobalGroup;
 		}
 
 		/// <summary>

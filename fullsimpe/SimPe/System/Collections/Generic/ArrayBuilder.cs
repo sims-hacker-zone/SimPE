@@ -16,7 +16,6 @@ namespace System.Collections.Generic
 		private const int MaxCoreClrArrayLength = 0x7fefffff; // For byte arrays the limit is slightly larger
 
 		private T[] _array; // Starts out null, initialized on first Add.
-		private int _count; // Number of items into _array we're using.
 
 		/// <summary>
 		/// Initializes the <see cref="ArrayBuilder2{T}"/> with a specified capacity.
@@ -40,7 +39,10 @@ namespace System.Collections.Generic
 		/// <summary>
 		/// Gets the number of items in the array currently in use.
 		/// </summary>
-		public int Count => _count;
+		public int Count
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Gets or sets the item at a certain index in the array.
@@ -50,12 +52,12 @@ namespace System.Collections.Generic
 		{
 			get
 			{
-				Debug.Assert(index >= 0 && index < _count);
+				Debug.Assert(index >= 0 && index < Count);
 				return _array[index];
 			}
 			set
 			{
-				Debug.Assert(index >= 0 && index < _count);
+				Debug.Assert(index >= 0 && index < Count);
 				_array[index] = value;
 			}
 		}
@@ -66,9 +68,9 @@ namespace System.Collections.Generic
 		/// <param name="item">The item to add.</param>
 		public void Add(T item)
 		{
-			if (_count == Capacity)
+			if (Count == Capacity)
 			{
-				EnsureCapacity(_count + 1);
+				EnsureCapacity(Count + 1);
 			}
 
 			UncheckedAdd(item);
@@ -79,7 +81,7 @@ namespace System.Collections.Generic
 		/// </summary>
 		public T First()
 		{
-			Debug.Assert(_count > 0);
+			Debug.Assert(Count > 0);
 			return _array[0];
 		}
 
@@ -88,8 +90,8 @@ namespace System.Collections.Generic
 		/// </summary>
 		public T Last()
 		{
-			Debug.Assert(_count > 0);
-			return _array[_count - 1];
+			Debug.Assert(Count > 0);
+			return _array[Count - 1];
 		}
 
 		/// <summary>
@@ -100,7 +102,7 @@ namespace System.Collections.Generic
 		/// </remarks>
 		public T[] ToArray()
 		{
-			if (_count == 0)
+			if (Count == 0)
 			{
 				return Array.Empty<T>();
 			}
@@ -108,17 +110,17 @@ namespace System.Collections.Generic
 			Debug.Assert(_array != null); // Nonzero _count should imply this
 
 			T[] result = _array;
-			if (_count < result.Length)
+			if (Count < result.Length)
 			{
 				// Avoid a bit of overhead (method call, some branches, extra codegen)
 				// which would be incurred by using Array.Resize
-				result = new T[_count];
-				Array.Copy(_array, 0, result, 0, _count);
+				result = new T[Count];
+				Array.Copy(_array, 0, result, 0, Count);
 			}
 
 #if DEBUG
 			// Try to prevent callers from using the ArrayBuilder after ToArray, if _count != 0.
-			_count = -1;
+			Count = -1;
 			_array = null;
 #endif
 
@@ -135,9 +137,9 @@ namespace System.Collections.Generic
 		/// </remarks>
 		public void UncheckedAdd(T item)
 		{
-			Debug.Assert(_count < Capacity);
+			Debug.Assert(Count < Capacity);
 
-			_array[_count++] = item;
+			_array[Count++] = item;
 		}
 
 		private void EnsureCapacity(int minimum)
@@ -155,9 +157,9 @@ namespace System.Collections.Generic
 			nextCapacity = Math.Max(nextCapacity, minimum);
 
 			T[] next = new T[nextCapacity];
-			if (_count > 0)
+			if (Count > 0)
 			{
-				Array.Copy(_array, 0, next, 0, _count);
+				Array.Copy(_array, 0, next, 0, Count);
 			}
 			_array = next;
 		}

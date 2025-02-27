@@ -37,7 +37,6 @@ namespace SimPe
 		}
 
 		bool fileIsReadonly = true;
-		string iniFile = null;
 		Sectionlist reg = null;
 
 		public IniRegistry(String inifile, bool ro)
@@ -49,7 +48,7 @@ namespace SimPe
 		public IniRegistry(String inifile)
 			: this(new StreamReader(inifile))
 		{
-			this.iniFile = inifile;
+			this.IniFile = inifile;
 		}
 
 		public IniRegistry(StreamReader sr)
@@ -92,30 +91,20 @@ namespace SimPe
 			}
 		}
 
-		public String IniFile
-		{
-			get
-			{
-				return iniFile;
-			}
-			set
-			{
-				iniFile = value;
-			}
-		}
+		public String IniFile { get; set; } = null;
 
 		public bool Flush()
 		{
 			if (fileIsReadonly)
 				return false;
-			if (iniFile.Length.Equals(0))
+			if (IniFile.Length.Equals(0))
 				return false;
-			if (!File.Exists(iniFile))
+			if (!File.Exists(IniFile))
 				return false;
 
 			try
 			{
-				StreamWriter sw = new StreamWriter(iniFile);
+				StreamWriter sw = new StreamWriter(IniFile);
 				bool wantBlank = false;
 				foreach (string section in reg.Keys)
 				{

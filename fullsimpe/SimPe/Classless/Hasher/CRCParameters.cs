@@ -53,10 +53,6 @@ namespace Classless.Hasher
 	public class CRCParameters : HashAlgorithmParameters
 	{
 		private int order;
-		private long polynomial;
-		private long initial;
-		private long finalXOR;
-		private bool reflectIn;
 
 		/// <summary>Gets or sets the order of the CRC (e.g., how many bits).</summary>
 		public int Order
@@ -85,53 +81,25 @@ namespace Classless.Hasher
 		/// <summary>Gets or sets the polynomial to use in the CRC calculations.</summary>
 		public long Polynomial
 		{
-			get
-			{
-				return polynomial;
-			}
-			set
-			{
-				polynomial = value;
-			}
+			get; set;
 		}
 
 		/// <summary>Gets or sets the initial value of the CRC.</summary>
 		public long InitialValue
 		{
-			get
-			{
-				return initial;
-			}
-			set
-			{
-				initial = value;
-			}
+			get; set;
 		}
 
 		/// <summary>Gets or sets the final value to XOR with the CRC.</summary>
 		public long FinalXORValue
 		{
-			get
-			{
-				return finalXOR;
-			}
-			set
-			{
-				finalXOR = value;
-			}
+			get; set;
 		}
 
 		/// <summary>Gets or sets the value dictating whether or not to reflect the incoming data before calculating. (UART)</summary>
 		public bool ReflectInput
 		{
-			get
-			{
-				return reflectIn;
-			}
-			set
-			{
-				reflectIn = value;
-			}
+			get; set;
 		}
 
 		/// <summary>Initializes a new instance of the CRCParamters class.</summary>

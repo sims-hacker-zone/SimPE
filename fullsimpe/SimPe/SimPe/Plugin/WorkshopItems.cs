@@ -32,54 +32,31 @@ namespace SimPe.Plugin
 		/// <param name="subset">initial Name of the Subset</param>
 		public WorkshopMMAT(string subset)
 		{
-			this.subset = subset;
-			this.mmats = new SimPe.PackedFiles.Wrapper.Cpf[0];
-			this.objectStateIndex = new uint[0];
+			this.Subset = subset;
+			this.MMATs = new SimPe.PackedFiles.Wrapper.Cpf[0];
+			this.ObjectStateIndex = new uint[0];
 		}
-
-		object[] tag;
 
 		/// <summary>
 		/// Arbitary Data
 		/// </summary>
 		public object[] Tag
 		{
-			get
-			{
-				return tag;
-			}
-			set
-			{
-				tag = value;
-			}
+			get; set;
 		}
-
-		/// <summary>
-		/// The name of the subset
-		/// </summary>
-		string subset = "";
 
 		/// <summary>
 		/// Returns the Name of the Subset
 		/// </summary>
-		public string Subset
-		{
-			get
-			{
-				return subset;
-			}
-			set
-			{
-				subset = value;
-			}
-		}
-
-		SimPe.PackedFiles.Wrapper.Cpf[] mmats;
+		public string Subset { get; set; } = "";
 
 		/// <summary>
 		/// The stored MMATs
 		/// </summary>
-		public SimPe.PackedFiles.Wrapper.Cpf[] MMATs => mmats;
+		public SimPe.PackedFiles.Wrapper.Cpf[] MMATs
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// adds the passed value if it doesn't already exist
@@ -91,50 +68,11 @@ namespace SimPe.Plugin
 				this.AddObjectStateIndex(mmat.GetItem("objectStateIndex").UIntegerValue)
 			)
 			{
-				mmats = (SimPe.PackedFiles.Wrapper.Cpf[])Helper.Add(mmats, mmat);
+				MMATs = (SimPe.PackedFiles.Wrapper.Cpf[])Helper.Add(MMATs, mmat);
 				return true;
 			}
 			return false;
 		}
-
-		/*/// <summary>
-		/// all known Objects
-		/// </summary>
-		uint[] materialStateFlags;
-
-		/// <summary>
-		/// adds the passed value if it doesn't already exist
-		/// </summary>
-		/// <param name="val">The value to add</param>
-		public bool AddMaterialStateFlags(uint val)
-		{
-			bool check = false;
-			foreach (uint i in materialStateFlags)
-			{
-				if (i==val)
-				{
-					check = true;
-					break;
-				}
-			}
-
-			if (!check) materialStateFlags = (uint[])Helper.Add(materialStateFlags, val);
-
-			return !check;
-		}
-
-		/// <summary>
-		/// Returns all known MaterialStateFlags for the SubSet
-		/// </summary>
-		public uint[] MaterialStateFlags
-		{
-			get { return materialStateFlags; }
-		}*/
-
-		/// <summary>
-		/// all known values
-		/// </summary>
-		uint[] objectStateIndex;
 
 		/// <summary>
 		/// adds the passed value if it doesn't already exist
@@ -143,7 +81,7 @@ namespace SimPe.Plugin
 		public bool AddObjectStateIndex(uint val)
 		{
 			bool check = false;
-			foreach (uint i in objectStateIndex)
+			foreach (uint i in ObjectStateIndex)
 			{
 				if (i == val)
 				{
@@ -153,7 +91,7 @@ namespace SimPe.Plugin
 			}
 
 			if (!check)
-				objectStateIndex = (uint[])Helper.Add(objectStateIndex, val);
+				ObjectStateIndex = (uint[])Helper.Add(ObjectStateIndex, val);
 
 			return !check;
 		}
@@ -161,11 +99,14 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns all known ObjectStateIndex for the current subset
 		/// </summary>
-		public uint[] ObjectStateIndex => objectStateIndex;
+		public uint[] ObjectStateIndex
+		{
+			get; private set;
+		}
 
 		public override string ToString()
 		{
-			return subset + " (" + this.objectStateIndex.Length.ToString() + ")";
+			return Subset + " (" + this.ObjectStateIndex.Length.ToString() + ")";
 		}
 	}
 }

@@ -82,25 +82,15 @@ namespace SimPe
 		Interfaces.Files.IPackedFileDescriptor pfd;
 		Interfaces.Files.IPackageFile package;
 
-		/// <summary>
-		/// null or a Function to call when the Pacakge was changed by a Tool Plugin
-		/// </summary>
-		ExternalToolNotify chghandler;
-
 		ExternalToolNotify ChangeHandler
 		{
-			get
-			{
-				return chghandler;
-			}
-			set
-			{
-				chghandler = value;
-			}
+			get; set;
 		}
 
-		string name;
-		public new string Name => name;
+		public new string Name
+		{
+			get;
+		}
 
 		public ToolMenuItemExt(IToolPlus tool, ExternalToolNotify chghnd)
 			: this(tool.ToString(), tool, chghnd) { }
@@ -113,9 +103,9 @@ namespace SimPe
 			Checked = false;
 			Click += new EventHandler(LinkClicked);
 			Click += new EventHandler(ClickItem);
-			chghandler = chghnd;
+			ChangeHandler = chghnd;
 
-			name = tool.GetType().Namespace + "." + tool.GetType().Name;
+			Name = tool.GetType().Namespace + "." + tool.GetType().Name;
 		}
 
 		private void ClickItem(object sender, System.EventArgs e)
@@ -140,8 +130,8 @@ namespace SimPe
 							p.Package = package;
 							p.FileDescriptor = pfd;
 							p.Result = tr;
-							if (chghandler != null)
-								chghandler(this, p);
+							if (ChangeHandler != null)
+								ChangeHandler(this, p);
 						}
 					}
 					finally

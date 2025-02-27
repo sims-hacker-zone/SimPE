@@ -35,8 +35,10 @@ namespace SimPe.Plugin
 	public class DataListExtension : AbstractRcolBlock, IScenegraphBlock
 	{
 		#region Attributes
-		Extension ext;
-		public Extension Extension => ext;
+		public Extension Extension
+		{
+			get;
+		}
 
 		#endregion
 
@@ -49,7 +51,7 @@ namespace SimPe.Plugin
 		public DataListExtension(Rcol parent)
 			: base(parent)
 		{
-			ext = new Extension(null);
+			Extension = new Extension(null);
 			version = 0x01;
 			BlockID = 0x6a836d56;
 		}
@@ -66,8 +68,8 @@ namespace SimPe.Plugin
 			string fldsc = reader.ReadString();
 			uint myid = reader.ReadUInt32();
 
-			ext.Unserialize(reader, version);
-			ext.BlockID = myid;
+			Extension.Unserialize(reader, version);
+			Extension.BlockID = myid;
 		}
 
 		/// <summary>
@@ -82,10 +84,10 @@ namespace SimPe.Plugin
 		{
 			writer.Write(version);
 
-			string name = ext.Register(null);
+			string name = Extension.Register(null);
 			writer.Write(name);
-			writer.Write(ext.BlockID);
-			ext.Serialize(writer, version);
+			writer.Write(Extension.BlockID);
+			Extension.Serialize(writer, version);
 		}
 
 		//fShapeRefNode form = null;
@@ -115,13 +117,13 @@ namespace SimPe.Plugin
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
 			base.ExtendTabControl(tc);
-			this.ext.AddToTabControl(tc);
+			this.Extension.AddToTabControl(tc);
 			tc.SelectedIndex = tc.TabPages.Count - 1;
 		}
 
 		public override string ToString()
 		{
-			return ext.VarName + " (" + base.ToString() + ")";
+			return Extension.VarName + " (" + base.ToString() + ")";
 		}
 
 		#region IScenegraphItem Member

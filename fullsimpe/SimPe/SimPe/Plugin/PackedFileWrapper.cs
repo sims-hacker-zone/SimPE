@@ -52,23 +52,11 @@ namespace SimPe.Plugin
 		Data.MetaData.IndexTypes type;
 
 		/// <summary>
-		/// Stores the Header
-		/// </summary>
-		private Interfaces.Files.IPackedFileDescriptor[] items;
-
-		/// <summary>
 		/// List of Stored References
 		/// </summary>
 		public Interfaces.Files.IPackedFileDescriptor[] Items
 		{
-			get
-			{
-				return items;
-			}
-			set
-			{
-				items = value;
-			}
+			get; set;
 		}
 
 		#endregion
@@ -79,7 +67,7 @@ namespace SimPe.Plugin
 		public RefFile()
 			: base()
 		{
-			items = new Interfaces.Files.IPackedFileDescriptor[0];
+			Items = new Interfaces.Files.IPackedFileDescriptor[0];
 			id = 0xDEADBEEF;
 			type = Data.MetaData.IndexTypes.ptLongFileIndex;
 		}
@@ -132,9 +120,9 @@ namespace SimPe.Plugin
 			id = reader.ReadUInt32();
 			type = (Data.MetaData.IndexTypes)reader.ReadUInt32();
 
-			items = new Interfaces.Files.IPackedFileDescriptor[reader.ReadUInt32()];
+			Items = new Interfaces.Files.IPackedFileDescriptor[reader.ReadUInt32()];
 
-			for (int i = 0; i < items.Length; i++)
+			for (int i = 0; i < Items.Length; i++)
 			{
 				RefFileItem pfd = new RefFileItem(this);
 
@@ -147,7 +135,7 @@ namespace SimPe.Plugin
 				/*Interfaces.Files.IPackedFileDescriptor ppfd = Package.FindFile(pfd.Type, pfd.SubType, pfd.Group, pfd.Instance);
 				if (ppfd!=null) items[i]=ppfd;
 				else*/
-				items[i] = pfd;
+				Items[i] = pfd;
 			}
 		}
 
@@ -163,11 +151,11 @@ namespace SimPe.Plugin
 		{
 			writer.Write(id);
 			writer.Write((uint)type);
-			writer.Write((uint)items.Length);
+			writer.Write((uint)Items.Length);
 
-			for (int i = 0; i < items.Length; i++)
+			for (int i = 0; i < Items.Length; i++)
 			{
-				Interfaces.Files.IPackedFileDescriptor pfd = items[i];
+				Interfaces.Files.IPackedFileDescriptor pfd = Items[i];
 
 				writer.Write(pfd.Type);
 				writer.Write(pfd.Group);

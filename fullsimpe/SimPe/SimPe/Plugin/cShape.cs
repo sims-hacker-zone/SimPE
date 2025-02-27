@@ -28,30 +28,14 @@ namespace SimPe.Plugin
 {
 	public class ShapePart
 	{
-		string type;
 		public string Subset
 		{
-			get
-			{
-				return type;
-			}
-			set
-			{
-				type = value;
-			}
+			get; set;
 		}
 
-		string desc;
 		public string FileName
 		{
-			get
-			{
-				return desc;
-			}
-			set
-			{
-				desc = value;
-			}
+			get; set;
 		}
 
 		byte[] data;
@@ -85,8 +69,8 @@ namespace SimPe.Plugin
 		public ShapePart()
 		{
 			data = new byte[9];
-			type = "";
-			desc = "";
+			Subset = "";
+			FileName = "";
 		}
 
 		/// <summary>
@@ -95,8 +79,8 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		public void Unserialize(System.IO.BinaryReader reader)
 		{
-			type = reader.ReadString();
-			desc = reader.ReadString();
+			Subset = reader.ReadString();
+			FileName = reader.ReadString();
 			data = reader.ReadBytes(9);
 		}
 
@@ -110,14 +94,14 @@ namespace SimPe.Plugin
 		/// </remarks>
 		public void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(type);
-			writer.Write(desc);
+			writer.Write(Subset);
+			writer.Write(FileName);
 			writer.Write(data);
 		}
 
 		public override string ToString()
 		{
-			string name = type + ": " + desc;
+			string name = Subset + ": " + FileName;
 			return name;
 		}
 	}
@@ -129,75 +113,35 @@ namespace SimPe.Plugin
 	{
 		Shape parent;
 
-		int unknown1;
 		public int Unknown1
 		{
-			get
-			{
-				return unknown1;
-			}
-			set
-			{
-				unknown1 = value;
-			}
+			get; set;
 		}
 
-		byte unknown2;
 		public byte Unknown2
 		{
-			get
-			{
-				return unknown2;
-			}
-			set
-			{
-				unknown2 = value;
-			}
+			get; set;
 		}
 
-		int unknown3;
 		public int Unknown3
 		{
-			get
-			{
-				return unknown3;
-			}
-			set
-			{
-				unknown3 = value;
-			}
+			get; set;
 		}
 
-		byte unknown4;
 		public byte Unknown4
 		{
-			get
-			{
-				return unknown4;
-			}
-			set
-			{
-				unknown4 = value;
-			}
+			get; set;
 		}
 
-		string filename;
 		public string FileName
 		{
-			get
-			{
-				return filename;
-			}
-			set
-			{
-				filename = value;
-			}
+			get; set;
 		}
 
 		public ShapeItem(Shape parent)
 		{
 			this.parent = parent;
-			filename = "";
+			FileName = "";
 		}
 
 		/// <summary>
@@ -206,19 +150,19 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		public void Unserialize(System.IO.BinaryReader reader)
 		{
-			unknown1 = reader.ReadInt32();
-			unknown2 = reader.ReadByte();
+			Unknown1 = reader.ReadInt32();
+			Unknown2 = reader.ReadByte();
 			if ((parent.Version == 0x07) || (parent.Version == 0x06))
 			{
-				filename = "";
-				unknown3 = reader.ReadInt32();
-				unknown4 = reader.ReadByte();
+				FileName = "";
+				Unknown3 = reader.ReadInt32();
+				Unknown4 = reader.ReadByte();
 			}
 			else
 			{
-				filename = reader.ReadString();
-				unknown3 = 0;
-				unknown4 = 0;
+				FileName = reader.ReadString();
+				Unknown3 = 0;
+				Unknown4 = 0;
 			}
 		}
 
@@ -232,16 +176,16 @@ namespace SimPe.Plugin
 		/// </remarks>
 		public void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(unknown1);
-			writer.Write(unknown2);
+			writer.Write(Unknown1);
+			writer.Write(Unknown2);
 			if ((parent.Version == 0x07) || (parent.Version == 0x06))
 			{
-				writer.Write(unknown3);
-				writer.Write(unknown4);
+				writer.Write(Unknown3);
+				writer.Write(Unknown4);
 			}
 			else
 			{
-				writer.Write(filename);
+				writer.Write(FileName);
 			}
 		}
 
@@ -249,17 +193,17 @@ namespace SimPe.Plugin
 		{
 			string name =
 				"0x"
-				+ Helper.HexString((uint)unknown1)
+				+ Helper.HexString((uint)Unknown1)
 				+ " - 0x"
-				+ Helper.HexString(unknown2);
+				+ Helper.HexString(Unknown2);
 			if ((parent.Version == 0x07) || (parent.Version == 0x06))
 				return name
 					+ " - 0x"
-					+ Helper.HexString((uint)unknown3)
+					+ Helper.HexString((uint)Unknown3)
 					+ " - 0x"
-					+ Helper.HexString(unknown4);
+					+ Helper.HexString(Unknown4);
 			else
-				return name + ": " + filename;
+				return name + ": " + FileName;
 		}
 	}
 
@@ -273,60 +217,30 @@ namespace SimPe.Plugin
 	public class Shape : AbstractRcolBlock, IScenegraphBlock
 	{
 		#region Attributes
-		uint[] unknown;
 		public uint[] Unknwon
 		{
-			get
-			{
-				return unknown;
-			}
-			set
-			{
-				unknown = value;
-			}
+			get; set;
 		}
 
-		ShapeItem[] items;
 		public ShapeItem[] Items
 		{
-			get
-			{
-				return items;
-			}
-			set
-			{
-				items = value;
-			}
+			get; set;
 		}
 
-		ShapePart[] parts;
 		public ShapePart[] Parts
 		{
-			get
-			{
-				return parts;
-			}
-			set
-			{
-				parts = value;
-			}
+			get; set;
 		}
 
-		ObjectGraphNode ogn;
 		public ObjectGraphNode GraphNode
 		{
-			get
-			{
-				return ogn;
-			}
-			set
-			{
-				ogn = value;
-			}
+			get; set;
 		}
 
-		ReferentNode refnode;
-		public ReferentNode RefNode => refnode;
+		public ReferentNode RefNode
+		{
+			get;
+		}
 		#endregion
 		/*public Rcol Parent
 		{
@@ -340,12 +254,12 @@ namespace SimPe.Plugin
 			: base(parent)
 		{
 			sgres = new SGResource(null);
-			refnode = new ReferentNode(null);
-			ogn = new ObjectGraphNode(null);
+			RefNode = new ReferentNode(null);
+			GraphNode = new ObjectGraphNode(null);
 
-			unknown = new uint[0];
-			items = new ShapeItem[0];
-			parts = new ShapePart[0];
+			Unknwon = new uint[0];
+			Items = new ShapeItem[0];
+			Parts = new ShapePart[0];
 			BlockID = 0xFC6EB1F7;
 		}
 
@@ -364,32 +278,32 @@ namespace SimPe.Plugin
 			sgres.Unserialize(reader);
 
 			s = reader.ReadString();
-			refnode.BlockID = reader.ReadUInt32();
-			refnode.Unserialize(reader);
+			RefNode.BlockID = reader.ReadUInt32();
+			RefNode.Unserialize(reader);
 
 			s = reader.ReadString();
-			ogn.BlockID = reader.ReadUInt32();
-			ogn.Unserialize(reader);
+			GraphNode.BlockID = reader.ReadUInt32();
+			GraphNode.Unserialize(reader);
 
 			if (version != 0x06)
-				unknown = new uint[reader.ReadUInt32()];
+				Unknwon = new uint[reader.ReadUInt32()];
 			else
-				unknown = new uint[0];
-			for (int i = 0; i < unknown.Length; i++)
-				unknown[i] = reader.ReadUInt32();
+				Unknwon = new uint[0];
+			for (int i = 0; i < Unknwon.Length; i++)
+				Unknwon[i] = reader.ReadUInt32();
 
-			items = new ShapeItem[reader.ReadUInt32()];
-			for (int i = 0; i < items.Length; i++)
+			Items = new ShapeItem[reader.ReadUInt32()];
+			for (int i = 0; i < Items.Length; i++)
 			{
-				items[i] = new ShapeItem(this);
-				items[i].Unserialize(reader);
+				Items[i] = new ShapeItem(this);
+				Items[i].Unserialize(reader);
 			}
 
-			parts = new ShapePart[reader.ReadUInt32()];
-			for (int i = 0; i < parts.Length; i++)
+			Parts = new ShapePart[reader.ReadUInt32()];
+			for (int i = 0; i < Parts.Length; i++)
 			{
-				parts[i] = new ShapePart();
-				parts[i].Unserialize(reader);
+				Parts[i] = new ShapePart();
+				Parts[i].Unserialize(reader);
 			}
 		}
 
@@ -408,28 +322,28 @@ namespace SimPe.Plugin
 			writer.Write(sgres.BlockID);
 			sgres.Serialize(writer);
 
-			writer.Write(refnode.Register(null));
-			writer.Write(refnode.BlockID);
-			refnode.Serialize(writer);
+			writer.Write(RefNode.Register(null));
+			writer.Write(RefNode.BlockID);
+			RefNode.Serialize(writer);
 
-			writer.Write(ogn.Register(null));
-			writer.Write(ogn.BlockID);
-			ogn.Serialize(writer);
+			writer.Write(GraphNode.Register(null));
+			writer.Write(GraphNode.BlockID);
+			GraphNode.Serialize(writer);
 
 			if (version != 0x06)
 			{
-				writer.Write((uint)unknown.Length);
-				for (int i = 0; i < unknown.Length; i++)
-					writer.Write(unknown[i]);
+				writer.Write((uint)Unknwon.Length);
+				for (int i = 0; i < Unknwon.Length; i++)
+					writer.Write(Unknwon[i]);
 			}
 
-			writer.Write((uint)items.Length);
-			for (int i = 0; i < items.Length; i++)
-				items[i].Serialize(writer);
+			writer.Write((uint)Items.Length);
+			for (int i = 0; i < Items.Length; i++)
+				Items[i].Serialize(writer);
 
-			writer.Write((uint)parts.Length);
-			for (int i = 0; i < parts.Length; i++)
-				parts[i].Serialize(writer);
+			writer.Write((uint)Parts.Length);
+			for (int i = 0; i < Parts.Length; i++)
+				Parts[i].Serialize(writer);
 		}
 
 		TabPage.ObjectGraphNode tObjectGraphNode;

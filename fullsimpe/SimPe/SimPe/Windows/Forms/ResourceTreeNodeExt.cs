@@ -7,7 +7,6 @@ namespace SimPe.Windows.Forms
 {
 	public class ResourceTreeNodeExt : TreeNode, IComparable<ResourceTreeNodeExt>
 	{
-		ResourceViewManager.ResourceNameList list;
 		ulong id;
 
 		public ResourceTreeNodeExt(
@@ -18,14 +17,17 @@ namespace SimPe.Windows.Forms
 			: base()
 		{
 			this.id = id;
-			this.list = list;
+			this.Resources = list;
 
 			this.ImageIndex = 0;
 			this.Text = text + " (" + list.Count + ")";
 			this.SelectedImageIndex = this.ImageIndex;
 		}
 
-		public ResourceViewManager.ResourceNameList Resources => list;
+		public ResourceViewManager.ResourceNameList Resources
+		{
+			get;
+		}
 
 		public virtual ulong ID => id;
 

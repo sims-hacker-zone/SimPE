@@ -29,7 +29,6 @@ namespace SimPe
 	public class TGILoader
 	{
 		Hashtable map;
-		Data.TypeAlias[] list;
 		ArrayList alist;
 
 		/// <summary>
@@ -39,7 +38,7 @@ namespace SimPe
 		public TGILoader(string filename)
 		{
 			map = new Hashtable();
-			list = new Data.TypeAlias[0];
+			FileTypes = new Data.TypeAlias[0];
 			alist = new ArrayList();
 			LoadTGI(filename);
 		}
@@ -82,8 +81,8 @@ namespace SimPe
 				ParseSubNode(node);
 			}
 
-			list = new Data.TypeAlias[alist.Count];
-			alist.CopyTo(list);
+			FileTypes = new Data.TypeAlias[alist.Count];
+			alist.CopyTo(FileTypes);
 			alist.Clear();
 		}
 
@@ -160,6 +159,9 @@ namespace SimPe
 		/// <summary>
 		/// Returns a List of all available FileTypes
 		/// </summary>
-		public Data.TypeAlias[] FileTypes => list;
+		public Data.TypeAlias[] FileTypes
+		{
+			get; private set;
+		}
 	}
 }

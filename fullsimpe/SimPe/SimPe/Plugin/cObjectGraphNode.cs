@@ -27,44 +27,19 @@ namespace SimPe.Plugin
 {
 	public class ObjectGraphNodeItem
 	{
-		byte enabled;
-		byte depend;
-		uint index;
-
 		public byte Enabled
 		{
-			get
-			{
-				return enabled;
-			}
-			set
-			{
-				enabled = value;
-			}
+			get; set;
 		}
 
 		public byte Dependant
 		{
-			get
-			{
-				return depend;
-			}
-			set
-			{
-				depend = value;
-			}
+			get; set;
 		}
 
 		public uint Index
 		{
-			get
-			{
-				return index;
-			}
-			set
-			{
-				index = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -73,9 +48,9 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		public void Unserialize(System.IO.BinaryReader reader)
 		{
-			enabled = reader.ReadByte();
-			depend = reader.ReadByte();
-			index = reader.ReadUInt32();
+			Enabled = reader.ReadByte();
+			Dependant = reader.ReadByte();
+			Index = reader.ReadUInt32();
 		}
 
 		/// <summary>
@@ -88,18 +63,18 @@ namespace SimPe.Plugin
 		/// </remarks>
 		public void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(enabled);
-			writer.Write(depend);
-			writer.Write(index);
+			writer.Write(Enabled);
+			writer.Write(Dependant);
+			writer.Write(Index);
 		}
 
 		public override string ToString()
 		{
-			return index.ToString()
+			return Index.ToString()
 				+ ": 0x"
-				+ Helper.HexString(enabled)
+				+ Helper.HexString(Enabled)
 				+ ", 0x"
-				+ Helper.HexString(depend);
+				+ Helper.HexString(Dependant);
 		}
 	}
 
@@ -115,30 +90,14 @@ namespace SimPe.Plugin
 		#region Attributes
 
 
-		ObjectGraphNodeItem[] items;
 		public ObjectGraphNodeItem[] Items
 		{
-			get
-			{
-				return items;
-			}
-			set
-			{
-				items = value;
-			}
+			get; set;
 		}
 
-		string filename;
 		public string FileName
 		{
-			get
-			{
-				return filename;
-			}
-			set
-			{
-				filename = value;
-			}
+			get; set;
 		}
 		#endregion
 		/*public Rcol Parent
@@ -152,8 +111,8 @@ namespace SimPe.Plugin
 		public ObjectGraphNode(Rcol parent)
 			: base(parent)
 		{
-			items = new ObjectGraphNodeItem[0];
-			filename = this.BlockName;
+			Items = new ObjectGraphNodeItem[0];
+			FileName = this.BlockName;
 			version = 4;
 		}
 
@@ -167,17 +126,17 @@ namespace SimPe.Plugin
 		{
 			version = reader.ReadUInt32();
 
-			items = new ObjectGraphNodeItem[reader.ReadUInt32()];
-			for (int i = 0; i < items.Length; i++)
+			Items = new ObjectGraphNodeItem[reader.ReadUInt32()];
+			for (int i = 0; i < Items.Length; i++)
 			{
-				items[i] = new ObjectGraphNodeItem();
-				items[i].Unserialize(reader);
+				Items[i] = new ObjectGraphNodeItem();
+				Items[i].Unserialize(reader);
 			}
 
 			if (version == 0x04)
-				filename = reader.ReadString();
+				FileName = reader.ReadString();
 			else
-				filename = "cObjectGraphNode";
+				FileName = "cObjectGraphNode";
 		}
 
 		/// <summary>
@@ -192,14 +151,14 @@ namespace SimPe.Plugin
 		{
 			writer.Write(version);
 
-			writer.Write((uint)items.Length);
-			for (int i = 0; i < items.Length; i++)
+			writer.Write((uint)Items.Length);
+			for (int i = 0; i < Items.Length; i++)
 			{
-				items[i].Serialize(writer);
+				Items[i].Serialize(writer);
 			}
 
 			if (version == 0x04)
-				writer.Write(filename);
+				writer.Write(FileName);
 		}
 
 		TabPage.ObjectGraphNode tObjectGraphNode;
@@ -223,16 +182,16 @@ namespace SimPe.Plugin
 				tObjectGraphNode = new SimPe.Plugin.TabPage.ObjectGraphNode();
 
 			tObjectGraphNode.lb_ogn.Items.Clear();
-			for (int i = 0; i < this.items.Length; i++)
-				tObjectGraphNode.lb_ogn.Items.Add(items[i]);
+			for (int i = 0; i < this.Items.Length; i++)
+				tObjectGraphNode.lb_ogn.Items.Add(Items[i]);
 
-			tObjectGraphNode.tb_ogn_file.Text = this.filename;
+			tObjectGraphNode.tb_ogn_file.Text = this.FileName;
 			tObjectGraphNode.tb_ogn_ver.Text = "0x" + Helper.HexString(this.version);
 		}
 
 		public override string ToString()
 		{
-			return filename;
+			return FileName;
 		}
 
 		#region IDisposable Member

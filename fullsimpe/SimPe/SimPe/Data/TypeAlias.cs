@@ -37,9 +37,9 @@ namespace SimPe.Data
 		{
 			this.shortname = shortname;
 			this.extension = null;
-			knowntype = true;
+			Known = true;
 			this.containsfilename = containsflname;
-			this.nodecompforcache = false;
+			this.IgnoreDuringCacheBuild = false;
 		}
 
 		/// <summary>
@@ -83,15 +83,10 @@ namespace SimPe.Data
 		{
 			this.shortname = shortname;
 			this.extension = extension;
-			this.knowntype = known;
+			this.Known = known;
 			this.containsfilename = containsflname;
-			this.nodecompforcache = nodecompforcache;
+			this.IgnoreDuringCacheBuild = nodecompforcache;
 		}
-
-		/// <summary>
-		/// true, if the Type is known
-		/// </summary>
-		private bool knowntype;
 
 		/// <summary>
 		/// Cosntructor of the class
@@ -113,9 +108,9 @@ namespace SimPe.Data
 		{
 			this.shortname = shortname;
 			this.extension = "";
-			knowntype = known;
+			Known = known;
 			this.containsfilename = containsflname;
-			this.nodecompforcache = nodecompforcache;
+			this.IgnoreDuringCacheBuild = nodecompforcache;
 		}
 
 		/*
@@ -154,11 +149,6 @@ namespace SimPe.Data
 		private string extension;
 
 		/// <summary>
-		/// if true, this resource will not get decompressed during cache building
-		/// </summary>
-		private bool nodecompforcache;
-
-		/// <summary>
 		/// Returns the default Extension
 		/// </summary>
 		public string Extension
@@ -186,11 +176,17 @@ namespace SimPe.Data
 		/// <summary>
 		/// Returns true if the Type is known
 		/// </summary>
-		public bool Known => knowntype;
+		public bool Known
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns true, if this resource should be ignored during the cache build phase
 		/// </summary>
-		public bool IgnoreDuringCacheBuild => nodecompforcache;
+		public bool IgnoreDuringCacheBuild
+		{
+			get;
+		}
 	}
 }

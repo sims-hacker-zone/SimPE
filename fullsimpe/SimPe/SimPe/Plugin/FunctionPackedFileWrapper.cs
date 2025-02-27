@@ -12,20 +12,12 @@ namespace SimPe.Plugin
 		#region CreationIndex Attribute
 		private uint filid; // File ID, must be SNCF (0x46434e53)
 		private ushort fpurpos; // File Purpose, not sure of it's use but should be retained
-		private ushort quanty; // amount of entries in the file
 		public string[] strung; // the actaul string, don't change this
 		public float[] valwe; // the actual data or value.
 		public string[] comnt; // the comment, can be a very long string
 		public ushort Quanty
 		{
-			get
-			{
-				return quanty;
-			}
-			set
-			{
-				quanty = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -59,19 +51,19 @@ namespace SimPe.Plugin
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			// for (int i = 0; i < 60; i++) { valwe[i] = 0; strung[i] = null; comnt[i] = null;}
-			quanty = 0;
+			Quanty = 0;
 			reader.BaseStream.Seek(0x40, System.IO.SeekOrigin.Begin);
 			filid = reader.ReadUInt32();
 			fpurpos = reader.ReadUInt16();
 			reader.BaseStream.Seek(0x6, System.IO.SeekOrigin.Current);
-			quanty = reader.ReadUInt16(); // Number of items
-			if (filid == 0x46434e53 && quanty > 0) // check for valid file
+			Quanty = reader.ReadUInt16(); // Number of items
+			if (filid == 0x46434e53 && Quanty > 0) // check for valid file
 			{
-				Array.Resize<string>(ref strung, quanty);
-				Array.Resize<float>(ref valwe, quanty);
-				Array.Resize<string>(ref comnt, quanty);
+				Array.Resize<string>(ref strung, Quanty);
+				Array.Resize<float>(ref valwe, Quanty);
+				Array.Resize<string>(ref comnt, Quanty);
 				reader.BaseStream.Seek(0x2, System.IO.SeekOrigin.Current);
-				for (int i = 0; i < quanty; i++)
+				for (int i = 0; i < Quanty; i++)
 				{
 					strung[i] = reader.ReadString();
 					valwe[i] = reader.ReadSingle();
@@ -86,9 +78,9 @@ namespace SimPe.Plugin
 			writer.Write(filid);
 			writer.Write(fpurpos);
 			writer.BaseStream.Seek(0x6, System.IO.SeekOrigin.Current);
-			writer.Write(quanty);
+			writer.Write(Quanty);
 			writer.BaseStream.Seek(0x2, System.IO.SeekOrigin.Current);
-			for (int i = 0; i < quanty; i++)
+			for (int i = 0; i < Quanty; i++)
 			{
 				writer.Write(strung[i]);
 				writer.Write(valwe[i]);

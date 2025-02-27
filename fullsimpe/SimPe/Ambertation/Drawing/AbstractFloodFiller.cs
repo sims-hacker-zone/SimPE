@@ -236,13 +236,11 @@ namespace Ambertation.Drawing
 
 	public class FillFinishedEventArgs : EventArgs
 	{
-		Exception m_exception = null;
-
 		public FillFinishedEventArgs(Exception e)
 		{
-			m_exception = e;
+			exception = e;
 		}
 
-		public Exception exception => m_exception;
+		public Exception exception { get; } = null;
 	}
 }

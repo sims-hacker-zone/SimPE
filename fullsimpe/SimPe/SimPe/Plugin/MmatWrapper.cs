@@ -11,17 +11,9 @@ namespace SimPe.Plugin
 			SimPe.Interfaces.Scenegraph.IScenegraphBlock,
 			SimPe.Interfaces.Scenegraph.IScenegraphItem
 	{
-		static SimPe.PackedFiles.UserInterface.CpfUI.ExecutePreview prev;
 		public static SimPe.PackedFiles.UserInterface.CpfUI.ExecutePreview GlobalCpfPreview
 		{
-			get
-			{
-				return prev;
-			}
-			set
-			{
-				prev = value;
-			}
+			get; set;
 		}
 
 		#region IScenegraphBlock Member
@@ -71,7 +63,7 @@ namespace SimPe.Plugin
 
 		protected override SimPe.Interfaces.Plugin.IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new SimPe.PackedFiles.UserInterface.CpfUI(prev);
+			return new SimPe.PackedFiles.UserInterface.CpfUI(GlobalCpfPreview);
 		}
 
 		/// <summary>

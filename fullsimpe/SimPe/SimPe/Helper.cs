@@ -82,23 +82,11 @@ namespace SimPe
 		}
 
 		/// <summary>
-		/// Contains a the Commandline Parameters
-		/// </summary>
-		static Parameters param;
-
-		/// <summary>
 		/// Returns /Sets the Commandline Parameters
 		/// </summary>
 		public static Parameters CommandlineParameters
 		{
-			get
-			{
-				return param;
-			}
-			set
-			{
-				param = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -511,18 +499,7 @@ namespace SimPe
 		/// </summary>
 		public static string SimPeCache => GetSimPeCache("objcache");
 
-		private static string profile = "";
-		public static string Profile
-		{
-			get
-			{
-				return profile;
-			}
-			set
-			{
-				profile = value;
-			}
-		}
+		public static string Profile { get; set; } = "";
 
 		/// <summary>
 		/// Returns the Path additional SimPe Files are located in
@@ -579,8 +556,8 @@ namespace SimPe
 			static string ProfilePath(string s, bool readOnly)
 			{
 				string path = SimPeDataPath;
-				if (profile.Length > 0 && readOnly)
-					path = Path.Combine(Path.Combine(path, "Profiles"), profile);
+				if (Profile.Length > 0 && readOnly)
+					path = Path.Combine(Path.Combine(path, "Profiles"), Profile);
 				return Path.Combine(path, s);
 			}
 

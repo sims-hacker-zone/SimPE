@@ -487,10 +487,6 @@ namespace pjse
 				IComparable,
 				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem
 		{
-			private IPackageFile package;
-			private IPackedFileDescriptor pfd;
-			private bool isMaxis;
-			private bool isFixed;
 			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii;
 
 			public Entry(
@@ -500,16 +496,16 @@ namespace pjse
 				bool isFixed
 			)
 			{
-				this.package = package;
-				this.pfd = pfd;
-				this.isMaxis = isMaxis;
-				this.isFixed = isFixed;
+				this.Package = package;
+				this.PFD = pfd;
+				this.IsMaxis = isMaxis;
+				this.IsFixed = isFixed;
 
 				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] fiis =
 					SimPe.FileTable.FileIndex.FindFile(pfd, package);
 				this.fii = (fiis.Length == 1) ? fiis[0] : null;
 
-				this.pfd.ChangedData += new SimPe.Events.PackedFileChanged(
+				this.PFD.ChangedData += new SimPe.Events.PackedFileChanged(
 					pfd_ChangedData
 				);
 			}
@@ -521,19 +517,31 @@ namespace pjse
 				FileTable.GFT.OnFiletableRefresh(GFT, new EventArgs());
 			}
 
-			public IPackageFile Package => package;
+			public IPackageFile Package
+			{
+				get; private set;
+			}
 
-			public IPackedFileDescriptor PFD => pfd;
+			public IPackedFileDescriptor PFD
+			{
+				get; private set;
+			}
 
-			public uint Type => pfd.Type;
+			public uint Type => PFD.Type;
 
-			public uint Group => pfd.Group;
+			public uint Group => PFD.Group;
 
-			public uint Instance => pfd.Instance;
+			public uint Instance => PFD.Instance;
 
-			public bool IsMaxis => isMaxis;
+			public bool IsMaxis
+			{
+				get;
+			}
 
-			public bool IsFixed => isFixed;
+			public bool IsFixed
+			{
+				get;
+			}
 
 			public AbstractWrapper Wrapper
 			{
@@ -542,7 +550,7 @@ namespace pjse
 					AbstractWrapper wrapper = (AbstractWrapper)
 						SimPe.FileTable.WrapperRegistry.FindHandler(Type);
 					if (wrapper != null)
-						wrapper.ProcessData(pfd, package);
+						wrapper.ProcessData(PFD, Package);
 					return wrapper;
 				}
 			}
@@ -570,12 +578,12 @@ namespace pjse
 
 			public void Dispose()
 			{
-				this.package = null;
+				this.Package = null;
 
-				this.pfd.ChangedData -= new SimPe.Events.PackedFileChanged(
+				this.PFD.ChangedData -= new SimPe.Events.PackedFileChanged(
 					pfd_ChangedData
 				);
-				this.pfd = null;
+				this.PFD = null;
 			}
 
 			#endregion
@@ -842,12 +850,14 @@ namespace pjse
 	{
 		static ResourceManager rm = new ResourceManager(typeof(pjse.Localization));
 
-		private static FileTableSettings fts;
-		public static FileTableSettings FTS => fts;
+		public static FileTableSettings FTS
+		{
+			get; private set;
+		}
 
 		static FileTableSettings()
 		{
-			fts = new FileTableSettings();
+			FTS = new FileTableSettings();
 		}
 
 		const string BASENAME = "PJSE\\Bhav";

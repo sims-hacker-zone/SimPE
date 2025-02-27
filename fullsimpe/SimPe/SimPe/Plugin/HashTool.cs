@@ -28,11 +28,7 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class HashTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
-		/// <summary>
-		/// Windows Registry Link
-		/// </summary>
-		static SimPe.Registry registry;
-		internal static Registry WindowsRegistry => registry;
+		internal static Registry WindowsRegistry => Helper.WindowsRegistry;
 
 		IWrapperRegistry reg;
 		IProviderRegistry prov;
@@ -42,9 +38,6 @@ namespace SimPe.Plugin
 		{
 			this.reg = reg;
 			this.prov = prov;
-
-			if (registry == null)
-				registry = Helper.WindowsRegistry;
 		}
 
 		#region ITool Member

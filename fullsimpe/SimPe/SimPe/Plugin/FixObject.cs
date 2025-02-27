@@ -53,17 +53,9 @@ namespace SimPe.Plugin
 			}
 		}
 
-		bool rndtr;
 		public bool RemoveNonDefaultTextReferences
 		{
-			get
-			{
-				return rndtr;
-			}
-			set
-			{
-				rndtr = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -76,7 +68,7 @@ namespace SimPe.Plugin
 			: base(package)
 		{
 			this.ver = ver;
-			this.rndtr = remndeftxt;
+			this.RemoveNonDefaultTextReferences = remndeftxt;
 			if (types == null)
 			{
 				types = new ArrayList();

@@ -25,23 +25,27 @@ namespace SimPe.Providers
 {
 	public class TraitAlias
 	{
-		private string name;
-		public string Name => name;
+		public string Name
+		{
+			get;
+		}
 
-		private ulong id;
-		public ulong Id => id;
+		public ulong Id
+		{
+			get;
+		}
 
 		public TraitAlias(ulong id, string name)
 		{
-			this.id = id;
-			this.name = name;
+			this.Id = id;
+			this.Name = name;
 		}
 
 		public override string ToString()
 		{
 			if (Helper.WindowsRegistry.HiddenMode)
-				return name + " (0x" + Helper.HexString(id) + ")";
-			return name;
+				return Name + " (0x" + Helper.HexString(Id) + ")";
+			return Name;
 		}
 	}
 }

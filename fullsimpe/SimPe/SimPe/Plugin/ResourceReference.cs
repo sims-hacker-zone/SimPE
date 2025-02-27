@@ -11,13 +11,15 @@ namespace SimPe.Plugin
 	/// </summary>
 	public sealed class ResourceReference
 	{
-		IPackedFileDescriptor pfd;
 		public uint Type;
 		public uint Group;
 		public uint Instance;
 		public uint SubType;
 
-		public IPackedFileDescriptor FileDescriptor => this.pfd;
+		public IPackedFileDescriptor FileDescriptor
+		{
+			get;
+		}
 
 		public ResourceReference(IPackedFileDescriptor file)
 		{
@@ -25,7 +27,7 @@ namespace SimPe.Plugin
 			this.Group = file.Group;
 			this.Instance = file.Instance;
 			this.SubType = file.SubType;
-			this.pfd = file;
+			this.FileDescriptor = file;
 		}
 
 		public override bool Equals(object obj)

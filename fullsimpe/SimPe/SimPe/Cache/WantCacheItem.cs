@@ -37,14 +37,13 @@ namespace SimPe.Cache
 
 		public WantCacheItem()
 		{
-			version = VERSION;
-			name = "";
-			type = "";
-			folder = "";
+			Version = VERSION;
+			Name = "";
+			ObjectType = "";
+			Folder = "";
 			pfd = new Packages.PackedFileDescriptor();
 		}
 
-		byte version;
 		Interfaces.Files.IPackedFileDescriptor pfd;
 
 		/// <summary>
@@ -63,95 +62,39 @@ namespace SimPe.Cache
 			}
 		}
 
-		uint guid;
 		public uint Guid
 		{
-			get
-			{
-				return guid;
-			}
-			set
-			{
-				guid = value;
-			}
+			get; set;
 		}
 
-		string folder;
 		public string Folder
 		{
-			get
-			{
-				return folder;
-			}
-			set
-			{
-				folder = value;
-			}
+			get; set;
 		}
 
-		int score;
 		public int Score
 		{
-			get
-			{
-				return score;
-			}
-			set
-			{
-				score = value;
-			}
+			get; set;
 		}
 
-		int influence;
 		public int Influence
 		{
-			get
-			{
-				return influence;
-			}
-			set
-			{
-				influence = value;
-			}
+			get; set;
 		}
 
-		string type;
 		public string ObjectType
 		{
-			get
-			{
-				return type;
-			}
-			set
-			{
-				type = value;
-			}
+			get; set;
 		}
 
-		string name;
 		public string Name
 		{
-			get
-			{
-				return name;
-			}
-			set
-			{
-				name = value;
-			}
+			get; set;
 		}
 
-		Image thumb;
 		public Image Icon
 		{
-			get
-			{
-				return thumb;
-			}
-			set
-			{
-				thumb = value;
-			}
+			get; set;
 		}
 
 		public override string ToString()
@@ -163,64 +106,67 @@ namespace SimPe.Cache
 
 		public void Load(System.IO.BinaryReader reader)
 		{
-			version = reader.ReadByte();
-			if (version > VERSION)
-				throw new CacheException("Unknown CacheItem Version.", null, version);
+			Version = reader.ReadByte();
+			if (Version > VERSION)
+				throw new CacheException("Unknown CacheItem Version.", null, Version);
 
-			name = reader.ReadString();
-			type = reader.ReadString();
+			Name = reader.ReadString();
+			ObjectType = reader.ReadString();
 			pfd = new Packages.PackedFileDescriptor();
 			pfd.Type = reader.ReadUInt32();
 			pfd.Group = reader.ReadUInt32();
 			pfd.LongInstance = reader.ReadUInt64();
-			influence = reader.ReadInt32();
-			score = reader.ReadInt32();
-			guid = reader.ReadUInt32();
-			folder = reader.ReadString();
+			Influence = reader.ReadInt32();
+			Score = reader.ReadInt32();
+			Guid = reader.ReadUInt32();
+			Folder = reader.ReadString();
 
 			int size = reader.ReadInt32();
 			if (size == 0)
 			{
-				thumb = null;
+				Icon = null;
 			}
 			else
 			{
 				byte[] data = reader.ReadBytes(size);
 				MemoryStream ms = new MemoryStream(data);
 
-				thumb = Image.FromStream(ms);
+				Icon = Image.FromStream(ms);
 			}
 		}
 
 		public void Save(System.IO.BinaryWriter writer)
 		{
-			version = VERSION;
-			writer.Write(version);
-			writer.Write(name);
-			writer.Write(type);
+			Version = VERSION;
+			writer.Write(Version);
+			writer.Write(Name);
+			writer.Write(ObjectType);
 			writer.Write(pfd.Type);
 			writer.Write(pfd.Group);
 			writer.Write(pfd.LongInstance);
-			writer.Write(influence);
-			writer.Write(score);
-			writer.Write(guid);
-			writer.Write(folder);
+			writer.Write(Influence);
+			writer.Write(Score);
+			writer.Write(Guid);
+			writer.Write(Folder);
 
-			if (thumb == null)
+			if (Icon == null)
 			{
 				writer.Write((int)0);
 			}
 			else
 			{
 				MemoryStream ms = new MemoryStream();
-				thumb.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+				Icon.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
 				byte[] data = ms.ToArray();
 				writer.Write(data.Length);
 				writer.Write(data);
 			}
 		}
 
-		public byte Version => version;
+		public byte Version
+		{
+			get; private set;
+		}
 
 		#endregion
 	}

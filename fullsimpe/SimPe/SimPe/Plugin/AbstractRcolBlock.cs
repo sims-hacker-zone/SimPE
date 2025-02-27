@@ -63,7 +63,7 @@ namespace SimPe.Plugin
 		public AbstractRcolBlock()
 		{
 			sgres = null;
-			blockid = 0;
+			BlockID = 0;
 			version = 0;
 		}
 
@@ -73,7 +73,7 @@ namespace SimPe.Plugin
 			if (parent != null)
 				this.Register(Rcol.Tokens);
 			sgres = null;
-			blockid = 0;
+			BlockID = 0;
 			version = 0;
 		}
 
@@ -242,22 +242,13 @@ namespace SimPe.Plugin
 			return name;
 		}
 
-		uint blockid;
-
 		/// <summary>
 		/// Returns the ID used for this Block
 		/// </summary>
 		[BrowsableAttribute(false)]
 		public uint BlockID
 		{
-			get
-			{
-				return blockid;
-			}
-			set
-			{
-				blockid = value;
-			}
+			get; set;
 		}
 
 		protected string blockname;

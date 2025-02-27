@@ -82,7 +82,6 @@ namespace System.Collections.Generic
 		private ArrayBuilder2<T[]> _buffers; // After ResizeLimit * 2, we store previous buffers we've filled out here.
 		private T[] _current;               // Current buffer we're reading into. If _count <= ResizeLimit, this is _first.
 		private int _index;                 // Index into the current buffer.
-		private int _count;                 // Count of all of the items in this builder.
 
 		/// <summary>
 		/// Constructs a new builder.
@@ -115,7 +114,10 @@ namespace System.Collections.Generic
 		/// <summary>
 		/// Gets the number of items added to the builder.
 		/// </summary>
-		public int Count => _count;
+		public int Count
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Adds an item to this builder.
@@ -128,7 +130,7 @@ namespace System.Collections.Generic
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void Add(T item)
 		{
-			Debug.Assert(_maxCapacity > _count);
+			Debug.Assert(_maxCapacity > Count);
 
 			int index = _index;
 			T[] current = _current;
@@ -144,7 +146,7 @@ namespace System.Collections.Generic
 				_index = index + 1;
 			}
 
-			_count++;
+			Count++;
 		}
 
 		// Non-inline to improve code quality as uncommon path
@@ -192,7 +194,7 @@ namespace System.Collections.Generic
 				}
 
 				// Final update to _count and _index.
-				_count += index - _index;
+				Count += index - _index;
 				_index = index;
 			}
 		}
@@ -201,7 +203,7 @@ namespace System.Collections.Generic
 		[MethodImpl(MethodImplOptions.NoInlining)]
 		private void AddWithBufferAllocation(T item, ref T[] destination, ref int index)
 		{
-			_count += index - _index;
+			Count += index - _index;
 			_index = index;
 			AllocateBuffer();
 			destination = _current;
@@ -351,8 +353,8 @@ namespace System.Collections.Generic
 				return array;
 			}
 
-			array = new T[_count];
-			CopyTo(array, 0, _count);
+			array = new T[Count];
+			CopyTo(array, 0, Count);
 			return array;
 		}
 
@@ -364,7 +366,7 @@ namespace System.Collections.Generic
 		public bool TryMove(out T[] array)
 		{
 			array = _first;
-			return _count == _first.Length;
+			return Count == _first.Length;
 		}
 
 		private void AllocateBuffer()
@@ -376,28 +378,28 @@ namespace System.Collections.Generic
 			//   above step, except with _current.Length * 2.
 			// - Make sure we never pass _maxCapacity in all of the above steps.
 
-			Debug.Assert((uint)_maxCapacity > (uint)_count);
+			Debug.Assert((uint)_maxCapacity > (uint)Count);
 			Debug.Assert(_index == _current.Length, $"{nameof(AllocateBuffer)} was called, but there's more space.");
 
 			// If _count is int.MinValue, we want to go down the other path which will raise an exception.
-			if ((uint)_count < (uint)ResizeLimit)
+			if ((uint)Count < (uint)ResizeLimit)
 			{
 				// We haven't passed ResizeLimit. Resize _first, copying over the previous items.
-				Debug.Assert(_current == _first && _count == _first.Length);
+				Debug.Assert(_current == _first && Count == _first.Length);
 
-				int nextCapacity = Math.Min(_count == 0 ? StartingCapacity : _count * 2, _maxCapacity);
+				int nextCapacity = Math.Min(Count == 0 ? StartingCapacity : Count * 2, _maxCapacity);
 
 				_current = new T[nextCapacity];
-				Array.Copy(_first, 0, _current, 0, _count);
+				Array.Copy(_first, 0, _current, 0, Count);
 				_first = _current;
 			}
 			else
 			{
 				Debug.Assert(_maxCapacity > ResizeLimit);
-				Debug.Assert(_count == ResizeLimit ^ _current != _first);
+				Debug.Assert(Count == ResizeLimit ^ _current != _first);
 
 				int nextCapacity;
-				if (_count == ResizeLimit)
+				if (Count == ResizeLimit)
 				{
 					nextCapacity = ResizeLimit;
 				}
@@ -410,11 +412,11 @@ namespace System.Collections.Generic
 					// doing min(64, 100 - 64). The lhs represents double the last buffer,
 					// the rhs the limit minus the amount we've already allocated.
 
-					Debug.Assert(_count >= ResizeLimit * 2);
-					Debug.Assert(_count == _current.Length * 2);
+					Debug.Assert(Count >= ResizeLimit * 2);
+					Debug.Assert(Count == _current.Length * 2);
 
 					_buffers.Add(_current);
-					nextCapacity = Math.Min(_count, _maxCapacity - _count);
+					nextCapacity = Math.Min(Count, _maxCapacity - Count);
 				}
 
 				_current = new T[nextCapacity];

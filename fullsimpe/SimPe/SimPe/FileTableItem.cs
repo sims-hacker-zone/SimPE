@@ -11,46 +11,34 @@ namespace SimPe
 	/// </summary>
 	public class FileTableItem
 	{
-		bool recursive;
-		bool file;
-		bool ignore;
-		int ver;
 		string relpath;
 		string path;
-		FileTableItemType type;
 
 		public FileTableItem(string path)
 		{
-			recursive = false;
-			file = false;
+			IsRecursive = false;
+			IsFile = false;
 			if (path.StartsWith(":"))
 			{
 				path = path.Substring(1, path.Length - 1);
-				recursive = true;
+				IsRecursive = true;
 			}
 			else if (path.StartsWith("*"))
 			{
 				path = path.Substring(1, path.Length - 1);
-				file = true;
+				IsFile = true;
 			}
 
 			this.path = path;
 			this.relpath = path;
-			this.ver = -1;
-			this.type = FileTablePaths.Absolute;
-			this.ignore = false;
+			this.EpVersion = -1;
+			this.Type = FileTablePaths.Absolute;
+			this.Ignore = false;
 		}
 
 		public bool Ignore
 		{
-			get
-			{
-				return ignore;
-			}
-			set
-			{
-				ignore = value;
-			}
+			get; set;
 		}
 
 		public FileTableItem(string path, bool rec, bool fl)
@@ -71,22 +59,22 @@ namespace SimPe
 			bool ign
 		)
 		{
-			this.recursive = rec;
-			this.file = fl;
-			this.ver = ver;
-			this.type = type;
+			this.IsRecursive = rec;
+			this.IsFile = fl;
+			this.EpVersion = ver;
+			this.Type = type;
 			this.SetName(relpath);
-			this.ignore = ign;
+			this.Ignore = ign;
 		}
 
 		internal void SetRecursive(bool state)
 		{
-			this.recursive = state;
+			this.IsRecursive = state;
 		}
 
 		internal void SetFile(bool state)
 		{
-			this.file = state;
+			this.IsFile = state;
 		}
 
 		public static string GetRoot(FileTableItemType type)
@@ -172,14 +160,7 @@ namespace SimPe
 
 		public FileTableItemType Type
 		{
-			get
-			{
-				return type;
-			}
-			set
-			{
-				this.type = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -189,40 +170,19 @@ namespace SimPe
 
 		public bool IsRecursive
 		{
-			get
-			{
-				return recursive;
-			}
-			set
-			{
-				recursive = value;
-			}
+			get; set;
 		}
 
 		public bool IsFile
 		{
-			get
-			{
-				return file;
-			}
-			set
-			{
-				file = value;
-			}
+			get; set;
 		}
 
-		public bool IsUseable => ver == -1 || ver == PathProvider.Global.GameVersion;
+		public bool IsUseable => EpVersion == -1 || EpVersion == PathProvider.Global.GameVersion;
 
 		public int EpVersion
 		{
-			get
-			{
-				return ver;
-			}
-			set
-			{
-				ver = value;
-			}
+			get; set;
 		}
 
 		public bool IsAvail
@@ -250,7 +210,7 @@ namespace SimPe
 		{
 			get
 			{
-				string r = GetRoot(this.type);
+				string r = GetRoot(this.Type);
 
 				if (r == null)
 					return path;
@@ -319,12 +279,12 @@ namespace SimPe
 				n = "(Unused) " + n;
 			else if (!IsAvail)
 				n = "(Missing) " + n;
-			if (!Helper.WindowsRegistry.UseExpansions2 && type.ToString() == "Extra")
+			if (!Helper.WindowsRegistry.UseExpansions2 && Type.ToString() == "Extra")
 				n += "{Store}" + path;
 			else
-				n += "{" + type.ToString() + "}" + path;
-			if (ver != -1)
-				n += " (Only when GameVersion=" + ver.ToString() + ")";
+				n += "{" + Type.ToString() + "}" + path;
+			if (EpVersion != -1)
+				n += " (Only when GameVersion=" + EpVersion.ToString() + ")";
 			return n;
 		}
 	}

@@ -46,54 +46,29 @@ namespace SimPe.Geometry
 		};
 
 		#region Attributes
-		TransformOrder o;
 
 		/// <summary>
 		/// Returns / Sets the current Order
 		/// </summary>
 		public TransformOrder Order
 		{
-			get
-			{
-				return o;
-			}
-			set
-			{
-				o = value;
-			}
+			get; set;
 		}
-		Vector3f trans;
 
 		/// <summary>
 		/// The Translation
 		/// </summary>
 		public Vector3f Translation
 		{
-			get
-			{
-				return trans;
-			}
-			set
-			{
-				trans = value;
-			}
+			get; set;
 		}
-
-		Quaternion quat;
 
 		/// <summary>
 		/// The Rotation
 		/// </summary>
 		public Quaternion Rotation
 		{
-			get
-			{
-				return quat;
-			}
-			set
-			{
-				quat = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -103,9 +78,9 @@ namespace SimPe.Geometry
 		/// <param name="o">The order of the Transform</param>
 		public VectorTransformation(TransformOrder o)
 		{
-			this.o = o;
-			trans = new Vector3f();
-			quat = Quaternion.Identity;
+			this.Order = o;
+			Translation = new Vector3f();
+			Rotation = Quaternion.Identity;
 		}
 
 		/// <summary>
@@ -117,7 +92,7 @@ namespace SimPe.Geometry
 
 		public override string ToString()
 		{
-			return "trans=" + trans.ToString() + "    rot=" + quat.ToString();
+			return "trans=" + Translation.ToString() + "    rot=" + Rotation.ToString();
 		}
 
 		/// <summary>
@@ -126,15 +101,15 @@ namespace SimPe.Geometry
 		/// <param name="reader">The Stream that contains the FileData</param>
 		public virtual void Unserialize(System.IO.BinaryReader reader)
 		{
-			if (o == TransformOrder.RotateTranslate)
+			if (Order == TransformOrder.RotateTranslate)
 			{
-				quat.Unserialize(reader);
-				trans.Unserialize(reader);
+				Rotation.Unserialize(reader);
+				Translation.Unserialize(reader);
 			}
 			else
 			{
-				trans.Unserialize(reader);
-				quat.Unserialize(reader);
+				Translation.Unserialize(reader);
+				Rotation.Unserialize(reader);
 			}
 		}
 
@@ -148,15 +123,15 @@ namespace SimPe.Geometry
 		/// </remarks>
 		public virtual void Serialize(System.IO.BinaryWriter writer)
 		{
-			if (o == TransformOrder.RotateTranslate)
+			if (Order == TransformOrder.RotateTranslate)
 			{
-				quat.Serialize(writer);
-				trans.Serialize(writer);
+				Rotation.Serialize(writer);
+				Translation.Serialize(writer);
 			}
 			else
 			{
-				trans.Serialize(writer);
-				quat.Serialize(writer);
+				Translation.Serialize(writer);
+				Rotation.Serialize(writer);
 			}
 		}
 
@@ -167,15 +142,15 @@ namespace SimPe.Geometry
 		/// <returns>Transformed Vertex</returns>
 		public Vector3f Transform(Vector3f v)
 		{
-			if (o == TransformOrder.RotateTranslate)
+			if (Order == TransformOrder.RotateTranslate)
 			{
-				v = quat.Rotate(v);
-				return v + trans;
+				v = Rotation.Rotate(v);
+				return v + Translation;
 			}
 			else
 			{
-				v += trans;
-				return quat.Rotate(v);
+				v += Translation;
+				return Rotation.Rotate(v);
 			}
 		}
 
@@ -193,17 +168,9 @@ namespace SimPe.Geometry
 		}
 
 #if DEBUG
-		string name;
 		public string Name
 		{
-			get
-			{
-				return name;
-			}
-			set
-			{
-				name = value;
-			}
+			get; set;
 		}
 #endif
 	}

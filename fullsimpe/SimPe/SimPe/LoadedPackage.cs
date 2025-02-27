@@ -99,17 +99,19 @@ namespace SimPe
 		public event System.EventHandler RemovedResource;
 		#endregion
 
-		SimPe.Packages.GeneratableFile pkg;
 
 		/// <summary>
 		/// Returns the current Package or null if it is not loaded
 		/// </summary>
-		public SimPe.Packages.GeneratableFile Package => pkg;
+		public SimPe.Packages.GeneratableFile Package
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// true, if a package was loaded
 		/// </summary>
-		public bool Loaded => pkg != null;
+		public bool Loaded => Package != null;
 
 		/// <summary>
 		/// returns an empty string or the FileName of the current package
@@ -118,11 +120,11 @@ namespace SimPe
 		{
 			get
 			{
-				if (pkg == null)
+				if (Package == null)
 					return "";
-				if (pkg.FileName == null)
+				if (Package.FileName == null)
 					return "";
-				return pkg.FileName;
+				return Package.FileName;
 			}
 		}
 
@@ -134,21 +136,21 @@ namespace SimPe
 		{
 			if (add)
 			{
-				pkg.IndexChanged += new EventHandler(IndexChangedHandler);
-				pkg.AddedResource += new EventHandler(AddedResourceHandler);
-				pkg.RemovedResource += new EventHandler(RemovedResourcehandler);
-				pkg.SavedIndex += new EventHandler(SavedIndexHandler);
+				Package.IndexChanged += new EventHandler(IndexChangedHandler);
+				Package.AddedResource += new EventHandler(AddedResourceHandler);
+				Package.RemovedResource += new EventHandler(RemovedResourcehandler);
+				Package.SavedIndex += new EventHandler(SavedIndexHandler);
 
-				SimPe.Packages.StreamFactory.LockStream(pkg.SaveFileName);
+				SimPe.Packages.StreamFactory.LockStream(Package.SaveFileName);
 			}
 			else
 			{
-				SimPe.Packages.StreamFactory.UnlockStream(pkg.SaveFileName);
+				SimPe.Packages.StreamFactory.UnlockStream(Package.SaveFileName);
 
-				pkg.IndexChanged -= new EventHandler(IndexChangedHandler);
-				pkg.AddedResource -= new EventHandler(AddedResourceHandler);
-				pkg.RemovedResource -= new EventHandler(RemovedResourcehandler);
-				pkg.SavedIndex -= new EventHandler(SavedIndexHandler);
+				Package.IndexChanged -= new EventHandler(IndexChangedHandler);
+				Package.AddedResource -= new EventHandler(AddedResourceHandler);
+				Package.RemovedResource -= new EventHandler(RemovedResourcehandler);
+				Package.SavedIndex -= new EventHandler(SavedIndexHandler);
 			}
 		}
 
@@ -185,13 +187,13 @@ namespace SimPe
 				Wait.SubStart();
 				Wait.Message = "Loading File";
 
-				if (pkg != null)
+				if (Package != null)
 					this.SetupEvents(false);
 
-				pkg = SimPe.Packages.File.LoadFromFile(e.FileName, sync);
+				Package = SimPe.Packages.File.LoadFromFile(e.FileName, sync);
 
-				if (pkg.Index.Length < Helper.WindowsRegistry.BigPackageResourceCount)
-					pkg.LoadCompressedState();
+				if (Package.Index.Length < Helper.WindowsRegistry.BigPackageResourceCount)
+					Package.LoadCompressedState();
 
 				this.SetupEvents(true);
 				Helper.WindowsRegistry.AddRecentFile(flname);
@@ -210,7 +212,7 @@ namespace SimPe
 #endif
 			finally { }
 			if (res != true)
-				pkg = null;
+				Package = null;
 			return res;
 		}
 
@@ -290,21 +292,21 @@ namespace SimPe
 			if (e.Cancel)
 				return false;
 
-			if (pkg != null)
+			if (Package != null)
 			{
 				this.SetupEvents(false);
 			}
 
-			pkg = newpkg;
-			pkg.LoadCompressedState();
+			Package = newpkg;
+			Package.LoadCompressedState();
 
-			if (pkg != null)
+			if (Package != null)
 			{
 				this.SetupEvents(true);
 			}
 
-			if (pkg.FileName != null)
-				Helper.WindowsRegistry.AddRecentFile(pkg.FileName);
+			if (Package.FileName != null)
+				Helper.WindowsRegistry.AddRecentFile(Package.FileName);
 			if (AfterFileLoad != null)
 				AfterFileLoad(this);
 
@@ -349,8 +351,8 @@ namespace SimPe
 					&& (Helper.WindowsRegistry.LoadMetaInfo)
 				)
 				{
-					FileTable.ProviderRegistry.SimFamilynameProvider.BasePackage = pkg;
-					FileTable.ProviderRegistry.SimDescriptionProvider.BasePackage = pkg;
+					FileTable.ProviderRegistry.SimFamilynameProvider.BasePackage = Package;
+					FileTable.ProviderRegistry.SimDescriptionProvider.BasePackage = Package;
 					FileTable.ProviderRegistry.SimNameProvider.BaseFolder =
 						System.IO.Path.GetDirectoryName(FileName);
 					FileTable.ProviderRegistry.LotProvider.BaseFolder =
@@ -373,10 +375,10 @@ namespace SimPe
 		/// <returns>true, if the Package was closed</returns>
 		public bool Close()
 		{
-			if (pkg != null)
+			if (Package != null)
 			{
 				bool res = true;
-				if (pkg.HasUserChanges)
+				if (Package.HasUserChanges)
 				{
 					DialogResult dr = SimPe.Message.Show(
 						SimPe
@@ -402,9 +404,9 @@ namespace SimPe
 
 				if (res)
 				{
-					pkg.Close();
+					Package.Close();
 					this.SetupEvents(false);
-					pkg = null;
+					Package = null;
 				}
 				else
 					return false;

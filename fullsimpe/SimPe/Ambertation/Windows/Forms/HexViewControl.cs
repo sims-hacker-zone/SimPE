@@ -455,12 +455,13 @@ namespace Ambertation.Windows.Forms
 			}
 		}
 
-		Font hfont;
-
 		/// <summary>
 		/// Returns the Font used for the Header
 		/// </summary>
-		public Font HeaderFont => hfont;
+		public Font HeaderFont
+		{
+			get;
+		}
 
 		#endregion
 
@@ -507,7 +508,7 @@ namespace Ambertation.Windows.Forms
 					BeginUpdate();
 
 				selection.Maximum = data.Length;
-				highlights.Clear();
+				Highlights.Clear();
 
 				this.DoSelect(-1, 0);
 				this.Refresh();
@@ -634,12 +635,13 @@ namespace Ambertation.Windows.Forms
 			}
 		}
 
-		float hbrh;
-
 		/// <summary>
 		/// Returns the Height of one Row
 		/// </summary>
-		protected float HexBoxRowHeight => hbrh;
+		protected float HexBoxRowHeight
+		{
+			get; private set;
+		}
 
 		Highlight selection;
 
@@ -676,13 +678,14 @@ namespace Ambertation.Windows.Forms
 			}
 		}
 
-		Ambertation.Collections.Highlights highlights;
-
 		/// <summary>
 		/// Returns the List of Highlighted Elements
 		/// </summary>
 		[Browsable(false)]
-		public Ambertation.Collections.Highlights Highlights => highlights;
+		public Ambertation.Collections.Highlights Highlights
+		{
+			get;
+		}
 		#endregion
 
 		#region Fields
@@ -716,7 +719,7 @@ namespace Ambertation.Windows.Forms
 			System.Drawing.Graphics g = System.Drawing.Graphics.FromHwnd(this.Handle);
 			SizeF stringSize = g.MeasureString("0", Font, layoutSize);
 
-			hbrh = stringSize.Height;
+			HexBoxRowHeight = stringSize.Height;
 			return stringSize.Height + COLSPACING;
 		}
 
@@ -823,7 +826,7 @@ namespace Ambertation.Windows.Forms
 			charboxwidth = 200;
 			cols = 2;
 			grid = true;
-			highlights = new Ambertation.Collections.Highlights();
+			Highlights = new Ambertation.Collections.Highlights();
 
 			backcol = SystemColors.ControlLightLight;
 			bkgrcol = SystemColors.Control;
@@ -878,7 +881,7 @@ namespace Ambertation.Windows.Forms
 
 
 			base.Font = new Font("Courier New", 10, Font.Style, Font.Unit);
-			hfont = new Font(Font.FontFamily, Font.Size, FontStyle.Bold, Font.Unit);
+			HeaderFont = new Font(Font.FontFamily, Font.Size, FontStyle.Bold, Font.Unit);
 
 			MatchSize();
 			RedrawGraphics();
@@ -894,12 +897,12 @@ namespace Ambertation.Windows.Forms
 
 		public void AddHighlight(int start, int len)
 		{
-			highlights.Add(new Highlight(start, len, data.Length));
+			Highlights.Add(new Highlight(start, len, data.Length));
 		}
 
 		public void ClearHighlights()
 		{
-			highlights.Clear();
+			Highlights.Clear();
 			Refresh(true);
 		}
 
@@ -1710,7 +1713,7 @@ namespace Ambertation.Windows.Forms
 
 			SetGraphicsMode(g, false);
 			DrawRowSelection(g, offset, b.Height);
-			foreach (Highlight h in highlights)
+			foreach (Highlight h in Highlights)
 				DrawRowSelection(
 					g,
 					new SolidBrush(HighlightColor),
@@ -1734,7 +1737,7 @@ namespace Ambertation.Windows.Forms
 					else
 						brush = ForeBrush;
 
-					foreach (Highlight h in highlights)
+					foreach (Highlight h in Highlights)
 						if (h.Contains(offset))
 						{
 							brush = new SolidBrush(this.HighlightForeColor);
@@ -2259,7 +2262,7 @@ namespace Ambertation.Windows.Forms
 		/// <param name="hldata"></param>
 		public void Highlight(byte[] hldata)
 		{
-			highlights.Clear();
+			Highlights.Clear();
 			if (hldata.Length == 0)
 			{
 				Refresh(true);
@@ -2279,16 +2282,16 @@ namespace Ambertation.Windows.Forms
 					this.AddHighlight(i, hldata.Length);
 			}
 
-			if (highlights.Length > 0)
-				GoTo(highlights[0].Start);
+			if (Highlights.Length > 0)
+				GoTo(Highlights[0].Start);
 			Refresh(true);
 		}
 
-		public int HighlighCount => highlights.Count;
+		public int HighlighCount => Highlights.Count;
 
 		public void SelectNextHighlight()
 		{
-			foreach (Highlight h in highlights)
+			foreach (Highlight h in Highlights)
 				if (h.Start > this.SelectionStart)
 				{
 					GoTo(h.Start);

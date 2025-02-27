@@ -141,19 +141,10 @@ namespace SimPe.Plugin
 
 	public class SkintoneSettings : PackageSettings
 	{
-		float genetic;
-
 		[Category("Skintone")]
 		public float GeneticWeight
 		{
-			get
-			{
-				return this.genetic;
-			}
-			set
-			{
-				this.genetic = value;
-			}
+			get; set;
 		}
 
 		public override RecolorType PackageType => RecolorType.Skintone;
@@ -167,142 +158,61 @@ namespace SimPe.Plugin
 		{
 			if (settings is SkintoneSettings)
 			{
-				this.genetic = ((SkintoneSettings)settings).genetic;
+				this.GeneticWeight = ((SkintoneSettings)settings).GeneticWeight;
 			}
 		}
 	}
 
 	public class ClothingSettings : PackageSettings
 	{
-		ShoeType shoe;
-		OutfitType outfit;
-		SkinCategories category;
-		OutfitCats outfitcat;
-		SimGender gender;
-		Ages age;
-		SpeciesType species;
-		TextureOverlayTypes overlayType;
-		MetaData.Bodyshape figure;
-		uint flaggery;
-
 		public TextureOverlayTypes OverlayType
 		{
-			get
-			{
-				return overlayType;
-			}
-			set
-			{
-				overlayType = value;
-			}
+			get; set;
 		}
 
 		public SpeciesType Species
 		{
-			get
-			{
-				return species;
-			}
-			set
-			{
-				species = value;
-			}
+			get; set;
 		}
 
 		public ShoeType ShoeType
 		{
-			get
-			{
-				return this.shoe;
-			}
-			set
-			{
-				this.shoe = value;
-			}
+			get; set;
 		}
 
 		public OutfitType OutfitType
 		{
-			get
-			{
-				return this.outfit;
-			}
-			set
-			{
-				this.outfit = value;
-			}
+			get; set;
 		}
 
 		public SkinCategories Category
 		{
-			get
-			{
-				return this.category;
-			}
-			set
-			{
-				this.category = value;
-			}
+			get; set;
 		}
 
 		public OutfitCats OutfitCat
 		{
-			get
-			{
-				return this.outfitcat;
-			}
-			set
-			{
-				this.outfitcat = value;
-			}
+			get; set;
 		}
 
 		public MetaData.Bodyshape Figure
 		{
-			get
-			{
-				return this.figure;
-			}
-			set
-			{
-				this.figure = value;
-			}
+			get; set;
 		}
 
 		public SimGender Gender
 		{
-			get
-			{
-				return this.gender;
-			}
-			set
-			{
-				this.gender = value;
-			}
+			get; set;
 		}
 
 		public Ages Age
 		{
-			get
-			{
-				return this.age;
-			}
-			set
-			{
-				this.age = value;
-			}
+			get; set;
 		}
 
 		public uint Flaggery
 		{
-			get
-			{
-				return this.flaggery;
-			}
-			set
-			{
-				this.flaggery = value;
-			}
+			get; set;
 		}
 
 		public override RecolorType PackageType => RecolorType.Skin;
@@ -317,15 +227,15 @@ namespace SimPe.Plugin
 			if (settings is ClothingSettings)
 			{
 				ClothingSettings cSettings = (ClothingSettings)settings;
-				this.age = cSettings.age;
-				this.category = cSettings.category;
-				this.outfitcat = cSettings.outfitcat;
-				this.gender = cSettings.gender;
-				this.shoe = cSettings.shoe;
-				this.outfit = cSettings.outfit;
-				this.species = cSettings.species;
-				this.figure = cSettings.figure;
-				this.flaggery = cSettings.flaggery;
+				this.Age = cSettings.Age;
+				this.Category = cSettings.Category;
+				this.OutfitCat = cSettings.OutfitCat;
+				this.Gender = cSettings.Gender;
+				this.ShoeType = cSettings.ShoeType;
+				this.OutfitType = cSettings.OutfitType;
+				this.Species = cSettings.Species;
+				this.Figure = cSettings.Figure;
+				this.Flaggery = cSettings.Flaggery;
 			}
 		}
 	}

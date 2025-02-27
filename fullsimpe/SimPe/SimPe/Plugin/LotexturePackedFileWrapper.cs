@@ -20,14 +20,12 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Contains the Data of the File
 		/// </summary>
-		private string hoodtexture;
 		public int itemnum;
 		public int visitnum;
 		public string[] texchure;
 		public uint[] remeberid;
 		public uint[] badgesid;
 		private int virsion;
-		private int badges;
 		private int nuffing;
 		private int orfset;
 		private ushort generalp;
@@ -40,17 +38,13 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string Hoodtexture
 		{
-			get
-			{
-				return hoodtexture;
-			}
-			set
-			{
-				hoodtexture = value;
-			}
+			get; set;
 		}
 		public int Itemnumber => itemnum;
-		public int Badges => badges;
+		public int Badges
+		{
+			get; private set;
+		}
 		#endregion
 
 		/// <summary>
@@ -99,17 +93,17 @@ namespace SimPe.Plugin
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			itemnum = -1; // Set as Unknown version
-			badges = 0;
-			hoodtexture = "";
+			Badges = 0;
+			Hoodtexture = "";
 			if (this.FileDescriptor.Type == 0x4B58975B) // Lot Texture
 			{
 				filename = reader.ReadBytes(64);
 				tipe = reader.ReadUInt32();
 				virsion = reader.ReadInt32();
-				badges = reader.ReadInt32();
+				Badges = reader.ReadInt32();
 				dataqnt = reader.ReadInt32();
 				//reader.BaseStream.Seek(0x50, System.IO.SeekOrigin.Begin);
-				hoodtexture = reader.ReadString();
+				Hoodtexture = reader.ReadString();
 				itemnum = reader.ReadInt32();
 				Array.Resize<string>(ref texchure, itemnum);
 				if (itemnum > 0)
@@ -137,11 +131,11 @@ namespace SimPe.Plugin
 					nuffing = reader.ReadInt32();
 				else
 					nuffing = 0;
-				badges = reader.ReadInt32();
-				if (badges > 0)
+				Badges = reader.ReadInt32();
+				if (Badges > 0)
 				{
-					Array.Resize<uint>(ref badgesid, badges);
-					for (int k = 0; k < badges; k++)
+					Array.Resize<uint>(ref badgesid, Badges);
+					for (int k = 0; k < Badges; k++)
 					{
 						badgesid[k] = reader.ReadUInt32();
 						reader.BaseStream.Seek(dataqnt, System.IO.SeekOrigin.Current);
@@ -174,12 +168,12 @@ namespace SimPe.Plugin
 					sdesc.ProcessData(pfd, package);
 					if (sdesc.Instance == this.FileDescriptor.Instance)
 					{
-						hoodtexture = sdesc.SimName;
+						Hoodtexture = sdesc.SimName;
 						dided = true;
 					}
 				}
 				if (!dided)
-					hoodtexture = SimPe.Localization.GetString("Unknown");
+					Hoodtexture = SimPe.Localization.GetString("Unknown");
 			}
 			else if (this.FileDescriptor.Type == 0x2DB5C0F4) // Nid Map
 			{
@@ -241,9 +235,9 @@ namespace SimPe.Plugin
 				writer.Write(filename);
 				writer.Write(tipe);
 				writer.Write(virsion);
-				writer.Write(badges);
+				writer.Write(Badges);
 				writer.Write(dataqnt);
-				writer.Write(hoodtexture);
+				writer.Write(Hoodtexture);
 				writer.Write(itemnum);
 				if (itemnum > 0)
 				{

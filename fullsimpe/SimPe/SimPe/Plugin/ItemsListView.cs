@@ -29,8 +29,11 @@ namespace SimPe.Plugin
 	public class NgbhItemsListViewItem : ListViewItem, System.IDisposable
 	{
 		NgbhItemsListView parent;
-		NgbhItem item;
-		public NgbhItem Item => item;
+
+		public NgbhItem Item
+		{
+			get; private set;
+		}
 
 		public NgbhItemsListViewItem(NgbhItemsListView parent, NgbhItem item)
 			: this(parent, item, true) { }
@@ -42,7 +45,7 @@ namespace SimPe.Plugin
 		)
 			: base()
 		{
-			this.item = item;
+			this.Item = item;
 			this.parent = parent;
 			//mci = NgbhUI.ObjectCache.FindItem(item.Guid);
 
@@ -55,14 +58,14 @@ namespace SimPe.Plugin
 
 		internal void Update()
 		{
-			this.Text = item.ToString();
-			if (!item.Flags.IsVisible)
+			this.Text = Item.ToString();
+			if (!Item.Flags.IsVisible)
 				this.ForeColor = Color.SteelBlue;
-			if (item.Flags.IsControler)
+			if (Item.Flags.IsControler)
 				this.ForeColor = Color.Gray;
-			if (item.IsInventory)
+			if (Item.IsInventory)
 				this.ForeColor = Color.MediumSeaGreen;
-			if (item.IsGossip)
+			if (Item.IsGossip)
 				this.Font = new Font(
 					this.Font.FontFamily,
 					this.Font.Size,
@@ -72,7 +75,7 @@ namespace SimPe.Plugin
 
 			if (parent.SmallImageList != null)
 			{
-				Image i = item.Icon;
+				Image i = Item.Icon;
 				if (i != null)
 				{
 					if (this.ImageIndex >= 0)
@@ -90,7 +93,7 @@ namespace SimPe.Plugin
 
 		public void Dispose()
 		{
-			item = null;
+			Item = null;
 			parent = null;
 		}
 

@@ -56,7 +56,7 @@ namespace SimPe
 			//this.TopMost = Helper.WindowsRegistry.WaitingScreenTopMost;
 			myhandle = Handle;
 			image = pbsimpe.Image;
-			message = lbmsg.Text;
+			Message = lbmsg.Text;
 
 			//defimg = true;
 			//cycles = 20;
@@ -81,8 +81,6 @@ namespace SimPe
 
 		IntPtr myhandle;
 		internal System.Drawing.Image image = null;
-		string message = "";
-
 		const uint WM_CHANGE_MESSAGE =
 			Ambertation.Windows.Forms.APIHelp.WM_APP + 0x0003;
 		const uint WM_CHANGE_IMAGE = Ambertation.Windows.Forms.APIHelp.WM_APP + 0x0004;
@@ -116,9 +114,9 @@ namespace SimPe
 			);
 			lock (lockObj)
 			{
-				if (this.message == message)
+				if (this.Message == message)
 					return;
-				this.message = message;
+				this.Message = message;
 				Ambertation.Windows.Forms.APIHelp.SendMessage(
 					myhandle,
 					WM_CHANGE_MESSAGE,
@@ -128,7 +126,7 @@ namespace SimPe
 			}
 		}
 
-		public string Message => message;
+		public string Message { get; private set; } = "";
 
 		protected override void WndProc(ref System.Windows.Forms.Message m)
 		{
@@ -137,9 +135,9 @@ namespace SimPe
 				if (m.Msg == WM_CHANGE_MESSAGE)
 				{
 					System.Diagnostics.Trace.WriteLine(
-						"SimPe.WaitingForm.WndProc() - WM_CHANGE_MESSAGE: " + message
+						"SimPe.WaitingForm.WndProc() - WM_CHANGE_MESSAGE: " + Message
 					);
-					lbmsg.Text = message;
+					lbmsg.Text = Message;
 				}
 				else if (m.Msg == WM_CHANGE_IMAGE)
 				{

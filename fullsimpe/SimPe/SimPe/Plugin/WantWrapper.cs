@@ -40,46 +40,24 @@ namespace SimPe.Plugin
 									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 	{
 		#region Attributes
-		uint version;
-		public uint Version => version;
+		public uint Version
+		{
+			get; private set;
+		}
 
-		WantItem[] lifewants;
 		public WantItem[] LifetimeWants
 		{
-			get
-			{
-				return lifewants;
-			}
-			set
-			{
-				lifewants = value;
-			}
+			get; set;
 		}
 
-		WantItem[] wants;
 		public WantItem[] Wants
 		{
-			get
-			{
-				return wants;
-			}
-			set
-			{
-				wants = value;
-			}
+			get; set;
 		}
 
-		WantItem[] fears;
 		public WantItem[] Fears
 		{
-			get
-			{
-				return fears;
-			}
-			set
-			{
-				fears = value;
-			}
+			get; set;
 		}
 		uint unknown1;
 		uint unknown2;
@@ -87,17 +65,9 @@ namespace SimPe.Plugin
 		uint maxfears;
 		uint unknown5;
 
-		WantItemContainer[] items;
 		public WantItemContainer[] History
 		{
-			get
-			{
-				return items;
-			}
-			set
-			{
-				items = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -119,9 +89,9 @@ namespace SimPe.Plugin
 					{
 						SimPe.PackedFiles.Wrapper.SDesc sdsc =
 							new SimPe.PackedFiles.Wrapper.SDesc(
-								provider.SimNameProvider,
-								provider.SimFamilynameProvider,
-								provider.SimDescriptionProvider
+								Provider.SimNameProvider,
+								Provider.SimFamilynameProvider,
+								Provider.SimDescriptionProvider
 							);
 						sdsc.ProcessData(pfds[0], Package);
 
@@ -134,8 +104,11 @@ namespace SimPe.Plugin
 		#endregion
 
 		byte[] overhead;
-		Interfaces.IProviderRegistry provider;
-		public Interfaces.IProviderRegistry Provider => provider;
+
+		public Interfaces.IProviderRegistry Provider
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Constructor
@@ -143,14 +116,14 @@ namespace SimPe.Plugin
 		public Want(Interfaces.IProviderRegistry provider)
 			: base()
 		{
-			this.provider = provider;
+			this.Provider = provider;
 
-			version = 1;
+			Version = 1;
 			unknown1 = 2;
-			wants = new WantItem[0];
-			fears = new WantItem[0];
-			items = new WantItemContainer[0];
-			lifewants = new WantItem[0];
+			Wants = new WantItem[0];
+			Fears = new WantItem[0];
+			History = new WantItemContainer[0];
+			LifetimeWants = new WantItem[0];
 			overhead = new byte[0];
 		}
 
@@ -199,15 +172,15 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-			version = reader.ReadUInt32();
+			Version = reader.ReadUInt32();
 
-			if (version >= 0x05)
+			if (Version >= 0x05)
 			{
-				lifewants = new WantItem[reader.ReadUInt32()];
-				for (int i = 0; i < lifewants.Length; i++)
+				LifetimeWants = new WantItem[reader.ReadUInt32()];
+				for (int i = 0; i < LifetimeWants.Length; i++)
 				{
-					lifewants[i] = new WantItem(provider);
-					lifewants[i].Unserialize(reader);
+					LifetimeWants[i] = new WantItem(Provider);
+					LifetimeWants[i].Unserialize(reader);
 				}
 
 				maxwants = reader.ReadUInt32();
@@ -215,38 +188,38 @@ namespace SimPe.Plugin
 			else
 			{
 				maxwants = 4;
-				lifewants = new WantItem[0];
+				LifetimeWants = new WantItem[0];
 			}
 
-			wants = new WantItem[reader.ReadUInt32()];
-			for (int i = 0; i < wants.Length; i++)
+			Wants = new WantItem[reader.ReadUInt32()];
+			for (int i = 0; i < Wants.Length; i++)
 			{
-				wants[i] = new WantItem(provider);
-				wants[i].Unserialize(reader);
+				Wants[i] = new WantItem(Provider);
+				Wants[i].Unserialize(reader);
 			}
 
-			if (version >= 0x05)
+			if (Version >= 0x05)
 				maxfears = reader.ReadUInt32();
 			else
 				maxfears = 3;
 
-			fears = new WantItem[reader.ReadUInt32()];
-			for (int i = 0; i < fears.Length; i++)
+			Fears = new WantItem[reader.ReadUInt32()];
+			for (int i = 0; i < Fears.Length; i++)
 			{
-				fears[i] = new WantItem(provider);
-				fears[i].Unserialize(reader);
+				Fears[i] = new WantItem(Provider);
+				Fears[i].Unserialize(reader);
 			}
 
-			if (version >= 0x05)
+			if (Version >= 0x05)
 				unknown5 = reader.ReadUInt32();
 			unknown1 = reader.ReadUInt32();
 			unknown2 = reader.ReadUInt32();
 
-			items = new WantItemContainer[reader.ReadUInt32()];
-			for (int i = 0; i < items.Length; i++)
+			History = new WantItemContainer[reader.ReadUInt32()];
+			for (int i = 0; i < History.Length; i++)
 			{
-				items[i] = new WantItemContainer(provider);
-				items[i].Unserialize(reader);
+				History[i] = new WantItemContainer(Provider);
+				History[i].Unserialize(reader);
 			}
 
 			overhead = reader.ReadBytes(
@@ -264,14 +237,14 @@ namespace SimPe.Plugin
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(version);
+			writer.Write(Version);
 
-			if (version >= 0x05)
+			if (Version >= 0x05)
 			{
-				writer.Write((uint)lifewants.Length);
-				for (int i = 0; i < lifewants.Length; i++)
+				writer.Write((uint)LifetimeWants.Length);
+				for (int i = 0; i < LifetimeWants.Length; i++)
 				{
-					lifewants[i].Serialize(writer);
+					LifetimeWants[i].Serialize(writer);
 				}
 
 				writer.Write(maxwants);
@@ -279,35 +252,35 @@ namespace SimPe.Plugin
 			else
 			{
 				maxwants = 4;
-				lifewants = new WantItem[0];
+				LifetimeWants = new WantItem[0];
 			}
 
-			writer.Write((uint)wants.Length);
-			for (int i = 0; i < wants.Length; i++)
+			writer.Write((uint)Wants.Length);
+			for (int i = 0; i < Wants.Length; i++)
 			{
-				wants[i].Serialize(writer);
+				Wants[i].Serialize(writer);
 			}
 
-			if (version >= 0x05)
+			if (Version >= 0x05)
 				writer.Write(maxfears);
 			else
 				maxfears = 3;
 
-			writer.Write((uint)fears.Length);
-			for (int i = 0; i < fears.Length; i++)
+			writer.Write((uint)Fears.Length);
+			for (int i = 0; i < Fears.Length; i++)
 			{
-				fears[i].Serialize(writer);
+				Fears[i].Serialize(writer);
 			}
 
-			if (version >= 0x05)
+			if (Version >= 0x05)
 				writer.Write(unknown5);
 			writer.Write(unknown1);
 			writer.Write(unknown2);
 
-			writer.Write((uint)items.Length);
-			for (int i = 0; i < items.Length; i++)
+			writer.Write((uint)History.Length);
+			for (int i = 0; i < History.Length; i++)
 			{
-				items[i].Serialize(writer);
+				History[i].Serialize(writer);
 			}
 
 			writer.Write(overhead);

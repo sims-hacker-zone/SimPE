@@ -28,13 +28,15 @@ namespace SimPe.Plugin.Collections
 	public class NgbhItems : System.IDisposable, System.Collections.IEnumerable
 	{
 		ArrayList list = new ArrayList();
-		NgbhSlotList parent;
 		Ngbh ngbh;
-		public NgbhSlotList Parent => parent;
+		public NgbhSlotList Parent
+		{
+			get;
+		}
 
 		internal NgbhItems(NgbhSlotList parent)
 		{
-			this.parent = parent;
+			this.Parent = parent;
 			if (parent != null)
 				ngbh = parent.Parent;
 			list = new ArrayList();
@@ -42,28 +44,28 @@ namespace SimPe.Plugin.Collections
 
 		public NgbhItem AddNew()
 		{
-			NgbhItem item = new NgbhItem(parent);
+			NgbhItem item = new NgbhItem(Parent);
 			Add(item);
 			return item;
 		}
 
 		public NgbhItem InsertNew(int index)
 		{
-			NgbhItem item = new NgbhItem(parent);
+			NgbhItem item = new NgbhItem(Parent);
 			Insert(index, item);
 			return item;
 		}
 
 		public NgbhItem AddNew(SimMemoryType type)
 		{
-			NgbhItem item = new NgbhItem(parent, type);
+			NgbhItem item = new NgbhItem(Parent, type);
 			Add(item);
 			return item;
 		}
 
 		public NgbhItem InsertNew(int index, SimMemoryType type)
 		{
-			NgbhItem item = new NgbhItem(parent, type);
+			NgbhItem item = new NgbhItem(Parent, type);
 			Insert(index, item);
 			return item;
 		}
@@ -158,7 +160,7 @@ namespace SimPe.Plugin.Collections
 
 		public NgbhItems Clone()
 		{
-			return Clone(this.parent);
+			return Clone(this.Parent);
 		}
 
 		public NgbhItems Clone(NgbhSlotList newparent)

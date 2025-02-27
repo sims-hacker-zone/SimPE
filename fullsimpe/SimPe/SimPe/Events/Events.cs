@@ -54,8 +54,6 @@ namespace SimPe.Events
 			IEnumerable,
 			SimPe.Interfaces.Plugin.IToolResult
 	{
-		LoadedPackage lp;
-		ResourceContainers list;
 
 		/// <summary>
 		/// Create a new Isntance
@@ -63,14 +61,17 @@ namespace SimPe.Events
 		/// <param name="lp"></param>
 		public ResourceEventArgs(LoadedPackage lp)
 		{
-			this.lp = lp;
-			list = new ResourceContainers();
+			this.LoadedPackage = lp;
+			Items = new ResourceContainers();
 		}
 
 		/// <summary>
 		/// Returns the stored List
 		/// </summary>
-		public ResourceContainers Items => list;
+		public ResourceContainers Items
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Integer Indexer
@@ -79,11 +80,11 @@ namespace SimPe.Events
 		{
 			get
 			{
-				return list[index];
+				return Items[index];
 			}
 			set
 			{
-				list[index] = value;
+				Items[index] = value;
 			}
 		}
 
@@ -94,23 +95,26 @@ namespace SimPe.Events
 		{
 			get
 			{
-				return list[index];
+				return Items[index];
 			}
 			set
 			{
-				list[index] = value;
+				Items[index] = value;
 			}
 		}
 
 		/// <summary>
 		/// Returns the loaded package
 		/// </summary>
-		public LoadedPackage LoadedPackage => lp;
+		public LoadedPackage LoadedPackage
+		{
+			get;
+		}
 
 		/// <summary>
 		/// true if the stored List is Empty
 		/// </summary>
-		public new bool Empty => list.Count == 0;
+		public new bool Empty => Items.Count == 0;
 
 		/// <summary>
 		/// true, if at least one of the stored <see cref="ResourceContainer"/> has a valid Resource
@@ -119,7 +123,7 @@ namespace SimPe.Events
 		{
 			get
 			{
-				foreach (ResourceContainer r in list)
+				foreach (ResourceContainer r in Items)
 					if (r.HasResource)
 						return true;
 				return false;
@@ -133,7 +137,7 @@ namespace SimPe.Events
 		{
 			get
 			{
-				foreach (ResourceContainer r in list)
+				foreach (ResourceContainer r in Items)
 					if (r.HasFileDescriptor)
 						return true;
 				return false;
@@ -147,7 +151,7 @@ namespace SimPe.Events
 		{
 			get
 			{
-				foreach (ResourceContainer r in list)
+				foreach (ResourceContainer r in Items)
 					if (r.HasPackage)
 						return true;
 				return false;
@@ -161,22 +165,22 @@ namespace SimPe.Events
 		{
 			get
 			{
-				if (this.lp == null)
+				if (this.LoadedPackage == null)
 					return false;
-				return lp.Loaded;
+				return LoadedPackage.Loaded;
 			}
 		}
 
 		/// <summary>
 		/// Number of stored Items
 		/// </summary>
-		public int Count => list.Count;
+		public int Count => Items.Count;
 
 		#region IEnumerable Member
 
 		public IEnumerator GetEnumerator()
 		{
-			return list.GetEnumerator();
+			return Items.GetEnumerator();
 		}
 
 		#endregion
@@ -187,7 +191,7 @@ namespace SimPe.Events
 		{
 			get
 			{
-				foreach (ResourceContainer c in list)
+				foreach (ResourceContainer c in Items)
 					if (c.ChangedPackage)
 						return true;
 				return false;
@@ -198,7 +202,7 @@ namespace SimPe.Events
 		{
 			get
 			{
-				foreach (ResourceContainer c in list)
+				foreach (ResourceContainer c in Items)
 					if (c.ChangedFile)
 						return true;
 				return false;
@@ -213,7 +217,7 @@ namespace SimPe.Events
 		{
 			SimPe.Collections.PackedFileDescriptors pfds =
 				new SimPe.Collections.PackedFileDescriptors();
-			foreach (SimPe.Events.ResourceContainer e in list)
+			foreach (SimPe.Events.ResourceContainer e in Items)
 			{
 				if (e.HasFileDescriptor)
 					pfds.Add(e.Resource.FileDescriptor);
@@ -233,45 +237,29 @@ namespace SimPe.Events
 			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item
 		)
 		{
-			this.item = item;
-			cpfd = false;
-			cpkg = false;
+			this.Resource = item;
+			ChangedFile = false;
+			ChangedPackage = false;
 		}
-
-		SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item;
 
 		/// <summary>
 		/// Returns the Resource
 		/// </summary>
-		public SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem Resource => item;
-
-		bool cpfd,
-			cpkg;
+		public SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem Resource
+		{
+			get; private set;
+		}
 
 		#region IToolResult Member
 
 		public bool ChangedPackage
 		{
-			get
-			{
-				return this.cpkg;
-			}
-			set
-			{
-				cpkg = value;
-			}
+			get; set;
 		}
 
 		public bool ChangedFile
 		{
-			get
-			{
-				return this.cpfd;
-			}
-			set
-			{
-				cpfd = value;
-			}
+			get; set;
 		}
 
 		public bool ChangedAny => (ChangedPackage || ChangedFile);
@@ -366,7 +354,7 @@ namespace SimPe.Events
 
 		public void Dispose()
 		{
-			this.item = null;
+			this.Resource = null;
 		}
 
 		#endregion
@@ -477,34 +465,18 @@ namespace SimPe.Events
 	{
 		public FileNameEventArg(string filename)
 		{
-			cancel = false;
-			this.filename = filename;
+			Cancel = false;
+			this.FileName = filename;
 		}
 
-		string filename;
 		public string FileName
 		{
-			get
-			{
-				return filename;
-			}
-			set
-			{
-				filename = value;
-			}
+			get; set;
 		}
 
-		bool cancel;
 		public bool Cancel
 		{
-			get
-			{
-				return cancel;
-			}
-			set
-			{
-				cancel = value;
-			}
+			get; set;
 		}
 	}
 

@@ -576,17 +576,9 @@ namespace SimPe.Packages
 		}*/
 		#endregion
 
-		object tag;
 		public object Tag
 		{
-			get
-			{
-				return tag;
-			}
-			set
-			{
-				tag = value;
-			}
+			get; set;
 		}
 
 		#region UserData Extensions
@@ -764,8 +756,6 @@ namespace SimPe.Packages
 				DescriptionChangedFkt();
 		}
 
-		PackedFileChanged changedUserData;
-
 		/// <summary>
 		/// Called whenever the content represented by this descripotr was changed
 		/// </summary>
@@ -775,14 +765,7 @@ namespace SimPe.Packages
 		/// </remarks>
 		internal PackedFileChanged PackageInternalUserDataChange
 		{
-			get
-			{
-				return changedUserData;
-			}
-			set
-			{
-				changedUserData = value;
-			}
+			get; set;
 		}
 
 		/// <summary>

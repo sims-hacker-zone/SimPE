@@ -29,43 +29,19 @@ namespace SimPe
 {
 	public class PackageArg : System.EventArgs
 	{
-		Interfaces.Files.IPackageFile package;
 		public Interfaces.Files.IPackageFile Package
 		{
-			get
-			{
-				return package;
-			}
-			set
-			{
-				package = value;
-			}
+			get; set;
 		}
 
-		Interfaces.Files.IPackedFileDescriptor pfd;
 		public Interfaces.Files.IPackedFileDescriptor FileDescriptor
 		{
-			get
-			{
-				return pfd;
-			}
-			set
-			{
-				pfd = value;
-			}
+			get; set;
 		}
 
-		Interfaces.Plugin.IToolResult res;
 		public Interfaces.Plugin.IToolResult Result
 		{
-			get
-			{
-				return res;
-			}
-			set
-			{
-				res = value;
-			}
+			get; set;
 		}
 	}
 
@@ -75,21 +51,9 @@ namespace SimPe
 		Interfaces.Files.IPackedFileDescriptor pfd;
 		Interfaces.Files.IPackageFile package;
 
-		/// <summary>
-		/// null or a Function to call when the Pacakge was changed by an Tool Plugin
-		/// </summary>
-		EventHandler chghandler;
-
 		EventHandler ChangeHandler
 		{
-			get
-			{
-				return chghandler;
-			}
-			set
-			{
-				chghandler = value;
-			}
+			get; set;
 		}
 
 		public ToolMenuItem(ITool tool, EventHandler chghnd)
@@ -102,7 +66,7 @@ namespace SimPe
 			this.Text = name;
 
 			Click += new EventHandler(ClickItem);
-			chghandler = chghnd;
+			ChangeHandler = chghnd;
 		}
 
 		private void ClickItem(object sender, System.EventArgs e)
@@ -122,8 +86,8 @@ namespace SimPe
 						p.Package = package;
 						p.FileDescriptor = pfd;
 						p.Result = tr;
-						if (chghandler != null)
-							chghandler(this, p);
+						if (ChangeHandler != null)
+							ChangeHandler(this, p);
 					}
 				}
 			}

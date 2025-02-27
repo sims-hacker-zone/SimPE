@@ -52,27 +52,6 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		private byte[] filename = new byte[0x40];
 		private byte[] filename2 = new byte[0];
-
-		/// <summary>
-		/// The Type of this File
-		/// </summary>
-		private short[] data = new short[0xdc];
-
-		uint guid,
-			proxyguid,
-			originalguid,
-			diagonalguid,
-			gridalignguid;
-
-		ObjRoomSort rsort = new ObjRoomSort(0);
-		ObjFunctionSort fsort = new ObjFunctionSort(0);
-		ObjBuildType btype = new ObjBuildType(0);
-		ObjCatalogueUse usort = new ObjCatalogueUse(0);
-		ComRoomSort csort = new ComRoomSort(0);
-		Epsreq1 epone = new Epsreq1(0);
-		Epsreq2 eptwo = new Epsreq2(0);
-
-		ObjdHealth ok;
 		static SimPe.PackedFiles.Wrapper.ObjdPropertyParser tpp;
 		#endregion
 
@@ -95,31 +74,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returs / Sets the stored Data
 		/// </summary>
-		public short[] Data
-		{
-			get
-			{
-				return data;
-			}
-			set
-			{
-				data = value;
-			}
-		}
+		public short[] Data { get; set; } = new short[0xdc];
 
 		/// <summary>
 		/// Returns the GUID of the Object
 		/// </summary>
 		public uint Guid
 		{
-			get
-			{
-				return guid;
-			}
-			set
-			{
-				guid = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -127,14 +89,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint ProxyGuid
 		{
-			get
-			{
-				return proxyguid;
-			}
-			set
-			{
-				proxyguid = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -142,14 +97,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint OriginalGuid
 		{
-			get
-			{
-				return originalguid;
-			}
-			set
-			{
-				originalguid = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -157,14 +105,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint DiagonalGuid
 		{
-			get
-			{
-				return diagonalguid;
-			}
-			set
-			{
-				diagonalguid = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -172,14 +113,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint GridAlignedGuid
 		{
-			get
-			{
-				return gridalignguid;
-			}
-			set
-			{
-				gridalignguid = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -189,9 +123,9 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				if (data.Length > 0x004F)
+				if (Data.Length > 0x004F)
 				{
-					short v = data[0x004F];
+					short v = Data[0x004F];
 					if (v != 0x64 && v != 0x96 && v != 0 && v != 1 && v != 2)
 						return ShelveDimension.Indetermined;
 					return (ShelveDimension)v;
@@ -200,8 +134,8 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 			set
 			{
-				if (data.Length > 0x004F)
-					data[0x004F] = (short)value;
+				if (Data.Length > 0x004F)
+					Data[0x004F] = (short)value;
 			}
 		}
 
@@ -212,14 +146,14 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				if (data.Length > 0x29)
-					return (ushort)data[0x29];
+				if (Data.Length > 0x29)
+					return (ushort)Data[0x29];
 				return 0;
 			}
 			set
 			{
-				if (data.Length > 0x29)
-					data[0x29] = (short)value;
+				if (Data.Length > 0x29)
+					Data[0x29] = (short)value;
 			}
 		}
 
@@ -230,133 +164,63 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				if (data.Length > 0x09)
-					return (SimPe.Data.ObjectTypes)data[0x09];
+				if (Data.Length > 0x09)
+					return (SimPe.Data.ObjectTypes)Data[0x09];
 				return SimPe.Data.ObjectTypes.Normal;
 			}
 			set
 			{
-				if (data.Length > 0x09)
-					data[0x09] = (short)value;
+				if (Data.Length > 0x09)
+					Data[0x09] = (short)value;
 			}
 		}
 
 		/// <summary>
 		/// Returns the Catalogue Use Flags
 		/// </summary>
-		public ObjCatalogueUse CatalogueUse
-		{
-			get
-			{
-				return usort;
-			}
-			set
-			{
-				usort = value;
-			}
-		}
+		public ObjCatalogueUse CatalogueUse { get; set; } = new ObjCatalogueUse(0);
 
 		/// <summary>
 		/// Returns the Room Sort Flags
 		/// </summary>
-		public ObjRoomSort RoomSort
-		{
-			get
-			{
-				return rsort;
-			}
-			set
-			{
-				rsort = value;
-			}
-		}
+		public ObjRoomSort RoomSort { get; set; } = new ObjRoomSort(0);
 
-		public ComRoomSort CommSort
-		{
-			get
-			{
-				return csort;
-			}
-			set
-			{
-				csort = value;
-			}
-		}
+		public ComRoomSort CommSort { get; set; } = new ComRoomSort(0);
 
 		/// <summary>
 		/// Returns the Function Sort Flags
 		/// </summary>
-		public ObjFunctionSort FunctionSort
-		{
-			get
-			{
-				return fsort;
-			}
-			set
-			{
-				fsort = value;
-			}
-		}
+		public ObjFunctionSort FunctionSort { get; set; } = new ObjFunctionSort(0);
 
 		/// <summary>
 		/// Returns the Function Sort Flags
 		/// </summary>
-		public ObjBuildType BuildType
-		{
-			get
-			{
-				return btype;
-			}
-			set
-			{
-				btype = value;
-			}
-		}
+		public ObjBuildType BuildType { get; set; } = new ObjBuildType(0);
 
 		/// <summary>
 		/// Returns the Ep Required Flags1
 		/// </summary>
-		public Epsreq1 EpRequired1
-		{
-			get
-			{
-				return epone;
-			}
-			set
-			{
-				epone = value;
-			}
-		}
+		public Epsreq1 EpRequired1 { get; set; } = new Epsreq1(0);
 
 		/// <summary>
 		/// Returns the Ep Required Flags2
 		/// </summary>
-		public Epsreq2 EpRequired2
-		{
-			get
-			{
-				return eptwo;
-			}
-			set
-			{
-				eptwo = value;
-			}
-		}
+		public Epsreq2 EpRequired2 { get; set; } = new Epsreq2(0);
 
 		public Data.BuildFunctionSubSort BuildSubSort
 		{
 			get
 			{
 				uint val = (uint)(
-					(data[0x4a] & 0xffff) | ((btype.Value & 0xfffff) << 16)
+					(Data[0x4a] & 0xffff) | ((BuildType.Value & 0xfffff) << 16)
 				);
 				return (Data.BuildFunctionSubSort)val;
 			}
 			set
 			{
 				uint val = (uint)value;
-				btype.Value = (ushort)((val >> 16) & 0xfffff);
-				data[0x4a] = (short)(val & 0xffff);
+				BuildType.Value = (ushort)((val >> 16) & 0xfffff);
+				Data[0x4a] = (short)(val & 0xffff);
 			}
 		}
 
@@ -364,52 +228,55 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				uint val = (uint)((data[0x5e] & 0xff) | ((fsort.Value & 0xfff) << 8));
+				uint val = (uint)((Data[0x5e] & 0xff) | ((FunctionSort.Value & 0xfff) << 8));
 				return (Data.ObjFunctionSubSort)val;
 			}
 			set
 			{
 				uint val = (uint)value;
-				fsort.Value = (ushort)((val >> 8) & 0xfff);
-				data[0x5e] = (short)(val & 0xff);
+				FunctionSort.Value = (ushort)((val >> 8) & 0xfff);
+				Data[0x5e] = (short)(val & 0xff);
 			}
 		}
 
 		public void UpdateFlags()
 		{
-			this.usort = new ObjCatalogueUse(data[0x11]);
-			if (data.Length > 0x45)
+			this.CatalogueUse = new ObjCatalogueUse(Data[0x11]);
+			if (Data.Length > 0x45)
 			{
-				this.rsort = new ObjRoomSort(data[0x27]);
-				this.fsort = new ObjFunctionSort(data[0x28]);
-				this.btype = new ObjBuildType(data[0x45]);
-				this.epone = new Epsreq1(data[0x40]);
-				this.eptwo = new Epsreq2(data[0x41]);
+				this.RoomSort = new ObjRoomSort(Data[0x27]);
+				this.FunctionSort = new ObjFunctionSort(Data[0x28]);
+				this.BuildType = new ObjBuildType(Data[0x45]);
+				this.EpRequired1 = new Epsreq1(Data[0x40]);
+				this.EpRequired2 = new Epsreq2(Data[0x41]);
 			}
-			if (data.Length > 0x64)
-				this.csort = new ComRoomSort(data[0x64]);
+			if (Data.Length > 0x64)
+				this.CommSort = new ComRoomSort(Data[0x64]);
 		}
 
 		public short Price
 		{
 			get
 			{
-				return data[0x12];
+				return Data[0x12];
 			}
 			set
 			{
-				data[0x12] = value;
+				Data[0x12] = value;
 			}
 		}
 
-		public short Version => data[0x00];
+		public short Version => Data[0x00];
 
 		/// <summary>
 		/// Returns the Length of the File
 		/// </summary>
-		protected int Length => (int)(data.Length * 2 + 0x40);
+		protected int Length => (int)(Data.Length * 2 + 0x40);
 
-		public ObjdHealth Ok => ok;
+		public ObjdHealth Ok
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Return a PropertyParser, that enumerates all known Properties as <see cref="Ambertation.PropertyDescription"/> Objects
@@ -498,23 +365,23 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			const int MAX_VALUES = 0x6c;
-			data[0x11] = (short)this.usort.Value;
-			if (data.Length > 0x27)
+			Data[0x11] = (short)this.CatalogueUse.Value;
+			if (Data.Length > 0x27)
 			{
-				data[0x27] = (short)this.rsort.Value;
-				data[0x28] = (short)this.fsort.Value;
+				Data[0x27] = (short)this.RoomSort.Value;
+				Data[0x28] = (short)this.FunctionSort.Value;
 			}
-			if (data.Length > 0x41)
+			if (Data.Length > 0x41)
 			{
-				data[0x40] = (short)this.epone.Value;
-				data[0x41] = (short)this.eptwo.Value;
+				Data[0x40] = (short)this.EpRequired1.Value;
+				Data[0x41] = (short)this.EpRequired2.Value;
 			}
-			if (data.Length > 0x64)
-				data[0x64] = (short)this.csort.Value;
+			if (Data.Length > 0x64)
+				Data[0x64] = (short)this.CommSort.Value;
 
 			writer.Write(filename);
 			int ct = 0;
-			foreach (short s in data)
+			foreach (short s in Data)
 			{
 				writer.Write(s);
 				ct++;
@@ -534,40 +401,40 @@ namespace SimPe.PackedFiles.Wrapper
 			if (Length > 0x5c + 4)
 			{
 				writer.BaseStream.Seek(0x5c, System.IO.SeekOrigin.Begin);
-				writer.Write(guid);
+				writer.Write(Guid);
 			}
 
 			if (Length > 0x6A + 8)
 			{
 				writer.BaseStream.Seek(0x6A, System.IO.SeekOrigin.Begin);
-				writer.Write(diagonalguid);
-				writer.Write(gridalignguid);
+				writer.Write(DiagonalGuid);
+				writer.Write(GridAlignedGuid);
 			}
 
 			if (Length > 0x7a + 4)
 			{
 				writer.BaseStream.Seek(0x7a, System.IO.SeekOrigin.Begin);
-				writer.Write(proxyguid);
+				writer.Write(ProxyGuid);
 			}
 
 			if (Length > 0xcc + 4)
 			{
 				writer.BaseStream.Seek(0xcc, System.IO.SeekOrigin.Begin);
-				writer.Write(originalguid);
+				writer.Write(OriginalGuid);
 			}
 			//if (free>0) writer.Write(new byte[free]);
 		}
 
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-			ok = ObjdHealth.Ok;
+			Ok = ObjdHealth.Ok;
 			try
 			{
 				UnserializeNew(reader);
 			}
 			catch
 			{
-				ok = ObjdHealth.Unreadable;
+				Ok = ObjdHealth.Unreadable;
 				reader.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
 				UnserializeOld(reader);
 			}
@@ -576,26 +443,26 @@ namespace SimPe.PackedFiles.Wrapper
 			if (Length > 0x5c + 4)
 			{
 				reader.BaseStream.Seek(0x5c, System.IO.SeekOrigin.Begin);
-				guid = reader.ReadUInt32();
+				Guid = reader.ReadUInt32();
 			}
 
 			if (Length > 0x6A + 8)
 			{
 				reader.BaseStream.Seek(0x6A, System.IO.SeekOrigin.Begin);
-				diagonalguid = reader.ReadUInt32();
-				gridalignguid = reader.ReadUInt32();
+				DiagonalGuid = reader.ReadUInt32();
+				GridAlignedGuid = reader.ReadUInt32();
 			}
 
 			if (Length > 0x7a + 4)
 			{
 				reader.BaseStream.Seek(0x7a, System.IO.SeekOrigin.Begin);
-				proxyguid = reader.ReadUInt32();
+				ProxyGuid = reader.ReadUInt32();
 			}
 
 			if (Length > 0xcc + 4)
 			{
 				reader.BaseStream.Seek(0xcc, System.IO.SeekOrigin.Begin);
-				originalguid = reader.ReadUInt32();
+				OriginalGuid = reader.ReadUInt32();
 			}
 
 			UpdateFlags();
@@ -606,30 +473,30 @@ namespace SimPe.PackedFiles.Wrapper
 			filename = reader.ReadBytes(0x40);
 			int count = (int)((reader.BaseStream.Length - 0x40) / 2);
 			count = 0x6c;
-			data = new short[count];
+			Data = new short[count];
 			for (int i = 0; i < count; i++)
-				data[i] = reader.ReadInt16();
+				Data[i] = reader.ReadInt16();
 
 			int sz = reader.ReadInt32();
 			filename2 = reader.ReadBytes(sz);
 
 			if (Helper.ToString(filename2) != this.FileName)
-				ok = ObjdHealth.FilenameMismatch;
+				Ok = ObjdHealth.FilenameMismatch;
 
 			if (reader.BaseStream.Position != reader.BaseStream.Length)
-				ok = ObjdHealth.OverLength;
+				Ok = ObjdHealth.OverLength;
 		}
 
 		protected void UnserializeOld(System.IO.BinaryReader reader)
 		{
 			filename = reader.ReadBytes(0x40);
 			int count = (int)((reader.BaseStream.Length - 0x40) / 2);
-			data = new short[count];
+			Data = new short[count];
 			for (int i = 0; i < count; i++)
 			{
 				try
 				{
-					data[i] = reader.ReadInt16();
+					Data[i] = reader.ReadInt16();
 				}
 				catch (System.IO.EndOfStreamException ex)
 				{

@@ -50,21 +50,13 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		uint unknown1;
-		uint localgroup;
 
 		/// <summary>
 		/// Returns the Group that was assigned by the Game
 		/// </summary>
 		public uint LocalGroup
 		{
-			get
-			{
-				return localgroup;
-			}
-			set
-			{
-				localgroup = value;
-			}
+			get; set;
 		}
 		uint[] unknown2;
 		#endregion
@@ -93,7 +85,7 @@ namespace SimPe.PackedFiles.Wrapper
 			byte[] bs = reader.ReadBytes(ct);
 			flname = Helper.ToString(bs);
 			unknown1 = reader.ReadUInt32();
-			localgroup = reader.ReadUInt32();
+			LocalGroup = reader.ReadUInt32();
 			unknown2 = new uint[reader.ReadUInt32()];
 			for (int i = 0; i < unknown2.Length; i++)
 				unknown2[i] = reader.ReadUInt32();
@@ -114,7 +106,7 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write((int)bs.Length);
 			writer.Write(bs);
 			writer.Write(unknown1);
-			writer.Write(localgroup);
+			writer.Write(LocalGroup);
 			for (int i = 0; i < unknown2.Length; i++)
 				writer.Write(unknown2[i]);
 		}

@@ -9,75 +9,40 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class NhtrRoadItem : NhtrBaseItem
 	{
-		NhtrLocation topleft,
-			topright,
-			botright,
-			botleft;
-		uint texture;
-		byte[] data;
-
 		internal NhtrRoadItem(NhtrList parent)
 			: base(parent, 3)
 		{
-			topleft = new NhtrLocation();
-			topright = new NhtrLocation();
-			botleft = new NhtrLocation();
-			botright = new NhtrLocation();
-			texture = 0x00000300;
+			TopLeft = new NhtrLocation();
+			TopRight = new NhtrLocation();
+			BottomLeft = new NhtrLocation();
+			BottomRight = new NhtrLocation();
+			Texture = 0x00000300;
 
-			data = new byte[10];
+			Data = new byte[10];
 		}
 
 		[System.ComponentModel.Category("Placement")]
 		public NhtrLocation TopLeft
 		{
-			get
-			{
-				return topleft;
-			}
-			set
-			{
-				topleft = value;
-			}
+			get; set;
 		}
 
 		[System.ComponentModel.Category("Placement")]
 		public NhtrLocation TopRight
 		{
-			get
-			{
-				return topright;
-			}
-			set
-			{
-				topright = value;
-			}
+			get; set;
 		}
 
 		[System.ComponentModel.Category("Placement")]
 		public NhtrLocation BottomLeft
 		{
-			get
-			{
-				return botleft;
-			}
-			set
-			{
-				botleft = value;
-			}
+			get; set;
 		}
 
 		[System.ComponentModel.Category("Placement")]
 		public NhtrLocation BottomRight
 		{
-			get
-			{
-				return botright;
-			}
-			set
-			{
-				botright = value;
-			}
+			get; set;
 		}
 
 		[System.ComponentModel.TypeConverter(
@@ -85,39 +50,35 @@ namespace SimPe.Plugin
 		)]
 		public uint Texture
 		{
-			get
-			{
-				return texture;
-			}
-			set
-			{
-				texture = value;
-			}
+			get; set;
 		}
 
-		public byte[] Data => data;
+		public byte[] Data
+		{
+			get; private set;
+		}
 
 		protected override void DoUnserialize(System.IO.BinaryReader reader)
 		{
-			topleft.Unserialize(reader);
-			topright.Unserialize(reader);
-			botleft.Unserialize(reader);
-			botright.Unserialize(reader);
+			TopLeft.Unserialize(reader);
+			TopRight.Unserialize(reader);
+			BottomLeft.Unserialize(reader);
+			BottomRight.Unserialize(reader);
 
-			texture = reader.ReadUInt32();
-			data = reader.ReadBytes(data.Length);
+			Texture = reader.ReadUInt32();
+			Data = reader.ReadBytes(Data.Length);
 			//reader.ReadByte();
 		}
 
 		protected override void DoSerialize(System.IO.BinaryWriter writer)
 		{
-			topleft.Serialize(writer);
-			topright.Serialize(writer);
-			botleft.Serialize(writer);
-			botright.Serialize(writer);
+			TopLeft.Serialize(writer);
+			TopRight.Serialize(writer);
+			BottomLeft.Serialize(writer);
+			BottomRight.Serialize(writer);
 
-			writer.Write(texture);
-			writer.Write(data);
+			writer.Write(Texture);
+			writer.Write(Data);
 		}
 
 		public override string ToLongString()
@@ -127,12 +88,12 @@ namespace SimPe.Plugin
 			s += "Marker 2: " + Helper.HexString(marker2) + Helper.lbr;
 			s += "Position: " + pos.ToString() + Helper.lbr;
 			s += "BoundingBox: " + min.ToString() + " / " + max.ToString() + Helper.lbr;
-			s += "Top-Left: " + topleft.ToString() + Helper.lbr;
-			s += "Top-Right: " + topright.ToString() + Helper.lbr;
-			s += "Bottom-Left: " + botleft.ToString() + Helper.lbr;
-			s += "Bottom-Right: " + botright.ToString() + Helper.lbr;
-			s += "Texture: " + Helper.HexString(texture) + Helper.lbr;
-			s += Helper.BytesToHexList(data, 4);
+			s += "Top-Left: " + TopLeft.ToString() + Helper.lbr;
+			s += "Top-Right: " + TopRight.ToString() + Helper.lbr;
+			s += "Bottom-Left: " + BottomLeft.ToString() + Helper.lbr;
+			s += "Bottom-Right: " + BottomRight.ToString() + Helper.lbr;
+			s += "Texture: " + Helper.HexString(Texture) + Helper.lbr;
+			s += Helper.BytesToHexList(Data, 4);
 			return s;
 		}
 
@@ -140,15 +101,15 @@ namespace SimPe.Plugin
 		{
 			string s = Helper.HexString(marker) + "   ";
 			s += Helper.HexString(marker2) + "   ";
-			s += Helper.HexString(texture) + "   ";
-			s += Helper.BytesToHexList(data);
+			s += Helper.HexString(Texture) + "   ";
+			s += Helper.BytesToHexList(Data);
 			s += pos.ToString() + "   ";
 			s += min.ToString() + "   ";
 			s += max.ToString() + "   ";
-			s += topleft.ToString() + "   ";
-			s += topright.ToString() + "   ";
-			s += botleft.ToString() + "   ";
-			s += botright.ToString() + "   ";
+			s += TopLeft.ToString() + "   ";
+			s += TopRight.ToString() + "   ";
+			s += BottomLeft.ToString() + "   ";
+			s += BottomRight.ToString() + "   ";
 
 			if (s.Length > 0xff)
 				s = s.Substring(0, 0xff) + "...";

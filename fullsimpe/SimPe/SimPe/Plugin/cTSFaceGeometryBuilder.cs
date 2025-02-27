@@ -31,61 +31,31 @@ namespace SimPe.Plugin
 	public class TSFaceGeometryBuilderItem
 	{
 		#region Attributes
-		Vectors3f v1;
 		public Vectors3f Vectors1
 		{
-			get
-			{
-				return v1;
-			}
-			set
-			{
-				v1 = value;
-			}
-		}
-		Vectors3f v2;
-		public Vectors3f Vectors2
-		{
-			get
-			{
-				return v2;
-			}
-			set
-			{
-				v2 = value;
-			}
-		}
-		short u1;
-		public short Unknown1
-		{
-			get
-			{
-				return u1;
-			}
-			set
-			{
-				u1 = value;
-			}
+			get; set;
 		}
 
-		int u2;
+		public Vectors3f Vectors2
+		{
+			get; set;
+		}
+
+		public short Unknown1
+		{
+			get; set;
+		}
+
 		public int Unknown2
 		{
-			get
-			{
-				return u2;
-			}
-			set
-			{
-				u2 = value;
-			}
+			get; set;
 		}
 		#endregion
 
 		public TSFaceGeometryBuilderItem()
 		{
-			v1 = new Vectors3f();
-			v2 = new Vectors3f();
+			Vectors1 = new Vectors3f();
+			Vectors2 = new Vectors3f();
 		}
 
 		/// <summary>
@@ -94,24 +64,24 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal virtual void Unserialize(System.IO.BinaryReader reader)
 		{
-			u1 = reader.ReadInt16();
-			u2 = reader.ReadInt32();
+			Unknown1 = reader.ReadInt16();
+			Unknown2 = reader.ReadInt32();
 			int count = reader.ReadInt32();
-			v1.Clear();
+			Vectors1.Clear();
 			for (int i = 0; i < count; i++)
 			{
 				Vector3f o = new Vector3f();
 				o.Unserialize(reader);
-				v1.Add(o);
+				Vectors1.Add(o);
 			}
 
 			count = reader.ReadInt32();
-			v2.Clear();
+			Vectors2.Clear();
 			for (int i = 0; i < count; i++)
 			{
 				Vector3f o = new Vector3f();
 				o.Unserialize(reader);
-				v2.Add(o);
+				Vectors2.Add(o);
 			}
 		}
 
@@ -125,16 +95,16 @@ namespace SimPe.Plugin
 		/// </remarks>
 		internal virtual void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(u1);
-			writer.Write(u2);
+			writer.Write(Unknown1);
+			writer.Write(Unknown2);
 
-			writer.Write((int)v1.Count);
-			for (int i = 0; i < v1.Count; i++)
-				v1[i].Serialize(writer);
+			writer.Write((int)Vectors1.Count);
+			for (int i = 0; i < Vectors1.Count; i++)
+				Vectors1[i].Serialize(writer);
 
-			writer.Write((int)v2.Count);
-			for (int i = 0; i < v2.Count; i++)
-				v2[i].Serialize(writer);
+			writer.Write((int)Vectors2.Count);
+			for (int i = 0; i < Vectors2.Count; i++)
+				Vectors2[i].Serialize(writer);
 		}
 	}
 
@@ -146,45 +116,25 @@ namespace SimPe.Plugin
 		#region Attributes
 		GeometryBuilder gb;
 
-		int u1;
 		public int Unknown1
 		{
-			get
-			{
-				return u1;
-			}
-			set
-			{
-				u1 = value;
-			}
-		}
-		byte u2;
-		public byte Unknown2
-		{
-			get
-			{
-				return u2;
-			}
-			set
-			{
-				u2 = value;
-			}
-		}
-		int u3;
-		public int Unknown3
-		{
-			get
-			{
-				return u3;
-			}
-			set
-			{
-				u3 = value;
-			}
+			get; set;
 		}
 
-		TSFaceGeometryBuilderItems items;
-		public TSFaceGeometryBuilderItems Items => items;
+		public byte Unknown2
+		{
+			get; set;
+		}
+
+		public int Unknown3
+		{
+			get; set;
+		}
+
+		public TSFaceGeometryBuilderItems Items
+		{
+			get;
+		}
 		#endregion
 
 
@@ -197,7 +147,7 @@ namespace SimPe.Plugin
 			gb = new GeometryBuilder(null);
 			BlockID = 0x2b70b86e;
 
-			items = new TSFaceGeometryBuilderItems();
+			Items = new TSFaceGeometryBuilderItems();
 		}
 
 		#region IRcolBlock Member
@@ -215,18 +165,18 @@ namespace SimPe.Plugin
 			gb.Unserialize(reader);
 			gb.BlockID = myid;
 
-			u1 = reader.ReadInt32();
-			u2 = reader.ReadByte();
-			u3 = reader.ReadInt32();
+			Unknown1 = reader.ReadInt32();
+			Unknown2 = reader.ReadByte();
+			Unknown3 = reader.ReadInt32();
 
 			for (int i = 0; i < 10; i++)
 			{
 				TSFaceGeometryBuilderItem o = new TSFaceGeometryBuilderItem();
 				o.Unserialize(reader);
-				if (items.Count <= i)
-					items.IntAdd(o);
+				if (Items.Count <= i)
+					Items.IntAdd(o);
 				else
-					items[i] = o;
+					Items[i] = o;
 			}
 		}
 
@@ -246,14 +196,14 @@ namespace SimPe.Plugin
 			writer.Write(gb.BlockID);
 			gb.Serialize(writer);
 
-			writer.Write(u1);
-			writer.Write(u2);
-			writer.Write(u3);
+			writer.Write(Unknown1);
+			writer.Write(Unknown2);
+			writer.Write(Unknown3);
 
 			for (int i = 0; i < 10; i++)
 			{
-				if (i < items.Count)
-					items[i].Serialize(writer);
+				if (i < Items.Count)
+					Items[i].Serialize(writer);
 				else
 				{
 					TSFaceGeometryBuilderItem o = new TSFaceGeometryBuilderItem();

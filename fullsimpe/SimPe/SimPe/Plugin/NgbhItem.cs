@@ -75,14 +75,13 @@ namespace SimPe.Plugin
 	{
 		internal const int ICON_SIZE = 24; // was 24
 		Ngbh parent;
-		NgbhSlotList parentslot;
 
 		internal NgbhItem(NgbhSlotList parentslot)
 			: this(parentslot, SimMemoryType.Memory) { }
 
 		internal NgbhItem(NgbhSlotList parentslot, SimMemoryType type)
 		{
-			this.parentslot = parentslot;
+			this.ParentSlot = parentslot;
 			this.parent = parentslot.Parent;
 			data = new ushort[0];
 			flags = new NgbhItemFlags();
@@ -230,7 +229,10 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the Slot that owns this Item
 		/// </summary>
-		public NgbhSlotList ParentSlot => parentslot;
+		public NgbhSlotList ParentSlot
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Return the Guid for this Item
@@ -714,7 +716,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public void RemoveFromParentB()
 		{
-			parentslot.ItemsB.Remove(this); // = NgbhSlot.Remove(parentslot.ItemsB, this);
+			ParentSlot.ItemsB.Remove(this); // = NgbhSlot.Remove(parentslot.ItemsB, this);
 		}
 
 		/// <summary>
@@ -722,7 +724,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public void AddToParentB()
 		{
-			parentslot.ItemsB.Add(this); // = NgbhSlot.Add(parentslot.ItemsB, this);
+			ParentSlot.ItemsB.Add(this); // = NgbhSlot.Add(parentslot.ItemsB, this);
 		}
 
 		/// <summary>
@@ -730,7 +732,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public void RemoveFromParentA()
 		{
-			parentslot.ItemsA.Remove(this); // = NgbhSlot.Remove(parentslot.ItemsA, this);
+			ParentSlot.ItemsA.Remove(this); // = NgbhSlot.Remove(parentslot.ItemsA, this);
 		}
 
 		/// <summary>
@@ -738,12 +740,12 @@ namespace SimPe.Plugin
 		/// </summary>
 		public void AddToParentA()
 		{
-			parentslot.ItemsA.Add(this); // = NgbhSlot.Add(parentslot.ItemsA, this);
+			ParentSlot.ItemsA.Add(this); // = NgbhSlot.Add(parentslot.ItemsA, this);
 		}
 
 		public NgbhItem Clone()
 		{
-			return Clone(this.parent, this.parentslot);
+			return Clone(this.parent, this.ParentSlot);
 		}
 
 		public NgbhItem Clone(NgbhSlotList parentslot)

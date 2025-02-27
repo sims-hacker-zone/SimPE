@@ -535,14 +535,20 @@ namespace SimPe
 		string bp;
 		public string FileName => flname.Replace(infocheck.ReleaseDir.Trim() + @"\", "");
 
-		System.Diagnostics.FileVersionInfo ver;
-		public System.Diagnostics.FileVersionInfo Version => ver;
+		public System.Diagnostics.FileVersionInfo Version
+		{
+			get; private set;
+		}
 
-		long size;
-		public long Size => size;
+		public long Size
+		{
+			get; private set;
+		}
 
-		bool exists;
-		public bool Exists => exists;
+		public bool Exists
+		{
+			get; private set;
+		}
 
 		public FileDescriptor(string basepath, string filename)
 		{
@@ -550,7 +556,7 @@ namespace SimPe
 			this.bp = basepath.Trim();
 			if (!bp.EndsWith(@"\"))
 				bp += @"\";
-			exists = false;
+			Exists = false;
 			LoadInfo();
 		}
 
@@ -558,13 +564,13 @@ namespace SimPe
 		{
 			if (!System.IO.File.Exists(flname))
 				return;
-			exists = true;
+			Exists = true;
 
 			System.IO.Stream s = System.IO.File.OpenRead(flname);
-			size = s.Length;
+			Size = s.Length;
 			s.Close();
 
-			ver = System.Diagnostics.FileVersionInfo.GetVersionInfo(flname);
+			Version = System.Diagnostics.FileVersionInfo.GetVersionInfo(flname);
 		}
 
 		public override string ToString()

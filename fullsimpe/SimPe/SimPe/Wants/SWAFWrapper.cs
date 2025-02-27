@@ -500,7 +500,6 @@ namespace SimPe.Wants
 		}
 
 		#region Attributes
-		private SWAFItemType type;
 
 		private uint version = 0x07;
 		private ushort simId = 0x0000;
@@ -515,7 +514,10 @@ namespace SimPe.Wants
 		#endregion
 
 		#region Accessor Methods
-		public SWAFItemType ItemType => type;
+		public SWAFItemType ItemType
+		{
+			get;
+		}
 
 		public uint Version
 		{
@@ -848,7 +850,7 @@ namespace SimPe.Wants
 			this.parent = parent;
 			if (!Enum.IsDefined(type.GetType(), type))
 				throw new ArgumentOutOfRangeException("type");
-			this.type = type;
+			this.ItemType = type;
 		}
 
 		internal SWAFItem(
@@ -860,7 +862,7 @@ namespace SimPe.Wants
 			this.parent = parent;
 			if (!Enum.IsDefined(type.GetType(), type))
 				throw new ArgumentOutOfRangeException("type");
-			this.type = type;
+			this.ItemType = type;
 			Unserialize(reader);
 		}
 

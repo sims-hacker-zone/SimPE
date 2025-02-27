@@ -35,89 +35,44 @@ namespace SimPe.Plugin
 	{
 		#region Attributes
 
-		GmdcElements elements;
-
 		/// <summary>
 		/// Returns a List of stored Elements
 		/// </summary>
 		public GmdcElements Elements
 		{
-			get
-			{
-				return elements;
-			}
-			set
-			{
-				elements = value;
-			}
+			get; set;
 		}
-
-		GmdcLinks links;
 
 		/// <summary>
 		/// Returns a List of stored Links
 		/// </summary>
 		public GmdcLinks Links
 		{
-			get
-			{
-				return links;
-			}
-			set
-			{
-				links = value;
-			}
+			get; set;
 		}
-
-		GmdcGroups groups;
 
 		/// <summary>
 		/// Returns a List of stored Groups
 		/// </summary>
 		public GmdcGroups Groups
 		{
-			get
-			{
-				return groups;
-			}
-			set
-			{
-				groups = value;
-			}
+			get; set;
 		}
-
-		GmdcModel model;
 
 		/// <summary>
 		/// Returns the stored Model
 		/// </summary>
 		public GmdcModel Model
 		{
-			get
-			{
-				return model;
-			}
-			set
-			{
-				model = value;
-			}
+			get; set;
 		}
-
-		GmdcJoints joints;
 
 		/// <summary>
 		/// Returns a List of stored Joints
 		/// </summary>
 		public GmdcJoints Joints
 		{
-			get
-			{
-				return joints;
-			}
-			set
-			{
-				joints = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -132,14 +87,14 @@ namespace SimPe.Plugin
 			version = 0x04;
 			BlockID = 0xAC4F8687;
 
-			elements = new GmdcElements();
-			links = new GmdcLinks();
-			groups = new GmdcGroups();
+			Elements = new GmdcElements();
+			Links = new GmdcLinks();
+			Groups = new GmdcGroups();
 
-			model = new GmdcModel(this);
+			Model = new GmdcModel(this);
 
-			joints = new GmdcJoints();
-			tried = false;
+			Joints = new GmdcJoints();
+			TriedToLoadParentResourceNode = false;
 		}
 
 		#region IRcolBlock Member
@@ -150,7 +105,7 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		public override void Unserialize(System.IO.BinaryReader reader)
 		{
-			tried = false;
+			TriedToLoadParentResourceNode = false;
 			version = reader.ReadUInt32();
 
 			string name = reader.ReadString();
@@ -160,49 +115,49 @@ namespace SimPe.Plugin
 
 			if (Parent.Fast)
 			{
-				elements.Clear();
-				links.Clear();
-				groups.Clear();
-				joints.Clear();
+				Elements.Clear();
+				Links.Clear();
+				Groups.Clear();
+				Joints.Clear();
 				return;
 			}
 
 			int count = reader.ReadInt32();
-			elements.Clear();
+			Elements.Clear();
 			for (int i = 0; i < count; i++)
 			{
 				GmdcElement e = new GmdcElement(this);
 				e.Unserialize(reader);
-				elements.Add(e);
+				Elements.Add(e);
 			}
 
 			count = reader.ReadInt32();
-			links.Clear();
+			Links.Clear();
 			for (int i = 0; i < count; i++)
 			{
 				GmdcLink l = new GmdcLink(this);
 				l.Unserialize(reader);
-				links.Add(l);
+				Links.Add(l);
 			}
 
 			count = reader.ReadInt32();
-			groups.Clear();
+			Groups.Clear();
 			for (int i = 0; i < count; i++)
 			{
 				GmdcGroup g = new GmdcGroup(this);
 				g.Unserialize(reader);
-				groups.Add(g);
+				Groups.Add(g);
 			}
 
-			model.Unserialize(reader);
+			Model.Unserialize(reader);
 
 			count = reader.ReadInt32();
-			joints.Clear();
+			Joints.Clear();
 			for (int i = 0; i < count; i++)
 			{
 				GmdcJoint s = new GmdcJoint(this);
 				s.Unserialize(reader);
-				joints.Add(s);
+				Joints.Add(s);
 			}
 		}
 
@@ -222,35 +177,35 @@ namespace SimPe.Plugin
 			writer.Write(sgres.BlockID);
 			sgres.Serialize(writer);
 
-			writer.Write((int)elements.Length);
-			for (int i = 0; i < elements.Length; i++)
+			writer.Write((int)Elements.Length);
+			for (int i = 0; i < Elements.Length; i++)
 			{
-				elements[i].Parent = this;
-				elements[i].Serialize(writer);
+				Elements[i].Parent = this;
+				Elements[i].Serialize(writer);
 			}
 
-			writer.Write((int)links.Length);
-			for (int i = 0; i < links.Length; i++)
+			writer.Write((int)Links.Length);
+			for (int i = 0; i < Links.Length; i++)
 			{
-				links[i].Parent = this;
-				links[i].Serialize(writer);
+				Links[i].Parent = this;
+				Links[i].Serialize(writer);
 			}
 
-			writer.Write((int)groups.Length);
-			for (int i = 0; i < groups.Length; i++)
+			writer.Write((int)Groups.Length);
+			for (int i = 0; i < Groups.Length; i++)
 			{
-				groups[i].Parent = this;
-				groups[i].Serialize(writer);
+				Groups[i].Parent = this;
+				Groups[i].Serialize(writer);
 			}
 
-			model.Parent = this;
-			model.Serialize(writer);
+			Model.Parent = this;
+			Model.Serialize(writer);
 
-			writer.Write((int)joints.Length);
-			for (int i = 0; i < joints.Length; i++)
+			writer.Write((int)Joints.Length);
+			for (int i = 0; i < Joints.Length; i++)
 			{
-				joints[i].Parent = this;
-				joints[i].Serialize(writer);
+				Joints[i].Parent = this;
+				Joints[i].Serialize(writer);
 			}
 		}
 
@@ -283,24 +238,24 @@ namespace SimPe.Plugin
 
 			if (UserVerification.HaveUserId)
 			{
-				form.label_elements.Text = "Elements: " + elements.Length.ToString();
+				form.label_elements.Text = "Elements: " + Elements.Length.ToString();
 				form.list_elements.Items.Clear();
-				foreach (GmdcElement e in elements)
+				foreach (GmdcElement e in Elements)
 					SimPe.CountedListItem.Add(form.list_elements, e);
 
-				form.label_links.Text = "Links: " + links.Length.ToString();
+				form.label_links.Text = "Links: " + Links.Length.ToString();
 				form.list_links.Items.Clear();
-				foreach (GmdcLink l in links)
+				foreach (GmdcLink l in Links)
 					SimPe.CountedListItem.Add(form.list_links, l);
 
-				form.label_groups.Text = "Groups: " + groups.Length.ToString();
+				form.label_groups.Text = "Groups: " + Groups.Length.ToString();
 				form.list_groups.Items.Clear();
-				foreach (GmdcGroup g in groups)
+				foreach (GmdcGroup g in Groups)
 					SimPe.CountedListItem.Add(form.list_groups, g);
 
-				form.label_subsets.Text = "Joints: " + joints.Length.ToString();
+				form.label_subsets.Text = "Joints: " + Joints.Length.ToString();
 				form.list_subsets.Items.Clear();
-				foreach (GmdcJoint s in joints)
+				foreach (GmdcJoint s in Joints)
 					SimPe.CountedListItem.Add(form.list_subsets, s);
 			}
 
@@ -316,7 +271,7 @@ namespace SimPe.Plugin
 				form.lb_itemsc3.Items.Clear();
 				form.lb_itemsc.Items.Clear();
 				form.lbmodel.Items.Clear();
-				foreach (GmdcGroup g in groups)
+				foreach (GmdcGroup g in Groups)
 				{
 					form.lbmodel.Items.Add(g, g.Opacity >= 0x10);
 					form.lb_itemsc.Items.Add(g);
@@ -324,7 +279,7 @@ namespace SimPe.Plugin
 
 				form.lb_itemsa2.Items.Clear();
 				form.lb_itemsa.Items.Clear();
-				foreach (GmdcElement i in this.elements)
+				foreach (GmdcElement i in this.Elements)
 					SimPe.CountedListItem.Add(form.lb_itemsa, i);
 
 				form.lb_itemsb2.Items.Clear();
@@ -332,30 +287,30 @@ namespace SimPe.Plugin
 				form.lb_itemsb4.Items.Clear();
 				form.lb_itemsb5.Items.Clear();
 				form.lb_itemsb.Items.Clear();
-				foreach (GmdcLink i in this.links)
+				foreach (GmdcLink i in this.Links)
 					SimPe.CountedListItem.Add(form.lb_itemsb, i);
 
 				form.lb_subsets.Items.Clear();
 				form.lb_sub_faces.Items.Clear();
 				form.lb_sub_items.Items.Clear();
 				form.cbGroupJoint.Items.Clear();
-				foreach (GmdcJoint i in this.joints)
+				foreach (GmdcJoint i in this.Joints)
 				{
 					SimPe.CountedListItem.Add(form.lb_subsets, i);
 					SimPe.CountedListItem.Add(form.cbGroupJoint, i);
 				}
 
 				form.lb_model_faces.Items.Clear();
-				foreach (Vector3f i in this.model.BoundingMesh.Vertices)
+				foreach (Vector3f i in this.Model.BoundingMesh.Vertices)
 					SimPe.CountedListItem.Add(form.lb_model_faces, i);
 				form.lb_model_items.Items.Clear();
-				foreach (int i in this.model.BoundingMesh.Items)
+				foreach (int i in this.Model.BoundingMesh.Items)
 					SimPe.CountedListItem.Add(form.lb_model_items, i);
 				form.lb_model_names.Items.Clear();
-				foreach (GmdcNamePair i in this.model.BlendGroupDefinition)
+				foreach (GmdcNamePair i in this.Model.BlendGroupDefinition)
 					SimPe.CountedListItem.Add(form.lb_model_names, i);
 				form.lb_model_trans.Items.Clear();
-				foreach (VectorTransformation i in this.model.Transformations)
+				foreach (VectorTransformation i in this.Model.Transformations)
 					SimPe.CountedListItem.Add(form.lb_model_trans, i);
 			}
 			catch (Exception ex)
@@ -417,14 +372,14 @@ namespace SimPe.Plugin
 		/// <param name="index">The index of the Element</param>
 		public void RemoveGroup(int index)
 		{
-			if (index < groups.Count)
+			if (index < Groups.Count)
 			{
-				GmdcGroup g = groups[index];
+				GmdcGroup g = Groups[index];
 				int n = g.LinkIndex;
 				g.LinkIndex = -1;
 				RemoveLink(n);
 
-				groups.RemoveAt(index);
+				Groups.RemoveAt(index);
 			}
 		}
 
@@ -439,12 +394,12 @@ namespace SimPe.Plugin
 		/// </remarks>
 		public bool RemoveLink(int index)
 		{
-			foreach (GmdcGroup g in groups)
+			foreach (GmdcGroup g in Groups)
 				if (g.LinkIndex == index)
 					return false;
 
-			GmdcLink l = links[index];
-			foreach (GmdcGroup g in groups)
+			GmdcLink l = Links[index];
+			foreach (GmdcGroup g in Groups)
 				if (g.LinkIndex > index)
 					g.LinkIndex--;
 
@@ -454,7 +409,7 @@ namespace SimPe.Plugin
 				l.ReferencedElement[i] = -1; //make sure the reference is removed first
 				RemoveElement(n);
 			}
-			links.RemoveAt(index);
+			Links.RemoveAt(index);
 			return true;
 		}
 
@@ -470,7 +425,7 @@ namespace SimPe.Plugin
 		public bool RemoveElement(int index)
 		{
 			//Can we remove this Element?
-			foreach (GmdcLink l in links)
+			foreach (GmdcLink l in Links)
 			{
 				foreach (int i in l.ReferencedElement)
 					if (i == index)
@@ -478,14 +433,14 @@ namespace SimPe.Plugin
 			}
 
 			//Adjust the References
-			foreach (GmdcLink l in links)
+			foreach (GmdcLink l in Links)
 			{
 				for (int i = 0; i < l.ReferencedElement.Count; i++)
 					if (l.ReferencedElement[i] > index)
 						l.ReferencedElement[i]--;
 			}
 
-			elements.RemoveAt(index);
+			Elements.RemoveAt(index);
 			return true;
 		}
 
@@ -497,7 +452,7 @@ namespace SimPe.Plugin
 			get
 			{
 				int ct = 0;
-				foreach (GmdcGroup g in groups)
+				foreach (GmdcGroup g in Groups)
 					ct += g.FaceCount;
 
 				return ct;
@@ -512,7 +467,7 @@ namespace SimPe.Plugin
 			get
 			{
 				int ct = 0;
-				foreach (GmdcGroup g in groups)
+				foreach (GmdcGroup g in Groups)
 					ct += g.UsedVertexCount;
 
 				return ct;
@@ -527,7 +482,7 @@ namespace SimPe.Plugin
 			get
 			{
 				int ct = 0;
-				foreach (GmdcGroup g in groups)
+				foreach (GmdcGroup g in Groups)
 					ct += g.ReferencedVertexCount;
 
 				return ct;
@@ -542,7 +497,7 @@ namespace SimPe.Plugin
 			ArrayList usebones = new ArrayList();
 
 			///Assemble a List of used Joints
-			foreach (GmdcElement e in elements)
+			foreach (GmdcElement e in Elements)
 			{
 				if (e.Identity == ElementIdentity.BoneAssignment)
 					foreach (GmdcElementValueOneInt v in e.Values)
@@ -552,7 +507,7 @@ namespace SimPe.Plugin
 					}
 			}
 
-			for (int i = joints.Length - 1; i >= 0; i--)
+			for (int i = Joints.Length - 1; i >= 0; i--)
 			{
 				if (!usebones.Contains(i))
 					RemoveBone(i);
@@ -567,7 +522,7 @@ namespace SimPe.Plugin
 		public void RemoveBone(int index)
 		{
 			//Update the Assignments
-			foreach (GmdcElement e in elements)
+			foreach (GmdcElement e in Elements)
 			{
 				if (e.Identity == ElementIdentity.BoneAssignment)
 					foreach (GmdcElementValueOneInt v in e.Values)
@@ -588,7 +543,7 @@ namespace SimPe.Plugin
 			}
 
 			//Update the Bone List in the Groups Section
-			foreach (GmdcGroup g in groups)
+			foreach (GmdcGroup g in Groups)
 			{
 				for (int i = g.UsedJoints.Count - 1; i >= 0; i--)
 				{
@@ -599,8 +554,8 @@ namespace SimPe.Plugin
 				}
 			}
 
-			model.Transformations.RemoveAt(index);
-			joints.RemoveAt(index);
+			Model.Transformations.RemoveAt(index);
+			Joints.RemoveAt(index);
 		}
 
 		/// <summary>
@@ -640,17 +595,10 @@ namespace SimPe.Plugin
 		#region LinkedCRES
 
 		Rcol cres;
-		bool tried;
+
 		public bool TriedToLoadParentResourceNode
 		{
-			get
-			{
-				return tried;
-			}
-			set
-			{
-				tried = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -660,11 +608,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (!tried)
+				if (!TriedToLoadParentResourceNode)
 				{
 					if (cres == null)
 						cres = FindReferencingCRES();
-					tried = true;
+					TriedToLoadParentResourceNode = true;
 				}
 
 				if (cres == null)
@@ -889,17 +837,9 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		AnimationMeshBlock la;
 		public AnimationMeshBlock LinkedAnimation
 		{
-			get
-			{
-				return la;
-			}
-			set
-			{
-				la = value;
-			}
+			get; set;
 		}
 
 		#region IDisposable Member

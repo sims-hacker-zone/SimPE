@@ -34,8 +34,11 @@ namespace SimPe.Plugin
 	public class GraphBuilder
 	{
 		Hashtable colors;
-		GraphPanel gc;
-		public GraphPanel Graph => gc;
+
+		public GraphPanel Graph
+		{
+			get;
+		}
 		System.EventHandler click;
 
 		/// <summary>
@@ -67,8 +70,8 @@ namespace SimPe.Plugin
 			colors.Add("LIFO", Color.PaleVioletRed);
 			colors.Add("LGHT", Color.White);
 
-			gc = new GraphPanel();
-			gc.Parent = pb;
+			Graph = new GraphPanel();
+			Graph.Parent = pb;
 			this.click = click;
 
 			coords = new Hashtable();
@@ -149,7 +152,7 @@ namespace SimPe.Plugin
 				if (coords.ContainsKey(top))
 					left = (int)coords[top];
 				//if (parent!=null) if (left<parent.Location.X) left = parent.Location.X;
-			} while (left > gc.Parent.Width && false);
+			} while (left > Graph.Parent.Width && false);
 
 			GraphItem gi = new GraphItem(new Ambertation.Collections.PropertyItems());
 			gi.Text = Hashes.StripHashFromName(pfd.Filename);
@@ -251,7 +254,7 @@ namespace SimPe.Plugin
 				if (!names.ContainsKey(name))
 				{
 					names.Add(name, gi);
-					gi.Parent = gc;
+					gi.Parent = Graph;
 					coords[top] = left + 8 + gi.Size.Width;
 
 					if (pkgpfd == null)
@@ -283,10 +286,10 @@ namespace SimPe.Plugin
 		)
 		{
 			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds;
-			gc.BeginUpdate();
-			gc.Clear();
-			gc.SaveBounds = false;
-			gc.AutoSize = true;
+			Graph.BeginUpdate();
+			Graph.Clear();
+			Graph.SaveBounds = false;
+			Graph.AutoSize = true;
 			this.coords.Clear();
 			this.names.Clear();
 			if (Helper.WindowsRegistry.CresPrioritize)
@@ -323,9 +326,9 @@ namespace SimPe.Plugin
 					AddItem(pfd, pkg, null, fileindex);
 				}
 			}
-			gc.AutoSize = false;
-			gc.SaveBounds = true;
-			gc.EndUpdate();
+			Graph.AutoSize = false;
+			Graph.SaveBounds = true;
+			Graph.EndUpdate();
 		}
 
 		/// <summary>
@@ -382,7 +385,7 @@ namespace SimPe.Plugin
 						if (!names.ContainsKey(name))
 						{
 							//gc.Add(gi);
-							gi.Parent = gc;
+							gi.Parent = Graph;
 							left += gi.Size.Width + 8;
 							//gi.EndUpdate();
 						}
@@ -390,7 +393,7 @@ namespace SimPe.Plugin
 				}
 			}
 
-			gc.Update();
+			Graph.Update();
 		}
 
 		private void gi_GotFocus(object sender, EventArgs e)

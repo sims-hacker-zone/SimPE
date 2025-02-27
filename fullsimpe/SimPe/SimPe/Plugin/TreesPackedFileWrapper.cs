@@ -20,15 +20,6 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Contains the Data of the File
 		/// </summary>
-		private string filename = "";
-		private uint version = 69;
-		private uint unknown_0 = 5;
-		private uint header = 0x54524545;
-		private uint unknown_1 = 0;
-		private uint unknown_2 = 0x83;
-		private uint unknown_3 = 0x280;
-		private uint unknown_4 = 0x490;
-		private uint unknown_5 = 0x0f83c946;
 		private uint tmpo;
 		private int count = 0;
 		private byte len;
@@ -38,105 +29,15 @@ namespace SimPe.Plugin
 
 		public Array vdata = Array.CreateInstance(typeof(uint), 10, 64);
 
-		public uint Vershin
-		{
-			get
-			{
-				return version;
-			}
-			set
-			{
-				version = value;
-			}
-		}
-		internal uint Header
-		{
-			get
-			{
-				return header;
-			}
-			set
-			{
-				header = value;
-			}
-		}
-		internal uint Unk0
-		{
-			get
-			{
-				return unknown_0;
-			}
-			set
-			{
-				unknown_0 = value;
-			}
-		}
-		internal uint Unk1
-		{
-			get
-			{
-				return unknown_1;
-			}
-			set
-			{
-				unknown_1 = value;
-			}
-		}
-		internal uint Unk2
-		{
-			get
-			{
-				return unknown_2;
-			}
-			set
-			{
-				unknown_2 = value;
-			}
-		}
-		internal uint Unk3
-		{
-			get
-			{
-				return unknown_3;
-			}
-			set
-			{
-				unknown_3 = value;
-			}
-		}
-		internal uint Unk4
-		{
-			get
-			{
-				return unknown_4;
-			}
-			set
-			{
-				unknown_4 = value;
-			}
-		}
-		internal uint Unk5
-		{
-			get
-			{
-				return unknown_5;
-			}
-			set
-			{
-				unknown_5 = value;
-			}
-		}
-		public string FileNam
-		{
-			get
-			{
-				return filename;
-			}
-			set
-			{
-				filename = value;
-			}
-		}
+		public uint Vershin { get; set; } = 69;
+		internal uint Header { get; set; } = 0x54524545;
+		internal uint Unk0 { get; set; } = 5;
+		internal uint Unk1 { get; set; } = 0;
+		internal uint Unk2 { get; set; } = 0x83;
+		internal uint Unk3 { get; set; } = 0x280;
+		internal uint Unk4 { get; set; } = 0x490;
+		internal uint Unk5 { get; set; } = 0x0f83c946;
+		public string FileNam { get; set; } = "";
 
 		/// <summary>
 		/// Returns/Sets the Comments in the File
@@ -281,23 +182,23 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-			filename = Helper.ToString(reader.ReadBytes(0x40));
-			version = reader.ReadUInt32();
-			unknown_0 = reader.ReadUInt32();
-			header = reader.ReadUInt32();
-			unknown_1 = reader.ReadUInt32();
-			unknown_2 = reader.ReadUInt32();
-			unknown_3 = reader.ReadUInt32();
-			unknown_4 = reader.ReadUInt32();
+			FileNam = Helper.ToString(reader.ReadBytes(0x40));
+			Vershin = reader.ReadUInt32();
+			Unk0 = reader.ReadUInt32();
+			Header = reader.ReadUInt32();
+			Unk1 = reader.ReadUInt32();
+			Unk2 = reader.ReadUInt32();
+			Unk3 = reader.ReadUInt32();
+			Unk4 = reader.ReadUInt32();
 			count = reader.ReadInt32();
 			Array.Resize<string>(ref items, count);
-			unknown_5 = reader.ReadUInt32();
+			Unk5 = reader.ReadUInt32();
 			/*
 			 * strings always terminate with 0000, the first Zero1 is probably part of the header, after that they are at the end as terminater
 			 * some strings have two byte for len, can'r see where that is set, sometimes the two bytes are not correct for the length, just read till the terminater
 			 * it is not always following Windows convention for 2 bytes for length, am using two bytes for strings > 128 for now
 			*/
-			if (version == 69)
+			if (Vershin == 69)
 			{
 				for (int i = 0; i < count; i++)
 				{
@@ -351,19 +252,19 @@ namespace SimPe.Plugin
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
-			foreach (char c in filename)
+			foreach (char c in FileNam)
 				writer.Write(c);
 			writer.BaseStream.Seek(0x40, System.IO.SeekOrigin.Begin);
-			writer.Write(version);
-			writer.Write(unknown_0);
-			writer.Write(header);
-			writer.Write(unknown_1);
-			writer.Write(unknown_2);
-			writer.Write(unknown_3);
-			writer.Write(unknown_4);
+			writer.Write(Vershin);
+			writer.Write(Unk0);
+			writer.Write(Header);
+			writer.Write(Unk1);
+			writer.Write(Unk2);
+			writer.Write(Unk3);
+			writer.Write(Unk4);
 			writer.Write(count);
-			writer.Write(unknown_5);
-			if (version == 69)
+			writer.Write(Unk5);
+			if (Vershin == 69)
 			{
 				for (int i = 0; i < count; i++)
 				{

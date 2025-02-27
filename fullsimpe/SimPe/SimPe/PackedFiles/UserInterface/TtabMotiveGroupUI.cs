@@ -263,15 +263,16 @@ namespace SimPe.PackedFiles.UserInterface
 	#region MotiveClickEvent
 	public class MotiveClickEventArgs : System.EventArgs
 	{
-		private int motive;
-
 		public MotiveClickEventArgs(int m)
 			: base()
 		{
-			motive = m;
+			Motive = m;
 		}
 
-		public int Motive => motive;
+		public int Motive
+		{
+			get;
+		}
 	}
 
 	public delegate void MotiveClickEventHandler(object sender, MotiveClickEventArgs e);

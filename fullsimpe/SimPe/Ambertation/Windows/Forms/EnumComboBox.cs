@@ -28,12 +28,15 @@ namespace Ambertation.Windows.Forms
 {
 	internal class EnumComboBoxItem
 	{
-		string name;
-		object obj;
+		public object Content
+		{
+			get;
+		}
 
-		public object Content => obj;
-
-		public string Name => name;
+		public string Name
+		{
+			get;
+		}
 
 		internal EnumComboBoxItem(
 			Type type,
@@ -41,16 +44,16 @@ namespace Ambertation.Windows.Forms
 			System.Resources.ResourceManager rm
 		)
 		{
-			this.name = obj.ToString();
+			this.Name = obj.ToString();
 			if (rm != null)
 			{
 				string nname = rm.GetString(
 					type.Namespace + "." + type.Name + "." + obj.ToString()
 				);
 				if (nname != null)
-					name = nname;
+					Name = nname;
 			}
-			this.obj = obj;
+			this.Content = obj;
 		}
 
 		public override string ToString()

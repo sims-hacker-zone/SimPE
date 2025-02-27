@@ -45,31 +45,20 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Contains the Filename
 		/// </summary>
-		byte[] id;
-
 		/// <summary>
 		/// Returns the Filename
 		/// </summary>
-		public byte[] Id => id;
-
-		/// <summary>
-		/// Contains all available Items
-		/// </summary>
-		private CpfItem[] items;
+		public byte[] Id
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Returns/Sets the Constants
 		/// </summary>
 		public CpfItem[] Items
 		{
-			get
-			{
-				return items;
-			}
-			set
-			{
-				items = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -79,8 +68,8 @@ namespace SimPe.PackedFiles.Wrapper
 		public Cpf()
 			: base()
 		{
-			id = this.FileSignature;
-			items = new CpfItem[0];
+			Id = this.FileSignature;
+			Items = new CpfItem[0];
 		}
 
 		/// <summary>
@@ -111,7 +100,7 @@ namespace SimPe.PackedFiles.Wrapper
 				}
 				else
 				{
-					items = (CpfItem[])Helper.Add(items, item);
+					Items = (CpfItem[])Helper.Add(Items, item);
 				}
 			}
 		}
@@ -123,7 +112,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <returns>null or the Item</returns>
 		public CpfItem GetItem(string name)
 		{
-			foreach (CpfItem item in this.items)
+			foreach (CpfItem item in this.Items)
 				if (item.Name == name)
 					return item;
 
@@ -314,8 +303,8 @@ namespace SimPe.PackedFiles.Wrapper
 				}
 			} //for i
 
-			items = new CpfItem[list.Count];
-			list.CopyTo(items);
+			Items = new CpfItem[list.Count];
+			list.CopyTo(Items);
 		}
 
 		/// <summary>
@@ -324,20 +313,20 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="reader">The Stream that contains the FileData</param>
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-			id = reader.ReadBytes(0x06);
-			if (id[0] != SIGNATURE[0])
+			Id = reader.ReadBytes(0x06);
+			if (Id[0] != SIGNATURE[0])
 			{
-				id = SIGNATURE;
+				Id = SIGNATURE;
 				this.UnserializeXml(reader);
 
 				return;
 			}
-			items = new CpfItem[reader.ReadUInt32()];
+			Items = new CpfItem[reader.ReadUInt32()];
 
-			for (int i = 0; i < items.Length; i++)
+			for (int i = 0; i < Items.Length; i++)
 			{
-				items[i] = new CpfItem();
-				items[i].Unserialize(reader);
+				Items[i] = new CpfItem();
+				Items[i].Unserialize(reader);
 			}
 		}
 
@@ -351,14 +340,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-			if (id.Length != 0x06)
-				id = SIGNATURE;
-			writer.Write(id);
-			writer.Write((uint)items.Length);
+			if (Id.Length != 0x06)
+				Id = SIGNATURE;
+			writer.Write(Id);
+			writer.Write((uint)Items.Length);
 
-			for (int i = 0; i < items.Length; i++)
+			for (int i = 0; i < Items.Length; i++)
 			{
-				items[i].Serialize(writer);
+				Items[i].Serialize(writer);
 			}
 		}
 		#endregion
@@ -442,15 +431,15 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			base.Dispose();
 
-			if (items != null)
+			if (Items != null)
 			{
-				for (int i = items.Length - 1; i >= 0; i--)
-					if (items[i] != null)
-						items[i].Dispose();
+				for (int i = Items.Length - 1; i >= 0; i--)
+					if (Items[i] != null)
+						Items[i].Dispose();
 			}
 
-			items = new CpfItem[0];
-			items = null;
+			Items = new CpfItem[0];
+			Items = null;
 		}
 	}
 }

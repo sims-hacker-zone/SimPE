@@ -70,7 +70,6 @@ namespace SimPe
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.Panel panel3;
 		private System.Windows.Forms.Panel panel4;
-		static bool cacleared = false;
 
 		public static Image OKImage
 		{
@@ -108,17 +107,7 @@ namespace SimPe
 				return iwarn;
 			}
 		}
-		public static bool CaCleared
-		{
-			get
-			{
-				return cacleared;
-			}
-			set
-			{
-				cacleared = value;
-			}
-		}
+		public static bool CaCleared { get; set; } = false;
 
 		/// <summary>
 		/// Clean up any resources being used.
@@ -698,7 +687,7 @@ namespace SimPe
 				try
 				{
 					System.IO.File.Delete(file);
-					cacleared = true;
+					CaCleared = true;
 				}
 				catch (Exception ex)
 				{

@@ -10,17 +10,9 @@ namespace SimPe.Plugin
 			IFileWrapperSaveExtension
 	{
 		#region CreationIndex Attribute
-		private uint sciname;
 		public uint Sciname
 		{
-			get
-			{
-				return sciname;
-			}
-			set
-			{
-				sciname = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -54,14 +46,14 @@ namespace SimPe.Plugin
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			reader.BaseStream.Seek(0x4, System.IO.SeekOrigin.Begin);
-			sciname = reader.ReadUInt32();
+			Sciname = reader.ReadUInt32();
 		}
 
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			uint scivers = 0x4;
 			writer.Write(scivers);
-			writer.Write(sciname);
+			writer.Write(Sciname);
 		}
 		#endregion
 

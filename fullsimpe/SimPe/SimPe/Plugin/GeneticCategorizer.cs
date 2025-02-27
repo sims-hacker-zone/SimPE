@@ -41,18 +41,10 @@ namespace SimPe.Plugin
 		PackageInfoTable packages;
 		ListDictionary recolorItems;
 		Hashtable loadedFiles;
-		PackageSettings settings;
 
 		public PackageSettings Settings
 		{
-			get
-			{
-				return this.settings;
-			}
-			set
-			{
-				this.settings = value;
-			}
+			get; set;
 		}
 
 		public bool IsEmpty => this.packages.Count == 0;
@@ -89,15 +81,15 @@ namespace SimPe.Plugin
 			switch (type)
 			{
 				case RecolorType.Hairtone:
-					ret = new HairtoneSettings(this.settings);
+					ret = new HairtoneSettings(this.Settings);
 					break;
 
 				case RecolorType.Skintone:
-					ret = new SkintoneSettings(this.settings);
+					ret = new SkintoneSettings(this.Settings);
 					break;
 
 				default:
-					ret = new PackageSettings(this.settings, type);
+					ret = new PackageSettings(this.Settings, type);
 					break;
 			}
 			return ret;
@@ -138,20 +130,20 @@ namespace SimPe.Plugin
 					#endregion
 
 					if (
-						this.settings == null
-						|| this.settings.PackageType == RecolorType.Unsupported
+						this.Settings == null
+						|| this.Settings.PackageType == RecolorType.Unsupported
 					)
 					{
-						this.settings = this.GetSettings(newType);
+						this.Settings = this.GetSettings(newType);
 					}
-					else if (newType != this.settings.PackageType)
+					else if (newType != this.Settings.PackageType)
 					{
 						this.Clear(key);
 						Helper.ExceptionMessage(
 							new ApplicationException(
 								String.Format(
 									"The package being added is not a {0}",
-									this.settings.PackageType
+									this.Settings.PackageType
 								)
 							)
 						);
@@ -160,15 +152,15 @@ namespace SimPe.Plugin
 
 					if (pnfo.Package != null)
 					{
-						if (this.settings is SkintoneSettings)
+						if (this.Settings is SkintoneSettings)
 						{
-							((SkintoneSettings)this.settings).GeneticWeight = pnfo
+							((SkintoneSettings)this.Settings).GeneticWeight = pnfo
 								.PropertySet.GetSaveItem("genetic")
 								.SingleValue;
 						}
 
-						if (this.settings.FamilyGuid == Guid.Empty)
-							this.settings.FamilyGuid = pnfo.Family;
+						if (this.Settings.FamilyGuid == Guid.Empty)
+							this.Settings.FamilyGuid = pnfo.Family;
 					}
 					/*
 					if (!FileTable.FileIndex.Loaded && WrapperFactory.Settings.ForceTableLoad)
@@ -177,8 +169,8 @@ namespace SimPe.Plugin
 						FileTable.FileIndex.AddIndexFromPackage(package, false);
 					}*/
 
-					if (Utility.IsNullOrEmpty(this.settings.Description))
-						this.settings.Description = pnfo.Description; //this.GetPackageText(key);
+					if (Utility.IsNullOrEmpty(this.Settings.Description))
+						this.Settings.Description = pnfo.Description; //this.GetPackageText(key);
 
 					return true;
 				}
@@ -196,7 +188,7 @@ namespace SimPe.Plugin
 				//this.loadedTextures.Clear();
 
 				if (this.packages.Count == 0)
-					this.settings = null; //mode = RecolorType.Unsupported;
+					this.Settings = null; //mode = RecolorType.Unsupported;
 			}
 		}
 
@@ -206,7 +198,7 @@ namespace SimPe.Plugin
 			this.recolorItems.Clear();
 			this.loadedFiles.Clear();
 			//this.loadedTextures.Clear();
-			this.settings = null; //.mode = RecolorType.Unsupported;
+			this.Settings = null; //.mode = RecolorType.Unsupported;
 		}
 
 		public bool Contains(HairColor key)
@@ -719,7 +711,7 @@ namespace SimPe.Plugin
 				RecolorItem[] items = this.GetRecolorItems(key);
 				foreach (RecolorItem item in items)
 				{
-					item.Pinned = this.settings.KeepDisabledItems;
+					item.Pinned = this.Settings.KeepDisabledItems;
 
 					// used to check if a given set of textures can be deleted
 					IPackedFileDescriptor[] txtr = GetTextureDescriptor(item.Materials);
@@ -738,9 +730,9 @@ namespace SimPe.Plugin
 								discard.Add(pfd);
 					}
 
-					item.Family = this.settings.FamilyGuid;
+					item.Family = this.Settings.FamilyGuid;
 
-					switch (this.settings.PackageType)
+					switch (this.Settings.PackageType)
 					{
 						// this is the hairtone processing
 						case RecolorType.Hairtone:
@@ -795,7 +787,7 @@ namespace SimPe.Plugin
 					}
 
 					// process textures
-					if (this.settings.CompressTextures)
+					if (this.Settings.CompressTextures)
 						foreach (MaterialDefinitionRcol mmat in item.Materials)
 							foreach (Txtr textr in mmat.Textures)
 								if (textr.Package == pnfo.Package) // this is important!!
@@ -816,7 +808,7 @@ namespace SimPe.Plugin
 				{
 					if (pnfo.Type == RecolorType.Hairtone)
 					{
-						HairtoneSettings hset = (HairtoneSettings)this.settings;
+						HairtoneSettings hset = (HairtoneSettings)this.Settings;
 
 						pnfo.Name = key.ToString();
 						if (key != HairColor.Unbinned)
@@ -826,15 +818,15 @@ namespace SimPe.Plugin
 					}
 					else if (pnfo.Type == RecolorType.Skintone)
 					{
-						SkintoneSettings sset = (SkintoneSettings)this.settings;
+						SkintoneSettings sset = (SkintoneSettings)this.Settings;
 						pnfo.PropertySet.GetItem("genetic").SingleValue =
 							sset.GeneticWeight;
 					}
 
-					pnfo.Family = this.settings.FamilyGuid;
+					pnfo.Family = this.Settings.FamilyGuid;
 				}
 
-				pnfo.Description = this.settings.Description;
+				pnfo.Description = this.Settings.Description;
 
 				pnfo.CommitChanges();
 			}

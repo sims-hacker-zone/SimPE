@@ -30,24 +30,24 @@ namespace SimPe.Interfaces
 {
 	public partial class AFinderTool : UserControl
 	{
-		IFinderResultGui rgui;
-		SimPe.ThemeManager tm;
-
 		public AFinderTool()
 			: this(null) { }
 
 		protected AFinderTool(IFinderResultGui rgui)
 			: base()
 		{
-			this.rgui = rgui;
+			this.ResultGui = rgui;
 			InitializeComponent();
-			tm = ThemeManager.Global.CreateChild();
-			tm.AddControl(this.grp);
+			ThemeManager = ThemeManager.Global.CreateChild();
+			ThemeManager.AddControl(this.grp);
 
 			btStart.Enabled = rgui != null;
 		}
 
-		protected SimPe.ThemeManager ThemeManager => tm;
+		protected SimPe.ThemeManager ThemeManager
+		{
+			get;
+		}
 
 		/// <summary>
 		/// The Title of this Control
@@ -68,12 +68,15 @@ namespace SimPe.Interfaces
 		/// <summary>
 		/// This provides acces to the result GUI, enabeling you to start a search, or add a result to the result list
 		/// </summary>
-		protected IFinderResultGui ResultGui => rgui;
+		protected IFinderResultGui ResultGui
+		{
+			get; private set;
+		}
 
 		internal void SetResultGui(IFinderResultGui gui)
 		{
-			rgui = gui;
-			btStart.Enabled = rgui != null;
+			ResultGui = gui;
+			btStart.Enabled = ResultGui != null;
 		}
 
 		/// <summary>

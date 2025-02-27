@@ -41,41 +41,20 @@ namespace SimPe.PackedFiles.Wrapper
 									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
 	{
 		#region Attributes
-		Data.MetaData.IndexTypes iformat;
-
 		/// <summary>
 		/// Returns or Sets wether the type of the Index
 		/// </summary>
 		public Data.MetaData.IndexTypes IndexType
 		{
-			get
-			{
-				return iformat;
-			}
-			set
-			{
-				iformat = value;
-			}
+			get; set;
 		}
-
-		/// <summary>
-		/// Contains all available Items
-		/// </summary>
-		private ClstItem[] items;
 
 		/// <summary>
 		/// Returns/Sets the Constants
 		/// </summary>
 		public ClstItem[] Items
 		{
-			get
-			{
-				return items;
-			}
-			set
-			{
-				items = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -85,8 +64,8 @@ namespace SimPe.PackedFiles.Wrapper
 		internal CompressedFileList()
 			: base()
 		{
-			iformat = Data.MetaData.IndexTypes.ptShortFileIndex;
-			items = new ClstItem[0];
+			IndexType = Data.MetaData.IndexTypes.ptShortFileIndex;
+			Items = new ClstItem[0];
 		}
 
 		/// <summary>
@@ -96,8 +75,8 @@ namespace SimPe.PackedFiles.Wrapper
 		public CompressedFileList(Data.MetaData.IndexTypes type)
 			: base()
 		{
-			iformat = type;
-			items = new ClstItem[0];
+			IndexType = type;
+			Items = new ClstItem[0];
 		}
 
 		/// <summary>
@@ -109,8 +88,8 @@ namespace SimPe.PackedFiles.Wrapper
 		public CompressedFileList(IPackedFileDescriptor pfd, IPackageFile package)
 			: base()
 		{
-			iformat = package.Header.IndexType;
-			items = new ClstItem[0];
+			IndexType = package.Header.IndexType;
+			Items = new ClstItem[0];
 			this.ProcessData(pfd, package);
 		}
 
@@ -121,18 +100,18 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <returns>-1 if none was foudn or the index number of the first matching file</returns>
 		public int FindFile(IPackedFileDescriptor pfd)
 		{
-			if (items == null)
+			if (Items == null)
 				return -1;
-			for (int i = 0; i < this.items.Length; i++)
+			for (int i = 0; i < this.Items.Length; i++)
 			{
-				ClstItem lfi = items[i];
+				ClstItem lfi = Items[i];
 
 				if (
 					(lfi.Group == pfd.Group)
 					&& (lfi.Instance == pfd.Instance)
 					&& (
 						(lfi.SubType == pfd.SubType)
-						|| (iformat == Data.MetaData.IndexTypes.ptShortFileIndex)
+						|| (IndexType == Data.MetaData.IndexTypes.ptShortFileIndex)
 					)
 					&& (lfi.Type == pfd.Type)
 				)
@@ -144,7 +123,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public void Clear()
 		{
-			items = new ClstItem[0];
+			Items = new ClstItem[0];
 		}
 
 		/// <summary>
@@ -153,11 +132,11 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="item">the new File</param>
 		public void Add(ClstItem item)
 		{
-			ClstItem[] its = new ClstItem[items.Length + 1];
-			items.CopyTo(its, 0);
+			ClstItem[] its = new ClstItem[Items.Length + 1];
+			Items.CopyTo(its, 0);
 			its[its.Length - 1] = item;
 
-			items = its;
+			Items = its;
 		}
 
 		#region IWrapper member
@@ -199,11 +178,11 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			this.IndexType = package.Header.IndexType;
 			long count = 0;
-			if (iformat == Data.MetaData.IndexTypes.ptLongFileIndex)
+			if (IndexType == Data.MetaData.IndexTypes.ptLongFileIndex)
 				count = reader.BaseStream.Length / 0x14;
 			else
 				count = reader.BaseStream.Length / 0x10;
-			items = new ClstItem[count];
+			Items = new ClstItem[count];
 
 			long pos = reader.BaseStream.Position;
 			bool switch_t = false;
@@ -225,10 +204,10 @@ namespace SimPe.PackedFiles.Wrapper
 					)
 					{
 						i = 0;
-						if (iformat == Data.MetaData.IndexTypes.ptLongFileIndex)
-							iformat = Data.MetaData.IndexTypes.ptShortFileIndex;
+						if (IndexType == Data.MetaData.IndexTypes.ptLongFileIndex)
+							IndexType = Data.MetaData.IndexTypes.ptShortFileIndex;
 						else
-							iformat = Data.MetaData.IndexTypes.ptLongFileIndex;
+							IndexType = Data.MetaData.IndexTypes.ptLongFileIndex;
 
 						reader.BaseStream.Seek(pos, System.IO.SeekOrigin.Begin);
 						item = new ClstItem(this.IndexType);
@@ -236,7 +215,7 @@ namespace SimPe.PackedFiles.Wrapper
 					}
 				}
 
-				items[i] = item;
+				Items[i] = item;
 			}
 		}
 
@@ -250,9 +229,9 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-			for (int i = 0; i < items.Length; i++)
+			for (int i = 0; i < Items.Length; i++)
 			{
-				items[i].Serialize(writer, this.IndexType);
+				Items[i].Serialize(writer, this.IndexType);
 			}
 		}
 		#endregion

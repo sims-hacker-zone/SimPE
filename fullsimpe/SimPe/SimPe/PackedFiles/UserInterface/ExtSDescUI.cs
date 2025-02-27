@@ -112,7 +112,7 @@ namespace SimPe.PackedFiles.UserInterface
 			InitDropDowns();
 			SelectButton(biId);
 
-			intern = true;
+			InternalChange = true;
 			if (
 				System
 					.Threading
@@ -124,13 +124,12 @@ namespace SimPe.PackedFiles.UserInterface
 				pbLastGrade.DisplayOffset = 0;
 			else
 				pbLastGrade.DisplayOffset = 1;
-			intern = false;
+			InternalChange = false;
 
 			lv.SimDetails = true;
 		}
 
 		Image pnimage = null;
-		bool intern;
 		bool loadedRel;
 		string CurHood = "";
 
@@ -1026,7 +1025,7 @@ namespace SimPe.PackedFiles.UserInterface
 		protected override void RefreshGUI()
 		{
 			loadedRel = false;
-			this.intern = true;
+			this.InternalChange = true;
 			try
 			{
 				base.RefreshGUI();
@@ -1164,7 +1163,7 @@ namespace SimPe.PackedFiles.UserInterface
 			finally
 			{
 				SetCharacterAttributesVisibility();
-				this.intern = false;
+				this.InternalChange = false;
 			}
 		}
 
@@ -1779,7 +1778,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			if (this.pnSkill.Visible)
 			{
-				intern = true;
+				InternalChange = true;
 				foreach (Control c in pnSkill.Controls)
 				{
 					if (c == this.pbFat)
@@ -1792,28 +1791,28 @@ namespace SimPe.PackedFiles.UserInterface
 							((LabeledProgressBar)c).Maximum - 1;
 					}
 				}
-				intern = false;
+				InternalChange = false;
 				this.ChangedSkill(null, null);
 			}
 			else if (this.pnChar.Visible)
 			{
-				intern = true;
+				InternalChange = true;
 				foreach (Control c in this.pnHumanChar.Controls)
 					if (c is LabeledProgressBar)
 						((LabeledProgressBar)c).Value = ((LabeledProgressBar)c).Maximum;
-				intern = false;
+				InternalChange = false;
 				this.ChangedChar(null, null);
 			}
 			else if (this.pnInt.Visible)
 			{
-				intern = true;
+				InternalChange = true;
 				foreach (Control c in this.pnPetInt.Controls)
 					if (c is LabeledProgressBar)
 						((LabeledProgressBar)c).Value = ((LabeledProgressBar)c).Maximum;
 				foreach (Control c in this.pnSimInt.Controls)
 					if (c is LabeledProgressBar)
 						((LabeledProgressBar)c).Value = ((LabeledProgressBar)c).Maximum;
-				intern = false;
+				InternalChange = false;
 				this.ChangedInt(null, null);
 			}
 			else if (this.pnRel.Visible)
@@ -1849,7 +1848,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			else if (this.pnEP9.Visible)
 			{
-				intern = true;
+				InternalChange = true;
 				pbRomance.Value = pbRomance.Maximum;
 				//intern = false; this.ChangedVarious(null, null);
 			}
@@ -1860,30 +1859,30 @@ namespace SimPe.PackedFiles.UserInterface
 			Random rnd = new Random();
 			if (this.pnSkill.Visible)
 			{
-				intern = true;
+				InternalChange = true;
 				foreach (Control c in pnSkill.Controls)
 					if (c is LabeledProgressBar)
 						((LabeledProgressBar)c).Value = rnd.Next(
 							((LabeledProgressBar)c).Maximum
 						);
 
-				intern = false;
+				InternalChange = false;
 				this.ChangedSkill(null, null);
 			}
 			else if (this.pnChar.Visible)
 			{
-				intern = true;
+				InternalChange = true;
 				foreach (Control c in pnHumanChar.Controls)
 					if (c is LabeledProgressBar)
 						((LabeledProgressBar)c).Value = rnd.Next(
 							((LabeledProgressBar)c).Maximum
 						);
-				intern = false;
+				InternalChange = false;
 				this.ChangedSkill(null, null);
 			}
 			else if (this.pnInt.Visible)
 			{
-				intern = true;
+				InternalChange = true;
 				foreach (Control c in pnPetInt.Controls)
 					if (c is LabeledProgressBar)
 						((LabeledProgressBar)c).Value = rnd.Next(
@@ -1894,7 +1893,7 @@ namespace SimPe.PackedFiles.UserInterface
 						((LabeledProgressBar)c).Value = rnd.Next(
 							((LabeledProgressBar)c).Maximum
 						);
-				intern = false;
+				InternalChange = false;
 				this.ChangedSkill(null, null);
 			}
 			else if (this.pnRel.Visible)
@@ -1984,7 +1983,7 @@ namespace SimPe.PackedFiles.UserInterface
 			System.EventArgs e
 		)
 		{
-			if (intern)
+			if (InternalChange)
 				return;
 			if (cbRetirement.SelectedIndex < 0)
 				return;
@@ -2029,7 +2028,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void Activate_biLezby(object sender, System.EventArgs e)
 		{
-			intern = true;
+			InternalChange = true;
 
 			SimPe.PackedFiles.Wrapper.SimDNA sdna;
 			Random slt = new Random();
@@ -2130,27 +2129,20 @@ namespace SimPe.PackedFiles.UserInterface
 			RefreshEP2(Sdesc);
 			RefreshEP7(Sdesc);
 			//RefreshEP9(Sdesc);
-			intern = false;
+			InternalChange = false;
 		}
 
 		#region Changing Data
 		protected bool InternalChange
 		{
-			get
-			{
-				return intern;
-			}
-			set
-			{
-				intern = value;
-			}
+			get; set;
 		}
 
 		private void ChangedId(object sender, System.EventArgs e)
 		{
-			if (intern)
+			if (InternalChange)
 				return;
-			intern = true;
+			InternalChange = true;
 			try
 			{
 				Sdesc.SimId = Helper.StringToUInt32(this.tbsim.Text, Sdesc.SimId, 16);
@@ -2226,15 +2218,15 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			finally
 			{
-				intern = false;
+				InternalChange = false;
 			}
 		}
 
 		private void cbservice_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if (intern)
+			if (InternalChange)
 				return;
-			intern = true;
+			InternalChange = true;
 			try
 			{
 				Sdesc.CharacterDescription.NPCType = (ushort)
@@ -2247,29 +2239,29 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			finally
 			{
-				intern = false;
+				InternalChange = false;
 			}
 		}
 
 		private void ChangedRel(object sender, System.EventArgs e)
 		{
-			if (intern)
+			if (InternalChange)
 				return;
-			intern = true;
+			InternalChange = true;
 			try
 			{
 			}
 			finally
 			{
-				intern = false;
+				InternalChange = false;
 			}
 		}
 
 		private void ChangedInt(object sender, System.EventArgs e)
 		{
-			if (intern)
+			if (InternalChange)
 				return;
-			intern = true;
+			InternalChange = true;
 			try
 			{
 				if (IsHumanoid())
@@ -2310,15 +2302,15 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			finally
 			{
-				intern = false;
+				InternalChange = false;
 			}
 		}
 
 		private void ChangedCareer(object sender, System.EventArgs e)
 		{
-			if (intern)
+			if (InternalChange)
 				return;
-			intern = true;
+			InternalChange = true;
 			try
 			{
 				Sdesc.CharacterDescription.CareerLevel = (ushort)
@@ -2376,15 +2368,15 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			finally
 			{
-				intern = false;
+				InternalChange = false;
 			}
 		}
 
 		private void ChangedChar(object sender, System.EventArgs e)
 		{
-			if (intern)
+			if (InternalChange)
 				return;
-			intern = true;
+			InternalChange = true;
 			try
 			{
 				Sdesc.CharacterDescription.ZodiacSign = (Data.MetaData.ZodiacSignes)(
@@ -2412,15 +2404,15 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			finally
 			{
-				intern = false;
+				InternalChange = false;
 			}
 		}
 
 		private void ChangedSkill(object sender, System.EventArgs e) // Updated Dog skills only for T&A, A&N or Pet Story
 		{
-			if (intern)
+			if (InternalChange)
 				return;
-			intern = true;
+			InternalChange = true;
 			try
 			{
 				// should not be reading Nightlife.Species if version is below Pets !!
@@ -2573,15 +2565,15 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			finally
 			{
-				intern = false;
+				InternalChange = false;
 			}
 		}
 
 		private void ChangedOther(object sender, System.EventArgs e)
 		{
-			if (intern)
+			if (InternalChange)
 				return;
-			intern = true;
+			InternalChange = true;
 			try
 			{
 				//ghostflags
@@ -2715,15 +2707,15 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			finally
 			{
-				intern = false;
+				InternalChange = false;
 			}
 		}
 
 		private void ChangedEP1(object sender, System.EventArgs e)
 		{
-			if (intern)
+			if (InternalChange)
 				return;
-			intern = true;
+			InternalChange = true;
 			try
 			{
 				Sdesc.University.Major = (Data.Majors)
@@ -2783,15 +2775,15 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			finally
 			{
-				intern = false;
+				InternalChange = false;
 			}
 		}
 
 		private void Changedfreshman(object sender, System.EventArgs e)
 		{
-			if (intern)
+			if (InternalChange)
 				return;
-			intern = true;
+			InternalChange = true;
 			if (this.cbfreshman.Checked)
 			{
 				this.cbSopho.Checked =
@@ -2799,15 +2791,15 @@ namespace SimPe.PackedFiles.UserInterface
 					this.cbSenior.Checked =
 						false;
 			}
-			intern = false;
+			InternalChange = false;
 			ChangedEP1(sender, e);
 		}
 
 		private void ChangedSopho(object sender, System.EventArgs e)
 		{
-			if (intern)
+			if (InternalChange)
 				return;
-			intern = true;
+			InternalChange = true;
 			if (this.cbSopho.Checked)
 			{
 				this.cbfreshman.Checked =
@@ -2815,15 +2807,15 @@ namespace SimPe.PackedFiles.UserInterface
 					this.cbSenior.Checked =
 						false;
 			}
-			intern = false;
+			InternalChange = false;
 			ChangedEP1(sender, e);
 		}
 
 		private void ChangedJunior(object sender, System.EventArgs e)
 		{
-			if (intern)
+			if (InternalChange)
 				return;
-			intern = true;
+			InternalChange = true;
 			if (this.cbJunior.Checked)
 			{
 				this.cbSopho.Checked =
@@ -2831,15 +2823,15 @@ namespace SimPe.PackedFiles.UserInterface
 					this.cbSenior.Checked =
 						false;
 			}
-			intern = false;
+			InternalChange = false;
 			ChangedEP1(sender, e);
 		}
 
 		private void ChangedSenior(object sender, System.EventArgs e)
 		{
-			if (intern)
+			if (InternalChange)
 				return;
-			intern = true;
+			InternalChange = true;
 			if (this.cbSenior.Checked)
 			{
 				this.cbSopho.Checked =
@@ -2847,7 +2839,7 @@ namespace SimPe.PackedFiles.UserInterface
 					this.cbfreshman.Checked =
 						false;
 			}
-			intern = false;
+			InternalChange = false;
 			ChangedEP1(sender, e);
 		}
 
@@ -2885,7 +2877,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void cbdataflag1_CheckedChanged(object sender, EventArgs e)
 		{
-			if (intern)
+			if (InternalChange)
 				return;
 			Sdesc.CharacterDescription.PersonFlags1.IsZombie = this.cbpfZomb.Checked;
 			Sdesc.CharacterDescription.PersonFlags1.PermaPlatinum =
@@ -3548,7 +3540,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		void cklb_ItemCheck(object sender, ItemCheckEventArgs e)
 		{
-			if (intern)
+			if (InternalChange)
 				return;
 			if (e.CurrentValue == e.NewValue)
 				return;
@@ -3599,9 +3591,9 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void ChangedEP2(object sender, System.EventArgs e)
 		{
-			if (intern)
+			if (InternalChange)
 				return;
-			intern = true;
+			InternalChange = true;
 			try
 			{
 				Sdesc.Nightlife.PerfumeDuration = Helper.StringToUInt16(
@@ -3622,7 +3614,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			finally
 			{
-				intern = false;
+				InternalChange = false;
 			}
 		}
 		#endregion
@@ -3661,9 +3653,9 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void ChangedEP6(object sender, System.EventArgs e)
 		{
-			if (intern)
+			if (InternalChange)
 				return;
-			intern = true;
+			InternalChange = true;
 			try
 			{
 				if (
@@ -3691,7 +3683,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			finally
 			{
-				intern = false;
+				InternalChange = false;
 			}
 		}
 
@@ -3719,9 +3711,9 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void ChangedEP3(object sender, System.EventArgs e)
 		{
-			if (intern)
+			if (InternalChange)
 				return;
-			intern = true;
+			InternalChange = true;
 			try
 			{
 				Sdesc.Business.Salary = Helper.StringToUInt16(
@@ -3746,7 +3738,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			finally
 			{
-				intern = false;
+				InternalChange = false;
 			}
 		}
 
@@ -3781,9 +3773,9 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void ChangedEP4(object sender, System.EventArgs e)
 		{
-			if (intern)
+			if (InternalChange)
 				return;
-			intern = true;
+			InternalChange = true;
 			try
 			{
 				if (
@@ -3801,7 +3793,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			finally
 			{
-				intern = false;
+				InternalChange = false;
 			}
 		}
 
@@ -3811,7 +3803,7 @@ namespace SimPe.PackedFiles.UserInterface
 			pnSimInt.Visible = pnHumanChar.Visible = showsim;
 			btProfile.Visible = (showsim && !Helper.WindowsRegistry.HiddenMode);
 			pnPetChar.Visible = pnPetInt.Visible = !showsim;
-			if (!intern && this.btOriGuid.Enabled)
+			if (!InternalChange && this.btOriGuid.Enabled)
 				btOriGuid.Visible = true;
 		}
 
@@ -3863,7 +3855,7 @@ namespace SimPe.PackedFiles.UserInterface
 		#region Freetime
 		void RefreshEP7(Wrapper.ExtSDesc sdesc)
 		{
-			intern = true;
+			InternalChange = true;
 			cbaspiration2.Enabled = Helper
 				.WindowsRegistry
 				.AllowChangeOfSecondaryAspiration;
@@ -3890,7 +3882,7 @@ namespace SimPe.PackedFiles.UserInterface
 			SelectAspiration(cbaspiration2, sdesc.Freetime.SecondaryAspiration);
 
 			this.pnEP7.BackgroundImage = pnimage;
-			intern = false;
+			InternalChange = false;
 		}
 
 		void UpdateSecAspDropDown()
@@ -3912,9 +3904,9 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void ChangedEP7(object sender, System.EventArgs e)
 		{
-			if (intern)
+			if (InternalChange)
 				return;
-			intern = true;
+			InternalChange = true;
 			try
 			{
 				if (
@@ -4001,7 +3993,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			finally
 			{
-				intern = false;
+				InternalChange = false;
 			}
 		}
 

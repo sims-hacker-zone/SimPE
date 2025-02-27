@@ -26,11 +26,7 @@ namespace pjOBJDTool
 {
 	class tOBJDTool : AbstractTool, ITool
 	{
-		/// <summary>
-		/// Windows Registry Link
-		/// </summary>
-		static SimPe.Registry registry;
-		internal static SimPe.Registry WindowsRegistry => registry;
+		internal static SimPe.Registry WindowsRegistry => SimPe.Helper.WindowsRegistry;
 
 		IWrapperRegistry reg;
 		IProviderRegistry prov;
@@ -40,9 +36,6 @@ namespace pjOBJDTool
 		{
 			this.reg = reg;
 			this.prov = prov;
-
-			if (registry == null)
-				registry = SimPe.Helper.WindowsRegistry;
 		}
 
 		#region ITool Member

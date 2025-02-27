@@ -548,23 +548,13 @@ namespace SimPe.Geometry
 	/// </summary>
 	public class Vector3i
 	{
-		int x,
-			y,
-			z;
 
 		/// <summary>
 		/// The X Coordinate of the Vector
 		/// </summary>
 		public int X
 		{
-			get
-			{
-				return x;
-			}
-			set
-			{
-				x = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -572,14 +562,7 @@ namespace SimPe.Geometry
 		/// </summary>
 		public int Y
 		{
-			get
-			{
-				return y;
-			}
-			set
-			{
-				y = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -587,14 +570,7 @@ namespace SimPe.Geometry
 		/// </summary>
 		public int Z
 		{
-			get
-			{
-				return z;
-			}
-			set
-			{
-				z = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -602,9 +578,9 @@ namespace SimPe.Geometry
 		/// </summary>
 		public Vector3i()
 		{
-			x = 0;
-			y = 0;
-			z = 0;
+			X = 0;
+			Y = 0;
+			Z = 0;
 		}
 
 		/// <summary>
@@ -615,9 +591,9 @@ namespace SimPe.Geometry
 		/// <param name="z">Z-Coordinate</param>
 		public Vector3i(int x, int y, int z)
 		{
-			this.x = x;
-			this.y = y;
-			this.z = z;
+			this.X = x;
+			this.Y = y;
+			this.Z = z;
 		}
 
 		/// <summary>
@@ -626,9 +602,9 @@ namespace SimPe.Geometry
 		/// <param name="reader">The Stream that contains the FileData</param>
 		public virtual void Unserialize(System.IO.BinaryReader reader)
 		{
-			x = reader.ReadInt32();
-			y = reader.ReadInt32();
-			z = reader.ReadInt32();
+			X = reader.ReadInt32();
+			Y = reader.ReadInt32();
+			Z = reader.ReadInt32();
 		}
 
 		/// <summary>
@@ -641,9 +617,9 @@ namespace SimPe.Geometry
 		/// </remarks>
 		public virtual void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(x);
-			writer.Write(y);
-			writer.Write(z);
+			writer.Write(X);
+			writer.Write(Y);
+			writer.Write(Z);
 		}
 
 		/// <summary>
@@ -652,11 +628,11 @@ namespace SimPe.Geometry
 		/// <returns>A String Describing the Data</returns>
 		public override string ToString()
 		{
-			return Helper.HexString(x)
+			return Helper.HexString(X)
 				+ ", "
-				+ Helper.HexString(y)
+				+ Helper.HexString(Y)
 				+ ", "
-				+ Helper.HexString(z);
+				+ Helper.HexString(Z);
 		}
 	}
 

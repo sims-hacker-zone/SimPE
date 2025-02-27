@@ -38,17 +38,11 @@ namespace pjse
 			ValidTypes = new ArrayList(aui);
 		}
 
-		private Scope scope = Scope.Private;
-		private ExtendedWrapper parent = null;
-		private uint group = 0;
-		private uint instance = 0;
-		private uint type = 0;
-
-		public Scope Scope => scope;
-		public ExtendedWrapper Parent => parent;
-		public uint Group => group;
-		public uint Instance => instance;
-		public uint Type => type;
+		public Scope Scope { get; } = Scope.Private;
+		public ExtendedWrapper Parent { get; private set; } = null;
+		public uint Group { get; } = 0;
+		public uint Instance { get; } = 0;
+		public uint Type { get; } = 0;
 
 		public Str(Scope scope, ExtendedWrapper parent, uint instance, bool fallback)
 			: this(
@@ -97,11 +91,11 @@ namespace pjse
 			if (!ValidTypes.Contains(type))
 				throw new InvalidOperationException("type must be CTSS, STR# or TTAs");
 
-			this.scope = scope;
-			this.parent = parent;
-			this.group = group;
-			this.instance = instance;
-			this.type = type;
+			this.Scope = scope;
+			this.Parent = parent;
+			this.Group = group;
+			this.Instance = instance;
+			this.Type = type;
 		}
 
 		private static myHT strHashtable = new myHT();
@@ -230,16 +224,16 @@ namespace pjse
 				if (wrapper == null)
 				{
 					pjse.FileTable.Entry[] items = pjse.FileTable.GFT[
-						this.type,
-						this.group,
-						this.instance
+						this.Type,
+						this.Group,
+						this.Instance
 					];
 
 					if (items != null && items.Length != 0)
 					{
 						wrapper = new StrWrapper();
 						wrapper.ProcessData(items[0].PFD, items[0].Package);
-						strHashtable[this.group, this.instance, this.type] = this;
+						strHashtable[this.Group, this.Instance, this.Type] = this;
 					}
 				}
 				return wrapper;
@@ -255,9 +249,9 @@ namespace pjse
 					semiGlobalStr = new Str(
 						Scope.SemiGlobal,
 						null,
-						parent.SemiGroup,
-						this.instance,
-						this.type
+						Parent.SemiGroup,
+						this.Instance,
+						this.Type
 					);
 				return semiGlobalStr;
 			}
@@ -272,9 +266,9 @@ namespace pjse
 					globalStr = new Str(
 						Scope.Global,
 						null,
-						parent.GlobalGroup,
-						this.instance,
-						this.type
+						Parent.GlobalGroup,
+						this.Instance,
+						this.Type
 					);
 				return globalStr;
 			}
@@ -296,9 +290,9 @@ namespace pjse
 			get
 			{
 				StrWrapper w = Wrapper;
-				if (parent != null && group != parent.GlobalGroup)
+				if (Parent != null && Group != Parent.GlobalGroup)
 				{
-					if (w == null && group != parent.SemiGroup && SemiGlobalStr != null)
+					if (w == null && Group != Parent.SemiGroup && SemiGlobalStr != null)
 						w = SemiGlobalStr.Wrapper;
 					if (w == null && GlobalStr != null)
 						w = GlobalStr.Wrapper;
@@ -321,7 +315,7 @@ namespace pjse
 			{
 				FallbackStrItem fsi = new FallbackStrItem();
 
-				if (group == 0)
+				if (Group == 0)
 				{
 					fsi.strItem = null;
 					fsi.fallback.Add(
@@ -349,11 +343,11 @@ namespace pjse
 					}
 				}
 
-				if (parent != null)
+				if (Parent != null)
 				{
-					if (group != parent.GlobalGroup)
+					if (Group != Parent.GlobalGroup)
 					{
-						if (group != parent.SemiGroup && SemiGlobalStr != null)
+						if (Group != Parent.SemiGroup && SemiGlobalStr != null)
 						{
 							fsi = SemiGlobalStr[lid, sid];
 							if (!this.rejectStrItem(fsi))
@@ -415,7 +409,7 @@ namespace pjse
 
 		public void Dispose()
 		{
-			this.parent = null;
+			this.Parent = null;
 			this.wrapper = null;
 			this.semiGlobalStr = null;
 			this.globalStr = null;

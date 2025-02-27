@@ -10,93 +10,60 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 		{
 			public Element()
 			{
-				unk1 = 1;
-				unk3 = 1;
+				Unknown1 = 1;
+				Unknown3 = 1;
 			}
 
-			byte unk1;
 			public byte Unknown1
 			{
-				get
-				{
-					return unk1;
-				}
-				set
-				{
-					unk1 = value;
-				}
+				get; set;
 			}
 
-			uint guid;
 			public uint Guid
 			{
-				get
-				{
-					return guid;
-				}
-				set
-				{
-					guid = value;
-				}
+				get; set;
 			}
 
-			uint val;
 			public uint Value
 			{
-				get
-				{
-					return val;
-				}
-				set
-				{
-					val = value;
-				}
+				get; set;
 			}
-
-			byte unk3;
 			public byte Unknown3
 			{
-				get
-				{
-					return unk3;
-				}
-				set
-				{
-					unk3 = value;
-				}
+				get; set;
 			}
 
 			public void LoadData(System.IO.BinaryReader reader)
 			{
-				unk1 = reader.ReadByte();
-				guid = reader.ReadUInt32();
+				Unknown1 = reader.ReadByte();
+				Guid = reader.ReadUInt32();
 
-				unk3 = reader.ReadByte();
-				val = reader.ReadUInt32();
+				Unknown3 = reader.ReadByte();
+				Value = reader.ReadUInt32();
 			}
 
 			public void SaveData(System.IO.BinaryWriter writer)
 			{
-				writer.Write(unk1);
-				writer.Write(guid);
-				writer.Write(unk3);
-				writer.Write(val);
+				writer.Write(Unknown1);
+				writer.Write(Guid);
+				writer.Write(Unknown3);
+				writer.Write(Value);
 			}
 
 			public override string ToString()
 			{
-				string s = "0x" + Helper.HexString(guid);
+				string s = "0x" + Helper.HexString(Guid);
 				;
 				foreach (ExtObjd objd in LearnedBahaviourComboBox.BehaviourObjds)
-					if (objd.Guid == guid)
+					if (objd.Guid == Guid)
 						s = objd.FileName;
 				s +=
 					"("
-					+ Helper.HexString(unk1)
+					+ Helper.HexString(Unknown1)
 					+ " "
-					+ Helper.HexString(val)
+					+ Helper.HexString(Value)
 					+ " "
-					+ Helper.HexString(unk3)
+					+ Helper.HexString(Unknown3)
 					+ ")";
 				return s;
 			}

@@ -131,19 +131,22 @@ namespace SimPe.PackedFiles.Wrapper
 	/// </summary>
 	public class SimDNA : Cpf
 	{
-		Gene dominant,
-			recessive;
-
 		public SimDNA()
 			: base()
 		{
-			dominant = new Gene(this, 0);
-			recessive = new Gene(this, 0x10000000);
+			Dominant = new Gene(this, 0);
+			Recessive = new Gene(this, 0x10000000);
 		}
 
-		public Gene Dominant => dominant;
+		public Gene Dominant
+		{
+			get;
+		}
 
-		public Gene Recessive => recessive;
+		public Gene Recessive
+		{
+			get;
+		}
 
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{

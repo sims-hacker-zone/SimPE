@@ -8,11 +8,15 @@ namespace SimPe.Plugin.Downloads
 	/// </summary>
 	public abstract class ArchiveHandler : Downloads.IPackageHandler, System.IDisposable
 	{
-		string flname;
-		PackageInfoCollection nfos;
-		protected PackageInfoCollection Nfos => nfos;
+		protected PackageInfoCollection Nfos
+		{
+			get; private set;
+		}
 
-		protected string ArchiveName => flname;
+		protected string ArchiveName
+		{
+			get; private set;
+		}
 
 		public ArchiveHandler(string filename)
 		{
@@ -21,8 +25,8 @@ namespace SimPe.Plugin.Downloads
 
 		protected void DoInit(string filename)
 		{
-			nfos = new PackageInfoCollection();
-			this.flname = filename;
+			Nfos = new PackageInfoCollection();
+			this.ArchiveName = filename;
 			Reset();
 			LoadContent();
 		}
@@ -68,7 +72,7 @@ namespace SimPe.Plugin.Downloads
 					file
 				);
 				if (hnd != null)
-					nfos.AddRange(hnd.Objects);
+					Nfos.AddRange(hnd.Objects);
 
 				SimPe.Packages.StreamFactory.CloseStream(file);
 			}
@@ -113,12 +117,12 @@ namespace SimPe.Plugin.Downloads
 		protected void Reset()
 		{
 			OnReset();
-			nfos.Clear();
+			Nfos.Clear();
 		}
 
 		#region IPackageHandler Member
 
-		public IPackageInfo[] Objects => nfos.ToArray();
+		public IPackageInfo[] Objects => Nfos.ToArray();
 
 		#endregion
 
@@ -126,10 +130,10 @@ namespace SimPe.Plugin.Downloads
 
 		public void Dispose()
 		{
-			if (nfos != null)
-				nfos.Clear();
-			nfos = null;
-			flname = null;
+			if (Nfos != null)
+				Nfos.Clear();
+			Nfos = null;
+			ArchiveName = null;
 		}
 
 		#endregion

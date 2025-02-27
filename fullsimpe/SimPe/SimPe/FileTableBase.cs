@@ -32,22 +32,13 @@ namespace SimPe
 	/// </summary>
 	public class FileTableBase
 	{
-		static Interfaces.Scenegraph.IScenegraphFileIndex fileindex;
-
 		/// <summary>
 		/// Returns the FileIndex
 		/// </summary>
 		/// <remarks>This will be initialized by the RCOL Factory</remarks>
 		public static Interfaces.Scenegraph.IScenegraphFileIndex FileIndex
 		{
-			get
-			{
-				return fileindex;
-			}
-			set
-			{
-				fileindex = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -434,55 +425,28 @@ namespace SimPe
 			xw.WriteEndElement();
 		}
 
-		static SimPe.Interfaces.IWrapperRegistry wreg;
-
 		/// <summary>
 		/// Returns/Sets a WrapperRegistry (can be null)
 		/// </summary>
 		public static SimPe.Interfaces.IWrapperRegistry WrapperRegistry
 		{
-			get
-			{
-				return wreg;
-			}
-			set
-			{
-				wreg = value;
-			}
+			get; set;
 		}
-
-		static SimPe.Interfaces.IProviderRegistry preg;
 
 		/// <summary>
 		/// Returns/Sets a ProviderRegistry (can be null)
 		/// </summary>
 		public static SimPe.Interfaces.IProviderRegistry ProviderRegistry
 		{
-			get
-			{
-				return preg;
-			}
-			set
-			{
-				preg = value;
-			}
+			get; set;
 		}
-
-		static IGroupCache gc;
 
 		/// <summary>
 		/// Returns The Group Cache used to determin local Groups
 		/// </summary>
 		public static IGroupCache GroupCache
 		{
-			get
-			{
-				return gc;
-			}
-			set
-			{
-				gc = value;
-			}
+			get; set;
 		}
 	}
 }

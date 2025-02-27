@@ -50,13 +50,13 @@ namespace SimPe
 		/// <param name="ext">; seperated List of Extensions (like *.bmp;*.gif;*.tmp)</param>
 		internal ExtensionDescriptor(string name, string ext)
 		{
-			extensions = new ArrayList();
+			Extensions = new ArrayList();
 			string[] p = ext.Split(";".ToCharArray());
 
 			foreach (string s in p)
 				if (s.Trim() != "")
-					extensions.Add(s.Trim());
-			this.text = SimPe.Localization.GetString(name);
+					Extensions.Add(s.Trim());
+			this.Text = SimPe.Localization.GetString(name);
 		}
 
 		/// <summary>
@@ -64,23 +64,25 @@ namespace SimPe
 		/// </summary>
 		internal ExtensionDescriptor(string name, ArrayList ext)
 		{
-			this.extensions = ext;
-			this.text = SimPe.Localization.GetString(name);
+			this.Extensions = ext;
+			this.Text = SimPe.Localization.GetString(name);
 		}
-
-		ArrayList extensions;
 
 		/// <summary>
 		/// Returns a List of allowed Extensions for this Type (like *.bmp, *.gif, *.jpg)
 		/// </summary>
-		public ArrayList Extensions => extensions;
-
-		string text;
+		public ArrayList Extensions
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Name of this Extension
 		/// </summary>
-		public string Text => text;
+		public string Text
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the ExtensionList as string
@@ -89,11 +91,11 @@ namespace SimPe
 		public string GetExtensionList()
 		{
 			string res = "";
-			for (int i = 0; i < extensions.Count; i++)
+			for (int i = 0; i < Extensions.Count; i++)
 			{
 				if (i != 0)
 					res += ";";
-				res += extensions[i];
+				res += Extensions[i];
 			}
 
 			return res;
@@ -105,7 +107,7 @@ namespace SimPe
 		/// <returns></returns>
 		public override string ToString()
 		{
-			return text + " (" + GetExtensionList() + ")|" + GetExtensionList();
+			return Text + " (" + GetExtensionList() + ")|" + GetExtensionList();
 		}
 
 		/// <summary>
@@ -116,8 +118,8 @@ namespace SimPe
 		public bool AllowedExtension(string filename)
 		{
 			filename = filename.Trim().ToLower();
-			for (int i = 0; i < extensions.Count; i++)
-				if (filename.EndsWith(extensions[i].ToString().Replace("*", "")))
+			for (int i = 0; i < Extensions.Count; i++)
+				if (filename.EndsWith(Extensions[i].ToString().Replace("*", "")))
 					return true;
 			return false;
 		}

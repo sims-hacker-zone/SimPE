@@ -43,8 +43,6 @@ namespace SimPe.Plugin.Anim
 			System.IComparable
 	{
 		#region Attributes
-		int index;
-
 		/// <summary>
 		/// Index of this Object within the Parent List
 		/// </summary>
@@ -52,7 +50,10 @@ namespace SimPe.Plugin.Anim
 			Description("Index of this Object within the Parent List"),
 			Category("Information")
 		]
-		public int Index => index;
+		public int Index
+		{
+			get; private set;
+		}
 
 		public AnimationAxisTransformBlock parent;
 
@@ -116,8 +117,6 @@ namespace SimPe.Plugin.Anim
 			}
 		}
 
-		short param;
-
 		/// <summary>
 		/// The Transformation Parameter for this Frame
 		/// </summary>
@@ -127,14 +126,7 @@ namespace SimPe.Plugin.Anim
 		]
 		public short Parameter
 		{
-			get
-			{
-				return param;
-			}
-			set
-			{
-				param = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -156,30 +148,14 @@ namespace SimPe.Plugin.Anim
 			}
 		}
 
-		short u1;
 		public short Unknown1
 		{
-			get
-			{
-				return u1;
-			}
-			set
-			{
-				u1 = value;
-			}
+			get; set;
 		}
 
-		short u2;
 		public short Unknown2
 		{
-			get
-			{
-				return u2;
-			}
-			set
-			{
-				u2 = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -218,7 +194,7 @@ namespace SimPe.Plugin.Anim
 
 		internal void SetIndex(int index)
 		{
-			this.index = index;
+			this.Index = index;
 		}
 
 		internal void SetParent(AnimationAxisTransformBlock parent)
@@ -232,9 +208,9 @@ namespace SimPe.Plugin.Anim
 		public void Reset()
 		{
 			tc = 0;
-			param = 0;
-			u1 = 0;
-			u2 = 0;
+			Parameter = 0;
+			Unknown1 = 0;
+			Unknown2 = 0;
 		}
 
 		/// <summary>
@@ -250,20 +226,20 @@ namespace SimPe.Plugin.Anim
 
 			if (parent.Type == AnimationTokenType.TwoByte)
 			{
-				param = datas[0];
+				Parameter = datas[0];
 			}
 			else if (parent.Type == AnimationTokenType.SixByte)
 			{
 				tc = (ushort)datas[0];
-				param = datas[1];
-				u1 = datas[2];
+				Parameter = datas[1];
+				Unknown1 = datas[2];
 			}
 			else
 			{
 				tc = (ushort)datas[0];
-				param = datas[1];
-				u1 = datas[2];
-				u2 = datas[3];
+				Parameter = datas[1];
+				Unknown1 = datas[2];
+				Unknown2 = datas[3];
 			}
 		}
 
@@ -277,20 +253,20 @@ namespace SimPe.Plugin.Anim
 
 			if (parent.Type == AnimationTokenType.TwoByte)
 			{
-				datas[0] = param;
+				datas[0] = Parameter;
 			}
 			else if (parent.Type == AnimationTokenType.SixByte)
 			{
 				datas[0] = (short)tc;
-				datas[1] = param;
-				datas[2] = u1;
+				datas[1] = Parameter;
+				datas[2] = Unknown1;
 			}
 			else
 			{
 				datas[0] = (short)tc;
-				datas[1] = param;
-				datas[2] = u1;
-				datas[3] = u2;
+				datas[1] = Parameter;
+				datas[2] = Unknown1;
+				datas[3] = Unknown2;
 			}
 
 			for (int i = 0; i < datas.Length; i++)

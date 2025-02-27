@@ -26,33 +26,17 @@ namespace SimPe.Plugin
 	{
 		public ShapeRefNodeItem_A()
 		{
-			unknown1 = 0x101;
+			Unknown1 = 0x101;
 		}
 
-		ushort unknown1;
 		public ushort Unknown1
 		{
-			get
-			{
-				return unknown1;
-			}
-			set
-			{
-				unknown1 = value;
-			}
+			get; set;
 		}
 
-		int unknown2;
 		public int Unknown2
 		{
-			get
-			{
-				return unknown2;
-			}
-			set
-			{
-				unknown2 = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -61,8 +45,8 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		public void Unserialize(System.IO.BinaryReader reader)
 		{
-			unknown1 = reader.ReadUInt16();
-			unknown2 = reader.ReadInt32();
+			Unknown1 = reader.ReadUInt16();
+			Unknown2 = reader.ReadInt32();
 		}
 
 		/// <summary>
@@ -75,55 +59,39 @@ namespace SimPe.Plugin
 		/// </remarks>
 		public void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(unknown1);
-			writer.Write(unknown2);
+			writer.Write(Unknown1);
+			writer.Write(Unknown2);
 		}
 
 		public override string ToString()
 		{
 			return "0x"
-				+ Helper.HexString(unknown1)
+				+ Helper.HexString(Unknown1)
 				+ " 0x"
-				+ Helper.HexString((uint)unknown2);
+				+ Helper.HexString((uint)Unknown2);
 		}
 	}
 
 	public class ShapeRefNodeItem_B
 	{
-		int unknown1;
 		public int Unknown1
 		{
-			get
-			{
-				return unknown1;
-			}
-			set
-			{
-				unknown1 = value;
-			}
+			get; set;
 		}
 
-		string data;
 		public string Name
 		{
-			get
-			{
-				return data;
-			}
-			set
-			{
-				data = value;
-			}
+			get; set;
 		}
 
 		public ShapeRefNodeItem_B()
 		{
-			data = "";
+			Name = "";
 		}
 
 		public override string ToString()
 		{
-			return "0x" + Helper.HexString((uint)unknown1) + ": " + Name;
+			return "0x" + Helper.HexString((uint)Unknown1) + ": " + Name;
 		}
 	}
 
@@ -137,134 +105,54 @@ namespace SimPe.Plugin
 		BoundedNode bn;
 		TransformNode tn;
 
-		short unknown1;
 		public short Unknown1
 		{
-			get
-			{
-				return unknown1;
-			}
-			set
-			{
-				unknown1 = value;
-			}
+			get; set;
 		}
 
-		int unknown2;
 		public int Unknown2
 		{
-			get
-			{
-				return unknown2;
-			}
-			set
-			{
-				unknown2 = value;
-			}
+			get; set;
 		}
 
-		string name;
 		public string Name
 		{
-			get
-			{
-				return name;
-			}
-			set
-			{
-				name = value;
-			}
+			get; set;
 		}
 
-		int unknown3;
 		public int Unknown3
 		{
-			get
-			{
-				return unknown3;
-			}
-			set
-			{
-				unknown3 = value;
-			}
+			get; set;
 		}
 
-		byte unknown4;
 		public byte Unknown4
 		{
-			get
-			{
-				return unknown4;
-			}
-			set
-			{
-				unknown4 = value;
-			}
+			get; set;
 		}
 
-		ShapeRefNodeItem_A[] itemsa;
 		public ShapeRefNodeItem_A[] ItemsA
 		{
-			get
-			{
-				return itemsa;
-			}
-			set
-			{
-				itemsa = value;
-			}
+			get; set;
 		}
 
-		int unknown5;
 		public int Unknown5
 		{
-			get
-			{
-				return unknown5;
-			}
-			set
-			{
-				unknown5 = value;
-			}
+			get; set;
 		}
 
-		ShapeRefNodeItem_B[] itemsb;
 		public ShapeRefNodeItem_B[] ItemsB
 		{
-			get
-			{
-				return itemsb;
-			}
-			set
-			{
-				itemsb = value;
-			}
+			get; set;
 		}
 
-		byte[] data;
 		public byte[] Data
 		{
-			get
-			{
-				return data;
-			}
-			set
-			{
-				data = value;
-			}
+			get; set;
 		}
 
-		int unknown6;
 		public int Unknown6
 		{
-			get
-			{
-				return unknown6;
-			}
-			set
-			{
-				unknown6 = value;
-			}
+			get; set;
 		}
 
 		[BrowsableAttribute(false)]
@@ -282,18 +170,18 @@ namespace SimPe.Plugin
 			bn = new BoundedNode(null);
 			tn = new TransformNode(null);
 
-			itemsa = new ShapeRefNodeItem_A[0];
-			itemsb = new ShapeRefNodeItem_B[0];
+			ItemsA = new ShapeRefNodeItem_A[0];
+			ItemsB = new ShapeRefNodeItem_B[0];
 
-			data = new byte[0];
+			Data = new byte[0];
 
 			version = 0x15;
-			unknown1 = 1;
-			unknown2 = 1;
-			unknown4 = 1;
-			unknown5 = 0x10;
-			unknown6 = -1;
-			name = "Practical";
+			Unknown1 = 1;
+			Unknown2 = 1;
+			Unknown4 = 1;
+			Unknown5 = 0x10;
+			Unknown6 = -1;
+			Name = "Practical";
 			BlockID = 0x65245517;
 		}
 
@@ -322,39 +210,39 @@ namespace SimPe.Plugin
 			tn.Unserialize(reader);
 			tn.BlockID = myid;
 
-			unknown1 = reader.ReadInt16();
-			unknown2 = reader.ReadInt32();
-			this.name = reader.ReadString();
-			unknown3 = reader.ReadInt32();
-			unknown4 = reader.ReadByte();
+			Unknown1 = reader.ReadInt16();
+			Unknown2 = reader.ReadInt32();
+			this.Name = reader.ReadString();
+			Unknown3 = reader.ReadInt32();
+			Unknown4 = reader.ReadByte();
 
-			itemsa = new ShapeRefNodeItem_A[reader.ReadUInt32()];
-			for (int i = 0; i < itemsa.Length; i++)
+			ItemsA = new ShapeRefNodeItem_A[reader.ReadUInt32()];
+			for (int i = 0; i < ItemsA.Length; i++)
 			{
-				itemsa[i] = new ShapeRefNodeItem_A();
-				itemsa[i].Unserialize(reader);
+				ItemsA[i] = new ShapeRefNodeItem_A();
+				ItemsA[i].Unserialize(reader);
 			}
-			unknown5 = reader.ReadInt32();
+			Unknown5 = reader.ReadInt32();
 
-			itemsb = new ShapeRefNodeItem_B[reader.ReadUInt32()];
-			for (int i = 0; i < itemsb.Length; i++)
+			ItemsB = new ShapeRefNodeItem_B[reader.ReadUInt32()];
+			for (int i = 0; i < ItemsB.Length; i++)
 			{
-				itemsb[i] = new ShapeRefNodeItem_B();
-				itemsb[i].Unknown1 = reader.ReadInt32();
+				ItemsB[i] = new ShapeRefNodeItem_B();
+				ItemsB[i].Unknown1 = reader.ReadInt32();
 			}
 
 			int len = 0;
 			if (version == 0x15)
 			{
-				for (int i = 0; i < itemsb.Length; i++)
+				for (int i = 0; i < ItemsB.Length; i++)
 				{
-					itemsb[i].Name = reader.ReadString();
+					ItemsB[i].Name = reader.ReadString();
 				}
 			}
 
 			len = reader.ReadInt32();
-			data = reader.ReadBytes(len);
-			unknown6 = reader.ReadInt32();
+			Data = reader.ReadBytes(len);
+			Unknown6 = reader.ReadInt32();
 		}
 
 		/// <summary>
@@ -381,34 +269,34 @@ namespace SimPe.Plugin
 			writer.Write(tn.BlockID);
 			tn.Serialize(writer);
 
-			writer.Write(unknown1);
-			writer.Write(unknown2);
-			writer.Write(name);
-			writer.Write(unknown3);
-			writer.Write(unknown4);
+			writer.Write(Unknown1);
+			writer.Write(Unknown2);
+			writer.Write(Name);
+			writer.Write(Unknown3);
+			writer.Write(Unknown4);
 
-			writer.Write((uint)itemsa.Length);
-			for (int i = 0; i < itemsa.Length; i++)
-				itemsa[i].Serialize(writer);
-			writer.Write(unknown5);
+			writer.Write((uint)ItemsA.Length);
+			for (int i = 0; i < ItemsA.Length; i++)
+				ItemsA[i].Serialize(writer);
+			writer.Write(Unknown5);
 
-			writer.Write((uint)itemsb.Length);
-			for (int i = 0; i < itemsb.Length; i++)
+			writer.Write((uint)ItemsB.Length);
+			for (int i = 0; i < ItemsB.Length; i++)
 			{
-				writer.Write(itemsb[i].Unknown1);
+				writer.Write(ItemsB[i].Unknown1);
 			}
 
 			if (version == 0x15)
 			{
-				for (int i = 0; i < itemsb.Length; i++)
+				for (int i = 0; i < ItemsB.Length; i++)
 				{
-					writer.Write(itemsb[i].Name);
+					writer.Write(ItemsB[i].Name);
 				}
 			}
 
-			writer.Write((int)data.Length);
-			writer.Write(data);
-			writer.Write(unknown6);
+			writer.Write((int)Data.Length);
+			writer.Write(Data);
+			writer.Write(Unknown6);
 		}
 
 		TabPage.ShapeRefNode tShapeRefNode;
@@ -448,27 +336,27 @@ namespace SimPe.Plugin
 				tShapeRefNode = new SimPe.Plugin.TabPage.ShapeRefNode();
 
 			tShapeRefNode.lb_srn_a.Items.Clear();
-			for (int i = 0; i < this.itemsa.Length; i++)
-				tShapeRefNode.lb_srn_a.Items.Add(itemsa[i]);
+			for (int i = 0; i < this.ItemsA.Length; i++)
+				tShapeRefNode.lb_srn_a.Items.Add(ItemsA[i]);
 
 			tShapeRefNode.lb_srn_b.Items.Clear();
-			for (int i = 0; i < this.itemsb.Length; i++)
-				tShapeRefNode.lb_srn_b.Items.Add(itemsb[i]);
+			for (int i = 0; i < this.ItemsB.Length; i++)
+				tShapeRefNode.lb_srn_b.Items.Add(ItemsB[i]);
 
 			tShapeRefNode.tb_srn_uk1.Text =
-				"0x" + Helper.HexString((ushort)this.unknown1);
+				"0x" + Helper.HexString((ushort)this.Unknown1);
 			tShapeRefNode.tb_srn_uk2.Text =
-				"0x" + Helper.HexString((uint)this.unknown2);
+				"0x" + Helper.HexString((uint)this.Unknown2);
 			tShapeRefNode.tb_srn_uk3.Text =
-				"0x" + Helper.HexString((uint)this.unknown3);
-			tShapeRefNode.tb_srn_uk4.Text = "0x" + Helper.HexString(this.unknown4);
+				"0x" + Helper.HexString((uint)this.Unknown3);
+			tShapeRefNode.tb_srn_uk4.Text = "0x" + Helper.HexString(this.Unknown4);
 			tShapeRefNode.tb_srn_uk5.Text =
-				"0x" + Helper.HexString((uint)this.unknown5);
+				"0x" + Helper.HexString((uint)this.Unknown5);
 			tShapeRefNode.tb_srn_uk6.Text =
-				"0x" + Helper.HexString((uint)this.unknown6);
+				"0x" + Helper.HexString((uint)this.Unknown6);
 
-			tShapeRefNode.tb_srn_kind.Text = this.name;
-			tShapeRefNode.tb_srn_data.Text = Helper.BytesToHexList(this.data);
+			tShapeRefNode.tb_srn_kind.Text = this.Name;
+			tShapeRefNode.tb_srn_data.Text = Helper.BytesToHexList(this.Data);
 
 			tShapeRefNode.tb_srn_ver.Text = "0x" + Helper.HexString(this.version);
 		}
@@ -483,7 +371,7 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			return name
+			return Name
 				+ " - "
 				+ tn.ObjectGraphNode.FileName
 				+ " ("

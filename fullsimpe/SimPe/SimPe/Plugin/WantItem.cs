@@ -56,149 +56,71 @@ namespace SimPe.Plugin
 	public class WantItem
 	{
 		#region Attributes
-		uint version;
 		public uint Version
 		{
-			get
-			{
-				return version;
-			}
-			set
-			{
-				version = value;
-			}
+			get; set;
 		}
 
-		ushort siminst;
 		public ushort SimInstance
 		{
-			get
-			{
-				return siminst;
-			}
-			set
-			{
-				siminst = value;
-			}
+			get; set;
 		}
 
-		uint guid;
 		public uint Guid
 		{
-			get
-			{
-				return guid;
-			}
-			set
-			{
-				guid = value;
-			}
+			get; set;
 		}
 
-		WantType type;
 		public WantType Type
 		{
-			get
-			{
-				return type;
-			}
-			set
-			{
-				type = value;
-			}
+			get; set;
 		}
 
-		uint data;
 		public uint Value
 		{
-			get
-			{
-				return data;
-			}
-			set
-			{
-				data = value;
-			}
+			get; set;
 		}
 
-		ushort property;
 		public ushort Property
 		{
-			get
-			{
-				return property;
-			}
-			set
-			{
-				property = value;
-			}
+			get; set;
 		}
 
-		uint counter;
 		public uint Index
 		{
-			get
-			{
-				return counter;
-			}
-			set
-			{
-				counter = value;
-			}
+			get; set;
 		}
 
-		int score;
 		public int Score
 		{
-			get
-			{
-				return score;
-			}
-			set
-			{
-				score = value;
-			}
+			get; set;
 		}
 
-		WantFlags flag;
 		public WantFlags Flag
 		{
-			get
-			{
-				return flag;
-			}
-			set
-			{
-				flag = value;
-			}
+			get; set;
 		}
 
-		int influence;
 		public int Influence
 		{
-			get
-			{
-				return influence;
-			}
-			set
-			{
-				influence = value;
-			}
+			get; set;
 		}
 
-		Interfaces.IProviderRegistry provider;
-		public Interfaces.IProviderRegistry Provider => provider;
+		public Interfaces.IProviderRegistry Provider
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns Informations about the Selected want
 		/// </summary>
-		public WantInformation Information => WantInformation.LoadWant(guid);
+		public WantInformation Information => WantInformation.LoadWant(Guid);
 		#endregion
 
 		public WantItem(Interfaces.IProviderRegistry provider)
 		{
-			version = 8;
-			this.provider = provider;
+			Version = 8;
+			this.Provider = provider;
 		}
 
 		/// <summary>
@@ -207,33 +129,33 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		public void Unserialize(System.IO.BinaryReader reader)
 		{
-			version = reader.ReadUInt32();
-			siminst = reader.ReadUInt16();
-			guid = reader.ReadUInt32();
-			type = (WantType)reader.ReadByte();
+			Version = reader.ReadUInt32();
+			SimInstance = reader.ReadUInt16();
+			Guid = reader.ReadUInt32();
+			Type = (WantType)reader.ReadByte();
 
-			if (type == WantType.Skill)
-				data = reader.ReadUInt16();
-			else if (type == WantType.Sim)
+			if (Type == WantType.Skill)
+				Value = reader.ReadUInt16();
+			else if (Type == WantType.Sim)
 			{
-				if (version >= 8)
-					data = reader.ReadUInt16();
+				if (Version >= 8)
+					Value = reader.ReadUInt16();
 				else
-					data = 0;
+					Value = 0;
 			}
-			else if ((byte)type > 1)
-				data = reader.ReadUInt32();
+			else if ((byte)Type > 1)
+				Value = reader.ReadUInt32();
 			else
-				data = 0;
+				Value = 0;
 
-			property = reader.ReadUInt16();
-			counter = reader.ReadUInt32();
-			score = reader.ReadInt32();
+			Property = reader.ReadUInt16();
+			Index = reader.ReadUInt32();
+			Score = reader.ReadInt32();
 
-			if (version >= 9)
-				influence = reader.ReadInt32();
+			if (Version >= 9)
+				Influence = reader.ReadInt32();
 
-			flag = new WantFlags(reader.ReadByte());
+			Flag = new WantFlags(reader.ReadByte());
 		}
 
 		/// <summary>
@@ -246,33 +168,33 @@ namespace SimPe.Plugin
 		/// </remarks>
 		public void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(version);
-			writer.Write(siminst);
-			writer.Write(guid);
-			writer.Write((byte)type);
+			writer.Write(Version);
+			writer.Write(SimInstance);
+			writer.Write(Guid);
+			writer.Write((byte)Type);
 
-			if (type == WantType.Skill)
-				writer.Write((ushort)data);
-			else if (type == WantType.Sim)
+			if (Type == WantType.Skill)
+				writer.Write((ushort)Value);
+			else if (Type == WantType.Sim)
 			{
-				if (version >= 8)
-					writer.Write((ushort)data);
+				if (Version >= 8)
+					writer.Write((ushort)Value);
 				else
-					data = 0;
+					Value = 0;
 			}
-			else if ((byte)type > 1)
-				writer.Write((uint)data);
+			else if ((byte)Type > 1)
+				writer.Write((uint)Value);
 			else
-				data = 0;
+				Value = 0;
 
-			writer.Write(property);
-			writer.Write(counter);
-			writer.Write(score);
+			writer.Write(Property);
+			writer.Write(Index);
+			writer.Write(Score);
 
-			if (version >= 9)
-				writer.Write(influence);
+			if (Version >= 9)
+				writer.Write(Influence);
 
-			writer.Write((byte)flag.Value);
+			writer.Write((byte)Flag.Value);
 		}
 
 		public override string ToString()

@@ -32,82 +32,34 @@ namespace SimPe.Plugin
 		BoundedNode bn;
 		TransformNode tn;
 
-		short unknown1;
 		public short Unknown1
 		{
-			get
-			{
-				return unknown1;
-			}
-			set
-			{
-				unknown1 = value;
-			}
+			get; set;
 		}
 
-		string[] names;
 		public string[] Names
 		{
-			get
-			{
-				return names;
-			}
-			set
-			{
-				names = value;
-			}
+			get; set;
 		}
 
-		int unknown2;
 		public int Unknown2
 		{
-			get
-			{
-				return unknown2;
-			}
-			set
-			{
-				unknown2 = value;
-			}
+			get; set;
 		}
 
-		short unknown3;
 		public short Unknown3
 		{
-			get
-			{
-				return unknown3;
-			}
-			set
-			{
-				unknown3 = value;
-			}
+			get; set;
 		}
 
-		string unknown4;
 		public string Unknown4
 		{
-			get
-			{
-				return unknown4;
-			}
-			set
-			{
-				unknown4 = value;
-			}
+			get; set;
 		}
 
-		byte[] unknown5;
 		public byte[] Unknown5
 		{
-			get
-			{
-				return unknown5;
-			}
-			set
-			{
-				unknown5 = value;
-			}
+			get; set;
 		}
 
 		#endregion
@@ -124,9 +76,9 @@ namespace SimPe.Plugin
 			bn = new BoundedNode(null);
 			tn = new TransformNode(null);
 
-			names = new string[0];
-			unknown4 = "";
-			unknown5 = new byte[64];
+			Names = new string[0];
+			Unknown4 = "";
+			Unknown5 = new byte[64];
 
 			version = 0x01;
 			BlockID = 0x0c152b8e;
@@ -162,15 +114,15 @@ namespace SimPe.Plugin
 			tn.Unserialize(reader);
 			tn.BlockID = myid;
 
-			unknown1 = reader.ReadInt16();
-			names = new string[reader.ReadInt32()];
-			for (int i = 0; i < names.Length; i++)
-				names[i] = reader.ReadString();
+			Unknown1 = reader.ReadInt16();
+			Names = new string[reader.ReadInt32()];
+			for (int i = 0; i < Names.Length; i++)
+				Names[i] = reader.ReadString();
 
-			unknown2 = reader.ReadInt32();
-			unknown3 = reader.ReadInt16();
-			unknown4 = reader.ReadString();
-			unknown5 = reader.ReadBytes(64);
+			Unknown2 = reader.ReadInt32();
+			Unknown3 = reader.ReadInt16();
+			Unknown4 = reader.ReadString();
+			Unknown5 = reader.ReadBytes(64);
 		}
 
 		/// <summary>
@@ -201,15 +153,15 @@ namespace SimPe.Plugin
 			writer.Write(tn.BlockID);
 			tn.Serialize(writer);
 
-			writer.Write(unknown1);
-			writer.Write((int)names.Length);
-			for (int i = 0; i < names.Length; i++)
-				writer.Write(names[i]);
+			writer.Write(Unknown1);
+			writer.Write((int)Names.Length);
+			for (int i = 0; i < Names.Length; i++)
+				writer.Write(Names[i]);
 
-			writer.Write(unknown2);
-			writer.Write(unknown3);
-			writer.Write(unknown4);
-			writer.Write(unknown5);
+			writer.Write(Unknown2);
+			writer.Write(Unknown3);
+			writer.Write(Unknown4);
+			writer.Write(Unknown5);
 		}
 
 		//fShapeRefNode form = null;

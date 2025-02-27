@@ -112,21 +112,12 @@ namespace SimPe
 	/// </summary>
 	public class ColumnsSorter : IComparer
 	{
-		int[] co;
-
 		/// <summary>
 		/// The Currently active Column
 		/// </summary>
 		public int[] ColumnOrder
 		{
-			get
-			{
-				return co;
-			}
-			set
-			{
-				co = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -139,7 +130,7 @@ namespace SimPe
 
 		public ColumnsSorter(int[] columns)
 		{
-			co = columns;
+			ColumnOrder = columns;
 		}
 
 		/// <summary>
@@ -159,11 +150,11 @@ namespace SimPe
 				rowA = (ListViewItem)y;
 			}
 
-			for (int cc = 0; cc < co.Length; cc++)
+			for (int cc = 0; cc < ColumnOrder.Length; cc++)
 			{
 				int cmp = String.Compare(
-					rowA.SubItems[co[cc]].Text,
-					rowB.SubItems[co[cc]].Text
+					rowA.SubItems[ColumnOrder[cc]].Text,
+					rowB.SubItems[ColumnOrder[cc]].Text
 				);
 				if (cmp != 0)
 					return cmp;

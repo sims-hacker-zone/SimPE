@@ -33,61 +33,52 @@ namespace SimPe
 	{
 		public FlagBase(ushort flags)
 		{
-			this.flags = flags;
+			this.Value = flags;
 		}
 
 		public FlagBase(object flags)
 		{
-			this.flags = 0;
+			this.Value = 0;
 			try
 			{
-				this.flags = Convert.ToUInt16(flags);
+				this.Value = Convert.ToUInt16(flags);
 			}
 			catch { }
 		}
 
-		ushort flags;
-
 		[System.ComponentModel.Browsable(false)]
 		public ushort Value
 		{
-			get
-			{
-				return flags;
-			}
-			set
-			{
-				flags = value;
-			}
+			get; set;
 		}
 
 		protected bool GetBit(byte nr)
 		{
 			ushort mask = (ushort)(1 << nr);
-			return ((flags & mask) != 0);
+			return ((Value & mask) != 0);
 		}
 
 		protected void SetBit(byte nr, bool val)
 		{
 			ushort mask = (ushort)(1 << nr);
-			flags = (ushort)(flags | mask);
+			Value = (ushort)(Value | mask);
 			if (!val)
-				flags -= mask;
+				Value -= mask;
 		}
 
 		public override string ToString()
 		{
-			return Convert.ToString(flags, 2);
+			return Convert.ToString(Value, 2);
 		}
 
 		public static implicit operator ushort(FlagBase m)
 		{
-			return m.flags;
+			return m.Value;
 		}
 
 		public static implicit operator short(FlagBase m)
 		{
-			return (short)m.flags;
+			return (short)m.Value;
 		}
 	}
 }

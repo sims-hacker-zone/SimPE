@@ -43,35 +43,15 @@ namespace SimPe
 		}
 
 		string name;
-		string sname;
-		string objfolder;
-		int version;
-		int runtimeversion;
-		Expansions exp;
-		Microsoft.Win32.RegistryKey rk;
 		Microsoft.Win32.RegistryKey tk;
 		bool isfound;
-		string exe;
-		Flags flag;
-		string censor;
-		Ambertation.CaseInvariantArrayList simnamedeep;
 		Ambertation.CaseInvariantArrayList savegames;
-
-		Ambertation.CaseInvariantArrayList preobjectfiltablefolders;
-		Ambertation.CaseInvariantArrayList filtablefolders;
-		IList<long> groups;
-		int group;
-
-		string shortname;
-		string shortername;
-		string longname;
-		string namelistnr;
 
 		// string installsuffix; - Not used any more - CJH
 
 		void SetDefaultFileTableFolders()
 		{
-			if (preobjectfiltablefolders.Count == 0)
+			if (PreObjectFileTableFolders.Count == 0)
 			{
 				if (Flag.Class == ExpansionItem.Classes.BaseGame)
 					AddFileTableFolder(
@@ -85,7 +65,7 @@ namespace SimPe
 					);
 			}
 
-			if (filtablefolders.Count == 0)
+			if (FileTableFolders.Count == 0)
 			{
 				if (Flag.Class == ExpansionItem.Classes.BaseGame)
 					AddFileTableFolder(
@@ -155,11 +135,11 @@ namespace SimPe
 		{
 			if (folder.StartsWith("!"))
 			{
-				AddFileTableFolder(preobjectfiltablefolders, folder.Substring(1));
+				AddFileTableFolder(PreObjectFileTableFolders, folder.Substring(1));
 			}
-			else if (!filtablefolders.Contains(folder))
+			else if (!FileTableFolders.Contains(folder))
 			{
-				AddFileTableFolder(filtablefolders, folder);
+				AddFileTableFolder(FileTableFolders, folder);
 			}
 		}
 
@@ -190,14 +170,14 @@ namespace SimPe
 
 		internal ExpansionItem(XmlRegistryKey key)
 		{
-			filtablefolders = new Ambertation.CaseInvariantArrayList();
-			preobjectfiltablefolders = new Ambertation.CaseInvariantArrayList();
+			FileTableFolders = new Ambertation.CaseInvariantArrayList();
+			PreObjectFileTableFolders = new Ambertation.CaseInvariantArrayList();
 			string[] inst = Helper.WindowsRegistry.InstalledEPExecutables;
 
-			shortname = "Unk.";
-			shortername = "Unknown";
-			longname = "The Sims 2 - Unknown";
-			namelistnr = "0";
+			NameShort = "Unk.";
+			NameShorter = "Unknown";
+			Name = "The Sims 2 - Unknown";
+			NameSortNumber = "0";
 			if (key != null)
 			{
 				name = key.Name;
@@ -212,27 +192,27 @@ namespace SimPe
 						false
 					);
 
-				version = (int)key.GetValue("Version", 0);
-				runtimeversion = (int)key.GetValue("PreferedRuntimeVersion", version);
-				exp = (Expansions)(Math.Pow(2, version));
-				flag = new Flags((int)key.GetValue("Flag", 0));
+				Version = (int)key.GetValue("Version", 0);
+				PreferedRuntimeVersion = (int)key.GetValue("PreferedRuntimeVersion", Version);
+				Expansion = (Expansions)(Math.Pow(2, Version));
+				Flag = new Flags((int)key.GetValue("Flag", 0));
 
-				exe = (string)key.GetValue("ExeName", "Sims2.exe");
+				ExeName = (string)key.GetValue("ExeName", "Sims2.exe");
 				tk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
-					"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\" + exe,
+					"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\" + ExeName,
 					false
 				);
 
 				if (Helper.WindowsRegistry.LoadOnlySimsStory > 0)
 				{
-					if (version == Helper.WindowsRegistry.LoadOnlySimsStory)
+					if (Version == Helper.WindowsRegistry.LoadOnlySimsStory)
 						isfound = true;
 					else
 						isfound = false;
 				}
 				else
 				{
-					if (version == 0 || flag.SimStory == true)
+					if (Version == 0 || Flag.SimStory == true)
 						isfound = true;
 					else
 					{
@@ -241,7 +221,7 @@ namespace SimPe
 						{
 							if (si == "")
 								continue;
-							if (si == exe.ToLower().Trim())
+							if (si == ExeName.ToLower().Trim())
 								isfound = true;
 						}
 					}
@@ -259,25 +239,25 @@ namespace SimPe
 				if (tk != null) // if (tk != null && isfound == true)
 				{
 					object o = tk.GetValue("Game Registry", false);
-					rk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
+					Registry = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
 						(string)o,
 						false
 					);
 				}
 				else
-					rk = null;
-				if (version == 18 || version == 19)
-					censor = "";
+					Registry = null;
+				if (Version == 18 || Version == 19)
+					CensorFileName = "";
 				else
-					censor = (string)key.GetValue("Censor", "");
-				group = (int)key.GetValue("Group", 1);
-				objfolder = (string)
+					CensorFileName = (string)key.GetValue("Censor", "");
+				Group = (int)key.GetValue("Group", 1);
+				ObjectsSubFolder = (string)
 					key.GetValue(
 						"ObjectsFolder",
 						"TSData" + Helper.PATH_SEP + "Res" + Helper.PATH_SEP + "Objects"
 					);
 
-				simnamedeep = (Ambertation.CaseInvariantArrayList)
+				SimNameDeepSearch = (Ambertation.CaseInvariantArrayList)
 					key.GetValue(
 						"SimNameDeepSearch",
 						new Ambertation.CaseInvariantArrayList()
@@ -312,61 +292,61 @@ namespace SimPe
 
 				System.Diagnostics.Debug.WriteLine(this.ToString());
 
-				namelistnr = (string)key.GetValue("namelistnr", "0");
+				NameSortNumber = (string)key.GetValue("namelistnr", "0");
 				string dname = name;
 				if (lang != null)
 				{
-					shortname = (string)lang.GetValue("short", name);
-					shortername = (string)lang.GetValue("name", shortname);
-					if (rk != null)
-						dname = (string)rk.GetValue("DisplayName", shortername);
-					longname = (string)lang.GetValue("long", dname);
+					NameShort = (string)lang.GetValue("short", name);
+					NameShorter = (string)lang.GetValue("name", NameShort);
+					if (Registry != null)
+						dname = (string)Registry.GetValue("DisplayName", NameShorter);
+					Name = (string)lang.GetValue("long", dname);
 				}
 				else //1. check the resource files, then try default language, then set to defaults
 				{
 					if (lang == null)
 						lang = key.OpenSubKey("en", false);
-					shortname = SimPe.Localization.GetString("EP SNAME " + version);
-					shortername = shortname;
+					NameShort = SimPe.Localization.GetString("EP SNAME " + Version);
+					NameShorter = NameShort;
 
-					if (shortname == "EP SNAME " + version && lang != null)
+					if (NameShort == "EP SNAME " + Version && lang != null)
 					{
-						shortname = (string)lang.GetValue("short", name);
-						shortername = (string)lang.GetValue("name", shortname);
+						NameShort = (string)lang.GetValue("short", name);
+						NameShorter = (string)lang.GetValue("name", NameShort);
 					}
-					if (shortname == "EP SNAME " + version)
-						shortname = name;
+					if (NameShort == "EP SNAME " + Version)
+						NameShort = name;
 
-					if (rk != null)
-						dname = (string)rk.GetValue("DisplayName", shortername);
+					if (Registry != null)
+						dname = (string)Registry.GetValue("DisplayName", NameShorter);
 
-					longname = SimPe.Localization.GetString("EP NAME " + version);
-					if (longname == "EP NAME " + version && lang != null)
-						longname = (string)lang.GetValue("long", dname);
-					if (longname == "EP NAME " + version)
-						longname = dname;
+					Name = SimPe.Localization.GetString("EP NAME " + Version);
+					if (Name == "EP NAME " + Version && lang != null)
+						Name = (string)lang.GetValue("long", dname);
+					if (Name == "EP NAME " + Version)
+						Name = dname;
 				}
 			}
 			else
 			{
 				name = "NULL";
-				flag = new Flags(0);
-				censor = "";
-				exe = "";
-				exp = (Expansions)0;
-				version = -1;
-				runtimeversion = -1;
-				simnamedeep = new Ambertation.CaseInvariantArrayList();
+				Flag = new Flags(0);
+				CensorFileName = "";
+				ExeName = "";
+				Expansion = (Expansions)0;
+				Version = -1;
+				PreferedRuntimeVersion = -1;
+				SimNameDeepSearch = new Ambertation.CaseInvariantArrayList();
 				savegames = new Ambertation.CaseInvariantArrayList();
 				savegames.Add(PathProvider.SimSavegameFolder);
 				SetDefaultFileTableFolders();
-				objfolder =
+				ObjectsSubFolder =
 					"TSData" + Helper.PATH_SEP + "Res" + Helper.PATH_SEP + "Objects";
-				group = 0;
+				Group = 0;
 			}
 
 			BuildGroupList();
-			sname = GetShortName();
+			ShortId = GetShortName();
 		}
 
 		private void BuildGroupList()
@@ -379,7 +359,7 @@ namespace SimPe
 				if (this.ShareOneGroup(grp))
 					mylist.Add(grp);
 			}
-			groups = mylist.AsReadOnly();
+			Groups = mylist.AsReadOnly();
 		}
 
 		#region Neighborhood Path
@@ -391,11 +371,6 @@ namespace SimPe
 
 		public class NeighborhoodPath
 		{
-			string name;
-			string path;
-			ExpansionItem ei;
-			bool def;
-
 			internal NeighborhoodPath(
 				string name,
 				string path,
@@ -403,22 +378,34 @@ namespace SimPe
 				bool def
 			)
 			{
-				this.name = name;
-				this.path = path;
-				this.ei = ei;
-				this.def = def;
+				this.Lable = name;
+				this.Path = path;
+				this.Expansion = ei;
+				this.Default = def;
 			}
 
-			public string Lable => name;
-			public string Path => path;
-			public ExpansionItem Expansion => ei;
-			public bool Default => def;
+			public string Lable
+			{
+				get;
+			}
+			public string Path
+			{
+				get;
+			}
+			public ExpansionItem Expansion
+			{
+				get;
+			}
+			public bool Default
+			{
+				get;
+			}
 
 			public override int GetHashCode()
 			{
-				if (ei == null)
+				if (Expansion == null)
 					return 0;
-				return ei.Version;
+				return Expansion.Version;
 			}
 
 			public override bool Equals(object obj)
@@ -441,7 +428,7 @@ namespace SimPe
 
 				if (System.IO.Directory.Exists(pt))
 				{
-					if (flag.HasNgbhProfiles)
+					if (Flag.HasNgbhProfiles)
 					{
 						string profiles = System.IO.Path.Combine(pt, "Profiles.ini");
 						try
@@ -520,41 +507,77 @@ namespace SimPe
 
 		public string DisplayName => PathProvider.GetDisplayedNameForExpansion(this);
 
-		public Ambertation.CaseInvariantArrayList SimNameDeepSearch => simnamedeep;
+		public Ambertation.CaseInvariantArrayList SimNameDeepSearch
+		{
+			get;
+		}
 
-		public string Name => longname;//string res = SimPe.Localization.GetString("EP NAME " + version);//return res;
+		public string Name
+		{
+			get;
+		}//string res = SimPe.Localization.GetString("EP NAME " + version);//return res;
 
-		public Ambertation.CaseInvariantArrayList FileTableFolders => filtablefolders;
+		public Ambertation.CaseInvariantArrayList FileTableFolders
+		{
+			get;
+		}
 
-		public Ambertation.CaseInvariantArrayList PreObjectFileTableFolders => preobjectfiltablefolders;
+		public Ambertation.CaseInvariantArrayList PreObjectFileTableFolders
+		{
+			get;
+		}
 
 		internal string CensorFile => System.IO.Path.Combine(
 					PathProvider.SimSavegameFolder,
-					"Config\\" + censor
+					"Config\\" + CensorFileName
 				);
 
 		internal string SensorFile => System.IO.Path.Combine(
 					PathProvider.SimSavegameFolder,
-					"Downloads\\" + censor
+					"Downloads\\" + CensorFileName
 				);
 
-		internal string CensorFileName => censor;
+		internal string CensorFileName
+		{
+			get;
+		}
 
 		public bool Exists => (tk != null && isfound == true);
 
-		public int Version => version;
+		public int Version
+		{
+			get;
+		}
 
-		public int PreferedRuntimeVersion => runtimeversion;
+		public int PreferedRuntimeVersion
+		{
+			get;
+		}
 
-		public Expansions Expansion => exp;
+		public Expansions Expansion
+		{
+			get;
+		}
 
-		public Microsoft.Win32.RegistryKey Registry => rk;
+		public Microsoft.Win32.RegistryKey Registry
+		{
+			get;
+		}
 
-		public string ExeName => exe;
+		public string ExeName
+		{
+			get;
+		}
 
-		public IList<long> Groups => groups;
+		public IList<long> Groups
+		{
+			get; private set;
+		}
 
-		public int Group => group;
+		public int Group
+		{
+			get;
+		}
 
 		public bool ShareOneGroup(ExpansionItem ei)
 		{
@@ -600,7 +623,10 @@ namespace SimPe
 		/// <summary>
 		/// Folder where the objects.package is located
 		/// </summary>
-		public string ObjectsSubFolder => objfolder;
+		public string ObjectsSubFolder
+		{
+			get;
+		}
 
 		public string IdKey => System.IO.Path.GetFileNameWithoutExtension(ExeName);
 
@@ -612,15 +638,30 @@ namespace SimPe
 			return ret;
 		}
 
-		public string ShortId => sname;
+		public string ShortId
+		{
+			get;
+		}
 
-		public string NameShort => shortname;//string res = SimPe.Localization.GetString("EP SNAME " + version);//return res;
+		public string NameShort
+		{
+			get;
+		}//string res = SimPe.Localization.GetString("EP SNAME " + version);//return res;
 
-		public string NameSortNumber => namelistnr;
+		public string NameSortNumber
+		{
+			get;
+		}
 
-		public string NameShorter => shortername;
+		public string NameShorter
+		{
+			get;
+		}
 
-		public Flags Flag => flag;
+		public Flags Flag
+		{
+			get;
+		}
 
 		public string RealInstallFolder
 		{
@@ -693,7 +734,7 @@ namespace SimPe
 		{
 			try
 			{
-				string s = exe;
+				string s = ExeName;
 				Microsoft.Win32.RegistryKey fk =
 					Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
 						"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\" + s,
@@ -784,17 +825,17 @@ namespace SimPe
 			string s =
 				name
 				+ ": "
-				+ version
+				+ Version
 				+ "="
-				+ exp
+				+ Expansion
 				+ ", "
-				+ exe
+				+ ExeName
 				+ ", "
-				+ flag
+				+ Flag
 				+ ", "
 				+ Flag.Class;
-			if (rk != null)
-				s += ", " + rk.Name;
+			if (Registry != null)
+				s += ", " + Registry.Name;
 			return s;
 		}
 

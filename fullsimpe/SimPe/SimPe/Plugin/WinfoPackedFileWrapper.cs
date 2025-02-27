@@ -22,7 +22,6 @@ namespace SimPe.Plugin
 		/// </summary>
 		public uint weaversion;
 		private int westlength;
-		private string weaname;
 		public uint unkn1; // this is always 1 higher than unkn2, or next season. the climate controller doesn't need this value but seems to set it
 		public uint unkn2;
 		public uint unkn3;
@@ -40,14 +39,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string Weaname
 		{
-			get
-			{
-				return weaname;
-			}
-			set
-			{
-				weaname = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -100,17 +92,17 @@ namespace SimPe.Plugin
 			weaversion = reader.ReadUInt32();
 			if (weaversion != 3)
 			{
-				weaname = "Unknown Version!";
+				Weaname = "Unknown Version!";
 				return;
 			}
 			westlength = reader.ReadInt32();
-			weaname = "";
+			Weaname = "";
 			if (westlength > 0)
 			{
 				for (int i = 0; i < westlength; i++)
 				{
 					char b = reader.ReadChar();
-					weaname += b;
+					Weaname += b;
 				}
 				reader.BaseStream.Seek(8 + westlength, System.IO.SeekOrigin.Begin); // reset locataion, some languages screw it up
 			}
@@ -138,10 +130,10 @@ namespace SimPe.Plugin
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(weaversion);
-			westlength = weaname.Length;
+			westlength = Weaname.Length;
 			writer.Write(westlength);
-			if (weaname != null)
-				foreach (char c in weaname)
+			if (Weaname != null)
+				foreach (char c in Weaname)
 					writer.Write(c);
 			writer.Write(unkn1);
 			writer.Write(unkn2);

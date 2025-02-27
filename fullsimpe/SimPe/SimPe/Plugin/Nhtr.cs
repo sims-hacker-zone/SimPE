@@ -53,8 +53,10 @@ namespace SimPe.Plugin
 			}
 		}
 
-		NhtrList[] items;
-		public NhtrList[] Items => items;
+		public NhtrList[] Items
+		{
+			get;
+		}
 
 		#endregion
 
@@ -66,9 +68,9 @@ namespace SimPe.Plugin
 			Version = NhtrVersions.Business;
 			NhtrListType[] types =
 				Enum.GetValues(typeof(NhtrListType)) as NhtrListType[];
-			items = new NhtrList[types.Length];
+			Items = new NhtrList[types.Length];
 			foreach (NhtrListType tp in types)
-				items[(int)tp] = new NhtrList(this, tp);
+				Items[(int)tp] = new NhtrList(this, tp);
 		}
 
 		#region IWrapper Member
@@ -95,7 +97,7 @@ namespace SimPe.Plugin
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			ver = reader.ReadUInt32();
-			foreach (NhtrList list in items)
+			foreach (NhtrList list in Items)
 			{
 				list.Clear();
 				list.Unserialize(reader);
@@ -107,7 +109,7 @@ namespace SimPe.Plugin
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(ver);
-			foreach (NhtrList list in items)
+			foreach (NhtrList list in Items)
 				list.Serialize(writer);
 		}
 		#endregion

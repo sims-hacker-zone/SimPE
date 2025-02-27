@@ -20,11 +20,6 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Contains the Data of the File
 		/// </summary>
-		private string gooival;
-		private string crcval;
-		private string versval;
-		private int ves = 0;
-		private int qnty = 0;
 		private int[] gd1;
 		private int[] gd2;
 		private int[] gd3;
@@ -91,61 +86,20 @@ namespace SimPe.Plugin
 			}
 		}
 
-		public int Qunty
-		{
-			get
-			{
-				return qnty;
-			}
-			set
-			{
-				qnty = value;
-			}
-		}
+		public int Qunty { get; set; } = 0;
 
-		public int Vesion
-		{
-			get
-			{
-				return ves;
-			}
-			set
-			{
-				ves = value;
-			}
-		}
+		public int Vesion { get; set; } = 0;
 		public string GooiVal
 		{
-			get
-			{
-				return gooival;
-			}
-			set
-			{
-				gooival = value;
-			}
+			get; set;
 		}
 		public string CRCVal
 		{
-			get
-			{
-				return crcval;
-			}
-			set
-			{
-				crcval = value;
-			}
+			get; set;
 		}
 		public string VersVal
 		{
-			get
-			{
-				return versval;
-			}
-			set
-			{
-				versval = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -195,43 +149,43 @@ namespace SimPe.Plugin
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			reader.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
-			ves = reader.ReadInt32();
+			Vesion = reader.ReadInt32();
 
-			if (ves == 7) // new type
+			if (Vesion == 7) // new type
 			{
 				for (int i = 0; i < 3; i++)
 				{
 					string s1 = reader.ReadString();
 					if (s1 == "GUID")
-						gooival = reader.ReadString();
+						GooiVal = reader.ReadString();
 					else if (s1 == "CRC")
-						crcval = reader.ReadString();
+						CRCVal = reader.ReadString();
 					else if (s1 == "Version")
-						versval = reader.ReadString();
+						VersVal = reader.ReadString();
 				}
 			}
-			else if (ves == 3) // Olde Quaxi Type
+			else if (Vesion == 3) // Olde Quaxi Type
 			{
 				for (int i = 0; i < 3; i++)
 				{
 					string s1 = StreamHelper.ReadString(reader);
 					if (s1 == "GUID")
-						gooival = StreamHelper.ReadString(reader);
+						GooiVal = StreamHelper.ReadString(reader);
 					else if (s1 == "CRC")
-						crcval = StreamHelper.ReadString(reader);
+						CRCVal = StreamHelper.ReadString(reader);
 					else if (s1 == "Version")
-						versval = StreamHelper.ReadString(reader);
+						VersVal = StreamHelper.ReadString(reader);
 				}
 			}
-			else if (ves == 1) // Maxis proper file
+			else if (Vesion == 1) // Maxis proper file
 			{
-				qnty = reader.ReadInt32();
-				Array.Resize<int>(ref gd1, qnty);
-				Array.Resize<int>(ref gd2, qnty);
-				Array.Resize<int>(ref gd3, qnty);
-				Array.Resize<int>(ref gd4, qnty);
-				Array.Resize<string>(ref content, qnty);
-				for (int i = 0; i < qnty; i++)
+				Qunty = reader.ReadInt32();
+				Array.Resize<int>(ref gd1, Qunty);
+				Array.Resize<int>(ref gd2, Qunty);
+				Array.Resize<int>(ref gd3, Qunty);
+				Array.Resize<int>(ref gd4, Qunty);
+				Array.Resize<string>(ref content, Qunty);
+				for (int i = 0; i < Qunty; i++)
 				{
 					gd1[i] = reader.ReadInt32();
 					gd2[i] = reader.ReadInt32();
@@ -255,22 +209,22 @@ namespace SimPe.Plugin
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-			ves = 7;
+			Vesion = 7;
 			writer.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
-			writer.Write(ves);
+			writer.Write(Vesion);
 			writer.Write("GUID");
-			writer.Write(gooival);
+			writer.Write(GooiVal);
 			writer.Write("CRC");
-			writer.Write(crcval);
+			writer.Write(CRCVal);
 			writer.Write("Version");
-			writer.Write(versval);
+			writer.Write(VersVal);
 		}
 
 		internal void SetContent()
 		{
-			gooival = System.Guid.NewGuid().ToString().Replace("-", "");
-			crcval = "00000000000000000000000000000000";
-			versval = "01";
+			GooiVal = System.Guid.NewGuid().ToString().Replace("-", "");
+			CRCVal = "00000000000000000000000000000000";
+			VersVal = "01";
 		}
 
 		#endregion

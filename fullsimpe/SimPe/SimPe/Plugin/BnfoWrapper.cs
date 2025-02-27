@@ -52,41 +52,18 @@ namespace SimPe.Plugin
 			}
 		}
 
-		uint level1,
-			level2;
 		public uint CurrentBusinessState
 		{
-			get
-			{
-				return level1;
-			}
-			set
-			{
-				level1 = value;
-			}
+			get; set;
 		}
 		public uint MaxSeenBusinessState
 		{
-			get
-			{
-				return level2;
-			}
-			set
-			{
-				level2 = value;
-			}
+			get; set;
 		}
-		int wt;
+
 		public int EmployeeCount
 		{
-			get
-			{
-				return wt;
-			}
-			set
-			{
-				wt = value;
-			}
+			get; set;
 		}
 		ushort[] empls;
 		public ushort[] Employees
@@ -129,22 +106,27 @@ namespace SimPe.Plugin
 		public int[] Revenue => reven;
 		int[] expe;
 		public int[] Expences => expe;
-		int hct;
-		public int HistoryCount => hct;
+
+		public int HistoryCount
+		{
+			get; private set;
+		}
 
 		uint unk1,
 			unk2;
 		uint empct;
 
-		Collections.BnfoCustomerItems citems;
-		public Collections.BnfoCustomerItems CustomerItems => citems;
+		public Collections.BnfoCustomerItems CustomerItems
+		{
+			get;
+		}
 		#endregion
 
 		public Bnfo()
 			: base()
 		{
 			Version = BnfoVersions.Business;
-			citems = new SimPe.Plugin.Collections.BnfoCustomerItems(this);
+			CustomerItems = new SimPe.Plugin.Collections.BnfoCustomerItems(this);
 		}
 
 		#region IWrapper Member
@@ -171,30 +153,30 @@ namespace SimPe.Plugin
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			ver = reader.ReadUInt32();
-			level1 = reader.ReadUInt32();
-			level2 = reader.ReadUInt32();
+			CurrentBusinessState = reader.ReadUInt32();
+			MaxSeenBusinessState = reader.ReadUInt32();
 			unk1 = reader.ReadUInt32();
 			unk2 = reader.ReadUInt32();
 			empct = reader.ReadUInt32();
 
 			int ct = reader.ReadInt32();
-			citems.Clear();
+			CustomerItems.Clear();
 			for (int i = 0; i < ct; i++)
 			{
 				BnfoCustomerItem item = new BnfoCustomerItem(this);
 				item.Unserialize(reader);
-				citems.Add(item);
+				CustomerItems.Add(item);
 			}
 			/*
 			long pos = reader.BaseStream.Position;
 			over = reader.ReadBytes((int)(reader.BaseStream.Length - pos));
 			reader.BaseStream.Seek(pos, System.IO.SeekOrigin.Begin);
 			*/
-			wt = reader.ReadInt32();
-			Array.Resize<ushort>(ref empls, wt);
-			Array.Resize<int>(ref pr, wt);
-			Array.Resize<uint>(ref a, wt);
-			for (int i = 0; i < wt; i++)
+			EmployeeCount = reader.ReadInt32();
+			Array.Resize<ushort>(ref empls, EmployeeCount);
+			Array.Resize<int>(ref pr, EmployeeCount);
+			Array.Resize<uint>(ref a, EmployeeCount);
+			for (int i = 0; i < EmployeeCount; i++)
 			{
 				empls[i] = reader.ReadUInt16();
 				pr[i] = reader.ReadInt32();
@@ -206,15 +188,15 @@ namespace SimPe.Plugin
 			);
 
 			reader.BaseStream.Seek(pos, System.IO.SeekOrigin.Begin);
-			hct = reader.ReadInt32(); // number of History blocks
+			HistoryCount = reader.ReadInt32(); // number of History blocks
 
-			if (hct > 0 && over.Length > 60)
+			if (HistoryCount > 0 && over.Length > 60)
 			{
-				Array.Resize<int>(ref reven, hct);
-				Array.Resize<int>(ref expe, hct);
+				Array.Resize<int>(ref reven, HistoryCount);
+				Array.Resize<int>(ref expe, HistoryCount);
 				reader.BaseStream.Seek(-8, System.IO.SeekOrigin.Current);
 				// first is + 52, I would jump over it so I must pull back 8?
-				for (int i = 0; i < hct; i++)
+				for (int i = 0; i < HistoryCount; i++)
 				{
 					reader.BaseStream.Seek(60, System.IO.SeekOrigin.Current);
 					reven[i] = reader.ReadInt32(); // Renenue
@@ -227,18 +209,18 @@ namespace SimPe.Plugin
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(ver);
-			writer.Write(level1);
-			writer.Write(level2);
+			writer.Write(CurrentBusinessState);
+			writer.Write(MaxSeenBusinessState);
 			writer.Write(unk1);
 			writer.Write(unk2);
 			writer.Write(empct);
 
-			writer.Write((int)citems.Count);
-			foreach (BnfoCustomerItem item in citems)
+			writer.Write((int)CustomerItems.Count);
+			foreach (BnfoCustomerItem item in CustomerItems)
 				item.Serialize(writer);
 
-			writer.Write(wt);
-			for (int i = 0; i < wt; i++)
+			writer.Write(EmployeeCount);
+			for (int i = 0; i < EmployeeCount; i++)
 			{
 				writer.Write(empls[i]);
 				writer.Write(pr[i]);

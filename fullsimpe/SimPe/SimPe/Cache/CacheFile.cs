@@ -56,8 +56,8 @@ namespace SimPe.Cache
 		/// </summary>
 		public CacheFile()
 		{
-			version = VERSION;
-			containers = new CacheContainers();
+			Version = VERSION;
+			Containers = new CacheContainers();
 		}
 
 		/// <summary>
@@ -78,8 +78,8 @@ namespace SimPe.Cache
 		/// <exception cref="CacheException">Thrown if the File is not readable (ie, wrong Version or Signature)</exception>
 		public void Load(string flname, bool withprogress)
 		{
-			this.filename = flname;
-			containers.Clear();
+			this.FileName = flname;
+			Containers.Clear();
 
 			if (!System.IO.File.Exists(flname))
 				return;
@@ -91,22 +91,22 @@ namespace SimPe.Cache
 
 				try
 				{
-					sig = reader.ReadUInt64();
-					if (sig != OLDSIG && sig != SIGNATURE)
+					Signature = reader.ReadUInt64();
+					if (Signature != OLDSIG && Signature != SIGNATURE)
 						throw new CacheException(
 							"Unknown Cache File Signature ("
-								+ Helper.HexString(sig)
+								+ Helper.HexString(Signature)
 								+ ")",
 							flname,
 							0
 						);
 
-					version = reader.ReadByte();
-					if (version > VERSION)
+					Version = reader.ReadByte();
+					if (Version > VERSION)
 						throw new CacheException(
 							"Unable to read Cache",
 							flname,
-							version
+							Version
 						);
 
 					int count = reader.ReadInt32();
@@ -116,7 +116,7 @@ namespace SimPe.Cache
 					{
 						CacheContainer cc = new CacheContainer(DEFAULT_TYPE);
 						cc.Load(reader);
-						containers.Add(cc);
+						Containers.Add(cc);
 						if (withprogress)
 							Wait.Progress = i;
 						if (i % 10 == 0)
@@ -139,7 +139,7 @@ namespace SimPe.Cache
 		/// </summary>
 		public void Save()
 		{
-			Save(filename);
+			Save(FileName);
 		}
 
 		/// <summary>
@@ -148,8 +148,8 @@ namespace SimPe.Cache
 		/// <param name="flname">the name of the File</param>
 		public void Save(string flname)
 		{
-			this.filename = flname;
-			this.version = VERSION;
+			this.FileName = flname;
+			this.Version = VERSION;
 
 			StreamItem si = StreamFactory.UseStream(flname, FileAccess.Write, true);
 			try
@@ -161,23 +161,23 @@ namespace SimPe.Cache
 				BinaryWriter writer = new BinaryWriter(si.FileStream);
 
 				writer.Write(SIGNATURE);
-				writer.Write(version);
+				writer.Write(Version);
 
-				writer.Write((int)containers.Count);
+				writer.Write((int)Containers.Count);
 				ArrayList offsets = new ArrayList();
 				//prepare the Index
-				for (int i = 0; i < containers.Count; i++)
+				for (int i = 0; i < Containers.Count; i++)
 				{
 					offsets.Add(writer.BaseStream.Position);
-					containers[i].Save(writer, -1);
+					Containers[i].Save(writer, -1);
 				}
 
 				//write the Data
-				for (int i = 0; i < containers.Count; i++)
+				for (int i = 0; i < Containers.Count; i++)
 				{
 					long offset = writer.BaseStream.Position;
 					writer.BaseStream.Seek((long)offsets[i], SeekOrigin.Begin);
-					containers[i].Save(writer, (int)offset);
+					Containers[i].Save(writer, (int)offset);
 				}
 			}
 			finally
@@ -188,37 +188,44 @@ namespace SimPe.Cache
 
 		public void CleanUp()
 		{
-			for (int i = containers.Count - 1; i >= 0; i--)
+			for (int i = Containers.Count - 1; i >= 0; i--)
 			{
-				if (!containers[i].Valid)
-					containers.RemoveAt(i);
+				if (!Containers[i].Valid)
+					Containers.RemoveAt(i);
 			}
 		}
-
-		ulong sig;
-		byte version;
-		string filename;
-		CacheContainers containers;
 
 		/// <summary>
 		/// Returns the Version of the File
 		/// </summary>
-		public byte Version => version;
+		public byte Version
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// The last used FileName (can be null)
 		/// </summary>
-		public string FileName => filename;
+		public string FileName
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// The file Signature
 		/// </summary>
-		public ulong Signature => sig;
+		public ulong Signature
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Returns all Available Containers
 		/// </summary>
-		public CacheContainers Containers => containers;
+		public CacheContainers Containers
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns a container for the passed type and File
@@ -233,7 +240,7 @@ namespace SimPe.Cache
 			name = name.Trim().ToLower();
 
 			CacheContainer mycc = null;
-			foreach (CacheContainer cc in containers)
+			foreach (CacheContainer cc in Containers)
 			{
 				if (cc.Type == ct && cc.Valid && cc.FileName == name)
 				{
@@ -246,7 +253,7 @@ namespace SimPe.Cache
 			{
 				mycc = new CacheContainer(ct);
 				mycc.FileName = name;
-				containers.Add(mycc);
+				Containers.Add(mycc);
 			}
 
 			return mycc;
@@ -254,10 +261,10 @@ namespace SimPe.Cache
 
 		public virtual void Dispose()
 		{
-			foreach (CacheContainer cc in containers)
+			foreach (CacheContainer cc in Containers)
 				cc.Dispose();
 
-			containers.Clear();
+			Containers.Clear();
 		}
 	}
 }

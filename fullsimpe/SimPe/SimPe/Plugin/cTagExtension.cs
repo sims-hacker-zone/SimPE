@@ -35,17 +35,9 @@ namespace SimPe.Plugin
 		uint eid;
 		uint ever;
 
-		string s1;
 		public string Name
 		{
-			get
-			{
-				return s1;
-			}
-			set
-			{
-				s1 = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -60,7 +52,7 @@ namespace SimPe.Plugin
 			eid = 0;
 			ever = 3;
 			BlockID = 0x9a809646;
-			s1 = "";
+			Name = "";
 		}
 
 		#region IRcolBlock Member
@@ -76,7 +68,7 @@ namespace SimPe.Plugin
 			en = reader.ReadString();
 			eid = reader.ReadUInt32();
 			ever = reader.ReadUInt32();
-			s1 = reader.ReadString();
+			Name = reader.ReadString();
 		}
 
 		/// <summary>
@@ -94,7 +86,7 @@ namespace SimPe.Plugin
 			writer.Write(en);
 			writer.Write(eid);
 			writer.Write(ever);
-			writer.Write(s1);
+			writer.Write(Name);
 		}
 
 		//fShapeRefNode form = null;

@@ -1005,443 +1005,179 @@ namespace SimPe.PackedFiles.Wrapper
 	/// </summary>
 	public class CharacterDescription : Serializer
 	{
-		GhostFlags ghostflags;
 		public GhostFlags GhostFlag
 		{
-			get
-			{
-				return ghostflags;
-			}
-			set
-			{
-				ghostflags = value;
-			}
+			get; set;
 		}
 
-		SelectableFlags selectableflags;
 		public SelectableFlags SelectableFlag
 		{
-			get
-			{
-				return selectableflags;
-			}
-			set
-			{
-				selectableflags = value;
-			}
+			get; set;
 		}
 
-		BodyFlags bodyflags;
 		public BodyFlags BodyFlag
 		{
-			get
-			{
-				return bodyflags;
-			}
-			set
-			{
-				bodyflags = value;
-			}
+			get; set;
 		}
 
-		CultFlags cultflags;
 		public CultFlags CultFlag
 		{
-			get
-			{
-				return cultflags;
-			}
-			set
-			{
-				cultflags = value;
-			}
+			get; set;
 		}
 
-		PersonFlags1 perf;
 		public PersonFlags1 PersonFlags1
 		{
-			get
-			{
-				return perf;
-			}
-			set
-			{
-				perf = value;
-			}
+			get; set;
 		}
 
-		PersonFlags3 pefl;
 		public PersonFlags3 PersonFlags3
 		{
-			get
-			{
-				return pefl;
-			}
-			set
-			{
-				pefl = value;
-			}
+			get; set;
 		}
 
 		public CharacterDescription()
 		{
-			ghostflags = new GhostFlags();
-			bodyflags = new BodyFlags();
-			cultflags = new CultFlags();
-			selectableflags = new SelectableFlags();
-			perf = new PersonFlags1();
-			pefl = new PersonFlags3();
+			GhostFlag = new GhostFlags();
+			BodyFlag = new BodyFlags();
+			CultFlag = new CultFlags();
+			SelectableFlag = new SelectableFlags();
+			PersonFlags1 = new PersonFlags1();
+			PersonFlags3 = new PersonFlags3();
 		}
 
-		ushort autonomy;
 		public ushort AutonomyLevel
 		{
-			get
-			{
-				return autonomy;
-			}
-			set
-			{
-				autonomy = value;
-			}
+			get; set;
 		}
 
-		ushort npc;
 		public ushort NPCType
 		{
-			get
-			{
-				return npc;
-			}
-			set
-			{
-				npc = value;
-			}
+			get; set;
 		}
 
-		short titlePostName;
 		public short TitlePostName
 		{
-			get
-			{
-				return titlePostName;
-			}
-			set
-			{
-				titlePostName = value;
-			}
+			get; set;
 		}
 
-		ushort asuburb;
 		public ushort AllocatedSuburb
 		{
-			get
-			{
-				return asuburb;
-			}
-			set
-			{
-				asuburb = value;
-			}
+			get; set;
 		}
 
-		ushort partner;
 		public ushort PartnerID
 		{
-			get
-			{
-				return partner;
-			}
-			set
-			{
-				partner = value;
-			}
+			get; set;
 		}
 
-		ushort religion;
 		public ushort ReligionId
 		{
-			get
-			{
-				return religion;
-			}
-			set
-			{
-				religion = value;
-			}
+			get; set;
 		}
 
-		ushort mst;
 		public ushort MotivesStatic
 		{
-			get
-			{
-				return mst;
-			}
-			set
-			{
-				mst = value;
-			}
+			get; set;
 		}
 
-		ushort pto;
 		public ushort PTO
 		{
-			get
-			{
-				return pto;
-			}
-			set
-			{
-				pto = value;
-			}
+			get; set;
 		}
 
-		ushort voice;
 		public ushort VoiceType
 		{
-			get
-			{
-				return voice;
-			}
-			set
-			{
-				voice = value;
-			}
+			get; set;
 		}
 
-		Data.MetaData.SchoolTypes schooltype;
 		public Data.MetaData.SchoolTypes SchoolType
 		{
-			get
-			{
-				return schooltype;
-			}
-			set
-			{
-				schooltype = value;
-			}
+			get; set;
 		}
 
-		Data.MetaData.Grades grade;
 		public Data.MetaData.Grades Grade
 		{
-			get
-			{
-				return grade;
-			}
-			set
-			{
-				grade = value;
-			}
+			get; set;
 		}
 
-		short careerperformance;
 		public short CareerPerformance
 		{
-			get
-			{
-				return careerperformance;
-			}
-			set
-			{
-				careerperformance = value;
-			}
+			get; set;
 		}
 
-		private MetaData.Careers career;
 		public MetaData.Careers Career
 		{
-			get
-			{
-				return career;
-			}
-			set
-			{
-				career = value;
-			}
+			get; set;
 		}
 
-		ushort pension;
 		public ushort Pension
 		{
-			get
-			{
-				return pension;
-			}
-			set
-			{
-				pension = value;
-			}
+			get; set;
 		}
 
-		private ushort careerlevel;
 		public ushort CareerLevel
 		{
-			get
-			{
-				return careerlevel;
-			}
-			set
-			{
-				careerlevel = value;
-			}
+			get; set;
 		}
 
-		private MetaData.Careers retired;
 		public MetaData.Careers Retired
 		{
-			get
-			{
-				return retired;
-			}
-			set
-			{
-				retired = value;
-			}
+			get; set;
 		}
 
-		private ushort retiredlevel;
 		public ushort RetiredLevel
 		{
-			get
-			{
-				return retiredlevel;
-			}
-			set
-			{
-				retiredlevel = value;
-			}
+			get; set;
 		}
 
-		private MetaData.Bodyshape bodyshape;
 		public MetaData.Bodyshape Bodyshape
 		{
-			get
-			{
-				return bodyshape;
-			}
-			set
-			{
-				bodyshape = value;
-			}
+			get; set;
 		}
 
-		private MetaData.ServiceTypes servicetypes; // use NPCType to write
 		public MetaData.ServiceTypes ServiceTypes
 		{
-			get
-			{
-				return servicetypes;
-			}
-			set
-			{
-				servicetypes = value;
-			}
+			get; set;
 		}
 
-		private MetaData.ZodiacSignes zodiac;
 		public MetaData.ZodiacSignes ZodiacSign
 		{
-			get
-			{
-				return zodiac;
-			}
-			set
-			{
-				zodiac = value;
-			}
+			get; set;
 		}
 
-		private MetaData.AspirationTypes aspiration;
 		public MetaData.AspirationTypes Aspiration
 		{
-			get
-			{
-				return aspiration;
-			}
-			set
-			{
-				aspiration = value;
-			}
+			get; set;
 		}
 
-		private MetaData.Gender gender;
 		public MetaData.Gender Gender
 		{
-			get
-			{
-				return gender;
-			}
-			set
-			{
-				gender = value;
-			}
+			get; set;
 		}
 
-		private MetaData.LifeSections lifesection;
 		public MetaData.LifeSections LifeSection
 		{
-			get
-			{
-				return lifesection;
-			}
-			set
-			{
-				lifesection = value;
-			}
+			get; set;
 		}
 
-		private ushort realage; // use lifesection to write
 		public ushort Realage
 		{
-			get
-			{
-				return realage;
-			}
-			set
-			{
-				realage = value;
-			}
+			get; set;
 		}
 
-		private ushort age;
 		public ushort Age
 		{
-			get
-			{
-				return age;
-			}
-			set
-			{
-				age = value;
-			}
+			get; set;
 		}
 
-		private ushort prevage;
 		public ushort PrevAgeDays
 		{
-			get
-			{
-				return prevage;
-			}
-			set
-			{
-				prevage = value;
-			}
+			get; set;
 		}
 
-		private ushort agedur;
 		public ushort AgeDuration
 		{
-			get
-			{
-				return agedur;
-			}
-			set
-			{
-				agedur = value;
-			}
+			get; set;
 		}
 
 		private ushort clifeline;
@@ -2127,20 +1863,12 @@ namespace SimPe.PackedFiles.Wrapper
 		internal SimRelationAttribute(SDesc parent)
 		{
 			this.parent = parent;
-			siminstance = new ushort[0];
+			SimInstances = new ushort[0];
 		}
 
-		private ushort[] siminstance;
 		public ushort[] SimInstances
 		{
-			get
-			{
-				return siminstance;
-			}
-			set
-			{
-				siminstance = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -2217,150 +1945,83 @@ namespace SimPe.PackedFiles.Wrapper
 	{
 		internal SdscUniversity()
 		{
-			major = Data.Majors.Undeclared;
-			time = 72;
-			semester = 1;
+			Major = Data.Majors.Undeclared;
+			Time = 72;
+			Semester = 1;
 		}
 
-		SemesterFlags semesterflags = new SemesterFlags();
-		public SemesterFlags SemesterFlag
-		{
-			get
-			{
-				return semesterflags;
-			}
-			set
-			{
-				semesterflags = value;
-			}
-		}
+		public SemesterFlags SemesterFlag { get; set; } = new SemesterFlags();
 
-		ushort effort;
 		public ushort Effort
 		{
-			get
-			{
-				return effort;
-			}
-			set
-			{
-				effort = value;
-			}
+			get; set;
 		}
 
-		ushort grade;
 		public ushort Grade
 		{
-			get
-			{
-				return grade;
-			}
-			set
-			{
-				grade = value;
-			}
+			get; set;
 		}
 
-		ushort time;
 		public ushort Time
 		{
-			get
-			{
-				return time;
-			}
-			set
-			{
-				time = value;
-			}
+			get; set;
 		}
 
-		ushort semester;
 		public ushort Semester
 		{
-			get
-			{
-				return semester;
-			}
-			set
-			{
-				semester = value;
-			}
+			get; set;
 		}
 
-		ushort oncampus;
 		public ushort OnCampus
 		{
-			get
-			{
-				return oncampus;
-			}
-			set
-			{
-				oncampus = value;
-			}
+			get; set;
 		}
 
-		ushort influence;
 		public ushort Influence
 		{
-			get
-			{
-				return influence;
-			}
-			set
-			{
-				influence = value;
-			}
+			get; set;
 		}
 
-		Data.Majors major;
 		public Data.Majors Major
 		{
-			get
-			{
-				return major;
-			}
-			set
-			{
-				major = value;
-			}
+			get; set;
 		}
 
 		internal void Unserialize(BinaryReader reader)
 		{
 			reader.BaseStream.Seek(0x014, SeekOrigin.Begin);
-			effort = reader.ReadUInt16();
+			Effort = reader.ReadUInt16();
 
 			reader.BaseStream.Seek(0x0b2, SeekOrigin.Begin);
-			grade = reader.ReadUInt16();
+			Grade = reader.ReadUInt16();
 
 			reader.BaseStream.Seek(0x160, SeekOrigin.Begin);
-			major = (Data.Majors)reader.ReadUInt32();
-			time = reader.ReadUInt16();
-			semesterflags.Value = reader.ReadUInt16();
-			semester = reader.ReadUInt16();
-			oncampus = reader.ReadUInt16();
+			Major = (Data.Majors)reader.ReadUInt32();
+			Time = reader.ReadUInt16();
+			SemesterFlag.Value = reader.ReadUInt16();
+			Semester = reader.ReadUInt16();
+			OnCampus = reader.ReadUInt16();
 			reader.BaseStream.Seek(0x4, SeekOrigin.Current);
-			influence = reader.ReadUInt16();
+			Influence = reader.ReadUInt16();
 		}
 
 		internal void Serialize(BinaryWriter writer)
 		{
 			writer.BaseStream.Seek(0x014, SeekOrigin.Begin);
-			writer.Write(effort);
+			writer.Write(Effort);
 
 			writer.BaseStream.Seek(0x0b2, SeekOrigin.Begin);
-			writer.Write(grade);
+			writer.Write(Grade);
 
 			writer.BaseStream.Seek(0x160, SeekOrigin.Begin);
-			writer.Write((uint)major);
-			writer.Write((ushort)time);
-			writer.Write(semesterflags.Value);
+			writer.Write((uint)Major);
+			writer.Write((ushort)Time);
+			writer.Write(SemesterFlag.Value);
 			// writer.BaseStream.Seek(0x2, SeekOrigin.Current);
-			writer.Write((ushort)semester);
-			writer.Write((ushort)oncampus);
+			writer.Write((ushort)Semester);
+			writer.Write((ushort)OnCampus);
 			writer.BaseStream.Seek(0x4, SeekOrigin.Current);
-			writer.Write((ushort)influence);
+			writer.Write((ushort)Influence);
 		}
 	}
 	#endregion
@@ -2381,263 +2042,116 @@ namespace SimPe.PackedFiles.Wrapper
 
 		internal SdscNightlife()
 		{
-			species = SpeciesType.Human;
-			turnoff3 = 0;
-			turnon3 = 0;
-			traits3 = 0;
+			Species = SpeciesType.Human;
+			AttractionTurnOffs3 = 0;
+			AttractionTurnOns3 = 0;
+			AttractionTraits3 = 0;
 
-			turnoff1 = 0;
-			turnoff2 = 0;
-			turnon1 = 0;
-			turnon2 = 0;
-			traits1 = 0;
-			traits2 = 0;
+			AttractionTurnOffs1 = 0;
+			AttractionTurnOffs2 = 0;
+			AttractionTurnOns1 = 0;
+			AttractionTurnOns2 = 0;
+			AttractionTraits1 = 0;
+			AttractionTraits2 = 0;
 		}
 
-		ushort route;
 		public ushort RouteStartSlotOwnerID
 		{
-			get
-			{
-				return route;
-			}
-			set
-			{
-				route = value;
-			}
+			get; set;
 		}
 
-		ushort traits1;
 		public ushort AttractionTraits1
 		{
-			get
-			{
-				return traits1;
-			}
-			set
-			{
-				traits1 = value;
-			}
+			get; set;
 		}
 
-		ushort traits2;
 		public ushort AttractionTraits2
 		{
-			get
-			{
-				return traits2;
-			}
-			set
-			{
-				traits2 = value;
-			}
+			get; set;
 		}
-
-		ushort traits3;
 
 		/// <remarks>
 		/// This is only valid if the SDSC Version is at least SDescVersions.Voyage
 		/// </remarks>
 		public ushort AttractionTraits3
 		{
-			get
-			{
-				return traits3;
-			}
-			set
-			{
-				traits3 = value;
-			}
+			get; set;
 		}
 
-		ushort turnon1;
 		public ushort AttractionTurnOns1
 		{
-			get
-			{
-				return turnon1;
-			}
-			set
-			{
-				turnon1 = value;
-			}
+			get; set;
 		}
 
-		ushort turnoff1;
 		public ushort AttractionTurnOffs1
 		{
-			get
-			{
-				return turnoff1;
-			}
-			set
-			{
-				turnoff1 = value;
-			}
+			get; set;
 		}
 
-		ushort turnon2;
 		public ushort AttractionTurnOns2
 		{
-			get
-			{
-				return turnon2;
-			}
-			set
-			{
-				turnon2 = value;
-			}
+			get; set;
 		}
 
-		ushort turnoff2;
 		public ushort AttractionTurnOffs2
 		{
-			get
-			{
-				return turnoff2;
-			}
-			set
-			{
-				turnoff2 = value;
-			}
+			get; set;
 		}
-
-		ushort turnon3;
 
 		/// <remarks>
 		/// This is only valid if the SDSC Version is at least SDescVersions.Voyage
 		/// </remarks>
 		public ushort AttractionTurnOns3
 		{
-			get
-			{
-				return turnon3;
-			}
-			set
-			{
-				turnon3 = value;
-			}
+			get; set;
 		}
-
-		ushort turnoff3;
 
 		/// <remarks>
 		/// This is only valid if the SDSC Version is at least SDescVersions.Voyage
 		/// </remarks>
 		public ushort AttractionTurnOffs3
 		{
-			get
-			{
-				return turnoff3;
-			}
-			set
-			{
-				turnoff3 = value;
-			}
+			get; set;
 		}
 
-		SpeciesType species;
 		public SpeciesType Species
 		{
-			get
-			{
-				return species;
-			}
-			set
-			{
-				species = value;
-			}
+			get; set;
 		}
 
-		ushort countdown;
 		public ushort Countdown
 		{
-			get
-			{
-				return countdown;
-			}
-			set
-			{
-				countdown = value;
-			}
+			get; set;
 		}
 
-		ushort perfume;
 		public ushort PerfumeDuration
 		{
-			get
-			{
-				return perfume;
-			}
-			set
-			{
-				perfume = value;
-			}
+			get; set;
 		}
 
-		ushort timer;
 		public ushort DateTimer
 		{
-			get
-			{
-				return timer;
-			}
-			set
-			{
-				timer = value;
-			}
+			get; set;
 		}
 
-		ushort score;
 		public ushort DateScore
 		{
-			get
-			{
-				return score;
-			}
-			set
-			{
-				score = value;
-			}
+			get; set;
 		}
 
-		ushort unlock;
 		public ushort DateUnlockCounter
 		{
-			get
-			{
-				return unlock;
-			}
-			set
-			{
-				unlock = value;
-			}
+			get; set;
 		}
 
-		ushort potion;
 		public ushort LovePotionDuration
 		{
-			get
-			{
-				return potion;
-			}
-			set
-			{
-				potion = value;
-			}
+			get; set;
 		}
 
-		ushort scorelock;
 		public ushort AspirationScoreLock
 		{
-			get
-			{
-				return scorelock;
-			}
-			set
-			{
-				scorelock = value;
-			}
+			get; set;
 		}
 
 		public bool IsHuman
@@ -2657,70 +2171,70 @@ namespace SimPe.PackedFiles.Wrapper
 		internal void Unserialize(BinaryReader reader, SDescVersions ver)
 		{
 			reader.BaseStream.Seek(0x172, SeekOrigin.Begin);
-			this.route = reader.ReadUInt16();
+			this.RouteStartSlotOwnerID = reader.ReadUInt16();
 
-			this.traits1 = reader.ReadUInt16();
-			this.traits2 = reader.ReadUInt16();
+			this.AttractionTraits1 = reader.ReadUInt16();
+			this.AttractionTraits2 = reader.ReadUInt16();
 
-			this.turnon1 = reader.ReadUInt16();
-			this.turnon2 = reader.ReadUInt16();
+			this.AttractionTurnOns1 = reader.ReadUInt16();
+			this.AttractionTurnOns2 = reader.ReadUInt16();
 
-			this.turnoff1 = reader.ReadUInt16();
-			this.turnoff2 = reader.ReadUInt16();
+			this.AttractionTurnOffs1 = reader.ReadUInt16();
+			this.AttractionTurnOffs2 = reader.ReadUInt16();
 
-			this.species = (SpeciesType)reader.ReadUInt16();
-			this.countdown = reader.ReadUInt16();
-			this.perfume = reader.ReadUInt16();
+			this.Species = (SpeciesType)reader.ReadUInt16();
+			this.Countdown = reader.ReadUInt16();
+			this.PerfumeDuration = reader.ReadUInt16();
 
-			this.timer = reader.ReadUInt16();
-			this.score = reader.ReadUInt16();
-			this.unlock = reader.ReadUInt16();
+			this.DateTimer = reader.ReadUInt16();
+			this.DateScore = reader.ReadUInt16();
+			this.DateUnlockCounter = reader.ReadUInt16();
 
-			this.potion = reader.ReadUInt16();
-			this.scorelock = reader.ReadUInt16();
+			this.LovePotionDuration = reader.ReadUInt16();
+			this.AspirationScoreLock = reader.ReadUInt16();
 
 			if ((int)ver >= (int)SDescVersions.Voyage)
 			{
 				reader.BaseStream.Seek(0x19e, SeekOrigin.Begin);
 
-				turnon3 = reader.ReadUInt16();
-				turnoff3 = reader.ReadUInt16();
-				traits3 = reader.ReadUInt16();
+				AttractionTurnOns3 = reader.ReadUInt16();
+				AttractionTurnOffs3 = reader.ReadUInt16();
+				AttractionTraits3 = reader.ReadUInt16();
 			}
 		}
 
 		internal void Serialize(BinaryWriter writer, SDescVersions ver)
 		{
 			writer.BaseStream.Seek(0x172, SeekOrigin.Begin);
-			writer.Write((ushort)this.route);
+			writer.Write((ushort)this.RouteStartSlotOwnerID);
 
-			writer.Write((ushort)this.traits1);
-			writer.Write((ushort)this.traits2);
+			writer.Write((ushort)this.AttractionTraits1);
+			writer.Write((ushort)this.AttractionTraits2);
 
-			writer.Write((ushort)this.turnon1);
-			writer.Write((ushort)this.turnon2);
+			writer.Write((ushort)this.AttractionTurnOns1);
+			writer.Write((ushort)this.AttractionTurnOns2);
 
-			writer.Write((ushort)this.turnoff1);
-			writer.Write((ushort)this.turnoff2);
+			writer.Write((ushort)this.AttractionTurnOffs1);
+			writer.Write((ushort)this.AttractionTurnOffs2);
 
-			writer.Write((ushort)this.species);
-			writer.Write((ushort)this.countdown);
-			writer.Write((ushort)this.perfume);
+			writer.Write((ushort)this.Species);
+			writer.Write((ushort)this.Countdown);
+			writer.Write((ushort)this.PerfumeDuration);
 
-			writer.Write((ushort)this.timer);
-			writer.Write((ushort)this.score);
-			writer.Write((ushort)this.unlock);
+			writer.Write((ushort)this.DateTimer);
+			writer.Write((ushort)this.DateScore);
+			writer.Write((ushort)this.DateUnlockCounter);
 
-			writer.Write((ushort)this.potion);
-			writer.Write((ushort)this.scorelock);
+			writer.Write((ushort)this.LovePotionDuration);
+			writer.Write((ushort)this.AspirationScoreLock);
 
 			if ((int)ver >= (int)SDescVersions.Voyage)
 			{
 				writer.BaseStream.Seek(0x19e, SeekOrigin.Begin);
 
-				writer.Write((ushort)turnon3);
-				writer.Write((ushort)turnoff3);
-				writer.Write((ushort)traits3);
+				writer.Write((ushort)AttractionTurnOns3);
+				writer.Write((ushort)AttractionTurnOffs3);
+				writer.Write((ushort)AttractionTraits3);
 			}
 		}
 	}
@@ -2736,43 +2250,19 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 		}
 
-		ushort lotid;
 		public ushort LotID
 		{
-			get
-			{
-				return lotid;
-			}
-			set
-			{
-				lotid = value;
-			}
+			get; set;
 		}
 
-		ushort salary;
 		public ushort Salary
 		{
-			get
-			{
-				return salary;
-			}
-			set
-			{
-				salary = value;
-			}
+			get; set;
 		}
 
-		ushort flags;
 		public ushort Flags
 		{
-			get
-			{
-				return flags;
-			}
-			set
-			{
-				flags = value;
-			}
+			get; set;
 		}
 
 		ushort assignment;
@@ -2791,18 +2281,18 @@ namespace SimPe.PackedFiles.Wrapper
 		internal void Unserialize(BinaryReader reader)
 		{
 			reader.BaseStream.Seek(0x192, SeekOrigin.Begin);
-			this.lotid = reader.ReadUInt16();
-			this.salary = reader.ReadUInt16();
-			this.flags = reader.ReadUInt16();
+			this.LotID = reader.ReadUInt16();
+			this.Salary = reader.ReadUInt16();
+			this.Flags = reader.ReadUInt16();
 			this.assignment = reader.ReadUInt16();
 		}
 
 		internal void Serialize(BinaryWriter writer)
 		{
 			writer.BaseStream.Seek(0x192, SeekOrigin.Begin);
-			writer.Write((ushort)this.lotid);
-			writer.Write((ushort)this.salary);
-			writer.Write((ushort)this.flags);
+			writer.Write((ushort)this.LotID);
+			writer.Write((ushort)this.Salary);
+			writer.Write((ushort)this.Flags);
 			writer.Write((ushort)this.assignment);
 		}
 	}
@@ -2816,22 +2306,24 @@ namespace SimPe.PackedFiles.Wrapper
 	{
 		internal SdscPets()
 		{
-			pett = new PetTraits(0);
+			PetTraits = new PetTraits(0);
 		}
 
-		PetTraits pett;
-		public PetTraits PetTraits => pett;
+		public PetTraits PetTraits
+		{
+			get;
+		}
 
 		internal void Unserialize(BinaryReader reader)
 		{
 			reader.BaseStream.Seek(0x19A, SeekOrigin.Begin);
-			this.pett.Value = reader.ReadUInt16();
+			this.PetTraits.Value = reader.ReadUInt16();
 		}
 
 		internal void Serialize(BinaryWriter writer)
 		{
 			writer.BaseStream.Seek(0x19A, SeekOrigin.Begin);
-			writer.Write((ushort)this.pett.Value);
+			writer.Write((ushort)this.PetTraits.Value);
 		}
 	}
 	#endregion
@@ -2844,60 +2336,44 @@ namespace SimPe.PackedFiles.Wrapper
 	{
 		internal SdscVoyage()
 		{
-			daysleft = 0;
-			collect = 0;
+			DaysLeft = 0;
+			CollectiblesPlain = 0;
 		}
 
-		UInt64 collect;
-		ushort daysleft;
 		public ushort DaysLeft
 		{
-			get
-			{
-				return daysleft;
-			}
-			set
-			{
-				daysleft = value;
-			}
+			get; set;
 		}
 
 		public ulong CollectiblesPlain
 		{
-			get
-			{
-				return collect;
-			}
-			set
-			{
-				collect = value;
-			}
+			get; set;
 		}
 
 		internal void Unserialize(BinaryReader reader)
 		{
 			reader.BaseStream.Seek(0x19C, SeekOrigin.Begin);
-			this.daysleft = reader.ReadUInt16();
+			this.DaysLeft = reader.ReadUInt16();
 		}
 
 		internal void Serialize(BinaryWriter writer)
 		{
 			writer.BaseStream.Seek(0x19C, SeekOrigin.Begin);
-			writer.Write((ushort)this.daysleft);
+			writer.Write((ushort)this.DaysLeft);
 		}
 
 		internal void UnserializeMem(BinaryReader reader)
 		{
-			collect = 0;
+			CollectiblesPlain = 0;
 			if (reader.BaseStream.Position <= reader.BaseStream.Length - 8)
 			{
-				collect = reader.ReadUInt64();
+				CollectiblesPlain = reader.ReadUInt64();
 			}
 		}
 
 		internal void SerializeMem(BinaryWriter writer)
 		{
-			writer.Write(collect);
+			writer.Write(CollectiblesPlain);
 		}
 	}
 	#endregion
@@ -2910,32 +2386,24 @@ namespace SimPe.PackedFiles.Wrapper
 	{
 		internal SdscCastaway()
 		{
-			subspecies = 0;
+			Subspecies = 0;
 		}
 
-		ushort subspecies;
 		public ushort Subspecies
 		{
-			get
-			{
-				return subspecies;
-			}
-			set
-			{
-				subspecies = value;
-			}
+			get; set;
 		}
 
 		internal void Unserialize(BinaryReader reader)
 		{
 			reader.BaseStream.Seek(0x19C, SeekOrigin.Begin);
-			this.subspecies = reader.ReadUInt16();
+			this.Subspecies = reader.ReadUInt16();
 		}
 
 		internal void Serialize(BinaryWriter writer)
 		{
 			writer.BaseStream.Seek(0x19C, SeekOrigin.Begin);
-			writer.Write((ushort)this.subspecies);
+			writer.Write((ushort)this.Subspecies);
 		}
 	}
 	#endregion
@@ -2956,17 +2424,6 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Number of teh assigned Instance
 		/// </summary>
-		private ushort instancenumber;
-
-		/// <summary>
-		/// The Id of the related sim
-		/// </summary>
-		private uint simid;
-
-		/// <summary>
-		/// Instance Number of Family
-		/// </summary>
-		ushort familyinstance;
 
 		/// <summary>
 		/// Version of the package
@@ -2993,42 +2450,19 @@ namespace SimPe.PackedFiles.Wrapper
 		private byte[] backupdata;
 
 		/// <summary>
-		/// Decay Values of the Sim
-		/// </summary>
-		private SimDecay decay;
-
-		ushort unlinked;
-
-		/// <summary>
 		/// True if this Sim is only available for Memory Reasons
 		/// </summary>
 		public ushort Unlinked
 		{
-			get
-			{
-				return unlinked;
-			}
-			set
-			{
-				unlinked = value;
-			}
+			get; set;
 		}
-
-		byte enddata;
 
 		/// <summary>
 		/// Don't know what this is :)
 		/// </summary>
 		public byte EndByte
 		{
-			get
-			{
-				return enddata;
-			}
-			set
-			{
-				enddata = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -3036,14 +2470,7 @@ namespace SimPe.PackedFiles.Wrapper
 		//returns / sets the Instance of the Family the Sim lives in
 		public ushort FamilyInstance
 		{
-			get
-			{
-				return familyinstance;
-			}
-			set
-			{
-				familyinstance = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -3051,139 +2478,128 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public SimDecay Decay
 		{
-			get
-			{
-				return decay;
-			}
-			set
-			{
-				decay = value;
-			}
+			get; set;
 		}
-
-		/// <summary>
-		/// Holds Sim Relationships
-		/// </summary>
-		private SimRelationAttribute relations;
 
 		/// <summary>
 		/// Returns the Relationships a sim has
 		/// </summary>
-		public SimRelationAttribute Relations => relations;
-
-		/// <summary>
-		/// Some Description about the Characters Life
-		/// </summary>
-		private CharacterDescription description;
+		public SimRelationAttribute Relations
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Description of the Character
 		/// </summary>
-		public CharacterDescription CharacterDescription => description;
-
-		SdscUniversity uni;
+		public CharacterDescription CharacterDescription
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns University Specific Data
 		/// </summary>
 		/// <remarks>Only valid if Version == SDescVersions.University or Version == SDescVersions.Nightlife</remarks>
-		public SdscUniversity University => uni;
-
-		SdscNightlife nightlife;
+		public SdscUniversity University
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns Nightlife Specific Data
 		/// </summary>
 		/// <remarks>Only valid if Version >= SDescVersions.Nightlife</remarks>
-		public SdscNightlife Nightlife => nightlife;
-
-		SdscBusiness business;
+		public SdscNightlife Nightlife
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns Business Specific Data
 		/// </summary>
 		/// <remarks>Only valid if Version == SDescVersions.Business</remarks>
-		public SdscBusiness Business => business;
-
-		SdscPets pets;
+		public SdscBusiness Business
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns Pets Specific Data
 		/// </summary>
 		/// <remarks>Only valid if Version == SDescVersions.Pets</remarks>
-		public SdscPets Pets => pets;
-
-		SdscVoyage voyage;
+		public SdscPets Pets
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns Voyage Specific Data
 		/// </summary>
 		/// <remarks>Only valid if Version == SDescVersions.Voyage</remarks>
-		public SdscVoyage Voyage => voyage;
-
-		SdscCastaway castaway;
+		public SdscVoyage Voyage
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns Castaway Specific Data
 		/// </summary>
 		/// <remarks>Only valid if Version == SDescVersions.Castaway</remarks>
-		public SdscCastaway Castaway => castaway;
-
-		SdscFreetime freetime;
+		public SdscCastaway Castaway
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns Freetime Specific Data
 		/// </summary>
 		/// <remarks>Only valid if Version == SDescVersions.Freetime</remarks>
-		public SdscFreetime Freetime => freetime;
-
-		SdscApartment apartment;
+		public SdscFreetime Freetime
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns Apartment Life-specific data
 		/// </summary>
 		/// <remarks>Only valid if Version >= SDescVersions.Apartment</remarks>
-		public SdscApartment Apartment => apartment;
-
-		/// <summary>
-		/// Character Attributes
-		/// </summary>
-		private CharacterAttributes character;
-
-		/// <summary>
-		/// Returns the Character Attributes
-		/// </summary>
-		public CharacterAttributes Character => character;
-
-		/// <summary>
-		/// Character Attributes
-		/// </summary>
-		private CharacterAttributes gencharacter;
+		public SdscApartment Apartment
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Character Attributes
 		/// </summary>
-		public CharacterAttributes GeneticCharacter => gencharacter;
+		public CharacterAttributes Character
+		{
+			get;
+		}
 
 		/// <summary>
-		/// Skill Attributes
+		/// Returns the Character Attributes
 		/// </summary>
-		private SkillAttributes skills;
+		public CharacterAttributes GeneticCharacter
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Skill Attributes
 		/// </summary>
-		public SkillAttributes Skills => skills;
-
-		/// <summary>
-		/// A Sims Interests
-		/// </summary>
-		private InterestAttributes interests;
+		public SkillAttributes Skills
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Returns the Interests of a Sim
 		/// </summary>
-		public InterestAttributes Interests => interests;
+		public InterestAttributes Interests
+		{
+			get;
+		}
 		#endregion
 
 		#region Local Getters/Setters
@@ -3203,14 +2619,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint SimId
 		{
-			get
-			{
-				return simid;
-			}
-			set
-			{
-				simid = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -3317,14 +2726,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public ushort Instance
 		{
-			get
-			{
-				return instancenumber;
-			}
-			set
-			{
-				instancenumber = value;
-			}
+			get; set;
 		}
 
 		public virtual bool ChangeNames(string name, string familyname)
@@ -3570,34 +2972,34 @@ namespace SimPe.PackedFiles.Wrapper
 			familynameprovider = famnames;
 			sdescprovider = sdesc;
 
-			decay = new SimDecay();
-			character = new CharacterAttributes();
-			gencharacter = new CharacterAttributes();
-			skills = new SkillAttributes();
-			interests = new InterestAttributes();
-			description = new CharacterDescription();
-			relations = new SimRelationAttribute(this);
-			uni = new SdscUniversity();
-			nightlife = new SdscNightlife();
-			business = new SdscBusiness();
-			pets = new SdscPets();
-			voyage = new SdscVoyage();
-			castaway = new SdscCastaway();
-			freetime = new SdscFreetime(this);
-			apartment = new SdscApartment(this);
+			Decay = new SimDecay();
+			Character = new CharacterAttributes();
+			GeneticCharacter = new CharacterAttributes();
+			Skills = new SkillAttributes();
+			Interests = new InterestAttributes();
+			CharacterDescription = new CharacterDescription();
+			Relations = new SimRelationAttribute(this);
+			University = new SdscUniversity();
+			Nightlife = new SdscNightlife();
+			Business = new SdscBusiness();
+			Pets = new SdscPets();
+			Voyage = new SdscVoyage();
+			Castaway = new SdscCastaway();
+			Freetime = new SdscFreetime(this);
+			Apartment = new SdscApartment(this);
 
-			description.Aspiration = MetaData.AspirationTypes.Romance;
-			description.ZodiacSign = MetaData.ZodiacSignes.Virgo;
-			description.LifeSection = MetaData.LifeSections.Adult;
-			description.Gender = MetaData.Gender.Female;
-			description.LifelinePoints = 500;
+			CharacterDescription.Aspiration = MetaData.AspirationTypes.Romance;
+			CharacterDescription.ZodiacSign = MetaData.ZodiacSignes.Virgo;
+			CharacterDescription.LifeSection = MetaData.LifeSections.Adult;
+			CharacterDescription.Gender = MetaData.Gender.Female;
+			CharacterDescription.LifelinePoints = 500;
 
-			interests.FemalePreference = 50;
-			interests.MalePreference = 50;
+			Interests.FemalePreference = 50;
+			Interests.MalePreference = 50;
 
-			skills.Fatness = 500;
+			Skills.Fatness = 500;
 			version = 0x20;
-			enddata = 0x01;
+			EndByte = 0x01;
 		}
 
 		/// <summary>
@@ -3639,8 +3041,8 @@ namespace SimPe.PackedFiles.Wrapper
 			//the formula offset = 0x0a + 2*pid
 			long startpos = reader.BaseStream.Position;
 			reserved_01 = reader.ReadBytes(0xC2);
-			description.Age = reader.ReadUInt16();
-			description.PrevAgeDays = reader.ReadUInt16();
+			CharacterDescription.Age = reader.ReadUInt16();
+			CharacterDescription.PrevAgeDays = reader.ReadUInt16();
 			//reserved_02= reader.ReadBytes(0x9A);
 			//instancenumber = reader.ReadUInt16();
 			//simid = reader.ReadUInt32();
@@ -3660,226 +3062,226 @@ namespace SimPe.PackedFiles.Wrapper
 				startpos + GuidDataPosition,
 				System.IO.SeekOrigin.Begin
 			);
-			instancenumber = reader.ReadUInt16();
-			simid = reader.ReadUInt32();
+			Instance = reader.ReadUInt16();
+			SimId = reader.ReadUInt32();
 
 			//decay
 			reader.BaseStream.Seek(startpos + 0xC6, System.IO.SeekOrigin.Begin);
-			decay.Hunger = reader.ReadInt16();
-			decay.Comfort = reader.ReadInt16();
-			decay.Bladder = reader.ReadInt16();
-			decay.Energy = reader.ReadInt16();
-			decay.Hygiene = reader.ReadInt16();
-			decay.Amorous = reader.ReadInt16();
-			decay.Social = reader.ReadInt16();
-			decay.Shopping = reader.ReadInt16();
-			decay.Fun = reader.ReadInt16();
+			Decay.Hunger = reader.ReadInt16();
+			Decay.Comfort = reader.ReadInt16();
+			Decay.Bladder = reader.ReadInt16();
+			Decay.Energy = reader.ReadInt16();
+			Decay.Hygiene = reader.ReadInt16();
+			Decay.Amorous = reader.ReadInt16();
+			Decay.Social = reader.ReadInt16();
+			Decay.Shopping = reader.ReadInt16();
+			Decay.Fun = reader.ReadInt16();
 			reader.BaseStream.Seek(startpos + 0xE0, System.IO.SeekOrigin.Begin);
-			decay.ScratchC = reader.ReadInt16();
+			Decay.ScratchC = reader.ReadInt16();
 
 			//skills
 			reader.BaseStream.Seek(startpos + 0x1E, System.IO.SeekOrigin.Begin);
-			skills.Cleaning = reader.ReadUInt16();
-			skills.Cooking = reader.ReadUInt16();
-			skills.Charisma = reader.ReadUInt16();
-			skills.Mechanical = reader.ReadUInt16();
-			skills.Music = reader.ReadUInt16();
-			description.PartnerID = reader.ReadUInt16();
-			skills.Creativity = reader.ReadUInt16();
-			skills.Art = reader.ReadUInt16();
-			skills.Body = reader.ReadUInt16();
-			skills.Logic = reader.ReadUInt16();
+			Skills.Cleaning = reader.ReadUInt16();
+			Skills.Cooking = reader.ReadUInt16();
+			Skills.Charisma = reader.ReadUInt16();
+			Skills.Mechanical = reader.ReadUInt16();
+			Skills.Music = reader.ReadUInt16();
+			CharacterDescription.PartnerID = reader.ReadUInt16();
+			Skills.Creativity = reader.ReadUInt16();
+			Skills.Art = reader.ReadUInt16();
+			Skills.Body = reader.ReadUInt16();
+			Skills.Logic = reader.ReadUInt16();
 			// Chris H this is Sunshine Motive change to Amorous Personality - reader.BaseStream.Seek(startpos + 0xEA, System.IO.SeekOrigin.Begin);
 			reader.BaseStream.Seek(startpos + 0xB6, System.IO.SeekOrigin.Begin);
-			skills.Romance = reader.ReadUInt16();
+			Skills.Romance = reader.ReadUInt16();
 
 			//character (Genetic)
 			reader.BaseStream.Seek(startpos + 0x10, System.IO.SeekOrigin.Begin);
-			character.Nice = reader.ReadUInt16();
-			character.Active = reader.ReadUInt16();
+			Character.Nice = reader.ReadUInt16();
+			Character.Active = reader.ReadUInt16();
 			reader.BaseStream.Seek(0x02, System.IO.SeekOrigin.Current);
 
 			//reader.BaseStream.Seek(0x014, SeekOrigin.Begin);
 			//University.Effort = reader.ReadUInt16();
 
-			character.Playful = reader.ReadUInt16();
-			character.Outgoing = reader.ReadUInt16();
-			character.Neat = reader.ReadUInt16();
+			Character.Playful = reader.ReadUInt16();
+			Character.Outgoing = reader.ReadUInt16();
+			Character.Neat = reader.ReadUInt16();
 
 			//random Data
 			reader.BaseStream.Seek(startpos + 0xb4, SeekOrigin.Begin);
-			description.PersonFlags1.Value = reader.ReadUInt16();
+			CharacterDescription.PersonFlags1.Value = reader.ReadUInt16();
 
 			reader.BaseStream.Seek(startpos + 0x46, System.IO.SeekOrigin.Begin);
-			description.MotivesStatic = reader.ReadUInt16();
+			CharacterDescription.MotivesStatic = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x68, System.IO.SeekOrigin.Begin);
-			description.Aspiration = (MetaData.AspirationTypes)reader.ReadUInt16();
+			CharacterDescription.Aspiration = (MetaData.AspirationTypes)reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0xBC, System.IO.SeekOrigin.Begin);
-			description.VoiceType = reader.ReadUInt16();
+			CharacterDescription.VoiceType = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x7C, System.IO.SeekOrigin.Begin);
-			description.Grade = (Data.MetaData.Grades)reader.ReadUInt16();
-			description.CareerLevel = reader.ReadUInt16();
+			CharacterDescription.Grade = (Data.MetaData.Grades)reader.ReadUInt16();
+			CharacterDescription.CareerLevel = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x80, System.IO.SeekOrigin.Begin);
-			description.Realage = reader.ReadUInt16();
+			CharacterDescription.Realage = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x80, System.IO.SeekOrigin.Begin);
-			description.LifeSection = (MetaData.LifeSections)reader.ReadUInt16();
+			CharacterDescription.LifeSection = (MetaData.LifeSections)reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x86, System.IO.SeekOrigin.Begin);
-			familyinstance = reader.ReadUInt16();
+			FamilyInstance = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x8A, System.IO.SeekOrigin.Begin);
-			description.CareerPerformance = reader.ReadInt16();
+			CharacterDescription.CareerPerformance = reader.ReadInt16();
 			reader.BaseStream.Seek(startpos + 0x8E, System.IO.SeekOrigin.Begin);
-			description.Gender = (MetaData.Gender)reader.ReadUInt16();
+			CharacterDescription.Gender = (MetaData.Gender)reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x94, System.IO.SeekOrigin.Begin);
-			description.GhostFlag.Value = reader.ReadUInt16();
+			CharacterDescription.GhostFlag.Value = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x96, System.IO.SeekOrigin.Begin);
-			description.PTO = reader.ReadUInt16();
+			CharacterDescription.PTO = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x98, System.IO.SeekOrigin.Begin);
-			description.ZodiacSign = (Data.MetaData.ZodiacSignes)reader.ReadUInt16();
+			CharacterDescription.ZodiacSign = (Data.MetaData.ZodiacSignes)reader.ReadUInt16();
 
 			reader.BaseStream.Seek(startpos + 0x102, System.IO.SeekOrigin.Begin);
-			description.Pension = reader.ReadUInt16();
+			CharacterDescription.Pension = reader.ReadUInt16();
 
 			reader.BaseStream.Seek(startpos + 0xAE, System.IO.SeekOrigin.Begin);
-			description.BodyFlag.Value = reader.ReadUInt16();
+			CharacterDescription.BodyFlag.Value = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x134, System.IO.SeekOrigin.Begin);
-			description.CultFlag.Value = reader.ReadUInt16();
+			CharacterDescription.CultFlag.Value = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x13C, System.IO.SeekOrigin.Begin);
-			description.ReligionId = reader.ReadUInt16();
+			CharacterDescription.ReligionId = reader.ReadUInt16();
 			_ = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x12A, System.IO.SeekOrigin.Begin);
 			_ = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0xBA, System.IO.SeekOrigin.Begin);
 			_ = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0xB0, System.IO.SeekOrigin.Begin);
-			skills.Fatness = reader.ReadUInt16();
+			Skills.Fatness = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0xBE, System.IO.SeekOrigin.Begin);
-			description.Career = (Data.MetaData.Careers)reader.ReadUInt32();
+			CharacterDescription.Career = (Data.MetaData.Careers)reader.ReadUInt32();
 			reader.BaseStream.Seek(startpos + 0x12C, System.IO.SeekOrigin.Begin);
-			description.AllocatedSuburb = reader.ReadUInt16();
-			description.PersonFlags3.Value = reader.ReadUInt16();
-			description.Bodyshape = (Data.MetaData.Bodyshape)reader.ReadUInt16();
+			CharacterDescription.AllocatedSuburb = reader.ReadUInt16();
+			CharacterDescription.PersonFlags3.Value = reader.ReadUInt16();
+			CharacterDescription.Bodyshape = (Data.MetaData.Bodyshape)reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0xE2, System.IO.SeekOrigin.Begin);
-			description.SchoolType = (Data.MetaData.SchoolTypes)reader.ReadUInt32();
+			CharacterDescription.SchoolType = (Data.MetaData.SchoolTypes)reader.ReadUInt32();
 			reader.BaseStream.Seek(startpos + 0x14C, System.IO.SeekOrigin.Begin);
-			description.LifelinePoints = reader.ReadInt16();
-			description.LifelineScore = (uint)(reader.ReadUInt16() * 10);
-			description.BlizLifelinePoints = reader.ReadUInt16();
+			CharacterDescription.LifelinePoints = reader.ReadInt16();
+			CharacterDescription.LifelineScore = (uint)(reader.ReadUInt16() * 10);
+			CharacterDescription.BlizLifelinePoints = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x142, System.IO.SeekOrigin.Begin);
-			description.ServiceTypes = (Data.MetaData.ServiceTypes)reader.ReadUInt16();
+			CharacterDescription.ServiceTypes = (Data.MetaData.ServiceTypes)reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x142, System.IO.SeekOrigin.Begin);
-			description.NPCType = reader.ReadUInt16();
-			description.AgeDuration = reader.ReadUInt16();
+			CharacterDescription.NPCType = reader.ReadUInt16();
+			CharacterDescription.AgeDuration = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x148, System.IO.SeekOrigin.Begin);
-			description.SelectableFlag.Value = reader.ReadUInt16();
+			CharacterDescription.SelectableFlag.Value = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x54, System.IO.SeekOrigin.Begin);
-			description.AutonomyLevel = reader.ReadUInt16();
+			CharacterDescription.AutonomyLevel = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x156, System.IO.SeekOrigin.Begin);
-			unlinked = reader.ReadUInt16();
+			Unlinked = reader.ReadUInt16();
 
 			reader.BaseStream.Seek(startpos + 0x15A, System.IO.SeekOrigin.Begin);
-			description.Retired = (Data.MetaData.Careers)reader.ReadUInt32();
-			description.RetiredLevel = reader.ReadUInt16();
+			CharacterDescription.Retired = (Data.MetaData.Careers)reader.ReadUInt32();
+			CharacterDescription.RetiredLevel = reader.ReadUInt16();
 
 			//available Relationships
 			reader.BaseStream.Seek(
 				startpos + this.RelationPosition,
 				System.IO.SeekOrigin.Begin
 			);
-			relations.SimInstances = new ushort[reader.ReadUInt32()];
+			Relations.SimInstances = new ushort[reader.ReadUInt32()];
 
 			int ct = 0;
-			for (int i = 0; i < relations.SimInstances.Length; i++)
+			for (int i = 0; i < Relations.SimInstances.Length; i++)
 			{
 				if (reader.BaseStream.Length - reader.BaseStream.Position < 4)
 					continue;
 				//reader.ReadUInt16();			//yet unknown
-				relations.SimInstances[i] = (ushort)reader.ReadUInt32();
+				Relations.SimInstances[i] = (ushort)reader.ReadUInt32();
 				ct++;
 			}
 
 			//something went wrong while reading the SimInstances
-			if (ct != relations.SimInstances.Length)
+			if (ct != Relations.SimInstances.Length)
 			{
-				ushort[] old = relations.SimInstances;
-				relations.SimInstances = new ushort[ct];
+				ushort[] old = Relations.SimInstances;
+				Relations.SimInstances = new ushort[ct];
 				for (int i = 0; i < ct; i++)
-					relations.SimInstances[i] = old[i];
+					Relations.SimInstances[i] = old[i];
 			}
 
 			if (reader.BaseStream.Length - reader.BaseStream.Position > 0)
-				enddata = reader.ReadByte();
+				EndByte = reader.ReadByte();
 			else
-				enddata = 0x01;
+				EndByte = 0x01;
 
 			if (version >= (int)SDescVersions.Voyage)
-				voyage.UnserializeMem(reader);
+				Voyage.UnserializeMem(reader);
 
 			//character (Genetic)
 			reader.BaseStream.Seek(startpos + 0x6A, System.IO.SeekOrigin.Begin);
-			gencharacter.Neat = reader.ReadUInt16();
-			gencharacter.Nice = reader.ReadUInt16();
-			gencharacter.Active = reader.ReadUInt16();
-			gencharacter.Outgoing = reader.ReadUInt16();
-			gencharacter.Playful = reader.ReadUInt16();
+			GeneticCharacter.Neat = reader.ReadUInt16();
+			GeneticCharacter.Nice = reader.ReadUInt16();
+			GeneticCharacter.Active = reader.ReadUInt16();
+			GeneticCharacter.Outgoing = reader.ReadUInt16();
+			GeneticCharacter.Playful = reader.ReadUInt16();
 
 			//interests
 			reader.BaseStream.Seek(startpos + 0x038, System.IO.SeekOrigin.Begin);
-			interests.MalePreference = reader.ReadInt16();
-			interests.FemalePreference = reader.ReadInt16();
+			Interests.MalePreference = reader.ReadInt16();
+			Interests.FemalePreference = reader.ReadInt16();
 			reader.BaseStream.Seek(startpos + 0x104, System.IO.SeekOrigin.Begin);
-			interests.Politics = reader.ReadUInt16();
-			interests.Money = reader.ReadUInt16();
-			interests.Environment = reader.ReadUInt16();
-			interests.Crime = reader.ReadUInt16();
-			interests.Entertainment = reader.ReadUInt16();
-			interests.Culture = reader.ReadUInt16();
-			interests.Food = reader.ReadUInt16();
-			interests.Health = reader.ReadUInt16();
-			interests.Fashion = reader.ReadUInt16();
-			interests.Sports = reader.ReadUInt16();
-			interests.Paranormal = reader.ReadUInt16();
-			interests.Travel = reader.ReadUInt16();
-			interests.Work = reader.ReadUInt16();
-			interests.Weather = reader.ReadUInt16();
-			interests.Animals = reader.ReadUInt16();
-			interests.School = reader.ReadUInt16();
-			interests.Toys = reader.ReadUInt16();
-			interests.Scifi = reader.ReadUInt16();
+			Interests.Politics = reader.ReadUInt16();
+			Interests.Money = reader.ReadUInt16();
+			Interests.Environment = reader.ReadUInt16();
+			Interests.Crime = reader.ReadUInt16();
+			Interests.Entertainment = reader.ReadUInt16();
+			Interests.Culture = reader.ReadUInt16();
+			Interests.Food = reader.ReadUInt16();
+			Interests.Health = reader.ReadUInt16();
+			Interests.Fashion = reader.ReadUInt16();
+			Interests.Sports = reader.ReadUInt16();
+			Interests.Paranormal = reader.ReadUInt16();
+			Interests.Travel = reader.ReadUInt16();
+			Interests.Work = reader.ReadUInt16();
+			Interests.Weather = reader.ReadUInt16();
+			Interests.Animals = reader.ReadUInt16();
+			Interests.School = reader.ReadUInt16();
+			Interests.Toys = reader.ReadUInt16();
+			Interests.Scifi = reader.ReadUInt16();
 
 			//university only Items
 			if (version >= (int)SDescVersions.University)
-				uni.Unserialize(reader);
+				University.Unserialize(reader);
 
 			//nightlife only Items
 			if (version >= (int)SDescVersions.Nightlife)
-				nightlife.Unserialize(reader, (SDescVersions)version);
+				Nightlife.Unserialize(reader, (SDescVersions)version);
 
 			//business only Items
 			if (version >= (int)SDescVersions.Business)
-				business.Unserialize(reader);
+				Business.Unserialize(reader);
 
 			//pets only Items
 			if (version >= (int)SDescVersions.Pets)
-				pets.Unserialize(reader);
+				Pets.Unserialize(reader);
 
 			//voyage only Items
 			if (version >= (int)SDescVersions.Voyage)
-				voyage.Unserialize(reader);
+				Voyage.Unserialize(reader);
 
 			//castway only Items
 			if (version == (int)SDescVersions.Castaway)
-				castaway.Unserialize(reader);
+				Castaway.Unserialize(reader);
 
 			//freetime only Items
 			if (version >= (int)SDescVersions.Freetime)
-				freetime.Unserialize(reader);
+				Freetime.Unserialize(reader);
 
 			//apartment only Items
 			if (version >= (int)SDescVersions.Apartment)
 			{
-				apartment.Unserialize(reader);
+				Apartment.Unserialize(reader);
 				reader.BaseStream.Seek(startpos + 0x1D8, System.IO.SeekOrigin.Begin);
-				description.TitlePostName = (short)reader.ReadUInt16();
+				CharacterDescription.TitlePostName = (short)reader.ReadUInt16();
 			}
 
 			reader.BaseStream.Seek(endpos, System.IO.SeekOrigin.Begin);
@@ -3893,8 +3295,8 @@ namespace SimPe.PackedFiles.Wrapper
 
 			long startpos = writer.BaseStream.Position;
 			writer.Write(reserved_01);
-			writer.Write(description.Age);
-			writer.Write(description.PrevAgeDays);
+			writer.Write(CharacterDescription.Age);
+			writer.Write(CharacterDescription.PrevAgeDays);
 			//writer.Write(reserved_02);
 			//writer.Write(instancenumber);
 			//writer.Write(simid);
@@ -3918,195 +3320,195 @@ namespace SimPe.PackedFiles.Wrapper
 				startpos + GuidDataPosition,
 				System.IO.SeekOrigin.Begin
 			);
-			writer.Write(instancenumber);
-			writer.Write(simid);
+			writer.Write(Instance);
+			writer.Write(SimId);
 
 			//character
 			writer.BaseStream.Seek(startpos + 0x10, System.IO.SeekOrigin.Begin);
-			writer.Write(character.Nice); //Nice
-			writer.Write(character.Active); //Active
+			writer.Write(Character.Nice); //Nice
+			writer.Write(Character.Active); //Active
 			writer.BaseStream.Seek(0x02, System.IO.SeekOrigin.Current);
-			writer.Write(character.Playful); //Playful
-			writer.Write(character.Outgoing); //Outgoing
-			writer.Write(character.Neat); //Neat
+			writer.Write(Character.Playful); //Playful
+			writer.Write(Character.Outgoing); //Outgoing
+			writer.Write(Character.Neat); //Neat
 
 			//freetime only Items (has to get processed before the aspiration filed is written)
 			if (version >= (int)SDescVersions.Freetime)
-				freetime.Serialize(writer);
+				Freetime.Serialize(writer);
 
 			//random Data
 			writer.BaseStream.Seek(startpos + 0xb4, SeekOrigin.Begin);
-			writer.Write((ushort)description.PersonFlags1.Value);
+			writer.Write((ushort)CharacterDescription.PersonFlags1.Value);
 
 			writer.BaseStream.Seek(startpos + 0x46, System.IO.SeekOrigin.Begin);
-			writer.Write((ushort)description.MotivesStatic);
+			writer.Write((ushort)CharacterDescription.MotivesStatic);
 			writer.BaseStream.Seek(startpos + 0x54, System.IO.SeekOrigin.Begin);
-			writer.Write(description.AutonomyLevel);
+			writer.Write(CharacterDescription.AutonomyLevel);
 			writer.BaseStream.Seek(startpos + 0x68, System.IO.SeekOrigin.Begin);
-			writer.Write((ushort)description.Aspiration);
+			writer.Write((ushort)CharacterDescription.Aspiration);
 			writer.BaseStream.Seek(startpos + 0xBC, System.IO.SeekOrigin.Begin);
-			writer.Write((ushort)description.VoiceType);
+			writer.Write((ushort)CharacterDescription.VoiceType);
 			writer.BaseStream.Seek(startpos + 0x7C, System.IO.SeekOrigin.Begin);
-			writer.Write((ushort)description.Grade);
-			writer.Write(description.CareerLevel);
+			writer.Write((ushort)CharacterDescription.Grade);
+			writer.Write(CharacterDescription.CareerLevel);
 			writer.BaseStream.Seek(startpos + 0x80, System.IO.SeekOrigin.Begin);
-			writer.Write((ushort)description.LifeSection);
+			writer.Write((ushort)CharacterDescription.LifeSection);
 			writer.BaseStream.Seek(startpos + 0x86, System.IO.SeekOrigin.Begin);
-			writer.Write(familyinstance);
+			writer.Write(FamilyInstance);
 			writer.BaseStream.Seek(startpos + 0x8A, System.IO.SeekOrigin.Begin);
-			writer.Write(description.CareerPerformance);
+			writer.Write(CharacterDescription.CareerPerformance);
 			writer.BaseStream.Seek(startpos + 0x8E, System.IO.SeekOrigin.Begin);
-			writer.Write((ushort)description.Gender);
+			writer.Write((ushort)CharacterDescription.Gender);
 			writer.BaseStream.Seek(startpos + 0x94, System.IO.SeekOrigin.Begin);
-			writer.Write(description.GhostFlag.Value);
+			writer.Write(CharacterDescription.GhostFlag.Value);
 			writer.BaseStream.Seek(startpos + 0x96, System.IO.SeekOrigin.Begin);
-			writer.Write((ushort)description.PTO);
+			writer.Write((ushort)CharacterDescription.PTO);
 			writer.BaseStream.Seek(startpos + 0x98, System.IO.SeekOrigin.Begin);
-			writer.Write((ushort)description.ZodiacSign);
+			writer.Write((ushort)CharacterDescription.ZodiacSign);
 
 			writer.BaseStream.Seek(startpos + 0x102, System.IO.SeekOrigin.Begin);
-			writer.Write((ushort)description.Pension);
+			writer.Write((ushort)CharacterDescription.Pension);
 
 			writer.BaseStream.Seek(startpos + 0xAE, System.IO.SeekOrigin.Begin);
-			writer.Write(description.BodyFlag.Value);
+			writer.Write(CharacterDescription.BodyFlag.Value);
 			writer.BaseStream.Seek(startpos + 0x134, System.IO.SeekOrigin.Begin);
-			writer.Write(description.CultFlag.Value);
+			writer.Write(CharacterDescription.CultFlag.Value);
 			writer.BaseStream.Seek(startpos + 0x13C, System.IO.SeekOrigin.Begin);
-			writer.Write(description.ReligionId);
+			writer.Write(CharacterDescription.ReligionId);
 			writer.Write((ushort)0);
 			writer.BaseStream.Seek(startpos + 0x12A, System.IO.SeekOrigin.Begin);
 			writer.Write((ushort)0);
 			writer.BaseStream.Seek(startpos + 0xBA, System.IO.SeekOrigin.Begin);
 			writer.Write((ushort)0);
 			writer.BaseStream.Seek(startpos + 0xB0, System.IO.SeekOrigin.Begin);
-			writer.Write(skills.Fatness);
+			writer.Write(Skills.Fatness);
 			writer.BaseStream.Seek(startpos + 0xBE, System.IO.SeekOrigin.Begin);
-			writer.Write((uint)description.Career);
+			writer.Write((uint)CharacterDescription.Career);
 			writer.BaseStream.Seek(startpos + 0x12C, System.IO.SeekOrigin.Begin);
-			writer.Write(description.AllocatedSuburb);
-			writer.Write((ushort)description.PersonFlags3.Value);
-			writer.Write((ushort)description.Bodyshape);
+			writer.Write(CharacterDescription.AllocatedSuburb);
+			writer.Write((ushort)CharacterDescription.PersonFlags3.Value);
+			writer.Write((ushort)CharacterDescription.Bodyshape);
 			writer.BaseStream.Seek(startpos + 0xE2, System.IO.SeekOrigin.Begin);
-			writer.Write((uint)description.SchoolType);
+			writer.Write((uint)CharacterDescription.SchoolType);
 			writer.BaseStream.Seek(startpos + 0x14C, System.IO.SeekOrigin.Begin);
-			writer.Write(description.LifelinePoints);
-			writer.Write((ushort)(description.LifelineScore / 10));
-			writer.Write(description.BlizLifelinePoints);
+			writer.Write(CharacterDescription.LifelinePoints);
+			writer.Write((ushort)(CharacterDescription.LifelineScore / 10));
+			writer.Write(CharacterDescription.BlizLifelinePoints);
 			writer.BaseStream.Seek(startpos + 0x142, System.IO.SeekOrigin.Begin);
-			writer.Write(description.NPCType);
-			writer.Write(description.AgeDuration);
+			writer.Write(CharacterDescription.NPCType);
+			writer.Write(CharacterDescription.AgeDuration);
 			writer.BaseStream.Seek(startpos + 0x148, System.IO.SeekOrigin.Begin);
-			writer.Write(description.SelectableFlag.Value);
+			writer.Write(CharacterDescription.SelectableFlag.Value);
 			writer.BaseStream.Seek(startpos + 0x156, System.IO.SeekOrigin.Begin);
-			writer.Write(unlinked);
+			writer.Write(Unlinked);
 
 			writer.BaseStream.Seek(startpos + 0x15A, System.IO.SeekOrigin.Begin);
-			writer.Write((uint)description.Retired);
-			writer.Write(description.RetiredLevel);
+			writer.Write((uint)CharacterDescription.Retired);
+			writer.Write(CharacterDescription.RetiredLevel);
 
 			//decay
 			writer.BaseStream.Seek(startpos + 0xC6, System.IO.SeekOrigin.Begin);
-			writer.Write(decay.Hunger);
-			writer.Write(decay.Comfort);
-			writer.Write(decay.Bladder);
-			writer.Write(decay.Energy);
-			writer.Write(decay.Hygiene);
-			writer.Write(decay.Amorous);
-			writer.Write(decay.Social);
-			writer.Write(decay.Shopping);
-			writer.Write(decay.Fun);
+			writer.Write(Decay.Hunger);
+			writer.Write(Decay.Comfort);
+			writer.Write(Decay.Bladder);
+			writer.Write(Decay.Energy);
+			writer.Write(Decay.Hygiene);
+			writer.Write(Decay.Amorous);
+			writer.Write(Decay.Social);
+			writer.Write(Decay.Shopping);
+			writer.Write(Decay.Fun);
 			writer.BaseStream.Seek(startpos + 0xE0, System.IO.SeekOrigin.Begin);
-			writer.Write(decay.ScratchC);
+			writer.Write(Decay.ScratchC);
 
 			//available Relationships
 			writer.BaseStream.Seek(
 				startpos + this.RelationPosition,
 				System.IO.SeekOrigin.Begin
 			);
-			writer.Write((uint)relations.SimInstances.Length);
+			writer.Write((uint)Relations.SimInstances.Length);
 
-			for (int i = 0; i < relations.SimInstances.Length; i++)
-				writer.Write((uint)relations.SimInstances[i]);
+			for (int i = 0; i < Relations.SimInstances.Length; i++)
+				writer.Write((uint)Relations.SimInstances[i]);
 
-			writer.Write((byte)enddata);
+			writer.Write((byte)EndByte);
 			if (version >= (int)SDescVersions.Voyage)
-				voyage.SerializeMem(writer);
+				Voyage.SerializeMem(writer);
 
 			//skills
 			writer.BaseStream.Seek(startpos + 0x1E, System.IO.SeekOrigin.Begin);
-			writer.Write(skills.Cleaning);
-			writer.Write(skills.Cooking);
-			writer.Write(skills.Charisma);
-			writer.Write(skills.Mechanical);
-			writer.Write(skills.Music);
-			writer.Write(description.PartnerID);
-			writer.Write(skills.Creativity);
-			writer.Write(skills.Art);
-			writer.Write(skills.Body);
-			writer.Write(skills.Logic);
+			writer.Write(Skills.Cleaning);
+			writer.Write(Skills.Cooking);
+			writer.Write(Skills.Charisma);
+			writer.Write(Skills.Mechanical);
+			writer.Write(Skills.Music);
+			writer.Write(CharacterDescription.PartnerID);
+			writer.Write(Skills.Creativity);
+			writer.Write(Skills.Art);
+			writer.Write(Skills.Body);
+			writer.Write(Skills.Logic);
 			// Chris H this was Sunshine Motive changed to Amorous Personality - writer.BaseStream.Seek(startpos + 0xEA, System.IO.SeekOrigin.Begin);
 			writer.BaseStream.Seek(startpos + 0xB6, System.IO.SeekOrigin.Begin);
-			writer.Write(skills.Romance);
+			writer.Write(Skills.Romance);
 
 			//character (Genetic)
 			writer.BaseStream.Seek(startpos + 0x6A, System.IO.SeekOrigin.Begin);
-			writer.Write(gencharacter.Neat);
-			writer.Write(gencharacter.Nice);
-			writer.Write(gencharacter.Active);
-			writer.Write(gencharacter.Outgoing);
-			writer.Write(gencharacter.Playful);
+			writer.Write(GeneticCharacter.Neat);
+			writer.Write(GeneticCharacter.Nice);
+			writer.Write(GeneticCharacter.Active);
+			writer.Write(GeneticCharacter.Outgoing);
+			writer.Write(GeneticCharacter.Playful);
 
 			//interests
 			writer.BaseStream.Seek(startpos + 0x038, System.IO.SeekOrigin.Begin);
-			writer.Write(interests.MalePreference);
-			writer.Write(interests.FemalePreference);
+			writer.Write(Interests.MalePreference);
+			writer.Write(Interests.FemalePreference);
 			writer.BaseStream.Seek(startpos + 0x104, System.IO.SeekOrigin.Begin);
-			writer.Write(interests.Politics);
-			writer.Write(interests.Money);
-			writer.Write(interests.Environment);
-			writer.Write(interests.Crime);
-			writer.Write(interests.Entertainment);
-			writer.Write(interests.Culture);
-			writer.Write(interests.Food);
-			writer.Write(interests.Health);
-			writer.Write(interests.Fashion);
-			writer.Write(interests.Sports);
-			writer.Write(interests.Paranormal);
-			writer.Write(interests.Travel);
-			writer.Write(interests.Work);
-			writer.Write(interests.Weather);
-			writer.Write(interests.Animals);
-			writer.Write(interests.School);
-			writer.Write(interests.Toys);
-			writer.Write(interests.Scifi);
+			writer.Write(Interests.Politics);
+			writer.Write(Interests.Money);
+			writer.Write(Interests.Environment);
+			writer.Write(Interests.Crime);
+			writer.Write(Interests.Entertainment);
+			writer.Write(Interests.Culture);
+			writer.Write(Interests.Food);
+			writer.Write(Interests.Health);
+			writer.Write(Interests.Fashion);
+			writer.Write(Interests.Sports);
+			writer.Write(Interests.Paranormal);
+			writer.Write(Interests.Travel);
+			writer.Write(Interests.Work);
+			writer.Write(Interests.Weather);
+			writer.Write(Interests.Animals);
+			writer.Write(Interests.School);
+			writer.Write(Interests.Toys);
+			writer.Write(Interests.Scifi);
 
 			//university only Items
 			if (version >= (int)SDescVersions.University)
-				uni.Serialize(writer);
+				University.Serialize(writer);
 
 			//nightlife only Items
 			if (version >= (int)SDescVersions.Nightlife)
-				nightlife.Serialize(writer, (SDescVersions)version);
+				Nightlife.Serialize(writer, (SDescVersions)version);
 
 			//business only Items
 			if (version >= (int)SDescVersions.Business)
-				business.Serialize(writer);
+				Business.Serialize(writer);
 
 			//pets only Items
 			if (version >= (int)SDescVersions.Pets)
-				pets.Serialize(writer);
+				Pets.Serialize(writer);
 
 			//voyage only Items
 			if (version >= (int)SDescVersions.Voyage)
-				voyage.Serialize(writer);
+				Voyage.Serialize(writer);
 
 			//castway only Items
 			if (version == (int)SDescVersions.Castaway)
-				castaway.Serialize(writer);
+				Castaway.Serialize(writer);
 
 			//apartment only Items
 			if (version >= (int)SDescVersions.Apartment)
-				apartment.Serialize(writer);
+				Apartment.Serialize(writer);
 
 			writer.BaseStream.Seek(endpos, System.IO.SeekOrigin.Begin);
 		}

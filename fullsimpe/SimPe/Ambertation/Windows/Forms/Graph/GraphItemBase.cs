@@ -37,17 +37,17 @@ namespace Ambertation.Windows.Forms.Graph
 		public GraphItemBase()
 			: base()
 		{
-			childs = new GraphItems();
-			childs.ItemsChanged += new GraphItemsChanged(childs_ItemsChanged);
+			ChildItems = new GraphItems();
+			ChildItems.ItemsChanged += new GraphItemsChanged(childs_ItemsChanged);
 
-			parents = new GraphItems();
-			parents.ItemsChanged += new GraphItemsChanged(parents_ItemsChanged);
+			ParentItems = new GraphItems();
+			ParentItems.ItemsChanged += new GraphItemsChanged(parents_ItemsChanged);
 
 			alcol = Color.DarkOrange;
 
 			lcol = Color.Silver;
 			ainlcol = Color.DimGray;
-			tofront = true;
+			AutoBringToFront = true;
 
 			lm = Ambertation.Windows.Forms.Graph.LinkControlLineMode.Bezier;
 
@@ -56,7 +56,7 @@ namespace Ambertation.Windows.Forms.Graph
 
 		public override void Dispose()
 		{
-			tag = null;
+			Tag = null;
 			base.Dispose();
 		}
 
@@ -72,17 +72,9 @@ namespace Ambertation.Windows.Forms.Graph
 			}
 		}
 
-		object tag;
 		public object Tag
 		{
-			get
-			{
-				return tag;
-			}
-			set
-			{
-				tag = value;
-			}
+			get; set;
 		}
 
 		Ambertation.Windows.Forms.Graph.LinkControlLineMode lm;
@@ -161,31 +153,26 @@ namespace Ambertation.Windows.Forms.Graph
 			}
 		}
 
-		bool tofront;
 		public bool AutoBringToFront
 		{
-			get
-			{
-				return tofront;
-			}
-			set
-			{
-				tofront = value;
-			}
+			get; set;
 		}
 
 		#endregion
 
 		#region Properties
-		GraphItems childs;
 
 		[Browsable(false)]
-		public GraphItems ChildItems => childs;
-
-		GraphItems parents;
+		public GraphItems ChildItems
+		{
+			get;
+		}
 
 		[Browsable(false)]
-		public GraphItems ParentItems => parents;
+		public GraphItems ParentItems
+		{
+			get;
+		}
 		#endregion
 
 
@@ -250,13 +237,13 @@ namespace Ambertation.Windows.Forms.Graph
 
 		void SendAllParentLinksToFront()
 		{
-			foreach (GraphItemBase gi in this.parents)
+			foreach (GraphItemBase gi in this.ParentItems)
 				gi.SendAllChildLinksToFront(this);
 		}
 
 		protected void SendAllChildLinksToFront(GraphItemBase sender)
 		{
-			foreach (GraphItemBase lg in this.childs)
+			foreach (GraphItemBase lg in this.ChildItems)
 				if (lg == sender)
 				{
 					LinkGraphic lc = (LinkGraphic)lcmap[lg];
@@ -267,19 +254,19 @@ namespace Ambertation.Windows.Forms.Graph
 
 		void SendAllChildsToFront()
 		{
-			foreach (GraphItemBase gi in this.childs)
+			foreach (GraphItemBase gi in this.ChildItems)
 				gi.SendToFront();
 		}
 
 		void SendAllParentsToFront()
 		{
-			foreach (GraphItemBase gi in this.parents)
+			foreach (GraphItemBase gi in this.ParentItems)
 				gi.SendToFront();
 		}
 
 		protected void SetChildLinkColor(GraphItemBase sender, Color cl)
 		{
-			foreach (GraphItemBase lg in this.childs)
+			foreach (GraphItemBase lg in this.ChildItems)
 				if (lg == sender)
 				{
 					LinkGraphic lc = (LinkGraphic)lcmap[lg];
@@ -290,7 +277,7 @@ namespace Ambertation.Windows.Forms.Graph
 
 		protected void SetParentLinkColors(Color cl)
 		{
-			foreach (GraphItemBase lg in this.parents)
+			foreach (GraphItemBase lg in this.ParentItems)
 				lg.SetChildLinkColor(this, cl);
 		}
 
@@ -437,21 +424,21 @@ namespace Ambertation.Windows.Forms.Graph
 			}
 			lcmap.Clear();
 
-			GraphItemBase[] gibs = new GraphItemBase[childs.Length];
-			childs.CopyTo(gibs);
+			GraphItemBase[] gibs = new GraphItemBase[ChildItems.Length];
+			ChildItems.CopyTo(gibs);
 			foreach (GraphItemBase gib in gibs)
 				gib.ParentItems.Remove(this);
 
-			gibs = new GraphItemBase[parents.Length];
-			parents.CopyTo(gibs);
+			gibs = new GraphItemBase[ParentItems.Length];
+			ParentItems.CopyTo(gibs);
 			foreach (GraphItemBase gib in gibs)
 				gib.ChildItems.Remove(this);
 
 			//foreach (GraphItemBase gib in childs) gib.Dispose();
-			childs.Clear();
+			ChildItems.Clear();
 
 			//foreach (GraphItemBase gib in parents) gib.Dispose();
-			parents.Clear();
+			ParentItems.Clear();
 		}
 
 		protected override void OnSizeChanged()
@@ -472,8 +459,8 @@ namespace Ambertation.Windows.Forms.Graph
 			foreach (LinkGraphic lg in lgs)
 				lg.Parent = null;
 
-			GraphItemBase[] gibs = new GraphItemBase[parents.Length];
-			parents.CopyTo(gibs);
+			GraphItemBase[] gibs = new GraphItemBase[ParentItems.Length];
+			ParentItems.CopyTo(gibs);
 			foreach (GraphItemBase gib in gibs)
 				gib.ChildItems.Remove(this);
 

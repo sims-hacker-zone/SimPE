@@ -33,30 +33,15 @@ namespace SimPe.Plugin
 		#region Attributes
 		GeometryBuilder gb;
 		SimPe.Interfaces.Files.IPackedFileDescriptor pfd;
-		short u1;
+
 		public short Unknown1
 		{
-			get
-			{
-				return u1;
-			}
-			set
-			{
-				u1 = value;
-			}
+			get; set;
 		}
 
-		int u2;
 		public int Unknown2
 		{
-			get
-			{
-				return u2;
-			}
-			set
-			{
-				u2 = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -94,8 +79,8 @@ namespace SimPe.Plugin
 				pfd.SubType = reader.ReadUInt32();
 			pfd.Type = reader.ReadUInt32();
 
-			u1 = reader.ReadInt16();
-			u2 = reader.ReadInt32();
+			Unknown1 = reader.ReadInt16();
+			Unknown2 = reader.ReadInt32();
 		}
 
 		/// <summary>
@@ -120,8 +105,8 @@ namespace SimPe.Plugin
 				writer.Write(pfd.SubType);
 			writer.Write(pfd.Type);
 
-			writer.Write(u1);
-			writer.Write(u2);
+			writer.Write(Unknown1);
+			writer.Write(Unknown2);
 		}
 
 		//fShapeRefNode form = null;

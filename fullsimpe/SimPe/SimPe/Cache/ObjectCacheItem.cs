@@ -67,49 +67,30 @@ namespace SimPe.Cache
 
 		public ObjectCacheItem()
 		{
-			version = VERSION;
-			name = "";
-			modelname = "";
-			objname = "";
-			use = true;
+			Version = VERSION;
+			Name = "";
+			ModelName = "";
+			ObjectFileName = "";
+			Useable = true;
 			pfd = new Packages.PackedFileDescriptor();
 		}
 
-		byte version;
-		string name;
-		string modelname;
 		Interfaces.Files.IPackedFileDescriptor pfd;
-		uint localgroup;
-		Image thumb;
-		Data.ObjectTypes objtype;
-		string objname;
-		uint objfuncsort;
-		uint objbuildtipe;
-		bool use;
-		ObjectClass oclass;
-		object tag;
 
 		public Object Tag
 		{
-			get
-			{
-				return tag;
-			}
-			set
-			{
-				tag = value;
-			}
+			get; set;
 		}
 
 		public ObjectCacheItemVersions ObjectVersion
 		{
 			get
 			{
-				if (version == (byte)ObjectCacheItemVersions.ClassicOW)
+				if (Version == (byte)ObjectCacheItemVersions.ClassicOW)
 					return ObjectCacheItemVersions.ClassicOW;
-				if (version == (byte)ObjectCacheItemVersions.DockableOW)
+				if (Version == (byte)ObjectCacheItemVersions.DockableOW)
 					return ObjectCacheItemVersions.DockableOW;
-				if (version > VERSION)
+				if (Version > VERSION)
 					return ObjectCacheItemVersions.Unsupported;
 				return ObjectCacheItemVersions.Outdated;
 			}
@@ -141,14 +122,7 @@ namespace SimPe.Cache
 		/// </summary>
 		public Data.ObjectTypes ObjectType
 		{
-			get
-			{
-				return objtype;
-			}
-			set
-			{
-				objtype = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -156,14 +130,7 @@ namespace SimPe.Cache
 		/// </summary>
 		public ObjectClass Class
 		{
-			get
-			{
-				return oclass;
-			}
-			set
-			{
-				oclass = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -171,14 +138,7 @@ namespace SimPe.Cache
 		/// </summary>
 		public uint ObjectFunctionSort
 		{
-			get
-			{
-				return objfuncsort;
-			}
-			set
-			{
-				objfuncsort = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -186,14 +146,7 @@ namespace SimPe.Cache
 		/// </summary>
 		public uint ObjBuildType
 		{
-			get
-			{
-				return objbuildtipe;
-			}
-			set
-			{
-				objbuildtipe = value;
-			}
+			get; set;
 		}
 
 		public static string[][] GetCategory(
@@ -392,14 +345,7 @@ namespace SimPe.Cache
 		/// </summary>
 		public uint LocalGroup
 		{
-			get
-			{
-				return localgroup;
-			}
-			set
-			{
-				localgroup = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -407,14 +353,7 @@ namespace SimPe.Cache
 		/// </summary>
 		public string Name
 		{
-			get
-			{
-				return name;
-			}
-			set
-			{
-				name = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -422,14 +361,7 @@ namespace SimPe.Cache
 		/// </summary>
 		public string ObjectFileName
 		{
-			get
-			{
-				return objname;
-			}
-			set
-			{
-				objname = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -437,14 +369,7 @@ namespace SimPe.Cache
 		/// </summary>
 		public bool Useable
 		{
-			get
-			{
-				return use;
-			}
-			set
-			{
-				use = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -452,14 +377,7 @@ namespace SimPe.Cache
 		/// </summary>
 		public string ModelName
 		{
-			get
-			{
-				return modelname;
-			}
-			set
-			{
-				modelname = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -467,14 +385,7 @@ namespace SimPe.Cache
 		/// </summary>
 		public Image Thumbnail
 		{
-			get
-			{
-				return thumb;
-			}
-			set
-			{
-				thumb = value;
-			}
+			get; set;
 		}
 
 		public override string ToString()
@@ -486,70 +397,70 @@ namespace SimPe.Cache
 
 		public void Load(System.IO.BinaryReader reader)
 		{
-			version = reader.ReadByte();
-			if (version > VERSION)
-				throw new CacheException("Unknown CacheItem Version.", null, version);
+			Version = reader.ReadByte();
+			if (Version > VERSION)
+				throw new CacheException("Unknown CacheItem Version.", null, Version);
 
-			name = reader.ReadString();
-			modelname = reader.ReadString();
+			Name = reader.ReadString();
+			ModelName = reader.ReadString();
 			pfd = new Packages.PackedFileDescriptor();
 			pfd.Type = reader.ReadUInt32();
 			pfd.Group = reader.ReadUInt32();
-			localgroup = reader.ReadUInt32();
+			LocalGroup = reader.ReadUInt32();
 			pfd.LongInstance = reader.ReadUInt64();
 
 			int size = reader.ReadInt32();
 			if (size == 0)
 			{
-				thumb = null;
+				Thumbnail = null;
 			}
 			else
 			{
 				byte[] data = reader.ReadBytes(size);
 				MemoryStream ms = new MemoryStream(data);
 
-				thumb = Image.FromStream(ms);
+				Thumbnail = Image.FromStream(ms);
 			}
 
-			objtype = (Data.ObjectTypes)reader.ReadUInt16();
-			if (version >= 4)
-				objfuncsort = reader.ReadUInt32();
+			ObjectType = (Data.ObjectTypes)reader.ReadUInt16();
+			if (Version >= 4)
+				ObjectFunctionSort = reader.ReadUInt32();
 			else
-				objfuncsort = (uint)reader.ReadInt16();
-			if (version >= 5)
-				objbuildtipe = reader.ReadUInt32();
+				ObjectFunctionSort = (uint)reader.ReadInt16();
+			if (Version >= 5)
+				ObjBuildType = reader.ReadUInt32();
 			else
-				objbuildtipe = 0;
+				ObjBuildType = 0;
 
-			if (version >= 2)
+			if (Version >= 2)
 			{
-				objname = reader.ReadString();
-				use = reader.ReadBoolean();
+				ObjectFileName = reader.ReadString();
+				Useable = reader.ReadBoolean();
 			}
 			else
 			{
-				objname = modelname;
-				use = true;
+				ObjectFileName = ModelName;
+				Useable = true;
 			}
 
-			if (version >= 3)
-				oclass = (ObjectClass)reader.ReadByte();
+			if (Version >= 3)
+				Class = (ObjectClass)reader.ReadByte();
 			else
-				oclass = ObjectClass.Object;
+				Class = ObjectClass.Object;
 		}
 
 		public void Save(System.IO.BinaryWriter writer)
 		{
-			version = VERSION;
-			writer.Write(version);
-			writer.Write(name);
-			writer.Write(modelname);
+			Version = VERSION;
+			writer.Write(Version);
+			writer.Write(Name);
+			writer.Write(ModelName);
 			writer.Write(pfd.Type);
 			writer.Write(pfd.Group);
-			writer.Write(localgroup);
+			writer.Write(LocalGroup);
 			writer.Write(pfd.LongInstance);
 
-			if (thumb == null)
+			if (Thumbnail == null)
 			{
 				writer.Write((int)0);
 			}
@@ -558,7 +469,7 @@ namespace SimPe.Cache
 				try
 				{
 					MemoryStream ms = new MemoryStream();
-					thumb.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+					Thumbnail.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
 					byte[] data = ms.ToArray();
 					writer.Write(data.Length);
 					writer.Write(data);
@@ -570,17 +481,20 @@ namespace SimPe.Cache
 				}
 			}
 
-			writer.Write((ushort)objtype);
-			writer.Write(objfuncsort);
-			writer.Write(objbuildtipe);
+			writer.Write((ushort)ObjectType);
+			writer.Write(ObjectFunctionSort);
+			writer.Write(ObjBuildType);
 
-			writer.Write(objname);
-			writer.Write(use);
+			writer.Write(ObjectFileName);
+			writer.Write(Useable);
 
-			writer.Write((byte)oclass);
+			writer.Write((byte)Class);
 		}
 
-		public byte Version => version;
+		public byte Version
+		{
+			get; private set;
+		}
 
 		#endregion
 	}

@@ -36,38 +36,42 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="uc">Want to Update the Crew, with the new Bone Hirarchy and Location</param>
 		public ImportOptions(DialogResult res, bool cg, bool cb, bool uc)
 		{
-			this.res = res;
-			this.cleanbones = cb;
-			this.cleangroups = cg;
-			this.updatecres = uc;
+			this.Result = res;
+			this.CleanBones = cb;
+			this.CleanGroups = cg;
+			this.UpdateCres = uc;
 		}
-
-		DialogResult res;
 
 		/// <summary>
 		/// Should the Import be continued?
 		/// </summary>
-		public DialogResult Result => res;
-
-		bool cleangroups;
+		public DialogResult Result
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Should we clean available Groups before the Import?
 		/// </summary>
-		public bool CleanGroups => cleangroups;
-
-		bool cleanbones;
+		public bool CleanGroups
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Should we remove unreferenced Joints after the Import?
 		/// </summary>
-		public bool CleanBones => cleanbones;
-
-		bool updatecres;
+		public bool CleanBones
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Writes the Bone Locationa and Hirarchy to the CRES
 		/// </summary>
-		public bool UpdateCres => updatecres;
+		public bool UpdateCres
+		{
+			get;
+		}
 	}
 }

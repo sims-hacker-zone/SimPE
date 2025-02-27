@@ -29,34 +29,17 @@ namespace SimPe.Plugin
 	{
 		public TransformNodeItem()
 		{
-			unknown1 = 1;
-			unknown2 = 0;
+			Unknown1 = 1;
+			ChildNode = 0;
 		}
 
-		ushort unknown1;
 		public ushort Unknown1
 		{
-			get
-			{
-				return unknown1;
-			}
-			set
-			{
-				unknown1 = value;
-			}
+			get; set;
 		}
-
-		int unknown2;
 		public int ChildNode
 		{
-			get
-			{
-				return unknown2;
-			}
-			set
-			{
-				unknown2 = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -65,8 +48,8 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		public void Unserialize(System.IO.BinaryReader reader)
 		{
-			unknown1 = reader.ReadUInt16();
-			unknown2 = reader.ReadInt32();
+			Unknown1 = reader.ReadUInt16();
+			ChildNode = reader.ReadInt32();
 		}
 
 		/// <summary>
@@ -79,16 +62,16 @@ namespace SimPe.Plugin
 		/// </remarks>
 		public void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(unknown1);
-			writer.Write(unknown2);
+			writer.Write(Unknown1);
+			writer.Write(ChildNode);
 		}
 
 		public override string ToString()
 		{
 			return "0x"
-				+ Helper.HexString((ushort)unknown1)
+				+ Helper.HexString((ushort)Unknown1)
 				+ " 0x"
-				+ Helper.HexString((uint)unknown2);
+				+ Helper.HexString((uint)ChildNode);
 		}
 	}
 
@@ -105,73 +88,59 @@ namespace SimPe.Plugin
 
 		#region Attributes
 
-		CompositionTreeNode ctn;
-		ObjectGraphNode ogn;
-
-		TransformNodeItems items;
 		public TransformNodeItems Items
 		{
-			get
-			{
-				return items;
-			}
-			set
-			{
-				items = value;
-			}
+			get; set;
 		}
 
-		public ObjectGraphNode ObjectGraphNode => ogn;
+		public ObjectGraphNode ObjectGraphNode
+		{
+			get; private set;
+		}
 
-		public CompositionTreeNode CompositionTreeNode => ctn;
+		public CompositionTreeNode CompositionTreeNode
+		{
+			get; private set;
+		}
 
-		VectorTransformation trans;
 		public VectorTransformation Transformation
 		{
-			get
-			{
-				return trans;
-			}
-			set
-			{
-				trans = value;
-			}
+			get; set;
 		}
-		int unknown;
 
-		public Vector3f Translation => trans.Translation;
+		public Vector3f Translation => Transformation.Translation;
 
 		public float TransformX
 		{
 			get
 			{
-				return (float)trans.Translation.X;
+				return (float)Transformation.Translation.X;
 			}
 			set
 			{
-				trans.Translation.X = value;
+				Transformation.Translation.X = value;
 			}
 		}
 		public float TransformY
 		{
 			get
 			{
-				return (float)trans.Translation.Y;
+				return (float)Transformation.Translation.Y;
 			}
 			set
 			{
-				trans.Translation.Y = value;
+				Transformation.Translation.Y = value;
 			}
 		}
 		public float TransformZ
 		{
 			get
 			{
-				return (float)trans.Translation.Z;
+				return (float)Transformation.Translation.Z;
 			}
 			set
 			{
-				trans.Translation.Z = value;
+				Transformation.Translation.Z = value;
 			}
 		}
 
@@ -179,44 +148,44 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return (float)trans.Rotation.X;
+				return (float)Transformation.Rotation.X;
 			}
 			set
 			{
-				trans.Rotation.X = value;
+				Transformation.Rotation.X = value;
 			}
 		}
 		public float RotationY
 		{
 			get
 			{
-				return (float)trans.Rotation.Y;
+				return (float)Transformation.Rotation.Y;
 			}
 			set
 			{
-				trans.Rotation.Y = value;
+				Transformation.Rotation.Y = value;
 			}
 		}
 		public float RotationZ
 		{
 			get
 			{
-				return (float)trans.Rotation.Z;
+				return (float)Transformation.Rotation.Z;
 			}
 			set
 			{
-				trans.Rotation.Z = value;
+				Transformation.Rotation.Z = value;
 			}
 		}
 		public float RotationW
 		{
 			get
 			{
-				return (float)trans.Rotation.W;
+				return (float)Transformation.Rotation.W;
 			}
 			set
 			{
-				trans.Rotation.W = value;
+				Transformation.Rotation.W = value;
 			}
 		}
 
@@ -224,24 +193,17 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return trans.Rotation;
+				return Transformation.Rotation;
 			}
 			set
 			{
-				trans.Rotation = value;
+				Transformation.Rotation = value;
 			}
 		}
 
 		public int JointReference
 		{
-			get
-			{
-				return unknown;
-			}
-			set
-			{
-				unknown = value;
-			}
+			get; set;
 		}
 
 		[BrowsableAttribute(false)]
@@ -254,25 +216,25 @@ namespace SimPe.Plugin
 		public TransformNode(Rcol parent)
 			: base(parent)
 		{
-			ctn = new CompositionTreeNode(parent);
-			ogn = new ObjectGraphNode(parent);
+			CompositionTreeNode = new CompositionTreeNode(parent);
+			ObjectGraphNode = new ObjectGraphNode(parent);
 
-			items = new TransformNodeItems();
+			Items = new TransformNodeItems();
 
-			trans = new VectorTransformation(
+			Transformation = new VectorTransformation(
 				VectorTransformation.TransformOrder.TranslateRotate
 			);
 
 			version = 0x07;
 			BlockID = 0x65246462;
 
-			unknown = NO_JOINT;
+			JointReference = NO_JOINT;
 		}
 
 		#region AbstractCresChildren Member
 		public override string GetName()
 		{
-			return ogn.FileName;
+			return ObjectGraphNode.FileName;
 		}
 
 		/// <summary>
@@ -284,7 +246,7 @@ namespace SimPe.Plugin
 			get
 			{
 				IntArrayList l = new IntArrayList();
-				foreach (TransformNodeItem tni in items)
+				foreach (TransformNodeItem tni in Items)
 				{
 					l.Add(tni.ChildNode);
 				}
@@ -297,7 +259,7 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (unknown == NO_JOINT)
+				if (JointReference == NO_JOINT)
 					return 0; //clear
 				return 1; //bone
 			}
@@ -316,33 +278,33 @@ namespace SimPe.Plugin
 
 			string name = reader.ReadString();
 			uint myid = reader.ReadUInt32();
-			ctn.Unserialize(reader);
-			ctn.BlockID = myid;
+			CompositionTreeNode.Unserialize(reader);
+			CompositionTreeNode.BlockID = myid;
 
 			name = reader.ReadString();
 			myid = reader.ReadUInt32();
-			ogn.Unserialize(reader);
-			ogn.BlockID = myid;
+			ObjectGraphNode.Unserialize(reader);
+			ObjectGraphNode.BlockID = myid;
 
 			//items = new TransformNodeItem[];
 			uint count = reader.ReadUInt32();
-			items.Clear();
+			Items.Clear();
 			for (int i = 0; i < count; i++)
 			{
 				TransformNodeItem tni = new TransformNodeItem();
 				tni.Unserialize(reader);
-				items.Add(tni);
+				Items.Add(tni);
 			}
 
-			trans.Order = VectorTransformation.TransformOrder.TranslateRotate;
-			trans.Unserialize(reader);
+			Transformation.Order = VectorTransformation.TransformOrder.TranslateRotate;
+			Transformation.Unserialize(reader);
 #if DEBUG
-			trans.Name = this.ogn.FileName;
+			Transformation.Name = this.ObjectGraphNode.FileName;
 #endif
 			//trans.Rotation = Quaternion.FromAxisAngle(trans.Rotation.X, trans.Rotation.Y, trans.Rotation.Z, Quaternion.DegToRad(trans.Rotation.W));
 
 
-			unknown = reader.ReadInt32();
+			JointReference = reader.ReadInt32();
 		}
 
 		/// <summary>
@@ -357,24 +319,24 @@ namespace SimPe.Plugin
 		{
 			writer.Write(version);
 
-			writer.Write(ctn.BlockName);
-			writer.Write(ctn.BlockID);
-			ctn.Serialize(writer);
+			writer.Write(CompositionTreeNode.BlockName);
+			writer.Write(CompositionTreeNode.BlockID);
+			CompositionTreeNode.Serialize(writer);
 
-			writer.Write(ogn.BlockName);
-			writer.Write(ogn.BlockID);
-			ogn.Serialize(writer);
+			writer.Write(ObjectGraphNode.BlockName);
+			writer.Write(ObjectGraphNode.BlockID);
+			ObjectGraphNode.Serialize(writer);
 
-			writer.Write((uint)items.Length);
-			for (int i = 0; i < items.Length; i++)
+			writer.Write((uint)Items.Length);
+			for (int i = 0; i < Items.Length; i++)
 			{
-				items[i].Serialize(writer);
+				Items[i].Serialize(writer);
 			}
 
-			trans.Order = VectorTransformation.TransformOrder.TranslateRotate;
-			trans.Serialize(writer);
+			Transformation.Order = VectorTransformation.TransformOrder.TranslateRotate;
+			Transformation.Serialize(writer);
 
-			writer.Write(unknown);
+			writer.Write(JointReference);
 		}
 
 		TabPage.TransformNode tTransformNode;
@@ -399,15 +361,15 @@ namespace SimPe.Plugin
 			tTransformNode.tb_tn_a.Tag = true;
 
 			tTransformNode.lb_tn.Items.Clear();
-			for (int i = 0; i < this.items.Length; i++)
-				tTransformNode.lb_tn.Items.Add(items[i]);
+			for (int i = 0; i < this.Items.Length; i++)
+				tTransformNode.lb_tn.Items.Add(Items[i]);
 
 			tTransformNode.tb_tn_ver.Text = "0x" + Helper.HexString(this.version);
-			tTransformNode.tb_tn_ukn.Text = "0x" + Helper.HexString(this.unknown);
+			tTransformNode.tb_tn_ukn.Text = "0x" + Helper.HexString(this.JointReference);
 
-			tTransformNode.tb_tn_tx.Text = trans.Translation.X.ToString("N6");
-			tTransformNode.tb_tn_ty.Text = trans.Translation.Y.ToString("N6");
-			tTransformNode.tb_tn_tz.Text = trans.Translation.Z.ToString("N6");
+			tTransformNode.tb_tn_tx.Text = Transformation.Translation.X.ToString("N6");
+			tTransformNode.tb_tn_ty.Text = Transformation.Translation.Y.ToString("N6");
+			tTransformNode.tb_tn_tz.Text = Transformation.Translation.Z.ToString("N6");
 
 			/*form.tb_tn_rx.Text = trans.Rotation.X.ToString("N6");
 			form.tb_tn_ry.Text = trans.Rotation.Y.ToString("N6");
@@ -418,7 +380,7 @@ namespace SimPe.Plugin
 			form.tb_tn_ay.Text = trans.Rotation.Axis.Y.ToString("N6");
 			form.tb_tn_az.Text = trans.Rotation.Axis.Z.ToString("N6");
 			form.tb_tn_a.Text = Quaternion.RadToDeg(trans.Rotation.Angle).ToString("N6");*/
-			tTransformNode.TNUpdateTextValues(trans.Rotation, true, true, true);
+			tTransformNode.TNUpdateTextValues(Transformation.Rotation, true, true, true);
 
 			tTransformNode.tb_tn_a.Tag = null;
 		}
@@ -426,18 +388,18 @@ namespace SimPe.Plugin
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
 			base.ExtendTabControl(tc);
-			this.ogn.AddToTabControl(tc);
-			this.ctn.AddToTabControl(tc);
+			this.ObjectGraphNode.AddToTabControl(tc);
+			this.CompositionTreeNode.AddToTabControl(tc);
 		}
 
 		public override string ToString()
 		{
 			string s = "";
-			if (this.unknown != NO_JOINT)
-				s += "[Joint" + this.unknown.ToString() + "] - ";
-			s += this.ogn.FileName;
+			if (this.JointReference != NO_JOINT)
+				s += "[Joint" + this.JointReference.ToString() + "] - ";
+			s += this.ObjectGraphNode.FileName;
 
-			s += ": " + trans.ToString() + " (" + base.ToString() + ")";
+			s += ": " + Transformation.ToString() + " (" + base.ToString() + ")";
 			return s;
 		}
 
@@ -477,7 +439,7 @@ namespace SimPe.Plugin
 
 			TransformNodeItem tni = new TransformNodeItem();
 			tni.ChildNode = index;
-			items.Add(tni);
+			Items.Add(tni);
 			return false;
 		}
 
@@ -488,10 +450,10 @@ namespace SimPe.Plugin
 			if (this.tTransformNode != null)
 				this.tTransformNode.Dispose();
 			tTransformNode = null;
-			ctn = null;
-			ogn = null;
-			items = null;
-			trans = null;
+			CompositionTreeNode = null;
+			ObjectGraphNode = null;
+			Items = null;
+			Transformation = null;
 		}
 
 		#endregion

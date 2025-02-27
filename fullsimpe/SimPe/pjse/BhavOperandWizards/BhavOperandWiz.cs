@@ -242,7 +242,7 @@ namespace pjse.BhavOperandWizards
 			if (cbPicker.SelectedIndex != -1)
 			{
 				SetValue((ushort)cbPicker.SelectedIndex);
-				tbValue.Text = tbValueConverter(instance);
+				tbValue.Text = tbValueConverter(Value);
 			}
 		}
 
@@ -275,7 +275,7 @@ namespace pjse.BhavOperandWizards
 		{
 			bool origstate = internalchg;
 			internalchg = true;
-			((TextBox)sender).Text = tbValueConverter(instance);
+			((TextBox)sender).Text = tbValueConverter(Value);
 			internalchg = origstate;
 		}
 
@@ -310,9 +310,9 @@ namespace pjse.BhavOperandWizards
 
 		private string tbValueConverter(ushort v)
 		{
-			if (dataOwner == 0x1a)
+			if (DataOwner == 0x1a)
 				return pjse.BhavWiz.ExpandBCONtoString(v, false);
-			else if (dataOwner == 0x2f)
+			else if (DataOwner == 0x2f)
 				return pjse.BhavWiz.ExpandBCONtoString(v, true);
 			else if (isDecimal)
 				return ((short)v).ToString();
@@ -326,9 +326,9 @@ namespace pjse.BhavOperandWizards
 
 		private ushort tbValueConverter(TextBox sender)
 		{
-			if (dataOwner == 0x1a)
+			if (DataOwner == 0x1a)
 				return pjse.BhavWiz.StringtoExpandBCON(sender.Text, false);
-			else if (dataOwner == 0x2f)
+			else if (DataOwner == 0x2f)
 				return pjse.BhavWiz.StringtoExpandBCON(sender.Text, true);
 			else if (isDecimal)
 				return (ushort)Convert.ToInt16(sender.Text, 10);
@@ -410,8 +410,8 @@ namespace pjse.BhavOperandWizards
 			this.ckbDecimal = ckbDecimal;
 			this.ckbUseInstancePicker = ckbUseInstancePicker;
 			this.lbInstance = lbInstance;
-			this.dataOwner = dataOwner;
-			this.instance = instance;
+			this.DataOwner = dataOwner;
+			this.Value = instance;
 
 			this.flagsFor = null;
 
@@ -536,11 +536,9 @@ namespace pjse.BhavOperandWizards
 
 		#region IDataOwner Members
 
-		private byte dataOwner = 0;
-		private ushort instance = 0;
-		public byte DataOwner => dataOwner;
+		public byte DataOwner { get; private set; } = 0;
 
-		public ushort Value => instance;
+		public ushort Value { get; private set; } = 0;
 
 		public event EventHandler DataOwnerControlChanged;
 
@@ -561,11 +559,11 @@ namespace pjse.BhavOperandWizards
 
 			internalchg = true;
 
-			if (cbDataOwner != null && cbDataOwner.SelectedIndex != dataOwner)
+			if (cbDataOwner != null && cbDataOwner.SelectedIndex != DataOwner)
 			{
-				dataOwner = (byte)cbDataOwner.SelectedIndex;
+				DataOwner = (byte)cbDataOwner.SelectedIndex;
 				setTextBoxLength();
-				tbValue.Text = tbValueConverter(instance);
+				tbValue.Text = tbValueConverter(Value);
 				OnDataOwnerControlChanged(this, new EventArgs());
 			}
 
@@ -573,7 +571,7 @@ namespace pjse.BhavOperandWizards
 			List<String> pickerNames = null;
 			if (useInstancePicker && cbPicker != null)
 			{
-				if (useFlagNames && dataOwner == 0x07 && flagsFor != null)
+				if (useFlagNames && DataOwner == 0x07 && flagsFor != null)
 				{
 					pickerNames = BhavWiz.flagNames(flagsFor.DataOwner, flagsFor.Value);
 					if (pickerNames != null)
@@ -588,7 +586,7 @@ namespace pjse.BhavOperandWizards
 				else if (
 					inst != null
 					&& useInstancePicker
-					&& (dataOwner == 0x00 || dataOwner == 0x01)
+					&& (DataOwner == 0x00 || DataOwner == 0x01)
 				)
 				{
 					pickerNames = inst.GetAttrNames(Scope.Private);
@@ -596,35 +594,35 @@ namespace pjse.BhavOperandWizards
 				else if (
 					inst != null
 					&& useInstancePicker
-					&& (dataOwner == 0x02 || dataOwner == 0x05)
+					&& (DataOwner == 0x02 || DataOwner == 0x05)
 				)
 				{
 					pickerNames = inst.GetAttrNames(Scope.SemiGlobal);
 				}
 				else if (
-					inst != null && dataOwner == 0x09
-					|| dataOwner == 0x16
-					|| dataOwner == 0x32
+					inst != null && DataOwner == 0x09
+					|| DataOwner == 0x16
+					|| DataOwner == 0x32
 				) // Param
 				{
 					pickerNames = inst.GetTPRPnames(false);
 				}
-				else if (inst != null && dataOwner == 0x19) // Local
+				else if (inst != null && DataOwner == 0x19) // Local
 				{
 					pickerNames = inst.GetTPRPnames(true);
 				}
 				else if (
 					inst != null
 					&& useInstancePicker
-					&& (dataOwner >= 0x29 && dataOwner <= 0x2F)
+					&& (DataOwner >= 0x29 && DataOwner <= 0x2F)
 				)
 				{
 					pickerNames = inst.GetArrayNames();
 				}
-				else if (BhavWiz.doidGStr[dataOwner] != null)
+				else if (BhavWiz.doidGStr[DataOwner] != null)
 				{
 					pickerNames = BhavWiz.readStr(
-						(GS.BhavStr)BhavWiz.doidGStr[dataOwner]
+						(GS.BhavStr)BhavWiz.doidGStr[DataOwner]
 					);
 				}
 			}
@@ -639,7 +637,7 @@ namespace pjse.BhavOperandWizards
 				cbPicker.Items.Clear();
 				cbPicker.Items.AddRange(pickerNames.ToArray());
 				cbPicker.SelectedIndex =
-					(cbPicker.Items.Count > instance) ? instance : -1;
+					(cbPicker.Items.Count > Value) ? Value : -1;
 			}
 			else
 			{
@@ -662,7 +660,7 @@ namespace pjse.BhavOperandWizards
 				if (inst != null)
 				{
 					List<string> labels = null;
-					if (useFlagNames && dataOwner == 0x07 && flagsFor != null)
+					if (useFlagNames && DataOwner == 0x07 && flagsFor != null)
 					{
 						labels = BhavWiz.flagNames(flagsFor.DataOwner, flagsFor.Value);
 						if (labels != null)
@@ -674,45 +672,45 @@ namespace pjse.BhavOperandWizards
 							);
 						}
 					}
-					else if (dataOwner == 0x00 || dataOwner == 0x01)
+					else if (DataOwner == 0x00 || DataOwner == 0x01)
 					{
 						labels = inst.GetAttrNames(Scope.Private);
 					}
-					else if (dataOwner == 0x02 || dataOwner == 0x05)
+					else if (DataOwner == 0x02 || DataOwner == 0x05)
 					{
 						labels = inst.GetAttrNames(Scope.SemiGlobal);
 					}
 					else if (
-						dataOwner == 0x09
-						|| dataOwner == 0x16
-						|| dataOwner == 0x32
+						DataOwner == 0x09
+						|| DataOwner == 0x16
+						|| DataOwner == 0x32
 					) // Param
 					{
 						labels = inst.GetTPRPnames(false);
 					}
-					else if (dataOwner == 0x19) // Local
+					else if (DataOwner == 0x19) // Local
 					{
 						labels = inst.GetTPRPnames(true);
 					}
-					else if (dataOwner >= 0x29 && dataOwner <= 0x2F)
+					else if (DataOwner >= 0x29 && DataOwner <= 0x2F)
 					{
 						labels = inst.GetArrayNames();
 					}
-					else if (BhavWiz.doidGStr[dataOwner] != null)
+					else if (BhavWiz.doidGStr[DataOwner] != null)
 					{
 						labels = BhavWiz.readStr(
-							(GS.BhavStr)BhavWiz.doidGStr[dataOwner]
+							(GS.BhavStr)BhavWiz.doidGStr[DataOwner]
 						);
 					}
 
 					if (labels != null)
 					{
-						if (instance < labels.Count)
-							s = cbDataOwner.Text + ": " + labels[instance];
+						if (Value < labels.Count)
+							s = cbDataOwner.Text + ": " + labels[Value];
 					}
-					else if (dataOwner == 0x1a)
+					else if (DataOwner == 0x1a)
 					{
-						ushort[] bcon = BhavWiz.ExpandBCON(instance, false);
+						ushort[] bcon = BhavWiz.ExpandBCON(Value, false);
 						s = ((BhavWiz)inst).readBcon(bcon[0], bcon[1], false, true);
 					}
 				}
@@ -744,8 +742,8 @@ namespace pjse.BhavOperandWizards
 		{
 			if (this.tbValue != null)
 				tbValue.MaxLength = Convert.ToInt32(
-					(this.dataOwner == 0x1a) ? 13
-					: (this.dataOwner == 0x2f) ? 15
+					(this.DataOwner == 0x1a) ? 13
+					: (this.DataOwner == 0x2f) ? 15
 					: isDecimal ? 1 + decBitToDigits[bitsInValue - 1]
 					: (use0xPrefix ? 2 : 0) + ((bitsInValue - 1) / 4) + 1
 				);
@@ -784,7 +782,7 @@ namespace pjse.BhavOperandWizards
 					internalchg = true;
 					if (tbValue != null)
 					{
-						tbValue.Text = tbValueConverter(instance);
+						tbValue.Text = tbValueConverter(Value);
 					}
 					internalchg = false;
 				}
@@ -793,9 +791,9 @@ namespace pjse.BhavOperandWizards
 
 		private void SetValue(ushort i)
 		{
-			if (instance != i)
+			if (Value != i)
 			{
-				instance = i;
+				Value = i;
 				setInstanceLabel();
 				OnDataOwnerControlChanged(this, new EventArgs());
 			}
@@ -821,7 +819,7 @@ namespace pjse.BhavOperandWizards
 					internalchg = true;
 					if (tbValue != null)
 					{
-						tbValue.Text = tbValueConverter(instance);
+						tbValue.Text = tbValueConverter(Value);
 					}
 					internalchg = false;
 				}
@@ -845,7 +843,7 @@ namespace pjse.BhavOperandWizards
 					internalchg = true;
 					if (tbValue != null)
 					{
-						tbValue.Text = tbValueConverter(instance);
+						tbValue.Text = tbValueConverter(Value);
 					}
 					internalchg = false;
 				}

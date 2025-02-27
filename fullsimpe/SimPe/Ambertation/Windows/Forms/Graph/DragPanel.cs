@@ -41,22 +41,26 @@ namespace Ambertation.Windows.Forms.Graph
 				((System.Byte)(0))
 			);
 			//SetStyle(ControlStyles.Selectable, true);
-			down = false;
+			Down = false;
 			lk = true;
-			focused = false;
+			Focused = false;
 		}
 
 		#region Properties
-		bool down;
 
 		/// <summary>
 		/// True, if the Mouse is currently down
 		/// </summary>
 		[Browsable(false)]
-		public bool Down => down;
+		public bool Down
+		{
+			get; private set;
+		}
 
-		bool focused;
-		public bool Focused => focused;
+		public bool Focused
+		{
+			get; private set;
+		}
 
 		bool lk;
 		public bool Movable
@@ -132,7 +136,7 @@ namespace Ambertation.Windows.Forms.Graph
 
 			if (e.Button == MouseButtons.Left)
 			{
-				down = true;
+				Down = true;
 				SetMousePos(e.X, e.Y);
 			}
 
@@ -141,26 +145,26 @@ namespace Ambertation.Windows.Forms.Graph
 
 		internal bool OnMouseUp(MouseEventArgs e)
 		{
-			if (!this.BoundingRectangle.Contains(e.X, e.Y) && !down)
+			if (!this.BoundingRectangle.Contains(e.X, e.Y) && !Down)
 				return false;
 			if (MouseUp != null)
 				MouseUp(this, FixMouseEventArgs(e));
 			e = FixMouseEventArgs(e);
-			down = false;
+			Down = false;
 
 			return true;
 		}
 
 		internal bool OnMouseMove(MouseEventArgs e)
 		{
-			if (!this.BoundingRectangle.Contains(e.X, e.Y) && !down)
+			if (!this.BoundingRectangle.Contains(e.X, e.Y) && !Down)
 				return false;
 
 			if (MouseMove != null)
 				MouseMove(this, FixMouseEventArgs(e));
 			if (!lk)
 				return true;
-			if (!down)
+			if (!Down)
 				return true;
 			e = FixMouseEventArgs(e);
 
@@ -173,7 +177,7 @@ namespace Ambertation.Windows.Forms.Graph
 		internal override void OnLostFocus(EventArgs e)
 		{
 			base.OnLostFocus(e);
-			down = false;
+			Down = false;
 		}
 
 		internal override void OnGotFocus(EventArgs e)
@@ -194,10 +198,10 @@ namespace Ambertation.Windows.Forms.Graph
 
 		internal void SetFocus(bool val)
 		{
-			if (focused != val)
+			if (Focused != val)
 			{
-				this.focused = val;
-				if (focused)
+				this.Focused = val;
+				if (Focused)
 					this.OnGotFocus(new System.EventArgs());
 				else
 					this.OnLostFocus(new System.EventArgs());

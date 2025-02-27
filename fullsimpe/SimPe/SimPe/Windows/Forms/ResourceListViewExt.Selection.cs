@@ -181,13 +181,15 @@ namespace SimPe.Windows.Forms
 
 		public class SelectResourceEventArgs : EventArgs
 		{
-			bool ctrldn;
-			public bool CtrlDown => ctrldn;
+			public bool CtrlDown
+			{
+				get;
+			}
 
 			internal SelectResourceEventArgs(bool ctrldn)
 				: base()
 			{
-				this.ctrldn = ctrldn;
+				this.CtrlDown = ctrldn;
 			}
 		}
 

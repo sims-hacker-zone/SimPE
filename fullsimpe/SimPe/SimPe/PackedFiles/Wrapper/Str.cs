@@ -48,16 +48,6 @@ namespace SimPe.PackedFiles.Wrapper
 		byte[] filename;
 
 		/// <summary>
-		/// Format Code of the FIle
-		/// </summary>
-		SimPe.Data.MetaData.FormatCode format;
-
-		/// <summary>
-		/// Contains all StrItems by Language
-		/// </summary>
-		Hashtable lines;
-
-		/// <summary>
 		/// Maximum Number of Lines to load
 		/// </summary>
 		int limit;
@@ -91,14 +81,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public SimPe.Data.MetaData.FormatCode Format
 		{
-			get
-			{
-				return format;
-			}
-			set
-			{
-				format = value;
-			} // should check it's valid
+			get; set; // should check it's valid
 		}
 
 		/// <summary>
@@ -107,14 +90,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <remarks>This is the fastes way to acces the String Items!</remarks>
 		public Hashtable Lines
 		{
-			get
-			{
-				return lines;
-			}
-			set
-			{
-				lines = value;
-			}
+			get; set;
 		}
 		#endregion
 
@@ -129,7 +105,7 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				StrLanguageList lngs = new StrLanguageList();
-				foreach (byte k in lines.Keys)
+				foreach (byte k in Lines.Keys)
 					lngs.Add(k);
 				lngs.Sort();
 
@@ -139,8 +115,8 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				foreach (StrLanguage l in value)
 				{
-					if (!lines.ContainsKey(l.Id))
-						lines.Add(l.Id, new StrItemList());
+					if (!Lines.ContainsKey(l.Id))
+						Lines.Add(l.Id, new StrItemList());
 				}
 			}
 		}
@@ -151,11 +127,11 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="item">The Item you want to add</param>
 		public void Add(StrToken item)
 		{
-			StrItemList lng = (StrItemList)lines[item.Language.Id];
+			StrItemList lng = (StrItemList)Lines[item.Language.Id];
 			if (lng == null)
 			{
 				lng = new StrItemList();
-				lines[item.Language.Id] = lng;
+				Lines[item.Language.Id] = lng;
 			}
 
 			lng.Add(item);
@@ -167,7 +143,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="item">The Item you want to remove</param>
 		public void Remove(StrToken item)
 		{
-			StrItemList lng = (StrItemList)lines[item.Language.Id];
+			StrItemList lng = (StrItemList)Lines[item.Language.Id];
 			if (lng != null)
 				lng.Remove(item);
 		}
@@ -182,13 +158,13 @@ namespace SimPe.PackedFiles.Wrapper
 				StrItemList items = new StrItemList();
 				StrLanguageList lngs = Languages;
 				foreach (StrLanguage k in lngs)
-					items.AddRange((StrItemList)lines[k.Id]);
+					items.AddRange((StrItemList)Lines[k.Id]);
 
 				return items;
 			}
 			set
 			{
-				lines = new Hashtable();
+				Lines = new Hashtable();
 				foreach (StrToken i in value)
 					this.Add(i);
 			}
@@ -213,7 +189,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <returns>List of Strings</returns>
 		public StrItemList LanguageItems(Data.MetaData.Languages l)
 		{
-			StrItemList items = (StrItemList)lines[(byte)l];
+			StrItemList items = (StrItemList)Lines[(byte)l];
 			if (items == null)
 				items = new StrItemList();
 
@@ -283,8 +259,8 @@ namespace SimPe.PackedFiles.Wrapper
 			: base()
 		{
 			filename = new byte[64];
-			format = SimPe.Data.MetaData.FormatCode.normal;
-			lines = new Hashtable();
+			Format = SimPe.Data.MetaData.FormatCode.normal;
+			Lines = new Hashtable();
 			this.limit = limit;
 		}
 
@@ -295,8 +271,8 @@ namespace SimPe.PackedFiles.Wrapper
 			: base()
 		{
 			filename = new byte[64];
-			format = SimPe.Data.MetaData.FormatCode.normal;
-			lines = new Hashtable();
+			Format = SimPe.Data.MetaData.FormatCode.normal;
+			Lines = new Hashtable();
 			this.limit = 0;
 		}
 
@@ -364,7 +340,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="reader">The Stream that contains the FileData</param>
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-			lines = new Hashtable();
+			Lines = new Hashtable();
 			if (reader.BaseStream.Length <= 0x40)
 				return;
 
@@ -378,13 +354,13 @@ namespace SimPe.PackedFiles.Wrapper
 			ushort count = reader.ReadUInt16();
 
 			filename = fi;
-			format = fo;
-			lines = new Hashtable();
+			Format = fo;
+			Lines = new Hashtable();
 
 			if ((limit != 0) && (count > limit))
 				count = (ushort)limit; // limit number of StrItem entries loaded
 			for (int i = 0; i < count; i++)
-				StrToken.Unserialize(reader, lines);
+				StrToken.Unserialize(reader, Lines);
 		}
 
 		/// <summary>
@@ -398,12 +374,12 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(filename);
-			writer.Write((ushort)format);
+			writer.Write((ushort)Format);
 			ArrayList lngs = this.Languages;
 
 			ArrayList items = new ArrayList();
 			foreach (StrLanguage k in lngs)
-				items.AddRange((ArrayList)lines[k.Id]);
+				items.AddRange((ArrayList)Lines[k.Id]);
 			writer.Write((ushort)items.Count);
 
 			foreach (StrToken i in items)

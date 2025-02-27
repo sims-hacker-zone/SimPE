@@ -79,17 +79,9 @@ namespace SimPe.Plugin
 		}
 
 		#region Attributes
-		ItemTypes typecode;
 		public ItemTypes Typecode
 		{
-			get
-			{
-				return typecode;
-			}
-			set
-			{
-				typecode = value;
-			}
+			get; set;
 		}
 
 		string varname;
@@ -107,95 +99,39 @@ namespace SimPe.Plugin
 			}
 		}
 
-		int val;
 		public int Value
 		{
-			get
-			{
-				return val;
-			}
-			set
-			{
-				val = value;
-			}
+			get; set;
 		}
 
-		float single;
 		public float Single
 		{
-			get
-			{
-				return single;
-			}
-			set
-			{
-				single = value;
-			}
+			get; set;
 		}
 
-		Vector3f translation;
 		public Vector3f Translation
 		{
-			get
-			{
-				return translation;
-			}
-			set
-			{
-				translation = value;
-			}
+			get; set;
 		}
 
-		string str;
 		public string String
 		{
-			get
-			{
-				return str;
-			}
-			set
-			{
-				str = value;
-			}
+			get; set;
 		}
 
-		ExtensionItem[] ei;
 		public ExtensionItem[] Items
 		{
-			get
-			{
-				return ei;
-			}
-			set
-			{
-				ei = value;
-			}
+			get; set;
 		}
 
-		Quaternion rotation;
 		public Quaternion Rotation
 		{
-			get
-			{
-				return rotation;
-			}
-			set
-			{
-				rotation = value;
-			}
+			get; set;
 		}
 
-		byte[] data;
 		public byte[] Data
 		{
-			get
-			{
-				return data;
-			}
-			set
-			{
-				data = value;
-			}
+			get; set;
 		}
 
 		#endregion
@@ -203,12 +139,12 @@ namespace SimPe.Plugin
 		public ExtensionItem()
 		{
 			varname = "";
-			translation = new Vector3f();
-			single = 0;
-			ei = new ExtensionItem[0];
-			rotation = new Quaternion();
-			data = new byte[0];
-			str = "";
+			Translation = new Vector3f();
+			Single = 0;
+			Items = new ExtensionItem[0];
+			Rotation = new Quaternion();
+			Data = new byte[0];
+			String = "";
 		}
 
 		/// <summary>
@@ -217,57 +153,57 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		public void Unserialize(System.IO.BinaryReader reader)
 		{
-			typecode = (ItemTypes)reader.ReadByte();
+			Typecode = (ItemTypes)reader.ReadByte();
 			varname = reader.ReadString();
 
-			switch (typecode)
+			switch (Typecode)
 			{
 				case ItemTypes.Value:
 				{
-					val = reader.ReadInt32();
+					Value = reader.ReadInt32();
 					break;
 				}
 				case ItemTypes.Float:
 				{
-					single = reader.ReadSingle();
+					Single = reader.ReadSingle();
 					break;
 				}
 				case ItemTypes.Translation:
 				{
-					translation.Unserialize(reader);
+					Translation.Unserialize(reader);
 					break;
 				}
 				case ItemTypes.String:
 				{
-					str = reader.ReadString();
+					String = reader.ReadString();
 					break;
 				}
 				case ItemTypes.Array:
 				{
-					ei = new ExtensionItem[reader.ReadUInt32()];
-					for (int i = 0; i < ei.Length; i++)
+					Items = new ExtensionItem[reader.ReadUInt32()];
+					for (int i = 0; i < Items.Length; i++)
 					{
-						ei[i] = new ExtensionItem();
-						ei[i].Unserialize(reader);
+						Items[i] = new ExtensionItem();
+						Items[i].Unserialize(reader);
 					}
 					break;
 				}
 				case ItemTypes.Rotation:
 				{
-					rotation.Unserialize(reader);
+					Rotation.Unserialize(reader);
 					break;
 				}
 				case ItemTypes.Binary:
 				{
 					int len = reader.ReadInt32();
-					data = reader.ReadBytes(len);
+					Data = reader.ReadBytes(len);
 					break;
 				}
 				default:
 				{
 					throw new Exception(
 						"Unknown Extension Item 0x"
-							+ Helper.HexString((byte)typecode)
+							+ Helper.HexString((byte)Typecode)
 							+ "\n\nPosition: 0x"
 							+ Helper.HexString(reader.BaseStream.Position)
 					);
@@ -285,55 +221,55 @@ namespace SimPe.Plugin
 		/// </remarks>
 		public void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write((byte)typecode);
+			writer.Write((byte)Typecode);
 			writer.Write(varname);
 
-			switch (typecode)
+			switch (Typecode)
 			{
 				case ItemTypes.Value:
 				{
-					writer.Write(val);
+					writer.Write(Value);
 					break;
 				}
 				case ItemTypes.Float:
 				{
-					writer.Write(single);
+					writer.Write(Single);
 					break;
 				}
 				case ItemTypes.Translation:
 				{
-					translation.Serialize(writer);
+					Translation.Serialize(writer);
 					break;
 				}
 				case ItemTypes.String:
 				{
-					writer.Write(str);
+					writer.Write(String);
 					break;
 				}
 				case ItemTypes.Array:
 				{
-					writer.Write((uint)ei.Length);
-					for (int i = 0; i < ei.Length; i++)
+					writer.Write((uint)Items.Length);
+					for (int i = 0; i < Items.Length; i++)
 					{
-						ei[i].Serialize(writer);
+						Items[i].Serialize(writer);
 					}
 					break;
 				}
 				case ItemTypes.Rotation:
 				{
-					rotation.Serialize(writer);
+					Rotation.Serialize(writer);
 					break;
 				}
 				case ItemTypes.Binary:
 				{
-					writer.Write((int)data.Length);
-					writer.Write(data);
+					writer.Write((int)Data.Length);
+					writer.Write(Data);
 					break;
 				}
 				default:
 				{
 					throw new Exception(
-						"Unknown Extension Item 0x" + Helper.HexString((byte)typecode)
+						"Unknown Extension Item 0x" + Helper.HexString((byte)Typecode)
 					);
 				}
 			}
@@ -341,42 +277,42 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			string name = this.varname + " = (" + typecode.ToString() + ") ";
-			switch (typecode)
+			string name = this.varname + " = (" + Typecode.ToString() + ") ";
+			switch (Typecode)
 			{
 				case ItemTypes.Value:
 				{
-					name += val.ToString();
+					name += Value.ToString();
 					break;
 				}
 				case ItemTypes.Float:
 				{
-					name += single.ToString();
+					name += Single.ToString();
 					break;
 				}
 				case ItemTypes.Translation:
 				{
-					name += translation.ToString();
+					name += Translation.ToString();
 					break;
 				}
 				case ItemTypes.String:
 				{
-					name += str;
+					name += String;
 					break;
 				}
 				case ItemTypes.Array:
 				{
-					name += this.ei.Length.ToString() + " items";
+					name += this.Items.Length.ToString() + " items";
 					break;
 				}
 				case ItemTypes.Rotation:
 				{
-					name += rotation.ToString();
+					name += Rotation.ToString();
 					break;
 				}
 				case ItemTypes.Binary:
 				{
-					name += Helper.BytesToHexList(data);
+					name += Helper.BytesToHexList(Data);
 					break;
 				}
 			}
@@ -395,17 +331,9 @@ namespace SimPe.Plugin
 	{
 		#region Attributes
 
-		byte typecode;
 		public byte TypeCode
 		{
-			get
-			{
-				return typecode;
-			}
-			set
-			{
-				typecode = value;
-			}
+			get; set;
 		}
 
 		string varname;
@@ -423,17 +351,9 @@ namespace SimPe.Plugin
 			}
 		}
 
-		ExtensionItem[] items;
 		public ExtensionItem[] Items
 		{
-			get
-			{
-				return items;
-			}
-			set
-			{
-				items = value;
-			}
+			get; set;
 		}
 
 		byte[] data;
@@ -449,9 +369,9 @@ namespace SimPe.Plugin
 		public Extension(Rcol parent)
 			: base(parent)
 		{
-			items = new ExtensionItem[0];
+			Items = new ExtensionItem[0];
 			version = 0x03;
-			typecode = 0x07;
+			TypeCode = 0x07;
 			data = new byte[0];
 			varname = "";
 		}
@@ -474,38 +394,38 @@ namespace SimPe.Plugin
 		public void Unserialize(System.IO.BinaryReader reader, uint ver)
 		{
 			version = reader.ReadUInt32();
-			typecode = reader.ReadByte();
+			TypeCode = reader.ReadByte();
 
-			if ((typecode < 0x07))
+			if ((TypeCode < 0x07))
 			{
 				int sz = 16;
-				if ((typecode != 0x03) || (ver == 4))
+				if ((TypeCode != 0x03) || (ver == 4))
 					sz += 15;
-				if ((typecode <= 0x03) && (version == 3))
+				if ((TypeCode <= 0x03) && (version == 3))
 				{
 					if (ver == 5)
 						sz = 31;
 					else
 						sz = 15;
 				}
-				if ((typecode <= 0x03) && ver == 4)
+				if ((TypeCode <= 0x03) && ver == 4)
 					sz = 31;
 
-				items = new ExtensionItem[1];
+				Items = new ExtensionItem[1];
 				ExtensionItem ei = new ExtensionItem();
 				ei.Typecode = ExtensionItem.ItemTypes.Binary;
 				ei.Data = reader.ReadBytes(sz);
-				items[0] = ei;
+				Items[0] = ei;
 			}
 			else
 			{
 				varname = reader.ReadString();
 
-				items = new ExtensionItem[reader.ReadUInt32()];
-				for (int i = 0; i < items.Length; i++)
+				Items = new ExtensionItem[reader.ReadUInt32()];
+				for (int i = 0; i < Items.Length; i++)
 				{
-					items[i] = new ExtensionItem();
-					items[i].Unserialize(reader);
+					Items[i] = new ExtensionItem();
+					Items[i].Unserialize(reader);
 				}
 			}
 		}
@@ -534,25 +454,25 @@ namespace SimPe.Plugin
 		public void Serialize(System.IO.BinaryWriter writer, uint ver)
 		{
 			writer.Write(version);
-			writer.Write(typecode);
+			writer.Write(TypeCode);
 
-			if (typecode < 0x07)
+			if (TypeCode < 0x07)
 			{
 				int sz = 16;
-				if ((typecode != 0x03) || (ver == 4))
+				if ((TypeCode != 0x03) || (ver == 4))
 					sz += 15;
-				if ((typecode <= 0x03) && (version == 3))
+				if ((TypeCode <= 0x03) && (version == 3))
 				{
 					if (ver == 5)
 						sz = 31;
 					else
 						sz = 15;
 				}
-				if ((typecode <= 0x03) && ver == 4)
+				if ((TypeCode <= 0x03) && ver == 4)
 					sz = 31;
 
-				if (items.Length > 0)
-					data = items[0].Data;
+				if (Items.Length > 0)
+					data = Items[0].Data;
 
 				data = Helper.SetLength(data, sz);
 				writer.Write(data);
@@ -561,9 +481,9 @@ namespace SimPe.Plugin
 			{
 				writer.Write(varname);
 
-				writer.Write((uint)items.Length);
-				for (int i = 0; i < items.Length; i++)
-					items[i].Serialize(writer);
+				writer.Write((uint)Items.Length);
+				for (int i = 0; i < Items.Length; i++)
+					Items[i].Serialize(writer);
 			}
 		}
 
@@ -588,14 +508,14 @@ namespace SimPe.Plugin
 				form = new TabPage.Extension();
 
 			form.tb_ver.Text = "0x" + Helper.HexString(version);
-			form.tb_type.Text = "0x" + Helper.HexString(typecode);
+			form.tb_type.Text = "0x" + Helper.HexString(TypeCode);
 			form.tb_name.Text = this.varname;
 
 			form.lb_items.Items.Clear();
-			foreach (ExtensionItem ei in items)
+			foreach (ExtensionItem ei in Items)
 				form.lb_items.Items.Add(ei);
 
-			form.gbIems.Tag = this.items;
+			form.gbIems.Tag = this.Items;
 		}
 
 		#region IDisposable Member

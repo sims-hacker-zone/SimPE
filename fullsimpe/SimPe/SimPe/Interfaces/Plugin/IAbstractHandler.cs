@@ -57,11 +57,6 @@ namespace SimPe.Interfaces.Plugin
 		protected IPackedFileUI ui;
 
 		/// <summary>
-		/// Stores the Priority of this Wrapper
-		/// </summary>
-		private int priority;
-
-		/// <summary>
 		/// Stors Human readable Informations about the Wrapper
 		/// </summary>
 		private IWrapperInfo wrapperinfo;
@@ -528,14 +523,7 @@ namespace SimPe.Interfaces.Plugin
 		/// </summary>
 		public int Priority
 		{
-			get
-			{
-				return priority;
-			}
-			set
-			{
-				priority = value;
-			}
+			get; set;
 		}
 
 		/// <summary>

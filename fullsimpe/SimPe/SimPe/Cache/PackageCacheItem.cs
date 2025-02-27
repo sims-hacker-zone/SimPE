@@ -155,59 +155,35 @@ namespace SimPe.Cache
 	/// </remarks>
 	public class PackageState
 	{
-		uint uid;
-		TriState state;
-		string info;
 		uint[] data;
 
 		public PackageState(uint uid, TriState state, string info)
 		{
-			this.uid = uid;
-			this.state = state;
-			this.info = info;
+			this.Uid = uid;
+			this.State = state;
+			this.Info = info;
 			this.data = new uint[0];
 		}
 
 		internal PackageState()
 		{
-			this.state = TriState.Null;
-			info = "";
+			this.State = TriState.Null;
+			Info = "";
 		}
 
 		public TriState State
 		{
-			get
-			{
-				return state;
-			}
-			set
-			{
-				state = value;
-			}
+			get; set;
 		}
 
 		public uint Uid
 		{
-			get
-			{
-				return uid;
-			}
-			set
-			{
-				uid = value;
-			}
+			get; set;
 		}
 
 		public string Info
 		{
-			get
-			{
-				return info;
-			}
-			set
-			{
-				info = value;
-			}
+			get; set;
 		}
 
 		public uint[] Data
@@ -226,9 +202,9 @@ namespace SimPe.Cache
 
 		internal virtual void Load(System.IO.BinaryReader reader)
 		{
-			state = (TriState)reader.ReadByte();
-			uid = reader.ReadUInt32();
-			info = reader.ReadString();
+			State = (TriState)reader.ReadByte();
+			Uid = reader.ReadUInt32();
+			Info = reader.ReadString();
 			byte ct = reader.ReadByte();
 			data = new uint[ct];
 			for (int i = 0; i < data.Length; i++)
@@ -237,9 +213,9 @@ namespace SimPe.Cache
 
 		internal virtual void Save(System.IO.BinaryWriter writer)
 		{
-			writer.Write((byte)state);
-			writer.Write(uid);
-			writer.Write(info);
+			writer.Write((byte)State);
+			writer.Write(Uid);
+			writer.Write(Info);
 
 			if (data == null)
 			{
@@ -329,80 +305,40 @@ namespace SimPe.Cache
 		public PackageCacheItem()
 		{
 			version = VERSION;
-			name = "";
-			guids = new uint[0];
-			type = PackageType.Undefined;
-			states = new PackageStates();
+			Name = "";
+			Guids = new uint[0];
+			Type = PackageType.Undefined;
+			States = new PackageStates();
 		}
 
 		protected byte version;
 
-		uint[] guids;
 		public uint[] Guids
 		{
-			get
-			{
-				return guids;
-			}
-			set
-			{
-				guids = value;
-			}
+			get; set;
 		}
 
-		PackageType type;
 		public PackageType Type
 		{
-			get
-			{
-				return type;
-			}
-			set
-			{
-				type = value;
-			}
+			get; set;
 		}
 
-		string name;
 		public string Name
 		{
-			get
-			{
-				return name;
-			}
-			set
-			{
-				name = value;
-			}
+			get; set;
 		}
 
-		Image thumb;
 		public Image Thumbnail
 		{
-			get
-			{
-				return thumb;
-			}
-			set
-			{
-				thumb = value;
-			}
+			get; set;
 		}
 
-		PackageStates states;
 		public PackageStates States
 		{
-			get
-			{
-				return states;
-			}
-			set
-			{
-				states = value;
-			}
+			get; set;
 		}
 
-		public int StateCount => states.Count;
+		public int StateCount => States.Count;
 
 		/// <summary>
 		/// Returns a matching Item for the passed State-uid
@@ -412,7 +348,7 @@ namespace SimPe.Cache
 		/// <returns></returns>
 		public PackageState FindState(uint uid, bool create)
 		{
-			foreach (PackageState ps in states)
+			foreach (PackageState ps in States)
 			{
 				if (ps.Uid == uid)
 					return ps;
@@ -423,24 +359,16 @@ namespace SimPe.Cache
 				PackageState ps = new PackageState();
 				ps.Uid = uid;
 
-				states.Add(ps);
+				States.Add(ps);
 				return ps;
 			}
 
 			return null;
 		}
 
-		bool enabled;
 		public bool Enabled
 		{
-			get
-			{
-				return enabled;
-			}
-			set
-			{
-				enabled = value;
-			}
+			get; set;
 		}
 
 		public override string ToString()
@@ -452,38 +380,38 @@ namespace SimPe.Cache
 
 		public void Load(System.IO.BinaryReader reader)
 		{
-			states.Clear();
+			States.Clear();
 			version = reader.ReadByte();
 			if (version > VERSION)
 				throw new CacheException("Unknown CacheItem Version.", null, version);
 
-			name = reader.ReadString();
-			type = (PackageType)reader.ReadUInt32();
-			enabled = reader.ReadBoolean();
+			Name = reader.ReadString();
+			Type = (PackageType)reader.ReadUInt32();
+			Enabled = reader.ReadBoolean();
 			int ct = reader.ReadByte();
-			guids = new uint[ct];
-			for (int i = 0; i < guids.Length; i++)
-				guids[i] = reader.ReadUInt32();
+			Guids = new uint[ct];
+			for (int i = 0; i < Guids.Length; i++)
+				Guids[i] = reader.ReadUInt32();
 
 			ct = reader.ReadByte();
 			for (int i = 0; i < ct; i++)
 			{
 				PackageState ps = new PackageState();
 				ps.Load(reader);
-				states.Add(ps);
+				States.Add(ps);
 			}
 
 			int size = reader.ReadInt32();
 			if (size == 0)
 			{
-				thumb = null;
+				Thumbnail = null;
 			}
 			else
 			{
 				byte[] data = reader.ReadBytes(size);
 				MemoryStream ms = new MemoryStream(data);
 
-				thumb = Image.FromStream(ms);
+				Thumbnail = Image.FromStream(ms);
 			}
 		}
 
@@ -491,27 +419,27 @@ namespace SimPe.Cache
 		{
 			version = VERSION;
 			writer.Write(version);
-			writer.Write(name);
-			writer.Write((uint)type);
-			writer.Write(enabled);
+			writer.Write(Name);
+			writer.Write((uint)Type);
+			writer.Write(Enabled);
 
-			writer.Write((byte)guids.Length);
-			for (int i = 0; i < guids.Length; i++)
-				writer.Write(guids[i]);
+			writer.Write((byte)Guids.Length);
+			for (int i = 0; i < Guids.Length; i++)
+				writer.Write(Guids[i]);
 
-			byte ct = (byte)states.Count;
+			byte ct = (byte)States.Count;
 			writer.Write(ct);
 			for (int i = 0; i < ct; i++)
-				states[i].Save(writer);
+				States[i].Save(writer);
 
-			if (thumb == null)
+			if (Thumbnail == null)
 			{
 				writer.Write((int)0);
 			}
 			else
 			{
 				MemoryStream ms = new MemoryStream();
-				thumb.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+				Thumbnail.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
 				byte[] data = ms.ToArray();
 				writer.Write(data.Length);
 				writer.Write(data);

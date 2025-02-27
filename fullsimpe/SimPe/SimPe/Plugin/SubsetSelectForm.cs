@@ -190,12 +190,14 @@ namespace SimPe.Plugin
 		#endregion
 
 
-		ArrayList listviews;
 
 		/// <summary>
 		/// Returns a list of all availabel ListViews
 		/// </summary>
-		public ArrayList ListViews => listviews;
+		public ArrayList ListViews
+		{
+			get; private set;
+		}
 
 		public static Size ImageSize = new Size(128, 128);
 
@@ -257,7 +259,7 @@ namespace SimPe.Plugin
 			top += pn.Height + 8;
 			pn.Visible = true;
 
-			listviews.Add(lv);
+			ListViews.Add(lv);
 			return lv;
 		}
 
@@ -423,7 +425,7 @@ namespace SimPe.Plugin
 		public static SubsetSelectForm Prepare(Hashtable map, ArrayList subsets)
 		{
 			SubsetSelectForm ssf = new SubsetSelectForm();
-			ssf.listviews = new ArrayList();
+			ssf.ListViews = new ArrayList();
 			ssf.txmtnames = new Hashtable();
 			WaitingScreen.Wait();
 			try
@@ -467,7 +469,7 @@ namespace SimPe.Plugin
 		{
 			//now rebuild the Hashtable with the stored Infos
 			Hashtable ret = new Hashtable();
-			foreach (ListView lv in ssf.listviews)
+			foreach (ListView lv in ssf.ListViews)
 			{
 				if (!lv.Enabled)
 					continue;
@@ -509,10 +511,10 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (listviews.Count == 0)
+				if (ListViews.Count == 0)
 					return true;
 
-				foreach (ListView lv in listviews)
+				foreach (ListView lv in ListViews)
 				{
 					if (
 						(lv.SelectedItems.Count == 0)
@@ -551,7 +553,7 @@ namespace SimPe.Plugin
 				if ((cbauto.Checked) && (lv.SelectedItems.Count > 0))
 				{
 					string name = lv.SelectedItems[0].Text;
-					foreach (ListView lv2 in listviews)
+					foreach (ListView lv2 in ListViews)
 					{
 						if (lv2 == lv)
 							continue;

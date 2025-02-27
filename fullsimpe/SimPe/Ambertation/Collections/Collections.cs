@@ -27,17 +27,26 @@ namespace Ambertation.Collections
 {
 	public class GraphItemChangedEventArgs : System.EventArgs
 	{
-		GraphItemBase gi;
-		public GraphItemBase GraphItem => gi;
+		public GraphItemBase GraphItem
+		{
+			get;
+		}
 
-		string txt;
-		public string Text => txt;
-		bool add;
-		public bool Added => add;
-		public bool Removed => !add;
+		public string Text
+		{
+			get;
+		}
 
-		bool inter;
-		public bool Internal => inter;
+		public bool Added
+		{
+			get;
+		}
+		public bool Removed => !Added;
+
+		public bool Internal
+		{
+			get;
+		}
 
 		internal GraphItemChangedEventArgs(
 			GraphItemBase gi,
@@ -46,10 +55,10 @@ namespace Ambertation.Collections
 			bool inter
 		)
 		{
-			this.gi = gi;
-			this.add = add;
-			this.inter = inter;
-			this.txt = text;
+			this.GraphItem = gi;
+			this.Added = add;
+			this.Internal = inter;
+			this.Text = text;
 		}
 	}
 

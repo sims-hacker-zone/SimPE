@@ -35,7 +35,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			flname = filename;
 			this.e = e;
-			p = -1;
+			Priority = -1;
 		}
 
 		#region IWrapper Member
@@ -47,17 +47,9 @@ namespace SimPe.PackedFiles.Wrapper
 			registry.Register((SimPe.Interfaces.IWrapper)this);
 		}
 
-		int p;
 		public int Priority
 		{
-			get
-			{
-				return p;
-			}
-			set
-			{
-				p = value;
-			}
+			get; set;
 		}
 
 		public override string ToString()

@@ -37,17 +37,13 @@ namespace SimPe.Cache
 
 		public MMATCacheItem()
 		{
-			version = VERSION;
-			modelname = "";
-			family = "";
-			def = false;
+			Version = VERSION;
+			ModelName = "";
+			Family = "";
+			Default = false;
 			pfd = new Packages.PackedFileDescriptor();
 		}
 
-		byte version;
-		string modelname;
-		string family;
-		bool def;
 		Interfaces.Files.IPackedFileDescriptor pfd;
 
 		/// <summary>
@@ -71,14 +67,7 @@ namespace SimPe.Cache
 		/// </summary>
 		public bool Default
 		{
-			get
-			{
-				return def;
-			}
-			set
-			{
-				def = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -86,14 +75,7 @@ namespace SimPe.Cache
 		/// </summary>
 		public string ModelName
 		{
-			get
-			{
-				return modelname;
-			}
-			set
-			{
-				modelname = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -101,32 +83,25 @@ namespace SimPe.Cache
 		/// </summary>
 		public string Family
 		{
-			get
-			{
-				return family;
-			}
-			set
-			{
-				family = value;
-			}
+			get; set;
 		}
 
 		public override string ToString()
 		{
-			return "modelname=" + ModelName + ", family=" + family;
+			return "modelname=" + ModelName + ", family=" + Family;
 		}
 
 		#region ICacheItem Member
 
 		public void Load(System.IO.BinaryReader reader)
 		{
-			version = reader.ReadByte();
-			if (version > VERSION)
-				throw new CacheException("Unknown CacheItem Version.", null, version);
+			Version = reader.ReadByte();
+			if (Version > VERSION)
+				throw new CacheException("Unknown CacheItem Version.", null, Version);
 
-			modelname = reader.ReadString();
-			family = reader.ReadString();
-			def = reader.ReadBoolean();
+			ModelName = reader.ReadString();
+			Family = reader.ReadString();
+			Default = reader.ReadBoolean();
 			pfd = new Packages.PackedFileDescriptor();
 			pfd.Type = reader.ReadUInt32();
 			pfd.Group = reader.ReadUInt32();
@@ -135,17 +110,20 @@ namespace SimPe.Cache
 
 		public void Save(System.IO.BinaryWriter writer)
 		{
-			version = VERSION;
-			writer.Write(version);
-			writer.Write(modelname);
-			writer.Write(family);
-			writer.Write(def);
+			Version = VERSION;
+			writer.Write(Version);
+			writer.Write(ModelName);
+			writer.Write(Family);
+			writer.Write(Default);
 			writer.Write(pfd.Type);
 			writer.Write(pfd.Group);
 			writer.Write(pfd.LongInstance);
 		}
 
-		public byte Version => version;
+		public byte Version
+		{
+			get; private set;
+		}
 
 		#endregion
 	}

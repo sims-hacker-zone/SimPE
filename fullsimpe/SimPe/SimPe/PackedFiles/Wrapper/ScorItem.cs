@@ -130,8 +130,10 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		Scor parent;
-		public Scor Parent => parent;
+		public Scor Parent
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Constructor
@@ -144,7 +146,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		internal ScorItem(Scor parent)
 		{
-			this.parent = parent;
+			this.Parent = parent;
 			SetGui("", new byte[0]);
 		}
 

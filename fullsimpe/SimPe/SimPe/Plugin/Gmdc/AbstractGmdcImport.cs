@@ -84,21 +84,12 @@ namespace SimPe.Plugin.Gmdc
 			return d;
 		}
 
-		ElementOrder order;
-
 		/// <summary>
 		/// Which Order is used for the Components
 		/// </summary>
 		public ElementOrder Component
 		{
-			get
-			{
-				return order;
-			}
-			set
-			{
-				order = value;
-			}
+			get; set;
 		}
 
 		/// <summary>
@@ -106,10 +97,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public AbstractGmdcImporter()
 		{
-			order = new ElementOrder(ElementSorting.XZY);
-			ab1 = new ImportedFrameBlocks();
+			Component = new ElementOrder(ElementSorting.XZY);
+			AnimationBlocks = new ImportedFrameBlocks();
 
-			ab1.AuskelCorrection = Helper
+			AnimationBlocks.AuskelCorrection = Helper
 				.WindowsRegistry
 				.CorrectJointDefinitionOnExport;
 		}
@@ -171,22 +162,26 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public string ErrorMessage => error;
 
-		System.IO.StreamReader input;
-
 		/// <summary>
 		/// The current Input (when LoadGroups() or ChangeGmdc() is called, this is never null)
 		/// </summary>
-		protected System.IO.StreamReader Input => input;
-
-		GeometryDataContainer gmdc;
+		protected System.IO.StreamReader Input
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// The Gmdc that should be changed (when LoadGroups() or ChangeGmdc() is called, this is never null)
 		/// </summary>
-		protected GeometryDataContainer Gmdc => gmdc;
+		protected GeometryDataContainer Gmdc
+		{
+			get; private set;
+		}
 
-		ImportedFrameBlocks ab1;
-		protected ImportedFrameBlocks AnimationBlocks => ab1;
+		protected ImportedFrameBlocks AnimationBlocks
+		{
+			get;
+		}
 
 		/// <summary>
 		/// Process the Data stored in the passed Stream, and change/replace the passed Gmdc
@@ -200,10 +195,10 @@ namespace SimPe.Plugin.Gmdc
 			bool animationonly
 		)
 		{
-			animonly = animationonly;
+			AnimationOnly = animationonly;
 
-			this.input = new System.IO.StreamReader(input);
-			this.gmdc = gmdc;
+			this.Input = new System.IO.StreamReader(input);
+			this.Gmdc = gmdc;
 			SetUpAnimationData();
 
 			if (gmdc == null || input == null)
@@ -212,7 +207,7 @@ namespace SimPe.Plugin.Gmdc
 			ImportedGroups g = LoadGroups();
 			ImportedBones b = LoadBones();
 
-			if (!animonly)
+			if (!AnimationOnly)
 				if (ValidateImportedGroups(g, b))
 					ChangeGmdc(g, b);
 			this.ChangeAnim();
@@ -220,8 +215,10 @@ namespace SimPe.Plugin.Gmdc
 			return true;
 		}
 
-		bool animonly;
-		public bool AnimationOnly => animonly;
+		public bool AnimationOnly
+		{
+			get; private set;
+		}
 		ImportOptions importoptionsresult;
 
 		/// <summary>
@@ -283,7 +280,7 @@ namespace SimPe.Plugin.Gmdc
 				}
 			}
 
-			importoptionsresult = ImportGmdcGroupsForm.Execute(gmdc, grps, bns);
+			importoptionsresult = ImportGmdcGroupsForm.Execute(Gmdc, grps, bns);
 			return importoptionsresult.Result == System.Windows.Forms.DialogResult.OK;
 		}
 
@@ -360,18 +357,18 @@ namespace SimPe.Plugin.Gmdc
 			}
 
 			//Now Update the BoundingMesh if needed
-			if (gmdc.Joints.Count != 0)
+			if (Gmdc.Joints.Count != 0)
 			{
-				gmdc.Model.ClearBoundingMesh();
+				Gmdc.Model.ClearBoundingMesh();
 			}
 			else
 			{
 				if (clearbmesh)
 				{
-					gmdc.Model.ClearBoundingMesh();
+					Gmdc.Model.ClearBoundingMesh();
 					foreach (ImportedGroup g in grps)
 						if (g.UseInBoundingMesh)
-							gmdc.Model.AddGroupToBoundingMesh(g.Group);
+							Gmdc.Model.AddGroupToBoundingMesh(g.Group);
 				}
 			}
 
@@ -391,15 +388,15 @@ namespace SimPe.Plugin.Gmdc
 					if (Options.UpdateCres)
 					{
 						//Update the effective Transformation
-						TransformNode tn = gmdc.Joints[
+						TransformNode tn = Gmdc.Joints[
 							b.TargetIndex
 						].AssignedTransformNode;
 						if (tn != null)
-							gmdc.Model.Transformations[b.TargetIndex] =
+							Gmdc.Model.Transformations[b.TargetIndex] =
 								tn.GetEffectiveTransformation();
 
 						if (
-							gmdc.ParentResourceNode != null
+							Gmdc.ParentResourceNode != null
 							&& tn != null
 							&& IsLocalCres()
 						)
@@ -433,7 +430,7 @@ namespace SimPe.Plugin.Gmdc
 					this.error +=
 						"\n\nThe referenced CRES and this GMDC are not in the same Package File. For security reasons, SimPe did not Update the Bone Hirarchy and locations!";
 				else
-					gmdc.ParentResourceNode.Parent.SynchronizeUserData();
+					Gmdc.ParentResourceNode.Parent.SynchronizeUserData();
 			}
 		}
 
@@ -449,12 +446,12 @@ namespace SimPe.Plugin.Gmdc
 				GmdcElement e = g.Elements[g.Link.ReferencedElement[i]];
 				//foreach (GmdcElementValueBase evb in e.Values) evb *= g.Scale;
 
-				gmdc.Elements.Add(e);
-				g.Link.ReferencedElement[i] = gmdc.Elements.Length - 1;
+				Gmdc.Elements.Add(e);
+				g.Link.ReferencedElement[i] = Gmdc.Elements.Length - 1;
 			}
-			g.Group.LinkIndex = gmdc.Links.Length;
-			gmdc.Links.Add(g.Link);
-			gmdc.Groups.Add(g.Group);
+			g.Group.LinkIndex = Gmdc.Links.Length;
+			Gmdc.Links.Add(g.Link);
+			Gmdc.Groups.Add(g.Group);
 
 			g.Link.ReferencedSize = g.Link.GetReferencedSize();
 			g.Link.ActiveElements = g.Link.ReferencedElement.Count;
@@ -471,7 +468,7 @@ namespace SimPe.Plugin.Gmdc
 			if (index < 0 || index >= Gmdc.Groups.Length)
 				index = Gmdc.FindGroupByName(g.Target.Name);
 			if (index >= 0)
-				gmdc.RemoveGroup(index);
+				Gmdc.RemoveGroup(index);
 
 			//make sure to update the Groups
 			foreach (ImportedGroup ig in gs)
@@ -506,8 +503,8 @@ namespace SimPe.Plugin.Gmdc
 				//found an existing Element?
 				if (old == null)
 				{
-					gmdc.Elements.Add(e);
-					lnk.ReferencedElement.Add(gmdc.Elements.Length - 1);
+					Gmdc.Elements.Add(e);
+					lnk.ReferencedElement.Add(Gmdc.Elements.Length - 1);
 				}
 				else
 				{
@@ -538,11 +535,11 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns></returns>
 		bool IsLocalCres()
 		{
-			if (gmdc.ParentResourceNode == null)
+			if (Gmdc.ParentResourceNode == null)
 				return false;
 			if (
-				gmdc.ParentResourceNode.Parent.Package.FileName.Trim().ToLower()
-				== gmdc.Parent.Package.FileName.Trim().ToLower()
+				Gmdc.ParentResourceNode.Parent.Package.FileName.Trim().ToLower()
+				== Gmdc.Parent.Package.FileName.Trim().ToLower()
 			)
 				return true;
 			return false;
@@ -564,29 +561,29 @@ namespace SimPe.Plugin.Gmdc
 			int index
 		)
 		{
-			int nindex = gmdc.Joints.Length;
-			gmdc.Joints.Add(b.Bone);
+			int nindex = Gmdc.Joints.Length;
+			Gmdc.Joints.Add(b.Bone);
 
 			VectorTransformation t = new VectorTransformation(
 				VectorTransformation.TransformOrder.RotateTranslate
 			);
-			gmdc.Model.Transformations.Add(t);
+			Gmdc.Model.Transformations.Add(t);
 
 			//Create a TransformNode for the New Bone
 			if (Options.UpdateCres)
-				if ((gmdc.ParentResourceNode != null) && (IsLocalCres()))
+				if ((Gmdc.ParentResourceNode != null) && (IsLocalCres()))
 				{
 					TransformNode tn = new TransformNode(
-						gmdc.ParentResourceNode.Parent
+						Gmdc.ParentResourceNode.Parent
 					);
 					tn.ObjectGraphNode.FileName = b.ImportedName;
 					tn.Transformation = b.Transformation.Clone();
 					tn.JointReference = nindex;
 
-					gmdc.ParentResourceNode.Parent.Blocks =
+					Gmdc.ParentResourceNode.Parent.Blocks =
 						(SimPe.Interfaces.Scenegraph.IRcolBlock[])
 							Helper.Add(
-								gmdc.ParentResourceNode.Parent.Blocks,
+								Gmdc.ParentResourceNode.Parent.Blocks,
 								tn,
 								typeof(SimPe.Interfaces.Scenegraph.IRcolBlock)
 							);
@@ -611,18 +608,18 @@ namespace SimPe.Plugin.Gmdc
 		)
 		{
 			int nindex = b.TargetIndex;
-			gmdc.Joints[nindex] = b.Bone;
+			Gmdc.Joints[nindex] = b.Bone;
 
 			VectorTransformation t = new VectorTransformation(
 				VectorTransformation.TransformOrder.RotateTranslate
 			);
-			gmdc.Model.Transformations[nindex] = t;
+			Gmdc.Model.Transformations[nindex] = t;
 
 			//Change the TransformNode for the New Bone
 			if (Options.UpdateCres)
-				if (gmdc.ParentResourceNode != null)
+				if (Gmdc.ParentResourceNode != null)
 				{
-					TransformNode tn = gmdc.Joints[nindex].AssignedTransformNode;
+					TransformNode tn = Gmdc.Joints[nindex].AssignedTransformNode;
 					tn.ObjectGraphNode.FileName = b.ImportedName;
 					if (tn != null)
 						tn.Transformation = b.Transformation.Clone();
@@ -748,7 +745,7 @@ namespace SimPe.Plugin.Gmdc
 			foreach (ImportedFrameBlock ifb in AnimationBlocks)
 				ifb.FindTarget(Gmdc.LinkedAnimation);
 
-			if (ImportJointAnim.Execute(this.AnimationBlocks, gmdc))
+			if (ImportJointAnim.Execute(this.AnimationBlocks, Gmdc))
 			{
 				//correct some transformation in special Joints, don't know yet
 				//why they work diffrent
@@ -781,7 +778,7 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		protected virtual void SetUpAnimationData()
 		{
-			ab1.Clear();
+			AnimationBlocks.Clear();
 		}
 		#endregion
 

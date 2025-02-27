@@ -20,7 +20,6 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Contains the Data of the File
 		/// </summary>
-		private string lbldisp;
 		private UInt32 guide;
 		private UInt32 guidnx;
 
@@ -29,14 +28,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string DispLabel
 		{
-			get
-			{
-				return lbldisp;
-			}
-			set
-			{
-				lbldisp = value;
-			}
+			get; set;
 		}
 
 		#endregion
@@ -91,7 +83,7 @@ namespace SimPe.Plugin
 
 			reader.BaseStream.Seek(16, System.IO.SeekOrigin.Begin); // Begin at first GUID
 			guide = reader.ReadUInt32();
-			lbldisp =
+			DispLabel =
 				"GUID 0x"
 				+ SimPe.Helper.HexString(guide)
 				+ "  "
@@ -99,7 +91,7 @@ namespace SimPe.Plugin
 			guidnx = reader.ReadUInt32();
 			if (guidnx != guide)
 			{
-				lbldisp +=
+				DispLabel +=
 					"\n Contains\n GUID 0x"
 					+ SimPe.Helper.HexString(guidnx)
 					+ "  "
@@ -109,7 +101,7 @@ namespace SimPe.Plugin
 				{
 					guidnx = reader.ReadUInt32();
 					if (guidnx != guide)
-						lbldisp +=
+						DispLabel +=
 							"\n GUID 0x"
 							+ SimPe.Helper.HexString(guidnx)
 							+ "  "

@@ -44,17 +44,19 @@ namespace SimPe.Plugin
 		#region Attributes
 		byte[] data = null;
 		Image img = null;
-		MipMapType datatype;
 		string lifofile;
 
-		public MipMapType DataType => datatype;
+		public MipMapType DataType
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// Force a Reload of the Texture
 		/// </summary>
 		public void ReloadTexture()
 		{
-			if ((datatype != MipMapType.LifoReference) && (data != null))
+			if ((DataType != MipMapType.LifoReference) && (data != null))
 			{
 				System.IO.BinaryReader sr = new System.IO.BinaryReader(
 					new System.IO.MemoryStream(data)
@@ -83,7 +85,7 @@ namespace SimPe.Plugin
 			set
 			{
 				if (value != null)
-					datatype = MipMapType.Texture;
+					DataType = MipMapType.Texture;
 				img = value;
 			}
 		}
@@ -97,7 +99,7 @@ namespace SimPe.Plugin
 			set
 			{
 				if (value != null)
-					datatype = MipMapType.SimPE_PlainData;
+					DataType = MipMapType.SimPE_PlainData;
 				data = value;
 			}
 		}
@@ -111,7 +113,7 @@ namespace SimPe.Plugin
 			set
 			{
 				if (value != null)
-					datatype = MipMapType.LifoReference;
+					DataType = MipMapType.LifoReference;
 				lifofile = value;
 			}
 		}
@@ -125,7 +127,7 @@ namespace SimPe.Plugin
 		public MipMap(ImageData parent)
 		{
 			this.parent = parent;
-			this.datatype = MipMapType.SimPE_PlainData;
+			this.DataType = MipMapType.SimPE_PlainData;
 			data = new Byte[0];
 		}
 
@@ -143,9 +145,9 @@ namespace SimPe.Plugin
 		{
 			this.index = index;
 			this.mapcount = mapcount;
-			datatype = (MipMapType)reader.ReadByte();
+			DataType = (MipMapType)reader.ReadByte();
 
-			switch (datatype)
+			switch (DataType)
 			{
 				case MipMapType.Texture:
 				{
@@ -161,7 +163,7 @@ namespace SimPe.Plugin
 						{
 							data = reader.ReadBytes(imgsize);
 							{
-								datatype = MipMapType.SimPE_PlainData;
+								DataType = MipMapType.SimPE_PlainData;
 								img = null;
 							}
 						}
@@ -188,7 +190,7 @@ namespace SimPe.Plugin
 				default:
 				{
 					throw new Exception(
-						"Unknown MipMap Datatype 0x" + Helper.HexString((byte)datatype)
+						"Unknown MipMap Datatype 0x" + Helper.HexString((byte)DataType)
 					);
 				}
 			}
@@ -204,19 +206,19 @@ namespace SimPe.Plugin
 		/// </remarks>
 		public void Serialize(System.IO.BinaryWriter writer)
 		{
-			if (datatype == MipMapType.SimPE_PlainData)
+			if (DataType == MipMapType.SimPE_PlainData)
 				writer.Write((byte)MipMapType.Texture);
 			else
-				writer.Write((byte)datatype);
+				writer.Write((byte)DataType);
 
-			switch (datatype)
+			switch (DataType)
 			{
 				case MipMapType.SimPE_PlainData:
 				case MipMapType.Texture:
 				{
 					try
 					{
-						if (datatype == MipMapType.Texture)
+						if (DataType == MipMapType.Texture)
 							data = ImageLoader.Save(parent.Format, img);
 					}
 					catch (Exception ex)
@@ -243,7 +245,7 @@ namespace SimPe.Plugin
 				default:
 				{
 					throw new Exception(
-						"Unknown MipMap Datatype 0x" + Helper.HexString((byte)datatype)
+						"Unknown MipMap Datatype 0x" + Helper.HexString((byte)DataType)
 					);
 				}
 			}
@@ -252,7 +254,7 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			if (this.datatype == MipMapType.LifoReference)
+			if (this.DataType == MipMapType.LifoReference)
 				return this.LifoFile;
 
 			string name;
@@ -275,7 +277,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public void GetReferencedLifo()
 		{
-			if (datatype == MipMapType.LifoReference)
+			if (DataType == MipMapType.LifoReference)
 			{
 				SimPe.Interfaces.Scenegraph.IScenegraphFileIndex nfi =
 					FileTable.FileIndex.AddNewChild();
@@ -297,7 +299,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		protected bool GetReferencedLifo_NoLoad()
 		{
-			if (datatype == MipMapType.LifoReference)
+			if (DataType == MipMapType.LifoReference)
 			{
 				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item =
 					FileTable.FileIndex.FindFileByName(
@@ -363,20 +365,12 @@ namespace SimPe.Plugin
 	public class MipMapBlock : System.IDisposable
 	{
 		#region Attributes
-		MipMap[] mipmaps;
 		uint creator;
 		uint unknown_1;
 
 		public MipMap[] MipMaps
 		{
-			get
-			{
-				return mipmaps;
-			}
-			set
-			{
-				mipmaps = value;
-			}
+			get; set;
 		}
 
 		#endregion
@@ -389,7 +383,7 @@ namespace SimPe.Plugin
 		public MipMapBlock(ImageData parent)
 		{
 			this.parent = parent;
-			mipmaps = new MipMap[0];
+			MipMaps = new MipMap[0];
 			creator = 0xffffffff;
 			unknown_1 = 0x41200000;
 		}
@@ -442,11 +436,11 @@ namespace SimPe.Plugin
 				}
 			}
 
-			mipmaps = new MipMap[innercount];
-			for (int i = 0; i < mipmaps.Length; i++)
+			MipMaps = new MipMap[innercount];
+			for (int i = 0; i < MipMaps.Length; i++)
 			{
-				mipmaps[i] = new MipMap(parent);
-				mipmaps[i].Unserialize(reader, i, mipmaps.Length);
+				MipMaps[i] = new MipMap(parent);
+				MipMaps[i].Unserialize(reader, i, MipMaps.Length);
 			}
 
 			creator = reader.ReadUInt32();
@@ -468,14 +462,14 @@ namespace SimPe.Plugin
 			{
 				case 0x09:
 				{
-					writer.Write((uint)mipmaps.Length);
+					writer.Write((uint)MipMaps.Length);
 					break;
 				}
 			}
 
-			for (int i = 0; i < mipmaps.Length; i++)
+			for (int i = 0; i < MipMaps.Length; i++)
 			{
-				mipmaps[i].Serialize(writer);
+				MipMaps[i].Serialize(writer);
 			}
 
 			writer.Write(creator);
@@ -550,7 +544,7 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			if (mipmaps.Length == 1)
+			if (MipMaps.Length == 1)
 				return "0x"
 					+ Helper.HexString(this.creator)
 					+ " - 0x"
@@ -561,7 +555,7 @@ namespace SimPe.Plugin
 				+ " - 0x"
 				+ Helper.HexString(this.unknown_1)
 				+ " ("
-				+ this.mipmaps.Length
+				+ this.MipMaps.Length
 				+ " Items)";
 		}
 
@@ -569,10 +563,10 @@ namespace SimPe.Plugin
 
 		public void Dispose()
 		{
-			foreach (MipMap mm in this.mipmaps)
+			foreach (MipMap mm in this.MipMaps)
 				mm.Dispose();
 
-			mipmaps = new MipMap[0];
+			MipMaps = new MipMap[0];
 		}
 
 		#endregion
@@ -591,22 +585,12 @@ namespace SimPe.Plugin
 
 		Size texturesize;
 		ImageLoader.TxtrFormats format;
-		uint mipmaplevels;
 		float unknown_0;
 		uint unknown_1;
-		string filenamerep;
-		MipMapBlock[] mipmapblocks;
 
 		public MipMapBlock[] MipMapBlocks
 		{
-			get
-			{
-				return mipmapblocks;
-			}
-			set
-			{
-				mipmapblocks = value;
-			}
+			get; set;
 		}
 
 		public Size TextureSize
@@ -623,14 +607,7 @@ namespace SimPe.Plugin
 
 		public uint MipMapLevels
 		{
-			get
-			{
-				return mipmaplevels;
-			}
-			set
-			{
-				mipmaplevels = value;
-			}
+			get; set;
 		}
 
 		public ImageLoader.TxtrFormats Format
@@ -657,14 +634,7 @@ namespace SimPe.Plugin
 
 		public string FileNameRepeat
 		{
-			get
-			{
-				return filenamerep;
-			}
-			set
-			{
-				filenamerep = value;
-			}
+			get; set;
 		}
 
 		#endregion
@@ -676,12 +646,12 @@ namespace SimPe.Plugin
 			: base(parent)
 		{
 			texturesize = new Size(1, 1);
-			mipmapblocks = new MipMapBlock[1];
-			mipmapblocks[0] = new MipMapBlock(this);
-			mipmaplevels = 1;
+			MipMapBlocks = new MipMapBlock[1];
+			MipMapBlocks[0] = new MipMapBlock(this);
+			MipMapLevels = 1;
 			sgres = new SGResource(null);
 			BlockID = 0x1c4a276c;
-			filenamerep = "";
+			FileNameRepeat = "";
 			this.version = 0x09;
 			unknown_0 = (float)1.0;
 			format = SimPe.Plugin.ImageLoader.TxtrFormats.ExtRaw24Bit;
@@ -706,7 +676,7 @@ namespace SimPe.Plugin
 			if (Parent.Fast)
 			{
 				texturesize = new Size(0, 0);
-				mipmapblocks = new MipMapBlock[0];
+				MipMapBlocks = new MipMapBlock[0];
 				return;
 			}
 
@@ -715,18 +685,18 @@ namespace SimPe.Plugin
 			texturesize = new Size(w, h);
 
 			format = (ImageLoader.TxtrFormats)reader.ReadUInt32();
-			mipmaplevels = reader.ReadUInt32();
+			MipMapLevels = reader.ReadUInt32();
 			unknown_0 = reader.ReadSingle();
-			mipmapblocks = new MipMapBlock[reader.ReadUInt32()];
+			MipMapBlocks = new MipMapBlock[reader.ReadUInt32()];
 			unknown_1 = reader.ReadUInt32();
 
 			if (version == 0x09)
-				filenamerep = reader.ReadString();
+				FileNameRepeat = reader.ReadString();
 
-			for (int i = 0; i < mipmapblocks.Length; i++)
+			for (int i = 0; i < MipMapBlocks.Length; i++)
 			{
-				mipmapblocks[i] = new MipMapBlock(this);
-				mipmapblocks[i].Unserialize(reader);
+				MipMapBlocks[i] = new MipMapBlock(this);
+				MipMapBlocks[i].Unserialize(reader);
 			}
 		}
 
@@ -744,10 +714,10 @@ namespace SimPe.Plugin
 			{
 				case 0x07:
 				{
-					if (mipmapblocks.Length > 0)
-						mipmaplevels = (uint)mipmapblocks[0].MipMaps.Length;
+					if (MipMapBlocks.Length > 0)
+						MipMapLevels = (uint)MipMapBlocks[0].MipMaps.Length;
 					else
-						mipmaplevels = 0;
+						MipMapLevels = 0;
 					break;
 				}
 			}
@@ -764,17 +734,17 @@ namespace SimPe.Plugin
 			writer.Write((int)texturesize.Height);
 
 			writer.Write((uint)format);
-			writer.Write(mipmaplevels);
+			writer.Write(MipMapLevels);
 			writer.Write(unknown_0);
-			writer.Write((uint)mipmapblocks.Length);
+			writer.Write((uint)MipMapBlocks.Length);
 			writer.Write(unknown_1);
 
 			if (version == 0x09)
-				writer.Write(filenamerep);
+				writer.Write(FileNameRepeat);
 
-			for (int i = 0; i < mipmapblocks.Length; i++)
+			for (int i = 0; i < MipMapBlocks.Length; i++)
 			{
-				mipmapblocks[i].Serialize(writer);
+				MipMapBlocks[i].Serialize(writer);
 			}
 		}
 		#endregion
@@ -847,10 +817,10 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			foreach (MipMapBlock mmb in this.mipmapblocks)
+			foreach (MipMapBlock mmb in this.MipMapBlocks)
 				mmb.Dispose();
 
-			mipmapblocks = new MipMapBlock[0];
+			MipMapBlocks = new MipMapBlock[0];
 		}
 
 		#endregion

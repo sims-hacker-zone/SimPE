@@ -521,35 +521,37 @@ namespace SimPe.Plugin
 
 	internal class CpfListItem : SkinChain
 	{
-		string name;
 		uint category;
 
 		internal CpfListItem(SimPe.PackedFiles.Wrapper.Cpf cpf)
 			: base(cpf)
 		{
 			this.cpf = cpf;
-			name = Localization.Manager.GetString("Unknown");
+			Name = Localization.Manager.GetString("Unknown");
 			category = 0;
 			if (cpf != null)
 			{
 				foreach (SimPe.PackedFiles.Wrapper.CpfItem citem in cpf.Items)
 					if (citem.Name.ToLower() == "name")
-						name = citem.StringValue;
+						Name = citem.StringValue;
 				foreach (SimPe.PackedFiles.Wrapper.CpfItem citem in cpf.Items)
 					if (citem.Name.ToLower() == "category")
 						category = citem.UIntegerValue;
 			}
 
-			name = name.Replace("CASIE_", "");
+			Name = Name.Replace("CASIE_", "");
 		}
 
-		public new string Name => name;
+		public new string Name
+		{
+			get;
+		}
 
 		internal SimPe.PackedFiles.Wrapper.Cpf File => cpf;
 
 		public override string ToString()
 		{
-			return "0x" + Helper.HexString((ushort)category) + ": " + name;
+			return "0x" + Helper.HexString((ushort)category) + ": " + Name;
 		}
 	}
 }

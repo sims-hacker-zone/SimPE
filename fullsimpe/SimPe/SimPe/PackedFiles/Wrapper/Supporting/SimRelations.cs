@@ -38,24 +38,9 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		}
 
 		/// <summary>
-		/// This string will be dieplayed whe ToString is called
-		/// </summary>
-		private string nametag = null;
-
-		/// <summary>
 		/// Returns/Sets the nametag
 		/// </summary>
-		public string NameTag
-		{
-			get
-			{
-				return nametag;
-			}
-			set
-			{
-				nametag = value;
-			}
-		}
+		public string NameTag { get; set; } = null;
 
 		/// <summary>
 		/// Returns the nametag if available
@@ -63,8 +48,8 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// <returns>A String Describing the Object</returns>
 		public override string ToString()
 		{
-			if (nametag != null)
-				return nametag;
+			if (NameTag != null)
+				return NameTag;
 
 			return base.ToString();
 		}

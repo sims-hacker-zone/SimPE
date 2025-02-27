@@ -37,7 +37,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public SimPoolControl()
 		{
 			details = false;
-			rightclicksel = false;
+			RightClickSelect = false;
 			InitializeComponent();
 		}
 
@@ -154,42 +154,33 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public class AddSimToPoolEventArgs : System.EventArgs
 		{
-			SimPe.PackedFiles.Wrapper.ExtSDesc sdsc;
-			public SimPe.PackedFiles.Wrapper.ExtSDesc SimDescription => sdsc;
-
-			string name;
-			public string Name => name;
-
-			string household;
-			public string Household => household;
-
-			bool cancel;
-			public bool Cancel
+			public SimPe.PackedFiles.Wrapper.ExtSDesc SimDescription
 			{
-				get
-				{
-					return cancel;
-				}
-				set
-				{
-					cancel = value;
-				}
+				get;
 			}
 
-			System.Drawing.Image img;
-			public System.Drawing.Image Image => img;
+			public string Name
+			{
+				get;
+			}
 
-			int grpid;
+			public string Household
+			{
+				get;
+			}
+
+			public bool Cancel
+			{
+				get; set;
+			}
+
+			public System.Drawing.Image Image
+			{
+				get;
+			}
 			public int GroupIndex
 			{
-				get
-				{
-					return grpid;
-				}
-				set
-				{
-					grpid = value;
-				}
+				get; set;
 			}
 
 			internal AddSimToPoolEventArgs(
@@ -200,13 +191,13 @@ namespace SimPe.PackedFiles.Wrapper
 				int groupindex
 			)
 			{
-				this.sdsc = sdsc;
-				this.name = name;
-				this.img = img;
-				this.household = household;
-				this.grpid = groupindex;
+				this.SimDescription = sdsc;
+				this.Name = name;
+				this.Image = img;
+				this.Household = household;
+				this.GroupIndex = groupindex;
 
-				cancel = false;
+				Cancel = false;
 			}
 
 			public override string ToString()
@@ -514,17 +505,10 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		SteepValley.Windows.Forms.XPListViewItem lastsel;
-		bool rightclicksel;
+
 		public bool RightClickSelect
 		{
-			get
-			{
-				return rightclicksel;
-			}
-			set
-			{
-				rightclicksel = value;
-			}
+			get; set;
 		}
 
 		private void gp_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -547,7 +531,7 @@ namespace SimPe.PackedFiles.Wrapper
 					e.Button == System.Windows.Forms.MouseButtons.Left
 					|| (
 						e.Button == System.Windows.Forms.MouseButtons.Right
-						&& rightclicksel
+						&& RightClickSelect
 					)
 				)
 			)

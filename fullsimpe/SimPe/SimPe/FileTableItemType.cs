@@ -15,8 +15,6 @@ namespace SimPe
 
 	public class FileTableItemType : IComparable
 	{
-		uint val = 0;
-
 		public FileTableItemType(Expansions e)
 			: this((uint)e) { }
 
@@ -25,12 +23,12 @@ namespace SimPe
 
 		public FileTableItemType(int i)
 		{
-			val = (uint)i;
+			AsUint = (uint)i;
 		}
 
 		public FileTableItemType(uint i)
 		{
-			val = i;
+			AsUint = i;
 		}
 
 		public static implicit operator FileTableItemType(Expansions e)
@@ -57,8 +55,8 @@ namespace SimPe
 		{
 			get
 			{
-				if (val <= 0x80000000)
-					return (Expansions)val;
+				if (AsUint <= 0x80000000)
+					return (Expansions)AsUint;
 				else
 					return Expansions.Custom;
 			}
@@ -68,19 +66,19 @@ namespace SimPe
 		{
 			get
 			{
-				if (val > 0x80000000)
-					return (FileTablePaths)val;
+				if (AsUint > 0x80000000)
+					return (FileTablePaths)AsUint;
 				else
 					return FileTablePaths.Absolute;
 			}
 		}
 
-		public uint AsUint => val;
+		public uint AsUint { get; } = 0;
 
 		public string GetRoot()
 		{
 			string ret = null;
-			if (val <= 0x80000000)
+			if (AsUint <= 0x80000000)
 				ret = PathProvider.Global.GetExpansion(AsExpansions).InstallFolder;
 			else if (this == FileTablePaths.SaveGameFolder)
 				ret = PathProvider.SimSavegameFolder;
@@ -97,7 +95,7 @@ namespace SimPe
 
 		public int GetEPVersion()
 		{
-			if (val > 0x80000000)
+			if (AsUint > 0x80000000)
 				return -1;
 			ExpansionItem ei = PathProvider.Global[AsExpansions];
 			if (ei.Flag.Class == ExpansionItem.Classes.Story)
@@ -112,17 +110,17 @@ namespace SimPe
 		public int CompareTo(object obj)
 		{
 			if (obj is Expansions)
-				return val.CompareTo((uint)((Expansions)obj));
+				return AsUint.CompareTo((uint)((Expansions)obj));
 			if (obj is FileTablePaths)
-				return val.CompareTo((uint)((FileTablePaths)obj));
+				return AsUint.CompareTo((uint)((FileTablePaths)obj));
 			if (obj is int)
-				return val.CompareTo((uint)((int)obj));
+				return AsUint.CompareTo((uint)((int)obj));
 			if (obj is uint)
-				return val.CompareTo((uint)obj);
+				return AsUint.CompareTo((uint)obj);
 			if (obj is FileTableItemType)
-				return val.CompareTo(((FileTableItemType)obj).val);
+				return AsUint.CompareTo(((FileTableItemType)obj).AsUint);
 
-			return ((object)val) == obj ? 0 : 1; // random objects are not equal
+			return ((object)AsUint) == obj ? 0 : 1; // random objects are not equal
 		}
 
 		#endregion
@@ -136,7 +134,7 @@ namespace SimPe
 
 		public override int GetHashCode()
 		{
-			return val.GetHashCode();
+			return AsUint.GetHashCode();
 		}
 
 		public static bool operator ==(FileTableItemType a, Expansions b)
@@ -171,7 +169,7 @@ namespace SimPe
 
 		public override string ToString()
 		{
-			if (val > 0x80000000)
+			if (AsUint > 0x80000000)
 				return AsFileTablePaths.ToString();
 			else
 				return AsExpansions.ToString();
