@@ -189,11 +189,7 @@ namespace SimPe.Plugin
 
 		#region IToolFactory Member
 
-		public IToolPlugin[] KnownTools
-		{
-			get
-			{
-				IToolPlugin[] tools =
+		public IToolPlugin[] KnownTools => new IToolPlugin[]
 				{
 					new NeighborhoodTool(LinkedRegistry, LinkedProvider),
 					new SimsTool(LinkedRegistry, LinkedProvider),
@@ -212,9 +208,6 @@ namespace SimPe.Plugin
 					new GeneticCategorizerTool(),
 					new pjse.guidtool.GUIDTool(),
 				};
-				return tools;
-			}
-		}
 
 		#endregion
 

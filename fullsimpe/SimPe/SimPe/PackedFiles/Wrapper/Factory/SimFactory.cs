@@ -36,17 +36,9 @@ namespace SimPe.PackedFiles.Wrapper.Factory
 				{
 					return new IWrapper[0];
 				}
-				else if (Helper.StartedGui == Executable.Classic)
-				{
-					IWrapper[] wrappers =
-					{
-						new LinkedSDesc(),
-					};
-					return wrappers;
-				}
 				else
 				{
-					IWrapper[] wrappers =
+					return new IWrapper[]
 					{
 						new ExtFamilyTies(),
 						new LinkedSDesc(),
@@ -54,7 +46,6 @@ namespace SimPe.PackedFiles.Wrapper.Factory
 						new SimDNA(),
 						new Scor(),
 					};
-					return wrappers;
 				}
 			}
 		}

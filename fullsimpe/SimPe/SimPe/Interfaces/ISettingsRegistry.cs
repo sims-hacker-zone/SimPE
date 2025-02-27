@@ -17,6 +17,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+using System.Collections.Generic;
+
 namespace SimPe.Interfaces
 {
 	/// <summary>
@@ -36,7 +38,7 @@ namespace SimPe.Interfaces
 		/// </summary>
 		/// <param name="settings">The Topics to register</param>
 		/// <remarks>The tool must only be added if the Registry doesnt already contain it</remarks>
-		void RegisterSettings(ISettings[] settings);
+		void RegisterSettings(IEnumerable<ISettings> settings);
 
 		/// <summary>
 		/// Registers all  Settings provided by a factory with this Registry
@@ -48,7 +50,7 @@ namespace SimPe.Interfaces
 		/// <summary>
 		/// Returns the List of Known Settings
 		/// </summary>
-		ISettings[] Settings
+		HashSet<ISettings> Settings
 		{
 			get;
 		}

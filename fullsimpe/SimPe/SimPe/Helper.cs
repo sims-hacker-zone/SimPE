@@ -527,16 +527,7 @@ namespace SimPe
 		{
 			get
 			{
-				string path = Path.Combine(
-					Path.Combine(
-						Environment.GetFolderPath(
-							Environment.SpecialFolder.ApplicationData
-						),
-						"SimPe"
-					),
-					"Data"
-				);
-				// string path = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Data");
+				string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SimPe", "Data");
 				try
 				{
 					if (!Directory.Exists(path))

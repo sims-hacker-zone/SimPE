@@ -20,6 +20,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 using SimPe.Interfaces;
@@ -141,8 +143,9 @@ namespace SimPe
 			Splash.Screen.SetMessage("Loading Dynamic Wrappers");
 			try
 			{
-				FileTableBase.WrapperRegistry.Register(new Plugin.WrapperFactory()); //moved here to max priority, when a StaticWrapper Clst was higher
-				FileTable.ToolRegistry.Register(new Plugin.WrapperFactory());
+				Plugin.WrapperFactory factory = new Plugin.WrapperFactory();
+				FileTableBase.WrapperRegistry.Register(factory); //moved here to max priority, when a StaticWrapper Clst was higher
+				FileTable.ToolRegistry.Register(factory);
 			}
 			catch (Exception ex)
 			{
@@ -153,34 +156,13 @@ namespace SimPe
 				Helper.ExceptionMessage(e);
 			}
 
-			string fil = System.IO.Path.Combine(
-				System.IO.Path.GetDirectoryName(
-					Application.ExecutablePath
-				),
-				"simpe.neighbourhood.dll"
-			);
-			try
-			{
-				LoadFileWrappers.LoadWrapperFactory(fil, wloader);
-				LoadFileWrappers.LoadToolFactory(fil, wloader);
-			}
-			catch (Exception ex)
-			{
-				Exception e = new Exception(
-					"Unable to load Neighbourhood decoder",
-					new Exception("Invalid Interface in simpe.neighbourhood.dll", ex)
-				);
-				Helper.ExceptionMessage(e);
-			}
 			string folder = Helper.SimPePluginPath;
 			if (!System.IO.Directory.Exists(folder))
 			{
 				return;
 			}
 
-			string[] files = System.IO.Directory.GetFiles(folder, "*.plugin.dll");
-
-			foreach (string file in files)
+			foreach (string file in System.IO.Directory.GetFiles(folder, "*.plugin.dll"))
 			{
 				try
 				{
@@ -218,8 +200,7 @@ namespace SimPe
 			Splash.Screen.SetMessage("Loading Menu Items");
 			ToolMenuItemExt.ExternalToolNotify chghandler =
 				new ToolMenuItemExt.ExternalToolNotify(ClosedToolPluginHandler);
-			IToolExt[] toolsp = FileTable.ToolRegistry.ToolsPlus;
-			foreach (IToolExt tool in toolsp)
+			foreach (IToolExt tool in FileTable.ToolRegistry.ToolsPlus)
 			{
 				string name = tool.ToString();
 				string[] parts = name.Split("\\".ToCharArray());
@@ -234,8 +215,7 @@ namespace SimPe
 				);
 			}
 
-			ITool[] tools = FileTable.ToolRegistry.Tools;
-			foreach (ITool tool in tools)
+			foreach (ITool tool in FileTable.ToolRegistry.Tools)
 			{
 				string name = tool.ToString().Trim();
 				if (name == "")
@@ -309,9 +289,9 @@ namespace SimPe
 				Delegate[] dls = ChangedGuiResourceEvent.GetInvocationList();
 				foreach (Delegate d in dls)
 				{
-					if (d.Target is IToolExt)
+					if (d.Target is IToolExt ext)
 					{
-						if (!((IToolExt)d.Target).Visible)
+						if (!ext.Visible)
 						{
 							continue;
 						}
@@ -346,7 +326,7 @@ namespace SimPe
 			SteepValley.Windows.Forms.ThemedControls.XPTaskBox taskbox,
 			ToolStrip tb,
 			ContextMenuStrip mi,
-			IToolAction[] tools
+			IEnumerable<IToolAction> tools
 		)
 		{
 			if (tools == null)

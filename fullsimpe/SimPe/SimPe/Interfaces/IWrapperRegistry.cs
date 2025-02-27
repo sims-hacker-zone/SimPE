@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
+using System.Collections.Generic;
 
 namespace SimPe.Interfaces
 {
@@ -53,7 +54,7 @@ namespace SimPe.Interfaces
 		/// Returns the List of Known Wrappers (without Wrappers having a Priority &lt; 0!)
 		/// </summary>
 		/// <remarks>The Wrappers should be Returned in Order of Priority starting with the lowest!</remarks>
-		IWrapper[] Wrappers
+		IEnumerable<IWrapper> Wrappers
 		{
 			get;
 		}
@@ -62,7 +63,7 @@ namespace SimPe.Interfaces
 		/// Returns the List of all Known Wrappers including Wrappers with Priority &lt; 0
 		/// </summary>
 		/// <remarks>The Wrappers should be Returned in Order of Priority starting with the lowest!</remarks>
-		IWrapper[] AllWrappers
+		IEnumerable<IWrapper> AllWrappers
 		{
 			get;
 		}

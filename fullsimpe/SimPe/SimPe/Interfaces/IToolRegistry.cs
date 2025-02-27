@@ -17,6 +17,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+using System.Collections.Generic;
+
 namespace SimPe.Interfaces
 {
 	/// <summary>
@@ -36,7 +38,7 @@ namespace SimPe.Interfaces
 		/// </summary>
 		/// <param name="tools">The Tools to register</param>
 		/// <remarks>The tool must only be added if the Registry doesnt already contain it</remarks>
-		void Register(IToolPlugin[] tools);
+		void Register(IEnumerable<IToolPlugin> tools);
 
 		/// <summary>
 		/// Registers all Tools supported by the Factory
@@ -57,7 +59,7 @@ namespace SimPe.Interfaces
 		/// Returns the List of Known Tools
 		/// </summary>
 		/// <remarks>The Tools should be Returned in Order of Priority starting with the lowest!</remarks>
-		ITool[] Tools
+		HashSet<ITool> Tools
 		{
 			get;
 		}
@@ -66,7 +68,7 @@ namespace SimPe.Interfaces
 		/// Returns the List of Known Tools
 		/// </summary>
 		/// <remarks>The Tools should be Returned in Order of Priority starting with the lowest!</remarks>
-		IToolPlus[] ToolsPlus
+		HashSet<IToolPlus> ToolsPlus
 		{
 			get;
 		}
@@ -74,7 +76,7 @@ namespace SimPe.Interfaces
 		/// <summary>
 		/// Returns a List of Know Doackable Tools
 		/// </summary>
-		IDockableTool[] Docks
+		HashSet<IDockableTool> Docks
 		{
 			get;
 		}
@@ -82,7 +84,7 @@ namespace SimPe.Interfaces
 		/// <summary>
 		/// Returns a List of Know Action Tool
 		/// </summary>
-		IToolAction[] Actions
+		HashSet<IToolAction> Actions
 		{
 			get;
 		}

@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SimPe
@@ -922,29 +923,24 @@ namespace SimPe
 
 		public void Execute(Icon icon)
 		{
-			OptionForm f = this;
 			if (icon != null)
 			{
-				f.Icon = icon;
+				Icon = icon;
 			}
 
-			Interfaces.IWrapper[] wrappers = FileTableBase
+			IEnumerable<Interfaces.IWrapper> wrappers = FileTableBase
 				.WrapperRegistry
 				.AllWrappers;
 
-			for (int ct = wrappers.Length - 1; ct >= 0; ct--)
+			cnt.Controls.AddRange(wrappers.Select((wrapper, ct) => BuildPanel(wrapper, ct)).ToArray());
+
+			uids.Clear();
+			if (cnt.Controls.Count > 0)
 			{
-				Interfaces.IWrapper wrapper = wrappers[ct];
-				f.cnt.Controls.Add(f.BuildPanel(wrapper, ct));
+				cnt.Controls[0].Focus();
 			}
 
-			f.uids.Clear();
-			if (f.cnt.Controls.Count > 0)
-			{
-				f.cnt.Controls[0].Focus();
-			}
-
-			f.Execute();
+			Execute();
 
 			foreach (Interfaces.IWrapper wrapper in wrappers)
 			{

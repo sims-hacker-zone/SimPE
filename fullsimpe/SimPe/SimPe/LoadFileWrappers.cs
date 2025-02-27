@@ -19,7 +19,9 @@
  ***************************************************************************/
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 using SimPe.Interfaces;
@@ -156,11 +158,7 @@ namespace SimPe
 		IToolRegistry treg;
 
 		//this is a manual List of Wrappers that are known to cause Problems
-		ArrayList ignore;
-
-		void CreateIgnoreList()
-		{
-			ignore = new ArrayList
+		private readonly HashSet<string> ignore = new HashSet<string>
 			{
 				"simpe.3d.plugin.dll",
 				"pjse.filetable.plugin.dll",
@@ -171,7 +169,6 @@ namespace SimPe
 				"theo.meshscanner.plugin.dll",
 				"simpe.ngbh.plugin.dll"
 			};
-		}
 
 		/// <summary>
 		/// Constructor of The class
@@ -182,8 +179,6 @@ namespace SimPe
 		/// <param name="toolreg">Registry the tools should be added to</param>
 		public LoadFileWrappers(IWrapperRegistry registry, IToolRegistry toolreg)
 		{
-			CreateIgnoreList();
-
 			reg = registry;
 			treg = toolreg;
 		}
@@ -238,25 +233,14 @@ namespace SimPe
 			LoadFileWrappersExt lfw
 		)
 		{
-			if (lfw.ignore.Contains(Path.GetFileName(file).Trim().ToLower()))
+			if (lfw.ignore.Contains(Path.GetFileName(file).Trim().ToLower()) || !File.Exists(file) || !Helper.CanLoadPlugin(file))
 			{
 				return null;
 			}
 
-			if (!File.Exists(file))
-			{
-				return null;
-			}
-
-			if (!Helper.CanLoadPlugin(file))
-			{
-				return null;
-			}
-
-			AssemblyName myAssemblyName;
 			try
 			{
-				myAssemblyName = AssemblyName.GetAssemblyName(file);
+				AssemblyName myAssemblyName = AssemblyName.GetAssemblyName(file);
 			}
 			catch
 			{
@@ -437,28 +421,8 @@ namespace SimPe
 			EventHandler chghandler
 		)
 		{
-			ITool[] tools = treg.Tools;
-			foreach (ITool tool in tools)
-			{
-				ToolMenuItem item = new ToolMenuItem(tool, chghandler);
-				mi.MenuItems.Add(item);
-			}
-
-			foreach (IToolPlugin tool in treg.Docks)
-			{
-				if (
-					tool.GetType().GetInterface("SimPe.Interfaces.ITool", true)
-					== typeof(ITool)
-				)
-				{
-					ToolMenuItem item = new ToolMenuItem(
-						(ITool)tool,
-						chghandler
-					);
-					mi.MenuItems.Add(item);
-				}
-			}
-
+			mi.MenuItems.AddRange(treg.Tools.Select((tool) => new ToolMenuItem(tool, chghandler)).ToArray());
+			mi.MenuItems.AddRange(treg.Docks.Where((tool) => tool is ITool).Select((tool) => new ToolMenuItem(tool as ITool, chghandler)).ToArray());
 			EnableMenuItems(mi, null, null);
 		}
 

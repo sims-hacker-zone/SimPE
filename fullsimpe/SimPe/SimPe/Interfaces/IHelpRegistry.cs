@@ -17,6 +17,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+using System.Collections.Generic;
+
 namespace SimPe.Interfaces
 {
 	/// <summary>
@@ -36,7 +38,7 @@ namespace SimPe.Interfaces
 		/// </summary>
 		/// <param name="topics">The Topics to register</param>
 		/// <remarks>The tool must only be added if the Registry doesnt already contain it</remarks>
-		void RegisterHelpTopic(IHelp[] topics);
+		void RegisterHelpTopic(IEnumerable<IHelp> topics);
 
 		/// <summary>
 		/// Registers all  Help Topics provided by a factory with this Registry
@@ -48,7 +50,7 @@ namespace SimPe.Interfaces
 		/// <summary>
 		/// Returns the List of Known Help Topics
 		/// </summary>
-		IHelp[] HelpTopics
+		HashSet<IHelp> HelpTopics
 		{
 			get;
 		}

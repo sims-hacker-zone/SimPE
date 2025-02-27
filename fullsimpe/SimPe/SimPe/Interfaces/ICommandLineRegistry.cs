@@ -17,6 +17,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+using System.Collections.Generic;
+
 namespace SimPe.Interfaces
 {
 	/// <summary>
@@ -36,7 +38,7 @@ namespace SimPe.Interfaces
 		/// </summary>
 		/// <param name="CommandLines">The CommandLines to register</param>
 		/// <remarks>The CommandLine must only be added if the Registry doesnt already contain it</remarks>
-		void RegisterCommandLines(ICommandLine[] CommandLines);
+		void RegisterCommandLines(IEnumerable<ICommandLine> commandlines);
 
 		/// <summary>
 		/// Registers all CommandLines supported by the Factory
@@ -49,7 +51,7 @@ namespace SimPe.Interfaces
 		/// Returns the List of Known CommandLines
 		/// </summary>
 		/// <remarks>The CommandLines should be Returned in Order of Priority starting with the lowest!</remarks>
-		ICommandLine[] CommandLines
+		HashSet<ICommandLine> CommandLines
 		{
 			get;
 		}

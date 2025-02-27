@@ -33,12 +33,11 @@ namespace SimPe
 		/// Der Haupteinstiegspunkt für die Anwendung.
 		/// </summary>
 		[STAThread]
-		static void Main(string[] args)
+		public static void Main(string[] args)
 		{
-			if (Environment.Version.Major < 2)
+			if (Environment.Version.Major < 4)
 			{
 				Message.Show(
-
 						Localization.GetString("NoDotNet")
 						.Replace("{VERSION}", Environment.Version.ToString())
 				);
@@ -58,7 +57,6 @@ namespace SimPe
 			{
 				if (
 					Message.Show(
-
 							Localization.GetString("Unknown EP found")
 							.Replace(
 								"{name}",

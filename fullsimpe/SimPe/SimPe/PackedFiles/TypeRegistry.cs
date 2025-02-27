@@ -20,7 +20,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Collections;
+using System.Linq;
+using System.Collections.Generic;
 
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
@@ -48,76 +49,32 @@ namespace SimPe.PackedFiles
 		/// Coontains all available handler Objects
 		/// </summary>
 		/// <remarks>All handlers are stored as IPackedFileHandler Objects</remarks>
-		ArrayList handlers;
-
-		/// <summary>
-		/// Contains all available Tool Plugins
-		/// </summary>
-		ArrayList tools,
-			toolsp;
-
-		/// <summary>
-		/// Contains all available dockable Tool Plugins
-		/// </summary>
-		ArrayList dtools;
-
-		/// <summary>
-		/// Contains all available action Tool Plugins
-		/// </summary>
-		ArrayList atools;
-
-		/// <summary>
-		/// Contains all known CommandLine tools
-		/// </summary>
-		ArrayList cmdlines;
-
-		/// <summary>
-		/// Contains all known Helptopics
-		/// </summary>
-		ArrayList helptopics;
-
-		/// <summary>
-		/// Contains all known Custom Settings
-		/// </summary>
-		ArrayList settings;
+		private readonly HashSet<IFileWrapper> handlers = new HashSet<IFileWrapper>();
 
 		/// <summary>
 		/// Contains all available Listeners
 		/// </summary>
-		Collections.InternalListeners listeners;
+		private readonly Collections.InternalListeners listeners;
 
 		/// <summary>
 		/// Used to access the Windows Registry
 		/// </summary>
-		Registry reg;
+		private readonly Registry reg = Helper.WindowsRegistry;
 
 		/// <summary>
 		/// Constructor of the class
 		/// </summary>
 		public TypeRegistry()
 		{
-			reg = Helper.WindowsRegistry;
-			handlers = new ArrayList();
-			OpcodeProvider = new Providers.Opcodes();
-			SimFamilynameProvider = new Providers.SimFamilyNames();
-			SimNameProvider = new Providers.SimNames(null); //opcodeprovider
 			SimDescriptionProvider = new Providers.SimDescriptions(
 				SimNameProvider,
 				SimFamilynameProvider
 			);
-			SkinProvider = new Providers.Skins();
 			lotprov = new Providers.LotProvider();
 			SimDescriptionProvider.ChangedPackage += new EventHandler(
 				lotprov.sdescprovider_ChangedPackage
 			);
 
-			tools = new ArrayList();
-			toolsp = new ArrayList();
-			dtools = new ArrayList();
-			atools = new ArrayList();
-			cmdlines = new ArrayList();
-			helptopics = new ArrayList();
-			settings = new ArrayList();
 			listeners = new Collections.InternalListeners();
 
 			WrapperImageList = new System.Windows.Forms.ImageList
@@ -125,47 +82,35 @@ namespace SimPe.PackedFiles
 				ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit
 			};
 
-			WrapperImageList.Images.Add(
+			WrapperImageList.Images.AddRange(new System.Drawing.Image[] {
 				System.Drawing.Image.FromStream(
 					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.empty.png")
-				)
-			);
-			WrapperImageList.Images.Add(
+				),
 				System.Drawing.Image.FromStream(
 					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.binary.png")
 				)
-			);
+			});
 		}
 
 		#region IWrapperRegistry Member
 		public void Register(IWrapper wrapper)
 		{
-			if (wrapper != null)
+			if (wrapper != null && wrapper is IFileWrapper wrapper1 && !handlers.Contains(wrapper1))
 			{
-				if (!handlers.Contains(wrapper))
+				wrapper.Priority = reg.GetWrapperPriority(wrapper.WrapperDescription.UID);
+				handlers.Add(wrapper1);
+				if (wrapper.WrapperDescription is AbstractWrapperInfo info)
 				{
-					wrapper.Priority =
-						reg.GetWrapperPriority(
-							wrapper.WrapperDescription.UID
-						);
-					handlers.Add((IFileWrapper)wrapper);
-					if (wrapper.WrapperDescription is AbstractWrapperInfo)
+					if (wrapper.WrapperDescription.Icon != null)
 					{
-						if (wrapper.WrapperDescription.Icon != null)
-						{
-							(
-								(AbstractWrapperInfo)wrapper.WrapperDescription
-							).IconIndex = WrapperImageList.Images.Count;
-							WrapperImageList.Images.Add(wrapper.WrapperDescription.Icon);
-						}
-						else
-						{
-							(
-								(AbstractWrapperInfo)wrapper.WrapperDescription
-							).IconIndex = 1;
-						}
+						info.IconIndex = WrapperImageList.Images.Count;
+						WrapperImageList.Images.Add(wrapper.WrapperDescription.Icon);
+					}
+					else
+					{
+						info.IconIndex = 1;
 					}
 				}
 			}
@@ -187,9 +132,9 @@ namespace SimPe.PackedFiles
 					IWrapper wrapper = wrappers[i];
 					//make sure whe have two instances of each Wrapper otherwise,
 					//AbstractWrapper.ResoureceName could corrupt a open Resource
-					if (!wrapper.AllowMultipleInstances && wrapper is AbstractWrapper)
+					if (!wrapper.AllowMultipleInstances && wrapper is AbstractWrapper wrapper1)
 					{
-						((AbstractWrapper)wrapper).SingleGuiWrapper = (IFileWrapper)
+						wrapper1.SingleGuiWrapper = (IFileWrapper)
 							guiwrappers[i];
 					}
 
@@ -210,82 +155,25 @@ namespace SimPe.PackedFiles
 			factory.LinkedProvider = this;
 			Register(factory.KnownWrappers, factory.KnownWrappers);
 
-			if (
-				factory
-					.GetType()
-					.GetInterface("SimPe.Interfaces.Plugin.IHelpFactory", false)
-				== typeof(IHelpFactory)
-			)
+			if (factory is IHelpFactory)
 			{
 				Register(factory as IHelpFactory);
 			}
 
-			if (
-				factory
-					.GetType()
-					.GetInterface("SimPe.Interfaces.Plugin.ISettingsFactory", false)
-				== typeof(ISettingsFactory)
-			)
+			if (factory is ISettingsFactory)
 			{
 				Register(factory as ISettingsFactory);
 			}
 
-			if (
-				factory
-					.GetType()
-					.GetInterface("SimPe.Interfaces.Plugin.ICommandLineFactory", false)
-				== typeof(ICommandLineFactory)
-			)
+			if (factory is ICommandLineFactory)
 			{
 				Register(factory as ICommandLineFactory);
 			}
 		}
 
-		public IWrapper[] Wrappers
-		{
-			get
-			{
-				IWrapper[] wrappers = AllWrappers;
-				ArrayList wrap = new ArrayList();
+		public IEnumerable<IWrapper> Wrappers => AllWrappers.Where((item) => item.Priority >= 0);
 
-				foreach (IWrapper w in wrappers)
-				{
-					if (w.Priority >= 0)
-					{
-						wrap.Add(w);
-					}
-				}
-
-				wrappers = new IWrapper[wrap.Count];
-				wrap.CopyTo(wrappers);
-				return wrappers;
-			}
-		}
-
-		public IWrapper[] AllWrappers
-		{
-			get
-			{
-				IWrapper[] wrappers = new IWrapper[handlers.Count];
-				handlers.CopyTo(wrappers);
-
-				//sort the wrapper by priority
-				for (int i = 0; i < wrappers.Length - 1; i++)
-				{
-					for (int k = i + 1; k < wrappers.Length; k++)
-					{
-						if (
-							Math.Abs(wrappers[i].Priority)
-							> Math.Abs(wrappers[k].Priority)
-						)
-						{
-							(wrappers[k], wrappers[i]) = (wrappers[i], wrappers[k]);
-						}
-					}
-				}
-				return wrappers;
-			}
-		}
+		public IEnumerable<IWrapper> AllWrappers => handlers.OrderByDescending((item) => item.Priority);
 
 		/// <summary>
 		/// Contains a Listing of all available Wrapper Icons
@@ -303,19 +191,7 @@ namespace SimPe.PackedFiles
 		/// <returns>The assigned Handler or null if none was found</returns>
 		public IPackedFileWrapper FindHandler(uint type)
 		{
-			IWrapper[] wrappers = Wrappers;
-			foreach (IFileWrapper h in wrappers)
-			{
-				foreach (uint atype in h.AssignableTypes)
-				{
-					if (atype == type)
-					{
-						return h;
-					}
-				}
-			}
-
-			return null;
+			return (IPackedFileWrapper)Wrappers.FirstOrDefault((item) => item is IFileWrapper filewrapper && filewrapper.AssignableTypes.Contains(type));
 		}
 
 		/// <summary>
@@ -329,15 +205,10 @@ namespace SimPe.PackedFiles
 		/// </remarks>
 		public IFileWrapper FindHandler(byte[] data)
 		{
-			IWrapper[] wrappers = Wrappers;
+			IEnumerable<IWrapper> wrappers = Wrappers;
 			foreach (IFileWrapper h in wrappers)
 			{
-				if (h.FileSignature == null)
-				{
-					continue;
-				}
-
-				if (h.FileSignature.Length == 0)
+				if (h.FileSignature == null || h.FileSignature.Length == 0)
 				{
 					continue;
 				}
@@ -373,18 +244,12 @@ namespace SimPe.PackedFiles
 		/// <summary>
 		/// Returns the Provider for SimNames
 		/// </summary>
-		public Interfaces.Providers.ISimNames SimNameProvider
-		{
-			get;
-		}
+		public Interfaces.Providers.ISimNames SimNameProvider { get; } = new Providers.SimNames(null);
 
 		/// <summary>
 		/// Returns the Provider for Sim Family Names
 		/// </summary>
-		public Interfaces.Providers.ISimFamilyNames SimFamilynameProvider
-		{
-			get;
-		}
+		public Interfaces.Providers.ISimFamilyNames SimFamilynameProvider { get; } = new Providers.SimFamilyNames();
 
 		/// <summary>
 		/// Returns the Provider for SimDescription Files
@@ -397,80 +262,40 @@ namespace SimPe.PackedFiles
 		/// <summary>
 		/// Returns the Provider for Opcode Names
 		/// </summary>
-		public Interfaces.Providers.IOpcodeProvider OpcodeProvider
-		{
-			get;
-		}
+		public Interfaces.Providers.IOpcodeProvider OpcodeProvider { get; } = new Providers.Opcodes();
 
 		/// <summary>
 		/// Returns the Provider for Skin Data
 		/// </summary>
-		public Interfaces.Providers.ISkinProvider SkinProvider
-		{
-			get;
-		}
+		public Interfaces.Providers.ISkinProvider SkinProvider { get; } = new Providers.Skins();
 		#endregion
 
 		#region IToolRegistry Member
 		public void Register(IToolPlugin tool)
 		{
-			if (tool != null)
+			switch (tool)
 			{
-				if (
-					tool.GetType().GetInterface("SimPe.Interfaces.IDockableTool", true)
-					== typeof(IDockableTool)
-				)
-				{
-					if (!dtools.Contains(tool))
-					{
-						dtools.Add((IDockableTool)tool);
-					}
-				}
-				else if (
-					tool.GetType().GetInterface("SimPe.Interfaces.IToolAction", true)
-					== typeof(IToolAction)
-				)
-				{
-					if (!atools.Contains(tool))
-					{
-						atools.Add((IToolAction)tool);
-					}
-				}
-				else if (
-					tool.GetType().GetInterface("SimPe.Interfaces.IToolPlus", true)
-					== typeof(IToolPlus)
-				)
-				{
-					if (!toolsp.Contains(tool))
-					{
-						toolsp.Add((IToolPlus)tool);
-					}
-				}
-				else if (
-					Helper.StartedGui != Executable.Classic
-					&& tool.GetType().GetInterface("SimPe.Interfaces.IListener", true)
-						== typeof(IListener)
-				)
-				{
-					if (!listeners.Contains((IListener)tool))
-					{
-						listeners.Add((IListener)tool);
-					}
-				}
-				else if (
-					tool.GetType().GetInterface("SimPe.Interfaces.ITool", true)
-					== typeof(ITool)
-				)
-				{
-					if (!tools.Contains(tool))
-					{
-						tools.Add((ITool)tool);
-					}
-				}
+				case IDockableTool dtool:
+					Docks.Add(dtool);
+					break;
+				case IToolAction atool:
+					Actions.Add(atool);
+					break;
+				case IToolPlus toolp:
+					ToolsPlus.Add(toolp);
+					break;
+				case IListener listener:
+					listeners.Add(listener);
+					break;
+				case ITool tool1:
+					Tools.Add(tool1);
+					break;
+				case null:
+					break;
 			}
 		}
 
-		public void Register(IToolPlugin[] tools)
+		public void Register(IEnumerable<IToolPlugin> tools)
 		{
 			if (tools != null)
 			{
@@ -508,141 +333,72 @@ namespace SimPe.PackedFiles
 
 		public Collections.Listeners Listeners => listeners;
 
-		public ITool[] Tools
-		{
-			get
-			{
-				ITool[] rtools = new ITool[tools.Count];
-				tools.CopyTo(rtools);
-				return rtools;
-			}
-		}
+		public HashSet<ITool> Tools { get; } = new HashSet<ITool>();
 
-		public IToolPlus[] ToolsPlus
-		{
-			get
-			{
-				IToolPlus[] rtools = new IToolPlus[toolsp.Count];
-				toolsp.CopyTo(rtools);
-				return rtools;
-			}
-		}
+		public HashSet<IToolPlus> ToolsPlus { get; } = new HashSet<IToolPlus>();
 
-		public IDockableTool[] Docks
-		{
-			get
-			{
-				IDockableTool[] rtools = new IDockableTool[dtools.Count];
-				dtools.CopyTo(rtools);
-				return rtools;
-			}
-		}
+		public HashSet<IDockableTool> Docks { get; } = new HashSet<IDockableTool>();
 
-		public IToolAction[] Actions
-		{
-			get
-			{
-				IToolAction[] rtools = new IToolAction[atools.Count];
-				atools.CopyTo(rtools);
-				return rtools;
-			}
-		}
+		public HashSet<IToolAction> Actions { get; } = new HashSet<IToolAction>();
 
 		#endregion
 
 		#region IHelpRegistry Member
 		public void Register(IHelpFactory factory)
 		{
-			if (factory == null)
+			if (factory != null)
 			{
-				return;
+				RegisterHelpTopic(factory.KnownHelpTopics);
 			}
-
-			RegisterHelpTopic(factory.KnownHelpTopics);
 		}
 
-		public void RegisterHelpTopic(IHelp[] topics)
+		public void RegisterHelpTopic(IEnumerable<IHelp> topics)
 		{
-			if (topics == null)
+			if (topics != null)
 			{
-				return;
-			}
-
-			foreach (IHelp topic in topics)
-			{
-				RegisterHelpTopic(topic);
+				HelpTopics.UnionWith(topics);
 			}
 		}
 
 		public void RegisterHelpTopic(IHelp topic)
 		{
-			if (topic != null && !helptopics.Contains(topic))
+			if (topic != null)
 			{
-				helptopics.Add(topic);
+				HelpTopics.Add(topic);
 			}
 		}
 
 		/// <summary>
 		/// Returns the List of Known Help Topics
 		/// </summary>
-		public IHelp[] HelpTopics
-		{
-			get
-			{
-				IHelp[] ret = new IHelp[
-					helptopics.Count
-				];
-				helptopics.CopyTo(ret);
-				return ret;
-			}
-		}
+		public HashSet<IHelp> HelpTopics { get; } = new HashSet<IHelp>();
 		#endregion
 
 		#region ISettingsRegistry Member
 
 		public void Register(ISettingsFactory factory)
 		{
-			if (factory == null)
+			if (factory != null)
 			{
-				return;
-			}
-
-			RegisterSettings(factory.KnownSettings);
-		}
-
-		public ISettings[] Settings
-		{
-			get
-			{
-				ISettings[] ret = new ISettings[settings.Count];
-				settings.CopyTo(ret);
-				return ret;
+				RegisterSettings(factory.KnownSettings);
 			}
 		}
 
-		public void RegisterSettings(ISettings[] settings)
-		{
-			if (settings == null)
-			{
-				return;
-			}
+		public HashSet<ISettings> Settings { get; } = new HashSet<ISettings>();
 
-			foreach (ISettings s in settings)
+		public void RegisterSettings(IEnumerable<ISettings> settings)
+		{
+			if (settings != null)
 			{
-				RegisterSettings(s);
+				Settings.UnionWith(settings);
 			}
 		}
 
 		public void RegisterSettings(ISettings setting)
 		{
-			if (settings == null)
+			if (setting != null)
 			{
-				return;
-			}
-
-			if (!settings.Contains(setting))
-			{
-				settings.Add(setting);
+				Settings.Add(setting);
 			}
 		}
 
@@ -652,49 +408,29 @@ namespace SimPe.PackedFiles
 
 		public void Register(ICommandLineFactory factory)
 		{
-			if (factory == null)
+			if (factory != null)
 			{
-				return;
+				RegisterCommandLines(factory.KnownCommandLines);
 			}
-
-			RegisterCommandLines(factory.KnownCommandLines);
 		}
 
-		public void RegisterCommandLines(ICommandLine[] CommandLines)
+		public void RegisterCommandLines(IEnumerable<ICommandLine> commandlines)
 		{
-			if (cmdlines == null)
+			if (commandlines != null)
 			{
-				return;
-			}
-
-			foreach (ICommandLine c in CommandLines)
-			{
-				RegisterCommandLines(c);
+				CommandLines.UnionWith(commandlines);
 			}
 		}
 
 		public void RegisterCommandLines(ICommandLine cmdline)
 		{
-			if (cmdline == null)
+			if (cmdline != null)
 			{
-				return;
-			}
-
-			if (!cmdlines.Contains(cmdline))
-			{
-				cmdlines.Add(cmdline);
+				CommandLines.Add(cmdline);
 			}
 		}
 
-		public ICommandLine[] CommandLines
-		{
-			get
-			{
-				ICommandLine[] ret = new ICommandLine[cmdlines.Count];
-				cmdlines.CopyTo(ret);
-				return ret;
-			}
-		}
+		public HashSet<ICommandLine> CommandLines { get; } = new HashSet<ICommandLine>();
 
 		#endregion
 
