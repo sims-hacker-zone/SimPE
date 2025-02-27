@@ -508,14 +508,7 @@ namespace SimPe.Plugin
 		void SetVisible()
 		{
 			panel1.Visible = item != null;
-			if (des != null)
-			{
-				panel2.Visible = des.HasComplededFlag && item != null;
-			}
-			else
-			{
-				panel2.Visible = false;
-			}
+			panel2.Visible = des != null ? des.HasComplededFlag && item != null : false;
 
 			panel3.Visible = des != null && item == null;
 		}
@@ -599,14 +592,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			if (des.Intern)
-			{
-				item = slot.ItemsA.AddNew(SimMemoryType.Skill);
-			}
-			else
-			{
-				item = slot.ItemsB.AddNew(SimMemoryType.Skill);
-			}
+			item = des.Intern ? slot.ItemsA.AddNew(SimMemoryType.Skill) : slot.ItemsB.AddNew(SimMemoryType.Skill);
 
 			item.Guid = des.Guid;
 			item.PutValue(des.DataNumber, 0);

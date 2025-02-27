@@ -93,14 +93,7 @@ namespace SimPe.Plugin
 				{
 					form.cbseminame.SelectedIndex = i;
 					form.tbgroup.Text = "0x" + Helper.HexString(a.Id);
-					if (a.Id == Hashes.GroupHash(wrp.SemiGlobalName))
-					{
-						form.tbgroup.ForeColor = System.Drawing.SystemColors.WindowText;
-					}
-					else
-					{
-						form.tbgroup.ForeColor = System.Drawing.Color.Red;
-					}
+					form.tbgroup.ForeColor = a.Id == Hashes.GroupHash(wrp.SemiGlobalName) ? System.Drawing.SystemColors.WindowText : System.Drawing.Color.Red;
 
 					break;
 				}

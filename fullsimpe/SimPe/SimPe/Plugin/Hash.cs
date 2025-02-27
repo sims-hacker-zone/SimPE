@@ -311,41 +311,25 @@ namespace SimPe.Plugin
 		{
 			try
 			{
-				ulong hash = 0;
-				if (cbTrim.Checked)
-				{
-					if (rb24.Checked)
-					{
-						hash = Hashes.ToLong(
+				ulong hash = cbTrim.Checked
+					? rb24.Checked
+						? Hashes.ToLong(
 							Hashes.Crc24.ComputeHash(
 								Helper.ToBytes(tbtext.Text.ToLower())
 							)
-						);
-					}
-					else
-					{
-						hash = Hashes.ToLong(
+						)
+						: Hashes.ToLong(
 							Hashes.Crc32.ComputeHash(
 								Helper.ToBytes(tbtext.Text.ToLower())
 							)
-						);
-					}
-				}
-				else
-				{
-					if (rb24.Checked)
-					{
-						hash = Hashes.ToLong(
+						)
+					: rb24.Checked
+						? Hashes.ToLong(
 							Hashes.Crc24.ComputeHash(Helper.ToBytes(tbtext.Text))
-						);
-					}
-					else
-					{
-						hash = Hashes.ToLong(
+						)
+						: Hashes.ToLong(
 							Hashes.Crc32.ComputeHash(Helper.ToBytes(tbtext.Text))
 						);
-					}
-				}
 				tbhash.Text = "0x" + Helper.HexString((uint)hash);
 				setupinuse(hash);
 			}
@@ -388,14 +372,7 @@ namespace SimPe.Plugin
 			{
 				lbnamer.Visible = true;
 				string objName = pjse.GUIDIndex.TheGUIDIndex[Convert.ToUInt32(vid)];
-				if (objName != null && objName.Length > 0)
-				{
-					lbnamer.Text = objName;
-				}
-				else
-				{
-					lbnamer.Text = "Available";
-				}
+				lbnamer.Text = objName != null && objName.Length > 0 ? objName : "Available";
 			}
 			else
 			{

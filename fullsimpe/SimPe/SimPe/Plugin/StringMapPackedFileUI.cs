@@ -34,18 +34,7 @@ namespace SimPe.Plugin
 			btshowim.Text = "Show Names";
 			BackgroundImageLocation = new System.Drawing.Point(730, 0);
 			tbfilenm.Text = Wrapper.FileName;
-			if (Wrapper.FileDescriptor.Instance == 13)
-			{
-				lbType.Text = "Type: Walls";
-			}
-			else if (Wrapper.FileDescriptor.Instance == 14)
-			{
-				lbType.Text = "Type: Floor Coverings";
-			}
-			else
-			{
-				lbType.Text = "";
-			}
+			lbType.Text = Wrapper.FileDescriptor.Instance == 13 ? "Type: Walls" : Wrapper.FileDescriptor.Instance == 14 ? "Type: Floor Coverings" : "";
 
 			fillimup();
 			holde = false;

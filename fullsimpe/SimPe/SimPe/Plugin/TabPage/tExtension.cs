@@ -1198,14 +1198,7 @@ namespace SimPe.Plugin.TabPage
 					cb.Top = j * 7;
 					cb.Name = "cb." + j + "." + k + ".2";
 					int isSet = (part2 & 1);
-					if (isSet == 1)
-					{
-						cb.Checked = true;
-					}
-					else
-					{
-						cb.Checked = false;
-					}
+					cb.Checked = isSet == 1;
 					gb.Controls.Add(cb);
 					part2 = part2 >> 1;
 				}
@@ -1220,14 +1213,7 @@ namespace SimPe.Plugin.TabPage
 					cb.Top = j * 7;
 					cb.Name = "cb." + j + "." + k + ".1";
 					int isSet = (part1 & 1);
-					if (isSet == 1)
-					{
-						cb.Checked = true;
-					}
-					else
-					{
-						cb.Checked = false;
-					}
+					cb.Checked = isSet == 1;
 					gb.Controls.Add(cb);
 					part1 = part1 >> 1;
 				}

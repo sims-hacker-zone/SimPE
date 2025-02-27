@@ -73,14 +73,7 @@ namespace SimPe.Packages
 			get => hd.Showicon;
 			set
 			{
-				if (value > 0)
-				{
-					hd.Showicon = 1;
-				}
-				else
-				{
-					hd.Showicon = 0;
-				}
+				hd.Showicon = value > 0 ? (short)1 : (short)0;
 			}
 		}
 	}

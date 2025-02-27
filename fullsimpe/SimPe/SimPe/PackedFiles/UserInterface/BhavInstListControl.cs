@@ -610,37 +610,16 @@ namespace SimPe.PackedFiles.UserInterface
 					continue;
 				}
 
-				if (c.truerule)
-				{
-					pen = tpen;
-				}
-				else
-				{
-					pen = fpen;
-				}
+				pen = c.truerule ? tpen : fpen;
 
 				if (c.stop == csel)
 				{
-					if (c.truerule)
-					{
-						pen = tpeni;
-					}
-					else
-					{
-						pen = fpeni;
-					}
+					pen = c.truerule ? tpeni : fpeni;
 				}
 
 				if (c.start == csel)
 				{
-					if (c.truerule)
-					{
-						pen = tpeno;
-					}
-					else
-					{
-						pen = fpeno;
-					}
+					pen = c.truerule ? tpeno : fpeno;
 				}
 
 				int yPosStart =

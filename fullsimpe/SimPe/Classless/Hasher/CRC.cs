@@ -161,20 +161,13 @@ namespace Classless.Hasher
 			{
 				for (int i = ibStart; i < (cbSize - ibStart); i++)
 				{
-					if (parameters.ReflectInput)
-					{
-						checksum =
-							((checksum >> 8) & registerMask)
-							^ lookup[(checksum ^ array[i]) & 0xFF];
-					}
-					else
-					{
-						checksum =
-							(checksum << 8)
+					checksum = parameters.ReflectInput
+						? ((checksum >> 8) & registerMask)
+							^ lookup[(checksum ^ array[i]) & 0xFF]
+						: (checksum << 8)
 							^ lookup[
 								((checksum >> (parameters.Order - 8)) ^ array[i]) & 0xFF
 							];
-					}
 				}
 			}
 		}

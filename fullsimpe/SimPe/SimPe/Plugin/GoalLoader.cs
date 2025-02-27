@@ -171,15 +171,7 @@ namespace SimPe.Plugin
 			if (goalcache.ContainsKey(guid))
 			{
 				object o = goalcache[guid];
-				GoalInformation wf;
-				if (o.GetType() == typeof(GoalInformation))
-				{
-					wf = (GoalInformation)o;
-				}
-				else
-				{
-					wf = GoalCacheInformation.LoadGoal((GoalCacheItem)o);
-				}
+				GoalInformation wf = o.GetType() == typeof(GoalInformation) ? (GoalInformation)o : GoalCacheInformation.LoadGoal((GoalCacheItem)o);
 
 				return wf;
 			}

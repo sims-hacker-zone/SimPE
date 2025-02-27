@@ -683,14 +683,7 @@ namespace SimPe.Plugin
 						MipMap mm = ((ImageData)txtr.Blocks[0]).GetLargestTexture(
 							pb.Size
 						);
-						if (mm != null)
-						{
-							pb.Image = mm.Texture;
-						}
-						else
-						{
-							pb.Image = imge;
-						}
+						pb.Image = mm != null ? mm.Texture : imge;
 					}
 				}
 				else
@@ -718,16 +711,10 @@ namespace SimPe.Plugin
 		{
 			try
 			{
-				Packages.PackedFileDescriptor pfd = null;
-				if (lblist.SelectedIndex >= 0)
-				{
-					pfd = (Packages.PackedFileDescriptor)
-						lblist.Items[lblist.SelectedIndex];
-				}
-				else
-				{
-					pfd = new Packages.PackedFileDescriptor();
-				}
+				Packages.PackedFileDescriptor pfd = lblist.SelectedIndex >= 0
+					? (Packages.PackedFileDescriptor)
+						lblist.Items[lblist.SelectedIndex]
+					: new Packages.PackedFileDescriptor();
 
 				pfd.Group = Convert.ToUInt32(tbgroup.Text, 16);
 				pfd.Instance = Convert.ToUInt32(tbinstance.Text, 16);
@@ -902,14 +889,7 @@ namespace SimPe.Plugin
 
 		private void PackageItemDragEnter(object sender, DragEventArgs e)
 		{
-			if (e.Data.GetDataPresent(typeof(Packages.PackedFileDescriptor)))
-			{
-				e.Effect = DragDropEffects.Copy;
-			}
-			else
-			{
-				e.Effect = DragDropEffects.None;
-			}
+			e.Effect = e.Data.GetDataPresent(typeof(Packages.PackedFileDescriptor)) ? DragDropEffects.Copy : DragDropEffects.None;
 		}
 
 		private void PackageItemDrop(
@@ -933,14 +913,7 @@ namespace SimPe.Plugin
 
 		private void pb_SizeChanged(object sender, EventArgs e)
 		{
-			if (pb.Height < 421)
-			{
-				pb.Width = pb.Height;
-			}
-			else
-			{
-				pb.Width = 420;
-			}
+			pb.Width = pb.Height < 421 ? pb.Height : 420;
 		}
 
 		private void miAdd_Click(object sender, EventArgs e)

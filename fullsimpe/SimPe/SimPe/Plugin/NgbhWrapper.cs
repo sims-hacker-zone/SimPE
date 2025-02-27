@@ -304,14 +304,7 @@ namespace SimPe.Plugin
 
 			int textlen = reader.ReadInt32();
 			zonename = reader.ReadBytes(textlen);
-			if (version >= (uint)NgbhVersion.Nightlife)
-			{
-				zero = reader.ReadBytes(0x14);
-			}
-			else
-			{
-				zero = reader.ReadBytes(0x18);
-			}
+			zero = version >= (uint)NgbhVersion.Nightlife ? reader.ReadBytes(0x14) : reader.ReadBytes(0x18);
 
 			//read preitems
 			for (int i = 0; i < preitems.Length; i++)
@@ -365,14 +358,7 @@ namespace SimPe.Plugin
 			writer.Write(zonename.Length);
 			writer.Write(zonename);
 
-			if (version >= (uint)NgbhVersion.Nightlife)
-			{
-				zero = Helper.SetLength(zero, 0x14);
-			}
-			else
-			{
-				zero = Helper.SetLength(zero, 0x018);
-			}
+			zero = version >= (uint)NgbhVersion.Nightlife ? Helper.SetLength(zero, 0x14) : Helper.SetLength(zero, 0x018);
 
 			writer.Write(zero);
 

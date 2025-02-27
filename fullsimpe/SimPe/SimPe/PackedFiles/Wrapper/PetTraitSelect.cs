@@ -90,18 +90,7 @@ namespace SimPe.PackedFiles.Wrapper
 				return;
 			}
 
-			if (traits.GetTrait(high))
-			{
-				Level = Levels.High;
-			}
-			else if (traits.GetTrait(low))
-			{
-				Level = Levels.Low;
-			}
-			else
-			{
-				Level = Levels.Normal;
-			}
+			Level = traits.GetTrait(high) ? Levels.High : traits.GetTrait(low) ? Levels.Low : Levels.Normal;
 		}
 	}
 }

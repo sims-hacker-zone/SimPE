@@ -160,14 +160,7 @@ namespace SimPe.Plugin.UI
 				{
 					MenuItem item = miMoveTo.MenuItems[i];
 					HairColor key = (HairColor)values.GetValue(i);
-					if (key == CurrentKey || box.Contains(key))
-					{
-						item.Visible = false;
-					}
-					else
-					{
-						item.Visible = true;
-					}
+					item.Visible = key != CurrentKey && !box.Contains(key);
 				}
 			}
 		}
@@ -277,14 +270,7 @@ namespace SimPe.Plugin.UI
 							rcolInfo,
 							pbTexturePreview.Size
 						);
-						if (img != null)
-						{
-							pbTexturePreview.Image = img;
-						}
-						else
-						{
-							pbTexturePreview.Image = DefaultPreviewImage;
-						}
+						pbTexturePreview.Image = img != null ? img : DefaultPreviewImage;
 					}
 					miMatCopyTxtrRef.Enabled = true;
 					Cursor = Cursors.Default;
@@ -478,14 +464,7 @@ namespace SimPe.Plugin.UI
 				CheckState state = e.NewValue;
 				ListViewItem li = lv.Items[e.Index];
 				RecolorItem rcolItem = li.Tag as RecolorItem;
-				if (state == CheckState.Unchecked)
-				{
-					rcolItem.Enabled = false;
-				}
-				else
-				{
-					rcolItem.Enabled = true;
-				}
+				rcolItem.Enabled = state != CheckState.Unchecked;
 			}
 		}
 
@@ -884,14 +863,7 @@ namespace SimPe.Plugin.UI
 
 		void OnSelectMeshItem()
 		{
-			if (lvCresShpe.SelectedItems.Count == 0)
-			{
-				lvCresShpe.ContextMenu = null;
-			}
-			else
-			{
-				lvCresShpe.ContextMenu = cmMeshListActions;
-			}
+			lvCresShpe.ContextMenu = lvCresShpe.SelectedItems.Count == 0 ? null : cmMeshListActions;
 		}
 
 		void InitDisableControls()

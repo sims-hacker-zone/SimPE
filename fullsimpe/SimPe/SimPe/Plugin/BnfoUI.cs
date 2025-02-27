@@ -1230,14 +1230,7 @@ namespace SimPe.Plugin
 
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(BnfoUI));
-			if (resources.GetString("$this.HeaderText") == null)
-			{
-				HeaderText = "Business Info";
-			}
-			else
-			{
-				HeaderText = resources.GetString("$this.HeaderText");
-			}
+			HeaderText = resources.GetString("$this.HeaderText") == null ? "Business Info" : resources.GetString("$this.HeaderText");
 
 			intern = true;
 			// Clear Panel2 but it doesn't seem to be needed
@@ -1269,14 +1262,7 @@ namespace SimPe.Plugin
 					ltx.ProcessData(pfd, Bnfo.Package);
 					owner = (ushort)ltx.OwnerInstance;
 					ltname = ltx.LotName;
-					if (ltx.Type == Ltxt.LotType.Residential)
-					{
-						homeb = 0;
-					}
-					else
-					{
-						homeb = 1;
-					}
+					homeb = ltx.Type == Ltxt.LotType.Residential ? 0 : 1;
 
 					lblot.Text = ltname + " (" + ltx.Type.ToString() + " Lot)";
 				}
@@ -1452,19 +1438,13 @@ namespace SimPe.Plugin
 
 		private void AddImage(ExtSDesc sdesc)
 		{
-			Image img = null;
-			if (sdesc.HasImage)
-			{
-				img = Ambertation.Drawing.GraphicRoutines.KnockoutImage(
+			Image img = sdesc.HasImage
+				? Ambertation.Drawing.GraphicRoutines.KnockoutImage(
 					sdesc.Image,
 					new Point(0, 0),
 					Color.Magenta
-				);
-			}
-			else
-			{
-				img = GetImage.NoOne;
-			}
+				)
+				: GetImage.NoOne;
 
 			img = Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(
 				img,
@@ -1616,14 +1596,7 @@ namespace SimPe.Plugin
 					typeof(MetaData.LifeSections),
 					(ushort)sdsc.CharacterDescription.LifeSection
 				);
-				if (sdsc.CharacterDescription.Gender == MetaData.Gender.Female)
-				{
-					tbsgender.Text = "Female";
-				}
-				else
-				{
-					tbsgender.Text = "Male";
-				}
+				tbsgender.Text = sdsc.CharacterDescription.Gender == MetaData.Gender.Female ? "Female" : "Male";
 
 				if (lvEmployees.SelectedItems[0].Text.Contains(" : Owner"))
 				{
@@ -1637,26 +1610,15 @@ namespace SimPe.Plugin
 					btchngeOwn.Visible = false;
 					pbpay.Visible = pbox.Visible = lbpay.Visible = true;
 					btdelety.Visible = true;
-					if (sdsc.CharacterDescription.GhostFlag.IsGhost)
-					{
-						tbright.Text = sdsc.SimName + " has Died";
-					}
-					else if (sdsc.FamilyInstance == famly)
-					{
-						tbright.Text = "Family Member";
-					}
-					else if (
-						sdsc.CharacterDescription.CareerLevel == 2
-						&& sdsc.CharacterDescription.Career
-							== MetaData.Careers.OwnedBuss
-					)
-					{
-						tbright.Text = "Manager";
-					}
-					else
-					{
-						tbright.Text = "Employee";
-					}
+					tbright.Text = sdsc.CharacterDescription.GhostFlag.IsGhost
+						? sdsc.SimName + " has Died"
+						: sdsc.FamilyInstance == famly
+							? "Family Member"
+							: sdsc.CharacterDescription.CareerLevel == 2
+																		&& sdsc.CharacterDescription.Career
+																			== MetaData.Careers.OwnedBuss
+													? "Manager"
+													: "Employee";
 				}
 
 				tbwages.Text = sdsc.Business.Salary.ToString("C0");
@@ -1713,25 +1675,20 @@ namespace SimPe.Plugin
 			Interfaces.Files.IPackedFileDescriptor pfd;
 			try
 			{
-				if (sdsc.Package == Bnfo.Package)
-				{
-					pfd = sdsc.Package.NewDescriptor(
+				pfd = sdsc.Package == Bnfo.Package
+					? sdsc.Package.NewDescriptor(
 						0xAACE2EFB,
 						sdsc.FileDescriptor.SubType,
 						sdsc.FileDescriptor.Group,
 						sdsc.FileDescriptor.Instance
-					);
-				}
-				else
-				{
-					pfd = fixlowercase(sdsc.Package.FileName)
+					)
+					: fixlowercase(sdsc.Package.FileName)
 						.NewDescriptor(
 							0xAACE2EFB,
 							sdsc.FileDescriptor.SubType,
 							sdsc.FileDescriptor.Group,
 							sdsc.FileDescriptor.Instance
 						);
-				}
 
 				pfd = sdsc.Package.FindFile(pfd);
 				RemoteControl.OpenPackedFile(pfd, sdsc.Package);
@@ -2188,14 +2145,7 @@ namespace SimPe.Plugin
 						typeof(MetaData.LifeSections),
 						(ushort)s.CharacterDescription.LifeSection
 					);
-					if (s.CharacterDescription.Gender == MetaData.Gender.Female)
-					{
-						tbchgender.Text = "Female";
-					}
-					else
-					{
-						tbchgender.Text = "Male";
-					}
+					tbchgender.Text = s.CharacterDescription.Gender == MetaData.Gender.Female ? "Female" : "Male";
 				}
 				else
 				{
@@ -2368,14 +2318,7 @@ namespace SimPe.Plugin
 						typeof(MetaData.LifeSections),
 						(ushort)s.CharacterDescription.LifeSection
 					);
-					if (s.CharacterDescription.Gender == MetaData.Gender.Female)
-					{
-						tbOgender.Text = "Female";
-					}
-					else
-					{
-						tbOgender.Text = "Male";
-					}
+					tbOgender.Text = s.CharacterDescription.Gender == MetaData.Gender.Female ? "Female" : "Male";
 				}
 				else
 				{

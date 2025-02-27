@@ -206,14 +206,7 @@ namespace SimPe.Providers
 
 			if (firstcustum == null)
 			{
-				if (list.Count > 0)
-				{
-					firstcustum = (string)list[0];
-				}
-				else
-				{
-					firstcustum = Localization.GetString("Unknown");
-				}
+				firstcustum = list.Count > 0 ? (string)list[0] : Localization.GetString("Unknown");
 			}
 
 			list.Sort();

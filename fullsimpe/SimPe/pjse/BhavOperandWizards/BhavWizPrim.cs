@@ -2778,19 +2778,7 @@ namespace pjse.BhavNameWizards
 				cnc = ToShort(o[0], o[2]); // cancel
 			}
 
-			Scope scope;
-			if ((o[8] & 0x01) != 0)
-			{
-				scope = Scope.SemiGlobal;
-			}
-			else if ((o[8] & 0x40) != 0)
-			{
-				scope = Scope.Global;
-			}
-			else
-			{
-				scope = Scope.Private;
-			}
+			Scope scope = (o[8] & 0x01) != 0 ? Scope.SemiGlobal : (o[8] & 0x40) != 0 ? Scope.Global : Scope.Private;
 
 			string s = "";
 

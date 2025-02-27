@@ -365,14 +365,7 @@ namespace SimPe.Packages
 			this.title = title;
 			gameguid = GameGuid;
 
-			if (dependency == null)
-			{
-				Dependency = new S2CPDescriptorBase[0];
-			}
-			else
-			{
-				Dependency = dependency;
-			}
+			Dependency = dependency == null ? (new S2CPDescriptorBase[0]) : dependency;
 
 			if (p != null)
 			{

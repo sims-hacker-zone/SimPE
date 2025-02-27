@@ -392,27 +392,18 @@ namespace SimPe.Plugin
 			Image img = null;
 			if (sdesc.Unlinked != 0x00 || !sdesc.AvailableCharacterData || sdesc.IsNPC)
 			{
-				if (sdesc.HasImage)
-				{
-					img = ImageLoader.Preview(sdesc.Image, ilist.ImageSize);
-				}
-				else if (
-					sdesc.CharacterDescription.Gender
-					== Data.MetaData.Gender.Female
-				)
-				{
-					img = ImageLoader.Preview(
-						GetImage.SheOne,
-						ilist.ImageSize
-					);
-				}
-				else
-				{
-					img = ImageLoader.Preview(
-						GetImage.NoOne,
-						ilist.ImageSize
-					);
-				}
+				img = sdesc.HasImage
+					? ImageLoader.Preview(sdesc.Image, ilist.ImageSize)
+					: sdesc.CharacterDescription.Gender
+										== Data.MetaData.Gender.Female
+						? ImageLoader.Preview(
+											GetImage.SheOne,
+											ilist.ImageSize
+										)
+						: ImageLoader.Preview(
+											GetImage.NoOne,
+											ilist.ImageSize
+										);
 
 				Graphics g = Graphics.FromImage(img);
 				g.CompositingQuality = System
@@ -818,14 +809,7 @@ namespace SimPe.Plugin
 
 		private void checkBox1_CheckedChanged(object sender, EventArgs e)
 		{
-			if (cbdetail.Checked)
-			{
-				lv.View = View.Details;
-			}
-			else
-			{
-				lv.View = View.LargeIcon;
-			}
+			lv.View = cbdetail.Checked ? View.Details : View.LargeIcon;
 		}
 
 		internal ColumnSorter sorter;
@@ -837,14 +821,7 @@ namespace SimPe.Plugin
 		{
 			if (sorter.CurrentColumn == e.Column)
 			{
-				if (lv.Sorting == SortOrder.Ascending)
-				{
-					lv.Sorting = SortOrder.Descending;
-				}
-				else
-				{
-					lv.Sorting = SortOrder.Ascending;
-				}
+				lv.Sorting = lv.Sorting == SortOrder.Ascending ? SortOrder.Descending : SortOrder.Ascending;
 			}
 			else
 			{

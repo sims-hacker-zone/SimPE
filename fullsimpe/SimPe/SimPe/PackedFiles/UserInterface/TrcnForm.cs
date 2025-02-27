@@ -266,16 +266,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			lv.SubItems[3].Text = "0x" + Helper.HexString(currentItem.ConstId);
 			lv.SubItems[4].Text = "0x" + currentItem.Used.ToString("X");
-			if (wrapper.Version > 0x53)
-			{
-				lv.SubItems[5].Text =
-					"0x" + Helper.HexString((byte)currentItem.DefValue);
-			}
-			else
-			{
-				lv.SubItems[5].Text =
-					"0x" + Helper.HexString(currentItem.DefValue);
-			}
+			lv.SubItems[5].Text = wrapper.Version > 0x53 ? "0x" + Helper.HexString((byte)currentItem.DefValue) : "0x" + Helper.HexString(currentItem.DefValue);
 
 			lv.SubItems[6].Text = "0x" + Helper.HexString(currentItem.MinValue);
 			lv.SubItems[7].Text = "0x" + Helper.HexString(currentItem.MaxValue);

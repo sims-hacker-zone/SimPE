@@ -405,18 +405,12 @@ namespace SimPe.Plugin
 								pos = secname.IndexOf("-", pos + 1);
 							}
 
-							if (pos >= 0 && pos < secname.Length - 1)
-							{
-								secname =
-									secname.Substring(0, pos + 1)
+							secname = pos >= 0 && pos < secname.Length - 1
+								? secname.Substring(0, pos + 1)
 									+ mun
 									+ "-"
-									+ secname.Substring(pos + 1);
-							}
-							else
-							{
-								secname = "";
-							}
+									+ secname.Substring(pos + 1)
+								: "";
 						}
 						if (secname == "")
 						{
@@ -581,14 +575,7 @@ namespace SimPe.Plugin
 
 			if (rf.ok)
 			{
-				if (rf.cbv2.Checked)
-				{
-					ver = FixVersion.UniversityReady2;
-				}
-				else
-				{
-					ver = FixVersion.UniversityReady;
-				}
+				ver = rf.cbv2.Checked ? FixVersion.UniversityReady2 : FixVersion.UniversityReady;
 
 				return rf.GetReplacementMap();
 			}

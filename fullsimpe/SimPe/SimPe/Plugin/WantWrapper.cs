@@ -195,14 +195,7 @@ namespace SimPe.Plugin
 				Wants[i].Unserialize(reader);
 			}
 
-			if (Version >= 0x05)
-			{
-				maxfears = reader.ReadUInt32();
-			}
-			else
-			{
-				maxfears = 3;
-			}
+			maxfears = Version >= 0x05 ? reader.ReadUInt32() : 3;
 
 			Fears = new WantItem[reader.ReadUInt32()];
 			for (int i = 0; i < Fears.Length; i++)

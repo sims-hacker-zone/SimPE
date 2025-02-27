@@ -1042,14 +1042,7 @@ namespace SimPe.Plugin
 				llhash.Enabled = tbflname.Enabled;
 				llfix.Enabled = tbflname.Enabled;
 
-				if (rb.NameResource != null)
-				{
-					tbflname.Text = rb.NameResource.FileName;
-				}
-				else
-				{
-					tbflname.Text = "";
-				}
+				tbflname.Text = rb.NameResource != null ? rb.NameResource.FileName : "";
 
 				BuildChildTabControl(rb);
 			}
@@ -1328,26 +1321,12 @@ namespace SimPe.Plugin
 			QueryContinueDragEventArgs e
 		)
 		{
-			if (e.KeyState == 0)
-			{
-				e.Action = DragAction.Drop;
-			}
-			else
-			{
-				e.Action = DragAction.Continue;
-			}
+			e.Action = e.KeyState == 0 ? DragAction.Drop : DragAction.Continue;
 		}
 
 		private void PackageItemDragEnter(object sender, DragEventArgs e)
 		{
-			if (e.Data.GetDataPresent(typeof(Packages.PackedFileDescriptor)))
-			{
-				e.Effect = DragDropEffects.Copy;
-			}
-			else
-			{
-				e.Effect = DragDropEffects.None;
-			}
+			e.Effect = e.Data.GetDataPresent(typeof(Packages.PackedFileDescriptor)) ? DragDropEffects.Copy : DragDropEffects.None;
 		}
 
 		private void PackageItemDrop(
@@ -1598,14 +1577,7 @@ namespace SimPe.Plugin
 					items = FileTableBase.FileIndex.FindFile(npfd, null);
 				}
 
-				if (items.Length > 0)
-				{
-					tbfile.Text = items[0].Package.FileName;
-				}
-				else
-				{
-					tbfile.Text = "[unreferenced]";
-				}
+				tbfile.Text = items.Length > 0 ? items[0].Package.FileName : "[unreferenced]";
 			}
 		}
 

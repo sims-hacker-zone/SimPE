@@ -48,21 +48,7 @@ namespace SimPe.Plugin
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			Idno idno = Idno.FromPackage(package);
-			if (idno == null)
-			{
-				IsOK = true;
-			}
-			else
-			{
-				if (idno.Type == NeighborhoodType.Normal)
-				{
-					IsOK = true;
-				}
-				else
-				{
-					IsOK = false;
-				}
-			}
+			IsOK = idno == null ? true : idno.Type == NeighborhoodType.Normal;
 
 			reader.BaseStream.Seek(0xc, System.IO.SeekOrigin.Begin);
 			Sciname = reader.ReadUInt16();

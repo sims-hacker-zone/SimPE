@@ -155,23 +155,11 @@ namespace SimPe.Plugin
 
 				fs.Seek(0x54, System.IO.SeekOrigin.Begin);
 				string sig = Helper.ToString(reader.ReadBytes(0x04));
-				TxtrFormats format;
-				if (sig == "DXT1")
-				{
-					format = TxtrFormats.DXT1Format;
-				}
-				else if (sig == "DXT3")
-				{
-					format = TxtrFormats.DXT3Format;
-				}
-				else if (sig == "DXT5")
-				{
-					format = TxtrFormats.DXT5Format;
-				}
-				else
-				{
-					throw new Exception("Unknown DXT Format " + sig);
-				}
+				TxtrFormats format = sig == "DXT1"
+					? TxtrFormats.DXT1Format
+					: sig == "DXT3"
+						? TxtrFormats.DXT3Format
+						: sig == "DXT5" ? TxtrFormats.DXT5Format : throw new Exception("Unknown DXT Format " + sig);
 
 				fs.Seek(0x80, System.IO.SeekOrigin.Begin);
 				int blocksize = 0x10;
@@ -248,22 +236,9 @@ namespace SimPe.Plugin
 			wd = Math.Max(1, wd);
 			hg = Math.Max(1, hg);
 
-			if (format == TxtrFormats.DXT1Format)
-			{
-				datasize = (wd * hg) / 2;
-			}
-			else if (format == TxtrFormats.Raw24Bit)
-			{
-				datasize = (wd * hg) * 3;
-			}
-			else if (format == TxtrFormats.Raw32Bit)
-			{
-				datasize = (wd * hg) * 4;
-			}
-			else
-			{
-				datasize = (wd * hg);
-			}
+			datasize = format == TxtrFormats.DXT1Format
+				? (wd * hg) / 2
+				: format == TxtrFormats.Raw24Bit ? (wd * hg) * 3 : format == TxtrFormats.Raw32Bit ? (wd * hg) * 4 : wd * hg;
 
 			if (
 				(format == TxtrFormats.DXT1Format)
@@ -925,14 +900,7 @@ if (test.B>table.B) table = Color.FromArgb(table.A, table.R, table.G, test.B);*/
 						{
 							for (int bx = 0; bx < 4; ++bx)
 							{
-								if ((x + bx < bmp.Width) && (y + by < bmp.Height))
-								{
-									alphas[bx] = bmp.GetPixel(x + bx, y + by);
-								}
-								else
-								{
-									alphas[bx] = Color.Black;
-								}
+								alphas[bx] = (x + bx < bmp.Width) && (y + by < bmp.Height) ? bmp.GetPixel(x + bx, y + by) : Color.Black;
 							}
 
 							DXT3WriteTransparencyBlock(writer, alphas);
@@ -945,14 +913,7 @@ if (test.B>table.B) table = Color.FromArgb(table.A, table.R, table.G, test.B);*/
 						{
 							for (int bx = 0; bx < 4; ++bx)
 							{
-								if ((x + bx < bmp.Width) && (y + by < bmp.Height))
-								{
-									alphas[by * 4 + bx] = bmp.GetPixel(x + bx, y + by);
-								}
-								else
-								{
-									alphas[by * 4 + bx] = Color.Black;
-								}
+								alphas[by * 4 + bx] = (x + bx < bmp.Width) && (y + by < bmp.Height) ? bmp.GetPixel(x + bx, y + by) : Color.Black;
 							}
 						}
 						DXT5WriteTransparencyBlock(writer, alphas);
@@ -965,14 +926,7 @@ if (test.B>table.B) table = Color.FromArgb(table.A, table.R, table.G, test.B);*/
 						{
 							try
 							{
-								if ((x + bx < bmp.Width) && (y + by < bmp.Height))
-								{
-									colors[bx, by] = bmp.GetPixel(x + bx, y + by);
-								}
-								else
-								{
-									colors[bx, by] = Color.Black;
-								}
+								colors[bx, by] = (x + bx < bmp.Width) && (y + by < bmp.Height) ? bmp.GetPixel(x + bx, y + by) : Color.Black;
 							}
 							catch (Exception ex)
 							{

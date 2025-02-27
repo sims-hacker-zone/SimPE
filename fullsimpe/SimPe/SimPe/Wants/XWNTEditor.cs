@@ -434,14 +434,7 @@ namespace SimPe.Wants
 									? 16
 									: 10
 							);
-							if (XWNTItem.IsUint32Long(xi.Key))
-							{
-								xi.Value = "0x" + u.ToString("x").PadLeft(8, '0');
-							}
-							else
-							{
-								xi.Value = u.ToString();
-							}
+							xi.Value = XWNTItem.IsUint32Long(xi.Key) ? "0x" + u.ToString("x").PadLeft(8, '0') : u.ToString();
 						}
 						catch
 						{

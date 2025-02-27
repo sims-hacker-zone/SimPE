@@ -51,14 +51,7 @@ namespace SimPe.Wants
 
 		void setVersion(string value)
 		{
-			if (IsValidVersion(value))
-			{
-				version = value;
-			}
-			else
-			{
-				throw new ArgumentOutOfRangeException("version");
-			}
+			version = IsValidVersion(value) ? value : throw new ArgumentOutOfRangeException("version");
 		}
 		#endregion
 
@@ -381,14 +374,7 @@ namespace SimPe.Wants
 
 		void setKey(string value)
 		{
-			if (value.StartsWith("<!") || IsValidKey(value))
-			{
-				key = value;
-			}
-			else
-			{
-				throw new ArgumentOutOfRangeException("key");
-			}
+			key = value.StartsWith("<!") || IsValidKey(value) ? value : throw new ArgumentOutOfRangeException("key");
 		}
 
 		public string Stype
@@ -406,14 +392,7 @@ namespace SimPe.Wants
 
 		void setType(string value)
 		{
-			if (IsValidType(value))
-			{
-				type = value;
-			}
-			else
-			{
-				throw new ArgumentOutOfRangeException("type");
-			}
+			type = IsValidType(value) ? value : throw new ArgumentOutOfRangeException("type");
 		}
 
 		public string Utype
@@ -431,14 +410,7 @@ namespace SimPe.Wants
 
 		void setUtype(string value)
 		{
-			if (IsValidUtype(type, value))
-			{
-				utype = value;
-			}
-			else
-			{
-				throw new ArgumentOutOfRangeException("utype");
-			}
+			utype = IsValidUtype(type, value) ? value : throw new ArgumentOutOfRangeException("utype");
 		}
 
 		public string Value

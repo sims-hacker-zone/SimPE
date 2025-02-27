@@ -97,122 +97,108 @@ namespace Ambertation
 			if (s.IndexOf(";") == -1)
 			{
 				string[] parts = s.Split(",".ToCharArray(), 4);
-				if (parts.Length < 3)
-				{
-					o = Color.Black;
-				}
-				else if (parts.Length == 3)
-				{
-					o = Color.FromArgb(
-						(int)(
-							Convert.ToSingle(
-								parts[0],
-								CultureInfo.InvariantCulture
-							) * 0xff
-						),
-						(int)(
-							Convert.ToSingle(
-								parts[1],
-								CultureInfo.InvariantCulture
-							) * 0xff
-						),
-						(int)(
-							Convert.ToSingle(
-								parts[2],
-								CultureInfo.InvariantCulture
-							) * 0xff
-						)
-					);
-				}
-				else
-				{
-					o = Color.FromArgb(
-						(int)(
-							Convert.ToSingle(
-								parts[0],
-								CultureInfo.InvariantCulture
-							) * 0xff
-						),
-						(int)(
-							Convert.ToSingle(
-								parts[1],
-								CultureInfo.InvariantCulture
-							) * 0xff
-						),
-						(int)(
-							Convert.ToSingle(
-								parts[2],
-								CultureInfo.InvariantCulture
-							) * 0xff
-						),
-						(int)(
-							Convert.ToSingle(
-								parts[3],
-								CultureInfo.InvariantCulture
-							) * 0xff
-						)
-					);
-				}
+				o = parts.Length < 3
+					? Color.Black
+					: parts.Length == 3
+						? Color.FromArgb(
+											(int)(
+												Convert.ToSingle(
+													parts[0],
+													CultureInfo.InvariantCulture
+												) * 0xff
+											),
+											(int)(
+												Convert.ToSingle(
+													parts[1],
+													CultureInfo.InvariantCulture
+												) * 0xff
+											),
+											(int)(
+												Convert.ToSingle(
+													parts[2],
+													CultureInfo.InvariantCulture
+												) * 0xff
+											)
+										)
+						: Color.FromArgb(
+											(int)(
+												Convert.ToSingle(
+													parts[0],
+													CultureInfo.InvariantCulture
+												) * 0xff
+											),
+											(int)(
+												Convert.ToSingle(
+													parts[1],
+													CultureInfo.InvariantCulture
+												) * 0xff
+											),
+											(int)(
+												Convert.ToSingle(
+													parts[2],
+													CultureInfo.InvariantCulture
+												) * 0xff
+											),
+											(int)(
+												Convert.ToSingle(
+													parts[3],
+													CultureInfo.InvariantCulture
+												) * 0xff
+											)
+										);
 			}
 			else
 			{
 				string[] parts = s.Split(";".ToCharArray(), 4);
-				if (parts.Length < 3)
-				{
-					o = Color.Black;
-				}
-				else if (parts.Length == 3)
-				{
-					o = Color.FromArgb(
+				o = parts.Length < 3
+					? Color.Black
+					: parts.Length == 3
+						? Color.FromArgb(
 
-							Convert.ToInt16(
-								parts[0],
-								CultureInfo.InvariantCulture
-							)
-						,
+												Convert.ToInt16(
+													parts[0],
+													CultureInfo.InvariantCulture
+												)
+											,
 
-							Convert.ToInt16(
-								parts[1],
-								CultureInfo.InvariantCulture
-							)
-						,
+												Convert.ToInt16(
+													parts[1],
+													CultureInfo.InvariantCulture
+												)
+											,
 
-							Convert.ToInt16(
-								parts[2],
-								CultureInfo.InvariantCulture
-							)
+												Convert.ToInt16(
+													parts[2],
+													CultureInfo.InvariantCulture
+												)
 
-					);
-				}
-				else
-				{
-					o = Color.FromArgb(
+										)
+						: Color.FromArgb(
 
-							Convert.ToInt16(
-								parts[0],
-								CultureInfo.InvariantCulture
-							)
-						,
+												Convert.ToInt16(
+													parts[0],
+													CultureInfo.InvariantCulture
+												)
+											,
 
-							Convert.ToInt16(
-								parts[1],
-								CultureInfo.InvariantCulture
-							)
-						,
+												Convert.ToInt16(
+													parts[1],
+													CultureInfo.InvariantCulture
+												)
+											,
 
-							Convert.ToInt16(
-								parts[2],
-								CultureInfo.InvariantCulture
-							)
-						,
+												Convert.ToInt16(
+													parts[2],
+													CultureInfo.InvariantCulture
+												)
+											,
 
-							Convert.ToInt16(
-								parts[3],
-								CultureInfo.InvariantCulture
-							)
+												Convert.ToInt16(
+													parts[3],
+													CultureInfo.InvariantCulture
+												)
 
-					);
-				}
+										);
 			}
 
 			return o;
@@ -504,38 +490,19 @@ namespace Ambertation
 		{
 			Type = t; //o.GetType();
 
-			if (Type == typeof(byte))
-			{
-				LongValue = System.Convert.ToByte(o);
-			}
-			else if (Type == typeof(sbyte))
-			{
-				LongValue = System.Convert.ToSByte(o);
-			}
-			else if (Type == typeof(short))
-			{
-				LongValue = System.Convert.ToInt16(o);
-			}
-			else if (Type == typeof(ushort))
-			{
-				LongValue = System.Convert.ToUInt16(o);
-			}
-			else if (Type == typeof(int))
-			{
-				LongValue = System.Convert.ToInt32(o);
-			}
-			else if (Type == typeof(uint))
-			{
-				LongValue = System.Convert.ToUInt32(o);
-			}
-			else if (Type == typeof(long))
-			{
-				LongValue = System.Convert.ToInt64(o);
-			}
-			else
-			{
-				LongValue = (long)System.Convert.ToUInt64(o);
-			}
+			LongValue = Type == typeof(byte)
+				? System.Convert.ToByte(o)
+				: Type == typeof(sbyte)
+					? System.Convert.ToSByte(o)
+					: Type == typeof(short)
+									? System.Convert.ToInt16(o)
+									: Type == typeof(ushort)
+													? System.Convert.ToUInt16(o)
+													: Type == typeof(int)
+																	? System.Convert.ToInt32(o)
+																	: Type == typeof(uint)
+																					? System.Convert.ToUInt32(o)
+																					: Type == typeof(long) ? System.Convert.ToInt64(o) : (long)System.Convert.ToUInt64(o);
 
 			Type = t;
 		}

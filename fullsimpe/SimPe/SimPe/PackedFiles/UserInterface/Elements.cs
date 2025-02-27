@@ -1145,14 +1145,7 @@ namespace SimPe.PackedFiles.UserInterface
 						sdesc.SynchronizeUserData();
 					}
 					fami.Members = members;
-					if (tblotinst.Text != "Sim Bin")
-					{
-						fami.LotInstance = Convert.ToUInt32(tblotinst.Text, 16);
-					}
-					else
-					{
-						fami.LotInstance = 0;
-					}
+					fami.LotInstance = tblotinst.Text != "Sim Bin" ? Convert.ToUInt32(tblotinst.Text, 16) : 0;
 					//name was changed
 					if (tbname.Text != fami.Name)
 					{

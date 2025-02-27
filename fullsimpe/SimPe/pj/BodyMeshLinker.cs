@@ -167,14 +167,7 @@ namespace pj
 		private bool IsReallyEnabled(IPackedFileDescriptor pfd, IPackageFile package)
 		{
 			currentPackage = package;
-			if (pfd != null && pfd.Type == SimPe.Data.MetaData.REF_FILE)
-			{
-				refFilePFD = pfd;
-			}
-			else
-			{
-				refFilePFD = null;
-			}
+			refFilePFD = pfd != null && pfd.Type == SimPe.Data.MetaData.REF_FILE ? pfd : null;
 
 			return package != null && refFilePFD != null;
 		}

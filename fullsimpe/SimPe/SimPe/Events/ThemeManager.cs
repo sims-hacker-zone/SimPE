@@ -171,69 +171,37 @@ namespace SimPe
 						.ToolStripRenderMode
 						.Professional;
 				}
-				else if (ctheme == GuiTheme.Glossy)
-				{
-					sdm.Renderer = glossy;
-				}
 				else
 				{
-					sdm.Renderer = whidbey;
+					sdm.Renderer = ctheme == GuiTheme.Glossy ? glossy : whidbey;
 				}
 			}
 			else
 			{
 				if (sdm.Renderer is MediaPlayerRenderer)
 				{
-					if (ctheme == GuiTheme.Everett)
-					{
-						sdm.Renderer = mediaplayerwhidbey;
-					}
-					else if (ctheme == GuiTheme.Office2003)
-					{
-						sdm.Renderer = mediaplayer;
-					}
-					else if (ctheme == GuiTheme.Glossy)
-					{
-						sdm.Renderer = glossy;
-					}
-					else
-					{
-						sdm.Renderer = mediaplayerwhidbey;
-					}
+					sdm.Renderer = ctheme == GuiTheme.Everett
+						? mediaplayerwhidbey
+						: ctheme == GuiTheme.Office2003
+							? mediaplayer
+							: ctheme == GuiTheme.Glossy ? glossy : (System.Windows.Forms.ToolStripRenderer)mediaplayerwhidbey;
 				}
 				else if (ctheme == GuiTheme.Everett)
 				{
 					sdm.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
 				}
-				else if (ctheme == GuiTheme.Office2003)
-				{
-					sdm.Renderer = square;
-				}
-				else if (ctheme == GuiTheme.Glossy)
-				{
-					sdm.Renderer = glossysquare;
-				}
 				else
 				{
-					sdm.Renderer = whidbeysquare;
+					sdm.Renderer = ctheme == GuiTheme.Office2003 ? square : ctheme == GuiTheme.Glossy ? glossysquare : whidbeysquare;
 				}
 			}
 		}
 
 		void SetTheme(Ambertation.Windows.Forms.DockManager mng)
 		{
-			if (ctheme == GuiTheme.Everett)
-			{
-				mng.Renderer = new Ambertation.Windows.Forms.ClassicRenderer();
-			}
-			else if (ctheme == GuiTheme.Glossy)
-			{
-				mng.Renderer = new Ambertation.Windows.Forms.GlossyRenderer();
-			}
-			else
-			{
-				mng.Renderer = new Ambertation.Windows.Forms.WhidbeyRenderer();
-			}
+			mng.Renderer = ctheme == GuiTheme.Everett
+				? new Ambertation.Windows.Forms.ClassicRenderer()
+				: ctheme == GuiTheme.Glossy ? new Ambertation.Windows.Forms.GlossyRenderer() : (Ambertation.Windows.Forms.BaseRenderer)new Ambertation.Windows.Forms.WhidbeyRenderer();
 		}
 
 		void SetTheme(System.Windows.Forms.ToolStripContainer sdm)
@@ -260,51 +228,28 @@ namespace SimPe
 						.ToolStripRenderMode
 						.Professional;
 				}
-				else if (ctheme == GuiTheme.Glossy)
-				{
-					sdm.Renderer = glossy;
-				}
 				else
 				{
-					sdm.Renderer = whidbey;
+					sdm.Renderer = ctheme == GuiTheme.Glossy ? glossy : whidbey;
 				}
 			}
 			else
 			{
 				if (sdm.Renderer is MediaPlayerRenderer)
 				{
-					if (ctheme == GuiTheme.Everett)
-					{
-						sdm.Renderer = mediaplayerwhidbey;
-					}
-					else if (ctheme == GuiTheme.Office2003)
-					{
-						sdm.Renderer = mediaplayer;
-					}
-					else if (ctheme == GuiTheme.Glossy)
-					{
-						sdm.Renderer = glossy;
-					}
-					else
-					{
-						sdm.Renderer = mediaplayerwhidbey;
-					}
+					sdm.Renderer = ctheme == GuiTheme.Everett
+						? mediaplayerwhidbey
+						: ctheme == GuiTheme.Office2003
+							? mediaplayer
+							: ctheme == GuiTheme.Glossy ? glossy : (System.Windows.Forms.ToolStripRenderer)mediaplayerwhidbey;
 				}
 				else if (ctheme == GuiTheme.Everett)
 				{
 					sdm.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
 				}
-				else if (ctheme == GuiTheme.Office2003)
-				{
-					sdm.Renderer = square;
-				}
-				else if (ctheme == GuiTheme.Glossy)
-				{
-					sdm.Renderer = glossysquare;
-				}
 				else
 				{
-					sdm.Renderer = whidbeysquare;
+					sdm.Renderer = ctheme == GuiTheme.Office2003 ? square : ctheme == GuiTheme.Glossy ? glossysquare : whidbeysquare;
 				}
 			}
 		}
@@ -319,13 +264,9 @@ namespace SimPe
 			{
 				sdm.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
 			}
-			else if (ctheme == GuiTheme.Glossy)
-			{
-				sdm.Renderer = glossy;
-			}
 			else
 			{
-				sdm.Renderer = whidbey;
+				sdm.Renderer = ctheme == GuiTheme.Glossy ? glossy : whidbey;
 			}
 		}
 
@@ -339,30 +280,17 @@ namespace SimPe
 			{
 				sdm.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
 			}
-			else if (ctheme == GuiTheme.Glossy)
-			{
-				sdm.Renderer = glossy;
-			}
 			else
 			{
-				sdm.Renderer = whidbey;
+				sdm.Renderer = ctheme == GuiTheme.Glossy ? glossy : whidbey;
 			}
 		}
 
 		void SetTheme(TD.SandDock.SandDockManager sdm)
 		{
-			if (ctheme == GuiTheme.Everett)
-			{
-				sdm.Renderer = new TD.SandDock.Rendering.EverettRenderer();
-			}
-			else if (ctheme == GuiTheme.Office2003)
-			{
-				sdm.Renderer = new TD.SandDock.Rendering.Office2003Renderer();
-			}
-			else
-			{
-				sdm.Renderer = new TD.SandDock.Rendering.WhidbeyRenderer();
-			}
+			sdm.Renderer = ctheme == GuiTheme.Everett
+				? new TD.SandDock.Rendering.EverettRenderer()
+				: ctheme == GuiTheme.Office2003 ? new TD.SandDock.Rendering.Office2003Renderer() : (TD.SandDock.Rendering.RendererBase)new TD.SandDock.Rendering.WhidbeyRenderer();
 		}
 
 		void SetTheme(Ambertation.Windows.Forms.XPTaskBoxSimple sdm)

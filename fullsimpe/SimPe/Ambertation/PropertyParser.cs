@@ -75,62 +75,28 @@ namespace Ambertation
 
 			if (typename == "int")
 			{
-				if (value == null)
-				{
-					o = 0;
-				}
-				else
-				{
-					o = Convert.ToInt32(value);
-				}
+				o = value == null ? 0 : (object)Convert.ToInt32(value);
 			}
 			else if (typename == "short")
 			{
-				if (value == null)
-				{
-					o = 0;
-				}
-				else
-				{
-					o = Convert.ToInt16(value);
-				}
+				o = value == null ? 0 : (object)Convert.ToInt16(value);
 			}
 			else if (typename == "bool")
 			{
-				if (value == null)
-				{
-					o = false;
-				}
-				else
-				{
-					o = (Convert.ToInt16(value) != 0);
-				}
+				o = value == null ? false : (object)(Convert.ToInt16(value) != 0);
 			}
 			else if (typename == "color")
 			{
-				if (value == null)
-				{
-					o = FloatColor.FromColor(System.Drawing.Color.Black);
-				}
-				else
-				{
-					o = FloatColor.FromString(value);
-				}
+				o = value == null ? FloatColor.FromColor(System.Drawing.Color.Black) : (object)FloatColor.FromString(value);
 			}
 			else if ((typename == "float") || (typename == "transparence"))
 			{
-				if (value == null)
-				{
-					o = 1.0;
-				}
-				else
-				{
-					o =
-						Convert.ToDouble(
+				o = value == null
+					? 1.0
+					: (object)Convert.ToDouble(
 							value,
 							System.Globalization.CultureInfo.InvariantCulture
 						);
-				}
 			}
 			else if (
 				(typename == "string")
@@ -140,14 +106,7 @@ namespace Ambertation
 				|| (typename == "vector3f")
 			)
 			{
-				if (value == null)
-				{
-					o = "";
-				}
-				else
-				{
-					o = value;
-				}
+				o = value == null ? "" : (object)value;
 			}
 			else if (typename.StartsWith("enum:"))
 			{
@@ -157,14 +116,7 @@ namespace Ambertation
 				if (enums.ContainsKey(typename))
 				{
 					Type t = (Type)enums[typename];
-					if (value == null)
-					{
-						o = Enum.ToObject(t, t.GetFields()[0].GetValue(null));
-					}
-					else
-					{
-						o = Enum.ToObject(t, Convert.ToInt32(value));
-					}
+					o = value == null ? Enum.ToObject(t, t.GetFields()[0].GetValue(null)) : Enum.ToObject(t, Convert.ToInt32(value));
 				}
 				else
 				{
@@ -181,17 +133,12 @@ namespace Ambertation
 					{
 						if (t.IsEnum)
 						{
-							if (value == null)
-							{
-								o = Enum.ToObject(t, Convert.ToInt32(0));
-							}
-							else
-							{
-								o = Enum.ToObject(
+							o = value == null
+								? Enum.ToObject(t, Convert.ToInt32(0))
+								: Enum.ToObject(
 									t,
 									Convert.ToInt32(value)
 								);
-							}
 						}
 					}
 				}

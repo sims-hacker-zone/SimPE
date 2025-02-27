@@ -1215,24 +1215,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			if (wizard1.CurrentStepNumber == wizardStepPanel2.Index && tv.Visible)
 			{
-				if (tv.SelectedNode == null)
-				{
-					wizard1.NextEnabled = false;
-				}
-				else
-				{
-					wizard1.NextEnabled = tv.SelectedNode.Tag != null;
-				}
+				wizard1.NextEnabled = tv.SelectedNode == null ? false : tv.SelectedNode.Tag != null;
 			}
 
-			if (wizard1.NextEnabled)
-			{
-				lastselected = (Data.Alias)tv.SelectedNode.Tag;
-			}
-			else
-			{
-				lastselected = null;
-			}
+			lastselected = wizard1.NextEnabled ? (Data.Alias)tv.SelectedNode.Tag : null;
 
 			UpdateObjectPreview(op1);
 		}
@@ -1244,14 +1230,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				wizard1.NextEnabled = (lb.SelectedIndex >= 0);
 			}
 
-			if (wizard1.NextEnabled)
-			{
-				lastselected = (Data.Alias)lb.SelectedItem;
-			}
-			else
-			{
-				lastselected = null;
-			}
+			lastselected = wizard1.NextEnabled ? (Data.Alias)lb.SelectedItem : null;
 
 			UpdateObjectPreview(op1);
 		}
@@ -1292,25 +1271,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		)
 		{
 			package = null;
-			if (tv.Visible)
-			{
-				if (tv.SelectedNode == null)
-				{
-					e.EnableNext = false;
-				}
-				else if (tv.SelectedNode.Tag == null)
-				{
-					e.EnableNext = false;
-				}
-				else
-				{
-					e.EnableNext = true;
-				}
-			}
-			else
-			{
-				e.EnableNext = lb.SelectedIndex >= 0;
-			}
+			e.EnableNext = tv.Visible ? tv.SelectedNode == null ? false : tv.SelectedNode.Tag != null : lb.SelectedIndex >= 0;
 
 			tv.SelectedNode = null;
 			lb.SelectedIndex = -1;

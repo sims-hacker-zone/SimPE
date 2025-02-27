@@ -820,14 +820,7 @@ namespace SimPe.Plugin
 		void SelectSubject(NgbhItem item)
 		{
 			cbSubject.SelectedSimId = item.SubjectGuid;
-			if (item.MemoryType == SimMemoryType.Object)
-			{
-				cbSubjectObj.SelectedGuid = item.ReferencedObjectGuid;
-			}
-			else
-			{
-				cbSubjectObj.SelectedGuid = item.SubjectGuid;
-			}
+			cbSubjectObj.SelectedGuid = item.MemoryType == SimMemoryType.Object ? item.ReferencedObjectGuid : item.SubjectGuid;
 		}
 
 		private void nilv_SelectedIndexChanged(object sender, EventArgs e)
@@ -835,14 +828,7 @@ namespace SimPe.Plugin
 			if (nilv != null)
 			{
 				NgbhItemsListViewItem lvi = nilv.SelectedItem;
-				if (lvi != null && !nilv.SelectedMultiple)
-				{
-					Item = lvi.Item;
-				}
-				else
-				{
-					Item = null;
-				}
+				Item = lvi != null && !nilv.SelectedMultiple ? lvi.Item : null;
 			}
 			else
 			{
@@ -862,14 +848,7 @@ namespace SimPe.Plugin
 				];
 				for (int i = 0; i < ndata.Length; i++)
 				{
-					if (i < item.Data.Length)
-					{
-						ndata[i] = item.Data[i];
-					}
-					else
-					{
-						ndata[i] = 0;
-					}
+					ndata[i] = i < item.Data.Length ? item.Data[i] : (ushort)0;
 				}
 
 				item.Data = ndata;

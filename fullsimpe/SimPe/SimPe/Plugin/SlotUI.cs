@@ -448,18 +448,7 @@ namespace SimPe.Plugin
 
 		private void tabPage2_VisibleChanged(object sender, System.EventArgs e)
 		{
-			if (tabControl1.SelectedPage == tabPage1)
-			{
-				memprop.NgbhItemsListView = lv;
-			}
-			else if (tabControl1.SelectedPage == tabPage3)
-			{
-				memprop.NgbhItemsListView = lvfam;
-			}
-			else
-			{
-				memprop.NgbhItemsListView = lvint;
-			}
+			memprop.NgbhItemsListView = tabControl1.SelectedPage == tabPage1 ? lv : tabControl1.SelectedPage == tabPage3 ? lvfam : lvint;
 		}
 	}
 }

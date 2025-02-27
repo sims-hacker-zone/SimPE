@@ -454,15 +454,7 @@ namespace SimPe
 				ParseValues(subnode, subkey);
 			}
 
-			ArrayList list = null;
-			if (!caseinvariant)
-			{
-				list = new ArrayList();
-			}
-			else
-			{
-				list = new Ambertation.CaseInvariantArrayList();
-			}
+			ArrayList list = !caseinvariant ? new ArrayList() : new Ambertation.CaseInvariantArrayList();
 
 			foreach (string s in names)
 			{
@@ -580,14 +572,7 @@ namespace SimPe
 			try
 			{
 				string s = node.InnerText.Trim().ToLower();
-				if (s == "false" || s == "no" || s == "off" || s == "0")
-				{
-					val = false;
-				}
-				else
-				{
-					val = true;
-				}
+				val = s != "false" && s != "no" && s != "off" && s != "0";
 			}
 			catch { }
 			key.SetValue(node.Attributes["name"].Value, val);
@@ -728,14 +713,7 @@ namespace SimPe
 			else if (o is Boolean)
 			{
 				tag = "bool";
-				if ((bool)o)
-				{
-					val = "true";
-				}
-				else
-				{
-					val = "false";
-				}
+				val = (bool)o ? "true" : "false";
 			}
 			else if (o is float)
 			{

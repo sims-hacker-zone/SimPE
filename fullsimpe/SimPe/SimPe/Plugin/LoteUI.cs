@@ -50,24 +50,9 @@ namespace SimPe.Plugin
 			base.RefreshGUI();
 			reddy = false;
 
-			if (cbtype.Items.Contains(Wrapper.Type))
-			{
-				cbtype.SelectedIndex = cbtype.Items.IndexOf(Wrapper.Type);
-			}
-			else
-			{
-				cbtype.SelectedIndex = 0;
-			}
+			cbtype.SelectedIndex = cbtype.Items.Contains(Wrapper.Type) ? cbtype.Items.IndexOf(Wrapper.Type) : 0;
 
-			string Descrpty;
-			if (Wrapper.LotDesc.Length < 2)
-			{
-				Descrpty = "  -None Included-";
-			}
-			else
-			{
-				Descrpty = Wrapper.LotDesc;
-			}
+			string Descrpty = Wrapper.LotDesc.Length < 2 ? "  -None Included-" : Wrapper.LotDesc;
 
 			string classy = "";
 			string flagery = Convert.ToString(Wrapper.Unknown0);
@@ -188,14 +173,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			if (Enum.IsDefined(typeof(Ltxt.LotType), cbtype.SelectedItem))
-			{
-				Wrapper.Type = (Ltxt.LotType)cbtype.SelectedItem;
-			}
-			else
-			{
-				Wrapper.Type = Ltxt.LotType.Unknown;
-			}
+			Wrapper.Type = Enum.IsDefined(typeof(Ltxt.LotType), cbtype.SelectedItem) ? (Ltxt.LotType)cbtype.SelectedItem : Ltxt.LotType.Unknown;
 
 			RefreshGUI();
 		}

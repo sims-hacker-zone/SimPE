@@ -972,19 +972,17 @@ namespace SimPe.Plugin
 					lbdir.Text = fbd.SelectedPath;
 				}
 			}
-			else if (comboBox1.SelectedIndex == 1)
-			{
-				lbdir.Text = System.IO.Path.Combine(
-					PathProvider.SimSavegameFolder,
-					"Teleport"
-				);
-			}
 			else
 			{
-				lbdir.Text = System.IO.Path.Combine(
-					PathProvider.SimSavegameFolder,
-					"Downloads"
-				);
+				lbdir.Text = comboBox1.SelectedIndex == 1
+					? System.IO.Path.Combine(
+									PathProvider.SimSavegameFolder,
+									"Teleport"
+								)
+					: System.IO.Path.Combine(
+									PathProvider.SimSavegameFolder,
+									"Downloads"
+								);
 			}
 		}
 
@@ -1248,14 +1246,7 @@ namespace SimPe.Plugin
 							{
 								if (guids.Contains(g))
 								{
-									if (state == "OK")
-									{
-										state = "Duplicate GUID";
-									}
-									else
-									{
-										state = "Duplicate GUID, " + state;
-									}
+									state = state == "OK" ? "Duplicate GUID" : "Duplicate GUID, " + state;
 								}
 								else
 								{
@@ -1319,14 +1310,7 @@ namespace SimPe.Plugin
 			lv.Items.Clear();
 			iList.Images.Clear();
 			lv.SmallImageList = null;
-			if (cbprev.Checked)
-			{
-				iList.ImageSize = new Size(48, 48);
-			}
-			else
-			{
-				iList.ImageSize = new Size(16, 16);
-			}
+			iList.ImageSize = cbprev.Checked ? new Size(48, 48) : new Size(16, 16);
 
 			lv.SmallImageList = iList;
 
@@ -1549,21 +1533,14 @@ namespace SimPe.Plugin
 
 			tbfilename.Text = lv.SelectedItems[0].Text;
 
-			if (
-				System.IO.File.Exists(
+			lldis.Text = System.IO.File.Exists(
 					System.IO.Path.Combine(
 						lbdir.Text,
 						lv.SelectedItems[0].Text + ".package"
 					)
 				)
-			)
-			{
-				lldis.Text = "disable";
-			}
-			else
-			{
-				lldis.Text = "enable";
-			}
+				? "disable"
+				: "enable";
 		}
 
 		private void Openpackage(

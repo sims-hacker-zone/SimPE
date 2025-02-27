@@ -98,14 +98,7 @@ namespace SimPe.Plugin
 			form.tbver.Text = wrp.Version.ToString();
 			form.tbsubver.Text = wrp.SubVersion.ToString();
 
-			if (form.cbtype.Items.Contains(wrp.Type))
-			{
-				form.cbtype.SelectedIndex = form.cbtype.Items.IndexOf(wrp.Type);
-			}
-			else
-			{
-				form.cbtype.SelectedIndex = 0;
-			}
+			form.cbtype.SelectedIndex = form.cbtype.Items.Contains(wrp.Type) ? form.cbtype.Items.IndexOf(wrp.Type) : 0;
 
 			form.tbtype.Text = "0x" + Helper.HexString((byte)wrp.Type);
 
@@ -130,22 +123,7 @@ namespace SimPe.Plugin
 			)
 			{
 				form.cbLotClas.Enabled = true;
-				if (bby[12])
-				{
-					form.cbLotClas.SelectedIndex = 1;
-				}
-				else if (bby[13])
-				{
-					form.cbLotClas.SelectedIndex = 2;
-				}
-				else if (bby[14])
-				{
-					form.cbLotClas.SelectedIndex = 3;
-				}
-				else
-				{
-					form.cbLotClas.SelectedIndex = 0;
-				}
+				form.cbLotClas.SelectedIndex = bby[12] ? 1 : bby[13] ? 2 : bby[14] ? 3 : 0;
 			}
 			else
 			{
@@ -266,14 +244,7 @@ namespace SimPe.Plugin
 			form.tbApBase.Text = "0x" + Helper.HexString(wrp.ApartmentBase);
 			form.tbu6.Text = Helper.BytesToHexList(wrp.Unknown6);
 
-			if (wrp.OwnerInstance > 0)
-			{
-				form.label25.ForeColor = System.Drawing.Color.Blue;
-			}
-			else
-			{
-				form.label25.ForeColor = System.Drawing.SystemColors.ControlText;
-			}
+			form.label25.ForeColor = wrp.OwnerInstance > 0 ? System.Drawing.Color.Blue : System.Drawing.SystemColors.ControlText;
 
 			form.lbApts.Items.Clear();
 			foreach (Ltxt.SubLot sl in wrp.SubLots)

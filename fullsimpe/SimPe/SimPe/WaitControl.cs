@@ -258,14 +258,7 @@ namespace SimPe
 			spb = value;
 			pb.Visible = spb;
 			tbPercent.Visible = spb;
-			if (spb)
-			{
-				tbInfo.BorderSides = ToolStripStatusLabelBorderSides.Left;
-			}
-			else
-			{
-				tbInfo.BorderSides = ToolStripStatusLabelBorderSides.None;
-			}
+			tbInfo.BorderSides = spb ? ToolStripStatusLabelBorderSides.Left : ToolStripStatusLabelBorderSides.None;
 		}
 
 		bool sanim;

@@ -45,23 +45,15 @@ namespace SimPe.Windows.Forms
 			subitems[3] = "0x" + Helper.HexString(pfd.Descriptor.SubType); // InstHi
 
 			// Inst
-			if (Helper.WindowsRegistry.ResourceListInstanceFormatHexOnly)
-			{
-				subitems[4] = "0x" + Helper.HexString(pfd.Descriptor.Instance);
-			}
-			else if (Helper.WindowsRegistry.ResourceListInstanceFormatDecOnly)
-			{
-				subitems[4] = ((int)pfd.Descriptor.Instance).ToString();
-			}
-			else
-			{
-				subitems[4] =
-					"0x"
-					+ Helper.HexString(pfd.Descriptor.Instance)
-					+ " ("
-					+ ((int)pfd.Descriptor.Instance).ToString()
-					+ ")";
-			}
+			subitems[4] = Helper.WindowsRegistry.ResourceListInstanceFormatHexOnly
+				? "0x" + Helper.HexString(pfd.Descriptor.Instance)
+				: Helper.WindowsRegistry.ResourceListInstanceFormatDecOnly
+					? ((int)pfd.Descriptor.Instance).ToString()
+					: "0x"
+									+ Helper.HexString(pfd.Descriptor.Instance)
+									+ " ("
+									+ ((int)pfd.Descriptor.Instance).ToString()
+									+ ")";
 
 			subitems[5] = "0x" + Helper.HexString(pfd.Descriptor.Offset);
 			subitems[6] = "0x" + Helper.HexString(pfd.Descriptor.Size);
@@ -164,14 +156,7 @@ namespace SimPe.Windows.Forms
 			if (!justfont)
 			{
 				pfd.ResetRealName();
-				if (Visible)
-				{
-					Text = pfd.GetRealName();
-				}
-				else
-				{
-					Text = pfd.Descriptor.ToResListString();
-				}
+				Text = Visible ? pfd.GetRealName() : pfd.Descriptor.ToResListString();
 
 				if (Helper.WindowsRegistry.ResourceListShowExtensions)
 				{
@@ -180,24 +165,15 @@ namespace SimPe.Windows.Forms
 
 				SubItems[2].Text = "0x" + Helper.HexString(pfd.Descriptor.Group);
 				SubItems[3].Text = "0x" + Helper.HexString(pfd.Descriptor.SubType);
-				if (Helper.WindowsRegistry.ResourceListInstanceFormatHexOnly)
-				{
-					SubItems[4].Text =
-						"0x" + Helper.HexString(pfd.Descriptor.Instance);
-				}
-				else if (Helper.WindowsRegistry.ResourceListInstanceFormatDecOnly)
-				{
-					SubItems[4].Text = ((int)pfd.Descriptor.Instance).ToString();
-				}
-				else
-				{
-					SubItems[4].Text =
-						"0x"
-						+ Helper.HexString(pfd.Descriptor.Instance)
-						+ " ("
-						+ ((int)pfd.Descriptor.Instance).ToString()
-						+ ")";
-				}
+				SubItems[4].Text = Helper.WindowsRegistry.ResourceListInstanceFormatHexOnly
+					? "0x" + Helper.HexString(pfd.Descriptor.Instance)
+					: Helper.WindowsRegistry.ResourceListInstanceFormatDecOnly
+						? ((int)pfd.Descriptor.Instance).ToString()
+						: "0x"
+											+ Helper.HexString(pfd.Descriptor.Instance)
+											+ " ("
+											+ ((int)pfd.Descriptor.Instance).ToString()
+											+ ")";
 
 				SubItems[5].Text = "0x" + Helper.HexString(pfd.Descriptor.Offset);
 				SubItems[6].Text = "0x" + Helper.HexString(pfd.Descriptor.Size);

@@ -538,22 +538,11 @@ namespace SimPe
 			set
 			{
 				cs = value;
-				if (cs == CheckItemState.Fail)
-				{
-					pb.Image = CheckControl.FailImage;
-				}
-				else if (cs == CheckItemState.Ok)
-				{
-					pb.Image = CheckControl.OKImage;
-				}
-				else if (cs == CheckItemState.Warning)
-				{
-					pb.Image = CheckControl.WarnImage;
-				}
-				else
-				{
-					pb.Image = CheckControl.UnknownImage;
-				}
+				pb.Image = cs == CheckItemState.Fail
+					? CheckControl.FailImage
+					: cs == CheckItemState.Ok
+						? CheckControl.OKImage
+						: cs == CheckItemState.Warning ? CheckControl.WarnImage : CheckControl.UnknownImage;
 
 				SetContent();
 			}

@@ -2590,14 +2590,7 @@ namespace SimPe.PackedFiles.Wrapper
 				}
 			}
 
-			if (reader.BaseStream.Length - reader.BaseStream.Position > 0)
-			{
-				EndByte = reader.ReadByte();
-			}
-			else
-			{
-				EndByte = 0x01;
-			}
+			EndByte = reader.BaseStream.Length - reader.BaseStream.Position > 0 ? reader.ReadByte() : (byte)0x01;
 
 			if (version >= (int)SDescVersions.Voyage)
 			{

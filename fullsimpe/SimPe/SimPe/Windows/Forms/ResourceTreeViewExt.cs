@@ -123,14 +123,7 @@ namespace SimPe.Windows.Forms
 
 		private void SaveLastSelection()
 		{
-			if (tv.SelectedNode is ResourceTreeNodeExt node)
-			{
-				builder.LastSelectedId = node.ID;
-			}
-			else
-			{
-				builder.LastSelectedId = 0;
-			}
+			builder.LastSelectedId = tv.SelectedNode is ResourceTreeNodeExt node ? node.ID : 0;
 		}
 
 		protected bool SelectID(TreeNode node, ulong id)
@@ -194,18 +187,7 @@ namespace SimPe.Windows.Forms
 			SaveLastSelection();
 
 			IResourceTreeNodeBuilder old = builder;
-			if (sender == tbInst)
-			{
-				builder = instbuilder;
-			}
-			else if (sender == tbGroup)
-			{
-				builder = groupbuilder;
-			}
-			else
-			{
-				builder = typebuilder;
-			}
+			builder = sender == tbInst ? instbuilder : sender == tbGroup ? groupbuilder : (IResourceTreeNodeBuilder)typebuilder;
 
 			if (old != builder)
 			{

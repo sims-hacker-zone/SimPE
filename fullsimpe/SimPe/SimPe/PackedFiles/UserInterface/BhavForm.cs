@@ -1163,15 +1163,7 @@ namespace SimPe.PackedFiles.UserInterface
 		private byte[] ShortToOps(short val)
 		{
 			byte[] ops = new byte[2];
-			ushort uval;
-			if (val < 0)
-			{
-				uval = (ushort)(65536 + val);
-			}
-			else
-			{
-				uval = (ushort)val;
-			}
+			ushort uval = val < 0 ? (ushort)(65536 + val) : (ushort)val;
 
 			ops[0] = (byte)(uval & 0xFF);
 			ops[1] = (byte)((uval >> 8) & 0xFF);
@@ -2629,26 +2621,12 @@ namespace SimPe.PackedFiles.UserInterface
 			QueryContinueDragEventArgs e
 		)
 		{
-			if (e.KeyState == 0)
-			{
-				e.Action = DragAction.Drop;
-			}
-			else
-			{
-				e.Action = DragAction.Continue;
-			}
+			e.Action = e.KeyState == 0 ? DragAction.Drop : DragAction.Continue;
 		}
 
 		private void ItemDragEnter(object sender, DragEventArgs e)
 		{
-			if (e.Data.GetDataPresent(typeof(int)))
-			{
-				e.Effect = DragDropEffects.Link;
-			}
-			else
-			{
-				e.Effect = DragDropEffects.None;
-			}
+			e.Effect = e.Data.GetDataPresent(typeof(int)) ? DragDropEffects.Link : DragDropEffects.None;
 		}
 
 		private void ItemDrop(object sender, DragEventArgs e)
@@ -3585,15 +3563,7 @@ namespace SimPe.PackedFiles.UserInterface
 		private void fileToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			bool load = sender.Equals(fromFileToolStripMenuItem);
-			FileDialog fd;
-			if (load)
-			{
-				fd = new OpenFileDialog();
-			}
-			else
-			{
-				fd = new SaveFileDialog();
-			}
+			FileDialog fd = load ? new OpenFileDialog() : (FileDialog)new SaveFileDialog();
 
 			fd.AddExtension = true;
 			fd.CheckFileExists = load;

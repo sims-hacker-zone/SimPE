@@ -46,10 +46,8 @@ namespace SimPe.Plugin
 			base.RefreshGUI();
 
 			CanCommit = Wrapper.isnew;
-			if (Wrapper.FamiThumb != null)
-			{
-				pbImage.Image =
-					Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(
+			pbImage.Image = Wrapper.FamiThumb != null
+				? Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(
 						Wrapper.FamiThumb,
 						pbImage.Size,
 						12,
@@ -60,12 +58,8 @@ namespace SimPe.Plugin
 						true,
 						4,
 						0
-					);
-			}
-			else
-			{
-				pbImage.Image = null;
-			}
+					)
+				: null;
 
 			HeaderText = Wrapper.Name + " Family History";
 
@@ -213,23 +207,9 @@ namespace SimPe.Plugin
 
 		private void buttonset()
 		{
-			if (currentsection == 1)
-			{
-				btprev.Text = "<- Last Day";
-			}
-			else
-			{
-				btprev.Text = "<- Previous Day";
-			}
+			btprev.Text = currentsection == 1 ? "<- Last Day" : "<- Previous Day";
 
-			if (currentsection == sections)
-			{
-				btnext.Text = "First Day ->";
-			}
-			else
-			{
-				btnext.Text = "Next Day ->";
-			}
+			btnext.Text = currentsection == sections ? "First Day ->" : "Next Day ->";
 		}
 
 		private void filimuptext()
@@ -244,20 +224,13 @@ namespace SimPe.Plugin
 			btDelete.Visible = (sections > 1); // keep at least one, if we want to delete the last block then it is better to just delete the resource
 			if (shwraw)
 			{
-				if (TestIsValid(currentsectionindex))
-				{
-					gtname.Text =
-						"~ Valid Data Block ~ Number "
+				gtname.Text = TestIsValid(currentsectionindex)
+					? "~ Valid Data Block ~ Number "
+						+ Convert.ToString(currentsection)
+						+ "\r\n"
+					: "~ Invalid Data Block ~ Number "
 						+ Convert.ToString(currentsection)
 						+ "\r\n";
-				}
-				else
-				{
-					gtname.Text =
-						"~ Invalid Data Block ~ Number "
-						+ Convert.ToString(currentsection)
-						+ "\r\n";
-				}
 				/* Only Unknown values
 gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 7]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 8]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 9]) + ")\r\n";
 gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 10]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 11]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 12]) + ")\r\n";

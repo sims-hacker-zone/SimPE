@@ -484,17 +484,10 @@ namespace SimPe.PackedFiles.UserInterface
 				);
 			}
 
-			if (
-				cbStringIndexSelectedIndex >= 0
+			cbStringIndex.SelectedIndex = cbStringIndexSelectedIndex >= 0
 				&& cbStringIndexSelectedIndex < cbStringIndex.Items.Count
-			)
-			{
-				cbStringIndex.SelectedIndex = cbStringIndexSelectedIndex;
-			}
-			else
-			{
-				cbStringIndex.SelectedIndex = -1;
-			}
+				? cbStringIndexSelectedIndex
+				: -1;
 
 			internalchg = prev;
 		}
@@ -515,14 +508,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (lbttabSelectedIndex >= 0)
 			{
-				if (lbttabSelectedIndex < lbttab.Items.Count)
-				{
-					lbttab.SelectedIndex = lbttabSelectedIndex;
-				}
-				else
-				{
-					lbttab.SelectedIndex = lbttab.Items.Count - 1;
-				}
+				lbttab.SelectedIndex = lbttabSelectedIndex < lbttab.Items.Count ? lbttabSelectedIndex : lbttab.Items.Count - 1;
 			}
 
 			ttabPanel.ResumeLayout();

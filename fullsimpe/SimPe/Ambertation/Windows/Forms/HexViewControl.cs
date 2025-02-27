@@ -1786,15 +1786,7 @@ namespace Ambertation.Windows.Forms
 			{
 				if ((offset < data.Length) && offset >= 0)
 				{
-					SolidBrush brush;
-					if (selection.Contains(offset))
-					{
-						brush = new SolidBrush(SelectionForeColor);
-					}
-					else
-					{
-						brush = ForeBrush;
-					}
+					SolidBrush brush = selection.Contains(offset) ? new SolidBrush(SelectionForeColor) : ForeBrush;
 
 					foreach (Highlight h in Highlights)
 					{
@@ -1806,15 +1798,7 @@ namespace Ambertation.Windows.Forms
 					}
 
 					left = GetHexColLeft(c);
-					string txt;
-					if (vs == ViewState.Hex)
-					{
-						txt = SetLength(data[offset].ToString("x"), 2, '0');
-					}
-					else
-					{
-						txt = data[offset].ToString();
-					}
+					string txt = vs == ViewState.Hex ? SetLength(data[offset].ToString("x"), 2, '0') : data[offset].ToString();
 
 					dst = new RectangleF(left + COLSPACING, 0, width, height);
 					//if ( row == acell.Y && c==acell.X) DrawHighlightedCell(g, left, 0, width, height);
@@ -2090,47 +2074,21 @@ namespace Ambertation.Windows.Forms
 				return;
 			}
 
-			byte[] val;
-			if (o is char)
-			{
-				val = BitConverter.GetBytes((char)o);
-			}
-			else if (o is ushort)
-			{
-				val = BitConverter.GetBytes((ushort)o);
-			}
-			else if (o is short)
-			{
-				val = BitConverter.GetBytes((short)o);
-			}
-			else if (o is uint)
-			{
-				val = BitConverter.GetBytes((uint)o);
-			}
-			else if (o is int)
-			{
-				val = BitConverter.GetBytes((int)o);
-			}
-			else if (o is ulong)
-			{
-				val = BitConverter.GetBytes((ulong)o);
-			}
-			else if (o is long)
-			{
-				val = BitConverter.GetBytes((long)o);
-			}
-			else if (o is float)
-			{
-				val = BitConverter.GetBytes((float)o);
-			}
-			else if (o is double)
-			{
-				val = BitConverter.GetBytes((double)o);
-			}
-			else
-			{
-				val = new byte[0];
-			}
+			byte[] val = o is char
+				? BitConverter.GetBytes((char)o)
+				: o is ushort
+					? BitConverter.GetBytes((ushort)o)
+					: o is short
+									? BitConverter.GetBytes((short)o)
+									: o is uint
+													? BitConverter.GetBytes((uint)o)
+													: o is int
+																	? BitConverter.GetBytes((int)o)
+																	: o is ulong
+																					? BitConverter.GetBytes((ulong)o)
+																					: o is long
+																									? BitConverter.GetBytes((long)o)
+																									: o is float ? BitConverter.GetBytes((float)o) : o is double ? BitConverter.GetBytes((double)o) : (new byte[0]);
 
 			if (data.Length - SelectionStart < val.Length)
 			{

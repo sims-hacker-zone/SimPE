@@ -261,14 +261,7 @@ namespace SimPe.Providers
 					PathProvider.Global.GetExpansion(Expansions.BaseGame).InstallFolder,
 					"TSData\\Res\\Catalog\\Skins\\Skins.package"
 				);
-				if (System.IO.File.Exists(file))
-				{
-					BasePackage = Packages.File.LoadFromFile(file);
-				}
-				else
-				{
-					BasePackage = null;
-				}
+				BasePackage = System.IO.File.Exists(file) ? Packages.File.LoadFromFile(file) : (Interfaces.Files.IPackageFile)null;
 			}
 		}
 

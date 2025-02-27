@@ -568,14 +568,7 @@ namespace Ambertation.Windows.Forms.Graph
 			Point ctrl2 = new Point(pend.X, pend.Y - Height / 2);
 			if (sside)
 			{
-				if (pend.X < pstart.X)
-				{
-					ctrl1 = new Point(pstart.X - Width / 2, pstart.Y);
-				}
-				else
-				{
-					ctrl1 = new Point(pstart.X + Width / 2, pstart.Y);
-				}
+				ctrl1 = pend.X < pstart.X ? new Point(pstart.X - Width / 2, pstart.Y) : new Point(pstart.X + Width / 2, pstart.Y);
 			}
 			else
 			{
@@ -586,14 +579,7 @@ namespace Ambertation.Windows.Forms.Graph
 			}
 			if (EndElement.Docks[EndAnchor].IsSideDock)
 			{
-				if (pend.X < pstart.X)
-				{
-					ctrl2 = new Point(pend.X + Width / 2, pend.Y);
-				}
-				else
-				{
-					ctrl2 = new Point(pend.X - Width / 2, pend.Y);
-				}
+				ctrl2 = pend.X < pstart.X ? new Point(pend.X + Width / 2, pend.Y) : new Point(pend.X - Width / 2, pend.Y);
 			}
 			else
 			{

@@ -327,14 +327,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 
 				ScenegraphResultItem sri = new ScenegraphResultItem(pkg, pfd);
-				if (group == null)
-				{
-					sri.GroupIndex = AddResultGroup(pkg.SaveFileName);
-				}
-				else
-				{
-					sri.GroupIndex = AddResultGroup(group);
-				}
+				sri.GroupIndex = group == null ? AddResultGroup(pkg.SaveFileName) : AddResultGroup(group);
 
 				lv.Items.Add(sri);
 			}

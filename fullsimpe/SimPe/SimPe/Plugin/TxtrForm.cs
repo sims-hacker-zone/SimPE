@@ -850,14 +850,7 @@ namespace SimPe.Plugin
 				lbimg.Tag = true;
 				MipMap mm = (MipMap)lbimg.Items[lbimg.SelectedIndex];
 				pb.Image = mm.Texture;
-				if (mm.Texture == null)
-				{
-					tblifo.Text = mm.LifoFile;
-				}
-				else
-				{
-					tblifo.Text = "";
-				}
+				tblifo.Text = mm.Texture == null ? mm.LifoFile : "";
 
 				btex.Enabled = (pb.Image != null);
 				lldel.Enabled = true;

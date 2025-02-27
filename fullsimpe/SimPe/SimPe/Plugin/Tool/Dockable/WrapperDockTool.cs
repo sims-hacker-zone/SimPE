@@ -58,14 +58,7 @@ namespace SimPe.Plugin.Tool.Dockable
 						rd.lbVersion.Text = wrp.WrapperDescription.Version.ToString();
 						rd.lbDesc.Text = wrp.WrapperDescription.Description;
 						rd.pb.Image = wrp.WrapperDescription.Icon;
-						if (rd.pb.Image != null)
-						{
-							rd.lbName.Left = rd.pb.Right + 4;
-						}
-						else
-						{
-							rd.lbName.Left = rd.pb.Left;
-						}
+						rd.lbName.Left = rd.pb.Image != null ? rd.pb.Right + 4 : rd.pb.Left;
 
 						return;
 					}

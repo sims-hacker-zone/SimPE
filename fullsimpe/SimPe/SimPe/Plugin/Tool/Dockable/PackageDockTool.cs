@@ -58,14 +58,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					{
 						Packages.PackageRepair pr =
 							new Packages.PackageRepair(es.LoadedPackage.Package);
-						if (Helper.WindowsRegistry.HiddenMode)
-						{
-							rd.pgHead.SelectedObject = pr.IndexDetailsAdvanced;
-						}
-						else
-						{
-							rd.pgHead.SelectedObject = pr.IndexDetails;
-						}
+						rd.pgHead.SelectedObject = Helper.WindowsRegistry.HiddenMode ? pr.IndexDetailsAdvanced : (object)pr.IndexDetails;
 
 						pkg = es.LoadedPackage.Package;
 

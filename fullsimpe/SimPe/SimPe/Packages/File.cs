@@ -1077,15 +1077,7 @@ namespace SimPe.Packages
 					LockStream();
 					reader.BaseStream.Seek(pfd.Offset, SeekOrigin.Begin);
 
-					byte[] data = null;
-					if (pfd.Size > 0)
-					{
-						data = reader.ReadBytes(pfd.Size);
-					}
-					else
-					{
-						data = new byte[0];
-					}
+					byte[] data = pfd.Size > 0 ? reader.ReadBytes(pfd.Size) : (new byte[0]);
 
 					PackedFile pf = GetPackedFile(pfd, data);
 

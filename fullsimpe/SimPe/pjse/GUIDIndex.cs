@@ -94,18 +94,12 @@ namespace pjse
 						BinaryReader reader = wrapper.StoredData;
 						if (reader.BaseStream.Length >= 0x40) // filename length
 						{
-							if (wrapper.FileDescriptor.Group == 0xFFFFFFFF)
-							{
-								ii.objdName =
-									SimPe.Helper.ToString(reader.ReadBytes(0x40)).Trim()
-									+ "**";
-							}
-							else
-							{
-								ii.objdName = SimPe
+							ii.objdName = wrapper.FileDescriptor.Group == 0xFFFFFFFF
+								? SimPe.Helper.ToString(reader.ReadBytes(0x40)).Trim()
+									+ "**"
+								: SimPe
 									.Helper.ToString(reader.ReadBytes(0x40))
 									.Trim();
-							}
 
 							ii.objdGroup = wrapper.FileDescriptor.Group;
 							if (reader.BaseStream.Length > 0x52 + 2) // sizeof(ushort)

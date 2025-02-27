@@ -167,14 +167,7 @@ namespace SimPe.PackedFiles.Wrapper
 			Type = reader.ReadUInt32();
 			Group = reader.ReadUInt32();
 			Instance = reader.ReadUInt32();
-			if (format == Data.MetaData.IndexTypes.ptLongFileIndex)
-			{
-				SubType = reader.ReadUInt32();
-			}
-			else
-			{
-				SubType = 0;
-			}
+			SubType = format == Data.MetaData.IndexTypes.ptLongFileIndex ? reader.ReadUInt32() : 0;
 
 			UncompressedSize = reader.ReadUInt32();
 		}

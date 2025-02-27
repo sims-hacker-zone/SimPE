@@ -126,29 +126,9 @@ namespace SimPe.Plugin
 			Guid = reader.ReadUInt32();
 			Type = (WantType)reader.ReadByte();
 
-			if (Type == WantType.Skill)
-			{
-				Value = reader.ReadUInt16();
-			}
-			else if (Type == WantType.Sim)
-			{
-				if (Version >= 8)
-				{
-					Value = reader.ReadUInt16();
-				}
-				else
-				{
-					Value = 0;
-				}
-			}
-			else if ((byte)Type > 1)
-			{
-				Value = reader.ReadUInt32();
-			}
-			else
-			{
-				Value = 0;
-			}
+			Value = Type == WantType.Skill
+				? reader.ReadUInt16()
+				: Type == WantType.Sim ? Version >= 8 ? reader.ReadUInt16() : (uint)0 : (byte)Type > 1 ? reader.ReadUInt32() : 0;
 
 			Property = reader.ReadUInt16();
 			Index = reader.ReadUInt32();

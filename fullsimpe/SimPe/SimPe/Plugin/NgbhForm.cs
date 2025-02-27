@@ -521,22 +521,17 @@ namespace SimPe.Plugin
 
 			try
 			{
-				if (Helper.WindowsRegistry.HiddenMode)
-				{
-					GetSelectedItem().Value = Helper.StringToUInt16(
+				GetSelectedItem().Value = Helper.WindowsRegistry.HiddenMode
+					? Helper.StringToUInt16(
 						tbval.Text,
 						GetSelectedItem().Value,
 						16
-					);
-				}
-				else
-				{
-					GetSelectedItem().Value = Helper.StringToUInt16(
+					)
+					: Helper.StringToUInt16(
 						tbval.Text,
 						GetSelectedItem().Value,
 						10
 					);
-				}
 			}
 			catch (Exception ex)
 			{
@@ -806,14 +801,7 @@ namespace SimPe.Plugin
 				>= (uint)NgbhVersion.Nightlife;
 			tbUnk.Text =
 				"0x" + Helper.HexString(GetSelectedItem().InventoryNumber);
-			if (Helper.WindowsRegistry.HiddenMode)
-			{
-				tbval.Text = "0x" + Helper.HexString(GetSelectedItem().Value);
-			}
-			else
-			{
-				tbval.Text = GetSelectedItem().Value.ToString();
-			}
+			tbval.Text = Helper.WindowsRegistry.HiddenMode ? "0x" + Helper.HexString(GetSelectedItem().Value) : GetSelectedItem().Value.ToString();
 
 			tbFlag.Tag = null;
 
@@ -964,14 +952,7 @@ namespace SimPe.Plugin
 
 			Interfaces.IAlias a = (Interfaces.IAlias)cbsub.Items[cbsub.SelectedIndex];
 			tbsubid.Text = "0x" + Helper.HexString(a.Id);
-			if (a.Tag != null)
-			{
-				tbsub.Text = "0x" + Helper.HexString((ushort)a.Tag[0]);
-			}
-			else
-			{
-				tbsub.Text = "0x0000";
-			}
+			tbsub.Text = a.Tag != null ? "0x" + Helper.HexString((ushort)a.Tag[0]) : "0x0000";
 		}
 
 		private void ChgSubject(object sender, EventArgs e)
@@ -1029,14 +1010,7 @@ namespace SimPe.Plugin
 			}
 
 			Interfaces.IAlias a = (Interfaces.IAlias)cbown.Items[cbown.SelectedIndex];
-			if (a.Tag != null)
-			{
-				tbown.Text = "0x" + Helper.HexString((ushort)a.Tag[0]);
-			}
-			else
-			{
-				tbown.Text = "0x0000";
-			}
+			tbown.Text = a.Tag != null ? "0x" + Helper.HexString((ushort)a.Tag[0]) : "0x0000";
 		}
 
 		private void ChgOwner(object sender, EventArgs e)
@@ -1074,14 +1048,7 @@ namespace SimPe.Plugin
 			{
 				for (int i = 0; i < tokens.Length; i++)
 				{
-					if (tokens[i].Trim() != "")
-					{
-						data[i] = Convert.ToUInt16(tokens[i], 16);
-					}
-					else
-					{
-						data[i] = 0;
-					}
+					data[i] = tokens[i].Trim() != "" ? Convert.ToUInt16(tokens[i], 16) : (ushort)0;
 				}
 
 				GetSelectedItem().Data = data;

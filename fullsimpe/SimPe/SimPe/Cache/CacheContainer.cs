@@ -149,14 +149,7 @@ namespace SimPe.Cache
 					if (System.IO.File.Exists(filename))
 					{
 						DateTime mod = System.IO.File.GetLastWriteTime(filename);
-						if (mod <= Added)
-						{
-							ValidState = ContainerValid.Yes;
-						}
-						else
-						{
-							ValidState = ContainerValid.Modified;
-						}
+						ValidState = mod <= Added ? ContainerValid.Yes : ContainerValid.Modified;
 					}
 
 					if (

@@ -282,14 +282,7 @@ namespace SimPe.Plugin.Downloads
 			}
 
 			UpdateScreen(null, false);
-			if (oci.Thumbnail == null)
-			{
-				nfo.Image = null;
-			}
-			else
-			{
-				nfo.Image = oci.Thumbnail;
-			}
+			nfo.Image = oci.Thumbnail == null ? null : oci.Thumbnail;
 
 			nfo.Name = oci.Name;
 			nfo.VertexCount = 0;

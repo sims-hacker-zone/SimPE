@@ -114,16 +114,7 @@ namespace Ambertation.Windows.Forms
 				{
 					style = value;
 
-					if (style == ProgresBarStyle.Simple)
-					{
-						endgradcol = Color.Black;
-						//this.mGradient = LinearGradientMode.Vertical;
-					}
-					else
-					{
-						endgradcol = Color.White;
-						//this.mGradient = LinearGradientMode.ForwardDiagonal;
-					}
+					endgradcol = style == ProgresBarStyle.Simple ? Color.Black : Color.White;
 					CompleteRedraw();
 					Invalidate();
 				}
@@ -862,15 +853,7 @@ namespace Ambertation.Windows.Forms
 			for (int i = 0; i < TokenCount; i++)
 			{
 				int left = TokenOffset(i);
-				int height = 0;
-				if (i > mid)
-				{
-					height = (int)Math.Floor(minhg + (i - mid) * step);
-				}
-				else
-				{
-					height = (int)Math.Floor(minhg + (mid - i) * step);
-				}
+				int height = i > mid ? (int)Math.Floor(minhg + (i - mid) * step) : (int)Math.Floor(minhg + (mid - i) * step);
 
 				int top = (Height - 1) - height;
 

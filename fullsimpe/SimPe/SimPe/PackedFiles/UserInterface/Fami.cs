@@ -39,10 +39,8 @@ namespace SimPe.PackedFiles.UserInterface
 			Wrapper.Fami fami = (Wrapper.Fami)wrapper;
 			form.wrapper = fami;
 
-			if (fami.FamiThumb != null)
-			{
-				form.pbImage.Image =
-					Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(
+			form.pbImage.Image = fami.FamiThumb != null
+				? Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(
 						fami.FamiThumb,
 						form.pbImage.Size,
 						12,
@@ -53,33 +51,18 @@ namespace SimPe.PackedFiles.UserInterface
 						true,
 						4,
 						0
-					);
-			}
-			else if (fami.FileDescriptor.Instance > 32511)
-			{
-				form.pbImage.Image = GetImage.Cassie;
-			}
-			else
-			{
-				form.pbImage.Image = null;
-			}
+					)
+				: fami.FileDescriptor.Instance > 32511 ? GetImage.Cassie : null;
 
 			form.tbname.Text = fami.Name;
 			form.tbmoney.Text = fami.Money.ToString();
 			form.tbfamily.Text = fami.Friends.ToString();
-			if (
-				Helper.WindowsRegistry.AllowLotZero
+			form.tblotinst.Text = Helper.WindowsRegistry.AllowLotZero
 				&& fami.LotInstance == 0
 				&& fami.FileDescriptor.Instance > 0
 				&& fami.FileDescriptor.Instance < 32512
-			)
-			{
-				form.tblotinst.Text = "Sim Bin";
-			}
-			else
-			{
-				form.tblotinst.Text = "0x" + Helper.HexString(fami.LotInstance);
-			}
+				? "Sim Bin"
+				: "0x" + Helper.HexString(fami.LotInstance);
 
 			form.tbalbum.Text = "0x" + Helper.HexString(fami.AlbumGUID);
 			form.tbflag.Text = "0x" + Helper.HexString(fami.Flags);
@@ -120,18 +103,11 @@ namespace SimPe.PackedFiles.UserInterface
 					fami.FileDescriptor.Instance
 				) != null
 			);
-			if (
-				fami.LotInstance == 0
+			form.label15.ForeColor = fami.LotInstance == 0
 				|| fami.Package.FindFile(0x0BF999E7, 0, 0xFFFFFFFF, fami.LotInstance)
 					== null
-			)
-			{
-				form.label15.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				form.label15.ForeColor = Color.Blue;
-			}
+				? SystemColors.ControlText
+				: Color.Blue;
 
 			form.lbmembers.Sorted = false;
 			string[] names = fami.SimNames;

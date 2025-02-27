@@ -323,26 +323,13 @@ namespace SimPe.Plugin.Gmdc
 			for (int i = 0; i < bns.Length; i++)
 			{
 				ImportedBone b = bns[i];
-				if (b.Action == GmdcImporterAction.Add)
-				{
-					boneIndexMap[i] = AddBone(grps, bns, b, i);
-				}
-				else if (b.Action == GmdcImporterAction.Rename)
-				{
-					boneIndexMap[i] = AddBone(grps, bns, b, i);
-				}
-				else if (b.Action == GmdcImporterAction.Replace)
-				{
-					boneIndexMap[i] = ReplaceBone(grps, bns, b, i);
-				}
-				else if (b.Action == GmdcImporterAction.Update)
-				{
-					boneIndexMap[i] = UpdateBone(grps, b, i);
-				}
-				else
-				{
-					boneIndexMap[i] = NothingBone(grps, b, i);
-				}
+				boneIndexMap[i] = b.Action == GmdcImporterAction.Add
+					? AddBone(grps, bns, b, i)
+					: b.Action == GmdcImporterAction.Rename
+						? AddBone(grps, bns, b, i)
+						: b.Action == GmdcImporterAction.Replace
+											? ReplaceBone(grps, bns, b, i)
+											: b.Action == GmdcImporterAction.Update ? UpdateBone(grps, b, i) : (object)NothingBone(grps, b, i);
 
 				//make sure the Target Index is set correct, and the parrent is set up
 				b.TargetIndex = (int)boneIndexMap[i];

@@ -127,14 +127,7 @@ namespace SimPe.Plugin
 				Items[i].Unserialize(reader);
 			}
 
-			if (version == 0x04)
-			{
-				FileName = reader.ReadString();
-			}
-			else
-			{
-				FileName = "cObjectGraphNode";
-			}
+			FileName = version == 0x04 ? reader.ReadString() : "cObjectGraphNode";
 		}
 
 		/// <summary>

@@ -520,14 +520,7 @@ namespace SimPe
 
 			System.Diagnostics.Process p = new System.Diagnostics.Process();
 			p.StartInfo.FileName = PathProvider.Global.SimsApplication;
-			if (Helper.WindowsRegistry.EnableSound)
-			{
-				p.StartInfo.Arguments = "-w";
-			}
-			else
-			{
-				p.StartInfo.Arguments = "-w -nosound";
-			}
+			p.StartInfo.Arguments = Helper.WindowsRegistry.EnableSound ? "-w" : "-w -nosound";
 			p.Start();
 		}
 
@@ -610,28 +603,20 @@ namespace SimPe
 
 		private void Activate_miOpenDownloads(object sender, EventArgs e)
 		{
-			if (
-
-					PathProvider.Global.GetSaveGamePathForGroup(
+			ofd.InitialDirectory = PathProvider.Global.GetSaveGamePathForGroup(
 						PathProvider.Global.CurrentGroup
 					)
 					.Count > 0
-			)
-			{
-				ofd.InitialDirectory = Path.Combine(
+				? Path.Combine(
 					PathProvider.Global.GetSaveGamePathForGroup(
 						PathProvider.Global.CurrentGroup
 					)[0],
 					"Downloads"
-				);
-			}
-			else
-			{
-				ofd.InitialDirectory = Path.Combine(
+				)
+				: Path.Combine(
 					PathProvider.SimSavegameFolder,
 					"Downloads"
 				);
-			}
 
 			ofd.FileName = "";
 			Activate_miOpen(sender, e);

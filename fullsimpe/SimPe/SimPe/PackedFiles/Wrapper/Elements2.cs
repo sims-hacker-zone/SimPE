@@ -358,14 +358,7 @@ namespace SimPe.PackedFiles.Wrapper
 					}
 					case Data.MetaData.DataTypes.dtBoolean:
 					{
-						if (item.BooleanValue)
-						{
-							rtbcpf.Text = "1";
-						}
-						else
-						{
-							rtbcpf.Text = "0";
-						}
+						rtbcpf.Text = item.BooleanValue ? "1" : "0";
 
 						break;
 					}
@@ -399,15 +392,7 @@ namespace SimPe.PackedFiles.Wrapper
 				cbtype.SelectedIndex = cbtype.Items.Count - 1;
 			}
 
-			CpfItem item;
-			if (lbcpf.SelectedIndex < 0)
-			{
-				item = new CpfItem();
-			}
-			else
-			{
-				item = (CpfItem)lbcpf.Items[lbcpf.SelectedIndex];
-			}
+			CpfItem item = lbcpf.SelectedIndex < 0 ? new CpfItem() : (CpfItem)lbcpf.Items[lbcpf.SelectedIndex];
 
 			item.Name = rtbcpfname.Text;
 			item.Datatype = (Data.MetaData.DataTypes)cbtype.Items[cbtype.SelectedIndex];

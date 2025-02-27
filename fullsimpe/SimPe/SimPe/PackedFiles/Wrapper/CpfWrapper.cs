@@ -250,22 +250,15 @@ namespace SimPe.PackedFiles.Wrapper
 					if (subnode.LocalName.Trim().ToLower() == "anyuint32")
 					{
 						item.Datatype = Data.MetaData.DataTypes.dtUInteger;
-						if (subnode.InnerText.IndexOf("-") != -1)
-						{
-							item.UIntegerValue = (uint)
-								Convert.ToInt32(subnode.InnerText);
-						}
-						else if (subnode.InnerText.IndexOf("0x") == -1)
-						{
-							item.UIntegerValue = Convert.ToUInt32(subnode.InnerText);
-						}
-						else
-						{
-							item.UIntegerValue = Convert.ToUInt32(
-								subnode.InnerText,
-								16
-							);
-						}
+						item.UIntegerValue = subnode.InnerText.IndexOf("-") != -1
+							? (uint)
+								Convert.ToInt32(subnode.InnerText)
+							: subnode.InnerText.IndexOf("0x") == -1
+								? Convert.ToUInt32(subnode.InnerText)
+								: Convert.ToUInt32(
+															subnode.InnerText,
+															16
+														);
 					}
 					else if (
 						(subnode.LocalName.Trim().ToLower() == "anyint32")
@@ -273,14 +266,7 @@ namespace SimPe.PackedFiles.Wrapper
 					)
 					{
 						item.Datatype = Data.MetaData.DataTypes.dtInteger;
-						if (subnode.InnerText.IndexOf("0x") == -1)
-						{
-							item.IntegerValue = Convert.ToInt32(subnode.InnerText);
-						}
-						else
-						{
-							item.IntegerValue = Convert.ToInt32(subnode.InnerText, 16);
-						}
+						item.IntegerValue = subnode.InnerText.IndexOf("0x") == -1 ? Convert.ToInt32(subnode.InnerText) : Convert.ToInt32(subnode.InnerText, 16);
 					}
 					else if (subnode.LocalName.Trim().ToLower() == "anystring")
 					{
@@ -298,20 +284,9 @@ namespace SimPe.PackedFiles.Wrapper
 					else if (subnode.LocalName.Trim().ToLower() == "anyboolean")
 					{
 						item.Datatype = Data.MetaData.DataTypes.dtBoolean;
-						if (subnode.InnerText.Trim().ToLower() == "true")
-						{
-							item.BooleanValue = true;
-						}
-						else if (subnode.InnerText.Trim().ToLower() == "false")
-						{
-							item.BooleanValue = false;
-						}
-						else
-						{
-							item.BooleanValue = (
-								Convert.ToInt32(subnode.InnerText) != 0
-							);
-						}
+						item.BooleanValue = subnode.InnerText.Trim().ToLower() == "true"
+							? true
+							: subnode.InnerText.Trim().ToLower() == "false" ? false : Convert.ToInt32(subnode.InnerText) != 0;
 					}
 					else if (subnode.LocalName.Trim().ToLower() == "#comment")
 					{

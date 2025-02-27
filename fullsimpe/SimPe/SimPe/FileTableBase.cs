@@ -141,21 +141,16 @@ namespace SimPe
 						} // MoveToNextAttribute
 						xr.MoveToElement();
 
-						FileTableItem fti;
-						if (xr.Name == "file")
-						{
-							fti = new FileTableItem(
+						FileTableItem fti = xr.Name == "file"
+							? new FileTableItem(
 								xr.ReadString(),
 								ftitype,
 								false,
 								true,
 								ftiver,
 								ftiignore
-							);
-						}
-						else
-						{
-							fti = new FileTableItem(
+							)
+							: new FileTableItem(
 								xr.ReadString(),
 								ftitype,
 								ftirec,
@@ -163,7 +158,6 @@ namespace SimPe
 								ftiver,
 								ftiignore
 							);
-						}
 
 						folders.Add(fti);
 						xr.ReadEndElement();

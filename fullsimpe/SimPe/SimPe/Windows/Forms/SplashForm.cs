@@ -84,14 +84,7 @@ namespace SimPe.Windows.Forms
 				{
 					if (msg != value)
 					{
-						if (value == null)
-						{
-							msg = "";
-						}
-						else
-						{
-							msg = value;
-						}
+						msg = value == null ? "" : value;
 
 						SendMessageChangeSignal();
 					}

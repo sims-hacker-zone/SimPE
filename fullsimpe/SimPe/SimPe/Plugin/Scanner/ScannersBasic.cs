@@ -746,15 +746,7 @@ namespace SimPe.Plugin.Scanner
 
 			foreach (MemoryCacheItem mci in cachefile.List)
 			{
-				string flname = null;
-				if (mci.ParentCacheContainer == null)
-				{
-					flname = mci.FileDescriptor.Filename;
-				}
-				else
-				{
-					flname = mci.ParentCacheContainer.FileName;
-				}
+				string flname = mci.ParentCacheContainer == null ? mci.FileDescriptor.Filename : mci.ParentCacheContainer.FileName;
 
 				list[mci.Guid] = flname;
 				// list[(uint)mci.Guid] = flname.Trim().ToLower();

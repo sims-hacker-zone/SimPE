@@ -78,15 +78,7 @@ namespace SimPe.Plugin.UI
 				for (int i = 0; i < cbBody.Items.Count; i++)
 				{
 					object o = cbBody.Items[i];
-					MetaData.Bodyshape at;
-					if (o.GetType() == typeof(Alias))
-					{
-						at = (LocalizedBodyshape)((Alias)o).Id;
-					}
-					else
-					{
-						at = (LocalizedBodyshape)o;
-					}
+					MetaData.Bodyshape at = o.GetType() == typeof(Alias) ? (MetaData.Bodyshape)(LocalizedBodyshape)((Alias)o).Id : (MetaData.Bodyshape)(LocalizedBodyshape)o;
 
 					if (at == sset.Figure)
 					{
@@ -136,41 +128,15 @@ namespace SimPe.Plugin.UI
 
 		void InitDisableControls()
 		{
-			if (Tipe == RecolorType.Skin)
-			{
-				cbShoeType.Enabled = cbBody.Enabled = true;
-			}
-			else
-			{
-				cbShoeType.Enabled = cbBody.Enabled = false;
-			}
+			cbShoeType.Enabled = Tipe == RecolorType.Skin ? (cbBody.Enabled = true) : (cbBody.Enabled = false);
 
-			if (Tipe == RecolorType.Hairtone)
-			{
-				cbhat.Enabled = true;
-			}
-			else
-			{
-				cbhat.Enabled = false;
-			}
+			cbhat.Enabled = Tipe == RecolorType.Hairtone;
 
-			if (Tipe == RecolorType.TextureOverlay || Tipe == RecolorType.MeshOverlay)
-			{
-				cbSpeciesType.Enabled = cbOverlayType.Enabled = true;
-			}
-			else
-			{
-				cbSpeciesType.Enabled = cbOverlayType.Enabled = false;
-			}
+			cbSpeciesType.Enabled = Tipe == RecolorType.TextureOverlay || Tipe == RecolorType.MeshOverlay
+				? (cbOverlayType.Enabled = true)
+				: (cbOverlayType.Enabled = false);
 
-			if (Tipe == RecolorType.Skintone)
-			{
-				cbavail.Enabled = cbhide.Enabled = false;
-			}
-			else
-			{
-				cbavail.Enabled = cbhide.Enabled = true;
-			}
+			cbavail.Enabled = Tipe == RecolorType.Skintone ? (cbhide.Enabled = false) : (cbhide.Enabled = true);
 		}
 
 		#region Component Designer generated code

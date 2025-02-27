@@ -554,23 +554,9 @@ namespace SimPe.Plugin
 				flags2 = new NgbhItemFlags(reader.ReadUInt16());
 			}
 
-			if ((uint)parent.Version >= (uint)NgbhVersion.Nightlife)
-			{
-				invnr = reader.ReadUInt32();
-			}
-			else
-			{
-				invnr = 0;
-			}
+			invnr = (uint)parent.Version >= (uint)NgbhVersion.Nightlife ? reader.ReadUInt32() : 0;
 
-			if ((uint)parent.Version >= (uint)NgbhVersion.Seasons)
-			{
-				unknown2 = reader.ReadUInt16();
-			}
-			else
-			{
-				unknown2 = 0;
-			}
+			unknown2 = (uint)parent.Version >= (uint)NgbhVersion.Seasons ? reader.ReadUInt16() : (ushort)0;
 
 			data = new ushort[reader.ReadInt32()];
 			for (int i = 0; i < data.Length; i++)
@@ -701,14 +687,7 @@ namespace SimPe.Plugin
 			name = name.Replace("$Constant:4097:7", "X Number of");
 			if (name.Trim() == "")
 			{
-				if (Helper.WindowsRegistry.HiddenMode)
-				{
-					name = "---";
-				}
-				else
-				{
-					name = "[GUID=0x" + Helper.HexString(guid) + "]";
-				}
+				name = Helper.WindowsRegistry.HiddenMode ? "---" : "[GUID=0x" + Helper.HexString(guid) + "]";
 			}
 			if (!Flags.IsVisible)
 			{

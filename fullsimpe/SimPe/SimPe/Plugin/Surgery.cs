@@ -865,14 +865,7 @@ namespace SimPe.Plugin
 				}
 
 				string skin = (string)lvskin.SelectedItems[0].Tag;
-				if (skin == null)
-				{
-					newpackage = ps.CloneSkinTone(skinfiles);
-				}
-				else
-				{
-					newpackage = ps.CloneSkinTone(skin, skinfiles);
-				}
+				newpackage = skin == null ? ps.CloneSkinTone(skinfiles) : ps.CloneSkinTone(skin, skinfiles);
 			}
 
 			if (cbface.Checked)
@@ -1175,19 +1168,12 @@ namespace SimPe.Plugin
 									{
 										Name = "version"
 									};
-									if (
-										(
+									ci.UIntegerValue = (
 											cpf.GetSaveItem("age").UIntegerValue
 											& (uint)Data.Ages.YoungAdult
 										) != 0
-									)
-									{
-										ci.UIntegerValue = 2;
-									}
-									else
-									{
-										ci.UIntegerValue = 1;
-									}
+										? 2
+										: (uint)1;
 
 									cpf.AddItem(ci);
 								}
@@ -1362,20 +1348,15 @@ namespace SimPe.Plugin
 			pgPatientDetails.SelectedObject = null;
 			pgArchetypeDetails.SelectedObject = null;
 
-			if (cbmens.Checked)
-			{
-				iskin.Images[0] = ImageLoader.Preview(
+			iskin.Images[0] = cbmens.Checked
+				? ImageLoader.Preview(
 					GetImage.NoOne,
 					iskin.ImageSize
-				);
-			}
-			else
-			{
-				iskin.Images[0] = ImageLoader.Preview(
+				)
+				: ImageLoader.Preview(
 					GetImage.SheOne,
 					iskin.ImageSize
 				);
-			}
 
 			lvskin.Refresh();
 

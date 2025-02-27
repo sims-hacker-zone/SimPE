@@ -306,14 +306,7 @@ namespace SimPe.Plugin.Gmdc
 			}
 
 			g.Name = mesh.Name;
-			if (Shadow)
-			{
-				g.Opacity = 0x10;
-			}
-			else
-			{
-				g.Opacity = 0xffffffff;
-			}
+			g.Opacity = Shadow ? 0x10 : 0xffffffff;
 
 			g.PrimitiveType = PrimitiveType.Triangle;
 

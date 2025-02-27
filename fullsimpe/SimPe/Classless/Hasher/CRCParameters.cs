@@ -60,18 +60,13 @@ namespace Classless.Hasher
 			get => order;
 			set
 			{
-				if (((value % 8) != 0) || (value < 8) || (value > 64))
-				{
-					throw new ArgumentOutOfRangeException(
+				order = ((value % 8) != 0) || (value < 8) || (value > 64)
+					? throw new ArgumentOutOfRangeException(
 						"Order",
 						value,
 						"CRC Order must represent full bytes and be between 8 and 64."
-					);
-				}
-				else
-				{
-					order = value;
-				}
+					)
+					: value;
 			}
 		}
 

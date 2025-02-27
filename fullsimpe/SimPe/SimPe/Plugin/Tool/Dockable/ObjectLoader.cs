@@ -410,14 +410,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				else
 				{
 					items = str.LanguageItems(1);
-					if (items.Length > 0)
-					{
-						oci.Name = items[0].Title;
-					}
-					else
-					{
-						oci.Name = "";
-					}
+					oci.Name = items.Length > 0 ? items[0].Title : "";
 				}
 			}
 			else
@@ -431,18 +424,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			//now the ModeName File
-			if (cpf.GetItem("texturetname") != null)
-			{
-				oci.ModelName = cpf.GetItem("texturetname").StringValue;
-			}
-			else if (cpf.GetItem("filename") != null)
-			{
-				oci.ModelName = cpf.GetItem("filename").StringValue;
-			}
-			else
-			{
-				oci.ModelName = cpf.GetSaveItem("material").StringValue;
-			}
+			oci.ModelName = cpf.GetItem("texturetname") != null
+				? cpf.GetItem("texturetname").StringValue
+				: cpf.GetItem("filename") != null ? cpf.GetItem("filename").StringValue : cpf.GetSaveItem("material").StringValue;
 
 			//oci.Name = cpf.GetSaveItem("type").StringValue + " - "+ cpf.GetSaveItem("subsort").StringValue;
 
@@ -523,14 +507,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					else
 					{
 						items = str.LanguageItems(1);
-						if (items.Length > 0)
-						{
-							oci.Name = items[0].Title;
-						}
-						else
-						{
-							oci.Name = "";
-						}
+						oci.Name = items.Length > 0 ? items[0].Title : "";
 					}
 				}
 				else
@@ -605,14 +582,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			a.Tag = os;
 
-			if (Helper.WindowsRegistry.ShowObjdNames)
-			{
-				a.Name = oci.ObjectFileName;
-			}
-			else
-			{
-				a.Name = oci.Name;
-			}
+			a.Name = Helper.WindowsRegistry.ShowObjdNames ? oci.ObjectFileName : oci.Name;
 
 			a.Name += " (cached)";
 			Image img = oci.Thumbnail;
@@ -781,14 +751,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//no Node with this Name found so far, create one
 			if (ret == null)
 			{
-				if (id < names.Length)
-				{
-					ret = new TreeNode(names[id]);
-				}
-				else
-				{
-					ret = new TreeNode(Localization.GetString("Unknown"));
-				}
+				ret = id < names.Length ? new TreeNode(names[id]) : new TreeNode(Localization.GetString("Unknown"));
 
 				nodes.Add(ret);
 				ret.SelectedImageIndex = 0;

@@ -160,14 +160,7 @@ namespace SimPe
 			set
 			{
 				appform = value;
-				if (appform != null)
-				{
-					appstate = appform.WindowState;
-				}
-				else
-				{
-					appstate = System.Windows.Forms.FormWindowState.Maximized;
-				}
+				appstate = appform != null ? appform.WindowState : System.Windows.Forms.FormWindowState.Maximized;
 			}
 		}
 

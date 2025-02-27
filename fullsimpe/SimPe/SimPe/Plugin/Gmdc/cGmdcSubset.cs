@@ -335,14 +335,7 @@ namespace SimPe.Plugin.Gmdc
 									//so add it to the available List
 									if (!indices.ContainsKey(nr))
 									{
-										if (empty.ContainsKey(nr))
-										{
-											face_index = (int)empty[nr];
-										}
-										else
-										{
-											face_index = nr;
-										}
+										face_index = empty.ContainsKey(nr) ? (int)empty[nr] : nr;
 
 										indices.Add(nr, face_index);
 										Vertices[face_index] = Transform(

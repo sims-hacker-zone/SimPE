@@ -440,15 +440,7 @@ namespace Ambertation.Drawing
 
 		public static Image KnockoutImage(Image img, Point pos, Color fillcl, bool save)
 		{
-			Bitmap bm = null;
-			if (!save)
-			{
-				bm = new Bitmap(img.Width, img.Height);
-			}
-			else
-			{
-				bm = new Bitmap(img.Width + 2, img.Height + 2);
-			}
+			Bitmap bm = !save ? new Bitmap(img.Width, img.Height) : new Bitmap(img.Width + 2, img.Height + 2);
 
 			System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bm);
 			if (save)

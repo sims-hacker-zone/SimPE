@@ -40,14 +40,7 @@ namespace SimPe.Plugin
 
 		public NgbhSlotList(Ngbh parent)
 		{
-			if (parent != null)
-			{
-				Version = parent.Version;
-			}
-			else
-			{
-				Version = NgbhVersion.University;
-			}
+			Version = parent != null ? parent.Version : NgbhVersion.University;
 
 			Parent = parent;
 			itemsa = new Collections.NgbhItems(this);

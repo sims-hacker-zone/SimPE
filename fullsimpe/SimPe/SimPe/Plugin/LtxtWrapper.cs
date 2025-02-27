@@ -390,14 +390,7 @@ namespace SimPe.Plugin
 				Unknown1.Add(reader.ReadSingle());
 			}
 
-			if (subver >= (UInt16)LtxtSubVersion.Voyage)
-			{
-				Unknown3 = reader.ReadSingle();
-			}
-			else
-			{
-				Unknown3 = 0;
-			}
+			Unknown3 = subver >= (UInt16)LtxtSubVersion.Voyage ? reader.ReadSingle() : 0;
 
 			if (subver >= (UInt16)LtxtSubVersion.Freetime)
 			{
@@ -436,14 +429,7 @@ namespace SimPe.Plugin
 
 			Unknown2 = reader.ReadByte();
 
-			if (ver >= (int)LtxtVersion.Business)
-			{
-				OwnerInstance = reader.ReadUInt32();
-			}
-			else
-			{
-				OwnerInstance = 0;
-			}
+			OwnerInstance = ver >= (int)LtxtVersion.Business ? reader.ReadUInt32() : 0;
 
 			if (
 				ver >= (UInt16)LtxtVersion.Apartment

@@ -191,14 +191,7 @@ namespace SimPe.Plugin
 				checkBox2.Checked = false;
 			}
 
-			if (epsrun >= 1)
-			{
-				checkBox1.Checked = true;
-			}
-			else
-			{
-				checkBox1.Checked = false;
-			}
+			checkBox1.Checked = epsrun >= 1;
 
 			if (hiprun >= 32768)
 			{
@@ -215,1121 +208,253 @@ namespace SimPe.Plugin
 				checkBox19.Checked = false;
 			}
 
-			if (hiprun >= 1)
-			{
-				checkBox18.Checked = true;
-			}
-			else
-			{
-				checkBox18.Checked = false;
-			}
-
-			if (Wrapper.TipsList[2] == 1)
-			{
-				checkBox17.Checked = true;
-			}
-			else
-			{
-				checkBox17.Checked = false;
-			}
-
-			if (Wrapper.TipsList[3] == 1)
-			{
-				label3.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label3.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[4] == 1)
-			{
-				label4.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label4.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[5] == 1)
-			{
-				label5.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label5.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[6] == 1)
-			{
-				label6.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label6.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[7] == 1)
-			{
-				label7.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label7.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[8] == 1)
-			{
-				label8.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label8.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[9] == 1)
-			{
-				label9.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label9.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[10] == 1)
-			{
-				label10.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label10.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[11] == 1)
-			{
-				label11.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label11.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[12] == 1)
-			{
-				label12.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label12.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[13] == 1)
-			{
-				label13.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label13.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[14] == 1)
-			{
-				label14.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label14.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[15] == 1)
-			{
-				label15.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label15.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[16] == 1)
-			{
-				label16.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label16.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[17] == 1)
-			{
-				label17.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label17.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[18] == 1)
-			{
-				label18.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label18.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[19] == 1)
-			{
-				label19.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label19.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[20] == 1)
-			{
-				label20.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label20.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[21] == 1)
-			{
-				label21.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label21.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[22] == 1)
-			{
-				label22.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label22.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[23] == 1)
-			{
-				label23.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label23.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[24] == 1)
-			{
-				label24.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label24.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[25] == 1)
-			{
-				label25.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label25.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[26] == 1)
-			{
-				label26.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label26.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[27] == 1)
-			{
-				label27.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label27.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[28] == 1)
-			{
-				label28.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label28.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[29] == 1)
-			{
-				label29.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label29.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[30] == 1)
-			{
-				label30.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label30.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[31] == 1)
-			{
-				label31.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label31.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[32] == 1)
-			{
-				label32.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label32.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[33] == 1)
-			{
-				label33.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label33.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[34] == 1)
-			{
-				label34.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label34.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[35] == 1)
-			{
-				label35.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label35.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[36] == 1)
-			{
-				label36.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label36.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[37] == 1)
-			{
-				label37.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label37.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[38] == 1)
-			{
-				label38.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label38.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[39] == 1)
-			{
-				label39.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label39.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[40] == 1)
-			{
-				label40.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label40.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[41] == 1)
-			{
-				label41.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label41.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[42] == 1)
-			{
-				label42.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label42.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[43] == 1)
-			{
-				label43.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label43.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[44] == 1)
-			{
-				label44.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label44.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[45] == 1)
-			{
-				label45.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label45.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[46] == 1)
-			{
-				label46.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label46.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[47] == 1)
-			{
-				label47.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label47.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[48] == 1)
-			{
-				label48.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label48.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[49] == 1)
-			{
-				label49.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label49.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[50] == 1)
-			{
-				label50.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label50.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[51] == 1)
-			{
-				label51.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label51.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[52] == 1)
-			{
-				label52.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label52.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[53] == 1)
-			{
-				label53.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label53.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[54] == 1)
-			{
-				label54.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label54.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[55] == 1)
-			{
-				label55.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label55.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[56] == 1)
-			{
-				label56.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label56.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[57] == 1)
-			{
-				label57.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label57.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[58] == 1)
-			{
-				label58.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label58.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[59] == 1)
-			{
-				label59.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label59.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[60] == 1)
-			{
-				label60.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label60.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[61] == 1)
-			{
-				label61.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label61.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[62] == 1)
-			{
-				label62.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label62.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[63] == 1)
-			{
-				label63.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label63.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[64] == 1)
-			{
-				label64.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label64.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[65] == 1)
-			{
-				label65.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label65.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[66] == 1)
-			{
-				label66.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label66.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[67] == 1)
-			{
-				label67.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label67.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[68] == 1)
-			{
-				label68.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label68.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[69] == 1)
-			{
-				label69.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label69.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[70] == 1)
-			{
-				label70.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label70.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[71] == 1)
-			{
-				label71.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label71.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[72] == 1)
-			{
-				label72.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label72.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[73] == 1)
-			{
-				label73.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label73.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[74] == 1)
-			{
-				label74.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label74.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[75] == 1)
-			{
-				label75.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label75.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[76] == 1)
-			{
-				label76.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label76.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[77] == 1)
-			{
-				label77.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label77.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[78] == 1)
-			{
-				label78.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label78.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[79] == 1)
-			{
-				label79.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label79.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[80] == 1)
-			{
-				label80.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label80.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[81] == 1)
-			{
-				label81.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label81.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[82] == 1)
-			{
-				label82.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label82.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[83] == 1)
-			{
-				label83.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label83.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[84] == 1)
-			{
-				label84.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label84.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[85] == 1)
-			{
-				label85.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label85.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[86] == 1)
-			{
-				label86.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label86.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[87] == 1)
-			{
-				label87.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label87.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[88] == 1)
-			{
-				label88.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label88.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[89] == 1)
-			{
-				label89.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label89.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[90] == 1)
-			{
-				label90.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label90.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[91] == 1)
-			{
-				label91.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label91.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[92] == 1)
-			{
-				label92.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label92.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[93] == 1)
-			{
-				label93.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label93.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[94] == 1)
-			{
-				label94.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label94.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[95] == 1)
-			{
-				label95.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label95.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[96] == 1)
-			{
-				label96.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label96.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[97] == 1)
-			{
-				label97.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label97.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[98] == 1)
-			{
-				label98.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label98.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[99] == 1)
-			{
-				label99.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label99.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[100] == 1)
-			{
-				label100.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label100.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[101] == 1)
-			{
-				label101.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label101.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[102] == 1)
-			{
-				label102.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label102.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[103] == 1)
-			{
-				label103.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label103.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[104] == 1)
-			{
-				label104.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label104.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[105] == 1)
-			{
-				label105.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label105.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[106] == 1)
-			{
-				label106.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label106.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[107] == 1)
-			{
-				label107.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label107.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[108] == 1)
-			{
-				label108.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label108.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[109] == 1)
-			{
-				label109.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label109.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[110] == 1)
-			{
-				label110.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label110.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[111] == 1)
-			{
-				label111.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label111.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[112] == 1)
-			{
-				label112.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label112.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[113] == 1)
-			{
-				label113.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label113.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[114] == 1)
-			{
-				label114.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label114.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[115] == 1)
-			{
-				label115.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label115.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[116] == 1)
-			{
-				label116.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label116.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[117] == 1)
-			{
-				label117.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label117.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[118] == 1)
-			{
-				label118.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label118.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[119] == 1)
-			{
-				label119.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label119.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[120] == 1)
-			{
-				label120.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label120.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[121] == 1)
-			{
-				label121.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label121.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[122] == 1)
-			{
-				label122.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label122.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[123] == 1)
-			{
-				label123.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label123.ForeColor = SystemColors.ControlDark;
-			}
-
-			if (Wrapper.TipsList[124] == 1)
-			{
-				label124.ForeColor = SystemColors.ControlText;
-			}
-			else
-			{
-				label124.ForeColor = SystemColors.ControlDark;
-			}
+			checkBox18.Checked = hiprun >= 1;
+
+			checkBox17.Checked = Wrapper.TipsList[2] == 1;
+
+			label3.ForeColor = Wrapper.TipsList[3] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label4.ForeColor = Wrapper.TipsList[4] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label5.ForeColor = Wrapper.TipsList[5] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label6.ForeColor = Wrapper.TipsList[6] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label7.ForeColor = Wrapper.TipsList[7] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label8.ForeColor = Wrapper.TipsList[8] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label9.ForeColor = Wrapper.TipsList[9] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label10.ForeColor = Wrapper.TipsList[10] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label11.ForeColor = Wrapper.TipsList[11] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label12.ForeColor = Wrapper.TipsList[12] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label13.ForeColor = Wrapper.TipsList[13] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label14.ForeColor = Wrapper.TipsList[14] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label15.ForeColor = Wrapper.TipsList[15] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label16.ForeColor = Wrapper.TipsList[16] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label17.ForeColor = Wrapper.TipsList[17] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label18.ForeColor = Wrapper.TipsList[18] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label19.ForeColor = Wrapper.TipsList[19] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label20.ForeColor = Wrapper.TipsList[20] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label21.ForeColor = Wrapper.TipsList[21] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label22.ForeColor = Wrapper.TipsList[22] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label23.ForeColor = Wrapper.TipsList[23] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label24.ForeColor = Wrapper.TipsList[24] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label25.ForeColor = Wrapper.TipsList[25] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label26.ForeColor = Wrapper.TipsList[26] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label27.ForeColor = Wrapper.TipsList[27] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label28.ForeColor = Wrapper.TipsList[28] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label29.ForeColor = Wrapper.TipsList[29] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label30.ForeColor = Wrapper.TipsList[30] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label31.ForeColor = Wrapper.TipsList[31] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label32.ForeColor = Wrapper.TipsList[32] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label33.ForeColor = Wrapper.TipsList[33] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label34.ForeColor = Wrapper.TipsList[34] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label35.ForeColor = Wrapper.TipsList[35] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label36.ForeColor = Wrapper.TipsList[36] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label37.ForeColor = Wrapper.TipsList[37] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label38.ForeColor = Wrapper.TipsList[38] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label39.ForeColor = Wrapper.TipsList[39] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label40.ForeColor = Wrapper.TipsList[40] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label41.ForeColor = Wrapper.TipsList[41] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label42.ForeColor = Wrapper.TipsList[42] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label43.ForeColor = Wrapper.TipsList[43] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label44.ForeColor = Wrapper.TipsList[44] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label45.ForeColor = Wrapper.TipsList[45] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label46.ForeColor = Wrapper.TipsList[46] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label47.ForeColor = Wrapper.TipsList[47] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label48.ForeColor = Wrapper.TipsList[48] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label49.ForeColor = Wrapper.TipsList[49] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label50.ForeColor = Wrapper.TipsList[50] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label51.ForeColor = Wrapper.TipsList[51] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label52.ForeColor = Wrapper.TipsList[52] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label53.ForeColor = Wrapper.TipsList[53] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label54.ForeColor = Wrapper.TipsList[54] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label55.ForeColor = Wrapper.TipsList[55] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label56.ForeColor = Wrapper.TipsList[56] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label57.ForeColor = Wrapper.TipsList[57] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label58.ForeColor = Wrapper.TipsList[58] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label59.ForeColor = Wrapper.TipsList[59] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label60.ForeColor = Wrapper.TipsList[60] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label61.ForeColor = Wrapper.TipsList[61] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label62.ForeColor = Wrapper.TipsList[62] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label63.ForeColor = Wrapper.TipsList[63] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label64.ForeColor = Wrapper.TipsList[64] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label65.ForeColor = Wrapper.TipsList[65] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label66.ForeColor = Wrapper.TipsList[66] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label67.ForeColor = Wrapper.TipsList[67] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label68.ForeColor = Wrapper.TipsList[68] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label69.ForeColor = Wrapper.TipsList[69] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label70.ForeColor = Wrapper.TipsList[70] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label71.ForeColor = Wrapper.TipsList[71] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label72.ForeColor = Wrapper.TipsList[72] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label73.ForeColor = Wrapper.TipsList[73] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label74.ForeColor = Wrapper.TipsList[74] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label75.ForeColor = Wrapper.TipsList[75] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label76.ForeColor = Wrapper.TipsList[76] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label77.ForeColor = Wrapper.TipsList[77] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label78.ForeColor = Wrapper.TipsList[78] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label79.ForeColor = Wrapper.TipsList[79] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label80.ForeColor = Wrapper.TipsList[80] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label81.ForeColor = Wrapper.TipsList[81] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label82.ForeColor = Wrapper.TipsList[82] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label83.ForeColor = Wrapper.TipsList[83] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label84.ForeColor = Wrapper.TipsList[84] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label85.ForeColor = Wrapper.TipsList[85] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label86.ForeColor = Wrapper.TipsList[86] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label87.ForeColor = Wrapper.TipsList[87] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label88.ForeColor = Wrapper.TipsList[88] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label89.ForeColor = Wrapper.TipsList[89] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label90.ForeColor = Wrapper.TipsList[90] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label91.ForeColor = Wrapper.TipsList[91] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label92.ForeColor = Wrapper.TipsList[92] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label93.ForeColor = Wrapper.TipsList[93] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label94.ForeColor = Wrapper.TipsList[94] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label95.ForeColor = Wrapper.TipsList[95] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label96.ForeColor = Wrapper.TipsList[96] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label97.ForeColor = Wrapper.TipsList[97] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label98.ForeColor = Wrapper.TipsList[98] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label99.ForeColor = Wrapper.TipsList[99] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label100.ForeColor = Wrapper.TipsList[100] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label101.ForeColor = Wrapper.TipsList[101] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label102.ForeColor = Wrapper.TipsList[102] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label103.ForeColor = Wrapper.TipsList[103] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label104.ForeColor = Wrapper.TipsList[104] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label105.ForeColor = Wrapper.TipsList[105] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label106.ForeColor = Wrapper.TipsList[106] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label107.ForeColor = Wrapper.TipsList[107] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label108.ForeColor = Wrapper.TipsList[108] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label109.ForeColor = Wrapper.TipsList[109] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label110.ForeColor = Wrapper.TipsList[110] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label111.ForeColor = Wrapper.TipsList[111] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label112.ForeColor = Wrapper.TipsList[112] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label113.ForeColor = Wrapper.TipsList[113] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label114.ForeColor = Wrapper.TipsList[114] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label115.ForeColor = Wrapper.TipsList[115] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label116.ForeColor = Wrapper.TipsList[116] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label117.ForeColor = Wrapper.TipsList[117] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label118.ForeColor = Wrapper.TipsList[118] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label119.ForeColor = Wrapper.TipsList[119] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label120.ForeColor = Wrapper.TipsList[120] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label121.ForeColor = Wrapper.TipsList[121] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label122.ForeColor = Wrapper.TipsList[122] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label123.ForeColor = Wrapper.TipsList[123] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
+
+			label124.ForeColor = Wrapper.TipsList[124] == 1 ? SystemColors.ControlText : SystemColors.ControlDark;
 		}
 
 		public override void OnCommit()

@@ -217,14 +217,7 @@ namespace SimPe.Plugin
 			previep.Text = "0x" + Helper.HexString(lastep);
 			if (lastep == 0)
 			{
-				if (vergin == 2)
-				{
-					previep.Text = "The Sims Life Stories";
-				}
-				else
-				{
-					previep.Text = "The Sims 2 (Base Game)";
-				}
+				previep.Text = vergin == 2 ? "The Sims Life Stories" : "The Sims 2 (Base Game)";
 			}
 			if (lastep == 1)
 			{
@@ -253,25 +246,11 @@ namespace SimPe.Plugin
 
 			if (lastep == 6)
 			{
-				if (vergin == 3)
-				{
-					previep.Text = "The Sims Pet Stories";
-				}
-				else
-				{
-					previep.Text = "The Sims 2 Pets";
-				}
+				previep.Text = vergin == 3 ? "The Sims Pet Stories" : "The Sims 2 Pets";
 			}
 			if (lastep == 7)
 			{
-				if (vergin == 9)
-				{
-					previep.Text = "The Sims Castaway Stories";
-				}
-				else
-				{
-					previep.Text = "The Sims 2 Seasons";
-				}
+				previep.Text = vergin == 9 ? "The Sims Castaway Stories" : "The Sims 2 Seasons";
 			}
 			if (lastep == 8)
 			{

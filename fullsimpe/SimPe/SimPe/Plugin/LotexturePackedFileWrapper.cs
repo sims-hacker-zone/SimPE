@@ -138,14 +138,7 @@ namespace SimPe.Plugin
 					return; // Castaway doesn't use lot catalog so this shouldn't exist
 				}
 
-				if (virsion >= 0x000000BE)
-				{
-					nuffing = reader.ReadInt32();
-				}
-				else
-				{
-					nuffing = 0;
-				}
+				nuffing = virsion >= 0x000000BE ? reader.ReadInt32() : 0;
 
 				Badges = reader.ReadInt32();
 				if (Badges > 0)
@@ -222,14 +215,9 @@ namespace SimPe.Plugin
 					);
 					if (pfd == null)
 					{
-						if (pjse.GUIDIndex.TheGUIDIndex[badgesid[i]] != null)
-						{
-							texchure[i] = pjse.GUIDIndex.TheGUIDIndex[badgesid[i]];
-						}
-						else
-						{
-							texchure[i] = Localization.GetString("Unknown");
-						}
+						texchure[i] = pjse.GUIDIndex.TheGUIDIndex[badgesid[i]] != null
+							? pjse.GUIDIndex.TheGUIDIndex[badgesid[i]]
+							: Localization.GetString("Unknown");
 					}
 					else
 					{

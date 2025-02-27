@@ -718,15 +718,7 @@ namespace SimPe.PackedFiles.Wrapper
 			this.counts = counts;
 			this.type = type;
 
-			int nrGroups = 0;
-			if (counts != null)
-			{
-				nrGroups = counts.Length;
-			}
-			else
-			{
-				nrGroups = type == TtabItemMotiveTableType.Human ? 5 : 8;
-			}
+			int nrGroups = counts != null ? counts.Length : type == TtabItemMotiveTableType.Human ? 5 : 8;
 
 			items = new TtabItemMotiveGroupArrayList(new TtabItemMotiveGroup[nrGroups]);
 			for (int i = 0; i < nrGroups; i++)
@@ -782,15 +774,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		private void Unserialize(System.IO.BinaryReader reader)
 		{
-			int nrGroups = 0;
-			if (counts != null)
-			{
-				nrGroups = counts.Length;
-			}
-			else
-			{
-				nrGroups = reader.ReadInt32();
-			}
+			int nrGroups = counts != null ? counts.Length : reader.ReadInt32();
 
 			if (items.Capacity < nrGroups)
 			{

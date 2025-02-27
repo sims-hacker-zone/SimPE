@@ -130,14 +130,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			if (sim != null)
-			{
-				pkg = sim.Package;
-			}
-			else
-			{
-				pkg = null;
-			}
+			pkg = sim != null ? sim.Package : null;
 
 			ngbh = null;
 			if (sim == null)

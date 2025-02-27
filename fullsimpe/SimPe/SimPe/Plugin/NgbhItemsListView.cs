@@ -322,14 +322,7 @@ namespace SimPe.Plugin
 			}
 			set
 			{
-				if (value != null)
-				{
-					NgbhItems = value.GetItems(SlotType);
-				}
-				else
-				{
-					NgbhItems = null;
-				}
+				NgbhItems = value != null ? value.GetItems(SlotType) : null;
 			}
 		}
 

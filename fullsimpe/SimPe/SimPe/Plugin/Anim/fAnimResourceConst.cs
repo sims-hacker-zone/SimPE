@@ -568,15 +568,9 @@ namespace SimPe.Plugin.Anim
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			AnimationFrameBlock ab2 = null;
-			if (tv.SelectedNode.Tag is AnimationFrameBlock)
-			{
-				ab2 = (AnimationFrameBlock)tv.SelectedNode.Tag;
-			}
-			else
-			{
-				ab2 = (AnimationFrameBlock)tv.SelectedNode.Parent.Tag;
-			}
+			AnimationFrameBlock ab2 = tv.SelectedNode.Tag is AnimationFrameBlock
+				? (AnimationFrameBlock)tv.SelectedNode.Tag
+				: (AnimationFrameBlock)tv.SelectedNode.Parent.Tag;
 
 			if (ab2.AxisCount != 3)
 			{
@@ -599,15 +593,9 @@ namespace SimPe.Plugin.Anim
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			AnimationFrameBlock ab2 = null;
-			if (tv.SelectedNode.Tag is AnimationFrameBlock)
-			{
-				ab2 = (AnimationFrameBlock)tv.SelectedNode.Tag;
-			}
-			else
-			{
-				ab2 = (AnimationFrameBlock)tv.SelectedNode.Parent.Tag;
-			}
+			AnimationFrameBlock ab2 = tv.SelectedNode.Tag is AnimationFrameBlock
+				? (AnimationFrameBlock)tv.SelectedNode.Tag
+				: (AnimationFrameBlock)tv.SelectedNode.Parent.Tag;
 
 			ab2.ClearFrames();
 
@@ -787,14 +775,7 @@ namespace SimPe.Plugin.Anim
 			{
 				int en;
 				int loc = readline.IndexOf("(") + 1;
-				if (readline.Contains(","))
-				{
-					en = readline.IndexOf(",");
-				}
-				else
-				{
-					en = readline.IndexOf(")");
-				}
+				en = readline.Contains(",") ? readline.IndexOf(",") : readline.IndexOf(")");
 
 				coun = Convert.ToInt32(readline.Substring(loc, en - loc));
 				aatbc.Locked = readline.Contains("locked");

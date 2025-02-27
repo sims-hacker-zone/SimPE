@@ -28,14 +28,7 @@ namespace SimPe.Plugin
 			this.type = type;
 			list = new ArrayList();
 
-			if (type == NhtrListType.Trees || type == NhtrListType.Decorations)
-			{
-				unknown = 8;
-			}
-			else
-			{
-				unknown = 3;
-			}
+			unknown = type == NhtrListType.Trees || type == NhtrListType.Decorations ? (ushort)8 : (ushort)3;
 		}
 
 		public NhtrItem AddNew()

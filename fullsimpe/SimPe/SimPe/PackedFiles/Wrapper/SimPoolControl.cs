@@ -353,14 +353,7 @@ namespace SimPe.PackedFiles.Wrapper
 			gp.SetColumnStyle(3, gp.Font, System.Drawing.Color.Gray);
 			gp.SetColumnStyle(4, gp.Font, System.Drawing.Color.Gray);
 
-			if (details)
-			{
-				gp.View = SteepValley.Windows.Forms.ExtendedView.Tile;
-			}
-			else
-			{
-				gp.View = SteepValley.Windows.Forms.ExtendedView.LargeIcon;
-			}
+			gp.View = details ? SteepValley.Windows.Forms.ExtendedView.Tile : SteepValley.Windows.Forms.ExtendedView.LargeIcon;
 		}
 
 		public static System.Drawing.Color GetImagePanelColor(SDesc sdesc)

@@ -214,14 +214,7 @@ namespace pjse
 			get => doc.FlagsFor;
 			set
 			{
-				if (value as LabelledDataOwner != null)
-				{
-					doc.FlagsFor = ((LabelledDataOwner)value).doc;
-				}
-				else
-				{
-					doc.FlagsFor = value;
-				}
+				doc.FlagsFor = value as LabelledDataOwner != null ? ((LabelledDataOwner)value).doc : value;
 			}
 		}
 
@@ -274,14 +267,7 @@ namespace pjse
 			get => doc.DataOwner;
 			set
 			{
-				if (value >= cbDataOwner.Items.Count)
-				{
-					cbDataOwner.SelectedIndex = -1;
-				}
-				else
-				{
-					cbDataOwner.SelectedIndex = value;
-				}
+				cbDataOwner.SelectedIndex = value >= cbDataOwner.Items.Count ? -1 : value;
 			}
 		}
 
@@ -295,22 +281,16 @@ namespace pjse
 			get => doc.Value;
 			set
 			{
-				if (doc.Decimal)
-				{
-					tbVal.Text = doc.ValueIsByte
+				tbVal.Text = doc.Decimal
+					? doc.ValueIsByte
 						? ((byte)value).ToString()
-						: ((short)value).ToString();
-				}
-				else
-				{
-					tbVal.Text =
-						"0x"
+						: ((short)value).ToString()
+					: "0x"
 						+ (
 							doc.ValueIsByte
 								? SimPe.Helper.HexString((byte)value)
 								: SimPe.Helper.HexString(value)
 						);
-				}
 			}
 		}
 

@@ -218,15 +218,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public StrToken FallbackedLanguageItem(Data.MetaData.Languages l, int index)
 		{
 			StrItemList list = LanguageItems(l);
-			StrToken name;
-			if (list.Length > index)
-			{
-				name = list[index];
-			}
-			else
-			{
-				name = new StrToken(0, 0, "", "");
-			}
+			StrToken name = list.Length > index ? list[index] : new StrToken(0, 0, "", "");
 
 			if (name.Title.Trim() == "")
 			{
@@ -254,19 +246,9 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 
 			StrItemList real = (StrItemList)LanguageItems(l).Clone();
-			StrItemList fallback = null;
-			if (Languages.Contains(Data.MetaData.Languages.English))
-			{
-				fallback = LanguageItems(Data.MetaData.Languages.English);
-			}
-			else if (Languages.Count == 1)
-			{
-				fallback = LanguageItems(Languages[0]);
-			}
-			else
-			{
-				fallback = LanguageItems(Data.MetaData.Languages.English);
-			}
+			StrItemList fallback = Languages.Contains(Data.MetaData.Languages.English)
+				? LanguageItems(Data.MetaData.Languages.English)
+				: Languages.Count == 1 ? LanguageItems(Languages[0]) : LanguageItems(Data.MetaData.Languages.English);
 
 			for (int i = 0; i < fallback.Length; i++)
 			{

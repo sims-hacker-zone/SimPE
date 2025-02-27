@@ -96,17 +96,10 @@ namespace SimPe.Plugin
 					ps.Data[1] = idno.Uid;
 
 					//check for duplicates
-					if (
-						ids.Contains(idno.Uid)
+					ps.State = ids.Contains(idno.Uid)
 						&& PathProvider.Global.EPInstalled < 18
-					)
-					{
-						ps.State = TriState.False;
-					}
-					else
-					{
-						ps.State = TriState.True;
-					}
+						? TriState.False
+						: TriState.True;
 				}
 				else
 				{

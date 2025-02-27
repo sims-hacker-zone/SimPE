@@ -404,14 +404,7 @@ namespace SimPe.Plugin
 
 				if ((TypeCode <= 0x03) && (version == 3))
 				{
-					if (ver == 5)
-					{
-						sz = 31;
-					}
-					else
-					{
-						sz = 15;
-					}
+					sz = ver == 5 ? 31 : 15;
 				}
 				if ((TypeCode <= 0x03) && ver == 4)
 				{
@@ -475,14 +468,7 @@ namespace SimPe.Plugin
 
 				if ((TypeCode <= 0x03) && (version == 3))
 				{
-					if (ver == 5)
-					{
-						sz = 31;
-					}
-					else
-					{
-						sz = 15;
-					}
+					sz = ver == 5 ? 31 : 15;
 				}
 				if ((TypeCode <= 0x03) && ver == 4)
 				{

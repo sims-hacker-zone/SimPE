@@ -184,14 +184,7 @@ namespace SimPe.Data
 				for (int i = 0; i < tag.Length; i++)
 				{
 					object o = tag[i];
-					if (o != null)
-					{
-						ret = ret.Replace("{" + i.ToString() + "}", o.ToString());
-					}
-					else
-					{
-						ret = ret.Replace("{" + i.ToString() + "}", "");
-					}
+					ret = o != null ? ret.Replace("{" + i.ToString() + "}", o.ToString()) : ret.Replace("{" + i.ToString() + "}", "");
 				}
 			}
 
@@ -233,16 +226,7 @@ namespace SimPe.Data
 								.Attributes["value"]
 								.Value.Trim()
 								.ToString();
-							uint val = 0;
-
-							if (sval.StartsWith("0x"))
-							{
-								val = Convert.ToUInt32(sval, 16);
-							}
-							else
-							{
-								val = Convert.ToUInt32(sval);
-							}
+							uint val = sval.StartsWith("0x") ? Convert.ToUInt32(sval, 16) : Convert.ToUInt32(sval);
 
 							Alias a = new Alias(val, subnode.InnerText.Trim());
 							list.Add(a);

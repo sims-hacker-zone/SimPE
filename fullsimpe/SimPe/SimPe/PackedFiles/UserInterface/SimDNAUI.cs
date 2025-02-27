@@ -249,17 +249,8 @@ namespace SimPe.PackedFiles.UserInterface
 					+ Data.MetaData.GetBodyName(
 						Data.MetaData.GetBodyShapeid(Sdna.Dominant.Skintone)
 					);
-				if (
-					lbbody.Text == "Bodyshape = Unknown"
-					|| lbbody.Text == "Bodyshape =  Maxis : Default"
-				)
-				{
-					lbbody.Visible = false;
-				}
-				else
-				{
-					lbbody.Visible = true;
-				}
+				lbbody.Visible = lbbody.Text != "Bodyshape = Unknown"
+					&& lbbody.Text != "Bodyshape =  Maxis : Default";
 
 				if (!(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 						(ushort)Wrapper.FileDescriptor.Instance
@@ -286,21 +277,15 @@ namespace SimPe.PackedFiles.UserInterface
 						false;
 				lbcpf.Visible = true;
 				lbcpf.Items.Clear();
-				if (!(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
+				HeaderText = !(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 						(ushort)Wrapper.FileDescriptor.Instance
-					) is Wrapper.SDesc sdsc))
-				{
-					HeaderText = "CPF Viewer";
-				}
-				else
-				{
-					HeaderText =
-						"CPF Viewer ("
+					) is Wrapper.SDesc sdsc)
+					? "CPF Viewer"
+					: "CPF Viewer ("
 						+ sdsc.SimName
 						+ " "
 						+ sdsc.SimFamilyName
 						+ " DNA)";
-				}
 
 				foreach (Wrapper.CpfItem item in wrp.Items)
 				{

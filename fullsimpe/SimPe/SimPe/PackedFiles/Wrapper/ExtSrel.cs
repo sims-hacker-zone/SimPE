@@ -189,25 +189,13 @@ namespace SimPe.PackedFiles.Wrapper
 					}
 				}
 
-				if (isrc == null)
-				{
-					if (SourceSim != null)
-					{
-						isrc = GetImage.NoOne;
-					}
-					else
-					{
-						isrc = GetImage.NoOne;
-					}
-				}
-				else
-				{
-					isrc = Ambertation.Drawing.GraphicRoutines.KnockoutImage(
+				isrc = isrc == null
+					? SourceSim != null ? GetImage.NoOne : GetImage.NoOne
+					: Ambertation.Drawing.GraphicRoutines.KnockoutImage(
 						isrc,
 						new Point(0, 0),
 						Color.Magenta
 					);
-				}
 
 				Image idst = null;
 				if (TargetSim != null)
@@ -221,25 +209,13 @@ namespace SimPe.PackedFiles.Wrapper
 					}
 				}
 
-				if (idst == null)
-				{
-					if (TargetSim != null)
-					{
-						idst = GetImage.NoOne;
-					}
-					else
-					{
-						idst = GetImage.NoOne;
-					}
-				}
-				else
-				{
-					idst = Ambertation.Drawing.GraphicRoutines.KnockoutImage(
+				idst = idst == null
+					? TargetSim != null ? GetImage.NoOne : GetImage.NoOne
+					: Ambertation.Drawing.GraphicRoutines.KnockoutImage(
 						idst,
 						new Point(0, 0),
 						Color.Magenta
 					);
-				}
 
 				const int offsety = 32;
 				g.DrawImage(

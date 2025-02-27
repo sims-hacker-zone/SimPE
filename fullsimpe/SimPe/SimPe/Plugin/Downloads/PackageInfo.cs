@@ -133,14 +133,7 @@ namespace SimPe.Plugin.Downloads
 		/// <returns>The expansion which madkes this File available (<see cref="Expansion.Custom"/> marks a Custom File from the Downloads Folder)</returns>
 		public static Expansions FileFrom(string flname)
 		{
-			if (flname == null)
-			{
-				flname = "";
-			}
-			else
-			{
-				flname = Helper.CompareableFileName(flname);
-			}
+			flname = flname == null ? "" : Helper.CompareableFileName(flname);
 
 			foreach (ExpansionItem ei in PathProvider.Global.Expansions)
 			{
@@ -289,14 +282,7 @@ namespace SimPe.Plugin.Downloads
 			if (aspect)
 			{
 				double a = img.Width / (double)img.Height;
-				if (img.Height > img.Width)
-				{
-					sz = new Size((int)(a * sz.Height), sz.Height);
-				}
-				else
-				{
-					sz = new Size(sz.Width, (int)(sz.Width / a));
-				}
+				sz = img.Height > img.Width ? new Size((int)(a * sz.Height), sz.Height) : new Size(sz.Width, (int)(sz.Width / a));
 			}
 			if (knockout)
 			{

@@ -64,14 +64,7 @@ namespace pjHoodTool
 			cHoodTool.incpet = cbshowpets.Checked;
 			cHoodTool.incbus = cbshowbusi.Checked;
 			cHoodTool.inclot = !cbExcludeLots.Checked;
-			if (rbcsv.Checked)
-			{
-				cHoodTool.outptype = ".csv";
-			}
-			else
-			{
-				cHoodTool.outptype = ".txt";
-			}
+			cHoodTool.outptype = rbcsv.Checked ? ".csv" : ".txt";
 
 			Settings = dun; // Save settings
 			Close();
@@ -145,15 +138,7 @@ namespace pjHoodTool
 			}
 			set
 			{
-				string temp = "";
-				if (cbshowbasic.Checked)
-				{
-					temp = "1";
-				}
-				else
-				{
-					temp = "0";
-				}
+				string temp = cbshowbasic.Checked ? "1" : "0";
 
 				if (cbshowinterests.Checked)
 				{

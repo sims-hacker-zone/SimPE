@@ -723,14 +723,7 @@ namespace Ambertation.Windows.Forms
 			{
 				if (hvc != null)
 				{
-					if (vs == HexViewControl.ViewState.Hex)
-					{
-						hvc.SelectedByte = Convert.ToByte(((TextBox)sender).Text, 16);
-					}
-					else
-					{
-						hvc.SelectedByte = Convert.ToByte(((TextBox)sender).Text);
-					}
+					hvc.SelectedByte = vs == HexViewControl.ViewState.Hex ? Convert.ToByte(((TextBox)sender).Text, 16) : Convert.ToByte(((TextBox)sender).Text);
 				}
 			}
 			catch { }
@@ -971,14 +964,7 @@ namespace Ambertation.Windows.Forms
 			{
 				if (hvc != null)
 				{
-					if (vs == HexViewControl.ViewState.Hex)
-					{
-						hvc.Offset = Convert.ToInt32(((TextBox)sender).Text, 16);
-					}
-					else
-					{
-						hvc.Offset = Convert.ToInt32(((TextBox)sender).Text);
-					}
+					hvc.Offset = vs == HexViewControl.ViewState.Hex ? Convert.ToInt32(((TextBox)sender).Text, 16) : Convert.ToInt32(((TextBox)sender).Text);
 				}
 			}
 			catch { }

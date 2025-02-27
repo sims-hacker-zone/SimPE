@@ -181,15 +181,7 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			IndexType = package.Header.IndexType;
-			long count = 0;
-			if (IndexType == Data.MetaData.IndexTypes.ptLongFileIndex)
-			{
-				count = reader.BaseStream.Length / 0x14;
-			}
-			else
-			{
-				count = reader.BaseStream.Length / 0x10;
-			}
+			long count = IndexType == Data.MetaData.IndexTypes.ptLongFileIndex ? reader.BaseStream.Length / 0x14 : reader.BaseStream.Length / 0x10;
 
 			Items = new ClstItem[count];
 
@@ -213,14 +205,9 @@ namespace SimPe.PackedFiles.Wrapper
 					)
 					{
 						i = 0;
-						if (IndexType == Data.MetaData.IndexTypes.ptLongFileIndex)
-						{
-							IndexType = Data.MetaData.IndexTypes.ptShortFileIndex;
-						}
-						else
-						{
-							IndexType = Data.MetaData.IndexTypes.ptLongFileIndex;
-						}
+						IndexType = IndexType == Data.MetaData.IndexTypes.ptLongFileIndex
+							? Data.MetaData.IndexTypes.ptShortFileIndex
+							: Data.MetaData.IndexTypes.ptLongFileIndex;
 
 						reader.BaseStream.Seek(pos, System.IO.SeekOrigin.Begin);
 						item = new ClstItem(IndexType);

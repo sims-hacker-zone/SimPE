@@ -207,14 +207,7 @@ namespace SimPe.Plugin
 		{
 			ctrl.Parent = pnop;
 
-			if (indent)
-			{
-				ctrl.Left = 16;
-			}
-			else
-			{
-				ctrl.Left = 0;
-			}
+			ctrl.Left = indent ? 16 : 0;
 
 			if (ctrl.GetType() == typeof(Panel))
 			{
@@ -1396,18 +1389,7 @@ namespace SimPe.Plugin
 					}
 				}
 
-				if (encount == lv.SelectedItems.Count)
-				{
-					cbenable.CheckState = CheckState.Checked;
-				}
-				else if (encount == 0)
-				{
-					cbenable.CheckState = CheckState.Unchecked;
-				}
-				else
-				{
-					cbenable.CheckState = CheckState.Indeterminate;
-				}
+				cbenable.CheckState = encount == lv.SelectedItems.Count ? CheckState.Checked : encount == 0 ? CheckState.Unchecked : CheckState.Indeterminate;
 
 				//Enable the Scanner Controls
 				foreach (IScanner scanner in lbscanners.Items)
@@ -1431,14 +1413,7 @@ namespace SimPe.Plugin
 		{
 			if (sorter.CurrentColumn == e.Column)
 			{
-				if (lv.Sorting == SortOrder.Ascending)
-				{
-					lv.Sorting = SortOrder.Descending;
-				}
-				else
-				{
-					lv.Sorting = SortOrder.Ascending;
-				}
+				lv.Sorting = lv.Sorting == SortOrder.Ascending ? SortOrder.Descending : SortOrder.Ascending;
 			}
 			else
 			{

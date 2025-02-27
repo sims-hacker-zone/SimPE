@@ -195,14 +195,7 @@ namespace SimPe.Plugin
 							o[1] = nrefitem.LocalGroup;
 							o[2] = nrefitem.FileDescriptor.Instance;
 							a.Tag = o;
-							if (Helper.WindowsRegistry.ShowObjdNames)
-							{
-								a.Name = oci.ObjectFileName;
-							}
-							else
-							{
-								a.Name = oci.Name;
-							}
+							a.Name = Helper.WindowsRegistry.ShowObjdNames ? oci.ObjectFileName : oci.Name;
 
 							Image img = oci.Thumbnail;
 							lbobj.Items.Add(a);

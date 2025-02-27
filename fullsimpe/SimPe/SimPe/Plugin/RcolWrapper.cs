@@ -401,14 +401,7 @@ namespace SimPe.Plugin
 				if (!Fast)
 				{
 					long size = reader.BaseStream.Length - reader.BaseStream.Position;
-					if (size > 0)
-					{
-						oversize = reader.ReadBytes((int)size);
-					}
-					else
-					{
-						oversize = new byte[0];
-					}
+					oversize = size > 0 ? reader.ReadBytes((int)size) : (new byte[0]);
 				}
 			}
 			catch (Exception e)

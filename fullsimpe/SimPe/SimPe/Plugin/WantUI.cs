@@ -108,14 +108,7 @@ namespace SimPe.Plugin
 				}
 
 				Interfaces.Wrapper.ISDesc sdsc = wrp.SimDescription;
-				if (sdsc != null)
-				{
-					form.lbsimname.Text = sdsc.SimName + " " + sdsc.SimFamilyName;
-				}
-				else
-				{
-					form.lbsimname.Text = Localization.Manager.GetString("Unknown");
-				}
+				form.lbsimname.Text = sdsc != null ? sdsc.SimName + " " + sdsc.SimFamilyName : Localization.Manager.GetString("Unknown");
 
 				form.lastwi = null;
 				form.lastlvi = null;

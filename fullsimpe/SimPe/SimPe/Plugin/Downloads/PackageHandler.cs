@@ -37,21 +37,14 @@ namespace SimPe.Plugin.Downloads
 
 		protected virtual void DeterminType(Interfaces.Files.IPackageFile pkg)
 		{
-			if (
-				System.IO.File.Exists(
+			type = System.IO.File.Exists(
 					System.IO.Path.Combine(
 						Helper.SimPePluginPath,
 						"simpe.scanfolder.plugin.dll"
 					)
 				)
-			)
-			{
-				type = PackageInfo.ClassifyPackage(pkg);
-			}
-			else
-			{
-				type = Cache.PackageType.Undefined;
-			}
+				? PackageInfo.ClassifyPackage(pkg)
+				: Cache.PackageType.Undefined;
 		}
 
 		protected virtual void OnLoadContent(

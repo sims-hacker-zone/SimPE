@@ -483,14 +483,7 @@ namespace SimPe.PackedFiles.Wrapper
 			locals = reader.ReadByte(); //0x0046 - # of locals
 			headerflag = reader.ReadByte(); //0x0047 - header flag
 			treeversion = reader.ReadUInt32(); //0x0048 - Tree version (4 bytes)
-			if (format > 0x8008)
-			{
-				cacheflags = reader.ReadByte();
-			}
-			else
-			{
-				cacheflags = 0;
-			}
+			cacheflags = format > 0x8008 ? reader.ReadByte() : (byte)0;
 		}
 
 		/// <summary>

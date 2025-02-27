@@ -93,57 +93,29 @@ namespace Ambertation
 				{
 					try
 					{
-						if (Type.IsEnum)
-						{
-							if (value.GetType() == typeof(int))
-							{
-								prop = Enum.ToObject(
+						prop = Type.IsEnum
+							? value.GetType() == typeof(int)
+								? Enum.ToObject(
 									Type,
 									Convert.ToInt32(value)
-								);
-							}
-							/*else if (value.GetType()==typeof(uint))
-	prop = System.Enum.ToObject(type, System.Convert.ToInt32(value));
-else if (value.GetType()==typeof(short))
-	prop = System.Enum.ToObject(type, System.Convert.ToInt32(value));
-else if (value.GetType()==typeof(ushort))
-	prop = System.Enum.ToObject(type, System.Convert.ToInt32(value));*/
-							else
-							{
-								prop = Enum.ToObject(
+								)
+								: Enum.ToObject(
 									Type,
 									Type.GetField(value.ToString()).GetValue(null)
-								);
-							}
-						}
-						else if (
-							(Type == typeof(FloatColor))
-							&& (value.GetType() == typeof(string))
-						)
-						{
-							prop = FloatColor.FromString(value.ToString());
-						}
-						else if (
-							(Type == typeof(FloatColor))
-							&& (value.GetType() == typeof(Color))
-						)
-						{
-							prop = FloatColor.FromColor((Color)value);
-						}
-						else if (
-							Type.GetInterface("Ambertation.IPropertyClass")
-							== typeof(IPropertyClass)
-						)
-						{
-							prop = Activator.CreateInstance(
-								Type,
-								new object[] { value }
-							);
-						}
-						else
-						{
-							prop = Convert.ChangeType(value, Type);
-						}
+								)
+							: (Type == typeof(FloatColor))
+														&& (value.GetType() == typeof(string))
+								? FloatColor.FromString(value.ToString())
+								: (Type == typeof(FloatColor))
+																					&& (value.GetType() == typeof(Color))
+															? FloatColor.FromColor((Color)value)
+															: Type.GetInterface("Ambertation.IPropertyClass")
+																												== typeof(IPropertyClass)
+																						? Activator.CreateInstance(
+																													Type,
+																													new object[] { value }
+																												)
+																						: Convert.ChangeType(value, Type);
 					}
 					catch
 					{
@@ -152,14 +124,7 @@ else if (value.GetType()==typeof(ushort))
 						{
 							string s = (string)value;
 							s = s.Trim();
-							if (s == "0")
-							{
-								prop = false;
-							}
-							else
-							{
-								prop = true;
-							}
+							prop = s == "0" ? false : (object)true;
 						}
 						else
 						{

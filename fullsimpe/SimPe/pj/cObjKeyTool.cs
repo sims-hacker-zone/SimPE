@@ -367,15 +367,7 @@ namespace pj
 				return null;
 			}
 
-			AbstractWrapper tgt;
-			if (Filetype == SimPe.Data.MetaData.REF_FILE)
-			{
-				tgt = new SimPe.Plugin.RefFile();
-			}
-			else
-			{
-				tgt = new SimPe.PackedFiles.Wrapper.Cpf();
-			}
+			AbstractWrapper tgt = Filetype == SimPe.Data.MetaData.REF_FILE ? new SimPe.Plugin.RefFile() : (AbstractWrapper)new SimPe.PackedFiles.Wrapper.Cpf();
 			tgt.ProcessData(pt, p);
 			return tgt;
 		}

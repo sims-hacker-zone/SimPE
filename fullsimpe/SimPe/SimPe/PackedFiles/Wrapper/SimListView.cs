@@ -195,18 +195,13 @@ namespace SimPe.PackedFiles.Wrapper
 				}
 			}
 
-			if (imgbig != null)
-			{
-				imgbig = Ambertation.Drawing.GraphicRoutines.KnockoutImage(
+			imgbig = imgbig != null
+				? Ambertation.Drawing.GraphicRoutines.KnockoutImage(
 					imgbig,
 					new Point(0, 0),
 					Color.Magenta
-				);
-			}
-			else
-			{
-				imgbig = GetImage.NoOne;
-			}
+				)
+				: GetImage.NoOne;
 
 			imgbig = Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(
 				imgbig,

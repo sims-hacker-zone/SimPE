@@ -348,14 +348,7 @@ namespace SimPe.Providers
 						.InstallFolder,
 					"TSData\\Res\\Objects\\objects.package"
 				);
-				if (System.IO.File.Exists(file))
-				{
-					BasePackage = Packages.File.LoadFromFile(file);
-				}
-				else
-				{
-					BasePackage = null;
-				}
+				BasePackage = System.IO.File.Exists(file) ? Packages.File.LoadFromFile(file) : (IPackageFile)null;
 			}
 		}
 
@@ -397,14 +390,7 @@ namespace SimPe.Providers
 					{
 						byte[] data = new byte[0];
 						IPackedFile pf = item.Package.Read(item.FileDescriptor);
-						if (pf.IsCompressed)
-						{
-							data = pf.Decompress(0x40);
-						}
-						else
-						{
-							data = pf.Data;
-						}
+						data = pf.IsCompressed ? pf.Decompress(0x40) : pf.Data;
 
 						return Helper.ToString(data);
 					}

@@ -278,14 +278,7 @@ namespace SimPe
 				(Data.MetaData.Languages)cblang.SelectedIndex + 1;
 			Helper.WindowsRegistry.GameDebug = cbdebug.Checked;
 			Helper.WindowsRegistry.AutoBackup = cbautobak.Checked;
-			if (PathProvider.Global.EPInstalled < 18)
-			{
-				Helper.WindowsRegistry.BlurNudity = cbblur.Checked;
-			}
-			else
-			{
-				Helper.WindowsRegistry.BlurNudity = true;
-			}
+			Helper.WindowsRegistry.BlurNudity = PathProvider.Global.EPInstalled < 18 ? cbblur.Checked : true;
 
 			Helper.WindowsRegistry.EnableSound = cbsound.Checked;
 			Helper.WindowsRegistry.WaitingScreen = cbwait.Checked;
@@ -544,14 +537,7 @@ namespace SimPe
 				wrappers = new ArrayList();
 			}
 
-			if (wrapper.Priority >= 0)
-			{
-				wrapper.Priority = index + 1;
-			}
-			else
-			{
-				wrapper.Priority = -1 * (index + 1);
-			}
+			wrapper.Priority = wrapper.Priority >= 0 ? index + 1 : -1 * (index + 1);
 
 			const int imgwidth = 22;
 			int top = 4 + index * (height + 4);
@@ -831,14 +817,7 @@ namespace SimPe
 					SizeMode = PictureBoxSizeMode.CenterImage
 				};
 				pb.Top = (pn.DisplayRectangle.Top + 1 - pb.Height) / 2;
-				if (wrapper.AllowMultipleInstances)
-				{
-					pb.Left = pn.Width - 4 * pb.Width - pb.Top;
-				}
-				else
-				{
-					pb.Left = pn.Width - 3 * pb.Width - pb.Top;
-				}
+				pb.Left = wrapper.AllowMultipleInstances ? pn.Width - 4 * pb.Width - pb.Top : pn.Width - 3 * pb.Width - pb.Top;
 
 				pb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 				pb.Image = Image.FromStream(
@@ -1088,23 +1067,9 @@ namespace SimPe
 			int p1 = w1.Priority;
 			int p2 = w2.Priority;
 
-			if (p1 >= 0)
-			{
-				w1.Priority = Math.Abs(p2);
-			}
-			else
-			{
-				w1.Priority = -1 * Math.Abs(p2);
-			}
+			w1.Priority = p1 >= 0 ? Math.Abs(p2) : -1 * Math.Abs(p2);
 
-			if (p2 >= 0)
-			{
-				w2.Priority = Math.Abs(p1);
-			}
-			else
-			{
-				w2.Priority = -1 * Math.Abs(p1);
-			}
+			w2.Priority = p2 >= 0 ? Math.Abs(p1) : -1 * Math.Abs(p1);
 
 			wrappers[index] = pn2;
 			wrappers[index + o] = pn1;
@@ -1156,19 +1121,14 @@ namespace SimPe
 		void SetBackgroundColor(object sender, Image i, bool small)
 		{
 			PictureBox pb = (PictureBox)sender;
-			if (small)
-			{
-				pb.Image = i.GetThumbnailImage(
+			pb.Image = small
+				? i.GetThumbnailImage(
 					16,
 					16,
 					new Image.GetThumbnailImageAbort(ThumbnailCallback),
 					IntPtr.Zero
-				);
-			}
-			else
-			{
-				pb.Image = i;
-			}
+				)
+				: i;
 		}
 
 		private void pb_ExpandClick(object sender, EventArgs e)
@@ -1752,28 +1712,20 @@ namespace SimPe
 			try
 			{
 				FileTableItem fti = new FileTableItem("Downloads", true, false, -1);
-				if (
-
-						PathProvider.Global.GetSaveGamePathForGroup(
+				fti.Name = PathProvider.Global.GetSaveGamePathForGroup(
 							PathProvider.Global.CurrentGroup
 						)
 						.Count > 0
-				)
-				{
-					fti.Name = System.IO.Path.Combine(
+					? System.IO.Path.Combine(
 						PathProvider.Global.GetSaveGamePathForGroup(
 							PathProvider.Global.CurrentGroup
 						)[0],
 						"Downloads"
-					);
-				}
-				else
-				{
-					fti.Name = System.IO.Path.Combine(
+					)
+					: System.IO.Path.Combine(
 						PathProvider.SimSavegameFolder,
 						"Downloads"
 					);
-				}
 
 				fti.Type = FileTablePaths.SaveGameFolder;
 				lbfolder.Items.Insert(0, fti);

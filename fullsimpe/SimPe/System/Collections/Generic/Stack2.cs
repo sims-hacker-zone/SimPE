@@ -326,14 +326,7 @@ namespace System.Collections.Generic
 				}
 
 				retval = (--_index >= 0);
-				if (retval)
-				{
-					_currentElement = _stack._array[_index];
-				}
-				else
-				{
-					_currentElement = default;
-				}
+				_currentElement = retval ? _stack._array[_index] : default;
 
 				return retval;
 			}

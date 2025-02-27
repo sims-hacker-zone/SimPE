@@ -562,8 +562,7 @@ namespace SimPe.Windows.Forms
 						{
 							if (mPicFit)
 							{
-								if (
-									(
+								mPicZoom = (
 										adjy
 										/ BackgroundImage.PhysicalDimension.Height
 									)
@@ -571,18 +570,10 @@ namespace SimPe.Windows.Forms
 										adjx
 										/ BackgroundImage.PhysicalDimension.Width
 									)
-								)
-								{
-									mPicZoom =
-										adjy
-										/ BackgroundImage.PhysicalDimension.Height;
-								}
-								else
-								{
-									mPicZoom =
-										adjx
+									? adjy
+										/ BackgroundImage.PhysicalDimension.Height
+									: adjx
 										/ BackgroundImage.PhysicalDimension.Width;
-								}
 							}
 							Int32 Widf = Convert.ToInt32(
 								BackgroundImage.Width * mPicZoom

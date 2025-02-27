@@ -425,14 +425,7 @@ namespace SimPe.PackedFiles.Wrapper
 				if (line is Lua.IOperator)
 				{
 					Lua.IOperator lop = line as Lua.IOperator;
-					if (DEBUG)
-					{
-						content = lop.ToString(cx) + " #" + line.GetType().Name;
-					}
-					else
-					{
-						content = lop.ToString(cx);
-					}
+					content = DEBUG ? lop.ToString(cx) + " #" + line.GetType().Name : lop.ToString(cx);
 
 					lop.Run(cx);
 				}
@@ -846,22 +839,15 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 			else if (InstructionType == Type.Number)
 			{
-				if (Parent.Parent.NumberSize == 8)
-				{
-					Value = reader.ReadDouble();
-				}
-				else if (Parent.Parent.NumberSize == 4)
-				{
-					Value = reader.ReadSingle();
-				}
-				else
-				{
-					throw new Exception(
-						"Number Size "
-							+ Parent.Parent.NumberSize.ToString()
-							+ " is not supported!"
-					);
-				}
+				Value = Parent.Parent.NumberSize == 8
+					? reader.ReadDouble()
+					: Parent.Parent.NumberSize == 4
+						? (double)reader.ReadSingle()
+						: throw new Exception(
+											"Number Size "
+												+ Parent.Parent.NumberSize.ToString()
+												+ " is not supported!"
+										);
 			}
 			else if (InstructionType == Type.Empty)
 			{

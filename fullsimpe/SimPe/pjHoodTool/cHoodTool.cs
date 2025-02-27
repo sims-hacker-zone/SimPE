@@ -321,14 +321,9 @@ namespace pjHoodTool
 			{
 				ctss = new StrWrapper();
 				ctss.ProcessData(pfds[0], pkg);
-				if (ctss[(byte)Helper.WindowsRegistry.LanguageCode, 0] == null)
-				{
-					hoodName = q(ctss[1, 0]);
-				}
-				else
-				{
-					hoodName = q(ctss[(byte)Helper.WindowsRegistry.LanguageCode, 0]);
-				}
+				hoodName = ctss[(byte)Helper.WindowsRegistry.LanguageCode, 0] == null
+					? q(ctss[1, 0])
+					: q(ctss[(byte)Helper.WindowsRegistry.LanguageCode, 0]);
 			}
 			else
 			{
@@ -402,22 +397,15 @@ namespace pjHoodTool
 							{
 								ctss = new StrWrapper();
 								ctss.ProcessData(pfds[0], pkg);
-								if (
-									ctss[(byte)Helper.WindowsRegistry.LanguageCode, 0]
+								hoodName = ctss[(byte)Helper.WindowsRegistry.LanguageCode, 0]
 									== null
-								)
-								{
-									hoodName = q(ctss[1, 0]);
-								}
-								else
-								{
-									hoodName = q(
+									? q(ctss[1, 0])
+									: q(
 										ctss[
 											(byte)Helper.WindowsRegistry.LanguageCode,
 											0
 										]
 									);
-								}
 
 								System.Windows.Forms.Application.DoEvents();
 								splash("Loading Subhood : " + hoodName);
@@ -569,18 +557,11 @@ namespace pjHoodTool
 					{
 						if (SimPe.Data.MetaData.GetKnownNPC(sdsc.SimId) != "not found")
 						{
-							if (incdes)
-							{
-								desc =
-									q(SimPe.Data.MetaData.GetKnownNPC(sdsc.SimId))
-									+ ",,(NPC)";
-							}
-							else
-							{
-								desc =
-									q(SimPe.Data.MetaData.GetKnownNPC(sdsc.SimId))
+							desc = incdes
+								? q(SimPe.Data.MetaData.GetKnownNPC(sdsc.SimId))
+									+ ",,(NPC)"
+								: q(SimPe.Data.MetaData.GetKnownNPC(sdsc.SimId))
 									+ ",(NPC)";
-							}
 						}
 						if (desc.EndsWith(",") && incdes)
 						{

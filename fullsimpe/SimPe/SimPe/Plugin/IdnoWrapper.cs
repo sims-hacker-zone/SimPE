@@ -303,14 +303,7 @@ namespace SimPe.Plugin
 
 			filename = filename.Trim().ToLower();
 
-			if (ids.ContainsKey(filename))
-			{
-				idno.Uid = (uint)ids[filename];
-			}
-			else
-			{
-				idno.Uid = 1;
-			}
+			idno.Uid = ids.ContainsKey(filename) ? (uint)ids[filename] : 1;
 
 			uint max = 0;
 			foreach (string flname in ids.Keys)
@@ -479,14 +472,7 @@ namespace SimPe.Plugin
 		public Idno()
 			: base()
 		{
-			if (PathProvider.Global.EPInstalled >= 1)
-			{
-				version = (uint)NeighborhoodVersion.Sims2_University;
-			}
-			else
-			{
-				version = (uint)NeighborhoodVersion.Sims2;
-			}
+			version = PathProvider.Global.EPInstalled >= 1 ? (uint)NeighborhoodVersion.Sims2_University : (uint)NeighborhoodVersion.Sims2;
 
 			Type = NeighborhoodType.Normal;
 			over = new byte[0];

@@ -108,21 +108,14 @@ namespace SimPe.PackedFiles.UserInterface
 			SelectButton(biId);
 
 			InternalChange = true;
-			if (
-				System
+			pbLastGrade.DisplayOffset = System
 					.Threading
 					.Thread
 					.CurrentThread
 					.CurrentUICulture
 					.TwoLetterISOLanguageName == "en"
-			)
-			{
-				pbLastGrade.DisplayOffset = 0;
-			}
-			else
-			{
-				pbLastGrade.DisplayOffset = 1;
-			}
+				? 0
+				: 1;
 
 			InternalChange = false;
 
@@ -1067,20 +1060,14 @@ namespace SimPe.PackedFiles.UserInterface
 					Sdesc.IsNPC;
 				btOriGuid.Visible = lbFixedRes.Visible = false;
 
-				if (System.IO.File.Exists(Sdesc.CharacterFileName))
-				{
-					miOpenChar.Text =
-						strresources.GetString("miOpenChar.Text")
+				miOpenChar.Text = System.IO.File.Exists(Sdesc.CharacterFileName)
+					? strresources.GetString("miOpenChar.Text")
 						+ " ("
 						+ System.IO.Path.GetFileNameWithoutExtension(
 							Sdesc.CharacterFileName
 						)
-						+ ")";
-				}
-				else
-				{
-					miOpenChar.Text = strresources.GetString("miOpenChar.Text");
-				}
+						+ ")"
+					: strresources.GetString("miOpenChar.Text");
 
 				if (
 					(int)Sdesc.Version
@@ -1246,15 +1233,7 @@ namespace SimPe.PackedFiles.UserInterface
 			for (int i = 0; i < cbmajor.Items.Count; i++)
 			{
 				object o = cbmajor.Items[i];
-				Majors at;
-				if (o.GetType() == typeof(Alias))
-				{
-					at = (Majors)((Alias)o).Id;
-				}
-				else
-				{
-					at = (Majors)o;
-				}
+				Majors at = o.GetType() == typeof(Alias) ? (Majors)((Alias)o).Id : (Majors)o;
 
 				if (at == sdesc.University.Major)
 				{
@@ -1595,14 +1574,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (img == null)
 			{
-				if (sdesc.CharacterDescription.Gender == MetaData.Gender.Female)
-				{
-					img = GetImage.SheOne;
-				}
-				else
-				{
-					img = GetImage.NoOne;
-				}
+				img = sdesc.CharacterDescription.Gender == MetaData.Gender.Female ? GetImage.SheOne : GetImage.NoOne;
 			}
 
 			img = Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(
@@ -1644,15 +1616,7 @@ namespace SimPe.PackedFiles.UserInterface
 			for (int i = 0; i < cbservice.Items.Count; i++)
 			{
 				object o = cbservice.Items[i];
-				MetaData.ServiceTypes at;
-				if (o.GetType() == typeof(Alias))
-				{
-					at = (LocalizedServiceTypes)((Alias)o).Id;
-				}
-				else
-				{
-					at = (LocalizedServiceTypes)o;
-				}
+				MetaData.ServiceTypes at = o.GetType() == typeof(Alias) ? (MetaData.ServiceTypes)(LocalizedServiceTypes)((Alias)o).Id : (MetaData.ServiceTypes)(LocalizedServiceTypes)o;
 
 				if (at == sdesc.CharacterDescription.ServiceTypes)
 				{
@@ -1688,14 +1652,7 @@ namespace SimPe.PackedFiles.UserInterface
 				lbsubspec.Visible = false;
 			}
 
-			if (sdesc.IsCharSplit)
-			{
-				lbSplitChar.Visible = true;
-			}
-			else
-			{
-				lbSplitChar.Visible = false;
-			}
+			lbSplitChar.Visible = sdesc.IsCharSplit;
 		}
 
 		void RefreshCareer(Wrapper.ExtSDesc sdesc)
@@ -1721,15 +1678,7 @@ namespace SimPe.PackedFiles.UserInterface
 			for (int i = 0; i < cbcareer.Items.Count; i++)
 			{
 				object o = cbcareer.Items[i];
-				MetaData.Careers at;
-				if (o.GetType() == typeof(Alias))
-				{
-					at = (LocalizedCareers)((Alias)o).Id;
-				}
-				else
-				{
-					at = (LocalizedCareers)o;
-				}
+				MetaData.Careers at = o.GetType() == typeof(Alias) ? (MetaData.Careers)(LocalizedCareers)((Alias)o).Id : (MetaData.Careers)(LocalizedCareers)o;
 
 				if (at == sdesc.CharacterDescription.Career)
 				{
@@ -1742,15 +1691,7 @@ namespace SimPe.PackedFiles.UserInterface
 			for (int i = 0; i < cbRetirement.Items.Count; i++)
 			{
 				object o = cbRetirement.Items[i];
-				MetaData.Careers at;
-				if (o.GetType() == typeof(Alias))
-				{
-					at = (LocalizedCareers)((Alias)o).Id;
-				}
-				else
-				{
-					at = (LocalizedCareers)o;
-				}
+				MetaData.Careers at = o.GetType() == typeof(Alias) ? (MetaData.Careers)(LocalizedCareers)((Alias)o).Id : (MetaData.Careers)(LocalizedCareers)o;
 
 				if (at == sdesc.CharacterDescription.Retired)
 				{
@@ -1766,14 +1707,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				LocalizedSchoolType type;
 				object o = cbschooltype.Items[i];
-				if (o.GetType() == typeof(Alias))
-				{
-					type = (LocalizedSchoolType)((Alias)o).Id;
-				}
-				else
-				{
-					type = (LocalizedSchoolType)o;
-				}
+				type = o.GetType() == typeof(Alias) ? (LocalizedSchoolType)((Alias)o).Id : (LocalizedSchoolType)o;
 
 				if (
 					sdesc.CharacterDescription.SchoolType
@@ -1794,14 +1728,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				MetaData.Grades grade;
 				object o = cbgrade.Items[i];
-				if (o.GetType() == typeof(Alias))
-				{
-					grade = (LocalizedGrades)((Alias)o).Id;
-				}
-				else
-				{
-					grade = (LocalizedGrades)o;
-				}
+				grade = o.GetType() == typeof(Alias) ? (MetaData.Grades)(LocalizedGrades)((Alias)o).Id : (MetaData.Grades)(LocalizedGrades)o;
 
 				if (sdesc.CharacterDescription.Grade == grade)
 				{
@@ -1816,20 +1743,12 @@ namespace SimPe.PackedFiles.UserInterface
 			tblifelinescore.Text =
 				sdesc.CharacterDescription.LifelineScore.ToString();
 			pnCareer.BackgroundImage = pnimage;
-			if (
-				(int)sdesc.Version
+			cbaspiration.Enabled = (int)sdesc.Version
 					>= (int)PackedFiles.Wrapper.SDescVersions.Freetime
 				&& !Helper.WindowsRegistry.AllowChangeOfSecondaryAspiration
-			)
-			{
-				cbaspiration.Enabled =
-					sdesc.Freetime.SecondaryAspiration
-					== MetaData.AspirationTypes.Nothing;
-			}
-			else
-			{
-				cbaspiration.Enabled = true;
-			}
+				? sdesc.Freetime.SecondaryAspiration
+					== MetaData.AspirationTypes.Nothing
+				: true;
 		}
 
 		void RefreshInterests(Wrapper.ExtSDesc sdesc)
@@ -2110,15 +2029,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			object o = cbmajor.Items[cbmajor.SelectedIndex];
-			Majors v;
-			if (o.GetType() == typeof(Alias))
-			{
-				v = (Majors)((Alias)o).Id;
-			}
-			else
-			{
-				v = (Majors)o;
-			}
+			Majors v = o.GetType() == typeof(Alias) ? (Majors)((Alias)o).Id : (Majors)o;
 
 			if (v == Majors.Unknown)
 			{
@@ -2369,14 +2280,7 @@ namespace SimPe.PackedFiles.UserInterface
 				Sdesc.CharacterDescription.LifeSection = (LocalizedLifeSections)
 					cblifesection.SelectedItem;
 
-				if (rbfemale.Checked)
-				{
-					Sdesc.CharacterDescription.Gender = MetaData.Gender.Female;
-				}
-				else
-				{
-					Sdesc.CharacterDescription.Gender = MetaData.Gender.Male;
-				}
+				Sdesc.CharacterDescription.Gender = rbfemale.Checked ? MetaData.Gender.Female : MetaData.Gender.Male;
 
 				Sdesc.Nightlife.Species =
 					(Wrapper.SdscNightlife.SpeciesType)
@@ -2932,15 +2836,7 @@ namespace SimPe.PackedFiles.UserInterface
 				for (int i = 0; i < cbservice.Items.Count; i++)
 				{
 					object o = cbservice.Items[i];
-					MetaData.ServiceTypes at;
-					if (o.GetType() == typeof(Alias))
-					{
-						at = (LocalizedServiceTypes)((Alias)o).Id;
-					}
-					else
-					{
-						at = (LocalizedServiceTypes)o;
-					}
+					MetaData.ServiceTypes at = o.GetType() == typeof(Alias) ? (MetaData.ServiceTypes)(LocalizedServiceTypes)((Alias)o).Id : (MetaData.ServiceTypes)(LocalizedServiceTypes)o;
 
 					if (at == Sdesc.CharacterDescription.ServiceTypes)
 					{
@@ -2973,14 +2869,7 @@ namespace SimPe.PackedFiles.UserInterface
 						16
 					);
 
-				if (cboncampus.Checked)
-				{
-					Sdesc.University.OnCampus = 0x1;
-				}
-				else
-				{
-					Sdesc.University.OnCampus = 0x0;
-				}
+				Sdesc.University.OnCampus = cboncampus.Checked ? (ushort)0x1 : (ushort)0x0;
 
 				Sdesc.University.Effort = (ushort)pbEffort.Value;
 				Sdesc.University.Grade = (ushort)pbLastGrade.Value;
@@ -3415,14 +3304,7 @@ if (System.IO.File.Exists(Sdesc.CharacterFileName))
 		void LoadRelList()
 		{
 			lv.Sim = Sdesc;
-			if (Sdesc == null)
-			{
-				lv.Package = null;
-			}
-			else
-			{
-				lv.Package = Sdesc.Package;
-			}
+			lv.Package = Sdesc == null ? null : Sdesc.Package;
 
 			ResetLabel();
 			loadedRel = true;
@@ -3476,14 +3358,7 @@ if (System.IO.File.Exists(Sdesc.CharacterFileName))
 				+ Localization.GetString("towards")
 				+ " "
 				+ srcRel.TargetSimName;
-			if (srcRel.TargetSim == null)
-			{
-				img = null;
-			}
-			else
-			{
-				img = srcRel.Image;
-			}
+			img = srcRel.TargetSim == null ? null : srcRel.Image;
 
 			if (img != null)
 			{
@@ -3503,14 +3378,7 @@ if (System.IO.File.Exists(Sdesc.CharacterFileName))
 				+ Localization.GetString("towards")
 				+ " "
 				+ dstRel.TargetSimName;
-			if (dstRel.TargetSim == null)
-			{
-				img = null;
-			}
-			else
-			{
-				img = (Image)dstRel.Image.Clone();
-			}
+			img = dstRel.TargetSim == null ? null : (Image)dstRel.Image.Clone();
 
 			if (img != null)
 			{
@@ -3579,23 +3447,16 @@ if (System.IO.File.Exists(Sdesc.CharacterFileName))
 		{
 			if (lv.SelectedItems.Count == 1)
 			{
-				if (Helper.WindowsRegistry.HiddenMode)
-				{
-					miAddRelation.Enabled =
-						(
+				miAddRelation.Enabled = Helper.WindowsRegistry.HiddenMode
+					? (
 							(SteepValley.Windows.Forms.XPListViewItem)
 								lv.SelectedItems[0]
-						).GroupIndex == 1;
-				}
-				else
-				{
-					miAddRelation.Enabled =
-						(
+						).GroupIndex == 1
+					: (
 							(SteepValley.Windows.Forms.XPListViewItem)
 								lv.SelectedItems[0]
 						).GroupIndex == 1
 						&& !Sdesc.Equals(lv.SelectedItems[0].Tag);
-				}
 
 				miRemRelation.Enabled =
 					(
@@ -4192,25 +4053,12 @@ if (System.IO.File.Exists(Sdesc.CharacterFileName))
 
 		private void SetCharacterAttributesVisibility()
 		{
-			bool showsim = true;
-			if (Sdesc == null)
-			{
-				showsim = true;
-			}
-			else
-			{
-				if (
-					(int)Sdesc.Version
+			bool showsim = Sdesc == null
+				? true
+				: (int)Sdesc.Version
 					>= (int)PackedFiles.Wrapper.SDescVersions.Pets
-				)
-				{
-					showsim = Sdesc.Nightlife.IsHuman;
-				}
-				else
-				{
-					showsim = true;
-				}
-			}
+					? Sdesc.Nightlife.IsHuman
+					: true;
 			pnSimInt.Visible = pnHumanChar.Visible = showsim;
 			btProfile.Visible = (showsim && !Helper.WindowsRegistry.HiddenMode);
 			pnPetChar.Visible = pnPetInt.Visible = !showsim;

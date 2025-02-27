@@ -207,15 +207,7 @@ namespace SimPe.Plugin
 			if (wantcache.ContainsKey(guid))
 			{
 				object o = wantcache[guid];
-				WantInformation wf;
-				if (o.GetType() == typeof(WantInformation))
-				{
-					wf = (WantInformation)o;
-				}
-				else
-				{
-					wf = WantCacheInformation.LoadWant((WantCacheItem)o);
-				}
+				WantInformation wf = o.GetType() == typeof(WantInformation) ? (WantInformation)o : WantCacheInformation.LoadWant((WantCacheItem)o);
 
 				return wf;
 			}

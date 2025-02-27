@@ -149,23 +149,9 @@ namespace SimPe.Plugin
 				Unknown1.Add(reader.ReadUInt32());
 			}
 
-			if (subver >= (UInt16)LtxtSubVersion.Voyage)
-			{
-				Unknown2 = reader.ReadSingle();
-			}
-			else
-			{
-				Unknown2 = 0;
-			}
+			Unknown2 = subver >= (UInt16)LtxtSubVersion.Voyage ? reader.ReadSingle() : 0;
 
-			if (subver >= (UInt16)LtxtSubVersion.Freetime)
-			{
-				Unknown3 = reader.ReadUInt32();
-			}
-			else
-			{
-				Unknown3 = 0;
-			}
+			Unknown3 = subver >= (UInt16)LtxtSubVersion.Freetime ? reader.ReadUInt32() : 0;
 		}
 
 		/// <summary>

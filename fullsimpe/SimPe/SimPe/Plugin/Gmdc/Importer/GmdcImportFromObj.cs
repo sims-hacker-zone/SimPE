@@ -182,14 +182,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 					}
 
 					Vector3f vec = new Vector3f(data[0], data[1], data[2]);
-					if (!normal)
-					{
-						vec = Component.InverseTransformScaled(vec);
-					}
-					else
-					{
-						vec = Component.InverseTransformNormal(vec);
-					}
+					vec = !normal ? Component.InverseTransformScaled(vec) : Component.InverseTransformNormal(vec);
 
 					GmdcElementValueThreeFloat v =
 						new GmdcElementValueThreeFloat(

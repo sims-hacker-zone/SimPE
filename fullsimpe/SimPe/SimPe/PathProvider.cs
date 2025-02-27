@@ -294,22 +294,16 @@ namespace SimPe
 		{
 			get
 			{
-				Microsoft.Win32.RegistryKey tk;
-				if (Latest.Version == 19 || Latest.Version == 18)
-				{
-					tk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
+				Microsoft.Win32.RegistryKey tk = Latest.Version == 19 || Latest.Version == 18
+					? Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
 						"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Sims2EP9.exe",
 						false
-					);
-				}
-				else
-				{
-					tk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
+					)
+					: Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
 						"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\"
 							+ Latest.ExeName,
 						false
 					);
-				}
 
 				if (tk == null)
 				{
@@ -995,35 +989,25 @@ namespace SimPe
 			{
 				try
 				{
-					Microsoft.Win32.RegistryKey tk;
-					if (Helper.WindowsRegistry.LoadOnlySimsStory == 28) // Castaway Stories
-					{
-						tk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
+					Microsoft.Win32.RegistryKey tk = Helper.WindowsRegistry.LoadOnlySimsStory == 28
+						? Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
 							"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\SimsCS.exe",
 							false
-						);
-					}
-					else if (Helper.WindowsRegistry.LoadOnlySimsStory == 29) // Pet Stories
-					{
-						tk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
-							"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\SimsPS.exe",
-							false
-						);
-					}
-					else if (Helper.WindowsRegistry.LoadOnlySimsStory == 30) // Life Stories
-					{
-						tk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
-							"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\SimsLS.exe",
-							false
-						);
-					}
-					else
-					{
-						tk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
-							"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Sims2.exe",
-							false
-						);
-					}
+						)
+						: Helper.WindowsRegistry.LoadOnlySimsStory == 29
+							? Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
+													"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\SimsPS.exe",
+													false
+												)
+							: Helper.WindowsRegistry.LoadOnlySimsStory == 30
+													? Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
+																			"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\SimsLS.exe",
+																			false
+																		)
+													: Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
+																			"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Sims2.exe",
+																			false
+																		);
 
 					if (tk != null)
 					{

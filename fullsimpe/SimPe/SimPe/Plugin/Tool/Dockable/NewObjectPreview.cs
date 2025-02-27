@@ -347,14 +347,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			UpdateScreen();
-			if (oci.Thumbnail == null)
-			{
-				pb.Image = defimg;
-			}
-			else
-			{
-				pb.Image = GenerateImage(pb.Size, oci.Thumbnail, true);
-			}
+			pb.Image = oci.Thumbnail == null ? defimg : GenerateImage(pb.Size, oci.Thumbnail, true);
 
 			lbName.Text = oci.Name;
 			lbVert.Text = "---";
@@ -398,14 +391,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				rcol.Dispose();
 			}
 			UpdateScreen();
-			if (fct > 0)
-			{
-				lbVert.Text = vct.ToString() + " (" + fct.ToString() + " Faces)";
-			}
-			else
-			{
-				lbVert.Text = "---";
-			}
+			lbVert.Text = fct > 0 ? vct.ToString() + " (" + fct.ToString() + " Faces)" : "---";
 		}
 
 		protected void ClearScreen()

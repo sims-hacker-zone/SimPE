@@ -137,14 +137,7 @@ namespace SimPe.Geometry
 			{
 				for (int c = 0; c < col; c++)
 				{
-					if (r == c)
-					{
-						i[r, c] = 1;
-					}
-					else
-					{
-						i[r, c] = 0;
-					}
+					i[r, c] = r == c ? 1 : 0;
 				}
 			}
 
@@ -669,25 +662,11 @@ namespace SimPe.Geometry
 			//find the minor with respect to the first element
 			for (int k = 0; k < minom2.Rows; k++)
 			{
-				if (k >= row)
-				{
-					i = k + 1;
-				}
-				else
-				{
-					i = k;
-				}
+				i = k >= row ? k + 1 : k;
 
 				for (int l = 0; l < minom2.Columns; l++)
 				{
-					if (l >= column)
-					{
-						j = l + 1;
-					}
-					else
-					{
-						j = l;
-					}
+					j = l >= column ? l + 1 : l;
 
 					minom2[k, l] = this[i, j];
 				}

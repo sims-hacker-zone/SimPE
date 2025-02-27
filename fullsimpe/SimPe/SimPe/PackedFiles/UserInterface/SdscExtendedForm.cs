@@ -422,18 +422,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void DigitChanged(object sender, EventArgs e)
 		{
-			if (rbhex.Checked)
-			{
-				Ambertation.BaseChangeShort.DigitBase = 16;
-			}
-			else if (rbbin.Checked)
-			{
-				Ambertation.BaseChangeShort.DigitBase = 2;
-			}
-			else
-			{
-				Ambertation.BaseChangeShort.DigitBase = 10;
-			}
+			Ambertation.BaseChangeShort.DigitBase = rbhex.Checked ? 16 : rbbin.Checked ? 2 : 10;
 
 			pg.Refresh();
 		}

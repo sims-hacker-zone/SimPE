@@ -166,14 +166,9 @@ namespace SimPe.Plugin
 					reader.BaseStream.Position = pos;
 					// on DXT5 if all alpha are the same the bytes 0 or 1 are not zero
 					// and the bytes 2-7 (codebits) ara all zero
-					if (((alpha & 0xffffffffffff0000) == 0) && ((alpha & 0xffff) != 0))
-					{
-						Format = ImageLoader.TxtrFormats.DXT5Format;
-					}
-					else
-					{
-						Format = ImageLoader.TxtrFormats.DXT3Format;
-					}
+					Format = ((alpha & 0xffffffffffff0000) == 0) && ((alpha & 0xffff) != 0)
+						? ImageLoader.TxtrFormats.DXT5Format
+						: ImageLoader.TxtrFormats.DXT3Format;
 				}
 			}
 			else

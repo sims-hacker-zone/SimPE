@@ -839,22 +839,14 @@ namespace SimPe
 					}
 				}
 
-				if (
-
-						PathProvider.Global.GetSaveGamePathForGroup(
+				path = PathProvider.Global.GetSaveGamePathForGroup(
 							PathProvider.Global.CurrentGroup
 						)
 						.Count > 0
-				)
-				{
-					path = PathProvider.Global.GetSaveGamePathForGroup(
+					? PathProvider.Global.GetSaveGamePathForGroup(
 						PathProvider.Global.CurrentGroup
-					)[0];
-				}
-				else
-				{
-					path = PathProvider.SimSavegameFolder;
-				}
+					)[0]
+					: PathProvider.SimSavegameFolder;
 
 				test = System.IO.Path.Combine(path, "Neighborhoods");
 				if (!System.IO.Directory.Exists(test))

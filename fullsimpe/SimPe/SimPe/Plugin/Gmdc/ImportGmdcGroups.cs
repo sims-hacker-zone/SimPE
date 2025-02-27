@@ -778,18 +778,7 @@ namespace SimPe.Plugin.Gmdc
 
 				cbBMesh.Checked = a.UseInBoundingMesh;
 
-				if (a.Group.Opacity >= 0x10)
-				{
-					cbopacity.SelectedIndex = 0;
-				}
-				else if (a.Group.Opacity > 0)
-				{
-					cbopacity.SelectedIndex = 1;
-				}
-				else
-				{
-					cbopacity.SelectedIndex = 2;
-				}
+				cbopacity.SelectedIndex = a.Group.Opacity >= 0x10 ? 0 : a.Group.Opacity > 0 ? 1 : 2;
 			}
 			finally
 			{
@@ -1249,18 +1238,9 @@ namespace SimPe.Plugin.Gmdc
 
 						ImportedGroup a = (ImportedGroup)lv.SelectedItems[i].Tag;
 
-						if (cbopacity.SelectedIndex == 0)
-						{
-							a.Group.Opacity = (uint)MeshOpacity.Opaque;
-						}
-						else if (cbopacity.SelectedIndex == 1)
-						{
-							a.Group.Opacity = (uint)MeshOpacity.Shadow;
-						}
-						else
-						{
-							a.Group.Opacity = (uint)MeshOpacity.Unknown;
-						}
+						a.Group.Opacity = cbopacity.SelectedIndex == 0
+							? (uint)MeshOpacity.Opaque
+							: cbopacity.SelectedIndex == 1 ? (uint)MeshOpacity.Shadow : (uint)MeshOpacity.Unknown;
 
 						//lv.SelectedItems[i].SubItems[2].Text = a.TargetName;
 					}
@@ -1394,14 +1374,7 @@ namespace SimPe.Plugin.Gmdc
 
 						a.UseInBoundingMesh = cbBMesh.Checked;
 
-						if (a.UseInBoundingMesh)
-						{
-							lv.SelectedItems[i].SubItems[6].Text = "yes";
-						}
-						else
-						{
-							lv.SelectedItems[i].SubItems[6].Text = "no";
-						}
+						lv.SelectedItems[i].SubItems[6].Text = a.UseInBoundingMesh ? "yes" : "no";
 					}
 				}
 				catch { }

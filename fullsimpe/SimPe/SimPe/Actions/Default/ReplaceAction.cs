@@ -37,20 +37,16 @@ namespace SimPe.Actions.Default
 		{
 			System.Windows.Forms.OpenFileDialog ofd =
 				new System.Windows.Forms.OpenFileDialog();
-			if (!add)
-			{
-				ofd.Filter = ExtensionProvider.BuildFilterString(
+			ofd.Filter = !add
+				? ExtensionProvider.BuildFilterString(
 					new ExtensionType[]
 					{
 						ExtensionType.ExtractedFile,
 						ExtensionType.ExtractedFileDescriptor,
 						ExtensionType.AllFiles,
 					}
-				);
-			}
-			else
-			{
-				ofd.Filter = ExtensionProvider.BuildFilterString(
+				)
+				: ExtensionProvider.BuildFilterString(
 					new ExtensionType[]
 					{
 						ExtensionType.ExtractedFileDescriptor,
@@ -61,7 +57,6 @@ namespace SimPe.Actions.Default
 						ExtensionType.AllFiles,
 					}
 				);
-			}
 
 			ofd.Title = Localization.GetString(ToString());
 			ofd.Multiselect = add;

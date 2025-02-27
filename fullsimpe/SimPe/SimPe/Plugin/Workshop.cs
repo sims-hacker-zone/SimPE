@@ -1133,14 +1133,7 @@ namespace SimPe.Plugin
 
 			tbseek.Tag = null;
 
-			if (a.Tag[2] == null)
-			{
-				pb.Image = null;
-			}
-			else
-			{
-				pb.Image = GetThumbnail((uint)a.Tag[1], (string)a.Tag[2]);
-			}
+			pb.Image = a.Tag[2] == null ? null : GetThumbnail((uint)a.Tag[1], (string)a.Tag[2]);
 		}
 
 		private void Start(object sender, EventArgs e)
@@ -1607,33 +1600,21 @@ namespace SimPe.Plugin
 					ObjectCloner oc = new ObjectCloner(package);
 				}
 
-				Packages.GeneratableFile dn_pkg = null;
-				if (System.IO.File.Exists(ScenegraphHelper.GMND_PACKAGE))
-				{
-					dn_pkg = Packages.File.LoadFromFile(
+				Packages.GeneratableFile dn_pkg = System.IO.File.Exists(ScenegraphHelper.GMND_PACKAGE)
+					? Packages.File.LoadFromFile(
 						ScenegraphHelper.GMND_PACKAGE
-					);
-				}
-				else
-				{
-					dn_pkg = Packages.File.LoadFromStream(
+					)
+					: Packages.File.LoadFromStream(
 						null
 					);
-				}
 
-				Packages.GeneratableFile gm_pkg = null;
-				if (System.IO.File.Exists(ScenegraphHelper.MMAT_PACKAGE))
-				{
-					gm_pkg = Packages.File.LoadFromFile(
+				Packages.GeneratableFile gm_pkg = System.IO.File.Exists(ScenegraphHelper.MMAT_PACKAGE)
+					? Packages.File.LoadFromFile(
 						ScenegraphHelper.MMAT_PACKAGE
-					);
-				}
-				else
-				{
-					gm_pkg = Packages.File.LoadFromStream(
+					)
+					: Packages.File.LoadFromStream(
 						null
 					);
-				}
 
 				Packages.GeneratableFile npackage =
 					Packages.File.LoadFromStream(
@@ -1801,14 +1782,7 @@ namespace SimPe.Plugin
 
 			IAlias a = (IAlias)tv.SelectedNode.Tag;
 
-			if (a.Tag[2] == null)
-			{
-				pb.Image = null;
-			}
-			else
-			{
-				pb.Image = GetThumbnail((uint)a.Tag[1], (string)a.Tag[2]);
-			}
+			pb.Image = a.Tag[2] == null ? null : GetThumbnail((uint)a.Tag[1], (string)a.Tag[2]);
 		}
 
 		private void TabChange(object sender, EventArgs e)

@@ -443,23 +443,9 @@ namespace SimPe.Cache
 			}
 
 			ObjectType = (Data.ObjectTypes)reader.ReadUInt16();
-			if (Version >= 4)
-			{
-				ObjectFunctionSort = reader.ReadUInt32();
-			}
-			else
-			{
-				ObjectFunctionSort = (uint)reader.ReadInt16();
-			}
+			ObjectFunctionSort = Version >= 4 ? reader.ReadUInt32() : (uint)reader.ReadInt16();
 
-			if (Version >= 5)
-			{
-				ObjBuildType = reader.ReadUInt32();
-			}
-			else
-			{
-				ObjBuildType = 0;
-			}
+			ObjBuildType = Version >= 5 ? reader.ReadUInt32() : 0;
 
 			if (Version >= 2)
 			{
@@ -472,14 +458,7 @@ namespace SimPe.Cache
 				Useable = true;
 			}
 
-			if (Version >= 3)
-			{
-				Class = (ObjectClass)reader.ReadByte();
-			}
-			else
-			{
-				Class = ObjectClass.Object;
-			}
+			Class = Version >= 3 ? (ObjectClass)reader.ReadByte() : ObjectClass.Object;
 		}
 
 		public void Save(BinaryWriter writer)

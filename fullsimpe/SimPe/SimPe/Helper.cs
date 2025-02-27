@@ -1308,14 +1308,7 @@ namespace SimPe
 
 			for (int i = 0; i < tokens.Length; i++)
 			{
-				if (tokens[i].Trim() != "")
-				{
-					data[i] = Convert.ToByte(tokens[i], 16);
-				}
-				else
-				{
-					data[i] = 0;
-				}
+				data[i] = tokens[i].Trim() != "" ? Convert.ToByte(tokens[i], 16) : (byte)0;
 			}
 			return data;
 		}

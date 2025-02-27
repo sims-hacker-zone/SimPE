@@ -198,14 +198,7 @@ namespace Ambertation.Windows.Forms
 
 			if (keepselection)
 			{
-				if (last < Items.Count)
-				{
-					SelectedIndex = last;
-				}
-				else
-				{
-					SelectedIndex = Items.Count - 1;
-				}
+				SelectedIndex = last < Items.Count ? last : Items.Count - 1;
 			}
 		}
 	}

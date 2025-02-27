@@ -188,14 +188,7 @@ namespace SimPe.Cache
 			}
 
 			Name = reader.ReadString();
-			if (Version >= 2)
-			{
-				objdname = reader.ReadString();
-			}
-			else
-			{
-				objdname = null;
-			}
+			objdname = Version >= 2 ? reader.ReadString() : null;
 
 			if (Version >= 3)
 			{

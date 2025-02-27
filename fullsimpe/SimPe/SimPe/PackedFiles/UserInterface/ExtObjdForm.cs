@@ -359,14 +359,7 @@ namespace SimPe.PackedFiles.UserInterface
 						if (ht.Contains(name))
 						{
 							object o = ht[name];
-							if (o is FlagBase)
-							{
-								wrapper.Data[i] = ((FlagBase)ht[name]);
-							}
-							else
-							{
-								wrapper.Data[i] = Convert.ToInt16(ht[name]);
-							}
+							wrapper.Data[i] = o is FlagBase ? (short)(FlagBase)ht[name] : Convert.ToInt16(ht[name]);
 						}
 					}
 					catch (Exception ex)
@@ -659,17 +652,10 @@ namespace SimPe.PackedFiles.UserInterface
 					for (int i = 0; i < cbBuildSort.Items.Count; i++)
 					{
 						object o = cbBuildSort.Items[i];
-						Data.BuildFunctionSubSort at;
-						if (o.GetType() == typeof(Data.Alias))
-						{
-							at = (Data.LocalizedBuildSubSort)
+						Data.BuildFunctionSubSort at = o.GetType() == typeof(Data.Alias)
+							? (Data.BuildFunctionSubSort)(Data.LocalizedBuildSubSort)
 								((Data.Alias)o).Id
-							;
-						}
-						else
-						{
-							at = (Data.LocalizedBuildSubSort)o;
-						}
+							: (Data.BuildFunctionSubSort)(Data.LocalizedBuildSubSort)o;
 
 						if (at == objd.BuildSubSort)
 						{
@@ -2718,18 +2704,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void DigitChanged(object sender, EventArgs e)
 		{
-			if (rbhex.Checked)
-			{
-				Ambertation.BaseChangeableNumber.DigitBase = 16;
-			}
-			else if (rbbin.Checked)
-			{
-				Ambertation.BaseChangeableNumber.DigitBase = 2;
-			}
-			else
-			{
-				Ambertation.BaseChangeableNumber.DigitBase = 10;
-			}
+			Ambertation.BaseChangeableNumber.DigitBase = rbhex.Checked ? 16 : rbbin.Checked ? 2 : 10;
 
 			pg.Refresh();
 		}

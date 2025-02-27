@@ -1105,16 +1105,9 @@ namespace SimPe.Packages
 
 		private void S2CPFilename(object sender, EventArgs e)
 		{
-			if (cb2cp.Checked)
-			{
-				sfd.Filter =
-					"Sims 2 Community Package (*.s2cp)|*.s2cp|All Files (*.*)|*.*";
-			}
-			else
-			{
-				sfd.Filter =
-					"Sims 2 Package (*.sims2pack)|*.sims2pack|All Files (*.*)|*.*";
-			}
+			sfd.Filter = cb2cp.Checked
+				? "Sims 2 Community Package (*.s2cp)|*.s2cp|All Files (*.*)|*.*"
+				: "Sims 2 Package (*.sims2pack)|*.sims2pack|All Files (*.*)|*.*";
 
 			if (sfd.ShowDialog() == DialogResult.OK)
 			{

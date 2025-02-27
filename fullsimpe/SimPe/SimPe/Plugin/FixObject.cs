@@ -521,54 +521,18 @@ namespace SimPe.Plugin
 						IPackedFileDescriptor p in rcol.ReferencedFiles
 					)
 					{
-						if (ver == FixVersion.UniversityReady2)
-						{
-							if (types.Contains(p.Type))
-							{
-								p.Group = Data.MetaData.CUSTOM_GROUP;
-							}
-							else
-							{
-								p.Group = Data.MetaData.LOCAL_GROUP;
-							}
-						}
-						else
-						{
-							if (Data.MetaData.RcolList.Contains(p.Type))
-							{
-								if (p.Type != Data.MetaData.ANIM)
-								{
-									p.Group = Data.MetaData.CUSTOM_GROUP;
-								}
-								else
-								{
-									p.Group = Data.MetaData.GLOBAL_GROUP;
-								}
-							}
-							else
-							{
-								p.Group = Data.MetaData.LOCAL_GROUP;
-							}
-						}
+						p.Group = ver == FixVersion.UniversityReady2
+							? types.Contains(p.Type) ? Data.MetaData.CUSTOM_GROUP : Data.MetaData.LOCAL_GROUP
+							: Data.MetaData.RcolList.Contains(p.Type)
+								? p.Type != Data.MetaData.ANIM ? Data.MetaData.CUSTOM_GROUP : Data.MetaData.GLOBAL_GROUP
+								: Data.MetaData.LOCAL_GROUP;
 					}
 					rcol.SynchronizeUserData();
 				}
 
-				if (RCOLcheck)
-				{
-					if (pfd.Type != Data.MetaData.ANIM)
-					{
-						pfd.Group = Data.MetaData.CUSTOM_GROUP;
-					}
-					else
-					{
-						pfd.Group = Data.MetaData.GLOBAL_GROUP;
-					}
-				}
-				else
-				{
-					pfd.Group = Data.MetaData.LOCAL_GROUP;
-				}
+				pfd.Group = RCOLcheck
+					? pfd.Type != Data.MetaData.ANIM ? Data.MetaData.CUSTOM_GROUP : Data.MetaData.GLOBAL_GROUP
+					: Data.MetaData.LOCAL_GROUP;
 			}
 
 			//is this a Fence package? If so, do special FenceFixes
@@ -704,28 +668,9 @@ namespace SimPe.Plugin
 							+ Helper.HexString(rpfd.Instance)
 							+ Helper.HexString(rpfd.SubType);
 
-						if (ver == FixVersion.UniversityReady2)
-						{
-							if (types.Contains(rpfd.Type))
-							{
-								rpfd.Group = Data.MetaData.CUSTOM_GROUP;
-							}
-							else
-							{
-								rpfd.Group = Data.MetaData.LOCAL_GROUP;
-							}
-						}
-						else
-						{
-							if (rpfd.Type != Data.MetaData.ANIM)
-							{
-								rpfd.Group = Data.MetaData.CUSTOM_GROUP;
-							}
-							else
-							{
-								rpfd.Group = Data.MetaData.GLOBAL_GROUP;
-							}
-						}
+						rpfd.Group = ver == FixVersion.UniversityReady2
+							? types.Contains(rpfd.Type) ? Data.MetaData.CUSTOM_GROUP : Data.MetaData.LOCAL_GROUP
+							: rpfd.Type != Data.MetaData.ANIM ? Data.MetaData.CUSTOM_GROUP : Data.MetaData.GLOBAL_GROUP;
 
 						if (refmap.Contains(refstr))
 						{
@@ -809,16 +754,11 @@ namespace SimPe.Plugin
 					}
 
 					string newref = (string)map[name];
-					if (newref != null)
-					{
-						i.Title = Hashes.StripHashFromName(
+					i.Title = newref != null
+						? Hashes.StripHashFromName(
 							newref.Substring(0, newref.Length - 5)
-						);
-					}
-					else
-					{
-						i.Title = Hashes.StripHashFromName(i.Title);
-					}
+						)
+						: Hashes.StripHashFromName(i.Title);
 
 					if (
 						((ver == FixVersion.UniversityReady) || (pfd.Instance == 0x88))
@@ -913,14 +853,7 @@ namespace SimPe.Plugin
 					PackedFiles.Wrapper.Nref nref =
 						new PackedFiles.Wrapper.Nref();
 					nref.ProcessData(pfd, package);
-					if (ver == FixVersion.UniversityReady)
-					{
-						nref.FileName = "SIMPE_" + modelname;
-					}
-					else
-					{
-						nref.FileName = "SIMPE_v2_" + modelname;
-					}
+					nref.FileName = ver == FixVersion.UniversityReady ? "SIMPE_" + modelname : "SIMPE_v2_" + modelname;
 
 					nref.SynchronizeUserData();
 				}

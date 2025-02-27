@@ -745,27 +745,20 @@ namespace SimPe
 			Stream s = typeof(Commandline).Assembly.GetManifestResourceStream(
 				"SimPe.data." + namer
 			);
-			if (namer == "guidindex.txt")
-			{
-				path = Path.Combine(
+			path = namer == "guidindex.txt"
+				? Path.Combine(
 					Helper.SimPePluginDataPath,
 					"pjse.coder.plugin\\guidindex.txt"
-				);
-			}
-			else if (namer.Contains(".package"))
-			{
-				path = Path.Combine(
-					Path.Combine(
-						Helper.SimPePluginDataPath,
-						"pjse.coder.plugin\\Includes"
-					),
-					namer
-				);
-			}
-			else
-			{
-				path = Path.Combine(Helper.SimPeDataPath, namer);
-			}
+				)
+				: namer.Contains(".package")
+					? Path.Combine(
+									Path.Combine(
+										Helper.SimPePluginDataPath,
+										"pjse.coder.plugin\\Includes"
+									),
+									namer
+								)
+					: Path.Combine(Helper.SimPeDataPath, namer);
 
 			if (s != null)
 			{

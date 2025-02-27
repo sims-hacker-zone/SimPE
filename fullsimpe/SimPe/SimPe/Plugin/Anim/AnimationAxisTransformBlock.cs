@@ -174,20 +174,7 @@ namespace SimPe.Plugin.Anim
 		{
 			get
 			{
-				byte size = 0;
-
-				if (type == 0)
-				{
-					size = 1;
-				}
-				else if (type == 1)
-				{
-					size = 3;
-				}
-				else
-				{
-					size = 4;
-				}
+				byte size = type == 0 ? (byte)1 : type == 1 ? (byte)3 : (byte)4;
 
 				return size;
 			}

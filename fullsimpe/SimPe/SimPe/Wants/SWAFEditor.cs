@@ -939,17 +939,10 @@ namespace SimPe.Wants
 		{
 			// Set the sort order to ascending when changing
 			// column groups; otherwise, reverse the sort order.
-			if (
-				lvItems.Sorting == SortOrder.Descending
+			lvItems.Sorting = lvItems.Sorting == SortOrder.Descending
 				|| (isRunningXPOrLater && (e.Column != groupColumn))
-			)
-			{
-				lvItems.Sorting = SortOrder.Ascending;
-			}
-			else
-			{
-				lvItems.Sorting = SortOrder.Descending;
-			}
+				? SortOrder.Ascending
+				: SortOrder.Descending;
 			Settings.SWAFSortColumn = groupColumn = e.Column;
 
 			// Set the groups to those created for the clicked column.
@@ -1110,20 +1103,14 @@ namespace SimPe.Wants
 			// order to return the correct value.
 			public int Compare(object x, object y)
 			{
-				int result;
-				if (column != 0)
-				{
-					result = String.Compare(
+				int result = column != 0
+					? String.Compare(
 						((ListViewGroup)x).Header,
 						((ListViewGroup)y).Header
-					);
-				}
-				else
-				{
-					result = col0hdrs
+					)
+					: col0hdrs
 						.IndexOf(((ListViewGroup)x).Header)
 						.CompareTo(col0hdrs.IndexOf(((ListViewGroup)y).Header));
-				}
 
 				if (order == SortOrder.Ascending)
 				{
@@ -1469,17 +1456,10 @@ namespace SimPe.Wants
 
 						if (img == null)
 						{
-							if (
-								sdsc.CharacterDescription.Gender
+							img = sdsc.CharacterDescription.Gender
 								== Data.MetaData.Gender.Female
-							)
-							{
-								img = GetImage.SheOne;
-							}
-							else
-							{
-								img = GetImage.NoOne;
-							}
+								? GetImage.SheOne
+								: GetImage.NoOne;
 						}
 						btnSim.Image = img.GetThumbnailImage(
 							64,

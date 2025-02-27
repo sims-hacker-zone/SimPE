@@ -614,14 +614,7 @@ namespace SimPe.Plugin.Anim
 			{
 				ImportedFrameBlock a = (ImportedFrameBlock)lv.SelectedItems[i].Tag;
 				a.DiscardZeroFrame = cbDiscard.Checked;
-				if (a.DiscardZeroFrame)
-				{
-					lv.SelectedItems[i].SubItems[5].Text = "no";
-				}
-				else
-				{
-					lv.SelectedItems[i].SubItems[5].Text = "yes";
-				}
+				lv.SelectedItems[i].SubItems[5].Text = a.DiscardZeroFrame ? "no" : "yes";
 
 				lv.SelectedItems[i].ForeColor = a.MarkColor;
 			}

@@ -233,14 +233,7 @@ namespace SimPe.Plugin
 						bool greyRecolor =
 							(item.Age == Ages.Elder ^ newKey == HairColor.Grey)
 							&& newKey != HairColor.Unbinned;
-						if (!greyRecolor)
-						{
-							item.ColorBin = newKey;
-						}
-						else
-						{
-							item.ColorBin = HairColor.Grey;
-						}
+						item.ColorBin = !greyRecolor ? newKey : HairColor.Grey;
 					}
 				}
 
@@ -282,14 +275,7 @@ namespace SimPe.Plugin
 					bool greyRecolor =
 						(item.Age == Ages.Elder ^ key == HairColor.Grey)
 						&& key != HairColor.Unbinned;
-					if (!greyRecolor)
-					{
-						item.ColorBin = key;
-					}
-					else
-					{
-						item.ColorBin = HairColor.Grey;
-					}
+					item.ColorBin = !greyRecolor ? key : HairColor.Grey;
 				}
 
 				recolorItems[key] = list.ToArray(typeof(RecolorItem));
@@ -807,17 +793,10 @@ namespace SimPe.Plugin
 
 							// special case
 							// TODO: re-check conditions
-							if (
-								item.Age == Ages.Elder
+							item.Hairtone = item.Age == Ages.Elder
 								&& key != HairColor.Unbinned
-							)
-							{
-								item.Hairtone = Utility.HairtoneGuid.Grey;
-							}
-							else
-							{
-								item.Hairtone = hairtoneGuid;
-							}
+								? Utility.HairtoneGuid.Grey
+								: hairtoneGuid;
 
 							#region New name
 							string oldName = item.Name;

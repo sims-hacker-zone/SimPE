@@ -144,14 +144,7 @@ namespace SimPe.Plugin.Gmdc
 
 			ReadBlock(reader, Faces);
 
-			if (parent.Version != 0x03)
-			{
-				Opacity = reader.ReadUInt32();
-			}
-			else
-			{
-				Opacity = 0;
-			}
+			Opacity = parent.Version != 0x03 ? reader.ReadUInt32() : 0;
 
 			if (parent.Version != 0x01)
 			{
@@ -282,47 +275,30 @@ namespace SimPe.Plugin.Gmdc
 						if (vb is GmdcElementValueOneInt oi)
 						{
 							byte[] data = oi.Bytes;
-							if (data.Length == 4)
-							{
-								v = new Geometry.Vector4f(
+							v = data.Length == 4
+								? new Geometry.Vector4f(
 									data[0],
 									data[1],
 									data[2],
 									data[3]
-								);
-							}
-							else if (data.Length == 3)
-							{
-								v = new Geometry.Vector4f(
-									data[0],
-									data[1],
-									data[2]
-								);
-							}
-							else if (data.Length == 2)
-							{
-								v = new Geometry.Vector4f(data[0], data[1], 0);
-							}
-							else
-							{
-								v = new Geometry.Vector4f(data[0], 0, 0);
-							}
-						}
-						else if (vb.Data.Length == 3)
-						{
-							v = new Geometry.Vector4f(
-								vb.Data[0],
-								vb.Data[1],
-								vb.Data[2]
-							);
-						}
-						else if (vb.Data.Length == 2)
-						{
-							v = new Geometry.Vector4f(vb.Data[0], vb.Data[1], 0);
+								)
+								: data.Length == 3
+									? new Geometry.Vector4f(
+																	data[0],
+																	data[1],
+																	data[2]
+																)
+									: data.Length == 2 ? new Geometry.Vector4f(data[0], data[1], 0) : new Geometry.Vector4f(data[0], 0, 0);
 						}
 						else
 						{
-							v = new Geometry.Vector4f(vb.Data[0], 0, 0);
+							v = vb.Data.Length == 3
+								? new Geometry.Vector4f(
+															vb.Data[0],
+															vb.Data[1],
+															vb.Data[2]
+														)
+								: vb.Data.Length == 2 ? new Geometry.Vector4f(vb.Data[0], vb.Data[1], 0) : new Geometry.Vector4f(vb.Data[0], 0, 0);
 						}
 
 						ret.Add(v);

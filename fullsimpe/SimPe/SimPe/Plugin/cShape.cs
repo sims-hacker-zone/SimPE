@@ -288,14 +288,7 @@ namespace SimPe.Plugin
 			GraphNode.BlockID = reader.ReadUInt32();
 			GraphNode.Unserialize(reader);
 
-			if (version != 0x06)
-			{
-				Unknwon = new uint[reader.ReadUInt32()];
-			}
-			else
-			{
-				Unknwon = new uint[0];
-			}
+			Unknwon = version != 0x06 ? (new uint[reader.ReadUInt32()]) : (new uint[0]);
 
 			for (int i = 0; i < Unknwon.Length; i++)
 			{

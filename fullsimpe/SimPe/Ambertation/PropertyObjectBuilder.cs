@@ -144,19 +144,9 @@ namespace Ambertation
 		public static BaseChangeShort Convert(string s)
 		{
 			s = s.Trim().ToLower();
-			short val = 0;
-			if (s.StartsWith("0x"))
-			{
-				val = System.Convert.ToInt16(s, 16);
-			}
-			else if (s.StartsWith("b"))
-			{
-				val = System.Convert.ToInt16(s.Substring(1), 2);
-			}
-			else
-			{
-				val = System.Convert.ToInt16(s, 10);
-			}
+			short val = s.StartsWith("0x")
+				? System.Convert.ToInt16(s, 16)
+				: s.StartsWith("b") ? System.Convert.ToInt16(s.Substring(1), 2) : System.Convert.ToInt16(s, 10);
 
 			return new BaseChangeShort(val);
 		}

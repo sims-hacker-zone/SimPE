@@ -85,18 +85,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 			}
 
-			if (tct == 0)
-			{
-				rd.cbComp.SelectedIndex = 0;
-			}
-			else if (tct == es.Count)
-			{
-				rd.cbComp.SelectedIndex = 1;
-			}
-			else
-			{
-				rd.cbComp.SelectedIndex = 2;
-			}
+			rd.cbComp.SelectedIndex = tct == 0 ? 0 : tct == es.Count ? 1 : 2;
 
 			rd.cbComp.Enabled = (es.Count > 0);
 			rd.lbComp.Enabled = (es.Count > 0);

@@ -173,14 +173,7 @@ namespace SimPe.Plugin.Scanner
 						sex += sx.ToString();
 					}
 				}
-				if (f == 0)
-				{
-					cl = System.Drawing.Color.Red;
-				}
-				else
-				{
-					cl = lvi.ForeColor;
-				}
+				cl = f == 0 ? System.Drawing.Color.Red : lvi.ForeColor;
 
 				SetSubItem(lvi, StartColum + 2, sex, cl);
 
@@ -201,14 +194,7 @@ namespace SimPe.Plugin.Scanner
 							category += cat.ToString();
 						}
 					}
-					if (c == 0)
-					{
-						cl = System.Drawing.Color.Red;
-					}
-					else
-					{
-						cl = lvi.ForeColor;
-					}
+					cl = c == 0 ? System.Drawing.Color.Red : lvi.ForeColor;
 
 					SetSubItem(lvi, StartColum + 1, category, cl);
 				}
@@ -305,70 +291,40 @@ namespace SimPe.Plugin.Scanner
 			//Set the State of the Checkboxes
 			for (int i = 0; i < agect.Length; i++)
 			{
-				if (agect[i] == 0)
-				{
-					ScannerPanelForm.Form.cbages[i].CheckState =
-						CheckState
-						.Unchecked;
-				}
-				else if (agect[i] == maxagecount)
-				{
-					ScannerPanelForm.Form.cbages[i].CheckState =
-						CheckState
-						.Checked;
-				}
-				else
-				{
-					ScannerPanelForm.Form.cbages[i].CheckState =
-						CheckState
-						.Indeterminate;
-				}
+				ScannerPanelForm.Form.cbages[i].CheckState = agect[i] == 0
+					? CheckState
+						.Unchecked
+					: agect[i] == maxagecount
+						? CheckState
+											.Checked
+						: CheckState
+											.Indeterminate;
 			}
 
 			//Set the State of the Checkboxes
 			for (int i = 0; i < catct.Length; i++)
 			{
-				if (catct[i] == 0)
-				{
-					ScannerPanelForm.Form.cbcategories[i].CheckState =
-						CheckState
-						.Unchecked;
-				}
-				else if (catct[i] == maxagecount)
-				{
-					ScannerPanelForm.Form.cbcategories[i].CheckState =
-						CheckState
-						.Checked;
-				}
-				else
-				{
-					ScannerPanelForm.Form.cbcategories[i].CheckState =
-						CheckState
-						.Indeterminate;
-				}
+				ScannerPanelForm.Form.cbcategories[i].CheckState = catct[i] == 0
+					? CheckState
+						.Unchecked
+					: catct[i] == maxagecount
+						? CheckState
+											.Checked
+						: CheckState
+											.Indeterminate;
 			}
 
 			//Set the State of the Checkboxes
 			for (int i = 0; i < sexct.Length; i++)
 			{
-				if (sexct[i] == 0)
-				{
-					ScannerPanelForm.Form.cbsexes[i].CheckState =
-						CheckState
-						.Unchecked;
-				}
-				else if (sexct[i] == maxagecount)
-				{
-					ScannerPanelForm.Form.cbsexes[i].CheckState =
-						CheckState
-						.Checked;
-				}
-				else
-				{
-					ScannerPanelForm.Form.cbsexes[i].CheckState =
-						CheckState
-						.Indeterminate;
-				}
+				ScannerPanelForm.Form.cbsexes[i].CheckState = sexct[i] == 0
+					? CheckState
+						.Unchecked
+					: sexct[i] == maxagecount
+						? CheckState
+											.Checked
+						: CheckState
+											.Indeterminate;
 			}
 
 			OperationControl.Enabled = en;

@@ -224,25 +224,19 @@ namespace SimPe.Cache
 			//having an icon?
 			PackedFiles.Wrapper.Picture pic =
 				new PackedFiles.Wrapper.Picture();
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] iitems;
-			if (mci.IsBadge)
-			{
-				iitems = FileTableBase.FileIndex.FindFile(
+			Interfaces.Scenegraph.IScenegraphFileIndexItem[] iitems = mci.IsBadge
+				? FileTableBase.FileIndex.FindFile(
 					Data.MetaData.SIM_IMAGE_FILE,
 					objd.FileDescriptor.Group,
 					3,
 					null
-				);
-			}
-			else
-			{
-				iitems = FileTableBase.FileIndex.FindFile(
+				)
+				: FileTableBase.FileIndex.FindFile(
 					Data.MetaData.SIM_IMAGE_FILE,
 					objd.FileDescriptor.Group,
 					1,
 					null
 				);
-			}
 
 			if (iitems.Length > 0)
 			{
@@ -412,18 +406,12 @@ namespace SimPe.Cache
 		public Interfaces.IAlias FindObject(uint guid)
 		{
 			MemoryCacheItem mci = FindItem(guid);
-			Data.Alias a;
-			if (mci == null)
-			{
-				a = new Data.Alias(
+			Data.Alias a = mci == null
+				? new Data.Alias(
 					guid,
 					Localization.Manager.GetString("Unknown")
-				);
-			}
-			else
-			{
-				a = new Data.Alias(guid, mci.Name);
-			}
+				)
+				: new Data.Alias(guid, mci.Name);
 
 			object[] o = new object[3];
 			o[0] = mci.FileDescriptor;

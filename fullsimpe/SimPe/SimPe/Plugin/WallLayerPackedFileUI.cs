@@ -172,20 +172,13 @@ namespace SimPe.Plugin
 				cbExistFences.SelectedIndex = 0;
 			}
 
-			if (fences == 0)
-			{
-				cbClear.Visible =
-					lbwarning.Visible =
+			cbClear.Visible = fences == 0
+				? (lbwarning.Visible =
 					btchanger.Visible =
-						false;
-			}
-			else
-			{
-				cbClear.Visible =
-					lbwarning.Visible =
+						false)
+				: (lbwarning.Visible =
 					btchanger.Visible =
-						true;
-			}
+						true);
 
 			lbNormal.Text = Convert.ToString(normal) + " normal walls";
 			lbpicket.Text = Convert.ToString(picket) + " picket rail fences";
@@ -270,17 +263,11 @@ namespace SimPe.Plugin
 
 		private void btchanger_Click(object sender, EventArgs e)
 		{
-			uint bfrom;
-			if (Data.MetaData.GetFenceId(cbExistFences.SelectedItem) != 0)
-			{
-				bfrom = Data.MetaData.GetFenceId(cbExistFences.SelectedItem);
-			}
-			else
-			{
-				bfrom = Helper.HexStringToUInt(
+			uint bfrom = Data.MetaData.GetFenceId(cbExistFences.SelectedItem) != 0
+				? Data.MetaData.GetFenceId(cbExistFences.SelectedItem)
+				: Helper.HexStringToUInt(
 					Convert.ToString(cbExistFences.SelectedItem)
 				);
-			}
 
 			uint btoo = Data.MetaData.GetFenceId(cballFences.SelectedItem);
 			for (int j = 0; j < Wrapper.ItemCount; j++)

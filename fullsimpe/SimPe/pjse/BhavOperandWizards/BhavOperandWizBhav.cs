@@ -370,14 +370,7 @@ namespace pjse.BhavOperandWizards.WizBhav
 
 			for (int i = 0; i < nrArgs; i++)
 			{
-				if (tprp != null && !tprp.TextOnly && i < tprp.ParamCount)
-				{
-					albArg[i].Text = tprp[false, i].Label;
-				}
-				else
-				{
-					albArg[i].Text = Localization.GetString("unk");
-				}
+				albArg[i].Text = tprp != null && !tprp.TextOnly && i < tprp.ParamCount ? tprp[false, i].Label : Localization.GetString("unk");
 			}
 
 			for (int i = nrArgs; i < albArg.Length; i++)

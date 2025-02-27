@@ -269,20 +269,13 @@ namespace SimPe.Plugin
 				return LifoFile;
 			}
 
-			string name;
-			if (img == null)
-			{
-				name = "";
-			}
-			else
-			{
-				name =
-					"Image "
+			string name = img == null
+				? ""
+				: "Image "
 					+ img.Size.Width.ToString()
 					+ "x"
 					+ img.Size.Height.ToString()
 					+ " - ";
-			}
 
 			name += parent.NameResource.FileName;
 			return name;
@@ -750,14 +743,7 @@ namespace SimPe.Plugin
 			{
 				case 0x07:
 				{
-					if (MipMapBlocks.Length > 0)
-					{
-						MipMapLevels = (uint)MipMapBlocks[0].MipMaps.Length;
-					}
-					else
-					{
-						MipMapLevels = 0;
-					}
+					MipMapLevels = MipMapBlocks.Length > 0 ? (uint)MipMapBlocks[0].MipMaps.Length : 0;
 
 					break;
 				}

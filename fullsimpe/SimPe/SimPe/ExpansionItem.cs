@@ -225,14 +225,7 @@ namespace SimPe
 
 				if (Helper.WindowsRegistry.LoadOnlySimsStory > 0)
 				{
-					if (Version == Helper.WindowsRegistry.LoadOnlySimsStory)
-					{
-						isfound = true;
-					}
-					else
-					{
-						isfound = false;
-					}
+					isfound = Version == Helper.WindowsRegistry.LoadOnlySimsStory;
 				}
 				else
 				{
@@ -280,14 +273,7 @@ namespace SimPe
 					Registry = null;
 				}
 
-				if (Version == 18 || Version == 19)
-				{
-					CensorFileName = "";
-				}
-				else
-				{
-					CensorFileName = (string)key.GetValue("Censor", "");
-				}
+				CensorFileName = Version == 18 || Version == 19 ? "" : (string)key.GetValue("Censor", "");
 
 				Group = (int)key.GetValue("Group", 1);
 				ObjectsSubFolder = (string)

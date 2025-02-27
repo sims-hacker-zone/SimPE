@@ -304,14 +304,7 @@ namespace SimPe
 			else
 			{
 				string n = Name;
-				if (System.IO.Directory.Exists(n))
-				{
-					files = System.IO.Directory.GetFiles(n, "*.package");
-				}
-				else
-				{
-					files = new string[0];
-				}
+				files = System.IO.Directory.Exists(n) ? System.IO.Directory.GetFiles(n, "*.package") : (new string[0]);
 			}
 			return files;
 		}

@@ -74,14 +74,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			UpdateXObjScreen();
 			if (pb.Image == null)
 			{
-				if (oci.Thumbnail == null)
-				{
-					pb.Image = defimg;
-				}
-				else
-				{
-					pb.Image = GenerateImage(pb.Size, oci.Thumbnail, true);
-				}
+				pb.Image = oci.Thumbnail == null ? defimg : GenerateImage(pb.Size, oci.Thumbnail, true);
 			}
 			lbName.Text = oci.Name;
 		}

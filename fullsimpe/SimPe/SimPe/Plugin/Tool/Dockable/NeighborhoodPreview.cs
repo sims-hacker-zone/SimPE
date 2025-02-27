@@ -347,18 +347,10 @@ namespace SimPe.Plugin.Tool.Dockable
 						lbholi.Visible = false;
 					}
 
-					if (
-						idno.Type == NeighborhoodType.Suburb
+					lbType.Text = idno.Type == NeighborhoodType.Suburb
 						&& idno.Subep != Data.MetaData.NeighbourhoodEP.Business
-					)
-					{
-						lbType.Text =
-							"Hidden " + idno.Type.ToString().Replace("_", " ");
-					}
-					else
-					{
-						lbType.Text = idno.Type.ToString().Replace("_", " ");
-					}
+						? "Hidden " + idno.Type.ToString().Replace("_", " ")
+						: idno.Type.ToString().Replace("_", " ");
 
 					if (Helper.WindowsRegistry.HiddenMode)
 					{
@@ -423,14 +415,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		protected void ShowVersion()
 		{
 			Idno idno = Idno.FromPackage(Package);
-			if (idno != null)
-			{
-				lbVer.Text = idno.Version.ToString().Replace("_", " ");
-			}
-			else
-			{
-				lbVer.Text = NeighborhoodVersion.Unknown.ToString();
-			}
+			lbVer.Text = idno != null ? idno.Version.ToString().Replace("_", " ") : NeighborhoodVersion.Unknown.ToString();
 		}
 
 		protected PackedFiles.Wrapper.StrItemList GetCtssItems()

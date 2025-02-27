@@ -40,30 +40,15 @@ namespace SimPe.Plugin
 				{
 					HeaderText = "Lot Texture Reader";
 					hoodtype = Wrapper.Hoodtexture;
-					if (Wrapper.Hoodtexture == "lottexture-test-01")
-					{
-						hoodtype = "Lush";
-					}
-					else if (Wrapper.Hoodtexture == "lottexture-canvas-dirt")
-					{
-						hoodtype = "Dirt";
-					}
-					else if (Wrapper.Hoodtexture == "lottexture-canvas-desert")
-					{
-						hoodtype = "Desert";
-					}
-					else if (Wrapper.Hoodtexture == "lottexture-concrete-01")
-					{
-						hoodtype = "Concrete";
-					}
-					else if (Wrapper.Hoodtexture == "terrain-beach")
-					{
-						hoodtype = "Castaway";
-					}
-					else
-					{
-						hoodtype = Localization.GetString("Unknown");
-					}
+					hoodtype = Wrapper.Hoodtexture == "lottexture-test-01"
+						? "Lush"
+						: Wrapper.Hoodtexture == "lottexture-canvas-dirt"
+							? "Dirt"
+							: Wrapper.Hoodtexture == "lottexture-canvas-desert"
+													? "Desert"
+													: Wrapper.Hoodtexture == "lottexture-concrete-01"
+																			? "Concrete"
+																			: Wrapper.Hoodtexture == "terrain-beach" ? "Castaway" : Localization.GetString("Unknown");
 
 					rtLotTex.Text =
 						"Base texture is "

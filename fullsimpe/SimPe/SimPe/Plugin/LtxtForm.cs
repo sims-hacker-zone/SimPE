@@ -1352,14 +1352,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			if (Enum.IsDefined(typeof(Ltxt.LotType), cbtype.SelectedItem))
-			{
-				wrapper.Type = (Ltxt.LotType)cbtype.SelectedItem;
-			}
-			else
-			{
-				wrapper.Type = Ltxt.LotType.Unknown;
-			}
+			wrapper.Type = Enum.IsDefined(typeof(Ltxt.LotType), cbtype.SelectedItem) ? (Ltxt.LotType)cbtype.SelectedItem : Ltxt.LotType.Unknown;
 
 			tbtype.Text = "0x" + Helper.HexString((byte)wrapper.Type);
 			btnAddApt.Enabled = btnDelApt.Enabled = (
@@ -1458,22 +1451,7 @@ namespace SimPe.Plugin
 				)
 				{
 					cbLotClas.Enabled = true;
-					if (bby[12])
-					{
-						cbLotClas.SelectedIndex = 1;
-					}
-					else if (bby[13])
-					{
-						cbLotClas.SelectedIndex = 2;
-					}
-					else if (bby[14])
-					{
-						cbLotClas.SelectedIndex = 3;
-					}
-					else
-					{
-						cbLotClas.SelectedIndex = 0;
-					}
+					cbLotClas.SelectedIndex = bby[12] ? 1 : bby[13] ? 2 : bby[14] ? 3 : 0;
 				}
 				else
 				{
@@ -1815,14 +1793,7 @@ namespace SimPe.Plugin
 			Ltxt wrp = wrapper;
 			wrapper = null;
 
-			if (lb.SelectedIndex < 0)
-			{
-				tbElevationAt.Text = "";
-			}
-			else
-			{
-				tbElevationAt.Text = wrp.Unknown1[lb.SelectedIndex].ToString();
-			}
+			tbElevationAt.Text = lb.SelectedIndex < 0 ? "" : wrp.Unknown1[lb.SelectedIndex].ToString();
 
 			wrapper = wrp;
 		}
@@ -1946,14 +1917,7 @@ namespace SimPe.Plugin
 			Ltxt wrp = wrapper;
 			wrapper = null;
 
-			if (lbu7.SelectedIndex < 0)
-			{
-				tbu7.Text = "";
-			}
-			else
-			{
-				tbu7.Text = (string)lbu7.SelectedItem;
-			}
+			tbu7.Text = lbu7.SelectedIndex < 0 ? "" : (string)lbu7.SelectedItem;
 
 			wrapper = wrp;
 		}
