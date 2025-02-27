@@ -1,13 +1,14 @@
 # SimPE
+
 An editor designed for modding The Sims 2.
 
-# Contributing
-## Compiling
-Several solutions under different configurations (depending on your needs) are contained in the `__Solutions` subdirectory inside the `fullsimpe` folder.
+## Contributing
 
-If you simply want to compile the main SimPE application, open the `SimPE.sln` solution and compile.
+### Compiling
 
-## Prerequisites
-- Visual Studio 2015
-- DirectX SDK (optional, *might* be needed by some parts of SimPE)
-- PJSE (included as a submodule)
+Inside the `fullsimpe` folder is the file `Everything.sln`, which can be opened with Visual Studio.
+
+### Prerequisites
+
+- Visual Studio 2022 or VSCode
+- (for Linux) Mono, Wine and the .NET SDK with the `dotnet` tool available

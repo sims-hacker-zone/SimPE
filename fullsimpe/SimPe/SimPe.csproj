@@ -4638,49 +4638,10 @@
     <None Include="img\whok.png" />
     <None Include="img\whunk.png" />
     <None Include="img\whwarn.png" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net471" Version="1.0.3" />
     <PackageReference Include="SharpZipLib" Version="1.4.2" />
     <PackageReference Include="System.Resources.Extensions" Version="9.0.0" />
   </ItemGroup>
-  <ProjectExtensions>
-    <MonoDevelop xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-      <Properties>
-        <Policies>
-          <TextStylePolicy TabsToSpaces="False" RemoveTrailingWhitespace="True"
-            NoTabsAfterNonTabs="False" EolMarker="Native" FileWidth="80" TabWidth="8"
-            IndentWidth="8" scope="text/x-csharp" />
-          <CSharpFormattingPolicy IndentBlock="True" IndentBraces="False"
-            IndentSwitchCaseSection="True" LabelPositioning="OneLess"
-            NewLinesForBracesInTypes="True" NewLinesForBracesInMethods="True"
-            NewLinesForBracesInProperties="True" NewLinesForBracesInAccessors="True"
-            NewLinesForBracesInAnonymousMethods="True" NewLinesForBracesInControlBlocks="True"
-            NewLinesForBracesInAnonymousTypes="True"
-            NewLinesForBracesInObjectCollectionArrayInitializers="True"
-            NewLinesForBracesInLambdaExpressionBody="True" NewLineForElse="True"
-            NewLineForCatch="True" NewLineForFinally="True" NewLineForMembersInObjectInit="True"
-            NewLineForMembersInAnonymousTypes="True" NewLineForClausesInQuery="True"
-            SpacingAfterMethodDeclarationName="False"
-            SpaceWithinMethodDeclarationParenthesis="False"
-            SpaceBetweenEmptyMethodDeclarationParentheses="False" SpaceAfterMethodCallName="False"
-            SpaceWithinMethodCallParentheses="False" SpaceBetweenEmptyMethodCallParentheses="False"
-            SpaceAfterControlFlowStatementKeyword="True" SpaceWithinExpressionParentheses="False"
-            SpaceWithinCastParentheses="False" SpaceWithinOtherParentheses="False"
-            SpaceAfterCast="False" SpacesIgnoreAroundVariableDeclaration="False"
-            SpaceBeforeOpenSquareBracket="False" SpaceBetweenEmptySquareBrackets="False"
-            SpaceWithinSquareBrackets="False" SpaceAfterColonInBaseTypeDeclaration="True"
-            SpaceAfterComma="True" SpaceAfterDot="False" SpaceAfterSemicolonsInForStatement="True"
-            SpaceBeforeColonInBaseTypeDeclaration="True" SpaceBeforeComma="False"
-            SpaceBeforeDot="False" SpaceBeforeSemicolonsInForStatement="False"
-            SpacingAroundBinaryOperator="Single" WrappingPreserveSingleLine="True"
-            WrappingKeepStatementsOnSingleLine="True" PlaceSystemDirectiveFirst="True"
-            IndentSwitchSection="False" scope="text/x-csharp" />
-          <TextStylePolicy inheritsSet="null" scope="text/microsoft-resx" />
-          <XmlFormattingPolicy inheritsSet="null" scope="text/microsoft-resx" />
-        </Policies>
-      </Properties>
-    </MonoDevelop>
-  </ProjectExtensions>
 </Project>
