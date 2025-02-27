@@ -241,7 +241,10 @@ namespace SimPe.Packages
 			),
 			DefaultValue(Data.MetaData.IndexTypes.ptLongFileIndex)
 		]
-		public Data.MetaData.IndexTypes IndexType { get; set; }
+		public Data.MetaData.IndexTypes IndexType
+		{
+			get; set;
+		}
 
 		/// <summary>
 		/// 7 dwords of reserved Data - was 8 but have lost one for Icon in lot files

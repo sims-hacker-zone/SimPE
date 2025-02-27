@@ -292,7 +292,7 @@ namespace pjse
 
 		private static void setNullParent(T item)
 		{
-			item.Parent = default(U);
+			item.Parent = default;
 		}
 
 		public static implicit operator U(ExtendedWrapper<T, U> from)
@@ -516,7 +516,7 @@ namespace pjse
 	public abstract class ExtendedWrapperItem<T, U> : IEquatable<U>
 		where T : ExtendedWrapper
 	{
-		protected T parent = default(T);
+		protected T parent = default;
 		public T Parent
 		{
 			get => parent;

@@ -209,7 +209,7 @@ namespace System.Collections.Generic
 		{
 			if (_size == 0)
 			{
-				result = default(T);
+				result = default;
 				return false;
 			}
 			result = _array[_size - 1];
@@ -227,7 +227,7 @@ namespace System.Collections.Generic
 
 			_version++;
 			T item = _array[--_size];
-			_array[_size] = default(T);     // Free memory quicker.
+			_array[_size] = default;     // Free memory quicker.
 			return item;
 		}
 
@@ -235,13 +235,13 @@ namespace System.Collections.Generic
 		{
 			if (_size == 0)
 			{
-				result = default(T);
+				result = default;
 				return false;
 			}
 
 			_version++;
 			result = _array[--_size];
-			_array[_size] = default(T);     // Free memory quicker.
+			_array[_size] = default;     // Free memory quicker.
 			return true;
 		}
 
@@ -293,7 +293,7 @@ namespace System.Collections.Generic
 				_stack = stack;
 				_version = stack._version;
 				_index = -2;
-				_currentElement = default(T);
+				_currentElement = default;
 			}
 
 			public void Dispose()
@@ -332,7 +332,7 @@ namespace System.Collections.Generic
 				}
 				else
 				{
-					_currentElement = default(T);
+					_currentElement = default;
 				}
 
 				return retval;
@@ -367,7 +367,7 @@ namespace System.Collections.Generic
 				}
 
 				_index = -2;
-				_currentElement = default(T);
+				_currentElement = default;
 			}
 		}
 	}
