@@ -183,9 +183,7 @@ namespace SimPe
 
 			foreach (object o in docs.DropDownItems)
 			{
-				System.Windows.Forms.ToolStripMenuItem mi =
-					o as System.Windows.Forms.ToolStripMenuItem;
-				if (mi == null)
+				if (!(o is System.Windows.Forms.ToolStripMenuItem mi))
 				{
 					continue;
 				}

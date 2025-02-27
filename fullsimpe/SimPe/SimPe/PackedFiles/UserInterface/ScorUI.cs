@@ -366,9 +366,8 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void lb_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			ScorItem si = lb.SelectedItem as ScorItem;
 			pnContainer.Controls.Clear();
-			if (si != null)
+			if (lb.SelectedItem is ScorItem si)
 			{
 				if (si.Gui != null)
 				{

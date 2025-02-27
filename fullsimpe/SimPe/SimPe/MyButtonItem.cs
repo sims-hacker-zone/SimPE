@@ -41,13 +41,11 @@ namespace SimPe
 				GetLayoutInformations(c, list);
 			}
 
-			ToolStrip tb = b as ToolStrip;
-			if (tb != null)
+			if (b is ToolStrip tb)
 			{
 				foreach (object o in tb.Items)
 				{
-					MyButtonItem mbi = o as MyButtonItem;
-					if (mbi != null)
+					if (o is MyButtonItem mbi)
 					{
 						//if (!mbi.HaveDock)
 						mbi.Visible = list.Contains(mbi.Name);
@@ -71,13 +69,11 @@ namespace SimPe
 				SetLayoutInformations(c, list);
 			}
 
-			ToolStrip tb = b as ToolStrip;
-			if (tb != null)
+			if (b is ToolStrip tb)
 			{
 				foreach (object o in tb.Items)
 				{
-					MyButtonItem mbi = o as MyButtonItem;
-					if (mbi != null)
+					if (o is MyButtonItem mbi)
 					{
 						if (
 							mbi.Visible /*&& !mbi.HaveDock*/
@@ -140,8 +136,7 @@ namespace SimPe
 				Checked = item.Checked;
 
 				HaveDock = false;
-				ToolMenuItemExt tmie = item as ToolMenuItemExt;
-				if (tmie != null)
+				if (item is ToolMenuItemExt tmie)
 				{
 					Name = tmie.Name;
 				}

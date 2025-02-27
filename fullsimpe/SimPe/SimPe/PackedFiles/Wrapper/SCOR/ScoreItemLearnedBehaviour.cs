@@ -94,8 +94,7 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 				return;
 			}
 
-			Element e = cb.SelectedItem as Element;
-			if (e != null)
+			if (cb.SelectedItem is Element e)
 			{
 				e.Unknown1 = (byte)Helper.StringToInt16(textBox1.Text, e.Unknown1, 16);
 				e.Unknown3 = (byte)Helper.StringToInt16(textBox4.Text, e.Unknown3, 16);
@@ -110,9 +109,7 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 
 		private void cbGuid_SelectedIndexChanged(object sender, EventArgs es)
 		{
-			Element e = cb.SelectedItem as Element;
-
-			if (e != null)
+			if (cb.SelectedItem is Element e)
 			{
 				textBox2.Text = "0x" + Helper.HexString(cbGuid.SelectedGuid);
 			}
@@ -123,9 +120,7 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 			System.Windows.Forms.LinkLabelLinkClickedEventArgs es
 		)
 		{
-			Element e = cb.SelectedItem as Element;
-
-			if (e != null)
+			if (cb.SelectedItem is Element e)
 			{
 				int index = Math.Max(0, cb.SelectedIndex);
 				cb.Items.Remove(e);

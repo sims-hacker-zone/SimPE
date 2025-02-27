@@ -82,8 +82,7 @@ namespace SimPe.Plugin
 			RemoteControl.ControlEventArgs e
 		)
 		{
-			object[] os = e.Items as object[];
-			if (os != null)
+			if (e.Items is object[] os)
 			{
 				Data.NeighborhoodSlots st = (Data.NeighborhoodSlots)os[1];
 				uint inst = (uint)os[0];
@@ -612,8 +611,7 @@ namespace SimPe.Plugin
 
 		private void miFix_Activate(object sender, EventArgs e)
 		{
-			EnhancedNgbh ngbh = Ngbh as EnhancedNgbh;
-			if (ngbh != null)
+			if (Ngbh is EnhancedNgbh ngbh)
 			{
 				ngbh.FixNeighborhoodMemories();
 				RefreshGUI();

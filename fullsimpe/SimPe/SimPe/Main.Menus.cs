@@ -110,8 +110,7 @@ namespace SimPe
 		{
 			foreach (object o in miWindow.DropDownItems)
 			{
-				ToolStripMenuItem mi = o as ToolStripMenuItem;
-				if (mi == null)
+				if (!(o is ToolStripMenuItem mi))
 				{
 					continue;
 				}

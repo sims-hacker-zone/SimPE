@@ -266,9 +266,7 @@ namespace SimPe.Plugin
 
 			foreach (GmdcGroup g in groups)
 			{
-				Material mat =
-					txmts[g.Name] as Material;
-				if (mat == null)
+				if (!(txmts[g.Name] is Material mat))
 				{
 					mat = scn.CreateMaterial("mat_" + g.Name);
 				}
@@ -277,8 +275,7 @@ namespace SimPe.Plugin
 					mat.Name = "mat_" + g.Name;
 				}
 
-				System.IO.MemoryStream s = txtrs[g.Name] as System.IO.MemoryStream;
-				if (s != null)
+				if (txtrs[g.Name] is System.IO.MemoryStream s)
 				{
 					try
 					{
@@ -413,9 +410,7 @@ namespace SimPe.Plugin
 							}
 
 							used.Add(bnr);
-							Joint nj =
-								jointmap[bnr] as Joint;
-							if (nj != null)
+							if (jointmap[bnr] is Joint nj)
 							{
 								double w = 1;
 								if (bonewighte != null)

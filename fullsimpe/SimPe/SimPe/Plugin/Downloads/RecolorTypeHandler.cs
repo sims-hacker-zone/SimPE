@@ -216,8 +216,7 @@ namespace SimPe.Plugin.Downloads
 				);
 				if (hnd.Objects.Length > 0)
 				{
-					PackageInfo snfo = hnd.Objects[0] as PackageInfo;
-					if (snfo != null)
+					if (hnd.Objects[0] is PackageInfo snfo)
 					{
 						if (snfo.Name.Trim() == "")
 						{

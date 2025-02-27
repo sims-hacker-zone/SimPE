@@ -498,8 +498,7 @@ namespace SimPe.Plugin
 
 		public System.Drawing.Image GetImage(Rcol rcol, System.Drawing.Size size)
 		{
-			MaterialDefinitionRcol txmt = rcol as MaterialDefinitionRcol;
-			if (txmt != null)
+			if (rcol is MaterialDefinitionRcol txmt)
 			{
 				if (!Utility.IsNullOrEmpty(txmt.Textures))
 				{
@@ -559,8 +558,7 @@ namespace SimPe.Plugin
 
 		public IPackedFileDescriptor[] GetTextureDescriptor(Rcol rcol)
 		{
-			MaterialDefinitionRcol mmat = rcol as MaterialDefinitionRcol;
-			if (mmat != null)
+			if (rcol is MaterialDefinitionRcol mmat)
 			{
 				return mmat.Textures.GetFileDescriptor();
 			}
@@ -576,9 +574,7 @@ namespace SimPe.Plugin
 
 			Hashtable table = rcol.GetTextureDescriptor();
 
-			IPackedFileDescriptor pfdBaseTexture =
-				table[TextureType.Base] as IPackedFileDescriptor;
-			if (pfdBaseTexture != null)
+			if (table[TextureType.Base] is IPackedFileDescriptor pfdBaseTexture)
 			{
 				ResourceReference key = new ResourceReference(pfdBaseTexture);
 
@@ -605,9 +601,7 @@ namespace SimPe.Plugin
 
 			if (table.ContainsKey(TextureType.NormalMap))
 			{
-				IPackedFileDescriptor pfdNormalMapTexture =
-					table[TextureType.NormalMap] as IPackedFileDescriptor;
-				if (pfdNormalMapTexture != null)
+				if (table[TextureType.NormalMap] is IPackedFileDescriptor pfdNormalMapTexture)
 				{
 					ResourceReference key = new ResourceReference(pfdNormalMapTexture);
 

@@ -542,8 +542,7 @@ namespace Ambertation.Windows.Forms
 
 			public override bool Equals(object obj)
 			{
-				GraphicsId id = obj as GraphicsId;
-				if (id != null)
+				if (obj is GraphicsId id)
 				{
 					if (id.wd != wd)
 					{

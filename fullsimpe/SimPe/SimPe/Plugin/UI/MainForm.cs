@@ -411,8 +411,7 @@ namespace SimPe.Plugin.UI
 
 		void MovePackage_Command(object sender, EventArgs e)
 		{
-			MenuItem item = sender as MenuItem;
-			if (item != null)
+			if (sender is MenuItem item)
 			{
 				HairColor newKey = (HairColor)Enum.Parse(typeof(HairColor), item.Text);
 				if (!IsTabEnabled(newKey))
@@ -474,8 +473,7 @@ namespace SimPe.Plugin.UI
 
 		void Handle_ListView_ItemCheck(object sender, ItemCheckEventArgs e)
 		{
-			ListView lv = sender as ListView;
-			if (lv != null)
+			if (sender is ListView lv)
 			{
 				CheckState state = e.NewValue;
 				ListViewItem li = lv.Items[e.Index];
@@ -493,8 +491,7 @@ namespace SimPe.Plugin.UI
 
 		void Handle_ListView_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			ListView lv = sender as ListView;
-			if (lv != null)
+			if (sender is ListView lv)
 			{
 				miApplyMesh.Enabled = (lv.SelectedItems.Count > 0);
 				UpdateMaterialsList(lv);
@@ -505,8 +502,7 @@ namespace SimPe.Plugin.UI
 
 		private void Handle_ListView_ColumnClick(object sender, ColumnClickEventArgs e)
 		{
-			ListView lv = sender as ListView;
-			if (lv != null)
+			if (sender is ListView lv)
 			{
 				if (lv.ListViewItemSorter == null)
 				{

@@ -141,8 +141,7 @@ namespace SimPe.Wants
 					{
 						Application.DoEvents();
 
-						XWNTWrapper xwnt = e.Wrapper as XWNTWrapper;
-						if (xwnt == null)
+						if (!(e.Wrapper is XWNTWrapper xwnt))
 						{
 							continue;
 						}
@@ -987,15 +986,13 @@ namespace SimPe.Wants
 
 			if (column == 1 && xwnts.ContainsKey(i.WantId))
 			{
-				XWNTWrapper xwnt =
-					pjse.FileTable
+				if (pjse.FileTable
 						.GFT[
 							xwnts[i.WantId][1] as Interfaces.Files.IPackageFile,
 							xwnts[i.WantId][0]
 								as Interfaces.Files.IPackedFileDescriptor
 						][0]
-						.Wrapper as XWNTWrapper;
-				if (xwnt != null && xwnt["folder"] != null)
+						.Wrapper is XWNTWrapper xwnt && xwnt["folder"] != null)
 				{
 					subItemText = xwnt["folder"].Value;
 				}
@@ -1006,10 +1003,7 @@ namespace SimPe.Wants
 				&& i.Version >= 0x08
 			)
 			{
-				ExtSDesc sdsc =
-					FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(i.Sim)
-					as ExtSDesc;
-				if (sdsc != null && sdsc.SimFamilyName != null)
+				if (FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(i.Sim) is ExtSDesc sdsc && sdsc.SimFamilyName != null)
 				{
 					subItemText = sdsc.SimFamilyName;
 				}
@@ -1053,25 +1047,21 @@ namespace SimPe.Wants
 				// one to the appropriate group.
 				foreach (ListViewItem item in lvItems.Items)
 				{
-					SWAFItem i = item.Tag as SWAFItem;
-
 					// Retrieve the subitem text corresponding to the column.
 					string subItemText = item.SubItems[column].Text;
 
-					if (i != null)
+					if (item.Tag is SWAFItem i)
 					{
 						if (column == 1)
 						{
-							XWNTWrapper xwnt =
-								pjse.FileTable
+							if (pjse.FileTable
 									.GFT[
 										xwnts[i.WantId][1]
 											as Interfaces.Files.IPackageFile,
 										xwnts[i.WantId][0]
 											as Interfaces.Files.IPackedFileDescriptor
 									][0]
-									.Wrapper as XWNTWrapper;
-							if (xwnt != null && xwnt["folder"] != null)
+									.Wrapper is XWNTWrapper xwnt && xwnt["folder"] != null)
 							{
 								subItemText = xwnt["folder"].Value;
 							}
@@ -1082,11 +1072,9 @@ namespace SimPe.Wants
 							&& i.Version >= 0x08
 						)
 						{
-							ExtSDesc sdsc =
-								FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
+							if (FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 									i.Sim
-								) as ExtSDesc;
-							if (sdsc != null && sdsc.SimFamilyName != null)
+								) is ExtSDesc sdsc && sdsc.SimFamilyName != null)
 							{
 								subItemText = sdsc.SimFamilyName;
 							}
@@ -1177,11 +1165,9 @@ namespace SimPe.Wants
 
 			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
 
-			ExtSDesc sdsc =
-				FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
+			if (!(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 					sender.Equals(llSimName) ? i.SimID : i.Sim
-				) as ExtSDesc;
-			if (sdsc == null)
+				) is ExtSDesc sdsc))
 			{
 				return;
 			}
@@ -1211,8 +1197,7 @@ namespace SimPe.Wants
 				xwnts[i.WantId][1] as Interfaces.Files.IPackageFile
 			);
 
-			Form xwntForm = xwnt.UIHandler as Form;
-			if (xwntForm == null)
+			if (!(xwnt.UIHandler is Form xwntForm))
 			{
 				return;
 			}
@@ -1233,10 +1218,7 @@ namespace SimPe.Wants
 
 			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
 
-			ExtSDesc sdsc =
-				FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(i.SimID)
-				as ExtSDesc;
-			if (sdsc == null)
+			if (!(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(i.SimID) is ExtSDesc sdsc))
 			{
 				return;
 			}
@@ -1564,8 +1546,7 @@ namespace SimPe.Wants
 				return;
 			}
 
-			CheckBox ckb = sender as CheckBox;
-			if (ckb == null || lincs.IndexOf(ckb) < 0)
+			if (!(sender is CheckBox ckb) || lincs.IndexOf(ckb) < 0)
 			{
 				return;
 			}

@@ -264,11 +264,9 @@ namespace SimPe.PackedFiles.UserInterface
 					lbbody.Visible = true;
 				}
 
-				Wrapper.SDesc sdsc =
-					FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
+				if (!(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 						(ushort)Wrapper.FileDescriptor.Instance
-					) as Wrapper.SDesc;
-				if (sdsc == null)
+					) is Wrapper.SDesc sdsc))
 				{
 					CanCommit = true;
 					HeaderText = "Sim DNA";
@@ -291,11 +289,9 @@ namespace SimPe.PackedFiles.UserInterface
 						false;
 				lbcpf.Visible = true;
 				lbcpf.Items.Clear();
-				Wrapper.SDesc sdsc =
-					FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
+				if (!(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 						(ushort)Wrapper.FileDescriptor.Instance
-					) as Wrapper.SDesc;
-				if (sdsc == null)
+					) is Wrapper.SDesc sdsc))
 				{
 					HeaderText = "CPF Viewer";
 				}

@@ -59,8 +59,7 @@ namespace SimPe.Plugin
 			RemoteControl.ControlEventArgs e
 		)
 		{
-			object[] os = e.Items as object[];
-			if (os != null)
+			if (e.Items is object[] os)
 			{
 				cbtype.SelectedIndex = (int)((Data.NeighborhoodSlots)os[1]);
 				uint inst = (uint)os[0];

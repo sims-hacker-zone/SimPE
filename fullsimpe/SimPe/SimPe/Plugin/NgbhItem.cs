@@ -582,10 +582,7 @@ namespace SimPe.Plugin
 
 		public void SetSubject(uint guid)
 		{
-			Interfaces.Wrapper.ISDesc sdsc =
-				FileTableBase.ProviderRegistry.SimDescriptionProvider.SimGuidMap[guid]
-				as Interfaces.Wrapper.ISDesc;
-			if (sdsc != null)
+			if (FileTableBase.ProviderRegistry.SimDescriptionProvider.SimGuidMap[guid] is Interfaces.Wrapper.ISDesc sdsc)
 			{
 				SetSubject(sdsc.Instance, guid);
 			}

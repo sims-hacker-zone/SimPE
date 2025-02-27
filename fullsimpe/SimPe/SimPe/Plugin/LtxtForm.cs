@@ -2102,11 +2102,9 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			PackedFiles.Wrapper.ExtSDesc sdsc =
-				FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[
+			if (FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[
 					(ushort)simmy
-				] as PackedFiles.Wrapper.ExtSDesc;
-			if (sdsc != null)
+				] is PackedFiles.Wrapper.ExtSDesc sdsc)
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = sdsc.Package.NewDescriptor(
 					0xAACE2EFB,

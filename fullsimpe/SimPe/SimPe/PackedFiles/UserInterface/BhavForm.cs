@@ -544,8 +544,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private string getValueFromTag(string key)
 		{
-			string s = Tag as string;
-			if (s == null)
+			if (!(Tag is string s))
 			{
 				return null;
 			}

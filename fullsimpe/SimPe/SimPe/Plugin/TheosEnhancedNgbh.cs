@@ -128,10 +128,6 @@ namespace SimPe.Plugin
 
 			foreach (NgbhSlot slot in slots)
 			{
-				SDesc simDesc =
-					FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[
-						slot.SlotID
-					] as SDesc;
 				// SDesc always returns null
 				Collections.NgbhItems simMemories = slot.ItemsB;
 
@@ -194,7 +190,9 @@ namespace SimPe.Plugin
 					deletedCount += memoryToRemove.Count;
 					fixedCount += memoryToFix.Count;
 
-					if (simDesc != null) // SDesc always returns null so this won't be used as it always throwa an ERROR
+					if (FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[
+						slot.SlotID
+					] is SDesc simDesc) // SDesc always returns null so this won't be used as it always throwa an ERROR
 					{
 						trace.AppendFormat(
 							"{0} {1}: {2} \r\n",

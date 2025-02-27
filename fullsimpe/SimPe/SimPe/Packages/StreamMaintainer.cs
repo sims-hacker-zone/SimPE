@@ -274,9 +274,8 @@ namespace SimPe.Packages
 
 			foreach (string k in streams.Keys)
 			{
-				StreamItem si = streams[k] as StreamItem;
 				string add = k;
-				if (si != null)
+				if (streams[k] is StreamItem si)
 				{
 					add += " [" + si.StreamState + "]";
 				}

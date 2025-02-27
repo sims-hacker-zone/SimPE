@@ -586,11 +586,9 @@ namespace SimPe
 
 		private void Activate_miOpenInEp(object sender, EventArgs e)
 		{
-			ToolStripMenuItem mi = sender as ToolStripMenuItem;
-			if (mi != null)
+			if (sender is ToolStripMenuItem mi)
 			{
-				ExpansionItem ei = mi.Tag as ExpansionItem;
-				if (ei != null)
+				if (mi.Tag is ExpansionItem ei)
 				{
 					ofd.InitialDirectory = Path.Combine(
 						ei.InstallFolder,
@@ -750,8 +748,7 @@ namespace SimPe
 			manager.SuspendLayout();
 			foreach (object o in miWindow.DropDownItems)
 			{
-				ToolStripMenuItem mi = o as ToolStripMenuItem;
-				if (mi == null)
+				if (!(o is ToolStripMenuItem mi))
 				{
 					continue;
 				}

@@ -109,9 +109,7 @@ namespace SimPe.Plugin.Tool
 			foreach (ResourceContainer e in es)
 			{
 				uint t = e.Resource.FileDescriptor.Type;
-				ResourceContainers o =
-					map[t] as ResourceContainers;
-				if (o == null)
+				if (!(map[t] is ResourceContainers o))
 				{
 					o = new ResourceContainers();
 					map[t] = o;

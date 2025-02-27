@@ -101,8 +101,7 @@ namespace SimPe.Plugin
 					ReferenceChains["stdMatBaseTextureName"] as ArrayList;
 				if (!Utility.IsNullOrEmpty(list))
 				{
-					IPackedFileDescriptor pfd = list[0] as IPackedFileDescriptor;
-					if (pfd != null)
+					if (list[0] is IPackedFileDescriptor pfd)
 					{
 						ret.Add(TextureType.Base, pfd);
 					}
@@ -115,8 +114,7 @@ namespace SimPe.Plugin
 					ReferenceChains["stdMatNormalMapTextureName"] as ArrayList;
 				if (!Utility.IsNullOrEmpty(list))
 				{
-					IPackedFileDescriptor pfd = list[0] as IPackedFileDescriptor;
-					if (pfd != null)
+					if (list[0] is IPackedFileDescriptor pfd)
 					{
 						ret.Add(TextureType.NormalMap, pfd);
 					}

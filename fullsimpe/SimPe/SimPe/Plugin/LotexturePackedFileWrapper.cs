@@ -306,11 +306,9 @@ namespace SimPe.Plugin
 		{
 			if (FileDescriptor.Type == 0xCDB8BDC4)
 			{
-				PackedFiles.Wrapper.ExtSDesc sdsc =
-					FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
+				if (!(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 						(ushort)FileDescriptor.Instance
-					) as PackedFiles.Wrapper.ExtSDesc;
-				if (sdsc == null)
+					) is PackedFiles.Wrapper.ExtSDesc sdsc))
 				{
 					return base.GetResourceName(ta);
 				}

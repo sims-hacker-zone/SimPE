@@ -121,8 +121,7 @@ namespace SimPe
 
 			foreach (ToolStripItem tsi in miWindow.DropDownItems)
 			{
-				ToolStripMenuItem tsmi = tsi as ToolStripMenuItem;
-				if (tsmi == null)
+				if (!(tsi is ToolStripMenuItem tsmi))
 				{
 					continue;
 				}
@@ -146,9 +145,7 @@ namespace SimPe
 		{
 			foreach (ToolStripItem tsi in ts.Items)
 			{
-				ToolStripButton tsb =
-					tsi as ToolStripButton;
-				if (tsb == null)
+				if (!(tsi is ToolStripButton tsb))
 				{
 					continue;
 				}
@@ -164,9 +161,7 @@ namespace SimPe
 		{
 			foreach (ToolStripItem tsi in ts.Items)
 			{
-				ToolStripButton tsb =
-					tsi as ToolStripButton;
-				if (tsb == null)
+				if (!(tsi is ToolStripButton tsb))
 				{
 					continue;
 				}

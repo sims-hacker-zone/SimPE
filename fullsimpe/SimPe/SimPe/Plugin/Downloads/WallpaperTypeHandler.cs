@@ -30,9 +30,7 @@ namespace SimPe.Plugin.Downloads
 				rcol.ProcessData(pfd, pkg);
 				if (rcol.Blocks.Length > 0)
 				{
-					ImageData id =
-						rcol.Blocks[0] as ImageData;
-					if (id != null)
+					if (rcol.Blocks[0] is ImageData id)
 					{
 						MipMap m = id.GetLargestTexture(
 							new System.Drawing.Size(

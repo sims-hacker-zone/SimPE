@@ -117,8 +117,7 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 		{
 			get
 			{
-				ContainerItem ci = SelectedItem as ContainerItem;
-				if (ci == null)
+				if (!(SelectedItem is ContainerItem ci))
 				{
 					return 0;
 				}

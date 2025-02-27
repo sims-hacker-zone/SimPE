@@ -955,9 +955,7 @@ namespace SimPe
 
 		public int CompareTo(object obj)
 		{
-			ExpansionItem a = obj as ExpansionItem;
-
-			if (a == null)
+			if (!(obj is ExpansionItem a))
 			{
 				return 0;
 			}

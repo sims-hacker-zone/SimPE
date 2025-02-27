@@ -213,11 +213,9 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
-			ExtSDesc sdsc =
-				FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
+			if (!(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 					(ushort)FileDescriptor.Instance
-				) as ExtSDesc;
-			if (sdsc == null)
+				) is ExtSDesc sdsc))
 			{
 				return base.GetResourceName(ta);
 			}

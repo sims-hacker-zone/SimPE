@@ -1577,8 +1577,7 @@ namespace SimPe
 			SetupFileTableCheckboxes(cbIncCep, null);
 			foreach (CheckBox cb in lcb.Values)
 			{
-				ExpansionItem ei = cb.Tag as ExpansionItem;
-				if (ei != null)
+				if (cb.Tag is ExpansionItem ei)
 				{
 					SetupFileTableCheckboxes(cb, ei.Expansion);
 				}
@@ -1718,11 +1717,9 @@ namespace SimPe
 					{
 						foreach (Control c in groupBox8.Controls)
 						{
-							CheckBox cbs = c as CheckBox;
-							if (cbs != null)
+							if (c is CheckBox cbs)
 							{
-								ExpansionItem eis = cbs.Tag as ExpansionItem;
-								if (eis != null)
+								if (cbs.Tag is ExpansionItem eis)
 								{
 									if (cbs.Checked && !ei.ShareOneGroup(eis))
 									{
@@ -1974,8 +1971,7 @@ namespace SimPe
 			{
 				foreach (Control c in groupBox8.Controls)
 				{
-					CheckBox cbs = c as CheckBox;
-					if (cbs != null)
+					if (c is CheckBox cbs)
 					{
 						if (cbs.CheckState != 0)
 						{
@@ -1983,8 +1979,7 @@ namespace SimPe
 							cbs.Checked = false;
 							if (cbs != lcb["cbIncGraphics"])
 							{
-								ExpansionItem eis = cbs.Tag as ExpansionItem;
-								if (eis != null)
+								if (cbs.Tag is ExpansionItem eis)
 								{
 									ChangeFileTable(cbs, eis.Expansion);
 								}
@@ -2016,11 +2011,9 @@ namespace SimPe
 			{
 				foreach (Control c in groupBox8.Controls)
 				{
-					CheckBox cbs = c as CheckBox;
-					if (cbs != null)
+					if (c is CheckBox cbs)
 					{
-						ExpansionItem eis = cbs.Tag as ExpansionItem;
-						if (eis == null)
+						if (!(cbs.Tag is ExpansionItem eis))
 						{
 							if (cbs.CheckState != CheckState.Checked)
 							{

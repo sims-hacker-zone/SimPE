@@ -1708,9 +1708,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			ExtSDesc sdsc =
-				lvEmployees.SelectedItems[0].Tag as ExtSDesc;
-			if (sdsc == null)
+			if (!(lvEmployees.SelectedItems[0].Tag is ExtSDesc sdsc))
 			{
 				return;
 			}
@@ -1967,10 +1965,7 @@ namespace SimPe.Plugin
 
 			if (lvEmployees.SelectedItems[0].Tag != null)
 			{
-				ExtSDesc sdsc =
-					lvEmployees.SelectedItems[0].Tag
-					as ExtSDesc;
-				if (sdsc != null)
+				if (lvEmployees.SelectedItems[0].Tag is ExtSDesc sdsc)
 				{
 					if (Bnfo.Package == sdsc.Package)
 					{
@@ -2108,9 +2103,7 @@ namespace SimPe.Plugin
 
 			Interfaces.IAlias a =
 				cbsimselect.SelectedItem as Interfaces.IAlias;
-			ExtSDesc s =
-				a.Tag[0] as ExtSDesc;
-			if (s != null)
+			if (a.Tag[0] is ExtSDesc s)
 			{
 				ushort[] empls = new ushort[Bnfo.EmployeeCount + 1];
 				int[] pr = new int[Bnfo.EmployeeCount + 1];
@@ -2192,9 +2185,7 @@ namespace SimPe.Plugin
 			{
 				Interfaces.IAlias a =
 					cbsimselect.SelectedItem as Interfaces.IAlias;
-				ExtSDesc s =
-					a.Tag[0] as ExtSDesc;
-				if (s != null)
+				if (a.Tag[0] is ExtSDesc s)
 				{
 					tbchage.Text = Enum.GetName(
 						typeof(MetaData.LifeSections),
@@ -2374,9 +2365,7 @@ namespace SimPe.Plugin
 			{
 				Interfaces.IAlias a =
 					cbOsimselect.SelectedItem as Interfaces.IAlias;
-				ExtSDesc s =
-					a.Tag[0] as ExtSDesc;
-				if (s != null)
+				if (a.Tag[0] is ExtSDesc s)
 				{
 					tbOchage.Text = Enum.GetName(
 						typeof(MetaData.LifeSections),
@@ -2414,9 +2403,7 @@ namespace SimPe.Plugin
 
 			Interfaces.IAlias a =
 				cbOsimselect.SelectedItem as Interfaces.IAlias;
-			ExtSDesc s =
-				a.Tag[0] as ExtSDesc;
-			if (s != null)
+			if (a.Tag[0] is ExtSDesc s)
 			{
 				if (famly > 0 && homeb == 0 && s.FamilyInstance != famly)
 				{

@@ -161,8 +161,7 @@ namespace SimPe
 
 			for (int i = mi.Count - 1; i >= 0; i--)
 			{
-				ToolStripMenuItem tsmi = mi[i] as ToolStripMenuItem;
-				if (tsmi == null)
+				if (!(mi[i] is ToolStripMenuItem tsmi))
 				{
 					if (i < mi.Count - 1)
 					{
