@@ -445,9 +445,7 @@ namespace pjse
 				tgt = (Hashtable)(pfByTypeGroup[T] = new Hashtable());
 			}
 
-			Hashtable byTypeGroup = (Hashtable)(
-				(tgt[G] == null) ? (tgt[G] = new Hashtable()) : tgt[G]
-			);
+			Hashtable byTypeGroup = (Hashtable)(tgt[G] ?? (tgt[G] = new Hashtable()));
 			if (byTypeGroup[key] != null)
 			{
 				throw new Exception("byTypeGroup[key] != null");
@@ -461,12 +459,8 @@ namespace pjse
 				tgit = (Hashtable)(pfByTypeGroupInstance[T] = new Hashtable());
 			}
 
-			Hashtable tgitg = (Hashtable)(
-				(tgit[G] == null) ? (tgit[G] = new Hashtable()) : tgit[G]
-			);
-			Hashtable byTypeGroupInstance = (Hashtable)(
-				(tgitg[I] == null) ? (tgitg[I] = new Hashtable()) : tgitg[I]
-			);
+			Hashtable tgitg = (Hashtable)(tgit[G] ?? (tgit[G] = new Hashtable()));
+			Hashtable byTypeGroupInstance = (Hashtable)(tgitg[I] ?? (tgitg[I] = new Hashtable()));
 			if (byTypeGroupInstance[key] != null)
 			{
 				throw new Exception("byTypeGroupInstance[key] != null");

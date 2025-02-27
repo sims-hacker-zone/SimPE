@@ -84,3 +84,4 @@ csharp_style_expression_bodied_operators = false
 csharp_style_expression_bodied_properties = true
 csharp_style_expression_bodied_indexers = true
 csharp_style_expression_bodied_accessors = true
+dotnet_style_coalesce_expression = true

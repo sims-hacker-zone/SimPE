@@ -71,9 +71,7 @@ namespace pjse.BhavNameWizards
 					SimPe.Data.MetaData.BHAV_FILE,
 					instruction.OpCode
 				);
-				return (ftEntry != null)
-					? ftEntry
-					: Localization.GetString("bhavnotfound");
+				return ftEntry ?? Localization.GetString("bhavnotfound");
 			}
 		}
 

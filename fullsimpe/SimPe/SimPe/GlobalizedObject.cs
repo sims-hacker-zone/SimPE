@@ -88,8 +88,7 @@ namespace SimPe
 				// Get the string from the resources.
 				// If this fails, then use default display name (usually the property name)
 				string s = resource.GetString("[Property:" + displayName + "]");
-				localizedName =
-					(s != null) ? s : basePropertyDescriptor.DisplayName;
+				localizedName = s ?? basePropertyDescriptor.DisplayName;
 
 				return localizedName;
 			}
@@ -132,7 +131,7 @@ namespace SimPe
 				// Get the string from the resources.
 				// If this fails, then use default empty string indictating 'no description'
 				string s = resource.GetString("[Category:" + displayName + "]");
-				localizedCategory = (s != null) ? s : "";
+				localizedCategory = s ?? "";
 
 				return localizedCategory;
 			}
@@ -176,7 +175,7 @@ namespace SimPe
 				// Get the string from the resources.
 				// If this fails, then use default empty string indictating 'no description'
 				string s = resource.GetString("[Description:" + displayName + "]");
-				localizedDescription = (s != null) ? s : "";
+				localizedDescription = s ?? "";
 
 				return localizedDescription;
 			}
