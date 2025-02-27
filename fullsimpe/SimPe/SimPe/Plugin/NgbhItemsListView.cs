@@ -395,8 +395,7 @@ namespace SimPe.Plugin
 			string prefix =
 				typeof(SimMemoryType).Namespace
 				+ "."
-				+ typeof(SimMemoryType).Name
-				+ ".";
+				+ nameof(SimMemoryType) + ".";
 			SimMemoryType[] sts = Ngbh.AllowedMemoryTypes(st);
 			foreach (SimMemoryType mst in sts)
 			{
