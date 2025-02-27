@@ -155,9 +155,7 @@ namespace SimPe.Plugin.Collections
 				return;
 			}
 
-			object o = list[i1];
-			list[i1] = list[i2];
-			list[i2] = o;
+			(list[i2], list[i1]) = (list[i1], list[i2]);
 
 			if (ngbh != null)
 			{

@@ -1416,11 +1416,11 @@ namespace SimPe.Plugin
 
 			try
 			{
-				object o = lbblocks.Items[lbblocks.SelectedIndex - 1];
-				lbblocks.Items[lbblocks.SelectedIndex - 1] = lbblocks.Items[
+				(lbblocks.Items[
 					lbblocks.SelectedIndex
-				];
-				lbblocks.Items[lbblocks.SelectedIndex] = o;
+				], lbblocks.Items[lbblocks.SelectedIndex - 1]) = (lbblocks.Items[lbblocks.SelectedIndex - 1], lbblocks.Items[
+					lbblocks.SelectedIndex
+				]);
 
 				wrapper.Blocks[lbblocks.SelectedIndex] = (AbstractRcolBlock)
 					(
@@ -1455,11 +1455,11 @@ namespace SimPe.Plugin
 
 			try
 			{
-				object o = lbblocks.Items[lbblocks.SelectedIndex + 1];
-				lbblocks.Items[lbblocks.SelectedIndex + 1] = lbblocks.Items[
+				(lbblocks.Items[
 					lbblocks.SelectedIndex
-				];
-				lbblocks.Items[lbblocks.SelectedIndex] = o;
+				], lbblocks.Items[lbblocks.SelectedIndex + 1]) = (lbblocks.Items[lbblocks.SelectedIndex + 1], lbblocks.Items[
+					lbblocks.SelectedIndex
+				]);
 				wrapper.Blocks[lbblocks.SelectedIndex] = (AbstractRcolBlock)
 					(
 						(CountedListItem)lbblocks.Items[lbblocks.SelectedIndex]

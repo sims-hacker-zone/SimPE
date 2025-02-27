@@ -87,9 +87,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		private void SortSwap(int a, int b)
 		{
-			Instruction i = this[a];
-			this[a] = this[b];
-			this[b] = i;
+			(this[b], this[a]) = (this[a], this[b]);
 
 			foreach (Instruction item in this)
 			{

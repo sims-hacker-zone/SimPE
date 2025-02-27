@@ -709,9 +709,7 @@ namespace SimPe.Plugin.Anim
 				//swap first and last?
 				if (first.TimeCode > last.TimeCode)
 				{
-					AnimationAxisTransform d = first;
-					first = last;
-					last = d;
+					(last, first) = (first, last);
 				}
 
 				float pos =

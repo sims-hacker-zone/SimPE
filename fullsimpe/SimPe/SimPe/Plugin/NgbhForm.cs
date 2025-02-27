@@ -593,9 +593,7 @@ namespace SimPe.Plugin
 				PackedFiles.Wrapper.SDesc sdesc = (PackedFiles.Wrapper.SDesc)
 					lv.SelectedItems[0].Tag;
 				NgbhSlot slot = wrp.Sims.GetInstanceSlot(sdesc.Instance);
-				NgbhItem i = slot.ItemsB[SelectedIndex - 1];
-				slot.ItemsB[SelectedIndex - 1] = slot.ItemsB[SelectedIndex];
-				slot.ItemsB[SelectedIndex] = i;
+				(slot.ItemsB[SelectedIndex], slot.ItemsB[SelectedIndex - 1]) = (slot.ItemsB[SelectedIndex - 1], slot.ItemsB[SelectedIndex]);
 			}
 			catch (Exception ex)
 			{
@@ -637,9 +635,7 @@ namespace SimPe.Plugin
 				PackedFiles.Wrapper.SDesc sdesc = (PackedFiles.Wrapper.SDesc)
 					lv.SelectedItems[0].Tag;
 				NgbhSlot slot = wrp.Sims.GetInstanceSlot(sdesc.Instance);
-				NgbhItem i = slot.ItemsB[SelectedIndex + 1];
-				slot.ItemsB[SelectedIndex + 1] = slot.ItemsB[SelectedIndex];
-				slot.ItemsB[SelectedIndex] = i;
+				(slot.ItemsB[SelectedIndex], slot.ItemsB[SelectedIndex + 1]) = (slot.ItemsB[SelectedIndex + 1], slot.ItemsB[SelectedIndex]);
 			}
 			catch (Exception ex)
 			{

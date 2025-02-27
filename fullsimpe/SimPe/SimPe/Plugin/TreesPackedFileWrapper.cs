@@ -82,9 +82,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			string twine = Items[from];
-			Items[from] = Items[too];
-			Items[too] = twine;
+			(Items[too], Items[from]) = (Items[from], Items[too]);
 		}
 
 		public void WriteComment(int indx, string comment)

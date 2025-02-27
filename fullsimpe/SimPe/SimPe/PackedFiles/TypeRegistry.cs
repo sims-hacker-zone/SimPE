@@ -279,9 +279,7 @@ namespace SimPe.PackedFiles
 							> Math.Abs(wrappers[k].Priority)
 						)
 						{
-							IWrapper dum = wrappers[i];
-							wrappers[i] = wrappers[k];
-							wrappers[k] = dum;
+							(wrappers[k], wrappers[i]) = (wrappers[i], wrappers[k]);
 						}
 					}
 				}

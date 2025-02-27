@@ -1047,9 +1047,7 @@ namespace SimPe
 			TD.Eyefinder.HeaderControl pn2 = (TD.Eyefinder.HeaderControl)
 				wrappers[index + o];
 
-			int d = pn1.Top;
-			pn1.Top = pn2.Top;
-			pn2.Top = d;
+			(pn2.Top, pn1.Top) = (pn1.Top, pn2.Top);
 			Interfaces.IWrapper w1 = (Interfaces.IWrapper)pn1.Tag;
 			Interfaces.IWrapper w2 = (Interfaces.IWrapper)pn2.Tag;
 

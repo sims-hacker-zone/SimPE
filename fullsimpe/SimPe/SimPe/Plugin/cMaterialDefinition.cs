@@ -473,9 +473,7 @@ namespace SimPe.Plugin
 				{
 					if (Properties[i].Name.CompareTo(Properties[j].Name) > 0)
 					{
-						MaterialDefinitionProperty dum = Properties[i];
-						Properties[i] = Properties[j];
-						Properties[j] = dum;
+						(Properties[j], Properties[i]) = (Properties[i], Properties[j]);
 					}
 				}
 			}
