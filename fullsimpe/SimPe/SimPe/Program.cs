@@ -115,6 +115,10 @@ namespace SimPe
 			{
 				try
 				{
+					MessageBox.Show(
+						"SimPe will shutdown due to an unhandled Exception.\n\nMessage: "
+							+ ex.Message + "\n" + ex.StackTrace
+					);
 					SimPe.Splash.Screen.Stop();
 					Helper.ExceptionMessage(
 						"SimPe will shutdown due to an unhandled Exception.",
@@ -125,7 +129,7 @@ namespace SimPe
 				{
 					MessageBox.Show(
 						"SimPe will shutdown due to an unhandled Exception.\n\nMessage: "
-							+ ex2.Message
+							+ ex2.Message + "\n" + ex2.StackTrace
 					);
 				}
 			}

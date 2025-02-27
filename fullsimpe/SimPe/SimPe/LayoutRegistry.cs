@@ -175,7 +175,7 @@ namespace SimPe
 			{
 				string[] s = xrk.GetValue("ColumnOrder", String.Join(",", colNames))
 					.ToString()
-					.Split(',');
+					.Split(new char[] { ',' });
 				System.Collections.Generic.List<string> ls =
 					new System.Collections.Generic.List<string>(s);
 				System.Collections.Generic.List<string> lc =

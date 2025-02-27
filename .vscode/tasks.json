@@ -3,9 +3,36 @@
     "tasks": [
         {
             "label": "build",
-            "command": "msbuild",
+            "command": "dotnet",
             "type": "process",
             "args": [
+                "build",
+                "${workspaceFolder}/fullsimpe/SimPe/SimPe.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary;ForceNoAlign"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/fullsimpe/SimPe/SimPe.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary;ForceNoAlign"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
                 "${workspaceFolder}/fullsimpe/SimPe/SimPe.csproj"
             ],
             "problemMatcher": "$msCompile"

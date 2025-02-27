@@ -253,8 +253,8 @@ namespace SimPe
 			Helper.WindowsRegistry.ShowJointNames = cbjointname.Checked;
 			Helper.WindowsRegistry.UsePackageMaintainer = cbpkgmaint.Checked;
 			Helper.WindowsRegistry.MultipleFiles = cbmulti.Checked;
-			Helper.WindowsRegistry.Layout.SelectedTheme = (byte)
-				cbThemes.Items[cbThemes.SelectedIndex];
+			// Helper.WindowsRegistry.Layout.SelectedTheme = (byte)
+			// 	cbThemes.Items[cbThemes.SelectedIndex];
 			Helper.WindowsRegistry.SimpleResourceSelect = cbSimple.Checked;
 			Helper.WindowsRegistry.FirefoxTabbing = cbFirefox.Checked;
 			Helper.WindowsRegistry.DeepSimScan = cbDeep.Checked;

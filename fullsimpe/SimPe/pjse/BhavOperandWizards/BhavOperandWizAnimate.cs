@@ -293,11 +293,11 @@ namespace pjse.BhavOperandWizards.WizAnimate
 		{
 			if (ckbParam.Checked)
 			{
-				lbParam.Text = ((String)lbParam.Tag).Split('|')[0];
+				lbParam.Text = ((String)lbParam.Tag).Split(new char[] { '|' })[0];
 			}
 			else
 			{
-				lbParam.Text = ((String)lbParam.Tag).Split('|')[1];
+				lbParam.Text = ((String)lbParam.Tag).Split(new char[] { '|' })[1];
 				doStrValue(doidAnim.Value, tbAnim);
 			}
 			btnAnim.Visible = tbAnim.Visible = !ckbParam.Checked;

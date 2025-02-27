@@ -915,7 +915,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				if (line.Length == 0)
 					continue;
-				string[] args = line.Split(':');
+				string[] args = line.Split(new char[] { ':' });
 				if (args.Length != 6)
 					continue;
 

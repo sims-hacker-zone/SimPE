@@ -396,7 +396,7 @@ namespace SimPe.Plugin
 			if (key == HairColor.Unbinned)
 				return baseTextureName;
 
-			string[] parts = baseTextureName.Split('-');
+			string[] parts = baseTextureName.Split(new char[] { '-' });
 			System.Text.StringBuilder str = new System.Text.StringBuilder();
 			for (int i = 0; i < parts.Length - 1; i++)
 			{
@@ -784,7 +784,7 @@ namespace SimPe.Plugin
 							string oldName = item.Name;
 							System.Text.StringBuilder str =
 								new System.Text.StringBuilder();
-							str.Append(oldName.Split('_')[0]);
+							str.Append(oldName.Split(new char[] { '_' })[0]);
 							str.Append("_");
 							// special case (again)
 							if (item.Age == SimPe.Data.Ages.Elder)

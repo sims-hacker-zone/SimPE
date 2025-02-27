@@ -1719,7 +1719,7 @@ namespace SimPe
 		/// <returns></returns>
 		public static string CompareableFileName(string fl)
 		{
-			return fl.Trim().TrimEnd('\\').ToLower();
+			return fl.Trim().TrimEnd(new char[] { '\\' }).ToLower();
 		}
 
 		#region Folders

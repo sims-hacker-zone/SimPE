@@ -253,7 +253,7 @@ namespace SimPe.PackedFiles.UserInterface
 					string s = (string)this.Tag;
 					int i = s.IndexOf(";expName=+");
 					if (i >= 0)
-						return s.Substring(i + 10).TrimEnd('+');
+						return s.Substring(i + 10).TrimEnd(new char[] { '+' });
 				}
 				foreach (
 					pjse.FileTable.Entry item in pjse.FileTable.GFT[

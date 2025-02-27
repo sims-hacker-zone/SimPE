@@ -6,7 +6,7 @@ namespace SimPe.Windows.Forms
 {
 	class ResoureNameSorter
 	{
-		Stack<NamedPackedFileDescriptor> names;
+		Stack2<NamedPackedFileDescriptor> names;
 		int started;
 		int counter;
 		ResourceListViewExt parent;
@@ -23,7 +23,7 @@ namespace SimPe.Windows.Forms
 			handle = parent.Handle;
 			this.parent = parent;
 			this.ticket = ticket;
-			this.names = new Stack<NamedPackedFileDescriptor>();
+			this.names = new Stack2<NamedPackedFileDescriptor>();
 			foreach (NamedPackedFileDescriptor pfd in names)
 				this.names.Push(pfd);
 

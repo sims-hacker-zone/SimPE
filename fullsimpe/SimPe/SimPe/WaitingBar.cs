@@ -32,7 +32,7 @@ namespace SimPe
 	public class Wait
 	{
 		static IWaitingBarControl bar;
-		static Stack<SessionData> mystack = new Stack<SessionData>();
+		static Stack2<SessionData> mystack = new Stack2<SessionData>();
 		public const int TIMEOUT = 10000;
 
 		public static IWaitingBarControl Bar

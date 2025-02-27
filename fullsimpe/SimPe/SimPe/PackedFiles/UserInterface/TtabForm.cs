@@ -628,14 +628,14 @@ namespace SimPe.PackedFiles.UserInterface
 					}
 				}
 			}
-			this.tpHumanMotives.Text = ((String)this.tpHumanMotives.Tag).Split('/')[
+			this.tpHumanMotives.Text = ((String)this.tpHumanMotives.Tag).Split(new char[] { '/' })[
 				index
 			];
 			for (int i = 0; i < this.alFlags.Count; i++)
 			{
 				CheckBox lcb = (CheckBox)alFlags[i];
 				if (lcb.Tag != null && lcb.Tag.ToString().Length > 0)
-					lcb.Text = ((String)lcb.Tag).Split('/')[index];
+					lcb.Text = ((String)lcb.Tag).Split(new char[] { '/' })[index];
 			}
 
 			if (

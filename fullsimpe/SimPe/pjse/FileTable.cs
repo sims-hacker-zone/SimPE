@@ -176,7 +176,7 @@ namespace pjse
 						line = sr.ReadLine()
 					)
 						this.Add(
-							line.TrimEnd('+'),
+							line.TrimEnd(new char[] { '+' }),
 							line.EndsWith("+"),
 							SimPe.Expansions.Custom,
 							true

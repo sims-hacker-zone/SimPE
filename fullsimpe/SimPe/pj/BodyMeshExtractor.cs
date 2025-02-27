@@ -415,7 +415,7 @@ namespace pj
 
 			foreach (String m in al)
 			{
-				String[] ma = m.Split('_');
+				String[] ma = m.Split(new char[] { '_' });
 				String mesh = ma[ma[0].Equals("CASIE") ? 1 : 0];
 				if (mesh.ToLower().StartsWith("ym"))
 					mesh = "am" + mesh.Substring(2);

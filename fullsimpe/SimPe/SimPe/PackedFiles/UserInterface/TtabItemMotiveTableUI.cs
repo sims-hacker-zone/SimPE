@@ -164,7 +164,7 @@ namespace SimPe.PackedFiles.UserInterface
 			if (item != null && item.Count > 0)
 			{
 				this.lbNrGroups.Text =
-					(this.lbNrGroups.Text.Split(':')[0]) + ": " + item.Count.ToString();
+					this.lbNrGroups.Text.Split(new char[] { ':' })[0] + ": " + item.Count.ToString();
 
 				TtabMotiveGroupUI c = new TtabMotiveGroupUI();
 				c.MotiveGroup = item[0];
@@ -196,7 +196,7 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 			}
 			else
-				this.lbNrGroups.Text = (this.lbNrGroups.Text.Split(':')[0]) + ": 0";
+				this.lbNrGroups.Text = (this.lbNrGroups.Text.Split(new char[] { ':' })[0]) + ": 0";
 
 			cbShowAll_CheckedChanged(null, null);
 		}
