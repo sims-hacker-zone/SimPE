@@ -121,21 +121,9 @@ namespace SimPe.Plugin
 			}
 		}
 
-		public ObjectGraphNode ObjectGraphNode
-		{
-			get
-			{
-				return ogn;
-			}
-		}
+		public ObjectGraphNode ObjectGraphNode => ogn;
 
-		public CompositionTreeNode CompositionTreeNode
-		{
-			get
-			{
-				return ctn;
-			}
-		}
+		public CompositionTreeNode CompositionTreeNode => ctn;
 
 		VectorTransformation trans;
 		public VectorTransformation Transformation
@@ -151,13 +139,7 @@ namespace SimPe.Plugin
 		}
 		int unknown;
 
-		public Vector3f Translation
-		{
-			get
-			{
-				return trans.Translation;
-			}
-		}
+		public Vector3f Translation => trans.Translation;
 
 		public float TransformX
 		{
@@ -263,13 +245,7 @@ namespace SimPe.Plugin
 		}
 
 		[BrowsableAttribute(false)]
-		public override TransformNode StoredTransformNode
-		{
-			get
-			{
-				return this;
-			}
-		}
+		public override TransformNode StoredTransformNode => this;
 		#endregion
 
 		/// <summary>
@@ -599,13 +575,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object

@@ -40,13 +40,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Stored Image
 		/// </summary>
-		public System.Drawing.Image Image
-		{
-			get
-			{
-				return image;
-			}
-		}
+		public System.Drawing.Image Image => image;
 
 		#region IWrapper Member
 		protected override IWrapperInfo CreateWrapperInfo()
@@ -175,13 +169,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public Byte[] FileSignature
-		{
-			get
-			{
-				return new Byte[0];
-			}
-		}
+		public Byte[] FileSignature => new Byte[0];
 
 		#endregion
 

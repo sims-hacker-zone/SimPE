@@ -143,13 +143,7 @@ namespace SimPe.Wants
 
 		#region IPackedFileUI Members
 
-		public Control GUIHandle
-		{
-			get
-			{
-				return pnXWNTEditor;
-			}
-		}
+		public Control GUIHandle => pnXWNTEditor;
 
 		public void UpdateGUI(IFileWrapper wrp)
 		{

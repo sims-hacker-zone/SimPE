@@ -74,13 +74,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Name of the represented Type
 		/// </summary>
-		public Data.TypeAlias TypeName
-		{
-			get
-			{
-				return Data.MetaData.FindTypeAlias(Type);
-			}
-		}
+		public Data.TypeAlias TypeName => Data.MetaData.FindTypeAlias(Type);
 
 		uint group;
 

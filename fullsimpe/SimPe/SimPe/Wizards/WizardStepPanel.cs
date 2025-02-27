@@ -52,28 +52,16 @@ namespace SimPe.Wizards
 			}
 		}
 
-		internal string HintName
-		{
-			get
-			{
-				return "Step "
+		internal string HintName => "Step "
 					+ index.ToString()
 					+ " ("
 					+ Name /*+" in "+this.ParentWizard.Text*/
 					+ ")";
-			}
-		}
 
 		#region IWizardStep Member
 
 		[Browsable(false)]
-		public System.Windows.Forms.Control Client
-		{
-			get
-			{
-				return this;
-			}
-		}
+		public System.Windows.Forms.Control Client => this;
 
 		internal void SetupParent(Wizard parent)
 		{
@@ -99,13 +87,7 @@ namespace SimPe.Wizards
 		}
 
 		Wizard parent;
-		public Wizard ParentWizard
-		{
-			get
-			{
-				return parent;
-			}
-		}
+		public Wizard ParentWizard => parent;
 
 		bool first;
 		public bool First
@@ -134,13 +116,7 @@ namespace SimPe.Wizards
 		}
 
 		int index;
-		public int Index
-		{
-			get
-			{
-				return index;
-			}
-		}
+		public int Index => index;
 
 		protected void OnLoaded(Wizard sender)
 		{

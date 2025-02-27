@@ -31,13 +31,7 @@ namespace SimPe.Plugin.Collections
 		Ngbh parent;
 
 		Data.NeighborhoodSlots type;
-		public Data.NeighborhoodSlots Type
-		{
-			get
-			{
-				return type;
-			}
-		}
+		public Data.NeighborhoodSlots Type => type;
 
 		internal NgbhSlots(Ngbh parent, Data.NeighborhoodSlots type)
 		{
@@ -103,21 +97,9 @@ namespace SimPe.Plugin.Collections
 			}
 		}
 
-		public int Count
-		{
-			get
-			{
-				return list.Count;
-			}
-		}
+		public int Count => list.Count;
 
-		public int Length
-		{
-			get
-			{
-				return list.Count;
-			}
-		}
+		public int Length => list.Count;
 
 		public NgbhSlots Clone()
 		{

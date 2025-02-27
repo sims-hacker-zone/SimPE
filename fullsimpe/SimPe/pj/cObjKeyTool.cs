@@ -884,13 +884,7 @@ namespace pj
 		#endregion
 
 		#region IToolExt Member
-		public override System.Drawing.Image Icon
-		{
-			get
-			{
-				return SimPe.GetIcon.ObjKeyTool;
-			}
-		}
+		public override System.Drawing.Image Icon => SimPe.GetIcon.ObjKeyTool;
 		#endregion
 	}
 }

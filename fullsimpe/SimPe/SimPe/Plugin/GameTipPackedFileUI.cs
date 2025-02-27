@@ -8,20 +8,8 @@ namespace SimPe.Plugin
 		: SimPe.Windows.Forms.WrapperBaseControl,
 			IPackedFileUI
 	{
-		protected new GametipPackedFileWrapper Wrapper
-		{
-			get
-			{
-				return base.Wrapper as GametipPackedFileWrapper;
-			}
-		}
-		public GametipPackedFileWrapper TPFW
-		{
-			get
-			{
-				return (GametipPackedFileWrapper)Wrapper;
-			}
-		}
+		protected new GametipPackedFileWrapper Wrapper => base.Wrapper as GametipPackedFileWrapper;
+		public GametipPackedFileWrapper TPFW => (GametipPackedFileWrapper)Wrapper;
 
 		ushort gtipname;
 		ushort gtipheader;
@@ -73,13 +61,7 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region IPackedFileUI Member
-		System.Windows.Forms.Control IPackedFileUI.GUIHandle
-		{
-			get
-			{
-				return this;
-			}
-		}
+		System.Windows.Forms.Control IPackedFileUI.GUIHandle => this;
 		#endregion
 
 		#region IDisposable Member

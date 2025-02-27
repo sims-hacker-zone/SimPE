@@ -28,25 +28,13 @@ namespace pj
 	{
 		#region IToolFactory Members
 
-		public IToolPlugin[] KnownTools
-		{
-			get
-			{
-				return new IToolPlugin[] { new cObjKeyTool() };
-			}
-		}
+		public IToolPlugin[] KnownTools => new IToolPlugin[] { new cObjKeyTool() };
 
 		#endregion
 
 		#region IHelpFactory Members
 
-		public IHelp[] KnownHelpTopics
-		{
-			get
-			{
-				return new IHelp[] { new hObjKeyHelp() };
-			}
-		}
+		public IHelp[] KnownHelpTopics => new IHelp[] { new hObjKeyHelp() };
 
 		#endregion
 	}

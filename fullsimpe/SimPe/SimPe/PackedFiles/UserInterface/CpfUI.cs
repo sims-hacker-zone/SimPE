@@ -65,13 +65,7 @@ namespace SimPe.PackedFiles.UserInterface
 		/// <summary>
 		/// Returns the Panel that will be displayed within SimPe
 		/// </summary>
-		public System.Windows.Forms.Control GUIHandle
-		{
-			get
-			{
-				return form.CpfPanel;
-			}
-		}
+		public System.Windows.Forms.Control GUIHandle => form.CpfPanel;
 
 		/// <summary>
 		/// Is called by SimPe (through the Wrapper) when the Panel is going to be displayed, so

@@ -397,60 +397,30 @@ namespace pjse
 
 		#endregion
 
-		public Instruction Instruction
-		{
-			get
-			{
-				return instruction;
-			}
-		}
+		public Instruction Instruction => instruction;
 
 		public override string ToString()
 		{
 			return LongName;
 		}
 
-		public virtual string ShortName
-		{
-			get
-			{
-				return Name + " (" + Operands(false) + ")";
-			}
-		}
+		public virtual string ShortName => Name + " (" + Operands(false) + ")";
 
-		public virtual string LongName
-		{
-			get
-			{
-				return Name + " (" + Operands(true) + ")";
-			}
-		}
+		public virtual string LongName => Name + " (" + Operands(true) + ")";
 
 		public virtual ABhavOperandWiz Wizard()
 		{
 			return null;
 		}
 
-		protected virtual string Name
-		{
-			get
-			{
-				return "["
+		protected virtual string Name => "["
 					+ Prefix
 					+ " 0x"
 					+ SimPe.Helper.HexString(instruction.OpCode)
 					+ "] "
 					+ OpcodeName;
-			}
-		}
 
-		protected virtual string Prefix
-		{
-			get
-			{
-				return prefix;
-			}
-		}
+		protected virtual string Prefix => prefix;
 
 		protected abstract string OpcodeName
 		{

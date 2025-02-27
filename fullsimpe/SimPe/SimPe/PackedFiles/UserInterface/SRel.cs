@@ -81,13 +81,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		#region IPackedFileHandler Member
 
-		public Control GUIHandle
-		{
-			get
-			{
-				return form.realPanel;
-			}
-		}
+		public Control GUIHandle => form.realPanel;
 
 		public void UpdateGUI(SimPe.Interfaces.Plugin.IFileWrapper wrapper)
 		{

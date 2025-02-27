@@ -230,13 +230,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the Slot that owns this Item
 		/// </summary>
-		public NgbhSlotList ParentSlot
-		{
-			get
-			{
-				return parentslot;
-			}
-		}
+		public NgbhSlotList ParentSlot => parentslot;
 
 		/// <summary>
 		/// Return the Guid for this Item
@@ -341,26 +335,14 @@ namespace SimPe.Plugin
 			}
 		}
 
-		public System.Drawing.Image Icon
-		{
-			get
-			{
-				return Ambertation.Drawing.GraphicRoutines.ScaleImage(
+		public System.Drawing.Image Icon => Ambertation.Drawing.GraphicRoutines.ScaleImage(
 					MemoryCacheItem.Image,
 					ICON_SIZE,
 					ICON_SIZE,
 					true
 				);
-			}
-		}
 
-		public bool IsInventory
-		{
-			get
-			{
-				return this.InventoryNumber != 0;
-			}
-		}
+		public bool IsInventory => this.InventoryNumber != 0;
 		public bool IsGossip
 		{
 			get
@@ -415,27 +397,15 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// True if this Item can be processed as a Memory
 		/// </summary>
-		public bool IsMemory
-		{
-			get
-			{
-				return (
+		public bool IsMemory => (
 					(SimPe.Data.ObjectTypes)this.ObjectDataFile.Type
 					== SimPe.Data.ObjectTypes.Memory
 				);
-			}
-		}
 
 		/// <summary>
 		/// Extension by Theo. Returns true, if this Memory is a Spam Token
 		/// </summary>
-		public bool IsSpam
-		{
-			get
-			{
-				return NgbhMetaData.Memory.IsSpamMemory(this.guid);
-			}
-		}
+		public bool IsSpam => NgbhMetaData.Memory.IsSpamMemory(this.guid);
 
 		/// <summary>
 		/// Returns/Sets the Instance of the Sim that owns the Event (not the Memory!)
@@ -536,13 +506,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		public bool IsSimSubject
-		{
-			get
-			{
-				return this.SimInstance > 0;
-			}
-		}
+		public bool IsSimSubject => this.SimInstance > 0;
 
 		public void SetSubject(ushort inst, uint guid)
 		{

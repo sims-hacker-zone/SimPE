@@ -16,13 +16,7 @@ namespace SimPe.Plugin
 			marker = 2;
 		}
 
-		public byte Marker
-		{
-			get
-			{
-				return marker;
-			}
-		}
+		public byte Marker => marker;
 
 		internal virtual void Unserialize(System.IO.BinaryReader reader)
 		{

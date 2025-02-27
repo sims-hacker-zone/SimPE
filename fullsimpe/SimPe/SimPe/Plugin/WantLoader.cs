@@ -91,22 +91,10 @@ namespace SimPe.Plugin
 		}
 
 		System.Drawing.Image icon;
-		public override System.Drawing.Image Icon
-		{
-			get
-			{
-				return icon;
-			}
-		}
+		public override System.Drawing.Image Icon => icon;
 
 		string name;
-		public override string Name
-		{
-			get
-			{
-				return name;
-			}
-		}
+		public override string Name => name;
 	}
 
 	/// <summary>
@@ -217,13 +205,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the XWant File
 		/// </summary>
-		public XWant XWant
-		{
-			get
-			{
-				return wnt;
-			}
-		}
+		public XWant XWant => wnt;
 
 		/// <summary>
 		/// Returns the Name of this Want
@@ -257,13 +239,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// The guid of the current Want
 		/// </summary>
-		public uint Guid
-		{
-			get
-			{
-				return guid;
-			}
-		}
+		public uint Guid => guid;
 
 		public override string ToString()
 		{

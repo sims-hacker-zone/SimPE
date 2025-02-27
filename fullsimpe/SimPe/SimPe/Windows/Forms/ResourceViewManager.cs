@@ -65,24 +65,12 @@ namespace SimPe.Windows.Forms
 			}
 		}
 
-		public bool Available
-		{
-			get
-			{
-				return (tv != null && lv != null);
-			}
-		}
+		public bool Available => (tv != null && lv != null);
 
 		SimPe.Interfaces.Files.IPackageFile pkg;
 
 		[System.ComponentModel.Browsable(false)]
-		public ResourceViewManager.ResourceNameList Everything
-		{
-			get
-			{
-				return maps.Everything;
-			}
-		}
+		public ResourceViewManager.ResourceNameList Everything => maps.Everything;
 
 		[System.ComponentModel.Browsable(false)]
 		public SimPe.Interfaces.Files.IPackageFile Package

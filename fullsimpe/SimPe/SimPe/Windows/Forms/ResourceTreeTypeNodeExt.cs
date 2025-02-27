@@ -22,13 +22,7 @@ namespace SimPe.Windows.Forms
 			this.Text = ta.Name + " (" + ta.shortname + ") (" + list.Count + ")";
 		}
 
-		public uint Type
-		{
-			get
-			{
-				return type;
-			}
-		}
+		public uint Type => type;
 
 		#region IComparable<ResResourceTreeNodeExt> Member
 

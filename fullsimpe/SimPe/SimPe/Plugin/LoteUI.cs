@@ -9,20 +9,8 @@ namespace SimPe.Plugin
 	/// </summary>
 	public partial class LoteUI : SimPe.Windows.Forms.WrapperBaseControl, IPackedFileUI
 	{
-		protected new Lot Wrapper
-		{
-			get
-			{
-				return base.Wrapper as Lot;
-			}
-		}
-		public Lot TPFW
-		{
-			get
-			{
-				return (Lot)Wrapper;
-			}
-		}
+		protected new Lot Wrapper => base.Wrapper as Lot;
+		public Lot TPFW => (Lot)Wrapper;
 
 		#region WrapperBaseControl Member
 
@@ -150,13 +138,7 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region IPackedFileUI Member
-		System.Windows.Forms.Control IPackedFileUI.GUIHandle
-		{
-			get
-			{
-				return this;
-			}
-		}
+		System.Windows.Forms.Control IPackedFileUI.GUIHandle => this;
 		#endregion
 
 		#region IDisposable Member

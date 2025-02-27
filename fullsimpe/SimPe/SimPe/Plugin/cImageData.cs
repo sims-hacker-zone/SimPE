@@ -47,13 +47,7 @@ namespace SimPe.Plugin
 		MipMapType datatype;
 		string lifofile;
 
-		public MipMapType DataType
-		{
-			get
-			{
-				return datatype;
-			}
-		}
+		public MipMapType DataType => datatype;
 
 		/// <summary>
 		/// Force a Reload of the Texture

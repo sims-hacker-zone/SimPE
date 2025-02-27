@@ -44,13 +44,7 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 				this.objd = objd;
 			}
 
-			public uint Guid
-			{
-				get
-				{
-					return objd.Guid;
-				}
-			}
+			public uint Guid => objd.Guid;
 
 			public override string ToString()
 			{

@@ -73,26 +73,14 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region IToolExt Member
-		public override System.Drawing.Image Icon
-		{
-			get
-			{
-				return System.Drawing.Image.FromStream(
+		public override System.Drawing.Image Icon => System.Drawing.Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream(
 							"SimPe.img.scenegrapher.png"
 						)
 				);
-			}
-		}
 
-		public override System.Windows.Forms.Shortcut Shortcut
-		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.CtrlG;
-			}
-		}
+		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.CtrlG;
 		#endregion
 	}
 }

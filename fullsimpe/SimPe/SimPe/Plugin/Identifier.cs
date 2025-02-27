@@ -33,29 +33,11 @@ namespace SimPe.Plugin
 		}
 
 		#region IIdentifierBase Member
-		public uint Version
-		{
-			get
-			{
-				return 1;
-			}
-		}
+		public uint Version => 1;
 
-		public int Index
-		{
-			get
-			{
-				return 500;
-			}
-		}
+		public int Index => 500;
 
-		public ScannerPluginType PluginType
-		{
-			get
-			{
-				return ScannerPluginType.Identifier;
-			}
-		}
+		public ScannerPluginType PluginType => ScannerPluginType.Identifier;
 		#endregion
 
 		#region IIdentifier Member

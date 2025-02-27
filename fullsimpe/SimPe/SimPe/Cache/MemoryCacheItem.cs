@@ -171,11 +171,7 @@ namespace SimPe.Cache
 			}
 		}
 
-		public bool IsToken
-		{
-			get
-			{
-				return IsAspiration
+		public bool IsToken => IsAspiration
 					|| (
 						(
 							ObjdName.Trim().ToLower().StartsWith("token")
@@ -186,68 +182,30 @@ namespace SimPe.Cache
 							|| this.ObjectType == Data.ObjectTypes.Memory
 						)
 					);
-			}
-		}
 
-		public bool IsJobData
-		{
-			get
-			{
-				return ObjdName.Trim().ToLower().StartsWith("jobdata")
+		public bool IsJobData => ObjdName.Trim().ToLower().StartsWith("jobdata")
 					&& this.ObjectType == Data.ObjectTypes.Normal;
-			}
-		}
 
-		public bool IsMemory
-		{
-			get
-			{
-				return IsToken || this.ObjectType == Data.ObjectTypes.Memory;
-			}
-		}
+		public bool IsMemory => IsToken || this.ObjectType == Data.ObjectTypes.Memory;
 
-		public bool IsBadge
-		{
-			get
-			{
-				return (
+		public bool IsBadge => (
 						ObjdName.ToLower().Trim().StartsWith("token - badge")
 						|| ObjdName.ToLower().Trim().StartsWith("cs - token - badge")
 					)
 					&& this.ObjectType == Data.ObjectTypes.Normal;
-			}
-		}
 
-		public bool IsSkill
-		{
-			get
-			{
-				return (ObjdName.ToLower().Trim().IndexOf("skill") >= 0)
+		public bool IsSkill => (ObjdName.ToLower().Trim().IndexOf("skill") >= 0)
 					&& this.ObjectType == Data.ObjectTypes.Normal
 					&& IsToken;
-			}
-		}
 
-		public bool IsAspiration
-		{
-			get
-			{
-				return ObjdName.Trim().ToLower().StartsWith("aspiration")
+		public bool IsAspiration => ObjdName.Trim().ToLower().StartsWith("aspiration")
 					&& this.ObjectType == Data.ObjectTypes.Normal;
-			}
-		}
 
-		public bool IsInventory
-		{
-			get
-			{
-				return !IsAspiration
+		public bool IsInventory => !IsAspiration
 					&& !IsToken
 					&& !IsJobData
 					&& !IsMemory
 					&& this.ObjectType == Data.ObjectTypes.Normal;
-			}
-		}
 
 		SimPe.Cache.CacheContainer cc;
 		public CacheContainer ParentCacheContainer
@@ -342,13 +300,7 @@ namespace SimPe.Cache
 			}
 		}
 
-		public byte Version
-		{
-			get
-			{
-				return version;
-			}
-		}
+		public byte Version => version;
 
 		#endregion
 

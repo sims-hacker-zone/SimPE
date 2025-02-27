@@ -75,13 +75,7 @@ namespace SimPe.Plugin.Anim
 			block = new AnimationAxisTransform[3];
 		}
 
-		internal AnimationAxisTransform[] Blocks
-		{
-			get
-			{
-				return block;
-			}
-		}
+		internal AnimationAxisTransform[] Blocks => block;
 
 		public AnimationAxisTransform XBlock
 		{
@@ -401,12 +395,6 @@ namespace SimPe.Plugin.Anim
 			),
 			CategoryAttribute("Information")
 		]
-		public FrameType Type
-		{
-			get
-			{
-				return tp;
-			}
-		}
+		public FrameType Type => tp;
 	}
 }

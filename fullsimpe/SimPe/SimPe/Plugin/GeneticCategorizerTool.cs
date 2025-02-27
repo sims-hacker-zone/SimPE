@@ -23,13 +23,7 @@ namespace SimPe.Plugin
 
 		#endregion
 
-		public override bool Visible
-		{
-			get
-			{
-				return true;
-			}
-		}
+		public override bool Visible => true;
 
 		#region ITool Members
 
@@ -52,17 +46,11 @@ namespace SimPe.Plugin
 
 		#endregion
 
-		public override System.Drawing.Image Icon
-		{
-			get
-			{
-				return System.Drawing.Image.FromStream(
+		public override System.Drawing.Image Icon => System.Drawing.Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream(
 							"SimPe.img.ColorBinningTool.png"
 						)
 				);
-			}
-		}
 	}
 }

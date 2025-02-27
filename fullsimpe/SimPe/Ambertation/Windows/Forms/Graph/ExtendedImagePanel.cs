@@ -86,18 +86,12 @@ namespace Ambertation.Windows.Forms.Graph
 			}
 		}
 
-		Rectangle PanelRectangle
-		{
-			get
-			{
-				return new Rectangle(
+		Rectangle PanelRectangle => new Rectangle(
 					10 + ImageBorderWidth,
 					10 + ImageBorderWidth,
 					Width - 10 - ImageBorderWidth,
 					Height - 10 - ImageBorderWidth
 				);
-			}
-		}
 
 		protected override void UserDraw(System.Drawing.Graphics gr)
 		{

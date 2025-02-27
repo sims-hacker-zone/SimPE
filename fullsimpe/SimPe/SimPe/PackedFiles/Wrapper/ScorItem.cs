@@ -131,13 +131,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		Scor parent;
-		public Scor Parent
-		{
-			get
-			{
-				return parent;
-			}
-		}
+		public Scor Parent => parent;
 
 		/// <summary>
 		/// Constructor
@@ -271,13 +265,7 @@ namespace SimPe.PackedFiles.Wrapper
 			list.Clear();
 		}
 
-		public int Count
-		{
-			get
-			{
-				return list.Count;
-			}
-		}
+		public int Count => list.Count;
 
 		public bool Contains(ScorItem si)
 		{

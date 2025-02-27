@@ -326,13 +326,7 @@ namespace SimPe.Plugin
 		}
 
 		ReferentNode refnode;
-		public ReferentNode RefNode
-		{
-			get
-			{
-				return refnode;
-			}
-		}
+		public ReferentNode RefNode => refnode;
 		#endregion
 		/*public Rcol Parent
 		{

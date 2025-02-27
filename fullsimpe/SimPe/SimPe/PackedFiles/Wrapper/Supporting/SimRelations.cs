@@ -77,24 +77,12 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// <summary>
 		/// The relation of your Sim zo another
 		/// </summary>
-		public SRel OutboundRelation
-		{
-			get
-			{
-				return rels[0];
-			}
-		}
+		public SRel OutboundRelation => rels[0];
 
 		/// <summary>
 		/// The relation of another Sim to your Sim
 		/// </summary>
-		public SRel InboundRelation
-		{
-			get
-			{
-				return rels[1];
-			}
-		}
+		public SRel InboundRelation => rels[1];
 
 		/// <summary>
 		/// Commits the Data

@@ -30,13 +30,7 @@ namespace SimPe.Plugin
 			this.cpf = cpf;
 		}
 
-		public SimPe.PackedFiles.Wrapper.Cpf Cpf
-		{
-			get
-			{
-				return cpf;
-			}
-		}
+		public SimPe.PackedFiles.Wrapper.Cpf Cpf => cpf;
 
 		public uint Category
 		{
@@ -549,21 +543,9 @@ namespace SimPe.Plugin
 			name = name.Replace("CASIE_", "");
 		}
 
-		public new string Name
-		{
-			get
-			{
-				return name;
-			}
-		}
+		public new string Name => name;
 
-		internal SimPe.PackedFiles.Wrapper.Cpf File
-		{
-			get
-			{
-				return cpf;
-			}
-		}
+		internal SimPe.PackedFiles.Wrapper.Cpf File => cpf;
 
 		public override string ToString()
 		{

@@ -555,13 +555,7 @@ namespace SimPe.Plugin.Downloads
 
 		#region IPackageHandler Member
 
-		public IPackageInfo[] Objects
-		{
-			get
-			{
-				return new IPackageInfo[] { nfo };
-			}
-		}
+		public IPackageInfo[] Objects => new IPackageInfo[] { nfo };
 
 		#endregion
 

@@ -473,13 +473,7 @@ namespace SimPe.Plugin
 		}
 
 		[System.ComponentModel.Browsable(false)]
-		public bool SelectedMultiple
-		{
-			get
-			{
-				return lv.SelectedItems.Count > 1;
-			}
-		}
+		public bool SelectedMultiple => lv.SelectedItems.Count > 1;
 
 		internal void UpdateSelected(NgbhItem item)
 		{
@@ -492,13 +486,7 @@ namespace SimPe.Plugin
 			this.Refresh(false);
 		}
 
-		public ListView.ListViewItemCollection Items
-		{
-			get
-			{
-				return lv.Items;
-			}
-		}
+		public ListView.ListViewItemCollection Items => lv.Items;
 
 		ImageList sil;
 		public ImageList SmallImageList

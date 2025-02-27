@@ -388,13 +388,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// The Structural Data of the Header
 		/// </summary>
-		public Interfaces.Files.IPackageHeader Header
-		{
-			get
-			{
-				return header;
-			}
-		}
+		public Interfaces.Files.IPackageHeader Header => header;
 
 		#endregion
 
@@ -539,13 +533,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns the next free offset in the File
 		/// </summary>
-		internal long NextFreeOffset
-		{
-			get
-			{
-				return higestoffset;
-			}
-		}
+		internal long NextFreeOffset => higestoffset;
 
 		/// <summary>
 		/// Copies the FileDescriptors form the passed Package to this one. The Method creats
@@ -719,13 +707,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// true if the Compressed State for this package was loaded
 		/// </summary>
-		public bool LoadedCompressedState
-		{
-			get
-			{
-				return lcs;
-			}
-		}
+		public bool LoadedCompressedState => lcs;
 
 		/// <summary>
 		/// Reads the Compressed State for the package

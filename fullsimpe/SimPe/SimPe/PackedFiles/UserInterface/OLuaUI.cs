@@ -319,13 +319,7 @@ namespace SimPe.PackedFiles.UserInterface
 		}
 
 		SimPe.PackedFiles.Wrapper.ObjLua lua;
-		protected SimPe.PackedFiles.Wrapper.ObjLua Wrapper
-		{
-			get
-			{
-				return lua;
-			}
-		}
+		protected SimPe.PackedFiles.Wrapper.ObjLua Wrapper => lua;
 
 		#region IPackedFileUI Member
 
@@ -340,13 +334,7 @@ namespace SimPe.PackedFiles.UserInterface
 			tv.ExpandAll();
 		}
 
-		public Control GUIHandle
-		{
-			get
-			{
-				return this;
-			}
-		}
+		public Control GUIHandle => this;
 
 		#endregion
 

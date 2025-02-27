@@ -84,13 +84,7 @@ namespace SimPe.Data
 
 		#region IAlias Member
 
-		public uint Id
-		{
-			get
-			{
-				return id;
-			}
-		}
+		public uint Id => id;
 
 		public string Name
 		{
@@ -139,17 +133,13 @@ namespace SimPe.Data
 		/// </summary>
 		private string template;
 
-		static string DefaultTemplate
-		{
-			get
-			{
+		static string DefaultTemplate =>
 #if DEBUG
-				return "{name} (0x{id})";
+				"{name} (0x{id})";
 #else
 				return "{name} (0x{id})";
 #endif
-			}
-		}
+
 
 		/// <summary>
 		/// Cosntructor of the class

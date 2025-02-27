@@ -304,13 +304,7 @@ namespace SimPe.Cache
 			return base.Contains(item);
 		}
 
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		public override object Clone()
 		{
@@ -408,13 +402,7 @@ namespace SimPe.Cache
 			}
 		}
 
-		public int StateCount
-		{
-			get
-			{
-				return states.Count;
-			}
-		}
+		public int StateCount => states.Count;
 
 		/// <summary>
 		/// Returns a matching Item for the passed State-uid
@@ -530,13 +518,7 @@ namespace SimPe.Cache
 			}
 		}
 
-		public byte Version
-		{
-			get
-			{
-				return version;
-			}
-		}
+		public byte Version => version;
 
 		#endregion
 	}

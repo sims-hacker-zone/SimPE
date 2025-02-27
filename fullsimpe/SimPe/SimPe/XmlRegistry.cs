@@ -35,13 +35,7 @@ namespace SimPe
 		/// <summary>
 		/// Returns the Name of this Key
 		/// </summary>
-		public string Name
-		{
-			get
-			{
-				return name;
-			}
-		}
+		public string Name => name;
 
 		/// <summary>
 		/// Create a new Instance
@@ -272,13 +266,7 @@ namespace SimPe
 		/// <summary>
 		/// Returns the CurrentUser Registry Key
 		/// </summary>
-		public XmlRegistryKey CurrentUser
-		{
-			get
-			{
-				return root;
-			}
-		}
+		public XmlRegistryKey CurrentUser => root;
 
 		/// <summary>
 		/// Load the Registry from the passed File

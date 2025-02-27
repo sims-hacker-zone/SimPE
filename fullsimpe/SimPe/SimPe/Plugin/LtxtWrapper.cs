@@ -309,13 +309,7 @@ namespace SimPe.Plugin
 				description = value;
 			}
 		}
-		internal List<float> Unknown1
-		{
-			get
-			{
-				return unknown_1;
-			}
-		}
+		internal List<float> Unknown1 => unknown_1;
 		internal Single Unknown3
 		{
 			get
@@ -475,20 +469,8 @@ namespace SimPe.Plugin
 					unknown_6[i] = value[i];
 			}
 		}
-		public List<SubLot> SubLots
-		{
-			get
-			{
-				return subLots;
-			}
-		}
-		public List<uint> Unknown7
-		{
-			get
-			{
-				return unknown_7;
-			}
-		}
+		public List<SubLot> SubLots => subLots;
+		public List<uint> Unknown7 => unknown_7;
 		internal byte[] Followup
 		{
 			get
@@ -524,24 +506,12 @@ namespace SimPe.Plugin
 
 		#endregion
 
-		public SimPe.Interfaces.Providers.ILotItem LotDescription
-		{
-			get
-			{
-				return SimPe.FileTable.ProviderRegistry.LotProvider.FindLot(
+		public SimPe.Interfaces.Providers.ILotItem LotDescription => SimPe.FileTable.ProviderRegistry.LotProvider.FindLot(
 					this.LotInstance
 				);
-			}
-		}
 
 		Interfaces.IProviderRegistry provider;
-		public Interfaces.IProviderRegistry Provider
-		{
-			get
-			{
-				return provider;
-			}
-		}
+		public Interfaces.IProviderRegistry Provider => provider;
 
 		public Ltxt()
 			: this(FileTable.ProviderRegistry) { }
@@ -778,24 +748,12 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
-		public byte[] FileSignature
-		{
-			get
-			{
-				return new byte[0];
-			}
-		}
+		public byte[] FileSignature => new byte[0];
 
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				return new uint[] { Ltxttype };
-			}
-		}
+		public uint[] AssignableTypes => new uint[] { Ltxttype };
 
 		#endregion
 

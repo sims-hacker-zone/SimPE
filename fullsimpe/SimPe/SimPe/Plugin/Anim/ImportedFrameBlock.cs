@@ -73,13 +73,7 @@ namespace SimPe.Plugin.Anim
 		/// <summary>
 		/// The name of the Imported Bone
 		/// </summary>
-		public string ImportedName
-		{
-			get
-			{
-				return afb.Name;
-			}
-		}
+		public string ImportedName => afb.Name;
 
 		/// <summary>
 		/// internal Attribute
@@ -140,13 +134,7 @@ namespace SimPe.Plugin.Anim
 		/// <summary>
 		/// The new Bone
 		/// </summary>
-		public AnimationFrameBlock FrameBlock
-		{
-			get
-			{
-				return afb;
-			}
-		}
+		public AnimationFrameBlock FrameBlock => afb;
 
 		/// <summary>
 		/// Returns the color that should be used to display this Group in the "Import Groups" ListView
@@ -321,13 +309,7 @@ namespace SimPe.Plugin.Anim
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object

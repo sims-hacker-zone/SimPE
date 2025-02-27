@@ -46,13 +46,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Returns the Items stored in the FIle
 		/// </summary>
 		/// <remarks>Do not add Items based on this List! use the Add Method!!</remarks>
-		internal GroupCacheItems Items
-		{
-			get
-			{
-				return items;
-			}
-		}
+		internal GroupCacheItems Items => items;
 
 		Hashtable map;
 		uint maxgroup;

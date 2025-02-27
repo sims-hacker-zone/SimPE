@@ -186,23 +186,11 @@ namespace SimPe.Data
 		/// <summary>
 		/// Returns true if the Type is known
 		/// </summary>
-		public bool Known
-		{
-			get
-			{
-				return knowntype;
-			}
-		}
+		public bool Known => knowntype;
 
 		/// <summary>
 		/// Returns true, if this resource should be ignored during the cache build phase
 		/// </summary>
-		public bool IgnoreDuringCacheBuild
-		{
-			get
-			{
-				return nodecompforcache;
-			}
-		}
+		public bool IgnoreDuringCacheBuild => nodecompforcache;
 	}
 }

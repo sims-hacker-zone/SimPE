@@ -321,13 +321,7 @@ namespace SimPe.PackedFiles.UserInterface
 			lb.SelectedIndex = lb.Items.Count - 1;
 		}
 
-		public Wrapper.Scor Scor
-		{
-			get
-			{
-				return (SimPe.PackedFiles.Wrapper.Scor)Wrapper;
-			}
-		}
+		public Wrapper.Scor Scor => (SimPe.PackedFiles.Wrapper.Scor)Wrapper;
 
 		protected override void RefreshGUI()
 		{

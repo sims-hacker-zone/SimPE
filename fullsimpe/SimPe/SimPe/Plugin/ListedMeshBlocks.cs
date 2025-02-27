@@ -40,29 +40,11 @@ namespace SimPe.Plugin
 				gmdc = amb.FindUsedGMDC(cres);
 		}
 
-		public AnimationMeshBlock ANIMBlock
-		{
-			get
-			{
-				return amb;
-			}
-		}
+		public AnimationMeshBlock ANIMBlock => amb;
 
-		public SimPe.Plugin.GenericRcol CRES
-		{
-			get
-			{
-				return cres;
-			}
-		}
+		public SimPe.Plugin.GenericRcol CRES => cres;
 
-		public SimPe.Plugin.GenericRcol GMDC
-		{
-			get
-			{
-				return gmdc;
-			}
-		}
+		public SimPe.Plugin.GenericRcol GMDC => gmdc;
 
 		public override string ToString()
 		{

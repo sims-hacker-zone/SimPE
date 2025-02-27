@@ -196,8 +196,14 @@ namespace SimPe.Geometry
 		string name;
 		public string Name
 		{
-			get { return name; }
-			set { name = value; }
+			get
+			{
+				return name;
+			}
+			set
+			{
+				name = value;
+			}
 		}
 #endif
 	}
@@ -280,13 +286,7 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object

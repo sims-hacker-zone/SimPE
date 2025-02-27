@@ -55,13 +55,7 @@ namespace SimPe.Wizards
 		#region IWizard Member
 
 		[Browsable(false)]
-		public Control WizardContainer
-		{
-			get
-			{
-				return this;
-			}
-		}
+		public Control WizardContainer => this;
 
 		Image img;
 		public virtual System.Drawing.Image Image
@@ -76,13 +70,7 @@ namespace SimPe.Wizards
 			}
 		}
 
-		public int StepCount
-		{
-			get
-			{
-				return Controls.Count;
-			}
-		}
+		public int StepCount => Controls.Count;
 
 		public int CurrentStepNumber
 		{
@@ -98,13 +86,7 @@ namespace SimPe.Wizards
 		}
 
 		[Browsable(false)]
-		public WizardStepPanel CurrentStep
-		{
-			get
-			{
-				return (WizardStepPanel)Controls[cur];
-			}
-		}
+		public WizardStepPanel CurrentStep => (WizardStepPanel)Controls[cur];
 
 		bool ne;
 
@@ -286,13 +268,7 @@ namespace SimPe.Wizards
 
 		#endregion
 
-		internal string HintName
-		{
-			get
-			{
-				return Text + " (" + Name + ")";
-			}
-		}
+		internal string HintName => Text + " (" + Name + ")";
 
 		protected override void OnPaint(PaintEventArgs e)
 		{

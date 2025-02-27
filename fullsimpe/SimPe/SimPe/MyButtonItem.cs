@@ -88,22 +88,10 @@ namespace SimPe
 		#endregion
 		static int namect = 0;
 		string name;
-		public new string Name
-		{
-			get
-			{
-				return name;
-			}
-		}
+		public new string Name => name;
 
 		bool havedock;
-		public bool HaveDock
-		{
-			get
-			{
-				return havedock;
-			}
-		}
+		public bool HaveDock => havedock;
 
 		public MyButtonItem(string name)
 			: this(null, name) { }

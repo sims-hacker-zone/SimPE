@@ -107,13 +107,7 @@ namespace SimPe.Collections.IO
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object

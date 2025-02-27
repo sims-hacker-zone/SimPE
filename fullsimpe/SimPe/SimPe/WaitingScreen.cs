@@ -125,24 +125,12 @@ namespace SimPe
 		/// <summary>
 		/// True if the WaitingScreen is displayed
 		/// </summary>
-		public static bool Running
-		{
-			get
-			{
-				return count > 0;
-			}
-		}
+		public static bool Running => count > 0;
 
 		/// <summary>
 		/// Returns the Size of the Dispalyed Image
 		/// </summary>
-		public static System.Drawing.Size ImageSize
-		{
-			get
-			{
-				return new System.Drawing.Size(64, 64);
-			}
-		}
+		public static System.Drawing.Size ImageSize => new System.Drawing.Size(64, 64);
 
 		static WaitingScreen scr;
 		static object lockFrm = new object();

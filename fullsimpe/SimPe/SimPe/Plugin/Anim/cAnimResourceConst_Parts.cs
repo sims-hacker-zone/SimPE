@@ -138,25 +138,13 @@ namespace SimPe.Plugin.Anim
 		AnimBlock5[] ab5;
 
 		[BrowsableAttribute(false)]
-		public AnimBlock5[] Part5
-		{
-			get
-			{
-				return ab5;
-			}
-		}
+		public AnimBlock5[] Part5 => ab5;
 
 		[
 			DescriptionAttribute("Number of loaded AnimBlock4 Items"),
 			CategoryAttribute("Information")
 		]
-		public int Part5Count
-		{
-			get
-			{
-				return ab5.Length;
-			}
-		}
+		public int Part5Count => ab5.Length;
 
 		uint[] datai;
 
@@ -216,13 +204,7 @@ namespace SimPe.Plugin.Anim
 		[DescriptionAttribute(
 			"On Index 2 the Number of assigned AnimBlock5 Items is stored"
 		)]
-		public byte[] AddonData
-		{
-			get
-			{
-				return data;
-			}
-		}
+		public byte[] AddonData => data;
 		#endregion
 
 		internal AnimBlock4()
@@ -374,22 +356,10 @@ namespace SimPe.Plugin.Anim
 			}
 		}
 
-		public string Unknown2Hex
-		{
-			get
-			{
-				return "0x" + Helper.HexString(Unknown2);
-			}
-		}
+		public string Unknown2Hex => "0x" + Helper.HexString(Unknown2);
 
 		byte[] data;
-		public byte[] AddonData
-		{
-			get
-			{
-				return data;
-			}
-		}
+		public byte[] AddonData => data;
 		#endregion
 
 		internal AnimBlock5()

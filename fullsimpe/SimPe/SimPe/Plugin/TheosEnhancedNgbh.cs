@@ -61,13 +61,7 @@ namespace SimPe.Plugin
 		{
 			System.Text.StringBuilder msg = new System.Text.StringBuilder();
 
-			public override string Message
-			{
-				get
-				{
-					return msg.ToString();
-				}
-			}
+			public override string Message => msg.ToString();
 
 			public ExceptionBuilder()
 			{

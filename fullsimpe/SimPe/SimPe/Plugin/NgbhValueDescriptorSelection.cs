@@ -171,13 +171,7 @@ namespace SimPe.Plugin
 			catch { }
 		}
 
-		public NgbhValueDescriptor SelectedDescriptor
-		{
-			get
-			{
-				return cb.SelectedItem as NgbhValueDescriptor;
-			}
-		}
+		public NgbhValueDescriptor SelectedDescriptor => cb.SelectedItem as NgbhValueDescriptor;
 
 		public event EventHandler SelectedDescriptorChanged;
 

@@ -55,13 +55,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		public bool IsEmpty
-		{
-			get
-			{
-				return this.packages.Count == 0;
-			}
-		}
+		public bool IsEmpty => this.packages.Count == 0;
 
 		public GeneticCategorizer()
 		{

@@ -70,20 +70,8 @@ namespace pjse
 		{
 			private pjse.FileTable.Entry item = null;
 			private SimPe.ExpansionItem exp = null;
-			public pjse.FileTable.Entry Item
-			{
-				get
-				{
-					return item;
-				}
-			}
-			public SimPe.ExpansionItem ExpansionItem
-			{
-				get
-				{
-					return exp;
-				}
-			}
+			public pjse.FileTable.Entry Item => item;
+			public SimPe.ExpansionItem ExpansionItem => exp;
 
 			public CompareWithEventArgs(
 				pjse.FileTable.Entry item,

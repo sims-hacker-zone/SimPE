@@ -187,24 +187,12 @@ namespace SimPe.Plugin
 		}
 
 		Interfaces.IProviderRegistry provider;
-		public Interfaces.IProviderRegistry Provider
-		{
-			get
-			{
-				return provider;
-			}
-		}
+		public Interfaces.IProviderRegistry Provider => provider;
 
 		/// <summary>
 		/// Returns Informations about the Selected want
 		/// </summary>
-		public WantInformation Information
-		{
-			get
-			{
-				return WantInformation.LoadWant(guid);
-			}
-		}
+		public WantInformation Information => WantInformation.LoadWant(guid);
 		#endregion
 
 		public WantItem(Interfaces.IProviderRegistry provider)

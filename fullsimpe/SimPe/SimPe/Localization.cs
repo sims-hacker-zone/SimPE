@@ -79,12 +79,6 @@ namespace SimPe
 		/// <summary>
 		/// Returns the current Culture
 		/// </summary>
-		public static CultureInfo Culture
-		{
-			get
-			{
-				return Thread.CurrentThread.CurrentUICulture;
-			}
-		}
+		public static CultureInfo Culture => Thread.CurrentThread.CurrentUICulture;
 	}
 }

@@ -522,13 +522,7 @@ namespace SimPe.Providers
 		/// <summary>
 		/// Returns the names Operatores in Expression Primitives
 		/// </summary>
-		public ArrayList StoredExpressionOperators
-		{
-			get
-			{
-				return operands;
-			}
-		}
+		public ArrayList StoredExpressionOperators => operands;
 
 		/// <summary>
 		/// Returns the the name of a Data Owner
@@ -557,13 +551,7 @@ namespace SimPe.Providers
 		/// <summary>
 		/// Returns the names of the Data in an Expression Primitive
 		/// </summary>
-		public ArrayList StoredDataNames
-		{
-			get
-			{
-				return dataowners;
-			}
-		}
+		public ArrayList StoredDataNames => dataowners;
 
 		/// <summary>
 		/// Returns the the name of a Motive

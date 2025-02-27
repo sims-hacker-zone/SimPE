@@ -123,13 +123,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		internal string Description
-		{
-			get
-			{
-				return SimPe.Serializer.Serialize(this);
-			}
-		}
+		internal string Description => SimPe.Serializer.Serialize(this);
 	}
 
 	/// <summary>
@@ -147,21 +141,9 @@ namespace SimPe.PackedFiles.Wrapper
 			recessive = new Gene(this, 0x10000000);
 		}
 
-		public Gene Dominant
-		{
-			get
-			{
-				return dominant;
-			}
-		}
+		public Gene Dominant => dominant;
 
-		public Gene Recessive
-		{
-			get
-			{
-				return recessive;
-			}
-		}
+		public Gene Recessive => recessive;
 
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
@@ -186,21 +168,9 @@ namespace SimPe.PackedFiles.Wrapper
 			);
 		}
 
-		public override byte[] FileSignature
-		{
-			get
-			{
-				return new Byte[0];
-			}
-		}
+		public override byte[] FileSignature => new Byte[0];
 
-		public override uint[] AssignableTypes
-		{
-			get
-			{
-				return new uint[] { Data.MetaData.SDNA };
-			}
-		}
+		public override uint[] AssignableTypes => new uint[] { Data.MetaData.SDNA };
 
 		public override string DescriptionHeader
 		{

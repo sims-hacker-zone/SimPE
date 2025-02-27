@@ -219,13 +219,7 @@ namespace pjse
 			sw = null;
 		}
 
-		public bool IsLoaded
-		{
-			get
-			{
-				return guidIndex != null;
-			}
-		}
+		public bool IsLoaded => guidIndex != null;
 
 		#region IDictionary<uint,string> Members
 
@@ -254,13 +248,7 @@ namespace pjse
 			return guidIndex.ContainsKey(key);
 		}
 
-		public ICollection<uint> Keys
-		{
-			get
-			{
-				return guidIndex.Keys;
-			}
-		}
+		public ICollection<uint> Keys => guidIndex.Keys;
 
 		public bool Remove(uint key)
 		{
@@ -338,21 +326,9 @@ namespace pjse
 				);
 		}
 
-		public int Count
-		{
-			get
-			{
-				return guidIndex.Count;
-			}
-		}
+		public int Count => guidIndex.Count;
 
-		public bool IsReadOnly
-		{
-			get
-			{
-				return true;
-			}
-		}
+		public bool IsReadOnly => true;
 
 		public bool Remove(KeyValuePair<uint, string> item)
 		{

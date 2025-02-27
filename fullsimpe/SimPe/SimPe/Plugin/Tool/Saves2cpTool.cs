@@ -69,29 +69,11 @@ namespace SimPe.Plugin.Tool
 		#endregion
 
 		#region IToolExt Member
-		public System.Windows.Forms.Shortcut Shortcut
-		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.None;
-			}
-		}
+		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 
-		public System.Drawing.Image Icon
-		{
-			get
-			{
-				return SimPe.GetIcon.S2pc;
-			}
-		}
+		public System.Drawing.Image Icon => SimPe.GetIcon.S2pc;
 
-		public virtual bool Visible
-		{
-			get
-			{
-				return true;
-			}
-		}
+		public virtual bool Visible => true;
 
 		#endregion
 	}

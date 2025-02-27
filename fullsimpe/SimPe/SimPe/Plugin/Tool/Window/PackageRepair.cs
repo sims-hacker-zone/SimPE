@@ -42,32 +42,14 @@ namespace SimPe.Plugin.Tool.Window
 
 		#region IToolExt Member
 
-		public System.Windows.Forms.Shortcut Shortcut
-		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.None;
-			}
-		}
+		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 
-		public bool Visible
-		{
-			get
-			{
-				return true;
-			}
-		}
+		public bool Visible => true;
 
-		public Image Icon
-		{
-			get
-			{
-				return System.Drawing.Image.FromStream(
+		public Image Icon => System.Drawing.Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.repair.png")
 				);
-			}
-		}
 
 		#endregion
 

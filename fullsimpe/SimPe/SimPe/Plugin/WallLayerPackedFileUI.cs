@@ -13,20 +13,8 @@ namespace SimPe.Plugin
 		: SimPe.Windows.Forms.WrapperBaseControl,
 			IPackedFileUI
 	{
-		protected new WallLayerPackedFileWrapper Wrapper
-		{
-			get
-			{
-				return base.Wrapper as WallLayerPackedFileWrapper;
-			}
-		}
-		public WallLayerPackedFileWrapper TPFW
-		{
-			get
-			{
-				return (WallLayerPackedFileWrapper)Wrapper;
-			}
-		}
+		protected new WallLayerPackedFileWrapper Wrapper => base.Wrapper as WallLayerPackedFileWrapper;
+		public WallLayerPackedFileWrapper TPFW => (WallLayerPackedFileWrapper)Wrapper;
 
 		#region WrapperBaseControl Member
 
@@ -174,13 +162,7 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region IPackedFileUI Member
-		System.Windows.Forms.Control IPackedFileUI.GUIHandle
-		{
-			get
-			{
-				return this;
-			}
-		}
+		System.Windows.Forms.Control IPackedFileUI.GUIHandle => this;
 		#endregion
 
 		#region IDisposable Member

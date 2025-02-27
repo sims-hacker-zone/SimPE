@@ -130,13 +130,7 @@ namespace SimPe
 		/// <summary>
 		/// true, if at least one Filter is active
 		/// </summary>
-		public bool Active
-		{
-			get
-			{
-				return act;
-			}
-		}
+		public bool Active => act;
 
 		/// <summary>
 		/// returns true, if the passed Item should be filtered

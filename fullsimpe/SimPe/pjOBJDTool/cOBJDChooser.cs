@@ -30,13 +30,7 @@ namespace pjOBJDTool
 	public partial class cOBJDChooser : Form
 	{
 		private pfOBJD value = null;
-		public pfOBJD Value
-		{
-			get
-			{
-				return value;
-			}
-		}
+		public pfOBJD Value => value;
 		List<pfOBJD> items = null;
 
 		public cOBJDChooser()

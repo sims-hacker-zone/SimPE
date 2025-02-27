@@ -30,13 +30,7 @@ namespace SimPe.Plugin.UI
 			}
 		}
 
-		protected ToolTip ToolTipControl
-		{
-			get
-			{
-				return this.toolTip1;
-			}
-		}
+		protected ToolTip ToolTipControl => this.toolTip1;
 
 		public PreferencesPanel()
 		{

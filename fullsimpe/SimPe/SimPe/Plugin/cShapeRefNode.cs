@@ -268,13 +268,7 @@ namespace SimPe.Plugin
 		}
 
 		[BrowsableAttribute(false)]
-		public override TransformNode StoredTransformNode
-		{
-			get
-			{
-				return tn;
-			}
-		}
+		public override TransformNode StoredTransformNode => tn;
 		#endregion
 
 
@@ -439,22 +433,10 @@ namespace SimPe.Plugin
 		/// Returns a List of all Child Blocks referenced by this Element
 		/// </summary>
 		[BrowsableAttribute(false)]
-		public override IntArrayList ChildBlocks
-		{
-			get
-			{
-				return tn.ChildBlocks;
-			}
-		}
+		public override IntArrayList ChildBlocks => tn.ChildBlocks;
 
 		[BrowsableAttribute(false)]
-		public override int ImageIndex
-		{
-			get
-			{
-				return 3; //mesh
-			}
-		}
+		public override int ImageIndex => 3; //mesh
 		#endregion
 
 		/// <summary>

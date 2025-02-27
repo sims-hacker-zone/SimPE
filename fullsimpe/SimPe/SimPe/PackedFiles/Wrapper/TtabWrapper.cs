@@ -230,13 +230,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
-		public byte[] FileSignature
-		{
-			get
-			{
-				return new byte[0];
-			}
-		}
+		public byte[] FileSignature => new byte[0];
 
 		#endregion
 
@@ -725,13 +719,7 @@ namespace SimPe.PackedFiles.Wrapper
 				animalGroups.Serialize(writer);
 		}
 
-		public bool InUse
-		{
-			get
-			{
-				return true;
-			}
-		}
+		public bool InUse => true;
 	}
 
 	public class TtabItemMotiveTable : ICollection
@@ -744,13 +732,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#endregion
 
 		#region Accessor Methods
-		public Ttab Wrapper
-		{
-			get
-			{
-				return parent == null ? null : parent.Parent;
-			}
-		}
+		public Ttab Wrapper => parent == null ? null : parent.Parent;
 		public TtabItem Parent
 		{
 			get
@@ -988,29 +970,11 @@ namespace SimPe.PackedFiles.Wrapper
 			items.CopyTo(a, i);
 		}
 
-		public int Count
-		{
-			get
-			{
-				return items.Count;
-			}
-		}
+		public int Count => items.Count;
 
-		public bool IsSynchronized
-		{
-			get
-			{
-				return items.IsSynchronized;
-			}
-		}
+		public bool IsSynchronized => items.IsSynchronized;
 
-		public object SyncRoot
-		{
-			get
-			{
-				return items.SyncRoot;
-			}
-		}
+		public object SyncRoot => items.SyncRoot;
 
 		#region IEnumerable Members
 		public IEnumerator GetEnumerator()
@@ -1032,13 +996,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#endregion
 
 		#region Accessor Methods
-		public Ttab Wrapper
-		{
-			get
-			{
-				return parent == null ? null : parent.Wrapper;
-			}
-		}
+		public Ttab Wrapper => parent == null ? null : parent.Wrapper;
 		public TtabItemMotiveTable Parent
 		{
 			get
@@ -1143,13 +1101,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public int EntriesInUse
-		{
-			get
-			{
-				return items.EntriesInUse;
-			}
-		}
+		public int EntriesInUse => items.EntriesInUse;
 
 		private class TtabItemMotiveItemArrayList : ArrayList
 		{
@@ -1275,29 +1227,11 @@ namespace SimPe.PackedFiles.Wrapper
 			items.CopyTo(a, i);
 		}
 
-		public int Count
-		{
-			get
-			{
-				return items.Count;
-			}
-		}
+		public int Count => items.Count;
 
-		public bool IsSynchronized
-		{
-			get
-			{
-				return items.IsSynchronized;
-			}
-		}
+		public bool IsSynchronized => items.IsSynchronized;
 
-		public object SyncRoot
-		{
-			get
-			{
-				return items.SyncRoot;
-			}
-		}
+		public object SyncRoot => items.SyncRoot;
 
 		#region IEnumerable Members
 		public IEnumerator GetEnumerator()
@@ -1316,13 +1250,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#endregion
 
 		#region Accessor Methods
-		public Ttab Wrapper
-		{
-			get
-			{
-				return parent == null ? null : parent.Wrapper;
-			}
-		}
+		public Ttab Wrapper => parent == null ? null : parent.Wrapper;
 		public TtabItemMotiveGroup Parent
 		{
 			get
@@ -1559,29 +1487,11 @@ namespace SimPe.PackedFiles.Wrapper
 			items.CopyTo(a, i);
 		}
 
-		public int Count
-		{
-			get
-			{
-				return items.Count;
-			}
-		}
+		public int Count => items.Count;
 
-		public bool IsSynchronized
-		{
-			get
-			{
-				return items.IsSynchronized;
-			}
-		}
+		public bool IsSynchronized => items.IsSynchronized;
 
-		public object SyncRoot
-		{
-			get
-			{
-				return items.SyncRoot;
-			}
-		}
+		public object SyncRoot => items.SyncRoot;
 
 		#region IEnumerable Members
 		public IEnumerator GetEnumerator()
@@ -1672,13 +1582,7 @@ namespace SimPe.PackedFiles.Wrapper
 				writer.Write(items[i]);
 		}
 
-		public override bool InUse
-		{
-			get
-			{
-				return (items[0] != 0 || items[1] != 0 || items[2] != 0);
-			}
-		}
+		public override bool InUse => (items[0] != 0 || items[1] != 0 || items[2] != 0);
 
 		private short this[int index]
 		{

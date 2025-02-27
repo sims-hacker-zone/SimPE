@@ -185,13 +185,7 @@ namespace SimPe
 		/// <summary>
 		/// Check this to determine if this item should be used in the FileTable
 		/// </summary>
-		public bool Use
-		{
-			get
-			{
-				return IsAvail && !Ignore && IsUseable;
-			}
-		}
+		public bool Use => IsAvail && !Ignore && IsUseable;
 
 		public bool IsRecursive
 		{
@@ -217,13 +211,7 @@ namespace SimPe
 			}
 		}
 
-		public bool IsUseable
-		{
-			get
-			{
-				return ver == -1 || ver == PathProvider.Global.GameVersion;
-			}
-		}
+		public bool IsUseable => ver == -1 || ver == PathProvider.Global.GameVersion;
 
 		public int EpVersion
 		{

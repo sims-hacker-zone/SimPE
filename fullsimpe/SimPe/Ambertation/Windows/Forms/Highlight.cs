@@ -78,13 +78,7 @@ namespace Ambertation.Windows.Forms
 		/// <summary>
 		/// Returns the Last selected Position
 		/// </summary>
-		public int End
-		{
-			get
-			{
-				return start + len - 1;
-			}
-		}
+		public int End => start + len - 1;
 
 		/// <summary>
 		/// Changes the allowed Maximum
@@ -193,13 +187,7 @@ namespace Ambertation.Collections
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object

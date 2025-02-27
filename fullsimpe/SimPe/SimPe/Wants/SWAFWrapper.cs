@@ -198,27 +198,9 @@ namespace SimPe.Wants
 			}
 		}
 
-		public List<SWAFItem> LifetimeWants
-		{
-			get
-			{
-				return this[SWAFItem.SWAFItemType.LifetimeWants];
-			}
-		}
-		public List<SWAFItem> Wants
-		{
-			get
-			{
-				return this[SWAFItem.SWAFItemType.Wants];
-			}
-		}
-		public List<SWAFItem> Fears
-		{
-			get
-			{
-				return this[SWAFItem.SWAFItemType.Fears];
-			}
-		}
+		public List<SWAFItem> LifetimeWants => this[SWAFItem.SWAFItemType.LifetimeWants];
+		public List<SWAFItem> Wants => this[SWAFItem.SWAFItemType.Wants];
+		public List<SWAFItem> Fears => this[SWAFItem.SWAFItemType.Fears];
 		private List<SWAFItem> this[SWAFItem.SWAFItemType value]
 		{
 			get
@@ -347,24 +329,12 @@ namespace SimPe.Wants
 		/// <summary>
 		/// Returns a list of File Types this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				return new uint[] { SWAFType };
-			}
-		}
+		public uint[] AssignableTypes => new uint[] { SWAFType };
 
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
-		public byte[] FileSignature
-		{
-			get
-			{
-				return new byte[0];
-			}
-		}
+		public byte[] FileSignature => new byte[0];
 
 		#endregion
 
@@ -441,13 +411,7 @@ namespace SimPe.Wants
 			return history.ContainsKey(key);
 		}
 
-		public ICollection<uint> Keys
-		{
-			get
-			{
-				return history.Keys;
-			}
-		}
+		public ICollection<uint> Keys => history.Keys;
 
 		public bool Remove(uint key)
 		{
@@ -461,13 +425,7 @@ namespace SimPe.Wants
 			return history.TryGetValue(key, out value);
 		}
 
-		public ICollection<List<SWAFItem>> Values
-		{
-			get
-			{
-				return history.Values;
-			}
-		}
+		public ICollection<List<SWAFItem>> Values => history.Values;
 		public List<SWAFItem> this[uint key]
 		{
 			get
@@ -557,13 +515,7 @@ namespace SimPe.Wants
 		#endregion
 
 		#region Accessor Methods
-		public SWAFItemType ItemType
-		{
-			get
-			{
-				return type;
-			}
-		}
+		public SWAFItemType ItemType => type;
 
 		public uint Version
 		{

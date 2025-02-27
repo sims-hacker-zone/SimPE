@@ -33,13 +33,7 @@ namespace SimPe.PackedFiles.UserInterface
 	{
 		#region IPackedFileHandler Member
 
-		public Control GUIHandle
-		{
-			get
-			{
-				return form.famiPanel;
-			}
-		}
+		public Control GUIHandle => form.famiPanel;
 
 		public void UpdateGUI(SimPe.Interfaces.Plugin.IFileWrapper wrapper)
 		{

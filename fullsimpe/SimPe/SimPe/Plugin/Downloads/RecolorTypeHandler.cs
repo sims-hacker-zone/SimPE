@@ -223,13 +223,7 @@ namespace SimPe.Plugin.Downloads
 			AfterLoadContent(type, pkg);
 		}
 
-		public IPackageInfo[] Objects
-		{
-			get
-			{
-				return new IPackageInfo[] { nfo };
-			}
-		}
+		public IPackageInfo[] Objects => new IPackageInfo[] { nfo };
 
 		#endregion
 

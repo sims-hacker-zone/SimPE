@@ -75,13 +75,7 @@ namespace SimPe.Providers
 				return null;
 			}
 
-			public System.Collections.ArrayList Tags
-			{
-				get
-				{
-					return tags;
-				}
-			}
+			public System.Collections.ArrayList Tags => tags;
 
 			public uint Owner
 			{
@@ -95,29 +89,11 @@ namespace SimPe.Providers
 				}
 			}
 
-			public uint Instance
-			{
-				get
-				{
-					return inst;
-				}
-			}
+			public uint Instance => inst;
 
-			public System.Drawing.Image Image
-			{
-				get
-				{
-					return img;
-				}
-			}
+			public System.Drawing.Image Image => img;
 
-			public string Name
-			{
-				get
-				{
-					return name;
-				}
-			}
+			public string Name => name;
 
 			public override int GetHashCode()
 			{

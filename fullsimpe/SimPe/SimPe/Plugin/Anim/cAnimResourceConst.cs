@@ -58,69 +58,27 @@ namespace SimPe.Plugin.Anim
 			}
 		}
 
-		public Ambertation.BaseChangeShort B_Unknown1
-		{
-			get
-			{
-				return new Ambertation.BaseChangeShort(unknown1);
-			}
-		}
+		public Ambertation.BaseChangeShort B_Unknown1 => new Ambertation.BaseChangeShort(unknown1);
 		byte[] headerb;
 
 		[DescriptionAttribute("Index 0 and 5 contain string Lengths.")]
-		public byte[] HeaderBytes
-		{
-			get
-			{
-				return headerb;
-			}
-		}
+		public byte[] HeaderBytes => headerb;
 
 		uint[] headeri;
-		public uint[] HeaderInts
-		{
-			get
-			{
-				return headeri;
-			}
-		}
+		public uint[] HeaderInts => headeri;
 
 		float[] headerf;
-		public float[] HeaderFloats
-		{
-			get
-			{
-				return headerf;
-			}
-		}
+		public float[] HeaderFloats => headerf;
 
 		string objname;
-		public string ObjName
-		{
-			get
-			{
-				return objname;
-			}
-		}
+		public string ObjName => objname;
 		string objmod;
-		public string ObjMod
-		{
-			get
-			{
-				return objmod;
-			}
-		}
+		public string ObjMod => objmod;
 
 		AnimationMeshBlock[] ab1;
 
 		[Browsable(false)]
-		public AnimationMeshBlock[] MeshBlock
-		{
-			get
-			{
-				return ab1;
-			}
-		}
+		public AnimationMeshBlock[] MeshBlock => ab1;
 
 		AnimBlock6[] ab6;
 		#endregion

@@ -849,46 +849,22 @@ namespace SimPe.PackedFiles.UserInterface
 		/// <summary>
 		/// Returns "connector number" for inwards connector (to stop)
 		/// </summary>
-		private int InOffset
-		{
-			get
-			{
-				return 0 + (truerule ? 0 : 1);
-			}
-		}
+		private int InOffset => 0 + (truerule ? 0 : 1);
 
 		/// <summary>
 		/// Returns "connector number" for outwards connector (from start)
 		/// </summary>
-		private int OutOffset
-		{
-			get
-			{
-				return 2 + (truerule ? 1 : 0);
-			}
-		}
+		private int OutOffset => 2 + (truerule ? 1 : 0);
 
 		/// <summary>
 		/// Which of 'start' and 'stop' is the earlier instruction
 		/// </summary>
-		private int Top
-		{
-			get
-			{
-				return Math.Min(start * 4 + OutOffset, stop * 4 + InOffset);
-			}
-		}
+		private int Top => Math.Min(start * 4 + OutOffset, stop * 4 + InOffset);
 
 		/// <summary>
 		/// Which of 'start' and 'stop' is the later instruction
 		/// </summary>
-		private int Bottom
-		{
-			get
-			{
-				return Math.Max(start * 4 + OutOffset, stop * 4 + InOffset);
-			}
-		}
+		private int Bottom => Math.Max(start * 4 + OutOffset, stop * 4 + InOffset);
 
 		/// <summary>
 		/// Resolves all lane Collisions

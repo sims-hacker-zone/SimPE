@@ -83,21 +83,9 @@ namespace SimPe.Plugin.Collections
 			}
 		}
 
-		public int Count
-		{
-			get
-			{
-				return list.Count;
-			}
-		}
+		public int Count => list.Count;
 
-		public int Length
-		{
-			get
-			{
-				return list.Count;
-			}
-		}
+		public int Length => list.Count;
 
 		public BnfoCustomerItems Clone()
 		{

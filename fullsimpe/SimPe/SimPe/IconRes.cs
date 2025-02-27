@@ -12,57 +12,27 @@ namespace SimPe
 		/// <summary>
 		/// Workplace Helper Icon
 		/// </summary>
-		public static Image Fail
-		{
-			get
-			{
-				return global::SimPe.Properties.Resources.whfail;
-			}
-		}
+		public static Image Fail => global::SimPe.Properties.Resources.whfail;
 
 		/// <summary>
 		/// Workplace Helper Icon
 		/// </summary>
-		public static Image OK
-		{
-			get
-			{
-				return global::SimPe.Properties.Resources.whok;
-			}
-		}
+		public static Image OK => global::SimPe.Properties.Resources.whok;
 
 		/// <summary>
 		/// Workplace Helper Icon
 		/// </summary>
-		public static Image Unk
-		{
-			get
-			{
-				return global::SimPe.Properties.Resources.whunk;
-			}
-		}
+		public static Image Unk => global::SimPe.Properties.Resources.whunk;
 
 		/// <summary>
 		/// Workplace Helper Icon
 		/// </summary>
-		public static Image Warn
-		{
-			get
-			{
-				return global::SimPe.Properties.Resources.whwarn;
-			}
-		}
+		public static Image Warn => global::SimPe.Properties.Resources.whwarn;
 
 		/// <summary>
 		/// Workplace Helper Icon
 		/// </summary>
-		public static Image Support
-		{
-			get
-			{
-				return global::SimPe.Properties.Resources.support;
-			}
-		}
+		public static Image Support => global::SimPe.Properties.Resources.support;
 
 		/// <summary>
 		/// Standard Toolbar Icon
@@ -754,35 +724,17 @@ namespace SimPe
 		/// <summary>
 		/// Misc Icon
 		/// </summary>
-		public static Image GameTit
-		{
-			get
-			{
-				return global::SimPe.Properties.Resources.gametip;
-			}
-		}
+		public static Image GameTit => global::SimPe.Properties.Resources.gametip;
 
 		/// <summary>
 		/// Misc Icon
 		/// </summary>
-		public static Image ReadOnly
-		{
-			get
-			{
-				return global::SimPe.Properties.Resources.readim;
-			}
-		}
+		public static Image ReadOnly => global::SimPe.Properties.Resources.readim;
 
 		/// <summary>
 		/// Misc Icon
 		/// </summary>
-		public static Image Writable
-		{
-			get
-			{
-				return global::SimPe.Properties.Resources.stxt;
-			}
-		}
+		public static Image Writable => global::SimPe.Properties.Resources.stxt;
 
 		/// <summary>
 		/// Butterfly Icon

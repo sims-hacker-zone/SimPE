@@ -155,31 +155,13 @@ namespace SimPe.PackedFiles.Wrapper
 		public class AddSimToPoolEventArgs : System.EventArgs
 		{
 			SimPe.PackedFiles.Wrapper.ExtSDesc sdsc;
-			public SimPe.PackedFiles.Wrapper.ExtSDesc SimDescription
-			{
-				get
-				{
-					return sdsc;
-				}
-			}
+			public SimPe.PackedFiles.Wrapper.ExtSDesc SimDescription => sdsc;
 
 			string name;
-			public string Name
-			{
-				get
-				{
-					return name;
-				}
-			}
+			public string Name => name;
 
 			string household;
-			public string Household
-			{
-				get
-				{
-					return household;
-				}
-			}
+			public string Household => household;
 
 			bool cancel;
 			public bool Cancel
@@ -195,13 +177,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 
 			System.Drawing.Image img;
-			public System.Drawing.Image Image
-			{
-				get
-				{
-					return img;
-				}
-			}
+			public System.Drawing.Image Image => img;
 
 			int grpid;
 			public int GroupIndex
@@ -764,29 +740,11 @@ namespace SimPe.PackedFiles.Wrapper
 			base.Refresh();
 		}
 
-		internal SteepValley.Windows.Forms.XPListViewItemCollection Items
-		{
-			get
-			{
-				return this.gp.Items;
-			}
-		}
+		internal SteepValley.Windows.Forms.XPListViewItemCollection Items => this.gp.Items;
 
-		internal System.Windows.Forms.ListView.SelectedIndexCollection SelectedIndices
-		{
-			get
-			{
-				return gp.SelectedIndices;
-			}
-		}
+		internal System.Windows.Forms.ListView.SelectedIndexCollection SelectedIndices => gp.SelectedIndices;
 
-		internal System.Windows.Forms.ListView.SelectedListViewItemCollection SelectedItems
-		{
-			get
-			{
-				return gp.SelectedItems;
-			}
-		}
+		internal System.Windows.Forms.ListView.SelectedListViewItemCollection SelectedItems => gp.SelectedItems;
 
 		internal void Sort()
 		{

@@ -232,13 +232,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// The Face Count for this Group
 		/// </summary>
-		public int FaceCount
-		{
-			get
-			{
-				return this.Faces.Count / 3;
-			}
-		}
+		public int FaceCount => this.Faces.Count / 3;
 
 		/// <summary>
 		/// The Number of diffrent Vertices used by this Group
@@ -522,13 +516,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object

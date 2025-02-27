@@ -186,13 +186,7 @@ namespace SimPe.PackedFiles.Wrapper
 			return base.Contains(item);
 		}
 
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		public override object Clone()
 		{

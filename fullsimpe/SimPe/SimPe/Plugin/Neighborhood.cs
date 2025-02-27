@@ -268,13 +268,7 @@ namespace SimPe.Plugin
 		}
 
 		NgbhType ngbh = null;
-		public string SelectedNgbh
-		{
-			get
-			{
-				return ngbh == null ? null : ngbh.FileName;
-			}
-		}
+		public string SelectedNgbh => ngbh == null ? null : ngbh.FileName;
 
 		SimPe.Packages.GeneratableFile package;
 		SimPe.Packages.File source_package;
@@ -541,13 +535,7 @@ namespace SimPe.Plugin
 				file;
 			NeighborhoodType type;
 
-			public string FileName
-			{
-				get
-				{
-					return file;
-				}
-			}
+			public string FileName => file;
 
 			public NgbhType(string file, string name, NeighborhoodType type)
 			{

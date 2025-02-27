@@ -53,22 +53,10 @@ namespace Ambertation.Windows.Forms.Graph
 		/// True, if the Mouse is currently down
 		/// </summary>
 		[Browsable(false)]
-		public bool Down
-		{
-			get
-			{
-				return down;
-			}
-		}
+		public bool Down => down;
 
 		bool focused;
-		public bool Focused
-		{
-			get
-			{
-				return focused;
-			}
-		}
+		public bool Focused => focused;
 
 		bool lk;
 		public bool Movable

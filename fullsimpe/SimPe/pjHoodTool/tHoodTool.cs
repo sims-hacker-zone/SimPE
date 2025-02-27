@@ -31,34 +31,16 @@ namespace pjHoodTool
 			ICommandLineFactory
 	{
 		#region IToolFactory Members
-		public IToolPlugin[] KnownTools
-		{
-			get
-			{
-				return new IToolPlugin[] { new cHoodTool() };
-			}
-		}
+		public IToolPlugin[] KnownTools => new IToolPlugin[] { new cHoodTool() };
 		#endregion
 
 		#region IHelpFactory Members
-		public IHelp[] KnownHelpTopics
-		{
-			get
-			{
-				return new IHelp[] { new hHoodHelp() };
-			}
-		}
+		public IHelp[] KnownHelpTopics => new IHelp[] { new hHoodHelp() };
 		#endregion
 
 		#region ICommandLineFactory Members
 
-		public ICommandLine[] KnownCommandLines
-		{
-			get
-			{
-				return new ICommandLine[] { new cHoodTool() };
-			}
-		}
+		public ICommandLine[] KnownCommandLines => new ICommandLine[] { new cHoodTool() };
 
 		#endregion
 	}

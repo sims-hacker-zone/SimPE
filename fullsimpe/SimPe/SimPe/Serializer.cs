@@ -128,13 +128,7 @@ namespace SimPe
 			return Formater.Property(name, val);
 		}
 
-		public static string Seperator
-		{
-			get
-			{
-				return Formater.Seperator;
-			}
-		}
+		public static string Seperator => Formater.Seperator;
 
 		public static string SerializeTypeHeader(object o)
 		{

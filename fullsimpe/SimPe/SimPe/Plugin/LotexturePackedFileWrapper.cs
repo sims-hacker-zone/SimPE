@@ -49,20 +49,8 @@ namespace SimPe.Plugin
 				hoodtexture = value;
 			}
 		}
-		public int Itemnumber
-		{
-			get
-			{
-				return itemnum;
-			}
-		}
-		public int Badges
-		{
-			get
-			{
-				return badges;
-			}
-		}
+		public int Itemnumber => itemnum;
+		public int Badges => badges;
 		#endregion
 
 		/// <summary>
@@ -277,16 +265,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
-		public byte[] FileSignature
-		{
-			get
-			{
-				///
-				/// Add the Signature Array if needed
-				///
-				return new byte[0];
-			}
-		}
+		public byte[] FileSignature => new byte[0];
 
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process

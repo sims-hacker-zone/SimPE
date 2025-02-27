@@ -27,13 +27,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			};
 		}
 
-		public override bool Loaded
-		{
-			get
-			{
-				return base.Loaded || (cpf != null);
-			}
-		}
+		public override bool Loaded => base.Loaded || (cpf != null);
 
 		SimPe.PackedFiles.Wrapper.Cpf cpf;
 

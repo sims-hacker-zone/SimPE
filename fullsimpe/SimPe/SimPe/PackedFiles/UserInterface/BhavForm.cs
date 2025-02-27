@@ -529,31 +529,13 @@ namespace SimPe.PackedFiles.UserInterface
 			return (i >= 0) ? s.Substring(0, i) : null;
 		}
 
-		private bool isPopup
-		{
-			get
-			{
-				return (this.Tag == null || this.Tag as string == null)
+		private bool isPopup => (this.Tag == null || this.Tag as string == null)
 					? false
 					: ((string)(this.Tag)).StartsWith("Popup");
-			}
-		}
-		private bool isNoOverride
-		{
-			get
-			{
-				return (this.Tag == null || this.Tag as string == null)
+		private bool isNoOverride => (this.Tag == null || this.Tag as string == null)
 					? false
 					: ((string)(this.Tag)).Contains(";noOverride");
-			}
-		}
-		private string callerID
-		{
-			get
-			{
-				return getValueFromTag("callerID");
-			}
-		}
+		private string callerID => getValueFromTag("callerID");
 		private string expName
 		{
 			get
@@ -579,11 +561,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		private String formTitle
-		{
-			get
-			{
-				return pjse.Localization.GetString(
+		private String formTitle => pjse.Localization.GetString(
 					"pjseWindowTitle",
 					expName // EP Name or Custom
 					,
@@ -611,8 +589,6 @@ namespace SimPe.PackedFiles.UserInterface
 						isPopup ? "pjseWindowTitleView" : "pjseWindowTitleEdit"
 					) // View or Edit
 				);
-			}
-		}
 
 		private void handleOverride()
 		{
@@ -1221,13 +1197,7 @@ namespace SimPe.PackedFiles.UserInterface
 		/// <summary>
 		/// Returns the Control that will be displayed within SimPe
 		/// </summary>
-		public Control GUIHandle
-		{
-			get
-			{
-				return bhavPanel;
-			}
-		}
+		public Control GUIHandle => bhavPanel;
 
 		/// <summary>
 		/// Called by the AbstractWrapper when the file should be displayed to the user.

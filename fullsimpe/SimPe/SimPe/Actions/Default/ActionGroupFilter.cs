@@ -26,13 +26,7 @@ namespace SimPe.Actions.Default
 	class ActionGroupFilter : AbstractActionDefault
 	{
 		private SimPe.Windows.Forms.ResourceListViewExt lv = null;
-		private ViewFilter Filter
-		{
-			get
-			{
-				return (ViewFilter)((lv == null) ? null : lv.Filter);
-			}
-		}
+		private ViewFilter Filter => (ViewFilter)((lv == null) ? null : lv.Filter);
 
 		public ActionGroupFilter(SimPe.Windows.Forms.ResourceListViewExt value)
 		{
@@ -80,21 +74,9 @@ namespace SimPe.Actions.Default
 		#endregion
 
 		#region IToolExt Member
-		public override System.Drawing.Image Icon
-		{
-			get
-			{
-				return SimPe.GetIcon.actionFilter;
-			}
-		}
+		public override System.Drawing.Image Icon => SimPe.GetIcon.actionFilter;
 
-		public override System.Windows.Forms.Shortcut Shortcut
-		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.CtrlT; // for "Toggle"...
-			}
-		}
+		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.CtrlT; // for "Toggle"...
 		#endregion
 	}
 }

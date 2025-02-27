@@ -11,12 +11,6 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 			return ScorItem.UnserializeDefaultToken(reader);
 		}
 
-		public SCOR.AScorItem ActivatedGUI
-		{
-			get
-			{
-				return null;
-			}
-		}
+		public SCOR.AScorItem ActivatedGUI => null;
 	}
 }

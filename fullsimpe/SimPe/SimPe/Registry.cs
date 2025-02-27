@@ -67,13 +67,7 @@ namespace SimPe
 		/// <summary>
 		/// Returns the LayoutRegistry
 		/// </summary>
-		public LayoutRegistry Layout
-		{
-			get
-			{
-				return lr;
-			}
-		}
+		public LayoutRegistry Layout => lr;
 		long pver;
 		// int pep, pepct; long pver; - seem not to be used will comment all out
 		#endregion
@@ -151,24 +145,12 @@ namespace SimPe
 		/// <summary>
 		/// Returns the Registry Key you can use to store Optional Plugin Data
 		/// </summary>
-		public XmlRegistryKey PluginRegistryKey
-		{
-			get
-			{
-				return xrk.CreateSubKey("PluginSettings");
-			}
-		}
+		public XmlRegistryKey PluginRegistryKey => xrk.CreateSubKey("PluginSettings");
 
 		/// <summary>
 		/// Returns the Base Registry Key
 		/// </summary>
-		public XmlRegistryKey RegistryKey
-		{
-			get
-			{
-				return xrk;
-			}
-		}
+		public XmlRegistryKey RegistryKey => xrk;
 		#endregion
 
 		/// <summary>
@@ -213,13 +195,7 @@ namespace SimPe
 		/// <summary>
 		/// Returns the Version of the latest SimPe used so far
 		/// </summary>
-		public long PreviousVersion
-		{
-			get
-			{
-				return pver;
-			}
-		}
+		public long PreviousVersion => pver;
 
 		#region EP Handler
 		public bool FoundUnknownEP()
@@ -746,13 +722,7 @@ namespace SimPe
 		/// Was an int which may cause an issue if an old
 		/// addon did call it
 		/// </summary>
-		public long Version
-		{
-			get
-			{
-				return Helper.SimPeVersionLong;
-			}
-		}
+		public long Version => Helper.SimPeVersionLong;
 
 		/// <summary>
 		/// Returns the maximum number of search results to show
@@ -1437,29 +1407,11 @@ namespace SimPe
 				rkf.SetValue("ResourceListInstanceFormat", (int)value);
 			}
 		}
-		public bool ResourceListInstanceFormatHexOnly
-		{
-			get
-			{
-				return ResourceListInstanceFormat
+		public bool ResourceListInstanceFormatHexOnly => ResourceListInstanceFormat
 					== ResourceListInstanceFormats.HexOnly;
-			}
-		}
-		public bool ResourceListInstanceFormatDecOnly
-		{
-			get
-			{
-				return ResourceListInstanceFormat
+		public bool ResourceListInstanceFormatDecOnly => ResourceListInstanceFormat
 					== ResourceListInstanceFormats.DecOnly;
-			}
-		}
-		public bool ResourceListInstanceFormatHexDec
-		{
-			get
-			{
-				return ResourceListInstanceFormat == ResourceListInstanceFormats.HexDec;
-			}
-		}
+		public bool ResourceListInstanceFormatHexDec => ResourceListInstanceFormat == ResourceListInstanceFormats.HexDec;
 
 		/// <summary>
 		/// How do we display the name column?
@@ -1485,13 +1437,7 @@ namespace SimPe
 		/// <summary>
 		/// Schould we disaplay the resource extensions in the list?
 		/// </summary>
-		public bool ResourceListShowExtensions
-		{
-			get
-			{
-				return ResourceListExtensionFormat != ResourceListExtensionFormats.None;
-			}
-		}
+		public bool ResourceListShowExtensions => ResourceListExtensionFormat != ResourceListExtensionFormats.None;
 		#endregion
 
 		#region Report Format

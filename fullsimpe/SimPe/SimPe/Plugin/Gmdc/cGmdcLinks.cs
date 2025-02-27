@@ -95,13 +95,7 @@ namespace SimPe.Plugin.Gmdc
 		/// The first List store here is an Alias Map for the first referenced <see cref="GmdcElement"/> in the
 		/// <see cref="ReferencedElement"/> Property.
 		/// </summary>
-		public IntArrayList[] AliasValues
-		{
-			get
-			{
-				return refs;
-			}
-		}
+		public IntArrayList[] AliasValues => refs;
 		#endregion
 
 		/// <summary>
@@ -449,13 +443,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object

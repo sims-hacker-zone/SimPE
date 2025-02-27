@@ -415,13 +415,7 @@ namespace Ambertation.Windows.Forms
 		}
 
 		[Browsable(false), Description("returns the usable region as Rectangle")]
-		internal Rectangle WorkspaceRect
-		{
-			get
-			{
-				return new Rectangle(3, 0x29, this.Width - 7, (this.Height - 40) - 4);
-			}
-		}
+		internal Rectangle WorkspaceRect => new Rectangle(3, 0x29, this.Width - 7, (this.Height - 40) - 4);
 
 		// Fields
 		private IContainer components;

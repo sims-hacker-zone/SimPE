@@ -39,13 +39,7 @@ namespace SimPe.Interfaces.Plugin
 		/// <summary>
 		/// true if <see cref="ProcessData"/> was called once
 		/// </summary>
-		public bool Processed
-		{
-			get
-			{
-				return processed;
-			}
-		}
+		public bool Processed => processed;
 
 		/// <summary>
 		/// Stores the FileDescriptor
@@ -494,33 +488,21 @@ namespace SimPe.Interfaces.Plugin
 			}
 		}
 
-		public virtual bool AllowMultipleInstances
-		{
-			get
-			{
-				return (
+		public virtual bool AllowMultipleInstances => (
 					GetType()
 						.GetInterface(
 							"SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper",
 							false
 						) == typeof(SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper)
 				);
-			}
-		}
 
-		public virtual bool ReferencesResources
-		{
-			get
-			{
-				return (
+		public virtual bool ReferencesResources => (
 					GetType()
 						.GetInterface(
 							"SimPe.Interfaces.Plugin.IWrapperReferencedResources",
 							false
 						) == typeof(SimPe.Interfaces.Plugin.IWrapperReferencedResources)
 				);
-			}
-		}
 
 		public void RefreshUI()
 		{
@@ -559,24 +541,12 @@ namespace SimPe.Interfaces.Plugin
 		/// <summary>
 		/// Get a Description for this Resource
 		/// </summary>
-		public virtual string Description
-		{
-			get
-			{
-				return "";
-			}
-		}
+		public virtual string Description => "";
 
 		/// <summary>
 		/// Get the Header for this Description(i.e. Fieldnames)
 		/// </summary>
-		public virtual string DescriptionHeader
-		{
-			get
-			{
-				return "";
-			}
-		}
+		public virtual string DescriptionHeader => "";
 
 		/// <summary>
 		/// Returns the 64 Character Long embedded Filename
@@ -673,24 +643,12 @@ namespace SimPe.Interfaces.Plugin
 		/// <summary>
 		/// Return the content of the Files
 		/// </summary>
-		public virtual System.IO.MemoryStream Content
-		{
-			get
-			{
-				return null;
-			}
-		}
+		public virtual System.IO.MemoryStream Content => null;
 
 		/// <summary>
 		/// Returns the default Extension for this File
 		/// </summary>
-		public virtual string FileExtension
-		{
-			get
-			{
-				return Data.MetaData.FindTypeAlias(this.FileDescriptor.Type).Extension;
-			}
-		}
+		public virtual string FileExtension => Data.MetaData.FindTypeAlias(this.FileDescriptor.Type).Extension;
 		#endregion
 
 		IFileWrapper guiwrapper;

@@ -136,13 +136,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		}
 
 		static NULL nil = new NULL();
-		public static object Nil
-		{
-			get
-			{
-				return nil;
-			}
-		}
+		public static object Nil => nil;
 
 		object[] regs;
 		string[] sregs;
@@ -150,13 +144,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 			localnames;
 		int pc;
 		string indent;
-		public string Indent
-		{
-			get
-			{
-				return indent;
-			}
-		}
+		public string Indent => indent;
 
 		public Context()
 			: this(new Hashtable(), "") { }
@@ -432,13 +420,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 			pc = -1;
 		}
 
-		public int PC
-		{
-			get
-			{
-				return pc;
-			}
-		}
+		public int PC => pc;
 
 		public ObjLuaCode CurrentLine
 		{
@@ -1438,13 +1420,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 				+ " else PC++";
 		}
 
-		public int Offset
-		{
-			get
-			{
-				return 1;
-			}
-		}
+		public int Offset => 1;
 	}
 
 	class TFORREP : Operator, IOperator

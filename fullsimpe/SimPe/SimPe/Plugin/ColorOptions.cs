@@ -43,13 +43,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// The Base Package
 		/// </summary>
-		public IPackageFile Package
-		{
-			get
-			{
-				return package;
-			}
-		}
+		public IPackageFile Package => package;
 
 		/// <summary>
 		/// Create a new Instance

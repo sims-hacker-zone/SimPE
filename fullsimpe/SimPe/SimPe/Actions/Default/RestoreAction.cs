@@ -73,22 +73,9 @@ namespace SimPe.Actions.Default
 		#endregion
 
 		#region IToolExt Member
-		public override System.Drawing.Image Icon
-		{
-			get
-			{
+		public override System.Drawing.Image Icon => SimPe.GetIcon.actionRestore;
 
-				return SimPe.GetIcon.actionRestore;
-			}
-		}
-
-		public override System.Windows.Forms.Shortcut Shortcut
-		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.ShiftIns;
-			}
-		}
+		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.ShiftIns;
 		#endregion
 	}
 }

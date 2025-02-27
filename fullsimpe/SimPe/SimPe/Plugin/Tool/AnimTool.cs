@@ -71,29 +71,11 @@ namespace SimPe.Plugin.Tool
 		#endregion
 
 		#region IToolExt Member
-		public System.Windows.Forms.Shortcut Shortcut
-		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.CtrlShiftA;
-			}
-		}
+		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.CtrlShiftA;
 
-		public System.Drawing.Image Icon
-		{
-			get
-			{
-				return SimPe.GetIcon.AnimCamera;
-			}
-		}
+		public System.Drawing.Image Icon => SimPe.GetIcon.AnimCamera;
 
-		public virtual bool Visible
-		{
-			get
-			{
-				return true;
-			}
-		}
+		public virtual bool Visible => true;
 
 		#endregion
 	}

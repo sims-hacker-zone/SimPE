@@ -57,21 +57,9 @@ namespace System.Collections.Generic
 			_array = EnumerableHelpers2.ToArray(collection, out _size);
 		}
 
-		public int Count
-		{
-			get
-			{
-				return _size;
-			}
-		}
+		public int Count => _size;
 
-		bool ICollection.IsSynchronized
-		{
-			get
-			{
-				return false;
-			}
-		}
+		bool ICollection.IsSynchronized => false;
 
 		object ICollection.SyncRoot
 		{
@@ -348,13 +336,7 @@ namespace System.Collections.Generic
 				throw new InvalidOperationException(_index == -2 ? "SR.InvalidOperation_EnumNotStarted" : "SR.InvalidOperation_EnumEnded");
 			}
 
-			object System.Collections.IEnumerator.Current
-			{
-				get
-				{
-					return Current;
-				}
-			}
+			object System.Collections.IEnumerator.Current => Current;
 
 			void IEnumerator.Reset()
 			{

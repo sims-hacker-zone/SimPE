@@ -79,13 +79,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// The stored MMATs
 		/// </summary>
-		public SimPe.PackedFiles.Wrapper.Cpf[] MMATs
-		{
-			get
-			{
-				return mmats;
-			}
-		}
+		public SimPe.PackedFiles.Wrapper.Cpf[] MMATs => mmats;
 
 		/// <summary>
 		/// adds the passed value if it doesn't already exist
@@ -167,13 +161,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns all known ObjectStateIndex for the current subset
 		/// </summary>
-		public uint[] ObjectStateIndex
-		{
-			get
-			{
-				return objectStateIndex;
-			}
-		}
+		public uint[] ObjectStateIndex => objectStateIndex;
 
 		public override string ToString()
 		{

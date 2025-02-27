@@ -555,13 +555,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		#region IPackedFileUI Member
 
-		public Control GUIHandle
-		{
-			get
-			{
-				return this.pnobjd;
-			}
-		}
+		public Control GUIHandle => this.pnobjd;
 
 		public void UpdateGUI(SimPe.Interfaces.Plugin.IFileWrapper wrapper)
 		{

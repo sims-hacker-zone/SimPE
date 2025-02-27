@@ -96,13 +96,7 @@ namespace SimPe.PackedFiles.UserInterface
 		}
 
 		private ArrayList tops = new ArrayList();
-		public int[] Tops
-		{
-			get
-			{
-				return (int[])tops.ToArray(typeof(Int32));
-			}
-		}
+		public int[] Tops => (int[])tops.ToArray(typeof(Int32));
 		#endregion
 
 		#region TtabMotiveGroupUI
@@ -277,13 +271,7 @@ namespace SimPe.PackedFiles.UserInterface
 			motive = m;
 		}
 
-		public int Motive
-		{
-			get
-			{
-				return motive;
-			}
-		}
+		public int Motive => motive;
 	}
 
 	public delegate void MotiveClickEventHandler(object sender, MotiveClickEventArgs e);

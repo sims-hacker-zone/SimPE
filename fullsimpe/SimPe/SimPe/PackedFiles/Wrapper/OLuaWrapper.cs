@@ -61,127 +61,37 @@ namespace SimPe.PackedFiles.Wrapper
 		byte sztsz;
 		byte instsz;
 		byte operandbits;
-		public byte OpcodeBits
-		{
-			get
-			{
-				return operandbits;
-			}
-		}
+		public byte OpcodeBits => operandbits;
 
 		byte bits1;
-		public byte ABits
-		{
-			get
-			{
-				return bits1;
-			}
-		}
+		public byte ABits => bits1;
 		byte bits2;
-		public byte BBits
-		{
-			get
-			{
-				return bits2;
-			}
-		}
+		public byte BBits => bits2;
 		byte bits3;
-		public byte CBits
-		{
-			get
-			{
-				return bits3;
-			}
-		}
+		public byte CBits => bits3;
 
 		byte nrsz;
-		public byte NumberSize
-		{
-			get
-			{
-				return nrsz;
-			}
-		}
+		public byte NumberSize => nrsz;
 		byte[] sample;
 
 		ObjLuaFunction root;
-		public ObjLuaFunction Root
-		{
-			get
-			{
-				return root;
-			}
-		}
+		public ObjLuaFunction Root => root;
 		#endregion
 
 		#region Code Properties
-		internal uint OpcodeMaks
-		{
-			get
-			{
-				return (uint)Math.Pow(2, this.OpcodeBits) - 1;
-			}
-		}
-		internal byte OpcodeShift
-		{
-			get
-			{
-				return 0;
-			}
-		}
+		internal uint OpcodeMaks => (uint)Math.Pow(2, this.OpcodeBits) - 1;
+		internal byte OpcodeShift => 0;
 
-		internal uint AMaks
-		{
-			get
-			{
-				return (uint)Math.Pow(2, this.ABits) - 1;
-			}
-		}
-		internal byte AShift
-		{
-			get
-			{
-				return (byte)(this.BShift + this.BBits);
-			}
-		}
+		internal uint AMaks => (uint)Math.Pow(2, this.ABits) - 1;
+		internal byte AShift => (byte)(this.BShift + this.BBits);
 
-		internal uint BMaks
-		{
-			get
-			{
-				return (uint)Math.Pow(2, this.BBits) - 1;
-			}
-		}
-		internal byte BShift
-		{
-			get
-			{
-				return (byte)(this.CShift + this.CBits);
-			}
-		}
+		internal uint BMaks => (uint)Math.Pow(2, this.BBits) - 1;
+		internal byte BShift => (byte)(this.CShift + this.CBits);
 
-		internal uint CMaks
-		{
-			get
-			{
-				return (uint)Math.Pow(2, this.CBits) - 1;
-			}
-		}
-		internal byte CShift
-		{
-			get
-			{
-				return (byte)(this.OpcodeShift + this.OpcodeBits);
-			}
-		}
+		internal uint CMaks => (uint)Math.Pow(2, this.CBits) - 1;
+		internal byte CShift => (byte)(this.OpcodeShift + this.OpcodeBits);
 
-		internal int Bias
-		{
-			get
-			{
-				return ((int)Math.Pow(2, BBits + CBits) - 1) / 2;
-			}
-		}
+		internal int Bias => ((int)Math.Pow(2, BBits + CBits) - 1) / 2;
 		#endregion
 
 
@@ -431,34 +341,16 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#region Attributes
 		ObjLua parent;
-		public ObjLua Parent
-		{
-			get
-			{
-				return parent;
-			}
-		}
+		public ObjLua Parent => parent;
 
 		string name;
 		uint linedef;
 		byte nups;
 		byte argc;
-		public byte ArgumentCount
-		{
-			get
-			{
-				return argc;
-			}
-		}
+		public byte ArgumentCount => argc;
 		byte isinout;
 		byte stacksz;
-		public byte StackSize
-		{
-			get
-			{
-				return stacksz;
-			}
-		}
+		public byte StackSize => stacksz;
 
 		ArrayList contants,
 			functions,
@@ -467,53 +359,17 @@ namespace SimPe.PackedFiles.Wrapper
 			upval,
 			local;
 
-		public ArrayList Constants
-		{
-			get
-			{
-				return contants;
-			}
-		}
+		public ArrayList Constants => contants;
 
-		public ArrayList UpValues
-		{
-			get
-			{
-				return upval;
-			}
-		}
+		public ArrayList UpValues => upval;
 
-		public ArrayList Locals
-		{
-			get
-			{
-				return local;
-			}
-		}
+		public ArrayList Locals => local;
 
-		public ArrayList SourceLine
-		{
-			get
-			{
-				return srcln;
-			}
-		}
+		public ArrayList SourceLine => srcln;
 
-		public ArrayList Functions
-		{
-			get
-			{
-				return functions;
-			}
-		}
+		public ArrayList Functions => functions;
 
-		public ArrayList Codes
-		{
-			get
-			{
-				return codes;
-			}
-		}
+		public ArrayList Codes => codes;
 		#endregion
 
 		public ObjLuaFunction(ObjLua parent)
@@ -878,13 +734,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#region Attributes
 		ObjLuaFunction parent;
-		public ObjLuaFunction Parent
-		{
-			get
-			{
-				return parent;
-			}
-		}
+		public ObjLuaFunction Parent => parent;
 
 		Type type;
 		public Type InstructionType
@@ -1336,13 +1186,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Attributes
 		ObjLuaFunction parent;
 
-		protected ObjLuaFunction Parent
-		{
-			get
-			{
-				return parent;
-			}
-		}
+		protected ObjLuaFunction Parent => parent;
 
 		uint val;
 		public uint Value
@@ -1378,17 +1222,7 @@ namespace SimPe.PackedFiles.Wrapper
 			);
 		}
 
-		public byte Opcode
-		{
-			get
-			{
-				return GetOpCode(val, this.parent);
-			}
-			/*set
-			{
-				SetOpcode(value);
-			}*/
-		}
+		public byte Opcode => GetOpCode(val, this.parent);
 
 		public ushort A
 		{
@@ -1450,22 +1284,10 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public uint BX
-		{
-			get
-			{
-				return ((B & parent.Parent.BMaks) << parent.Parent.CBits)
+		public uint BX => ((B & parent.Parent.BMaks) << parent.Parent.CBits)
 					| (C & parent.Parent.CMaks);
-			}
-		}
 
-		public int SBX
-		{
-			get
-			{
-				return (int)((long)BX - parent.Parent.Bias);
-			}
-		}
+		public int SBX => (int)((long)BX - parent.Parent.Bias);
 
 		public static string GetOpcodeName(byte oc)
 		{

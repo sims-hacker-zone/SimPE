@@ -1180,51 +1180,21 @@ namespace pjse.guidtool
 			//Hide();
 		}
 
-		private bool isCkbObjdGUIDEnabled
-		{
-			get
-			{
-				return !ckbCallsToBHAV.Checked && !ckbGLOB.Checked;
-			}
-		}
-		private bool isCkbCallsToBHAVEnabled
-		{
-			get
-			{
-				return !ckbObjdGUID.Checked
+		private bool isCkbObjdGUIDEnabled => !ckbCallsToBHAV.Checked && !ckbGLOB.Checked;
+		private bool isCkbCallsToBHAVEnabled => !ckbObjdGUID.Checked
 					&& !ckbGLOB.Checked
 					&& !isCkbSomeTextChecked;
-			}
-		}
-		private bool isCkbGLOBEnabled
-		{
-			get
-			{
-				return !ckbObjdGUID.Checked
+		private bool isCkbGLOBEnabled => !ckbObjdGUID.Checked
 					&& !ckbCallsToBHAV.Checked
 					&& !isCkbSomeTextChecked;
-			}
-		}
-		private bool isFlpNamesEnabled
-		{
-			get
-			{
-				return !ckbCallsToBHAV.Checked && !ckbGLOB.Checked;
-			}
-		}
+		private bool isFlpNamesEnabled => !ckbCallsToBHAV.Checked && !ckbGLOB.Checked;
 
 		private static bool isChecked(CheckBox cb)
 		{
 			return cb.Checked;
 		}
 
-		private bool isCkbSomeTextChecked
-		{
-			get
-			{
-				return isCkbSomeNameChecked || isCkbSomeStringChecked;
-			}
-		}
+		private bool isCkbSomeTextChecked => isCkbSomeNameChecked || isCkbSomeStringChecked;
 		private bool isCkbSomeNameChecked
 		{
 			get

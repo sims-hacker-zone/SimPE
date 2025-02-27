@@ -47,51 +47,27 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Should the Import be continued?
 		/// </summary>
-		public DialogResult Result
-		{
-			get
-			{
-				return res;
-			}
-		}
+		public DialogResult Result => res;
 
 		bool cleangroups;
 
 		/// <summary>
 		/// Should we clean available Groups before the Import?
 		/// </summary>
-		public bool CleanGroups
-		{
-			get
-			{
-				return cleangroups;
-			}
-		}
+		public bool CleanGroups => cleangroups;
 
 		bool cleanbones;
 
 		/// <summary>
 		/// Should we remove unreferenced Joints after the Import?
 		/// </summary>
-		public bool CleanBones
-		{
-			get
-			{
-				return cleanbones;
-			}
-		}
+		public bool CleanBones => cleanbones;
 
 		bool updatecres;
 
 		/// <summary>
 		/// Writes the Bone Locationa and Hirarchy to the CRES
 		/// </summary>
-		public bool UpdateCres
-		{
-			get
-			{
-				return updatecres;
-			}
-		}
+		public bool UpdateCres => updatecres;
 	}
 }

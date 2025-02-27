@@ -51,13 +51,7 @@ namespace SimPe.Plugin
 			txmtmap = new Hashtable();
 		}
 
-		public GeometryDataContainer Gmdc
-		{
-			get
-			{
-				return gmdc;
-			}
-		}
+		public GeometryDataContainer Gmdc => gmdc;
 
 		Hashtable txtrmap,
 			txmtmap;
@@ -68,13 +62,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <remarks>Keyas are the SubSet Names, the Values are <see cref="GenericRcol"/> Instances,
 		/// that hold the TXMT for that Subset</remarks>
-		public Hashtable UserTxtrMap
-		{
-			get
-			{
-				return txtrmap;
-			}
-		}
+		public Hashtable UserTxtrMap => txtrmap;
 
 		/// <summary>
 		/// Used as a User Override for the automatically created List of TXTRs, which is used for
@@ -82,13 +70,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <remarks>Keyas are the SubSet Names, the Values are <see cref="GenericRcol"/> Instances,
 		/// that hold the TXTR for that Subset</remarks>
-		public Hashtable UserTxmtMap
-		{
-			get
-			{
-				return txmtmap;
-			}
-		}
+		public Hashtable UserTxmtMap => txmtmap;
 
 		public Ambertation.Scenes.Scene GetScene(
 			string absimgpath,

@@ -134,32 +134,14 @@ namespace SimPe.Plugin.Tool.Action
 		#endregion
 
 		#region IToolExt Member
-		public System.Windows.Forms.Shortcut Shortcut
-		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.None;
-			}
-		}
+		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 
-		public System.Drawing.Image Icon
-		{
-			get
-			{
-				return System.Drawing.Image.FromStream(
+		public System.Drawing.Image Icon => System.Drawing.Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.emoticon.png")
 				);
-			}
-		}
 
-		public virtual bool Visible
-		{
-			get
-			{
-				return true;
-			}
-		}
+		public virtual bool Visible => true;
 
 		#endregion
 	}

@@ -117,13 +117,7 @@ namespace pjse
 			this.CancelButton = btnCancel;
 		}
 
-		public uint Value
-		{
-			get
-			{
-				return (selectedRB >= 0) ? ldoc[selectedRB].Value : (ushort)0xffff;
-			}
-		}
+		public uint Value => (selectedRB >= 0) ? ldoc[selectedRB].Value : (ushort)0xffff;
 
 		public String Title
 		{

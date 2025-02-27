@@ -129,13 +129,7 @@ namespace System
 			}
 		}
 
-		public int Length
-		{
-			get
-			{
-				return bitset.Length;
-			}
-		}
+		public int Length => bitset.Length;
 
 		public bool Matches(string mask)
 		{

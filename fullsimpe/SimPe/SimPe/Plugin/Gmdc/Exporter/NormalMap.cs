@@ -65,35 +65,17 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		/// <summary>
 		/// Returns the suggested File Extension (including the . like .obj or .3ds)
 		/// </summary>
-		public override string FileExtension
-		{
-			get
-			{
-				return ".map";
-			}
-		}
+		public override string FileExtension => ".map";
 
 		/// <summary>
 		/// Returns the File Description (the Name of the exported FileType)
 		/// </summary>
-		public override string FileDescription
-		{
-			get
-			{
-				return "BumpMapNormals";
-			}
-		}
+		public override string FileDescription => "BumpMapNormals";
 
 		/// <summary>
 		/// Returns the name of the Author
 		/// </summary>
-		public override string Author
-		{
-			get
-			{
-				return "Skankyboy";
-			}
-		}
+		public override string Author => "Skankyboy";
 
 		/// <summary>
 		/// Called when a new File is started

@@ -75,13 +75,7 @@ namespace SimPe
 			}
 		}
 
-		public uint AsUint
-		{
-			get
-			{
-				return val;
-			}
-		}
+		public uint AsUint => val;
 
 		public string GetRoot()
 		{

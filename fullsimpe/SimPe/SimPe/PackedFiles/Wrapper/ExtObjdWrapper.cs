@@ -402,32 +402,14 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public short Version
-		{
-			get
-			{
-				return data[0x00];
-			}
-		}
+		public short Version => data[0x00];
 
 		/// <summary>
 		/// Returns the Length of the File
 		/// </summary>
-		protected int Length
-		{
-			get
-			{
-				return (int)(data.Length * 2 + 0x40);
-			}
-		}
+		protected int Length => (int)(data.Length * 2 + 0x40);
 
-		public ObjdHealth Ok
-		{
-			get
-			{
-				return ok;
-			}
-		}
+		public ObjdHealth Ok => ok;
 
 		/// <summary>
 		/// Return a PropertyParser, that enumerates all known Properties as <see cref="Ambertation.PropertyDescription"/> Objects
@@ -447,10 +429,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		internal uint createguid
-		{
-			get
-			{
+		internal uint createguid =>
 				// TODO
 				//string gooee = "";
 				//uint gid;
@@ -471,9 +450,7 @@ namespace SimPe.PackedFiles.Wrapper
 				//        return gid;
 				//    }
 				//}
-				return 0;
-			}
-		}
+				0;
 
 		#endregion
 
@@ -685,18 +662,12 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public override string Description
-		{
-			get
-			{
-				return "FileName="
+		public override string Description => "FileName="
 					+ this.FileName
 					+ ",GUID=0x"
 					+ Helper.HexString(this.Guid)
 					+ ",Type="
 					+ this.Type.ToString();
-			}
-		}
 
 		#endregion
 

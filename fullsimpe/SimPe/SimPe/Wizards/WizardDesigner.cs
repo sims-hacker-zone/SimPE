@@ -145,13 +145,7 @@ namespace SimPe.Wizards
 			base.Dispose(disposing);
 		}
 
-		public override System.Collections.ICollection AssociatedComponents
-		{
-			get
-			{
-				return wz.Controls;
-			}
-		}
+		public override System.Collections.ICollection AssociatedComponents => wz.Controls;
 
 		private void ShowNextStep(object sender, System.EventArgs e)
 		{

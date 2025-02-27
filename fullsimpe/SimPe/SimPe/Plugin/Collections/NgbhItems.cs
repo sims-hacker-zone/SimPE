@@ -30,13 +30,7 @@ namespace SimPe.Plugin.Collections
 		ArrayList list = new ArrayList();
 		NgbhSlotList parent;
 		Ngbh ngbh;
-		public NgbhSlotList Parent
-		{
-			get
-			{
-				return parent;
-			}
-		}
+		public NgbhSlotList Parent => parent;
 
 		internal NgbhItems(NgbhSlotList parent)
 		{
@@ -158,21 +152,9 @@ namespace SimPe.Plugin.Collections
 			}
 		}
 
-		public int Count
-		{
-			get
-			{
-				return list.Count;
-			}
-		}
+		public int Count => list.Count;
 
-		public int Length
-		{
-			get
-			{
-				return list.Count;
-			}
-		}
+		public int Length => list.Count;
 
 		public NgbhItems Clone()
 		{

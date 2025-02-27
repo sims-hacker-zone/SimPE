@@ -60,23 +60,10 @@ namespace SimPe.Plugin
 		}
 
 		byte[] unknown2;
-		public byte[] Unknown2
-		{
-			get
-			{
-				return unknown2;
-			}
-			//set { unknown2 = value; }
-		}
+		public byte[] Unknown2 => unknown2;
 
 		[BrowsableAttribute(false)]
-		public override TransformNode StoredTransformNode
-		{
-			get
-			{
-				return tn;
-			}
-		}
+		public override TransformNode StoredTransformNode => tn;
 		#endregion
 
 
@@ -107,22 +94,10 @@ namespace SimPe.Plugin
 		/// Returns a List of all Child Blocks referenced by this Element
 		/// </summary>
 		[BrowsableAttribute(false)]
-		public override IntArrayList ChildBlocks
-		{
-			get
-			{
-				return tn.ChildBlocks;
-			}
-		}
+		public override IntArrayList ChildBlocks => tn.ChildBlocks;
 
 		[BrowsableAttribute(false)]
-		public override int ImageIndex
-		{
-			get
-			{
-				return 2; //light
-			}
-		}
+		public override int ImageIndex => 2; //light
 		#endregion
 
 		#region IRcolBlock Member

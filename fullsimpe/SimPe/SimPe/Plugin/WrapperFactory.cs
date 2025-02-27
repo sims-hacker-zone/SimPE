@@ -217,13 +217,7 @@ namespace SimPe.Plugin
 
 		#region ICommandLineFactory Members
 
-		public ICommandLine[] KnownCommandLines
-		{
-			get
-			{
-				return new ICommandLine[] { new BuildTxtr(), new FixPackage() };
-			}
-		}
+		public ICommandLine[] KnownCommandLines => new ICommandLine[] { new BuildTxtr(), new FixPackage() };
 
 		#endregion
 

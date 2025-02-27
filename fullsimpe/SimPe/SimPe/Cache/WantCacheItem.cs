@@ -220,13 +220,7 @@ namespace SimPe.Cache
 			}
 		}
 
-		public byte Version
-		{
-			get
-			{
-				return version;
-			}
-		}
+		public byte Version => version;
 
 		#endregion
 	}

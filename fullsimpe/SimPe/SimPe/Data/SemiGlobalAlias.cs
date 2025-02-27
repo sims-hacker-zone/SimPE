@@ -46,13 +46,7 @@ namespace SimPe.Data
 		/// <summary>
 		/// returns true if this Global is know for certain
 		/// </summary>
-		public bool Known
-		{
-			get
-			{
-				return known;
-			}
-		}
+		public bool Known => known;
 
 		public override string ToString()
 		{

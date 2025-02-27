@@ -49,13 +49,7 @@ namespace pj
 			return L.Get("pjBMTHelp");
 		}
 
-		public System.Drawing.Image Icon
-		{
-			get
-			{
-				return null;
-			}
-		}
+		public System.Drawing.Image Icon => null;
 
 		#endregion
 	}

@@ -125,21 +125,9 @@ namespace SimPe.Plugin.Gmdc
 			Sorting = sorting;
 		}
 
-		public SimPe.Geometry.Matrixd TransformMatrix
-		{
-			get
-			{
-				return m;
-			}
-		}
+		public SimPe.Geometry.Matrixd TransformMatrix => m;
 
-		public SimPe.Geometry.Matrixd ScaleMatrix
-		{
-			get
-			{
-				return ms;
-			}
-		}
+		public SimPe.Geometry.Matrixd ScaleMatrix => ms;
 
 		public SimPe.Geometry.Quaternion TransformRotation(SimPe.Geometry.Quaternion q)
 		{

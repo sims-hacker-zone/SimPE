@@ -31,13 +31,7 @@ namespace SimPe.Wizards
 			c,
 			canfin;
 
-		public WizardStepPanel Step
-		{
-			get
-			{
-				return step;
-			}
-		}
+		public WizardStepPanel Step => step;
 
 		public bool EnableNext
 		{

@@ -32,13 +32,7 @@ namespace SimPe.Plugin
 		/// Windows Registry Link
 		/// </summary>
 		static SimPe.Registry registry;
-		internal static Registry WindowsRegistry
-		{
-			get
-			{
-				return registry;
-			}
-		}
+		internal static Registry WindowsRegistry => registry;
 
 		IWrapperRegistry reg;
 		IProviderRegistry prov;

@@ -63,24 +63,12 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the  the number of good blocks
 		/// </summary>
-		public int GoodSections
-		{
-			get
-			{
-				return goodsections;
-			}
-		}
+		public int GoodSections => goodsections;
 
 		/// <summary>
 		/// Returns the Version of the File
 		/// </summary>
-		public byte Version
-		{
-			get
-			{
-				return version;
-			}
-		}
+		public byte Version => version;
 
 		/// <summary>
 		/// Returns the Name of the Family

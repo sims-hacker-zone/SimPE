@@ -93,53 +93,17 @@ namespace Ambertation.Windows.Forms.Graph
 			top,
 			width,
 			height;
-		public int Left
-		{
-			get
-			{
-				return left;
-			}
-		}
+		public int Left => left;
 
-		public int Top
-		{
-			get
-			{
-				return top;
-			}
-		}
+		public int Top => top;
 
-		public int Width
-		{
-			get
-			{
-				return width;
-			}
-		}
+		public int Width => width;
 
-		public int Height
-		{
-			get
-			{
-				return height;
-			}
-		}
+		public int Height => height;
 
-		public int Right
-		{
-			get
-			{
-				return this.BoundingRectangle.Right;
-			}
-		}
+		public int Right => this.BoundingRectangle.Right;
 
-		public int Bottom
-		{
-			get
-			{
-				return this.BoundingRectangle.Bottom;
-			}
-		}
+		public int Bottom => this.BoundingRectangle.Bottom;
 		public Point Location
 		{
 			get
@@ -164,13 +128,7 @@ namespace Ambertation.Windows.Forms.Graph
 			}
 		}
 
-		public Rectangle BoundingRectangle
-		{
-			get
-			{
-				return new Rectangle(left, top, width, height);
-			}
-		}
+		public Rectangle BoundingRectangle => new Rectangle(left, top, width, height);
 
 		GraphPanel parent;
 		public GraphPanel Parent
@@ -413,13 +371,7 @@ namespace Ambertation.Windows.Forms.Graph
 			g.Dispose();
 		}
 
-		public Image SourceImage
-		{
-			get
-			{
-				return cachedimage;
-			}
-		}
+		public Image SourceImage => cachedimage;
 
 		protected void CompleteRedraw(System.Drawing.Graphics g)
 		{
@@ -489,13 +441,7 @@ namespace Ambertation.Windows.Forms.Graph
 
 		#region Update Control
 		bool update;
-		public bool Updating
-		{
-			get
-			{
-				return update;
-			}
-		}
+		public bool Updating => update;
 
 		public void BeginUpdate()
 		{

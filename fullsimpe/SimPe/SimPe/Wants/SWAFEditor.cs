@@ -740,13 +740,7 @@ namespace SimPe.Wants
 
 		#region IPackedFileUI Members
 
-		public Control GUIHandle
-		{
-			get
-			{
-				return pnSWAFEditor;
-			}
-		}
+		public Control GUIHandle => pnSWAFEditor;
 
 		public void UpdateGUI(IFileWrapper wrp)
 		{

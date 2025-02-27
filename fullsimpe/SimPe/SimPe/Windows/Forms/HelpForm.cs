@@ -84,12 +84,6 @@ namespace SimPe.Windows.Forms
 			g.Dispose();
 		}
 
-		protected override Rectangle HeaderRect
-		{
-			get
-			{
-				return headerrect;
-			}
-		}
+		protected override Rectangle HeaderRect => headerrect;
 	}
 }

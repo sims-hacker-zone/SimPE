@@ -1231,13 +1231,7 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		public Bnfo Bnfo
-		{
-			get
-			{
-				return (Bnfo)Wrapper;
-			}
-		}
+		public Bnfo Bnfo => (Bnfo)Wrapper;
 
 		bool intern;
 		bool employees = false;

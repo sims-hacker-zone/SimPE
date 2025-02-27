@@ -124,13 +124,7 @@ namespace SimPe.Plugin.Anim
 			}
 		}
 
-		public string Unknown1Hex
-		{
-			get
-			{
-				return "0x" + Helper.HexString(Unknown1Bits);
-			}
-		}
+		public string Unknown1Hex => "0x" + Helper.HexString(Unknown1Bits);
 
 		[
 			DescriptionAttribute("Reserved"),
@@ -229,25 +223,13 @@ namespace SimPe.Plugin.Anim
 			DescriptionAttribute("Remaining Information stored in Unknown1"),
 			CategoryAttribute("Information")
 		]
-		public uint AddonTokenUnknown
-		{
-			get
-			{
-				return Unknown1 >> 0x13;
-			}
-		}
+		public uint AddonTokenUnknown => Unknown1 >> 0x13;
 
 		[
 			DescriptionAttribute("Number of Tokens stored in the Addon Data"),
 			CategoryAttribute("Information")
 		]
-		public int Count
-		{
-			get
-			{
-				return items.Count;
-			}
-		}
+		public int Count => items.Count;
 		#endregion
 
 		/// <summary>

@@ -66,13 +66,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// The package the File is stored in
 		/// </summary>
-		public SimPe.Interfaces.Files.IPackageFile Package
-		{
-			get
-			{
-				return package;
-			}
-		}
+		public SimPe.Interfaces.Files.IPackageFile Package => package;
 
 		/// <summary>
 		/// Get the Local Group Value used for this Package
@@ -255,13 +249,7 @@ namespace SimPe.Plugin
 			return false;
 		}
 
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		public override void Sort()
 		{
@@ -519,13 +507,7 @@ namespace SimPe.Plugin
 		}
 
 		bool loaded;
-		public bool Loaded
-		{
-			get
-			{
-				return loaded;
-			}
-		}
+		public bool Loaded => loaded;
 
 		/// <summary>
 		/// Load the FileIndex if it has not previously been loaded and not in LocalMode

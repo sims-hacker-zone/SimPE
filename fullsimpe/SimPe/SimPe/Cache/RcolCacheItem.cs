@@ -154,13 +154,7 @@ namespace SimPe.Cache
 			writer.Write(pfd.LongInstance);
 		}
 
-		public byte Version
-		{
-			get
-			{
-				return version;
-			}
-		}
+		public byte Version => version;
 
 		#endregion
 	}

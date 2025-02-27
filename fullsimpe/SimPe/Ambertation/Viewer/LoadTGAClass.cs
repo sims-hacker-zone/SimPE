@@ -114,13 +114,7 @@ namespace Ambertation.Viewer
 				this.ImageSpec.Read(br);
 			}
 
-			public bool RleEncoded
-			{
-				get
-				{
-					return ImageType >= 9;
-				}
-			}
+			public bool RleEncoded => ImageType >= 9;
 
 			public override string ToString()
 			{

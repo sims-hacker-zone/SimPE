@@ -71,13 +71,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		public virtual RecolorType PackageType
-		{
-			get
-			{
-				return this.mode;
-			}
-		}
+		public virtual RecolorType PackageType => this.mode;
 
 		public PackageSettings()
 		{
@@ -129,13 +123,7 @@ namespace SimPe.Plugin
 		/// in NL.
 		/// </summary>
 
-		public override RecolorType PackageType
-		{
-			get
-			{
-				return RecolorType.Hairtone;
-			}
-		}
+		public override RecolorType PackageType => RecolorType.Hairtone;
 
 		public HairtoneSettings()
 		{
@@ -168,13 +156,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		public override RecolorType PackageType
-		{
-			get
-			{
-				return RecolorType.Skintone;
-			}
-		}
+		public override RecolorType PackageType => RecolorType.Skintone;
 
 		public SkintoneSettings()
 		{
@@ -323,13 +305,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		public override RecolorType PackageType
-		{
-			get
-			{
-				return RecolorType.Skin;
-			}
-		}
+		public override RecolorType PackageType => RecolorType.Skin;
 
 		public ClothingSettings()
 		{

@@ -35,21 +35,9 @@ namespace SimPe.Plugin.Scanner
 			: base() { }
 
 		#region IScannerBase Member
-		public uint Version
-		{
-			get
-			{
-				return 1;
-			}
-		}
+		public uint Version => 1;
 
-		public int Index
-		{
-			get
-			{
-				return 490;
-			}
-		}
+		public int Index => 490;
 		#endregion
 
 		#region IScanner Member
@@ -119,13 +107,7 @@ namespace SimPe.Plugin.Scanner
 		{
 		}
 
-		public override bool IsActiveByDefault
-		{
-			get
-			{
-				return false;
-			}
-		}
+		public override bool IsActiveByDefault => false;
 
 		ScannerItem[] selection;
 

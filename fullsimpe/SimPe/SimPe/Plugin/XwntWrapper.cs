@@ -216,18 +216,12 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		public override string Description
-		{
-			get
-			{
-				return "GUID=0x"
+		public override string Description => "GUID=0x"
 					+ Helper.HexString(this.FileDescriptor.Instance)
 					+ ", Folder="
 					+ this.Folder
 					+ ", ObjectType="
 					+ this.ObjectType;
-			}
-		}
 
 		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
 		{

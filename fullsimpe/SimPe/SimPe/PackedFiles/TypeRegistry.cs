@@ -281,13 +281,7 @@ namespace SimPe.PackedFiles
 		/// <summary>
 		/// Contains a Listing of all available Wrapper Icons
 		/// </summary>
-		public System.Windows.Forms.ImageList WrapperImageList
-		{
-			get
-			{
-				return il;
-			}
-		}
+		public System.Windows.Forms.ImageList WrapperImageList => il;
 		#endregion
 
 		/// <summary>
@@ -350,13 +344,7 @@ namespace SimPe.PackedFiles
 		#region IProviderRegistry Member
 
 		SimPe.Providers.LotProvider lotprov;
-		public SimPe.Interfaces.Providers.ILotProvider LotProvider
-		{
-			get
-			{
-				return lotprov;
-			}
-		}
+		public SimPe.Interfaces.Providers.ILotProvider LotProvider => lotprov;
 
 		/// <summary>
 		/// Provider for Sim Names
@@ -366,13 +354,7 @@ namespace SimPe.PackedFiles
 		/// <summary>
 		/// Returns the Provider for SimNames
 		/// </summary>
-		public SimPe.Interfaces.Providers.ISimNames SimNameProvider
-		{
-			get
-			{
-				return simnames;
-			}
-		}
+		public SimPe.Interfaces.Providers.ISimNames SimNameProvider => simnames;
 
 		/// <summary>
 		/// Provider for Sim Family Names
@@ -382,13 +364,7 @@ namespace SimPe.PackedFiles
 		/// <summary>
 		/// Returns the Provider for Sim Family Names
 		/// </summary>
-		public SimPe.Interfaces.Providers.ISimFamilyNames SimFamilynameProvider
-		{
-			get
-			{
-				return simfamilynames;
-			}
-		}
+		public SimPe.Interfaces.Providers.ISimFamilyNames SimFamilynameProvider => simfamilynames;
 
 		/// <summary>
 		/// Provider for SimDescription Files
@@ -398,13 +374,7 @@ namespace SimPe.PackedFiles
 		/// <summary>
 		/// Returns the Provider for SimDescription Files
 		/// </summary>
-		public SimPe.Interfaces.Providers.ISimDescriptions SimDescriptionProvider
-		{
-			get
-			{
-				return sdescprovider;
-			}
-		}
+		public SimPe.Interfaces.Providers.ISimDescriptions SimDescriptionProvider => sdescprovider;
 
 		/// <summary>
 		/// Provider for Opcode Names
@@ -414,26 +384,14 @@ namespace SimPe.PackedFiles
 		/// <summary>
 		/// Returns the Provider for Opcode Names
 		/// </summary>
-		public SimPe.Interfaces.Providers.IOpcodeProvider OpcodeProvider
-		{
-			get
-			{
-				return opcodeprovider;
-			}
-		}
+		public SimPe.Interfaces.Providers.IOpcodeProvider OpcodeProvider => opcodeprovider;
 
 		Interfaces.Providers.ISkinProvider skinprovider;
 
 		/// <summary>
 		/// Returns the Provider for Skin Data
 		/// </summary>
-		public Interfaces.Providers.ISkinProvider SkinProvider
-		{
-			get
-			{
-				return skinprovider;
-			}
-		}
+		public Interfaces.Providers.ISkinProvider SkinProvider => skinprovider;
 		#endregion
 
 		#region IToolRegistry Member
@@ -517,13 +475,7 @@ namespace SimPe.PackedFiles
 #endif
 		}
 
-		public SimPe.Collections.Listeners Listeners
-		{
-			get
-			{
-				return listeners;
-			}
-		}
+		public SimPe.Collections.Listeners Listeners => listeners;
 
 		public ITool[] Tools
 		{

@@ -34,45 +34,15 @@ namespace SimPe.Plugin.Gmdc.Importer
 	{
 		#region IGmdcImporter Member
 
-		public int Version
-		{
-			get
-			{
-				return 1;
-			}
-		}
+		public int Version => 1;
 
-		public string FileExtension
-		{
-			get
-			{
-				return ".xsi";
-			}
-		}
+		public string FileExtension => ".xsi";
 
-		public string FileDescription
-		{
-			get
-			{
-				return "Softimage/3D dotXSI";
-			}
-		}
+		public string FileDescription => "Softimage/3D dotXSI";
 
-		public string Author
-		{
-			get
-			{
-				return "Quaxi";
-			}
-		}
+		public string Author => "Quaxi";
 
-		public string ErrorMessage
-		{
-			get
-			{
-				return "";
-			}
-		}
+		public string ErrorMessage => "";
 
 		string flname;
 		public string FileName

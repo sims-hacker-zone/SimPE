@@ -83,13 +83,7 @@ namespace SimPe.Cache
 		/// <summary>
 		/// Returns the Version of the File
 		/// </summary>
-		public byte Version
-		{
-			get
-			{
-				return version;
-			}
-		}
+		public byte Version => version;
 
 		/// <summary>
 		/// Returns the Version of the File
@@ -111,35 +105,17 @@ namespace SimPe.Cache
 		/// <summary>
 		/// Return all available Items
 		/// </summary>
-		public CacheItems Items
-		{
-			get
-			{
-				return items;
-			}
-		}
+		public CacheItems Items => items;
 
 		/// <summary>
 		/// Returns the Type of this Container
 		/// </summary>
-		public ContainerType Type
-		{
-			get
-			{
-				return type;
-			}
-		}
+		public ContainerType Type => type;
 
 		/// <summary>
 		/// True if this Container is still valid
 		/// </summary>
-		public bool Valid
-		{
-			get
-			{
-				return (valid == ContainerValid.Yes);
-			}
-		}
+		public bool Valid => (valid == ContainerValid.Yes);
 
 		public ContainerValid ValidState
 		{

@@ -49,13 +49,7 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 				}
 			}
 
-			internal byte[] Data
-			{
-				get
-				{
-					return data;
-				}
-			}
+			internal byte[] Data => data;
 
 			public void LoadData(System.IO.BinaryReader reader)
 			{

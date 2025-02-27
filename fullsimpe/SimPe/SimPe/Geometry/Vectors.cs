@@ -140,13 +140,7 @@ namespace SimPe.Geometry
 			return v;
 		}
 
-		public static Vector2f Zero
-		{
-			get
-			{
-				return new Vector2f(0, 0);
-			}
-		}
+		public static Vector2f Zero => new Vector2f(0, 0);
 	}
 
 	/// <summary>
@@ -277,13 +271,7 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// Returns the Length of the Vector
 		/// </summary>
-		public double Length
-		{
-			get
-			{
-				return (double)Math.Sqrt(Norm);
-			}
-		}
+		public double Length => (double)Math.Sqrt(Norm);
 
 		/// <summary>
 		/// Create the Inverse of a Vector
@@ -552,13 +540,7 @@ namespace SimPe.Geometry
 		}
 		#endregion
 
-		public static new Vector3f Zero
-		{
-			get
-			{
-				return new Vector3f(0, 0, 0);
-			}
-		}
+		public static new Vector3f Zero => new Vector3f(0, 0, 0);
 	}
 
 	/// <summary>
@@ -883,13 +865,7 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object
@@ -982,13 +958,7 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object
@@ -1081,13 +1051,7 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object
@@ -1180,13 +1144,7 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object

@@ -32,13 +32,7 @@ namespace SimPe.PackedFiles.UserInterface
 	public class Picture : UIBase, IPackedFileUI
 	{
 		#region IPackedFileUI Member
-		public Control GUIHandle
-		{
-			get
-			{
-				return form.JpegPanel;
-			}
-		}
+		public Control GUIHandle => form.JpegPanel;
 
 		public void UpdateGUI(SimPe.Interfaces.Plugin.IFileWrapper wrapper)
 		{

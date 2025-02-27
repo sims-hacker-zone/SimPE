@@ -68,13 +68,7 @@ namespace SimPe.Plugin
 			list.Clear();
 		}
 
-		public int Count
-		{
-			get
-			{
-				return list.Count;
-			}
-		}
+		public int Count => list.Count;
 
 		public NhtrItem this[int index]
 		{

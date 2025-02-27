@@ -35,13 +35,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Number of Vertices stored in this SubSet
 		/// </summary>
-		public int VertexCount
-		{
-			get
-			{
-				return verts.Length;
-			}
-		}
+		public int VertexCount => verts.Length;
 
 		Vectors3f verts;
 
@@ -466,13 +460,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object

@@ -230,13 +230,7 @@ namespace SimPe.Plugin.Downloads
 			}
 		}
 
-		public bool HasThumbnail
-		{
-			get
-			{
-				return img != null;
-			}
-		}
+		public bool HasThumbnail => img != null;
 		public Image RenderedImage
 		{
 			get
@@ -261,13 +255,7 @@ namespace SimPe.Plugin.Downloads
 				vertct = value;
 			}
 		}
-		public bool HighVertexCount
-		{
-			get
-			{
-				return (VertexCount > 8000);
-			}
-		}
+		public bool HighVertexCount => (VertexCount > 8000);
 
 		int facect;
 		public int FaceCount
@@ -281,13 +269,7 @@ namespace SimPe.Plugin.Downloads
 				facect = value;
 			}
 		}
-		public bool HighFaceCount
-		{
-			get
-			{
-				return (FaceCount > 8000);
-			}
-		}
+		public bool HighFaceCount => (FaceCount > 8000);
 
 		int price;
 		public int Price

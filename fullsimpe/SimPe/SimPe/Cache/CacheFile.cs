@@ -203,46 +203,22 @@ namespace SimPe.Cache
 		/// <summary>
 		/// Returns the Version of the File
 		/// </summary>
-		public byte Version
-		{
-			get
-			{
-				return version;
-			}
-		}
+		public byte Version => version;
 
 		/// <summary>
 		/// The last used FileName (can be null)
 		/// </summary>
-		public string FileName
-		{
-			get
-			{
-				return filename;
-			}
-		}
+		public string FileName => filename;
 
 		/// <summary>
 		/// The file Signature
 		/// </summary>
-		public ulong Signature
-		{
-			get
-			{
-				return sig;
-			}
-		}
+		public ulong Signature => sig;
 
 		/// <summary>
 		/// Returns all Available Containers
 		/// </summary>
-		public CacheContainers Containers
-		{
-			get
-			{
-				return containers;
-			}
-		}
+		public CacheContainers Containers => containers;
 
 		/// <summary>
 		/// Returns a container for the passed type and File

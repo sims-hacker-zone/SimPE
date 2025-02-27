@@ -50,13 +50,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a List with all known Names
 		/// </summary>
-		public Hashtable Map
-		{
-			get
-			{
-				return map;
-			}
-		}
+		public Hashtable Map => map;
 
 		/// <summary>
 		/// Create a New Instance

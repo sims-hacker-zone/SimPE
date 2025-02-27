@@ -76,46 +76,22 @@ namespace SimPe.Interfaces.Plugin
 		/// <summary>
 		/// The Name of this Wrapper
 		/// </summary>
-		public string Name
-		{
-			get
-			{
-				return name;
-			}
-		}
+		public string Name => name;
 
 		/// <summary>
 		/// The Description of this Wrapper
 		/// </summary>
-		public string Description
-		{
-			get
-			{
-				return description;
-			}
-		}
+		public string Description => description;
 
 		/// <summary>
 		/// The Author of this Wrapper
 		/// </summary>
-		public string Author
-		{
-			get
-			{
-				return author;
-			}
-		}
+		public string Author => author;
 
 		/// <summary>
 		/// The Version of this Wrapper
 		/// </summary>
-		public int Version
-		{
-			get
-			{
-				return version;
-			}
-		}
+		public int Version => version;
 
 		/// <summary>
 		/// Returns a Icon that should be presented for that resource

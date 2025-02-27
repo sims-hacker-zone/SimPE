@@ -193,13 +193,7 @@ namespace pjse
 			this.instruction = instruction;
 		}
 
-		public virtual Panel bhavPrimWizPanel
-		{
-			get
-			{
-				return myForm.WizPanel;
-			}
-		}
+		public virtual Panel bhavPrimWizPanel => myForm.WizPanel;
 
 		public virtual void Execute()
 		{
@@ -544,21 +538,9 @@ namespace pjse.BhavOperandWizards
 
 		private byte dataOwner = 0;
 		private ushort instance = 0;
-		public byte DataOwner
-		{
-			get
-			{
-				return dataOwner;
-			}
-		}
+		public byte DataOwner => dataOwner;
 
-		public ushort Value
-		{
-			get
-			{
-				return instance;
-			}
-		}
+		public ushort Value => instance;
 
 		public event EventHandler DataOwnerControlChanged;
 

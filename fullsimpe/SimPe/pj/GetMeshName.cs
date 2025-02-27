@@ -145,13 +145,7 @@ namespace pj
 			this.cbusecres.Checked = Settings.BodyMeshExtractUseCres;
 		}
 
-		public String MeshName
-		{
-			get
-			{
-				return tbMeshName.Text;
-			}
-		}
+		public String MeshName => tbMeshName.Text;
 
 		private void cbusecres_CheckedChanged(object sender, EventArgs e)
 		{

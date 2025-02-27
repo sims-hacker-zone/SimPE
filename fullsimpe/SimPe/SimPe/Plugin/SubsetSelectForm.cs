@@ -195,13 +195,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a list of all availabel ListViews
 		/// </summary>
-		public ArrayList ListViews
-		{
-			get
-			{
-				return listviews;
-			}
-		}
+		public ArrayList ListViews => listviews;
 
 		public static Size ImageSize = new Size(128, 128);
 

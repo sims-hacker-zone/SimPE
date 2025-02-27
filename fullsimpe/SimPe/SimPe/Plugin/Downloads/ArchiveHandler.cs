@@ -10,21 +10,9 @@ namespace SimPe.Plugin.Downloads
 	{
 		string flname;
 		PackageInfoCollection nfos;
-		protected PackageInfoCollection Nfos
-		{
-			get
-			{
-				return nfos;
-			}
-		}
+		protected PackageInfoCollection Nfos => nfos;
 
-		protected string ArchiveName
-		{
-			get
-			{
-				return flname;
-			}
-		}
+		protected string ArchiveName => flname;
 
 		public ArchiveHandler(string filename)
 		{
@@ -130,13 +118,7 @@ namespace SimPe.Plugin.Downloads
 
 		#region IPackageHandler Member
 
-		public IPackageInfo[] Objects
-		{
-			get
-			{
-				return nfos.ToArray();
-			}
-		}
+		public IPackageInfo[] Objects => nfos.ToArray();
 
 		#endregion
 

@@ -308,33 +308,33 @@ namespace SimPe.Plugin.Gmdc
 				try
 				{
 #endif
-				int c = g.Elements[0].Values.Count;
-				if (o == null)
-				{
-					if (fc.V >= 0)
+					int c = g.Elements[0].Values.Count;
+					if (o == null)
 					{
-						int cv = -1;
-						if (g.KeepOrder)
+						if (fc.V >= 0)
 						{
-							if (f.Data[0] > 0)
-								c = (int)f.Data[0] - 1;
-							cv = c;
+							int cv = -1;
+							if (g.KeepOrder)
+							{
+								if (f.Data[0] > 0)
+									c = (int)f.Data[0] - 1;
+								cv = c;
+							}
+
+							AddElement(g, 0, vertices[fc.V], cv);
+							AddElement(g, 1, normals[fc.VN], cv);
+							AddElement(g, 2, uvmaps[fc.VU], cv);
 						}
 
-						AddElement(g, 0, vertices[fc.V], cv);
-						AddElement(g, 1, normals[fc.VN], cv);
-						AddElement(g, 2, uvmaps[fc.VU], cv);
+						facealias[fc] = c;
+					}
+					else
+					{
+						c = (int)o;
 					}
 
-					facealias[fc] = c;
-				}
-				else
-				{
-					c = (int)o;
-				}
-
-				if (fc.V >= 0 || fc.VN >= 0 || fc.VU >= 0)
-					g.Group.Faces.Add(c);
+					if (fc.V >= 0 || fc.VN >= 0 || fc.VU >= 0)
+						g.Group.Faces.Add(c);
 #if DEBUG
 				}
 				catch (Exception ex)

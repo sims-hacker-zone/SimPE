@@ -59,13 +59,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#endregion
 		Slot parent;
-		public Slot Parent
-		{
-			get
-			{
-				return parent;
-			}
-		}
+		public Slot Parent => parent;
 
 		float unknownf1;
 		public float UnknownFloat1
@@ -507,13 +501,7 @@ namespace SimPe.PackedFiles.Wrapper
 			return base.Contains(item);
 		}
 
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		public override object Clone()
 		{

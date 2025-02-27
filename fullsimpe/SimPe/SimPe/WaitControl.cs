@@ -307,13 +307,7 @@ namespace SimPe
 
 		#region IWaitingBarControl Member
 
-		public bool Running
-		{
-			get
-			{
-				return Waiting;
-			}
-		}
+		public bool Running => Waiting;
 
 		public Image Image
 		{

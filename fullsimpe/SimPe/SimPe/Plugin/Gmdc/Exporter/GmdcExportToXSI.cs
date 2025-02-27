@@ -69,35 +69,17 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		/// <summary>
 		/// Returns the suggested File Extension (including the . like .obj or .3ds)
 		/// </summary>
-		public override string FileExtension
-		{
-			get
-			{
-				return ".xsi";
-			}
-		}
+		public override string FileExtension => ".xsi";
 
 		/// <summary>
 		/// Returns the File Description (the Name of the exported FileType)
 		/// </summary>
-		public override string FileDescription
-		{
-			get
-			{
-				return "Softimage/3D dotXSI";
-			}
-		}
+		public override string FileDescription => "Softimage/3D dotXSI";
 
 		/// <summary>
 		/// Returns the name of the Author
 		/// </summary>
-		public override string Author
-		{
-			get
-			{
-				return "Quaxi";
-			}
-		}
+		public override string Author => "Quaxi";
 
 		/// <summary>
 		/// Called when a new File is started

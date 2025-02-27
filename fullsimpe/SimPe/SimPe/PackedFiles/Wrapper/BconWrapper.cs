@@ -178,24 +178,12 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				return new uint[] { Bcontype };
-			}
-		}
+		public uint[] AssignableTypes => new uint[] { Bcontype };
 
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
-		public byte[] FileSignature
-		{
-			get
-			{
-				return new byte[0];
-			}
-		}
+		public byte[] FileSignature => new byte[0];
 
 		#endregion
 

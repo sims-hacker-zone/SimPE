@@ -42,35 +42,17 @@ namespace SimPe.Plugin.Gmdc.Importer
 		/// <summary>
 		/// Returns the suggested File Extension (including the . like .obj or .3ds)
 		/// </summary>
-		public override string FileExtension
-		{
-			get
-			{
-				return ".obj";
-			}
-		}
+		public override string FileExtension => ".obj";
 
 		/// <summary>
 		/// Returns the File Description (the Name of the exported FileType)
 		/// </summary>
-		public override string FileDescription
-		{
-			get
-			{
-				return "Maya Object File";
-			}
-		}
+		public override string FileDescription => "Maya Object File";
 
 		/// <summary>
 		/// Returns the name of the Author
 		/// </summary>
-		public override string Author
-		{
-			get
-			{
-				return "Emily";
-			}
-		}
+		public override string Author => "Emily";
 		#endregion
 
 		string lineerror;

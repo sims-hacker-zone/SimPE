@@ -126,42 +126,18 @@ namespace SimPe.Plugin
 		}
 
 		int[] reven;
-		public int[] Revenue
-		{
-			get
-			{
-				return reven;
-			}
-		}
+		public int[] Revenue => reven;
 		int[] expe;
-		public int[] Expences
-		{
-			get
-			{
-				return expe;
-			}
-		}
+		public int[] Expences => expe;
 		int hct;
-		public int HistoryCount
-		{
-			get
-			{
-				return hct;
-			}
-		}
+		public int HistoryCount => hct;
 
 		uint unk1,
 			unk2;
 		uint empct;
 
 		Collections.BnfoCustomerItems citems;
-		public Collections.BnfoCustomerItems CustomerItems
-		{
-			get
-			{
-				return citems;
-			}
-		}
+		public Collections.BnfoCustomerItems CustomerItems => citems;
 		#endregion
 
 		public Bnfo()

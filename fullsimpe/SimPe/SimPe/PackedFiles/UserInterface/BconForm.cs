@@ -226,24 +226,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.btnCancel.Enabled = false;
 		}
 
-		private bool isPopup
-		{
-			get
-			{
-				return this.Tag == null
+		private bool isPopup => this.Tag == null
 					? false
 					: ((string)(this.Tag)).StartsWith("Popup");
-			}
-		}
-		private bool isNoOverride
-		{
-			get
-			{
-				return this.Tag == null
+		private bool isNoOverride => this.Tag == null
 					? false
 					: ((string)(this.Tag)).Contains(";noOverride");
-			}
-		}
 		private string expName
 		{
 			get
@@ -320,11 +308,7 @@ namespace SimPe.PackedFiles.UserInterface
 			ui.Show();
 		}
 
-		private String formTitle
-		{
-			get
-			{
-				return pjse.Localization.GetString(
+		private String formTitle => pjse.Localization.GetString(
 					"pjseWindowTitle",
 					expName // EP Name or Custom
 					,
@@ -352,8 +336,6 @@ namespace SimPe.PackedFiles.UserInterface
 						isPopup ? "pjseWindowTitleView" : "pjseWindowTitleEdit"
 					)
 				);
-			}
-		}
 
 		private void doUpdateBCON()
 		{
@@ -555,13 +537,7 @@ namespace SimPe.PackedFiles.UserInterface
 		/// <summary>
 		/// Returns the Control that will be displayed within SimPe
 		/// </summary>
-		public Control GUIHandle
-		{
-			get
-			{
-				return bconPanel;
-			}
-		}
+		public Control GUIHandle => bconPanel;
 
 		/// <summary>
 		/// Called by the AbstractWrapper when the file should be displayed to the user.

@@ -54,29 +54,11 @@ namespace SimPe.Plugin.Gmdc
 			ClearGroupsOnImport = false;
 		}
 
-		public ElementOrder Component
-		{
-			get
-			{
-				return eo;
-			}
-		}
+		public ElementOrder Component => eo;
 
-		public Scene Scene
-		{
-			get
-			{
-				return scn;
-			}
-		}
+		public Scene Scene => scn;
 
-		public GeometryDataContainer Gmdc
-		{
-			get
-			{
-				return gmdc;
-			}
-		}
+		public GeometryDataContainer Gmdc => gmdc;
 
 		public bool Run()
 		{

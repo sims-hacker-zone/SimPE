@@ -226,15 +226,9 @@ namespace SimPe.PackedFiles.UserInterface
 			return s;
 		}
 
-		private ListView lvCurrent
-		{
-			get
-			{
-				return (ListView)(
+		private ListView lvCurrent => (ListView)(
 					(tabControl1.SelectedIndex != 0) ? lvLocals : lvParams
 				);
-			}
-		}
 
 		private void LVAdd(ListView lv, TPRPItem item)
 		{
@@ -409,13 +403,7 @@ namespace SimPe.PackedFiles.UserInterface
 		/// <summary>
 		/// Returns the Control that will be displayed within SimPe
 		/// </summary>
-		public Control GUIHandle
-		{
-			get
-			{
-				return tprpPanel;
-			}
-		}
+		public Control GUIHandle => tprpPanel;
 
 		/// <summary>
 		/// Called by the AbstractWrapper when the file should be displayed to the user.

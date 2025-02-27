@@ -110,13 +110,7 @@ namespace SimPe.Plugin
 			lb_SelectedIndexChanged(lb, new EventArgs());
 		}
 
-		public BnfoCustomerItem SelectedItem
-		{
-			get
-			{
-				return lb.SelectedItem as BnfoCustomerItem;
-			}
-		}
+		public BnfoCustomerItem SelectedItem => lb.SelectedItem as BnfoCustomerItem;
 
 		public new void Refresh()
 		{

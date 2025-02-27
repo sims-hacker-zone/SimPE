@@ -82,13 +82,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Header
 		/// </summary>
-		public BhavHeader Header
-		{
-			get
-			{
-				return header;
-			}
-		}
+		public BhavHeader Header => header;
 		#endregion
 
 
@@ -287,24 +281,12 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				return new uint[] { Bhavtype };
-			}
-		}
+		public uint[] AssignableTypes => new uint[] { Bhavtype };
 
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
-		public byte[] FileSignature
-		{
-			get
-			{
-				return new byte[0];
-			}
-		}
+		public byte[] FileSignature => new byte[0];
 
 		#endregion
 
@@ -608,21 +590,9 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public wrappedByteArray Operands
-		{
-			get
-			{
-				return operands;
-			}
-		}
+		public wrappedByteArray Operands => operands;
 
-		public wrappedByteArray Reserved1
-		{
-			get
-			{
-				return reserved_01;
-			}
-		}
+		public wrappedByteArray Reserved1 => reserved_01;
 		#endregion
 
 		/// <summary>

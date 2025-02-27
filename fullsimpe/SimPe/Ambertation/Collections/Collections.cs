@@ -28,46 +28,16 @@ namespace Ambertation.Collections
 	public class GraphItemChangedEventArgs : System.EventArgs
 	{
 		GraphItemBase gi;
-		public GraphItemBase GraphItem
-		{
-			get
-			{
-				return gi;
-			}
-		}
+		public GraphItemBase GraphItem => gi;
 
 		string txt;
-		public string Text
-		{
-			get
-			{
-				return txt;
-			}
-		}
+		public string Text => txt;
 		bool add;
-		public bool Added
-		{
-			get
-			{
-				return add;
-			}
-		}
-		public bool Removed
-		{
-			get
-			{
-				return !add;
-			}
-		}
+		public bool Added => add;
+		public bool Removed => !add;
 
 		bool inter;
-		public bool Internal
-		{
-			get
-			{
-				return inter;
-			}
-		}
+		public bool Internal => inter;
 
 		internal GraphItemChangedEventArgs(
 			GraphItemBase gi,
@@ -224,13 +194,7 @@ namespace Ambertation.Collections
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object
@@ -346,13 +310,7 @@ namespace Ambertation.Collections
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object
@@ -501,13 +459,7 @@ namespace Ambertation.Collections
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		public string[] Keys
 		{
@@ -624,13 +576,7 @@ namespace Ambertation.Collections
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object

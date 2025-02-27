@@ -63,13 +63,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns the FIleStream
 		/// </summary>
-		public FileStream FileStream
-		{
-			get
-			{
-				return fs;
-			}
-		}
+		public FileStream FileStream => fs;
 
 		/// <summary>
 		/// Change the internal FileStream

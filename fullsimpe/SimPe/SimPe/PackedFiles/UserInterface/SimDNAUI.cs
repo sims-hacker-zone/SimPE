@@ -238,21 +238,9 @@ namespace SimPe.PackedFiles.UserInterface
 		#region IPackedFileUI Member
 
 
-		public Wrapper.SimDNA Sdna
-		{
-			get
-			{
-				return (SimPe.PackedFiles.Wrapper.SimDNA)Wrapper;
-			}
-		}
+		public Wrapper.SimDNA Sdna => (SimPe.PackedFiles.Wrapper.SimDNA)Wrapper;
 
-		private SimPe.PackedFiles.Wrapper.Cpf wrp
-		{
-			get
-			{
-				return (SimPe.PackedFiles.Wrapper.Cpf)Wrapper;
-			}
-		}
+		private SimPe.PackedFiles.Wrapper.Cpf wrp => (SimPe.PackedFiles.Wrapper.Cpf)Wrapper;
 
 		protected override void RefreshGUI()
 		{

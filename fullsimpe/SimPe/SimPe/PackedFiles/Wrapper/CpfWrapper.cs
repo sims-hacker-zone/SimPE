@@ -50,13 +50,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Filename
 		/// </summary>
-		public byte[] Id
-		{
-			get
-			{
-				return id;
-			}
-		}
+		public byte[] Id => id;
 
 		/// <summary>
 		/// Contains all available Items
@@ -387,13 +381,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
-		public virtual byte[] FileSignature
-		{
-			get
-			{
-				return SIGNATURE;
-			}
-		}
+		public virtual byte[] FileSignature => SIGNATURE;
 
 		public bool CanHandleType(uint type)
 		{

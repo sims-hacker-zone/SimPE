@@ -43,35 +43,17 @@ namespace SimPe.Plugin.Gmdc.Importer
 		/// <summary>
 		/// Returns the suggested File Extension (including the . like .obj or .3ds)
 		/// </summary>
-		public override string FileExtension
-		{
-			get
-			{
-				return ".txt";
-			}
-		}
+		public override string FileExtension => ".txt";
 
 		/// <summary>
 		/// Returns the File Description (the Name of the exported FileType)
 		/// </summary>
-		public override string FileDescription
-		{
-			get
-			{
-				return "Milkshape 3D ASCII";
-			}
-		}
+		public override string FileDescription => "Milkshape 3D ASCII";
 
 		/// <summary>
 		/// Returns the name of the Author
 		/// </summary>
-		public override string Author
-		{
-			get
-			{
-				return "Emily";
-			}
-		}
+		public override string Author => "Emily";
 
 		/// <summary>
 		/// This Method is called during the Import to process the input Data and

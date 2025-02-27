@@ -29,13 +29,7 @@ namespace SimPe.Plugin
 	public class ScannerItem
 	{
 		PackageCacheItem pci;
-		public PackageCacheItem PackageCacheItem
-		{
-			get
-			{
-				return pci;
-			}
-		}
+		public PackageCacheItem PackageCacheItem => pci;
 
 		string filename;
 
@@ -57,13 +51,7 @@ namespace SimPe.Plugin
 		}
 
 		SimPe.Cache.CacheContainer cc;
-		public SimPe.Cache.CacheContainer ParentContainer
-		{
-			get
-			{
-				return cc;
-			}
-		}
+		public SimPe.Cache.CacheContainer ParentContainer => cc;
 
 		SimPe.Packages.GeneratableFile pkg = null;
 

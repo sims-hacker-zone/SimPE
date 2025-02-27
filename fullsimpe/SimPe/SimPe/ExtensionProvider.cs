@@ -73,26 +73,14 @@ namespace SimPe
 		/// <summary>
 		/// Returns a List of allowed Extensions for this Type (like *.bmp, *.gif, *.jpg)
 		/// </summary>
-		public ArrayList Extensions
-		{
-			get
-			{
-				return extensions;
-			}
-		}
+		public ArrayList Extensions => extensions;
 
 		string text;
 
 		/// <summary>
 		/// Returns the Name of this Extension
 		/// </summary>
-		public string Text
-		{
-			get
-			{
-				return text;
-			}
-		}
+		public string Text => text;
 
 		/// <summary>
 		/// Returns the ExtensionList as string

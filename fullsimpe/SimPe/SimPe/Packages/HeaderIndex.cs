@@ -71,13 +71,7 @@ namespace SimPe.Packages
 			}
 		}
 
-		internal Interfaces.Files.IPackageHeader Parent
-		{
-			get
-			{
-				return parent;
-			}
-		}
+		internal Interfaces.Files.IPackageHeader Parent => parent;
 
 		internal void UseInParent()
 		{

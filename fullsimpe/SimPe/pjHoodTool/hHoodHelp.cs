@@ -48,13 +48,7 @@ namespace pjHoodTool
 			return "Export Neighborhood data";
 		}
 
-		public System.Drawing.Image Icon
-		{
-			get
-			{
-				return null;
-			}
-		}
+		public System.Drawing.Image Icon => null;
 
 		#endregion
 	}

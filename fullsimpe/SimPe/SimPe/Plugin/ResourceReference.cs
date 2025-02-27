@@ -17,13 +17,7 @@ namespace SimPe.Plugin
 		public uint Instance;
 		public uint SubType;
 
-		public IPackedFileDescriptor FileDescriptor
-		{
-			get
-			{
-				return this.pfd;
-			}
-		}
+		public IPackedFileDescriptor FileDescriptor => this.pfd;
 
 		public ResourceReference(IPackedFileDescriptor file)
 		{

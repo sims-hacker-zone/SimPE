@@ -929,13 +929,7 @@ namespace Ambertation.Windows.Forms
 		}
 
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public int TokenWidth
-		{
-			get
-			{
-				return tw;
-			}
-		}
+		public int TokenWidth => tw;
 
 		int tc;
 
@@ -965,14 +959,8 @@ namespace Ambertation.Windows.Forms
 			}
 		}
 
-		public double TokenMinSpacing
-		{
-			get
-			{
-				return ((Width - 1) - (TokenCount * TokenWidth))
+		public double TokenMinSpacing => ((Width - 1) - (TokenCount * TokenWidth))
 					/ ((float)TokenCount - 1);
-			}
-		}
 		#endregion
 	}
 

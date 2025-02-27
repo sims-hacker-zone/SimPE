@@ -115,13 +115,7 @@ namespace Ambertation.Windows.Forms
 		}
 
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public int TokenWidth
-		{
-			get
-			{
-				return pb.TokenWidth;
-			}
-		}
+		public int TokenWidth => pb.TokenWidth;
 
 		public int TokenCount
 		{

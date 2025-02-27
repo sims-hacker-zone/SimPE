@@ -32,13 +32,7 @@ namespace SimPe.Plugin
 		/// Windows Registry Link
 		/// </summary>
 		static SimPe.Registry registry;
-		internal static Registry WindowsRegistry
-		{
-			get
-			{
-				return registry;
-			}
-		}
+		internal static Registry WindowsRegistry => registry;
 
 		IWrapperRegistry reg;
 		IProviderRegistry prov;
@@ -92,21 +86,9 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region IToolExt Member
-		public override System.Drawing.Image Icon
-		{
-			get
-			{
-				return SimPe.GetIcon.Camera;
-			}
-		}
+		public override System.Drawing.Image Icon => SimPe.GetIcon.Camera;
 
-		public override System.Windows.Forms.Shortcut Shortcut
-		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.CtrlP;
-			}
-		}
+		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.CtrlP;
 		#endregion
 	}
 }

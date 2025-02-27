@@ -114,13 +114,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		public ISettings[] KnownSettings
-		{
-			get
-			{
-				return new ISettings[] { Settings };
-			}
-		}
+		public ISettings[] KnownSettings => new ISettings[] { Settings };
 
 		#endregion
 	}

@@ -966,13 +966,7 @@ namespace SimPe.Plugin
 		#endregion
 
 		string filename = null;
-		public string FileName
-		{
-			get
-			{
-				return filename;
-			}
-		}
+		public string FileName => filename;
 
 		private void Select(object sender, System.EventArgs e)
 		{

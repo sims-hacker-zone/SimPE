@@ -22,29 +22,11 @@ namespace SimPe.Windows.Forms
 			realname = null;
 		}
 
-		public SimPe.Plugin.FileIndexItem Resource
-		{
-			get
-			{
-				return fii;
-			}
-		}
+		public SimPe.Plugin.FileIndexItem Resource => fii;
 
-		public SimPe.Interfaces.Files.IPackedFileDescriptor Descriptor
-		{
-			get
-			{
-				return pfd;
-			}
-		}
+		public SimPe.Interfaces.Files.IPackedFileDescriptor Descriptor => pfd;
 
-		public bool RealNameLoaded
-		{
-			get
-			{
-				return realname != null;
-			}
-		}
+		public bool RealNameLoaded => realname != null;
 
 		public void ResetRealName()
 		{

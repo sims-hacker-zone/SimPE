@@ -47,13 +47,7 @@ namespace SimPe.Interfaces
 			btStart.Enabled = rgui != null;
 		}
 
-		protected SimPe.ThemeManager ThemeManager
-		{
-			get
-			{
-				return tm;
-			}
-		}
+		protected SimPe.ThemeManager ThemeManager => tm;
 
 		/// <summary>
 		/// The Title of this Control
@@ -74,13 +68,7 @@ namespace SimPe.Interfaces
 		/// <summary>
 		/// This provides acces to the result GUI, enabeling you to start a search, or add a result to the result list
 		/// </summary>
-		protected IFinderResultGui ResultGui
-		{
-			get
-			{
-				return rgui;
-			}
-		}
+		protected IFinderResultGui ResultGui => rgui;
 
 		internal void SetResultGui(IFinderResultGui gui)
 		{
@@ -91,13 +79,7 @@ namespace SimPe.Interfaces
 		/// <summary>
 		/// The control returned here should contain all parameters that control the search.
 		/// </summary>
-		public System.Windows.Forms.Control SearchGui
-		{
-			get
-			{
-				return this;
-			}
-		}
+		public System.Windows.Forms.Control SearchGui => this;
 
 		/// <summary>
 		/// This is the search routine
@@ -143,13 +125,7 @@ namespace SimPe.Interfaces
 		/// <summary>
 		/// True if multiple packages can be searched at once
 		/// </summary>
-		public virtual bool ProcessParalell
-		{
-			get
-			{
-				return true;
-			}
-		}
+		public virtual bool ProcessParalell => true;
 
 		/// <summary>
 		/// This is the search routine you have to implement

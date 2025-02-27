@@ -269,22 +269,10 @@ namespace SimPe.Plugin
 		}
 
 		byte[] zero1;
-		public byte[] Zero1
-		{
-			get
-			{
-				return zero1;
-			}
-		}
+		public byte[] Zero1 => zero1;
 
 		byte[] zero2;
-		public byte[] Zero2
-		{
-			get
-			{
-				return zero2;
-			}
-		}
+		public byte[] Zero2 => zero2;
 
 		int refcount;
 		public int ReferencedCount
@@ -312,13 +300,7 @@ namespace SimPe.Plugin
 		}
 
 		float[] u2;
-		public float[] Unknown2
-		{
-			get
-			{
-				return u2;
-			}
-		}
+		public float[] Unknown2 => u2;
 
 		IndexedMeshBuilderItems mbi;
 		public IndexedMeshBuilderItems Items
@@ -803,13 +785,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object

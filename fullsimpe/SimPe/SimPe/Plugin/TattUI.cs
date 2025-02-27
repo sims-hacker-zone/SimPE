@@ -574,13 +574,7 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		public Tatt Tatt
-		{
-			get
-			{
-				return (Tatt)Wrapper;
-			}
-		}
+		public Tatt Tatt => (Tatt)Wrapper;
 
 		//bool inter;
 		protected override void RefreshGUI()

@@ -160,12 +160,6 @@ namespace SimPe
 		/// <summary>
 		/// Returns a List of all available FileTypes
 		/// </summary>
-		public Data.TypeAlias[] FileTypes
-		{
-			get
-			{
-				return list;
-			}
-		}
+		public Data.TypeAlias[] FileTypes => list;
 	}
 }

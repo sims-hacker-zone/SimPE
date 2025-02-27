@@ -31,21 +31,9 @@ namespace Ambertation.Windows.Forms
 		string name;
 		object obj;
 
-		public object Content
-		{
-			get
-			{
-				return obj;
-			}
-		}
+		public object Content => obj;
 
-		public string Name
-		{
-			get
-			{
-				return name;
-			}
-		}
+		public string Name => name;
 
 		internal EnumComboBoxItem(
 			Type type,

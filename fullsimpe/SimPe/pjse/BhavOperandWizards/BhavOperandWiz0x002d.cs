@@ -82,13 +82,7 @@ namespace pjse.BhavOperandWizards.Wiz0x002d
 		//private bool internalchg = false;
 
 		#region iBhavOperandWizForm
-		public Panel WizPanel
-		{
-			get
-			{
-				return this.pnWiz0x002d;
-			}
-		}
+		public Panel WizPanel => this.pnWiz0x002d;
 
 		public void Execute(Instruction inst)
 		{

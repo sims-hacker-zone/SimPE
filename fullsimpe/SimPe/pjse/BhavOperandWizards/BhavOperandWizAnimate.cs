@@ -452,13 +452,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 		}
 
 		#region iBhavOperandWizForm
-		public Panel WizPanel
-		{
-			get
-			{
-				return this.pnWizAnimate;
-			}
-		}
+		public Panel WizPanel => this.pnWizAnimate;
 
 		public void Execute(Instruction inst)
 		{

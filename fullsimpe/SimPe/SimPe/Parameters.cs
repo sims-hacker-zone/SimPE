@@ -50,12 +50,6 @@ namespace SimPe
 		/// <summary>
 		/// Returns the Files passed on the Commandline
 		/// </summary>
-		public string[] Files
-		{
-			get
-			{
-				return files;
-			}
-		}
+		public string[] Files => files;
 	}
 }

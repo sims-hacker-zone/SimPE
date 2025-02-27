@@ -171,13 +171,7 @@ namespace SimPe.Plugin
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.Splitter splitter1;
 
-		public Nhtr Nhtr
-		{
-			get
-			{
-				return (Nhtr)Wrapper;
-			}
-		}
+		public Nhtr Nhtr => (Nhtr)Wrapper;
 
 		bool intern;
 

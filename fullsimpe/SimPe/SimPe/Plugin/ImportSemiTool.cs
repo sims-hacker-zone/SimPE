@@ -77,13 +77,7 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region IToolExt Member
-		public override System.Drawing.Image Icon
-		{
-			get
-			{
-				return SimPe.GetIcon.ImportSemi;
-			}
-		}
+		public override System.Drawing.Image Icon => SimPe.GetIcon.ImportSemi;
 		#endregion
 	}
 }

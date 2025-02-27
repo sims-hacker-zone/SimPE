@@ -35,13 +35,7 @@ namespace SimPe
 			InitializeComponent();
 		}
 
-		public string Value
-		{
-			get
-			{
-				return cbProfiles.Text;
-			}
-		}
+		public string Value => cbProfiles.Text;
 
 		private void ProfileChooser_Activated(object sender, EventArgs e)
 		{

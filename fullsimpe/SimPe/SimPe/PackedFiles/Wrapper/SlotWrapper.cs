@@ -44,13 +44,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Returns the Items stored in the FIle
 		/// </summary>
 		/// <remarks>Do not add Items based on this List! use the Add Method!!</remarks>
-		public SlotItems Items
-		{
-			get
-			{
-				return items;
-			}
-		}
+		public SlotItems Items => items;
 
 		string filename;
 		public string FileName
@@ -186,18 +180,12 @@ namespace SimPe.PackedFiles.Wrapper
 		#endregion
 
 		#region IFileWrapper Member
-		public override string Description
-		{
-			get
-			{
-				return "FileName="
+		public override string Description => "FileName="
 					+ this.FileName
 					+ ", Version="
 					+ this.Version
 					+ ", Items="
 					+ items.Count.ToString();
-			}
-		}
 
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin

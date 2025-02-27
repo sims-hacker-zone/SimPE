@@ -100,13 +100,7 @@ namespace SimPe
 		}
 
 		string name;
-		public new string Name
-		{
-			get
-			{
-				return name;
-			}
-		}
+		public new string Name => name;
 
 		public ToolMenuItemExt(IToolPlus tool, ExternalToolNotify chghnd)
 			: this(tool.ToString(), tool, chghnd) { }

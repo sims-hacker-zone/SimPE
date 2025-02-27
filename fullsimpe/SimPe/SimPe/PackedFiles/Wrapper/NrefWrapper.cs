@@ -52,13 +52,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public uint Group
-		{
-			get
-			{
-				return Hashes.GroupHash(this.FileName);
-			}
-		}
+		public uint Group => Hashes.GroupHash(this.FileName);
 
 		#region IWrapper Member
 		protected override IWrapperInfo CreateWrapperInfo()
@@ -102,24 +96,12 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#region IFileWrapper Member
 
-		public override string Description
-		{
-			get
-			{
-				return "Name=" + this.FileName + ", Group=0x" + Helper.HexString(Group);
-			}
-		}
+		public override string Description => "Name=" + this.FileName + ", Group=0x" + Helper.HexString(Group);
 
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
-		public byte[] FileSignature
-		{
-			get
-			{
-				return new byte[0];
-			}
-		}
+		public byte[] FileSignature => new byte[0];
 
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process

@@ -95,13 +95,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		public byte[] Data
-		{
-			get
-			{
-				return data;
-			}
-		}
+		public byte[] Data => data;
 
 		protected override void DoUnserialize(System.IO.BinaryReader reader)
 		{

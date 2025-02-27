@@ -139,13 +139,7 @@ namespace SimPe.Plugin
 
 		class obwHelp : IHelp
 		{
-			public System.Drawing.Image Icon
-			{
-				get
-				{
-					return null;
-				}
-			}
+			public System.Drawing.Image Icon => null;
 
 			public override string ToString()
 			{

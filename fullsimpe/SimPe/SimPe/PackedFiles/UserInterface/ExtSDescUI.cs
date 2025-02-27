@@ -1019,13 +1019,7 @@ namespace SimPe.PackedFiles.UserInterface
 		}
 
 		#region IPackedFileUI Member
-		public Wrapper.ExtSDesc Sdesc
-		{
-			get
-			{
-				return (SimPe.PackedFiles.Wrapper.ExtSDesc)Wrapper;
-			}
-		}
+		public Wrapper.ExtSDesc Sdesc => (SimPe.PackedFiles.Wrapper.ExtSDesc)Wrapper;
 
 		SimPe.Plugin.Subhoods shs = new SimPe.Plugin.Subhoods();
 

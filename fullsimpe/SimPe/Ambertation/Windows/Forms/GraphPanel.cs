@@ -40,21 +40,9 @@ namespace Ambertation.Windows.Forms
 		private System.ComponentModel.Container components = null;
 
 		Ambertation.Collections.GraphElements li;
-		internal Ambertation.Collections.GraphElements LinkItems
-		{
-			get
-			{
-				return li;
-			}
-		}
+		internal Ambertation.Collections.GraphElements LinkItems => li;
 
-		public Ambertation.Collections.GraphElements Items
-		{
-			get
-			{
-				return li;
-			}
-		}
+		public Ambertation.Collections.GraphElements Items => li;
 
 		public GraphPanel()
 		{

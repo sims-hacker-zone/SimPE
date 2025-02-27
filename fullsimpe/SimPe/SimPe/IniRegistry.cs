@@ -202,13 +202,7 @@ namespace SimPe
 				kl.Clear();
 		}
 
-		public Sectionlist.KeyCollection Sections
-		{
-			get
-			{
-				return reg.Keys;
-			}
-		}
+		public Sectionlist.KeyCollection Sections => reg.Keys;
 
 		public SectionContent this[string section]
 		{
@@ -275,13 +269,7 @@ namespace SimPe
 				}
 			}
 
-			public List.KeyCollection Keys
-			{
-				get
-				{
-					return list.Keys;
-				}
-			}
+			public List.KeyCollection Keys => list.Keys;
 
 			public string GetValue(string key)
 			{

@@ -68,13 +68,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the Panel that will be displayed within SimPe
 		/// </summary>
-		public System.Windows.Forms.Control GUIHandle
-		{
-			get
-			{
-				return form.wantsPanel;
-			}
-		}
+		public System.Windows.Forms.Control GUIHandle => form.wantsPanel;
 
 		static string oldpkg = "";
 

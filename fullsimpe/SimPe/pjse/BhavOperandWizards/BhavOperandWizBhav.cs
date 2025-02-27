@@ -268,28 +268,10 @@ namespace pjse.BhavOperandWizards.WizBhav
 			}
 		}
 
-		private bool useParams
-		{
-			get
-			{
-				return nodeVersion > 0 && (operands[12] & 0x03) == 0x02;
-			}
-		}
-		private bool newFormat
-		{
-			get
-			{
-				return (operands[12] & 0x01) == 0x01
+		private bool useParams => nodeVersion > 0 && (operands[12] & 0x03) == 0x02;
+		private bool newFormat => (operands[12] & 0x01) == 0x01
 					&& !(nodeVersion > 0 && operands[12] == 0xff);
-			}
-		}
-		private bool oldFormat
-		{
-			get
-			{
-				return !newFormat && !useParams;
-			}
-		}
+		private bool oldFormat => !newFormat && !useParams;
 		private bool useTemps
 		{
 			get
@@ -302,13 +284,7 @@ namespace pjse.BhavOperandWizards.WizBhav
 		}
 
 		#region iBhavOperandWizForm
-		public Panel WizPanel
-		{
-			get
-			{
-				return this.pnWizBhav;
-			}
-		}
+		public Panel WizPanel => this.pnWizBhav;
 
 		public void Execute(Instruction inst)
 		{

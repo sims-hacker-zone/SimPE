@@ -13,20 +13,8 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 	{
 		ScorItem parent;
 		string name;
-		public string TokenName
-		{
-			get
-			{
-				return name;
-			}
-		}
-		public ScorItem ParentItem
-		{
-			get
-			{
-				return parent;
-			}
-		}
+		public string TokenName => name;
+		public ScorItem ParentItem => parent;
 
 		[
 			DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),

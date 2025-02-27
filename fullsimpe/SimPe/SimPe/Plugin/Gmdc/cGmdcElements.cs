@@ -81,13 +81,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Returns the number of Float Elements stored here
 		/// </summary>
-		internal virtual byte Size
-		{
-			get
-			{
-				return 0;
-			}
-		}
+		internal virtual byte Size => 0;
 
 		public GmdcElementValueBase()
 		{
@@ -187,13 +181,7 @@ namespace SimPe.Plugin.Gmdc
 	/// </summary>
 	public class GmdcElementValueOneFloat : GmdcElementValueBase
 	{
-		internal override byte Size
-		{
-			get
-			{
-				return 1;
-			}
-		}
+		internal override byte Size => 1;
 
 		internal GmdcElementValueOneFloat()
 			: base() { }
@@ -225,13 +213,7 @@ namespace SimPe.Plugin.Gmdc
 	/// </summary>
 	public class GmdcElementValueTwoFloat : GmdcElementValueBase
 	{
-		internal override byte Size
-		{
-			get
-			{
-				return 2;
-			}
-		}
+		internal override byte Size => 2;
 
 		internal GmdcElementValueTwoFloat()
 			: base() { }
@@ -265,13 +247,7 @@ namespace SimPe.Plugin.Gmdc
 	/// </summary>
 	public class GmdcElementValueThreeFloat : GmdcElementValueBase
 	{
-		internal override byte Size
-		{
-			get
-			{
-				return 3;
-			}
-		}
+		internal override byte Size => 3;
 
 		internal GmdcElementValueThreeFloat()
 			: base() { }
@@ -307,13 +283,7 @@ namespace SimPe.Plugin.Gmdc
 	/// </summary>
 	public class GmdcElementValueOneInt : GmdcElementValueBase
 	{
-		internal override byte Size
-		{
-			get
-			{
-				return 1;
-			}
-		}
+		internal override byte Size => 1;
 
 		internal GmdcElementValueOneInt()
 			: base() { }
@@ -734,13 +704,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object
@@ -833,13 +797,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object

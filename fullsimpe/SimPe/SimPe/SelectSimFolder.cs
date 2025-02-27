@@ -41,13 +41,7 @@ namespace SimPe
 				this.folder = folder;
 			}
 
-			public string Folder
-			{
-				get
-				{
-					return folder;
-				}
-			}
+			public string Folder => folder;
 
 			public override string ToString()
 			{

@@ -521,61 +521,19 @@ namespace pjse
 				FileTable.GFT.OnFiletableRefresh(GFT, new EventArgs());
 			}
 
-			public IPackageFile Package
-			{
-				get
-				{
-					return package;
-				}
-			}
+			public IPackageFile Package => package;
 
-			public IPackedFileDescriptor PFD
-			{
-				get
-				{
-					return pfd;
-				}
-			}
+			public IPackedFileDescriptor PFD => pfd;
 
-			public uint Type
-			{
-				get
-				{
-					return pfd.Type;
-				}
-			}
+			public uint Type => pfd.Type;
 
-			public uint Group
-			{
-				get
-				{
-					return pfd.Group;
-				}
-			}
+			public uint Group => pfd.Group;
 
-			public uint Instance
-			{
-				get
-				{
-					return pfd.Instance;
-				}
-			}
+			public uint Instance => pfd.Instance;
 
-			public bool IsMaxis
-			{
-				get
-				{
-					return isMaxis;
-				}
-			}
+			public bool IsMaxis => isMaxis;
 
-			public bool IsFixed
-			{
-				get
-				{
-					return isFixed;
-				}
-			}
+			public bool IsFixed => isFixed;
 
 			public AbstractWrapper Wrapper
 			{
@@ -658,13 +616,7 @@ namespace pjse
 				return fii.GetLocalFileDescriptor();
 			}
 
-			public uint LocalGroup
-			{
-				get
-				{
-					return fii.LocalGroup;
-				}
-			}
+			public uint LocalGroup => fii.LocalGroup;
 
 			#endregion
 		}
@@ -891,13 +843,7 @@ namespace pjse
 		static ResourceManager rm = new ResourceManager(typeof(pjse.Localization));
 
 		private static FileTableSettings fts;
-		public static FileTableSettings FTS
-		{
-			get
-			{
-				return fts;
-			}
-		}
+		public static FileTableSettings FTS => fts;
 
 		static FileTableSettings()
 		{
@@ -945,13 +891,7 @@ namespace pjse
 		}
 
 		[System.ComponentModel.Browsable(false)]
-		public System.Drawing.Image Icon
-		{
-			get
-			{
-				return null;
-			}
-		}
+		public System.Drawing.Image Icon => null;
 
 		#endregion
 	}
@@ -963,25 +903,13 @@ namespace pjse
 	{
 		#region IToolFactory Members
 
-		public IToolPlugin[] KnownTools
-		{
-			get
-			{
-				return new IToolPlugin[] { new pjse.FileTableTool() };
-			}
-		}
+		public IToolPlugin[] KnownTools => new IToolPlugin[] { new pjse.FileTableTool() };
 
 		#endregion
 
 		#region ISettingsFactory Members
 
-		public ISettings[] KnownSettings
-		{
-			get
-			{
-				return new ISettings[] { FileTableSettings.FTS };
-			}
-		}
+		public ISettings[] KnownSettings => new ISettings[] { FileTableSettings.FTS };
 
 		#endregion
 	}

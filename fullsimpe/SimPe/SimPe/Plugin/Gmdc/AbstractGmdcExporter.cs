@@ -54,91 +54,49 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Returns the assigned Gmdc File
 		/// </summary>
-		protected GeometryDataContainer Gmdc
-		{
-			get
-			{
-				return gmdc;
-			}
-		}
+		protected GeometryDataContainer Gmdc => gmdc;
 
 		GmdcGroups groups;
 
 		/// <summary>
 		/// Returns the MeshGroups that should be processed
 		/// </summary>
-		protected GmdcGroups Groups
-		{
-			get
-			{
-				return groups;
-			}
-		}
+		protected GmdcGroups Groups => groups;
 
 		GmdcElement vertex;
 
 		/// <summary>
 		/// Returns null or the Element that contains the Vertex Data
 		/// </summary>
-		protected GmdcElement VertexElement
-		{
-			get
-			{
-				return vertex;
-			}
-		}
+		protected GmdcElement VertexElement => vertex;
 
 		GmdcElement normal;
 
 		/// <summary>
 		/// Returns null or the Element that contains the Vertex Data
 		/// </summary>
-		protected GmdcElement NormalElement
-		{
-			get
-			{
-				return normal;
-			}
-		}
+		protected GmdcElement NormalElement => normal;
 
 		GmdcElement uvmap;
 
 		/// <summary>
 		/// Returns null or the Element that contains the UVMap Data
 		/// </summary>
-		protected GmdcElement UVCoordinateElement
-		{
-			get
-			{
-				return uvmap;
-			}
-		}
+		protected GmdcElement UVCoordinateElement => uvmap;
 
 		GmdcLink link;
 
 		/// <summary>
 		/// Returns the Link that is used for the current Group (can be null)
 		/// </summary>
-		protected GmdcLink Link
-		{
-			get
-			{
-				return link;
-			}
-		}
+		protected GmdcLink Link => link;
 
 		GmdcGroup group;
 
 		/// <summary>
 		/// Returns the curent group (can be null)
 		/// </summary>
-		protected GmdcGroup Group
-		{
-			get
-			{
-				return group;
-			}
-		}
+		protected GmdcGroup Group => group;
 
 		ElementOrder order;
 
@@ -296,24 +254,12 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Returns the Content of the File base on the last loaded GroupSet
 		/// </summary>
-		public System.IO.StreamWriter FileContent
-		{
-			get
-			{
-				return writer;
-			}
-		}
+		public System.IO.StreamWriter FileContent => writer;
 
 		/// <summary>
 		/// Returns a Version Number for the used Interface
 		/// </summary>
-		public int Version
-		{
-			get
-			{
-				return 1;
-			}
-		}
+		public int Version => 1;
 
 		#region Abstract Methods
 		/// <summary>

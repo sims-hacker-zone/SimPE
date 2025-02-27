@@ -52,13 +52,7 @@ namespace SimPe.Plugin.Anim
 			Description("Index of this Object within the Parent List"),
 			Category("Information")
 		]
-		public int Index
-		{
-			get
-			{
-				return index;
-			}
-		}
+		public int Index => index;
 
 		public AnimationAxisTransformBlock parent;
 
@@ -66,13 +60,7 @@ namespace SimPe.Plugin.Anim
 		/// Retuens the Parent of this Block
 		/// </summary>
 		[Browsable(false)]
-		public AnimationAxisTransformBlock Parent
-		{
-			get
-			{
-				return parent;
-			}
-		}
+		public AnimationAxisTransformBlock Parent => parent;
 
 		ushort tc;
 

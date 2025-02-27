@@ -35,13 +35,7 @@ namespace SimPe.Plugin
 	{
 		#region Attributes
 		Extension ext;
-		public Extension Extension
-		{
-			get
-			{
-				return ext;
-			}
-		}
+		public Extension Extension => ext;
 
 		#endregion
 

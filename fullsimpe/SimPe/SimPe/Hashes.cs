@@ -36,29 +36,11 @@ namespace SimPe
 			CRCParameters.GetParameters(CRCStandard.CRC32_CAS)
 		);
 
-		public static CRC Crc24
-		{
-			get
-			{
-				return crc24;
-			}
-		}
+		public static CRC Crc24 => crc24;
 
-		public static CRC Crc32
-		{
-			get
-			{
-				return crc32;
-			}
-		}
+		public static CRC Crc32 => crc32;
 
-		public static CRC Crc32_cas
-		{
-			get
-			{
-				return crc32_cas;
-			}
-		}
+		public static CRC Crc32_cas => crc32_cas;
 
 		/// <summary>
 		/// Seed Value for Group CRC-24 hash
@@ -305,34 +287,16 @@ namespace SimPe
 			return guid;
 		}
 
-		public static bool HaveUserId
-		{
-			get
-			{
-				return (Helper.WindowsRegistry.CachedUserId != 0)
+		public static bool HaveUserId => (Helper.WindowsRegistry.CachedUserId != 0)
 					&& (Helper.WindowsRegistry.Username.Trim() != "");
-			}
-		}
 
-		public static bool HaveValidUserId
-		{
-			get
-			{
-				return HaveUserId
+		public static bool HaveValidUserId => HaveUserId
 					&& ValidUserId(
 						Helper.WindowsRegistry.CachedUserId,
 						Helper.WindowsRegistry.Username,
 						Helper.WindowsRegistry.Password
 					);
-			}
-		}
 
-		public static uint UserId
-		{
-			get
-			{
-				return Helper.WindowsRegistry.CachedUserId;
-			}
-		}
+		public static uint UserId => Helper.WindowsRegistry.CachedUserId;
 	}
 }

@@ -137,13 +137,7 @@ namespace SimPe.Plugin
 		/// Returns all Attributes tored in the File.
 		/// </summary>
 		/// <remarks>Each Attribute is unique!</remarks>
-		public Hashtable Attributes
-		{
-			get
-			{
-				return attributes;
-			}
-		}
+		public Hashtable Attributes => attributes;
 
 		/*/// <summary>
 		/// Returns all Items stored in the File (can be null)
@@ -239,27 +233,15 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region IFileWrapper Member
-		public override string Description
-		{
-			get
-			{
-				return "SemiGlobalName="
+		public override string Description => "SemiGlobalName="
 					+ this.SemiGlobalName
 					+ ", Group=0x"
 					+ Helper.HexString(SemiGlobalGroup);
-			}
-		}
 
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
-		public byte[] FileSignature
-		{
-			get
-			{
-				return new byte[0];
-			}
-		}
+		public byte[] FileSignature => new byte[0];
 
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process

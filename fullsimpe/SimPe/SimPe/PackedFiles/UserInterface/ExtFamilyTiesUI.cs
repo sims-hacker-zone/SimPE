@@ -42,13 +42,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		#region IPackedFileHandler Member
 
-		public Control GUIHandle
-		{
-			get
-			{
-				return form.pnfamt;
-			}
-		}
+		public Control GUIHandle => form.pnfamt;
 
 		public void UpdateGUI(SimPe.Interfaces.Plugin.IFileWrapper wrapper)
 		{

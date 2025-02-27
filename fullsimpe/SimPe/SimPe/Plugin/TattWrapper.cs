@@ -200,13 +200,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
-		public byte[] FileSignature
-		{
-			get
-			{
-				return new byte[0];
-			}
-		}
+		public byte[] FileSignature => new byte[0];
 
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
@@ -233,13 +227,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Number of stored Items
 		/// </summary>
-		public int Count
-		{
-			get
-			{
-				return items.Count;
-			}
-		}
+		public int Count => items.Count;
 
 		public TattItem this[int index]
 		{

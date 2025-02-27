@@ -105,14 +105,9 @@ namespace SimPe.Plugin.Downloads
 		}
 
 		[System.ComponentModel.Browsable(false)]
-		public System.Drawing.Image Icon
-		{
-			get
-			{
+		public System.Drawing.Image Icon =>
 				// TODO:  No Image available
-				return null;
-			}
-		}
+				null;
 		#endregion
 	}
 }

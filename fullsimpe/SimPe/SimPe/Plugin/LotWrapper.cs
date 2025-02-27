@@ -158,27 +158,9 @@ namespace SimPe.Plugin
 				description = value;
 			}
 		}
-		internal List<UInt32> Unknown1
-		{
-			get
-			{
-				return unknown_1;
-			}
-		}
-		internal float Unknown2
-		{
-			get
-			{
-				return unknown_2;
-			}
-		}
-		internal UInt32 Unknown3
-		{
-			get
-			{
-				return unknown_3;
-			}
-		}
+		internal List<UInt32> Unknown1 => unknown_1;
+		internal float Unknown2 => unknown_2;
+		internal UInt32 Unknown3 => unknown_3;
 		#endregion
 
 		/// <summary>
@@ -302,24 +284,12 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
-		public byte[] FileSignature
-		{
-			get
-			{
-				return new byte[0];
-			}
-		}
+		public byte[] FileSignature => new byte[0];
 
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				return new uint[] { Lottype };
-			}
-		}
+		public uint[] AssignableTypes => new uint[] { Lottype };
 
 		#endregion
 

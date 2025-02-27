@@ -184,13 +184,7 @@ namespace SimPe.Plugin
 		}
 
 		TSFaceGeometryBuilderItems items;
-		public TSFaceGeometryBuilderItems Items
-		{
-			get
-			{
-				return items;
-			}
-		}
+		public TSFaceGeometryBuilderItems Items => items;
 		#endregion
 
 
@@ -399,13 +393,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object

@@ -42,13 +42,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Name Provider
 		/// </summary>
-		internal SimPe.Interfaces.Providers.ISimNames NameProvider
-		{
-			get
-			{
-				return nameprovider;
-			}
-		}
+		internal SimPe.Interfaces.Providers.ISimNames NameProvider => nameprovider;
 
 		#region Attributes
 		/// <summary>

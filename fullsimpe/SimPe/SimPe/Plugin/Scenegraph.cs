@@ -66,13 +66,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a List of a References that should be excluded
 		/// </summary>
-		public ArrayList ExcludedReferences
-		{
-			get
-			{
-				return exclude;
-			}
-		}
+		public ArrayList ExcludedReferences => exclude;
 
 		/// <summary>
 		/// Create a clone of the Descriptor, so changes won't affect the source Package anymore!

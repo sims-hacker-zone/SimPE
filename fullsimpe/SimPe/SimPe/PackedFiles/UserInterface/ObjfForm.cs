@@ -213,13 +213,7 @@ namespace SimPe.PackedFiles.UserInterface
 		/// <summary>
 		/// Returns the Control that will be displayed within SimPe
 		/// </summary>
-		public Control GUIHandle
-		{
-			get
-			{
-				return objfPanel;
-			}
-		}
+		public Control GUIHandle => objfPanel;
 
 		/// <summary>
 		/// Called by the AbstractWrapper when the file should be displayed to the user.

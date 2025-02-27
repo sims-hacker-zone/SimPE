@@ -54,13 +54,7 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <remarks>The Culure is needed whenever you read floatingpoint
 		/// Values from a Text File</remarks>
-		public static CultureInfo DefaultCulture
-		{
-			get
-			{
-				return AbstractGmdcExporter.DefaultCulture;
-			}
-		}
+		public static CultureInfo DefaultCulture => AbstractGmdcExporter.DefaultCulture;
 
 		/// <summary>
 		/// Good Objects should not have more than this number of Faces
@@ -75,13 +69,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Returns a Version Number for the used Interface
 		/// </summary>
-		public int Version
-		{
-			get
-			{
-				return 1;
-			}
-		}
+		public int Version => 1;
 
 		/// <summary>
 		/// Convert the passed string to a double Value
@@ -181,48 +169,24 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Returns the Error Message Produced by the Last Parsing attempt
 		/// </summary>
-		public string ErrorMessage
-		{
-			get
-			{
-				return error;
-			}
-		}
+		public string ErrorMessage => error;
 
 		System.IO.StreamReader input;
 
 		/// <summary>
 		/// The current Input (when LoadGroups() or ChangeGmdc() is called, this is never null)
 		/// </summary>
-		protected System.IO.StreamReader Input
-		{
-			get
-			{
-				return input;
-			}
-		}
+		protected System.IO.StreamReader Input => input;
 
 		GeometryDataContainer gmdc;
 
 		/// <summary>
 		/// The Gmdc that should be changed (when LoadGroups() or ChangeGmdc() is called, this is never null)
 		/// </summary>
-		protected GeometryDataContainer Gmdc
-		{
-			get
-			{
-				return gmdc;
-			}
-		}
+		protected GeometryDataContainer Gmdc => gmdc;
 
 		ImportedFrameBlocks ab1;
-		protected ImportedFrameBlocks AnimationBlocks
-		{
-			get
-			{
-				return ab1;
-			}
-		}
+		protected ImportedFrameBlocks AnimationBlocks => ab1;
 
 		/// <summary>
 		/// Process the Data stored in the passed Stream, and change/replace the passed Gmdc
@@ -257,13 +221,7 @@ namespace SimPe.Plugin.Gmdc
 		}
 
 		bool animonly;
-		public bool AnimationOnly
-		{
-			get
-			{
-				return animonly;
-			}
-		}
+		public bool AnimationOnly => animonly;
 		ImportOptions importoptionsresult;
 
 		/// <summary>

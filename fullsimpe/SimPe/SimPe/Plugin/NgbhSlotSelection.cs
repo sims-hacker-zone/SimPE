@@ -142,13 +142,7 @@ namespace SimPe.Plugin
 				SelectedSlotChanged(this, e);
 		}
 
-		public NgbhSlot SelectedSlot
-		{
-			get
-			{
-				return lv.SelectedSlot;
-			}
-		}
+		public NgbhSlot SelectedSlot => lv.SelectedSlot;
 
 		public Data.NeighborhoodSlots SlotType
 		{

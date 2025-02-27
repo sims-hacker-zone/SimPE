@@ -79,23 +79,11 @@ namespace SimPe.Plugin
 		}
 
 		uint count;
-		public uint Count
-		{
-			get
-			{
-				return count;
-			}
-		}
+		public uint Count => count;
 
 		bool duff = false;
 		Exception e = null;
-		public bool Duff
-		{
-			get
-			{
-				return duff;
-			}
-		}
+		public bool Duff => duff;
 		#endregion
 
 		/// <summary>
@@ -131,13 +119,7 @@ namespace SimPe.Plugin
 		}
 
 		Interfaces.IProviderRegistry provider;
-		public Interfaces.IProviderRegistry Provider
-		{
-			get
-			{
-				return provider;
-			}
-		}
+		public Interfaces.IProviderRegistry Provider => provider;
 
 		/// <summary>
 		/// Filename of the First Block (or an empty string)
@@ -496,13 +478,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
-		public virtual byte[] FileSignature
-		{
-			get
-			{
-				return new byte[0];
-			}
-		}
+		public virtual byte[] FileSignature => new byte[0];
 
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process

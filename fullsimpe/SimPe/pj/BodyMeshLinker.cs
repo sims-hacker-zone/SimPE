@@ -198,13 +198,7 @@ namespace pj
 		#endregion
 
 		#region IToolExt Member
-		public override System.Drawing.Image Icon
-		{
-			get
-			{
-				return SimPe.GetIcon.BMlinker;
-			}
-		}
+		public override System.Drawing.Image Icon => SimPe.GetIcon.BMlinker;
 		#endregion
 	}
 }

@@ -39,13 +39,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 		public FindInNmap()
 			: this(null) { }
 
-		public override bool ProcessParalell
-		{
-			get
-			{
-				return false;
-			}
-		}
+		public override bool ProcessParalell => false;
 
 		public override void SearchPackage(
 			SimPe.Interfaces.Files.IPackageFile pkg,

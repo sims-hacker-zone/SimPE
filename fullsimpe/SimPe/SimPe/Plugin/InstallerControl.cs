@@ -391,13 +391,7 @@ namespace SimPe.Plugin
 			lbType.Text = "";
 		}
 
-		protected Downloads.IPackageInfo SelectedPackageInfo
-		{
-			get
-			{
-				return cb.SelectedItem as Downloads.IPackageInfo;
-			}
-		}
+		protected Downloads.IPackageInfo SelectedPackageInfo => cb.SelectedItem as Downloads.IPackageInfo;
 
 		private void SelectedInfo(object sender, EventArgs e)
 		{

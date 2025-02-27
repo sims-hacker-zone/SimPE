@@ -104,24 +104,12 @@ namespace SimPe
 		/// <summary>
 		/// Returns the current Package or null if it is not loaded
 		/// </summary>
-		public SimPe.Packages.GeneratableFile Package
-		{
-			get
-			{
-				return pkg;
-			}
-		}
+		public SimPe.Packages.GeneratableFile Package => pkg;
 
 		/// <summary>
 		/// true, if a package was loaded
 		/// </summary>
-		public bool Loaded
-		{
-			get
-			{
-				return pkg != null;
-			}
-		}
+		public bool Loaded => pkg != null;
 
 		/// <summary>
 		/// returns an empty string or the FileName of the current package

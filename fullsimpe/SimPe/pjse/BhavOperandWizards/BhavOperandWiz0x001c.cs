@@ -175,13 +175,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 		}
 
 		#region iBhavOperandWizForm
-		public Panel WizPanel
-		{
-			get
-			{
-				return this.pnWiz0x001c;
-			}
-		}
+		public Panel WizPanel => this.pnWiz0x001c;
 
 		public void Execute(Instruction inst)
 		{

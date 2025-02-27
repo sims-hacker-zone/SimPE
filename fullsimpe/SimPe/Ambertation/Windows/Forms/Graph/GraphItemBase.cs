@@ -180,24 +180,12 @@ namespace Ambertation.Windows.Forms.Graph
 		GraphItems childs;
 
 		[Browsable(false)]
-		public GraphItems ChildItems
-		{
-			get
-			{
-				return childs;
-			}
-		}
+		public GraphItems ChildItems => childs;
 
 		GraphItems parents;
 
 		[Browsable(false)]
-		public GraphItems ParentItems
-		{
-			get
-			{
-				return parents;
-			}
-		}
+		public GraphItems ParentItems => parents;
 		#endregion
 
 

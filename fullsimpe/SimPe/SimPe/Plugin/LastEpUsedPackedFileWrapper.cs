@@ -206,13 +206,7 @@ namespace SimPe.Plugin
 
 		#region IFileWrapper Member
 
-		public byte[] FileSignature
-		{
-			get
-			{
-				return new byte[0];
-			}
-		}
+		public byte[] FileSignature => new byte[0];
 
 		public uint[] AssignableTypes
 		{

@@ -65,16 +65,10 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns true if the PackedFile is compressed
 		/// </summary>
-		public bool IsCompressed
-		{
-			get
-			{
-				return (
+		public bool IsCompressed => (
 					(headersize != 0)
 					&& (Signature == SimPe.Data.MetaData.COMPRESS_SIGNATURE)
 				);
-			}
-		}
 
 		/// <summary>
 		/// Size of the compressed File
@@ -84,13 +78,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns the Size of the File
 		/// </summary>
-		public int Size
-		{
-			get
-			{
-				return size;
-			}
-		}
+		public int Size => size;
 
 		/// <summary>
 		/// Compression Signature
@@ -100,22 +88,10 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns the Size of the File
 		/// </summary>
-		public ushort Signature
-		{
-			get
-			{
-				return signature;
-			}
-		}
+		public ushort Signature => signature;
 
 		internal uint datastart;
-		public uint DataStart
-		{
-			get
-			{
-				return datastart;
-			}
-		}
+		public uint DataStart => datastart;
 
 		/// <summary>
 		/// Filesize
@@ -125,13 +101,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns the Filesize
 		/// </summary>
-		public uint DataSize
-		{
-			get
-			{
-				return datasize;
-			}
-		}
+		public uint DataSize => datasize;
 
 		/// <summary>
 		/// the File Data
@@ -144,13 +114,7 @@ namespace SimPe.Packages
 		internal Byte[] uncdata;
 
 		internal uint uncsize;
-		public uint UncompressedSize
-		{
-			get
-			{
-				return uncsize;
-			}
-		}
+		public uint UncompressedSize => uncsize;
 
 		/// <summary>
 		/// Returns the Plain File Data (might be compressed)
@@ -180,13 +144,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns the Plain File Data (might be compressed)
 		/// </summary>
-		public Byte[] PlainData
-		{
-			get
-			{
-				return data;
-			}
-		}
+		public Byte[] PlainData => data;
 
 		class OffsetStream : System.IO.Stream
 		{
@@ -201,42 +159,18 @@ namespace SimPe.Packages
 				sz = (int)size;
 			}
 
-			public override bool CanRead
-			{
-				get
-				{
-					return s.CanRead;
-				}
-			}
+			public override bool CanRead => s.CanRead;
 
-			public override bool CanSeek
-			{
-				get
-				{
-					return s.CanSeek;
-				}
-			}
+			public override bool CanSeek => s.CanSeek;
 
-			public override bool CanWrite
-			{
-				get
-				{
-					return s.CanWrite;
-				}
-			}
+			public override bool CanWrite => s.CanWrite;
 
 			public override void Flush()
 			{
 				s.Flush();
 			}
 
-			public override long Length
-			{
-				get
-				{
-					return sz;
-				}
-			}
+			public override long Length => sz;
 
 			public override long Position
 			{

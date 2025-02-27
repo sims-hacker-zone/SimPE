@@ -86,40 +86,16 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		[Browsable(false)]
-		public virtual bool Loaded
-		{
-			get
-			{
-				return objd != null;
-			}
-		}
+		public virtual bool Loaded => objd != null;
 
 		[Browsable(false)]
-		public string Title
-		{
-			get
-			{
-				return this.lbName.Text;
-			}
-		}
+		public string Title => this.lbName.Text;
 
 		[Browsable(false)]
-		public string Description
-		{
-			get
-			{
-				return this.lbAbout.Text;
-			}
-		}
+		public string Description => this.lbAbout.Text;
 
 		[Browsable(false)]
-		public short Price
-		{
-			get
-			{
-				return Helper.StringToInt16(this.lbPrice.Text.Replace(" $", ""), 0, 10);
-			}
-		}
+		public short Price => Helper.StringToInt16(this.lbPrice.Text.Replace(" $", ""), 0, 10);
 		#endregion
 
 		#region Thumbnails

@@ -24,13 +24,7 @@ namespace SimPe.Plugin.Scanner
 			list.Add(item);
 		}
 
-		public int Count
-		{
-			get
-			{
-				return list.Count;
-			}
-		}
+		public int Count => list.Count;
 
 		public bool Contains(IScannerPluginBase item)
 		{

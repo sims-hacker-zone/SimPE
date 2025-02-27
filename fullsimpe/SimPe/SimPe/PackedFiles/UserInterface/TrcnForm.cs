@@ -508,13 +508,7 @@ namespace SimPe.PackedFiles.UserInterface
 		/// <summary>
 		/// Returns the Control that will be displayed within SimPe
 		/// </summary>
-		public Control GUIHandle
-		{
-			get
-			{
-				return trcnPanel;
-			}
-		}
+		public Control GUIHandle => trcnPanel;
 
 		/// <summary>
 		/// Called by the AbstractWrapper when the file should be displayed to the user.

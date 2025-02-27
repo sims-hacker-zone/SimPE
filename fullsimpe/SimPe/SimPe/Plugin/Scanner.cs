@@ -61,21 +61,9 @@ namespace SimPe.Plugin
 		}
 
 		#region IScannerBase Member
-		public uint Version
-		{
-			get
-			{
-				return 1;
-			}
-		}
+		public uint Version => 1;
 
-		public int Index
-		{
-			get
-			{
-				return 700;
-			}
-		}
+		public int Index => 700;
 		#endregion
 
 		#region IScanner Member

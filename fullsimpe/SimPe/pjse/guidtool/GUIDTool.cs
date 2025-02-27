@@ -68,12 +68,6 @@ namespace pjse.guidtool
 
 		#endregion
 
-		public override System.Drawing.Image Icon
-		{
-			get
-			{
-				return SimPe.GetIcon.pjSearch;
-			}
-		}
+		public override System.Drawing.Image Icon => SimPe.GetIcon.pjSearch;
 	}
 }

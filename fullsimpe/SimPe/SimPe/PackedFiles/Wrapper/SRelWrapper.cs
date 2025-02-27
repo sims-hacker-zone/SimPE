@@ -216,13 +216,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Returns the Relationship Values.
 		/// </summary>
 		/// <remarks>The Meaning of the Bits is stored in MataData.RelationshipStateBits</remarks>
-		public RelationshipFlags RelationState
-		{
-			get
-			{
-				return flags;
-			}
-		}
+		public RelationshipFlags RelationState => flags;
 
 		/// <summary>
 		/// Returns the Shortterm Relationship
@@ -260,13 +254,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Returns the second set of relationship state flags
 		/// </summary>
 		/// <remarks>The Meaning of the Bits is given by MetaData.UIFlags2Names</remarks>
-		public UIFlags2 RelationState2
-		{
-			get
-			{
-				return values.Length > 9 ? flags2 : null;
-			}
-		}
+		public UIFlags2 RelationState2 => values.Length > 9 ? flags2 : null;
 		#endregion
 
 		/// <summary>
@@ -382,16 +370,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
-		public byte[] FileSignature
-		{
-			get
-			{
-				///
-				/// TODO:  Add the Signature Array if needed
-				///
-				return new byte[0];
-			}
-		}
+		public byte[] FileSignature => new byte[0];
 
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process

@@ -474,13 +474,7 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		public ExtNgbh Ngbh
-		{
-			get
-			{
-				return (ExtNgbh)Wrapper;
-			}
-		}
+		public ExtNgbh Ngbh => (ExtNgbh)Wrapper;
 
 		protected override void RefreshGUI()
 		{

@@ -36,29 +36,11 @@ namespace SimPe.Plugin
 			internal StrIntsanceAlias(uint inst, uint type, string ext)
 				: base(inst, ext, new object[] { type }) { }
 
-			public uint Type
-			{
-				get
-				{
-					return (uint)Tag[0];
-				}
-			}
+			public uint Type => (uint)Tag[0];
 
-			public uint Instance
-			{
-				get
-				{
-					return this.Id;
-				}
-			}
+			public uint Instance => this.Id;
 
-			public string Extension
-			{
-				get
-				{
-					return Name;
-				}
-			}
+			public string Extension => Name;
 		}
 
 		public enum BaseResourceType : byte
@@ -249,13 +231,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// The Base Package
 		/// </summary>
-		public IPackageFile Package
-		{
-			get
-			{
-				return package;
-			}
-		}
+		public IPackageFile Package => package;
 
 		CloneSettings setup;
 

@@ -9,20 +9,8 @@ namespace SimPe.Plugin
 		: SimPe.Windows.Forms.WrapperBaseControl,
 			IPackedFileUI
 	{
-		protected new AudioRefPackedFileWrapper Wrapper
-		{
-			get
-			{
-				return base.Wrapper as AudioRefPackedFileWrapper;
-			}
-		}
-		public AudioRefPackedFileWrapper TPFW
-		{
-			get
-			{
-				return (AudioRefPackedFileWrapper)Wrapper;
-			}
-		}
+		protected new AudioRefPackedFileWrapper Wrapper => base.Wrapper as AudioRefPackedFileWrapper;
+		public AudioRefPackedFileWrapper TPFW => (AudioRefPackedFileWrapper)Wrapper;
 
 		#region WrapperBaseControl Member
 
@@ -46,13 +34,7 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region IPackedFileUI Member
-		System.Windows.Forms.Control IPackedFileUI.GUIHandle
-		{
-			get
-			{
-				return this;
-			}
-		}
+		System.Windows.Forms.Control IPackedFileUI.GUIHandle => this;
 		#endregion
 
 		#region IDisposable Member

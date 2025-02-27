@@ -85,16 +85,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Returns the Name of the File the Character is stored in
 		/// </summary>
 		/// <remarks>null, if no File was found</remarks>
-		public bool IsTownie
-		{
-			get
-			{
-				return (
+		public bool IsTownie => (
 						((this.FamilyInstance & 0x7f00) == 0x7f00)
 						|| this.FamilyInstance == 0
 					) && !IsNPC;
-			}
-		}
 
 		public override string CharacterFileName
 		{

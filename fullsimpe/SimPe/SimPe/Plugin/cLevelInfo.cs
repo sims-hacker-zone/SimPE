@@ -42,13 +42,7 @@ namespace SimPe.Plugin
 		Image img;
 		MipMapType datatype;
 
-		public Size TextureSize
-		{
-			get
-			{
-				return texturesize;
-			}
-		}
+		public Size TextureSize => texturesize;
 
 		public int ZLevel
 		{

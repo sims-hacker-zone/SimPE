@@ -460,13 +460,7 @@ namespace Ambertation.Windows.Forms
 		/// <summary>
 		/// Returns the Font used for the Header
 		/// </summary>
-		public Font HeaderFont
-		{
-			get
-			{
-				return hfont;
-			}
-		}
+		public Font HeaderFont => hfont;
 
 		#endregion
 
@@ -547,68 +541,32 @@ namespace Ambertation.Windows.Forms
 		/// Number of Columsn per Line
 		/// </summary>
 		[Browsable(false)]
-		public int Columns
-		{
-			get
-			{
-				return cols * BLOCKSIZE;
-			}
-		}
+		public int Columns => cols * BLOCKSIZE;
 
 		/// <summary>
 		/// Returns a Brush in BackgroundColor
 		/// </summary>
-		protected SolidBrush BackBrush
-		{
-			get
-			{
-				return new SolidBrush(backcol);
-			}
-		}
+		protected SolidBrush BackBrush => new SolidBrush(backcol);
 
 		/// <summary>
 		/// Returns a Brush in BackgroundColor
 		/// </summary>
-		protected SolidBrush HeadBackBrush
-		{
-			get
-			{
-				return new SolidBrush(HeadColor);
-			}
-		}
+		protected SolidBrush HeadBackBrush => new SolidBrush(HeadColor);
 
 		/// <summary>
 		/// Returns a Brush in ForeColor
 		/// </summary>
-		protected SolidBrush ForeBrush
-		{
-			get
-			{
-				return new SolidBrush(ForeColor);
-			}
-		}
+		protected SolidBrush ForeBrush => new SolidBrush(ForeColor);
 
 		/// <summary>
 		/// Returns a Brush in BackgroundColor
 		/// </summary>
-		protected SolidBrush HeadForeBrush
-		{
-			get
-			{
-				return new SolidBrush(HeadForeColor);
-			}
-		}
+		protected SolidBrush HeadForeBrush => new SolidBrush(HeadForeColor);
 
 		/// <summary>
 		/// Returns the Pen for the Background Color
 		/// </summary>
-		protected Pen BorderPen
-		{
-			get
-			{
-				return new Pen(fcfcol, 1);
-			}
-		}
+		protected Pen BorderPen => new Pen(fcfcol, 1);
 
 		/// <summary>
 		/// The Width of the Hex Listing Box, which is calculated by <see cref="Width"/> - (<see cref="OffsetBoxWidth"/> + <see cref="CharBoxWidth"/> + 8)
@@ -630,19 +588,13 @@ namespace Ambertation.Windows.Forms
 		/// <summary>
 		/// Width of a single Column in the HexBox
 		/// </summary>
-		protected float HexBoxColumnWidth
-		{
-			get
-			{
-				return (float)(
+		protected float HexBoxColumnWidth => (float)(
 						HexBoxWidth
 						- bm.Width
 						- ((Columns - 1) * COLSPACING)
 						- bm.Left
 						- ((Blocks - 1) * BLOCKSPACING)
 					) / (float)Columns;
-			}
-		}
 
 		/// <summary>
 		/// Number of Rows needed to display the Data
@@ -687,13 +639,7 @@ namespace Ambertation.Windows.Forms
 		/// <summary>
 		/// Returns the Height of one Row
 		/// </summary>
-		protected float HexBoxRowHeight
-		{
-			get
-			{
-				return hbrh;
-			}
-		}
+		protected float HexBoxRowHeight => hbrh;
 
 		Highlight selection;
 
@@ -701,37 +647,19 @@ namespace Ambertation.Windows.Forms
 		/// Where does sthe selection start (-1 for nothing)
 		/// </summary>
 		[Browsable(false)]
-		public int SelectionStart
-		{
-			get
-			{
-				return selection.Start;
-			}
-		}
+		public int SelectionStart => selection.Start;
 
 		/// <summary>
 		/// How long is the Selection
 		/// </summary>
 		[Browsable(false)]
-		public int SelectionLength
-		{
-			get
-			{
-				return selection.Length;
-			}
-		}
+		public int SelectionLength => selection.Length;
 
 		/// <summary>
 		/// Where does the Selection End
 		/// </summary>
 		[Browsable(false)]
-		public int SelectionEnd
-		{
-			get
-			{
-				return selection.End;
-			}
-		}
+		public int SelectionEnd => selection.End;
 
 		float cwidth;
 
@@ -754,13 +682,7 @@ namespace Ambertation.Windows.Forms
 		/// Returns the List of Highlighted Elements
 		/// </summary>
 		[Browsable(false)]
-		public Ambertation.Collections.Highlights Highlights
-		{
-			get
-			{
-				return highlights;
-			}
-		}
+		public Ambertation.Collections.Highlights Highlights => highlights;
 		#endregion
 
 		#region Fields
@@ -2362,13 +2284,7 @@ namespace Ambertation.Windows.Forms
 			Refresh(true);
 		}
 
-		public int HighlighCount
-		{
-			get
-			{
-				return highlights.Count;
-			}
-		}
+		public int HighlighCount => highlights.Count;
 
 		public void SelectNextHighlight()
 		{

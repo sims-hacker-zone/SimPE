@@ -39,39 +39,21 @@ namespace Ambertation
 		/// <summary>
 		/// The Description of the Property (=Help Text)
 		/// </summary>
-		public string Description
-		{
-			get
-			{
-				return desc;
-			}
-		}
+		public string Description => desc;
 
 		string cat;
 
 		/// <summary>
 		/// The Category of the Property
 		/// </summary>
-		public string Category
-		{
-			get
-			{
-				return cat;
-			}
-		}
+		public string Category => cat;
 
 		bool ro;
 
 		/// <summary>
 		/// Tru iof this Property is ReadOnly
 		/// </summary>
-		public bool ReadOnly
-		{
-			get
-			{
-				return ro;
-			}
-		}
+		public bool ReadOnly => ro;
 
 		object prop;
 
@@ -185,13 +167,7 @@ namespace Ambertation
 		/// <summary>
 		/// Returns the Type of the Object
 		/// </summary>
-		public Type Type
-		{
-			get
-			{
-				return type;
-			}
-		}
+		public Type Type => type;
 
 		/// <summary>
 		/// Creates a new Instance
@@ -516,12 +492,6 @@ namespace Ambertation
 		/// <summary>
 		/// Returns the created Object
 		/// </summary>
-		public object Instance
-		{
-			get
-			{
-				return instance;
-			}
-		}
+		public object Instance => instance;
 	}
 }

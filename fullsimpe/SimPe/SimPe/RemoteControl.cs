@@ -48,13 +48,7 @@ namespace SimPe
 				this.target = target;
 			}
 
-			public uint TargetType
-			{
-				get
-				{
-					return target;
-				}
-			}
+			public uint TargetType => target;
 
 			public object Item
 			{
@@ -67,13 +61,7 @@ namespace SimPe
 				}
 			}
 
-			public object Items
-			{
-				get
-				{
-					return data;
-				}
-			}
+			public object Items => data;
 		}
 
 		struct MessageQueueItemInfo

@@ -34,13 +34,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the MemoryObject Cache
 		/// </summary>
-		internal static MemoryCacheFile ObjectCache
-		{
-			get
-			{
-				return SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache;
-			}
-		}
+		internal static MemoryCacheFile ObjectCache => SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache;
 
 		#region Code to Startup the UI
 
@@ -100,13 +94,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the Panel that will be displayed within SimPe
 		/// </summary>
-		public System.Windows.Forms.Control GUIHandle
-		{
-			get
-			{
-				return form.ngbhPanel;
-			}
-		}
+		public System.Windows.Forms.Control GUIHandle => form.ngbhPanel;
 
 		/// <summary>
 		/// Is called by SimPe (through the Wrapper) when the Panel is going to be displayed, so

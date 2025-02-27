@@ -39,31 +39,13 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// The Base Package
 		/// </summary>
-		public IPackageFile Package
-		{
-			get
-			{
-				return package;
-			}
-		}
+		public IPackageFile Package => package;
 
 		SimPe.Packages.GeneratableFile dn_pkg;
-		public IPackageFile GMNDPackage
-		{
-			get
-			{
-				return dn_pkg;
-			}
-		}
+		public IPackageFile GMNDPackage => dn_pkg;
 
 		SimPe.Packages.GeneratableFile gm_pkg;
-		public IPackageFile MMATPackage
-		{
-			get
-			{
-				return gm_pkg;
-			}
-		}
+		public IPackageFile MMATPackage => gm_pkg;
 
 		/// <summary>
 		/// Creates a new Isntance

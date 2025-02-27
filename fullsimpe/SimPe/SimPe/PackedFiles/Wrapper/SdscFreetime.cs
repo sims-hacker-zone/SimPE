@@ -44,13 +44,7 @@ namespace SimPe.PackedFiles.Wrapper
 		List<ushort> decays;
 		uint bugcollection;
 
-		public List<ushort> HobbyEnthusiasm
-		{
-			get
-			{
-				return enthusiasm;
-			}
-		}
+		public List<ushort> HobbyEnthusiasm => enthusiasm;
 
 		public static ushort HobbiesToIndex(Hobbies hb)
 		{

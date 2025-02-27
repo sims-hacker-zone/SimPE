@@ -1099,13 +1099,7 @@ namespace pjHoodTool
 		#endregion
 
 		#region IToolExt Member
-		public override System.Drawing.Image Icon
-		{
-			get
-			{
-				return SimPe.GetIcon.HoodTool;
-			}
-		}
+		public override System.Drawing.Image Icon => SimPe.GetIcon.HoodTool;
 		#endregion
 
 		#region ICommandLine Members

@@ -107,13 +107,7 @@ namespace SimPe
 			}
 		}
 
-		public System.Drawing.Image Image
-		{
-			get
-			{
-				return image;
-			}
-		}
+		public System.Drawing.Image Image => image;
 
 		public void SetMessage(string message)
 		{
@@ -134,13 +128,7 @@ namespace SimPe
 			}
 		}
 
-		public string Message
-		{
-			get
-			{
-				return message;
-			}
-		}
+		public string Message => message;
 
 		protected override void WndProc(ref System.Windows.Forms.Message m)
 		{

@@ -36,24 +36,12 @@ namespace SimPe.Packages
 		/// Returns the Identifier of the File
 		/// </summary>
 		/// <remarks>This value should be DBPF</remarks>
-		public string Identifier
-		{
-			get
-			{
-				return hd.Identifier;
-			}
-		}
+		public string Identifier => hd.Identifier;
 
 		/// <summary>
 		/// Returns the Overall Version of this Package
 		/// </summary>
-		public string Version
-		{
-			get
-			{
-				return "0x" + Helper.HexString(hd.Version);
-			}
-		}
+		public string Version => "0x" + Helper.HexString(hd.Version);
 
 		/// <summary>
 		/// Returns or Sets the Type of the Package
@@ -73,13 +61,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// This is missused in SimPe as a Unique Creator ID
 		/// </summary>
-		public string Ident
-		{
-			get
-			{
-				return "0x" + Helper.HexString(hd.Created);
-			}
-		}
+		public string Ident => "0x" + Helper.HexString(hd.Created);
 
 		/// <summary>
 		/// Expansion Pack Icon Used by Lots in the Lot Catalogue
@@ -120,73 +102,31 @@ namespace SimPe.Packages
 		internal IndexDetailsAdvanced(SimPe.Interfaces.Files.IPackageHeader hd)
 			: base(hd) { }
 
-		public string IndexOffset
-		{
-			get
-			{
-				return "0x" + Helper.HexString(hd.Index.Offset);
-			}
-		}
+		public string IndexOffset => "0x" + Helper.HexString(hd.Index.Offset);
 
-		public string IndexSize
-		{
-			get
-			{
-				return "0x" + Helper.HexString(hd.Index.Size);
-			}
-		}
+		public string IndexSize => "0x" + Helper.HexString(hd.Index.Size);
 
-		public int ResourceCount
-		{
-			get
-			{
-				return hd.Index.Count;
-			}
-		}
+		public int ResourceCount => hd.Index.Count;
 
-		public string IndexVersion
-		{
-			get
-			{
-				return "0x" + Helper.HexString(hd.Index.Type);
-			}
-		}
+		public string IndexVersion => "0x" + Helper.HexString(hd.Index.Type);
 
-		public string IndexItemSize
-		{
-			get
-			{
-				return "0x"
+		public string IndexItemSize => "0x"
 					+ Helper.HexString(hd.Index.ItemSize)
 					+ " (0x"
 					+ Helper.HexString(hd.Index.Size / hd.Index.Count)
 					+ ")";
-			}
-		}
 
 		/// <summary>
 		/// Returns the Major Version of The Packages FileFormat
 		/// </summary>
 		/// <remarks>This value should be 1</remarks>
-		public int MajorVersion
-		{
-			get
-			{
-				return hd.MajorVersion;
-			}
-		}
+		public int MajorVersion => hd.MajorVersion;
 
 		/// <summary>
 		/// Returns the Minor Version of The Packages FileFormat
 		/// </summary>
 		/// <remarks>This value should be 0 or 1</remarks>
-		public int MinorVersion
-		{
-			get
-			{
-				return hd.MinorVersion;
-			}
-		}
+		public int MinorVersion => hd.MinorVersion;
 	}
 
 	/// <summary>
@@ -316,21 +256,9 @@ namespace SimPe.Packages
 			}
 		}
 
-		public IndexDetails IndexDetails
-		{
-			get
-			{
-				return new IndexDetails(pkg.Header);
-			}
-		}
+		public IndexDetails IndexDetails => new IndexDetails(pkg.Header);
 
-		public IndexDetailsAdvanced IndexDetailsAdvanced
-		{
-			get
-			{
-				return new IndexDetailsAdvanced(pkg.Header);
-			}
-		}
+		public IndexDetailsAdvanced IndexDetailsAdvanced => new IndexDetailsAdvanced(pkg.Header);
 
 		public SimPe.Packages.GeneratableFile Package
 		{

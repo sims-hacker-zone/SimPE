@@ -51,13 +51,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// returns the <see cref="ImagePanel"/> for the Sim that was used to build th Graph
 		/// </summary>
-		public ImagePanel MainSimElement
-		{
-			get
-			{
-				return baseip;
-			}
-		}
+		public ImagePanel MainSimElement => baseip;
 
 		public void UpdateGraph(Wrapper.SDesc sdsc, Wrapper.ExtFamilyTies famt)
 		{
@@ -326,13 +320,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		Size isz;
-		protected Size ItemSize
-		{
-			get
-			{
-				return isz;
-			}
-		}
+		protected Size ItemSize => isz;
 
 		protected ImagePanel CreateItem(Wrapper.SDesc sdesc, int left, int top)
 		{

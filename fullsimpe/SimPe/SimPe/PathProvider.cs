@@ -45,25 +45,13 @@ namespace SimPe
 	{
 		internal const int GROUP_COUNT = 32;
 		static ExpansionItem nil = new ExpansionItem(null);
-		public static ExpansionItem Nil
-		{
-			get
-			{
-				return nil;
-			}
-		}
+		public static ExpansionItem Nil => nil;
 
 		XmlRegistry reg;
 		XmlRegistryKey xrk;
 		List<ExpansionItem> exps;
 		List<string> paths;
-		public List<ExpansionItem> Expansions
-		{
-			get
-			{
-				return exps;
-			}
-		}
+		public List<ExpansionItem> Expansions => exps;
 
 		Dictionary<Expansions, ExpansionItem> map;
 		int spver,
@@ -224,13 +212,7 @@ namespace SimPe
 			return ret;
 		}
 
-		public Expansions LastKnown
-		{
-			get
-			{
-				return lastknown;
-			}
-		}
+		public Expansions LastKnown => lastknown;
 
 		public int GameVersion // if Ts2 not installed will return a Story Version if installed
 		{
@@ -247,29 +229,11 @@ namespace SimPe
 			}
 		}
 
-		public int EPInstalled
-		{
-			get
-			{
-				return epver;
-			}
-		}
+		public int EPInstalled => epver;
 
-		public int SPInstalled
-		{
-			get
-			{
-				return spver;
-			}
-		}
+		public int SPInstalled => spver;
 
-		public int STInstalled
-		{
-			get
-			{
-				return stver;
-			}
-		}
+		public int STInstalled => stver;
 
 		/// <summary>
 		/// Name of the Sims Application
@@ -340,13 +304,7 @@ namespace SimPe
 		/// <summary>
 		/// Returns the object describing the highest Expansion available on the System
 		/// </summary>
-		public ExpansionItem Latest
-		{
-			get
-			{
-				return latest;
-			}
-		}
+		public ExpansionItem Latest => latest;
 
 		protected ExpansionItem GetLatestExpansion()
 		{
@@ -443,24 +401,12 @@ namespace SimPe
 		/// <summary>
 		/// Bit-wise OR of the groups (from expansions.xreg) of all known games
 		/// </summary>
-		public long AvailableGroups
-		{
-			get
-			{
-				return avlgrp;
-			}
-		}
+		public long AvailableGroups => avlgrp;
 
 		/// <summary>
 		/// The group (from expansions.xreg) for the current GameVersion
 		/// </summary>
-		public int CurrentGroup
-		{
-			get
-			{
-				return GetExpansion(GameVersion).Group;
-			}
-		}
+		public int CurrentGroup => GetExpansion(GameVersion).Group;
 
 		#region Censor Patch
 		/// <summary>
@@ -974,13 +920,7 @@ namespace SimPe
 		/// <summary>
 		/// Returns the Location of the Personal Folder
 		/// </summary>
-		internal static string PersonalFolder
-		{
-			get
-			{
-				return Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-			}
-		}
+		internal static string PersonalFolder => Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
 		/// <summary>
 		/// Name of the Nvidia DDS Path
@@ -1015,27 +955,15 @@ namespace SimPe
 		/// <summary>
 		/// The location of theNvidia Tool
 		/// </summary>
-		public string NvidiaDDSTool
-		{
-			get
-			{
-				return System.IO.Path.Combine(NvidiaDDSPath, "nvdxt.exe");
-			}
-		}
+		public string NvidiaDDSTool => System.IO.Path.Combine(NvidiaDDSPath, "nvdxt.exe");
 
 		/// <summary>
 		/// Returns the Name of the Startup Cheat File
 		/// </summary>
-		public string StartupCheatFile
-		{
-			get
-			{
-				return System.IO.Path.Combine(
+		public string StartupCheatFile => System.IO.Path.Combine(
 					SimSavegameFolder,
 					"Config\\userStartup.cheat"
 				);
-			}
-		}
 
 		/// <summary>
 		/// Looks for the Neighborhoods subfolder in the specified path
@@ -1097,13 +1025,7 @@ namespace SimPe
 
 		#region IEnumerator<string> Member
 
-		public string Current
-		{
-			get
-			{
-				throw new Exception("The method or operation is not implemented.");
-			}
-		}
+		public string Current => throw new Exception("The method or operation is not implemented.");
 
 		#endregion
 

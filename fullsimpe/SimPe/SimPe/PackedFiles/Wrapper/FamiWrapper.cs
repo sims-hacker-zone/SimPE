@@ -142,13 +142,7 @@ namespace SimPe.PackedFiles.Wrapper
 		private int ca_food,
 			ca_food_decay;
 
-		public FamiVersions Version
-		{
-			get
-			{
-				return version;
-			}
-		}
+		public FamiVersions Version => version;
 
 		/// <summary>
 		/// Returns/Sets the Flags
@@ -518,13 +512,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Name Provider
 		/// </summary>
-		internal SimPe.Interfaces.Providers.ISimNames NameProvider
-		{
-			get
-			{
-				return nameprovider;
-			}
-		}
+		internal SimPe.Interfaces.Providers.ISimNames NameProvider => nameprovider;
 
 		/// <summary>
 		/// Returns the Description File for the passed Sim id

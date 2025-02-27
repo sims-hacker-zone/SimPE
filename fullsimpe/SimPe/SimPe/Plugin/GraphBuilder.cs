@@ -35,13 +35,7 @@ namespace SimPe.Plugin
 	{
 		Hashtable colors;
 		GraphPanel gc;
-		public GraphPanel Graph
-		{
-			get
-			{
-				return gc;
-			}
-		}
+		public GraphPanel Graph => gc;
 		System.EventHandler click;
 
 		/// <summary>

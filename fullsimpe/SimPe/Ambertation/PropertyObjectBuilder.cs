@@ -373,12 +373,6 @@ namespace Ambertation
 		/// <summary>
 		/// Returns the created Object
 		/// </summary>
-		public object Instance
-		{
-			get
-			{
-				return instance;
-			}
-		}
+		public object Instance => instance;
 	}
 }

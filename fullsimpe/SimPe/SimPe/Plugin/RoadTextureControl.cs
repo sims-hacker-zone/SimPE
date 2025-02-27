@@ -429,13 +429,7 @@ namespace SimPe.Plugin
 
 		#region IPackedFileUI Member
 
-		public RoadTexture RoadTextureWrapper
-		{
-			get
-			{
-				return (RoadTexture)this.Wrapper;
-			}
-		}
+		public RoadTexture RoadTextureWrapper => (RoadTexture)this.Wrapper;
 
 		protected override void RefreshGUI()
 		{

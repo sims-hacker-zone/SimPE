@@ -26,13 +26,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 		public FindInSG()
 			: this(null) { }
 
-		public override bool ProcessParalell
-		{
-			get
-			{
-				return false;
-			}
-		}
+		public override bool ProcessParalell => false;
 
 		uint type;
 

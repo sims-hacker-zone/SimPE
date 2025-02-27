@@ -268,24 +268,12 @@ namespace SimPe.Wants
 		/// <summary>
 		/// Returns a list of File Types this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				return new uint[] { XWNTType, 0xBEEF7B4D };
-			}
-		}
+		public uint[] AssignableTypes => new uint[] { XWNTType, 0xBEEF7B4D };
 
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
-		public byte[] FileSignature
-		{
-			get
-			{
-				return new byte[0];
-			}
-		}
+		public byte[] FileSignature => new byte[0];
 
 		#endregion
 
@@ -560,13 +548,7 @@ namespace SimPe.Wants
 				return lKeyType;
 			}
 		}
-		public static List<string> ValidKeys
-		{
-			get
-			{
-				return new List<string>(KeyType.Keys);
-			}
-		}
+		public static List<string> ValidKeys => new List<string>(KeyType.Keys);
 
 		private static bool IsValidKey(string value)
 		{
@@ -600,20 +582,8 @@ namespace SimPe.Wants
 				return lTypeUtype;
 			}
 		}
-		public static List<string> ValidTypes
-		{
-			get
-			{
-				return new List<string>(TypeUtype.Keys);
-			}
-		}
-		public static List<string> ValidUtypes
-		{
-			get
-			{
-				return new List<string>(TypeUtype.Values);
-			}
-		}
+		public static List<string> ValidTypes => new List<string>(TypeUtype.Keys);
+		public static List<string> ValidUtypes => new List<string>(TypeUtype.Values);
 
 		private static bool IsValidType(string value)
 		{

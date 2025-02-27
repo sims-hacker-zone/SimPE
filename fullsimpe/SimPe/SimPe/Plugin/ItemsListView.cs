@@ -30,13 +30,7 @@ namespace SimPe.Plugin
 	{
 		NgbhItemsListView parent;
 		NgbhItem item;
-		public NgbhItem Item
-		{
-			get
-			{
-				return item;
-			}
-		}
+		public NgbhItem Item => item;
 
 		public NgbhItemsListViewItem(NgbhItemsListView parent, NgbhItem item)
 			: this(parent, item, true) { }

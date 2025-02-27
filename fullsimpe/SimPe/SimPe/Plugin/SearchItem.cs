@@ -41,13 +41,7 @@ namespace SimPe.Plugin
 			this.flname = flname;
 		}
 
-		public Interfaces.Files.IPackedFileDescriptor Descriptor
-		{
-			get
-			{
-				return pfd;
-			}
-		}
+		public Interfaces.Files.IPackedFileDescriptor Descriptor => pfd;
 
 		public string FileName
 		{

@@ -263,13 +263,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// returns the Instance of the assigned Catalog Description
 		/// </summary>
-		public ushort CTSSId
-		{
-			get
-			{
-				return ctssid;
-			}
-		}
+		public ushort CTSSId => ctssid;
 
 		/// <summary>
 		/// Retursn / Sets the Type of an Object

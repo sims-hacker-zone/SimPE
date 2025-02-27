@@ -34,13 +34,7 @@ namespace SimPe.PackedFiles.UserInterface
 	{
 		#region IPackedFileHandler Member
 
-		public Control GUIHandle
-		{
-			get
-			{
-				return form.objdPanel;
-			}
-		}
+		public Control GUIHandle => form.objdPanel;
 
 		public void UpdateGUI(SimPe.Interfaces.Plugin.IFileWrapper wrapper)
 		{

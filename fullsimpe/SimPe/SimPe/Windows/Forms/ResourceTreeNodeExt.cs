@@ -25,21 +25,9 @@ namespace SimPe.Windows.Forms
 			this.SelectedImageIndex = this.ImageIndex;
 		}
 
-		public ResourceViewManager.ResourceNameList Resources
-		{
-			get
-			{
-				return list;
-			}
-		}
+		public ResourceViewManager.ResourceNameList Resources => list;
 
-		public virtual ulong ID
-		{
-			get
-			{
-				return id;
-			}
-		}
+		public virtual ulong ID => id;
 
 		#region IComparable<ResResourceTreeNodeExt> Member
 

@@ -92,13 +92,7 @@ namespace pjse
 		/// <summary>
 		/// The Global group
 		/// </summary>
-		public uint GlobalGroup
-		{
-			get
-			{
-				return (uint)pjse.Group.Global;
-			}
-		}
+		public uint GlobalGroup => (uint)pjse.Group.Global;
 
 		public Scope Context
 		{
@@ -135,13 +129,7 @@ namespace pjse
 			return PrivateGroup;
 		}
 
-		public uint GroupForContext
-		{
-			get
-			{
-				return GroupForScope(Context);
-			}
-		}
+		public uint GroupForContext => GroupForScope(Context);
 
 		public pjse.FileTable.Entry ResourceByInstance(uint type, uint instance)
 		{
@@ -310,20 +298,8 @@ namespace pjse
 			items.CopyTo(array, arrayIndex);
 		}
 
-		public int Count
-		{
-			get
-			{
-				return items.Count;
-			}
-		}
-		public bool IsReadOnly
-		{
-			get
-			{
-				return false;
-			}
-		}
+		public int Count => items.Count;
+		public bool IsReadOnly => false;
 
 		public void Insert(int index, T item)
 		{
@@ -444,13 +420,7 @@ namespace pjse
 			throw new Exception("The method or operation is not implemented.");
 		}
 
-		public bool IsFixedSize
-		{
-			get
-			{
-				throw new Exception("The method or operation is not implemented.");
-			}
-		}
+		public bool IsFixedSize => throw new Exception("The method or operation is not implemented.");
 
 		public void Remove(object value)
 		{
@@ -478,21 +448,9 @@ namespace pjse
 			throw new Exception("The method or operation is not implemented.");
 		}
 
-		public bool IsSynchronized
-		{
-			get
-			{
-				throw new Exception("The method or operation is not implemented.");
-			}
-		}
+		public bool IsSynchronized => throw new Exception("The method or operation is not implemented.");
 
-		public object SyncRoot
-		{
-			get
-			{
-				throw new Exception("The method or operation is not implemented.");
-			}
-		}
+		public object SyncRoot => throw new Exception("The method or operation is not implemented.");
 
 		#endregion
 

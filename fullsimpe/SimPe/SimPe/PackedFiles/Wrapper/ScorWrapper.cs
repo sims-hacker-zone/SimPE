@@ -42,44 +42,20 @@ namespace SimPe.PackedFiles.Wrapper
 	{
 		#region Attributes
 		ScorItems items;
-		protected ScorItems Items
-		{
-			get
-			{
-				return items;
-			}
-		}
+		protected ScorItems Items => items;
 		uint version;
 
 		/// <summary>
 		/// Returns the Version of this File
 		/// </summary>
-		public uint Version
-		{
-			get
-			{
-				return version;
-			}
-		}
+		public uint Version => version;
 
 		uint unk1,
 			unk2;
 
-		public uint Unknown1
-		{
-			get
-			{
-				return unk1;
-			}
-		}
+		public uint Unknown1 => unk1;
 
-		public uint Unknown2
-		{
-			get
-			{
-				return unk2;
-			}
-		}
+		public uint Unknown2 => unk2;
 		#endregion
 
 		/// <summary>
@@ -186,13 +162,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
-		public byte[] FileSignature
-		{
-			get
-			{
-				return new byte[0];
-			}
-		}
+		public byte[] FileSignature => new byte[0];
 
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
@@ -217,13 +187,7 @@ namespace SimPe.PackedFiles.Wrapper
 				this.si = si;
 			}
 
-			public ScorItem Item
-			{
-				get
-				{
-					return si;
-				}
-			}
+			public ScorItem Item => si;
 		}
 
 		public delegate void ChangedListHandler(Scor sender, ChangedListEventArgs e);
@@ -259,13 +223,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public int Count
-		{
-			get
-			{
-				return items.Count;
-			}
-		}
+		public int Count => items.Count;
 
 		#region IEnumerable Members
 

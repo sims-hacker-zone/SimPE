@@ -31,13 +31,7 @@ namespace SimPe.Cache
 	/// </summary>
 	internal class PackageCacheFile : CacheFile
 	{
-		public static string CacheFileName
-		{
-			get
-			{
-				return Helper.GetSimPeLanguageCache("scanner_");
-			}
-		}
+		public static string CacheFileName => Helper.GetSimPeLanguageCache("scanner_");
 
 		/// <summary>
 		/// Creaet a new Instance for an empty File

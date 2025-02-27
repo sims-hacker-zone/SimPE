@@ -2820,13 +2820,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		PetTraits pett;
-		public PetTraits PetTraits
-		{
-			get
-			{
-				return pett;
-			}
-		}
+		public PetTraits PetTraits => pett;
 
 		internal void Unserialize(BinaryReader reader)
 		{
@@ -2982,13 +2976,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Teh Version of this File
 		/// </summary>
-		public SDescVersions Version
-		{
-			get
-			{
-				return (SDescVersions)version;
-			}
-		}
+		public SDescVersions Version => (SDescVersions)version;
 
 		/// <summary>
 		/// Spaces of unknown Data
@@ -3081,13 +3069,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Relationships a sim has
 		/// </summary>
-		public SimRelationAttribute Relations
-		{
-			get
-			{
-				return relations;
-			}
-		}
+		public SimRelationAttribute Relations => relations;
 
 		/// <summary>
 		/// Some Description about the Characters Life
@@ -3097,13 +3079,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Description of the Character
 		/// </summary>
-		public CharacterDescription CharacterDescription
-		{
-			get
-			{
-				return description;
-			}
-		}
+		public CharacterDescription CharacterDescription => description;
 
 		SdscUniversity uni;
 
@@ -3111,13 +3087,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Returns University Specific Data
 		/// </summary>
 		/// <remarks>Only valid if Version == SDescVersions.University or Version == SDescVersions.Nightlife</remarks>
-		public SdscUniversity University
-		{
-			get
-			{
-				return uni;
-			}
-		}
+		public SdscUniversity University => uni;
 
 		SdscNightlife nightlife;
 
@@ -3125,13 +3095,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Returns Nightlife Specific Data
 		/// </summary>
 		/// <remarks>Only valid if Version >= SDescVersions.Nightlife</remarks>
-		public SdscNightlife Nightlife
-		{
-			get
-			{
-				return nightlife;
-			}
-		}
+		public SdscNightlife Nightlife => nightlife;
 
 		SdscBusiness business;
 
@@ -3139,13 +3103,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Returns Business Specific Data
 		/// </summary>
 		/// <remarks>Only valid if Version == SDescVersions.Business</remarks>
-		public SdscBusiness Business
-		{
-			get
-			{
-				return business;
-			}
-		}
+		public SdscBusiness Business => business;
 
 		SdscPets pets;
 
@@ -3153,13 +3111,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Returns Pets Specific Data
 		/// </summary>
 		/// <remarks>Only valid if Version == SDescVersions.Pets</remarks>
-		public SdscPets Pets
-		{
-			get
-			{
-				return pets;
-			}
-		}
+		public SdscPets Pets => pets;
 
 		SdscVoyage voyage;
 
@@ -3167,13 +3119,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Returns Voyage Specific Data
 		/// </summary>
 		/// <remarks>Only valid if Version == SDescVersions.Voyage</remarks>
-		public SdscVoyage Voyage
-		{
-			get
-			{
-				return voyage;
-			}
-		}
+		public SdscVoyage Voyage => voyage;
 
 		SdscCastaway castaway;
 
@@ -3181,13 +3127,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Returns Castaway Specific Data
 		/// </summary>
 		/// <remarks>Only valid if Version == SDescVersions.Castaway</remarks>
-		public SdscCastaway Castaway
-		{
-			get
-			{
-				return castaway;
-			}
-		}
+		public SdscCastaway Castaway => castaway;
 
 		SdscFreetime freetime;
 
@@ -3195,13 +3135,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Returns Freetime Specific Data
 		/// </summary>
 		/// <remarks>Only valid if Version == SDescVersions.Freetime</remarks>
-		public SdscFreetime Freetime
-		{
-			get
-			{
-				return freetime;
-			}
-		}
+		public SdscFreetime Freetime => freetime;
 
 		SdscApartment apartment;
 
@@ -3209,13 +3143,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Returns Apartment Life-specific data
 		/// </summary>
 		/// <remarks>Only valid if Version >= SDescVersions.Apartment</remarks>
-		public SdscApartment Apartment
-		{
-			get
-			{
-				return apartment;
-			}
-		}
+		public SdscApartment Apartment => apartment;
 
 		/// <summary>
 		/// Character Attributes
@@ -3225,13 +3153,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Character Attributes
 		/// </summary>
-		public CharacterAttributes Character
-		{
-			get
-			{
-				return character;
-			}
-		}
+		public CharacterAttributes Character => character;
 
 		/// <summary>
 		/// Character Attributes
@@ -3241,13 +3163,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Character Attributes
 		/// </summary>
-		public CharacterAttributes GeneticCharacter
-		{
-			get
-			{
-				return gencharacter;
-			}
-		}
+		public CharacterAttributes GeneticCharacter => gencharacter;
 
 		/// <summary>
 		/// Skill Attributes
@@ -3257,13 +3173,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Skill Attributes
 		/// </summary>
-		public SkillAttributes Skills
-		{
-			get
-			{
-				return skills;
-			}
-		}
+		public SkillAttributes Skills => skills;
 
 		/// <summary>
 		/// A Sims Interests
@@ -3273,13 +3183,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Interests of a Sim
 		/// </summary>
-		public InterestAttributes Interests
-		{
-			get
-			{
-				return interests;
-			}
-		}
+		public InterestAttributes Interests => interests;
 		#endregion
 
 		#region Local Getters/Setters
@@ -3287,24 +3191,12 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Name Provider
 		/// </summary>
-		internal SimPe.Interfaces.Providers.ISimNames NameProvider
-		{
-			get
-			{
-				return nameprovider;
-			}
-		}
+		internal SimPe.Interfaces.Providers.ISimNames NameProvider => nameprovider;
 
 		/// <summary>
 		/// Returns the Description Provider
 		/// </summary>
-		internal SimPe.Interfaces.Providers.ISimDescriptions DescriptionProvider
-		{
-			get
-			{
-				return sdescprovider;
-			}
-		}
+		internal SimPe.Interfaces.Providers.ISimDescriptions DescriptionProvider => sdescprovider;
 
 		/// <summary>
 		/// Returns/Sets the Sim Id
@@ -3711,13 +3603,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Offset for the GUID7Instance Data
 		/// </summary>
-		int GuidDataPosition
-		{
-			get
-			{
-				return RelationPosition - 0xA;
-			}
-		}
+		int GuidDataPosition => RelationPosition - 0xA;
 
 		/// <summary>
 		/// Returns the Offset for the Relation COunt Filed

@@ -35,29 +35,11 @@ namespace SimPe.Plugin.Tool.Window
 
 		#region IToolExt Member
 
-		public System.Windows.Forms.Shortcut Shortcut
-		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.CtrlShiftI;
-			}
-		}
+		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.CtrlShiftI;
 
-		public bool Visible
-		{
-			get
-			{
-				return true;
-			}
-		}
+		public bool Visible => true;
 
-		public Image Icon
-		{
-			get
-			{
-				return SimPe.GetIcon.ContentPreview;
-			}
-		}
+		public Image Icon => SimPe.GetIcon.ContentPreview;
 
 		#endregion
 

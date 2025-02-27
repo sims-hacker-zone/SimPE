@@ -70,13 +70,7 @@ namespace SimPe
 		/// <summary>
 		/// Returnsthe Name of a Plugin
 		/// </summary>
-		public string Name
-		{
-			get
-			{
-				return name;
-			}
-		}
+		public string Name => name;
 
 		protected string filename;
 
@@ -99,13 +93,7 @@ namespace SimPe
 		/// Returns/sets the FileName of the External Application
 		/// </summary>
 		/// <remarks>the Palceholder {simple} will be replaced with the real Simpe Installation Path</remarks>
-		public string RealFileName
-		{
-			get
-			{
-				return filename.Replace("{simpe}", Helper.SimPePath);
-			}
-		}
+		public string RealFileName => filename.Replace("{simpe}", Helper.SimPePath);
 
 		protected string arguments;
 

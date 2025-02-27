@@ -26,40 +26,16 @@ namespace SimPe.Providers
 	public class CollectibleAlias
 	{
 		private string name;
-		public string Name
-		{
-			get
-			{
-				return name;
-			}
-		}
+		public string Name => name;
 
 		private ulong id;
-		public ulong Id
-		{
-			get
-			{
-				return id;
-			}
-		}
+		public ulong Id => id;
 
 		private int nr;
-		public int Nr
-		{
-			get
-			{
-				return nr;
-			}
-		}
+		public int Nr => nr;
 
 		private System.Drawing.Image img;
-		public System.Drawing.Image Image
-		{
-			get
-			{
-				return img;
-			}
-		}
+		public System.Drawing.Image Image => img;
 
 		public CollectibleAlias(ulong id, int nr, string name, System.Drawing.Image img)
 		{

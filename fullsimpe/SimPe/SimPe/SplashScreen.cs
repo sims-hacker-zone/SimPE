@@ -52,13 +52,7 @@ namespace SimPe
 			}
 		}
 
-		public static bool Running
-		{
-			get
-			{
-				return scr != null;
-			}
-		}
+		public static bool Running => scr != null;
 
 		System.Threading.Thread t = null;
 

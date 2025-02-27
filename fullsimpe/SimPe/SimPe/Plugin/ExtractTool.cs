@@ -13,13 +13,7 @@ namespace SimPe.Plugin
 		/// Windows Registry Link
 		/// </summary>
 		static SimPe.Registry registry;
-		internal static Registry WindowsRegistry
-		{
-			get
-			{
-				return registry;
-			}
-		}
+		internal static Registry WindowsRegistry => registry;
 
 		IWrapperRegistry reg;
 		IProviderRegistry prov;
@@ -86,23 +80,11 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region IToolExt Member
-		public override System.Drawing.Image Icon
-		{
-			get
-			{
-				return System.Drawing.Image.FromStream(
+		public override System.Drawing.Image Icon => System.Drawing.Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.Extractor.png")
 				);
-			}
-		}
-		public override System.Windows.Forms.Shortcut Shortcut
-		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.None;
-			}
-		}
+		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 		#endregion
 	}
 }

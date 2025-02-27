@@ -392,13 +392,7 @@ namespace SimPe.Plugin
 		/// You should store this value in a temp var if you need it multiple times,
 		/// as the File is reloaded with each call
 		/// </remarks>
-		public GenericRcol GMDC
-		{
-			get
-			{
-				return GetGmdc();
-			}
-		}
+		public GenericRcol GMDC => GetGmdc();
 
 		public override string Description
 		{

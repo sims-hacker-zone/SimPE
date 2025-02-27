@@ -32,21 +32,9 @@ namespace SimPe.Plugin.Anim
 	{
 		#region Attributes
 		Rcol parent;
-		public Rcol Parent
-		{
-			get
-			{
-				return parent;
-			}
-		}
+		public Rcol Parent => parent;
 
-		public AnimResourceConst Animation
-		{
-			get
-			{
-				return (AnimResourceConst)parent.Blocks[0];
-			}
-		}
+		public AnimResourceConst Animation => (AnimResourceConst)parent.Blocks[0];
 		AnimationFrameBlock[] ab2;
 
 		[BrowsableAttribute(false)]
@@ -66,36 +54,18 @@ namespace SimPe.Plugin.Anim
 			DescriptionAttribute("Number of loaded AnimationFrameBlock Items"),
 			CategoryAttribute("Information")
 		]
-		public int Part2Count
-		{
-			get
-			{
-				return ab2.Length;
-			}
-		}
+		public int Part2Count => ab2.Length;
 
 		AnimBlock4[] ab4;
 
 		[BrowsableAttribute(false)]
-		public AnimBlock4[] Part4
-		{
-			get
-			{
-				return ab4;
-			}
-		}
+		public AnimBlock4[] Part4 => ab4;
 
 		[
 			DescriptionAttribute("Number of loaded AnimBlock4 Items"),
 			CategoryAttribute("Information")
 		]
-		public int Part4Count
-		{
-			get
-			{
-				return ab4.Length;
-			}
-		}
+		public int Part4Count => ab4.Length;
 
 		uint[] datai;
 
@@ -198,13 +168,7 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[DescriptionAttribute("Number of assigned AnimationFrameBlock Items")]
-		public short AnimatedBoneCount
-		{
-			get
-			{
-				return datas[1];
-			}
-		}
+		public short AnimatedBoneCount => datas[1];
 
 		[DescriptionAttribute(
 			"Lower 6 Bits(?) are reserved for the Number of assigned AnimBlock4 Items"

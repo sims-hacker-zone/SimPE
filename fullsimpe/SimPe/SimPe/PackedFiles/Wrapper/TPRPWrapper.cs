@@ -122,29 +122,11 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		private bool duff = false;
-		public bool TextOnly
-		{
-			get
-			{
-				return (duff);
-			}
-		}
+		public bool TextOnly => (duff);
 
-		public int ParamCount
-		{
-			get
-			{
-				return duff ? 0 : paramCount;
-			}
-		}
+		public int ParamCount => duff ? 0 : paramCount;
 
-		public int LocalCount
-		{
-			get
-			{
-				return duff ? 0 : localCount;
-			}
-		}
+		public int LocalCount => duff ? 0 : localCount;
 
 		#endregion
 
@@ -363,24 +345,12 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				return new uint[] { TPRPtype };
-			}
-		}
+		public uint[] AssignableTypes => new uint[] { TPRPtype };
 
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
-		public byte[] FileSignature
-		{
-			get
-			{
-				return new byte[0];
-			}
-		}
+		public byte[] FileSignature => new byte[0];
 
 		#endregion
 
@@ -426,21 +396,9 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public bool IsParamLabel
-		{
-			get
-			{
-				return (pORl == false);
-			}
-		}
+		public bool IsParamLabel => (pORl == false);
 
-		public bool IsLocalLabel
-		{
-			get
-			{
-				return (pORl == true);
-			}
-		}
+		public bool IsLocalLabel => (pORl == true);
 		#endregion
 
 		public TPRPItem(TPRP parent, bool pORl)
@@ -502,13 +460,7 @@ namespace SimPe.PackedFiles.Wrapper
 	public class TPRPParamLabel : TPRPItem
 	{
 		private byte pData = 0x01;
-		public byte PData
-		{
-			get
-			{
-				return pData;
-			}
-		}
+		public byte PData => pData;
 
 		/// <summary>
 		/// For the time being, I'm explicitly preventing this value being adjusted

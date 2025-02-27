@@ -61,13 +61,7 @@ namespace SimPe
 		/// <summary>
 		/// Returns the Registry Key you can use to store Optional Plugin Data
 		/// </summary>
-		public XmlRegistryKey LayoutRegistryKey
-		{
-			get
-			{
-				return xrk.CreateSubKey("PluginLayout");
-			}
-		}
+		public XmlRegistryKey LayoutRegistryKey => xrk.CreateSubKey("PluginLayout");
 
 		/// <summary>
 		/// Descturtor -(Whats a Descturtor?)

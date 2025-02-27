@@ -44,41 +44,11 @@ namespace pjse
 		private uint instance = 0;
 		private uint type = 0;
 
-		public Scope Scope
-		{
-			get
-			{
-				return scope;
-			}
-		}
-		public ExtendedWrapper Parent
-		{
-			get
-			{
-				return parent;
-			}
-		}
-		public uint Group
-		{
-			get
-			{
-				return group;
-			}
-		}
-		public uint Instance
-		{
-			get
-			{
-				return instance;
-			}
-		}
-		public uint Type
-		{
-			get
-			{
-				return type;
-			}
-		}
+		public Scope Scope => scope;
+		public ExtendedWrapper Parent => parent;
+		public uint Group => group;
+		public uint Instance => instance;
+		public uint Type => type;
 
 		public Str(Scope scope, ExtendedWrapper parent, uint instance, bool fallback)
 			: this(

@@ -140,13 +140,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		[Browsable(false)]
-		public bool FilteredBySim
-		{
-			get
-			{
-				return !ShowNotRelatedSims || !ShowRelatedSims;
-			}
-		}
+		public bool FilteredBySim => !ShowNotRelatedSims || !ShowRelatedSims;
 
 		ExtSDesc sim;
 

@@ -29,13 +29,7 @@ namespace Ambertation.Windows.Forms.Graph
 		string name;
 		object val;
 
-		public string Name
-		{
-			get
-			{
-				return name;
-			}
-		}
+		public string Name => name;
 
 		public object Value
 		{

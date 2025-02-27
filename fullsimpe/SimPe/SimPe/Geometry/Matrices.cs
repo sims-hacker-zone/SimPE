@@ -133,13 +133,7 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// Number of stored Rows
 		/// </summary>
-		public int Rows
-		{
-			get
-			{
-				return m.Length;
-			}
-		}
+		public int Rows => m.Length;
 
 		/// <summary>
 		/// Numbner of stored Columns
@@ -641,13 +635,7 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// True if this Matrix is invertibale
 		/// </summary>
-		public bool Invertable
-		{
-			get
-			{
-				return (this.Determinant() != 0);
-			}
-		}
+		public bool Invertable => (this.Determinant() != 0);
 
 		/// <summary>
 		/// True if the Matrix is Orthogonal

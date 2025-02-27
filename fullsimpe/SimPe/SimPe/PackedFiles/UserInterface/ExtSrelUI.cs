@@ -135,13 +135,7 @@ namespace SimPe.PackedFiles.UserInterface
 		}
 		#endregion
 
-		public SimPe.PackedFiles.Wrapper.ExtSrel Srel
-		{
-			get
-			{
-				return (SimPe.PackedFiles.Wrapper.ExtSrel)Wrapper;
-			}
-		}
+		public SimPe.PackedFiles.Wrapper.ExtSrel Srel => (SimPe.PackedFiles.Wrapper.ExtSrel)Wrapper;
 
 		protected override void RefreshGUI()
 		{

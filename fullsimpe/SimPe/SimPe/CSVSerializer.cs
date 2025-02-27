@@ -30,13 +30,7 @@ namespace SimPe
 		public CsvSerializer()
 			: base() { }
 
-		public override string Seperator
-		{
-			get
-			{
-				return ",";
-			}
-		}
+		public override string Seperator => ",";
 
 		public override string SaveStr(string val)
 		{

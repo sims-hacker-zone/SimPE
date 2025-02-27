@@ -41,13 +41,7 @@ namespace SimPe.Plugin
 		}
 
 		Ngbh parent;
-		public Ngbh Parent
-		{
-			get
-			{
-				return parent;
-			}
-		}
+		public Ngbh Parent => parent;
 
 		public NgbhSlotList(Ngbh parent)
 		{
@@ -223,13 +217,7 @@ namespace SimPe.Plugin
 	public class NgbhSlot : NgbhSlotList
 	{
 		Data.NeighborhoodSlots type;
-		public Data.NeighborhoodSlots Type
-		{
-			get
-			{
-				return type;
-			}
-		}
+		public Data.NeighborhoodSlots Type => type;
 
 		internal NgbhSlot(Ngbh parent, Data.NeighborhoodSlots type)
 			: base(parent)

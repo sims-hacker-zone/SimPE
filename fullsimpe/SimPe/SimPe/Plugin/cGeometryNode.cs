@@ -83,13 +83,7 @@ namespace SimPe.Plugin
 		}
 
 		IRcolBlock[] data;
-		public int Count
-		{
-			get
-			{
-				return data.Length;
-			}
-		}
+		public int Count => data.Length;
 		public IRcolBlock[] Blocks
 		{
 			get

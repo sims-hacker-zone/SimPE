@@ -109,20 +109,8 @@ namespace SimPe.Plugin.Scanner
 			ignore.Add("simpe.ngbh.plugin.dll");
 		}
 
-		public ScannerCollection Scanners
-		{
-			get
-			{
-				return scanners;
-			}
-		}
+		public ScannerCollection Scanners => scanners;
 
-		public ScannerCollection Identifiers
-		{
-			get
-			{
-				return identifiers;
-			}
-		}
+		public ScannerCollection Identifiers => identifiers;
 	}
 }

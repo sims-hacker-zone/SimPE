@@ -337,13 +337,7 @@ namespace Ambertation
 		/// </summary>
 		Type type;
 
-		internal Type Type
-		{
-			get
-			{
-				return type;
-			}
-		}
+		internal Type Type => type;
 
 		static int digitbase = 16;
 

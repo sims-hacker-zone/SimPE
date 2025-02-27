@@ -86,13 +86,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0008
 		private DataOwnerControl doid2 = null;
 
 		#region iBhavOperandWizForm
-		public Panel WizPanel
-		{
-			get
-			{
-				return this.pnWiz0x0008;
-			}
-		}
+		public Panel WizPanel => this.pnWiz0x0008;
 
 		public void Execute(Instruction inst)
 		{

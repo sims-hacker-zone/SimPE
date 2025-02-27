@@ -62,13 +62,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 		}
 
-		public bool RemoteResult
-		{
-			get
-			{
-				return remoteres;
-			}
-		}
+		public bool RemoteResult => remoteres;
 
 		internal void SetRemoteResult(bool res)
 		{

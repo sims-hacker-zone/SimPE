@@ -36,39 +36,21 @@ namespace SimPe
 		/// <summary>
 		/// Returns the generated LinkLabel
 		/// </summary>
-		public LinkLabel LinkLabel
-		{
-			get
-			{
-				return ll;
-			}
-		}
+		public LinkLabel LinkLabel => ll;
 
 		System.Windows.Forms.ToolStripButton bi;
 
 		/// <summary>
 		/// Returns the generated ToolBar ButtonItem (can be null)
 		/// </summary>
-		public System.Windows.Forms.ToolStripButton ToolBarButton
-		{
-			get
-			{
-				return bi;
-			}
-		}
+		public System.Windows.Forms.ToolStripButton ToolBarButton => bi;
 
 		System.Windows.Forms.ToolStripMenuItem mi;
 
 		/// <summary>
 		/// Returns the generated MenuButtonItem
 		/// </summary>
-		public System.Windows.Forms.ToolStripMenuItem MenuButton
-		{
-			get
-			{
-				return mi;
-			}
-		}
+		public System.Windows.Forms.ToolStripMenuItem MenuButton => mi;
 
 		/// <summary>
 		/// Create a new Instance

@@ -70,13 +70,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// eturns the Base Package
 		/// </summary>
-		public Interfaces.Files.IPackageFile Package
-		{
-			get
-			{
-				return package;
-			}
-		}
+		public Interfaces.Files.IPackageFile Package => package;
 
 		/// <summary>
 		/// The Title of this Package
@@ -102,24 +96,12 @@ namespace SimPe.Plugin
 		/// <remarks>
 		/// 0x01 : Picture Template
 		/// </remarks>
-		public uint Type
-		{
-			get
-			{
-				return pset.GetSaveItem("type").UIntegerValue;
-			}
-		}
+		public uint Type => pset.GetSaveItem("type").UIntegerValue;
 
 		/// <summary>
 		/// The Name of the Texture File
 		/// </summary>
-		public string TxtrFile
-		{
-			get
-			{
-				return pset.GetSaveItem("texture").StringValue;
-			}
-		}
+		public string TxtrFile => pset.GetSaveItem("texture").StringValue;
 
 		/// <summary>
 		/// Returns the Image of the stored Texture
@@ -157,41 +139,23 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// The Name of the MATD File
 		/// </summary>
-		public string MatdFile
-		{
-			get
-			{
-				return pset.GetSaveItem("materialDescription").StringValue;
-			}
-		}
+		public string MatdFile => pset.GetSaveItem("materialDescription").StringValue;
 
 		/// <summary>
 		/// The Instance of the MMAT File
 		/// </summary>
 		/// <remarks>group=0xffffffff, subType=0x00000000</remarks>
-		public uint MmatInstance
-		{
-			get
-			{
-				return pset.GetSaveItem("materialOverride").UIntegerValue;
-			}
-		}
+		public uint MmatInstance => pset.GetSaveItem("materialOverride").UIntegerValue;
 
 		/// <summary>
 		/// Returns the Rectangle you should place the Custom Image to
 		/// </summary>
-		public System.Drawing.Rectangle TargetRectangle
-		{
-			get
-			{
-				return new System.Drawing.Rectangle(
+		public System.Drawing.Rectangle TargetRectangle => new System.Drawing.Rectangle(
 					pset.GetSaveItem("left").IntegerValue,
 					pset.GetSaveItem("top").IntegerValue,
 					pset.GetSaveItem("width").IntegerValue,
 					pset.GetSaveItem("height").IntegerValue
 				);
-			}
-		}
 
 		/// <summary>
 		///

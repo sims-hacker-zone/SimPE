@@ -241,13 +241,7 @@ namespace SimPe.Windows.Forms
 			}
 		}
 
-		public int HeaderHeight
-		{
-			get
-			{
-				return 24;
-			}
-		}
+		public int HeaderHeight => 24;
 
 		private System.Windows.Forms.Button btCommit;
 		LinearGradientMode mGradient;
@@ -400,13 +394,7 @@ namespace SimPe.Windows.Forms
 
 		[Localizable(false)]
 		[Browsable(false)]
-		public override System.Windows.Forms.ImageLayout BackgroundImageLayout
-		{
-			get
-			{
-				return System.Windows.Forms.ImageLayout.Zoom;
-			}
-		}
+		public override System.Windows.Forms.ImageLayout BackgroundImageLayout => System.Windows.Forms.ImageLayout.Zoom;
 
 		#endregion
 
@@ -414,13 +402,7 @@ namespace SimPe.Windows.Forms
 		SimPe.ThemeManager tm;
 
 		[Browsable(false)]
-		public SimPe.ThemeManager ThemeManager
-		{
-			get
-			{
-				return tm;
-			}
-		}
+		public SimPe.ThemeManager ThemeManager => tm;
 
 		public class WrapperChangedEventArgs : EventArgs
 		{
@@ -436,21 +418,9 @@ namespace SimPe.Windows.Forms
 				this.nwrp = nwrp;
 			}
 
-			public SimPe.Interfaces.Plugin.IFileWrapper OldWrapper
-			{
-				get
-				{
-					return owrp;
-				}
-			}
+			public SimPe.Interfaces.Plugin.IFileWrapper OldWrapper => owrp;
 
-			public SimPe.Interfaces.Plugin.IFileWrapper NewWrapper
-			{
-				get
-				{
-					return nwrp;
-				}
-			}
+			public SimPe.Interfaces.Plugin.IFileWrapper NewWrapper => nwrp;
 		}
 
 		public delegate void WrapperChangedHandle(
@@ -462,13 +432,7 @@ namespace SimPe.Windows.Forms
 		SimPe.Interfaces.Plugin.IFileWrapper wrp;
 
 		[Browsable(false)]
-		public SimPe.Interfaces.Plugin.IFileWrapper Wrapper
-		{
-			get
-			{
-				return wrp;
-			}
-		}
+		public SimPe.Interfaces.Plugin.IFileWrapper Wrapper => wrp;
 		#endregion
 
 		#region Events
@@ -785,13 +749,7 @@ namespace SimPe.Windows.Forms
 		/// <summary>
 		/// Returns the Panel that will be displayed within SimPe
 		/// </summary>
-		public System.Windows.Forms.Control GUIHandle
-		{
-			get
-			{
-				return this;
-			}
-		}
+		public System.Windows.Forms.Control GUIHandle => this;
 
 		protected virtual void OnWrapperChanged(WrapperChangedEventArgs e)
 		{

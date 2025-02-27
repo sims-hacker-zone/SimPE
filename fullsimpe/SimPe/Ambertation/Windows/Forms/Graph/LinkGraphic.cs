@@ -64,13 +64,7 @@ namespace Ambertation.Windows.Forms.Graph
 		}
 
 		LinkControlType lct;
-		public LinkControlType Type
-		{
-			get
-			{
-				return lct;
-			}
-		}
+		public LinkControlType Type => lct;
 
 		public double Distance(DockPoint d)
 		{
@@ -465,13 +459,7 @@ namespace Ambertation.Windows.Forms.Graph
 
 		#region Properties
 		[Browsable(false)]
-		public int SnapThreshhold
-		{
-			get
-			{
-				return 12;
-			}
-		}
+		public int SnapThreshhold => 12;
 		#endregion
 
 
@@ -537,21 +525,9 @@ namespace Ambertation.Windows.Forms.Graph
 		#endregion
 
 		#region Placement
-		public static Size ArrowSize
-		{
-			get
-			{
-				return new Size(8, 8);
-			}
-		}
+		public static Size ArrowSize => new Size(8, 8);
 
-		public static Size HalfArrowSize
-		{
-			get
-			{
-				return new Size(ArrowSize.Width / 2, ArrowSize.Height / 2);
-			}
-		}
+		public static Size HalfArrowSize => new Size(ArrowSize.Width / 2, ArrowSize.Height / 2);
 
 		protected Point GetAnchorLocation(byte lca, GraphItemBase c)
 		{

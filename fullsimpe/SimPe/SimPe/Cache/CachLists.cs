@@ -73,13 +73,7 @@ namespace SimPe.Cache
 			return base.Contains(item);
 		}
 
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		public override object Clone()
 		{
@@ -140,13 +134,7 @@ namespace SimPe.Cache
 			return base.Contains(item);
 		}
 
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		public override object Clone()
 		{

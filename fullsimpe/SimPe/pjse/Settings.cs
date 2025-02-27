@@ -32,13 +32,7 @@ namespace pjse
 		static ResourceManager rm = new ResourceManager(typeof(pjse.Localization));
 
 		private static Settings settings;
-		public static Settings PJSE
-		{
-			get
-			{
-				return settings;
-			}
-		}
+		public static Settings PJSE => settings;
 
 		static Settings()
 		{
@@ -220,13 +214,7 @@ namespace pjse
 		}
 
 		[System.ComponentModel.Browsable(false)]
-		public System.Drawing.Image Icon
-		{
-			get
-			{
-				return null;
-			}
-		}
+		public System.Drawing.Image Icon => null;
 
 		#endregion
 	}

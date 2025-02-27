@@ -97,31 +97,13 @@ namespace SimPe.Plugin
 	{
 		#region Attributes
 		byte typecode;
-		public byte TypeCode
-		{
-			get
-			{
-				return typecode;
-			}
-		}
+		public byte TypeCode => typecode;
 
 		ObjectGraphNode ogn;
-		public ObjectGraphNode GraphNode
-		{
-			get
-			{
-				return ogn;
-			}
-		}
+		public ObjectGraphNode GraphNode => ogn;
 
 		CompositionTreeNode ctn;
-		public CompositionTreeNode TreeNode
-		{
-			get
-			{
-				return ctn;
-			}
-		}
+		public CompositionTreeNode TreeNode => ctn;
 
 		ResourceNodeItem[] items;
 		public ResourceNodeItem[] Items
@@ -163,13 +145,7 @@ namespace SimPe.Plugin
 		}
 
 		[BrowsableAttribute(false)]
-		public override TransformNode StoredTransformNode
-		{
-			get
-			{
-				return null;
-			}
-		}
+		public override TransformNode StoredTransformNode => null;
 		#endregion
 
 
@@ -212,13 +188,7 @@ namespace SimPe.Plugin
 		}
 
 		[BrowsableAttribute(false)]
-		public override int ImageIndex
-		{
-			get
-			{
-				return 3; //mesh
-			}
-		}
+		public override int ImageIndex => 3; //mesh
 
 		/// <summary>
 		/// Add a ChildNode (and all it's subChilds) to a TreeNode

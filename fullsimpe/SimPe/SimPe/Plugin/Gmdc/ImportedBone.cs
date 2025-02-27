@@ -113,13 +113,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// The new Bone
 		/// </summary>
-		public GmdcJoint Bone
-		{
-			get
-			{
-				return bone;
-			}
-		}
+		public GmdcJoint Bone => bone;
 
 		VectorTransformation sourcepos;
 
@@ -311,13 +305,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object

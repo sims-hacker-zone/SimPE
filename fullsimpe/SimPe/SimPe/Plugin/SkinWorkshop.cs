@@ -65,13 +65,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Get the Name of the Object Cache File
 		/// </summary>
-		string CacheFileName
-		{
-			get
-			{
-				return Helper.SimPeLanguageCache;
-			}
-		}
+		string CacheFileName => Helper.SimPeLanguageCache;
 
 		/// <summary>
 		/// Load the Object Cache

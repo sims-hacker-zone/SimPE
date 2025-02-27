@@ -199,13 +199,7 @@ namespace SimPe
 			}
 		}
 
-		public static string ReleaseDir
-		{
-			get
-			{
-				return Helper.SimPePath;
-			}
-		}
+		public static string ReleaseDir => Helper.SimPePath;
 
 		/// <summary>
 		/// Returns the the overall SimPe Version
@@ -539,40 +533,16 @@ namespace SimPe
 	{
 		string flname;
 		string bp;
-		public string FileName
-		{
-			get
-			{
-				return flname.Replace(infocheck.ReleaseDir.Trim() + @"\", "");
-			}
-		}
+		public string FileName => flname.Replace(infocheck.ReleaseDir.Trim() + @"\", "");
 
 		System.Diagnostics.FileVersionInfo ver;
-		public System.Diagnostics.FileVersionInfo Version
-		{
-			get
-			{
-				return ver;
-			}
-		}
+		public System.Diagnostics.FileVersionInfo Version => ver;
 
 		long size;
-		public long Size
-		{
-			get
-			{
-				return size;
-			}
-		}
+		public long Size => size;
 
 		bool exists;
-		public bool Exists
-		{
-			get
-			{
-				return exists;
-			}
-		}
+		public bool Exists => exists;
 
 		public FileDescriptor(string basepath, string filename)
 		{

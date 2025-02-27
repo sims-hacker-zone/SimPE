@@ -13,57 +13,27 @@ namespace SimPe
 		/// <summary>
 		/// Sim Image (missing)
 		/// </summary>
-		public static Image NoOne
-		{
-			get
-			{
-				return global::SimPe.Properties.Resources.noone;
-			}
-		}
+		public static Image NoOne => global::SimPe.Properties.Resources.noone;
 
 		/// <summary>
 		/// Sim Image (missing)
 		/// </summary>
-		public static Image SheOne
-		{
-			get
-			{
-				return global::SimPe.Properties.Resources.sheone;
-			}
-		}
+		public static Image SheOne => global::SimPe.Properties.Resources.sheone;
 
 		/// <summary>
 		/// Tool Box Image
 		/// </summary>
-		public static Image Network
-		{
-			get
-			{
-				return global::SimPe.Properties.Resources.network;
-			}
-		}
+		public static Image Network => global::SimPe.Properties.Resources.network;
 
 		/// <summary>
 		/// Tool Box Image
 		/// </summary>
-		public static Image Demo
-		{
-			get
-			{
-				return global::SimPe.Properties.Resources.demo;
-			}
-		}
+		public static Image Demo => global::SimPe.Properties.Resources.demo;
 
 		/// <summary>
 		/// Tool Box Image
 		/// </summary>
-		public static Image Cassie
-		{
-			get
-			{
-				return global::SimPe.Properties.Resources.CAF;
-			}
-		}
+		public static Image Cassie => global::SimPe.Properties.Resources.CAF;
 
 		/// <summary>
 		///  Used in Last EP used and EP Selecter

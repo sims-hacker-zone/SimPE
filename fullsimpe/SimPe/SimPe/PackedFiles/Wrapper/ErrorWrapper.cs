@@ -40,13 +40,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#region IWrapper Member
 
-		public string WrapperFileName
-		{
-			get
-			{
-				return System.IO.Path.GetFileName(flname);
-			}
-		}
+		public string WrapperFileName => System.IO.Path.GetFileName(flname);
 
 		public void Register(SimPe.Interfaces.IWrapperRegistry registry)
 		{
@@ -71,51 +65,27 @@ namespace SimPe.PackedFiles.Wrapper
 			return "Error Wrapper";
 		}
 
-		public SimPe.Interfaces.Plugin.IWrapperInfo WrapperDescription
-		{
-			get
-			{
-				return new SimPe.Interfaces.Plugin.AbstractWrapperInfo(
+		public SimPe.Interfaces.Plugin.IWrapperInfo WrapperDescription => new SimPe.Interfaces.Plugin.AbstractWrapperInfo(
 					WrapperFileName,
 					SimPe.Localization.GetString("Unknown"),
 					e.ToString() + ":" + e.Message,
 					1
 				);
-			}
-		}
 
 		public bool CheckVersion(uint version)
 		{
 			return false;
 		}
 
-		public bool AllowMultipleInstances
-		{
-			get
-			{
-				return false;
-			}
-		}
+		public bool AllowMultipleInstances => false;
 
 		#endregion
 
 		#region IFileWrapper Member
 
-		public byte[] FileSignature
-		{
-			get
-			{
-				return new byte[0];
-			}
-		}
+		public byte[] FileSignature => new byte[0];
 
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				return new uint[0];
-			}
-		}
+		public uint[] AssignableTypes => new uint[0];
 
 		#endregion
 
@@ -125,13 +95,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 		}
 
-		public string ResourceName
-		{
-			get
-			{
-				return "";
-			}
-		}
+		public string ResourceName => "";
 
 		public void ProcessData(
 			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
@@ -178,29 +142,11 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 		}
 
-		public string Description
-		{
-			get
-			{
-				return "Error Object";
-			}
-		}
+		public string Description => "Error Object";
 
-		public string DescriptionHeader
-		{
-			get
-			{
-				return "Error";
-			}
-		}
+		public string DescriptionHeader => "Error";
 
-		public System.IO.BinaryReader StoredData
-		{
-			get
-			{
-				return null;
-			}
-		}
+		public System.IO.BinaryReader StoredData => null;
 
 		public void LoadUI()
 		{
@@ -210,21 +156,9 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 		}
 
-		public System.IO.MemoryStream Content
-		{
-			get
-			{
-				return null;
-			}
-		}
+		public System.IO.MemoryStream Content => null;
 
-		public SimPe.Interfaces.Files.IPackageFile Package
-		{
-			get
-			{
-				return null;
-			}
-		}
+		public SimPe.Interfaces.Files.IPackageFile Package => null;
 
 		public SimPe.Interfaces.Plugin.IPackedFileUI UIHandler
 		{
@@ -246,21 +180,9 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 		}
 
-		public string FileExtension
-		{
-			get
-			{
-				return ".err";
-			}
-		}
+		public string FileExtension => ".err";
 
-		public SimPe.Interfaces.Files.IPackedFileDescriptor FileDescriptor
-		{
-			get
-			{
-				return null;
-			}
-		}
+		public SimPe.Interfaces.Files.IPackedFileDescriptor FileDescriptor => null;
 
 		#endregion
 

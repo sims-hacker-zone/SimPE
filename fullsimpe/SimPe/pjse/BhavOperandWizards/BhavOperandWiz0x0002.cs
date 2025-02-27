@@ -87,13 +87,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0002
 		private Instruction inst = null;
 
 		#region iBhavOperandWizForm
-		public Panel WizPanel
-		{
-			get
-			{
-				return this.pnWiz0x0002;
-			}
-		}
+		public Panel WizPanel => this.pnWiz0x0002;
 
 		public void Execute(Instruction inst)
 		{

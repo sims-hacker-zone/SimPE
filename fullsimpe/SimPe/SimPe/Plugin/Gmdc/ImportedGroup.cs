@@ -60,13 +60,7 @@ namespace SimPe.Plugin.Gmdc
 			}
 		}
 
-		public bool HasIndex
-		{
-			get
-			{
-				return (index >= 0);
-			}
-		}
+		public bool HasIndex => (index >= 0);
 	}
 
 	/// <summary>
@@ -190,39 +184,21 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// The new MeshGroup
 		/// </summary>
-		public GmdcGroup Group
-		{
-			get
-			{
-				return group;
-			}
-		}
+		public GmdcGroup Group => group;
 
 		GmdcLink link;
 
 		/// <summary>
 		/// The new Link Section
 		/// </summary>
-		public GmdcLink Link
-		{
-			get
-			{
-				return link;
-			}
-		}
+		public GmdcLink Link => link;
 
 		GmdcElements elements;
 
 		/// <summary>
 		/// All Elements used by this Group
 		/// </summary>
-		public GmdcElements Elements
-		{
-			get
-			{
-				return elements;
-			}
-		}
+		public GmdcElements Elements => elements;
 
 		/// <summary>
 		/// Returns the Number of faces stored in the Group
@@ -243,13 +219,7 @@ namespace SimPe.Plugin.Gmdc
 		/// Returns the Number of stored Faces
 		/// </summary>
 		/// <returns></returns>
-		public int FaceCount
-		{
-			get
-			{
-				return this.Group.Faces.Length / 3;
-			}
-		}
+		public int FaceCount => this.Group.Faces.Length / 3;
 
 		bool useinbmesh;
 
@@ -275,13 +245,7 @@ namespace SimPe.Plugin.Gmdc
 			keeporder = val;
 		}
 
-		public bool KeepOrder
-		{
-			get
-			{
-				return keeporder;
-			}
-		}
+		public bool KeepOrder => keeporder;
 
 		/// <summary>
 		/// Returns the color that should be used to display this Group in the "Import Groups" ListView
@@ -393,13 +357,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object

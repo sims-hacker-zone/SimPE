@@ -785,13 +785,7 @@ namespace SimPe
 	{
 		#region ICommandLineFactory Members
 
-		public ICommandLine[] KnownCommandLines
-		{
-			get
-			{
-				return new ICommandLine[] { new CommandlineHelp() };
-			}
-		}
+		public ICommandLine[] KnownCommandLines => new ICommandLine[] { new CommandlineHelp() };
 
 		#endregion
 	}

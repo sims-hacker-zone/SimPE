@@ -97,13 +97,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		private bool duff = false;
-		public bool TextOnly
-		{
-			get
-			{
-				return (duff || (header[1] != 0x1 && header[1] < 0x3f));
-			}
-		}
+		public bool TextOnly => (duff || (header[1] != 0x1 && header[1] < 0x3f));
 		#endregion
 
 		/// <summary>
@@ -235,24 +229,12 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				return new uint[] { Trcntype };
-			}
-		}
+		public uint[] AssignableTypes => new uint[] { Trcntype };
 
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
-		public byte[] FileSignature
-		{
-			get
-			{
-				return new byte[0];
-			}
-		}
+		public byte[] FileSignature => new byte[0];
 
 		#endregion
 

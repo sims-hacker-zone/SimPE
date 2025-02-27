@@ -205,13 +205,7 @@ namespace pjse.BhavNameWizards
 			throw new Exception("OpCode defies understanding");
 		}
 
-		protected override string OpcodeName
-		{
-			get
-			{
-				return readStr(GS.BhavStr.Primitives, instruction.OpCode);
-			}
-		}
+		protected override string OpcodeName => readStr(GS.BhavStr.Primitives, instruction.OpCode);
 	}
 
 	public class WizPrimUnused : BhavWizPrim

@@ -19,55 +19,13 @@ namespace SimPe
 			internal Flags(int val)
 				: base((ushort)val) { }
 
-			protected bool RegularExpansion
-			{
-				get
-				{
-					return this.GetBit(0);
-				}
-			}
-			protected bool StuffPack
-			{
-				get
-				{
-					return this.GetBit(1);
-				}
-			}
-			public bool LuaFolders
-			{
-				get
-				{
-					return this.GetBit(2);
-				}
-			}
-			public bool LoadWantText
-			{
-				get
-				{
-					return this.GetBit(3);
-				}
-			}
-			public bool SimStory
-			{
-				get
-				{
-					return this.GetBit(4);
-				}
-			}
-			public bool FullObjectsPackage
-			{
-				get
-				{
-					return !this.GetBit(5);
-				}
-			}
-			public bool HasNgbhProfiles
-			{
-				get
-				{
-					return this.GetBit(6);
-				}
-			}
+			protected bool RegularExpansion => this.GetBit(0);
+			protected bool StuffPack => this.GetBit(1);
+			public bool LuaFolders => this.GetBit(2);
+			public bool LoadWantText => this.GetBit(3);
+			public bool SimStory => this.GetBit(4);
+			public bool FullObjectsPackage => !this.GetBit(5);
+			public bool HasNgbhProfiles => this.GetBit(6);
 
 			public Classes Class
 			{
@@ -451,34 +409,10 @@ namespace SimPe
 				this.def = def;
 			}
 
-			public string Lable
-			{
-				get
-				{
-					return name;
-				}
-			}
-			public string Path
-			{
-				get
-				{
-					return path;
-				}
-			}
-			public ExpansionItem Expansion
-			{
-				get
-				{
-					return ei;
-				}
-			}
-			public bool Default
-			{
-				get
-				{
-					return def;
-				}
-			}
+			public string Lable => name;
+			public string Path => path;
+			public ExpansionItem Expansion => ei;
+			public bool Default => def;
 
 			public override int GetHashCode()
 			{
@@ -584,141 +518,43 @@ namespace SimPe
 			return pt;
 		}
 
-		public string DisplayName
-		{
-			get
-			{
-				return PathProvider.GetDisplayedNameForExpansion(this);
-			}
-		}
+		public string DisplayName => PathProvider.GetDisplayedNameForExpansion(this);
 
-		public Ambertation.CaseInvariantArrayList SimNameDeepSearch
-		{
-			get
-			{
-				return simnamedeep;
-			}
-		}
+		public Ambertation.CaseInvariantArrayList SimNameDeepSearch => simnamedeep;
 
-		public string Name
-		{
-			get
-			{
-				return longname;
-				//string res = SimPe.Localization.GetString("EP NAME " + version);
-				//return res;
-			}
-		}
+		public string Name => longname;//string res = SimPe.Localization.GetString("EP NAME " + version);//return res;
 
-		public Ambertation.CaseInvariantArrayList FileTableFolders
-		{
-			get
-			{
-				return filtablefolders;
-			}
-		}
+		public Ambertation.CaseInvariantArrayList FileTableFolders => filtablefolders;
 
-		public Ambertation.CaseInvariantArrayList PreObjectFileTableFolders
-		{
-			get
-			{
-				return preobjectfiltablefolders;
-			}
-		}
+		public Ambertation.CaseInvariantArrayList PreObjectFileTableFolders => preobjectfiltablefolders;
 
-		internal string CensorFile
-		{
-			get
-			{
-				return System.IO.Path.Combine(
+		internal string CensorFile => System.IO.Path.Combine(
 					PathProvider.SimSavegameFolder,
 					"Config\\" + censor
 				);
-			}
-		}
 
-		internal string SensorFile
-		{
-			get
-			{
-				return System.IO.Path.Combine(
+		internal string SensorFile => System.IO.Path.Combine(
 					PathProvider.SimSavegameFolder,
 					"Downloads\\" + censor
 				);
-			}
-		}
 
-		internal string CensorFileName
-		{
-			get
-			{
-				return censor;
-			}
-		}
+		internal string CensorFileName => censor;
 
-		public bool Exists
-		{
-			get
-			{
-				return (tk != null && isfound == true);
-			}
-		}
+		public bool Exists => (tk != null && isfound == true);
 
-		public int Version
-		{
-			get
-			{
-				return version;
-			}
-		}
+		public int Version => version;
 
-		public int PreferedRuntimeVersion
-		{
-			get
-			{
-				return runtimeversion;
-			}
-		}
+		public int PreferedRuntimeVersion => runtimeversion;
 
-		public Expansions Expansion
-		{
-			get
-			{
-				return exp;
-			}
-		}
+		public Expansions Expansion => exp;
 
-		public Microsoft.Win32.RegistryKey Registry
-		{
-			get
-			{
-				return rk;
-			}
-		}
+		public Microsoft.Win32.RegistryKey Registry => rk;
 
-		public string ExeName
-		{
-			get
-			{
-				return exe;
-			}
-		}
+		public string ExeName => exe;
 
-		public IList<long> Groups
-		{
-			get
-			{
-				return groups;
-			}
-		}
+		public IList<long> Groups => groups;
 
-		public int Group
-		{
-			get
-			{
-				return group;
-			}
-		}
+		public int Group => group;
 
 		public bool ShareOneGroup(ExpansionItem ei)
 		{
@@ -764,21 +600,9 @@ namespace SimPe
 		/// <summary>
 		/// Folder where the objects.package is located
 		/// </summary>
-		public string ObjectsSubFolder
-		{
-			get
-			{
-				return objfolder;
-			}
-		}
+		public string ObjectsSubFolder => objfolder;
 
-		public string IdKey
-		{
-			get
-			{
-				return System.IO.Path.GetFileNameWithoutExtension(ExeName);
-			}
-		}
+		public string IdKey => System.IO.Path.GetFileNameWithoutExtension(ExeName);
 
 		protected string GetShortName()
 		{
@@ -788,47 +612,15 @@ namespace SimPe
 			return ret;
 		}
 
-		public string ShortId
-		{
-			get
-			{
-				return sname;
-			}
-		}
+		public string ShortId => sname;
 
-		public string NameShort
-		{
-			get
-			{
-				return shortname;
-				//string res = SimPe.Localization.GetString("EP SNAME " + version);
-				//return res;
-			}
-		}
+		public string NameShort => shortname;//string res = SimPe.Localization.GetString("EP SNAME " + version);//return res;
 
-		public string NameSortNumber
-		{
-			get
-			{
-				return namelistnr;
-			}
-		}
+		public string NameSortNumber => namelistnr;
 
-		public string NameShorter
-		{
-			get
-			{
-				return shortername;
-			}
-		}
+		public string NameShorter => shortername;
 
-		public Flags Flag
-		{
-			get
-			{
-				return flag;
-			}
-		}
+		public Flags Flag => flag;
 
 		public string RealInstallFolder
 		{

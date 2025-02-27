@@ -34,36 +34,18 @@ namespace SimPe.Plugin.Anim
 		AnimationMeshBlock parent;
 
 		[Browsable(false)]
-		public AnimationMeshBlock Parent
-		{
-			get
-			{
-				return parent;
-			}
-		}
+		public AnimationMeshBlock Parent => parent;
 
 		AnimationAxisTransformBlock[] ab3;
 
 		[BrowsableAttribute(false)]
-		public AnimationAxisTransformBlock[] AxisSet
-		{
-			get
-			{
-				return ab3;
-			}
-		}
+		public AnimationAxisTransformBlock[] AxisSet => ab3;
 
 		[
 			DescriptionAttribute("Number of loaded AnimationAxisTransformBlock Items"),
 			CategoryAttribute("Information")
 		]
-		public int AxisCount
-		{
-			get
-			{
-				return ab3.Length;
-			}
-		}
+		public int AxisCount => ab3.Length;
 
 		internal int MaxAxisFrameCount
 		{
@@ -81,13 +63,7 @@ namespace SimPe.Plugin.Anim
 			DescriptionAttribute("Number of loaded Frames"),
 			CategoryAttribute("Information")
 		]
-		public int FrameCount
-		{
-			get
-			{
-				return Frames.Length;
-			}
-		}
+		public int FrameCount => Frames.Length;
 
 		public void InterpolateMissingBlocks(AnimationFrame[] frames, short maxtime)
 		{
@@ -172,26 +148,14 @@ namespace SimPe.Plugin.Anim
 			CategoryAttribute("Information"),
 			Browsable(false)
 		]
-		public AnimationFrame[] Frames
-		{
-			get
-			{
-				return GetFrames(false);
-			}
-		}
+		public AnimationFrame[] Frames => GetFrames(false);
 
 		[
 			DescriptionAttribute("Available Frames"),
 			CategoryAttribute("Information"),
 			Browsable(false)
 		]
-		public AnimationFrame[] UnlockedFrames
-		{
-			get
-			{
-				return GetFrames(false); //should be true normaly, but that seems not to work!
-			}
-		}
+		public AnimationFrame[] UnlockedFrames => GetFrames(false); //should be true normaly, but that seems not to work!
 
 		uint[] datai;
 
@@ -385,13 +349,7 @@ namespace SimPe.Plugin.Anim
 		[DescriptionAttribute(
 			"Highest 3 Bits contain the Number of assigned AnimationAxisTransformBlock Items"
 		)]
-		public string Unknown5Hex
-		{
-			get
-			{
-				return "0x" + Helper.HexString(Unknown5);
-			}
-		}
+		public string Unknown5Hex => "0x" + Helper.HexString(Unknown5);
 
 		[
 			DescriptionAttribute("Reserved"),

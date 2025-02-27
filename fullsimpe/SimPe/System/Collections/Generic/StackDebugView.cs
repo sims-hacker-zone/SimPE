@@ -21,12 +21,6 @@ namespace System.Collections.Generic
 		}
 
 		[DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
-		public T[] Items
-		{
-			get
-			{
-				return _stack.ToArray();
-			}
-		}
+		public T[] Items => _stack.ToArray();
 	}
 }

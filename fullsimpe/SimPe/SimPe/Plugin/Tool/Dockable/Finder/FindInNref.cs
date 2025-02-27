@@ -21,13 +21,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 		public FindInNref()
 			: this(null) { }
 
-		public override bool ProcessParalell
-		{
-			get
-			{
-				return true;
-			}
-		}
+		public override bool ProcessParalell => true;
 
 		public override void SearchPackage(
 			SimPe.Interfaces.Files.IPackageFile pkg,

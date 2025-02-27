@@ -59,13 +59,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		public byte Marker2
-		{
-			get
-			{
-				return marker2;
-			}
-		}
+		public byte Marker2 => marker2;
 
 		protected abstract void DoUnserialize(System.IO.BinaryReader reader);
 		protected abstract void DoSerialize(System.IO.BinaryWriter writer);

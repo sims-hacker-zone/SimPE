@@ -23,13 +23,7 @@ namespace SimPe.Plugin
 				sciname = value;
 			}
 		}
-		public bool IsOK
-		{
-			get
-			{
-				return isok;
-			}
-		}
+		public bool IsOK => isok;
 		#endregion
 
 		public SimindexPackedFileWrapper()
@@ -93,13 +87,7 @@ namespace SimPe.Plugin
 
 		#region IFileWrapper Member
 
-		public byte[] FileSignature
-		{
-			get
-			{
-				return new byte[0];
-			}
-		}
+		public byte[] FileSignature => new byte[0];
 
 		public uint[] AssignableTypes
 		{

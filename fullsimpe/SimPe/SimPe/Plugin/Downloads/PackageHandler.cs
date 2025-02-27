@@ -82,13 +82,7 @@ namespace SimPe.Plugin.Downloads
 			SimPe.Packages.StreamFactory.CloseStream(this.flname);
 		}
 
-		public IPackageInfo[] Objects
-		{
-			get
-			{
-				return hnd.Objects;
-			}
-		}
+		public IPackageInfo[] Objects => hnd.Objects;
 
 		#endregion
 

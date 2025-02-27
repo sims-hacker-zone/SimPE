@@ -88,13 +88,7 @@ namespace Ambertation.Drawing
 			}
 		}
 
-		public int TimeBenchmark
-		{
-			get
-			{
-				return m_TimeBenchmark;
-			}
-		}
+		public int TimeBenchmark => m_TimeBenchmark;
 
 		public bool FillDiagonal
 		{
@@ -249,12 +243,6 @@ namespace Ambertation.Drawing
 			m_exception = e;
 		}
 
-		public Exception exception
-		{
-			get
-			{
-				return m_exception;
-			}
-		}
+		public Exception exception => m_exception;
 	}
 }

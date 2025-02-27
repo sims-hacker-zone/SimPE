@@ -60,13 +60,7 @@ namespace SimPe.Plugin
 
 		byte[] data;
 
-		internal byte[] Data
-		{
-			get
-			{
-				return data;
-			}
-		}
+		internal byte[] Data => data;
 
 		Bnfo parent;
 		SimPe.PackedFiles.Wrapper.ExtSDesc sdsc;

@@ -137,13 +137,7 @@ namespace SimPe.Plugin.Scanner
 		#endregion
 
 		#region IScannerPluginBase Member
-		public ScannerPluginType PluginType
-		{
-			get
-			{
-				return ScannerPluginType.Scanner;
-			}
-		}
+		public ScannerPluginType PluginType => ScannerPluginType.Scanner;
 		#endregion
 
 		#region FileIndex Addition
@@ -183,13 +177,7 @@ namespace SimPe.Plugin.Scanner
 			mfi = null;
 		}
 
-		protected SimPe.Interfaces.Scenegraph.IScenegraphFileIndex FileIndex
-		{
-			get
-			{
-				return MyFileIndex;
-			}
-		}
+		protected SimPe.Interfaces.Scenegraph.IScenegraphFileIndex FileIndex => MyFileIndex;
 		#endregion
 
 		#region IScanner Implementations
@@ -204,50 +192,26 @@ namespace SimPe.Plugin.Scanner
 		/// and visible Name of the Scanner. Changing either one of the, will
 		/// result in a new uid and force a rescan of the State
 		/// </remarks>
-		public uint Uid
-		{
-			get
-			{
-				return uid;
-			}
-		}
+		public uint Uid => uid;
 
 		/// <summary>
 		/// Returns true, if this Scanner should be listed on the Top of the List
 		/// </summary>
-		public virtual bool OnTop
-		{
-			get
-			{
-				return false;
-			}
-		}
+		public virtual bool OnTop => false;
 
 		int startcolumn;
 
 		/// <summary>
 		/// Returns the first Colum in the Listview that was used for this Scanner
 		/// </summary>
-		protected int StartColum
-		{
-			get
-			{
-				return startcolumn;
-			}
-		}
+		protected int StartColum => startcolumn;
 
 		System.Windows.Forms.ListView lv;
 
 		/// <summary>
 		/// Returns the ListView that was assigned to this Scanner
 		/// </summary>
-		protected System.Windows.Forms.ListView ListView
-		{
-			get
-			{
-				return lv;
-			}
-		}
+		protected System.Windows.Forms.ListView ListView => lv;
 
 		protected AbstractScanner()
 		{
@@ -266,13 +230,7 @@ namespace SimPe.Plugin.Scanner
 			DoInitScan();
 		}
 
-		public virtual bool IsActiveByDefault
-		{
-			get
-			{
-				return false;
-			}
-		}
+		public virtual bool IsActiveByDefault => false;
 
 		System.Windows.Forms.Control mycontrol;
 		public virtual System.Windows.Forms.Control OperationControl
@@ -314,13 +272,7 @@ namespace SimPe.Plugin.Scanner
 		/// <summary>
 		/// Retunrs the Function that should be called after a OperatioControl Execution (can be null);
 		/// </summary>
-		protected SimPe.Plugin.Scanner.AbstractScanner.UpdateList CallbackFinish
-		{
-			get
-			{
-				return finishcallback;
-			}
-		}
+		protected SimPe.Plugin.Scanner.AbstractScanner.UpdateList CallbackFinish => finishcallback;
 
 		public void SetFinishCallback(
 			SimPe.Plugin.Scanner.AbstractScanner.UpdateList fkt
@@ -362,31 +314,13 @@ namespace SimPe.Plugin.Scanner
 			: base() { }
 
 		#region IScannerBase Member
-		public uint Version
-		{
-			get
-			{
-				return 1;
-			}
-		}
+		public uint Version => 1;
 
-		public int Index
-		{
-			get
-			{
-				return 100;
-			}
-		}
+		public int Index => 100;
 		#endregion
 
 		#region IScanner Member
-		public override bool OnTop
-		{
-			get
-			{
-				return true;
-			}
-		}
+		public override bool OnTop => true;
 
 		protected override void DoInitScan()
 		{
@@ -463,13 +397,7 @@ namespace SimPe.Plugin.Scanner
 		{
 		}
 
-		public override bool IsActiveByDefault
-		{
-			get
-			{
-				return true;
-			}
-		}
+		public override bool IsActiveByDefault => true;
 
 		#endregion
 
@@ -488,31 +416,13 @@ namespace SimPe.Plugin.Scanner
 			: base() { }
 
 		#region IScannerBase Member
-		public uint Version
-		{
-			get
-			{
-				return 1;
-			}
-		}
+		public uint Version => 1;
 
-		public int Index
-		{
-			get
-			{
-				return 200;
-			}
-		}
+		public int Index => 200;
 		#endregion
 
 		#region IScanner Member
-		public override bool OnTop
-		{
-			get
-			{
-				return true;
-			}
-		}
+		public override bool OnTop => true;
 
 		protected override void DoInitScan()
 		{
@@ -652,13 +562,7 @@ namespace SimPe.Plugin.Scanner
 		{
 		}
 
-		public override bool IsActiveByDefault
-		{
-			get
-			{
-				return true;
-			}
-		}
+		public override bool IsActiveByDefault => true;
 		#endregion
 
 		public override string ToString()
@@ -730,21 +634,9 @@ namespace SimPe.Plugin.Scanner
 			: base() { }
 
 		#region IScannerBase Member
-		public uint Version
-		{
-			get
-			{
-				return 1;
-			}
-		}
+		public uint Version => 1;
 
-		public int Index
-		{
-			get
-			{
-				return 300;
-			}
-		}
+		public int Index => 300;
 		#endregion
 
 		#region IScanner Member
@@ -896,13 +788,7 @@ namespace SimPe.Plugin.Scanner
 		{
 		}
 
-		public override bool IsActiveByDefault
-		{
-			get
-			{
-				return false;
-			}
-		}
+		public override bool IsActiveByDefault => false;
 		#endregion
 
 		public override string ToString()
@@ -922,21 +808,9 @@ namespace SimPe.Plugin.Scanner
 			: base() { }
 
 		#region IScannerBase Member
-		public uint Version
-		{
-			get
-			{
-				return 1;
-			}
-		}
+		public uint Version => 1;
 
-		public int Index
-		{
-			get
-			{
-				return 900;
-			}
-		}
+		public int Index => 900;
 		#endregion
 
 		#region IScanner Member
@@ -1018,13 +892,7 @@ namespace SimPe.Plugin.Scanner
 		{
 		}
 
-		public override bool IsActiveByDefault
-		{
-			get
-			{
-				return false;
-			}
-		}
+		public override bool IsActiveByDefault => false;
 		#endregion
 
 		public override string ToString()
@@ -1044,21 +912,9 @@ namespace SimPe.Plugin.Scanner
 			: base() { }
 
 		#region IScannerBase Member
-		public uint Version
-		{
-			get
-			{
-				return 1;
-			}
-		}
+		public uint Version => 1;
 
-		public int Index
-		{
-			get
-			{
-				return 850;
-			}
-		}
+		public int Index => 850;
 		#endregion
 
 		#region IScanner Member
@@ -1119,13 +975,7 @@ namespace SimPe.Plugin.Scanner
 		{
 		}
 
-		public override bool IsActiveByDefault
-		{
-			get
-			{
-				return false;
-			}
-		}
+		public override bool IsActiveByDefault => false;
 		#endregion
 
 		public override string ToString()

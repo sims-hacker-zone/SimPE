@@ -134,13 +134,7 @@ namespace SimPe.Packages
 			CategoryAttribute("Version"),
 			DefaultValueAttribute(1)
 		]
-		public Int32 MajorVersion
-		{
-			get
-			{
-				return majorversion;
-			}
-		}
+		public Int32 MajorVersion => majorversion;
 
 		/// <summary>
 		/// The Minor Version (part after the .) of the Package File Format
@@ -156,13 +150,7 @@ namespace SimPe.Packages
 			CategoryAttribute("Version"),
 			DefaultValueAttribute(1)
 		]
-		public Int32 MinorVersion
-		{
-			get
-			{
-				return minorversion;
-			}
-		}
+		public Int32 MinorVersion => minorversion;
 
 		/// <summary>
 		/// Returns the Overall Version of this Package
@@ -172,13 +160,7 @@ namespace SimPe.Packages
 			CategoryAttribute("Version"),
 			DefaultValueAttribute(4294967297)
 		]
-		public long Version
-		{
-			get
-			{
-				return (long)((ulong)MajorVersion << 0x20) | (uint)MinorVersion;
-			}
-		}
+		public long Version => (long)((ulong)MajorVersion << 0x20) | (uint)MinorVersion;
 
 		/// <summary>
 		/// 3 dwords of reserved Data
@@ -238,10 +220,7 @@ namespace SimPe.Packages
 			DescriptionAttribute("Modification Date of the Package"),
 			CategoryAttribute("Debug")
 		]
-		public Int32 Modified
-		{
-			get { return modified; }
-		}
+		public Int32 Modified => modified;
 #else
 		internal Int32 modified;
 #endif
@@ -255,13 +234,7 @@ namespace SimPe.Packages
 		/// Returns Index Informations stored in the Header
 		/// </summary>
 		[BrowsableAttribute(false)]
-		public SimPe.Interfaces.Files.IPackageHeaderIndex Index
-		{
-			get
-			{
-				return index;
-			}
-		}
+		public SimPe.Interfaces.Files.IPackageHeaderIndex Index => index;
 
 		/// <summary>
 		/// Holds Hole Index Informations stored in the Header
@@ -272,13 +245,7 @@ namespace SimPe.Packages
 		/// Returns Hole Index Informations stored in the Header
 		/// </summary>
 		[BrowsableAttribute(false)]
-		public SimPe.Interfaces.Files.IPackageHeaderHoleIndex HoleIndex
-		{
-			get
-			{
-				return hole;
-			}
-		}
+		public SimPe.Interfaces.Files.IPackageHeaderHoleIndex HoleIndex => hole;
 
 		/// <summary>
 		/// Only available for versions >= 1.1
@@ -313,10 +280,7 @@ namespace SimPe.Packages
 		public Int32[] reserved_02;
 
 		[DescriptionAttribute("Reserved Values"), CategoryAttribute("Debug")]
-		public Int32[] Reserved
-		{
-			get { return reserved_02; }
-		}
+		public Int32[] Reserved => reserved_02;
 #else
 		internal Int32[] reserved_02;
 #endif
@@ -325,13 +289,7 @@ namespace SimPe.Packages
 		/// true if the version is greater or equal than 1.1
 		/// </summary>
 		[BrowsableAttribute(false)]
-		public bool IsVersion0101
-		{
-			get
-			{
-				return (Version >= 0x100000001); //((majorversion>1) || ((majorversion==1) && (minorversion>=1)));
-			}
-		}
+		public bool IsVersion0101 => (Version >= 0x100000001); //((majorversion>1) || ((majorversion==1) && (minorversion>=1)));
 
 		bool lidl;
 		internal bool LockIndexDuringLoad

@@ -182,13 +182,7 @@ namespace SimPe.Plugin
 		int controltop = 0;
 		ScannerItem lastitem;
 
-		public string FileName
-		{
-			get
-			{
-				return flname;
-			}
-		}
+		public string FileName => flname;
 
 		/// <summary>
 		/// Clean up any resources being used.
@@ -267,13 +261,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the last selected Scanner Item (can be null)
 		/// </summary>
-		internal ScannerItem SelectedScannerItem
-		{
-			get
-			{
-				return lastitem;
-			}
-		}
+		internal ScannerItem SelectedScannerItem => lastitem;
 
 		/// <summary>
 		/// Displays the Information about this Scanenr Item

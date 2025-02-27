@@ -70,13 +70,7 @@ namespace SimPe.Events
 		/// <summary>
 		/// Returns the stored List
 		/// </summary>
-		public ResourceContainers Items
-		{
-			get
-			{
-				return list;
-			}
-		}
+		public ResourceContainers Items => list;
 
 		/// <summary>
 		/// Integer Indexer
@@ -111,24 +105,12 @@ namespace SimPe.Events
 		/// <summary>
 		/// Returns the loaded package
 		/// </summary>
-		public LoadedPackage LoadedPackage
-		{
-			get
-			{
-				return lp;
-			}
-		}
+		public LoadedPackage LoadedPackage => lp;
 
 		/// <summary>
 		/// true if the stored List is Empty
 		/// </summary>
-		public new bool Empty
-		{
-			get
-			{
-				return list.Count == 0;
-			}
-		}
+		public new bool Empty => list.Count == 0;
 
 		/// <summary>
 		/// true, if at least one of the stored <see cref="ResourceContainer"/> has a valid Resource
@@ -188,13 +170,7 @@ namespace SimPe.Events
 		/// <summary>
 		/// Number of stored Items
 		/// </summary>
-		public int Count
-		{
-			get
-			{
-				return list.Count;
-			}
-		}
+		public int Count => list.Count;
 
 		#region IEnumerable Member
 
@@ -229,13 +205,7 @@ namespace SimPe.Events
 			}
 		}
 
-		public bool ChangedAny
-		{
-			get
-			{
-				return false;
-			}
-		}
+		public bool ChangedAny => false;
 
 		#endregion
 
@@ -273,13 +243,7 @@ namespace SimPe.Events
 		/// <summary>
 		/// Returns the Resource
 		/// </summary>
-		public SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem Resource
-		{
-			get
-			{
-				return item;
-			}
-		}
+		public SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem Resource => item;
 
 		bool cpfd,
 			cpkg;
@@ -310,13 +274,7 @@ namespace SimPe.Events
 			}
 		}
 
-		public bool ChangedAny
-		{
-			get
-			{
-				return (ChangedPackage || ChangedFile);
-			}
-		}
+		public bool ChangedAny => (ChangedPackage || ChangedFile);
 
 		#endregion
 
@@ -492,13 +450,7 @@ namespace SimPe.Events
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object

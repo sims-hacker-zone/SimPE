@@ -28,29 +28,17 @@ namespace pj
 	{
 		#region IToolFactory Members
 
-		public IToolPlugin[] KnownTools
-		{
-			get
-			{
-				return new IToolPlugin[]
+		public IToolPlugin[] KnownTools => new IToolPlugin[]
 				{
 					new BodyMeshExtractor(),
 					new BodyMeshLinker(),
 				};
-			}
-		}
 
 		#endregion
 
 		#region IHelpFactory Members
 
-		public IHelp[] KnownHelpTopics
-		{
-			get
-			{
-				return new IHelp[] { new BodyMeshHelp() };
-			}
-		}
+		public IHelp[] KnownHelpTopics => new IHelp[] { new BodyMeshHelp() };
 
 		#endregion
 	}

@@ -54,13 +54,7 @@ namespace SimPe.Plugin
 		}
 
 		NhtrList[] items;
-		public NhtrList[] Items
-		{
-			get
-			{
-				return items;
-			}
-		}
+		public NhtrList[] Items => items;
 
 		#endregion
 

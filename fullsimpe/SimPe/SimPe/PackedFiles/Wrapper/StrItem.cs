@@ -52,13 +52,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns/Sets the Language Id
 		/// </summary>
-		public byte Id
-		{
-			get
-			{
-				return lid;
-			}
-		}
+		public byte Id => lid;
 
 		/// <summary>
 		/// Returns the Language Name
@@ -178,13 +172,7 @@ namespace SimPe.PackedFiles.Wrapper
 			return base.Contains(strlng);
 		}
 
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		public override void Sort()
 		{
@@ -228,24 +216,12 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		#region Accessor methods
-		internal int Index
-		{
-			get
-			{
-				return index;
-			}
-		}
+		internal int Index => index;
 
 		/// <summary>
 		/// Language is read-only
 		/// </summary>
-		public StrLanguage Language
-		{
-			get
-			{
-				return lid;
-			}
-		}
+		public StrLanguage Language => lid;
 
 		public string Title
 		{
@@ -282,13 +258,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Dirty is read-only
 		/// </summary>
-		public bool IsDirty
-		{
-			get
-			{
-				return dirty;
-			}
-		}
+		public bool IsDirty => dirty;
 		#endregion
 
 
@@ -390,13 +360,7 @@ namespace SimPe.PackedFiles.Wrapper
 			return base.Contains(stritem);
 		}
 
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		public override object Clone()
 		{

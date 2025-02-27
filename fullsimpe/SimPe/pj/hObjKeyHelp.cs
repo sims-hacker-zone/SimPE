@@ -48,13 +48,7 @@ namespace pj
 			return L.Get("pjObjKeyHelp");
 		}
 
-		public System.Drawing.Image Icon
-		{
-			get
-			{
-				return null;
-			}
-		}
+		public System.Drawing.Image Icon => null;
 
 		#endregion
 	}

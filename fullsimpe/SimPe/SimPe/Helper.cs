@@ -424,31 +424,19 @@ namespace SimPe
 		/// <summary>
 		/// Returns the Path SimPe is located in
 		/// </summary>
-		public static string SimPePath
-		{
-			get
-			{
-				return Path.GetDirectoryName(
+		public static string SimPePath => Path.GetDirectoryName(
 					System.Windows.Forms.Application.ExecutablePath
 				);
-			}
-		}
 
 		/// <summary>
 		/// Returns the Path SimPe Plugins are located in
 		/// </summary>
-		public static string SimPePluginPath
-		{
-			get
-			{
-				return Path.Combine(
+		public static string SimPePluginPath => Path.Combine(
 					Path.GetDirectoryName(
 						System.Windows.Forms.Application.ExecutablePath
 					),
 					"Plugins"
 				);
-			}
-		}
 
 		/// <summary>
 		/// Returns the Path for SimPe Teleports
@@ -504,13 +492,7 @@ namespace SimPe
 		/// <summary>
 		/// Returns the Name of the Cache File for the current Language
 		/// </summary>
-		public static string SimPeLanguageCache
-		{
-			get
-			{
-				return GetSimPeLanguageCache("objcache_");
-			}
-		}
+		public static string SimPeLanguageCache => GetSimPeLanguageCache("objcache_");
 
 		/// <summary>
 		/// Outdated, use SimPeLanguageCache
@@ -527,13 +509,7 @@ namespace SimPe
 		/// Outdated, use SimPeLanguageCache
 		/// Returns the Name of the Language independent Cache File
 		/// </summary>
-		public static string SimPeCache
-		{
-			get
-			{
-				return GetSimPeCache("objcache");
-			}
-		}
+		public static string SimPeCache => GetSimPeCache("objcache");
 
 		private static string profile = "";
 		public static string Profile
@@ -611,90 +587,42 @@ namespace SimPe
 			/// <summary>
 			/// The path of the main SimPe settings file (write)
 			/// </summary>
-			public static string SimPeXREGW
-			{
-				get
-				{
-					return ProfilePath("simpe.xreg");
-				}
-			}
+			public static string SimPeXREGW => ProfilePath("simpe.xreg");
 
 			/// <summary>
 			/// The path of the main SimPe settings file (readonly)
 			/// </summary>
-			public static string SimPeXREG
-			{
-				get
-				{
-					return ProfilePath("simpe.xreg", true);
-				}
-			}
+			public static string SimPeXREG => ProfilePath("simpe.xreg", true);
 
 			/// <summary>
 			/// The path of the current layout (write)
 			/// </summary>
-			public static string SimPeLayoutW
-			{
-				get
-				{
-					return ProfilePath("simpe.layout");
-				}
-			}
+			public static string SimPeLayoutW => ProfilePath("simpe.layout");
 
 			/// <summary>
 			/// The path of the current layout (readonly)
 			/// </summary>
-			public static string SimPeLayout
-			{
-				get
-				{
-					return ProfilePath("simpe.layout", true);
-				}
-			}
+			public static string SimPeLayout => ProfilePath("simpe.layout", true);
 
 			/// <summary>
 			/// The path of the layout settings file (write)
 			/// </summary>
-			public static string Layout2XREGW
-			{
-				get
-				{
-					return ProfilePath("layout2.xreg");
-				}
-			}
+			public static string Layout2XREGW => ProfilePath("layout2.xreg");
 
 			/// <summary>
 			/// The path of the layout settings file (readonly)
 			/// </summary>
-			public static string Layout2XREG
-			{
-				get
-				{
-					return ProfilePath("layout2.xreg", true);
-				}
-			}
+			public static string Layout2XREG => ProfilePath("layout2.xreg", true);
 
 			/// <summary>
 			/// The path of the filetable folders file (write)
 			/// </summary>
-			public static string FoldersXREGW
-			{
-				get
-				{
-					return ProfilePath("folders.xreg");
-				}
-			}
+			public static string FoldersXREGW => ProfilePath("folders.xreg");
 
 			/// <summary>
 			/// The path of the filetable folders file (readonly)
 			/// </summary>
-			public static string FoldersXREG
-			{
-				get
-				{
-					return ProfilePath("folders.xreg", true);
-				}
-			}
+			public static string FoldersXREG => ProfilePath("folders.xreg", true);
 
 			/// <summary>
 			/// The path of the filetable folders file (write)
@@ -727,24 +655,12 @@ namespace SimPe
 			/// <summary>
 			/// The path of the MRU registry file (write)
 			/// </summary>
-			public static string MRUXREGW
-			{
-				get
-				{
-					return ProfilePath("mru.xreg");
-				}
-			}
+			public static string MRUXREGW => ProfilePath("mru.xreg");
 
 			/// <summary>
 			/// The path of the MRU registry file (readonly)
 			/// </summary>
-			public static string MRUXREG
-			{
-				get
-				{
-					return MRUXREGW;
-				}
-			} // Only one global MRU list, held in the Data folder
+			public static string MRUXREG => MRUXREGW; // Only one global MRU list, held in the Data folder
 		}
 
 		/// <summary>
@@ -768,21 +684,9 @@ namespace SimPe
 		/// <summary>
 		/// Returns the File, that holds the users Viewport Data
 		/// </summary>
-		public static string SimPeViewportFile
-		{
-			get
-			{
-				return Path.Combine(SimPeDataPath, "vport.set");
-			}
-		}
+		public static string SimPeViewportFile => Path.Combine(SimPeDataPath, "vport.set");
 
-		public static string SimPeSemiGlobalFile
-		{
-			get
-			{
-				return Path.Combine(SimPe.Helper.SimPeDataPath, "semiglobals.xml");
-			}
-		}
+		public static string SimPeSemiGlobalFile => Path.Combine(SimPe.Helper.SimPeDataPath, "semiglobals.xml");
 
 		/// <summary>
 		/// Bit number identifying what's been "enabled" on the commandline
@@ -892,15 +796,9 @@ namespace SimPe
 		/// <summary>
 		/// Returns the Version Information for the started Executable
 		/// </summary>
-		public static System.Diagnostics.FileVersionInfo ExecutableVersion
-		{
-			get
-			{
-				return System.Diagnostics.FileVersionInfo.GetVersionInfo(
+		public static System.Diagnostics.FileVersionInfo ExecutableVersion => System.Diagnostics.FileVersionInfo.GetVersionInfo(
 					System.Windows.Forms.Application.ExecutablePath
 				);
-			}
-		}
 
 		/// <summary>
 		/// Returns the the overall SimPe Version
@@ -925,13 +823,7 @@ namespace SimPe
 		/// <summary>
 		/// Returns the long Version Number
 		/// </summary>
-		public static long SimPeVersionLong
-		{
-			get
-			{
-				return VersionToLong(SimPeVersion);
-			}
-		}
+		public static long SimPeVersionLong => VersionToLong(SimPeVersion);
 
 		/// <summary>
 		/// Returns the long Version Number
@@ -1010,13 +902,7 @@ namespace SimPe
 		/// <summary>
 		/// true if this is a QA Release
 		/// </summary>
-		public static bool QARelease
-		{
-			get
-			{
-				return ((SimPeVersion.ProductMinorPart % 2) == 1);
-			}
-		}
+		public static bool QARelease => ((SimPeVersion.ProductMinorPart % 2) == 1);
 
 		/// <summary>
 		/// true if Extra Stuff or New Store Editon enabled
@@ -1542,13 +1428,7 @@ namespace SimPe
 		/// <summary>
 		/// Returns true, if the Helper dll was compiled with the DEBUG Flag
 		/// </summary>
-		public static bool DebugMode
-		{
-			get
-			{
-				return Helper.WindowsRegistry.HiddenMode;
-			}
-		}
+		public static bool DebugMode => Helper.WindowsRegistry.HiddenMode;
 
 		/// <summary>
 		/// Returns filename of the Main Neighborhood
@@ -1653,13 +1533,7 @@ namespace SimPe
 		/// Returns either the Game Path or the installation Path of the EP if found
 		/// </summary>
 		/// <returns></returns>
-		public static string NewestGamePath
-		{
-			get
-			{
-				return PathProvider.Global.Latest.InstallFolder;
-			}
-		}
+		public static string NewestGamePath => PathProvider.Global.Latest.InstallFolder;
 
 		static SimPe.TGILoader tgiload;
 

@@ -30,13 +30,7 @@ namespace pjOBJDTool
 		/// Windows Registry Link
 		/// </summary>
 		static SimPe.Registry registry;
-		internal static SimPe.Registry WindowsRegistry
-		{
-			get
-			{
-				return registry;
-			}
-		}
+		internal static SimPe.Registry WindowsRegistry => registry;
 
 		IWrapperRegistry reg;
 		IProviderRegistry prov;
@@ -109,20 +103,8 @@ namespace pjOBJDTool
 		*/
 
 		#region IToolExt Member
-		public override System.Drawing.Image Icon
-		{
-			get
-			{
-				return SimPe.GetIcon.pjOBJDtool;
-			}
-		}
-		public override System.Windows.Forms.Shortcut Shortcut
-		{
-			get
-			{
-				return System.Windows.Forms.Shortcut.None;
-			}
-		}
+		public override System.Drawing.Image Icon => SimPe.GetIcon.pjOBJDtool;
+		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 		#endregion
 	}
 }

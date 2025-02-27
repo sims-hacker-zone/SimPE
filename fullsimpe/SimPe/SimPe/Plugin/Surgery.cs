@@ -1412,80 +1412,32 @@ namespace SimPe.Plugin
 		string filename;
 
 		[Category("General")]
-		public SimPe.Data.Ages Age
-		{
-			get
-			{
-				return (SimPe.Data.Ages)ageData.GetItem("age").UIntegerValue;
-			}
-		}
+		public SimPe.Data.Ages Age => (SimPe.Data.Ages)ageData.GetItem("age").UIntegerValue;
 
 		[Category("General")]
-		public SimPe.Data.SimGender Gender
-		{
-			get
-			{
-				return (SimPe.Data.SimGender)ageData.GetItem("gender").UIntegerValue;
-			}
-		}
+		public SimPe.Data.SimGender Gender => (SimPe.Data.SimGender)ageData.GetItem("gender").UIntegerValue;
 
 		[Category("General")]
-		public string Name
-		{
-			get
-			{
-				return this.name;
-			}
-		}
+		public string Name => this.name;
 
 		[Category("General")]
-		public string Filename
-		{
-			get
-			{
-				return this.filename;
-			}
-		}
+		public string Filename => this.filename;
 
 		[Category("Genetics")]
-		public string Hair
-		{
-			get
-			{
-				return ageData.GetItem("haircolor").StringValue;
-			}
-		}
+		public string Hair => ageData.GetItem("haircolor").StringValue;
 
 		[Category("Genetics")]
-		public string Eyes
-		{
-			get
-			{
-				return ageData.GetItem("eyecolor").StringValue;
-			}
-		}
+		public string Eyes => ageData.GetItem("eyecolor").StringValue;
 
 		[Category("Genetics")]
-		public string Skin
-		{
-			get
-			{
-				return ageData.GetItem("skincolor").StringValue;
-			}
-		}
+		public string Skin => ageData.GetItem("skincolor").StringValue;
 
 		[Category("Genetics")]
-		public string Bodyshape
-		{
-			get
-			{
-				return SimPe.Data.MetaData.GetBodyName(
+		public string Bodyshape => SimPe.Data.MetaData.GetBodyName(
 					SimPe.Data.MetaData.GetBodyShapeid(
 						ageData.GetItem("skincolor").StringValue
 					)
 				);
-			}
-		}
 
 		public SimInfo(SimPe.PackedFiles.Wrapper.Cpf aged, string filename, string name)
 		{

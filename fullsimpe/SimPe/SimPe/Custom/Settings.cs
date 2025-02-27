@@ -39,13 +39,7 @@ namespace SimPe.Custom
 			settings = new Settings();
 		}
 
-		public static bool Persistent
-		{
-			get
-			{
-				return settings.KeepFilesOpen;
-			}
-		}
+		public static bool Persistent => settings.KeepFilesOpen;
 
 		public Settings()
 			: base(rm) { }
@@ -77,13 +71,7 @@ namespace SimPe.Custom
 		}
 
 		[System.ComponentModel.Browsable(false)]
-		public System.Drawing.Image Icon
-		{
-			get
-			{
-				return null;
-			}
-		}
+		public System.Drawing.Image Icon => null;
 
 		object ISettings.GetSettingsObject()
 		{
@@ -97,13 +85,7 @@ namespace SimPe.Custom
 	{
 		#region ISettingsFactory Members
 
-		public ISettings[] KnownSettings
-		{
-			get
-			{
-				return new ISettings[] { new Settings() };
-			}
-		}
+		public ISettings[] KnownSettings => new ISettings[] { new Settings() };
 
 		#endregion
 	}

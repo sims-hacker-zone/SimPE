@@ -287,26 +287,14 @@ namespace SimPe.Plugin
 		/// Returns a tabPage that contains a GUI for this Element
 		/// </summary>
 		[BrowsableAttribute(false)]
-		public virtual System.Windows.Forms.TabPage TabPage
-		{
-			get
-			{
-				return null;
-			}
-		}
+		public virtual System.Windows.Forms.TabPage TabPage => null;
 
 		/// <summary>
 		/// Returns a tabPage that will be displayed in the top TabControl on the Rcol
 		/// Page if the Block is is the first one
 		/// </summary>
 		[BrowsableAttribute(false)]
-		public virtual System.Windows.Forms.TabPage ResourceTabPage
-		{
-			get
-			{
-				return null;
-			}
-		}
+		public virtual System.Windows.Forms.TabPage ResourceTabPage => null;
 
 		/// <summary>
 		/// Adds more TabPages (which are needed to process the Class) to the Control

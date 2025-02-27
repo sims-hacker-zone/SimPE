@@ -119,13 +119,7 @@ namespace pjse.BhavOperandWizards.WizDefault
 		private ArrayList alDec16;
 
 		#region iBhavOperandWizForm
-		public Panel WizPanel
-		{
-			get
-			{
-				return this.pnWizDefault;
-			}
-		}
+		public Panel WizPanel => this.pnWizDefault;
 
 		public void Execute(Instruction inst)
 		{

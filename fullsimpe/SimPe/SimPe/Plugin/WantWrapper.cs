@@ -41,13 +41,7 @@ namespace SimPe.Plugin
 	{
 		#region Attributes
 		uint version;
-		public uint Version
-		{
-			get
-			{
-				return version;
-			}
-		}
+		public uint Version => version;
 
 		WantItem[] lifewants;
 		public WantItem[] LifetimeWants
@@ -141,13 +135,7 @@ namespace SimPe.Plugin
 
 		byte[] overhead;
 		Interfaces.IProviderRegistry provider;
-		public Interfaces.IProviderRegistry Provider
-		{
-			get
-			{
-				return provider;
-			}
-		}
+		public Interfaces.IProviderRegistry Provider => provider;
 
 		/// <summary>
 		/// Constructor
@@ -335,13 +323,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
-		public byte[] FileSignature
-		{
-			get
-			{
-				return new byte[0];
-			}
-		}
+		public byte[] FileSignature => new byte[0];
 
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process

@@ -68,13 +68,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns the Name of the represented Type
 		/// </summary>
-		public Data.TypeAlias TypeName
-		{
-			get
-			{
-				return Data.MetaData.FindTypeAlias(Type);
-			}
-		}
+		public Data.TypeAlias TypeName => Data.MetaData.FindTypeAlias(Type);
 
 		/// <summary>
 		/// Group the referenced file is assigned to
@@ -222,13 +216,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns the size stored in teh index
 		/// </summary>
-		public int IndexedSize
-		{
-			get
-			{
-				return size;
-			}
-		}
+		public int IndexedSize => size;
 
 		/// <summary>
 		/// Location of the File within the Package
@@ -313,13 +301,7 @@ namespace SimPe.Packages
 			}
 		}
 
-		public string ExportFileName
-		{
-			get
-			{
-				return Helper.HexString(Type) + "-" + this.Filename;
-			}
-		}
+		public string ExportFileName => Helper.HexString(Type) + "-" + this.Filename;
 
 		/// <summary>
 		/// The proposed FilePath
@@ -680,13 +662,7 @@ namespace SimPe.Packages
 		/// Returns true, if Userdate is available
 		/// </summary>
 		/// <remarks>This happens when a user assigns new Data</remarks>
-		public bool HasUserdata
-		{
-			get
-			{
-				return (userdata != null);
-			}
-		}
+		public bool HasUserdata => (userdata != null);
 
 		/// <summary>
 		/// contains alternative Userdata
@@ -765,13 +741,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// true, if this Descriptor is Invalid
 		/// </summary>
-		public bool Invalid
-		{
-			get
-			{
-				return !valid;
-			}
-		}
+		public bool Invalid => !valid;
 
 		#region Events
 		bool pause;

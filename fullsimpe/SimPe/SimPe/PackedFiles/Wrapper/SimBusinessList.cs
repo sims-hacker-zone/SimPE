@@ -128,13 +128,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public event System.EventHandler SelectedBusinessChanged;
 
-		public SimPe.Interfaces.Providers.ILotItem SelectedBusiness
-		{
-			get
-			{
-				return cb.SelectedItem as SimPe.Interfaces.Providers.ILotItem;
-			}
-		}
+		public SimPe.Interfaces.Providers.ILotItem SelectedBusiness => cb.SelectedItem as SimPe.Interfaces.Providers.ILotItem;
 
 		private void cb_SelectedIndexChanged(object sender, System.EventArgs e)
 		{

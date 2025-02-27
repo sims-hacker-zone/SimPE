@@ -17,13 +17,7 @@ namespace SimPe.Plugin.Downloads
 			list = new ArrayList();
 		}
 
-		public int Count
-		{
-			get
-			{
-				return list.Count;
-			}
-		}
+		public int Count => list.Count;
 
 		public void Clear()
 		{

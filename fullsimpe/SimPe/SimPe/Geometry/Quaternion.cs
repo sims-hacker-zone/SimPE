@@ -123,37 +123,22 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// Returns the Length of the Quaternion
 		/// </summary>
-		public new double Length
-		{
-			get
-			{
-				return (double)Math.Sqrt(Norm);
-			}
-		}
+		public new double Length => (double)Math.Sqrt(Norm);
 
 		/// <summary>
 		/// Returns the Conjugate for this Quaternion
 		/// </summary>
-		public Quaternion Conjugate
-		{
-			get
-			{
-				return new Quaternion(
+		public Quaternion Conjugate => new Quaternion(
 					QuaternionParameterType.ImaginaryReal,
 					-1 * this.Imaginary,
 					this.W
 				);
-			}
-		}
 
 #if DEBUG
 		/// <summary>
 		/// returns the Euler Angles
 		/// </summary>
-		public Vector3f Euler
-		{
-			get { return this.GetEulerAngles(); }
-		}
+		public Vector3f Euler => this.GetEulerAngles();
 
 		public bool IsComplex(double z)
 		{
@@ -303,47 +288,29 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// Returns the Imaginary Part of the Quaternion
 		/// </summary>
-		public Vector3f Imaginary
-		{
-			get
-			{
-				return (Vector3f)this;
-			}
-		}
+		public Vector3f Imaginary => (Vector3f)this;
 
 		/// <summary>
 		/// Returns an Identity Quaternion
 		/// </summary>
-		public static Quaternion Identity
-		{
-			get
-			{
-				return new Quaternion(
+		public static Quaternion Identity => new Quaternion(
 					QuaternionParameterType.ImaginaryReal,
 					0,
 					0,
 					0,
 					1
 				);
-			}
-		}
 
 		/// <summary>
 		/// Returns an Empty Quaternion
 		/// </summary>
-		public static new Quaternion Zero
-		{
-			get
-			{
-				return new Quaternion(
+		public static new Quaternion Zero => new Quaternion(
 					QuaternionParameterType.ImaginaryReal,
 					0,
 					0,
 					0,
 					0
 				);
-			}
-		}
 
 		/// <summary>
 		/// Returns an Angle in Degree
@@ -994,13 +961,7 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length
-		{
-			get
-			{
-				return this.Count;
-			}
-		}
+		public int Length => this.Count;
 
 		/// <summary>
 		/// Create a clone of this Object

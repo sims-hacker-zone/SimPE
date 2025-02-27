@@ -28,36 +28,12 @@ namespace SimPe.Windows.Forms
 		private LongMap instmap;
 		private ResourceViewManager.ResourceNameList all;
 
-		public ResourceViewManager.ResourceNameList Everything
-		{
-			get
-			{
-				return all;
-			}
-		}
+		public ResourceViewManager.ResourceNameList Everything => all;
 
-		internal IntMap ByGroup
-		{
-			get
-			{
-				return groupmap;
-			}
-		}
-		internal IntMap ByType
-		{
-			get
-			{
-				return typemap;
-			}
-		}
+		internal IntMap ByGroup => groupmap;
+		internal IntMap ByType => typemap;
 
-		public LongMap ByInstance
-		{
-			get
-			{
-				return instmap;
-			}
-		}
+		public LongMap ByInstance => instmap;
 
 		public void Clear()
 		{

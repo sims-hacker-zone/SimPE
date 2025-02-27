@@ -380,18 +380,12 @@ namespace SimPe.Cache
 		/// <summary>
 		/// Returs the Category this Object should get sorted in
 		/// </summary>
-		public string[][] ObjectCategory
-		{
-			get
-			{
-				return GetCategory(
+		public string[][] ObjectCategory => GetCategory(
 					this.ObjectVersion,
 					(Data.ObjFunctionSubSort)this.ObjectFunctionSort,
 					this.ObjectType,
 					this.Class
 				);
-			}
-		}
 
 		/// <summary>
 		/// Returns the LocalGroup
@@ -586,13 +580,7 @@ namespace SimPe.Cache
 			writer.Write((byte)oclass);
 		}
 
-		public byte Version
-		{
-			get
-			{
-				return version;
-			}
-		}
+		public byte Version => version;
 
 		#endregion
 	}
