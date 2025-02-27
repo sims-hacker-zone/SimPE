@@ -45,14 +45,16 @@ namespace SimPe.Plugin.Tool
 			}
 
 			System.Windows.Forms.OpenFileDialog ofd =
-				new System.Windows.Forms.OpenFileDialog();
-			ofd.Filter = ExtensionProvider.BuildFilterString(
+				new System.Windows.Forms.OpenFileDialog
+				{
+					Filter = ExtensionProvider.BuildFilterString(
 				new ExtensionType[]
 				{
 					ExtensionType.Sim2Pack,
 					ExtensionType.AllFiles,
 				}
-			);
+			)
+				};
 			if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 			{
 				Packages.S2CPDescriptor[] ds =

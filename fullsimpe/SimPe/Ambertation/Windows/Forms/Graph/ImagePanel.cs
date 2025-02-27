@@ -259,8 +259,10 @@ namespace Ambertation.Windows.Forms.Graph
 			bool center
 		)
 		{
-			StringFormat sf = new StringFormat();
-			sf.FormatFlags = StringFormatFlags.NoWrap;
+			StringFormat sf = new StringFormat
+			{
+				FormatFlags = StringFormatFlags.NoWrap
+			};
 
 			string tx = Text;
 			SizeF sz = gr.MeasureString(tx, Font);

@@ -277,9 +277,11 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ObjfItem Clone()
 		{
-			ObjfItem clone = new ObjfItem(parent);
-			clone.action = action;
-			clone.guard = guard;
+			ObjfItem clone = new ObjfItem(parent)
+			{
+				action = action,
+				guard = guard
+			};
 			return clone;
 		}
 

@@ -250,8 +250,10 @@ namespace SimPe.Plugin.Anim
 
 		public AnimationAxisTransformBlock CloneBase()
 		{
-			AnimationAxisTransformBlock ab = new AnimationAxisTransformBlock(null);
-			ab.datai = (uint[])datai.Clone();
+			AnimationAxisTransformBlock ab = new AnimationAxisTransformBlock(null)
+			{
+				datai = (uint[])datai.Clone()
+			};
 			foreach (AnimationAxisTransform aat in items)
 			{
 				ab.Add(aat.CloneBase());
@@ -449,12 +451,14 @@ namespace SimPe.Plugin.Anim
 			int index
 		)
 		{
-			AnimationAxisTransform aat = new AnimationAxisTransform(this, index);
-			aat.TimeCode = timecode;
-			aat.Linear = islinear;
-			aat.Parameter = param;
-			aat.Unknown1 = u1;
-			aat.Unknown2 = u2;
+			AnimationAxisTransform aat = new AnimationAxisTransform(this, index)
+			{
+				TimeCode = timecode,
+				Linear = islinear,
+				Parameter = param,
+				Unknown1 = u1,
+				Unknown2 = u2
+			};
 
 			return aat;
 		}

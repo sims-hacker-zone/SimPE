@@ -130,9 +130,11 @@ namespace SimPe.Plugin
 
 			for (int i = 0; i < Items.Length; i++)
 			{
-				NmapItem pfd = new NmapItem(this);
-				pfd.Group = reader.ReadUInt32();
-				pfd.Instance = reader.ReadUInt32();
+				NmapItem pfd = new NmapItem(this)
+				{
+					Group = reader.ReadUInt32(),
+					Instance = reader.ReadUInt32()
+				};
 
 				uint len = reader.ReadUInt32();
 				pfd.Filename = Helper.ToString(reader.ReadBytes((int)len));

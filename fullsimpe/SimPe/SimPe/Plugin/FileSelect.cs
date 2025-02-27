@@ -157,8 +157,10 @@ namespace SimPe.Plugin
 											if ((g & skinsex) == g)
 											{
 												TreeNode parent = (TreeNode)sex[g];
-												TreeNode node = new TreeNode(name);
-												node.Tag = skin;
+												TreeNode node = new TreeNode(name)
+												{
+													Tag = skin
+												};
 												parent.Nodes.Add(node);
 												// added = true;
 											}

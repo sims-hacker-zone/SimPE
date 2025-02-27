@@ -101,10 +101,12 @@ namespace SimPe.Plugin
 			}
 			else
 			{
-				last = new AnimationFrame(max, first.Type);
-				last.X = first.X;
-				last.Y = first.Y;
-				last.Z = first.Z;
+				last = new AnimationFrame(max, first.Type)
+				{
+					X = first.X,
+					Y = first.Y,
+					Z = first.Z
+				};
 			}
 
 			for (short i = first.TimeCode; i <= max; i++)

@@ -30,9 +30,11 @@ namespace SimPe.Plugin.UI
 		public PreferencesPanel()
 		{
 			components = new System.ComponentModel.Container();
-			toolTip1 = new ToolTip(components);
-			toolTip1.IsBalloon = true;
-			toolTip1.ToolTipIcon = ToolTipIcon.Info;
+			toolTip1 = new ToolTip(components)
+			{
+				IsBalloon = true,
+				ToolTipIcon = ToolTipIcon.Info
+			};
 		}
 
 		protected virtual void OnSettingsChanged()

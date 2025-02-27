@@ -450,8 +450,10 @@ namespace SimPe.Plugin
 				}
 			}
 
-			TransformNodeItem tni = new TransformNodeItem();
-			tni.ChildNode = index;
+			TransformNodeItem tni = new TransformNodeItem
+			{
+				ChildNode = index
+			};
 			Items.Add(tni);
 			return false;
 		}

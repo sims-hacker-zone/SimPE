@@ -223,13 +223,15 @@ namespace SimPe.Plugin
 								}
 
 								Cache.ObjectCacheItem oci =
-									new Cache.ObjectCacheItem();
-								oci.FileDescriptor = nrefitem.FileDescriptor;
-								oci.LocalGroup = nrefitem.LocalGroup;
-								oci.ObjectType = ObjectTypes.Outfit;
-								oci.ObjectFileName = cpf.GetItem("name").StringValue;
-								oci.Useable = true;
-								oci.Class = Cache.ObjectClass.Skin;
+									new Cache.ObjectCacheItem
+									{
+										FileDescriptor = nrefitem.FileDescriptor,
+										LocalGroup = nrefitem.LocalGroup,
+										ObjectType = ObjectTypes.Outfit,
+										ObjectFileName = cpf.GetItem("name").StringValue,
+										Useable = true,
+										Class = Cache.ObjectClass.Skin
+									};
 
 								Alias a = new Alias(
 									nrefitem.FileDescriptor.Instance,
@@ -805,13 +807,14 @@ namespace SimPe.Plugin
 				);
 
 				Packages.PackedFileDescriptor npfd =
-					new Packages.PackedFileDescriptor();
-
-				npfd.UserData = file.UncompressedData;
-				npfd.Group = item.FileDescriptor.Group;
-				npfd.Instance = item.FileDescriptor.Instance;
-				npfd.SubType = item.FileDescriptor.SubType;
-				npfd.Type = item.FileDescriptor.Type;
+					new Packages.PackedFileDescriptor
+					{
+						UserData = file.UncompressedData,
+						Group = item.FileDescriptor.Group,
+						Instance = item.FileDescriptor.Instance,
+						SubType = item.FileDescriptor.SubType,
+						Type = item.FileDescriptor.Type
+					};
 
 				if (package.FindFile(npfd) == null)
 				{

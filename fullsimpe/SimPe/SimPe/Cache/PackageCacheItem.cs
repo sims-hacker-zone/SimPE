@@ -364,8 +364,10 @@ namespace SimPe.Cache
 
 			if (create)
 			{
-				PackageState ps = new PackageState();
-				ps.Uid = uid;
+				PackageState ps = new PackageState
+				{
+					Uid = uid
+				};
 
 				States.Add(ps);
 				return ps;

@@ -216,8 +216,10 @@ namespace SimPe.PackedFiles.UserInterface
 					{
 						ListViewItem lvi = new ListViewItem(
 							a.Name + " " + (string)a.Tag[2]
-						);
-						lvi.Tag = a;
+						)
+						{
+							Tag = a
+						};
 
 						if (a.Tag[1] != null)
 						{

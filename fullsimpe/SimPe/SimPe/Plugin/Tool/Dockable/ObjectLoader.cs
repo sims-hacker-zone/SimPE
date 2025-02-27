@@ -180,9 +180,11 @@ namespace SimPe.Plugin.Tool.Dockable
 					pitems.Add(nrefitem);
 					groups.Add(nrefitem.FileDescriptor.Instance);
 
-					Cache.ObjectCacheItem oci = new Cache.ObjectCacheItem();
-					oci.Tag = nrefitem;
-					oci.Useable = false;
+					Cache.ObjectCacheItem oci = new Cache.ObjectCacheItem
+					{
+						Tag = nrefitem,
+						Useable = false
+					};
 					cachechg = true;
 					cachefile.AddItem(oci, nrefitem.Package.FileName);
 
@@ -300,9 +302,11 @@ namespace SimPe.Plugin.Tool.Dockable
 					pitems.Add(nrefitem);
 					groups.Add(nrefitem.LocalGroup);
 
-					Cache.ObjectCacheItem oci = new Cache.ObjectCacheItem();
-					oci.Tag = nrefitem;
-					oci.Useable = false;
+					Cache.ObjectCacheItem oci = new Cache.ObjectCacheItem
+					{
+						Tag = nrefitem,
+						Useable = false
+					};
 					cachechg = true;
 					cachefile.AddItem(oci, nrefitem.Package.FileName);
 
@@ -657,9 +661,10 @@ namespace SimPe.Plugin.Tool.Dockable
 			Interfaces.Files.IPackageFile pkg
 		)
 		{
-			Cache.ObjectCacheItem oci = new Cache.ObjectCacheItem();
-
-			oci.Class = Cache.ObjectClass.Object;
+			Cache.ObjectCacheItem oci = new Cache.ObjectCacheItem
+			{
+				Class = Cache.ObjectClass.Object
+			};
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
 				Data.MetaData.OBJD_FILE
@@ -812,8 +817,10 @@ namespace SimPe.Plugin.Tool.Dockable
 						twine = twine.Substring(1, twine.Length - 1);
 					}
 				}
-				TreeNode tn = new TreeNode(twine);
-				tn.Tag = a;
+				TreeNode tn = new TreeNode(twine)
+				{
+					Tag = a
+				};
 
 				Interfaces.Scenegraph.IScenegraphFileIndexItem fii =
 					(Interfaces.Scenegraph.IScenegraphFileIndexItem)oci.Tag;

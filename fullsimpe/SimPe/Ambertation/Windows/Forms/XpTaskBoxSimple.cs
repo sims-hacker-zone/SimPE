@@ -277,11 +277,13 @@ namespace Ambertation.Windows.Forms
 				LinearGradientMode.Horizontal
 			);
 			Pen borderpen = new Pen(BorderColor, 1f);
-			StringFormat format1 = new StringFormat();
-			format1.Alignment = StringAlignment.Near;
-			format1.LineAlignment = StringAlignment.Center;
-			format1.Trimming = StringTrimming.EllipsisCharacter;
-			format1.FormatFlags = StringFormatFlags.NoWrap;
+			StringFormat format1 = new StringFormat
+			{
+				Alignment = StringAlignment.Near,
+				LineAlignment = StringAlignment.Center,
+				Trimming = StringTrimming.EllipsisCharacter,
+				FormatFlags = StringFormatFlags.NoWrap
+			};
 			borderpen.Alignment = PenAlignment.Inset;
 
 			path = Drawing.GraphicRoutines.GethRoundRectPath(ef1, 7);

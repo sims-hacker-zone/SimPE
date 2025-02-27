@@ -74,16 +74,20 @@ namespace SimPe.Plugin.Tool.Action
 			if (Data.MetaData.RcolList.Contains(a.Id))
 			{
 				Packages.PackedFileDescriptor fd =
-					new Packages.PackedFileDescriptor();
-				fd.Type = Data.MetaData.NAME_MAP;
-				fd.Group = 0x52737256;
-				fd.Instance = a.Id;
-				fd.SubType = 0;
+					new Packages.PackedFileDescriptor
+					{
+						Type = Data.MetaData.NAME_MAP,
+						Group = 0x52737256,
+						Instance = a.Id,
+						SubType = 0
+					};
 
 				Nmap nmap = new Nmap(
 					FileTableBase.ProviderRegistry
-				);
-				nmap.FileDescriptor = fd;
+				)
+				{
+					FileDescriptor = fd
+				};
 				bool add = false;
 				if (es.LoadedPackage.Package.FindFile(fd) == null)
 				{

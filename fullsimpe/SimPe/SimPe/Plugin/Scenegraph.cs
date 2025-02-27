@@ -60,15 +60,17 @@ namespace SimPe.Plugin
 		public static void Clone(IScenegraphFileIndexItem item)
 		{
 			Packages.PackedFileDescriptor pfd =
-				new Packages.PackedFileDescriptor();
-			pfd.Type = item.FileDescriptor.Type;
-			pfd.Group = item.FileDescriptor.Group;
-			pfd.LongInstance = item.FileDescriptor.LongInstance;
+				new Packages.PackedFileDescriptor
+				{
+					Type = item.FileDescriptor.Type,
+					Group = item.FileDescriptor.Group,
+					LongInstance = item.FileDescriptor.LongInstance,
 
-			pfd.Offset = item.FileDescriptor.Offset;
-			pfd.Size = item.FileDescriptor.Size;
+					Offset = item.FileDescriptor.Offset,
+					Size = item.FileDescriptor.Size,
 
-			pfd.UserData = item.FileDescriptor.UserData;
+					UserData = item.FileDescriptor.UserData
+				};
 
 			item.FileDescriptor = pfd;
 		}
@@ -82,10 +84,12 @@ namespace SimPe.Plugin
 		)
 		{
 			Packages.PackedFileDescriptor pfd =
-				new Packages.PackedFileDescriptor();
-			pfd.Type = org.Type;
-			pfd.Group = org.Group;
-			pfd.LongInstance = org.LongInstance;
+				new Packages.PackedFileDescriptor
+				{
+					Type = org.Type,
+					Group = org.Group,
+					LongInstance = org.LongInstance
+				};
 
 			return pfd;
 		}

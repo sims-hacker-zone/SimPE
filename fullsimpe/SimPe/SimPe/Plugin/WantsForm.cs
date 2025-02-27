@@ -1108,9 +1108,11 @@ namespace SimPe.Plugin
 
 		internal void AddWantToList(ListView lv, ImageList il, WantItem wnt)
 		{
-			ListViewItem lvi = new ListViewItem();
-			lvi.Text = wnt.ToString();
-			lvi.Tag = wnt;
+			ListViewItem lvi = new ListViewItem
+			{
+				Text = wnt.ToString(),
+				Tag = wnt
+			};
 
 			if (wnt.Information.Icon != null)
 			{
@@ -1139,8 +1141,10 @@ namespace SimPe.Plugin
 
 		internal void AddWant(TreeView tv, WantItemContainer wc)
 		{
-			TreeNode parent = new TreeNode(wc.ToString());
-			parent.Tag = wc;
+			TreeNode parent = new TreeNode(wc.ToString())
+			{
+				Tag = wc
+			};
 
 			if (wc.Information.Icon != null)
 			{
@@ -1154,10 +1158,12 @@ namespace SimPe.Plugin
 
 			foreach (WantItem wi in wc.Items)
 			{
-				TreeNode node = new TreeNode(wi.ToString());
-				node.ImageIndex = parent.ImageIndex;
-				node.SelectedImageIndex = parent.SelectedImageIndex;
-				node.Tag = wi;
+				TreeNode node = new TreeNode(wi.ToString())
+				{
+					ImageIndex = parent.ImageIndex,
+					SelectedImageIndex = parent.SelectedImageIndex,
+					Tag = wi
+				};
 
 				parent.Nodes.Add(node);
 			}
@@ -1481,8 +1487,10 @@ namespace SimPe.Plugin
 
 				foreach (WantInformation wi in (ArrayList)ht[k])
 				{
-					TreeNode node = new TreeNode(wi.Name);
-					node.Tag = wi;
+					TreeNode node = new TreeNode(wi.Name)
+					{
+						Tag = wi
+					};
 
 					if (wi.Icon != null)
 					{

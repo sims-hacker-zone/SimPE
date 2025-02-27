@@ -211,31 +211,37 @@ namespace SimPe.Plugin
 			ref int top
 		)
 		{
-			Panel pn = new Panel();
-			pn.Parent = ssf.pnselect;
-			pn.Top = top;
-			pn.Left = 8;
-			pn.Width = ssf.pnselect.Width - 16;
-			pn.Height = ImageSize.Height + 64;
-			pn.Visible = false;
-			pn.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right;
+			Panel pn = new Panel
+			{
+				Parent = ssf.pnselect,
+				Top = top,
+				Left = 8,
+				Width = ssf.pnselect.Width - 16,
+				Height = ImageSize.Height + 64,
+				Visible = false,
+				Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right
+			};
 
-			CheckBox cb = new CheckBox();
-			cb.Parent = pn;
-			cb.Top = 0;
-			cb.Left = 0;
-			cb.Checked = true;
-			cb.Width = pn.Width;
-			cb.Text = subset;
-			cb.Anchor = pn.Anchor;
-			cb.FlatStyle = FlatStyle.System;
+			CheckBox cb = new CheckBox
+			{
+				Parent = pn,
+				Top = 0,
+				Left = 0,
+				Checked = true,
+				Width = pn.Width,
+				Text = subset,
+				Anchor = pn.Anchor,
+				FlatStyle = FlatStyle.System
+			};
 			cb.CheckedChanged += new EventHandler(CheckedChanged);
 
-			ListView lv = new ListView();
-			lv.Parent = pn;
-			lv.Tag = subset;
-			lv.Left = 8;
-			lv.Top = cb.Height + cb.Top;
+			ListView lv = new ListView
+			{
+				Parent = pn,
+				Tag = subset,
+				Left = 8,
+				Top = cb.Height + cb.Top
+			};
 			lv.Width = pn.Width - lv.Left;
 			lv.Height = pn.Height - lv.Top;
 			lv.Anchor =
@@ -248,9 +254,11 @@ namespace SimPe.Plugin
 			lv.SelectedIndexChanged += new EventHandler(SelectedIndexChanged);
 			cb.Tag = lv;
 
-			ImageList il = new ImageList();
-			il.ImageSize = ImageSize;
-			il.ColorDepth = ColorDepth.Depth32Bit;
+			ImageList il = new ImageList
+			{
+				ImageSize = ImageSize,
+				ColorDepth = ColorDepth.Depth32Bit
+			};
 			lv.LargeImageList = il;
 
 			top += pn.Height + 8;
@@ -427,9 +435,11 @@ namespace SimPe.Plugin
 		/// <returns>Returns a New Instance of the selection Form</returns>
 		public static SubsetSelectForm Prepare(Hashtable map, ArrayList subsets)
 		{
-			SubsetSelectForm ssf = new SubsetSelectForm();
-			ssf.ListViews = new ArrayList();
-			ssf.txmtnames = new Hashtable();
+			SubsetSelectForm ssf = new SubsetSelectForm
+			{
+				ListViews = new ArrayList(),
+				txmtnames = new Hashtable()
+			};
 			WaitingScreen.Wait();
 			try
 			{

@@ -689,12 +689,14 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public Instruction Clone()
 		{
-			Instruction clone = new Instruction(parent);
-			clone.opcode = opcode;
-			clone.addr1 = addr1;
-			clone.addr2 = addr2;
-			clone.nodeversion = nodeversion;
-			clone.Operands = Operands.Clone();
+			Instruction clone = new Instruction(parent)
+			{
+				opcode = opcode,
+				addr1 = addr1,
+				addr2 = addr2,
+				nodeversion = nodeversion,
+				Operands = Operands.Clone()
+			};
 			clone.Operands.Parent = clone;
 			clone.Reserved1 = Reserved1.Clone();
 			clone.Reserved1.Parent = clone;

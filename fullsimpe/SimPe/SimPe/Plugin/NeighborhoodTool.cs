@@ -100,8 +100,10 @@ namespace SimPe.Plugin
 					}
 				}
 			}
-			NeighborhoodForm nf = new NeighborhoodForm();
-			nf.Text = Localization.Manager.GetString("neighborhoodbrowser");
+			NeighborhoodForm nf = new NeighborhoodForm
+			{
+				Text = Localization.Manager.GetString("neighborhoodbrowser")
+			};
 
 			Interfaces.Plugin.IToolResult ret = nf.Execute(ref package, prov);
 			if (ret.ChangedPackage)

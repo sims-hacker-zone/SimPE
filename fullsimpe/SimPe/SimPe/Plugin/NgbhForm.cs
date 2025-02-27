@@ -500,9 +500,11 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			ListViewItem lvi = new ListViewItem();
-			lvi.Text = item.ToString();
-			lvi.Tag = item;
+			ListViewItem lvi = new ListViewItem
+			{
+				Text = item.ToString(),
+				Tag = item
+			};
 
 			if (item.MemoryCacheItem.Icon != null)
 			{

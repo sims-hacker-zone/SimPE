@@ -157,8 +157,10 @@ namespace SimPe.PackedFiles.UserInterface
 
 					for (int i = 0; i < item.Count; i++)
 					{
-						TtabSingleMotiveUI c = new TtabSingleMotiveUI();
-						c.Motive = (TtabItemSingleMotiveItem)item[i];
+						TtabSingleMotiveUI c = new TtabSingleMotiveUI
+						{
+							Motive = (TtabItemSingleMotiveItem)item[i]
+						};
 
 						gbMotiveGroup.Controls.Add(c);
 						c.Location = new Point(2, nextTop);
@@ -171,8 +173,10 @@ namespace SimPe.PackedFiles.UserInterface
 				{
 					for (int i = 0; i < item.Count; i++)
 					{
-						TtabAnimalMotiveUI c = new TtabAnimalMotiveUI();
-						c.Motive = (TtabItemAnimalMotiveItem)item[i];
+						TtabAnimalMotiveUI c = new TtabAnimalMotiveUI
+						{
+							Motive = (TtabItemAnimalMotiveItem)item[i]
+						};
 
 						gbMotiveGroup.Controls.Add(c);
 						c.Location = new Point(2, nextTop);

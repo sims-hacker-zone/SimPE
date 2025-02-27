@@ -168,9 +168,11 @@ namespace SimPe.Plugin
 			{
 				foreach (NgbhSlot s in slots)
 				{
-					ListViewItem lvi = new ListViewItem();
-					lvi.Text = s.ToString();
-					lvi.Tag = s;
+					ListViewItem lvi = new ListViewItem
+					{
+						Text = s.ToString(),
+						Tag = s
+					};
 
 					lv.Items.Add(lvi);
 				}

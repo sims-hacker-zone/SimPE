@@ -291,8 +291,10 @@ namespace SimPe.Packages
 		/// by the returned GUID and Name</remarks>
 		protected static S2CPDescriptorBase ParesDependingPackedFile(XmlNode dep)
 		{
-			S2CPDescriptorBase s2cp = new S2CPDescriptorBase(null);
-			s2cp.Optional = false;
+			S2CPDescriptorBase s2cp = new S2CPDescriptorBase(null)
+			{
+				Optional = false
+			};
 			foreach (XmlNode subnode in dep)
 			{
 				switch (subnode.LocalName)

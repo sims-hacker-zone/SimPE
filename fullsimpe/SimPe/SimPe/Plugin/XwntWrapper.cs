@@ -213,9 +213,11 @@ namespace SimPe.Plugin
 			get
 			{
 				Packages.PackedFileDescriptor pfd =
-					new Packages.PackedFileDescriptor();
-				pfd.Type = Data.MetaData.SIM_IMAGE_FILE;
-				pfd.LongInstance = IconInstance;
+					new Packages.PackedFileDescriptor
+					{
+						Type = Data.MetaData.SIM_IMAGE_FILE,
+						LongInstance = IconInstance
+					};
 				if (pfd.Instance == 0)
 				{
 					pfd.Instance = SecondaryIconInstance;

@@ -446,8 +446,10 @@ namespace SimPe
 
 		private void CreateNewDocumentContainer(object sender, EventArgs e)
 		{
-			DockPanel doc = new DockPanel();
-			doc.Text = "New Container";
+			DockPanel doc = new DockPanel
+			{
+				Text = "New Container"
+			};
 			manager.DockPanel(doc, DockStyle.Bottom);
 			doc.OpenFloating();
 			doc.Closing += new DockPanel.ClosingHandler(CloseAdditionalDocContainer);
@@ -456,11 +458,13 @@ namespace SimPe
 			doc.TabText = "Container";
 			doc.AutoScrollMinSize = dcPlugin.AutoScrollMinSize;
 
-			TD.SandDock.TabControl dc = new TD.SandDock.TabControl();
-			dc.Manager = this.dc.Manager;
-			dc.Text = "New Container";
-			dc.Parent = doc;
-			dc.Dock = DockStyle.Fill;
+			TD.SandDock.TabControl dc = new TD.SandDock.TabControl
+			{
+				Manager = this.dc.Manager,
+				Text = "New Container",
+				Parent = doc,
+				Dock = DockStyle.Fill
+			};
 		}
 
 		private void CloseAdditionalDocContainer(

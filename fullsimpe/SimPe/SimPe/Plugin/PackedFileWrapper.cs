@@ -120,11 +120,12 @@ namespace SimPe.Plugin
 
 			for (int i = 0; i < Items.Length; i++)
 			{
-				RefFileItem pfd = new RefFileItem(this);
-
-				pfd.Type = reader.ReadUInt32();
-				pfd.Group = reader.ReadUInt32();
-				pfd.Instance = reader.ReadUInt32();
+				RefFileItem pfd = new RefFileItem(this)
+				{
+					Type = reader.ReadUInt32(),
+					Group = reader.ReadUInt32(),
+					Instance = reader.ReadUInt32()
+				};
 				if (type == Data.MetaData.IndexTypes.ptLongFileIndex)
 				{
 					pfd.SubType = reader.ReadUInt32();

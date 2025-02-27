@@ -1053,11 +1053,13 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				Extension fe = new Extension();
-				Form f = new Form();
-				f.Text = Localization.GetString("Sub Array Editor");
-				f.ShowInTaskbar = false;
-				f.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-				f.Size = new Size(840, 368);
+				Form f = new Form
+				{
+					Text = Localization.GetString("Sub Array Editor"),
+					ShowInTaskbar = false,
+					FormBorderStyle = FormBorderStyle.FixedToolWindow,
+					Size = new Size(840, 368)
+				};
 				f.Controls.Add(fe.gbIems);
 
 				fe.gbIems.Left = 8;
@@ -1092,10 +1094,12 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				Extension fe = new Extension();
-				Form f = new Form();
-				f.Text = Localization.GetString("Sub Array Editor");
-				f.ShowInTaskbar = false;
-				f.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+				Form f = new Form
+				{
+					Text = Localization.GetString("Sub Array Editor"),
+					ShowInTaskbar = false,
+					FormBorderStyle = FormBorderStyle.FixedToolWindow
+				};
 
 				ExtensionItem ei = (ExtensionItem)
 					lb_items.Items[lb_items.SelectedIndex];
@@ -1130,10 +1134,12 @@ namespace SimPe.Plugin.TabPage
 				}
 
 				f.Size = new Size(windowWidth, windowHeight);
-				Panel scroller = new Panel();
-				scroller.Height = f.Height - 22;
-				scroller.Width = f.Width - 5;
-				scroller.AutoScroll = true;
+				Panel scroller = new Panel
+				{
+					Height = f.Height - 22,
+					Width = f.Width - 5,
+					AutoScroll = true
+				};
 				f.Controls.Add(scroller);
 
 				for (int i = 4; i < ei.Items.Length; i++)
@@ -1144,12 +1150,14 @@ namespace SimPe.Plugin.TabPage
 					int tilex = int.Parse(a[1]) - minx;
 					int tiley = int.Parse(a[2]) - miny;
 
-					GroupBox gb = new GroupBox();
-					gb.Left = tilex * boxsize;
-					gb.Top = tiley * boxsize;
-					gb.Width = boxsize;
-					gb.Height = boxsize;
-					gb.Name = item.Name;
+					GroupBox gb = new GroupBox
+					{
+						Left = tilex * boxsize,
+						Top = tiley * boxsize,
+						Width = boxsize,
+						Height = boxsize,
+						Name = item.Name
+					};
 
 					UnPackFootprint(gb, item);
 					scroller.Controls.Add(gb);
@@ -1184,9 +1192,11 @@ namespace SimPe.Plugin.TabPage
 				int part1 = item.Data[j + 1];
 				for (int k = 0; k < 8; k++)
 				{
-					CheckBox cb = new CheckBox();
-					cb.Width = 14;
-					cb.Height = 14;
+					CheckBox cb = new CheckBox
+					{
+						Width = 14,
+						Height = 14
+					};
 					cb.Left = k * cb.Width;
 					cb.Top = j * 7;
 					cb.Name = "cb." + j + "." + k + ".2";
@@ -1204,9 +1214,11 @@ namespace SimPe.Plugin.TabPage
 				}
 				for (int k = 0; k < 8; k++)
 				{
-					CheckBox cb = new CheckBox();
-					cb.Width = 14;
-					cb.Height = 14;
+					CheckBox cb = new CheckBox
+					{
+						Width = 14,
+						Height = 14
+					};
 					cb.Left = 8 * cb.Width + k * cb.Width;
 					cb.Top = j * 7;
 					cb.Name = "cb." + j + "." + k + ".1";
@@ -1302,9 +1314,11 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				ExtensionItem[] list = (ExtensionItem[])gbIems.Tag;
-				ExtensionItem ei = new ExtensionItem();
-				ei.Typecode = (ExtensionItem.ItemTypes)
-					cbtype.Items[cbtype.SelectedIndex];
+				ExtensionItem ei = new ExtensionItem
+				{
+					Typecode = (ExtensionItem.ItemTypes)
+					cbtype.Items[cbtype.SelectedIndex]
+				};
 
 				list = (ExtensionItem[])Helper.Add(list, ei);
 				gbIems.Tag = list;

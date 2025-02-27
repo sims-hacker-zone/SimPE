@@ -82,9 +82,11 @@ namespace SimPe
 
 		public static void HookToMessageQueue(uint type, ControlEvent fkt)
 		{
-			MessageQueueItemInfo mqi = new MessageQueueItemInfo();
-			mqi.target = type;
-			mqi.fkt = fkt;
+			MessageQueueItemInfo mqi = new MessageQueueItemInfo
+			{
+				target = type,
+				fkt = fkt
+			};
 
 			events.Add(mqi);
 		}
@@ -467,12 +469,14 @@ namespace SimPe
 		/// <param name="settings"></param>
 		public static void ShowCustomSettings(Interfaces.ISettings settings)
 		{
-			System.Windows.Forms.Form f = new System.Windows.Forms.Form();
-			f.Text = settings.ToString();
-			f.Width = 600;
-			f.Height = 450;
-			f.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			f.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+			System.Windows.Forms.Form f = new System.Windows.Forms.Form
+			{
+				Text = settings.ToString(),
+				Width = 600,
+				Height = 450,
+				FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow,
+				StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+			};
 
 			System.Windows.Forms.PropertyGrid pg =
 				new System.Windows.Forms.PropertyGrid();

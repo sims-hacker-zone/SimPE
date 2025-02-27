@@ -167,10 +167,12 @@ namespace SimPe.Plugin
 		{
 			if (PathProvider.Global.EPInstalled >= 18)
 			{
-				System.Windows.Forms.Label ll = new System.Windows.Forms.Label();
-				ll.AutoSize = true;
-				ll.Text =
-					"Create Unique ID - Disabled:\r\nChanging Neighbourhood IDs Destroys Neighbourhood Stories\r\nYour game will correctly fix Neighbourhood IDs if needed";
+				System.Windows.Forms.Label ll = new System.Windows.Forms.Label
+				{
+					AutoSize = true,
+					Text =
+					"Create Unique ID - Disabled:\r\nChanging Neighbourhood IDs Destroys Neighbourhood Stories\r\nYour game will correctly fix Neighbourhood IDs if needed"
+				};
 				ll.Font = new Font(
 					"Verdana",
 					ll.Font.Size,
@@ -181,9 +183,11 @@ namespace SimPe.Plugin
 			else
 			{
 				System.Windows.Forms.LinkLabel ll =
-					new System.Windows.Forms.LinkLabel();
-				ll.AutoSize = true;
-				ll.Text = "Create Unique ID";
+					new System.Windows.Forms.LinkLabel
+					{
+						AutoSize = true,
+						Text = "Create Unique ID"
+					};
 				ll.Font = new Font(
 					"Verdana",
 					ll.Font.Size,

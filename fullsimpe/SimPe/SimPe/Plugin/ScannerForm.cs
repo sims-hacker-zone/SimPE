@@ -247,18 +247,22 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			Label lb = new Label();
-			lb.AutoSize = true;
-			lb.Text = scanner.ToString() + ":";
-			lb.Font = new Font(Font.Name, Font.Size, FontStyle.Bold);
-			lb.ForeColor = gbinfo.ForeColor;
+			Label lb = new Label
+			{
+				AutoSize = true,
+				Text = scanner.ToString() + ":",
+				Font = new Font(Font.Name, Font.Size, FontStyle.Bold),
+				ForeColor = gbinfo.ForeColor
+			};
 			//this.visualStyleProvider1.SetVisualStyleSupport(lb, true);
 
-			Panel pn = new Panel();
-			pn.Width = pnop.Width - 20;
-			pn.Height = 1;
-			pn.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right;
-			pn.BackColor = Color.FromArgb(0x77, lb.ForeColor);
+			Panel pn = new Panel
+			{
+				Width = pnop.Width - 20,
+				Height = 1,
+				Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right,
+				BackColor = Color.FromArgb(0x77, lb.ForeColor)
+			};
 
 			ShowControl(lb, false, false);
 			ShowControl(pn, false, true);

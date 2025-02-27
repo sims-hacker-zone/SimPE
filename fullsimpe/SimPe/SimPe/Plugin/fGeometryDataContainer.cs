@@ -3931,8 +3931,10 @@ namespace SimPe.Plugin
 					);
 					if (ba == null)
 					{
-						ba = new GmdcElement(g.Parent);
-						ba.Identity = ElementIdentity.BoneAssignment;
+						ba = new GmdcElement(g.Parent)
+						{
+							Identity = ElementIdentity.BoneAssignment
+						};
 						ba.Parent.Elements.Add(ba);
 						g.Link.ReferencedElement.Add(ba.Parent.Elements.Count - 1);
 					}
@@ -3943,8 +3945,10 @@ namespace SimPe.Plugin
 					);
 					if (bw == null)
 					{
-						bw = new GmdcElement(g.Parent);
-						bw.Identity = ElementIdentity.BoneWeights;
+						bw = new GmdcElement(g.Parent)
+						{
+							Identity = ElementIdentity.BoneWeights
+						};
 
 						bw.Parent.Elements.Add(bw);
 						g.Link.ReferencedElement.Add(bw.Parent.Elements.Count - 1);

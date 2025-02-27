@@ -206,10 +206,12 @@ namespace SimPe.Wants
 			}
 			#endregion
 
-			XmlReaderSettings xrs = new XmlReaderSettings();
-			//xrs.IgnoreComments = true;
-			xrs.IgnoreProcessingInstructions = true;
-			xrs.IgnoreWhitespace = true;
+			XmlReaderSettings xrs = new XmlReaderSettings
+			{
+				//xrs.IgnoreComments = true;
+				IgnoreProcessingInstructions = true,
+				IgnoreWhitespace = true
+			};
 			XmlReader xr = XmlReader.Create(reader.BaseStream, xrs);
 
 			if (
@@ -245,9 +247,11 @@ namespace SimPe.Wants
 
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-			XmlWriterSettings xws = new XmlWriterSettings();
-			xws.Encoding = Encoding.ASCII;
-			xws.Indent = true;
+			XmlWriterSettings xws = new XmlWriterSettings
+			{
+				Encoding = Encoding.ASCII,
+				Indent = true
+			};
 			XmlWriter xw = XmlWriter.Create(writer.BaseStream);
 
 			xw.WriteStartElement("cGZPropertySetString");

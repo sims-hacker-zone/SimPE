@@ -19,8 +19,10 @@ namespace SimPe.Plugin.Downloads
 				return;
 			}
 
-			dxp = new Ambertation.Graphics.DirectXPanel();
-			dxp.Width = 128 * 3;
+			dxp = new Ambertation.Graphics.DirectXPanel
+			{
+				Width = 128 * 3
+			};
 			dxp.Height = dxp.Width;
 			dxp.BackColor = Color.FromArgb(10, 10, 40);
 			dxp.Settings.MeshPassCullMode = Microsoft.DirectX.Direct3D.Cull.Clockwise;
@@ -71,8 +73,10 @@ namespace SimPe.Plugin.Downloads
 		)
 		{
 			flname = pkg.SaveFileName;
-			nfo = new PackageInfo(pkg);
-			nfo.Type = type;
+			nfo = new PackageInfo(pkg)
+			{
+				Type = type
+			};
 			OnLoadContent();
 
 			SetFromPackage(pkg);

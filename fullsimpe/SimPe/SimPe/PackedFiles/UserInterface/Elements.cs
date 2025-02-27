@@ -1785,12 +1785,13 @@ namespace SimPe.PackedFiles.UserInterface
 				uint flag = Convert.ToUInt32(tbflag.Text, 16) & 0xffff0000;
 
 				Wrapper.FamiFlags flags =
-					new Wrapper.FamiFlags(0);
-
-				flags.HasPhone = cbphone.Checked;
-				flags.HasComputer = cbcomputer.Checked;
-				flags.HasBaby = cbbaby.Checked;
-				flags.NewLot = cblot.Checked;
+					new Wrapper.FamiFlags(0)
+					{
+						HasPhone = cbphone.Checked,
+						HasComputer = cbcomputer.Checked,
+						HasBaby = cbbaby.Checked,
+						NewLot = cblot.Checked
+					};
 
 				flag = flag | flags.Value;
 				tbflag.Text = "0x" + Helper.HexString(flag);
@@ -1808,8 +1809,10 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			Wrapper.Picture wrp =
 				(Wrapper.Picture)picwrapper;
-			SaveFileDialog sfd = new SaveFileDialog();
-			sfd.Filter = "Image (*.png) | *.png";
+			SaveFileDialog sfd = new SaveFileDialog
+			{
+				Filter = "Image (*.png) | *.png"
+			};
 
 			if (sfd.ShowDialog() == DialogResult.OK)
 			{

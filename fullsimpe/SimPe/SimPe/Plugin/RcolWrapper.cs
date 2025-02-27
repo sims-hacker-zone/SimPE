@@ -373,12 +373,13 @@ namespace SimPe.Plugin
 				for (int i = 0; i < reffiles.Length; i++)
 				{
 					Packages.PackedFileDescriptor pfd =
-						new Packages.PackedFileDescriptor();
-
-					pfd.Group = reader.ReadUInt32();
-					pfd.Instance = reader.ReadUInt32();
-					pfd.SubType = (Count == 0xffff0001) ? reader.ReadUInt32() : 0;
-					pfd.Type = reader.ReadUInt32();
+						new Packages.PackedFileDescriptor
+						{
+							Group = reader.ReadUInt32(),
+							Instance = reader.ReadUInt32(),
+							SubType = (Count == 0xffff0001) ? reader.ReadUInt32() : 0,
+							Type = reader.ReadUInt32()
+						};
 
 					reffiles[i] = pfd;
 				}

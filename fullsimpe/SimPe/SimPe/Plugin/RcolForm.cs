@@ -1269,12 +1269,13 @@ namespace SimPe.Plugin
 			try
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd =
-					new Packages.PackedFileDescriptor();
-
-				pfd.Type = Convert.ToUInt32(tbtype.Text, 16);
-				pfd.SubType = Convert.ToUInt32(tbsubtype.Text, 16);
-				pfd.Group = Convert.ToUInt32(tbgroup.Text, 16);
-				pfd.Instance = Convert.ToUInt32(tbinstance.Text, 16);
+					new Packages.PackedFileDescriptor
+					{
+						Type = Convert.ToUInt32(tbtype.Text, 16),
+						SubType = Convert.ToUInt32(tbsubtype.Text, 16),
+						Group = Convert.ToUInt32(tbgroup.Text, 16),
+						Instance = Convert.ToUInt32(tbinstance.Text, 16)
+					};
 
 				wrapper.ReferencedFiles = (Interfaces.Files.IPackedFileDescriptor[])
 					Helper.Add(wrapper.ReferencedFiles, pfd);

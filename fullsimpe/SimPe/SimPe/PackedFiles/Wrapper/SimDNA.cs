@@ -61,8 +61,10 @@ namespace SimPe.PackedFiles.Wrapper
 			CpfItem i = dna.GetItem(name);
 			if (i == null)
 			{
-				i = new CpfItem();
-				i.Name = name;
+				i = new CpfItem
+				{
+					Name = name
+				};
 				dna.AddItem(i, false);
 			}
 

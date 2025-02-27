@@ -279,9 +279,11 @@ namespace Ambertation.Windows.Forms.Graph
 				float[] relativePositions = { 0.0f, 0.65f, 1.0f };
 
 				//Create a Blend object and assign it to linGrBrush.
-				Blend blend = new Blend();
-				blend.Factors = relativeIntensities;
-				blend.Positions = relativePositions;
+				Blend blend = new Blend
+				{
+					Factors = relativeIntensities,
+					Positions = relativePositions
+				};
 				linGrBrush.Blend = blend;
 
 				Drawing.GraphicRoutines.FillRoundRect(

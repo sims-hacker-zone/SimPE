@@ -435,8 +435,10 @@ namespace SimPe.PackedFiles.Wrapper
 			SDesc sdesc = SDesc.FindForSimId(simid, package);
 			if (sdesc == null)
 			{
-				sdesc = new SDesc(null, null, null);
-				sdesc.SimId = simid;
+				sdesc = new SDesc(null, null, null)
+				{
+					SimId = simid
+				};
 				sdesc.CharacterDescription.Age = 28;
 				sdesc.CharacterDescription.Gender = Data.MetaData.Gender.Female;
 

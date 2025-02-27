@@ -2662,9 +2662,11 @@ namespace SimPe.PackedFiles.UserInterface
 				else
 				{
 					ArrayList al = new ArrayList();
-					Plugin.GuidSet gs = new Plugin.GuidSet();
-					gs.oldguid = initialguid;
-					gs.guid = wrapper.Guid;
+					Plugin.GuidSet gs = new Plugin.GuidSet
+					{
+						oldguid = initialguid,
+						guid = wrapper.Guid
+					};
 					al.Add(gs);
 
 					fg.FixGuids(al);

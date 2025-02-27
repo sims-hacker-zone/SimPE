@@ -64,11 +64,13 @@ namespace SimPe
 
 				ArrayList folders = new ArrayList();
 
-				XmlReaderSettings xrs = new XmlReaderSettings();
-				xrs.CloseInput = true;
-				xrs.IgnoreComments = true;
-				xrs.IgnoreProcessingInstructions = true;
-				xrs.IgnoreWhitespace = true;
+				XmlReaderSettings xrs = new XmlReaderSettings
+				{
+					CloseInput = true,
+					IgnoreComments = true,
+					IgnoreProcessingInstructions = true,
+					IgnoreWhitespace = true
+				};
 				XmlReader xr = XmlReader.Create(filename, xrs);
 				try
 				{
@@ -191,10 +193,12 @@ namespace SimPe
 		{
 			try
 			{
-				XmlWriterSettings xws = new XmlWriterSettings();
-				xws.CloseOutput = true;
-				xws.Indent = true;
-				xws.Encoding = System.Text.Encoding.UTF8;
+				XmlWriterSettings xws = new XmlWriterSettings
+				{
+					CloseOutput = true,
+					Indent = true,
+					Encoding = System.Text.Encoding.UTF8
+				};
 				XmlWriter xw = XmlWriter.Create(Helper.DataFolder.FoldersXREGW, xws);
 
 				try
@@ -352,10 +356,12 @@ namespace SimPe
 		{
 			try
 			{
-				XmlWriterSettings xws = new XmlWriterSettings();
-				xws.CloseOutput = true;
-				xws.Indent = true;
-				xws.Encoding = System.Text.Encoding.UTF8;
+				XmlWriterSettings xws = new XmlWriterSettings
+				{
+					CloseOutput = true,
+					Indent = true,
+					Encoding = System.Text.Encoding.UTF8
+				};
 				XmlWriter xw = XmlWriter.Create(Helper.DataFolder.FoldersXREGW, xws);
 
 				try

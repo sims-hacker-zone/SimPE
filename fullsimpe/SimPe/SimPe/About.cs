@@ -281,8 +281,10 @@ namespace SimPe
 		/// </summary>
 		public static void ShowAbout()
 		{
-			About f = new About();
-			f.Text = Localization.GetString("About");
+			About f = new About
+			{
+				Text = Localization.GetString("About")
+			};
 
 			f.LoadResource("about");
 			Splash.Screen.Stop();
@@ -294,8 +296,10 @@ namespace SimPe
 		/// </summary>
 		public static void ShowWelcome()
 		{
-			About f = new About();
-			f.Text = Localization.GetString("Welcome");
+			About f = new About
+			{
+				Text = Localization.GetString("Welcome")
+			};
 
 			f.LoadResource("welcome");
 			Splash.Screen.Stop();
@@ -308,8 +312,10 @@ namespace SimPe
 		/// </summary>
 		public static void ShowFileTable()
 		{
-			About f = new About(true);
-			f.Text = "File Table and Profiles";
+			About f = new About(true)
+			{
+				Text = "File Table and Profiles"
+			};
 
 			f.LoadHtmResource("FileTable");
 			Splash.Screen.Stop();

@@ -341,8 +341,10 @@ namespace Ambertation
 		protected void Load()
 		{
 			AppDomain myDomain = Thread.GetDomain();
-			AssemblyName myAsmName = new AssemblyName();
-			myAsmName.Name = "SaveEmittedAssembly";
+			AssemblyName myAsmName = new AssemblyName
+			{
+				Name = "SaveEmittedAssembly"
+			};
 
 			AssemblyBuilder myAsmBuilder = myDomain.DefineDynamicAssembly(
 				myAsmName,

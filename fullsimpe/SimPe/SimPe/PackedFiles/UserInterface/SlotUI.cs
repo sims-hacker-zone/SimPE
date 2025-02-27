@@ -138,116 +138,160 @@ namespace SimPe.PackedFiles.UserInterface
 				// + 1 @ 100 = 850 so width / 85 is units of ten
 
 				System.Windows.Forms.ColumnHeader c =
-					new System.Windows.Forms.ColumnHeader();
-				c.Text = "Type";
-				c.Width = 100;
+					new System.Windows.Forms.ColumnHeader
+					{
+						Text = "Type",
+						Width = 100
+					};
 				form.lv.Columns.Add(c);
-				c = new System.Windows.Forms.ColumnHeader();
-				c.Text = "Float1";
-				c.Width = unyt * 4;
+				c = new System.Windows.Forms.ColumnHeader
+				{
+					Text = "Float1",
+					Width = unyt * 4
+				};
 				form.lv.Columns.Add(c);
-				c = new System.Windows.Forms.ColumnHeader();
-				c.Text = "Float2";
-				c.Width = unyt * 4;
+				c = new System.Windows.Forms.ColumnHeader
+				{
+					Text = "Float2",
+					Width = unyt * 4
+				};
 				form.lv.Columns.Add(c);
-				c = new System.Windows.Forms.ColumnHeader();
-				c.Text = "Float3";
-				c.Width = unyt * 4;
+				c = new System.Windows.Forms.ColumnHeader
+				{
+					Text = "Float3",
+					Width = unyt * 4
+				};
 				form.lv.Columns.Add(c);
-				c = new System.Windows.Forms.ColumnHeader();
-				c.Text = "Int1";
-				c.Width = unyt * 3;
+				c = new System.Windows.Forms.ColumnHeader
+				{
+					Text = "Int1",
+					Width = unyt * 3
+				};
 				form.lv.Columns.Add(c);
-				c = new System.Windows.Forms.ColumnHeader();
-				c.Text = "Int2";
-				c.Width = unyt * 3;
+				c = new System.Windows.Forms.ColumnHeader
+				{
+					Text = "Int2",
+					Width = unyt * 3
+				};
 				form.lv.Columns.Add(c);
-				c = new System.Windows.Forms.ColumnHeader();
-				c.Text = "Int3";
-				c.Width = unyt * 3;
+				c = new System.Windows.Forms.ColumnHeader
+				{
+					Text = "Int3",
+					Width = unyt * 3
+				};
 				form.lv.Columns.Add(c);
-				c = new System.Windows.Forms.ColumnHeader();
-				c.Text = "Int4";
-				c.Width = unyt * 4;
+				c = new System.Windows.Forms.ColumnHeader
+				{
+					Text = "Int4",
+					Width = unyt * 4
+				};
 				form.lv.Columns.Add(c);
-				c = new System.Windows.Forms.ColumnHeader();
-				c.Text = "Int5";
-				c.Width = unyt * 3;
+				c = new System.Windows.Forms.ColumnHeader
+				{
+					Text = "Int5",
+					Width = unyt * 3
+				};
 				form.lv.Columns.Add(c);
 				if (wrp.Version >= 5)
 				{
-					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "Float4";
-					c.Width = unyt * 4;
+					c = new System.Windows.Forms.ColumnHeader
+					{
+						Text = "Float4",
+						Width = unyt * 4
+					};
 					form.lv.Columns.Add(c);
-					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "Float5";
-					c.Width = unyt * 4;
+					c = new System.Windows.Forms.ColumnHeader
+					{
+						Text = "Float5",
+						Width = unyt * 4
+					};
 					form.lv.Columns.Add(c);
-					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "Float6";
-					c.Width = unyt * 4;
+					c = new System.Windows.Forms.ColumnHeader
+					{
+						Text = "Float6",
+						Width = unyt * 4
+					};
 					form.lv.Columns.Add(c);
-					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "Int6";
-					c.Width = unyt * 3;
+					c = new System.Windows.Forms.ColumnHeader
+					{
+						Text = "Int6",
+						Width = unyt * 3
+					};
 					form.lv.Columns.Add(c);
 				}
 				if (wrp.Version >= 6)
 				{
-					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "Shrt1";
-					c.Width = unyt * 3;
+					c = new System.Windows.Forms.ColumnHeader
+					{
+						Text = "Shrt1",
+						Width = unyt * 3
+					};
 					form.lv.Columns.Add(c);
-					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "Shrt2";
-					c.Width = unyt * 3;
+					c = new System.Windows.Forms.ColumnHeader
+					{
+						Text = "Shrt2",
+						Width = unyt * 3
+					};
 					form.lv.Columns.Add(c);
 				}
 				if (wrp.Version >= 7)
 				{
-					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "Float7";
-					c.Width = unyt * 6;
+					c = new System.Windows.Forms.ColumnHeader
+					{
+						Text = "Float7",
+						Width = unyt * 6
+					};
 					form.lv.Columns.Add(c);
 				}
 				if (wrp.Version >= 8)
 				{
-					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "Int7";
-					c.Width = unyt * 3;
+					c = new System.Windows.Forms.ColumnHeader
+					{
+						Text = "Int7",
+						Width = unyt * 3
+					};
 					form.lv.Columns.Add(c);
 				}
 				if (wrp.Version >= 9)
 				{
-					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "Int8";
-					c.Width = unyt * 4;
+					c = new System.Windows.Forms.ColumnHeader
+					{
+						Text = "Int8",
+						Width = unyt * 4
+					};
 					form.lv.Columns.Add(c);
 				}
 				if (wrp.Version == 10)
 				{
-					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "Shrt3";
-					c.Width = unyt * 3;
+					c = new System.Windows.Forms.ColumnHeader
+					{
+						Text = "Shrt3",
+						Width = unyt * 3
+					};
 					form.lv.Columns.Add(c);
 				}
 				if (wrp.Version >= 0x10)
 				{
-					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "Float8";
-					c.Width = unyt * 6;
+					c = new System.Windows.Forms.ColumnHeader
+					{
+						Text = "Float8",
+						Width = unyt * 6
+					};
 					form.lv.Columns.Add(c);
 				}
 				if (wrp.Version >= 0x40)
 				{
-					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "Int9";
-					c.Width = unyt * 3;
+					c = new System.Windows.Forms.ColumnHeader
+					{
+						Text = "Int9",
+						Width = unyt * 3
+					};
 					form.lv.Columns.Add(c);
-					c = new System.Windows.Forms.ColumnHeader();
-					c.Text = "Int10";
-					c.Width = unyt * 4;
+					c = new System.Windows.Forms.ColumnHeader
+					{
+						Text = "Int10",
+						Width = unyt * 4
+					};
 					form.lv.Columns.Add(c);
 				}
 

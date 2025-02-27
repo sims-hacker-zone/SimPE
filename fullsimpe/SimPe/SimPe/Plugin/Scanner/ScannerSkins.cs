@@ -423,10 +423,12 @@ namespace SimPe.Plugin.Scanner
 					)
 				);
 
-				str.FileDescriptor = new Packages.PackedFileDescriptor();
-				str.FileDescriptor.Type = Data.MetaData.STRING_FILE;
-				str.FileDescriptor.Group = Data.MetaData.LOCAL_GROUP;
-				str.FileDescriptor.LongInstance = 0;
+				str.FileDescriptor = new Packages.PackedFileDescriptor
+				{
+					Type = Data.MetaData.STRING_FILE,
+					Group = Data.MetaData.LOCAL_GROUP,
+					LongInstance = 0
+				};
 
 				str.SynchronizeUserData();
 				pkg.Add(str.FileDescriptor);

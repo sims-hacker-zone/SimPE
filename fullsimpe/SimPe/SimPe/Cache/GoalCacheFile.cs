@@ -48,13 +48,15 @@ namespace SimPe.Cache
 				goal.XGoal.Package.FileName
 			);
 
-			GoalCacheItem wci = new GoalCacheItem();
-			wci.FileDescriptor = goal.XGoal.FileDescriptor;
-			wci.Guid = goal.Guid;
-			wci.Icon = goal.Icon;
-			wci.Influence = goal.XGoal.Influence;
-			wci.Name = goal.Name;
-			wci.Score = goal.XGoal.Score;
+			GoalCacheItem wci = new GoalCacheItem
+			{
+				FileDescriptor = goal.XGoal.FileDescriptor,
+				Guid = goal.Guid,
+				Icon = goal.Icon,
+				Influence = goal.XGoal.Influence,
+				Name = goal.Name,
+				Score = goal.XGoal.Score
+			};
 
 			mycc.Items.Add(wci);
 		}

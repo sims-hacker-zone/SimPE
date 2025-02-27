@@ -548,10 +548,12 @@ namespace SimPe.Plugin
 		/// <param name="filename">The filename to write to</param>
 		public void ExportProperties(string filename)
 		{
-			System.Xml.XmlWriterSettings xws = new System.Xml.XmlWriterSettings();
-			xws.CloseOutput = true;
-			xws.Indent = true;
-			xws.Encoding = System.Text.Encoding.UTF8;
+			System.Xml.XmlWriterSettings xws = new System.Xml.XmlWriterSettings
+			{
+				CloseOutput = true,
+				Indent = true,
+				Encoding = System.Text.Encoding.UTF8
+			};
 			System.Xml.XmlWriter xw = System.Xml.XmlWriter.Create(filename, xws);
 
 			try
@@ -593,11 +595,13 @@ namespace SimPe.Plugin
 		/// <param name="filename">The name of the file to merge</param>
 		public void MergeProperties(string filename)
 		{
-			System.Xml.XmlReaderSettings xrs = new System.Xml.XmlReaderSettings();
-			xrs.CloseInput = true;
-			xrs.IgnoreComments = true;
-			xrs.IgnoreProcessingInstructions = true;
-			xrs.IgnoreWhitespace = true;
+			System.Xml.XmlReaderSettings xrs = new System.Xml.XmlReaderSettings
+			{
+				CloseInput = true,
+				IgnoreComments = true,
+				IgnoreProcessingInstructions = true,
+				IgnoreWhitespace = true
+			};
 			System.Xml.XmlReader xr = System.Xml.XmlReader.Create(filename, xrs);
 
 			try

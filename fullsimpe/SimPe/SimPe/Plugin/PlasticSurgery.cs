@@ -255,9 +255,11 @@ namespace SimPe.Plugin
 
 		void AddCpfItem(Cpf cpf, string name, string value)
 		{
-			CpfItem item = new CpfItem();
-			item.Name = name;
-			item.StringValue = value;
+			CpfItem item = new CpfItem
+			{
+				Name = name,
+				StringValue = value
+			};
 			cpf.AddItem(item);
 		}
 

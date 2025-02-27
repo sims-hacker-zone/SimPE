@@ -37,8 +37,10 @@ namespace SimPe.Plugin
 		{
 			this.reg = reg;
 			this.prov = prov;
-			sc = new Search();
-			sc.prov = prov;
+			sc = new Search
+			{
+				prov = prov
+			};
 			flname = "";
 		}
 

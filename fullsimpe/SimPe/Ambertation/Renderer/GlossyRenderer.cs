@@ -95,15 +95,17 @@ namespace Ambertation.Renderer
 				)
 				{
 					// Set colour values
-					ColorBlend cb = new ColorBlend(4);
-					cb.Colors = new Color[]
+					ColorBlend cb = new ColorBlend(4)
+					{
+						Colors = new Color[]
 					{
 						Colors.ToolStripGradientBegin,
 						Colors.ToolStripGradientMiddle,
 						Colors.ToolStripGradientMiddleEnd,
 						Colors.ToolStripGradientEnd,
+					},
+						Positions = new float[] { 0F, 0.495F, 0.505F, 1F }
 					};
-					cb.Positions = new float[] { 0F, 0.495F, 0.505F, 1F };
 					l.InterpolationColors = cb;
 
 					// Fill background
@@ -118,8 +120,10 @@ namespace Ambertation.Renderer
 			bool overlay
 		)
 		{
-			TextureBrush t = new TextureBrush(menupattern);
-			t.WrapMode = WrapMode.TileFlipXY;
+			TextureBrush t = new TextureBrush(menupattern)
+			{
+				WrapMode = WrapMode.TileFlipXY
+			};
 			SolidBrush b = new SolidBrush(
 				Color.FromArgb(50, Colors.ImageMarginGradientMiddle)
 			);

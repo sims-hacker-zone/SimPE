@@ -374,12 +374,14 @@ namespace SimPe.Plugin.TabPage
 				//Shpe wrp = (Shpe)wrapper;
 				Shape shape = (Shape)Tag;
 
-				ShapeItem val = new ShapeItem(shape);
-				val.FileName = tbitemflname.Text;
-				val.Unknown1 = Convert.ToInt32(tbitemunk1.Text, 16);
-				val.Unknown2 = Convert.ToByte(tbitemunk2.Text, 16);
-				val.Unknown3 = Convert.ToInt32(tbitemunk3.Text, 16);
-				val.Unknown4 = Convert.ToByte(tbitemunk4.Text, 16);
+				ShapeItem val = new ShapeItem(shape)
+				{
+					FileName = tbitemflname.Text,
+					Unknown1 = Convert.ToInt32(tbitemunk1.Text, 16),
+					Unknown2 = Convert.ToByte(tbitemunk2.Text, 16),
+					Unknown3 = Convert.ToInt32(tbitemunk3.Text, 16),
+					Unknown4 = Convert.ToByte(tbitemunk4.Text, 16)
+				};
 
 				lbitem.Items.Add(val);
 				UpdateLists();

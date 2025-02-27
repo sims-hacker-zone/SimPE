@@ -30,9 +30,11 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 
 			public ContainerItem(uint guid)
 			{
-				objd = new ExtObjd();
-				objd.Guid = guid;
-				objd.FileName = "0x" + Helper.HexString(guid);
+				objd = new ExtObjd
+				{
+					Guid = guid,
+					FileName = "0x" + Helper.HexString(guid)
+				};
 			}
 
 			public ContainerItem(ExtObjd objd)

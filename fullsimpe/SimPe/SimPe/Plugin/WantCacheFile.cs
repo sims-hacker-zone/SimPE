@@ -48,15 +48,17 @@ namespace SimPe.Cache
 				want.XWant.Package.FileName
 			);
 
-			WantCacheItem wci = new WantCacheItem();
-			wci.FileDescriptor = want.XWant.FileDescriptor;
-			wci.Folder = want.XWant.Folder;
-			wci.Guid = want.Guid;
-			wci.Icon = want.Icon;
-			wci.Influence = want.XWant.Influence;
-			wci.Name = want.Name;
-			wci.ObjectType = want.XWant.ObjectType;
-			wci.Score = want.XWant.Score;
+			WantCacheItem wci = new WantCacheItem
+			{
+				FileDescriptor = want.XWant.FileDescriptor,
+				Folder = want.XWant.Folder,
+				Guid = want.Guid,
+				Icon = want.Icon,
+				Influence = want.XWant.Influence,
+				Name = want.Name,
+				ObjectType = want.XWant.ObjectType,
+				Score = want.XWant.Score
+			};
 
 			mycc.Items.Add(wci);
 		}

@@ -373,12 +373,14 @@ namespace SimPe.Plugin
 		/// <returns>The Clone</returns>
 		public IScenegraphFileIndex Clone()
 		{
-			FileIndex ret = new FileIndex(new ArrayList());
-			ret.index = (Hashtable)index.Clone();
-			ret.BaseFolders = (ArrayList)BaseFolders.Clone();
-			ret.addedfilenames = (ArrayList)addedfilenames.Clone();
-			ret.Duplicates = Duplicates;
-			ret.Loaded = Loaded;
+			FileIndex ret = new FileIndex(new ArrayList())
+			{
+				index = (Hashtable)index.Clone(),
+				BaseFolders = (ArrayList)BaseFolders.Clone(),
+				addedfilenames = (ArrayList)addedfilenames.Clone(),
+				Duplicates = Duplicates,
+				Loaded = Loaded
+			};
 
 			return ret;
 		}
@@ -1316,10 +1318,12 @@ namespace SimPe.Plugin
 		)
 		{
 			Packages.PackedFileDescriptor pfd =
-				new Packages.PackedFileDescriptor();
-			pfd.Group = group;
-			pfd.Type = type;
-			pfd.LongInstance = instance;
+				new Packages.PackedFileDescriptor
+				{
+					Group = group,
+					Type = type,
+					LongInstance = instance
+				};
 
 			return FindFile(pfd, pkg);
 		}

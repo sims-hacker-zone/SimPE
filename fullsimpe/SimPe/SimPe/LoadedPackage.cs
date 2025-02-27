@@ -646,8 +646,10 @@ namespace SimPe
 					}
 
 					ToolStripMenuItem mbi =
-						new ToolStripMenuItem(sname);
-					mbi.Tag = file;
+						new ToolStripMenuItem(sname)
+						{
+							Tag = file
+						};
 					mbi.Click += new EventHandler(OpenRecent);
 					KeysConverter kc = new KeysConverter();
 
@@ -838,8 +840,10 @@ namespace SimPe
 				else
 				{
 					Packages.PackedFileDescriptor pfd =
-						new Packages.PackedFileDescriptor();
-					pfd.Type = 0xffffffff;
+						new Packages.PackedFileDescriptor
+						{
+							Type = 0xffffffff
+						};
 					ToolLoaderItemExt.OpenPackedFile(flname, ref pfd);
 					list.Add(pfd);
 				}

@@ -321,16 +321,18 @@ namespace Ambertation.Viewer
 		{
 			// i must convert the input stream to a sequence of uint values
 			// which I then unpack.
-			tgaCD cd = new tgaCD();
-			cd.RMask = 0x000000ff; // from 0xF800
-			cd.GMask = 0x0000ff00; // from 0x07E0
-			cd.BMask = 0x00ff0000; // from 0x001F
-			cd.AMask = 0x00000000;
-			cd.RShift = 0;
-			cd.GShift = 8;
-			cd.BShift = 16;
-			cd.AShift = 0;
-			cd.FinalOr = 0xff000000;
+			tgaCD cd = new tgaCD
+			{
+				RMask = 0x000000ff, // from 0xF800
+				GMask = 0x0000ff00, // from 0x07E0
+				BMask = 0x00ff0000, // from 0x001F
+				AMask = 0x00000000,
+				RShift = 0,
+				GShift = 8,
+				BShift = 16,
+				AShift = 0,
+				FinalOr = 0xff000000
+			};
 
 			if (hdr.RleEncoded)
 			{
@@ -350,16 +352,18 @@ namespace Ambertation.Viewer
 		{
 			// i must convert the input stream to a sequence of uint values
 			// which I then unpack.
-			tgaCD cd = new tgaCD();
-			cd.RMask = 0x00f00000;
-			cd.GMask = 0x0000f000;
-			cd.BMask = 0x000000f0;
-			cd.AMask = 0xf0000000;
-			cd.RShift = 12;
-			cd.GShift = 8;
-			cd.BShift = 4;
-			cd.AShift = 16;
-			cd.FinalOr = 0;
+			tgaCD cd = new tgaCD
+			{
+				RMask = 0x00f00000,
+				GMask = 0x0000f000,
+				BMask = 0x000000f0,
+				AMask = 0xf0000000,
+				RShift = 12,
+				GShift = 8,
+				BShift = 4,
+				AShift = 16,
+				FinalOr = 0
+			};
 
 			if (hdr.RleEncoded)
 			{
@@ -379,16 +383,18 @@ namespace Ambertation.Viewer
 		{
 			// i must convert the input stream to a sequence of uint values
 			// which I then unpack.
-			tgaCD cd = new tgaCD();
-			cd.RMask = 0x00f80000; // from 0xF800
-			cd.GMask = 0x0000fc00; // from 0x07E0
-			cd.BMask = 0x000000f8; // from 0x001F
-			cd.AMask = 0x00000000;
-			cd.RShift = 8;
-			cd.GShift = 5;
-			cd.BShift = 3;
-			cd.AShift = 0;
-			cd.FinalOr = 0xff000000;
+			tgaCD cd = new tgaCD
+			{
+				RMask = 0x00f80000, // from 0xF800
+				GMask = 0x0000fc00, // from 0x07E0
+				BMask = 0x000000f8, // from 0x001F
+				AMask = 0x00000000,
+				RShift = 8,
+				GShift = 5,
+				BShift = 3,
+				AShift = 0,
+				FinalOr = 0xff000000
+			};
 
 			if (hdr.RleEncoded)
 			{
@@ -408,16 +414,18 @@ namespace Ambertation.Viewer
 		{
 			// i must convert the input stream to a sequence of uint values
 			// which I then unpack.
-			tgaCD cd = new tgaCD();
-			cd.RMask = 0x00f80000;
-			cd.GMask = 0x0000fc00;
-			cd.BMask = 0x000000f8;
-			cd.AMask = 0xff000000;
-			cd.RShift = 8;
-			cd.GShift = 5;
-			cd.BShift = 3;
-			cd.AShift = 8;
-			cd.FinalOr = 0;
+			tgaCD cd = new tgaCD
+			{
+				RMask = 0x00f80000,
+				GMask = 0x0000fc00,
+				BMask = 0x000000f8,
+				AMask = 0xff000000,
+				RShift = 8,
+				GShift = 5,
+				BShift = 3,
+				AShift = 8,
+				FinalOr = 0
+			};
 
 			if (hdr.RleEncoded)
 			{
@@ -437,16 +445,18 @@ namespace Ambertation.Viewer
 		{
 			// i must convert the input stream to a sequence of uint values
 			// which I then unpack.
-			tgaCD cd = new tgaCD();
-			cd.RMask = 0x00ff0000;
-			cd.GMask = 0x0000ff00;
-			cd.BMask = 0x000000ff;
-			cd.AMask = 0x00000000;
-			cd.RShift = 0;
-			cd.GShift = 0;
-			cd.BShift = 0;
-			cd.AShift = 0;
-			cd.FinalOr = 0xff000000;
+			tgaCD cd = new tgaCD
+			{
+				RMask = 0x00ff0000,
+				GMask = 0x0000ff00,
+				BMask = 0x000000ff,
+				AMask = 0x00000000,
+				RShift = 0,
+				GShift = 0,
+				BShift = 0,
+				AShift = 0,
+				FinalOr = 0xff000000
+			};
 
 			if (hdr.RleEncoded)
 			{
@@ -466,17 +476,19 @@ namespace Ambertation.Viewer
 		{
 			// i must convert the input stream to a sequence of uint values
 			// which I then unpack.
-			tgaCD cd = new tgaCD();
-			cd.RMask = 0x00ff0000;
-			cd.GMask = 0x0000ff00;
-			cd.BMask = 0x000000ff;
-			cd.AMask = 0xff000000;
-			cd.RShift = 0;
-			cd.GShift = 0;
-			cd.BShift = 0;
-			cd.AShift = 0;
-			cd.FinalOr = 0x00000000;
-			cd.NeedNoConvert = true;
+			tgaCD cd = new tgaCD
+			{
+				RMask = 0x00ff0000,
+				GMask = 0x0000ff00,
+				BMask = 0x000000ff,
+				AMask = 0xff000000,
+				RShift = 0,
+				GShift = 0,
+				BShift = 0,
+				AShift = 0,
+				FinalOr = 0x00000000,
+				NeedNoConvert = true
+			};
 
 			if (hdr.RleEncoded)
 			{

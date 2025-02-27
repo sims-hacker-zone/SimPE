@@ -540,10 +540,11 @@ namespace SimPe.Plugin.TabPage
 			{
 				lb_rn.Tag = true;
 				Plugin.ResourceNode rn = (Plugin.ResourceNode)Tag;
-				ResourceNodeItem b = new ResourceNodeItem();
-
-				b.Unknown1 = (short)Convert.ToUInt16(tb_rn_1.Text, 16);
-				b.Unknown2 = (int)Convert.ToUInt32(tb_rn_2.Text, 16);
+				ResourceNodeItem b = new ResourceNodeItem
+				{
+					Unknown1 = (short)Convert.ToUInt16(tb_rn_1.Text, 16),
+					Unknown2 = (int)Convert.ToUInt32(tb_rn_2.Text, 16)
+				};
 
 				rn.Items = (ResourceNodeItem[])Helper.Add(rn.Items, b);
 				lb_rn.Items.Add(b);

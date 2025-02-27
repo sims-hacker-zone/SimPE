@@ -252,10 +252,12 @@ namespace pjse
 
 		public void Add(uint key, uint group, ushort type, string name)
 		{
-			IndexItem ii = new IndexItem();
-			ii.objdName = name.Trim() + "**";
-			ii.objdType = type;
-			ii.objdGroup = group;
+			IndexItem ii = new IndexItem
+			{
+				objdName = name.Trim() + "**",
+				objdType = type,
+				objdGroup = group
+			};
 			FileTable.Entry[] globs = FileTable.GFT[0x474C4F42, group];
 			ii.semiGlobal =
 				(globs.Length == 0)

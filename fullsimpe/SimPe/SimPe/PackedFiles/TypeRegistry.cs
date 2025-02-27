@@ -120,8 +120,10 @@ namespace SimPe.PackedFiles
 			settings = new ArrayList();
 			listeners = new Collections.InternalListeners();
 
-			WrapperImageList = new System.Windows.Forms.ImageList();
-			WrapperImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+			WrapperImageList = new System.Windows.Forms.ImageList
+			{
+				ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit
+			};
 
 			WrapperImageList.Images.Add(
 				System.Drawing.Image.FromStream(

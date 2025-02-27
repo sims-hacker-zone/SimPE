@@ -893,11 +893,13 @@ namespace Ambertation.Windows.Forms
 			);
 
 			#region Add ScrollBar
-			sb = new VScrollBar();
-			sb.Parent = this;
-			sb.Dock = DockStyle.Right;
-			sb.Minimum = 0;
-			sb.Maximum = Math.Max(0, GetNumberOfPages() - 1);
+			sb = new VScrollBar
+			{
+				Parent = this,
+				Dock = DockStyle.Right,
+				Minimum = 0,
+				Maximum = Math.Max(0, GetNumberOfPages() - 1)
+			};
 			sb.Visible = (sb.Minimum != sb.Maximum);
 			sb.Scroll += new ScrollEventHandler(sb_Scroll);
 			#endregion

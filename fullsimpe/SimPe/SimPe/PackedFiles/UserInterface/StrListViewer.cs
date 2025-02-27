@@ -95,9 +95,11 @@ namespace SimPe.PackedFiles.UserInterface
 			listView1.Items.Clear();
 			foreach (StrLanguage l in wrapper.Languages)
 			{
-				TreeNode node = new TreeNode();
-				node.Tag = l;
-				node.Text = l.ToString();
+				TreeNode node = new TreeNode
+				{
+					Tag = l,
+					Text = l.ToString()
+				};
 				treeView1.Nodes.Add(node);
 			}
 		}

@@ -1334,10 +1334,12 @@ namespace SimPe.Plugin
 			if (sdsc != null)
 			{
 				AddImage(sdsc);
-				ListViewItem lvi = new ListViewItem();
-				lvi.Text = sdsc.SimName + " : Owner";
-				lvi.ImageIndex = ilist.Images.Count - 1;
-				lvi.Tag = sdsc;
+				ListViewItem lvi = new ListViewItem
+				{
+					Text = sdsc.SimName + " : Owner",
+					ImageIndex = ilist.Images.Count - 1,
+					Tag = sdsc
+				};
 				lvi.SubItems.Add("3"); // payrate
 				lvi.SubItems.Add("-1"); // sim index
 				lvi.SubItems.Add("0"); // Catched Fair Pay
@@ -1347,10 +1349,12 @@ namespace SimPe.Plugin
 			else
 			{
 				ilist.Images.Add(new Bitmap(GetImage.NoOne));
-				ListViewItem lvi = new ListViewItem();
-				lvi.Text = Localization.GetString("Unknown") + " : Owner";
-				lvi.ImageIndex = ilist.Images.Count - 1;
-				lvi.Tag = null;
+				ListViewItem lvi = new ListViewItem
+				{
+					Text = Localization.GetString("Unknown") + " : Owner",
+					ImageIndex = ilist.Images.Count - 1,
+					Tag = null
+				};
 				lvi.SubItems.Add("3"); // payrate
 				lvi.SubItems.Add("-1"); // sim index
 				lvi.SubItems.Add("0"); // Catched Fair Pay
@@ -1367,10 +1371,12 @@ namespace SimPe.Plugin
 				if (sdsc != null)
 				{
 					AddImage(sdsc);
-					ListViewItem lvi = new ListViewItem();
-					lvi.Text = sdsc.SimName + " " + sdsc.SimFamilyName;
-					lvi.ImageIndex = ilist.Images.Count - 1;
-					lvi.Tag = sdsc;
+					ListViewItem lvi = new ListViewItem
+					{
+						Text = sdsc.SimName + " " + sdsc.SimFamilyName,
+						ImageIndex = ilist.Images.Count - 1,
+						Tag = sdsc
+					};
 					lvi.SubItems.Add(Convert.ToString(Bnfo.PayRate[i]));
 					lvi.SubItems.Add(Convert.ToString(i));
 					lvi.SubItems.Add(Convert.ToString(Bnfo.A[i]));
@@ -1379,10 +1385,12 @@ namespace SimPe.Plugin
 				else
 				{
 					ilist.Images.Add(new Bitmap(GetImage.NoOne));
-					ListViewItem lvi = new ListViewItem();
-					lvi.Text = Localization.GetString("Unknown");
-					lvi.ImageIndex = ilist.Images.Count - 1;
-					lvi.Tag = null;
+					ListViewItem lvi = new ListViewItem
+					{
+						Text = Localization.GetString("Unknown"),
+						ImageIndex = ilist.Images.Count - 1,
+						Tag = null
+					};
 					lvi.SubItems.Add(Convert.ToString(Bnfo.PayRate[i]));
 					lvi.SubItems.Add(Convert.ToString(i));
 					lvi.SubItems.Add(Convert.ToString(Bnfo.A[i]));

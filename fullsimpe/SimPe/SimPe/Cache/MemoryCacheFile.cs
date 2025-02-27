@@ -134,12 +134,14 @@ namespace SimPe.Cache
 				objd.Package.FileName
 			);
 
-			MemoryCacheItem mci = new MemoryCacheItem();
-			mci.FileDescriptor = objd.FileDescriptor;
-			mci.Guid = objd.Guid;
-			mci.ObjectType = objd.Type;
-			mci.ObjdName = objd.FileName;
-			mci.ParentCacheContainer = mycc;
+			MemoryCacheItem mci = new MemoryCacheItem
+			{
+				FileDescriptor = objd.FileDescriptor,
+				Guid = objd.Guid,
+				ObjectType = objd.Type,
+				ObjdName = objd.FileName,
+				ParentCacheContainer = mycc
+			};
 
 			try
 			{
@@ -368,8 +370,10 @@ namespace SimPe.Cache
 		/// </remarks>
 		public void LoadMemTable()
 		{
-			fi = new FileIndex(new ArrayList());
-			fi.Duplicates = false;
+			fi = new FileIndex(new ArrayList())
+			{
+				Duplicates = false
+			};
 
 			foreach (CacheContainer cc in Containers)
 			{

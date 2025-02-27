@@ -43,8 +43,10 @@ namespace SimPe.Plugin.Collections
 
 		public NgbhSlot AddNew(uint inst)
 		{
-			NgbhSlot s = new NgbhSlot(parent, Type);
-			s.SlotID = inst;
+			NgbhSlot s = new NgbhSlot(parent, Type)
+			{
+				SlotID = inst
+			};
 
 			Add(s);
 

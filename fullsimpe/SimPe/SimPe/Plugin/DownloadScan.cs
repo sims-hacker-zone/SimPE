@@ -1275,8 +1275,10 @@ namespace SimPe.Plugin
 					state = "Not loaded, " + ex.Message;
 				}
 
-				ListViewItem lvi = new ListViewItem();
-				lvi.Text = name;
+				ListViewItem lvi = new ListViewItem
+				{
+					Text = name
+				};
 				lvi.SubItems.Add(desc);
 				lvi.Tag = file;
 				if (guid.Length > 0)
@@ -1795,18 +1797,22 @@ namespace SimPe.Plugin
 			if (cpf.GetItem("product") == null)
 			{
 				PackedFiles.Wrapper.CpfItem i =
-					new PackedFiles.Wrapper.CpfItem();
-				i.Name = "product";
-				i.UIntegerValue = 1;
+					new PackedFiles.Wrapper.CpfItem
+					{
+						Name = "product",
+						UIntegerValue = 1
+					};
 				cpf.AddItem(i);
 			}
 
 			if (cpf.GetItem("version") == null)
 			{
 				PackedFiles.Wrapper.CpfItem i =
-					new PackedFiles.Wrapper.CpfItem();
-				i.Name = "version";
-				i.UIntegerValue = 2;
+					new PackedFiles.Wrapper.CpfItem
+					{
+						Name = "version",
+						UIntegerValue = 2
+					};
 				cpf.AddItem(i);
 			}
 		}

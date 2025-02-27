@@ -66,17 +66,21 @@ namespace SimPe.PackedFiles.UserInterface
 			foreach (string k in keys)
 			{
 				string[] s = k.Split(":".ToCharArray(), 2);
-				Label lb = new Label();
-				lb.Parent = form.pnelements;
-				lb.AutoSize = true;
-				lb.Text = k + " = ";
-				lb.Top = top;
-				lb.Visible = true;
+				Label lb = new Label
+				{
+					Parent = form.pnelements,
+					AutoSize = true,
+					Text = k + " = ",
+					Top = top,
+					Visible = true
+				};
 
-				TextBox tb = new TextBox();
-				tb.BorderStyle = BorderStyle.None;
-				tb.Parent = form.pnelements;
-				tb.Left = lb.Left + lb.Width;
+				TextBox tb = new TextBox
+				{
+					BorderStyle = BorderStyle.None,
+					Parent = form.pnelements,
+					Left = lb.Left + lb.Width
+				};
 				tb.Top = lb.Bottom - tb.Height;
 				tb.Width = 50;
 				tb.Text = "0x" + Helper.HexString(objd.GetAttributeShort(s[1].Trim()));
@@ -84,15 +88,17 @@ namespace SimPe.PackedFiles.UserInterface
 				tb.Visible = true;
 				tb.TextChanged += new EventHandler(HexTextChanged);
 
-				TextBox tb2 = new TextBox();
-				tb2.BorderStyle = BorderStyle.None;
-				tb2.Parent = form.pnelements;
-				tb2.Left = tb.Left + tb.Width + 4;
-				tb2.Top = lb.Bottom - tb.Height;
-				tb2.Width = 100;
-				tb2.Text = ((short)objd.GetAttributeShort(s[1].Trim())).ToString();
-				tb2.Tag = null;
-				tb2.Visible = true;
+				TextBox tb2 = new TextBox
+				{
+					BorderStyle = BorderStyle.None,
+					Parent = form.pnelements,
+					Left = tb.Left + tb.Width + 4,
+					Top = lb.Bottom - tb.Height,
+					Width = 100,
+					Text = ((short)objd.GetAttributeShort(s[1].Trim())).ToString(),
+					Tag = null,
+					Visible = true
+				};
 				tb2.TextChanged += new EventHandler(DecTextChanged);
 
 				top += Math.Max(lb.Height, tb.Height) + 2;

@@ -738,9 +738,11 @@ namespace Ambertation.Windows.Forms
 			float[] relativePositions = { 0.0f, 0.1f, 0.5f, 1.0f };
 
 			//Create a Blend object and assign it to linGrBrush.
-			Blend blend = new Blend();
-			blend.Factors = relativeIntensities;
-			blend.Positions = relativePositions;
+			Blend blend = new Blend
+			{
+				Factors = relativeIntensities,
+				Positions = relativePositions
+			};
 
 			b.Blend = blend;
 
@@ -766,9 +768,11 @@ namespace Ambertation.Windows.Forms
 			relativePositions = new float[] { 0.0f, 0.5f, 0.7f, 1.0f };
 
 			//Create a Blend object and assign it to linGrBrush.
-			blend = new Blend();
-			blend.Factors = relativeIntensities;
-			blend.Positions = relativePositions;
+			blend = new Blend
+			{
+				Factors = relativeIntensities,
+				Positions = relativePositions
+			};
 
 			b.Blend = blend;
 

@@ -237,9 +237,11 @@ namespace SimPe.Plugin.Scanner
 
 		protected override System.Windows.Forms.Control CreateOperationControl()
 		{
-			System.Windows.Forms.LinkLabel ll = new System.Windows.Forms.LinkLabel();
-			ll.AutoSize = true;
-			ll.Text = "fix unhealthy Package";
+			System.Windows.Forms.LinkLabel ll = new System.Windows.Forms.LinkLabel
+			{
+				AutoSize = true,
+				Text = "fix unhealthy Package"
+			};
 			ll.Font = new System.Drawing.Font(
 				"Verdana",
 				ll.Font.Size,

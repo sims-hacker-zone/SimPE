@@ -37,10 +37,12 @@ namespace SimPe
 			CodeDomProvider iCodeCompiler = new CSharpCodeProvider();
 
 			// input params for the compiler
-			CompilerParameters compilerParams = new CompilerParameters();
-			compilerParams.GenerateInMemory = true;
-			compilerParams.GenerateExecutable = false;
-			compilerParams.IncludeDebugInformation = true;
+			CompilerParameters compilerParams = new CompilerParameters
+			{
+				GenerateInMemory = true,
+				GenerateExecutable = false,
+				IncludeDebugInformation = true
+			};
 
 			compilerParams.ReferencedAssemblies.Add("system.dll");
 			compilerParams.ReferencedAssemblies.Add("system.data.dll");

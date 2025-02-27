@@ -41,16 +41,18 @@ namespace SimPe.Actions.Default
 			if (!multi)
 			{
 				System.Windows.Forms.SaveFileDialog sfd =
-					new System.Windows.Forms.SaveFileDialog();
-				sfd.FileName = name;
-				sfd.Filter = ExtensionProvider.BuildFilterString(
+					new System.Windows.Forms.SaveFileDialog
+					{
+						FileName = name,
+						Filter = ExtensionProvider.BuildFilterString(
 					new ExtensionType[]
 					{
 						ExtensionType.ExtractedFile,
 						ExtensionType.AllFiles,
 					}
-				);
-				sfd.Title = Localization.GetString(ToString());
+				),
+						Title = Localization.GetString(ToString())
+					};
 				if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 				{
 					return sfd.FileName;

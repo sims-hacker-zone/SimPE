@@ -100,8 +100,10 @@ namespace SimPe.Plugin
 				//build default Sizes
 				for (int i = 0; i < levels; i++)
 				{
-					MipMap mm = new MipMap(id);
-					mm.Texture = new Bitmap(wd, hg);
+					MipMap mm = new MipMap(id)
+					{
+						Texture = new Bitmap(wd, hg)
+					};
 
 					if ((wd == hg) && (wd == 1))
 					{
@@ -162,8 +164,10 @@ namespace SimPe.Plugin
 				} // for i
 
 				MipMapBlock[] mmps = new MipMapBlock[1];
-				mmps[0] = new MipMapBlock(id);
-				mmps[0].MipMaps = maps;
+				mmps[0] = new MipMapBlock(id)
+				{
+					MipMaps = maps
+				};
 
 				id.MipMapBlocks = mmps;
 			}
@@ -197,16 +201,20 @@ namespace SimPe.Plugin
 					for (int i = data.Length - 1; i >= 0; i--)
 					{
 						DDSData item = data[i];
-						MipMap mm = new MipMap(id);
-						mm.Texture = item.Texture;
-						mm.Data = item.Data;
+						MipMap mm = new MipMap(id)
+						{
+							Texture = item.Texture,
+							Data = item.Data
+						};
 
 						maps[ct++] = mm;
 					}
 
 					MipMapBlock[] mmps = new MipMapBlock[1];
-					mmps[0] = new MipMapBlock(id);
-					mmps[0].MipMaps = maps;
+					mmps[0] = new MipMapBlock(id)
+					{
+						MipMaps = maps
+					};
 
 					id.MipMapBlocks = mmps;
 				}
@@ -341,10 +349,12 @@ namespace SimPe.Plugin
 				LoadTXTR(id, filename, sz, levels, format);
 			}
 
-			Rcol rcol = new GenericRcol(null, false);
-			rcol.FileName = texturename;
-			rcol.FileDescriptor = new Packages.PackedFileDescriptor();
-			rcol.Blocks = new IRcolBlock[1];
+			Rcol rcol = new GenericRcol(null, false)
+			{
+				FileName = texturename,
+				FileDescriptor = new Packages.PackedFileDescriptor(),
+				Blocks = new IRcolBlock[1]
+			};
 			rcol.Blocks[0] = id;
 
 			rcol.SynchronizeUserData();

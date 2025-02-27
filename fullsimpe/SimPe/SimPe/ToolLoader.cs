@@ -497,11 +497,13 @@ namespace SimPe
 				string rname = ToolLoaderItemExt.SplitName(name);
 				XmlRegistryKey srk = rk.CreateSubKey(name);
 
-				ToolLoaderItemExt tli = new ToolLoaderItemExt(rname);
-				tli.Type = Convert.ToUInt32(srk.GetValue("type"));
-				//tli.Name = Convert.ToString(srk.GetValue("name"));
-				tli.FileName = Convert.ToString(srk.GetValue("filename"));
-				tli.Attributes = Convert.ToString(srk.GetValue("attributes"));
+				ToolLoaderItemExt tli = new ToolLoaderItemExt(rname)
+				{
+					Type = Convert.ToUInt32(srk.GetValue("type")),
+					//tli.Name = Convert.ToString(srk.GetValue("name"));
+					FileName = Convert.ToString(srk.GetValue("filename")),
+					Attributes = Convert.ToString(srk.GetValue("attributes"))
+				};
 
 				list.Add(tli);
 			}

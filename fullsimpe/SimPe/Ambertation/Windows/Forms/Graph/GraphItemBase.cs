@@ -372,16 +372,18 @@ namespace Ambertation.Windows.Forms.Graph
 
 			if (e.Added)
 			{
-				LinkGraphic lc = new LinkGraphic();
-				lc.Text = e.Text;
-				lc.ForeColor = CurrentLinkColor;
-				lc.Parent = Parent;
-				lc.StartElement = this;
-				lc.EndElement = e.GraphItem;
-				lc.StartAnchorSnap = LinkControlSnapAnchor.OnlyCenter;
-				lc.EndAnchorSnap = LinkControlSnapAnchor.OnlyCenter;
-				lc.LineMode = LineMode;
-				lc.Quality = Quality;
+				LinkGraphic lc = new LinkGraphic
+				{
+					Text = e.Text,
+					ForeColor = CurrentLinkColor,
+					Parent = Parent,
+					StartElement = this,
+					EndElement = e.GraphItem,
+					StartAnchorSnap = LinkControlSnapAnchor.OnlyCenter,
+					EndAnchorSnap = LinkControlSnapAnchor.OnlyCenter,
+					LineMode = LineMode,
+					Quality = Quality
+				};
 
 				lc.SendToBack();
 				lcmap.Add(e.GraphItem, lc);

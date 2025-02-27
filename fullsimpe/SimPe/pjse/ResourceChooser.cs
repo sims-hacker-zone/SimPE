@@ -372,8 +372,10 @@ namespace pjse
 					else
 					{
 						IPackedFileDescriptor pfd =
-							new SimPe.Packages.PackedFileDescriptor();
-						pfd.Instance = (uint)lvPrim.SelectedItems[0].Tag;
+							new SimPe.Packages.PackedFileDescriptor
+							{
+								Instance = (uint)lvPrim.SelectedItems[0].Tag
+							};
 						return new FileTable.Entry(null, pfd, true, true);
 					}
 				}
@@ -408,8 +410,10 @@ namespace pjse
 						"0x" + SimPe.Helper.HexString((ushort)item.Instance),
 						item,
 					}
-				);
-				lvi.Tag = item;
+				)
+				{
+					Tag = item
+				};
 				list.Items.Add(lvi);
 			}
 			tcResources.TabPages.Add(tab);
@@ -432,8 +436,10 @@ namespace pjse
 				{
 					lvi = new ListViewItem(
 						new string[] { "0x" + SimPe.Helper.HexString((ushort)i), s }
-					);
-					lvi.Tag = i;
+					)
+					{
+						Tag = i
+					};
 					list.Items.Add(lvi);
 				}
 				i++;

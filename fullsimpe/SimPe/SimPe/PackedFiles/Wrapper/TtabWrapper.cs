@@ -652,8 +652,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public TtabItem Clone(Ttab parent)
 		{
-			TtabItem clone = new TtabItem(this.parent);
-			clone.parent = parent;
+			TtabItem clone = new TtabItem(this.parent)
+			{
+				parent = parent
+			};
 			CopyTo(clone);
 			return clone;
 		}

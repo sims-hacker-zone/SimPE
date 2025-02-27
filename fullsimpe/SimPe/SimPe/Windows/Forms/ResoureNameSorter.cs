@@ -36,9 +36,11 @@ namespace SimPe.Windows.Forms
 				{
 					System.Threading.Thread t = new System.Threading.Thread(
 						new System.Threading.ThreadStart(ReadNames)
-					);
-					t.Name =
-						"Resource Sorting Thread " + i + "." + Helper.HexString(ticket);
+					)
+					{
+						Name =
+						"Resource Sorting Thread " + i + "." + Helper.HexString(ticket)
+					};
 					t.Start();
 				}
 			}

@@ -425,9 +425,11 @@ namespace SimPe.Plugin
 				}
 
 				Items = new ExtensionItem[1];
-				ExtensionItem ei = new ExtensionItem();
-				ei.Typecode = ExtensionItem.ItemTypes.Binary;
-				ei.Data = reader.ReadBytes(sz);
+				ExtensionItem ei = new ExtensionItem
+				{
+					Typecode = ExtensionItem.ItemTypes.Binary,
+					Data = reader.ReadBytes(sz)
+				};
 				Items[0] = ei;
 			}
 			else

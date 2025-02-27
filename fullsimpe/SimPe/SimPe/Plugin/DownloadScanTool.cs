@@ -37,8 +37,10 @@ namespace SimPe.Plugin
 			this.reg = reg;
 			this.prov = prov;
 
-			ds = new DownloadScan();
-			ds.prov = this.prov;
+			ds = new DownloadScan
+			{
+				prov = this.prov
+			};
 		}
 
 		#region ITool Member

@@ -443,9 +443,11 @@ namespace SimPe.PackedFiles.UserInterface
 			PickANumber pan = new PickANumber(
 				new ushort[] { (ushort)(maxtti & 0x7fff) },
 				new String[] { "Increase new Pie String IDs by" }
-			);
-			pan.Title = "\"Pie String ID\" increment";
-			pan.Prompt = "";
+			)
+			{
+				Title = "\"Pie String ID\" increment",
+				Prompt = ""
+			};
 			DialogResult dr = pan.ShowDialog();
 			if (dr == DialogResult.OK)
 			{

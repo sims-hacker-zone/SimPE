@@ -372,12 +372,16 @@ namespace SimPe.Plugin
 			{
 				if (dict.ContainsKey((uint)Wrapper.vdata.GetValue(chapter, i)))
 				{
-					pbx = new PictureBox();
-					pbx.Location = new System.Drawing.Point(ex, wy);
-					pbx.Size = new System.Drawing.Size(64, 64);
-					lbl = new Label();
-					lbl.AutoSize = true;
-					lbl.Location = new System.Drawing.Point(ex + 64, wy + 20);
+					pbx = new PictureBox
+					{
+						Location = new System.Drawing.Point(ex, wy),
+						Size = new System.Drawing.Size(64, 64)
+					};
+					lbl = new Label
+					{
+						AutoSize = true,
+						Location = new System.Drawing.Point(ex + 64, wy + 20)
+					};
 					GoalInformation goll = GoalInformation.LoadGoal(
 						dict[(uint)Wrapper.vdata.GetValue(chapter, i)]
 					);

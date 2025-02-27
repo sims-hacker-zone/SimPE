@@ -74,3 +74,4 @@ csharp_preserve_single_line_statements = false
 dotnet_style_operator_placement_when_wrapping = beginning_of_line
 
 csharp_style_throw_expression = true
+dotnet_style_object_initializer = true

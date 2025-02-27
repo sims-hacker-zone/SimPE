@@ -130,9 +130,11 @@ namespace SimPe.PackedFiles.Wrapper
 			GroupCacheItem gci = (GroupCacheItem)map[flname.Trim().ToLower()];
 			if (gci == null)
 			{
-				gci = new GroupCacheItem();
-				gci.FileName = flname;
-				gci.LocalGroup = maxgroup + 1;
+				gci = new GroupCacheItem
+				{
+					FileName = flname,
+					LocalGroup = maxgroup + 1
+				};
 				Add(gci);
 			}
 

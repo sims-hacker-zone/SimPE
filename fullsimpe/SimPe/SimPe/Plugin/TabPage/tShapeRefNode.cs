@@ -1151,10 +1151,11 @@ namespace SimPe.Plugin.TabPage
 			{
 				lb_srn_b.Tag = true;
 				Plugin.ShapeRefNode srn = (Plugin.ShapeRefNode)Tag;
-				ShapeRefNodeItem_B b = new ShapeRefNodeItem_B();
-
-				b.Unknown1 = (int)Convert.ToUInt32(tb_srn_b_1.Text, 16);
-				b.Name = tb_srn_b_name.Text;
+				ShapeRefNodeItem_B b = new ShapeRefNodeItem_B
+				{
+					Unknown1 = (int)Convert.ToUInt32(tb_srn_b_1.Text, 16),
+					Name = tb_srn_b_name.Text
+				};
 
 				srn.ItemsB = (ShapeRefNodeItem_B[])Helper.Add(srn.ItemsB, b);
 				lb_srn_b.Items.Add(b);

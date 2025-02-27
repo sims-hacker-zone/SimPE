@@ -254,8 +254,10 @@ namespace SimPe
 
 		void UpdateType()
 		{
-			FileTableItem fti = new FileTableItem(tbName.Text, false, file);
-			fti.Name = tbName.Text;
+			FileTableItem fti = new FileTableItem(tbName.Text, false, file)
+			{
+				Name = tbName.Text
+			};
 
 			tbRoot.Text = fti.Type.ToString();
 		}

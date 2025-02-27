@@ -28,8 +28,10 @@ namespace SimPe.Plugin.Gmdc
 			this.mesh = mesh;
 			this.gmi = gmi;
 
-			cbact = new ComboBox();
-			cbact.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbact = new ComboBox
+			{
+				DropDownStyle = ComboBoxStyle.DropDownList
+			};
 			cbact.SelectedIndexChanged += new EventHandler(cbact_SelectedIndexChanged);
 			GenericMeshImport.ImportAction[] acts = (GenericMeshImport.ImportAction[])
 				Enum.GetValues(typeof(GenericMeshImport.ImportAction));
@@ -40,8 +42,10 @@ namespace SimPe.Plugin.Gmdc
 
 			cbact.SelectedItem = GenericMeshImport.ImportAction.Add;
 
-			cbgroup = new ComboBox();
-			cbgroup.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbgroup = new ComboBox
+			{
+				DropDownStyle = ComboBoxStyle.DropDownList
+			};
 			cbgroup.Items.Add("[" + Localization.GetString("none") + "]");
 			foreach (GmdcGroup g in gmi.Gmdc.Groups)
 			{
@@ -50,9 +54,11 @@ namespace SimPe.Plugin.Gmdc
 
 			cbgroup.SelectedItem = 0;
 
-			cbenv = new CheckBox();
-			cbenv.BackColor = Color.Transparent;
-			cbenv.Checked = mesh.Envelopes.Count > 0;
+			cbenv = new CheckBox
+			{
+				BackColor = Color.Transparent,
+				Checked = mesh.Envelopes.Count > 0
+			};
 
 			int i = gmi.Gmdc.FindGroupByName(mesh.Name);
 			if (i >= 0)

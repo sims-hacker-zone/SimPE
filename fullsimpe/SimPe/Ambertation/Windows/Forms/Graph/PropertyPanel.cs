@@ -102,8 +102,10 @@ namespace Ambertation.Windows.Forms.Graph
 			gr.DrawLine(linepen, new Point(0, 20), new Point(Width, 20));
 			linepen.Dispose();
 
-			StringFormat sf = new StringFormat();
-			sf.FormatFlags = StringFormatFlags.NoWrap;
+			StringFormat sf = new StringFormat
+			{
+				FormatFlags = StringFormatFlags.NoWrap
+			};
 			Font ftb = new Font(Font.FontFamily, Font.Size, FontStyle.Bold, Font.Unit);
 			gr.DrawString(
 				Text,

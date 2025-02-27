@@ -268,8 +268,10 @@ namespace SimPe.Cache
 
 			if (mycc == null)
 			{
-				mycc = new CacheContainer(ct);
-				mycc.FileName = name;
+				mycc = new CacheContainer(ct)
+				{
+					FileName = name
+				};
 				Containers.Add(mycc);
 			}
 

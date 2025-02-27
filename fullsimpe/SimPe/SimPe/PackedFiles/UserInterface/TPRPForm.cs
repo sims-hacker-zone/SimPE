@@ -177,22 +177,26 @@ namespace SimPe.PackedFiles.UserInterface
 			tbFilename.Text = wrapper.FileName;
 			tprpPanel.Controls.Add(tbFilename);
 
-			Label lb = new Label();
-			lb.AutoSize = true;
-			lb.Location = new Point(0, tbFilename.Bottom + 6);
-			lb.Text = pjse.Localization.GetString("tprpTextOnly");
+			Label lb = new Label
+			{
+				AutoSize = true,
+				Location = new Point(0, tbFilename.Bottom + 6),
+				Text = pjse.Localization.GetString("tprpTextOnly")
+			};
 
-			TextBox tb = new TextBox();
-			tb.Anchor =
+			TextBox tb = new TextBox
+			{
+				Anchor =
 				AnchorStyles.Top
 				| AnchorStyles.Bottom
 				| AnchorStyles.Left
-				| AnchorStyles.Right;
-			tb.Multiline = true;
-			tb.Location = new Point(0, lb.Bottom + 6);
-			tb.ReadOnly = true;
-			tb.ScrollBars = ScrollBars.Both;
-			tb.Size = tprpPanel.Size;
+				| AnchorStyles.Right,
+				Multiline = true,
+				Location = new Point(0, lb.Bottom + 6),
+				ReadOnly = true,
+				ScrollBars = ScrollBars.Both,
+				Size = tprpPanel.Size
+			};
 			tb.Height -= tb.Top;
 
 			tb.Text = getText(wrapper.StoredData);

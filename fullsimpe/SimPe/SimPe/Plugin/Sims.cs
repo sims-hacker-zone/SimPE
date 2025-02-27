@@ -506,10 +506,12 @@ namespace SimPe.Plugin
 		protected void AddSim(PackedFiles.Wrapper.ExtSDesc sdesc)
 		{
 			AddImage(sdesc);
-			ListViewItem lvi = new ListViewItem();
-			lvi.Text = sdesc.SimName + " " + sdesc.SimFamilyName;
-			lvi.ImageIndex = ilist.Images.Count - 1;
-			lvi.Tag = sdesc;
+			ListViewItem lvi = new ListViewItem
+			{
+				Text = sdesc.SimName + " " + sdesc.SimFamilyName,
+				ImageIndex = ilist.Images.Count - 1,
+				Tag = sdesc
+			};
 
 			if (sdesc.FamilyInstance == 0)
 			{

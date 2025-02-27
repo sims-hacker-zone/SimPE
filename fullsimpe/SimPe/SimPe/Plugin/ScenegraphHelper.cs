@@ -36,14 +36,16 @@ namespace SimPe.Plugin
 		{
 			string name = Hashes.StripHashFromName(flname);
 			Packages.PackedFileDescriptor pfd =
-				new Packages.PackedFileDescriptor();
-			pfd.Type = type;
-			pfd.Group = Hashes.GetHashGroupFromName(flname, defgroup);
-			pfd.Instance = Hashes.InstanceHash(name);
-			pfd.SubType = Hashes.SubTypeHash(name);
-			pfd.Filename = flname;
+				new Packages.PackedFileDescriptor
+				{
+					Type = type,
+					Group = Hashes.GetHashGroupFromName(flname, defgroup),
+					Instance = Hashes.InstanceHash(name),
+					SubType = Hashes.SubTypeHash(name),
+					Filename = flname,
 
-			pfd.UserData = new byte[0];
+					UserData = new byte[0]
+				};
 
 			return pfd;
 		}

@@ -161,19 +161,21 @@ namespace SimPe.Packages
 		/// <returns>The Cloned Object</returns>
 		public IPackedFileDescriptor Clone()
 		{
-			PackedFileDescriptor pfd = new PackedFileDescriptor();
-			pfd.filename = filename;
-			pfd.group = group;
-			pfd.instance = instance;
-			pfd.offset = offset;
-			pfd.size = size;
-			pfd.subtype = subtype;
-			pfd.type = type;
-			pfd.changed = changed;
-			pfd.wascomp = wascomp;
+			PackedFileDescriptor pfd = new PackedFileDescriptor
+			{
+				filename = filename,
+				group = group,
+				instance = instance,
+				offset = offset,
+				size = size,
+				subtype = subtype,
+				type = type,
+				changed = changed,
+				wascomp = wascomp,
 
-			pfd.markcompress = markcompress;
-			pfd.markdeleted = markdeleted;
+				markcompress = markcompress,
+				markdeleted = markdeleted
+			};
 
 			return pfd;
 		}

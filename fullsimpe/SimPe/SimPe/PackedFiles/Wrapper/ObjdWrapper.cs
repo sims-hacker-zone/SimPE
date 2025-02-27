@@ -438,9 +438,11 @@ namespace SimPe.PackedFiles.Wrapper
 						break;
 					}
 
-					ObjdItem item = new ObjdItem();
-					item.position = reader.BaseStream.Position;
-					item.val = reader.ReadUInt16();
+					ObjdItem item = new ObjdItem
+					{
+						position = reader.BaseStream.Position,
+						val = reader.ReadUInt16()
+					};
 					string sname = name;
 					if (name.Trim() == "")
 					{

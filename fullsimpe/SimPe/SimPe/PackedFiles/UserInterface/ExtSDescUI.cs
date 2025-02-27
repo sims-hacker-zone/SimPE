@@ -3443,14 +3443,16 @@ if (System.IO.File.Exists(Sdesc.CharacterFileName))
 				if (!insts.Contains(inst))
 				{
 					Wrapper.ExtSDesc sdesc =
-						new Wrapper.ExtSDesc();
-					sdesc.FileDescriptor = Sdesc.Package.NewDescriptor(
+						new Wrapper.ExtSDesc
+						{
+							FileDescriptor = Sdesc.Package.NewDescriptor(
 						MetaData.SIM_DESCRIPTION_FILE,
 						0,
 						Sdesc.FileDescriptor.Group,
 						inst
-					);
-					sdesc.Package = Sdesc.Package;
+					),
+							Package = Sdesc.Package
+						};
 					SteepValley.Windows.Forms.XPListViewItem lvi = lv.Add(sdesc);
 					lvi.GroupIndex = 2;
 
@@ -3985,8 +3987,10 @@ if (System.IO.File.Exists(Sdesc.CharacterFileName))
 				ListViewItem lvi = new ListViewItem(
 					a.ToString(),
 					ilCollectibles.Images.Count - 1
-				);
-				lvi.Tag = a;
+				)
+				{
+					Tag = a
+				};
 				lvCollectibles.Items.Add(lvi);
 			}
 		}

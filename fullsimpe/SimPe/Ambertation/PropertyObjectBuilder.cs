@@ -239,8 +239,10 @@ namespace Ambertation
 		{
 			this.ht = ht;
 			AppDomain myDomain = Thread.GetDomain();
-			AssemblyName myAsmName = new AssemblyName();
-			myAsmName.Name = "MyDynamicAssembly";
+			AssemblyName myAsmName = new AssemblyName
+			{
+				Name = "MyDynamicAssembly"
+			};
 
 			AssemblyBuilder myAsmBuilder = myDomain.DefineDynamicAssembly(
 				myAsmName,

@@ -96,8 +96,10 @@ namespace SimPe
 
 			if (create)
 			{
-				XmlRegistryKey xrk = new XmlRegistryKey();
-				xrk.Name = name;
+				XmlRegistryKey xrk = new XmlRegistryKey
+				{
+					Name = name
+				};
 				tree[name] = xrk;
 				return CreateSubKey(name);
 			}

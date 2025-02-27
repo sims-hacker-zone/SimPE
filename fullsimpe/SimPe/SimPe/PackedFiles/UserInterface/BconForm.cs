@@ -520,8 +520,10 @@ namespace SimPe.PackedFiles.UserInterface
 
 						Interfaces.Files.IPackedFileDescriptor npfd =
 							trcn.FileDescriptor.Clone();
-						Trcn ntrcn = new Trcn();
-						ntrcn.FileDescriptor = npfd;
+						Trcn ntrcn = new Trcn
+						{
+							FileDescriptor = npfd
+						};
 						wrapper.Package.Add(npfd, true);
 						ntrcn.ProcessData(npfd, wrapper.Package);
 						if (dr == DialogResult.Yes)

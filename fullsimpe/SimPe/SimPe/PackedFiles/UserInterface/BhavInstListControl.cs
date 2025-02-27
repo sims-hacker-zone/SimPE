@@ -539,13 +539,14 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 			}
 
-			BhavInstListItemUI i = new BhavInstListItemUI();
-
-			i.Anchor =
+			BhavInstListItemUI i = new BhavInstListItemUI
+			{
+				Anchor =
 				AnchorStyles.Top
 				| AnchorStyles.Left
-				| AnchorStyles.Right;
-			i.Left = AutoScrollPosition.X;
+				| AnchorStyles.Right,
+				Left = AutoScrollPosition.X
+			};
 			i.Top = ct * (i.Height + 4) + AutoScrollPosition.Y;
 			i.Width = ClientRectangle.Width - pnflow.Width;
 			i.Index = ct;

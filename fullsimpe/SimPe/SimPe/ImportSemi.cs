@@ -537,14 +537,16 @@ namespace SimPe
 						(Interfaces.Scenegraph.IScenegraphFileIndexItem)
 							lbfiles.Items[i];
 					Packages.PackedFileDescriptor npfd =
-						new Packages.PackedFileDescriptor();
-					npfd.Type = item.FileDescriptor.Type;
-					npfd.Group = item.FileDescriptor.Group;
-					npfd.Instance = item.FileDescriptor.Instance;
-					npfd.SubType = item.FileDescriptor.SubType;
-					npfd.UserData = item
+						new Packages.PackedFileDescriptor
+						{
+							Type = item.FileDescriptor.Type,
+							Group = item.FileDescriptor.Group,
+							Instance = item.FileDescriptor.Instance,
+							SubType = item.FileDescriptor.SubType,
+							UserData = item
 						.Package.Read(item.FileDescriptor)
-						.UncompressedData;
+						.UncompressedData
+						};
 					package.Add(npfd);
 
 					if (npfd.Type == Data.MetaData.BHAV_FILE)

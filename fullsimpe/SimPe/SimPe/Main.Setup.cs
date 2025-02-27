@@ -30,9 +30,11 @@ namespace SimPe
 		{
 			if (Helper.WindowsRegistry.HiddenMode)
 			{
-				ToolStripButton tbDebug = new ToolStripButton();
-				tbDebug.ToolTipText = "Debug docks";
-				tbDebug.Image = GetIcon.Debug;
+				ToolStripButton tbDebug = new ToolStripButton
+				{
+					ToolTipText = "Debug docks",
+					Image = GetIcon.Debug
+				};
 				toolBar1.Items.Add(tbDebug);
 				tbDebug.Click += new EventHandler(tbDebug_Click);
 
@@ -114,9 +116,11 @@ namespace SimPe
 				+ ") "
 				+ PathProvider.Global.Latest.DisplayName;
 
-			TD.SandDock.SandDockManager sdm2 = new TD.SandDock.SandDockManager();
-			sdm2.OwnerForm = this;
-			sdm2.Renderer = new TD.SandDock.Rendering.WhidbeyRenderer();
+			TD.SandDock.SandDockManager sdm2 = new TD.SandDock.SandDockManager
+			{
+				OwnerForm = this,
+				Renderer = new TD.SandDock.Rendering.WhidbeyRenderer()
+			};
 
 			dc.Manager = sdm2;
 

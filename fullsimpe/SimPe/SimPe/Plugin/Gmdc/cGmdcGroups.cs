@@ -406,8 +406,10 @@ namespace SimPe.Plugin.Gmdc
 			{
 				if (i % 3 == 0)
 				{
-					v = new Geometry.Vector3i();
-					v.X = Faces[i];
+					v = new Geometry.Vector3i
+					{
+						X = Faces[i]
+					};
 				}
 				else if (i % 3 == 2)
 				{

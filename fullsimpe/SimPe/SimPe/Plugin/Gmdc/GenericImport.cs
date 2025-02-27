@@ -459,8 +459,10 @@ namespace SimPe.Plugin.Gmdc
 
 		public static void Execute(GenericMeshImport gmi)
 		{
-			GenericImportForm f = new GenericImportForm();
-			f.gmi = gmi;
+			GenericImportForm f = new GenericImportForm
+			{
+				gmi = gmi
+			};
 			f.Setup();
 			f.ShowDialog();
 			f.Dispose();

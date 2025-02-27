@@ -82,10 +82,12 @@ namespace SimPe
 					WaitingScreen.Stop();
 					if (tr.ChangedAny)
 					{
-						PackageArg p = new PackageArg();
-						p.Package = package;
-						p.FileDescriptor = pfd;
-						p.Result = tr;
+						PackageArg p = new PackageArg
+						{
+							Package = package,
+							FileDescriptor = pfd,
+							Result = tr
+						};
 						if (ChangeHandler != null)
 						{
 							ChangeHandler(this, p);

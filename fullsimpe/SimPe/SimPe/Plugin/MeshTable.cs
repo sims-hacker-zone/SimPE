@@ -293,11 +293,13 @@ namespace SimPe.Plugin
 						{
 							IPackedFileDescriptor shpeFile = rcol.ReferencedFiles[0];
 
-							MeshInfo rp = new MeshInfo();
-							rp.ResourceNode = cresFile;
-							rp.ShapeFile = shpeFile;
-							rp.Description = rcol.FileName.Replace("_cres", "");
-							rp.FileName = meshPackage.FileName;
+							MeshInfo rp = new MeshInfo
+							{
+								ResourceNode = cresFile,
+								ShapeFile = shpeFile,
+								Description = rcol.FileName.Replace("_cres", ""),
+								FileName = meshPackage.FileName
+							};
 							ret.Add(rp);
 						}
 					}

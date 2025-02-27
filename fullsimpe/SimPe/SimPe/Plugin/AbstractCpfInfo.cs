@@ -137,8 +137,10 @@ namespace SimPe.Plugin
 			CpfItem ret = propertySet.GetItem(name);
 			if (ret == null)
 			{
-				ret = new CpfItem();
-				ret.Name = name;
+				ret = new CpfItem
+				{
+					Name = name
+				};
 				propertySet.AddItem(ret);
 			}
 			return ret;

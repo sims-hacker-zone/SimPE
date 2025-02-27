@@ -424,9 +424,11 @@ namespace SimPe.Cache
 
 			Name = reader.ReadString();
 			ModelName = reader.ReadString();
-			pfd = new Packages.PackedFileDescriptor();
-			pfd.Type = reader.ReadUInt32();
-			pfd.Group = reader.ReadUInt32();
+			pfd = new Packages.PackedFileDescriptor
+			{
+				Type = reader.ReadUInt32(),
+				Group = reader.ReadUInt32()
+			};
 			LocalGroup = reader.ReadUInt32();
 			pfd.LongInstance = reader.ReadUInt64();
 

@@ -247,8 +247,10 @@ else if (value.GetType()==typeof(ushort))
 		{
 			this.ht = ht;
 			AppDomain myDomain = Thread.GetDomain();
-			AssemblyName myAsmName = new AssemblyName();
-			myAsmName.Name = "EmittedAssembly";
+			AssemblyName myAsmName = new AssemblyName
+			{
+				Name = "EmittedAssembly"
+			};
 
 			AssemblyBuilder myAsmBuilder = myDomain.DefineDynamicAssembly(
 				myAsmName,

@@ -65,8 +65,10 @@ namespace SimPe.Plugin.Scanner
 		)
 		{
 			System.Windows.Forms.ColumnHeader ch =
-				new System.Windows.Forms.ColumnHeader();
-			ch.Text = name;
+				new System.Windows.Forms.ColumnHeader
+				{
+					Text = name
+				};
 			lv.Columns.Add(ch);
 
 			if (width > 0)

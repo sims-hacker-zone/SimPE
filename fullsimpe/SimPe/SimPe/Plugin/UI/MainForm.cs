@@ -46,10 +46,12 @@ namespace SimPe.Plugin.UI
 			while (++i < values.Length)
 			{
 				HairColor key = (HairColor)values.GetValue(i);
-				System.Windows.Forms.TabPage tp = new System.Windows.Forms.TabPage();
-				tp.Text = key.ToString();
-				tp.Tag = key;
-				tp.ImageIndex = i;
+				System.Windows.Forms.TabPage tp = new System.Windows.Forms.TabPage
+				{
+					Text = key.ToString(),
+					Tag = key,
+					ImageIndex = i
+				};
 				tcMain.TabPages.Add(tp);
 				ListView lv = CreateListView();
 				lv.ContextMenu = cmListActions;
@@ -61,12 +63,14 @@ namespace SimPe.Plugin.UI
 
 		ListView CreateListView()
 		{
-			ListView ret = new ListView();
-			ret.FullRowSelect = true;
-			ret.CheckBoxes = true;
-			ret.View = View.Details;
-			ret.HideSelection = false;
-			ret.LabelEdit = true;
+			ListView ret = new ListView
+			{
+				FullRowSelect = true,
+				CheckBoxes = true,
+				View = View.Details,
+				HideSelection = false,
+				LabelEdit = true
+			};
 			ret.AfterLabelEdit += new LabelEditEventHandler(
 				Handle_ListView_AfterLabelEdit
 			);
@@ -90,9 +94,11 @@ namespace SimPe.Plugin.UI
 			while (++i < values.Length)
 			{
 				HairColor key = (HairColor)values.GetValue(i);
-				MenuItem item = new MenuItem();
-				item.Index = i;
-				item.Text = key.ToString();
+				MenuItem item = new MenuItem
+				{
+					Index = i,
+					Text = key.ToString()
+				};
 				item.Click += new EventHandler(MovePackage_Command);
 				miMoveTo.MenuItems.Add(item);
 			}
@@ -556,8 +562,10 @@ namespace SimPe.Plugin.UI
 
 		ListViewItem CreateListItem(RecolorItem item)
 		{
-			ListViewItem li = new ListViewItem();
-			li.Text = item.Name;
+			ListViewItem li = new ListViewItem
+			{
+				Text = item.Name
+			};
 			li.SubItems.Add(item.Gender.ToString());
 			li.SubItems.Add(Enum.Format(typeof(Ages), item.Age, "G"));
 			li.SubItems.Add(item.Materials.Count.ToString());
@@ -857,16 +865,18 @@ namespace SimPe.Plugin.UI
 			if (lv.SelectedItems.Count == 1)
 			{
 				RecolorItem item = (RecolorItem)lv.SelectedItems[0].Tag;
-				ClothingSettings cset = new ClothingSettings();
-				cset.Age = item.Age;
-				cset.Gender = item.Gender;
-				cset.OutfitCat = (OutfitCats)item.GetProperty("category").UIntegerValue;
-				cset.OutfitType = item.OutfitType;
-				cset.ShoeType = (ShoeType)item.GetProperty("shoe").UIntegerValue;
-				cset.Species = (SpeciesType)item.GetProperty("species").UIntegerValue;
-				cset.OverlayType = item.TextureOverlayType;
-				cset.Figure = item.Figure;
-				cset.Flaggery = item.Flaggery;
+				ClothingSettings cset = new ClothingSettings
+				{
+					Age = item.Age,
+					Gender = item.Gender,
+					OutfitCat = (OutfitCats)item.GetProperty("category").UIntegerValue,
+					OutfitType = item.OutfitType,
+					ShoeType = (ShoeType)item.GetProperty("shoe").UIntegerValue,
+					Species = (SpeciesType)item.GetProperty("species").UIntegerValue,
+					OverlayType = item.TextureOverlayType,
+					Figure = item.Figure,
+					Flaggery = item.Flaggery
+				};
 				tpClothing.Enabled = true;
 				tpClothing.Settings = cset;
 			}

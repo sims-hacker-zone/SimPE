@@ -170,19 +170,23 @@ namespace SimPe.Plugin
 			{
 				System.Windows.Forms.TreeNode unode = new System.Windows.Forms.TreeNode(
 					"[Error: Unsupported Child on Index " + index.ToString() + "]"
-				);
-				unode.Tag = index;
-				unode.ImageIndex = 4;
-				unode.SelectedImageIndex = 4;
+				)
+				{
+					Tag = index,
+					ImageIndex = 4,
+					SelectedImageIndex = 4
+				};
 				parent.Add(unode);
 				return;
 			}
 
 			System.Windows.Forms.TreeNode node = new System.Windows.Forms.TreeNode(
 				"0x" + index.ToString("X") + ": " + child.ToString()
-			);
-			node.Tag = index;
-			node.ImageIndex = child.ImageIndex;
+			)
+			{
+				Tag = index,
+				ImageIndex = child.ImageIndex
+			};
 			node.SelectedImageIndex = node.ImageIndex;
 			parent.Add(node);
 

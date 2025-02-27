@@ -1663,8 +1663,10 @@ namespace SimPe.Plugin.Anim
 					+ ct
 					+ ", "
 					+ af.Type.ToString()
-			);
-			tn.Tag = af;
+			)
+			{
+				Tag = af
+			};
 
 			AddFrame(tn, af.XBlock, "X: ");
 			AddFrame(tn, af.YBlock, "Y: ");
@@ -1689,8 +1691,10 @@ namespace SimPe.Plugin.Anim
 				return;
 			}
 
-			TreeNode tn = new TreeNode(prefix + aat.ToString());
-			tn.Tag = aat;
+			TreeNode tn = new TreeNode(prefix + aat.ToString())
+			{
+				Tag = aat
+			};
 
 			parent.Nodes.Add(tn);
 		}

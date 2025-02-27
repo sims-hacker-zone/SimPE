@@ -50,8 +50,10 @@ namespace SimPe.Cache
 			if (mycc.Items.Count == 0)
 			{
 				PackageCacheItem pci = new PackageCacheItem();
-				ScannerItem item = new ScannerItem(pci, mycc);
-				item.FileName = filename;
+				ScannerItem item = new ScannerItem(pci, mycc)
+				{
+					FileName = filename
+				};
 				pci.Name = System.IO.Path.GetFileNameWithoutExtension(filename);
 				mycc.Items.Add(pci);
 
@@ -62,8 +64,10 @@ namespace SimPe.Cache
 				ScannerItem item = new ScannerItem(
 					(PackageCacheItem)mycc.Items[0],
 					mycc
-				);
-				item.FileName = filename;
+				)
+				{
+					FileName = filename
+				};
 
 				return item;
 			}
@@ -105,8 +109,10 @@ namespace SimPe.Cache
 				{
 					foreach (PackageCacheItem item in cc.Items)
 					{
-						ScannerItem si = new ScannerItem(item, cc);
-						si.FileName = cc.FileName;
+						ScannerItem si = new ScannerItem(item, cc)
+						{
+							FileName = cc.FileName
+						};
 						map[si.FileName.Trim().ToLower()] = item;
 					}
 				}

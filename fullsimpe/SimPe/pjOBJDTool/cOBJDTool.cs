@@ -54,9 +54,11 @@ namespace pjOBJDTool
 				null,
 				7,
 				(ushort)0
-			);
-			docCTSSInstance.Decimal = false;
-			docCTSSInstance.Use0xPrefix = true;
+			)
+			{
+				Decimal = false,
+				Use0xPrefix = true
+			};
 			docCTSSInstance.DataOwnerControlChanged += new EventHandler(
 				docCTSSInstance_DataOwnerControlChanged
 			);

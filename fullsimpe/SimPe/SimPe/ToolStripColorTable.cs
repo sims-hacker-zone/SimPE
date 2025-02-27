@@ -123,9 +123,11 @@ namespace SimPe
 				)
 				{
 					// Set colour values
-					ColorBlend cb = new ColorBlend(5);
-					cb.Colors = new Color[] { color1, color2, color2, color3, color4 };
-					cb.Positions = new float[] { 0F, 0.47F, 0.53F, 0.75F, 1F };
+					ColorBlend cb = new ColorBlend(5)
+					{
+						Colors = new Color[] { color1, color2, color2, color3, color4 },
+						Positions = new float[] { 0F, 0.47F, 0.53F, 0.75F, 1F }
+					};
 					l.InterpolationColors = cb;
 
 					// Fill background

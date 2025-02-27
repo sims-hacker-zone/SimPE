@@ -426,9 +426,11 @@ namespace SimPe.Plugin
 			for (int i = data.Length - 1; i >= 0; i--)
 			{
 				DDSData item = data[i];
-				MipMap mm = new MipMap(parent);
-				mm.Texture = item.Texture;
-				mm.Data = item.Data;
+				MipMap mm = new MipMap(parent)
+				{
+					Texture = item.Texture,
+					Data = item.Data
+				};
 
 				MipMaps[ct++] = mm;
 			}

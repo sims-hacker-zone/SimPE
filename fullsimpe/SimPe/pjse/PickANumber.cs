@@ -59,8 +59,10 @@ namespace pjse
 				tableLayoutPanel1.RowCount++;
 				tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.AutoSize));
 
-				TextBox t = new TextBox();
-				t.Name = "textBox" + (i + 2).ToString();
+				TextBox t = new TextBox
+				{
+					Name = "textBox" + (i + 2).ToString()
+				};
 				resources.ApplyResources(t, "textBox1");
 				ltb.Add(t);
 				t.Enabled = false;

@@ -136,8 +136,10 @@ namespace SimPe.Plugin
 
 				sdesc.ProcessData(spfd, wrp.Package);
 
-				ListViewItem lvi = new ListViewItem();
-				lvi.Text = sdesc.SimName + " " + sdesc.SimFamilyName;
+				ListViewItem lvi = new ListViewItem
+				{
+					Text = sdesc.SimName + " " + sdesc.SimFamilyName
+				};
 
 #if DEBUG
 				Data.Alias a = new Data.Alias(sdesc.SimId, lvi.Text);

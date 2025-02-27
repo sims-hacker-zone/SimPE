@@ -214,10 +214,12 @@ namespace SimPe.Plugin
 
 			GeometryNode gn = (GeometryNode)gmnd.Blocks[0];
 
-			ObjectGraphNodeItem item = new ObjectGraphNodeItem();
-			item.Enabled = 0x01;
-			item.Dependant = 0x00;
-			item.Index = (uint)gmnd.Blocks.Length;
+			ObjectGraphNodeItem item = new ObjectGraphNodeItem
+			{
+				Enabled = 0x01,
+				Dependant = 0x00,
+				Index = (uint)gmnd.Blocks.Length
+			};
 
 			gn.ObjectGraphNode.Items = (ObjectGraphNodeItem[])
 				Helper.Add(gn.ObjectGraphNode.Items, item);
@@ -323,9 +325,11 @@ namespace SimPe.Plugin
 							{
 								localsubsets.Add(part.Subset);
 
-								ExtensionItem ei = new ExtensionItem();
-								ei.Name = part.Subset;
-								ei.Typecode = ExtensionItem.ItemTypes.Array;
+								ExtensionItem ei = new ExtensionItem
+								{
+									Name = part.Subset,
+									Typecode = ExtensionItem.ItemTypes.Array
+								};
 
 								WorkshopMMAT i = new WorkshopMMAT(part.Subset);
 								object[] tag = new object[3];
@@ -392,12 +396,14 @@ namespace SimPe.Plugin
 					.Assembly.GetManifestResourceStream("SimPe.data.mmat.simpe")
 			);
 			Packages.PackedFileDescriptor pfd1 =
-				new Packages.PackedFileDescriptor();
-			pfd1.Group = 0xffffffff;
-			pfd1.SubType = 0x00000000;
-			pfd1.Instance = instance;
-			pfd1.Type = 0x4C697E5A; //MMAT
-			pfd1.UserData = br.ReadBytes((int)br.BaseStream.Length);
+				new Packages.PackedFileDescriptor
+				{
+					Group = 0xffffffff,
+					SubType = 0x00000000,
+					Instance = instance,
+					Type = 0x4C697E5A, //MMAT
+					UserData = br.ReadBytes((int)br.BaseStream.Length)
+				};
 
 			Package.Add(pfd1);
 			PackedFiles.Wrapper.Cpf mmat = new PackedFiles.Wrapper.Cpf();

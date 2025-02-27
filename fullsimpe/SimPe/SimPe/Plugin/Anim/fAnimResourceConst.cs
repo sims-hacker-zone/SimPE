@@ -58,22 +58,24 @@ namespace SimPe.Plugin.Anim
 			//
 			// ambc
 			//
-			ambc = new AnimMeshBlockControl();
-			ambc.BackColor = System.Drawing.Color.Transparent;
-			ambc.Dock = DockStyle.Fill;
-			ambc.Font = new System.Drawing.Font(
+			ambc = new AnimMeshBlockControl
+			{
+				BackColor = System.Drawing.Color.Transparent,
+				Dock = DockStyle.Fill,
+				Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				0
-			);
-			ambc.Location = new System.Drawing.Point(8, 8);
-			ambc.MeshBlock = null;
-			ambc.MeshBlocks = null;
-			ambc.Name = "ambc";
-			ambc.Size = new System.Drawing.Size(776, 246);
-			ambc.TabIndex = 1;
+			),
+				Location = new System.Drawing.Point(8, 8),
+				MeshBlock = null,
+				MeshBlocks = null,
+				Name = "ambc",
+				Size = new System.Drawing.Size(776, 246),
+				TabIndex = 1
+			};
 			ambc.Changed += new EventHandler(ambc_Changed);
 			tMesh.Controls.Add(ambc);
 		}
@@ -622,8 +624,10 @@ namespace SimPe.Plugin.Anim
 		)
 		{
 			AnimationMeshBlock ab1 = (AnimationMeshBlock)tv.SelectedNode.Tag;
-			SaveFileDialog ofd = new SaveFileDialog();
-			ofd.Filter = "TextFile (*.txt)|*.txt|All Files (*.*)|*.*";
+			SaveFileDialog ofd = new SaveFileDialog
+			{
+				Filter = "TextFile (*.txt)|*.txt|All Files (*.*)|*.*"
+			};
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
 				System.IO.StreamWriter sw = System.IO.File.CreateText(ofd.FileName);
@@ -664,8 +668,10 @@ namespace SimPe.Plugin.Anim
 		{
 			nah = true;
 			AnimationMeshBlock ab1 = (AnimationMeshBlock)tv.SelectedNode.Tag;
-			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Filter = "Text files (*.txt)|*.txt";
+			OpenFileDialog ofd = new OpenFileDialog
+			{
+				Filter = "Text files (*.txt)|*.txt"
+			};
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
 				System.IO.StreamReader sr = System.IO.File.OpenText(ofd.FileName);

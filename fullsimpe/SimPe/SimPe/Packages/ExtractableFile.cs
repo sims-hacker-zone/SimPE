@@ -44,8 +44,10 @@ namespace SimPe.Packages
 		/// <returns>An INstance of this Class</returns>
 		protected override IPackageFile NewCloneBase()
 		{
-			ExtractableFile fl = new ExtractableFile((BinaryReader)null);
-			fl.header = header;
+			ExtractableFile fl = new ExtractableFile((BinaryReader)null)
+			{
+				header = header
+			};
 
 			return fl;
 		}

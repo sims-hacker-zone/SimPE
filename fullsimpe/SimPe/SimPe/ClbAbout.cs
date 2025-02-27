@@ -143,8 +143,10 @@ namespace SimPe
 		/// </summary>
 		public static void ShowToolHelp()
 		{
-			ClbAbout f = new ClbAbout(true);
-			f.Text = "Colour Binning Tool";
+			ClbAbout f = new ClbAbout(true)
+			{
+				Text = "Colour Binning Tool"
+			};
 
 			f.LoadHtmResource("ColourBin");
 			Splash.Screen.Stop();

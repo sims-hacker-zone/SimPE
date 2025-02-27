@@ -205,22 +205,26 @@ namespace SimPe.PackedFiles.UserInterface
 			trcnPanel.Controls.Add(lbFormat);
 			trcnPanel.Controls.Add(tbFormat);
 
-			Label lb = new Label();
-			lb.AutoSize = true;
-			lb.Location = new Point(0, tbFormat.Bottom + 6);
-			lb.Text = pjse.Localization.GetString("trcnTextOnly");
+			Label lb = new Label
+			{
+				AutoSize = true,
+				Location = new Point(0, tbFormat.Bottom + 6),
+				Text = pjse.Localization.GetString("trcnTextOnly")
+			};
 
-			TextBox tb = new TextBox();
-			tb.Anchor =
+			TextBox tb = new TextBox
+			{
+				Anchor =
 				AnchorStyles.Top
 				| AnchorStyles.Bottom
 				| AnchorStyles.Left
-				| AnchorStyles.Right;
-			tb.Multiline = true;
-			tb.Location = new Point(0, lb.Bottom + 6);
-			tb.ReadOnly = true;
-			tb.ScrollBars = ScrollBars.Both;
-			tb.Size = trcnPanel.Size;
+				| AnchorStyles.Right,
+				Multiline = true,
+				Location = new Point(0, lb.Bottom + 6),
+				ReadOnly = true,
+				ScrollBars = ScrollBars.Both,
+				Size = trcnPanel.Size
+			};
 			tb.Height -= tb.Top;
 
 			tb.Text = getText(wrapper.StoredData);

@@ -86,8 +86,10 @@ namespace SimPe.Plugin
 				);
 				return new ToolResult(false, false);
 			}
-			Sims sims = new Sims();
-			sims.Text = Localization.Manager.GetString("simsbrowser");
+			Sims sims = new Sims
+			{
+				Text = Localization.Manager.GetString("simsbrowser")
+			};
 
 			return sims.Execute(ref pfd, ref package, prov);
 		}

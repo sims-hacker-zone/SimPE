@@ -112,8 +112,10 @@ namespace SimPe
 			square = new ToolStripProfessionalSquareRenderer();
 
 			glossysquare = new Ambertation.Renderer.GlossyRenderer();
-			glossy = new Ambertation.Renderer.GlossyRenderer();
-			glossy.RenderRoundedEdges = true;
+			glossy = new Ambertation.Renderer.GlossyRenderer
+			{
+				RenderRoundedEdges = true
+			};
 
 			ctheme = t;
 			parent = null;
@@ -147,8 +149,10 @@ namespace SimPe
 		/// <returns></returns>
 		public ThemeManager CreateChild()
 		{
-			ThemeManager tm = new ThemeManager(ctheme);
-			tm.Parent = this;
+			ThemeManager tm = new ThemeManager(ctheme)
+			{
+				Parent = this
+			};
 			return tm;
 		}
 		#endregion

@@ -859,14 +859,15 @@ namespace SimPe.Plugin
 
 		public NgbhItem Clone(Ngbh parent, NgbhSlotList parentslot)
 		{
-			NgbhItem ret = new NgbhItem(parentslot);
-
-			ret.guid = guid;
-			ret.data = data.Clone() as ushort[];
-			ret.flags = flags;
-			ret.flags2 = flags2;
-			ret.parent = parent;
-			ret.invnr = invnr;
+			NgbhItem ret = new NgbhItem(parentslot)
+			{
+				guid = guid,
+				data = data.Clone() as ushort[],
+				flags = flags,
+				flags2 = flags2,
+				parent = parent,
+				invnr = invnr
+			};
 			return ret;
 		}
 	}

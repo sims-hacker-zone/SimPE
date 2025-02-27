@@ -76,8 +76,10 @@ namespace SimPe.Cache
 		/// </remarks>
 		public void LoadObjects()
 		{
-			fi = new FileIndex(new ArrayList());
-			fi.Duplicates = true;
+			fi = new FileIndex(new ArrayList())
+			{
+				Duplicates = true
+			};
 
 			foreach (CacheContainer cc in Containers)
 			{

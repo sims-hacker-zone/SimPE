@@ -87,9 +87,11 @@ namespace SimPe.Plugin
 							file
 						);
 						PhotoStudioTemplate pst = new PhotoStudioTemplate(pkg);
-						ListViewItem lvi = new ListViewItem(pst.ToString());
-						lvi.ImageIndex = ibase.Images.Count;
-						lvi.Tag = pst;
+						ListViewItem lvi = new ListViewItem(pst.ToString())
+						{
+							ImageIndex = ibase.Images.Count,
+							Tag = pst
+						};
 						Image img = new Bitmap(
 							ibase.ImageSize.Width,
 							ibase.ImageSize.Height
@@ -417,10 +419,12 @@ namespace SimPe.Plugin
 			}
 
 			AddImage(sdesc);
-			ListViewItem lvi = new ListViewItem();
-			lvi.Text = sdesc.SimName + " " + sdesc.SimFamilyName;
-			lvi.ImageIndex = ilist.Images.Count - 1;
-			lvi.Tag = sdesc;
+			ListViewItem lvi = new ListViewItem
+			{
+				Text = sdesc.SimName + " " + sdesc.SimFamilyName,
+				ImageIndex = ilist.Images.Count - 1,
+				Tag = sdesc
+			};
 
 			lv.Items.Add(lvi);
 		}
@@ -717,15 +721,17 @@ namespace SimPe.Plugin
 						md.Listing[0] = md.GetProperty("stdMatBaseTextureName").Value;
 					}
 
-					matd.FileDescriptor = new Packages.PackedFileDescriptor();
-					matd.FileDescriptor.Type = 0x49596978; //TXMT
-					matd.FileDescriptor.SubType = Hashes.SubTypeHash(
+					matd.FileDescriptor = new Packages.PackedFileDescriptor
+					{
+						Type = 0x49596978, //TXMT
+						SubType = Hashes.SubTypeHash(
 						Hashes.StripHashFromName(matd.FileName)
-					);
-					matd.FileDescriptor.Instance = Hashes.InstanceHash(
+					),
+						Instance = Hashes.InstanceHash(
 						Hashes.StripHashFromName(matd.FileName)
-					);
-					matd.FileDescriptor.Group = 0x1c050000;
+					),
+						Group = 0x1c050000
+					};
 					matd.SynchronizeUserData();
 					pkg.Add(matd.FileDescriptor);
 				}
@@ -845,15 +851,17 @@ namespace SimPe.Plugin
 						id.Format = format;
 					}
 
-					txtr.FileDescriptor = new Packages.PackedFileDescriptor();
-					txtr.FileDescriptor.Type = 0x1C4A276C; //TXTR
-					txtr.FileDescriptor.SubType = Hashes.SubTypeHash(
+					txtr.FileDescriptor = new Packages.PackedFileDescriptor
+					{
+						Type = 0x1C4A276C, //TXTR
+						SubType = Hashes.SubTypeHash(
 						Hashes.StripHashFromName(txtr.FileName)
-					);
-					txtr.FileDescriptor.Instance = Hashes.InstanceHash(
+					),
+						Instance = Hashes.InstanceHash(
 						Hashes.StripHashFromName(txtr.FileName)
-					);
-					txtr.FileDescriptor.Group = 0x1c050000;
+					),
+						Group = 0x1c050000
+					};
 					txtr.SynchronizeUserData();
 					pkg.Add(txtr.FileDescriptor);
 				}
@@ -959,16 +967,20 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			Form form = new Form();
-			form.Width = preview.Width;
-			form.Height = preview.Height;
+			Form form = new Form
+			{
+				Width = preview.Width,
+				Height = preview.Height
+			};
 
-			PictureBox pb = new PictureBox();
-			pb.Size = new Size(preview.Width, preview.Height);
-			pb.Parent = form;
-			pb.Left = 0;
-			pb.Top = 0;
-			pb.Image = preview;
+			PictureBox pb = new PictureBox
+			{
+				Size = new Size(preview.Width, preview.Height),
+				Parent = form,
+				Left = 0,
+				Top = 0,
+				Image = preview
+			};
 
 			form.FormBorderStyle = FormBorderStyle.FixedToolWindow;
 			form.Text = "Preview";

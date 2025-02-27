@@ -68,8 +68,10 @@ namespace SimPe.Plugin
 			colors.Add("LIFO", Color.PaleVioletRed);
 			colors.Add("LGHT", Color.White);
 
-			Graph = new GraphPanel();
-			Graph.Parent = pb;
+			Graph = new GraphPanel
+			{
+				Parent = pb
+			};
 			this.click = click;
 
 			coords = new Hashtable();
@@ -157,8 +159,10 @@ namespace SimPe.Plugin
 				//if (parent!=null) if (left<parent.Location.X) left = parent.Location.X;
 			} while (left > Graph.Parent.Width && false);
 
-			GraphItem gi = new GraphItem(new Ambertation.Collections.PropertyItems());
-			gi.Text = Hashes.StripHashFromName(pfd.Filename);
+			GraphItem gi = new GraphItem(new Ambertation.Collections.PropertyItems())
+			{
+				Text = Hashes.StripHashFromName(pfd.Filename)
+			};
 			//gi.BeginUpdate();
 			//gi.Location = new Point(left, top);
 			gi.SetBounds(left, top, 200, 64);
@@ -386,8 +390,10 @@ else
 				{
 					GraphItem gi = new GraphItem(
 						new Ambertation.Collections.PropertyItems()
-					);
-					gi.Text = Hashes.StripHashFromName(pfd.Filename);
+					)
+					{
+						Text = Hashes.StripHashFromName(pfd.Filename)
+					};
 
 					//gi.BeginUpdate();
 					gi.SetBounds(left, top, 200, 64);

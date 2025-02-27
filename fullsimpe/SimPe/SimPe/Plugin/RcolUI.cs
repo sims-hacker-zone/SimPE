@@ -124,8 +124,10 @@ namespace SimPe.Plugin
 					{
 						TreeNode child = new TreeNode(
 							pfd.Filename + ": " + pfd.ToString()
-						);
-						child.Tag = pfd;
+						)
+						{
+							Tag = pfd
+						};
 						node.Nodes.Add(child);
 					}
 

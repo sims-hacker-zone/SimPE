@@ -469,8 +469,10 @@ namespace SimPe.Plugin.Anim
 			f.lv.Items.Clear();
 			foreach (ImportedFrameBlock ifb in amb)
 			{
-				ListViewItem lvi = new ListViewItem();
-				lvi.Text = ifb.ImportedName;
+				ListViewItem lvi = new ListViewItem
+				{
+					Text = ifb.ImportedName
+				};
 				lvi.SubItems.Add(ifb.Action.ToString());
 				if (ifb.Target != null)
 				{

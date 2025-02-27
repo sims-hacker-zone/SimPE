@@ -20,13 +20,15 @@ namespace SimPe.Plugin.Gmdc
 				return null;
 			}
 
-			GmdcElement e = new GmdcElement(gmi.Gmdc);
-			e.SetFormat = SetFormat.Secondary;
-			e.BlockFormat = BlockFormat.ThreeFloat;
-			e.Identity = ElementIdentity.Vertex;
-			e.GroupId = 0;
+			GmdcElement e = new GmdcElement(gmi.Gmdc)
+			{
+				SetFormat = SetFormat.Secondary,
+				BlockFormat = BlockFormat.ThreeFloat,
+				Identity = ElementIdentity.Vertex,
+				GroupId = 0,
 
-			e.Number = mesh.Vertices.Count;
+				Number = mesh.Vertices.Count
+			};
 
 			foreach (Ambertation.Geometry.Vector3 v in mesh.Vertices)
 			{
@@ -52,13 +54,15 @@ namespace SimPe.Plugin.Gmdc
 				return null;
 			}
 
-			GmdcElement e = new GmdcElement(gmi.Gmdc);
-			e.SetFormat = SetFormat.Secondary;
-			e.BlockFormat = BlockFormat.ThreeFloat;
-			e.Identity = ElementIdentity.Normal;
-			e.GroupId = 0;
+			GmdcElement e = new GmdcElement(gmi.Gmdc)
+			{
+				SetFormat = SetFormat.Secondary,
+				BlockFormat = BlockFormat.ThreeFloat,
+				Identity = ElementIdentity.Normal,
+				GroupId = 0,
 
-			e.Number = mesh.Normals.Count;
+				Number = mesh.Normals.Count
+			};
 
 			foreach (Ambertation.Geometry.Vector3 v in mesh.Normals)
 			{
@@ -84,13 +88,15 @@ namespace SimPe.Plugin.Gmdc
 				return null;
 			}
 
-			GmdcElement e = new GmdcElement(gmi.Gmdc);
-			e.SetFormat = SetFormat.Secondary;
-			e.BlockFormat = BlockFormat.TwoFloat;
-			e.Identity = ElementIdentity.UVCoordinate;
-			e.GroupId = 0;
+			GmdcElement e = new GmdcElement(gmi.Gmdc)
+			{
+				SetFormat = SetFormat.Secondary,
+				BlockFormat = BlockFormat.TwoFloat,
+				Identity = ElementIdentity.UVCoordinate,
+				GroupId = 0,
 
-			e.Number = mesh.Normals.Count;
+				Number = mesh.Normals.Count
+			};
 
 			foreach (Ambertation.Geometry.Vector2 v in mesh.TextureCoordinates)
 			{
@@ -109,13 +115,15 @@ namespace SimPe.Plugin.Gmdc
 				return null;
 			}
 
-			GmdcElement e = new GmdcElement(gmi.Gmdc);
-			e.SetFormat = SetFormat.Secondary;
-			e.BlockFormat = BlockFormat.OneDword;
-			e.Identity = ElementIdentity.BoneAssignment;
-			e.GroupId = 0;
+			GmdcElement e = new GmdcElement(gmi.Gmdc)
+			{
+				SetFormat = SetFormat.Secondary,
+				BlockFormat = BlockFormat.OneDword,
+				Identity = ElementIdentity.BoneAssignment,
+				GroupId = 0,
 
-			e.Number = mesh.Vertices.Count;
+				Number = mesh.Vertices.Count
+			};
 
 			for (int i = 0; i < mesh.Vertices.Count; i++)
 			{
@@ -132,13 +140,15 @@ namespace SimPe.Plugin.Gmdc
 				return null;
 			}
 
-			GmdcElement e = new GmdcElement(gmi.Gmdc);
-			e.SetFormat = SetFormat.Secondary;
-			e.BlockFormat = BlockFormat.ThreeFloat;
-			e.Identity = ElementIdentity.BoneWeights;
-			e.GroupId = 0;
+			GmdcElement e = new GmdcElement(gmi.Gmdc)
+			{
+				SetFormat = SetFormat.Secondary,
+				BlockFormat = BlockFormat.ThreeFloat,
+				Identity = ElementIdentity.BoneWeights,
+				GroupId = 0,
 
-			e.Number = mesh.Vertices.Count;
+				Number = mesh.Vertices.Count
+			};
 
 			for (int i = 0; i < mesh.Vertices.Count; i++)
 			{

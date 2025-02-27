@@ -437,19 +437,21 @@ namespace SimPe.Packages
 
 		public object Clone()
 		{
-			HeaderData iph = new HeaderData();
-			iph.created = created;
-			iph.id = id;
-			iph.indextype = indextype;
-			iph.majorversion = majorversion;
-			iph.minorversion = minorversion;
-			iph.modified = modified;
+			HeaderData iph = new HeaderData
+			{
+				created = created,
+				id = id,
+				indextype = indextype,
+				majorversion = majorversion,
+				minorversion = minorversion,
+				modified = modified,
 
-			iph.reserved_00 = reserved_00;
-			iph.reserved_02 = reserved_02;
+				reserved_00 = reserved_00,
+				reserved_02 = reserved_02,
 
-			iph.epicon = epicon;
-			iph.showicon = showicon;
+				epicon = epicon,
+				showicon = showicon
+			};
 			return iph;
 		}
 	}

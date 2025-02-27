@@ -511,9 +511,10 @@ namespace SimPe.Geometry
 		public Vector3f GetEulerAnglesYXZ()
 		{
 			Matrixd m = Matrix;
-			Vector3f v = new Vector3f(0, 0, 0);
-
-			v.X = Math.Asin(-Clip1(m[1, 2]));
+			Vector3f v = new Vector3f(0, 0, 0)
+			{
+				X = Math.Asin(-Clip1(m[1, 2]))
+			};
 			if (v.X < Math.PI / 2.0)
 			{
 				if (v.X > Math.PI / -2.0)
@@ -545,9 +546,10 @@ namespace SimPe.Geometry
 		public Vector3f GetEulerAnglesZXY()
 		{
 			Matrixd m = Matrix;
-			Vector3f v = new Vector3f(0, 0, 0);
-
-			v.X = Math.Asin(m[2, 1]);
+			Vector3f v = new Vector3f(0, 0, 0)
+			{
+				X = Math.Asin(m[2, 1])
+			};
 			if (v.X < Math.PI / 2.0)
 			{
 				if (v.X > Math.PI / -2.0)
@@ -579,9 +581,10 @@ namespace SimPe.Geometry
 		public Vector3f GetEulerAnglesZYX()
 		{
 			Matrixd m = Matrix;
-			Vector3f v = new Vector3f(0, 0, 0);
-
-			v.Y = Math.Asin(-m[2, 0]);
+			Vector3f v = new Vector3f(0, 0, 0)
+			{
+				Y = Math.Asin(-m[2, 0])
+			};
 			if (v.Y < Math.PI / 2.0)
 			{
 				if (v.Y > Math.PI / -2.0)

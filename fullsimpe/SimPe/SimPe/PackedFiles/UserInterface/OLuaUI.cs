@@ -241,16 +241,20 @@ namespace SimPe.PackedFiles.UserInterface
 			Wrapper.ObjLuaFunction fkt
 		)
 		{
-			TreeNode tn = new TreeNode(fkt.ToString());
-			tn.Tag = fkt;
+			TreeNode tn = new TreeNode(fkt.ToString())
+			{
+				Tag = fkt
+			};
 			nodes.Add(tn);
 
 			TreeNode ctn = new TreeNode("Constants");
 			tn.Nodes.Add(ctn);
 			foreach (Wrapper.ObjLuaConstant olc in fkt.Constants)
 			{
-				TreeNode sctn = new TreeNode(olc.ToString());
-				sctn.Tag = olc;
+				TreeNode sctn = new TreeNode(olc.ToString())
+				{
+					Tag = olc
+				};
 
 				ctn.Nodes.Add(sctn);
 			}
@@ -262,8 +266,10 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				TreeNode scltn = new TreeNode(
 					Helper.HexString(ct++) + ": " + c.ToString()
-				);
-				scltn.Tag = c;
+				)
+				{
+					Tag = c
+				};
 
 				cltn.Nodes.Add(scltn);
 			}
@@ -275,8 +281,10 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				TreeNode scutn = new TreeNode(
 					Helper.HexString(ct++) + ": " + c.ToString()
-				);
-				scutn.Tag = c;
+				)
+				{
+					Tag = c
+				};
 
 				cutn.Nodes.Add(scutn);
 			}
@@ -288,8 +296,10 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				TreeNode scstn = new TreeNode(
 					Helper.HexString(ct++) + ": " + c.ToString()
-				);
-				scstn.Tag = c;
+				)
+				{
+					Tag = c
+				};
 
 				cstn.Nodes.Add(scstn);
 			}
@@ -308,8 +318,10 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				TreeNode scdtn = new TreeNode(
 					Helper.HexString(ct++) + ": " + c.ToString()
-				);
-				scdtn.Tag = c;
+				)
+				{
+					Tag = c
+				};
 
 				cdtn.Nodes.Add(scdtn);
 			}
@@ -348,15 +360,17 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void btSave_Click(object sender, System.EventArgs e)
 		{
-			SaveFileDialog sfd = new SaveFileDialog();
-			sfd.Filter = ExtensionProvider.BuildFilterString(
+			SaveFileDialog sfd = new SaveFileDialog
+			{
+				Filter = ExtensionProvider.BuildFilterString(
 				new ExtensionType[]
 				{
 					ExtensionType.LuaScript,
 					ExtensionType.AllFiles,
 				}
-			);
-			sfd.FileName = Wrapper.FileName;
+			),
+				FileName = Wrapper.FileName
+			};
 			if (sfd.ShowDialog() == DialogResult.OK)
 			{
 				Wrapper.ExportLua(sfd.FileName);
@@ -365,15 +379,17 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void btLoad_Click(object sender, System.EventArgs e)
 		{
-			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Filter = ExtensionProvider.BuildFilterString(
+			OpenFileDialog ofd = new OpenFileDialog
+			{
+				Filter = ExtensionProvider.BuildFilterString(
 				new ExtensionType[]
 				{
 					ExtensionType.LuaScript,
 					ExtensionType.AllFiles,
 				}
-			);
-			ofd.FileName = Wrapper.FileName;
+			),
+				FileName = Wrapper.FileName
+			};
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
 				Wrapper.ImportLua(ofd.FileName);
@@ -395,15 +411,17 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void button2_Click(object sender, System.EventArgs e)
 		{
-			SaveFileDialog sfd = new SaveFileDialog();
-			sfd.Filter = ExtensionProvider.BuildFilterString(
+			SaveFileDialog sfd = new SaveFileDialog
+			{
+				Filter = ExtensionProvider.BuildFilterString(
 				new ExtensionType[]
 				{
 					ExtensionType.LuaScript,
 					ExtensionType.AllFiles,
 				}
-			);
-			sfd.FileName = Wrapper.FileName;
+			),
+				FileName = Wrapper.FileName
+			};
 			if (sfd.ShowDialog() == DialogResult.OK)
 			{
 				string src = Wrapper.ToSource();

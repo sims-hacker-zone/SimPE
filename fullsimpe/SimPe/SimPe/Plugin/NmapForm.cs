@@ -476,12 +476,14 @@ namespace SimPe.Plugin
 				pfd = (Interfaces.Files.IPackedFileDescriptor)
 					e.Data.GetData(typeof(Packages.PackedFileDescriptor));
 
-				NmapItem nmi = new NmapItem(wrapper);
-				nmi.Group = pfd.Group;
-				nmi.Type = pfd.Type;
-				nmi.SubType = pfd.SubType;
-				nmi.Instance = pfd.Instance;
-				nmi.Filename = Data.MetaData.FindTypeAlias(pfd.Type).Name;
+				NmapItem nmi = new NmapItem(wrapper)
+				{
+					Group = pfd.Group,
+					Type = pfd.Type,
+					SubType = pfd.SubType,
+					Instance = pfd.Instance,
+					Filename = Data.MetaData.FindTypeAlias(pfd.Type).Name
+				};
 				lblist.Items.Add(nmi);
 			}
 			catch (Exception ex)

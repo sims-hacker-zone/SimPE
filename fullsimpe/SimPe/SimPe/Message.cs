@@ -250,8 +250,10 @@ namespace SimPe
 
 		void AddButton(string caption, DialogResult dr)
 		{
-			Button bn = new Button();
-			bn.Parent = panel1;
+			Button bn = new Button
+			{
+				Parent = panel1
+			};
 			int pos = (int)panel1.Tag;
 			panel1.Tag = pos + 1;
 

@@ -451,13 +451,16 @@ namespace SimPe.Packages
 
 			if (pfd == null)
 			{
-				str = new PackedFiles.Wrapper.Str();
-
-				str.FileDescriptor = new PackedFileDescriptor();
-				str.FileDescriptor.Type = Data.MetaData.STRING_FILE;
-				str.FileDescriptor.Group = 0;
-				str.FileDescriptor.SubType = 0xffffffff;
-				str.FileDescriptor.Instance = 0xffffffff;
+				str = new PackedFiles.Wrapper.Str
+				{
+					FileDescriptor = new PackedFileDescriptor
+					{
+						Type = Data.MetaData.STRING_FILE,
+						Group = 0,
+						SubType = 0xffffffff,
+						Instance = 0xffffffff
+					}
+				};
 				str.Languages.Add(lng[0]);
 				// str.SynchronizeUserData();
 				// str.Package = p;
@@ -546,13 +549,16 @@ namespace SimPe.Packages
 			pfd = p.FindFile(Data.MetaData.CTSS_FILE, 0, group, ctssid);
 			if (pfd == null)
 			{
-				str = new PackedFiles.Wrapper.Str();
-
-				str.FileDescriptor = new PackedFileDescriptor();
-				str.FileDescriptor.Type = Data.MetaData.CTSS_FILE;
-				str.FileDescriptor.Group = 0xffffffff;
-				str.FileDescriptor.SubType = 0x00000000;
-				str.FileDescriptor.Instance = 0x1;
+				str = new PackedFiles.Wrapper.Str
+				{
+					FileDescriptor = new PackedFileDescriptor
+					{
+						Type = Data.MetaData.CTSS_FILE,
+						Group = 0xffffffff,
+						SubType = 0x00000000,
+						Instance = 0x1
+					}
+				};
 
 				str.Languages.Add(lng[0]);
 

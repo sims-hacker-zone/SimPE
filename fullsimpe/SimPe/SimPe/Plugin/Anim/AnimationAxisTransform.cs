@@ -184,12 +184,14 @@ namespace SimPe.Plugin.Anim
 
 		public AnimationAxisTransform CloneBase()
 		{
-			AnimationAxisTransform aat = new AnimationAxisTransform(null, -1);
-			aat.Linear = Linear;
-			aat.TimeCode = TimeCode;
-			aat.Parameter = Parameter;
-			aat.Unknown1 = Unknown1;
-			aat.Unknown2 = Unknown2;
+			AnimationAxisTransform aat = new AnimationAxisTransform(null, -1)
+			{
+				Linear = Linear,
+				TimeCode = TimeCode,
+				Parameter = Parameter,
+				Unknown1 = Unknown1,
+				Unknown2 = Unknown2
+			};
 
 			return aat;
 		}

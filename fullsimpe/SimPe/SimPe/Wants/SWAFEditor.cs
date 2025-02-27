@@ -575,8 +575,10 @@ namespace SimPe.Wants
 					"0x" + Helper.HexString(i.SimID),
 					"" + i.ArgType,
 				}
-			);
-			lvi.Tag = i;
+			)
+			{
+				Tag = i
+			};
 			UpdateGroups(lvi);
 			return lvi;
 		}
@@ -1673,8 +1675,10 @@ namespace SimPe.Wants
 		{
 			Interfaces.Files.IPackedFileDescriptor pfd = null;
 			Interfaces.Files.IPackageFile package = wrapper.Package;
-			Plugin.Sims sims = new Plugin.Sims();
-			sims.Text = Localization.Manager.GetString("simsbrowser");
+			Plugin.Sims sims = new Plugin.Sims
+			{
+				Text = Localization.Manager.GetString("simsbrowser")
+			};
 			IToolResult res = sims.Execute(
 				ref pfd,
 				ref package,

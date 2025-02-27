@@ -226,8 +226,10 @@ namespace SimPe.Plugin
 			ItemsB = new ShapeRefNodeItem_B[reader.ReadUInt32()];
 			for (int i = 0; i < ItemsB.Length; i++)
 			{
-				ItemsB[i] = new ShapeRefNodeItem_B();
-				ItemsB[i].Unknown1 = reader.ReadInt32();
+				ItemsB[i] = new ShapeRefNodeItem_B
+				{
+					Unknown1 = reader.ReadInt32()
+				};
 			}
 
 			int len = 0;

@@ -37,8 +37,10 @@ namespace SimPe.Plugin.Collections
 
 		public BnfoCustomerItem AddNew(ushort inst)
 		{
-			BnfoCustomerItem s = new BnfoCustomerItem(parent);
-			s.SimInstance = inst;
+			BnfoCustomerItem s = new BnfoCustomerItem(parent)
+			{
+				SimInstance = inst
+			};
 
 			Add(s);
 

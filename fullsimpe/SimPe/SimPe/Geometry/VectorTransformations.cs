@@ -159,9 +159,11 @@ namespace SimPe.Geometry
 		/// <returns></returns>
 		public VectorTransformation Clone()
 		{
-			VectorTransformation v = new VectorTransformation(Order);
-			v.Rotation = Rotation.Clone();
-			v.Translation = Translation.Clone();
+			VectorTransformation v = new VectorTransformation(Order)
+			{
+				Rotation = Rotation.Clone(),
+				Translation = Translation.Clone()
+			};
 
 			return v;
 		}

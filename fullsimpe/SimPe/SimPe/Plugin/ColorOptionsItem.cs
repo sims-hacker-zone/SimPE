@@ -228,9 +228,10 @@ namespace SimPe.Plugin
 				md.FileDescription = matdname;
 				MATD.FileName = groups + matdname + "_txmt";
 				PackedFileDescriptor matdpfd =
-					new PackedFileDescriptor();
-
-				matdpfd.Type = MATD.FileDescriptor.Type;
+					new PackedFileDescriptor
+					{
+						Type = MATD.FileDescriptor.Type
+					};
 				MATD.FileDescriptor = matdpfd;
 				MATD.FileDescriptor.Group = 0x1c050000; //group; //0x1C0532FA;
 
@@ -283,9 +284,10 @@ namespace SimPe.Plugin
 			{
 				TXTR.FileName = groups + txtrname + "_txtr";
 				PackedFileDescriptor txtrpfd =
-					new PackedFileDescriptor();
-
-				txtrpfd.Type = TXTR.FileDescriptor.Type;
+					new PackedFileDescriptor
+					{
+						Type = TXTR.FileDescriptor.Type
+					};
 				TXTR.FileDescriptor = txtrpfd;
 				TXTR.FileDescriptor.Group = 0x1c050000; //group; //0x1C0532FA;
 

@@ -223,8 +223,10 @@ namespace SimPe.Plugin
 		{
 			TreeNode node = new TreeNode(
 				a.Name + " (0x" + Helper.HexString(group) + ")"
-			);
-			node.Tag = a;
+			)
+			{
+				Tag = a
+			};
 			if (img != null)
 			{
 				node.ImageIndex = ilist.Images.Count;
@@ -1435,13 +1437,14 @@ namespace SimPe.Plugin
 				);
 
 				Packages.PackedFileDescriptor npfd =
-					new Packages.PackedFileDescriptor();
-
-				npfd.UserData = file.UncompressedData;
-				npfd.Group = item.FileDescriptor.Group;
-				npfd.Instance = item.FileDescriptor.Instance;
-				npfd.SubType = item.FileDescriptor.SubType;
-				npfd.Type = item.FileDescriptor.Type;
+					new Packages.PackedFileDescriptor
+					{
+						UserData = file.UncompressedData,
+						Group = item.FileDescriptor.Group,
+						Instance = item.FileDescriptor.Instance,
+						SubType = item.FileDescriptor.SubType,
+						Type = item.FileDescriptor.Type
+					};
 
 				if (package.FindFile(npfd) == null)
 				{

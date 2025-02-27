@@ -549,10 +549,12 @@ namespace SimPe.Plugin
 			}
 
 			AddImage(sdesc);
-			ListViewItem lvi = new ListViewItem();
-			lvi.Text = sdesc.SimName + " " + sdesc.SimFamilyName;
-			lvi.ImageIndex = ilist.Images.Count - 1;
-			lvi.Tag = sdesc;
+			ListViewItem lvi = new ListViewItem
+			{
+				Text = sdesc.SimName + " " + sdesc.SimFamilyName,
+				ImageIndex = ilist.Images.Count - 1,
+				Tag = sdesc
+			};
 			lv.Items.Add(lvi);
 		}
 
@@ -565,8 +567,10 @@ namespace SimPe.Plugin
 					iskin.ImageSize.Height
 				)
 			);
-			ListViewItem lvia = new ListViewItem("From Archetype");
-			lvia.ImageIndex = 0;
+			ListViewItem lvia = new ListViewItem("From Archetype")
+			{
+				ImageIndex = 0
+			};
 			lvskin.Items.Add(lvia);
 			lvia.Selected = true;
 		}
@@ -1101,20 +1105,24 @@ namespace SimPe.Plugin
 				);
 
 				Packages.PackedFileDescriptor pfd1 =
-					new Packages.PackedFileDescriptor();
-				pfd1.Group = 0xffffffff;
-				pfd1.SubType = 0x00000000;
-				pfd1.Instance = 0xFF123456;
-				pfd1.Type = 0xAC506764; //3IDR
-				pfd1.UserData = br1.ReadBytes((int)br1.BaseStream.Length);
+					new Packages.PackedFileDescriptor
+					{
+						Group = 0xffffffff,
+						SubType = 0x00000000,
+						Instance = 0xFF123456,
+						Type = 0xAC506764, //3IDR
+						UserData = br1.ReadBytes((int)br1.BaseStream.Length)
+					};
 
 				Packages.PackedFileDescriptor pfd2 =
-					new Packages.PackedFileDescriptor();
-				pfd2.Group = 0xffffffff;
-				pfd2.SubType = 0x00000000;
-				pfd2.Instance = 0xFF123456;
-				pfd2.Type = 0x0C560F39; //BINX
-				pfd2.UserData = br2.ReadBytes((int)br2.BaseStream.Length);
+					new Packages.PackedFileDescriptor
+					{
+						Group = 0xffffffff,
+						SubType = 0x00000000,
+						Instance = 0xFF123456,
+						Type = 0x0C560F39, //BINX
+						UserData = br2.ReadBytes((int)br2.BaseStream.Length)
+					};
 
 				sfd.InitialDirectory = System.IO.Path.Combine(
 					PathProvider.SimSavegameFolder,
@@ -1156,16 +1164,20 @@ namespace SimPe.Plugin
 								cpf.ProcessData(pfd, patient);
 
 								PackedFiles.Wrapper.CpfItem ci =
-									new PackedFiles.Wrapper.CpfItem();
-								ci.Name = "product";
-								ci.UIntegerValue = 0;
+									new PackedFiles.Wrapper.CpfItem
+									{
+										Name = "product",
+										UIntegerValue = 0
+									};
 								cpf.AddItem(ci, false);
 
 								ci = cpf.GetItem("version");
 								if (ci == null)
 								{
-									ci = new PackedFiles.Wrapper.CpfItem();
-									ci.Name = "version";
+									ci = new PackedFiles.Wrapper.CpfItem
+									{
+										Name = "version"
+									};
 									if (
 										(
 											cpf.GetSaveItem("age").UIntegerValue

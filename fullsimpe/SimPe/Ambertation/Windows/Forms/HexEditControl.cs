@@ -200,15 +200,17 @@ namespace Ambertation.Windows.Forms
 
 		Label CreateLabel(int left, ref int top, int width, string text, Control parent)
 		{
-			Label lb = new Label();
-			lb.Parent = parent;
-			lb.Width = width;
-			lb.Text = text;
-			lb.Left = left;
-			lb.Top = top;
-			lb.Font = LabelFont;
+			Label lb = new Label
+			{
+				Parent = parent,
+				Width = width,
+				Text = text,
+				Left = left,
+				Top = top,
+				Font = LabelFont,
 
-			lb.TextAlign = ContentAlignment.BottomRight;
+				TextAlign = ContentAlignment.BottomRight
+			};
 
 			top += lb.Height;
 			left += lb.Width;
@@ -224,16 +226,18 @@ namespace Ambertation.Windows.Forms
 			Control parent
 		)
 		{
-			LinkLabel lb = new LinkLabel();
-			lb.Parent = parent;
-			lb.Width = width;
-			lb.Text = text;
-			lb.Left = left;
-			lb.Top = top;
-			lb.Font = LabelFont;
-			lb.LinkArea = new LinkArea(0, text.Length - 1);
+			LinkLabel lb = new LinkLabel
+			{
+				Parent = parent,
+				Width = width,
+				Text = text,
+				Left = left,
+				Top = top,
+				Font = LabelFont,
+				LinkArea = new LinkArea(0, text.Length - 1),
 
-			lb.TextAlign = ContentAlignment.BottomRight;
+				TextAlign = ContentAlignment.BottomRight
+			};
 
 			top += lb.Height;
 			left += lb.Width;
@@ -249,11 +253,13 @@ namespace Ambertation.Windows.Forms
 			Control parent
 		)
 		{
-			TextBox lb = new TextBox();
-			lb.Parent = parent;
-			lb.Width = width;
-			lb.Text = text;
-			lb.Left = left;
+			TextBox lb = new TextBox
+			{
+				Parent = parent,
+				Width = width,
+				Text = text,
+				Left = left
+			};
 			lb.Top = bottom - lb.Height;
 			lb.Font = TextBoxFont;
 
@@ -268,15 +274,17 @@ namespace Ambertation.Windows.Forms
 			Control parent
 		)
 		{
-			RadioButton lb = new RadioButton();
-			lb.Parent = parent;
-			lb.Width = width;
-			lb.Text = text;
-			lb.Left = left;
-			lb.Top = top;
-			lb.Font = LabelFont;
-			lb.FlatStyle = FlatStyle.System;
-			lb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+			RadioButton lb = new RadioButton
+			{
+				Parent = parent,
+				Width = width,
+				Text = text,
+				Left = left,
+				Top = top,
+				Font = LabelFont,
+				FlatStyle = FlatStyle.System,
+				Anchor = AnchorStyles.Top | AnchorStyles.Right
+			};
 
 			top += lb.Height - 4;
 			return lb;
@@ -290,15 +298,17 @@ namespace Ambertation.Windows.Forms
 			Control parent
 		)
 		{
-			CheckBox lb = new CheckBox();
-			lb.Parent = parent;
-			lb.Width = width;
-			lb.Text = text;
-			lb.Left = left;
-			lb.Top = top;
-			lb.Font = LabelFont;
-			lb.FlatStyle = FlatStyle.System;
-			lb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+			CheckBox lb = new CheckBox
+			{
+				Parent = parent,
+				Width = width,
+				Text = text,
+				Left = left,
+				Top = top,
+				Font = LabelFont,
+				FlatStyle = FlatStyle.System,
+				Anchor = AnchorStyles.Top | AnchorStyles.Right
+			};
 			lb.LocationChanged += new EventHandler(lb_LocationChanged);
 
 			top += lb.Height - 4;
@@ -330,11 +340,13 @@ namespace Ambertation.Windows.Forms
 			mgb.Text = "Selected Values:";
 			mgb.Font = new Font(mgb.Font.FontFamily, mgb.Font.Size, FontStyle.Bold, mgb.Font.Unit);	*/
 
-			Panel gb = new Panel();
-			gb.Parent = this;
-			gb.Width = Width;
-			gb.Dock = DockStyle.Fill;
-			gb.AutoScroll = true;
+			Panel gb = new Panel
+			{
+				Parent = this,
+				Width = Width,
+				Dock = DockStyle.Fill,
+				AutoScroll = true
+			};
 
 			int top = 8;
 			int left = 8;

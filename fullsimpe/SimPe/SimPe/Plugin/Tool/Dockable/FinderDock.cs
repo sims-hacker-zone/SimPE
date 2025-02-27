@@ -50,8 +50,10 @@ namespace SimPe.Plugin.Tool.Dockable
 			tm.AddControl(tbResult);
 			tm.AddControl(toolBar1);
 
-			sorter = new ColumnSorter();
-			sorter.CurrentColumn = 0;
+			sorter = new ColumnSorter
+			{
+				CurrentColumn = 0
+			};
 			lv.ListViewItemSorter = sorter;
 
 			lv.View = SteepValley.Windows.Forms.ExtendedView.Details;
@@ -84,8 +86,10 @@ namespace SimPe.Plugin.Tool.Dockable
 			{
 				threads[ct] = new System.Threading.Thread(
 					new System.Threading.ThreadStart(ThreadRunner)
-				);
-				threads[ct].Name = "Search Thread " + (ct);
+				)
+				{
+					Name = "Search Thread " + (ct)
+				};
 				if (start)
 				{
 					threads[ct].Start();
@@ -171,9 +175,11 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			for (int i = 0; i < strings.Count; i++)
 			{
-				ColumnHeader ch = new ColumnHeader();
-				ch.Text = (string)strings[i];
-				ch.Width = (int)widths[i];
+				ColumnHeader ch = new ColumnHeader
+				{
+					Text = (string)strings[i],
+					Width = (int)widths[i]
+				};
 				lv.Columns.Add(ch);
 			}
 		}
@@ -190,8 +196,10 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			SteepValley.Windows.Forms.XPListViewGroup g =
-				new SteepValley.Windows.Forms.XPListViewGroup(name);
-			g.GroupIndex = lv.Groups.Count;
+				new SteepValley.Windows.Forms.XPListViewGroup(name)
+				{
+					GroupIndex = lv.Groups.Count
+				};
 			lv.Groups.Add(g);
 			return g.GroupIndex;
 		}

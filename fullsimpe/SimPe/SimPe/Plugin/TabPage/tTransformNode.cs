@@ -1258,10 +1258,11 @@ namespace SimPe.Plugin.TabPage
 			{
 				lb_tn.Tag = true;
 				Plugin.TransformNode tn = (Plugin.TransformNode)Tag;
-				TransformNodeItem b = new TransformNodeItem();
-
-				b.Unknown1 = Convert.ToUInt16(tb_tn_1.Text, 16);
-				b.ChildNode = (int)Convert.ToUInt32(tb_tn_2.Text, 16);
+				TransformNodeItem b = new TransformNodeItem
+				{
+					Unknown1 = Convert.ToUInt16(tb_tn_1.Text, 16),
+					ChildNode = (int)Convert.ToUInt32(tb_tn_2.Text, 16)
+				};
 
 				tn.Items.Add(b); //= (TransformNodeItem[])Helper.Add(tn.Items, b);
 				lb_tn.Items.Add(b);

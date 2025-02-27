@@ -310,14 +310,16 @@ namespace SimPe.Plugin.Tool.Window
 
 		private void btBrowse_Click(object sender, EventArgs e)
 		{
-			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Filter = ExtensionProvider.BuildFilterString(
+			OpenFileDialog ofd = new OpenFileDialog
+			{
+				Filter = ExtensionProvider.BuildFilterString(
 				new ExtensionType[]
 				{
 					ExtensionType.Package,
 					ExtensionType.AllFiles,
 				}
-			);
+			)
+			};
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
 				Setup(ofd.FileName);

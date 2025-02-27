@@ -27,10 +27,11 @@ namespace SimPe.PackedFiles.Wrapper
 			FullRowSelect = true;
 			MultiSelect = false;
 
-			LargeImageList = new ImageList();
-
-			LargeImageList.ColorDepth = ColorDepth.Depth32Bit;
-			LargeImageList.ImageSize = ICON_SIZE;
+			LargeImageList = new ImageList
+			{
+				ColorDepth = ColorDepth.Depth32Bit,
+				ImageSize = ICON_SIZE
+			};
 
 			s = new ColumnsSorter(new int[] { 1, 0 });
 			ListViewItemSorter = s;

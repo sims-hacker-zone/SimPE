@@ -555,10 +555,12 @@ namespace SimPe
 
 			const int imgwidth = 22;
 			int top = 4 + index * (height + 4);
-			TD.Eyefinder.HeaderControl pn = new TD.Eyefinder.HeaderControl();
-			pn.Parent = cnt;
-			pn.Top = top;
-			pn.Left = 4;
+			TD.Eyefinder.HeaderControl pn = new TD.Eyefinder.HeaderControl
+			{
+				Parent = cnt,
+				Top = top,
+				Left = 4
+			};
 			pn.Width =
 				cnt.Width
 				- SystemInformation.VerticalScrollBarWidth
@@ -580,154 +582,174 @@ namespace SimPe
 			wrappers.Add(pn);
 
 			#region Author
-			Label lbauthor = new Label();
-			lbauthor.Parent = pn;
-			lbauthor.Top = pn.DisplayRectangle.Top + 8;
-			lbauthor.Left = 8;
-			lbauthor.Text = "Author:";
-			lbauthor.Width = 85;
-			lbauthor.Font = new Font(
+			Label lbauthor = new Label
+			{
+				Parent = pn,
+				Top = pn.DisplayRectangle.Top + 8,
+				Left = 8,
+				Text = "Author:",
+				Width = 85,
+				Font = new Font(
 				cnt.Font.Name,
 				cnt.Font.Size,
 				FontStyle.Bold,
 				cnt.Font.Unit
-			);
+			)
+			};
 			lbauthor.Height = (int)lbauthor.Font.SizeInPoints * 2;
 			lbauthor.ForeColor = SystemColors.ControlDarkDark;
 			lbauthor.TextAlign = ContentAlignment.TopRight;
 			lbauthor.Click += new EventHandler(pn_Click);
 
-			Label lb = new Label();
-			lb.Parent = pn;
-			lb.Top = lbauthor.Top;
-			lb.Left = lbauthor.Right + 4;
-			lb.AutoSize = true;
-			lb.Text = wrapper.WrapperDescription.Author;
-			lb.Font = new Font(
+			Label lb = new Label
+			{
+				Parent = pn,
+				Top = lbauthor.Top,
+				Left = lbauthor.Right + 4,
+				AutoSize = true,
+				Text = wrapper.WrapperDescription.Author,
+				Font = new Font(
 				cnt.Font.Name,
 				cnt.Font.Size,
 				FontStyle.Regular,
 				cnt.Font.Unit
-			);
-			lb.Height = lbauthor.Height;
-			lb.ForeColor = lbauthor.ForeColor;
+			),
+				Height = lbauthor.Height,
+				ForeColor = lbauthor.ForeColor
+			};
 			lb.Click += new EventHandler(pn_Click);
 			#endregion
 
 			#region Version
-			Label lbversion = new Label();
-			lbversion.Parent = pn;
-			lbversion.Top = lbauthor.Top;
-			lbversion.Left = lb.Right + 16;
-			lbversion.Width = lbauthor.Width;
-			lbversion.Height = lbauthor.Height;
-			lbversion.Text = "Version:";
-			lbversion.Font = lbauthor.Font;
-			lbversion.ForeColor = lbauthor.ForeColor;
-			lbversion.TextAlign = lbauthor.TextAlign;
+			Label lbversion = new Label
+			{
+				Parent = pn,
+				Top = lbauthor.Top,
+				Left = lb.Right + 16,
+				Width = lbauthor.Width,
+				Height = lbauthor.Height,
+				Text = "Version:",
+				Font = lbauthor.Font,
+				ForeColor = lbauthor.ForeColor,
+				TextAlign = lbauthor.TextAlign
+			};
 			lbversion.Click += new EventHandler(pn_Click);
 
-			lb = new Label();
-			lb.Parent = pn;
-			lb.Top = lbversion.Top;
-			lb.Left = lbversion.Right + 4;
-			lb.AutoSize = true;
-			lb.Text = wrapper.WrapperDescription.Version.ToString();
-			lb.Font = new Font(
+			lb = new Label
+			{
+				Parent = pn,
+				Top = lbversion.Top,
+				Left = lbversion.Right + 4,
+				AutoSize = true,
+				Text = wrapper.WrapperDescription.Version.ToString(),
+				Font = new Font(
 				cnt.Font.Name,
 				cnt.Font.Size,
 				FontStyle.Regular,
 				cnt.Font.Unit
-			);
-			lb.Height = lbauthor.Height;
-			lb.ForeColor = lbauthor.ForeColor;
+			),
+				Height = lbauthor.Height,
+				ForeColor = lbauthor.ForeColor
+			};
 			lb.Click += new EventHandler(pn_Click);
 			#endregion
 
 			#region FileName
-			Label lbfile = new Label();
-			lbfile.Parent = pn;
-			lbfile.Top = lbversion.Bottom;
-			lbfile.Left = lbauthor.Left;
-			lbfile.Width = lbauthor.Width;
-			lbfile.Height = lbauthor.Height;
-			lbfile.Text = "Filename:";
-			lbfile.Font = lbauthor.Font;
-			lbfile.ForeColor = lbauthor.ForeColor;
-			lbfile.TextAlign = lbauthor.TextAlign;
+			Label lbfile = new Label
+			{
+				Parent = pn,
+				Top = lbversion.Bottom,
+				Left = lbauthor.Left,
+				Width = lbauthor.Width,
+				Height = lbauthor.Height,
+				Text = "Filename:",
+				Font = lbauthor.Font,
+				ForeColor = lbauthor.ForeColor,
+				TextAlign = lbauthor.TextAlign
+			};
 			lbfile.Click += new EventHandler(pn_Click);
 
-			lb = new Label();
-			lb.Parent = pn;
-			lb.Top = lbfile.Top;
-			lb.Left = lbfile.Right + 4;
-			lb.AutoSize = true;
-			lb.Text = wrapper.WrapperFileName;
-			lb.Font = new Font(
+			lb = new Label
+			{
+				Parent = pn,
+				Top = lbfile.Top,
+				Left = lbfile.Right + 4,
+				AutoSize = true,
+				Text = wrapper.WrapperFileName,
+				Font = new Font(
 				cnt.Font.Name,
 				cnt.Font.Size,
 				FontStyle.Regular,
 				cnt.Font.Unit
-			);
-			lb.Height = lbauthor.Height;
-			lb.ForeColor = lbauthor.ForeColor;
+			),
+				Height = lbauthor.Height,
+				ForeColor = lbauthor.ForeColor
+			};
 			lb.Click += new EventHandler(pn_Click);
 			#endregion
 
 			#region UID
-			Label lbui = new Label();
-			lbui.Parent = pn;
-			lbui.Top = lbfile.Bottom;
-			lbui.Left = lbauthor.Left;
-			lbui.Width = lbauthor.Width;
-			lbui.Height = lbauthor.Height;
-			lbui.Text = "UID:";
-			lbui.Font = lbauthor.Font;
-			lbui.ForeColor = lbauthor.ForeColor;
-			lbui.TextAlign = lbauthor.TextAlign;
+			Label lbui = new Label
+			{
+				Parent = pn,
+				Top = lbfile.Bottom,
+				Left = lbauthor.Left,
+				Width = lbauthor.Width,
+				Height = lbauthor.Height,
+				Text = "UID:",
+				Font = lbauthor.Font,
+				ForeColor = lbauthor.ForeColor,
+				TextAlign = lbauthor.TextAlign
+			};
 			lbui.Click += new EventHandler(pn_Click);
 
-			lb = new Label();
-			lb.Parent = pn;
-			lb.Top = lbui.Top;
-			lb.Left = lbui.Right + 4;
-			lb.AutoSize = true;
-			lb.Text = "0x" + Helper.HexString(wrapper.WrapperDescription.UID);
-			lb.Font = new Font(
+			lb = new Label
+			{
+				Parent = pn,
+				Top = lbui.Top,
+				Left = lbui.Right + 4,
+				AutoSize = true,
+				Text = "0x" + Helper.HexString(wrapper.WrapperDescription.UID),
+				Font = new Font(
 				cnt.Font.Name,
 				cnt.Font.Size,
 				FontStyle.Regular,
 				cnt.Font.Unit
-			);
-			lb.Height = lbauthor.Height;
-			lb.ForeColor = lbauthor.ForeColor;
+			),
+				Height = lbauthor.Height,
+				ForeColor = lbauthor.ForeColor
+			};
 			lb.Click += new EventHandler(pn_Click);
 			#endregion
 
 			#region Description
-			Label lbdesc = new Label();
-			lbdesc.Parent = pn;
-			lbdesc.Top = lbui.Bottom;
-			lbdesc.Left = lbauthor.Left;
-			lbdesc.Width = lbauthor.Width;
-			lbdesc.Height = lbauthor.Height;
-			lbdesc.Text = "Description:";
-			lbdesc.Font = lbauthor.Font;
-			lbdesc.ForeColor = lbauthor.ForeColor;
-			lbdesc.TextAlign = lbauthor.TextAlign;
+			Label lbdesc = new Label
+			{
+				Parent = pn,
+				Top = lbui.Bottom,
+				Left = lbauthor.Left,
+				Width = lbauthor.Width,
+				Height = lbauthor.Height,
+				Text = "Description:",
+				Font = lbauthor.Font,
+				ForeColor = lbauthor.ForeColor,
+				TextAlign = lbauthor.TextAlign
+			};
 			lbdesc.Click += new EventHandler(pn_Click);
 
-			TextBox tb = new TextBox();
-			tb.Parent = pn;
-			tb.Top = lbdesc.Top;
-			tb.Left = lbdesc.Right + 4;
-			tb.Width = pn.Width - lb.Left - imgwidth - 12;
-			tb.Anchor =
+			TextBox tb = new TextBox
+			{
+				Parent = pn,
+				Top = lbdesc.Top,
+				Left = lbdesc.Right + 4,
+				Width = pn.Width - lb.Left - imgwidth - 12,
+				Anchor =
 				AnchorStyles.Top
 				| AnchorStyles.Left
 				| AnchorStyles.Bottom
-				| AnchorStyles.Right;
-			tb.Text = wrapper.WrapperDescription.Description;
+				| AnchorStyles.Right,
+				Text = wrapper.WrapperDescription.Description
+			};
 			if (Helper.WindowsRegistry.HiddenMode)
 			{
 				tb.Text +=
@@ -760,10 +782,12 @@ namespace SimPe
 
 			if (wrapper.AllowMultipleInstances)
 			{
-				pb = new PictureBox();
-				pb.Parent = pn;
-				pb.Width = imgwidth;
-				pb.Height = imgwidth;
+				pb = new PictureBox
+				{
+					Parent = pn,
+					Width = imgwidth,
+					Height = imgwidth
+				};
 				pb.Left = pn.Width - 2 * pb.Width - 16;
 				pb.Top = pn.DisplayRectangle.Top + 4; //pn.DisplayRectangle.Top + 4 + pb.Height + 4; //pn.Height - 2*pb.Height -16;
 				pb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -776,11 +800,13 @@ namespace SimPe
 				pb.Click += new EventHandler(pn_Click);
 				toolTip1.SetToolTip(pb, "Allows Multiple instance");
 
-				pb = new PictureBox();
-				pb.Parent = pn;
-				pb.Width = pn.DisplayRectangle.Top + 1;
-				pb.Height = pn.DisplayRectangle.Top;
-				pb.SizeMode = PictureBoxSizeMode.CenterImage;
+				pb = new PictureBox
+				{
+					Parent = pn,
+					Width = pn.DisplayRectangle.Top + 1,
+					Height = pn.DisplayRectangle.Top,
+					SizeMode = PictureBoxSizeMode.CenterImage
+				};
 				pb.Top = (pn.DisplayRectangle.Top + 1 - pb.Height) / 2;
 				pb.Left = pn.Width - 3 * pb.Width - pb.Top;
 				pb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -797,11 +823,13 @@ namespace SimPe
 
 			if (wrapper is PackedFiles.Wrapper.ErrorWrapper)
 			{
-				pb = new PictureBox();
-				pb.Parent = pn;
-				pb.Width = pn.DisplayRectangle.Top + 1;
-				pb.Height = pn.DisplayRectangle.Top;
-				pb.SizeMode = PictureBoxSizeMode.CenterImage;
+				pb = new PictureBox
+				{
+					Parent = pn,
+					Width = pn.DisplayRectangle.Top + 1,
+					Height = pn.DisplayRectangle.Top,
+					SizeMode = PictureBoxSizeMode.CenterImage
+				};
 				pb.Top = (pn.DisplayRectangle.Top + 1 - pb.Height) / 2;
 				if (wrapper.AllowMultipleInstances)
 				{
@@ -831,12 +859,14 @@ namespace SimPe
 				);
 			}
 
-			PictureBox ipb = new PictureBox();
-			ipb.Parent = pn;
-			ipb.Left = 2;
-			ipb.Top = 1;
-			ipb.BackColor = Color.Transparent;
-			ipb.SizeMode = PictureBoxSizeMode.StretchImage;
+			PictureBox ipb = new PictureBox
+			{
+				Parent = pn,
+				Left = 2,
+				Top = 1,
+				BackColor = Color.Transparent,
+				SizeMode = PictureBoxSizeMode.StretchImage
+			};
 			if (wrapper.WrapperDescription.Icon != null)
 			{
 				ipb.Height = Math.Min(
@@ -856,11 +886,13 @@ namespace SimPe
 				//				ipb.Image = FileTable.WrapperRegistry.WrapperImageList.Images[1];
 			}
 
-			PictureBox pbe = new PictureBox();
-			pbe.Parent = pn;
-			pbe.Width = pn.DisplayRectangle.Top + 1;
-			pbe.Height = pn.DisplayRectangle.Top;
-			pbe.SizeMode = PictureBoxSizeMode.CenterImage;
+			PictureBox pbe = new PictureBox
+			{
+				Parent = pn,
+				Width = pn.DisplayRectangle.Top + 1,
+				Height = pn.DisplayRectangle.Top,
+				SizeMode = PictureBoxSizeMode.CenterImage
+			};
 			pbe.Top = (pn.DisplayRectangle.Top + 1 - pbe.Height) / 2;
 			pbe.Left = pn.Width - pbe.Width - pbe.Top;
 			pbe.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -870,10 +902,12 @@ namespace SimPe
 			pbe.Click += new EventHandler(pb_ExpandClick);
 			toolTip1.SetToolTip(pbe, "Collapse/Expand");
 
-			pb = new PictureBox();
-			pb.Parent = pn;
-			pb.Width = imgwidth;
-			pb.Height = imgwidth;
+			pb = new PictureBox
+			{
+				Parent = pn,
+				Width = imgwidth,
+				Height = imgwidth
+			};
 			pb.Left = pn.Width - pb.Width - 8;
 			pb.Top = pn.DisplayRectangle.Top + 4; //pn.Height - pb.Height -8;
 			pb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -883,11 +917,13 @@ namespace SimPe
 			pb.Click += new EventHandler(pb_Click);
 			toolTip1.SetToolTip(pb, "Enable/Disable");
 
-			pb = new PictureBox();
-			pb.Parent = pn;
-			pb.Width = pn.DisplayRectangle.Top + 1;
-			pb.Height = pn.DisplayRectangle.Top;
-			pb.SizeMode = PictureBoxSizeMode.CenterImage;
+			pb = new PictureBox
+			{
+				Parent = pn,
+				Width = pn.DisplayRectangle.Top + 1,
+				Height = pn.DisplayRectangle.Top,
+				SizeMode = PictureBoxSizeMode.CenterImage
+			};
 			pb.Top = (pn.DisplayRectangle.Top + 1 - pb.Height) / 2;
 			pb.Left = pn.Width - 2 * pb.Width - pb.Top;
 			pb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -903,11 +939,13 @@ namespace SimPe
 			pb.Click += new EventHandler(pb_Click);
 			toolTip1.SetToolTip(pb, "Enable/Disable");
 
-			Panel pan = new Panel();
-			pan.BackColor = cnt.BackColor;
-			pan.Parent = pn;
-			pan.Height = 4;
-			pan.Dock = DockStyle.Bottom;
+			Panel pan = new Panel
+			{
+				BackColor = cnt.BackColor,
+				Parent = pn,
+				Height = 4,
+				Dock = DockStyle.Bottom
+			};
 
 			uids.Add(wrapper.WrapperDescription.UID);
 			pb_ExpandClick(pbe, null);

@@ -302,9 +302,11 @@ namespace Ambertation.Drawing
 				{
 					for (int b = minb; b < maxb; b++)
 					{
-						ColorMap c = new ColorMap();
-						c.NewColor = target;
-						c.OldColor = Color.FromArgb(r, g, b);
+						ColorMap c = new ColorMap
+						{
+							NewColor = target,
+							OldColor = Color.FromArgb(r, g, b)
+						};
 						cmap.Add(c);
 					}
 				}
@@ -472,8 +474,10 @@ namespace Ambertation.Drawing
 
 			g.Dispose();
 
-			FloodFiller ff = new FloodFiller();
-			ff.FillColor = fillcl;
+			FloodFiller ff = new FloodFiller
+			{
+				FillColor = fillcl
+			};
 			ff.FloodFill(bm, pos);
 			((Bitmap)img).MakeTransparent(fillcl);
 

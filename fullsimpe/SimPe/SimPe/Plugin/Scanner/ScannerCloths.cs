@@ -387,18 +387,22 @@ namespace SimPe.Plugin.Scanner
 			if (cpf.GetItem("product") == null)
 			{
 				CpfItem i =
-					new CpfItem();
-				i.Name = "product";
-				i.UIntegerValue = 1;
+					new CpfItem
+					{
+						Name = "product",
+						UIntegerValue = 1
+					};
 				cpf.AddItem(i);
 			}
 
 			if (cpf.GetItem("version") == null)
 			{
 				CpfItem i =
-					new CpfItem();
-				i.Name = "version";
-				i.UIntegerValue = 2;
+					new CpfItem
+					{
+						Name = "version",
+						UIntegerValue = 2
+					};
 				cpf.AddItem(i);
 			}
 		}

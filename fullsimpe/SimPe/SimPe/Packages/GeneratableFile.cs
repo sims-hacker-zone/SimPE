@@ -52,8 +52,10 @@ namespace SimPe.Packages
 		/// <returns>An INstance of this Class</returns>
 		protected override IPackageFile NewCloneBase()
 		{
-			GeneratableFile fl = new GeneratableFile((BinaryReader)null);
-			fl.header = header;
+			GeneratableFile fl = new GeneratableFile((BinaryReader)null)
+			{
+				header = header
+			};
 
 			return fl;
 		}
@@ -273,10 +275,12 @@ namespace SimPe.Packages
 			filelistfile = new PackedFiles.Wrapper.CompressedFileList(
 				Header.IndexType
 			);
-			filelist = new PackedFileDescriptor();
-			filelist.Type = Data.MetaData.DIRECTORY_FILE;
-			filelist.LongInstance = 0x286B1F03;
-			filelist.Group = Data.MetaData.DIRECTORY_FILE;
+			filelist = new PackedFileDescriptor
+			{
+				Type = Data.MetaData.DIRECTORY_FILE,
+				LongInstance = 0x286B1F03,
+				Group = Data.MetaData.DIRECTORY_FILE
+			};
 
 			filelistfile.FileDescriptor = filelist;
 			filelistfile.SynchronizeUserData();
@@ -353,14 +357,18 @@ namespace SimPe.Packages
 					{
 						if (pfd.HasUserdata)
 						{
-							pf = new PackedFile(PackedFile.Compress(pfd.UserData));
-							pf.uncsize = (uint)pfd.UserData.Length;
+							pf = new PackedFile(PackedFile.Compress(pfd.UserData))
+							{
+								uncsize = (uint)pfd.UserData.Length
+							};
 						}
 						else
 						{
 							byte[] data = ((PackedFile)Read(pfd)).UncompressedData;
-							pf = new PackedFile(PackedFile.Compress(data));
-							pf.uncsize = (uint)data.Length;
+							pf = new PackedFile(PackedFile.Compress(data))
+							{
+								uncsize = (uint)data.Length
+							};
 						}
 
 						pf.size = pf.data.Length;
@@ -460,10 +468,12 @@ namespace SimPe.Packages
 		{
 			if (filelist == null)
 			{
-				filelist = new PackedFileDescriptor();
-				filelist.instance = 0x286B1F03;
-				filelist.Group = Data.MetaData.DIRECTORY_FILE;
-				filelist.Type = Data.MetaData.DIRECTORY_FILE;
+				filelist = new PackedFileDescriptor
+				{
+					instance = 0x286B1F03,
+					Group = Data.MetaData.DIRECTORY_FILE,
+					Type = Data.MetaData.DIRECTORY_FILE
+				};
 			}
 
 			//we use the fact, taht packed files that were altered by SimPe will not be compressed,
@@ -478,8 +488,10 @@ namespace SimPe.Packages
 			}
 
 			PackedFiles.Wrapper.CompressedFileList newfl =
-				new PackedFiles.Wrapper.CompressedFileList(Header.IndexType);
-			newfl.FileDescriptor = filelist;
+				new PackedFiles.Wrapper.CompressedFileList(Header.IndexType)
+				{
+					FileDescriptor = filelist
+				};
 
 			for (int i = 0; i < tmpcmp.Count; i++)
 			{

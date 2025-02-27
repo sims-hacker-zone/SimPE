@@ -436,10 +436,12 @@ namespace SimPe.Plugin.TabPage
 				//Shpe wrp = (Shpe)wrapper;
 				Shape shape = (Shape)Tag;
 
-				ShapePart val = new ShapePart();
-				val.Subset = tbparttype.Text;
-				val.FileName = tbpartdsc.Text;
-				val.Data = Helper.SetLength(Helper.HexListToBytes(tbpartdata.Text), 9);
+				ShapePart val = new ShapePart
+				{
+					Subset = tbparttype.Text,
+					FileName = tbpartdsc.Text,
+					Data = Helper.SetLength(Helper.HexListToBytes(tbpartdata.Text), 9)
+				};
 
 				lbpart.Items.Add(val);
 				UpdateLists();

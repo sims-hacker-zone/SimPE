@@ -64,9 +64,11 @@ namespace SimPe.Plugin
 			// Required designer variable.
 			InitializeComponent();
 
-			SmallImageList = new ImageList();
-			SmallImageList.ImageSize = new Size(NgbhItem.ICON_SIZE, NgbhItem.ICON_SIZE);
-			SmallImageList.ColorDepth = ColorDepth.Depth32Bit;
+			SmallImageList = new ImageList
+			{
+				ImageSize = new Size(NgbhItem.ICON_SIZE, NgbhItem.ICON_SIZE),
+				ColorDepth = ColorDepth.Depth32Bit
+			};
 
 			lv.SelectedIndexChanged += new EventHandler(lv_SelectedIndexChanged);
 

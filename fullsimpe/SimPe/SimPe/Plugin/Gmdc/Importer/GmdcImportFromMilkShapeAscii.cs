@@ -475,9 +475,11 @@ namespace SimPe.Plugin.Gmdc.Importer
 			IntArrayList sort = Gmdc.SortJoints();
 			for (int i = 0; i < ct; i++)
 			{
-				ImportedBone b = new ImportedBone(Gmdc);
-				b.TargetIndex = sort[i];
-				b.Action = GmdcImporterAction.Replace;
+				ImportedBone b = new ImportedBone(Gmdc)
+				{
+					TargetIndex = sort[i],
+					Action = GmdcImporterAction.Replace
+				};
 
 				//Read the Bones Data
 				ReadJointDescription(b);

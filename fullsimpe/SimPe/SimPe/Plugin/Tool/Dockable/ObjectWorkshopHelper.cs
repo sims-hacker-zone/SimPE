@@ -182,19 +182,21 @@ namespace SimPe.Plugin.Tool.Dockable
 				out pfd
 			);
 
-			cs = new OWCloneSettings();
-			cs.IncludeWallmask = false;
-			cs.OnlyDefaultMmats = false;
-			cs.IncludeAnimationResources = false;
-			cs.CustomGroup = false;
-			cs.FixResources = false;
-			cs.RemoveUselessResource = false;
-			cs.StandAloneObject = false;
-			cs.RemoveNonDefaultTextReferences = false;
-			cs.KeepOriginalMesh = false;
-			cs.PullResourcesByStr = true;
-			cs.ChangeObjectDescription = false;
-			cs.OpenWithRemoteControl = false;
+			cs = new OWCloneSettings
+			{
+				IncludeWallmask = false,
+				OnlyDefaultMmats = false,
+				IncludeAnimationResources = false,
+				CustomGroup = false,
+				FixResources = false,
+				RemoveUselessResource = false,
+				StandAloneObject = false,
+				RemoveNonDefaultTextReferences = false,
+				KeepOriginalMesh = false,
+				PullResourcesByStr = true,
+				ChangeObjectDescription = false,
+				OpenWithRemoteControl = false
+			};
 		}
 
 		/// <summary>
@@ -316,11 +318,15 @@ namespace SimPe.Plugin.Tool.Dockable
 				out cs
 			);
 
-			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
-			str.FileDescriptor = new Packages.PackedFileDescriptor();
-			str.FileDescriptor.Type = Data.MetaData.STRING_FILE;
-			str.FileDescriptor.LongInstance = 0x85;
-			str.FileDescriptor.Group = 0x7F000000;
+			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str
+			{
+				FileDescriptor = new Packages.PackedFileDescriptor
+				{
+					Type = Data.MetaData.STRING_FILE,
+					LongInstance = 0x85,
+					Group = 0x7F000000
+				}
+			};
 			package.Add(str.FileDescriptor);
 
 			string name = cres.ToLower().Trim();
@@ -454,8 +460,10 @@ namespace SimPe.Plugin.Tool.Dockable
 							null
 						);
 
-						ObjectCloner pobj = new ObjectCloner(pkg);
-						pobj.Setup = settings;
+						ObjectCloner pobj = new ObjectCloner(pkg)
+						{
+							Setup = settings
+						};
 						pobj.Setup.BaseResource = br;
 						pobj.Setup.OnlyDefaultMmats = (
 							settings.OnlyDefaultMmats
@@ -550,13 +558,14 @@ namespace SimPe.Plugin.Tool.Dockable
 					);
 
 					Packages.PackedFileDescriptor npfd =
-						new Packages.PackedFileDescriptor();
-
-					npfd.UserData = file.UncompressedData;
-					npfd.Group = item.FileDescriptor.Group;
-					npfd.Instance = item.FileDescriptor.Instance;
-					npfd.SubType = item.FileDescriptor.SubType;
-					npfd.Type = item.FileDescriptor.Type;
+						new Packages.PackedFileDescriptor
+						{
+							UserData = file.UncompressedData,
+							Group = item.FileDescriptor.Group,
+							Instance = item.FileDescriptor.Instance,
+							SubType = item.FileDescriptor.SubType,
+							Type = item.FileDescriptor.Type
+						};
 
 					if (package.FindFile(npfd) == null)
 					{
@@ -612,14 +621,16 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 			}
 
-			SaveFileDialog sfd = new SaveFileDialog();
-			sfd.Filter = ExtensionProvider.BuildFilterString(
+			SaveFileDialog sfd = new SaveFileDialog
+			{
+				Filter = ExtensionProvider.BuildFilterString(
 				new ExtensionType[]
 				{
 					ExtensionType.Package,
 					ExtensionType.AllFiles,
 				}
-			);
+			)
+			};
 			if (sfd.ShowDialog() != DialogResult.OK)
 			{
 				return package;
@@ -687,14 +698,16 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 			}
 
-			SaveFileDialog sfd = new SaveFileDialog();
-			sfd.Filter = ExtensionProvider.BuildFilterString(
+			SaveFileDialog sfd = new SaveFileDialog
+			{
+				Filter = ExtensionProvider.BuildFilterString(
 				new ExtensionType[]
 				{
 					ExtensionType.Package,
 					ExtensionType.AllFiles,
 				}
-			);
+			)
+			};
 			if (sfd.ShowDialog() != DialogResult.OK)
 			{
 				return package;
@@ -806,14 +819,16 @@ namespace SimPe.Plugin.Tool.Dockable
 						return package;
 					}
 
-					SaveFileDialog sfd = new SaveFileDialog();
-					sfd.Filter = ExtensionProvider.BuildFilterString(
+					SaveFileDialog sfd = new SaveFileDialog
+					{
+						Filter = ExtensionProvider.BuildFilterString(
 						new ExtensionType[]
 						{
 							ExtensionType.Package,
 							ExtensionType.AllFiles,
 						}
-					);
+					)
+					};
 					if (sfd.ShowDialog() == DialogResult.OK)
 					{
 						WaitingScreen.Wait();

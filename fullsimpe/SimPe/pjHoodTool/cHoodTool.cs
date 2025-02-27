@@ -120,8 +120,10 @@ namespace pjHoodTool
 			}
 
 			//StreamWriter w1 = new StreamWriter(output);
-			StreamWriter w1 = new StreamWriter(output, false, Encoding.Default);
-			w1.AutoFlush = true;
+			StreamWriter w1 = new StreamWriter(output, false, Encoding.Default)
+			{
+				AutoFlush = true
+			};
 			StreamWriter w2 = null;
 			if (inclot)
 			{
@@ -129,8 +131,10 @@ namespace pjHoodTool
 					Path.Combine(outPath, "ExportedLots" + outptype),
 					false,
 					Encoding.Default
-				);
-				w2.AutoFlush = true;
+				)
+				{
+					AutoFlush = true
+				};
 			}
 
 			splash("Export Neighbourhoods...");
@@ -1274,21 +1278,25 @@ namespace pjHoodTool
 			}
 
 			System.Windows.Forms.FolderBrowserDialog fbd =
-				new System.Windows.Forms.FolderBrowserDialog();
-			fbd.Description = "Choose the folder for extracted Sim data";
-			fbd.SelectedPath = PathProvider.SimSavegameFolder;
-			fbd.ShowNewFolderButton = true;
+				new System.Windows.Forms.FolderBrowserDialog
+				{
+					Description = "Choose the folder for extracted Sim data",
+					SelectedPath = PathProvider.SimSavegameFolder,
+					ShowNewFolderButton = true
+				};
 			System.Windows.Forms.DialogResult dr = fbd.ShowDialog();
 			if (dr != System.Windows.Forms.DialogResult.OK)
 			{
 				return new ToolResult(false, false);
 			}
 
-			NeighborhoodForm nfm = new NeighborhoodForm();
-			nfm.LoadNgbh = false;
-			nfm.ShowBackupManager = false;
-			nfm.ShowSubHoods = false;
-			nfm.Text = "Close window without selection to extract all";
+			NeighborhoodForm nfm = new NeighborhoodForm
+			{
+				LoadNgbh = false,
+				ShowBackupManager = false,
+				ShowSubHoods = false,
+				Text = "Close window without selection to extract all"
+			};
 			SimPe.Interfaces.Plugin.IToolResult ret = nfm.Execute(ref package, null);
 
 			string hood = "";
@@ -1300,8 +1308,10 @@ namespace pjHoodTool
 				hood = Path.GetFileName(Path.GetDirectoryName(nfm.SelectedNgbh));
 			}
 
-			Settims sf = new Settims();
-			sf.Text = hood;
+			Settims sf = new Settims
+			{
+				Text = hood
+			};
 			sf.ShowDialog();
 
 			try

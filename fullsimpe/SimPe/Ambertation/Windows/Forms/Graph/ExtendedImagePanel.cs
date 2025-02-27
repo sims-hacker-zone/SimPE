@@ -141,8 +141,10 @@ namespace Ambertation.Windows.Forms.Graph
 			);
 			linepen.Dispose();
 
-			StringFormat sf = new StringFormat();
-			sf.FormatFlags = StringFormatFlags.NoWrap;
+			StringFormat sf = new StringFormat
+			{
+				FormatFlags = StringFormatFlags.NoWrap
+			};
 			int top = prec.Top + 24;
 			Size indent = new Size(
 				trec.Right + 6,

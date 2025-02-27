@@ -65,8 +65,10 @@ namespace SimPe
 			//this.lp = lp;
 			this.tool = tool;
 
-			LinkLabel = new LinkLabel();
-			LinkLabel.Name = tool.ToString();
+			LinkLabel = new LinkLabel
+			{
+				Name = tool.ToString()
+			};
 			if (Helper.WindowsRegistry.UseBigIcons)
 			{
 				LinkLabel.Font = new System.Drawing.Font(
@@ -116,14 +118,16 @@ namespace SimPe
 			{
 				ToolBarButton = new MyButtonItem(
 					"action." + tool.GetType().Namespace + "." + tool.GetType().Name
-				);
-				ToolBarButton.Text = "";
-				//bi.ToolTipText = ll.Label;
-				ToolBarButton.Image = tool.Icon;
-				//bi.BuddyMenu = mi;
+				)
+				{
+					Text = "",
+					//bi.ToolTipText = ll.Label;
+					Image = tool.Icon,
+					//bi.BuddyMenu = mi;
 
-				ToolBarButton.Checked = MenuButton.Checked;
-				ToolBarButton.Enabled = MenuButton.Enabled;
+					Checked = MenuButton.Checked,
+					Enabled = MenuButton.Enabled
+				};
 				ToolBarButton.Click += new EventHandler(LinkClicked);
 			}
 

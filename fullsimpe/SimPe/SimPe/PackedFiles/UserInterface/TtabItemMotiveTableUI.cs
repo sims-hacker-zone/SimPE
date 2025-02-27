@@ -171,8 +171,10 @@ namespace SimPe.PackedFiles.UserInterface
 				lbNrGroups.Text =
 					lbNrGroups.Text.Split(new char[] { ':' })[0] + ": " + item.Count.ToString();
 
-				TtabMotiveGroupUI c = new TtabMotiveGroupUI();
-				c.MotiveGroup = item[0];
+				TtabMotiveGroupUI c = new TtabMotiveGroupUI
+				{
+					MotiveGroup = item[0]
+				};
 				if (item.Type == TtabItemMotiveTableType.Human)
 				{
 					c.MGName = pjse.BhavWiz.readStr(pjse.GS.BhavStr.TTABAges, 0);

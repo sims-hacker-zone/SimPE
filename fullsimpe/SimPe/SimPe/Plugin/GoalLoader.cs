@@ -36,24 +36,32 @@ namespace SimPe.Plugin
 		/// <returns>A Goal Information Structure</returns>
 		public static GoalCacheInformation LoadGoal(GoalCacheItem wci)
 		{
-			GoalCacheInformation ret = new GoalCacheInformation();
-			ret.icon = wci.Icon;
-			ret.name = wci.Name;
-			ret.guid = wci.Guid;
+			GoalCacheInformation ret = new GoalCacheInformation
+			{
+				icon = wci.Icon,
+				name = wci.Name,
+				guid = wci.Guid
+			};
 
 			XGoal w = new XGoal();
 			PackedFiles.Wrapper.CpfItem i =
-				new PackedFiles.Wrapper.CpfItem();
-			i.Name = "id";
-			i.UIntegerValue = wci.Guid;
+				new PackedFiles.Wrapper.CpfItem
+				{
+					Name = "id",
+					UIntegerValue = wci.Guid
+				};
 			w.AddItem(i, true);
-			i = new PackedFiles.Wrapper.CpfItem();
-			i.Name = "score";
-			i.IntegerValue = wci.Score;
+			i = new PackedFiles.Wrapper.CpfItem
+			{
+				Name = "score",
+				IntegerValue = wci.Score
+			};
 			w.AddItem(i, true);
-			i = new PackedFiles.Wrapper.CpfItem();
-			i.Name = "influence";
-			i.IntegerValue = wci.Influence;
+			i = new PackedFiles.Wrapper.CpfItem
+			{
+				Name = "influence",
+				IntegerValue = wci.Influence
+			};
 			w.AddItem(i, true);
 
 			ret.wnt = w;

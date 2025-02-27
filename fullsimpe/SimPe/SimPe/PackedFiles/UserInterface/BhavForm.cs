@@ -261,11 +261,13 @@ namespace SimPe.PackedFiles.UserInterface
 			uint instance
 		)
 		{
-			IPackedFileDescriptor npfd = new Packages.PackedFileDescriptor();
-			npfd.Type = type;
-			npfd.Group = group;
-			npfd.SubType = subtype;
-			npfd.Instance = instance;
+			IPackedFileDescriptor npfd = new Packages.PackedFileDescriptor
+			{
+				Type = type,
+				Group = group,
+				SubType = subtype,
+				Instance = instance
+			};
 			return npfd;
 		}
 
@@ -966,12 +968,13 @@ namespace SimPe.PackedFiles.UserInterface
 						throw new Exception("Foo");
 					}
 
-					Instruction inst = new Instruction(wrapper);
-
-					inst.OpCode = Convert.ToUInt16(args[1].Trim(), 16);
-					inst.NodeVersion = Convert.ToByte(args[2].Trim(), 16);
-					inst.Target1 = Convert.ToUInt16(args[3].Trim(), 16);
-					inst.Target2 = Convert.ToUInt16(args[4].Trim(), 16);
+					Instruction inst = new Instruction(wrapper)
+					{
+						OpCode = Convert.ToUInt16(args[1].Trim(), 16),
+						NodeVersion = Convert.ToByte(args[2].Trim(), 16),
+						Target1 = Convert.ToUInt16(args[3].Trim(), 16),
+						Target2 = Convert.ToUInt16(args[4].Trim(), 16)
+					};
 					for (int j = 0; j < 8; j++)
 					{
 						inst.Operands[j] = Convert.ToByte(
@@ -1061,8 +1064,10 @@ namespace SimPe.PackedFiles.UserInterface
 						IPackedFileDescriptor npfd = newPFD(
 							tprp.FileDescriptor
 						);
-						TPRP ntprp = new TPRP();
-						ntprp.FileDescriptor = npfd;
+						TPRP ntprp = new TPRP
+						{
+							FileDescriptor = npfd
+						};
 						wrapper.Package.Add(npfd, true);
 						if (dr == DialogResult.Yes)
 						{
@@ -1091,13 +1096,15 @@ namespace SimPe.PackedFiles.UserInterface
 				else
 				{
 					// create a new TPRP file
-					tprp = new TPRP();
-					tprp.FileDescriptor = newPFD(
+					tprp = new TPRP
+					{
+						FileDescriptor = newPFD(
 						TPRP.TPRPtype,
 						wrapper.FileDescriptor.Group,
 						wrapper.FileDescriptor.SubType,
 						wrapper.FileDescriptor.Instance
-					);
+					)
+					};
 					wrapper.Package.Add(tprp.FileDescriptor, true);
 					tprp.SynchronizeUserData();
 				}
@@ -2708,9 +2715,11 @@ namespace SimPe.PackedFiles.UserInterface
 			Control old = bhavPanel.Parent;
 			string oldFloatText = pjse_banner1.FloatText;
 
-			Form f = new Form();
-			f.Text = formTitle;
-			f.WindowState = FormWindowState.Maximized;
+			Form f = new Form
+			{
+				Text = formTitle,
+				WindowState = FormWindowState.Maximized
+			};
 
 			f.Controls.Add(bhavPanel);
 			pjse_banner1.FloatText = pjse.Localization.GetString(

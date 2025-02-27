@@ -30,19 +30,21 @@ namespace pjse
 			string title
 		)
 		{
-			SaveFileDialog sfd = new SaveFileDialog();
-			sfd.FileName = wrapper
+			SaveFileDialog sfd = new SaveFileDialog
+			{
+				FileName = wrapper
 				.FileDescriptor.ExportFileName.Replace(" ", "")
 				.Replace(":", "_")
-				.Replace(@"\", "_");
-			sfd.Filter = SimPe.ExtensionProvider.BuildFilterString(
+				.Replace(@"\", "_"),
+				Filter = SimPe.ExtensionProvider.BuildFilterString(
 				new SimPe.ExtensionType[]
 				{
 					SimPe.ExtensionType.ExtractedFile,
 					SimPe.ExtensionType.AllFiles,
 				}
-			);
-			sfd.Title = title;
+			),
+				Title = title
+			};
 
 			DialogResult dr = sfd.ShowDialog();
 			if (dr != DialogResult.OK)

@@ -139,9 +139,11 @@ namespace Ambertation.Threading
 			}
 			else
 			{
-				worker = new Thread(new ThreadStart(ThreadEntry));
-				worker.Priority = tp;
-				worker.Name = name;
+				worker = new Thread(new ThreadStart(ThreadEntry))
+				{
+					Priority = tp,
+					Name = name
+				};
 				//worker.SetApartmentState(ApartmentState.STA);
 				worker.Start();
 

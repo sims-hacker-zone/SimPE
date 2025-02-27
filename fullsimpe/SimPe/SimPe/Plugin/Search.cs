@@ -1221,13 +1221,15 @@ namespace SimPe.Plugin
 
 				lblist.Items.Clear();
 				Packages.PackedFileDescriptor pfd =
-					new Packages.PackedFileDescriptor();
-				pfd.SubType = Hashes.SubTypeHash(
+					new Packages.PackedFileDescriptor
+					{
+						SubType = Hashes.SubTypeHash(
 					Hashes.StripHashFromName(tbflname.Text)
-				);
-				pfd.Instance = Hashes.InstanceHash(
+				),
+						Instance = Hashes.InstanceHash(
 					Hashes.StripHashFromName(tbflname.Text)
-				);
+				)
+					};
 
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
 					FileTableBase.FileIndex.FindFileByInstance(pfd.LongInstance);

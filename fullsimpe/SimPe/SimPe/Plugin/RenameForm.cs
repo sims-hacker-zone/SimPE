@@ -551,9 +551,11 @@ namespace SimPe.Plugin
 			ref FixVersion ver
 		)
 		{
-			RenameForm rf = new RenameForm();
-			rf.ok = false;
-			rf.package = package;
+			RenameForm rf = new RenameForm
+			{
+				ok = false,
+				package = package
+			};
 			rf.cbv2.Checked = (ver == FixVersion.UniversityReady2);
 
 			string old = Hashes.StripHashFromName(

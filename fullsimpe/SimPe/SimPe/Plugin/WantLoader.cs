@@ -55,32 +55,44 @@ namespace SimPe.Plugin
 		/// <returns>A Want Information Structure</returns>
 		public static WantCacheInformation LoadWant(WantCacheItem wci)
 		{
-			WantCacheInformation ret = new WantCacheInformation();
-			ret.icon = wci.Icon;
-			ret.name = wci.Name;
-			ret.guid = wci.Guid;
+			WantCacheInformation ret = new WantCacheInformation
+			{
+				icon = wci.Icon,
+				name = wci.Name,
+				guid = wci.Guid
+			};
 
 			XWant w = new XWant();
 			PackedFiles.Wrapper.CpfItem i =
-				new PackedFiles.Wrapper.CpfItem();
-			i.Name = "id";
-			i.UIntegerValue = wci.Guid;
+				new PackedFiles.Wrapper.CpfItem
+				{
+					Name = "id",
+					UIntegerValue = wci.Guid
+				};
 			w.AddItem(i, true);
-			i = new PackedFiles.Wrapper.CpfItem();
-			i.Name = "folder";
-			i.StringValue = wci.Folder;
+			i = new PackedFiles.Wrapper.CpfItem
+			{
+				Name = "folder",
+				StringValue = wci.Folder
+			};
 			w.AddItem(i, true);
-			i = new PackedFiles.Wrapper.CpfItem();
-			i.Name = "score";
-			i.IntegerValue = wci.Score;
+			i = new PackedFiles.Wrapper.CpfItem
+			{
+				Name = "score",
+				IntegerValue = wci.Score
+			};
 			w.AddItem(i, true);
-			i = new PackedFiles.Wrapper.CpfItem();
-			i.Name = "influence";
-			i.IntegerValue = wci.Influence;
+			i = new PackedFiles.Wrapper.CpfItem
+			{
+				Name = "influence",
+				IntegerValue = wci.Influence
+			};
 			w.AddItem(i, true);
-			i = new PackedFiles.Wrapper.CpfItem();
-			i.Name = "objectType";
-			i.StringValue = wci.ObjectType;
+			i = new PackedFiles.Wrapper.CpfItem
+			{
+				Name = "objectType",
+				StringValue = wci.ObjectType
+			};
 			w.AddItem(i, true);
 
 			ret.wnt = w;

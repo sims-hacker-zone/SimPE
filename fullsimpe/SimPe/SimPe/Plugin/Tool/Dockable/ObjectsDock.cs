@@ -1191,15 +1191,17 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void button2_Click(object sender, EventArgs e)
 		{
 			onlybase = false;
-			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Filter = ExtensionProvider.BuildFilterString(
+			OpenFileDialog ofd = new OpenFileDialog
+			{
+				Filter = ExtensionProvider.BuildFilterString(
 				new ExtensionType[]
 				{
 					ExtensionType.Package,
 					ExtensionType.DisabledPackage,
 					ExtensionType.AllFiles,
 				}
-			);
+			)
+			};
 
 			package = null;
 			if (ofd.ShowDialog() == DialogResult.OK)
@@ -1364,30 +1366,34 @@ namespace SimPe.Plugin.Tool.Dockable
 				//Clone an Object
 				if (cbTask.SelectedIndex == 1)
 				{
-					OWCloneSettings cs = new OWCloneSettings();
-					cs.IncludeWallmask = cbwallmask.Checked;
-					cs.OnlyDefaultMmats = cbdefault.Checked;
-					cs.IncludeAnimationResources = cbanim.Checked;
-					cs.CustomGroup = cbgid.Checked;
-					cs.FixResources = cbfix.Checked;
-					cs.RemoveUselessResource = cbclean.Checked;
-					cs.StandAloneObject = cbparent.Checked;
-					cs.RemoveNonDefaultTextReferences = cbRemTxt.Checked;
-					cs.KeepOriginalMesh = cbOrgGmdc.Checked;
-					cs.PullResourcesByStr = cbstrlink.Checked;
+					OWCloneSettings cs = new OWCloneSettings
+					{
+						IncludeWallmask = cbwallmask.Checked,
+						OnlyDefaultMmats = cbdefault.Checked,
+						IncludeAnimationResources = cbanim.Checked,
+						CustomGroup = cbgid.Checked,
+						FixResources = cbfix.Checked,
+						RemoveUselessResource = cbclean.Checked,
+						StandAloneObject = cbparent.Checked,
+						RemoveNonDefaultTextReferences = cbRemTxt.Checked,
+						KeepOriginalMesh = cbOrgGmdc.Checked,
+						PullResourcesByStr = cbstrlink.Checked,
 
-					cs.ChangeObjectDescription = cbDesc.Checked;
-					cs.Title = tbName.Text;
-					cs.Description = tbDesc.Text;
-					cs.Price = Helper.StringToInt16(tbPrice.Text, 0, 10);
+						ChangeObjectDescription = cbDesc.Checked,
+						Title = tbName.Text,
+						Description = tbDesc.Text,
+						Price = Helper.StringToInt16(tbPrice.Text, 0, 10)
+					};
 
 					settings = cs;
 				}
 				else
 				{
 					//Recolor a Object
-					settings = new OWRecolorSettings();
-					settings.RemoveNonDefaultTextReferences = false;
+					settings = new OWRecolorSettings
+					{
+						RemoveNonDefaultTextReferences = false
+					};
 				}
 
 				try

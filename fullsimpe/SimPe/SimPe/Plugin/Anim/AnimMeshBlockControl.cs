@@ -62,13 +62,15 @@ namespace SimPe.Plugin.Anim
 			// Required designer variable.
 			InitializeComponent();
 
-			pnFrames = new AnimFrameBlockControl();
-			pnFrames.Dock = DockStyle.Fill;
-			pnFrames.FrameBlock = null;
-			pnFrames.Location = new System.Drawing.Point(0, 32);
-			pnFrames.Name = "pnFrames";
-			pnFrames.Size = new System.Drawing.Size(776, 368);
-			pnFrames.TabIndex = 3;
+			pnFrames = new AnimFrameBlockControl
+			{
+				Dock = DockStyle.Fill,
+				FrameBlock = null,
+				Location = new System.Drawing.Point(0, 32),
+				Name = "pnFrames",
+				Size = new System.Drawing.Size(776, 368),
+				TabIndex = 3
+			};
 			pnFrames.Changed += new System.EventHandler(pnFrames_Changed);
 			Controls.Add(pnFrames);
 			pnFrames.BringToFront();
@@ -495,9 +497,11 @@ namespace SimPe.Plugin.Anim
 			AnimationMeshBlock ab1 = (AnimationMeshBlock)cbSubMesh.SelectedItem;
 			if (ab1 != null)
 			{
-				AnimationFrameBlock afb = new AnimationFrameBlock(ab1);
-				afb.Name = "SimPE Dummy";
-				afb.TransformationType = FrameType.Rotation;
+				AnimationFrameBlock afb = new AnimationFrameBlock(ab1)
+				{
+					Name = "SimPE Dummy",
+					TransformationType = FrameType.Rotation
+				};
 				afb.CreateBaseAxisSet();
 
 				ab1.Part2 = (AnimationFrameBlock[])Helper.Add(ab1.Part2, afb);

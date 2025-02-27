@@ -298,8 +298,10 @@ namespace SimPe.Packages
 		/// <returns>An INstance of this Class</returns>
 		protected virtual IPackageFile NewCloneBase()
 		{
-			File fl = new File((BinaryReader)null);
-			fl.header = header;
+			File fl = new File((BinaryReader)null)
+			{
+				header = header
+			};
 
 			return fl;
 		}
@@ -449,11 +451,13 @@ namespace SimPe.Packages
 			uint instance
 		)
 		{
-			PackedFileDescriptor pfd = new PackedFileDescriptor();
-			pfd.type = type;
-			pfd.subtype = subtype;
-			pfd.group = group;
-			pfd.instance = instance;
+			PackedFileDescriptor pfd = new PackedFileDescriptor
+			{
+				type = type,
+				subtype = subtype,
+				group = group,
+				instance = instance
+			};
 			//pfd.ChangedUserData += new SimPe.Events.PackedFileChanged(ResourceChanged);
 
 			return pfd;
@@ -553,11 +557,13 @@ namespace SimPe.Packages
 			uint instance
 		)
 		{
-			PackedFileDescriptor pfd = new PackedFileDescriptor();
-			pfd.Type = type;
-			pfd.SubType = subtype;
-			pfd.Group = group;
-			pfd.Instance = instance;
+			PackedFileDescriptor pfd = new PackedFileDescriptor
+			{
+				Type = type,
+				SubType = subtype,
+				Group = group,
+				Instance = instance
+			};
 
 			Add(pfd);
 
@@ -862,10 +868,11 @@ namespace SimPe.Packages
 		/// </param>
 		protected void LoadHoleIndexItem(uint position)
 		{
-			HoleIndexItem item = new HoleIndexItem();
-
-			item.offset = reader.ReadUInt32();
-			item.size = reader.ReadInt32();
+			HoleIndexItem item = new HoleIndexItem
+			{
+				offset = reader.ReadUInt32(),
+				size = reader.ReadInt32()
+			};
 
 			holeindex[position] = item;
 		}

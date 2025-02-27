@@ -48,12 +48,13 @@ namespace SimPe.Cache
 				mmat.Package.FileName
 			);
 
-			MMATCacheItem mci = new MMATCacheItem();
-
-			mci.Default = mmat.DefaultMaterial;
-			mci.ModelName = mmat.ModelName.Trim().ToLower();
-			mci.Family = mmat.Family.Trim().ToLower();
-			mci.FileDescriptor = mmat.FileDescriptor;
+			MMATCacheItem mci = new MMATCacheItem
+			{
+				Default = mmat.DefaultMaterial,
+				ModelName = mmat.ModelName.Trim().ToLower(),
+				Family = mmat.Family.Trim().ToLower(),
+				FileDescriptor = mmat.FileDescriptor
+			};
 
 			mycc.Items.Add(mci);
 		}
@@ -86,8 +87,10 @@ namespace SimPe.Cache
 		/// </remarks>
 		public void LoadOverrides()
 		{
-			fi = new FileIndex(new ArrayList());
-			fi.Duplicates = true;
+			fi = new FileIndex(new ArrayList())
+			{
+				Duplicates = true
+			};
 
 			foreach (CacheContainer cc in Containers)
 			{

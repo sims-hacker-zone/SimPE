@@ -28,8 +28,10 @@ namespace SimPe.Plugin.Gmdc
 			this.joint = joint;
 			this.gmi = gmi;
 
-			cbact = new ComboBox();
-			cbact.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbact = new ComboBox
+			{
+				DropDownStyle = ComboBoxStyle.DropDownList
+			};
 			cbact.SelectedIndexChanged += new EventHandler(cbact_SelectedIndexChanged);
 			GenericMeshImport.JointImportAction[] acts =
 				(GenericMeshImport.JointImportAction[])
@@ -41,8 +43,10 @@ namespace SimPe.Plugin.Gmdc
 
 			cbact.SelectedItem = GenericMeshImport.JointImportAction.Ignore;
 
-			cbgroup = new ComboBox();
-			cbgroup.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbgroup = new ComboBox
+			{
+				DropDownStyle = ComboBoxStyle.DropDownList
+			};
 			cbgroup.Items.Add("[" + Localization.GetString("none") + "]");
 			foreach (GmdcJoint j in gmi.Gmdc.Joints)
 			{

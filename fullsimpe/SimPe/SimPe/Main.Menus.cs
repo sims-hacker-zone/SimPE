@@ -226,12 +226,14 @@ namespace SimPe
 				{
 					if (ei.Flag.Class != ExpansionItem.Classes.BaseGame)
 					{
-						ToolStripMenuItem mi = new ToolStripMenuItem();
-						//mi.Text = SimPe.Localization.GetString("OpenInCaption").Replace("{where}", ei.Expansion.ToString());
-						mi.Text =
+						ToolStripMenuItem mi = new ToolStripMenuItem
+						{
+							//mi.Text = SimPe.Localization.GetString("OpenInCaption").Replace("{where}", ei.Expansion.ToString());
+							Text =
 							Localization.GetString("OpenInCaption")
-							.Replace("{where}", ei.NameShort);
-						mi.Tag = ei;
+							.Replace("{where}", ei.NameShort),
+							Tag = ei
+						};
 						mi.Click += new EventHandler(Activate_miOpenInEp);
 						mi.Enabled = (ei.Exists || ei.InstallFolder != ""); // ei.InstallFolder is for where the user manually set the path to this EP
 

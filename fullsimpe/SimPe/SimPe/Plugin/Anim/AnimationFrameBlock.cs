@@ -401,10 +401,11 @@ namespace SimPe.Plugin.Anim
 
 		public AnimationFrameBlock CloneBase(bool fullclone)
 		{
-			AnimationFrameBlock ab = new AnimationFrameBlock(Parent);
-
-			ab.datai = (uint[])datai.Clone();
-			ab.name = name;
+			AnimationFrameBlock ab = new AnimationFrameBlock(Parent)
+			{
+				datai = (uint[])datai.Clone(),
+				name = name
+			};
 			if (fullclone)
 			{
 				ab.AxisSet = new AnimationAxisTransformBlock[AxisCount];
@@ -436,8 +437,10 @@ namespace SimPe.Plugin.Anim
 			AxisSet = new AnimationAxisTransformBlock[3];
 			for (int i = 0; i < AxisCount; i++)
 			{
-				AxisSet[i] = new AnimationAxisTransformBlock(this);
-				AxisSet[i].Type = t;
+				AxisSet[i] = new AnimationAxisTransformBlock(this)
+				{
+					Type = t
+				};
 			}
 		}
 
@@ -730,10 +733,11 @@ namespace SimPe.Plugin.Anim
 			short timecode
 		)
 		{
-			AnimationAxisTransform b = new AnimationAxisTransform(null, -1);
-
-			b.TimeCode = timecode;
-			b.Linear = first.Linear || last.Linear;
+			AnimationAxisTransform b = new AnimationAxisTransform(null, -1)
+			{
+				TimeCode = timecode,
+				Linear = first.Linear || last.Linear
+			};
 
 			if (first.TimeCode == last.TimeCode)
 			{
@@ -792,9 +796,11 @@ namespace SimPe.Plugin.Anim
 				next++;
 			}
 
-			AnimationAxisTransform lb = new AnimationAxisTransform(null, -1);
-			lb.TimeCode = Math.Min((short)0, frames[index].TimeCode);
-			lb.Linear = frames[index].Linear;
+			AnimationAxisTransform lb = new AnimationAxisTransform(null, -1)
+			{
+				TimeCode = Math.Min((short)0, frames[index].TimeCode),
+				Linear = frames[index].Linear
+			};
 
 			//if (last<0 && next<frames.Length) last=next; //if the first Frame is missing, use the Position of the next Frame
 			if (last >= 0)
@@ -810,10 +816,12 @@ namespace SimPe.Plugin.Anim
 				}
 			}
 
-			AnimationAxisTransform nb = new AnimationAxisTransform(null, -1);
-			nb.TimeCode = Math.Max(maxtime, frames[index].TimeCode);
-			nb.Parameter = lb.Parameter;
-			nb.Linear = frames[index].Linear;
+			AnimationAxisTransform nb = new AnimationAxisTransform(null, -1)
+			{
+				TimeCode = Math.Max(maxtime, frames[index].TimeCode),
+				Parameter = lb.Parameter,
+				Linear = frames[index].Linear
+			};
 
 			if (next < frames.Length)
 			{

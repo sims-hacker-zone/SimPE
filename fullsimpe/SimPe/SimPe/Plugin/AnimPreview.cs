@@ -46,9 +46,11 @@ namespace SimPe.Plugin
 			//
 			InitializeComponent();
 
-			dx = new Ambertation.Graphics.DirectXPanel();
-			dx.Parent = panel1;
-			dx.Dock = DockStyle.Fill;
+			dx = new Ambertation.Graphics.DirectXPanel
+			{
+				Parent = panel1,
+				Dock = DockStyle.Fill
+			};
 			//dx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
 
 			dx.ResetDevice += new EventHandler(dx_ResetDevice);
@@ -249,8 +251,10 @@ namespace SimPe.Plugin
 					Microsoft.DirectX.Direct3D.Mesh.Sphere(dx.Device, 0.02f, 12, 24),
 					1,
 					Ambertation.Graphics.DirectXPanel.GetMaterial(Color.Wheat)
-				);
-				mb.Wire = false;
+				)
+				{
+					Wire = false
+				};
 
 				Ambertation.Scenes.Transformation trans =
 					new Ambertation.Scenes.Transformation();
@@ -264,8 +268,10 @@ namespace SimPe.Plugin
 
 				mb.Transform = Ambertation.Scenes.Converter.ToDx(trans);
 
-				TreeNode tnode = new TreeNode(tn.ToString());
-				tnode.Tag = mb;
+				TreeNode tnode = new TreeNode(tn.ToString())
+				{
+					Tag = mb
+				};
 				nodes.Add(tnode);
 				jointmap[bl.GetName()] = mb;
 

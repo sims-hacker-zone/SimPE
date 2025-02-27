@@ -394,9 +394,11 @@ namespace SimPe
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			tli = new ToolLoaderItemExt(tbname.Text);
-			tli.Attributes = tbattr.Text;
-			tli.FileName = tbfile.Text;
+			tli = new ToolLoaderItemExt(tbname.Text)
+			{
+				Attributes = tbattr.Text,
+				FileName = tbfile.Text
+			};
 			try
 			{
 				tli.Type = Convert.ToUInt32(tbtype.Text);

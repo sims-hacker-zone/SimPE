@@ -32,21 +32,23 @@ namespace pj
 
 		private String getFilename()
 		{
-			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.AddExtension = true;
-			ofd.CheckFileExists = true;
-			ofd.CheckPathExists = true;
-			ofd.DefaultExt = ".package";
-			ofd.DereferenceLinks = true;
-			ofd.FileName = "";
-			ofd.Filter = L.Get("pkgFilter");
-			ofd.FilterIndex = 0;
-			ofd.InitialDirectory = System.IO.Path.Combine(
+			OpenFileDialog ofd = new OpenFileDialog
+			{
+				AddExtension = true,
+				CheckFileExists = true,
+				CheckPathExists = true,
+				DefaultExt = ".package",
+				DereferenceLinks = true,
+				FileName = "",
+				Filter = L.Get("pkgFilter"),
+				FilterIndex = 0,
+				InitialDirectory = System.IO.Path.Combine(
 				SimPe.PathProvider.SimSavegameFolder,
 				"SavedSims"
-			);
-			ofd.Multiselect = false;
-			ofd.ReadOnlyChecked = true;
+			),
+				Multiselect = false,
+				ReadOnlyChecked = true
+			};
 			ofd.ShowHelp = ofd.ShowReadOnly = false;
 			ofd.Title = L.Get("selectPkgMesh");
 			ofd.ValidateNames = true;

@@ -325,8 +325,10 @@ namespace SimPe.Plugin
 				catch (Exception) { }
 			}
 
-			ListViewItem lvi = new ListViewItem();
-			lvi.Text = name + actime;
+			ListViewItem lvi = new ListViewItem
+			{
+				Text = name + actime
+			};
 			if (np.Lable != "")
 			{
 				lvi.Text = np.Lable + ": " + lvi.Text;

@@ -100,11 +100,12 @@ namespace SimPe.Plugin.Gmdc
 		public AbstractGmdcImporter()
 		{
 			Component = new ElementOrder(ElementSorting.XZY);
-			AnimationBlocks = new ImportedFrameBlocks();
-
-			AnimationBlocks.AuskelCorrection = Helper
+			AnimationBlocks = new ImportedFrameBlocks
+			{
+				AuskelCorrection = Helper
 				.WindowsRegistry
-				.CorrectJointDefinitionOnExport;
+				.CorrectJointDefinitionOnExport
+			};
 		}
 
 		#region abstract Methods

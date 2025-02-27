@@ -588,14 +588,16 @@ namespace SimPe.Windows.Forms
 						MiddleColor,
 						Gradient
 					);
-					ColorBlend cb = new ColorBlend(3);
-					cb.Colors = new Color[]
+					ColorBlend cb = new ColorBlend(3)
+					{
+						Colors = new Color[]
 					{
 						BackColor,
 						MiddleColor,
 						GradientColor,
+					},
+						Positions = new float[] { 0F, GradCentre, 1F }
 					};
-					cb.Positions = new float[] { 0F, GradCentre, 1F };
 					b.InterpolationColors = cb;
 					e.Graphics.FillRectangle(b, rec);
 					b.Dispose();
@@ -730,9 +732,11 @@ namespace SimPe.Windows.Forms
 					LinearGradientMode.Horizontal
 				);
 				SolidBrush fb = new SolidBrush(HeadForeColor);
-				ColorBlend hcb = new ColorBlend(2);
-				hcb.Colors = new Color[] { HeadBackColor, HeadEndColor };
-				hcb.Positions = new float[] { 0F, 1F };
+				ColorBlend hcb = new ColorBlend(2)
+				{
+					Colors = new Color[] { HeadBackColor, HeadEndColor },
+					Positions = new float[] { 0F, 1F }
+				};
 				bg.InterpolationColors = hcb;
 				e.Graphics.FillRectangle(bg, hrec);
 				SizeF sz = e.Graphics.MeasureString(HeaderText, HeadFont);

@@ -183,8 +183,10 @@ namespace SimPe
 
 			foreach (FileDescriptor f in listing)
 			{
-				ListViewItem lvi = new ListViewItem();
-				lvi.Text = f.FileName;
+				ListViewItem lvi = new ListViewItem
+				{
+					Text = f.FileName
+				};
 				csize = f.Size;
 				cver = f.Version;
 				lvi.SubItems.Add(f.Size.ToString());
@@ -515,8 +517,10 @@ namespace SimPe
 			{
 				if (lv2.FindItemWithText(f.FileName) == null)
 				{
-					ListViewItem lvi = new ListViewItem();
-					lvi.Text = f.FileName;
+					ListViewItem lvi = new ListViewItem
+					{
+						Text = f.FileName
+					};
 					lvi.SubItems.Add("New File");
 					lvi.SubItems.Add(VersionToString(f.Version));
 					lvi.SubItems.Add("0");

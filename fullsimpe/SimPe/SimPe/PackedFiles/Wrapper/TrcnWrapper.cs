@@ -419,14 +419,16 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public TrcnItem Clone()
 		{
-			TrcnItem clone = new TrcnItem(parent);
-			clone.used = used;
-			clone.constId = constId;
-			clone.constName = constName;
-			clone.constDesc = constDesc;
-			clone.defValue = defValue;
-			clone.minValue = minValue;
-			clone.maxValue = maxValue;
+			TrcnItem clone = new TrcnItem(parent)
+			{
+				used = used,
+				constId = constId,
+				constName = constName,
+				constDesc = constDesc,
+				defValue = defValue,
+				minValue = minValue,
+				maxValue = maxValue
+			};
 			return clone;
 		}
 

@@ -113,8 +113,10 @@ namespace SimPe.PackedFiles.Wrapper
 					ushort tinstance = reader.ReadUInt16();
 					items[k] = new FamilyTieItem(type, tinstance, this);
 				}
-				FamilyTieSim simtie = new FamilyTieSim(instance, items, this);
-				simtie.BlockDelimiter = blockdel;
+				FamilyTieSim simtie = new FamilyTieSim(instance, items, this)
+				{
+					BlockDelimiter = blockdel
+				};
 				sims.Add(simtie);
 			}
 		}

@@ -261,10 +261,12 @@ namespace SimPe
 
 		private static SessionData BuildSessionData()
 		{
-			SessionData sd = new SessionData();
-			sd.Message = Message;
-			sd.Progress = Progress;
-			sd.MaxProgress = (bar == null || !bar.ShowProgress) ? 0 : MaxProgress;
+			SessionData sd = new SessionData
+			{
+				Message = Message,
+				Progress = Progress,
+				MaxProgress = (bar == null || !bar.ShowProgress) ? 0 : MaxProgress
+			};
 			return sd;
 		}
 

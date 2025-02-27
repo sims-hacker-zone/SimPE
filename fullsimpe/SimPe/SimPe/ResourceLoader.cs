@@ -295,9 +295,11 @@ namespace SimPe
 				if (doc == null)
 				{
 					add = true;
-					doc = new TD.SandDock.TabPage();
-					doc.AllowClose = true;
-					doc.AllowDockCenter = true;
+					doc = new TD.SandDock.TabPage
+					{
+						AllowClose = true,
+						AllowDockCenter = true
+					};
 				}
 				else if (!UnloadWrapper(doc))
 				{

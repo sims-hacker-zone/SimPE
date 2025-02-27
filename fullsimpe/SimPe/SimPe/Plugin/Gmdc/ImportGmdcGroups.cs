@@ -887,8 +887,10 @@ namespace SimPe.Plugin.Gmdc
 			ImportedBones joints
 		)
 		{
-			ImportGmdcGroupsForm f = new ImportGmdcGroupsForm();
-			f.gmdc = gmdc;
+			ImportGmdcGroupsForm f = new ImportGmdcGroupsForm
+			{
+				gmdc = gmdc
+			};
 			foreach (GmdcGroup g in gmdc.Groups)
 			{
 				f.cbnames.Items.Add(g.Name);
