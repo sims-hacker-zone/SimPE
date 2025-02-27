@@ -136,7 +136,7 @@ namespace SimPe.Plugin
 						Clear(key);
 						Helper.ExceptionMessage(
 							new ApplicationException(
-								String.Format(
+								string.Format(
 									"The package being added is not a {0}",
 									Settings.PackageType
 								)
@@ -672,7 +672,7 @@ namespace SimPe.Plugin
 			{
 				foreach (MaterialDefinitionRcol txmt in item.Materials)
 				{
-					txmt.FileName = String.Format(
+					txmt.FileName = string.Format(
 						"#0x{0:x8}!{1}",
 						pnfo.PackageHash,
 						Hashes.StripHashFromName(txmt.FileName)
@@ -682,7 +682,7 @@ namespace SimPe.Plugin
 					{
 						try
 						{
-							txtr.FileName = String.Format(
+							txtr.FileName = string.Format(
 								"#0x{0:x8}!{1}",
 								pnfo.PackageHash,
 								Hashes.StripHashFromName(txtr.FileName)

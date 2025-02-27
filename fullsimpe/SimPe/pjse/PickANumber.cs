@@ -117,13 +117,13 @@ namespace pjse
 
 		public uint Value => (selectedRB >= 0) ? ldoc[selectedRB].Value : (ushort)0xffff;
 
-		public String Title
+		public string Title
 		{
 			get => Text;
 			set => Text = value;
 		}
 
-		public String Prompt
+		public string Prompt
 		{
 			get => label1.Text;
 			set => label1.Text = value;

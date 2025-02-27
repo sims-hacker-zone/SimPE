@@ -74,7 +74,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// The Name of this Group
 		/// </summary>
-		public String Name
+		public string Name
 		{
 			get; set;
 		}

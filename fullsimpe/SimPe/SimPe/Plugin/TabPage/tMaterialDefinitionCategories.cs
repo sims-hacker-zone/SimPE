@@ -248,7 +248,7 @@ namespace SimPe.Plugin.TabPage
 			Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
 				Tag;
 			object o = pob.Properties[e.ChangedItem.Label];
-			md.GetProperty(e.ChangedItem.Label).Value = o is Boolean ? (bool)o ? "1" : "0" : o.ToString();
+			md.GetProperty(e.ChangedItem.Label).Value = o is bool ? (bool)o ? "1" : "0" : o.ToString();
 
 			md.Parent.Changed = true;
 		}

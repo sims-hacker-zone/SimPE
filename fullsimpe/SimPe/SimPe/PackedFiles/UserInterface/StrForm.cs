@@ -153,7 +153,7 @@ namespace SimPe.PackedFiles.UserInterface
 		private int index = -1;
 		private int count = 0;
 		private bool[] isEmpty = new bool[45];
-		private String langName = pjse.BhavWiz.readStr(pjse.GS.BhavStr.Languages, 1);
+		private string langName = pjse.BhavWiz.readStr(pjse.GS.BhavStr.Languages, 1);
 
 		private bool hex16_IsValid(object sender)
 		{

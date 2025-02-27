@@ -575,10 +575,10 @@ namespace SimPe.Windows.Forms
 									: adjx
 										/ BackgroundImage.PhysicalDimension.Width;
 							}
-							Int32 Widf = Convert.ToInt32(
+							int Widf = Convert.ToInt32(
 								BackgroundImage.Width * mPicZoom
 							);
-							Int32 Hite = Convert.ToInt32(
+							int Hite = Convert.ToInt32(
 								BackgroundImage.Height * mPicZoom
 							);
 							int pyintX = mPicloc.X;

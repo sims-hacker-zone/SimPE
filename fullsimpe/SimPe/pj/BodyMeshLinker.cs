@@ -30,7 +30,7 @@ namespace pj
 		private IPackageFile currentPackage = null;
 		private IPackedFileDescriptor refFilePFD = null;
 
-		private String getFilename()
+		private string getFilename()
 		{
 			OpenFileDialog ofd = new OpenFileDialog
 			{
@@ -103,7 +103,7 @@ namespace pj
 				return false;
 			}
 
-			String meshPackage = getFilename();
+			string meshPackage = getFilename();
 			if (meshPackage == null || meshPackage.Length == 0)
 			{
 				return false;

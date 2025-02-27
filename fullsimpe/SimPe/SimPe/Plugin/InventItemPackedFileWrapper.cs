@@ -20,8 +20,8 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Contains the Data of the File
 		/// </summary>
-		private UInt32 guide;
-		private UInt32 guidnx;
+		private uint guide;
+		private uint guidnx;
 
 		/// <summary>
 		/// Returns if Hub Bug was found

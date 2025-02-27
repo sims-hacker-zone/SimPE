@@ -89,11 +89,11 @@ namespace SimPe
 			ListViewItem rowB = (ListViewItem)y;
 
 			return Sorting == SortOrder.Ascending
-				? String.Compare(
+				? string.Compare(
 					rowA.SubItems[CurrentColumn].Text,
 					rowB.SubItems[CurrentColumn].Text
 				)
-				: String.Compare(
+				: string.Compare(
 					rowB.SubItems[CurrentColumn].Text,
 					rowA.SubItems[CurrentColumn].Text
 				);
@@ -145,7 +145,7 @@ namespace SimPe
 
 			for (int cc = 0; cc < ColumnOrder.Length; cc++)
 			{
-				int cmp = String.Compare(
+				int cmp = string.Compare(
 					rowA.SubItems[ColumnOrder[cc]].Text,
 					rowB.SubItems[ColumnOrder[cc]].Text
 				);

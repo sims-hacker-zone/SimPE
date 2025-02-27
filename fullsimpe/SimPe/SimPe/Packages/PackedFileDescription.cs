@@ -42,12 +42,12 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Type of the referenced File
 		/// </summary>
-		internal UInt32 type;
+		internal uint type;
 
 		/// <summary>
 		/// Returns/Sets the Type of the referenced File
 		/// </summary>
-		public UInt32 Type
+		public uint Type
 		{
 			get => type;
 			set
@@ -68,12 +68,12 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Group the referenced file is assigned to
 		/// </summary>
-		internal UInt32 group;
+		internal uint group;
 
 		/// <summary>
 		/// Returns/Sets the Group the referenced file is assigned to
 		/// </summary>
-		public UInt32 Group
+		public uint Group
 		{
 			get => group;
 			set
@@ -89,12 +89,12 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Instance Data
 		/// </summary>
-		internal UInt32 instance;
+		internal uint instance;
 
 		/// <summary>
 		/// Returns or sets the Instance Data
 		/// </summary>
-		public UInt32 Instance
+		public uint Instance
 		{
 			get => instance;
 			set
@@ -111,13 +111,13 @@ namespace SimPe.Packages
 		/// An yet unknown Type
 		/// </summary>
 		/// <remarks>Only in Version 1.1 of package Files</remarks>
-		internal UInt32 subtype;
+		internal uint subtype;
 
 		/// <summary>
 		/// Returns/Sets an yet unknown Type
 		/// </summary>
 		/// <remarks>Only in Version 1.1 of package Files</remarks>
-		public UInt32 SubType
+		public uint SubType
 		{
 			get => subtype;
 			set
@@ -220,7 +220,7 @@ namespace SimPe.Packages
 		/// Returns the Long Instance
 		/// </summary>
 		/// <remarks>Combination of SubType and Instance</remarks>
-		public UInt64 LongInstance
+		public ulong LongInstance
 		{
 			get
 			{
@@ -636,7 +636,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Puts Userdefined Data into the File
 		/// </summary>
-		public Byte[] UserData
+		public byte[] UserData
 		{
 			get => userdata;
 			set => SetUserData(value, true);

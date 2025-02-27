@@ -67,7 +67,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the
 		/// </summary>
-		public Byte[] Value
+		public byte[] Value
 		{
 			get; set;
 		}
@@ -204,7 +204,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the value as a Single Floatingpoint (4Bytes)
 		/// </summary>
-		public Single SingleValue
+		public float SingleValue
 		{
 			get
 			{
@@ -221,10 +221,10 @@ namespace SimPe.PackedFiles.Wrapper
 					}
 					case MetaData.DataTypes.dtString:
 					{
-						Single ret = 0;
+						float ret = 0;
 						try
 						{
-							ret = Single.Parse(AsString());
+							ret = float.Parse(AsString());
 						}
 						catch (Exception) { }
 						return ret;
@@ -410,7 +410,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Interpretes the data as a SingleFloat Value
 		/// </summary>
 		/// <returns>The Value interpreted as Singel</returns>
-		protected Single AsSingle()
+		protected float AsSingle()
 		{
 			System.IO.BinaryReader br = new System.IO.BinaryReader(
 				new System.IO.MemoryStream(Value)

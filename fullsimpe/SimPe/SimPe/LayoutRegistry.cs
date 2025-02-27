@@ -153,7 +153,7 @@ namespace SimPe
 		{
 			get
 			{
-				string[] s = xrk.GetValue("ColumnOrder", String.Join(",", colNames))
+				string[] s = xrk.GetValue("ColumnOrder", string.Join(",", colNames))
 					.ToString()
 					.Split(new char[] { ',' });
 				System.Collections.Generic.List<string> ls =
@@ -201,7 +201,7 @@ namespace SimPe
 					}
 				}
 
-				xrk.SetValue("ColumnOrder", String.Join(",", ls.ToArray()));
+				xrk.SetValue("ColumnOrder", string.Join(",", ls.ToArray()));
 			}
 		}
 

@@ -430,42 +430,42 @@ namespace pjse
 		#region Utilities
 
 		#region DataOwner routines
-		public static String DoidName(byte doid)
+		public static string DoidName(byte doid)
 		{
 			return readStr(GS.BhavStr.DataOwners, doid);
 		}
 
-		public static String dnTemp()
+		public static string dnTemp()
 		{
 			return DoidName(0x08);
 		}
 
-		public static String dnParam()
+		public static string dnParam()
 		{
 			return DoidName(0x09);
 		}
 
-		public static String dnLocal()
+		public static string dnLocal()
 		{
 			return DoidName(0x19);
 		}
 
-		public static String dnConst()
+		public static string dnConst()
 		{
 			return DoidName(0x1a);
 		}
 
-		public static String dnStkOb()
+		public static string dnStkOb()
 		{
 			return Localization.GetString("stackobj");
 		}
 
-		public static String dnMe()
+		public static string dnMe()
 		{
 			return Localization.GetString("me");
 		}
 
-		public static String dnNeigh()
+		public static string dnNeigh()
 		{
 			return Localization.GetString("neigh");
 		}
@@ -818,7 +818,7 @@ namespace pjse
 			bool showLngFB
 		)
 		{
-			String pfname = "";
+			string pfname = "";
 			if (detail != Detail.ValueOnly)
 			{
 				if (detail != Detail.Errors)
@@ -899,7 +899,7 @@ namespace pjse
 				];
 				if (fsi != null)
 				{
-					String s = "";
+					string s = "";
 					if (
 						detail != Detail.ValueOnly
 						&& fsi.fallback != null
@@ -951,8 +951,8 @@ namespace pjse
 			return detail == Detail.ValueOnly ? null : "[" + Localization.GetString("unk") + ": " + pfname + "]";
 		}
 
-		private static Dictionary<GS.BhavStr, List<String>> gString = null;
-		private static Dictionary<GS.BhavStr, List<String>> GString
+		private static Dictionary<GS.BhavStr, List<string>> gString = null;
+		private static Dictionary<GS.BhavStr, List<string>> GString
 		{
 			get
 			{
@@ -961,7 +961,7 @@ namespace pjse
 					FileTable.GFT.FiletableRefresh -= new EventHandler(
 						GFT_FiletableRefresh
 					);
-					gString = new Dictionary<GS.BhavStr, List<String>>();
+					gString = new Dictionary<GS.BhavStr, List<string>>();
 					FileTable.GFT.FiletableRefresh += new EventHandler(
 						GFT_FiletableRefresh
 					);
@@ -972,20 +972,20 @@ namespace pjse
 
 		static void GFT_FiletableRefresh(object sender, EventArgs e)
 		{
-			gString = new Dictionary<GS.BhavStr, List<String>>();
+			gString = new Dictionary<GS.BhavStr, List<string>>();
 		}
 
-		public static List<String> readStr(GS.BhavStr instance)
+		public static List<string> readStr(GS.BhavStr instance)
 		{
 			if (GString == null)
 			{
-				return new List<String>();
+				return new List<string>();
 			}
 
 			if (!GString.ContainsKey(instance))
 			{
-				List<String> list = new List<String>();
-				String s;
+				List<string> list = new List<string>();
+				string s;
 				Str str = new Str(instance);
 				for (
 					ushort i = 0;
@@ -1001,7 +1001,7 @@ namespace pjse
 			return GString[instance];
 		}
 
-		private List<String> readStr(Scope s, GS.GlobalStr instance)
+		private List<string> readStr(Scope s, GS.GlobalStr instance)
 		{
 			if (
 				instruction == null
@@ -1022,10 +1022,10 @@ namespace pjse
 				return null;
 			}
 
-			List<String> al = new List<String>();
+			List<string> al = new List<string>();
 			Str str = new Str(s, instruction.Parent, (uint)instance);
 			int n = (str == null) ? 0 : str[(byte)1].Count;
-			String st;
+			string st;
 			for (ushort i = 0; i < n; i++)
 			{
 				al.Add(
@@ -1038,17 +1038,17 @@ namespace pjse
 			return al;
 		}
 
-		public List<String> GetAttrNames(Scope s)
+		public List<string> GetAttrNames(Scope s)
 		{
 			return readStr(s, GS.GlobalStr.AttributeLabels);
 		}
 
-		public List<String> GetArrayNames()
+		public List<string> GetArrayNames()
 		{
 			return readStr(Scope.Private, GS.GlobalStr.ArrayName);
 		}
 
-		public String ArrayName(bool lng, ushort instance)
+		public string ArrayName(bool lng, ushort instance)
 		{
 			string s = "0x" + SimPe.Helper.HexString(instance);
 			if (lng)
@@ -1078,7 +1078,7 @@ namespace pjse
 
 
 		#region Flag parsing
-		public static List<String> flagNames(byte flagOwner, ushort flagType)
+		public static List<string> flagNames(byte flagOwner, ushort flagType)
 		{
 			Hashtable flagTypes = (Hashtable)flagOwners[flagOwner];
 			return (flagTypes == null || flagTypes[flagType] == null)
@@ -1212,7 +1212,7 @@ namespace pjse
 		/// <param name="instance">Which BHAV to find</param>
 		/// <param name="found">Indicates that a BHAV was found</param>
 		/// <returns>Name of BHAV found</returns>
-		public static String bhavName(
+		public static string bhavName(
 			ExtendedWrapper parent,
 			uint instance,
 			ref bool found
@@ -1243,7 +1243,7 @@ namespace pjse
 				);
 		}
 
-		public String bhavName(uint instance, ref bool found)
+		public string bhavName(uint instance, ref bool found)
 		{
 			return bhavName(instruction.Parent, instance, ref found);
 		}
@@ -1279,7 +1279,7 @@ namespace pjse
 		/// </summary>
 		/// <param name="local">True to retrieve Local labels, false for Params</param>
 		/// <returns></returns>
-		public List<String> GetTPRPnames(bool local)
+		public List<string> GetTPRPnames(bool local)
 		{
 			if (
 				instruction == null
@@ -1305,7 +1305,7 @@ namespace pjse
 				return null;
 			}
 
-			List<String> TPRPnames = new List<String>();
+			List<string> TPRPnames = new List<string>();
 
 			TPRP tprp = new TPRP();
 			tprp.ProcessData(items[0].PFD, items[0].Package);
@@ -1378,9 +1378,9 @@ namespace pjse
 			return glob;
 		}
 
-		public static String FormatGUID(bool lng, UInt32 guid)
+		public static string FormatGUID(bool lng, uint guid)
 		{
-			String objName = GUIDIndex.TheGUIDIndex[guid];
+			string objName = GUIDIndex.TheGUIDIndex[guid];
 
 			return objName != null && objName.Length > 0
 				? lng
@@ -1393,11 +1393,11 @@ namespace pjse
 				: (lng ? "GUID " : "") + "0x" + SimPe.Helper.HexString(guid);
 		}
 
-		public static String FormatGUID(bool lng, byte[] o, int op)
+		public static string FormatGUID(bool lng, byte[] o, int op)
 		{
 			return FormatGUID(
 				lng,
-				(UInt32)(o[op] | (o[op + 1] << 8) | (o[op + 2] << 16) | (o[op + 3] << 24))
+				(uint)(o[op] | (o[op + 1] << 8) | (o[op + 2] << 16) | (o[op + 3] << 24))
 			);
 		}
 

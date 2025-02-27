@@ -152,7 +152,7 @@ namespace pjse
 
 			public int Compare(object x, object y)
 			{
-				return String.Compare(
+				return string.Compare(
 					((ListViewItem)x).SubItems[col].Text,
 					((ListViewItem)y).SubItems[col].Text
 				);

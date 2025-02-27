@@ -169,7 +169,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				Byte[] sig = { };
+				byte[] sig = { };
 				return sig;
 			}
 		}

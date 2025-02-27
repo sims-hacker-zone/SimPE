@@ -222,7 +222,7 @@ namespace SimPe.Plugin
 			if (deletedCount > 0 || fixedCount > 0)
 			{
 				Helper.ExceptionMessage(
-					String.Format(
+					string.Format(
 						"Fixed/Deleted {0} invalid memories.",
 						deletedCount + fixedCount
 					),
@@ -314,7 +314,7 @@ namespace SimPe.Plugin
 			if (deletedCount > 0)
 			{
 				Message.Show(
-					String.Format(
+					string.Format(
 						"Deleted {0} memories from the sim pool",
 						deletedCount
 					)

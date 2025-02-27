@@ -95,7 +95,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="data">The Byte Buffer</param>
 		/// <returns>The Binary Handler</returns>
-		public static BinaryReader GetBinaryReader(Byte[] data)
+		public static BinaryReader GetBinaryReader(byte[] data)
 		{
 			return new BinaryReader(new MemoryStream(data));
 		}
@@ -1019,7 +1019,7 @@ namespace SimPe
 			bool recurse
 		)
 		{
-			String[] files;
+			string[] files;
 			if (
 				destinationPath[destinationPath.Length - 1]
 				!= Path.DirectorySeparatorChar

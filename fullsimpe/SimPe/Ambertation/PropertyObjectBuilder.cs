@@ -47,7 +47,7 @@ namespace Ambertation
 			Type destinationType
 		)
 		{
-			if (destinationType == typeof(System.String) && value is BaseChangeShort)
+			if (destinationType == typeof(string) && value is BaseChangeShort)
 			{
 				BaseChangeShort so = (BaseChangeShort)value;
 

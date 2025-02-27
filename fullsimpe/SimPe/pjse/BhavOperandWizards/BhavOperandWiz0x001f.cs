@@ -165,11 +165,11 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 		{
 			setGUID(
 				true,
-				(UInt32)(o[sub] | (o[sub + 1] << 8) | (o[sub + 2] << 16) | (o[sub + 3] << 24))
+				(uint)(o[sub] | (o[sub + 1] << 8) | (o[sub + 2] << 16) | (o[sub + 3] << 24))
 			);
 		}
 
-		private void setGUID(bool setTB, UInt32 guid)
+		private void setGUID(bool setTB, uint guid)
 		{
 			if (setTB)
 			{
@@ -237,7 +237,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 				wrappedByteArray ops1 = inst.Operands;
 				wrappedByteArray ops2 = inst.Reserved1;
 
-				UInt32 val = Convert.ToUInt32(tbGUID.Text, 16);
+				uint val = Convert.ToUInt32(tbGUID.Text, 16);
 				ops1[0x00] = (byte)(val & 0xff);
 				ops1[0x01] = (byte)((val >> 8) & 0xff);
 				ops1[0x02] = (byte)((val >> 16) & 0xff);

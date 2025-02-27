@@ -50,9 +50,9 @@ namespace SimPe.Plugin
 		}
 
 		bool internalchg = false;
-		UInt32 currentValue = 0;
-		List<String> knownObjects = null;
-		List<UInt32> knownGUIDs = null;
+		uint currentValue = 0;
+		List<string> knownObjects = null;
+		List<uint> knownGUIDs = null;
 
 		[Browsable(true)]
 		[EditorBrowsable(0)]
@@ -96,7 +96,7 @@ namespace SimPe.Plugin
 
 		[Browsable(true)]
 		[EditorBrowsable(0)]
-		public UInt32 Value
+		public uint Value
 		{
 			get => currentValue;
 			set
@@ -110,7 +110,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void setValue(UInt32 value, bool cb, bool tb)
+		private void setValue(uint value, bool cb, bool tb)
 		{
 			currentValue = value;
 
@@ -169,12 +169,12 @@ namespace SimPe.Plugin
 			//get { }
 			set
 			{
-				knownObjects = new List<String>((List<String>)value[0]);
+				knownObjects = new List<string>((List<string>)value[0]);
 				knownObjects.Insert(0, " --None--");
 				knownObjects.Insert(1, "  *Other*");
 				cbKnownObjects.DataSource = knownObjects;
 				cbKnownObjects.Enabled = true;
-				knownGUIDs = new List<UInt32>((List<UInt32>)value[1]);
+				knownGUIDs = new List<uint>((List<uint>)value[1]);
 			}
 		}
 

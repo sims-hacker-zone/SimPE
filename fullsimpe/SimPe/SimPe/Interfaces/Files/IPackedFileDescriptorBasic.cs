@@ -61,7 +61,7 @@ namespace SimPe.Interfaces.Files
 		/// <summary>
 		/// Returns the Type of the referenced File
 		/// </summary>
-		UInt32 Type
+		uint Type
 		{
 			get; set;
 		}
@@ -77,7 +77,7 @@ namespace SimPe.Interfaces.Files
 		/// <summary>
 		/// Returns the Group the referenced file is assigned to
 		/// </summary>
-		UInt32 Group
+		uint Group
 		{
 			get; set;
 		}
@@ -85,7 +85,7 @@ namespace SimPe.Interfaces.Files
 		/// <summary>
 		/// Returns the Instance Data
 		/// </summary>
-		UInt32 Instance
+		uint Instance
 		{
 			get; set;
 		}
@@ -94,7 +94,7 @@ namespace SimPe.Interfaces.Files
 		/// Returns the Long Instance
 		/// </summary>
 		/// <remarks>Combination of SubType and Instance</remarks>
-		UInt64 LongInstance
+		ulong LongInstance
 		{
 			get; set;
 		}
@@ -103,7 +103,7 @@ namespace SimPe.Interfaces.Files
 		/// Returns an yet unknown Type
 		/// </summary>
 		/// <remarks>Only in Version 1.1 of package Files</remarks>
-		UInt32 SubType
+		uint SubType
 		{
 			get; set;
 		}

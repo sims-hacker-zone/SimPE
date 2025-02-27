@@ -346,7 +346,7 @@ namespace SimPe.PackedFiles.UserInterface
 			ui.Show();
 		}
 
-		private String formTitle => pjse.Localization.GetString(
+		private string formTitle => pjse.Localization.GetString(
 					"pjseWindowTitle",
 					expName // EP Name or Custom
 					,

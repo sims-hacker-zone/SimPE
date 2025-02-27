@@ -2911,11 +2911,11 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public Byte[] FileSignature
+		public byte[] FileSignature
 		{
 			get
 			{
-				Byte[] sig = { };
+				byte[] sig = { };
 				return sig;
 			}
 		}

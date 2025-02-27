@@ -217,7 +217,7 @@ namespace SimPe.Plugin
 		private Button btclean;
 
 		private Packages.GeneratableFile package;
-		private List<String> languageString;
+		private List<string> languageString;
 		private byte currentLanguage = 1;
 		private bool okay = false;
 		#endregion

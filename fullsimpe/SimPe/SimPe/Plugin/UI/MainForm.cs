@@ -26,7 +26,7 @@ namespace SimPe.Plugin.UI
 
 		public MainForm()
 		{
-			Text = String.Format(
+			Text = string.Format(
 				"Colour Binning Tool {0}",
 				System.Reflection.Assembly.GetExecutingAssembly().GetName().Version
 			);
@@ -207,7 +207,7 @@ namespace SimPe.Plugin.UI
 					txtrRef.Remove(ClipboardKey);
 					txtrRef.Add(ClipboardKey, txtr);
 					miMatUseTxtrRef.Enabled = true;
-					miMatUseTxtrRef.Text = String.Format(
+					miMatUseTxtrRef.Text = string.Format(
 						"Use {0}",
 						txtr[TextureType.Base]
 					);
@@ -545,7 +545,7 @@ namespace SimPe.Plugin.UI
 			li.SubItems.Add(Enum.Format(typeof(Ages), item.Age, "G"));
 			li.SubItems.Add(item.Materials.Count.ToString());
 			li.Tag = item;
-			li.ToolTipText = String.Format("Original hairtone: {0}", item.Hairtone);
+			li.ToolTipText = string.Format("Original hairtone: {0}", item.Hairtone);
 			li.Checked = item.Enabled;
 			if (item.HasChanges)
 			{
@@ -759,8 +759,8 @@ namespace SimPe.Plugin.UI
 			li.Text = mesh.Description;
 			li.Tag = mesh;
 			li.ImageIndex = 0;
-			li.SubItems.Add(String.Format("{0:X8}", mesh.ResourceNode.Group));
-			li.SubItems.Add(String.Format("{0:X16}", mesh.ResourceNode.LongInstance));
+			li.SubItems.Add(string.Format("{0:X8}", mesh.ResourceNode.Group));
+			li.SubItems.Add(string.Format("{0:X16}", mesh.ResourceNode.LongInstance));
 			li.SubItems.Add(mesh.FileName);
 		}
 
@@ -813,14 +813,14 @@ namespace SimPe.Plugin.UI
 			IPackedFileDescriptor[] pfd = box.GetTextureDescriptor(rcol);
 			if (!Utility.IsNullOrEmpty(pfd))
 			{
-				txtrID = String.Format(
+				txtrID = string.Format(
 					"Group={0:X8} Instance={1:X16}",
 					pfd[0].Group,
 					pfd[0].LongInstance
 				);
 				if (pfd.Length > 1)
 				{
-					txtrID += String.Format(
+					txtrID += string.Format(
 						"; BumpMap: Group={0:X8} Instance={1:X16}",
 						pfd[1].Group,
 						pfd[1].LongInstance

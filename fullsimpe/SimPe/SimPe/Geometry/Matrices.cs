@@ -448,7 +448,7 @@ namespace SimPe.Geometry
 		/// </summary>
 		/// <param name="obj"></param>
 		/// <returns></returns>
-		public override bool Equals(Object obj)
+		public override bool Equals(object obj)
 		{
 			if (obj.GetType() != typeof(Matrixd))
 			{

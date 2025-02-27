@@ -465,82 +465,82 @@ namespace SimPe.Data
 		/// <summary>
 		/// Group for Costum Content
 		/// </summary>
-		public const UInt32 CUSTOM_GROUP = 0x1C050000;
+		public const uint CUSTOM_GROUP = 0x1C050000;
 
 		/// <summary>
 		/// Group for Global Content
 		/// </summary>
-		public const UInt32 GLOBAL_GROUP = 0x1C0532FA;
+		public const uint GLOBAL_GROUP = 0x1C0532FA;
 
 		/// <summary>
 		/// Group for Local Content
 		/// </summary>
-		public const UInt32 LOCAL_GROUP = 0xffffffff;
+		public const uint LOCAL_GROUP = 0xffffffff;
 
 		/// <summary>
 		/// A Directory file will have this Type in the fileindex.
 		/// </summary>
-		public const UInt32 DIRECTORY_FILE = 0xE86B1EEF; //0xEF1E6BE8;
+		public const uint DIRECTORY_FILE = 0xE86B1EEF; //0xEF1E6BE8;
 
 		/// <summary>
 		/// Stores the relationship Value for a Sim
 		/// </summary>
-		public const UInt32 RELATION_FILE = 0xCC364C2A;
+		public const uint RELATION_FILE = 0xCC364C2A;
 
 		/// <summary>
 		/// File Containing Strings
 		/// </summary>
-		public const UInt32 STRING_FILE = 0x53545223;
+		public const uint STRING_FILE = 0x53545223;
 
 		/// <summary>
 		/// File Containing Pie Strings
 		/// </summary>
-		public const UInt32 PIE_STRING_FILE = 0x54544173;
+		public const uint PIE_STRING_FILE = 0x54544173;
 
 		/// <summary>
 		/// File Containing Sim Descriptions
 		/// </summary>
-		public const UInt32 SIM_DESCRIPTION_FILE = 0xAACE2EFB;
+		public const uint SIM_DESCRIPTION_FILE = 0xAACE2EFB;
 
 		/// <summary>
 		/// Files Containing Sim Images
 		/// </summary>
-		public const UInt32 SIM_IMAGE_FILE = 0x856DDBAC;
+		public const uint SIM_IMAGE_FILE = 0x856DDBAC;
 
 		/// <summary>
 		/// The File containing all Family Ties
 		/// </summary>
-		public const UInt32 FAMILY_TIES_FILE = 0x8C870743;
+		public const uint FAMILY_TIES_FILE = 0x8C870743;
 
 		/// <summary>
 		/// File containing BHAV Informations
 		/// </summary>
-		public const UInt32 BHAV_FILE = 0x42484156;
+		public const uint BHAV_FILE = 0x42484156;
 
 		/// <summary>
 		/// File containng Global Data
 		/// </summary>
-		public const UInt32 GLOB_FILE = 0x474C4F42;
+		public const uint GLOB_FILE = 0x474C4F42;
 
 		/// <summary>
 		/// File Containing Object Data
 		/// </summary>
-		public const UInt32 OBJD_FILE = 0x4F424A44;
+		public const uint OBJD_FILE = 0x4F424A44;
 
 		/// <summary>
 		/// File Containing Catalog Strings
 		/// </summary>
-		public const UInt32 CTSS_FILE = 0x43545353;
+		public const uint CTSS_FILE = 0x43545353;
 
 		/// <summary>
 		/// File Containing Name Maps
 		/// </summary>
-		public const UInt32 NAME_MAP = 0x4E6D6150;
+		public const uint NAME_MAP = 0x4E6D6150;
 
 		/// <summary>
 		/// Neighborhood/Memory File Typesss
 		/// </summary>
-		public const UInt32 MEMORIES = 0x4E474248;
+		public const uint MEMORIES = 0x4E474248;
 
 		/// <summary>
 		/// Sim DNA
@@ -2869,7 +2869,7 @@ namespace SimPe.Data
 		/// </summary>
 		/// <param name="type">The type you want to load the TypeAlias for</param>
 		/// <returns>The TypeAlias representing the Type</returns>
-		public static TypeAlias FindTypeAlias(UInt32 type)
+		public static TypeAlias FindTypeAlias(uint type)
 		{
 			TypeAlias a = Helper.TGILoader.GetByType(type);
 			if (a == null)

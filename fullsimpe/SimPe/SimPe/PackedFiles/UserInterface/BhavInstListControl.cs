@@ -856,7 +856,7 @@ namespace SimPe.PackedFiles.UserInterface
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			int index = (UInt16)e.Link.LinkData;
+			int index = (ushort)e.Link.LinkData;
 			if (index >= 0)
 			{
 				flowitems[index].Focus();
@@ -1016,11 +1016,11 @@ namespace SimPe.PackedFiles.UserInterface
 					//if (c2.truerule == c1.truerule && c2.stop == c1.stop) continue; // same target - skip
 
 					// At this point c2 could be using a lane c1 wants to use
-					used.Add((Int16)c2.lane);
+					used.Add((short)c2.lane);
 				}
 				used.Sort();
 				c1.lane = 0;
-				foreach (Int16 i in used)
+				foreach (short i in used)
 				{
 					if (c1.lane == i)
 					{

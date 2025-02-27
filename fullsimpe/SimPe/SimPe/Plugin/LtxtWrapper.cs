@@ -189,7 +189,7 @@ namespace SimPe.Plugin
 		{
 			get; private set;
 		}
-		internal Single Unknown3
+		internal float Unknown3
 		{
 			get; set;
 		}
@@ -390,9 +390,9 @@ namespace SimPe.Plugin
 				Unknown1.Add(reader.ReadSingle());
 			}
 
-			Unknown3 = subver >= (UInt16)LtxtSubVersion.Voyage ? reader.ReadSingle() : 0;
+			Unknown3 = subver >= (ushort)LtxtSubVersion.Voyage ? reader.ReadSingle() : 0;
 
-			if (subver >= (UInt16)LtxtSubVersion.Freetime)
+			if (subver >= (ushort)LtxtSubVersion.Freetime)
 			{
 				Unknown4 = reader.ReadUInt32();
 			}
@@ -402,8 +402,8 @@ namespace SimPe.Plugin
 			}
 
 			if (
-				ver >= (UInt16)LtxtVersion.Apartment
-				|| subver >= (UInt16)LtxtSubVersion.Apartment
+				ver >= (ushort)LtxtVersion.Apartment
+				|| subver >= (ushort)LtxtSubVersion.Apartment
 			)
 			{
 				unknown_5 = reader.ReadBytes(9);
@@ -432,8 +432,8 @@ namespace SimPe.Plugin
 			OwnerInstance = ver >= (int)LtxtVersion.Business ? reader.ReadUInt32() : 0;
 
 			if (
-				ver >= (UInt16)LtxtVersion.Apartment
-				|| subver >= (UInt16)LtxtSubVersion.Apartment
+				ver >= (ushort)LtxtVersion.Apartment
+				|| subver >= (ushort)LtxtSubVersion.Apartment
 			)
 			{
 				int count;
@@ -497,19 +497,19 @@ namespace SimPe.Plugin
 				writer.Write(i);
 			}
 
-			if (subver >= (UInt16)LtxtSubVersion.Voyage)
+			if (subver >= (ushort)LtxtSubVersion.Voyage)
 			{
 				writer.Write(Unknown3);
 			}
 
-			if (subver >= (UInt16)LtxtSubVersion.Freetime)
+			if (subver >= (ushort)LtxtSubVersion.Freetime)
 			{
 				writer.Write(Unknown4);
 			}
 
 			if (
-				ver >= (UInt16)LtxtVersion.Apartment
-				|| subver >= (UInt16)LtxtSubVersion.Apartment
+				ver >= (ushort)LtxtVersion.Apartment
+				|| subver >= (ushort)LtxtSubVersion.Apartment
 			)
 			{
 				writer.Write(unknown_5);
@@ -534,8 +534,8 @@ namespace SimPe.Plugin
 			}
 
 			if (
-				ver >= (UInt16)LtxtVersion.Apartment
-				|| subver >= (UInt16)LtxtSubVersion.Apartment
+				ver >= (ushort)LtxtVersion.Apartment
+				|| subver >= (ushort)LtxtSubVersion.Apartment
 			)
 			{
 				writer.Write(ApartmentBase);

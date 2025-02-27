@@ -265,7 +265,7 @@ namespace Ambertation
 
 			foreach (string k in ht.Keys)
 			{
-				Object val = ht[k];
+				object val = ht[k];
 
 				if (val.GetType() == typeof(PropertyDescription))
 				{

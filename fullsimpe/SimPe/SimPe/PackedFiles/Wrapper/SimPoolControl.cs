@@ -107,7 +107,7 @@ namespace SimPe.PackedFiles.Wrapper
 						.ProviderRegistry.SimDescriptionProvider.GetHouseholdNames(
 							out string chouse
 						)
-						.ToArray(typeof(String))
+						.ToArray(typeof(string))
 			);
 			cbhousehold.Items.AddRange(names.ToArray());
 

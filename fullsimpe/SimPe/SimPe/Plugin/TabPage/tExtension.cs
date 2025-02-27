@@ -1142,7 +1142,7 @@ namespace SimPe.Plugin.TabPage
 				for (int i = 4; i < ei.Items.Length; i++)
 				{
 					ExtensionItem item = ei.Items[i];
-					String[] a = item.Name.Split(new char[] { '(', ',', ')' });
+					string[] a = item.Name.Split(new char[] { '(', ',', ')' });
 
 					int tilex = int.Parse(a[1]) - minx;
 					int tiley = int.Parse(a[2]) - miny;
@@ -1229,7 +1229,7 @@ namespace SimPe.Plugin.TabPage
 
 				for (int k = 0; k < 8; k++)
 				{
-					String name = "cb." + j + "." + (7 - k) + ".1";
+					string name = "cb." + j + "." + (7 - k) + ".1";
 					int index = gb.Controls.IndexOfKey(name);
 					CheckBox cb = (CheckBox)gb.Controls[index];
 
@@ -1241,7 +1241,7 @@ namespace SimPe.Plugin.TabPage
 				}
 				for (int k = 0; k < 8; k++)
 				{
-					String name = "cb." + j + "." + (7 - k) + ".2";
+					string name = "cb." + j + "." + (7 - k) + ".2";
 					int index = gb.Controls.IndexOfKey(name);
 					CheckBox cb = (CheckBox)gb.Controls[index];
 

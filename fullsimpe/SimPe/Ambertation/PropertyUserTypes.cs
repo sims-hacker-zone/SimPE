@@ -228,7 +228,7 @@ namespace Ambertation
 		)
 		{
 			if (
-				destinationType == typeof(System.String)
+				destinationType == typeof(string)
 				&& value is BaseChangeableNumber
 			)
 			{
@@ -237,7 +237,7 @@ namespace Ambertation
 
 				return so.ToString();
 			}
-			else if (destinationType == typeof(System.String))
+			else if (destinationType == typeof(string))
 			{
 				BaseChangeableNumber so = new BaseChangeableNumber(value);
 				return so.ToString();

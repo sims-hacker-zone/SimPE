@@ -606,7 +606,7 @@ namespace pjOBJDTool
 				for (int i = 0; i < acbFuncBuild.Count; i++)
 				{
 					ushort j = wrapper[afFuncBuild[i]];
-					int k = ((String)(Boolset)j).IndexOf("1");
+					int k = ((string)(Boolset)j).IndexOf("1");
 					acbFuncBuild[i].SelectedIndex = k < 0 ? 0 : 16 - k;
 				}
 				for (int i = 0; i < albcFuncBuild.Count; i++)

@@ -420,7 +420,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}*/
 		#endregion
 
-		public void ExportLanguage(byte lid, String path)
+		public void ExportLanguage(byte lid, string path)
 		{
 			StreamWriter sw = new StreamWriter(path, false);
 			sw.WriteLine("<-Comment->");
@@ -453,7 +453,7 @@ namespace SimPe.PackedFiles.Wrapper
 			sw = null;
 		}
 
-		public void ImportLanguage(byte lid, String path)
+		public void ImportLanguage(byte lid, string path)
 		{
 			if (File.Exists(path))
 			{
@@ -581,7 +581,7 @@ namespace SimPe.PackedFiles.Wrapper
 			return Title;
 		}
 
-		public static implicit operator String(StrItem si)
+		public static implicit operator string(StrItem si)
 		{
 			return si.Title;
 		}

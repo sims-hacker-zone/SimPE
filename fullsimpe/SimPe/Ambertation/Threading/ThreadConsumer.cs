@@ -41,7 +41,7 @@ namespace Ambertation.Threading
 		internal static object[] buffer = new object[N]; // Buffer
 
 		// Synchronisierte create - Methode
-		public static void Produce(Object o)
+		public static void Produce(object o)
 		{
 			lock (buffer_not_empty)
 			{
@@ -78,9 +78,9 @@ namespace Ambertation.Threading
 		}
 
 		// Synchronisierte consume - Methode
-		internal static Object Consume()
+		internal static object Consume()
 		{
-			Object o = new Object();
+			object o = new object();
 
 			lock (buffer_free)
 			{
@@ -137,7 +137,7 @@ namespace Ambertation.Threading
 		internal object[] buffer = new object[N]; // Buffer
 
 		// Synchronisierte create - Methode
-		protected void AddToBuffer(Object o)
+		protected void AddToBuffer(object o)
 		{
 			lock (buffer_not_empty)
 			{
@@ -209,9 +209,9 @@ namespace Ambertation.Threading
 		}
 
 		// Synchronisierte consume - Methode
-		internal Object Consume()
+		internal object Consume()
 		{
-			Object o = new Object();
+			object o = new object();
 
 			lock (buffer_free)
 			{
@@ -306,14 +306,14 @@ namespace Ambertation.Threading
 		/// you should only return false if you know what you are
 		/// doing, as this could block the Producer Thread!
 		/// </remarks>
-		protected abstract bool Consume(Object o);
+		protected abstract bool Consume(object o);
 
 		public void start()
 		{
 			while (!pt.finished_consume && !pt.Canceled)
 			{
 				// consume Data
-				Object o = pt.Consume();
+				object o = pt.Consume();
 				if (o == null)
 				{
 					break;

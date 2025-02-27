@@ -92,9 +92,9 @@ namespace pjOBJDTool
 			IEquatable<ushort>,
 			IComparable<pfOBJDItem>
 	{
-		private UInt16 value;
+		private ushort value;
 
-		public pfOBJDItem(UInt16 value)
+		public pfOBJDItem(ushort value)
 		{
 			this.value = value;
 		}

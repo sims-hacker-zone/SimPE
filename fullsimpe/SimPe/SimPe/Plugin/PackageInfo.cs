@@ -38,7 +38,7 @@ namespace SimPe.Plugin
 						return items[0].Title;
 					}
 				}
-				return String.Empty;
+				return string.Empty;
 			}
 			set
 			{
@@ -56,7 +56,7 @@ namespace SimPe.Plugin
 							0,
 							Convert.ToByte(MetaData.Languages.English),
 							value,
-							String.Empty
+							string.Empty
 						);
 						stringList.Add(item);
 					}

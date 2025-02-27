@@ -10,16 +10,16 @@ namespace SimPe
 	[AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
 	public class GlobalizedPropertyAttribute : Attribute
 	{
-		public GlobalizedPropertyAttribute(String name)
+		public GlobalizedPropertyAttribute(string name)
 		{
 			Name = name;
 		}
 
-		public String Name { get; set; } = "";
+		public string Name { get; set; } = "";
 
-		public String Description { get; set; } = "";
+		public string Description { get; set; } = "";
 
-		public String Table { get; set; } = "";
+		public string Table { get; set; } = "";
 	}
 
 	#region GlobalizedPropertyDescriptor
@@ -32,9 +32,9 @@ namespace SimPe
 	{
 		protected System.Resources.ResourceManager resource;
 		private PropertyDescriptor basePropertyDescriptor;
-		private String localizedName = "";
-		private String localizedDescription = "";
-		private String localizedCategory = "";
+		private string localizedName = "";
+		private string localizedDescription = "";
+		private string localizedCategory = "";
 
 		public GlobalizedPropertyDescriptor(
 			System.Resources.ResourceManager resource,
@@ -232,7 +232,7 @@ namespace SimPe
 
 		private PropertyDescriptorCollection globalizedProps;
 
-		public String GetClassName()
+		public string GetClassName()
 		{
 			return TypeDescriptor.GetClassName(this, true);
 		}
@@ -242,7 +242,7 @@ namespace SimPe
 			return TypeDescriptor.GetAttributes(this, true);
 		}
 
-		public String GetComponentName()
+		public string GetComponentName()
 		{
 			return TypeDescriptor.GetComponentName(this, true);
 		}

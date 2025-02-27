@@ -65,7 +65,7 @@ namespace SimPe.Interfaces.Files
 		/// All Header Informations are Cut from the Data, so you really
 		/// get the Data Stored in the PackedFile
 		/// </remarks>
-		Byte[] Data
+		byte[] Data
 		{
 			get;
 		}
@@ -76,7 +76,7 @@ namespace SimPe.Interfaces.Files
 		/// <remarks>
 		/// Header Informations are Included
 		/// </remarks>
-		Byte[] PlainData
+		byte[] PlainData
 		{
 			get;
 		}
@@ -94,7 +94,7 @@ namespace SimPe.Interfaces.Files
 		/// </summary>
 		/// <param name="maxsize">Maximum Number of Bytes that should be returned</param>
 		/// <returns></returns>
-		Byte[] GetUncompressedData(int maxsize);
+		byte[] GetUncompressedData(int maxsize);
 
 		/// <summary>
 		/// Returns a part of the decompresed File

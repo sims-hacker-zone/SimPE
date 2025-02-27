@@ -32,7 +32,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Number of Holes stored in the File
 		/// </summary>
-		internal Int32 count;
+		internal int count;
 
 		/// <summary>
 		/// Returns the Number of items stored in the Index
@@ -60,7 +60,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Size of the Hole Index
 		/// </summary>
-		internal Int32 size;
+		internal int size;
 
 		/// <summary>
 		/// Returns the Size of the Hole Index

@@ -45,7 +45,7 @@ namespace SimPe.Interfaces.Files
 		/// Returns the Major Version of The Packages FileFormat
 		/// </summary>
 		/// <remarks>This value should be 1</remarks>
-		Int32 MajorVersion
+		int MajorVersion
 		{
 			get;
 		}
@@ -54,7 +54,7 @@ namespace SimPe.Interfaces.Files
 		/// Returns the Minor Version of The Packages FileFormat
 		/// </summary>
 		/// <remarks>This value should be 0 or 1</remarks>
-		Int32 MinorVersion
+		int MinorVersion
 		{
 			get;
 		}
@@ -78,7 +78,7 @@ namespace SimPe.Interfaces.Files
 		/// <summary>
 		/// The Icon to display (for lot packages)
 		/// </summary>
-		Int16 Epicon
+		short Epicon
 		{
 			get; set;
 		}
@@ -86,7 +86,7 @@ namespace SimPe.Interfaces.Files
 		/// <summary>
 		/// Should the defined Icon be shown : 1 is true (for lot packages)
 		/// </summary>
-		Int16 Showicon
+		short Showicon
 		{
 			get; set;
 		}

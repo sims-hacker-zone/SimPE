@@ -340,7 +340,7 @@ namespace pjse.BhavOperandWizards
 				return ((short)v).ToString();
 			}
 
-			String s = SimPe.Helper.HexString(v);
+			string s = SimPe.Helper.HexString(v);
 			int i = (bitsInValue + 3) / 4;
 			s = s.Substring(s.Length - i);
 
@@ -618,7 +618,7 @@ namespace pjse.BhavOperandWizards
 			}
 
 			#region pickerNames
-			List<String> pickerNames = null;
+			List<string> pickerNames = null;
 			if (useInstancePicker && cbPicker != null)
 			{
 				if (useFlagNames && DataOwner == 0x07 && flagsFor != null)

@@ -520,8 +520,8 @@ namespace SimPe.Providers
 			string id = GetUIAttribute(line, "id");
 			int nr = (Helper.StringToInt32(id, 0, 16) / 2) - 1;
 			string[] stgi = image.Split(new char[] { ',' });
-			UInt32 g = Helper.StringToUInt32(stgi[0], 0, 16);
-			UInt32 i = Helper.StringToUInt32(stgi[1], 0, 16);
+			uint g = Helper.StringToUInt32(stgi[0], 0, 16);
+			uint i = Helper.StringToUInt32(stgi[1], 0, 16);
 			string name = GetUITextAttribute(line, "tiptext");
 			if (index < strs.Count)
 			{
@@ -559,8 +559,8 @@ namespace SimPe.Providers
 		*/
 		private static System.Drawing.Image LoadCollectibleIcon(
 			Picture pic,
-			UInt32 g,
-			UInt32 i
+			uint g,
+			uint i
 		)
 		{
 			Packages.File pkg = Packages.File.LoadFromFile(

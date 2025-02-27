@@ -32,26 +32,26 @@ namespace pj
 	public class cObjKeyTool : AbstractTool, ITool
 	{
 		// TSData\Res\3D:
-		private static List<String> txmtpkg; // Objects02, Sims02, CarryForward.sgfiles
-		private static List<String> gmdcpkg; // Objects03, Sims03, CarryForward.sgfiles
-		private static List<String> gmndpkg; // Objects04, Sims04, CarryForward.sgfiles
-		private static List<String> shpepkg; // Objects06, Sims05, CarryForward.sgfiles
-		private static List<String> crespkg; // Objects05, Sims06, CarryForward.sgfiles
-		private static List<String> txtrpkg; // Objects07, Sims07, Textures, CarryForward.sgfiles
-		private static List<String> lifopkg; // Objects07-09, Sims08/9/11-13, Textures, CarryForward.sgfiles
+		private static List<string> txmtpkg; // Objects02, Sims02, CarryForward.sgfiles
+		private static List<string> gmdcpkg; // Objects03, Sims03, CarryForward.sgfiles
+		private static List<string> gmndpkg; // Objects04, Sims04, CarryForward.sgfiles
+		private static List<string> shpepkg; // Objects06, Sims05, CarryForward.sgfiles
+		private static List<string> crespkg; // Objects05, Sims06, CarryForward.sgfiles
+		private static List<string> txtrpkg; // Objects07, Sims07, Textures, CarryForward.sgfiles
+		private static List<string> lifopkg; // Objects07-09, Sims08/9/11-13, Textures, CarryForward.sgfiles
 
 		// TSData\Res\Catalog:
-		private static List<String> objkeys; // Skins\Skins
-		private static List<String> fragkeys; // Bins\globalcatbin.bundle
-		private static List<String> binkeys; // Bins\globalcatbin.bundle
+		private static List<string> objkeys; // Skins\Skins
+		private static List<string> fragkeys; // Bins\globalcatbin.bundle
+		private static List<string> binkeys; // Bins\globalcatbin.bundle
 
 		private static void addPackages(
-			ref List<String> packs,
-			String path,
-			String[] posspacks
+			ref List<string> packs,
+			string path,
+			string[] posspacks
 		)
 		{
-			foreach (String p in posspacks)
+			foreach (string p in posspacks)
 			{
 				if (File.Exists(p))
 				{
@@ -68,12 +68,12 @@ namespace pj
 			}
 		}
 
-		private static void addPackages(ref List<String> packs, String path, bool rec)
+		private static void addPackages(ref List<string> packs, string path, bool rec)
 		{
 			addPackages(ref packs, path, Directory.GetFiles(path, "*.package"));
 			if (rec)
 			{
-				foreach (String folder in Directory.GetDirectories(path))
+				foreach (string folder in Directory.GetDirectories(path))
 				{
 					addPackages(ref packs, Path.Combine(path, folder), rec);
 				}
@@ -82,17 +82,17 @@ namespace pj
 
 		private static void SetPacks()
 		{
-			txmtpkg = new List<String>();
-			gmdcpkg = new List<String>();
-			gmndpkg = new List<String>();
-			shpepkg = new List<String>();
-			crespkg = new List<String>();
-			txtrpkg = new List<String>();
-			lifopkg = new List<String>();
-			objkeys = new List<String>();
-			fragkeys = new List<String>();
-			binkeys = new List<String>();
-			List<String>[] lls = new List<String>[]
+			txmtpkg = new List<string>();
+			gmdcpkg = new List<string>();
+			gmndpkg = new List<string>();
+			shpepkg = new List<string>();
+			crespkg = new List<string>();
+			txtrpkg = new List<string>();
+			lifopkg = new List<string>();
+			objkeys = new List<string>();
+			fragkeys = new List<string>();
+			binkeys = new List<string>();
+			List<string>[] lls = new List<string>[]
 			{
 				txmtpkg,
 				gmdcpkg,
@@ -117,7 +117,7 @@ namespace pj
 				{
 					for (int i = 0; i < lls.Length; i++)
 					{
-						addPackages(ref lls[i], "", new String[] { fii.Name });
+						addPackages(ref lls[i], "", new string[] { fii.Name });
 					}
 				}
 				else if (fii.Type.AsExpansions == SimPe.Expansions.Custom)
@@ -132,32 +132,32 @@ namespace pj
 					addPackages(
 						ref txmtpkg,
 						fii.Name,
-						new String[] { "Objects02", "Sims02", "CarryForward.sgfiles" }
+						new string[] { "Objects02", "Sims02", "CarryForward.sgfiles" }
 					);
 					addPackages(
 						ref gmdcpkg,
 						fii.Name,
-						new String[] { "Objects03", "Sims03", "CarryForward.sgfiles" }
+						new string[] { "Objects03", "Sims03", "CarryForward.sgfiles" }
 					);
 					addPackages(
 						ref gmndpkg,
 						fii.Name,
-						new String[] { "Objects04", "Sims04", "CarryForward.sgfiles" }
+						new string[] { "Objects04", "Sims04", "CarryForward.sgfiles" }
 					);
 					addPackages(
 						ref shpepkg,
 						fii.Name,
-						new String[] { "Objects06", "Sims05", "CarryForward.sgfiles" }
+						new string[] { "Objects06", "Sims05", "CarryForward.sgfiles" }
 					);
 					addPackages(
 						ref crespkg,
 						fii.Name,
-						new String[] { "Objects05", "Sims06", "CarryForward.sgfiles" }
+						new string[] { "Objects05", "Sims06", "CarryForward.sgfiles" }
 					);
 					addPackages(
 						ref txtrpkg,
 						fii.Name,
-						new String[]
+						new string[]
 						{
 							"Objects07",
 							"Sims07",
@@ -168,7 +168,7 @@ namespace pj
 					addPackages(
 						ref lifopkg,
 						fii.Name,
-						new String[]
+						new string[]
 						{
 							"Objects07",
 							"Objects08",
@@ -189,7 +189,7 @@ namespace pj
 						.EndsWith(SimPe.Helper.PATH_SEP + "skins")
 				)
 				{
-					addPackages(ref objkeys, fii.Name, new String[] { "Skins" });
+					addPackages(ref objkeys, fii.Name, new string[] { "Skins" });
 
 					string name = fii.Name.Replace(
 						SimPe.Helper.PATH_SEP + "Skins",
@@ -197,7 +197,7 @@ namespace pj
 					);
 					if (Directory.Exists(name))
 					{
-						foreach (String pkg in Directory.GetFiles(name, "*.package"))
+						foreach (string pkg in Directory.GetFiles(name, "*.package"))
 						{
 							if (!pkg.ToLowerInvariant().Contains("globalcatbin."))
 							{
@@ -209,12 +209,12 @@ namespace pj
 						addPackages(
 							ref fragkeys,
 							name,
-							new String[] { "globalcatbin.bundle" }
+							new string[] { "globalcatbin.bundle" }
 						);
 						addPackages(
 							ref binkeys,
 							name,
-							new String[] { "globalcatbin.bundle" }
+							new string[] { "globalcatbin.bundle" }
 						);
 					}
 				}
@@ -328,7 +328,7 @@ namespace pj
 			IPackedFileDescriptor pfd
 		)
 		{
-			foreach (String pkg in pkgs)
+			foreach (string pkg in pkgs)
 			{
 				AbstractWrapper tgt = findInPackage(pkg, Filetype, pfd);
 				if (tgt != null)
@@ -340,7 +340,7 @@ namespace pj
 		}
 
 		AbstractWrapper findInPackage(
-			String pkg,
+			string pkg,
 			uint Filetype,
 			IPackedFileDescriptor pfd
 		)
@@ -370,8 +370,8 @@ namespace pj
 		private AbstractWrapper[] getCpf3idrPair(
 			SimPe.PackedFiles.Wrapper.Cpf srcCpf,
 			SimPe.Plugin.RefFile src3idr,
-			String cpfItemKey,
-			List<String> pkgs
+			string cpfItemKey,
+			List<string> pkgs
 		)
 		{
 			SimPe.PackedFiles.Wrapper.CpfItem cpfItem = srcCpf.GetItem(cpfItemKey);
@@ -383,7 +383,7 @@ namespace pj
 				return null;
 			}
 
-			foreach (String pkg in pkgs)
+			foreach (string pkg in pkgs)
 			{
 				AbstractWrapper[] tgt = getCpf3idrPairInPkg(
 					src3idr.Items[cpfItem.UIntegerValue],
@@ -399,7 +399,7 @@ namespace pj
 
 		private AbstractWrapper[] getCpf3idrPairInPkg(
 			IPackedFileDescriptor tgtpfd,
-			String pkg
+			string pkg
 		)
 		{
 			IPackageFile p = SimPe.Packages.File.LoadFromFile(pkg);
@@ -443,8 +443,8 @@ namespace pj
 		private SimPe.Plugin.GenericRcol getRcol(
 			SimPe.PackedFiles.Wrapper.Cpf srcCpf,
 			SimPe.Plugin.RefFile src3idr,
-			String cpfItemKey,
-			List<String> pkgs
+			string cpfItemKey,
+			List<string> pkgs
 		)
 		{
 			SimPe.PackedFiles.Wrapper.CpfItem cpfItem = srcCpf.GetItem(cpfItemKey);
@@ -456,7 +456,7 @@ namespace pj
 				return null;
 			}
 
-			foreach (String pkg in pkgs)
+			foreach (string pkg in pkgs)
 			{
 				SimPe.Plugin.GenericRcol tgt = getRcolPkg(
 					src3idr.Items[cpfItem.UIntegerValue],
@@ -472,10 +472,10 @@ namespace pj
 
 		private SimPe.Plugin.GenericRcol getRcol(
 			IPackedFileDescriptor tgtpfd,
-			List<String> pkgs
+			List<string> pkgs
 		)
 		{
-			foreach (String pkg in pkgs)
+			foreach (string pkg in pkgs)
 			{
 				SimPe.Plugin.GenericRcol tgt = getRcolPkg(tgtpfd, pkg);
 				if (tgt != null)
@@ -488,7 +488,7 @@ namespace pj
 
 		private SimPe.Plugin.GenericRcol getRcolPkg(
 			IPackedFileDescriptor tgtpfd,
-			String pkg
+			string pkg
 		)
 		{
 			IPackageFile p = SimPe.Packages.File.LoadFromFile(pkg);
@@ -509,9 +509,9 @@ namespace pj
 			return tgt;
 		}
 
-		private SimPe.Plugin.GenericRcol getRcol(String filename, List<String> pkgs)
+		private SimPe.Plugin.GenericRcol getRcol(string filename, List<string> pkgs)
 		{
-			foreach (String pkg in pkgs)
+			foreach (string pkg in pkgs)
 			{
 				SimPe.Plugin.GenericRcol tgt = getRcolPkg(filename, pkg);
 				if (tgt != null)
@@ -522,7 +522,7 @@ namespace pj
 			return null;
 		}
 
-		private SimPe.Plugin.GenericRcol getRcolPkg(String filename, String pkg)
+		private SimPe.Plugin.GenericRcol getRcolPkg(string filename, string pkg)
 		{
 			IPackageFile p = SimPe.Packages.File.LoadFromFile(pkg);
 			if (p == null)
@@ -546,7 +546,7 @@ namespace pj
 		{
 			List<AbstractWrapper[]> fragKeys = new List<AbstractWrapper[]>();
 
-			foreach (String pkg in fragkeys)
+			foreach (string pkg in fragkeys)
 			{
 				IPackageFile p = SimPe.Packages.File.LoadFromFile(pkg);
 				if (p == null)
@@ -646,7 +646,7 @@ namespace pj
 
 			SimPe.Plugin.GenericRcol tgt = null;
 
-			foreach (String s in new String[] { "shapekeyidx", "maskshapekeyidx" })
+			foreach (string s in new string[] { "shapekeyidx", "maskshapekeyidx" })
 			{
 				tgt = getRcol(objKeyCPF, objKey3IDR, s, shpepkg);
 				if (tgt != null)
@@ -692,7 +692,7 @@ namespace pj
 			}
 
 			foreach (
-				String s in new String[] { "resourcekeyidx", "maskresourcekeyidx" }
+				string s in new string[] { "resourcekeyidx", "maskresourcekeyidx" }
 			)
 			{
 				tgt = getRcol(objKeyCPF, objKey3IDR, s, crespkg);

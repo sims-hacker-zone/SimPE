@@ -146,8 +146,8 @@ namespace pjse.guidtool
 		//private string prompt = null;
 		private Thread searchThread = null;
 
-		private List<String> sgNames = null;
-		private List<UInt32> sgGroups = null;
+		private List<string> sgNames = null;
+		private List<uint> sgGroups = null;
 
 		private List<RadioButton> rbGroup = null;
 

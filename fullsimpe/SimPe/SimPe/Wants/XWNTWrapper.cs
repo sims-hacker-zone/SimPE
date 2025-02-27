@@ -57,7 +57,7 @@ namespace SimPe.Wants
 
 		#region ValidVersions
 		static List<string> lValidVersions = null;
-		public static List<String> ValidVersions
+		public static List<string> ValidVersions
 		{
 			get
 			{
@@ -131,9 +131,9 @@ namespace SimPe.Wants
 				new XWNTItem(this, "integerOperator", XWNTItem.ValidIntegerOperators[0])
 			);
 			items.Add(new XWNTItem(this, "<!--Event Properties-->", ""));
-			items.Add(new XWNTItem(this, "eventRequiresObject", Boolean.FalseString));
-			items.Add(new XWNTItem(this, "eventRequiresSim", Boolean.FalseString));
-			items.Add(new XWNTItem(this, "deprecated", Boolean.FalseString));
+			items.Add(new XWNTItem(this, "eventRequiresObject", bool.FalseString));
+			items.Add(new XWNTItem(this, "eventRequiresSim", bool.FalseString));
+			items.Add(new XWNTItem(this, "deprecated", bool.FalseString));
 			SynchronizeUserData();
 		}
 
@@ -636,7 +636,7 @@ namespace SimPe.Wants
 
 		#region ValidIntegerOperators
 		static List<string> lValidIntegerOperators = null;
-		public static List<String> ValidIntegerOperators
+		public static List<string> ValidIntegerOperators
 		{
 			get
 			{
@@ -665,7 +665,7 @@ namespace SimPe.Wants
 
 		#region ValidIntegerTypes
 		static List<string> lValidIntegerTypes = null;
-		public static List<String> ValidIntegerTypes
+		public static List<string> ValidIntegerTypes
 		{
 			get
 			{
@@ -688,7 +688,7 @@ namespace SimPe.Wants
 
 		#region ValidLevels
 		static List<string> lValidLevels = null;
-		public static List<String> ValidLevels
+		public static List<string> ValidLevels
 		{
 			get
 			{
@@ -718,7 +718,7 @@ namespace SimPe.Wants
 
 		#region ValidObjectTypes
 		static List<string> lValidObjectTypes = null;
-		public static List<String> ValidObjectTypes
+		public static List<string> ValidObjectTypes
 		{
 			get
 			{

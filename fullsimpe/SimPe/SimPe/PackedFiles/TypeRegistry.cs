@@ -329,7 +329,7 @@ namespace SimPe.PackedFiles
 		/// A handler is assigned if the first bytes of the Data are equal
 		/// to the signature provided by the Handler
 		/// </remarks>
-		public IFileWrapper FindHandler(Byte[] data)
+		public IFileWrapper FindHandler(byte[] data)
 		{
 			IWrapper[] wrappers = Wrappers;
 			foreach (IFileWrapper h in wrappers)

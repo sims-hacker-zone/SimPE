@@ -438,13 +438,13 @@ namespace SimPe.Plugin.Tool.Dockable
 			ObjectReader.changedcache = true;
 		}
 
-		protected override bool Consume(Object o)
+		protected override bool Consume(object o)
 		{
 			return DoConsume(o, LoadedItem, deflang);
 		}
 
 		internal static bool DoConsume(
-			Object o,
+			object o,
 			ObjectLoader.LoadItemHandler LoadedItem,
 			Data.MetaData.Languages deflang
 		)

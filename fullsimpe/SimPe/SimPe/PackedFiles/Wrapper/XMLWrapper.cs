@@ -96,11 +96,11 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public Byte[] FileSignature
+		public byte[] FileSignature
 		{
 			get
 			{
-				Byte[] sig = { (byte)'<', (byte)'?', (byte)'x', (byte)'m', (byte)'l' };
+				byte[] sig = { (byte)'<', (byte)'?', (byte)'x', (byte)'m', (byte)'l' };
 				return sig;
 			}
 		}

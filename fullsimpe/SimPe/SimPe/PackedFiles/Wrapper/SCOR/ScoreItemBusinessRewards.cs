@@ -69,7 +69,7 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 		internal override void Serialize(System.IO.BinaryWriter writer, bool last)
 		{
 			base.Serialize(writer, last);
-			writer.Write((Int16)lb.Items.Count);
+			writer.Write((short)lb.Items.Count);
 			writer.Write((byte)0);
 			ScorItem.SerializeDefaultToken(writer, last && lb.Items.Count == 0);
 			for (int i = 0; i < lb.Items.Count; i++)

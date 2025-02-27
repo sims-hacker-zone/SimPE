@@ -64,7 +64,7 @@ namespace SimPe.Interfaces
 		/// <param name="t"></param>
 		/// <param name="ps"></param>
 		/// <returns></returns>
-		string Serialize(Object o, Type t, PropertyInfo[] ps);
+		string Serialize(object o, Type t, PropertyInfo[] ps);
 
 		/// <summary>
 		/// Serialize the passed Header Information for the passed Object
@@ -73,7 +73,7 @@ namespace SimPe.Interfaces
 		/// <param name="t"></param>
 		/// <param name="ps"></param>
 		/// <returns></returns>
-		string SerializeHeader(Object o, Type t, PropertyInfo[] ps);
+		string SerializeHeader(object o, Type t, PropertyInfo[] ps);
 
 		/// <summary>
 		/// Serializes the given Wrapper,Descriptor Information

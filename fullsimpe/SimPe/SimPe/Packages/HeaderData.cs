@@ -37,8 +37,8 @@ namespace SimPe.Packages
 			index = new HeaderIndex(this);
 			hole = new HeaderHole();
 			id = new char[4];
-			reserved_00 = new Int32[3];
-			reserved_02 = new Int32[7];
+			reserved_00 = new int[3];
+			reserved_02 = new int[7];
 
 			id[0] = 'D';
 			id[1] = 'B';
@@ -82,14 +82,14 @@ namespace SimPe.Packages
 		/// <summary>
 		/// The Icon to display (for lot packages)
 		/// </summary>
-		internal Int16 epicon;
+		internal short epicon;
 
 		[
 			Description("The Icon to display for this Package"),
 			Category("Icon"),
 			DefaultValue(0)
 		]
-		public Int16 Epicon
+		public short Epicon
 		{
 			get => epicon;
 			set => epicon = value;
@@ -98,14 +98,14 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Should the defined Icon be shown : 1 is true (for lot packages)
 		/// </summary>
-		internal Int16 showicon;
+		internal short showicon;
 
 		[
 			Description("Should an Icon display for this Package"),
 			Category("Icon"),
 			DefaultValue(0)
 		]
-		public Int16 Showicon
+		public short Showicon
 		{
 			get => showicon;
 			set => showicon = value;
@@ -114,7 +114,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// The Major Version (part before the .) of the Package File Format
 		/// </summary>
-		internal Int32 majorversion;
+		internal int majorversion;
 
 		/// <summary>
 		/// Returns the Major Version of The Packages FileFormat
@@ -125,12 +125,12 @@ namespace SimPe.Packages
 			Category("Version"),
 			DefaultValue(1)
 		]
-		public Int32 MajorVersion => majorversion;
+		public int MajorVersion => majorversion;
 
 		/// <summary>
 		/// The Minor Version (part after the .) of the Package File Format
 		/// </summary>
-		internal Int32 minorversion;
+		internal int minorversion;
 
 		/// <summary>
 		/// Returns the Minor Version of The Packages FileFormat
@@ -141,7 +141,7 @@ namespace SimPe.Packages
 			Category("Version"),
 			DefaultValue(1)
 		]
-		public Int32 MinorVersion => minorversion;
+		public int MinorVersion => minorversion;
 
 		/// <summary>
 		/// Returns the Overall Version of this Package
@@ -157,7 +157,7 @@ namespace SimPe.Packages
 		/// 3 dwords of reserved Data
 		/// </summary>
 #if DEBUG
-		public Int32[] reserved_00;
+		public int[] reserved_00;
 #else
 		internal Int32[] reserved_00;
 #endif
@@ -199,13 +199,13 @@ namespace SimPe.Packages
 		/// Modification Date of the File
 		/// </summary>
 #if DEBUG
-		public Int32 modified;
+		public int modified;
 
 		[
 			Description("Modification Date of the Package"),
 			Category("Debug")
 		]
-		public Int32 Modified => modified;
+		public int Modified => modified;
 #else
 		internal Int32 modified;
 #endif
@@ -250,10 +250,10 @@ namespace SimPe.Packages
 		/// 7 dwords of reserved Data - was 8 but have lost one for Icon in lot files
 		/// </summary>
 #if DEBUG
-		public Int32[] reserved_02;
+		public int[] reserved_02;
 
 		[Description("Reserved Values"), Category("Debug")]
-		public Int32[] Reserved => reserved_02;
+		public int[] Reserved => reserved_02;
 #else
 		internal Int32[] reserved_02;
 #endif

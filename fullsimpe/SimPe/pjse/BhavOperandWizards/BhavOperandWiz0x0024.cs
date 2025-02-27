@@ -201,7 +201,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			inst = null;
 		}
 
-		private static List<String> typeDescriptions = null;
+		private static List<string> typeDescriptions = null;
 
 		private Instruction inst = null;
 		private ArrayList alStrBtn = null;

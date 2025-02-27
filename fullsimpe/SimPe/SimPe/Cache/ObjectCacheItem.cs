@@ -75,7 +75,7 @@ namespace SimPe.Cache
 
 		Interfaces.Files.IPackedFileDescriptor pfd;
 
-		public Object Tag
+		public object Tag
 		{
 			get; set;
 		}

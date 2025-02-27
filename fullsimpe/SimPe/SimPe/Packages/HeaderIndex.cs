@@ -37,7 +37,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// IndexType of the File
 		/// </summary>
-		internal Int32 type;
+		internal int type;
 
 		/// <summary>
 		/// returns the Index Type of the File

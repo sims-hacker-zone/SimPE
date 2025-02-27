@@ -439,7 +439,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			PickANumber pan = new PickANumber(
 				new ushort[] { (ushort)(maxtti & 0x7fff) },
-				new String[] { "Increase new Pie String IDs by" }
+				new string[] { "Increase new Pie String IDs by" }
 			)
 			{
 				Title = "\"Pie String ID\" increment",
@@ -671,7 +671,7 @@ namespace SimPe.PackedFiles.UserInterface
 					}
 				}
 			}
-			tpHumanMotives.Text = ((String)tpHumanMotives.Tag).Split(new char[] { '/' })[
+			tpHumanMotives.Text = ((string)tpHumanMotives.Tag).Split(new char[] { '/' })[
 				index
 			];
 			for (int i = 0; i < alFlags.Count; i++)
@@ -679,7 +679,7 @@ namespace SimPe.PackedFiles.UserInterface
 				CheckBox lcb = (CheckBox)alFlags[i];
 				if (lcb.Tag != null && lcb.Tag.ToString().Length > 0)
 				{
-					lcb.Text = ((String)lcb.Tag).Split(new char[] { '/' })[index];
+					lcb.Text = ((string)lcb.Tag).Split(new char[] { '/' })[index];
 				}
 			}
 

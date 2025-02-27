@@ -483,7 +483,7 @@ namespace SimPe.Wants
 				KeyValuePair<string, uint> y
 			)
 			{
-				return String.Compare(x.Key, y.Key);
+				return string.Compare(x.Key, y.Key);
 			}
 		}
 
@@ -499,7 +499,7 @@ namespace SimPe.Wants
 
 			public override int Compare(uint x, uint y)
 			{
-				return String.Compare(objects[x], objects[y]);
+				return string.Compare(objects[x], objects[y]);
 			}
 		}
 
@@ -1096,7 +1096,7 @@ namespace SimPe.Wants
 			public int Compare(object x, object y)
 			{
 				int result = column != 0
-					? String.Compare(
+					? string.Compare(
 						((ListViewGroup)x).Header,
 						((ListViewGroup)y).Header
 					)

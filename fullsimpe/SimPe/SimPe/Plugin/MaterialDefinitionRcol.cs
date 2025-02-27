@@ -113,12 +113,12 @@ namespace SimPe.Plugin
 			{
 				foreach (MaterialDefinitionProperty mmatp in mmatd.Properties)
 				{
-					if (String.Compare(mmatp.Name, "stdMatBaseTextureName", true) == 0)
+					if (string.Compare(mmatp.Name, "stdMatBaseTextureName", true) == 0)
 					{
 						ret.Add(TextureType.Base, mmatp.Value);
 					}
 					else if (
-						String.Compare(mmatp.Name, "stdMatNormalMapTextureName", true)
+						string.Compare(mmatp.Name, "stdMatNormalMapTextureName", true)
 						== 0
 					)
 					{
@@ -136,7 +136,7 @@ namespace SimPe.Plugin
 			{
 				foreach (DictionaryEntry de in txtrRef)
 				{
-					string key = String.Format("stdMat{0}TextureName", de.Key);
+					string key = string.Format("stdMat{0}TextureName", de.Key);
 					MaterialDefinitionProperty prop = mmatd.GetProperty(key);
 					prop.Value = Convert.ToString(de.Value);
 				}

@@ -590,7 +590,7 @@ namespace SimPe.Plugin
 						if (deletedCount > 0)
 						{
 							Message.Show(
-								String.Format(
+								string.Format(
 									"Deleted {0} memories from the sim pool",
 									deletedCount
 								),

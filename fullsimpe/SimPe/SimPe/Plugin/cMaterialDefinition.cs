@@ -66,7 +66,7 @@ namespace SimPe.Plugin
 			: base(parent)
 		{
 			Properties = new MaterialDefinitionProperty[0];
-			Listing = new String[0];
+			Listing = new string[0];
 			sgres = new SGResource(null);
 			BlockID = 0x49596978;
 			FileDescription = "";
@@ -182,11 +182,11 @@ namespace SimPe.Plugin
 
 			if (version == 8)
 			{
-				Listing = new String[0];
+				Listing = new string[0];
 			}
 			else
 			{
-				Listing = new String[reader.ReadUInt32()];
+				Listing = new string[reader.ReadUInt32()];
 				for (int i = 0; i < Listing.Length; i++)
 				{
 					/*len = reader.ReadByte();

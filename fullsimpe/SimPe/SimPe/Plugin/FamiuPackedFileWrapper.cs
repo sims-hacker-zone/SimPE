@@ -345,7 +345,7 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				Byte[] sig = { (byte)'h', (byte)'M', (byte)'A', (byte)'F' };
+				byte[] sig = { (byte)'h', (byte)'M', (byte)'A', (byte)'F' };
 				return sig;
 			}
 		}

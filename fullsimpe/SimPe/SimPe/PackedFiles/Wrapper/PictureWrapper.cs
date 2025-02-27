@@ -173,7 +173,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public Byte[] FileSignature => new Byte[0];
+		public byte[] FileSignature => new byte[0];
 
 		#endregion
 

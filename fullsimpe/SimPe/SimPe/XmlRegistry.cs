@@ -694,23 +694,23 @@ namespace SimPe
 			string tag = "string";
 			string val = o.ToString();
 
-			if (o is Int32 || o is Int16 || o is byte)
+			if (o is int || o is short || o is byte)
 			{
 				tag = "int";
 			}
-			else if (o is UInt32 || o is UInt16)
+			else if (o is uint || o is ushort)
 			{
 				tag = "uint";
 			}
-			else if (o is Int64)
+			else if (o is long)
 			{
 				tag = "long";
 			}
-			else if (o is UInt64)
+			else if (o is ulong)
 			{
 				tag = "ulong";
 			}
-			else if (o is Boolean)
+			else if (o is bool)
 			{
 				tag = "bool";
 				val = (bool)o ? "true" : "false";

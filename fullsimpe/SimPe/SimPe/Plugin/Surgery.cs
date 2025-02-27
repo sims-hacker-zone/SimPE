@@ -1429,7 +1429,7 @@ namespace SimPe.Plugin
 					SimInfo nfo = new SimInfo(
 						aged,
 						System.IO.Path.GetFileName(sim.CharacterFileName),
-						String.Format("{0} {1}", sim.SimName, sim.SimFamilyName)
+						string.Format("{0} {1}", sim.SimName, sim.SimFamilyName)
 					);
 					pg.SelectedObject = nfo;
 				}

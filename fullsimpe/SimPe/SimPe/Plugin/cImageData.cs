@@ -130,7 +130,7 @@ namespace SimPe.Plugin
 		{
 			this.parent = parent;
 			DataType = MipMapType.SimPE_PlainData;
-			data = new Byte[0];
+			data = new byte[0];
 		}
 
 		#region IRcolBlock Member

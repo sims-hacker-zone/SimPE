@@ -126,7 +126,7 @@ namespace SimPe.Plugin
 				foreach (DictionaryEntry de in loadedMeshes)
 				{
 					if (
-						String.Compare(
+						string.Compare(
 							System.IO.Path.GetFileName(Convert.ToString(de.Key)),
 							System.IO.Path.GetFileName(filePathOrName),
 							true
@@ -151,7 +151,7 @@ namespace SimPe.Plugin
 				foreach (DictionaryEntry de in loadedReferences)
 				{
 					if (
-						String.Compare(
+						string.Compare(
 							System.IO.Path.GetFileName(Convert.ToString(de.Key)),
 							System.IO.Path.GetFileName(filePathOrName),
 							true
@@ -175,7 +175,7 @@ namespace SimPe.Plugin
 			{
 				foreach (MeshInfo mesh in meshes)
 				{
-					if (String.Compare(mesh.Description, name, true) == 0)
+					if (string.Compare(mesh.Description, name, true) == 0)
 					{
 						return mesh;
 					}

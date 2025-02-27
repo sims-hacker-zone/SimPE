@@ -936,7 +936,7 @@ namespace SimPe.Packages
 				reader.BaseStream.Seek(pfd.Offset, SeekOrigin.Begin);
 				pf.size = reader.ReadInt32();
 				pf.signature = reader.ReadUInt16();
-				Byte[] dummy = reader.ReadBytes(3);
+				byte[] dummy = reader.ReadBytes(3);
 				pf.uncsize = (uint)(
 					(dummy[0] << 0x10) | (dummy[1] << 0x08) | +dummy[2]
 				);
@@ -982,7 +982,7 @@ namespace SimPe.Packages
 				reader.BaseStream.Seek(pfd.Offset, SeekOrigin.Begin);
 				pf.size = reader.ReadInt32();
 				pf.signature = reader.ReadUInt16();
-				Byte[] dummy = reader.ReadBytes(3);
+				byte[] dummy = reader.ReadBytes(3);
 				pf.uncsize = (uint)(
 					(dummy[0] << 0x10) | (dummy[1] << 0x08) | +dummy[2]
 				);

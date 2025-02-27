@@ -77,14 +77,14 @@ namespace SimPe.PackedFiles.UserInterface
 
 		#region Extra attributes
 		private TtabItemMotiveGroup item = null;
-		public String MGName
+		public string MGName
 		{
 			get => gbMotiveGroup.Text;
 			set => gbMotiveGroup.Text = value;
 		}
 
 		private ArrayList tops = new ArrayList();
-		public int[] Tops => (int[])tops.ToArray(typeof(Int32));
+		public int[] Tops => (int[])tops.ToArray(typeof(int));
 		#endregion
 
 		#region TtabMotiveGroupUI

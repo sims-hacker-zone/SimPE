@@ -41,7 +41,7 @@ namespace SimPe.Interfaces.Plugin
 		/// Method does not retun an empty Array, all files starting with the passed Signature will
 		/// be passed to the Handler
 		/// </summary>
-		Byte[] FileSignature
+		byte[] FileSignature
 		{
 			get;
 		}

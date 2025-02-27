@@ -36,7 +36,7 @@ namespace SimPe.Packages
 		/// Constructor for the class
 		/// </summary>
 		/// <param name="content">The Content of the Packed File</param>
-		internal PackedFile(Byte[] content)
+		internal PackedFile(byte[] content)
 		{
 			data = content;
 			headersize = 0;
@@ -70,7 +70,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Size of the compressed File
 		/// </summary>
-		internal Int32 size;
+		internal int size;
 
 		/// <summary>
 		/// Returns the Size of the File
@@ -93,7 +93,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Filesize
 		/// </summary>
-		internal UInt32 datasize;
+		internal uint datasize;
 
 		/// <summary>
 		/// Returns the Filesize
@@ -103,12 +103,12 @@ namespace SimPe.Packages
 		/// <summary>
 		/// the File Data
 		/// </summary>
-		public Byte[] data;
+		public byte[] data;
 
 		/// <summary>
 		/// the uncompressed Data
 		/// </summary>
-		internal Byte[] uncdata;
+		internal byte[] uncdata;
 
 		internal uint uncsize;
 		public uint UncompressedSize => uncsize;
@@ -120,13 +120,13 @@ namespace SimPe.Packages
 		/// All Header Informations are Cut from the Data, so you really
 		/// get the Data Stored in the PackedFile
 		/// </remarks>
-		public Byte[] Data
+		public byte[] Data
 		{
 			get
 			{
 				if (headersize > 0)
 				{
-					Byte[] sub = new Byte[data.Length - headersize];
+					byte[] sub = new byte[data.Length - headersize];
 					for (int i = headersize; i < data.Length; i++)
 					{
 						sub[i - headersize] = data[i];
@@ -144,7 +144,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns the Plain File Data (might be compressed)
 		/// </summary>
-		public Byte[] PlainData => data;
+		public byte[] PlainData => data;
 
 		class OffsetStream : System.IO.Stream
 		{
@@ -245,7 +245,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns the Plain File Data. If the Packed File is compress it will be decompressed
 		/// </summary>
-		public Byte[] UncompressedData
+		public byte[] UncompressedData
 		{
 			get
 			{
@@ -270,7 +270,7 @@ namespace SimPe.Packages
 		/// </summary>
 		/// <param name="maxsize">Maximum Number of Bytes that should be returned</param>
 		/// <returns></returns>
-		public Byte[] GetUncompressedData(int maxsize)
+		public byte[] GetUncompressedData(int maxsize)
 		{
 			if (IsCompressed)
 			{
@@ -314,28 +314,28 @@ namespace SimPe.Packages
 		/// <param name="targetSize">Size of the uncompressed Data</param>
 		/// <param name="offset">File offset, where we should start to decompress from</param>
 		/// <returns>The uncompressed FileData</returns>
-		public Byte[] Uncompress(Byte[] data, uint targetSize, int offset)
+		public byte[] Uncompress(byte[] data, uint targetSize, int offset)
 		{
-			Byte[] uncdata = null;
+			byte[] uncdata = null;
 			int index = offset;
 
 			try
 			{
-				uncdata = new Byte[targetSize];
+				uncdata = new byte[targetSize];
 			}
 			catch (Exception)
 			{
-				uncdata = new Byte[0];
+				uncdata = new byte[0];
 			}
 
 			int uncindex = 0;
 			int plaincount = 0;
 			int copycount = 0;
 			int copyoffset = 0;
-			Byte cc = 0;
-			Byte cc1 = 0;
-			Byte cc2 = 0;
-			Byte cc3 = 0;
+			byte cc = 0;
+			byte cc1 = 0;
+			byte cc2 = 0;
+			byte cc3 = 0;
 			int source;
 
 			try
@@ -416,17 +416,17 @@ namespace SimPe.Packages
 		/// <param name="targetSize">Size of the uncompressed Data</param>
 		/// <param name="offset">File offset, where we should start to decompress from</param>
 		/// <returns>The uncompressed FileData</returns>
-		public unsafe Byte[] UncompressUnsafe(Byte[] data, uint targetSize, int offset)
+		public unsafe byte[] UncompressUnsafe(byte[] data, uint targetSize, int offset)
 		{
-			Byte[] uncdata = null;
+			byte[] uncdata = null;
 
 			try
 			{
-				uncdata = new Byte[targetSize];
+				uncdata = new byte[targetSize];
 			}
 			catch (Exception)
 			{
-				uncdata = new Byte[0];
+				uncdata = new byte[0];
 			}
 			fixed (byte* uncdataarraystart = uncdata)
 			fixed (byte* dataarraystart = data)
@@ -534,28 +534,28 @@ namespace SimPe.Packages
 		/// <param name="size">Maximum number of Bytes that should be read from the Resource</param>
 		/// <param name="offset">File offset, where we should start to decompress from</param>
 		/// <returns>The uncompressed FileData</returns>
-		public Byte[] Uncompress(Byte[] data, uint targetSize, int offset, int size)
+		public byte[] Uncompress(byte[] data, uint targetSize, int offset, int size)
 		{
-			Byte[] uncdata = null;
+			byte[] uncdata = null;
 			int index = offset;
 
 			try
 			{
-				uncdata = new Byte[targetSize];
+				uncdata = new byte[targetSize];
 			}
 			catch (Exception)
 			{
-				uncdata = new Byte[0];
+				uncdata = new byte[0];
 			}
 
 			int uncindex = 0;
 			int plaincount = 0;
 			int copycount = 0;
 			int copyoffset = 0;
-			Byte cc = 0;
-			Byte cc1 = 0;
-			Byte cc2 = 0;
-			Byte cc3 = 0;
+			byte cc = 0;
+			byte cc1 = 0;
+			byte cc2 = 0;
+			byte cc3 = 0;
 			int source;
 			try
 			{
@@ -661,21 +661,21 @@ namespace SimPe.Packages
 
 			try
 			{
-				uncdata = new Byte[targetSize];
+				uncdata = new byte[targetSize];
 			}
 			catch (Exception)
 			{
-				uncdata = new Byte[0];
+				uncdata = new byte[0];
 			}
 
 			int uncindex = 0;
 			int plaincount = 0;
 			int copycount = 0;
 			int copyoffset = 0;
-			Byte cc = 0;
-			Byte cc1 = 0;
-			Byte cc2 = 0;
-			Byte cc3 = 0;
+			byte cc = 0;
+			byte cc1 = 0;
+			byte cc2 = 0;
+			byte cc3 = 0;
 
 			try
 			{

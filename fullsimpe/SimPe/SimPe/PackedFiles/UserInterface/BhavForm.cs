@@ -234,7 +234,7 @@ namespace SimPe.PackedFiles.UserInterface
 		private ArrayList alDec8;
 		private ArrayList alHex16cb;
 
-		private String hidesFmt = "{0}";
+		private string hidesFmt = "{0}";
 
 		// These should be on the ExtendedWrapper class or BhavWiz or, indeed, PackedFileDescriptor
 		private static IPackedFileDescriptor newPFD(IPackedFileDescriptor oldPFD)
@@ -599,7 +599,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		private String formTitle => pjse.Localization.GetString(
+		private string formTitle => pjse.Localization.GetString(
 					"pjseWindowTitle",
 					expName // EP Name or Custom
 					,

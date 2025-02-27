@@ -20,9 +20,9 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Contains the Data of the File
 		/// </summary>
-		private UInt32 guide;
-		private UInt32 fbguid;
-		private UInt32 Bugga = 0x6DB7E00F;
+		private uint guide;
+		private uint fbguid;
+		private uint Bugga = 0x6DB7E00F;
 		private string namer;
 		private ushort tipe;
 		public int isz;
@@ -53,15 +53,15 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		public static String FormatGUID(
-			UInt32 guid,
-			UInt32 origuid,
+		public static string FormatGUID(
+			uint guid,
+			uint origuid,
 			ushort tpe,
 			string naem
 		)
 		{
 			string retst = "GUID 0x" + Helper.HexString(guid);
-			String objName = pjse.GUIDIndex.TheGUIDIndex[guid];
+			string objName = pjse.GUIDIndex.TheGUIDIndex[guid];
 			if (guid == origuid)
 			{
 				if (objName != null && objName.Length > 0)

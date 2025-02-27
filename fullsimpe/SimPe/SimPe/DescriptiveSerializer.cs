@@ -62,7 +62,7 @@ namespace SimPe
 			return Property(name, "NULL");
 		}
 
-		public override string SerializeHeader(Object o, Type t, PropertyInfo[] ps)
+		public override string SerializeHeader(object o, Type t, PropertyInfo[] ps)
 		{
 			return "";
 		}

@@ -71,7 +71,7 @@ namespace Ambertation
 		/// <returns></returns>
 		protected virtual object BuildValue(string typename, string value)
 		{
-			Object o = 0;
+			object o = 0;
 
 			if (typename == "int")
 			{
@@ -263,7 +263,7 @@ namespace Ambertation
 			EnumBuilder myEnumBuilder = myModBuilder.DefineEnum(
 				"SimPe.Plugins.Dinamic.Enums." + name,
 				TypeAttributes.Public,
-				typeof(Int32)
+				typeof(int)
 			);
 
 			foreach (XmlNode subnode in node)

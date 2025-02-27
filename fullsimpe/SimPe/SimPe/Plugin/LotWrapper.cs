@@ -70,15 +70,15 @@ namespace SimPe.Plugin
 			get => (byte)rotation;
 			set => rotation = (Ltxt.Rotation)value;
 		}
-		internal UInt32 Unknown0 { get; set; } = 0;
+		internal uint Unknown0 { get; set; } = 0;
 		public string LotName { get; set; } = "";
 		public string LotDesc { get; set; } = "";
-		internal List<UInt32> Unknown1
+		internal List<uint> Unknown1
 		{
 			get; private set;
 		}
 		internal float Unknown2 { get; private set; } = 0f;
-		internal UInt32 Unknown3 { get; private set; } = 0;
+		internal uint Unknown3 { get; private set; } = 0;
 		#endregion
 
 		/// <summary>
@@ -89,7 +89,7 @@ namespace SimPe.Plugin
 		{
 			filename = new byte[64];
 			sz = new Size(1, 1);
-			Unknown1 = new List<UInt32>();
+			Unknown1 = new List<uint>();
 		}
 
 		#region IWrapper member
@@ -142,16 +142,16 @@ namespace SimPe.Plugin
 			LotName = reader.ReadString();
 			LotDesc = reader.ReadString();
 
-			Unknown1 = new List<UInt32>();
+			Unknown1 = new List<uint>();
 			int len = reader.ReadInt32();
 			for (int i = 0; i < len; i++)
 			{
 				Unknown1.Add(reader.ReadUInt32());
 			}
 
-			Unknown2 = subver >= (UInt16)LtxtSubVersion.Voyage ? reader.ReadSingle() : 0;
+			Unknown2 = subver >= (ushort)LtxtSubVersion.Voyage ? reader.ReadSingle() : 0;
 
-			Unknown3 = subver >= (UInt16)LtxtSubVersion.Freetime ? reader.ReadUInt32() : 0;
+			Unknown3 = subver >= (ushort)LtxtSubVersion.Freetime ? reader.ReadUInt32() : 0;
 		}
 
 		/// <summary>
@@ -178,17 +178,17 @@ namespace SimPe.Plugin
 			writer.Write(LotDesc);
 
 			writer.Write(Unknown1.Count);
-			foreach (UInt32 i in Unknown1)
+			foreach (uint i in Unknown1)
 			{
 				writer.Write(i);
 			}
 
-			if (subver >= (UInt16)LtxtSubVersion.Voyage)
+			if (subver >= (ushort)LtxtSubVersion.Voyage)
 			{
 				writer.Write(Unknown2);
 			}
 
-			if (subver >= (UInt16)LtxtSubVersion.Freetime)
+			if (subver >= (ushort)LtxtSubVersion.Freetime)
 			{
 				writer.Write(Unknown3);
 			}

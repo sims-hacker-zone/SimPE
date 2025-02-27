@@ -28,23 +28,23 @@ namespace SimPe
 	/// Any comments and blank lines read are lost if the file is written.
 	/// </summary>
 	public class IniRegistry
-		: IEnumerable<String>,
+		: IEnumerable<string>,
 			IEnumerable<IniRegistry.SectionContent>
 	{
-		class Sectionlist : Dictionary<String, SectionContent>
+		class Sectionlist : Dictionary<string, SectionContent>
 		{
 		}
 
 		bool fileIsReadonly = true;
 		Sectionlist reg = null;
 
-		public IniRegistry(String inifile, bool ro)
+		public IniRegistry(string inifile, bool ro)
 			: this(inifile)
 		{
 			fileIsReadonly = ro;
 		}
 
-		public IniRegistry(String inifile)
+		public IniRegistry(string inifile)
 			: this(new StreamReader(inifile))
 		{
 			IniFile = inifile;
@@ -93,7 +93,7 @@ namespace SimPe
 			}
 		}
 
-		public String IniFile { get; set; } = null;
+		public string IniFile { get; set; } = null;
 
 		public bool Flush()
 		{
@@ -218,9 +218,9 @@ namespace SimPe
 		#endregion
 
 		#region keys
-		public class SectionContent : IEnumerable<String>
+		public class SectionContent : IEnumerable<string>
 		{
-			class List : Dictionary<String, String>
+			class List : Dictionary<string, string>
 			{
 			}
 

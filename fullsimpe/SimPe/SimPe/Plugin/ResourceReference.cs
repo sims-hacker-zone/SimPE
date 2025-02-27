@@ -46,7 +46,7 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			return String.Format(
+			return string.Format(
 				"{0:X8}-{1:X8}-{2:X8}-{3:X8}",
 				Type,
 				Group,

@@ -95,7 +95,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 		/// Initialise the Wizard user interface
 		/// </summary>
 		/// <param name="mode">Specify whether the wizard is for Animate Object, Sim or Overlay</param>
-		public UI(String mode)
+		public UI(string mode)
 		{
 			//
 			// Required for Windows Form Designer support
@@ -105,7 +105,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			#region AnimNames
 			cbAnimType.Items.Clear();
 			cbAnimType.Items.AddRange(
-				new String[]
+				new string[]
 				{
 					"AdultAnims",
 					"ChildAnims",
@@ -268,7 +268,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			inst = null;
 		}
 
-		private String mode = "";
+		private string mode = "";
 		private Instruction inst = null;
 
 		private DataOwnerControl doidObject = null;
@@ -287,11 +287,11 @@ namespace pjse.BhavOperandWizards.WizAnimate
 		{
 			if (ckbParam.Checked)
 			{
-				lbParam.Text = ((String)lbParam.Tag).Split(new char[] { '|' })[0];
+				lbParam.Text = ((string)lbParam.Tag).Split(new char[] { '|' })[0];
 			}
 			else
 			{
-				lbParam.Text = ((String)lbParam.Tag).Split(new char[] { '|' })[1];
+				lbParam.Text = ((string)lbParam.Tag).Split(new char[] { '|' })[1];
 				doStrValue(doidAnim.Value, tbAnim);
 			}
 			btnAnim.Visible = tbAnim.Visible = !ckbParam.Checked;
@@ -345,7 +345,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			return IsAnim(g.ToString());
 		}
 
-		private bool IsAnim(String s)
+		private bool IsAnim(string s)
 		{
 			return s.EndsWith("Anims");
 		}
@@ -1354,7 +1354,7 @@ namespace pjse.BhavOperandWizards
 {
 	public class BhavOperandWizAnimate : ABhavOperandWiz
 	{
-		public BhavOperandWizAnimate(Instruction i, String mode)
+		public BhavOperandWizAnimate(Instruction i, string mode)
 			: base(i)
 		{
 			myForm = new WizAnimate.UI(mode);

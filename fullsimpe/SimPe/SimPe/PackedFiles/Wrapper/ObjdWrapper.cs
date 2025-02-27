@@ -503,11 +503,11 @@ catch (Exception) {};*/
 			}
 		}
 
-		public Byte[] FileSignature
+		public byte[] FileSignature
 		{
 			get
 			{
-				Byte[] sig = { };
+				byte[] sig = { };
 				return sig;
 			}
 		}

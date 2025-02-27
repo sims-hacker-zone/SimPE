@@ -91,7 +91,7 @@ namespace pj
 
 		private IPackageFile currentPackage;
 
-		private String getFilename()
+		private string getFilename()
 		{
 			OpenFileDialog ofd = new OpenFileDialog
 			{
@@ -117,7 +117,7 @@ namespace pj
 			return DialogResult.OK.Equals(dr) ? ofd.FileName : null;
 		}
 
-		private bool findAndAdd(String name, uint type, String source)
+		private bool findAndAdd(string name, uint type, string source)
 		{
 			foreach (string pkg in packs)
 			{
@@ -136,7 +136,7 @@ namespace pj
 			return false;
 		}
 
-		private bool addFromPkg(String name, uint type, String pkg)
+		private bool addFromPkg(string name, uint type, string pkg)
 		{
 			IPackageFile p = SimPe.Packages.File.LoadFromFile(pkg);
 			if (p == null)
@@ -369,7 +369,7 @@ namespace pj
 			else if (dr.Equals(DialogResult.Retry)) // nasty... Result of Browse button which is required
 			{
 				#region Get body mesh package file name and open the package
-				String bodyMeshPackage = getFilename();
+				string bodyMeshPackage = getFilename();
 				if (bodyMeshPackage == null)
 				{
 					return;
@@ -486,10 +486,10 @@ namespace pj
 
 			#region For each mesh, find the GMDC, GMND, SHPE and CRES and add them to the current package
 
-			foreach (String m in al)
+			foreach (string m in al)
 			{
-				String[] ma = m.Split(new char[] { '_' });
-				String mesh = ma[ma[0].Equals("CASIE") ? 1 : 0];
+				string[] ma = m.Split(new char[] { '_' });
+				string mesh = ma[ma[0].Equals("CASIE") ? 1 : 0];
 				if (mesh.ToLower().StartsWith("ym"))
 				{
 					mesh = "am" + mesh.Substring(2);

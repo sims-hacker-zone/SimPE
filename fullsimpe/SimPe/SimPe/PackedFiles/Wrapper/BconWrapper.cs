@@ -198,9 +198,9 @@ namespace SimPe.PackedFiles.Wrapper
 			IEquatable<short>,
 			IComparable<BconItem>
 	{
-		private Int16 value;
+		private short value;
 
-		public BconItem(Int16 value)
+		public BconItem(short value)
 		{
 			this.value = value;
 		}

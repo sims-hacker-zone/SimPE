@@ -103,8 +103,8 @@ namespace SimPe.Wants
 									new List<string>(
 										new string[]
 										{
-											Boolean.FalseString,
-											Boolean.TrueString,
+											bool.FalseString,
+											bool.TrueString,
 										}
 									),
 									xi.Value
@@ -348,11 +348,11 @@ namespace SimPe.Wants
 								new List<string>(
 									new string[]
 									{
-										Boolean.FalseString,
-										Boolean.TrueString,
+										bool.FalseString,
+										bool.TrueString,
 									}
 								),
-								Boolean.FalseString
+								bool.FalseString
 							);
 							break;
 						case "AnyString":

@@ -149,7 +149,7 @@ namespace SimPe.PackedFiles.Wrapper
 			);
 		}
 
-		public override byte[] FileSignature => new Byte[0];
+		public override byte[] FileSignature => new byte[0];
 
 		public override uint[] AssignableTypes => new uint[] { Data.MetaData.SDNA };
 

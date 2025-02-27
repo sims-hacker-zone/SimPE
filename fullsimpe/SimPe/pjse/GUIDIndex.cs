@@ -37,7 +37,7 @@ namespace pjse
 		private Dictionary<uint, IndexItem> guidIndex = null;
 
 		public static GUIDIndex TheGUIDIndex = new GUIDIndex();
-		public static String DefaultGUIDFile = Path.Combine(
+		public static string DefaultGUIDFile = Path.Combine(
 			SimPe.Helper.SimPePluginDataPath,
 			"pjse.coder.plugin\\guidindex.txt"
 		);
@@ -115,7 +115,7 @@ namespace pjse
 										0x5c,
 										SeekOrigin.Begin
 									);
-									UInt32 objdGUID = reader.ReadUInt32();
+									uint objdGUID = reader.ReadUInt32();
 									guidIndex[objdGUID] = ii;
 								}
 							}
@@ -139,7 +139,7 @@ namespace pjse
 			Load(DefaultGUIDFile);
 		}
 
-		public void Load(String fromFile)
+		public void Load(string fromFile)
 		{
 			if (File.Exists(fromFile))
 			{
@@ -162,7 +162,7 @@ namespace pjse
 						continue;
 					}
 
-					String[] s = line.Split(
+					string[] s = line.Split(
 						new char[] { '=' },
 						5,
 						StringSplitOptions.None
@@ -175,7 +175,7 @@ namespace pjse
 					try
 					{
 						IndexItem ii = new IndexItem();
-						UInt32 guid = Convert.ToUInt32(s[0], 16);
+						uint guid = Convert.ToUInt32(s[0], 16);
 						ii.objdGroup = Convert.ToUInt32(s[1], 16);
 						ii.semiGlobal = Convert.ToUInt32(s[2], 16);
 						ii.objdType = Convert.ToUInt16(s[3], 16);
@@ -199,7 +199,7 @@ namespace pjse
 			Save(DefaultGUIDFile);
 		}
 
-		public void Save(String toFile)
+		public void Save(string toFile)
 		{
 			if (
 				!Directory.Exists(
@@ -214,7 +214,7 @@ namespace pjse
 
 			StreamWriter sw = new StreamWriter(toFile, false);
 			sw.WriteLine("# PJSE GUID Index - version 2");
-			foreach (UInt32 guid in guidIndex.Keys)
+			foreach (uint guid in guidIndex.Keys)
 			{
 				sw.WriteLine(
 					"0x"

@@ -460,7 +460,7 @@ namespace SimPe
 			rtb.Visible = (bool)resources.GetObject("rtb.Visible");
 			rtb.WordWrap = (bool)resources.GetObject("rtb.WordWrap");
 			rtb.ZoomFactor =
-				(System.Single)resources.GetObject("rtb.ZoomFactor")
+				(float)resources.GetObject("rtb.ZoomFactor")
 			;
 			//
 			// CheckItem

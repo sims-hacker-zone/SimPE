@@ -73,7 +73,7 @@ namespace SimPe
 				+ Seperator;
 		}
 
-		public virtual string SerializeHeader(Object o, Type t, PropertyInfo[] ps)
+		public virtual string SerializeHeader(object o, Type t, PropertyInfo[] ps)
 		{
 			string s = "";
 
@@ -114,7 +114,7 @@ namespace SimPe
 			return s;
 		}
 
-		public virtual string Serialize(Object o, Type t, PropertyInfo[] ps)
+		public virtual string Serialize(object o, Type t, PropertyInfo[] ps)
 		{
 			string s = "";
 			foreach (PropertyInfo p in ps)

@@ -114,14 +114,14 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 		}
 
 		#region static data
-		static List<String> aInventoryType = BhavWiz.readStr(GS.BhavStr.InventoryType);
-		static List<String> aTokenOpsCounted = BhavWiz.readStr(
+		static List<string> aInventoryType = BhavWiz.readStr(GS.BhavStr.InventoryType);
+		static List<string> aTokenOpsCounted = BhavWiz.readStr(
 			GS.BhavStr.TokenOpsCounted
 		);
-		static List<String> aTokenOpsSingular = BhavWiz.readStr(
+		static List<string> aTokenOpsSingular = BhavWiz.readStr(
 			GS.BhavStr.TokenOpsSingular
 		);
-		static String[] names =
+		static string[] names =
 		{
 			"",
 			"Object",
@@ -250,11 +250,11 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 		{
 			setGUID(
 				true,
-				(UInt32)(o[sub] | (o[sub + 1] << 8) | (o[sub + 2] << 16) | (o[sub + 3] << 24))
+				(uint)(o[sub] | (o[sub + 1] << 8) | (o[sub + 2] << 16) | (o[sub + 3] << 24))
 			);
 		}
 
-		private void setGUID(bool setTB, UInt32 guid)
+		private void setGUID(bool setTB, uint guid)
 		{
 			if (setTB)
 			{
@@ -265,7 +265,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 				(guid == 0) ? BhavWiz.dnStkOb() : BhavWiz.FormatGUID(true, guid);
 		}
 
-		private void doTokenOps(List<String> tokenops)
+		private void doTokenOps(List<string> tokenops)
 		{
 			cbOperation.Items.Clear();
 			cbOperation.Items.AddRange(tokenops.ToArray());
@@ -313,7 +313,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 		}
 
 		private void doBoth(
-			List<String> aTokenOps,
+			List<string> aTokenOps,
 			int[][] aNames,
 			bool[] aByGUID,
 			bool[] aCategory
@@ -434,7 +434,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 				// 8000 0021 =
 				// 8654 3021
 
-				List<String> aS = new List<string>(aInventoryType.ToArray());
+				List<string> aS = new List<string>(aInventoryType.ToArray());
 				aS.RemoveRange(4, aS.Count - 4);
 				cbTargetInv.Items.Clear();
 				cbTargetInv.Items.AddRange(aS.ToArray());
@@ -1229,7 +1229,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 				+ SimPe.Helper.HexString(Convert.ToUInt32(((TextBox)sender).Text, 16));
 			((TextBox)sender).SelectAll();
 
-			UInt32 i = Convert.ToUInt32(((TextBox)sender).Text, 16);
+			uint i = Convert.ToUInt32(((TextBox)sender).Text, 16);
 			o5678[0] = (byte)(i & 0xff);
 			o5678[1] = (byte)((i >> 8) & 0xff);
 			o5678[2] = (byte)((i >> 16) & 0xff);

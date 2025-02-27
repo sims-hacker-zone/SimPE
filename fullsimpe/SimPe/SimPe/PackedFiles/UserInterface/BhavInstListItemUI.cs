@@ -129,8 +129,8 @@ namespace SimPe.PackedFiles.UserInterface
 		private Bhav wrapper = null;
 		private int index = -1;
 
-		private static String strTrue = null;
-		private static String strFalse = null;
+		private static string strTrue = null;
+		private static string strFalse = null;
 
 		public Bhav Wrapper
 		{
