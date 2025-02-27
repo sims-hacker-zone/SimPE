@@ -207,6 +207,7 @@ namespace SimPe.Plugin
 					new ActionDeleteSim(),
 					new GeneticCategorizerTool(),
 					new pjse.guidtool.GUIDTool(),
+					new CareerTool(LinkedRegistry, LinkedProvider),
 				};
 
 		#endregion

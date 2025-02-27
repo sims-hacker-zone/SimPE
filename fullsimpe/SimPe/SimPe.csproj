@@ -2506,6 +2506,36 @@
     <Compile Include="System\Collections\Generic\ArrayBuilder.cs"></Compile>
     <Compile Include="System\Collections\Generic\Stack2.cs"></Compile>
     <Compile Include="System\Collections\Generic\StackDebugView.cs"></Compile>
+    <Compile Include="SimPe\Plugin\CareerEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SimPe\Plugin\CareerTool.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SimPe\Plugin\ChoicePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SimPe\Plugin\ChoicePanel.Designer.cs">
+      <DependentUpon>ChoicePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SimPe\Plugin\EffectPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SimPe\Plugin\EffectPanel.Designer.cs">
+      <DependentUpon>EffectPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SimPe\Plugin\JobDescPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SimPe\Plugin\LabelledNumericUpDown.Designer.cs">
+      <DependentUpon>LabelledNumericUpDown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SimPe\Plugin\LabelledNumericUpDown.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SimPe\Plugin\JobDescPanel.Designer.cs">
+      <DependentUpon>JobDescPanel.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SimPe\About.resx">
@@ -2691,6 +2721,7 @@
     <EmbeddedResource Include="data\quaxi_nl_censor_v1.package" />
     <EmbeddedResource Include="data\quaxi_ofb_censor_v1.package" />
     <EmbeddedResource Include="data\quaxi_pets_censor_v1.package" />
+    <EmbeddedResource Include="data\base.career" />
     <EmbeddedResource Include="SimPe\SelectSimFolder.resx">
       <DependentUpon>SelectSimFolder.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -2820,6 +2851,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="img\pattern.gif" />
+    <EmbeddedResource Include="img\CareerIcon.png" />
     <EmbeddedResource Include="SimPe\Windows\Forms\WrapperBaseControl.de.resx">
       <DependentUpon>WrapperBaseControl.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -4445,6 +4477,26 @@
     <EmbeddedResource Include="SimPe\Plugin\TreesPackedFileUI.resx">
       <DependentUpon>TreesPackedFileUI.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimPe\Plugin\CareerEditor.resx">
+      <DependentUpon>CareerEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimPe\Plugin\ChoicePanel.resx">
+      <DependentUpon>ChoicePanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimPe\Plugin\EffectPanel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EffectPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimPe\Plugin\JobDescPanel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>JobDescPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimPe\Plugin\LabelledNumericUpDown.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>LabelledNumericUpDown.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
