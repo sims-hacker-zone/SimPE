@@ -52,7 +52,7 @@ namespace SimPe.Packages
 			epicon = 0;
 			showicon = 0;
 
-			indextype = Data.MetaData.IndexTypes.ptLongFileIndex;
+			IndexType = Data.MetaData.IndexTypes.ptLongFileIndex;
 		}
 
 		/// <summary>
@@ -233,11 +233,6 @@ namespace SimPe.Packages
 		public Interfaces.Files.IPackageHeaderHoleIndex HoleIndex => hole;
 
 		/// <summary>
-		/// Only available for versions >= 1.1
-		/// </summary>
-		private Data.MetaData.IndexTypes indextype;
-
-		/// <summary>
 		/// Returns or Sets the Type of the Package
 		/// </summary>
 		[
@@ -246,11 +241,7 @@ namespace SimPe.Packages
 			),
 			DefaultValue(Data.MetaData.IndexTypes.ptLongFileIndex)
 		]
-		public Data.MetaData.IndexTypes IndexType
-		{
-			get => indextype;
-			set => indextype = value;
-		}
+		public Data.MetaData.IndexTypes IndexType { get; set; }
 
 		/// <summary>
 		/// 7 dwords of reserved Data - was 8 but have lost one for Icon in lot files
@@ -338,7 +329,7 @@ namespace SimPe.Packages
 
 			if (IsVersion0101)
 			{
-				indextype = (Data.MetaData.IndexTypes)reader.ReadUInt32();
+				IndexType = (Data.MetaData.IndexTypes)reader.ReadUInt32();
 			}
 
 			epicon = reader.ReadInt16();
@@ -417,7 +408,7 @@ namespace SimPe.Packages
 			{
 				created = created,
 				id = id,
-				indextype = indextype,
+				IndexType = IndexType,
 				majorversion = majorversion,
 				minorversion = minorversion,
 				modified = modified,

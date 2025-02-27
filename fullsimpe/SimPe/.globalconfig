@@ -86,3 +86,4 @@ csharp_style_expression_bodied_indexers = true
 csharp_style_expression_bodied_accessors = true
 dotnet_style_coalesce_expression = true
 dotnet_style_null_propagation = true
+dotnet_style_prefer_auto_properties = true

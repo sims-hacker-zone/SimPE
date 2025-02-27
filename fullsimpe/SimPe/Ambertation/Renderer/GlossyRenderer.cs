@@ -44,17 +44,19 @@ namespace Ambertation.Renderer
 		{
 			RoundedEdges = false;
 
-			if (menupattern == null)
+			if (MenuPattern == null)
 			{
-				menupattern = Image.FromStream(
+				MenuPattern = Image.FromStream(
 					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.pattern.gif")
 				);
 			}
 		}
 
-		static Image menupattern;
-		protected static Image MenuPattern => menupattern;
+		protected static Image MenuPattern
+		{
+			get; private set;
+		}
 
 		protected GlossyColorTable Colors => ColorTable as GlossyColorTable;
 
@@ -114,7 +116,7 @@ namespace Ambertation.Renderer
 			bool overlay
 		)
 		{
-			TextureBrush t = new TextureBrush(menupattern)
+			TextureBrush t = new TextureBrush(MenuPattern)
 			{
 				WrapMode = WrapMode.TileFlipXY
 			};
@@ -152,8 +154,7 @@ namespace Ambertation.Renderer
 
 	public class GlossyColorTable : ProfessionalColorTable
 	{
-		private static GlossyColorTable global = new GlossyColorTable();
-		public static GlossyColorTable Global => global;
+		public static GlossyColorTable Global { get; } = new GlossyColorTable();
 
 		#region Checker
 		public override Color CheckBackground => Color.Transparent;
