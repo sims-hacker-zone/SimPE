@@ -111,10 +111,7 @@ namespace SimPe.Plugin
 		[System.ComponentModel.Browsable(false)]
 		public BnfoCustomerItem Item
 		{
-			get
-			{
-				return item;
-			}
+			get => item;
 			set
 			{
 				/*if (item!=null)
@@ -131,10 +128,7 @@ namespace SimPe.Plugin
 
 		public BnfoCustomerItemsUI BnfoCustomerItemsUI
 		{
-			get
-			{
-				return ui;
-			}
+			get => ui;
 			set
 			{
 				if (ui != null)

@@ -167,10 +167,7 @@ namespace SimPe.Plugin.Collections
 
 		public NgbhItem this[int index]
 		{
-			get
-			{
-				return list[index] as NgbhItem;
-			}
+			get => list[index] as NgbhItem;
 			set
 			{
 				list[index] = value;

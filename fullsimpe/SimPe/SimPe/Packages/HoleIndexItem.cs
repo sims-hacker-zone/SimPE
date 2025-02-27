@@ -54,14 +54,8 @@ namespace SimPe.Packages
 		/// </summary>
 		public uint Offset
 		{
-			get
-			{
-				return offset;
-			}
-			set
-			{
-				offset = value;
-			}
+			get => offset;
+			set => offset = value;
 		}
 
 		/// <summary>
@@ -74,14 +68,8 @@ namespace SimPe.Packages
 		/// </summary>
 		public virtual int Size
 		{
-			get
-			{
-				return size;
-			}
-			set
-			{
-				size = value;
-			}
+			get => size;
+			set => size = value;
 		}
 
 		/// <summary>

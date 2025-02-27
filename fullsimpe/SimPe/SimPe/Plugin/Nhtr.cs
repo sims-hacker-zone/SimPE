@@ -42,14 +42,8 @@ namespace SimPe.Plugin
 
 		public NhtrVersions Version
 		{
-			get
-			{
-				return (NhtrVersions)ver;
-			}
-			set
-			{
-				ver = (uint)value;
-			}
+			get => (NhtrVersions)ver;
+			set => ver = (uint)value;
 		}
 
 		public NhtrList[] Items

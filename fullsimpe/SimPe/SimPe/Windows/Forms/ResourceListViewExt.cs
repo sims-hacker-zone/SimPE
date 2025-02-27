@@ -126,10 +126,7 @@ namespace SimPe.Windows.Forms
 
 		public IResourceViewFilter Filter
 		{
-			get
-			{
-				return curfilter;
-			}
+			get => curfilter;
 			set
 			{
 				if (curfilter != value)
@@ -463,14 +460,8 @@ namespace SimPe.Windows.Forms
 
 		public new ContextMenuStrip ContextMenuStrip
 		{
-			get
-			{
-				return lv.ContextMenuStrip;
-			}
-			set
-			{
-				lv.ContextMenuStrip = value;
-			}
+			get => lv.ContextMenuStrip;
+			set => lv.ContextMenuStrip = value;
 		}
 
 		static List<string> colNames = null;

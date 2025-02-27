@@ -47,14 +47,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown1
 		{
-			get
-			{
-				return datai[0];
-			}
-			set
-			{
-				datai[0] = value;
-			}
+			get => datai[0];
+			set => datai[0] = value;
 		}
 
 		[
@@ -65,10 +59,7 @@ namespace SimPe.Plugin.Anim
 		]
 		public bool Locked
 		{
-			get
-			{
-				return ((Unknown1 >> 0x12) & 1) == 1;
-			}
+			get => ((Unknown1 >> 0x12) & 1) == 1;
 			set
 			{
 				uint i = 0;
@@ -85,16 +76,10 @@ namespace SimPe.Plugin.Anim
 		[Description("Unknown Parts of Unknown1.")]
 		public uint Unknown1Bits
 		{
-			get
-			{
-				return Unknown1 >> 0x12;
-			}
-			set
-			{
-				Unknown1 =
+			get => Unknown1 >> 0x12;
+			set => Unknown1 =
 					(Unknown1 & 0x0003FFFF) | ((value << 0x12) & 0xFFFC0000)
 				;
-			}
 		}
 
 		public string Unknown1Binary
@@ -122,14 +107,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown2
 		{
-			get
-			{
-				return datai[1];
-			}
-			set
-			{
-				datai[1] = value;
-			}
+			get => datai[1];
+			set => datai[1] = value;
 		}
 
 		ArrayList items;
@@ -142,14 +121,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public AnimationTokenType Type
 		{
-			get
-			{
-				return (AnimationTokenType)type;
-			}
-			set
-			{
-				type = (byte)value;
-			}
+			get => (AnimationTokenType)type;
+			set => type = (byte)value;
 		}
 
 		[
@@ -674,14 +647,8 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		public AnimationAxisTransform this[int index]
 		{
-			get
-			{
-				return ((AnimationAxisTransform)items[index]);
-			}
-			set
-			{
-				items[index] = value;
-			}
+			get => ((AnimationAxisTransform)items[index]);
+			set => items[index] = value;
 		}
 
 		/// <summary>
@@ -689,14 +656,8 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		public AnimationAxisTransform this[uint index]
 		{
-			get
-			{
-				return ((AnimationAxisTransform)items[(int)index]);
-			}
-			set
-			{
-				items[(int)index] = value;
-			}
+			get => ((AnimationAxisTransform)items[(int)index]);
+			set => items[(int)index] = value;
 		}
 
 		/// <summary>

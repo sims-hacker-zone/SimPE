@@ -51,10 +51,7 @@ namespace SimPe.Providers
 		/// <remarks>Sets the names List to null</remarks>
 		public IPackageFile BasePackage
 		{
-			get
-			{
-				return package;
-			}
+			get => package;
 			set
 			{
 				if (package != value)

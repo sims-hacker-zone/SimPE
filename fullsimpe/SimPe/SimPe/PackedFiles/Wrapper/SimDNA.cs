@@ -73,62 +73,32 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public string Hair
 		{
-			get
-			{
-				return GetItem(1);
-			}
-			set
-			{
-				SetItem(1, value);
-			}
+			get => GetItem(1);
+			set => SetItem(1, value);
 		}
 
 		public string SkintoneRange
 		{
-			get
-			{
-				return GetItem(2);
-			}
-			set
-			{
-				SetItem(2, value);
-			}
+			get => GetItem(2);
+			set => SetItem(2, value);
 		}
 
 		public string Eye
 		{
-			get
-			{
-				return GetItem(3);
-			}
-			set
-			{
-				SetItem(3, value);
-			}
+			get => GetItem(3);
+			set => SetItem(3, value);
 		}
 
 		public string FacialFeature
 		{
-			get
-			{
-				return GetItem(5);
-			}
-			set
-			{
-				SetItem(5, value);
-			}
+			get => GetItem(5);
+			set => SetItem(5, value);
 		}
 
 		public string Skintone
 		{
-			get
-			{
-				return GetItem(6);
-			}
-			set
-			{
-				SetItem(6, value);
-			}
+			get => GetItem(6);
+			set => SetItem(6, value);
 		}
 
 		internal string Description => Serialize(this);

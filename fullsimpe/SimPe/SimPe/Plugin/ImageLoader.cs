@@ -70,14 +70,8 @@ namespace SimPe.Plugin
 		/// </summary>
 		public Size ParentSize
 		{
-			get
-			{
-				return size;
-			}
-			set
-			{
-				size = value;
-			}
+			get => size;
+			set => size = value;
 		}
 
 		/// <summary>

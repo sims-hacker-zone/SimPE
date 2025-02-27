@@ -444,10 +444,7 @@ namespace pjOBJDTool
 
 		pfOBJD CurrentOBJD
 		{
-			get
-			{
-				return wrapper;
-			}
+			get => wrapper;
 			set
 			{
 				if (wrapper == value)

@@ -207,14 +207,8 @@ namespace SimPe.Plugin
 
 		public TattItem this[int index]
 		{
-			get
-			{
-				return ((TattItem)items[index]);
-			}
-			set
-			{
-				items[index] = value;
-			}
+			get => ((TattItem)items[index]);
+			set => items[index] = value;
 		}
 
 		public IEnumerator GetEnumerator()

@@ -44,14 +44,8 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string[] Items
 		{
-			get
-			{
-				return items;
-			}
-			set
-			{
-				items = value;
-			}
+			get => items;
+			set => items = value;
 		}
 
 		/// <summary>
@@ -59,10 +53,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public int Count
 		{
-			get
-			{
-				return count;
-			}
+			get => count;
 			set
 			{
 				count = value;

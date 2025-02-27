@@ -237,10 +237,7 @@ namespace pjse
 		private IPackageFile currentPackage = null;
 		public IPackageFile CurrentPackage
 		{
-			get
-			{
-				return currentPackage;
-			}
+			get => currentPackage;
 			set
 			{
 				if (currentPackage != value)
@@ -744,14 +741,8 @@ namespace pjse
 
 			public IPackedFileDescriptor FileDescriptor
 			{
-				get
-				{
-					return PFD;
-				}
-				set
-				{
-					throw new Exception("The method or operation is not implemented.");
-				}
+				get => PFD;
+				set => throw new Exception("The method or operation is not implemented.");
 			}
 
 			public IPackedFileDescriptor GetLocalFileDescriptor()
@@ -814,13 +805,7 @@ namespace pjse
 			}
 		}
 
-		public Entry[] this[uint packedFileType]
-		{
-			get
-			{
-				return this[packedFileType, Source.Any];
-			}
-		}
+		public Entry[] this[uint packedFileType] => this[packedFileType, Source.Any];
 		public Entry[] this[uint packedFileType, Source where]
 		{
 			get
@@ -834,17 +819,11 @@ namespace pjse
 			}
 		}
 
-		public Entry[] this[uint packedFileType, uint group]
-		{
-			get
-			{
-				return this[
+		public Entry[] this[uint packedFileType, uint group] => this[
 					packedFileType,
 					group,
 					group == 0xffffffff ? Source.Local : Source.Any
 				];
-			}
-		}
 		public Entry[] this[uint packedFileType, uint group, Source where]
 		{
 			get
@@ -864,13 +843,7 @@ namespace pjse
 			}
 		}
 
-		public Entry[] this[uint packedFileType, uint group, uint instance]
-		{
-			get
-			{
-				return this[packedFileType, group, instance, Source.Any];
-			}
-		}
+		public Entry[] this[uint packedFileType, uint group, uint instance] => this[packedFileType, group, instance, Source.Any];
 		public Entry[] this[
 			uint packedFileType,
 			uint group,

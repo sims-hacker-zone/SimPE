@@ -1561,10 +1561,7 @@ namespace SimPe.Plugin.Anim
 		AnimationAxisTransform aat;
 		public AnimationAxisTransform AxisTransform
 		{
-			get
-			{
-				return aat;
-			}
+			get => aat;
 			set
 			{
 				aat = value;
@@ -1582,14 +1579,8 @@ namespace SimPe.Plugin.Anim
 
 		public bool CanCreate
 		{
-			get
-			{
-				return llAdd.Visible;
-			}
-			set
-			{
-				llAdd.Visible = value;
-			}
+			get => llAdd.Visible;
+			set => llAdd.Visible = value;
 		}
 		#endregion
 

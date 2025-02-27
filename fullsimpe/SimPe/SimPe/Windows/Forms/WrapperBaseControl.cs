@@ -148,10 +148,7 @@ namespace SimPe.Windows.Forms
 		[Localizable(true)]
 		public string HeaderText
 		{
-			get
-			{
-				return txt;
-			}
+			get => txt;
 			set
 			{
 				if (txt != value)
@@ -164,10 +161,7 @@ namespace SimPe.Windows.Forms
 
 		public override string Text
 		{
-			get
-			{
-				return base.Text;
-			}
+			get => base.Text;
 			set
 			{
 				base.Text = value;
@@ -182,10 +176,7 @@ namespace SimPe.Windows.Forms
 
 		public Color HeadBackColor
 		{
-			get
-			{
-				return headcol;
-			}
+			get => headcol;
 			set
 			{
 				if (value != headcol)
@@ -198,10 +189,7 @@ namespace SimPe.Windows.Forms
 
 		public Color HeadEndColor
 		{
-			get
-			{
-				return headend;
-			}
+			get => headend;
 			set
 			{
 				if (value != headend)
@@ -214,10 +202,7 @@ namespace SimPe.Windows.Forms
 
 		public Color HeadForeColor
 		{
-			get
-			{
-				return headforecol;
-			}
+			get => headforecol;
 			set
 			{
 				if (value != headforecol)
@@ -230,10 +215,7 @@ namespace SimPe.Windows.Forms
 
 		public Font HeadFont
 		{
-			get
-			{
-				return headfont;
-			}
+			get => headfont;
 			set
 			{
 				if (value != headfont)
@@ -258,10 +240,7 @@ namespace SimPe.Windows.Forms
 
 		public Color GradientColor
 		{
-			get
-			{
-				return gradcol;
-			}
+			get => gradcol;
 			set
 			{
 				if (value != gradcol)
@@ -274,10 +253,7 @@ namespace SimPe.Windows.Forms
 
 		public Color MiddleColor
 		{
-			get
-			{
-				return midcol;
-			}
+			get => midcol;
 			set
 			{
 				if (value != midcol)
@@ -290,10 +266,7 @@ namespace SimPe.Windows.Forms
 
 		public float GradCentre
 		{
-			get
-			{
-				return mCentre;
-			}
+			get => mCentre;
 			set
 			{
 				mCentre = value;
@@ -309,10 +282,7 @@ namespace SimPe.Windows.Forms
 		bool cc;
 		public bool CanCommit
 		{
-			get
-			{
-				return cc;
-			}
+			get => cc;
 			set
 			{
 				cc = value;
@@ -322,10 +292,7 @@ namespace SimPe.Windows.Forms
 
 		public bool BackgroundImageZoomToFit
 		{
-			get
-			{
-				return mPicFit;
-			}
+			get => mPicFit;
 			set
 			{
 				mPicFit = value;
@@ -334,10 +301,7 @@ namespace SimPe.Windows.Forms
 		}
 		public float BackgroundImageScale
 		{
-			get
-			{
-				return mPicZoom;
-			}
+			get => mPicZoom;
 			set
 			{
 				if (!mPicFit)
@@ -349,10 +313,7 @@ namespace SimPe.Windows.Forms
 		}
 		public Point BackgroundImageLocation
 		{
-			get
-			{
-				return mPicloc;
-			}
+			get => mPicloc;
 			set
 			{
 				if (bklayout != ImageLayout.Centered)
@@ -364,10 +325,7 @@ namespace SimPe.Windows.Forms
 		}
 		public ImageLayout BackgroundImageAnchor
 		{
-			get
-			{
-				return bklayout;
-			}
+			get => bklayout;
 			set
 			{
 				bklayout = value;
@@ -376,10 +334,7 @@ namespace SimPe.Windows.Forms
 		}
 		public float BackgroundImageOpacity
 		{
-			get
-			{
-				return mPicOpacity;
-			}
+			get => mPicOpacity;
 			set
 			{
 				mPicOpacity = value;

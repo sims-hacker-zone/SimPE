@@ -83,14 +83,7 @@ namespace SimPe.Plugin
 
 		public int Count => list.Count;
 
-		public NhtrItem this[int index]
-		{
-			get
-			{
-				return list[index] as NhtrItem;
-			}
-			//	set {list[index] = value;}
-		}
+		public NhtrItem this[int index] => list[index] as NhtrItem;
 
 		internal virtual void Unserialize(System.IO.BinaryReader reader)
 		{

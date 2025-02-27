@@ -63,10 +63,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string FileName
 		{
-			get
-			{
-				return Helper.ToString(filename);
-			}
+			get => Helper.ToString(filename);
 			set
 			{
 				if (!Helper.ToString(filename).Equals(value))
@@ -86,10 +83,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string SemiGlobalName
 		{
-			get
-			{
-				return Helper.ToString(semiglobal);
-			}
+			get => Helper.ToString(semiglobal);
 			set
 			{
 				semiglobal = Helper.ToBytes(value, 0);

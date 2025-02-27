@@ -56,10 +56,7 @@ namespace Ambertation.Windows.Forms.Graph
 			fg;
 		public Color BackColor
 		{
-			get
-			{
-				return bg;
-			}
+			get => bg;
 			set
 			{
 				if (bg != value)
@@ -73,10 +70,7 @@ namespace Ambertation.Windows.Forms.Graph
 
 		public Color ForeColor
 		{
-			get
-			{
-				return fg;
-			}
+			get => fg;
 			set
 			{
 				if (fg != value)
@@ -113,26 +107,14 @@ namespace Ambertation.Windows.Forms.Graph
 		public int Bottom => BoundingRectangle.Bottom;
 		public Point Location
 		{
-			get
-			{
-				return new Point(Left, Top);
-			}
-			set
-			{
-				SetBounds(value.X, value.Y, Width, Height);
-			}
+			get => new Point(Left, Top);
+			set => SetBounds(value.X, value.Y, Width, Height);
 		}
 
 		public Size Size
 		{
-			get
-			{
-				return new Size(Width, Height);
-			}
-			set
-			{
-				SetBounds(Left, Top, value.Width, value.Height);
-			}
+			get => new Size(Width, Height);
+			set => SetBounds(Left, Top, value.Width, value.Height);
 		}
 
 		public Rectangle BoundingRectangle => new Rectangle(Left, Top, Width, Height);
@@ -140,10 +122,7 @@ namespace Ambertation.Windows.Forms.Graph
 		GraphPanel parent;
 		public GraphPanel Parent
 		{
-			get
-			{
-				return parent;
-			}
+			get => parent;
 			set
 			{
 				if (parent != value)
@@ -170,10 +149,7 @@ namespace Ambertation.Windows.Forms.Graph
 		/// </summary>
 		public virtual bool Quality
 		{
-			get
-			{
-				return quality;
-			}
+			get => quality;
 			set
 			{
 				if (quality != value)
@@ -187,14 +163,8 @@ namespace Ambertation.Windows.Forms.Graph
 		bool savebound;
 		public virtual bool SaveBounds
 		{
-			get
-			{
-				return savebound;
-			}
-			set
-			{
-				savebound = value;
-			}
+			get => savebound;
+			set => savebound = value;
 		}
 		#endregion
 

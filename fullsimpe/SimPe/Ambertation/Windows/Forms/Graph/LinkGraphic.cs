@@ -145,10 +145,7 @@ namespace Ambertation.Windows.Forms.Graph
 		Font fnt;
 		public Font Font
 		{
-			get
-			{
-				return fnt;
-			}
+			get => fnt;
 			set
 			{
 				if (fnt != value)
@@ -167,10 +164,7 @@ namespace Ambertation.Windows.Forms.Graph
 		/// </summary>
 		public GraphItemBase StartElement
 		{
-			get
-			{
-				return sc;
-			}
+			get => sc;
 			set
 			{
 				if (sc != value)
@@ -191,10 +185,7 @@ namespace Ambertation.Windows.Forms.Graph
 		/// </summary>
 		public GraphItemBase EndElement
 		{
-			get
-			{
-				return ec;
-			}
+			get => ec;
 			set
 			{
 				if (ec != value)
@@ -218,10 +209,7 @@ namespace Ambertation.Windows.Forms.Graph
 		/// </summary>
 		public LinkControlSnapAnchor StartAnchorSnap
 		{
-			get
-			{
-				return ssa;
-			}
+			get => ssa;
 			set
 			{
 				if (ssa != value)
@@ -240,10 +228,7 @@ namespace Ambertation.Windows.Forms.Graph
 		/// </summary>
 		public LinkControlSnapAnchor EndAnchorSnap
 		{
-			get
-			{
-				return esa;
-			}
+			get => esa;
 			set
 			{
 				if (esa != value)
@@ -265,10 +250,7 @@ namespace Ambertation.Windows.Forms.Graph
 		/// </summary>
 		public byte StartAnchor
 		{
-			get
-			{
-				return sa;
-			}
+			get => sa;
 			set
 			{
 				if (sa != value)
@@ -285,10 +267,7 @@ namespace Ambertation.Windows.Forms.Graph
 		/// </summary>
 		public byte EndAnchor
 		{
-			get
-			{
-				return ea;
-			}
+			get => ea;
 			set
 			{
 				if (ea != value)
@@ -308,10 +287,7 @@ namespace Ambertation.Windows.Forms.Graph
 		/// </summary>
 		public int LineWidth
 		{
-			get
-			{
-				return lw;
-			}
+			get => lw;
 			set
 			{
 				if (lw != value)
@@ -331,10 +307,7 @@ namespace Ambertation.Windows.Forms.Graph
 		/// </summary>
 		public LinkControlCapType StartCap
 		{
-			get
-			{
-				return psa;
-			}
+			get => psa;
 			set
 			{
 				if (psa != value)
@@ -351,10 +324,7 @@ namespace Ambertation.Windows.Forms.Graph
 		/// </summary>
 		public LinkControlCapType EndCap
 		{
-			get
-			{
-				return pea;
-			}
+			get => pea;
 			set
 			{
 				if (pea != value)
@@ -373,10 +343,7 @@ namespace Ambertation.Windows.Forms.Graph
 		/// </summary>
 		public LinkControlLineMode LineMode
 		{
-			get
-			{
-				return lclm;
-			}
+			get => lclm;
 			set
 			{
 				if (lclm != value)
@@ -391,10 +358,7 @@ namespace Ambertation.Windows.Forms.Graph
 		string txt;
 		public string Text
 		{
-			get
-			{
-				return txt;
-			}
+			get => txt;
 			set
 			{
 				txt = value;
@@ -407,10 +371,7 @@ namespace Ambertation.Windows.Forms.Graph
 			tfg;
 		public Color TextBackColor
 		{
-			get
-			{
-				return tbg;
-			}
+			get => tbg;
 			set
 			{
 				if (tbg != value)
@@ -424,10 +385,7 @@ namespace Ambertation.Windows.Forms.Graph
 
 		public Color TextForeColor
 		{
-			get
-			{
-				return tfg;
-			}
+			get => tfg;
 			set
 			{
 				if (tfg != value)

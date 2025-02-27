@@ -124,10 +124,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public TtabItemMotiveTable MotiveTable
 		{
-			get
-			{
-				return item;
-			}
+			get => item;
 			set
 			{
 				if (item != value)

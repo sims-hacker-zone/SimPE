@@ -228,26 +228,14 @@ namespace SimPe.Plugin
 	{
 		public new FileIndexItem this[int index]
 		{
-			get
-			{
-				return ((FileIndexItem)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((FileIndexItem)base[index]);
+			set => base[index] = value;
 		}
 
 		public FileIndexItem this[uint index]
 		{
-			get
-			{
-				return ((FileIndexItem)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((FileIndexItem)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		public int Add(FileIndexItem fii)

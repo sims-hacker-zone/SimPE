@@ -111,10 +111,7 @@ namespace SimPe.Providers
 		/// <remarks>Sets the names List to null</remarks>
 		public string BaseFolder
 		{
-			get
-			{
-				return dir;
-			}
+			get => dir;
 			set
 			{
 				if (dir != value)
@@ -510,10 +507,7 @@ namespace SimPe.Providers
 
 				return names;
 			}
-			set
-			{
-				names = value;
-			}
+			set => names = value;
 		}
 	}
 }

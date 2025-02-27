@@ -217,10 +217,7 @@ namespace SimPe.PackedFiles.Wrapper
 			sk;
 		public bool ShowTokens
 		{
-			get
-			{
-				return st;
-			}
+			get => st;
 			set
 			{
 				if (st != value)
@@ -233,10 +230,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool ShowAspiration
 		{
-			get
-			{
-				return sa;
-			}
+			get => sa;
 			set
 			{
 				if (sa != value)
@@ -249,10 +243,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool ShowBadge
 		{
-			get
-			{
-				return sb;
-			}
+			get => sb;
 			set
 			{
 				if (sb != value)
@@ -265,10 +256,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool ShowSkill
 		{
-			get
-			{
-				return sk;
-			}
+			get => sk;
 			set
 			{
 				if (sk != value)
@@ -281,10 +269,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool ShowMemories
 		{
-			get
-			{
-				return sm;
-			}
+			get => sm;
 			set
 			{
 				if (sm != value)
@@ -297,10 +282,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool ShowInventory
 		{
-			get
-			{
-				return si;
-			}
+			get => si;
 			set
 			{
 				if (si != value)
@@ -313,10 +295,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool ShowJobData
 		{
-			get
-			{
-				return sjd;
-			}
+			get => sjd;
 			set
 			{
 				if (sjd != value)

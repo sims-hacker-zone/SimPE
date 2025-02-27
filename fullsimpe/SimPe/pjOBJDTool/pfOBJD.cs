@@ -28,10 +28,7 @@ namespace pjOBJDTool
 		private byte[] endName = null;
 		public string Filename
 		{
-			get
-			{
-				return SimPe.Helper.ToString(filename);
-			}
+			get => SimPe.Helper.ToString(filename);
 			set
 			{
 				if (!SimPe.Helper.ToString(filename).Equals(value))

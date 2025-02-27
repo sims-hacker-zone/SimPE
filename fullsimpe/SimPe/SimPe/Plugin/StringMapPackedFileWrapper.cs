@@ -31,25 +31,13 @@ namespace SimPe.Plugin
 
 		public ushort[] Datas
 		{
-			get
-			{
-				return datas;
-			}
-			set
-			{
-				datas = value;
-			}
+			get => datas;
+			set => datas = value;
 		}
 		public uint[] TyPes
 		{
-			get
-			{
-				return types;
-			}
-			set
-			{
-				types = value;
-			}
+			get => types;
+			set => types = value;
 		}
 
 		/// <summary>
@@ -58,14 +46,8 @@ namespace SimPe.Plugin
 		///
 		public string[] Strings
 		{
-			get
-			{
-				return strins;
-			}
-			set
-			{
-				strins = value;
-			}
+			get => strins;
+			set => strins = value;
 		}
 
 		/// <summary>
@@ -73,10 +55,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string FileName
 		{
-			get
-			{
-				return Helper.ToString(filename);
-			}
+			get => Helper.ToString(filename);
 			set
 			{
 				if (!Helper.ToString(filename).Equals(value))

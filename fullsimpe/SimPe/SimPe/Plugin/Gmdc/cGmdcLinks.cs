@@ -395,14 +395,8 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public new GmdcLink this[int index]
 		{
-			get
-			{
-				return ((GmdcLink)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((GmdcLink)base[index]);
+			set => base[index] = value;
 		}
 
 		/// <summary>
@@ -410,14 +404,8 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcLink this[uint index]
 		{
-			get
-			{
-				return ((GmdcLink)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((GmdcLink)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		/// <summary>

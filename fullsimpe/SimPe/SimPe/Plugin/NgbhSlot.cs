@@ -29,14 +29,8 @@ namespace SimPe.Plugin
 		uint version;
 		public NgbhVersion Version
 		{
-			get
-			{
-				return (NgbhVersion)version;
-			}
-			set
-			{
-				version = (uint)value;
-			}
+			get => (NgbhVersion)version;
+			set => version = (uint)value;
 		}
 
 		public Ngbh Parent
@@ -70,10 +64,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public uint SlotID
 		{
-			get
-			{
-				return slotid;
-			}
+			get => slotid;
 			set
 			{
 				if (slotid != value)
@@ -97,10 +88,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public Collections.NgbhItems ItemsA
 		{
-			get
-			{
-				return itemsa;
-			}
+			get => itemsa;
 			set
 			{
 				itemsa = value;
@@ -121,10 +109,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public Collections.NgbhItems ItemsB
 		{
-			get
-			{
-				return itemsb;
-			}
+			get => itemsb;
 			set
 			{
 				itemsb = value;

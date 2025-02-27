@@ -78,38 +78,20 @@ namespace Ambertation.Windows.Forms
 
 		public ProgresBarStyle Style
 		{
-			get
-			{
-				return pb.Style;
-			}
-			set
-			{
-				pb.Style = value;
-			}
+			get => pb.Style;
+			set => pb.Style = value;
 		}
 
 		public Color SelectedColor
 		{
-			get
-			{
-				return pb.SelectedColor;
-			}
-			set
-			{
-				pb.SelectedColor = value;
-			}
+			get => pb.SelectedColor;
+			set => pb.SelectedColor = value;
 		}
 
 		public Color UnselectedColor
 		{
-			get
-			{
-				return pb.UnselectedColor;
-			}
-			set
-			{
-				pb.UnselectedColor = value;
-			}
+			get => pb.UnselectedColor;
+			set => pb.UnselectedColor = value;
 		}
 
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -117,61 +99,34 @@ namespace Ambertation.Windows.Forms
 
 		public int TokenCount
 		{
-			get
-			{
-				return pb.TokenCount;
-			}
-			set
-			{
-				pb.TokenCount = value;
-			}
+			get => pb.TokenCount;
+			set => pb.TokenCount = value;
 		}
 
 		[Localizable(true)]
 		public int TextboxWidth
 		{
-			get
-			{
-				return pntb.Width;
-			}
-			set
-			{
-				pntb.Width = value;
-			}
+			get => pntb.Width;
+			set => pntb.Width = value;
 		}
 
 		[Localizable(true)]
 		public string LabelText
 		{
-			get
-			{
-				return lb.Text;
-			}
-			set
-			{
-				lb.Text = value;
-			}
+			get => lb.Text;
+			set => lb.Text = value;
 		}
 
 		[Localizable(true)]
 		public int LabelWidth
 		{
-			get
-			{
-				return pnlb.Width;
-			}
-			set
-			{
-				pnlb.Width = value;
-			}
+			get => pnlb.Width;
+			set => pnlb.Width = value;
 		}
 
 		public int Maximum
 		{
-			get
-			{
-				return pb.Maximum;
-			}
+			get => pb.Maximum;
 			set
 			{
 				pb.Maximum = Math.Max(1, value);
@@ -181,10 +136,7 @@ namespace Ambertation.Windows.Forms
 
 		public int Value
 		{
-			get
-			{
-				return pb.Value + NumberOffset;
-			}
+			get => pb.Value + NumberOffset;
 			set
 			{
 				pb.Value = value - NumberOffset;
@@ -195,10 +147,7 @@ namespace Ambertation.Windows.Forms
 		double ns;
 		public double NumberScale
 		{
-			get
-			{
-				return ns;
-			}
+			get => ns;
 			set
 			{
 				ns = value;
@@ -214,10 +163,7 @@ namespace Ambertation.Windows.Forms
 		string nf;
 		public string NumberFormat
 		{
-			get
-			{
-				return nf;
-			}
+			get => nf;
 			set
 			{
 				nf = value;
@@ -228,10 +174,7 @@ namespace Ambertation.Windows.Forms
 		string npre;
 		string NumberPrefix
 		{
-			get
-			{
-				return npre;
-			}
+			get => npre;
 			set
 			{
 				npre = value;
@@ -242,10 +185,7 @@ namespace Ambertation.Windows.Forms
 		string nsu;
 		string NumberSuffix
 		{
-			get
-			{
-				return nsu;
-			}
+			get => nsu;
 			set
 			{
 				nsu = value;
@@ -256,10 +196,7 @@ namespace Ambertation.Windows.Forms
 		int no;
 		public int NumberOffset
 		{
-			get
-			{
-				return no;
-			}
+			get => no;
 			set
 			{
 				no = value;
@@ -270,10 +207,7 @@ namespace Ambertation.Windows.Forms
 		int dno;
 		public int DisplayOffset
 		{
-			get
-			{
-				return dno;
-			}
+			get => dno;
 			set
 			{
 				dno = value;

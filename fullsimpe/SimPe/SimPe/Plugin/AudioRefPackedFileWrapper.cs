@@ -11,14 +11,8 @@ namespace SimPe.Plugin
 		public string strung; // the actaul string,
 		public string Strung
 		{
-			get
-			{
-				return strung;
-			}
-			set
-			{
-				strung = value;
-			}
+			get => strung;
+			set => strung = value;
 		}
 		#endregion
 

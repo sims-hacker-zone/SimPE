@@ -322,10 +322,7 @@ namespace SimPe.Plugin.Anim
 		AnimationMeshBlock[] ambs;
 		public AnimationMeshBlock[] MeshBlocks
 		{
-			get
-			{
-				return ambs;
-			}
+			get => ambs;
 			set
 			{
 				ambs = value;
@@ -337,10 +334,7 @@ namespace SimPe.Plugin.Anim
 		AnimationMeshBlock amb;
 		public AnimationMeshBlock MeshBlock
 		{
-			get
-			{
-				return amb;
-			}
+			get => amb;
 			set
 			{
 				amb = value;

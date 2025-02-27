@@ -40,14 +40,8 @@ namespace SimPe
 		/// </summary>
 		public static System.Drawing.Image Image
 		{
-			get
-			{
-				return scr == null ? null : scr.prevImage;
-			}
-			set
-			{
-				Screen.doUpdate(value);
-			}
+			get => scr == null ? null : scr.prevImage;
+			set => Screen.doUpdate(value);
 		}
 
 		/// <summary>
@@ -64,14 +58,8 @@ namespace SimPe
 		/// </summary>
 		public static string Message
 		{
-			get
-			{
-				return scr == null ? "" : scr.prevMessage;
-			}
-			set
-			{
-				Screen.doUpdate(value);
-			}
+			get => scr == null ? "" : scr.prevMessage;
+			set => Screen.doUpdate(value);
 		}
 
 		/// <summary>

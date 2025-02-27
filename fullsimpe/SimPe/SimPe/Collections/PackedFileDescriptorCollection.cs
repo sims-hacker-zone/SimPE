@@ -33,14 +33,8 @@ namespace SimPe.Collections
 		/// </summary>
 		public new IPackedFileDescriptor this[int index]
 		{
-			get
-			{
-				return ((IPackedFileDescriptor)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((IPackedFileDescriptor)base[index]);
+			set => base[index] = value;
 		}
 
 		/// <summary>
@@ -48,14 +42,8 @@ namespace SimPe.Collections
 		/// </summary>
 		public IPackedFileDescriptor this[uint index]
 		{
-			get
-			{
-				return ((IPackedFileDescriptor)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((IPackedFileDescriptor)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		/// <summary>

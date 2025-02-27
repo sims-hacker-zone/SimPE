@@ -823,10 +823,7 @@ namespace pjse.BhavOperandWizards
 
 		public BhavWiz Instruction
 		{
-			get
-			{
-				return inst;
-			}
+			get => inst;
 			set
 			{
 				if (inst != value)
@@ -840,10 +837,7 @@ namespace pjse.BhavOperandWizards
 		private int bitsInValue = 16;
 		public bool ValueIsByte
 		{
-			get
-			{
-				return bitsInValue == 8;
-			}
+			get => bitsInValue == 8;
 			set
 			{
 				if ((bitsInValue == 8) != value)
@@ -877,10 +871,7 @@ namespace pjse.BhavOperandWizards
 		private bool use0xPrefix = true;
 		public bool Use0xPrefix
 		{
-			get
-			{
-				return use0xPrefix;
-			}
+			get => use0xPrefix;
 			set
 			{
 				if (use0xPrefix != value)
@@ -901,10 +892,7 @@ namespace pjse.BhavOperandWizards
 		private bool isDecimal = false;
 		public bool Decimal
 		{
-			get
-			{
-				return isDecimal;
-			}
+			get => isDecimal;
 			set
 			{
 				if (isDecimal != value)
@@ -925,10 +913,7 @@ namespace pjse.BhavOperandWizards
 		private bool useInstancePicker = true;
 		public bool UseInstancePicker
 		{
-			get
-			{
-				return useInstancePicker;
-			}
+			get => useInstancePicker;
 			set
 			{
 				if (useInstancePicker != value)
@@ -942,10 +927,7 @@ namespace pjse.BhavOperandWizards
 		private bool useFlagNames = false;
 		public bool UseFlagNames
 		{
-			get
-			{
-				return useFlagNames;
-			}
+			get => useFlagNames;
 			set
 			{
 				if (useFlagNames != value)
@@ -959,10 +941,7 @@ namespace pjse.BhavOperandWizards
 		private IDataOwner flagsFor = null;
 		public IDataOwner FlagsFor
 		{
-			get
-			{
-				return flagsFor;
-			}
+			get => flagsFor;
 			set
 			{
 				if (flagsFor != value)

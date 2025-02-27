@@ -183,10 +183,7 @@ namespace Ambertation.Threading
 
 		internal bool Canceled
 		{
-			get
-			{
-				return canceled;
-			}
+			get => canceled;
 			set
 			{
 				canceled = value;

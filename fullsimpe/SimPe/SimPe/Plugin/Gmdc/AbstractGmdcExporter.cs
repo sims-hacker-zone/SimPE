@@ -330,10 +330,7 @@ namespace SimPe.Plugin.Gmdc
 
 				return flname;
 			}
-			set
-			{
-				flname = value;
-			}
+			set => flname = value;
 		}
 	}
 }

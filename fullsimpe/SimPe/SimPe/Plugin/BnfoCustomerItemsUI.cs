@@ -83,10 +83,7 @@ namespace SimPe.Plugin
 		[System.ComponentModel.Browsable(false)]
 		public Collections.BnfoCustomerItems Items
 		{
-			get
-			{
-				return items;
-			}
+			get => items;
 			set
 			{
 				items = value;

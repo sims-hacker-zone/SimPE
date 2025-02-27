@@ -44,38 +44,20 @@ namespace SimPe.Plugin.Anim
 
 		public AnimationAxisTransform XBlock
 		{
-			get
-			{
-				return Blocks[0];
-			}
-			set
-			{
-				Blocks[0] = value;
-			}
+			get => Blocks[0];
+			set => Blocks[0] = value;
 		}
 
 		public AnimationAxisTransform YBlock
 		{
-			get
-			{
-				return Blocks[1];
-			}
-			set
-			{
-				Blocks[1] = value;
-			}
+			get => Blocks[1];
+			set => Blocks[1] = value;
 		}
 
 		public AnimationAxisTransform ZBlock
 		{
-			get
-			{
-				return Blocks[2];
-			}
-			set
-			{
-				Blocks[2] = value;
-			}
+			get => Blocks[2];
+			set => Blocks[2] = value;
 		}
 
 		AnimationAxisTransform GetFrameAddonData(int part)
@@ -102,14 +84,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public short X
 		{
-			get
-			{
-				return GetFrameAddonData(0).Parameter;
-			}
-			set
-			{
-				GetFrameAddonData(0).Parameter = value;
-			}
+			get => GetFrameAddonData(0).Parameter;
+			set => GetFrameAddonData(0).Parameter = value;
 		}
 
 		[
@@ -119,14 +95,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public short Y
 		{
-			get
-			{
-				return GetFrameAddonData(1).Parameter;
-			}
-			set
-			{
-				GetFrameAddonData(1).Parameter = value;
-			}
+			get => GetFrameAddonData(1).Parameter;
+			set => GetFrameAddonData(1).Parameter = value;
 		}
 
 		[
@@ -136,14 +106,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public short Z
 		{
-			get
-			{
-				return GetFrameAddonData(2).Parameter;
-			}
-			set
-			{
-				GetFrameAddonData(2).Parameter = value;
-			}
+			get => GetFrameAddonData(2).Parameter;
+			set => GetFrameAddonData(2).Parameter = value;
 		}
 
 		[
@@ -155,14 +119,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public float Float_X
 		{
-			get
-			{
-				return GetFrameAddonData(0).ParameterFloat;
-			}
-			set
-			{
-				GetFrameAddonData(0).ParameterFloat = value;
-			}
+			get => GetFrameAddonData(0).ParameterFloat;
+			set => GetFrameAddonData(0).ParameterFloat = value;
 		}
 
 		[
@@ -174,14 +132,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public float Float_Y
 		{
-			get
-			{
-				return GetFrameAddonData(1).ParameterFloat;
-			}
-			set
-			{
-				GetFrameAddonData(1).ParameterFloat = value;
-			}
+			get => GetFrameAddonData(1).ParameterFloat;
+			set => GetFrameAddonData(1).ParameterFloat = value;
 		}
 
 		[
@@ -193,14 +145,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public float Float_Z
 		{
-			get
-			{
-				return GetFrameAddonData(2).ParameterFloat;
-			}
-			set
-			{
-				GetFrameAddonData(2).ParameterFloat = value;
-			}
+			get => GetFrameAddonData(2).ParameterFloat;
+			set => GetFrameAddonData(2).ParameterFloat = value;
 		}
 
 		[
@@ -212,10 +158,7 @@ namespace SimPe.Plugin.Anim
 		]
 		public short TimeCode
 		{
-			get
-			{
-				return tc;
-			}
+			get => tc;
 			set
 			{
 				if (tc != value)
@@ -288,74 +231,38 @@ namespace SimPe.Plugin.Anim
 
 		public short Unknown1_X
 		{
-			get
-			{
-				return GetFrameAddonData(0).Unknown1;
-			}
-			set
-			{
-				GetFrameAddonData(0).Unknown1 = value;
-			}
+			get => GetFrameAddonData(0).Unknown1;
+			set => GetFrameAddonData(0).Unknown1 = value;
 		}
 
 		public short Unknown1_Y
 		{
-			get
-			{
-				return GetFrameAddonData(1).Unknown1;
-			}
-			set
-			{
-				GetFrameAddonData(1).Unknown1 = value;
-			}
+			get => GetFrameAddonData(1).Unknown1;
+			set => GetFrameAddonData(1).Unknown1 = value;
 		}
 
 		public short Unknown1_Z
 		{
-			get
-			{
-				return GetFrameAddonData(2).Unknown1;
-			}
-			set
-			{
-				GetFrameAddonData(2).Unknown1 = value;
-			}
+			get => GetFrameAddonData(2).Unknown1;
+			set => GetFrameAddonData(2).Unknown1 = value;
 		}
 
 		public short Unknown2_X
 		{
-			get
-			{
-				return GetFrameAddonData(0).Unknown2;
-			}
-			set
-			{
-				GetFrameAddonData(0).Unknown2 = value;
-			}
+			get => GetFrameAddonData(0).Unknown2;
+			set => GetFrameAddonData(0).Unknown2 = value;
 		}
 
 		public short Unknown2_Y
 		{
-			get
-			{
-				return GetFrameAddonData(1).Unknown2;
-			}
-			set
-			{
-				GetFrameAddonData(1).Unknown2 = value;
-			}
+			get => GetFrameAddonData(1).Unknown2;
+			set => GetFrameAddonData(1).Unknown2 = value;
 		}
 
 		public short Unknown2_Z
 		{
-			get
-			{
-				return GetFrameAddonData(2).Unknown2;
-			}
-			set
-			{
-				GetFrameAddonData(2).Unknown2 = value;
-			}
+			get => GetFrameAddonData(2).Unknown2;
+			set => GetFrameAddonData(2).Unknown2 = value;
 		}
 
 		public override string ToString()

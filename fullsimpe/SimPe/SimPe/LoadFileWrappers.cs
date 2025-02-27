@@ -117,26 +117,14 @@ namespace SimPe
 
 		public Interfaces.Files.IPackedFileDescriptor FileDescriptor
 		{
-			get
-			{
-				return pfd;
-			}
-			set
-			{
-				pfd = value;
-			}
+			get => pfd;
+			set => pfd = value;
 		}
 
 		public Interfaces.Files.IPackageFile Package
 		{
-			get
-			{
-				return package;
-			}
-			set
-			{
-				package = value;
-			}
+			get => package;
+			set => package = value;
 		}
 
 		public void UpdateEnabledState()

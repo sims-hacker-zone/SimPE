@@ -31,10 +31,7 @@ namespace pjse
 		private ExtendedWrapper wrapper = null;
 		public ExtendedWrapper Wrapper
 		{
-			get
-			{
-				return wrapper;
-			}
+			get => wrapper;
 			set
 			{
 				wrapper = value;

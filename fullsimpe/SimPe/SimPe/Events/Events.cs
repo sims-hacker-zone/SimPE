@@ -77,14 +77,8 @@ namespace SimPe.Events
 		/// </summary>
 		public ResourceContainer this[int index]
 		{
-			get
-			{
-				return Items[index];
-			}
-			set
-			{
-				Items[index] = value;
-			}
+			get => Items[index];
+			set => Items[index] = value;
 		}
 
 		/// <summary>
@@ -92,14 +86,8 @@ namespace SimPe.Events
 		/// </summary>
 		public ResourceContainer this[uint index]
 		{
-			get
-			{
-				return Items[index];
-			}
-			set
-			{
-				Items[index] = value;
-			}
+			get => Items[index];
+			set => Items[index] = value;
 		}
 
 		/// <summary>
@@ -431,14 +419,8 @@ namespace SimPe.Events
 		/// </summary>
 		public new ResourceContainer this[int index]
 		{
-			get
-			{
-				return ((ResourceContainer)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((ResourceContainer)base[index]);
+			set => base[index] = value;
 		}
 
 		/// <summary>
@@ -446,14 +428,8 @@ namespace SimPe.Events
 		/// </summary>
 		public ResourceContainer this[uint index]
 		{
-			get
-			{
-				return ((ResourceContainer)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((ResourceContainer)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		/// <summary>

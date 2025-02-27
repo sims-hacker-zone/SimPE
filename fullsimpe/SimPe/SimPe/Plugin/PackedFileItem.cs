@@ -541,10 +541,7 @@ namespace SimPe.Plugin
 				}
 				return skin;
 			}
-			set
-			{
-				skin = value;
-			}
+			set => skin = value;
 		}
 
 		public override string ToString()

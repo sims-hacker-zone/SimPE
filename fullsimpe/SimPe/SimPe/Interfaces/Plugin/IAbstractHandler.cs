@@ -293,14 +293,8 @@ namespace SimPe.Interfaces.Plugin
 		bool changed;
 		public virtual bool Changed
 		{
-			get
-			{
-				return changed;
-			}
-			set
-			{
-				changed = value;
-			}
+			get => changed;
+			set => changed = value;
 		}
 		#endregion
 
@@ -311,10 +305,7 @@ namespace SimPe.Interfaces.Plugin
 
 		public IPackedFileDescriptor FileDescriptor
 		{
-			get
-			{
-				return pfd;
-			}
+			get => pfd;
 			set
 			{
 				processed = false;
@@ -333,18 +324,12 @@ namespace SimPe.Interfaces.Plugin
 
 				return ui;
 			}
-			set
-			{
-				ui = value;
-			}
+			set => ui = value;
 		}
 
 		public IPackageFile Package
 		{
-			get
-			{
-				return package;
-			}
+			get => package;
 			set
 			{
 				processed = false;
@@ -705,10 +690,7 @@ namespace SimPe.Interfaces.Plugin
 		/// </summary>
 		public IFileWrapper SingleGuiWrapper
 		{
-			set
-			{
-				guiwrapper = value;
-			}
+			set => guiwrapper = value;
 		}
 
 		#region IMultiplePackedFileWrapper Member

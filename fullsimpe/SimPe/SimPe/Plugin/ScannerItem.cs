@@ -38,10 +38,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string FileName
 		{
-			get
-			{
-				return filename;
-			}
+			get => filename;
 			set
 			{
 				if (filename.Trim().ToLower() != value.Trim().ToLower())
@@ -74,10 +71,7 @@ namespace SimPe.Plugin
 
 				return pkg;
 			}
-			set
-			{
-				pkg = value;
-			}
+			set => pkg = value;
 		}
 
 		public ScannerItem(PackageCacheItem pci, CacheContainer cc)

@@ -220,10 +220,7 @@ namespace System.Windows.Forms
 		[DefaultValue(View.LargeIcon)]
 		public new View View
 		{
-			get
-			{
-				return base.View;
-			}
+			get => base.View;
 			set
 			{
 				// Embedded controls are rendered only when we're in Details mode

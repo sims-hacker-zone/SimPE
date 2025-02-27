@@ -459,122 +459,62 @@ namespace SimPe.Plugin
 		#region Default Attribute
 		public string Creator
 		{
-			get
-			{
-				return GetSaveItem("creator").StringValue;
-			}
-			set
-			{
-				GetSaveItem("creator").StringValue = value;
-			}
+			get => GetSaveItem("creator").StringValue;
+			set => GetSaveItem("creator").StringValue = value;
 		}
 
 		public bool DefaultMaterial
 		{
-			get
-			{
-				return GetSaveItem("defaultMaterial").BooleanValue;
-			}
-			set
-			{
-				GetSaveItem("defaultMaterial").BooleanValue = value;
-			}
+			get => GetSaveItem("defaultMaterial").BooleanValue;
+			set => GetSaveItem("defaultMaterial").BooleanValue = value;
 		}
 
 		public string Family
 		{
-			get
-			{
-				return GetSaveItem("family").StringValue;
-			}
-			set
-			{
-				GetSaveItem("family").StringValue = value;
-			}
+			get => GetSaveItem("family").StringValue;
+			set => GetSaveItem("family").StringValue = value;
 		}
 
 		public uint Flags
 		{
-			get
-			{
-				return GetSaveItem("flags").UIntegerValue;
-			}
-			set
-			{
-				GetSaveItem("flags").UIntegerValue = value;
-			}
+			get => GetSaveItem("flags").UIntegerValue;
+			set => GetSaveItem("flags").UIntegerValue = value;
 		}
 
 		public uint MaterialStateFlags
 		{
-			get
-			{
-				return GetSaveItem("materialStateFlags").UIntegerValue;
-			}
-			set
-			{
-				GetSaveItem("materialStateFlags").UIntegerValue = value;
-			}
+			get => GetSaveItem("materialStateFlags").UIntegerValue;
+			set => GetSaveItem("materialStateFlags").UIntegerValue = value;
 		}
 
 		public string ModelName
 		{
-			get
-			{
-				return GetSaveItem("modelName").StringValue;
-			}
-			set
-			{
-				GetSaveItem("modelName").StringValue = value;
-			}
+			get => GetSaveItem("modelName").StringValue;
+			set => GetSaveItem("modelName").StringValue = value;
 		}
 
 		public string Name
 		{
-			get
-			{
-				return GetSaveItem("name").StringValue;
-			}
-			set
-			{
-				GetSaveItem("name").StringValue = value;
-			}
+			get => GetSaveItem("name").StringValue;
+			set => GetSaveItem("name").StringValue = value;
 		}
 
 		public uint ObjectGUID
 		{
-			get
-			{
-				return GetSaveItem("objectGUID").UIntegerValue;
-			}
-			set
-			{
-				GetSaveItem("objectGUID").UIntegerValue = value;
-			}
+			get => GetSaveItem("objectGUID").UIntegerValue;
+			set => GetSaveItem("objectGUID").UIntegerValue = value;
 		}
 
 		public int ObjectStateIndex
 		{
-			get
-			{
-				return GetSaveItem("objectStateIndex").IntegerValue;
-			}
-			set
-			{
-				GetSaveItem("objectStateIndex").IntegerValue = value;
-			}
+			get => GetSaveItem("objectStateIndex").IntegerValue;
+			set => GetSaveItem("objectStateIndex").IntegerValue = value;
 		}
 
 		public string SubsetName
 		{
-			get
-			{
-				return GetSaveItem("subsetName").StringValue;
-			}
-			set
-			{
-				GetSaveItem("subsetName").StringValue = value;
-			}
+			get => GetSaveItem("subsetName").StringValue;
+			set => GetSaveItem("subsetName").StringValue = value;
 		}
 		#endregion
 	}

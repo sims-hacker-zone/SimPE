@@ -45,14 +45,8 @@ namespace SimPe.Packages
 		/// <remarks>This value should be 7</remarks>
 		public int Type
 		{
-			get
-			{
-				return type;
-			}
-			set
-			{
-				type = value;
-			}
+			get => type;
+			set => type = value;
 		}
 
 		public override int ItemSize

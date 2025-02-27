@@ -42,10 +42,7 @@ namespace Ambertation.Windows.Forms.Graph
 		PropertyItems properties;
 		public PropertyItems Properties
 		{
-			get
-			{
-				return properties;
-			}
+			get => properties;
 			set
 			{
 				if (value != properties)

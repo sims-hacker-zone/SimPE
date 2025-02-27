@@ -68,14 +68,8 @@ namespace SimPe.Plugin.Anim
 		[Description("When should this Frame get displayed?"), Category("Information")]
 		public short TimeCode
 		{
-			get
-			{
-				return (short)(tc & 0x7fff);
-			}
-			set
-			{
-				tc = (ushort)((tc & 0x8000) | (ushort)(value & 0x7fff));
-			}
+			get => (short)(tc & 0x7fff);
+			set => tc = (ushort)((tc & 0x8000) | (ushort)(value & 0x7fff));
 		}
 
 		/// <summary>
@@ -84,10 +78,7 @@ namespace SimPe.Plugin.Anim
 		[Description("Use this KeyFrame as a Linear Pole."), Category("Information")]
 		public bool Linear
 		{
-			get
-			{
-				return ((tc & 0x8000) == 0x8000);
-			}
+			get => ((tc & 0x8000) == 0x8000);
 			set
 			{
 				tc = (ushort)(tc & 0x7fff);
@@ -113,10 +104,7 @@ namespace SimPe.Plugin.Anim
 
 				return parent.Locked;
 			}
-			set
-			{
-				parent.Locked = value;
-			}
+			set => parent.Locked = value;
 		}
 
 		/// <summary>
@@ -140,14 +128,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public float ParameterFloat
 		{
-			get
-			{
-				return GetCompressedFloat(Parameter);
-			}
-			set
-			{
-				Parameter = FromCompressedFloat(value);
-			}
+			get => GetCompressedFloat(Parameter);
+			set => Parameter = FromCompressedFloat(value);
 		}
 
 		public short Unknown1

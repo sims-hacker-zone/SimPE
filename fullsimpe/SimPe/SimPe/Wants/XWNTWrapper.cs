@@ -38,10 +38,7 @@ namespace SimPe.Wants
 		#region Accessor Methods
 		public string Version
 		{
-			get
-			{
-				return version;
-			}
+			get => version;
 			set
 			{
 				if (version != value)
@@ -371,10 +368,7 @@ namespace SimPe.Wants
 		#region Accessor Methods
 		public string Key
 		{
-			get
-			{
-				return key;
-			}
+			get => key;
 			set
 			{
 				if (key != value)
@@ -399,10 +393,7 @@ namespace SimPe.Wants
 
 		public string Stype
 		{
-			get
-			{
-				return type;
-			}
+			get => type;
 			set
 			{
 				if (type != value)
@@ -427,10 +418,7 @@ namespace SimPe.Wants
 
 		public string Utype
 		{
-			get
-			{
-				return utype;
-			}
+			get => utype;
 			set
 			{
 				if (utype != value)
@@ -455,10 +443,7 @@ namespace SimPe.Wants
 
 		public string Value
 		{
-			get
-			{
-				return value;
-			}
+			get => value;
 			set
 			{
 				if (this.value != value)

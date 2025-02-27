@@ -1245,62 +1245,44 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort A
 		{
-			get
-			{
-				return (ushort)(
+			get => (ushort)(
 					(Value & (Parent.Parent.AMaks << Parent.Parent.AShift))
 					>> Parent.Parent.AShift
 				);
-			}
-			set
-			{
-				Value = (
+			set => Value = (
 
 						Value
 						& (0xFFFFFFFF - (Parent.Parent.AMaks << Parent.Parent.AShift))
 					 | (value & Parent.Parent.AMaks) << Parent.Parent.AShift
 				);
-			}
 		}
 
 		public ushort B
 		{
-			get
-			{
-				return (ushort)(
+			get => (ushort)(
 					(Value & (Parent.Parent.BMaks << Parent.Parent.BShift))
 					>> Parent.Parent.BShift
 				);
-			}
-			set
-			{
-				Value = (
+			set => Value = (
 
 						Value
 						& (0xFFFFFFFF - (Parent.Parent.BMaks << Parent.Parent.BShift))
 					 | (value & Parent.Parent.BMaks) << Parent.Parent.BShift
 				);
-			}
 		}
 
 		public ushort C
 		{
-			get
-			{
-				return (ushort)(
+			get => (ushort)(
 					(Value & (Parent.Parent.CMaks << Parent.Parent.CShift))
 					>> Parent.Parent.CShift
 				);
-			}
-			set
-			{
-				Value = (
+			set => Value = (
 
 						Value
 						& (0xFFFFFFFF - (Parent.Parent.CMaks << Parent.Parent.CShift))
 					 | (value & Parent.Parent.CMaks) << Parent.Parent.CShift
 				);
-			}
 		}
 
 		public uint BX => ((B & Parent.Parent.BMaks) << Parent.Parent.CBits)

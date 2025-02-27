@@ -23,38 +23,20 @@ namespace SimPe.Plugin
 
 		public Vector3f Position
 		{
-			get
-			{
-				return pos;
-			}
-			set
-			{
-				pos = value;
-			}
+			get => pos;
+			set => pos = value;
 		}
 
 		public Vector2f BoundingBoxMinimum
 		{
-			get
-			{
-				return min;
-			}
-			set
-			{
-				min = value;
-			}
+			get => min;
+			set => min = value;
 		}
 
 		public Vector2f BoundingBoxMaximum
 		{
-			get
-			{
-				return max;
-			}
-			set
-			{
-				max = value;
-			}
+			get => max;
+			set => max = value;
 		}
 
 		public byte Marker2 => marker2;

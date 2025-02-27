@@ -56,10 +56,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		[Browsable(false)]
 		public PackedFiles.Wrapper.ExtObjd SelectedObject
 		{
-			get
-			{
-				return objd;
-			}
+			get => objd;
 			set
 			{
 				if (objd != value || value == null)

@@ -318,10 +318,7 @@ namespace pjse
 					? null
 					: s;
 			}
-			set
-			{
-				throw new Exception("The method or operation is not implemented.");
-			}
+			set => throw new Exception("The method or operation is not implemented.");
 		}
 
 		#endregion

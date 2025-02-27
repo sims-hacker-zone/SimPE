@@ -10,10 +10,7 @@ namespace SimPe.Plugin
 		ushort siminst;
 		public ushort SimInstance
 		{
-			get
-			{
-				return siminst;
-			}
+			get => siminst;
 			set
 			{
 				siminst = value;
@@ -23,26 +20,14 @@ namespace SimPe.Plugin
 
 		public int LoyaltyScore
 		{
-			get
-			{
-				return LoadedLoyalty;
-			}
-			set
-			{
-				LoadedLoyalty = value;
-			}
+			get => LoadedLoyalty;
+			set => LoadedLoyalty = value;
 		}
 
 		public int LoyaltyStars
 		{
-			get
-			{
-				return (int)Math.Ceiling(LoyaltyScore / 200.0);
-			}
-			set
-			{
-				LoyaltyScore = (value * 200);
-			}
+			get => (int)Math.Ceiling(LoyaltyScore / 200.0);
+			set => LoyaltyScore = (value * 200);
 		}
 
 		int lloyalty;

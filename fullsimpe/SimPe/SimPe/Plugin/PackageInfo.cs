@@ -18,10 +18,7 @@ namespace SimPe.Plugin
 
 		public IPackageFile Package
 		{
-			get
-			{
-				return package;
-			}
+			get => package;
 			set
 			{
 				package = value;
@@ -273,14 +270,8 @@ namespace SimPe.Plugin
 
 		public new PackageInfo this[object key]
 		{
-			get
-			{
-				return base[key] as PackageInfo;
-			}
-			set
-			{
-				base[key] = value;
-			}
+			get => base[key] as PackageInfo;
+			set => base[key] = value;
 		}
 
 		public PackageInfoTable()

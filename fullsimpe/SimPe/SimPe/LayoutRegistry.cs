@@ -94,10 +94,7 @@ namespace SimPe
 				object o = xrk.GetValue("TBButtons", new ArrayList());
 				return o as ArrayList;
 			}
-			set
-			{
-				xrk.SetValue("TBButtons", value);
-			}
+			set => xrk.SetValue("TBButtons", value);
 		}
 
 		/// <summary>
@@ -116,10 +113,7 @@ namespace SimPe
 				object o = xrk.GetValue("ThemeID", (byte)1);
 				return Math.Min((byte)Convert.ToInt32(o), (byte)10);
 			}
-			set
-			{
-				xrk.SetValue("ThemeID", (int)value);
-			}
+			set => xrk.SetValue("ThemeID", (int)value);
 		}
 
 		/// <summary>
@@ -132,10 +126,7 @@ namespace SimPe
 				object o = xrk.GetValue("IsClassic", false);
 				return Convert.ToBoolean(o);
 			}
-			set
-			{
-				xrk.SetValue("IsClassic", value);
-			}
+			set => xrk.SetValue("IsClassic", value);
 		}
 
 		/// <summary>
@@ -148,10 +139,7 @@ namespace SimPe
 				object o = xrk.GetValue("AutoLayout", true);
 				return Convert.ToBoolean(o);
 			}
-			set
-			{
-				xrk.SetValue("AutoLayout", value);
-			}
+			set => xrk.SetValue("AutoLayout", value);
 		}
 
 		static string[] colNames = new string[]
@@ -230,10 +218,7 @@ namespace SimPe
 				object o = xrk.GetValue("NameColumnWidth", 280);
 				return Convert.ToInt32(o);
 			}
-			set
-			{
-				xrk.SetValue("NameColumnWidth", value);
-			}
+			set => xrk.SetValue("NameColumnWidth", value);
 		}
 
 		/// <summary>
@@ -246,10 +231,7 @@ namespace SimPe
 				object o = xrk.GetValue("TypeColumnWidth", 70);
 				return Convert.ToInt32(o);
 			}
-			set
-			{
-				xrk.SetValue("TypeColumnWidth", value);
-			}
+			set => xrk.SetValue("TypeColumnWidth", value);
 		}
 
 		/// <summary>
@@ -262,10 +244,7 @@ namespace SimPe
 				object o = xrk.GetValue("GroupColumnWidth", 120);
 				return Convert.ToInt32(o);
 			}
-			set
-			{
-				xrk.SetValue("GroupColumnWidth", value);
-			}
+			set => xrk.SetValue("GroupColumnWidth", value);
 		}
 
 		/// <summary>
@@ -278,10 +257,7 @@ namespace SimPe
 				object o = xrk.GetValue("InstanceHighColumnWidth", 120);
 				return Convert.ToInt32(o);
 			}
-			set
-			{
-				xrk.SetValue("InstanceHighColumnWidth", value);
-			}
+			set => xrk.SetValue("InstanceHighColumnWidth", value);
 		}
 
 		/// <summary>
@@ -294,10 +270,7 @@ namespace SimPe
 				object o = xrk.GetValue("InstanceColumnWidth", 160);
 				return Convert.ToInt32(o);
 			}
-			set
-			{
-				xrk.SetValue("InstanceColumnWidth", value);
-			}
+			set => xrk.SetValue("InstanceColumnWidth", value);
 		}
 
 		/// <summary>
@@ -310,10 +283,7 @@ namespace SimPe
 				object o = xrk.GetValue("OffsetColumnWidth", 120);
 				return Convert.ToInt32(o);
 			}
-			set
-			{
-				xrk.SetValue("OffsetColumnWidth", value);
-			}
+			set => xrk.SetValue("OffsetColumnWidth", value);
 		}
 
 		/// <summary>
@@ -326,10 +296,7 @@ namespace SimPe
 				object o = xrk.GetValue("SizeColumnWidth", 140);
 				return Convert.ToInt32(o);
 			}
-			set
-			{
-				xrk.SetValue("SizeColumnWidth", value);
-			}
+			set => xrk.SetValue("SizeColumnWidth", value);
 		}
 
 		/*

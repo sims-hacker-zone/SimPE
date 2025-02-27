@@ -57,10 +57,7 @@ namespace Classless.Hasher
 		/// <summary>Gets or sets the order of the CRC (e.g., how many bits).</summary>
 		public int Order
 		{
-			get
-			{
-				return order;
-			}
+			get => order;
 			set
 			{
 				if (((value % 8) != 0) || (value < 8) || (value > 64))

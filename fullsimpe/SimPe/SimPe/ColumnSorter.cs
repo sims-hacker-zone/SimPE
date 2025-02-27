@@ -42,10 +42,7 @@ namespace SimPe
 		/// </summary>
 		public int CurrentColumn
 		{
-			get
-			{
-				return cc;
-			}
+			get => cc;
 			set
 			{
 				if (cc != value)
@@ -64,10 +61,7 @@ namespace SimPe
 		/// </summary>
 		public SortOrder Sorting
 		{
-			get
-			{
-				return so;
-			}
+			get => so;
 			set
 			{
 				if (so != value)

@@ -78,10 +78,7 @@ namespace SimPe.Plugin
 
 		public byte[] Data
 		{
-			get
-			{
-				return data;
-			}
+			get => data;
 			set
 			{
 				datatype = MipMapType.SimPE_PlainData;

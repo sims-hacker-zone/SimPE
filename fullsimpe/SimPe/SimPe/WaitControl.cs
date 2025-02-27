@@ -161,19 +161,13 @@ namespace SimPe
 		int nowp;
 		public int Progress
 		{
-			get
-			{
-				return val;
-			}
-			set
-			{
-				Ambertation.Windows.Forms.APIHelp.SendMessage(
+			get => val;
+			set => Ambertation.Windows.Forms.APIHelp.SendMessage(
 					myhandle,
 					WM_USER_CHANGED_PROGRESS,
 					value,
 					0
 				);
-			}
 		}
 
 		private void SetProgress(int value)
@@ -200,10 +194,7 @@ namespace SimPe
 		bool wait;
 		public bool Waiting
 		{
-			get
-			{
-				return wait;
-			}
+			get => wait;
 			set
 			{
 				int val = 0;
@@ -244,10 +235,7 @@ namespace SimPe
 		bool spb;
 		public bool ShowProgress
 		{
-			get
-			{
-				return spb;
-			}
+			get => spb;
 			set
 			{
 				int val = 0;
@@ -283,10 +271,7 @@ namespace SimPe
 		bool sanim;
 		public bool ShowAnimation
 		{
-			get
-			{
-				return sanim;
-			}
+			get => sanim;
 			set
 			{
 				sanim = value;
@@ -306,10 +291,7 @@ namespace SimPe
 		bool stxt;
 		public bool ShowText
 		{
-			get
-			{
-				return stxt;
-			}
+			get => stxt;
 			set
 			{
 				int val = 0;
@@ -339,10 +321,7 @@ namespace SimPe
 
 		public Image Image
 		{
-			get
-			{
-				return null;
-			}
+			get => null;
 			set
 			{
 			}

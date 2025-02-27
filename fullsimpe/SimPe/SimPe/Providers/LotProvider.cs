@@ -252,10 +252,7 @@ namespace SimPe.Providers
 		/// <remarks>Sets the content List to null</remarks>
 		public string BaseFolder
 		{
-			get
-			{
-				return dir;
-			}
+			get => dir;
 			set
 			{
 				if (dir != value)
@@ -506,10 +503,7 @@ namespace SimPe.Providers
 
 				return content;
 			}
-			set
-			{
-				content = value;
-			}
+			set => content = value;
 		}
 
 		internal void sdescprovider_ChangedPackage(object sender, EventArgs e)

@@ -732,14 +732,8 @@ namespace SimPe
 		/// </summary>
 		public static bool LocalMode
 		{
-			get
-			{
-				return RunModeFlag[(int)RunModeFlags.localmode];
-			}
-			set
-			{
-				RunModeFlag[(int)RunModeFlags.localmode] = value;
-			}
+			get => RunModeFlag[(int)RunModeFlags.localmode];
+			set => RunModeFlag[(int)RunModeFlags.localmode] = value;
 		}
 
 		/// <summary>
@@ -747,14 +741,8 @@ namespace SimPe
 		/// </summary>
 		public static bool NoPlugins
 		{
-			get
-			{
-				return RunModeFlag[(int)RunModeFlags.noplugins];
-			}
-			set
-			{
-				RunModeFlag[(int)RunModeFlags.noplugins] = value;
-			}
+			get => RunModeFlag[(int)RunModeFlags.noplugins];
+			set => RunModeFlag[(int)RunModeFlags.noplugins] = value;
 		}
 
 		/// <summary>
@@ -762,14 +750,8 @@ namespace SimPe
 		/// </summary>
 		public static bool FileFormat
 		{
-			get
-			{
-				return RunModeFlag[(int)RunModeFlags.fileformat];
-			}
-			set
-			{
-				RunModeFlag[(int)RunModeFlags.fileformat] = value;
-			}
+			get => RunModeFlag[(int)RunModeFlags.fileformat];
+			set => RunModeFlag[(int)RunModeFlags.fileformat] = value;
 		}
 
 		/// <summary>
@@ -777,14 +759,8 @@ namespace SimPe
 		/// </summary>
 		public static bool NoErrors
 		{
-			get
-			{
-				return RunModeFlag[(int)RunModeFlags.noerrors];
-			}
-			set
-			{
-				RunModeFlag[(int)RunModeFlags.noerrors] = value;
-			}
+			get => RunModeFlag[(int)RunModeFlags.noerrors];
+			set => RunModeFlag[(int)RunModeFlags.noerrors] = value;
 		}
 
 		/// <summary>
@@ -792,14 +768,8 @@ namespace SimPe
 		/// </summary>
 		public static bool AnyPackage
 		{
-			get
-			{
-				return RunModeFlag[(int)RunModeFlags.anypackage];
-			}
-			set
-			{
-				RunModeFlag[(int)RunModeFlags.anypackage] = value;
-			}
+			get => RunModeFlag[(int)RunModeFlags.anypackage];
+			set => RunModeFlag[(int)RunModeFlags.anypackage] = value;
 		}
 
 		/// <summary>

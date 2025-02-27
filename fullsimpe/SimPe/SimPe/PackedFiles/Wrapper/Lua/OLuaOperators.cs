@@ -73,10 +73,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public object this[object index]
 		{
-			get
-			{
-				return data[index];
-			}
+			get => data[index];
 			set
 			{
 				object o = value;

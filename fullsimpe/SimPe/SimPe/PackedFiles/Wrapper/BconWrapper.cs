@@ -62,10 +62,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public string FileName
 		{
-			get
-			{
-				return Helper.ToString(filename);
-			}
+			get => Helper.ToString(filename);
 			set
 			{
 				if (!Helper.ToString(filename).Equals(value))
@@ -81,10 +78,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public bool Flag
 		{
-			get
-			{
-				return flag;
-			}
+			get => flag;
 			set
 			{
 				if (flag != value)

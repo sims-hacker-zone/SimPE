@@ -17,53 +17,29 @@ namespace SimPe.Plugin
 		[Category("Package")]
 		public Guid FamilyGuid
 		{
-			get
-			{
-				return familyGuid;
-			}
-			set
-			{
-				familyGuid = value;
-			}
+			get => familyGuid;
+			set => familyGuid = value;
 		}
 
 		[Category("Package")]
 		public string Description
 		{
-			get
-			{
-				return description;
-			}
-			set
-			{
-				description = value;
-			}
+			get => description;
+			set => description = value;
 		}
 
 		[Category("Package")]
 		public bool KeepDisabledItems
 		{
-			get
-			{
-				return pinheadMode;
-			}
-			set
-			{
-				pinheadMode = value;
-			}
+			get => pinheadMode;
+			set => pinheadMode = value;
 		}
 
 		[Category("Package")]
 		public bool CompressTextures
 		{
-			get
-			{
-				return reCompressTextures;
-			}
-			set
-			{
-				reCompressTextures = value;
-			}
+			get => reCompressTextures;
+			set => reCompressTextures = value;
 		}
 
 		public virtual RecolorType PackageType => mode;
@@ -102,14 +78,8 @@ namespace SimPe.Plugin
 		[Category("Hairtone")]
 		public Guid DefaultProxy
 		{
-			get
-			{
-				return defaultProxy;
-			}
-			set
-			{
-				defaultProxy = value;
-			}
+			get => defaultProxy;
+			set => defaultProxy = value;
 		}
 
 		/// <summary>

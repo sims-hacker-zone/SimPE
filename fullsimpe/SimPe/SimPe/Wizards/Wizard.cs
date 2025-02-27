@@ -57,24 +57,15 @@ namespace SimPe.Wizards
 		Image img;
 		public virtual Image Image
 		{
-			get
-			{
-				return img;
-			}
-			set
-			{
-				img = value;
-			}
+			get => img;
+			set => img = value;
 		}
 
 		public int StepCount => Controls.Count;
 
 		public int CurrentStepNumber
 		{
-			get
-			{
-				return cur;
-			}
+			get => cur;
 			set
 			{
 				if (value == cur)
@@ -92,10 +83,7 @@ namespace SimPe.Wizards
 		[Browsable(false)]
 		public bool NextEnabled
 		{
-			get
-			{
-				return ne;
-			}
+			get => ne;
 			set
 			{
 				if (value != ne)
@@ -114,10 +102,7 @@ namespace SimPe.Wizards
 		[Browsable(false)]
 		public bool PrevEnabled
 		{
-			get
-			{
-				return pe;
-			}
+			get => pe;
 			set
 			{
 				if (value != pe)
@@ -136,10 +121,7 @@ namespace SimPe.Wizards
 		[Browsable(false)]
 		public bool FinishEnabled
 		{
-			get
-			{
-				return fe;
-			}
+			get => fe;
 			set
 			{
 				if (value != fe)

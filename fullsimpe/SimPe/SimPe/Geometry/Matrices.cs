@@ -177,10 +177,7 @@ namespace SimPe.Geometry
 		/// </summary>
 		public double this[int row, int col]
 		{
-			get
-			{
-				return m[row][col];
-			}
+			get => m[row][col];
 			set
 			{
 				m[row][col] = value;

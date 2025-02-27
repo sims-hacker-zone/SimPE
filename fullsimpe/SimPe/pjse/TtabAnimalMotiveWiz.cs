@@ -105,10 +105,7 @@ namespace pjse
 		private int nrItems = 0;
 		public int Count
 		{
-			get
-			{
-				return nrItems;
-			}
+			get => nrItems;
 			set
 			{
 				if (value < 0 || value > 16)

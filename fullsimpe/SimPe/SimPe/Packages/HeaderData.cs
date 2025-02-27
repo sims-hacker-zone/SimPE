@@ -91,14 +91,8 @@ namespace SimPe.Packages
 		]
 		public Int16 Epicon
 		{
-			get
-			{
-				return epicon;
-			}
-			set
-			{
-				epicon = value;
-			}
+			get => epicon;
+			set => epicon = value;
 		}
 
 		/// <summary>
@@ -113,14 +107,8 @@ namespace SimPe.Packages
 		]
 		public Int16 Showicon
 		{
-			get
-			{
-				return showicon;
-			}
-			set
-			{
-				showicon = value;
-			}
+			get => showicon;
+			set => showicon = value;
 		}
 
 		/// <summary>
@@ -203,14 +191,8 @@ namespace SimPe.Packages
 #endif
 		public uint Created
 		{
-			get
-			{
-				return created;
-			}
-			set
-			{
-				created = value;
-			}
+			get => created;
+			set => created = value;
 		}
 
 		/// <summary>
@@ -266,14 +248,8 @@ namespace SimPe.Packages
 		]
 		public Data.MetaData.IndexTypes IndexType
 		{
-			get
-			{
-				return indextype;
-			}
-			set
-			{
-				indextype = value;
-			}
+			get => indextype;
+			set => indextype = value;
 		}
 
 		/// <summary>

@@ -248,14 +248,8 @@ namespace SimPe.Packages
 		/// </summary>
 		public bool Optional
 		{
-			get
-			{
-				return optional;
-			}
-			set
-			{
-				optional = value;
-			}
+			get => optional;
+			set => optional = value;
 		}
 
 		/// <summary>
@@ -268,14 +262,8 @@ namespace SimPe.Packages
 		/// </summary>
 		public string Name
 		{
-			get
-			{
-				return name;
-			}
-			set
-			{
-				name = value;
-			}
+			get => name;
+			set => name = value;
 		}
 
 		/// <summary>
@@ -288,14 +276,8 @@ namespace SimPe.Packages
 		/// </summary>
 		public string ObjectVersion
 		{
-			get
-			{
-				return objectversion;
-			}
-			set
-			{
-				objectversion = value;
-			}
+			get => objectversion;
+			set => objectversion = value;
 		}
 
 		/// <summary>
@@ -308,14 +290,8 @@ namespace SimPe.Packages
 		/// </summary>
 		public string Guid
 		{
-			get
-			{
-				return guid;
-			}
-			set
-			{
-				guid = value;
-			}
+			get => guid;
+			set => guid = value;
 		}
 
 		/// <summary>
@@ -328,14 +304,8 @@ namespace SimPe.Packages
 		/// </summary>
 		public GeneratableFile Package
 		{
-			get
-			{
-				return package;
-			}
-			set
-			{
-				package = value;
-			}
+			get => package;
+			set => package = value;
 		}
 
 		/// <summary>
@@ -768,14 +738,8 @@ namespace SimPe.Packages
 		/// </summary>
 		public string Title
 		{
-			get
-			{
-				return title;
-			}
-			set
-			{
-				title = value;
-			}
+			get => title;
+			set => title = value;
 		}
 
 		/// <summary>
@@ -812,14 +776,8 @@ namespace SimPe.Packages
 		/// </summary>
 		public string Description
 		{
-			get
-			{
-				return description;
-			}
-			set
-			{
-				description = value;
-			}
+			get => description;
+			set => description = value;
 		}
 
 		/// <summary>
@@ -832,14 +790,8 @@ namespace SimPe.Packages
 		/// </summary>
 		public string Author
 		{
-			get
-			{
-				return author;
-			}
-			set
-			{
-				author = value;
-			}
+			get => author;
+			set => author = value;
 		}
 
 		/// <summary>
@@ -852,14 +804,8 @@ namespace SimPe.Packages
 		/// </summary>
 		public string Contact
 		{
-			get
-			{
-				return contact;
-			}
-			set
-			{
-				contact = value;
-			}
+			get => contact;
+			set => contact = value;
 		}
 
 		string gameguid;
@@ -896,10 +842,7 @@ namespace SimPe.Packages
 
 				return gameguid.Trim();
 			}
-			set
-			{
-				gameguid = value;
-			}
+			set => gameguid = value;
 		}
 
 		/// <summary>

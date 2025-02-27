@@ -58,10 +58,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public string FileName
 		{
-			get
-			{
-				return Helper.ToString(filename);
-			}
+			get => Helper.ToString(filename);
 			set
 			{
 				if (!Helper.ToString(filename).Equals(value))
@@ -364,10 +361,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Accessor methods
 		public ushort Format
 		{
-			get
-			{
-				return format;
-			}
+			get => format;
 			set
 			{
 				if (format != value)
@@ -380,10 +374,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort InstructionCount
 		{
-			get
-			{
-				return count;
-			}
+			get => count;
 			set
 			{
 				if (count != value)
@@ -396,10 +387,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public byte Type
 		{
-			get
-			{
-				return type;
-			}
+			get => type;
 			set
 			{
 				if (type != value)
@@ -412,10 +400,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public byte ArgumentCount
 		{
-			get
-			{
-				return argc;
-			}
+			get => argc;
 			set
 			{
 				if (argc != value)
@@ -428,10 +413,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public byte LocalVarCount
 		{
-			get
-			{
-				return locals;
-			}
+			get => locals;
 			set
 			{
 				if (locals != value)
@@ -444,10 +426,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public byte HeaderFlag
 		{
-			get
-			{
-				return headerflag;
-			}
+			get => headerflag;
 			set
 			{
 				if (headerflag != value)
@@ -460,10 +439,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint TreeVersion
 		{
-			get
-			{
-				return treeversion;
-			}
+			get => treeversion;
 			set
 			{
 				if (treeversion != value)
@@ -476,10 +452,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public byte CacheFlags
 		{
-			get
-			{
-				return cacheflags;
-			}
+			get => cacheflags;
 			set
 			{
 				if (cacheflags != value)
@@ -566,10 +539,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Accessor methods
 		public ushort OpCode
 		{
-			get
-			{
-				return opcode;
-			}
+			get => opcode;
 			set
 			{
 				if (opcode != value)
@@ -582,10 +552,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort Target1
 		{
-			get
-			{
-				return addr1;
-			}
+			get => addr1;
 			set
 			{
 				if (addr1 != value)
@@ -598,10 +565,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort Target2
 		{
-			get
-			{
-				return addr2;
-			}
+			get => addr2;
 			set
 			{
 				if (addr2 != value)
@@ -614,10 +578,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public byte NodeVersion
 		{
-			get
-			{
-				return nodeversion;
-			}
+			get => nodeversion;
 			set
 			{
 				if (nodeversion != value)
@@ -840,10 +801,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public byte this[int index]
 		{
-			get
-			{
-				return array[index];
-			}
+			get => array[index];
 			set
 			{
 				if (array[index] != value)
@@ -869,10 +827,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		internal Instruction Parent
 		{
-			set
-			{
-				parent = value;
-			}
+			set => parent = value;
 		}
 
 		private void Unserialize(System.IO.BinaryReader reader)

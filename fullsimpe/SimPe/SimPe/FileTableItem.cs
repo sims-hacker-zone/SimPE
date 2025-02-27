@@ -269,10 +269,7 @@ namespace SimPe
 
 				return ret;
 			}
-			set
-			{
-				SetName(value);
-			}
+			set => SetName(value);
 		}
 
 		public string RelativePath

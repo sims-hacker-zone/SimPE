@@ -1771,14 +1771,8 @@ namespace SimPe
 		[System.ComponentModel.ReadOnly(true)]
 		public bool BlurNudity
 		{
-			get
-			{
-				return PathProvider.Global.BlurNudity;
-			}
-			set
-			{
-				PathProvider.Global.BlurNudity = value;
-			}
+			get => PathProvider.Global.BlurNudity;
+			set => PathProvider.Global.BlurNudity = value;
 		}
 
 		public void BlurNudityUpdate()

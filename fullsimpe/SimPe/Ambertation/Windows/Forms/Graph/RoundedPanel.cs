@@ -44,10 +44,7 @@ namespace Ambertation.Windows.Forms.Graph
 		Color bg;
 		public Color PanelColor
 		{
-			get
-			{
-				return bg;
-			}
+			get => bg;
 			set
 			{
 				if (bg != value)
@@ -61,10 +58,7 @@ namespace Ambertation.Windows.Forms.Graph
 		float fade;
 		public float Fade
 		{
-			get
-			{
-				return fade;
-			}
+			get => fade;
 			set
 			{
 				if (fade != value)
@@ -78,10 +72,7 @@ namespace Ambertation.Windows.Forms.Graph
 		Color fadecl;
 		public Color FadeColor
 		{
-			get
-			{
-				return fadecl;
-			}
+			get => fadecl;
 			set
 			{
 				if (fadecl != value)
@@ -95,10 +86,7 @@ namespace Ambertation.Windows.Forms.Graph
 		Color gradcl;
 		public Color GradientColor
 		{
-			get
-			{
-				return gradcl;
-			}
+			get => gradcl;
 			set
 			{
 				if (gradcl != value)
@@ -112,10 +100,7 @@ namespace Ambertation.Windows.Forms.Graph
 		Color bdcl;
 		public Color BorderColor
 		{
-			get
-			{
-				return bdcl;
-			}
+			get => bdcl;
 			set
 			{
 				if (bdcl != value)

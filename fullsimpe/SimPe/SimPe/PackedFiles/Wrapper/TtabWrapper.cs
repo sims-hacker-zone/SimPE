@@ -54,10 +54,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Accessor methods
 		public string FileName
 		{
-			get
-			{
-				return Helper.ToString(filename);
-			}
+			get => Helper.ToString(filename);
 			set
 			{
 				if (!Helper.ToString(filename).Equals(value))
@@ -69,10 +66,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 		public uint Format
 		{
-			get
-			{
-				return header[1];
-			}
+			get => header[1];
 			set
 			{
 				if (header[1] != value)
@@ -84,10 +78,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 		public uint Unknown
 		{
-			get
-			{
-				return header[2];
-			}
+			get => header[2];
 			set
 			{
 				if (header[2] != value)
@@ -289,10 +280,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Accessor Methods
 		public ushort Action
 		{
-			get
-			{
-				return action;
-			}
+			get => action;
 			set
 			{
 				if (action != value)
@@ -308,10 +296,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort Guardian
 		{
-			get
-			{
-				return guard;
-			}
+			get => guard;
 			set
 			{
 				if (guard != value)
@@ -327,10 +312,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort Flags
 		{
-			get
-			{
-				return flags;
-			}
+			get => flags;
 			set
 			{
 				if (flags != value)
@@ -346,10 +328,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort Flags2
 		{
-			get
-			{
-				return flags2;
-			}
+			get => flags2;
 			set
 			{
 				if (flags2 != value)
@@ -365,10 +344,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint StringIndex
 		{
-			get
-			{
-				return strindex;
-			}
+			get => strindex;
 			set
 			{
 				if (strindex != value)
@@ -384,10 +360,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint AttenuationCode
 		{
-			get
-			{
-				return attenuationcode;
-			}
+			get => attenuationcode;
 			set
 			{
 				if (attenuationcode != value)
@@ -403,10 +376,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public float AttenuationValue
 		{
-			get
-			{
-				return attenuationvalue;
-			}
+			get => attenuationvalue;
 			set
 			{
 				if (attenuationvalue != value)
@@ -422,10 +392,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint Autonomy
 		{
-			get
-			{
-				return autonomy;
-			}
+			get => autonomy;
 			set
 			{
 				if (autonomy != value)
@@ -441,10 +408,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint JoinIndex
 		{
-			get
-			{
-				return joinindex;
-			}
+			get => joinindex;
 			set
 			{
 				if (joinindex != value)
@@ -460,10 +424,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort UIDisplayType
 		{
-			get
-			{
-				return uidisplaytype;
-			}
+			get => uidisplaytype;
 			set
 			{
 				if (uidisplaytype != value)
@@ -479,10 +440,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint FacialAnimationID
 		{
-			get
-			{
-				return facialanimation;
-			}
+			get => facialanimation;
 			set
 			{
 				if (facialanimation != value)
@@ -498,10 +456,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public float MemoryIterativeMultiplier
 		{
-			get
-			{
-				return memoryitermult;
-			}
+			get => memoryitermult;
 			set
 			{
 				if (!memoryitermult.Equals(value))
@@ -517,10 +472,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint ObjectType
 		{
-			get
-			{
-				return objecttype;
-			}
+			get => objecttype;
 			set
 			{
 				if (objecttype != value)
@@ -536,10 +488,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint ModelTableID
 		{
-			get
-			{
-				return modeltableid;
-			}
+			get => modeltableid;
 			set
 			{
 				if (modeltableid != value)
@@ -555,10 +504,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public TtabItemMotiveTable HumanMotives
 		{
-			get
-			{
-				return humanGroups;
-			}
+			get => humanGroups;
 			set
 			{
 				if (humanGroups != value)
@@ -574,10 +520,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public TtabItemMotiveTable AnimalMotives
 		{
-			get
-			{
-				return animalGroups;
-			}
+			get => animalGroups;
 			set
 			{
 				if (animalGroups != value)
@@ -806,10 +749,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 		public TtabItemMotiveTableType Type
 		{
-			get
-			{
-				return type;
-			}
+			get => type;
 			set
 			{
 				if (type != value)
@@ -955,14 +895,8 @@ namespace SimPe.PackedFiles.Wrapper
 
 			public new TtabItemMotiveGroup this[int index]
 			{
-				get
-				{
-					return (TtabItemMotiveGroup)base[index];
-				}
-				set
-				{
-					base[index] = value;
-				}
+				get => (TtabItemMotiveGroup)base[index];
+				set => base[index] = value;
 			}
 
 			public TtabItemMotiveGroupArrayList Clone(TtabItemMotiveTable parent)
@@ -1045,10 +979,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public TtabItemMotiveGroup this[int index]
 		{
-			get
-			{
-				return items[index];
-			}
+			get => items[index];
 			set
 			{
 				if (items[index] != value)
@@ -1248,14 +1179,8 @@ namespace SimPe.PackedFiles.Wrapper
 
 			public new TtabItemMotiveItem this[int index]
 			{
-				get
-				{
-					return (TtabItemMotiveItem)base[index];
-				}
-				set
-				{
-					base[index] = value;
-				}
+				get => (TtabItemMotiveItem)base[index];
+				set => base[index] = value;
 			}
 
 			/// <summary>
@@ -1347,10 +1272,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public TtabItemMotiveItem this[int index]
 		{
-			get
-			{
-				return items[index];
-			}
+			get => items[index];
 			set
 			{
 				if (items[index] != value)
@@ -1410,14 +1332,8 @@ namespace SimPe.PackedFiles.Wrapper
 		public Ttab Wrapper => parent == null ? null : parent.Wrapper;
 		public TtabItemMotiveGroup Parent
 		{
-			get
-			{
-				return parent;
-			}
-			set
-			{
-				parent = value;
-			}
+			get => parent;
+			set => parent = value;
 		}
 		#endregion
 
@@ -1548,14 +1464,8 @@ namespace SimPe.PackedFiles.Wrapper
 
 			public new TtabItemSingleMotiveItem this[int index]
 			{
-				get
-				{
-					return (TtabItemSingleMotiveItem)base[index];
-				}
-				set
-				{
-					base[index] = value;
-				}
+				get => (TtabItemSingleMotiveItem)base[index];
+				set => base[index] = value;
 			}
 
 			/// <summary>
@@ -1644,10 +1554,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public TtabItemSingleMotiveItem this[int index]
 		{
-			get
-			{
-				return items[index];
-			}
+			get => items[index];
 			set
 			{
 				if (items[index] != value)
@@ -1706,36 +1613,18 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Accessor Methods
 		public short Min
 		{
-			get
-			{
-				return this[0];
-			}
-			set
-			{
-				this[0] = value;
-			}
+			get => this[0];
+			set => this[0] = value;
 		}
 		public short Delta
 		{
-			get
-			{
-				return items[1];
-			}
-			set
-			{
-				this[1] = value;
-			}
+			get => items[1];
+			set => this[1] = value;
 		}
 		public short Type
 		{
-			get
-			{
-				return items[2];
-			}
-			set
-			{
-				this[2] = value;
-			}
+			get => items[2];
+			set => this[2] = value;
 		}
 		#endregion
 
@@ -1789,10 +1678,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		private short this[int index]
 		{
-			get
-			{
-				return items[index];
-			}
+			get => items[index];
 			set
 			{
 				if (items[index] != value)

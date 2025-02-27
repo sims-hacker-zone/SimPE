@@ -94,10 +94,7 @@ namespace SimPe.Plugin
 
 		public byte[] Data
 		{
-			get
-			{
-				return data;
-			}
+			get => data;
 			set
 			{
 				if (value != null)
@@ -111,10 +108,7 @@ namespace SimPe.Plugin
 
 		public string LifoFile
 		{
-			get
-			{
-				return lifofile;
-			}
+			get => lifofile;
 			set
 			{
 				if (value != null)
@@ -645,14 +639,8 @@ namespace SimPe.Plugin
 
 		public Size TextureSize
 		{
-			get
-			{
-				return texturesize;
-			}
-			set
-			{
-				texturesize = value;
-			}
+			get => texturesize;
+			set => texturesize = value;
 		}
 
 		public uint MipMapLevels
@@ -662,10 +650,7 @@ namespace SimPe.Plugin
 
 		public ImageLoader.TxtrFormats Format
 		{
-			get
-			{
-				return format;
-			}
+			get => format;
 			set
 			{
 				if (format != value)

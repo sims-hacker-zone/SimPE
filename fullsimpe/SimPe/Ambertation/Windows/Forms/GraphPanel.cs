@@ -115,10 +115,7 @@ namespace Ambertation.Windows.Forms
 		#region Properties
 		public new Control Parent
 		{
-			get
-			{
-				return base.Parent;
-			}
+			get => base.Parent;
 			set
 			{
 				if (base.Parent != value)
@@ -141,10 +138,7 @@ namespace Ambertation.Windows.Forms
 		bool lk;
 		public bool LockItems
 		{
-			get
-			{
-				return lk;
-			}
+			get => lk;
 			set
 			{
 				if (lk != value)
@@ -157,23 +151,14 @@ namespace Ambertation.Windows.Forms
 		bool savebound;
 		public virtual bool SaveBounds
 		{
-			get
-			{
-				return savebound;
-			}
-			set
-			{
-				savebound = value;
-			}
+			get => savebound;
+			set => savebound = value;
 		}
 
 		bool autosz;
 		public override bool AutoSize
 		{
-			get
-			{
-				return autosz;
-			}
+			get => autosz;
 			set
 			{
 				autosz = value;
@@ -188,10 +173,7 @@ namespace Ambertation.Windows.Forms
 		LinkControlLineMode lm;
 		public LinkControlLineMode LineMode
 		{
-			get
-			{
-				return lm;
-			}
+			get => lm;
 			set
 			{
 				lm = value;
@@ -202,10 +184,7 @@ namespace Ambertation.Windows.Forms
 		bool quality;
 		public bool Quality
 		{
-			get
-			{
-				return quality;
-			}
+			get => quality;
 			set
 			{
 				quality = value;
@@ -256,10 +235,7 @@ namespace Ambertation.Windows.Forms
 		[Browsable(false)]
 		public override bool AutoScroll
 		{
-			get
-			{
-				return base.AutoScroll;
-			}
+			get => base.AutoScroll;
 			set
 			{
 			}

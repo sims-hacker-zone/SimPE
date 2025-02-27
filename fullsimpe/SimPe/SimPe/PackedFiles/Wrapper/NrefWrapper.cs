@@ -40,14 +40,8 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public string FileName
 		{
-			get
-			{
-				return Helper.ToString(data);
-			}
-			set
-			{
-				data = Helper.ToBytes(value);
-			}
+			get => Helper.ToString(data);
+			set => data = Helper.ToBytes(value);
 		}
 
 		public uint Group => Hashes.GroupHash(FileName);

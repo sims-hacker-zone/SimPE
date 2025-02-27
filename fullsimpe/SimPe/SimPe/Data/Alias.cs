@@ -88,26 +88,14 @@ namespace SimPe.Data
 
 		public string Name
 		{
-			get
-			{
-				return name;
-			}
-			set
-			{
-				name = value;
-			}
+			get => name;
+			set => name = value;
 		}
 
 		public object[] Tag
 		{
-			get
-			{
-				return tag;
-			}
-			set
-			{
-				tag = value;
-			}
+			get => tag;
+			set => tag = value;
 		}
 
 		#endregion

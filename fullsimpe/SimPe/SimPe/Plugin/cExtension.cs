@@ -94,10 +94,7 @@ namespace SimPe.Plugin
 
 				return varname;
 			}
-			set
-			{
-				varname = value;
-			}
+			set => varname = value;
 		}
 
 		public int Value
@@ -349,10 +346,7 @@ namespace SimPe.Plugin
 
 				return varname;
 			}
-			set
-			{
-				varname = value;
-			}
+			set => varname = value;
 		}
 
 		public ExtensionItem[] Items

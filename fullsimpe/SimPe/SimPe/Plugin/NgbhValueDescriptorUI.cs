@@ -457,10 +457,7 @@ namespace SimPe.Plugin
 		[System.ComponentModel.Browsable(false)]
 		public NgbhSlot Slot
 		{
-			get
-			{
-				return slot;
-			}
+			get => slot;
 			set
 			{
 				slot = value;
@@ -480,10 +477,7 @@ namespace SimPe.Plugin
 		[System.ComponentModel.Browsable(false)]
 		public NgbhValueDescriptor NgbhValueDescriptor
 		{
-			get
-			{
-				return des;
-			}
+			get => des;
 			set
 			{
 				des = value;
@@ -494,10 +488,7 @@ namespace SimPe.Plugin
 		NgbhValueDescriptorSelection vds;
 		public NgbhValueDescriptorSelection NgbhValueDescriptorSelection
 		{
-			get
-			{
-				return vds;
-			}
+			get => vds;
 			set
 			{
 				if (vds != null)

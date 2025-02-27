@@ -41,14 +41,8 @@ namespace SimPe.Plugin
 		uint ver;
 		public BnfoVersions Version
 		{
-			get
-			{
-				return (BnfoVersions)ver;
-			}
-			set
-			{
-				ver = (uint)value;
-			}
+			get => (BnfoVersions)ver;
+			set => ver = (uint)value;
 		}
 
 		public uint CurrentBusinessState
@@ -67,38 +61,20 @@ namespace SimPe.Plugin
 		ushort[] empls;
 		public ushort[] Employees
 		{
-			get
-			{
-				return empls;
-			}
-			set
-			{
-				empls = value;
-			}
+			get => empls;
+			set => empls = value;
 		}
 		int[] pr;
 		public int[] PayRate //doesn't need to be int, could just be byte but int is easier to work with. 0 to 6 inclusive
 		{
-			get
-			{
-				return pr;
-			}
-			set
-			{
-				pr = value;
-			}
+			get => pr;
+			set => pr = value;
 		}
 		uint[] a;
 		public uint[] A // Fair Pay - should never be below 15
 		{
-			get
-			{
-				return a;
-			}
-			set
-			{
-				a = value;
-			}
+			get => a;
+			set => a = value;
 		}
 
 		int[] reven;

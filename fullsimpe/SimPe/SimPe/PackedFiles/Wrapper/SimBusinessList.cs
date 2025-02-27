@@ -94,10 +94,7 @@ namespace SimPe.PackedFiles.Wrapper
 		LinkedSDesc sdsc;
 		public Interfaces.Wrapper.ISDesc SimDescription
 		{
-			get
-			{
-				return sdsc;
-			}
+			get => sdsc;
 			set
 			{
 				sdsc = value as LinkedSDesc;

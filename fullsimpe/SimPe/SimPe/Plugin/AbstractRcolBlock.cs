@@ -20,14 +20,8 @@ namespace SimPe.Plugin
 		[Browsable(false)]
 		public SGResource NameResource
 		{
-			get
-			{
-				return sgres;
-			}
-			set
-			{
-				sgres = value;
-			}
+			get => sgres;
+			set => sgres = value;
 		}
 
 		protected uint version;
@@ -35,14 +29,8 @@ namespace SimPe.Plugin
 		[ReadOnly(true)]
 		public uint Version
 		{
-			get
-			{
-				return version;
-			}
-			set
-			{
-				version = value;
-			}
+			get => version;
+			set => version = value;
 		}
 
 		protected Rcol parent;
@@ -50,14 +38,8 @@ namespace SimPe.Plugin
 		[Browsable(false)]
 		public Rcol Parent
 		{
-			get
-			{
-				return parent;
-			}
-			set
-			{
-				parent = value;
-			}
+			get => parent;
+			set => parent = value;
 		}
 
 		public AbstractRcolBlock()
@@ -86,10 +68,7 @@ namespace SimPe.Plugin
 		[Browsable(false)]
 		public bool Changed
 		{
-			get
-			{
-				return parent.Changed;
-			}
+			get => parent.Changed;
 			set
 			{
 				if (parent != null)
@@ -287,10 +266,7 @@ namespace SimPe.Plugin
 					return blockname;
 				}
 			}
-			set
-			{
-				blockname = value;
-			}
+			set => blockname = value;
 		}
 
 		/// <summary>

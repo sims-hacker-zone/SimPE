@@ -75,14 +75,8 @@ namespace SimPe.Plugin.Gmdc
 
 		public GenericMeshImport.JointImportAction Action
 		{
-			get
-			{
-				return (GenericMeshImport.JointImportAction)cbact.SelectedItem;
-			}
-			set
-			{
-				cbact.SelectedItem = value;
-			}
+			get => (GenericMeshImport.JointImportAction)cbact.SelectedItem;
+			set => cbact.SelectedItem = value;
 		}
 
 		public GmdcJoint Joint

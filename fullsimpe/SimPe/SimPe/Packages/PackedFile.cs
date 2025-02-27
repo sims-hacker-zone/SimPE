@@ -174,14 +174,8 @@ namespace SimPe.Packages
 
 			public override long Position
 			{
-				get
-				{
-					return s.Position - o;
-				}
-				set
-				{
-					s.Position = value + o;
-				}
+				get => s.Position - o;
+				set => s.Position = value + o;
 			}
 
 			public override int Read(byte[] buffer, int offset, int count)

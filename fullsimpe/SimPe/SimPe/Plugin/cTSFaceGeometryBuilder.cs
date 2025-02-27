@@ -283,14 +283,8 @@ namespace SimPe.Plugin
 		/// </summary>
 		public new TSFaceGeometryBuilderItem this[int index]
 		{
-			get
-			{
-				return ((TSFaceGeometryBuilderItem)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((TSFaceGeometryBuilderItem)base[index]);
+			set => base[index] = value;
 		}
 
 		/// <summary>
@@ -298,14 +292,8 @@ namespace SimPe.Plugin
 		/// </summary>
 		public TSFaceGeometryBuilderItem this[uint index]
 		{
-			get
-			{
-				return ((TSFaceGeometryBuilderItem)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((TSFaceGeometryBuilderItem)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		/// <summary>

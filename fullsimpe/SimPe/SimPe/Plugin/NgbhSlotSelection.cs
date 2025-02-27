@@ -116,10 +116,7 @@ namespace SimPe.Plugin
 		[System.ComponentModel.Browsable(false)]
 		public Ngbh NgbhResource
 		{
-			get
-			{
-				return ngbh;
-			}
+			get => ngbh;
 			set
 			{
 				ngbh = value;

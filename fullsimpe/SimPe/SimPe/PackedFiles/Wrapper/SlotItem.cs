@@ -308,26 +308,14 @@ namespace SimPe.PackedFiles.Wrapper
 	{
 		public new SlotItem this[int index]
 		{
-			get
-			{
-				return ((SlotItem)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((SlotItem)base[index]);
+			set => base[index] = value;
 		}
 
 		public SlotItem this[uint index]
 		{
-			get
-			{
-				return ((SlotItem)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((SlotItem)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		public int Add(SlotItem item)

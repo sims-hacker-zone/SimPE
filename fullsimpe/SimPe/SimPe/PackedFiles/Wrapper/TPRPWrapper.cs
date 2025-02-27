@@ -87,10 +87,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public string FileName
 		{
-			get
-			{
-				return Helper.ToString(filename);
-			}
+			get => Helper.ToString(filename);
 			set
 			{
 				if (!Helper.ToString(filename).Equals(value))
@@ -106,10 +103,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint Version
 		{
-			get
-			{
-				return header[1];
-			}
+			get => header[1];
 			set
 			{
 				if (header[1] != value)
@@ -428,10 +422,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Accessor methods
 		public string Label
 		{
-			get
-			{
-				return label;
-			}
+			get => label;
 			set
 			{
 				if (label != value)

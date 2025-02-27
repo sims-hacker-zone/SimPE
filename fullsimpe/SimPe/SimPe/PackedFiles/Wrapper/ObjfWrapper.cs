@@ -62,10 +62,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public string FileName
 		{
-			get
-			{
-				return Helper.ToString(filename);
-			}
+			get => Helper.ToString(filename);
 			set
 			{
 				if (!Helper.ToString(filename).Equals(value))
@@ -233,10 +230,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Accessor methods
 		public ushort Action
 		{
-			get
-			{
-				return action;
-			}
+			get => action;
 			set
 			{
 				if (action != value)
@@ -249,10 +243,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort Guardian
 		{
-			get
-			{
-				return guard;
-			}
+			get => guard;
 			set
 			{
 				if (guard != value)

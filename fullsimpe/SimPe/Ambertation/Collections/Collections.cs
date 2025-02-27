@@ -78,14 +78,8 @@ namespace Ambertation.Collections
 		/// </summary>
 		public new GraphItemBase this[int index]
 		{
-			get
-			{
-				return ((GraphItemBase)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((GraphItemBase)base[index]);
+			set => base[index] = value;
 		}
 
 		/// <summary>
@@ -93,14 +87,8 @@ namespace Ambertation.Collections
 		/// </summary>
 		public GraphItemBase this[uint index]
 		{
-			get
-			{
-				return ((GraphItemBase)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((GraphItemBase)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		/// <summary>
@@ -250,14 +238,8 @@ namespace Ambertation.Collections
 		/// </summary>
 		public new GraphPanelElement this[int index]
 		{
-			get
-			{
-				return ((GraphPanelElement)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((GraphPanelElement)base[index]);
+			set => base[index] = value;
 		}
 
 		/// <summary>
@@ -265,14 +247,8 @@ namespace Ambertation.Collections
 		/// </summary>
 		public GraphPanelElement this[uint index]
 		{
-			get
-			{
-				return ((GraphPanelElement)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((GraphPanelElement)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		/// <summary>
@@ -379,14 +355,8 @@ namespace Ambertation.Collections
 		/// </summary>
 		public new PropertyItem this[int index]
 		{
-			get
-			{
-				return ((PropertyItem)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((PropertyItem)base[index]);
+			set => base[index] = value;
 		}
 
 		/// <summary>
@@ -394,14 +364,8 @@ namespace Ambertation.Collections
 		/// </summary>
 		public PropertyItem this[uint index]
 		{
-			get
-			{
-				return ((PropertyItem)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((PropertyItem)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		/// <summary>
@@ -573,14 +537,8 @@ namespace Ambertation.Collections
 		/// </summary>
 		public new Image this[int index]
 		{
-			get
-			{
-				return ((Image)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((Image)base[index]);
+			set => base[index] = value;
 		}
 
 		/// <summary>
@@ -588,14 +546,8 @@ namespace Ambertation.Collections
 		/// </summary>
 		public Image this[uint index]
 		{
-			get
-			{
-				return ((Image)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((Image)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		/// <summary>

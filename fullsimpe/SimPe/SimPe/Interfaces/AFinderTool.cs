@@ -50,14 +50,8 @@ namespace SimPe.Interfaces
 		[System.ComponentModel.Localizable(true)]
 		public string Title
 		{
-			get
-			{
-				return grp.HeaderText;
-			}
-			set
-			{
-				grp.HeaderText = value;
-			}
+			get => grp.HeaderText;
+			set => grp.HeaderText = value;
 		}
 
 		/// <summary>

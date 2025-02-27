@@ -117,10 +117,7 @@ namespace SimPe.Plugin
 			tskill;
 		public bool ShowBadges
 		{
-			get
-			{
-				return badge;
-			}
+			get => badge;
 			set
 			{
 				if (badge != value)
@@ -133,10 +130,7 @@ namespace SimPe.Plugin
 		}
 		public bool ShowSkills
 		{
-			get
-			{
-				return skill;
-			}
+			get => skill;
 			set
 			{
 				if (skill != value)
@@ -149,10 +143,7 @@ namespace SimPe.Plugin
 		}
 		public bool ShowToddlerSkills
 		{
-			get
-			{
-				return tskill;
-			}
+			get => tskill;
 			set
 			{
 				if (tskill != value)
@@ -169,10 +160,7 @@ namespace SimPe.Plugin
 		[System.ComponentModel.Browsable(false)]
 		public Ngbh NgbhResource
 		{
-			get
-			{
-				return ngbh;
-			}
+			get => ngbh;
 			set
 			{
 				ngbh = value;
@@ -185,10 +173,7 @@ namespace SimPe.Plugin
 		[System.ComponentModel.Browsable(false)]
 		public NgbhSlot Slot
 		{
-			get
-			{
-				return slot;
-			}
+			get => slot;
 			set
 			{
 				slot = value;

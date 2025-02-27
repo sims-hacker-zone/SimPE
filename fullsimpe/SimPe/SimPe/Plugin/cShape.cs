@@ -39,10 +39,7 @@ namespace SimPe.Plugin
 		byte[] data;
 		public byte[] Data
 		{
-			get
-			{
-				return data;
-			}
+			get => data;
 			set
 			{
 				if (value.Length == 9)

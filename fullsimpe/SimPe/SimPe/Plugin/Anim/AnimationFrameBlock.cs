@@ -196,14 +196,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown1
 		{
-			get
-			{
-				return datai[0];
-			}
-			set
-			{
-				datai[0] = value;
-			}
+			get => datai[0];
+			set => datai[0] = value;
 		}
 
 		[
@@ -213,14 +207,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown2
 		{
-			get
-			{
-				return datai[1];
-			}
-			set
-			{
-				datai[1] = value;
-			}
+			get => datai[1];
+			set => datai[1] = value;
 		}
 
 		[
@@ -230,14 +218,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint NameChecksum
 		{
-			get
-			{
-				return datai[2];
-			}
-			set
-			{
-				datai[2] = value;
-			}
+			get => datai[2];
+			set => datai[2] = value;
 		}
 
 #if DEBUG
@@ -261,14 +243,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown4
 		{
-			get
-			{
-				return datai[3];
-			}
-			set
-			{
-				datai[3] = value;
-			}
+			get => datai[3];
+			set => datai[3] = value;
 		}
 
 		[
@@ -315,10 +291,7 @@ namespace SimPe.Plugin.Anim
 
 		public override string Name
 		{
-			get
-			{
-				return base.Name;
-			}
+			get => base.Name;
 			set
 			{
 				base.Name = value;
@@ -331,14 +304,8 @@ namespace SimPe.Plugin.Anim
 		)]
 		public uint Unknown5
 		{
-			get
-			{
-				return datai[4];
-			}
-			set
-			{
-				datai[4] = value;
-			}
+			get => datai[4];
+			set => datai[4] = value;
 		}
 
 		[Description("Bits 24-28 of Unknown5")]
@@ -388,14 +355,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown6
 		{
-			get
-			{
-				return datai[5];
-			}
-			set
-			{
-				datai[5] = value;
-			}
+			get => datai[5];
+			set => datai[5] = value;
 		}
 		#endregion
 

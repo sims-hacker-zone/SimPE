@@ -232,10 +232,7 @@ namespace pjse
 
 		public T this[int index]
 		{
-			get
-			{
-				return items[index];
-			}
+			get => items[index];
 			set
 			{
 				if (!items[index].Equals(value))
@@ -478,14 +475,8 @@ namespace pjse
 
 		object IList.this[int index]
 		{
-			get
-			{
-				throw new Exception("The method or operation is not implemented.");
-			}
-			set
-			{
-				throw new Exception("The method or operation is not implemented.");
-			}
+			get => throw new Exception("The method or operation is not implemented.");
+			set => throw new Exception("The method or operation is not implemented.");
 		}
 
 		#endregion
@@ -528,10 +519,7 @@ namespace pjse
 		protected T parent = default(T);
 		public T Parent
 		{
-			get
-			{
-				return parent;
-			}
+			get => parent;
 			set
 			{
 				if (parent != value)

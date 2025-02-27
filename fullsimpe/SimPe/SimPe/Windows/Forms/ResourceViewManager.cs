@@ -23,10 +23,7 @@ namespace SimPe.Windows.Forms
 		ResourceListViewExt lv;
 		public ResourceListViewExt ListView
 		{
-			get
-			{
-				return lv;
-			}
+			get => lv;
 			set
 			{
 				if (lv != value)
@@ -48,10 +45,7 @@ namespace SimPe.Windows.Forms
 		ResourceTreeViewExt tv;
 		public ResourceTreeViewExt TreeView
 		{
-			get
-			{
-				return tv;
-			}
+			get => tv;
 			set
 			{
 				if (tv != value)
@@ -80,10 +74,7 @@ namespace SimPe.Windows.Forms
 		[Browsable(false)]
 		public Interfaces.Files.IPackageFile Package
 		{
-			get
-			{
-				return pkg;
-			}
+			get => pkg;
 			set
 			{
 				if (pkg != value)

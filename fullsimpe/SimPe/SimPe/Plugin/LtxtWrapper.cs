@@ -150,36 +150,18 @@ namespace SimPe.Plugin
 		#region Accessor methods
 		public LtxtVersion Version
 		{
-			get
-			{
-				return (LtxtVersion)ver;
-			}
-			set
-			{
-				ver = (ushort)value;
-			}
+			get => (LtxtVersion)ver;
+			set => ver = (ushort)value;
 		}
 		internal LtxtSubVersion SubVersion
 		{
-			get
-			{
-				return (LtxtSubVersion)subver;
-			}
-			set
-			{
-				subver = (ushort)value;
-			}
+			get => (LtxtSubVersion)subver;
+			set => subver = (ushort)value;
 		}
 		public Size LotSize
 		{
-			get
-			{
-				return sz;
-			}
-			set
-			{
-				sz = value;
-			}
+			get => sz;
+			set => sz = value;
 		}
 		public LotType Type
 		{
@@ -188,14 +170,8 @@ namespace SimPe.Plugin
 		public byte LotRoads { get; set; } = 0x00;
 		public byte LotRotation
 		{
-			get
-			{
-				return (byte)rotation;
-			}
-			set
-			{
-				rotation = (Rotation)value;
-			}
+			get => (byte)rotation;
+			set => rotation = (Rotation)value;
 		}
 		public uint Unknown0
 		{
@@ -223,10 +199,7 @@ namespace SimPe.Plugin
 		} // Lot Hobby Flags, Use as Boolset
 		internal byte[] Unknown5
 		{
-			get
-			{
-				return unknown_5;
-			}
+			get => unknown_5;
 			set
 			{
 				unknown_5 = new byte[9];
@@ -247,14 +220,8 @@ namespace SimPe.Plugin
 
 		public Point LotPosition
 		{
-			get
-			{
-				return loc;
-			}
-			set
-			{
-				loc = value;
-			}
+			get => loc;
+			set => loc = value;
 		}
 		public float LotElevation
 		{
@@ -286,10 +253,7 @@ namespace SimPe.Plugin
 		}
 		internal byte[] Unknown6
 		{
-			get
-			{
-				return unknown_6;
-			}
+			get => unknown_6;
 			set
 			{
 				unknown_6 = new byte[9];

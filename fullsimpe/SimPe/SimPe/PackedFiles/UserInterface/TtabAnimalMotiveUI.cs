@@ -67,10 +67,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public TtabItemAnimalMotiveItem Motive
 		{
-			get
-			{
-				return item;
-			}
+			get => item;
 			set
 			{
 				if (item != value)

@@ -253,10 +253,7 @@ namespace SimPe.Plugin.Gmdc
 
 				return importoptionsresult;
 			}
-			set
-			{
-				importoptionsresult = value;
-			}
+			set => importoptionsresult = value;
 		}
 
 		/// <summary>
@@ -900,10 +897,7 @@ namespace SimPe.Plugin.Gmdc
 
 				return flname;
 			}
-			set
-			{
-				flname = value;
-			}
+			set => flname = value;
 		}
 	}
 }

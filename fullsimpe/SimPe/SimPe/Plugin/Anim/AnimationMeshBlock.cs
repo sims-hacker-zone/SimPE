@@ -67,14 +67,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown1
 		{
-			get
-			{
-				return datai[0];
-			}
-			set
-			{
-				datai[0] = value;
-			}
+			get => datai[0];
+			set => datai[0] = value;
 		}
 
 		[
@@ -84,14 +78,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown2
 		{
-			get
-			{
-				return datai[1];
-			}
-			set
-			{
-				datai[1] = value;
-			}
+			get => datai[1];
+			set => datai[1] = value;
 		}
 
 		[
@@ -101,14 +89,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown3
 		{
-			get
-			{
-				return datai[2];
-			}
-			set
-			{
-				datai[2] = value;
-			}
+			get => datai[2];
+			set => datai[2] = value;
 		}
 
 		[
@@ -118,14 +100,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown4
 		{
-			get
-			{
-				return datai[3];
-			}
-			set
-			{
-				datai[3] = value;
-			}
+			get => datai[3];
+			set => datai[3] = value;
 		}
 
 		[
@@ -135,27 +111,15 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown5
 		{
-			get
-			{
-				return datai[4];
-			}
-			set
-			{
-				datai[4] = value;
-			}
+			get => datai[4];
+			set => datai[4] = value;
 		}
 
 		short[] datas;
 		public short SUnknown1
 		{
-			get
-			{
-				return datas[0];
-			}
-			set
-			{
-				datas[0] = value;
-			}
+			get => datas[0];
+			set => datas[0] = value;
 		}
 
 		[Description("Number of assigned AnimationFrameBlock Items")]
@@ -166,25 +130,13 @@ namespace SimPe.Plugin.Anim
 		)]
 		public short SUnknown3
 		{
-			get
-			{
-				return datas[2];
-			}
-			set
-			{
-				datas[2] = value;
-			}
+			get => datas[2];
+			set => datas[2] = value;
 		}
 		public short SUnknown4
 		{
-			get
-			{
-				return datas[3];
-			}
-			set
-			{
-				datas[3] = value;
-			}
+			get => datas[3];
+			set => datas[3] = value;
 		}
 		#endregion
 

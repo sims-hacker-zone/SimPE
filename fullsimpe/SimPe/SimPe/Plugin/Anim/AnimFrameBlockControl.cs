@@ -1576,10 +1576,7 @@ namespace SimPe.Plugin.Anim
 		AnimationFrameBlock afb;
 		public AnimationFrameBlock FrameBlock
 		{
-			get
-			{
-				return afb;
-			}
+			get => afb;
 			set
 			{
 				afb = value;

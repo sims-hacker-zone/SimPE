@@ -919,14 +919,8 @@ namespace SimPe.Geometry
 		/// </summary>
 		public new Quaternion this[int index]
 		{
-			get
-			{
-				return ((Quaternion)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((Quaternion)base[index]);
+			set => base[index] = value;
 		}
 
 		/// <summary>
@@ -934,14 +928,8 @@ namespace SimPe.Geometry
 		/// </summary>
 		public Quaternion this[uint index]
 		{
-			get
-			{
-				return ((Quaternion)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((Quaternion)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		/// <summary>

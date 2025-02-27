@@ -16,25 +16,13 @@ namespace SimPe.Plugin
 		public string strung; // the actaul string,
 		public string Strung
 		{
-			get
-			{
-				return strung;
-			}
-			set
-			{
-				strung = value;
-			}
+			get => strung;
+			set => strung = value;
 		}
 		public string Twine
 		{
-			get
-			{
-				return twine;
-			}
-			set
-			{
-				twine = value;
-			}
+			get => twine;
+			set => twine = value;
 		}
 		#endregion
 

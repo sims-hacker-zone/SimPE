@@ -479,15 +479,8 @@ namespace Ambertation
 		/// </summary>
 		public short Value
 		{
-			get
-			{
-				return (short)(LongValue & 0xffff);
-				;
-			}
-			set
-			{
-				LongValue = (short)(value & 0xffff);
-			}
+			get => (short)(LongValue & 0xffff);
+			set => LongValue = (short)(value & 0xffff);
 		}
 
 		/// <summary>
@@ -495,14 +488,8 @@ namespace Ambertation
 		/// </summary>
 		public int IntegerValue
 		{
-			get
-			{
-				return (int)LongValue;
-			}
-			set
-			{
-				LongValue = value;
-			}
+			get => (int)LongValue;
+			set => LongValue = value;
 		}
 
 		/// <summary>
@@ -558,10 +545,7 @@ namespace Ambertation
 		/// </summary>
 		public object ObjectValue
 		{
-			set
-			{
-				SetValue(value, value.GetType());
-			}
+			set => SetValue(value, value.GetType());
 			get
 			{
 				if (Type == typeof(int))

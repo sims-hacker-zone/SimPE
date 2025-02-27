@@ -14,10 +14,7 @@ namespace SimPe.Plugin.UI
 
 		public PackageSettings Settings
 		{
-			get
-			{
-				return settings;
-			}
+			get => settings;
 			set
 			{
 				settings = value;

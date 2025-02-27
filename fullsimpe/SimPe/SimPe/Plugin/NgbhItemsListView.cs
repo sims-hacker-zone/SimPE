@@ -287,10 +287,7 @@ namespace SimPe.Plugin
 		Data.NeighborhoodSlots st;
 		public Data.NeighborhoodSlots SlotType
 		{
-			get
-			{
-				return st;
-			}
+			get => st;
 			set
 			{
 				if (st != value)
@@ -308,10 +305,7 @@ namespace SimPe.Plugin
 		[Browsable(true)]
 		public bool ShowGossip
 		{
-			get
-			{
-				return cc;
-			}
+			get => cc;
 			set
 			{
 				cc = value;
@@ -350,10 +344,7 @@ namespace SimPe.Plugin
 		[Browsable(false)]
 		public Collections.NgbhItems NgbhItems
 		{
-			get
-			{
-				return items;
-			}
+			get => items;
 			set
 			{
 				items = value;
@@ -540,10 +531,7 @@ namespace SimPe.Plugin
 		ImageList sil;
 		public ImageList SmallImageList
 		{
-			get
-			{
-				return sil;
-			}
+			get => sil;
 			set
 			{
 				lv.SmallImageList = value;

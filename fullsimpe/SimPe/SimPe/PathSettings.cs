@@ -168,17 +168,11 @@ namespace SimPe
 		]
 		public string SaveGamePath
 		{
-			get
-			{
-				return GetPath(
+			get => GetPath(
 					PathProvider.SimSavegameFolder,
 					PathProvider.RealSavegamePath
 				);
-			}
-			set
-			{
-				PathProvider.SimSavegameFolder = value;
-			}
+			set => PathProvider.SimSavegameFolder = value;
 		}
 	}
 }

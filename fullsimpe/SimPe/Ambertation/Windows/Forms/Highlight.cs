@@ -49,10 +49,7 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public int Start
 		{
-			get
-			{
-				return start;
-			}
+			get => start;
 			set
 			{
 				start = Math.Min(max - 1, Math.Max(0, value));
@@ -65,14 +62,8 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public int Length
 		{
-			get
-			{
-				return len;
-			}
-			set
-			{
-				len = Math.Max(0, Math.Min(max - start, value));
-			}
+			get => len;
+			set => len = Math.Max(0, Math.Min(max - start, value));
 		}
 
 		/// <summary>
@@ -120,14 +111,8 @@ namespace Ambertation.Collections
 		/// </summary>
 		public new Windows.Forms.Highlight this[int index]
 		{
-			get
-			{
-				return ((Windows.Forms.Highlight)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((Windows.Forms.Highlight)base[index]);
+			set => base[index] = value;
 		}
 
 		/// <summary>
@@ -135,14 +120,8 @@ namespace Ambertation.Collections
 		/// </summary>
 		public Windows.Forms.Highlight this[uint index]
 		{
-			get
-			{
-				return ((Windows.Forms.Highlight)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((Windows.Forms.Highlight)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		/// <summary>

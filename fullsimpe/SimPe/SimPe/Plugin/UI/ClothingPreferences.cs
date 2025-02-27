@@ -40,14 +40,8 @@ namespace SimPe.Plugin.UI
 		public event EventHandler SettingsChanged;
 		public new ClothingSettings Settings
 		{
-			get
-			{
-				return base.Settings as ClothingSettings;
-			}
-			set
-			{
-				base.Settings = value;
-			}
+			get => base.Settings as ClothingSettings;
+			set => base.Settings = value;
 		}
 		public RecolorType Tipe = RecolorType.Unsupported;
 

@@ -111,93 +111,45 @@ namespace SimPe.Plugin
 
 		public float TransformX
 		{
-			get
-			{
-				return (float)Transformation.Translation.X;
-			}
-			set
-			{
-				Transformation.Translation.X = value;
-			}
+			get => (float)Transformation.Translation.X;
+			set => Transformation.Translation.X = value;
 		}
 		public float TransformY
 		{
-			get
-			{
-				return (float)Transformation.Translation.Y;
-			}
-			set
-			{
-				Transformation.Translation.Y = value;
-			}
+			get => (float)Transformation.Translation.Y;
+			set => Transformation.Translation.Y = value;
 		}
 		public float TransformZ
 		{
-			get
-			{
-				return (float)Transformation.Translation.Z;
-			}
-			set
-			{
-				Transformation.Translation.Z = value;
-			}
+			get => (float)Transformation.Translation.Z;
+			set => Transformation.Translation.Z = value;
 		}
 
 		public float RotationX
 		{
-			get
-			{
-				return (float)Transformation.Rotation.X;
-			}
-			set
-			{
-				Transformation.Rotation.X = value;
-			}
+			get => (float)Transformation.Rotation.X;
+			set => Transformation.Rotation.X = value;
 		}
 		public float RotationY
 		{
-			get
-			{
-				return (float)Transformation.Rotation.Y;
-			}
-			set
-			{
-				Transformation.Rotation.Y = value;
-			}
+			get => (float)Transformation.Rotation.Y;
+			set => Transformation.Rotation.Y = value;
 		}
 		public float RotationZ
 		{
-			get
-			{
-				return (float)Transformation.Rotation.Z;
-			}
-			set
-			{
-				Transformation.Rotation.Z = value;
-			}
+			get => (float)Transformation.Rotation.Z;
+			set => Transformation.Rotation.Z = value;
 		}
 		public float RotationW
 		{
-			get
-			{
-				return (float)Transformation.Rotation.W;
-			}
-			set
-			{
-				Transformation.Rotation.W = value;
-			}
+			get => (float)Transformation.Rotation.W;
+			set => Transformation.Rotation.W = value;
 		}
 
 		public Quaternion Rotation
 		{
-			get
-			{
-				return Transformation.Rotation;
-			}
-			set
-			{
-				Transformation.Rotation = value;
-			}
+			get => Transformation.Rotation;
+			set => Transformation.Rotation = value;
 		}
 
 		public int JointReference
@@ -488,14 +440,8 @@ namespace SimPe.Plugin
 		/// </summary>
 		public new TransformNodeItem this[int index]
 		{
-			get
-			{
-				return ((TransformNodeItem)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((TransformNodeItem)base[index]);
+			set => base[index] = value;
 		}
 
 		/// <summary>
@@ -503,14 +449,8 @@ namespace SimPe.Plugin
 		/// </summary>
 		public TransformNodeItem this[uint index]
 		{
-			get
-			{
-				return ((TransformNodeItem)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((TransformNodeItem)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		/// <summary>

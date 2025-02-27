@@ -69,10 +69,7 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public ViewState View
 		{
-			get
-			{
-				return vs;
-			}
+			get => vs;
 			set
 			{
 				if (vs != value)
@@ -91,10 +88,7 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public bool HighlightZeros
 		{
-			get
-			{
-				return hs;
-			}
+			get => hs;
 			set
 			{
 				if (hs != value)
@@ -108,10 +102,7 @@ namespace Ambertation.Windows.Forms
 
 		public override Font Font
 		{
-			get
-			{
-				return base.Font;
-			}
+			get => base.Font;
 			set
 			{
 				base.Font = value;
@@ -129,10 +120,7 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public int OffsetBoxWidth
 		{
-			get
-			{
-				return offsetboxwidth;
-			}
+			get => offsetboxwidth;
 			set
 			{
 				offsetboxwidth = Math.Abs(value);
@@ -149,10 +137,7 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public int CharBoxWidth
 		{
-			get
-			{
-				return charboxwidth;
-			}
+			get => charboxwidth;
 			set
 			{
 				charboxwidth = Math.Abs(value);
@@ -169,10 +154,7 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public Color FocusedForeColor
 		{
-			get
-			{
-				return fcfcol;
-			}
+			get => fcfcol;
 			set
 			{
 				if (fcfcol != value)
@@ -192,10 +174,7 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public Color HighlightColor
 		{
-			get
-			{
-				return highcol;
-			}
+			get => highcol;
 			set
 			{
 				if (highcol != value)
@@ -215,10 +194,7 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public Color HighlightForeColor
 		{
-			get
-			{
-				return highfcol;
-			}
+			get => highfcol;
 			set
 			{
 				if (highfcol != value)
@@ -238,10 +214,7 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public Color HeadColor
 		{
-			get
-			{
-				return hcol;
-			}
+			get => hcol;
 			set
 			{
 				if (hcol != value)
@@ -261,10 +234,7 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public Color GridColor
 		{
-			get
-			{
-				return gcol;
-			}
+			get => gcol;
 			set
 			{
 				if (gcol != value)
@@ -284,10 +254,7 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public Color HeadForeColor
 		{
-			get
-			{
-				return hfcol;
-			}
+			get => hfcol;
 			set
 			{
 				if (hfcol != value)
@@ -307,10 +274,7 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public Color SelectionColor
 		{
-			get
-			{
-				return hlcol;
-			}
+			get => hlcol;
 			set
 			{
 				if (hlcol != value)
@@ -330,10 +294,7 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public Color ZeroCellColor
 		{
-			get
-			{
-				return fccol;
-			}
+			get => fccol;
 			set
 			{
 				if (fccol != value)
@@ -353,10 +314,7 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public Color SelectionForeColor
 		{
-			get
-			{
-				return hlfcol;
-			}
+			get => hlfcol;
 			set
 			{
 				if (hlfcol != value)
@@ -376,10 +334,7 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public Color BackGroundColour
 		{
-			get
-			{
-				return bkgrcol;
-			}
+			get => bkgrcol;
 			set
 			{
 				if (bkgrcol != value)
@@ -399,10 +354,7 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public override Color BackColor
 		{
-			get
-			{
-				return backcol;
-			}
+			get => backcol;
 			set
 			{
 				if (backcol != value)
@@ -422,10 +374,7 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		public byte Blocks
 		{
-			get
-			{
-				return cols;
-			}
+			get => cols;
 			set
 			{
 				if (cols != value)
@@ -439,10 +388,7 @@ namespace Ambertation.Windows.Forms
 		bool grid;
 		public bool ShowGrid
 		{
-			get
-			{
-				return grid;
-			}
+			get => grid;
 			set
 			{
 				if (value != grid)
@@ -473,14 +419,8 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		protected Rectangle BoxMargin
 		{
-			get
-			{
-				return bm;
-			}
-			set
-			{
-				bm = value;
-			}
+			get => bm;
+			set => bm = value;
 		}
 
 		byte[] data;
@@ -491,10 +431,7 @@ namespace Ambertation.Windows.Forms
 		[Browsable(false)]
 		public byte[] Data
 		{
-			get
-			{
-				return data;
-			}
+			get => data;
 			set
 			{
 				data = value;
@@ -544,10 +481,7 @@ namespace Ambertation.Windows.Forms
 
 				return SelectionStart;
 			}
-			set
-			{
-				Select(value, 1);
-			}
+			set => Select(value, 1);
 		}
 
 		/// <summary>
@@ -639,10 +573,7 @@ namespace Ambertation.Windows.Forms
 		[Browsable(false)]
 		public int CurrentRow
 		{
-			get
-			{
-				return crow;
-			}
+			get => crow;
 			set
 			{
 				int v = Math.Max(0, Math.Min(value, Rows - 1));
@@ -2088,10 +2019,7 @@ namespace Ambertation.Windows.Forms
 		[Browsable(false)]
 		public byte[] Selection
 		{
-			get
-			{
-				return GetBlock(SelectionStart, SelectionLength);
-			}
+			get => GetBlock(SelectionStart, SelectionLength);
 			set
 			{
 				if (SelectionStart < 0)
@@ -2270,10 +2198,7 @@ namespace Ambertation.Windows.Forms
 					return (char)0;
 				}
 			}
-			set
-			{
-				SetValue(value);
-			}
+			set => SetValue(value);
 		}
 
 		/// <summary>
@@ -2296,10 +2221,7 @@ namespace Ambertation.Windows.Forms
 
 				return BitConverter.ToUInt16(data, SelectionStart);
 			}
-			set
-			{
-				SetValue(value);
-			}
+			set => SetValue(value);
 		}
 
 		/// <summary>
@@ -2322,10 +2244,7 @@ namespace Ambertation.Windows.Forms
 
 				return BitConverter.ToInt16(data, SelectionStart);
 			}
-			set
-			{
-				SetValue(value);
-			}
+			set => SetValue(value);
 		}
 
 		/// <summary>
@@ -2348,10 +2267,7 @@ namespace Ambertation.Windows.Forms
 
 				return BitConverter.ToUInt32(data, SelectionStart);
 			}
-			set
-			{
-				SetValue(value);
-			}
+			set => SetValue(value);
 		}
 
 		/// <summary>
@@ -2374,10 +2290,7 @@ namespace Ambertation.Windows.Forms
 
 				return BitConverter.ToInt32(data, SelectionStart);
 			}
-			set
-			{
-				SetValue(value);
-			}
+			set => SetValue(value);
 		}
 
 		/// <summary>
@@ -2400,10 +2313,7 @@ namespace Ambertation.Windows.Forms
 
 				return BitConverter.ToUInt64(data, SelectionStart);
 			}
-			set
-			{
-				SetValue(value);
-			}
+			set => SetValue(value);
 		}
 
 		/// <summary>
@@ -2426,10 +2336,7 @@ namespace Ambertation.Windows.Forms
 
 				return BitConverter.ToInt64(data, SelectionStart);
 			}
-			set
-			{
-				SetValue(value);
-			}
+			set => SetValue(value);
 		}
 
 		/// <summary>
@@ -2452,10 +2359,7 @@ namespace Ambertation.Windows.Forms
 
 				return BitConverter.ToSingle(data, SelectionStart);
 			}
-			set
-			{
-				SetValue(value);
-			}
+			set => SetValue(value);
 		}
 
 		/// <summary>
@@ -2478,10 +2382,7 @@ namespace Ambertation.Windows.Forms
 
 				return BitConverter.ToDouble(data, SelectionStart);
 			}
-			set
-			{
-				SetValue(value);
-			}
+			set => SetValue(value);
 		}
 
 		/// <summary>

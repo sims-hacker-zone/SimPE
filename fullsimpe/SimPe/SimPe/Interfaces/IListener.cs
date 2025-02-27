@@ -60,14 +60,8 @@ namespace SimPe.Collections
 		/// </summary>
 		public Interfaces.IListener this[int index]
 		{
-			get
-			{
-				return ((Interfaces.IListener)list[index]);
-			}
-			set
-			{
-				list[index] = value;
-			}
+			get => ((Interfaces.IListener)list[index]);
+			set => list[index] = value;
 		}
 
 		/// <summary>
@@ -75,14 +69,8 @@ namespace SimPe.Collections
 		/// </summary>
 		public Interfaces.IListener this[uint index]
 		{
-			get
-			{
-				return ((Interfaces.IListener)list[(int)index]);
-			}
-			set
-			{
-				list[(int)index] = value;
-			}
+			get => ((Interfaces.IListener)list[(int)index]);
+			set => list[(int)index] = value;
 		}
 
 		#region IEnumerable Member

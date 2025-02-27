@@ -79,10 +79,7 @@ namespace Ambertation.Windows.Forms.Graph
 		LinkControlLineMode lm;
 		public LinkControlLineMode LineMode
 		{
-			get
-			{
-				return lm;
-			}
+			get => lm;
 			set
 			{
 				lm = value;
@@ -92,10 +89,7 @@ namespace Ambertation.Windows.Forms.Graph
 
 		public override bool Quality
 		{
-			get
-			{
-				return base.Quality;
-			}
+			get => base.Quality;
 			set
 			{
 				base.Quality = value;
@@ -105,10 +99,7 @@ namespace Ambertation.Windows.Forms.Graph
 		Color lcol;
 		public Color LinkColor
 		{
-			get
-			{
-				return lcol;
-			}
+			get => lcol;
 			set
 			{
 				if (lcol != value)
@@ -122,10 +113,7 @@ namespace Ambertation.Windows.Forms.Graph
 		Color alcol;
 		public Color ActiveOutgoingLinkColor
 		{
-			get
-			{
-				return alcol;
-			}
+			get => alcol;
 			set
 			{
 				if (alcol != value)
@@ -138,10 +126,7 @@ namespace Ambertation.Windows.Forms.Graph
 		Color ainlcol;
 		public Color ActiveIncomingLinkColor
 		{
-			get
-			{
-				return ainlcol;
-			}
+			get => ainlcol;
 			set
 			{
 				if (ainlcol != value)

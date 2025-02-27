@@ -50,49 +50,25 @@ namespace SimPe.Plugin
 		#region Accessor methods
 		public string FileName
 		{
-			get
-			{
-				return Helper.ToString(filename);
-			}
-			set
-			{
-				filename = Helper.ToBytes(value, 0x40);
-			}
+			get => Helper.ToString(filename);
+			set => filename = Helper.ToBytes(value, 0x40);
 		}
 		public LtxtSubVersion SubVersion
 		{
-			get
-			{
-				return (LtxtSubVersion)subver;
-			}
-			set
-			{
-				subver = (ushort)value;
-			}
+			get => (LtxtSubVersion)subver;
+			set => subver = (ushort)value;
 		}
 		public Size LotSize
 		{
-			get
-			{
-				return sz;
-			}
-			set
-			{
-				sz = value;
-			}
+			get => sz;
+			set => sz = value;
 		}
 		public Ltxt.LotType Type { get; set; } = Ltxt.LotType.Residential;
 		public byte LotRoads { get; set; } = 0x00;
 		public byte LotRotation
 		{
-			get
-			{
-				return (byte)rotation;
-			}
-			set
-			{
-				rotation = (Ltxt.Rotation)value;
-			}
+			get => (byte)rotation;
+			set => rotation = (Ltxt.Rotation)value;
 		}
 		internal UInt32 Unknown0 { get; set; } = 0;
 		public string LotName { get; set; } = "";

@@ -152,10 +152,7 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		public int SelectedIndex
 		{
-			get
-			{
-				return csel;
-			}
+			get => csel;
 			set
 			{
 				if (

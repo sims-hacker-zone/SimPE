@@ -154,10 +154,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public Interfaces.Plugin.IPackedFileUI UIHandler
 		{
-			get
-			{
-				return null;
-			}
+			get => null;
 			set
 			{
 			}

@@ -47,14 +47,8 @@ namespace SimPe.Packages
 		/// </summary>
 		public Data.MetaData.IndexTypes IndexType
 		{
-			get
-			{
-				return hd.IndexType;
-			}
-			set
-			{
-				hd.IndexType = value;
-			}
+			get => hd.IndexType;
+			set => hd.IndexType = value;
 		}
 
 		/// <summary>
@@ -67,14 +61,8 @@ namespace SimPe.Packages
 		/// </summary>
 		public short EPIcon
 		{
-			get
-			{
-				return hd.Epicon;
-			}
-			set
-			{
-				hd.Epicon = value;
-			}
+			get => hd.Epicon;
+			set => hd.Epicon = value;
 		}
 
 		/// <summary>
@@ -82,10 +70,7 @@ namespace SimPe.Packages
 		/// </summary>
 		public short ShowIcon
 		{
-			get
-			{
-				return hd.Showicon;
-			}
+			get => hd.Showicon;
 			set
 			{
 				if (value > 0)

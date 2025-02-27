@@ -78,26 +78,21 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public string FileName
 		{
-			get
-			{
+			get =>
 				/*string s = "";
-				System.IO.MemoryStream ms = new System.IO.MemoryStream(filename);
-				System.IO.BinaryReader br = new System.IO.BinaryReader(ms);
-				try
-				{
-					while (br.BaseStream.Position < br.BaseStream.Length)
-					{
-						if (br.PeekChar()==0) break;
-						s += br.ReadChar();
-					}
-				}
-				catch (Exception) {};*/
-				return Helper.ToString(filename);
-			}
-			set
-			{
-				filename = Helper.SetLength(Helper.ToBytes(value, 64), 64);
-			}
+System.IO.MemoryStream ms = new System.IO.MemoryStream(filename);
+System.IO.BinaryReader br = new System.IO.BinaryReader(ms);
+try
+{
+	while (br.BaseStream.Position < br.BaseStream.Length)
+	{
+		if (br.PeekChar()==0) break;
+		s += br.ReadChar();
+	}
+}
+catch (Exception) {};*/
+				Helper.ToString(filename);
+			set => filename = Helper.SetLength(Helper.ToBytes(value, 64), 64);
 		}
 
 		/// <summary>
@@ -105,14 +100,8 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint Guid
 		{
-			get
-			{
-				return SimId;
-			}
-			set
-			{
-				SimId = value;
-			}
+			get => SimId;
+			set => SimId = value;
 		}
 
 		/// <summary>

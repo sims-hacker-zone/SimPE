@@ -32,58 +32,28 @@ namespace SimPe.Plugin
 		///
 		public int[] GD1
 		{
-			get
-			{
-				return gd1;
-			}
-			set
-			{
-				gd1 = value;
-			}
+			get => gd1;
+			set => gd1 = value;
 		}
 		public int[] GD2
 		{
-			get
-			{
-				return gd2;
-			}
-			set
-			{
-				gd2 = value;
-			}
+			get => gd2;
+			set => gd2 = value;
 		}
 		public int[] GD3
 		{
-			get
-			{
-				return gd3;
-			}
-			set
-			{
-				gd3 = value;
-			}
+			get => gd3;
+			set => gd3 = value;
 		}
 		public int[] GD4
 		{
-			get
-			{
-				return gd4;
-			}
-			set
-			{
-				gd4 = value;
-			}
+			get => gd4;
+			set => gd4 = value;
 		}
 		public string[] Conent
 		{
-			get
-			{
-				return content;
-			}
-			set
-			{
-				content = value;
-			}
+			get => content;
+			set => content = value;
 		}
 
 		public int Qunty { get; set; } = 0;

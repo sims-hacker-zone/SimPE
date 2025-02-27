@@ -40,10 +40,7 @@ namespace SimPe
 
 				return formater;
 			}
-			set
-			{
-				formater = value;
-			}
+			set => formater = value;
 		}
 
 		public static void ResetFormater()

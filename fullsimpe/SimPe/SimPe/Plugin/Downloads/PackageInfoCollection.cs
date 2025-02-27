@@ -53,14 +53,8 @@ namespace SimPe.Plugin.Downloads
 
 		public IPackageInfo this[int index]
 		{
-			get
-			{
-				return list[index] as IPackageInfo;
-			}
-			set
-			{
-				list[index] = value;
-			}
+			get => list[index] as IPackageInfo;
+			set => list[index] = value;
 		}
 
 		public IPackageInfo[] ToArray()

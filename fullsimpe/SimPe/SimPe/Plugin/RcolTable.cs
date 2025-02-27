@@ -11,14 +11,8 @@ namespace SimPe.Plugin
 	{
 		public Rcol this[int index]
 		{
-			get
-			{
-				return List[index] as Rcol;
-			}
-			set
-			{
-				List[index] = value;
-			}
+			get => List[index] as Rcol;
+			set => List[index] = value;
 		}
 
 		public RcolTable()

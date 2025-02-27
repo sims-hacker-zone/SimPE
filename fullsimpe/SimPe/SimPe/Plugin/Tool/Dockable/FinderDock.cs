@@ -269,10 +269,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		bool forcestop;
 		public bool ForcedStop
 		{
-			get
-			{
-				return forcestop;
-			}
+			get => forcestop;
 			set
 			{
 				if (value)

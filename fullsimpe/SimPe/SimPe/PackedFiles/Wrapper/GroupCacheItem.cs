@@ -36,14 +36,8 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public string FileName
 		{
-			get
-			{
-				return flname.Trim().ToLower();
-			}
-			set
-			{
-				flname = value.Trim().ToLower();
-			}
+			get => flname.Trim().ToLower();
+			set => flname = value.Trim().ToLower();
 		}
 
 		uint unknown1;
@@ -140,26 +134,14 @@ namespace SimPe.PackedFiles.Wrapper
 	{
 		public new GroupCacheItem this[int index]
 		{
-			get
-			{
-				return ((GroupCacheItem)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((GroupCacheItem)base[index]);
+			set => base[index] = value;
 		}
 
 		public GroupCacheItem this[uint index]
 		{
-			get
-			{
-				return ((GroupCacheItem)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((GroupCacheItem)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		public int Add(GroupCacheItem item)

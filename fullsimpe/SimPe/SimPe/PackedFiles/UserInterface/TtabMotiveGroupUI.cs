@@ -82,14 +82,8 @@ namespace SimPe.PackedFiles.UserInterface
 		private TtabItemMotiveGroup item = null;
 		public String MGName
 		{
-			get
-			{
-				return gbMotiveGroup.Text;
-			}
-			set
-			{
-				gbMotiveGroup.Text = value;
-			}
+			get => gbMotiveGroup.Text;
+			set => gbMotiveGroup.Text = value;
 		}
 
 		private ArrayList tops = new ArrayList();
@@ -100,10 +94,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public TtabItemMotiveGroup MotiveGroup
 		{
-			get
-			{
-				return item;
-			}
+			get => item;
 			set
 			{
 				if (item != value)

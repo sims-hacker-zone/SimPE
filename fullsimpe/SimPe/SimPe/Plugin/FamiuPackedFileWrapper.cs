@@ -32,14 +32,8 @@ namespace SimPe.Plugin
 		/// </summary>
 		public ushort[] FVal
 		{
-			get
-			{
-				return fval;
-			}
-			set
-			{
-				fval = value;
-			}
+			get => fval;
+			set => fval = value;
 		}
 
 		/// <summary>

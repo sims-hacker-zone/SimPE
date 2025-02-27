@@ -50,50 +50,26 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool HasPhone
 		{
-			get
-			{
-				return GetBit(0);
-			}
-			set
-			{
-				SetBit(0, value);
-			}
+			get => GetBit(0);
+			set => SetBit(0, value);
 		}
 
 		public bool HasBaby
 		{
-			get
-			{
-				return GetBit(1);
-			}
-			set
-			{
-				SetBit(1, value);
-			}
+			get => GetBit(1);
+			set => SetBit(1, value);
 		}
 
 		public bool NewLot
 		{
-			get
-			{
-				return GetBit(2);
-			}
-			set
-			{
-				SetBit(2, value);
-			}
+			get => GetBit(2);
+			set => SetBit(2, value);
 		}
 
 		public bool HasComputer
 		{
-			get
-			{
-				return GetBit(3);
-			}
-			set
-			{
-				SetBit(3, value);
-			}
+			get => GetBit(3);
+			set => SetBit(3, value);
 		}
 	}
 
@@ -180,10 +156,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint[] Members
 		{
-			get
-			{
-				return sims;
-			}
+			get => sims;
 			set
 			{
 				sims = value;

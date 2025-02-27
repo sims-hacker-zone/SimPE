@@ -53,10 +53,7 @@ namespace SimPe.Cache
 				pfd.Tag = this;
 				return pfd;
 			}
-			set
-			{
-				pfd = value;
-			}
+			set => pfd = value;
 		}
 
 		public uint Guid
@@ -77,10 +74,7 @@ namespace SimPe.Cache
 		string[] valuenames;
 		public string[] ValueNames
 		{
-			get
-			{
-				return valuenames;
-			}
+			get => valuenames;
 			set
 			{
 				valuenames = value;
@@ -103,10 +97,7 @@ namespace SimPe.Cache
 
 				return objdname;
 			}
-			set
-			{
-				objdname = value;
-			}
+			set => objdname = value;
 		}
 
 		static Image emptyimg;
@@ -129,10 +120,7 @@ namespace SimPe.Cache
 				}
 				return Icon;
 			}
-			set
-			{
-				Icon = value;
-			}
+			set => Icon = value;
 		}
 
 		/// <summary>

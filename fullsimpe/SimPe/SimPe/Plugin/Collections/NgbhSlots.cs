@@ -96,10 +96,7 @@ namespace SimPe.Plugin.Collections
 
 		public NgbhSlot this[int index]
 		{
-			get
-			{
-				return list[index] as NgbhSlot;
-			}
+			get => list[index] as NgbhSlot;
 			set
 			{
 				list[index] = value;

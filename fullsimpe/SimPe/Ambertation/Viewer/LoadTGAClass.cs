@@ -66,26 +66,14 @@ namespace Ambertation.Viewer
 
 			public byte AlphaBits
 			{
-				get
-				{
-					return (byte)(Descriptor & 0xF);
-				}
-				set
-				{
-					Descriptor = (byte)((Descriptor & ~0xF) | (value & 0xF));
-				}
+				get => (byte)(Descriptor & 0xF);
+				set => Descriptor = (byte)((Descriptor & ~0xF) | (value & 0xF));
 			}
 
 			public bool BottomUp
 			{
-				get
-				{
-					return (Descriptor & 0x20) == 0x20;
-				}
-				set
-				{
-					Descriptor = (byte)((Descriptor & ~0x20) | (value ? 0x20 : 0));
-				}
+				get => (Descriptor & 0x20) == 0x20;
+				set => Descriptor = (byte)((Descriptor & ~0x20) | (value ? 0x20 : 0));
 			}
 
 			public override string ToString()

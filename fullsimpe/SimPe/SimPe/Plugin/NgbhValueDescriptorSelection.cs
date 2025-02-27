@@ -96,10 +96,7 @@ namespace SimPe.Plugin
 			tskill;
 		public bool ShowBadges
 		{
-			get
-			{
-				return badge;
-			}
+			get => badge;
 			set
 			{
 				if (badge != value)
@@ -111,10 +108,7 @@ namespace SimPe.Plugin
 		}
 		public bool ShowSkills
 		{
-			get
-			{
-				return skill;
-			}
+			get => skill;
 			set
 			{
 				if (skill != value)
@@ -126,10 +120,7 @@ namespace SimPe.Plugin
 		}
 		public bool ShowToddlerSkills
 		{
-			get
-			{
-				return tskill;
-			}
+			get => tskill;
 			set
 			{
 				if (tskill != value)

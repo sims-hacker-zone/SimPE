@@ -445,21 +445,9 @@ namespace SimPe
 			return map[exp];
 		}
 
-		public ExpansionItem this[Expansions ep]
-		{
-			get
-			{
-				return GetExpansion(ep);
-			}
-		}
+		public ExpansionItem this[Expansions ep] => GetExpansion(ep);
 
-		public ExpansionItem this[int ver]
-		{
-			get
-			{
-				return GetExpansion(ver);
-			}
-		}
+		public ExpansionItem this[int ver] => GetExpansion(ver);
 
 		/// <summary>
 		/// Bit-wise OR of the groups (from expansions.xreg) of all known games
@@ -522,14 +510,8 @@ namespace SimPe
 
 		protected bool BlurNudityPostEP2
 		{
-			get
-			{
-				return GetBlurNudity();
-			}
-			set
-			{
-				SetBlurNudity(value, Latest.CensorFile, false);
-			}
+			get => GetBlurNudity();
+			set => SetBlurNudity(value, Latest.CensorFile, false);
 		}
 
 		internal void BlurNudityUpdate()

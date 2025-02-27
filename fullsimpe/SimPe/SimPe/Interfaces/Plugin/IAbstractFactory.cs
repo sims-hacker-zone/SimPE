@@ -45,14 +45,8 @@ namespace SimPe.Interfaces.Plugin
 		/// </summary>
 		public virtual IWrapperRegistry LinkedRegistry
 		{
-			get
-			{
-				return registry;
-			}
-			set
-			{
-				registry = value;
-			}
+			get => registry;
+			set => registry = value;
 		}
 
 		/// <summary>
@@ -60,14 +54,8 @@ namespace SimPe.Interfaces.Plugin
 		/// </summary>
 		public virtual IProviderRegistry LinkedProvider
 		{
-			get
-			{
-				return provider;
-			}
-			set
-			{
-				provider = value;
-			}
+			get => provider;
+			set => provider = value;
 		}
 
 		/// <summary>

@@ -317,10 +317,7 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public int Value
 		{
-			get
-			{
-				return val; //(int)Data[0];
-			}
+			get => val; //(int)Data[0];
 			set
 			{
 				Data[0] = value;
@@ -337,14 +334,8 @@ namespace SimPe.Plugin.Gmdc
 		/// </remarks>
 		public byte[] Bytes
 		{
-			get
-			{
-				return BitConverter.GetBytes(Value);
-			}
-			set
-			{
-				Value = BitConverter.ToInt32(value, 0);
-			}
+			get => BitConverter.GetBytes(Value);
+			set => Value = BitConverter.ToInt32(value, 0);
 		}
 
 		public void SetByte(int index, byte val)
@@ -597,14 +588,8 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public new GmdcElementValueBase this[int index]
 		{
-			get
-			{
-				return ((GmdcElementValueBase)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((GmdcElementValueBase)base[index]);
+			set => base[index] = value;
 		}
 
 		/// <summary>
@@ -612,14 +597,8 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcElementValueBase this[uint index]
 		{
-			get
-			{
-				return ((GmdcElementValueBase)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((GmdcElementValueBase)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		/// <summary>
@@ -692,14 +671,8 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public new GmdcElement this[int index]
 		{
-			get
-			{
-				return ((GmdcElement)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((GmdcElement)base[index]);
+			set => base[index] = value;
 		}
 
 		/// <summary>
@@ -707,14 +680,8 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcElement this[uint index]
 		{
-			get
-			{
-				return ((GmdcElement)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((GmdcElement)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		/// <summary>

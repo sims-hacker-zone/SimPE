@@ -48,10 +48,7 @@ namespace SimPe.Geometry
 
 				return x;
 			}
-			set
-			{
-				x = value;
-			}
+			set => x = value;
 		}
 
 		/// <summary>
@@ -68,10 +65,7 @@ namespace SimPe.Geometry
 
 				return y;
 			}
-			set
-			{
-				y = value;
-			}
+			set => y = value;
 		}
 
 		/// <summary>
@@ -174,10 +168,7 @@ namespace SimPe.Geometry
 
 				return z;
 			}
-			set
-			{
-				z = value;
-			}
+			set => z = value;
 		}
 
 		/// <summary>
@@ -503,14 +494,8 @@ namespace SimPe.Geometry
 		/// </summary>
 		public double this[int index]
 		{
-			get
-			{
-				return GetComponent(index);
-			}
-			set
-			{
-				SetComponent(index, value);
-			}
+			get => GetComponent(index);
+			set => SetComponent(index, value);
 		}
 
 		/// <summary>
@@ -689,10 +674,7 @@ namespace SimPe.Geometry
 
 				return w;
 			}
-			set
-			{
-				w = value;
-			}
+			set => w = value;
 		}
 
 		/// <summary>
@@ -811,14 +793,8 @@ namespace SimPe.Geometry
 		/// </summary>
 		public new Vector3i this[int index]
 		{
-			get
-			{
-				return ((Vector3i)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((Vector3i)base[index]);
+			set => base[index] = value;
 		}
 
 		/// <summary>
@@ -826,14 +802,8 @@ namespace SimPe.Geometry
 		/// </summary>
 		public Vector3i this[uint index]
 		{
-			get
-			{
-				return ((Vector3i)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((Vector3i)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		/// <summary>
@@ -906,14 +876,8 @@ namespace SimPe.Geometry
 		/// </summary>
 		public new Vector3f this[int index]
 		{
-			get
-			{
-				return ((Vector3f)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((Vector3f)base[index]);
+			set => base[index] = value;
 		}
 
 		/// <summary>
@@ -921,14 +885,8 @@ namespace SimPe.Geometry
 		/// </summary>
 		public Vector3f this[uint index]
 		{
-			get
-			{
-				return ((Vector3f)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((Vector3f)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		/// <summary>
@@ -1001,14 +959,8 @@ namespace SimPe.Geometry
 		/// </summary>
 		public new Vector2f this[int index]
 		{
-			get
-			{
-				return ((Vector2f)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((Vector2f)base[index]);
+			set => base[index] = value;
 		}
 
 		/// <summary>
@@ -1016,14 +968,8 @@ namespace SimPe.Geometry
 		/// </summary>
 		public Vector2f this[uint index]
 		{
-			get
-			{
-				return ((Vector2f)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((Vector2f)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		/// <summary>
@@ -1096,14 +1042,8 @@ namespace SimPe.Geometry
 		/// </summary>
 		public new Vector4f this[int index]
 		{
-			get
-			{
-				return ((Vector4f)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((Vector4f)base[index]);
+			set => base[index] = value;
 		}
 
 		/// <summary>
@@ -1111,14 +1051,8 @@ namespace SimPe.Geometry
 		/// </summary>
 		public Vector4f this[uint index]
 		{
-			get
-			{
-				return ((Vector4f)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((Vector4f)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		/// <summary>

@@ -41,14 +41,8 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public string Text
 		{
-			get
-			{
-				return text;
-			}
-			set
-			{
-				text = value;
-			}
+			get => text;
+			set => text = value;
 		}
 
 		#region IWrapper Member

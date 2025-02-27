@@ -64,14 +64,8 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public Hobbies HobbyPredistined
 		{
-			get
-			{
-				return (Hobbies)predestined;
-			}
-			set
-			{
-				predestined = (ushort)value;
-			}
+			get => (Hobbies)predestined;
+			set => predestined = (ushort)value;
 		}
 
 		public ushort LongtermAspiration
@@ -91,86 +85,44 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort HungerDecayModifier
 		{
-			get
-			{
-				return decays[0];
-			}
-			set
-			{
-				decays[0] = value;
-			}
+			get => decays[0];
+			set => decays[0] = value;
 		}
 
 		public ushort ComfortDecayModifier
 		{
-			get
-			{
-				return decays[1];
-			}
-			set
-			{
-				decays[1] = value;
-			}
+			get => decays[1];
+			set => decays[1] = value;
 		}
 
 		public ushort BladderDecayModifier
 		{
-			get
-			{
-				return decays[2];
-			}
-			set
-			{
-				decays[2] = value;
-			}
+			get => decays[2];
+			set => decays[2] = value;
 		}
 
 		public ushort EnergyDecayModifier
 		{
-			get
-			{
-				return decays[3];
-			}
-			set
-			{
-				decays[3] = value;
-			}
+			get => decays[3];
+			set => decays[3] = value;
 		}
 
 		public ushort HygieneDecayModifier
 		{
-			get
-			{
-				return decays[4];
-			}
-			set
-			{
-				decays[4] = value;
-			}
+			get => decays[4];
+			set => decays[4] = value;
 		}
 
 		public ushort FunDecayModifier
 		{
-			get
-			{
-				return decays[5];
-			}
-			set
-			{
-				decays[5] = value;
-			}
+			get => decays[5];
+			set => decays[5] = value;
 		}
 
 		public ushort SocialPublicDecayModifier
 		{
-			get
-			{
-				return decays[6];
-			}
-			set
-			{
-				decays[6] = value;
-			}
+			get => decays[6];
+			set => decays[6] = value;
 		}
 
 		public uint BugCollection

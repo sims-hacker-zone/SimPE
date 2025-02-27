@@ -50,10 +50,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 
 				return flname;
 			}
-			set
-			{
-				flname = value;
-			}
+			set => flname = value;
 		}
 
 		ElementOrder cmp;
@@ -68,10 +65,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 
 				return cmp;
 			}
-			set
-			{
-				cmp = value;
-			}
+			set => cmp = value;
 		}
 
 		public bool Process(

@@ -21,10 +21,7 @@ namespace SimPe.Plugin
 
 				return textures;
 			}
-			set
-			{
-				textures = value;
-			}
+			set => textures = value;
 		}
 
 		public MaterialDefinition MaterialDefinition

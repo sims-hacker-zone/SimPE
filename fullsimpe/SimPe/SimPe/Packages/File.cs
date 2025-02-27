@@ -97,10 +97,7 @@ namespace SimPe.Packages
 		/// </summary>
 		public bool Persistent
 		{
-			get
-			{
-				return persistent;
-			}
+			get => persistent;
 			set
 			{
 				/*if (!persistent && value) this.OpenReader();
@@ -694,10 +691,7 @@ namespace SimPe.Packages
 		/// </summary>
 		public PackedFileDescriptor FileList
 		{
-			get
-			{
-				return filelist;
-			}
+			get => filelist;
 			set
 			{
 				filelist = value;
@@ -885,10 +879,7 @@ namespace SimPe.Packages
 		/// </summary>
 		public string FileName
 		{
-			get
-			{
-				return flname;
-			}
+			get => flname;
 			set
 			{
 				flname = value;

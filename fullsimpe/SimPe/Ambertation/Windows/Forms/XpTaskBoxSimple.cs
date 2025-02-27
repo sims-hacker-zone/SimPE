@@ -71,10 +71,7 @@ namespace Ambertation.Windows.Forms
 			htc;
 		public Color LeftHeaderColor
 		{
-			get
-			{
-				return lhc;
-			}
+			get => lhc;
 			set
 			{
 				if (lhc != value)
@@ -87,10 +84,7 @@ namespace Ambertation.Windows.Forms
 
 		public Color RightHeaderColor
 		{
-			get
-			{
-				return rhc;
-			}
+			get => rhc;
 			set
 			{
 				if (rhc != value)
@@ -103,10 +97,7 @@ namespace Ambertation.Windows.Forms
 
 		public Color BorderColor
 		{
-			get
-			{
-				return bc;
-			}
+			get => bc;
 			set
 			{
 				if (bc != value)
@@ -119,10 +110,7 @@ namespace Ambertation.Windows.Forms
 
 		public Color HeaderTextColor
 		{
-			get
-			{
-				return htc;
-			}
+			get => htc;
 			set
 			{
 				if (htc != value)
@@ -135,10 +123,7 @@ namespace Ambertation.Windows.Forms
 
 		public Color BodyColor
 		{
-			get
-			{
-				return bodc;
-			}
+			get => bodc;
 			set
 			{
 				if (bodc != value)
@@ -152,10 +137,7 @@ namespace Ambertation.Windows.Forms
 		Font font;
 		public Font HeaderFont
 		{
-			get
-			{
-				return font;
-			}
+			get => font;
 			set
 			{
 				if (font != value)
@@ -206,10 +188,7 @@ namespace Ambertation.Windows.Forms
 		Size icsz;
 		public Size IconSize
 		{
-			get
-			{
-				return icsz;
-			}
+			get => icsz;
 			set
 			{
 				if (icsz != value)
@@ -223,10 +202,7 @@ namespace Ambertation.Windows.Forms
 		Point icpt;
 		public Point IconLocation
 		{
-			get
-			{
-				return icpt;
-			}
+			get => icpt;
 			set
 			{
 				if (icpt != value)
@@ -373,10 +349,7 @@ namespace Ambertation.Windows.Forms
 		]
 		public string HeaderText
 		{
-			get
-			{
-				return mstrHeaderText;
-			}
+			get => mstrHeaderText;
 			set
 			{
 				mstrHeaderText = value;
@@ -392,10 +365,7 @@ namespace Ambertation.Windows.Forms
 		]
 		public Image Icon
 		{
-			get
-			{
-				return mIcon;
-			}
+			get => mIcon;
 			set
 			{
 				mIcon = value;
@@ -413,10 +383,7 @@ namespace Ambertation.Windows.Forms
 		]
 		public int HeaderHeight
 		{
-			get
-			{
-				return headerh;
-			}
+			get => headerh;
 			set
 			{
 				headerh = value;

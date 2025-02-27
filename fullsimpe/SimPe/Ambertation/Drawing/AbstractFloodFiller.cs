@@ -59,76 +59,40 @@ namespace Ambertation.Drawing
 
 		public Color FillColor
 		{
-			get
-			{
-				return m_fillcolorcolor;
-			}
-			set
-			{
-				m_fillcolorcolor = value;
-			}
+			get => m_fillcolorcolor;
+			set => m_fillcolorcolor = value;
 		}
 
 		public byte[] Tolerance
 		{
-			get
-			{
-				return m_Tolerance;
-			}
-			set
-			{
-				m_Tolerance = value;
-			}
+			get => m_Tolerance;
+			set => m_Tolerance = value;
 		}
 
 		public int TimeBenchmark => m_TimeBenchmark;
 
 		public bool FillDiagonal
 		{
-			get
-			{
-				return m_FillDiagonal;
-			}
-			set
-			{
-				m_FillDiagonal = value;
-			}
+			get => m_FillDiagonal;
+			set => m_FillDiagonal = value;
 		}
 
 		public FloodFillStyle FillStyle
 		{
-			get
-			{
-				return m_FillStyle;
-			}
-			set
-			{
-				m_FillStyle = value;
-			}
+			get => m_FillStyle;
+			set => m_FillStyle = value;
 		}
 
 		public Bitmap Bmp
 		{
-			get
-			{
-				return m_Bmp;
-			}
-			set
-			{
-				m_Bmp = value;
-			}
+			get => m_Bmp;
+			set => m_Bmp = value;
 		}
 
 		public Point Pt
 		{
-			get
-			{
-				return m_Pt;
-			}
-			set
-			{
-				m_Pt = value;
-			}
+			get => m_Pt;
+			set => m_Pt = value;
 		}
 
 		public void FloodFill()

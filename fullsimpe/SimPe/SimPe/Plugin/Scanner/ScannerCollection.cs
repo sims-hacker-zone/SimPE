@@ -43,13 +43,7 @@ namespace SimPe.Plugin.Scanner
 			list.Clear();
 		}
 
-		public IScannerPluginBase this[int index]
-		{
-			get
-			{
-				return list[index] as IScannerPluginBase;
-			}
-		}
+		public IScannerPluginBase this[int index] => list[index] as IScannerPluginBase;
 
 		#region IEnumerable Member
 

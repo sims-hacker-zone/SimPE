@@ -50,14 +50,8 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public string Name
 		{
-			get
-			{
-				return Helper.ToString(PlainName);
-			}
-			set
-			{
-				PlainName = Helper.ToBytes(value, 0);
-			}
+			get => Helper.ToString(PlainName);
+			set => PlainName = Helper.ToBytes(value, 0);
 		}
 
 		/// <summary>

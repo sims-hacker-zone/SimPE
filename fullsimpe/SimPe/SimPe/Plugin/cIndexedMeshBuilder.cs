@@ -561,14 +561,8 @@ namespace SimPe.Plugin
 		/// </summary>
 		public new IndexedMeshBuilderItem this[int index]
 		{
-			get
-			{
-				return ((IndexedMeshBuilderItem)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((IndexedMeshBuilderItem)base[index]);
+			set => base[index] = value;
 		}
 
 		/// <summary>
@@ -576,14 +570,8 @@ namespace SimPe.Plugin
 		/// </summary>
 		public IndexedMeshBuilderItem this[uint index]
 		{
-			get
-			{
-				return ((IndexedMeshBuilderItem)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((IndexedMeshBuilderItem)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		/// <summary>

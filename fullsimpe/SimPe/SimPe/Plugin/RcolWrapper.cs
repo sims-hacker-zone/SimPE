@@ -51,10 +51,7 @@ namespace SimPe.Plugin
 		Interfaces.Files.IPackedFileDescriptor[] reffiles;
 		public Interfaces.Files.IPackedFileDescriptor[] ReferencedFiles
 		{
-			get
-			{
-				return Duff ? new Interfaces.Files.IPackedFileDescriptor[0] : reffiles;
-			}
+			get => Duff ? new Interfaces.Files.IPackedFileDescriptor[0] : reffiles;
 			set
 			{
 				if (Duff)
@@ -69,10 +66,7 @@ namespace SimPe.Plugin
 		IRcolBlock[] blocks;
 		public IRcolBlock[] Blocks
 		{
-			get
-			{
-				return Duff ? new IRcolBlock[0] : blocks;
-			}
+			get => Duff ? new IRcolBlock[0] : blocks;
 			set
 			{
 				if (Duff)

@@ -52,10 +52,7 @@ namespace SimPe.Plugin
 		uint version;
 		public NgbhVersion Version
 		{
-			get
-			{
-				return (NgbhVersion)version;
-			}
+			get => (NgbhVersion)version;
 			set
 			{
 				version = (uint)value;
@@ -78,10 +75,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public NgbhSlotList[] PreItems
 		{
-			get
-			{
-				return preitems;
-			}
+			get => preitems;
 			set
 			{
 				preitems = value;
@@ -94,10 +88,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public Collections.NgbhSlots Lots //SlotsA
 		{
-			get
-			{
-				return slota;
-			}
+			get => slota;
 			set
 			{
 				slota = value;
@@ -110,10 +101,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public Collections.NgbhSlots Families //SlotsB
 		{
-			get
-			{
-				return slotb;
-			}
+			get => slotb;
 			set
 			{
 				slotb = value;
@@ -126,10 +114,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public Collections.NgbhSlots Sims //SlotsC
 		{
-			get
-			{
-				return slotc;
-			}
+			get => slotc;
 			set
 			{
 				slotc = value;

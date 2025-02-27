@@ -156,10 +156,7 @@ namespace SimPe
 		/// </summary>
 		public static System.Windows.Forms.Form ApplicationForm
 		{
-			get
-			{
-				return appform;
-			}
+			get => appform;
 			set
 			{
 				appform = value;

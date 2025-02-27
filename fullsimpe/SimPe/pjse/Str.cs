@@ -114,14 +114,8 @@ namespace pjse
 			private Hashtable groupHash = new Hashtable();
 			public Str this[uint group, uint instance]
 			{
-				get
-				{
-					return this[group, instance, SimPe.Data.MetaData.STRING_FILE];
-				}
-				set
-				{
-					this[group, instance, SimPe.Data.MetaData.STRING_FILE] = value;
-				}
+				get => this[group, instance, SimPe.Data.MetaData.STRING_FILE];
+				set => this[group, instance, SimPe.Data.MetaData.STRING_FILE] = value;
 			}
 
 			public Str this[uint group, uint instance, uint type]
@@ -343,13 +337,7 @@ namespace pjse
 			}
 		}
 
-		public FallbackStrItem this[int sid]
-		{
-			get
-			{
-				return this[1, sid];
-			}
-		}
+		public FallbackStrItem this[int sid] => this[1, sid];
 
 		public FallbackStrItem this[byte lid, int sid]
 		{

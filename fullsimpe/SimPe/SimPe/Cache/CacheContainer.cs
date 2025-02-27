@@ -120,14 +120,8 @@ namespace SimPe.Cache
 		/// </summary>
 		public string FileName
 		{
-			get
-			{
-				return filename;
-			}
-			set
-			{
-				filename = value.Trim().ToLower();
-			}
+			get => filename;
+			set => filename = value.Trim().ToLower();
 		}
 
 		/// <summary>

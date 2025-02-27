@@ -30,10 +30,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		[Browsable(false)]
 		public PackedFiles.Wrapper.Cpf SelectedXObject
 		{
-			get
-			{
-				return cpf;
-			}
+			get => cpf;
 			set
 			{
 				if (cpf != value)

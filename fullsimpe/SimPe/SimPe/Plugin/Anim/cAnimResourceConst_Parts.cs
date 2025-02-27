@@ -74,14 +74,8 @@ namespace SimPe.Plugin.Anim
 		[Description("Name of the selected Item")]
 		public virtual string Name
 		{
-			get
-			{
-				return name;
-			}
-			set
-			{
-				name = value;
-			}
+			get => name;
+			set => name = value;
 		}
 
 		internal AnimBlock()
@@ -159,14 +153,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown1
 		{
-			get
-			{
-				return datai[0];
-			}
-			set
-			{
-				datai[0] = value;
-			}
+			get => datai[0];
+			set => datai[0] = value;
 		}
 
 		[
@@ -176,14 +164,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown2
 		{
-			get
-			{
-				return datai[1];
-			}
-			set
-			{
-				datai[1] = value;
-			}
+			get => datai[1];
+			set => datai[1] = value;
 		}
 
 		[
@@ -193,14 +175,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown3
 		{
-			get
-			{
-				return datai[2];
-			}
-			set
-			{
-				datai[2] = value;
-			}
+			get => datai[2];
+			set => datai[2] = value;
 		}
 
 		[Description(
@@ -330,26 +306,14 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown1
 		{
-			get
-			{
-				return datai[0];
-			}
-			set
-			{
-				datai[0] = value;
-			}
+			get => datai[0];
+			set => datai[0] = value;
 		}
 
 		public uint Unknown2
 		{
-			get
-			{
-				return datai[1];
-			}
-			set
-			{
-				datai[1] = value;
-			}
+			get => datai[1];
+			set => datai[1] = value;
 		}
 
 		public string Unknown2Binary
@@ -439,14 +403,8 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown1
 		{
-			get
-			{
-				return datai[0];
-			}
-			set
-			{
-				datai[0] = value;
-			}
+			get => datai[0];
+			set => datai[0] = value;
 		}
 
 		[
@@ -456,49 +414,25 @@ namespace SimPe.Plugin.Anim
 		]
 		public uint Unknown2
 		{
-			get
-			{
-				return datai[1];
-			}
-			set
-			{
-				datai[1] = value;
-			}
+			get => datai[1];
+			set => datai[1] = value;
 		}
 
 		short[] datas;
 		public short SUnknown1
 		{
-			get
-			{
-				return datas[0];
-			}
-			set
-			{
-				datas[0] = value;
-			}
+			get => datas[0];
+			set => datas[0] = value;
 		}
 		public short SUnknown2
 		{
-			get
-			{
-				return datas[1];
-			}
-			set
-			{
-				datas[1] = value;
-			}
+			get => datas[1];
+			set => datas[1] = value;
 		}
 		public short SUnknown3
 		{
-			get
-			{
-				return datas[2];
-			}
-			set
-			{
-				datas[2] = value;
-			}
+			get => datas[2];
+			set => datas[2] = value;
 		}
 		#endregion
 

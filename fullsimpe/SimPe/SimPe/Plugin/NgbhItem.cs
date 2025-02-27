@@ -45,26 +45,14 @@ namespace SimPe.Plugin
 
 		public bool IsVisible
 		{
-			get
-			{
-				return GetBit(0);
-			}
-			set
-			{
-				SetBit(0, value);
-			}
+			get => GetBit(0);
+			set => SetBit(0, value);
 		}
 
 		public bool IsControler
 		{
-			get
-			{
-				return !GetBit(1);
-			}
-			set
-			{
-				SetBit(1, !value);
-			}
+			get => !GetBit(1);
+			set => SetBit(1, !value);
 		}
 	}
 
@@ -197,10 +185,7 @@ namespace SimPe.Plugin
 		ushort unknown2;
 		public uint InventoryNumber
 		{
-			get
-			{
-				return invnr;
-			}
+			get => invnr;
 			set
 			{
 				if (invnr != value)
@@ -216,10 +201,7 @@ namespace SimPe.Plugin
 
 		public ushort UnknownNumber
 		{
-			get
-			{
-				return unknown2;
-			}
+			get => unknown2;
 			set
 			{
 				unknown2 = value;
@@ -245,10 +227,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public uint Guid
 		{
-			get
-			{
-				return guid;
-			}
+			get => guid;
 			set
 			{
 				if (guid != value)
@@ -270,10 +249,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public NgbhItemFlags Flags
 		{
-			get
-			{
-				return flags;
-			}
+			get => flags;
 			set
 			{
 				flags = value;
@@ -289,10 +265,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public ushort[] Data
 		{
-			get
-			{
-				return data;
-			}
+			get => data;
 			set
 			{
 				data = value;
@@ -456,14 +429,8 @@ namespace SimPe.Plugin
 		/// </summary>
 		public ushort Value
 		{
-			get
-			{
-				return GetValue(0x00);
-			}
-			set
-			{
-				PutValue(0x00, value);
-			}
+			get => GetValue(0x00);
+			set => PutValue(0x00, value);
 		}
 
 		/// <summary>
@@ -471,27 +438,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public ushort OwnerInstance
 		{
-			get
-			{
-				return GetValue(0x04);
-			}
-			set
-			{
-				PutValue(0x04, value);
-				//flags.IsGossip = this.IsGossip;
-			}
+			get => GetValue(0x04);
+			set => PutValue(0x04, value);//flags.IsGossip = this.IsGossip;
 		}
 
 		public uint SubjectGuid
 		{
-			get
-			{
-				return SimID;
-			}
-			set
-			{
-				SimID = value;
-			}
+			get => SimID;
+			set => SimID = value;
 		}
 
 		/// <summary>
@@ -546,14 +500,8 @@ namespace SimPe.Plugin
 		/// </summary>
 		public ushort SimInstance
 		{
-			get
-			{
-				return GetValue(0x0C);
-			}
-			set
-			{
-				PutValue(0x0C, value);
-			}
+			get => GetValue(0x0C);
+			set => PutValue(0x0C, value);
 		}
 
 		public bool IsSimSubject => SimInstance > 0;

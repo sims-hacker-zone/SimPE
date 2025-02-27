@@ -42,14 +42,8 @@ namespace SimPe.Plugin
 		FixVersion ver;
 		public FixVersion FixVersion
 		{
-			get
-			{
-				return ver;
-			}
-			set
-			{
-				ver = value;
-			}
+			get => ver;
+			set => ver = value;
 		}
 
 		public bool RemoveNonDefaultTextReferences

@@ -118,10 +118,7 @@ namespace SimPe.Cache
 				pfd.Tag = this;
 				return pfd;
 			}
-			set
-			{
-				pfd = value;
-			}
+			set => pfd = value;
 		}
 
 		/// <summary>

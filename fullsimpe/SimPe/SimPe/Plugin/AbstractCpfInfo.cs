@@ -10,17 +10,11 @@ namespace SimPe.Plugin
 
 		public Cpf PropertySet
 		{
-			get
-			{
-				return propertySet;
-			}
-			set
-			{
-				propertySet = value ?? throw new ArgumentNullException(
+			get => propertySet;
+			set => propertySet = value ?? throw new ArgumentNullException(
 						"PropertySet",
 						"The provided Cpf instance cannot be null"
 					);
-			}
 		}
 
 		public bool Enabled
@@ -76,10 +70,7 @@ namespace SimPe.Plugin
 
 				return Guid.Empty;
 			}
-			set
-			{
-				SetValue("family", value.ToString());
-			}
+			set => SetValue("family", value.ToString());
 		}
 
 		public string Name
@@ -93,10 +84,7 @@ namespace SimPe.Plugin
 
 				return null;
 			}
-			set
-			{
-				SetValue("name", value);
-			}
+			set => SetValue("name", value);
 		}
 
 		#endregion

@@ -317,26 +317,14 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ScorItem this[string name]
 		{
-			get
-			{
-				return list[FindIndex(name)];
-			}
-			set
-			{
-				list[FindIndex(name)] = value;
-			}
+			get => list[FindIndex(name)];
+			set => list[FindIndex(name)] = value;
 		}
 
 		public ScorItem this[int index]
 		{
-			get
-			{
-				return list[index];
-			}
-			set
-			{
-				list[index] = value;
-			}
+			get => list[index];
+			set => list[index] = value;
 		}
 
 		#region IEnumerable Member

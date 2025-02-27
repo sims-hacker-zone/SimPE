@@ -42,85 +42,43 @@ namespace SimPe.Plugin
 		#region Default Attribute
 		public uint StringInstance
 		{
-			get
-			{
-				return GetSaveItem("stringSet").UIntegerValue;
-			}
-			set
-			{
-				GetSaveItem("stringSet").UIntegerValue = value;
-			}
+			get => GetSaveItem("stringSet").UIntegerValue;
+			set => GetSaveItem("stringSet").UIntegerValue = value;
 		}
 
 		public uint Guid
 		{
-			get
-			{
-				return GetSaveItem("id").UIntegerValue;
-			}
-			set
-			{
-				GetSaveItem("id").UIntegerValue = value;
-			}
+			get => GetSaveItem("id").UIntegerValue;
+			set => GetSaveItem("id").UIntegerValue = value;
 		}
 
 		public uint IconInstance
 		{
-			get
-			{
-				return GetSaveItem("primaryIcon").UIntegerValue;
-			}
-			set
-			{
-				GetSaveItem("primaryIcon").UIntegerValue = value;
-			}
+			get => GetSaveItem("primaryIcon").UIntegerValue;
+			set => GetSaveItem("primaryIcon").UIntegerValue = value;
 		}
 
 		public uint SecondaryIconInstance
 		{
-			get
-			{
-				return GetSaveItem("secondaryIcon").UIntegerValue;
-			}
-			set
-			{
-				GetSaveItem("secondaryIcon").UIntegerValue = value;
-			}
+			get => GetSaveItem("secondaryIcon").UIntegerValue;
+			set => GetSaveItem("secondaryIcon").UIntegerValue = value;
 		}
 
 		public int Score
 		{
-			get
-			{
-				return GetSaveItem("score").IntegerValue;
-			}
-			set
-			{
-				GetSaveItem("score").IntegerValue = value;
-			}
+			get => GetSaveItem("score").IntegerValue;
+			set => GetSaveItem("score").IntegerValue = value;
 		}
 
 		public int Influence
 		{
-			get
-			{
-				return GetSaveItem("influence").IntegerValue;
-			}
-			set
-			{
-				GetSaveItem("influence").IntegerValue = value;
-			}
+			get => GetSaveItem("influence").IntegerValue;
+			set => GetSaveItem("influence").IntegerValue = value;
 		}
 		public string NodeText
 		{
-			get
-			{
-				return GetSaveItem("nodeText").StringValue;
-			}
-			set
-			{
-				GetSaveItem("nodeText").StringValue = value;
-			}
+			get => GetSaveItem("nodeText").StringValue;
+			set => GetSaveItem("nodeText").StringValue = value;
 		}
 
 		public Interfaces.Files.IPackedFileDescriptor IconFileDescriptor

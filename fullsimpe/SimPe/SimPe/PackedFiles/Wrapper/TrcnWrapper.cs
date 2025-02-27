@@ -62,10 +62,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public string FileName
 		{
-			get
-			{
-				return Helper.ToString(filename);
-			}
+			get => Helper.ToString(filename);
 			set
 			{
 				if (!Helper.ToString(filename).Equals(value))
@@ -81,10 +78,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public uint Version
 		{
-			get
-			{
-				return header[1];
-			}
+			get => header[1];
 			set
 			{
 				if (header[1] != value)
@@ -295,10 +289,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Accessor methods
 		public uint Used
 		{
-			get
-			{
-				return used;
-			}
+			get => used;
 			set
 			{
 				if (used != value)
@@ -311,10 +302,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public uint ConstId
 		{
-			get
-			{
-				return constId;
-			}
+			get => constId;
 			set
 			{
 				if (constId != value)
@@ -327,10 +315,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public string ConstName
 		{
-			get
-			{
-				return constName;
-			}
+			get => constName;
 			set
 			{
 				if (constName != value)
@@ -343,10 +328,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public string ConstDesc
 		{
-			get
-			{
-				return constDesc;
-			}
+			get => constDesc;
 			set
 			{
 				if (constDesc != value)
@@ -359,10 +341,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort DefValue
 		{
-			get
-			{
-				return defValue;
-			}
+			get => defValue;
 			set
 			{
 				if (defValue != value)
@@ -375,10 +354,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort MinValue
 		{
-			get
-			{
-				return minValue;
-			}
+			get => minValue;
 			set
 			{
 				if (minValue != value)
@@ -391,10 +367,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ushort MaxValue
 		{
-			get
-			{
-				return maxValue;
-			}
+			get => maxValue;
 			set
 			{
 				if (maxValue != value)

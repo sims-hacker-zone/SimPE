@@ -54,10 +54,7 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public ElementSorting Sorting
 		{
-			get
-			{
-				return s;
-			}
+			get => s;
 			set
 			{
 				s = value;

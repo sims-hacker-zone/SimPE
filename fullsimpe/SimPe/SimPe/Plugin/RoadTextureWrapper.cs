@@ -249,14 +249,8 @@ namespace SimPe.Plugin
 
 		public object this[object key]
 		{
-			get
-			{
-				return values[key];
-			}
-			set
-			{
-				values[key] = value;
-			}
+			get => values[key];
+			set => values[key] = value;
 		}
 
 		public IEnumerator GetEnumerator()

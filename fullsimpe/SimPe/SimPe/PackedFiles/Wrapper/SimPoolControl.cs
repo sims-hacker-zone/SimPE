@@ -58,10 +58,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 				return (ExtSDesc)gp.SelectedItems[0].Tag;
 			}
-			set
-			{
-				FindItem(value);
-			}
+			set => FindItem(value);
 		}
 
 		public ExtSDesc SelectedSim
@@ -75,19 +72,13 @@ namespace SimPe.PackedFiles.Wrapper
 
 				return (ExtSDesc)gp.SelectedItems[0].Tag;
 			}
-			set
-			{
-				FindItem(value);
-			}
+			set => FindItem(value);
 		}
 
 		Interfaces.Files.IPackageFile pkg;
 		public Interfaces.Files.IPackageFile Package
 		{
-			get
-			{
-				return pkg;
-			}
+			get => pkg;
 			set
 			{
 				if (pkg != value)
@@ -149,10 +140,7 @@ namespace SimPe.PackedFiles.Wrapper
 		bool details;
 		public bool SimDetails
 		{
-			get
-			{
-				return details;
-			}
+			get => details;
 			set
 			{
 				if (details != value)
@@ -807,14 +795,8 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public int[] TileColumns
 		{
-			get
-			{
-				return gp.TileColumns;
-			}
-			set
-			{
-				gp.TileColumns = value;
-			}
+			get => gp.TileColumns;
+			set => gp.TileColumns = value;
 		}
 
 		public void EnsureVisible(int index)

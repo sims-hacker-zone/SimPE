@@ -63,10 +63,7 @@ namespace Ambertation.Windows.Forms.Graph
 		bool lk;
 		public bool Movable
 		{
-			get
-			{
-				return lk;
-			}
+			get => lk;
 			set
 			{
 				if (lk != value)
@@ -80,10 +77,7 @@ namespace Ambertation.Windows.Forms.Graph
 		Font fnt;
 		public Font Font
 		{
-			get
-			{
-				return fnt;
-			}
+			get => fnt;
 			set
 			{
 				if (fnt != value)

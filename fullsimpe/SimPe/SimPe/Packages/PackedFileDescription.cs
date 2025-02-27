@@ -49,10 +49,7 @@ namespace SimPe.Packages
 		/// </summary>
 		public UInt32 Type
 		{
-			get
-			{
-				return type;
-			}
+			get => type;
 			set
 			{
 				if (type != value)
@@ -78,10 +75,7 @@ namespace SimPe.Packages
 		/// </summary>
 		public UInt32 Group
 		{
-			get
-			{
-				return group;
-			}
+			get => group;
 			set
 			{
 				if (group != value)
@@ -102,10 +96,7 @@ namespace SimPe.Packages
 		/// </summary>
 		public UInt32 Instance
 		{
-			get
-			{
-				return instance;
-			}
+			get => instance;
 			set
 			{
 				if (instance != value)
@@ -128,10 +119,7 @@ namespace SimPe.Packages
 		/// <remarks>Only in Version 1.1 of package Files</remarks>
 		public UInt32 SubType
 		{
-			get
-			{
-				return subtype;
-			}
+			get => subtype;
 			set
 			{
 				if (subtype != value)
@@ -211,10 +199,7 @@ namespace SimPe.Packages
 					return userdata.Length;
 				}
 			}
-			set
-			{
-				size = value;
-			}
+			set => size = value;
 		}
 
 		/// <summary>
@@ -232,14 +217,8 @@ namespace SimPe.Packages
 		/// </summary>
 		public uint Offset
 		{
-			get
-			{
-				return offset;
-			}
-			set
-			{
-				offset = value;
-			}
+			get => offset;
+			set => offset = value;
 		}
 
 		/// <summary>
@@ -299,10 +278,7 @@ namespace SimPe.Packages
 
 				return filename;
 			}
-			set
-			{
-				filename = value;
-			}
+			set => filename = value;
 		}
 
 		public string ExportFileName => Helper.HexString(Type) + "-" + Filename;
@@ -334,10 +310,7 @@ namespace SimPe.Packages
 
 				return path;
 			}
-			set
-			{
-				path = value;
-			}
+			set => path = value;
 		}
 
 		/// <summary>
@@ -614,10 +587,7 @@ namespace SimPe.Packages
 		/// </summary>
 		public bool MarkForDelete
 		{
-			get
-			{
-				return markdeleted;
-			}
+			get => markdeleted;
 			set
 			{
 				if (value != markdeleted)
@@ -639,10 +609,7 @@ namespace SimPe.Packages
 		/// </summary>
 		public bool MarkForReCompress
 		{
-			get
-			{
-				return markcompress;
-			}
+			get => markcompress;
 			set
 			{
 				if (markcompress != value)
@@ -660,10 +627,7 @@ namespace SimPe.Packages
 		/// </summary>
 		public bool WasCompressed
 		{
-			get
-			{
-				return wascomp;
-			}
+			get => wascomp;
 			set
 			{
 				if (wascomp != value)
@@ -690,14 +654,8 @@ namespace SimPe.Packages
 		/// </summary>
 		public Byte[] UserData
 		{
-			get
-			{
-				return userdata;
-			}
-			set
-			{
-				SetUserData(value, true);
-			}
+			get => userdata;
+			set => SetUserData(value, true);
 		}
 
 		public void SetUserData(byte[] data, bool fire)
@@ -728,10 +686,7 @@ namespace SimPe.Packages
 		/// <remarks>Fires the <see cref="ChangedData"/> Event</remarks>
 		public bool Changed
 		{
-			get
-			{
-				return changed;
-			}
+			get => changed;
 			set
 			{
 				if (value != changed)

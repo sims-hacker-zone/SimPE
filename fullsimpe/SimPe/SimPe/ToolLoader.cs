@@ -74,14 +74,8 @@ namespace SimPe
 		/// </summary>
 		public string FileName
 		{
-			get
-			{
-				return filename;
-			}
-			set
-			{
-				filename = value;
-			}
+			get => filename;
+			set => filename = value;
 		}
 
 		/// <summary>
@@ -98,14 +92,8 @@ namespace SimPe
 		/// <remarks>use "{tempname}" as a Plcaeholder for the Filename simPe uses to store the Temporary File</remarks>
 		public string Attributes
 		{
-			get
-			{
-				return arguments;
-			}
-			set
-			{
-				arguments = value;
-			}
+			get => arguments;
+			set => arguments = value;
 		}
 
 		protected uint type;
@@ -116,14 +104,8 @@ namespace SimPe
 		/// <remarks>0xfffffff for all Types</remarks>
 		public uint Type
 		{
-			get
-			{
-				return type;
-			}
-			set
-			{
-				type = value;
-			}
+			get => type;
+			set => type = value;
 		}
 
 		/// <summary>
@@ -418,10 +400,7 @@ namespace SimPe
 
 				return items;
 			}
-			set
-			{
-				items = value;
-			}
+			set => items = value;
 		}
 
 		/// <summary>

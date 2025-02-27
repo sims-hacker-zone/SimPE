@@ -119,26 +119,14 @@ namespace pjse
 
 		public String Title
 		{
-			get
-			{
-				return Text;
-			}
-			set
-			{
-				Text = value;
-			}
+			get => Text;
+			set => Text = value;
 		}
 
 		public String Prompt
 		{
-			get
-			{
-				return label1.Text;
-			}
-			set
-			{
-				label1.Text = value;
-			}
+			get => label1.Text;
+			set => label1.Text = value;
 		}
 
 		private void radioButton1_CheckedChanged(object sender, EventArgs e)

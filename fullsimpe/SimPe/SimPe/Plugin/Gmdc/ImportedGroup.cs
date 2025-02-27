@@ -245,14 +245,8 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public new ImportedGroup this[int index]
 		{
-			get
-			{
-				return ((ImportedGroup)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((ImportedGroup)base[index]);
+			set => base[index] = value;
 		}
 
 		/// <summary>
@@ -260,14 +254,8 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public ImportedGroup this[uint index]
 		{
-			get
-			{
-				return ((ImportedGroup)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((ImportedGroup)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		/// <summary>

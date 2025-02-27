@@ -234,13 +234,7 @@ namespace SimPe.PackedFiles.Wrapper
 			Changed = true;
 		}
 
-		public ScorItem this[int index]
-		{
-			get
-			{
-				return Items[index];
-			}
-		}
+		public ScorItem this[int index] => Items[index];
 
 		public int Count => Items.Count;
 

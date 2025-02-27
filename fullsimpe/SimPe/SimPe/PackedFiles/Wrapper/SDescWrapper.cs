@@ -101,98 +101,50 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool IsGhost
 		{
-			get
-			{
-				return GetBit(0);
-			}
-			set
-			{
-				SetBit(0, value);
-			}
+			get => GetBit(0);
+			set => SetBit(0, value);
 		}
 
 		public bool CanPassThroughObjects
 		{
-			get
-			{
-				return GetBit(1);
-			}
-			set
-			{
-				SetBit(1, value);
-			}
+			get => GetBit(1);
+			set => SetBit(1, value);
 		}
 
 		public bool CanPassThroughWalls
 		{
-			get
-			{
-				return GetBit(2);
-			}
-			set
-			{
-				SetBit(2, value);
-			}
+			get => GetBit(2);
+			set => SetBit(2, value);
 		}
 
 		public bool CanPassThroughPeople
 		{
-			get
-			{
-				return GetBit(3);
-			}
-			set
-			{
-				SetBit(3, value);
-			}
+			get => GetBit(3);
+			set => SetBit(3, value);
 		}
 
 		public bool IgnoreTraversalCosts
 		{
-			get
-			{
-				return GetBit(4);
-			}
-			set
-			{
-				SetBit(4, value);
-			}
+			get => GetBit(4);
+			set => SetBit(4, value);
 		}
 
 		public bool CanFlyOverLowObjects
 		{
-			get
-			{
-				return GetBit(5);
-			}
-			set
-			{
-				SetBit(5, value);
-			}
+			get => GetBit(5);
+			set => SetBit(5, value);
 		}
 
 		public bool ForceRouteRecalc
 		{
-			get
-			{
-				return GetBit(6);
-			}
-			set
-			{
-				SetBit(6, value);
-			}
+			get => GetBit(6);
+			set => SetBit(6, value);
 		}
 
 		public bool CanSwimInOcean
 		{
-			get
-			{
-				return GetBit(7);
-			}
-			set
-			{
-				SetBit(7, value);
-			}
+			get => GetBit(7);
+			set => SetBit(7, value);
 		}
 	}
 	#endregion
@@ -211,50 +163,26 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool Selectable
 		{
-			get
-			{
-				return GetBit(0);
-			}
-			set
-			{
-				SetBit(0, value);
-			}
+			get => GetBit(0);
+			set => SetBit(0, value);
 		}
 
 		public bool NotSelectable
 		{
-			get
-			{
-				return GetBit(1);
-			}
-			set
-			{
-				SetBit(1, value);
-			}
+			get => GetBit(1);
+			set => SetBit(1, value);
 		}
 
 		public bool HideRelationships
 		{
-			get
-			{
-				return GetBit(2);
-			}
-			set
-			{
-				SetBit(2, value);
-			}
+			get => GetBit(2);
+			set => SetBit(2, value);
 		}
 
 		public bool HolidayMate
 		{
-			get
-			{
-				return GetBit(3);
-			}
-			set
-			{
-				SetBit(3, value);
-			}
+			get => GetBit(3);
+			set => SetBit(3, value);
 		}
 	}
 	#endregion
@@ -273,86 +201,44 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool Fat
 		{
-			get
-			{
-				return GetBit(0);
-			}
-			set
-			{
-				SetBit(0, value);
-			}
+			get => GetBit(0);
+			set => SetBit(0, value);
 		}
 
 		public bool PregnantFull
 		{
-			get
-			{
-				return GetBit(1);
-			}
-			set
-			{
-				SetBit(1, value);
-			}
+			get => GetBit(1);
+			set => SetBit(1, value);
 		}
 
 		public bool PregnantHalf
 		{
-			get
-			{
-				return GetBit(2);
-			}
-			set
-			{
-				SetBit(2, value);
-			}
+			get => GetBit(2);
+			set => SetBit(2, value);
 		}
 
 		public bool PregnantHidden
 		{
-			get
-			{
-				return GetBit(3);
-			}
-			set
-			{
-				SetBit(3, value);
-			}
+			get => GetBit(3);
+			set => SetBit(3, value);
 		}
 
 		public bool Fit
 		{
-			get
-			{
-				return GetBit(4);
-			}
-			set
-			{
-				SetBit(4, value);
-			}
+			get => GetBit(4);
+			set => SetBit(4, value);
 		}
 
 		public bool Hospital
 		{
-			get
-			{
-				return GetBit(5);
-			}
-			set
-			{
-				SetBit(5, value);
-			}
+			get => GetBit(5);
+			set => SetBit(5, value);
 		}
 
 		public bool BirthControl
 		{
-			get
-			{
-				return GetBit(6);
-			}
-			set
-			{
-				SetBit(6, value);
-			}
+			get => GetBit(6);
+			set => SetBit(6, value);
 		}
 	}
 	#endregion
@@ -371,58 +257,28 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool AllowFamily
 		{
-			get
-			{
-				return GetBit(0);
-			}
-			set
-			{
-				SetBit(0, value);
-			}
+			get => GetBit(0);
+			set => SetBit(0, value);
 		}
 		public bool NoAlcohol
 		{
-			get
-			{
-				return GetBit(1);
-			}
-			set
-			{
-				SetBit(1, value);
-			}
+			get => GetBit(1);
+			set => SetBit(1, value);
 		}
 		public bool NoAutoWoohoo
 		{
-			get
-			{
-				return GetBit(2);
-			}
-			set
-			{
-				SetBit(2, value);
-			}
+			get => GetBit(2);
+			set => SetBit(2, value);
 		}
 		public bool MarkedSim
 		{
-			get
-			{
-				return GetBit(3);
-			}
-			set
-			{
-				SetBit(3, value);
-			}
+			get => GetBit(3);
+			set => SetBit(3, value);
 		}
 		public bool NotUsedf
 		{
-			get
-			{
-				return GetBit(4);
-			}
-			set
-			{
-				SetBit(4, value);
-			}
+			get => GetBit(4);
+			set => SetBit(4, value);
 		}
 	}
 
@@ -452,122 +308,62 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool Gifted
 		{
-			get
-			{
-				return GetBit(0);
-			}
-			set
-			{
-				SetBit(0, value);
-			}
+			get => GetBit(0);
+			set => SetBit(0, value);
 		}
 
 		public bool Doofus
 		{
-			get
-			{
-				return GetBit(1);
-			}
-			set
-			{
-				SetBit(1, value);
-			}
+			get => GetBit(1);
+			set => SetBit(1, value);
 		}
 
 		public bool Hyper
 		{
-			get
-			{
-				return GetBit(2);
-			}
-			set
-			{
-				SetBit(2, value);
-			}
+			get => GetBit(2);
+			set => SetBit(2, value);
 		}
 
 		public bool Lazy
 		{
-			get
-			{
-				return GetBit(3);
-			}
-			set
-			{
-				SetBit(3, value);
-			}
+			get => GetBit(3);
+			set => SetBit(3, value);
 		}
 
 		public bool Independant
 		{
-			get
-			{
-				return GetBit(4);
-			}
-			set
-			{
-				SetBit(4, value);
-			}
+			get => GetBit(4);
+			set => SetBit(4, value);
 		}
 
 		public bool Friendly
 		{
-			get
-			{
-				return GetBit(5);
-			}
-			set
-			{
-				SetBit(5, value);
-			}
+			get => GetBit(5);
+			set => SetBit(5, value);
 		}
 
 		public bool Aggressive
 		{
-			get
-			{
-				return GetBit(6);
-			}
-			set
-			{
-				SetBit(6, value);
-			}
+			get => GetBit(6);
+			set => SetBit(6, value);
 		}
 
 		public bool Cowardly
 		{
-			get
-			{
-				return GetBit(7);
-			}
-			set
-			{
-				SetBit(7, value);
-			}
+			get => GetBit(7);
+			set => SetBit(7, value);
 		}
 
 		public bool Pigpen
 		{
-			get
-			{
-				return GetBit(8);
-			}
-			set
-			{
-				SetBit(8, value);
-			}
+			get => GetBit(8);
+			set => SetBit(8, value);
 		}
 
 		public bool Finicky
 		{
-			get
-			{
-				return GetBit(9);
-			}
-			set
-			{
-				SetBit(9, value);
-			}
+			get => GetBit(9);
+			set => SetBit(9, value);
 		}
 	}
 	#endregion
@@ -586,146 +382,74 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool IsZombie
 		{
-			get
-			{
-				return GetBit(0);
-			}
-			set
-			{
-				SetBit(0, value);
-			}
+			get => GetBit(0);
+			set => SetBit(0, value);
 		}
 
 		public bool PermaPlatinum
 		{
-			get
-			{
-				return GetBit(1);
-			}
-			set
-			{
-				SetBit(1, value);
-			}
+			get => GetBit(1);
+			set => SetBit(1, value);
 		}
 
 		public bool IsVampire
 		{
-			get
-			{
-				return GetBit(2);
-			}
-			set
-			{
-				SetBit(2, value);
-			}
+			get => GetBit(2);
+			set => SetBit(2, value);
 		}
 
 		public bool VampireSmoke
 		{
-			get
-			{
-				return GetBit(3);
-			}
-			set
-			{
-				SetBit(3, value);
-			}
+			get => GetBit(3);
+			set => SetBit(3, value);
 		}
 
 		public bool WantHistory
 		{
-			get
-			{
-				return GetBit(4);
-			}
-			set
-			{
-				SetBit(4, value);
-			}
+			get => GetBit(4);
+			set => SetBit(4, value);
 		}
 
 		public bool LycanCarrier
 		{
-			get
-			{
-				return GetBit(5);
-			}
-			set
-			{
-				SetBit(5, value);
-			}
+			get => GetBit(5);
+			set => SetBit(5, value);
 		}
 
 		public bool LycanActive
 		{
-			get
-			{
-				return GetBit(6);
-			}
-			set
-			{
-				SetBit(6, value);
-			}
+			get => GetBit(6);
+			set => SetBit(6, value);
 		}
 
 		public bool IsRunaway
 		{
-			get
-			{
-				return GetBit(7);
-			}
-			set
-			{
-				SetBit(7, value);
-			}
+			get => GetBit(7);
+			set => SetBit(7, value);
 		}
 
 		public bool IsPlantsim
 		{
-			get
-			{
-				return GetBit(8);
-			}
-			set
-			{
-				SetBit(8, value);
-			}
+			get => GetBit(8);
+			set => SetBit(8, value);
 		}
 
 		public bool IsBigfoot
 		{
-			get
-			{
-				return GetBit(9);
-			}
-			set
-			{
-				SetBit(9, value);
-			}
+			get => GetBit(9);
+			set => SetBit(9, value);
 		}
 
 		public bool IsWitch
 		{
-			get
-			{
-				return GetBit(10);
-			}
-			set
-			{
-				SetBit(10, value);
-			}
+			get => GetBit(10);
+			set => SetBit(10, value);
 		}
 
 		public bool IsRoomate
 		{
-			get
-			{
-				return GetBit(11);
-			}
-			set
-			{
-				SetBit(11, value);
-			}
+			get => GetBit(11);
+			set => SetBit(11, value);
 		}
 	}
 	#endregion
@@ -744,74 +468,38 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool IsOwned
 		{
-			get
-			{
-				return GetBit(0);
-			}
-			set
-			{
-				SetBit(0, value);
-			}
+			get => GetBit(0);
+			set => SetBit(0, value);
 		}
 
 		public bool StayNaked
 		{
-			get
-			{
-				return GetBit(1);
-			}
-			set
-			{
-				SetBit(1, value);
-			}
+			get => GetBit(1);
+			set => SetBit(1, value);
 		}
 
 		public bool Reserved01
 		{
-			get
-			{
-				return GetBit(2);
-			}
-			set
-			{
-				SetBit(2, value);
-			}
+			get => GetBit(2);
+			set => SetBit(2, value);
 		}
 
 		public bool Reserved02
 		{
-			get
-			{
-				return GetBit(3);
-			}
-			set
-			{
-				SetBit(3, value);
-			}
+			get => GetBit(3);
+			set => SetBit(3, value);
 		}
 
 		public bool Reserved03
 		{
-			get
-			{
-				return GetBit(4);
-			}
-			set
-			{
-				SetBit(4, value);
-			}
+			get => GetBit(4);
+			set => SetBit(4, value);
 		}
 
 		public bool Reserved04
 		{
-			get
-			{
-				return GetBit(5);
-			}
-			set
-			{
-				SetBit(5, value);
-			}
+			get => GetBit(5);
+			set => SetBit(5, value);
 		}
 	}
 	#endregion
@@ -830,170 +518,86 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool Freshman
 		{
-			get
-			{
-				return GetBit(0);
-			}
-			set
-			{
-				SetBit(0, value);
-			}
+			get => GetBit(0);
+			set => SetBit(0, value);
 		}
 
 		public bool Sophomore
 		{
-			get
-			{
-				return GetBit(1);
-			}
-			set
-			{
-				SetBit(1, value);
-			}
+			get => GetBit(1);
+			set => SetBit(1, value);
 		}
 
 		public bool Junior
 		{
-			get
-			{
-				return GetBit(2);
-			}
-			set
-			{
-				SetBit(2, value);
-			}
+			get => GetBit(2);
+			set => SetBit(2, value);
 		}
 
 		public bool Senior
 		{
-			get
-			{
-				return GetBit(3);
-			}
-			set
-			{
-				SetBit(3, value);
-			}
+			get => GetBit(3);
+			set => SetBit(3, value);
 		}
 
 		public bool GoodSem
 		{
-			get
-			{
-				return GetBit(4);
-			}
-			set
-			{
-				SetBit(4, value);
-			}
+			get => GetBit(4);
+			set => SetBit(4, value);
 		}
 
 		public bool Probation
 		{
-			get
-			{
-				return GetBit(5);
-			}
-			set
-			{
-				SetBit(5, value);
-			}
+			get => GetBit(5);
+			set => SetBit(5, value);
 		}
 
 		public bool Graduated
 		{
-			get
-			{
-				return GetBit(6);
-			}
-			set
-			{
-				SetBit(6, value);
-			}
+			get => GetBit(6);
+			set => SetBit(6, value);
 		}
 
 		public bool AtClass
 		{
-			get
-			{
-				return GetBit(7);
-			}
-			set
-			{
-				SetBit(7, value);
-			}
+			get => GetBit(7);
+			set => SetBit(7, value);
 		}
 
 		public bool Gates1
 		{
-			get
-			{
-				return GetBit(8);
-			}
-			set
-			{
-				SetBit(8, value);
-			}
+			get => GetBit(8);
+			set => SetBit(8, value);
 		}
 
 		public bool Gates2
 		{
-			get
-			{
-				return GetBit(9);
-			}
-			set
-			{
-				SetBit(9, value);
-			}
+			get => GetBit(9);
+			set => SetBit(9, value);
 		}
 
 		public bool Gates3
 		{
-			get
-			{
-				return GetBit(10);
-			}
-			set
-			{
-				SetBit(10, value);
-			}
+			get => GetBit(10);
+			set => SetBit(10, value);
 		}
 
 		public bool Gates4
 		{
-			get
-			{
-				return GetBit(11);
-			}
-			set
-			{
-				SetBit(11, value);
-			}
+			get => GetBit(11);
+			set => SetBit(11, value);
 		}
 
 		public bool Dropped
 		{
-			get
-			{
-				return GetBit(12);
-			}
-			set
-			{
-				SetBit(12, value);
-			}
+			get => GetBit(12);
+			set => SetBit(12, value);
 		}
 
 		public bool Expelled
 		{
-			get
-			{
-				return GetBit(13);
-			}
-			set
-			{
-				SetBit(13, value);
-			}
+			get => GetBit(13);
+			set => SetBit(13, value);
 		}
 	}
 	#endregion
@@ -1182,40 +786,22 @@ namespace SimPe.PackedFiles.Wrapper
 		private ushort clifeline;
 		public ushort BlizLifelinePoints
 		{
-			get
-			{
-				return (ushort)Math.Min(1200, (uint)clifeline);
-			}
-			set
-			{
-				clifeline = (ushort)Math.Min(1200, (uint)value);
-			}
+			get => (ushort)Math.Min(1200, (uint)clifeline);
+			set => clifeline = (ushort)Math.Min(1200, (uint)value);
 		}
 
 		private short lifeline;
 		public short LifelinePoints
 		{
-			get
-			{
-				return (short)Math.Min(600, (int)(lifeline));
-			}
-			set
-			{
-				lifeline = (short)Math.Min(600, (int)(value));
-			}
+			get => (short)Math.Min(600, (int)(lifeline));
+			set => lifeline = (short)Math.Min(600, (int)(value));
 		}
 
 		private ushort lifelinescore;
 		public uint LifelineScore
 		{
-			get
-			{
-				return (uint)(lifelinescore * 10);
-			}
-			set
-			{
-				lifelinescore = (ushort)(Math.Min(short.MaxValue, value / 10));
-			}
+			get => (uint)(lifelinescore * 10);
+			set => lifelinescore = (ushort)(Math.Min(short.MaxValue, value / 10));
 		}
 	}
 	#endregion
@@ -1229,66 +815,36 @@ namespace SimPe.PackedFiles.Wrapper
 		private ushort neat;
 		public ushort Neat
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)neat);
-			}
-			set
-			{
-				neat = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)neat);
+			set => neat = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort outgoing;
 		public ushort Outgoing
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)outgoing);
-			}
-			set
-			{
-				outgoing = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)outgoing);
+			set => outgoing = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort active;
 		public ushort Active
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)active);
-			}
-			set
-			{
-				active = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)active);
+			set => active = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort playful;
 		public ushort Playful
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)playful);
-			}
-			set
-			{
-				playful = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)playful);
+			set => playful = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort nice;
 		public ushort Nice
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)nice);
-			}
-			set
-			{
-				nice = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)nice);
+			set => nice = (ushort)Math.Min(1000, (uint)value);
 		}
 	}
 	#endregion
@@ -1302,131 +858,71 @@ namespace SimPe.PackedFiles.Wrapper
 		private short hunger;
 		public short Hunger
 		{
-			get
-			{
-				return hunger;
-			}
-			set
-			{
-				hunger = Math.Min((short)0, Math.Max((short)-1000, value));
-			}
+			get => hunger;
+			set => hunger = Math.Min((short)0, Math.Max((short)-1000, value));
 		}
 
 		private short comfort;
 		public short Comfort
 		{
-			get
-			{
-				return comfort;
-			}
-			set
-			{
-				comfort = Math.Min((short)0, Math.Max((short)-1000, value));
-			}
+			get => comfort;
+			set => comfort = Math.Min((short)0, Math.Max((short)-1000, value));
 		}
 
 		private short bladder;
 		public short Bladder
 		{
-			get
-			{
-				return bladder;
-			}
-			set
-			{
-				bladder = Math.Min((short)0, Math.Max((short)-1000, value));
-			}
+			get => bladder;
+			set => bladder = Math.Min((short)0, Math.Max((short)-1000, value));
 		}
 
 		private short energy;
 		public short Energy
 		{
-			get
-			{
-				return energy;
-			}
-			set
-			{
-				energy = Math.Min((short)0, Math.Max((short)-1000, value));
-			}
+			get => energy;
+			set => energy = Math.Min((short)0, Math.Max((short)-1000, value));
 		}
 
 		private short hygiene;
 		public short Hygiene
 		{
-			get
-			{
-				return hygiene;
-			}
-			set
-			{
-				hygiene = Math.Min((short)0, Math.Max((short)-1000, value));
-			}
+			get => hygiene;
+			set => hygiene = Math.Min((short)0, Math.Max((short)-1000, value));
 		}
 
 		private short amorous;
 		public short Amorous
 		{
-			get
-			{
-				return amorous;
-			}
-			set
-			{
-				amorous = Math.Min((short)0, Math.Max((short)-1000, value));
-			}
+			get => amorous;
+			set => amorous = Math.Min((short)0, Math.Max((short)-1000, value));
 		}
 
 		private short shopping;
 		public short Shopping
 		{
-			get
-			{
-				return shopping;
-			}
-			set
-			{
-				shopping = Math.Min((short)0, Math.Max((short)-1000, value));
-			}
+			get => shopping;
+			set => shopping = Math.Min((short)0, Math.Max((short)-1000, value));
 		}
 
 		private short social;
 		public short Social
 		{
-			get
-			{
-				return social;
-			}
-			set
-			{
-				social = Math.Min((short)0, Math.Max((short)-1000, value));
-			}
+			get => social;
+			set => social = Math.Min((short)0, Math.Max((short)-1000, value));
 		}
 
 		private short fun;
 		public short Fun
 		{
-			get
-			{
-				return fun;
-			}
-			set
-			{
-				fun = Math.Min((short)0, Math.Max((short)-1000, value));
-			}
+			get => fun;
+			set => fun = Math.Min((short)0, Math.Max((short)-1000, value));
 		}
 
 		private short scratchy;
 		public short ScratchC
 		{
-			get
-			{
-				return scratchy;
-			}
-			set
-			{
-				scratchy = Math.Min((short)0, Math.Max((short)-1000, value));
-			}
+			get => scratchy;
+			set => scratchy = Math.Min((short)0, Math.Max((short)-1000, value));
 		}
 	}
 	#endregion
@@ -1440,144 +936,78 @@ namespace SimPe.PackedFiles.Wrapper
 		private ushort romance;
 		public ushort Romance
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)romance);
-			}
-			set
-			{
-				romance = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)romance);
+			set => romance = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort fatness;
 		public ushort Fatness
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)fatness);
-			}
-			set
-			{
-				fatness = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)fatness);
+			set => fatness = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort cooking;
 		public ushort Cooking
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)cooking);
-			}
-			set
-			{
-				cooking = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)cooking);
+			set => cooking = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort mechanical;
 		public ushort Mechanical
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)mechanical);
-			}
-			set
-			{
-				mechanical = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)mechanical);
+			set => mechanical = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort music;
 		public ushort Music
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)music);
-			}
-			set
-			{
-				music = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)music);
+			set => music = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort art;
 		public ushort Art
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)art);
-			}
-			set
-			{
-				art = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)art);
+			set => art = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort charisma;
 		public ushort Charisma
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)charisma);
-			}
-			set
-			{
-				charisma = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)charisma);
+			set => charisma = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort body;
 		public ushort Body
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)body);
-			}
-			set
-			{
-				body = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)body);
+			set => body = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort logic;
 		public ushort Logic
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)logic);
-			}
-			set
-			{
-				logic = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)logic);
+			set => logic = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort creativity;
 		public ushort Creativity
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)creativity);
-			}
-			set
-			{
-				creativity = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)creativity);
+			set => creativity = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort cleaning;
 		public ushort Cleaning
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)cleaning);
-			}
-			set
-			{
-				cleaning = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)cleaning);
+			set => cleaning = (ushort)Math.Min(1000, (uint)value);
 		}
 	}
 	#endregion
@@ -1591,261 +1021,141 @@ namespace SimPe.PackedFiles.Wrapper
 		private ushort politics;
 		public ushort Politics
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)politics);
-			}
-			set
-			{
-				politics = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)politics);
+			set => politics = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort money;
 		public ushort Money
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)money);
-			}
-			set
-			{
-				money = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)money);
+			set => money = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort crime;
 		public ushort Crime
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)crime);
-			}
-			set
-			{
-				crime = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)crime);
+			set => crime = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort environment;
 		public ushort Environment
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)environment);
-			}
-			set
-			{
-				environment = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)environment);
+			set => environment = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort entertainment;
 		public ushort Entertainment
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)entertainment);
-			}
-			set
-			{
-				entertainment = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)entertainment);
+			set => entertainment = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort culture;
 		public ushort Culture
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)culture);
-			}
-			set
-			{
-				culture = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)culture);
+			set => culture = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort food;
 		public ushort Food
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)food);
-			}
-			set
-			{
-				food = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)food);
+			set => food = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort health;
 		public ushort Health
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)health);
-			}
-			set
-			{
-				health = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)health);
+			set => health = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort fashion;
 		public ushort Fashion
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)fashion);
-			}
-			set
-			{
-				fashion = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)fashion);
+			set => fashion = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort sports;
 		public ushort Sports
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)sports);
-			}
-			set
-			{
-				sports = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)sports);
+			set => sports = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort paranormal;
 		public ushort Paranormal
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)paranormal);
-			}
-			set
-			{
-				paranormal = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)paranormal);
+			set => paranormal = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort travel;
 		public ushort Travel
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)travel);
-			}
-			set
-			{
-				travel = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)travel);
+			set => travel = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort work;
 		public ushort Work
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)work);
-			}
-			set
-			{
-				work = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)work);
+			set => work = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort weather;
 		public ushort Weather
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)weather);
-			}
-			set
-			{
-				weather = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)weather);
+			set => weather = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort animals;
 		public ushort Animals
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)animals);
-			}
-			set
-			{
-				animals = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)animals);
+			set => animals = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort school;
 		public ushort School
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)school);
-			}
-			set
-			{
-				school = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)school);
+			set => school = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort toys;
 		public ushort Toys
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)toys);
-			}
-			set
-			{
-				toys = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)toys);
+			set => toys = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private ushort scifi;
 		public ushort Scifi
 		{
-			get
-			{
-				return (ushort)Math.Min(1000, (uint)scifi);
-			}
-			set
-			{
-				scifi = (ushort)Math.Min(1000, (uint)value);
-			}
+			get => (ushort)Math.Min(1000, (uint)scifi);
+			set => scifi = (ushort)Math.Min(1000, (uint)value);
 		}
 
 		private short woman;
 		public short FemalePreference
 		{
-			get
-			{
-				return woman;
-			}
-			set
-			{
-				woman = (short)Math.Max(-1000, Math.Min(1000, (int)value));
-			}
+			get => woman;
+			set => woman = (short)Math.Max(-1000, Math.Min(1000, (int)value));
 		}
 
 		private short man;
 		public short MalePreference
 		{
-			get
-			{
-				return man;
-			}
-			set
-			{
-				man = (short)Math.Max(-1000, Math.Min(1000, (int)value));
-			}
+			get => man;
+			set => man = (short)Math.Max(-1000, Math.Min(1000, (int)value));
 		}
 	}
 	#endregion
@@ -2289,14 +1599,8 @@ namespace SimPe.PackedFiles.Wrapper
 		ushort assignment;
 		public JobAssignment Assignment
 		{
-			get
-			{
-				return (JobAssignment)assignment;
-			}
-			set
-			{
-				assignment = (ushort)value;
-			}
+			get => (JobAssignment)assignment;
+			set => assignment = (ushort)value;
 		}
 
 		internal void Unserialize(BinaryReader reader)
@@ -2660,10 +1964,7 @@ namespace SimPe.PackedFiles.Wrapper
 					return "---";
 				}
 			}
-			set
-			{
-				throw new Exception("SimFamilyName can't be changed here!");
-			}
+			set => throw new Exception("SimFamilyName can't be changed here!");
 		}
 
 		/// <summary>
@@ -2843,10 +2144,7 @@ namespace SimPe.PackedFiles.Wrapper
 				}
 				return Localization.Manager.GetString("Unknown");
 			}
-			set
-			{
-				throw new Exception("SimFamilyName can't be changed here!");
-			}
+			set => throw new Exception("SimFamilyName can't be changed here!");
 		}
 
 		/// <summary>

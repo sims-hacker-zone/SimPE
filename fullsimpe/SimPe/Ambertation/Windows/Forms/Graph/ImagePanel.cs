@@ -39,10 +39,7 @@ namespace Ambertation.Windows.Forms.Graph
 		Color bg;
 		public Color ImagePanelColor
 		{
-			get
-			{
-				return bg;
-			}
+			get => bg;
 			set
 			{
 				if (bg != value)
@@ -55,10 +52,7 @@ namespace Ambertation.Windows.Forms.Graph
 		Image thumb;
 		public Image Image
 		{
-			get
-			{
-				return thumb;
-			}
+			get => thumb;
 			set
 			{
 				thumb = value;
@@ -69,10 +63,7 @@ namespace Ambertation.Windows.Forms.Graph
 		string txt;
 		public string Text
 		{
-			get
-			{
-				return txt;
-			}
+			get => txt;
 			set
 			{
 				txt = value;
@@ -83,10 +74,7 @@ namespace Ambertation.Windows.Forms.Graph
 		int tborder;
 		public int ImageBorderWidth
 		{
-			get
-			{
-				return tborder;
-			}
+			get => tborder;
 			set
 			{
 				tborder = value;

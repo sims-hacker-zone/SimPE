@@ -212,23 +212,11 @@ namespace SimPe
 
 		public Sectionlist.KeyCollection Sections => reg.Keys;
 
-		public SectionContent this[string section]
-		{
-			get
-			{
-				return Section(section, false);
-			}
-		}
+		public SectionContent this[string section] => Section(section, false);
 		public string this[string section, string key]
 		{
-			get
-			{
-				return GetValue(section, key);
-			}
-			set
-			{
-				SetValue(section, key, value, true);
-			}
+			get => GetValue(section, key);
+			set => SetValue(section, key, value, true);
 		}
 		#endregion
 
@@ -339,14 +327,8 @@ namespace SimPe
 
 			public string this[string key]
 			{
-				get
-				{
-					return GetValue(key);
-				}
-				set
-				{
-					SetValue(key, value, true);
-				}
+				get => GetValue(key);
+				set => SetValue(key, value, true);
 			}
 
 			#region IEnumerable<string> Member

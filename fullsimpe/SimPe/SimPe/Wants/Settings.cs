@@ -183,10 +183,7 @@ namespace SimPe.Wants
 					return -1;
 				}
 			}
-			set
-			{
-				settings.rkf.SetValue("SWAFSplitterDistance", value);
-			}
+			set => settings.rkf.SetValue("SWAFSplitterDistance", value);
 		}
 
 		public static int SWAFSortColumn
@@ -202,10 +199,7 @@ namespace SimPe.Wants
 					return 2;
 				}
 			}
-			set
-			{
-				settings.rkf.SetValue("SWAFSortColumn", value);
-			}
+			set => settings.rkf.SetValue("SWAFSortColumn", value);
 		}
 	}
 }

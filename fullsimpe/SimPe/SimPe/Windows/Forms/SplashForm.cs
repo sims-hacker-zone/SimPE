@@ -77,10 +77,7 @@ namespace SimPe.Windows.Forms
 		string msg;
 		public string Message
 		{
-			get
-			{
-				return msg;
-			}
+			get => msg;
 			set
 			{
 				lock (msg)

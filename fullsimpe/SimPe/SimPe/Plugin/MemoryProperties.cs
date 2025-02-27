@@ -669,10 +669,7 @@ namespace SimPe.Plugin
 		[System.ComponentModel.Browsable(false)]
 		public NgbhItem Item
 		{
-			get
-			{
-				return item;
-			}
+			get => item;
 			set
 			{
 				item = value;
@@ -683,10 +680,7 @@ namespace SimPe.Plugin
 		NgbhItemsListView nilv;
 		public NgbhItemsListView NgbhItemsListView
 		{
-			get
-			{
-				return nilv;
-			}
+			get => nilv;
 			set
 			{
 				if (nilv != null)

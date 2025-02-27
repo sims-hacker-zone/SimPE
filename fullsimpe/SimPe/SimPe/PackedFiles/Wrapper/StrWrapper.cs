@@ -70,10 +70,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public string FileName
 		{
-			get
-			{
-				return Helper.ToString(filename);
-			}
+			get => Helper.ToString(filename);
 			set
 			{
 				if (!Helper.ToString(filename).Equals(value))
@@ -89,10 +86,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public ushort Format
 		{
-			get
-			{
-				return format;
-			}
+			get => format;
 			set
 			{
 				if (format != value)
@@ -408,25 +402,13 @@ namespace SimPe.PackedFiles.Wrapper
 			CleanUp();
 		}
 
-		public StrItem this[byte lid, int index]
-		{
-			get
-			{
-				return (index >= 0 && index < this[lid].Count)
+		public StrItem this[byte lid, int index] => (index >= 0 && index < this[lid].Count)
 					? this[lid][index]
 					: null;
-			}
-		}
 
-		public List<StrItem> this[byte lid]
-		{
-			get
-			{
-				return languages.ContainsKey(lid)
+		public List<StrItem> this[byte lid] => languages.ContainsKey(lid)
 					? languages[lid]
 					: new List<StrItem>();
-			}
-		}
 
 		/*public StrItem this[bool fallback, byte lid, int index]
 		{
@@ -537,10 +519,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Accessor methods
 		public byte LanguageID
 		{
-			get
-			{
-				return lid;
-			}
+			get => lid;
 			set
 			{
 				if (lid != value)
@@ -556,10 +535,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public string Title
 		{
-			get
-			{
-				return title;
-			}
+			get => title;
 			set
 			{
 				if (title != value)
@@ -575,10 +551,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public string Description
 		{
-			get
-			{
-				return desc;
-			}
+			get => desc;
 			set
 			{
 				if (desc != value)

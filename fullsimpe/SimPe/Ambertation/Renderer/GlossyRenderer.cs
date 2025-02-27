@@ -60,14 +60,8 @@ namespace Ambertation.Renderer
 
 		public bool RenderRoundedEdges
 		{
-			get
-			{
-				return RoundedEdges;
-			}
-			set
-			{
-				RoundedEdges = value;
-			}
+			get => RoundedEdges;
+			set => RoundedEdges = value;
 		}
 
 		protected override void OnRenderImageMargin(ToolStripRenderEventArgs e)

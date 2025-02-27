@@ -81,22 +81,13 @@ namespace SimPe.Plugin.Gmdc
 
 		public bool ImportEnvelope
 		{
-			get
-			{
-				return cbenv.Checked;
-			}
-			set
-			{
-				cbenv.Checked = value;
-			}
+			get => cbenv.Checked;
+			set => cbenv.Checked = value;
 		}
 
 		public bool Shadow
 		{
-			get
-			{
-				return false;
-			}
+			get => false;
 			set
 			{
 			}
@@ -104,14 +95,8 @@ namespace SimPe.Plugin.Gmdc
 
 		public GenericMeshImport.ImportAction Action
 		{
-			get
-			{
-				return (GenericMeshImport.ImportAction)cbact.SelectedItem;
-			}
-			set
-			{
-				cbact.SelectedItem = value;
-			}
+			get => (GenericMeshImport.ImportAction)cbact.SelectedItem;
+			set => cbact.SelectedItem = value;
 		}
 
 		public new GmdcGroup Group

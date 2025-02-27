@@ -55,10 +55,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// </summary>
 		public ushort Instance
 		{
-			get
-			{
-				return siminstance;
-			}
+			get => siminstance;
 			set
 			{
 				if (siminstance != value)

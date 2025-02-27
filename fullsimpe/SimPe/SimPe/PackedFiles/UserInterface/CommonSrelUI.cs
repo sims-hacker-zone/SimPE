@@ -344,10 +344,7 @@ namespace SimPe.PackedFiles.UserInterface
 		Wrapper.ExtSrel srel;
 		public Wrapper.ExtSrel Srel
 		{
-			get
-			{
-				return srel;
-			}
+			get => srel;
 			set
 			{
 				srel = value;

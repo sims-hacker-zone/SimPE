@@ -110,10 +110,7 @@ namespace Ambertation.Windows.Forms
 		//[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
 		public ProgresBarStyle Style
 		{
-			get
-			{
-				return style;
-			}
+			get => style;
 			set
 			{
 				if (value != style)
@@ -140,10 +137,7 @@ namespace Ambertation.Windows.Forms
 			val;
 		public int Minimum
 		{
-			get
-			{
-				return min;
-			}
+			get => min;
 			set
 			{
 				if (value != min)
@@ -156,10 +150,7 @@ namespace Ambertation.Windows.Forms
 		}
 		public int Maximum
 		{
-			get
-			{
-				return max;
-			}
+			get => max;
 			set
 			{
 				if (value != max)
@@ -173,10 +164,7 @@ namespace Ambertation.Windows.Forms
 
 		public int Value
 		{
-			get
-			{
-				return val;
-			}
+			get => val;
 			set
 			{
 				if (value != val)
@@ -191,10 +179,7 @@ namespace Ambertation.Windows.Forms
 		bool quality;
 		public bool Quality
 		{
-			get
-			{
-				return quality;
-			}
+			get => quality;
 			set
 			{
 				if (value != quality)
@@ -210,10 +195,7 @@ namespace Ambertation.Windows.Forms
 			bcol;
 		public Color UnselectedColor
 		{
-			get
-			{
-				return col;
-			}
+			get => col;
 			set
 			{
 				if (value != col)
@@ -225,10 +207,7 @@ namespace Ambertation.Windows.Forms
 		}
 		public Color SelectedColor
 		{
-			get
-			{
-				return selcol;
-			}
+			get => selcol;
 			set
 			{
 				if (value != selcol)
@@ -241,10 +220,7 @@ namespace Ambertation.Windows.Forms
 
 		public Color BorderColor
 		{
-			get
-			{
-				return bcol;
-			}
+			get => bcol;
 			set
 			{
 				if (value != bcol)
@@ -261,10 +237,7 @@ namespace Ambertation.Windows.Forms
 
 		public Color ProgressBackColor
 		{
-			get
-			{
-				return bgcol;
-			}
+			get => bgcol;
 			set
 			{
 				if (value != bgcol)
@@ -277,10 +250,7 @@ namespace Ambertation.Windows.Forms
 
 		public Color GradientStartColor
 		{
-			get
-			{
-				return startgradcol;
-			}
+			get => startgradcol;
 			set
 			{
 				if (value != startgradcol)
@@ -293,10 +263,7 @@ namespace Ambertation.Windows.Forms
 
 		public Color GradientEndColor
 		{
-			get
-			{
-				return endgradcol;
-			}
+			get => endgradcol;
 			set
 			{
 				if (value != endgradcol)
@@ -987,10 +954,7 @@ namespace Ambertation.Windows.Forms
 
 				return tc;
 			}
-			set
-			{
-				SetTokenCount(value, false);
-			}
+			set => SetTokenCount(value, false);
 		}
 
 		public double TokenMinSpacing => ((Width - 1) - (TokenCount * TokenWidth))
@@ -1003,14 +967,8 @@ namespace Ambertation.Windows.Forms
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public override int TokenCount
 		{
-			get
-			{
-				return base.TokenCount;
-			}
-			set
-			{
-				base.TokenCount = value;
-			}
+			get => base.TokenCount;
+			set => base.TokenCount = value;
 		}
 	}
 }

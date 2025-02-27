@@ -135,10 +135,7 @@ namespace SimPe.Windows.Forms
 
 		internal bool Visible
 		{
-			get
-			{
-				return vis;
-			}
+			get => vis;
 			set
 			{
 				if (vis != value)

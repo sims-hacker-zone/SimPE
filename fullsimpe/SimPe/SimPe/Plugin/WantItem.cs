@@ -37,14 +37,8 @@ namespace SimPe.Plugin
 
 		public bool Locked
 		{
-			get
-			{
-				return GetBit((byte)WantFlagValues.Locked);
-			}
-			set
-			{
-				SetBit((byte)WantFlagValues.Locked, value);
-			}
+			get => GetBit((byte)WantFlagValues.Locked);
+			set => SetBit((byte)WantFlagValues.Locked, value);
 		}
 	}
 

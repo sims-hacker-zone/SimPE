@@ -43,10 +43,7 @@ namespace Ambertation.Windows.Forms.Graph
 		PropertyItems properties;
 		public PropertyItems Properties
 		{
-			get
-			{
-				return properties;
-			}
+			get => properties;
 			set
 			{
 				if (value != properties)
@@ -60,10 +57,7 @@ namespace Ambertation.Windows.Forms.Graph
 		Image thumb;
 		public Image Thumbnail
 		{
-			get
-			{
-				return thumb;
-			}
+			get => thumb;
 			set
 			{
 				thumb = value;
@@ -74,10 +68,7 @@ namespace Ambertation.Windows.Forms.Graph
 		string txt;
 		public string Text
 		{
-			get
-			{
-				return txt;
-			}
+			get => txt;
 			set
 			{
 				txt = value;

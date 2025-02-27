@@ -186,15 +186,8 @@ namespace Ambertation
 		/// </summary>
 		public short Value
 		{
-			get
-			{
-				return (short)(IntegerValue & 0xffff);
-				;
-			}
-			set
-			{
-				IntegerValue = (short)(value & 0xffff);
-			}
+			get => (short)(IntegerValue & 0xffff);
+			set => IntegerValue = (short)(value & 0xffff);
 		}
 
 		/// <summary>

@@ -179,14 +179,8 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public new ImportedBone this[int index]
 		{
-			get
-			{
-				return ((ImportedBone)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((ImportedBone)base[index]);
+			set => base[index] = value;
 		}
 
 		/// <summary>
@@ -194,14 +188,8 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public ImportedBone this[uint index]
 		{
-			get
-			{
-				return ((ImportedBone)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((ImportedBone)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		/// <summary>

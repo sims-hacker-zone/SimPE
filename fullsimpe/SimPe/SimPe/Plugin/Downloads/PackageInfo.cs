@@ -212,10 +212,7 @@ namespace SimPe.Plugin.Downloads
 
 				return img;
 			}
-			set
-			{
-				img = value;
-			}
+			set => img = value;
 		}
 
 		public bool HasThumbnail => img != null;

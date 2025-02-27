@@ -194,10 +194,7 @@ namespace SimPe.Cache
 
 				return data;
 			}
-			set
-			{
-				data = value;
-			}
+			set => data = value;
 		}
 
 		internal virtual void Load(BinaryReader reader)
@@ -242,26 +239,14 @@ namespace SimPe.Cache
 	{
 		public new PackageState this[int index]
 		{
-			get
-			{
-				return ((PackageState)base[index]);
-			}
-			set
-			{
-				base[index] = value;
-			}
+			get => ((PackageState)base[index]);
+			set => base[index] = value;
 		}
 
 		public PackageState this[uint index]
 		{
-			get
-			{
-				return ((PackageState)base[(int)index]);
-			}
-			set
-			{
-				base[(int)index] = value;
-			}
+			get => ((PackageState)base[(int)index]);
+			set => base[(int)index] = value;
 		}
 
 		public int Add(PackageState item)

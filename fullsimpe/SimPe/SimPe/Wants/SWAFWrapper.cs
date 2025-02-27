@@ -46,10 +46,7 @@ namespace SimPe.Wants
 		#region Accessor Methods
 		public uint Version
 		{
-			get
-			{
-				return version;
-			}
+			get => version;
 			set
 			{
 				if (version != value)
@@ -93,10 +90,7 @@ namespace SimPe.Wants
 
 		public uint MaxWants
 		{
-			get
-			{
-				return maxWants;
-			}
+			get => maxWants;
 			set
 			{
 				if (maxWants != value)
@@ -119,10 +113,7 @@ namespace SimPe.Wants
 
 		public uint MaxFears
 		{
-			get
-			{
-				return maxFears;
-			}
+			get => maxFears;
 			set
 			{
 				if (maxFears != value)
@@ -145,10 +136,7 @@ namespace SimPe.Wants
 
 		public uint Unknown1
 		{
-			get
-			{
-				return unknown1;
-			}
+			get => unknown1;
 			set
 			{
 				if (unknown1 != value)
@@ -160,10 +148,7 @@ namespace SimPe.Wants
 		}
 		public uint Unknown2
 		{
-			get
-			{
-				return unknown2;
-			}
+			get => unknown2;
 			set
 			{
 				if (unknown2 != value)
@@ -175,10 +160,7 @@ namespace SimPe.Wants
 		}
 		public uint Unknown3
 		{
-			get
-			{
-				return unknown3;
-			}
+			get => unknown3;
 			set
 			{
 				if (unknown3 != value)
@@ -190,10 +172,7 @@ namespace SimPe.Wants
 		}
 		public byte[] Unknown4
 		{
-			get
-			{
-				return unknown4;
-			}
+			get => unknown4;
 			set
 			{
 				bool same = true;
@@ -485,10 +464,7 @@ namespace SimPe.Wants
 		public ICollection<List<SWAFItem>> Values => history.Values;
 		public List<SWAFItem> this[uint key]
 		{
-			get
-			{
-				return history[key];
-			}
+			get => history[key];
 			set
 			{
 				if (!history[key].Equals(value))
@@ -580,10 +556,7 @@ namespace SimPe.Wants
 
 		public uint Version
 		{
-			get
-			{
-				return version;
-			}
+			get => version;
 			set
 			{
 				if (version != value)
@@ -627,10 +600,7 @@ namespace SimPe.Wants
 
 		public ushort SimID
 		{
-			get
-			{
-				return simId;
-			}
+			get => simId;
 			set
 			{
 				if (simId != value)
@@ -642,10 +612,7 @@ namespace SimPe.Wants
 		}
 		public uint WantId
 		{
-			get
-			{
-				return wantId;
-			}
+			get => wantId;
 			set
 			{
 				if (wantId != value)
@@ -658,10 +625,7 @@ namespace SimPe.Wants
 
 		public ArgTypes ArgType
 		{
-			get
-			{
-				return argType;
-			}
+			get => argType;
 			set
 			{
 				if (argType != value)
@@ -685,10 +649,7 @@ namespace SimPe.Wants
 		#region Arg
 		public ushort Sim
 		{
-			get
-			{
-				return getArgUshort(ArgTypes.Sim, 0x08);
-			}
+			get => getArgUshort(ArgTypes.Sim, 0x08);
 			set
 			{
 				if (!sameUshort(value))
@@ -700,10 +661,7 @@ namespace SimPe.Wants
 		}
 		public uint Guid
 		{
-			get
-			{
-				return getArgUint(ArgTypes.Guid);
-			}
+			get => getArgUint(ArgTypes.Guid);
 			set
 			{
 				if (!sameUint(value))
@@ -715,10 +673,7 @@ namespace SimPe.Wants
 		}
 		public uint Category
 		{
-			get
-			{
-				return getArgUint(ArgTypes.Category);
-			}
+			get => getArgUint(ArgTypes.Category);
 			set
 			{
 				if (!sameUint(value))
@@ -730,10 +685,7 @@ namespace SimPe.Wants
 		}
 		public ushort Skill
 		{
-			get
-			{
-				return getArgUshort(ArgTypes.Skill, 0);
-			}
+			get => getArgUshort(ArgTypes.Skill, 0);
 			set
 			{
 				if (!sameUshort(value))
@@ -745,10 +697,7 @@ namespace SimPe.Wants
 		}
 		public uint Career
 		{
-			get
-			{
-				return getArgUint(ArgTypes.Career);
-			}
+			get => getArgUint(ArgTypes.Career);
 			set
 			{
 				if (!sameUint(value))
@@ -760,10 +709,7 @@ namespace SimPe.Wants
 		}
 		public uint Badge
 		{
-			get
-			{
-				return getArgUint(ArgTypes.Badge);
-			}
+			get => getArgUint(ArgTypes.Badge);
 			set
 			{
 				if (!sameUint(value))
@@ -841,10 +787,7 @@ namespace SimPe.Wants
 
 		public ushort Arg2
 		{
-			get
-			{
-				return arg2;
-			}
+			get => arg2;
 			set
 			{
 				if (arg2 != value)
@@ -856,10 +799,7 @@ namespace SimPe.Wants
 		}
 		public uint Counter
 		{
-			get
-			{
-				return counter;
-			}
+			get => counter;
 			set
 			{
 				if (counter != value)
@@ -871,10 +811,7 @@ namespace SimPe.Wants
 		}
 		public int Score
 		{
-			get
-			{
-				return score;
-			}
+			get => score;
 			set
 			{
 				if (score != value)
@@ -887,10 +824,7 @@ namespace SimPe.Wants
 
 		public int Influence
 		{
-			get
-			{
-				return influence;
-			}
+			get => influence;
 			set
 			{
 				if (influence != value)
@@ -913,10 +847,7 @@ namespace SimPe.Wants
 
 		public Boolset Flags
 		{
-			get
-			{
-				return flags;
-			}
+			get => flags;
 			set
 			{
 				if (flags != value)

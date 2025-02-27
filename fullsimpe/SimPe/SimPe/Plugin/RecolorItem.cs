@@ -19,10 +19,7 @@ namespace SimPe.Plugin
 
 		public HairColor ColorBin
 		{
-			get
-			{
-				return colorBin;
-			}
+			get => colorBin;
 			set
 			{
 				colorBin = value;
@@ -40,10 +37,7 @@ namespace SimPe.Plugin
 
 		public MetaData.Bodyshape Figure
 		{
-			get
-			{
-				return (MetaData.Bodyshape)CpfItem("product").UIntegerValue;
-			}
+			get => (MetaData.Bodyshape)CpfItem("product").UIntegerValue;
 			set
 			{
 				SetValue("product", Convert.ToUInt32(value));
@@ -56,50 +50,26 @@ namespace SimPe.Plugin
 
 		public uint Flaggery
 		{
-			get
-			{
-				return CpfItem("flags").UIntegerValue;
-			}
-			set
-			{
-				CpfItem("flags").UIntegerValue = value;
-			}
+			get => CpfItem("flags").UIntegerValue;
+			set => CpfItem("flags").UIntegerValue = value;
 		}
 
 		public Guid Hairtone
 		{
-			get
-			{
-				return ParseGuidValue(CpfItem("hairtone"));
-			}
-			set
-			{
-				SetValue("hairtone", value.ToString());
-			}
+			get => ParseGuidValue(CpfItem("hairtone"));
+			set => SetValue("hairtone", value.ToString());
 		}
 
 		public Ages Age
 		{
-			get
-			{
-				return (Ages)CpfItem("age").UIntegerValue;
-			}
-			set
-			{
-				SetValue("age", Convert.ToUInt32(value));
-			}
+			get => (Ages)CpfItem("age").UIntegerValue;
+			set => SetValue("age", Convert.ToUInt32(value));
 		}
 
 		public SimGender Gender
 		{
-			get
-			{
-				return (SimGender)CpfItem("gender").UIntegerValue;
-			}
-			set
-			{
-				SetValue("gender", Convert.ToUInt32(value));
-			}
+			get => (SimGender)CpfItem("gender").UIntegerValue;
+			set => SetValue("gender", Convert.ToUInt32(value));
 		}
 
 		public TextureOverlayTypes TextureOverlayType
@@ -113,10 +83,7 @@ namespace SimPe.Plugin
 
 				return TextureOverlayTypes.EyeBrow;
 			}
-			set
-			{
-				SetValue("subtype", Convert.ToUInt32(value));
-			}
+			set => SetValue("subtype", Convert.ToUInt32(value));
 		}
 
 		public OutfitType OutfitType
@@ -149,14 +116,8 @@ namespace SimPe.Plugin
 		/// </summary>
 		public uint Version
 		{
-			get
-			{
-				return CpfItem("version").UIntegerValue;
-			}
-			set
-			{
-				CpfItem("version").UIntegerValue = value;
-			}
+			get => CpfItem("version").UIntegerValue;
+			set => CpfItem("version").UIntegerValue = value;
 		}
 
 		#endregion

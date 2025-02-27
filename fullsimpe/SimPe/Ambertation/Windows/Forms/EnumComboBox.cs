@@ -96,10 +96,7 @@ namespace Ambertation.Windows.Forms
 		Type myenum;
 		public Type Enum
 		{
-			get
-			{
-				return myenum;
-			}
+			get => myenum;
 			set
 			{
 				if (value != myenum)
@@ -113,10 +110,7 @@ namespace Ambertation.Windows.Forms
 		System.Resources.ResourceManager rm;
 		public System.Resources.ResourceManager ResourceManager
 		{
-			get
-			{
-				return rm;
-			}
+			get => rm;
 			set
 			{
 				if (value != rm)
