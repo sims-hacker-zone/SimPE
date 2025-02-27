@@ -76,8 +76,8 @@ namespace Ambertation.Windows.Forms.Graph
 			get; set;
 		}
 
-		Ambertation.Windows.Forms.Graph.LinkControlLineMode lm;
-		public Ambertation.Windows.Forms.Graph.LinkControlLineMode LineMode
+		LinkControlLineMode lm;
+		public LinkControlLineMode LineMode
 		{
 			get
 			{

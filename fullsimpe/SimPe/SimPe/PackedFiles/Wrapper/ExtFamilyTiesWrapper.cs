@@ -55,7 +55,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new SimPe.PackedFiles.UserInterface.ExtFamilyTies();
+			return new UserInterface.ExtFamilyTies();
 		}
 		#endregion
 
@@ -64,14 +64,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		/// <param name="sdsc"></param>
 		/// <returns></returns>
-		public Wrapper.SDesc[] ParentSims(Wrapper.SDesc sdsc)
+		public SDesc[] ParentSims(SDesc sdsc)
 		{
 			ArrayList list = new ArrayList();
-			SimPe.PackedFiles.Wrapper.Supporting.FamilyTieSim fts = this.FindTies(sdsc);
+			Supporting.FamilyTieSim fts = this.FindTies(sdsc);
 			if (fts != null)
 			{
 				foreach (
-					SimPe.PackedFiles.Wrapper.Supporting.FamilyTieItem fti in fts.Ties
+					Supporting.FamilyTieItem fti in fts.Ties
 				)
 				{
 					if (fti.SimDescription == null)
@@ -89,7 +89,7 @@ namespace SimPe.PackedFiles.Wrapper
 				}
 			}
 
-			Wrapper.SDesc[] ret = new SDesc[list.Count];
+			SDesc[] ret = new SDesc[list.Count];
 			list.CopyTo(ret);
 			return ret;
 		}
@@ -99,15 +99,15 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		/// <param name="sdsc"></param>
 		/// <returns></returns>
-		public Wrapper.SDesc[] SiblingSims(Wrapper.SDesc sdsc)
+		public SDesc[] SiblingSims(SDesc sdsc)
 		{
 			ArrayList list = new ArrayList();
-			SimPe.PackedFiles.Wrapper.Supporting.FamilyTieSim fts = this.FindTies(sdsc);
+			Supporting.FamilyTieSim fts = this.FindTies(sdsc);
 
 			if (fts != null)
 			{
 				foreach (
-					SimPe.PackedFiles.Wrapper.Supporting.FamilyTieItem fti in fts.Ties
+					Supporting.FamilyTieItem fti in fts.Ties
 				)
 				{
 					if (fti.SimDescription == null)
@@ -125,7 +125,7 @@ namespace SimPe.PackedFiles.Wrapper
 				}
 			}
 
-			Wrapper.SDesc[] ret = new SDesc[list.Count];
+			SDesc[] ret = new SDesc[list.Count];
 			list.CopyTo(ret);
 			return ret;
 		}
@@ -135,15 +135,15 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		/// <param name="sdsc"></param>
 		/// <returns></returns>
-		public Wrapper.SDesc[] ChildSims(Wrapper.SDesc sdsc)
+		public SDesc[] ChildSims(SDesc sdsc)
 		{
 			ArrayList list = new ArrayList();
-			SimPe.PackedFiles.Wrapper.Supporting.FamilyTieSim fts = this.FindTies(sdsc);
+			Supporting.FamilyTieSim fts = this.FindTies(sdsc);
 
 			if (fts != null)
 			{
 				foreach (
-					SimPe.PackedFiles.Wrapper.Supporting.FamilyTieItem fti in fts.Ties
+					Supporting.FamilyTieItem fti in fts.Ties
 				)
 				{
 					if (fti.SimDescription == null)
@@ -158,7 +158,7 @@ namespace SimPe.PackedFiles.Wrapper
 				}
 			}
 
-			Wrapper.SDesc[] ret = new SDesc[list.Count];
+			SDesc[] ret = new SDesc[list.Count];
 			list.CopyTo(ret);
 			return ret;
 		}
@@ -168,15 +168,15 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		/// <param name="sdsc"></param>
 		/// <returns></returns>
-		public Wrapper.SDesc[] SpouseSims(Wrapper.SDesc sdsc)
+		public SDesc[] SpouseSims(SDesc sdsc)
 		{
 			ArrayList list = new ArrayList();
-			SimPe.PackedFiles.Wrapper.Supporting.FamilyTieSim fts = this.FindTies(sdsc);
+			Supporting.FamilyTieSim fts = this.FindTies(sdsc);
 
 			if (fts != null)
 			{
 				foreach (
-					SimPe.PackedFiles.Wrapper.Supporting.FamilyTieItem fti in fts.Ties
+					Supporting.FamilyTieItem fti in fts.Ties
 				)
 				{
 					if (fti.SimDescription == null)
@@ -191,7 +191,7 @@ namespace SimPe.PackedFiles.Wrapper
 				}
 			}
 
-			Wrapper.SDesc[] ret = new SDesc[list.Count];
+			SDesc[] ret = new SDesc[list.Count];
 			list.CopyTo(ret);
 			return ret;
 		}

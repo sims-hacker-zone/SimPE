@@ -36,19 +36,19 @@ namespace SimPe.Plugin
 		#region ITool Member
 
 		public bool IsEnabled(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile package
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile package
 		)
 		{
 			return true;
 		}
 
 		public Interfaces.Plugin.IToolResult ShowDialog(
-			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			ref SimPe.Interfaces.Files.IPackageFile package
+			ref Interfaces.Files.IPackedFileDescriptor pfd,
+			ref Interfaces.Files.IPackageFile package
 		)
 		{
-			SimPe.Interfaces.Files.IPackageFile pkg = ws.Execute(package);
+			Interfaces.Files.IPackageFile pkg = ws.Execute(package);
 
 			if (pkg != null)
 			{

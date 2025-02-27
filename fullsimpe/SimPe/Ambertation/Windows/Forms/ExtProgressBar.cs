@@ -38,13 +38,13 @@ namespace Ambertation.Windows.Forms
 	/// <summary>
 	/// Zusammenfassung für LabledProgressBar.
 	/// </summary>
-	[ToolboxBitmapAttribute(typeof(ProgressBar)), DefaultEvent("ChangedValue")]
-	public class ExtProgressBar : System.Windows.Forms.UserControl
+	[ToolboxBitmap(typeof(ProgressBar)), DefaultEvent("ChangedValue")]
+	public class ExtProgressBar : UserControl
 	{
 		/// <summary>
 		/// Erforderliche Designervariable.
 		/// </summary>
-		private System.ComponentModel.Container components = null;
+		private Container components = null;
 
 		public ExtProgressBar()
 		{
@@ -388,7 +388,7 @@ namespace Ambertation.Windows.Forms
 			// ExtProgressBar
 			//
 			this.Name = "ExtProgressBar";
-			this.Size = new System.Drawing.Size(150, 16);
+			this.Size = new Size(150, 16);
 		}
 		#endregion
 

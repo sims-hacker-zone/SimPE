@@ -7,7 +7,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for BnfoCustomerItemUI.
 	/// </summary>
-	public class BnfoCustomerItemUI : System.Windows.Forms.UserControl
+	public class BnfoCustomerItemUI : UserControl
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -65,7 +65,7 @@ namespace SimPe.Plugin
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(BnfoCustomerItemUI)
 				);
-			this.tb = new System.Windows.Forms.TextBox();
+			this.tb = new TextBox();
 			this.pb = new Ambertation.Windows.Forms.LabeledProgressBar();
 			this.SuspendLayout();
 			//
@@ -75,7 +75,7 @@ namespace SimPe.Plugin
 			this.tb.HideSelection = false;
 			this.tb.Name = "tb";
 			this.tb.ReadOnly = true;
-			this.tb.TextChanged += new System.EventHandler(this.tb_TextChanged);
+			this.tb.TextChanged += new EventHandler(this.tb_TextChanged);
 			//
 			// pb
 			//
@@ -92,7 +92,7 @@ namespace SimPe.Plugin
 			this.pb.TokenCount = 11;
 			this.pb.UnselectedColor = System.Drawing.Color.Black;
 			this.pb.Value = 1000;
-			this.pb.ChangedValue += new System.EventHandler(this.pb_Changed);
+			this.pb.ChangedValue += new EventHandler(this.pb_Changed);
 			//
 			// BnfoCustomerItemUI
 			//
@@ -106,7 +106,7 @@ namespace SimPe.Plugin
 		#endregion
 
 		BnfoCustomerItem item;
-		private System.Windows.Forms.TextBox tb;
+		private TextBox tb;
 
 		[System.ComponentModel.Browsable(false)]
 		public BnfoCustomerItem Item
@@ -181,11 +181,11 @@ namespace SimPe.Plugin
 			Item = ui.SelectedItem;
 		}
 
-		private void tb_TextChanged(object sender, System.EventArgs e)
+		private void tb_TextChanged(object sender, EventArgs e)
 		{
 		}
 
-		private void pb_Changed(object sender, System.EventArgs e)
+		private void pb_Changed(object sender, EventArgs e)
 		{
 			if (intern)
 			{

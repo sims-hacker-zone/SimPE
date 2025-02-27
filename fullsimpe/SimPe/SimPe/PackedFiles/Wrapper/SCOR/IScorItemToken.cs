@@ -4,7 +4,7 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 	{
 		byte[] UnserializeToken(ScorItem si, System.IO.BinaryReader reader);
 
-		SCOR.AScorItem ActivatedGUI
+		AScorItem ActivatedGUI
 		{
 			get;
 		}

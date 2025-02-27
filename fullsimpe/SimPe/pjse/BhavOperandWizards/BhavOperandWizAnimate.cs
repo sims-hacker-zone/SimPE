@@ -25,11 +25,11 @@ using SimPe.PackedFiles.Wrapper;
 
 namespace pjse.BhavOperandWizards.WizAnimate
 {
-	internal class UI : System.Windows.Forms.Form, iBhavOperandWizForm
+	internal class UI : Form, iBhavOperandWizForm
 	{
 		#region Form variables
 
-		internal System.Windows.Forms.Panel pnWizAnimate;
+		internal Panel pnWizAnimate;
 		private FlowLayoutPanel flpnMain;
 		private Panel pnObject;
 		private ComboBox cbPickerObject;
@@ -302,7 +302,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 
 		private void doStrChooser(TextBox tbVal, TextBox strText)
 		{
-			pjse.FileTable.Entry[] items = pjse.FileTable.GFT[
+			FileTable.Entry[] items = pjse.FileTable.GFT[
 				(uint)SimPe.Data.MetaData.STRING_FILE,
 				inst.Parent.GroupForScope(AnimScope()),
 				(uint)AnimInstance()
@@ -319,7 +319,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 				return; // eek!
 			}
 
-			SimPe.PackedFiles.Wrapper.StrWrapper str = new StrWrapper();
+			StrWrapper str = new StrWrapper();
 			str.ProcessData(items[0].PFD, items[0].Package);
 
 			int i = (new StrChooser(true)).Strnum(str);
@@ -740,60 +740,60 @@ namespace pjse.BhavOperandWizards.WizAnimate
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWizAnimate = new System.Windows.Forms.Panel();
-			this.flpnMain = new System.Windows.Forms.FlowLayoutPanel();
-			this.pnObject = new System.Windows.Forms.Panel();
-			this.cbPickerObject = new System.Windows.Forms.ComboBox();
-			this.tbValObject = new System.Windows.Forms.TextBox();
-			this.cbdoObject = new System.Windows.Forms.ComboBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.pnIKObject = new System.Windows.Forms.Panel();
-			this.cbPickerIK = new System.Windows.Forms.ComboBox();
-			this.tbValIK = new System.Windows.Forms.TextBox();
-			this.cbdoIK = new System.Windows.Forms.ComboBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.pnDoidOptions = new System.Windows.Forms.Panel();
-			this.ckbAttrPicker = new System.Windows.Forms.CheckBox();
-			this.ckbDecimal = new System.Windows.Forms.CheckBox();
-			this.flpnAnimType = new System.Windows.Forms.FlowLayoutPanel();
-			this.label4 = new System.Windows.Forms.Label();
-			this.tbValAnimType = new System.Windows.Forms.TextBox();
-			this.cbAnimType = new System.Windows.Forms.ComboBox();
-			this.tbAnimType = new System.Windows.Forms.TextBox();
-			this.flpnAnim = new System.Windows.Forms.FlowLayoutPanel();
-			this.lbParam = new System.Windows.Forms.Label();
-			this.tbValAnim = new System.Windows.Forms.TextBox();
-			this.btnAnim = new System.Windows.Forms.Button();
-			this.tbAnim = new System.Windows.Forms.TextBox();
-			this.flpnEventScope = new System.Windows.Forms.FlowLayoutPanel();
-			this.label2 = new System.Windows.Forms.Label();
-			this.cbEventScope = new System.Windows.Forms.ComboBox();
-			this.flpnEventTree = new System.Windows.Forms.FlowLayoutPanel();
-			this.llEvent = new System.Windows.Forms.LinkLabel();
-			this.tbValEventTree = new System.Windows.Forms.TextBox();
-			this.btnEventTree = new System.Windows.Forms.Button();
-			this.tbEventTree = new System.Windows.Forms.TextBox();
-			this.flpnOptions = new System.Windows.Forms.FlowLayoutPanel();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.flpnOptions1 = new System.Windows.Forms.FlowLayoutPanel();
-			this.ckbFlipped = new System.Windows.Forms.CheckBox();
-			this.ckbAnimSpeed = new System.Windows.Forms.CheckBox();
-			this.ckbParam = new System.Windows.Forms.CheckBox();
-			this.ckbInterruptible = new System.Windows.Forms.CheckBox();
-			this.ckbStartTag = new System.Windows.Forms.CheckBox();
-			this.ckbLoopCount = new System.Windows.Forms.CheckBox();
-			this.ckbTransToIdle = new System.Windows.Forms.CheckBox();
-			this.ckbBlendOut = new System.Windows.Forms.CheckBox();
-			this.ckbBlendIn = new System.Windows.Forms.CheckBox();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.flpnOptions2 = new System.Windows.Forms.FlowLayoutPanel();
-			this.ckbFlipTemp3 = new System.Windows.Forms.CheckBox();
-			this.ckbSync = new System.Windows.Forms.CheckBox();
-			this.ckbAlignBlend = new System.Windows.Forms.CheckBox();
-			this.ckbControllerIsSource = new System.Windows.Forms.CheckBox();
-			this.ckbNotHurryable = new System.Windows.Forms.CheckBox();
-			this.gbPriority = new System.Windows.Forms.GroupBox();
-			this.cbPriority = new System.Windows.Forms.ComboBox();
+			this.pnWizAnimate = new Panel();
+			this.flpnMain = new FlowLayoutPanel();
+			this.pnObject = new Panel();
+			this.cbPickerObject = new ComboBox();
+			this.tbValObject = new TextBox();
+			this.cbdoObject = new ComboBox();
+			this.label1 = new Label();
+			this.pnIKObject = new Panel();
+			this.cbPickerIK = new ComboBox();
+			this.tbValIK = new TextBox();
+			this.cbdoIK = new ComboBox();
+			this.label3 = new Label();
+			this.pnDoidOptions = new Panel();
+			this.ckbAttrPicker = new CheckBox();
+			this.ckbDecimal = new CheckBox();
+			this.flpnAnimType = new FlowLayoutPanel();
+			this.label4 = new Label();
+			this.tbValAnimType = new TextBox();
+			this.cbAnimType = new ComboBox();
+			this.tbAnimType = new TextBox();
+			this.flpnAnim = new FlowLayoutPanel();
+			this.lbParam = new Label();
+			this.tbValAnim = new TextBox();
+			this.btnAnim = new Button();
+			this.tbAnim = new TextBox();
+			this.flpnEventScope = new FlowLayoutPanel();
+			this.label2 = new Label();
+			this.cbEventScope = new ComboBox();
+			this.flpnEventTree = new FlowLayoutPanel();
+			this.llEvent = new LinkLabel();
+			this.tbValEventTree = new TextBox();
+			this.btnEventTree = new Button();
+			this.tbEventTree = new TextBox();
+			this.flpnOptions = new FlowLayoutPanel();
+			this.groupBox1 = new GroupBox();
+			this.flpnOptions1 = new FlowLayoutPanel();
+			this.ckbFlipped = new CheckBox();
+			this.ckbAnimSpeed = new CheckBox();
+			this.ckbParam = new CheckBox();
+			this.ckbInterruptible = new CheckBox();
+			this.ckbStartTag = new CheckBox();
+			this.ckbLoopCount = new CheckBox();
+			this.ckbTransToIdle = new CheckBox();
+			this.ckbBlendOut = new CheckBox();
+			this.ckbBlendIn = new CheckBox();
+			this.groupBox2 = new GroupBox();
+			this.flpnOptions2 = new FlowLayoutPanel();
+			this.ckbFlipTemp3 = new CheckBox();
+			this.ckbSync = new CheckBox();
+			this.ckbAlignBlend = new CheckBox();
+			this.ckbControllerIsSource = new CheckBox();
+			this.ckbNotHurryable = new CheckBox();
+			this.gbPriority = new GroupBox();
+			this.cbPriority = new ComboBox();
 			this.pnWizAnimate.SuspendLayout();
 			this.flpnMain.SuspendLayout();
 			this.pnObject.SuspendLayout();
@@ -960,7 +960,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			resources.ApplyResources(this.cbAnimType, "cbAnimType");
 			this.cbAnimType.Name = "cbAnimType";
 			this.cbAnimType.TabStop = false;
-			this.cbAnimType.SelectedIndexChanged += new System.EventHandler(
+			this.cbAnimType.SelectedIndexChanged += new EventHandler(
 				this.cbAnimType_SelectedIndexChanged
 			);
 			//
@@ -996,7 +996,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			//
 			resources.ApplyResources(this.btnAnim, "btnAnim");
 			this.btnAnim.Name = "btnAnim";
-			this.btnAnim.Click += new System.EventHandler(this.btnAnim_Click);
+			this.btnAnim.Click += new EventHandler(this.btnAnim_Click);
 			//
 			// tbAnim
 			//
@@ -1054,7 +1054,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			this.llEvent.TabStop = true;
 			this.llEvent.UseCompatibleTextRendering = true;
 			this.llEvent.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llEvent_LinkClicked
 				);
 			//
@@ -1067,7 +1067,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			//
 			resources.ApplyResources(this.btnEventTree, "btnEventTree");
 			this.btnEventTree.Name = "btnEventTree";
-			this.btnEventTree.Click += new System.EventHandler(this.btnEventTree_Click);
+			this.btnEventTree.Click += new EventHandler(this.btnEventTree_Click);
 			//
 			// tbEventTree
 			//
@@ -1123,7 +1123,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			resources.ApplyResources(this.ckbParam, "ckbParam");
 			this.ckbParam.Name = "ckbParam";
 			this.ckbParam.UseVisualStyleBackColor = true;
-			this.ckbParam.CheckedChanged += new System.EventHandler(
+			this.ckbParam.CheckedChanged += new EventHandler(
 				this.ckbParam_CheckedChanged
 			);
 			//
@@ -1185,7 +1185,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			resources.ApplyResources(this.ckbFlipTemp3, "ckbFlipTemp3");
 			this.ckbFlipTemp3.Name = "ckbFlipTemp3";
 			this.ckbFlipTemp3.UseVisualStyleBackColor = true;
-			this.ckbFlipTemp3.CheckedChanged += new System.EventHandler(
+			this.ckbFlipTemp3.CheckedChanged += new EventHandler(
 				this.ckbFlipTemp3_CheckedChanged
 			);
 			//
@@ -1284,7 +1284,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 
 		private void llEvent_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			pjse.FileTable.Entry item = inst.Parent.ResourceByInstance(
+			FileTable.Entry item = inst.Parent.ResourceByInstance(
 				SimPe.Data.MetaData.BHAV_FILE,
 				doidEvent.Value
 			);
@@ -1307,7 +1307,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 
 		private void btnEventTree_Click(object sender, EventArgs e)
 		{
-			pjse.FileTable.Entry item = new pjse.ResourceChooser().Execute(
+			FileTable.Entry item = new ResourceChooser().Execute(
 				SimPe.Data.MetaData.BHAV_FILE,
 				inst.Parent.FileDescriptor.Group,
 				this,
@@ -1383,7 +1383,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 
 namespace pjse.BhavOperandWizards
 {
-	public class BhavOperandWizAnimate : pjse.ABhavOperandWiz
+	public class BhavOperandWizAnimate : ABhavOperandWiz
 	{
 		public BhavOperandWizAnimate(Instruction i, String mode)
 			: base(i)

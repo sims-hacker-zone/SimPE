@@ -26,7 +26,7 @@ namespace SimPe.PackedFiles.Wrapper
 	/// <summary>
 	/// Summary description for ExtSDesc.
 	/// </summary>
-	public class ExtSrel : SRel, SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper
+	public class ExtSrel : SRel, IMultiplePackedFileWrapper
 	{
 		public ExtSrel()
 			: base() { }
@@ -47,14 +47,14 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new SimPe.PackedFiles.UserInterface.ExtSrel();
+			return new UserInterface.ExtSrel();
 		}
 
 		#region Descriptions
-		protected SimPe.PackedFiles.Wrapper.ExtSDesc GetDescriptionByInstance(uint inst)
+		protected ExtSDesc GetDescriptionByInstance(uint inst)
 		{
-			SimPe.PackedFiles.Wrapper.ExtSDesc ret =
-				(SimPe.PackedFiles.Wrapper.ExtSDesc)
+			ExtSDesc ret =
+				(ExtSDesc)
 					FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(
 						(ushort)inst
 					);
@@ -108,9 +108,9 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		SimPe.PackedFiles.Wrapper.ExtSDesc src,
+		ExtSDesc src,
 			dst;
-		public SimPe.PackedFiles.Wrapper.ExtSDesc SourceSim
+		public ExtSDesc SourceSim
 		{
 			get
 			{
@@ -127,7 +127,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public SimPe.PackedFiles.Wrapper.ExtSDesc TargetSim
+		public ExtSDesc TargetSim
 		{
 			get
 			{
@@ -260,7 +260,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 		#endregion
 
-		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
+		protected override string GetResourceName(Data.TypeAlias ta)
 		{
 			if (!this.Processed)
 			{

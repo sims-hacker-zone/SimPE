@@ -376,7 +376,7 @@ namespace SimPe.Plugin
 			{
 				if (tGenericRcol == null)
 				{
-					tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+					tGenericRcol = new TabPage.GenericRcol();
 				}
 
 				return tGenericRcol;
@@ -391,27 +391,27 @@ namespace SimPe.Plugin
 		{
 			if (tObjectGraphNode == null)
 			{
-				tObjectGraphNode = new SimPe.Plugin.TabPage.ObjectGraphNode();
+				tObjectGraphNode = new TabPage.ObjectGraphNode();
 			}
 
 			if (tGenericRcol == null)
 			{
-				tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+				tGenericRcol = new TabPage.GenericRcol();
 			}
 
 			if (tShpeLod == null)
 			{
-				tShpeLod = new SimPe.Plugin.TabPage.ShpeLod();
+				tShpeLod = new TabPage.ShpeLod();
 			}
 
 			if (tShpeItems == null)
 			{
-				tShpeItems = new SimPe.Plugin.TabPage.ShpeItems();
+				tShpeItems = new TabPage.ShpeItems();
 			}
 
 			if (tShpeParts == null)
 			{
-				tShpeParts = new SimPe.Plugin.TabPage.ShpeParts();
+				tShpeParts = new TabPage.ShpeParts();
 			}
 
 			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(this.version);
@@ -471,7 +471,7 @@ namespace SimPe.Plugin
 
 			if (tObjectGraphNode == null)
 			{
-				tObjectGraphNode = new SimPe.Plugin.TabPage.ObjectGraphNode();
+				tObjectGraphNode = new TabPage.ObjectGraphNode();
 			}
 
 			tObjectGraphNode.Tag = this.GraphNode;

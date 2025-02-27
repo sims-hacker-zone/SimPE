@@ -27,7 +27,7 @@ namespace SimPe
 	/// <summary>
 	/// This is the default descriptive Serializer
 	/// </summary>
-	public abstract class AbstractSerializer : SimPe.Interfaces.ISerializeFormater
+	public abstract class AbstractSerializer : Interfaces.ISerializeFormater
 	{
 		public abstract string Seperator
 		{
@@ -157,8 +157,8 @@ namespace SimPe
 		}
 
 		public virtual string SerializeTGI(
-			SimPe.Interfaces.Plugin.Internal.IPackedFileName wrapper,
-			SimPe.Interfaces.Files.IPackedFileDescriptorBasic pfd
+			IPackedFileName wrapper,
+			Interfaces.Files.IPackedFileDescriptorBasic pfd
 		)
 		{
 			string s = "";

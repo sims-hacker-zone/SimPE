@@ -40,9 +40,9 @@ namespace SimPe
 			get
 			{
 				//if (tool.GetType().GetInterface("SimPe.Interfaces.IToolExt", true) == typeof(SimPe.Interfaces.IToolExt)) return (SimPe.Interfaces.IToolExt)tool;
-				if (tool is SimPe.Interfaces.IToolExt)
+				if (tool is IToolExt)
 				{
-					return (SimPe.Interfaces.IToolExt)tool;
+					return (IToolExt)tool;
 				}
 				else
 				{
@@ -58,9 +58,9 @@ namespace SimPe
 		{
 			get
 			{
-				if (tool is SimPe.Interfaces.ITool)
+				if (tool is ITool)
 				{
-					return (SimPe.Interfaces.ITool)tool;
+					return (ITool)tool;
 				}
 				else
 				{
@@ -76,9 +76,9 @@ namespace SimPe
 		{
 			get
 			{
-				if (tool is SimPe.Interfaces.IToolPlus)
+				if (tool is IToolPlus)
 				{
-					return (SimPe.Interfaces.IToolPlus)tool;
+					return (IToolPlus)tool;
 				}
 				else
 				{
@@ -115,7 +115,7 @@ namespace SimPe
 			Name = tool.GetType().Namespace + "." + tool.GetType().Name;
 		}
 
-		private void ClickItem(object sender, System.EventArgs e)
+		private void ClickItem(object sender, EventArgs e)
 		{
 			if (Tool == null)
 			{
@@ -129,7 +129,7 @@ namespace SimPe
 				{
 					try
 					{
-						SimPe.Interfaces.Plugin.IToolResult tr = Tool.ShowDialog(
+						Interfaces.Plugin.IToolResult tr = Tool.ShowDialog(
 							ref pfd,
 							ref package
 						);
@@ -160,14 +160,14 @@ namespace SimPe
 		}
 
 		#region Event Handler
-		SimPe.Events.ResourceEventArgs lasteventarg;
+		Events.ResourceEventArgs lasteventarg;
 
 		/// <summary>
 		/// Fired when a Resource was changed by a ToolPlugin and the Enabled state needs to be changed
 		/// </summary>
 		internal void ChangeEnabledStateEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs e
+			Events.ResourceEventArgs e
 		)
 		{
 			this.Package = AbstractToolPlus.ExtractPackage(e);

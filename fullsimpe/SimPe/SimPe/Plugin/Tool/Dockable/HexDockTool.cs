@@ -22,7 +22,7 @@ namespace SimPe.Plugin.Tool.Dockable
 	/// <summary>
 	/// Docakble Tool to view/change Resource specific Informations
 	/// </summary>
-	public class HexDockTool : SimPe.Interfaces.IDockableTool
+	public class HexDockTool : Interfaces.IDockableTool
 	{
 		ResourceDock rd;
 
@@ -38,9 +38,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			return rd.dcHex;
 		}
 
-		public event SimPe.Events.ChangedResourceEvent ShowNewResource;
+		public event Events.ChangedResourceEvent ShowNewResource;
 
-		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es)
+		public void RefreshDock(object sender, Events.ResourceEventArgs es)
 		{
 			rd.button1.Enabled = false;
 			if (!rd.dcHex.IsFloating && !rd.dcHex.IsDocked)
@@ -50,14 +50,14 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			if (es.HasFileDescriptor)
 			{
-				foreach (SimPe.Events.ResourceContainer e in es)
+				foreach (Events.ResourceContainer e in es)
 				{
 					if (e.HasFileDescriptor && e.HasPackage)
 					{
 						try
 						{
 							rd.hexpfd = e.Resource.FileDescriptor;
-							SimPe.Interfaces.Files.IPackedFile pf =
+							Interfaces.Files.IPackedFile pf =
 								e.Resource.Package.Read(e.Resource.FileDescriptor);
 							rd.hvc.Data = pf.UncompressedData;
 							rd.button1.Enabled = true;

@@ -28,7 +28,7 @@ namespace SimPe.PackedFiles.Wrapper
 	/// <summary>
 	/// Read an XML Description File and create a List of available Properties
 	/// </summary>
-	public class ObjdPropertyParser : Ambertation.PropertyParser
+	public class ObjdPropertyParser : PropertyParser
 	{
 		/// <summary>
 		/// Create a new Instance

@@ -57,8 +57,8 @@ namespace SimPe.Plugin
 		}
 
 		Bnfo parent;
-		SimPe.PackedFiles.Wrapper.ExtSDesc sdsc;
-		public SimPe.PackedFiles.Wrapper.ExtSDesc SimDescription
+		PackedFiles.Wrapper.ExtSDesc sdsc;
+		public PackedFiles.Wrapper.ExtSDesc SimDescription
 		{
 			get
 			{
@@ -67,7 +67,7 @@ namespace SimPe.Plugin
 					sdsc =
 						FileTable.ProviderRegistry.SimDescriptionProvider.SimInstance[
 							SimInstance
-						] as SimPe.PackedFiles.Wrapper.ExtSDesc;
+						] as PackedFiles.Wrapper.ExtSDesc;
 				}
 
 				return sdsc;

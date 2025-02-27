@@ -27,10 +27,10 @@ namespace SimPe
 	/// </summary>
 	internal class ActionToolDescriptor
 	{
-		SimPe.Interfaces.IToolAction tool;
+		Interfaces.IToolAction tool;
 		LoadedPackage lp;
 
-		SimPe.Events.ResourceEventArgs lasteventarg;
+		Events.ResourceEventArgs lasteventarg;
 
 		/// <summary>
 		/// Returns the generated LinkLabel
@@ -43,7 +43,7 @@ namespace SimPe
 		/// <summary>
 		/// Returns the generated ToolBar ButtonItem (can be null)
 		/// </summary>
-		public System.Windows.Forms.ToolStripButton ToolBarButton
+		public ToolStripButton ToolBarButton
 		{
 			get;
 		}
@@ -51,7 +51,7 @@ namespace SimPe
 		/// <summary>
 		/// Returns the generated MenuButtonItem
 		/// </summary>
-		public System.Windows.Forms.ToolStripMenuItem MenuButton
+		public ToolStripMenuItem MenuButton
 		{
 			get;
 		}
@@ -60,7 +60,7 @@ namespace SimPe
 		/// Create a new Instance
 		/// </summary>
 		/// <param name="tool"></param>
-		public ActionToolDescriptor(SimPe.Interfaces.IToolAction tool)
+		public ActionToolDescriptor(Interfaces.IToolAction tool)
 		{
 			//this.lp = lp;
 			this.tool = tool;
@@ -94,7 +94,7 @@ namespace SimPe
 				}
 			}
 
-			LinkLabel.LinkArea = new System.Windows.Forms.LinkArea(0, LinkLabel.Text.Length);
+			LinkLabel.LinkArea = new LinkArea(0, LinkLabel.Text.Length);
 			LinkLabel.Font = new System.Drawing.Font(
 				"Verdana",
 				LinkLabel.Font.Size,
@@ -105,7 +105,7 @@ namespace SimPe
 
 			LinkLabel.LinkClicked += new LinkLabelLinkClickedEventHandler(LinkClicked);
 
-			MenuButton = new System.Windows.Forms.ToolStripMenuItem(LinkLabel.Text);
+			MenuButton = new ToolStripMenuItem(LinkLabel.Text);
 			MenuButton.Click += new EventHandler(LinkClicked);
 			MenuButton.Image = tool.Icon;
 			LoadFileWrappersExt.SetShurtcutKey(MenuButton, tool.Shortcut);
@@ -130,7 +130,7 @@ namespace SimPe
 			//Make Sure the Action is disabled on StartUp
 			ChangeEnabledStateEventHandler(
 				null,
-				new SimPe.Events.ResourceEventArgs(lp)
+				new Events.ResourceEventArgs(lp)
 			);
 		}
 
@@ -155,7 +155,7 @@ namespace SimPe
 		/// </summary>
 		public void ChangeEnabledStateEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs e
+			Events.ResourceEventArgs e
 		)
 		{
 			lp = e.LoadedPackage;

@@ -30,16 +30,16 @@ namespace SimPe.Plugin.TabPage
 		//System.Windows.Forms.UserControl
 		System.Windows.Forms.TabPage
 	{
-		private System.Windows.Forms.TextBox tbitemunk4;
-		private System.Windows.Forms.TextBox tbitemunk3;
-		private System.Windows.Forms.TextBox tbitemunk2;
-		private System.Windows.Forms.TextBox tbitemunk1;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.TextBox tbitemflname;
-		private System.Windows.Forms.Label label3;
-		internal System.Windows.Forms.ListBox lbitem;
-		private System.Windows.Forms.LinkLabel linkLabel5;
-		private System.Windows.Forms.LinkLabel linkLabel6;
+		private TextBox tbitemunk4;
+		private TextBox tbitemunk3;
+		private TextBox tbitemunk2;
+		private TextBox tbitemunk1;
+		private Label label4;
+		private TextBox tbitemflname;
+		private Label label3;
+		internal ListBox lbitem;
+		private LinkLabel linkLabel5;
+		private LinkLabel linkLabel6;
 
 		/// <summary>
 		/// Required designer variable.
@@ -90,16 +90,16 @@ namespace SimPe.Plugin.TabPage
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.linkLabel5 = new System.Windows.Forms.LinkLabel();
-			this.linkLabel6 = new System.Windows.Forms.LinkLabel();
-			this.tbitemunk4 = new System.Windows.Forms.TextBox();
-			this.tbitemunk3 = new System.Windows.Forms.TextBox();
-			this.tbitemunk2 = new System.Windows.Forms.TextBox();
-			this.tbitemunk1 = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.tbitemflname = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.lbitem = new System.Windows.Forms.ListBox();
+			this.linkLabel5 = new LinkLabel();
+			this.linkLabel6 = new LinkLabel();
+			this.tbitemunk4 = new TextBox();
+			this.tbitemunk3 = new TextBox();
+			this.tbitemunk2 = new TextBox();
+			this.tbitemunk1 = new TextBox();
+			this.label4 = new Label();
+			this.tbitemflname = new TextBox();
+			this.label3 = new Label();
+			this.lbitem = new ListBox();
 
 			this.SuspendLayout();
 			//
@@ -124,7 +124,7 @@ namespace SimPe.Plugin.TabPage
 			// linkLabel5
 			//
 			this.linkLabel5.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -146,14 +146,14 @@ namespace SimPe.Plugin.TabPage
 			this.linkLabel5.TabStop = true;
 			this.linkLabel5.Text = "delete";
 			this.linkLabel5.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.linkLabel5_LinkClicked
 				);
 			//
 			// linkLabel6
 			//
 			this.linkLabel6.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -175,7 +175,7 @@ namespace SimPe.Plugin.TabPage
 			this.linkLabel6.TabStop = true;
 			this.linkLabel6.Text = "add";
 			this.linkLabel6.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.linkLabel6_LinkClicked
 				);
 			//
@@ -193,7 +193,7 @@ namespace SimPe.Plugin.TabPage
 			this.tbitemunk4.Size = new System.Drawing.Size(48, 21);
 			this.tbitemunk4.TabIndex = 17;
 			this.tbitemunk4.Text = "0x00";
-			this.tbitemunk4.TextChanged += new System.EventHandler(
+			this.tbitemunk4.TextChanged += new EventHandler(
 				this.ChangeItemUnknown
 			);
 			//
@@ -211,7 +211,7 @@ namespace SimPe.Plugin.TabPage
 			this.tbitemunk3.Size = new System.Drawing.Size(88, 21);
 			this.tbitemunk3.TabIndex = 16;
 			this.tbitemunk3.Text = "0x00000000";
-			this.tbitemunk3.TextChanged += new System.EventHandler(
+			this.tbitemunk3.TextChanged += new EventHandler(
 				this.ChangeItemUnknown
 			);
 			//
@@ -229,7 +229,7 @@ namespace SimPe.Plugin.TabPage
 			this.tbitemunk2.Size = new System.Drawing.Size(48, 21);
 			this.tbitemunk2.TabIndex = 15;
 			this.tbitemunk2.Text = "0x00";
-			this.tbitemunk2.TextChanged += new System.EventHandler(
+			this.tbitemunk2.TextChanged += new EventHandler(
 				this.ChangeItemUnknown
 			);
 			//
@@ -247,7 +247,7 @@ namespace SimPe.Plugin.TabPage
 			this.tbitemunk1.Size = new System.Drawing.Size(88, 21);
 			this.tbitemunk1.TabIndex = 14;
 			this.tbitemunk1.Text = "0x00000000";
-			this.tbitemunk1.TextChanged += new System.EventHandler(
+			this.tbitemunk1.TextChanged += new EventHandler(
 				this.ChangeItemUnknown
 			);
 			//
@@ -270,7 +270,7 @@ namespace SimPe.Plugin.TabPage
 			// tbitemflname
 			//
 			this.tbitemflname.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -291,7 +291,7 @@ namespace SimPe.Plugin.TabPage
 			this.tbitemflname.Size = new System.Drawing.Size(512, 21);
 			this.tbitemflname.TabIndex = 11;
 			this.tbitemflname.Text = "";
-			this.tbitemflname.TextChanged += new System.EventHandler(
+			this.tbitemflname.TextChanged += new EventHandler(
 				this.ChangedItemFilename
 			);
 			//
@@ -314,7 +314,7 @@ namespace SimPe.Plugin.TabPage
 			// lbitem
 			//
 			this.lbitem.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -336,7 +336,7 @@ namespace SimPe.Plugin.TabPage
 			this.lbitem.Name = "lbitem";
 			this.lbitem.Size = new System.Drawing.Size(520, 112);
 			this.lbitem.TabIndex = 10;
-			this.lbitem.SelectedIndexChanged += new System.EventHandler(
+			this.lbitem.SelectedIndexChanged += new EventHandler(
 				this.SelectItems
 			);
 			//
@@ -351,7 +351,7 @@ namespace SimPe.Plugin.TabPage
 		{
 			try
 			{
-				SimPe.Plugin.Shape shape = (SimPe.Plugin.Shape)this.Tag;
+				Shape shape = (Shape)this.Tag;
 
 				ShapeItem[] items = new ShapeItem[lbitem.Items.Count];
 				for (int i = 0; i < items.Length; i++)
@@ -366,13 +366,13 @@ namespace SimPe.Plugin.TabPage
 
 		private void linkLabel6_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			try
 			{
 				//Shpe wrp = (Shpe)wrapper;
-				SimPe.Plugin.Shape shape = (SimPe.Plugin.Shape)this.Tag;
+				Shape shape = (Shape)this.Tag;
 
 				ShapeItem val = new ShapeItem(shape);
 				val.FileName = tbitemflname.Text;
@@ -389,7 +389,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void linkLabel5_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lbitem.SelectedIndex < 0)
@@ -401,7 +401,7 @@ namespace SimPe.Plugin.TabPage
 			UpdateLists();
 		}
 
-		private void ChangeItemUnknown(object sender, System.EventArgs e)
+		private void ChangeItemUnknown(object sender, EventArgs e)
 		{
 			if (lbitem.Tag != null)
 			{
@@ -430,7 +430,7 @@ namespace SimPe.Plugin.TabPage
 			}
 		}
 
-		private void ChangedItemFilename(object sender, System.EventArgs e)
+		private void ChangedItemFilename(object sender, EventArgs e)
 		{
 			if (lbitem.Tag != null)
 			{
@@ -456,7 +456,7 @@ namespace SimPe.Plugin.TabPage
 			}
 		}
 
-		private void SelectItems(object sender, System.EventArgs e)
+		private void SelectItems(object sender, EventArgs e)
 		{
 			if (lbitem.Tag != null)
 			{

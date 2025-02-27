@@ -27,12 +27,12 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for SubsetSelectForm.
 	/// </summary>
-	public class SubsetSelectForm : System.Windows.Forms.Form
+	public class SubsetSelectForm : Form
 	{
-		private System.Windows.Forms.Panel panel1;
-		public System.Windows.Forms.Panel pnselect;
-		public System.Windows.Forms.Button button1;
-		public System.Windows.Forms.CheckBox cbauto;
+		private Panel panel1;
+		public Panel pnselect;
+		public Button button1;
+		public CheckBox cbauto;
 
 		/// <summary>
 		/// Required designer variable.
@@ -75,17 +75,17 @@ namespace SimPe.Plugin
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(SubsetSelectForm));
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.cbauto = new System.Windows.Forms.CheckBox();
-			this.button1 = new System.Windows.Forms.Button();
-			this.pnselect = new System.Windows.Forms.Panel();
+			this.panel1 = new Panel();
+			this.cbauto = new CheckBox();
+			this.button1 = new Button();
+			this.pnselect = new Panel();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			//
 			// panel1
 			//
 			this.panel1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -99,15 +99,15 @@ namespace SimPe.Plugin
 			this.panel1.Controls.Add(this.cbauto);
 			this.panel1.Controls.Add(this.button1);
 			this.panel1.Controls.Add(this.pnselect);
-			this.panel1.Location = new System.Drawing.Point(0, 0);
+			this.panel1.Location = new Point(0, 0);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(536, 440);
+			this.panel1.Size = new Size(536, 440);
 			this.panel1.TabIndex = 0;
 			//
 			// cbauto
 			//
 			this.cbauto.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -117,16 +117,16 @@ namespace SimPe.Plugin
 			this.cbauto.Checked = true;
 			this.cbauto.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.cbauto.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbauto.Location = new System.Drawing.Point(8, 408);
+			this.cbauto.Location = new Point(8, 408);
 			this.cbauto.Name = "cbauto";
-			this.cbauto.Size = new System.Drawing.Size(240, 24);
+			this.cbauto.Size = new Size(240, 24);
 			this.cbauto.TabIndex = 3;
 			this.cbauto.Text = "Autoselect matching Textures";
 			//
 			// button1
 			//
 			this.button1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -134,16 +134,16 @@ namespace SimPe.Plugin
 				)
 			);
 			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.button1.Location = new System.Drawing.Point(456, 416);
+			this.button1.Location = new Point(456, 416);
 			this.button1.Name = "button1";
 			this.button1.TabIndex = 2;
 			this.button1.Text = "OK";
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.button1.Click += new EventHandler(this.button1_Click);
 			//
 			// pnselect
 			//
 			this.pnselect.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -155,17 +155,17 @@ namespace SimPe.Plugin
 				)
 			);
 			this.pnselect.AutoScroll = true;
-			this.pnselect.Location = new System.Drawing.Point(0, 0);
+			this.pnselect.Location = new Point(0, 0);
 			this.pnselect.Name = "pnselect";
-			this.pnselect.Size = new System.Drawing.Size(536, 408);
+			this.pnselect.Size = new Size(536, 408);
 			this.pnselect.TabIndex = 1;
 			//
 			// SubsetSelectForm
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-			this.ClientSize = new System.Drawing.Size(544, 446);
+			this.AutoScaleBaseSize = new Size(6, 14);
+			this.ClientSize = new Size(544, 446);
 			this.Controls.Add(this.panel1);
-			this.Font = new System.Drawing.Font(
+			this.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
@@ -177,7 +177,7 @@ namespace SimPe.Plugin
 				.Forms
 				.FormBorderStyle
 				.SizableToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "SubsetSelectForm";
 			this.Text = "Subset Selection";
 			this.Closing += new System.ComponentModel.CancelEventHandler(
@@ -276,7 +276,7 @@ namespace SimPe.Plugin
 				return new Bitmap(sz.Width, sz.Height);
 			}
 
-			SimPe.Plugin.MmatWrapper mmat = (SimPe.Plugin.MmatWrapper)mmats[index];
+			MmatWrapper mmat = (MmatWrapper)mmats[index];
 			GenericRcol txtr = mmat.TXTR;
 			if (txtr != null)
 			{
@@ -385,8 +385,8 @@ namespace SimPe.Plugin
 			}
 
 			ListViewItem lvi = new ListViewItem();
-			GenericRcol txtr = ((SimPe.Plugin.MmatWrapper)mmats[0]).TXTR;
-			GenericRcol txmt = ((SimPe.Plugin.MmatWrapper)mmats[0]).TXMT;
+			GenericRcol txtr = ((MmatWrapper)mmats[0]).TXTR;
+			GenericRcol txmt = ((MmatWrapper)mmats[0]).TXMT;
 			if (txmt != null)
 			{
 				string txmtname = Hashes.StripHashFromName(
@@ -512,7 +512,7 @@ namespace SimPe.Plugin
 			return Finish(ssf);
 		}
 
-		private void button1_Click(object sender, System.EventArgs e)
+		private void button1_Click(object sender, EventArgs e)
 		{
 			Close();
 		}

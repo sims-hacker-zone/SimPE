@@ -28,7 +28,7 @@ namespace SimPe.Plugin.Anim
 	/// <summary>
 	/// Data is unknown
 	/// </summary>
-	public class AnimationFrameBlock : AnimBlock, System.ICloneable
+	public class AnimationFrameBlock : AnimBlock, ICloneable
 	{
 		#region Attributes
 		[Browsable(false)]
@@ -37,15 +37,15 @@ namespace SimPe.Plugin.Anim
 			get;
 		}
 
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public AnimationAxisTransformBlock[] AxisSet
 		{
 			get; private set;
 		}
 
 		[
-			DescriptionAttribute("Number of loaded AnimationAxisTransformBlock Items"),
-			CategoryAttribute("Information")
+			Description("Number of loaded AnimationAxisTransformBlock Items"),
+			Category("Information")
 		]
 		public int AxisCount => AxisSet.Length;
 
@@ -64,8 +64,8 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute("Number of loaded Frames"),
-			CategoryAttribute("Information")
+			Description("Number of loaded Frames"),
+			Category("Information")
 		]
 		public int FrameCount => Frames.Length;
 
@@ -174,15 +174,15 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute("Available Frames"),
-			CategoryAttribute("Information"),
+			Description("Available Frames"),
+			Category("Information"),
 			Browsable(false)
 		]
 		public AnimationFrame[] Frames => GetFrames(false);
 
 		[
-			DescriptionAttribute("Available Frames"),
-			CategoryAttribute("Information"),
+			Description("Available Frames"),
+			Category("Information"),
 			Browsable(false)
 		]
 		public AnimationFrame[] UnlockedFrames => GetFrames(false); //should be true normaly, but that seems not to work!
@@ -190,9 +190,9 @@ namespace SimPe.Plugin.Anim
 		uint[] datai;
 
 		[
-			DescriptionAttribute("Reserved"),
-			CategoryAttribute("Reserved"),
-			DefaultValueAttribute(0x11BA05F0)
+			Description("Reserved"),
+			Category("Reserved"),
+			DefaultValue(0x11BA05F0)
 		]
 		public uint Unknown1
 		{
@@ -207,9 +207,9 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute("Reserved"),
-			CategoryAttribute("Reserved"),
-			DefaultValueAttribute(0x11BA05F0)
+			Description("Reserved"),
+			Category("Reserved"),
+			DefaultValue(0x11BA05F0)
 		]
 		public uint Unknown2
 		{
@@ -224,8 +224,8 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute("CRC32 over the Name."),
-			CategoryAttribute("Information"),
+			Description("CRC32 over the Name."),
+			Category("Information"),
 			ReadOnly(true)
 		]
 		public uint NameChecksum
@@ -255,9 +255,9 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute("Reserved"),
-			CategoryAttribute("Reserved"),
-			DefaultValueAttribute(0x11BA05F0)
+			Description("Reserved"),
+			Category("Reserved"),
+			DefaultValue(0x11BA05F0)
 		]
 		public uint Unknown4
 		{
@@ -272,8 +272,8 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute("What kind of Transformation is performed."),
-			CategoryAttribute("Information")
+			Description("What kind of Transformation is performed."),
+			Category("Information")
 		]
 		public FrameType TransformationType
 		{
@@ -293,8 +293,8 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute("The duration of this animation Block."),
-			CategoryAttribute("Information"),
+			Description("The duration of this animation Block."),
+			Category("Information"),
 			ReadOnly(true)
 		]
 		public short Duration
@@ -326,7 +326,7 @@ namespace SimPe.Plugin.Anim
 			}
 		}
 
-		[DescriptionAttribute(
+		[Description(
 			"Highest 3 Bits (Bit 31-29) contain the Number of assigned AnimationAxisTransformBlock Items, Bits 16-23 describe the Transformation Type (0=Translation, C=Rotation). Bits 0-15 Decode the Time this Animation Runs."
 		)]
 		public uint Unknown5
@@ -341,7 +341,7 @@ namespace SimPe.Plugin.Anim
 			}
 		}
 
-		[DescriptionAttribute("Bits 24-28 of Unknown5")]
+		[Description("Bits 24-28 of Unknown5")]
 		public byte Unknown5Bits
 		{
 			get
@@ -357,7 +357,7 @@ namespace SimPe.Plugin.Anim
 			}
 		}
 
-		[DescriptionAttribute(
+		[Description(
 			"Highest 3 Bits contain the Number of assigned AnimationAxisTransformBlock Items"
 		)]
 		public string Unknown5Binary
@@ -376,15 +376,15 @@ namespace SimPe.Plugin.Anim
 			}
 		}
 
-		[DescriptionAttribute(
+		[Description(
 			"Highest 3 Bits contain the Number of assigned AnimationAxisTransformBlock Items"
 		)]
 		public string Unknown5Hex => "0x" + Helper.HexString(Unknown5);
 
 		[
-			DescriptionAttribute("Reserved"),
-			CategoryAttribute("Reserved"),
-			DefaultValueAttribute(0x11BA05F0)
+			Description("Reserved"),
+			Category("Reserved"),
+			DefaultValue(0x11BA05F0)
 		]
 		public uint Unknown6
 		{
@@ -717,7 +717,7 @@ namespace SimPe.Plugin.Anim
 
 		#region ICloneable Member
 
-		object System.ICloneable.Clone()
+		object ICloneable.Clone()
 		{
 			return CloneBase(true);
 		}

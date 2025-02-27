@@ -54,7 +54,7 @@ namespace SimPe.Plugin.Scanner
 
 		public void ScanPackage(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
+			PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
@@ -98,7 +98,7 @@ namespace SimPe.Plugin.Scanner
 
 		public void UpdateState(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
+			PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
@@ -128,7 +128,7 @@ namespace SimPe.Plugin.Scanner
 
 			foreach (ScannerItem item in items)
 			{
-				SimPe.Cache.PackageState ps = item.PackageCacheItem.FindState(
+				PackageState ps = item.PackageCacheItem.FindState(
 					this.Uid,
 					true
 				);
@@ -177,7 +177,7 @@ namespace SimPe.Plugin.Scanner
 				{
 					WaitingScreen.UpdateMessage(si.FileName);
 
-					SimPe.Cache.PackageState ps = si.PackageCacheItem.FindState(
+					PackageState ps = si.PackageCacheItem.FindState(
 						this.Uid,
 						true
 					);

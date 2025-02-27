@@ -45,9 +45,9 @@ namespace SimPe.Plugin
 
 		protected static void CreateValueDescriptors()
 		{
-			System.Collections.ArrayList list = new ArrayList();
+			ArrayList list = new ArrayList();
 			foreach (
-				SimPe.Cache.MemoryCacheItem mci in SimPe
+				Cache.MemoryCacheItem mci in SimPe
 					.PackedFiles
 					.Wrapper
 					.ObjectComboBox

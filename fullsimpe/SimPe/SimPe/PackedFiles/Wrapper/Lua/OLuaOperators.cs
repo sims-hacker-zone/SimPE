@@ -90,7 +90,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		}
 	}
 
-	class Context : System.IDisposable
+	class Context : IDisposable
 	{
 		class NULL
 		{

@@ -51,7 +51,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		private byte[] filename = new byte[0x40];
 		private byte[] filename2 = new byte[0];
-		static SimPe.PackedFiles.Wrapper.ObjdPropertyParser tpp;
+		static ObjdPropertyParser tpp;
 		#endregion
 
 		#region Accessor methods
@@ -169,13 +169,13 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Retursn / Sets the Type of an Object
 		/// </summary>
-		public SimPe.Data.ObjectTypes Type
+		public Data.ObjectTypes Type
 		{
 			get
 			{
 				if (Data.Length > 0x09)
 				{
-					return (SimPe.Data.ObjectTypes)Data[0x09];
+					return (Data.ObjectTypes)Data[0x09];
 				}
 
 				return SimPe.Data.ObjectTypes.Normal;
@@ -297,13 +297,13 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Return a PropertyParser, that enumerates all known Properties as <see cref="Ambertation.PropertyDescription"/> Objects
 		/// </summary>
-		public static SimPe.PackedFiles.Wrapper.ObjdPropertyParser PropertyParser
+		public static ObjdPropertyParser PropertyParser
 		{
 			get
 			{
 				if (tpp == null)
 				{
-					tpp = new SimPe.PackedFiles.Wrapper.ObjdPropertyParser(
+					tpp = new ObjdPropertyParser(
 						System.IO.Path.Combine(
 							Helper.SimPeDataPath,
 							"objddefinition.xml"
@@ -363,7 +363,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new SimPe.PackedFiles.UserInterface.ExtObjdForm();
+			return new UserInterface.ExtObjdForm();
 		}
 
 		protected override IWrapperInfo CreateWrapperInfo()

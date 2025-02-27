@@ -32,7 +32,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public Control GUIHandle => form.xmlPanel;
 
-		public void UpdateGUI(SimPe.Interfaces.Plugin.IFileWrapper wrapper)
+		public void UpdateGUI(IFileWrapper wrapper)
 		{
 			Wrapper.Xml xml = (Wrapper.Xml)wrapper;
 			form.wrapper = xml;

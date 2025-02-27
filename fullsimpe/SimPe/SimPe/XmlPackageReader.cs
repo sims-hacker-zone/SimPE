@@ -36,13 +36,13 @@ namespace SimPe
 		/// <param name="filename">Filename of package.xml File describing the Package</param>
 		/// <param name="pb">A Progressbar indicating the progress</param>
 		/// <returns>Binary Reader representing the Package File</returns>
-		public static System.IO.BinaryReader OpenExtractedPackage(
+		public static BinaryReader OpenExtractedPackage(
 			ProgressBar pb,
 			string filename
 		)
 		{
 			string path = System.IO.Path.GetDirectoryName(filename);
-			System.Xml.XmlDocument xmlfile = new XmlDocument();
+			XmlDocument xmlfile = new XmlDocument();
 			xmlfile.Load(filename);
 
 			//Root Node suchen
@@ -84,12 +84,12 @@ namespace SimPe
 				}
 			}
 
-			SimPe.Packages.GeneratableFile file =
+			Packages.GeneratableFile file =
 				SimPe.Packages.GeneratableFile.CreateNew();
 			file.BeginUpdate();
 			file.Header.IndexType = type;
 
-			foreach (SimPe.Packages.PackedFileDescriptor pfd in list)
+			foreach (Packages.PackedFileDescriptor pfd in list)
 			{
 				file.Add(pfd);
 				if (pfd.Type == Packages.File.FILELIST_TYPE)
@@ -98,14 +98,14 @@ namespace SimPe
 				}
 			}
 
-			System.IO.MemoryStream ms = file.Build();
+			MemoryStream ms = file.Build();
 			file.EndUpdate();
 			if (pb != null)
 			{
 				pb.Value = pb.Maximum;
 			}
 
-			return new System.IO.BinaryReader(ms);
+			return new BinaryReader(ms);
 		}
 
 		/// <summary>
@@ -113,12 +113,12 @@ namespace SimPe
 		/// </summary>
 		/// <param name="filename">name of the xml Description File</param>
 		/// <returns>a FileDescription where you have to put the UserData in</returns>
-		public static SimPe.Packages.PackedFileDescriptor OpenExtractedPackedFile(
+		public static Packages.PackedFileDescriptor OpenExtractedPackedFile(
 			string filename
 		)
 		{
 			string path = System.IO.Path.GetDirectoryName(filename);
-			System.Xml.XmlDocument xmlfile = new XmlDocument();
+			XmlDocument xmlfile = new XmlDocument();
 			xmlfile.Load(filename);
 
 			//Root Node suchen
@@ -153,13 +153,13 @@ namespace SimPe
 		/// <param name="parentpath">The Path where the Package xml is located</param>
 		/// <param name="node">packedfile XML-Node</param>
 		/// <returns>A PackedFile Descriptor</returns>
-		protected static SimPe.Packages.PackedFileDescriptor CreateDescriptor(
+		protected static Packages.PackedFileDescriptor CreateDescriptor(
 			string parentpath,
 			XmlNode node
 		)
 		{
-			SimPe.Packages.PackedFileDescriptor pfd =
-				new SimPe.Packages.PackedFileDescriptor();
+			Packages.PackedFileDescriptor pfd =
+				new Packages.PackedFileDescriptor();
 			foreach (XmlNode subnode in node)
 			{
 				switch (subnode.Name)
@@ -221,7 +221,7 @@ namespace SimPe
 			if (File.Exists(flname.ToString()))
 			{
 				FileStream fs = System.IO.File.OpenRead(flname.ToString());
-				System.IO.BinaryReader mbr = new System.IO.BinaryReader(fs);
+				BinaryReader mbr = new BinaryReader(fs);
 				try
 				{
 					byte[] data = new byte[mbr.BaseStream.Length];

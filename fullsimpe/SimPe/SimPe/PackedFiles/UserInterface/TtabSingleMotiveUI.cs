@@ -28,12 +28,12 @@ namespace SimPe.PackedFiles.UserInterface
 	/// <summary>
 	/// Summary description for TtabSingleMotive.
 	/// </summary>
-	public class TtabSingleMotiveUI : System.Windows.Forms.UserControl
+	public class TtabSingleMotiveUI : UserControl
 	{
 		#region Form variables
-		private System.Windows.Forms.TextBox Min;
-		private System.Windows.Forms.TextBox Delta;
-		private System.Windows.Forms.TextBox Type;
+		private TextBox Min;
+		private TextBox Delta;
+		private TextBox Type;
 
 		/// <summary>
 		/// Required designer variable.
@@ -85,7 +85,7 @@ namespace SimPe.PackedFiles.UserInterface
 				{
 					if (item != null && item.Wrapper != null)
 					{
-						item.Wrapper.WrapperChanged -= new System.EventHandler(
+						item.Wrapper.WrapperChanged -= new EventHandler(
 							this.WrapperChanged
 						);
 					}
@@ -94,7 +94,7 @@ namespace SimPe.PackedFiles.UserInterface
 					setText();
 					if (item != null && item.Wrapper != null)
 					{
-						item.Wrapper.WrapperChanged += new System.EventHandler(
+						item.Wrapper.WrapperChanged += new EventHandler(
 							this.WrapperChanged
 						);
 					}
@@ -102,7 +102,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		private void WrapperChanged(object sender, System.EventArgs e)
+		private void WrapperChanged(object sender, EventArgs e)
 		{
 			if (internalchg || sender != item)
 			{
@@ -164,40 +164,40 @@ namespace SimPe.PackedFiles.UserInterface
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(TtabSingleMotiveUI)
 				);
-			this.Min = new System.Windows.Forms.TextBox();
-			this.Delta = new System.Windows.Forms.TextBox();
-			this.Type = new System.Windows.Forms.TextBox();
+			this.Min = new TextBox();
+			this.Delta = new TextBox();
+			this.Type = new TextBox();
 			this.SuspendLayout();
 			//
 			// Min
 			//
 			resources.ApplyResources(this.Min, "Min");
 			this.Min.Name = "Min";
-			this.Min.Validated += new System.EventHandler(this.hex16_Validated);
+			this.Min.Validated += new EventHandler(this.hex16_Validated);
 			this.Min.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex16_Validating
 			);
-			this.Min.TextChanged += new System.EventHandler(this.hex16_TextChanged);
+			this.Min.TextChanged += new EventHandler(this.hex16_TextChanged);
 			//
 			// Delta
 			//
 			resources.ApplyResources(this.Delta, "Delta");
 			this.Delta.Name = "Delta";
-			this.Delta.Validated += new System.EventHandler(this.hex16_Validated);
+			this.Delta.Validated += new EventHandler(this.hex16_Validated);
 			this.Delta.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex16_Validating
 			);
-			this.Delta.TextChanged += new System.EventHandler(this.hex16_TextChanged);
+			this.Delta.TextChanged += new EventHandler(this.hex16_TextChanged);
 			//
 			// Type
 			//
 			resources.ApplyResources(this.Type, "Type");
 			this.Type.Name = "Type";
-			this.Type.Validated += new System.EventHandler(this.hex16_Validated);
+			this.Type.Validated += new EventHandler(this.hex16_Validated);
 			this.Type.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex16_Validating
 			);
-			this.Type.TextChanged += new System.EventHandler(this.hex16_TextChanged);
+			this.Type.TextChanged += new EventHandler(this.hex16_TextChanged);
 			//
 			// TtabSingleMotiveUI
 			//
@@ -211,7 +211,7 @@ namespace SimPe.PackedFiles.UserInterface
 		}
 		#endregion
 
-		private void hex16_TextChanged(object sender, System.EventArgs ev)
+		private void hex16_TextChanged(object sender, EventArgs ev)
 		{
 			if (internalchg)
 			{
@@ -271,7 +271,7 @@ namespace SimPe.PackedFiles.UserInterface
 			internalchg = false;
 		}
 
-		private void hex16_Validated(object sender, System.EventArgs ev)
+		private void hex16_Validated(object sender, EventArgs ev)
 		{
 			internalchg = true;
 			short val = Convert.ToInt16(((TextBox)sender).Text, 16);

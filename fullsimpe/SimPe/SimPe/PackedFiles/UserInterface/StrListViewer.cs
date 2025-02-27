@@ -26,7 +26,7 @@ namespace SimPe.PackedFiles.UserInterface
 	/// <summary>
 	/// Summary description for StrListViewer.
 	/// </summary>
-	public class StrListViewer : System.Windows.Forms.UserControl
+	public class StrListViewer : UserControl
 	{
 		#region Form elements
 
@@ -59,32 +59,32 @@ namespace SimPe.PackedFiles.UserInterface
 			base.Dispose(disposing);
 		}
 
-		private System.Windows.Forms.TreeView treeView1;
-		private System.Windows.Forms.Splitter splitter1;
-		private System.Windows.Forms.ListView listView1;
-		private System.Windows.Forms.ColumnHeader colLine;
-		private System.Windows.Forms.ColumnHeader colTitle;
-		private System.Windows.Forms.ColumnHeader colDesc;
-		private System.Windows.Forms.ContextMenu cmLangList;
-		private System.Windows.Forms.MenuItem menuItem1;
-		private System.Windows.Forms.MenuItem menuItem2;
-		private System.Windows.Forms.MenuItem menuItem3;
-		private System.Windows.Forms.ContextMenu cmStrList;
-		private System.Windows.Forms.MenuItem menuItem4;
-		private System.Windows.Forms.MenuItem menuItem5;
-		private System.Windows.Forms.MenuItem menuItem6;
+		private TreeView treeView1;
+		private Splitter splitter1;
+		private ListView listView1;
+		private ColumnHeader colLine;
+		private ColumnHeader colTitle;
+		private ColumnHeader colDesc;
+		private ContextMenu cmLangList;
+		private MenuItem menuItem1;
+		private MenuItem menuItem2;
+		private MenuItem menuItem3;
+		private ContextMenu cmStrList;
+		private MenuItem menuItem4;
+		private MenuItem menuItem5;
+		private MenuItem menuItem6;
 
 		#region Str
 		/// <summary>
 		/// The Str wrapper handling the packed file data
 		/// </summary>
-		private SimPe.PackedFiles.Wrapper.Str wrapper;
-		private System.Windows.Forms.MenuItem menuItem7;
-		private System.Windows.Forms.MenuItem menuItem8;
-		private System.Windows.Forms.MenuItem menuItem9;
-		private System.Windows.Forms.MenuItem menuItem10;
-		private System.Windows.Forms.MenuItem menuItem11;
-		private System.Windows.Forms.MenuItem menuItem12;
+		private Str wrapper;
+		private MenuItem menuItem7;
+		private MenuItem menuItem8;
+		private MenuItem menuItem9;
+		private MenuItem menuItem10;
+		private MenuItem menuItem11;
+		private MenuItem menuItem12;
 
 		private StrLanguage currentLang = null;
 
@@ -110,26 +110,26 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.treeView1 = new System.Windows.Forms.TreeView();
-			this.cmLangList = new System.Windows.Forms.ContextMenu();
-			this.menuItem1 = new System.Windows.Forms.MenuItem();
-			this.menuItem2 = new System.Windows.Forms.MenuItem();
-			this.menuItem3 = new System.Windows.Forms.MenuItem();
-			this.splitter1 = new System.Windows.Forms.Splitter();
-			this.listView1 = new System.Windows.Forms.ListView();
-			this.colLine = new System.Windows.Forms.ColumnHeader();
-			this.colTitle = new System.Windows.Forms.ColumnHeader();
-			this.colDesc = new System.Windows.Forms.ColumnHeader();
-			this.cmStrList = new System.Windows.Forms.ContextMenu();
-			this.menuItem4 = new System.Windows.Forms.MenuItem();
-			this.menuItem5 = new System.Windows.Forms.MenuItem();
-			this.menuItem6 = new System.Windows.Forms.MenuItem();
-			this.menuItem7 = new System.Windows.Forms.MenuItem();
-			this.menuItem8 = new System.Windows.Forms.MenuItem();
-			this.menuItem9 = new System.Windows.Forms.MenuItem();
-			this.menuItem10 = new System.Windows.Forms.MenuItem();
-			this.menuItem11 = new System.Windows.Forms.MenuItem();
-			this.menuItem12 = new System.Windows.Forms.MenuItem();
+			this.treeView1 = new TreeView();
+			this.cmLangList = new ContextMenu();
+			this.menuItem1 = new MenuItem();
+			this.menuItem2 = new MenuItem();
+			this.menuItem3 = new MenuItem();
+			this.splitter1 = new Splitter();
+			this.listView1 = new ListView();
+			this.colLine = new ColumnHeader();
+			this.colTitle = new ColumnHeader();
+			this.colDesc = new ColumnHeader();
+			this.cmStrList = new ContextMenu();
+			this.menuItem4 = new MenuItem();
+			this.menuItem5 = new MenuItem();
+			this.menuItem6 = new MenuItem();
+			this.menuItem7 = new MenuItem();
+			this.menuItem8 = new MenuItem();
+			this.menuItem9 = new MenuItem();
+			this.menuItem10 = new MenuItem();
+			this.menuItem11 = new MenuItem();
+			this.menuItem12 = new MenuItem();
 			this.SuspendLayout();
 			//
 			// treeView1
@@ -143,14 +143,14 @@ namespace SimPe.PackedFiles.UserInterface
 			this.treeView1.Size = new System.Drawing.Size(216, 144);
 			this.treeView1.Sorted = true;
 			this.treeView1.TabIndex = 0;
-			this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(
+			this.treeView1.AfterSelect += new TreeViewEventHandler(
 				this.treeView1_AfterSelect
 			);
 			//
 			// cmLangList
 			//
 			this.cmLangList.MenuItems.AddRange(
-				new System.Windows.Forms.MenuItem[]
+				new MenuItem[]
 				{
 					this.menuItem1,
 					this.menuItem2,
@@ -189,7 +189,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// listView1
 			//
 			this.listView1.Columns.AddRange(
-				new System.Windows.Forms.ColumnHeader[]
+				new ColumnHeader[]
 				{
 					this.colLine,
 					this.colTitle,
@@ -229,7 +229,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// cmStrList
 			//
 			this.cmStrList.MenuItems.AddRange(
-				new System.Windows.Forms.MenuItem[]
+				new MenuItem[]
 				{
 					this.menuItem10,
 					this.menuItem4,
@@ -305,7 +305,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void treeView1_AfterSelect(
 			object sender,
-			System.Windows.Forms.TreeViewEventArgs e
+			TreeViewEventArgs e
 		)
 		{
 			this.listView1.Items.Clear();

@@ -22,7 +22,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for ToolResult.
 	/// </summary>
-	public class ToolResult : SimPe.Interfaces.Plugin.IToolResult
+	public class ToolResult : Interfaces.Plugin.IToolResult
 	{
 		public ToolResult(bool pfd, bool package)
 		{

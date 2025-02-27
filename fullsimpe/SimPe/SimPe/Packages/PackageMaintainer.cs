@@ -46,12 +46,12 @@ namespace SimPe.Packages
 		}
 
 		Hashtable ht;
-		SimPe.Interfaces.Scenegraph.IScenegraphFileIndex localfileindex;
+		Interfaces.Scenegraph.IScenegraphFileIndex localfileindex;
 
 		/// <summary>
 		/// Set or Get the FileIndex used to hold loaded Packages
 		/// </summary>
-		public SimPe.Interfaces.Scenegraph.IScenegraphFileIndex FileIndex
+		public Interfaces.Scenegraph.IScenegraphFileIndex FileIndex
 		{
 			get
 			{
@@ -164,7 +164,7 @@ namespace SimPe.Packages
 		/// </summary>
 		/// <param name="filename">the name of the package</param>
 		/// <param name="sync">true, if the package should be synchronized with the Filesystem befor it is returned</param>
-		/// <returns>an instance of <see cref="SimPe.Packages.GeneratableFile"/> for the given Filename</returns>
+		/// <returns>an instance of <see cref="GeneratableFile"/> for the given Filename</returns>
 		/// <remarks>
 		/// If the package was loaded once in this session, this Method will return an instance to the
 		/// last loaded Version. Otherwise it wil create a new instance

@@ -72,13 +72,13 @@ namespace SimPe.Windows.Forms
 
 		public bool Available => (tv != null && lv != null);
 
-		SimPe.Interfaces.Files.IPackageFile pkg;
+		Interfaces.Files.IPackageFile pkg;
 
-		[System.ComponentModel.Browsable(false)]
-		public ResourceViewManager.ResourceNameList Everything => maps.Everything;
+		[Browsable(false)]
+		public ResourceNameList Everything => maps.Everything;
 
-		[System.ComponentModel.Browsable(false)]
-		public SimPe.Interfaces.Files.IPackageFile Package
+		[Browsable(false)]
+		public Interfaces.Files.IPackageFile Package
 		{
 			get
 			{
@@ -88,7 +88,7 @@ namespace SimPe.Windows.Forms
 			{
 				if (pkg != value)
 				{
-					SimPe.Interfaces.Files.IPackageFile old = pkg;
+					Interfaces.Files.IPackageFile old = pkg;
 					pkg = value;
 					OnChangedPackage(old, pkg, true);
 				}
@@ -96,8 +96,8 @@ namespace SimPe.Windows.Forms
 		}
 
 		protected void OnChangedPackage(
-			SimPe.Interfaces.Files.IPackageFile oldpkg,
-			SimPe.Interfaces.Files.IPackageFile newpkg,
+			Interfaces.Files.IPackageFile oldpkg,
+			Interfaces.Files.IPackageFile newpkg,
 			bool lettreeviewselect
 		)
 		{
@@ -133,7 +133,7 @@ namespace SimPe.Windows.Forms
 					Wait.Message = SimPe.Localization.GetString("Loading package...");
 					int ct = 0;
 					foreach (
-						SimPe.Interfaces.Files.IPackedFileDescriptor pfd in newpkg.Index
+						Interfaces.Files.IPackedFileDescriptor pfd in newpkg.Index
 					)
 					{
 						NamedPackedFileDescriptor npfd = new NamedPackedFileDescriptor(
@@ -321,7 +321,7 @@ namespace SimPe.Windows.Forms
 		{
 			if (Helper.WindowsRegistry.DecodeFilenamesState)
 			{
-				SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper wrp =
+				Interfaces.Plugin.Internal.IPackedFileWrapper wrp =
 					FileTable.WrapperRegistry.FindHandler(type);
 				if (wrp != null)
 				{
@@ -362,7 +362,7 @@ namespace SimPe.Windows.Forms
 		}
 
 		public bool SelectResource(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem resource
+			Interfaces.Scenegraph.IScenegraphFileIndexItem resource
 		)
 		{
 			bool res = false;

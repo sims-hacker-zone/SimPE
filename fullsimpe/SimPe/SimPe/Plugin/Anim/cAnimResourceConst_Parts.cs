@@ -71,7 +71,7 @@ namespace SimPe.Plugin.Anim
 	{
 		protected string name;
 
-		[DescriptionAttribute("Name of the selected Item")]
+		[Description("Name of the selected Item")]
 		public virtual string Name
 		{
 			get
@@ -138,24 +138,24 @@ namespace SimPe.Plugin.Anim
 	public class AnimBlock4
 	{
 		#region Attributes
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public AnimBlock5[] Part5
 		{
 			get; private set;
 		}
 
 		[
-			DescriptionAttribute("Number of loaded AnimBlock4 Items"),
-			CategoryAttribute("Information")
+			Description("Number of loaded AnimBlock4 Items"),
+			Category("Information")
 		]
 		public int Part5Count => Part5.Length;
 
 		uint[] datai;
 
 		[
-			DescriptionAttribute("Reserved"),
-			CategoryAttribute("Reserved"),
-			DefaultValueAttribute(0x11BA05F0)
+			Description("Reserved"),
+			Category("Reserved"),
+			DefaultValue(0x11BA05F0)
 		]
 		public uint Unknown1
 		{
@@ -170,9 +170,9 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute("Reserved"),
-			CategoryAttribute("Reserved"),
-			DefaultValueAttribute(0x11BA05F0)
+			Description("Reserved"),
+			Category("Reserved"),
+			DefaultValue(0x11BA05F0)
 		]
 		public uint Unknown2
 		{
@@ -187,9 +187,9 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute("Reserved"),
-			CategoryAttribute("Reserved"),
-			DefaultValueAttribute(0x11BA05F0)
+			Description("Reserved"),
+			Category("Reserved"),
+			DefaultValue(0x11BA05F0)
 		]
 		public uint Unknown3
 		{
@@ -203,7 +203,7 @@ namespace SimPe.Plugin.Anim
 			}
 		}
 
-		[DescriptionAttribute(
+		[Description(
 			"On Index 2 the Number of assigned AnimBlock5 Items is stored"
 		)]
 		public byte[] AddonData
@@ -324,9 +324,9 @@ namespace SimPe.Plugin.Anim
 		uint[] datai;
 
 		[
-			DescriptionAttribute("Reserved"),
-			CategoryAttribute("Reserved"),
-			DefaultValueAttribute(0x11BA05F0)
+			Description("Reserved"),
+			Category("Reserved"),
+			DefaultValue(0x11BA05F0)
 		]
 		public uint Unknown1
 		{
@@ -433,9 +433,9 @@ namespace SimPe.Plugin.Anim
 		uint[] datai;
 
 		[
-			DescriptionAttribute("Reserved"),
-			CategoryAttribute("Reserved"),
-			DefaultValueAttribute(0x11BA05F0)
+			Description("Reserved"),
+			Category("Reserved"),
+			DefaultValue(0x11BA05F0)
 		]
 		public uint Unknown1
 		{
@@ -450,9 +450,9 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute("Reserved"),
-			CategoryAttribute("Reserved"),
-			DefaultValueAttribute(0x11BA05F0)
+			Description("Reserved"),
+			Category("Reserved"),
+			DefaultValue(0x11BA05F0)
 		]
 		public uint Unknown2
 		{

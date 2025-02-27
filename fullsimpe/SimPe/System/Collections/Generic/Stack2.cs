@@ -22,7 +22,7 @@ namespace System.Collections.Generic
 	[DebuggerDisplay("Count = {Count}")]
 	[Serializable]
 	public class Stack2<T> : IEnumerable<T>,
-		System.Collections.ICollection,
+		ICollection,
 		IReadOnlyCollection<T>
 	{
 		private T[] _array;     // Storage for stack elements
@@ -281,7 +281,7 @@ namespace System.Collections.Generic
 		}
 
 		[SuppressMessage("Microsoft.Performance", "CA1815:OverrideEqualsAndOperatorEqualsOnValueTypes", Justification = "not an expected scenario")]
-		public struct Enumerator : IEnumerator<T>, System.Collections.IEnumerator
+		public struct Enumerator : IEnumerator<T>, IEnumerator
 		{
 			private readonly Stack2<T> _stack;
 			private readonly int _version;
@@ -357,7 +357,7 @@ namespace System.Collections.Generic
 				throw new InvalidOperationException(_index == -2 ? "SR.InvalidOperation_EnumNotStarted" : "SR.InvalidOperation_EnumEnded");
 			}
 
-			object System.Collections.IEnumerator.Current => Current;
+			object IEnumerator.Current => Current;
 
 			void IEnumerator.Reset()
 			{

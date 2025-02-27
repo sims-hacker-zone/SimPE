@@ -25,40 +25,40 @@ namespace SimPe.Packages
 	/// <summary>
 	/// Summary description for SaveSims2CommunityPack.
 	/// </summary>
-	internal class SaveSims2CommunityPack : System.Windows.Forms.Form
+	internal class SaveSims2CommunityPack : Form
 	{
-		private System.Windows.Forms.ListBox lblist;
-		private System.Windows.Forms.GroupBox gbsettings;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.TextBox tbname;
-		private System.Windows.Forms.TextBox tbauthor;
-		private System.Windows.Forms.TextBox tbguid;
-		private System.Windows.Forms.TextBox tbver;
-		private System.Windows.Forms.TextBox tbdesc;
-		private System.Windows.Forms.OpenFileDialog ofd;
-		private System.Windows.Forms.Label label6;
-		internal System.Windows.Forms.TextBox tbflname;
-		private System.Windows.Forms.SaveFileDialog sfd;
-		private System.Windows.Forms.LinkLabel lldep;
-		private System.Windows.Forms.Button btdelete;
-		private System.Windows.Forms.Button button4;
-		private System.Windows.Forms.Button btadd;
-		private System.Windows.Forms.Button btbrowse;
-		private System.Windows.Forms.Button btsave;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.ComboBox cbcompress;
-		private System.Windows.Forms.TextBox tbcontact;
-		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.TextBox tbgameguid;
-		private System.Windows.Forms.TextBox tbtitle;
-		private System.Windows.Forms.Label label10;
-		private System.Windows.Forms.CheckBox cb2cp;
-		private System.Windows.Forms.Panel panel1;
+		private ListBox lblist;
+		private GroupBox gbsettings;
+		private Label label1;
+		private Label label2;
+		private Label label3;
+		private Label label4;
+		private Label label5;
+		private TextBox tbname;
+		private TextBox tbauthor;
+		private TextBox tbguid;
+		private TextBox tbver;
+		private TextBox tbdesc;
+		private OpenFileDialog ofd;
+		private Label label6;
+		internal TextBox tbflname;
+		private SaveFileDialog sfd;
+		private LinkLabel lldep;
+		private Button btdelete;
+		private Button button4;
+		private Button btadd;
+		private Button btbrowse;
+		private Button btsave;
+		private Label label7;
+		private ComboBox cbcompress;
+		private TextBox tbcontact;
+		private Label label8;
+		private Label label9;
+		private TextBox tbgameguid;
+		private TextBox tbtitle;
+		private Label label10;
+		private CheckBox cb2cp;
+		private Panel panel1;
 
 		/// <summary>
 		/// Required designer variable.
@@ -108,38 +108,38 @@ namespace SimPe.Packages
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(SaveSims2CommunityPack)
 				);
-			this.lblist = new System.Windows.Forms.ListBox();
-			this.gbsettings = new System.Windows.Forms.GroupBox();
-			this.tbtitle = new System.Windows.Forms.TextBox();
-			this.label10 = new System.Windows.Forms.Label();
-			this.tbgameguid = new System.Windows.Forms.TextBox();
-			this.tbcontact = new System.Windows.Forms.TextBox();
-			this.label8 = new System.Windows.Forms.Label();
-			this.cbcompress = new System.Windows.Forms.ComboBox();
-			this.tbdesc = new System.Windows.Forms.TextBox();
-			this.tbver = new System.Windows.Forms.TextBox();
-			this.tbguid = new System.Windows.Forms.TextBox();
-			this.tbauthor = new System.Windows.Forms.TextBox();
-			this.tbname = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.lldep = new System.Windows.Forms.LinkLabel();
-			this.label7 = new System.Windows.Forms.Label();
-			this.label9 = new System.Windows.Forms.Label();
-			this.cb2cp = new System.Windows.Forms.CheckBox();
-			this.btadd = new System.Windows.Forms.Button();
-			this.ofd = new System.Windows.Forms.OpenFileDialog();
-			this.label6 = new System.Windows.Forms.Label();
-			this.tbflname = new System.Windows.Forms.TextBox();
-			this.btbrowse = new System.Windows.Forms.Button();
-			this.sfd = new System.Windows.Forms.SaveFileDialog();
-			this.btdelete = new System.Windows.Forms.Button();
-			this.btsave = new System.Windows.Forms.Button();
-			this.button4 = new System.Windows.Forms.Button();
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.lblist = new ListBox();
+			this.gbsettings = new GroupBox();
+			this.tbtitle = new TextBox();
+			this.label10 = new Label();
+			this.tbgameguid = new TextBox();
+			this.tbcontact = new TextBox();
+			this.label8 = new Label();
+			this.cbcompress = new ComboBox();
+			this.tbdesc = new TextBox();
+			this.tbver = new TextBox();
+			this.tbguid = new TextBox();
+			this.tbauthor = new TextBox();
+			this.tbname = new TextBox();
+			this.label5 = new Label();
+			this.label4 = new Label();
+			this.label3 = new Label();
+			this.label2 = new Label();
+			this.label1 = new Label();
+			this.lldep = new LinkLabel();
+			this.label7 = new Label();
+			this.label9 = new Label();
+			this.cb2cp = new CheckBox();
+			this.btadd = new Button();
+			this.ofd = new OpenFileDialog();
+			this.label6 = new Label();
+			this.tbflname = new TextBox();
+			this.btbrowse = new Button();
+			this.sfd = new SaveFileDialog();
+			this.btdelete = new Button();
+			this.btsave = new Button();
+			this.button4 = new Button();
+			this.panel1 = new Panel();
 			this.gbsettings.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
@@ -147,7 +147,7 @@ namespace SimPe.Packages
 			// lblist
 			//
 			this.lblist.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -161,12 +161,12 @@ namespace SimPe.Packages
 			this.lblist.Name = "lblist";
 			this.lblist.Size = new System.Drawing.Size(778, 180);
 			this.lblist.TabIndex = 2;
-			this.lblist.SelectedIndexChanged += new System.EventHandler(this.Select);
+			this.lblist.SelectedIndexChanged += new EventHandler(this.Select);
 			//
 			// gbsettings
 			//
 			this.gbsettings.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -215,7 +215,7 @@ namespace SimPe.Packages
 			// tbtitle
 			//
 			this.tbtitle.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -235,7 +235,7 @@ namespace SimPe.Packages
 			this.tbtitle.Name = "tbtitle";
 			this.tbtitle.Size = new System.Drawing.Size(698, 21);
 			this.tbtitle.TabIndex = 7;
-			this.tbtitle.TextChanged += new System.EventHandler(this.ChangeText);
+			this.tbtitle.TextChanged += new EventHandler(this.ChangeText);
 			//
 			// label10
 			//
@@ -256,7 +256,7 @@ namespace SimPe.Packages
 			// tbgameguid
 			//
 			this.tbgameguid.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -291,7 +291,7 @@ namespace SimPe.Packages
 			this.tbcontact.Name = "tbcontact";
 			this.tbcontact.Size = new System.Drawing.Size(257, 21);
 			this.tbcontact.TabIndex = 10;
-			this.tbcontact.TextChanged += new System.EventHandler(this.ChangeText);
+			this.tbcontact.TextChanged += new EventHandler(this.ChangeText);
 			//
 			// label8
 			//
@@ -312,7 +312,7 @@ namespace SimPe.Packages
 			// cbcompress
 			//
 			this.cbcompress.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -335,14 +335,14 @@ namespace SimPe.Packages
 			this.cbcompress.Name = "cbcompress";
 			this.cbcompress.Size = new System.Drawing.Size(144, 21);
 			this.cbcompress.TabIndex = 9;
-			this.cbcompress.SelectedIndexChanged += new System.EventHandler(
+			this.cbcompress.SelectedIndexChanged += new EventHandler(
 				this.SelectCompression
 			);
 			//
 			// tbdesc
 			//
 			this.tbdesc.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -365,7 +365,7 @@ namespace SimPe.Packages
 			this.tbdesc.Name = "tbdesc";
 			this.tbdesc.Size = new System.Drawing.Size(764, 76);
 			this.tbdesc.TabIndex = 14;
-			this.tbdesc.TextChanged += new System.EventHandler(this.ChangeText);
+			this.tbdesc.TextChanged += new EventHandler(this.ChangeText);
 			//
 			// tbver
 			//
@@ -380,12 +380,12 @@ namespace SimPe.Packages
 			this.tbver.Name = "tbver";
 			this.tbver.Size = new System.Drawing.Size(72, 21);
 			this.tbver.TabIndex = 12;
-			this.tbver.TextChanged += new System.EventHandler(this.ChangeText);
+			this.tbver.TextChanged += new EventHandler(this.ChangeText);
 			//
 			// tbguid
 			//
 			this.tbguid.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -410,7 +410,7 @@ namespace SimPe.Packages
 			// tbauthor
 			//
 			this.tbauthor.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -430,12 +430,12 @@ namespace SimPe.Packages
 			this.tbauthor.Name = "tbauthor";
 			this.tbauthor.Size = new System.Drawing.Size(450, 21);
 			this.tbauthor.TabIndex = 8;
-			this.tbauthor.TextChanged += new System.EventHandler(this.ChangeText);
+			this.tbauthor.TextChanged += new EventHandler(this.ChangeText);
 			//
 			// tbname
 			//
 			this.tbname.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -455,7 +455,7 @@ namespace SimPe.Packages
 			this.tbname.Name = "tbname";
 			this.tbname.Size = new System.Drawing.Size(698, 21);
 			this.tbname.TabIndex = 6;
-			this.tbname.TextChanged += new System.EventHandler(this.ChangeText);
+			this.tbname.TextChanged += new EventHandler(this.ChangeText);
 			//
 			// label5
 			//
@@ -540,7 +540,7 @@ namespace SimPe.Packages
 			// lldep
 			//
 			this.lldep.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -548,7 +548,7 @@ namespace SimPe.Packages
 				)
 			);
 			this.lldep.AutoSize = true;
-			this.lldep.LinkArea = new System.Windows.Forms.LinkArea(7, 12);
+			this.lldep.LinkArea = new LinkArea(7, 12);
 			this.lldep.Location = new System.Drawing.Point(16, 254);
 			this.lldep.Name = "lldep";
 			this.lldep.Size = new System.Drawing.Size(155, 18);
@@ -557,14 +557,14 @@ namespace SimPe.Packages
 			this.lldep.Text = "show 0 Dependencies...";
 			this.lldep.UseCompatibleTextRendering = true;
 			this.lldep.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.ShowDependencies
 				);
 			//
 			// label7
 			//
 			this.label7.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -609,12 +609,12 @@ namespace SimPe.Packages
 			this.cb2cp.Size = new System.Drawing.Size(321, 24);
 			this.cb2cp.TabIndex = 5;
 			this.cb2cp.Text = "create Sim2CommunityPackage (s2cp)";
-			this.cb2cp.CheckedChanged += new System.EventHandler(this.Checks2cp);
+			this.cb2cp.CheckedChanged += new EventHandler(this.Checks2cp);
 			//
 			// btadd
 			//
 			this.btadd.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -629,7 +629,7 @@ namespace SimPe.Packages
 			this.btadd.TabIndex = 4;
 			this.btadd.Text = "Add...";
 			this.btadd.UseVisualStyleBackColor = false;
-			this.btadd.Click += new System.EventHandler(this.AddPackage);
+			this.btadd.Click += new EventHandler(this.AddPackage);
 			//
 			// ofd
 			//
@@ -656,7 +656,7 @@ namespace SimPe.Packages
 			// tbflname
 			//
 			this.tbflname.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -680,7 +680,7 @@ namespace SimPe.Packages
 			// btbrowse
 			//
 			this.btbrowse.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -695,12 +695,12 @@ namespace SimPe.Packages
 			this.btbrowse.TabIndex = 1;
 			this.btbrowse.Text = "Browse...";
 			this.btbrowse.UseVisualStyleBackColor = false;
-			this.btbrowse.Click += new System.EventHandler(this.S2CPFilename);
+			this.btbrowse.Click += new EventHandler(this.S2CPFilename);
 			//
 			// btdelete
 			//
 			this.btdelete.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -715,12 +715,12 @@ namespace SimPe.Packages
 			this.btdelete.TabIndex = 3;
 			this.btdelete.Text = "Delete...";
 			this.btdelete.UseVisualStyleBackColor = false;
-			this.btdelete.Click += new System.EventHandler(this.DeletePackage);
+			this.btdelete.Click += new EventHandler(this.DeletePackage);
 			//
 			// btsave
 			//
 			this.btsave.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -735,12 +735,12 @@ namespace SimPe.Packages
 			this.btsave.TabIndex = 16;
 			this.btsave.Text = "Save";
 			this.btsave.UseVisualStyleBackColor = false;
-			this.btsave.Click += new System.EventHandler(this.button3_Click);
+			this.btsave.Click += new EventHandler(this.button3_Click);
 			//
 			// button4
 			//
 			this.button4.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -755,12 +755,12 @@ namespace SimPe.Packages
 			this.button4.TabIndex = 17;
 			this.button4.Text = "Cancel";
 			this.button4.UseVisualStyleBackColor = false;
-			this.button4.Click += new System.EventHandler(this.button4_Click);
+			this.button4.Click += new EventHandler(this.button4_Click);
 			//
 			// panel1
 			//
 			this.panel1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -806,7 +806,7 @@ namespace SimPe.Packages
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Sims 2 Pack File Browser";
-			this.Load += new System.EventHandler(this.SaveSims2CommunityPack_Load);
+			this.Load += new EventHandler(this.SaveSims2CommunityPack_Load);
 			this.Closing += new System.ComponentModel.CancelEventHandler(
 				this.AllowClose
 			);
@@ -836,7 +836,7 @@ namespace SimPe.Packages
 		/// a normal Sims2Pack File will be generated</param>
 		/// <returns>A list of all packages this File should contain</returns>
 		public S2CPDescriptor[] Execute(
-			SimPe.Packages.GeneratableFile[] files,
+			GeneratableFile[] files,
 			ref bool extension
 		)
 		{
@@ -980,7 +980,7 @@ namespace SimPe.Packages
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void Select(object sender, System.EventArgs e) // CJH
+		private void Select(object sender, EventArgs e) // CJH
 		{
 			if (lblist.Tag != null)
 			{
@@ -1000,7 +1000,7 @@ namespace SimPe.Packages
 			lblist.Tag = true;
 			try
 			{
-				SimPe.Packages.S2CPDescriptor s2cp = (SimPe.Packages.S2CPDescriptor)
+				S2CPDescriptor s2cp = (S2CPDescriptor)
 					lblist.Items[lblist.SelectedIndex];
 
 				tbname.Text = s2cp.Name;
@@ -1037,7 +1037,7 @@ namespace SimPe.Packages
 			}
 		}
 
-		private void ChangeText(object sender, System.EventArgs e)
+		private void ChangeText(object sender, EventArgs e)
 		{
 			if (lblist.Tag != null)
 			{
@@ -1052,7 +1052,7 @@ namespace SimPe.Packages
 			lblist.Tag = true;
 			try
 			{
-				SimPe.Packages.S2CPDescriptor s2cp = (SimPe.Packages.S2CPDescriptor)
+				S2CPDescriptor s2cp = (S2CPDescriptor)
 					lblist.Items[lblist.SelectedIndex];
 
 				s2cp.Name = tbname.Text;
@@ -1075,12 +1075,12 @@ namespace SimPe.Packages
 			}
 		}
 
-		private void AddPackage(object sender, System.EventArgs e)
+		private void AddPackage(object sender, EventArgs e)
 		{
 			ofd.Filter = "Sims 2 Package (*.package)|*.package|All Files (*.*)|*.*";
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
-				SimPe.Packages.GeneratableFile package = GeneratableFile.LoadFromFile(
+				GeneratableFile package = GeneratableFile.LoadFromFile(
 					ofd.FileName
 				);
 				S2CPDescriptor s2cp = new S2CPDescriptor(
@@ -1098,7 +1098,7 @@ namespace SimPe.Packages
 			}
 		}
 
-		private void DeletePackage(object sender, System.EventArgs e)
+		private void DeletePackage(object sender, EventArgs e)
 		{
 			if (lblist.SelectedIndex < 0)
 			{
@@ -1108,7 +1108,7 @@ namespace SimPe.Packages
 			lblist.Items.RemoveAt(lblist.SelectedIndex);
 		}
 
-		private void S2CPFilename(object sender, System.EventArgs e)
+		private void S2CPFilename(object sender, EventArgs e)
 		{
 			if (this.cb2cp.Checked)
 			{
@@ -1160,7 +1160,7 @@ namespace SimPe.Packages
 
 		private void ShowDependencies(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lblist.Tag != null)
@@ -1176,7 +1176,7 @@ namespace SimPe.Packages
 			lblist.Tag = true;
 			try
 			{
-				SimPe.Packages.S2CPDescriptor s2cp = (SimPe.Packages.S2CPDescriptor)
+				S2CPDescriptor s2cp = (S2CPDescriptor)
 					lblist.Items[lblist.SelectedIndex];
 
 				DepSims2Community form = new DepSims2Community();
@@ -1193,19 +1193,19 @@ namespace SimPe.Packages
 			}
 		}
 
-		private void button4_Click(object sender, System.EventArgs e)
+		private void button4_Click(object sender, EventArgs e)
 		{
 			ok = false;
 			Close();
 		}
 
-		private void button3_Click(object sender, System.EventArgs e)
+		private void button3_Click(object sender, EventArgs e)
 		{
 			ok = true;
 			Close();
 		}
 
-		private void SelectCompression(object sender, System.EventArgs e)
+		private void SelectCompression(object sender, EventArgs e)
 		{
 			if (lblist.Tag != null)
 			{
@@ -1225,11 +1225,11 @@ namespace SimPe.Packages
 			lblist.Tag = true;
 			try
 			{
-				SimPe.Packages.S2CPDescriptor s2cp = (SimPe.Packages.S2CPDescriptor)
+				S2CPDescriptor s2cp = (S2CPDescriptor)
 					lblist.Items[lblist.SelectedIndex];
 
 				s2cp.Compressed =
-					(SimPe.Packages.Sims2CommunityPack.CompressionStrength)
+					(Sims2CommunityPack.CompressionStrength)
 						cbcompress.Items[cbcompress.SelectedIndex];
 				lblist.Items[lblist.SelectedIndex] = s2cp;
 			}
@@ -1243,11 +1243,11 @@ namespace SimPe.Packages
 			}
 		}
 
-		private void SaveSims2CommunityPack_Load(object sender, System.EventArgs e)
+		private void SaveSims2CommunityPack_Load(object sender, EventArgs e)
 		{
 		}
 
-		private void Checks2cp(object sender, System.EventArgs e)
+		private void Checks2cp(object sender, EventArgs e)
 		{
 			lldep.Enabled = this.cb2cp.Checked;
 			tbguid.Enabled = this.cb2cp.Checked;

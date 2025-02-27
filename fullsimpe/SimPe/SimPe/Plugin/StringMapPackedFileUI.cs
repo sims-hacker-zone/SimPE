@@ -9,7 +9,7 @@ namespace SimPe.Plugin
 	/// This class is used to fill the UI for this FileType with Data
 	/// </summary>
 	public partial class StringMapPackedFileUI
-		: SimPe.Windows.Forms.WrapperBaseControl,
+		: Windows.Forms.WrapperBaseControl,
 			IPackedFileUI
 	{
 		protected new StringMapPackedFileWrapper Wrapper => base.Wrapper as StringMapPackedFileWrapper;
@@ -187,8 +187,8 @@ namespace SimPe.Plugin
 			{
 				try
 				{
-					SimPe.PackedFiles.Wrapper.Cpf colour =
-						new SimPe.PackedFiles.Wrapper.Cpf();
+					PackedFiles.Wrapper.Cpf colour =
+						new PackedFiles.Wrapper.Cpf();
 					colour.ProcessData(item);
 					if (
 						!wallsandfloors.ContainsKey(

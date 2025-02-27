@@ -5,16 +5,16 @@ using System.Globalization;
 namespace SimPe
 {
 	/// <summary>
-	/// Used for dynamic PropertyGrids using <see cref="SimPe.FlagBase"/> Objects.
+	/// Used for dynamic PropertyGrids using <see cref="FlagBase"/> Objects.
 	/// </summary>
-	public class FlagBaseConverter : System.ComponentModel.ExpandableObjectConverter
+	public class FlagBaseConverter : ExpandableObjectConverter
 	{
 		public override bool CanConvertTo(
 			ITypeDescriptorContext context,
-			System.Type destinationType
+			Type destinationType
 		)
 		{
-			if (destinationType == typeof(SimPe.FlagBase))
+			if (destinationType == typeof(FlagBase))
 			{
 				return true;
 			}
@@ -26,10 +26,10 @@ namespace SimPe
 			ITypeDescriptorContext context,
 			CultureInfo culture,
 			object value,
-			System.Type destinationType
+			Type destinationType
 		)
 		{
-			if (destinationType == typeof(System.String) && value is SimPe.FlagBase)
+			if (destinationType == typeof(System.String) && value is FlagBase)
 			{
 				return Helper.MinStrLength(value.ToString(), 16);
 			}
@@ -38,7 +38,7 @@ namespace SimPe
 
 		public override bool CanConvertFrom(
 			ITypeDescriptorContext context,
-			System.Type sourceType
+			Type sourceType
 		)
 		{
 			if (sourceType == typeof(string))

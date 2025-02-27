@@ -31,7 +31,7 @@ using SimPe.Plugin;
 
 namespace pjHoodTool
 {
-	class cHoodTool : SimPe.Interfaces.AbstractTool, ITool, ICommandLine
+	class cHoodTool : AbstractTool, ITool, ICommandLine
 	{
 		string q(string u)
 		{
@@ -267,7 +267,7 @@ namespace pjHoodTool
 
 		ExtFamilyTies eft = null;
 
-		void SetProvider(SimPe.Interfaces.Files.IPackageFile pkg)
+		void SetProvider(IPackageFile pkg)
 		{
 			FileTable.ProviderRegistry.SimFamilynameProvider.BasePackage = pkg;
 			FileTable.ProviderRegistry.SimDescriptionProvider.BasePackage = pkg;
@@ -468,7 +468,7 @@ namespace pjHoodTool
 				desc = ",,";
 			}
 
-			SimPe.Interfaces.Files.IPackageFile pkg = SimPe.Packages.File.LoadFromFile(
+			IPackageFile pkg = SimPe.Packages.File.LoadFromFile(
 				sdsc.CharacterFileName
 			);
 			if (pkg == null)
@@ -1258,8 +1258,8 @@ namespace pjHoodTool
 		#region ITool Members
 
 		SimPe.Interfaces.Plugin.IToolResult ITool.ShowDialog(
-			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			ref SimPe.Interfaces.Files.IPackageFile package
+			ref IPackedFileDescriptor pfd,
+			ref IPackageFile package
 		)
 		{
 			if (!System.IO.Directory.Exists(PathProvider.Global.NeighborhoodFolder))
@@ -1312,7 +1312,7 @@ namespace pjHoodTool
 					SimPe.WaitingScreen.UpdateMessage(message);
 				};
 				Rufio(fbd.SelectedPath, hood, 0);
-				return new SimPe.Plugin.ToolResult(false, false);
+				return new ToolResult(false, false);
 			}
 			finally
 			{
@@ -1322,8 +1322,8 @@ namespace pjHoodTool
 		}
 
 		bool ITool.IsEnabled(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile package
+			IPackedFileDescriptor pfd,
+			IPackageFile package
 		)
 		{
 			return true;
@@ -1341,7 +1341,7 @@ namespace pjHoodTool
 		#endregion
 
 		#region IToolExt Member
-		public override System.Drawing.Image Icon => SimPe.GetIcon.HoodTool;
+		public override Image Icon => SimPe.GetIcon.HoodTool;
 		#endregion
 
 		#region ICommandLine Members

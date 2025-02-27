@@ -5,7 +5,7 @@ using SimPe.Interfaces.Plugin;
 namespace SimPe.Plugin
 {
 	public partial class SimmyListPackedFileUI
-		: SimPe.Windows.Forms.WrapperBaseControl,
+		: Windows.Forms.WrapperBaseControl,
 			IPackedFileUI
 	{
 		protected new SimmyListPackedFileWrapper Wrapper => base.Wrapper as SimmyListPackedFileWrapper;

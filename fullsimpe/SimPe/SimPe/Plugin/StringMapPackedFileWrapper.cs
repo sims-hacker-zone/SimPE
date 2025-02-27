@@ -138,9 +138,9 @@ namespace SimPe.Plugin
 			version = reader.ReadInt32();
 			filetype = reader.ReadBytes(11);
 			int len = reader.ReadInt32();
-			Array.Resize<ushort>(ref datas, len);
-			Array.Resize<uint>(ref types, len);
-			Array.Resize<string>(ref strins, len);
+			Array.Resize(ref datas, len);
+			Array.Resize(ref types, len);
+			Array.Resize(ref strins, len);
 			for (int i = 0; i < len; i++)
 			{
 				strins[i] = reader.ReadString();

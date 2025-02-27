@@ -28,13 +28,13 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for NgbhItemsListViewItem.
 	/// </summary>
-	public class NgbhItemsListView : System.Windows.Forms.UserControl
+	public class NgbhItemsListView : UserControl
 	{
 		private IContainer components;
-		private System.Windows.Forms.Panel panel1;
+		private Panel panel1;
 		private ComboBox cbadd;
-		private System.Windows.Forms.LinkLabel lladd;
-		private System.Windows.Forms.LinkLabel lldel;
+		private LinkLabel lladd;
+		private LinkLabel lldel;
 		private Button btUp;
 		private Button btDown;
 		private ToolStripMenuItem miCopy;
@@ -110,26 +110,26 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources =
-				new System.ComponentModel.ComponentResourceManager(
+			this.components = new Container();
+			ComponentResourceManager resources =
+				new ComponentResourceManager(
 					typeof(NgbhItemsListView)
 				);
-			this.lv = new System.Windows.Forms.ListView();
-			this.menu = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.miCopy = new System.Windows.Forms.ToolStripMenuItem();
-			this.miPaste = new System.Windows.Forms.ToolStripMenuItem();
-			this.miPasteGossip = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-			this.miClone = new System.Windows.Forms.ToolStripMenuItem();
-			this.miDelCascade = new System.Windows.Forms.ToolStripMenuItem();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.cbnogoss = new System.Windows.Forms.CheckBox();
-			this.lladd = new System.Windows.Forms.LinkLabel();
-			this.cbadd = new System.Windows.Forms.ComboBox();
-			this.lldel = new System.Windows.Forms.LinkLabel();
-			this.btUp = new System.Windows.Forms.Button();
-			this.btDown = new System.Windows.Forms.Button();
+			this.lv = new ListView();
+			this.menu = new ContextMenuStrip(this.components);
+			this.miCopy = new ToolStripMenuItem();
+			this.miPaste = new ToolStripMenuItem();
+			this.miPasteGossip = new ToolStripMenuItem();
+			this.toolStripMenuItem2 = new ToolStripSeparator();
+			this.miClone = new ToolStripMenuItem();
+			this.miDelCascade = new ToolStripMenuItem();
+			this.panel1 = new Panel();
+			this.cbnogoss = new CheckBox();
+			this.lladd = new LinkLabel();
+			this.cbadd = new ComboBox();
+			this.lldel = new LinkLabel();
+			this.btUp = new Button();
+			this.btDown = new Button();
 			this.menu.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
@@ -144,14 +144,14 @@ namespace SimPe.Plugin
 			this.lv.Name = "lv";
 			this.lv.UseCompatibleStateImageBehavior = false;
 			this.lv.View = System.Windows.Forms.View.List;
-			this.lv.SelectedIndexChanged += new System.EventHandler(
+			this.lv.SelectedIndexChanged += new EventHandler(
 				this.lv_SelectedIndexChanged_1
 			);
 			//
 			// menu
 			//
 			this.menu.Items.AddRange(
-				new System.Windows.Forms.ToolStripItem[]
+				new ToolStripItem[]
 				{
 					this.miCopy,
 					this.miPaste,
@@ -163,7 +163,7 @@ namespace SimPe.Plugin
 			);
 			this.menu.Name = "menu";
 			resources.ApplyResources(this.menu, "menu");
-			this.menu.VisibleChanged += new System.EventHandler(
+			this.menu.VisibleChanged += new EventHandler(
 				this.menu_VisibleChanged
 			);
 			//
@@ -171,19 +171,19 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.miCopy, "miCopy");
 			this.miCopy.Name = "miCopy";
-			this.miCopy.Click += new System.EventHandler(this.CopyItems);
+			this.miCopy.Click += new EventHandler(this.CopyItems);
 			//
 			// miPaste
 			//
 			resources.ApplyResources(this.miPaste, "miPaste");
 			this.miPaste.Name = "miPaste";
-			this.miPaste.Click += new System.EventHandler(this.PasteItems);
+			this.miPaste.Click += new EventHandler(this.PasteItems);
 			//
 			// miPasteGossip
 			//
 			this.miPasteGossip.Name = "miPasteGossip";
 			resources.ApplyResources(this.miPasteGossip, "miPasteGossip");
-			this.miPasteGossip.Click += new System.EventHandler(
+			this.miPasteGossip.Click += new EventHandler(
 				this.PasteItemsAsGossip
 			);
 			//
@@ -196,13 +196,13 @@ namespace SimPe.Plugin
 			//
 			this.miClone.Name = "miClone";
 			resources.ApplyResources(this.miClone, "miClone");
-			this.miClone.Click += new System.EventHandler(this.CloneItem);
+			this.miClone.Click += new EventHandler(this.CloneItem);
 			//
 			// miDelCascade
 			//
 			resources.ApplyResources(this.miDelCascade, "miDelCascade");
 			this.miDelCascade.Name = "miDelCascade";
-			this.miDelCascade.Click += new System.EventHandler(this.DeleteCascadeItems);
+			this.miDelCascade.Click += new EventHandler(this.DeleteCascadeItems);
 			//
 			// panel1
 			//
@@ -221,7 +221,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbnogoss, "cbnogoss");
 			this.cbnogoss.Name = "cbnogoss";
 			this.cbnogoss.UseVisualStyleBackColor = true;
-			this.cbnogoss.CheckedChanged += new System.EventHandler(
+			this.cbnogoss.CheckedChanged += new EventHandler(
 				this.cbnogoss_CheckedChanged
 			);
 			//
@@ -232,7 +232,7 @@ namespace SimPe.Plugin
 			this.lladd.TabStop = true;
 			this.lladd.UseCompatibleTextRendering = true;
 			this.lladd.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.lladd_LinkClicked
 				);
 			//
@@ -242,7 +242,7 @@ namespace SimPe.Plugin
 			this.cbadd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbadd.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.cbadd.Name = "cbadd";
-			this.cbadd.SelectedIndexChanged += new System.EventHandler(
+			this.cbadd.SelectedIndexChanged += new EventHandler(
 				this.cbadd_SelectedIndexChanged
 			);
 			//
@@ -252,7 +252,7 @@ namespace SimPe.Plugin
 			this.lldel.Name = "lldel";
 			this.lldel.TabStop = true;
 			this.lldel.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.lldel_LinkClicked
 				);
 			//
@@ -260,13 +260,13 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.btUp, "btUp");
 			this.btUp.Name = "btUp";
-			this.btUp.Click += new System.EventHandler(this.btUp_Click);
+			this.btUp.Click += new EventHandler(this.btUp_Click);
 			//
 			// btDown
 			//
 			resources.ApplyResources(this.btDown, "btDown");
 			this.btDown.Name = "btDown";
-			this.btDown.Click += new System.EventHandler(this.btDown_Click);
+			this.btDown.Click += new EventHandler(this.btDown_Click);
 			//
 			// NgbhItemsListView
 			//
@@ -282,8 +282,8 @@ namespace SimPe.Plugin
 
 		#endregion
 
-		SimPe.Data.NeighborhoodSlots st;
-		public SimPe.Data.NeighborhoodSlots SlotType
+		Data.NeighborhoodSlots st;
+		public Data.NeighborhoodSlots SlotType
 		{
 			get
 			{
@@ -345,7 +345,7 @@ namespace SimPe.Plugin
 
 		Collections.NgbhItems items;
 
-		[System.ComponentModel.Browsable(false)]
+		[Browsable(false)]
 		public Collections.NgbhItems NgbhItems
 		{
 			get
@@ -457,7 +457,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		[System.ComponentModel.Browsable(false)]
+		[Browsable(false)]
 		public NgbhItemsListViewItem SelectedItem
 		{
 			get
@@ -479,7 +479,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		[System.ComponentModel.Browsable(false)]
+		[Browsable(false)]
 		public NgbhItem SelectedNgbhItem
 		{
 			get
@@ -493,7 +493,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		[System.ComponentModel.Browsable(false)]
+		[Browsable(false)]
 		public Collections.NgbhItems SelectedNgbhItems
 		{
 			get
@@ -514,7 +514,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		[System.ComponentModel.Browsable(false)]
+		[Browsable(false)]
 		public bool SelectedMultiple => lv.SelectedItems.Count > 1;
 
 		internal void UpdateSelected(NgbhItem item)
@@ -559,12 +559,12 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void cbadd_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void cbadd_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			lladd.Enabled = cbadd.SelectedIndex >= 0 && items != null;
 		}
 
-		private void lv_SelectedIndexChanged_1(object sender, System.EventArgs e)
+		private void lv_SelectedIndexChanged_1(object sender, EventArgs e)
 		{
 			lldel.Enabled = (lv.SelectedItems.Count > 0 && items != null);
 			if (lv.Items.Count == 0 || lv.SelectedItems.Count != 1 || items == null)
@@ -582,7 +582,7 @@ namespace SimPe.Plugin
 
 		private void lladd_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (items == null || cbadd.SelectedIndex < 0)
@@ -604,7 +604,7 @@ namespace SimPe.Plugin
 
 		private void lldel_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lv.SelectedItems.Count == 0 || items == null)
@@ -649,14 +649,14 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void btUp_Click(object sender, System.EventArgs e)
+		private void btUp_Click(object sender, EventArgs e)
 		{
 			int index = SelectedIndex;
 			items.Swap(index, index - 1);
 			SwapListViewItem(index, index - 1);
 		}
 
-		private void btDown_Click(object sender, System.EventArgs e)
+		private void btDown_Click(object sender, EventArgs e)
 		{
 			int index = SelectedIndex;
 			items.Swap(index, index + 1);
@@ -669,7 +669,7 @@ namespace SimPe.Plugin
 		}
 
 		#region Extensions by Theo
-		System.Collections.Queue clipboard;
+		Queue clipboard;
 
 		void InitTheo()
 		{
@@ -721,7 +721,7 @@ namespace SimPe.Plugin
 		{
 			int itemIndex = this.NextItemIndex(false);
 			this.Cursor = Cursors.WaitCursor;
-			System.Collections.Queue newq = new Queue();
+			Queue newq = new Queue();
 			try
 			{
 				while (clipboard.Count > 0)

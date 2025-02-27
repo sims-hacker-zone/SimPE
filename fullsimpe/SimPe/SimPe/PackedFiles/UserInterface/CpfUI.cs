@@ -29,7 +29,7 @@ namespace SimPe.PackedFiles.UserInterface
 	{
 		public delegate void ExecutePreview(
 			Cpf mmat,
-			SimPe.Interfaces.Files.IPackageFile package
+			Interfaces.Files.IPackageFile package
 		);
 
 		#region Code to Startup the UI

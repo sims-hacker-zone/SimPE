@@ -29,14 +29,14 @@ namespace SimPe.Interfaces
 		/// </summary>
 		/// <param name="settings">The Topic to register</param>
 		/// <remarks>The tool must only be added if the Registry doesnt already contain it</remarks>
-		void RegisterSettings(SimPe.Interfaces.ISettings settings);
+		void RegisterSettings(ISettings settings);
 
 		/// <summary>
 		/// Registers all listed Settings with this Registry
 		/// </summary>
 		/// <param name="settings">The Topics to register</param>
 		/// <remarks>The tool must only be added if the Registry doesnt already contain it</remarks>
-		void RegisterSettings(SimPe.Interfaces.ISettings[] settings);
+		void RegisterSettings(ISettings[] settings);
 
 		/// <summary>
 		/// Registers all  Settings provided by a factory with this Registry

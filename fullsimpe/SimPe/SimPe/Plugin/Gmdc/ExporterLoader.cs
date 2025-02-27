@@ -73,7 +73,7 @@ namespace SimPe.Plugin.Gmdc
 
 			object[] plugs = SimPe.LoadFileWrappers.LoadPlugins(
 				file,
-				typeof(SimPe.Plugin.Gmdc.IGmdcExporter)
+				typeof(IGmdcExporter)
 			);
 			foreach (IGmdcExporter p in plugs)
 			{
@@ -94,7 +94,7 @@ namespace SimPe.Plugin.Gmdc
 
 			object[] plugs = SimPe.LoadFileWrappers.LoadPlugins(
 				file,
-				typeof(SimPe.Plugin.Gmdc.IGmdcImporter)
+				typeof(IGmdcImporter)
 			);
 			foreach (IGmdcImporter p in plugs)
 			{
@@ -120,7 +120,7 @@ namespace SimPe.Plugin.Gmdc
 			{
 				object[] plugs = SimPe.LoadFileWrappers.LoadPlugins(
 					file,
-					typeof(SimPe.Plugin.Gmdc.IGmdcExporter)
+					typeof(IGmdcExporter)
 				);
 				foreach (IGmdcExporter p in plugs)
 				{
@@ -132,7 +132,7 @@ namespace SimPe.Plugin.Gmdc
 
 				plugs = SimPe.LoadFileWrappers.LoadPlugins(
 					file,
-					typeof(SimPe.Plugin.Gmdc.IGmdcImporter)
+					typeof(IGmdcImporter)
 				);
 				foreach (IGmdcImporter p in plugs)
 				{

@@ -24,13 +24,13 @@ namespace SimPe.Plugin.Tool.Action
 	/// <summary>
 	/// The BuildNameMap Action
 	/// </summary>
-	public class ActionBuildNameMap : SimPe.Interfaces.IToolAction
+	public class ActionBuildNameMap : Interfaces.IToolAction
 	{
 		#region IToolAction Member
 
 		public virtual bool ChangeEnabledStateEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs es
+			Events.ResourceEventArgs es
 		)
 		{
 			return true;
@@ -38,7 +38,7 @@ namespace SimPe.Plugin.Tool.Action
 
 		private bool RealChangeEnabledStateEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs es
+			Events.ResourceEventArgs es
 		)
 		{
 			return es.HasFileDescriptor && es.Loaded;
@@ -46,7 +46,7 @@ namespace SimPe.Plugin.Tool.Action
 
 		public void ExecuteEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs es
+			Events.ResourceEventArgs es
 		)
 		{
 			if (!RealChangeEnabledStateEventHandler(null, es))
@@ -60,7 +60,7 @@ namespace SimPe.Plugin.Tool.Action
 				return;
 			}
 
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd = null;
+			Interfaces.Files.IPackedFileDescriptor pfd = null;
 			for (int i = 0; i < es.Count; i++)
 			{
 				if (es[i].HasFileDescriptor)
@@ -73,14 +73,14 @@ namespace SimPe.Plugin.Tool.Action
 			Data.TypeAlias a = Helper.TGILoader.GetByType(pfd.Type);
 			if (Data.MetaData.RcolList.Contains(a.Id))
 			{
-				SimPe.Packages.PackedFileDescriptor fd =
-					new SimPe.Packages.PackedFileDescriptor();
+				Packages.PackedFileDescriptor fd =
+					new Packages.PackedFileDescriptor();
 				fd.Type = Data.MetaData.NAME_MAP;
 				fd.Group = 0x52737256;
 				fd.Instance = a.Id;
 				fd.SubType = 0;
 
-				SimPe.Plugin.Nmap nmap = new SimPe.Plugin.Nmap(
+				Nmap nmap = new Nmap(
 					FileTable.ProviderRegistry
 				);
 				nmap.FileDescriptor = fd;
@@ -91,7 +91,7 @@ namespace SimPe.Plugin.Tool.Action
 				}
 
 				System.Collections.ArrayList list = new System.Collections.ArrayList();
-				foreach (SimPe.Events.ResourceContainer e in es)
+				foreach (Events.ResourceContainer e in es)
 				{
 					if (!e.HasFileDescriptor)
 					{
@@ -105,11 +105,11 @@ namespace SimPe.Plugin.Tool.Action
 
 					try
 					{
-						SimPe.Packages.PackedFileDescriptor p =
-							(SimPe.Packages.PackedFileDescriptor)
+						Packages.PackedFileDescriptor p =
+							(Packages.PackedFileDescriptor)
 								e.Resource.FileDescriptor;
 
-						SimPe.Plugin.Rcol rcol = new SimPe.Plugin.GenericRcol(
+						Rcol rcol = new GenericRcol(
 							null,
 							false
 						);
@@ -121,7 +121,7 @@ namespace SimPe.Plugin.Tool.Action
 					catch (Exception) { }
 				} //foreach
 
-				nmap.Items = new SimPe.Packages.PackedFileDescriptor[list.Count];
+				nmap.Items = new Packages.PackedFileDescriptor[list.Count];
 				list.CopyTo(nmap.Items);
 
 				nmap.SynchronizeUserData();

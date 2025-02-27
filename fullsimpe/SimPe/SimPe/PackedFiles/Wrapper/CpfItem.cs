@@ -26,7 +26,7 @@ namespace SimPe.PackedFiles.Wrapper
 	/// <summary>
 	/// An Item stored in a CPF File
 	/// </summary>
-	public class CpfItem : System.IDisposable
+	public class CpfItem : IDisposable
 	{
 		/// <summary>
 		/// Constructor

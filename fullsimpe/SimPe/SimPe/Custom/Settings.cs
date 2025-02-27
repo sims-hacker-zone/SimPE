@@ -27,7 +27,7 @@ namespace SimPe.Custom
 {
 	public class Settings : GlobalizedObject, ISettings
 	{
-		static ResourceManager rm = new ResourceManager(typeof(SimPe.Localization));
+		static ResourceManager rm = new ResourceManager(typeof(Localization));
 
 		private static Settings settings;
 
@@ -42,20 +42,20 @@ namespace SimPe.Custom
 			: base(rm) { }
 
 		const string BASENAME = "Settings";
-		SimPe.XmlRegistryKey xrk = SimPe.Helper.WindowsRegistry.RegistryKey;
+		XmlRegistryKey xrk = SimPe.Helper.WindowsRegistry.RegistryKey;
 
 		[System.ComponentModel.Category("SimPE")]
 		public bool KeepFilesOpen
 		{
 			get
 			{
-				SimPe.XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
+				XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
 				object o = rkf.GetValue("keepFilesOpen", true);
 				return Convert.ToBoolean(o);
 			}
 			set
 			{
-				SimPe.XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
+				XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
 				rkf.SetValue("keepFilesOpen", value);
 			}
 		}

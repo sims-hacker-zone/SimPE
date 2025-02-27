@@ -31,42 +31,42 @@ namespace SimPe.Plugin.TabPage
 		//System.Windows.Forms.UserControl
 		System.Windows.Forms.TabPage
 	{
-		private System.Windows.Forms.GroupBox groupBox10;
-		internal System.Windows.Forms.TextBox tb_ver;
-		private System.Windows.Forms.Label label28;
-		internal System.Windows.Forms.TextBox tb_type;
-		private System.Windows.Forms.Label label1;
-		internal System.Windows.Forms.TextBox tb_name;
-		private System.Windows.Forms.Label label2;
-		internal System.Windows.Forms.ListBox lb_items;
-		private System.Windows.Forms.GroupBox gbval;
-		private System.Windows.Forms.GroupBox gbtrans;
-		private System.Windows.Forms.GroupBox gbrot;
-		private System.Windows.Forms.GroupBox gbbin;
-		private System.Windows.Forms.GroupBox gbstr;
-		private System.Windows.Forms.GroupBox gbar;
-		private System.Windows.Forms.Button btedit;
-		private System.Windows.Forms.GroupBox gfootprintbar;
-		private System.Windows.Forms.Button btfootprintedit;
-		internal System.Windows.Forms.GroupBox gbIems;
-		internal System.Windows.Forms.TextBox tbFootprint;
-		private System.Windows.Forms.ComboBox cbtype;
-		private System.Windows.Forms.LinkLabel linkLabel1;
-		private System.Windows.Forms.LinkLabel lldel;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.TextBox tb_itemname;
-		private System.Windows.Forms.TextBox tbval;
-		private System.Windows.Forms.TextBox tbstr;
-		private System.Windows.Forms.TextBox tbbin;
-		private System.Windows.Forms.TextBox tbtrans2;
-		private System.Windows.Forms.TextBox tbtrans3;
-		private System.Windows.Forms.TextBox tbtrans1;
-		private System.Windows.Forms.TextBox tbrot1;
-		private System.Windows.Forms.TextBox tbrot3;
-		private System.Windows.Forms.TextBox tbrot2;
-		private System.Windows.Forms.TextBox tbrot4;
-		private System.Windows.Forms.GroupBox gbfloat;
-		private System.Windows.Forms.TextBox tbfloat;
+		private GroupBox groupBox10;
+		internal TextBox tb_ver;
+		private Label label28;
+		internal TextBox tb_type;
+		private Label label1;
+		internal TextBox tb_name;
+		private Label label2;
+		internal ListBox lb_items;
+		private GroupBox gbval;
+		private GroupBox gbtrans;
+		private GroupBox gbrot;
+		private GroupBox gbbin;
+		private GroupBox gbstr;
+		private GroupBox gbar;
+		private Button btedit;
+		private GroupBox gfootprintbar;
+		private Button btfootprintedit;
+		internal GroupBox gbIems;
+		internal TextBox tbFootprint;
+		private ComboBox cbtype;
+		private LinkLabel linkLabel1;
+		private LinkLabel lldel;
+		private Label label3;
+		private TextBox tb_itemname;
+		private TextBox tbval;
+		private TextBox tbstr;
+		private TextBox tbbin;
+		private TextBox tbtrans2;
+		private TextBox tbtrans3;
+		private TextBox tbtrans1;
+		private TextBox tbrot1;
+		private TextBox tbrot3;
+		private TextBox tbrot2;
+		private TextBox tbrot4;
+		private GroupBox gbfloat;
+		private TextBox tbfloat;
 
 		/// <summary>
 		/// Required designer variable.
@@ -127,42 +127,42 @@ namespace SimPe.Plugin.TabPage
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.gbIems = new System.Windows.Forms.GroupBox();
-			this.gbfloat = new System.Windows.Forms.GroupBox();
-			this.tbfloat = new System.Windows.Forms.TextBox();
-			this.gbval = new System.Windows.Forms.GroupBox();
-			this.tbval = new System.Windows.Forms.TextBox();
-			this.tb_itemname = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.lldel = new System.Windows.Forms.LinkLabel();
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-			this.cbtype = new System.Windows.Forms.ComboBox();
-			this.gbar = new System.Windows.Forms.GroupBox();
-			this.btedit = new System.Windows.Forms.Button();
-			this.gfootprintbar = new System.Windows.Forms.GroupBox();
-			this.btfootprintedit = new System.Windows.Forms.Button();
-			this.gbstr = new System.Windows.Forms.GroupBox();
-			this.tbstr = new System.Windows.Forms.TextBox();
-			this.gbbin = new System.Windows.Forms.GroupBox();
-			this.tbbin = new System.Windows.Forms.TextBox();
-			this.gbrot = new System.Windows.Forms.GroupBox();
-			this.tbrot4 = new System.Windows.Forms.TextBox();
-			this.tbrot1 = new System.Windows.Forms.TextBox();
-			this.tbrot3 = new System.Windows.Forms.TextBox();
-			this.tbrot2 = new System.Windows.Forms.TextBox();
-			this.gbtrans = new System.Windows.Forms.GroupBox();
-			this.tbtrans1 = new System.Windows.Forms.TextBox();
-			this.tbtrans3 = new System.Windows.Forms.TextBox();
-			this.tbtrans2 = new System.Windows.Forms.TextBox();
-			this.lb_items = new System.Windows.Forms.ListBox();
-			this.tbFootprint = new System.Windows.Forms.TextBox();
-			this.groupBox10 = new System.Windows.Forms.GroupBox();
-			this.tb_name = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.tb_type = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.tb_ver = new System.Windows.Forms.TextBox();
-			this.label28 = new System.Windows.Forms.Label();
+			this.gbIems = new GroupBox();
+			this.gbfloat = new GroupBox();
+			this.tbfloat = new TextBox();
+			this.gbval = new GroupBox();
+			this.tbval = new TextBox();
+			this.tb_itemname = new TextBox();
+			this.label3 = new Label();
+			this.lldel = new LinkLabel();
+			this.linkLabel1 = new LinkLabel();
+			this.cbtype = new ComboBox();
+			this.gbar = new GroupBox();
+			this.btedit = new Button();
+			this.gfootprintbar = new GroupBox();
+			this.btfootprintedit = new Button();
+			this.gbstr = new GroupBox();
+			this.tbstr = new TextBox();
+			this.gbbin = new GroupBox();
+			this.tbbin = new TextBox();
+			this.gbrot = new GroupBox();
+			this.tbrot4 = new TextBox();
+			this.tbrot1 = new TextBox();
+			this.tbrot3 = new TextBox();
+			this.tbrot2 = new TextBox();
+			this.gbtrans = new GroupBox();
+			this.tbtrans1 = new TextBox();
+			this.tbtrans3 = new TextBox();
+			this.tbtrans2 = new TextBox();
+			this.lb_items = new ListBox();
+			this.tbFootprint = new TextBox();
+			this.groupBox10 = new GroupBox();
+			this.tb_name = new TextBox();
+			this.label2 = new Label();
+			this.tb_type = new TextBox();
+			this.label1 = new Label();
+			this.tb_ver = new TextBox();
+			this.label28 = new Label();
 			this.gbIems.SuspendLayout();
 			this.gbfloat.SuspendLayout();
 			this.gbval.SuspendLayout();
@@ -178,7 +178,7 @@ namespace SimPe.Plugin.TabPage
 			// gbIems
 			//
 			this.gbIems.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -204,16 +204,16 @@ namespace SimPe.Plugin.TabPage
 			this.gbIems.Controls.Add(this.gbtrans);
 			this.gbIems.Controls.Add(this.lb_items);
 			this.gbIems.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.gbIems.Font = new System.Drawing.Font(
+			this.gbIems.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.gbIems.Location = new System.Drawing.Point(248, 8);
+			this.gbIems.Location = new Point(248, 8);
 			this.gbIems.Name = "gbIems";
-			this.gbIems.Size = new System.Drawing.Size(536, 288);
+			this.gbIems.Size = new Size(536, 288);
 			this.gbIems.TabIndex = 13;
 			this.gbIems.TabStop = false;
 			this.gbIems.Text = "Items";
@@ -221,7 +221,7 @@ namespace SimPe.Plugin.TabPage
 			// gbfloat
 			//
 			this.gbfloat.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -230,33 +230,33 @@ namespace SimPe.Plugin.TabPage
 			);
 			this.gbfloat.Controls.Add(this.tbfloat);
 			this.gbfloat.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.gbfloat.Location = new System.Drawing.Point(416, 128);
+			this.gbfloat.Location = new Point(416, 128);
 			this.gbfloat.Name = "gbfloat";
-			this.gbfloat.Size = new System.Drawing.Size(120, 56);
+			this.gbfloat.Size = new Size(120, 56);
 			this.gbfloat.TabIndex = 2;
 			this.gbfloat.TabStop = false;
 			this.gbfloat.Text = "Float Value";
 			//
 			// tbfloat
 			//
-			this.tbfloat.Font = new System.Drawing.Font(
+			this.tbfloat.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbfloat.Location = new System.Drawing.Point(16, 24);
+			this.tbfloat.Location = new Point(16, 24);
 			this.tbfloat.Name = "tbfloat";
-			this.tbfloat.Size = new System.Drawing.Size(88, 21);
+			this.tbfloat.Size = new Size(88, 21);
 			this.tbfloat.TabIndex = 0;
 			this.tbfloat.Text = "0";
-			this.tbfloat.TextChanged += new System.EventHandler(this.FloatChange);
+			this.tbfloat.TextChanged += new EventHandler(this.FloatChange);
 			//
 			// gbval
 			//
 			this.gbval.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -265,56 +265,56 @@ namespace SimPe.Plugin.TabPage
 			);
 			this.gbval.Controls.Add(this.tbval);
 			this.gbval.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.gbval.Location = new System.Drawing.Point(160, 216);
+			this.gbval.Location = new Point(160, 216);
 			this.gbval.Name = "gbval";
-			this.gbval.Size = new System.Drawing.Size(120, 56);
+			this.gbval.Size = new Size(120, 56);
 			this.gbval.TabIndex = 1;
 			this.gbval.TabStop = false;
 			this.gbval.Text = "Value";
 			//
 			// tbval
 			//
-			this.tbval.Font = new System.Drawing.Font(
+			this.tbval.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbval.Location = new System.Drawing.Point(16, 24);
+			this.tbval.Location = new Point(16, 24);
 			this.tbval.Name = "tbval";
-			this.tbval.Size = new System.Drawing.Size(88, 21);
+			this.tbval.Size = new Size(88, 21);
 			this.tbval.TabIndex = 0;
 			this.tbval.Text = "0x00000000";
-			this.tbval.TextChanged += new System.EventHandler(this.ValChange);
+			this.tbval.TextChanged += new EventHandler(this.ValChange);
 			//
 			// tb_itemname
 			//
 			this.tb_itemname.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
 					)
 				)
 			);
-			this.tb_itemname.Font = new System.Drawing.Font(
+			this.tb_itemname.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tb_itemname.Location = new System.Drawing.Point(288, 40);
+			this.tb_itemname.Location = new Point(288, 40);
 			this.tb_itemname.Name = "tb_itemname";
-			this.tb_itemname.Size = new System.Drawing.Size(240, 21);
+			this.tb_itemname.Size = new Size(240, 21);
 			this.tb_itemname.TabIndex = 11;
-			this.tb_itemname.TextChanged += new System.EventHandler(this.ChangeName);
+			this.tb_itemname.TextChanged += new EventHandler(this.ChangeName);
 			//
 			// label3
 			//
 			this.label3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -322,23 +322,23 @@ namespace SimPe.Plugin.TabPage
 				)
 			);
 			this.label3.AutoSize = true;
-			this.label3.Font = new System.Drawing.Font(
+			this.label3.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label3.Location = new System.Drawing.Point(280, 24);
+			this.label3.Location = new Point(280, 24);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(48, 13);
+			this.label3.Size = new Size(48, 13);
 			this.label3.TabIndex = 10;
 			this.label3.Text = "Name:";
 			//
 			// lldel
 			//
 			this.lldel.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -346,21 +346,21 @@ namespace SimPe.Plugin.TabPage
 				)
 			);
 			this.lldel.AutoSize = true;
-			this.lldel.Location = new System.Drawing.Point(488, 264);
+			this.lldel.Location = new Point(488, 264);
 			this.lldel.Name = "lldel";
-			this.lldel.Size = new System.Drawing.Size(48, 13);
+			this.lldel.Size = new Size(48, 13);
 			this.lldel.TabIndex = 9;
 			this.lldel.TabStop = true;
 			this.lldel.Text = "delete";
 			this.lldel.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.DeleteItem
 				);
 			//
 			// linkLabel1
 			//
 			this.linkLabel1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -368,19 +368,19 @@ namespace SimPe.Plugin.TabPage
 				)
 			);
 			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.Location = new System.Drawing.Point(456, 264);
+			this.linkLabel1.Location = new Point(456, 264);
 			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.Size = new System.Drawing.Size(31, 13);
+			this.linkLabel1.Size = new Size(31, 13);
 			this.linkLabel1.TabIndex = 8;
 			this.linkLabel1.TabStop = true;
 			this.linkLabel1.Text = "add";
 			this.linkLabel1.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.AddItem);
+				new LinkLabelLinkClickedEventHandler(this.AddItem);
 			//
 			// cbtype
 			//
 			this.cbtype.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -388,22 +388,22 @@ namespace SimPe.Plugin.TabPage
 				)
 			);
 			this.cbtype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbtype.Font = new System.Drawing.Font(
+			this.cbtype.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbtype.Location = new System.Drawing.Point(280, 240);
+			this.cbtype.Location = new Point(280, 240);
 			this.cbtype.Name = "cbtype";
-			this.cbtype.Size = new System.Drawing.Size(248, 21);
+			this.cbtype.Size = new Size(248, 21);
 			this.cbtype.TabIndex = 7;
 			//
 			// gbar
 			//
 			this.gbar.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -411,9 +411,9 @@ namespace SimPe.Plugin.TabPage
 				)
 			);
 			this.gbar.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.gbar.Location = new System.Drawing.Point(16, 216);
+			this.gbar.Location = new Point(16, 216);
 			this.gbar.Name = "gbar";
-			this.gbar.Size = new System.Drawing.Size(136, 56);
+			this.gbar.Size = new Size(136, 56);
 			this.gbar.TabIndex = 6;
 			this.gbar.TabStop = false;
 			this.gbar.Text = "Array";
@@ -421,24 +421,24 @@ namespace SimPe.Plugin.TabPage
 			// btedit
 			//
 			this.btedit.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btedit.Font = new System.Drawing.Font(
+			this.btedit.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.btedit.Location = new System.Drawing.Point(16, 24);
+			this.btedit.Location = new Point(16, 24);
 			this.btedit.Name = "btedit";
-			this.btedit.Size = new System.Drawing.Size(104, 23);
+			this.btedit.Size = new Size(104, 23);
 			this.btedit.TabIndex = 0;
 			this.btedit.Text = "Edit";
-			this.btedit.Click += new System.EventHandler(this.OpenArrayEditor);
+			this.btedit.Click += new EventHandler(this.OpenArrayEditor);
 			//
 			// gfootprintbar
 			//
 			this.gfootprintbar.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -446,9 +446,9 @@ namespace SimPe.Plugin.TabPage
 				)
 			);
 			this.gfootprintbar.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.gfootprintbar.Location = new System.Drawing.Point(16, 216);
+			this.gfootprintbar.Location = new Point(16, 216);
 			this.gfootprintbar.Name = "gfootprintbar";
-			this.gfootprintbar.Size = new System.Drawing.Size(136, 90);
+			this.gfootprintbar.Size = new Size(136, 90);
 			this.gfootprintbar.TabIndex = 6;
 			this.gfootprintbar.TabStop = false;
 			this.gfootprintbar.Text = "Footprint";
@@ -456,26 +456,26 @@ namespace SimPe.Plugin.TabPage
 			// btfootprintedit
 			//
 			this.btfootprintedit.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btfootprintedit.Font = new System.Drawing.Font(
+			this.btfootprintedit.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.btfootprintedit.Location = new System.Drawing.Point(16, 55);
+			this.btfootprintedit.Location = new Point(16, 55);
 			this.btfootprintedit.Name = "btfootprintedit";
-			this.btfootprintedit.Size = new System.Drawing.Size(104, 23);
+			this.btfootprintedit.Size = new Size(104, 23);
 			this.btfootprintedit.TabIndex = 0;
 			this.btfootprintedit.Text = "Draw";
-			this.btfootprintedit.Click += new System.EventHandler(
+			this.btfootprintedit.Click += new EventHandler(
 				this.OpenFootprintEditor
 			);
 			//
 			// gbstr
 			//
 			this.gbstr.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -484,9 +484,9 @@ namespace SimPe.Plugin.TabPage
 			);
 			this.gbstr.Controls.Add(this.tbstr);
 			this.gbstr.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.gbstr.Location = new System.Drawing.Point(280, 64);
+			this.gbstr.Location = new Point(280, 64);
 			this.gbstr.Name = "gbstr";
-			this.gbstr.Size = new System.Drawing.Size(240, 56);
+			this.gbstr.Size = new Size(240, 56);
 			this.gbstr.TabIndex = 5;
 			this.gbstr.TabStop = false;
 			this.gbstr.Text = "String";
@@ -494,7 +494,7 @@ namespace SimPe.Plugin.TabPage
 			// tbstr
 			//
 			this.tbstr.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -503,23 +503,23 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.tbstr.Font = new System.Drawing.Font(
+			this.tbstr.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbstr.Location = new System.Drawing.Point(16, 24);
+			this.tbstr.Location = new Point(16, 24);
 			this.tbstr.Name = "tbstr";
-			this.tbstr.Size = new System.Drawing.Size(216, 21);
+			this.tbstr.Size = new Size(216, 21);
 			this.tbstr.TabIndex = 1;
-			this.tbstr.TextChanged += new System.EventHandler(this.StrChange);
+			this.tbstr.TextChanged += new EventHandler(this.StrChange);
 			//
 			// gbbin
 			//
 			this.gbbin.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -528,9 +528,9 @@ namespace SimPe.Plugin.TabPage
 			);
 			this.gbbin.Controls.Add(this.tbbin);
 			this.gbbin.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.gbbin.Location = new System.Drawing.Point(16, 40);
+			this.gbbin.Location = new Point(16, 40);
 			this.gbbin.Name = "gbbin";
-			this.gbbin.Size = new System.Drawing.Size(248, 80);
+			this.gbbin.Size = new Size(248, 80);
 			this.gbbin.TabIndex = 4;
 			this.gbbin.TabStop = false;
 			this.gbbin.Text = "Binary";
@@ -538,7 +538,7 @@ namespace SimPe.Plugin.TabPage
 			// tbbin
 			//
 			this.tbbin.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -547,25 +547,25 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.tbbin.Font = new System.Drawing.Font(
+			this.tbbin.Font = new Font(
 				"Courier New",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbbin.Location = new System.Drawing.Point(16, 26);
+			this.tbbin.Location = new Point(16, 26);
 			this.tbbin.Multiline = true;
 			this.tbbin.Name = "tbbin";
 			this.tbbin.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.tbbin.Size = new System.Drawing.Size(216, 40);
+			this.tbbin.Size = new Size(216, 40);
 			this.tbbin.TabIndex = 2;
-			this.tbbin.TextChanged += new System.EventHandler(this.BinChange);
+			this.tbbin.TextChanged += new EventHandler(this.BinChange);
 			//
 			// gbrot
 			//
 			this.gbrot.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -577,81 +577,81 @@ namespace SimPe.Plugin.TabPage
 			this.gbrot.Controls.Add(this.tbrot3);
 			this.gbrot.Controls.Add(this.tbrot2);
 			this.gbrot.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.gbrot.Location = new System.Drawing.Point(280, 136);
+			this.gbrot.Location = new Point(280, 136);
 			this.gbrot.Name = "gbrot";
-			this.gbrot.Size = new System.Drawing.Size(224, 80);
+			this.gbrot.Size = new Size(224, 80);
 			this.gbrot.TabIndex = 3;
 			this.gbrot.TabStop = false;
 			this.gbrot.Text = "Rotation";
 			//
 			// tbrot4
 			//
-			this.tbrot4.Font = new System.Drawing.Font(
+			this.tbrot4.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbrot4.Location = new System.Drawing.Point(120, 48);
+			this.tbrot4.Location = new Point(120, 48);
 			this.tbrot4.Name = "tbrot4";
-			this.tbrot4.Size = new System.Drawing.Size(88, 21);
+			this.tbrot4.Size = new Size(88, 21);
 			this.tbrot4.TabIndex = 7;
 			this.tbrot4.Text = "0x00000000";
-			this.tbrot4.TextChanged += new System.EventHandler(this.RotChange);
+			this.tbrot4.TextChanged += new EventHandler(this.RotChange);
 			//
 			// tbrot1
 			//
-			this.tbrot1.Font = new System.Drawing.Font(
+			this.tbrot1.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbrot1.Location = new System.Drawing.Point(16, 24);
+			this.tbrot1.Location = new Point(16, 24);
 			this.tbrot1.Name = "tbrot1";
-			this.tbrot1.Size = new System.Drawing.Size(88, 21);
+			this.tbrot1.Size = new Size(88, 21);
 			this.tbrot1.TabIndex = 6;
 			this.tbrot1.Text = "0x00000000";
-			this.tbrot1.TextChanged += new System.EventHandler(this.RotChange);
+			this.tbrot1.TextChanged += new EventHandler(this.RotChange);
 			//
 			// tbrot3
 			//
-			this.tbrot3.Font = new System.Drawing.Font(
+			this.tbrot3.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbrot3.Location = new System.Drawing.Point(16, 48);
+			this.tbrot3.Location = new Point(16, 48);
 			this.tbrot3.Name = "tbrot3";
-			this.tbrot3.Size = new System.Drawing.Size(88, 21);
+			this.tbrot3.Size = new Size(88, 21);
 			this.tbrot3.TabIndex = 5;
 			this.tbrot3.Text = "0x00000000";
-			this.tbrot3.TextChanged += new System.EventHandler(this.RotChange);
+			this.tbrot3.TextChanged += new EventHandler(this.RotChange);
 			//
 			// tbrot2
 			//
-			this.tbrot2.Font = new System.Drawing.Font(
+			this.tbrot2.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbrot2.Location = new System.Drawing.Point(120, 24);
+			this.tbrot2.Location = new Point(120, 24);
 			this.tbrot2.Name = "tbrot2";
-			this.tbrot2.Size = new System.Drawing.Size(88, 21);
+			this.tbrot2.Size = new Size(88, 21);
 			this.tbrot2.TabIndex = 4;
 			this.tbrot2.Text = "0x00000000";
-			this.tbrot2.TextChanged += new System.EventHandler(this.RotChange);
+			this.tbrot2.TextChanged += new EventHandler(this.RotChange);
 			//
 			// gbtrans
 			//
 			this.gbtrans.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -662,65 +662,65 @@ namespace SimPe.Plugin.TabPage
 			this.gbtrans.Controls.Add(this.tbtrans3);
 			this.gbtrans.Controls.Add(this.tbtrans2);
 			this.gbtrans.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.gbtrans.Location = new System.Drawing.Point(16, 120);
+			this.gbtrans.Location = new Point(16, 120);
 			this.gbtrans.Name = "gbtrans";
-			this.gbtrans.Size = new System.Drawing.Size(224, 80);
+			this.gbtrans.Size = new Size(224, 80);
 			this.gbtrans.TabIndex = 2;
 			this.gbtrans.TabStop = false;
 			this.gbtrans.Text = "Translation";
 			//
 			// tbtrans1
 			//
-			this.tbtrans1.Font = new System.Drawing.Font(
+			this.tbtrans1.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbtrans1.Location = new System.Drawing.Point(16, 24);
+			this.tbtrans1.Location = new Point(16, 24);
 			this.tbtrans1.Name = "tbtrans1";
-			this.tbtrans1.Size = new System.Drawing.Size(88, 21);
+			this.tbtrans1.Size = new Size(88, 21);
 			this.tbtrans1.TabIndex = 3;
 			this.tbtrans1.Text = "0x00000000";
-			this.tbtrans1.TextChanged += new System.EventHandler(this.TransChange);
+			this.tbtrans1.TextChanged += new EventHandler(this.TransChange);
 			//
 			// tbtrans3
 			//
-			this.tbtrans3.Font = new System.Drawing.Font(
+			this.tbtrans3.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbtrans3.Location = new System.Drawing.Point(16, 48);
+			this.tbtrans3.Location = new Point(16, 48);
 			this.tbtrans3.Name = "tbtrans3";
-			this.tbtrans3.Size = new System.Drawing.Size(88, 21);
+			this.tbtrans3.Size = new Size(88, 21);
 			this.tbtrans3.TabIndex = 2;
 			this.tbtrans3.Text = "0x00000000";
-			this.tbtrans3.TextChanged += new System.EventHandler(this.TransChange);
+			this.tbtrans3.TextChanged += new EventHandler(this.TransChange);
 			//
 			// tbtrans2
 			//
-			this.tbtrans2.Font = new System.Drawing.Font(
+			this.tbtrans2.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbtrans2.Location = new System.Drawing.Point(120, 24);
+			this.tbtrans2.Location = new Point(120, 24);
 			this.tbtrans2.Name = "tbtrans2";
-			this.tbtrans2.Size = new System.Drawing.Size(88, 21);
+			this.tbtrans2.Size = new Size(88, 21);
 			this.tbtrans2.TabIndex = 1;
 			this.tbtrans2.Text = "0x00000000";
-			this.tbtrans2.TextChanged += new System.EventHandler(this.TransChange);
+			this.tbtrans2.TextChanged += new EventHandler(this.TransChange);
 			//
 			// lb_items
 			//
 			this.lb_items.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -731,7 +731,7 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.lb_items.Font = new System.Drawing.Font(
+			this.lb_items.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
@@ -740,26 +740,26 @@ namespace SimPe.Plugin.TabPage
 			);
 			this.lb_items.HorizontalScrollbar = true;
 			this.lb_items.IntegralHeight = false;
-			this.lb_items.Location = new System.Drawing.Point(8, 24);
+			this.lb_items.Location = new Point(8, 24);
 			this.lb_items.Name = "lb_items";
-			this.lb_items.Size = new System.Drawing.Size(264, 256); // if I take 200 off there's very little left
+			this.lb_items.Size = new Size(264, 256); // if I take 200 off there's very little left
 			this.lb_items.TabIndex = 0;
-			this.lb_items.SelectedIndexChanged += new System.EventHandler(
+			this.lb_items.SelectedIndexChanged += new EventHandler(
 				this.SelectItem
 			);
 			//
 			// tbFootprint
 			//
-			this.tbFootprint.Font = new System.Drawing.Font(
+			this.tbFootprint.Font = new Font(
 				"Courier New",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbFootprint.Location = new System.Drawing.Point(0, 0);
+			this.tbFootprint.Location = new Point(0, 0);
 			this.tbFootprint.Name = "tbFootprint";
-			this.tbFootprint.Size = new System.Drawing.Size(100, 20);
+			this.tbFootprint.Size = new Size(100, 20);
 			this.tbFootprint.TabIndex = 0;
 			//
 			// groupBox10
@@ -771,113 +771,113 @@ namespace SimPe.Plugin.TabPage
 			this.groupBox10.Controls.Add(this.tb_ver);
 			this.groupBox10.Controls.Add(this.label28);
 			this.groupBox10.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.groupBox10.Font = new System.Drawing.Font(
+			this.groupBox10.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.groupBox10.Location = new System.Drawing.Point(8, 8);
+			this.groupBox10.Location = new Point(8, 8);
 			this.groupBox10.Name = "groupBox10";
-			this.groupBox10.Size = new System.Drawing.Size(232, 112);
+			this.groupBox10.Size = new Size(232, 112);
 			this.groupBox10.TabIndex = 12;
 			this.groupBox10.TabStop = false;
 			this.groupBox10.Text = "Settings";
 			//
 			// tb_name
 			//
-			this.tb_name.Font = new System.Drawing.Font(
+			this.tb_name.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tb_name.Location = new System.Drawing.Point(16, 80);
+			this.tb_name.Location = new Point(16, 80);
 			this.tb_name.Name = "tb_name";
-			this.tb_name.Size = new System.Drawing.Size(200, 21);
+			this.tb_name.Size = new Size(200, 21);
 			this.tb_name.TabIndex = 28;
 			this.tb_name.Text = "0x00";
-			this.tb_name.TextChanged += new System.EventHandler(this.GNSettingsChange);
+			this.tb_name.TextChanged += new EventHandler(this.GNSettingsChange);
 			//
 			// label2
 			//
 			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font(
+			this.label2.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label2.Location = new System.Drawing.Point(8, 64);
+			this.label2.Location = new Point(8, 64);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(40, 13);
+			this.label2.Size = new Size(40, 13);
 			this.label2.TabIndex = 27;
 			this.label2.Text = "Name";
 			//
 			// tb_type
 			//
-			this.tb_type.Font = new System.Drawing.Font(
+			this.tb_type.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tb_type.Location = new System.Drawing.Point(128, 40);
+			this.tb_type.Location = new Point(128, 40);
 			this.tb_type.Name = "tb_type";
-			this.tb_type.Size = new System.Drawing.Size(88, 21);
+			this.tb_type.Size = new Size(88, 21);
 			this.tb_type.TabIndex = 26;
 			this.tb_type.Text = "0x00";
-			this.tb_type.TextChanged += new System.EventHandler(this.GNSettingsChange);
+			this.tb_type.TextChanged += new EventHandler(this.GNSettingsChange);
 			//
 			// label1
 			//
 			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font(
+			this.label1.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.Location = new System.Drawing.Point(120, 24);
+			this.label1.Location = new Point(120, 24);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(67, 13);
+			this.label1.Size = new Size(67, 13);
 			this.label1.TabIndex = 25;
 			this.label1.Text = "Typecode:";
 			//
 			// tb_ver
 			//
-			this.tb_ver.Font = new System.Drawing.Font(
+			this.tb_ver.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tb_ver.Location = new System.Drawing.Point(16, 40);
+			this.tb_ver.Location = new Point(16, 40);
 			this.tb_ver.Name = "tb_ver";
-			this.tb_ver.Size = new System.Drawing.Size(88, 21);
+			this.tb_ver.Size = new Size(88, 21);
 			this.tb_ver.TabIndex = 24;
 			this.tb_ver.Text = "0x00000000";
-			this.tb_ver.TextChanged += new System.EventHandler(this.GNSettingsChange);
+			this.tb_ver.TextChanged += new EventHandler(this.GNSettingsChange);
 			//
 			// label28
 			//
 			this.label28.AutoSize = true;
-			this.label28.Font = new System.Drawing.Font(
+			this.label28.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label28.Location = new System.Drawing.Point(8, 24);
+			this.label28.Location = new Point(8, 24);
 			this.label28.Name = "label28";
-			this.label28.Size = new System.Drawing.Size(55, 13);
+			this.label28.Size = new Size(55, 13);
 			this.label28.TabIndex = 23;
 			this.label28.Text = "Version:";
 			//
@@ -886,9 +886,9 @@ namespace SimPe.Plugin.TabPage
 			this.BackColor = System.Drawing.SystemColors.ControlLightLight;
 			this.Controls.Add(this.gbIems);
 			this.Controls.Add(this.groupBox10);
-			this.Location = new System.Drawing.Point(4, 22);
+			this.Location = new Point(4, 22);
 			this.Name = "tExtension";
-			this.Size = new System.Drawing.Size(792, 302);
+			this.Size = new Size(792, 302);
 			this.Text = "Extension";
 			this.gbIems.ResumeLayout(false);
 			this.gbIems.PerformLayout();
@@ -912,7 +912,7 @@ namespace SimPe.Plugin.TabPage
 		}
 		#endregion
 
-		private void GNSettingsChange(object sender, System.EventArgs e)
+		private void GNSettingsChange(object sender, EventArgs e)
 		{
 			if (Tag == null)
 			{
@@ -921,7 +921,7 @@ namespace SimPe.Plugin.TabPage
 
 			try
 			{
-				SimPe.Plugin.Extension ext = (SimPe.Plugin.Extension)Tag;
+				Plugin.Extension ext = (Plugin.Extension)Tag;
 
 				ext.Version = Convert.ToUInt32(tb_ver.Text, 16);
 				ext.VarName = tb_name.Text;
@@ -954,7 +954,7 @@ namespace SimPe.Plugin.TabPage
 			gb.Visible = true;
 		}
 
-		private void SelectItem(object sender, System.EventArgs e)
+		private void SelectItem(object sender, EventArgs e)
 		{
 			if (tb_itemname.Tag != null)
 			{
@@ -1021,7 +1021,7 @@ namespace SimPe.Plugin.TabPage
 					}
 					case ExtensionItem.ItemTypes.Array:
 					{
-						SimPe.Plugin.Extension ext = (SimPe.Plugin.Extension)Tag;
+						Plugin.Extension ext = (Plugin.Extension)Tag;
 
 						if (ext.VarName.Equals("footprint"))
 						{
@@ -1048,7 +1048,7 @@ namespace SimPe.Plugin.TabPage
 			}
 		}
 
-		private void OpenArrayEditor(object sender, System.EventArgs e)
+		private void OpenArrayEditor(object sender, EventArgs e)
 		{
 			try
 			{
@@ -1087,7 +1087,7 @@ namespace SimPe.Plugin.TabPage
 			}
 		}
 
-		private void OpenFootprintEditor(object sender, System.EventArgs e)
+		private void OpenFootprintEditor(object sender, EventArgs e)
 		{
 			try
 			{
@@ -1263,7 +1263,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void DeleteItem(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lb_items.SelectedIndex < 0)
@@ -1284,7 +1284,7 @@ namespace SimPe.Plugin.TabPage
 				//write back to the wrapper
 				if (Tag != null)
 				{
-					SimPe.Plugin.Extension ext = (SimPe.Plugin.Extension)Tag;
+					Plugin.Extension ext = (Plugin.Extension)Tag;
 					ext.Items = list;
 				}
 			}
@@ -1296,7 +1296,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void AddItem(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			try
@@ -1313,7 +1313,7 @@ namespace SimPe.Plugin.TabPage
 				//write back to the wrapper
 				if (Tag != null)
 				{
-					SimPe.Plugin.Extension ext = (SimPe.Plugin.Extension)Tag;
+					Plugin.Extension ext = (Plugin.Extension)Tag;
 					ext.Items = list;
 				}
 			}
@@ -1323,7 +1323,7 @@ namespace SimPe.Plugin.TabPage
 			}
 		}
 
-		private void ChangeName(object sender, System.EventArgs e)
+		private void ChangeName(object sender, EventArgs e)
 		{
 			if (tb_itemname.Tag != null)
 			{
@@ -1354,7 +1354,7 @@ namespace SimPe.Plugin.TabPage
 			}
 		}
 
-		private void ValChange(object sender, System.EventArgs e)
+		private void ValChange(object sender, EventArgs e)
 		{
 			if (tb_itemname.Tag != null)
 			{
@@ -1382,7 +1382,7 @@ namespace SimPe.Plugin.TabPage
 			}
 		}
 
-		private void FloatChange(object sender, System.EventArgs e)
+		private void FloatChange(object sender, EventArgs e)
 		{
 			if (tb_itemname.Tag != null)
 			{
@@ -1410,7 +1410,7 @@ namespace SimPe.Plugin.TabPage
 			}
 		}
 
-		private void TransChange(object sender, System.EventArgs e)
+		private void TransChange(object sender, EventArgs e)
 		{
 			if (tb_itemname.Tag != null)
 			{
@@ -1440,7 +1440,7 @@ namespace SimPe.Plugin.TabPage
 			}
 		}
 
-		private void RotChange(object sender, System.EventArgs e)
+		private void RotChange(object sender, EventArgs e)
 		{
 			if (tb_itemname.Tag != null)
 			{
@@ -1471,7 +1471,7 @@ namespace SimPe.Plugin.TabPage
 			}
 		}
 
-		private void StrChange(object sender, System.EventArgs e)
+		private void StrChange(object sender, EventArgs e)
 		{
 			if (tb_itemname.Tag != null)
 			{
@@ -1499,7 +1499,7 @@ namespace SimPe.Plugin.TabPage
 			}
 		}
 
-		private void BinChange(object sender, System.EventArgs e)
+		private void BinChange(object sender, EventArgs e)
 		{
 			if (tb_itemname.Tag != null)
 			{

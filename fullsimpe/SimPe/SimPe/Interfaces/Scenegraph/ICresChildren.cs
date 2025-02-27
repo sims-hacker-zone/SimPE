@@ -95,7 +95,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// Returns the effective Transformation, that is described by the CresHirarchy
 		/// </summary>
 		/// <returns>Effective Transformation</returns>
-		SimPe.Geometry.VectorTransformation GetEffectiveTransformation();
+		Geometry.VectorTransformation GetEffectiveTransformation();
 
 		string GetName();
 	}

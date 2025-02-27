@@ -8,9 +8,9 @@ namespace SimPe.Plugin.UI
 	/// </summary>
 	public class HairtonePreferences : PreferencesPanel // System.Windows.Forms.Form // PreferencesPanel //
 	{
-		private System.Windows.Forms.ComboBox cbDefaultProxy;
+		private ComboBox cbDefaultProxy;
 		private Panel pnackground;
-		private System.Windows.Forms.Label label1;
+		private Label label1;
 
 		public HairtonePreferences()
 		{
@@ -96,9 +96,9 @@ namespace SimPe.Plugin.UI
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.cbDefaultProxy = new System.Windows.Forms.ComboBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.pnackground = new System.Windows.Forms.Panel();
+			this.cbDefaultProxy = new ComboBox();
+			this.label1 = new Label();
+			this.pnackground = new Panel();
 			this.pnackground.SuspendLayout();
 			this.SuspendLayout();
 			//

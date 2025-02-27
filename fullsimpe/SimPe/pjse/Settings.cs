@@ -25,7 +25,7 @@ namespace pjse
 {
 	class Settings : SimPe.GlobalizedObject, SimPe.Interfaces.ISettings
 	{
-		static ResourceManager rm = new ResourceManager(typeof(pjse.Localization));
+		static ResourceManager rm = new ResourceManager(typeof(Localization));
 
 		public static Settings PJSE
 		{
@@ -215,7 +215,7 @@ namespace pjse
 			return pjse.Localization.GetString("pjse_Settings");
 		}
 
-		[System.ComponentModel.Browsable(false)]
+		[Browsable(false)]
 		public System.Drawing.Image Icon => null;
 
 		#endregion

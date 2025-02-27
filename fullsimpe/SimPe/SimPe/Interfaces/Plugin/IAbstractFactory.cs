@@ -26,7 +26,7 @@ namespace SimPe.Interfaces.Plugin
 	/// GetWrappers() has to return a list of all Plugins provided by this Library.
 	/// If a Plugin isn't returned, SimPe won't recognize it!
 	/// </remarks>
-	public abstract class AbstractWrapperFactory : Interfaces.Plugin.IWrapperFactory
+	public abstract class AbstractWrapperFactory : IWrapperFactory
 	{
 		/// <summary>
 		/// Holds a referenc to the Registry this Plugin was last registred to (can be null!)
@@ -74,7 +74,7 @@ namespace SimPe.Interfaces.Plugin
 		/// Returns a List of all available Plugins in this Package
 		/// </summary>
 		/// <returns>A List of all provided Plugins (=FileType Wrappers)</returns>
-		public virtual SimPe.Interfaces.IWrapper[] KnownWrappers
+		public virtual IWrapper[] KnownWrappers
 		{
 			get
 			{

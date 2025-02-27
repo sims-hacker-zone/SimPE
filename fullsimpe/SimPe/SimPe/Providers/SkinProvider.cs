@@ -53,7 +53,7 @@ namespace SimPe.Providers
 		public Skins()
 			: base(null) { }
 
-		protected void LoadSkinFormPackage(SimPe.Interfaces.Files.IPackageFile package)
+		protected void LoadSkinFormPackage(Interfaces.Files.IPackageFile package)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
 				0xEBCF3E27
@@ -63,8 +63,8 @@ namespace SimPe.Providers
 			{
 				try
 				{
-					SimPe.PackedFiles.Wrapper.Cpf cpf =
-						new SimPe.PackedFiles.Wrapper.Cpf();
+					PackedFiles.Wrapper.Cpf cpf =
+						new PackedFiles.Wrapper.Cpf();
 					cpf.ProcessData(pfd, package);
 					sets.Add(cpf);
 				}
@@ -73,7 +73,7 @@ namespace SimPe.Providers
 		}
 
 		protected void LoadSkinImageFormPackage(
-			SimPe.Interfaces.Files.IPackageFile package
+			Interfaces.Files.IPackageFile package
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
@@ -83,7 +83,7 @@ namespace SimPe.Providers
 			{
 				try
 				{
-					SimPe.Plugin.RefFile reffile = new SimPe.Plugin.RefFile();
+					Plugin.RefFile reffile = new Plugin.RefFile();
 					reffile.ProcessData(pfd, package);
 					refs.Add(reffile);
 				}
@@ -95,7 +95,7 @@ namespace SimPe.Providers
 			{
 				try
 				{
-					SimPe.Plugin.Rcol matd = new SimPe.Plugin.GenericRcol(null, true);
+					Plugin.Rcol matd = new Plugin.GenericRcol(null, true);
 					matd.ProcessData(pfd, package);
 					matds.Add(matd);
 				}
@@ -107,7 +107,7 @@ namespace SimPe.Providers
 				Data.MetaData.NAME_MAP
 			);
 			pfds = package.FindFiles(0x49596978);
-			Plugin.Nmap nmap = new SimPe.Plugin.Nmap(null);
+			Plugin.Nmap nmap = new Plugin.Nmap(null);
 			if (nmap_pfd.Length > 0)
 			{
 				nmap.ProcessData(nmap_pfd[0], package);
@@ -119,7 +119,7 @@ namespace SimPe.Providers
 			{
 				try
 				{
-					SimPe.Plugin.Rcol matd = new SimPe.Plugin.GenericRcol(null, true);
+					Plugin.Rcol matd = new Plugin.GenericRcol(null, true);
 					check = false;
 
 					foreach (Interfaces.Files.IPackedFileDescriptor epfd in nmap.Items)
@@ -154,7 +154,7 @@ namespace SimPe.Providers
 			{
 				try
 				{
-					SimPe.Plugin.Txtr txtr = new SimPe.Plugin.Txtr(null, true);
+					Plugin.Txtr txtr = new Plugin.Txtr(null, true);
 					check = false;
 
 					foreach (Interfaces.Files.IPackedFileDescriptor epfd in nmap.Items)
@@ -174,7 +174,7 @@ namespace SimPe.Providers
 					if (!check)
 					{
 						txtr.ProcessData(pfd, package);
-						foreach (SimPe.Plugin.ImageData id in txtr.Blocks)
+						foreach (Plugin.ImageData id in txtr.Blocks)
 						{
 							txtrs.Add(id.NameResource.FileName.ToLower(), txtr);
 						}
@@ -223,7 +223,7 @@ namespace SimPe.Providers
 			string[] files = System.IO.Directory.GetFiles(path, "*.package");
 			foreach (string file in files)
 			{
-				SimPe.Packages.File package = SimPe.Packages.File.LoadFromFile(file);
+				Packages.File package = SimPe.Packages.File.LoadFromFile(file);
 				LoadSkinFormPackage(package);
 				//package.Reader.Close();
 			}
@@ -243,7 +243,7 @@ namespace SimPe.Providers
 			string[] files = System.IO.Directory.GetFiles(path, "*.package");
 			foreach (string file in files)
 			{
-				SimPe.Packages.File package = SimPe.Packages.File.LoadFromFile(file);
+				Packages.File package = SimPe.Packages.File.LoadFromFile(file);
 				LoadSkinImageFormPackage(package);
 				//package.Reader.Close();
 			}
@@ -289,7 +289,7 @@ namespace SimPe.Providers
 				return null;
 			}
 
-			foreach (SimPe.PackedFiles.Wrapper.Cpf cpf in sets)
+			foreach (PackedFiles.Wrapper.Cpf cpf in sets)
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = cpf.FileDescriptor;
 				if (
@@ -313,8 +313,8 @@ namespace SimPe.Providers
 		/// <returns>The Texture or null</returns>
 		public object FindTxtrName(object ocpf)
 		{
-			SimPe.PackedFiles.Wrapper.Cpf cpf = (SimPe.PackedFiles.Wrapper.Cpf)ocpf;
-			SimPe.PackedFiles.Wrapper.CpfItem item = cpf.GetSaveItem("name");
+			PackedFiles.Wrapper.Cpf cpf = (PackedFiles.Wrapper.Cpf)ocpf;
+			PackedFiles.Wrapper.CpfItem item = cpf.GetSaveItem("name");
 
 			if (cpf.Package != BasePackage)
 			{
@@ -347,7 +347,7 @@ namespace SimPe.Providers
 
 			if (System.IO.File.Exists(file))
 			{
-				SimPe.Interfaces.Files.IPackageFile package =
+				Interfaces.Files.IPackageFile package =
 					SimPe.Packages.File.LoadFromFile(file);
 				Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFile(
 					matdname.Replace("CASIE_", ""),
@@ -361,7 +361,7 @@ namespace SimPe.Providers
 				//look for the right one
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
-					SimPe.Plugin.Rcol rcol = new SimPe.Plugin.GenericRcol(null, false);
+					Plugin.Rcol rcol = new Plugin.GenericRcol(null, false);
 					rcol.ProcessData(pfd, package);
 					if (
 						(rcol.FileName.Trim().ToLower() == matdname.Trim().ToLower())
@@ -371,7 +371,7 @@ namespace SimPe.Providers
 						)
 					)
 					{
-						foreach (SimPe.Plugin.MaterialDefinition md in rcol.Blocks)
+						foreach (Plugin.MaterialDefinition md in rcol.Blocks)
 						{
 							return md.GetProperty("stdMatBaseTextureName").Value
 								+ "_txtr";
@@ -399,7 +399,7 @@ namespace SimPe.Providers
 				return "";
 			}
 
-			foreach (SimPe.Plugin.RefFile reff in refs)
+			foreach (Plugin.RefFile reff in refs)
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = reff.FileDescriptor;
 				if (
@@ -409,13 +409,13 @@ namespace SimPe.Providers
 				)
 				{
 					foreach (
-						SimPe.Interfaces.Files.IPackedFileDescriptor refpfd in reff.Items
+						Interfaces.Files.IPackedFileDescriptor refpfd in reff.Items
 					)
 					{
 						//found a MATD Reference File
 						if (refpfd.Type == 0x49596978)
 						{
-							foreach (SimPe.Plugin.Rcol matd in matds)
+							foreach (Plugin.Rcol matd in matds)
 							{
 								pfd = matd.FileDescriptor;
 								if (
@@ -425,7 +425,7 @@ namespace SimPe.Providers
 								)
 								{
 									foreach (
-										SimPe.Plugin.MaterialDefinition md in matd.Blocks
+										Plugin.MaterialDefinition md in matd.Blocks
 									)
 									{
 										return md.GetProperty(
@@ -455,7 +455,7 @@ namespace SimPe.Providers
 			);
 			if (System.IO.File.Exists(file))
 			{
-				SimPe.Interfaces.Files.IPackageFile package =
+				Interfaces.Files.IPackageFile package =
 					SimPe.Packages.File.LoadFromFile(file);
 				Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFile(
 					name,
@@ -465,7 +465,7 @@ namespace SimPe.Providers
 				//look for the right one
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
-					SimPe.Plugin.Txtr rcol = new SimPe.Plugin.Txtr(null, false);
+					Plugin.Txtr rcol = new Plugin.Txtr(null, false);
 					rcol.ProcessData(pfd, package);
 					if (rcol.FileName.Trim().ToLower() == name.Trim().ToLower())
 					{
@@ -490,10 +490,10 @@ namespace SimPe.Providers
 			}
 
 			name = name.ToLower();
-			SimPe.Plugin.Txtr txtr = (SimPe.Plugin.Txtr)txtrs[name];
+			Plugin.Txtr txtr = (Plugin.Txtr)txtrs[name];
 			if (txtr == null)
 			{
-				txtr = (SimPe.Plugin.Txtr)txtrs[name + "_txtr"];
+				txtr = (Plugin.Txtr)txtrs[name + "_txtr"];
 			}
 
 			if (txtr == null)
@@ -504,7 +504,7 @@ namespace SimPe.Providers
 			if (txtr.Fast)
 			{
 				txtr.Fast = false;
-				SimPe.Packages.File fl = SimPe.Packages.File.LoadFromFile(
+				Packages.File fl = SimPe.Packages.File.LoadFromFile(
 					txtr.Package.FileName
 				);
 				Interfaces.Files.IPackedFileDescriptor pfd = fl.FindFile(

@@ -1089,12 +1089,12 @@ namespace SimPe.PackedFiles.Wrapper
 			get; set;
 		}
 
-		public Data.MetaData.SchoolTypes SchoolType
+		public MetaData.SchoolTypes SchoolType
 		{
 			get; set;
 		}
 
-		public Data.MetaData.Grades Grade
+		public MetaData.Grades Grade
 		{
 			get; set;
 		}
@@ -1994,7 +1994,7 @@ namespace SimPe.PackedFiles.Wrapper
 			get; set;
 		}
 
-		public Data.Majors Major
+		public Majors Major
 		{
 			get; set;
 		}
@@ -2008,7 +2008,7 @@ namespace SimPe.PackedFiles.Wrapper
 			Grade = reader.ReadUInt16();
 
 			reader.BaseStream.Seek(0x160, SeekOrigin.Begin);
-			Major = (Data.Majors)reader.ReadUInt32();
+			Major = (Majors)reader.ReadUInt32();
 			Time = reader.ReadUInt16();
 			SemesterFlag.Value = reader.ReadUInt16();
 			Semester = reader.ReadUInt16();
@@ -2437,9 +2437,9 @@ namespace SimPe.PackedFiles.Wrapper
 	/// </summary>
 	public class SDesc
 		: AbstractWrapper,
-			SimPe.Interfaces.Plugin.IFileWrapper,
-			SimPe.Interfaces.Plugin.IFileWrapperSaveExtension,
-			SimPe.Interfaces.Wrapper.ISDesc
+			IFileWrapper,
+			IFileWrapperSaveExtension,
+			Interfaces.Wrapper.ISDesc
 	{
 		#region Local Attributes
 		/// <summary>
@@ -2628,12 +2628,12 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Name Provider
 		/// </summary>
-		internal SimPe.Interfaces.Providers.ISimNames NameProvider => nameprovider;
+		internal Interfaces.Providers.ISimNames NameProvider => nameprovider;
 
 		/// <summary>
 		/// Returns the Description Provider
 		/// </summary>
-		internal SimPe.Interfaces.Providers.ISimDescriptions DescriptionProvider => sdescprovider;
+		internal Interfaces.Providers.ISimDescriptions DescriptionProvider => sdescprovider;
 
 		/// <summary>
 		/// Returns/Sets the Sim Id
@@ -2769,17 +2769,17 @@ namespace SimPe.PackedFiles.Wrapper
 
 			try
 			{
-				SimPe.Packages.GeneratableFile file =
+				Packages.GeneratableFile file =
 					SimPe.Packages.GeneratableFile.LoadFromFile(CharacterFileName);
-				Interfaces.Files.IPackedFileDescriptor[] pfds = file.FindFiles(
+				IPackedFileDescriptor[] pfds = file.FindFiles(
 					Data.MetaData.CTSS_FILE
 				);
 				if (pfds.Length > 0)
 				{
-					SimPe.PackedFiles.Wrapper.Str str =
-						new SimPe.PackedFiles.Wrapper.Str();
+					Str str =
+						new Str();
 					str.ProcessData(pfds[0], file);
-					foreach (SimPe.PackedFiles.Wrapper.StrLanguage lng in str.Languages)
+					foreach (StrLanguage lng in str.Languages)
 					{
 						if (lng == null)
 						{
@@ -2801,7 +2801,7 @@ namespace SimPe.PackedFiles.Wrapper
 				}
 
 				//update the Data in the Provider
-				SimPe.Data.Alias a = (Data.Alias)NameProvider.FindName(SimId);
+				Alias a = (Alias)NameProvider.FindName(SimId);
 				if (a != null)
 				{
 					a.Name = name;
@@ -2908,17 +2908,17 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Stores null or a valid Name Provider
 		/// </summary>
-		internal SimPe.Interfaces.Providers.ISimNames nameprovider;
+		internal Interfaces.Providers.ISimNames nameprovider;
 
 		/// <summary>
 		/// Stores null or a valid FamilyName Provider
 		/// </summary>
-		internal SimPe.Interfaces.Providers.ISimFamilyNames familynameprovider;
+		internal Interfaces.Providers.ISimFamilyNames familynameprovider;
 
 		/// <summary>
 		/// Stores null or a valid SimDescription provider
 		/// </summary>
-		internal SimPe.Interfaces.Providers.ISimDescriptions sdescprovider;
+		internal Interfaces.Providers.ISimDescriptions sdescprovider;
 
 		/// <summary>
 		/// Scans the passed Package for a Description File containing the SimId
@@ -2961,7 +2961,7 @@ namespace SimPe.PackedFiles.Wrapper
 			);
 		}
 
-		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
+		protected override string GetResourceName(TypeAlias ta)
 		{
 			if (!this.Processed)
 			{
@@ -2982,7 +2982,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Change the links to the Providers
 		/// </summary>
 		/// <param name="prov">A Provider Registry</param>
-		public void SetProviders(SimPe.Interfaces.IProviderRegistry prov)
+		public void SetProviders(Interfaces.IProviderRegistry prov)
 		{
 			nameprovider = prov.SimNameProvider;
 			familynameprovider = prov.SimFamilynameProvider;
@@ -3005,9 +3005,9 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="famnames">null or a Sim Familyname Provider</param>
 		/// <param name="sdesc">nullor a SimD</param>
 		public SDesc(
-			SimPe.Interfaces.Providers.ISimNames names,
-			SimPe.Interfaces.Providers.ISimFamilyNames famnames,
-			SimPe.Interfaces.Providers.ISimDescriptions sdesc
+			Interfaces.Providers.ISimNames names,
+			Interfaces.Providers.ISimFamilyNames famnames,
+			Interfaces.Providers.ISimDescriptions sdesc
 		)
 			: base()
 		{
@@ -3116,7 +3116,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		protected override void Unserialize(System.IO.BinaryReader reader)
+		protected override void Unserialize(BinaryReader reader)
 		{
 			//the formula offset = 0x0a + 2*pid
 			long startpos = reader.BaseStream.Position;
@@ -3199,7 +3199,7 @@ namespace SimPe.PackedFiles.Wrapper
 			reader.BaseStream.Seek(startpos + 0xBC, System.IO.SeekOrigin.Begin);
 			CharacterDescription.VoiceType = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x7C, System.IO.SeekOrigin.Begin);
-			CharacterDescription.Grade = (Data.MetaData.Grades)reader.ReadUInt16();
+			CharacterDescription.Grade = (MetaData.Grades)reader.ReadUInt16();
 			CharacterDescription.CareerLevel = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x80, System.IO.SeekOrigin.Begin);
 			CharacterDescription.Realage = reader.ReadUInt16();
@@ -3216,7 +3216,7 @@ namespace SimPe.PackedFiles.Wrapper
 			reader.BaseStream.Seek(startpos + 0x96, System.IO.SeekOrigin.Begin);
 			CharacterDescription.PTO = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x98, System.IO.SeekOrigin.Begin);
-			CharacterDescription.ZodiacSign = (Data.MetaData.ZodiacSignes)reader.ReadUInt16();
+			CharacterDescription.ZodiacSign = (MetaData.ZodiacSignes)reader.ReadUInt16();
 
 			reader.BaseStream.Seek(startpos + 0x102, System.IO.SeekOrigin.Begin);
 			CharacterDescription.Pension = reader.ReadUInt16();
@@ -3235,19 +3235,19 @@ namespace SimPe.PackedFiles.Wrapper
 			reader.BaseStream.Seek(startpos + 0xB0, System.IO.SeekOrigin.Begin);
 			Skills.Fatness = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0xBE, System.IO.SeekOrigin.Begin);
-			CharacterDescription.Career = (Data.MetaData.Careers)reader.ReadUInt32();
+			CharacterDescription.Career = (MetaData.Careers)reader.ReadUInt32();
 			reader.BaseStream.Seek(startpos + 0x12C, System.IO.SeekOrigin.Begin);
 			CharacterDescription.AllocatedSuburb = reader.ReadUInt16();
 			CharacterDescription.PersonFlags3.Value = reader.ReadUInt16();
-			CharacterDescription.Bodyshape = (Data.MetaData.Bodyshape)reader.ReadUInt16();
+			CharacterDescription.Bodyshape = (MetaData.Bodyshape)reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0xE2, System.IO.SeekOrigin.Begin);
-			CharacterDescription.SchoolType = (Data.MetaData.SchoolTypes)reader.ReadUInt32();
+			CharacterDescription.SchoolType = (MetaData.SchoolTypes)reader.ReadUInt32();
 			reader.BaseStream.Seek(startpos + 0x14C, System.IO.SeekOrigin.Begin);
 			CharacterDescription.LifelinePoints = reader.ReadInt16();
 			CharacterDescription.LifelineScore = (uint)(reader.ReadUInt16() * 10);
 			CharacterDescription.BlizLifelinePoints = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x142, System.IO.SeekOrigin.Begin);
-			CharacterDescription.ServiceTypes = (Data.MetaData.ServiceTypes)reader.ReadUInt16();
+			CharacterDescription.ServiceTypes = (MetaData.ServiceTypes)reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x142, System.IO.SeekOrigin.Begin);
 			CharacterDescription.NPCType = reader.ReadUInt16();
 			CharacterDescription.AgeDuration = reader.ReadUInt16();
@@ -3259,7 +3259,7 @@ namespace SimPe.PackedFiles.Wrapper
 			Unlinked = reader.ReadUInt16();
 
 			reader.BaseStream.Seek(startpos + 0x15A, System.IO.SeekOrigin.Begin);
-			CharacterDescription.Retired = (Data.MetaData.Careers)reader.ReadUInt32();
+			CharacterDescription.Retired = (MetaData.Careers)reader.ReadUInt32();
 			CharacterDescription.RetiredLevel = reader.ReadUInt16();
 
 			//available Relationships
@@ -3391,7 +3391,7 @@ namespace SimPe.PackedFiles.Wrapper
 			reader.BaseStream.Seek(endpos, System.IO.SeekOrigin.Begin);
 		}
 
-		protected override void Serialize(System.IO.BinaryWriter writer)
+		protected override void Serialize(BinaryWriter writer)
 		{
 			// No point in writing different values to the same Position so
 			// Realage if used must be preconverted to LifeSection
@@ -3695,12 +3695,12 @@ namespace SimPe.PackedFiles.Wrapper
 		#endregion
 
 		#region static values
-		static SimPe.Interfaces.IAlias[] addoncarrer;
+		static Interfaces.IAlias[] addoncarrer;
 
 		/// <summary>
 		/// Returns a List of Userdefined Add On Careers
 		/// </summary>
-		public static SimPe.Interfaces.IAlias[] AddonCarrers
+		public static Interfaces.IAlias[] AddonCarrers
 		{
 			get
 			{
@@ -3718,12 +3718,12 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		static SimPe.Interfaces.IAlias[] addonmajor;
+		static Interfaces.IAlias[] addonmajor;
 
 		/// <summary>
 		/// Returns a List of Userdefined Add On Majors
 		/// </summary>
-		public static SimPe.Interfaces.IAlias[] AddonMajors
+		public static Interfaces.IAlias[] AddonMajors
 		{
 			get
 			{
@@ -3741,12 +3741,12 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		static SimPe.Interfaces.IAlias[] addonschool;
+		static Interfaces.IAlias[] addonschool;
 
 		/// <summary>
 		/// Returns a List of Userdefined Add On Schools
 		/// </summary>
-		public static SimPe.Interfaces.IAlias[] AddonSchools
+		public static Interfaces.IAlias[] AddonSchools
 		{
 			get
 			{

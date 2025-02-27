@@ -30,22 +30,22 @@ namespace SimPe.Plugin.TabPage
 		//System.Windows.Forms.UserControl
 		System.Windows.Forms.TabPage
 	{
-		private System.Windows.Forms.GroupBox groupBox4;
-		private System.Windows.Forms.LinkLabel ll_rn_add;
-		private System.Windows.Forms.TextBox tb_rn_2;
-		private System.Windows.Forms.Label label13;
-		private System.Windows.Forms.TextBox tb_rn_1;
-		private System.Windows.Forms.Label label14;
-		internal System.Windows.Forms.ListBox lb_rn;
-		private System.Windows.Forms.LinkLabel ll_rn_delete;
-		private System.Windows.Forms.GroupBox groupBox5;
-		internal System.Windows.Forms.TextBox tb_rn_uk1;
-		private System.Windows.Forms.Label label22;
-		internal System.Windows.Forms.TextBox tb_rn_uk2;
-		private System.Windows.Forms.Label label15;
-		internal System.Windows.Forms.TextBox tb_rn_ver;
-		private System.Windows.Forms.Label label25;
-		private System.Windows.Forms.ToolTip toolTip1;
+		private GroupBox groupBox4;
+		private LinkLabel ll_rn_add;
+		private TextBox tb_rn_2;
+		private Label label13;
+		private TextBox tb_rn_1;
+		private Label label14;
+		internal ListBox lb_rn;
+		private LinkLabel ll_rn_delete;
+		private GroupBox groupBox5;
+		internal TextBox tb_rn_uk1;
+		private Label label22;
+		internal TextBox tb_rn_uk2;
+		private Label label15;
+		internal TextBox tb_rn_ver;
+		private Label label25;
+		private ToolTip toolTip1;
 		private System.ComponentModel.IContainer components;
 
 		public ResourceNode()
@@ -93,22 +93,22 @@ namespace SimPe.Plugin.TabPage
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.groupBox5 = new System.Windows.Forms.GroupBox();
-			this.tb_rn_ver = new System.Windows.Forms.TextBox();
-			this.label25 = new System.Windows.Forms.Label();
-			this.tb_rn_uk2 = new System.Windows.Forms.TextBox();
-			this.label15 = new System.Windows.Forms.Label();
-			this.tb_rn_uk1 = new System.Windows.Forms.TextBox();
-			this.label22 = new System.Windows.Forms.Label();
-			this.groupBox4 = new System.Windows.Forms.GroupBox();
-			this.ll_rn_add = new System.Windows.Forms.LinkLabel();
-			this.tb_rn_2 = new System.Windows.Forms.TextBox();
-			this.label13 = new System.Windows.Forms.Label();
-			this.tb_rn_1 = new System.Windows.Forms.TextBox();
-			this.label14 = new System.Windows.Forms.Label();
-			this.lb_rn = new System.Windows.Forms.ListBox();
-			this.ll_rn_delete = new System.Windows.Forms.LinkLabel();
-			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+			this.groupBox5 = new GroupBox();
+			this.tb_rn_ver = new TextBox();
+			this.label25 = new Label();
+			this.tb_rn_uk2 = new TextBox();
+			this.label15 = new Label();
+			this.tb_rn_uk1 = new TextBox();
+			this.label22 = new Label();
+			this.groupBox4 = new GroupBox();
+			this.ll_rn_add = new LinkLabel();
+			this.tb_rn_2 = new TextBox();
+			this.label13 = new Label();
+			this.tb_rn_1 = new TextBox();
+			this.label14 = new Label();
+			this.lb_rn = new ListBox();
+			this.ll_rn_delete = new LinkLabel();
+			this.toolTip1 = new ToolTip(this.components);
 			this.groupBox5.SuspendLayout();
 			this.groupBox4.SuspendLayout();
 			this.SuspendLayout();
@@ -128,7 +128,7 @@ namespace SimPe.Plugin.TabPage
 			// groupBox5
 			//
 			this.groupBox5.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -172,7 +172,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_rn_ver.Size = new System.Drawing.Size(88, 21);
 			this.tb_rn_ver.TabIndex = 24;
 			this.tb_rn_ver.Text = "0x00000000";
-			this.tb_rn_ver.TextChanged += new System.EventHandler(
+			this.tb_rn_ver.TextChanged += new EventHandler(
 				this.RNChangeSettings
 			);
 			//
@@ -206,7 +206,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_rn_uk2.Size = new System.Drawing.Size(88, 21);
 			this.tb_rn_uk2.TabIndex = 8;
 			this.tb_rn_uk2.Text = "0x00000000";
-			this.tb_rn_uk2.TextChanged += new System.EventHandler(
+			this.tb_rn_uk2.TextChanged += new EventHandler(
 				this.RNChangeSettings
 			);
 			//
@@ -240,7 +240,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_rn_uk1.Size = new System.Drawing.Size(88, 21);
 			this.tb_rn_uk1.TabIndex = 6;
 			this.tb_rn_uk1.Text = "0x00000000";
-			this.tb_rn_uk1.TextChanged += new System.EventHandler(
+			this.tb_rn_uk1.TextChanged += new EventHandler(
 				this.RNChangeSettings
 			);
 			//
@@ -263,7 +263,7 @@ namespace SimPe.Plugin.TabPage
 			// groupBox4
 			//
 			this.groupBox4.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -297,7 +297,7 @@ namespace SimPe.Plugin.TabPage
 			// ll_rn_add
 			//
 			this.ll_rn_add.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -312,7 +312,7 @@ namespace SimPe.Plugin.TabPage
 			this.ll_rn_add.TabStop = true;
 			this.ll_rn_add.Text = "add";
 			this.ll_rn_add.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.RNItemsAdd
 				);
 			//
@@ -330,7 +330,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_rn_2.Size = new System.Drawing.Size(88, 21);
 			this.tb_rn_2.TabIndex = 4;
 			this.tb_rn_2.Text = "0x00000000";
-			this.tb_rn_2.TextChanged += new System.EventHandler(this.RNChangedItems);
+			this.tb_rn_2.TextChanged += new EventHandler(this.RNChangedItems);
 			//
 			// label13
 			//
@@ -362,7 +362,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_rn_1.Size = new System.Drawing.Size(88, 21);
 			this.tb_rn_1.TabIndex = 2;
 			this.tb_rn_1.Text = "0x0000";
-			this.tb_rn_1.TextChanged += new System.EventHandler(this.RNChangedItems);
+			this.tb_rn_1.TextChanged += new EventHandler(this.RNChangedItems);
 			//
 			// label14
 			//
@@ -383,7 +383,7 @@ namespace SimPe.Plugin.TabPage
 			// lb_rn
 			//
 			this.lb_rn.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -404,12 +404,12 @@ namespace SimPe.Plugin.TabPage
 			this.lb_rn.Name = "lb_rn";
 			this.lb_rn.Size = new System.Drawing.Size(136, 216);
 			this.lb_rn.TabIndex = 0;
-			this.lb_rn.SelectedIndexChanged += new System.EventHandler(this.RNSelect);
+			this.lb_rn.SelectedIndexChanged += new EventHandler(this.RNSelect);
 			//
 			// ll_rn_delete
 			//
 			this.ll_rn_delete.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -424,7 +424,7 @@ namespace SimPe.Plugin.TabPage
 			this.ll_rn_delete.TabStop = true;
 			this.ll_rn_delete.Text = "delete";
 			this.ll_rn_delete.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.RNItemsDelete
 				);
 			//
@@ -436,7 +436,7 @@ namespace SimPe.Plugin.TabPage
 		}
 		#endregion
 
-		private void RNChangeSettings(object sender, System.EventArgs e)
+		private void RNChangeSettings(object sender, EventArgs e)
 		{
 			if (Tag == null)
 			{
@@ -445,7 +445,7 @@ namespace SimPe.Plugin.TabPage
 
 			try
 			{
-				SimPe.Plugin.ResourceNode rn = (SimPe.Plugin.ResourceNode)Tag;
+				Plugin.ResourceNode rn = (Plugin.ResourceNode)Tag;
 
 				rn.Unknown1 = (int)Convert.ToInt32(this.tb_rn_uk1.Text, 16);
 				rn.Unknown2 = (int)Convert.ToInt32(this.tb_rn_uk2.Text, 16);
@@ -460,7 +460,7 @@ namespace SimPe.Plugin.TabPage
 		}
 
 		#region Select RN Items
-		private void RNSelect(object sender, System.EventArgs e)
+		private void RNSelect(object sender, EventArgs e)
 		{
 			if (lb_rn.Tag != null)
 			{
@@ -475,7 +475,7 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				lb_rn.Tag = true;
-				SimPe.Plugin.ResourceNode rn = (SimPe.Plugin.ResourceNode)Tag;
+				Plugin.ResourceNode rn = (Plugin.ResourceNode)Tag;
 				ResourceNodeItem b = (ResourceNodeItem)lb_rn.Items[lb_rn.SelectedIndex];
 
 				tb_rn_1.Text = "0x" + Helper.HexString((ushort)b.Unknown1);
@@ -492,7 +492,7 @@ namespace SimPe.Plugin.TabPage
 			}
 		}
 
-		private void RNChangedItems(object sender, System.EventArgs e)
+		private void RNChangedItems(object sender, EventArgs e)
 		{
 			if (lb_rn.Tag != null)
 			{
@@ -507,7 +507,7 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				lb_rn.Tag = true;
-				SimPe.Plugin.ResourceNode rn = (SimPe.Plugin.ResourceNode)Tag;
+				Plugin.ResourceNode rn = (Plugin.ResourceNode)Tag;
 				ResourceNodeItem b = (ResourceNodeItem)lb_rn.Items[lb_rn.SelectedIndex];
 
 				b.Unknown1 = (short)Convert.ToUInt16(tb_rn_1.Text, 16);
@@ -528,7 +528,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void RNItemsAdd(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (Tag == null)
@@ -539,7 +539,7 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				lb_rn.Tag = true;
-				SimPe.Plugin.ResourceNode rn = (SimPe.Plugin.ResourceNode)Tag;
+				Plugin.ResourceNode rn = (Plugin.ResourceNode)Tag;
 				ResourceNodeItem b = new ResourceNodeItem();
 
 				b.Unknown1 = (short)Convert.ToUInt16(tb_rn_1.Text, 16);
@@ -561,7 +561,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void RNItemsDelete(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (Tag == null)
@@ -577,7 +577,7 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				lb_rn.Tag = true;
-				SimPe.Plugin.ResourceNode rn = (SimPe.Plugin.ResourceNode)Tag;
+				Plugin.ResourceNode rn = (Plugin.ResourceNode)Tag;
 				ResourceNodeItem b = (ResourceNodeItem)lb_rn.Items[lb_rn.SelectedIndex];
 
 				rn.Items = (ResourceNodeItem[])Helper.Delete(rn.Items, b);

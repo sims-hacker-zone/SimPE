@@ -6,19 +6,19 @@ namespace SimPe
 	/// Summary description for CheckItem.
 	/// </summary>
 	[System.ComponentModel.DefaultEvent("ClickedFix")]
-	public class CheckItem : System.Windows.Forms.UserControl
+	public class CheckItem : UserControl
 	{
 		public delegate CheckItemState FixEventHandler(
 			object sender,
 			CheckItemState isok
 		);
-		private System.Windows.Forms.LinkLabel llfix;
-		private System.Windows.Forms.Label lb;
-		private System.Windows.Forms.PictureBox pb;
-		private System.Windows.Forms.LinkLabel lldet;
-		private System.Windows.Forms.Panel pnDetails;
-		private System.Windows.Forms.LinkLabel linkLabel1;
-		private System.Windows.Forms.RichTextBox rtb;
+		private LinkLabel llfix;
+		private Label lb;
+		private PictureBox pb;
+		private LinkLabel lldet;
+		private Panel pnDetails;
+		private LinkLabel linkLabel1;
+		private RichTextBox rtb;
 
 		//private System.ComponentModel.IContainer components;
 
@@ -69,13 +69,13 @@ namespace SimPe
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(CheckItem));
-			this.lb = new System.Windows.Forms.Label();
-			this.llfix = new System.Windows.Forms.LinkLabel();
-			this.pb = new System.Windows.Forms.PictureBox();
-			this.lldet = new System.Windows.Forms.LinkLabel();
-			this.pnDetails = new System.Windows.Forms.Panel();
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-			this.rtb = new System.Windows.Forms.RichTextBox();
+			this.lb = new Label();
+			this.llfix = new LinkLabel();
+			this.pb = new PictureBox();
+			this.lldet = new LinkLabel();
+			this.pnDetails = new Panel();
+			this.linkLabel1 = new LinkLabel();
+			this.rtb = new RichTextBox();
 			this.pnDetails.SuspendLayout();
 			this.SuspendLayout();
 			//
@@ -86,11 +86,11 @@ namespace SimPe
 			);
 			this.lb.AccessibleName = resources.GetString("lb.AccessibleName");
 			this.lb.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(resources.GetObject("lb.Anchor"))
+				(AnchorStyles)(resources.GetObject("lb.Anchor"))
 			);
 			this.lb.AutoSize = ((bool)(resources.GetObject("lb.AutoSize")));
 			this.lb.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("lb.Dock"))
+				(DockStyle)(resources.GetObject("lb.Dock"))
 			);
 			this.lb.Enabled = ((bool)(resources.GetObject("lb.Enabled")));
 			this.lb.Font = ((System.Drawing.Font)(resources.GetObject("lb.Font")));
@@ -100,14 +100,14 @@ namespace SimPe
 			);
 			this.lb.ImageIndex = ((int)(resources.GetObject("lb.ImageIndex")));
 			this.lb.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("lb.ImeMode"))
+				(ImeMode)(resources.GetObject("lb.ImeMode"))
 			);
 			this.lb.Location = (
 				(System.Drawing.Point)(resources.GetObject("lb.Location"))
 			);
 			this.lb.Name = "lb";
 			this.lb.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("lb.RightToLeft")
 				)
 			);
@@ -126,11 +126,11 @@ namespace SimPe
 			);
 			this.llfix.AccessibleName = resources.GetString("llfix.AccessibleName");
 			this.llfix.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(resources.GetObject("llfix.Anchor"))
+				(AnchorStyles)(resources.GetObject("llfix.Anchor"))
 			);
 			this.llfix.AutoSize = ((bool)(resources.GetObject("llfix.AutoSize")));
 			this.llfix.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("llfix.Dock"))
+				(DockStyle)(resources.GetObject("llfix.Dock"))
 			);
 			this.llfix.Enabled = ((bool)(resources.GetObject("llfix.Enabled")));
 			this.llfix.Font = (
@@ -146,17 +146,17 @@ namespace SimPe
 			);
 			this.llfix.ImageIndex = ((int)(resources.GetObject("llfix.ImageIndex")));
 			this.llfix.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("llfix.ImeMode"))
+				(ImeMode)(resources.GetObject("llfix.ImeMode"))
 			);
 			this.llfix.LinkArea = (
-				(System.Windows.Forms.LinkArea)(resources.GetObject("llfix.LinkArea"))
+				(LinkArea)(resources.GetObject("llfix.LinkArea"))
 			);
 			this.llfix.Location = (
 				(System.Drawing.Point)(resources.GetObject("llfix.Location"))
 			);
 			this.llfix.Name = "llfix";
 			this.llfix.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("llfix.RightToLeft")
 				)
 			);
@@ -173,7 +173,7 @@ namespace SimPe
 			);
 			this.llfix.Visible = ((bool)(resources.GetObject("llfix.Visible")));
 			this.llfix.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llfix_LinkClicked
 				);
 			//
@@ -184,32 +184,32 @@ namespace SimPe
 			);
 			this.pb.AccessibleName = resources.GetString("pb.AccessibleName");
 			this.pb.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(resources.GetObject("pb.Anchor"))
+				(AnchorStyles)(resources.GetObject("pb.Anchor"))
 			);
 			this.pb.BackgroundImage = (
 				(System.Drawing.Image)(resources.GetObject("pb.BackgroundImage"))
 			);
 			this.pb.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("pb.Dock"))
+				(DockStyle)(resources.GetObject("pb.Dock"))
 			);
 			this.pb.Enabled = ((bool)(resources.GetObject("pb.Enabled")));
 			this.pb.Font = ((System.Drawing.Font)(resources.GetObject("pb.Font")));
 			this.pb.Image = ((System.Drawing.Image)(resources.GetObject("pb.Image")));
 			this.pb.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("pb.ImeMode"))
+				(ImeMode)(resources.GetObject("pb.ImeMode"))
 			);
 			this.pb.Location = (
 				(System.Drawing.Point)(resources.GetObject("pb.Location"))
 			);
 			this.pb.Name = "pb";
 			this.pb.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("pb.RightToLeft")
 				)
 			);
 			this.pb.Size = ((System.Drawing.Size)(resources.GetObject("pb.Size")));
 			this.pb.SizeMode = (
-				(System.Windows.Forms.PictureBoxSizeMode)(
+				(PictureBoxSizeMode)(
 					resources.GetObject("pb.SizeMode")
 				)
 			);
@@ -225,11 +225,11 @@ namespace SimPe
 			);
 			this.lldet.AccessibleName = resources.GetString("lldet.AccessibleName");
 			this.lldet.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(resources.GetObject("lldet.Anchor"))
+				(AnchorStyles)(resources.GetObject("lldet.Anchor"))
 			);
 			this.lldet.AutoSize = ((bool)(resources.GetObject("lldet.AutoSize")));
 			this.lldet.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("lldet.Dock"))
+				(DockStyle)(resources.GetObject("lldet.Dock"))
 			);
 			this.lldet.Enabled = ((bool)(resources.GetObject("lldet.Enabled")));
 			this.lldet.Font = (
@@ -245,17 +245,17 @@ namespace SimPe
 			);
 			this.lldet.ImageIndex = ((int)(resources.GetObject("lldet.ImageIndex")));
 			this.lldet.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("lldet.ImeMode"))
+				(ImeMode)(resources.GetObject("lldet.ImeMode"))
 			);
 			this.lldet.LinkArea = (
-				(System.Windows.Forms.LinkArea)(resources.GetObject("lldet.LinkArea"))
+				(LinkArea)(resources.GetObject("lldet.LinkArea"))
 			);
 			this.lldet.Location = (
 				(System.Drawing.Point)(resources.GetObject("lldet.Location"))
 			);
 			this.lldet.Name = "lldet";
 			this.lldet.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("lldet.RightToLeft")
 				)
 			);
@@ -272,7 +272,7 @@ namespace SimPe
 			);
 			this.lldet.Visible = ((bool)(resources.GetObject("lldet.Visible")));
 			this.lldet.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.lldet_LinkClicked
 				);
 			//
@@ -285,7 +285,7 @@ namespace SimPe
 				"pnDetails.AccessibleName"
 			);
 			this.pnDetails.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("pnDetails.Anchor")
 				)
 			);
@@ -306,21 +306,21 @@ namespace SimPe
 			this.pnDetails.Controls.Add(this.linkLabel1);
 			this.pnDetails.Controls.Add(this.rtb);
 			this.pnDetails.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("pnDetails.Dock"))
+				(DockStyle)(resources.GetObject("pnDetails.Dock"))
 			);
 			this.pnDetails.Enabled = ((bool)(resources.GetObject("pnDetails.Enabled")));
 			this.pnDetails.Font = (
 				(System.Drawing.Font)(resources.GetObject("pnDetails.Font"))
 			);
 			this.pnDetails.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("pnDetails.ImeMode"))
+				(ImeMode)(resources.GetObject("pnDetails.ImeMode"))
 			);
 			this.pnDetails.Location = (
 				(System.Drawing.Point)(resources.GetObject("pnDetails.Location"))
 			);
 			this.pnDetails.Name = "pnDetails";
 			this.pnDetails.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("pnDetails.RightToLeft")
 				)
 			);
@@ -342,7 +342,7 @@ namespace SimPe
 				"linkLabel1.AccessibleName"
 			);
 			this.linkLabel1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("linkLabel1.Anchor")
 				)
 			);
@@ -351,7 +351,7 @@ namespace SimPe
 			);
 			this.linkLabel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
 			this.linkLabel1.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("linkLabel1.Dock"))
+				(DockStyle)(resources.GetObject("linkLabel1.Dock"))
 			);
 			this.linkLabel1.Enabled = (
 				(bool)(resources.GetObject("linkLabel1.Enabled"))
@@ -371,12 +371,12 @@ namespace SimPe
 				(int)(resources.GetObject("linkLabel1.ImageIndex"))
 			);
 			this.linkLabel1.ImeMode = (
-				(System.Windows.Forms.ImeMode)(
+				(ImeMode)(
 					resources.GetObject("linkLabel1.ImeMode")
 				)
 			);
 			this.linkLabel1.LinkArea = (
-				(System.Windows.Forms.LinkArea)(
+				(LinkArea)(
 					resources.GetObject("linkLabel1.LinkArea")
 				)
 			);
@@ -385,7 +385,7 @@ namespace SimPe
 			);
 			this.linkLabel1.Name = "linkLabel1";
 			this.linkLabel1.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("linkLabel1.RightToLeft")
 				)
 			);
@@ -406,7 +406,7 @@ namespace SimPe
 				(bool)(resources.GetObject("linkLabel1.Visible"))
 			);
 			this.linkLabel1.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.linkLabel1_LinkClicked
 				);
 			//
@@ -417,7 +417,7 @@ namespace SimPe
 			);
 			this.rtb.AccessibleName = resources.GetString("rtb.AccessibleName");
 			this.rtb.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(resources.GetObject("rtb.Anchor"))
+				(AnchorStyles)(resources.GetObject("rtb.Anchor"))
 			);
 			this.rtb.AutoSize = ((bool)(resources.GetObject("rtb.AutoSize")));
 			this.rtb.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -428,13 +428,13 @@ namespace SimPe
 			this.rtb.BulletIndent = ((int)(resources.GetObject("rtb.BulletIndent")));
 			this.rtb.Cursor = System.Windows.Forms.Cursors.Default;
 			this.rtb.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("rtb.Dock"))
+				(DockStyle)(resources.GetObject("rtb.Dock"))
 			);
 			this.rtb.Enabled = ((bool)(resources.GetObject("rtb.Enabled")));
 			this.rtb.Font = ((System.Drawing.Font)(resources.GetObject("rtb.Font")));
 			this.rtb.ForeColor = System.Drawing.SystemColors.AppWorkspace;
 			this.rtb.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("rtb.ImeMode"))
+				(ImeMode)(resources.GetObject("rtb.ImeMode"))
 			);
 			this.rtb.Location = (
 				(System.Drawing.Point)(resources.GetObject("rtb.Location"))
@@ -445,12 +445,12 @@ namespace SimPe
 			this.rtb.ReadOnly = true;
 			this.rtb.RightMargin = ((int)(resources.GetObject("rtb.RightMargin")));
 			this.rtb.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("rtb.RightToLeft")
 				)
 			);
 			this.rtb.ScrollBars = (
-				(System.Windows.Forms.RichTextBoxScrollBars)(
+				(RichTextBoxScrollBars)(
 					resources.GetObject("rtb.ScrollBars")
 				)
 			);
@@ -487,14 +487,14 @@ namespace SimPe
 			this.Enabled = ((bool)(resources.GetObject("$this.Enabled")));
 			this.Font = ((System.Drawing.Font)(resources.GetObject("$this.Font")));
 			this.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("$this.ImeMode"))
+				(ImeMode)(resources.GetObject("$this.ImeMode"))
 			);
 			this.Location = (
 				(System.Drawing.Point)(resources.GetObject("$this.Location"))
 			);
 			this.Name = "CheckItem";
 			this.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("$this.RightToLeft")
 				)
 			);
@@ -625,7 +625,7 @@ namespace SimPe
 
 		private void llfix_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			CheckItemState res = this.CheckState;
@@ -640,7 +640,7 @@ namespace SimPe
 
 		private void lldet_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			this.pnDetails.Visible = true;
@@ -648,7 +648,7 @@ namespace SimPe
 
 		private void linkLabel1_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			this.pnDetails.Visible = false;

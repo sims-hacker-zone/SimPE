@@ -25,12 +25,12 @@ namespace SimPe.Plugin.Tool
 	/// <summary>
 	/// Zusammenfassung für Report.
 	/// </summary>
-	internal class Report : System.Windows.Forms.Form
+	internal class Report : Form
 	{
 		private SteepValley.Windows.Forms.XPGradientPanel xpGradientPanel1;
-		private System.Windows.Forms.RichTextBox rtb;
-		private System.Windows.Forms.LinkLabel linkLabel1;
-		private System.Windows.Forms.SaveFileDialog sfd;
+		private RichTextBox rtb;
+		private LinkLabel linkLabel1;
+		private SaveFileDialog sfd;
 
 		/// <summary>
 		/// Erforderliche Designervariable.
@@ -80,9 +80,9 @@ namespace SimPe.Plugin.Tool
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(Report));
 			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-			this.rtb = new System.Windows.Forms.RichTextBox();
-			this.sfd = new System.Windows.Forms.SaveFileDialog();
+			this.linkLabel1 = new LinkLabel();
+			this.rtb = new RichTextBox();
+			this.sfd = new SaveFileDialog();
 			this.xpGradientPanel1.SuspendLayout();
 			this.SuspendLayout();
 			//
@@ -95,7 +95,7 @@ namespace SimPe.Plugin.Tool
 				"xpGradientPanel1.AccessibleName"
 			);
 			this.xpGradientPanel1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("xpGradientPanel1.Anchor")
 				)
 			);
@@ -120,7 +120,7 @@ namespace SimPe.Plugin.Tool
 			this.xpGradientPanel1.Controls.Add(this.linkLabel1);
 			this.xpGradientPanel1.Controls.Add(this.rtb);
 			this.xpGradientPanel1.Dock = (
-				(System.Windows.Forms.DockStyle)(
+				(DockStyle)(
 					resources.GetObject("xpGradientPanel1.Dock")
 				)
 			);
@@ -131,7 +131,7 @@ namespace SimPe.Plugin.Tool
 				(System.Drawing.Font)(resources.GetObject("xpGradientPanel1.Font"))
 			);
 			this.xpGradientPanel1.ImeMode = (
-				(System.Windows.Forms.ImeMode)(
+				(ImeMode)(
 					resources.GetObject("xpGradientPanel1.ImeMode")
 				)
 			);
@@ -140,7 +140,7 @@ namespace SimPe.Plugin.Tool
 			);
 			this.xpGradientPanel1.Name = "xpGradientPanel1";
 			this.xpGradientPanel1.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("xpGradientPanel1.RightToLeft")
 				)
 			);
@@ -174,7 +174,7 @@ namespace SimPe.Plugin.Tool
 				"linkLabel1.AccessibleName"
 			);
 			this.linkLabel1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("linkLabel1.Anchor")
 				)
 			);
@@ -183,7 +183,7 @@ namespace SimPe.Plugin.Tool
 			);
 			this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
 			this.linkLabel1.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("linkLabel1.Dock"))
+				(DockStyle)(resources.GetObject("linkLabel1.Dock"))
 			);
 			this.linkLabel1.Enabled = (
 				(bool)(resources.GetObject("linkLabel1.Enabled"))
@@ -203,12 +203,12 @@ namespace SimPe.Plugin.Tool
 				(int)(resources.GetObject("linkLabel1.ImageIndex"))
 			);
 			this.linkLabel1.ImeMode = (
-				(System.Windows.Forms.ImeMode)(
+				(ImeMode)(
 					resources.GetObject("linkLabel1.ImeMode")
 				)
 			);
 			this.linkLabel1.LinkArea = (
-				(System.Windows.Forms.LinkArea)(
+				(LinkArea)(
 					resources.GetObject("linkLabel1.LinkArea")
 				)
 			);
@@ -217,7 +217,7 @@ namespace SimPe.Plugin.Tool
 			);
 			this.linkLabel1.Name = "linkLabel1";
 			this.linkLabel1.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("linkLabel1.RightToLeft")
 				)
 			);
@@ -238,7 +238,7 @@ namespace SimPe.Plugin.Tool
 				(bool)(resources.GetObject("linkLabel1.Visible"))
 			);
 			this.linkLabel1.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.linkLabel1_LinkClicked
 				);
 			//
@@ -249,7 +249,7 @@ namespace SimPe.Plugin.Tool
 			);
 			this.rtb.AccessibleName = resources.GetString("rtb.AccessibleName");
 			this.rtb.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(resources.GetObject("rtb.Anchor"))
+				(AnchorStyles)(resources.GetObject("rtb.Anchor"))
 			);
 			this.rtb.AutoSize = ((bool)(resources.GetObject("rtb.AutoSize")));
 			this.rtb.BackgroundImage = (
@@ -258,12 +258,12 @@ namespace SimPe.Plugin.Tool
 			this.rtb.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.rtb.BulletIndent = ((int)(resources.GetObject("rtb.BulletIndent")));
 			this.rtb.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("rtb.Dock"))
+				(DockStyle)(resources.GetObject("rtb.Dock"))
 			);
 			this.rtb.Enabled = ((bool)(resources.GetObject("rtb.Enabled")));
 			this.rtb.Font = ((System.Drawing.Font)(resources.GetObject("rtb.Font")));
 			this.rtb.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("rtb.ImeMode"))
+				(ImeMode)(resources.GetObject("rtb.ImeMode"))
 			);
 			this.rtb.Location = (
 				(System.Drawing.Point)(resources.GetObject("rtb.Location"))
@@ -274,12 +274,12 @@ namespace SimPe.Plugin.Tool
 			this.rtb.ReadOnly = true;
 			this.rtb.RightMargin = ((int)(resources.GetObject("rtb.RightMargin")));
 			this.rtb.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("rtb.RightToLeft")
 				)
 			);
 			this.rtb.ScrollBars = (
-				(System.Windows.Forms.RichTextBoxScrollBars)(
+				(RichTextBoxScrollBars)(
 					resources.GetObject("rtb.ScrollBars")
 				)
 			);
@@ -330,7 +330,7 @@ namespace SimPe.Plugin.Tool
 				.SizableToolWindow;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("$this.ImeMode"))
+				(ImeMode)(resources.GetObject("$this.ImeMode"))
 			);
 			this.Location = (
 				(System.Drawing.Point)(resources.GetObject("$this.Location"))
@@ -343,12 +343,12 @@ namespace SimPe.Plugin.Tool
 			);
 			this.Name = "Report";
 			this.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("$this.RightToLeft")
 				)
 			);
 			this.StartPosition = (
-				(System.Windows.Forms.FormStartPosition)(
+				(FormStartPosition)(
 					resources.GetObject("$this.StartPosition")
 				)
 			);
@@ -358,9 +358,9 @@ namespace SimPe.Plugin.Tool
 		}
 		#endregion
 
-		System.IO.StreamWriter csv;
+		StreamWriter csv;
 
-		public void Execute(System.IO.StreamWriter csv)
+		public void Execute(StreamWriter csv)
 		{
 			csv.Flush();
 			csv.BaseStream.Seek(0, SeekOrigin.Begin);
@@ -374,7 +374,7 @@ namespace SimPe.Plugin.Tool
 
 		private void linkLabel1_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (sfd.ShowDialog() == DialogResult.OK)
@@ -383,7 +383,7 @@ namespace SimPe.Plugin.Tool
 				StreamReader sr = new StreamReader(csv.BaseStream);
 				sr.BaseStream.Seek(0, SeekOrigin.Begin);
 
-				System.IO.StreamWriter sw = System.IO.File.CreateText(sfd.FileName);
+				StreamWriter sw = System.IO.File.CreateText(sfd.FileName);
 				try
 				{
 					sw.Write(sr.ReadToEnd());

@@ -26,7 +26,7 @@ namespace SimPe.Plugin.Tool
 	/// <summary>
 	/// Toll that can preview Animations
 	/// </summary>
-	public class AnimTool : SimPe.Interfaces.IToolPlus
+	public class AnimTool : Interfaces.IToolPlus
 	{
 		internal AnimTool()
 		{

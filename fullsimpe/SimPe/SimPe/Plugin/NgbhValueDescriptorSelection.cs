@@ -7,7 +7,7 @@ namespace SimPe.Plugin
 	/// Summary description for NgbhValueDescriptorSelection.
 	/// </summary>
 	[System.ComponentModel.DefaultEvent("SelectedDescriptorChanged")]
-	public class NgbhValueDescriptorSelection : System.Windows.Forms.UserControl
+	public class NgbhValueDescriptorSelection : UserControl
 	{
 		private ComboBox cb;
 
@@ -71,7 +71,7 @@ namespace SimPe.Plugin
 			this.cb.Name = "cb";
 			this.cb.Size = new System.Drawing.Size(150, 21);
 			this.cb.TabIndex = 0;
-			this.cb.SelectedIndexChanged += new System.EventHandler(
+			this.cb.SelectedIndexChanged += new EventHandler(
 				this.cb_SelectedIndexChanged
 			);
 			//
@@ -179,7 +179,7 @@ namespace SimPe.Plugin
 
 		public event EventHandler SelectedDescriptorChanged;
 
-		private void cb_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void cb_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (SelectedDescriptorChanged != null)
 			{

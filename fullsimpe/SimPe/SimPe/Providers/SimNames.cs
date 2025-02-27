@@ -39,7 +39,7 @@ namespace SimPe.Providers
 	///  1: Image of the Sim (if available)
 	///  2: Familyname of the Sim
 	/// </remarks>
-	public class SimNames : StoppableThread, SimPe.Interfaces.Providers.ISimNames
+	public class SimNames : StoppableThread, Interfaces.Providers.ISimNames
 	{
 		/// <summary>
 		/// List of known Aliases (can be null)
@@ -59,7 +59,7 @@ namespace SimPe.Providers
 		/// <summary>
 		/// Additional FileIndex fro template SimNames
 		/// </summary>
-		SimPe.Interfaces.Scenegraph.IScenegraphFileIndex characterfi;
+		Interfaces.Scenegraph.IScenegraphFileIndex characterfi;
 
 		/// <summary>
 		/// Creates the List for the specific Folder
@@ -72,7 +72,7 @@ namespace SimPe.Providers
 			this.opcodes = opcodes;
 
 			ArrayList folders = new ArrayList();
-			foreach (SimPe.ExpansionItem ei in SimPe.PathProvider.Global.Expansions)
+			foreach (ExpansionItem ei in SimPe.PathProvider.Global.Expansions)
 			{
 				if (!ei.Exists)
 				{
@@ -92,11 +92,11 @@ namespace SimPe.Providers
 
 					if (Directory.Exists(path))
 					{
-						folders.Add(new SimPe.FileTableItem(path));
+						folders.Add(new FileTableItem(path));
 					}
 				}
 			}
-			characterfi = new SimPe.Plugin.FileIndex(folders);
+			characterfi = new Plugin.FileIndex(folders);
 		}
 
 		/// <summary>
@@ -130,14 +130,14 @@ namespace SimPe.Providers
 		}
 
 		protected Alias AddSim(
-			SimPe.Interfaces.Files.IPackageFile fl,
+			IPackageFile fl,
 			IPackedFileDescriptor objdpfd,
 			ref int ct,
 			int step
 		)
 		{
-			SimPe.PackedFiles.Wrapper.ExtObjd objd =
-				new SimPe.PackedFiles.Wrapper.ExtObjd();
+			PackedFiles.Wrapper.ExtObjd objd =
+				new PackedFiles.Wrapper.ExtObjd();
 			objd.ProcessData(objdpfd, fl);
 
 			return AddSim(objd, ref ct, step, false);
@@ -160,13 +160,13 @@ namespace SimPe.Providers
 		/// [4] : When NPC, this will get the Filename
 		/// </remarks>
 		protected Alias AddSim(
-			SimPe.PackedFiles.Wrapper.ExtObjd objd,
+			PackedFiles.Wrapper.ExtObjd objd,
 			ref int ct,
 			int step,
 			bool npc
 		)
 		{
-			SimPe.Interfaces.Files.IPackageFile fl = objd.Package;
+			IPackageFile fl = objd.Package;
 			//BinaryReader br = new BinaryReader(File.OpenRead(file));//new StreamReader(file)
 			bool hasagedata = fl.FindFiles(0xAC598EAC).Length > 0; //has Age Data
 			object[] tags = new object[5];
@@ -190,7 +190,7 @@ namespace SimPe.Providers
 
 			Alias a = null;
 
-			Interfaces.Files.IPackedFileDescriptor str_pfd = fl.FindFile(
+			IPackedFileDescriptor str_pfd = fl.FindFile(
 				Data.MetaData.CTSS_FILE,
 				0,
 				objd.FileDescriptor.Group,
@@ -199,9 +199,9 @@ namespace SimPe.Providers
 
 			if (str_pfd != null)
 			{
-				SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
 				str.ProcessData(str_pfd, fl);
-				SimPe.PackedFiles.Wrapper.StrItemList its = str.FallbackedLanguageItems(
+				PackedFiles.Wrapper.StrItemList its = str.FallbackedLanguageItems(
 					Helper.WindowsRegistry.LanguageCode
 				);
 				if (its.Length > 0)
@@ -232,8 +232,8 @@ namespace SimPe.Providers
 
 					if (pfd.Instance < 0x200)
 					{
-						SimPe.PackedFiles.Wrapper.Picture pic =
-							new SimPe.PackedFiles.Wrapper.Picture();
+						PackedFiles.Wrapper.Picture pic =
+							new PackedFiles.Wrapper.Picture();
 						pic.ProcessData(pfd, fl);
 
 						tags[1] = pic.Image;
@@ -312,7 +312,7 @@ namespace SimPe.Providers
 				return;
 			}
 
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
 				FileTable.FileIndex.FindFileDiscardingGroup(
 					Data.MetaData.OBJD_FILE,
 					inst
@@ -320,15 +320,15 @@ namespace SimPe.Providers
 			Wait.MaxProgress = items.Length;
 			int ct = 0;
 			int step = Math.Max(2, Wait.MaxProgress / 100);
-			foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
+			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
 			{
 				if (this.HaveToStop)
 				{
 					break;
 				}
 
-				SimPe.PackedFiles.Wrapper.ExtObjd objd =
-					new SimPe.PackedFiles.Wrapper.ExtObjd();
+				PackedFiles.Wrapper.ExtObjd objd =
+					new PackedFiles.Wrapper.ExtObjd();
 				objd.ProcessData(item);
 				if (
 					Helper.WindowsRegistry.DeepSimTemplateScan
@@ -362,10 +362,10 @@ namespace SimPe.Providers
 				try
 				{
 					bool breaked = false;
-					SimPe.PackedFiles.Wrapper.ExtObjd objd =
-						new SimPe.PackedFiles.Wrapper.ExtObjd();
-					SimPe.PackedFiles.Wrapper.Str str =
-						new SimPe.PackedFiles.Wrapper.Str();
+					PackedFiles.Wrapper.ExtObjd objd =
+						new PackedFiles.Wrapper.ExtObjd();
+					PackedFiles.Wrapper.Str str =
+						new PackedFiles.Wrapper.Str();
 					//ArrayList al = new ArrayList();
 					int ct = 0;
 					int step = Math.Max(2, Wait.MaxProgress / 100);
@@ -377,7 +377,7 @@ namespace SimPe.Providers
 							break;
 						}
 
-						SimPe.Packages.File fl = null;
+						Packages.File fl = null;
 						try
 						{
 							fl = SimPe.Packages.File.LoadFromFile(file);

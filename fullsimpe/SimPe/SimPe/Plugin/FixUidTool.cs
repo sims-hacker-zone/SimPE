@@ -33,16 +33,16 @@ namespace SimPe.Plugin
 		#region ITool Member
 
 		public bool IsEnabled(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile package
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile package
 		)
 		{
 			return true;
 		}
 
 		public Interfaces.Plugin.IToolResult ShowDialog(
-			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			ref SimPe.Interfaces.Files.IPackageFile package
+			ref Interfaces.Files.IPackedFileDescriptor pfd,
+			ref Interfaces.Files.IPackageFile package
 		)
 		{
 			System.Windows.Forms.DialogResult dr = System.Windows.Forms.MessageBox.Show(
@@ -64,12 +64,12 @@ namespace SimPe.Plugin
 					{
 						Wait.Message = file;
 
-						SimPe.Packages.GeneratableFile fl =
+						Packages.GeneratableFile fl =
 							SimPe.Packages.GeneratableFile.LoadFromFile(file);
-						SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds =
+						Interfaces.Files.IPackedFileDescriptor[] pfds =
 							fl.FindFiles(Data.MetaData.IDNO);
 						foreach (
-							SimPe.Interfaces.Files.IPackedFileDescriptor spfd in pfds
+							Interfaces.Files.IPackedFileDescriptor spfd in pfds
 						)
 						{
 							Idno idno = new Idno();

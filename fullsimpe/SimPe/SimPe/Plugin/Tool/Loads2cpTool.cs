@@ -24,7 +24,7 @@ namespace SimPe.Plugin.Tool
 	/// <summary>
 	/// Summary description for LoadSims2PackTool.
 	/// </summary>
-	public class Loads2cpTool : SimPe.Interfaces.IToolPlus
+	public class Loads2cpTool : Interfaces.IToolPlus
 	{
 		internal Loads2cpTool()
 		{
@@ -47,7 +47,7 @@ namespace SimPe.Plugin.Tool
 			System.Windows.Forms.OpenFileDialog ofd =
 				new System.Windows.Forms.OpenFileDialog();
 			ofd.Filter = SimPe.ExtensionProvider.BuildFilterString(
-				new SimPe.ExtensionType[]
+				new ExtensionType[]
 				{
 					ExtensionType.Sim2PackCommunity,
 					ExtensionType.AllFiles,
@@ -55,14 +55,14 @@ namespace SimPe.Plugin.Tool
 			);
 			if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 			{
-				SimPe.Packages.S2CPDescriptor[] ds =
+				Packages.S2CPDescriptor[] ds =
 					SimPe.Packages.Sims2CommunityPack.ShowOpenDialog(
 						ofd.FileName,
 						System.Windows.Forms.SelectionMode.MultiExtended
 					);
 				if (ds != null)
 				{
-					foreach (SimPe.Packages.S2CPDescriptor d in ds)
+					foreach (Packages.S2CPDescriptor d in ds)
 					{
 						SimPe.RemoteControl.OpenMemoryPackage(d.Package);
 					}

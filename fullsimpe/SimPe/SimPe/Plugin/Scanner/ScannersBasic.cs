@@ -35,18 +35,18 @@ namespace SimPe.Plugin.Scanner
 		public delegate void UpdateList(bool savecache, bool rescan);
 
 		#region Static Methods
-		static System.Drawing.Size sz;
+		static Size sz;
 
 		/// <summary>
 		/// Returns the suggested Size for Thumbnails
 		/// </summary>
-		public static System.Drawing.Size ThumbnailSize
+		public static Size ThumbnailSize
 		{
 			get
 			{
 				if (sz.Width == 0)
 				{
-					sz = new System.Drawing.Size(96, 96);
+					sz = new Size(96, 96);
 				}
 
 				return sz;
@@ -101,10 +101,10 @@ namespace SimPe.Plugin.Scanner
 			System.Windows.Forms.ListViewItem lvi,
 			int index,
 			string name,
-			SimPe.Cache.PackageState ps
+			PackageState ps
 		)
 		{
-			System.Drawing.Color cl = lvi.ForeColor;
+			Color cl = lvi.ForeColor;
 			if (ps != null)
 			{
 				if (ps.State == SimPe.Cache.TriState.True)
@@ -131,7 +131,7 @@ namespace SimPe.Plugin.Scanner
 			System.Windows.Forms.ListViewItem lvi,
 			int index,
 			string name,
-			System.Drawing.Color cl
+			Color cl
 		)
 		{
 			if (cl == System.Drawing.Color.Red)
@@ -155,12 +155,12 @@ namespace SimPe.Plugin.Scanner
 		#endregion
 
 		#region FileIndex Addition
-		static SimPe.Interfaces.Scenegraph.IScenegraphFileIndex mfi;
+		static Interfaces.Scenegraph.IScenegraphFileIndex mfi;
 
 		/// <summary>
 		/// Returns a FileTable, that is unly used for the event of scanning Files, and will be removed from the global FileTable afterwards
 		/// </summary>
-		public static SimPe.Interfaces.Scenegraph.IScenegraphFileIndex MyFileIndex
+		public static Interfaces.Scenegraph.IScenegraphFileIndex MyFileIndex
 		{
 			get
 			{
@@ -198,7 +198,7 @@ namespace SimPe.Plugin.Scanner
 			mfi = null;
 		}
 
-		protected SimPe.Interfaces.Scenegraph.IScenegraphFileIndex FileIndex => MyFileIndex;
+		protected Interfaces.Scenegraph.IScenegraphFileIndex FileIndex => MyFileIndex;
 		#endregion
 
 		#region IScanner Implementations
@@ -302,13 +302,13 @@ namespace SimPe.Plugin.Scanner
 		/// <summary>
 		/// Retunrs the Function that should be called after a OperatioControl Execution (can be null);
 		/// </summary>
-		protected SimPe.Plugin.Scanner.AbstractScanner.UpdateList CallbackFinish
+		protected UpdateList CallbackFinish
 		{
 			get; private set;
 		}
 
 		public void SetFinishCallback(
-			SimPe.Plugin.Scanner.AbstractScanner.UpdateList fkt
+			UpdateList fkt
 		)
 		{
 			CallbackFinish = fkt;
@@ -364,14 +364,14 @@ namespace SimPe.Plugin.Scanner
 
 		public void ScanPackage(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
+			PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
 			ps.State = TriState.False;
 			si.PackageCacheItem.Name = Localization.Manager.GetString("unknown");
 
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
 				Data.MetaData.CTSS_FILE
 			);
 			if (pfds.Length == 0)
@@ -382,12 +382,12 @@ namespace SimPe.Plugin.Scanner
 			//Check for Str compatible Items
 			if (pfds.Length > 0)
 			{
-				SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+				Str str = new Str();
 				str.ProcessData(pfds[0], si.Package, false);
 
-				SimPe.PackedFiles.Wrapper.StrItemList list =
+				StrItemList list =
 					str.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
-				foreach (SimPe.PackedFiles.Wrapper.StrToken item in list)
+				foreach (StrToken item in list)
 				{
 					if (item.Title.Trim() != "")
 					{
@@ -413,8 +413,8 @@ namespace SimPe.Plugin.Scanner
 				//Check for Cpf compatible Items
 				if (pfds.Length > 0)
 				{
-					SimPe.PackedFiles.Wrapper.Cpf cpf =
-						new SimPe.PackedFiles.Wrapper.Cpf();
+					Cpf cpf =
+						new Cpf();
 					cpf.ProcessData(pfds[0], si.Package, false);
 
 					si.PackageCacheItem.Name = cpf.GetSaveItem("name").StringValue;
@@ -430,7 +430,7 @@ namespace SimPe.Plugin.Scanner
 
 		public void UpdateState(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
+			PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
@@ -475,18 +475,18 @@ namespace SimPe.Plugin.Scanner
 
 		public void ScanPackage(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
+			PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
-			System.Drawing.Size sz = AbstractScanner.ThumbnailSize;
+			Size sz = AbstractScanner.ThumbnailSize;
 			if (
 				si.PackageCacheItem.Type == PackageType.CustomObject
 				|| si.PackageCacheItem.Type == PackageType.Object
 				|| si.PackageCacheItem.Type == PackageType.Recolour
 			)
 			{
-				SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds =
+				Interfaces.Files.IPackedFileDescriptor[] pfds =
 					si.Package.FindFiles(Data.MetaData.OBJD_FILE);
 
 				uint group = 0;
@@ -497,7 +497,7 @@ namespace SimPe.Plugin.Scanner
 
 				if (group == Data.MetaData.LOCAL_GROUP)
 				{
-					SimPe.Interfaces.Wrapper.IGroupCacheItem gci =
+					Interfaces.Wrapper.IGroupCacheItem gci =
 						FileTable.GroupCache.GetItem(si.FileName);
 					if (gci != null)
 					{
@@ -510,7 +510,7 @@ namespace SimPe.Plugin.Scanner
 
 				foreach (string modelname in modelnames)
 				{
-					System.Drawing.Image img = GetThumbnail(group, modelname);
+					Image img = GetThumbnail(group, modelname);
 					if (img != null)
 					{
 						si.PackageCacheItem.Thumbnail = img;
@@ -523,17 +523,17 @@ namespace SimPe.Plugin.Scanner
 			//no Thumbnail, do we have a Image File?
 			if (ps.State == TriState.Null)
 			{
-				SimPe.PackedFiles.Wrapper.Picture pic = new Picture();
+				Picture pic = new Picture();
 				uint[] types = pic.AssignableTypes;
 				foreach (uint type in types)
 				{
-					SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds =
+					Interfaces.Files.IPackedFileDescriptor[] pfds =
 						si.Package.FindFiles(type);
 					if (pfds.Length > 0)
 					{
 						//get image with smallest Instance
-						SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pfds[0];
-						foreach (SimPe.Interfaces.Files.IPackedFileDescriptor p in pfds)
+						Interfaces.Files.IPackedFileDescriptor pfd = pfds[0];
+						foreach (Interfaces.Files.IPackedFileDescriptor p in pfds)
 						{
 							if (p.Instance < pfd.Instance)
 							{
@@ -562,15 +562,15 @@ namespace SimPe.Plugin.Scanner
 			if (ps.State == TriState.Null)
 			{
 				//load the Texture Image
-				SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds =
+				Interfaces.Files.IPackedFileDescriptor[] pfds =
 					si.Package.FindFiles(Data.MetaData.TXTR);
 				if (pfds.Length > 0)
 				{
-					SimPe.Plugin.GenericRcol rcol = new GenericRcol(null, false);
+					GenericRcol rcol = new GenericRcol(null, false);
 
 					//get biggest texture
-					SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pfds[0];
-					foreach (SimPe.Interfaces.Files.IPackedFileDescriptor p in pfds)
+					Interfaces.Files.IPackedFileDescriptor pfd = pfds[0];
+					foreach (Interfaces.Files.IPackedFileDescriptor p in pfds)
 					{
 						if (p.Size > pfd.Size)
 						{
@@ -580,9 +580,9 @@ namespace SimPe.Plugin.Scanner
 
 					rcol.ProcessData(pfd, si.Package, false);
 
-					SimPe.Plugin.ImageData id = (SimPe.Plugin.ImageData)rcol.Blocks[0];
+					ImageData id = (ImageData)rcol.Blocks[0];
 
-					SimPe.Plugin.MipMap mm = id.GetLargestTexture(sz);
+					MipMap mm = id.GetLargestTexture(sz);
 
 					if (mm.Texture != null)
 					{
@@ -602,7 +602,7 @@ namespace SimPe.Plugin.Scanner
 
 		public void UpdateState(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
+			PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
@@ -637,7 +637,7 @@ namespace SimPe.Plugin.Scanner
 				);
 		}
 
-		static SimPe.Packages.File thumbs = null;
+		static Packages.File thumbs = null;
 
 		public static Image GetThumbnail(uint group, string modelname)
 		{
@@ -668,8 +668,8 @@ namespace SimPe.Plugin.Scanner
 			{
 				try
 				{
-					SimPe.PackedFiles.Wrapper.Picture pic =
-						new SimPe.PackedFiles.Wrapper.Picture();
+					Picture pic =
+						new Picture();
 					pic.ProcessData(ipfd, thumbs);
 					return pic.Image;
 				}
@@ -685,7 +685,7 @@ namespace SimPe.Plugin.Scanner
 	/// </summary>
 	internal class GuidScanner : AbstractScanner, IScanner
 	{
-		static SimPe.Cache.MemoryCacheFile cachefile;
+		static MemoryCacheFile cachefile;
 
 		public GuidScanner()
 			: base() { }
@@ -776,17 +776,17 @@ namespace SimPe.Plugin.Scanner
 
 		public void ScanPackage(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
+			PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
 				Data.MetaData.OBJD_FILE
 			);
 			ArrayList mylist = new ArrayList();
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				SimPe.PackedFiles.Wrapper.ExtObjd objd = new ExtObjd();
+				ExtObjd objd = new ExtObjd();
 				objd.ProcessData(pfd, si.Package, false);
 
 				mylist.Add(objd.Guid);
@@ -803,7 +803,7 @@ namespace SimPe.Plugin.Scanner
 
 		public void UpdateState(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
+			PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
@@ -886,7 +886,7 @@ namespace SimPe.Plugin.Scanner
 	/// </summary>
 	internal class RecolorBasemeshScanner : AbstractScanner, IScanner
 	{
-		static SimPe.Cache.MemoryCacheFile cachefile;
+		static MemoryCacheFile cachefile;
 
 		public RecolorBasemeshScanner()
 			: base() { }
@@ -911,11 +911,11 @@ namespace SimPe.Plugin.Scanner
 
 		public void ScanPackage(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
+			PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
 				Data.MetaData.MMAT
 			);
 			//ArrayList list = new ArrayList();
@@ -934,9 +934,9 @@ namespace SimPe.Plugin.Scanner
 			}
 
 			FileIndex.AddIndexFromPackage(si.Package);
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				SimPe.Plugin.MmatWrapper mmat = new MmatWrapper();
+				MmatWrapper mmat = new MmatWrapper();
 				mmat.ProcessData(pfd, si.Package, false);
 
 				string m = mmat.ModelName.Trim().ToLower();
@@ -946,7 +946,7 @@ namespace SimPe.Plugin.Scanner
 				}
 
 				//Add the current package
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item =
+				Interfaces.Scenegraph.IScenegraphFileIndexItem item =
 					FileTable.FileIndex.FindFileByName(
 						m,
 						Data.MetaData.CRES,
@@ -970,7 +970,7 @@ namespace SimPe.Plugin.Scanner
 
 		public void UpdateState(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
+			PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
@@ -1022,11 +1022,11 @@ namespace SimPe.Plugin.Scanner
 
 		public void ScanPackage(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
+			PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
 				Data.MetaData.GMDC
 			);
 			//ArrayList list = new ArrayList();
@@ -1035,14 +1035,14 @@ namespace SimPe.Plugin.Scanner
 
 			uint fct = 0;
 			uint vct = 0;
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				SimPe.Plugin.Rcol rcol = new GenericRcol();
+				Rcol rcol = new GenericRcol();
 				rcol.ProcessData(pfd, si.Package, true);
 
-				SimPe.Plugin.GeometryDataContainer gmdc =
-					rcol.Blocks[0] as SimPe.Plugin.GeometryDataContainer;
-				foreach (SimPe.Plugin.Gmdc.GmdcGroup g in gmdc.Groups)
+				GeometryDataContainer gmdc =
+					rcol.Blocks[0] as GeometryDataContainer;
+				foreach (Gmdc.GmdcGroup g in gmdc.Groups)
 				{
 					fct += (uint)g.FaceCount;
 					vct += (uint)g.UsedVertexCount;
@@ -1056,7 +1056,7 @@ namespace SimPe.Plugin.Scanner
 
 		public void UpdateState(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
+			PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{

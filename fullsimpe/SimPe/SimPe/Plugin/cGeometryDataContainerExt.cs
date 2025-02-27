@@ -30,7 +30,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// This class contains the Geometric Data of an Object
 	/// </summary>
-	public class GeometryDataContainerExt : System.IDisposable
+	public class GeometryDataContainerExt : IDisposable
 	{
 		bool joints;
 
@@ -72,7 +72,7 @@ namespace SimPe.Plugin
 			get;
 		}
 
-		public Ambertation.Scenes.Scene GetScene(
+		public Scene GetScene(
 			string absimgpath,
 			string imgfolder,
 			ElementOrder component
@@ -81,7 +81,7 @@ namespace SimPe.Plugin
 			return GetScene(Gmdc.Groups, absimgpath, imgfolder, component);
 		}
 
-		public Ambertation.Scenes.Scene GetScene(
+		public Scene GetScene(
 			string absimgpath,
 			ElementOrder component
 		)
@@ -89,13 +89,13 @@ namespace SimPe.Plugin
 			return GetScene(Gmdc.Groups, absimgpath, null, component);
 		}
 
-		public Ambertation.Scenes.Scene GetScene(ElementOrder component)
+		public Scene GetScene(ElementOrder component)
 		{
 			return GetScene(Gmdc.Groups, null, null, component);
 		}
 
 		void AddJoint(
-			Ambertation.Scenes.Joint parent,
+			Joint parent,
 			int index,
 			Hashtable jointmap,
 			ElementOrder component
@@ -112,7 +112,7 @@ namespace SimPe.Plugin
 			}
 
 			GmdcJoint j = Gmdc.Joints[index];
-			Ambertation.Scenes.Joint nj = parent.CreateChild(j.Name);
+			Joint nj = parent.CreateChild(j.Name);
 			jointmap[index] = nj;
 
 			if (j.AssignedTransformNode != null)
@@ -138,7 +138,7 @@ namespace SimPe.Plugin
 				IntArrayList li = j.AssignedTransformNode.ChildBlocks;
 				foreach (int i in li)
 				{
-					SimPe.Interfaces.Scenegraph.ICresChildren cld =
+					Interfaces.Scenegraph.ICresChildren cld =
 						j.AssignedTransformNode.GetBlock(i);
 					if (cld is TransformNode)
 					{
@@ -184,7 +184,7 @@ namespace SimPe.Plugin
 			return jointmap;
 		}
 
-		public Ambertation.Scenes.Scene GetScene(
+		public Scene GetScene(
 			GmdcGroups groups,
 			ElementOrder component
 		)
@@ -192,7 +192,7 @@ namespace SimPe.Plugin
 			return GetScene(groups, null, null, component);
 		}
 
-		public Ambertation.Scenes.Scene GetScene(
+		public Scene GetScene(
 			GmdcGroups groups,
 			string absimgpath,
 			ElementOrder component
@@ -201,7 +201,7 @@ namespace SimPe.Plugin
 			return GetScene(groups, absimgpath, null, component);
 		}
 
-		public Ambertation.Scenes.Scene GetScene(
+		public Scene GetScene(
 			GmdcGroups groups,
 			string absimgpath,
 			string imgfolder,
@@ -240,7 +240,7 @@ namespace SimPe.Plugin
 			}
 
 			TextureLocator tl = new TextureLocator(Gmdc.Parent.Package);
-			System.Collections.Hashtable txmts = tl.FindMaterials(Gmdc.Parent);
+			Hashtable txmts = tl.FindMaterials(Gmdc.Parent);
 			foreach (string key in UserTxmtMap.Keys)
 			{
 				object o = UserTxmtMap[key];
@@ -266,8 +266,8 @@ namespace SimPe.Plugin
 
 			foreach (GmdcGroup g in groups)
 			{
-				Ambertation.Scenes.Material mat =
-					txmts[g.Name] as Ambertation.Scenes.Material;
+				Material mat =
+					txmts[g.Name] as Material;
 				if (mat == null)
 				{
 					mat = scn.CreateMaterial("mat_" + g.Name);
@@ -297,7 +297,7 @@ namespace SimPe.Plugin
 					}
 					catch { }
 				}
-				Ambertation.Scenes.Mesh m = scn.CreateMesh(g.Name, mat);
+				Mesh m = scn.CreateMesh(g.Name, mat);
 
 				GmdcElement vertexe = g.Link.FindElementType(ElementIdentity.Vertex);
 				//	GmdcElement vertexme = g.Link.FindElementType(ElementIdentity.MorphVertexDelta);
@@ -387,7 +387,7 @@ namespace SimPe.Plugin
 
 		void AddEnvelopes(
 			GmdcGroup g,
-			Ambertation.Scenes.Mesh m,
+			Mesh m,
 			GmdcElement bonee,
 			GmdcElement bonewighte,
 			Hashtable jointmap
@@ -396,7 +396,7 @@ namespace SimPe.Plugin
 			if (bonee != null && true)
 			{
 				int pos = 0;
-				foreach (SimPe.Plugin.Gmdc.GmdcElementValueOneInt vi in bonee.Values)
+				foreach (GmdcElementValueOneInt vi in bonee.Values)
 				{
 					byte[] data = vi.Bytes;
 					IntArrayList used = new IntArrayList();
@@ -413,8 +413,8 @@ namespace SimPe.Plugin
 							}
 
 							used.Add(bnr);
-							Ambertation.Scenes.Joint nj =
-								jointmap[bnr] as Ambertation.Scenes.Joint;
+							Joint nj =
+								jointmap[bnr] as Joint;
 							if (nj != null)
 							{
 								double w = 1;
@@ -422,7 +422,7 @@ namespace SimPe.Plugin
 								{
 									if (bonewighte.Values.Count > pos)
 									{
-										SimPe.Plugin.Gmdc.GmdcElementValueBase v =
+										GmdcElementValueBase v =
 											bonewighte.Values[pos];
 										if (datapos < v.Data.Length)
 										{
@@ -433,7 +433,7 @@ namespace SimPe.Plugin
 
 								//if there is no envelope for nj, make sure we get a new one
 								//with pos 0-Weights inserted
-								Ambertation.Scenes.Envelope e = m.GetJointEnvelope(
+								Envelope e = m.GetJointEnvelope(
 									nj,
 									pos
 								);

@@ -46,7 +46,7 @@ namespace SimPe.Interfaces.Plugin.Scanner
 		/// <remarks>This needs to update the cache Item!</remarks>
 		void ScanPackage(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
+			Cache.PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
 		);
 
@@ -58,7 +58,7 @@ namespace SimPe.Interfaces.Plugin.Scanner
 		/// <param name="lvi">The ListView Item that is used to display</param>
 		void UpdateState(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
+			Cache.PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
 		);
 

@@ -6,7 +6,7 @@ using SimPe.Interfaces.Plugin;
 namespace SimPe.Plugin
 {
 	public partial class GWInvPackedFileUI
-		: SimPe.Windows.Forms.WrapperBaseControl,
+		: Windows.Forms.WrapperBaseControl,
 			IPackedFileUI
 	{
 		protected new GWInvPackedFileWrapper Wrapper => base.Wrapper as GWInvPackedFileWrapper;
@@ -36,7 +36,7 @@ namespace SimPe.Plugin
 			label122.Visible = false;
 			label124.Visible = false;
 			textBox1.Visible = false;
-			this.BackgroundImageLocation = new System.Drawing.Point(1240, 0);
+			this.BackgroundImageLocation = new Point(1240, 0);
 			ushort epsrun = Wrapper.loweps;
 			ushort hiprun = Wrapper.hieps;
 			gwinvo.Text = Convert.ToString(Wrapper.Trunned);

@@ -27,13 +27,13 @@ namespace SimPe.PackedFiles.UserInterface
 	/// <summary>
 	/// Summary description for BhavInstListItemUI.
 	/// </summary>
-	public class BhavInstListItemUI : System.Windows.Forms.UserControl
+	public class BhavInstListItemUI : UserControl
 	{
 		#region Control variables
-		private System.Windows.Forms.Label instrText;
-		private System.Windows.Forms.LinkLabel trueTarget;
-		private System.Windows.Forms.LinkLabel falseTarget;
-		private System.Windows.Forms.TextBox bhavInstListItem;
+		private Label instrText;
+		private LinkLabel trueTarget;
+		private LinkLabel falseTarget;
+		private TextBox bhavInstListItem;
 
 		/// <summary>
 		/// Required designer variable.
@@ -223,7 +223,7 @@ namespace SimPe.PackedFiles.UserInterface
 			return str;
 		}
 
-		private void WrapperChanged(object sender, System.EventArgs e)
+		private void WrapperChanged(object sender, EventArgs e)
 		{
 			if (wrapper == null || index == -1)
 			{
@@ -258,7 +258,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		private void FiletableRefresh(object sender, System.EventArgs e)
+		private void FiletableRefresh(object sender, EventArgs e)
 		{
 			if (wrapper == null || index == -1)
 			{
@@ -278,10 +278,10 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(BhavInstListItemUI));
-			this.instrText = new System.Windows.Forms.Label();
-			this.trueTarget = new System.Windows.Forms.LinkLabel();
-			this.falseTarget = new System.Windows.Forms.LinkLabel();
-			this.bhavInstListItem = new System.Windows.Forms.TextBox();
+			this.instrText = new Label();
+			this.trueTarget = new LinkLabel();
+			this.falseTarget = new LinkLabel();
+			this.bhavInstListItem = new TextBox();
 			this.bhavInstListItem.SuspendLayout();
 			this.SuspendLayout();
 			//
@@ -294,7 +294,7 @@ namespace SimPe.PackedFiles.UserInterface
 				"instrText.AccessibleName"
 			);
 			this.instrText.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("instrText.Anchor")
 				)
 			);
@@ -303,7 +303,7 @@ namespace SimPe.PackedFiles.UserInterface
 			);
 			this.instrText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.instrText.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("instrText.Dock"))
+				(DockStyle)(resources.GetObject("instrText.Dock"))
 			);
 			this.instrText.Enabled = ((bool)(resources.GetObject("instrText.Enabled")));
 			this.instrText.Font = (
@@ -321,14 +321,14 @@ namespace SimPe.PackedFiles.UserInterface
 				(int)(resources.GetObject("instrText.ImageIndex"))
 			);
 			this.instrText.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("instrText.ImeMode"))
+				(ImeMode)(resources.GetObject("instrText.ImeMode"))
 			);
 			this.instrText.Location = (
 				(System.Drawing.Point)(resources.GetObject("instrText.Location"))
 			);
 			this.instrText.Name = "instrText";
 			this.instrText.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("instrText.RightToLeft")
 				)
 			);
@@ -346,7 +346,7 @@ namespace SimPe.PackedFiles.UserInterface
 			);
 			this.instrText.UseMnemonic = false;
 			this.instrText.Visible = ((bool)(resources.GetObject("instrText.Visible")));
-			this.instrText.Click += new System.EventHandler(this.Control_Click);
+			this.instrText.Click += new EventHandler(this.Control_Click);
 			//
 			// trueTarget
 			//
@@ -357,7 +357,7 @@ namespace SimPe.PackedFiles.UserInterface
 				"trueTarget.AccessibleName"
 			);
 			this.trueTarget.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("trueTarget.Anchor")
 				)
 			);
@@ -365,7 +365,7 @@ namespace SimPe.PackedFiles.UserInterface
 				(bool)(resources.GetObject("trueTarget.AutoSize"))
 			);
 			this.trueTarget.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("trueTarget.Dock"))
+				(DockStyle)(resources.GetObject("trueTarget.Dock"))
 			);
 			this.trueTarget.Enabled = (
 				(bool)(resources.GetObject("trueTarget.Enabled"))
@@ -385,12 +385,12 @@ namespace SimPe.PackedFiles.UserInterface
 				(int)(resources.GetObject("trueTarget.ImageIndex"))
 			);
 			this.trueTarget.ImeMode = (
-				(System.Windows.Forms.ImeMode)(
+				(ImeMode)(
 					resources.GetObject("trueTarget.ImeMode")
 				)
 			);
 			this.trueTarget.LinkArea = (
-				(System.Windows.Forms.LinkArea)(
+				(LinkArea)(
 					resources.GetObject("trueTarget.LinkArea")
 				)
 			);
@@ -399,7 +399,7 @@ namespace SimPe.PackedFiles.UserInterface
 			);
 			this.trueTarget.Name = "trueTarget";
 			this.trueTarget.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("trueTarget.RightToLeft")
 				)
 			);
@@ -418,9 +418,9 @@ namespace SimPe.PackedFiles.UserInterface
 			this.trueTarget.Visible = (
 				(bool)(resources.GetObject("trueTarget.Visible"))
 			);
-			this.trueTarget.Click += new System.EventHandler(this.Control_Click);
+			this.trueTarget.Click += new EventHandler(this.Control_Click);
 			this.trueTarget.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.Target_LinkClicked
 				);
 			//
@@ -433,7 +433,7 @@ namespace SimPe.PackedFiles.UserInterface
 				"falseTarget.AccessibleName"
 			);
 			this.falseTarget.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("falseTarget.Anchor")
 				)
 			);
@@ -441,7 +441,7 @@ namespace SimPe.PackedFiles.UserInterface
 				(bool)(resources.GetObject("falseTarget.AutoSize"))
 			);
 			this.falseTarget.Dock = (
-				(System.Windows.Forms.DockStyle)(
+				(DockStyle)(
 					resources.GetObject("falseTarget.Dock")
 				)
 			);
@@ -463,12 +463,12 @@ namespace SimPe.PackedFiles.UserInterface
 				(int)(resources.GetObject("falseTarget.ImageIndex"))
 			);
 			this.falseTarget.ImeMode = (
-				(System.Windows.Forms.ImeMode)(
+				(ImeMode)(
 					resources.GetObject("falseTarget.ImeMode")
 				)
 			);
 			this.falseTarget.LinkArea = (
-				(System.Windows.Forms.LinkArea)(
+				(LinkArea)(
 					resources.GetObject("falseTarget.LinkArea")
 				)
 			);
@@ -477,7 +477,7 @@ namespace SimPe.PackedFiles.UserInterface
 			);
 			this.falseTarget.Name = "falseTarget";
 			this.falseTarget.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("falseTarget.RightToLeft")
 				)
 			);
@@ -496,9 +496,9 @@ namespace SimPe.PackedFiles.UserInterface
 			this.falseTarget.Visible = (
 				(bool)(resources.GetObject("falseTarget.Visible"))
 			);
-			this.falseTarget.Click += new System.EventHandler(this.Control_Click);
+			this.falseTarget.Click += new EventHandler(this.Control_Click);
 			this.falseTarget.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.Target_LinkClicked
 				);
 			//
@@ -511,7 +511,7 @@ namespace SimPe.PackedFiles.UserInterface
 				"bhavInstListItem.AccessibleName"
 			);
 			this.bhavInstListItem.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("bhavInstListItem.Anchor")
 				)
 			);
@@ -530,7 +530,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.bhavInstListItem.Controls.Add(this.instrText);
 			this.bhavInstListItem.Cursor = System.Windows.Forms.Cursors.Default;
 			this.bhavInstListItem.Dock = (
-				(System.Windows.Forms.DockStyle)(
+				(DockStyle)(
 					resources.GetObject("bhavInstListItem.Dock")
 				)
 			);
@@ -541,7 +541,7 @@ namespace SimPe.PackedFiles.UserInterface
 				(System.Drawing.Font)(resources.GetObject("bhavInstListItem.Font"))
 			);
 			this.bhavInstListItem.ImeMode = (
-				(System.Windows.Forms.ImeMode)(
+				(ImeMode)(
 					resources.GetObject("bhavInstListItem.ImeMode")
 				)
 			);
@@ -559,12 +559,12 @@ namespace SimPe.PackedFiles.UserInterface
 				(char)(resources.GetObject("bhavInstListItem.PasswordChar"))
 			);
 			this.bhavInstListItem.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("bhavInstListItem.RightToLeft")
 				)
 			);
 			this.bhavInstListItem.ScrollBars = (
-				(System.Windows.Forms.ScrollBars)(
+				(ScrollBars)(
 					resources.GetObject("bhavInstListItem.ScrollBars")
 				)
 			);
@@ -576,7 +576,7 @@ namespace SimPe.PackedFiles.UserInterface
 			);
 			this.bhavInstListItem.Text = resources.GetString("bhavInstListItem.Text");
 			this.bhavInstListItem.TextAlign = (
-				(System.Windows.Forms.HorizontalAlignment)(
+				(HorizontalAlignment)(
 					resources.GetObject("bhavInstListItem.TextAlign")
 				)
 			);
@@ -586,7 +586,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.bhavInstListItem.WordWrap = (
 				(bool)(resources.GetObject("bhavInstListItem.WordWrap"))
 			);
-			this.bhavInstListItem.KeyDown += new System.Windows.Forms.KeyEventHandler(
+			this.bhavInstListItem.KeyDown += new KeyEventHandler(
 				this.bhavInstListItem_KeyDown
 			);
 			//
@@ -611,26 +611,26 @@ namespace SimPe.PackedFiles.UserInterface
 			this.Enabled = ((bool)(resources.GetObject("$this.Enabled")));
 			this.Font = ((System.Drawing.Font)(resources.GetObject("$this.Font")));
 			this.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("$this.ImeMode"))
+				(ImeMode)(resources.GetObject("$this.ImeMode"))
 			);
 			this.Location = (
 				(System.Drawing.Point)(resources.GetObject("$this.Location"))
 			);
 			this.Name = "BhavInstListItemUI";
 			this.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("$this.RightToLeft")
 				)
 			);
 			this.Size = ((System.Drawing.Size)(resources.GetObject("$this.Size")));
-			this.Enter += new System.EventHandler(this.bhavInstListItemUI_Enter);
-			this.Leave += new System.EventHandler(this.bhavInstListItemUI_Leave);
+			this.Enter += new EventHandler(this.bhavInstListItemUI_Enter);
+			this.Leave += new EventHandler(this.bhavInstListItemUI_Leave);
 			this.bhavInstListItem.ResumeLayout(false);
 			this.ResumeLayout(false);
 		}
 		#endregion
 
-		private void bhavInstListItemUI_Enter(object sender, System.EventArgs e)
+		private void bhavInstListItemUI_Enter(object sender, EventArgs e)
 		{
 			//MakeSelected();
 			this.BackColor = this.bhavInstListItem.BackColor = System
@@ -640,7 +640,7 @@ namespace SimPe.PackedFiles.UserInterface
 			OnSelected(e);
 		}
 
-		private void bhavInstListItemUI_Leave(object sender, System.EventArgs e)
+		private void bhavInstListItemUI_Leave(object sender, EventArgs e)
 		{
 			this.BackColor = this.bhavInstListItem.BackColor = System
 				.Drawing
@@ -651,20 +651,20 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void bhavInstListItem_KeyDown(
 			object sender,
-			System.Windows.Forms.KeyEventArgs e
+			KeyEventArgs e
 		)
 		{
 			this.OnKeyDown(e);
 		}
 
-		private void Control_Click(object sender, System.EventArgs e)
+		private void Control_Click(object sender, EventArgs e)
 		{
 			this.Focus();
 		}
 
 		private void Target_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			OnTargetClick(e);
@@ -672,7 +672,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void moveUp_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			OnMoveUp(e);
@@ -680,7 +680,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void moveDown_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			OnMoveDown(e);

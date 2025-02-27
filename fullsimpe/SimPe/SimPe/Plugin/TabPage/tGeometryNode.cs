@@ -30,20 +30,20 @@ namespace SimPe.Plugin.TabPage
 		//System.Windows.Forms.UserControl
 		System.Windows.Forms.TabPage
 	{
-		private System.Windows.Forms.GroupBox groupBox11;
-		internal System.Windows.Forms.TextBox tb_gn_ver;
-		private System.Windows.Forms.Label label29;
-		internal System.Windows.Forms.TextBox tb_gn_uk3;
-		private System.Windows.Forms.Label label33;
-		internal System.Windows.Forms.TextBox tb_gn_uk2;
-		private System.Windows.Forms.Label label35;
-		internal System.Windows.Forms.TextBox tb_gn_count;
-		private System.Windows.Forms.Label label36;
-		internal System.Windows.Forms.TextBox tb_gn_uk1;
-		private System.Windows.Forms.Label label37;
-		private System.Windows.Forms.GroupBox groupBox17;
-		internal System.Windows.Forms.ComboBox cb_gn_list;
-		internal System.Windows.Forms.TabControl tc_gn;
+		private GroupBox groupBox11;
+		internal TextBox tb_gn_ver;
+		private Label label29;
+		internal TextBox tb_gn_uk3;
+		private Label label33;
+		internal TextBox tb_gn_uk2;
+		private Label label35;
+		internal TextBox tb_gn_count;
+		private Label label36;
+		internal TextBox tb_gn_uk1;
+		private Label label37;
+		private GroupBox groupBox17;
+		internal ComboBox cb_gn_list;
+		internal TabControl tc_gn;
 
 		//private System.ComponentModel.IContainer components;
 
@@ -90,20 +90,20 @@ namespace SimPe.Plugin.TabPage
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.groupBox11 = new System.Windows.Forms.GroupBox();
-			this.tb_gn_ver = new System.Windows.Forms.TextBox();
-			this.label29 = new System.Windows.Forms.Label();
-			this.tb_gn_uk3 = new System.Windows.Forms.TextBox();
-			this.label33 = new System.Windows.Forms.Label();
-			this.tb_gn_uk2 = new System.Windows.Forms.TextBox();
-			this.label35 = new System.Windows.Forms.Label();
-			this.tb_gn_count = new System.Windows.Forms.TextBox();
-			this.label36 = new System.Windows.Forms.Label();
-			this.tb_gn_uk1 = new System.Windows.Forms.TextBox();
-			this.label37 = new System.Windows.Forms.Label();
-			this.groupBox17 = new System.Windows.Forms.GroupBox();
-			this.tc_gn = new System.Windows.Forms.TabControl();
-			this.cb_gn_list = new System.Windows.Forms.ComboBox();
+			this.groupBox11 = new GroupBox();
+			this.tb_gn_ver = new TextBox();
+			this.label29 = new Label();
+			this.tb_gn_uk3 = new TextBox();
+			this.label33 = new Label();
+			this.tb_gn_uk2 = new TextBox();
+			this.label35 = new Label();
+			this.tb_gn_count = new TextBox();
+			this.label36 = new Label();
+			this.tb_gn_uk1 = new TextBox();
+			this.label37 = new Label();
+			this.groupBox17 = new GroupBox();
+			this.tc_gn = new TabControl();
+			this.cb_gn_list = new ComboBox();
 			this.groupBox11.SuspendLayout();
 			this.groupBox17.SuspendLayout();
 			this.SuspendLayout();
@@ -161,7 +161,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_gn_ver.Size = new System.Drawing.Size(88, 21);
 			this.tb_gn_ver.TabIndex = 22;
 			this.tb_gn_ver.Text = "0x00000000";
-			this.tb_gn_ver.TextChanged += new System.EventHandler(
+			this.tb_gn_ver.TextChanged += new EventHandler(
 				this.GrNSettingsChange
 			);
 			//
@@ -195,7 +195,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_gn_uk3.Size = new System.Drawing.Size(88, 21);
 			this.tb_gn_uk3.TabIndex = 14;
 			this.tb_gn_uk3.Text = "0x00";
-			this.tb_gn_uk3.TextChanged += new System.EventHandler(
+			this.tb_gn_uk3.TextChanged += new EventHandler(
 				this.GrNSettingsChange
 			);
 			//
@@ -229,7 +229,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_gn_uk2.Size = new System.Drawing.Size(88, 21);
 			this.tb_gn_uk2.TabIndex = 10;
 			this.tb_gn_uk2.Text = "0x0000";
-			this.tb_gn_uk2.TextChanged += new System.EventHandler(
+			this.tb_gn_uk2.TextChanged += new EventHandler(
 				this.GrNSettingsChange
 			);
 			//
@@ -295,7 +295,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_gn_uk1.Size = new System.Drawing.Size(88, 21);
 			this.tb_gn_uk1.TabIndex = 6;
 			this.tb_gn_uk1.Text = "0x0000";
-			this.tb_gn_uk1.TextChanged += new System.EventHandler(
+			this.tb_gn_uk1.TextChanged += new EventHandler(
 				this.GrNSettingsChange
 			);
 			//
@@ -318,7 +318,7 @@ namespace SimPe.Plugin.TabPage
 			// groupBox17
 			//
 			this.groupBox17.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -349,7 +349,7 @@ namespace SimPe.Plugin.TabPage
 			// tc_gn
 			//
 			this.tc_gn.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -376,7 +376,7 @@ namespace SimPe.Plugin.TabPage
 			// cb_gn_list
 			//
 			this.cb_gn_list.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -401,7 +401,7 @@ namespace SimPe.Plugin.TabPage
 			this.cb_gn_list.Name = "cb_gn_list";
 			this.cb_gn_list.Size = new System.Drawing.Size(528, 21);
 			this.cb_gn_list.TabIndex = 9;
-			this.cb_gn_list.SelectedIndexChanged += new System.EventHandler(
+			this.cb_gn_list.SelectedIndexChanged += new EventHandler(
 				this.SelectGmndChildBlock
 			);
 			//
@@ -415,7 +415,7 @@ namespace SimPe.Plugin.TabPage
 		#endregion
 
 
-		private void GrNSettingsChange(object sender, System.EventArgs e)
+		private void GrNSettingsChange(object sender, EventArgs e)
 		{
 			if (this.Tag == null)
 			{
@@ -424,7 +424,7 @@ namespace SimPe.Plugin.TabPage
 
 			try
 			{
-				SimPe.Plugin.GeometryNode arb = (SimPe.Plugin.GeometryNode)Tag;
+				Plugin.GeometryNode arb = (Plugin.GeometryNode)Tag;
 
 				arb.Version = Convert.ToUInt32(tb_gn_ver.Text, 16);
 				arb.Unknown1 = (short)Convert.ToUInt16(tb_gn_uk1.Text, 16);
@@ -439,7 +439,7 @@ namespace SimPe.Plugin.TabPage
 			}
 		}
 
-		private void SelectGmndChildBlock(object sender, System.EventArgs e)
+		private void SelectGmndChildBlock(object sender, EventArgs e)
 		{
 			if (this.cb_gn_list.Tag != null)
 			{
@@ -454,7 +454,7 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				cb_gn_list.Tag = true;
-				SimPe.CountedListItem cli = (SimPe.CountedListItem)
+				CountedListItem cli = (CountedListItem)
 					cb_gn_list.Items[cb_gn_list.SelectedIndex];
 				AbstractRcolBlock rb = (AbstractRcolBlock)cli.Object;
 

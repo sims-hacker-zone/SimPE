@@ -39,7 +39,7 @@ namespace SimPe.Plugin
 			ids = new ArrayList();
 		}
 
-		public void LoadThumbnail(ScannerItem si, SimPe.Cache.PackageState ps)
+		public void LoadThumbnail(ScannerItem si, PackageState ps)
 		{
 			if (si.PackageCacheItem.Type == PackageType.Neighbourhood)
 			{
@@ -76,7 +76,7 @@ namespace SimPe.Plugin
 
 		public void ScanPackage(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
+			PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
@@ -122,7 +122,7 @@ namespace SimPe.Plugin
 
 		public void UpdateState(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
+			PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
@@ -171,7 +171,7 @@ namespace SimPe.Plugin
 				ll.AutoSize = true;
 				ll.Text =
 					"Create Unique ID - Disabled:\r\nChanging Neighbourhood IDs Destroys Neighbourhood Stories\r\nYour game will correctly fix Neighbourhood IDs if needed";
-				ll.Font = new System.Drawing.Font(
+				ll.Font = new Font(
 					"Verdana",
 					ll.Font.Size,
 					System.Drawing.FontStyle.Bold
@@ -184,7 +184,7 @@ namespace SimPe.Plugin
 					new System.Windows.Forms.LinkLabel();
 				ll.AutoSize = true;
 				ll.Text = "Create Unique ID";
-				ll.Font = new System.Drawing.Font(
+				ll.Font = new Font(
 					"Verdana",
 					ll.Font.Size,
 					System.Drawing.FontStyle.Bold
@@ -246,7 +246,7 @@ namespace SimPe.Plugin
 				{
 					WaitingScreen.UpdateMessage(si.FileName);
 
-					SimPe.Cache.PackageState ps = si.PackageCacheItem.FindState(
+					PackageState ps = si.PackageCacheItem.FindState(
 						this.Uid,
 						true
 					);

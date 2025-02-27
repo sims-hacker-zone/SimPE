@@ -22,7 +22,7 @@ namespace SimPe.Plugin.Tool.Dockable
 	/// <summary>
 	/// Tghe Object Workshop as new Dockable Tool
 	/// </summary>
-	public class ObectWorkshopDockTool : SimPe.Interfaces.IDockableTool
+	public class ObectWorkshopDockTool : Interfaces.IDockableTool
 	{
 		dcObjectWorkshop dc;
 
@@ -38,9 +38,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			return dc;
 		}
 
-		public event SimPe.Events.ChangedResourceEvent ShowNewResource;
+		public event Events.ChangedResourceEvent ShowNewResource;
 
-		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es)
+		public void RefreshDock(object sender, Events.ResourceEventArgs es)
 		{
 		}
 

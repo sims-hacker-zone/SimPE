@@ -28,8 +28,8 @@ namespace SimPe.PackedFiles.Wrapper
 	/// </summary>
 	public class Xml
 		: AbstractWrapper,
-			SimPe.Interfaces.Plugin.IFileWrapper,
-			SimPe.Interfaces.Plugin.IFileWrapperSaveExtension
+			IFileWrapper,
+			IFileWrapperSaveExtension
 	{
 		/// <summary>
 		/// the xml text
@@ -61,7 +61,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new SimPe.PackedFiles.UserInterface.Xml();
+			return new UserInterface.Xml();
 		}
 
 		public Xml()

@@ -30,15 +30,15 @@ namespace SimPe.Plugin.TabPage
 		//System.Windows.Forms.UserControl
 		System.Windows.Forms.TabPage
 	{
-		private System.Windows.Forms.Label label5;
-		internal System.Windows.Forms.ListBox lbpart;
-		private System.Windows.Forms.TextBox tbparttype;
-		private System.Windows.Forms.TextBox tbpartdsc;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.TextBox tbpartdata;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.LinkLabel linkLabel7;
-		private System.Windows.Forms.LinkLabel linkLabel8;
+		private Label label5;
+		internal ListBox lbpart;
+		private TextBox tbparttype;
+		private TextBox tbpartdsc;
+		private Label label6;
+		private TextBox tbpartdata;
+		private Label label7;
+		private LinkLabel linkLabel7;
+		private LinkLabel linkLabel8;
 
 		/// <summary>
 		/// Required designer variable.
@@ -89,15 +89,15 @@ namespace SimPe.Plugin.TabPage
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.linkLabel7 = new System.Windows.Forms.LinkLabel();
-			this.linkLabel8 = new System.Windows.Forms.LinkLabel();
-			this.tbpartdata = new System.Windows.Forms.TextBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.tbpartdsc = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.tbparttype = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.lbpart = new System.Windows.Forms.ListBox();
+			this.linkLabel7 = new LinkLabel();
+			this.linkLabel8 = new LinkLabel();
+			this.tbpartdata = new TextBox();
+			this.label7 = new Label();
+			this.tbpartdsc = new TextBox();
+			this.label6 = new Label();
+			this.tbparttype = new TextBox();
+			this.label5 = new Label();
+			this.lbpart = new ListBox();
 			this.SuspendLayout();
 			//
 			// tabPage3
@@ -120,7 +120,7 @@ namespace SimPe.Plugin.TabPage
 			// linkLabel7
 			//
 			this.linkLabel7.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -142,14 +142,14 @@ namespace SimPe.Plugin.TabPage
 			this.linkLabel7.TabStop = true;
 			this.linkLabel7.Text = "delete";
 			this.linkLabel7.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.linkLabel7_LinkClicked
 				);
 			//
 			// linkLabel8
 			//
 			this.linkLabel8.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -171,14 +171,14 @@ namespace SimPe.Plugin.TabPage
 			this.linkLabel8.TabStop = true;
 			this.linkLabel8.Text = "add";
 			this.linkLabel8.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.linkLabel8_LinkClicked
 				);
 			//
 			// tbpartdata
 			//
 			this.tbpartdata.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -199,7 +199,7 @@ namespace SimPe.Plugin.TabPage
 			this.tbpartdata.Size = new System.Drawing.Size(512, 21);
 			this.tbpartdata.TabIndex = 18;
 			this.tbpartdata.Text = "";
-			this.tbpartdata.TextChanged += new System.EventHandler(this.ChangedPart);
+			this.tbpartdata.TextChanged += new EventHandler(this.ChangedPart);
 			//
 			// label7
 			//
@@ -220,7 +220,7 @@ namespace SimPe.Plugin.TabPage
 			// tbpartdsc
 			//
 			this.tbpartdsc.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -241,7 +241,7 @@ namespace SimPe.Plugin.TabPage
 			this.tbpartdsc.Size = new System.Drawing.Size(512, 21);
 			this.tbpartdsc.TabIndex = 16;
 			this.tbpartdsc.Text = "";
-			this.tbpartdsc.TextChanged += new System.EventHandler(this.ChangedPart);
+			this.tbpartdsc.TextChanged += new EventHandler(this.ChangedPart);
 			//
 			// label6
 			//
@@ -262,7 +262,7 @@ namespace SimPe.Plugin.TabPage
 			// tbparttype
 			//
 			this.tbparttype.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -283,7 +283,7 @@ namespace SimPe.Plugin.TabPage
 			this.tbparttype.Size = new System.Drawing.Size(512, 21);
 			this.tbparttype.TabIndex = 14;
 			this.tbparttype.Text = "";
-			this.tbparttype.TextChanged += new System.EventHandler(this.ChangedPart);
+			this.tbparttype.TextChanged += new EventHandler(this.ChangedPart);
 			//
 			// label5
 			//
@@ -304,7 +304,7 @@ namespace SimPe.Plugin.TabPage
 			// lbpart
 			//
 			this.lbpart.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -326,7 +326,7 @@ namespace SimPe.Plugin.TabPage
 			this.lbpart.Name = "lbpart";
 			this.lbpart.Size = new System.Drawing.Size(520, 112);
 			this.lbpart.TabIndex = 13;
-			this.lbpart.SelectedIndexChanged += new System.EventHandler(
+			this.lbpart.SelectedIndexChanged += new EventHandler(
 				this.SelectPart
 			);
 			//
@@ -338,7 +338,7 @@ namespace SimPe.Plugin.TabPage
 
 		//internal Shpe wrapper;
 
-		private void SelectPart(object sender, System.EventArgs e)
+		private void SelectPart(object sender, EventArgs e)
 		{
 			if (lbpart.Tag != null)
 			{
@@ -372,7 +372,7 @@ namespace SimPe.Plugin.TabPage
 			}
 		}
 
-		private void ChangedPart(object sender, System.EventArgs e)
+		private void ChangedPart(object sender, EventArgs e)
 		{
 			if (lbpart.Tag != null)
 			{
@@ -413,7 +413,7 @@ namespace SimPe.Plugin.TabPage
 		{
 			try
 			{
-				SimPe.Plugin.Shape shape = (SimPe.Plugin.Shape)this.Tag;
+				Shape shape = (Shape)this.Tag;
 
 				ShapePart[] parts = new ShapePart[lbpart.Items.Count];
 				for (int i = 0; i < parts.Length; i++)
@@ -428,13 +428,13 @@ namespace SimPe.Plugin.TabPage
 
 		private void linkLabel8_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			try
 			{
 				//Shpe wrp = (Shpe)wrapper;
-				SimPe.Plugin.Shape shape = (SimPe.Plugin.Shape)this.Tag;
+				Shape shape = (Shape)this.Tag;
 
 				ShapePart val = new ShapePart();
 				val.Subset = tbparttype.Text;
@@ -449,7 +449,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void linkLabel7_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lbpart.SelectedIndex < 0)

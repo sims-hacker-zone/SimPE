@@ -22,7 +22,7 @@ using SimPe.Events;
 namespace SimPe.Interfaces
 {
 	/// <summary>
-	/// The Basic Interface for ToolPlugins (dockable (<see cref="SimPe.Interfaces.IDockableTool"/>) or not (<see cref="SimPe.Interfaces.ITool"/>))
+	/// The Basic Interface for ToolPlugins (dockable (<see cref="IDockableTool"/>) or not (<see cref="ITool"/>))
 	/// </summary>
 	public interface IToolPlugin
 	{
@@ -47,8 +47,8 @@ namespace SimPe.Interfaces
 		/// <param name="pfd">The currently selected File</param>
 		/// <returns>true, if the package was changed</returns>
 		Plugin.IToolResult ShowDialog(
-			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			ref SimPe.Interfaces.Files.IPackageFile package
+			ref Files.IPackedFileDescriptor pfd,
+			ref Files.IPackageFile package
 		);
 
 		/// <summary>
@@ -58,8 +58,8 @@ namespace SimPe.Interfaces
 		/// <param name="package">The opened Package or null if none</param>
 		/// <returns>true if this tool is avaliable</returns>
 		bool IsEnabled(
-			Interfaces.Files.IPackedFileDescriptor pfd,
-			Interfaces.Files.IPackageFile package
+			Files.IPackedFileDescriptor pfd,
+			Files.IPackageFile package
 		);
 	}
 

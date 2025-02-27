@@ -7,7 +7,7 @@ namespace SimPe.Plugin.Downloads
 	/// </summary>
 	public class PackageInfoCollection
 		: System.IDisposable,
-			System.Collections.IEnumerable
+			IEnumerable
 	{
 		ArrayList list;
 

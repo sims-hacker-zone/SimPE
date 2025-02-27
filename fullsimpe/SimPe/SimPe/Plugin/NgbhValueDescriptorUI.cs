@@ -7,7 +7,7 @@ namespace SimPe.Plugin
 	/// Summary description for NgbhValueDescriptorUI.
 	/// </summary>
 	[System.ComponentModel.DefaultEvent("AddedNewItem")]
-	public class NgbhValueDescriptorUI : System.Windows.Forms.UserControl
+	public class NgbhValueDescriptorUI : UserControl
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -56,13 +56,13 @@ namespace SimPe.Plugin
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(NgbhValueDescriptorUI));
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.panel1 = new Panel();
 			this.pb = new Ambertation.Windows.Forms.LabeledProgressBar();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.cb = new System.Windows.Forms.CheckBox();
-			this.panel3 = new System.Windows.Forms.Panel();
-			this.lb = new System.Windows.Forms.Label();
-			this.ll = new System.Windows.Forms.LinkLabel();
+			this.panel2 = new Panel();
+			this.cb = new CheckBox();
+			this.panel3 = new Panel();
+			this.lb = new Label();
+			this.ll = new LinkLabel();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.panel3.SuspendLayout();
@@ -75,7 +75,7 @@ namespace SimPe.Plugin
 			);
 			this.panel1.AccessibleName = resources.GetString("panel1.AccessibleName");
 			this.panel1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("panel1.Anchor")
 				)
 			);
@@ -91,21 +91,21 @@ namespace SimPe.Plugin
 			);
 			this.panel1.Controls.Add(this.pb);
 			this.panel1.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("panel1.Dock"))
+				(DockStyle)(resources.GetObject("panel1.Dock"))
 			);
 			this.panel1.Enabled = ((bool)(resources.GetObject("panel1.Enabled")));
 			this.panel1.Font = (
 				(System.Drawing.Font)(resources.GetObject("panel1.Font"))
 			);
 			this.panel1.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("panel1.ImeMode"))
+				(ImeMode)(resources.GetObject("panel1.ImeMode"))
 			);
 			this.panel1.Location = (
 				(System.Drawing.Point)(resources.GetObject("panel1.Location"))
 			);
 			this.panel1.Name = "panel1";
 			this.panel1.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("panel1.RightToLeft")
 				)
 			);
@@ -123,7 +123,7 @@ namespace SimPe.Plugin
 			);
 			this.pb.AccessibleName = resources.GetString("pb.AccessibleName");
 			this.pb.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(resources.GetObject("pb.Anchor"))
+				(AnchorStyles)(resources.GetObject("pb.Anchor"))
 			);
 			this.pb.AutoScroll = ((bool)(resources.GetObject("pb.AutoScroll")));
 			this.pb.AutoScrollMargin = (
@@ -138,13 +138,13 @@ namespace SimPe.Plugin
 			);
 			this.pb.DisplayOffset = 0;
 			this.pb.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("pb.Dock"))
+				(DockStyle)(resources.GetObject("pb.Dock"))
 			);
 			this.pb.DockPadding.Bottom = 5;
 			this.pb.Enabled = ((bool)(resources.GetObject("pb.Enabled")));
 			this.pb.Font = ((System.Drawing.Font)(resources.GetObject("pb.Font")));
 			this.pb.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("pb.ImeMode"))
+				(ImeMode)(resources.GetObject("pb.ImeMode"))
 			);
 			this.pb.LabelText = resources.GetString("pb.LabelText");
 			this.pb.LabelWidth = ((int)(resources.GetObject("pb.LabelWidth")));
@@ -157,7 +157,7 @@ namespace SimPe.Plugin
 			this.pb.NumberOffset = 0;
 			this.pb.NumberScale = 1;
 			this.pb.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("pb.RightToLeft")
 				)
 			);
@@ -170,9 +170,9 @@ namespace SimPe.Plugin
 			this.pb.UnselectedColor = System.Drawing.Color.Black;
 			this.pb.Value = 0;
 			this.pb.Visible = ((bool)(resources.GetObject("pb.Visible")));
-			this.pb.Changed += new System.EventHandler(this.pb_Changed);
-			this.pb.Resize += new System.EventHandler(this.pb_Resize);
-			this.pb.Load += new System.EventHandler(this.pb_Load);
+			this.pb.Changed += new EventHandler(this.pb_Changed);
+			this.pb.Resize += new EventHandler(this.pb_Resize);
+			this.pb.Load += new EventHandler(this.pb_Load);
 			//
 			// panel2
 			//
@@ -181,7 +181,7 @@ namespace SimPe.Plugin
 			);
 			this.panel2.AccessibleName = resources.GetString("panel2.AccessibleName");
 			this.panel2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("panel2.Anchor")
 				)
 			);
@@ -197,21 +197,21 @@ namespace SimPe.Plugin
 			);
 			this.panel2.Controls.Add(this.cb);
 			this.panel2.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("panel2.Dock"))
+				(DockStyle)(resources.GetObject("panel2.Dock"))
 			);
 			this.panel2.Enabled = ((bool)(resources.GetObject("panel2.Enabled")));
 			this.panel2.Font = (
 				(System.Drawing.Font)(resources.GetObject("panel2.Font"))
 			);
 			this.panel2.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("panel2.ImeMode"))
+				(ImeMode)(resources.GetObject("panel2.ImeMode"))
 			);
 			this.panel2.Location = (
 				(System.Drawing.Point)(resources.GetObject("panel2.Location"))
 			);
 			this.panel2.Name = "panel2";
 			this.panel2.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("panel2.RightToLeft")
 				)
 			);
@@ -229,10 +229,10 @@ namespace SimPe.Plugin
 			);
 			this.cb.AccessibleName = resources.GetString("cb.AccessibleName");
 			this.cb.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(resources.GetObject("cb.Anchor"))
+				(AnchorStyles)(resources.GetObject("cb.Anchor"))
 			);
 			this.cb.Appearance = (
-				(System.Windows.Forms.Appearance)(resources.GetObject("cb.Appearance"))
+				(Appearance)(resources.GetObject("cb.Appearance"))
 			);
 			this.cb.BackgroundImage = (
 				(System.Drawing.Image)(resources.GetObject("cb.BackgroundImage"))
@@ -241,11 +241,11 @@ namespace SimPe.Plugin
 				(System.Drawing.ContentAlignment)(resources.GetObject("cb.CheckAlign"))
 			);
 			this.cb.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("cb.Dock"))
+				(DockStyle)(resources.GetObject("cb.Dock"))
 			);
 			this.cb.Enabled = ((bool)(resources.GetObject("cb.Enabled")));
 			this.cb.FlatStyle = (
-				(System.Windows.Forms.FlatStyle)(resources.GetObject("cb.FlatStyle"))
+				(FlatStyle)(resources.GetObject("cb.FlatStyle"))
 			);
 			this.cb.Font = ((System.Drawing.Font)(resources.GetObject("cb.Font")));
 			this.cb.Image = ((System.Drawing.Image)(resources.GetObject("cb.Image")));
@@ -254,14 +254,14 @@ namespace SimPe.Plugin
 			);
 			this.cb.ImageIndex = ((int)(resources.GetObject("cb.ImageIndex")));
 			this.cb.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("cb.ImeMode"))
+				(ImeMode)(resources.GetObject("cb.ImeMode"))
 			);
 			this.cb.Location = (
 				(System.Drawing.Point)(resources.GetObject("cb.Location"))
 			);
 			this.cb.Name = "cb";
 			this.cb.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("cb.RightToLeft")
 				)
 			);
@@ -272,7 +272,7 @@ namespace SimPe.Plugin
 				(System.Drawing.ContentAlignment)(resources.GetObject("cb.TextAlign"))
 			);
 			this.cb.Visible = ((bool)(resources.GetObject("cb.Visible")));
-			this.cb.CheckedChanged += new System.EventHandler(this.cb_CheckedChanged);
+			this.cb.CheckedChanged += new EventHandler(this.cb_CheckedChanged);
 			//
 			// panel3
 			//
@@ -281,7 +281,7 @@ namespace SimPe.Plugin
 			);
 			this.panel3.AccessibleName = resources.GetString("panel3.AccessibleName");
 			this.panel3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("panel3.Anchor")
 				)
 			);
@@ -298,21 +298,21 @@ namespace SimPe.Plugin
 			this.panel3.Controls.Add(this.lb);
 			this.panel3.Controls.Add(this.ll);
 			this.panel3.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("panel3.Dock"))
+				(DockStyle)(resources.GetObject("panel3.Dock"))
 			);
 			this.panel3.Enabled = ((bool)(resources.GetObject("panel3.Enabled")));
 			this.panel3.Font = (
 				(System.Drawing.Font)(resources.GetObject("panel3.Font"))
 			);
 			this.panel3.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("panel3.ImeMode"))
+				(ImeMode)(resources.GetObject("panel3.ImeMode"))
 			);
 			this.panel3.Location = (
 				(System.Drawing.Point)(resources.GetObject("panel3.Location"))
 			);
 			this.panel3.Name = "panel3";
 			this.panel3.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("panel3.RightToLeft")
 				)
 			);
@@ -330,11 +330,11 @@ namespace SimPe.Plugin
 			);
 			this.lb.AccessibleName = resources.GetString("lb.AccessibleName");
 			this.lb.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(resources.GetObject("lb.Anchor"))
+				(AnchorStyles)(resources.GetObject("lb.Anchor"))
 			);
 			this.lb.AutoSize = ((bool)(resources.GetObject("lb.AutoSize")));
 			this.lb.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("lb.Dock"))
+				(DockStyle)(resources.GetObject("lb.Dock"))
 			);
 			this.lb.Enabled = ((bool)(resources.GetObject("lb.Enabled")));
 			this.lb.Font = ((System.Drawing.Font)(resources.GetObject("lb.Font")));
@@ -344,14 +344,14 @@ namespace SimPe.Plugin
 			);
 			this.lb.ImageIndex = ((int)(resources.GetObject("lb.ImageIndex")));
 			this.lb.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("lb.ImeMode"))
+				(ImeMode)(resources.GetObject("lb.ImeMode"))
 			);
 			this.lb.Location = (
 				(System.Drawing.Point)(resources.GetObject("lb.Location"))
 			);
 			this.lb.Name = "lb";
 			this.lb.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("lb.RightToLeft")
 				)
 			);
@@ -370,11 +370,11 @@ namespace SimPe.Plugin
 			);
 			this.ll.AccessibleName = resources.GetString("ll.AccessibleName");
 			this.ll.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(resources.GetObject("ll.Anchor"))
+				(AnchorStyles)(resources.GetObject("ll.Anchor"))
 			);
 			this.ll.AutoSize = ((bool)(resources.GetObject("ll.AutoSize")));
 			this.ll.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("ll.Dock"))
+				(DockStyle)(resources.GetObject("ll.Dock"))
 			);
 			this.ll.Enabled = ((bool)(resources.GetObject("ll.Enabled")));
 			this.ll.Font = ((System.Drawing.Font)(resources.GetObject("ll.Font")));
@@ -384,17 +384,17 @@ namespace SimPe.Plugin
 			);
 			this.ll.ImageIndex = ((int)(resources.GetObject("ll.ImageIndex")));
 			this.ll.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("ll.ImeMode"))
+				(ImeMode)(resources.GetObject("ll.ImeMode"))
 			);
 			this.ll.LinkArea = (
-				(System.Windows.Forms.LinkArea)(resources.GetObject("ll.LinkArea"))
+				(LinkArea)(resources.GetObject("ll.LinkArea"))
 			);
 			this.ll.Location = (
 				(System.Drawing.Point)(resources.GetObject("ll.Location"))
 			);
 			this.ll.Name = "ll";
 			this.ll.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("ll.RightToLeft")
 				)
 			);
@@ -407,7 +407,7 @@ namespace SimPe.Plugin
 			);
 			this.ll.Visible = ((bool)(resources.GetObject("ll.Visible")));
 			this.ll.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.ll_LinkClicked
 				);
 			//
@@ -433,14 +433,14 @@ namespace SimPe.Plugin
 			this.Enabled = ((bool)(resources.GetObject("$this.Enabled")));
 			this.Font = ((System.Drawing.Font)(resources.GetObject("$this.Font")));
 			this.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("$this.ImeMode"))
+				(ImeMode)(resources.GetObject("$this.ImeMode"))
 			);
 			this.Location = (
 				(System.Drawing.Point)(resources.GetObject("$this.Location"))
 			);
 			this.Name = "NgbhValueDescriptorUI";
 			this.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("$this.RightToLeft")
 				)
 			);
@@ -469,13 +469,13 @@ namespace SimPe.Plugin
 		}
 
 		NgbhValueDescriptor des;
-		private System.Windows.Forms.Panel panel1;
+		private Panel panel1;
 		private Ambertation.Windows.Forms.LabeledProgressBar pb;
-		private System.Windows.Forms.Panel panel2;
-		private System.Windows.Forms.CheckBox cb;
-		private System.Windows.Forms.Panel panel3;
-		private System.Windows.Forms.LinkLabel ll;
-		private System.Windows.Forms.Label lb;
+		private Panel panel2;
+		private CheckBox cb;
+		private Panel panel3;
+		private LinkLabel ll;
+		private Label lb;
 
 		[System.ComponentModel.Browsable(false)]
 		public NgbhValueDescriptor NgbhValueDescriptor
@@ -578,7 +578,7 @@ namespace SimPe.Plugin
 			this.NgbhValueDescriptor = vds.SelectedDescriptor;
 		}
 
-		private void pb_Resize(object sender, System.EventArgs e)
+		private void pb_Resize(object sender, EventArgs e)
 		{
 		}
 
@@ -593,7 +593,7 @@ namespace SimPe.Plugin
 
 		private void ll_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (item != null)
@@ -635,7 +635,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void cb_CheckedChanged(object sender, System.EventArgs e)
+		private void cb_CheckedChanged(object sender, EventArgs e)
 		{
 			if (inter)
 			{
@@ -672,7 +672,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void pb_Changed(object sender, System.EventArgs e)
+		private void pb_Changed(object sender, EventArgs e)
 		{
 			if (inter)
 			{
@@ -697,7 +697,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void pb_Load(object sender, System.EventArgs e)
+		private void pb_Load(object sender, EventArgs e)
 		{
 		}
 	}

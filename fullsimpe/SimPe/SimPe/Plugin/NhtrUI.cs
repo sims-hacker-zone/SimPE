@@ -25,8 +25,8 @@ namespace SimPe.Plugin
 	public class NhtrUI
 		:
 		//System.Windows.Forms.UserControl
-		SimPe.Windows.Forms.WrapperBaseControl,
-			SimPe.Interfaces.Plugin.IPackedFileUI
+		Windows.Forms.WrapperBaseControl,
+			Interfaces.Plugin.IPackedFileUI
 	{
 		/// <summary>
 		/// Required designer variable.

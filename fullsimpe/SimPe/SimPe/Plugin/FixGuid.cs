@@ -57,14 +57,14 @@ namespace SimPe.Plugin
 		/// <param name="guids">List of GuidSet Objects</param>
 		public void FixGuids(ArrayList guids)
 		{
-			Interfaces.Files.IPackedFileDescriptor[] mpfds = package.FindFiles(
+			IPackedFileDescriptor[] mpfds = package.FindFiles(
 				Data.MetaData.MMAT
 			);
 
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in mpfds)
+			foreach (IPackedFileDescriptor pfd in mpfds)
 			{
-				SimPe.PackedFiles.Wrapper.Cpf mmat =
-					new SimPe.PackedFiles.Wrapper.Cpf();
+				PackedFiles.Wrapper.Cpf mmat =
+					new PackedFiles.Wrapper.Cpf();
 				mmat.ProcessData(pfd, package);
 
 				if (guids != null)
@@ -89,14 +89,14 @@ namespace SimPe.Plugin
 		/// <param name="newguid">The new GUID</param>
 		public void FixGuids(uint newguid)
 		{
-			Interfaces.Files.IPackedFileDescriptor[] mpfds = package.FindFiles(
+			IPackedFileDescriptor[] mpfds = package.FindFiles(
 				Data.MetaData.MMAT
 			);
 
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in mpfds)
+			foreach (IPackedFileDescriptor pfd in mpfds)
 			{
-				SimPe.PackedFiles.Wrapper.Cpf mmat =
-					new SimPe.PackedFiles.Wrapper.Cpf();
+				PackedFiles.Wrapper.Cpf mmat =
+					new PackedFiles.Wrapper.Cpf();
 				mmat.ProcessData(pfd, package);
 
 				mmat.GetSaveItem("objectGUID").UIntegerValue = newguid;

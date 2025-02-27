@@ -33,7 +33,7 @@ namespace SimPe.Plugin.Anim
 			get; set;
 		}
 
-		[DescriptionAttribute("The Time the Animation takes to play (probably in ms)")]
+		[Description("The Time the Animation takes to play (probably in ms)")]
 		public short TotalTime
 		{
 			get; set;
@@ -41,7 +41,7 @@ namespace SimPe.Plugin.Anim
 
 		public Ambertation.BaseChangeShort B_Unknown1 => new Ambertation.BaseChangeShort(TotalTime);
 
-		[DescriptionAttribute("Index 0 and 5 contain string Lengths.")]
+		[Description("Index 0 and 5 contain string Lengths.")]
 		public byte[] HeaderBytes
 		{
 			get; private set;
@@ -410,7 +410,7 @@ namespace SimPe.Plugin.Anim
 
 		fAnimResourceConst form = null;
 
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public override System.Windows.Forms.TabPage TabPage
 		{
 			get

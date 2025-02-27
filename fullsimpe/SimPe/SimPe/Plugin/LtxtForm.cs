@@ -28,11 +28,11 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for LtxtForm.
 	/// </summary>
-	public class LtxtForm : System.Windows.Forms.Form
+	public class LtxtForm : Form
 	{
 		#region Form controls
-		internal System.Windows.Forms.Panel ltxtPanel;
-		private System.Windows.Forms.Panel panel2;
+		internal Panel ltxtPanel;
+		private Panel panel2;
 		private Label label1;
 		private Label label2;
 		private Label label3;
@@ -162,12 +162,12 @@ namespace SimPe.Plugin
 
 			wrapper = null;
 			this.cborient.ResourceManager = SimPe.Localization.Manager;
-			this.cborient.Enum = typeof(Plugin.LotOrientation);
+			this.cborient.Enum = typeof(LotOrientation);
 
 			if (!Helper.WindowsRegistry.UseBigIcons)
 			{
-				this.pb.Size = new System.Drawing.Size(124, 108);
-				this.pb.Location = new System.Drawing.Point(25, 56);
+				this.pb.Size = new Size(124, 108);
+				this.pb.Location = new Point(25, 56);
 			}
 		}
 
@@ -195,121 +195,121 @@ namespace SimPe.Plugin
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(LtxtForm));
-			this.ltxtPanel = new System.Windows.Forms.Panel();
-			this.lbPlayim = new System.Windows.Forms.Label();
-			this.gbApart = new System.Windows.Forms.GroupBox();
-			this.label22 = new System.Windows.Forms.Label();
-			this.gbApartment = new System.Windows.Forms.GroupBox();
-			this.llFamily = new System.Windows.Forms.LinkLabel();
-			this.tbApartment = new System.Windows.Forms.TextBox();
-			this.tbSAu2 = new System.Windows.Forms.TextBox();
-			this.llSubLot = new System.Windows.Forms.LinkLabel();
-			this.label31 = new System.Windows.Forms.Label();
-			this.tbSAu3 = new System.Windows.Forms.TextBox();
-			this.label30 = new System.Windows.Forms.Label();
-			this.tbSAFamily = new System.Windows.Forms.TextBox();
-			this.lbApts = new System.Windows.Forms.ListBox();
-			this.tbApBase = new System.Windows.Forms.TextBox();
-			this.llAptBase = new System.Windows.Forms.LinkLabel();
-			this.btnDelApt = new System.Windows.Forms.Button();
-			this.btnAddApt = new System.Windows.Forms.Button();
-			this.tbdesc = new System.Windows.Forms.TextBox();
-			this.gbtravel = new System.Windows.Forms.GroupBox();
-			this.cbtrjflag5 = new System.Windows.Forms.CheckBox();
-			this.cbtrjflag4 = new System.Windows.Forms.CheckBox();
-			this.cbtrjflag3 = new System.Windows.Forms.CheckBox();
-			this.cbtrjflag2 = new System.Windows.Forms.CheckBox();
-			this.cbtrjflag1 = new System.Windows.Forms.CheckBox();
-			this.cbtrjungle = new System.Windows.Forms.CheckBox();
-			this.cbtrhidec = new System.Windows.Forms.CheckBox();
-			this.cbtrpool = new System.Windows.Forms.CheckBox();
-			this.cbtrmale = new System.Windows.Forms.CheckBox();
-			this.cbtrfem = new System.Windows.Forms.CheckBox();
-			this.cbtrbeach = new System.Windows.Forms.CheckBox();
-			this.cbtrformal = new System.Windows.Forms.CheckBox();
-			this.cbtrteen = new System.Windows.Forms.CheckBox();
-			this.cbtrnude = new System.Windows.Forms.CheckBox();
-			this.cbtrpern = new System.Windows.Forms.CheckBox();
-			this.cgtrwhite = new System.Windows.Forms.CheckBox();
-			this.cbtrblue = new System.Windows.Forms.CheckBox();
-			this.cbtrredred = new System.Windows.Forms.CheckBox();
-			this.cbtradult = new System.Windows.Forms.CheckBox();
-			this.cbtrclub = new System.Windows.Forms.CheckBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.tblotname = new System.Windows.Forms.TextBox();
-			this.gbhobby = new System.Windows.Forms.GroupBox();
-			this.cbhbmusic = new System.Windows.Forms.CheckBox();
-			this.cbhbsport = new System.Windows.Forms.CheckBox();
-			this.cbhbscience = new System.Windows.Forms.CheckBox();
-			this.cbhbfitness = new System.Windows.Forms.CheckBox();
-			this.cbhbtinker = new System.Windows.Forms.CheckBox();
-			this.cbhbnature = new System.Windows.Forms.CheckBox();
-			this.cbhbgames = new System.Windows.Forms.CheckBox();
-			this.cbhbfilm = new System.Windows.Forms.CheckBox();
-			this.cbhbart = new System.Windows.Forms.CheckBox();
-			this.cbhbcook = new System.Windows.Forms.CheckBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.llunknone = new System.Windows.Forms.LinkLabel();
-			this.gbFlagg = new System.Windows.Forms.GroupBox();
-			this.tbu0 = new System.Windows.Forms.TextBox();
-			this.label21 = new System.Windows.Forms.Label();
-			this.cbBeachy = new System.Windows.Forms.CheckBox();
-			this.cbhidim = new System.Windows.Forms.CheckBox();
-			this.gbunown = new System.Windows.Forms.GroupBox();
-			this.tbu2 = new System.Windows.Forms.TextBox();
-			this.label18 = new System.Windows.Forms.Label();
-			this.label32 = new System.Windows.Forms.Label();
-			this.label19 = new System.Windows.Forms.Label();
-			this.lbu7 = new System.Windows.Forms.ListBox();
-			this.tbu3 = new System.Windows.Forms.TextBox();
-			this.label16 = new System.Windows.Forms.Label();
-			this.tbData = new System.Windows.Forms.TextBox();
-			this.tbu7 = new System.Windows.Forms.TextBox();
-			this.tbu5 = new System.Windows.Forms.TextBox();
-			this.label24 = new System.Windows.Forms.Label();
-			this.tbu6 = new System.Windows.Forms.TextBox();
-			this.label23 = new System.Windows.Forms.Label();
-			this.gbclarse = new System.Windows.Forms.GroupBox();
-			this.label11 = new System.Windows.Forms.Label();
-			this.cbLotClas = new System.Windows.Forms.ComboBox();
-			this.tbcset = new System.Windows.Forms.TextBox();
-			this.tblotclass = new System.Windows.Forms.TextBox();
-			this.label17 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
-			this.lb = new System.Windows.Forms.ListBox();
-			this.tbElevationAt = new System.Windows.Forms.TextBox();
-			this.label25 = new System.Windows.Forms.Label();
-			this.tbowner = new System.Windows.Forms.TextBox();
-			this.label15 = new System.Windows.Forms.Label();
-			this.label8 = new System.Windows.Forms.Label();
-			this.bthbytrvl = new System.Windows.Forms.Button();
-			this.tbinst = new System.Windows.Forms.TextBox();
-			this.label14 = new System.Windows.Forms.Label();
-			this.tbu4 = new System.Windows.Forms.TextBox();
+			this.ltxtPanel = new Panel();
+			this.lbPlayim = new Label();
+			this.gbApart = new GroupBox();
+			this.label22 = new Label();
+			this.gbApartment = new GroupBox();
+			this.llFamily = new LinkLabel();
+			this.tbApartment = new TextBox();
+			this.tbSAu2 = new TextBox();
+			this.llSubLot = new LinkLabel();
+			this.label31 = new Label();
+			this.tbSAu3 = new TextBox();
+			this.label30 = new Label();
+			this.tbSAFamily = new TextBox();
+			this.lbApts = new ListBox();
+			this.tbApBase = new TextBox();
+			this.llAptBase = new LinkLabel();
+			this.btnDelApt = new Button();
+			this.btnAddApt = new Button();
+			this.tbdesc = new TextBox();
+			this.gbtravel = new GroupBox();
+			this.cbtrjflag5 = new CheckBox();
+			this.cbtrjflag4 = new CheckBox();
+			this.cbtrjflag3 = new CheckBox();
+			this.cbtrjflag2 = new CheckBox();
+			this.cbtrjflag1 = new CheckBox();
+			this.cbtrjungle = new CheckBox();
+			this.cbtrhidec = new CheckBox();
+			this.cbtrpool = new CheckBox();
+			this.cbtrmale = new CheckBox();
+			this.cbtrfem = new CheckBox();
+			this.cbtrbeach = new CheckBox();
+			this.cbtrformal = new CheckBox();
+			this.cbtrteen = new CheckBox();
+			this.cbtrnude = new CheckBox();
+			this.cbtrpern = new CheckBox();
+			this.cgtrwhite = new CheckBox();
+			this.cbtrblue = new CheckBox();
+			this.cbtrredred = new CheckBox();
+			this.cbtradult = new CheckBox();
+			this.cbtrclub = new CheckBox();
+			this.label5 = new Label();
+			this.tblotname = new TextBox();
+			this.gbhobby = new GroupBox();
+			this.cbhbmusic = new CheckBox();
+			this.cbhbsport = new CheckBox();
+			this.cbhbscience = new CheckBox();
+			this.cbhbfitness = new CheckBox();
+			this.cbhbtinker = new CheckBox();
+			this.cbhbnature = new CheckBox();
+			this.cbhbgames = new CheckBox();
+			this.cbhbfilm = new CheckBox();
+			this.cbhbart = new CheckBox();
+			this.cbhbcook = new CheckBox();
+			this.label4 = new Label();
+			this.llunknone = new LinkLabel();
+			this.gbFlagg = new GroupBox();
+			this.tbu0 = new TextBox();
+			this.label21 = new Label();
+			this.cbBeachy = new CheckBox();
+			this.cbhidim = new CheckBox();
+			this.gbunown = new GroupBox();
+			this.tbu2 = new TextBox();
+			this.label18 = new Label();
+			this.label32 = new Label();
+			this.label19 = new Label();
+			this.lbu7 = new ListBox();
+			this.tbu3 = new TextBox();
+			this.label16 = new Label();
+			this.tbData = new TextBox();
+			this.tbu7 = new TextBox();
+			this.tbu5 = new TextBox();
+			this.label24 = new Label();
+			this.tbu6 = new TextBox();
+			this.label23 = new Label();
+			this.gbclarse = new GroupBox();
+			this.label11 = new Label();
+			this.cbLotClas = new ComboBox();
+			this.tbcset = new TextBox();
+			this.tblotclass = new TextBox();
+			this.label17 = new Label();
+			this.label7 = new Label();
+			this.lb = new ListBox();
+			this.tbElevationAt = new TextBox();
+			this.label25 = new Label();
+			this.tbowner = new TextBox();
+			this.label15 = new Label();
+			this.label8 = new Label();
+			this.bthbytrvl = new Button();
+			this.tbinst = new TextBox();
+			this.label14 = new Label();
+			this.tbu4 = new TextBox();
 			this.cborient = new Ambertation.Windows.Forms.EnumComboBox();
-			this.tbTexture = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.tbwd = new System.Windows.Forms.TextBox();
-			this.tbrotation = new System.Windows.Forms.TextBox();
-			this.label9 = new System.Windows.Forms.Label();
-			this.label10 = new System.Windows.Forms.Label();
-			this.tbhg = new System.Windows.Forms.TextBox();
-			this.tbRoads = new System.Windows.Forms.TextBox();
-			this.label12 = new System.Windows.Forms.Label();
-			this.tbver = new System.Windows.Forms.TextBox();
-			this.tbtop = new System.Windows.Forms.TextBox();
-			this.label13 = new System.Windows.Forms.Label();
-			this.tbsubver = new System.Windows.Forms.TextBox();
-			this.tbleft = new System.Windows.Forms.TextBox();
-			this.label20 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.tbz = new System.Windows.Forms.TextBox();
-			this.cbtype = new System.Windows.Forms.ComboBox();
-			this.tbtype = new System.Windows.Forms.TextBox();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.pb = new System.Windows.Forms.PictureBox();
+			this.tbTexture = new TextBox();
+			this.label2 = new Label();
+			this.label6 = new Label();
+			this.label3 = new Label();
+			this.tbwd = new TextBox();
+			this.tbrotation = new TextBox();
+			this.label9 = new Label();
+			this.label10 = new Label();
+			this.tbhg = new TextBox();
+			this.tbRoads = new TextBox();
+			this.label12 = new Label();
+			this.tbver = new TextBox();
+			this.tbtop = new TextBox();
+			this.label13 = new Label();
+			this.tbsubver = new TextBox();
+			this.tbleft = new TextBox();
+			this.label20 = new Label();
+			this.label1 = new Label();
+			this.tbz = new TextBox();
+			this.cbtype = new ComboBox();
+			this.tbtype = new TextBox();
+			this.panel2 = new Panel();
+			this.pb = new PictureBox();
 			this.ltxtPanel.SuspendLayout();
 			this.gbApart.SuspendLayout();
 			this.gbApartment.SuspendLayout();
@@ -418,7 +418,7 @@ namespace SimPe.Plugin
 			this.llFamily.Name = "llFamily";
 			this.llFamily.TabStop = true;
 			this.llFamily.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.ll_Click
 				);
 			//
@@ -426,13 +426,13 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbApartment, "tbApartment");
 			this.tbApartment.Name = "tbApartment";
-			this.tbApartment.TextChanged += new System.EventHandler(this.SAChange);
+			this.tbApartment.TextChanged += new EventHandler(this.SAChange);
 			//
 			// tbSAu2
 			//
 			resources.ApplyResources(this.tbSAu2, "tbSAu2");
 			this.tbSAu2.Name = "tbSAu2";
-			this.tbSAu2.TextChanged += new System.EventHandler(this.SAChange);
+			this.tbSAu2.TextChanged += new EventHandler(this.SAChange);
 			//
 			// llSubLot
 			//
@@ -440,7 +440,7 @@ namespace SimPe.Plugin
 			this.llSubLot.Name = "llSubLot";
 			this.llSubLot.TabStop = true;
 			this.llSubLot.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.ll_Click
 				);
 			//
@@ -453,7 +453,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbSAu3, "tbSAu3");
 			this.tbSAu3.Name = "tbSAu3";
-			this.tbSAu3.TextChanged += new System.EventHandler(this.SAChange);
+			this.tbSAu3.TextChanged += new EventHandler(this.SAChange);
 			//
 			// label30
 			//
@@ -464,7 +464,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbSAFamily, "tbSAFamily");
 			this.tbSAFamily.Name = "tbSAFamily";
-			this.tbSAFamily.TextChanged += new System.EventHandler(this.SAChange);
+			this.tbSAFamily.TextChanged += new EventHandler(this.SAChange);
 			//
 			// lbApts
 			//
@@ -478,10 +478,10 @@ namespace SimPe.Plugin
 					resources.GetString("lbApts.Items3"),
 				}
 			);
-			this.lbApts.MinimumSize = new System.Drawing.Size(0, 44);
+			this.lbApts.MinimumSize = new Size(0, 44);
 			this.lbApts.MultiColumn = true;
 			this.lbApts.Name = "lbApts";
-			this.lbApts.SelectedIndexChanged += new System.EventHandler(
+			this.lbApts.SelectedIndexChanged += new EventHandler(
 				this.lbApts_SelectedIndexChanged
 			);
 			//
@@ -489,7 +489,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbApBase, "tbApBase");
 			this.tbApBase.Name = "tbApBase";
-			this.tbApBase.TextChanged += new System.EventHandler(
+			this.tbApBase.TextChanged += new EventHandler(
 				this.tbApBase_TextChanged
 			);
 			//
@@ -499,7 +499,7 @@ namespace SimPe.Plugin
 			this.llAptBase.Name = "llAptBase";
 			this.llAptBase.TabStop = true;
 			this.llAptBase.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.ll_Click
 				);
 			//
@@ -508,20 +508,20 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.btnDelApt, "btnDelApt");
 			this.btnDelApt.Name = "btnDelApt";
 			this.btnDelApt.UseVisualStyleBackColor = true;
-			this.btnDelApt.Click += new System.EventHandler(this.btnDelApt_Click);
+			this.btnDelApt.Click += new EventHandler(this.btnDelApt_Click);
 			//
 			// btnAddApt
 			//
 			resources.ApplyResources(this.btnAddApt, "btnAddApt");
 			this.btnAddApt.Name = "btnAddApt";
 			this.btnAddApt.UseVisualStyleBackColor = true;
-			this.btnAddApt.Click += new System.EventHandler(this.btnAddApt_Click);
+			this.btnAddApt.Click += new EventHandler(this.btnAddApt_Click);
 			//
 			// tbdesc
 			//
 			resources.ApplyResources(this.tbdesc, "tbdesc");
 			this.tbdesc.Name = "tbdesc";
-			this.tbdesc.TextChanged += new System.EventHandler(this.CommonChange);
+			this.tbdesc.TextChanged += new EventHandler(this.CommonChange);
 			//
 			// gbtravel
 			//
@@ -555,7 +555,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbtrjflag5, "cbtrjflag5");
 			this.cbtrjflag5.Name = "cbtrjflag5";
 			this.cbtrjflag5.UseVisualStyleBackColor = true;
-			this.cbtrjflag5.CheckedChanged += new System.EventHandler(
+			this.cbtrjflag5.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -564,7 +564,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbtrjflag4, "cbtrjflag4");
 			this.cbtrjflag4.Name = "cbtrjflag4";
 			this.cbtrjflag4.UseVisualStyleBackColor = true;
-			this.cbtrjflag4.CheckedChanged += new System.EventHandler(
+			this.cbtrjflag4.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -573,7 +573,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbtrjflag3, "cbtrjflag3");
 			this.cbtrjflag3.Name = "cbtrjflag3";
 			this.cbtrjflag3.UseVisualStyleBackColor = true;
-			this.cbtrjflag3.CheckedChanged += new System.EventHandler(
+			this.cbtrjflag3.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -582,7 +582,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbtrjflag2, "cbtrjflag2");
 			this.cbtrjflag2.Name = "cbtrjflag2";
 			this.cbtrjflag2.UseVisualStyleBackColor = true;
-			this.cbtrjflag2.CheckedChanged += new System.EventHandler(
+			this.cbtrjflag2.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -591,7 +591,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbtrjflag1, "cbtrjflag1");
 			this.cbtrjflag1.Name = "cbtrjflag1";
 			this.cbtrjflag1.UseVisualStyleBackColor = true;
-			this.cbtrjflag1.CheckedChanged += new System.EventHandler(
+			this.cbtrjflag1.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -600,7 +600,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbtrjungle, "cbtrjungle");
 			this.cbtrjungle.Name = "cbtrjungle";
 			this.cbtrjungle.UseVisualStyleBackColor = true;
-			this.cbtrjungle.CheckedChanged += new System.EventHandler(
+			this.cbtrjungle.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -609,7 +609,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbtrhidec, "cbtrhidec");
 			this.cbtrhidec.Name = "cbtrhidec";
 			this.cbtrhidec.UseVisualStyleBackColor = true;
-			this.cbtrhidec.CheckedChanged += new System.EventHandler(
+			this.cbtrhidec.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -618,7 +618,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbtrpool, "cbtrpool");
 			this.cbtrpool.Name = "cbtrpool";
 			this.cbtrpool.UseVisualStyleBackColor = true;
-			this.cbtrpool.CheckedChanged += new System.EventHandler(
+			this.cbtrpool.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -627,7 +627,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbtrmale, "cbtrmale");
 			this.cbtrmale.Name = "cbtrmale";
 			this.cbtrmale.UseVisualStyleBackColor = true;
-			this.cbtrmale.CheckedChanged += new System.EventHandler(
+			this.cbtrmale.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -636,7 +636,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbtrfem, "cbtrfem");
 			this.cbtrfem.Name = "cbtrfem";
 			this.cbtrfem.UseVisualStyleBackColor = true;
-			this.cbtrfem.CheckedChanged += new System.EventHandler(
+			this.cbtrfem.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -645,7 +645,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbtrbeach, "cbtrbeach");
 			this.cbtrbeach.Name = "cbtrbeach";
 			this.cbtrbeach.UseVisualStyleBackColor = true;
-			this.cbtrbeach.CheckedChanged += new System.EventHandler(
+			this.cbtrbeach.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -654,7 +654,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbtrformal, "cbtrformal");
 			this.cbtrformal.Name = "cbtrformal";
 			this.cbtrformal.UseVisualStyleBackColor = true;
-			this.cbtrformal.CheckedChanged += new System.EventHandler(
+			this.cbtrformal.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -663,7 +663,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbtrteen, "cbtrteen");
 			this.cbtrteen.Name = "cbtrteen";
 			this.cbtrteen.UseVisualStyleBackColor = true;
-			this.cbtrteen.CheckedChanged += new System.EventHandler(
+			this.cbtrteen.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -672,7 +672,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbtrnude, "cbtrnude");
 			this.cbtrnude.Name = "cbtrnude";
 			this.cbtrnude.UseVisualStyleBackColor = true;
-			this.cbtrnude.CheckedChanged += new System.EventHandler(
+			this.cbtrnude.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -681,7 +681,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbtrpern, "cbtrpern");
 			this.cbtrpern.Name = "cbtrpern";
 			this.cbtrpern.UseVisualStyleBackColor = true;
-			this.cbtrpern.CheckedChanged += new System.EventHandler(
+			this.cbtrpern.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -690,7 +690,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cgtrwhite, "cgtrwhite");
 			this.cgtrwhite.Name = "cgtrwhite";
 			this.cgtrwhite.UseVisualStyleBackColor = true;
-			this.cgtrwhite.CheckedChanged += new System.EventHandler(
+			this.cgtrwhite.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -699,7 +699,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbtrblue, "cbtrblue");
 			this.cbtrblue.Name = "cbtrblue";
 			this.cbtrblue.UseVisualStyleBackColor = true;
-			this.cbtrblue.CheckedChanged += new System.EventHandler(
+			this.cbtrblue.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -708,7 +708,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbtrredred, "cbtrredred");
 			this.cbtrredred.Name = "cbtrredred";
 			this.cbtrredred.UseVisualStyleBackColor = true;
-			this.cbtrredred.CheckedChanged += new System.EventHandler(
+			this.cbtrredred.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -717,7 +717,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbtradult, "cbtradult");
 			this.cbtradult.Name = "cbtradult";
 			this.cbtradult.UseVisualStyleBackColor = true;
-			this.cbtradult.CheckedChanged += new System.EventHandler(
+			this.cbtradult.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -726,7 +726,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbtrclub, "cbtrclub");
 			this.cbtrclub.Name = "cbtrclub";
 			this.cbtrclub.UseVisualStyleBackColor = true;
-			this.cbtrclub.CheckedChanged += new System.EventHandler(
+			this.cbtrclub.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -739,7 +739,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tblotname, "tblotname");
 			this.tblotname.Name = "tblotname";
-			this.tblotname.TextChanged += new System.EventHandler(this.CommonChange);
+			this.tblotname.TextChanged += new EventHandler(this.CommonChange);
 			//
 			// gbhobby
 			//
@@ -763,7 +763,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbhbmusic, "cbhbmusic");
 			this.cbhbmusic.Name = "cbhbmusic";
 			this.cbhbmusic.UseVisualStyleBackColor = true;
-			this.cbhbmusic.CheckedChanged += new System.EventHandler(
+			this.cbhbmusic.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -772,7 +772,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbhbsport, "cbhbsport");
 			this.cbhbsport.Name = "cbhbsport";
 			this.cbhbsport.UseVisualStyleBackColor = true;
-			this.cbhbsport.CheckedChanged += new System.EventHandler(
+			this.cbhbsport.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -781,7 +781,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbhbscience, "cbhbscience");
 			this.cbhbscience.Name = "cbhbscience";
 			this.cbhbscience.UseVisualStyleBackColor = true;
-			this.cbhbscience.CheckedChanged += new System.EventHandler(
+			this.cbhbscience.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -790,7 +790,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbhbfitness, "cbhbfitness");
 			this.cbhbfitness.Name = "cbhbfitness";
 			this.cbhbfitness.UseVisualStyleBackColor = true;
-			this.cbhbfitness.CheckedChanged += new System.EventHandler(
+			this.cbhbfitness.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -799,7 +799,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbhbtinker, "cbhbtinker");
 			this.cbhbtinker.Name = "cbhbtinker";
 			this.cbhbtinker.UseVisualStyleBackColor = true;
-			this.cbhbtinker.CheckedChanged += new System.EventHandler(
+			this.cbhbtinker.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -808,7 +808,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbhbnature, "cbhbnature");
 			this.cbhbnature.Name = "cbhbnature";
 			this.cbhbnature.UseVisualStyleBackColor = true;
-			this.cbhbnature.CheckedChanged += new System.EventHandler(
+			this.cbhbnature.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -817,7 +817,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbhbgames, "cbhbgames");
 			this.cbhbgames.Name = "cbhbgames";
 			this.cbhbgames.UseVisualStyleBackColor = true;
-			this.cbhbgames.CheckedChanged += new System.EventHandler(
+			this.cbhbgames.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -826,7 +826,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbhbfilm, "cbhbfilm");
 			this.cbhbfilm.Name = "cbhbfilm";
 			this.cbhbfilm.UseVisualStyleBackColor = true;
-			this.cbhbfilm.CheckedChanged += new System.EventHandler(
+			this.cbhbfilm.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -835,7 +835,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbhbart, "cbhbart");
 			this.cbhbart.Name = "cbhbart";
 			this.cbhbart.UseVisualStyleBackColor = true;
-			this.cbhbart.CheckedChanged += new System.EventHandler(
+			this.cbhbart.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -844,7 +844,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbhbcook, "cbhbcook");
 			this.cbhbcook.Name = "cbhbcook";
 			this.cbhbcook.UseVisualStyleBackColor = true;
-			this.cbhbcook.CheckedChanged += new System.EventHandler(
+			this.cbhbcook.CheckedChanged += new EventHandler(
 				this.hobbytravel_CheckedChanged
 			);
 			//
@@ -859,7 +859,7 @@ namespace SimPe.Plugin
 			this.llunknone.Name = "llunknone";
 			this.llunknone.TabStop = true;
 			this.llunknone.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llunknone_LinkClicked
 				);
 			//
@@ -877,7 +877,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbu0, "tbu0");
 			this.tbu0.Name = "tbu0";
-			this.tbu0.TextChanged += new System.EventHandler(this.CommonChange);
+			this.tbu0.TextChanged += new EventHandler(this.CommonChange);
 			//
 			// label21
 			//
@@ -889,7 +889,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbBeachy, "cbBeachy");
 			this.cbBeachy.Name = "cbBeachy";
 			this.cbBeachy.UseVisualStyleBackColor = true;
-			this.cbBeachy.CheckedChanged += new System.EventHandler(
+			this.cbBeachy.CheckedChanged += new EventHandler(
 				this.cbhidim_CheckedChanged
 			);
 			//
@@ -898,7 +898,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbhidim, "cbhidim");
 			this.cbhidim.Name = "cbhidim";
 			this.cbhidim.UseVisualStyleBackColor = true;
-			this.cbhidim.CheckedChanged += new System.EventHandler(
+			this.cbhidim.CheckedChanged += new EventHandler(
 				this.cbhidim_CheckedChanged
 			);
 			//
@@ -925,7 +925,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbu2, "tbu2");
 			this.tbu2.Name = "tbu2";
-			this.tbu2.TextChanged += new System.EventHandler(this.CommonChange);
+			this.tbu2.TextChanged += new EventHandler(this.CommonChange);
 			//
 			// label18
 			//
@@ -958,10 +958,10 @@ namespace SimPe.Plugin
 					resources.GetString("lbu7.Items7"),
 				}
 			);
-			this.lbu7.MinimumSize = new System.Drawing.Size(0, 44);
+			this.lbu7.MinimumSize = new Size(0, 44);
 			this.lbu7.MultiColumn = true;
 			this.lbu7.Name = "lbu7";
-			this.lbu7.SelectedIndexChanged += new System.EventHandler(
+			this.lbu7.SelectedIndexChanged += new EventHandler(
 				this.lbu7_SelectedIndexChanged
 			);
 			//
@@ -969,7 +969,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbu3, "tbu3");
 			this.tbu3.Name = "tbu3";
-			this.tbu3.TextChanged += new System.EventHandler(this.CommonChange);
+			this.tbu3.TextChanged += new EventHandler(this.CommonChange);
 			//
 			// label16
 			//
@@ -980,19 +980,19 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbData, "tbData");
 			this.tbData.Name = "tbData";
-			this.tbData.TextChanged += new System.EventHandler(this.ChangeData);
+			this.tbData.TextChanged += new EventHandler(this.ChangeData);
 			//
 			// tbu7
 			//
 			resources.ApplyResources(this.tbu7, "tbu7");
 			this.tbu7.Name = "tbu7";
-			this.tbu7.TextChanged += new System.EventHandler(this.tbu7_TextChanged);
+			this.tbu7.TextChanged += new EventHandler(this.tbu7_TextChanged);
 			//
 			// tbu5
 			//
 			resources.ApplyResources(this.tbu5, "tbu5");
 			this.tbu5.Name = "tbu5";
-			this.tbu5.TextChanged += new System.EventHandler(this.ChangeData);
+			this.tbu5.TextChanged += new EventHandler(this.ChangeData);
 			//
 			// label24
 			//
@@ -1003,7 +1003,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbu6, "tbu6");
 			this.tbu6.Name = "tbu6";
-			this.tbu6.TextChanged += new System.EventHandler(this.ChangeData);
+			this.tbu6.TextChanged += new EventHandler(this.ChangeData);
 			//
 			// label23
 			//
@@ -1040,7 +1040,7 @@ namespace SimPe.Plugin
 				}
 			);
 			this.cbLotClas.Name = "cbLotClas";
-			this.cbLotClas.SelectedIndexChanged += new System.EventHandler(
+			this.cbLotClas.SelectedIndexChanged += new EventHandler(
 				this.cbhidim_CheckedChanged
 			);
 			//
@@ -1119,7 +1119,7 @@ namespace SimPe.Plugin
 			);
 			this.lb.MultiColumn = true;
 			this.lb.Name = "lb";
-			this.lb.SelectedIndexChanged += new System.EventHandler(
+			this.lb.SelectedIndexChanged += new EventHandler(
 				this.lb_SelectedIndexChanged
 			);
 			//
@@ -1127,7 +1127,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbElevationAt, "tbElevationAt");
 			this.tbElevationAt.Name = "tbElevationAt";
-			this.tbElevationAt.TextChanged += new System.EventHandler(
+			this.tbElevationAt.TextChanged += new EventHandler(
 				this.tbElevationAt_TextChanged
 			);
 			//
@@ -1135,13 +1135,13 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.label25, "label25");
 			this.label25.Name = "label25";
-			this.label25.DoubleClick += new System.EventHandler(this.label25_Click);
+			this.label25.DoubleClick += new EventHandler(this.label25_Click);
 			//
 			// tbowner
 			//
 			resources.ApplyResources(this.tbowner, "tbowner");
 			this.tbowner.Name = "tbowner";
-			this.tbowner.TextChanged += new System.EventHandler(this.CommonChange);
+			this.tbowner.TextChanged += new EventHandler(this.CommonChange);
 			//
 			// label15
 			//
@@ -1158,13 +1158,13 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.bthbytrvl, "bthbytrvl");
 			this.bthbytrvl.Name = "bthbytrvl";
 			this.bthbytrvl.UseVisualStyleBackColor = true;
-			this.bthbytrvl.Click += new System.EventHandler(this.Openpntravel);
+			this.bthbytrvl.Click += new EventHandler(this.Openpntravel);
 			//
 			// tbinst
 			//
 			resources.ApplyResources(this.tbinst, "tbinst");
 			this.tbinst.Name = "tbinst";
-			this.tbinst.TextChanged += new System.EventHandler(this.CommonChange);
+			this.tbinst.TextChanged += new EventHandler(this.CommonChange);
 			//
 			// label14
 			//
@@ -1175,7 +1175,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbu4, "tbu4");
 			this.tbu4.Name = "tbu4";
-			this.tbu4.TextChanged += new System.EventHandler(this.CommonChange);
+			this.tbu4.TextChanged += new EventHandler(this.CommonChange);
 			//
 			// cborient
 			//
@@ -1183,7 +1183,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cborient, "cborient");
 			this.cborient.Name = "cborient";
 			this.cborient.ResourceManager = null;
-			this.cborient.SelectedIndexChanged += new System.EventHandler(
+			this.cborient.SelectedIndexChanged += new EventHandler(
 				this.CommonChange
 			);
 			//
@@ -1191,7 +1191,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbTexture, "tbTexture");
 			this.tbTexture.Name = "tbTexture";
-			this.tbTexture.TextChanged += new System.EventHandler(this.CommonChange);
+			this.tbTexture.TextChanged += new EventHandler(this.CommonChange);
 			//
 			// label2
 			//
@@ -1212,13 +1212,13 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbwd, "tbwd");
 			this.tbwd.Name = "tbwd";
-			this.tbwd.TextChanged += new System.EventHandler(this.CommonChange);
+			this.tbwd.TextChanged += new EventHandler(this.CommonChange);
 			//
 			// tbrotation
 			//
 			resources.ApplyResources(this.tbrotation, "tbrotation");
 			this.tbrotation.Name = "tbrotation";
-			this.tbrotation.TextChanged += new System.EventHandler(this.CommonChange);
+			this.tbrotation.TextChanged += new EventHandler(this.CommonChange);
 			//
 			// label9
 			//
@@ -1234,13 +1234,13 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbhg, "tbhg");
 			this.tbhg.Name = "tbhg";
-			this.tbhg.TextChanged += new System.EventHandler(this.CommonChange);
+			this.tbhg.TextChanged += new EventHandler(this.CommonChange);
 			//
 			// tbRoads
 			//
 			resources.ApplyResources(this.tbRoads, "tbRoads");
 			this.tbRoads.Name = "tbRoads";
-			this.tbRoads.TextChanged += new System.EventHandler(this.CommonChange);
+			this.tbRoads.TextChanged += new EventHandler(this.CommonChange);
 			//
 			// label12
 			//
@@ -1258,7 +1258,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbtop, "tbtop");
 			this.tbtop.Name = "tbtop";
-			this.tbtop.TextChanged += new System.EventHandler(this.CommonChange);
+			this.tbtop.TextChanged += new EventHandler(this.CommonChange);
 			//
 			// label13
 			//
@@ -1276,7 +1276,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbleft, "tbleft");
 			this.tbleft.Name = "tbleft";
-			this.tbleft.TextChanged += new System.EventHandler(this.CommonChange);
+			this.tbleft.TextChanged += new EventHandler(this.CommonChange);
 			//
 			// label20
 			//
@@ -1292,13 +1292,13 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbz, "tbz");
 			this.tbz.Name = "tbz";
-			this.tbz.TextChanged += new System.EventHandler(this.CommonChange);
+			this.tbz.TextChanged += new EventHandler(this.CommonChange);
 			//
 			// cbtype
 			//
 			resources.ApplyResources(this.cbtype, "cbtype");
 			this.cbtype.Name = "cbtype";
-			this.cbtype.SelectedIndexChanged += new System.EventHandler(
+			this.cbtype.SelectedIndexChanged += new EventHandler(
 				this.SelectType
 			);
 			//
@@ -1348,7 +1348,7 @@ namespace SimPe.Plugin
 
 		internal Ltxt wrapper;
 
-		private void SelectType(object sender, System.EventArgs e)
+		private void SelectType(object sender, EventArgs e)
 		{
 			if (wrapper == null)
 			{
@@ -1383,24 +1383,24 @@ namespace SimPe.Plugin
 			)
 			{
 				gbApart.Visible = true;
-				gbunown.Location = new System.Drawing.Point(116, 408);
-				llunknone.Location = new System.Drawing.Point(41, 408);
-				gbhobby.Location = new System.Drawing.Point(30, 408);
-				gbtravel.Location = new System.Drawing.Point(372, 408);
+				gbunown.Location = new Point(116, 408);
+				llunknone.Location = new Point(41, 408);
+				gbhobby.Location = new Point(30, 408);
+				gbtravel.Location = new Point(372, 408);
 			}
 			else
 			{
 				gbApart.Visible = false;
-				gbunown.Location = new System.Drawing.Point(116, 333);
-				llunknone.Location = new System.Drawing.Point(41, 333);
-				gbhobby.Location = new System.Drawing.Point(30, 333);
-				gbtravel.Location = new System.Drawing.Point(372, 333);
+				gbunown.Location = new Point(116, 333);
+				llunknone.Location = new Point(41, 333);
+				gbhobby.Location = new Point(30, 333);
+				gbtravel.Location = new Point(372, 333);
 			}
 
 			wrapper.Changed = true;
 		}
 
-		private void Commit(object sender, System.EventArgs e)
+		private void Commit(object sender, EventArgs e)
 		{
 			if (wrapper == null)
 			{
@@ -1421,7 +1421,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void CommonChange(object sender, System.EventArgs e)
+		private void CommonChange(object sender, EventArgs e)
 		{
 			if (wrapper == null)
 			{
@@ -1553,7 +1553,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void cbhidim_CheckedChanged(object sender, System.EventArgs e)
+		private void cbhidim_CheckedChanged(object sender, EventArgs e)
 		{
 			if (wrapper == null)
 			{
@@ -1584,7 +1584,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void hobbytravel_CheckedChanged(object sender, System.EventArgs e)
+		private void hobbytravel_CheckedChanged(object sender, EventArgs e)
 		{
 			if (wrapper == null)
 			{
@@ -1757,7 +1757,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void Openpntravel(object sender, System.EventArgs e)
+		private void Openpntravel(object sender, EventArgs e)
 		{
 			if (wrapper == null)
 			{
@@ -1778,7 +1778,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void ChangeData(object sender, System.EventArgs e)
+		private void ChangeData(object sender, EventArgs e)
 		{
 			if (wrapper == null)
 			{
@@ -2102,10 +2102,10 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			SimPe.PackedFiles.Wrapper.ExtSDesc sdsc =
+			PackedFiles.Wrapper.ExtSDesc sdsc =
 				FileTable.ProviderRegistry.SimDescriptionProvider.SimInstance[
 					(ushort)simmy
-				] as SimPe.PackedFiles.Wrapper.ExtSDesc;
+				] as PackedFiles.Wrapper.ExtSDesc;
 			if (sdsc != null)
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = sdsc.Package.NewDescriptor(

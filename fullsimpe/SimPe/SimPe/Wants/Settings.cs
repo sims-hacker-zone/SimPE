@@ -23,11 +23,11 @@ using System.Resources;
 
 namespace SimPe.Wants
 {
-	class Settings : SimPe.GlobalizedObject
+	class Settings : GlobalizedObject
 	{
 		const string BASENAME = "PJSE\\Wants";
-		SimPe.XmlRegistryKey xrk = SimPe.Helper.WindowsRegistry.PluginRegistryKey;
-		SimPe.XmlRegistryKey rkf =
+		XmlRegistryKey xrk = SimPe.Helper.WindowsRegistry.PluginRegistryKey;
+		XmlRegistryKey rkf =
 			SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(BASENAME);
 
 		public Settings()

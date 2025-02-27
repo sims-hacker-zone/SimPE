@@ -264,10 +264,10 @@ namespace SimPe.PackedFiles.Wrapper
 					//found a Text Resource
 					if (pfd != null)
 					{
-						SimPe.PackedFiles.Wrapper.Str str = new Str();
+						Str str = new Str();
 						str.ProcessData(pfd, package);
 
-						SimPe.PackedFiles.Wrapper.StrItemList items =
+						StrItemList items =
 							str.FallbackedLanguageItems(
 								Helper.WindowsRegistry.LanguageCode
 							);
@@ -294,11 +294,11 @@ namespace SimPe.PackedFiles.Wrapper
 					// found a Text Resource
 					if (pfd != null)
 					{
-						SimPe.PackedFiles.Wrapper.Str str = new Str();
+						Str str = new Str();
 						str.ProcessData(pfd, package);
 
 						foreach (
-							SimPe.PackedFiles.Wrapper.StrLanguage lng in str.Languages
+							StrLanguage lng in str.Languages
 						)
 						{
 							if (lng == null)
@@ -338,8 +338,8 @@ namespace SimPe.PackedFiles.Wrapper
 					{
 						try
 						{
-							SimPe.PackedFiles.Wrapper.Picture pic =
-								new SimPe.PackedFiles.Wrapper.Picture();
+							Picture pic =
+								new Picture();
 							pic.ProcessData(pfc, package);
 							return Ambertation.Drawing.GraphicRoutines.MakeTransparent(
 								pic.Image,
@@ -372,13 +372,13 @@ namespace SimPe.PackedFiles.Wrapper
 					string suyt = System
 						.IO.Path.GetFileNameWithoutExtension(package.FileName)
 						.Substring(0, inxy);
-					SimPe.Packages.File fumbs = SimPe.Packages.File.LoadFromFile(
+					Packages.File fumbs = SimPe.Packages.File.LoadFromFile(
 						System.IO.Path.Combine(
 							System.IO.Path.GetDirectoryName(package.FileName),
 							"Thumbnails\\" + suyt + "FamilyThumbnails.package"
 						)
 					);
-					Interfaces.Files.IPackedFileDescriptor pfd = fumbs.FindFileAnyGroup(
+					IPackedFileDescriptor pfd = fumbs.FindFileAnyGroup(
 						0x8C3CE95A,
 						0,
 						this.FileDescriptor.Instance
@@ -387,8 +387,8 @@ namespace SimPe.PackedFiles.Wrapper
 					{
 						try
 						{
-							SimPe.PackedFiles.Wrapper.Picture pic =
-								new SimPe.PackedFiles.Wrapper.Picture();
+							Picture pic =
+								new Picture();
 							pic.ProcessData(pfd, fumbs);
 							return Ambertation.Drawing.GraphicRoutines.MakeTransparent(
 								pic.Image,
@@ -410,7 +410,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Name Provider
 		/// </summary>
-		internal SimPe.Interfaces.Providers.ISimNames NameProvider
+		internal Interfaces.Providers.ISimNames NameProvider
 		{
 			get; private set;
 		}
@@ -468,10 +468,10 @@ namespace SimPe.PackedFiles.Wrapper
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new SimPe.PackedFiles.UserInterface.Fami();
+			return new UserInterface.Fami();
 		}
 
-		public Fami(SimPe.Interfaces.Providers.ISimNames names)
+		public Fami(Interfaces.Providers.ISimNames names)
 			: base()
 		{
 			id = 0x46414D49;
@@ -601,7 +601,7 @@ namespace SimPe.PackedFiles.Wrapper
 			);
 		}
 
-		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
+		protected override string GetResourceName(Data.TypeAlias ta)
 		{
 			if (!this.Processed)
 			{

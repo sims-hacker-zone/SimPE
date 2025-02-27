@@ -2,7 +2,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 {
 	public partial class FindInSG : FindInStr
 	{
-		public FindInSG(SimPe.Interfaces.IFinderResultGui rgui)
+		public FindInSG(Interfaces.IFinderResultGui rgui)
 			: base(rgui)
 		{
 			InitializeComponent();
@@ -27,14 +27,14 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 			type = 0;
 			if (cbtypes.SelectedIndex > 0)
 			{
-				type = ((SimPe.Data.TypeAlias)cbtypes.SelectedItem).Id;
+				type = ((Data.TypeAlias)cbtypes.SelectedItem).Id;
 			}
 			return base.OnPrepareStart();
 		}
 
 		public override void SearchPackage(
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			Interfaces.Files.IPackageFile pkg,
+			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
 			bool found = false;
@@ -60,7 +60,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 				return;
 			}
 
-			SimPe.Plugin.GenericRcol rcol = new GenericRcol(null, true);
+			GenericRcol rcol = new GenericRcol(null, true);
 			rcol.ProcessData(pfd, pkg);
 
 			found = false;

@@ -192,11 +192,11 @@ namespace SimPe.Plugin
 			else if (Vesion == 1) // Maxis proper file
 			{
 				Qunty = reader.ReadInt32();
-				Array.Resize<int>(ref gd1, Qunty);
-				Array.Resize<int>(ref gd2, Qunty);
-				Array.Resize<int>(ref gd3, Qunty);
-				Array.Resize<int>(ref gd4, Qunty);
-				Array.Resize<string>(ref content, Qunty);
+				Array.Resize(ref gd1, Qunty);
+				Array.Resize(ref gd2, Qunty);
+				Array.Resize(ref gd3, Qunty);
+				Array.Resize(ref gd4, Qunty);
+				Array.Resize(ref content, Qunty);
 				for (int i = 0; i < Qunty; i++)
 				{
 					gd1[i] = reader.ReadInt32();

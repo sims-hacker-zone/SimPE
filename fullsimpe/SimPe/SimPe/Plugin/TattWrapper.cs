@@ -37,8 +37,8 @@ namespace SimPe.Plugin
 			,
 			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
 			,
-			SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper,
-			System.Collections.IEnumerable
+			IMultiplePackedFileWrapper,
+			IEnumerable
 	{
 		#region Attributes
 		/// <summary>
@@ -217,7 +217,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		public System.Collections.IEnumerator GetEnumerator()
+		public IEnumerator GetEnumerator()
 		{
 			return items.GetEnumerator();
 		}

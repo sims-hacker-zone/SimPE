@@ -28,19 +28,19 @@ namespace pjse.BhavOperandWizards.Wiz0x0008
 	/// <summary>
 	/// Zusammenfassung f�r BhavInstruction.
 	/// </summary>
-	internal class UI : System.Windows.Forms.Form, iBhavOperandWizForm
+	internal class UI : Form, iBhavOperandWizForm
 	{
 		#region Form variables
 
-		private System.Windows.Forms.TextBox tbval1;
-		private System.Windows.Forms.TextBox tbval2;
-		internal System.Windows.Forms.Panel pnWiz0x0008;
-		private System.Windows.Forms.ComboBox cbPicker1;
-		private System.Windows.Forms.ComboBox cbPicker2;
-		private System.Windows.Forms.ComboBox cbDataOwner1;
-		private System.Windows.Forms.ComboBox cbDataOwner2;
-		private System.Windows.Forms.CheckBox cbDecimal;
-		private System.Windows.Forms.CheckBox cbAttrPicker;
+		private TextBox tbval1;
+		private TextBox tbval2;
+		internal Panel pnWiz0x0008;
+		private ComboBox cbPicker1;
+		private ComboBox cbPicker2;
+		private ComboBox cbDataOwner1;
+		private ComboBox cbDataOwner2;
+		private CheckBox cbDecimal;
+		private CheckBox cbAttrPicker;
 		private Label lbConst2;
 		private Label lbConst1;
 		private Label label2;
@@ -140,19 +140,19 @@ namespace pjse.BhavOperandWizards.Wiz0x0008
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWiz0x0008 = new System.Windows.Forms.Panel();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.lbConst2 = new System.Windows.Forms.Label();
-			this.lbConst1 = new System.Windows.Forms.Label();
-			this.cbAttrPicker = new System.Windows.Forms.CheckBox();
-			this.cbDecimal = new System.Windows.Forms.CheckBox();
-			this.cbPicker2 = new System.Windows.Forms.ComboBox();
-			this.cbPicker1 = new System.Windows.Forms.ComboBox();
-			this.tbval2 = new System.Windows.Forms.TextBox();
-			this.cbDataOwner2 = new System.Windows.Forms.ComboBox();
-			this.tbval1 = new System.Windows.Forms.TextBox();
-			this.cbDataOwner1 = new System.Windows.Forms.ComboBox();
+			this.pnWiz0x0008 = new Panel();
+			this.label2 = new Label();
+			this.label1 = new Label();
+			this.lbConst2 = new Label();
+			this.lbConst1 = new Label();
+			this.cbAttrPicker = new CheckBox();
+			this.cbDecimal = new CheckBox();
+			this.cbPicker2 = new ComboBox();
+			this.cbPicker1 = new ComboBox();
+			this.tbval2 = new TextBox();
+			this.cbDataOwner2 = new ComboBox();
+			this.tbval1 = new TextBox();
+			this.cbDataOwner1 = new ComboBox();
 			this.pnWiz0x0008.SuspendLayout();
 			this.SuspendLayout();
 			//
@@ -273,7 +273,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0008
 
 namespace pjse.BhavOperandWizards
 {
-	public class BhavOperandWiz0x0008 : pjse.ABhavOperandWiz
+	public class BhavOperandWiz0x0008 : ABhavOperandWiz
 	{
 		public BhavOperandWiz0x0008(Instruction i)
 			: base(i)

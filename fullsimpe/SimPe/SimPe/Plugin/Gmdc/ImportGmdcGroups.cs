@@ -6,43 +6,43 @@ namespace SimPe.Plugin.Gmdc
 	/// <summary>
 	/// The Form that is displayed when a Meshgroup is imported
 	/// </summary>
-	internal class ImportGmdcGroupsForm : System.Windows.Forms.Form
+	internal class ImportGmdcGroupsForm : Form
 	{
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.ColumnHeader chName;
-		private System.Windows.Forms.ColumnHeader chAction;
-		private System.Windows.Forms.ColumnHeader chTarget;
-		private System.Windows.Forms.ListView lv;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label lbname;
-		private System.Windows.Forms.ComboBox cbaction;
-		private System.Windows.Forms.TextBox tbname;
-		private System.Windows.Forms.ComboBox cbnames;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.ColumnHeader chVertex;
-		private System.Windows.Forms.ColumnHeader chFace;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.TextBox tbscale;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.ComboBox cbopacity;
-		private System.Windows.Forms.ColumnHeader chBones;
-		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.Label label10;
-		private System.Windows.Forms.ComboBox cbboneaction;
-		private System.Windows.Forms.Label lbbonename;
-		private System.Windows.Forms.ComboBox cbbones;
-		private System.Windows.Forms.CheckBox cbcleanbn;
-		private System.Windows.Forms.CheckBox cbcleangrp;
-		private System.Windows.Forms.CheckBox cbupdatecres;
-		private System.Windows.Forms.Panel Gradientpanel1;
-		private System.Windows.Forms.GroupBox gbbones;
-		private System.Windows.Forms.GroupBox gbgroups;
-		private System.Windows.Forms.GroupBox gbsettings;
-		private System.Windows.Forms.CheckBox cbBMesh;
-		private System.Windows.Forms.ColumnHeader chBMesh;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Label lbKeepOrder;
+		private Label label1;
+		private ColumnHeader chName;
+		private ColumnHeader chAction;
+		private ColumnHeader chTarget;
+		private ListView lv;
+		private Label label2;
+		private Label label3;
+		private Label lbname;
+		private ComboBox cbaction;
+		private TextBox tbname;
+		private ComboBox cbnames;
+		private Button button1;
+		private ColumnHeader chVertex;
+		private ColumnHeader chFace;
+		private Label label4;
+		private TextBox tbscale;
+		private Label label5;
+		private ComboBox cbopacity;
+		private ColumnHeader chBones;
+		private Label label9;
+		private Label label10;
+		private ComboBox cbboneaction;
+		private Label lbbonename;
+		private ComboBox cbbones;
+		private CheckBox cbcleanbn;
+		private CheckBox cbcleangrp;
+		private CheckBox cbupdatecres;
+		private Panel Gradientpanel1;
+		private GroupBox gbbones;
+		private GroupBox gbgroups;
+		private GroupBox gbsettings;
+		private CheckBox cbBMesh;
+		private ColumnHeader chBMesh;
+		private Label label6;
+		private Label lbKeepOrder;
 
 		/// <summary>
 		/// Needed Designervar.
@@ -98,41 +98,41 @@ namespace SimPe.Plugin.Gmdc
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(ImportGmdcGroupsForm)
 				);
-			this.lv = new System.Windows.Forms.ListView();
-			this.chName = new System.Windows.Forms.ColumnHeader();
-			this.chAction = new System.Windows.Forms.ColumnHeader();
-			this.chTarget = new System.Windows.Forms.ColumnHeader();
-			this.chVertex = new System.Windows.Forms.ColumnHeader();
-			this.chFace = new System.Windows.Forms.ColumnHeader();
-			this.chBones = new System.Windows.Forms.ColumnHeader();
-			this.chBMesh = new System.Windows.Forms.ColumnHeader();
-			this.label1 = new System.Windows.Forms.Label();
-			this.cbopacity = new System.Windows.Forms.ComboBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.tbscale = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.cbaction = new System.Windows.Forms.ComboBox();
-			this.lbname = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.cbnames = new System.Windows.Forms.ComboBox();
-			this.tbname = new System.Windows.Forms.TextBox();
-			this.button1 = new System.Windows.Forms.Button();
-			this.cbboneaction = new System.Windows.Forms.ComboBox();
-			this.lbbonename = new System.Windows.Forms.Label();
-			this.label9 = new System.Windows.Forms.Label();
-			this.label10 = new System.Windows.Forms.Label();
-			this.cbbones = new System.Windows.Forms.ComboBox();
-			this.cbupdatecres = new System.Windows.Forms.CheckBox();
-			this.cbcleanbn = new System.Windows.Forms.CheckBox();
-			this.cbcleangrp = new System.Windows.Forms.CheckBox();
-			this.Gradientpanel1 = new System.Windows.Forms.Panel();
-			this.gbbones = new System.Windows.Forms.GroupBox();
-			this.gbgroups = new System.Windows.Forms.GroupBox();
-			this.lbKeepOrder = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.cbBMesh = new System.Windows.Forms.CheckBox();
-			this.gbsettings = new System.Windows.Forms.GroupBox();
+			this.lv = new ListView();
+			this.chName = new ColumnHeader();
+			this.chAction = new ColumnHeader();
+			this.chTarget = new ColumnHeader();
+			this.chVertex = new ColumnHeader();
+			this.chFace = new ColumnHeader();
+			this.chBones = new ColumnHeader();
+			this.chBMesh = new ColumnHeader();
+			this.label1 = new Label();
+			this.cbopacity = new ComboBox();
+			this.label5 = new Label();
+			this.tbscale = new TextBox();
+			this.label4 = new Label();
+			this.cbaction = new ComboBox();
+			this.lbname = new Label();
+			this.label3 = new Label();
+			this.label2 = new Label();
+			this.cbnames = new ComboBox();
+			this.tbname = new TextBox();
+			this.button1 = new Button();
+			this.cbboneaction = new ComboBox();
+			this.lbbonename = new Label();
+			this.label9 = new Label();
+			this.label10 = new Label();
+			this.cbbones = new ComboBox();
+			this.cbupdatecres = new CheckBox();
+			this.cbcleanbn = new CheckBox();
+			this.cbcleangrp = new CheckBox();
+			this.Gradientpanel1 = new Panel();
+			this.gbbones = new GroupBox();
+			this.gbgroups = new GroupBox();
+			this.lbKeepOrder = new Label();
+			this.label6 = new Label();
+			this.cbBMesh = new CheckBox();
+			this.gbsettings = new GroupBox();
 			this.Gradientpanel1.SuspendLayout();
 			this.gbbones.SuspendLayout();
 			this.gbgroups.SuspendLayout();
@@ -142,7 +142,7 @@ namespace SimPe.Plugin.Gmdc
 			// lv
 			//
 			this.lv.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -155,7 +155,7 @@ namespace SimPe.Plugin.Gmdc
 			);
 			this.lv.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.lv.Columns.AddRange(
-				new System.Windows.Forms.ColumnHeader[]
+				new ColumnHeader[]
 				{
 					this.chName,
 					this.chAction,
@@ -175,7 +175,7 @@ namespace SimPe.Plugin.Gmdc
 			this.lv.TabIndex = 0;
 			this.lv.UseCompatibleStateImageBehavior = false;
 			this.lv.View = System.Windows.Forms.View.Details;
-			this.lv.SelectedIndexChanged += new System.EventHandler(
+			this.lv.SelectedIndexChanged += new EventHandler(
 				this.listView1_SelectedIndexChanged
 			);
 			//
@@ -253,7 +253,7 @@ namespace SimPe.Plugin.Gmdc
 			this.cbopacity.Name = "cbopacity";
 			this.cbopacity.Size = new System.Drawing.Size(160, 21);
 			this.cbopacity.TabIndex = 9;
-			this.cbopacity.SelectedIndexChanged += new System.EventHandler(
+			this.cbopacity.SelectedIndexChanged += new EventHandler(
 				this.textBox1_TextChanged
 			);
 			//
@@ -288,7 +288,7 @@ namespace SimPe.Plugin.Gmdc
 			this.tbscale.Size = new System.Drawing.Size(136, 21);
 			this.tbscale.TabIndex = 7;
 			this.tbscale.Text = "1";
-			this.tbscale.TextChanged += new System.EventHandler(
+			this.tbscale.TextChanged += new EventHandler(
 				this.tbscale_TextChanged
 			);
 			//
@@ -326,7 +326,7 @@ namespace SimPe.Plugin.Gmdc
 			this.cbaction.Name = "cbaction";
 			this.cbaction.Size = new System.Drawing.Size(160, 21);
 			this.cbaction.TabIndex = 3;
-			this.cbaction.SelectedIndexChanged += new System.EventHandler(
+			this.cbaction.SelectedIndexChanged += new EventHandler(
 				this.cbaction_SelectedIndexChanged
 			);
 			//
@@ -397,7 +397,7 @@ namespace SimPe.Plugin.Gmdc
 			this.cbnames.Size = new System.Drawing.Size(160, 21);
 			this.cbnames.TabIndex = 5;
 			this.cbnames.Visible = false;
-			this.cbnames.SelectedIndexChanged += new System.EventHandler(
+			this.cbnames.SelectedIndexChanged += new EventHandler(
 				this.cbnames_SelectedIndexChanged
 			);
 			//
@@ -415,12 +415,12 @@ namespace SimPe.Plugin.Gmdc
 			this.tbname.Size = new System.Drawing.Size(160, 21);
 			this.tbname.TabIndex = 4;
 			this.tbname.Visible = false;
-			this.tbname.TextChanged += new System.EventHandler(this.tbname_TextChanged);
+			this.tbname.TextChanged += new EventHandler(this.tbname_TextChanged);
 			//
 			// button1
 			//
 			this.button1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -440,7 +440,7 @@ namespace SimPe.Plugin.Gmdc
 			this.button1.Size = new System.Drawing.Size(83, 23);
 			this.button1.TabIndex = 3;
 			this.button1.Text = "OK";
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.button1.Click += new EventHandler(this.button1_Click);
 			//
 			// cbboneaction
 			//
@@ -460,7 +460,7 @@ namespace SimPe.Plugin.Gmdc
 			this.cbboneaction.Name = "cbboneaction";
 			this.cbboneaction.Size = new System.Drawing.Size(160, 21);
 			this.cbboneaction.TabIndex = 3;
-			this.cbboneaction.SelectedIndexChanged += new System.EventHandler(
+			this.cbboneaction.SelectedIndexChanged += new EventHandler(
 				this.cbboneaction_SelectedIndexChanged
 			);
 			//
@@ -531,7 +531,7 @@ namespace SimPe.Plugin.Gmdc
 			this.cbbones.Size = new System.Drawing.Size(160, 21);
 			this.cbbones.TabIndex = 5;
 			this.cbbones.Visible = false;
-			this.cbbones.SelectedIndexChanged += new System.EventHandler(
+			this.cbbones.SelectedIndexChanged += new EventHandler(
 				this.cbbones_SelectedIndexChanged
 			);
 			//
@@ -607,7 +607,7 @@ namespace SimPe.Plugin.Gmdc
 			// gbbones
 			//
 			this.gbbones.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -622,14 +622,14 @@ namespace SimPe.Plugin.Gmdc
 			this.gbbones.Controls.Add(this.cbboneaction);
 			this.gbbones.Location = new System.Drawing.Point(698, 336);
 			this.gbbones.Name = "gbbones";
-			this.gbbones.Padding = new System.Windows.Forms.Padding(4, 44, 4, 4);
+			this.gbbones.Padding = new Padding(4, 44, 4, 4);
 			this.gbbones.Size = new System.Drawing.Size(280, 103);
 			this.gbbones.TabIndex = 14;
 			//
 			// gbgroups
 			//
 			this.gbgroups.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -652,7 +652,7 @@ namespace SimPe.Plugin.Gmdc
 			this.gbgroups.Controls.Add(this.tbname);
 			this.gbgroups.Location = new System.Drawing.Point(698, 124);
 			this.gbgroups.Name = "gbgroups";
-			this.gbgroups.Padding = new System.Windows.Forms.Padding(4, 44, 4, 4);
+			this.gbgroups.Padding = new Padding(4, 44, 4, 4);
 			this.gbgroups.Size = new System.Drawing.Size(280, 205);
 			this.gbgroups.TabIndex = 13;
 			//
@@ -704,14 +704,14 @@ namespace SimPe.Plugin.Gmdc
 			this.cbBMesh.Size = new System.Drawing.Size(160, 32);
 			this.cbBMesh.TabIndex = 10;
 			this.cbBMesh.Text = "use in bounding Mesh (by Pinhead)";
-			this.cbBMesh.CheckedChanged += new System.EventHandler(
+			this.cbBMesh.CheckedChanged += new EventHandler(
 				this.cbBMesh_CheckedChanged
 			);
 			//
 			// gbsettings
 			//
 			this.gbsettings.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -724,7 +724,7 @@ namespace SimPe.Plugin.Gmdc
 			this.gbsettings.Controls.Add(this.cbcleangrp);
 			this.gbsettings.Location = new System.Drawing.Point(698, 4);
 			this.gbsettings.Name = "gbsettings";
-			this.gbsettings.Padding = new System.Windows.Forms.Padding(4, 44, 4, 4);
+			this.gbsettings.Padding = new Padding(4, 44, 4, 4);
 			this.gbsettings.Size = new System.Drawing.Size(280, 113);
 			this.gbsettings.TabIndex = 12;
 			//
@@ -744,7 +744,7 @@ namespace SimPe.Plugin.Gmdc
 			this.Name = "ImportGmdcGroupsForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Mesh Group Importer";
-			this.Load += new System.EventHandler(this.ImportGmdcGroupsForm_Load);
+			this.Load += new EventHandler(this.ImportGmdcGroupsForm_Load);
 			this.Gradientpanel1.ResumeLayout(false);
 			this.gbbones.ResumeLayout(false);
 			this.gbgroups.ResumeLayout(false);
@@ -849,7 +849,7 @@ namespace SimPe.Plugin.Gmdc
 			}
 		}
 
-		private void listView1_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void listView1_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			gbsettings.Enabled = false;
 			gbbones.Enabled = false;
@@ -882,7 +882,7 @@ namespace SimPe.Plugin.Gmdc
 			return BuildBoneName(a.TargetIndex);
 		}
 
-		SimPe.Plugin.GeometryDataContainer gmdc;
+		GeometryDataContainer gmdc;
 
 		/// <summary>
 		/// Show the Group Import Dialog
@@ -892,7 +892,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="joints">An array of all Joints that should be imported</param>
 		/// <returns>DialogResult.OK or DialogResult.Cancel</returns>
 		public static ImportOptions Execute(
-			SimPe.Plugin.GeometryDataContainer gmdc,
+			GeometryDataContainer gmdc,
 			ImportedGroups actions,
 			ImportedBones joints
 		)
@@ -1060,7 +1060,7 @@ namespace SimPe.Plugin.Gmdc
 			}
 		}
 
-		private void cbaction_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void cbaction_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (lv.SelectedItems.Count > 0)
 			{
@@ -1130,7 +1130,7 @@ namespace SimPe.Plugin.Gmdc
 			}
 		}
 
-		private void tbname_TextChanged(object sender, System.EventArgs e)
+		private void tbname_TextChanged(object sender, EventArgs e)
 		{
 			if (this.Tag != null)
 			{
@@ -1163,7 +1163,7 @@ namespace SimPe.Plugin.Gmdc
 			}
 		}
 
-		private void cbnames_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void cbnames_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (this.Tag != null)
 			{
@@ -1199,13 +1199,13 @@ namespace SimPe.Plugin.Gmdc
 
 		bool ok;
 
-		private void button1_Click(object sender, System.EventArgs e)
+		private void button1_Click(object sender, EventArgs e)
 		{
 			ok = true;
 			Close();
 		}
 
-		private void tbscale_TextChanged(object sender, System.EventArgs e)
+		private void tbscale_TextChanged(object sender, EventArgs e)
 		{
 			if (this.Tag != null)
 			{
@@ -1239,7 +1239,7 @@ namespace SimPe.Plugin.Gmdc
 			}
 		}
 
-		private void textBox1_TextChanged(object sender, System.EventArgs e)
+		private void textBox1_TextChanged(object sender, EventArgs e)
 		{
 			if (this.Tag != null)
 			{
@@ -1286,7 +1286,7 @@ namespace SimPe.Plugin.Gmdc
 
 		private void cbboneaction_SelectedIndexChanged(
 			object sender,
-			System.EventArgs e
+			EventArgs e
 		)
 		{
 			if (lv.SelectedItems.Count > 0)
@@ -1346,7 +1346,7 @@ namespace SimPe.Plugin.Gmdc
 			}
 		}
 
-		private void cbbones_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void cbbones_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (this.Tag != null)
 			{
@@ -1378,11 +1378,11 @@ namespace SimPe.Plugin.Gmdc
 			}
 		}
 
-		private void ImportGmdcGroupsForm_Load(object sender, System.EventArgs e)
+		private void ImportGmdcGroupsForm_Load(object sender, EventArgs e)
 		{
 		}
 
-		private void cbBMesh_CheckedChanged(object sender, System.EventArgs e)
+		private void cbBMesh_CheckedChanged(object sender, EventArgs e)
 		{
 			if (this.Tag != null)
 			{

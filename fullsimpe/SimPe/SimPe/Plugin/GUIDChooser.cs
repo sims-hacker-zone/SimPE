@@ -253,7 +253,7 @@ namespace SimPe.Plugin
 
 		private void hex32_Validating(
 			object sender,
-			System.ComponentModel.CancelEventArgs e
+			CancelEventArgs e
 		)
 		{
 			if (hex32_IsValid(sender))
@@ -270,7 +270,7 @@ namespace SimPe.Plugin
 			internalchg = origstate;
 		}
 
-		private void hex32_Validated(object sender, System.EventArgs e)
+		private void hex32_Validated(object sender, EventArgs e)
 		{
 			bool origstate = internalchg;
 			internalchg = true;

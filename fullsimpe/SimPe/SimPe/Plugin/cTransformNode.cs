@@ -205,7 +205,7 @@ namespace SimPe.Plugin
 			get; set;
 		}
 
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public override TransformNode StoredTransformNode => this;
 		#endregion
 
@@ -239,7 +239,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a List of all Child Blocks referenced by this Element
 		/// </summary>
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public override IntArrayList ChildBlocks
 		{
 			get
@@ -253,7 +253,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public override int ImageIndex
 		{
 			get
@@ -348,7 +348,7 @@ namespace SimPe.Plugin
 			{
 				if (tTransformNode == null)
 				{
-					tTransformNode = new SimPe.Plugin.TabPage.TransformNode();
+					tTransformNode = new TabPage.TransformNode();
 				}
 
 				return tTransformNode;
@@ -363,7 +363,7 @@ namespace SimPe.Plugin
 		{
 			if (tTransformNode == null)
 			{
-				tTransformNode = new SimPe.Plugin.TabPage.TransformNode();
+				tTransformNode = new TabPage.TransformNode();
 			}
 
 			tTransformNode.tb_tn_a.Tag = true;

@@ -62,7 +62,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new SimPe.PackedFiles.UserInterface.NrefUI();
+			return new UserInterface.NrefUI();
 		}
 
 		/// <summary>

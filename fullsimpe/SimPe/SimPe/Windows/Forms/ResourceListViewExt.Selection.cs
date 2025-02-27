@@ -226,7 +226,7 @@ namespace SimPe.Windows.Forms
 		);
 		public event SelectResourceHandler SelectedResource;
 
-		public SimPe.Plugin.FileIndexItem SelectedItem
+		public Plugin.FileIndexItem SelectedItem
 		{
 			get
 			{
@@ -243,7 +243,7 @@ namespace SimPe.Windows.Forms
 		}
 
 		public bool SelectResource(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem resource
+			Interfaces.Scenegraph.IScenegraphFileIndexItem resource
 		)
 		{
 			lock (names)

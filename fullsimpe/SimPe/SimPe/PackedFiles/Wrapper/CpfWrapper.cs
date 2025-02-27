@@ -183,7 +183,7 @@ namespace SimPe.PackedFiles.Wrapper
 			);
 		}
 
-		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
+		protected override string GetResourceName(Data.TypeAlias ta)
 		{
 			if (!this.Processed)
 			{
@@ -232,7 +232,7 @@ namespace SimPe.PackedFiles.Wrapper
 			string s = sr.ReadToEnd();
 			s = s.Replace("& ", "&amp; ");
 			System.IO.StringReader strr = new System.IO.StringReader(s);
-			System.Xml.XmlDocument xmlfile = new XmlDocument();
+			XmlDocument xmlfile = new XmlDocument();
 			xmlfile.Load(strr);
 
 			XmlNodeList XMLData = xmlfile.GetElementsByTagName("cGZPropertySetString");

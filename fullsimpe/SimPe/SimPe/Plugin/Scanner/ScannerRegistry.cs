@@ -51,7 +51,7 @@ namespace SimPe.Plugin.Scanner
 				object[] args = new object[0];
 				object[] scnrs = SimPe.LoadFileWrappers.LoadPlugins(
 					file,
-					typeof(SimPe.Interfaces.Plugin.Scanner.IScannerPluginBase),
+					typeof(IScannerPluginBase),
 					args
 				);
 				foreach (IScannerPluginBase isb in scnrs)
@@ -92,8 +92,8 @@ namespace SimPe.Plugin.Scanner
 				}
 			}
 
-			Scanners.Sort(new SimPe.Plugin.Identifiers.PluginScannerBaseComparer());
-			Identifiers.Sort(new SimPe.Plugin.Identifiers.PluginScannerBaseComparer());
+			Scanners.Sort(new Identifiers.PluginScannerBaseComparer());
+			Identifiers.Sort(new Identifiers.PluginScannerBaseComparer());
 		}
 
 		//this is a manual List of Wrappers that are known to cause Problems

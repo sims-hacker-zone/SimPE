@@ -47,7 +47,7 @@ namespace SimPe.Plugin
 			get; private set;
 		}
 
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public override TransformNode StoredTransformNode => tn;
 		#endregion
 
@@ -78,10 +78,10 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a List of all Child Blocks referenced by this Element
 		/// </summary>
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public override IntArrayList ChildBlocks => tn.ChildBlocks;
 
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public override int ImageIndex => 2; //light
 		#endregion
 
@@ -162,7 +162,7 @@ namespace SimPe.Plugin
 			{
 				if (tGenericRcol == null)
 				{
-					tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+					tGenericRcol = new TabPage.GenericRcol();
 				}
 
 				return tGenericRcol;
@@ -177,7 +177,7 @@ namespace SimPe.Plugin
 		{
 			if (tGenericRcol == null)
 			{
-				tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+				tGenericRcol = new TabPage.GenericRcol();
 			}
 
 			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(this.version);

@@ -26,52 +26,52 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for WantsForm.
 	/// </summary>
-	public class WantsForm : System.Windows.Forms.Form
+	public class WantsForm : Form
 	{
-		private System.Windows.Forms.Panel panel2;
-		private System.Windows.Forms.Label label27;
-		internal System.Windows.Forms.Panel wantsPanel;
-		internal System.Windows.Forms.TabControl tabControl1;
+		private Panel panel2;
+		private Label label27;
+		internal Panel wantsPanel;
+		internal TabControl tabControl1;
 		internal System.Windows.Forms.TabPage tblife;
 		private System.Windows.Forms.TabPage tbwant;
 		private System.Windows.Forms.TabPage tbfear;
 		private System.Windows.Forms.TabPage tbhist;
-		internal System.Windows.Forms.ImageList iwant;
-		internal System.Windows.Forms.ImageList ifear;
-		internal System.Windows.Forms.ImageList ihist;
-		internal System.Windows.Forms.ImageList ilife;
-		internal System.Windows.Forms.ListView lvwant;
-		internal System.Windows.Forms.ListView lvfear;
-		internal System.Windows.Forms.ListView lvlife;
-		internal System.Windows.Forms.TreeView tvhist;
-		internal System.Windows.Forms.Label lbsimname;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.Label label10;
-		private System.Windows.Forms.TextBox tbversion;
-		private System.Windows.Forms.TextBox tbguid;
-		private System.Windows.Forms.TextBox tbval;
-		private System.Windows.Forms.TextBox tbprop;
-		private System.Windows.Forms.TextBox tbsiminst;
-		private System.Windows.Forms.TextBox tbindex;
-		private System.Windows.Forms.TextBox tbunknown1;
-		internal System.Windows.Forms.ComboBox cbtype;
-		private System.Windows.Forms.TextBox tbunknown2;
-		private System.Windows.Forms.TextBox tbpoints;
-		private System.Windows.Forms.GroupBox gbprop;
-		private System.Windows.Forms.PictureBox pb;
-		private System.Windows.Forms.TreeView tv;
-		internal System.Windows.Forms.ImageList itv;
-		private System.Windows.Forms.LinkLabel linkLabel1;
-		private System.Windows.Forms.CheckBox cblock;
-		private System.Windows.Forms.ComboBox cbsel;
+		internal ImageList iwant;
+		internal ImageList ifear;
+		internal ImageList ihist;
+		internal ImageList ilife;
+		internal ListView lvwant;
+		internal ListView lvfear;
+		internal ListView lvlife;
+		internal TreeView tvhist;
+		internal Label lbsimname;
+		private Label label1;
+		private Label label2;
+		private Label label3;
+		private Label label4;
+		private Label label5;
+		private Label label6;
+		private Label label7;
+		private Label label8;
+		private Label label9;
+		private Label label10;
+		private TextBox tbversion;
+		private TextBox tbguid;
+		private TextBox tbval;
+		private TextBox tbprop;
+		private TextBox tbsiminst;
+		private TextBox tbindex;
+		private TextBox tbunknown1;
+		internal ComboBox cbtype;
+		private TextBox tbunknown2;
+		private TextBox tbpoints;
+		private GroupBox gbprop;
+		private PictureBox pb;
+		private TreeView tv;
+		internal ImageList itv;
+		private LinkLabel linkLabel1;
+		private CheckBox cblock;
+		private ComboBox cbsel;
 		private System.ComponentModel.IContainer components;
 
 		public WantsForm()
@@ -107,50 +107,50 @@ namespace SimPe.Plugin
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.wantsPanel = new System.Windows.Forms.Panel();
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-			this.gbprop = new System.Windows.Forms.GroupBox();
-			this.cbsel = new System.Windows.Forms.ComboBox();
-			this.cblock = new System.Windows.Forms.CheckBox();
-			this.tv = new System.Windows.Forms.TreeView();
-			this.itv = new System.Windows.Forms.ImageList(this.components);
-			this.cbtype = new System.Windows.Forms.ComboBox();
-			this.tbpoints = new System.Windows.Forms.TextBox();
-			this.tbunknown2 = new System.Windows.Forms.TextBox();
-			this.tbunknown1 = new System.Windows.Forms.TextBox();
-			this.tbindex = new System.Windows.Forms.TextBox();
-			this.tbsiminst = new System.Windows.Forms.TextBox();
-			this.tbprop = new System.Windows.Forms.TextBox();
-			this.tbval = new System.Windows.Forms.TextBox();
-			this.tbguid = new System.Windows.Forms.TextBox();
-			this.tbversion = new System.Windows.Forms.TextBox();
-			this.label10 = new System.Windows.Forms.Label();
-			this.label9 = new System.Windows.Forms.Label();
-			this.label8 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.pb = new System.Windows.Forms.PictureBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.wantsPanel = new Panel();
+			this.linkLabel1 = new LinkLabel();
+			this.gbprop = new GroupBox();
+			this.cbsel = new ComboBox();
+			this.cblock = new CheckBox();
+			this.tv = new TreeView();
+			this.itv = new ImageList(this.components);
+			this.cbtype = new ComboBox();
+			this.tbpoints = new TextBox();
+			this.tbunknown2 = new TextBox();
+			this.tbunknown1 = new TextBox();
+			this.tbindex = new TextBox();
+			this.tbsiminst = new TextBox();
+			this.tbprop = new TextBox();
+			this.tbval = new TextBox();
+			this.tbguid = new TextBox();
+			this.tbversion = new TextBox();
+			this.label10 = new Label();
+			this.label9 = new Label();
+			this.label8 = new Label();
+			this.label7 = new Label();
+			this.label6 = new Label();
+			this.label4 = new Label();
+			this.label3 = new Label();
+			this.label2 = new Label();
+			this.label1 = new Label();
+			this.pb = new PictureBox();
+			this.label5 = new Label();
+			this.tabControl1 = new TabControl();
 			this.tbwant = new System.Windows.Forms.TabPage();
-			this.lvwant = new System.Windows.Forms.ListView();
-			this.iwant = new System.Windows.Forms.ImageList(this.components);
+			this.lvwant = new ListView();
+			this.iwant = new ImageList(this.components);
 			this.tbfear = new System.Windows.Forms.TabPage();
-			this.lvfear = new System.Windows.Forms.ListView();
-			this.ifear = new System.Windows.Forms.ImageList(this.components);
+			this.lvfear = new ListView();
+			this.ifear = new ImageList(this.components);
 			this.tbhist = new System.Windows.Forms.TabPage();
-			this.tvhist = new System.Windows.Forms.TreeView();
-			this.ihist = new System.Windows.Forms.ImageList(this.components);
+			this.tvhist = new TreeView();
+			this.ihist = new ImageList(this.components);
 			this.tblife = new System.Windows.Forms.TabPage();
-			this.lvlife = new System.Windows.Forms.ListView();
-			this.ilife = new System.Windows.Forms.ImageList(this.components);
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.lbsimname = new System.Windows.Forms.Label();
-			this.label27 = new System.Windows.Forms.Label();
+			this.lvlife = new ListView();
+			this.ilife = new ImageList(this.components);
+			this.panel2 = new Panel();
+			this.lbsimname = new Label();
+			this.label27 = new Label();
 			this.wantsPanel.SuspendLayout();
 			this.gbprop.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
@@ -184,7 +184,7 @@ namespace SimPe.Plugin
 			// linkLabel1
 			//
 			this.linkLabel1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -206,12 +206,12 @@ namespace SimPe.Plugin
 			this.linkLabel1.TabStop = true;
 			this.linkLabel1.Text = "Commit";
 			this.linkLabel1.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Commit);
+				new LinkLabelLinkClickedEventHandler(this.Commit);
 			//
 			// gbprop
 			//
 			this.gbprop.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -265,7 +265,7 @@ namespace SimPe.Plugin
 			// cbsel
 			//
 			this.cbsel.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Bottom
@@ -286,14 +286,14 @@ namespace SimPe.Plugin
 			this.cbsel.Name = "cbsel";
 			this.cbsel.Size = new System.Drawing.Size(120, 21);
 			this.cbsel.TabIndex = 23;
-			this.cbsel.SelectedIndexChanged += new System.EventHandler(
+			this.cbsel.SelectedIndexChanged += new EventHandler(
 				this.cbsel_SelectedIndexChanged
 			);
 			//
 			// cblock
 			//
 			this.cblock.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -313,12 +313,12 @@ namespace SimPe.Plugin
 			this.cblock.Size = new System.Drawing.Size(72, 24);
 			this.cblock.TabIndex = 22;
 			this.cblock.Text = "Locked:";
-			this.cblock.CheckedChanged += new System.EventHandler(this.ChangedText);
+			this.cblock.CheckedChanged += new EventHandler(this.ChangedText);
 			//
 			// tv
 			//
 			this.tv.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -344,7 +344,7 @@ namespace SimPe.Plugin
 			this.tv.SelectedImageIndex = 0;
 			this.tv.Size = new System.Drawing.Size(224, 168);
 			this.tv.TabIndex = 21;
-			this.tv.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(
+			this.tv.AfterSelect += new TreeViewEventHandler(
 				this.SelectWant
 			);
 			//
@@ -357,7 +357,7 @@ namespace SimPe.Plugin
 			// cbtype
 			//
 			this.cbtype.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -377,14 +377,14 @@ namespace SimPe.Plugin
 			this.cbtype.Name = "cbtype";
 			this.cbtype.Size = new System.Drawing.Size(88, 21);
 			this.cbtype.TabIndex = 19;
-			this.cbtype.SelectedIndexChanged += new System.EventHandler(
+			this.cbtype.SelectedIndexChanged += new EventHandler(
 				this.ChangeType
 			);
 			//
 			// tbpoints
 			//
 			this.tbpoints.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -403,12 +403,12 @@ namespace SimPe.Plugin
 			this.tbpoints.Size = new System.Drawing.Size(88, 21);
 			this.tbpoints.TabIndex = 18;
 			this.tbpoints.Text = "0";
-			this.tbpoints.TextChanged += new System.EventHandler(this.ChangedText);
+			this.tbpoints.TextChanged += new EventHandler(this.ChangedText);
 			//
 			// tbunknown2
 			//
 			this.tbunknown2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -427,12 +427,12 @@ namespace SimPe.Plugin
 			this.tbunknown2.Size = new System.Drawing.Size(88, 21);
 			this.tbunknown2.TabIndex = 17;
 			this.tbunknown2.Text = "0";
-			this.tbunknown2.TextChanged += new System.EventHandler(this.ChangedText);
+			this.tbunknown2.TextChanged += new EventHandler(this.ChangedText);
 			//
 			// tbunknown1
 			//
 			this.tbunknown1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -456,7 +456,7 @@ namespace SimPe.Plugin
 			// tbindex
 			//
 			this.tbindex.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -480,7 +480,7 @@ namespace SimPe.Plugin
 			// tbsiminst
 			//
 			this.tbsiminst.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -504,7 +504,7 @@ namespace SimPe.Plugin
 			// tbprop
 			//
 			this.tbprop.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -523,12 +523,12 @@ namespace SimPe.Plugin
 			this.tbprop.Size = new System.Drawing.Size(88, 21);
 			this.tbprop.TabIndex = 13;
 			this.tbprop.Text = "0";
-			this.tbprop.TextChanged += new System.EventHandler(this.ChangedText);
+			this.tbprop.TextChanged += new EventHandler(this.ChangedText);
 			//
 			// tbval
 			//
 			this.tbval.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -547,7 +547,7 @@ namespace SimPe.Plugin
 			this.tbval.Size = new System.Drawing.Size(88, 21);
 			this.tbval.TabIndex = 12;
 			this.tbval.Text = "0x00000000";
-			this.tbval.TextChanged += new System.EventHandler(this.ChangedText);
+			this.tbval.TextChanged += new EventHandler(this.ChangedText);
 			//
 			// tbguid
 			//
@@ -568,7 +568,7 @@ namespace SimPe.Plugin
 			// tbversion
 			//
 			this.tbversion.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -592,7 +592,7 @@ namespace SimPe.Plugin
 			// label10
 			//
 			this.label10.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -616,7 +616,7 @@ namespace SimPe.Plugin
 			// label9
 			//
 			this.label9.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -640,7 +640,7 @@ namespace SimPe.Plugin
 			// label8
 			//
 			this.label8.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -664,7 +664,7 @@ namespace SimPe.Plugin
 			// label7
 			//
 			this.label7.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -688,7 +688,7 @@ namespace SimPe.Plugin
 			// label6
 			//
 			this.label6.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -712,7 +712,7 @@ namespace SimPe.Plugin
 			// label4
 			//
 			this.label4.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -752,7 +752,7 @@ namespace SimPe.Plugin
 			// label2
 			//
 			this.label2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -776,7 +776,7 @@ namespace SimPe.Plugin
 			// label1
 			//
 			this.label1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -809,7 +809,7 @@ namespace SimPe.Plugin
 			// label5
 			//
 			this.label5.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -833,7 +833,7 @@ namespace SimPe.Plugin
 			// tabControl1
 			//
 			this.tabControl1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -851,7 +851,7 @@ namespace SimPe.Plugin
 			this.tabControl1.SelectedIndex = 0;
 			this.tabControl1.Size = new System.Drawing.Size(320, 304);
 			this.tabControl1.TabIndex = 1;
-			this.tabControl1.SelectedIndexChanged += new System.EventHandler(
+			this.tabControl1.SelectedIndexChanged += new EventHandler(
 				this.SelectTab
 			);
 			//
@@ -867,7 +867,7 @@ namespace SimPe.Plugin
 			// lvwant
 			//
 			this.lvwant.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -886,7 +886,7 @@ namespace SimPe.Plugin
 			this.lvwant.Size = new System.Drawing.Size(296, 264);
 			this.lvwant.TabIndex = 0;
 			this.lvwant.UseCompatibleStateImageBehavior = false;
-			this.lvwant.SelectedIndexChanged += new System.EventHandler(
+			this.lvwant.SelectedIndexChanged += new EventHandler(
 				this.SelectWant
 			);
 			//
@@ -908,7 +908,7 @@ namespace SimPe.Plugin
 			// lvfear
 			//
 			this.lvfear.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -927,7 +927,7 @@ namespace SimPe.Plugin
 			this.lvfear.Size = new System.Drawing.Size(296, 264);
 			this.lvfear.TabIndex = 1;
 			this.lvfear.UseCompatibleStateImageBehavior = false;
-			this.lvfear.SelectedIndexChanged += new System.EventHandler(
+			this.lvfear.SelectedIndexChanged += new EventHandler(
 				this.SelectWant
 			);
 			//
@@ -949,7 +949,7 @@ namespace SimPe.Plugin
 			// tvhist
 			//
 			this.tvhist.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -968,7 +968,7 @@ namespace SimPe.Plugin
 			this.tvhist.SelectedImageIndex = 0;
 			this.tvhist.Size = new System.Drawing.Size(296, 264);
 			this.tvhist.TabIndex = 0;
-			this.tvhist.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(
+			this.tvhist.AfterSelect += new TreeViewEventHandler(
 				this.SeletTv
 			);
 			//
@@ -990,7 +990,7 @@ namespace SimPe.Plugin
 			// lvlife
 			//
 			this.lvlife.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -1009,7 +1009,7 @@ namespace SimPe.Plugin
 			this.lvlife.Size = new System.Drawing.Size(296, 264);
 			this.lvlife.TabIndex = 1;
 			this.lvlife.UseCompatibleStateImageBehavior = false;
-			this.lvlife.SelectedIndexChanged += new System.EventHandler(
+			this.lvlife.SelectedIndexChanged += new EventHandler(
 				this.SelectWant
 			);
 			//
@@ -1022,7 +1022,7 @@ namespace SimPe.Plugin
 			// panel2
 			//
 			this.panel2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -1040,7 +1040,7 @@ namespace SimPe.Plugin
 			);
 			this.panel2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
 			this.panel2.Location = new System.Drawing.Point(0, 0);
-			this.panel2.Margin = new System.Windows.Forms.Padding(0);
+			this.panel2.Margin = new Padding(0);
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(768, 24);
 			this.panel2.TabIndex = 0;
@@ -1063,7 +1063,7 @@ namespace SimPe.Plugin
 			this.lbsimname.Size = new System.Drawing.Size(29, 16);
 			this.lbsimname.TabIndex = 1;
 			this.lbsimname.Text = "---";
-			this.lbsimname.Click += new System.EventHandler(this.lbsimname_Click);
+			this.lbsimname.Click += new EventHandler(this.lbsimname_Click);
 			//
 			// label27
 			//
@@ -1230,7 +1230,7 @@ namespace SimPe.Plugin
 		internal WantItem lastwi;
 		internal ListViewItem lastlvi;
 
-		private void SelectWant(object sender, System.EventArgs e)
+		private void SelectWant(object sender, EventArgs e)
 		{
 			ListView lv = (ListView)sender;
 			gbprop.Enabled = false;
@@ -1255,7 +1255,7 @@ namespace SimPe.Plugin
 			this.Tag = null;
 		}
 
-		private void cbsel_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void cbsel_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (cbsel.SelectedIndex < 0)
 			{
@@ -1266,7 +1266,7 @@ namespace SimPe.Plugin
 			tbval.Text = "0x" + Helper.HexString(a.Id);
 		}
 
-		private void ChangeType(object sender, System.EventArgs e)
+		private void ChangeType(object sender, EventArgs e)
 		{
 			this.cbsel.Items.Clear();
 			cbsel.Sorted = false;
@@ -1295,7 +1295,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void lbsimname_Click(object sender, System.EventArgs e)
+		private void lbsimname_Click(object sender, EventArgs e)
 		{
 			try
 			{
@@ -1333,13 +1333,13 @@ namespace SimPe.Plugin
 
 		private void Commit(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			wrapper.SynchronizeUserData();
 		}
 
-		private void ChangedText(object sender, System.EventArgs e)
+		private void ChangedText(object sender, EventArgs e)
 		{
 			if (lastwi == null)
 			{
@@ -1375,7 +1375,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SelectTab(object sender, System.EventArgs e)
+		private void SelectTab(object sender, EventArgs e)
 		{
 			if (tabControl1.SelectedIndex == 2 && tvhist.Nodes.Count == 0)
 			{
@@ -1384,15 +1384,15 @@ namespace SimPe.Plugin
 
 			if (tabControl1.SelectedIndex == 0)
 			{
-				SelectWant(lvwant, (System.EventArgs)null);
+				SelectWant(lvwant, (EventArgs)null);
 			}
 			else if (tabControl1.SelectedIndex == 1)
 			{
-				SelectWant(lvfear, (System.EventArgs)null);
+				SelectWant(lvfear, (EventArgs)null);
 			}
 			else if (tabControl1.SelectedIndex == 3)
 			{
-				SelectWant(lvlife, (System.EventArgs)null);
+				SelectWant(lvlife, (EventArgs)null);
 			}
 			else
 			{
@@ -1400,9 +1400,9 @@ namespace SimPe.Plugin
 			}
 		}
 
-		System.Windows.Forms.TreeViewEventArgs lasttve;
+		TreeViewEventArgs lasttve;
 
-		private void SeletTv(object sender, System.Windows.Forms.TreeViewEventArgs e)
+		private void SeletTv(object sender, TreeViewEventArgs e)
 		{
 			lastwi = null;
 			gbprop.Enabled = false;
@@ -1449,7 +1449,7 @@ namespace SimPe.Plugin
 				)
 			);
 			Wait.SubStart();
-			System.Collections.Hashtable ht = new Hashtable();
+			Hashtable ht = new Hashtable();
 			string max = " / " + WantLoader.Wants.Keys.Count.ToString();
 			int ct = 0;
 			Wait.MaxProgress = WantLoader.Wants.Keys.Count;
@@ -1503,7 +1503,7 @@ namespace SimPe.Plugin
 			Wait.SubStop();
 		}
 
-		private void SelectWant(object sender, System.Windows.Forms.TreeViewEventArgs e)
+		private void SelectWant(object sender, TreeViewEventArgs e)
 		{
 			if (this.Tag != null)
 			{

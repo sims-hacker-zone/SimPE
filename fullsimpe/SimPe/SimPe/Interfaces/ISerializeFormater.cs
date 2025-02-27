@@ -82,8 +82,8 @@ namespace SimPe.Interfaces
 		/// <param name="pfd"></param>
 		/// <returns></returns>
 		string SerializeTGI(
-			SimPe.Interfaces.Plugin.Internal.IPackedFileName wrapper,
-			SimPe.Interfaces.Files.IPackedFileDescriptorBasic pfd
+			Plugin.Internal.IPackedFileName wrapper,
+			Files.IPackedFileDescriptorBasic pfd
 		);
 
 		string SerializeTGIHeader();

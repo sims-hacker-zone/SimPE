@@ -28,12 +28,12 @@ namespace pjse.BhavOperandWizards.Wiz0x0002
 	/// <summary>
 	/// Zusammenfassung f�r BhavInstruction.
 	/// </summary>
-	internal class UI : System.Windows.Forms.Form, iBhavOperandWizForm
+	internal class UI : Form, iBhavOperandWizForm
 	{
 		#region Form variables
 
-		internal System.Windows.Forms.Panel pnWiz0x0002;
-		private System.Windows.Forms.ComboBox cbOperator;
+		internal Panel pnWiz0x0002;
+		private ComboBox cbOperator;
 		private LabelledDataOwner labelledDataOwner1;
 		private LabelledDataOwner labelledDataOwner2;
 		private FlowLayoutPanel flowLayoutPanel1;
@@ -132,11 +132,11 @@ namespace pjse.BhavOperandWizards.Wiz0x0002
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWiz0x0002 = new System.Windows.Forms.Panel();
-			this.labelledDataOwner2 = new pjse.LabelledDataOwner();
-			this.labelledDataOwner1 = new pjse.LabelledDataOwner();
-			this.cbOperator = new System.Windows.Forms.ComboBox();
-			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+			this.pnWiz0x0002 = new Panel();
+			this.labelledDataOwner2 = new LabelledDataOwner();
+			this.labelledDataOwner1 = new LabelledDataOwner();
+			this.cbOperator = new ComboBox();
+			this.flowLayoutPanel1 = new FlowLayoutPanel();
 			this.pnWiz0x0002.SuspendLayout();
 			this.flowLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
@@ -221,7 +221,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0002
 
 namespace pjse.BhavOperandWizards
 {
-	public class BhavOperandWiz0x0002 : pjse.ABhavOperandWiz
+	public class BhavOperandWiz0x0002 : ABhavOperandWiz
 	{
 		public BhavOperandWiz0x0002(Instruction i)
 			: base(i)

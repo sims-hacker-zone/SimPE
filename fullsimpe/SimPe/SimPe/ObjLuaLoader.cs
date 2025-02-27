@@ -24,7 +24,7 @@ namespace SimPe
 	/// </summary>
 	public class ObjLuaLoader
 	{
-		static SimPe.Packages.GeneratableFile pkg;
+		static Packages.GeneratableFile pkg;
 
 		/// <summary>
 		/// Create the virtual Lua Package
@@ -104,7 +104,7 @@ namespace SimPe
 						type = SimPe.Data.MetaData.GLUA;
 					}
 
-					SimPe.Interfaces.Files.IPackedFileDescriptor pfd =
+					Interfaces.Files.IPackedFileDescriptor pfd =
 						pkg.NewDescriptor(
 							type,
 							Hashes.SubTypeHash(name),
@@ -126,7 +126,7 @@ namespace SimPe
 		/// <summary>
 		/// Returns a virtual Package, containing LUA Resources
 		/// </summary>
-		public static SimPe.Packages.GeneratableFile VirtualPackage
+		public static Packages.GeneratableFile VirtualPackage
 		{
 			get
 			{

@@ -26,7 +26,7 @@ namespace SimPe.Packages
 	/// <summary>
 	/// Structural Data of a .package Header
 	/// </summary>
-	public class HeaderData : Interfaces.Files.IPackageHeader, System.IDisposable
+	public class HeaderData : Interfaces.Files.IPackageHeader, IDisposable
 	{
 		/// <summary>
 		/// Constructor for the class
@@ -64,7 +64,7 @@ namespace SimPe.Packages
 		/// Returns the Identifier of the File
 		/// </summary>
 		/// <remarks>This value should be DBPF</remarks>
-		[DescriptionAttribute("Package Identifier"), DefaultValueAttribute("DBPF")]
+		[Description("Package Identifier"), DefaultValue("DBPF")]
 		public string Identifier
 		{
 			get
@@ -85,9 +85,9 @@ namespace SimPe.Packages
 		internal Int16 epicon;
 
 		[
-			DescriptionAttribute("The Icon to display for this Package"),
-			CategoryAttribute("Icon"),
-			DefaultValueAttribute(0)
+			Description("The Icon to display for this Package"),
+			Category("Icon"),
+			DefaultValue(0)
 		]
 		public Int16 Epicon
 		{
@@ -107,9 +107,9 @@ namespace SimPe.Packages
 		internal Int16 showicon;
 
 		[
-			DescriptionAttribute("Should an Icon display for this Package"),
-			CategoryAttribute("Icon"),
-			DefaultValueAttribute(0)
+			Description("Should an Icon display for this Package"),
+			Category("Icon"),
+			DefaultValue(0)
 		]
 		public Int16 Showicon
 		{
@@ -133,9 +133,9 @@ namespace SimPe.Packages
 		/// </summary>
 		/// <remarks>This value should be 1</remarks>
 		[
-			DescriptionAttribute("Major Version Number of this Package"),
-			CategoryAttribute("Version"),
-			DefaultValueAttribute(1)
+			Description("Major Version Number of this Package"),
+			Category("Version"),
+			DefaultValue(1)
 		]
 		public Int32 MajorVersion => majorversion;
 
@@ -149,9 +149,9 @@ namespace SimPe.Packages
 		/// </summary>
 		/// <remarks>This value should be 0 or 1</remarks>
 		[
-			DescriptionAttribute("Minor Version Number of this Package"),
-			CategoryAttribute("Version"),
-			DefaultValueAttribute(1)
+			Description("Minor Version Number of this Package"),
+			Category("Version"),
+			DefaultValue(1)
 		]
 		public Int32 MinorVersion => minorversion;
 
@@ -159,9 +159,9 @@ namespace SimPe.Packages
 		/// Returns the Overall Version of this Package
 		/// </summary>
 		[
-			DescriptionAttribute("Overall Versionnumber of this Package"),
-			CategoryAttribute("Version"),
-			DefaultValueAttribute(4294967297)
+			Description("Overall Versionnumber of this Package"),
+			Category("Version"),
+			DefaultValue(4294967297)
 		]
 		public long Version => (long)((ulong)MajorVersion << 0x20) | (uint)MinorVersion;
 
@@ -181,8 +181,8 @@ namespace SimPe.Packages
 		public uint created;
 
 		[
-			DescriptionAttribute("Creation Date of the Package"),
-			CategoryAttribute("Debug"),
+			Description("Creation Date of the Package"),
+			Category("Debug"),
 			ReadOnly(true)
 		]
 #else
@@ -220,8 +220,8 @@ namespace SimPe.Packages
 		public Int32 modified;
 
 		[
-			DescriptionAttribute("Modification Date of the Package"),
-			CategoryAttribute("Debug")
+			Description("Modification Date of the Package"),
+			Category("Debug")
 		]
 		public Int32 Modified => modified;
 #else
@@ -236,8 +236,8 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns Index Informations stored in the Header
 		/// </summary>
-		[BrowsableAttribute(false)]
-		public SimPe.Interfaces.Files.IPackageHeaderIndex Index => index;
+		[Browsable(false)]
+		public Interfaces.Files.IPackageHeaderIndex Index => index;
 
 		/// <summary>
 		/// Holds Hole Index Informations stored in the Header
@@ -247,8 +247,8 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns Hole Index Informations stored in the Header
 		/// </summary>
-		[BrowsableAttribute(false)]
-		public SimPe.Interfaces.Files.IPackageHeaderHoleIndex HoleIndex => hole;
+		[Browsable(false)]
+		public Interfaces.Files.IPackageHeaderHoleIndex HoleIndex => hole;
 
 		/// <summary>
 		/// Only available for versions >= 1.1
@@ -259,10 +259,10 @@ namespace SimPe.Packages
 		/// Returns or Sets the Type of the Package
 		/// </summary>
 		[
-			DescriptionAttribute(
+			Description(
 				"The Indextype used in the Package. ptLongFileIndex allows the use of the \"Instance (high)\" Value."
 			),
-			DefaultValueAttribute(Data.MetaData.IndexTypes.ptLongFileIndex)
+			DefaultValue(Data.MetaData.IndexTypes.ptLongFileIndex)
 		]
 		public Data.MetaData.IndexTypes IndexType
 		{
@@ -282,7 +282,7 @@ namespace SimPe.Packages
 #if DEBUG
 		public Int32[] reserved_02;
 
-		[DescriptionAttribute("Reserved Values"), CategoryAttribute("Debug")]
+		[Description("Reserved Values"), Category("Debug")]
 		public Int32[] Reserved => reserved_02;
 #else
 		internal Int32[] reserved_02;
@@ -291,7 +291,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// true if the version is greater or equal than 1.1
 		/// </summary>
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public bool IsVersion0101 => (Version >= 0x100000001); //((majorversion>1) || ((majorversion==1) && (minorversion>=1)));
 
 		internal bool LockIndexDuringLoad
@@ -450,7 +450,7 @@ namespace SimPe.Packages
 
 			iph.epicon = this.epicon;
 			iph.showicon = this.showicon;
-			return (SimPe.Interfaces.Files.IPackageHeader)iph;
+			return (Interfaces.Files.IPackageHeader)iph;
 		}
 	}
 }

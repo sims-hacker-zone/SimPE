@@ -73,7 +73,7 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 			objds = new List<ExtObjd>();
 
 			FileTable.FileIndex.Load();
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] objs =
+			Interfaces.Scenegraph.IScenegraphFileIndexItem[] objs =
 				FileTable.FileIndex.FindFileDiscardingGroup(
 					Data.MetaData.OBJD_FILE,
 					0x41a7
@@ -88,7 +88,7 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 				{
 					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] objs = FileTable.FileIndex.FindFile(Data.MetaData.OBJD_FILE, fii.FileDescriptor.Group);*/
 			int ct = 0;
-			foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem ofii in objs)
+			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem ofii in objs)
 			{
 				Wait.Progress = ct++;
 				ExtObjd obj = new ExtObjd();
@@ -106,7 +106,7 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 		#endregion
 
 		[
-			System.ComponentModel.DesignerSerializationVisibility(
+			DesignerSerializationVisibility(
 				DesignerSerializationVisibility.Hidden
 			),
 			Browsable(false)

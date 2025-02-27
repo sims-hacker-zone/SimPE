@@ -33,9 +33,9 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class Nhtr
 		: AbstractWrapper,
-			SimPe.Interfaces.Plugin.IFileWrapper,
-			SimPe.Interfaces.Plugin.IFileWrapperSaveExtension,
-			SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper
+			IFileWrapper,
+			IFileWrapperSaveExtension,
+			IMultiplePackedFileWrapper
 	{
 		#region Attributes
 		uint ver;

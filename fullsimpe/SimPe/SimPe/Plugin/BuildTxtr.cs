@@ -38,14 +38,14 @@ namespace SimPe.Plugin
 		public static void LoadTXTR(
 			ImageData id,
 			string flname,
-			System.Drawing.Size sz,
+			Size sz,
 			int levels,
-			SimPe.Plugin.ImageLoader.TxtrFormats format
+			ImageLoader.TxtrFormats format
 		)
 		{
 			try
 			{
-				System.Drawing.Image src = Image.FromFile(flname);
+				Image src = Image.FromFile(flname);
 				LoadTXTR(id, src, sz, levels, format);
 			}
 			catch (Exception ex)
@@ -60,10 +60,10 @@ namespace SimPe.Plugin
 		/// <param name="data"></param>
 		public static void LoadTXTR(
 			ImageData id,
-			System.Drawing.Image src,
-			System.Drawing.Size sz,
+			Image src,
+			Size sz,
 			int levels,
-			SimPe.Plugin.ImageLoader.TxtrFormats format
+			ImageLoader.TxtrFormats format
 		)
 		{
 			try
@@ -72,7 +72,7 @@ namespace SimPe.Plugin
 				id.Format = format;
 				id.MipMapLevels = (uint)levels;
 
-				System.Drawing.Image img = new Bitmap(sz.Width, sz.Height);
+				Image img = new Bitmap(sz.Width, sz.Height);
 
 				Graphics gr = Graphics.FromImage(img);
 
@@ -234,8 +234,8 @@ namespace SimPe.Plugin
 			string texturename = "";
 			string num = "";
 			int levels = 9;
-			System.Drawing.Size sz = new System.Drawing.Size(512, 512);
-			SimPe.Plugin.ImageLoader.TxtrFormats format = SimPe
+			Size sz = new Size(512, 512);
+			ImageLoader.TxtrFormats format = SimPe
 				.Plugin
 				.ImageLoader
 				.TxtrFormats
@@ -315,7 +315,7 @@ namespace SimPe.Plugin
 			}
 
 			//build TXTR File
-			ImageData id = new SimPe.Plugin.ImageData(null);
+			ImageData id = new ImageData(null);
 
 			if (
 				(System.IO.File.Exists(PathProvider.Global.NvidiaDDSTool))
@@ -343,7 +343,7 @@ namespace SimPe.Plugin
 
 			Rcol rcol = new GenericRcol(null, false);
 			rcol.FileName = texturename;
-			rcol.FileDescriptor = new SimPe.Packages.PackedFileDescriptor();
+			rcol.FileDescriptor = new Packages.PackedFileDescriptor();
 			rcol.Blocks = new IRcolBlock[1];
 			rcol.Blocks[0] = id;
 

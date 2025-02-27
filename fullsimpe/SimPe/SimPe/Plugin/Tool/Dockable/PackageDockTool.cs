@@ -22,7 +22,7 @@ namespace SimPe.Plugin.Tool.Dockable
 	/// <summary>
 	/// Dockable Tool that displays Package specific Informations
 	/// </summary>
-	public class PackageDockTool : SimPe.Interfaces.IDockableTool
+	public class PackageDockTool : Interfaces.IDockableTool
 	{
 		ResourceDock rd;
 
@@ -38,11 +38,11 @@ namespace SimPe.Plugin.Tool.Dockable
 			return rd.dcPackage;
 		}
 
-		public event SimPe.Events.ChangedResourceEvent ShowNewResource;
+		public event Events.ChangedResourceEvent ShowNewResource;
 
-		SimPe.Interfaces.Files.IPackageFile pkg;
+		Interfaces.Files.IPackageFile pkg;
 
-		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es)
+		public void RefreshDock(object sender, Events.ResourceEventArgs es)
 		{
 			if (es.LoadedPackage != null)
 			{
@@ -56,8 +56,8 @@ namespace SimPe.Plugin.Tool.Dockable
 
 					if (newpkg)
 					{
-						SimPe.Packages.PackageRepair pr =
-							new SimPe.Packages.PackageRepair(es.LoadedPackage.Package);
+						Packages.PackageRepair pr =
+							new Packages.PackageRepair(es.LoadedPackage.Package);
 						if (Helper.WindowsRegistry.HiddenMode)
 						{
 							rd.pgHead.SelectedObject = pr.IndexDetailsAdvanced;
@@ -74,7 +74,7 @@ namespace SimPe.Plugin.Tool.Dockable
 						{
 							System.Windows.Forms.ListViewItem lvi =
 								new System.Windows.Forms.ListViewItem();
-							SimPe.Packages.HoleIndexItem hii =
+							Packages.HoleIndexItem hii =
 								es.LoadedPackage.Package.GetHoleIndex(i);
 							lvi.Text = "0x" + Helper.HexString(hii.Offset);
 							lvi.SubItems.Add("0x" + Helper.HexString(hii.Size));

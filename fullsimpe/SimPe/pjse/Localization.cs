@@ -38,7 +38,7 @@ namespace pjse
 		/// </summary>
 		private static void Initialize()
 		{
-			resource = new ResourceManager(typeof(pjse.Localization));
+			resource = new ResourceManager(typeof(Localization));
 		}
 
 		/// <summary>

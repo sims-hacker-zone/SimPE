@@ -3,7 +3,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for MmatWrapper.
 	/// </summary>
-	public class XGoal : SimPe.PackedFiles.Wrapper.Cpf
+	public class XGoal : PackedFiles.Wrapper.Cpf
 	{
 		/// <summary>
 		/// creates a new Instance
@@ -15,9 +15,9 @@ namespace SimPe.Plugin
 		/// Returns a Human Readable Description of this Wrapper
 		/// </summary>
 		/// <returns>Human Readable Description</returns>
-		protected override SimPe.Interfaces.Plugin.IWrapperInfo CreateWrapperInfo()
+		protected override Interfaces.Plugin.IWrapperInfo CreateWrapperInfo()
 		{
-			return new SimPe.Interfaces.Plugin.AbstractWrapperInfo(
+			return new Interfaces.Plugin.AbstractWrapperInfo(
 				"Goal Wrapper",
 				"Chris",
 				"To view Castaway Story Goals",
@@ -127,8 +127,8 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				SimPe.Packages.PackedFileDescriptor pfd =
-					new SimPe.Packages.PackedFileDescriptor();
+				Packages.PackedFileDescriptor pfd =
+					new Packages.PackedFileDescriptor();
 				pfd.Type = Data.MetaData.SIM_IMAGE_FILE;
 				pfd.LongInstance = IconInstance;
 				if (pfd.Instance == 0)
@@ -145,7 +145,7 @@ namespace SimPe.Plugin
 
 		public override string Description => "GUID=0x" + Helper.HexString(this.FileDescriptor.Instance);
 
-		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
+		protected override string GetResourceName(Data.TypeAlias ta)
 		{
 			if (!this.Processed)
 			{

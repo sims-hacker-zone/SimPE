@@ -189,7 +189,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="index">The index of the value you want to read from thet Element</param>
 		/// <returns>The stored Value or null on error</returns>
 		/// <remarks>To retrieve the correct number for an Element, see the GetElementNr() Method</remarks>
-		public SimPe.Plugin.Gmdc.GmdcElementValueBase GetValue(int nr, int index)
+		public GmdcElementValueBase GetValue(int nr, int index)
 		{
 			try
 			{

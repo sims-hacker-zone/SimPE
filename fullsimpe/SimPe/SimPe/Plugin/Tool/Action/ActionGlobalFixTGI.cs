@@ -22,19 +22,19 @@ namespace SimPe.Plugin.Tool.Action
 	/// <summary>
 	/// The Intrigued Neighborhood Action
 	/// </summary>
-	public class ActionGlobalFixTGI : SimPe.Interfaces.IToolAction
+	public class ActionGlobalFixTGI : Interfaces.IToolAction
 	{
 		#region IToolAction Member
 
 		public virtual bool ChangeEnabledStateEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs es
+			Events.ResourceEventArgs es
 		)
 		{
 			return es.Loaded;
 		}
 
-		public void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs e)
+		public void ExecuteEventHandler(object sender, Events.ResourceEventArgs e)
 		{
 			if (!ChangeEnabledStateEventHandler(null, e))
 			{
@@ -48,10 +48,10 @@ namespace SimPe.Plugin.Tool.Action
 			)
 			{
 				//Do we have a registred handler?
-				SimPe.Interfaces.Plugin.IFileWrapper wrapper =
-					(SimPe.Interfaces.Plugin.IFileWrapper)
+				Interfaces.Plugin.IFileWrapper wrapper =
+					(Interfaces.Plugin.IFileWrapper)
 						FileTable.WrapperRegistry.FindHandler(pfd.Type);
-				SimPe.Interfaces.Files.IPackedFile file = e.LoadedPackage.Package.Read(
+				Interfaces.Files.IPackedFile file = e.LoadedPackage.Package.Read(
 					pfd
 				);
 				if (wrapper == null)

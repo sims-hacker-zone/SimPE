@@ -11,7 +11,7 @@ namespace SimPe.Plugin.UI
 	/// <summary>
 	/// Summary description for Form1.
 	/// </summary>
-	public partial class MainForm : System.Windows.Forms.Form
+	public partial class MainForm : Form
 	{
 		enum OpenFileType
 		{
@@ -190,13 +190,13 @@ namespace SimPe.Plugin.UI
 			}
 		}
 
-		private void miLoadMesh_Click(object sender, System.EventArgs e)
+		private void miLoadMesh_Click(object sender, EventArgs e)
 		{
 			this.fileType = OpenFileType.Mesh;
 			this.dlgOpenPackageFile.ShowDialog();
 		}
 
-		private void miMatCopyTxtrRef_Click(object sender, System.EventArgs e)
+		private void miMatCopyTxtrRef_Click(object sender, EventArgs e)
 		{
 			if (this.lvTxmt.SelectedItems.Count == 1)
 			{
@@ -216,7 +216,7 @@ namespace SimPe.Plugin.UI
 			}
 		}
 
-		private void miMatUseTxtrRef_Click(object sender, System.EventArgs e)
+		private void miMatUseTxtrRef_Click(object sender, EventArgs e)
 		{
 			if (this.txtrRef.ContainsKey(ClipboardKey))
 			{
@@ -232,7 +232,7 @@ namespace SimPe.Plugin.UI
 			}
 		}
 
-		private void miMatUseBaseTxtr_Click(object sender, System.EventArgs e)
+		private void miMatUseBaseTxtr_Click(object sender, EventArgs e)
 		{
 			if (this.lvTxmt.SelectedItems.Count > 0)
 			{
@@ -246,7 +246,7 @@ namespace SimPe.Plugin.UI
 			}
 		}
 
-		private void lvTxmt_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void lvTxmt_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			this.OnSelectMaterialItem();
 		}
@@ -291,7 +291,7 @@ namespace SimPe.Plugin.UI
 			}
 		}
 
-		private void Handle_ClearPackage_Command(object sender, System.EventArgs e)
+		private void Handle_ClearPackage_Command(object sender, EventArgs e)
 		{
 			this.box.Clear(this.CurrentKey);
 			CurrentView.Items.Clear();
@@ -300,13 +300,13 @@ namespace SimPe.Plugin.UI
 			UpdateFormTitle();
 		}
 
-		private void Handle_ResetSession_Command(object sender, System.EventArgs e)
+		private void Handle_ResetSession_Command(object sender, EventArgs e)
 		{
 			ResetSession();
 			UpdateFormTitle();
 		}
 
-		private void Handle_OpenPackage_Command(object sender, System.EventArgs e)
+		private void Handle_OpenPackage_Command(object sender, EventArgs e)
 		{
 			this.dlgOpenPackageFile.ShowDialog();
 		}
@@ -334,7 +334,7 @@ namespace SimPe.Plugin.UI
 			}
 		}
 
-		private void cbEnablePreview_CheckedChanged(object sender, System.EventArgs e)
+		private void cbEnablePreview_CheckedChanged(object sender, EventArgs e)
 		{
 			if (!this.cbEnablePreview.Checked)
 			{

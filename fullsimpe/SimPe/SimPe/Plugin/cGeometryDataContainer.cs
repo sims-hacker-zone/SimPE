@@ -102,7 +102,7 @@ namespace SimPe.Plugin
 		/// Unserializes a BinaryStream into the Attributes of this Instance
 		/// </summary>
 		/// <param name="reader">The Stream that contains the FileData</param>
-		public override void Unserialize(System.IO.BinaryReader reader)
+		public override void Unserialize(BinaryReader reader)
 		{
 			TriedToLoadParentResourceNode = false;
 			version = reader.ReadUInt32();
@@ -168,7 +168,7 @@ namespace SimPe.Plugin
 		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
-		public override void Serialize(System.IO.BinaryWriter writer)
+		public override void Serialize(BinaryWriter writer)
 		{
 			writer.Write(version);
 
@@ -705,7 +705,7 @@ namespace SimPe.Plugin
 			//WaitingScreen.Wait();
 			try
 			{
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndex nfi =
+				Interfaces.Scenegraph.IScenegraphFileIndex nfi =
 					FileTable.FileIndex.AddNewChild();
 				nfi.AddIndexFromPackage(this.Parent.Package);
 				Rcol cres = FindReferencingCRES_Int();
@@ -768,9 +768,9 @@ namespace SimPe.Plugin
 		/// <param name="parent">the current Parent id (-1=none)</param>
 		/// <param name="c">the current Block we process</param>
 		protected void LoadJointRelationRec(
-			System.Collections.Hashtable parentmap,
+			Hashtable parentmap,
 			int parent,
-			SimPe.Interfaces.Scenegraph.ICresChildren c
+			Interfaces.Scenegraph.ICresChildren c
 		)
 		{
 			if (c == null)
@@ -791,7 +791,7 @@ namespace SimPe.Plugin
 			//process the childs of this Block
 			foreach (int i in c.ChildBlocks)
 			{
-				SimPe.Interfaces.Scenegraph.ICresChildren cl = c.GetBlock(i);
+				Interfaces.Scenegraph.ICresChildren cl = c.GetBlock(i);
 				LoadJointRelationRec(parentmap, parent, cl);
 			}
 		}
@@ -801,12 +801,12 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <returns>The JointRelation Map</returns>
 		/// <remarks>key=ChildJoint ID, value=ParentJoint ID (-1=top Level Joint)</remarks>
-		public virtual System.Collections.Hashtable LoadJointRelationMap()
+		public virtual Hashtable LoadJointRelationMap()
 		{
 			//Get the Cres for the Bone Hirarchy
 			ResourceNode rn = this.ParentResourceNode;
 
-			System.Collections.Hashtable parentmap = new System.Collections.Hashtable();
+			Hashtable parentmap = new Hashtable();
 			if (rn == null)
 			{
 				Message.Show(
@@ -841,7 +841,7 @@ namespace SimPe.Plugin
 		/// <param name="l"></param>
 		static void SortJointsRec(
 			int start,
-			System.Collections.Hashtable relmap,
+			Hashtable relmap,
 			IntArrayList l
 		)
 		{
@@ -874,7 +874,7 @@ namespace SimPe.Plugin
 		/// <returns></returns>
 		public static IntArrayList SortJoints(
 			GmdcJoints joints,
-			System.Collections.Hashtable relmap
+			Hashtable relmap
 		)
 		{
 			int start = -1;
@@ -893,7 +893,7 @@ namespace SimPe.Plugin
 				SortJointsRec(start, relmap, l);
 
 				//check if there are some Joint's that were not added so far
-				System.Collections.Hashtable nrelmap = (System.Collections.Hashtable)
+				Hashtable nrelmap = (Hashtable)
 					relmap.Clone();
 				foreach (int v in l)
 				{
@@ -939,7 +939,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="relmap"></param>
 		/// <returns></returns>
-		public IntArrayList SortJoints(System.Collections.Hashtable relmap)
+		public IntArrayList SortJoints(Hashtable relmap)
 		{
 			return SortJoints(this.Joints, relmap);
 		}

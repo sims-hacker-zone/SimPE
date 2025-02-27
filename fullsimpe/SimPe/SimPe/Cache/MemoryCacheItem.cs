@@ -64,7 +64,7 @@ namespace SimPe.Cache
 			get; set;
 		}
 
-		public SimPe.Data.ObjectTypes ObjectType
+		public Data.ObjectTypes ObjectType
 		{
 			get; set;
 		}
@@ -191,7 +191,7 @@ namespace SimPe.Cache
 
 		#region ICacheItem Member
 
-		public void Load(System.IO.BinaryReader reader)
+		public void Load(BinaryReader reader)
 		{
 			Version = reader.ReadByte();
 			if (Version > VERSION)
@@ -223,7 +223,7 @@ namespace SimPe.Cache
 				valuenames = new string[0];
 			}
 
-			ObjectType = (SimPe.Data.ObjectTypes)reader.ReadUInt16();
+			ObjectType = (Data.ObjectTypes)reader.ReadUInt16();
 			pfd = new Packages.PackedFileDescriptor();
 			pfd.Type = reader.ReadUInt32();
 			pfd.Group = reader.ReadUInt32();
@@ -244,7 +244,7 @@ namespace SimPe.Cache
 			}
 		}
 
-		public void Save(System.IO.BinaryWriter writer)
+		public void Save(BinaryWriter writer)
 		{
 			Version = VERSION;
 			writer.Write(Version);

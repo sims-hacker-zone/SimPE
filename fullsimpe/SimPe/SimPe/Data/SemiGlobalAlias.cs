@@ -24,7 +24,7 @@ namespace SimPe.Data
 	/// <summary>
 	/// Overrides the Alias class
 	/// </summary>
-	public class SemiGlobalAlias : Data.Alias, IComparable<SemiGlobalAlias>
+	public class SemiGlobalAlias : Alias, IComparable<SemiGlobalAlias>
 	{
 		public SemiGlobalAlias(uint id, string name)
 			: base(id, name)

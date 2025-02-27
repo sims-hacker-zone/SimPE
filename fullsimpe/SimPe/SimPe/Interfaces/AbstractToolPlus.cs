@@ -20,25 +20,25 @@
 namespace SimPe.Interfaces
 {
 	/// <summary>
-	/// Abstract Implementation for <see cref="SimPe.Interfaces.IToolExt"/> classes
+	/// Abstract Implementation for <see cref="IToolExt"/> classes
 	/// </summary>
-	public abstract class AbstractToolPlus : AbstractTool, SimPe.Interfaces.IToolPlus
+	public abstract class AbstractToolPlus : AbstractTool, IToolPlus
 	{
 		#region ITool Member
 
-		public abstract SimPe.Interfaces.Plugin.IToolResult ShowDialog(
-			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			ref SimPe.Interfaces.Files.IPackageFile package
+		public abstract Plugin.IToolResult ShowDialog(
+			ref Files.IPackedFileDescriptor pfd,
+			ref Files.IPackageFile package
 		);
 		public abstract bool IsEnabled(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile package
+			Files.IPackedFileDescriptor pfd,
+			Files.IPackageFile package
 		);
 
 		#endregion
 
-		public static SimPe.Interfaces.Files.IPackedFileDescriptor ExtractFileDescriptor(
-			SimPe.Events.ResourceEventArgs e
+		public static Files.IPackedFileDescriptor ExtractFileDescriptor(
+			Events.ResourceEventArgs e
 		)
 		{
 			if (e == null)
@@ -46,7 +46,7 @@ namespace SimPe.Interfaces
 				return null;
 			}
 
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd = null;
+			Files.IPackedFileDescriptor pfd = null;
 			if (e.Count > 0)
 			{
 				if (e[0].HasFileDescriptor)
@@ -58,8 +58,8 @@ namespace SimPe.Interfaces
 			return pfd;
 		}
 
-		public static SimPe.Interfaces.Files.IPackageFile ExtractPackage(
-			SimPe.Events.ResourceEventArgs e
+		public static Files.IPackageFile ExtractPackage(
+			Events.ResourceEventArgs e
 		)
 		{
 			if (e == null)
@@ -67,7 +67,7 @@ namespace SimPe.Interfaces
 				return null;
 			}
 
-			SimPe.Interfaces.Files.IPackageFile pkg = null;
+			Files.IPackageFile pkg = null;
 			if (e.Count > 0)
 			{
 				if (e[0].HasPackage)
@@ -86,17 +86,17 @@ namespace SimPe.Interfaces
 
 		#region IToolPlus Member
 
-		public virtual void Execute(object sender, SimPe.Events.ResourceEventArgs e)
+		public virtual void Execute(object sender, Events.ResourceEventArgs e)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd = ExtractFileDescriptor(e);
-			SimPe.Interfaces.Files.IPackageFile pkg = ExtractPackage(e);
+			Files.IPackedFileDescriptor pfd = ExtractFileDescriptor(e);
+			Files.IPackageFile pkg = ExtractPackage(e);
 
 			if (!IsEnabled(pfd, pkg))
 			{
 				return;
 			}
 
-			SimPe.Interfaces.Plugin.IToolResult ires = ShowDialog(ref pfd, ref pkg);
+			Plugin.IToolResult ires = ShowDialog(ref pfd, ref pkg);
 
 			if (e.Count > 0)
 			{
@@ -107,11 +107,11 @@ namespace SimPe.Interfaces
 
 		public virtual bool ChangeEnabledStateEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs e
+			Events.ResourceEventArgs e
 		)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd = ExtractFileDescriptor(e);
-			SimPe.Interfaces.Files.IPackageFile pkg = ExtractPackage(e);
+			Files.IPackedFileDescriptor pfd = ExtractFileDescriptor(e);
+			Files.IPackageFile pkg = ExtractPackage(e);
 
 			return IsEnabled(pfd, pkg);
 		}

@@ -249,7 +249,7 @@ namespace SimPe.Plugin
 			{
 				if (tMaterialDefinition == null)
 				{
-					tMaterialDefinition = new SimPe.Plugin.TabPage.MaterialDefinition();
+					tMaterialDefinition = new TabPage.MaterialDefinition();
 				}
 
 				return tMaterialDefinition;
@@ -264,24 +264,24 @@ namespace SimPe.Plugin
 		{
 			if (tMaterialDefinition == null)
 			{
-				tMaterialDefinition = new SimPe.Plugin.TabPage.MaterialDefinition();
+				tMaterialDefinition = new TabPage.MaterialDefinition();
 			}
 
 			if (tMaterialDefinitionProperties == null)
 			{
-				tMaterialDefinitionProperties = new SimPe.Plugin.TabPage.MatdForm();
+				tMaterialDefinitionProperties = new TabPage.MatdForm();
 			}
 
 			if (tMaterialDefinitionCat == null)
 			{
 				tMaterialDefinitionCat =
-					new SimPe.Plugin.TabPage.MaterialDefinitionCategories();
+					new TabPage.MaterialDefinitionCategories();
 			}
 
 			if (tMaterialDefinitionFiles == null)
 			{
 				tMaterialDefinitionFiles =
-					new SimPe.Plugin.TabPage.MaterialDefinitionFiles();
+					new TabPage.MaterialDefinitionFiles();
 			}
 
 			tMaterialDefinitionProperties.tbname.Tag = true;

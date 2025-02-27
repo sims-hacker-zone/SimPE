@@ -2,10 +2,10 @@ using SimPe.Interfaces;
 
 namespace SimPe.Plugin
 {
-	public class MoreWrapperFactory : SimPe.Interfaces.Plugin.AbstractWrapperFactory
+	public class MoreWrapperFactory : Interfaces.Plugin.AbstractWrapperFactory
 	{
 		#region AbstractWrapperFactory Member
-		public override SimPe.Interfaces.IWrapper[] KnownWrappers
+		public override IWrapper[] KnownWrappers
 		{
 			get
 			{

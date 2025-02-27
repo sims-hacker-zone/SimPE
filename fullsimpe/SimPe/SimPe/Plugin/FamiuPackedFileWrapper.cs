@@ -75,10 +75,10 @@ namespace SimPe.Plugin
 					);
 					if (pfd != null)
 					{
-						SimPe.PackedFiles.Wrapper.Str str =
-							new SimPe.PackedFiles.Wrapper.Str();
+						PackedFiles.Wrapper.Str str =
+							new PackedFiles.Wrapper.Str();
 						str.ProcessData(pfd, package);
-						SimPe.PackedFiles.Wrapper.StrItemList items =
+						PackedFiles.Wrapper.StrItemList items =
 							str.FallbackedLanguageItems(
 								Helper.WindowsRegistry.LanguageCode
 							);
@@ -121,7 +121,7 @@ namespace SimPe.Plugin
 			);
 			if (overs.Length > 0)
 			{
-				SimPe.Packages.GeneratableFile pkg;
+				Packages.GeneratableFile pkg;
 				foreach (string file in overs)
 				{
 					pkg = SimPe.Packages.File.LoadFromFile(file);
@@ -134,10 +134,10 @@ namespace SimPe.Plugin
 						);
 						if (pfd != null)
 						{
-							SimPe.PackedFiles.Wrapper.Str str =
-								new SimPe.PackedFiles.Wrapper.Str();
+							PackedFiles.Wrapper.Str str =
+								new PackedFiles.Wrapper.Str();
 							str.ProcessData(pfd, pkg);
-							SimPe.PackedFiles.Wrapper.StrItemList items =
+							PackedFiles.Wrapper.StrItemList items =
 								str.FallbackedLanguageItems(
 									Helper.WindowsRegistry.LanguageCode
 								);
@@ -182,13 +182,13 @@ namespace SimPe.Plugin
 				string suyt = System
 					.IO.Path.GetFileNameWithoutExtension(package.FileName)
 					.Substring(0, inxy);
-				SimPe.Packages.File fumbs = SimPe.Packages.File.LoadFromFile(
+				Packages.File fumbs = SimPe.Packages.File.LoadFromFile(
 					System.IO.Path.Combine(
 						System.IO.Path.GetDirectoryName(package.FileName),
 						"Thumbnails\\" + suyt + "FamilyThumbnails.package"
 					)
 				);
-				Interfaces.Files.IPackedFileDescriptor pfd = fumbs.FindFileAnyGroup(
+				IPackedFileDescriptor pfd = fumbs.FindFileAnyGroup(
 					0x8C3CE95A,
 					0,
 					this.FileDescriptor.Instance
@@ -197,8 +197,8 @@ namespace SimPe.Plugin
 				{
 					try
 					{
-						SimPe.PackedFiles.Wrapper.Picture pic =
-							new SimPe.PackedFiles.Wrapper.Picture();
+						PackedFiles.Wrapper.Picture pic =
+							new PackedFiles.Wrapper.Picture();
 						pic.ProcessData(pfd, fumbs);
 						return Ambertation.Drawing.GraphicRoutines.MakeTransparent(
 							pic.Image,
@@ -255,7 +255,7 @@ namespace SimPe.Plugin
 			);
 		}
 
-		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
+		protected override string GetResourceName(Data.TypeAlias ta)
 		{
 			if (!this.Processed)
 			{
@@ -269,7 +269,7 @@ namespace SimPe.Plugin
 		/// Unserializes a BinaryStream into the Attributes of this Instance
 		/// </summary>
 		/// <param name="reader">The Stream that contains the FileData</param>
-		protected override void Unserialize(System.IO.BinaryReader reader)
+		protected override void Unserialize(BinaryReader reader)
 		{
 			isnew = false; // empty files don't get Unserialize, this value shows the file as not empty
 			GoodSections = 0;
@@ -278,7 +278,7 @@ namespace SimPe.Plugin
 			reader.BaseStream.Seek(13, System.IO.SeekOrigin.Begin);
 			Sections = reader.ReadInt32();
 			int siser = Sections * 42; // 83 bytes - 1 byte + 41 two bit bytes
-			Array.Resize<ushort>(ref fval, siser);
+			Array.Resize(ref fval, siser);
 
 			reader.BaseStream.Seek(17, System.IO.SeekOrigin.Begin);
 			try
@@ -321,7 +321,7 @@ namespace SimPe.Plugin
 		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
-		protected override void Serialize(System.IO.BinaryWriter writer)
+		protected override void Serialize(BinaryWriter writer)
 		{
 			writer.Write(signate);
 			writer.Write(Version);

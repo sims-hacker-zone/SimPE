@@ -174,9 +174,9 @@ namespace Ambertation.Renderer
 
 		#region MenuStrip
 
-		public override System.Drawing.Color MenuStripGradientBegin => Color.FromArgb(0xE5, 0xE5, 0xD7);
+		public override Color MenuStripGradientBegin => Color.FromArgb(0xE5, 0xE5, 0xD7);
 
-		public override System.Drawing.Color MenuStripGradientEnd => ToolStripGradientEnd;
+		public override Color MenuStripGradientEnd => ToolStripGradientEnd;
 
 		public override Color MenuBorder => ToolStripBorder;
 		#endregion
@@ -185,22 +185,22 @@ namespace Ambertation.Renderer
 		/// <summary>
 		///
 		/// </summary>
-		public override System.Drawing.Color ToolStripGradientBegin => Color.White;
+		public override Color ToolStripGradientBegin => Color.White;
 
 		/// <summary>
 		///
 		/// </summary>
-		public override System.Drawing.Color ToolStripGradientMiddle => Color.FromArgb(0xF1, 0xF1, 0xF1);
+		public override Color ToolStripGradientMiddle => Color.FromArgb(0xF1, 0xF1, 0xF1);
 
 		/// <summary>
 		///
 		/// </summary>
-		public System.Drawing.Color ToolStripGradientMiddleEnd => Color.FromArgb(0xE9, 0xE9, 0xE9);
+		public Color ToolStripGradientMiddleEnd => Color.FromArgb(0xE9, 0xE9, 0xE9);
 
 		/// <summary>
 		///
 		/// </summary>
-		public override System.Drawing.Color ToolStripGradientEnd => Color.FromArgb(0xFE, 0xFF, 0xFF);
+		public override Color ToolStripGradientEnd => Color.FromArgb(0xFE, 0xFF, 0xFF);
 
 		/// <summary>
 		///

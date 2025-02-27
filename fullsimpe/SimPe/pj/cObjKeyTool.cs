@@ -29,7 +29,7 @@ using SimPe.Interfaces.Plugin;
 
 namespace pj
 {
-	public class cObjKeyTool : SimPe.Interfaces.AbstractTool, ITool
+	public class cObjKeyTool : AbstractTool, ITool
 	{
 		// TSData\Res\3D:
 		private static List<String> txmtpkg; // Objects02, Sims02, CarryForward.sgfiles
@@ -976,9 +976,9 @@ namespace pj
 			return false;
 		}
 
-		public SimPe.Interfaces.Plugin.IToolResult ShowDialog(
-			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			ref SimPe.Interfaces.Files.IPackageFile package
+		public IToolResult ShowDialog(
+			ref IPackedFileDescriptor pfd,
+			ref IPackageFile package
 		)
 		{
 			if (!IsReallyEnabled(pfd, package))

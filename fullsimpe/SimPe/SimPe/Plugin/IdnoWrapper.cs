@@ -218,7 +218,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="pkg"></param>
 		/// <returns></returns>
-		public static Idno FromPackage(SimPe.Interfaces.Files.IPackageFile pkg)
+		public static Idno FromPackage(Interfaces.Files.IPackageFile pkg)
 		{
 			if (pkg == null)
 			{
@@ -233,7 +233,7 @@ namespace SimPe.Plugin
 			);
 			if (idno != null)
 			{
-				SimPe.Plugin.Idno wrp = new Idno();
+				Idno wrp = new Idno();
 				wrp.ProcessData(idno, pkg);
 
 				return wrp;
@@ -431,11 +431,11 @@ namespace SimPe.Plugin
 
 			foreach (string name in names)
 			{
-				SimPe.Packages.File fl = SimPe.Packages.File.LoadFromFile(name);
-				SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = fl.FindFiles(
+				Packages.File fl = SimPe.Packages.File.LoadFromFile(name);
+				Interfaces.Files.IPackedFileDescriptor[] pfds = fl.FindFiles(
 					Data.MetaData.IDNO
 				);
-				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					Idno idno = new Idno();
 					idno.ProcessData(pfd, fl);

@@ -44,7 +44,7 @@ namespace SimPe.Actions.Default
 					new System.Windows.Forms.SaveFileDialog();
 				sfd.FileName = name;
 				sfd.Filter = ExtensionProvider.BuildFilterString(
-					new SimPe.ExtensionType[]
+					new ExtensionType[]
 					{
 						SimPe.ExtensionType.ExtractedFile,
 						SimPe.ExtensionType.AllFiles,
@@ -71,8 +71,8 @@ namespace SimPe.Actions.Default
 
 		public void ExtractAllFiles(
 			string selpath,
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds,
-			SimPe.Packages.ExtractableFile package
+			Interfaces.Files.IPackedFileDescriptor[] pfds,
+			Packages.ExtractableFile package
 		)
 		{
 			int excount = 0;
@@ -226,7 +226,7 @@ namespace SimPe.Actions.Default
 
 		public override void ExecuteEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs es
+			Events.ResourceEventArgs es
 		)
 		{
 			if (!ChangeEnabledStateEventHandler(null, es))
@@ -249,8 +249,8 @@ namespace SimPe.Actions.Default
 			{
 				if (!multi) //extract one File
 				{
-					SimPe.Packages.PackedFileDescriptor pfd =
-						(SimPe.Packages.PackedFileDescriptor)
+					Packages.PackedFileDescriptor pfd =
+						(Packages.PackedFileDescriptor)
 							es[0].Resource.FileDescriptor;
 
 					ToolLoaderItemExt.SavePackedFile(
@@ -263,9 +263,9 @@ namespace SimPe.Actions.Default
 				}
 				else //extract multiple Files
 				{
-					SimPe.Collections.PackedFileDescriptors pfds =
-						new SimPe.Collections.PackedFileDescriptors();
-					foreach (SimPe.Events.ResourceContainer e in es)
+					Collections.PackedFileDescriptors pfds =
+						new Collections.PackedFileDescriptors();
+					foreach (Events.ResourceContainer e in es)
 					{
 						if (e.HasFileDescriptor)
 						{
@@ -273,8 +273,8 @@ namespace SimPe.Actions.Default
 						}
 					}
 
-					SimPe.Interfaces.Files.IPackedFileDescriptor[] ar =
-						new SimPe.Interfaces.Files.IPackedFileDescriptor[pfds.Length];
+					Interfaces.Files.IPackedFileDescriptor[] ar =
+						new Interfaces.Files.IPackedFileDescriptor[pfds.Length];
 					pfds.CopyTo(ar);
 					ExtractAllFiles(flname, ar, es.LoadedPackage.Package);
 				}

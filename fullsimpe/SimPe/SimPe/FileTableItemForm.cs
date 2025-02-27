@@ -5,7 +5,7 @@ namespace SimPe
 	/// <summary>
 	/// Summary description for FileTableItemForm.
 	/// </summary>
-	public class FileTableItemForm : System.Windows.Forms.Form
+	public class FileTableItemForm : Form
 	{
 		private SteepValley.Windows.Forms.XPGradientPanel xpGradientPanel1;
 
@@ -13,25 +13,25 @@ namespace SimPe
 		/// Erforderliche Designervariable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.CheckBox cbRec;
-		private System.Windows.Forms.TextBox tbName;
-		private System.Windows.Forms.TextBox tbRoot;
-		private System.Windows.Forms.ComboBox cbEpVer;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.Button button3;
-		private System.Windows.Forms.FolderBrowserDialog fbd;
-		private System.Windows.Forms.OpenFileDialog ofd;
+		private Label label1;
+		private Label label2;
+		private Label label3;
+		private CheckBox cbRec;
+		private TextBox tbName;
+		private TextBox tbRoot;
+		private ComboBox cbEpVer;
+		private Button button1;
+		private Button button2;
+		private Button button3;
+		private FolderBrowserDialog fbd;
+		private OpenFileDialog ofd;
 
 		public FileTableItemForm()
 		{
 			InitializeComponent();
 
 			ofd.Filter = SimPe.ExtensionProvider.BuildFilterString(
-				new SimPe.ExtensionType[]
+				new ExtensionType[]
 				{
 					SimPe.ExtensionType.Package,
 					SimPe.ExtensionType.AllFiles,
@@ -74,18 +74,18 @@ namespace SimPe
 					typeof(FileTableItemForm)
 				);
 			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.button3 = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
-			this.button1 = new System.Windows.Forms.Button();
-			this.cbEpVer = new System.Windows.Forms.ComboBox();
-			this.tbRoot = new System.Windows.Forms.TextBox();
-			this.tbName = new System.Windows.Forms.TextBox();
-			this.cbRec = new System.Windows.Forms.CheckBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.fbd = new System.Windows.Forms.FolderBrowserDialog();
-			this.ofd = new System.Windows.Forms.OpenFileDialog();
+			this.button3 = new Button();
+			this.button2 = new Button();
+			this.button1 = new Button();
+			this.cbEpVer = new ComboBox();
+			this.tbRoot = new TextBox();
+			this.tbName = new TextBox();
+			this.cbRec = new CheckBox();
+			this.label3 = new Label();
+			this.label2 = new Label();
+			this.label1 = new Label();
+			this.fbd = new FolderBrowserDialog();
+			this.ofd = new OpenFileDialog();
 			this.xpGradientPanel1.SuspendLayout();
 			this.SuspendLayout();
 			//

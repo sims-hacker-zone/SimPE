@@ -7,7 +7,7 @@ namespace SimPe.Plugin.Downloads
 	/// <summary>
 	/// Reads the Content of a Package
 	/// </summary>
-	public class DefaultTypeHandler : Downloads.ITypeHandler, System.IDisposable
+	public class DefaultTypeHandler : ITypeHandler, IDisposable
 	{
 		#region Preview
 		static Ambertation.Graphics.DirectXPanel dxp;
@@ -33,7 +33,7 @@ namespace SimPe.Plugin.Downloads
 
 		protected PackageInfo nfo;
 		protected string flname;
-		protected SimPe.PackedFiles.Wrapper.ExtObjd objd;
+		protected PackedFiles.Wrapper.ExtObjd objd;
 		bool rendergmdc;
 		bool countvert;
 
@@ -47,8 +47,8 @@ namespace SimPe.Plugin.Downloads
 		/// <param name="rendergmdc">If true, SimPe will generate a Preview from
 		/// the GMDC (only if countvert is also true)</param>
 		internal DefaultTypeHandler(
-			SimPe.Cache.PackageType type,
-			SimPe.Interfaces.Files.IPackageFile pkg,
+			Cache.PackageType type,
+			Interfaces.Files.IPackageFile pkg,
 			bool countvert,
 			bool rendergmdc
 		)
@@ -66,8 +66,8 @@ namespace SimPe.Plugin.Downloads
 		}
 
 		public void LoadContent(
-			SimPe.Cache.PackageType type,
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Cache.PackageType type,
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
 			this.flname = pkg.SaveFileName;
@@ -102,7 +102,7 @@ namespace SimPe.Plugin.Downloads
 				);
 		}
 
-		static SimPe.Packages.File thumbs = null;
+		static Packages.File thumbs = null;
 
 		/// <summary>
 		/// Returns the Thumbnail of an Object
@@ -148,7 +148,7 @@ namespace SimPe.Plugin.Downloads
 			uint group,
 			string modelname,
 			string message,
-			SimPe.Packages.File thumbs
+			Packages.File thumbs
 		)
 		{
 			uint inst = ThumbnailHash(group, modelname);
@@ -174,7 +174,7 @@ namespace SimPe.Plugin.Downloads
 			uint type,
 			uint group,
 			uint inst,
-			SimPe.Packages.File thumbs
+			Packages.File thumbs
 		)
 		{
 			return GetThumbnail(message, new uint[] { type }, group, inst, thumbs);
@@ -191,7 +191,7 @@ namespace SimPe.Plugin.Downloads
 			uint[] types,
 			uint group,
 			uint inst,
-			SimPe.Packages.File thumbs
+			Packages.File thumbs
 		)
 		{
 			foreach (uint type in types)
@@ -212,8 +212,8 @@ namespace SimPe.Plugin.Downloads
 					Interfaces.Files.IPackedFileDescriptor pfd = pfds[0];
 					try
 					{
-						SimPe.PackedFiles.Wrapper.Picture pic =
-							new SimPe.PackedFiles.Wrapper.Picture();
+						PackedFiles.Wrapper.Picture pic =
+							new PackedFiles.Wrapper.Picture();
 						pic.ProcessData(pfd, thumbs);
 						Bitmap bm = (Bitmap)
 							ImageLoader.Preview(pic.Image, WaitingScreen.ImageSize);
@@ -255,7 +255,7 @@ namespace SimPe.Plugin.Downloads
 			}
 		}
 
-		public virtual void SetFromObjectCacheItem(SimPe.Cache.ObjectCacheItem oci)
+		public virtual void SetFromObjectCacheItem(Cache.ObjectCacheItem oci)
 		{
 			ClearScreen();
 			if (oci == null)
@@ -268,11 +268,11 @@ namespace SimPe.Plugin.Downloads
 			objd = null;
 			if (oci.Tag != null)
 			{
-				if (oci.Tag is SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem)
+				if (oci.Tag is Interfaces.Scenegraph.IScenegraphFileIndexItem)
 				{
-					objd = new SimPe.PackedFiles.Wrapper.ExtObjd();
+					objd = new PackedFiles.Wrapper.ExtObjd();
 					objd.ProcessData(
-						(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem)oci.Tag
+						(Interfaces.Scenegraph.IScenegraphFileIndexItem)oci.Tag
 					);
 				}
 			}
@@ -294,7 +294,7 @@ namespace SimPe.Plugin.Downloads
 
 		static Ambertation.Scenes.Scene scn;
 
-		public virtual void SetFromPackage(SimPe.Interfaces.Files.IPackageFile pkg)
+		public virtual void SetFromPackage(Interfaces.Files.IPackageFile pkg)
 		{
 			ClearScreen();
 			if (pkg == null)
@@ -307,17 +307,17 @@ namespace SimPe.Plugin.Downloads
 			UpdateScreen(pkg, false);
 		}
 
-		protected void GetObjd(SimPe.Interfaces.Files.IPackageFile pkg)
+		protected void GetObjd(Interfaces.Files.IPackageFile pkg)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
 				Data.MetaData.OBJD_FILE
 			);
 			if (pfds.Length > 0)
 			{
-				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
-					SimPe.PackedFiles.Wrapper.ExtObjd mobjd =
-						new SimPe.PackedFiles.Wrapper.ExtObjd();
+					PackedFiles.Wrapper.ExtObjd mobjd =
+						new PackedFiles.Wrapper.ExtObjd();
 					mobjd.ProcessData(pfd, pkg);
 
 					nfo.AddGuid(mobjd.Guid);
@@ -347,11 +347,11 @@ namespace SimPe.Plugin.Downloads
 		{
 			Wait.SubStart();
 			Wait.Message = "Building Preview";
-			SimPe.Plugin.GeometryDataContainerExt ext =
+			GeometryDataContainerExt ext =
 				((sender as PackageInfo).RenderData)
-				as SimPe.Plugin.GeometryDataContainerExt;
+				as GeometryDataContainerExt;
 			Ambertation.Scenes.Scene scn = ext.GetScene(
-				new SimPe.Plugin.Gmdc.ElementOrder(
+				new Gmdc.ElementOrder(
 					SimPe.Plugin.Gmdc.ElementSorting.Preview
 				)
 			);
@@ -367,13 +367,13 @@ namespace SimPe.Plugin.Downloads
 		/// Renders the Preview form the GMDC and loads the vertex and face Count for an Object
 		/// </summary>
 		/// <param name="pkg"></param>
-		protected void RenderGmdcPreview(SimPe.Interfaces.Files.IPackageFile pkg)
+		protected void RenderGmdcPreview(Interfaces.Files.IPackageFile pkg)
 		{
 			int fct = 0;
 			int vct = 0;
 			if (this.countvert)
 			{
-				SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
+				Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
 					Data.MetaData.GMDC
 				);
 				bool first = !nfo.HasThumbnail;
@@ -382,15 +382,15 @@ namespace SimPe.Plugin.Downloads
 				System.Windows.Forms.Application.DoEvents();
 				Wait.Message = "Counting Vertices";
 				System.Windows.Forms.Application.DoEvents();
-				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
-					SimPe.Plugin.Rcol rcol = new GenericRcol();
+					Rcol rcol = new GenericRcol();
 					rcol.ProcessData(pfd, pkg, true);
 
-					SimPe.Plugin.GeometryDataContainer gmdc =
-						rcol.Blocks[0] as SimPe.Plugin.GeometryDataContainer;
+					GeometryDataContainer gmdc =
+						rcol.Blocks[0] as GeometryDataContainer;
 					bool hasmesh = false;
-					foreach (SimPe.Plugin.Gmdc.GmdcGroup g in gmdc.Groups)
+					foreach (Gmdc.GmdcGroup g in gmdc.Groups)
 					{
 						if (g.Opacity == 0xFFFFFFFF)
 						{
@@ -413,7 +413,7 @@ namespace SimPe.Plugin.Downloads
 						if (first && hasmesh && rendergmdc)
 						{
 							first = false;
-							SimPe.Plugin.GeometryDataContainerExt ext =
+							GeometryDataContainerExt ext =
 								new GeometryDataContainerExt(gmdc);
 							nfo.RenderData = ext;
 							nfo.PostponedRenderer = new EventHandler(PostponedRender);
@@ -476,12 +476,12 @@ namespace SimPe.Plugin.Downloads
 
 		protected void ClearScreen()
 		{
-			SimPe.Cache.PackageType t = nfo.Type;
+			Cache.PackageType t = nfo.Type;
 			nfo.Reset();
 			nfo.Type = t;
 		}
 
-		public void UpdateScreen(SimPe.Interfaces.Files.IPackageFile pkg, bool clear)
+		public void UpdateScreen(Interfaces.Files.IPackageFile pkg, bool clear)
 		{
 			if (clear)
 			{
@@ -520,7 +520,7 @@ namespace SimPe.Plugin.Downloads
 				)
 			);
 
-			SimPe.PackedFiles.Wrapper.StrItemList strs = GetCtssItems();
+			PackedFiles.Wrapper.StrItemList strs = GetCtssItems();
 			if (strs != null)
 			{
 				if (strs.Count > 0)
@@ -554,7 +554,7 @@ namespace SimPe.Plugin.Downloads
 				return new string[0];
 			}
 
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd = objd.Package.FindFile(
+			Interfaces.Files.IPackedFileDescriptor pfd = objd.Package.FindFile(
 				Data.MetaData.STRING_FILE,
 				0,
 				objd.FileDescriptor.Group,
@@ -563,9 +563,9 @@ namespace SimPe.Plugin.Downloads
 			ArrayList list = new ArrayList();
 			if (pfd != null)
 			{
-				SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
 				str.ProcessData(pfd, objd.Package);
-				SimPe.PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
+				PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
 				for (int i = 1; i < items.Length; i++)
 				{
 					list.Add(items[i].Title);
@@ -577,14 +577,14 @@ namespace SimPe.Plugin.Downloads
 			return refname;
 		}
 
-		internal static SimPe.PackedFiles.Wrapper.StrItemList GetCtssItems(
+		internal static PackedFiles.Wrapper.StrItemList GetCtssItems(
 			Interfaces.Files.IPackedFileDescriptor ctss,
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
 			if (ctss != null)
 			{
-				SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
 				str.ProcessData(ctss, pkg);
 
 				return str.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
@@ -593,7 +593,7 @@ namespace SimPe.Plugin.Downloads
 			return null;
 		}
 
-		protected virtual SimPe.PackedFiles.Wrapper.StrItemList GetCtssItems()
+		protected virtual PackedFiles.Wrapper.StrItemList GetCtssItems()
 		{
 			if (objd == null)
 			{

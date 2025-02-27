@@ -34,7 +34,7 @@ namespace SimPe.Plugin
 	/// If a Plugin isn't returned, SimPe won't recognize it!
 	/// </remarks>
 	public class WrapperFactory
-		: SimPe.Interfaces.Plugin.AbstractWrapperFactory,
+		: AbstractWrapperFactory,
 			ICommandLineFactory,
 			IToolFactory
 	{
@@ -48,7 +48,7 @@ namespace SimPe.Plugin
 			if (!inited)
 			{
 				Rcol.TokenAssemblies.Add(
-					typeof(SimPe.Plugin.GeometryDataContainer).Assembly
+					typeof(GeometryDataContainer).Assembly
 				);
 				inited = true;
 			}
@@ -74,8 +74,8 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			SimPe.PackedFiles.Wrapper.GroupCache gc =
-				new SimPe.PackedFiles.Wrapper.GroupCache();
+			GroupCache gc =
+				new GroupCache();
 
 			if (!Helper.WindowsRegistry.UseMaxisGroupsCache && !force)
 			{
@@ -91,8 +91,8 @@ namespace SimPe.Plugin
 
 				if (System.IO.File.Exists(name))
 				{
-					SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(name);
-					SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
+					Packages.File pkg = SimPe.Packages.File.LoadFromFile(name);
+					Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
 						0x54535053,
 						0,
 						1,
@@ -131,7 +131,7 @@ namespace SimPe.Plugin
 		/// Returns a List of all available Plugins in this Package
 		/// </summary>
 		/// <returns>A List of all provided Plugins (=FileType Wrappers)</returns>
-		public override SimPe.Interfaces.IWrapper[] KnownWrappers
+		public override IWrapper[] KnownWrappers
 		{
 			get
 			{
@@ -143,34 +143,34 @@ namespace SimPe.Plugin
 				{
 					InitRcolBlocks();
 					SimPe.PackedFiles.Wrapper.SdscFreetime.RegisterAsAspirationEditor(
-						new SimPe.Plugin.SimAspirationEditor()
+						new SimAspirationEditor()
 					);
 					FileTable.ProviderRegistry.LotProvider.LoadingLot +=
-						new SimPe.Interfaces.Providers.LoadLotData(
+						new Interfaces.Providers.LoadLotData(
 							LotProvider_LoadingLot
 						);
 					IWrapper[] wrappers =
 					{
 						new RefFile(),
-						new Plugin.Txtr(this.LinkedProvider, false),
-						new Plugin.Lifo(this.LinkedProvider, false),
+						new Txtr(this.LinkedProvider, false),
+						new Lifo(this.LinkedProvider, false),
 						// new Plugin.Shpe(this.LinkedProvider),
-						new Plugin.GenericRcol(this.LinkedProvider, false),
-						new Plugin.MmatWrapper(),
-						new SimPe.PackedFiles.Wrapper.GroupCache(),
-						new SimPe.PackedFiles.Wrapper.Slot(),
+						new GenericRcol(this.LinkedProvider, false),
+						new MmatWrapper(),
+						new GroupCache(),
+						new Slot(),
 						new Nmap(this.LinkedProvider),
-						new Plugin.EnhancedNgbh(),
-						new Plugin.Ngbh(this.LinkedProvider),
-						new Plugin.Ltxt(this.LinkedProvider),
-						new Plugin.Want(this.LinkedProvider),
-						new Plugin.XWant(),
-						new Plugin.Idno(),
-						new Plugin.RoadTexture(),
-						new Plugin.Tatt(),
-						new Plugin.Bnfo(),
-						new Plugin.Nhtr(),
-						new Plugin.Lot(),
+						new EnhancedNgbh(),
+						new Ngbh(this.LinkedProvider),
+						new Ltxt(this.LinkedProvider),
+						new Want(this.LinkedProvider),
+						new XWant(),
+						new Idno(),
+						new RoadTexture(),
+						new Tatt(),
+						new Bnfo(),
+						new Nhtr(),
+						new Lot(),
 						new Bcon(),
 						new Bhav(),
 						new Objf(),
@@ -227,21 +227,21 @@ namespace SimPe.Plugin
 
 		private void LotProvider_LoadingLot(
 			object sender,
-			SimPe.Interfaces.Providers.ILotItem item
+			Interfaces.Providers.ILotItem item
 		)
 		{
-			SimPe.Interfaces.Files.IPackageFile pkg = FileTable
+			Interfaces.Files.IPackageFile pkg = FileTable
 				.ProviderRegistry
 				.SimDescriptionProvider
 				.BasePackage;
 			if (pkg != null)
 			{
-				SimPe.Providers.LotProvider.LotItem li =
-					item as SimPe.Providers.LotProvider.LotItem;
+				Providers.LotProvider.LotItem li =
+					item as Providers.LotProvider.LotItem;
 				//SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(0x0BF999E7, 0, Data.MetaData.LOCAL_GROUP, item.Instance);
 				if (item.LtxtFileIndexItem != null)
 				{
-					SimPe.Plugin.Ltxt ltxt = new Ltxt();
+					Ltxt ltxt = new Ltxt();
 					ltxt.ProcessData(item.LtxtFileIndexItem);
 					item.Tags.Add(ltxt);
 					li.Owner = ltxt.OwnerInstance;

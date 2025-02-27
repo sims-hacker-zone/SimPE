@@ -266,8 +266,8 @@ namespace SimPe
 
 		protected override void StartThread()
 		{
-			System.Delegate[] dls = ChangedGuiResourceEvent.GetInvocationList();
-			foreach (System.Delegate d in dls)
+			Delegate[] dls = ChangedGuiResourceEvent.GetInvocationList();
+			foreach (Delegate d in dls)
 			{
 				if (this.HaveToStop)
 				{
@@ -306,12 +306,12 @@ namespace SimPe
 
 				//ChangedGuiResourceEvent(sender, e);
 
-				System.Delegate[] dls = ChangedGuiResourceEvent.GetInvocationList();
-				foreach (System.Delegate d in dls)
+				Delegate[] dls = ChangedGuiResourceEvent.GetInvocationList();
+				foreach (Delegate d in dls)
 				{
-					if (d.Target is Interfaces.IToolExt)
+					if (d.Target is IToolExt)
 					{
-						if (!((Interfaces.IToolExt)d.Target).Visible)
+						if (!((IToolExt)d.Target).Visible)
 						{
 							continue;
 						}
@@ -324,9 +324,9 @@ namespace SimPe
 		/// Returns a List of Builtin Actions
 		/// </summary>
 		/// <returns></returns>
-		Interfaces.IToolAction[] GetDefaultActions(Windows.Forms.ResourceListViewExt lv)
+		IToolAction[] GetDefaultActions(Windows.Forms.ResourceListViewExt lv)
 		{
-			return new Interfaces.IToolAction[]
+			return new IToolAction[]
 			{
 				new Actions.Default.AddAction(),
 				new Actions.Default.ExportAction(),
@@ -346,7 +346,7 @@ namespace SimPe
 			SteepValley.Windows.Forms.ThemedControls.XPTaskBox taskbox,
 			ToolStrip tb,
 			ContextMenuStrip mi,
-			Interfaces.IToolAction[] tools
+			IToolAction[] tools
 		)
 		{
 			if (tools == null)
@@ -362,7 +362,7 @@ namespace SimPe
 
 			bool tfirst = true;
 			bool mfirst = true;
-			foreach (Interfaces.IToolAction tool in tools)
+			foreach (IToolAction tool in tools)
 			{
 				ActionToolDescriptor atd = new ActionToolDescriptor(tool);
 				ChangedGuiResourceEvent += new Events.ChangedResourceEvent(
@@ -410,10 +410,10 @@ namespace SimPe
 		#endregion
 
 		#region External Program Tools
-		Interfaces.IToolAction[] LoadExternalTools()
+		IToolAction[] LoadExternalTools()
 		{
 			ToolLoaderItemExt[] items = ToolLoaderExt.Items;
-			Interfaces.IToolAction[] tools = new Interfaces.IToolAction[items.Length];
+			IToolAction[] tools = new IToolAction[items.Length];
 			for (int i = 0; i < items.Length; i++)
 			{
 				tools[i] = new Actions.Default.StartExternalToolAction(items[i]);
@@ -426,7 +426,7 @@ namespace SimPe
 		#region dockable Tools
 		void LoadDocks(Ambertation.Windows.Forms.DockContainer dc, LoadedPackage lp)
 		{
-			foreach (Interfaces.IDockableTool idt in FileTable.ToolRegistry.Docks)
+			foreach (IDockableTool idt in FileTable.ToolRegistry.Docks)
 			{
 				Ambertation.Windows.Forms.DockPanel dctrl = idt.GetDockableControl();
 

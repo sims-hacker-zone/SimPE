@@ -387,7 +387,7 @@ namespace SimPe
 			gp.EndColor = ThemeColor;
 		}
 
-		void SetTheme(SimPe.Windows.Forms.WrapperBaseControl gp)
+		void SetTheme(Windows.Forms.WrapperBaseControl gp)
 		{
 			gp.BackColor = ThemeColorLight;
 			gp.GradientColor = ThemeColor;
@@ -411,9 +411,9 @@ namespace SimPe
 			{
 				SetTheme((SteepValley.Windows.Forms.XPGradientPanel)o);
 			}
-			else if (o is SimPe.Windows.Forms.WrapperBaseControl)
+			else if (o is Windows.Forms.WrapperBaseControl)
 			{
-				SetTheme((SimPe.Windows.Forms.WrapperBaseControl)o);
+				SetTheme((Windows.Forms.WrapperBaseControl)o);
 			}
 			else if (o is System.Windows.Forms.Splitter)
 			{
@@ -547,7 +547,7 @@ namespace SimPe
 		#endregion
 
 		#region Events
-		protected event SimPe.Events.ChangedThemeEvent ChangedTheme;
+		protected event Events.ChangedThemeEvent ChangedTheme;
 
 		/// <summary>
 		/// Called when the Theme in the parent was changed
@@ -573,7 +573,7 @@ namespace SimPe
 			{
 				if (parent != null)
 				{
-					parent.ChangedTheme -= new SimPe.Events.ChangedThemeEvent(
+					parent.ChangedTheme -= new Events.ChangedThemeEvent(
 						ThemeWasChanged
 					);
 				}
@@ -581,7 +581,7 @@ namespace SimPe
 				parent = value;
 				if (parent != null)
 				{
-					parent.ChangedTheme += new SimPe.Events.ChangedThemeEvent(
+					parent.ChangedTheme += new Events.ChangedThemeEvent(
 						ThemeWasChanged
 					);
 				}

@@ -2,7 +2,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 {
 	public partial class FindInCpf : FindInStr
 	{
-		public FindInCpf(SimPe.Interfaces.IFinderResultGui rgui)
+		public FindInCpf(Interfaces.IFinderResultGui rgui)
 			: base(rgui)
 		{
 			InitializeComponent();
@@ -29,8 +29,8 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 		}
 
 		public override void SearchPackage(
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			Interfaces.Files.IPackageFile pkg,
+			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
 			if (type != 0)
@@ -48,7 +48,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 				}
 			}
 
-			SimPe.PackedFiles.Wrapper.Cpf cpf = new SimPe.PackedFiles.Wrapper.Cpf();
+			PackedFiles.Wrapper.Cpf cpf = new PackedFiles.Wrapper.Cpf();
 			cpf.ProcessData(pfd, pkg);
 
 			bool found = false;
@@ -58,7 +58,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 			}
 			else
 			{
-				foreach (SimPe.PackedFiles.Wrapper.CpfItem item in cpf.Items)
+				foreach (PackedFiles.Wrapper.CpfItem item in cpf.Items)
 				{
 					found = FindInField(cpf, found, item.Name);
 					if (found)
@@ -76,7 +76,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 		}
 
 		private bool FindInField(
-			SimPe.PackedFiles.Wrapper.Cpf cpf,
+			PackedFiles.Wrapper.Cpf cpf,
 			bool found,
 			string fldname
 		)

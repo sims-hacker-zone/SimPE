@@ -8,7 +8,7 @@ namespace SimPe.Plugin
 	/// This class is used to fill the UI for this FileType with Data
 	/// </summary>
 	public partial class LotexturePackedFileUI
-		: SimPe.Windows.Forms.WrapperBaseControl,
+		: Windows.Forms.WrapperBaseControl,
 			IPackedFileUI
 	{
 		protected new LotexturePackedFileWrapper Wrapper => base.Wrapper as LotexturePackedFileWrapper;

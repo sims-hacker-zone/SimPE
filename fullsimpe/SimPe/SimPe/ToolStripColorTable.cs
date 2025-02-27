@@ -160,9 +160,9 @@ namespace SimPe
 
 		#region MenuStrip
 
-		public override System.Drawing.Color MenuStripGradientBegin => Color.FromArgb(0xE5, 0xE5, 0xD7);
+		public override Color MenuStripGradientBegin => Color.FromArgb(0xE5, 0xE5, 0xD7);
 
-		public override System.Drawing.Color MenuStripGradientEnd =>
+		public override Color MenuStripGradientEnd =>
 				//return Color.FromArgb(0xF3, 0xF2, 0xE7);
 				Color.White;
 
@@ -170,11 +170,11 @@ namespace SimPe
 		#endregion
 
 		#region ToolStrip
-		public override System.Drawing.Color ToolStripGradientBegin => Color.FromArgb(0xFD, 0xFD, 0xFB);
+		public override Color ToolStripGradientBegin => Color.FromArgb(0xFD, 0xFD, 0xFB);
 
-		public override System.Drawing.Color ToolStripGradientMiddle => Color.FromArgb(0xEC, 0xEC, 0xE5);
+		public override Color ToolStripGradientMiddle => Color.FromArgb(0xEC, 0xEC, 0xE5);
 
-		public override System.Drawing.Color ToolStripGradientEnd => Color.FromArgb(0xBE, 0xBE, 0xA7);
+		public override Color ToolStripGradientEnd => Color.FromArgb(0xBE, 0xBE, 0xA7);
 
 		public override Color ToolStripBorder => Color.FromArgb(0xA3, 0xA3, 0x7C);
 		#endregion

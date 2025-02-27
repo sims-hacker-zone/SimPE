@@ -5,7 +5,7 @@ using SimPe.Interfaces.Plugin;
 namespace SimPe.Plugin
 {
 	public partial class SimpleTextPackedFileUI
-		: SimPe.Windows.Forms.WrapperBaseControl,
+		: Windows.Forms.WrapperBaseControl,
 			IPackedFileUI
 	{
 		protected new SimpleTextPackedFileWrapper Wrapper => base.Wrapper as SimpleTextPackedFileWrapper;

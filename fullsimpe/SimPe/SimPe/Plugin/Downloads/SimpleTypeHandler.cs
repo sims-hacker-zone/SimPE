@@ -3,7 +3,7 @@ namespace SimPe.Plugin.Downloads
 	/// <summary>
 	/// Summary description for LotTypeHandler.
 	/// </summary>
-	public abstract class SimpleTypeHandler : Downloads.ITypeHandler, System.IDisposable
+	public abstract class SimpleTypeHandler : ITypeHandler, System.IDisposable
 	{
 		protected PackageInfo nfo;
 
@@ -11,16 +11,16 @@ namespace SimPe.Plugin.Downloads
 		{
 		}
 
-		protected abstract void SetName(SimPe.Interfaces.Files.IPackageFile pkg);
-		protected abstract void SetImage(SimPe.Interfaces.Files.IPackageFile pkg);
+		protected abstract void SetName(Interfaces.Files.IPackageFile pkg);
+		protected abstract void SetImage(Interfaces.Files.IPackageFile pkg);
 
-		protected void SetName(uint type, SimPe.Interfaces.Files.IPackageFile pkg)
+		protected void SetName(uint type, Interfaces.Files.IPackageFile pkg)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(type);
+			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(type);
 
 			if (pfds.Length > 0)
 			{
-				SimPe.PackedFiles.Wrapper.StrItemList items =
+				PackedFiles.Wrapper.StrItemList items =
 					Downloads.DefaultTypeHandler.GetCtssItems(pfds[0], pkg);
 				if (items.Length > 0)
 				{
@@ -29,13 +29,13 @@ namespace SimPe.Plugin.Downloads
 			}
 		}
 
-		protected void SetImage(uint type, SimPe.Interfaces.Files.IPackageFile pkg)
+		protected void SetImage(uint type, Interfaces.Files.IPackageFile pkg)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(type);
+			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(type);
 			if (pfds.Length > 0)
 			{
-				SimPe.PackedFiles.Wrapper.Picture pic =
-					new SimPe.PackedFiles.Wrapper.Picture();
+				PackedFiles.Wrapper.Picture pic =
+					new PackedFiles.Wrapper.Picture();
 				pic.ProcessData(pfds[0], pkg);
 				nfo.Image = pic.Image;
 			}
@@ -44,15 +44,15 @@ namespace SimPe.Plugin.Downloads
 		}
 
 		protected virtual void BeforeLoadContent(
-			SimPe.Cache.PackageType type,
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Cache.PackageType type,
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
 		}
 
 		protected virtual void AfterLoadContent(
-			SimPe.Cache.PackageType type,
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Cache.PackageType type,
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
 		}
@@ -62,8 +62,8 @@ namespace SimPe.Plugin.Downloads
 
 
 		public void LoadContent(
-			SimPe.Cache.PackageType type,
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Cache.PackageType type,
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
 			nfo = new PackageInfo(pkg);

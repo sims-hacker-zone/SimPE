@@ -20,9 +20,9 @@
 namespace SimPe.Interfaces
 {
 	/// <summary>
-	/// Abstract Implementation for <see cref="SimPe.Interfaces.IToolExt"/> classes
+	/// Abstract Implementation for <see cref="IToolExt"/> classes
 	/// </summary>
-	public abstract class AbstractTool : SimPe.Interfaces.IToolExt
+	public abstract class AbstractTool : IToolExt
 	{
 		#region IToolExt Member
 

@@ -122,7 +122,7 @@ namespace Ambertation.Windows.Forms.Graph
 			ssa = LinkControlSnapAnchor.OnlyCenter;
 			esa = LinkControlSnapAnchor.Normal;
 			txt = "";
-			fnt = new System.Drawing.Font(
+			fnt = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,

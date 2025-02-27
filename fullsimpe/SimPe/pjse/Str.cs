@@ -245,7 +245,7 @@ namespace pjse
 			{
 				if (wrapper == null)
 				{
-					pjse.FileTable.Entry[] items = pjse.FileTable.GFT[
+					FileTable.Entry[] items = pjse.FileTable.GFT[
 						this.Type,
 						this.Group,
 						this.Instance

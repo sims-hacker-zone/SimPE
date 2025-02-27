@@ -34,7 +34,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public Control GUIHandle => form.famiPanel;
 
-		public void UpdateGUI(SimPe.Interfaces.Plugin.IFileWrapper wrapper)
+		public void UpdateGUI(IFileWrapper wrapper)
 		{
 			Wrapper.Fami fami = (Wrapper.Fami)wrapper;
 			form.wrapper = fami;
@@ -137,7 +137,7 @@ namespace SimPe.PackedFiles.UserInterface
 			string[] names = fami.SimNames;
 			for (int i = 0; i < fami.Members.Length; i++)
 			{
-				Data.Alias a = new SimPe.Data.Alias(fami.Members[i], fami.SimNames[i]);
+				Data.Alias a = new Data.Alias(fami.Members[i], fami.SimNames[i]);
 				form.lbmembers.Items.Add(a);
 			}
 			if (fami.Members.Length > 5)

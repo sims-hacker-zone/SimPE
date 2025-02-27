@@ -27,16 +27,16 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for AnimPreview.
 	/// </summary>
-	public class AnimPreview : System.Windows.Forms.Form
+	public class AnimPreview : Form
 	{
 		private SteepValley.Windows.Forms.XPGradientPanel xpGradientPanel1;
-		private System.Windows.Forms.Panel panel1;
+		private Panel panel1;
 		private Ambertation.Graphics.DirectXPanel dx;
-		private System.Windows.Forms.ListBox lb;
-		private System.Windows.Forms.TreeView tv;
-		private System.Windows.Forms.Button btPlay;
-		private System.Windows.Forms.Timer timer1;
-		private System.Windows.Forms.ProgressBar pb;
+		private ListBox lb;
+		private TreeView tv;
+		private Button btPlay;
+		private Timer timer1;
+		private ProgressBar pb;
 		private System.ComponentModel.IContainer components;
 
 		AnimPreview()
@@ -80,12 +80,12 @@ namespace SimPe.Plugin
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(AnimPreview));
 			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.pb = new System.Windows.Forms.ProgressBar();
-			this.btPlay = new System.Windows.Forms.Button();
-			this.tv = new System.Windows.Forms.TreeView();
-			this.lb = new System.Windows.Forms.ListBox();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.pb = new ProgressBar();
+			this.btPlay = new Button();
+			this.tv = new TreeView();
+			this.lb = new ListBox();
+			this.panel1 = new Panel();
+			this.timer1 = new Timer(this.components);
 			this.xpGradientPanel1.SuspendLayout();
 			this.SuspendLayout();
 			//
@@ -96,82 +96,82 @@ namespace SimPe.Plugin
 			this.xpGradientPanel1.Controls.Add(this.tv);
 			this.xpGradientPanel1.Controls.Add(this.lb);
 			this.xpGradientPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-			this.xpGradientPanel1.Location = new System.Drawing.Point(496, 0);
+			this.xpGradientPanel1.Location = new Point(496, 0);
 			this.xpGradientPanel1.Name = "xpGradientPanel1";
-			this.xpGradientPanel1.Size = new System.Drawing.Size(280, 454);
+			this.xpGradientPanel1.Size = new Size(280, 454);
 			this.xpGradientPanel1.TabIndex = 0;
 			//
 			// pb
 			//
 			this.pb.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.pb.Location = new System.Drawing.Point(0, 438);
+			this.pb.Location = new Point(0, 438);
 			this.pb.Name = "pb";
-			this.pb.Size = new System.Drawing.Size(280, 16);
+			this.pb.Size = new Size(280, 16);
 			this.pb.TabIndex = 3;
 			//
 			// btPlay
 			//
 			this.btPlay.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
 					)
 				)
 			);
-			this.btPlay.Location = new System.Drawing.Point(200, 408);
+			this.btPlay.Location = new Point(200, 408);
 			this.btPlay.Name = "btPlay";
-			this.btPlay.Size = new System.Drawing.Size(75, 23);
+			this.btPlay.Size = new Size(75, 23);
 			this.btPlay.TabIndex = 2;
 			this.btPlay.Text = "Play";
-			this.btPlay.Click += new System.EventHandler(this.btPlay_Click);
+			this.btPlay.Click += new EventHandler(this.btPlay_Click);
 			//
 			// tv
 			//
-			this.tv.Location = new System.Drawing.Point(8, 80);
+			this.tv.Location = new Point(8, 80);
 			this.tv.Name = "tv";
-			this.tv.Size = new System.Drawing.Size(264, 322);
+			this.tv.Size = new Size(264, 322);
 			this.tv.TabIndex = 1;
-			this.tv.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(
+			this.tv.AfterSelect += new TreeViewEventHandler(
 				this.tv_AfterSelect
 			);
 			//
 			// lb
 			//
-			this.lb.Location = new System.Drawing.Point(8, 8);
+			this.lb.Location = new Point(8, 8);
 			this.lb.Name = "lb";
-			this.lb.Size = new System.Drawing.Size(264, 69);
+			this.lb.Size = new Size(264, 69);
 			this.lb.TabIndex = 0;
-			this.lb.SelectedIndexChanged += new System.EventHandler(
+			this.lb.SelectedIndexChanged += new EventHandler(
 				this.lb_SelectedIndexChanged
 			);
 			//
 			// panel1
 			//
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel1.Location = new System.Drawing.Point(0, 0);
+			this.panel1.Location = new Point(0, 0);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(496, 454);
+			this.panel1.Size = new Size(496, 454);
 			this.panel1.TabIndex = 1;
 			//
 			// timer1
 			//
-			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+			this.timer1.Tick += new EventHandler(this.timer1_Tick);
 			//
 			// AnimPreview
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
-			this.ClientSize = new System.Drawing.Size(776, 454);
+			this.AutoScaleBaseSize = new Size(5, 14);
+			this.ClientSize = new Size(776, 454);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.xpGradientPanel1);
-			this.Font = new System.Drawing.Font(
+			this.Font = new Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "AnimPreview";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Animation Preview";
@@ -181,27 +181,27 @@ namespace SimPe.Plugin
 		#endregion
 
 		public static void Execute(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem animitem
+			Interfaces.Scenegraph.IScenegraphFileIndexItem animitem
 		)
 		{
-			SimPe.Plugin.GenericRcol rcol = new GenericRcol();
+			GenericRcol rcol = new GenericRcol();
 			rcol.ProcessData(animitem);
 
 			Execute(rcol);
 		}
 
-		public static void Execute(SimPe.Plugin.Rcol anim)
+		public static void Execute(Rcol anim)
 		{
 			if (anim.Blocks.Length > 0)
 			{
-				if (anim.Blocks[0] is SimPe.Plugin.Anim.AnimResourceConst)
+				if (anim.Blocks[0] is Anim.AnimResourceConst)
 				{
-					Execute((SimPe.Plugin.Anim.AnimResourceConst)anim.Blocks[0]);
+					Execute((Anim.AnimResourceConst)anim.Blocks[0]);
 				}
 			}
 		}
 
-		public static void Execute(SimPe.Plugin.Anim.AnimResourceConst anim)
+		public static void Execute(Anim.AnimResourceConst anim)
 		{
 			AnimPreview f = new AnimPreview();
 
@@ -213,7 +213,7 @@ namespace SimPe.Plugin
 					SimPe.Localization.GetString("Loading Meshes")
 				);
 				int ct = 0;
-				foreach (SimPe.Plugin.Anim.AnimationMeshBlock amb in anim.MeshBlock)
+				foreach (Anim.AnimationMeshBlock amb in anim.MeshBlock)
 				{
 					f.lb.Items.Add(new ListedMeshBlocks(amb));
 					Wait.Progress = ct++;
@@ -230,18 +230,18 @@ namespace SimPe.Plugin
 			f.timer1.Enabled = false;
 		}
 
-		SimPe.Plugin.Gmdc.ElementOrder eo = new SimPe.Plugin.Gmdc.ElementOrder(
+		Gmdc.ElementOrder eo = new Gmdc.ElementOrder(
 			SimPe.Plugin.Gmdc.ElementSorting.XYZ
 		);
 
 		void AddJoint(
 			ListedMeshBlocks lmb,
-			SimPe.Interfaces.Scenegraph.ICresChildren bl,
+			Interfaces.Scenegraph.ICresChildren bl,
 			Ambertation.Graphics.MeshList parent,
-			System.Windows.Forms.TreeNodeCollection nodes
+			TreeNodeCollection nodes
 		)
 		{
-			SimPe.Plugin.TransformNode tn = bl.StoredTransformNode;
+			TransformNode tn = bl.StoredTransformNode;
 
 			if (tn != null)
 			{
@@ -271,14 +271,14 @@ namespace SimPe.Plugin
 
 				parent.Add(mb);
 
-				foreach (SimPe.Interfaces.Scenegraph.ICresChildren cld in bl)
+				foreach (Interfaces.Scenegraph.ICresChildren cld in bl)
 				{
 					AddJoint(lmb, cld, mb, tnode.Nodes);
 				}
 			}
 			else
 			{
-				foreach (SimPe.Interfaces.Scenegraph.ICresChildren cld in bl)
+				foreach (Interfaces.Scenegraph.ICresChildren cld in bl)
 				{
 					AddJoint(lmb, cld, parent, nodes);
 				}
@@ -312,7 +312,7 @@ namespace SimPe.Plugin
 		Hashtable jointmap = new Hashtable();
 		bool inter;
 
-		private void lb_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void lb_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (lb.SelectedItem == null)
 			{
@@ -327,7 +327,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			SimPe.Plugin.ResourceNode rn = (SimPe.Plugin.ResourceNode)
+			ResourceNode rn = (ResourceNode)
 				lmb.CRES.Blocks[0];
 
 			if (root != null)
@@ -340,9 +340,9 @@ namespace SimPe.Plugin
 			AddJoint(lmb, rn, root, tv.Nodes);
 
 			animdata.Clear();
-			foreach (SimPe.Plugin.Anim.AnimationFrameBlock afb in lmb.ANIMBlock.Part2)
+			foreach (Anim.AnimationFrameBlock afb in lmb.ANIMBlock.Part2)
 			{
-				SimPe.Plugin.Anim.AnimationFrameBlock afb2 = afb.CloneBase(true);
+				Anim.AnimationFrameBlock afb2 = afb.CloneBase(true);
 				object o = jointmap[afb.Name];
 				if (o == null)
 				{
@@ -374,7 +374,7 @@ namespace SimPe.Plugin
 		//Ambertation.Graphics.MeshBox lastmb;
 		private void tv_AfterSelect(
 			object sender,
-			System.Windows.Forms.TreeViewEventArgs e
+			TreeViewEventArgs e
 		)
 		{
 			if (e.Node == null)
@@ -402,7 +402,7 @@ namespace SimPe.Plugin
 
 		ArrayList animdata = new ArrayList();
 
-		private void btPlay_Click(object sender, System.EventArgs e)
+		private void btPlay_Click(object sender, EventArgs e)
 		{
 			if (lb.SelectedItem == null)
 			{
@@ -421,7 +421,7 @@ namespace SimPe.Plugin
 
 		int timecode;
 
-		private void timer1_Tick(object sender, System.EventArgs e)
+		private void timer1_Tick(object sender, EventArgs e)
 		{
 			if (lb.SelectedItem == null)
 			{

@@ -26,7 +26,7 @@ namespace SimPe.Data
 	/// <summary>
 	/// Conects an value with a name
 	/// </summary>
-	public class StaticAlias : SimPe.Interfaces.IAlias, System.IDisposable
+	public class StaticAlias : Interfaces.IAlias, IDisposable
 	{
 		/// <summary>
 		/// Stores arbitary Data
@@ -216,17 +216,17 @@ namespace SimPe.Data
 		/// </summary>
 		/// <param name="flname">Name of the File</param>
 		/// <returns>The IAlias List</returns>
-		public static SimPe.Interfaces.IAlias[] LoadFromXml(string flname)
+		public static Interfaces.IAlias[] LoadFromXml(string flname)
 		{
 			if (!System.IO.File.Exists(flname))
 			{
-				return new SimPe.Interfaces.IAlias[0];
+				return new Interfaces.IAlias[0];
 			}
 
 			try
 			{
 				//read XML File
-				System.Xml.XmlDocument xmlfile = new XmlDocument();
+				XmlDocument xmlfile = new XmlDocument();
 				xmlfile.Load(flname);
 
 				//seek Root Node
@@ -257,12 +257,12 @@ namespace SimPe.Data
 							}
 
 							Alias a = new Alias(val, subnode.InnerText.Trim());
-							list.Add((SimPe.Interfaces.IAlias)a);
+							list.Add((Interfaces.IAlias)a);
 						}
 					}
 				} // for i
 
-				SimPe.Interfaces.IAlias[] ret = new SimPe.Interfaces.IAlias[list.Count];
+				Interfaces.IAlias[] ret = new Interfaces.IAlias[list.Count];
 				list.CopyTo(ret);
 				return ret;
 			}
@@ -271,7 +271,7 @@ namespace SimPe.Data
 				Helper.ExceptionMessage("", ex);
 			}
 
-			return new SimPe.Interfaces.IAlias[0];
+			return new Interfaces.IAlias[0];
 		}
 		#endregion
 	}

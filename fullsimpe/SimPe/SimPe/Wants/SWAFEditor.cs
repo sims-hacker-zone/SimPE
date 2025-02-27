@@ -75,8 +75,8 @@ namespace SimPe.Wants
 					tbSICounter,
 				}
 			);
-			lgc = new List<SimPe.Plugin.GUIDChooser>(
-				new SimPe.Plugin.GUIDChooser[]
+			lgc = new List<Plugin.GUIDChooser>(
+				new Plugin.GUIDChooser[]
 				{
 					gcSIWant,
 					gcSIObject,
@@ -436,7 +436,7 @@ namespace SimPe.Wants
 			if (setHandler && wrapper != null)
 			{
 				//wrapper.FileDescriptor.DescriptionChanged -= new EventHandler(FileDescriptor_DescriptionChanged);
-				wrapper.WrapperChanged -= new System.EventHandler(this.WrapperChanged);
+				wrapper.WrapperChanged -= new EventHandler(this.WrapperChanged);
 				setHandler = false;
 			}
 			wrapper = null;
@@ -453,7 +453,7 @@ namespace SimPe.Wants
 		private List<CheckBox> lincs = null;
 		private List<CheckBox> lflags = null;
 		private List<TextBox> ltbUint32 = null;
-		private List<SimPe.Plugin.GUIDChooser> lgc = null;
+		private List<Plugin.GUIDChooser> lgc = null;
 
 		static List<string> wantNames = null;
 		static List<uint> wantIDs = null;
@@ -816,9 +816,9 @@ namespace SimPe.Wants
 			XWNTWrapper xwnt =
 				pjse.FileTable
 					.GFT[
-						xwnts[i.WantId][1] as SimPe.Interfaces.Files.IPackageFile,
+						xwnts[i.WantId][1] as Interfaces.Files.IPackageFile,
 						xwnts[i.WantId][0]
-							as SimPe.Interfaces.Files.IPackedFileDescriptor
+							as Interfaces.Files.IPackedFileDescriptor
 					][0]
 					.Wrapper as XWNTWrapper;
 			if (xwnt["integerType"] == null || xwnt["integerType"].Value.Equals("None"))
@@ -901,12 +901,12 @@ namespace SimPe.Wants
 
 			if (!setHandler)
 			{
-				wrapper.WrapperChanged += new System.EventHandler(this.WrapperChanged);
+				wrapper.WrapperChanged += new EventHandler(this.WrapperChanged);
 				setHandler = true;
 			}
 		}
 
-		private void WrapperChanged(object sender, System.EventArgs e)
+		private void WrapperChanged(object sender, EventArgs e)
 		{
 			this.btnCommit.Enabled = wrapper.Changed;
 
@@ -988,9 +988,9 @@ namespace SimPe.Wants
 				XWNTWrapper xwnt =
 					pjse.FileTable
 						.GFT[
-							xwnts[i.WantId][1] as SimPe.Interfaces.Files.IPackageFile,
+							xwnts[i.WantId][1] as Interfaces.Files.IPackageFile,
 							xwnts[i.WantId][0]
-								as SimPe.Interfaces.Files.IPackedFileDescriptor
+								as Interfaces.Files.IPackedFileDescriptor
 						][0]
 						.Wrapper as XWNTWrapper;
 				if (xwnt != null && xwnt["folder"] != null)
@@ -1064,9 +1064,9 @@ namespace SimPe.Wants
 								pjse.FileTable
 									.GFT[
 										xwnts[i.WantId][1]
-											as SimPe.Interfaces.Files.IPackageFile,
+											as Interfaces.Files.IPackageFile,
 										xwnts[i.WantId][0]
-											as SimPe.Interfaces.Files.IPackedFileDescriptor
+											as Interfaces.Files.IPackedFileDescriptor
 									][0]
 									.Wrapper as XWNTWrapper;
 							if (xwnt != null && xwnt["folder"] != null)
@@ -1205,8 +1205,8 @@ namespace SimPe.Wants
 
 			XWNTWrapper xwnt = new XWNTWrapper();
 			xwnt.ProcessData(
-				xwnts[i.WantId][0] as SimPe.Interfaces.Files.IPackedFileDescriptor,
-				xwnts[i.WantId][1] as SimPe.Interfaces.Files.IPackageFile
+				xwnts[i.WantId][0] as Interfaces.Files.IPackedFileDescriptor,
+				xwnts[i.WantId][1] as Interfaces.Files.IPackageFile
 			);
 
 			Form xwntForm = xwnt.UIHandler as Form;
@@ -1239,7 +1239,7 @@ namespace SimPe.Wants
 				return;
 			}
 
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd1 = sdsc.Package.FindFile(
+			Interfaces.Files.IPackedFileDescriptor pfd1 = sdsc.Package.FindFile(
 				Data.MetaData.RELATION_FILE,
 				0,
 				sdsc.FileDescriptor.Group,
@@ -1508,7 +1508,7 @@ namespace SimPe.Wants
 
 					gcSIWant.Value = i.WantId;
 					SIWant(i, i.WantId);
-					SimPe.Plugin.WantInformation wantim =
+					Plugin.WantInformation wantim =
 						SimPe.Plugin.WantInformation.LoadWant(i.WantId);
 					tbSIArg2.Text = "0x" + Helper.HexString(i.Arg2);
 					cbSIArgType.SelectedIndex = (
@@ -1671,11 +1671,11 @@ namespace SimPe.Wants
 
 		private void btnSim2_Click(object sender, EventArgs e)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd = null;
-			SimPe.Interfaces.Files.IPackageFile package = wrapper.Package;
-			SimPe.Plugin.Sims sims = new SimPe.Plugin.Sims();
+			Interfaces.Files.IPackedFileDescriptor pfd = null;
+			Interfaces.Files.IPackageFile package = wrapper.Package;
+			Plugin.Sims sims = new Plugin.Sims();
 			sims.Text = Localization.Manager.GetString("simsbrowser");
-			Interfaces.Plugin.IToolResult res = sims.Execute(
+			IToolResult res = sims.Execute(
 				ref pfd,
 				ref package,
 				FileTable.ProviderRegistry
@@ -1850,8 +1850,8 @@ namespace SimPe.Wants
 			}
 
 			if (
-				sender as SimPe.Plugin.GUIDChooser == null
-				|| lgc.IndexOf(sender as SimPe.Plugin.GUIDChooser) < 0
+				sender as Plugin.GUIDChooser == null
+				|| lgc.IndexOf(sender as Plugin.GUIDChooser) < 0
 			)
 			{
 				return;
@@ -1865,7 +1865,7 @@ namespace SimPe.Wants
 				return;
 			}
 
-			SimPe.Plugin.GUIDChooser gc = sender as SimPe.Plugin.GUIDChooser;
+			Plugin.GUIDChooser gc = sender as Plugin.GUIDChooser;
 			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
 
 			internalchg = true;

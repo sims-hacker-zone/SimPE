@@ -36,7 +36,7 @@ namespace Ambertation.Windows.Forms.Graph
 			quality = true;
 			savebound = true;
 			Updating = false;
-			SourceImage = new System.Drawing.Bitmap(1, 1);
+			SourceImage = new Bitmap(1, 1);
 			this.Width = 48;
 			this.Height = 48;
 		}
@@ -322,12 +322,12 @@ namespace Ambertation.Windows.Forms.Graph
 				this.CompleteRedraw();
 				if (SizeChanged != null)
 				{
-					SizeChanged(this, new System.EventArgs());
+					SizeChanged(this, new EventArgs());
 				}
 			}
 			if ((src.X != dst.X || src.Y != dst.Y) && Move != null)
 			{
-				Move(this, new System.EventArgs());
+				Move(this, new EventArgs());
 			}
 
 			if (parent != null)
@@ -485,10 +485,10 @@ namespace Ambertation.Windows.Forms.Graph
 		{
 		}
 
-		public event System.EventHandler GotFocus;
-		public event System.EventHandler LostFocus;
-		public event System.EventHandler Move;
-		public event System.EventHandler SizeChanged;
+		public event EventHandler GotFocus;
+		public event EventHandler LostFocus;
+		public event EventHandler Move;
+		public event EventHandler SizeChanged;
 		#endregion
 
 		#region Update Control

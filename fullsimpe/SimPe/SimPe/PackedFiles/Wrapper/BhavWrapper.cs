@@ -330,7 +330,7 @@ namespace SimPe.PackedFiles.Wrapper
 				return base.GetResourceName(ta);
 			}
 
-			SimPe.Interfaces.Files.IPackedFile pf = Package.Read(FileDescriptor);
+			Interfaces.Files.IPackedFile pf = Package.Read(FileDescriptor);
 			byte[] ab = pf.GetUncompressedData(0x42);
 			return (
 					ab.Length > 0x41

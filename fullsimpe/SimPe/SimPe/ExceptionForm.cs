@@ -6,20 +6,20 @@ namespace SimPe
 	/// <summary>
 	/// Summary description for ExceptionForm.
 	/// </summary>
-	public class ExceptionForm : System.Windows.Forms.Form
+	public class ExceptionForm : Form
 	{
-		internal System.Windows.Forms.Label lberr;
-		private System.Windows.Forms.RichTextBox rtb;
-		private System.Windows.Forms.PictureBox pictureBox1;
-		private System.Windows.Forms.LinkLabel lldetail;
-		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.GroupBox gbdetail;
-		private System.Windows.Forms.Panel panel2;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.LinkLabel linkLabel1;
-		private System.Windows.Forms.Panel panel3;
-		private System.Windows.Forms.LinkLabel linkLabel2;
-		private System.Windows.Forms.TextBox tbsup;
+		internal Label lberr;
+		private RichTextBox rtb;
+		private PictureBox pictureBox1;
+		private LinkLabel lldetail;
+		private Panel panel1;
+		private GroupBox gbdetail;
+		private Panel panel2;
+		private Button button1;
+		private LinkLabel linkLabel1;
+		private Panel panel3;
+		private LinkLabel linkLabel2;
+		private TextBox tbsup;
 
 		/// <summary>
 		/// Required designer variable.
@@ -64,18 +64,18 @@ namespace SimPe
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(ExceptionForm)
 				);
-			this.lberr = new System.Windows.Forms.Label();
-			this.gbdetail = new System.Windows.Forms.GroupBox();
-			this.rtb = new System.Windows.Forms.RichTextBox();
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.lldetail = new System.Windows.Forms.LinkLabel();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-			this.panel3 = new System.Windows.Forms.Panel();
-			this.button1 = new System.Windows.Forms.Button();
-			this.tbsup = new System.Windows.Forms.TextBox();
+			this.lberr = new Label();
+			this.gbdetail = new GroupBox();
+			this.rtb = new RichTextBox();
+			this.linkLabel1 = new LinkLabel();
+			this.pictureBox1 = new PictureBox();
+			this.lldetail = new LinkLabel();
+			this.panel1 = new Panel();
+			this.panel2 = new Panel();
+			this.linkLabel2 = new LinkLabel();
+			this.panel3 = new Panel();
+			this.button1 = new Button();
+			this.tbsup = new TextBox();
 			this.gbdetail.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.panel1.SuspendLayout();
@@ -117,7 +117,7 @@ namespace SimPe
 			this.linkLabel1.Name = "linkLabel1";
 			this.linkLabel1.TabStop = true;
 			this.linkLabel1.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.CopyToClipboard
 				);
 			//
@@ -133,7 +133,7 @@ namespace SimPe
 			this.lldetail.Name = "lldetail";
 			this.lldetail.TabStop = true;
 			this.lldetail.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.ShowDetail
 				);
 			//
@@ -161,7 +161,7 @@ namespace SimPe
 			this.linkLabel2.TabStop = true;
 			this.linkLabel2.UseCompatibleTextRendering = true;
 			this.linkLabel2.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Support);
+				new LinkLabelLinkClickedEventHandler(this.Support);
 			//
 			// panel3
 			//
@@ -173,7 +173,7 @@ namespace SimPe
 			//
 			resources.ApplyResources(this.button1, "button1");
 			this.button1.Name = "button1";
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.button1.Click += new EventHandler(this.button1_Click);
 			//
 			// tbsup
 			//
@@ -214,7 +214,7 @@ namespace SimPe
 
 		private void Support(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			try
@@ -230,7 +230,7 @@ namespace SimPe
 		[STAThread]
 		private void CopyToClipboard(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			string text = "";
@@ -243,14 +243,14 @@ namespace SimPe
 			// Clipboard.SetDataObject(rtb.Text, true);
 		}
 
-		private void button1_Click(object sender, System.EventArgs e)
+		private void button1_Click(object sender, EventArgs e)
 		{
 			Close();
 		}
 
 		private void ShowDetail(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			lldetail.Visible = false;

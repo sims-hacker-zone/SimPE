@@ -70,7 +70,7 @@ namespace SimPe.Plugin
 			reader.BaseStream.Seek(4, System.IO.SeekOrigin.Begin); // move to the Index (Number of Sims)
 			strung = "";
 			twine = "";
-			SimPe.Plugin.Idno idno = SimPe.Plugin.Idno.FromPackage(package);
+			Idno idno = SimPe.Plugin.Idno.FromPackage(package);
 			if (idno != null)
 			{
 				if (idno.Type != SimPe.Plugin.NeighborhoodType.Normal)
@@ -92,11 +92,11 @@ namespace SimPe.Plugin
 					{
 						dided = false;
 						PackedFiles.Wrapper.ExtSDesc sdesc =
-							new SimPe.PackedFiles.Wrapper.ExtSDesc();
-						SimPe.Interfaces.Files.IPackedFileDescriptor[] files =
+							new PackedFiles.Wrapper.ExtSDesc();
+						Interfaces.Files.IPackedFileDescriptor[] files =
 							package.FindFiles(SimPe.Data.MetaData.SIM_DESCRIPTION_FILE);
 						foreach (
-							SimPe.Interfaces.Files.IPackedFileDescriptor pfd in files
+							Interfaces.Files.IPackedFileDescriptor pfd in files
 						)
 						{
 							sdesc.ProcessData(pfd, package);
@@ -127,7 +127,7 @@ namespace SimPe.Plugin
 					}
 					else // search by instance, fast but not as accurate
 					{
-						SimPe.Interfaces.Files.IPackedFileDescriptor pfd =
+						Interfaces.Files.IPackedFileDescriptor pfd =
 							package.FindFile(
 								Data.MetaData.SIM_DESCRIPTION_FILE,
 								0,
@@ -148,7 +148,7 @@ namespace SimPe.Plugin
 						else
 						{
 							PackedFiles.Wrapper.ExtSDesc sdesc =
-								new SimPe.PackedFiles.Wrapper.ExtSDesc();
+								new PackedFiles.Wrapper.ExtSDesc();
 							sdesc.ProcessData(pfd, package);
 							strung +=
 								"0x"

@@ -27,7 +27,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// This is a Item describing the File
 	/// </summary>
-	public class FileIndexItem : IScenegraphFileIndexItem, IComparer, System.IDisposable
+	public class FileIndexItem : IScenegraphFileIndexItem, IComparer, IDisposable
 	{
 		uint localgr;
 
@@ -35,7 +35,7 @@ namespace SimPe.Plugin
 		/// The Descriptor of that File
 		/// </summary>
 		/// <remarks>Contains the original Group (can be 0xffffffff)</remarks>
-		public SimPe.Interfaces.Files.IPackedFileDescriptor FileDescriptor
+		public Interfaces.Files.IPackedFileDescriptor FileDescriptor
 		{
 			get; set;
 		}
@@ -45,10 +45,10 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <returns>A Clonde FileDescriptor, that contains the correct Group</returns>
 		/// <remarks>Contains the local Group (can never be 0xffffffff)</remarks>
-		public SimPe.Interfaces.Files.IPackedFileDescriptor GetLocalFileDescriptor()
+		public Interfaces.Files.IPackedFileDescriptor GetLocalFileDescriptor()
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor p =
-				FileDescriptor.Clone() as SimPe.Interfaces.Files.IPackedFileDescriptor;
+			Interfaces.Files.IPackedFileDescriptor p =
+				FileDescriptor.Clone() as Interfaces.Files.IPackedFileDescriptor;
 			p.Group = this.LocalGroup;
 			return p;
 		}
@@ -56,7 +56,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// The package the File is stored in
 		/// </summary>
-		public SimPe.Interfaces.Files.IPackageFile Package
+		public Interfaces.Files.IPackageFile Package
 		{
 			get; private set;
 		}
@@ -85,13 +85,13 @@ namespace SimPe.Plugin
 		/// <param name="pfd">the Descriptor</param>
 		/// <param name="package">the package</param>
 		public FileIndexItem(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile package
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile package
 		)
 		{
 			if (pfd == null)
 			{
-				pfd = new SimPe.Packages.PackedFileDescriptor();
+				pfd = new Packages.PackedFileDescriptor();
 			}
 
 			if (package == null)
@@ -292,7 +292,7 @@ namespace SimPe.Plugin
 	public class FileIndex
 		: Ambertation.Threading.StoppableThread,
 			IScenegraphFileIndex,
-			System.IDisposable
+			IDisposable
 	{
 		/// <summary>
 		/// This Hashtable (FileType) contains a Hashtable (Group) of Hashtables (Instance) of ArrayLists (coliding Files)
@@ -498,7 +498,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="package">The package File</param>
 		/// <returns>the local Group</returns>
-		public static uint GetLocalGroup(SimPe.Interfaces.Files.IPackageFile package)
+		public static uint GetLocalGroup(Interfaces.Files.IPackageFile package)
 		{
 			string flname = package.SaveFileName;
 			return GetLocalGroup(flname);
@@ -528,7 +528,7 @@ namespace SimPe.Plugin
 
 			flname = flname.Trim().ToLower();
 
-			SimPe.Interfaces.Wrapper.IGroupCacheItem gci = FileTable.GroupCache.GetItem(
+			Interfaces.Wrapper.IGroupCacheItem gci = FileTable.GroupCache.GetItem(
 				flname
 			);
 			return gci.LocalGroup;
@@ -740,7 +740,7 @@ namespace SimPe.Plugin
 				+ "\"";
 			try
 			{
-				SimPe.Interfaces.Files.IPackageFile package =
+				Interfaces.Files.IPackageFile package =
 					SimPe.Packages.File.LoadFromFile(file, false);
 				AddIndexFromPackage(package, false);
 			}
@@ -754,7 +754,7 @@ namespace SimPe.Plugin
 		/// Add all Files stored in the passed package
 		/// </summary>
 		/// <param name="package">The package File</param>
-		public void AddIndexFromPackage(SimPe.Interfaces.Files.IPackageFile package)
+		public void AddIndexFromPackage(Interfaces.Files.IPackageFile package)
 		{
 			AddIndexFromPackage(package, false);
 		}
@@ -765,7 +765,7 @@ namespace SimPe.Plugin
 		/// <param name="package">The package File</param>
 		/// <param name="overwrite">true, if an existing Instance of that File should be overwritten</param>
 		public void AddIndexFromPackage(
-			SimPe.Interfaces.Files.IPackageFile package,
+			Interfaces.Files.IPackageFile package,
 			bool overwrite
 		)
 		{
@@ -802,7 +802,7 @@ namespace SimPe.Plugin
 		/// <param name="type">Resources of this Type will get added</param>
 		/// <param name="overwrite">true, if an existing Instance of that File should be overwritten</param>
 		public void AddTypesIndexFromPackage(
-			SimPe.Interfaces.Files.IPackageFile package,
+			Interfaces.Files.IPackageFile package,
 			uint type,
 			bool overwrite
 		)
@@ -844,8 +844,8 @@ namespace SimPe.Plugin
 		/// <param name="pfd">The Descriptor</param>
 		/// <param name="package">The File</param>
 		public void AddIndexFromPfd(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile package
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile package
 		)
 		{
 			uint local = GetLocalGroup(package);
@@ -859,10 +859,10 @@ namespace SimPe.Plugin
 		/// <param name="package">The File</param>
 		public void AddIndexFromPfd(
 			SimPe.Collections.IO.PackedFileDescriptors pfds,
-			SimPe.Interfaces.Files.IPackageFile package
+			Interfaces.Files.IPackageFile package
 		)
 		{
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				AddIndexFromPfd(pfd, package);
 			}
@@ -888,7 +888,7 @@ namespace SimPe.Plugin
 					foreach (ArrayList res in instances.Values)
 					{
 						foreach (
-							SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem pfd in res
+							IScenegraphFileIndexItem pfd in res
 						)
 						{
 							PrepareForRemove(pfd.FileDescriptor);
@@ -913,7 +913,7 @@ namespace SimPe.Plugin
 					foreach (ArrayList res in instances.Values)
 					{
 						foreach (
-							SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in res
+							IScenegraphFileIndexItem item in res
 						)
 						{
 							PrepareForAdd(item.FileDescriptor);
@@ -932,7 +932,7 @@ namespace SimPe.Plugin
 					foreach (ArrayList res in instances.Values)
 					{
 						foreach (
-							SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in res
+							IScenegraphFileIndexItem item in res
 						)
 						{
 							PrepareForRemove(item.FileDescriptor);
@@ -943,15 +943,15 @@ namespace SimPe.Plugin
 		}
 
 		protected void PrepareForRemove(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
-			pfd.Closed -= new SimPe.Events.PackedFileChanged(ClosedDescriptor);
+			pfd.Closed -= new Events.PackedFileChanged(ClosedDescriptor);
 		}
 
-		protected void PrepareForAdd(SimPe.Interfaces.Files.IPackedFileDescriptor pfd)
+		protected void PrepareForAdd(Interfaces.Files.IPackedFileDescriptor pfd)
 		{
-			pfd.Closed += new SimPe.Events.PackedFileChanged(ClosedDescriptor);
+			pfd.Closed += new Events.PackedFileChanged(ClosedDescriptor);
 		}
 
 		/// <summary>
@@ -961,8 +961,8 @@ namespace SimPe.Plugin
 		/// <param name="package">The File</param>
 		/// <param name="localgroup">use this groupa as replacement for 0xffffffff</param>
 		public void AddIndexFromPfd(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile package,
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile package,
 			uint localgroup
 		)
 		{
@@ -1042,7 +1042,7 @@ namespace SimPe.Plugin
 		/// Removes an Item from the Table
 		/// </summary>
 		/// <param name="item">The item you want to remove</param>
-		public void RemoveItem(Interfaces.Scenegraph.IScenegraphFileIndexItem item)
+		public void RemoveItem(IScenegraphFileIndexItem item)
 		{
 			Interfaces.Files.IPackedFileDescriptor pfd = item.FileDescriptor;
 			ArrayList list = new ArrayList();
@@ -1088,7 +1088,7 @@ namespace SimPe.Plugin
 			uint type,
 			uint group,
 			uint instance,
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
 			ArrayList list = new ArrayList();
@@ -1137,7 +1137,7 @@ namespace SimPe.Plugin
 		/// <returns>all FileIndexItems</returns>
 		public IScenegraphFileIndexItem[] FindFile(
 			Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
 			ArrayList list = new ArrayList();
@@ -1312,11 +1312,11 @@ namespace SimPe.Plugin
 			uint type,
 			uint group,
 			ulong instance,
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
-			SimPe.Packages.PackedFileDescriptor pfd =
-				new SimPe.Packages.PackedFileDescriptor();
+			Packages.PackedFileDescriptor pfd =
+				new Packages.PackedFileDescriptor();
 			pfd.Group = group;
 			pfd.Type = type;
 			pfd.LongInstance = instance;
@@ -1591,7 +1591,7 @@ namespace SimPe.Plugin
 		/// <returns>The first matching File or null if none</returns>
 		public IScenegraphFileIndexItem FindSingleFile(
 			Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile pkg,
+			Interfaces.Files.IPackageFile pkg,
 			bool betolerant
 		)
 		{
@@ -1650,7 +1650,7 @@ namespace SimPe.Plugin
 		/// Remove the trace of a Package from the FileTable
 		/// </summary>
 		/// <param name="pkg"></param>
-		public void ClosePackage(SimPe.Interfaces.Files.IPackageFile pkg)
+		public void ClosePackage(Interfaces.Files.IPackageFile pkg)
 		{
 			if (pkg == null)
 			{
@@ -1673,18 +1673,18 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="sender"></param>
 		private void ClosedDescriptor(
-			SimPe.Interfaces.Files.IPackedFileDescriptor sender
+			Interfaces.Files.IPackedFileDescriptor sender
 		)
 		{
 			///
 			/// TODO: This might be critical! Maybe we need to send the parent package along
 			/// with this Data, otherwise to many Files could get removed!
 			///
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] sgis = FindFile(
+			IScenegraphFileIndexItem[] sgis = FindFile(
 				sender,
 				null
 			);
-			foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem sgi in sgis)
+			foreach (IScenegraphFileIndexItem sgi in sgis)
 			{
 				RemoveItem(sgi);
 			}
@@ -1696,12 +1696,12 @@ namespace SimPe.Plugin
 		/// <param name="pfd"></param>
 		/// <param name="pkg"></param>
 		/// <returns></returns>
-		public SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem CreateFileIndexItem(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile pkg
+		public IScenegraphFileIndexItem CreateFileIndexItem(
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
-			return new SimPe.Plugin.FileIndexItem(pfd, pkg);
+			return new FileIndexItem(pfd, pkg);
 		}
 
 		/// <summary>
@@ -1710,12 +1710,12 @@ namespace SimPe.Plugin
 		/// <param name="pfds"></param>
 		/// <param name="package"></param>
 		/// <returns></returns>
-		public SimPe.Interfaces.Scenegraph.IScenegraphFileIndex CreateFileIndex(
+		public IScenegraphFileIndex CreateFileIndex(
 			SimPe.Collections.IO.PackedFileDescriptors pfds,
-			SimPe.Interfaces.Files.IPackageFile package
+			Interfaces.Files.IPackageFile package
 		)
 		{
-			SimPe.Plugin.FileIndex fi = new SimPe.Plugin.FileIndex();
+			FileIndex fi = new FileIndex();
 			if (pfds != null)
 			{
 				fi.AddIndexFromPfd(pfds, package);
@@ -1763,7 +1763,7 @@ namespace SimPe.Plugin
 		}
 
 		#region Handle FileTableChains
-		public bool Contains(SimPe.Interfaces.Files.IPackageFile pkg)
+		public bool Contains(Interfaces.Files.IPackageFile pkg)
 		{
 			return this.Contains(pkg.SaveFileName);
 		}

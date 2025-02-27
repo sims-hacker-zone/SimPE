@@ -375,15 +375,15 @@ namespace SimPe.Plugin.Gmdc.Importer
 
 				g.Elements[0]
 					.Values.Add(
-						new Gmdc.GmdcElementValueThreeFloat(
+						new GmdcElementValueThreeFloat(
 							(float)coord.X,
 							(float)coord.Y,
 							(float)coord.Z
 						)
 					);
-				g.Elements[2].Values.Add(new Gmdc.GmdcElementValueTwoFloat(u, v));
-				g.Elements[3].Values.Add(new Gmdc.GmdcElementValueOneInt(b));
-				g.Elements[4].Values.Add(new Gmdc.GmdcElementValueOneFloat((float)1.0));
+				g.Elements[2].Values.Add(new GmdcElementValueTwoFloat(u, v));
+				g.Elements[3].Values.Add(new GmdcElementValueOneInt(b));
+				g.Elements[4].Values.Add(new GmdcElementValueOneFloat((float)1.0));
 			}
 			catch
 			{
@@ -411,7 +411,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 
 				g.Elements[1]
 					.Values.Add(
-						new Gmdc.GmdcElementValueThreeFloat(
+						new GmdcElementValueThreeFloat(
 							(float)coord.X,
 							(float)coord.Y,
 							(float)coord.Z
@@ -472,7 +472,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 		/// <param name="ct"></param>
 		void ParseBonesSection(ImportedGroups grps, int ct)
 		{
-			SimPe.IntArrayList sort = Gmdc.SortJoints();
+			IntArrayList sort = Gmdc.SortJoints();
 			for (int i = 0; i < ct; i++)
 			{
 				ImportedBone b = new ImportedBone(Gmdc);
@@ -500,7 +500,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 			}
 		}
 
-		SimPe.Plugin.Anim.AnimationFrameBlock curtransblock,
+		AnimationFrameBlock curtransblock,
 			currotblock;
 
 		void ReadJointDescription(ImportedBone b)

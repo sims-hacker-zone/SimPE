@@ -96,9 +96,9 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute("The X Value for this Transformation"),
-			CategoryAttribute("Data"),
-			DefaultValueAttribute(0)
+			Description("The X Value for this Transformation"),
+			Category("Data"),
+			DefaultValue(0)
 		]
 		public short X
 		{
@@ -113,9 +113,9 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute("The Y Value for this Transformation"),
-			CategoryAttribute("Data"),
-			DefaultValueAttribute(0)
+			Description("The Y Value for this Transformation"),
+			Category("Data"),
+			DefaultValue(0)
 		]
 		public short Y
 		{
@@ -130,9 +130,9 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute("The Z Value for this Transformation"),
-			CategoryAttribute("Data"),
-			DefaultValueAttribute(0)
+			Description("The Z Value for this Transformation"),
+			Category("Data"),
+			DefaultValue(0)
 		]
 		public short Z
 		{
@@ -147,11 +147,11 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute(
+			Description(
 				"The X Value (as Floating Point) for this Transformation"
 			),
-			CategoryAttribute("Data"),
-			DefaultValueAttribute(0)
+			Category("Data"),
+			DefaultValue(0)
 		]
 		public float Float_X
 		{
@@ -166,11 +166,11 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute(
+			Description(
 				"The Y Value (as Floating Point) for this Transformation"
 			),
-			CategoryAttribute("Data"),
-			DefaultValueAttribute(0)
+			Category("Data"),
+			DefaultValue(0)
 		]
 		public float Float_Y
 		{
@@ -185,11 +185,11 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute(
+			Description(
 				"The Z Value (as Floating Point) for this Transformation"
 			),
-			CategoryAttribute("Data"),
-			DefaultValueAttribute(0)
+			Category("Data"),
+			DefaultValue(0)
 		]
 		public float Float_Z
 		{
@@ -204,11 +204,11 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute(
+			Description(
 				"The TimeCode the X Transformation should be finished"
 			),
-			CategoryAttribute("Data"),
-			DefaultValueAttribute(0)
+			Category("Data"),
+			DefaultValue(0)
 		]
 		public short TimeCode
 		{
@@ -240,11 +240,11 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute(
+			Description(
 				"True if Frames are interpolated linear fro this KeyFrame"
 			),
-			CategoryAttribute("Data"),
-			DefaultValueAttribute(false)
+			Category("Data"),
+			DefaultValue(false)
 		]
 		public bool Linear
 		{
@@ -364,9 +364,9 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute("Data interpreted as Vector"),
-			CategoryAttribute("Information"),
-			DefaultValueAttribute(0x11BA05F0)
+			Description("Data interpreted as Vector"),
+			Category("Information"),
+			DefaultValue(0x11BA05F0)
 		]
 		public Vector3f Vector
 		{
@@ -381,10 +381,10 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute(
+			Description(
 				"What kind of Transformation is performed. You can changes this in the Parent Node!"
 			),
-			CategoryAttribute("Information")
+			Category("Information")
 		]
 		public FrameType Type
 		{

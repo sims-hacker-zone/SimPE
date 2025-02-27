@@ -29,14 +29,14 @@ namespace SimPe.Interfaces
 		/// </summary>
 		/// <param name="topic">The Topic to register</param>
 		/// <remarks>The tool must only be added if the Registry doesnt already contain it</remarks>
-		void RegisterHelpTopic(SimPe.Interfaces.IHelp topic);
+		void RegisterHelpTopic(IHelp topic);
 
 		/// <summary>
 		/// Registers all listed Help Topics with this Registry
 		/// </summary>
 		/// <param name="topics">The Topics to register</param>
 		/// <remarks>The tool must only be added if the Registry doesnt already contain it</remarks>
-		void RegisterHelpTopic(SimPe.Interfaces.IHelp[] topics);
+		void RegisterHelpTopic(IHelp[] topics);
 
 		/// <summary>
 		/// Registers all  Help Topics provided by a factory with this Registry

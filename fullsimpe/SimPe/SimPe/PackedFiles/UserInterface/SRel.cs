@@ -81,7 +81,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public Control GUIHandle => form.realPanel;
 
-		public void UpdateGUI(SimPe.Interfaces.Plugin.IFileWrapper wrapper)
+		public void UpdateGUI(IFileWrapper wrapper)
 		{
 			Wrapper.SRel srel = (Wrapper.SRel)wrapper;
 			form.wrapper = srel;
@@ -160,7 +160,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				if (
 					form.cbfamtype.Items[i]
-					== new Data.LocalizedRelationshipTypes(srel.FamilyRelation)
+					== new LocalizedRelationshipTypes(srel.FamilyRelation)
 				)
 				{
 					form.cbfamtype.SelectedIndex = i;

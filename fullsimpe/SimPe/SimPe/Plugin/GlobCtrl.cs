@@ -37,7 +37,7 @@ namespace SimPe.Plugin
 		internal IFileWrapperSaveExtension wrapper = null;
 
 		#region GLOB
-		private void GlobCommit(object sender, System.EventArgs e)
+		private void GlobCommit(object sender, EventArgs e)
 		{
 			try
 			{
@@ -57,7 +57,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SemiGlobalChanged(object sender, System.EventArgs e)
+		private void SemiGlobalChanged(object sender, EventArgs e)
 		{
 			if (cbseminame.Tag == null)
 			{

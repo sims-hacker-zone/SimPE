@@ -37,8 +37,8 @@ namespace SimPe.Plugin
 			,
 			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
 			,
-			SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper,
-			System.Collections.IEnumerable
+			IMultiplePackedFileWrapper,
+			IEnumerable
 	{
 		public enum RoadTextureType : byte
 		{

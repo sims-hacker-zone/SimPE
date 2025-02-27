@@ -36,73 +36,73 @@ namespace SimPe.PackedFiles.UserInterface
 	/// <summary>
 	/// Summary description for BconForm.
 	/// </summary>
-	public class TtabForm : System.Windows.Forms.Form, IPackedFileUI
+	public class TtabForm : Form, IPackedFileUI
 	{
 		#region Form variables
 
-		private System.Windows.Forms.Panel ttabPanel;
-		private System.Windows.Forms.TabControl tabControl1;
-		private System.Windows.Forms.TabPage tpSettings;
-		private System.Windows.Forms.Label lbaction;
-		private System.Windows.Forms.Label lbguard;
-		private System.Windows.Forms.Label label40;
-		private System.Windows.Forms.Label label33;
-		private System.Windows.Forms.Label label34;
-		private System.Windows.Forms.Label label35;
-		private System.Windows.Forms.Label label29;
-		private System.Windows.Forms.Label label30;
-		private System.Windows.Forms.Label label31;
-		private System.Windows.Forms.Label label32;
-		private System.Windows.Forms.TextBox tbGuardian;
-		private System.Windows.Forms.CheckBox cbBitE;
-		private System.Windows.Forms.CheckBox cbBitF;
-		private System.Windows.Forms.CheckBox cbBitC;
-		private System.Windows.Forms.CheckBox cbBitD;
-		private System.Windows.Forms.CheckBox cbBitB;
-		private System.Windows.Forms.CheckBox cbBitA;
-		private System.Windows.Forms.CheckBox cbBit9;
-		private System.Windows.Forms.CheckBox cbBit8;
-		private System.Windows.Forms.CheckBox cbBit7;
-		private System.Windows.Forms.CheckBox cbBit6;
-		private System.Windows.Forms.CheckBox cbBit5;
-		private System.Windows.Forms.CheckBox cbBit4;
-		private System.Windows.Forms.CheckBox cbBit3;
-		private System.Windows.Forms.CheckBox cbBit2;
-		private System.Windows.Forms.CheckBox cbBit1;
-		private System.Windows.Forms.TabPage tpHumanMotives;
-		private System.Windows.Forms.CheckBox cbBit0;
-		private System.Windows.Forms.Label label24;
-		private System.Windows.Forms.TextBox tbAction;
-		private System.Windows.Forms.TextBox tbStringIndex;
-		private System.Windows.Forms.GroupBox gbFlags;
-		private System.Windows.Forms.TextBox tbFlags;
-		private System.Windows.Forms.TextBox tbAttenuationValue;
-		private System.Windows.Forms.TextBox tbAutonomy;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox tbJoinIndex;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Button btnGuardian;
-		private System.Windows.Forms.Button btnAction;
-		private System.Windows.Forms.ComboBox cbAttenuationCode;
-		private System.Windows.Forms.ListBox lbttab;
-		private System.Windows.Forms.Button btnAdd;
-		private System.Windows.Forms.Label label26;
-		private System.Windows.Forms.Button btnDelete;
-		private System.Windows.Forms.Label lbFilename;
-		private System.Windows.Forms.TextBox tbFilename;
-		private System.Windows.Forms.TextBox tbFormat;
-		private System.Windows.Forms.Label label41;
-		private System.Windows.Forms.Button btnCommit;
-		private System.Windows.Forms.Button btnAppend;
-		private System.Windows.Forms.TextBox tbUIDispType;
-		private System.Windows.Forms.TextBox tbFaceAnimID;
-		private System.Windows.Forms.TextBox tbMemIterMult;
-		private System.Windows.Forms.TextBox tbObjType;
-		private System.Windows.Forms.TextBox tbModelTabID;
-		private System.Windows.Forms.ComboBox cbStringIndex;
-		private System.Windows.Forms.LinkLabel llAction;
-		private System.Windows.Forms.LinkLabel llGuardian;
-		private System.Windows.Forms.Button btnNoFlags;
+		private Panel ttabPanel;
+		private TabControl tabControl1;
+		private TabPage tpSettings;
+		private Label lbaction;
+		private Label lbguard;
+		private Label label40;
+		private Label label33;
+		private Label label34;
+		private Label label35;
+		private Label label29;
+		private Label label30;
+		private Label label31;
+		private Label label32;
+		private TextBox tbGuardian;
+		private CheckBox cbBitE;
+		private CheckBox cbBitF;
+		private CheckBox cbBitC;
+		private CheckBox cbBitD;
+		private CheckBox cbBitB;
+		private CheckBox cbBitA;
+		private CheckBox cbBit9;
+		private CheckBox cbBit8;
+		private CheckBox cbBit7;
+		private CheckBox cbBit6;
+		private CheckBox cbBit5;
+		private CheckBox cbBit4;
+		private CheckBox cbBit3;
+		private CheckBox cbBit2;
+		private CheckBox cbBit1;
+		private TabPage tpHumanMotives;
+		private CheckBox cbBit0;
+		private Label label24;
+		private TextBox tbAction;
+		private TextBox tbStringIndex;
+		private GroupBox gbFlags;
+		private TextBox tbFlags;
+		private TextBox tbAttenuationValue;
+		private TextBox tbAutonomy;
+		private Label label1;
+		private TextBox tbJoinIndex;
+		private Label label2;
+		private Button btnGuardian;
+		private Button btnAction;
+		private ComboBox cbAttenuationCode;
+		private ListBox lbttab;
+		private Button btnAdd;
+		private Label label26;
+		private Button btnDelete;
+		private Label lbFilename;
+		private TextBox tbFilename;
+		private TextBox tbFormat;
+		private Label label41;
+		private Button btnCommit;
+		private Button btnAppend;
+		private TextBox tbUIDispType;
+		private TextBox tbFaceAnimID;
+		private TextBox tbMemIterMult;
+		private TextBox tbObjType;
+		private TextBox tbModelTabID;
+		private ComboBox cbStringIndex;
+		private LinkLabel llAction;
+		private LinkLabel llGuardian;
+		private Button btnNoFlags;
 		private Button btnStrPrev;
 		private Button btnStrNext;
 		private TabPage tpAnimalMotives;
@@ -251,7 +251,7 @@ namespace SimPe.PackedFiles.UserInterface
 			base.Dispose(disposing);
 			if (setHandler)
 			{
-				wrapper.WrapperChanged -= new System.EventHandler(this.WrapperChanged);
+				wrapper.WrapperChanged -= new EventHandler(this.WrapperChanged);
 				pjse.FileTable.GFT.FiletableRefresh -= new EventHandler(
 					GFT_FiletableRefresh
 				);
@@ -830,7 +830,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (!setHandler)
 			{
-				wrapper.WrapperChanged += new System.EventHandler(this.WrapperChanged);
+				wrapper.WrapperChanged += new EventHandler(this.WrapperChanged);
 				pjse.FileTable.GFT.FiletableRefresh += new EventHandler(
 					GFT_FiletableRefresh
 				);
@@ -850,7 +850,7 @@ namespace SimPe.PackedFiles.UserInterface
 			populateLbttab();
 		}
 
-		private void WrapperChanged(object sender, System.EventArgs e)
+		private void WrapperChanged(object sender, EventArgs e)
 		{
 			this.btnCommit.Enabled = wrapper.Changed;
 
@@ -893,109 +893,109 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(TtabForm));
-			this.ttabPanel = new System.Windows.Forms.Panel();
-			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.lbttab = new System.Windows.Forms.ListBox();
-			this.flpFileCtrl = new System.Windows.Forms.FlowLayoutPanel();
-			this.lbFilename = new System.Windows.Forms.Label();
-			this.tbFilename = new System.Windows.Forms.TextBox();
-			this.label41 = new System.Windows.Forms.Label();
-			this.tbFormat = new System.Windows.Forms.TextBox();
-			this.btnCommit = new System.Windows.Forms.Button();
-			this.label26 = new System.Windows.Forms.Label();
-			this.btnStrPrev = new System.Windows.Forms.Button();
-			this.btnMoveUp = new System.Windows.Forms.Button();
-			this.btnAdd = new System.Windows.Forms.Button();
-			this.btnStrNext = new System.Windows.Forms.Button();
-			this.btnMoveDown = new System.Windows.Forms.Button();
-			this.btnDelete = new System.Windows.Forms.Button();
-			this.btnAppend = new System.Windows.Forms.Button();
-			this.tabControl1 = new System.Windows.Forms.TabControl();
-			this.tpSettings = new System.Windows.Forms.TabPage();
-			this.tlpSettingsHead = new System.Windows.Forms.TableLayoutPanel();
-			this.label4 = new System.Windows.Forms.Label();
-			this.lbTTABEntry = new System.Windows.Forms.Label();
-			this.llGuardian = new System.Windows.Forms.LinkLabel();
-			this.label40 = new System.Windows.Forms.Label();
-			this.llAction = new System.Windows.Forms.LinkLabel();
-			this.flpPieStringID = new System.Windows.Forms.FlowLayoutPanel();
-			this.tbStringIndex = new System.Windows.Forms.TextBox();
-			this.cbStringIndex = new System.Windows.Forms.ComboBox();
-			this.lbPieString = new System.Windows.Forms.Label();
-			this.flpAction = new System.Windows.Forms.FlowLayoutPanel();
-			this.tbAction = new System.Windows.Forms.TextBox();
-			this.btnAction = new System.Windows.Forms.Button();
-			this.lbaction = new System.Windows.Forms.Label();
-			this.flpGuard = new System.Windows.Forms.FlowLayoutPanel();
-			this.tbGuardian = new System.Windows.Forms.TextBox();
-			this.btnGuardian = new System.Windows.Forms.Button();
-			this.lbguard = new System.Windows.Forms.Label();
-			this.gbFlags2 = new System.Windows.Forms.GroupBox();
-			this.tbFlags2 = new System.Windows.Forms.TextBox();
-			this.btnNoFlags2 = new System.Windows.Forms.Button();
-			this.label3 = new System.Windows.Forms.Label();
-			this.cb2Bit0 = new System.Windows.Forms.CheckBox();
-			this.cb2BitE = new System.Windows.Forms.CheckBox();
-			this.cb2BitF = new System.Windows.Forms.CheckBox();
-			this.cb2BitC = new System.Windows.Forms.CheckBox();
-			this.cb2BitD = new System.Windows.Forms.CheckBox();
-			this.cb2BitB = new System.Windows.Forms.CheckBox();
-			this.cb2BitA = new System.Windows.Forms.CheckBox();
-			this.cb2Bit9 = new System.Windows.Forms.CheckBox();
-			this.cb2Bit8 = new System.Windows.Forms.CheckBox();
-			this.cb2Bit7 = new System.Windows.Forms.CheckBox();
-			this.cb2Bit6 = new System.Windows.Forms.CheckBox();
-			this.cb2Bit5 = new System.Windows.Forms.CheckBox();
-			this.cb2Bit4 = new System.Windows.Forms.CheckBox();
-			this.cb2Bit3 = new System.Windows.Forms.CheckBox();
-			this.cb2Bit2 = new System.Windows.Forms.CheckBox();
-			this.cb2Bit1 = new System.Windows.Forms.CheckBox();
-			this.cbAttenuationCode = new System.Windows.Forms.ComboBox();
-			this.tbModelTabID = new System.Windows.Forms.TextBox();
-			this.label33 = new System.Windows.Forms.Label();
-			this.tbObjType = new System.Windows.Forms.TextBox();
-			this.label34 = new System.Windows.Forms.Label();
-			this.tbUIDispType = new System.Windows.Forms.TextBox();
-			this.label35 = new System.Windows.Forms.Label();
-			this.tbAutonomy = new System.Windows.Forms.TextBox();
-			this.tbMemIterMult = new System.Windows.Forms.TextBox();
-			this.label29 = new System.Windows.Forms.Label();
-			this.tbFaceAnimID = new System.Windows.Forms.TextBox();
-			this.label30 = new System.Windows.Forms.Label();
-			this.tbAttenuationValue = new System.Windows.Forms.TextBox();
-			this.label31 = new System.Windows.Forms.Label();
-			this.label32 = new System.Windows.Forms.Label();
-			this.gbFlags = new System.Windows.Forms.GroupBox();
-			this.btnNoFlags = new System.Windows.Forms.Button();
-			this.tbFlags = new System.Windows.Forms.TextBox();
-			this.label24 = new System.Windows.Forms.Label();
-			this.cbBit0 = new System.Windows.Forms.CheckBox();
-			this.cbBitE = new System.Windows.Forms.CheckBox();
-			this.cbBitF = new System.Windows.Forms.CheckBox();
-			this.cbBitC = new System.Windows.Forms.CheckBox();
-			this.cbBitD = new System.Windows.Forms.CheckBox();
-			this.cbBitB = new System.Windows.Forms.CheckBox();
-			this.cbBitA = new System.Windows.Forms.CheckBox();
-			this.cbBit9 = new System.Windows.Forms.CheckBox();
-			this.cbBit8 = new System.Windows.Forms.CheckBox();
-			this.cbBit7 = new System.Windows.Forms.CheckBox();
-			this.cbBit6 = new System.Windows.Forms.CheckBox();
-			this.cbBit5 = new System.Windows.Forms.CheckBox();
-			this.cbBit4 = new System.Windows.Forms.CheckBox();
-			this.cbBit3 = new System.Windows.Forms.CheckBox();
-			this.cbBit2 = new System.Windows.Forms.CheckBox();
-			this.cbBit1 = new System.Windows.Forms.CheckBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.tbJoinIndex = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.tpHumanMotives = new System.Windows.Forms.TabPage();
+			this.ttabPanel = new Panel();
+			this.splitContainer1 = new SplitContainer();
+			this.tableLayoutPanel1 = new TableLayoutPanel();
+			this.lbttab = new ListBox();
+			this.flpFileCtrl = new FlowLayoutPanel();
+			this.lbFilename = new Label();
+			this.tbFilename = new TextBox();
+			this.label41 = new Label();
+			this.tbFormat = new TextBox();
+			this.btnCommit = new Button();
+			this.label26 = new Label();
+			this.btnStrPrev = new Button();
+			this.btnMoveUp = new Button();
+			this.btnAdd = new Button();
+			this.btnStrNext = new Button();
+			this.btnMoveDown = new Button();
+			this.btnDelete = new Button();
+			this.btnAppend = new Button();
+			this.tabControl1 = new TabControl();
+			this.tpSettings = new TabPage();
+			this.tlpSettingsHead = new TableLayoutPanel();
+			this.label4 = new Label();
+			this.lbTTABEntry = new Label();
+			this.llGuardian = new LinkLabel();
+			this.label40 = new Label();
+			this.llAction = new LinkLabel();
+			this.flpPieStringID = new FlowLayoutPanel();
+			this.tbStringIndex = new TextBox();
+			this.cbStringIndex = new ComboBox();
+			this.lbPieString = new Label();
+			this.flpAction = new FlowLayoutPanel();
+			this.tbAction = new TextBox();
+			this.btnAction = new Button();
+			this.lbaction = new Label();
+			this.flpGuard = new FlowLayoutPanel();
+			this.tbGuardian = new TextBox();
+			this.btnGuardian = new Button();
+			this.lbguard = new Label();
+			this.gbFlags2 = new GroupBox();
+			this.tbFlags2 = new TextBox();
+			this.btnNoFlags2 = new Button();
+			this.label3 = new Label();
+			this.cb2Bit0 = new CheckBox();
+			this.cb2BitE = new CheckBox();
+			this.cb2BitF = new CheckBox();
+			this.cb2BitC = new CheckBox();
+			this.cb2BitD = new CheckBox();
+			this.cb2BitB = new CheckBox();
+			this.cb2BitA = new CheckBox();
+			this.cb2Bit9 = new CheckBox();
+			this.cb2Bit8 = new CheckBox();
+			this.cb2Bit7 = new CheckBox();
+			this.cb2Bit6 = new CheckBox();
+			this.cb2Bit5 = new CheckBox();
+			this.cb2Bit4 = new CheckBox();
+			this.cb2Bit3 = new CheckBox();
+			this.cb2Bit2 = new CheckBox();
+			this.cb2Bit1 = new CheckBox();
+			this.cbAttenuationCode = new ComboBox();
+			this.tbModelTabID = new TextBox();
+			this.label33 = new Label();
+			this.tbObjType = new TextBox();
+			this.label34 = new Label();
+			this.tbUIDispType = new TextBox();
+			this.label35 = new Label();
+			this.tbAutonomy = new TextBox();
+			this.tbMemIterMult = new TextBox();
+			this.label29 = new Label();
+			this.tbFaceAnimID = new TextBox();
+			this.label30 = new Label();
+			this.tbAttenuationValue = new TextBox();
+			this.label31 = new Label();
+			this.label32 = new Label();
+			this.gbFlags = new GroupBox();
+			this.btnNoFlags = new Button();
+			this.tbFlags = new TextBox();
+			this.label24 = new Label();
+			this.cbBit0 = new CheckBox();
+			this.cbBitE = new CheckBox();
+			this.cbBitF = new CheckBox();
+			this.cbBitC = new CheckBox();
+			this.cbBitD = new CheckBox();
+			this.cbBitB = new CheckBox();
+			this.cbBitA = new CheckBox();
+			this.cbBit9 = new CheckBox();
+			this.cbBit8 = new CheckBox();
+			this.cbBit7 = new CheckBox();
+			this.cbBit6 = new CheckBox();
+			this.cbBit5 = new CheckBox();
+			this.cbBit4 = new CheckBox();
+			this.cbBit3 = new CheckBox();
+			this.cbBit2 = new CheckBox();
+			this.cbBit1 = new CheckBox();
+			this.label1 = new Label();
+			this.tbJoinIndex = new TextBox();
+			this.label2 = new Label();
+			this.tpHumanMotives = new TabPage();
 			this.timtuiHuman =
-				new SimPe.PackedFiles.UserInterface.TtabItemMotiveTableUI();
-			this.tpAnimalMotives = new System.Windows.Forms.TabPage();
+				new TtabItemMotiveTableUI();
+			this.tpAnimalMotives = new TabPage();
 			this.timtuiAnimal =
-				new SimPe.PackedFiles.UserInterface.TtabItemMotiveTableUI();
-			this.pjse_banner1 = new pjse.pjse_banner();
+				new TtabItemMotiveTableUI();
+			this.pjse_banner1 = new pjse_banner();
 			this.ttabPanel.SuspendLayout();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -1047,7 +1047,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.lbttab, "lbttab");
 			this.lbttab.Name = "lbttab";
-			this.lbttab.SelectedIndexChanged += new System.EventHandler(
+			this.lbttab.SelectedIndexChanged += new EventHandler(
 				this.TtabSelect
 			);
 			//
@@ -1080,10 +1080,10 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.tbFilename, "tbFilename");
 			this.flpFileCtrl.SetFlowBreak(this.tbFilename, true);
 			this.tbFilename.Name = "tbFilename";
-			this.tbFilename.TextChanged += new System.EventHandler(
+			this.tbFilename.TextChanged += new EventHandler(
 				this.tbFilename_TextChanged
 			);
-			this.tbFilename.Validated += new System.EventHandler(
+			this.tbFilename.Validated += new EventHandler(
 				this.tbFilename_Validated
 			);
 			//
@@ -1096,10 +1096,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.tbFormat, "tbFormat");
 			this.tbFormat.Name = "tbFormat";
-			this.tbFormat.TextChanged += new System.EventHandler(
+			this.tbFormat.TextChanged += new EventHandler(
 				this.hex32_TextChanged
 			);
-			this.tbFormat.Validated += new System.EventHandler(this.hex32_Validated);
+			this.tbFormat.Validated += new EventHandler(this.hex32_Validated);
 			this.tbFormat.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex32_Validating
 			);
@@ -1109,7 +1109,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.btnCommit, "btnCommit");
 			this.flpFileCtrl.SetFlowBreak(this.btnCommit, true);
 			this.btnCommit.Name = "btnCommit";
-			this.btnCommit.Click += new System.EventHandler(this.btnCommit_Click);
+			this.btnCommit.Click += new EventHandler(this.btnCommit_Click);
 			//
 			// label26
 			//
@@ -1121,44 +1121,44 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.btnStrPrev, "btnStrPrev");
 			this.btnStrPrev.Name = "btnStrPrev";
-			this.btnStrPrev.Click += new System.EventHandler(this.btnStrPrev_Click);
+			this.btnStrPrev.Click += new EventHandler(this.btnStrPrev_Click);
 			//
 			// btnMoveUp
 			//
 			resources.ApplyResources(this.btnMoveUp, "btnMoveUp");
 			this.btnMoveUp.Name = "btnMoveUp";
-			this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
+			this.btnMoveUp.Click += new EventHandler(this.btnMoveUp_Click);
 			//
 			// btnAdd
 			//
 			resources.ApplyResources(this.btnAdd, "btnAdd");
 			this.flpFileCtrl.SetFlowBreak(this.btnAdd, true);
 			this.btnAdd.Name = "btnAdd";
-			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+			this.btnAdd.Click += new EventHandler(this.btnAdd_Click);
 			//
 			// btnStrNext
 			//
 			resources.ApplyResources(this.btnStrNext, "btnStrNext");
 			this.btnStrNext.Name = "btnStrNext";
-			this.btnStrNext.Click += new System.EventHandler(this.btnStrNext_Click);
+			this.btnStrNext.Click += new EventHandler(this.btnStrNext_Click);
 			//
 			// btnMoveDown
 			//
 			resources.ApplyResources(this.btnMoveDown, "btnMoveDown");
 			this.btnMoveDown.Name = "btnMoveDown";
-			this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
+			this.btnMoveDown.Click += new EventHandler(this.btnMoveDown_Click);
 			//
 			// btnDelete
 			//
 			resources.ApplyResources(this.btnDelete, "btnDelete");
 			this.btnDelete.Name = "btnDelete";
-			this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+			this.btnDelete.Click += new EventHandler(this.btnDelete_Click);
 			//
 			// btnAppend
 			//
 			resources.ApplyResources(this.btnAppend, "btnAppend");
 			this.btnAppend.Name = "btnAppend";
-			this.btnAppend.Click += new System.EventHandler(this.btnAppend_Click);
+			this.btnAppend.Click += new EventHandler(this.btnAppend_Click);
 			//
 			// tabControl1
 			//
@@ -1225,7 +1225,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.llGuardian.Name = "llGuardian";
 			this.llGuardian.TabStop = true;
 			this.llGuardian.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llBhav_LinkClicked
 				);
 			//
@@ -1240,7 +1240,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.llAction.Name = "llAction";
 			this.llAction.TabStop = true;
 			this.llAction.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llBhav_LinkClicked
 				);
 			//
@@ -1256,10 +1256,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.tbStringIndex, "tbStringIndex");
 			this.tbStringIndex.Name = "tbStringIndex";
-			this.tbStringIndex.TextChanged += new System.EventHandler(
+			this.tbStringIndex.TextChanged += new EventHandler(
 				this.hex32_TextChanged
 			);
-			this.tbStringIndex.Validated += new System.EventHandler(
+			this.tbStringIndex.Validated += new EventHandler(
 				this.hex32_Validated
 			);
 			this.tbStringIndex.Validating +=
@@ -1283,14 +1283,14 @@ namespace SimPe.PackedFiles.UserInterface
 			this.cbStringIndex.ValueMember = "Value";
 			this.cbStringIndex.Validating +=
 				new System.ComponentModel.CancelEventHandler(this.cbHex32_Validating);
-			this.cbStringIndex.SelectedIndexChanged += new System.EventHandler(
+			this.cbStringIndex.SelectedIndexChanged += new EventHandler(
 				this.cbHex32_SelectedIndexChanged
 			);
-			this.cbStringIndex.Enter += new System.EventHandler(this.cbHex32_Enter);
-			this.cbStringIndex.Validated += new System.EventHandler(
+			this.cbStringIndex.Enter += new EventHandler(this.cbHex32_Enter);
+			this.cbStringIndex.Validated += new EventHandler(
 				this.cbHex32_Validated
 			);
-			this.cbStringIndex.TextChanged += new System.EventHandler(
+			this.cbStringIndex.TextChanged += new EventHandler(
 				this.cbHex32_TextChanged
 			);
 			//
@@ -1312,10 +1312,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.tbAction, "tbAction");
 			this.tbAction.Name = "tbAction";
-			this.tbAction.TextChanged += new System.EventHandler(
+			this.tbAction.TextChanged += new EventHandler(
 				this.hex16_TextChanged
 			);
-			this.tbAction.Validated += new System.EventHandler(this.hex16_Validated);
+			this.tbAction.Validated += new EventHandler(this.hex16_Validated);
 			this.tbAction.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex16_Validating
 			);
@@ -1324,7 +1324,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.btnAction, "btnAction");
 			this.btnAction.Name = "btnAction";
-			this.btnAction.Click += new System.EventHandler(this.GetTTABAction);
+			this.btnAction.Click += new EventHandler(this.GetTTABAction);
 			//
 			// lbaction
 			//
@@ -1344,10 +1344,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.tbGuardian, "tbGuardian");
 			this.tbGuardian.Name = "tbGuardian";
-			this.tbGuardian.TextChanged += new System.EventHandler(
+			this.tbGuardian.TextChanged += new EventHandler(
 				this.hex16_TextChanged
 			);
-			this.tbGuardian.Validated += new System.EventHandler(this.hex16_Validated);
+			this.tbGuardian.Validated += new EventHandler(this.hex16_Validated);
 			this.tbGuardian.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex16_Validating
 			);
@@ -1356,7 +1356,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.btnGuardian, "btnGuardian");
 			this.btnGuardian.Name = "btnGuardian";
-			this.btnGuardian.Click += new System.EventHandler(this.GetTTABGuard);
+			this.btnGuardian.Click += new EventHandler(this.GetTTABGuard);
 			//
 			// lbguard
 			//
@@ -1393,10 +1393,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.tbFlags2, "tbFlags2");
 			this.tbFlags2.Name = "tbFlags2";
-			this.tbFlags2.TextChanged += new System.EventHandler(
+			this.tbFlags2.TextChanged += new EventHandler(
 				this.hex16_TextChanged
 			);
-			this.tbFlags2.Validated += new System.EventHandler(this.hex16_Validated);
+			this.tbFlags2.Validated += new EventHandler(this.hex16_Validated);
 			this.tbFlags2.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex16_Validating
 			);
@@ -1405,7 +1405,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.btnNoFlags2, "btnNoFlags2");
 			this.btnNoFlags2.Name = "btnNoFlags2";
-			this.btnNoFlags2.Click += new System.EventHandler(this.btnNoFlags2_Click);
+			this.btnNoFlags2.Click += new EventHandler(this.btnNoFlags2_Click);
 			//
 			// label3
 			//
@@ -1417,7 +1417,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cb2Bit0, "cb2Bit0");
 			this.cb2Bit0.Name = "cb2Bit0";
 			this.cb2Bit0.Tag = "";
-			this.cb2Bit0.CheckedChanged += new System.EventHandler(
+			this.cb2Bit0.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1426,7 +1426,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cb2BitE, "cb2BitE");
 			this.cb2BitE.Name = "cb2BitE";
 			this.cb2BitE.Tag = "";
-			this.cb2BitE.CheckedChanged += new System.EventHandler(
+			this.cb2BitE.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1435,7 +1435,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cb2BitF, "cb2BitF");
 			this.cb2BitF.Name = "cb2BitF";
 			this.cb2BitF.Tag = "";
-			this.cb2BitF.CheckedChanged += new System.EventHandler(
+			this.cb2BitF.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1444,7 +1444,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cb2BitC, "cb2BitC");
 			this.cb2BitC.Name = "cb2BitC";
 			this.cb2BitC.Tag = "?/adult small dogs";
-			this.cb2BitC.CheckedChanged += new System.EventHandler(
+			this.cb2BitC.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1453,7 +1453,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cb2BitD, "cb2BitD");
 			this.cb2BitD.Name = "cb2BitD";
 			this.cb2BitD.Tag = "?/elder small dogs";
-			this.cb2BitD.CheckedChanged += new System.EventHandler(
+			this.cb2BitD.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1462,7 +1462,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cb2BitB, "cb2BitB");
 			this.cb2BitB.Name = "cb2BitB";
 			this.cb2BitB.Tag = "?/elder cats";
-			this.cb2BitB.CheckedChanged += new System.EventHandler(
+			this.cb2BitB.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1471,7 +1471,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cb2BitA, "cb2BitA");
 			this.cb2BitA.Name = "cb2BitA";
 			this.cb2BitA.Tag = "?/elder big dogs";
-			this.cb2BitA.CheckedChanged += new System.EventHandler(
+			this.cb2BitA.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1480,7 +1480,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cb2Bit9, "cb2Bit9");
 			this.cb2Bit9.Name = "cb2Bit9";
 			this.cb2Bit9.Tag = "?/kittens";
-			this.cb2Bit9.CheckedChanged += new System.EventHandler(
+			this.cb2Bit9.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1489,7 +1489,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cb2Bit8, "cb2Bit8");
 			this.cb2Bit8.Name = "cb2Bit8";
 			this.cb2Bit8.Tag = "?/puppies";
-			this.cb2Bit8.CheckedChanged += new System.EventHandler(
+			this.cb2Bit8.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1498,7 +1498,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cb2Bit7, "cb2Bit7");
 			this.cb2Bit7.Name = "cb2Bit7";
 			this.cb2Bit7.Tag = "";
-			this.cb2Bit7.CheckedChanged += new System.EventHandler(
+			this.cb2Bit7.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1507,7 +1507,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cb2Bit6, "cb2Bit6");
 			this.cb2Bit6.Name = "cb2Bit6";
 			this.cb2Bit6.Tag = "";
-			this.cb2Bit6.CheckedChanged += new System.EventHandler(
+			this.cb2Bit6.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1516,7 +1516,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cb2Bit5, "cb2Bit5");
 			this.cb2Bit5.Name = "cb2Bit5";
 			this.cb2Bit5.Tag = "";
-			this.cb2Bit5.CheckedChanged += new System.EventHandler(
+			this.cb2Bit5.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1525,7 +1525,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cb2Bit4, "cb2Bit4");
 			this.cb2Bit4.Name = "cb2Bit4";
 			this.cb2Bit4.Tag = "";
-			this.cb2Bit4.CheckedChanged += new System.EventHandler(
+			this.cb2Bit4.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1534,7 +1534,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cb2Bit3, "cb2Bit3");
 			this.cb2Bit3.Name = "cb2Bit3";
 			this.cb2Bit3.Tag = "";
-			this.cb2Bit3.CheckedChanged += new System.EventHandler(
+			this.cb2Bit3.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1543,7 +1543,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cb2Bit2, "cb2Bit2");
 			this.cb2Bit2.Name = "cb2Bit2";
 			this.cb2Bit2.Tag = "";
-			this.cb2Bit2.CheckedChanged += new System.EventHandler(
+			this.cb2Bit2.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1552,7 +1552,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cb2Bit1, "cb2Bit1");
 			this.cb2Bit1.Name = "cb2Bit1";
 			this.cb2Bit1.Tag = "";
-			this.cb2Bit1.CheckedChanged += new System.EventHandler(
+			this.cb2Bit1.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1572,14 +1572,14 @@ namespace SimPe.PackedFiles.UserInterface
 			this.cbAttenuationCode.Name = "cbAttenuationCode";
 			this.cbAttenuationCode.Validating +=
 				new System.ComponentModel.CancelEventHandler(this.cbHex32_Validating);
-			this.cbAttenuationCode.SelectedIndexChanged += new System.EventHandler(
+			this.cbAttenuationCode.SelectedIndexChanged += new EventHandler(
 				this.cbHex32_SelectedIndexChanged
 			);
-			this.cbAttenuationCode.Enter += new System.EventHandler(this.cbHex32_Enter);
-			this.cbAttenuationCode.Validated += new System.EventHandler(
+			this.cbAttenuationCode.Enter += new EventHandler(this.cbHex32_Enter);
+			this.cbAttenuationCode.Validated += new EventHandler(
 				this.cbHex32_Validated
 			);
-			this.cbAttenuationCode.TextChanged += new System.EventHandler(
+			this.cbAttenuationCode.TextChanged += new EventHandler(
 				this.cbHex32_TextChanged
 			);
 			//
@@ -1587,10 +1587,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.tbModelTabID, "tbModelTabID");
 			this.tbModelTabID.Name = "tbModelTabID";
-			this.tbModelTabID.TextChanged += new System.EventHandler(
+			this.tbModelTabID.TextChanged += new EventHandler(
 				this.hex32_TextChanged
 			);
-			this.tbModelTabID.Validated += new System.EventHandler(
+			this.tbModelTabID.Validated += new EventHandler(
 				this.hex32_Validated
 			);
 			this.tbModelTabID.Validating +=
@@ -1605,10 +1605,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.tbObjType, "tbObjType");
 			this.tbObjType.Name = "tbObjType";
-			this.tbObjType.TextChanged += new System.EventHandler(
+			this.tbObjType.TextChanged += new EventHandler(
 				this.hex32_TextChanged
 			);
-			this.tbObjType.Validated += new System.EventHandler(this.hex32_Validated);
+			this.tbObjType.Validated += new EventHandler(this.hex32_Validated);
 			this.tbObjType.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex32_Validating
 			);
@@ -1622,10 +1622,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.tbUIDispType, "tbUIDispType");
 			this.tbUIDispType.Name = "tbUIDispType";
-			this.tbUIDispType.TextChanged += new System.EventHandler(
+			this.tbUIDispType.TextChanged += new EventHandler(
 				this.hex16_TextChanged
 			);
-			this.tbUIDispType.Validated += new System.EventHandler(
+			this.tbUIDispType.Validated += new EventHandler(
 				this.hex16_Validated
 			);
 			this.tbUIDispType.Validating +=
@@ -1640,10 +1640,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.tbAutonomy, "tbAutonomy");
 			this.tbAutonomy.Name = "tbAutonomy";
-			this.tbAutonomy.TextChanged += new System.EventHandler(
+			this.tbAutonomy.TextChanged += new EventHandler(
 				this.hex32_TextChanged
 			);
-			this.tbAutonomy.Validated += new System.EventHandler(this.hex32_Validated);
+			this.tbAutonomy.Validated += new EventHandler(this.hex32_Validated);
 			this.tbAutonomy.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex32_Validating
 			);
@@ -1652,10 +1652,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.tbMemIterMult, "tbMemIterMult");
 			this.tbMemIterMult.Name = "tbMemIterMult";
-			this.tbMemIterMult.TextChanged += new System.EventHandler(
+			this.tbMemIterMult.TextChanged += new EventHandler(
 				this.float_TextChanged
 			);
-			this.tbMemIterMult.Validated += new System.EventHandler(
+			this.tbMemIterMult.Validated += new EventHandler(
 				this.float_Validated
 			);
 			this.tbMemIterMult.Validating +=
@@ -1670,10 +1670,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.tbFaceAnimID, "tbFaceAnimID");
 			this.tbFaceAnimID.Name = "tbFaceAnimID";
-			this.tbFaceAnimID.TextChanged += new System.EventHandler(
+			this.tbFaceAnimID.TextChanged += new EventHandler(
 				this.hex32_TextChanged
 			);
-			this.tbFaceAnimID.Validated += new System.EventHandler(
+			this.tbFaceAnimID.Validated += new EventHandler(
 				this.hex32_Validated
 			);
 			this.tbFaceAnimID.Validating +=
@@ -1688,10 +1688,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.tbAttenuationValue, "tbAttenuationValue");
 			this.tbAttenuationValue.Name = "tbAttenuationValue";
-			this.tbAttenuationValue.TextChanged += new System.EventHandler(
+			this.tbAttenuationValue.TextChanged += new EventHandler(
 				this.float_TextChanged
 			);
-			this.tbAttenuationValue.Validated += new System.EventHandler(
+			this.tbAttenuationValue.Validated += new EventHandler(
 				this.float_Validated
 			);
 			this.tbAttenuationValue.Validating +=
@@ -1736,14 +1736,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.btnNoFlags, "btnNoFlags");
 			this.btnNoFlags.Name = "btnNoFlags";
-			this.btnNoFlags.Click += new System.EventHandler(this.btnNoFlags_Click);
+			this.btnNoFlags.Click += new EventHandler(this.btnNoFlags_Click);
 			//
 			// tbFlags
 			//
 			resources.ApplyResources(this.tbFlags, "tbFlags");
 			this.tbFlags.Name = "tbFlags";
-			this.tbFlags.TextChanged += new System.EventHandler(this.hex16_TextChanged);
-			this.tbFlags.Validated += new System.EventHandler(this.hex16_Validated);
+			this.tbFlags.TextChanged += new EventHandler(this.hex16_TextChanged);
+			this.tbFlags.Validated += new EventHandler(this.hex16_Validated);
 			this.tbFlags.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex16_Validating
 			);
@@ -1758,7 +1758,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cbBit0, "cbBit0");
 			this.cbBit0.Name = "cbBit0";
 			this.cbBit0.Tag = "";
-			this.cbBit0.CheckedChanged += new System.EventHandler(
+			this.cbBit0.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1766,7 +1766,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.cbBitE, "cbBitE");
 			this.cbBitE.Name = "cbBitE";
-			this.cbBitE.CheckedChanged += new System.EventHandler(
+			this.cbBitE.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1774,7 +1774,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.cbBitF, "cbBitF");
 			this.cbBitF.Name = "cbBitF";
-			this.cbBitF.CheckedChanged += new System.EventHandler(
+			this.cbBitF.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1783,7 +1783,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cbBitC, "cbBitC");
 			this.cbBitC.Name = "cbBitC";
 			this.cbBitC.Tag = "dogs/adult big dogs";
-			this.cbBitC.CheckedChanged += new System.EventHandler(
+			this.cbBitC.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1792,7 +1792,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cbBitD, "cbBitD");
 			this.cbBitD.Name = "cbBitD";
 			this.cbBitD.Tag = "cats/adult cats";
-			this.cbBitD.CheckedChanged += new System.EventHandler(
+			this.cbBitD.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1800,7 +1800,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.cbBitB, "cbBitB");
 			this.cbBitB.Name = "cbBitB";
-			this.cbBitB.CheckedChanged += new System.EventHandler(
+			this.cbBitB.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1808,7 +1808,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.cbBitA, "cbBitA");
 			this.cbBitA.Name = "cbBitA";
-			this.cbBitA.CheckedChanged += new System.EventHandler(
+			this.cbBitA.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1816,7 +1816,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.cbBit9, "cbBit9");
 			this.cbBit9.Name = "cbBit9";
-			this.cbBit9.CheckedChanged += new System.EventHandler(
+			this.cbBit9.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1825,7 +1825,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cbBit8, "cbBit8");
 			this.cbBit8.Name = "cbBit8";
 			this.cbBit8.Tag = "auto first/auto first?";
-			this.cbBit8.CheckedChanged += new System.EventHandler(
+			this.cbBit8.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1834,7 +1834,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cbBit7, "cbBit7");
 			this.cbBit7.Name = "cbBit7";
 			this.cbBit7.Tag = "debug menu/debug menu?";
-			this.cbBit7.CheckedChanged += new System.EventHandler(
+			this.cbBit7.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1843,7 +1843,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cbBit6, "cbBit6");
 			this.cbBit6.Name = "cbBit6";
 			this.cbBit6.Tag = "";
-			this.cbBit6.CheckedChanged += new System.EventHandler(
+			this.cbBit6.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1852,7 +1852,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cbBit5, "cbBit5");
 			this.cbBit5.Name = "cbBit5";
 			this.cbBit5.Tag = "demo child/2-way?";
-			this.cbBit5.CheckedChanged += new System.EventHandler(
+			this.cbBit5.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1860,7 +1860,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.cbBit4, "cbBit4");
 			this.cbBit4.Name = "cbBit4";
-			this.cbBit4.CheckedChanged += new System.EventHandler(
+			this.cbBit4.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1869,7 +1869,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cbBit3, "cbBit3");
 			this.cbBit3.Name = "cbBit3";
 			this.cbBit3.Tag = "consecutive/consecutive?";
-			this.cbBit3.CheckedChanged += new System.EventHandler(
+			this.cbBit3.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1877,7 +1877,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.cbBit2, "cbBit2");
 			this.cbBit2.Name = "cbBit2";
-			this.cbBit2.CheckedChanged += new System.EventHandler(
+			this.cbBit2.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1886,7 +1886,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.cbBit1, "cbBit1");
 			this.cbBit1.Name = "cbBit1";
 			this.cbBit1.Tag = "joinable/joinable?";
-			this.cbBit1.CheckedChanged += new System.EventHandler(
+			this.cbBit1.CheckedChanged += new EventHandler(
 				this.checkbox_CheckedChanged
 			);
 			//
@@ -1899,10 +1899,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.tbJoinIndex, "tbJoinIndex");
 			this.tbJoinIndex.Name = "tbJoinIndex";
-			this.tbJoinIndex.TextChanged += new System.EventHandler(
+			this.tbJoinIndex.TextChanged += new EventHandler(
 				this.hex32_TextChanged
 			);
-			this.tbJoinIndex.Validated += new System.EventHandler(this.hex32_Validated);
+			this.tbJoinIndex.Validated += new EventHandler(this.hex32_Validated);
 			this.tbJoinIndex.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex32_Validating
 			);
@@ -1993,7 +1993,7 @@ namespace SimPe.PackedFiles.UserInterface
 		//
 		// --------------
 
-		private void btnCommit_Click(object sender, System.EventArgs e)
+		private void btnCommit_Click(object sender, EventArgs e)
 		{
 			try
 			{
@@ -2010,14 +2010,14 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		private void tbFilename_TextChanged(object sender, System.EventArgs e)
+		private void tbFilename_TextChanged(object sender, EventArgs e)
 		{
 			internalchg = true;
 			wrapper.FileName = tbFilename.Text;
 			internalchg = false;
 		}
 
-		private void tbFilename_Validated(object sender, System.EventArgs e)
+		private void tbFilename_Validated(object sender, EventArgs e)
 		{
 			tbFilename.SelectAll();
 		}
@@ -2077,7 +2077,7 @@ namespace SimPe.PackedFiles.UserInterface
 			lbttab.SelectedIndex++;
 		}
 
-		private void btnAdd_Click(object sender, System.EventArgs e)
+		private void btnAdd_Click(object sender, EventArgs e)
 		{
 			this.ttabPanel.SuspendLayout();
 			internalchg = true;
@@ -2092,15 +2092,15 @@ namespace SimPe.PackedFiles.UserInterface
 			this.ttabPanel.ResumeLayout();
 		}
 
-		private void btnDelete_Click(object sender, System.EventArgs e)
+		private void btnDelete_Click(object sender, EventArgs e)
 		{
 			wrapper.RemoveAt(lbttab.SelectedIndex);
 		}
 
-		private void btnAppend_Click(object sender, System.EventArgs e)
+		private void btnAppend_Click(object sender, EventArgs e)
 		{
 			this.Append(
-				(new pjse.ResourceChooser()).Execute(
+				(new ResourceChooser()).Execute(
 					wrapper.FileDescriptor.Type,
 					wrapper.FileDescriptor.Group,
 					ttabPanel,
@@ -2115,7 +2115,7 @@ namespace SimPe.PackedFiles.UserInterface
 		//
 		// --------------
 
-		private void TtabSelect(object sender, System.EventArgs e)
+		private void TtabSelect(object sender, EventArgs e)
 		{
 			if (internalchg)
 			{
@@ -2231,9 +2231,9 @@ namespace SimPe.PackedFiles.UserInterface
 		 * modeltableid     - uint   - 8 hex digits
 		 */
 
-		private void GetTTABGuard(object sender, System.EventArgs e)
+		private void GetTTABGuard(object sender, EventArgs e)
 		{
-			pjse.FileTable.Entry item = new pjse.ResourceChooser().Execute(
+			pjse.FileTable.Entry item = new ResourceChooser().Execute(
 				SimPe.Data.MetaData.BHAV_FILE,
 				wrapper.FileDescriptor.Group,
 				ttabPanel.Parent,
@@ -2245,9 +2245,9 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		private void GetTTABAction(object sender, System.EventArgs e)
+		private void GetTTABAction(object sender, EventArgs e)
 		{
-			pjse.FileTable.Entry item = new pjse.ResourceChooser().Execute(
+			pjse.FileTable.Entry item = new ResourceChooser().Execute(
 				SimPe.Data.MetaData.BHAV_FILE,
 				wrapper.FileDescriptor.Group,
 				ttabPanel.Parent,
@@ -2261,7 +2261,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void llBhav_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			pjse.FileTable.Entry item = wrapper.ResourceByInstance(
@@ -2288,7 +2288,7 @@ namespace SimPe.PackedFiles.UserInterface
 			ui.Show();
 		}
 
-		private void btnNoFlags_Click(object sender, System.EventArgs e)
+		private void btnNoFlags_Click(object sender, EventArgs e)
 		{
 			internalchg = true;
 			currentItem.Flags = (ushort)(wrapper.Format < 0x54 ? 0x0070 : 0x0000);
@@ -2306,7 +2306,7 @@ namespace SimPe.PackedFiles.UserInterface
 			internalchg = false;
 		}
 
-		private void checkbox_CheckedChanged(object sender, System.EventArgs e)
+		private void checkbox_CheckedChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
 			{
@@ -2345,12 +2345,12 @@ namespace SimPe.PackedFiles.UserInterface
 			internalchg = false;
 		}
 
-		private void cbHex32_Enter(object sender, System.EventArgs e)
+		private void cbHex32_Enter(object sender, EventArgs e)
 		{
 			((ComboBox)sender).SelectAll();
 		}
 
-		private void cbHex32_TextChanged(object sender, System.EventArgs ev)
+		private void cbHex32_TextChanged(object sender, EventArgs ev)
 		{
 			if (internalchg)
 			{
@@ -2439,7 +2439,7 @@ namespace SimPe.PackedFiles.UserInterface
 			((ComboBox)sender).SelectAll();
 		}
 
-		private void cbHex32_Validated(object sender, System.EventArgs e)
+		private void cbHex32_Validated(object sender, EventArgs e)
 		{
 			int i = alHex32cb.IndexOf(sender);
 			if (i < 0)
@@ -2478,7 +2478,7 @@ namespace SimPe.PackedFiles.UserInterface
 			((ComboBox)sender).Select(0, 0);
 		}
 
-		private void cbHex32_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void cbHex32_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
 			{
@@ -2516,7 +2516,7 @@ namespace SimPe.PackedFiles.UserInterface
 			((ComboBox)sender).SelectAll();
 		}
 
-		private void hex16_TextChanged(object sender, System.EventArgs ev)
+		private void hex16_TextChanged(object sender, EventArgs ev)
 		{
 			if (internalchg)
 			{
@@ -2595,7 +2595,7 @@ namespace SimPe.PackedFiles.UserInterface
 			internalchg = false;
 		}
 
-		private void hex16_Validated(object sender, System.EventArgs e)
+		private void hex16_Validated(object sender, EventArgs e)
 		{
 			bool origstate = internalchg;
 			internalchg = true;
@@ -2605,7 +2605,7 @@ namespace SimPe.PackedFiles.UserInterface
 			internalchg = origstate;
 		}
 
-		private void hex32_TextChanged(object sender, System.EventArgs ev)
+		private void hex32_TextChanged(object sender, EventArgs ev)
 		{
 			if (internalchg)
 			{
@@ -2691,7 +2691,7 @@ namespace SimPe.PackedFiles.UserInterface
 			internalchg = false;
 		}
 
-		private void hex32_Validated(object sender, System.EventArgs e)
+		private void hex32_Validated(object sender, EventArgs e)
 		{
 			bool origstate = internalchg;
 			internalchg = true;
@@ -2705,7 +2705,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		private void float_TextChanged(object sender, System.EventArgs ev)
+		private void float_TextChanged(object sender, EventArgs ev)
 		{
 			if (internalchg)
 			{
@@ -2761,7 +2761,7 @@ namespace SimPe.PackedFiles.UserInterface
 			internalchg = false;
 		}
 
-		private void float_Validated(object sender, System.EventArgs e)
+		private void float_Validated(object sender, EventArgs e)
 		{
 			bool origstate = internalchg;
 			internalchg = true;

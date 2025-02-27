@@ -39,7 +39,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public Control GUIHandle => form.pnfamt;
 
-		public void UpdateGUI(SimPe.Interfaces.Plugin.IFileWrapper wrapper)
+		public void UpdateGUI(IFileWrapper wrapper)
 		{
 			Wrapper.ExtFamilyTies famt = (Wrapper.ExtFamilyTies)wrapper;
 			form.wrapper = famt;

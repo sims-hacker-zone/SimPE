@@ -49,7 +49,7 @@ namespace SimPe.Interfaces.Files
 		/// </summary>
 		/// <remarks>
 		/// This is the public Change Listener. Developers can control in
-		/// <see cref="SetUserData"/>if this Event is fired. This Event will not fire if <see cref="SimPe.Interfaces.Plugin.Internal.SynchronizeUserData"/>
+		/// <see cref="SetUserData"/>if this Event is fired. This Event will not fire if <see cref="Plugin.Internal.SynchronizeUserData"/>
 		/// is called (which changes the UserData).
 		/// </remarks>
 		event PackedFileChanged ChangedUserData;

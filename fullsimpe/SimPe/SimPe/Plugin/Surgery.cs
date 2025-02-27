@@ -28,31 +28,31 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for Sims.
 	/// </summary>
-	public class Surgery : System.Windows.Forms.Form
+	public class Surgery : Form
 	{
-		private System.Windows.Forms.ImageList ilist;
-		private System.Windows.Forms.ListView lv;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.GroupBox groupBox2;
-		private System.Windows.Forms.GroupBox groupBox3;
-		private System.Windows.Forms.PictureBox pbpatient;
-		private System.Windows.Forms.PictureBox pbarche;
-		private System.Windows.Forms.LinkLabel llusepatient;
-		private System.Windows.Forms.LinkLabel llusearche;
-		private System.Windows.Forms.LinkLabel llexport;
-		private System.Windows.Forms.SaveFileDialog sfd;
-		private System.Windows.Forms.ToolTip toolTip1;
-		private System.Windows.Forms.CheckBox cbskin;
-		private System.Windows.Forms.ListView lvskin;
-		private System.Windows.Forms.ImageList iskin;
-		private System.Windows.Forms.CheckBox cbface;
-		private System.Windows.Forms.CheckBox cbmakeup;
-		private System.Windows.Forms.CheckBox cbeye;
-		private System.Windows.Forms.LinkLabel ctlLoadPackage;
-		private System.Windows.Forms.OpenFileDialog opd;
-		private System.Windows.Forms.Label lbUbi;
+		private ImageList ilist;
+		private ListView lv;
+		private Button button1;
+		private Label label1;
+		private GroupBox groupBox1;
+		private GroupBox groupBox2;
+		private GroupBox groupBox3;
+		private PictureBox pbpatient;
+		private PictureBox pbarche;
+		private LinkLabel llusepatient;
+		private LinkLabel llusearche;
+		private LinkLabel llexport;
+		private SaveFileDialog sfd;
+		private ToolTip toolTip1;
+		private CheckBox cbskin;
+		private ListView lvskin;
+		private ImageList iskin;
+		private CheckBox cbface;
+		private CheckBox cbmakeup;
+		private CheckBox cbeye;
+		private LinkLabel ctlLoadPackage;
+		private OpenFileDialog opd;
+		private Label lbUbi;
 		private CheckBox cbgals;
 		private CheckBox cbmens;
 		private CheckBox cbadults;
@@ -60,7 +60,7 @@ namespace SimPe.Plugin
 		private PropertyGrid pgArchetypeDetails;
 		internal CheckBox cbTownie;
 		internal CheckBox cbNpc;
-		private System.ComponentModel.IContainer components;
+		private IContainer components;
 
 		public Surgery()
 		{
@@ -98,43 +98,43 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources =
-				new System.ComponentModel.ComponentResourceManager(typeof(Surgery));
-			this.ilist = new System.Windows.Forms.ImageList(this.components);
-			this.lv = new System.Windows.Forms.ListView();
-			this.button1 = new System.Windows.Forms.Button();
-			this.label1 = new System.Windows.Forms.Label();
-			this.lbUbi = new System.Windows.Forms.Label();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.pgPatientDetails = new System.Windows.Forms.PropertyGrid();
-			this.cbeye = new System.Windows.Forms.CheckBox();
-			this.cbmakeup = new System.Windows.Forms.CheckBox();
-			this.llexport = new System.Windows.Forms.LinkLabel();
-			this.pbpatient = new System.Windows.Forms.PictureBox();
-			this.llusepatient = new System.Windows.Forms.LinkLabel();
-			this.cbface = new System.Windows.Forms.CheckBox();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.pgArchetypeDetails = new System.Windows.Forms.PropertyGrid();
-			this.ctlLoadPackage = new System.Windows.Forms.LinkLabel();
-			this.llusearche = new System.Windows.Forms.LinkLabel();
-			this.pbarche = new System.Windows.Forms.PictureBox();
-			this.sfd = new System.Windows.Forms.SaveFileDialog();
-			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-			this.cbskin = new System.Windows.Forms.CheckBox();
-			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			this.lvskin = new System.Windows.Forms.ListView();
-			this.iskin = new System.Windows.Forms.ImageList(this.components);
-			this.opd = new System.Windows.Forms.OpenFileDialog();
-			this.cbgals = new System.Windows.Forms.CheckBox();
-			this.cbmens = new System.Windows.Forms.CheckBox();
-			this.cbadults = new System.Windows.Forms.CheckBox();
-			this.cbTownie = new System.Windows.Forms.CheckBox();
-			this.cbNpc = new System.Windows.Forms.CheckBox();
+			this.components = new Container();
+			ComponentResourceManager resources =
+				new ComponentResourceManager(typeof(Surgery));
+			this.ilist = new ImageList(this.components);
+			this.lv = new ListView();
+			this.button1 = new Button();
+			this.label1 = new Label();
+			this.lbUbi = new Label();
+			this.groupBox1 = new GroupBox();
+			this.pgPatientDetails = new PropertyGrid();
+			this.cbeye = new CheckBox();
+			this.cbmakeup = new CheckBox();
+			this.llexport = new LinkLabel();
+			this.pbpatient = new PictureBox();
+			this.llusepatient = new LinkLabel();
+			this.cbface = new CheckBox();
+			this.groupBox2 = new GroupBox();
+			this.pgArchetypeDetails = new PropertyGrid();
+			this.ctlLoadPackage = new LinkLabel();
+			this.llusearche = new LinkLabel();
+			this.pbarche = new PictureBox();
+			this.sfd = new SaveFileDialog();
+			this.toolTip1 = new ToolTip(this.components);
+			this.cbskin = new CheckBox();
+			this.groupBox3 = new GroupBox();
+			this.lvskin = new ListView();
+			this.iskin = new ImageList(this.components);
+			this.opd = new OpenFileDialog();
+			this.cbgals = new CheckBox();
+			this.cbmens = new CheckBox();
+			this.cbadults = new CheckBox();
+			this.cbTownie = new CheckBox();
+			this.cbNpc = new CheckBox();
 			this.groupBox1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pbpatient)).BeginInit();
+			((ISupportInitialize)(this.pbpatient)).BeginInit();
 			this.groupBox2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pbarche)).BeginInit();
+			((ISupportInitialize)(this.pbarche)).BeginInit();
 			this.groupBox3.SuspendLayout();
 			this.SuspendLayout();
 			//
@@ -157,8 +157,8 @@ namespace SimPe.Plugin
 			this.lv.StateImageList = this.ilist;
 			this.toolTip1.SetToolTip(this.lv, resources.GetString("lv.ToolTip"));
 			this.lv.UseCompatibleStateImageBehavior = false;
-			this.lv.SelectedIndexChanged += new System.EventHandler(this.SelectSim);
-			this.lv.DoubleClick += new System.EventHandler(this.Open);
+			this.lv.SelectedIndexChanged += new EventHandler(this.SelectSim);
+			this.lv.DoubleClick += new EventHandler(this.Open);
 			//
 			// button1
 			//
@@ -168,7 +168,7 @@ namespace SimPe.Plugin
 				this.button1,
 				resources.GetString("button1.ToolTip")
 			);
-			this.button1.Click += new System.EventHandler(this.Open);
+			this.button1.Click += new EventHandler(this.Open);
 			//
 			// label1
 			//
@@ -211,7 +211,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbeye, "cbeye");
 			this.cbeye.Name = "cbeye";
 			this.toolTip1.SetToolTip(this.cbeye, resources.GetString("cbeye.ToolTip"));
-			this.cbeye.CheckedChanged += new System.EventHandler(
+			this.cbeye.CheckedChanged += new EventHandler(
 				this.cbskin_CheckedChanged
 			);
 			//
@@ -223,7 +223,7 @@ namespace SimPe.Plugin
 				this.cbmakeup,
 				resources.GetString("cbmakeup.ToolTip")
 			);
-			this.cbmakeup.CheckedChanged += new System.EventHandler(
+			this.cbmakeup.CheckedChanged += new EventHandler(
 				this.cbskin_CheckedChanged
 			);
 			//
@@ -237,7 +237,7 @@ namespace SimPe.Plugin
 				resources.GetString("llexport.ToolTip")
 			);
 			this.llexport.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Export);
+				new LinkLabelLinkClickedEventHandler(this.Export);
 			//
 			// pbpatient
 			//
@@ -256,7 +256,7 @@ namespace SimPe.Plugin
 				resources.GetString("llusepatient.ToolTip")
 			);
 			this.llusepatient.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.UsePatient
 				);
 			//
@@ -269,7 +269,7 @@ namespace SimPe.Plugin
 				this.cbface,
 				resources.GetString("cbface.ToolTip")
 			);
-			this.cbface.CheckedChanged += new System.EventHandler(
+			this.cbface.CheckedChanged += new EventHandler(
 				this.cbskin_CheckedChanged
 			);
 			//
@@ -304,7 +304,7 @@ namespace SimPe.Plugin
 				resources.GetString("ctlLoadPackage.ToolTip")
 			);
 			this.ctlLoadPackage.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.ctlLoadPackage_LinkClicked
 				);
 			//
@@ -318,7 +318,7 @@ namespace SimPe.Plugin
 				resources.GetString("llusearche.ToolTip")
 			);
 			this.llusearche.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.UseArchetype
 				);
 			//
@@ -347,7 +347,7 @@ namespace SimPe.Plugin
 				this.cbskin,
 				resources.GetString("cbskin.ToolTip")
 			);
-			this.cbskin.CheckedChanged += new System.EventHandler(
+			this.cbskin.CheckedChanged += new EventHandler(
 				this.cbskin_CheckedChanged
 			);
 			//
@@ -368,7 +368,7 @@ namespace SimPe.Plugin
 			this.lvskin.MultiSelect = false;
 			this.lvskin.Name = "lvskin";
 			this.lvskin.UseCompatibleStateImageBehavior = false;
-			this.lvskin.SelectedIndexChanged += new System.EventHandler(
+			this.lvskin.SelectedIndexChanged += new EventHandler(
 				this.lvskin_SelectedIndexChanged
 			);
 			//
@@ -381,7 +381,7 @@ namespace SimPe.Plugin
 			// opd
 			//
 			this.opd.DefaultExt = "package";
-			this.opd.FileOk += new System.ComponentModel.CancelEventHandler(
+			this.opd.FileOk += new CancelEventHandler(
 				this.opd_FileOk
 			);
 			//
@@ -390,7 +390,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbgals, "cbgals");
 			this.cbgals.Name = "cbgals";
 			this.cbgals.UseVisualStyleBackColor = true;
-			this.cbgals.CheckedChanged += new System.EventHandler(
+			this.cbgals.CheckedChanged += new EventHandler(
 				this.genderFilter_CheckedChanged
 			);
 			//
@@ -399,7 +399,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbmens, "cbmens");
 			this.cbmens.Name = "cbmens";
 			this.cbmens.UseVisualStyleBackColor = true;
-			this.cbmens.CheckedChanged += new System.EventHandler(
+			this.cbmens.CheckedChanged += new EventHandler(
 				this.genderFilter_CheckedChanged
 			);
 			//
@@ -408,7 +408,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbadults, "cbadults");
 			this.cbadults.Name = "cbadults";
 			this.cbadults.UseVisualStyleBackColor = true;
-			this.cbadults.CheckedChanged += new System.EventHandler(
+			this.cbadults.CheckedChanged += new EventHandler(
 				this.genderFilter_CheckedChanged
 			);
 			//
@@ -416,7 +416,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.cbTownie, "cbTownie");
 			this.cbTownie.Name = "cbTownie";
-			this.cbTownie.CheckedChanged += new System.EventHandler(
+			this.cbTownie.CheckedChanged += new EventHandler(
 				this.genderFilter_CheckedChanged
 			);
 			//
@@ -424,7 +424,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.cbNpc, "cbNpc");
 			this.cbNpc.Name = "cbNpc";
-			this.cbNpc.CheckedChanged += new System.EventHandler(
+			this.cbNpc.CheckedChanged += new EventHandler(
 				this.genderFilter_CheckedChanged
 			);
 			//
@@ -452,10 +452,10 @@ namespace SimPe.Plugin
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pbpatient)).EndInit();
+			((ISupportInitialize)(this.pbpatient)).EndInit();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pbarche)).EndInit();
+			((ISupportInitialize)(this.pbarche)).EndInit();
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox3.PerformLayout();
 			this.ResumeLayout(false);
@@ -463,7 +463,7 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		protected void AddImage(SimPe.PackedFiles.Wrapper.ExtSDesc sdesc)
+		protected void AddImage(PackedFiles.Wrapper.ExtSDesc sdesc)
 		{
 			if (sdesc.HasImage) // if (sdesc.Image != null) -Chris H
 			{
@@ -485,7 +485,7 @@ namespace SimPe.Plugin
 			return sdesc.FamilyInstance < 0x7fff && sdesc.FamilyInstance >= 0x7f00;
 		}
 
-		protected void AddSim(SimPe.PackedFiles.Wrapper.ExtSDesc sdesc)
+		protected void AddSim(PackedFiles.Wrapper.ExtSDesc sdesc)
 		{
 			if (!sdesc.AvailableCharacterData)
 			{
@@ -587,14 +587,14 @@ namespace SimPe.Plugin
 				skinfiles = new Hashtable();
 				ArrayList tones = new ArrayList();
 				FileTable.FileIndex.Load();
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
 					FileTable.FileIndex.FindFile(Data.MetaData.GZPS, true);
 				foreach (
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
+					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
 				)
 				{
-					SimPe.PackedFiles.Wrapper.Cpf skin =
-						new SimPe.PackedFiles.Wrapper.Cpf();
+					PackedFiles.Wrapper.Cpf skin =
+						new PackedFiles.Wrapper.Cpf();
 					skin.ProcessData(item);
 					if (
 						(skin.GetSaveItem("type").StringValue == "skin")
@@ -645,7 +645,7 @@ namespace SimPe.Plugin
 								tones.Add(st);
 							}
 
-							SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] idr =
+							Interfaces.Scenegraph.IScenegraphFileIndexItem[] idr =
 								FileTable.FileIndex.FindFile(
 									0xAC506764,
 									item.FileDescriptor.Group,
@@ -654,7 +654,7 @@ namespace SimPe.Plugin
 								);
 							if (idr.Length > 0)
 							{
-								SimPe.Plugin.RefFile reffile = new RefFile();
+								RefFile reffile = new RefFile();
 								reffile.ProcessData(idr[0]);
 
 								ListViewItem lvi = new ListViewItem(
@@ -675,11 +675,11 @@ namespace SimPe.Plugin
 								{
 									if (pfd.Type == Data.MetaData.TXMT)
 									{
-										SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] txmts =
+										Interfaces.Scenegraph.IScenegraphFileIndexItem[] txmts =
 											FileTable.FileIndex.FindFile(pfd, null);
 										if (txmts.Length > 0)
 										{
-											SimPe.Plugin.Rcol rcol = new GenericRcol(
+											Rcol rcol = new GenericRcol(
 												null,
 												false
 											);
@@ -692,7 +692,7 @@ namespace SimPe.Plugin
 													"stdMatBaseTextureName"
 												).Value + "_txtr";
 
-											SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem txtri =
+											Interfaces.Scenegraph.IScenegraphFileIndexItem txtri =
 												FileTable.FileIndex.FindFileByName(
 													txtrname,
 													Data.MetaData.TXTR,
@@ -740,19 +740,19 @@ namespace SimPe.Plugin
 			Application.UseWaitCursor = false;
 		}
 
-		SimPe.Interfaces.Files.IPackedFileDescriptor pfd;
+		Interfaces.Files.IPackedFileDescriptor pfd;
 		Interfaces.IProviderRegistry prov;
-		SimPe.Interfaces.Files.IPackageFile ngbh;
+		Interfaces.Files.IPackageFile ngbh;
 
 		public Interfaces.Plugin.IToolResult Execute(
-			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			ref SimPe.Interfaces.Files.IPackageFile package,
+			ref Interfaces.Files.IPackedFileDescriptor pfd,
+			ref Interfaces.Files.IPackageFile package,
 			Interfaces.IProviderRegistry prov
 		)
 		{
 			this.Cursor = Cursors.WaitCursor;
 
-			SimPe.Plugin.Idno idno = SimPe.Plugin.Idno.FromPackage(package);
+			Idno idno = SimPe.Plugin.Idno.FromPackage(package);
 			if (idno != null)
 			{
 				this.lbUbi.Visible = (idno.Type != NeighborhoodType.Normal);
@@ -783,7 +783,7 @@ namespace SimPe.Plugin
 				foreach (Interfaces.Files.IPackedFileDescriptor spfd in pfds)
 				{
 					PackedFiles.Wrapper.ExtSDesc sdesc =
-						new SimPe.PackedFiles.Wrapper.ExtSDesc();
+						new PackedFiles.Wrapper.ExtSDesc();
 					sdesc.ProcessData(spfd, package);
 					AddSim(sdesc);
 				}
@@ -808,20 +808,20 @@ namespace SimPe.Plugin
 				pfd = this.pfd;
 			}
 
-			return new Plugin.ToolResult((this.pfd != null), false);
+			return new ToolResult((this.pfd != null), false);
 		}
 
-		private void Open(object sender, System.EventArgs e)
+		private void Open(object sender, EventArgs e)
 		{
 			if (!CanDo())
 			{
 				return;
 			}
 
-			SimPe.Packages.File patient = SimPe.Packages.File.LoadFromFile(
+			Packages.File patient = SimPe.Packages.File.LoadFromFile(
 				spatient.CharacterFileName
 			);
-			SimPe.Packages.File archetype = null;
+			Packages.File archetype = null;
 			if (sarche != null)
 			{
 				archetype = SimPe.Packages.File.LoadFromFile(sarche.CharacterFileName);
@@ -843,7 +843,7 @@ namespace SimPe.Plugin
 				archetype = SimPe.Packages.File.LoadFromFile(null);
 			}
 
-			SimPe.Packages.GeneratableFile newpackage = null;
+			Packages.GeneratableFile newpackage = null;
 			PlasticSurgery ps = new PlasticSurgery(
 				ngbh,
 				patient,
@@ -940,7 +940,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SelectSim(object sender, System.EventArgs e)
+		private void SelectSim(object sender, EventArgs e)
 		{
 			this.llusearche.Enabled = false;
 			this.llusepatient.Enabled = false;
@@ -951,16 +951,16 @@ namespace SimPe.Plugin
 
 			this.llusearche.Enabled = true;
 			this.llusepatient.Enabled = !(
-				(SimPe.PackedFiles.Wrapper.ExtSDesc)lv.SelectedItems[0].Tag
+				(PackedFiles.Wrapper.ExtSDesc)lv.SelectedItems[0].Tag
 			).IsNPC;
 		}
 
-		SimPe.PackedFiles.Wrapper.SDesc spatient = null;
-		SimPe.PackedFiles.Wrapper.SDesc sarche = null;
+		PackedFiles.Wrapper.SDesc spatient = null;
+		PackedFiles.Wrapper.SDesc sarche = null;
 
 		private void UsePatient(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			this.llexport.Enabled = (spatient != null);
@@ -974,19 +974,19 @@ namespace SimPe.Plugin
 				pbpatient.Image = ilist.Images[lv.SelectedItems[0].ImageIndex];
 			}
 
-			spatient = (SimPe.PackedFiles.Wrapper.SDesc)lv.SelectedItems[0].Tag;
+			spatient = (PackedFiles.Wrapper.SDesc)lv.SelectedItems[0].Tag;
 
 			button1.Enabled =
 				(pbpatient.Image != null)
 				&& (sarche != null || this.tarcheFile != null);
-			pfd = (SimPe.Interfaces.Files.IPackedFileDescriptor)spatient.FileDescriptor;
+			pfd = (Interfaces.Files.IPackedFileDescriptor)spatient.FileDescriptor;
 			this.llexport.Enabled = (spatient != null);
 			ShowSimDetails(spatient, pgPatientDetails);
 		}
 
 		private void UseArchetype(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lv.SelectedItems.Count == 0)
@@ -1002,7 +1002,7 @@ namespace SimPe.Plugin
 			iskin.Images[0] = ImageLoader.Preview(pbarche.Image, iskin.ImageSize);
 			lvskin.Refresh();
 
-			sarche = (SimPe.PackedFiles.Wrapper.SDesc)lv.SelectedItems[0].Tag;
+			sarche = (PackedFiles.Wrapper.SDesc)lv.SelectedItems[0].Tag;
 			button1.Enabled = (pbpatient.Image != null) && (sarche != null);
 			ShowSimDetails(sarche, pgArchetypeDetails);
 		}
@@ -1011,11 +1011,11 @@ namespace SimPe.Plugin
 		{
 			try
 			{
-				SimPe.Packages.GeneratableFile patient =
+				Packages.GeneratableFile patient =
 					SimPe.Packages.GeneratableFile.LoadFromFile(
 						spatient.CharacterFileName
 					);
-				SimPe.Packages.File archetype = null;
+				Packages.File archetype = null;
 				if (sarche != null)
 				{
 					archetype = SimPe.Packages.File.LoadFromFile(
@@ -1072,7 +1072,7 @@ namespace SimPe.Plugin
 
 		private void Export(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (spatient == null)
@@ -1106,16 +1106,16 @@ namespace SimPe.Plugin
 						.Assembly.GetManifestResourceStream("SimPe.data.bin.simpe")
 				);
 
-				SimPe.Packages.PackedFileDescriptor pfd1 =
-					new SimPe.Packages.PackedFileDescriptor();
+				Packages.PackedFileDescriptor pfd1 =
+					new Packages.PackedFileDescriptor();
 				pfd1.Group = 0xffffffff;
 				pfd1.SubType = 0x00000000;
 				pfd1.Instance = 0xFF123456;
 				pfd1.Type = 0xAC506764; //3IDR
 				pfd1.UserData = br1.ReadBytes((int)br1.BaseStream.Length);
 
-				SimPe.Packages.PackedFileDescriptor pfd2 =
-					new SimPe.Packages.PackedFileDescriptor();
+				Packages.PackedFileDescriptor pfd2 =
+					new Packages.PackedFileDescriptor();
 				pfd2.Group = 0xffffffff;
 				pfd2.SubType = 0x00000000;
 				pfd2.Instance = 0xFF123456;
@@ -1130,13 +1130,13 @@ namespace SimPe.Plugin
 					spatient.CharacterFileName
 				);
 
-				SimPe.Packages.GeneratableFile source =
+				Packages.GeneratableFile source =
 					SimPe.Packages.GeneratableFile.LoadFromFile(
 						spatient.CharacterFileName
 					);
 				if (sfd.ShowDialog() == DialogResult.OK)
 				{
-					SimPe.Packages.GeneratableFile patient =
+					Packages.GeneratableFile patient =
 						SimPe.Packages.GeneratableFile.LoadFromStream(
 							(System.IO.BinaryReader)null
 						);
@@ -1157,12 +1157,12 @@ namespace SimPe.Plugin
 								|| (pfd.Type == 0xAC598EAC)
 							) //property set and 3IDR
 							{
-								SimPe.PackedFiles.Wrapper.Cpf cpf =
-									new SimPe.PackedFiles.Wrapper.Cpf();
+								PackedFiles.Wrapper.Cpf cpf =
+									new PackedFiles.Wrapper.Cpf();
 								cpf.ProcessData(pfd, patient);
 
-								SimPe.PackedFiles.Wrapper.CpfItem ci =
-									new SimPe.PackedFiles.Wrapper.CpfItem();
+								PackedFiles.Wrapper.CpfItem ci =
+									new PackedFiles.Wrapper.CpfItem();
 								ci.Name = "product";
 								ci.UIntegerValue = 0;
 								cpf.AddItem(ci, false);
@@ -1170,7 +1170,7 @@ namespace SimPe.Plugin
 								ci = cpf.GetItem("version");
 								if (ci == null)
 								{
-									ci = new SimPe.PackedFiles.Wrapper.CpfItem();
+									ci = new PackedFiles.Wrapper.CpfItem();
 									ci.Name = "version";
 									if (
 										(
@@ -1235,7 +1235,7 @@ namespace SimPe.Plugin
 
 		bool skload = false;
 
-		private void cbskin_CheckedChanged(object sender, System.EventArgs e) // Fuck
+		private void cbskin_CheckedChanged(object sender, EventArgs e) // Fuck
 		{
 			if (!skload)
 			{
@@ -1247,14 +1247,14 @@ namespace SimPe.Plugin
 			skload = true;
 		}
 
-		private void lvskin_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void lvskin_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			button1.Enabled = CanDo();
 		}
 
 		private void ctlLoadPackage_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			this.opd.InitialDirectory = System.IO.Path.Combine(
@@ -1264,7 +1264,7 @@ namespace SimPe.Plugin
 			this.opd.ShowDialog();
 		}
 
-		private void opd_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+		private void opd_FileOk(object sender, CancelEventArgs e)
 		{
 			if (!e.Cancel)
 			{
@@ -1303,7 +1303,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="archeFile"></param>
 		/// <returns>True if the provided package can be a surgery archetype, otherwise false.</returns>
-		bool CheckArchetypeFile(SimPe.Packages.File archeFile)
+		bool CheckArchetypeFile(Packages.File archeFile)
 		{
 			bool ret = false;
 			if (archeFile == null)
@@ -1320,8 +1320,8 @@ namespace SimPe.Plugin
 				0xAC598EACu, //AGED
 				0xCCCEF852u //LxNR, Face
 			};
-								   // For now we disregard the user options, and consider
-								   // all these types mandatory.
+			// For now we disregard the user options, and consider
+			// all these types mandatory.
 			for (
 				int i = 0;
 				i < list.Count && (ret = ContainsType(archeFile.Index, (uint)list[i]));
@@ -1393,7 +1393,7 @@ namespace SimPe.Plugin
 				foreach (Interfaces.Files.IPackedFileDescriptor spfd in pfds)
 				{
 					PackedFiles.Wrapper.ExtSDesc sdesc =
-						new SimPe.PackedFiles.Wrapper.ExtSDesc();
+						new PackedFiles.Wrapper.ExtSDesc();
 					sdesc.ProcessData(spfd, ngbh);
 					AddSim(sdesc);
 				}
@@ -1413,7 +1413,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void genderFilter_CheckedChanged(object sender, System.EventArgs e)
+		private void genderFilter_CheckedChanged(object sender, EventArgs e)
 		{
 			this.cbgals.Enabled = !this.cbmens.Checked;
 			this.cbmens.Enabled = !this.cbgals.Checked;
@@ -1423,14 +1423,14 @@ namespace SimPe.Plugin
 			}
 		}
 
-		void ShowSimDetails(SimPe.PackedFiles.Wrapper.SDesc sim, PropertyGrid pg)
+		void ShowSimDetails(PackedFiles.Wrapper.SDesc sim, PropertyGrid pg)
 		{
-			SimPe.Packages.File package = SimPe.Packages.File.LoadFromFile(
+			Packages.File package = SimPe.Packages.File.LoadFromFile(
 				sim.CharacterFileName
 			);
 			if (package != null)
 			{
-				SimPe.Interfaces.Files.IPackedFileDescriptor pfdAged = package.FindFile(
+				Interfaces.Files.IPackedFileDescriptor pfdAged = package.FindFile(
 					0xAC598EAC,
 					0,
 					SimPe.Data.MetaData.LOCAL_GROUP,
@@ -1438,8 +1438,8 @@ namespace SimPe.Plugin
 				);
 				if (pfdAged != null)
 				{
-					SimPe.PackedFiles.Wrapper.Cpf aged =
-						new SimPe.PackedFiles.Wrapper.Cpf();
+					PackedFiles.Wrapper.Cpf aged =
+						new PackedFiles.Wrapper.Cpf();
 					aged.ProcessData(pfdAged, package, true);
 
 					SimInfo nfo = new SimInfo(
@@ -1452,9 +1452,9 @@ namespace SimPe.Plugin
 			}
 		}
 
-		void ShowSimDetails(SimPe.Packages.File package, PropertyGrid pg)
+		void ShowSimDetails(Packages.File package, PropertyGrid pg)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfdAged = package.FindFile(
+			Interfaces.Files.IPackedFileDescriptor pfdAged = package.FindFile(
 				0xAC598EAC,
 				0,
 				SimPe.Data.MetaData.LOCAL_GROUP,
@@ -1462,8 +1462,8 @@ namespace SimPe.Plugin
 			);
 			if (pfdAged != null)
 			{
-				SimPe.PackedFiles.Wrapper.Cpf aged =
-					new SimPe.PackedFiles.Wrapper.Cpf();
+				PackedFiles.Wrapper.Cpf aged =
+					new PackedFiles.Wrapper.Cpf();
 				aged.ProcessData(pfdAged, package, true);
 
 				SimInfo nfo = new SimInfo(
@@ -1536,13 +1536,13 @@ namespace SimPe.Plugin
 	/// </summary>
 	internal sealed class SimInfo
 	{
-		SimPe.PackedFiles.Wrapper.Cpf ageData;
+		PackedFiles.Wrapper.Cpf ageData;
 
 		[Category("General")]
-		public SimPe.Data.Ages Age => (SimPe.Data.Ages)ageData.GetItem("age").UIntegerValue;
+		public Data.Ages Age => (Data.Ages)ageData.GetItem("age").UIntegerValue;
 
 		[Category("General")]
-		public SimPe.Data.SimGender Gender => (SimPe.Data.SimGender)ageData.GetItem("gender").UIntegerValue;
+		public Data.SimGender Gender => (Data.SimGender)ageData.GetItem("gender").UIntegerValue;
 
 		[Category("General")]
 		public string Name
@@ -1572,7 +1572,7 @@ namespace SimPe.Plugin
 					)
 				);
 
-		public SimInfo(SimPe.PackedFiles.Wrapper.Cpf aged, string filename, string name)
+		public SimInfo(PackedFiles.Wrapper.Cpf aged, string filename, string name)
 		{
 			if (aged == null)
 			{

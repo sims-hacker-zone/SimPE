@@ -48,7 +48,7 @@ namespace SimPe
 			if (srl != null)
 			{
 				foreach (
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem loaded in srl.loaded
+					Interfaces.Scenegraph.IScenegraphFileIndexItem loaded in srl.loaded
 				)
 				{
 					srl.RefreshUI(loaded);
@@ -57,13 +57,13 @@ namespace SimPe
 		}
 
 		public static void Refresh(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii
+			Interfaces.Scenegraph.IScenegraphFileIndexItem fii
 		)
 		{
 			if (srl != null)
 			{
 				foreach (
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem loaded in srl.loaded.Keys
+					Interfaces.Scenegraph.IScenegraphFileIndexItem loaded in srl.loaded.Keys
 				)
 				{
 					if (
@@ -77,7 +77,7 @@ namespace SimPe
 			}
 		}
 
-		public void RefreshUI(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii)
+		public void RefreshUI(Interfaces.Scenegraph.IScenegraphFileIndexItem fii)
 		{
 			TD.SandDock.DockControl doc = this.GetDocument(fii);
 			if (doc == null)
@@ -85,8 +85,8 @@ namespace SimPe
 				return;
 			}
 
-			SimPe.Interfaces.Plugin.IFileWrapper wrp =
-				(SimPe.Interfaces.Plugin.IFileWrapper)doc.Tag;
+			Interfaces.Plugin.IFileWrapper wrp =
+				(Interfaces.Plugin.IFileWrapper)doc.Tag;
 			if (UnloadWrapper(wrp))
 			{
 				wrp.ProcessData(fii);
@@ -116,8 +116,8 @@ namespace SimPe
 		/// </summary>
 		/// <param name="fii"></param>
 		/// <returns></returns>
-		public SimPe.Interfaces.Plugin.IFileWrapper GetWrapper(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii
+		public Interfaces.Plugin.IFileWrapper GetWrapper(
+			Interfaces.Scenegraph.IScenegraphFileIndexItem fii
 		)
 		{
 			if (fii == null)
@@ -126,14 +126,14 @@ namespace SimPe
 			}
 
 			//try by Type
-			SimPe.Interfaces.Plugin.IFileWrapper wrapper =
-				(SimPe.Interfaces.Plugin.IFileWrapper)
+			Interfaces.Plugin.IFileWrapper wrapper =
+				(Interfaces.Plugin.IFileWrapper)
 					FileTable.WrapperRegistry.FindHandler(fii.FileDescriptor.Type);
 
 			//try by Signature
 			if (wrapper == null)
 			{
-				SimPe.Interfaces.Files.IPackedFile pf = pkg.Package.Read(
+				Interfaces.Files.IPackedFile pf = pkg.Package.Read(
 					fii.FileDescriptor
 				);
 				wrapper = FileTable.WrapperRegistry.FindHandler(
@@ -150,8 +150,8 @@ namespace SimPe
 		/// <param name="fii"></param>
 		/// <returns></returns>
 		public void LoadWrapper(
-			ref SimPe.Interfaces.Plugin.IFileWrapper wrapper,
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii
+			ref Interfaces.Plugin.IFileWrapper wrapper,
+			Interfaces.Scenegraph.IScenegraphFileIndexItem fii
 		)
 		{
 			if (wrapper != null)
@@ -171,7 +171,7 @@ namespace SimPe
 		/// <param name="overload">Replace the currently active Document Tab with the new one</param>
 		/// <returns>true, if the Plugin was loaded</returns>
 		public bool AddResource(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii,
+			Interfaces.Scenegraph.IScenegraphFileIndexItem fii,
 			bool overload
 		)
 		{
@@ -185,7 +185,7 @@ namespace SimPe
 		/// <param name="reload"></param>
 		/// <returns>true, if a Document was highlighted</returns>
 		bool FocusResource(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii,
+			Interfaces.Scenegraph.IScenegraphFileIndexItem fii,
 			bool reload
 		)
 		{
@@ -200,8 +200,8 @@ namespace SimPe
 						return false;
 					}
 
-					SimPe.Interfaces.Plugin.IFileWrapper wrp =
-						(SimPe.Interfaces.Plugin.IFileWrapper)doc.Tag;
+					Interfaces.Plugin.IFileWrapper wrp =
+						(Interfaces.Plugin.IFileWrapper)doc.Tag;
 					if (UnloadWrapper(wrp))
 					{
 						wrp.ProcessData(fii);
@@ -221,7 +221,7 @@ namespace SimPe
 		/// <param name="wrapper"></param>
 		/// <returns>true, if the Wrapper was unloaded or allows Multiple Instances</returns>
 		bool UnloadSingleInstanceWrappers(
-			SimPe.Interfaces.Plugin.IFileWrapper wrapper,
+			Interfaces.Plugin.IFileWrapper wrapper,
 			ref bool overload
 		)
 		{
@@ -235,8 +235,8 @@ namespace SimPe
 				string id = wrapper.GetType().ToString();
 				if (single.ContainsKey(id))
 				{
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem oldfii =
-						(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem)
+					Interfaces.Scenegraph.IScenegraphFileIndexItem oldfii =
+						(Interfaces.Scenegraph.IScenegraphFileIndexItem)
 							single[id];
 					if (!this.CloseDocument(oldfii))
 					{
@@ -259,8 +259,8 @@ namespace SimPe
 		/// <param name="overload">Replace the currently active Document Tab with the new one</param>
 		/// <returns>true, if the Resource was Presented succesfull</returns>
 		bool Present(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii,
-			SimPe.Interfaces.Plugin.IFileWrapper wrapper,
+			Interfaces.Scenegraph.IScenegraphFileIndexItem fii,
+			Interfaces.Plugin.IFileWrapper wrapper,
 			bool overload
 		)
 		{
@@ -309,11 +309,11 @@ namespace SimPe
 
 				wrapper.FileDescriptor.Deleted += new EventHandler(DeletedDescriptor);
 				wrapper.FileDescriptor.ChangedUserData +=
-					new SimPe.Events.PackedFileChanged(FileDescriptor_ChangedUserData);
+					new Events.PackedFileChanged(FileDescriptor_ChangedUserData);
 
 				doc.Text = wrapper.ResourceName;
 
-				SimPe.Interfaces.Plugin.IPackedFileUI uiHandler = wrapper.UIHandler;
+				Interfaces.Plugin.IPackedFileUI uiHandler = wrapper.UIHandler;
 				Control pan = uiHandler == null ? null : wrapper.UIHandler.GUIHandle;
 				if (pan != null)
 				{
@@ -380,7 +380,7 @@ namespace SimPe
 		/// <param name="overload">Replace the currently active Document Tab with the new one</param>
 		/// <returns>true, if the Plugin was loaded</returns>
 		public bool AddResource(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii,
+			Interfaces.Scenegraph.IScenegraphFileIndexItem fii,
 			bool reload,
 			bool overload
 		)
@@ -403,7 +403,7 @@ namespace SimPe
 			}
 
 			//get the Wrapper
-			SimPe.Interfaces.Plugin.IFileWrapper wrapper = GetWrapper(fii);
+			Interfaces.Plugin.IFileWrapper wrapper = GetWrapper(fii);
 
 			//unload if only one instance can be loaded
 			if (!UnloadSingleInstanceWrappers(wrapper, ref overload))
@@ -435,7 +435,7 @@ namespace SimPe
 		/// <param name="fii">The Resource you want to select</param>
 		/// <returns>true, if that resource was found</returns>
 		public bool SelectResource(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii
+			Interfaces.Scenegraph.IScenegraphFileIndexItem fii
 		)
 		{
 			if (fii == null)
@@ -474,7 +474,7 @@ namespace SimPe
 		/// <param name="fii">The Resource you want to select</param>
 		/// <returns>the Document that contains the PluginView for the passed Resource (null if none)</returns>
 		public TD.SandDock.DockControl GetDocument(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii
+			Interfaces.Scenegraph.IScenegraphFileIndexItem fii
 		)
 		{
 			if (loaded.ContainsKey(fii))
@@ -491,13 +491,13 @@ namespace SimPe
 		/// <param name="pfd">The Resource you want to select</param>
 		/// <returns>the Document that contains the PluginView for the passed Resource (null if none)</returns>
 		public TD.SandDock.DockControl GetDocument(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
 			foreach (TD.SandDock.DockControl doc in loaded.Values)
 			{
-				SimPe.Interfaces.Plugin.IFileWrapper wrapper =
-					(SimPe.Interfaces.Plugin.IFileWrapper)doc.Tag;
+				Interfaces.Plugin.IFileWrapper wrapper =
+					(Interfaces.Plugin.IFileWrapper)doc.Tag;
 				if (wrapper != null)
 				{
 					if (wrapper.FileDescriptor == pfd)
@@ -514,13 +514,13 @@ namespace SimPe
 		/// </summary>
 		/// <param name="doc"></param>
 		/// <returns></returns>
-		public SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem GetResourceFromDocument(
+		public Interfaces.Scenegraph.IScenegraphFileIndexItem GetResourceFromDocument(
 			TD.SandDock.DockControl doc
 		)
 		{
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii = null;
+			Interfaces.Scenegraph.IScenegraphFileIndexItem fii = null;
 			foreach (
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem localfii in loaded.Keys
+				Interfaces.Scenegraph.IScenegraphFileIndexItem localfii in loaded.Keys
 			)
 			{
 				if (loaded[localfii] == doc)
@@ -539,8 +539,8 @@ namespace SimPe
 		/// <param name="fii"></param>
 		/// <param name="wrapper"></param>
 		public void RemoveResource(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii,
-			SimPe.Interfaces.Plugin.IFileWrapper wrapper
+			Interfaces.Scenegraph.IScenegraphFileIndexItem fii,
+			Interfaces.Plugin.IFileWrapper wrapper
 		)
 		{
 			if (fii != null)
@@ -560,7 +560,7 @@ namespace SimPe
 		/// <returns>true, if the Document was closed</returns>
 		public bool CloseDocument(TD.SandDock.DockControl doc)
 		{
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii =
+			Interfaces.Scenegraph.IScenegraphFileIndexItem fii =
 				GetResourceFromDocument(doc);
 			if (fii != null)
 			{
@@ -578,7 +578,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="fii">the Reource represented by the Document</param>
 		/// <returns>true, if the Document was closed</returns>
-		bool CloseDocument(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii)
+		bool CloseDocument(Interfaces.Scenegraph.IScenegraphFileIndexItem fii)
 		{
 			bool remain = false;
 			TD.SandDock.DockControl doc = (TD.SandDock.DockControl)loaded[fii];
@@ -614,14 +614,14 @@ namespace SimPe
 		{
 			ArrayList keys = new ArrayList();
 			foreach (
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem s in loaded.Keys
+				Interfaces.Scenegraph.IScenegraphFileIndexItem s in loaded.Keys
 			)
 			{
 				keys.Add(s);
 			}
 
 			bool remain = false;
-			foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem k in keys)
+			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem k in keys)
 			{
 				remain |= !CloseDocument(k);
 			}
@@ -642,14 +642,14 @@ namespace SimPe
 		{
 			bool commited = true;
 			foreach (
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem k in loaded.Keys
+				Interfaces.Scenegraph.IScenegraphFileIndexItem k in loaded.Keys
 			)
 			{
 				TD.SandDock.DockControl doc = GetDocument(k);
 				if (doc != null)
 				{
-					SimPe.Interfaces.Plugin.IFileWrapper wrapper =
-						(SimPe.Interfaces.Plugin.IFileWrapper)doc.Tag;
+					Interfaces.Plugin.IFileWrapper wrapper =
+						(Interfaces.Plugin.IFileWrapper)doc.Tag;
 					commited &= UnloadWrapper(wrapper);
 				}
 			}
@@ -696,14 +696,14 @@ namespace SimPe
 		/// <returns>true, if the Wrapper was unloaded completley (false if User decided to answer with Cancel)</returns>
 		bool UnloadWrapper(TD.SandDock.DockControl doc)
 		{
-			SimPe.Interfaces.Plugin.IFileWrapper wrapper =
-				(SimPe.Interfaces.Plugin.IFileWrapper)doc.Tag;
+			Interfaces.Plugin.IFileWrapper wrapper =
+				(Interfaces.Plugin.IFileWrapper)doc.Tag;
 			bool multi = wrapper.AllowMultipleInstances;
 			bool res = UnloadWrapper(wrapper);
 			if (res)
 			{
 				//doc.Controls.Clear();
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii =
+				Interfaces.Scenegraph.IScenegraphFileIndexItem fii =
 					this.GetResourceFromDocument(doc);
 				RemoveResource(fii, wrapper);
 
@@ -731,7 +731,7 @@ namespace SimPe
 		/// <remarks>When there are uncommited changes, the Method will
 		/// Prompt the User
 		/// if the changes should be commited</remarks>
-		bool UnloadWrapper(SimPe.Interfaces.Plugin.IFileWrapper wrapper)
+		bool UnloadWrapper(Interfaces.Plugin.IFileWrapper wrapper)
 		{
 			if (wrapper == null)
 			{
@@ -740,11 +740,11 @@ namespace SimPe
 
 			if (
 				wrapper.GetType().GetInterface("IPackedFileSaveExtension", false)
-				== typeof(SimPe.Interfaces.Plugin.Internal.IPackedFileSaveExtension)
+				== typeof(Interfaces.Plugin.Internal.IPackedFileSaveExtension)
 			)
 			{
-				SimPe.Interfaces.Plugin.Internal.IPackedFileSaveExtension wrp =
-					(SimPe.Interfaces.Plugin.Internal.IPackedFileSaveExtension)wrapper;
+				Interfaces.Plugin.Internal.IPackedFileSaveExtension wrp =
+					(Interfaces.Plugin.Internal.IPackedFileSaveExtension)wrapper;
 				if ((wrp.Changed))
 				{
 					MessageBoxButtons mbb = MessageBoxButtons.YesNoCancel;
@@ -799,12 +799,12 @@ namespace SimPe
 			return true;
 		}
 
-		void UnlinkWrapper(SimPe.Interfaces.Plugin.IFileWrapper wrapper)
+		void UnlinkWrapper(Interfaces.Plugin.IFileWrapper wrapper)
 		{
 			if (wrapper.FileDescriptor != null)
 			{
 				wrapper.FileDescriptor.ChangedUserData -=
-					new SimPe.Events.PackedFileChanged(FileDescriptor_ChangedUserData);
+					new Events.PackedFileChanged(FileDescriptor_ChangedUserData);
 				wrapper.FileDescriptor.Deleted -= new EventHandler(DeletedDescriptor);
 			}
 
@@ -824,15 +824,15 @@ namespace SimPe
 			TD.SandDock.DockControlClosingEventArgs e
 		)
 		{
-			SimPe.Interfaces.Plugin.IFileWrapper wrapper =
-				(SimPe.Interfaces.Plugin.IFileWrapper)
+			Interfaces.Plugin.IFileWrapper wrapper =
+				(Interfaces.Plugin.IFileWrapper)
 					((TD.SandDock.DockControl)sender).Tag;
 			bool multi = wrapper.AllowMultipleInstances;
 			e.Cancel = !UnloadWrapper(wrapper);
 
 			if (!e.Cancel)
 			{
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii =
+				Interfaces.Scenegraph.IScenegraphFileIndexItem fii =
 					GetResourceFromDocument((TD.SandDock.DockControl)sender);
 				RemoveResource(fii, wrapper);
 
@@ -852,8 +852,8 @@ namespace SimPe
 		/// <param name="e"></param>
 		private void DeletedDescriptor(object sender, EventArgs e)
 		{
-			SimPe.Packages.PackedFileDescriptor pfd =
-				(SimPe.Packages.PackedFileDescriptor)sender;
+			Packages.PackedFileDescriptor pfd =
+				(Packages.PackedFileDescriptor)sender;
 			TD.SandDock.DockControl doc = this.GetDocument(pfd);
 			if (doc != null)
 			{
@@ -866,16 +866,16 @@ namespace SimPe
 		/// </summary>
 		/// <param name="sender"></param>
 		private void FileDescriptor_ChangedUserData(
-			SimPe.Interfaces.Files.IPackedFileDescriptor sender
+			Interfaces.Files.IPackedFileDescriptor sender
 		)
 		{
-			SimPe.Packages.PackedFileDescriptor pfd =
-				(SimPe.Packages.PackedFileDescriptor)sender;
+			Packages.PackedFileDescriptor pfd =
+				(Packages.PackedFileDescriptor)sender;
 			TD.SandDock.DockControl doc = this.GetDocument(pfd);
 			if (doc != null)
 			{
-				SimPe.Interfaces.Plugin.IFileWrapper wrapper =
-					(SimPe.Interfaces.Plugin.IFileWrapper)doc.Tag;
+				Interfaces.Plugin.IFileWrapper wrapper =
+					(Interfaces.Plugin.IFileWrapper)doc.Tag;
 				if (wrapper != null)
 				{
 					if (wrapper.Package != null)
@@ -886,7 +886,7 @@ namespace SimPe
 							flname = "";
 						}
 
-						System.Windows.Forms.DialogResult dr = System
+						DialogResult dr = System
 							.Windows
 							.Forms
 							.DialogResult

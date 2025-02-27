@@ -844,7 +844,7 @@ namespace SimPe.Geometry
 				MakeRobust();
 				this.MakeUnitQuaternion();
 
-				Matrixd m = new SimPe.Geometry.Matrixd(4, 4);
+				Matrixd m = new Matrixd(4, 4);
 				double sx = Math.Pow(X, 2);
 				double sy = Math.Pow(Y, 2);
 				double sz = Math.Pow(Z, 2);

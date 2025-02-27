@@ -5,7 +5,7 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class InstallerForm : System.Windows.Forms.Form
 	{
-		private SimPe.Plugin.InstallerControl installerControl1;
+		private InstallerControl installerControl1;
 
 		/// <summary>
 		/// Required designer variable.
@@ -50,7 +50,7 @@ namespace SimPe.Plugin
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(InstallerForm)
 				);
-			this.installerControl1 = new SimPe.Plugin.InstallerControl();
+			this.installerControl1 = new InstallerControl();
 			this.SuspendLayout();
 			//
 			// installerControl1

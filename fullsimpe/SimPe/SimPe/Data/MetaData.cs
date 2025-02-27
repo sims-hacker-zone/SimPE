@@ -2630,7 +2630,7 @@ namespace SimPe.Data
 			GUIDsToBody.Add("b9a94827-7544-450c-a8f4-6f643ae89a71", 0x1e);
 			GUIDsToBody.Add("6eea47c7-8a35-4be7-9242-dcd082f53b55", 0x1e);
 
-			foreach (SimPe.Interfaces.IAlias a in AddonSkins)
+			foreach (Interfaces.IAlias a in AddonSkins)
 			{
 				GUIDsToBody.Add(a.Name, a.Id);
 			}
@@ -2854,7 +2854,7 @@ namespace SimPe.Data
 		/// </summary>
 
 		static SemiGlobalListing sgl;
-		public static System.Collections.Generic.List<SemiGlobalAlias> SemiGlobals
+		public static List<SemiGlobalAlias> SemiGlobals
 		{
 			get
 			{
@@ -2914,10 +2914,10 @@ namespace SimPe.Data
 		/// <returns>The TypeAlias representing the Type</returns>
 		public static TypeAlias FindTypeAlias(UInt32 type)
 		{
-			Data.TypeAlias a = Helper.TGILoader.GetByType(type);
+			TypeAlias a = Helper.TGILoader.GetByType(type);
 			if (a == null)
 			{
-				a = new Data.TypeAlias(
+				a = new TypeAlias(
 					false,
 					Localization.Manager.GetString("unk") + "",
 					type,
@@ -2948,12 +2948,12 @@ namespace SimPe.Data
 			return new Alias(0xffffffff, name.ToLower());
 		}
 
-		static SimPe.Interfaces.IAlias[] addonskins;
+		static Interfaces.IAlias[] addonskins;
 
 		/// <summary>
 		/// Returns a List of Userdefined Add On Skins
 		/// </summary>
-		public static SimPe.Interfaces.IAlias[] AddonSkins
+		public static Interfaces.IAlias[] AddonSkins
 		{
 			get
 			{
@@ -2976,15 +2976,15 @@ namespace SimPe.Data
 		static ArrayList rcollist;
 		static ArrayList complist;
 		static Hashtable agelist;
-		static System.Collections.Generic.List<uint> cachedft;
+		static List<uint> cachedft;
 
-		public static System.Collections.Generic.List<uint> CachedFileTypes
+		public static List<uint> CachedFileTypes
 		{
 			get
 			{
 				if (cachedft == null)
 				{
-					cachedft = new System.Collections.Generic.List<uint>();
+					cachedft = new List<uint>();
 
 					foreach (uint i in RcolList)
 					{
@@ -3053,7 +3053,7 @@ namespace SimPe.Data
 		/// <summary>
 		/// translates the Ages from a SDesc to a Property Set age
 		/// </summary>
-		public static Data.Ages AgeTranslation(MetaData.LifeSections age)
+		public static Ages AgeTranslation(LifeSections age)
 		{
 			agelist = new Hashtable();
 			if (age == MetaData.LifeSections.Adult)

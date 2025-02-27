@@ -27,16 +27,16 @@ namespace SimPe.Plugin.Tool.Dockable
 	/// </summary>
 	public partial class FinderDock
 		: Ambertation.Windows.Forms.DockPanel,
-			SimPe.Interfaces.IDockableTool,
-			SimPe.Interfaces.IFinderResultGui
+			Interfaces.IDockableTool,
+			Interfaces.IFinderResultGui
 	{
-		SimPe.ThemeManager tm;
-		SimPe.ColumnSorter sorter;
+		ThemeManager tm;
+		ColumnSorter sorter;
 
 		System.Collections.Generic.List<string> packages;
 		System.Threading.Thread[] threads;
 		private Panel pnContainer;
-		SimPe.Interfaces.AFinderTool searchtool;
+		Interfaces.AFinderTool searchtool;
 		int runningthreads;
 
 		public FinderDock()
@@ -65,7 +65,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			CreateThreads(false);
 
 			foreach (
-				SimPe.Interfaces.AFinderTool tl in Finder.FinderToolRegistry.Global.CreateToolInstances(
+				Interfaces.AFinderTool tl in Finder.FinderToolRegistry.Global.CreateToolInstances(
 					this
 				)
 			)
@@ -98,9 +98,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			return this;
 		}
 
-		public event SimPe.Events.ChangedResourceEvent ShowNewResource;
+		public event Events.ChangedResourceEvent ShowNewResource;
 
-		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es)
+		public void RefreshDock(object sender, Events.ResourceEventArgs es)
 		{
 			//code here
 		}
@@ -124,7 +124,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				return;
 			}
 
-			Control c = ((SimPe.Interfaces.AFinderTool)cbTask.SelectedItem).SearchGui;
+			Control c = ((Interfaces.AFinderTool)cbTask.SelectedItem).SearchGui;
 			pnContainer.Height = c.Height;
 			pnContainer.Controls.Add(c);
 			c.Parent = pnContainer;
@@ -165,8 +165,8 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		protected void CreateColums(
-			System.Collections.ArrayList strings,
-			System.Collections.ArrayList widths
+			ArrayList strings,
+			ArrayList widths
 		)
 		{
 			for (int i = 0; i < strings.Count; i++)
@@ -233,7 +233,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		private void lv_ColumnClick(
 			object sender,
-			System.Windows.Forms.ColumnClickEventArgs e
+			ColumnClickEventArgs e
 		)
 		{
 			((ListView)sender).ListViewItemSorter = sorter;
@@ -248,7 +248,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		#region IToolExt Member
 
-		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
+		public Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 
 		public System.Drawing.Image Icon => this.TabImage;
 
@@ -275,8 +275,8 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		public void AddResult(
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			Interfaces.Files.IPackageFile pkg,
+			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
 			AddResult(null, pkg, pfd);
@@ -284,14 +284,14 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		delegate void InvokeAddResult(
 			string group,
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			Interfaces.Files.IPackageFile pkg,
+			Interfaces.Files.IPackedFileDescriptor pfd
 		);
 
 		public void AddResult(
 			string group,
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			Interfaces.Files.IPackageFile pkg,
+			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
 			if (this.InvokeRequired)
@@ -309,8 +309,8 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		protected void InvokedAddResult(
 			string group,
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			Interfaces.Files.IPackageFile pkg,
+			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
 			lock (lv)
@@ -377,7 +377,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 		}
 
-		public void StartSearch(SimPe.Interfaces.AFinderTool sender)
+		public void StartSearch(Interfaces.AFinderTool sender)
 		{
 			StopSearch();
 			lock (packages)
@@ -485,7 +485,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 				if (System.IO.File.Exists(name))
 				{
-					SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(name);
+					Packages.File pkg = SimPe.Packages.File.LoadFromFile(name);
 					searchtool.SearchPackage(pkg);
 				}
 			}

@@ -303,7 +303,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new SimPe.PackedFiles.UserInterface.SRel();
+			return new UserInterface.SRel();
 		}
 
 		/// <summary>

@@ -6,7 +6,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for IdnoForm.
 	/// </summary>
-	public class IdnoForm : System.Windows.Forms.Form
+	public class IdnoForm : Form
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -40,41 +40,41 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.pnidno = new System.Windows.Forms.Panel();
-			this.cbquadd = new System.Windows.Forms.ComboBox();
-			this.cbquadc = new System.Windows.Forms.ComboBox();
-			this.cbquadb = new System.Windows.Forms.ComboBox();
-			this.cbquada = new System.Windows.Forms.ComboBox();
-			this.label9 = new System.Windows.Forms.Label();
-			this.tbidflags = new System.Windows.Forms.TextBox();
-			this.label8 = new System.Windows.Forms.Label();
-			this.tbsubep = new System.Windows.Forms.TextBox();
-			this.cbsubtp = new System.Windows.Forms.ComboBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.tbreqep = new System.Windows.Forms.TextBox();
-			this.cbreqtp = new System.Windows.Forms.ComboBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.lbVer = new System.Windows.Forms.Label();
-			this.llunique = new System.Windows.Forms.LinkLabel();
-			this.label5 = new System.Windows.Forms.Label();
-			this.tbversion = new System.Windows.Forms.TextBox();
-			this.tbsubname = new System.Windows.Forms.TextBox();
-			this.tbname = new System.Windows.Forms.TextBox();
-			this.tbid = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.tbtype = new System.Windows.Forms.TextBox();
-			this.cbtype = new System.Windows.Forms.ComboBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.panel2 = new System.Windows.Forms.Panel();
+			this.pnidno = new Panel();
+			this.cbquadd = new ComboBox();
+			this.cbquadc = new ComboBox();
+			this.cbquadb = new ComboBox();
+			this.cbquada = new ComboBox();
+			this.label9 = new Label();
+			this.tbidflags = new TextBox();
+			this.label8 = new Label();
+			this.tbsubep = new TextBox();
+			this.cbsubtp = new ComboBox();
+			this.label7 = new Label();
+			this.tbreqep = new TextBox();
+			this.cbreqtp = new ComboBox();
+			this.label6 = new Label();
+			this.lbVer = new Label();
+			this.llunique = new LinkLabel();
+			this.label5 = new Label();
+			this.tbversion = new TextBox();
+			this.tbsubname = new TextBox();
+			this.tbname = new TextBox();
+			this.tbid = new TextBox();
+			this.label4 = new Label();
+			this.label3 = new Label();
+			this.label2 = new Label();
+			this.tbtype = new TextBox();
+			this.cbtype = new ComboBox();
+			this.label1 = new Label();
+			this.panel2 = new Panel();
 			this.pnidno.SuspendLayout();
 			this.SuspendLayout();
 			//
 			// pnidno
 			//
 			this.pnidno.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -137,7 +137,7 @@ namespace SimPe.Plugin
 			this.cbquadd.Name = "cbquadd";
 			this.cbquadd.Size = new System.Drawing.Size(68, 21);
 			this.cbquadd.TabIndex = 42;
-			this.cbquadd.SelectedIndexChanged += new System.EventHandler(
+			this.cbquadd.SelectedIndexChanged += new EventHandler(
 				this.ChangSeasod
 			);
 			//
@@ -152,7 +152,7 @@ namespace SimPe.Plugin
 			this.cbquadc.Name = "cbquadc";
 			this.cbquadc.Size = new System.Drawing.Size(68, 21);
 			this.cbquadc.TabIndex = 41;
-			this.cbquadc.SelectedIndexChanged += new System.EventHandler(
+			this.cbquadc.SelectedIndexChanged += new EventHandler(
 				this.ChangSeasoc
 			);
 			//
@@ -167,7 +167,7 @@ namespace SimPe.Plugin
 			this.cbquadb.Name = "cbquadb";
 			this.cbquadb.Size = new System.Drawing.Size(68, 21);
 			this.cbquadb.TabIndex = 40;
-			this.cbquadb.SelectedIndexChanged += new System.EventHandler(
+			this.cbquadb.SelectedIndexChanged += new EventHandler(
 				this.ChangSeasob
 			);
 			//
@@ -182,7 +182,7 @@ namespace SimPe.Plugin
 			this.cbquada.Name = "cbquada";
 			this.cbquada.Size = new System.Drawing.Size(68, 21);
 			this.cbquada.TabIndex = 39;
-			this.cbquada.SelectedIndexChanged += new System.EventHandler(
+			this.cbquada.SelectedIndexChanged += new EventHandler(
 				this.ChangSeasoa
 			);
 			//
@@ -209,7 +209,7 @@ namespace SimPe.Plugin
 			this.tbidflags.Name = "tbidflags";
 			this.tbidflags.Size = new System.Drawing.Size(84, 21);
 			this.tbidflags.TabIndex = 37;
-			this.tbidflags.TextChanged += new System.EventHandler(this.Change);
+			this.tbidflags.TextChanged += new EventHandler(this.Change);
 			//
 			// label8
 			//
@@ -248,7 +248,7 @@ namespace SimPe.Plugin
 			this.cbsubtp.Name = "cbsubtp";
 			this.cbsubtp.Size = new System.Drawing.Size(190, 21);
 			this.cbsubtp.TabIndex = 44;
-			this.cbsubtp.SelectedIndexChanged += new System.EventHandler(
+			this.cbsubtp.SelectedIndexChanged += new EventHandler(
 				this.SelectAtp
 			);
 			//
@@ -289,7 +289,7 @@ namespace SimPe.Plugin
 			this.cbreqtp.Name = "cbreqtp";
 			this.cbreqtp.Size = new System.Drawing.Size(190, 21);
 			this.cbreqtp.TabIndex = 45;
-			this.cbreqtp.SelectedIndexChanged += new System.EventHandler(
+			this.cbreqtp.SelectedIndexChanged += new EventHandler(
 				this.SelectRtp
 			);
 			//
@@ -336,7 +336,7 @@ namespace SimPe.Plugin
 			this.llunique.TabStop = true;
 			this.llunique.Text = "make unique";
 			this.llunique.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.MakeUnique
 				);
 			//
@@ -373,7 +373,7 @@ namespace SimPe.Plugin
 			this.tbsubname.Size = new System.Drawing.Size(84, 21);
 			this.tbsubname.TabIndex = 25;
 			this.tbsubname.Text = "U000";
-			this.tbsubname.TextChanged += new System.EventHandler(this.Change);
+			this.tbsubname.TextChanged += new EventHandler(this.Change);
 			//
 			// tbname
 			//
@@ -382,7 +382,7 @@ namespace SimPe.Plugin
 			this.tbname.Size = new System.Drawing.Size(88, 21);
 			this.tbname.TabIndex = 23;
 			this.tbname.Text = "N000";
-			this.tbname.TextChanged += new System.EventHandler(this.Change);
+			this.tbname.TextChanged += new EventHandler(this.Change);
 			//
 			// tbid
 			//
@@ -391,7 +391,7 @@ namespace SimPe.Plugin
 			this.tbid.Size = new System.Drawing.Size(40, 21);
 			this.tbid.TabIndex = 22;
 			this.tbid.Text = "0";
-			this.tbid.TextChanged += new System.EventHandler(this.Change);
+			this.tbid.TextChanged += new EventHandler(this.Change);
 			//
 			// label4
 			//
@@ -460,7 +460,7 @@ namespace SimPe.Plugin
 			this.cbtype.Name = "cbtype";
 			this.cbtype.Size = new System.Drawing.Size(190, 21);
 			this.cbtype.TabIndex = 17;
-			this.cbtype.SelectedIndexChanged += new System.EventHandler(
+			this.cbtype.SelectedIndexChanged += new EventHandler(
 				this.SelectType
 			);
 			//
@@ -484,7 +484,7 @@ namespace SimPe.Plugin
 			// panel2
 			//
 			this.panel2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -494,7 +494,7 @@ namespace SimPe.Plugin
 				)
 			);
 			this.panel2.Location = new System.Drawing.Point(0, 0);
-			this.panel2.Margin = new System.Windows.Forms.Padding(0);
+			this.panel2.Margin = new Padding(0);
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(877, 24);
 			this.panel2.TabIndex = 0;
@@ -519,21 +519,21 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		internal System.Windows.Forms.Panel pnidno;
-		internal System.Windows.Forms.TextBox tbtype;
-		internal System.Windows.Forms.ComboBox cbtype;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Panel panel2;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
-		internal System.Windows.Forms.Label label4;
-		internal System.Windows.Forms.TextBox tbid;
-		internal System.Windows.Forms.TextBox tbname;
-		internal System.Windows.Forms.TextBox tbsubname;
-		internal System.Windows.Forms.TextBox tbversion;
-		private System.Windows.Forms.Label label5;
-		internal System.Windows.Forms.LinkLabel llunique;
-		internal System.Windows.Forms.Label lbVer;
+		internal Panel pnidno;
+		internal TextBox tbtype;
+		internal ComboBox cbtype;
+		private Label label1;
+		private Panel panel2;
+		private Label label2;
+		private Label label3;
+		internal Label label4;
+		internal TextBox tbid;
+		internal TextBox tbname;
+		internal TextBox tbsubname;
+		internal TextBox tbversion;
+		private Label label5;
+		internal LinkLabel llunique;
+		internal Label lbVer;
 		internal TextBox tbsubep;
 		internal ComboBox cbsubtp;
 		internal Label label7;
@@ -550,7 +550,7 @@ namespace SimPe.Plugin
 
 		internal Idno wrapper;
 
-		private void SelectType(object sender, System.EventArgs e)
+		private void SelectType(object sender, EventArgs e)
 		{
 			if (cbtype.SelectedIndex < 0)
 			{
@@ -574,7 +574,7 @@ namespace SimPe.Plugin
 			wrapper.Changed = true;
 		}
 
-		private void SelectRtp(object sender, System.EventArgs e)
+		private void SelectRtp(object sender, EventArgs e)
 		{
 			if (cbreqtp.SelectedIndex < 0)
 			{
@@ -595,7 +595,7 @@ namespace SimPe.Plugin
 			// SelectRep(sender, e);
 		}
 
-		private void SelectAtp(object sender, System.EventArgs e)
+		private void SelectAtp(object sender, EventArgs e)
 		{
 			if (cbsubtp.SelectedIndex < 0)
 			{
@@ -615,7 +615,7 @@ namespace SimPe.Plugin
 			wrapper.Changed = true;
 		}
 
-		private void ChangSeasoa(object sender, System.EventArgs e)
+		private void ChangSeasoa(object sender, EventArgs e)
 		{
 			if (cbquada.SelectedIndex < 0)
 			{
@@ -632,7 +632,7 @@ namespace SimPe.Plugin
 			wrapper.Changed = true;
 		}
 
-		private void ChangSeasob(object sender, System.EventArgs e)
+		private void ChangSeasob(object sender, EventArgs e)
 		{
 			if (cbquadb.SelectedIndex < 0)
 			{
@@ -649,7 +649,7 @@ namespace SimPe.Plugin
 			wrapper.Changed = true;
 		}
 
-		private void ChangSeasoc(object sender, System.EventArgs e)
+		private void ChangSeasoc(object sender, EventArgs e)
 		{
 			if (cbquadc.SelectedIndex < 0)
 			{
@@ -666,7 +666,7 @@ namespace SimPe.Plugin
 			wrapper.Changed = true;
 		}
 
-		private void ChangSeasod(object sender, System.EventArgs e)
+		private void ChangSeasod(object sender, EventArgs e)
 		{
 			if (cbquadd.SelectedIndex < 0)
 			{
@@ -685,7 +685,7 @@ namespace SimPe.Plugin
 
 		private void MakeUnique(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			try
@@ -699,7 +699,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void Change(object sender, System.EventArgs e)
+		private void Change(object sender, EventArgs e)
 		{
 			if (this.Tag != null)
 			{
@@ -724,7 +724,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void button1_Click(object sender, System.EventArgs e)
+		private void button1_Click(object sender, EventArgs e)
 		{
 			wrapper.SynchronizeUserData();
 		}

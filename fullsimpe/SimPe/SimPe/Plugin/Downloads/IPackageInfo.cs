@@ -32,7 +32,7 @@ namespace SimPe.Plugin.Downloads
 		}
 
 		Image GetThumbnail();
-		Image GetThumbnail(System.Drawing.Size sz);
+		Image GetThumbnail(Size sz);
 
 		/// <summary>
 		/// Returns the gameThumbnail or a SimPe Created 3D Preview, or null
@@ -106,7 +106,7 @@ namespace SimPe.Plugin.Downloads
 		/// <summary>
 		/// Type of the Package content
 		/// </summary>
-		SimPe.Cache.PackageType Type
+		Cache.PackageType Type
 		{
 			get;
 		}

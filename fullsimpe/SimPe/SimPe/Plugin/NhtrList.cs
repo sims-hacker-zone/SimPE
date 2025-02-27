@@ -13,7 +13,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for TileItem.
 	/// </summary>
-	public class NhtrList : System.Collections.IEnumerable
+	public class NhtrList : IEnumerable
 	{
 		/*static int[] LENGTHS = new int[] {37, 123, 164, 37};*/
 

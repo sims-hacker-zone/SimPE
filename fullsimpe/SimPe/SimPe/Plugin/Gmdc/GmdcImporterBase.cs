@@ -236,7 +236,7 @@ namespace SimPe.Plugin.Gmdc
 					g.Elements[index].Values.Add(null);
 				}
 
-				g.Elements[index].Values[slotindex] = val as Gmdc.GmdcElementValueBase;
+				g.Elements[index].Values[slotindex] = val as GmdcElementValueBase;
 			}
 		}
 
@@ -249,7 +249,7 @@ namespace SimPe.Plugin.Gmdc
 		void FillMissingElements(
 			ImportedGroup g,
 			int index,
-			Gmdc.GmdcElementValueBase val
+			GmdcElementValueBase val
 		)
 		{
 			if (val == null)
@@ -392,9 +392,9 @@ namespace SimPe.Plugin.Gmdc
 			if (g.KeepOrder)
 			{
 				///Make sure all slots in the Elemnts are set
-				FillMissingElements(g, 0, new Gmdc.GmdcElementValueThreeFloat(0, 0, 0));
-				FillMissingElements(g, 1, new Gmdc.GmdcElementValueThreeFloat(0, 0, 0));
-				FillMissingElements(g, 2, new Gmdc.GmdcElementValueTwoFloat(0, 0));
+				FillMissingElements(g, 0, new GmdcElementValueThreeFloat(0, 0, 0));
+				FillMissingElements(g, 1, new GmdcElementValueThreeFloat(0, 0, 0));
+				FillMissingElements(g, 2, new GmdcElementValueTwoFloat(0, 0));
 			}
 		}
 

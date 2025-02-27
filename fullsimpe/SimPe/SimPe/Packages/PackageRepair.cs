@@ -24,9 +24,9 @@ namespace SimPe.Packages
 {
 	public class IndexDetails
 	{
-		protected SimPe.Interfaces.Files.IPackageHeader hd;
+		protected Interfaces.Files.IPackageHeader hd;
 
-		internal IndexDetails(SimPe.Interfaces.Files.IPackageHeader hd)
+		internal IndexDetails(Interfaces.Files.IPackageHeader hd)
 		{
 			this.hd = hd;
 		}
@@ -45,7 +45,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns or Sets the Type of the Package
 		/// </summary>
-		public SimPe.Data.MetaData.IndexTypes IndexType
+		public Data.MetaData.IndexTypes IndexType
 		{
 			get
 			{
@@ -102,7 +102,7 @@ namespace SimPe.Packages
 
 	public class IndexDetailsAdvanced : IndexDetails
 	{
-		internal IndexDetailsAdvanced(SimPe.Interfaces.Files.IPackageHeader hd)
+		internal IndexDetailsAdvanced(Interfaces.Files.IPackageHeader hd)
 			: base(hd) { }
 
 		public string IndexOffset => "0x" + Helper.HexString(hd.Index.Offset);
@@ -137,10 +137,10 @@ namespace SimPe.Packages
 	/// </summary>
 	public class PackageRepair : System.IDisposable
 	{
-		SimPe.Interfaces.Files.IPackageFile pkg;
+		Interfaces.Files.IPackageFile pkg;
 		static ArrayList types;
 
-		public PackageRepair(SimPe.Interfaces.Files.IPackageFile pkg)
+		public PackageRepair(Interfaces.Files.IPackageFile pkg)
 		{
 			this.pkg = pkg;
 			InitTypes();
@@ -149,8 +149,8 @@ namespace SimPe.Packages
 		void InitTypes()
 		{
 			types = new ArrayList();
-			SimPe.Data.TypeAlias[] ftis = Helper.TGILoader.FileTypes;
-			foreach (SimPe.Data.TypeAlias ta in ftis)
+			Data.TypeAlias[] ftis = Helper.TGILoader.FileTypes;
+			foreach (Data.TypeAlias ta in ftis)
 			{
 				types.Add(ta.Id);
 			}
@@ -166,7 +166,7 @@ namespace SimPe.Packages
 			for (int i = 0; i < 4; i++)
 			{
 				br.BaseStream.Seek(pos + i * step, SeekOrigin.Begin);
-				SimPe.Packages.PackedFileDescriptor pfd = new PackedFileDescriptor();
+				PackedFileDescriptor pfd = new PackedFileDescriptor();
 				pfd.LoadFromStream(pkg.Header, br);
 
 				if (!types.Contains(pfd.Type))
@@ -292,13 +292,13 @@ namespace SimPe.Packages
 
 		public IndexDetailsAdvanced IndexDetailsAdvanced => new IndexDetailsAdvanced(pkg.Header);
 
-		public SimPe.Packages.GeneratableFile Package
+		public GeneratableFile Package
 		{
 			get
 			{
-				if (pkg is SimPe.Packages.GeneratableFile)
+				if (pkg is GeneratableFile)
 				{
-					return (SimPe.Packages.GeneratableFile)pkg;
+					return (GeneratableFile)pkg;
 				}
 
 				return null;

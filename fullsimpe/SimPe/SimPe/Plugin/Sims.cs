@@ -26,31 +26,31 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for Sims.
 	/// </summary>
-	public class Sims : System.Windows.Forms.Form
+	public class Sims : Form
 	{
-		private System.Windows.Forms.ImageList ilist;
-		private System.Windows.Forms.ListView lv;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.ToolTip toolTip1;
-		private System.Windows.Forms.ImageList iListSmall;
-		private System.Windows.Forms.ColumnHeader columnHeader1;
-		private System.Windows.Forms.ColumnHeader columnHeader2;
-		private System.Windows.Forms.ColumnHeader columnHeader3;
-		private System.Windows.Forms.ColumnHeader columnHeader4;
-		private System.Windows.Forms.ColumnHeader columnHeader5;
-		private System.Windows.Forms.ColumnHeader columnHeader6;
-		private System.Windows.Forms.ColumnHeader columnHeader7;
-		private System.Windows.Forms.ColumnHeader columnHeader8;
-		private System.Windows.Forms.ColumnHeader columnHeader9;
-		private System.Windows.Forms.Label lbUbi;
-		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Panel panel2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Panel panel3;
-		private System.Windows.Forms.ColumnHeader chKind;
-		private System.Windows.Forms.ColumnHeader columnHeader10;
+		private ImageList ilist;
+		private ListView lv;
+		private Button button1;
+		private ToolTip toolTip1;
+		private ImageList iListSmall;
+		private ColumnHeader columnHeader1;
+		private ColumnHeader columnHeader2;
+		private ColumnHeader columnHeader3;
+		private ColumnHeader columnHeader4;
+		private ColumnHeader columnHeader5;
+		private ColumnHeader columnHeader6;
+		private ColumnHeader columnHeader7;
+		private ColumnHeader columnHeader8;
+		private ColumnHeader columnHeader9;
+		private Label lbUbi;
+		private Panel panel1;
+		private Label label1;
+		private Label label2;
+		private Panel panel2;
+		private Label label3;
+		private Panel panel3;
+		private ColumnHeader chKind;
+		private ColumnHeader columnHeader10;
 		private System.ComponentModel.IContainer components;
 		private FlowLayoutPanel flowLayoutPanel1;
 		internal CheckBox cbNpc;
@@ -107,39 +107,39 @@ namespace SimPe.Plugin
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(Sims));
-			this.ilist = new System.Windows.Forms.ImageList(this.components);
-			this.lv = new System.Windows.Forms.ListView();
-			this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
-			this.chKind = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader10 = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader9 = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader11 = new System.Windows.Forms.ColumnHeader();
-			this.iListSmall = new System.Windows.Forms.ImageList(this.components);
-			this.button1 = new System.Windows.Forms.Button();
-			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-			this.lbUbi = new System.Windows.Forms.Label();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.label3 = new System.Windows.Forms.Label();
-			this.panel3 = new System.Windows.Forms.Panel();
-			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-			this.ckbPlayable = new System.Windows.Forms.CheckBox();
-			this.cbTownie = new System.Windows.Forms.CheckBox();
-			this.cbNpc = new System.Windows.Forms.CheckBox();
-			this.ckbUnEditable = new System.Windows.Forms.CheckBox();
-			this.cbgals = new System.Windows.Forms.CheckBox();
-			this.cbmens = new System.Windows.Forms.CheckBox();
-			this.cbadults = new System.Windows.Forms.CheckBox();
-			this.cbdetail = new System.Windows.Forms.CheckBox();
+			this.ilist = new ImageList(this.components);
+			this.lv = new ListView();
+			this.columnHeader1 = new ColumnHeader();
+			this.columnHeader2 = new ColumnHeader();
+			this.columnHeader3 = new ColumnHeader();
+			this.chKind = new ColumnHeader();
+			this.columnHeader10 = new ColumnHeader();
+			this.columnHeader4 = new ColumnHeader();
+			this.columnHeader5 = new ColumnHeader();
+			this.columnHeader6 = new ColumnHeader();
+			this.columnHeader9 = new ColumnHeader();
+			this.columnHeader7 = new ColumnHeader();
+			this.columnHeader8 = new ColumnHeader();
+			this.columnHeader11 = new ColumnHeader();
+			this.iListSmall = new ImageList(this.components);
+			this.button1 = new Button();
+			this.toolTip1 = new ToolTip(this.components);
+			this.lbUbi = new Label();
+			this.panel1 = new Panel();
+			this.label1 = new Label();
+			this.label2 = new Label();
+			this.panel2 = new Panel();
+			this.label3 = new Label();
+			this.panel3 = new Panel();
+			this.flowLayoutPanel1 = new FlowLayoutPanel();
+			this.ckbPlayable = new CheckBox();
+			this.cbTownie = new CheckBox();
+			this.cbNpc = new CheckBox();
+			this.ckbUnEditable = new CheckBox();
+			this.cbgals = new CheckBox();
+			this.cbmens = new CheckBox();
+			this.cbadults = new CheckBox();
+			this.cbdetail = new CheckBox();
 			this.flowLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
 			//
@@ -153,7 +153,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.lv, "lv");
 			this.lv.Columns.AddRange(
-				new System.Windows.Forms.ColumnHeader[]
+				new ColumnHeader[]
 				{
 					this.columnHeader1,
 					this.columnHeader2,
@@ -178,8 +178,8 @@ namespace SimPe.Plugin
 			this.lv.StateImageList = this.iListSmall;
 			this.lv.UseCompatibleStateImageBehavior = false;
 			this.lv.View = System.Windows.Forms.View.Details;
-			this.lv.DoubleClick += new System.EventHandler(this.Open);
-			this.lv.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(
+			this.lv.DoubleClick += new EventHandler(this.Open);
+			this.lv.ColumnClick += new ColumnClickEventHandler(
 				this.SortList
 			);
 			//
@@ -241,7 +241,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.button1, "button1");
 			this.button1.Name = "button1";
-			this.button1.Click += new System.EventHandler(this.Open);
+			this.button1.Click += new EventHandler(this.Open);
 			//
 			// lbUbi
 			//
@@ -302,7 +302,7 @@ namespace SimPe.Plugin
 			this.ckbPlayable.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.ckbPlayable.Name = "ckbPlayable";
 			this.ckbPlayable.UseVisualStyleBackColor = true;
-			this.ckbPlayable.CheckedChanged += new System.EventHandler(
+			this.ckbPlayable.CheckedChanged += new EventHandler(
 				this.ckbFilter_CheckedChanged
 			);
 			//
@@ -310,7 +310,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.cbTownie, "cbTownie");
 			this.cbTownie.Name = "cbTownie";
-			this.cbTownie.CheckedChanged += new System.EventHandler(
+			this.cbTownie.CheckedChanged += new EventHandler(
 				this.ckbFilter_CheckedChanged
 			);
 			//
@@ -318,7 +318,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.cbNpc, "cbNpc");
 			this.cbNpc.Name = "cbNpc";
-			this.cbNpc.CheckedChanged += new System.EventHandler(
+			this.cbNpc.CheckedChanged += new EventHandler(
 				this.ckbFilter_CheckedChanged
 			);
 			//
@@ -327,7 +327,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.ckbUnEditable, "ckbUnEditable");
 			this.ckbUnEditable.Name = "ckbUnEditable";
 			this.ckbUnEditable.UseVisualStyleBackColor = true;
-			this.ckbUnEditable.CheckedChanged += new System.EventHandler(
+			this.ckbUnEditable.CheckedChanged += new EventHandler(
 				this.ckbFilter_CheckedChanged
 			);
 			//
@@ -336,7 +336,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbgals, "cbgals");
 			this.cbgals.Name = "cbgals";
 			this.cbgals.UseVisualStyleBackColor = true;
-			this.cbgals.CheckedChanged += new System.EventHandler(
+			this.cbgals.CheckedChanged += new EventHandler(
 				this.ckbFilter_CheckedChanged
 			);
 			//
@@ -345,7 +345,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbmens, "cbmens");
 			this.cbmens.Name = "cbmens";
 			this.cbmens.UseVisualStyleBackColor = true;
-			this.cbmens.CheckedChanged += new System.EventHandler(
+			this.cbmens.CheckedChanged += new EventHandler(
 				this.ckbFilter_CheckedChanged
 			);
 			//
@@ -354,7 +354,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbadults, "cbadults");
 			this.cbadults.Name = "cbadults";
 			this.cbadults.UseVisualStyleBackColor = true;
-			this.cbadults.CheckedChanged += new System.EventHandler(
+			this.cbadults.CheckedChanged += new EventHandler(
 				this.ckbFilter_CheckedChanged
 			);
 			//
@@ -364,7 +364,7 @@ namespace SimPe.Plugin
 			this.cbdetail.Checked = true;
 			this.cbdetail.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.cbdetail.Name = "cbdetail";
-			this.cbdetail.CheckedChanged += new System.EventHandler(
+			this.cbdetail.CheckedChanged += new EventHandler(
 				this.checkBox1_CheckedChanged
 			);
 			//
@@ -395,7 +395,7 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		protected void AddImage(SimPe.PackedFiles.Wrapper.ExtSDesc sdesc)
+		protected void AddImage(PackedFiles.Wrapper.ExtSDesc sdesc)
 		{
 			Image img = null;
 			if (sdesc.Unlinked != 0x00 || !sdesc.AvailableCharacterData || sdesc.IsNPC)
@@ -422,7 +422,7 @@ namespace SimPe.Plugin
 					);
 				}
 
-				System.Drawing.Graphics g = Graphics.FromImage(img);
+				Graphics g = Graphics.FromImage(img);
 				g.CompositingQuality = System
 					.Drawing
 					.Drawing2D
@@ -505,7 +505,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		protected void AddSim(SimPe.PackedFiles.Wrapper.ExtSDesc sdesc)
+		protected void AddSim(PackedFiles.Wrapper.ExtSDesc sdesc)
 		{
 			AddImage(sdesc);
 			ListViewItem lvi = new ListViewItem();
@@ -709,7 +709,7 @@ namespace SimPe.Plugin
 				{
 					Application.DoEvents();
 					PackedFiles.Wrapper.ExtSDesc sdesc =
-						new SimPe.PackedFiles.Wrapper.ExtSDesc();
+						new PackedFiles.Wrapper.ExtSDesc();
 					sdesc.ProcessData(spfd, package);
 
 					bool doAdd = false;
@@ -769,12 +769,12 @@ namespace SimPe.Plugin
 				== Data.MetaData.LifeSections.Adult;
 		}
 
-		SimPe.Interfaces.Files.IPackedFileDescriptor pfd;
-		SimPe.Interfaces.Files.IPackageFile package;
+		Interfaces.Files.IPackedFileDescriptor pfd;
+		Interfaces.Files.IPackageFile package;
 
 		public Interfaces.Plugin.IToolResult Execute(
-			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			ref SimPe.Interfaces.Files.IPackageFile package,
+			ref Interfaces.Files.IPackedFileDescriptor pfd,
+			ref Interfaces.Files.IPackageFile package,
 			Interfaces.IProviderRegistry prov
 		)
 		{
@@ -783,7 +783,7 @@ namespace SimPe.Plugin
 			lv.ListViewItemSorter = sorter;
 			this.Cursor = Cursors.WaitCursor;
 
-			SimPe.Plugin.Idno idno = SimPe.Plugin.Idno.FromPackage(package);
+			Idno idno = SimPe.Plugin.Idno.FromPackage(package);
 			if (idno != null)
 			{
 				this.lbUbi.Visible = (idno.Type != NeighborhoodType.Normal);
@@ -807,22 +807,22 @@ namespace SimPe.Plugin
 				pfd = this.pfd;
 			}
 
-			return new Plugin.ToolResult((this.pfd != null), false);
+			return new ToolResult((this.pfd != null), false);
 		}
 
-		private void Open(object sender, System.EventArgs e)
+		private void Open(object sender, EventArgs e)
 		{
 			if (lv.SelectedItems.Count < 1)
 			{
 				return;
 			}
 
-			pfd = (SimPe.Interfaces.Files.IPackedFileDescriptor)
+			pfd = (Interfaces.Files.IPackedFileDescriptor)
 				((PackedFiles.Wrapper.SDesc)lv.SelectedItems[0].Tag).FileDescriptor;
 			Close();
 		}
 
-		private void checkBox1_CheckedChanged(object sender, System.EventArgs e)
+		private void checkBox1_CheckedChanged(object sender, EventArgs e)
 		{
 			if (cbdetail.Checked)
 			{
@@ -838,7 +838,7 @@ namespace SimPe.Plugin
 
 		private void SortList(
 			object sender,
-			System.Windows.Forms.ColumnClickEventArgs e
+			ColumnClickEventArgs e
 		)
 		{
 			if (sorter.CurrentColumn == e.Column)
@@ -861,7 +861,7 @@ namespace SimPe.Plugin
 			lv.Sort();
 		}
 
-		private void ckbFilter_CheckedChanged(object sender, System.EventArgs e)
+		private void ckbFilter_CheckedChanged(object sender, EventArgs e)
 		{
 			this.cbgals.Enabled = !this.cbmens.Checked;
 			this.cbmens.Enabled = !this.cbgals.Checked;

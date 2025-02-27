@@ -56,7 +56,7 @@ namespace SimPe.Plugin
 			this.lb.Name = "lb";
 			this.lb.Size = new System.Drawing.Size(304, 104);
 			this.lb.TabIndex = 0;
-			this.lb.SelectedIndexChanged += new System.EventHandler(
+			this.lb.SelectedIndexChanged += new EventHandler(
 				this.lb_SelectedIndexChanged
 			);
 			//
@@ -99,7 +99,7 @@ namespace SimPe.Plugin
 			lb.Items.Clear();
 			if (items != null)
 			{
-				foreach (Plugin.BnfoCustomerItem item in items)
+				foreach (BnfoCustomerItem item in items)
 				{
 					lb.Items.Add(item);
 				}
@@ -115,9 +115,9 @@ namespace SimPe.Plugin
 			base.Refresh();
 		}
 
-		public event System.EventHandler SelectedItemChanged;
+		public event EventHandler SelectedItemChanged;
 
-		private void lb_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void lb_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (SelectedItemChanged != null)
 			{

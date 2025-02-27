@@ -30,41 +30,41 @@ namespace SimPe.Plugin.TabPage
 		//System.Windows.Forms.UserControl
 		System.Windows.Forms.TabPage
 	{
-		internal System.Windows.Forms.ListBox lb_srn_b;
-		internal System.Windows.Forms.ListBox lb_srn_a;
-		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.GroupBox groupBox2;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.LinkLabel ll_srn_dela;
-		private System.Windows.Forms.LinkLabel ll_srn_delb;
-		private System.Windows.Forms.LinkLabel linkLabel3;
-		private System.Windows.Forms.LinkLabel linkLabel4;
-		private System.Windows.Forms.GroupBox groupBox3;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.Label label10;
-		private System.Windows.Forms.Label label11;
-		private System.Windows.Forms.Label label12;
-		internal System.Windows.Forms.TextBox tb_srn_uk2;
-		internal System.Windows.Forms.TextBox tb_srn_uk1;
-		internal System.Windows.Forms.TextBox tb_srn_uk4;
-		internal System.Windows.Forms.TextBox tb_srn_uk3;
-		internal System.Windows.Forms.TextBox tb_srn_uk6;
-		internal System.Windows.Forms.TextBox tb_srn_uk5;
-		internal System.Windows.Forms.TextBox tb_srn_kind;
-		internal System.Windows.Forms.TextBox tb_srn_data;
-		private System.Windows.Forms.TextBox tb_srn_b_name;
-		private System.Windows.Forms.TextBox tb_srn_b_1;
-		private System.Windows.Forms.TextBox tb_srn_a_2;
-		private System.Windows.Forms.TextBox tb_srn_a_1;
-		internal System.Windows.Forms.TextBox tb_srn_ver;
-		private System.Windows.Forms.Label label24;
+		internal ListBox lb_srn_b;
+		internal ListBox lb_srn_a;
+		private GroupBox groupBox1;
+		private GroupBox groupBox2;
+		private Label label1;
+		private Label label2;
+		private Label label3;
+		private Label label4;
+		private LinkLabel ll_srn_dela;
+		private LinkLabel ll_srn_delb;
+		private LinkLabel linkLabel3;
+		private LinkLabel linkLabel4;
+		private GroupBox groupBox3;
+		private Label label5;
+		private Label label6;
+		private Label label7;
+		private Label label8;
+		private Label label9;
+		private Label label10;
+		private Label label11;
+		private Label label12;
+		internal TextBox tb_srn_uk2;
+		internal TextBox tb_srn_uk1;
+		internal TextBox tb_srn_uk4;
+		internal TextBox tb_srn_uk3;
+		internal TextBox tb_srn_uk6;
+		internal TextBox tb_srn_uk5;
+		internal TextBox tb_srn_kind;
+		internal TextBox tb_srn_data;
+		private TextBox tb_srn_b_name;
+		private TextBox tb_srn_b_1;
+		private TextBox tb_srn_a_2;
+		private TextBox tb_srn_a_1;
+		internal TextBox tb_srn_ver;
+		private Label label24;
 		private System.ComponentModel.IContainer components;
 
 		public ShapeRefNode()
@@ -112,41 +112,41 @@ namespace SimPe.Plugin.TabPage
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			this.tb_srn_ver = new System.Windows.Forms.TextBox();
-			this.label24 = new System.Windows.Forms.Label();
-			this.tb_srn_data = new System.Windows.Forms.TextBox();
-			this.label12 = new System.Windows.Forms.Label();
-			this.tb_srn_kind = new System.Windows.Forms.TextBox();
-			this.label11 = new System.Windows.Forms.Label();
-			this.tb_srn_uk6 = new System.Windows.Forms.TextBox();
-			this.label9 = new System.Windows.Forms.Label();
-			this.tb_srn_uk5 = new System.Windows.Forms.TextBox();
-			this.label10 = new System.Windows.Forms.Label();
-			this.tb_srn_uk4 = new System.Windows.Forms.TextBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.tb_srn_uk3 = new System.Windows.Forms.TextBox();
-			this.label8 = new System.Windows.Forms.Label();
-			this.tb_srn_uk2 = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.tb_srn_uk1 = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.linkLabel4 = new System.Windows.Forms.LinkLabel();
-			this.tb_srn_b_name = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.tb_srn_b_1 = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.lb_srn_b = new System.Windows.Forms.ListBox();
-			this.ll_srn_delb = new System.Windows.Forms.LinkLabel();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.linkLabel3 = new System.Windows.Forms.LinkLabel();
-			this.tb_srn_a_2 = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.tb_srn_a_1 = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.lb_srn_a = new System.Windows.Forms.ListBox();
-			this.ll_srn_dela = new System.Windows.Forms.LinkLabel();
+			this.groupBox3 = new GroupBox();
+			this.tb_srn_ver = new TextBox();
+			this.label24 = new Label();
+			this.tb_srn_data = new TextBox();
+			this.label12 = new Label();
+			this.tb_srn_kind = new TextBox();
+			this.label11 = new Label();
+			this.tb_srn_uk6 = new TextBox();
+			this.label9 = new Label();
+			this.tb_srn_uk5 = new TextBox();
+			this.label10 = new Label();
+			this.tb_srn_uk4 = new TextBox();
+			this.label7 = new Label();
+			this.tb_srn_uk3 = new TextBox();
+			this.label8 = new Label();
+			this.tb_srn_uk2 = new TextBox();
+			this.label5 = new Label();
+			this.tb_srn_uk1 = new TextBox();
+			this.label6 = new Label();
+			this.groupBox2 = new GroupBox();
+			this.linkLabel4 = new LinkLabel();
+			this.tb_srn_b_name = new TextBox();
+			this.label4 = new Label();
+			this.tb_srn_b_1 = new TextBox();
+			this.label3 = new Label();
+			this.lb_srn_b = new ListBox();
+			this.ll_srn_delb = new LinkLabel();
+			this.groupBox1 = new GroupBox();
+			this.linkLabel3 = new LinkLabel();
+			this.tb_srn_a_2 = new TextBox();
+			this.label2 = new Label();
+			this.tb_srn_a_1 = new TextBox();
+			this.label1 = new Label();
+			this.lb_srn_a = new ListBox();
+			this.ll_srn_dela = new LinkLabel();
 			this.groupBox3.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox1.SuspendLayout();
@@ -167,7 +167,7 @@ namespace SimPe.Plugin.TabPage
 			// groupBox3
 			//
 			this.groupBox3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -223,7 +223,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_srn_ver.Size = new System.Drawing.Size(88, 21);
 			this.tb_srn_ver.TabIndex = 22;
 			this.tb_srn_ver.Text = "0x00000000";
-			this.tb_srn_ver.TextChanged += new System.EventHandler(
+			this.tb_srn_ver.TextChanged += new EventHandler(
 				this.SRNChangeSettings
 			);
 			//
@@ -246,7 +246,7 @@ namespace SimPe.Plugin.TabPage
 			// tb_srn_data
 			//
 			this.tb_srn_data.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -270,7 +270,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_srn_data.Size = new System.Drawing.Size(312, 48);
 			this.tb_srn_data.TabIndex = 20;
 			this.tb_srn_data.Text = "";
-			this.tb_srn_data.TextChanged += new System.EventHandler(
+			this.tb_srn_data.TextChanged += new EventHandler(
 				this.SRNChangeSettings
 			);
 			//
@@ -294,7 +294,7 @@ namespace SimPe.Plugin.TabPage
 			// tb_srn_kind
 			//
 			this.tb_srn_kind.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -315,7 +315,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_srn_kind.Size = new System.Drawing.Size(312, 21);
 			this.tb_srn_kind.TabIndex = 18;
 			this.tb_srn_kind.Text = "0x0000";
-			this.tb_srn_kind.TextChanged += new System.EventHandler(
+			this.tb_srn_kind.TextChanged += new EventHandler(
 				this.SRNChangeSettings
 			);
 			//
@@ -349,7 +349,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_srn_uk6.Size = new System.Drawing.Size(88, 21);
 			this.tb_srn_uk6.TabIndex = 16;
 			this.tb_srn_uk6.Text = "0x00000000";
-			this.tb_srn_uk6.TextChanged += new System.EventHandler(
+			this.tb_srn_uk6.TextChanged += new EventHandler(
 				this.SRNChangeSettings
 			);
 			//
@@ -383,7 +383,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_srn_uk5.Size = new System.Drawing.Size(88, 21);
 			this.tb_srn_uk5.TabIndex = 14;
 			this.tb_srn_uk5.Text = "0x00000000";
-			this.tb_srn_uk5.TextChanged += new System.EventHandler(
+			this.tb_srn_uk5.TextChanged += new EventHandler(
 				this.SRNChangeSettings
 			);
 			//
@@ -417,7 +417,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_srn_uk4.Size = new System.Drawing.Size(88, 21);
 			this.tb_srn_uk4.TabIndex = 12;
 			this.tb_srn_uk4.Text = "0x00";
-			this.tb_srn_uk4.TextChanged += new System.EventHandler(
+			this.tb_srn_uk4.TextChanged += new EventHandler(
 				this.SRNChangeSettings
 			);
 			//
@@ -451,7 +451,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_srn_uk3.Size = new System.Drawing.Size(88, 21);
 			this.tb_srn_uk3.TabIndex = 10;
 			this.tb_srn_uk3.Text = "0x00000000";
-			this.tb_srn_uk3.TextChanged += new System.EventHandler(
+			this.tb_srn_uk3.TextChanged += new EventHandler(
 				this.SRNChangeSettings
 			);
 			//
@@ -485,7 +485,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_srn_uk2.Size = new System.Drawing.Size(88, 21);
 			this.tb_srn_uk2.TabIndex = 8;
 			this.tb_srn_uk2.Text = "0x00000000";
-			this.tb_srn_uk2.TextChanged += new System.EventHandler(
+			this.tb_srn_uk2.TextChanged += new EventHandler(
 				this.SRNChangeSettings
 			);
 			//
@@ -519,7 +519,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_srn_uk1.Size = new System.Drawing.Size(88, 21);
 			this.tb_srn_uk1.TabIndex = 6;
 			this.tb_srn_uk1.Text = "0x0000";
-			this.tb_srn_uk1.TextChanged += new System.EventHandler(
+			this.tb_srn_uk1.TextChanged += new EventHandler(
 				this.SRNChangeSettings
 			);
 			//
@@ -542,7 +542,7 @@ namespace SimPe.Plugin.TabPage
 			// groupBox2
 			//
 			this.groupBox2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -578,7 +578,7 @@ namespace SimPe.Plugin.TabPage
 			// linkLabel4
 			//
 			this.linkLabel4.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -593,14 +593,14 @@ namespace SimPe.Plugin.TabPage
 			this.linkLabel4.TabStop = true;
 			this.linkLabel4.Text = "add";
 			this.linkLabel4.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.SRNItemsBAdd
 				);
 			//
 			// tb_srn_b_name
 			//
 			this.tb_srn_b_name.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -676,7 +676,7 @@ namespace SimPe.Plugin.TabPage
 			// lb_srn_b
 			//
 			this.lb_srn_b.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -701,7 +701,7 @@ namespace SimPe.Plugin.TabPage
 			// ll_srn_delb
 			//
 			this.ll_srn_delb.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -716,7 +716,7 @@ namespace SimPe.Plugin.TabPage
 			this.ll_srn_delb.TabStop = true;
 			this.ll_srn_delb.Text = "delete";
 			this.ll_srn_delb.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.SRNItemsBDelete
 				);
 			//
@@ -747,7 +747,7 @@ namespace SimPe.Plugin.TabPage
 			// linkLabel3
 			//
 			this.linkLabel3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -762,7 +762,7 @@ namespace SimPe.Plugin.TabPage
 			this.linkLabel3.TabStop = true;
 			this.linkLabel3.Text = "add";
 			this.linkLabel3.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.SRNItemsAAdd
 				);
 			//
@@ -780,7 +780,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_srn_a_2.Size = new System.Drawing.Size(88, 21);
 			this.tb_srn_a_2.TabIndex = 4;
 			this.tb_srn_a_2.Text = "0x00000000";
-			this.tb_srn_a_2.TextChanged += new System.EventHandler(
+			this.tb_srn_a_2.TextChanged += new EventHandler(
 				this.SRNChangedItemsA
 			);
 			//
@@ -814,7 +814,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_srn_a_1.Size = new System.Drawing.Size(88, 21);
 			this.tb_srn_a_1.TabIndex = 2;
 			this.tb_srn_a_1.Text = "0x0000";
-			this.tb_srn_a_1.TextChanged += new System.EventHandler(
+			this.tb_srn_a_1.TextChanged += new EventHandler(
 				this.SRNChangedItemsA
 			);
 			//
@@ -837,7 +837,7 @@ namespace SimPe.Plugin.TabPage
 			// lb_srn_a
 			//
 			this.lb_srn_a.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -858,14 +858,14 @@ namespace SimPe.Plugin.TabPage
 			this.lb_srn_a.Name = "lb_srn_a";
 			this.lb_srn_a.Size = new System.Drawing.Size(136, 88);
 			this.lb_srn_a.TabIndex = 0;
-			this.lb_srn_a.SelectedIndexChanged += new System.EventHandler(
+			this.lb_srn_a.SelectedIndexChanged += new EventHandler(
 				this.SRNSelectA
 			);
 			//
 			// ll_srn_dela
 			//
 			this.ll_srn_dela.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -880,7 +880,7 @@ namespace SimPe.Plugin.TabPage
 			this.ll_srn_dela.TabStop = true;
 			this.ll_srn_dela.Text = "delete";
 			this.ll_srn_dela.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.SRNItemsADelete
 				);
 			//
@@ -893,7 +893,7 @@ namespace SimPe.Plugin.TabPage
 		}
 		#endregion
 
-		private void SRNChangeSettings(object sender, System.EventArgs e)
+		private void SRNChangeSettings(object sender, EventArgs e)
 		{
 			if (Tag == null)
 			{
@@ -902,7 +902,7 @@ namespace SimPe.Plugin.TabPage
 
 			try
 			{
-				SimPe.Plugin.ShapeRefNode srn = (SimPe.Plugin.ShapeRefNode)Tag;
+				Plugin.ShapeRefNode srn = (Plugin.ShapeRefNode)Tag;
 
 				srn.Unknown1 = Convert.ToInt16(this.tb_srn_uk1.Text, 16);
 				srn.Unknown2 = Convert.ToInt32(this.tb_srn_uk2.Text, 16);
@@ -925,7 +925,7 @@ namespace SimPe.Plugin.TabPage
 		}
 
 		#region Select SRN Items A
-		private void SRNSelectA(object sender, System.EventArgs e)
+		private void SRNSelectA(object sender, EventArgs e)
 		{
 			if (lb_srn_a.Tag != null)
 			{
@@ -946,7 +946,7 @@ namespace SimPe.Plugin.TabPage
 				tb_srn_a_1.Text = "0x" + Helper.HexString(a.Unknown1);
 				tb_srn_a_2.Text = "0x" + Helper.HexString((uint)a.Unknown2);
 
-				SimPe.Plugin.ShapeRefNode srn = (SimPe.Plugin.ShapeRefNode)Tag;
+				Plugin.ShapeRefNode srn = (Plugin.ShapeRefNode)Tag;
 				srn.Changed = true;
 			}
 			catch (Exception)
@@ -959,7 +959,7 @@ namespace SimPe.Plugin.TabPage
 			}
 		}
 
-		private void SRNChangedItemsA(object sender, System.EventArgs e)
+		private void SRNChangedItemsA(object sender, EventArgs e)
 		{
 			if (lb_srn_a.Tag != null)
 			{
@@ -982,7 +982,7 @@ namespace SimPe.Plugin.TabPage
 
 				lb_srn_a.Items[lb_srn_a.SelectedIndex] = a;
 
-				SimPe.Plugin.ShapeRefNode srn = (SimPe.Plugin.ShapeRefNode)Tag;
+				Plugin.ShapeRefNode srn = (Plugin.ShapeRefNode)Tag;
 				srn.Changed = true;
 			}
 			catch (Exception)
@@ -997,7 +997,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void SRNItemsAAdd(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (Tag == null)
@@ -1008,7 +1008,7 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				lb_srn_a.Tag = true;
-				SimPe.Plugin.ShapeRefNode srn = (SimPe.Plugin.ShapeRefNode)Tag;
+				Plugin.ShapeRefNode srn = (Plugin.ShapeRefNode)Tag;
 				ShapeRefNodeItem_A a = new ShapeRefNodeItem_A();
 
 				tb_srn_a_1.Text = "0x" + Helper.HexString(a.Unknown1);
@@ -1031,7 +1031,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void SRNItemsADelete(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (Tag == null)
@@ -1047,7 +1047,7 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				lb_srn_a.Tag = true;
-				SimPe.Plugin.ShapeRefNode srn = (SimPe.Plugin.ShapeRefNode)Tag;
+				Plugin.ShapeRefNode srn = (Plugin.ShapeRefNode)Tag;
 				ShapeRefNodeItem_A a = (ShapeRefNodeItem_A)
 					lb_srn_a.Items[lb_srn_a.SelectedIndex];
 
@@ -1068,7 +1068,7 @@ namespace SimPe.Plugin.TabPage
 		#endregion
 
 		#region Select SRN Items B
-		private void SRNSelectB(object sender, System.EventArgs e)
+		private void SRNSelectB(object sender, EventArgs e)
 		{
 			if (lb_srn_b.Tag != null)
 			{
@@ -1089,7 +1089,7 @@ namespace SimPe.Plugin.TabPage
 				tb_srn_b_1.Text = "0x" + Helper.HexString((uint)b.Unknown1);
 				tb_srn_b_name.Text = b.Name;
 
-				SimPe.Plugin.ShapeRefNode srn = (SimPe.Plugin.ShapeRefNode)Tag;
+				Plugin.ShapeRefNode srn = (Plugin.ShapeRefNode)Tag;
 				srn.Changed = true;
 			}
 			catch (Exception)
@@ -1102,7 +1102,7 @@ namespace SimPe.Plugin.TabPage
 			}
 		}
 
-		private void SRNChangedItemsB(object sender, System.EventArgs e)
+		private void SRNChangedItemsB(object sender, EventArgs e)
 		{
 			if (lb_srn_b.Tag != null)
 			{
@@ -1124,7 +1124,7 @@ namespace SimPe.Plugin.TabPage
 				b.Name = tb_srn_b_name.Text;
 
 				lb_srn_b.Items[lb_srn_b.SelectedIndex] = b;
-				SimPe.Plugin.ShapeRefNode srn = (SimPe.Plugin.ShapeRefNode)Tag;
+				Plugin.ShapeRefNode srn = (Plugin.ShapeRefNode)Tag;
 				srn.Changed = true;
 			}
 			catch (Exception)
@@ -1139,7 +1139,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void SRNItemsBAdd(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (Tag == null)
@@ -1150,7 +1150,7 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				lb_srn_b.Tag = true;
-				SimPe.Plugin.ShapeRefNode srn = (SimPe.Plugin.ShapeRefNode)Tag;
+				Plugin.ShapeRefNode srn = (Plugin.ShapeRefNode)Tag;
 				ShapeRefNodeItem_B b = new ShapeRefNodeItem_B();
 
 				b.Unknown1 = (int)Convert.ToUInt32(tb_srn_b_1.Text, 16);
@@ -1172,7 +1172,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void SRNItemsBDelete(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (Tag == null)
@@ -1188,7 +1188,7 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				lb_srn_b.Tag = true;
-				SimPe.Plugin.ShapeRefNode srn = (SimPe.Plugin.ShapeRefNode)Tag;
+				Plugin.ShapeRefNode srn = (Plugin.ShapeRefNode)Tag;
 				ShapeRefNodeItem_B b = (ShapeRefNodeItem_B)
 					lb_srn_b.Items[lb_srn_b.SelectedIndex];
 

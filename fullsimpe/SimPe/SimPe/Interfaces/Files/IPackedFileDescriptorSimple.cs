@@ -37,7 +37,7 @@ namespace SimPe.Interfaces.Files
 		{
 			get;
 		}
-		SimPe.Data.TypeAlias TypeName
+		Data.TypeAlias TypeName
 		{
 			get;
 		}

@@ -22,7 +22,7 @@ namespace SimPe.Plugin.Tool.Dockable
 	/// <summary>
 	/// Hex to Decimal Converter Dialog
 	/// </summary>
-	public class HexDecConverterTool : SimPe.Interfaces.IDockableTool
+	public class HexDecConverterTool : Interfaces.IDockableTool
 	{
 		ResourceDock rd;
 
@@ -38,9 +38,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			return rd.dcConvert;
 		}
 
-		public event SimPe.Events.ChangedResourceEvent ShowNewResource;
+		public event Events.ChangedResourceEvent ShowNewResource;
 
-		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es)
+		public void RefreshDock(object sender, Events.ResourceEventArgs es)
 		{
 		}
 

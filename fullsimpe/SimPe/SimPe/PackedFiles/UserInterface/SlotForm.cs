@@ -27,73 +27,73 @@ namespace SimPe.PackedFiles.UserInterface
 	/// <summary>
 	/// Summary description for SlotForm.
 	/// </summary>
-	public class SlotForm : System.Windows.Forms.Form
+	public class SlotForm : Form
 	{
-		internal System.Windows.Forms.Panel pnslot;
-		private System.Windows.Forms.Panel panel4;
-		internal System.Windows.Forms.Label label12;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.TextBox tbf1;
-		private System.Windows.Forms.TextBox tbf2;
-		private System.Windows.Forms.TextBox tbf3;
-		private System.Windows.Forms.TextBox tbi1;
-		private System.Windows.Forms.TextBox tbi2;
-		private System.Windows.Forms.TextBox tbi3;
-		private System.Windows.Forms.TextBox tbi4;
-		private System.Windows.Forms.TextBox tbi5;
-		private System.Windows.Forms.Label label9;
-		internal System.Windows.Forms.ComboBox cbtype;
-		internal System.Windows.Forms.TabControl tabControl1;
-		internal System.Windows.Forms.TabPage tabPage1;
-		internal System.Windows.Forms.TabPage tabPage2;
-		internal System.Windows.Forms.TabPage tabPage3;
-		internal System.Windows.Forms.TabPage tabPage4;
-		internal System.Windows.Forms.TabPage tabPage5;
-		internal System.Windows.Forms.TabPage tabPageA;
-		internal System.Windows.Forms.TabPage tabPage6;
-		internal System.Windows.Forms.TabPage tabPage7;
-		private System.Windows.Forms.Label label10;
-		private System.Windows.Forms.TextBox tbf6;
-		private System.Windows.Forms.Label label11;
-		private System.Windows.Forms.TextBox tbf5;
-		private System.Windows.Forms.Label label13;
-		private System.Windows.Forms.TextBox tbf4;
-		private System.Windows.Forms.Label label14;
-		private System.Windows.Forms.TextBox tbi6;
-		private System.Windows.Forms.Label label15;
-		private System.Windows.Forms.TextBox tbs2;
-		private System.Windows.Forms.Label label16;
-		private System.Windows.Forms.TextBox tbs1;
-		private System.Windows.Forms.Label label17;
-		private System.Windows.Forms.TextBox tbf7;
-		private System.Windows.Forms.Label label18;
-		private System.Windows.Forms.TextBox tbf8;
-		private System.Windows.Forms.Label label19;
-		private System.Windows.Forms.TextBox tbi7;
-		private System.Windows.Forms.Label label20;
-		private System.Windows.Forms.Label label0A;
-		private System.Windows.Forms.TextBox tbi8;
-		private System.Windows.Forms.TextBox tbs3;
-		private System.Windows.Forms.Label label21;
-		private System.Windows.Forms.TextBox tbi10;
-		private System.Windows.Forms.Label label22;
-		private System.Windows.Forms.TextBox tbi9;
-		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.Label label23;
-		internal System.Windows.Forms.TextBox tbver;
-		private System.Windows.Forms.Label label24;
-		internal System.Windows.Forms.TextBox tbname;
-		internal System.Windows.Forms.ListView lv;
-		private System.Windows.Forms.LinkLabel visualStyleLinkLabel1;
-		private System.Windows.Forms.LinkLabel visualStyleLinkLabel2;
-		private System.Windows.Forms.LinkLabel visualStyleLinkLabel3;
+		internal Panel pnslot;
+		private Panel panel4;
+		internal Label label12;
+		private Label label1;
+		private Label label2;
+		private Label label3;
+		private Label label4;
+		private Label label5;
+		private Label label6;
+		private Label label7;
+		private Label label8;
+		private TextBox tbf1;
+		private TextBox tbf2;
+		private TextBox tbf3;
+		private TextBox tbi1;
+		private TextBox tbi2;
+		private TextBox tbi3;
+		private TextBox tbi4;
+		private TextBox tbi5;
+		private Label label9;
+		internal ComboBox cbtype;
+		internal TabControl tabControl1;
+		internal TabPage tabPage1;
+		internal TabPage tabPage2;
+		internal TabPage tabPage3;
+		internal TabPage tabPage4;
+		internal TabPage tabPage5;
+		internal TabPage tabPageA;
+		internal TabPage tabPage6;
+		internal TabPage tabPage7;
+		private Label label10;
+		private TextBox tbf6;
+		private Label label11;
+		private TextBox tbf5;
+		private Label label13;
+		private TextBox tbf4;
+		private Label label14;
+		private TextBox tbi6;
+		private Label label15;
+		private TextBox tbs2;
+		private Label label16;
+		private TextBox tbs1;
+		private Label label17;
+		private TextBox tbf7;
+		private Label label18;
+		private TextBox tbf8;
+		private Label label19;
+		private TextBox tbi7;
+		private Label label20;
+		private Label label0A;
+		private TextBox tbi8;
+		private TextBox tbs3;
+		private Label label21;
+		private TextBox tbi10;
+		private Label label22;
+		private TextBox tbi9;
+		private GroupBox groupBox1;
+		private Label label23;
+		internal TextBox tbver;
+		private Label label24;
+		internal TextBox tbname;
+		internal ListView lv;
+		private LinkLabel visualStyleLinkLabel1;
+		private LinkLabel visualStyleLinkLabel2;
+		private LinkLabel visualStyleLinkLabel3;
 
 		/// <summary>
 		/// Required designer variable.
@@ -134,71 +134,71 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.pnslot = new System.Windows.Forms.Panel();
-			this.visualStyleLinkLabel3 = new System.Windows.Forms.LinkLabel();
-			this.visualStyleLinkLabel2 = new System.Windows.Forms.LinkLabel();
-			this.visualStyleLinkLabel1 = new System.Windows.Forms.LinkLabel();
-			this.lv = new System.Windows.Forms.ListView();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.tbname = new System.Windows.Forms.TextBox();
-			this.label24 = new System.Windows.Forms.Label();
-			this.label23 = new System.Windows.Forms.Label();
-			this.tbver = new System.Windows.Forms.TextBox();
-			this.tabControl1 = new System.Windows.Forms.TabControl();
-			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.label14 = new System.Windows.Forms.Label();
-			this.tbi6 = new System.Windows.Forms.TextBox();
-			this.label10 = new System.Windows.Forms.Label();
-			this.tbf6 = new System.Windows.Forms.TextBox();
-			this.label11 = new System.Windows.Forms.Label();
-			this.tbf5 = new System.Windows.Forms.TextBox();
-			this.label13 = new System.Windows.Forms.Label();
-			this.tbf4 = new System.Windows.Forms.TextBox();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.label15 = new System.Windows.Forms.Label();
-			this.tbs2 = new System.Windows.Forms.TextBox();
-			this.label16 = new System.Windows.Forms.Label();
-			this.tbs1 = new System.Windows.Forms.TextBox();
-			this.tabPage3 = new System.Windows.Forms.TabPage();
-			this.label17 = new System.Windows.Forms.Label();
-			this.tbf7 = new System.Windows.Forms.TextBox();
-			this.tabPage4 = new System.Windows.Forms.TabPage();
-			this.label19 = new System.Windows.Forms.Label();
-			this.tbi7 = new System.Windows.Forms.TextBox();
-			this.tabPage5 = new System.Windows.Forms.TabPage();
-			this.tabPageA = new System.Windows.Forms.TabPage();
-			this.label20 = new System.Windows.Forms.Label();
-			this.label0A = new System.Windows.Forms.Label();
-			this.tbi8 = new System.Windows.Forms.TextBox();
-			this.tbs3 = new System.Windows.Forms.TextBox();
-			this.tabPage6 = new System.Windows.Forms.TabPage();
-			this.label18 = new System.Windows.Forms.Label();
-			this.tbf8 = new System.Windows.Forms.TextBox();
-			this.tabPage7 = new System.Windows.Forms.TabPage();
-			this.label21 = new System.Windows.Forms.Label();
-			this.tbi10 = new System.Windows.Forms.TextBox();
-			this.label22 = new System.Windows.Forms.Label();
-			this.tbi9 = new System.Windows.Forms.TextBox();
-			this.cbtype = new System.Windows.Forms.ComboBox();
-			this.label9 = new System.Windows.Forms.Label();
-			this.label8 = new System.Windows.Forms.Label();
-			this.tbi5 = new System.Windows.Forms.TextBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.tbi4 = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.tbi3 = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.tbi2 = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.tbi1 = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.tbf3 = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.tbf2 = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.tbf1 = new System.Windows.Forms.TextBox();
-			this.panel4 = new System.Windows.Forms.Panel();
-			this.label12 = new System.Windows.Forms.Label();
+			this.pnslot = new Panel();
+			this.visualStyleLinkLabel3 = new LinkLabel();
+			this.visualStyleLinkLabel2 = new LinkLabel();
+			this.visualStyleLinkLabel1 = new LinkLabel();
+			this.lv = new ListView();
+			this.groupBox1 = new GroupBox();
+			this.tbname = new TextBox();
+			this.label24 = new Label();
+			this.label23 = new Label();
+			this.tbver = new TextBox();
+			this.tabControl1 = new TabControl();
+			this.tabPage1 = new TabPage();
+			this.label14 = new Label();
+			this.tbi6 = new TextBox();
+			this.label10 = new Label();
+			this.tbf6 = new TextBox();
+			this.label11 = new Label();
+			this.tbf5 = new TextBox();
+			this.label13 = new Label();
+			this.tbf4 = new TextBox();
+			this.tabPage2 = new TabPage();
+			this.label15 = new Label();
+			this.tbs2 = new TextBox();
+			this.label16 = new Label();
+			this.tbs1 = new TextBox();
+			this.tabPage3 = new TabPage();
+			this.label17 = new Label();
+			this.tbf7 = new TextBox();
+			this.tabPage4 = new TabPage();
+			this.label19 = new Label();
+			this.tbi7 = new TextBox();
+			this.tabPage5 = new TabPage();
+			this.tabPageA = new TabPage();
+			this.label20 = new Label();
+			this.label0A = new Label();
+			this.tbi8 = new TextBox();
+			this.tbs3 = new TextBox();
+			this.tabPage6 = new TabPage();
+			this.label18 = new Label();
+			this.tbf8 = new TextBox();
+			this.tabPage7 = new TabPage();
+			this.label21 = new Label();
+			this.tbi10 = new TextBox();
+			this.label22 = new Label();
+			this.tbi9 = new TextBox();
+			this.cbtype = new ComboBox();
+			this.label9 = new Label();
+			this.label8 = new Label();
+			this.tbi5 = new TextBox();
+			this.label7 = new Label();
+			this.tbi4 = new TextBox();
+			this.label6 = new Label();
+			this.tbi3 = new TextBox();
+			this.label5 = new Label();
+			this.tbi2 = new TextBox();
+			this.label4 = new Label();
+			this.tbi1 = new TextBox();
+			this.label3 = new Label();
+			this.tbf3 = new TextBox();
+			this.label2 = new Label();
+			this.tbf2 = new TextBox();
+			this.label1 = new Label();
+			this.tbf1 = new TextBox();
+			this.panel4 = new Panel();
+			this.label12 = new Label();
 			this.pnslot.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
@@ -249,7 +249,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// visualStyleLinkLabel3
 			//
 			this.visualStyleLinkLabel3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -275,12 +275,12 @@ namespace SimPe.PackedFiles.UserInterface
 				.ContentAlignment
 				.MiddleRight;
 			this.visualStyleLinkLabel3.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Clone);
+				new LinkLabelLinkClickedEventHandler(this.Clone);
 			//
 			// visualStyleLinkLabel2
 			//
 			this.visualStyleLinkLabel2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -306,12 +306,12 @@ namespace SimPe.PackedFiles.UserInterface
 				.ContentAlignment
 				.MiddleRight;
 			this.visualStyleLinkLabel2.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Delete);
+				new LinkLabelLinkClickedEventHandler(this.Delete);
 			//
 			// visualStyleLinkLabel1
 			//
 			this.visualStyleLinkLabel1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -337,12 +337,12 @@ namespace SimPe.PackedFiles.UserInterface
 				.ContentAlignment
 				.MiddleRight;
 			this.visualStyleLinkLabel1.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Add);
+				new LinkLabelLinkClickedEventHandler(this.Add);
 			//
 			// lv
 			//
 			this.lv.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -363,12 +363,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.lv.TabIndex = 24;
 			this.lv.UseCompatibleStateImageBehavior = false;
 			this.lv.View = System.Windows.Forms.View.Details;
-			this.lv.SelectedIndexChanged += new System.EventHandler(this.Select);
+			this.lv.SelectedIndexChanged += new EventHandler(this.Select);
 			//
 			// groupBox1
 			//
 			this.groupBox1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -398,7 +398,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbname
 			//
 			this.tbname.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -418,7 +418,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbname.Name = "tbname";
 			this.tbname.Size = new System.Drawing.Size(224, 21);
 			this.tbname.TabIndex = 9;
-			this.tbname.TextChanged += new System.EventHandler(this.ChangeWrp);
+			this.tbname.TextChanged += new EventHandler(this.ChangeWrp);
 			//
 			// label24
 			//
@@ -466,12 +466,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbver.Size = new System.Drawing.Size(88, 21);
 			this.tbver.TabIndex = 6;
 			this.tbver.Text = "0";
-			this.tbver.TextChanged += new System.EventHandler(this.ChangeWrp);
+			this.tbver.TextChanged += new EventHandler(this.ChangeWrp);
 			//
 			// tabControl1
 			//
 			this.tabControl1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -511,7 +511,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// label14
 			//
 			this.label14.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -528,7 +528,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbi6
 			//
 			this.tbi6.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -540,12 +540,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbi6.Size = new System.Drawing.Size(64, 21);
 			this.tbi6.TabIndex = 16;
 			this.tbi6.Text = "0";
-			this.tbi6.TextChanged += new System.EventHandler(this.Changed);
+			this.tbi6.TextChanged += new EventHandler(this.Changed);
 			//
 			// label10
 			//
 			this.label10.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -562,7 +562,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbf6
 			//
 			this.tbf6.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -574,12 +574,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbf6.Size = new System.Drawing.Size(64, 21);
 			this.tbf6.TabIndex = 14;
 			this.tbf6.Text = "0";
-			this.tbf6.TextChanged += new System.EventHandler(this.Changed);
+			this.tbf6.TextChanged += new EventHandler(this.Changed);
 			//
 			// label11
 			//
 			this.label11.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -596,7 +596,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbf5
 			//
 			this.tbf5.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -608,12 +608,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbf5.Size = new System.Drawing.Size(64, 21);
 			this.tbf5.TabIndex = 12;
 			this.tbf5.Text = "0";
-			this.tbf5.TextChanged += new System.EventHandler(this.Changed);
+			this.tbf5.TextChanged += new EventHandler(this.Changed);
 			//
 			// label13
 			//
 			this.label13.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -630,7 +630,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbf4
 			//
 			this.tbf4.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -642,7 +642,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbf4.Size = new System.Drawing.Size(64, 21);
 			this.tbf4.TabIndex = 10;
 			this.tbf4.Text = "0";
-			this.tbf4.TextChanged += new System.EventHandler(this.Changed);
+			this.tbf4.TextChanged += new EventHandler(this.Changed);
 			//
 			// tabPage2
 			//
@@ -659,7 +659,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// label15
 			//
 			this.label15.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -676,7 +676,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbs2
 			//
 			this.tbs2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -688,12 +688,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbs2.Size = new System.Drawing.Size(64, 21);
 			this.tbs2.TabIndex = 16;
 			this.tbs2.Text = "0";
-			this.tbs2.TextChanged += new System.EventHandler(this.Changed);
+			this.tbs2.TextChanged += new EventHandler(this.Changed);
 			//
 			// label16
 			//
 			this.label16.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -710,7 +710,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbs1
 			//
 			this.tbs1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -722,7 +722,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbs1.Size = new System.Drawing.Size(64, 21);
 			this.tbs1.TabIndex = 14;
 			this.tbs1.Text = "0";
-			this.tbs1.TextChanged += new System.EventHandler(this.Changed);
+			this.tbs1.TextChanged += new EventHandler(this.Changed);
 			//
 			// tabPage3
 			//
@@ -737,7 +737,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// label17
 			//
 			this.label17.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -754,7 +754,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbf7
 			//
 			this.tbf7.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -766,7 +766,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbf7.Size = new System.Drawing.Size(64, 21);
 			this.tbf7.TabIndex = 6;
 			this.tbf7.Text = "0";
-			this.tbf7.TextChanged += new System.EventHandler(this.Changed);
+			this.tbf7.TextChanged += new EventHandler(this.Changed);
 			//
 			// tabPage4
 			//
@@ -781,7 +781,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// label19
 			//
 			this.label19.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -798,7 +798,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbi7
 			//
 			this.tbi7.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -810,7 +810,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbi7.Size = new System.Drawing.Size(64, 21);
 			this.tbi7.TabIndex = 12;
 			this.tbi7.Text = "0";
-			this.tbi7.TextChanged += new System.EventHandler(this.Changed);
+			this.tbi7.TextChanged += new EventHandler(this.Changed);
 			//
 			// tabPageA
 			//
@@ -825,7 +825,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// label0A
 			//
 			this.label0A.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -842,7 +842,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbs3
 			//
 			this.tbs3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -854,7 +854,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbs3.Size = new System.Drawing.Size(64, 21);
 			this.tbs3.TabIndex = 12;
 			this.tbs3.Text = "0";
-			this.tbs3.TextChanged += new System.EventHandler(this.Changed);
+			this.tbs3.TextChanged += new EventHandler(this.Changed);
 			//
 			// tabPage5
 			//
@@ -869,7 +869,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// label20
 			//
 			this.label20.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -886,7 +886,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbi8
 			//
 			this.tbi8.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -898,7 +898,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbi8.Size = new System.Drawing.Size(64, 21);
 			this.tbi8.TabIndex = 12;
 			this.tbi8.Text = "0";
-			this.tbi8.TextChanged += new System.EventHandler(this.Changed);
+			this.tbi8.TextChanged += new EventHandler(this.Changed);
 			//
 			// tabPage6
 			//
@@ -913,7 +913,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// label18
 			//
 			this.label18.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -930,7 +930,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbf8
 			//
 			this.tbf8.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -942,7 +942,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbf8.Size = new System.Drawing.Size(64, 21);
 			this.tbf8.TabIndex = 6;
 			this.tbf8.Text = "0";
-			this.tbf8.TextChanged += new System.EventHandler(this.Changed);
+			this.tbf8.TextChanged += new EventHandler(this.Changed);
 			//
 			// tabPage7
 			//
@@ -959,7 +959,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// label21
 			//
 			this.label21.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -976,7 +976,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbi10
 			//
 			this.tbi10.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -988,12 +988,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbi10.Size = new System.Drawing.Size(64, 21);
 			this.tbi10.TabIndex = 22;
 			this.tbi10.Text = "0";
-			this.tbi10.TextChanged += new System.EventHandler(this.Changed);
+			this.tbi10.TextChanged += new EventHandler(this.Changed);
 			//
 			// label22
 			//
 			this.label22.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1010,7 +1010,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbi9
 			//
 			this.tbi9.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1022,12 +1022,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbi9.Size = new System.Drawing.Size(64, 21);
 			this.tbi9.TabIndex = 20;
 			this.tbi9.Text = "0";
-			this.tbi9.TextChanged += new System.EventHandler(this.Changed);
+			this.tbi9.TextChanged += new EventHandler(this.Changed);
 			//
 			// cbtype
 			//
 			this.cbtype.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1039,12 +1039,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.cbtype.Name = "cbtype";
 			this.cbtype.Size = new System.Drawing.Size(136, 21);
 			this.cbtype.TabIndex = 21;
-			this.cbtype.SelectedIndexChanged += new System.EventHandler(this.Changed);
+			this.cbtype.SelectedIndexChanged += new EventHandler(this.Changed);
 			//
 			// label9
 			//
 			this.label9.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1062,7 +1062,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// label8
 			//
 			this.label8.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1080,7 +1080,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbi5
 			//
 			this.tbi5.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1092,12 +1092,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbi5.Size = new System.Drawing.Size(64, 21);
 			this.tbi5.TabIndex = 18;
 			this.tbi5.Text = "0";
-			this.tbi5.TextChanged += new System.EventHandler(this.Changed);
+			this.tbi5.TextChanged += new EventHandler(this.Changed);
 			//
 			// label7
 			//
 			this.label7.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1115,7 +1115,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbi4
 			//
 			this.tbi4.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1127,12 +1127,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbi4.Size = new System.Drawing.Size(64, 21);
 			this.tbi4.TabIndex = 16;
 			this.tbi4.Text = "0";
-			this.tbi4.TextChanged += new System.EventHandler(this.Changed);
+			this.tbi4.TextChanged += new EventHandler(this.Changed);
 			//
 			// label6
 			//
 			this.label6.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1150,7 +1150,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbi3
 			//
 			this.tbi3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1162,12 +1162,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbi3.Size = new System.Drawing.Size(64, 21);
 			this.tbi3.TabIndex = 14;
 			this.tbi3.Text = "0";
-			this.tbi3.TextChanged += new System.EventHandler(this.Changed);
+			this.tbi3.TextChanged += new EventHandler(this.Changed);
 			//
 			// label5
 			//
 			this.label5.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1185,7 +1185,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbi2
 			//
 			this.tbi2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1197,12 +1197,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbi2.Size = new System.Drawing.Size(64, 21);
 			this.tbi2.TabIndex = 12;
 			this.tbi2.Text = "0";
-			this.tbi2.TextChanged += new System.EventHandler(this.Changed);
+			this.tbi2.TextChanged += new EventHandler(this.Changed);
 			//
 			// label4
 			//
 			this.label4.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1220,7 +1220,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbi1
 			//
 			this.tbi1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1232,12 +1232,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbi1.Size = new System.Drawing.Size(64, 21);
 			this.tbi1.TabIndex = 10;
 			this.tbi1.Text = "0";
-			this.tbi1.TextChanged += new System.EventHandler(this.Changed);
+			this.tbi1.TextChanged += new EventHandler(this.Changed);
 			//
 			// label3
 			//
 			this.label3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1255,7 +1255,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbf3
 			//
 			this.tbf3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1267,12 +1267,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbf3.Size = new System.Drawing.Size(64, 21);
 			this.tbf3.TabIndex = 8;
 			this.tbf3.Text = "0";
-			this.tbf3.TextChanged += new System.EventHandler(this.Changed);
+			this.tbf3.TextChanged += new EventHandler(this.Changed);
 			//
 			// label2
 			//
 			this.label2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1290,7 +1290,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbf2
 			//
 			this.tbf2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1302,12 +1302,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbf2.Size = new System.Drawing.Size(64, 21);
 			this.tbf2.TabIndex = 6;
 			this.tbf2.Text = "0";
-			this.tbf2.TextChanged += new System.EventHandler(this.Changed);
+			this.tbf2.TextChanged += new EventHandler(this.Changed);
 			//
 			// label1
 			//
 			this.label1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1325,7 +1325,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbf1
 			//
 			this.tbf1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1337,12 +1337,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbf1.Size = new System.Drawing.Size(64, 21);
 			this.tbf1.TabIndex = 4;
 			this.tbf1.Text = "0";
-			this.tbf1.TextChanged += new System.EventHandler(this.Changed);
+			this.tbf1.TextChanged += new EventHandler(this.Changed);
 			//
 			// panel4
 			//
 			this.panel4.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -1352,7 +1352,7 @@ namespace SimPe.PackedFiles.UserInterface
 				)
 			);
 			this.panel4.Location = new System.Drawing.Point(0, 0);
-			this.panel4.Margin = new System.Windows.Forms.Padding(0);
+			this.panel4.Margin = new Padding(0);
 			this.panel4.Name = "panel4";
 			this.panel4.Size = new System.Drawing.Size(730, 24);
 			this.panel4.TabIndex = 0;
@@ -1475,7 +1475,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		private void Select(object sender, System.EventArgs e)
+		private void Select(object sender, EventArgs e)
 		{
 			if (lv.SelectedItems.Count == 0)
 			{
@@ -1485,11 +1485,11 @@ namespace SimPe.PackedFiles.UserInterface
 			this.Tag = true;
 			try
 			{
-				SimPe.PackedFiles.Wrapper.SlotItem si =
-					(SimPe.PackedFiles.Wrapper.SlotItem)lv.SelectedItems[0].Tag;
+				SlotItem si =
+					(SlotItem)lv.SelectedItems[0].Tag;
 
 				int ct = 0;
-				foreach (SimPe.PackedFiles.Wrapper.SlotItemType sti in cbtype.Items)
+				foreach (SlotItemType sti in cbtype.Items)
 				{
 					if (sti == si.Type)
 					{
@@ -1529,7 +1529,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		private void Changed(object sender, System.EventArgs e)
+		private void Changed(object sender, EventArgs e)
 		{
 			if (Tag != null)
 			{
@@ -1543,8 +1543,8 @@ namespace SimPe.PackedFiles.UserInterface
 
 			try
 			{
-				SimPe.PackedFiles.Wrapper.SlotItem si =
-					(SimPe.PackedFiles.Wrapper.SlotItem)lv.SelectedItems[0].Tag;
+				SlotItem si =
+					(SlotItem)lv.SelectedItems[0].Tag;
 
 				if (cbtype.SelectedIndex >= 0)
 				{
@@ -1582,7 +1582,7 @@ namespace SimPe.PackedFiles.UserInterface
 			catch { }
 		}
 
-		private void ChangeWrp(object sender, System.EventArgs e)
+		private void ChangeWrp(object sender, EventArgs e)
 		{
 			if (Tag != null)
 			{
@@ -1600,7 +1600,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void Add(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			SlotItem si = new SlotItem(wrapper);
@@ -1611,7 +1611,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void Delete(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lv.SelectedItems.Count == 0)
@@ -1621,8 +1621,8 @@ namespace SimPe.PackedFiles.UserInterface
 
 			try
 			{
-				SimPe.PackedFiles.Wrapper.SlotItem si =
-					(SimPe.PackedFiles.Wrapper.SlotItem)lv.SelectedItems[0].Tag;
+				SlotItem si =
+					(SlotItem)lv.SelectedItems[0].Tag;
 
 				wrapper.Items.Remove(si);
 				lv.Items.Remove(lv.SelectedItems[0]);
@@ -1633,7 +1633,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void Clone(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lv.SelectedItems.Count == 0)
@@ -1642,7 +1642,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			SlotItem si = new SlotItem(wrapper);
-			SimPe.PackedFiles.Wrapper.SlotItem sv = (SimPe.PackedFiles.Wrapper.SlotItem)
+			SlotItem sv = (SlotItem)
 				lv.SelectedItems[0].Tag;
 			si.Type = sv.Type;
 			si.UnknownFloat1 = sv.UnknownFloat1;

@@ -202,7 +202,7 @@ namespace SimPe.Plugin.Gmdc
 		{
 			get
 			{
-				System.Collections.Hashtable refs = new Hashtable();
+				Hashtable refs = new Hashtable();
 				foreach (int i in Faces)
 				{
 					if (!refs.ContainsKey(i))
@@ -265,9 +265,9 @@ namespace SimPe.Plugin.Gmdc
 		/// Returns a List with all available Vertices
 		/// </summary>
 		/// <returns></returns>
-		public SimPe.Geometry.Vectors4f GetVectors(ElementIdentity id)
+		public Geometry.Vectors4f GetVectors(ElementIdentity id)
 		{
-			SimPe.Geometry.Vectors4f ret = new SimPe.Geometry.Vectors4f();
+			Geometry.Vectors4f ret = new Geometry.Vectors4f();
 			if (this.Link != null)
 			{
 				GmdcElement e = this.Link.FindElementType(id);
@@ -278,14 +278,14 @@ namespace SimPe.Plugin.Gmdc
 					for (int i = 0; i < Link.ReferencedSize; i++)
 					{
 						GmdcElementValueBase vb = Link.GetValue(nr, i);
-						SimPe.Geometry.Vector4f v;
+						Geometry.Vector4f v;
 						if (vb is GmdcElementValueOneInt)
 						{
 							GmdcElementValueOneInt oi = (GmdcElementValueOneInt)vb;
 							byte[] data = oi.Bytes;
 							if (data.Length == 4)
 							{
-								v = new SimPe.Geometry.Vector4f(
+								v = new Geometry.Vector4f(
 									data[0],
 									data[1],
 									data[2],
@@ -294,7 +294,7 @@ namespace SimPe.Plugin.Gmdc
 							}
 							else if (data.Length == 3)
 							{
-								v = new SimPe.Geometry.Vector4f(
+								v = new Geometry.Vector4f(
 									data[0],
 									data[1],
 									data[2]
@@ -302,16 +302,16 @@ namespace SimPe.Plugin.Gmdc
 							}
 							else if (data.Length == 2)
 							{
-								v = new SimPe.Geometry.Vector4f(data[0], data[1], 0);
+								v = new Geometry.Vector4f(data[0], data[1], 0);
 							}
 							else
 							{
-								v = new SimPe.Geometry.Vector4f(data[0], 0, 0);
+								v = new Geometry.Vector4f(data[0], 0, 0);
 							}
 						}
 						else if (vb.Data.Length == 3)
 						{
-							v = new SimPe.Geometry.Vector4f(
+							v = new Geometry.Vector4f(
 								vb.Data[0],
 								vb.Data[1],
 								vb.Data[2]
@@ -319,11 +319,11 @@ namespace SimPe.Plugin.Gmdc
 						}
 						else if (vb.Data.Length == 2)
 						{
-							v = new SimPe.Geometry.Vector4f(vb.Data[0], vb.Data[1], 0);
+							v = new Geometry.Vector4f(vb.Data[0], vb.Data[1], 0);
 						}
 						else
 						{
-							v = new SimPe.Geometry.Vector4f(vb.Data[0], 0, 0);
+							v = new Geometry.Vector4f(vb.Data[0], 0, 0);
 						}
 
 						ret.Add(v);
@@ -338,7 +338,7 @@ namespace SimPe.Plugin.Gmdc
 		/// Returns a List with all available Vertices
 		/// </summary>
 		/// <returns></returns>
-		public SimPe.Geometry.Vectors4f GetVertices()
+		public Geometry.Vectors4f GetVertices()
 		{
 			return GetVectors(ElementIdentity.Vertex);
 		}
@@ -347,7 +347,7 @@ namespace SimPe.Plugin.Gmdc
 		/// Returns a List with all available Normals
 		/// </summary>
 		/// <returns></returns>
-		public SimPe.Geometry.Vectors4f GetNormals()
+		public Geometry.Vectors4f GetNormals()
 		{
 			return GetVectors(ElementIdentity.Normal);
 		}
@@ -356,7 +356,7 @@ namespace SimPe.Plugin.Gmdc
 		/// Returns a List with all available UV-Coords
 		/// </summary>
 		/// <returns></returns>
-		public SimPe.Geometry.Vectors4f GetUV()
+		public Geometry.Vectors4f GetUV()
 		{
 			return GetVectors(ElementIdentity.UVCoordinate);
 		}
@@ -365,11 +365,11 @@ namespace SimPe.Plugin.Gmdc
 		/// Returns a List with all available UV-Coords
 		/// </summary>
 		/// <returns></returns>
-		public SimPe.Geometry.Vectors4f GetBones()
+		public Geometry.Vectors4f GetBones()
 		{
-			SimPe.Geometry.Vectors4f ret = GetVectors(ElementIdentity.BoneAssignment);
+			Geometry.Vectors4f ret = GetVectors(ElementIdentity.BoneAssignment);
 
-			foreach (SimPe.Geometry.Vector4f v in ret)
+			foreach (Geometry.Vector4f v in ret)
 			{
 				if ((int)v.X != 0xff)
 				{
@@ -398,15 +398,15 @@ namespace SimPe.Plugin.Gmdc
 		/// Returns the Face Indices
 		/// </summary>
 		/// <returns></returns>
-		public SimPe.Geometry.Vectors3i GetFaces()
+		public Geometry.Vectors3i GetFaces()
 		{
-			SimPe.Geometry.Vectors3i ret = new SimPe.Geometry.Vectors3i();
-			SimPe.Geometry.Vector3i v = null;
+			Geometry.Vectors3i ret = new Geometry.Vectors3i();
+			Geometry.Vector3i v = null;
 			for (int i = 0; i < Faces.Count; i++)
 			{
 				if (i % 3 == 0)
 				{
-					v = new SimPe.Geometry.Vector3i();
+					v = new Geometry.Vector3i();
 					v.X = Faces[i];
 				}
 				else if (i % 3 == 2)
@@ -423,13 +423,13 @@ namespace SimPe.Plugin.Gmdc
 			return ret;
 		}
 
-		public static SimPe.Geometry.Vectors3i GetUsingFaces(
-			SimPe.Geometry.Vectors3i faces,
+		public static Geometry.Vectors3i GetUsingFaces(
+			Geometry.Vectors3i faces,
 			int vertexid
 		)
 		{
-			SimPe.Geometry.Vectors3i ret = new SimPe.Geometry.Vectors3i();
-			foreach (SimPe.Geometry.Vector3i v in faces)
+			Geometry.Vectors3i ret = new Geometry.Vectors3i();
+			foreach (Geometry.Vector3i v in faces)
 			{
 				if (v.X == vertexid || v.Y == vertexid || v.Z == vertexid)
 				{

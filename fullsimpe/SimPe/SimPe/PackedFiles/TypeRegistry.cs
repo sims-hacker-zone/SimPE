@@ -84,7 +84,7 @@ namespace SimPe.PackedFiles
 		/// <summary>
 		/// Contains all available Listeners
 		/// </summary>
-		SimPe.Collections.InternalListeners listeners;
+		Collections.InternalListeners listeners;
 
 		/// <summary>
 		/// Used to access the Windows Registry
@@ -98,15 +98,15 @@ namespace SimPe.PackedFiles
 		{
 			reg = Helper.WindowsRegistry;
 			handlers = new ArrayList();
-			OpcodeProvider = new SimPe.Providers.Opcodes();
-			SimFamilynameProvider = new SimPe.Providers.SimFamilyNames();
-			SimNameProvider = new SimPe.Providers.SimNames(null); //opcodeprovider
-			SimDescriptionProvider = new SimPe.Providers.SimDescriptions(
+			OpcodeProvider = new Providers.Opcodes();
+			SimFamilynameProvider = new Providers.SimFamilyNames();
+			SimNameProvider = new Providers.SimNames(null); //opcodeprovider
+			SimDescriptionProvider = new Providers.SimDescriptions(
 				SimNameProvider,
 				SimFamilynameProvider
 			);
-			SkinProvider = new SimPe.Providers.Skins();
-			lotprov = new SimPe.Providers.LotProvider();
+			SkinProvider = new Providers.Skins();
+			lotprov = new Providers.LotProvider();
 			SimDescriptionProvider.ChangedPackage += new EventHandler(
 				lotprov.sdescprovider_ChangedPackage
 			);
@@ -118,7 +118,7 @@ namespace SimPe.PackedFiles
 			cmdlines = new ArrayList();
 			helptopics = new ArrayList();
 			settings = new ArrayList();
-			listeners = new SimPe.Collections.InternalListeners();
+			listeners = new Collections.InternalListeners();
 
 			WrapperImageList = new System.Windows.Forms.ImageList();
 			WrapperImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
@@ -144,11 +144,11 @@ namespace SimPe.PackedFiles
 			{
 				if (!handlers.Contains(wrapper))
 				{
-					((SimPe.Interfaces.IWrapper)wrapper).Priority =
+					((IWrapper)wrapper).Priority =
 						reg.GetWrapperPriority(
-							((SimPe.Interfaces.IWrapper)wrapper).WrapperDescription.UID
+							((IWrapper)wrapper).WrapperDescription.UID
 						);
-					handlers.Add((SimPe.Interfaces.Plugin.IFileWrapper)wrapper);
+					handlers.Add((IFileWrapper)wrapper);
 					if (wrapper.WrapperDescription is AbstractWrapperInfo)
 					{
 						if (wrapper.WrapperDescription.Icon != null)
@@ -212,30 +212,30 @@ namespace SimPe.PackedFiles
 				factory
 					.GetType()
 					.GetInterface("SimPe.Interfaces.Plugin.IHelpFactory", false)
-				== typeof(SimPe.Interfaces.Plugin.IHelpFactory)
+				== typeof(IHelpFactory)
 			)
 			{
-				Register((factory as SimPe.Interfaces.Plugin.IHelpFactory));
+				Register((factory as IHelpFactory));
 			}
 
 			if (
 				factory
 					.GetType()
 					.GetInterface("SimPe.Interfaces.Plugin.ISettingsFactory", false)
-				== typeof(SimPe.Interfaces.Plugin.ISettingsFactory)
+				== typeof(ISettingsFactory)
 			)
 			{
-				Register((factory as SimPe.Interfaces.Plugin.ISettingsFactory));
+				Register((factory as ISettingsFactory));
 			}
 
 			if (
 				factory
 					.GetType()
 					.GetInterface("SimPe.Interfaces.Plugin.ICommandLineFactory", false)
-				== typeof(SimPe.Interfaces.Plugin.ICommandLineFactory)
+				== typeof(ICommandLineFactory)
 			)
 			{
-				Register((factory as SimPe.Interfaces.Plugin.ICommandLineFactory));
+				Register((factory as ICommandLineFactory));
 			}
 		}
 
@@ -304,7 +304,7 @@ namespace SimPe.PackedFiles
 		public IPackedFileWrapper FindHandler(uint type)
 		{
 			IWrapper[] wrappers = this.Wrappers;
-			foreach (SimPe.Interfaces.Plugin.IFileWrapper h in wrappers)
+			foreach (IFileWrapper h in wrappers)
 			{
 				foreach (uint atype in h.AssignableTypes)
 				{
@@ -327,10 +327,10 @@ namespace SimPe.PackedFiles
 		/// A handler is assigned if the first bytes of the Data are equal
 		/// to the signature provided by the Handler
 		/// </remarks>
-		public SimPe.Interfaces.Plugin.IFileWrapper FindHandler(Byte[] data)
+		public IFileWrapper FindHandler(Byte[] data)
 		{
 			IWrapper[] wrappers = this.Wrappers;
-			foreach (SimPe.Interfaces.Plugin.IFileWrapper h in wrappers)
+			foreach (IFileWrapper h in wrappers)
 			{
 				if (h.FileSignature == null)
 				{
@@ -367,13 +367,13 @@ namespace SimPe.PackedFiles
 
 		#region IProviderRegistry Member
 
-		SimPe.Providers.LotProvider lotprov;
-		public SimPe.Interfaces.Providers.ILotProvider LotProvider => lotprov;
+		Providers.LotProvider lotprov;
+		public Interfaces.Providers.ILotProvider LotProvider => lotprov;
 
 		/// <summary>
 		/// Returns the Provider for SimNames
 		/// </summary>
-		public SimPe.Interfaces.Providers.ISimNames SimNameProvider
+		public Interfaces.Providers.ISimNames SimNameProvider
 		{
 			get;
 		}
@@ -381,7 +381,7 @@ namespace SimPe.PackedFiles
 		/// <summary>
 		/// Returns the Provider for Sim Family Names
 		/// </summary>
-		public SimPe.Interfaces.Providers.ISimFamilyNames SimFamilynameProvider
+		public Interfaces.Providers.ISimFamilyNames SimFamilynameProvider
 		{
 			get;
 		}
@@ -389,7 +389,7 @@ namespace SimPe.PackedFiles
 		/// <summary>
 		/// Returns the Provider for SimDescription Files
 		/// </summary>
-		public SimPe.Interfaces.Providers.ISimDescriptions SimDescriptionProvider
+		public Interfaces.Providers.ISimDescriptions SimDescriptionProvider
 		{
 			get;
 		}
@@ -397,7 +397,7 @@ namespace SimPe.PackedFiles
 		/// <summary>
 		/// Returns the Provider for Opcode Names
 		/// </summary>
-		public SimPe.Interfaces.Providers.IOpcodeProvider OpcodeProvider
+		public Interfaces.Providers.IOpcodeProvider OpcodeProvider
 		{
 			get;
 		}
@@ -418,53 +418,53 @@ namespace SimPe.PackedFiles
 			{
 				if (
 					tool.GetType().GetInterface("SimPe.Interfaces.IDockableTool", true)
-					== typeof(SimPe.Interfaces.IDockableTool)
+					== typeof(IDockableTool)
 				)
 				{
 					if (!dtools.Contains(tool))
 					{
-						dtools.Add((SimPe.Interfaces.IDockableTool)tool);
+						dtools.Add((IDockableTool)tool);
 					}
 				}
 				else if (
 					tool.GetType().GetInterface("SimPe.Interfaces.IToolAction", true)
-					== typeof(SimPe.Interfaces.IToolAction)
+					== typeof(IToolAction)
 				)
 				{
 					if (!atools.Contains(tool))
 					{
-						atools.Add((SimPe.Interfaces.IToolAction)tool);
+						atools.Add((IToolAction)tool);
 					}
 				}
 				else if (
 					tool.GetType().GetInterface("SimPe.Interfaces.IToolPlus", true)
-					== typeof(SimPe.Interfaces.IToolPlus)
+					== typeof(IToolPlus)
 				)
 				{
 					if (!toolsp.Contains(tool))
 					{
-						toolsp.Add((SimPe.Interfaces.IToolPlus)tool);
+						toolsp.Add((IToolPlus)tool);
 					}
 				}
 				else if (
 					Helper.StartedGui != Executable.Classic
 					&& tool.GetType().GetInterface("SimPe.Interfaces.IListener", true)
-						== typeof(SimPe.Interfaces.IListener)
+						== typeof(IListener)
 				)
 				{
-					if (!listeners.Contains((SimPe.Interfaces.IListener)tool))
+					if (!listeners.Contains((IListener)tool))
 					{
-						listeners.Add((SimPe.Interfaces.IListener)tool);
+						listeners.Add((IListener)tool);
 					}
 				}
 				else if (
 					tool.GetType().GetInterface("SimPe.Interfaces.ITool", true)
-					== typeof(SimPe.Interfaces.ITool)
+					== typeof(ITool)
 				)
 				{
 					if (!tools.Contains(tool))
 					{
-						tools.Add((SimPe.Interfaces.ITool)tool);
+						tools.Add((ITool)tool);
 					}
 				}
 			}
@@ -506,7 +506,7 @@ namespace SimPe.PackedFiles
 #endif
 		}
 
-		public SimPe.Collections.Listeners Listeners => listeners;
+		public Collections.Listeners Listeners => listeners;
 
 		public ITool[] Tools
 		{
@@ -551,7 +551,7 @@ namespace SimPe.PackedFiles
 		#endregion
 
 		#region IHelpRegistry Member
-		public void Register(SimPe.Interfaces.Plugin.IHelpFactory factory)
+		public void Register(IHelpFactory factory)
 		{
 			if (factory == null)
 			{
@@ -561,20 +561,20 @@ namespace SimPe.PackedFiles
 			RegisterHelpTopic(factory.KnownHelpTopics);
 		}
 
-		public void RegisterHelpTopic(SimPe.Interfaces.IHelp[] topics)
+		public void RegisterHelpTopic(IHelp[] topics)
 		{
 			if (topics == null)
 			{
 				return;
 			}
 
-			foreach (SimPe.Interfaces.IHelp topic in topics)
+			foreach (IHelp topic in topics)
 			{
 				RegisterHelpTopic(topic);
 			}
 		}
 
-		public void RegisterHelpTopic(SimPe.Interfaces.IHelp topic)
+		public void RegisterHelpTopic(IHelp topic)
 		{
 			if (topic != null && !helptopics.Contains(topic))
 			{
@@ -589,7 +589,7 @@ namespace SimPe.PackedFiles
 		{
 			get
 			{
-				SimPe.Interfaces.IHelp[] ret = new SimPe.Interfaces.IHelp[
+				IHelp[] ret = new IHelp[
 					helptopics.Count
 				];
 				helptopics.CopyTo(ret);

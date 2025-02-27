@@ -193,7 +193,7 @@ namespace SimPe.Plugin.Gmdc
 
 			Rcol cres = parent.ParentResourceNode.Parent;
 
-			foreach (SimPe.Interfaces.Scenegraph.IRcolBlock irb in cres.Blocks)
+			foreach (Interfaces.Scenegraph.IRcolBlock irb in cres.Blocks)
 			{
 				if (irb.GetType() == typeof(TransformNode))
 				{

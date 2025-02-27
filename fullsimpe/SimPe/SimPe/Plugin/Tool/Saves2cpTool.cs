@@ -24,7 +24,7 @@ namespace SimPe.Plugin.Tool
 	/// <summary>
 	/// Summary description for Saves2cpTool.
 	/// </summary>
-	public class Saves2cpTool : SimPe.Interfaces.IToolPlus
+	public class Saves2cpTool : Interfaces.IToolPlus
 	{
 		internal Saves2cpTool()
 		{
@@ -47,14 +47,14 @@ namespace SimPe.Plugin.Tool
 			if (es.Loaded)
 			{
 				SimPe.Packages.Sims2CommunityPack.ShowSaveDialog(
-					new SimPe.Packages.GeneratableFile[] { es.LoadedPackage.Package },
+					new Packages.GeneratableFile[] { es.LoadedPackage.Package },
 					true
 				);
 			}
 			else
 			{
 				SimPe.Packages.Sims2CommunityPack.ShowSaveDialog(
-					new SimPe.Packages.GeneratableFile[0],
+					new Packages.GeneratableFile[0],
 					true
 				);
 			}

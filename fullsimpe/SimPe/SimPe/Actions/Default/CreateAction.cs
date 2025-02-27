@@ -32,7 +32,7 @@ namespace SimPe.Actions.Default
 
 		public override bool ChangeEnabledStateEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs es
+			Events.ResourceEventArgs es
 		)
 		{
 			if (es.LoadedPackage == null)
@@ -45,7 +45,7 @@ namespace SimPe.Actions.Default
 
 		public override void ExecuteEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs e
+			Events.ResourceEventArgs e
 		)
 		{
 			if (!ChangeEnabledStateEventHandler(null, e))

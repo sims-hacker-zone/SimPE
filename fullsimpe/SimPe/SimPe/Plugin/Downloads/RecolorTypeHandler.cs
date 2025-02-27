@@ -5,7 +5,7 @@ namespace SimPe.Plugin.Downloads
 	/// <summary>
 	/// Summary description for SimTypeHandler.
 	/// </summary>
-	public class RecolorTypeHandler : Downloads.ITypeHandler, System.IDisposable
+	public class RecolorTypeHandler : ITypeHandler, IDisposable
 	{
 		protected PackageInfo nfo;
 
@@ -25,9 +25,9 @@ namespace SimPe.Plugin.Downloads
 				return;
 			}
 
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fii =
+			Interfaces.Scenegraph.IScenegraphFileIndex fii =
 				SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.AddNewChild();
-			SimPe.Plugin.MmatWrapper mmat = data[0] as SimPe.Plugin.MmatWrapper;
+			MmatWrapper mmat = data[0] as MmatWrapper;
 
 			mmat.ProcessData(mmat.FileDescriptor, tmppkg);
 			if (mmat != null)
@@ -67,28 +67,28 @@ namespace SimPe.Plugin.Downloads
 			Wait.SubStop();
 		}
 
-		SimPe.Interfaces.Files.IPackageFile tmppkg;
+		Interfaces.Files.IPackageFile tmppkg;
 
 		protected virtual bool BeforeLoadContent(
-			SimPe.Cache.PackageType type,
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Cache.PackageType type,
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
 			bool ret = false;
 			DisposeTmpPkg();
 
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
 				Data.MetaData.MMAT
 			);
 			if (pfds.Length > 0)
 			{
-				SimPe.Plugin.MmatWrapper mmat = new MmatWrapper();
+				MmatWrapper mmat = new MmatWrapper();
 				mmat.ProcessData(pfds[0], pkg);
 				nfo.Name = mmat.ModelName + ", " + mmat.SubsetName;
 
 				if (SimPe.Plugin.DownloadsToolFactory.Settings.LoadBasedataForRecolors)
 				{
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fii =
+					Interfaces.Scenegraph.IScenegraphFileIndex fii =
 						SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.AddNewChild();
 					if (System.IO.File.Exists(pkg.SaveFileName))
 					{
@@ -134,7 +134,7 @@ namespace SimPe.Plugin.Downloads
 
 							tmppkg.CopyDescriptors(pkg);
 							foreach (
-								SimPe.Interfaces.Files.IPackedFileDescriptor pfd in tmppkg.Index
+								Interfaces.Files.IPackedFileDescriptor pfd in tmppkg.Index
 							)
 							{
 								if (pfd.Equals(mmat.FileDescriptor))
@@ -173,8 +173,8 @@ namespace SimPe.Plugin.Downloads
 		}
 
 		protected virtual void AfterLoadContent(
-			SimPe.Cache.PackageType type,
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Cache.PackageType type,
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
 			DisposeTmpPkg();
@@ -186,9 +186,9 @@ namespace SimPe.Plugin.Downloads
 			{
 				tmppkg.Close();
 				SimPe.Packages.StreamFactory.CloseStream(tmppkg.SaveFileName);
-				if (tmppkg is SimPe.Packages.GeneratableFile)
+				if (tmppkg is Packages.GeneratableFile)
 				{
-					((SimPe.Packages.GeneratableFile)tmppkg).Dispose();
+					((Packages.GeneratableFile)tmppkg).Dispose();
 				}
 			}
 			tmppkg = null;
@@ -199,8 +199,8 @@ namespace SimPe.Plugin.Downloads
 
 
 		public void LoadContent(
-			SimPe.Cache.PackageType type,
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Cache.PackageType type,
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
 			nfo = new PackageInfo(pkg);
@@ -208,7 +208,7 @@ namespace SimPe.Plugin.Downloads
 
 			if (tmppkg != null)
 			{
-				Downloads.XTypeHandler hnd = new XTypeHandler(
+				XTypeHandler hnd = new XTypeHandler(
 					SimPe.Cache.PackageType.CustomObject,
 					tmppkg,
 					false,

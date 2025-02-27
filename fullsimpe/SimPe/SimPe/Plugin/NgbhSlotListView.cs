@@ -7,9 +7,9 @@ namespace SimPe.Plugin
 	/// Summary description for NgbhSlotListView.
 	/// </summary>
 	[System.ComponentModel.DefaultEvent("SelectedSlotChanged")]
-	public class NgbhSlotListView : System.Windows.Forms.UserControl
+	public class NgbhSlotListView : UserControl
 	{
-		private System.Windows.Forms.ListView lv;
+		private ListView lv;
 
 		/// <summary>
 		/// Required designer variable.
@@ -56,7 +56,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.lv = new System.Windows.Forms.ListView();
+			this.lv = new ListView();
 			this.SuspendLayout();
 			//
 			// lv
@@ -71,7 +71,7 @@ namespace SimPe.Plugin
 			this.lv.Size = new System.Drawing.Size(270, 166);
 			this.lv.TabIndex = 1;
 			this.lv.View = System.Windows.Forms.View.List;
-			this.lv.SelectedIndexChanged += new System.EventHandler(
+			this.lv.SelectedIndexChanged += new EventHandler(
 				this.lv_SelectedIndexChanged
 			);
 			//
@@ -178,7 +178,7 @@ namespace SimPe.Plugin
 			this.lv.EndUpdate();
 		}
 
-		private void lv_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void lv_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (SelectedSlotChanged != null)
 			{

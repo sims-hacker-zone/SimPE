@@ -48,7 +48,7 @@ namespace SimPe.Plugin.Scanner
 
 		public void ScanPackage(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
+			PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
@@ -61,7 +61,7 @@ namespace SimPe.Plugin.Scanner
 				|| si.PackageCacheItem.Type == PackageType.Object
 			)
 			{
-				SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds =
+				Interfaces.Files.IPackedFileDescriptor[] pfds =
 					si.Package.FindFiles(Data.MetaData.OBJD_FILE);
 
 				if (pfds.Length > 1)
@@ -71,9 +71,9 @@ namespace SimPe.Plugin.Scanner
 				}
 				else if (pfds.Length > 0)
 				{
-					SimPe.PackedFiles.Wrapper.ExtObjd objd = new ExtObjd();
+					ExtObjd objd = new ExtObjd();
 					objd.ProcessData(pfds[0], si.Package);
-					SimPe.PackedFiles.Wrapper.ShelveDimension sd = objd.ShelveDimension;
+					ShelveDimension sd = objd.ShelveDimension;
 					if (
 						sd == SimPe.PackedFiles.Wrapper.ShelveDimension.Unknown1
 						|| sd == SimPe.PackedFiles.Wrapper.ShelveDimension.Indetermined
@@ -92,14 +92,14 @@ namespace SimPe.Plugin.Scanner
 
 		public void UpdateState(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
+			PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
 			if (ps.State != TriState.Null)
 			{
-				SimPe.PackedFiles.Wrapper.ShelveDimension cs =
-					(SimPe.PackedFiles.Wrapper.ShelveDimension)ps.Data[0];
+				ShelveDimension cs =
+					(ShelveDimension)ps.Data[0];
 				AbstractScanner.SetSubItem(lvi, this.StartColum, cs.ToString(), ps);
 			}
 		}
@@ -127,12 +127,12 @@ namespace SimPe.Plugin.Scanner
 			}
 			else if (items.Length == 1)
 			{
-				SimPe.Cache.PackageState ps = items[0]
+				PackageState ps = items[0]
 					.PackageCacheItem.FindState(this.Uid, true);
 				if (ps.Data.Length > 0)
 				{
 					ScannerPanelForm.Form.cbshelve.SelectedValue =
-						(SimPe.PackedFiles.Wrapper.ShelveDimension)ps.Data[0];
+						(ShelveDimension)ps.Data[0];
 					OperationControl.Enabled = true;
 				}
 			}
@@ -165,7 +165,7 @@ namespace SimPe.Plugin.Scanner
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		public void Set(SimPe.PackedFiles.Wrapper.ShelveDimension sd)
+		public void Set(ShelveDimension sd)
 		{
 			if (selection == null)
 			{
@@ -180,7 +180,7 @@ namespace SimPe.Plugin.Scanner
 				{
 					WaitingScreen.UpdateMessage(si.FileName);
 
-					SimPe.Cache.PackageState ps = si.PackageCacheItem.FindState(
+					PackageState ps = si.PackageCacheItem.FindState(
 						this.Uid,
 						true
 					);
@@ -197,14 +197,14 @@ namespace SimPe.Plugin.Scanner
 					ps.State = TriState.Null;
 					try
 					{
-						SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds =
+						Interfaces.Files.IPackedFileDescriptor[] pfds =
 							si.Package.FindFiles(Data.MetaData.OBJD_FILE);
 
 						foreach (
-							SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds
+							Interfaces.Files.IPackedFileDescriptor pfd in pfds
 						)
 						{
-							SimPe.PackedFiles.Wrapper.ExtObjd objd = new ExtObjd();
+							ExtObjd objd = new ExtObjd();
 							objd.ProcessData(pfd, si.Package);
 							objd.ShelveDimension = sd;
 							objd.SynchronizeUserData();

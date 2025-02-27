@@ -34,7 +34,7 @@ namespace Ambertation
 	{
 		public override bool CanConvertTo(
 			ITypeDescriptorContext context,
-			System.Type destinationType
+			Type destinationType
 		)
 		{
 			if (destinationType == typeof(BaseChangeShort))
@@ -49,7 +49,7 @@ namespace Ambertation
 			ITypeDescriptorContext context,
 			CultureInfo culture,
 			object value,
-			System.Type destinationType
+			Type destinationType
 		)
 		{
 			if (destinationType == typeof(System.String) && value is BaseChangeShort)
@@ -63,7 +63,7 @@ namespace Ambertation
 
 		public override bool CanConvertFrom(
 			ITypeDescriptorContext context,
-			System.Type sourceType
+			Type sourceType
 		)
 		{
 			if (sourceType == typeof(string))
@@ -106,8 +106,8 @@ namespace Ambertation
 	/// This is a class that can present short Values in diffrent Ways
 	/// </summary>
 	[
-		TypeConverterAttribute(typeof(HexTypeConverter)),
-		DescriptionAttribute("This Values can be displayed in Dec, Hex and Bin")
+		TypeConverter(typeof(HexTypeConverter)),
+		Description("This Values can be displayed in Dec, Hex and Bin")
 	]
 	public class BaseChangeShort
 	{

@@ -24,7 +24,7 @@ namespace SimPe.Plugin.Tool
 	/// <summary>
 	/// Zusammenfassung für SaveSims2PackTool.
 	/// </summary>
-	public class SaveSims2PackTool : SimPe.Interfaces.IToolPlus
+	public class SaveSims2PackTool : Interfaces.IToolPlus
 	{
 		internal SaveSims2PackTool()
 		{
@@ -47,13 +47,13 @@ namespace SimPe.Plugin.Tool
 			if (es.Loaded)
 			{
 				SimPe.Packages.Sims2CommunityPack.ShowSimpleSaveDialog(
-					new SimPe.Packages.GeneratableFile[] { es.LoadedPackage.Package }
+					new Packages.GeneratableFile[] { es.LoadedPackage.Package }
 				);
 			}
 			else
 			{
 				SimPe.Packages.Sims2CommunityPack.ShowSimpleSaveDialog(
-					new SimPe.Packages.GeneratableFile[0]
+					new Packages.GeneratableFile[0]
 				);
 			}
 		}

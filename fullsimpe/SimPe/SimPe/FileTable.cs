@@ -29,7 +29,7 @@ namespace SimPe
 		/// <summary>
 		/// Returns/Sets a ToolRegistry (can be null)
 		/// </summary>
-		public static SimPe.Interfaces.IToolRegistry ToolRegistry
+		public static Interfaces.IToolRegistry ToolRegistry
 		{
 			get; set;
 		}
@@ -37,7 +37,7 @@ namespace SimPe
 		/// <summary>
 		/// Returns/Sets a HelpTopicRegistry (can be null)
 		/// </summary>
-		public static SimPe.Interfaces.IHelpRegistry HelpTopicRegistry
+		public static Interfaces.IHelpRegistry HelpTopicRegistry
 		{
 			get; set;
 		}
@@ -45,12 +45,12 @@ namespace SimPe
 		/// <summary>
 		/// Returns/Sets a SettingsRegistry (can be null)
 		/// </summary>
-		public static SimPe.Interfaces.ISettingsRegistry SettingsRegistry
+		public static Interfaces.ISettingsRegistry SettingsRegistry
 		{
 			get; set;
 		}
 
-		public static SimPe.Interfaces.ICommandLineRegistry CommandLineRegistry
+		public static Interfaces.ICommandLineRegistry CommandLineRegistry
 		{
 			get; set;
 		}

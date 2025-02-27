@@ -26,8 +26,8 @@ namespace SimPe.Packages
 	/// </summary>
 	public class HeaderIndex
 		: HeaderHole,
-			SimPe.Interfaces.Files.IPackageHeaderIndex,
-			System.IDisposable
+			Interfaces.Files.IPackageHeaderIndex,
+			IDisposable
 	{
 		internal HeaderIndex(Interfaces.Files.IPackageHeader hd)
 		{

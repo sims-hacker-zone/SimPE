@@ -8,7 +8,7 @@ namespace SimPe.Plugin.UI
 		/// Required designer variable.
 		/// </summary>
 		protected System.ComponentModel.Container components = null;
-		internal System.Windows.Forms.ToolTip toolTip1;
+		internal ToolTip toolTip1;
 
 		private PackageSettings settings;
 

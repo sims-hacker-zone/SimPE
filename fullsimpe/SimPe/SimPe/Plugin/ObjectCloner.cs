@@ -29,7 +29,7 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class CloneSettings
 	{
-		public class StrIntsanceAlias : SimPe.Data.Alias
+		public class StrIntsanceAlias : Data.Alias
 		{
 			internal StrIntsanceAlias(uint inst, uint type, string ext)
 				: base(inst, ext, new object[] { type }) { }
@@ -186,12 +186,12 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="name"></param>
 		/// <returns></returns>
-		public static Interfaces.Files.IPackedFileDescriptor[] FindStateMatchingMatd(
+		public static IPackedFileDescriptor[] FindStateMatchingMatd(
 			string name,
 			IPackageFile package
 		)
 		{
-			Interfaces.Files.IPackedFileDescriptor[] pfds = null;
+			IPackedFileDescriptor[] pfds = null;
 
 			//railingleft1 railingleft2 railingleft3 railingleft4
 			if (name.EndsWith("_clean"))
@@ -244,7 +244,7 @@ namespace SimPe.Plugin
 		public uint GetPrimaryGuid()
 		{
 			uint guid = 0;
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = Package.FindFile(
+			IPackedFileDescriptor[] pfds = Package.FindFile(
 				Data.MetaData.OBJD_FILE,
 				0,
 				0x41A7
@@ -256,8 +256,8 @@ namespace SimPe.Plugin
 
 			if (pfds.Length > 0)
 			{
-				SimPe.PackedFiles.Wrapper.ExtObjd objd =
-					new SimPe.PackedFiles.Wrapper.ExtObjd();
+				PackedFiles.Wrapper.ExtObjd objd =
+					new PackedFiles.Wrapper.ExtObjd();
 				objd.ProcessData(pfds[0], Package);
 				guid = objd.Guid;
 			}
@@ -271,14 +271,14 @@ namespace SimPe.Plugin
 		public ArrayList GetGuidList()
 		{
 			ArrayList list = new ArrayList();
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = Package.FindFiles(
+			IPackedFileDescriptor[] pfds = Package.FindFiles(
 				Data.MetaData.OBJD_FILE
 			);
 
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (IPackedFileDescriptor pfd in pfds)
 			{
-				SimPe.PackedFiles.Wrapper.ExtObjd objd =
-					new SimPe.PackedFiles.Wrapper.ExtObjd();
+				PackedFiles.Wrapper.ExtObjd objd =
+					new PackedFiles.Wrapper.ExtObjd();
 				objd.ProcessData(pfd, Package);
 				list.Add(objd.Guid);
 			}
@@ -298,13 +298,13 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = Package.FindFiles(
+			IPackedFileDescriptor[] pfds = Package.FindFiles(
 				Data.MetaData.MMAT
 			);
 
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (IPackedFileDescriptor pfd in pfds)
 			{
-				SimPe.Plugin.MmatWrapper mmat = new MmatWrapper();
+				MmatWrapper mmat = new MmatWrapper();
 				mmat.ProcessData(pfd, Package);
 
 				//this seems to cause problems with slave Objects
@@ -353,16 +353,16 @@ namespace SimPe.Plugin
 		{
 			ArrayList list = new ArrayList();
 
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds =
+			IPackedFileDescriptor[] pfds =
 				this.Package.FindFiles(Data.MetaData.STRING_FILE);
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (IPackedFileDescriptor pfd in pfds)
 			{
 				if (instances.Contains(pfd.Instance))
 				{
-					SimPe.PackedFiles.Wrapper.Str str =
-						new SimPe.PackedFiles.Wrapper.Str();
+					PackedFiles.Wrapper.Str str =
+						new PackedFiles.Wrapper.Str();
 					str.ProcessData(pfd, Package);
-					foreach (SimPe.PackedFiles.Wrapper.StrToken si in str.Items)
+					foreach (PackedFiles.Wrapper.StrToken si in str.Items)
 					{
 						string s = si.Title.Trim();
 						if (s != "")
@@ -525,7 +525,7 @@ namespace SimPe.Plugin
 		/// <remarks>Simply Copies MMAT, LIFO, TXTR and TXMT Files</remarks>
 		public void AddParentFiles(
 			string[] orgmodelnames,
-			SimPe.Interfaces.Files.IPackageFile pkg
+			IPackageFile pkg
 		)
 		{
 			if (WaitingScreen.Running)
@@ -549,23 +549,23 @@ namespace SimPe.Plugin
 
 			foreach (uint type in types)
 			{
-				SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = Package.FindFiles(
+				IPackedFileDescriptor[] pfds = Package.FindFiles(
 					type
 				);
-				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				foreach (IPackedFileDescriptor pfd in pfds)
 				{
 					if (pkg.FindFile(pfd) != null)
 					{
 						continue;
 					}
 
-					SimPe.Interfaces.Files.IPackedFile file = Package.Read(pfd);
+					IPackedFile file = Package.Read(pfd);
 					pfd.UserData = file.UncompressedData;
 
 					//Update the modeName in the MMAT
 					if ((pfd.Type == Data.MetaData.MMAT) && (names.Count > 0))
 					{
-						SimPe.Plugin.MmatWrapper mmat = new MmatWrapper();
+						MmatWrapper mmat = new MmatWrapper();
 						mmat.ProcessData(pfd, Package);
 
 						string n = mmat.ModelName.Trim().ToLower();
@@ -617,10 +617,10 @@ namespace SimPe.Plugin
 			}
 
 			bool deleted = false;
-			Interfaces.Files.IPackedFileDescriptor[] pfds = Package.FindFiles(
+			IPackedFileDescriptor[] pfds = Package.FindFiles(
 				Data.MetaData.SHPE
 			);
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (IPackedFileDescriptor pfd in pfds)
 			{
 				Rcol rcol = new GenericRcol(null, false);
 				rcol.ProcessData(pfd, Package);
@@ -653,9 +653,9 @@ namespace SimPe.Plugin
 						}
 
 						ArrayList names = new ArrayList();
-						Interfaces.Files.IPackedFileDescriptor[] rpfds =
+						IPackedFileDescriptor[] rpfds =
 							Package.FindFile(n, Data.MetaData.TXMT);
-						foreach (Interfaces.Files.IPackedFileDescriptor rpfd in rpfds)
+						foreach (IPackedFileDescriptor rpfd in rpfds)
 						{
 							names.Add(rpfd);
 						}
@@ -663,8 +663,8 @@ namespace SimPe.Plugin
 						int pos = 0;
 						while (pos < names.Count)
 						{
-							Interfaces.Files.IPackedFileDescriptor rpfd =
-								(Interfaces.Files.IPackedFileDescriptor)names[pos++];
+							IPackedFileDescriptor rpfd =
+								(IPackedFileDescriptor)names[pos++];
 							rpfd = Package.FindFile(rpfd);
 
 							if (rpfd != null)
@@ -678,7 +678,7 @@ namespace SimPe.Plugin
 								foreach (string k in ht.Keys)
 								{
 									foreach (
-										Interfaces.Files.IPackedFileDescriptor lpfd in (ArrayList)
+										IPackedFileDescriptor lpfd in (ArrayList)
 											ht[k]
 									)
 									{

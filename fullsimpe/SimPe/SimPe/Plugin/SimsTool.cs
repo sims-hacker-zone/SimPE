@@ -24,7 +24,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for ImportSemiTool.
 	/// </summary>
-	public class SimsTool : Interfaces.AbstractTool, Interfaces.ITool
+	public class SimsTool : AbstractTool, ITool
 	{
 		internal static Registry WindowsRegistry => Helper.WindowsRegistry;
 
@@ -40,8 +40,8 @@ namespace SimPe.Plugin
 		#region ITool Member
 
 		public bool IsEnabled(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile package
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile package
 		)
 		{
 			return (
@@ -51,8 +51,8 @@ namespace SimPe.Plugin
 		}
 
 		private bool IsReallyEnabled(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile package
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile package
 		)
 		{
 			if (package == null)
@@ -72,8 +72,8 @@ namespace SimPe.Plugin
 		}
 
 		public Interfaces.Plugin.IToolResult ShowDialog(
-			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			ref SimPe.Interfaces.Files.IPackageFile package
+			ref Interfaces.Files.IPackedFileDescriptor pfd,
+			ref Interfaces.Files.IPackageFile package
 		)
 		{
 			if (!IsReallyEnabled(pfd, package))
@@ -84,7 +84,7 @@ namespace SimPe.Plugin
 					),
 					Localization.Manager.GetString("simsbrowser")
 				);
-				return new Plugin.ToolResult(false, false);
+				return new ToolResult(false, false);
 			}
 			Sims sims = new Sims();
 			sims.Text = Localization.Manager.GetString("simsbrowser");

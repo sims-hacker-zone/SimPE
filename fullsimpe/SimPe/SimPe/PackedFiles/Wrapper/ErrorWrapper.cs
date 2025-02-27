@@ -25,8 +25,8 @@ namespace SimPe.PackedFiles.Wrapper
 	/// This is A ResourceWrapper, which is added when an external Wrapper could not be loaded
 	/// </summary>
 	public class ErrorWrapper
-		: SimPe.Interfaces.IWrapper,
-			SimPe.Interfaces.Plugin.IFileWrapper
+		: Interfaces.IWrapper,
+			Interfaces.Plugin.IFileWrapper
 	{
 		string flname;
 		Exception e;
@@ -42,9 +42,9 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public string WrapperFileName => System.IO.Path.GetFileName(flname);
 
-		public void Register(SimPe.Interfaces.IWrapperRegistry registry)
+		public void Register(Interfaces.IWrapperRegistry registry)
 		{
-			registry.Register((SimPe.Interfaces.IWrapper)this);
+			registry.Register((Interfaces.IWrapper)this);
 		}
 
 		public int Priority
@@ -57,7 +57,7 @@ namespace SimPe.PackedFiles.Wrapper
 			return "Error Wrapper";
 		}
 
-		public SimPe.Interfaces.Plugin.IWrapperInfo WrapperDescription => new SimPe.Interfaces.Plugin.AbstractWrapperInfo(
+		public Interfaces.Plugin.IWrapperInfo WrapperDescription => new Interfaces.Plugin.AbstractWrapperInfo(
 					WrapperFileName,
 					SimPe.Localization.GetString("Unknown"),
 					e.ToString() + ":" + e.Message,
@@ -90,46 +90,46 @@ namespace SimPe.PackedFiles.Wrapper
 		public string ResourceName => "";
 
 		public void ProcessData(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile package,
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile package,
 			bool catchex
 		)
 		{
 		}
 
-		void SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper.ProcessData(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile package,
-			SimPe.Interfaces.Files.IPackedFile file,
+		void Interfaces.Plugin.Internal.IPackedFileWrapper.ProcessData(
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile package,
+			Interfaces.Files.IPackedFile file,
 			bool catchex
 		)
 		{
 		}
 
-		void SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper.ProcessData(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item,
+		void Interfaces.Plugin.Internal.IPackedFileWrapper.ProcessData(
+			Interfaces.Scenegraph.IScenegraphFileIndexItem item,
 			bool catchex
 		)
 		{
 		}
 
-		void SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper.ProcessData(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile package
+		void Interfaces.Plugin.Internal.IPackedFileWrapper.ProcessData(
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile package
 		)
 		{
 		}
 
-		void SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper.ProcessData(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile package,
-			SimPe.Interfaces.Files.IPackedFile file
+		void Interfaces.Plugin.Internal.IPackedFileWrapper.ProcessData(
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile package,
+			Interfaces.Files.IPackedFile file
 		)
 		{
 		}
 
-		void SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper.ProcessData(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item
+		void Interfaces.Plugin.Internal.IPackedFileWrapper.ProcessData(
+			Interfaces.Scenegraph.IScenegraphFileIndexItem item
 		)
 		{
 		}
@@ -144,15 +144,15 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 		}
 
-		public void Fix(SimPe.Interfaces.IWrapperRegistry registry)
+		public void Fix(Interfaces.IWrapperRegistry registry)
 		{
 		}
 
 		public System.IO.MemoryStream Content => null;
 
-		public SimPe.Interfaces.Files.IPackageFile Package => null;
+		public Interfaces.Files.IPackageFile Package => null;
 
-		public SimPe.Interfaces.Plugin.IPackedFileUI UIHandler
+		public Interfaces.Plugin.IPackedFileUI UIHandler
 		{
 			get
 			{
@@ -163,7 +163,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public SimPe.Interfaces.Plugin.IFileWrapper Activate()
+		public Interfaces.Plugin.IFileWrapper Activate()
 		{
 			return this;
 		}
@@ -174,7 +174,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public string FileExtension => ".err";
 
-		public SimPe.Interfaces.Files.IPackedFileDescriptor FileDescriptor => null;
+		public Interfaces.Files.IPackedFileDescriptor FileDescriptor => null;
 
 		#endregion
 

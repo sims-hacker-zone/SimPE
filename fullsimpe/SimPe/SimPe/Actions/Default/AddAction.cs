@@ -32,7 +32,7 @@ namespace SimPe.Actions.Default
 
 		public override bool ChangeEnabledStateEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs es
+			Events.ResourceEventArgs es
 		)
 		{
 			if (es.LoadedPackage == null)
@@ -45,7 +45,7 @@ namespace SimPe.Actions.Default
 
 		public override void ExecuteEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs es
+			Events.ResourceEventArgs es
 		)
 		{
 			if (!ChangeEnabledStateEventHandler(null, es))
@@ -53,9 +53,9 @@ namespace SimPe.Actions.Default
 				return;
 			}
 
-			SimPe.Collections.PackedFileDescriptors pfds = this.LoadDescriptors(true);
+			Collections.PackedFileDescriptors pfds = this.LoadDescriptors(true);
 			es.LoadedPackage.Package.BeginUpdate();
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				es.LoadedPackage.Package.Add(pfd);
 			}

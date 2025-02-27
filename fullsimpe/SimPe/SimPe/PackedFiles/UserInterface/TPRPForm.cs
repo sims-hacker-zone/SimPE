@@ -32,34 +32,34 @@ namespace SimPe.PackedFiles.UserInterface
 	/// <summary>
 	/// Summary description for TPRPForm.
 	/// </summary>
-	public class TPRPForm : System.Windows.Forms.Form, IPackedFileUI
+	public class TPRPForm : Form, IPackedFileUI
 	{
 		#region Form variables
 
-		private System.Windows.Forms.Label lbFilename;
-		private System.Windows.Forms.TextBox tbFilename;
-		private System.Windows.Forms.Button btnStrDelete;
-		private System.Windows.Forms.Button btnStrAdd;
-		private System.Windows.Forms.Label lbLabel;
-		private System.Windows.Forms.TextBox tbLabel;
-		private System.Windows.Forms.Button btnCancel;
-		private System.Windows.Forms.Button btnCommit;
-		private System.Windows.Forms.Label lbVersion;
-		private System.Windows.Forms.TabControl tabControl1;
-		private System.Windows.Forms.TabPage tpParams;
-		private System.Windows.Forms.TabPage tpLocals;
-		private System.Windows.Forms.Panel tprpPanel;
-		private System.Windows.Forms.TextBox tbVersion;
-		private System.Windows.Forms.ListView lvParams;
-		private System.Windows.Forms.ListView lvLocals;
-		private System.Windows.Forms.ColumnHeader chPID;
-		private System.Windows.Forms.ColumnHeader chPLabel;
-		private System.Windows.Forms.ColumnHeader chLID;
-		private System.Windows.Forms.ColumnHeader chLLabel;
-		private System.Windows.Forms.Button btnStrPrev;
-		private System.Windows.Forms.Button btnStrNext;
-		private System.Windows.Forms.Button btnTabNext;
-		private System.Windows.Forms.Button btnTabPrev;
+		private Label lbFilename;
+		private TextBox tbFilename;
+		private Button btnStrDelete;
+		private Button btnStrAdd;
+		private Label lbLabel;
+		private TextBox tbLabel;
+		private Button btnCancel;
+		private Button btnCommit;
+		private Label lbVersion;
+		private TabControl tabControl1;
+		private TabPage tpParams;
+		private TabPage tpLocals;
+		private Panel tprpPanel;
+		private TextBox tbVersion;
+		private ListView lvParams;
+		private ListView lvLocals;
+		private ColumnHeader chPID;
+		private ColumnHeader chPLabel;
+		private ColumnHeader chLID;
+		private ColumnHeader chLLabel;
+		private Button btnStrPrev;
+		private Button btnStrNext;
+		private Button btnTabNext;
+		private Button btnTabPrev;
 		private pjse.pjse_banner pjse_banner1;
 
 		/// <summary>
@@ -85,11 +85,11 @@ namespace SimPe.PackedFiles.UserInterface
 			);
 			if (SimPe.Helper.WindowsRegistry.UseBigIcons)
 			{
-				this.lvParams.Font = new System.Drawing.Font(
+				this.lvParams.Font = new Font(
 					"Microsoft Sans Serif",
 					11F
 				);
-				this.lvLocals.Font = new System.Drawing.Font(
+				this.lvLocals.Font = new Font(
 					"Microsoft Sans Serif",
 					11F
 				);
@@ -443,12 +443,12 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (!setHandler)
 			{
-				wrapper.WrapperChanged += new System.EventHandler(this.WrapperChanged);
+				wrapper.WrapperChanged += new EventHandler(this.WrapperChanged);
 				setHandler = true;
 			}
 		}
 
-		private void WrapperChanged(object sender, System.EventArgs e)
+		private void WrapperChanged(object sender, EventArgs e)
 		{
 			if (wrapper.TextOnly)
 			{
@@ -490,31 +490,31 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(TPRPForm));
-			this.btnCommit = new System.Windows.Forms.Button();
-			this.tprpPanel = new System.Windows.Forms.Panel();
+			this.btnCommit = new Button();
+			this.tprpPanel = new Panel();
 			this.pjse_banner1 = new pjse.pjse_banner();
-			this.btnTabNext = new System.Windows.Forms.Button();
-			this.btnTabPrev = new System.Windows.Forms.Button();
-			this.btnStrPrev = new System.Windows.Forms.Button();
-			this.btnStrNext = new System.Windows.Forms.Button();
-			this.tabControl1 = new System.Windows.Forms.TabControl();
-			this.tpParams = new System.Windows.Forms.TabPage();
-			this.lvParams = new System.Windows.Forms.ListView();
-			this.chPID = new System.Windows.Forms.ColumnHeader();
-			this.chPLabel = new System.Windows.Forms.ColumnHeader();
-			this.tpLocals = new System.Windows.Forms.TabPage();
-			this.lvLocals = new System.Windows.Forms.ListView();
-			this.chLID = new System.Windows.Forms.ColumnHeader();
-			this.chLLabel = new System.Windows.Forms.ColumnHeader();
-			this.btnCancel = new System.Windows.Forms.Button();
-			this.tbLabel = new System.Windows.Forms.TextBox();
-			this.btnStrDelete = new System.Windows.Forms.Button();
-			this.btnStrAdd = new System.Windows.Forms.Button();
-			this.lbVersion = new System.Windows.Forms.Label();
-			this.tbVersion = new System.Windows.Forms.TextBox();
-			this.tbFilename = new System.Windows.Forms.TextBox();
-			this.lbFilename = new System.Windows.Forms.Label();
-			this.lbLabel = new System.Windows.Forms.Label();
+			this.btnTabNext = new Button();
+			this.btnTabPrev = new Button();
+			this.btnStrPrev = new Button();
+			this.btnStrNext = new Button();
+			this.tabControl1 = new TabControl();
+			this.tpParams = new TabPage();
+			this.lvParams = new ListView();
+			this.chPID = new ColumnHeader();
+			this.chPLabel = new ColumnHeader();
+			this.tpLocals = new TabPage();
+			this.lvLocals = new ListView();
+			this.chLID = new ColumnHeader();
+			this.chLLabel = new ColumnHeader();
+			this.btnCancel = new Button();
+			this.tbLabel = new TextBox();
+			this.btnStrDelete = new Button();
+			this.btnStrAdd = new Button();
+			this.lbVersion = new Label();
+			this.tbVersion = new TextBox();
+			this.tbFilename = new TextBox();
+			this.lbFilename = new Label();
+			this.lbLabel = new Label();
 			this.tprpPanel.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tpParams.SuspendLayout();
@@ -525,7 +525,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.btnCommit, "btnCommit");
 			this.btnCommit.Name = "btnCommit";
-			this.btnCommit.Click += new System.EventHandler(this.btnCommit_Click);
+			this.btnCommit.Click += new EventHandler(this.btnCommit_Click);
 			//
 			// tprpPanel
 			//
@@ -553,7 +553,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.pjse_banner1, "pjse_banner1");
 			this.pjse_banner1.Name = "pjse_banner1";
 			this.pjse_banner1.SiblingVisible = true;
-			this.pjse_banner1.SiblingClick += new System.EventHandler(
+			this.pjse_banner1.SiblingClick += new EventHandler(
 				this.pjse_banner1_SiblingClick
 			);
 			//
@@ -562,28 +562,28 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.btnTabNext, "btnTabNext");
 			this.btnTabNext.Name = "btnTabNext";
 			this.btnTabNext.TabStop = false;
-			this.btnTabNext.Click += new System.EventHandler(this.btnTabNext_Click);
+			this.btnTabNext.Click += new EventHandler(this.btnTabNext_Click);
 			//
 			// btnTabPrev
 			//
 			resources.ApplyResources(this.btnTabPrev, "btnTabPrev");
 			this.btnTabPrev.Name = "btnTabPrev";
 			this.btnTabPrev.TabStop = false;
-			this.btnTabPrev.Click += new System.EventHandler(this.btnTabPrev_Click);
+			this.btnTabPrev.Click += new EventHandler(this.btnTabPrev_Click);
 			//
 			// btnStrPrev
 			//
 			resources.ApplyResources(this.btnStrPrev, "btnStrPrev");
 			this.btnStrPrev.Name = "btnStrPrev";
 			this.btnStrPrev.TabStop = false;
-			this.btnStrPrev.Click += new System.EventHandler(this.btnStrPrev_Click);
+			this.btnStrPrev.Click += new EventHandler(this.btnStrPrev_Click);
 			//
 			// btnStrNext
 			//
 			resources.ApplyResources(this.btnStrNext, "btnStrNext");
 			this.btnStrNext.Name = "btnStrNext";
 			this.btnStrNext.TabStop = false;
-			this.btnStrNext.Click += new System.EventHandler(this.btnStrNext_Click);
+			this.btnStrNext.Click += new EventHandler(this.btnStrNext_Click);
 			//
 			// tabControl1
 			//
@@ -592,7 +592,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tabControl1.Controls.Add(this.tpLocals);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.SelectedIndexChanged += new System.EventHandler(
+			this.tabControl1.SelectedIndexChanged += new EventHandler(
 				this.tabControl1_SelectedIndexChanged
 			);
 			//
@@ -605,7 +605,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// lvParams
 			//
 			this.lvParams.Columns.AddRange(
-				new System.Windows.Forms.ColumnHeader[] { this.chPID, this.chPLabel }
+				new ColumnHeader[] { this.chPID, this.chPLabel }
 			);
 			resources.ApplyResources(this.lvParams, "lvParams");
 			this.lvParams.FullRowSelect = true;
@@ -617,10 +617,10 @@ namespace SimPe.PackedFiles.UserInterface
 				.Nonclickable;
 			this.lvParams.HideSelection = false;
 			this.lvParams.Items.AddRange(
-				new System.Windows.Forms.ListViewItem[]
+				new ListViewItem[]
 				{
 					(
-						(System.Windows.Forms.ListViewItem)(
+						(ListViewItem)(
 							resources.GetObject("lvParams.Items")
 						)
 					),
@@ -630,10 +630,10 @@ namespace SimPe.PackedFiles.UserInterface
 			this.lvParams.Name = "lvParams";
 			this.lvParams.UseCompatibleStateImageBehavior = false;
 			this.lvParams.View = System.Windows.Forms.View.Details;
-			this.lvParams.ItemActivate += new System.EventHandler(
+			this.lvParams.ItemActivate += new EventHandler(
 				this.ListView_ItemActivate
 			);
-			this.lvParams.SelectedIndexChanged += new System.EventHandler(
+			this.lvParams.SelectedIndexChanged += new EventHandler(
 				this.ListView_SelectedIndexChanged
 			);
 			//
@@ -654,7 +654,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// lvLocals
 			//
 			this.lvLocals.Columns.AddRange(
-				new System.Windows.Forms.ColumnHeader[] { this.chLID, this.chLLabel }
+				new ColumnHeader[] { this.chLID, this.chLLabel }
 			);
 			resources.ApplyResources(this.lvLocals, "lvLocals");
 			this.lvLocals.FullRowSelect = true;
@@ -669,10 +669,10 @@ namespace SimPe.PackedFiles.UserInterface
 			this.lvLocals.Name = "lvLocals";
 			this.lvLocals.UseCompatibleStateImageBehavior = false;
 			this.lvLocals.View = System.Windows.Forms.View.Details;
-			this.lvLocals.ItemActivate += new System.EventHandler(
+			this.lvLocals.ItemActivate += new EventHandler(
 				this.ListView_ItemActivate
 			);
-			this.lvLocals.SelectedIndexChanged += new System.EventHandler(
+			this.lvLocals.SelectedIndexChanged += new EventHandler(
 				this.ListView_SelectedIndexChanged
 			);
 			//
@@ -689,29 +689,29 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.btnCancel, "btnCancel");
 			this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.btnCancel.Name = "btnCancel";
-			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+			this.btnCancel.Click += new EventHandler(this.btnCancel_Click);
 			//
 			// tbLabel
 			//
 			resources.ApplyResources(this.tbLabel, "tbLabel");
 			this.tbLabel.Name = "tbLabel";
-			this.tbLabel.TextChanged += new System.EventHandler(
+			this.tbLabel.TextChanged += new EventHandler(
 				this.tbText_TextChanged
 			);
-			this.tbLabel.Validated += new System.EventHandler(this.tbText_Enter);
-			this.tbLabel.Enter += new System.EventHandler(this.tbText_Enter);
+			this.tbLabel.Validated += new EventHandler(this.tbText_Enter);
+			this.tbLabel.Enter += new EventHandler(this.tbText_Enter);
 			//
 			// btnStrDelete
 			//
 			resources.ApplyResources(this.btnStrDelete, "btnStrDelete");
 			this.btnStrDelete.Name = "btnStrDelete";
-			this.btnStrDelete.Click += new System.EventHandler(this.btnStrDelete_Click);
+			this.btnStrDelete.Click += new EventHandler(this.btnStrDelete_Click);
 			//
 			// btnStrAdd
 			//
 			resources.ApplyResources(this.btnStrAdd, "btnStrAdd");
 			this.btnStrAdd.Name = "btnStrAdd";
-			this.btnStrAdd.Click += new System.EventHandler(this.btnStrAdd_Click);
+			this.btnStrAdd.Click += new EventHandler(this.btnStrAdd_Click);
 			//
 			// lbVersion
 			//
@@ -723,11 +723,11 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.tbVersion, "tbVersion");
 			this.tbVersion.Name = "tbVersion";
 			this.tbVersion.ReadOnly = true;
-			this.tbVersion.TextChanged += new System.EventHandler(
+			this.tbVersion.TextChanged += new EventHandler(
 				this.hex32_TextChanged
 			);
-			this.tbVersion.Validated += new System.EventHandler(this.hex32_Validated);
-			this.tbVersion.Enter += new System.EventHandler(this.tbText_Enter);
+			this.tbVersion.Validated += new EventHandler(this.hex32_Validated);
+			this.tbVersion.Enter += new EventHandler(this.tbText_Enter);
 			this.tbVersion.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex32_Validating
 			);
@@ -736,11 +736,11 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.tbFilename, "tbFilename");
 			this.tbFilename.Name = "tbFilename";
-			this.tbFilename.TextChanged += new System.EventHandler(
+			this.tbFilename.TextChanged += new EventHandler(
 				this.tbText_TextChanged
 			);
-			this.tbFilename.Validated += new System.EventHandler(this.tbText_Enter);
-			this.tbFilename.Enter += new System.EventHandler(this.tbText_Enter);
+			this.tbFilename.Validated += new EventHandler(this.tbText_Enter);
+			this.tbFilename.Enter += new EventHandler(this.tbText_Enter);
 			//
 			// lbFilename
 			//
@@ -775,7 +775,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		#endregion
 
-		private void tabControl1_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
 			{
@@ -785,7 +785,7 @@ namespace SimPe.PackedFiles.UserInterface
 			setTab(tabControl1.SelectedIndex);
 		}
 
-		private void ListView_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void ListView_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
 			{
@@ -799,17 +799,17 @@ namespace SimPe.PackedFiles.UserInterface
 			);
 		}
 
-		private void ListView_ItemActivate(object sender, System.EventArgs e)
+		private void ListView_ItemActivate(object sender, EventArgs e)
 		{
 			this.tbLabel.Focus();
 		}
 
-		private void btnCommit_Click(object sender, System.EventArgs e)
+		private void btnCommit_Click(object sender, EventArgs e)
 		{
 			this.Commit();
 		}
 
-		private void btnCancel_Click(object sender, System.EventArgs e)
+		private void btnCancel_Click(object sender, EventArgs e)
 		{
 			this.Cancel();
 			this.tbLabel.SelectAll();
@@ -839,44 +839,44 @@ namespace SimPe.PackedFiles.UserInterface
 			SimPe.RemoteControl.OpenPackedFile(bhav.FileDescriptor, bhav.Package);
 		}
 
-		private void btnStrPrev_Click(object sender, System.EventArgs e)
+		private void btnStrPrev_Click(object sender, EventArgs e)
 		{
 			setIndex(index - 1);
 		}
 
-		private void btnStrNext_Click(object sender, System.EventArgs e)
+		private void btnStrNext_Click(object sender, EventArgs e)
 		{
 			setIndex(index + 1);
 		}
 
-		private void btnTabPrev_Click(object sender, System.EventArgs e)
+		private void btnTabPrev_Click(object sender, EventArgs e)
 		{
 			this.setTab(tab - 1);
 		}
 
-		private void btnTabNext_Click(object sender, System.EventArgs e)
+		private void btnTabNext_Click(object sender, EventArgs e)
 		{
 			this.setTab(tab + 1);
 		}
 
-		private void btnStrAdd_Click(object sender, System.EventArgs e)
+		private void btnStrAdd_Click(object sender, EventArgs e)
 		{
 			this.TPRPItemAdd();
 			this.tbLabel.SelectAll();
 			this.tbLabel.Focus();
 		}
 
-		private void btnStrDelete_Click(object sender, System.EventArgs e)
+		private void btnStrDelete_Click(object sender, EventArgs e)
 		{
 			this.TPRPItemDelete();
 		}
 
-		private void tbText_Enter(object sender, System.EventArgs e)
+		private void tbText_Enter(object sender, EventArgs e)
 		{
 			((TextBox)sender).SelectAll();
 		}
 
-		private void tbText_TextChanged(object sender, System.EventArgs e)
+		private void tbText_TextChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
 			{
@@ -898,7 +898,7 @@ namespace SimPe.PackedFiles.UserInterface
 			internalchg = false;
 		}
 
-		private void hex32_TextChanged(object sender, System.EventArgs ev)
+		private void hex32_TextChanged(object sender, EventArgs ev)
 		{
 			if (internalchg)
 			{
@@ -935,7 +935,7 @@ namespace SimPe.PackedFiles.UserInterface
 			hex32_Validated(sender, null);
 		}
 
-		private void hex32_Validated(object sender, System.EventArgs e)
+		private void hex32_Validated(object sender, EventArgs e)
 		{
 			uint val = 0;
 			switch (alHex32.IndexOf(sender))

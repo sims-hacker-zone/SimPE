@@ -45,7 +45,7 @@ namespace SimPe.Interfaces.Providers
 		}
 
 		object FindTag(Type t);
-		System.Collections.ArrayList Tags
+		ArrayList Tags
 		{
 			get;
 		}
@@ -55,17 +55,17 @@ namespace SimPe.Interfaces.Providers
 			get;
 		}
 
-		SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem LtxtFileIndexItem
+		Scenegraph.IScenegraphFileIndexItem LtxtFileIndexItem
 		{
 			get;
 		}
 
-		SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem BnfoFileIndexItem
+		Scenegraph.IScenegraphFileIndexItem BnfoFileIndexItem
 		{
 			get;
 		}
 
-		SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem StrFileIndexItem
+		Scenegraph.IScenegraphFileIndexItem StrFileIndexItem
 		{
 			get;
 		}
@@ -98,9 +98,9 @@ namespace SimPe.Interfaces.Providers
 			get;
 		}
 
-		SimPe.Interfaces.Providers.ILotItem FindLot(uint inst);
-		SimPe.Interfaces.Providers.ILotItem[] FindLotsOwnedBySim(uint siminst);
+		ILotItem FindLot(uint inst);
+		ILotItem[] FindLotsOwnedBySim(uint siminst);
 
-		event SimPe.Interfaces.Providers.LoadLotData LoadingLot;
+		event LoadLotData LoadingLot;
 	}
 }

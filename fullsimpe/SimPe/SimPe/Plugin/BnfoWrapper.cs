@@ -33,9 +33,9 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class Bnfo
 		: AbstractWrapper,
-			SimPe.Interfaces.Plugin.IFileWrapper,
-			SimPe.Interfaces.Plugin.IFileWrapperSaveExtension,
-			SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper
+			IFileWrapper,
+			IFileWrapperSaveExtension,
+			IMultiplePackedFileWrapper
 	{
 		#region Attributes
 		uint ver;
@@ -125,7 +125,7 @@ namespace SimPe.Plugin
 			: base()
 		{
 			Version = BnfoVersions.Business;
-			CustomerItems = new SimPe.Plugin.Collections.BnfoCustomerItems(this);
+			CustomerItems = new Collections.BnfoCustomerItems(this);
 		}
 
 		#region IWrapper Member
@@ -172,9 +172,9 @@ namespace SimPe.Plugin
 			reader.BaseStream.Seek(pos, System.IO.SeekOrigin.Begin);
 			*/
 			EmployeeCount = reader.ReadInt32();
-			Array.Resize<ushort>(ref empls, EmployeeCount);
-			Array.Resize<int>(ref pr, EmployeeCount);
-			Array.Resize<uint>(ref a, EmployeeCount);
+			Array.Resize(ref empls, EmployeeCount);
+			Array.Resize(ref pr, EmployeeCount);
+			Array.Resize(ref a, EmployeeCount);
 			for (int i = 0; i < EmployeeCount; i++)
 			{
 				empls[i] = reader.ReadUInt16();
@@ -191,8 +191,8 @@ namespace SimPe.Plugin
 
 			if (HistoryCount > 0 && over.Length > 60)
 			{
-				Array.Resize<int>(ref reven, HistoryCount);
-				Array.Resize<int>(ref expe, HistoryCount);
+				Array.Resize(ref reven, HistoryCount);
+				Array.Resize(ref expe, HistoryCount);
 				reader.BaseStream.Seek(-8, System.IO.SeekOrigin.Current);
 				// first is + 52, I would jump over it so I must pull back 8?
 				for (int i = 0; i < HistoryCount; i++)

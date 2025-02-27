@@ -30,22 +30,22 @@ namespace SimPe.Plugin.TabPage
 		//System.Windows.Forms.UserControl
 		System.Windows.Forms.TabPage
 	{
-		private System.Windows.Forms.GroupBox groupBox8;
-		private System.Windows.Forms.GroupBox groupBox9;
-		private System.Windows.Forms.LinkLabel ll_ogn_add;
-		private System.Windows.Forms.TextBox tb_ogn_2;
-		private System.Windows.Forms.Label label20;
-		private System.Windows.Forms.TextBox tb_ogn_1;
-		private System.Windows.Forms.Label label21;
-		internal System.Windows.Forms.ListBox lb_ogn;
-		private System.Windows.Forms.LinkLabel ll_ogn_delete;
-		private System.Windows.Forms.TextBox tb_ogn_3;
-		private System.Windows.Forms.Label label23;
-		internal System.Windows.Forms.TextBox tb_ogn_file;
-		private System.Windows.Forms.Label label18;
-		internal System.Windows.Forms.TextBox tb_ogn_ver;
-		private System.Windows.Forms.Label label27;
-		private System.Windows.Forms.ToolTip toolTip1;
+		private GroupBox groupBox8;
+		private GroupBox groupBox9;
+		private LinkLabel ll_ogn_add;
+		private TextBox tb_ogn_2;
+		private Label label20;
+		private TextBox tb_ogn_1;
+		private Label label21;
+		internal ListBox lb_ogn;
+		private LinkLabel ll_ogn_delete;
+		private TextBox tb_ogn_3;
+		private Label label23;
+		internal TextBox tb_ogn_file;
+		private Label label18;
+		internal TextBox tb_ogn_ver;
+		private Label label27;
+		private ToolTip toolTip1;
 		private System.ComponentModel.IContainer components;
 
 		public ObjectGraphNode()
@@ -93,22 +93,22 @@ namespace SimPe.Plugin.TabPage
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.groupBox8 = new System.Windows.Forms.GroupBox();
-			this.tb_ogn_ver = new System.Windows.Forms.TextBox();
-			this.label27 = new System.Windows.Forms.Label();
-			this.tb_ogn_file = new System.Windows.Forms.TextBox();
-			this.label18 = new System.Windows.Forms.Label();
-			this.groupBox9 = new System.Windows.Forms.GroupBox();
-			this.tb_ogn_3 = new System.Windows.Forms.TextBox();
-			this.label23 = new System.Windows.Forms.Label();
-			this.ll_ogn_add = new System.Windows.Forms.LinkLabel();
-			this.tb_ogn_2 = new System.Windows.Forms.TextBox();
-			this.label20 = new System.Windows.Forms.Label();
-			this.tb_ogn_1 = new System.Windows.Forms.TextBox();
-			this.label21 = new System.Windows.Forms.Label();
-			this.lb_ogn = new System.Windows.Forms.ListBox();
-			this.ll_ogn_delete = new System.Windows.Forms.LinkLabel();
-			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+			this.groupBox8 = new GroupBox();
+			this.tb_ogn_ver = new TextBox();
+			this.label27 = new Label();
+			this.tb_ogn_file = new TextBox();
+			this.label18 = new Label();
+			this.groupBox9 = new GroupBox();
+			this.tb_ogn_3 = new TextBox();
+			this.label23 = new Label();
+			this.ll_ogn_add = new LinkLabel();
+			this.tb_ogn_2 = new TextBox();
+			this.label20 = new Label();
+			this.tb_ogn_1 = new TextBox();
+			this.label21 = new Label();
+			this.lb_ogn = new ListBox();
+			this.ll_ogn_delete = new LinkLabel();
+			this.toolTip1 = new ToolTip(this.components);
 			this.groupBox8.SuspendLayout();
 			this.groupBox9.SuspendLayout();
 			this.SuspendLayout();
@@ -127,7 +127,7 @@ namespace SimPe.Plugin.TabPage
 			// groupBox8
 			//
 			this.groupBox8.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -169,7 +169,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_ogn_ver.Size = new System.Drawing.Size(88, 21);
 			this.tb_ogn_ver.TabIndex = 24;
 			this.tb_ogn_ver.Text = "0x00000000";
-			this.tb_ogn_ver.TextChanged += new System.EventHandler(
+			this.tb_ogn_ver.TextChanged += new EventHandler(
 				this.OGNChangeSettings
 			);
 			//
@@ -192,7 +192,7 @@ namespace SimPe.Plugin.TabPage
 			// tb_ogn_file
 			//
 			this.tb_ogn_file.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -213,7 +213,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_ogn_file.Size = new System.Drawing.Size(480, 21);
 			this.tb_ogn_file.TabIndex = 20;
 			this.tb_ogn_file.Text = "0x0000";
-			this.tb_ogn_file.TextChanged += new System.EventHandler(
+			this.tb_ogn_file.TextChanged += new EventHandler(
 				this.OGNChangeSettings
 			);
 			//
@@ -236,7 +236,7 @@ namespace SimPe.Plugin.TabPage
 			// groupBox9
 			//
 			this.groupBox9.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -287,7 +287,7 @@ namespace SimPe.Plugin.TabPage
 				this.tb_ogn_3,
 				"Index of the DataList Extenion in the current Blocklist"
 			);
-			this.tb_ogn_3.TextChanged += new System.EventHandler(this.OGNChangedItems);
+			this.tb_ogn_3.TextChanged += new EventHandler(this.OGNChangedItems);
 			//
 			// label23
 			//
@@ -308,7 +308,7 @@ namespace SimPe.Plugin.TabPage
 			// ll_ogn_add
 			//
 			this.ll_ogn_add.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -323,7 +323,7 @@ namespace SimPe.Plugin.TabPage
 			this.ll_ogn_add.TabStop = true;
 			this.ll_ogn_add.Text = "add";
 			this.ll_ogn_add.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.OGNItemsAdd
 				);
 			//
@@ -346,7 +346,7 @@ namespace SimPe.Plugin.TabPage
 				"0x00=Independant DatListExtension, 0x01=DataListExtension depends on anthoer RCOL"
 					+ ""
 			);
-			this.tb_ogn_2.TextChanged += new System.EventHandler(this.OGNChangedItems);
+			this.tb_ogn_2.TextChanged += new EventHandler(this.OGNChangedItems);
 			//
 			// label20
 			//
@@ -379,7 +379,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_ogn_1.TabIndex = 2;
 			this.tb_ogn_1.Text = "0x00";
 			this.toolTip1.SetToolTip(this.tb_ogn_1, "0x01=Enabled");
-			this.tb_ogn_1.TextChanged += new System.EventHandler(this.OGNChangedItems);
+			this.tb_ogn_1.TextChanged += new EventHandler(this.OGNChangedItems);
 			//
 			// label21
 			//
@@ -400,7 +400,7 @@ namespace SimPe.Plugin.TabPage
 			// lb_ogn
 			//
 			this.lb_ogn.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -421,12 +421,12 @@ namespace SimPe.Plugin.TabPage
 			this.lb_ogn.Name = "lb_ogn";
 			this.lb_ogn.Size = new System.Drawing.Size(136, 216);
 			this.lb_ogn.TabIndex = 0;
-			this.lb_ogn.SelectedIndexChanged += new System.EventHandler(this.OGNSelect);
+			this.lb_ogn.SelectedIndexChanged += new EventHandler(this.OGNSelect);
 			//
 			// ll_ogn_delete
 			//
 			this.ll_ogn_delete.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -441,7 +441,7 @@ namespace SimPe.Plugin.TabPage
 			this.ll_ogn_delete.TabStop = true;
 			this.ll_ogn_delete.Text = "delete";
 			this.ll_ogn_delete.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.OGNItemsDelete
 				);
 			//
@@ -453,7 +453,7 @@ namespace SimPe.Plugin.TabPage
 		}
 		#endregion
 
-		private void OGNChangeSettings(object sender, System.EventArgs e)
+		private void OGNChangeSettings(object sender, EventArgs e)
 		{
 			if (Tag == null)
 			{
@@ -462,7 +462,7 @@ namespace SimPe.Plugin.TabPage
 
 			try
 			{
-				SimPe.Plugin.ObjectGraphNode ogn = (SimPe.Plugin.ObjectGraphNode)Tag;
+				Plugin.ObjectGraphNode ogn = (Plugin.ObjectGraphNode)Tag;
 
 				ogn.FileName = tb_ogn_file.Text;
 				ogn.Version = Convert.ToUInt32(tb_ogn_ver.Text, 16);
@@ -475,7 +475,7 @@ namespace SimPe.Plugin.TabPage
 		}
 
 		#region Select OGN Items
-		private void OGNSelect(object sender, System.EventArgs e)
+		private void OGNSelect(object sender, EventArgs e)
 		{
 			if (Tag == null)
 			{
@@ -495,7 +495,7 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				lb_ogn.Tag = true;
-				SimPe.Plugin.ObjectGraphNode ogn = (SimPe.Plugin.ObjectGraphNode)Tag;
+				Plugin.ObjectGraphNode ogn = (Plugin.ObjectGraphNode)Tag;
 				ObjectGraphNodeItem b = (ObjectGraphNodeItem)
 					lb_ogn.Items[lb_ogn.SelectedIndex];
 
@@ -514,7 +514,7 @@ namespace SimPe.Plugin.TabPage
 			}
 		}
 
-		private void OGNChangedItems(object sender, System.EventArgs e)
+		private void OGNChangedItems(object sender, EventArgs e)
 		{
 			if (Tag == null)
 			{
@@ -534,7 +534,7 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				lb_ogn.Tag = true;
-				SimPe.Plugin.ObjectGraphNode ogn = (SimPe.Plugin.ObjectGraphNode)Tag;
+				Plugin.ObjectGraphNode ogn = (Plugin.ObjectGraphNode)Tag;
 				ObjectGraphNodeItem b = (ObjectGraphNodeItem)
 					lb_ogn.Items[lb_ogn.SelectedIndex];
 
@@ -557,7 +557,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void OGNItemsAdd(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (Tag == null)
@@ -568,7 +568,7 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				lb_ogn.Tag = true;
-				SimPe.Plugin.ObjectGraphNode ogn = (SimPe.Plugin.ObjectGraphNode)Tag;
+				Plugin.ObjectGraphNode ogn = (Plugin.ObjectGraphNode)Tag;
 				ObjectGraphNodeItem b = new ObjectGraphNodeItem();
 
 				tb_ogn_1.Text = "0x" + Helper.HexString(b.Enabled);
@@ -591,7 +591,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void OGNItemsDelete(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (Tag == null)
@@ -607,7 +607,7 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				lb_ogn.Tag = true;
-				SimPe.Plugin.ObjectGraphNode ogn = (SimPe.Plugin.ObjectGraphNode)Tag;
+				Plugin.ObjectGraphNode ogn = (Plugin.ObjectGraphNode)Tag;
 				ObjectGraphNodeItem b = (ObjectGraphNodeItem)
 					lb_ogn.Items[lb_ogn.SelectedIndex];
 

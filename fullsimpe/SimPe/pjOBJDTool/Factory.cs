@@ -39,7 +39,7 @@ namespace pjOBJDTool
 		/// Returns a List of all available Plugins in this Package
 		/// </summary>
 		/// <returns>A List of all provided Plugins (=FileType Wrappers)</returns>
-		public override SimPe.Interfaces.IWrapper[] KnownWrappers
+		public override IWrapper[] KnownWrappers
 		{
 			get
 			{

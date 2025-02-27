@@ -24,7 +24,7 @@ namespace SimPe
 	/// <summary>
 	/// Can be used as a Wrapper Class when adding unnamed Objects to a List
 	/// </summary>
-	public class CountedListItem : System.IDisposable
+	public class CountedListItem : IDisposable
 	{
 		bool hex;
 

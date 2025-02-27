@@ -58,7 +58,7 @@ namespace pjse
 		public void Create(bool fromCurrent)
 		{
 			guidIndex = new Dictionary<uint, IndexItem>();
-			pjse.FileTable.Entry[] items =
+			FileTable.Entry[] items =
 				(fromCurrent && pjse.FileTable.GFT.CurrentPackage != null)
 					? pjse.FileTable.GFT[
 						pjse.FileTable.GFT.CurrentPackage,
@@ -69,7 +69,7 @@ namespace pjse
 			SimPe.Wait.Start(items.Length);
 			try
 			{
-				foreach (pjse.FileTable.Entry item in items)
+				foreach (FileTable.Entry item in items)
 				{
 					System.Windows.Forms.Application.DoEvents();
 					try
@@ -82,7 +82,7 @@ namespace pjse
 
 						IndexItem ii = new IndexItem();
 
-						pjse.FileTable.Entry[] globs = pjse.FileTable.GFT[
+						FileTable.Entry[] globs = pjse.FileTable.GFT[
 							0x474C4F42,
 							item.Group
 						];
@@ -91,7 +91,7 @@ namespace pjse
 								? 0
 								: ((SimPe.Plugin.Glob)globs[0].Wrapper).SemiGlobalGroup;
 
-						System.IO.BinaryReader reader = wrapper.StoredData;
+						BinaryReader reader = wrapper.StoredData;
 						if (reader.BaseStream.Length >= 0x40) // filename length
 						{
 							if (wrapper.FileDescriptor.Group == 0xFFFFFFFF)
@@ -151,7 +151,7 @@ namespace pjse
 			{
 				bool hadV2hdr = false;
 				guidIndex = new Dictionary<uint, IndexItem>();
-				System.IO.StreamReader sr = new StreamReader(fromFile);
+				StreamReader sr = new StreamReader(fromFile);
 				for (string line = sr.ReadLine(); line != null; line = sr.ReadLine())
 				{
 					if (line.StartsWith("#"))
@@ -188,7 +188,7 @@ namespace pjse
 						ii.objdName = s[4].Trim();
 						guidIndex[guid] = ii;
 					}
-					catch (System.FormatException)
+					catch (FormatException)
 					{
 						continue;
 					}
@@ -218,7 +218,7 @@ namespace pjse
 				);
 			}
 
-			System.IO.StreamWriter sw = new StreamWriter(toFile, false);
+			StreamWriter sw = new StreamWriter(toFile, false);
 			sw.WriteLine("# PJSE GUID Index - version 2");
 			foreach (UInt32 guid in guidIndex.Keys)
 			{
@@ -256,7 +256,7 @@ namespace pjse
 			ii.objdName = name.Trim() + "**";
 			ii.objdType = type;
 			ii.objdGroup = group;
-			pjse.FileTable.Entry[] globs = pjse.FileTable.GFT[0x474C4F42, group];
+			FileTable.Entry[] globs = pjse.FileTable.GFT[0x474C4F42, group];
 			ii.semiGlobal =
 				(globs.Length == 0)
 					? 0

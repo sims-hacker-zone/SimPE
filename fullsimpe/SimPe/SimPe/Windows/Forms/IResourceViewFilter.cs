@@ -8,7 +8,7 @@ namespace SimPe.Windows.Forms
 		{
 			get;
 		}
-		bool IsFiltered(SimPe.Interfaces.Files.IPackedFileDescriptor pfd);
+		bool IsFiltered(Interfaces.Files.IPackedFileDescriptor pfd);
 		event EventHandler ChangedFilter;
 	}
 }

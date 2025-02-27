@@ -30,14 +30,14 @@ namespace SimPe.PackedFiles.UserInterface
 	public class ScorUI
 		:
 		//System.Windows.Forms.UserControl
-		SimPe.Windows.Forms.WrapperBaseControl,
-			SimPe.Interfaces.Plugin.IPackedFileUI
+		Windows.Forms.WrapperBaseControl,
+			Interfaces.Plugin.IPackedFileUI
 	{
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox tbunk1;
-		private System.Windows.Forms.TextBox tbunk2;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.ListBox lb;
+		private Label label1;
+		private TextBox tbunk1;
+		private TextBox tbunk2;
+		private Label label2;
+		private ListBox lb;
 		private Panel pnContainer;
 		private Button btAdd;
 		private Button btRem;
@@ -83,15 +83,15 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new System.Windows.Forms.Label();
-			this.tbunk1 = new System.Windows.Forms.TextBox();
-			this.tbunk2 = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.lb = new System.Windows.Forms.ListBox();
-			this.pnContainer = new System.Windows.Forms.Panel();
-			this.cbType = new System.Windows.Forms.ComboBox();
-			this.btAdd = new System.Windows.Forms.Button();
-			this.btRem = new System.Windows.Forms.Button();
+			this.label1 = new Label();
+			this.tbunk1 = new TextBox();
+			this.tbunk2 = new TextBox();
+			this.label2 = new Label();
+			this.lb = new ListBox();
+			this.pnContainer = new Panel();
+			this.cbType = new ComboBox();
+			this.btAdd = new Button();
+			this.btRem = new Button();
 			this.SuspendLayout();
 			//
 			// label1
@@ -147,7 +147,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// lb
 			//
 			this.lb.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -163,14 +163,14 @@ namespace SimPe.PackedFiles.UserInterface
 			this.lb.Name = "lb";
 			this.lb.Size = new System.Drawing.Size(229, 104);
 			this.lb.TabIndex = 4;
-			this.lb.SelectedIndexChanged += new System.EventHandler(
+			this.lb.SelectedIndexChanged += new EventHandler(
 				this.lb_SelectedIndexChanged
 			);
 			//
 			// pnContainer
 			//
 			this.pnContainer.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -189,7 +189,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// cbType
 			//
 			this.cbType.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -202,14 +202,14 @@ namespace SimPe.PackedFiles.UserInterface
 			this.cbType.Name = "cbType";
 			this.cbType.Size = new System.Drawing.Size(157, 21);
 			this.cbType.TabIndex = 6;
-			this.cbType.SelectedIndexChanged += new System.EventHandler(
+			this.cbType.SelectedIndexChanged += new EventHandler(
 				this.comboBox1_SelectedIndexChanged
 			);
 			//
 			// btAdd
 			//
 			this.btAdd.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -222,12 +222,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.btAdd.TabIndex = 7;
 			this.btAdd.Text = "Add";
 			this.btAdd.UseVisualStyleBackColor = true;
-			this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
+			this.btAdd.Click += new EventHandler(this.btAdd_Click);
 			//
 			// btRem
 			//
 			this.btRem.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -240,7 +240,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.btRem.TabIndex = 8;
 			this.btRem.Text = "Remove";
 			this.btRem.UseVisualStyleBackColor = true;
-			this.btRem.Click += new System.EventHandler(this.btRem_Click);
+			this.btRem.Click += new EventHandler(this.btRem_Click);
 			//
 			// ScorUI
 			//
@@ -279,7 +279,7 @@ namespace SimPe.PackedFiles.UserInterface
 		#region IPackedFileUI Member
 
 		protected override void OnWrapperChanged(
-			SimPe.Windows.Forms.WrapperBaseControl.WrapperChangedEventArgs e
+			WrapperChangedEventArgs e
 		)
 		{
 			if (e.OldWrapper != null)
@@ -319,7 +319,7 @@ namespace SimPe.PackedFiles.UserInterface
 			lb.SelectedIndex = lb.Items.Count - 1;
 		}
 
-		public Wrapper.Scor Scor => (SimPe.PackedFiles.Wrapper.Scor)Wrapper;
+		public Scor Scor => (Scor)Wrapper;
 
 		protected override void RefreshGUI()
 		{
@@ -329,7 +329,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			btRem.Enabled = false;
 			lb.Items.Clear();
-			foreach (Wrapper.ScorItem si in Scor)
+			foreach (ScorItem si in Scor)
 			{
 				lb.Items.Add(si);
 			}
@@ -366,7 +366,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void lb_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			Wrapper.ScorItem si = lb.SelectedItem as Wrapper.ScorItem;
+			ScorItem si = lb.SelectedItem as ScorItem;
 			pnContainer.Controls.Clear();
 			if (si != null)
 			{

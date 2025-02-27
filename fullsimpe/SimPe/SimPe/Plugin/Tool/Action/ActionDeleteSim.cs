@@ -25,14 +25,14 @@ namespace SimPe.Plugin.Tool.Action
 	/// <summary>
 	/// The Delete Sims Action
 	/// </summary>
-	public class ActionDeleteSim : SimPe.Interfaces.IToolAction
+	public class ActionDeleteSim : Interfaces.IToolAction
 	{
 		bool deleteInvalidDna = false;
 
 		#region IToolAction Member
 		public virtual bool ChangeEnabledStateEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs es
+			Events.ResourceEventArgs es
 		)
 		{
 			if (es.Loaded && Helper.IsNeighborhoodFile(es.LoadedPackage.FileName))
@@ -57,7 +57,7 @@ namespace SimPe.Plugin.Tool.Action
 			return false;
 		}
 
-		public void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs e)
+		public void ExecuteEventHandler(object sender, Events.ResourceEventArgs e)
 		{
 			if (!ChangeEnabledStateEventHandler(null, e))
 			{
@@ -99,8 +99,8 @@ namespace SimPe.Plugin.Tool.Action
 			{
 				for (int i = 0; i < e.Items.Count; i++)
 				{
-					SimPe.PackedFiles.Wrapper.ExtSDesc victim =
-						new SimPe.PackedFiles.Wrapper.ExtSDesc();
+					PackedFiles.Wrapper.ExtSDesc victim =
+						new PackedFiles.Wrapper.ExtSDesc();
 					victim.ProcessData(e.Items[i].Resource);
 
 					c += DeleteSim(victim);
@@ -108,13 +108,13 @@ namespace SimPe.Plugin.Tool.Action
 			}
 			else
 			{
-				SimPe.PackedFiles.Wrapper.ExtSDesc victim =
-					new SimPe.PackedFiles.Wrapper.ExtSDesc();
-				SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds =
+				PackedFiles.Wrapper.ExtSDesc victim =
+					new PackedFiles.Wrapper.ExtSDesc();
+				Interfaces.Files.IPackedFileDescriptor[] pfds =
 					e.LoadedPackage.Package.FindFiles(
 						Data.MetaData.SIM_DESCRIPTION_FILE
 					);
-				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					victim.ProcessData(pfd, e.LoadedPackage.Package);
 					if (
@@ -140,7 +140,7 @@ namespace SimPe.Plugin.Tool.Action
 		}
 		#endregion
 
-		int DeleteSim(SimPe.PackedFiles.Wrapper.ExtSDesc victim)
+		int DeleteSim(PackedFiles.Wrapper.ExtSDesc victim)
 		{
 			int ret = 0;
 			uint inst = victim.FileDescriptor.Instance;
@@ -165,8 +165,8 @@ namespace SimPe.Plugin.Tool.Action
 		int DeleteCharacterFile(
 			uint inst,
 			uint guid,
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.PackedFiles.Wrapper.ExtSDesc victim
+			Interfaces.Files.IPackageFile pkg,
+			PackedFiles.Wrapper.ExtSDesc victim
 		)
 		{
 			int ret = 0;
@@ -177,7 +177,7 @@ namespace SimPe.Plugin.Tool.Action
 			{
 				try
 				{
-					SimPe.Packages.StreamItem si =
+					Packages.StreamItem si =
 						SimPe.Packages.StreamFactory.UseStream(
 							victim.CharacterFileName,
 							System.IO.FileAccess.Read
@@ -198,14 +198,14 @@ namespace SimPe.Plugin.Tool.Action
 		void DeleteSRels(
 			uint inst,
 			uint guid,
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.PackedFiles.Wrapper.ExtSDesc victim
+			Interfaces.Files.IPackageFile pkg,
+			PackedFiles.Wrapper.ExtSDesc victim
 		)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
 				Data.MetaData.RELATION_FILE
 			);
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				uint up = (pfd.Instance & 0xFFFF0000u) >> 16;
 				uint low = (pfd.Instance & 0x0000FFFFFu);
@@ -221,12 +221,12 @@ namespace SimPe.Plugin.Tool.Action
 			uint type,
 			uint inst,
 			uint guid,
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.PackedFiles.Wrapper.ExtSDesc victim
+			Interfaces.Files.IPackageFile pkg,
+			PackedFiles.Wrapper.ExtSDesc victim
 		)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(type);
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(type);
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				if (pfd.Instance == inst)
 				{
@@ -238,22 +238,22 @@ namespace SimPe.Plugin.Tool.Action
 		void DeleteFamilyTies(
 			uint inst,
 			uint guid,
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.PackedFiles.Wrapper.ExtSDesc victim
+			Interfaces.Files.IPackageFile pkg,
+			PackedFiles.Wrapper.ExtSDesc victim
 		)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
 				0x8C870743
 			);
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				SimPe.PackedFiles.Wrapper.FamilyTies ft =
-					new SimPe.PackedFiles.Wrapper.FamilyTies(null);
+				PackedFiles.Wrapper.FamilyTies ft =
+					new PackedFiles.Wrapper.FamilyTies(null);
 				ft.ProcessData(pfd, pkg);
 
 				ArrayList sims = new ArrayList();
 				foreach (
-					SimPe.PackedFiles.Wrapper.Supporting.FamilyTieSim fts in ft.Sims
+					PackedFiles.Wrapper.Supporting.FamilyTieSim fts in ft.Sims
 				)
 				{
 					if (fts.Instance != inst)
@@ -262,7 +262,7 @@ namespace SimPe.Plugin.Tool.Action
 
 						ArrayList items = new ArrayList();
 						foreach (
-							SimPe.PackedFiles.Wrapper.Supporting.FamilyTieItem fti in fts.Ties
+							PackedFiles.Wrapper.Supporting.FamilyTieItem fti in fts.Ties
 						)
 						{
 							if (fti.Instance != inst)
@@ -272,15 +272,15 @@ namespace SimPe.Plugin.Tool.Action
 						}
 
 						fts.Ties =
-							new SimPe.PackedFiles.Wrapper.Supporting.FamilyTieItem[
+							new PackedFiles.Wrapper.Supporting.FamilyTieItem[
 								items.Count
 							];
 						items.CopyTo(fts.Ties);
 					}
 				}
 
-				SimPe.PackedFiles.Wrapper.Supporting.FamilyTieSim[] fsims =
-					new SimPe.PackedFiles.Wrapper.Supporting.FamilyTieSim[sims.Count];
+				PackedFiles.Wrapper.Supporting.FamilyTieSim[] fsims =
+					new PackedFiles.Wrapper.Supporting.FamilyTieSim[sims.Count];
 				sims.CopyTo(fsims);
 
 				ft.Sims = fsims;
@@ -292,16 +292,16 @@ namespace SimPe.Plugin.Tool.Action
 		void DeleteMemories(
 			uint inst,
 			uint guid,
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.PackedFiles.Wrapper.ExtSDesc victim
+			Interfaces.Files.IPackageFile pkg,
+			PackedFiles.Wrapper.ExtSDesc victim
 		)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
 				0x4E474248
 			);
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				SimPe.Plugin.Ngbh n = new Ngbh(null);
+				Ngbh n = new Ngbh(null);
 				n.ProcessData(pfd, pkg);
 
 				ArrayList slotsToRemove = new ArrayList();
@@ -369,16 +369,16 @@ namespace SimPe.Plugin.Tool.Action
 		void DeleteFamMembers(
 			uint inst,
 			uint guid,
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.PackedFiles.Wrapper.ExtSDesc victim
+			Interfaces.Files.IPackageFile pkg,
+			PackedFiles.Wrapper.ExtSDesc victim
 		)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
 				0x46414D49
 			);
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				SimPe.PackedFiles.Wrapper.Fami f = new SimPe.PackedFiles.Wrapper.Fami(
+				PackedFiles.Wrapper.Fami f = new PackedFiles.Wrapper.Fami(
 					null
 				);
 				f.ProcessData(pfd, pkg);
@@ -402,14 +402,14 @@ namespace SimPe.Plugin.Tool.Action
 		void DeleteRelations(
 			uint inst,
 			uint guid,
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.PackedFiles.Wrapper.ExtSDesc victim
+			Interfaces.Files.IPackageFile pkg,
+			PackedFiles.Wrapper.ExtSDesc victim
 		)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
 				Data.MetaData.SIM_DESCRIPTION_FILE
 			);
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				if (pfd.Instance == inst)
 				{
@@ -417,8 +417,8 @@ namespace SimPe.Plugin.Tool.Action
 				}
 
 				ArrayList list = new ArrayList();
-				SimPe.PackedFiles.Wrapper.ExtSDesc sdsc =
-					new SimPe.PackedFiles.Wrapper.ExtSDesc();
+				PackedFiles.Wrapper.ExtSDesc sdsc =
+					new PackedFiles.Wrapper.ExtSDesc();
 				sdsc.ProcessData(pfd, pkg);
 
 				foreach (uint i in sdsc.Relations.SimInstances)
@@ -439,28 +439,28 @@ namespace SimPe.Plugin.Tool.Action
 			}
 		}
 
-		void DeleteOrphanDna(SimPe.Interfaces.Files.IPackageFile pkg)
+		void DeleteOrphanDna(Interfaces.Files.IPackageFile pkg)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfdSim = pkg.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfdSim = pkg.FindFiles(
 				0xAACE2EFBu
 			); // get the existing SDSCs
 			ArrayList simInstances = new ArrayList();
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pSim in pfdSim)
+			foreach (Interfaces.Files.IPackedFileDescriptor pSim in pfdSim)
 			{
 				simInstances.Add(pSim.Instance);
 			}
 
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfdDna = pkg.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfdDna = pkg.FindFiles(
 				0xEBFEE33Fu
 			); // get the existing SDNAs
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfdSco = pkg.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfdSco = pkg.FindFiles(
 				0x3053CF74u
 			); // get the existing Scores
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfdWaF = pkg.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfdWaF = pkg.FindFiles(
 				0xCD95548Eu
 			); // get the wants & fears
 
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pDna in pfdDna)
+			foreach (Interfaces.Files.IPackedFileDescriptor pDna in pfdDna)
 			{
 				if (!simInstances.Contains(pDna.Instance))
 				{
@@ -468,7 +468,7 @@ namespace SimPe.Plugin.Tool.Action
 				}
 			}
 
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pSco in pfdSco)
+			foreach (Interfaces.Files.IPackedFileDescriptor pSco in pfdSco)
 			{
 				if (!simInstances.Contains(pSco.Instance))
 				{
@@ -476,7 +476,7 @@ namespace SimPe.Plugin.Tool.Action
 				}
 			}
 
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pWaF in pfdWaF)
+			foreach (Interfaces.Files.IPackedFileDescriptor pWaF in pfdWaF)
 			{
 				if (!simInstances.Contains(pWaF.Instance))
 				{

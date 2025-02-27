@@ -51,12 +51,12 @@ namespace SimPe
 				return null;
 			}
 
-			SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+			Packages.File pkg = SimPe.Packages.File.LoadFromFile(
 				ei.InstalledPath(ep) + "\\TSData\\Res\\UI\\ui.package"
 			);
 			if (pkg != null)
 			{
-				SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
+				Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
 					0x856DDBAC,
 					0,
 					0x499DB772,
@@ -80,7 +80,7 @@ namespace SimPe
 		public static Image GetExpansionIcon(byte ep)
 		{
 			uint inst = 0xABBB0000 + ep; // 0xABBB0000  0xABBAFFFF
-			SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+			Packages.File pkg = SimPe.Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
 					PathProvider.Global.Latest.InstallFolder,
 					"TSData\\Res\\UI\\ui.package"
@@ -88,7 +88,7 @@ namespace SimPe
 			);
 			if (pkg != null)
 			{
-				SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
+				Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
 					0x856DDBAC,
 					0,
 					0x499DB772,
@@ -117,7 +117,7 @@ namespace SimPe
 				if (files.Length > 0)
 				{
 					pkg = SimPe.Packages.File.LoadFromFile(files[0]);
-					SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
+					Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
 						0x856DDBAC,
 						0,
 						0x499DB772,

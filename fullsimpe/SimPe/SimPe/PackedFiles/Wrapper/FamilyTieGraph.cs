@@ -51,7 +51,7 @@ namespace SimPe.PackedFiles.Wrapper
 			get; private set;
 		}
 
-		public void UpdateGraph(Wrapper.SDesc sdsc, Wrapper.ExtFamilyTies famt)
+		public void UpdateGraph(SDesc sdsc, ExtFamilyTies famt)
 		{
 			this.BeginUpdate();
 			if (Parent != null)
@@ -80,9 +80,9 @@ namespace SimPe.PackedFiles.Wrapper
 				}
 
 				FamilyTieSim tie = famt.FindTies(sdsc);
-				Wrapper.SDesc[] parents = famt.ParentSims(sdsc);
-				Wrapper.SDesc[] siblings = famt.SiblingSims(sdsc);
-				Wrapper.SDesc[] childs = famt.ChildSims(sdsc);
+				SDesc[] parents = famt.ParentSims(sdsc);
+				SDesc[] siblings = famt.SiblingSims(sdsc);
+				SDesc[] childs = famt.ChildSims(sdsc);
 
 				int maxct = parents.Length + siblings.Length + childs.Length;
 				if (maxct < 4)
@@ -190,7 +190,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public void LinearUpdateGraph(Wrapper.SDesc sdsc, Wrapper.ExtFamilyTies famt)
+		public void LinearUpdateGraph(SDesc sdsc, ExtFamilyTies famt)
 		{
 			this.BeginUpdate();
 
@@ -205,9 +205,9 @@ namespace SimPe.PackedFiles.Wrapper
 
 			FamilyTieSim tie = famt.FindTies(sdsc);
 
-			Wrapper.SDesc[] parents = famt.ParentSims(sdsc);
-			Wrapper.SDesc[] siblings = famt.SiblingSims(sdsc);
-			Wrapper.SDesc[] childs = famt.ChildSims(sdsc);
+			SDesc[] parents = famt.ParentSims(sdsc);
+			SDesc[] siblings = famt.SiblingSims(sdsc);
+			SDesc[] childs = famt.ChildSims(sdsc);
 
 			Size prect = new Size(
 				(parents.Length - 1) * (ItemSize.Width + 8),
@@ -336,7 +336,7 @@ namespace SimPe.PackedFiles.Wrapper
 		Size isz;
 		protected Size ItemSize => isz;
 
-		protected ImagePanel CreateItem(Wrapper.SDesc sdesc, int left, int top)
+		protected ImagePanel CreateItem(SDesc sdesc, int left, int top)
 		{
 			ImagePanel eip = new ImagePanel();
 			eip.BeginUpdate();
@@ -363,9 +363,9 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				SelectedSimChanged(
 					this,
-					((Ambertation.Windows.Forms.Graph.ImagePanel)sender).Image,
-					(Wrapper.SDesc)
-						((Ambertation.Windows.Forms.Graph.ImagePanel)sender).Tag
+					((ImagePanel)sender).Image,
+					(SDesc)
+						((ImagePanel)sender).Tag
 				);
 			}
 		}
@@ -376,9 +376,9 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				ClickOverSim(
 					this,
-					((Ambertation.Windows.Forms.Graph.ImagePanel)sender).Image,
-					(Wrapper.SDesc)
-						((Ambertation.Windows.Forms.Graph.ImagePanel)sender).Tag
+					((ImagePanel)sender).Image,
+					(SDesc)
+						((ImagePanel)sender).Tag
 				);
 			}
 		}
@@ -389,7 +389,7 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				SelectedSimChanged(
 					this,
-					((Ambertation.Windows.Forms.Graph.ImagePanel)sender).Image,
+					((ImagePanel)sender).Image,
 					null
 				);
 			}
@@ -401,9 +401,9 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				DoubleClickSim(
 					this,
-					((Ambertation.Windows.Forms.Graph.ImagePanel)sender).Image,
-					(Wrapper.SDesc)
-						((Ambertation.Windows.Forms.Graph.ImagePanel)sender).Tag
+					((ImagePanel)sender).Image,
+					(SDesc)
+						((ImagePanel)sender).Tag
 				);
 			}
 		}
@@ -413,7 +413,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		/// <param name="sdsc"></param>
 		/// <returns></returns>
-		public ImagePanel FindItem(Wrapper.SDesc sdsc)
+		public ImagePanel FindItem(SDesc sdsc)
 		{
 			foreach (GraphPanelElement gpe in this.Items)
 			{
@@ -430,7 +430,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		public static Data.MetaData.FamilyTieTypes GetAntiTie(
-			Wrapper.SDesc sdsc,
+			SDesc sdsc,
 			Data.MetaData.FamilyTieTypes t
 		)
 		{

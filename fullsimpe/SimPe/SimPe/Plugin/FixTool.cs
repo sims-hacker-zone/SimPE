@@ -26,7 +26,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for ImportSemiTool.
 	/// </summary>
-	public class FixTool : Interfaces.AbstractTool, Interfaces.ITool
+	public class FixTool : AbstractTool, ITool
 	{
 		internal static Registry WindowsRegistry => Helper.WindowsRegistry;
 
@@ -42,8 +42,8 @@ namespace SimPe.Plugin
 		#region ITool Member
 
 		public bool IsEnabled(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile package
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile package
 		)
 		{
 			if (package == null)
@@ -55,8 +55,8 @@ namespace SimPe.Plugin
 		}
 
 		public Interfaces.Plugin.IToolResult ShowDialog(
-			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			ref SimPe.Interfaces.Files.IPackageFile package
+			ref Interfaces.Files.IPackedFileDescriptor pfd,
+			ref Interfaces.Files.IPackageFile package
 		)
 		{
 			FixObject fo = new FixObject(package, FixVersion.UniversityReady, false);

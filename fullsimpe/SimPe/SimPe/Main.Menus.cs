@@ -46,11 +46,11 @@ namespace SimPe
 
 			if (c.Tag != null)
 			{
-				if (c.Tag is System.Windows.Forms.Shortcut)
+				if (c.Tag is Shortcut)
 				{
 					LoadFileWrappersExt.SetShurtcutKey(
 						mi,
-						(System.Windows.Forms.Shortcut)c.Tag
+						(Shortcut)c.Tag
 					);
 				}
 			}

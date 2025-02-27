@@ -9,7 +9,7 @@ namespace SimPe.Plugin.Tool.Dockable
 	/// </summary>
 	public class dcObjectWorkshop : Ambertation.Windows.Forms.DockPanel
 	{
-		class MyTreeView : System.Windows.Forms.TreeView
+		class MyTreeView : TreeView
 		{
 			public MyTreeView()
 				: base() { }
@@ -28,65 +28,65 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		private SteepValley.Windows.Forms.XPGradientPanel xpGradientPanel1;
-		private SimPe.Wizards.Wizard wizard1;
-		private SimPe.Wizards.WizardStepPanel wizardStepPanel1;
-		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Button button1;
-		private SimPe.Wizards.WizardStepPanel wizardStepPanel2;
-		private System.Windows.Forms.ListBox lb;
+		private Wizards.Wizard wizard1;
+		private Wizards.WizardStepPanel wizardStepPanel1;
+		private Button button2;
+		private Label label1;
+		private Label label2;
+		private Button button1;
+		private Wizards.WizardStepPanel wizardStepPanel2;
+		private ListBox lb;
 		private MyTreeView tv;
-		private System.Windows.Forms.Splitter splitter1;
-		private System.Windows.Forms.Panel panel1;
+		private Splitter splitter1;
+		private Panel panel1;
 		private Ambertation.Windows.Forms.XPTaskBoxSimple xpTaskBoxSimple2;
-		private SimPe.Wizards.WizardStepPanel wizardStepPanel3;
+		private Wizards.WizardStepPanel wizardStepPanel3;
 		private Ambertation.Windows.Forms.XPTaskBoxSimple xpTaskBoxSimple1;
 		private Ambertation.Windows.Forms.XPTaskBoxSimple gbRecolor;
-		private System.Windows.Forms.CheckBox cbColorExt;
+		private CheckBox cbColorExt;
 		private Ambertation.Windows.Forms.XPTaskBoxSimple gbClone;
-		internal System.Windows.Forms.CheckBox cbanim;
-		internal System.Windows.Forms.CheckBox cbwallmask;
-		internal System.Windows.Forms.CheckBox cbparent;
-		internal System.Windows.Forms.CheckBox cbclean;
-		internal System.Windows.Forms.CheckBox cbfix;
-		internal System.Windows.Forms.CheckBox cbdefault;
-		internal System.Windows.Forms.CheckBox cbgid;
-		private System.Windows.Forms.Panel panel2;
-		private System.Windows.Forms.Button button3;
-		internal System.Windows.Forms.ComboBox cbTask;
-		private System.Windows.Forms.Label label3;
-		private SimPe.Wizards.WizardStepPanel wizardStepPanel4;
-		private System.Windows.Forms.Panel pnWait;
-		private System.Windows.Forms.Label lberr;
-		private System.Windows.Forms.Label lbfinload;
-		private System.Windows.Forms.Label lbwait;
-		private System.Windows.Forms.PictureBox pbWait;
-		private System.Windows.Forms.Label lbfinished;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.ImageList ilist;
-		private SimPe.Plugin.Tool.Dockable.ObjectPreview op1;
-		private SimPe.Plugin.Tool.Dockable.ObjectPreview op2;
-		internal System.Windows.Forms.CheckBox cbRemTxt;
-		internal System.Windows.Forms.CheckBox cbOrgGmdc;
-		private SimPe.Wizards.WizardStepPanel wizardStepPanel5;
+		internal CheckBox cbanim;
+		internal CheckBox cbwallmask;
+		internal CheckBox cbparent;
+		internal CheckBox cbclean;
+		internal CheckBox cbfix;
+		internal CheckBox cbdefault;
+		internal CheckBox cbgid;
+		private Panel panel2;
+		private Button button3;
+		internal ComboBox cbTask;
+		private Label label3;
+		private Wizards.WizardStepPanel wizardStepPanel4;
+		private Panel pnWait;
+		private Label lberr;
+		private Label lbfinload;
+		private Label lbwait;
+		private PictureBox pbWait;
+		private Label lbfinished;
+		private Label label4;
+		private ImageList ilist;
+		private ObjectPreview op1;
+		private ObjectPreview op2;
+		internal CheckBox cbRemTxt;
+		internal CheckBox cbOrgGmdc;
+		private Wizards.WizardStepPanel wizardStepPanel5;
 		private Ambertation.Windows.Forms.XPTaskBoxSimple xpTaskBoxSimple3;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.TextBox tbName;
-		private System.Windows.Forms.TextBox tbPrice;
-		private System.Windows.Forms.RichTextBox tbDesc;
-		internal System.Windows.Forms.CheckBox cbDesc;
-		internal System.Windows.Forms.CheckBox cbstrlink;
+		private Label label5;
+		private Label label6;
+		private Label label7;
+		private TextBox tbName;
+		private TextBox tbPrice;
+		private RichTextBox tbDesc;
+		internal CheckBox cbDesc;
+		internal CheckBox cbstrlink;
 		private System.ComponentModel.IContainer components;
-		private System.Windows.Forms.Button button4;
+		private Button button4;
 		private Ambertation.Windows.Forms.XPTaskBoxSimple xpAdvanced;
-		private System.Windows.Forms.TextBox tbGroup;
-		private System.Windows.Forms.Button button5;
-		private System.Windows.Forms.TextBox tbCresName;
-		private System.Windows.Forms.Button button6;
-		private System.Windows.Forms.TextBox tbGUID;
+		private TextBox tbGroup;
+		private Button button5;
+		private TextBox tbCresName;
+		private Button button6;
+		private TextBox tbGUID;
 		private ToolStrip toolStrip1;
 		private ToolStripButton biPrev;
 		private ToolStripButton biNext;
@@ -103,14 +103,14 @@ namespace SimPe.Plugin.Tool.Dockable
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
 			this.xpAdvanced.Visible = (UserVerification.HaveUserId);
-			this.op1 = new SimPe.Plugin.Tool.Dockable.ObjectPreview();
-			this.op2 = new SimPe.Plugin.Tool.Dockable.ObjectPreview();
+			this.op1 = new ObjectPreview();
+			this.op2 = new ObjectPreview();
 			// op1.SuspendLayout(); - (prevented op1 layout, causung the title to be scrolled and the description to be cut off) Chris Hatch
 			//
 			// op1
 			//
 			this.op1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -122,12 +122,12 @@ namespace SimPe.Plugin.Tool.Dockable
 				)
 			);
 			this.op1.BackColor = System.Drawing.Color.Transparent;
-			this.op1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+			this.op1.Font = new Font("Tahoma", 8.25F);
 			this.op1.LoadCustomImage = true;
-			this.op1.Location = new System.Drawing.Point(8, 44);
+			this.op1.Location = new Point(8, 44);
 			this.op1.Name = "op1";
 			this.op1.SelectedObject = null;
-			this.op1.Size = new System.Drawing.Size(
+			this.op1.Size = new Size(
 				this.xpTaskBoxSimple2.Width - 16,
 				this.xpTaskBoxSimple2.Height - 56
 			);
@@ -139,7 +139,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			// op2
 			//
 			this.op2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -151,12 +151,12 @@ namespace SimPe.Plugin.Tool.Dockable
 				)
 			);
 			this.op2.BackColor = System.Drawing.Color.Transparent;
-			this.op2.Font = new System.Drawing.Font("Tahoma", 8.25F);
+			this.op2.Font = new Font("Tahoma", 8.25F);
 			this.op2.LoadCustomImage = true;
-			this.op2.Location = new System.Drawing.Point(8, 44);
+			this.op2.Location = new Point(8, 44);
 			this.op2.Name = "op2";
 			this.op2.SelectedObject = null;
-			this.op2.Size = new System.Drawing.Size(
+			this.op2.Size = new Size(
 				this.xpTaskBoxSimple1.Width - 16,
 				this.xpTaskBoxSimple1.Height - 56
 			);
@@ -222,70 +222,70 @@ namespace SimPe.Plugin.Tool.Dockable
 					typeof(dcObjectWorkshop)
 				);
 			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.wizard1 = new SimPe.Wizards.Wizard();
-			this.wizardStepPanel1 = new SimPe.Wizards.WizardStepPanel();
+			this.wizard1 = new Wizards.Wizard();
+			this.wizardStepPanel1 = new Wizards.WizardStepPanel();
 			this.xpAdvanced = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.button6 = new System.Windows.Forms.Button();
-			this.tbGUID = new System.Windows.Forms.TextBox();
-			this.button5 = new System.Windows.Forms.Button();
-			this.tbCresName = new System.Windows.Forms.TextBox();
-			this.button4 = new System.Windows.Forms.Button();
-			this.tbGroup = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.button2 = new System.Windows.Forms.Button();
-			this.label1 = new System.Windows.Forms.Label();
-			this.button1 = new System.Windows.Forms.Button();
-			this.label2 = new System.Windows.Forms.Label();
-			this.wizardStepPanel2 = new SimPe.Wizards.WizardStepPanel();
-			this.lb = new System.Windows.Forms.ListBox();
-			this.tv = new SimPe.Plugin.Tool.Dockable.dcObjectWorkshop.MyTreeView();
-			this.splitter1 = new System.Windows.Forms.Splitter();
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.button6 = new Button();
+			this.tbGUID = new TextBox();
+			this.button5 = new Button();
+			this.tbCresName = new TextBox();
+			this.button4 = new Button();
+			this.tbGroup = new TextBox();
+			this.label4 = new Label();
+			this.button2 = new Button();
+			this.label1 = new Label();
+			this.button1 = new Button();
+			this.label2 = new Label();
+			this.wizardStepPanel2 = new Wizards.WizardStepPanel();
+			this.lb = new ListBox();
+			this.tv = new MyTreeView();
+			this.splitter1 = new Splitter();
+			this.panel1 = new Panel();
 			this.xpTaskBoxSimple2 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.wizardStepPanel3 = new SimPe.Wizards.WizardStepPanel();
+			this.wizardStepPanel3 = new Wizards.WizardStepPanel();
 			this.xpTaskBoxSimple1 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
 			this.gbRecolor = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.cbColorExt = new System.Windows.Forms.CheckBox();
+			this.cbColorExt = new CheckBox();
 			this.gbClone = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.llCloneDef = new System.Windows.Forms.LinkLabel();
-			this.cbstrlink = new System.Windows.Forms.CheckBox();
-			this.cbDesc = new System.Windows.Forms.CheckBox();
-			this.cbOrgGmdc = new System.Windows.Forms.CheckBox();
-			this.cbRemTxt = new System.Windows.Forms.CheckBox();
-			this.cbanim = new System.Windows.Forms.CheckBox();
-			this.cbwallmask = new System.Windows.Forms.CheckBox();
-			this.cbparent = new System.Windows.Forms.CheckBox();
-			this.cbclean = new System.Windows.Forms.CheckBox();
-			this.cbfix = new System.Windows.Forms.CheckBox();
-			this.cbdefault = new System.Windows.Forms.CheckBox();
-			this.cbgid = new System.Windows.Forms.CheckBox();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.button3 = new System.Windows.Forms.Button();
-			this.cbTask = new System.Windows.Forms.ComboBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.wizardStepPanel5 = new SimPe.Wizards.WizardStepPanel();
+			this.llCloneDef = new LinkLabel();
+			this.cbstrlink = new CheckBox();
+			this.cbDesc = new CheckBox();
+			this.cbOrgGmdc = new CheckBox();
+			this.cbRemTxt = new CheckBox();
+			this.cbanim = new CheckBox();
+			this.cbwallmask = new CheckBox();
+			this.cbparent = new CheckBox();
+			this.cbclean = new CheckBox();
+			this.cbfix = new CheckBox();
+			this.cbdefault = new CheckBox();
+			this.cbgid = new CheckBox();
+			this.panel2 = new Panel();
+			this.button3 = new Button();
+			this.cbTask = new ComboBox();
+			this.label3 = new Label();
+			this.wizardStepPanel5 = new Wizards.WizardStepPanel();
 			this.xpTaskBoxSimple3 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.tbDesc = new System.Windows.Forms.RichTextBox();
-			this.tbPrice = new System.Windows.Forms.TextBox();
-			this.tbName = new System.Windows.Forms.TextBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.wizardStepPanel4 = new SimPe.Wizards.WizardStepPanel();
-			this.pnWait = new System.Windows.Forms.Panel();
-			this.pbWait = new System.Windows.Forms.PictureBox();
-			this.lbfinished = new System.Windows.Forms.Label();
-			this.lberr = new System.Windows.Forms.Label();
-			this.lbfinload = new System.Windows.Forms.Label();
-			this.lbwait = new System.Windows.Forms.Label();
-			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-			this.biPrev = new System.Windows.Forms.ToolStripButton();
-			this.biNext = new System.Windows.Forms.ToolStripButton();
-			this.biFinish = new System.Windows.Forms.ToolStripButton();
-			this.biAbort = new System.Windows.Forms.ToolStripButton();
-			this.biCatalog = new System.Windows.Forms.ToolStripButton();
-			this.ilist = new System.Windows.Forms.ImageList(this.components);
-			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+			this.tbDesc = new RichTextBox();
+			this.tbPrice = new TextBox();
+			this.tbName = new TextBox();
+			this.label7 = new Label();
+			this.label6 = new Label();
+			this.label5 = new Label();
+			this.wizardStepPanel4 = new Wizards.WizardStepPanel();
+			this.pnWait = new Panel();
+			this.pbWait = new PictureBox();
+			this.lbfinished = new Label();
+			this.lberr = new Label();
+			this.lbfinload = new Label();
+			this.lbwait = new Label();
+			this.toolStrip1 = new ToolStrip();
+			this.biPrev = new ToolStripButton();
+			this.biNext = new ToolStripButton();
+			this.biFinish = new ToolStripButton();
+			this.biAbort = new ToolStripButton();
+			this.biCatalog = new ToolStripButton();
+			this.ilist = new ImageList(this.components);
+			this.toolTip1 = new ToolTip(this.components);
 			this.xpGradientPanel1.SuspendLayout();
 			this.wizard1.SuspendLayout();
 			this.wizardStepPanel1.SuspendLayout();
@@ -327,22 +327,22 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.wizard1.Name = "wizard1";
 			this.wizard1.NextEnabled = false;
 			this.wizard1.PrevEnabled = false;
-			this.wizard1.ChangedFinishState += new SimPe.Wizards.WizardHandle(
+			this.wizard1.ChangedFinishState += new Wizards.WizardHandle(
 				this.wizard1_ChangedFinishState
 			);
-			this.wizard1.ShowStep += new SimPe.Wizards.WizardChangeHandle(
+			this.wizard1.ShowStep += new Wizards.WizardChangeHandle(
 				this.wizard1_ShowStep
 			);
-			this.wizard1.ChangedPrevState += new SimPe.Wizards.WizardHandle(
+			this.wizard1.ChangedPrevState += new Wizards.WizardHandle(
 				this.wizard1_ChangedPrevState
 			);
-			this.wizard1.PrepareStep += new SimPe.Wizards.WizardStepChangeHandle(
+			this.wizard1.PrepareStep += new Wizards.WizardStepChangeHandle(
 				this.wizard1_PrepareStep
 			);
-			this.wizard1.ChangedNextState += new SimPe.Wizards.WizardHandle(
+			this.wizard1.ChangedNextState += new Wizards.WizardHandle(
 				this.wizard1_ChangedNextState
 			);
-			this.wizard1.ShowedStep += new SimPe.Wizards.WizardShowedHandle(
+			this.wizard1.ShowedStep += new Wizards.WizardShowedHandle(
 				this.wizard1_ShowedStep
 			);
 			//
@@ -369,21 +369,21 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.xpAdvanced.Controls.Add(this.tbCresName);
 			this.xpAdvanced.Controls.Add(this.button4);
 			this.xpAdvanced.Controls.Add(this.tbGroup);
-			this.xpAdvanced.HeaderFont = new System.Drawing.Font(
+			this.xpAdvanced.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				System.Drawing.FontStyle.Bold
 			);
 			resources.ApplyResources(this.xpAdvanced, "xpAdvanced");
-			this.xpAdvanced.IconLocation = new System.Drawing.Point(4, 12);
-			this.xpAdvanced.IconSize = new System.Drawing.Size(32, 32);
+			this.xpAdvanced.IconLocation = new Point(4, 12);
+			this.xpAdvanced.IconSize = new Size(32, 32);
 			this.xpAdvanced.Name = "xpAdvanced";
 			//
 			// button6
 			//
 			resources.ApplyResources(this.button6, "button6");
 			this.button6.Name = "button6";
-			this.button6.Click += new System.EventHandler(this.button6_Click);
+			this.button6.Click += new EventHandler(this.button6_Click);
 			//
 			// tbGUID
 			//
@@ -394,7 +394,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			resources.ApplyResources(this.button5, "button5");
 			this.button5.Name = "button5";
-			this.button5.Click += new System.EventHandler(this.button5_Click);
+			this.button5.Click += new EventHandler(this.button5_Click);
 			//
 			// tbCresName
 			//
@@ -405,7 +405,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			resources.ApplyResources(this.button4, "button4");
 			this.button4.Name = "button4";
-			this.button4.Click += new System.EventHandler(this.button4_Click);
+			this.button4.Click += new EventHandler(this.button4_Click);
 			//
 			// tbGroup
 			//
@@ -421,7 +421,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			resources.ApplyResources(this.button2, "button2");
 			this.button2.Name = "button2";
-			this.button2.Click += new System.EventHandler(this.button2_Click);
+			this.button2.Click += new EventHandler(this.button2_Click);
 			//
 			// label1
 			//
@@ -432,7 +432,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			resources.ApplyResources(this.button1, "button1");
 			this.button1.Name = "button1";
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.button1.Click += new EventHandler(this.button1_Click);
 			//
 			// label2
 			//
@@ -450,10 +450,10 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.wizardStepPanel2.First = false;
 			this.wizardStepPanel2.Last = false;
 			this.wizardStepPanel2.Name = "wizardStepPanel2";
-			this.wizardStepPanel2.Activate += new SimPe.Wizards.WizardChangeHandle(
+			this.wizardStepPanel2.Activate += new Wizards.WizardChangeHandle(
 				this.wizardStepPanel2_Activate
 			);
-			this.wizardStepPanel2.Prepare += new SimPe.Wizards.WizardStepChangeHandle(
+			this.wizardStepPanel2.Prepare += new Wizards.WizardStepChangeHandle(
 				this.wizardStepPanel2_Prepare
 			);
 			//
@@ -462,7 +462,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.lb.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			resources.ApplyResources(this.lb, "lb");
 			this.lb.Name = "lb";
-			this.lb.SelectedIndexChanged += new System.EventHandler(
+			this.lb.SelectedIndexChanged += new EventHandler(
 				this.lb_SelectedIndexChanged
 			);
 			//
@@ -472,7 +472,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			resources.ApplyResources(this.tv, "tv");
 			this.tv.ItemHeight = 17;
 			this.tv.Name = "tv";
-			this.tv.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(
+			this.tv.AfterSelect += new TreeViewEventHandler(
 				this.tv_AfterSelect
 			);
 			//
@@ -493,13 +493,13 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			this.xpTaskBoxSimple2.BackColor = System.Drawing.Color.Transparent;
 			resources.ApplyResources(this.xpTaskBoxSimple2, "xpTaskBoxSimple2");
-			this.xpTaskBoxSimple2.HeaderFont = new System.Drawing.Font(
+			this.xpTaskBoxSimple2.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.xpTaskBoxSimple2.IconLocation = new System.Drawing.Point(4, 12);
-			this.xpTaskBoxSimple2.IconSize = new System.Drawing.Size(32, 32);
+			this.xpTaskBoxSimple2.IconLocation = new Point(4, 12);
+			this.xpTaskBoxSimple2.IconSize = new Size(32, 32);
 			this.xpTaskBoxSimple2.Name = "xpTaskBoxSimple2";
 			//
 			// wizardStepPanel3
@@ -513,10 +513,10 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.wizardStepPanel3.First = false;
 			this.wizardStepPanel3.Last = false;
 			this.wizardStepPanel3.Name = "wizardStepPanel3";
-			this.wizardStepPanel3.Activate += new SimPe.Wizards.WizardChangeHandle(
+			this.wizardStepPanel3.Activate += new Wizards.WizardChangeHandle(
 				this.wizardStepPanel3_Activate
 			);
-			this.wizardStepPanel3.Activated += new SimPe.Wizards.WizardStepHandle(
+			this.wizardStepPanel3.Activated += new Wizards.WizardStepHandle(
 				this.wizardStepPanel3_Activated
 			);
 			//
@@ -524,13 +524,13 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			this.xpTaskBoxSimple1.BackColor = System.Drawing.Color.Transparent;
 			resources.ApplyResources(this.xpTaskBoxSimple1, "xpTaskBoxSimple1");
-			this.xpTaskBoxSimple1.HeaderFont = new System.Drawing.Font(
+			this.xpTaskBoxSimple1.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.xpTaskBoxSimple1.IconLocation = new System.Drawing.Point(4, 12);
-			this.xpTaskBoxSimple1.IconSize = new System.Drawing.Size(32, 32);
+			this.xpTaskBoxSimple1.IconLocation = new Point(4, 12);
+			this.xpTaskBoxSimple1.IconSize = new Size(32, 32);
 			this.xpTaskBoxSimple1.Name = "xpTaskBoxSimple1";
 			//
 			// gbRecolor
@@ -538,13 +538,13 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.gbRecolor.BackColor = System.Drawing.Color.Transparent;
 			this.gbRecolor.Controls.Add(this.cbColorExt);
 			resources.ApplyResources(this.gbRecolor, "gbRecolor");
-			this.gbRecolor.HeaderFont = new System.Drawing.Font(
+			this.gbRecolor.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.gbRecolor.IconLocation = new System.Drawing.Point(4, 12);
-			this.gbRecolor.IconSize = new System.Drawing.Size(32, 32);
+			this.gbRecolor.IconLocation = new Point(4, 12);
+			this.gbRecolor.IconSize = new Size(32, 32);
 			this.gbRecolor.Name = "gbRecolor";
 			//
 			// cbColorExt
@@ -571,13 +571,13 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.gbClone.Controls.Add(this.cbdefault);
 			this.gbClone.Controls.Add(this.cbgid);
 			resources.ApplyResources(this.gbClone, "gbClone");
-			this.gbClone.HeaderFont = new System.Drawing.Font(
+			this.gbClone.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.gbClone.IconLocation = new System.Drawing.Point(4, 0);
-			this.gbClone.IconSize = new System.Drawing.Size(32, 32);
+			this.gbClone.IconLocation = new Point(4, 0);
+			this.gbClone.IconSize = new Size(32, 32);
 			this.gbClone.Name = "gbClone";
 			//
 			// llCloneDef
@@ -587,7 +587,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.llCloneDef.Name = "llCloneDef";
 			this.llCloneDef.TabStop = true;
 			this.llCloneDef.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.SetDefaultsForClone
 				);
 			//
@@ -612,7 +612,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				resources.GetString("cbDesc.ToolTip")
 			);
 			this.cbDesc.UseVisualStyleBackColor = false;
-			this.cbDesc.CheckedChanged += new System.EventHandler(
+			this.cbDesc.CheckedChanged += new EventHandler(
 				this.cbDesc_CheckedChanged
 			);
 			//
@@ -690,7 +690,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.cbfix.Name = "cbfix";
 			this.toolTip1.SetToolTip(this.cbfix, resources.GetString("cbfix.ToolTip"));
 			this.cbfix.UseVisualStyleBackColor = false;
-			this.cbfix.CheckedChanged += new System.EventHandler(
+			this.cbfix.CheckedChanged += new EventHandler(
 				this.cbfix_CheckedChanged
 			);
 			//
@@ -727,7 +727,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			resources.ApplyResources(this.button3, "button3");
 			this.button3.Name = "button3";
-			this.button3.Click += new System.EventHandler(this.button3_Click);
+			this.button3.Click += new EventHandler(this.button3_Click);
 			//
 			// cbTask
 			//
@@ -742,7 +742,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 			);
 			this.cbTask.Name = "cbTask";
-			this.cbTask.SelectedIndexChanged += new System.EventHandler(
+			this.cbTask.SelectedIndexChanged += new EventHandler(
 				this.cbTask_SelectedIndexChanged
 			);
 			//
@@ -759,10 +759,10 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.wizardStepPanel5.First = false;
 			this.wizardStepPanel5.Last = false;
 			this.wizardStepPanel5.Name = "wizardStepPanel5";
-			this.wizardStepPanel5.Activate += new SimPe.Wizards.WizardChangeHandle(
+			this.wizardStepPanel5.Activate += new Wizards.WizardChangeHandle(
 				this.wizardStepPanel5_Activate
 			);
-			this.wizardStepPanel5.Activated += new SimPe.Wizards.WizardStepHandle(
+			this.wizardStepPanel5.Activated += new Wizards.WizardStepHandle(
 				this.wizardStepPanel5_Activated
 			);
 			//
@@ -776,13 +776,13 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.xpTaskBoxSimple3.Controls.Add(this.label6);
 			this.xpTaskBoxSimple3.Controls.Add(this.label5);
 			resources.ApplyResources(this.xpTaskBoxSimple3, "xpTaskBoxSimple3");
-			this.xpTaskBoxSimple3.HeaderFont = new System.Drawing.Font(
+			this.xpTaskBoxSimple3.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.xpTaskBoxSimple3.IconLocation = new System.Drawing.Point(4, 12);
-			this.xpTaskBoxSimple3.IconSize = new System.Drawing.Size(32, 32);
+			this.xpTaskBoxSimple3.IconLocation = new Point(4, 12);
+			this.xpTaskBoxSimple3.IconSize = new Size(32, 32);
 			this.xpTaskBoxSimple3.Name = "xpTaskBoxSimple3";
 			//
 			// tbDesc
@@ -824,10 +824,10 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.wizardStepPanel4.First = false;
 			this.wizardStepPanel4.Last = true;
 			this.wizardStepPanel4.Name = "wizardStepPanel4";
-			this.wizardStepPanel4.Activate += new SimPe.Wizards.WizardChangeHandle(
+			this.wizardStepPanel4.Activate += new Wizards.WizardChangeHandle(
 				this.wizardStepPanel4_Activate
 			);
-			this.wizardStepPanel4.Activated += new SimPe.Wizards.WizardStepHandle(
+			this.wizardStepPanel4.Activated += new Wizards.WizardStepHandle(
 				this.wizardStepPanel4_Activated
 			);
 			//
@@ -856,7 +856,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			resources.ApplyResources(this.lberr, "lberr");
 			this.lberr.Name = "lberr";
-			this.lberr.Click += new System.EventHandler(this.lberr_Click);
+			this.lberr.Click += new EventHandler(this.lberr_Click);
 			//
 			// lbfinload
 			//
@@ -872,7 +872,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
 			this.toolStrip1.Items.AddRange(
-				new System.Windows.Forms.ToolStripItem[]
+				new ToolStripItem[]
 				{
 					this.biPrev,
 					this.biNext,
@@ -894,25 +894,25 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			resources.ApplyResources(this.biPrev, "biPrev");
 			this.biPrev.Name = "biPrev";
-			this.biPrev.Click += new System.EventHandler(this.Activate_biPrev);
+			this.biPrev.Click += new EventHandler(this.Activate_biPrev);
 			//
 			// biNext
 			//
 			resources.ApplyResources(this.biNext, "biNext");
 			this.biNext.Name = "biNext";
-			this.biNext.Click += new System.EventHandler(this.Activate_biNext);
+			this.biNext.Click += new EventHandler(this.Activate_biNext);
 			//
 			// biFinish
 			//
 			resources.ApplyResources(this.biFinish, "biFinish");
 			this.biFinish.Name = "biFinish";
-			this.biFinish.Click += new System.EventHandler(this.ActivateFinish);
+			this.biFinish.Click += new EventHandler(this.ActivateFinish);
 			//
 			// biAbort
 			//
 			resources.ApplyResources(this.biAbort, "biAbort");
 			this.biAbort.Name = "biAbort";
-			this.biAbort.Click += new System.EventHandler(this.biAbort_Activate);
+			this.biAbort.Click += new EventHandler(this.biAbort_Activate);
 			//
 			// biCatalog
 			//
@@ -931,7 +931,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				.Text;
 			resources.ApplyResources(this.biCatalog, "biCatalog");
 			this.biCatalog.Name = "biCatalog";
-			this.biCatalog.Click += new System.EventHandler(this.Activate_biCatalog);
+			this.biCatalog.Click += new EventHandler(this.Activate_biCatalog);
 			//
 			// ilist
 			//
@@ -943,12 +943,12 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			resources.ApplyResources(this, "$this");
 			this.Controls.Add(this.xpGradientPanel1);
-			this.FloatingSize = new System.Drawing.Size(640, 480);
-			this.Image = ((System.Drawing.Image)(resources.GetObject("$this.Image")));
-			this.MinimumSize = new System.Drawing.Size(640, 480);
+			this.FloatingSize = new Size(640, 480);
+			this.Image = ((Image)(resources.GetObject("$this.Image")));
+			this.MinimumSize = new Size(640, 480);
 			this.Name = "dcObjectWorkshop";
 			this.TabImage = (
-				(System.Drawing.Image)(resources.GetObject("$this.TabImage"))
+				(Image)(resources.GetObject("$this.TabImage"))
 			);
 			this.TabText = "Object Workshop";
 			this.xpGradientPanel1.ResumeLayout(false);
@@ -976,33 +976,33 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 		#endregion
 
-		private void wizard1_ChangedFinishState(SimPe.Wizards.Wizard sender)
+		private void wizard1_ChangedFinishState(Wizards.Wizard sender)
 		{
 			biFinish.Visible = sender.FinishEnabled;
 		}
 
-		private void wizard1_ChangedNextState(SimPe.Wizards.Wizard sender)
+		private void wizard1_ChangedNextState(Wizards.Wizard sender)
 		{
 			biNext.Enabled = sender.NextEnabled;
 		}
 
-		private void wizard1_ChangedPrevState(SimPe.Wizards.Wizard sender)
+		private void wizard1_ChangedPrevState(Wizards.Wizard sender)
 		{
 			biPrev.Enabled = sender.PrevEnabled;
 			this.biAbort.Visible = biPrev.Enabled;
 		}
 
-		private void Activate_biPrev(object sender, System.EventArgs e)
+		private void Activate_biPrev(object sender, EventArgs e)
 		{
 			wizard1.GoPrev();
 		}
 
-		private void Activate_biNext(object sender, System.EventArgs e)
+		private void Activate_biNext(object sender, EventArgs e)
 		{
 			wizard1.GoNext();
 		}
 
-		private void ActivateFinish(object sender, System.EventArgs e)
+		private void ActivateFinish(object sender, EventArgs e)
 		{
 			if (
 				wizard1.CurrentStep == this.wizardStepPanel3
@@ -1017,7 +1017,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 		}
 
-		private void button1_Click(object sender, System.EventArgs e)
+		private void button1_Click(object sender, EventArgs e)
 		{
 			onlybase = false;
 			Activate_biNext(biNext, e);
@@ -1028,8 +1028,8 @@ namespace SimPe.Plugin.Tool.Dockable
 		protected TreeNode RootNode;
 
 		private void wizardStepPanel2_Prepare(
-			SimPe.Wizards.Wizard sender,
-			SimPe.Wizards.WizardStepPanel step,
+			Wizards.Wizard sender,
+			Wizards.WizardStepPanel step,
 			int target
 		)
 		{
@@ -1083,7 +1083,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 					ObjectLoader ol = new ObjectLoader(null);
 					ol.LoadedItem +=
-						new SimPe.Plugin.Tool.Dockable.ObjectLoader.LoadItemHandler(
+						new ObjectLoader.LoadItemHandler(
 							ol_LoadedItem
 						);
 					ol.Finished += new EventHandler(ol_Finished);
@@ -1096,15 +1096,15 @@ namespace SimPe.Plugin.Tool.Dockable
 			TreeNodeCollection nodes,
 			string[] names,
 			int id,
-			SimPe.Cache.ObjectCacheItem oci,
-			SimPe.Data.Alias a,
+			Cache.ObjectCacheItem oci,
+			Data.Alias a,
 			ImageList ilist
 		);
 
 		private void ol_LoadedItem(
-			SimPe.Cache.ObjectCacheItem oci,
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii,
-			SimPe.Data.Alias a
+			Cache.ObjectCacheItem oci,
+			Interfaces.Scenegraph.IScenegraphFileIndexItem fii,
+			Data.Alias a
 		)
 		{
 			if (a == null)
@@ -1129,7 +1129,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				);
 			}
 
-			lb.Invoke(new System.EventHandler(AddItemToListBox), new object[] { a });
+			lb.Invoke(new EventHandler(AddItemToListBox), new object[] { a });
 		}
 
 		private void AddItemToListBox(object obj, EventArgs e)
@@ -1142,7 +1142,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			if (tv.InvokeRequired)
 			{
 				tv.Invoke(
-					new System.EventHandler(invoke_ol_Finished),
+					new EventHandler(invoke_ol_Finished),
 					new object[] { sender, e }
 				);
 			}
@@ -1177,7 +1177,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			lb.EndUpdate();
 		}
 
-		private void Activate_biCatalog(object sender, System.EventArgs e)
+		private void Activate_biCatalog(object sender, EventArgs e)
 		{
 			this.tv.Visible = biCatalog.Checked;
 			this.lb.Visible = !biCatalog.Checked;
@@ -1187,19 +1187,19 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		private void wizard1_ShowStep(
-			SimPe.Wizards.Wizard sender,
-			SimPe.Wizards.WizardEventArgs e
+			Wizards.Wizard sender,
+			Wizards.WizardEventArgs e
 		)
 		{
 			this.biCatalog.Visible = (e.Step.Index == wizardStepPanel2.Index);
 		}
 
-		private void button2_Click(object sender, System.EventArgs e)
+		private void button2_Click(object sender, EventArgs e)
 		{
 			onlybase = false;
 			OpenFileDialog ofd = new OpenFileDialog();
 			ofd.Filter = ExtensionProvider.BuildFilterString(
-				new SimPe.ExtensionType[]
+				new ExtensionType[]
 				{
 					SimPe.ExtensionType.Package,
 					SimPe.ExtensionType.DisabledPackage,
@@ -1215,12 +1215,12 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 		}
 
-		SimPe.Packages.GeneratableFile package;
+		Packages.GeneratableFile package;
 		Data.Alias lastselected;
 
 		private void tv_AfterSelect(
 			object sender,
-			System.Windows.Forms.TreeViewEventArgs e
+			TreeViewEventArgs e
 		)
 		{
 			if (wizard1.CurrentStepNumber == this.wizardStepPanel2.Index && tv.Visible)
@@ -1247,7 +1247,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			UpdateObjectPreview(op1);
 		}
 
-		private void lb_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void lb_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (wizard1.CurrentStepNumber == this.wizardStepPanel2.Index && lb.Visible)
 			{
@@ -1266,7 +1266,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			UpdateObjectPreview(op1);
 		}
 
-		private void cbTask_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void cbTask_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (cbTask.SelectedIndex == 1)
 			{
@@ -1291,14 +1291,14 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 		}
 
-		private void button3_Click(object sender, System.EventArgs e)
+		private void button3_Click(object sender, EventArgs e)
 		{
 			Activate_biNext(biNext, e);
 		}
 
 		private void wizardStepPanel2_Activate(
-			SimPe.Wizards.Wizard sender,
-			SimPe.Wizards.WizardEventArgs e
+			Wizards.Wizard sender,
+			Wizards.WizardEventArgs e
 		)
 		{
 			package = null;
@@ -1327,8 +1327,8 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		private void wizardStepPanel4_Activate(
-			SimPe.Wizards.Wizard sender,
-			SimPe.Wizards.WizardEventArgs e
+			Wizards.Wizard sender,
+			Wizards.WizardEventArgs e
 		)
 		{
 			e.CanFinish = false;
@@ -1340,21 +1340,21 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		private void wizardStepPanel4_Activated(
-			SimPe.Wizards.Wizard sender,
-			SimPe.Wizards.WizardStepPanel step
+			Wizards.Wizard sender,
+			Wizards.WizardStepPanel step
 		)
 		{
 			this.pbWait.Image = System.Drawing.Image.FromStream(
 				this.GetType().Assembly.GetManifestResourceStream("SimPe.img.timer.gif")
 			);
-			SimPe.Packages.GeneratableFile package = null;
+			Packages.GeneratableFile package = null;
 			if (lastselected == null && this.package == null)
 			{
 				sender.FinishEnabled = false;
 			}
 			else
 			{
-				SimPe.Interfaces.IAlias a;
+				Interfaces.IAlias a;
 				Interfaces.Files.IPackedFileDescriptor pfd;
 				uint localgroup;
 				ObjectWorkshopHelper.PrepareForClone(
@@ -1427,8 +1427,8 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		private void wizardStepPanel3_Activate(
-			SimPe.Wizards.Wizard sender,
-			SimPe.Wizards.WizardEventArgs e
+			Wizards.Wizard sender,
+			Wizards.WizardEventArgs e
 		)
 		{
 			e.CanFinish = (
@@ -1448,7 +1448,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			if (lastselected != null)
 			{
-				SimPe.Cache.ObjectCacheItem oci = (SimPe.Cache.ObjectCacheItem)
+				Cache.ObjectCacheItem oci = (Cache.ObjectCacheItem)
 					lastselected.Tag[3];
 				if (oci.Class != SimPe.Cache.ObjectClass.Object)
 				{
@@ -1477,7 +1477,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			if (lastselected != null)
 			{
 				op.SetFromObjectCacheItem(
-					(SimPe.Cache.ObjectCacheItem)lastselected.Tag[3]
+					(Cache.ObjectCacheItem)lastselected.Tag[3]
 				);
 			}
 			else if (package != null)
@@ -1490,12 +1490,12 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 		}
 
-		private void biAbort_Activate(object sender, System.EventArgs e)
+		private void biAbort_Activate(object sender, EventArgs e)
 		{
 			wizard1.JumpToStep(0);
 		}
 
-		private void cbfix_CheckedChanged(object sender, System.EventArgs e)
+		private void cbfix_CheckedChanged(object sender, EventArgs e)
 		{
 			cbclean.Enabled = cbfix.Checked;
 			cbRemTxt.Enabled = cbfix.Checked;
@@ -1503,15 +1503,15 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		private void wizardStepPanel3_Activated(
-			SimPe.Wizards.Wizard sender,
-			SimPe.Wizards.WizardStepPanel step
+			Wizards.Wizard sender,
+			Wizards.WizardStepPanel step
 		)
 		{
 		}
 
 		private void wizardStepPanel5_Activate(
-			SimPe.Wizards.Wizard sender,
-			SimPe.Wizards.WizardEventArgs e
+			Wizards.Wizard sender,
+			Wizards.WizardEventArgs e
 		)
 		{
 			e.CanFinish = true;
@@ -1523,21 +1523,21 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		private void wizardStepPanel5_Activated(
-			SimPe.Wizards.Wizard sender,
-			SimPe.Wizards.WizardStepPanel step
+			Wizards.Wizard sender,
+			Wizards.WizardStepPanel step
 		)
 		{
 		}
 
 		private void wizard1_PrepareStep(
-			SimPe.Wizards.Wizard sender,
-			SimPe.Wizards.WizardStepPanel step,
+			Wizards.Wizard sender,
+			Wizards.WizardStepPanel step,
 			int target
 		)
 		{
 		}
 
-		private void wizard1_ShowedStep(SimPe.Wizards.Wizard sender, int source)
+		private void wizard1_ShowedStep(Wizards.Wizard sender, int source)
 		{
 			if (
 				sender.CurrentStep == this.wizardStepPanel5
@@ -1555,18 +1555,18 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 		}
 
-		private void cbDesc_CheckedChanged(object sender, System.EventArgs e)
+		private void cbDesc_CheckedChanged(object sender, EventArgs e)
 		{
 			cbTask_SelectedIndexChanged(this.cbTask, null);
 		}
 
-		private void lberr_Click(object sender, System.EventArgs e)
+		private void lberr_Click(object sender, EventArgs e)
 		{
 		}
 
 		bool onlybase;
 
-		private void button4_Click(object sender, System.EventArgs e)
+		private void button4_Click(object sender, EventArgs e)
 		{
 			lastselected = null;
 			this.tv.SelectedNode = null;
@@ -1578,7 +1578,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			wizard1.JumpToStep(2);
 		}
 
-		private void button5_Click(object sender, System.EventArgs e)
+		private void button5_Click(object sender, EventArgs e)
 		{
 			lastselected = null;
 			this.tv.SelectedNode = null;
@@ -1588,7 +1588,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			wizard1.JumpToStep(2);
 		}
 
-		private void button6_Click(object sender, System.EventArgs e)
+		private void button6_Click(object sender, EventArgs e)
 		{
 			lastselected = null;
 			this.tv.SelectedNode = null;
@@ -1602,7 +1602,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		private void xpTaskBoxSimple1_Resize(object sender, EventArgs e)
 		{
-			this.op2.Size = new System.Drawing.Size(
+			this.op2.Size = new Size(
 				this.xpTaskBoxSimple1.Width - 16,
 				this.xpTaskBoxSimple1.Height - 56
 			);
@@ -1610,7 +1610,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		private void xpTaskBoxSimple2_Resize(object sender, EventArgs e)
 		{
-			this.op1.Size = new System.Drawing.Size(
+			this.op1.Size = new Size(
 				this.xpTaskBoxSimple2.Width - 16,
 				this.xpTaskBoxSimple2.Height - 56
 			);

@@ -7,13 +7,13 @@ namespace SimPe.Plugin
 	/// </summary>
 	class AnimationData
 	{
-		SimPe.Plugin.Anim.AnimationFrameBlock afb;
+		AnimationFrameBlock afb;
 		Ambertation.Graphics.MeshBox mb;
 		int fct;
-		SimPe.Geometry.Vectors3f frames;
+		Geometry.Vectors3f frames;
 
 		public AnimationData(
-			SimPe.Plugin.Anim.AnimationFrameBlock afb,
+			AnimationFrameBlock afb,
 			Ambertation.Graphics.MeshBox mb,
 			int framecount
 		)
@@ -22,21 +22,21 @@ namespace SimPe.Plugin
 			this.afb = afb;
 			this.mb = mb;
 			this.fct = framecount;
-			frames = new SimPe.Geometry.Vectors3f();
+			frames = new Geometry.Vectors3f();
 
-			SimPe.Plugin.Anim.AnimationFrame[] iframes = afb.Frames;
+			AnimationFrame[] iframes = afb.Frames;
 
 			/*scale = new SimPe.Geometry.Vector3f();
 			scale.X = nb.Transform.TranslationVector.X / (float)iframes[0].X;
 			scale.Y = nb.Transform.TranslationVector.Y / (float)iframes[0].Y;
 			scale.Z = nb.Transform.TranslationVector.Z / (float)iframes[0].Z;*/
 
-			SimPe.Plugin.Anim.AnimationFrameBlock afb2 = new AnimationFrameBlock(
+			AnimationFrameBlock afb2 = new AnimationFrameBlock(
 				afb.Parent
 			);
 			for (int i = 0; i <= framecount; i++)
 			{
-				frames.Add(new SimPe.Geometry.Vector3f());
+				frames.Add(new Geometry.Vector3f());
 			}
 
 			InterpolateFrames(iframes, 0); //X-Axis
@@ -44,7 +44,7 @@ namespace SimPe.Plugin
 			InterpolateFrames(iframes, 2); //Z-Axis
 		}
 
-		int FindNext(SimPe.Plugin.Anim.AnimationFrame[] frames, byte axis, int start)
+		int FindNext(AnimationFrame[] frames, byte axis, int start)
 		{
 			for (int i = start; i < frames.Length; i++)
 			{
@@ -57,7 +57,7 @@ namespace SimPe.Plugin
 			return -1;
 		}
 
-		AnimationFrame GetFrame(SimPe.Plugin.Anim.AnimationFrame[] frames, int index)
+		AnimationFrame GetFrame(AnimationFrame[] frames, int index)
 		{
 			if (index < 0 || index >= frames.Length)
 			{
@@ -67,7 +67,7 @@ namespace SimPe.Plugin
 			return frames[index];
 		}
 
-		void InterpolateFrames(SimPe.Plugin.Anim.AnimationFrame[] iframes, byte axis)
+		void InterpolateFrames(AnimationFrame[] iframes, byte axis)
 		{
 			int index = 0;
 			AnimationFrame first = iframes[index];
@@ -169,7 +169,7 @@ namespace SimPe.Plugin
 
 		public void SetFrame(int timecode)
 		{
-			SimPe.Geometry.Vector3f v = this.frames[timecode];
+			Geometry.Vector3f v = this.frames[timecode];
 			Ambertation.Scenes.Transformation trans =
 				new Ambertation.Scenes.Transformation();
 			if (afb.TransformationType == FrameType.Translation)

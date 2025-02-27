@@ -7,10 +7,10 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class TextureLocator : System.IDisposable
 	{
-		SimPe.Interfaces.Files.IPackageFile package;
-		SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fii;
+		Interfaces.Files.IPackageFile package;
+		Interfaces.Scenegraph.IScenegraphFileIndex fii;
 
-		public TextureLocator(SimPe.Interfaces.Files.IPackageFile package)
+		public TextureLocator(Interfaces.Files.IPackageFile package)
 		{
 			this.package = package;
 			fii = SimPe.FileTable.FileIndex.AddNewChild();
@@ -31,7 +31,7 @@ namespace SimPe.Plugin
 				return null;
 			}
 
-			SimPe.Interfaces.Files.IPackageFile lpackage = package;
+			Interfaces.Files.IPackageFile lpackage = package;
 			if (flname != null)
 			{
 				lpackage = SimPe.Packages.File.LoadFromFile(flname);
@@ -76,7 +76,7 @@ namespace SimPe.Plugin
 				return null;
 			}
 
-			SimPe.Interfaces.Files.IPackageFile lpackage = package;
+			Interfaces.Files.IPackageFile lpackage = package;
 			if (flname != null)
 			{
 				lpackage = SimPe.Packages.File.LoadFromFile(flname);
@@ -120,7 +120,7 @@ namespace SimPe.Plugin
 				return ht;
 			}
 
-			SimPe.Interfaces.Files.IPackageFile lpackage = package;
+			Interfaces.Files.IPackageFile lpackage = package;
 			if (flname != null)
 			{
 				lpackage = SimPe.Packages.File.LoadFromFile(flname);
@@ -172,7 +172,7 @@ namespace SimPe.Plugin
 				return ht;
 			}
 
-			SimPe.Interfaces.Files.IPackageFile lpackage = package;
+			Interfaces.Files.IPackageFile lpackage = package;
 			if (flname != null)
 			{
 				lpackage = SimPe.Packages.File.LoadFromFile(flname);

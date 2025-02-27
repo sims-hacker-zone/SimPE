@@ -107,7 +107,7 @@ namespace SimPe.Plugin
 			get; set;
 		}
 
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public override TransformNode StoredTransformNode => null;
 		#endregion
 
@@ -150,7 +150,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public override int ImageIndex => 3; //mesh
 
 		/// <summary>
@@ -162,7 +162,7 @@ namespace SimPe.Plugin
 		protected void AddChildNode(
 			System.Windows.Forms.TreeNodeCollection parent,
 			int index,
-			SimPe.Interfaces.Scenegraph.ICresChildren child
+			Interfaces.Scenegraph.ICresChildren child
 		)
 		{
 			//Make the user aware, that a Node was left out!
@@ -318,7 +318,7 @@ namespace SimPe.Plugin
 			{
 				if (tResourceNode == null)
 				{
-					tResourceNode = new SimPe.Plugin.TabPage.ResourceNode();
+					tResourceNode = new TabPage.ResourceNode();
 				}
 
 				return tResourceNode;
@@ -332,7 +332,7 @@ namespace SimPe.Plugin
 			{
 				if (tCres == null)
 				{
-					tCres = new SimPe.Plugin.TabPage.Cres();
+					tCres = new TabPage.Cres();
 				}
 
 				return tCres;
@@ -348,12 +348,12 @@ namespace SimPe.Plugin
 		{
 			if (tResourceNode == null)
 			{
-				tResourceNode = new SimPe.Plugin.TabPage.ResourceNode();
+				tResourceNode = new TabPage.ResourceNode();
 			}
 
 			if (tCres == null)
 			{
-				tCres = new SimPe.Plugin.TabPage.Cres();
+				tCres = new TabPage.Cres();
 			}
 
 			this.tCres.cres_tv.Nodes.Clear();
@@ -369,7 +369,7 @@ namespace SimPe.Plugin
 		{
 			if (tResourceNode == null)
 			{
-				tResourceNode = new SimPe.Plugin.TabPage.ResourceNode();
+				tResourceNode = new TabPage.ResourceNode();
 			}
 
 			tResourceNode.lb_rn.Items.Clear();

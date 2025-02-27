@@ -26,19 +26,19 @@ namespace SimPe
 	/// <summary>
 	/// Summary description for ImportSemi.
 	/// </summary>
-	public class ImportSemi : System.Windows.Forms.Form
+	public class ImportSemi : Form
 	{
-		private System.Windows.Forms.Button btimport;
-		private System.Windows.Forms.ComboBox cbsemi;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.LinkLabel llscan;
-		private System.Windows.Forms.CheckedListBox lbfiles;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.LinkLabel linkLabel1;
-		private System.Windows.Forms.CheckBox cbfix;
-		private System.Windows.Forms.ToolTip toolTip1;
-		private System.Windows.Forms.CheckBox cbname;
-		private System.Windows.Forms.Panel panel1;
+		private Button btimport;
+		private ComboBox cbsemi;
+		private Label label1;
+		private LinkLabel llscan;
+		private CheckedListBox lbfiles;
+		private Label label2;
+		private LinkLabel linkLabel1;
+		private CheckBox cbfix;
+		private ToolTip toolTip1;
+		private CheckBox cbname;
+		private Panel panel1;
 		private System.ComponentModel.IContainer components;
 
 		public ImportSemi()
@@ -68,7 +68,7 @@ namespace SimPe
 
 					ct++;
 
-					SimPe.Plugin.NamedGlob glob = new SimPe.Plugin.NamedGlob();
+					Plugin.NamedGlob glob = new Plugin.NamedGlob();
 					glob.ProcessData(item.FileDescriptor, item.Package);
 
 					if (!names.Contains(glob.SemiGlobalName.Trim().ToLower()))
@@ -110,24 +110,24 @@ namespace SimPe
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(ImportSemi));
-			this.btimport = new System.Windows.Forms.Button();
-			this.cbsemi = new System.Windows.Forms.ComboBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.llscan = new System.Windows.Forms.LinkLabel();
-			this.lbfiles = new System.Windows.Forms.CheckedListBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-			this.cbfix = new System.Windows.Forms.CheckBox();
-			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-			this.cbname = new System.Windows.Forms.CheckBox();
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.btimport = new Button();
+			this.cbsemi = new ComboBox();
+			this.label1 = new Label();
+			this.llscan = new LinkLabel();
+			this.lbfiles = new CheckedListBox();
+			this.label2 = new Label();
+			this.linkLabel1 = new LinkLabel();
+			this.cbfix = new CheckBox();
+			this.toolTip1 = new ToolTip(this.components);
+			this.cbname = new CheckBox();
+			this.panel1 = new Panel();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			//
 			// btimport
 			//
 			this.btimport.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -140,12 +140,12 @@ namespace SimPe
 			this.btimport.Size = new System.Drawing.Size(75, 23);
 			this.btimport.TabIndex = 1;
 			this.btimport.Text = "Import";
-			this.btimport.Click += new System.EventHandler(this.ImportFiles);
+			this.btimport.Click += new EventHandler(this.ImportFiles);
 			//
 			// cbsemi
 			//
 			this.cbsemi.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -180,7 +180,7 @@ namespace SimPe
 			// llscan
 			//
 			this.llscan.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -203,14 +203,14 @@ namespace SimPe
 			this.llscan.TabStop = true;
 			this.llscan.Text = "scan";
 			this.llscan.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.ScanSemiGlobals
 				);
 			//
 			// lbfiles
 			//
 			this.lbfiles.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -249,7 +249,7 @@ namespace SimPe
 			// linkLabel1
 			//
 			this.linkLabel1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -272,14 +272,14 @@ namespace SimPe
 			this.linkLabel1.TabStop = true;
 			this.linkLabel1.Text = "uncheck all";
 			this.linkLabel1.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.linkLabel1_LinkClicked
 				);
 			//
 			// cbfix
 			//
 			this.cbfix.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -301,7 +301,7 @@ namespace SimPe
 			// cbname
 			//
 			this.cbname.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -323,7 +323,7 @@ namespace SimPe
 			// panel1
 			//
 			this.panel1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -382,14 +382,14 @@ namespace SimPe
 		}
 		#endregion
 
-		SimPe.Interfaces.Files.IPackageFile package;
-		SimPe.Interfaces.IWrapperRegistry reg;
-		SimPe.Interfaces.IProviderRegistry prov;
+		Interfaces.Files.IPackageFile package;
+		Interfaces.IWrapperRegistry reg;
+		Interfaces.IProviderRegistry prov;
 
 		public void Execute(
-			SimPe.Interfaces.Files.IPackageFile package,
-			SimPe.Interfaces.IWrapperRegistry reg,
-			SimPe.Interfaces.IProviderRegistry prov
+			Interfaces.Files.IPackageFile package,
+			Interfaces.IWrapperRegistry reg,
+			Interfaces.IProviderRegistry prov
 		)
 		{
 			this.package = package;
@@ -403,7 +403,7 @@ namespace SimPe
 
 		private void ScanSemiGlobals(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			this.Cursor = Cursors.WaitCursor;
@@ -419,7 +419,7 @@ namespace SimPe
 
 			try
 			{
-				SimPe.Plugin.NamedGlob glob = (SimPe.Plugin.NamedGlob)
+				Plugin.NamedGlob glob = (Plugin.NamedGlob)
 					cbsemi.Items[cbsemi.SelectedIndex];
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
 					FileTable.FileIndex.FindFileByGroup(glob.SemiGlobalGroup);
@@ -429,7 +429,7 @@ namespace SimPe
 				{
 					if (item.FileDescriptor.Type == Data.MetaData.BHAV_FILE)
 					{
-						SimPe.Plugin.Bhav bhav = new SimPe.Plugin.Bhav(null);
+						Plugin.Bhav bhav = new Plugin.Bhav(null);
 						bhav.ProcessData(item);
 						item.FileDescriptor.Filename =
 							item.FileDescriptor.TypeName.shortname
@@ -441,8 +441,8 @@ namespace SimPe
 					}
 					else if (item.FileDescriptor.Type == Data.MetaData.STRING_FILE)
 					{
-						SimPe.PackedFiles.Wrapper.Str str =
-							new SimPe.PackedFiles.Wrapper.Str();
+						PackedFiles.Wrapper.Str str =
+							new PackedFiles.Wrapper.Str();
 						str.ProcessData(item);
 						item.FileDescriptor.Filename =
 							item.FileDescriptor.TypeName.shortname
@@ -454,7 +454,7 @@ namespace SimPe
 					}
 					else if (item.FileDescriptor.Type == 0x42434F4E) //BCON
 					{
-						SimPe.Plugin.Bcon bcon = new SimPe.Plugin.Bcon();
+						Plugin.Bcon bcon = new Plugin.Bcon();
 						bcon.ProcessData(item);
 						item.FileDescriptor.Filename =
 							item.FileDescriptor.TypeName.shortname
@@ -489,7 +489,7 @@ namespace SimPe
 			this.Cursor = Cursors.Default;
 		}
 
-		private void ImportFiles(object sender, System.EventArgs e)
+		private void ImportFiles(object sender, EventArgs e)
 		{
 			this.Cursor = Cursors.WaitCursor;
 
@@ -538,8 +538,8 @@ namespace SimPe
 					Interfaces.Scenegraph.IScenegraphFileIndexItem item =
 						(Interfaces.Scenegraph.IScenegraphFileIndexItem)
 							lbfiles.Items[i];
-					SimPe.Packages.PackedFileDescriptor npfd =
-						new SimPe.Packages.PackedFileDescriptor();
+					Packages.PackedFileDescriptor npfd =
+						new Packages.PackedFileDescriptor();
 					npfd.Type = item.FileDescriptor.Type;
 					npfd.Group = item.FileDescriptor.Group;
 					npfd.Instance = item.FileDescriptor.Instance;
@@ -556,7 +556,7 @@ namespace SimPe
 						bhavalias[(ushort)npfd.Instance] = (ushort)maxbhavinst;
 						npfd.Instance = maxbhavinst;
 
-						SimPe.Plugin.Bhav bhav = new SimPe.Plugin.Bhav(
+						Plugin.Bhav bhav = new Plugin.Bhav(
 							prov.OpcodeProvider
 						);
 						bhav.ProcessData(npfd, package);
@@ -575,7 +575,7 @@ namespace SimPe
 						npfd.Group = 0xffffffff;
 						bconalias[(ushort)npfd.Instance] = (ushort)npfd.Instance;
 
-						SimPe.Plugin.Bcon bcon = new SimPe.Plugin.Bcon();
+						Plugin.Bcon bcon = new Plugin.Bcon();
 						bcon.ProcessData(npfd, package);
 						if (cbname.Checked)
 						{
@@ -586,7 +586,7 @@ namespace SimPe
 					}
 					else if (npfd.Type == 0x54544142) //TTAB
 					{
-						SimPe.Plugin.Ttab ttab = new SimPe.Plugin.Ttab(
+						Plugin.Ttab ttab = new Plugin.Ttab(
 							prov.OpcodeProvider
 						);
 						ttab.ProcessData(npfd, package);
@@ -600,7 +600,7 @@ namespace SimPe
 					pfds = package.FindFiles(Data.MetaData.BHAV_FILE);
 					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 					{
-						SimPe.Plugin.Bhav bhav = new SimPe.Plugin.Bhav(
+						Plugin.Bhav bhav = new Plugin.Bhav(
 							prov.OpcodeProvider
 						);
 						bhav.ProcessData(pfd, package);
@@ -611,7 +611,7 @@ namespace SimPe
 					pfds = package.FindFiles(0x54544142);
 					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 					{
-						SimPe.Plugin.Ttab ttab = new SimPe.Plugin.Ttab(
+						Plugin.Ttab ttab = new Plugin.Ttab(
 							prov.OpcodeProvider
 						);
 						ttab.ProcessData(pfd, package);
@@ -621,9 +621,9 @@ namespace SimPe
 				}
 
 				//Relink all SemiGlobals in imported BHAV's
-				foreach (SimPe.Plugin.Bhav bhav in bhavs)
+				foreach (Plugin.Bhav bhav in bhavs)
 				{
-					foreach (SimPe.PackedFiles.Wrapper.Instruction i in bhav)
+					foreach (PackedFiles.Wrapper.Instruction i in bhav)
 					{
 						if (bhavalias.Contains(i.OpCode))
 						{
@@ -634,9 +634,9 @@ namespace SimPe
 				}
 
 				//Relink all TTAbs
-				foreach (SimPe.Plugin.Ttab ttab in ttabs)
+				foreach (Plugin.Ttab ttab in ttabs)
 				{
-					foreach (SimPe.PackedFiles.Wrapper.TtabItem item in ttab)
+					foreach (PackedFiles.Wrapper.TtabItem item in ttab)
 					{
 						if (bhavalias.Contains(item.Guardian))
 						{
@@ -661,7 +661,7 @@ namespace SimPe
 
 		private void linkLabel1_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			for (int i = 0; i < lbfiles.Items.Count; i++)

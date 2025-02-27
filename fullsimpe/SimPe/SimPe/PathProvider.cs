@@ -596,7 +596,7 @@ namespace SimPe
 					}
 
 					string[] names = typeof(Helper).Assembly.GetManifestResourceNames();
-					System.IO.Stream s = null;
+					Stream s = null;
 					foreach (string name in names)
 					{
 						if (
@@ -609,11 +609,11 @@ namespace SimPe
 						}
 					}
 
-					System.IO.BinaryReader br = new BinaryReader(s);
+					BinaryReader br = new BinaryReader(s);
 					try
 					{
 						FileStream fs = System.IO.File.Create(fl);
-						System.IO.BinaryWriter bw = new BinaryWriter(fs);
+						BinaryWriter bw = new BinaryWriter(fs);
 						try
 						{
 							bw.Write(br.ReadBytes((int)br.BaseStream.Length));
@@ -685,7 +685,7 @@ namespace SimPe
 
 				try
 				{
-					System.IO.TextReader fs = System.IO.File.OpenText(StartupCheatFile);
+					TextReader fs = System.IO.File.OpenText(StartupCheatFile);
 					string cont = fs.ReadToEnd();
 					fs.Close();
 					fs.Dispose();
@@ -735,7 +735,7 @@ namespace SimPe
 					bool found = false;
 					if (System.IO.File.Exists(StartupCheatFile))
 					{
-						System.IO.TextReader fs = System.IO.File.OpenText(
+						TextReader fs = System.IO.File.OpenText(
 							StartupCheatFile
 						);
 						string cont = fs.ReadToEnd();
@@ -790,7 +790,7 @@ namespace SimPe
 						}
 					}
 
-					System.IO.TextWriter fw = System.IO.File.CreateText(
+					TextWriter fw = System.IO.File.CreateText(
 						StartupCheatFile
 					);
 					fw.Write(newcont.Trim());

@@ -11,7 +11,7 @@ namespace SimPe.Windows.Forms
 			this.Type = type;
 			this.ImageIndex = ResourceViewManager.GetIndexForResourceType(type);
 			this.SelectedImageIndex = this.ImageIndex;
-			SimPe.Data.TypeAlias ta = Data.MetaData.FindTypeAlias(type);
+			Data.TypeAlias ta = Data.MetaData.FindTypeAlias(type);
 			this.Text = ta.Name + " (" + ta.shortname + ") (" + list.Count + ")";
 		}
 

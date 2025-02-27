@@ -7,10 +7,10 @@ namespace SimPe
 	/// <summary>
 	/// Summary description for Message.
 	/// </summary>
-	public class Message : System.Windows.Forms.Form
+	public class Message : Form
 	{
-		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.Label label1;
+		private Panel panel1;
+		private Label label1;
 		private SteepValley.Windows.Forms.XPGradientPanel panel2;
 
 		/// <summary>
@@ -52,64 +52,64 @@ namespace SimPe
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(Message));
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.panel1 = new Panel();
 			this.panel2 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.label1 = new System.Windows.Forms.Label();
+			this.label1 = new Label();
 			this.panel2.SuspendLayout();
 			this.SuspendLayout();
 			//
 			// panel1
 			//
 			this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
-			this.panel1.Location = new System.Drawing.Point(0, 32);
+			this.panel1.Location = new Point(0, 32);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(548, 40);
+			this.panel1.Size = new Size(548, 40);
 			this.panel1.TabIndex = 0;
 			//
 			// panel2
 			//
 			this.panel2.BackColor = System.Drawing.Color.Transparent;
 			this.panel2.Controls.Add(this.label1);
-			this.panel2.Font = new System.Drawing.Font(
+			this.panel2.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.panel2.Location = new System.Drawing.Point(0, 0);
+			this.panel2.Location = new Point(0, 0);
 			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(548, 32);
+			this.panel2.Size = new Size(548, 32);
 			this.panel2.TabIndex = 1;
 			//
 			// label1
 			//
 			this.label1.AutoSize = true;
 			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font(
+			this.label1.Font = new Font(
 				"Microsoft Sans Serif",
 				9.75F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.MaximumSize = new System.Drawing.Size(524, 0);
+			this.label1.Location = new Point(8, 8);
+			this.label1.MaximumSize = new Size(524, 0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(45, 16);
+			this.label1.Size = new Size(45, 16);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "label1";
 			//
 			// Message
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+			this.AutoScaleBaseSize = new Size(5, 13);
 			this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-			this.ClientSize = new System.Drawing.Size(542, 72);
+			this.ClientSize = new Size(542, 72);
 			this.ControlBox = false;
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.panel2);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "Message";

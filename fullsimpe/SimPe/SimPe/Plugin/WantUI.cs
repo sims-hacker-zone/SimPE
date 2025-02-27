@@ -107,7 +107,7 @@ namespace SimPe.Plugin
 					WantLoader.WantNameLoader.AddSimNames();
 				}
 
-				SimPe.Interfaces.Wrapper.ISDesc sdsc = wrp.SimDescription;
+				Interfaces.Wrapper.ISDesc sdsc = wrp.SimDescription;
 				if (sdsc != null)
 				{
 					form.lbsimname.Text = sdsc.SimName + " " + sdsc.SimFamilyName;

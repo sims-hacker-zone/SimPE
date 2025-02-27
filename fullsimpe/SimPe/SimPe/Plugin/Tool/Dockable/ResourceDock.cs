@@ -27,54 +27,54 @@ namespace SimPe.Plugin.Tool.Dockable
 	/// <summary>
 	/// Zusammenfassung für ResourceDock.
 	/// </summary>
-	public class ResourceDock : System.Windows.Forms.Form
+	public class ResourceDock : Form
 	{
 		private DockManager manager;
-		internal Ambertation.Windows.Forms.DockPanel dcWrapper;
-		internal Ambertation.Windows.Forms.DockPanel dcResource;
+		internal DockPanel dcWrapper;
+		internal DockPanel dcResource;
 		private SteepValley.Windows.Forms.XPGradientPanel xpGradientPanel1;
 		private SteepValley.Windows.Forms.XPGradientPanel xpGradientPanel2;
-		internal System.Windows.Forms.Panel pntypes;
-		internal System.Windows.Forms.TextBox tbinstance;
-		private System.Windows.Forms.Label label11;
-		internal System.Windows.Forms.TextBox tbtype;
-		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.Label label10;
-		internal System.Windows.Forms.TextBox tbgroup;
-		internal System.Windows.Forms.ComboBox cbtypes;
-		private System.Windows.Forms.Label label3;
-		internal System.Windows.Forms.ComboBox cbComp;
-		internal System.Windows.Forms.TextBox tbinstance2;
-		internal System.Windows.Forms.Label lbName;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label5;
-		internal System.Windows.Forms.Label lbAuthor;
-		internal System.Windows.Forms.Label lbVersion;
-		internal System.Windows.Forms.Label lbDesc;
-		internal System.Windows.Forms.Label lbComp;
-		internal Ambertation.Windows.Forms.DockPanel dcPackage;
+		internal Panel pntypes;
+		internal TextBox tbinstance;
+		private Label label11;
+		internal TextBox tbtype;
+		private Label label8;
+		private Label label9;
+		private Label label10;
+		internal TextBox tbgroup;
+		internal ComboBox cbtypes;
+		private Label label3;
+		internal ComboBox cbComp;
+		internal TextBox tbinstance2;
+		internal Label lbName;
+		private Label label1;
+		private Label label2;
+		private Label label5;
+		internal Label lbAuthor;
+		internal Label lbVersion;
+		internal Label lbDesc;
+		internal Label lbComp;
+		internal DockPanel dcPackage;
 		private SteepValley.Windows.Forms.XPGradientPanel xpGradientPanel3;
-		internal System.Windows.Forms.PropertyGrid pgHead;
-		private System.Windows.Forms.Label label4;
-		internal System.Windows.Forms.ListView lv;
-		private System.Windows.Forms.ColumnHeader clOffset;
-		private System.Windows.Forms.ColumnHeader clSize;
-		internal Ambertation.Windows.Forms.DockPanel dcConvert;
+		internal PropertyGrid pgHead;
+		private Label label4;
+		internal ListView lv;
+		private ColumnHeader clOffset;
+		private ColumnHeader clSize;
+		internal DockPanel dcConvert;
 		private SteepValley.Windows.Forms.XPGradientPanel xpGradientPanel4;
 		private SteepValley.Windows.Forms.XPCueBannerExtender xpCueBannerExtender1;
-		private System.Windows.Forms.TextBox tbHex;
-		private System.Windows.Forms.TextBox tbDec;
-		internal Ambertation.Windows.Forms.DockPanel dcHex;
-		internal Ambertation.Windows.Forms.HexViewControl hvc;
-		private System.Windows.Forms.TextBox tbBin;
-		internal System.Windows.Forms.Button button1;
-		private Ambertation.Windows.Forms.HexEditControl hexEditControl1;
-		private System.Windows.Forms.LinkLabel linkLabel1;
-		internal System.Windows.Forms.PictureBox pb;
-		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.TextBox tbFloat;
+		private TextBox tbHex;
+		private TextBox tbDec;
+		internal DockPanel dcHex;
+		internal HexViewControl hvc;
+		private TextBox tbBin;
+		internal Button button1;
+		private HexEditControl hexEditControl1;
+		private LinkLabel linkLabel1;
+		internal PictureBox pb;
+		private Panel panel1;
+		private TextBox tbFloat;
 		private DockContainer dockBottom;
 		private System.ComponentModel.IContainer components;
 
@@ -92,7 +92,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			tm.AddControl(this.xpGradientPanel4);
 
 			this.lv.View = System.Windows.Forms.View.Details;
-			foreach (SimPe.Data.TypeAlias a in SimPe.Helper.TGILoader.FileTypes)
+			foreach (Data.TypeAlias a in SimPe.Helper.TGILoader.FileTypes)
 			{
 				cbtypes.Items.Add(a);
 			}
@@ -124,58 +124,58 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			Ambertation.Windows.Forms.WhidbeyRenderer whidbeyRenderer2 =
-				new Ambertation.Windows.Forms.WhidbeyRenderer();
+			WhidbeyRenderer whidbeyRenderer2 =
+				new WhidbeyRenderer();
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(ResourceDock)
 				);
-			this.manager = new Ambertation.Windows.Forms.DockManager();
-			this.dockBottom = new Ambertation.Windows.Forms.DockContainer();
-			this.dcConvert = new Ambertation.Windows.Forms.DockPanel();
+			this.manager = new DockManager();
+			this.dockBottom = new DockContainer();
+			this.dcConvert = new DockPanel();
 			this.xpGradientPanel4 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.tbFloat = new System.Windows.Forms.TextBox();
-			this.tbBin = new System.Windows.Forms.TextBox();
-			this.tbDec = new System.Windows.Forms.TextBox();
-			this.tbHex = new System.Windows.Forms.TextBox();
-			this.dcHex = new Ambertation.Windows.Forms.DockPanel();
-			this.hvc = new Ambertation.Windows.Forms.HexViewControl();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.button1 = new System.Windows.Forms.Button();
-			this.hexEditControl1 = new Ambertation.Windows.Forms.HexEditControl();
-			this.dcResource = new Ambertation.Windows.Forms.DockPanel();
+			this.tbFloat = new TextBox();
+			this.tbBin = new TextBox();
+			this.tbDec = new TextBox();
+			this.tbHex = new TextBox();
+			this.dcHex = new DockPanel();
+			this.hvc = new HexViewControl();
+			this.panel1 = new Panel();
+			this.button1 = new Button();
+			this.hexEditControl1 = new HexEditControl();
+			this.dcResource = new DockPanel();
 			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-			this.lbComp = new System.Windows.Forms.Label();
-			this.cbComp = new System.Windows.Forms.ComboBox();
-			this.pntypes = new System.Windows.Forms.Panel();
-			this.tbinstance2 = new System.Windows.Forms.TextBox();
-			this.tbinstance = new System.Windows.Forms.TextBox();
-			this.label11 = new System.Windows.Forms.Label();
-			this.tbtype = new System.Windows.Forms.TextBox();
-			this.label8 = new System.Windows.Forms.Label();
-			this.label9 = new System.Windows.Forms.Label();
-			this.label10 = new System.Windows.Forms.Label();
-			this.tbgroup = new System.Windows.Forms.TextBox();
-			this.cbtypes = new System.Windows.Forms.ComboBox();
-			this.dcPackage = new Ambertation.Windows.Forms.DockPanel();
+			this.linkLabel1 = new LinkLabel();
+			this.lbComp = new Label();
+			this.cbComp = new ComboBox();
+			this.pntypes = new Panel();
+			this.tbinstance2 = new TextBox();
+			this.tbinstance = new TextBox();
+			this.label11 = new Label();
+			this.tbtype = new TextBox();
+			this.label8 = new Label();
+			this.label9 = new Label();
+			this.label10 = new Label();
+			this.tbgroup = new TextBox();
+			this.cbtypes = new ComboBox();
+			this.dcPackage = new DockPanel();
 			this.xpGradientPanel3 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.lv = new System.Windows.Forms.ListView();
-			this.clOffset = new System.Windows.Forms.ColumnHeader();
-			this.clSize = new System.Windows.Forms.ColumnHeader();
-			this.label4 = new System.Windows.Forms.Label();
-			this.pgHead = new System.Windows.Forms.PropertyGrid();
-			this.dcWrapper = new Ambertation.Windows.Forms.DockPanel();
+			this.lv = new ListView();
+			this.clOffset = new ColumnHeader();
+			this.clSize = new ColumnHeader();
+			this.label4 = new Label();
+			this.pgHead = new PropertyGrid();
+			this.dcWrapper = new DockPanel();
 			this.xpGradientPanel2 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.lbName = new System.Windows.Forms.Label();
-			this.pb = new System.Windows.Forms.PictureBox();
-			this.lbDesc = new System.Windows.Forms.Label();
-			this.lbVersion = new System.Windows.Forms.Label();
-			this.lbAuthor = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
+			this.lbName = new Label();
+			this.pb = new PictureBox();
+			this.lbDesc = new Label();
+			this.lbVersion = new Label();
+			this.lbAuthor = new Label();
+			this.label5 = new Label();
+			this.label2 = new Label();
+			this.label1 = new Label();
+			this.label3 = new Label();
 			this.xpCueBannerExtender1 =
 				new SteepValley.Windows.Forms.XPCueBannerExtender(this.components);
 			this.manager.SuspendLayout();
@@ -263,29 +263,29 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.xpCueBannerExtender1.SetCueBannerText(this.tbFloat, "Float");
 			resources.ApplyResources(this.tbFloat, "tbFloat");
 			this.tbFloat.Name = "tbFloat";
-			this.tbFloat.TextChanged += new System.EventHandler(this.FloatChanged);
+			this.tbFloat.TextChanged += new EventHandler(this.FloatChanged);
 			//
 			// tbBin
 			//
 			this.xpCueBannerExtender1.SetCueBannerText(this.tbBin, "Binary");
 			resources.ApplyResources(this.tbBin, "tbBin");
 			this.tbBin.Name = "tbBin";
-			this.tbBin.SizeChanged += new System.EventHandler(this.tbBin_SizeChanged);
-			this.tbBin.TextChanged += new System.EventHandler(this.BinChanged);
+			this.tbBin.SizeChanged += new EventHandler(this.tbBin_SizeChanged);
+			this.tbBin.TextChanged += new EventHandler(this.BinChanged);
 			//
 			// tbDec
 			//
 			this.xpCueBannerExtender1.SetCueBannerText(this.tbDec, "Decimal");
 			resources.ApplyResources(this.tbDec, "tbDec");
 			this.tbDec.Name = "tbDec";
-			this.tbDec.TextChanged += new System.EventHandler(this.DecChanged);
+			this.tbDec.TextChanged += new EventHandler(this.DecChanged);
 			//
 			// tbHex
 			//
 			this.xpCueBannerExtender1.SetCueBannerText(this.tbHex, "Hex.");
 			resources.ApplyResources(this.tbHex, "tbHex");
 			this.tbHex.Name = "tbHex";
-			this.tbHex.TextChanged += new System.EventHandler(this.HexChanged);
+			this.tbHex.TextChanged += new EventHandler(this.HexChanged);
 			//
 			// dcHex
 			//
@@ -315,7 +315,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				(System.Drawing.Image)(resources.GetObject("dcHex.TabImage"))
 			);
 			this.dcHex.TabText = "Hex";
-			this.dcHex.VisibleChanged += new System.EventHandler(
+			this.dcHex.VisibleChanged += new EventHandler(
 				this.dcHex_VisibleChanged
 			);
 			//
@@ -384,7 +384,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			resources.ApplyResources(this.button1, "button1");
 			this.button1.Name = "button1";
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.button1.Click += new EventHandler(this.button1_Click);
 			//
 			// hexEditControl1
 			//
@@ -459,7 +459,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.linkLabel1.TabStop = true;
 			this.linkLabel1.UseCompatibleTextRendering = true;
 			this.linkLabel1.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.linkLabel1_LinkClicked
 				);
 			//
@@ -483,7 +483,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 			);
 			this.cbComp.Name = "cbComp";
-			this.cbComp.SelectedIndexChanged += new System.EventHandler(
+			this.cbComp.SelectedIndexChanged += new EventHandler(
 				this.cbComp_SelectedIndexChanged
 			);
 			//
@@ -507,26 +507,26 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.xpCueBannerExtender1.SetCueBannerText(this.tbinstance2, "");
 			resources.ApplyResources(this.tbinstance2, "tbinstance2");
 			this.tbinstance2.Name = "tbinstance2";
-			this.tbinstance2.Leave += new System.EventHandler(
+			this.tbinstance2.Leave += new EventHandler(
 				this.tbinstance2_TextChanged
 			);
-			this.tbinstance2.KeyUp += new System.Windows.Forms.KeyEventHandler(
+			this.tbinstance2.KeyUp += new KeyEventHandler(
 				this.tbinstance2_KeyUp
 			);
-			this.tbinstance2.TextChanged += new System.EventHandler(this.TextChanged);
+			this.tbinstance2.TextChanged += new EventHandler(this.TextChanged);
 			//
 			// tbinstance
 			//
 			this.xpCueBannerExtender1.SetCueBannerText(this.tbinstance, "");
 			resources.ApplyResources(this.tbinstance, "tbinstance");
 			this.tbinstance.Name = "tbinstance";
-			this.tbinstance.Leave += new System.EventHandler(
+			this.tbinstance.Leave += new EventHandler(
 				this.tbinstance_TextChanged
 			);
-			this.tbinstance.KeyUp += new System.Windows.Forms.KeyEventHandler(
+			this.tbinstance.KeyUp += new KeyEventHandler(
 				this.tbinstance_KeyUp
 			);
-			this.tbinstance.TextChanged += new System.EventHandler(this.TextChanged);
+			this.tbinstance.TextChanged += new EventHandler(this.TextChanged);
 			//
 			// label11
 			//
@@ -538,11 +538,11 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.xpCueBannerExtender1.SetCueBannerText(this.tbtype, "");
 			resources.ApplyResources(this.tbtype, "tbtype");
 			this.tbtype.Name = "tbtype";
-			this.tbtype.Leave += new System.EventHandler(this.tbtype_TextChanged2);
-			this.tbtype.KeyUp += new System.Windows.Forms.KeyEventHandler(
+			this.tbtype.Leave += new EventHandler(this.tbtype_TextChanged2);
+			this.tbtype.KeyUp += new KeyEventHandler(
 				this.tbtype_KeyUp
 			);
-			this.tbtype.TextChanged += new System.EventHandler(this.tbtype_TextChanged);
+			this.tbtype.TextChanged += new EventHandler(this.tbtype_TextChanged);
 			//
 			// label8
 			//
@@ -564,11 +564,11 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.xpCueBannerExtender1.SetCueBannerText(this.tbgroup, "");
 			resources.ApplyResources(this.tbgroup, "tbgroup");
 			this.tbgroup.Name = "tbgroup";
-			this.tbgroup.Leave += new System.EventHandler(this.tbgroup_TextChanged);
-			this.tbgroup.KeyUp += new System.Windows.Forms.KeyEventHandler(
+			this.tbgroup.Leave += new EventHandler(this.tbgroup_TextChanged);
+			this.tbgroup.KeyUp += new KeyEventHandler(
 				this.tbgroup_KeyUp
 			);
-			this.tbgroup.TextChanged += new System.EventHandler(this.TextChanged);
+			this.tbgroup.TextChanged += new EventHandler(this.TextChanged);
 			//
 			// cbtypes
 			//
@@ -580,7 +580,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				.ComboBoxStyle
 				.DropDownList;
 			this.cbtypes.Name = "cbtypes";
-			this.cbtypes.SelectedIndexChanged += new System.EventHandler(
+			this.cbtypes.SelectedIndexChanged += new EventHandler(
 				this.cbtypes_SelectedIndexChanged
 			);
 			//
@@ -623,7 +623,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			resources.ApplyResources(this.lv, "lv");
 			this.lv.Columns.AddRange(
-				new System.Windows.Forms.ColumnHeader[] { this.clOffset, this.clSize }
+				new ColumnHeader[] { this.clOffset, this.clSize }
 			);
 			this.lv.FullRowSelect = true;
 			this.lv.GridLines = true;
@@ -756,7 +756,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			resources.ApplyResources(this, "$this");
 			this.Controls.Add(this.manager);
 			this.Name = "ResourceDock";
-			this.Load += new System.EventHandler(this.ResourceDock_Load);
+			this.Load += new EventHandler(this.ResourceDock_Load);
 			this.manager.ResumeLayout(false);
 			this.dockBottom.ResumeLayout(false);
 			this.dcConvert.ResumeLayout(false);
@@ -778,14 +778,14 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 		#endregion
 
-		internal SimPe.Events.ResourceEventArgs items;
+		internal Events.ResourceEventArgs items;
 		internal LoadedPackage guipackage;
 
-		private void ResourceDock_Load(object sender, System.EventArgs e)
+		private void ResourceDock_Load(object sender, EventArgs e)
 		{
 		}
 
-		private void cbtypes_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void cbtypes_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (cbtypes.Tag != null)
 			{
@@ -795,13 +795,13 @@ namespace SimPe.Plugin.Tool.Dockable
 			tbtype.Text =
 				"0x"
 				+ Helper.HexString(
-					((SimPe.Data.TypeAlias)cbtypes.Items[cbtypes.SelectedIndex]).Id
+					((Data.TypeAlias)cbtypes.Items[cbtypes.SelectedIndex]).Id
 				);
 			this.tbtype.Tag = true;
 			tbtype_TextChanged2(this.tbtype, e);
 		}
 
-		private void tbtype_TextChanged(object sender, System.EventArgs e)
+		private void tbtype_TextChanged(object sender, EventArgs e)
 		{
 			cbtypes.Tag = true;
 			Data.TypeAlias a = Data.MetaData.FindTypeAlias(
@@ -825,14 +825,14 @@ namespace SimPe.Plugin.Tool.Dockable
 			TextChanged(sender, null);
 		}
 
-		private void tbtype_TextChanged2(object sender, System.EventArgs ea)
+		private void tbtype_TextChanged2(object sender, EventArgs ea)
 		{
 			if (items == null || ((TextBox)sender).Tag == null)
 			{
 				return;
 			} ((TextBox)sender).Tag = null;
 			guipackage.PauseIndexChangedEvents();
-			foreach (SimPe.Events.ResourceContainer e in items)
+			foreach (Events.ResourceContainer e in items)
 			{
 				if (!e.HasFileDescriptor)
 				{
@@ -851,7 +851,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			guipackage.RestartIndexChangedEvents();
 		}
 
-		private void tbgroup_TextChanged(object sender, System.EventArgs ea)
+		private void tbgroup_TextChanged(object sender, EventArgs ea)
 		{
 			if (items == null || ((TextBox)sender).Tag == null)
 			{
@@ -859,7 +859,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			} ((TextBox)sender).Tag = null;
 
 			guipackage.PauseIndexChangedEvents();
-			foreach (SimPe.Events.ResourceContainer e in items)
+			foreach (Events.ResourceContainer e in items)
 			{
 				if (!e.HasFileDescriptor)
 				{
@@ -881,7 +881,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			guipackage.RestartIndexChangedEvents();
 		}
 
-		private void tbinstance_TextChanged(object sender, System.EventArgs ea)
+		private void tbinstance_TextChanged(object sender, EventArgs ea)
 		{
 			if (items == null || ((TextBox)sender).Tag == null)
 			{
@@ -889,7 +889,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			} ((TextBox)sender).Tag = null;
 
 			guipackage.PauseIndexChangedEvents();
-			foreach (SimPe.Events.ResourceContainer e in items)
+			foreach (Events.ResourceContainer e in items)
 			{
 				if (!e.HasFileDescriptor)
 				{
@@ -912,7 +912,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			guipackage.RestartIndexChangedEvents();
 		}
 
-		private void tbinstance2_TextChanged(object sender, System.EventArgs ea)
+		private void tbinstance2_TextChanged(object sender, EventArgs ea)
 		{
 			if (items == null || ((TextBox)sender).Tag == null)
 			{
@@ -920,7 +920,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			} ((TextBox)sender).Tag = null;
 
 			guipackage.PauseIndexChangedEvents();
-			foreach (SimPe.Events.ResourceContainer e in items)
+			foreach (Events.ResourceContainer e in items)
 			{
 				if (!e.HasFileDescriptor)
 				{
@@ -941,7 +941,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			guipackage.RestartIndexChangedEvents();
 		}
 
-		private void cbComp_SelectedIndexChanged(object sender, System.EventArgs ea)
+		private void cbComp_SelectedIndexChanged(object sender, EventArgs ea)
 		{
 			if (this.cbComp.SelectedIndex < 0)
 			{
@@ -959,7 +959,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			guipackage.PauseIndexChangedEvents();
-			foreach (SimPe.Events.ResourceContainer e in items)
+			foreach (Events.ResourceContainer e in items)
 			{
 				if (!e.HasFileDescriptor)
 				{
@@ -988,7 +988,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			guipackage.RestartIndexChangedEvents();
 		}
 
-		private void tbtype_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
+		private void tbtype_KeyUp(object sender, KeyEventArgs e)
 		{
 			if (e.KeyCode == Keys.Enter)
 			{
@@ -997,7 +997,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 		}
 
-		private void tbgroup_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
+		private void tbgroup_KeyUp(object sender, KeyEventArgs e)
 		{
 			if (e.KeyCode == Keys.Enter)
 			{
@@ -1008,7 +1008,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		private void tbinstance_KeyUp(
 			object sender,
-			System.Windows.Forms.KeyEventArgs e
+			KeyEventArgs e
 		)
 		{
 			if (e.KeyCode == Keys.Enter)
@@ -1020,7 +1020,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		private void tbinstance2_KeyUp(
 			object sender,
-			System.Windows.Forms.KeyEventArgs e
+			KeyEventArgs e
 		)
 		{
 			if (e.KeyCode == Keys.Enter)
@@ -1080,7 +1080,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 		}
 
-		private void FloatChanged(object sender, System.EventArgs e)
+		private void FloatChanged(object sender, EventArgs e)
 		{
 			if (sysupdate)
 			{
@@ -1101,7 +1101,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			sysupdate = false;
 		}
 
-		private void BinChanged(object sender, System.EventArgs e)
+		private void BinChanged(object sender, EventArgs e)
 		{
 			if (sysupdate)
 			{
@@ -1121,7 +1121,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			sysupdate = false;
 		}
 
-		private void HexChanged(object sender, System.EventArgs e)
+		private void HexChanged(object sender, EventArgs e)
 		{
 			if (sysupdate)
 			{
@@ -1141,7 +1141,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			sysupdate = false;
 		}
 
-		private void DecChanged(object sender, System.EventArgs e)
+		private void DecChanged(object sender, EventArgs e)
 		{
 			if (sysupdate)
 			{
@@ -1162,9 +1162,9 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 		#endregion
 
-		internal SimPe.Interfaces.Files.IPackedFileDescriptor hexpfd;
+		internal Interfaces.Files.IPackedFileDescriptor hexpfd;
 
-		private new void TextChanged(object sender, System.EventArgs e)
+		private new void TextChanged(object sender, EventArgs e)
 		{
 			if (items == null)
 			{
@@ -1172,12 +1172,12 @@ namespace SimPe.Plugin.Tool.Dockable
 			} ((TextBox)sender).Tag = true;
 		}
 
-		private void button1_Click(object sender, System.EventArgs e)
+		private void button1_Click(object sender, EventArgs e)
 		{
 			hexpfd.UserData = hvc.Data;
 		}
 
-		private void dcHex_VisibleChanged(object sender, System.EventArgs e)
+		private void dcHex_VisibleChanged(object sender, EventArgs e)
 		{
 			this.hvc.Visible = dcHex.Visible;
 			hvc.Refresh(true);
@@ -1185,7 +1185,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		private void linkLabel1_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs ev
+			LinkLabelLinkClickedEventArgs ev
 		)
 		{
 			if (items == null)
@@ -1194,7 +1194,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			guipackage.PauseIndexChangedEvents();
-			foreach (SimPe.Events.ResourceContainer e in items)
+			foreach (Events.ResourceContainer e in items)
 			{
 				if (!e.HasFileDescriptor)
 				{
@@ -1228,7 +1228,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			guipackage.RestartIndexChangedEvents();
 		}
 
-		private void tbBin_SizeChanged(object sender, System.EventArgs e)
+		private void tbBin_SizeChanged(object sender, EventArgs e)
 		{
 			tbFloat.Width = tbBin.Width;
 		}

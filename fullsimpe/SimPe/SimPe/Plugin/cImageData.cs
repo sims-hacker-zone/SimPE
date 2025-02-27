@@ -38,7 +38,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// A MipMap contains one Texture in a specific Size
 	/// </summary>
-	public class MipMap : System.IDisposable
+	public class MipMap : IDisposable
 	{
 		#region Attributes
 		byte[] data = null;
@@ -301,7 +301,7 @@ namespace SimPe.Plugin
 		{
 			if (DataType == MipMapType.LifoReference)
 			{
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndex nfi =
+				IScenegraphFileIndex nfi =
 					FileTable.FileIndex.AddNewChild();
 				nfi.AddIndexFromPackage(this.parent.Parent.Package);
 				bool succ = GetReferencedLifo_NoLoad();
@@ -323,7 +323,7 @@ namespace SimPe.Plugin
 		{
 			if (DataType == MipMapType.LifoReference)
 			{
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item =
+				IScenegraphFileIndexItem item =
 					FileTable.FileIndex.FindFileByName(
 						this.lifofile,
 						SimPe.Data.MetaData.LIFO,
@@ -339,8 +339,8 @@ namespace SimPe.Plugin
 				}
 				else //the lifo wasn't found globaly, so we look for it in the local package
 				{
-					SimPe.Interfaces.Files.IPackageFile pkg = parent.Parent.Package;
-					SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFile(
+					Interfaces.Files.IPackageFile pkg = parent.Parent.Package;
+					Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFile(
 						this.lifofile,
 						SimPe.Data.MetaData.LIFO
 					);
@@ -389,7 +389,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// MipMap Blocks contain all MipMaps in given sizes
 	/// </summary>
-	public class MipMapBlock : System.IDisposable
+	public class MipMapBlock : IDisposable
 	{
 		#region Attributes
 		uint creator;
@@ -627,7 +627,7 @@ namespace SimPe.Plugin
 	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public class ImageData : AbstractRcolBlock, IScenegraphBlock, System.IDisposable
+	public class ImageData : AbstractRcolBlock, IScenegraphBlock, IDisposable
 	{
 		#region Attributes
 

@@ -158,7 +158,7 @@ namespace SimPe
 
 		System.Drawing.Image prevImage = null;
 		string prevMessage = "";
-		SimPe.WaitingForm frm;
+		WaitingForm frm;
 
 		Form parent = null;
 
@@ -277,7 +277,7 @@ namespace SimPe
 			{
 				lock (lockFrm)
 				{
-					frm = new SimPe.WaitingForm();
+					frm = new WaitingForm();
 					System.Diagnostics.Trace.WriteLine(
 						"SimPe.WaitingScreen..ctor() - created new SimPe.WaitingForm()"
 					);

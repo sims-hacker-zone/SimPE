@@ -22,7 +22,7 @@ namespace SimPe.Plugin.Tool.Dockable
 	/// <summary>
 	/// Dockable Tool that displays Wrapper specific Informations
 	/// </summary>
-	public class WrapperDockTool : SimPe.Interfaces.IDockableTool
+	public class WrapperDockTool : Interfaces.IDockableTool
 	{
 		ResourceDock rd;
 
@@ -38,15 +38,15 @@ namespace SimPe.Plugin.Tool.Dockable
 			return rd.dcWrapper;
 		}
 
-		public event SimPe.Events.ChangedResourceEvent ShowNewResource;
+		public event Events.ChangedResourceEvent ShowNewResource;
 
-		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es)
+		public void RefreshDock(object sender, Events.ResourceEventArgs es)
 		{
 			if (!es.Empty)
 			{
 				if (es.HasFileDescriptor)
 				{
-					SimPe.Interfaces.IWrapper wrp =
+					Interfaces.IWrapper wrp =
 						FileTable.WrapperRegistry.FindHandler(
 							es[0].Resource.FileDescriptor.Type
 						);

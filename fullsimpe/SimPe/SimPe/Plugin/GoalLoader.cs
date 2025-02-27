@@ -34,7 +34,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="guid">The GUID of the goal</param>
 		/// <returns>A Goal Information Structure</returns>
-		public static GoalCacheInformation LoadGoal(SimPe.Cache.GoalCacheItem wci)
+		public static GoalCacheInformation LoadGoal(GoalCacheItem wci)
 		{
 			GoalCacheInformation ret = new GoalCacheInformation();
 			ret.icon = wci.Icon;
@@ -42,16 +42,16 @@ namespace SimPe.Plugin
 			ret.guid = wci.Guid;
 
 			XGoal w = new XGoal();
-			SimPe.PackedFiles.Wrapper.CpfItem i =
-				new SimPe.PackedFiles.Wrapper.CpfItem();
+			PackedFiles.Wrapper.CpfItem i =
+				new PackedFiles.Wrapper.CpfItem();
 			i.Name = "id";
 			i.UIntegerValue = wci.Guid;
 			w.AddItem(i, true);
-			i = new SimPe.PackedFiles.Wrapper.CpfItem();
+			i = new PackedFiles.Wrapper.CpfItem();
 			i.Name = "score";
 			i.IntegerValue = wci.Score;
 			w.AddItem(i, true);
-			i = new SimPe.PackedFiles.Wrapper.CpfItem();
+			i = new PackedFiles.Wrapper.CpfItem();
 			i.Name = "influence";
 			i.IntegerValue = wci.Influence;
 			w.AddItem(i, true);
@@ -74,8 +74,8 @@ namespace SimPe.Plugin
 	public class GoalInformation
 	{
 		protected XGoal wnt; // Fuick
-		SimPe.PackedFiles.Wrapper.Str str;
-		SimPe.PackedFiles.Wrapper.Picture primicon;
+		PackedFiles.Wrapper.Str str;
+		PackedFiles.Wrapper.Picture primicon;
 		protected uint guid;
 		internal string prefix = "";
 
@@ -242,7 +242,7 @@ namespace SimPe.Plugin
 	public class GoalLoader
 	{
 		static Hashtable goals = null;
-		static SimPe.Packages.File txtpkg = null;
+		static Packages.File txtpkg = null;
 
 		/// <summary>
 		/// Returns a Hashtable of all available Goals
@@ -317,10 +317,10 @@ namespace SimPe.Plugin
 			goals = new Hashtable();
 
 			FileTable.FileIndex.Load();
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] wtss =
+			Interfaces.Scenegraph.IScenegraphFileIndexItem[] wtss =
 				FileTable.FileIndex.FindFile(0xBEEF7B4D, true);
 
-			foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem wts in wtss)
+			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem wts in wtss)
 			{
 				goals[wts.FileDescriptor.Instance] = wts;
 			}
@@ -338,8 +338,8 @@ namespace SimPe.Plugin
 				LoadGoals();
 			}
 
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem wts =
-				(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem)goals[guid];
+			Interfaces.Scenegraph.IScenegraphFileIndexItem wts =
+				(Interfaces.Scenegraph.IScenegraphFileIndexItem)goals[guid];
 			if (wts != null)
 			{
 				XGoal xwnt = new XGoal();
@@ -359,7 +359,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="wnt">The Goal File</param>
 		/// <returns>The Str File or null if none was found</returns>
-		public static SimPe.PackedFiles.Wrapper.Str LoadText(XGoal wnt)
+		public static PackedFiles.Wrapper.Str LoadText(XGoal wnt)
 		{
 			if (wnt == null)
 			{
@@ -378,7 +378,7 @@ namespace SimPe.Plugin
 			);
 			if (pfds.Length > 0)
 			{
-				SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
 				pfds[0].UserData = txtpkg.Read(pfds[0]).UncompressedData;
 				str.ProcessData(pfds[0], txtpkg);
 
@@ -393,7 +393,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="wnt">The Goal File</param>
 		/// <returns>The Picture File or null if none was found</returns>
-		public static SimPe.PackedFiles.Wrapper.Picture LoadIcon(XGoal wnt)
+		public static PackedFiles.Wrapper.Picture LoadIcon(XGoal wnt)
 		{
 			if (wnt == null)
 			{
@@ -409,8 +409,8 @@ namespace SimPe.Plugin
 				FileTable.FileIndex.FindFile(wnt.IconFileDescriptor, null);
 			if (items.Length > 0)
 			{
-				SimPe.PackedFiles.Wrapper.Picture pic =
-					new SimPe.PackedFiles.Wrapper.Picture();
+				PackedFiles.Wrapper.Picture pic =
+					new PackedFiles.Wrapper.Picture();
 				items[0].FileDescriptor.UserData = items[0]
 					.Package.Read(items[0].FileDescriptor)
 					.UncompressedData;

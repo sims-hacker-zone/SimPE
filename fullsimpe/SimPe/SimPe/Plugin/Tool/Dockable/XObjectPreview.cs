@@ -25,10 +25,10 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public override bool Loaded => base.Loaded || (cpf != null);
 
-		SimPe.PackedFiles.Wrapper.Cpf cpf;
+		PackedFiles.Wrapper.Cpf cpf;
 
 		[Browsable(false)]
-		public SimPe.PackedFiles.Wrapper.Cpf SelectedXObject
+		public PackedFiles.Wrapper.Cpf SelectedXObject
 		{
 			get
 			{
@@ -44,7 +44,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 		}
 
-		public override void SetFromObjectCacheItem(SimPe.Cache.ObjectCacheItem oci)
+		public override void SetFromObjectCacheItem(Cache.ObjectCacheItem oci)
 		{
 			if (oci == null)
 			{
@@ -65,11 +65,11 @@ namespace SimPe.Plugin.Tool.Dockable
 			cpf = null;
 			if (oci.Tag != null)
 			{
-				if (oci.Tag is SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem)
+				if (oci.Tag is Interfaces.Scenegraph.IScenegraphFileIndexItem)
 				{
-					cpf = new SimPe.PackedFiles.Wrapper.Cpf();
+					cpf = new PackedFiles.Wrapper.Cpf();
 					cpf.ProcessData(
-						(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem)oci.Tag
+						(Interfaces.Scenegraph.IScenegraphFileIndexItem)oci.Tag
 					);
 				}
 			}
@@ -89,7 +89,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			lbName.Text = oci.Name;
 		}
 
-		public override void SetFromPackage(SimPe.Interfaces.Files.IPackageFile pkg)
+		public override void SetFromPackage(Interfaces.Files.IPackageFile pkg)
 		{
 			if (pkg == null)
 			{
@@ -112,10 +112,10 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			foreach (uint t in xtypes)
 			{
-				SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(t);
+				Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(t);
 				if (pfds.Length > 0)
 				{
-					cpf = new SimPe.PackedFiles.Wrapper.Cpf();
+					cpf = new PackedFiles.Wrapper.Cpf();
 					cpf.ProcessData(pfds[0], pkg);
 					break;
 				}
@@ -124,7 +124,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			UpdateXObjScreen();
 		}
 
-		public void SetFromXObject(SimPe.PackedFiles.Wrapper.Cpf cpf)
+		public void SetFromXObject(PackedFiles.Wrapper.Cpf cpf)
 		{
 			this.cpf = cpf;
 			UpdateXObjScreen();
@@ -143,7 +143,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			SetupCategories(
 				SimPe.Cache.ObjectCacheItem.GetCategory(
 					SimPe.Cache.ObjectCacheItemVersions.DockableOW,
-					(SimPe.Data.ObjFunctionSubSort)GetFunctionSort(cpf),
+					(Data.ObjFunctionSubSort)GetFunctionSort(cpf),
 					Data.ObjectTypes.Normal,
 					SimPe.Cache.ObjectClass.XObject
 				)
@@ -152,7 +152,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			pb.Image = null;
 			pb.Image = GenerateImage(pb.Size, GetXThumbnail(cpf), true);
 
-			SimPe.PackedFiles.Wrapper.StrItemList strs = GetCtssItems();
+			PackedFiles.Wrapper.StrItemList strs = GetCtssItems();
 			if (strs != null)
 			{
 				if (strs.Count > 0)
@@ -179,7 +179,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 		}
 
-		protected override SimPe.PackedFiles.Wrapper.StrItemList GetCtssItems()
+		protected override PackedFiles.Wrapper.StrItemList GetCtssItems()
 		{
 			if (cpf != null)
 			{
@@ -200,7 +200,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		public static Data.XObjFunctionSubSort GetFunctionSort(
-			SimPe.PackedFiles.Wrapper.Cpf cpf
+			PackedFiles.Wrapper.Cpf cpf
 		)
 		{
 			string type = cpf.GetSaveItem("type").StringValue.Trim().ToLower();
@@ -340,10 +340,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		#region Thumbnails
-		static SimPe.Packages.File xthumbs,
+		static Packages.File xthumbs,
 			nthumbs;
 
-		public static Image GetXThumbnail(SimPe.PackedFiles.Wrapper.Cpf cpf)
+		public static Image GetXThumbnail(PackedFiles.Wrapper.Cpf cpf)
 		{
 			if (xthumbs == null)
 			{
@@ -355,7 +355,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				);
 			}
 
-			SimPe.Packages.File tmbs = xthumbs;
+			Packages.File tmbs = xthumbs;
 			Data.XObjFunctionSubSort fss = ObjectPreview.GetFunctionSort(cpf);
 			uint inst = cpf.GetSaveItem("guid").UIntegerValue;
 			uint grp = cpf.FileDescriptor.Group;

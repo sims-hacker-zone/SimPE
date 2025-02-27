@@ -25,63 +25,63 @@ namespace SimPe.Plugin.Scanner
 	/// <summary>
 	/// Summary description for ScannerPanelForm.
 	/// </summary>
-	internal class ScannerPanelForm : System.Windows.Forms.Form
+	internal class ScannerPanelForm : Form
 	{
-		private System.Windows.Forms.TabControl tabControl1;
+		private TabControl tabControl1;
 		private System.Windows.Forms.TabPage tabPage1;
-		internal System.Windows.Forms.Panel pncloth;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.CheckBox cbswim;
-		private System.Windows.Forms.CheckBox cbact;
-		private System.Windows.Forms.CheckBox cbskin;
-		private System.Windows.Forms.CheckBox cbformal;
-		private System.Windows.Forms.CheckBox cbpreg;
-		private System.Windows.Forms.CheckBox cbundies;
-		private System.Windows.Forms.CheckBox cbpj;
-		private System.Windows.Forms.CheckBox cbevery;
-		private System.Windows.Forms.CheckBox cbelder;
-		private System.Windows.Forms.CheckBox cbadult;
-		private System.Windows.Forms.CheckBox cbyoung;
-		private System.Windows.Forms.CheckBox cbteen;
-		private System.Windows.Forms.CheckBox cbchild;
-		private System.Windows.Forms.CheckBox cbtoddler;
-		private System.Windows.Forms.CheckBox cbbaby;
+		internal Panel pncloth;
+		private Label label1;
+		private Label label2;
+		private CheckBox cbswim;
+		private CheckBox cbact;
+		private CheckBox cbskin;
+		private CheckBox cbformal;
+		private CheckBox cbpreg;
+		private CheckBox cbundies;
+		private CheckBox cbpj;
+		private CheckBox cbevery;
+		private CheckBox cbelder;
+		private CheckBox cbadult;
+		private CheckBox cbyoung;
+		private CheckBox cbteen;
+		private CheckBox cbchild;
+		private CheckBox cbtoddler;
+		private CheckBox cbbaby;
 
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
-		internal System.Windows.Forms.CheckBox[] cbages = new CheckBox[7];
-		internal System.Windows.Forms.CheckBox[] cbsexes = new CheckBox[2];
-		private System.Windows.Forms.LinkLabel llsetage;
-		private System.Windows.Forms.LinkLabel llsetcat;
+		internal CheckBox[] cbages = new CheckBox[7];
+		internal CheckBox[] cbsexes = new CheckBox[2];
+		private LinkLabel llsetage;
+		private LinkLabel llsetcat;
 		private System.Windows.Forms.TabPage tabPage2;
-		internal System.Windows.Forms.Panel pnep;
-		private System.Windows.Forms.LinkLabel visualStyleLinkLabel1;
-		private System.Windows.Forms.TextBox tbname;
-		private System.Windows.Forms.Label label3;
+		internal Panel pnep;
+		private LinkLabel visualStyleLinkLabel1;
+		private TextBox tbname;
+		private Label label3;
 		private System.Windows.Forms.TabPage tabPage3;
-		internal System.Windows.Forms.Panel pnskin;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.LinkLabel visualStyleLinkLabel2;
-		private System.Windows.Forms.ComboBox cbskins;
-		private System.Windows.Forms.SaveFileDialog sfd;
-		private System.Windows.Forms.CheckBox cbtxmt;
-		private System.Windows.Forms.CheckBox cbtxtr;
-		private System.Windows.Forms.CheckBox cbref;
+		internal Panel pnskin;
+		private Label label4;
+		private LinkLabel visualStyleLinkLabel2;
+		private ComboBox cbskins;
+		private SaveFileDialog sfd;
+		private CheckBox cbtxmt;
+		private CheckBox cbtxtr;
+		private CheckBox cbref;
 		private System.Windows.Forms.TabPage tabPage4;
-		internal System.Windows.Forms.Panel pnShelve;
-		private System.Windows.Forms.Label label5;
+		internal Panel pnShelve;
+		private Label label5;
 		internal Ambertation.Windows.Forms.EnumComboBox cbshelve;
-		private System.Windows.Forms.LinkLabel llShelve;
+		private LinkLabel llShelve;
 		private CheckBox cbout;
-		private System.Windows.Forms.LinkLabel llsetsex;
+		private LinkLabel llsetsex;
 		private Label label6;
 		private CheckBox cbmale;
 		private CheckBox cbfemale;
-		internal System.Windows.Forms.CheckBox[] cbcategories = new CheckBox[9];
+		internal CheckBox[] cbcategories = new CheckBox[9];
 
 		public ScannerPanelForm()
 		{
@@ -137,7 +137,7 @@ namespace SimPe.Plugin.Scanner
 			this.cbskins.SelectedIndex = 0;
 			sfd.InitialDirectory = PathProvider.SimSavegameFolder;
 
-			cbshelve.Enum = typeof(SimPe.PackedFiles.Wrapper.ShelveDimension);
+			cbshelve.Enum = typeof(PackedFiles.Wrapper.ShelveDimension);
 			cbshelve.ResourceManager = SimPe.Localization.Manager;
 		}
 
@@ -177,52 +177,52 @@ namespace SimPe.Plugin.Scanner
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.tabControl1 = new TabControl();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.pnep = new System.Windows.Forms.Panel();
-			this.tbname = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.visualStyleLinkLabel1 = new System.Windows.Forms.LinkLabel();
+			this.pnep = new Panel();
+			this.tbname = new TextBox();
+			this.label3 = new Label();
+			this.visualStyleLinkLabel1 = new LinkLabel();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.pncloth = new System.Windows.Forms.Panel();
-			this.label6 = new System.Windows.Forms.Label();
-			this.cbmale = new System.Windows.Forms.CheckBox();
-			this.cbfemale = new System.Windows.Forms.CheckBox();
-			this.llsetsex = new System.Windows.Forms.LinkLabel();
-			this.cbout = new System.Windows.Forms.CheckBox();
-			this.llsetcat = new System.Windows.Forms.LinkLabel();
-			this.llsetage = new System.Windows.Forms.LinkLabel();
-			this.cbswim = new System.Windows.Forms.CheckBox();
-			this.cbact = new System.Windows.Forms.CheckBox();
-			this.cbskin = new System.Windows.Forms.CheckBox();
-			this.cbformal = new System.Windows.Forms.CheckBox();
-			this.cbpreg = new System.Windows.Forms.CheckBox();
-			this.cbundies = new System.Windows.Forms.CheckBox();
-			this.cbpj = new System.Windows.Forms.CheckBox();
-			this.cbevery = new System.Windows.Forms.CheckBox();
-			this.cbelder = new System.Windows.Forms.CheckBox();
-			this.cbadult = new System.Windows.Forms.CheckBox();
-			this.cbyoung = new System.Windows.Forms.CheckBox();
-			this.cbteen = new System.Windows.Forms.CheckBox();
-			this.cbchild = new System.Windows.Forms.CheckBox();
-			this.cbtoddler = new System.Windows.Forms.CheckBox();
-			this.cbbaby = new System.Windows.Forms.CheckBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
+			this.pncloth = new Panel();
+			this.label6 = new Label();
+			this.cbmale = new CheckBox();
+			this.cbfemale = new CheckBox();
+			this.llsetsex = new LinkLabel();
+			this.cbout = new CheckBox();
+			this.llsetcat = new LinkLabel();
+			this.llsetage = new LinkLabel();
+			this.cbswim = new CheckBox();
+			this.cbact = new CheckBox();
+			this.cbskin = new CheckBox();
+			this.cbformal = new CheckBox();
+			this.cbpreg = new CheckBox();
+			this.cbundies = new CheckBox();
+			this.cbpj = new CheckBox();
+			this.cbevery = new CheckBox();
+			this.cbelder = new CheckBox();
+			this.cbadult = new CheckBox();
+			this.cbyoung = new CheckBox();
+			this.cbteen = new CheckBox();
+			this.cbchild = new CheckBox();
+			this.cbtoddler = new CheckBox();
+			this.cbbaby = new CheckBox();
+			this.label2 = new Label();
+			this.label1 = new Label();
 			this.tabPage4 = new System.Windows.Forms.TabPage();
-			this.pnShelve = new System.Windows.Forms.Panel();
+			this.pnShelve = new Panel();
 			this.cbshelve = new Ambertation.Windows.Forms.EnumComboBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.llShelve = new System.Windows.Forms.LinkLabel();
+			this.label5 = new Label();
+			this.llShelve = new LinkLabel();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
-			this.pnskin = new System.Windows.Forms.Panel();
-			this.cbtxtr = new System.Windows.Forms.CheckBox();
-			this.cbtxmt = new System.Windows.Forms.CheckBox();
-			this.cbskins = new System.Windows.Forms.ComboBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.visualStyleLinkLabel2 = new System.Windows.Forms.LinkLabel();
-			this.cbref = new System.Windows.Forms.CheckBox();
-			this.sfd = new System.Windows.Forms.SaveFileDialog();
+			this.pnskin = new Panel();
+			this.cbtxtr = new CheckBox();
+			this.cbtxmt = new CheckBox();
+			this.cbskins = new ComboBox();
+			this.label4 = new Label();
+			this.visualStyleLinkLabel2 = new LinkLabel();
+			this.cbref = new CheckBox();
+			this.sfd = new SaveFileDialog();
 			this.tabControl1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
 			this.pnep.SuspendLayout();
@@ -319,7 +319,7 @@ namespace SimPe.Plugin.Scanner
 			this.visualStyleLinkLabel1.TabStop = true;
 			this.visualStyleLinkLabel1.Text = "make University-Ready";
 			this.visualStyleLinkLabel1.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.MakeEPReady
 				);
 			//
@@ -335,7 +335,7 @@ namespace SimPe.Plugin.Scanner
 			// pncloth
 			//
 			this.pncloth.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -445,7 +445,7 @@ namespace SimPe.Plugin.Scanner
 			this.llsetsex.TabStop = true;
 			this.llsetsex.Text = "set";
 			this.llsetsex.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.setSex);
+				new LinkLabelLinkClickedEventHandler(this.setSex);
 			//
 			// cbout
 			//
@@ -480,7 +480,7 @@ namespace SimPe.Plugin.Scanner
 			this.llsetcat.TabStop = true;
 			this.llsetcat.Text = "set";
 			this.llsetcat.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SetCat);
+				new LinkLabelLinkClickedEventHandler(this.SetCat);
 			//
 			// llsetage
 			//
@@ -499,7 +499,7 @@ namespace SimPe.Plugin.Scanner
 			this.llsetage.TabStop = true;
 			this.llsetage.Text = "set";
 			this.llsetage.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.setAge);
+				new LinkLabelLinkClickedEventHandler(this.setAge);
 			//
 			// cbswim
 			//
@@ -532,7 +532,7 @@ namespace SimPe.Plugin.Scanner
 			this.cbact.Size = new System.Drawing.Size(50, 24);
 			this.cbact.TabIndex = 35;
 			this.cbact.Text = "Gym";
-			this.cbact.CheckedChanged += new System.EventHandler(
+			this.cbact.CheckedChanged += new EventHandler(
 				this.cbact_CheckedChanged
 			);
 			//
@@ -812,7 +812,7 @@ namespace SimPe.Plugin.Scanner
 			// cbshelve
 			//
 			this.cbshelve.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -832,7 +832,7 @@ namespace SimPe.Plugin.Scanner
 			this.cbshelve.ResourceManager = null;
 			this.cbshelve.Size = new System.Drawing.Size(329, 21);
 			this.cbshelve.TabIndex = 40;
-			this.cbshelve.SelectedIndexChanged += new System.EventHandler(
+			this.cbshelve.SelectedIndexChanged += new EventHandler(
 				this.cbshelve_SelectedIndexChanged
 			);
 			//
@@ -875,7 +875,7 @@ namespace SimPe.Plugin.Scanner
 			this.llShelve.TabStop = true;
 			this.llShelve.Text = "set Shelve Dimension";
 			this.llShelve.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.visualStyleLinkLabel3_LinkClicked
 				);
 			//
@@ -988,7 +988,7 @@ namespace SimPe.Plugin.Scanner
 			this.visualStyleLinkLabel2.TabStop = true;
 			this.visualStyleLinkLabel2.Text = "create default Skin override";
 			this.visualStyleLinkLabel2.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.CreateSkinOverride
 				);
 			//
@@ -1041,7 +1041,7 @@ namespace SimPe.Plugin.Scanner
 
 		private void SetCat(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			ClothingScanner cs = (ClothingScanner)pncloth.Tag;
@@ -1050,7 +1050,7 @@ namespace SimPe.Plugin.Scanner
 
 		private void setAge(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			ClothingScanner cs = (ClothingScanner)pncloth.Tag;
@@ -1065,7 +1065,7 @@ namespace SimPe.Plugin.Scanner
 
 		private void MakeEPReady(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			EPReadyScanner cs = (EPReadyScanner)pnep.Tag;
@@ -1074,7 +1074,7 @@ namespace SimPe.Plugin.Scanner
 
 		private void CreateSkinOverride(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (!cbtxtr.Checked && !cbtxmt.Checked && !cbref.Checked)
@@ -1154,19 +1154,19 @@ namespace SimPe.Plugin.Scanner
 
 		private void visualStyleLinkLabel3_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			SimPe.PackedFiles.Wrapper.ShelveDimension sd =
-				(SimPe.PackedFiles.Wrapper.ShelveDimension)cbshelve.SelectedValue;
+			PackedFiles.Wrapper.ShelveDimension sd =
+				(PackedFiles.Wrapper.ShelveDimension)cbshelve.SelectedValue;
 			ShelveScanner cs = (ShelveScanner)this.pnShelve.Tag;
 			cs.Set(sd);
 		}
 
-		private void cbshelve_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void cbshelve_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			SimPe.PackedFiles.Wrapper.ShelveDimension sd =
-				(SimPe.PackedFiles.Wrapper.ShelveDimension)cbshelve.SelectedValue;
+			PackedFiles.Wrapper.ShelveDimension sd =
+				(PackedFiles.Wrapper.ShelveDimension)cbshelve.SelectedValue;
 			llShelve.Enabled = (
 				sd != SimPe.PackedFiles.Wrapper.ShelveDimension.Indetermined
 				&& sd != SimPe.PackedFiles.Wrapper.ShelveDimension.Multitile

@@ -27,7 +27,7 @@ namespace SimPe.Packages
 	/// <remarks>
 	/// Holes ar simple Placeholders filled with Data currently nor usefull.
 	/// </remarks>
-	public class HeaderHole : SimPe.Interfaces.Files.IPackageHeaderHoleIndex
+	public class HeaderHole : Interfaces.Files.IPackageHeaderHoleIndex
 	{
 		/// <summary>
 		/// Number of Holes stored in the File

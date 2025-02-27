@@ -24,14 +24,14 @@ namespace pjse
 	/// <summary>
 	/// Summary description for StrBig.
 	/// </summary>
-	public class StrBig : System.Windows.Forms.Form
+	public class StrBig : Form
 	{
 		#region Form variables
-		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.RichTextBox richTextBox1;
-		private System.Windows.Forms.Panel panel2;
-		private System.Windows.Forms.Button OK;
-		private System.Windows.Forms.Button Cancel;
+		private Panel panel1;
+		private RichTextBox richTextBox1;
+		private Panel panel2;
+		private Button OK;
+		private Button Cancel;
 
 		/// <summary>
 		/// Required designer variable.
@@ -91,11 +91,11 @@ namespace pjse
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(StrBig));
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.OK = new System.Windows.Forms.Button();
-			this.Cancel = new System.Windows.Forms.Button();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+			this.panel1 = new Panel();
+			this.OK = new Button();
+			this.Cancel = new Button();
+			this.panel2 = new Panel();
+			this.richTextBox1 = new RichTextBox();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			//

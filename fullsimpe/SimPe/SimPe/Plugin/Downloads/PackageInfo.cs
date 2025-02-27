@@ -6,7 +6,7 @@ namespace SimPe.Plugin.Downloads
 	/// <summary>
 	/// Summary description for PackageInfo.
 	/// </summary>
-	public class PackageInfo : Downloads.IPackageInfo, System.IDisposable
+	public class PackageInfo : IPackageInfo, IDisposable
 	{
 		public const int IMAGESIZE = 128;
 
@@ -37,7 +37,7 @@ namespace SimPe.Plugin.Downloads
 		/// </summary>
 		/// <param name="filename">The package you want to classify</param>
 		/// <returns>The Type of the Package</returns>
-		public static SimPe.Cache.PackageType ClassifyPackage(string filename)
+		public static Cache.PackageType ClassifyPackage(string filename)
 		{
 			if (
 				!System.IO.File.Exists(filename)
@@ -52,7 +52,7 @@ namespace SimPe.Plugin.Downloads
 				return SimPe.Cache.PackageType.Undefined;
 			}
 
-			SimPe.Interfaces.Files.IPackageFile pkg =
+			Interfaces.Files.IPackageFile pkg =
 				SimPe.Packages.GeneratableFile.LoadFromFile(filename);
 			return ClassifyPackage(pkg);
 		}
@@ -62,8 +62,8 @@ namespace SimPe.Plugin.Downloads
 		/// </summary>
 		/// <param name="pkg">The package you want to classify</param>
 		/// <returns>The Type of the Package</returns>
-		public static SimPe.Cache.PackageType ClassifyPackage(
-			SimPe.Interfaces.Files.IPackageFile pkg
+		public static Cache.PackageType ClassifyPackage(
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
 			if (
@@ -78,9 +78,9 @@ namespace SimPe.Plugin.Downloads
 				return SimPe.Cache.PackageType.Undefined;
 			}
 
-			SimPe.Cache.PackageType type = SimPe.Cache.PackageType.Undefined;
+			Cache.PackageType type = SimPe.Cache.PackageType.Undefined;
 			foreach (
-				SimPe.Interfaces.Plugin.Scanner.IIdentifier ident in SimPe
+				Interfaces.Plugin.Scanner.IIdentifier ident in SimPe
 					.Plugin
 					.Scanner
 					.ScannerRegistry
@@ -108,13 +108,13 @@ namespace SimPe.Plugin.Downloads
 		/// <param name="pfd">Resource Descriptor</param>
 		/// <returns>The expansion which madkes this File available (according to the FileTable, <see cref="Expansion.Custom"/> marks a Custom File from the Downloads Folder)</returns>
 		public static Expansions FileFrom(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] fiis =
+			Interfaces.Scenegraph.IScenegraphFileIndexItem[] fiis =
 				FileTable.FileIndex.FindFile(pfd, null);
 			uint min = (uint)(Expansions.None);
-			foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii in fiis)
+			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem fii in fiis)
 			{
 				try
 				{
@@ -168,7 +168,7 @@ namespace SimPe.Plugin.Downloads
 
 		string flname;
 
-		public PackageInfo(SimPe.Interfaces.Files.IPackageFile pkg)
+		public PackageInfo(Interfaces.Files.IPackageFile pkg)
 		{
 			Guids = new uint[0];
 			flname = pkg.SaveFileName;
@@ -256,7 +256,7 @@ namespace SimPe.Plugin.Downloads
 			this.Guids = Helper.Add(this.Guids, guid) as uint[];
 		}
 
-		public SimPe.Cache.PackageType Type
+		public Cache.PackageType Type
 		{
 			get; set;
 		}
@@ -371,7 +371,7 @@ namespace SimPe.Plugin.Downloads
 		{
 			get; set;
 		}
-		internal System.EventHandler PostponedRenderer;
+		internal EventHandler PostponedRenderer;
 
 		public void CreatePostponed3DPreview()
 		{
@@ -385,7 +385,7 @@ namespace SimPe.Plugin.Downloads
 				return;
 			}
 
-			PostponedRenderer(this, new System.EventArgs());
+			PostponedRenderer(this, new EventArgs());
 			PostponedRenderer = null;
 			RenderData = null;
 		}

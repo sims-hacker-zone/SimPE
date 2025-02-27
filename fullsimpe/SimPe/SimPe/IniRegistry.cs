@@ -431,7 +431,7 @@ namespace SimPe
 
 		#region IEnumerable<Keylist> Member
 
-		IEnumerator<IniRegistry.SectionContent> IEnumerable<IniRegistry.SectionContent>.GetEnumerator()
+		IEnumerator<SectionContent> IEnumerable<SectionContent>.GetEnumerator()
 		{
 			return reg.Values.GetEnumerator();
 		}

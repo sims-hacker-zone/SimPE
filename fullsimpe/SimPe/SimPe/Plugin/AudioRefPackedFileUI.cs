@@ -5,7 +5,7 @@ using SimPe.Interfaces.Plugin;
 namespace SimPe.Plugin
 {
 	public partial class AudioRefPackedFileUI
-		: SimPe.Windows.Forms.WrapperBaseControl,
+		: Windows.Forms.WrapperBaseControl,
 			IPackedFileUI
 	{
 		protected new AudioRefPackedFileWrapper Wrapper => base.Wrapper as AudioRefPackedFileWrapper;

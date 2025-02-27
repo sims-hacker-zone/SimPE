@@ -39,7 +39,7 @@ namespace SimPe.Interfaces
 			btStart.Enabled = rgui != null;
 		}
 
-		protected SimPe.ThemeManager ThemeManager
+		protected ThemeManager ThemeManager
 		{
 			get;
 		}
@@ -77,15 +77,15 @@ namespace SimPe.Interfaces
 		/// <summary>
 		/// The control returned here should contain all parameters that control the search.
 		/// </summary>
-		public System.Windows.Forms.Control SearchGui => this;
+		public Control SearchGui => this;
 
 		/// <summary>
 		/// This is the search routine
 		/// </summary>
 		/// <param name="pkg">The package that is going to get searched</param>
-		public void SearchPackage(SimPe.Interfaces.Files.IPackageFile pkg)
+		public void SearchPackage(Files.IPackageFile pkg)
 		{
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pkg.Index)
+			foreach (Files.IPackedFileDescriptor pfd in pkg.Index)
 			{
 				if (ResultGui.ForcedStop)
 				{
@@ -101,10 +101,10 @@ namespace SimPe.Interfaces
 		/// </summary>
 		/// <param name="fiis">List of resources to search</param>
 		public void SearchPackage(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] fiis
+			Scenegraph.IScenegraphFileIndexItem[] fiis
 		)
 		{
-			foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii in fiis)
+			foreach (Scenegraph.IScenegraphFileIndexItem fii in fiis)
 			{
 				if (ResultGui.ForcedStop)
 				{
@@ -120,7 +120,7 @@ namespace SimPe.Interfaces
 		/// </summary>
 		/// <param name="fii">Resources to search</param>
 		public void SearchPackage(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii
+			Scenegraph.IScenegraphFileIndexItem fii
 		)
 		{
 			SearchPackage(fii.Package, fii.FileDescriptor);
@@ -137,8 +137,8 @@ namespace SimPe.Interfaces
 		/// <param name="pkg">The package that is going to get searched</param>
 		/// <param name="pfd">The resource within the package that is to be searched</param>
 		public virtual void SearchPackage(
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			Files.IPackageFile pkg,
+			Files.IPackedFileDescriptor pfd
 		)
 		{
 		}

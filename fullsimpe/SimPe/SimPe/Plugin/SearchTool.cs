@@ -24,7 +24,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for ImportSemiTool.
 	/// </summary>
-	public class SearchTool : Interfaces.AbstractTool, Interfaces.ITool
+	public class SearchTool : AbstractTool, ITool
 	{
 		internal static Registry WindowsRegistry => Helper.WindowsRegistry;
 
@@ -45,8 +45,8 @@ namespace SimPe.Plugin
 		#region ITool Member
 
 		public bool IsEnabled(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile package
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile package
 		)
 		{
 			if (package == null || package.FileName == null)
@@ -60,8 +60,8 @@ namespace SimPe.Plugin
 		}
 
 		private bool IsReallyEnabled(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile package
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile package
 		)
 		{
 			if (package == null || package.FileName == null)
@@ -79,8 +79,8 @@ namespace SimPe.Plugin
 		}
 
 		public Interfaces.Plugin.IToolResult ShowDialog(
-			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			ref SimPe.Interfaces.Files.IPackageFile package
+			ref Interfaces.Files.IPackedFileDescriptor pfd,
+			ref Interfaces.Files.IPackageFile package
 		)
 		{
 			if (!IsReallyEnabled(pfd, package))
@@ -98,7 +98,7 @@ namespace SimPe.Plugin
 				sc.Reset();
 			}
 
-			SimPe.Interfaces.Files.IPackedFileDescriptor selpfd = sc.Execute(package);
+			Interfaces.Files.IPackedFileDescriptor selpfd = sc.Execute(package);
 
 			if (selpfd != null)
 			{

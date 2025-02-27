@@ -70,7 +70,7 @@ namespace SimPe.Plugin.Identifiers
 
 		#region IIdentifier Member
 
-		public SimPe.Cache.PackageType GetType(SimPe.Interfaces.Files.IPackageFile pkg)
+		public Cache.PackageType GetType(Interfaces.Files.IPackageFile pkg)
 		{
 			string name = System.IO.Path.GetFileName(pkg.FileName).Trim().ToLower();
 			if (
@@ -120,7 +120,7 @@ namespace SimPe.Plugin.Identifiers
 
 		#region IIdentifier Member
 
-		public SimPe.Cache.PackageType GetType(SimPe.Interfaces.Files.IPackageFile pkg)
+		public Cache.PackageType GetType(Interfaces.Files.IPackageFile pkg)
 		{
 			if (pkg.FindFiles(0xCCCEF852).Length != 0)
 			{
@@ -157,7 +157,7 @@ namespace SimPe.Plugin.Identifiers
 
 		#region IIdentifier Member
 
-		public SimPe.Cache.PackageType GetType(SimPe.Interfaces.Files.IPackageFile pkg)
+		public Cache.PackageType GetType(Interfaces.Files.IPackageFile pkg)
 		{
 			if (pkg.FindFiles(Data.MetaData.OBJD_FILE).Length == 0)
 			{
@@ -201,9 +201,9 @@ namespace SimPe.Plugin.Identifiers
 
 		#region IIdentifier Member
 
-		public SimPe.Cache.PackageType GetType(SimPe.Interfaces.Files.IPackageFile pkg)
+		public Cache.PackageType GetType(Interfaces.Files.IPackageFile pkg)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
 				Data.MetaData.GZPS
 			);
 			if (pfds.Length == 0)
@@ -243,7 +243,7 @@ namespace SimPe.Plugin.Identifiers
 
 			if (pfds.Length > 0)
 			{
-				SimPe.PackedFiles.Wrapper.Cpf cpf = new SimPe.PackedFiles.Wrapper.Cpf();
+				PackedFiles.Wrapper.Cpf cpf = new PackedFiles.Wrapper.Cpf();
 				cpf.ProcessData(pfds[0], pkg, false);
 
 				string type = cpf.GetSaveItem("type").StringValue.Trim().ToLower();
@@ -389,7 +389,7 @@ namespace SimPe.Plugin.Identifiers
 
 		#region IIdentifier Member
 
-		public SimPe.Cache.PackageType GetType(SimPe.Interfaces.Files.IPackageFile pkg)
+		public Cache.PackageType GetType(Interfaces.Files.IPackageFile pkg)
 		{
 			if (pkg.FindFiles(Data.MetaData.TXMT).Length == 0)
 			{

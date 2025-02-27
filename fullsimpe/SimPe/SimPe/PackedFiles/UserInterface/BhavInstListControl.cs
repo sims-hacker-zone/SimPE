@@ -32,10 +32,10 @@ namespace SimPe.PackedFiles.UserInterface
 	/// <summary>
 	/// Summary description for UserControl1.
 	/// </summary>
-	public class BhavInstListControl : System.Windows.Forms.UserControl
+	public class BhavInstListControl : UserControl
 	{
 		#region Form variables
-		private System.Windows.Forms.PictureBox pnflow;
+		private PictureBox pnflow;
 
 		/// <summary>
 		/// Required designer variable.
@@ -64,7 +64,7 @@ namespace SimPe.PackedFiles.UserInterface
 			base.Dispose(disposing);
 			if (setHandler && wrapper != null)
 			{
-				wrapper.WrapperChanged -= new System.EventHandler(this.WrapperChanged);
+				wrapper.WrapperChanged -= new EventHandler(this.WrapperChanged);
 				setHandler = false;
 			}
 			wrapper = null;
@@ -111,12 +111,12 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (!setHandler)
 			{
-				wrapper.WrapperChanged += new System.EventHandler(this.WrapperChanged);
+				wrapper.WrapperChanged += new EventHandler(this.WrapperChanged);
 				setHandler = true;
 			}
 		}
 
-		private void WrapperChanged(object sender, System.EventArgs e)
+		private void WrapperChanged(object sender, EventArgs e)
 		{
 			if (wrapper == null)
 			{
@@ -700,7 +700,7 @@ namespace SimPe.PackedFiles.UserInterface
 					gr.DrawLine(pen, xPosLeft, yPosStart, xPosRight, yPosStart);
 					gr.DrawString(
 						glyph,
-						new System.Drawing.Font(font, pts),
+						new Font(font, pts),
 						pen.Brush,
 						xPosRight,
 						yPosStart - 8
@@ -761,7 +761,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(BhavInstListControl));
-			this.pnflow = new System.Windows.Forms.PictureBox();
+			this.pnflow = new PictureBox();
 			this.SuspendLayout();
 			//
 			// pnflow
@@ -771,40 +771,40 @@ namespace SimPe.PackedFiles.UserInterface
 			);
 			this.pnflow.AccessibleName = resources.GetString("pnflow.AccessibleName");
 			this.pnflow.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("pnflow.Anchor")
 				)
 			);
 			this.pnflow.BackgroundImage = (
-				(System.Drawing.Image)(resources.GetObject("pnflow.BackgroundImage"))
+				(Image)(resources.GetObject("pnflow.BackgroundImage"))
 			);
 			this.pnflow.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("pnflow.Dock"))
+				(DockStyle)(resources.GetObject("pnflow.Dock"))
 			);
 			this.pnflow.Enabled = ((bool)(resources.GetObject("pnflow.Enabled")));
 			this.pnflow.Font = (
-				(System.Drawing.Font)(resources.GetObject("pnflow.Font"))
+				(Font)(resources.GetObject("pnflow.Font"))
 			);
 			this.pnflow.Image = (
-				(System.Drawing.Image)(resources.GetObject("pnflow.Image"))
+				(Image)(resources.GetObject("pnflow.Image"))
 			);
 			this.pnflow.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("pnflow.ImeMode"))
+				(ImeMode)(resources.GetObject("pnflow.ImeMode"))
 			);
 			this.pnflow.Location = (
-				(System.Drawing.Point)(resources.GetObject("pnflow.Location"))
+				(Point)(resources.GetObject("pnflow.Location"))
 			);
 			this.pnflow.Name = "pnflow";
 			this.pnflow.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("pnflow.RightToLeft")
 				)
 			);
 			this.pnflow.Size = (
-				(System.Drawing.Size)(resources.GetObject("pnflow.Size"))
+				(Size)(resources.GetObject("pnflow.Size"))
 			);
 			this.pnflow.SizeMode = (
-				(System.Windows.Forms.PictureBoxSizeMode)(
+				(PictureBoxSizeMode)(
 					resources.GetObject("pnflow.SizeMode")
 				)
 			);
@@ -821,46 +821,46 @@ namespace SimPe.PackedFiles.UserInterface
 			this.AccessibleName = resources.GetString("$this.AccessibleName");
 			this.AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
 			this.AutoScrollMargin = (
-				(System.Drawing.Size)(resources.GetObject("$this.AutoScrollMargin"))
+				(Size)(resources.GetObject("$this.AutoScrollMargin"))
 			);
 			this.AutoScrollMinSize = (
-				(System.Drawing.Size)(resources.GetObject("$this.AutoScrollMinSize"))
+				(Size)(resources.GetObject("$this.AutoScrollMinSize"))
 			);
 			this.BackgroundImage = (
-				(System.Drawing.Image)(resources.GetObject("$this.BackgroundImage"))
+				(Image)(resources.GetObject("$this.BackgroundImage"))
 			);
 			this.Controls.Add(this.pnflow);
 			this.Enabled = ((bool)(resources.GetObject("$this.Enabled")));
-			this.Font = ((System.Drawing.Font)(resources.GetObject("$this.Font")));
+			this.Font = ((Font)(resources.GetObject("$this.Font")));
 			this.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("$this.ImeMode"))
+				(ImeMode)(resources.GetObject("$this.ImeMode"))
 			);
 			this.Location = (
-				(System.Drawing.Point)(resources.GetObject("$this.Location"))
+				(Point)(resources.GetObject("$this.Location"))
 			);
 			this.Name = "BhavInstListControl";
 			this.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("$this.RightToLeft")
 				)
 			);
-			this.Size = ((System.Drawing.Size)(resources.GetObject("$this.Size")));
+			this.Size = ((Size)(resources.GetObject("$this.Size")));
 			this.ResumeLayout(false);
 		}
 
 		#endregion
 
-		private void bhavInst_MoveUp(object sender, System.EventArgs e)
+		private void bhavInst_MoveUp(object sender, EventArgs e)
 		{
 			MoveInst(-1);
 		}
 
-		private void bhavInst_MoveDown(object sender, System.EventArgs e)
+		private void bhavInst_MoveDown(object sender, EventArgs e)
 		{
 			MoveInst(1);
 		}
 
-		private void bhavInst_Selected(object sender, System.EventArgs e)
+		private void bhavInst_Selected(object sender, EventArgs e)
 		{
 			if (internalchg)
 			{
@@ -872,14 +872,14 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void bhavInst_Unselected(
 			object sender,
-			System.EventArgs e
+			EventArgs e
 		)
 		{ /* SelectedIndex = -1; */
 		}
 
 		private void bhavInst_TargetClick(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			int index = (UInt16)e.Link.LinkData;
@@ -891,7 +891,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void bhavInst_KeyDown(
 			object sender,
-			System.Windows.Forms.KeyEventArgs e
+			KeyEventArgs e
 		)
 		{
 			switch (e.KeyCode)

@@ -23,13 +23,13 @@ namespace SimPe.Interfaces
 	public interface IFinderResultGui
 	{
 		void AddResult(
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			Files.IPackageFile pkg,
+			Files.IPackedFileDescriptor pfd
 		);
 		void AddResult(
 			string group,
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			Files.IPackageFile pkg,
+			Files.IPackedFileDescriptor pfd
 		);
 
 		void StartSearch(AFinderTool sender);

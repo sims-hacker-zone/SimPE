@@ -22,19 +22,19 @@ namespace SimPe.Plugin.Tool.Action
 	/// <summary>
 	/// The ReloadFileTable Action
 	/// </summary>
-	public class ActionBuildPhpGuidList : SimPe.Interfaces.IToolAction
+	public class ActionBuildPhpGuidList : Interfaces.IToolAction
 	{
 		#region IToolAction Member
 
 		public virtual bool ChangeEnabledStateEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs es
+			Events.ResourceEventArgs es
 		)
 		{
 			return true;
 		}
 
-		public void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs e)
+		public void ExecuteEventHandler(object sender, Events.ResourceEventArgs e)
 		{
 			if (!ChangeEnabledStateEventHandler(null, e))
 			{
@@ -49,7 +49,7 @@ namespace SimPe.Plugin.Tool.Action
 			try
 			{
 				System.Collections.ArrayList guids = new System.Collections.ArrayList();
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
 					SimPe.FileTable.FileIndex.FindFile(Data.MetaData.OBJD_FILE, true);
 				sw.WriteLine("<?");
 				sw.WriteLine("$guids = array(");
@@ -57,11 +57,11 @@ namespace SimPe.Plugin.Tool.Action
 				Wait.SubStart(items.Length);
 				int ct = 0;
 				foreach (
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
+					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
 				)
 				{
-					SimPe.PackedFiles.Wrapper.ExtObjd objd =
-						new SimPe.PackedFiles.Wrapper.ExtObjd();
+					PackedFiles.Wrapper.ExtObjd objd =
+						new PackedFiles.Wrapper.ExtObjd();
 					objd.ProcessData(item);
 
 					if (guids.Contains(objd.Guid))

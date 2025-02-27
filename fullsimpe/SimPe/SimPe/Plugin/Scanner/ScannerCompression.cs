@@ -61,7 +61,7 @@ namespace SimPe.Plugin.Scanner
 
 		public void ScanPackage(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
+			PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
@@ -80,12 +80,12 @@ namespace SimPe.Plugin.Scanner
 				if (si.Package.FileListFile != null)
 				{
 					foreach (
-						SimPe.PackedFiles.Wrapper.ClstItem item in si.Package
+						ClstItem item in si.Package
 							.FileListFile
 							.Items
 					)
 					{
-						SimPe.Interfaces.Files.IPackedFileDescriptor p =
+						Interfaces.Files.IPackedFileDescriptor p =
 							si.Package.FindFile(
 								item.Type,
 								item.SubType,
@@ -102,16 +102,16 @@ namespace SimPe.Plugin.Scanner
 					if (ps.Data[0] == (uint)HealthState.Ok)
 					{
 						foreach (
-							SimPe.Interfaces.Files.IPackedFileDescriptor pfd in si.Package.Index
+							Interfaces.Files.IPackedFileDescriptor pfd in si.Package.Index
 						)
 						{
-							SimPe.Interfaces.Files.IPackedFile fl = si.Package.Read(
+							Interfaces.Files.IPackedFile fl = si.Package.Read(
 								pfd
 							);
 
 							if (pfd.Type == Data.MetaData.OBJD_FILE)
 							{
-								SimPe.PackedFiles.Wrapper.ExtObjd obj = new ExtObjd();
+								ExtObjd obj = new ExtObjd();
 								obj.ProcessData(pfd, si.Package);
 								if (obj.Ok != SimPe.PackedFiles.Wrapper.ObjdHealth.Ok)
 								{
@@ -126,12 +126,12 @@ namespace SimPe.Plugin.Scanner
 
 							if (pfd.Type == Data.MetaData.GMDC)
 							{
-								SimPe.Plugin.GenericRcol rcol = new GenericRcol();
+								GenericRcol rcol = new GenericRcol();
 								rcol.ProcessData(pfd, si.Package);
 
-								SimPe.Plugin.GeometryDataContainer gmdc =
-									(SimPe.Plugin.GeometryDataContainer)rcol.Blocks[0];
-								foreach (SimPe.Plugin.Gmdc.GmdcGroup g in gmdc.Groups)
+								GeometryDataContainer gmdc =
+									(GeometryDataContainer)rcol.Blocks[0];
+								foreach (Gmdc.GmdcGroup g in gmdc.Groups)
 								{
 									if (
 										g.FaceCount
@@ -165,7 +165,7 @@ namespace SimPe.Plugin.Scanner
 								break;
 							}
 
-							SimPe.PackedFiles.Wrapper.ClstItem item = si.Package
+							ClstItem item = si.Package
 								.FileListFile
 								.Items[pos];
 							if (fl.UncompressedSize != item.UncompressedSize)
@@ -187,7 +187,7 @@ namespace SimPe.Plugin.Scanner
 
 		public void UpdateState(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
+			PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
@@ -219,7 +219,7 @@ namespace SimPe.Plugin.Scanner
 
 			foreach (ScannerItem item in items)
 			{
-				SimPe.Cache.PackageState ps = item.PackageCacheItem.FindState(
+				PackageState ps = item.PackageCacheItem.FindState(
 					this.Uid,
 					true
 				);
@@ -282,7 +282,7 @@ namespace SimPe.Plugin.Scanner
 				{
 					WaitingScreen.UpdateMessage(si.FileName);
 
-					SimPe.Cache.PackageState ps = si.PackageCacheItem.FindState(
+					PackageState ps = si.PackageCacheItem.FindState(
 						this.Uid,
 						true
 					);
@@ -293,10 +293,10 @@ namespace SimPe.Plugin.Scanner
 							ps.State = TriState.True;
 							ps.Data[0] = (uint)HealthState.Ok;
 							foreach (
-								SimPe.Interfaces.Files.IPackedFileDescriptor pfd in si.Package.Index
+								Interfaces.Files.IPackedFileDescriptor pfd in si.Package.Index
 							)
 							{
-								SimPe.Interfaces.Files.IPackedFile file =
+								Interfaces.Files.IPackedFile file =
 									si.Package.Read(pfd);
 								pfd.UserData = file.UncompressedData;
 								pfd.MarkForReCompress = (
@@ -308,7 +308,7 @@ namespace SimPe.Plugin.Scanner
 
 								if (pfd.Type == Data.MetaData.OBJD_FILE)
 								{
-									SimPe.PackedFiles.Wrapper.ExtObjd objd =
+									ExtObjd objd =
 										new ExtObjd();
 									objd.ProcessData(pfd, si.Package);
 

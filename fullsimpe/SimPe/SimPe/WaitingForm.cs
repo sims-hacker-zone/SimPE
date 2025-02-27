@@ -191,11 +191,11 @@ namespace SimPe
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(WaitingForm));
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.lbmsg = new System.Windows.Forms.Label();
-			this.lbwait = new System.Windows.Forms.Label();
-			this.pb = new System.Windows.Forms.PictureBox();
-			this.pbsimpe = new System.Windows.Forms.PictureBox();
+			this.panel1 = new Panel();
+			this.lbmsg = new Label();
+			this.lbwait = new Label();
+			this.pb = new PictureBox();
+			this.pbsimpe = new PictureBox();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pbsimpe)).BeginInit();

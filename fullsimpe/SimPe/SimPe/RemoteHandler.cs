@@ -27,7 +27,7 @@ namespace SimPe
 	internal class RemoteHandler
 	{
 		LoadedPackage lp;
-		SimPe.ResourceLoader rl;
+		ResourceLoader rl;
 		System.Windows.Forms.ToolStripMenuItem docs;
 		PluginManager plugger;
 
@@ -43,14 +43,14 @@ namespace SimPe
 			docs = docmenu;
 			this.plugger = null;
 
-			RemoteControl.OpenPackageFkt = new SimPe.RemoteControl.OpenPackageDelegate(
+			RemoteControl.OpenPackageFkt = new RemoteControl.OpenPackageDelegate(
 				OpenPackage
 			);
 			RemoteControl.OpenPackedFileFkt =
-				new SimPe.RemoteControl.OpenPackedFileDelegate(OpenPackedFile);
+				new RemoteControl.OpenPackedFileDelegate(OpenPackedFile);
 			RemoteControl.OpenMemoryPackageFkt =
-				new SimPe.RemoteControl.OpenMemPackageDelegate(OpenMemPackage);
-			RemoteControl.ShowDockFkt = new SimPe.RemoteControl.ShowDockDelegate(
+				new RemoteControl.OpenMemPackageDelegate(OpenMemPackage);
+			RemoteControl.ShowDockFkt = new RemoteControl.ShowDockDelegate(
 				ShowDock
 			);
 
@@ -72,23 +72,23 @@ namespace SimPe
 			return lp.LoadFromFile(filename);
 		}
 
-		public bool OpenMemPackage(SimPe.Interfaces.Files.IPackageFile pkg)
+		public bool OpenMemPackage(Interfaces.Files.IPackageFile pkg)
 		{
 			if (pkg == null)
 			{
 				return false;
 			}
 
-			if (!(pkg is SimPe.Packages.GeneratableFile))
+			if (!(pkg is Packages.GeneratableFile))
 			{
 				return false;
 			}
 
-			return lp.LoadFromPackage((SimPe.Packages.GeneratableFile)pkg);
+			return lp.LoadFromPackage((Packages.GeneratableFile)pkg);
 		}
 
 		public bool OpenPackedFile(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii
+			Interfaces.Scenegraph.IScenegraphFileIndexItem fii
 		)
 		{
 			if (fii == null)
@@ -107,7 +107,7 @@ namespace SimPe
 
 						if (
 							!lp.LoadFromPackage(
-								(SimPe.Packages.GeneratableFile)fii.Package
+								(Packages.GeneratableFile)fii.Package
 							)
 						)
 						{
@@ -138,18 +138,18 @@ namespace SimPe
 		/// </summary>
 		/// <param name="fii"></param>
 		public void FireLoadEvent(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii
+			Interfaces.Scenegraph.IScenegraphFileIndexItem fii
 		)
 		{
-			SimPe.Events.ResourceEventArgs e = new SimPe.Events.ResourceEventArgs(lp);
-			e.Items.Add(new SimPe.Events.ResourceContainer(fii));
+			Events.ResourceEventArgs e = new Events.ResourceEventArgs(lp);
+			e.Items.Add(new Events.ResourceContainer(fii));
 			LoadedResource(this, e);
 		}
 
 		/// <summary>
 		/// Fires when the Remote COntrol did select a File
 		/// </summary>
-		public event SimPe.Events.ChangedResourceEvent LoadedResource;
+		public event Events.ChangedResourceEvent LoadedResource;
 
 		/// <summary>
 		/// Make a doc Visible or Hide it

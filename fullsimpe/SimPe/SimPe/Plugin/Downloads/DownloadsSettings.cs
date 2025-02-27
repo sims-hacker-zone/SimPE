@@ -25,7 +25,7 @@ namespace SimPe.Plugin.Downloads
 	/// <summary>
 	/// The Preferences for the Content Plugin
 	/// </summary>
-	public class DownloadsSettings : SimPe.GlobalizedObject, SimPe.Interfaces.ISettings
+	public class DownloadsSettings : GlobalizedObject, Interfaces.ISettings
 	{
 		static ResourceManager rm = new ResourceManager(typeof(DownloadsSettings));
 		const string BASENAME = "DownloadsPlugin";

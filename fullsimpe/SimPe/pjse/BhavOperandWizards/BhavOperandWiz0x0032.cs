@@ -27,11 +27,11 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 	/// <summary>
 	/// Summary description for StrBig.
 	/// </summary>
-	internal class UI : System.Windows.Forms.Form, iBhavOperandWizForm
+	internal class UI : Form, iBhavOperandWizForm
 	{
 		#region Form variables
 
-		internal System.Windows.Forms.Panel pnWiz0x0032;
+		internal Panel pnWiz0x0032;
 		private RadioButton rbModeIcon;
 		private RadioButton rbModeAction;
 		private Panel pnAction;
@@ -125,7 +125,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 
 		private void doStrChooser()
 		{
-			pjse.FileTable.Entry[] items = pjse.FileTable.GFT[
+			FileTable.Entry[] items = pjse.FileTable.GFT[
 				(uint)SimPe.Data.MetaData.STRING_FILE,
 				inst.Parent.GroupForScope(this.Scope),
 				(uint)GS.GlobalStr.MakeAction
@@ -142,7 +142,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 				return; // eek!
 			}
 
-			SimPe.PackedFiles.Wrapper.StrWrapper str = new StrWrapper();
+			StrWrapper str = new StrWrapper();
 			str.ProcessData(items[0].PFD, items[0].Package);
 
 			int i = (new StrChooser(true)).Strnum(str);
@@ -420,44 +420,44 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWiz0x0032 = new System.Windows.Forms.Panel();
-			this.rbModeIcon = new System.Windows.Forms.RadioButton();
-			this.rbModeAction = new System.Windows.Forms.RadioButton();
-			this.pnAction = new System.Windows.Forms.Panel();
-			this.tfSubQ = new System.Windows.Forms.CheckBox();
-			this.pnStrIndex = new System.Windows.Forms.Panel();
-			this.label5 = new System.Windows.Forms.Label();
-			this.btnActionString = new System.Windows.Forms.Button();
-			this.tbStrIndex = new System.Windows.Forms.TextBox();
-			this.lbActionString = new System.Windows.Forms.Label();
-			this.tfActionTemp = new System.Windows.Forms.CheckBox();
-			this.cbDisabled = new System.Windows.Forms.ComboBox();
-			this.cbScope = new System.Windows.Forms.ComboBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.lbDisabled = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.pnIcon = new System.Windows.Forms.Panel();
-			this.pnObject = new System.Windows.Forms.Panel();
-			this.cbAttrPicker = new System.Windows.Forms.CheckBox();
-			this.cbDecimal = new System.Windows.Forms.CheckBox();
-			this.cbPicker1 = new System.Windows.Forms.ComboBox();
-			this.tbVal1 = new System.Windows.Forms.TextBox();
-			this.cbDataOwner1 = new System.Windows.Forms.ComboBox();
-			this.label9 = new System.Windows.Forms.Label();
-			this.pnThumbnail = new System.Windows.Forms.Panel();
-			this.tfGUIDTemp = new System.Windows.Forms.CheckBox();
-			this.pnGUID = new System.Windows.Forms.Panel();
-			this.label8 = new System.Windows.Forms.Label();
-			this.tbGUID = new System.Windows.Forms.TextBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.rbIconSourceObj = new System.Windows.Forms.RadioButton();
-			this.rbIconSourceTN = new System.Windows.Forms.RadioButton();
-			this.tfIconTemp = new System.Windows.Forms.CheckBox();
-			this.pnIconIndex = new System.Windows.Forms.Panel();
-			this.label6 = new System.Windows.Forms.Label();
-			this.tbIconIndex = new System.Windows.Forms.TextBox();
-			this.label10 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
+			this.pnWiz0x0032 = new Panel();
+			this.rbModeIcon = new RadioButton();
+			this.rbModeAction = new RadioButton();
+			this.pnAction = new Panel();
+			this.tfSubQ = new CheckBox();
+			this.pnStrIndex = new Panel();
+			this.label5 = new Label();
+			this.btnActionString = new Button();
+			this.tbStrIndex = new TextBox();
+			this.lbActionString = new Label();
+			this.tfActionTemp = new CheckBox();
+			this.cbDisabled = new ComboBox();
+			this.cbScope = new ComboBox();
+			this.label3 = new Label();
+			this.lbDisabled = new Label();
+			this.label1 = new Label();
+			this.pnIcon = new Panel();
+			this.pnObject = new Panel();
+			this.cbAttrPicker = new CheckBox();
+			this.cbDecimal = new CheckBox();
+			this.cbPicker1 = new ComboBox();
+			this.tbVal1 = new TextBox();
+			this.cbDataOwner1 = new ComboBox();
+			this.label9 = new Label();
+			this.pnThumbnail = new Panel();
+			this.tfGUIDTemp = new CheckBox();
+			this.pnGUID = new Panel();
+			this.label8 = new Label();
+			this.tbGUID = new TextBox();
+			this.label7 = new Label();
+			this.rbIconSourceObj = new RadioButton();
+			this.rbIconSourceTN = new RadioButton();
+			this.tfIconTemp = new CheckBox();
+			this.pnIconIndex = new Panel();
+			this.label6 = new Label();
+			this.tbIconIndex = new TextBox();
+			this.label10 = new Label();
+			this.label4 = new Label();
 			this.pnWiz0x0032.SuspendLayout();
 			this.pnAction.SuspendLayout();
 			this.pnStrIndex.SuspendLayout();
@@ -483,7 +483,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 			this.rbModeIcon.Name = "rbModeIcon";
 			this.rbModeIcon.TabStop = true;
 			this.rbModeIcon.UseVisualStyleBackColor = true;
-			this.rbModeIcon.CheckedChanged += new System.EventHandler(
+			this.rbModeIcon.CheckedChanged += new EventHandler(
 				this.rbModeIcon_CheckedChanged
 			);
 			//
@@ -493,7 +493,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 			this.rbModeAction.Name = "rbModeAction";
 			this.rbModeAction.TabStop = true;
 			this.rbModeAction.UseVisualStyleBackColor = true;
-			this.rbModeAction.CheckedChanged += new System.EventHandler(
+			this.rbModeAction.CheckedChanged += new EventHandler(
 				this.rbModeAction_CheckedChanged
 			);
 			//
@@ -534,7 +534,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 			//
 			resources.ApplyResources(this.btnActionString, "btnActionString");
 			this.btnActionString.Name = "btnActionString";
-			this.btnActionString.Click += new System.EventHandler(
+			this.btnActionString.Click += new EventHandler(
 				this.btnActionString_Click
 			);
 			//
@@ -542,10 +542,10 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 			//
 			resources.ApplyResources(this.tbStrIndex, "tbStrIndex");
 			this.tbStrIndex.Name = "tbStrIndex";
-			this.tbStrIndex.TextChanged += new System.EventHandler(
+			this.tbStrIndex.TextChanged += new EventHandler(
 				this.hex16_TextChanged
 			);
-			this.tbStrIndex.Validated += new System.EventHandler(this.hex16_Validated);
+			this.tbStrIndex.Validated += new EventHandler(this.hex16_Validated);
 			this.tbStrIndex.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex16_Validating
 			);
@@ -560,7 +560,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 			resources.ApplyResources(this.tfActionTemp, "tfActionTemp");
 			this.tfActionTemp.Name = "tfActionTemp";
 			this.tfActionTemp.UseVisualStyleBackColor = true;
-			this.tfActionTemp.CheckedChanged += new System.EventHandler(
+			this.tfActionTemp.CheckedChanged += new EventHandler(
 				this.tfActionTemp_CheckedChanged
 			);
 			//
@@ -601,7 +601,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 			);
 			resources.ApplyResources(this.cbScope, "cbScope");
 			this.cbScope.Name = "cbScope";
-			this.cbScope.SelectedIndexChanged += new System.EventHandler(
+			this.cbScope.SelectedIndexChanged += new EventHandler(
 				this.cbScope_SelectedIndexChanged
 			);
 			//
@@ -699,7 +699,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 			resources.ApplyResources(this.tfGUIDTemp, "tfGUIDTemp");
 			this.tfGUIDTemp.Name = "tfGUIDTemp";
 			this.tfGUIDTemp.UseVisualStyleBackColor = true;
-			this.tfGUIDTemp.CheckedChanged += new System.EventHandler(
+			this.tfGUIDTemp.CheckedChanged += new EventHandler(
 				this.tfGUIDTemp_CheckedChanged
 			);
 			//
@@ -719,7 +719,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 			//
 			resources.ApplyResources(this.tbGUID, "tbGUID");
 			this.tbGUID.Name = "tbGUID";
-			this.tbGUID.Validated += new System.EventHandler(this.hex32_Validated);
+			this.tbGUID.Validated += new EventHandler(this.hex32_Validated);
 			this.tbGUID.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex32_Validating
 			);
@@ -735,7 +735,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 			this.rbIconSourceObj.Name = "rbIconSourceObj";
 			this.rbIconSourceObj.TabStop = true;
 			this.rbIconSourceObj.UseVisualStyleBackColor = true;
-			this.rbIconSourceObj.CheckedChanged += new System.EventHandler(
+			this.rbIconSourceObj.CheckedChanged += new EventHandler(
 				this.rbIconSourceObj_CheckedChanged
 			);
 			//
@@ -745,7 +745,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 			this.rbIconSourceTN.Name = "rbIconSourceTN";
 			this.rbIconSourceTN.TabStop = true;
 			this.rbIconSourceTN.UseVisualStyleBackColor = true;
-			this.rbIconSourceTN.CheckedChanged += new System.EventHandler(
+			this.rbIconSourceTN.CheckedChanged += new EventHandler(
 				this.rbIconSourceTN_CheckedChanged
 			);
 			//
@@ -754,7 +754,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 			resources.ApplyResources(this.tfIconTemp, "tfIconTemp");
 			this.tfIconTemp.Name = "tfIconTemp";
 			this.tfIconTemp.UseVisualStyleBackColor = true;
-			this.tfIconTemp.CheckedChanged += new System.EventHandler(
+			this.tfIconTemp.CheckedChanged += new EventHandler(
 				this.tfIconTemp_CheckedChanged
 			);
 			//
@@ -774,7 +774,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 			//
 			resources.ApplyResources(this.tbIconIndex, "tbIconIndex");
 			this.tbIconIndex.Name = "tbIconIndex";
-			this.tbIconIndex.Validated += new System.EventHandler(this.hex8_Validated);
+			this.tbIconIndex.Validated += new EventHandler(this.hex8_Validated);
 			this.tbIconIndex.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex8_Validating
 			);
@@ -835,7 +835,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 			internalchg = origstate;
 		}
 
-		private void hex8_Validated(object sender, System.EventArgs e)
+		private void hex8_Validated(object sender, EventArgs e)
 		{
 			bool origstate = internalchg;
 			internalchg = true;
@@ -846,7 +846,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 			internalchg = origstate;
 		}
 
-		private void hex16_TextChanged(object sender, System.EventArgs ev)
+		private void hex16_TextChanged(object sender, EventArgs ev)
 		{
 			if (internalchg)
 			{
@@ -906,7 +906,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 			internalchg = origstate;
 		}
 
-		private void hex16_Validated(object sender, System.EventArgs e)
+		private void hex16_Validated(object sender, EventArgs e)
 		{
 			bool origstate = internalchg;
 			internalchg = true;
@@ -943,7 +943,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 			internalchg = origstate;
 		}
 
-		private void hex32_Validated(object sender, System.EventArgs e)
+		private void hex32_Validated(object sender, EventArgs e)
 		{
 			bool origstate = internalchg;
 			internalchg = true;
@@ -1014,7 +1014,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 
 namespace pjse.BhavOperandWizards
 {
-	public class BhavOperandWiz0x0032 : pjse.ABhavOperandWiz
+	public class BhavOperandWiz0x0032 : ABhavOperandWiz
 	{
 		public BhavOperandWiz0x0032(Instruction i)
 			: base(i)

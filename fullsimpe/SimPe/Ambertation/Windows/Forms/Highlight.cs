@@ -118,11 +118,11 @@ namespace Ambertation.Collections
 		/// <summary>
 		/// Integer Indexer
 		/// </summary>
-		public new Ambertation.Windows.Forms.Highlight this[int index]
+		public new Windows.Forms.Highlight this[int index]
 		{
 			get
 			{
-				return ((Ambertation.Windows.Forms.Highlight)base[index]);
+				return ((Windows.Forms.Highlight)base[index]);
 			}
 			set
 			{
@@ -133,11 +133,11 @@ namespace Ambertation.Collections
 		/// <summary>
 		/// unsigned Integer Indexer
 		/// </summary>
-		public Ambertation.Windows.Forms.Highlight this[uint index]
+		public Windows.Forms.Highlight this[uint index]
 		{
 			get
 			{
-				return ((Ambertation.Windows.Forms.Highlight)base[(int)index]);
+				return ((Windows.Forms.Highlight)base[(int)index]);
 			}
 			set
 			{
@@ -150,7 +150,7 @@ namespace Ambertation.Collections
 		/// </summary>
 		/// <param name="item">The object you want to add</param>
 		/// <returns>The index it was added on</returns>
-		internal int Add(Ambertation.Windows.Forms.Highlight item)
+		internal int Add(Windows.Forms.Highlight item)
 		{
 			return base.Add(item);
 		}
@@ -160,7 +160,7 @@ namespace Ambertation.Collections
 		/// </summary>
 		/// <param name="index">The Index where the Element should be stored</param>
 		/// <param name="item">The object that should be inserted</param>
-		internal void Insert(int index, Ambertation.Windows.Forms.Highlight item)
+		internal void Insert(int index, Windows.Forms.Highlight item)
 		{
 			base.Insert(index, item);
 		}
@@ -169,7 +169,7 @@ namespace Ambertation.Collections
 		/// remove an Element
 		/// </summary>
 		/// <param name="item">The object that should be removed</param>
-		internal void Remove(Ambertation.Windows.Forms.Highlight item)
+		internal void Remove(Windows.Forms.Highlight item)
 		{
 			base.Remove(item);
 		}
@@ -179,7 +179,7 @@ namespace Ambertation.Collections
 		/// </summary>
 		/// <param name="item">The Object you are looking for</param>
 		/// <returns>true, if it was found</returns>
-		public bool Contains(Ambertation.Windows.Forms.Highlight item)
+		public bool Contains(Windows.Forms.Highlight item)
 		{
 			return base.Contains(item);
 		}
@@ -196,7 +196,7 @@ namespace Ambertation.Collections
 		internal new object Clone()
 		{
 			Highlights list = new Highlights();
-			foreach (Ambertation.Windows.Forms.Highlight item in this)
+			foreach (Windows.Forms.Highlight item in this)
 			{
 				list.Add(item);
 			}

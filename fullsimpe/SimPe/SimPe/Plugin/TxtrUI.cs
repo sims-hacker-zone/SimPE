@@ -70,7 +70,7 @@ namespace SimPe.Plugin
 			Txtr wrp = (Txtr)wrapper;
 			if (wrp.Blocks.Length == 0)
 			{
-				wrp.Blocks = new SimPe.Interfaces.Scenegraph.IRcolBlock[1];
+				wrp.Blocks = new Interfaces.Scenegraph.IRcolBlock[1];
 				wrp.Blocks[0] = new ImageData(wrp);
 			}
 			form.wrapper = wrp;

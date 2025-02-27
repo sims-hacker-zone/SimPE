@@ -26,7 +26,7 @@ namespace SimPe
 	/// Handles Layout Settings for the Application
 	/// </summary>
 	/// <remarks>You cannot create instance of this class, use the
-	/// <see cref="SimPe.Helper.WindowsRegistry.Layout"/> Field to access the LayoutRegistry</remarks>
+	/// <see cref="Helper.WindowsRegistry.Layout"/> Field to access the LayoutRegistry</remarks>
 	public class LayoutRegistry
 	{
 		#region Attributes

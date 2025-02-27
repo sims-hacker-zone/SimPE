@@ -68,7 +68,7 @@ namespace SimPe
 			}
 
 			//read XML File
-			System.Xml.XmlDocument xmlfile = new XmlDocument();
+			XmlDocument xmlfile = new XmlDocument();
 			xmlfile.Load(xmlfilename);
 
 			//seek Root Node

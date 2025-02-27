@@ -27,11 +27,11 @@ namespace pjse.BhavOperandWizards.Wiz0x001b
 	/// <summary>
 	/// Summary description for StrBig.
 	/// </summary>
-	internal class UI : System.Windows.Forms.Form, iBhavOperandWizForm
+	internal class UI : Form, iBhavOperandWizForm
 	{
 		#region Form variables
 
-		internal System.Windows.Forms.Panel pnWiz0x001b;
+		internal Panel pnWiz0x001b;
 		private FlowLayoutPanel flowLayoutPanel1;
 		private GroupBox gbLocation;
 		private ComboBox cbLocation;
@@ -146,14 +146,14 @@ namespace pjse.BhavOperandWizards.Wiz0x001b
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWiz0x001b = new System.Windows.Forms.Panel();
-			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-			this.gbLocation = new System.Windows.Forms.GroupBox();
-			this.cbLocation = new System.Windows.Forms.ComboBox();
-			this.gbDirection = new System.Windows.Forms.GroupBox();
-			this.cbDirection = new System.Windows.Forms.ComboBox();
-			this.ckbNoFailureTrees = new System.Windows.Forms.CheckBox();
-			this.ckbDifferentAltitudes = new System.Windows.Forms.CheckBox();
+			this.pnWiz0x001b = new Panel();
+			this.flowLayoutPanel1 = new FlowLayoutPanel();
+			this.gbLocation = new GroupBox();
+			this.cbLocation = new ComboBox();
+			this.gbDirection = new GroupBox();
+			this.cbDirection = new ComboBox();
+			this.ckbNoFailureTrees = new CheckBox();
+			this.ckbDifferentAltitudes = new CheckBox();
 			this.pnWiz0x001b.SuspendLayout();
 			this.flowLayoutPanel1.SuspendLayout();
 			this.gbLocation.SuspendLayout();
@@ -247,7 +247,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001b
 
 namespace pjse.BhavOperandWizards
 {
-	public class BhavOperandWiz0x001b : pjse.ABhavOperandWiz
+	public class BhavOperandWiz0x001b : ABhavOperandWiz
 	{
 		public BhavOperandWiz0x001b(Instruction i)
 			: base(i)

@@ -86,7 +86,7 @@ namespace SimPe.Interfaces.Providers
 		/// </summary>
 		/// <param name="opcode">the Opcode of the BHAV</param>
 		/// <returns>The Descriptor for the Bhav File in the BasePackage</returns>
-		SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem LoadGlobalBHAV(
+		Scenegraph.IScenegraphFileIndexItem LoadGlobalBHAV(
 			ushort opcode
 		);
 
@@ -96,7 +96,7 @@ namespace SimPe.Interfaces.Providers
 		/// <param name="opcode">The Opcode</param>
 		/// <param name="group">The group of the SemiGlobal</param>
 		/// <returns>The Descriptor of the Bhaf File in the Base Packagee or null</returns>
-		SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem LoadSemiGlobalBHAV(
+		Scenegraph.IScenegraphFileIndexItem LoadSemiGlobalBHAV(
 			ushort opcode,
 			uint group
 		);

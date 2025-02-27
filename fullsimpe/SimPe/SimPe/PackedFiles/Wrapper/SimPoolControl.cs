@@ -47,7 +47,7 @@ namespace SimPe.PackedFiles.Wrapper
 		internal System.Windows.Forms.ComboBox cbhousehold;
 		private System.ComponentModel.IContainer components;
 
-		public SimPe.PackedFiles.Wrapper.SDesc SelectedElement
+		public SDesc SelectedElement
 		{
 			get
 			{
@@ -56,7 +56,7 @@ namespace SimPe.PackedFiles.Wrapper
 					return null;
 				}
 
-				return (SimPe.PackedFiles.Wrapper.ExtSDesc)gp.SelectedItems[0].Tag;
+				return (ExtSDesc)gp.SelectedItems[0].Tag;
 			}
 			set
 			{
@@ -64,7 +64,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public SimPe.PackedFiles.Wrapper.ExtSDesc SelectedSim
+		public ExtSDesc SelectedSim
 		{
 			get
 			{
@@ -73,7 +73,7 @@ namespace SimPe.PackedFiles.Wrapper
 					return null;
 				}
 
-				return (SimPe.PackedFiles.Wrapper.ExtSDesc)gp.SelectedItems[0].Tag;
+				return (ExtSDesc)gp.SelectedItems[0].Tag;
 			}
 			set
 			{
@@ -81,8 +81,8 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		SimPe.Interfaces.Files.IPackageFile pkg;
-		public SimPe.Interfaces.Files.IPackageFile Package
+		Interfaces.Files.IPackageFile pkg;
+		public Interfaces.Files.IPackageFile Package
 		{
 			get
 			{
@@ -112,7 +112,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected void UpdateContent()
 		{
-			SimPe.PackedFiles.Wrapper.ExtSDesc selectedSim = this.SelectedSim;
+			ExtSDesc selectedSim = this.SelectedSim;
 			string house = selectedSim == null ? "" : selectedSim.HouseholdName;
 
 			this.cbhousehold.Items.Clear();
@@ -164,9 +164,9 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public class AddSimToPoolEventArgs : System.EventArgs
+		public class AddSimToPoolEventArgs : EventArgs
 		{
-			public SimPe.PackedFiles.Wrapper.ExtSDesc SimDescription
+			public ExtSDesc SimDescription
 			{
 				get;
 			}
@@ -196,7 +196,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 
 			internal AddSimToPoolEventArgs(
-				SimPe.PackedFiles.Wrapper.ExtSDesc sdsc,
+				ExtSDesc sdsc,
 				string name,
 				string household,
 				System.Drawing.Image img,
@@ -226,7 +226,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		AddSimToPoolEventArgs DoAddSimToPool(
-			SimPe.PackedFiles.Wrapper.ExtSDesc sdsc,
+			ExtSDesc sdsc,
 			string name,
 			string household,
 			System.Drawing.Image img
@@ -249,7 +249,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		protected virtual System.Drawing.Color GetBackgroundColor(
-			SimPe.PackedFiles.Wrapper.ExtSDesc sdsc
+			ExtSDesc sdsc
 		)
 		{
 			return GetImagePanelColor(sdsc);
@@ -257,7 +257,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		void UpdateSimList(string household)
 		{
-			SimPe.PackedFiles.Wrapper.ExtSDesc selectedSim = this.SelectedSim;
+			ExtSDesc selectedSim = this.SelectedSim;
 			if (
 				household != null
 				&& selectedSim != null
@@ -278,9 +278,9 @@ namespace SimPe.PackedFiles.Wrapper
 			Wait.SubStart(ht.Count);
 			int ct = 0;
 
-			System.Collections.SortedList map = new System.Collections.SortedList();
+			SortedList map = new SortedList();
 
-			foreach (SimPe.PackedFiles.Wrapper.ExtSDesc sdsc in ht.Values)
+			foreach (ExtSDesc sdsc in ht.Values)
 			{
 				if (household != null)
 				{
@@ -339,9 +339,9 @@ namespace SimPe.PackedFiles.Wrapper
 					{
 						SelectedSimChanged(
 							this,
-							((SimPe.PackedFiles.Wrapper.ExtSDesc)gp.Items[0].Tag).Image,
-							(Wrapper.SDesc)(
-								(SimPe.PackedFiles.Wrapper.ExtSDesc)gp.Items[0].Tag
+							((ExtSDesc)gp.Items[0].Tag).Image,
+							(SDesc)(
+								(ExtSDesc)gp.Items[0].Tag
 							)
 						);
 					}
@@ -459,7 +459,7 @@ namespace SimPe.PackedFiles.Wrapper
 			*/
 		}
 
-		public static ExtendedImagePanel CreateItem(Wrapper.SDesc sdesc)
+		public static ExtendedImagePanel CreateItem(SDesc sdesc)
 		{
 			ExtendedImagePanel eip = new ExtendedImagePanel();
 			eip.SetBounds(0, 0, 216, 80);
@@ -470,7 +470,7 @@ namespace SimPe.PackedFiles.Wrapper
 			return eip;
 		}
 
-		static void PrepareItem(ExtendedImagePanel eip, Wrapper.SDesc sdesc)
+		static void PrepareItem(ExtendedImagePanel eip, SDesc sdesc)
 		{
 			eip.ImagePanelColor = System.Drawing.Color.Black;
 			eip.Fade = 0.5f;
@@ -504,7 +504,7 @@ namespace SimPe.PackedFiles.Wrapper
 			ExtendedImagePanel eip = new ExtendedImagePanel();
 			eip.BeginUpdate();
 			eip.SetBounds(left, top, 216, 80);
-			Wrapper.SDesc sdesc = new SDesc();
+			SDesc sdesc = new SDesc();
 			try
 			{
 				sdesc.ProcessData(pfd, pkg);
@@ -522,14 +522,14 @@ namespace SimPe.PackedFiles.Wrapper
 		public delegate void SelectedSimHandler(
 			object sender,
 			System.Drawing.Image thumb,
-			Wrapper.SDesc sdesc
+			SDesc sdesc
 		);
 		public event SelectedSimHandler SelectedSimChanged;
 		public event SelectedSimHandler ClickOverSim;
 		public event SelectedSimHandler DoubleClickSim;
 		#endregion
 
-		private void gp_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void gp_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (SelectedSimChanged != null && gp.SelectedItems.Count > 0)
 			{
@@ -537,15 +537,15 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		private void gp_DoubleClick(object sender, System.EventArgs e)
+		private void gp_DoubleClick(object sender, EventArgs e)
 		{
 			if (DoubleClickSim != null && gp.SelectedItems.Count > 0)
 			{
 				DoubleClickSim(
 					this,
 					gp.LargeImageList.Images[gp.SelectedItems[0].ImageIndex],
-					(Wrapper.SDesc)(
-						(SimPe.PackedFiles.Wrapper.ExtSDesc)gp.SelectedItems[0].Tag
+					(SDesc)(
+						(ExtSDesc)gp.SelectedItems[0].Tag
 					)
 				);
 			}
@@ -566,8 +566,8 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				ClickOverSim(
 					this,
-					((SimPe.PackedFiles.Wrapper.ExtSDesc)item.Tag).Image,
-					(Wrapper.SDesc)((SimPe.PackedFiles.Wrapper.ExtSDesc)item.Tag)
+					((ExtSDesc)item.Tag).Image,
+					(SDesc)((ExtSDesc)item.Tag)
 				);
 			}
 
@@ -588,8 +588,8 @@ namespace SimPe.PackedFiles.Wrapper
 				lastsel = item;
 				SelectedSimChanged(
 					this,
-					((SimPe.PackedFiles.Wrapper.ExtSDesc)item.Tag).Image,
-					(Wrapper.SDesc)((SimPe.PackedFiles.Wrapper.ExtSDesc)item.Tag)
+					((ExtSDesc)item.Tag).Image,
+					(SDesc)((ExtSDesc)item.Tag)
 				);
 			}
 			//if (lastsel!=null && e.Button!=System.Windows.Forms.MouseButtons.Left) lastsel.Selected = true;
@@ -608,7 +608,7 @@ namespace SimPe.PackedFiles.Wrapper
 			SteepValley.Windows.Forms.XPListViewGroup xpListViewGroup2 =
 				new SteepValley.Windows.Forms.XPListViewGroup("Related", 1);
 			this.cbhousehold = new System.Windows.Forms.ComboBox();
-			this.gp = new SimPe.PackedFiles.Wrapper.SimListView();
+			this.gp = new SimListView();
 			this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
 			this.chHouse = new System.Windows.Forms.ColumnHeader();
 			this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
@@ -626,7 +626,7 @@ namespace SimPe.PackedFiles.Wrapper
 				.DropDownList;
 			this.cbhousehold.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.cbhousehold.Name = "cbhousehold";
-			this.cbhousehold.SelectedIndexChanged += new System.EventHandler(
+			this.cbhousehold.SelectedIndexChanged += new EventHandler(
 				this.cbhousehold_SelectedIndexChanged
 			);
 			//
@@ -658,10 +658,10 @@ namespace SimPe.PackedFiles.Wrapper
 			this.gp.Name = "gp";
 			this.gp.TileColumns = new int[] { 1 };
 			this.gp.UseCompatibleStateImageBehavior = false;
-			this.gp.SelectedIndexChanged += new System.EventHandler(
+			this.gp.SelectedIndexChanged += new EventHandler(
 				this.gp_SelectedIndexChanged
 			);
-			this.gp.DoubleClick += new System.EventHandler(this.gp_DoubleClick);
+			this.gp.DoubleClick += new EventHandler(this.gp_DoubleClick);
 			this.gp.MouseDown += new System.Windows.Forms.MouseEventHandler(
 				this.gp_MouseDown
 			);
@@ -701,7 +701,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		/// <param name="sdsc"></param>
 		/// <returns></returns>
-		public void FindItem(Wrapper.SDesc sdsc)
+		public void FindItem(SDesc sdsc)
 		{
 			if (sdsc == null)
 			{
@@ -711,16 +711,16 @@ namespace SimPe.PackedFiles.Wrapper
 
 			foreach (SteepValley.Windows.Forms.XPListViewItem gpe in gp.Items)
 			{
-				if (gpe.Tag is Wrapper.SDesc)
+				if (gpe.Tag is SDesc)
 				{
-					if (sdsc.Equals((Wrapper.SDesc)gpe.Tag))
+					if (sdsc.Equals((SDesc)gpe.Tag))
 					{
 						gpe.Selected = true;
 						gpe.EnsureVisible();
 						SelectedSimChanged(
 							this,
-							((Wrapper.SDesc)gpe.Tag).Image,
-							((Wrapper.SDesc)gpe.Tag)
+							((SDesc)gpe.Tag).Image,
+							((SDesc)gpe.Tag)
 						);
 					}
 					else
@@ -746,7 +746,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		private void cbhousehold_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void cbhousehold_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			UpdateSimList();
 		}
@@ -791,7 +791,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		internal SteepValley.Windows.Forms.XPListViewItem Add(
-			PackedFiles.Wrapper.ExtSDesc o
+			ExtSDesc o
 		)
 		{
 			return gp.Add(o);

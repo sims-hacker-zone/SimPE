@@ -53,7 +53,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="guid">The GUID of the want</param>
 		/// <returns>A Want Information Structure</returns>
-		public static WantCacheInformation LoadWant(SimPe.Cache.WantCacheItem wci)
+		public static WantCacheInformation LoadWant(WantCacheItem wci)
 		{
 			WantCacheInformation ret = new WantCacheInformation();
 			ret.icon = wci.Icon;
@@ -61,24 +61,24 @@ namespace SimPe.Plugin
 			ret.guid = wci.Guid;
 
 			XWant w = new XWant();
-			SimPe.PackedFiles.Wrapper.CpfItem i =
-				new SimPe.PackedFiles.Wrapper.CpfItem();
+			PackedFiles.Wrapper.CpfItem i =
+				new PackedFiles.Wrapper.CpfItem();
 			i.Name = "id";
 			i.UIntegerValue = wci.Guid;
 			w.AddItem(i, true);
-			i = new SimPe.PackedFiles.Wrapper.CpfItem();
+			i = new PackedFiles.Wrapper.CpfItem();
 			i.Name = "folder";
 			i.StringValue = wci.Folder;
 			w.AddItem(i, true);
-			i = new SimPe.PackedFiles.Wrapper.CpfItem();
+			i = new PackedFiles.Wrapper.CpfItem();
 			i.Name = "score";
 			i.IntegerValue = wci.Score;
 			w.AddItem(i, true);
-			i = new SimPe.PackedFiles.Wrapper.CpfItem();
+			i = new PackedFiles.Wrapper.CpfItem();
 			i.Name = "influence";
 			i.IntegerValue = wci.Influence;
 			w.AddItem(i, true);
-			i = new SimPe.PackedFiles.Wrapper.CpfItem();
+			i = new PackedFiles.Wrapper.CpfItem();
 			i.Name = "objectType";
 			i.StringValue = wci.ObjectType;
 			w.AddItem(i, true);
@@ -101,8 +101,8 @@ namespace SimPe.Plugin
 	public class WantInformation
 	{
 		protected XWant wnt;
-		SimPe.PackedFiles.Wrapper.Str str;
-		SimPe.PackedFiles.Wrapper.Picture primicon;
+		PackedFiles.Wrapper.Str str;
+		PackedFiles.Wrapper.Picture primicon;
 		protected uint guid;
 		internal string prefix = "";
 
@@ -273,7 +273,7 @@ namespace SimPe.Plugin
 	public class WantLoader
 	{
 		static Hashtable wants = null;
-		static SimPe.Packages.File txtpkg = null;
+		static Packages.File txtpkg = null;
 		static WantNameLoader wnl;
 
 		// static SimPe.Packages.File imgpkg = null; // Never used ??
@@ -357,10 +357,10 @@ namespace SimPe.Plugin
 			wants = new Hashtable();
 
 			FileTable.FileIndex.Load();
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] wtss =
+			Interfaces.Scenegraph.IScenegraphFileIndexItem[] wtss =
 				FileTable.FileIndex.FindFile(Data.MetaData.XWNT, true);
 
-			foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem wts in wtss)
+			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem wts in wtss)
 			{
 				wants[wts.FileDescriptor.Instance] = wts;
 			}
@@ -380,8 +380,8 @@ namespace SimPe.Plugin
 				LoadWants();
 			}
 
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem wts =
-				(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem)wants[guid];
+			Interfaces.Scenegraph.IScenegraphFileIndexItem wts =
+				(Interfaces.Scenegraph.IScenegraphFileIndexItem)wants[guid];
 			if (wts != null)
 			{
 				XWant xwnt = new XWant();
@@ -401,7 +401,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="wnt">The Want File</param>
 		/// <returns>The Str File or null if none was found</returns>
-		public static SimPe.PackedFiles.Wrapper.Str LoadText(XWant wnt)
+		public static PackedFiles.Wrapper.Str LoadText(XWant wnt)
 		{
 			if (wnt == null)
 			{
@@ -420,7 +420,7 @@ namespace SimPe.Plugin
 			);
 			if (pfds.Length > 0)
 			{
-				SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
 				pfds[0].UserData = txtpkg.Read(pfds[0]).UncompressedData;
 				str.ProcessData(pfds[0], txtpkg);
 
@@ -435,7 +435,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="wnt">The Want File</param>
 		/// <returns>The Picture File or null if none was found</returns>
-		public static SimPe.PackedFiles.Wrapper.Picture LoadIcon(XWant wnt)
+		public static PackedFiles.Wrapper.Picture LoadIcon(XWant wnt)
 		{
 			if (wnt == null)
 			{
@@ -451,8 +451,8 @@ namespace SimPe.Plugin
 				FileTable.FileIndex.FindFile(wnt.IconFileDescriptor, null);
 			if (items.Length > 0)
 			{
-				SimPe.PackedFiles.Wrapper.Picture pic =
-					new SimPe.PackedFiles.Wrapper.Picture();
+				PackedFiles.Wrapper.Picture pic =
+					new PackedFiles.Wrapper.Picture();
 				items[0].FileDescriptor.UserData = items[0]
 					.Package.Read(items[0].FileDescriptor)
 					.UncompressedData;

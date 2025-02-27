@@ -22,7 +22,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for TattUI.
 	/// </summary>
-	public class TattUI : SimPe.Windows.Forms.WrapperBaseControl
+	public class TattUI : Windows.Forms.WrapperBaseControl
 	//System.Windows.Forms.UserControl
 	{
 		private System.Windows.Forms.Timer timer1;

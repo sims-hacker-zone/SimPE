@@ -148,7 +148,7 @@ namespace SimPe.Plugin
 		}
 
 		#region IScenegraphItem Member
-		public SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem FindReferencedType(
+		public IScenegraphFileIndexItem FindReferencedType(
 			uint type
 		)
 		{
@@ -156,11 +156,11 @@ namespace SimPe.Plugin
 			{
 				foreach (object o in list)
 				{
-					SimPe.Interfaces.Files.IPackedFileDescriptor opfd =
-						(SimPe.Interfaces.Files.IPackedFileDescriptor)o;
+					Interfaces.Files.IPackedFileDescriptor opfd =
+						(Interfaces.Files.IPackedFileDescriptor)o;
 					if (opfd.Type == type)
 					{
-						SimPe.Interfaces.Files.IPackedFileDescriptor pfd = Package.FindFile(
+						Interfaces.Files.IPackedFileDescriptor pfd = Package.FindFile(
 							opfd
 						);
 						if (pfd == null)
@@ -173,13 +173,13 @@ namespace SimPe.Plugin
 							opfd.Group = Data.MetaData.LOCAL_GROUP;
 							pfd = Package.FindFile(opfd);
 						}
-						SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item = null;
+						IScenegraphFileIndexItem item = null;
 						if (pfd == null)
 						{
 							FileTable.FileIndex.Load();
-							SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+							IScenegraphFileIndexItem[] items =
 								FileTable.FileIndex.FindFile(
-									(SimPe.Interfaces.Files.IPackedFileDescriptor)o,
+									(Interfaces.Files.IPackedFileDescriptor)o,
 									null
 								);
 							if (items.Length > 0)

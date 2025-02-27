@@ -8,7 +8,7 @@ namespace SimPe.Plugin
 	/// This class is used to fill the UI for this FileType with Data
 	/// </summary>
 	public partial class CregPackedFileUI
-		: SimPe.Windows.Forms.WrapperBaseControl,
+		: Windows.Forms.WrapperBaseControl,
 			IPackedFileUI
 	{
 		protected new CregPackedFileWrapper Wrapper => base.Wrapper as CregPackedFileWrapper;

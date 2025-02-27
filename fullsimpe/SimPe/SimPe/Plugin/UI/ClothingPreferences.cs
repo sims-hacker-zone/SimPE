@@ -11,20 +11,20 @@ namespace SimPe.Plugin.UI
 	/// </summary>
 	public class ClothingPreferences : PreferencesPanel // System.Windows.Forms.Form //
 	{
-		private System.Windows.Forms.TabControl tabControl1;
+		private TabControl tabControl1;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.TabPage tabPage2;
 		private System.Windows.Forms.TabPage tabPage3;
-		private System.Windows.Forms.CheckedListBox clbCategories;
-		private System.Windows.Forms.CheckedListBox clbAges;
-		private System.Windows.Forms.CheckedListBox clbGender;
-		private System.Windows.Forms.ComboBox cbOutfitType;
-		private System.Windows.Forms.ComboBox cbShoeType;
-		private System.Windows.Forms.ComboBox cbSpeciesType;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label label4;
+		private CheckedListBox clbCategories;
+		private CheckedListBox clbAges;
+		private CheckedListBox clbGender;
+		private ComboBox cbOutfitType;
+		private ComboBox cbShoeType;
+		private ComboBox cbSpeciesType;
+		private Label label1;
+		private Label label2;
+		private Label label3;
+		private Label label4;
 		private ComboBox cbOverlayType;
 		private Label label5;
 		private Label lbBody;
@@ -84,14 +84,14 @@ namespace SimPe.Plugin.UI
 				for (int i = 0; i < this.cbBody.Items.Count; i++)
 				{
 					object o = this.cbBody.Items[i];
-					Data.MetaData.Bodyshape at;
+					MetaData.Bodyshape at;
 					if (o.GetType() == typeof(Alias))
 					{
-						at = (Data.LocalizedBodyshape)((uint)((Alias)o).Id);
+						at = (LocalizedBodyshape)((uint)((Alias)o).Id);
 					}
 					else
 					{
-						at = (Data.LocalizedBodyshape)o;
+						at = (LocalizedBodyshape)o;
 					}
 
 					if (at == sset.Figure)
@@ -187,27 +187,27 @@ namespace SimPe.Plugin.UI
 		private void InitializeComponent()
 		{
 			//this.components = new System.ComponentModel.Container();
-			this.clbCategories = new System.Windows.Forms.CheckedListBox();
-			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.clbCategories = new CheckedListBox();
+			this.tabControl1 = new TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.clbAges = new System.Windows.Forms.CheckedListBox();
+			this.clbAges = new CheckedListBox();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
-			this.cbhat = new System.Windows.Forms.CheckBox();
-			this.cbhide = new System.Windows.Forms.CheckBox();
-			this.cbavail = new System.Windows.Forms.CheckBox();
-			this.lbBody = new System.Windows.Forms.Label();
-			this.cbBody = new System.Windows.Forms.ComboBox();
-			this.cbOverlayType = new System.Windows.Forms.ComboBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.cbSpeciesType = new System.Windows.Forms.ComboBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.clbGender = new System.Windows.Forms.CheckedListBox();
-			this.cbShoeType = new System.Windows.Forms.ComboBox();
-			this.cbOutfitType = new System.Windows.Forms.ComboBox();
+			this.cbhat = new CheckBox();
+			this.cbhide = new CheckBox();
+			this.cbavail = new CheckBox();
+			this.lbBody = new Label();
+			this.cbBody = new ComboBox();
+			this.cbOverlayType = new ComboBox();
+			this.label5 = new Label();
+			this.cbSpeciesType = new ComboBox();
+			this.label4 = new Label();
+			this.label3 = new Label();
+			this.label2 = new Label();
+			this.label1 = new Label();
+			this.clbGender = new CheckedListBox();
+			this.cbShoeType = new ComboBox();
+			this.cbOutfitType = new ComboBox();
 			//this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
@@ -224,7 +224,7 @@ namespace SimPe.Plugin.UI
 			this.clbCategories.Name = "clbCategories";
 			this.clbCategories.Size = new System.Drawing.Size(507, 154);
 			this.clbCategories.TabIndex = 0;
-			this.clbCategories.SelectedIndexChanged += new System.EventHandler(
+			this.clbCategories.SelectedIndexChanged += new EventHandler(
 				this.Handle_SettingsControl_Changed
 			);
 			//
@@ -267,7 +267,7 @@ namespace SimPe.Plugin.UI
 			this.clbAges.Name = "clbAges";
 			this.clbAges.Size = new System.Drawing.Size(507, 154);
 			this.clbAges.TabIndex = 0;
-			this.clbAges.SelectedIndexChanged += new System.EventHandler(
+			this.clbAges.SelectedIndexChanged += new EventHandler(
 				this.Handle_SettingsControl_Changed
 			);
 			//
@@ -305,7 +305,7 @@ namespace SimPe.Plugin.UI
 			this.cbhat.TabIndex = 15;
 			this.cbhat.Text = "Includes a Hat";
 			this.cbhat.UseVisualStyleBackColor = false;
-			this.cbhat.CheckedChanged += new System.EventHandler(
+			this.cbhat.CheckedChanged += new EventHandler(
 				this.cbflags_CheckedChanged
 			);
 			//
@@ -319,7 +319,7 @@ namespace SimPe.Plugin.UI
 			this.cbhide.TabIndex = 14;
 			this.cbhide.Text = "Not in Catalogue";
 			this.cbhide.UseVisualStyleBackColor = false;
-			this.cbhide.CheckedChanged += new System.EventHandler(
+			this.cbhide.CheckedChanged += new EventHandler(
 				this.cbflags_CheckedChanged
 			);
 			//
@@ -338,7 +338,7 @@ namespace SimPe.Plugin.UI
 					+ " flag is set\r\nNot sure how well it works for other file types"
 			);
 			this.cbavail.UseVisualStyleBackColor = false;
-			this.cbavail.CheckedChanged += new System.EventHandler(
+			this.cbavail.CheckedChanged += new EventHandler(
 				this.cbflags_CheckedChanged
 			);
 			//
@@ -369,7 +369,7 @@ namespace SimPe.Plugin.UI
 				this.cbBody,
 				"For users of the BSOK, Angels & Nurses Stuff or T&A"
 			);
-			this.cbBody.SelectedIndexChanged += new System.EventHandler(
+			this.cbBody.SelectedIndexChanged += new EventHandler(
 				this.cbBody_SelectedIndexChanged
 			);
 			//
@@ -484,7 +484,7 @@ namespace SimPe.Plugin.UI
 			this.clbGender.Size = new System.Drawing.Size(91, 49);
 			this.clbGender.TabIndex = 2;
 			this.clbGender.ThreeDCheckBoxes = true;
-			this.clbGender.SelectedIndexChanged += new System.EventHandler(
+			this.clbGender.SelectedIndexChanged += new EventHandler(
 				this.Handle_SettingsControl_Changed
 			);
 			//
@@ -499,7 +499,7 @@ namespace SimPe.Plugin.UI
 			this.cbShoeType.Name = "cbShoeType";
 			this.cbShoeType.Size = new System.Drawing.Size(120, 21);
 			this.cbShoeType.TabIndex = 1;
-			this.cbShoeType.SelectedIndexChanged += new System.EventHandler(
+			this.cbShoeType.SelectedIndexChanged += new EventHandler(
 				this.Handle_SettingsControl_Changed
 			);
 			//
@@ -514,7 +514,7 @@ namespace SimPe.Plugin.UI
 			this.cbOutfitType.Name = "cbOutfitType";
 			this.cbOutfitType.Size = new System.Drawing.Size(120, 21);
 			this.cbOutfitType.TabIndex = 0;
-			this.cbOutfitType.SelectedIndexChanged += new System.EventHandler(
+			this.cbOutfitType.SelectedIndexChanged += new EventHandler(
 				this.Handle_SettingsControl_Changed
 			);
 			//
@@ -541,10 +541,10 @@ namespace SimPe.Plugin.UI
 		void InitDropDown()
 		{
 			this.cbBody.Items.Clear();
-			foreach (uint i in Enum.GetValues(typeof(Data.MetaData.Bodyshape)))
+			foreach (uint i in Enum.GetValues(typeof(MetaData.Bodyshape)))
 			{
 				this.cbBody.Items.Add(
-					new LocalizedBodyshape((Data.MetaData.Bodyshape)i)
+					new LocalizedBodyshape((MetaData.Bodyshape)i)
 				);
 			}
 		}

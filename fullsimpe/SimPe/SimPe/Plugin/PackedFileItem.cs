@@ -23,14 +23,14 @@ namespace SimPe.Plugin
 {
 	public class SkinChain
 	{
-		protected SimPe.PackedFiles.Wrapper.Cpf cpf;
+		protected PackedFiles.Wrapper.Cpf cpf;
 
-		public SkinChain(SimPe.PackedFiles.Wrapper.Cpf cpf)
+		public SkinChain(PackedFiles.Wrapper.Cpf cpf)
 		{
 			this.cpf = cpf;
 		}
 
-		public SimPe.PackedFiles.Wrapper.Cpf Cpf => cpf;
+		public PackedFiles.Wrapper.Cpf Cpf => cpf;
 
 		public uint Category
 		{
@@ -40,7 +40,7 @@ namespace SimPe.Plugin
 				{
 					if (Cpf != null)
 					{
-						SimPe.PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem(
+						PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem(
 							"category"
 						);
 						if (citem != null)
@@ -75,7 +75,7 @@ namespace SimPe.Plugin
 				{
 					if (Cpf != null)
 					{
-						SimPe.PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("age");
+						PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("age");
 						if (citem != null)
 						{
 							return citem.UIntegerValue;
@@ -95,7 +95,7 @@ namespace SimPe.Plugin
 				{
 					if (Cpf != null)
 					{
-						SimPe.PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("name");
+						PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("name");
 						if (citem != null)
 						{
 							return citem.StringValue;
@@ -115,7 +115,7 @@ namespace SimPe.Plugin
 				{
 					if (Cpf != null)
 					{
-						SimPe.PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("gender");
+						PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("gender");
 						if (citem != null)
 						{
 							return citem.UIntegerValue;
@@ -135,7 +135,7 @@ namespace SimPe.Plugin
 				{
 					if (Cpf != null)
 					{
-						SimPe.PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem(
+						PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem(
 							"product"
 						);
 						if (citem != null)
@@ -174,7 +174,7 @@ namespace SimPe.Plugin
 				{
 					if (Cpf != null)
 					{
-						SimPe.PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("outfit");
+						PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("outfit");
 						if (citem == null)
 						{
 							citem = Cpf.GetItem("parts");
@@ -231,7 +231,7 @@ namespace SimPe.Plugin
 					FileTable.FileIndex.FindFile(pfd, null);
 				if (items.Length > 0)
 				{
-					SimPe.Plugin.GenericRcol rcol = new GenericRcol(null, false);
+					GenericRcol rcol = new GenericRcol(null, false);
 					rcol.ProcessData(items[0], false);
 
 					return rcol;
@@ -268,7 +268,7 @@ namespace SimPe.Plugin
 					);
 				if (item != null)
 				{
-					SimPe.Plugin.GenericRcol rcol = new GenericRcol(null, false);
+					GenericRcol rcol = new GenericRcol(null, false);
 					rcol.ProcessData(item, false);
 
 					return rcol;
@@ -293,7 +293,7 @@ namespace SimPe.Plugin
 							Interfaces.Files.IPackedFileDescriptor pfd in reffile.Items
 						)
 						{
-							SimPe.Plugin.GenericRcol rcol = LoadRcol(
+							GenericRcol rcol = LoadRcol(
 								Data.MetaData.TXMT,
 								pfd
 							);
@@ -320,7 +320,7 @@ namespace SimPe.Plugin
 				System.Collections.ArrayList list = new System.Collections.ArrayList();
 				foreach (GenericRcol txmt in txmts)
 				{
-					SimPe.Plugin.GenericRcol rcol = this.LoadTXTR(txmt);
+					GenericRcol rcol = this.LoadTXTR(txmt);
 					if (rcol != null)
 					{
 						list.Add(rcol);
@@ -369,7 +369,7 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				SimPe.Plugin.GenericRcol rcol = LoadTXTR(TXMT);
+				GenericRcol rcol = LoadTXTR(TXMT);
 				if (rcol != null)
 				{
 					return rcol;
@@ -490,7 +490,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// A Item in a 3IDR File
 	/// </summary>
-	public class RefFileItem : SimPe.Packages.PackedFileDescriptor
+	public class RefFileItem : Packages.PackedFileDescriptor
 	{
 		RefFile parent;
 
@@ -530,8 +530,8 @@ namespace SimPe.Plugin
 							FileTable.FileIndex.FindFile(this, parent.Package);
 						if (items.Length > 0)
 						{
-							SimPe.PackedFiles.Wrapper.Cpf cpff =
-								new SimPe.PackedFiles.Wrapper.Cpf();
+							PackedFiles.Wrapper.Cpf cpff =
+								new PackedFiles.Wrapper.Cpf();
 							cpff.ProcessData(items[0]);
 
 							skin = new SkinChain(cpff);
@@ -592,7 +592,7 @@ namespace SimPe.Plugin
 	{
 		uint category;
 
-		internal CpfListItem(SimPe.PackedFiles.Wrapper.Cpf cpf)
+		internal CpfListItem(PackedFiles.Wrapper.Cpf cpf)
 			: base(cpf)
 		{
 			this.cpf = cpf;
@@ -600,7 +600,7 @@ namespace SimPe.Plugin
 			category = 0;
 			if (cpf != null)
 			{
-				foreach (SimPe.PackedFiles.Wrapper.CpfItem citem in cpf.Items)
+				foreach (PackedFiles.Wrapper.CpfItem citem in cpf.Items)
 				{
 					if (citem.Name.ToLower() == "name")
 					{
@@ -608,7 +608,7 @@ namespace SimPe.Plugin
 					}
 				}
 
-				foreach (SimPe.PackedFiles.Wrapper.CpfItem citem in cpf.Items)
+				foreach (PackedFiles.Wrapper.CpfItem citem in cpf.Items)
 				{
 					if (citem.Name.ToLower() == "category")
 					{
@@ -625,7 +625,7 @@ namespace SimPe.Plugin
 			get;
 		}
 
-		internal SimPe.PackedFiles.Wrapper.Cpf File => cpf;
+		internal PackedFiles.Wrapper.Cpf File => cpf;
 
 		public override string ToString()
 		{

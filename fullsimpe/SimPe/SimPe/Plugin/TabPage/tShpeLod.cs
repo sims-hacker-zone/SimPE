@@ -30,11 +30,11 @@ namespace SimPe.Plugin.TabPage
 		//System.Windows.Forms.UserControl
 		System.Windows.Forms.TabPage
 	{
-		private System.Windows.Forms.TextBox tbunk;
-		internal System.Windows.Forms.ListBox lbunk;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.LinkLabel linkLabel3;
-		private System.Windows.Forms.LinkLabel linkLabel4;
+		private TextBox tbunk;
+		internal ListBox lbunk;
+		private Label label1;
+		private LinkLabel linkLabel3;
+		private LinkLabel linkLabel4;
 
 		/// <summary>
 		/// Required designer variable.
@@ -84,11 +84,11 @@ namespace SimPe.Plugin.TabPage
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.linkLabel4 = new System.Windows.Forms.LinkLabel();
-			this.linkLabel3 = new System.Windows.Forms.LinkLabel();
-			this.tbunk = new System.Windows.Forms.TextBox();
-			this.lbunk = new System.Windows.Forms.ListBox();
-			this.label1 = new System.Windows.Forms.Label();
+			this.linkLabel4 = new LinkLabel();
+			this.linkLabel3 = new LinkLabel();
+			this.tbunk = new TextBox();
+			this.lbunk = new ListBox();
+			this.label1 = new Label();
 			this.SuspendLayout();
 			//
 			// tShpeLod
@@ -121,7 +121,7 @@ namespace SimPe.Plugin.TabPage
 			this.linkLabel4.TabStop = true;
 			this.linkLabel4.Text = "delete";
 			this.linkLabel4.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.linkLabel4_LinkClicked
 				);
 			//
@@ -142,7 +142,7 @@ namespace SimPe.Plugin.TabPage
 			this.linkLabel3.TabStop = true;
 			this.linkLabel3.Text = "add";
 			this.linkLabel3.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.linkLabel3_LinkClicked
 				);
 			//
@@ -160,7 +160,7 @@ namespace SimPe.Plugin.TabPage
 			this.tbunk.Size = new System.Drawing.Size(88, 21);
 			this.tbunk.TabIndex = 4;
 			this.tbunk.Text = "0x00000000";
-			this.tbunk.TextChanged += new System.EventHandler(this.ChangeUnknown);
+			this.tbunk.TextChanged += new EventHandler(this.ChangeUnknown);
 			//
 			// lbunk
 			//
@@ -176,7 +176,7 @@ namespace SimPe.Plugin.TabPage
 			this.lbunk.Name = "lbunk";
 			this.lbunk.Size = new System.Drawing.Size(120, 104);
 			this.lbunk.TabIndex = 3;
-			this.lbunk.SelectedIndexChanged += new System.EventHandler(
+			this.lbunk.SelectedIndexChanged += new EventHandler(
 				this.SelectUnknown
 			);
 			//
@@ -207,7 +207,7 @@ namespace SimPe.Plugin.TabPage
 		{
 			try
 			{
-				SimPe.Plugin.Shape shape = (SimPe.Plugin.Shape)this.Tag;
+				Shape shape = (Shape)this.Tag;
 
 				uint[] unknown = new uint[lbunk.Items.Count];
 				for (int i = 0; i < unknown.Length; i++)
@@ -220,7 +220,7 @@ namespace SimPe.Plugin.TabPage
 			catch (Exception) { }
 		}
 
-		private void SelectUnknown(object sender, System.EventArgs e)
+		private void SelectUnknown(object sender, EventArgs e)
 		{
 			if (tbunk.Tag != null)
 			{
@@ -245,7 +245,7 @@ namespace SimPe.Plugin.TabPage
 			}
 		}
 
-		private void ChangeUnknown(object sender, System.EventArgs e)
+		private void ChangeUnknown(object sender, EventArgs e)
 		{
 			if (tbunk.Tag != null)
 			{
@@ -271,7 +271,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void linkLabel3_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			try
@@ -285,7 +285,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void linkLabel4_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lbunk.SelectedIndex < 0)

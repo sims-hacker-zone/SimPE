@@ -40,7 +40,7 @@ namespace SimPe
 		public LoadFileWrappersExt()
 			: base(FileTable.WrapperRegistry, FileTable.ToolRegistry) { }
 
-		static System.Collections.ArrayList exclude;
+		static ArrayList exclude;
 
 		static void CreateExcludeList()
 		{
@@ -53,7 +53,7 @@ namespace SimPe
 		}
 
 		public static void SetShurtcutKey(
-			System.Windows.Forms.ToolStripMenuItem mi,
+			ToolStripMenuItem mi,
 			Shortcut sc
 		)
 		{
@@ -73,7 +73,7 @@ namespace SimPe
 		/// <param name="item"></param>
 		/// <param name="parts"></param>
 		public static void AddMenuItem(
-			ref SimPe.Events.ChangedResourceEvent ev,
+			ref Events.ChangedResourceEvent ev,
 			ToolStripItemCollection parent,
 			ToolMenuItemExt item,
 			string[] parts
@@ -126,12 +126,12 @@ namespace SimPe
 			}
 
 			parent.Add(item);
-			ev += new SimPe.Events.ChangedResourceEvent(
+			ev += new Events.ChangedResourceEvent(
 				item.ChangeEnabledStateEventHandler
 			);
 			item.ChangeEnabledStateEventHandler(
 				item,
-				new SimPe.Events.ResourceEventArgs(null)
+				new Events.ResourceEventArgs(null)
 			);
 		}
 
@@ -149,7 +149,7 @@ namespace SimPe
 		public static void BuildToolBar(
 			ToolStrip tb,
 			ToolStripItemCollection mi,
-			System.Collections.ArrayList exclude
+			ArrayList exclude
 		)
 		{
 			System.Collections.Generic.List<ToolStripItemCollection> submenus =
@@ -228,17 +228,17 @@ namespace SimPe
 		/// Link all Listeners with the GUI Control
 		/// </summary>
 		/// <param name="ev"></param>
-		public void AddListeners(ref SimPe.Events.ChangedResourceEvent ev)
+		public void AddListeners(ref Events.ChangedResourceEvent ev)
 		{
 			//load Listeners
 			foreach (IListener item in FileTable.ToolRegistry.Listeners)
 			{
-				ev += new SimPe.Events.ChangedResourceEvent(
+				ev += new Events.ChangedResourceEvent(
 					item.SelectionChangedHandler
 				);
 				item.SelectionChangedHandler(
 					item,
-					new SimPe.Events.ResourceEventArgs(null)
+					new Events.ResourceEventArgs(null)
 				);
 			}
 		}

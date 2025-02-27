@@ -26,14 +26,14 @@ namespace pjse
 	/// <summary>
 	/// Summary description for StrBig.
 	/// </summary>
-	public class StrChooser : System.Windows.Forms.Form
+	public class StrChooser : Form
 	{
 		#region Form variables
-		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.Panel panel2;
-		private System.Windows.Forms.Button OK;
-		private System.Windows.Forms.Button Cancel;
-		private System.Windows.Forms.ListBox lbItemList;
+		private Panel panel1;
+		private Panel panel2;
+		private Button OK;
+		private Button Cancel;
+		private ListBox lbItemList;
 
 		/// <summary>
 		/// Required designer variable.
@@ -119,11 +119,11 @@ namespace pjse
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(StrChooser));
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.OK = new System.Windows.Forms.Button();
-			this.Cancel = new System.Windows.Forms.Button();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.lbItemList = new System.Windows.Forms.ListBox();
+			this.panel1 = new Panel();
+			this.OK = new Button();
+			this.Cancel = new Button();
+			this.panel2 = new Panel();
+			this.lbItemList = new ListBox();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			//

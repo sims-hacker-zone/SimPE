@@ -27,7 +27,7 @@ namespace SimPe.Cache
 	/// <summary>
 	/// Contains an Instance of a CacheFile
 	/// </summary>
-	public class CacheFile : System.IDisposable, SimPe.Interfaces.ICacheFileTest
+	public class CacheFile : System.IDisposable, Interfaces.ICacheFileTest
 	{
 		/// <summary>
 		/// This is the obsolete 64-Bit Int, included for backward compatibility

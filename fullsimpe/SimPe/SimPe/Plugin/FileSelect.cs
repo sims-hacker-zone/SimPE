@@ -26,16 +26,16 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for FileSelect.
 	/// </summary>
-	public class FileSelect : System.Windows.Forms.Form
+	public class FileSelect : Form
 	{
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.TabControl tc;
-		private System.Windows.Forms.PictureBox pb;
-		private System.Windows.Forms.Label lbname;
+		private Button button1;
+		private TabControl tc;
+		private PictureBox pb;
+		private Label lbname;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.TabPage tabPage2;
-		private System.Windows.Forms.TreeView tvfemale;
-		private System.Windows.Forms.TreeView tvmale;
+		private TreeView tvfemale;
+		private TreeView tvmale;
 
 		/// <summary>
 		/// Required designer variable.
@@ -107,8 +107,8 @@ namespace SimPe.Plugin
 				WaitingScreen.UpdateMessage("Loading Clothing..");
 				foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
 				{
-					SimPe.PackedFiles.Wrapper.Cpf skin =
-						new SimPe.PackedFiles.Wrapper.Cpf();
+					PackedFiles.Wrapper.Cpf skin =
+						new PackedFiles.Wrapper.Cpf();
 					skin.ProcessData(item);
 
 					if (
@@ -200,14 +200,14 @@ namespace SimPe.Plugin
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(FileSelect));
-			this.button1 = new System.Windows.Forms.Button();
-			this.tc = new System.Windows.Forms.TabControl();
+			this.button1 = new Button();
+			this.tc = new TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.tvfemale = new System.Windows.Forms.TreeView();
+			this.tvfemale = new TreeView();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.tvmale = new System.Windows.Forms.TreeView();
-			this.pb = new System.Windows.Forms.PictureBox();
-			this.lbname = new System.Windows.Forms.Label();
+			this.tvmale = new TreeView();
+			this.pb = new PictureBox();
+			this.lbname = new Label();
 			this.tc.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
@@ -217,7 +217,7 @@ namespace SimPe.Plugin
 			// button1
 			//
 			this.button1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -230,12 +230,12 @@ namespace SimPe.Plugin
 			this.button1.Size = new System.Drawing.Size(75, 23);
 			this.button1.TabIndex = 1;
 			this.button1.Text = "Use";
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.button1.Click += new EventHandler(this.button1_Click);
 			//
 			// tc
 			//
 			this.tc.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -266,7 +266,7 @@ namespace SimPe.Plugin
 			// tvfemale
 			//
 			this.tvfemale.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -294,7 +294,7 @@ namespace SimPe.Plugin
 			this.tvfemale.Name = "tvfemale";
 			this.tvfemale.Size = new System.Drawing.Size(653, 555);
 			this.tvfemale.TabIndex = 0;
-			this.tvfemale.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(
+			this.tvfemale.AfterSelect += new TreeViewEventHandler(
 				this.Select
 			);
 			//
@@ -310,7 +310,7 @@ namespace SimPe.Plugin
 			// tvmale
 			//
 			this.tvmale.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -338,14 +338,14 @@ namespace SimPe.Plugin
 			this.tvmale.Name = "tvmale";
 			this.tvmale.Size = new System.Drawing.Size(653, 555);
 			this.tvmale.TabIndex = 1;
-			this.tvmale.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(
+			this.tvmale.AfterSelect += new TreeViewEventHandler(
 				this.Select
 			);
 			//
 			// pb
 			//
 			this.pb.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -363,7 +363,7 @@ namespace SimPe.Plugin
 			// lbname
 			//
 			this.lbname.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -421,7 +421,7 @@ namespace SimPe.Plugin
 
 		static FileSelect form = null;
 
-		public static SimPe.Interfaces.Files.IPackedFileDescriptor Execute()
+		public static Interfaces.Files.IPackedFileDescriptor Execute()
 		{
 			if (form == null)
 			{
@@ -433,7 +433,7 @@ namespace SimPe.Plugin
 
 		TreeNode last;
 
-		protected SimPe.Interfaces.Files.IPackedFileDescriptor DoExecute()
+		protected Interfaces.Files.IPackedFileDescriptor DoExecute()
 		{
 			lbname.Text = "";
 			ok = false;
@@ -443,7 +443,7 @@ namespace SimPe.Plugin
 
 			if ((ok) && (last != null))
 			{
-				SimPe.PackedFiles.Wrapper.Cpf cpf = (SimPe.PackedFiles.Wrapper.Cpf)
+				PackedFiles.Wrapper.Cpf cpf = (PackedFiles.Wrapper.Cpf)
 					last.Tag;
 				return cpf.FileDescriptor;
 			}
@@ -451,13 +451,13 @@ namespace SimPe.Plugin
 			return null;
 		}
 
-		private void button1_Click(object sender, System.EventArgs e)
+		private void button1_Click(object sender, EventArgs e)
 		{
 			ok = true;
 			Close();
 		}
 
-		private void Select(object sender, System.Windows.Forms.TreeViewEventArgs e)
+		private void Select(object sender, TreeViewEventArgs e)
 		{
 			pb.Image = null;
 			button1.Enabled = false;
@@ -481,7 +481,7 @@ namespace SimPe.Plugin
 			button1.Enabled = true;
 			last = e.Node;
 
-			SkinChain sc = new SkinChain((SimPe.PackedFiles.Wrapper.Cpf)e.Node.Tag);
+			SkinChain sc = new SkinChain((PackedFiles.Wrapper.Cpf)e.Node.Tag);
 			GenericRcol rcol = sc.TXTR;
 
 			if (rcol != null)

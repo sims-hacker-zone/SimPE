@@ -17,7 +17,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns / Sets the cSGResource of this Block, or null if none is avilable
 		/// </summary>
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public SGResource NameResource
 		{
 			get
@@ -47,7 +47,7 @@ namespace SimPe.Plugin
 
 		protected Rcol parent;
 
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public Rcol Parent
 		{
 			get
@@ -83,7 +83,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Data was changed
 		/// </summary>
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public bool Changed
 		{
 			get
@@ -262,7 +262,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the ID used for this Block
 		/// </summary>
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public uint BlockID
 		{
 			get; set;
@@ -273,7 +273,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// if not null this is the default name for the Block in the Rcol
 		/// </summary>
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public virtual string BlockName
 		{
 			get
@@ -296,14 +296,14 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a tabPage that contains a GUI for this Element
 		/// </summary>
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public virtual System.Windows.Forms.TabPage TabPage => null;
 
 		/// <summary>
 		/// Returns a tabPage that will be displayed in the top TabControl on the Rcol
 		/// Page if the Block is is the first one
 		/// </summary>
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public virtual System.Windows.Forms.TabPage ResourceTabPage => null;
 
 		/// <summary>
@@ -334,7 +334,7 @@ namespace SimPe.Plugin
 		/// <returns>null or the RCOl Ressource</returns>
 		public Rcol FindReferencingParent(uint type)
 		{
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndex nfi =
+			IScenegraphFileIndex nfi =
 				FileTable.FileIndex.AddNewChild();
 			nfi.AddIndexFromPackage(this.Parent.Package);
 			Rcol rcol = FindReferencingParent_NoLoad(type);
@@ -370,7 +370,7 @@ namespace SimPe.Plugin
 		{
 			WaitMessasge wm;
 
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+			IScenegraphFileIndexItem[] items =
 				FileTable.FileIndex.FindFile(type, true);
 			try
 			{
@@ -390,7 +390,7 @@ namespace SimPe.Plugin
 					};
 				}
 
-				foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
+				foreach (IScenegraphFileIndexItem item in items)
 				{
 					wm("");
 					Rcol r = new GenericRcol(null, false);

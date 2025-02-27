@@ -6,16 +6,16 @@ namespace SimPe.Plugin.Tool.Window
 	/// <summary>
 	/// Summary description for PackageRepairForm.
 	/// </summary>
-	class PackageRepairForm : System.Windows.Forms.Form
+	class PackageRepairForm : Form
 	{
 		private SteepValley.Windows.Forms.XPGradientPanel xpGradientPanel1;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox tbPkg;
-		private System.Windows.Forms.Button btBrowse;
+		private Label label1;
+		private TextBox tbPkg;
+		private Button btBrowse;
 		private Ambertation.Windows.Forms.XPTaskBoxSimple tbs;
-		private System.Windows.Forms.LinkLabel llRepair;
-		internal System.Windows.Forms.PropertyGrid pg;
-		private System.Windows.Forms.LinkLabel llOpen;
+		private LinkLabel llRepair;
+		internal PropertyGrid pg;
+		private LinkLabel llOpen;
 		private System.ComponentModel.ComponentResourceManager resources1;
 
 		/// <summary>
@@ -64,12 +64,12 @@ namespace SimPe.Plugin.Tool.Window
 				);
 			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
 			this.tbs = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.llOpen = new System.Windows.Forms.LinkLabel();
-			this.pg = new System.Windows.Forms.PropertyGrid();
-			this.llRepair = new System.Windows.Forms.LinkLabel();
-			this.btBrowse = new System.Windows.Forms.Button();
-			this.tbPkg = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
+			this.llOpen = new LinkLabel();
+			this.pg = new PropertyGrid();
+			this.llRepair = new LinkLabel();
+			this.btBrowse = new Button();
+			this.tbPkg = new TextBox();
+			this.label1 = new Label();
 			this.xpGradientPanel1.SuspendLayout();
 			this.tbs.SuspendLayout();
 			this.SuspendLayout();
@@ -97,7 +97,7 @@ namespace SimPe.Plugin.Tool.Window
 			// tbs
 			//
 			this.tbs.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -127,7 +127,7 @@ namespace SimPe.Plugin.Tool.Window
 			this.tbs.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
 			this.tbs.Location = new System.Drawing.Point(8, 40);
 			this.tbs.Name = "tbs";
-			this.tbs.Padding = new System.Windows.Forms.Padding(4, 36, 4, 4);
+			this.tbs.Padding = new Padding(4, 36, 4, 4);
 			this.tbs.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
 			this.tbs.Size = new System.Drawing.Size(576, 313);
 			this.tbs.TabIndex = 3;
@@ -150,14 +150,14 @@ namespace SimPe.Plugin.Tool.Window
 			this.llOpen.Text = "Open";
 			this.llOpen.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			this.llOpen.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llOpen_LinkClicked
 				);
 			//
 			// pg
 			//
 			this.pg.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -196,7 +196,7 @@ namespace SimPe.Plugin.Tool.Window
 			this.llRepair.Text = "Repair";
 			this.llRepair.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			this.llRepair.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llRepair_LinkClicked
 				);
 			//
@@ -208,7 +208,7 @@ namespace SimPe.Plugin.Tool.Window
 			this.btBrowse.Size = new System.Drawing.Size(75, 23);
 			this.btBrowse.TabIndex = 2;
 			this.btBrowse.Text = "Browse...";
-			this.btBrowse.Click += new System.EventHandler(this.btBrowse_Click);
+			this.btBrowse.Click += new EventHandler(this.btBrowse_Click);
 			//
 			// tbPkg
 			//
@@ -260,8 +260,8 @@ namespace SimPe.Plugin.Tool.Window
 		}
 		#endregion
 
-		SimPe.Packages.StreamItem si;
-		SimPe.Packages.PackageRepair pr;
+		Packages.StreamItem si;
+		Packages.PackageRepair pr;
 
 		public void Setup(string pkgname)
 		{
@@ -295,7 +295,7 @@ namespace SimPe.Plugin.Tool.Window
 
 				if (si != null)
 				{
-					pr = new SimPe.Packages.PackageRepair(
+					pr = new Packages.PackageRepair(
 						SimPe.Packages.GeneratableFile.LoadFromFile(pkgname)
 					);
 
@@ -308,11 +308,11 @@ namespace SimPe.Plugin.Tool.Window
 			llRepair.Enabled = (si != null);
 		}
 
-		private void btBrowse_Click(object sender, System.EventArgs e)
+		private void btBrowse_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
 			ofd.Filter = SimPe.ExtensionProvider.BuildFilterString(
-				new SimPe.ExtensionType[]
+				new ExtensionType[]
 				{
 					SimPe.ExtensionType.Package,
 					SimPe.ExtensionType.AllFiles,
@@ -326,7 +326,7 @@ namespace SimPe.Plugin.Tool.Window
 
 		private void llRepair_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			try
@@ -344,7 +344,7 @@ namespace SimPe.Plugin.Tool.Window
 
 		private void llOpen_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			try

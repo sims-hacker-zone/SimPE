@@ -30,31 +30,31 @@ namespace pjse.BhavOperandWizards.WizDefault
 	/// <summary>
 	/// Summary description for BhavPrimWizDefault.
 	/// </summary>
-	internal class UI : System.Windows.Forms.Form, iBhavOperandWizForm
+	internal class UI : Form, iBhavOperandWizForm
 	{
 		#region Form variables
 
-		private System.Windows.Forms.TextBox tbInst_Op01_dec;
-		private System.Windows.Forms.Label label13;
-		private System.Windows.Forms.TextBox tbInst_Unk7;
-		private System.Windows.Forms.TextBox tbInst_Unk6;
-		private System.Windows.Forms.TextBox tbInst_Unk5;
-		private System.Windows.Forms.TextBox tbInst_Unk4;
-		private System.Windows.Forms.TextBox tbInst_Unk3;
-		private System.Windows.Forms.TextBox tbInst_Unk2;
-		private System.Windows.Forms.TextBox tbInst_Unk1;
-		private System.Windows.Forms.TextBox tbInst_Unk0;
-		private System.Windows.Forms.TextBox tbInst_Op7;
-		private System.Windows.Forms.TextBox tbInst_Op6;
-		private System.Windows.Forms.TextBox tbInst_Op5;
-		private System.Windows.Forms.TextBox tbInst_Op4;
-		private System.Windows.Forms.TextBox tbInst_Op3;
-		private System.Windows.Forms.TextBox tbInst_Op2;
-		private System.Windows.Forms.TextBox tbInst_Op1;
-		private System.Windows.Forms.TextBox tbInst_Op0;
-		private System.Windows.Forms.TextBox tbInst_Op23_dec;
-		private System.Windows.Forms.Label label2;
-		internal System.Windows.Forms.Panel pnWizDefault;
+		private TextBox tbInst_Op01_dec;
+		private Label label13;
+		private TextBox tbInst_Unk7;
+		private TextBox tbInst_Unk6;
+		private TextBox tbInst_Unk5;
+		private TextBox tbInst_Unk4;
+		private TextBox tbInst_Unk3;
+		private TextBox tbInst_Unk2;
+		private TextBox tbInst_Unk1;
+		private TextBox tbInst_Unk0;
+		private TextBox tbInst_Op7;
+		private TextBox tbInst_Op6;
+		private TextBox tbInst_Op5;
+		private TextBox tbInst_Op4;
+		private TextBox tbInst_Op3;
+		private TextBox tbInst_Op2;
+		private TextBox tbInst_Op1;
+		private TextBox tbInst_Op0;
+		private TextBox tbInst_Op23_dec;
+		private Label label2;
+		internal Panel pnWizDefault;
 
 		/// <summary>
 		/// Required designer variable.
@@ -165,27 +165,27 @@ namespace pjse.BhavOperandWizards.WizDefault
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWizDefault = new System.Windows.Forms.Panel();
-			this.tbInst_Op01_dec = new System.Windows.Forms.TextBox();
-			this.label13 = new System.Windows.Forms.Label();
-			this.tbInst_Unk7 = new System.Windows.Forms.TextBox();
-			this.tbInst_Unk6 = new System.Windows.Forms.TextBox();
-			this.tbInst_Unk5 = new System.Windows.Forms.TextBox();
-			this.tbInst_Unk4 = new System.Windows.Forms.TextBox();
-			this.tbInst_Unk3 = new System.Windows.Forms.TextBox();
-			this.tbInst_Unk2 = new System.Windows.Forms.TextBox();
-			this.tbInst_Unk1 = new System.Windows.Forms.TextBox();
-			this.tbInst_Unk0 = new System.Windows.Forms.TextBox();
-			this.tbInst_Op7 = new System.Windows.Forms.TextBox();
-			this.tbInst_Op6 = new System.Windows.Forms.TextBox();
-			this.tbInst_Op5 = new System.Windows.Forms.TextBox();
-			this.tbInst_Op4 = new System.Windows.Forms.TextBox();
-			this.tbInst_Op3 = new System.Windows.Forms.TextBox();
-			this.tbInst_Op2 = new System.Windows.Forms.TextBox();
-			this.tbInst_Op1 = new System.Windows.Forms.TextBox();
-			this.tbInst_Op0 = new System.Windows.Forms.TextBox();
-			this.tbInst_Op23_dec = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
+			this.pnWizDefault = new Panel();
+			this.tbInst_Op01_dec = new TextBox();
+			this.label13 = new Label();
+			this.tbInst_Unk7 = new TextBox();
+			this.tbInst_Unk6 = new TextBox();
+			this.tbInst_Unk5 = new TextBox();
+			this.tbInst_Unk4 = new TextBox();
+			this.tbInst_Unk3 = new TextBox();
+			this.tbInst_Unk2 = new TextBox();
+			this.tbInst_Unk1 = new TextBox();
+			this.tbInst_Unk0 = new TextBox();
+			this.tbInst_Op7 = new TextBox();
+			this.tbInst_Op6 = new TextBox();
+			this.tbInst_Op5 = new TextBox();
+			this.tbInst_Op4 = new TextBox();
+			this.tbInst_Op3 = new TextBox();
+			this.tbInst_Op2 = new TextBox();
+			this.tbInst_Op1 = new TextBox();
+			this.tbInst_Op0 = new TextBox();
+			this.tbInst_Op23_dec = new TextBox();
+			this.label2 = new Label();
 			this.pnWizDefault.SuspendLayout();
 			this.SuspendLayout();
 			//
@@ -218,7 +218,7 @@ namespace pjse.BhavOperandWizards.WizDefault
 			//
 			resources.ApplyResources(this.tbInst_Op01_dec, "tbInst_Op01_dec");
 			this.tbInst_Op01_dec.Name = "tbInst_Op01_dec";
-			this.tbInst_Op01_dec.Validated += new System.EventHandler(
+			this.tbInst_Op01_dec.Validated += new EventHandler(
 				this.dec16_Validated
 			);
 			this.tbInst_Op01_dec.Validating +=
@@ -233,7 +233,7 @@ namespace pjse.BhavOperandWizards.WizDefault
 			//
 			resources.ApplyResources(this.tbInst_Unk7, "tbInst_Unk7");
 			this.tbInst_Unk7.Name = "tbInst_Unk7";
-			this.tbInst_Unk7.Validated += new System.EventHandler(this.hex8_Validated);
+			this.tbInst_Unk7.Validated += new EventHandler(this.hex8_Validated);
 			this.tbInst_Unk7.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex8_Validating
 			);
@@ -242,7 +242,7 @@ namespace pjse.BhavOperandWizards.WizDefault
 			//
 			resources.ApplyResources(this.tbInst_Unk6, "tbInst_Unk6");
 			this.tbInst_Unk6.Name = "tbInst_Unk6";
-			this.tbInst_Unk6.Validated += new System.EventHandler(this.hex8_Validated);
+			this.tbInst_Unk6.Validated += new EventHandler(this.hex8_Validated);
 			this.tbInst_Unk6.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex8_Validating
 			);
@@ -251,7 +251,7 @@ namespace pjse.BhavOperandWizards.WizDefault
 			//
 			resources.ApplyResources(this.tbInst_Unk5, "tbInst_Unk5");
 			this.tbInst_Unk5.Name = "tbInst_Unk5";
-			this.tbInst_Unk5.Validated += new System.EventHandler(this.hex8_Validated);
+			this.tbInst_Unk5.Validated += new EventHandler(this.hex8_Validated);
 			this.tbInst_Unk5.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex8_Validating
 			);
@@ -260,7 +260,7 @@ namespace pjse.BhavOperandWizards.WizDefault
 			//
 			resources.ApplyResources(this.tbInst_Unk4, "tbInst_Unk4");
 			this.tbInst_Unk4.Name = "tbInst_Unk4";
-			this.tbInst_Unk4.Validated += new System.EventHandler(this.hex8_Validated);
+			this.tbInst_Unk4.Validated += new EventHandler(this.hex8_Validated);
 			this.tbInst_Unk4.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex8_Validating
 			);
@@ -269,7 +269,7 @@ namespace pjse.BhavOperandWizards.WizDefault
 			//
 			resources.ApplyResources(this.tbInst_Unk3, "tbInst_Unk3");
 			this.tbInst_Unk3.Name = "tbInst_Unk3";
-			this.tbInst_Unk3.Validated += new System.EventHandler(this.hex8_Validated);
+			this.tbInst_Unk3.Validated += new EventHandler(this.hex8_Validated);
 			this.tbInst_Unk3.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex8_Validating
 			);
@@ -278,7 +278,7 @@ namespace pjse.BhavOperandWizards.WizDefault
 			//
 			resources.ApplyResources(this.tbInst_Unk2, "tbInst_Unk2");
 			this.tbInst_Unk2.Name = "tbInst_Unk2";
-			this.tbInst_Unk2.Validated += new System.EventHandler(this.hex8_Validated);
+			this.tbInst_Unk2.Validated += new EventHandler(this.hex8_Validated);
 			this.tbInst_Unk2.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex8_Validating
 			);
@@ -287,7 +287,7 @@ namespace pjse.BhavOperandWizards.WizDefault
 			//
 			resources.ApplyResources(this.tbInst_Unk1, "tbInst_Unk1");
 			this.tbInst_Unk1.Name = "tbInst_Unk1";
-			this.tbInst_Unk1.Validated += new System.EventHandler(this.hex8_Validated);
+			this.tbInst_Unk1.Validated += new EventHandler(this.hex8_Validated);
 			this.tbInst_Unk1.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex8_Validating
 			);
@@ -296,7 +296,7 @@ namespace pjse.BhavOperandWizards.WizDefault
 			//
 			resources.ApplyResources(this.tbInst_Unk0, "tbInst_Unk0");
 			this.tbInst_Unk0.Name = "tbInst_Unk0";
-			this.tbInst_Unk0.Validated += new System.EventHandler(this.hex8_Validated);
+			this.tbInst_Unk0.Validated += new EventHandler(this.hex8_Validated);
 			this.tbInst_Unk0.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex8_Validating
 			);
@@ -305,7 +305,7 @@ namespace pjse.BhavOperandWizards.WizDefault
 			//
 			resources.ApplyResources(this.tbInst_Op7, "tbInst_Op7");
 			this.tbInst_Op7.Name = "tbInst_Op7";
-			this.tbInst_Op7.Validated += new System.EventHandler(this.hex8_Validated);
+			this.tbInst_Op7.Validated += new EventHandler(this.hex8_Validated);
 			this.tbInst_Op7.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex8_Validating
 			);
@@ -314,7 +314,7 @@ namespace pjse.BhavOperandWizards.WizDefault
 			//
 			resources.ApplyResources(this.tbInst_Op6, "tbInst_Op6");
 			this.tbInst_Op6.Name = "tbInst_Op6";
-			this.tbInst_Op6.Validated += new System.EventHandler(this.hex8_Validated);
+			this.tbInst_Op6.Validated += new EventHandler(this.hex8_Validated);
 			this.tbInst_Op6.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex8_Validating
 			);
@@ -323,7 +323,7 @@ namespace pjse.BhavOperandWizards.WizDefault
 			//
 			resources.ApplyResources(this.tbInst_Op5, "tbInst_Op5");
 			this.tbInst_Op5.Name = "tbInst_Op5";
-			this.tbInst_Op5.Validated += new System.EventHandler(this.hex8_Validated);
+			this.tbInst_Op5.Validated += new EventHandler(this.hex8_Validated);
 			this.tbInst_Op5.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex8_Validating
 			);
@@ -332,7 +332,7 @@ namespace pjse.BhavOperandWizards.WizDefault
 			//
 			resources.ApplyResources(this.tbInst_Op4, "tbInst_Op4");
 			this.tbInst_Op4.Name = "tbInst_Op4";
-			this.tbInst_Op4.Validated += new System.EventHandler(this.hex8_Validated);
+			this.tbInst_Op4.Validated += new EventHandler(this.hex8_Validated);
 			this.tbInst_Op4.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex8_Validating
 			);
@@ -341,7 +341,7 @@ namespace pjse.BhavOperandWizards.WizDefault
 			//
 			resources.ApplyResources(this.tbInst_Op3, "tbInst_Op3");
 			this.tbInst_Op3.Name = "tbInst_Op3";
-			this.tbInst_Op3.Validated += new System.EventHandler(this.hex8_Validated);
+			this.tbInst_Op3.Validated += new EventHandler(this.hex8_Validated);
 			this.tbInst_Op3.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex8_Validating
 			);
@@ -350,7 +350,7 @@ namespace pjse.BhavOperandWizards.WizDefault
 			//
 			resources.ApplyResources(this.tbInst_Op2, "tbInst_Op2");
 			this.tbInst_Op2.Name = "tbInst_Op2";
-			this.tbInst_Op2.Validated += new System.EventHandler(this.hex8_Validated);
+			this.tbInst_Op2.Validated += new EventHandler(this.hex8_Validated);
 			this.tbInst_Op2.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex8_Validating
 			);
@@ -359,7 +359,7 @@ namespace pjse.BhavOperandWizards.WizDefault
 			//
 			resources.ApplyResources(this.tbInst_Op1, "tbInst_Op1");
 			this.tbInst_Op1.Name = "tbInst_Op1";
-			this.tbInst_Op1.Validated += new System.EventHandler(this.hex8_Validated);
+			this.tbInst_Op1.Validated += new EventHandler(this.hex8_Validated);
 			this.tbInst_Op1.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex8_Validating
 			);
@@ -368,7 +368,7 @@ namespace pjse.BhavOperandWizards.WizDefault
 			//
 			resources.ApplyResources(this.tbInst_Op0, "tbInst_Op0");
 			this.tbInst_Op0.Name = "tbInst_Op0";
-			this.tbInst_Op0.Validated += new System.EventHandler(this.hex8_Validated);
+			this.tbInst_Op0.Validated += new EventHandler(this.hex8_Validated);
 			this.tbInst_Op0.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex8_Validating
 			);
@@ -377,7 +377,7 @@ namespace pjse.BhavOperandWizards.WizDefault
 			//
 			resources.ApplyResources(this.tbInst_Op23_dec, "tbInst_Op23_dec");
 			this.tbInst_Op23_dec.Name = "tbInst_Op23_dec";
-			this.tbInst_Op23_dec.Validated += new System.EventHandler(
+			this.tbInst_Op23_dec.Validated += new EventHandler(
 				this.dec16_Validated
 			);
 			this.tbInst_Op23_dec.Validating +=
@@ -414,7 +414,7 @@ namespace pjse.BhavOperandWizards.WizDefault
 			}
 		}
 
-		private void hex8_Validated(object sender, System.EventArgs e)
+		private void hex8_Validated(object sender, EventArgs e)
 		{
 			byte val = Convert.ToByte(((TextBox)sender).Text, 16);
 
@@ -466,7 +466,7 @@ namespace pjse.BhavOperandWizards.WizDefault
 			}
 		}
 
-		private void dec16_Validated(object sender, System.EventArgs e)
+		private void dec16_Validated(object sender, EventArgs e)
 		{
 			ushort val = Convert.ToUInt16(((TextBox)sender).Text);
 
@@ -499,7 +499,7 @@ namespace pjse.BhavOperandWizards.WizDefault
 
 namespace pjse.BhavOperandWizards
 {
-	public class BhavOperandWizDefault : pjse.ABhavOperandWiz
+	public class BhavOperandWizDefault : ABhavOperandWiz
 	{
 		public BhavOperandWizDefault(Instruction i)
 			: base(i)

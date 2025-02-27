@@ -27,11 +27,11 @@ namespace pjse.BhavOperandWizards.Wiz0x002d
 	/// <summary>
 	/// Summary description for StrBig.
 	/// </summary>
-	internal class UI : System.Windows.Forms.Form, iBhavOperandWizForm
+	internal class UI : Form, iBhavOperandWizForm
 	{
 		#region Form variables
 
-		internal System.Windows.Forms.Panel pnWiz0x002d;
+		internal Panel pnWiz0x002d;
 		private FlowLayoutPanel flowLayoutPanel1;
 		private GroupBox gbRoutingSlot;
 		private Panel pnObject;
@@ -158,16 +158,16 @@ namespace pjse.BhavOperandWizards.Wiz0x002d
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWiz0x002d = new System.Windows.Forms.Panel();
-			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-			this.gbRoutingSlot = new System.Windows.Forms.GroupBox();
-			this.pnObject = new System.Windows.Forms.Panel();
-			this.cbSlotType = new System.Windows.Forms.ComboBox();
-			this.ckbDecimal = new System.Windows.Forms.CheckBox();
-			this.tbVal1 = new System.Windows.Forms.TextBox();
-			this.ckbNFailTrees = new System.Windows.Forms.CheckBox();
-			this.ckbIgnDstFootprint = new System.Windows.Forms.CheckBox();
-			this.ckbDiffAlts = new System.Windows.Forms.CheckBox();
+			this.pnWiz0x002d = new Panel();
+			this.flowLayoutPanel1 = new FlowLayoutPanel();
+			this.gbRoutingSlot = new GroupBox();
+			this.pnObject = new Panel();
+			this.cbSlotType = new ComboBox();
+			this.ckbDecimal = new CheckBox();
+			this.tbVal1 = new TextBox();
+			this.ckbNFailTrees = new CheckBox();
+			this.ckbIgnDstFootprint = new CheckBox();
+			this.ckbDiffAlts = new CheckBox();
 			this.pnWiz0x002d.SuspendLayout();
 			this.flowLayoutPanel1.SuspendLayout();
 			this.gbRoutingSlot.SuspendLayout();
@@ -276,7 +276,7 @@ namespace pjse.BhavOperandWizards.Wiz0x002d
 
 namespace pjse.BhavOperandWizards
 {
-	public class BhavOperandWiz0x002d : pjse.ABhavOperandWiz
+	public class BhavOperandWiz0x002d : ABhavOperandWiz
 	{
 		public BhavOperandWiz0x002d(Instruction i)
 			: base(i)

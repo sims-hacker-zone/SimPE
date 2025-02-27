@@ -89,7 +89,7 @@ namespace SimPe.Plugin
 			{
 				if (tGenericRcol == null)
 				{
-					tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+					tGenericRcol = new TabPage.GenericRcol();
 				}
 
 				return tGenericRcol;
@@ -104,7 +104,7 @@ namespace SimPe.Plugin
 		{
 			if (tGenericRcol == null)
 			{
-				tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+				tGenericRcol = new TabPage.GenericRcol();
 			}
 
 			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(this.version);

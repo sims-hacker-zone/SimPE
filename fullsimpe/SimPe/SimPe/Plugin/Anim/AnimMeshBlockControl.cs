@@ -24,22 +24,22 @@ namespace SimPe.Plugin.Anim
 	/// <summary>
 	/// Summary description for AnimationMeshBlock.
 	/// </summary>
-	public class AnimMeshBlockControl : System.Windows.Forms.UserControl
+	public class AnimMeshBlockControl : UserControl
 	{
-		private System.Windows.Forms.Panel panel2;
-		internal System.Windows.Forms.ComboBox cbJoint;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Panel pnJoint;
-		private System.Windows.Forms.Panel pnSubMesh;
-		private System.Windows.Forms.Label label2;
-		internal System.Windows.Forms.ComboBox cbSubMesh;
-		private SimPe.Plugin.Anim.AnimFrameBlockControl pnFrames;
-		private System.Windows.Forms.LinkLabel llExport;
-		private System.Windows.Forms.LinkLabel llImport;
-		private System.Windows.Forms.CheckBox cbCorrect;
-		private System.Windows.Forms.MenuItem miAdd;
-		private System.Windows.Forms.MenuItem miRem;
-		private System.Windows.Forms.ContextMenu cmJoint;
+		private Panel panel2;
+		internal ComboBox cbJoint;
+		private Label label1;
+		private Panel pnJoint;
+		private Panel pnSubMesh;
+		private Label label2;
+		internal ComboBox cbSubMesh;
+		private AnimFrameBlockControl pnFrames;
+		private LinkLabel llExport;
+		private LinkLabel llImport;
+		private CheckBox cbCorrect;
+		private MenuItem miAdd;
+		private MenuItem miRem;
+		private ContextMenu cmJoint;
 
 		/// <summary>
 		/// Required designer variable.
@@ -102,19 +102,19 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.cbCorrect = new System.Windows.Forms.CheckBox();
-			this.llExport = new System.Windows.Forms.LinkLabel();
-			this.llImport = new System.Windows.Forms.LinkLabel();
-			this.pnJoint = new System.Windows.Forms.Panel();
-			this.cbJoint = new System.Windows.Forms.ComboBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.pnSubMesh = new System.Windows.Forms.Panel();
-			this.cbSubMesh = new System.Windows.Forms.ComboBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.cmJoint = new System.Windows.Forms.ContextMenu();
-			this.miAdd = new System.Windows.Forms.MenuItem();
-			this.miRem = new System.Windows.Forms.MenuItem();
+			this.panel2 = new Panel();
+			this.cbCorrect = new CheckBox();
+			this.llExport = new LinkLabel();
+			this.llImport = new LinkLabel();
+			this.pnJoint = new Panel();
+			this.cbJoint = new ComboBox();
+			this.label1 = new Label();
+			this.pnSubMesh = new Panel();
+			this.cbSubMesh = new ComboBox();
+			this.label2 = new Label();
+			this.cmJoint = new ContextMenu();
+			this.miAdd = new MenuItem();
+			this.miRem = new MenuItem();
 			this.panel2.SuspendLayout();
 			this.pnJoint.SuspendLayout();
 			this.pnSubMesh.SuspendLayout();
@@ -136,7 +136,7 @@ namespace SimPe.Plugin.Anim
 			// cbCorrect
 			//
 			this.cbCorrect.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -155,7 +155,7 @@ namespace SimPe.Plugin.Anim
 			// llExport
 			//
 			this.llExport.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -171,14 +171,14 @@ namespace SimPe.Plugin.Anim
 			this.llExport.Text = "Export";
 			this.llExport.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			this.llExport.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llExport_LinkClicked
 				);
 			//
 			// llImport
 			//
 			this.llImport.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -194,7 +194,7 @@ namespace SimPe.Plugin.Anim
 			this.llImport.Text = "Import";
 			this.llImport.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			this.llImport.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llImport_LinkClicked
 				);
 			//
@@ -211,7 +211,7 @@ namespace SimPe.Plugin.Anim
 			// cbJoint
 			//
 			this.cbJoint.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -257,7 +257,7 @@ namespace SimPe.Plugin.Anim
 			// cbSubMesh
 			//
 			this.cbSubMesh.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -291,7 +291,7 @@ namespace SimPe.Plugin.Anim
 			// cmJoint
 			//
 			this.cmJoint.MenuItems.AddRange(
-				new System.Windows.Forms.MenuItem[] { this.miAdd, this.miRem }
+				new MenuItem[] { this.miAdd, this.miRem }
 			);
 			//
 			// miAdd
@@ -429,7 +429,7 @@ namespace SimPe.Plugin.Anim
 
 		private void llExport_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			AnimationMeshBlock ab1 = (AnimationMeshBlock)cbSubMesh.SelectedItem;
@@ -440,11 +440,11 @@ namespace SimPe.Plugin.Anim
 				gdc.LinkedAnimation = ab1;
 
 				fGeometryDataContainer.StartExport(
-					new System.Windows.Forms.SaveFileDialog(),
+					new SaveFileDialog(),
 					gdc,
 					".txt",
 					gdc.Groups,
-					(SimPe.Plugin.Gmdc.ElementSorting)
+					(Gmdc.ElementSorting)
 						fGeometryDataContainer.DefaultSelectedAxisIndex,
 					this.cbCorrect.Checked
 				);
@@ -462,7 +462,7 @@ namespace SimPe.Plugin.Anim
 
 		private void llImport_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			AnimationMeshBlock ab1 = (AnimationMeshBlock)cbSubMesh.SelectedItem;
@@ -473,10 +473,10 @@ namespace SimPe.Plugin.Anim
 				gdc.LinkedAnimation = ab1;
 
 				fGeometryDataContainer.StartImport(
-					new System.Windows.Forms.OpenFileDialog(),
+					new OpenFileDialog(),
 					gdc,
 					".txt",
-					(SimPe.Plugin.Gmdc.ElementSorting)
+					(Gmdc.ElementSorting)
 						fGeometryDataContainer.DefaultSelectedAxisIndex,
 					true
 				);

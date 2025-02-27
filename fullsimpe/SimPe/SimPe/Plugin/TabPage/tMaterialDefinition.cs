@@ -76,13 +76,13 @@ namespace SimPe.Plugin.TabPage
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label5 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.tbtype = new System.Windows.Forms.TextBox();
-			this.tbdsc = new System.Windows.Forms.TextBox();
-			this.groupBox10 = new System.Windows.Forms.GroupBox();
-			this.tb_ver = new System.Windows.Forms.TextBox();
-			this.label28 = new System.Windows.Forms.Label();
+			this.label5 = new Label();
+			this.label4 = new Label();
+			this.tbtype = new TextBox();
+			this.tbdsc = new TextBox();
+			this.groupBox10 = new GroupBox();
+			this.tb_ver = new TextBox();
+			this.label28 = new Label();
 			this.groupBox10.SuspendLayout();
 			this.SuspendLayout();
 			//
@@ -121,7 +121,7 @@ namespace SimPe.Plugin.TabPage
 			// tbtype
 			//
 			this.tbtype.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -142,12 +142,12 @@ namespace SimPe.Plugin.TabPage
 			this.tbtype.Size = new System.Drawing.Size(624, 21);
 			this.tbtype.TabIndex = 14;
 			this.tbtype.Text = "";
-			this.tbtype.TextChanged += new System.EventHandler(this.FileNameChanged);
+			this.tbtype.TextChanged += new EventHandler(this.FileNameChanged);
 			//
 			// tbdsc
 			//
 			this.tbdsc.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -168,7 +168,7 @@ namespace SimPe.Plugin.TabPage
 			this.tbdsc.Size = new System.Drawing.Size(624, 21);
 			this.tbdsc.TabIndex = 13;
 			this.tbdsc.Text = "";
-			this.tbdsc.TextChanged += new System.EventHandler(this.FileNameChanged);
+			this.tbdsc.TextChanged += new EventHandler(this.FileNameChanged);
 			//
 			// tabPage3
 			//
@@ -183,7 +183,7 @@ namespace SimPe.Plugin.TabPage
 			// groupBox10
 			//
 			this.groupBox10.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -227,7 +227,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_ver.Size = new System.Drawing.Size(88, 21);
 			this.tb_ver.TabIndex = 24;
 			this.tb_ver.Text = "0x00000000";
-			this.tb_ver.TextChanged += new System.EventHandler(this.FileNameChanged);
+			this.tb_ver.TextChanged += new EventHandler(this.FileNameChanged);
 			//
 			// label28
 			//
@@ -253,15 +253,15 @@ namespace SimPe.Plugin.TabPage
 		}
 		#endregion
 
-		internal System.Windows.Forms.TextBox tbdsc;
-		internal System.Windows.Forms.TextBox tbtype;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.GroupBox groupBox10;
-		internal System.Windows.Forms.TextBox tb_ver;
-		private System.Windows.Forms.Label label28;
+		internal TextBox tbdsc;
+		internal TextBox tbtype;
+		private Label label4;
+		private Label label5;
+		private GroupBox groupBox10;
+		internal TextBox tb_ver;
+		private Label label28;
 
-		private void FileNameChanged(object sender, System.EventArgs e)
+		private void FileNameChanged(object sender, EventArgs e)
 		{
 			if (this.Tag == null)
 			{
@@ -276,7 +276,7 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				tbdsc.Tag = true;
-				SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
+				Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
 					this.Tag;
 
 				md.Version = Convert.ToUInt32(this.tb_ver.Text, 16);
@@ -300,7 +300,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void linkLabel1_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (this.Tag == null)
@@ -308,7 +308,7 @@ namespace SimPe.Plugin.TabPage
 				return;
 			}
 
-			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
+			Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
 				this.Tag;
 			md.Sort();
 			md.Refresh();

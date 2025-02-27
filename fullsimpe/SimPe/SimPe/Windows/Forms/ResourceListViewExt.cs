@@ -14,7 +14,7 @@ namespace SimPe.Windows.Forms
 		ResourceViewManager.ResourceNameList names;
 		ResourceViewManager manager;
 		IntPtr myhandle;
-		SimPe.Windows.Forms.IResourceViewFilter curfilter;
+		IResourceViewFilter curfilter;
 		ResourceViewManager.ResourceNameList lastresources;
 
 		public ResourceListViewExt()
@@ -124,7 +124,7 @@ namespace SimPe.Windows.Forms
 			lv.EndUpdate();
 		}
 
-		public SimPe.Windows.Forms.IResourceViewFilter Filter
+		public IResourceViewFilter Filter
 		{
 			get
 			{
@@ -159,12 +159,12 @@ namespace SimPe.Windows.Forms
 
 		public void SetResources(
 			ResourceViewManager.ResourceList resources,
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
 			ResourceViewManager.ResourceNameList nn =
 				new ResourceViewManager.ResourceNameList();
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in resources)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in resources)
 			{
 				nn.Add(new NamedPackedFileDescriptor(pfd, pkg));
 			}
@@ -194,11 +194,11 @@ namespace SimPe.Windows.Forms
 				foreach (NamedPackedFileDescriptor pfd in names)
 				{
 					pfd.Descriptor.ChangedUserData -=
-						new SimPe.Events.PackedFileChanged(Descriptor_ChangedUserData);
+						new Events.PackedFileChanged(Descriptor_ChangedUserData);
 					pfd.Descriptor.DescriptionChanged -= new EventHandler(
 						Descriptor_DescriptionChanged
 					);
-					pfd.Descriptor.ChangedData -= new SimPe.Events.PackedFileChanged(
+					pfd.Descriptor.ChangedData -= new Events.PackedFileChanged(
 						Descriptor_ChangedData
 					);
 				}
@@ -228,14 +228,14 @@ namespace SimPe.Windows.Forms
 						{
 							names.Add(pfd);
 							pfd.Descriptor.ChangedData +=
-								new SimPe.Events.PackedFileChanged(
+								new Events.PackedFileChanged(
 									Descriptor_ChangedData
 								);
 							pfd.Descriptor.DescriptionChanged += new EventHandler(
 								Descriptor_DescriptionChanged
 							);
 							pfd.Descriptor.ChangedUserData +=
-								new SimPe.Events.PackedFileChanged(
+								new Events.PackedFileChanged(
 									Descriptor_ChangedUserData
 								);
 						}
@@ -277,7 +277,7 @@ namespace SimPe.Windows.Forms
 			base.Refresh();
 		}
 
-		void Descriptor_ChangedData(SimPe.Interfaces.Files.IPackedFileDescriptor sender)
+		void Descriptor_ChangedData(Interfaces.Files.IPackedFileDescriptor sender)
 		{
 			//System.Diagnostics.Debug.WriteLine("ChangedData: " + sender.ToString());
 			UpdateResourceItem(sender);
@@ -285,7 +285,7 @@ namespace SimPe.Windows.Forms
 		}
 
 		void Descriptor_ChangedUserData(
-			SimPe.Interfaces.Files.IPackedFileDescriptor sender
+			Interfaces.Files.IPackedFileDescriptor sender
 		)
 		{
 			//System.Diagnostics.Debug.WriteLine("ChangedUserData: " + sender.ToString());

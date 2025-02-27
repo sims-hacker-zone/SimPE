@@ -56,9 +56,9 @@ namespace pjse
 		}
 	}
 
-	public partial class LabelledDataOwner : UserControl, pjse.IDataOwner
+	public partial class LabelledDataOwner : UserControl, IDataOwner
 	{
-		protected pjse.BhavOperandWizards.DataOwnerControl doc;
+		protected BhavOperandWizards.DataOwnerControl doc;
 
 		public LabelledDataOwner()
 			: this(null, 0, (ushort)0) { }
@@ -66,7 +66,7 @@ namespace pjse
 		public LabelledDataOwner(BhavWiz inst, byte downer, ushort value)
 		{
 			InitializeComponent();
-			doc = new pjse.BhavOperandWizards.DataOwnerControl(
+			doc = new BhavOperandWizards.DataOwnerControl(
 				inst,
 				cbDataOwner,
 				cbPicker,
@@ -179,7 +179,7 @@ namespace pjse
 		/// Bound to pjse.Settings.PJSE.DecimalDOValue
 		/// </summary>
 		[Browsable(false)]
-		[DesignerSerializationVisibilityAttribute(
+		[DesignerSerializationVisibility(
 			DesignerSerializationVisibility.Hidden
 		)]
 		public bool Decimal
@@ -214,7 +214,7 @@ namespace pjse
 		/// Bound to pjse.Settings.PJSE.InstancePickerAsText
 		/// </summary>
 		[Browsable(false)]
-		[DesignerSerializationVisibilityAttribute(
+		[DesignerSerializationVisibility(
 			DesignerSerializationVisibility.Hidden
 		)]
 		public bool UseInstancePicker

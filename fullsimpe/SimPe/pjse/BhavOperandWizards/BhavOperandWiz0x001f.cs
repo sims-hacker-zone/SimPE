@@ -27,11 +27,11 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 	/// <summary>
 	/// Summary description for StrBig.
 	/// </summary>
-	internal class UI : System.Windows.Forms.Form, iBhavOperandWizForm
+	internal class UI : Form, iBhavOperandWizForm
 	{
 		#region Form variables
 
-		internal System.Windows.Forms.Panel pnWiz0x001f;
+		internal Panel pnWiz0x001f;
 		private CheckBox ckbStackObj;
 		private Panel pnObject;
 		private CheckBox cbAttrPicker;
@@ -283,27 +283,27 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWiz0x001f = new System.Windows.Forms.Panel();
-			this.cbToNext = new System.Windows.Forms.ComboBox();
-			this.tbLocalVar = new System.Windows.Forms.TextBox();
-			this.tbGUID = new System.Windows.Forms.TextBox();
-			this.lbGUIDText = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.pnNodeVersion = new System.Windows.Forms.Panel();
-			this.pnWhere = new System.Windows.Forms.Panel();
-			this.cbWhere = new System.Windows.Forms.ComboBox();
-			this.tbWhereVal = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.ckbWhere = new System.Windows.Forms.CheckBox();
-			this.ckbDisabled = new System.Windows.Forms.CheckBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.pnObject = new System.Windows.Forms.Panel();
-			this.cbAttrPicker = new System.Windows.Forms.CheckBox();
-			this.cbDecimal = new System.Windows.Forms.CheckBox();
-			this.cbPicker1 = new System.Windows.Forms.ComboBox();
-			this.tbVal1 = new System.Windows.Forms.TextBox();
-			this.cbDataOwner1 = new System.Windows.Forms.ComboBox();
-			this.ckbStackObj = new System.Windows.Forms.CheckBox();
+			this.pnWiz0x001f = new Panel();
+			this.cbToNext = new ComboBox();
+			this.tbLocalVar = new TextBox();
+			this.tbGUID = new TextBox();
+			this.lbGUIDText = new Label();
+			this.label2 = new Label();
+			this.pnNodeVersion = new Panel();
+			this.pnWhere = new Panel();
+			this.cbWhere = new ComboBox();
+			this.tbWhereVal = new TextBox();
+			this.label4 = new Label();
+			this.ckbWhere = new CheckBox();
+			this.ckbDisabled = new CheckBox();
+			this.label1 = new Label();
+			this.pnObject = new Panel();
+			this.cbAttrPicker = new CheckBox();
+			this.cbDecimal = new CheckBox();
+			this.cbPicker1 = new ComboBox();
+			this.tbVal1 = new TextBox();
+			this.cbDataOwner1 = new ComboBox();
+			this.ckbStackObj = new CheckBox();
 			this.pnWiz0x001f.SuspendLayout();
 			this.pnNodeVersion.SuspendLayout();
 			this.pnWhere.SuspendLayout();
@@ -335,7 +335,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 			this.cbToNext.FormattingEnabled = true;
 			resources.ApplyResources(this.cbToNext, "cbToNext");
 			this.cbToNext.Name = "cbToNext";
-			this.cbToNext.SelectedIndexChanged += new System.EventHandler(
+			this.cbToNext.SelectedIndexChanged += new EventHandler(
 				this.cbToNext_SelectedIndexChanged
 			);
 			//
@@ -343,7 +343,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 			//
 			resources.ApplyResources(this.tbLocalVar, "tbLocalVar");
 			this.tbLocalVar.Name = "tbLocalVar";
-			this.tbLocalVar.Validated += new System.EventHandler(this.hex8_Validated);
+			this.tbLocalVar.Validated += new EventHandler(this.hex8_Validated);
 			this.tbLocalVar.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex8_Validating
 			);
@@ -352,11 +352,11 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 			//
 			resources.ApplyResources(this.tbGUID, "tbGUID");
 			this.tbGUID.Name = "tbGUID";
-			this.tbGUID.Validated += new System.EventHandler(this.hex32_Validated);
+			this.tbGUID.Validated += new EventHandler(this.hex32_Validated);
 			this.tbGUID.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex32_Validating
 			);
-			this.tbGUID.TextChanged += new System.EventHandler(this.tbGUID_TextChanged);
+			this.tbGUID.TextChanged += new EventHandler(this.tbGUID_TextChanged);
 			//
 			// lbGUIDText
 			//
@@ -400,7 +400,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 			//
 			resources.ApplyResources(this.tbWhereVal, "tbWhereVal");
 			this.tbWhereVal.Name = "tbWhereVal";
-			this.tbWhereVal.Validated += new System.EventHandler(this.hex16_Validated);
+			this.tbWhereVal.Validated += new EventHandler(this.hex16_Validated);
 			this.tbWhereVal.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex16_Validating
 			);
@@ -415,7 +415,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 			resources.ApplyResources(this.ckbWhere, "ckbWhere");
 			this.ckbWhere.Name = "ckbWhere";
 			this.ckbWhere.UseVisualStyleBackColor = true;
-			this.ckbWhere.CheckedChanged += new System.EventHandler(
+			this.ckbWhere.CheckedChanged += new EventHandler(
 				this.ckbWhere_CheckedChanged
 			);
 			//
@@ -483,7 +483,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 			resources.ApplyResources(this.ckbStackObj, "ckbStackObj");
 			this.ckbStackObj.Name = "ckbStackObj";
 			this.ckbStackObj.UseVisualStyleBackColor = true;
-			this.ckbStackObj.CheckedChanged += new System.EventHandler(
+			this.ckbStackObj.CheckedChanged += new EventHandler(
 				this.ckbStackObj_CheckedChanged
 			);
 			//
@@ -524,7 +524,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 			internalchg = origstate;
 		}
 
-		private void hex8_Validated(object sender, System.EventArgs e)
+		private void hex8_Validated(object sender, EventArgs e)
 		{
 			bool origstate = internalchg;
 			internalchg = true;
@@ -562,7 +562,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 			internalchg = origstate;
 		}
 
-		private void hex16_Validated(object sender, System.EventArgs e)
+		private void hex16_Validated(object sender, EventArgs e)
 		{
 			bool origstate = internalchg;
 			internalchg = true;
@@ -609,7 +609,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 			internalchg = origstate;
 		}
 
-		private void hex32_Validated(object sender, System.EventArgs e)
+		private void hex32_Validated(object sender, EventArgs e)
 		{
 			bool origstate = internalchg;
 			internalchg = true;
@@ -639,7 +639,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 
 namespace pjse.BhavOperandWizards
 {
-	public class BhavOperandWiz0x001f : pjse.ABhavOperandWiz
+	public class BhavOperandWiz0x001f : ABhavOperandWiz
 	{
 		public BhavOperandWiz0x001f(Instruction i)
 			: base(i)

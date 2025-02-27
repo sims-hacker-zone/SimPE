@@ -29,11 +29,11 @@ namespace pjse.BhavOperandWizards.Wiz0x0076
 	/// <summary>
 	/// Zusammenfassung f�r BhavInstruction.
 	/// </summary>
-	internal class UI : System.Windows.Forms.Form, iBhavOperandWizForm
+	internal class UI : Form, iBhavOperandWizForm
 	{
 		#region Form variables
 
-		internal System.Windows.Forms.Panel pnWiz0x0076;
+		internal Panel pnWiz0x0076;
 		private RadioButton rb1StackObj;
 		private RadioButton rb1My;
 		private TableLayoutPanel tableLayoutPanel1;
@@ -267,33 +267,33 @@ namespace pjse.BhavOperandWizards.Wiz0x0076
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWiz0x0076 = new System.Windows.Forms.Panel();
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.pnOp2 = new System.Windows.Forms.Panel();
-			this.lbConst2 = new System.Windows.Forms.Label();
-			this.cbPicker2 = new System.Windows.Forms.ComboBox();
-			this.tbval2 = new System.Windows.Forms.TextBox();
-			this.cbDataOwner2 = new System.Windows.Forms.ComboBox();
-			this.lbOp2 = new System.Windows.Forms.Label();
-			this.pnOp1 = new System.Windows.Forms.Panel();
-			this.lbConst1 = new System.Windows.Forms.Label();
-			this.cbPicker1 = new System.Windows.Forms.ComboBox();
-			this.tbval1 = new System.Windows.Forms.TextBox();
-			this.cbDataOwner1 = new System.Windows.Forms.ComboBox();
-			this.lbOp1 = new System.Windows.Forms.Label();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.ckbAttrPicker = new System.Windows.Forms.CheckBox();
-			this.ckbDecimal = new System.Windows.Forms.CheckBox();
-			this.rb1StackObj = new System.Windows.Forms.RadioButton();
-			this.rb1My = new System.Windows.Forms.RadioButton();
-			this.tbObjectArray = new System.Windows.Forms.TextBox();
-			this.cbObjectArray = new System.Windows.Forms.ComboBox();
-			this.cbOperation = new System.Windows.Forms.ComboBox();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.label1 = new System.Windows.Forms.Label();
-			this.pnArray = new System.Windows.Forms.Panel();
-			this.label3 = new System.Windows.Forms.Label();
-			this.panel3 = new System.Windows.Forms.Panel();
+			this.pnWiz0x0076 = new Panel();
+			this.tableLayoutPanel1 = new TableLayoutPanel();
+			this.pnOp2 = new Panel();
+			this.lbConst2 = new Label();
+			this.cbPicker2 = new ComboBox();
+			this.tbval2 = new TextBox();
+			this.cbDataOwner2 = new ComboBox();
+			this.lbOp2 = new Label();
+			this.pnOp1 = new Panel();
+			this.lbConst1 = new Label();
+			this.cbPicker1 = new ComboBox();
+			this.tbval1 = new TextBox();
+			this.cbDataOwner1 = new ComboBox();
+			this.lbOp1 = new Label();
+			this.panel1 = new Panel();
+			this.ckbAttrPicker = new CheckBox();
+			this.ckbDecimal = new CheckBox();
+			this.rb1StackObj = new RadioButton();
+			this.rb1My = new RadioButton();
+			this.tbObjectArray = new TextBox();
+			this.cbObjectArray = new ComboBox();
+			this.cbOperation = new ComboBox();
+			this.panel2 = new Panel();
+			this.label1 = new Label();
+			this.pnArray = new Panel();
+			this.label3 = new Label();
+			this.panel3 = new Panel();
 			this.pnWiz0x0076.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.pnOp2.SuspendLayout();
@@ -490,7 +490,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0076
 			);
 			resources.ApplyResources(this.cbOperation, "cbOperation");
 			this.cbOperation.Name = "cbOperation";
-			this.cbOperation.SelectedIndexChanged += new System.EventHandler(
+			this.cbOperation.SelectedIndexChanged += new EventHandler(
 				this.cbOperation_SelectedIndexChanged
 			);
 			//
@@ -561,7 +561,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0076
 
 namespace pjse.BhavOperandWizards
 {
-	public class BhavOperandWiz0x0076 : pjse.ABhavOperandWiz
+	public class BhavOperandWiz0x0076 : ABhavOperandWiz
 	{
 		public BhavOperandWiz0x0076(Instruction i)
 			: base(i)

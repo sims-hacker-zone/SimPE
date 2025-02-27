@@ -43,7 +43,7 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class ColorOptionsItem
 	{
-		public ColorOptionsItem(SimPe.PackedFiles.Wrapper.Cpf mmat)
+		public ColorOptionsItem(PackedFiles.Wrapper.Cpf mmat)
 		{
 			this.MMAT = mmat;
 
@@ -59,14 +59,14 @@ namespace SimPe.Plugin
 		public string Family;
 		public bool Default;
 
-		public SimPe.PackedFiles.Wrapper.Cpf MMAT;
+		public PackedFiles.Wrapper.Cpf MMAT;
 
-		public SimPe.Plugin.Rcol matd;
+		public Rcol matd;
 
 		/// <summary>
 		/// Returns the linked MATD or null if none was found
 		/// </summary>
-		public SimPe.Plugin.Rcol MATD
+		public Rcol MATD
 		{
 			get
 			{
@@ -94,12 +94,12 @@ namespace SimPe.Plugin
 			}
 		}
 
-		public SimPe.Plugin.Txtr txtr;
+		public Txtr txtr;
 
 		/// <summary>
 		/// Returns the linked TXTR or null if none was found
 		/// </summary>
-		public SimPe.Plugin.Txtr TXTR
+		public Txtr TXTR
 		{
 			get
 			{
@@ -110,8 +110,8 @@ namespace SimPe.Plugin
 
 				if (txtr == null)
 				{
-					SimPe.Plugin.MaterialDefinition md =
-						(SimPe.Plugin.MaterialDefinition)matd.Blocks[0];
+					MaterialDefinition md =
+						(MaterialDefinition)matd.Blocks[0];
 					string flname = Hashes.StripHashFromName(
 						md.GetProperty("stdMatBaseTextureName").Value.Trim()
 							+ "_txtr".ToLower()
@@ -227,7 +227,7 @@ namespace SimPe.Plugin
 				MaterialDefinition md = (MaterialDefinition)MATD.Blocks[0];
 				md.FileDescription = matdname;
 				MATD.FileName = groups + matdname + "_txmt";
-				SimPe.Packages.PackedFileDescriptor matdpfd =
+				PackedFileDescriptor matdpfd =
 					new PackedFileDescriptor();
 
 				matdpfd.Type = MATD.FileDescriptor.Type;
@@ -282,7 +282,7 @@ namespace SimPe.Plugin
 			if (TXTR != null)
 			{
 				TXTR.FileName = groups + txtrname + "_txtr";
-				SimPe.Packages.PackedFileDescriptor txtrpfd =
+				PackedFileDescriptor txtrpfd =
 					new PackedFileDescriptor();
 
 				txtrpfd.Type = TXTR.FileDescriptor.Type;

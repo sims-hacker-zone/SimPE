@@ -6,7 +6,7 @@ namespace SimPe.PackedFiles.Wrapper
 	/// <summary>
 	/// Summary description for SimBusinessList.
 	/// </summary>
-	public class SimBusinessList : System.Windows.Forms.UserControl
+	public class SimBusinessList : UserControl
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -57,7 +57,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.cb = new System.Windows.Forms.ComboBox();
+			this.cb = new ComboBox();
 			this.SuspendLayout();
 			//
 			// cb
@@ -68,7 +68,7 @@ namespace SimPe.PackedFiles.Wrapper
 			this.cb.Name = "cb";
 			this.cb.Size = new System.Drawing.Size(150, 21);
 			this.cb.TabIndex = 0;
-			this.cb.SelectedIndexChanged += new System.EventHandler(
+			this.cb.SelectedIndexChanged += new EventHandler(
 				this.cb_SelectedIndexChanged
 			);
 			//
@@ -88,11 +88,11 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 		#endregion
 
-		private System.Windows.Forms.ComboBox cb;
+		private ComboBox cb;
 
 		bool loaded;
 		LinkedSDesc sdsc;
-		public SimPe.Interfaces.Wrapper.ISDesc SimDescription
+		public Interfaces.Wrapper.ISDesc SimDescription
 		{
 			get
 			{
@@ -116,8 +116,8 @@ namespace SimPe.PackedFiles.Wrapper
 			cb.Items.Clear();
 			if (sdsc != null)
 			{
-				SimPe.Interfaces.Providers.ILotItem[] items = sdsc.BusinessList;
-				foreach (SimPe.Interfaces.Providers.ILotItem item in items)
+				Interfaces.Providers.ILotItem[] items = sdsc.BusinessList;
+				foreach (Interfaces.Providers.ILotItem item in items)
 				{
 					cb.Items.Add(item);
 				}
@@ -133,11 +133,11 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public event System.EventHandler SelectedBusinessChanged;
+		public event EventHandler SelectedBusinessChanged;
 
-		public SimPe.Interfaces.Providers.ILotItem SelectedBusiness => cb.SelectedItem as SimPe.Interfaces.Providers.ILotItem;
+		public Interfaces.Providers.ILotItem SelectedBusiness => cb.SelectedItem as Interfaces.Providers.ILotItem;
 
-		private void cb_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void cb_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (SelectedBusinessChanged != null)
 			{

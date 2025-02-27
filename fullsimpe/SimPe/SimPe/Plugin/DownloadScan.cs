@@ -27,55 +27,55 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for DownloadScan.
 	/// </summary>
-	public class DownloadScan : System.Windows.Forms.Form
+	public class DownloadScan : Form
 	{
 		const string STR_NOT_EP = "either original Maxis or not EP Ready";
 		const string STR_COMP_DIR = "Compressed Dir incomplete";
 		const string STR_COMP_SIZE = "Corrupted compressed Size";
-		private System.Windows.Forms.ComboBox comboBox1;
-		private System.Windows.Forms.FolderBrowserDialog fbd;
-		private System.Windows.Forms.GroupBox lbdir;
-		private System.Windows.Forms.LinkLabel linkLabel1;
-		private System.Windows.Forms.ListView lv;
-		private System.Windows.Forms.ColumnHeader columnHeader1;
-		private System.Windows.Forms.ColumnHeader columnHeader2;
-		private System.Windows.Forms.ColumnHeader columnHeader3;
-		private System.Windows.Forms.TextBox tbfilename;
-		private System.Windows.Forms.LinkLabel llopen;
-		private System.Windows.Forms.LinkLabel lldis;
-		private System.Windows.Forms.ColumnHeader columnHeader4;
-		private System.Windows.Forms.ProgressBar pb;
-		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.CheckBox cbcompress;
-		private System.Windows.Forms.CheckBox cbguid;
-		private System.Windows.Forms.ColumnHeader columnHeader5;
+		private ComboBox comboBox1;
+		private FolderBrowserDialog fbd;
+		private GroupBox lbdir;
+		private LinkLabel linkLabel1;
+		private ListView lv;
+		private ColumnHeader columnHeader1;
+		private ColumnHeader columnHeader2;
+		private ColumnHeader columnHeader3;
+		private TextBox tbfilename;
+		private LinkLabel llopen;
+		private LinkLabel lldis;
+		private ColumnHeader columnHeader4;
+		private ProgressBar pb;
+		private GroupBox groupBox1;
+		private CheckBox cbcompress;
+		private CheckBox cbguid;
+		private ColumnHeader columnHeader5;
 		private System.ComponentModel.IContainer components;
-		private System.Windows.Forms.LinkLabel llfix;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox tbname;
-		private System.Windows.Forms.CheckBox cbready;
-		private System.Windows.Forms.GroupBox groupBox2;
-		private System.Windows.Forms.LinkLabel llskin;
-		private System.Windows.Forms.CheckBox cbbaby;
-		private System.Windows.Forms.CheckBox cbtoddler;
-		private System.Windows.Forms.CheckBox cbchild;
-		private System.Windows.Forms.CheckBox cbteen;
-		private System.Windows.Forms.CheckBox cbyoung;
-		private System.Windows.Forms.CheckBox cbadult;
-		private System.Windows.Forms.CheckBox cbelder;
-		private System.Windows.Forms.GroupBox gbskin;
-		private System.Windows.Forms.ImageList iList;
-		private System.Windows.Forms.CheckBox cbprev;
-		private System.Windows.Forms.PictureBox pbprev;
-		private System.Windows.Forms.CheckBox cbact;
-		private System.Windows.Forms.CheckBox cbskin;
-		private System.Windows.Forms.CheckBox cbformal;
-		private System.Windows.Forms.CheckBox cbpreg;
-		private System.Windows.Forms.CheckBox cbundies;
-		private System.Windows.Forms.CheckBox cbpj;
-		private System.Windows.Forms.CheckBox cbevery;
-		private System.Windows.Forms.CheckBox cbswim;
-		private System.Windows.Forms.LinkLabel llcomp;
+		private LinkLabel llfix;
+		private Label label1;
+		private TextBox tbname;
+		private CheckBox cbready;
+		private GroupBox groupBox2;
+		private LinkLabel llskin;
+		private CheckBox cbbaby;
+		private CheckBox cbtoddler;
+		private CheckBox cbchild;
+		private CheckBox cbteen;
+		private CheckBox cbyoung;
+		private CheckBox cbadult;
+		private CheckBox cbelder;
+		private GroupBox gbskin;
+		private ImageList iList;
+		private CheckBox cbprev;
+		private PictureBox pbprev;
+		private CheckBox cbact;
+		private CheckBox cbskin;
+		private CheckBox cbformal;
+		private CheckBox cbpreg;
+		private CheckBox cbundies;
+		private CheckBox cbpj;
+		private CheckBox cbevery;
+		private CheckBox cbswim;
+		private LinkLabel llcomp;
 
 		internal Interfaces.IProviderRegistry prov;
 
@@ -120,49 +120,49 @@ namespace SimPe.Plugin
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
-			this.fbd = new System.Windows.Forms.FolderBrowserDialog();
-			this.lbdir = new System.Windows.Forms.GroupBox();
-			this.llcomp = new System.Windows.Forms.LinkLabel();
-			this.pbprev = new System.Windows.Forms.PictureBox();
-			this.gbskin = new System.Windows.Forms.GroupBox();
-			this.cbswim = new System.Windows.Forms.CheckBox();
-			this.cbact = new System.Windows.Forms.CheckBox();
-			this.cbskin = new System.Windows.Forms.CheckBox();
-			this.cbformal = new System.Windows.Forms.CheckBox();
-			this.cbpreg = new System.Windows.Forms.CheckBox();
-			this.cbundies = new System.Windows.Forms.CheckBox();
-			this.cbpj = new System.Windows.Forms.CheckBox();
-			this.cbevery = new System.Windows.Forms.CheckBox();
-			this.cbelder = new System.Windows.Forms.CheckBox();
-			this.cbadult = new System.Windows.Forms.CheckBox();
-			this.cbyoung = new System.Windows.Forms.CheckBox();
-			this.cbteen = new System.Windows.Forms.CheckBox();
-			this.cbchild = new System.Windows.Forms.CheckBox();
-			this.cbtoddler = new System.Windows.Forms.CheckBox();
-			this.cbbaby = new System.Windows.Forms.CheckBox();
-			this.llskin = new System.Windows.Forms.LinkLabel();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.llfix = new System.Windows.Forms.LinkLabel();
-			this.tbname = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.lldis = new System.Windows.Forms.LinkLabel();
-			this.llopen = new System.Windows.Forms.LinkLabel();
-			this.tbfilename = new System.Windows.Forms.TextBox();
-			this.lv = new System.Windows.Forms.ListView();
-			this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-			this.pb = new System.Windows.Forms.ProgressBar();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.cbprev = new System.Windows.Forms.CheckBox();
-			this.cbready = new System.Windows.Forms.CheckBox();
-			this.cbguid = new System.Windows.Forms.CheckBox();
-			this.cbcompress = new System.Windows.Forms.CheckBox();
-			this.iList = new System.Windows.Forms.ImageList(this.components);
+			this.comboBox1 = new ComboBox();
+			this.fbd = new FolderBrowserDialog();
+			this.lbdir = new GroupBox();
+			this.llcomp = new LinkLabel();
+			this.pbprev = new PictureBox();
+			this.gbskin = new GroupBox();
+			this.cbswim = new CheckBox();
+			this.cbact = new CheckBox();
+			this.cbskin = new CheckBox();
+			this.cbformal = new CheckBox();
+			this.cbpreg = new CheckBox();
+			this.cbundies = new CheckBox();
+			this.cbpj = new CheckBox();
+			this.cbevery = new CheckBox();
+			this.cbelder = new CheckBox();
+			this.cbadult = new CheckBox();
+			this.cbyoung = new CheckBox();
+			this.cbteen = new CheckBox();
+			this.cbchild = new CheckBox();
+			this.cbtoddler = new CheckBox();
+			this.cbbaby = new CheckBox();
+			this.llskin = new LinkLabel();
+			this.groupBox2 = new GroupBox();
+			this.llfix = new LinkLabel();
+			this.tbname = new TextBox();
+			this.label1 = new Label();
+			this.lldis = new LinkLabel();
+			this.llopen = new LinkLabel();
+			this.tbfilename = new TextBox();
+			this.lv = new ListView();
+			this.columnHeader1 = new ColumnHeader();
+			this.columnHeader2 = new ColumnHeader();
+			this.columnHeader5 = new ColumnHeader();
+			this.columnHeader4 = new ColumnHeader();
+			this.columnHeader3 = new ColumnHeader();
+			this.linkLabel1 = new LinkLabel();
+			this.pb = new ProgressBar();
+			this.groupBox1 = new GroupBox();
+			this.cbprev = new CheckBox();
+			this.cbready = new CheckBox();
+			this.cbguid = new CheckBox();
+			this.cbcompress = new CheckBox();
+			this.iList = new ImageList(this.components);
 			this.lbdir.SuspendLayout();
 			this.gbskin.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -172,7 +172,7 @@ namespace SimPe.Plugin
 			// comboBox1
 			//
 			this.comboBox1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -185,16 +185,16 @@ namespace SimPe.Plugin
 			this.comboBox1.Items.AddRange(
 				new object[] { "Download Folder", "Teleport Folder", "..." }
 			);
-			this.comboBox1.Location = new System.Drawing.Point(8, 8);
+			this.comboBox1.Location = new Point(8, 8);
 			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(776, 21);
+			this.comboBox1.Size = new Size(776, 21);
 			this.comboBox1.TabIndex = 0;
-			this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.Select);
+			this.comboBox1.SelectedIndexChanged += new EventHandler(this.Select);
 			//
 			// lbdir
 			//
 			this.lbdir.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -213,16 +213,16 @@ namespace SimPe.Plugin
 			this.lbdir.Controls.Add(this.llopen);
 			this.lbdir.Controls.Add(this.tbfilename);
 			this.lbdir.Controls.Add(this.lv);
-			this.lbdir.Font = new System.Drawing.Font(
+			this.lbdir.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.lbdir.Location = new System.Drawing.Point(8, 104);
+			this.lbdir.Location = new Point(8, 104);
 			this.lbdir.Name = "lbdir";
-			this.lbdir.Size = new System.Drawing.Size(776, 452);
+			this.lbdir.Size = new Size(776, 452);
 			this.lbdir.TabIndex = 1;
 			this.lbdir.TabStop = false;
 			this.lbdir.Text = "---";
@@ -230,7 +230,7 @@ namespace SimPe.Plugin
 			// llcomp
 			//
 			this.llcomp.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -239,28 +239,28 @@ namespace SimPe.Plugin
 			);
 			this.llcomp.AutoSize = true;
 			this.llcomp.Enabled = false;
-			this.llcomp.Font = new System.Drawing.Font(
+			this.llcomp.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.llcomp.Location = new System.Drawing.Point(584, 80);
+			this.llcomp.Location = new Point(584, 80);
 			this.llcomp.Name = "llcomp";
-			this.llcomp.Size = new System.Drawing.Size(106, 17);
+			this.llcomp.Size = new Size(106, 17);
 			this.llcomp.TabIndex = 11;
 			this.llcomp.TabStop = true;
 			this.llcomp.Text = "fix Compression";
 			this.llcomp.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.FixCompression
 				);
 			//
 			// pbprev
 			//
 			this.pbprev.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -270,16 +270,16 @@ namespace SimPe.Plugin
 				)
 			);
 			this.pbprev.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pbprev.Location = new System.Drawing.Point(584, 408);
+			this.pbprev.Location = new Point(584, 408);
 			this.pbprev.Name = "pbprev";
-			this.pbprev.Size = new System.Drawing.Size(184, 40);
+			this.pbprev.Size = new Size(184, 40);
 			this.pbprev.TabIndex = 10;
 			this.pbprev.TabStop = false;
 			//
 			// gbskin
 			//
 			this.gbskin.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -304,257 +304,257 @@ namespace SimPe.Plugin
 			this.gbskin.Controls.Add(this.llskin);
 			this.gbskin.Enabled = false;
 			this.gbskin.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.gbskin.Location = new System.Drawing.Point(584, 192);
+			this.gbskin.Location = new Point(584, 192);
 			this.gbskin.Name = "gbskin";
 			this.gbskin.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.gbskin.Size = new System.Drawing.Size(184, 208);
+			this.gbskin.Size = new Size(184, 208);
 			this.gbskin.TabIndex = 9;
 			this.gbskin.TabStop = false;
 			//
 			// cbswim
 			//
 			this.cbswim.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbswim.Font = new System.Drawing.Font(
+			this.cbswim.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbswim.Location = new System.Drawing.Point(96, 120);
+			this.cbswim.Location = new Point(96, 120);
 			this.cbswim.Name = "cbswim";
-			this.cbswim.Size = new System.Drawing.Size(80, 24);
+			this.cbswim.Size = new Size(80, 24);
 			this.cbswim.TabIndex = 21;
 			this.cbswim.Text = "Swim.";
 			//
 			// cbact
 			//
 			this.cbact.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbact.Font = new System.Drawing.Font(
+			this.cbact.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbact.Location = new System.Drawing.Point(96, 180);
+			this.cbact.Location = new Point(96, 180);
 			this.cbact.Name = "cbact";
-			this.cbact.Size = new System.Drawing.Size(64, 24);
+			this.cbact.Size = new Size(64, 24);
 			this.cbact.TabIndex = 20;
 			this.cbact.Text = "Active";
 			//
 			// cbskin
 			//
 			this.cbskin.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbskin.Font = new System.Drawing.Font(
+			this.cbskin.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbskin.Location = new System.Drawing.Point(96, 160);
+			this.cbskin.Location = new Point(96, 160);
 			this.cbskin.Name = "cbskin";
-			this.cbskin.Size = new System.Drawing.Size(64, 24);
+			this.cbskin.Size = new Size(64, 24);
 			this.cbskin.TabIndex = 19;
 			this.cbskin.Text = "Skin";
 			//
 			// cbformal
 			//
 			this.cbformal.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbformal.Font = new System.Drawing.Font(
+			this.cbformal.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbformal.Location = new System.Drawing.Point(96, 140);
+			this.cbformal.Location = new Point(96, 140);
 			this.cbformal.Name = "cbformal";
-			this.cbformal.Size = new System.Drawing.Size(80, 24);
+			this.cbformal.Size = new Size(80, 24);
 			this.cbformal.TabIndex = 18;
 			this.cbformal.Text = "Formal";
 			//
 			// cbpreg
 			//
 			this.cbpreg.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbpreg.Font = new System.Drawing.Font(
+			this.cbpreg.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbpreg.Location = new System.Drawing.Point(16, 180);
+			this.cbpreg.Location = new Point(16, 180);
 			this.cbpreg.Name = "cbpreg";
-			this.cbpreg.Size = new System.Drawing.Size(64, 24);
+			this.cbpreg.Size = new Size(64, 24);
 			this.cbpreg.TabIndex = 17;
 			this.cbpreg.Text = "Preg.";
 			//
 			// cbundies
 			//
 			this.cbundies.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbundies.Font = new System.Drawing.Font(
+			this.cbundies.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbundies.Location = new System.Drawing.Point(16, 160);
+			this.cbundies.Location = new Point(16, 160);
 			this.cbundies.Name = "cbundies";
-			this.cbundies.Size = new System.Drawing.Size(64, 24);
+			this.cbundies.Size = new Size(64, 24);
 			this.cbundies.TabIndex = 16;
 			this.cbundies.Text = "Undies";
 			//
 			// cbpj
 			//
 			this.cbpj.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbpj.Font = new System.Drawing.Font(
+			this.cbpj.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbpj.Location = new System.Drawing.Point(16, 140);
+			this.cbpj.Location = new Point(16, 140);
 			this.cbpj.Name = "cbpj";
-			this.cbpj.Size = new System.Drawing.Size(64, 24);
+			this.cbpj.Size = new Size(64, 24);
 			this.cbpj.TabIndex = 15;
 			this.cbpj.Text = "PJ";
 			//
 			// cbevery
 			//
 			this.cbevery.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbevery.Font = new System.Drawing.Font(
+			this.cbevery.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbevery.Location = new System.Drawing.Point(16, 120);
+			this.cbevery.Location = new Point(16, 120);
 			this.cbevery.Name = "cbevery";
-			this.cbevery.Size = new System.Drawing.Size(80, 24);
+			this.cbevery.Size = new Size(80, 24);
 			this.cbevery.TabIndex = 14;
 			this.cbevery.Text = "Everyday";
 			//
 			// cbelder
 			//
 			this.cbelder.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbelder.Font = new System.Drawing.Font(
+			this.cbelder.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbelder.Location = new System.Drawing.Point(96, 84);
+			this.cbelder.Location = new Point(96, 84);
 			this.cbelder.Name = "cbelder";
-			this.cbelder.Size = new System.Drawing.Size(64, 24);
+			this.cbelder.Size = new Size(64, 24);
 			this.cbelder.TabIndex = 13;
 			this.cbelder.Text = "Elder";
 			//
 			// cbadult
 			//
 			this.cbadult.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbadult.Font = new System.Drawing.Font(
+			this.cbadult.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbadult.Location = new System.Drawing.Point(96, 64);
+			this.cbadult.Location = new Point(96, 64);
 			this.cbadult.Name = "cbadult";
-			this.cbadult.Size = new System.Drawing.Size(64, 24);
+			this.cbadult.Size = new Size(64, 24);
 			this.cbadult.TabIndex = 12;
 			this.cbadult.Text = "Adult";
 			//
 			// cbyoung
 			//
 			this.cbyoung.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbyoung.Font = new System.Drawing.Font(
+			this.cbyoung.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbyoung.Location = new System.Drawing.Point(96, 24);
+			this.cbyoung.Location = new Point(96, 24);
 			this.cbyoung.Name = "cbyoung";
-			this.cbyoung.Size = new System.Drawing.Size(64, 32);
+			this.cbyoung.Size = new Size(64, 32);
 			this.cbyoung.TabIndex = 11;
 			this.cbyoung.Text = "young Adult";
 			//
 			// cbteen
 			//
 			this.cbteen.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbteen.Font = new System.Drawing.Font(
+			this.cbteen.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbteen.Location = new System.Drawing.Point(16, 84);
+			this.cbteen.Location = new Point(16, 84);
 			this.cbteen.Name = "cbteen";
-			this.cbteen.Size = new System.Drawing.Size(64, 24);
+			this.cbteen.Size = new Size(64, 24);
 			this.cbteen.TabIndex = 10;
 			this.cbteen.Text = "teen";
 			//
 			// cbchild
 			//
 			this.cbchild.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbchild.Font = new System.Drawing.Font(
+			this.cbchild.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbchild.Location = new System.Drawing.Point(16, 64);
+			this.cbchild.Location = new Point(16, 64);
 			this.cbchild.Name = "cbchild";
-			this.cbchild.Size = new System.Drawing.Size(64, 24);
+			this.cbchild.Size = new Size(64, 24);
 			this.cbchild.TabIndex = 9;
 			this.cbchild.Text = "child";
 			//
 			// cbtoddler
 			//
 			this.cbtoddler.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbtoddler.Font = new System.Drawing.Font(
+			this.cbtoddler.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbtoddler.Location = new System.Drawing.Point(16, 44);
+			this.cbtoddler.Location = new Point(16, 44);
 			this.cbtoddler.Name = "cbtoddler";
-			this.cbtoddler.Size = new System.Drawing.Size(64, 24);
+			this.cbtoddler.Size = new Size(64, 24);
 			this.cbtoddler.TabIndex = 8;
 			this.cbtoddler.Text = "toddler";
 			//
 			// cbbaby
 			//
 			this.cbbaby.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbbaby.Font = new System.Drawing.Font(
+			this.cbbaby.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbbaby.Location = new System.Drawing.Point(16, 24);
+			this.cbbaby.Location = new Point(16, 24);
 			this.cbbaby.Name = "cbbaby";
-			this.cbbaby.Size = new System.Drawing.Size(64, 24);
+			this.cbbaby.Size = new Size(64, 24);
 			this.cbbaby.TabIndex = 7;
 			this.cbbaby.Text = "baby";
 			//
 			// llskin
 			//
 			this.llskin.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -563,21 +563,21 @@ namespace SimPe.Plugin
 			);
 			this.llskin.AutoSize = true;
 			this.llskin.Enabled = false;
-			this.llskin.Location = new System.Drawing.Point(8, 0);
+			this.llskin.Location = new Point(8, 0);
 			this.llskin.Name = "llskin";
-			this.llskin.Size = new System.Drawing.Size(55, 17);
+			this.llskin.Size = new Size(55, 17);
 			this.llskin.TabIndex = 6;
 			this.llskin.TabStop = true;
 			this.llskin.Text = "set Skin";
 			this.llskin.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.SetSkinAge
 				);
 			//
 			// groupBox2
 			//
 			this.groupBox2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -588,16 +588,16 @@ namespace SimPe.Plugin
 			this.groupBox2.Controls.Add(this.tbname);
 			this.groupBox2.Controls.Add(this.label1);
 			this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.groupBox2.Location = new System.Drawing.Point(584, 104);
+			this.groupBox2.Location = new Point(584, 104);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(184, 72);
+			this.groupBox2.Size = new Size(184, 72);
 			this.groupBox2.TabIndex = 8;
 			this.groupBox2.TabStop = false;
 			//
 			// llfix
 			//
 			this.llfix.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -606,65 +606,65 @@ namespace SimPe.Plugin
 			);
 			this.llfix.AutoSize = true;
 			this.llfix.Enabled = false;
-			this.llfix.Location = new System.Drawing.Point(8, 0);
+			this.llfix.Location = new Point(8, 0);
 			this.llfix.Name = "llfix";
-			this.llfix.Size = new System.Drawing.Size(102, 17);
+			this.llfix.Size = new Size(102, 17);
 			this.llfix.TabIndex = 5;
 			this.llfix.TabStop = true;
 			this.llfix.Text = "make EP Ready";
 			this.llfix.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Fix);
+				new LinkLabelLinkClickedEventHandler(this.Fix);
 			//
 			// tbname
 			//
 			this.tbname.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
 					)
 				)
 			);
-			this.tbname.Font = new System.Drawing.Font(
+			this.tbname.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tbname.Location = new System.Drawing.Point(24, 45);
+			this.tbname.Location = new Point(24, 45);
 			this.tbname.Name = "tbname";
-			this.tbname.Size = new System.Drawing.Size(152, 21);
+			this.tbname.Size = new Size(152, 21);
 			this.tbname.TabIndex = 7;
 			this.tbname.Text = "SimPe-";
 			//
 			// label1
 			//
 			this.label1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
 					)
 				)
 			);
-			this.label1.Font = new System.Drawing.Font(
+			this.label1.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label1.Location = new System.Drawing.Point(8, 29);
+			this.label1.Location = new Point(8, 29);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(128, 16);
+			this.label1.Size = new Size(128, 16);
 			this.label1.TabIndex = 6;
 			this.label1.Text = "using Modelname";
 			//
 			// lldis
 			//
 			this.lldis.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -673,19 +673,19 @@ namespace SimPe.Plugin
 			);
 			this.lldis.AutoSize = true;
 			this.lldis.Enabled = false;
-			this.lldis.Location = new System.Drawing.Point(584, 64);
+			this.lldis.Location = new Point(584, 64);
 			this.lldis.Name = "lldis";
-			this.lldis.Size = new System.Drawing.Size(50, 17);
+			this.lldis.Size = new Size(50, 17);
 			this.lldis.TabIndex = 4;
 			this.lldis.TabStop = true;
 			this.lldis.Text = "disable";
 			this.lldis.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Disable);
+				new LinkLabelLinkClickedEventHandler(this.Disable);
 			//
 			// llopen
 			//
 			this.llopen.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -694,45 +694,45 @@ namespace SimPe.Plugin
 			);
 			this.llopen.AutoSize = true;
 			this.llopen.Enabled = false;
-			this.llopen.Location = new System.Drawing.Point(584, 48);
+			this.llopen.Location = new Point(584, 48);
 			this.llopen.Name = "llopen";
-			this.llopen.Size = new System.Drawing.Size(35, 17);
+			this.llopen.Size = new Size(35, 17);
 			this.llopen.TabIndex = 3;
 			this.llopen.TabStop = true;
 			this.llopen.Text = "open";
 			this.llopen.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.Openpackage
 				);
 			//
 			// tbfilename
 			//
 			this.tbfilename.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
 					)
 				)
 			);
-			this.tbfilename.Font = new System.Drawing.Font(
+			this.tbfilename.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tbfilename.Location = new System.Drawing.Point(584, 24);
+			this.tbfilename.Location = new Point(584, 24);
 			this.tbfilename.Name = "tbfilename";
 			this.tbfilename.ReadOnly = true;
-			this.tbfilename.Size = new System.Drawing.Size(184, 21);
+			this.tbfilename.Size = new Size(184, 21);
 			this.tbfilename.TabIndex = 2;
 			this.tbfilename.Text = "";
 			//
 			// lv
 			//
 			this.lv.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -744,7 +744,7 @@ namespace SimPe.Plugin
 				)
 			);
 			this.lv.Columns.AddRange(
-				new System.Windows.Forms.ColumnHeader[]
+				new ColumnHeader[]
 				{
 					this.columnHeader1,
 					this.columnHeader2,
@@ -753,7 +753,7 @@ namespace SimPe.Plugin
 					this.columnHeader3,
 				}
 			);
-			this.lv.Font = new System.Drawing.Font(
+			this.lv.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
@@ -762,15 +762,15 @@ namespace SimPe.Plugin
 			);
 			this.lv.FullRowSelect = true;
 			this.lv.HideSelection = false;
-			this.lv.Location = new System.Drawing.Point(8, 24);
+			this.lv.Location = new Point(8, 24);
 			this.lv.Name = "lv";
-			this.lv.Size = new System.Drawing.Size(568, 420);
+			this.lv.Size = new Size(568, 420);
 			this.lv.TabIndex = 1;
 			this.lv.View = System.Windows.Forms.View.Details;
-			this.lv.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(
+			this.lv.ColumnClick += new ColumnClickEventHandler(
 				this.Sort
 			);
-			this.lv.SelectedIndexChanged += new System.EventHandler(this.SelectPackage);
+			this.lv.SelectedIndexChanged += new EventHandler(this.SelectPackage);
 			//
 			// columnHeader1
 			//
@@ -799,7 +799,7 @@ namespace SimPe.Plugin
 			// linkLabel1
 			//
 			this.linkLabel1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -807,26 +807,26 @@ namespace SimPe.Plugin
 				)
 			);
 			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.Font = new System.Drawing.Font(
+			this.linkLabel1.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.linkLabel1.Location = new System.Drawing.Point(752, 32);
+			this.linkLabel1.Location = new Point(752, 32);
 			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.Size = new System.Drawing.Size(33, 17);
+			this.linkLabel1.Size = new Size(33, 17);
 			this.linkLabel1.TabIndex = 0;
 			this.linkLabel1.TabStop = true;
 			this.linkLabel1.Text = "scan";
 			this.linkLabel1.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Scan);
+				new LinkLabelLinkClickedEventHandler(this.Scan);
 			//
 			// pb
 			//
 			this.pb.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Bottom
@@ -835,9 +835,9 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.pb.Location = new System.Drawing.Point(0, 556);
+			this.pb.Location = new Point(0, 556);
 			this.pb.Name = "pb";
-			this.pb.Size = new System.Drawing.Size(792, 16);
+			this.pb.Size = new Size(792, 16);
 			this.pb.Step = 1;
 			this.pb.TabIndex = 2;
 			//
@@ -848,16 +848,16 @@ namespace SimPe.Plugin
 			this.groupBox1.Controls.Add(this.cbguid);
 			this.groupBox1.Controls.Add(this.cbcompress);
 			this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.groupBox1.Font = new System.Drawing.Font(
+			this.groupBox1.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.groupBox1.Location = new System.Drawing.Point(8, 32);
+			this.groupBox1.Location = new Point(8, 32);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(272, 64);
+			this.groupBox1.Size = new Size(272, 64);
 			this.groupBox1.TabIndex = 3;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Options";
@@ -865,16 +865,16 @@ namespace SimPe.Plugin
 			// cbprev
 			//
 			this.cbprev.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbprev.Font = new System.Drawing.Font(
+			this.cbprev.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbprev.Location = new System.Drawing.Point(168, 36);
+			this.cbprev.Location = new Point(168, 36);
 			this.cbprev.Name = "cbprev";
-			this.cbprev.Size = new System.Drawing.Size(96, 24);
+			this.cbprev.Size = new Size(96, 24);
 			this.cbprev.TabIndex = 3;
 			this.cbprev.Text = "Preview";
 			//
@@ -883,67 +883,67 @@ namespace SimPe.Plugin
 			this.cbready.Checked = true;
 			this.cbready.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.cbready.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbready.Font = new System.Drawing.Font(
+			this.cbready.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbready.Location = new System.Drawing.Point(168, 16);
+			this.cbready.Location = new Point(168, 16);
 			this.cbready.Name = "cbready";
-			this.cbready.Size = new System.Drawing.Size(96, 24);
+			this.cbready.Size = new Size(96, 24);
 			this.cbready.TabIndex = 2;
 			this.cbready.Text = "EP Ready?";
 			//
 			// cbguid
 			//
 			this.cbguid.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbguid.Font = new System.Drawing.Font(
+			this.cbguid.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbguid.Location = new System.Drawing.Point(16, 36);
+			this.cbguid.Location = new Point(16, 36);
 			this.cbguid.Name = "cbguid";
-			this.cbguid.Size = new System.Drawing.Size(96, 24);
+			this.cbguid.Size = new Size(96, 24);
 			this.cbguid.TabIndex = 1;
 			this.cbguid.Text = "Guid check";
 			//
 			// cbcompress
 			//
 			this.cbcompress.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbcompress.Font = new System.Drawing.Font(
+			this.cbcompress.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbcompress.Location = new System.Drawing.Point(16, 16);
+			this.cbcompress.Location = new Point(16, 16);
 			this.cbcompress.Name = "cbcompress";
-			this.cbcompress.Size = new System.Drawing.Size(136, 24);
+			this.cbcompress.Size = new Size(136, 24);
 			this.cbcompress.TabIndex = 0;
 			this.cbcompress.Text = "Compression check";
 			//
 			// iList
 			//
 			this.iList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-			this.iList.ImageSize = new System.Drawing.Size(48, 48);
+			this.iList.ImageSize = new Size(48, 48);
 			this.iList.TransparentColor = System.Drawing.Color.Transparent;
 			//
 			// DownloadScan
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-			this.ClientSize = new System.Drawing.Size(792, 574);
+			this.AutoScaleBaseSize = new Size(6, 14);
+			this.ClientSize = new Size(792, 574);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.pb);
 			this.Controls.Add(this.lbdir);
 			this.Controls.Add(this.comboBox1);
 			this.Controls.Add(this.linkLabel1);
-			this.Font = new System.Drawing.Font(
+			this.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
@@ -968,7 +968,7 @@ namespace SimPe.Plugin
 
 		public string FileName { get; private set; } = null;
 
-		private void Select(object sender, System.EventArgs e)
+		private void Select(object sender, EventArgs e)
 		{
 			if (comboBox1.SelectedIndex == 2)
 			{
@@ -998,7 +998,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="package"></param>
 		/// <returns>0 if everything is ok, -1 if the List is incorrect, -2 if the uncompressed Sizes are wrong</returns>
-		private int CheckCompressed(SimPe.Packages.File package)
+		private int CheckCompressed(Packages.File package)
 		{
 			bool incomplete = false;
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in package.Index)
@@ -1044,7 +1044,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="package"></param>
 		/// <returns>0 or a Guid</returns>
-		private uint[] CheckGuid(SimPe.Packages.File package)
+		private uint[] CheckGuid(Packages.File package)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
 				Data.MetaData.OBJD_FILE
@@ -1053,8 +1053,8 @@ namespace SimPe.Plugin
 
 			for (int i = 0; i < res.Length; i++)
 			{
-				SimPe.PackedFiles.Wrapper.Objd objd =
-					new SimPe.PackedFiles.Wrapper.Objd(null);
+				PackedFiles.Wrapper.Objd objd =
+					new PackedFiles.Wrapper.Objd(null);
 				objd.ProcessData(pfds[i], package);
 				res[i] = objd.SimId;
 			}
@@ -1101,7 +1101,7 @@ namespace SimPe.Plugin
 
 				try
 				{
-					SimPe.Packages.File package = SimPe.Packages.File.LoadFromFile(
+					Packages.File package = SimPe.Packages.File.LoadFromFile(
 						file
 					);
 
@@ -1114,10 +1114,10 @@ namespace SimPe.Plugin
 							pfds = package.FindFiles(Data.MetaData.TXTR);
 							if (pfds.Length > 0)
 							{
-								SimPe.Plugin.Txtr txtr = new Txtr(null, false);
+								Txtr txtr = new Txtr(null, false);
 								txtr.ProcessData(pfds[0], package);
 
-								SimPe.Plugin.ImageData id = (SimPe.Plugin.ImageData)
+								ImageData id = (ImageData)
 									txtr.Blocks[0];
 								MipMap mm = id.GetLargestTexture(iList.ImageSize);
 								if (mm != null)
@@ -1141,10 +1141,10 @@ namespace SimPe.Plugin
 
 					if (pfds.Length > 0)
 					{
-						SimPe.PackedFiles.Wrapper.Str str =
-							new SimPe.PackedFiles.Wrapper.Str();
+						PackedFiles.Wrapper.Str str =
+							new PackedFiles.Wrapper.Str();
 						str.ProcessData(pfds[0], package);
-						SimPe.PackedFiles.Wrapper.StrItemList items =
+						PackedFiles.Wrapper.StrItemList items =
 							str.FallbackedLanguageItems(
 								Helper.WindowsRegistry.LanguageCode
 							);
@@ -1168,8 +1168,8 @@ namespace SimPe.Plugin
 								pfds = package.FindFiles(0x4C697E5A); //MMAT
 								if (pfds.Length > 0)
 								{
-									SimPe.PackedFiles.Wrapper.Cpf mmat =
-										new SimPe.PackedFiles.Wrapper.Cpf();
+									PackedFiles.Wrapper.Cpf mmat =
+										new PackedFiles.Wrapper.Cpf();
 									mmat.ProcessData(pfds[0], package);
 									desc =
 										"[recolor] "
@@ -1183,8 +1183,8 @@ namespace SimPe.Plugin
 					pfds = package.FindFiles(Data.MetaData.GZPS);
 					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 					{
-						SimPe.PackedFiles.Wrapper.Cpf cpf =
-							new SimPe.PackedFiles.Wrapper.Cpf();
+						PackedFiles.Wrapper.Cpf cpf =
+							new PackedFiles.Wrapper.Cpf();
 						cpf.ProcessData(pfd, package);
 
 						desc = "[" + cpf.GetSaveItem("type").StringValue + "] " + desc;
@@ -1316,7 +1316,7 @@ namespace SimPe.Plugin
 
 		private void Scan(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			lv.Items.Clear();
@@ -1358,7 +1358,7 @@ namespace SimPe.Plugin
 
 		private ColumnSorter sorter;
 
-		private void Sort(object sender, System.Windows.Forms.ColumnClickEventArgs e)
+		private void Sort(object sender, ColumnClickEventArgs e)
 		{
 			if (((ListView)sender).ListViewItemSorter == null)
 			{
@@ -1387,7 +1387,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		void SetSkinBoxes(SimPe.PackedFiles.Wrapper.Cpf cpf)
+		void SetSkinBoxes(PackedFiles.Wrapper.Cpf cpf)
 		{
 			uint age = cpf.GetSaveItem("age").UIntegerValue;
 			uint cat = cpf.GetSaveItem("category").UIntegerValue;
@@ -1433,16 +1433,16 @@ namespace SimPe.Plugin
 			}
 			else
 			{
-				SimPe.Packages.File skin = SimPe.Packages.File.LoadFromFile(
+				Packages.File skin = SimPe.Packages.File.LoadFromFile(
 					(string)lvi.Tag
 				);
-				SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = skin.FindFiles(
+				Interfaces.Files.IPackedFileDescriptor[] pfds = skin.FindFiles(
 					Data.MetaData.GZPS
 				);
-				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
-					SimPe.PackedFiles.Wrapper.Cpf cpf =
-						new SimPe.PackedFiles.Wrapper.Cpf();
+					PackedFiles.Wrapper.Cpf cpf =
+						new PackedFiles.Wrapper.Cpf();
 					cpf.ProcessData(pfd, skin);
 
 					if (cpf.GetSaveItem("type").StringValue == "skin")
@@ -1463,17 +1463,17 @@ namespace SimPe.Plugin
 			}
 			else
 			{
-				SimPe.Packages.File skin = SimPe.Packages.File.LoadFromFile(
+				Packages.File skin = SimPe.Packages.File.LoadFromFile(
 					(string)lvi.Tag
 				);
-				SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = skin.FindFiles(
+				Interfaces.Files.IPackedFileDescriptor[] pfds = skin.FindFiles(
 					Data.MetaData.TXTR
 				);
-				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
-					SimPe.Plugin.Txtr txtr = new Txtr(null, false);
+					Txtr txtr = new Txtr(null, false);
 					txtr.ProcessData(pfd, skin);
-					SimPe.Plugin.ImageData id = (SimPe.Plugin.ImageData)txtr.Blocks[0];
+					ImageData id = (ImageData)txtr.Blocks[0];
 
 					MipMap mm = id.GetLargestTexture(pb.Size);
 					if (mm != null)
@@ -1486,7 +1486,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SelectPackage(object sender, System.EventArgs e)
+		private void SelectPackage(object sender, EventArgs e)
 		{
 			tbfilename.Text = "";
 			llopen.Enabled = false;
@@ -1571,7 +1571,7 @@ namespace SimPe.Plugin
 
 		private void Openpackage(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lv.SelectedItems.Count != 1)
@@ -1603,7 +1603,7 @@ namespace SimPe.Plugin
 
 		private void Disable(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lv.SelectedItems.Count == 0)
@@ -1622,7 +1622,7 @@ namespace SimPe.Plugin
 					lvi.Text + ".simpedis"
 				);
 
-				SimPe.Packages.StreamItem si =
+				Packages.StreamItem si =
 					SimPe.Packages.StreamFactory.GetStreamItem(filename, false);
 				if (si != null)
 				{
@@ -1659,7 +1659,7 @@ namespace SimPe.Plugin
 
 		private void Fix(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lv.SelectedItems.Count == 0)
@@ -1736,7 +1736,7 @@ namespace SimPe.Plugin
 
 		private void FixCompression(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lv.SelectedItems.Count < 1)
@@ -1768,13 +1768,13 @@ namespace SimPe.Plugin
 
 					if (System.IO.File.Exists(FileName))
 					{
-						SimPe.Packages.GeneratableFile pkg =
+						Packages.GeneratableFile pkg =
 							SimPe.Packages.GeneratableFile.LoadFromFile(FileName);
 						foreach (
-							SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pkg.Index
+							Interfaces.Files.IPackedFileDescriptor pfd in pkg.Index
 						)
 						{
-							SimPe.Interfaces.Files.IPackedFile file = pkg.Read(pfd);
+							Interfaces.Files.IPackedFile file = pkg.Read(pfd);
 							pfd.UserData = file.UncompressedData;
 
 							pfd.MarkForReCompress = (
@@ -1792,12 +1792,12 @@ namespace SimPe.Plugin
 			pb.Value = 0;
 		}
 
-		void AddUniversityFields(SimPe.PackedFiles.Wrapper.Cpf cpf)
+		void AddUniversityFields(PackedFiles.Wrapper.Cpf cpf)
 		{
 			if (cpf.GetItem("product") == null)
 			{
-				SimPe.PackedFiles.Wrapper.CpfItem i =
-					new SimPe.PackedFiles.Wrapper.CpfItem();
+				PackedFiles.Wrapper.CpfItem i =
+					new PackedFiles.Wrapper.CpfItem();
 				i.Name = "product";
 				i.UIntegerValue = 1;
 				cpf.AddItem(i);
@@ -1805,8 +1805,8 @@ namespace SimPe.Plugin
 
 			if (cpf.GetItem("version") == null)
 			{
-				SimPe.PackedFiles.Wrapper.CpfItem i =
-					new SimPe.PackedFiles.Wrapper.CpfItem();
+				PackedFiles.Wrapper.CpfItem i =
+					new PackedFiles.Wrapper.CpfItem();
 				i.Name = "version";
 				i.UIntegerValue = 2;
 				cpf.AddItem(i);
@@ -1817,7 +1817,7 @@ namespace SimPe.Plugin
 
 		private void SetSkinAge(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lv.SelectedItems.Count == 0)
@@ -1840,17 +1840,17 @@ namespace SimPe.Plugin
 					if (lvi.SubItems[1].Text.StartsWith("[skin]"))
 					{
 						string name = (string)lvi.Tag;
-						SimPe.Packages.GeneratableFile skin =
+						Packages.GeneratableFile skin =
 							SimPe.Packages.GeneratableFile.LoadFromFile(name);
 
-						SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds =
+						Interfaces.Files.IPackedFileDescriptor[] pfds =
 							skin.FindFiles(Data.MetaData.GZPS);
 						foreach (
-							SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds
+							Interfaces.Files.IPackedFileDescriptor pfd in pfds
 						)
 						{
-							SimPe.PackedFiles.Wrapper.Cpf cpf =
-								new SimPe.PackedFiles.Wrapper.Cpf();
+							PackedFiles.Wrapper.Cpf cpf =
+								new PackedFiles.Wrapper.Cpf();
 							cpf.ProcessData(pfd, skin);
 
 							if (cpf.GetSaveItem("type").StringValue == "skin")

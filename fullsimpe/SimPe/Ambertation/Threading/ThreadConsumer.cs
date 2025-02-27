@@ -195,7 +195,7 @@ namespace Ambertation.Threading
 				{
 					if (Canceling != null)
 					{
-						Canceling(this, new System.EventArgs());
+						Canceling(this, new EventArgs());
 					}
 
 					// Signal that we have added a Element
@@ -257,8 +257,8 @@ namespace Ambertation.Threading
 		}
 
 		#endregion
-		public event System.EventHandler Finished;
-		public event System.EventHandler Canceling;
+		public event EventHandler Finished;
+		public event EventHandler Canceling;
 
 		/// <summary>
 		/// Use this Method top Produces objects, add the Objects to the
@@ -286,7 +286,7 @@ namespace Ambertation.Threading
 			OnFinish();
 			if (Finished != null)
 			{
-				Finished(this, new System.EventArgs());
+				Finished(this, new EventArgs());
 			}
 		}
 	}

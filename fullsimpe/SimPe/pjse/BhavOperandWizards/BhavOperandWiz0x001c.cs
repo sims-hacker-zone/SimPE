@@ -27,11 +27,11 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 	/// <summary>
 	/// Summary description for StrBig.
 	/// </summary>
-	internal class UI : System.Windows.Forms.Form, iBhavOperandWizForm
+	internal class UI : Form, iBhavOperandWizForm
 	{
 		#region Form variables
 
-		internal System.Windows.Forms.Panel pnWiz0x001c;
+		internal Panel pnWiz0x001c;
 		private Label label1;
 		private ComboBox cbScope;
 		private Label label2;
@@ -137,7 +137,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 
 		private void doStrChooser()
 		{
-			pjse.FileTable.Entry[] items = pjse.FileTable.GFT[
+			FileTable.Entry[] items = pjse.FileTable.GFT[
 				(uint)SimPe.Data.MetaData.STRING_FILE,
 				inst.Parent.GroupForScope(this.Scope),
 				(uint)GS.GlobalStr.NamedTree
@@ -154,7 +154,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 				return; // eek!
 			}
 
-			SimPe.PackedFiles.Wrapper.StrWrapper str = new StrWrapper();
+			StrWrapper str = new StrWrapper();
 			str.ProcessData(items[0].PFD, items[0].Package);
 
 			int i = (new StrChooser(true)).Strnum(str);
@@ -283,31 +283,31 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWiz0x001c = new System.Windows.Forms.Panel();
-			this.flpArgs = new System.Windows.Forms.FlowLayoutPanel();
-			this.ldocArg1 = new pjse.LabelledDataOwner();
-			this.ldocArg2 = new pjse.LabelledDataOwner();
-			this.ldocArg3 = new pjse.LabelledDataOwner();
-			this.btnTreeName = new System.Windows.Forms.Button();
-			this.tbTree = new System.Windows.Forms.TextBox();
-			this.tfGlobal = new System.Windows.Forms.CheckBox();
-			this.tfParams = new System.Windows.Forms.CheckBox();
-			this.tfArgs = new System.Windows.Forms.CheckBox();
-			this.tfSemiGlobal = new System.Windows.Forms.CheckBox();
-			this.tfPrivate = new System.Windows.Forms.CheckBox();
-			this.cbRTBNType = new System.Windows.Forms.ComboBox();
-			this.cbScope = new System.Windows.Forms.ComboBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.lbTreeName = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label8 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-			this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-			this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-			this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+			this.pnWiz0x001c = new Panel();
+			this.flpArgs = new FlowLayoutPanel();
+			this.ldocArg1 = new LabelledDataOwner();
+			this.ldocArg2 = new LabelledDataOwner();
+			this.ldocArg3 = new LabelledDataOwner();
+			this.btnTreeName = new Button();
+			this.tbTree = new TextBox();
+			this.tfGlobal = new CheckBox();
+			this.tfParams = new CheckBox();
+			this.tfArgs = new CheckBox();
+			this.tfSemiGlobal = new CheckBox();
+			this.tfPrivate = new CheckBox();
+			this.cbRTBNType = new ComboBox();
+			this.cbScope = new ComboBox();
+			this.label3 = new Label();
+			this.lbTreeName = new Label();
+			this.label2 = new Label();
+			this.label4 = new Label();
+			this.label8 = new Label();
+			this.label1 = new Label();
+			this.tableLayoutPanel1 = new TableLayoutPanel();
+			this.flowLayoutPanel2 = new FlowLayoutPanel();
+			this.flowLayoutPanel3 = new FlowLayoutPanel();
+			this.flowLayoutPanel4 = new FlowLayoutPanel();
+			this.flowLayoutPanel6 = new FlowLayoutPanel();
 			this.pnWiz0x001c.SuspendLayout();
 			this.flpArgs.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -373,7 +373,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 			//
 			resources.ApplyResources(this.btnTreeName, "btnTreeName");
 			this.btnTreeName.Name = "btnTreeName";
-			this.btnTreeName.Click += new System.EventHandler(this.btnTreeName_Click);
+			this.btnTreeName.Click += new EventHandler(this.btnTreeName_Click);
 			//
 			// tbTree
 			//
@@ -397,7 +397,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 			resources.ApplyResources(this.tfArgs, "tfArgs");
 			this.tfArgs.Name = "tfArgs";
 			this.tfArgs.UseVisualStyleBackColor = true;
-			this.tfArgs.CheckedChanged += new System.EventHandler(
+			this.tfArgs.CheckedChanged += new EventHandler(
 				this.tfArgs_CheckedChanged
 			);
 			//
@@ -452,7 +452,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 				}
 			);
 			this.cbScope.Name = "cbScope";
-			this.cbScope.SelectedIndexChanged += new System.EventHandler(
+			this.cbScope.SelectedIndexChanged += new EventHandler(
 				this.cbScope_SelectedIndexChanged
 			);
 			//
@@ -588,7 +588,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 
 namespace pjse.BhavOperandWizards
 {
-	public class BhavOperandWiz0x001c : pjse.ABhavOperandWiz
+	public class BhavOperandWiz0x001c : ABhavOperandWiz
 	{
 		public BhavOperandWiz0x001c(Instruction i)
 			: base(i)

@@ -29,7 +29,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Extends the basic Neighborhood Plugin by some usefull Features
 	/// </summary>
-	public class EnhancedNgbh : SimPe.Plugin.ExtNgbh
+	public class EnhancedNgbh : ExtNgbh
 	{
 		public EnhancedNgbh()
 			: base()
@@ -273,7 +273,7 @@ namespace SimPe.Plugin
 				Collections.NgbhItems simMemories = slot.ItemsB;
 
 				Collections.NgbhItems memoryToRemove =
-					new SimPe.Plugin.Collections.NgbhItems(null);
+					new Collections.NgbhItems(null);
 				for (int j = 0; j < simMemories.Length; j++)
 				{
 					for (int i = 0; i < items.Length; i++)

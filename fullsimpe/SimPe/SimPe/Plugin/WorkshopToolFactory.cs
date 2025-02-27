@@ -29,16 +29,16 @@ namespace SimPe.Plugin
 	/// If a Plugin isn't returned, SimPe won't recognize it!
 	/// </remarks>
 	public class WorkshopToolFactory
-		: SimPe.Interfaces.Plugin.AbstractWrapperFactory,
-			SimPe.Interfaces.Plugin.IToolFactory,
-			SimPe.Interfaces.Plugin.IHelpFactory
+		: Interfaces.Plugin.AbstractWrapperFactory,
+			Interfaces.Plugin.IToolFactory,
+			Interfaces.Plugin.IHelpFactory
 	{
 		internal static IToolPlugin[] Last;
 
 		public WorkshopToolFactory()
 		{
 			SimPe.Plugin.MmatWrapper.GlobalCpfPreview =
-				new SimPe.PackedFiles.UserInterface.CpfUI.ExecutePreview(
+				new PackedFiles.UserInterface.CpfUI.ExecutePreview(
 					SimPe.Plugin.PreviewForm.Execute
 				);
 		}
@@ -48,7 +48,7 @@ namespace SimPe.Plugin
 		/// Returns a List of all available Plugins in this Package
 		/// </summary>
 		/// <returns>A List of all provided Plugins (=FileType Wrappers)</returns>
-		public override SimPe.Interfaces.IWrapper[] KnownWrappers
+		public override IWrapper[] KnownWrappers
 		{
 			get
 			{
@@ -72,13 +72,13 @@ namespace SimPe.Plugin
 			}
 			else
 			{
-				docks.Add(new SimPe.Plugin.Tool.Dockable.ObectWorkshopDockTool());
+				docks.Add(new Tool.Dockable.ObectWorkshopDockTool());
 			}
 
-			docks.Add(new SimPe.Plugin.Tool.Dockable.PackageDetailDockTool());
+			docks.Add(new Tool.Dockable.PackageDetailDockTool());
 			if (Helper.WindowsRegistry.HiddenMode)
 			{
-				docks.Add(new SimPe.Plugin.Tool.Window.PackageRepairTool());
+				docks.Add(new Tool.Window.PackageRepairTool());
 			}
 		}
 

@@ -37,7 +37,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		#region Cache Handling
-		SimPe.Cache.ObjectLoaderCacheFile cachefile;
+		Cache.ObjectLoaderCacheFile cachefile;
 		bool cachechg;
 
 		/// <summary>
@@ -56,7 +56,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			cachechg = false;
-			cachefile = new SimPe.Cache.ObjectLoaderCacheFile();
+			cachefile = new Cache.ObjectLoaderCacheFile();
 
 			if (!Helper.WindowsRegistry.UseCache)
 			{
@@ -108,7 +108,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				FileTable.FileIndex.Sort(FileTable.FileIndex.FindFile(type, true));
 			string len = " / " + nrefitems.Length.ToString();
 
-			SimPe.Data.MetaData.Languages deflang = Helper.WindowsRegistry.LanguageCode;
+			Data.MetaData.Languages deflang = Helper.WindowsRegistry.LanguageCode;
 			Wait.Message = "Loading Walls, Fences and Floors";
 			Wait.MaxProgress = nrefitems.Length;
 			foreach (
@@ -162,7 +162,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 				if (cindex != -1) //found in the cache
 				{
-					SimPe.Cache.ObjectCacheItem oci = (SimPe.Cache.ObjectCacheItem)
+					Cache.ObjectCacheItem oci = (Cache.ObjectCacheItem)
 						cacheitems[cindex].FileDescriptor.Tag;
 					if (!oci.Useable)
 					{
@@ -180,7 +180,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					pitems.Add(nrefitem);
 					groups.Add(nrefitem.FileDescriptor.Instance);
 
-					SimPe.Cache.ObjectCacheItem oci = new SimPe.Cache.ObjectCacheItem();
+					Cache.ObjectCacheItem oci = new Cache.ObjectCacheItem();
 					oci.Tag = nrefitem;
 					oci.Useable = false;
 					cachechg = true;
@@ -207,7 +207,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			string len = " / " + nrefitems.Length.ToString();
 
-			SimPe.Data.MetaData.Languages deflang = Helper.WindowsRegistry.LanguageCode;
+			Data.MetaData.Languages deflang = Helper.WindowsRegistry.LanguageCode;
 			Wait.Message = "Loading Objects";
 			Wait.MaxProgress = nrefitems.Length;
 			foreach (
@@ -282,7 +282,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 				if (cindex != -1) //found in the cache
 				{
-					SimPe.Cache.ObjectCacheItem oci = (SimPe.Cache.ObjectCacheItem)
+					Cache.ObjectCacheItem oci = (Cache.ObjectCacheItem)
 						cacheitems[cindex].FileDescriptor.Tag;
 					if (!oci.Useable)
 					{
@@ -300,7 +300,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					pitems.Add(nrefitem);
 					groups.Add(nrefitem.LocalGroup);
 
-					SimPe.Cache.ObjectCacheItem oci = new SimPe.Cache.ObjectCacheItem();
+					Cache.ObjectCacheItem oci = new Cache.ObjectCacheItem();
 					oci.Tag = nrefitem;
 					oci.Useable = false;
 					cachechg = true;
@@ -330,7 +330,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 	internal class ObjectConsumer : ConsumerThread
 	{
-		SimPe.Data.MetaData.Languages deflang;
+		Data.MetaData.Languages deflang;
 		ArrayList pict;
 
 		internal ObjectConsumer(ProducerThread pt)
@@ -339,8 +339,8 @@ namespace SimPe.Plugin.Tool.Dockable
 			deflang = Helper.WindowsRegistry.LanguageCode;
 
 			this.pict = new ArrayList();
-			SimPe.PackedFiles.Wrapper.Picture pw =
-				new SimPe.PackedFiles.Wrapper.Picture();
+			PackedFiles.Wrapper.Picture pw =
+				new PackedFiles.Wrapper.Picture();
 			uint[] picts = pw.AssignableTypes;
 			foreach (uint p in picts)
 			{
@@ -351,20 +351,20 @@ namespace SimPe.Plugin.Tool.Dockable
 		public event ObjectLoader.LoadItemHandler LoadedItem;
 
 		static void SetFunctionSortForXObj(
-			SimPe.PackedFiles.Wrapper.Cpf cpf,
-			SimPe.Cache.ObjectCacheItem oci
+			PackedFiles.Wrapper.Cpf cpf,
+			Cache.ObjectCacheItem oci
 		)
 		{
 			oci.ObjectFunctionSort = (uint)ObjectPreview.GetFunctionSort(cpf);
 		}
 
 		static void ConsumeFromXobj(
-			SimPe.Cache.ObjectCacheItem oci,
+			Cache.ObjectCacheItem oci,
 			Interfaces.Scenegraph.IScenegraphFileIndexItem nrefitem,
-			SimPe.Data.MetaData.Languages deflang
+			Data.MetaData.Languages deflang
 		)
 		{
-			SimPe.PackedFiles.Wrapper.Cpf cpf = new SimPe.PackedFiles.Wrapper.Cpf();
+			PackedFiles.Wrapper.Cpf cpf = new PackedFiles.Wrapper.Cpf();
 			nrefitem.FileDescriptor.UserData = nrefitem
 				.Package.Read(nrefitem.FileDescriptor)
 				.UncompressedData;
@@ -394,9 +394,9 @@ namespace SimPe.Plugin.Tool.Dockable
 				); //Data.MetaData.STRING_FILE
 			if (ctssitems.Length > 0)
 			{
-				SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
 				str.ProcessData(ctssitems[0]);
-				SimPe.PackedFiles.Wrapper.StrItemList items = str.LanguageItems(
+				PackedFiles.Wrapper.StrItemList items = str.LanguageItems(
 					deflang
 				);
 				if (items.Length > 0)
@@ -458,10 +458,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		internal static bool DoConsume(
 			Object o,
 			ObjectLoader.LoadItemHandler LoadedItem,
-			SimPe.Data.MetaData.Languages deflang
+			Data.MetaData.Languages deflang
 		)
 		{
-			SimPe.Cache.ObjectCacheItem oci = (SimPe.Cache.ObjectCacheItem)o;
+			Cache.ObjectCacheItem oci = (Cache.ObjectCacheItem)o;
 			Interfaces.Scenegraph.IScenegraphFileIndexItem nrefitem =
 				(Interfaces.Scenegraph.IScenegraphFileIndexItem)oci.Tag;
 
@@ -475,8 +475,8 @@ namespace SimPe.Plugin.Tool.Dockable
 				&& nrefitem.FileDescriptor.Type == Data.MetaData.OBJD_FILE
 			)
 			{
-				SimPe.PackedFiles.Wrapper.ExtObjd objd =
-					new SimPe.PackedFiles.Wrapper.ExtObjd();
+				PackedFiles.Wrapper.ExtObjd objd =
+					new PackedFiles.Wrapper.ExtObjd();
 				nrefitem.FileDescriptor.UserData = nrefitem
 					.Package.Read(nrefitem.FileDescriptor)
 					.UncompressedData;
@@ -506,10 +506,10 @@ namespace SimPe.Plugin.Tool.Dockable
 					);
 				if (ctssitems.Length > 0)
 				{
-					SimPe.PackedFiles.Wrapper.Str str =
-						new SimPe.PackedFiles.Wrapper.Str();
+					PackedFiles.Wrapper.Str str =
+						new PackedFiles.Wrapper.Str();
 					str.ProcessData(ctssitems[0]);
-					SimPe.PackedFiles.Wrapper.StrItemList items = str.LanguageItems(
+					PackedFiles.Wrapper.StrItemList items = str.LanguageItems(
 						deflang
 					);
 					if (items.Length > 0)
@@ -549,10 +549,10 @@ namespace SimPe.Plugin.Tool.Dockable
 					);
 				if (txtitems.Length > 0)
 				{
-					SimPe.PackedFiles.Wrapper.Str str =
-						new SimPe.PackedFiles.Wrapper.Str(2);
+					PackedFiles.Wrapper.Str str =
+						new PackedFiles.Wrapper.Str(2);
 					str.ProcessData(txtitems[0]);
-					SimPe.PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
+					PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
 					if (items.Length > 1)
 					{
 						oci.ModelName = items[1].Title;
@@ -628,12 +628,12 @@ namespace SimPe.Plugin.Tool.Dockable
 	public class ObjectLoader
 	{
 		public delegate void LoadItemHandler(
-			SimPe.Cache.ObjectCacheItem oci,
+			Cache.ObjectCacheItem oci,
 			Interfaces.Scenegraph.IScenegraphFileIndexItem fii,
 			Data.Alias a
 		);
-		public event ObjectLoader.LoadItemHandler LoadedItem;
-		public event System.EventHandler Finished;
+		public event LoadItemHandler LoadedItem;
+		public event EventHandler Finished;
 
 		ImageList ilist;
 
@@ -644,7 +644,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				ilist = new ImageList();
 			}
 
-			ilist.ImageSize = new System.Drawing.Size(
+			ilist.ImageSize = new Size(
 				Helper.WindowsRegistry.OWThumbSize,
 				Helper.WindowsRegistry.OWThumbSize
 			);
@@ -653,24 +653,24 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.ilist = ilist;
 		}
 
-		public static SimPe.Cache.ObjectCacheItem ObjectCacheItemFromPackage(
-			SimPe.Interfaces.Files.IPackageFile pkg
+		public static Cache.ObjectCacheItem ObjectCacheItemFromPackage(
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
-			SimPe.Cache.ObjectCacheItem oci = new SimPe.Cache.ObjectCacheItem();
+			Cache.ObjectCacheItem oci = new Cache.ObjectCacheItem();
 
 			oci.Class = SimPe.Cache.ObjectClass.Object;
 
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
 				Data.MetaData.OBJD_FILE
 			);
 			bool first = true;
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
 					FileTable.FileIndex.FindFile(pfd, pkg);
 				foreach (
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
+					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
 				)
 				{
 					if (
@@ -718,9 +718,9 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		private void ver1_LoadedItem(
-			SimPe.Cache.ObjectCacheItem oci,
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii,
-			SimPe.Data.Alias a
+			Cache.ObjectCacheItem oci,
+			Interfaces.Scenegraph.IScenegraphFileIndexItem fii,
+			Data.Alias a
 		)
 		{
 			if (LoadedItem != null)
@@ -734,7 +734,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			Wait.SubStop();
 			if (Finished != null)
 			{
-				Finished(this, new System.EventArgs());
+				Finished(this, new EventArgs());
 			}
 		}
 
@@ -742,8 +742,8 @@ namespace SimPe.Plugin.Tool.Dockable
 			TreeNodeCollection nodes,
 			string[] names,
 			int id,
-			SimPe.Cache.ObjectCacheItem oci,
-			SimPe.Data.Alias a,
+			Cache.ObjectCacheItem oci,
+			Data.Alias a,
 			ImageList ilist
 		)
 		{
@@ -815,8 +815,8 @@ namespace SimPe.Plugin.Tool.Dockable
 				TreeNode tn = new TreeNode(twine);
 				tn.Tag = a;
 
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii =
-					(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem)oci.Tag;
+				Interfaces.Scenegraph.IScenegraphFileIndexItem fii =
+					(Interfaces.Scenegraph.IScenegraphFileIndexItem)oci.Tag;
 				string flname = "";
 				if (fii.Package != null)
 				{

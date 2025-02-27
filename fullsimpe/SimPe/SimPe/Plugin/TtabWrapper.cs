@@ -26,9 +26,9 @@ namespace SimPe.Plugin
 	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public class Ttab : SimPe.PackedFiles.Wrapper.Ttab
+	public class Ttab : PackedFiles.Wrapper.Ttab
 	{
-		public Ttab(SimPe.Interfaces.Providers.IOpcodeProvider prv)
+		public Ttab(Interfaces.Providers.IOpcodeProvider prv)
 			: base() { }
 
 		public Ttab()

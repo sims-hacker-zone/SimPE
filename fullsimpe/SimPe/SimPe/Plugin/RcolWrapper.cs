@@ -42,7 +42,7 @@ namespace SimPe.Plugin
 			,
 			IMultiplePackedFileWrapper //Allow Multiple Instances
 			,
-			System.IDisposable
+			IDisposable
 	{
 		#region Attributes
 		byte[] oversize;
@@ -105,14 +105,14 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			System.Delegate[] list = TabPageChanged.GetInvocationList();
+			Delegate[] list = TabPageChanged.GetInvocationList();
 			foreach (EventHandler d in list)
 			{
 				TabPageChanged -= d;
 			}
 		}
 
-		internal void ChildTabPageChanged(object sender, System.EventArgs e)
+		internal void ChildTabPageChanged(object sender, EventArgs e)
 		{
 			if (TabPageChanged != null)
 			{
@@ -231,10 +231,10 @@ namespace SimPe.Plugin
 			args[0] = null;
 			object[] statics = SimPe.LoadFileWrappers.LoadPlugins(
 				a,
-				typeof(SimPe.Interfaces.Scenegraph.IRcolBlock),
+				typeof(IRcolBlock),
 				args
 			);
-			foreach (SimPe.Interfaces.Scenegraph.IRcolBlock isb in statics)
+			foreach (IRcolBlock isb in statics)
 			{
 				isb.Register(tokens);
 			}
@@ -372,8 +372,8 @@ namespace SimPe.Plugin
 				];
 				for (int i = 0; i < reffiles.Length; i++)
 				{
-					SimPe.Packages.PackedFileDescriptor pfd =
-						new SimPe.Packages.PackedFileDescriptor();
+					Packages.PackedFileDescriptor pfd =
+						new Packages.PackedFileDescriptor();
 
 					pfd.Group = reader.ReadUInt32();
 					pfd.Instance = reader.ReadUInt32();
@@ -444,8 +444,8 @@ namespace SimPe.Plugin
 			writer.Write((uint)reffiles.Length);
 			for (int i = 0; i < reffiles.Length; i++)
 			{
-				SimPe.Packages.PackedFileDescriptor pfd =
-					(SimPe.Packages.PackedFileDescriptor)reffiles[i];
+				Packages.PackedFileDescriptor pfd =
+					(Packages.PackedFileDescriptor)reffiles[i];
 				writer.Write(pfd.Group);
 				writer.Write(pfd.Instance);
 				if (Count == 0xffff0001)
@@ -501,8 +501,8 @@ namespace SimPe.Plugin
 					}
 
 					list.Add(pfd);
-					SimPe.Interfaces.Plugin.IFileWrapper wrapper =
-						(SimPe.Interfaces.Plugin.IFileWrapper)
+					IFileWrapper wrapper =
+						(IFileWrapper)
 							registry.FindHandler(pfd.Type);
 					if (wrapper != null)
 					{

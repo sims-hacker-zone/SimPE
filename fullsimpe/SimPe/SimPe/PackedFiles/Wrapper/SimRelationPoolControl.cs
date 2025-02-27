@@ -4,10 +4,10 @@ using System.Drawing;
 
 namespace SimPe.PackedFiles.Wrapper
 {
-	[System.ComponentModel.DefaultEvent("SelectedSimChanged")]
+	[DefaultEvent("SelectedSimChanged")]
 	public partial class SimRelationPoolControl : SimPoolControl
 	{
-		static System.Drawing.Image RelatedImage;
+		static Image RelatedImage;
 
 		public SimRelationPoolControl()
 		{
@@ -43,7 +43,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		protected Image UpdateIcon(SimPe.PackedFiles.Wrapper.ExtSDesc sdsc)
+		protected Image UpdateIcon(ExtSDesc sdsc)
 		{
 			if (sim != null && sdsc != null)
 			{
@@ -62,7 +62,7 @@ namespace SimPe.PackedFiles.Wrapper
 			return null;
 		}
 
-		protected override void OnAddSimToPool(SimPoolControl.AddSimToPoolEventArgs e)
+		protected override void OnAddSimToPool(AddSimToPoolEventArgs e)
 		{
 			if (sim != null)
 			{

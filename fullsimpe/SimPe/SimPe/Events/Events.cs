@@ -23,10 +23,10 @@ namespace SimPe.Events
 {
 	/// <summary>
 	/// Used whenever the content
-	/// of a <see cref="SimPe.Interfaces.Files.IPackedFileDescriptor"/> changed
+	/// of a <see cref="Interfaces.Files.IPackedFileDescriptor"/> changed
 	/// </summary>
 	public delegate void PackedFileChanged(
-		SimPe.Interfaces.Files.IPackedFileDescriptor sender
+		Interfaces.Files.IPackedFileDescriptor sender
 	);
 
 	/*/// <summary>
@@ -51,7 +51,7 @@ namespace SimPe.Events
 	public class ResourceEventArgs
 		: System.EventArgs,
 			IEnumerable,
-			SimPe.Interfaces.Plugin.IToolResult
+			Interfaces.Plugin.IToolResult
 	{
 
 		/// <summary>
@@ -240,11 +240,11 @@ namespace SimPe.Events
 
 		#endregion
 
-		public SimPe.Collections.PackedFileDescriptors GetDescriptors()
+		public Collections.PackedFileDescriptors GetDescriptors()
 		{
-			SimPe.Collections.PackedFileDescriptors pfds =
-				new SimPe.Collections.PackedFileDescriptors();
-			foreach (SimPe.Events.ResourceContainer e in Items)
+			Collections.PackedFileDescriptors pfds =
+				new Collections.PackedFileDescriptors();
+			foreach (ResourceContainer e in Items)
 			{
 				if (e.HasFileDescriptor)
 				{
@@ -259,11 +259,11 @@ namespace SimPe.Events
 	/// Used as Item in <see cref="ResourceEventArgs"/>
 	/// </summary>
 	public class ResourceContainer
-		: SimPe.Interfaces.Plugin.IToolResult,
+		: Interfaces.Plugin.IToolResult,
 			System.IDisposable
 	{
 		public ResourceContainer(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item
+			Interfaces.Scenegraph.IScenegraphFileIndexItem item
 		)
 		{
 			this.Resource = item;
@@ -274,7 +274,7 @@ namespace SimPe.Events
 		/// <summary>
 		/// Returns the Resource
 		/// </summary>
-		public SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem Resource
+		public Interfaces.Scenegraph.IScenegraphFileIndexItem Resource
 		{
 			get; private set;
 		}

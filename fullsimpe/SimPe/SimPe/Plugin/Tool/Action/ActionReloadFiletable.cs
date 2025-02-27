@@ -22,19 +22,19 @@ namespace SimPe.Plugin.Tool.Action
 	/// <summary>
 	/// The ReloadFileTable Action
 	/// </summary>
-	public class ActionReloadFiletable : SimPe.Interfaces.IToolAction
+	public class ActionReloadFiletable : Interfaces.IToolAction
 	{
 		#region IToolAction Member
 
 		public virtual bool ChangeEnabledStateEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs es
+			Events.ResourceEventArgs es
 		)
 		{
 			return true;
 		}
 
-		public void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs e)
+		public void ExecuteEventHandler(object sender, Events.ResourceEventArgs e)
 		{
 			if (!ChangeEnabledStateEventHandler(null, e))
 			{

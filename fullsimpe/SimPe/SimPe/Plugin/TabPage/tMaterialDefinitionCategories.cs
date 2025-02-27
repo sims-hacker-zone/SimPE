@@ -77,7 +77,7 @@ namespace SimPe.Plugin.TabPage
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.pg = new System.Windows.Forms.PropertyGrid();
+			this.pg = new PropertyGrid();
 			this.SuspendLayout();
 			//
 			// tMaterialDefinitionCategories
@@ -93,7 +93,7 @@ namespace SimPe.Plugin.TabPage
 			// pg
 			//
 			this.pg.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -118,7 +118,7 @@ namespace SimPe.Plugin.TabPage
 			this.pg.ViewBackColor = System.Drawing.SystemColors.Window;
 			this.pg.ViewForeColor = System.Drawing.SystemColors.WindowText;
 			this.pg.PropertyValueChanged +=
-				new System.Windows.Forms.PropertyValueChangedEventHandler(
+				new PropertyValueChangedEventHandler(
 					this.pg_PropertyValueChanged
 				);
 			//
@@ -129,7 +129,7 @@ namespace SimPe.Plugin.TabPage
 		#endregion
 
 
-		private System.Windows.Forms.PropertyGrid pg;
+		private PropertyGrid pg;
 
 		/*private void SelectListFile(object sender, System.EventArgs e)
 		{
@@ -197,7 +197,7 @@ namespace SimPe.Plugin.TabPage
 
 		Ambertation.PropertyObjectBuilderExt pob;
 
-		internal void SetupGrid(SimPe.Plugin.MaterialDefinition md)
+		internal void SetupGrid(Plugin.MaterialDefinition md)
 		{
 			pg.SelectedObject = null;
 			/*if (this.tGrid.Tag==null) return;
@@ -235,7 +235,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void pg_PropertyValueChanged(
 			object s,
-			System.Windows.Forms.PropertyValueChangedEventArgs e
+			PropertyValueChangedEventArgs e
 		)
 		{
 			if (this.Tag == null)
@@ -248,7 +248,7 @@ namespace SimPe.Plugin.TabPage
 				return;
 			}
 
-			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
+			Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
 				this.Tag;
 			object o = pob.Properties[e.ChangedItem.Label];
 			if (o is Boolean)
@@ -270,14 +270,14 @@ namespace SimPe.Plugin.TabPage
 			md.Parent.Changed = true;
 		}
 
-		internal void TxmtChangeTab(object sender, System.EventArgs e)
+		internal void TxmtChangeTab(object sender, EventArgs e)
 		{
 			if (this.Tag == null)
 			{
 				return;
 			}
 
-			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
+			Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
 				this.Tag;
 			if (Parent == null)
 			{

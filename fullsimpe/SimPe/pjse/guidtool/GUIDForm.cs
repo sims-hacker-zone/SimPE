@@ -32,12 +32,12 @@ namespace pjse.guidtool
 	/// <summary>
 	/// Summary description for GUIDForm.
 	/// </summary>
-	public class GUIDForm : System.Windows.Forms.Form
+	public class GUIDForm : Form
 	{
 		#region Form variables
 
 		private ExtProgressBar progressBar1;
-		private System.Windows.Forms.Label lbStatus;
+		private Label lbStatus;
 		private RichTextBox rtbReport;
 		private TextBox tbNumber;
 		private Label lbName;
@@ -75,7 +75,7 @@ namespace pjse.guidtool
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		private System.ComponentModel.Container components = null;
+		private Container components = null;
 
 		#endregion
 
@@ -160,8 +160,8 @@ namespace pjse.guidtool
 		}
 
 		private static int byPackageGroupTypeInstance(
-			pjse.FileTable.Entry x,
-			pjse.FileTable.Entry y
+			FileTable.Entry x,
+			FileTable.Entry y
 		)
 		{
 			int result = x.Package.FileName.CompareTo(y.Package.FileName);
@@ -198,16 +198,16 @@ namespace pjse.guidtool
 
 			try
 			{
-				List<pjse.FileTable.Entry> results = new List<FileTable.Entry>();
+				List<FileTable.Entry> results = new List<FileTable.Entry>();
 				if (group != 0)
 				{
 					if (type[6])
 					#region Focus on SemiGlobal group
 					{
-						List<pjse.FileTable.Entry> globs = new List<FileTable.Entry>(
+						List<FileTable.Entry> globs = new List<FileTable.Entry>(
 							pjse.FileTable.GFT[SimPe.Data.MetaData.GLOB_FILE, where]
 						);
-						foreach (pjse.FileTable.Entry fte in globs)
+						foreach (FileTable.Entry fte in globs)
 						{
 							SimPe.Plugin.Glob glob = ((SimPe.Plugin.Glob)fte.Wrapper);
 							if (glob == null)
@@ -220,7 +220,7 @@ namespace pjse.guidtool
 								continue;
 							}
 
-							List<pjse.FileTable.Entry> temp =
+							List<FileTable.Entry> temp =
 								new List<FileTable.Entry>();
 							if (type[7])
 							{
@@ -245,7 +245,7 @@ namespace pjse.guidtool
 
 							if (fte.Group == 0xffffffff)
 							{
-								foreach (pjse.FileTable.Entry entry in temp)
+								foreach (FileTable.Entry entry in temp)
 								{
 									if (entry.Package == fte.Package)
 									{
@@ -283,10 +283,10 @@ namespace pjse.guidtool
 					else if (type[10])
 					#region References to GLOB
 					{
-						List<pjse.FileTable.Entry> globs = new List<FileTable.Entry>(
+						List<FileTable.Entry> globs = new List<FileTable.Entry>(
 							pjse.FileTable.GFT[SimPe.Data.MetaData.GLOB_FILE, where]
 						);
-						foreach (pjse.FileTable.Entry fte in globs)
+						foreach (FileTable.Entry fte in globs)
 						{
 							SimPe.Plugin.Glob glob = ((SimPe.Plugin.Glob)fte.Wrapper);
 							if (glob == null)
@@ -299,7 +299,7 @@ namespace pjse.guidtool
 								continue;
 							}
 
-							pjse.FileTable.Entry[] objds = pjse.FileTable.GFT[
+							FileTable.Entry[] objds = pjse.FileTable.GFT[
 								SimPe.Data.MetaData.OBJD_FILE,
 								fte.Group,
 								where
@@ -313,7 +313,7 @@ namespace pjse.guidtool
 							{
 								if (fte.Group == 0xffffffff)
 								{
-									foreach (pjse.FileTable.Entry entry in objds)
+									foreach (FileTable.Entry entry in objds)
 									{
 										if (entry.Package == fte.Package)
 										{
@@ -493,8 +493,8 @@ namespace pjse.guidtool
 				Invoke(setProgress, new object[] { false, results.Count });
 
 				int j = 0;
-				pjse.FileTable.Entry previtem = null;
-				foreach (pjse.FileTable.Entry item in results)
+				FileTable.Entry previtem = null;
+				foreach (FileTable.Entry item in results)
 				{
 					if (item != previtem)
 					{
@@ -661,10 +661,10 @@ namespace pjse.guidtool
 
 		private delegate void AddResultCallback(
 			uint itemguid,
-			pjse.FileTable.Entry item
+			FileTable.Entry item
 		);
 
-		private void AddResult(uint itemguid, pjse.FileTable.Entry item)
+		private void AddResult(uint itemguid, FileTable.Entry item)
 		{
 			//string report_line = "Group {0}: [{1} guid: {2}] {3} ({4})";
 			if (item.Type == SimPe.Data.MetaData.OBJD_FILE)
@@ -740,7 +740,7 @@ namespace pjse.guidtool
 			{
 				number = Convert.ToUInt32(this.tbNumber.Text.Trim(), 16);
 			}
-			catch (System.FormatException)
+			catch (FormatException)
 			{
 				number = 0;
 			}
@@ -898,43 +898,43 @@ namespace pjse.guidtool
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources =
-				new System.ComponentModel.ComponentResourceManager(typeof(GUIDForm));
+			ComponentResourceManager resources =
+				new ComponentResourceManager(typeof(GUIDForm));
 			this.progressBar1 = new ExtProgressBar();
-			this.lbStatus = new System.Windows.Forms.Label();
-			this.rtbReport = new System.Windows.Forms.RichTextBox();
-			this.lbNumber = new System.Windows.Forms.Label();
-			this.tbNumber = new System.Windows.Forms.TextBox();
-			this.lbName = new System.Windows.Forms.Label();
-			this.tbName = new System.Windows.Forms.TextBox();
+			this.lbStatus = new Label();
+			this.rtbReport = new RichTextBox();
+			this.lbNumber = new Label();
+			this.tbNumber = new TextBox();
+			this.lbName = new Label();
+			this.tbName = new TextBox();
 			this.gcGroup = new SimPe.Plugin.GUIDChooser();
-			this.ckbSGSearch = new System.Windows.Forms.CheckBox();
-			this.btnClearFilter = new System.Windows.Forms.Button();
-			this.btnSearch = new System.Windows.Forms.Button();
-			this.btnClose = new System.Windows.Forms.Button();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.ckbObjdName = new System.Windows.Forms.CheckBox();
-			this.ckbGLOB = new System.Windows.Forms.CheckBox();
-			this.ckbSTR = new System.Windows.Forms.CheckBox();
-			this.ckbObjdGUID = new System.Windows.Forms.CheckBox();
-			this.ckbCallsToBHAV = new System.Windows.Forms.CheckBox();
-			this.ckbCTSS = new System.Windows.Forms.CheckBox();
-			this.ckbNrefName = new System.Windows.Forms.CheckBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.ckbTTAs = new System.Windows.Forms.CheckBox();
-			this.ckbFromTtab = new System.Windows.Forms.CheckBox();
-			this.ckbBhavName = new System.Windows.Forms.CheckBox();
-			this.ckbDefLang = new System.Windows.Forms.CheckBox();
-			this.ckbFromObjf = new System.Windows.Forms.CheckBox();
-			this.ckbFromBHAV = new System.Windows.Forms.CheckBox();
-			this.ckbBconName = new System.Windows.Forms.CheckBox();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.rb1default = new System.Windows.Forms.RadioButton();
-			this.rb1CPOnly = new System.Windows.Forms.RadioButton();
-			this.btnHelp = new System.Windows.Forms.Button();
-			this.pnFixer = new System.Windows.Forms.Panel();
-			this.btclipb = new System.Windows.Forms.Button();
+			this.ckbSGSearch = new CheckBox();
+			this.btnClearFilter = new Button();
+			this.btnSearch = new Button();
+			this.btnClose = new Button();
+			this.groupBox1 = new GroupBox();
+			this.label2 = new Label();
+			this.ckbObjdName = new CheckBox();
+			this.ckbGLOB = new CheckBox();
+			this.ckbSTR = new CheckBox();
+			this.ckbObjdGUID = new CheckBox();
+			this.ckbCallsToBHAV = new CheckBox();
+			this.ckbCTSS = new CheckBox();
+			this.ckbNrefName = new CheckBox();
+			this.label1 = new Label();
+			this.ckbTTAs = new CheckBox();
+			this.ckbFromTtab = new CheckBox();
+			this.ckbBhavName = new CheckBox();
+			this.ckbDefLang = new CheckBox();
+			this.ckbFromObjf = new CheckBox();
+			this.ckbFromBHAV = new CheckBox();
+			this.ckbBconName = new CheckBox();
+			this.groupBox2 = new GroupBox();
+			this.rb1default = new RadioButton();
+			this.rb1CPOnly = new RadioButton();
+			this.btnHelp = new Button();
+			this.pnFixer = new Panel();
+			this.btclipb = new Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.pnFixer.SuspendLayout();
@@ -1021,7 +1021,7 @@ namespace pjse.guidtool
 			this.btnClearFilter.BackColor = System.Drawing.Color.Transparent;
 			this.btnClearFilter.Name = "btnClearFilter";
 			this.btnClearFilter.UseVisualStyleBackColor = false;
-			this.btnClearFilter.Click += new System.EventHandler(
+			this.btnClearFilter.Click += new EventHandler(
 				this.btnClearFilter_Click
 			);
 			//
@@ -1031,7 +1031,7 @@ namespace pjse.guidtool
 			this.btnSearch.BackColor = System.Drawing.Color.Transparent;
 			this.btnSearch.Name = "btnSearch";
 			this.btnSearch.UseVisualStyleBackColor = false;
-			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+			this.btnSearch.Click += new EventHandler(this.btnSearch_Click);
 			//
 			// btnClose
 			//
@@ -1040,7 +1040,7 @@ namespace pjse.guidtool
 			this.btnClose.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.btnClose.Name = "btnClose";
 			this.btnClose.UseVisualStyleBackColor = false;
-			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+			this.btnClose.Click += new EventHandler(this.btnClose_Click);
 			//
 			// groupBox1
 			//
@@ -1074,7 +1074,7 @@ namespace pjse.guidtool
 			//
 			resources.ApplyResources(this.ckbObjdName, "ckbObjdName");
 			this.ckbObjdName.Name = "ckbObjdName";
-			this.ckbObjdName.CheckedChanged += new System.EventHandler(
+			this.ckbObjdName.CheckedChanged += new EventHandler(
 				this.ckbSomeName_CheckedChanged
 			);
 			//
@@ -1082,7 +1082,7 @@ namespace pjse.guidtool
 			//
 			resources.ApplyResources(this.ckbGLOB, "ckbGLOB");
 			this.ckbGLOB.Name = "ckbGLOB";
-			this.ckbGLOB.CheckedChanged += new System.EventHandler(
+			this.ckbGLOB.CheckedChanged += new EventHandler(
 				this.ckbGLOB_CheckedChanged
 			);
 			//
@@ -1091,7 +1091,7 @@ namespace pjse.guidtool
 			resources.ApplyResources(this.ckbSTR, "ckbSTR");
 			this.ckbSTR.Name = "ckbSTR";
 			this.ckbSTR.UseVisualStyleBackColor = true;
-			this.ckbSTR.CheckedChanged += new System.EventHandler(
+			this.ckbSTR.CheckedChanged += new EventHandler(
 				this.ckbSomeName_CheckedChanged
 			);
 			//
@@ -1099,7 +1099,7 @@ namespace pjse.guidtool
 			//
 			resources.ApplyResources(this.ckbObjdGUID, "ckbObjdGUID");
 			this.ckbObjdGUID.Name = "ckbObjdGUID";
-			this.ckbObjdGUID.CheckedChanged += new System.EventHandler(
+			this.ckbObjdGUID.CheckedChanged += new EventHandler(
 				this.ckbObjdGUID_CheckedChanged
 			);
 			//
@@ -1108,7 +1108,7 @@ namespace pjse.guidtool
 			resources.ApplyResources(this.ckbCallsToBHAV, "ckbCallsToBHAV");
 			this.ckbCallsToBHAV.Name = "ckbCallsToBHAV";
 			this.ckbCallsToBHAV.UseVisualStyleBackColor = true;
-			this.ckbCallsToBHAV.CheckedChanged += new System.EventHandler(
+			this.ckbCallsToBHAV.CheckedChanged += new EventHandler(
 				this.ckbCallsToBHAV_CheckedChanged
 			);
 			//
@@ -1117,7 +1117,7 @@ namespace pjse.guidtool
 			resources.ApplyResources(this.ckbCTSS, "ckbCTSS");
 			this.ckbCTSS.Name = "ckbCTSS";
 			this.ckbCTSS.UseVisualStyleBackColor = true;
-			this.ckbCTSS.CheckedChanged += new System.EventHandler(
+			this.ckbCTSS.CheckedChanged += new EventHandler(
 				this.ckbSomeName_CheckedChanged
 			);
 			//
@@ -1125,7 +1125,7 @@ namespace pjse.guidtool
 			//
 			resources.ApplyResources(this.ckbNrefName, "ckbNrefName");
 			this.ckbNrefName.Name = "ckbNrefName";
-			this.ckbNrefName.CheckedChanged += new System.EventHandler(
+			this.ckbNrefName.CheckedChanged += new EventHandler(
 				this.ckbSomeName_CheckedChanged
 			);
 			//
@@ -1139,7 +1139,7 @@ namespace pjse.guidtool
 			resources.ApplyResources(this.ckbTTAs, "ckbTTAs");
 			this.ckbTTAs.Name = "ckbTTAs";
 			this.ckbTTAs.UseVisualStyleBackColor = true;
-			this.ckbTTAs.CheckedChanged += new System.EventHandler(
+			this.ckbTTAs.CheckedChanged += new EventHandler(
 				this.ckbSomeName_CheckedChanged
 			);
 			//
@@ -1152,7 +1152,7 @@ namespace pjse.guidtool
 			//
 			resources.ApplyResources(this.ckbBhavName, "ckbBhavName");
 			this.ckbBhavName.Name = "ckbBhavName";
-			this.ckbBhavName.CheckedChanged += new System.EventHandler(
+			this.ckbBhavName.CheckedChanged += new EventHandler(
 				this.ckbSomeName_CheckedChanged
 			);
 			//
@@ -1176,7 +1176,7 @@ namespace pjse.guidtool
 			//
 			resources.ApplyResources(this.ckbBconName, "ckbBconName");
 			this.ckbBconName.Name = "ckbBconName";
-			this.ckbBconName.CheckedChanged += new System.EventHandler(
+			this.ckbBconName.CheckedChanged += new EventHandler(
 				this.ckbSomeName_CheckedChanged
 			);
 			//
@@ -1207,7 +1207,7 @@ namespace pjse.guidtool
 			this.btnHelp.BackColor = System.Drawing.Color.Transparent;
 			this.btnHelp.Name = "btnHelp";
 			this.btnHelp.UseVisualStyleBackColor = false;
-			this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+			this.btnHelp.Click += new EventHandler(this.btnHelp_Click);
 
 			this.Controls.Add(this.btclipb);
 			this.Controls.Add(this.pnFixer);
@@ -1237,7 +1237,7 @@ namespace pjse.guidtool
 			resources.ApplyResources(this.btclipb, "btclipb");
 			this.btclipb.Name = "btclipb";
 			this.btclipb.UseVisualStyleBackColor = true;
-			this.btclipb.Click += new System.EventHandler(this.btclipb_Click);
+			this.btclipb.Click += new EventHandler(this.btclipb_Click);
 			//
 			// GUIDForm
 			//
@@ -1273,7 +1273,7 @@ namespace pjse.guidtool
 
 		private void hex32_Validating(
 			object sender,
-			System.ComponentModel.CancelEventArgs e
+			CancelEventArgs e
 		)
 		{
 			if (hex32_IsValid(sender))
@@ -1295,7 +1295,7 @@ namespace pjse.guidtool
 			((TextBox)sender).SelectAll();
 		}
 
-		private void btnSearch_Click(object sender, System.EventArgs e)
+		private void btnSearch_Click(object sender, EventArgs e)
 		{
 			if (searching)
 			{
@@ -1307,7 +1307,7 @@ namespace pjse.guidtool
 			}
 		}
 
-		private void btnHelp_Click(object sender, System.EventArgs e)
+		private void btnHelp_Click(object sender, EventArgs e)
 		{
 			string protocol = "file://";
 			string relativePathToHelp = "pjse.coder.plugin/PJSE_Help";

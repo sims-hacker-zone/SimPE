@@ -34,7 +34,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public Control GUIHandle => form.objdPanel;
 
-		public void UpdateGUI(SimPe.Interfaces.Plugin.IFileWrapper wrapper)
+		public void UpdateGUI(IFileWrapper wrapper)
 		{
 			Wrapper.Objd objd = (Wrapper.Objd)wrapper;
 			form.wrapper = objd;

@@ -342,7 +342,7 @@ namespace SimPe.Plugin
 
 		#endregion
 
-		public SimPe.Interfaces.Providers.ILotItem LotDescription => SimPe.FileTable.ProviderRegistry.LotProvider.FindLot(
+		public Interfaces.Providers.ILotItem LotDescription => SimPe.FileTable.ProviderRegistry.LotProvider.FindLot(
 					this.LotInstance
 				);
 
@@ -628,7 +628,7 @@ namespace SimPe.Plugin
 
 		#endregion
 
-		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
+		protected override string GetResourceName(Data.TypeAlias ta)
 		{
 			if (!this.Processed)
 			{

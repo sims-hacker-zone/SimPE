@@ -82,10 +82,10 @@ namespace SimPe.Plugin
 			reader.BaseStream.Seek(83, System.IO.SeekOrigin.Begin);
 
 			ItemCount = reader.ReadInt32();
-			Array.Resize<uint>(ref bindex, ItemCount);
-			Array.Resize<uint>(ref bwallid, ItemCount);
-			Array.Resize<ushort>(ref lpaint, ItemCount);
-			Array.Resize<ushort>(ref rpaint, ItemCount);
+			Array.Resize(ref bindex, ItemCount);
+			Array.Resize(ref bwallid, ItemCount);
+			Array.Resize(ref lpaint, ItemCount);
+			Array.Resize(ref rpaint, ItemCount);
 			for (int i = 0; i < ItemCount; i++)
 			{
 				bindex[i] = reader.ReadUInt32();

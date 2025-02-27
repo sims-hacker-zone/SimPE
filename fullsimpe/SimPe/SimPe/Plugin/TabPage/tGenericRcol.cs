@@ -30,10 +30,10 @@ namespace SimPe.Plugin.TabPage
 		//System.Windows.Forms.UserControl
 		System.Windows.Forms.TabPage
 	{
-		private System.Windows.Forms.GroupBox groupBox10;
-		internal System.Windows.Forms.TextBox tb_ver;
-		private System.Windows.Forms.Label label28;
-		internal System.Windows.Forms.PropertyGrid gen_pg;
+		private GroupBox groupBox10;
+		internal TextBox tb_ver;
+		private Label label28;
+		internal PropertyGrid gen_pg;
 
 		//private System.ComponentModel.IContainer components;
 
@@ -80,10 +80,10 @@ namespace SimPe.Plugin.TabPage
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.groupBox10 = new System.Windows.Forms.GroupBox();
-			this.gen_pg = new System.Windows.Forms.PropertyGrid();
-			this.tb_ver = new System.Windows.Forms.TextBox();
-			this.label28 = new System.Windows.Forms.Label();
+			this.groupBox10 = new GroupBox();
+			this.gen_pg = new PropertyGrid();
+			this.tb_ver = new TextBox();
+			this.label28 = new Label();
 			this.groupBox10.SuspendLayout();
 			this.SuspendLayout();
 			//
@@ -100,7 +100,7 @@ namespace SimPe.Plugin.TabPage
 			// groupBox10
 			//
 			this.groupBox10.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -132,7 +132,7 @@ namespace SimPe.Plugin.TabPage
 			// gen_pg
 			//
 			this.gen_pg.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -174,7 +174,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_ver.Size = new System.Drawing.Size(88, 21);
 			this.tb_ver.TabIndex = 24;
 			this.tb_ver.Text = "0x00000000";
-			this.tb_ver.TextChanged += new System.EventHandler(this.GNSettingsChange);
+			this.tb_ver.TextChanged += new EventHandler(this.GNSettingsChange);
 			//
 			// label28
 			//
@@ -199,7 +199,7 @@ namespace SimPe.Plugin.TabPage
 		}
 		#endregion
 
-		private void GNSettingsChange(object sender, System.EventArgs e)
+		private void GNSettingsChange(object sender, EventArgs e)
 		{
 			if (this.Tag == null)
 			{

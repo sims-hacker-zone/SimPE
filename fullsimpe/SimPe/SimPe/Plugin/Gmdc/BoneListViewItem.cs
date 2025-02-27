@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace SimPe.Plugin.Gmdc
 {
-	class BoneListViewItem : ListViewItem, System.IDisposable
+	class BoneListViewItem : ListViewItem, IDisposable
 	{
 		protected Ambertation.Scenes.Joint joint;
 		protected GenericMeshImport gmi;

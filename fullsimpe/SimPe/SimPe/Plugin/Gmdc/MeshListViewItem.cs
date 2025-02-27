@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace SimPe.Plugin.Gmdc
 {
-	class MeshListViewItem : ListViewItem, System.IDisposable
+	class MeshListViewItem : ListViewItem, IDisposable
 	{
 		protected Ambertation.Scenes.Mesh mesh;
 		protected GenericMeshImport gmi;
@@ -50,7 +50,7 @@ namespace SimPe.Plugin.Gmdc
 
 			cbgroup.SelectedItem = 0;
 
-			cbenv = new System.Windows.Forms.CheckBox();
+			cbenv = new CheckBox();
 			cbenv.BackColor = Color.Transparent;
 			cbenv.Checked = mesh.Envelopes.Count > 0;
 

@@ -32,27 +32,27 @@ namespace SimPe.PackedFiles.UserInterface
 	/// <summary>
 	/// Summary description for ObjfForm.
 	/// </summary>
-	public class ObjfForm : System.Windows.Forms.Form, IPackedFileUI
+	public class ObjfForm : Form, IPackedFileUI
 	{
 		#region Form variables
 
-		private System.Windows.Forms.Label label19;
-		private System.Windows.Forms.Panel objfPanel;
-		private System.Windows.Forms.Label lbFilename;
-		private System.Windows.Forms.TextBox tbFilename;
-		private System.Windows.Forms.LinkLabel llGuardian;
-		private System.Windows.Forms.LinkLabel llAction;
-		private System.Windows.Forms.Button btnAction;
-		private System.Windows.Forms.Button btnGuardian;
-		private System.Windows.Forms.TextBox tbGuardian;
-		private System.Windows.Forms.TextBox tbAction;
-		private System.Windows.Forms.Button btnCommit;
-		private System.Windows.Forms.Label lbAction;
-		private System.Windows.Forms.Label lbGuardian;
-		private System.Windows.Forms.ListView lvObjfItem;
-		private System.Windows.Forms.ColumnHeader chFunction;
-		private System.Windows.Forms.ColumnHeader chGuardian;
-		private System.Windows.Forms.ColumnHeader chAction;
+		private Label label19;
+		private Panel objfPanel;
+		private Label lbFilename;
+		private TextBox tbFilename;
+		private LinkLabel llGuardian;
+		private LinkLabel llAction;
+		private Button btnAction;
+		private Button btnGuardian;
+		private TextBox tbGuardian;
+		private TextBox tbAction;
+		private Button btnCommit;
+		private Label lbAction;
+		private Label lbGuardian;
+		private ListView lvObjfItem;
+		private ColumnHeader chFunction;
+		private ColumnHeader chGuardian;
+		private ColumnHeader chAction;
 		private Label lbFunction;
 		private pjse.pjse_banner pjse_banner1;
 		private TableLayoutPanel tableLayoutPanel1;
@@ -279,12 +279,12 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (!setHandler)
 			{
-				wrapper.WrapperChanged += new System.EventHandler(this.WrapperChanged);
+				wrapper.WrapperChanged += new EventHandler(this.WrapperChanged);
 				setHandler = true;
 			}
 		}
 
-		private void WrapperChanged(object sender, System.EventArgs e)
+		private void WrapperChanged(object sender, EventArgs e)
 		{
 			this.btnCommit.Enabled = wrapper.Changed;
 
@@ -306,30 +306,30 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources =
-				new System.ComponentModel.ComponentResourceManager(typeof(ObjfForm));
-			this.objfPanel = new System.Windows.Forms.Panel();
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.llAction = new System.Windows.Forms.LinkLabel();
-			this.llGuardian = new System.Windows.Forms.LinkLabel();
-			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-			this.tbAction = new System.Windows.Forms.TextBox();
-			this.btnAction = new System.Windows.Forms.Button();
-			this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-			this.tbGuardian = new System.Windows.Forms.TextBox();
-			this.btnGuardian = new System.Windows.Forms.Button();
-			this.lbAction = new System.Windows.Forms.Label();
-			this.lbGuardian = new System.Windows.Forms.Label();
+			ComponentResourceManager resources =
+				new ComponentResourceManager(typeof(ObjfForm));
+			this.objfPanel = new Panel();
+			this.tableLayoutPanel1 = new TableLayoutPanel();
+			this.llAction = new LinkLabel();
+			this.llGuardian = new LinkLabel();
+			this.flowLayoutPanel1 = new FlowLayoutPanel();
+			this.tbAction = new TextBox();
+			this.btnAction = new Button();
+			this.flowLayoutPanel2 = new FlowLayoutPanel();
+			this.tbGuardian = new TextBox();
+			this.btnGuardian = new Button();
+			this.lbAction = new Label();
+			this.lbGuardian = new Label();
 			this.pjse_banner1 = new pjse.pjse_banner();
-			this.lbFunction = new System.Windows.Forms.Label();
-			this.lvObjfItem = new System.Windows.Forms.ListView();
-			this.chFunction = new System.Windows.Forms.ColumnHeader();
-			this.chAction = new System.Windows.Forms.ColumnHeader();
-			this.chGuardian = new System.Windows.Forms.ColumnHeader();
-			this.btnCommit = new System.Windows.Forms.Button();
-			this.lbFilename = new System.Windows.Forms.Label();
-			this.tbFilename = new System.Windows.Forms.TextBox();
-			this.label19 = new System.Windows.Forms.Label();
+			this.lbFunction = new Label();
+			this.lvObjfItem = new ListView();
+			this.chFunction = new ColumnHeader();
+			this.chAction = new ColumnHeader();
+			this.chGuardian = new ColumnHeader();
+			this.btnCommit = new Button();
+			this.lbFilename = new Label();
+			this.tbFilename = new TextBox();
+			this.label19 = new Label();
 			this.objfPanel.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.flowLayoutPanel1.SuspendLayout();
@@ -367,7 +367,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.llAction.Name = "llAction";
 			this.llAction.TabStop = true;
 			this.llAction.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llBhav_LinkClicked
 				);
 			//
@@ -377,7 +377,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.llGuardian.Name = "llGuardian";
 			this.llGuardian.TabStop = true;
 			this.llGuardian.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llBhav_LinkClicked
 				);
 			//
@@ -392,11 +392,11 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.tbAction, "tbAction");
 			this.tbAction.Name = "tbAction";
-			this.tbAction.TextChanged += new System.EventHandler(
+			this.tbAction.TextChanged += new EventHandler(
 				this.hex16_TextChanged
 			);
-			this.tbAction.Validated += new System.EventHandler(this.hex16_Validated);
-			this.tbAction.Validating += new System.ComponentModel.CancelEventHandler(
+			this.tbAction.Validated += new EventHandler(this.hex16_Validated);
+			this.tbAction.Validating += new CancelEventHandler(
 				this.hex16_Validating
 			);
 			//
@@ -405,7 +405,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.btnAction, "btnAction");
 			this.btnAction.Name = "btnAction";
 			this.btnAction.UseCompatibleTextRendering = true;
-			this.btnAction.Click += new System.EventHandler(this.GetObjfAction);
+			this.btnAction.Click += new EventHandler(this.GetObjfAction);
 			//
 			// flowLayoutPanel2
 			//
@@ -418,11 +418,11 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.tbGuardian, "tbGuardian");
 			this.tbGuardian.Name = "tbGuardian";
-			this.tbGuardian.TextChanged += new System.EventHandler(
+			this.tbGuardian.TextChanged += new EventHandler(
 				this.hex16_TextChanged
 			);
-			this.tbGuardian.Validated += new System.EventHandler(this.hex16_Validated);
-			this.tbGuardian.Validating += new System.ComponentModel.CancelEventHandler(
+			this.tbGuardian.Validated += new EventHandler(this.hex16_Validated);
+			this.tbGuardian.Validating += new CancelEventHandler(
 				this.hex16_Validating
 			);
 			//
@@ -431,7 +431,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.btnGuardian, "btnGuardian");
 			this.btnGuardian.Name = "btnGuardian";
 			this.btnGuardian.UseCompatibleTextRendering = true;
-			this.btnGuardian.Click += new System.EventHandler(this.GetObjfGuard);
+			this.btnGuardian.Click += new EventHandler(this.GetObjfGuard);
 			//
 			// lbAction
 			//
@@ -462,7 +462,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.lvObjfItem, "lvObjfItem");
 			this.lvObjfItem.Columns.AddRange(
-				new System.Windows.Forms.ColumnHeader[]
+				new ColumnHeader[]
 				{
 					this.chFunction,
 					this.chAction,
@@ -481,7 +481,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.lvObjfItem.Name = "lvObjfItem";
 			this.lvObjfItem.UseCompatibleStateImageBehavior = false;
 			this.lvObjfItem.View = System.Windows.Forms.View.Details;
-			this.lvObjfItem.SelectedIndexChanged += new System.EventHandler(
+			this.lvObjfItem.SelectedIndexChanged += new EventHandler(
 				this.lvObjfItem_SelectedIndexChanged
 			);
 			//
@@ -501,7 +501,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.btnCommit, "btnCommit");
 			this.btnCommit.Name = "btnCommit";
-			this.btnCommit.Click += new System.EventHandler(this.btnCommit_Click);
+			this.btnCommit.Click += new EventHandler(this.btnCommit_Click);
 			//
 			// lbFilename
 			//
@@ -512,10 +512,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.tbFilename, "tbFilename");
 			this.tbFilename.Name = "tbFilename";
-			this.tbFilename.TextChanged += new System.EventHandler(
+			this.tbFilename.TextChanged += new EventHandler(
 				this.tbFilename_TextChanged
 			);
-			this.tbFilename.Validated += new System.EventHandler(
+			this.tbFilename.Validated += new EventHandler(
 				this.tbFilename_Validated
 			);
 			//
@@ -548,7 +548,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		#endregion
 
-		private void lvObjfItem_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void lvObjfItem_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (this.internalchg)
 			{
@@ -585,7 +585,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void llBhav_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			pjse.FileTable.Entry item = wrapper.ResourceByInstance(
@@ -612,7 +612,7 @@ namespace SimPe.PackedFiles.UserInterface
 			ui.Show();
 		}
 
-		private void btnCommit_Click(object sender, System.EventArgs e)
+		private void btnCommit_Click(object sender, EventArgs e)
 		{
 			try
 			{
@@ -629,7 +629,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		private void GetObjfAction(object sender, System.EventArgs e)
+		private void GetObjfAction(object sender, EventArgs e)
 		{
 			pjse.FileTable.Entry item = new pjse.ResourceChooser().Execute(
 				SimPe.Data.MetaData.BHAV_FILE,
@@ -643,7 +643,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		private void GetObjfGuard(object sender, System.EventArgs e)
+		private void GetObjfGuard(object sender, EventArgs e)
 		{
 			pjse.FileTable.Entry item = new pjse.ResourceChooser().Execute(
 				SimPe.Data.MetaData.BHAV_FILE,
@@ -657,17 +657,17 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		private void tbFilename_TextChanged(object sender, System.EventArgs e)
+		private void tbFilename_TextChanged(object sender, EventArgs e)
 		{
 			wrapper.FileName = tbFilename.Text;
 		}
 
-		private void tbFilename_Validated(object sender, System.EventArgs e)
+		private void tbFilename_Validated(object sender, EventArgs e)
 		{
 			tbFilename.SelectAll();
 		}
 
-		private void hex16_TextChanged(object sender, System.EventArgs ev)
+		private void hex16_TextChanged(object sender, EventArgs ev)
 		{
 			if (internalchg)
 			{
@@ -697,7 +697,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void hex16_Validating(
 			object sender,
-			System.ComponentModel.CancelEventArgs e
+			CancelEventArgs e
 		)
 		{
 			if (hex16_IsValid(sender))
@@ -725,7 +725,7 @@ namespace SimPe.PackedFiles.UserInterface
 			internalchg = false;
 		}
 
-		private void hex16_Validated(object sender, System.EventArgs e)
+		private void hex16_Validated(object sender, EventArgs e)
 		{
 			bool origstate = internalchg;
 			internalchg = true;

@@ -26,11 +26,11 @@ namespace SimPe.PackedFiles.UserInterface
 	/// <summary>
 	/// Summary description for ExtSrelUI.
 	/// </summary>
-	public class ExtSrel : SimPe.Windows.Forms.WrapperBaseControl, IPackedFileUI
+	public class ExtSrel : Windows.Forms.WrapperBaseControl, IPackedFileUI
 	{
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label lbsims;
-		private SimPe.PackedFiles.UserInterface.CommonSrel sc;
+		private CommonSrel sc;
 		private System.Windows.Forms.PictureBox pb;
 
 		/// <summary>
@@ -46,7 +46,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (Helper.WindowsRegistry.UseBigIcons)
 			{
-				this.lbsims.Font = new System.Drawing.Font("Tahoma", 12);
+				this.lbsims.Font = new Font("Tahoma", 12);
 			}
 		}
 
@@ -76,7 +76,7 @@ namespace SimPe.PackedFiles.UserInterface
 				new System.ComponentModel.ComponentResourceManager(typeof(ExtSrel));
 			this.label1 = new System.Windows.Forms.Label();
 			this.lbsims = new System.Windows.Forms.Label();
-			this.sc = new SimPe.PackedFiles.UserInterface.CommonSrel();
+			this.sc = new CommonSrel();
 			this.pb = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
 			this.SuspendLayout();
@@ -127,7 +127,7 @@ namespace SimPe.PackedFiles.UserInterface
 		}
 		#endregion
 
-		public SimPe.PackedFiles.Wrapper.ExtSrel Srel => (SimPe.PackedFiles.Wrapper.ExtSrel)Wrapper;
+		public Wrapper.ExtSrel Srel => (Wrapper.ExtSrel)Wrapper;
 
 		protected override void RefreshGUI()
 		{

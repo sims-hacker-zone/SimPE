@@ -2,9 +2,9 @@ using System;
 
 namespace SimPe.Plugin.Tool.Dockable.Finder
 {
-	public partial class FindTGI : SimPe.Interfaces.AFinderTool
+	public partial class FindTGI : Interfaces.AFinderTool
 	{
-		public FindTGI(SimPe.Interfaces.IFinderResultGui rgui)
+		public FindTGI(Interfaces.IFinderResultGui rgui)
 			: base(rgui)
 		{
 			InitializeComponent();
@@ -60,8 +60,8 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 		}
 
 		public override void SearchPackage(
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			Interfaces.Files.IPackageFile pkg,
+			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
 			if (

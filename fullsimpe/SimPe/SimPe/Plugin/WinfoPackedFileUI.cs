@@ -8,7 +8,7 @@ namespace SimPe.Plugin
 	/// This class is used to fill the UI for this FileType with Data
 	/// </summary>
 	public partial class WinfoPackedFileUI
-		: SimPe.Windows.Forms.WrapperBaseControl,
+		: Windows.Forms.WrapperBaseControl,
 			IPackedFileUI
 	{
 		protected new WinfoPackedFileWrapper Wrapper => base.Wrapper as WinfoPackedFileWrapper;

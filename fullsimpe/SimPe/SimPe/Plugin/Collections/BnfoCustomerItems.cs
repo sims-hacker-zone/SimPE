@@ -22,9 +22,9 @@ using System.Collections;
 namespace SimPe.Plugin.Collections
 {
 	/// <summary>
-	/// Collection of <see cref="SimPe.Plugin.BnfoCustomerItem"/> Objects
+	/// Collection of <see cref="BnfoCustomerItem"/> Objects
 	/// </summary>
-	public class BnfoCustomerItems : System.IDisposable, System.Collections.IEnumerable
+	public class BnfoCustomerItems : System.IDisposable, IEnumerable
 	{
 		ArrayList list = new ArrayList();
 		Bnfo parent;

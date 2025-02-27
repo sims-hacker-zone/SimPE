@@ -27,8 +27,8 @@ namespace SimPe.Wizards
 	/// This implements a basic Wizard
 	/// </summary>
 	[
-		Designer(typeof(SimPe.Wizards.WizardDesigner)),
-		ToolboxBitmapAttribute(typeof(TabControl))
+		Designer(typeof(WizardDesigner)),
+		ToolboxBitmap(typeof(TabControl))
 	]
 	public class Wizard : Panel
 	{
@@ -55,7 +55,7 @@ namespace SimPe.Wizards
 		public Control WizardContainer => this;
 
 		Image img;
-		public virtual System.Drawing.Image Image
+		public virtual Image Image
 		{
 			get
 			{
@@ -282,25 +282,25 @@ namespace SimPe.Wizards
 			}
 		}
 
-		public event SimPe.Wizards.WizardHandle Loaded;
+		public event WizardHandle Loaded;
 
-		public event SimPe.Wizards.WizardHandle Aborted;
+		public event WizardHandle Aborted;
 
-		public event SimPe.Wizards.WizardHandle Finished;
+		public event WizardHandle Finished;
 
-		public event SimPe.Wizards.WizardStepChangeHandle PrepareStep;
+		public event WizardStepChangeHandle PrepareStep;
 
-		public event SimPe.Wizards.WizardStepChangeHandle RollbackStep;
+		public event WizardStepChangeHandle RollbackStep;
 
-		public event SimPe.Wizards.WizardChangeHandle ShowStep;
+		public event WizardChangeHandle ShowStep;
 
-		public event SimPe.Wizards.WizardShowedHandle ShowedStep;
+		public event WizardShowedHandle ShowedStep;
 
-		public event SimPe.Wizards.WizardHandle ChangedNextState;
+		public event WizardHandle ChangedNextState;
 
-		public event SimPe.Wizards.WizardHandle ChangedPrevState;
+		public event WizardHandle ChangedPrevState;
 
-		public event SimPe.Wizards.WizardHandle ChangedFinishState;
+		public event WizardHandle ChangedFinishState;
 
 		#endregion
 

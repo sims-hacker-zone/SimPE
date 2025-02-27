@@ -48,6 +48,6 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 			return data;
 		}
 
-		public SCOR.AScorItem ActivatedGUI => gui;
+		public AScorItem ActivatedGUI => gui;
 	}
 }

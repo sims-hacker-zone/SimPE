@@ -35,7 +35,7 @@ namespace SimPe.Interfaces
 		/// Tools displayed in a Menu or ActionList, should only return true, when they are
 		/// enabled for the passed Selection and package
 		/// </returns>
-		void SelectionChangedHandler(object sender, SimPe.Events.ResourceEventArgs e);
+		void SelectionChangedHandler(object sender, Events.ResourceEventArgs e);
 	}
 }
 
@@ -50,7 +50,7 @@ namespace SimPe.Collections
 			list = new System.Collections.ArrayList();
 		}
 
-		public bool Contains(SimPe.Interfaces.IListener lst)
+		public bool Contains(Interfaces.IListener lst)
 		{
 			return list.Contains(lst);
 		}
@@ -58,11 +58,11 @@ namespace SimPe.Collections
 		/// <summary>
 		/// Integer Indexer
 		/// </summary>
-		public SimPe.Interfaces.IListener this[int index]
+		public Interfaces.IListener this[int index]
 		{
 			get
 			{
-				return ((SimPe.Interfaces.IListener)list[index]);
+				return ((Interfaces.IListener)list[index]);
 			}
 			set
 			{
@@ -73,11 +73,11 @@ namespace SimPe.Collections
 		/// <summary>
 		/// unsigned Integer Indexer
 		/// </summary>
-		public SimPe.Interfaces.IListener this[uint index]
+		public Interfaces.IListener this[uint index]
 		{
 			get
 			{
-				return ((SimPe.Interfaces.IListener)list[(int)index]);
+				return ((Interfaces.IListener)list[(int)index]);
 			}
 			set
 			{

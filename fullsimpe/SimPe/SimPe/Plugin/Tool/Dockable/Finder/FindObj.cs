@@ -2,7 +2,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 {
 	public partial class FindObj : FindInStr
 	{
-		public FindObj(SimPe.Interfaces.IFinderResultGui rgui)
+		public FindObj(Interfaces.IFinderResultGui rgui)
 			: base(rgui)
 		{
 			InitializeComponent();
@@ -25,8 +25,8 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 		}
 
 		public override void SearchPackage(
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			Interfaces.Files.IPackageFile pkg,
+			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
 			if (pfd.Type != Data.MetaData.OBJD_FILE)
@@ -38,12 +38,12 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 		}
 
 		public void DoSearchPackage(
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			Interfaces.Files.IPackageFile pkg,
+			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
-			SimPe.PackedFiles.Wrapper.ExtObjd obj =
-				new SimPe.PackedFiles.Wrapper.ExtObjd();
+			PackedFiles.Wrapper.ExtObjd obj =
+				new PackedFiles.Wrapper.ExtObjd();
 			obj.ProcessData(pfd, pkg);
 
 			bool found = false;

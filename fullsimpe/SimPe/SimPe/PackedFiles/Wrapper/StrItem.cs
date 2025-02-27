@@ -30,7 +30,7 @@ namespace SimPe.PackedFiles.Wrapper
 	/// - to provide access to Language Names given a Language ID
 	/// - to make Language IDs comparable so that StrLanguageLists can be sorted
 	/// </summary>
-	public class StrLanguage : System.Collections.IComparer
+	public class StrLanguage : IComparer
 	{
 
 		/// <summary>

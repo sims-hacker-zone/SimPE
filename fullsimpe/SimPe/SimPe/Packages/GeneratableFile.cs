@@ -50,7 +50,7 @@ namespace SimPe.Packages
 		/// Init the Clone for this Package
 		/// </summary>
 		/// <returns>An INstance of this Class</returns>
-		protected override Interfaces.Files.IPackageFile NewCloneBase()
+		protected override IPackageFile NewCloneBase()
 		{
 			GeneratableFile fl = new GeneratableFile((BinaryReader)null);
 			fl.header = this.header;
@@ -126,7 +126,7 @@ namespace SimPe.Packages
 			try
 			{
 				//this.IncrementalBuild();
-				System.IO.MemoryStream ms = this.Build();
+				MemoryStream ms = this.Build();
 				if (Reader != null)
 				{
 					this.Reader.Close();
@@ -196,7 +196,7 @@ namespace SimPe.Packages
 			try
 			{
 				// Try to save to a temp file
-				System.IO.FileStream fs = new FileStream(tmpfile, FileMode.Create);
+				FileStream fs = new FileStream(tmpfile, FileMode.Create);
 				try
 				{
 					Save(ms, fs);
@@ -270,7 +270,7 @@ namespace SimPe.Packages
 				return;
 			}
 
-			filelistfile = new SimPe.PackedFiles.Wrapper.CompressedFileList(
+			filelistfile = new PackedFiles.Wrapper.CompressedFileList(
 				this.Header.IndexType
 			);
 			filelist = new PackedFileDescriptor();
@@ -291,10 +291,10 @@ namespace SimPe.Packages
 		{
 			this.LockStream();
 			OpenReader();
-			System.IO.MemoryStream ms = new MemoryStream(16384); // Fuck
-																 // was MemoryStream(10000) : 10000 is odd , assuming bigger is faster is now 16kb
-																 // But.. out of mem error can be caused by larger caches so increasing this may be not good
-			System.IO.BinaryWriter writer = new BinaryWriter(ms);
+			MemoryStream ms = new MemoryStream(16384); // Fuck
+													   // was MemoryStream(10000) : 10000 is odd , assuming bigger is faster is now 16kb
+													   // But.. out of mem error can be caused by larger caches so increasing this may be not good
+			BinaryWriter writer = new BinaryWriter(ms);
 
 			//make sure we write the correct Version!
 			if ((header.majorversion == 1) && (header.minorversion == 0))
@@ -318,7 +318,7 @@ namespace SimPe.Packages
 			ArrayList tmpcmp = new ArrayList();
 			if (this.fileindex == null)
 			{
-				fileindex = new SimPe.Interfaces.Files.IPackedFileDescriptor[0];
+				fileindex = new IPackedFileDescriptor[0];
 			}
 
 			PrepareCompression();
@@ -470,15 +470,15 @@ namespace SimPe.Packages
 			//so we only need to delete entries in the Filelist that do not exist any longer. The Size
 			//won't change!
 			byte[] b = this.Read(filelist).UncompressedData;
-			SimPe.PackedFiles.Wrapper.CompressedFileList fl =
-				new SimPe.PackedFiles.Wrapper.CompressedFileList(filelist, this);
+			PackedFiles.Wrapper.CompressedFileList fl =
+				new PackedFiles.Wrapper.CompressedFileList(filelist, this);
 			if (filelist.MarkForDelete)
 			{
 				fl.Clear();
 			}
 
-			SimPe.PackedFiles.Wrapper.CompressedFileList newfl =
-				new SimPe.PackedFiles.Wrapper.CompressedFileList(this.Header.IndexType);
+			PackedFiles.Wrapper.CompressedFileList newfl =
+				new PackedFiles.Wrapper.CompressedFileList(this.Header.IndexType);
 			newfl.FileDescriptor = filelist;
 
 			for (int i = 0; i < tmpcmp.Count; i++)
@@ -489,14 +489,14 @@ namespace SimPe.Packages
 
 					if (pos != -1) //the file did already exist, so the size did not change!
 					{
-						SimPe.PackedFiles.Wrapper.ClstItem fi = fl.Items[pos];
+						PackedFiles.Wrapper.ClstItem fi = fl.Items[pos];
 						newfl.Add(fi);
 					}
 					else //the file is new but compressed
 					{
 						//IPackedFile pf = this.Read((IPackedFileDescriptor)tmpindex[i]);
-						SimPe.PackedFiles.Wrapper.ClstItem fi =
-							new SimPe.PackedFiles.Wrapper.ClstItem(newfl.IndexType);
+						PackedFiles.Wrapper.ClstItem fi =
+							new PackedFiles.Wrapper.ClstItem(newfl.IndexType);
 						PackedFileDescriptor pfd = (PackedFileDescriptor)tmpindex[i];
 						fi.Type = pfd.Type;
 						fi.Group = pfd.Group;

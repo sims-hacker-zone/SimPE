@@ -8,7 +8,7 @@ namespace SimPe.Plugin
 	public class CorruptedFileException : Exception
 	{
 		static string GetFileName(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item
+			Interfaces.Scenegraph.IScenegraphFileIndexItem item
 		)
 		{
 			if (item == null)
@@ -30,7 +30,7 @@ namespace SimPe.Plugin
 		}
 
 		public CorruptedFileException(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item,
+			Interfaces.Scenegraph.IScenegraphFileIndexItem item,
 			Exception inner
 		)
 			: base(
@@ -54,11 +54,11 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class ScenegraphException : Exception
 	{
-		SimPe.Interfaces.Files.IPackedFileDescriptor pfd;
+		Interfaces.Files.IPackedFileDescriptor pfd;
 
 		public ScenegraphException(
 			string message,
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 			: base(message)
 		{
@@ -68,7 +68,7 @@ namespace SimPe.Plugin
 		public ScenegraphException(
 			string message,
 			Exception inner,
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 			: base(message, inner)
 		{

@@ -46,8 +46,8 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 			list = new List<Type>();
 			map =
 				new Dictionary<
-					SimPe.Interfaces.IFinderResultGui,
-					SimPe.Interfaces.AFinderTool[]
+					Interfaces.IFinderResultGui,
+					Interfaces.AFinderTool[]
 				>();
 
 			Add(typeof(FindObj));
@@ -65,12 +65,12 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 		}
 
 		Dictionary<
-			SimPe.Interfaces.IFinderResultGui,
-			SimPe.Interfaces.AFinderTool[]
+			Interfaces.IFinderResultGui,
+			Interfaces.AFinderTool[]
 		> map;
 
-		public SimPe.Interfaces.AFinderTool[] CreateToolInstances(
-			SimPe.Interfaces.IFinderResultGui gui
+		public Interfaces.AFinderTool[] CreateToolInstances(
+			Interfaces.IFinderResultGui gui
 		)
 		{
 			if (map.ContainsKey(gui))
@@ -78,14 +78,14 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 				return map[gui];
 			}
 
-			SimPe.Interfaces.AFinderTool[] ret = new SimPe.Interfaces.AFinderTool[
+			Interfaces.AFinderTool[] ret = new Interfaces.AFinderTool[
 				list.Count
 			];
 			for (int i = 0; i < list.Count; i++)
 			{
 				ret[i] =
 					System.Activator.CreateInstance(list[i], new object[] { gui })
-					as SimPe.Interfaces.AFinderTool;
+					as Interfaces.AFinderTool;
 			}
 
 			map[gui] = ret;

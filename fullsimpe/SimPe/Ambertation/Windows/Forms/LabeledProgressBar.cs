@@ -27,20 +27,20 @@ namespace Ambertation.Windows.Forms
 	/// <summary>
 	/// Zusammenfassung für LabledProgressBar.
 	/// </summary>
-	[ToolboxBitmapAttribute(typeof(ProgressBar)), DefaultEvent("ChangedValue")]
-	public class LabeledProgressBar : System.Windows.Forms.UserControl
+	[ToolboxBitmap(typeof(ProgressBar)), DefaultEvent("ChangedValue")]
+	public class LabeledProgressBar : UserControl
 	{
-		private System.Windows.Forms.Panel pntb;
-		private System.Windows.Forms.Panel pnlb;
-		private System.Windows.Forms.Panel pn;
-		private System.Windows.Forms.Label lb;
-		private Ambertation.Windows.Forms.SubExtProgressBar pb;
-		private System.Windows.Forms.TextBox tb;
+		private Panel pntb;
+		private Panel pnlb;
+		private Panel pn;
+		private Label lb;
+		private SubExtProgressBar pb;
+		private TextBox tb;
 
 		/// <summary>
 		/// Erforderliche Designervariable.
 		/// </summary>
-		private System.ComponentModel.Container components = null;
+		private Container components = null;
 
 		public LabeledProgressBar()
 		{
@@ -283,7 +283,7 @@ namespace Ambertation.Windows.Forms
 		#endregion
 
 		#region Events
-		public event System.EventHandler Changed;
+		public event EventHandler Changed;
 		public event EventHandler ChangedValue;
 
 		protected void FireChangedEvent(bool both)
@@ -322,12 +322,12 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.pn = new System.Windows.Forms.Panel();
-			this.pb = new Ambertation.Windows.Forms.SubExtProgressBar();
-			this.lb = new System.Windows.Forms.Label();
-			this.pntb = new System.Windows.Forms.Panel();
-			this.tb = new System.Windows.Forms.TextBox();
-			this.pnlb = new System.Windows.Forms.Panel();
+			this.pn = new Panel();
+			this.pb = new SubExtProgressBar();
+			this.lb = new Label();
+			this.pntb = new Panel();
+			this.tb = new TextBox();
+			this.pnlb = new Panel();
 			this.pn.SuspendLayout();
 			this.pntb.SuspendLayout();
 			this.pnlb.SuspendLayout();
@@ -339,9 +339,9 @@ namespace Ambertation.Windows.Forms
 			this.pn.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pn.DockPadding.Left = 8;
 			this.pn.DockPadding.Right = 4;
-			this.pn.Location = new System.Drawing.Point(80, 0);
+			this.pn.Location = new Point(80, 0);
 			this.pn.Name = "pn";
-			this.pn.Size = new System.Drawing.Size(280, 15);
+			this.pn.Size = new Size(280, 15);
 			this.pn.TabIndex = 0;
 			//
 			// pb
@@ -357,41 +357,41 @@ namespace Ambertation.Windows.Forms
 			this.pb.Gradient = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
 			this.pb.GradientEndColor = System.Drawing.Color.White;
 			this.pb.GradientStartColor = System.Drawing.Color.White;
-			this.pb.Location = new System.Drawing.Point(8, 0);
+			this.pb.Location = new Point(8, 0);
 			this.pb.Maximum = 100;
 			this.pb.Minimum = 0;
 			this.pb.Name = "pb";
 			this.pb.ProgressBackColor = System.Drawing.SystemColors.Window;
 			this.pb.Quality = true;
 			this.pb.SelectedColor = System.Drawing.Color.YellowGreen;
-			this.pb.Size = new System.Drawing.Size(268, 15);
+			this.pb.Size = new Size(268, 15);
 			this.pb.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
 			this.pb.TabIndex = 0;
 			this.pb.UnselectedColor = System.Drawing.Color.Black;
 			this.pb.Value = 0;
-			this.pb.MouseUp += new System.Windows.Forms.MouseEventHandler(
+			this.pb.MouseUp += new MouseEventHandler(
 				this.pb_MouseUp
 			);
-			this.pb.MouseMove += new System.Windows.Forms.MouseEventHandler(
+			this.pb.MouseMove += new MouseEventHandler(
 				this.pb_MouseMove
 			);
-			this.pb.MouseDown += new System.Windows.Forms.MouseEventHandler(
+			this.pb.MouseDown += new MouseEventHandler(
 				this.pb_MouseDown
 			);
 			//
 			// lb
 			//
 			this.lb.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.lb.Font = new System.Drawing.Font(
+			this.lb.Font = new Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.lb.Location = new System.Drawing.Point(0, -8);
+			this.lb.Location = new Point(0, -8);
 			this.lb.Name = "lb";
-			this.lb.Size = new System.Drawing.Size(80, 23);
+			this.lb.Size = new Size(80, 23);
 			this.lb.TabIndex = 0;
 			this.lb.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
@@ -399,29 +399,29 @@ namespace Ambertation.Windows.Forms
 			//
 			this.pntb.Controls.Add(this.tb);
 			this.pntb.Dock = System.Windows.Forms.DockStyle.Right;
-			this.pntb.Location = new System.Drawing.Point(360, 0);
+			this.pntb.Location = new Point(360, 0);
 			this.pntb.Name = "pntb";
-			this.pntb.Size = new System.Drawing.Size(40, 15);
+			this.pntb.Size = new Size(40, 15);
 			this.pntb.TabIndex = 1;
 			//
 			// tb
 			//
 			this.tb.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.tb.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.tb.Location = new System.Drawing.Point(0, 1);
+			this.tb.Location = new Point(0, 1);
 			this.tb.Name = "tb";
-			this.tb.Size = new System.Drawing.Size(40, 14);
+			this.tb.Size = new Size(40, 14);
 			this.tb.TabIndex = 0;
 			this.tb.Text = "";
-			this.tb.TextChanged += new System.EventHandler(this.tb_TextChanged);
+			this.tb.TextChanged += new EventHandler(this.tb_TextChanged);
 			//
 			// pnlb
 			//
 			this.pnlb.Controls.Add(this.lb);
 			this.pnlb.Dock = System.Windows.Forms.DockStyle.Left;
-			this.pnlb.Location = new System.Drawing.Point(0, 0);
+			this.pnlb.Location = new Point(0, 0);
 			this.pnlb.Name = "pnlb";
-			this.pnlb.Size = new System.Drawing.Size(80, 15);
+			this.pnlb.Size = new Size(80, 15);
 			this.pnlb.TabIndex = 2;
 			//
 			// LabeledProgressBar
@@ -430,7 +430,7 @@ namespace Ambertation.Windows.Forms
 			this.Controls.Add(this.pnlb);
 			this.Controls.Add(this.pntb);
 			this.DockPadding.Bottom = 5;
-			this.Font = new System.Drawing.Font(
+			this.Font = new Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
@@ -438,7 +438,7 @@ namespace Ambertation.Windows.Forms
 				((System.Byte)(0))
 			);
 			this.Name = "LabeledProgressBar";
-			this.Size = new System.Drawing.Size(400, 20);
+			this.Size = new Size(400, 20);
 			this.pn.ResumeLayout(false);
 			this.pntb.ResumeLayout(false);
 			this.pnlb.ResumeLayout(false);
@@ -474,7 +474,7 @@ namespace Ambertation.Windows.Forms
 			pb.Visible = this.Visible;
 		}
 
-		private void tb_TextChanged(object sender, System.EventArgs e)
+		private void tb_TextChanged(object sender, EventArgs e)
 		{
 			if (internalupdate)
 			{
@@ -495,7 +495,7 @@ namespace Ambertation.Windows.Forms
 			}
 		}
 
-		private void ProgressBarUpdate(System.Windows.Forms.MouseEventArgs e)
+		private void ProgressBarUpdate(MouseEventArgs e)
 		{
 			if (e != null)
 			{
@@ -521,7 +521,7 @@ namespace Ambertation.Windows.Forms
 			}
 		}
 
-		private void pb_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+		private void pb_MouseDown(object sender, MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.Left)
 			{
@@ -529,7 +529,7 @@ namespace Ambertation.Windows.Forms
 			}
 		}
 
-		private void pb_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
+		private void pb_MouseMove(object sender, MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.Left)
 			{
@@ -537,7 +537,7 @@ namespace Ambertation.Windows.Forms
 			}
 		}
 
-		private void pb_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
+		private void pb_MouseUp(object sender, MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.Left)
 			{
@@ -565,7 +565,7 @@ namespace Ambertation.Windows.Forms
 			pb.Refresh();
 		}
 
-		private void lb_SizeChanged(object sender, System.EventArgs e)
+		private void lb_SizeChanged(object sender, EventArgs e)
 		{
 			//OnResize(e);
 		}

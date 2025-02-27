@@ -134,8 +134,8 @@ namespace SimPe
 		public static void SavePackedFile(
 			string filename,
 			bool dscfile,
-			SimPe.Packages.PackedFileDescriptor pfd,
-			SimPe.Packages.GeneratableFile package
+			Packages.PackedFileDescriptor pfd,
+			Packages.GeneratableFile package
 		)
 		{
 #if !DEBUG
@@ -270,7 +270,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="pfd">File Descriptor of the Selected File</param>
 		/// <param name="package">The package the File is stored in</param>
-		public void Execute(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item)
+		public void Execute(Interfaces.Scenegraph.IScenegraphFileIndexItem item)
 		{
 			if (item == null)
 			{
@@ -304,8 +304,8 @@ namespace SimPe
 				SavePackedFile(
 					extfile,
 					false,
-					(SimPe.Packages.PackedFileDescriptor)item.FileDescriptor,
-					(SimPe.Packages.GeneratableFile)item.Package
+					(Packages.PackedFileDescriptor)item.FileDescriptor,
+					(Packages.GeneratableFile)item.Package
 				);
 
 				Process p = new Process();
@@ -319,8 +319,8 @@ namespace SimPe
 				p.WaitForExit();
 				p.Close();
 
-				SimPe.Packages.PackedFileDescriptor pfd =
-					(SimPe.Packages.PackedFileDescriptor)item.FileDescriptor;
+				Packages.PackedFileDescriptor pfd =
+					(Packages.PackedFileDescriptor)item.FileDescriptor;
 				OpenPackedFile(extfile, ref pfd);
 				pfd.Filename = null;
 				pfd.Path = null;

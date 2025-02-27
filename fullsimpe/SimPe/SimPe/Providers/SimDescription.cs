@@ -187,7 +187,7 @@ namespace SimPe.Providers
 				.SimInstance;
 			ArrayList list = new ArrayList();
 			firstcustum = null;
-			foreach (SimPe.PackedFiles.Wrapper.LinkedSDesc sdesc in ht.Values)
+			foreach (LinkedSDesc sdesc in ht.Values)
 			{
 				string n = sdesc.HouseholdName;
 				if (n == null)
@@ -223,17 +223,17 @@ namespace SimPe.Providers
 
 		#region ISimDescription Member
 
-		public SimPe.Interfaces.Wrapper.ISDesc FindSim(uint simid)
+		public Interfaces.Wrapper.ISDesc FindSim(uint simid)
 		{
 			if (bysimid == null)
 			{
 				LoadDescriptions();
 			}
 
-			return (SimPe.Interfaces.Wrapper.ISDesc)bysimid[simid];
+			return (Interfaces.Wrapper.ISDesc)bysimid[simid];
 		}
 
-		SimPe.Interfaces.Wrapper.ISDesc SimPe.Interfaces.Providers.ISimDescriptions.FindSim(
+		Interfaces.Wrapper.ISDesc ISimDescriptions.FindSim(
 			ushort instance
 		)
 		{
@@ -242,12 +242,12 @@ namespace SimPe.Providers
 				LoadDescriptions();
 			}
 
-			return (SimPe.Interfaces.Wrapper.ISDesc)byinstance[instance];
+			return (Interfaces.Wrapper.ISDesc)byinstance[instance];
 		}
 
 		public ushort GetInstance(uint simid)
 		{
-			SimPe.Interfaces.Wrapper.ISDesc d = FindSim(simid);
+			Interfaces.Wrapper.ISDesc d = FindSim(simid);
 			if (d != null)
 			{
 				return d.Instance;
@@ -260,7 +260,7 @@ namespace SimPe.Providers
 
 		public uint GetSimId(ushort instance)
 		{
-			SimPe.Interfaces.Wrapper.ISDesc d = FindSim(instance);
+			Interfaces.Wrapper.ISDesc d = FindSim(instance);
 			if (d != null)
 			{
 				return d.SimId;
@@ -298,14 +298,14 @@ namespace SimPe.Providers
 				to1 = 12;
 			}
 
-			SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+			Packages.File pkg = SimPe.Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
 					PathProvider.Global.Latest.InstallFolder,
 					@"TSData\Res\Text\UIText.package"
 				)
 			);
-			SimPe.PackedFiles.Wrapper.Str str = new Str();
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
+			Str str = new Str();
+			IPackedFileDescriptor pfd = pkg.FindFile(
 				Data.MetaData.STRING_FILE,
 				0,
 				Data.MetaData.LOCAL_GROUP,
@@ -315,7 +315,7 @@ namespace SimPe.Providers
 			if (pfd != null)
 			{
 				str.ProcessData(pfd, pkg);
-				SimPe.PackedFiles.Wrapper.StrItemList strs =
+				StrItemList strs =
 					str.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
 				if (to1 == 12)
 				{
@@ -437,14 +437,14 @@ namespace SimPe.Providers
 				return;
 			}
 
-			SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+			Packages.File pkg = SimPe.Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
 					PathProvider.Global.Latest.InstallFolder,
 					@"TSData\Res\Text\UIText.package"
 				)
 			);
-			SimPe.PackedFiles.Wrapper.Str str = new Str();
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
+			Str str = new Str();
+			IPackedFileDescriptor pfd = pkg.FindFile(
 				Data.MetaData.STRING_FILE,
 				0,
 				Data.MetaData.LOCAL_GROUP,
@@ -453,7 +453,7 @@ namespace SimPe.Providers
 			if (pfd != null)
 			{
 				str.ProcessData(pfd, pkg);
-				SimPe.PackedFiles.Wrapper.StrItemList strs =
+				StrItemList strs =
 					str.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
 
 				pkg = SimPe.Packages.File.LoadFromFile(
@@ -467,12 +467,12 @@ namespace SimPe.Providers
 				{
 					try
 					{
-						SimPe.PackedFiles.Wrapper.Xml xml =
-							new SimPe.PackedFiles.Wrapper.Xml();
+						Xml xml =
+							new Xml();
 						xml.ProcessData(pfd, pkg);
 
 						string[] lines = xml.Text.Split(new char[] { '\r' });
-						SimPe.PackedFiles.Wrapper.Picture pic = new Picture();
+						Picture pic = new Picture();
 						// SimPe.FileTable.FileIndex.Load();
 						foreach (string fulline in lines)
 						{
@@ -531,8 +531,8 @@ namespace SimPe.Providers
 		}
 
 		private int CreateCollectibleAlias(
-			SimPe.PackedFiles.Wrapper.StrItemList strs,
-			SimPe.PackedFiles.Wrapper.Picture pic,
+			StrItemList strs,
+			Picture pic,
 			string line,
 			int index
 		)
@@ -580,12 +580,12 @@ namespace SimPe.Providers
 		}
 		*/
 		private static System.Drawing.Image LoadCollectibleIcon(
-			SimPe.PackedFiles.Wrapper.Picture pic,
+			Picture pic,
 			UInt32 g,
 			UInt32 i
 		)
 		{
-			SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+			Packages.File pkg = SimPe.Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
 					PathProvider.Global.GetExpansion(10).InstallFolder,
 					"TSData\\Res\\UI\\ui.package"
@@ -593,7 +593,7 @@ namespace SimPe.Providers
 			);
 			if (pkg != null)
 			{
-				SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
+				IPackedFileDescriptor pfd = pkg.FindFile(
 					0x856DDBAC,
 					0,
 					g,
@@ -653,14 +653,14 @@ namespace SimPe.Providers
 			return tipres;
 		}
 
-		public SimPe.Providers.CollectibleAlias[] GetAllCollectibles()
+		public CollectibleAlias[] GetAllCollectibles()
 		{
 			if (collectibles == null)
 			{
 				LoadCollectibles();
 			}
 
-			SimPe.Providers.CollectibleAlias[] a = new SimPe.Providers.CollectibleAlias[
+			CollectibleAlias[] a = new CollectibleAlias[
 				collectibles.Count
 			];
 

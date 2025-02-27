@@ -23,7 +23,7 @@ using SimPe.Interfaces;
 
 namespace SimPe.Collections
 {
-	internal class InternalListeners : SimPe.Collections.Listeners
+	internal class InternalListeners : Listeners
 	{
 		internal InternalListeners()
 			: base() { }

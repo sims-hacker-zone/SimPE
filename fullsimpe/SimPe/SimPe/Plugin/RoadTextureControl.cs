@@ -25,7 +25,7 @@ namespace SimPe.Plugin
 	public class RoadTextureControl
 		:
 		//System.Windows.Forms.UserControl
-		SimPe.Windows.Forms.WrapperBaseControl
+		Windows.Forms.WrapperBaseControl
 	{
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;

@@ -33,18 +33,18 @@ namespace pjse
 	/// <summary>
 	/// Summary description for ResourceChooser.
 	/// </summary>
-	public class ResourceChooser : System.Windows.Forms.Form
+	public class ResourceChooser : Form
 	{
 		#region Form variables
 
-		private System.Windows.Forms.Button OK;
-		private System.Windows.Forms.Button Cancel;
-		private System.Windows.Forms.TabControl tcResources;
-		private System.Windows.Forms.TabPage tpBuiltIn;
-		private System.Windows.Forms.TabPage tpGlobalGroup;
-		private System.Windows.Forms.TabPage tpSemiGroup;
-		private System.Windows.Forms.TabPage tpGroup;
-		private System.Windows.Forms.TabPage tpPackage;
+		private Button OK;
+		private Button Cancel;
+		private TabControl tcResources;
+		private TabPage tpBuiltIn;
+		private TabPage tpGlobalGroup;
+		private TabPage tpSemiGroup;
+		private TabPage tpGroup;
+		private TabPage tpPackage;
 		private ListView lvPackage;
 		private ColumnHeader chValue;
 		private ColumnHeader chName;
@@ -238,7 +238,7 @@ namespace pjse
 		/// <param name="form">Parent form</param>
 		/// <param name="canDoEA">Whether to differentiate overriding resources</param>
 		/// <returns>The chosen resource entry</returns>
-		public pjse.FileTable.Entry Execute(
+		public FileTable.Entry Execute(
 			uint resourceType,
 			uint group,
 			Control form,
@@ -257,7 +257,7 @@ namespace pjse
 		/// <param name="skip_pages">A flag per page (this package, private, semi, global, prim) to suppress pages</param>
 		/// <param name="canDoEA">Whether to differentiate overriding resources</param>
 		/// <returns>The chosen resource entry</returns>
-		public pjse.FileTable.Entry Execute(
+		public FileTable.Entry Execute(
 			uint resourceType,
 			uint group,
 			Control form,
@@ -367,14 +367,14 @@ namespace pjse
 				{
 					if (lv != lvPrim)
 					{
-						return (pjse.FileTable.Entry)lv.SelectedItems[0].Tag;
+						return (FileTable.Entry)lv.SelectedItems[0].Tag;
 					}
 					else
 					{
 						IPackedFileDescriptor pfd =
 							new SimPe.Packages.PackedFileDescriptor();
 						pfd.Instance = (uint)lvPrim.SelectedItems[0].Tag;
-						return new pjse.FileTable.Entry(null, pfd, true, true);
+						return new FileTable.Entry(null, pfd, true, true);
 					}
 				}
 			}
@@ -395,12 +395,12 @@ namespace pjse
 			Fill(pjse.FileTable.GFT[type, group], list, tab);
 		}
 
-		private void Fill(pjse.FileTable.Entry[] items, ListView list, TabPage tab)
+		private void Fill(FileTable.Entry[] items, ListView list, TabPage tab)
 		{
 			list.Items.Clear();
 			ListViewItem lvi;
 
-			foreach (pjse.FileTable.Entry item in items)
+			foreach (FileTable.Entry item in items)
 			{
 				lvi = new ListViewItem(
 					new string[]
@@ -460,30 +460,30 @@ namespace pjse
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(ResourceChooser)
 				);
-			this.tcResources = new System.Windows.Forms.TabControl();
-			this.tpPackage = new System.Windows.Forms.TabPage();
-			this.lvPackage = new System.Windows.Forms.ListView();
-			this.chValue = new System.Windows.Forms.ColumnHeader();
-			this.chName = new System.Windows.Forms.ColumnHeader();
-			this.tpGlobalGroup = new System.Windows.Forms.TabPage();
-			this.lvGlobal = new System.Windows.Forms.ListView();
-			this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-			this.tpGroup = new System.Windows.Forms.TabPage();
-			this.lvGroup = new System.Windows.Forms.ListView();
-			this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
-			this.tpSemiGroup = new System.Windows.Forms.TabPage();
-			this.lvSemi = new System.Windows.Forms.ListView();
-			this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
-			this.tpBuiltIn = new System.Windows.Forms.TabPage();
-			this.lvPrim = new System.Windows.Forms.ListView();
-			this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
-			this.OK = new System.Windows.Forms.Button();
-			this.Cancel = new System.Windows.Forms.Button();
-			this.btnViewBHAV = new System.Windows.Forms.Button();
+			this.tcResources = new TabControl();
+			this.tpPackage = new TabPage();
+			this.lvPackage = new ListView();
+			this.chValue = new ColumnHeader();
+			this.chName = new ColumnHeader();
+			this.tpGlobalGroup = new TabPage();
+			this.lvGlobal = new ListView();
+			this.columnHeader1 = new ColumnHeader();
+			this.columnHeader2 = new ColumnHeader();
+			this.tpGroup = new TabPage();
+			this.lvGroup = new ListView();
+			this.columnHeader3 = new ColumnHeader();
+			this.columnHeader4 = new ColumnHeader();
+			this.tpSemiGroup = new TabPage();
+			this.lvSemi = new ListView();
+			this.columnHeader5 = new ColumnHeader();
+			this.columnHeader6 = new ColumnHeader();
+			this.tpBuiltIn = new TabPage();
+			this.lvPrim = new ListView();
+			this.columnHeader7 = new ColumnHeader();
+			this.columnHeader8 = new ColumnHeader();
+			this.OK = new Button();
+			this.Cancel = new Button();
+			this.btnViewBHAV = new Button();
 			this.tcResources.SuspendLayout();
 			this.tpPackage.SuspendLayout();
 			this.tpGlobalGroup.SuspendLayout();
@@ -502,7 +502,7 @@ namespace pjse
 			this.tcResources.Controls.Add(this.tpBuiltIn);
 			this.tcResources.Name = "tcResources";
 			this.tcResources.SelectedIndex = 0;
-			this.tcResources.SelectedIndexChanged += new System.EventHandler(
+			this.tcResources.SelectedIndexChanged += new EventHandler(
 				this.tcResources_SelectedIndexChanged
 			);
 			//
@@ -515,16 +515,16 @@ namespace pjse
 			// lvPackage
 			//
 			this.lvPackage.Columns.AddRange(
-				new System.Windows.Forms.ColumnHeader[] { this.chValue, this.chName }
+				new ColumnHeader[] { this.chValue, this.chName }
 			);
 			resources.ApplyResources(this.lvPackage, "lvPackage");
 			this.lvPackage.FullRowSelect = true;
 			this.lvPackage.HideSelection = false;
 			this.lvPackage.Items.AddRange(
-				new System.Windows.Forms.ListViewItem[]
+				new ListViewItem[]
 				{
 					(
-						(System.Windows.Forms.ListViewItem)(
+						(ListViewItem)(
 							resources.GetObject("lvPackage.Items")
 						)
 					),
@@ -536,11 +536,11 @@ namespace pjse
 			this.lvPackage.Sorting = System.Windows.Forms.SortOrder.Ascending;
 			this.lvPackage.UseCompatibleStateImageBehavior = false;
 			this.lvPackage.View = System.Windows.Forms.View.Details;
-			this.lvPackage.DoubleClick += new System.EventHandler(
+			this.lvPackage.DoubleClick += new EventHandler(
 				this.listView_DoubleClick
 			);
 			this.lvPackage.ColumnClick +=
-				new System.Windows.Forms.ColumnClickEventHandler(
+				new ColumnClickEventHandler(
 					this.listView_ColumnClick
 				);
 			//
@@ -561,7 +561,7 @@ namespace pjse
 			// lvGlobal
 			//
 			this.lvGlobal.Columns.AddRange(
-				new System.Windows.Forms.ColumnHeader[]
+				new ColumnHeader[]
 				{
 					this.columnHeader1,
 					this.columnHeader2,
@@ -571,10 +571,10 @@ namespace pjse
 			this.lvGlobal.FullRowSelect = true;
 			this.lvGlobal.HideSelection = false;
 			this.lvGlobal.Items.AddRange(
-				new System.Windows.Forms.ListViewItem[]
+				new ListViewItem[]
 				{
 					(
-						(System.Windows.Forms.ListViewItem)(
+						(ListViewItem)(
 							resources.GetObject("lvGlobal.Items")
 						)
 					),
@@ -586,11 +586,11 @@ namespace pjse
 			this.lvGlobal.Sorting = System.Windows.Forms.SortOrder.Ascending;
 			this.lvGlobal.UseCompatibleStateImageBehavior = false;
 			this.lvGlobal.View = System.Windows.Forms.View.Details;
-			this.lvGlobal.DoubleClick += new System.EventHandler(
+			this.lvGlobal.DoubleClick += new EventHandler(
 				this.listView_DoubleClick
 			);
 			this.lvGlobal.ColumnClick +=
-				new System.Windows.Forms.ColumnClickEventHandler(
+				new ColumnClickEventHandler(
 					this.listView_ColumnClick
 				);
 			//
@@ -611,7 +611,7 @@ namespace pjse
 			// lvGroup
 			//
 			this.lvGroup.Columns.AddRange(
-				new System.Windows.Forms.ColumnHeader[]
+				new ColumnHeader[]
 				{
 					this.columnHeader3,
 					this.columnHeader4,
@@ -621,10 +621,10 @@ namespace pjse
 			this.lvGroup.FullRowSelect = true;
 			this.lvGroup.HideSelection = false;
 			this.lvGroup.Items.AddRange(
-				new System.Windows.Forms.ListViewItem[]
+				new ListViewItem[]
 				{
 					(
-						(System.Windows.Forms.ListViewItem)(
+						(ListViewItem)(
 							resources.GetObject("lvGroup.Items")
 						)
 					),
@@ -636,11 +636,11 @@ namespace pjse
 			this.lvGroup.Sorting = System.Windows.Forms.SortOrder.Ascending;
 			this.lvGroup.UseCompatibleStateImageBehavior = false;
 			this.lvGroup.View = System.Windows.Forms.View.Details;
-			this.lvGroup.DoubleClick += new System.EventHandler(
+			this.lvGroup.DoubleClick += new EventHandler(
 				this.listView_DoubleClick
 			);
 			this.lvGroup.ColumnClick +=
-				new System.Windows.Forms.ColumnClickEventHandler(
+				new ColumnClickEventHandler(
 					this.listView_ColumnClick
 				);
 			//
@@ -661,7 +661,7 @@ namespace pjse
 			// lvSemi
 			//
 			this.lvSemi.Columns.AddRange(
-				new System.Windows.Forms.ColumnHeader[]
+				new ColumnHeader[]
 				{
 					this.columnHeader5,
 					this.columnHeader6,
@@ -671,10 +671,10 @@ namespace pjse
 			this.lvSemi.FullRowSelect = true;
 			this.lvSemi.HideSelection = false;
 			this.lvSemi.Items.AddRange(
-				new System.Windows.Forms.ListViewItem[]
+				new ListViewItem[]
 				{
 					(
-						(System.Windows.Forms.ListViewItem)(
+						(ListViewItem)(
 							resources.GetObject("lvSemi.Items")
 						)
 					),
@@ -686,10 +686,10 @@ namespace pjse
 			this.lvSemi.Sorting = System.Windows.Forms.SortOrder.Ascending;
 			this.lvSemi.UseCompatibleStateImageBehavior = false;
 			this.lvSemi.View = System.Windows.Forms.View.Details;
-			this.lvSemi.DoubleClick += new System.EventHandler(
+			this.lvSemi.DoubleClick += new EventHandler(
 				this.listView_DoubleClick
 			);
-			this.lvSemi.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(
+			this.lvSemi.ColumnClick += new ColumnClickEventHandler(
 				this.listView_ColumnClick
 			);
 			//
@@ -710,7 +710,7 @@ namespace pjse
 			// lvPrim
 			//
 			this.lvPrim.Columns.AddRange(
-				new System.Windows.Forms.ColumnHeader[]
+				new ColumnHeader[]
 				{
 					this.columnHeader7,
 					this.columnHeader8,
@@ -720,10 +720,10 @@ namespace pjse
 			this.lvPrim.FullRowSelect = true;
 			this.lvPrim.HideSelection = false;
 			this.lvPrim.Items.AddRange(
-				new System.Windows.Forms.ListViewItem[]
+				new ListViewItem[]
 				{
 					(
-						(System.Windows.Forms.ListViewItem)(
+						(ListViewItem)(
 							resources.GetObject("lvPrim.Items")
 						)
 					),
@@ -734,10 +734,10 @@ namespace pjse
 			this.lvPrim.ShowGroups = false;
 			this.lvPrim.UseCompatibleStateImageBehavior = false;
 			this.lvPrim.View = System.Windows.Forms.View.Details;
-			this.lvPrim.DoubleClick += new System.EventHandler(
+			this.lvPrim.DoubleClick += new EventHandler(
 				this.listView_DoubleClick
 			);
-			this.lvPrim.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(
+			this.lvPrim.ColumnClick += new ColumnClickEventHandler(
 				this.listView_ColumnClick
 			);
 			//
@@ -754,7 +754,7 @@ namespace pjse
 			resources.ApplyResources(this.OK, "OK");
 			this.OK.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.OK.Name = "OK";
-			this.OK.Click += new System.EventHandler(this.OK_Click);
+			this.OK.Click += new EventHandler(this.OK_Click);
 			//
 			// Cancel
 			//
@@ -766,7 +766,7 @@ namespace pjse
 			//
 			resources.ApplyResources(this.btnViewBHAV, "btnViewBHAV");
 			this.btnViewBHAV.Name = "btnViewBHAV";
-			this.btnViewBHAV.Click += new System.EventHandler(this.btnViewBHAV_Click);
+			this.btnViewBHAV.Click += new EventHandler(this.btnViewBHAV_Click);
 			//
 			// ResourceChooser
 			//
@@ -820,7 +820,7 @@ namespace pjse
 			}
 		}
 
-		private void listView_DoubleClick(object sender, System.EventArgs e)
+		private void listView_DoubleClick(object sender, EventArgs e)
 		{
 			this.DialogResult = System.Windows.Forms.DialogResult.OK;
 			OK_Click(sender, e);
@@ -833,12 +833,12 @@ namespace pjse
 
 			if (lv != null && lv != lvPrim)
 			{
-				pjse.FileTable.Entry e = (pjse.FileTable.Entry)lv.SelectedItems[0].Tag;
+				FileTable.Entry e = (FileTable.Entry)lv.SelectedItems[0].Tag;
 
 				if (CanDoEA && e.Group != 0xffffff && !e.IsFixed)
 				{
 					foreach (
-						pjse.FileTable.Entry f in pjse.FileTable.GFT[
+						FileTable.Entry f in pjse.FileTable.GFT[
 							e.Type,
 							e.Group,
 							e.Instance,
@@ -886,7 +886,7 @@ namespace pjse
 				return;
 			}
 
-			pjse.FileTable.Entry item = (pjse.FileTable.Entry)lv.SelectedItems[0].Tag;
+			FileTable.Entry item = (FileTable.Entry)lv.SelectedItems[0].Tag;
 			Bhav b = new Bhav();
 			b.ProcessData(item.PFD, item.Package);
 

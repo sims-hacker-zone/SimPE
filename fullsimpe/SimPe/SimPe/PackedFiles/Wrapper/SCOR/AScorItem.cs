@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace SimPe.PackedFiles.Wrapper.SCOR
 {
-	[System.ComponentModel.ToolboxItem(false)]
+	[ToolboxItem(false)]
 	public partial class AScorItem : UserControl
 	{
 		public string TokenName

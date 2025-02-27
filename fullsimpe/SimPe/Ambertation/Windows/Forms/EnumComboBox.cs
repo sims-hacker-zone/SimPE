@@ -64,7 +64,7 @@ namespace Ambertation.Windows.Forms
 	/// <summary>
 	/// Summary description for UserControl1.
 	/// </summary>
-	[ToolboxBitmapAttribute(typeof(ComboBox))]
+	[ToolboxBitmap(typeof(ComboBox))]
 	public class EnumComboBox : ComboBox
 	{
 		/// <summary>
@@ -164,7 +164,7 @@ namespace Ambertation.Windows.Forms
 								o = ((EnumComboBoxItem)o).Content;
 							}
 
-							if (((System.Enum)o).CompareTo(value) == 0)
+							if (((Enum)o).CompareTo(value) == 0)
 							{
 								sel = i;
 								break;

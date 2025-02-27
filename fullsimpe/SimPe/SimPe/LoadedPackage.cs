@@ -28,7 +28,7 @@ namespace SimPe
 	/// <summary>
 	/// Used to load Packages from the FileSystem
 	/// </summary>
-	public class LoadedPackage : System.IDisposable
+	public class LoadedPackage : IDisposable
 	{
 		/// <summary>
 		/// Creates a new Instance
@@ -81,29 +81,29 @@ namespace SimPe
 		/// <summary>
 		/// Triggered whenever the Content of the Package was changed
 		/// </summary>
-		public event System.EventHandler IndexChanged;
+		public event EventHandler IndexChanged;
 
 		/// <summary>
 		/// Triggered after a package got Saved somewhere (not necesarry by this class!)
 		/// </summary>
-		public event System.EventHandler SavedIndex;
+		public event EventHandler SavedIndex;
 
 		/// <summary>
 		/// Triggered whenever a new Resource was added
 		/// </summary>
-		public event System.EventHandler AddedResource;
+		public event EventHandler AddedResource;
 
 		/// <summary>
 		/// Triggered whenever a Resource was Removed
 		/// </summary>
-		public event System.EventHandler RemovedResource;
+		public event EventHandler RemovedResource;
 		#endregion
 
 
 		/// <summary>
 		/// Returns the current Package or null if it is not loaded
 		/// </summary>
-		public SimPe.Packages.GeneratableFile Package
+		public Packages.GeneratableFile Package
 		{
 			get; private set;
 		}
@@ -316,7 +316,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="newpkg">the Package that should be the currently opened</param>
 		/// <returns>true, if the file was loaded</returns>
-		public bool LoadFromPackage(SimPe.Packages.GeneratableFile newpkg)
+		public bool LoadFromPackage(Packages.GeneratableFile newpkg)
 		{
 			if (newpkg == null)
 			{
@@ -376,7 +376,7 @@ namespace SimPe
 				&& (Helper.WindowsRegistry.LoadMetaInfo)
 			)
 			{
-				SimPe.Interfaces.Files.IPackageFile pkg = Package;
+				Interfaces.Files.IPackageFile pkg = Package;
 				try
 				{
 					string mname = Helper.GetMainNeighborhoodFile(pkg.SaveFileName);
@@ -486,7 +486,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		void OpenRecent(object sender, System.EventArgs e)
+		void OpenRecent(object sender, EventArgs e)
 		{
 			if (sender is ToolStripMenuItem)
 			{
@@ -516,7 +516,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="i">Number of the Item</param>
 		/// <returns></returns>
-		System.Windows.Forms.Shortcut GetShortCut(int i)
+		Shortcut GetShortCut(int i)
 		{
 			if (i == 1)
 			{
@@ -625,7 +625,7 @@ namespace SimPe
 		/// Add a List of recently Opened Files to the Menu
 		/// </summary>
 		/// <param name="menu"></param>
-		public void UpdateRecentFileMenu(System.Windows.Forms.ToolStripMenuItem menu)
+		public void UpdateRecentFileMenu(ToolStripMenuItem menu)
 		{
 			menu.DropDownItems.Clear();
 
@@ -645,11 +645,11 @@ namespace SimPe
 							);
 					}
 
-					System.Windows.Forms.ToolStripMenuItem mbi =
-						new System.Windows.Forms.ToolStripMenuItem(sname);
+					ToolStripMenuItem mbi =
+						new ToolStripMenuItem(sname);
 					mbi.Tag = file;
 					mbi.Click += new EventHandler(OpenRecent);
-					System.Windows.Forms.KeysConverter kc = new KeysConverter();
+					KeysConverter kc = new KeysConverter();
 
 					LoadFileWrappersExt.SetShurtcutKey(
 						mbi,
@@ -723,7 +723,7 @@ namespace SimPe
 							);
 
 							foreach (
-								SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds
+								Interfaces.Files.IPackedFileDescriptor pfd in pfds
 							)
 							{
 								this.Package.Add(pfd);
@@ -797,7 +797,7 @@ namespace SimPe
 			{
 				if (flname.ToLower().EndsWith("package.xml"))
 				{
-					SimPe.Packages.File pkg = Packages.GeneratableFile.LoadFromStream(
+					Packages.File pkg = Packages.GeneratableFile.LoadFromStream(
 						XmlPackageReader.OpenExtractedPackage(null, flname)
 					);
 					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.Index)
@@ -824,7 +824,7 @@ namespace SimPe
 					|| flname.ToLower().EndsWith(".simpedis")
 				)
 				{
-					SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(flname);
+					Packages.File pkg = SimPe.Packages.File.LoadFromFile(flname);
 					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.Index)
 					{
 						Interfaces.Files.IPackedFile file = pkg.Read(pfd);
@@ -838,7 +838,7 @@ namespace SimPe
 				else
 				{
 					Packages.PackedFileDescriptor pfd =
-						new SimPe.Packages.PackedFileDescriptor();
+						new Packages.PackedFileDescriptor();
 					pfd.Type = 0xffffffff;
 					ToolLoaderItemExt.OpenPackedFile(flname, ref pfd);
 					list.Add(pfd);

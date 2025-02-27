@@ -7,8 +7,8 @@ namespace SimPe.Plugin
 	/// </summary>
 	public abstract class NhtrBaseItem : NhtrItem
 	{
-		protected SimPe.Geometry.Vector3f pos;
-		protected SimPe.Geometry.Vector2f min,
+		protected Vector3f pos;
+		protected Vector2f min,
 			max;
 		protected byte marker2;
 

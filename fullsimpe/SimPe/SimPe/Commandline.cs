@@ -524,20 +524,20 @@ namespace SimPe
 
 		static void Overridelayout(string name)
 		{
-			System.IO.Stream s = typeof(Commandline).Assembly.GetManifestResourceStream(
+			Stream s = typeof(Commandline).Assembly.GetManifestResourceStream(
 				"SimPe.data." + name
 			);
 			if (s != null)
 			{
 				try
 				{
-					System.IO.StreamWriter sw = System.IO.File.CreateText(
+					StreamWriter sw = System.IO.File.CreateText(
 						Helper.DataFolder.Layout2XREGW
 					);
 					sw.BaseStream.SetLength(0);
 					try
 					{
-						System.IO.StreamReader sr = new System.IO.StreamReader(s);
+						StreamReader sr = new StreamReader(s);
 						sw.Write(sr.ReadToEnd());
 						sw.Flush();
 					}
@@ -562,14 +562,14 @@ namespace SimPe
 			{
 				try
 				{
-					System.IO.FileStream fs = System.IO.File.OpenWrite(
+					FileStream fs = System.IO.File.OpenWrite(
 						Helper.DataFolder.SimPeLayoutW
 					);
-					System.IO.BinaryWriter sw = new System.IO.BinaryWriter(fs);
+					BinaryWriter sw = new BinaryWriter(fs);
 					sw.BaseStream.SetLength(0);
 					try
 					{
-						System.IO.BinaryReader sr = new System.IO.BinaryReader(s);
+						BinaryReader sr = new BinaryReader(s);
 						sw.Write(sr.ReadBytes((int)sr.BaseStream.Length));
 						sw.Flush();
 					}
@@ -742,7 +742,7 @@ namespace SimPe
 			catch { }
 
 			string path;
-			System.IO.Stream s = typeof(Commandline).Assembly.GetManifestResourceStream(
+			Stream s = typeof(Commandline).Assembly.GetManifestResourceStream(
 				"SimPe.data." + namer
 			);
 			if (namer == "guidindex.txt")
@@ -771,11 +771,11 @@ namespace SimPe
 			{
 				try
 				{
-					System.IO.BinaryReader br = new BinaryReader(s);
+					BinaryReader br = new BinaryReader(s);
 					try
 					{
 						FileStream fs = System.IO.File.Create(path);
-						System.IO.BinaryWriter bw = new BinaryWriter(fs);
+						BinaryWriter bw = new BinaryWriter(fs);
 						try
 						{
 							bw.Write(br.ReadBytes((int)br.BaseStream.Length));

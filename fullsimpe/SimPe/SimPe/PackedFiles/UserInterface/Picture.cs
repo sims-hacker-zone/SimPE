@@ -32,11 +32,11 @@ namespace SimPe.PackedFiles.UserInterface
 		#region IPackedFileUI Member
 		public Control GUIHandle => form.JpegPanel;
 
-		public void UpdateGUI(SimPe.Interfaces.Plugin.IFileWrapper wrapper)
+		public void UpdateGUI(IFileWrapper wrapper)
 		{
 			form.picwrapper = wrapper;
 			PictureBox pb = form.pb;
-			Image img = ((SimPe.PackedFiles.Wrapper.Picture)wrapper).Image;
+			Image img = ((Wrapper.Picture)wrapper).Image;
 			pb.Image = img;
 		}
 

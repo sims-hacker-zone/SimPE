@@ -30,23 +30,23 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for SkinWorkshop.
 	/// </summary>
-	public class SkinWorkshop : System.Windows.Forms.Form
+	public class SkinWorkshop : Form
 	{
-		private System.Windows.Forms.OpenFileDialog ofd;
-		private System.Windows.Forms.CheckBox cbfix;
+		private OpenFileDialog ofd;
+		private CheckBox cbfix;
 		private System.ComponentModel.IContainer components;
-		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.GroupBox taskBox2;
-		private System.Windows.Forms.GroupBox taskBox1;
-		private System.Windows.Forms.ListBox lbobj;
-		private System.Windows.Forms.Button btclone;
-		private System.Windows.Forms.CheckBox cbgid;
-		private System.Windows.Forms.SaveFileDialog sfd;
-		private System.Windows.Forms.TextBox tbseek;
-		private System.Windows.Forms.PictureBox pb;
+		private Panel panel1;
+		private GroupBox taskBox2;
+		private GroupBox taskBox1;
+		private ListBox lbobj;
+		private Button btclone;
+		private CheckBox cbgid;
+		private SaveFileDialog sfd;
+		private TextBox tbseek;
+		private PictureBox pb;
 
-		SimPe.Packages.GeneratableFile package;
-		SimPe.Interfaces.Files.IPackageFile simpe_pkg;
+		Packages.GeneratableFile package;
+		Interfaces.Files.IPackageFile simpe_pkg;
 
 		public SkinWorkshop()
 		{
@@ -57,7 +57,7 @@ namespace SimPe.Plugin
 		}
 
 		#region Cache Handling
-		SimPe.Cache.ObjectCacheFile cachefile;
+		Cache.ObjectCacheFile cachefile;
 		bool cachechg;
 
 		/// <summary>
@@ -76,7 +76,7 @@ namespace SimPe.Plugin
 			}
 
 			cachechg = false;
-			cachefile = new SimPe.Cache.ObjectCacheFile();
+			cachefile = new Cache.ObjectCacheFile();
 
 			if (!Helper.WindowsRegistry.UseCache)
 			{
@@ -173,8 +173,8 @@ namespace SimPe.Plugin
 
 						if (cindex != -1) //found in the cache
 						{
-							SimPe.Cache.ObjectCacheItem oci =
-								(SimPe.Cache.ObjectCacheItem)
+							Cache.ObjectCacheItem oci =
+								(Cache.ObjectCacheItem)
 									cacheitems[cindex].FileDescriptor.Tag;
 							if (oci.Name.Length < 3)
 							{
@@ -186,7 +186,7 @@ namespace SimPe.Plugin
 								continue;
 							}
 
-							Data.Alias a = new Data.Alias(
+							Alias a = new Alias(
 								oci.FileDescriptor.Instance,
 								oci.Name
 							);
@@ -211,8 +211,8 @@ namespace SimPe.Plugin
 						{
 							try
 							{
-								SimPe.PackedFiles.Wrapper.Cpf cpf =
-									new SimPe.PackedFiles.Wrapper.Cpf();
+								PackedFiles.Wrapper.Cpf cpf =
+									new PackedFiles.Wrapper.Cpf();
 								nrefitem.FileDescriptor.UserData = nrefitem
 									.Package.Read(nrefitem.FileDescriptor)
 									.UncompressedData;
@@ -222,8 +222,8 @@ namespace SimPe.Plugin
 									continue;
 								}
 
-								SimPe.Cache.ObjectCacheItem oci =
-									new SimPe.Cache.ObjectCacheItem();
+								Cache.ObjectCacheItem oci =
+									new Cache.ObjectCacheItem();
 								oci.FileDescriptor = nrefitem.FileDescriptor;
 								oci.LocalGroup = nrefitem.LocalGroup;
 								oci.ObjectType = ObjectTypes.Outfit;
@@ -231,7 +231,7 @@ namespace SimPe.Plugin
 								oci.Useable = true;
 								oci.Class = SimPe.Cache.ObjectClass.Skin;
 
-								Data.Alias a = new Data.Alias(
+								Alias a = new Alias(
 									nrefitem.FileDescriptor.Instance,
 									cpf.GetItem("name").StringValue
 								);
@@ -296,17 +296,17 @@ namespace SimPe.Plugin
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(SkinWorkshop)
 				);
-			this.lbobj = new System.Windows.Forms.ListBox();
-			this.btclone = new System.Windows.Forms.Button();
-			this.pb = new System.Windows.Forms.PictureBox();
-			this.cbfix = new System.Windows.Forms.CheckBox();
-			this.cbgid = new System.Windows.Forms.CheckBox();
-			this.sfd = new System.Windows.Forms.SaveFileDialog();
-			this.tbseek = new System.Windows.Forms.TextBox();
-			this.ofd = new System.Windows.Forms.OpenFileDialog();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.taskBox2 = new System.Windows.Forms.GroupBox();
-			this.taskBox1 = new System.Windows.Forms.GroupBox();
+			this.lbobj = new ListBox();
+			this.btclone = new Button();
+			this.pb = new PictureBox();
+			this.cbfix = new CheckBox();
+			this.cbgid = new CheckBox();
+			this.sfd = new SaveFileDialog();
+			this.tbseek = new TextBox();
+			this.ofd = new OpenFileDialog();
+			this.panel1 = new Panel();
+			this.taskBox2 = new GroupBox();
+			this.taskBox1 = new GroupBox();
 			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
 			this.panel1.SuspendLayout();
 			this.taskBox2.SuspendLayout();
@@ -316,7 +316,7 @@ namespace SimPe.Plugin
 			// lbobj
 			//
 			this.lbobj.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -329,17 +329,17 @@ namespace SimPe.Plugin
 			);
 			this.lbobj.IntegralHeight = false;
 			this.lbobj.ItemHeight = 16;
-			this.lbobj.Location = new System.Drawing.Point(6, 71);
+			this.lbobj.Location = new Point(6, 71);
 			this.lbobj.Name = "lbobj";
 			this.lbobj.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-			this.lbobj.Size = new System.Drawing.Size(485, 248);
+			this.lbobj.Size = new Size(485, 248);
 			this.lbobj.TabIndex = 0;
-			this.lbobj.SelectedIndexChanged += new System.EventHandler(this.Select);
+			this.lbobj.SelectedIndexChanged += new EventHandler(this.Select);
 			//
 			// btclone
 			//
 			this.btclone.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -347,27 +347,27 @@ namespace SimPe.Plugin
 				)
 			);
 			this.btclone.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btclone.Font = new System.Drawing.Font(
+			this.btclone.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.btclone.Location = new System.Drawing.Point(400, 141);
+			this.btclone.Location = new Point(400, 141);
 			this.btclone.Name = "btclone";
-			this.btclone.Size = new System.Drawing.Size(75, 23);
+			this.btclone.Size = new Size(75, 23);
 			this.btclone.TabIndex = 1;
 			this.btclone.Text = "Start";
-			this.btclone.Click += new System.EventHandler(this.Start);
+			this.btclone.Click += new EventHandler(this.Start);
 			//
 			// pb
 			//
 			this.pb.BackColor = System.Drawing.Color.Transparent;
 			this.pb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pb.Location = new System.Drawing.Point(7, 40);
+			this.pb.Location = new Point(7, 40);
 			this.pb.Name = "pb";
-			this.pb.Size = new System.Drawing.Size(128, 128);
+			this.pb.Size = new Size(128, 128);
 			this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.pb.TabIndex = 6;
 			this.pb.TabStop = false;
@@ -375,32 +375,32 @@ namespace SimPe.Plugin
 			// cbfix
 			//
 			this.cbfix.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbfix.Font = new System.Drawing.Font(
+			this.cbfix.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbfix.Location = new System.Drawing.Point(152, 77);
+			this.cbfix.Location = new Point(152, 77);
 			this.cbfix.Name = "cbfix";
-			this.cbfix.Size = new System.Drawing.Size(224, 24);
+			this.cbfix.Size = new Size(224, 24);
 			this.cbfix.TabIndex = 5;
 			this.cbfix.Text = "Fix Cloned Files (sug. by.  wes_h)";
 			//
 			// cbgid
 			//
 			this.cbgid.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.cbgid.Font = new System.Drawing.Font(
+			this.cbgid.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbgid.Location = new System.Drawing.Point(152, 47);
+			this.cbgid.Location = new Point(152, 47);
 			this.cbgid.Name = "cbgid";
-			this.cbgid.Size = new System.Drawing.Size(248, 24);
+			this.cbgid.Size = new Size(248, 24);
 			this.cbgid.TabIndex = 2;
 			this.cbgid.Text = "Set Custom Group ID (0x1c050000)";
 			//
@@ -412,7 +412,7 @@ namespace SimPe.Plugin
 			// tbseek
 			//
 			this.tbseek.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -421,11 +421,11 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.tbseek.Location = new System.Drawing.Point(6, 44);
+			this.tbseek.Location = new Point(6, 44);
 			this.tbseek.Name = "tbseek";
-			this.tbseek.Size = new System.Drawing.Size(485, 23);
+			this.tbseek.Size = new Size(485, 23);
 			this.tbseek.TabIndex = 3;
-			this.tbseek.TextChanged += new System.EventHandler(this.SeekItem);
+			this.tbseek.TextChanged += new EventHandler(this.SeekItem);
 			//
 			// ofd
 			//
@@ -437,22 +437,22 @@ namespace SimPe.Plugin
 			this.panel1.Controls.Add(this.taskBox2);
 			this.panel1.Controls.Add(this.taskBox1);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel1.Font = new System.Drawing.Font(
+			this.panel1.Font = new Font(
 				"Verdana",
 				9.75F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.panel1.Location = new System.Drawing.Point(0, 0);
+			this.panel1.Location = new Point(0, 0);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(504, 518);
+			this.panel1.Size = new Size(504, 518);
 			this.panel1.TabIndex = 5;
 			//
 			// taskBox2
 			//
 			this.taskBox2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -464,16 +464,16 @@ namespace SimPe.Plugin
 			this.taskBox2.Controls.Add(this.btclone);
 			this.taskBox2.Controls.Add(this.pb);
 			this.taskBox2.Controls.Add(this.cbgid);
-			this.taskBox2.Location = new System.Drawing.Point(3, 340);
+			this.taskBox2.Location = new Point(3, 340);
 			this.taskBox2.Name = "taskBox2";
-			this.taskBox2.Padding = new System.Windows.Forms.Padding(4, 44, 4, 4);
-			this.taskBox2.Size = new System.Drawing.Size(498, 175);
+			this.taskBox2.Padding = new Padding(4, 44, 4, 4);
+			this.taskBox2.Size = new Size(498, 175);
 			this.taskBox2.TabIndex = 6;
 			//
 			// taskBox1
 			//
 			this.taskBox1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -487,18 +487,18 @@ namespace SimPe.Plugin
 			this.taskBox1.BackColor = System.Drawing.Color.Transparent;
 			this.taskBox1.Controls.Add(this.tbseek);
 			this.taskBox1.Controls.Add(this.lbobj);
-			this.taskBox1.Location = new System.Drawing.Point(3, 3);
+			this.taskBox1.Location = new Point(3, 3);
 			this.taskBox1.Name = "taskBox1";
-			this.taskBox1.Padding = new System.Windows.Forms.Padding(4, 44, 4, 4);
-			this.taskBox1.Size = new System.Drawing.Size(498, 326);
+			this.taskBox1.Padding = new Padding(4, 44, 4, 4);
+			this.taskBox1.Size = new Size(498, 326);
 			this.taskBox1.TabIndex = 5;
 			//
 			// SkinWorkshop
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(7, 16);
-			this.ClientSize = new System.Drawing.Size(504, 518);
+			this.AutoScaleBaseSize = new Size(7, 16);
+			this.ClientSize = new Size(504, 518);
 			this.Controls.Add(this.panel1);
-			this.Font = new System.Drawing.Font(
+			this.Font = new Font(
 				"Verdana",
 				9.75F,
 				System.Drawing.FontStyle.Regular,
@@ -510,8 +510,8 @@ namespace SimPe.Plugin
 				.Forms
 				.FormBorderStyle
 				.SizableToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.MinimumSize = new System.Drawing.Size(520, 320);
+			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
+			this.MinimumSize = new Size(520, 320);
 			this.Name = "SkinWorkshop";
 			this.Opacity = 0.96;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -525,7 +525,7 @@ namespace SimPe.Plugin
 		}
 		#endregion
 		public Interfaces.Files.IPackageFile Execute(
-			SimPe.Interfaces.Files.IPackageFile simpe_pkg
+			Interfaces.Files.IPackageFile simpe_pkg
 		)
 		{
 			this.simpe_pkg = simpe_pkg;
@@ -546,7 +546,7 @@ namespace SimPe.Plugin
 			BuildListing(Data.MetaData.GZPS);
 		}
 
-		private void Select(object sender, System.EventArgs e) // Fuck
+		private void Select(object sender, EventArgs e) // Fuck
 		{
 			if (tbseek.Tag != null)
 			{
@@ -574,12 +574,12 @@ namespace SimPe.Plugin
 			// pb.Image = GetFumbnail((uint)a.Tag[1], 0, (uint)a.Tag[2]);
 		}
 
-		private void Start(object sender, System.EventArgs e)
+		private void Start(object sender, EventArgs e)
 		{
 			try
 			{
 				this.Cursor = Cursors.WaitCursor;
-				IAlias a = new Data.Alias(0, "");
+				IAlias a = new Alias(0, "");
 				Interfaces.Files.IPackedFileDescriptor pfd = null;
 				uint localgroup = Data.MetaData.LOCAL_GROUP;
 
@@ -601,7 +601,7 @@ namespace SimPe.Plugin
 				}
 
 				FixObject fo = new FixObject(package, FixVersion.UniversityReady, true);
-				System.Collections.Hashtable map = null;
+				Hashtable map = null;
 
 				if (this.cbfix.Checked)
 				{
@@ -788,7 +788,7 @@ namespace SimPe.Plugin
 		public static string[] BaseClone(
 			Interfaces.Files.IPackedFileDescriptor pfd,
 			uint localgroup,
-			SimPe.Packages.File package
+			Packages.File package
 		)
 		{
 			//Get the Base Object Data from the Objects.package File
@@ -806,8 +806,8 @@ namespace SimPe.Plugin
 					item.FileDescriptor
 				);
 
-				SimPe.Packages.PackedFileDescriptor npfd =
-					new SimPe.Packages.PackedFileDescriptor();
+				Packages.PackedFileDescriptor npfd =
+					new Packages.PackedFileDescriptor();
 
 				npfd.UserData = file.UncompressedData;
 				npfd.Group = item.FileDescriptor.Group;
@@ -907,7 +907,7 @@ namespace SimPe.Plugin
 			if (System.IO.File.Exists(ScenegraphHelper.MMAT_PACKAGE)) gm_pkg = SimPe.Packages.GeneratableFile.LoadFromFile(ScenegraphHelper.MMAT_PACKAGE);
 			else gm_pkg = SimPe.Packages.GeneratableFile.LoadFromStream((System.IO.BinaryReader)null);
 			*/
-			SimPe.Packages.GeneratableFile npackage =
+			Packages.GeneratableFile npackage =
 				SimPe.Packages.GeneratableFile.LoadFromStream(
 					(System.IO.BinaryReader)null
 				);
@@ -927,7 +927,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SeekItem(object sender, System.EventArgs e)
+		private void SeekItem(object sender, EventArgs e)
 		{
 			if (tbseek.Tag != null)
 			{

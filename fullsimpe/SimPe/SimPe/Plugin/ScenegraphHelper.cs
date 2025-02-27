@@ -35,8 +35,8 @@ namespace SimPe.Plugin
 		)
 		{
 			string name = Hashes.StripHashFromName(flname);
-			SimPe.Packages.PackedFileDescriptor pfd =
-				new SimPe.Packages.PackedFileDescriptor();
+			Packages.PackedFileDescriptor pfd =
+				new Packages.PackedFileDescriptor();
 			pfd.Type = type;
 			pfd.Group = Hashes.GetHashGroupFromName(flname, defgroup);
 			pfd.Instance = Hashes.InstanceHash(name);

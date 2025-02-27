@@ -37,7 +37,7 @@ namespace SimPe.Plugin
 		{
 			get;
 		}
-		System.EventHandler click;
+		EventHandler click;
 
 		/// <summary>
 		/// tracks the left coordinates for each top coordinate (key)
@@ -54,7 +54,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="pb"></param>
 		/// <param name="click"></param>
-		public GraphBuilder(System.Windows.Forms.Control pb, System.EventHandler click)
+		public GraphBuilder(System.Windows.Forms.Control pb, EventHandler click)
 		{
 			colors = new Hashtable();
 			names = new Hashtable();
@@ -75,9 +75,9 @@ namespace SimPe.Plugin
 			coords = new Hashtable();
 		}
 
-		SimPe.Interfaces.Scenegraph.IScenegraphItem BuildRcol(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile pkg,
+		Interfaces.Scenegraph.IScenegraphItem BuildRcol(
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile pkg,
 			GraphItem gi
 		)
 		{
@@ -99,13 +99,13 @@ namespace SimPe.Plugin
 			return rcol;
 		}
 
-		SimPe.Interfaces.Scenegraph.IScenegraphItem BuildMmat(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile pkg,
+		Interfaces.Scenegraph.IScenegraphItem BuildMmat(
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile pkg,
 			GraphItem gi
 		)
 		{
-			SimPe.Plugin.MmatWrapper mmat = new MmatWrapper();
+			MmatWrapper mmat = new MmatWrapper();
 			mmat.ProcessData(pfd, pkg);
 
 			gi.Text =
@@ -132,10 +132,10 @@ namespace SimPe.Plugin
 		}
 
 		void AddItem(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile pkg,
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile pkg,
 			GraphItem parent,
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fileindex
+			Interfaces.Scenegraph.IScenegraphFileIndex fileindex
 		)
 		{
 			#region Default Setup
@@ -168,7 +168,7 @@ namespace SimPe.Plugin
 			//gi.LinkColor = Color.FromArgb(35, Color.Black);
 			//gi.SelectedLinkColor = Color.FromArgb(0xff, Color.DarkBlue);
 
-			SimPe.Data.TypeAlias ta = Data.MetaData.FindTypeAlias(pfd.Type);
+			Data.TypeAlias ta = Data.MetaData.FindTypeAlias(pfd.Type);
 			gi.Properties["Type"].Value = ta.shortname;
 			gi.Properties["Available"].Value = "false";
 			//gi.Parent = gc;
@@ -189,13 +189,13 @@ namespace SimPe.Plugin
 			else
 			{
 				#region find File
-				SimPe.Interfaces.Scenegraph.IScenegraphItem item = null;
-				SimPe.Interfaces.Files.IPackedFileDescriptor pkgpfd = pkg.FindFile(pfd);
+				Interfaces.Scenegraph.IScenegraphItem item = null;
+				Interfaces.Files.IPackedFileDescriptor pkgpfd = pkg.FindFile(pfd);
 
 				//not found in the passed package, look for a global File with that Name
 				if (pkgpfd == null)
 				{
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem items =
+					Interfaces.Scenegraph.IScenegraphFileIndexItem items =
 						FileTable.FileIndex.FindFileByName(
 							pfd.Filename,
 							pfd.Type,
@@ -252,7 +252,7 @@ else
 							foreach (ArrayList list in ht.Values)
 							{
 								foreach (
-									SimPe.Interfaces.Files.IPackedFileDescriptor spfd in list
+									Interfaces.Files.IPackedFileDescriptor spfd in list
 								)
 								{
 									AddItem(spfd, pkg, gi, fileindex);
@@ -298,11 +298,11 @@ else
 		/// <param name="fileindex"></param>
 		/// <remarks>Do not run twice</remarks>
 		public void BuildGraph(
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fileindex
+			Interfaces.Files.IPackageFile pkg,
+			Interfaces.Scenegraph.IScenegraphFileIndex fileindex
 		)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds;
+			Interfaces.Files.IPackedFileDescriptor[] pfds;
 			Graph.BeginUpdate();
 			Graph.Clear();
 			Graph.SaveBounds = false;
@@ -317,7 +317,7 @@ else
 				}
 
 				pfds = pkg.FindFiles(Data.MetaData.CRES);
-				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					AddItem(pfd, pkg, null, fileindex);
 				}
@@ -327,7 +327,7 @@ else
 				}
 
 				pfds = pkg.FindFiles(Data.MetaData.MMAT);
-				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					AddItem(pfd, pkg, null, fileindex);
 				}
@@ -340,7 +340,7 @@ else
 				}
 
 				pfds = pkg.FindFiles(Data.MetaData.MMAT);
-				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					AddItem(pfd, pkg, null, fileindex);
 				}
@@ -350,7 +350,7 @@ else
 				}
 
 				pfds = pkg.FindFiles(Data.MetaData.CRES);
-				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					AddItem(pfd, pkg, null, fileindex);
 				}
@@ -364,7 +364,7 @@ else
 		/// Adds all Orphants to the Tree
 		/// </summary>
 		/// <param name="pkg"></param>
-		public void FindUnused(SimPe.Interfaces.Files.IPackageFile pkg)
+		public void FindUnused(Interfaces.Files.IPackageFile pkg)
 		{
 			int top = 0;
 			int left = 0;
@@ -400,7 +400,7 @@ else
 
 					//gi.SelectedLinkColor = Color.FromArgb(0xff, Color.DarkBlue);
 
-					SimPe.Data.TypeAlias ta = Data.MetaData.FindTypeAlias(pfd.Type);
+					Data.TypeAlias ta = Data.MetaData.FindTypeAlias(pfd.Type);
 					gi.Properties["Type"].Value = ta.shortname;
 					gi.Properties["Available"].Value = "true (orphan)";
 					if (colors.ContainsKey(ta.shortname))
@@ -408,7 +408,7 @@ else
 						gi.PanelColor = (Color)colors[ta.shortname];
 					}
 
-					SimPe.Interfaces.Scenegraph.IScenegraphItem item = null;
+					Interfaces.Scenegraph.IScenegraphItem item = null;
 					if (Data.MetaData.RcolList.Contains(pfd.Type))
 					{
 						item = BuildRcol(pfd, pkg, gi);

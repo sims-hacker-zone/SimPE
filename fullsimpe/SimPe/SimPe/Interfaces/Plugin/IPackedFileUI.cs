@@ -57,7 +57,7 @@ namespace SimPe.Interfaces.Plugin
 		/// When Multiple Files are allowed , this Mtehod should only Refresh
 		/// the GUI Contents, and not create an entire new one.
 		/// </remarks>
-		void UpdateGUI(SimPe.Interfaces.Plugin.IFileWrapper wrapper);
+		void UpdateGUI(IFileWrapper wrapper);
 	}
 
 	/// <summary>

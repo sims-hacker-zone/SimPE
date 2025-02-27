@@ -7,9 +7,9 @@ namespace SimPe
 	/// </summary>
 	class HelpTopicMenuItem : System.Windows.Forms.ToolStripMenuItem
 	{
-		SimPe.Interfaces.IHelp topic;
+		Interfaces.IHelp topic;
 
-		public HelpTopicMenuItem(SimPe.Interfaces.IHelp topic)
+		public HelpTopicMenuItem(Interfaces.IHelp topic)
 			: base()
 		{
 			this.topic = topic;
@@ -37,7 +37,7 @@ namespace SimPe
 
 		private void HelpTopicMenuItem_Activate(object sender, EventArgs e)
 		{
-			topic.ShowHelp(new SimPe.ShowHelpEventArgs());
+			topic.ShowHelp(new ShowHelpEventArgs());
 		}
 	}
 
@@ -72,15 +72,15 @@ namespace SimPe
 			}
 		}
 
-		void AddItems(SimPe.Interfaces.IHelpRegistry reg)
+		void AddItems(Interfaces.IHelpRegistry reg)
 		{
-			foreach (SimPe.Interfaces.IHelp topic in reg.HelpTopics)
+			foreach (Interfaces.IHelp topic in reg.HelpTopics)
 			{
 				AddItem(topic);
 			}
 		}
 
-		void AddItem(SimPe.Interfaces.IHelp topic)
+		void AddItem(Interfaces.IHelp topic)
 		{
 			HelpTopicMenuItem htmi = new HelpTopicMenuItem(topic);
 			string[] path = htmi.GetMenuPath();

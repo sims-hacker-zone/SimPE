@@ -112,8 +112,8 @@ namespace SimPe.Packages
 			CompressionStrength strength
 		)
 		{
-			System.IO.Stream bos = outstream;
-			System.IO.Stream bis = instream;
+			Stream bos = outstream;
+			Stream bis = instream;
 			bis.Seek(0, System.IO.SeekOrigin.Begin);
 			int ch = bis.ReadByte();
 			ICSharpCode.SharpZipLib.BZip2.BZip2OutputStream bzos =
@@ -331,11 +331,11 @@ namespace SimPe.Packages
 		/// <param name="length">The Length of the Package</param>
 		/// <param name="desc">Package Description</param>
 		/// <returns>The Package</returns>
-		protected static SimPe.Packages.GeneratableFile LoadPackage(
+		protected static GeneratableFile LoadPackage(
 			BinaryReader reader,
 			int offset,
 			int length,
-			SimPe.Packages.S2CPDescriptor desc
+			S2CPDescriptor desc
 		)
 		{
 			reader.BaseStream.Seek(offset, System.IO.SeekOrigin.Begin);
@@ -343,7 +343,7 @@ namespace SimPe.Packages
 
 			if (desc.Compressed == CompressionStrength.None)
 			{
-				SimPe.Packages.GeneratableFile pkg = GeneratableFile.LoadFromStream(
+				GeneratableFile pkg = GeneratableFile.LoadFromStream(
 					new BinaryReader(ms)
 				);
 				return pkg;
@@ -352,7 +352,7 @@ namespace SimPe.Packages
 			{
 				MemoryStream unc = new MemoryStream();
 				Decompress(ms, unc);
-				SimPe.Packages.GeneratableFile pkg = GeneratableFile.LoadFromStream(
+				GeneratableFile pkg = GeneratableFile.LoadFromStream(
 					new BinaryReader(unc)
 				);
 				pkg.FileName = desc.Name;
@@ -368,7 +368,7 @@ namespace SimPe.Packages
 		/// <param name="offset">The Ofset for the package Data</param>
 		/// <returns>The Descriptor of the PackedFile</returns>
 		/// <remarks>The GUIDs and the Names of the Descriptors are the ones stored in the
-		/// XML Data not the ones from the Package. So you have to <seealso cref="SimPe.Packages.S2CPDescriptorBase.Valid"/><see cref="SimPe.Packages.S2CPDescriptorBase.Valid"/> the Content with the Package.</remarks>
+		/// XML Data not the ones from the Package. So you have to <seealso cref="S2CPDescriptorBase.Valid"/><see cref="S2CPDescriptorBase.Valid"/> the Content with the Package.</remarks>
 		protected static S2CPDescriptor ParesPackedFile(
 			BinaryReader reader,
 			XmlNode pfile,
@@ -499,11 +499,11 @@ namespace SimPe.Packages
 		/// <returns>List of all Package descriptors</returns>
 		/// <remarks>The GUIDs/Names included in the S2CPDescriptor are the ones found in the Xml Description,
 		/// you need to check them with the GUIDs stored in the packges itself to
-		/// <see cref="SimPe.Packages.S2CPDescriptorBase.Valid"/>
-		/// <seealso cref="SimPe.Packages.S2CPDescriptorBase.Valid"/> the Content</remarks>
+		/// <see cref="S2CPDescriptorBase.Valid"/>
+		/// <seealso cref="S2CPDescriptorBase.Valid"/> the Content</remarks>
 		public static S2CPDescriptor[] Open(string filename)
 		{
-			System.IO.BinaryReader br = new System.IO.BinaryReader(
+			BinaryReader br = new BinaryReader(
 				System.IO.File.OpenRead(filename)
 			);
 			return Open(br);
@@ -516,8 +516,8 @@ namespace SimPe.Packages
 		/// <returns>List of all Package descriptors</returns>
 		/// <remarks>The GUIDs/Names included in the S2CPDescriptor are the ones found in the Xml Description,
 		/// you need to check them with the GUIDs stored in the packges itself to
-		/// <see cref="SimPe.Packages.S2CPDescriptorBase.Valid"/>
-		/// <seealso cref="SimPe.Packages.S2CPDescriptorBase.Valid"/> the Content</remarks>
+		/// <see cref="S2CPDescriptorBase.Valid"/>
+		/// <seealso cref="S2CPDescriptorBase.Valid"/> the Content</remarks>
 		public static S2CPDescriptor[] Open(BinaryReader reader)
 		{
 			//BinaryReader reader = new BinaryReader(s2cp);
@@ -527,7 +527,7 @@ namespace SimPe.Packages
 				reader.ReadBytes((int)(offset - reader.BaseStream.Position))
 			);
 
-			System.Xml.XmlDocument xmlfile = new XmlDocument();
+			XmlDocument xmlfile = new XmlDocument();
 			xmlfile.LoadXml(xml);
 
 			//Root Node suchen
@@ -561,7 +561,7 @@ namespace SimPe.Packages
 		/// a normal Sims2Pack File will be generated</param>
 		public static bool ShowSaveDialog(bool extension)
 		{
-			return ShowSaveDialog((SimPe.Packages.GeneratableFile)null, extension);
+			return ShowSaveDialog((GeneratableFile)null, extension);
 		}
 
 		/// <summary>
@@ -571,20 +571,20 @@ namespace SimPe.Packages
 		/// <param name="extension">true if you want to add the Community Extension, otherwise
 		/// a normal Sims2Pack File will be generated</param>
 		public static bool ShowSaveDialog(
-			SimPe.Packages.GeneratableFile package,
+			GeneratableFile package,
 			bool extension
 		)
 		{
-			SimPe.Packages.GeneratableFile[] fls = null;
+			GeneratableFile[] fls = null;
 
 			if (package != null)
 			{
-				fls = new SimPe.Packages.GeneratableFile[1];
+				fls = new GeneratableFile[1];
 				fls[0] = package;
 			}
 			else
 			{
-				fls = new SimPe.Packages.GeneratableFile[0];
+				fls = new GeneratableFile[0];
 			}
 
 			return ShowSaveDialog(fls, extension);
@@ -597,7 +597,7 @@ namespace SimPe.Packages
 		/// a normal Sims2Pack File will be generated</param>
 		/// <returns>true if the File was saved</returns>
 		public static bool ShowSimpleSaveDialog(
-			SimPe.Packages.GeneratableFile[] packages
+			GeneratableFile[] packages
 		)
 		{
 			SaveSims2Pack form = new SaveSims2Pack();
@@ -608,7 +608,7 @@ namespace SimPe.Packages
 			{
 				MemoryStream ms = Create(desc, extension);
 
-				System.IO.FileStream fs = new FileStream(
+				FileStream fs = new FileStream(
 					form.tbflname.Text,
 					FileMode.Create
 				);
@@ -636,7 +636,7 @@ namespace SimPe.Packages
 		/// a normal Sims2Pack File will be generated</param>
 		/// <returns>true if the File was saved</returns>
 		public static bool ShowSaveDialog(
-			SimPe.Packages.GeneratableFile[] packages,
+			GeneratableFile[] packages,
 			bool extension
 		)
 		{
@@ -647,7 +647,7 @@ namespace SimPe.Packages
 			{
 				MemoryStream ms = Create(desc, extension);
 
-				System.IO.FileStream fs = new FileStream(
+				FileStream fs = new FileStream(
 					form.tbflname.Text,
 					FileMode.Create
 				);

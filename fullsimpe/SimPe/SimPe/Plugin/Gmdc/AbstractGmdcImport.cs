@@ -449,7 +449,7 @@ namespace SimPe.Plugin.Gmdc
 						)
 						{
 							//first delete the reference to this Node from the current parent
-							SimPe.Interfaces.Scenegraph.ICresChildren icc =
+							Interfaces.Scenegraph.ICresChildren icc =
 								tn.GetFirstParent();
 							if (icc != null)
 							{
@@ -659,11 +659,11 @@ namespace SimPe.Plugin.Gmdc
 					tn.JointReference = nindex;
 
 					Gmdc.ParentResourceNode.Parent.Blocks =
-						(SimPe.Interfaces.Scenegraph.IRcolBlock[])
+						(Interfaces.Scenegraph.IRcolBlock[])
 							Helper.Add(
 								Gmdc.ParentResourceNode.Parent.Blocks,
 								tn,
-								typeof(SimPe.Interfaces.Scenegraph.IRcolBlock)
+								typeof(Interfaces.Scenegraph.IRcolBlock)
 							);
 				}
 			}

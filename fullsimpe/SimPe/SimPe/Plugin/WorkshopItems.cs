@@ -31,7 +31,7 @@ namespace SimPe.Plugin
 		public WorkshopMMAT(string subset)
 		{
 			this.Subset = subset;
-			this.MMATs = new SimPe.PackedFiles.Wrapper.Cpf[0];
+			this.MMATs = new PackedFiles.Wrapper.Cpf[0];
 			this.ObjectStateIndex = new uint[0];
 		}
 
@@ -51,7 +51,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// The stored MMATs
 		/// </summary>
-		public SimPe.PackedFiles.Wrapper.Cpf[] MMATs
+		public PackedFiles.Wrapper.Cpf[] MMATs
 		{
 			get; private set;
 		}
@@ -60,13 +60,13 @@ namespace SimPe.Plugin
 		/// adds the passed value if it doesn't already exist
 		/// </summary>
 		/// <param name="val">The value to add</param>
-		public bool AddMMAT(SimPe.PackedFiles.Wrapper.Cpf mmat)
+		public bool AddMMAT(PackedFiles.Wrapper.Cpf mmat)
 		{
 			if (
 				this.AddObjectStateIndex(mmat.GetItem("objectStateIndex").UIntegerValue)
 			)
 			{
-				MMATs = (SimPe.PackedFiles.Wrapper.Cpf[])Helper.Add(MMATs, mmat);
+				MMATs = (PackedFiles.Wrapper.Cpf[])Helper.Add(MMATs, mmat);
 				return true;
 			}
 			return false;

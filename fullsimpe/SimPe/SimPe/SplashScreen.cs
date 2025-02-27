@@ -75,11 +75,11 @@ namespace SimPe
 			}
 		}
 
-		SimPe.Windows.Forms.SplashForm frm = null;
+		Windows.Forms.SplashForm frm = null;
 
 		protected void StartThread()
 		{
-			frm = new SimPe.Windows.Forms.SplashForm();
+			frm = new Windows.Forms.SplashForm();
 			frm.FormClosed += new System.Windows.Forms.FormClosedEventHandler(
 				frm_FormClosed
 			);

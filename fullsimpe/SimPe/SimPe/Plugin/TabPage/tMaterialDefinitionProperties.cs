@@ -29,15 +29,15 @@ namespace SimPe.Plugin.TabPage
 	//System.Windows.Forms.UserControl
 	{
 		#region Form variables
-		internal System.Windows.Forms.ListBox lbprop;
-		internal System.Windows.Forms.GroupBox gbprop;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		internal System.Windows.Forms.TextBox tbname;
-		private System.Windows.Forms.TextBox tbval;
-		private System.Windows.Forms.LinkLabel lladd;
-		internal System.Windows.Forms.LinkLabel lldel;
-		private System.Windows.Forms.LinkLabel linkLabel1;
+		internal ListBox lbprop;
+		internal GroupBox gbprop;
+		private Label label1;
+		private Label label2;
+		internal TextBox tbname;
+		private TextBox tbval;
+		private LinkLabel lladd;
+		internal LinkLabel lldel;
+		private LinkLabel linkLabel1;
 		private Button btnImport;
 		private Button btnExport;
 		private Button btnMerge;
@@ -98,27 +98,27 @@ namespace SimPe.Plugin.TabPage
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.lbprop = new System.Windows.Forms.ListBox();
-			this.gbprop = new System.Windows.Forms.GroupBox();
-			this.lldel = new System.Windows.Forms.LinkLabel();
-			this.lladd = new System.Windows.Forms.LinkLabel();
-			this.tbval = new System.Windows.Forms.TextBox();
-			this.tbname = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-			this.btnImport = new System.Windows.Forms.Button();
-			this.btnExport = new System.Windows.Forms.Button();
-			this.btnMerge = new System.Windows.Forms.Button();
-			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+			this.lbprop = new ListBox();
+			this.gbprop = new GroupBox();
+			this.lldel = new LinkLabel();
+			this.lladd = new LinkLabel();
+			this.tbval = new TextBox();
+			this.tbname = new TextBox();
+			this.label2 = new Label();
+			this.label1 = new Label();
+			this.linkLabel1 = new LinkLabel();
+			this.btnImport = new Button();
+			this.btnExport = new Button();
+			this.btnMerge = new Button();
+			this.saveFileDialog1 = new SaveFileDialog();
+			this.openFileDialog1 = new OpenFileDialog();
 			this.gbprop.SuspendLayout();
 			this.SuspendLayout();
 			//
 			// lbprop
 			//
 			this.lbprop.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -134,14 +134,14 @@ namespace SimPe.Plugin.TabPage
 			this.lbprop.Name = "lbprop";
 			this.lbprop.Size = new System.Drawing.Size(416, 224);
 			this.lbprop.TabIndex = 3;
-			this.lbprop.SelectedIndexChanged += new System.EventHandler(
+			this.lbprop.SelectedIndexChanged += new EventHandler(
 				this.SelectItem
 			);
 			//
 			// gbprop
 			//
 			this.gbprop.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -172,7 +172,7 @@ namespace SimPe.Plugin.TabPage
 			// btnExport
 			//
 			this.btnExport.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -185,12 +185,12 @@ namespace SimPe.Plugin.TabPage
 			this.btnExport.Size = new System.Drawing.Size(75, 27);
 			this.btnExport.TabIndex = 8;
 			this.btnExport.Text = "Export...";
-			this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+			this.btnExport.Click += new EventHandler(this.btnExport_Click);
 			//
 			// btnImport
 			//
 			this.btnImport.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -203,12 +203,12 @@ namespace SimPe.Plugin.TabPage
 			this.btnImport.Size = new System.Drawing.Size(75, 27);
 			this.btnImport.TabIndex = 7;
 			this.btnImport.Text = "Import...";
-			this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+			this.btnImport.Click += new EventHandler(this.btnImport_Click);
 			//
 			// btnMerge
 			//
 			this.btnMerge.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -221,12 +221,12 @@ namespace SimPe.Plugin.TabPage
 			this.btnMerge.Size = new System.Drawing.Size(75, 27);
 			this.btnMerge.TabIndex = 9;
 			this.btnMerge.Text = "Merge...";
-			this.btnMerge.Click += new System.EventHandler(this.btnMerge_Click);
+			this.btnMerge.Click += new EventHandler(this.btnMerge_Click);
 			//
 			// lldel
 			//
 			this.lldel.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -241,14 +241,14 @@ namespace SimPe.Plugin.TabPage
 			this.lldel.TabStop = true;
 			this.lldel.Text = "delete";
 			this.lldel.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.DeletItem
 				);
 			//
 			// lladd
 			//
 			this.lladd.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -263,12 +263,12 @@ namespace SimPe.Plugin.TabPage
 			this.lladd.TabStop = true;
 			this.lladd.Text = "add";
 			this.lladd.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.AddItem);
+				new LinkLabelLinkClickedEventHandler(this.AddItem);
 			//
 			// tbval
 			//
 			this.tbval.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -288,12 +288,12 @@ namespace SimPe.Plugin.TabPage
 			this.tbval.Name = "tbval";
 			this.tbval.Size = new System.Drawing.Size(224, 24);
 			this.tbval.TabIndex = 3;
-			this.tbval.TextChanged += new System.EventHandler(this.AutoChange);
+			this.tbval.TextChanged += new EventHandler(this.AutoChange);
 			//
 			// tbname
 			//
 			this.tbname.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -313,7 +313,7 @@ namespace SimPe.Plugin.TabPage
 			this.tbname.Name = "tbname";
 			this.tbname.Size = new System.Drawing.Size(224, 24);
 			this.tbname.TabIndex = 2;
-			this.tbname.TextChanged += new System.EventHandler(this.AutoChange);
+			this.tbname.TextChanged += new EventHandler(this.AutoChange);
 			//
 			// label2
 			//
@@ -350,7 +350,7 @@ namespace SimPe.Plugin.TabPage
 			// linkLabel1
 			//
 			this.linkLabel1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -365,7 +365,7 @@ namespace SimPe.Plugin.TabPage
 			this.linkLabel1.TabStop = true;
 			this.linkLabel1.Text = "sort List";
 			this.linkLabel1.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.linkLabel1_LinkClicked
 				);
 			//
@@ -417,8 +417,8 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				tbname.Tag = true;
-				SimPe.Plugin.MaterialDefinitionProperty prop =
-					(SimPe.Plugin.MaterialDefinitionProperty)
+				MaterialDefinitionProperty prop =
+					(MaterialDefinitionProperty)
 						lbprop.Items[lbprop.SelectedIndex];
 
 				prop.Name = tbname.Text;
@@ -426,7 +426,7 @@ namespace SimPe.Plugin.TabPage
 
 				lbprop.Items[lbprop.SelectedIndex] = prop;
 
-				SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
+				Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
 					this.Tag;
 				md.Changed = true;
 			}
@@ -445,7 +445,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void linkLabel1_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (this.Tag == null)
@@ -453,13 +453,13 @@ namespace SimPe.Plugin.TabPage
 				return;
 			}
 
-			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
+			Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
 				this.Tag;
 			md.Sort();
 			md.Refresh();
 		}
 
-		private void AutoChange(object sender, System.EventArgs e)
+		private void AutoChange(object sender, EventArgs e)
 		{
 			if (tbname.Tag != null)
 			{
@@ -472,7 +472,7 @@ namespace SimPe.Plugin.TabPage
 			}
 		}
 
-		private void SelectItem(object sender, System.EventArgs e)
+		private void SelectItem(object sender, EventArgs e)
 		{
 			lldel.Enabled = false;
 			if (lbprop.SelectedIndex < 0)
@@ -485,8 +485,8 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				tbname.Tag = true;
-				SimPe.Plugin.MaterialDefinitionProperty prop =
-					(SimPe.Plugin.MaterialDefinitionProperty)
+				MaterialDefinitionProperty prop =
+					(MaterialDefinitionProperty)
 						lbprop.Items[lbprop.SelectedIndex];
 				this.tbname.Text = prop.Name;
 				this.tbval.Text = prop.Value;
@@ -506,7 +506,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void AddItem(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (this.Tag == null)
@@ -514,11 +514,11 @@ namespace SimPe.Plugin.TabPage
 				return;
 			}
 
-			SimPe.Plugin.MaterialDefinitionProperty prop =
+			MaterialDefinitionProperty prop =
 				new MaterialDefinitionProperty();
 			lbprop.Items.Add(prop);
 
-			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
+			Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
 				this.Tag;
 			md.Properties = (MaterialDefinitionProperty[])
 				Helper.Add(md.Properties, prop);
@@ -528,7 +528,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void DeletItem(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (this.Tag == null)
@@ -541,7 +541,7 @@ namespace SimPe.Plugin.TabPage
 				return;
 			}
 
-			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
+			Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
 				this.Tag;
 			md.Properties = (MaterialDefinitionProperty[])
 				Helper.Delete(md.Properties, lbprop.Items[lbprop.SelectedIndex]);
@@ -549,14 +549,14 @@ namespace SimPe.Plugin.TabPage
 			lbprop.Items.Remove(lbprop.Items[lbprop.SelectedIndex]);
 		}
 
-		internal void TxmtChangeTab(object sender, System.EventArgs e)
+		internal void TxmtChangeTab(object sender, EventArgs e)
 		{
 			if (this.Tag == null)
 			{
 				return;
 			}
 
-			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
+			Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
 				this.Tag;
 			if (Parent == null)
 			{
@@ -583,7 +583,7 @@ namespace SimPe.Plugin.TabPage
 				return;
 			}
 
-			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
+			Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
 				this.Tag;
 			md.ExportProperties(saveFileDialog1.FileName);
 		}
@@ -612,7 +612,7 @@ namespace SimPe.Plugin.TabPage
 				return;
 			}
 
-			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
+			Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
 				this.Tag;
 			if (imp)
 			{

@@ -5,7 +5,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for ExtractTool.
 	/// </summary>
-	public class ExtractTool : Interfaces.AbstractTool, Interfaces.ITool
+	public class ExtractTool : AbstractTool, ITool
 	{
 		internal static Registry WindowsRegistry => Helper.WindowsRegistry;
 
@@ -21,8 +21,8 @@ namespace SimPe.Plugin
 		#region ITool Member
 
 		public bool IsEnabled(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile package
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile package
 		)
 		{
 			if (package == null || package.FileName == null)
@@ -34,8 +34,8 @@ namespace SimPe.Plugin
 		}
 
 		private bool IsReallyEnabled(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile package
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile package
 		)
 		{
 			if (package == null || package.FileName == null)
@@ -65,13 +65,13 @@ namespace SimPe.Plugin
 		}
 
 		public Interfaces.Plugin.IToolResult ShowDialog(
-			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			ref SimPe.Interfaces.Files.IPackageFile package
+			ref Interfaces.Files.IPackedFileDescriptor pfd,
+			ref Interfaces.Files.IPackageFile package
 		)
 		{
 			if (!IsReallyEnabled(pfd, package))
 			{
-				return new SimPe.Plugin.ToolResult(false, false);
+				return new ToolResult(false, false);
 			}
 
 			LanguageExtrator languagextrator = new LanguageExtrator();

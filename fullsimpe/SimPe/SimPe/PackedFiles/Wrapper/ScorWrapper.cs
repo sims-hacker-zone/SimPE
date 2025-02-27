@@ -205,7 +205,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public delegate void ChangedListHandler(Scor sender, ChangedListEventArgs e);
 		public event ChangedListHandler AddedItem;
 		public event ChangedListHandler RemovedItem;
-		public event System.EventHandler LoadedNewResource;
+		public event EventHandler LoadedNewResource;
 
 		public void Add(string name)
 		{

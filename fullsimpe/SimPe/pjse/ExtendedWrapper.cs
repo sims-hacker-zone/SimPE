@@ -152,12 +152,12 @@ namespace pjse
 
 		public uint GroupForContext => GroupForScope(Context);
 
-		public pjse.FileTable.Entry ResourceByInstance(uint type, uint instance)
+		public FileTable.Entry ResourceByInstance(uint type, uint instance)
 		{
 			return ResourceByInstance(type, instance, FileTable.Source.Any);
 		}
 
-		public pjse.FileTable.Entry ResourceByInstance(
+		public FileTable.Entry ResourceByInstance(
 			uint type,
 			uint instance,
 			FileTable.Source src
@@ -181,7 +181,7 @@ namespace pjse
 				}
 			}
 
-			pjse.FileTable.Entry[] items = pjse.FileTable.GFT[
+			FileTable.Entry[] items = pjse.FileTable.GFT[
 				type,
 				group,
 				instance,
@@ -199,7 +199,7 @@ namespace pjse
 				return null;
 			}
 
-			pjse.FileTable.Entry[] items = pjse.FileTable.GFT[
+			FileTable.Entry[] items = pjse.FileTable.GFT[
 				type,
 				FileDescriptor.Group,
 				FileDescriptor.Instance

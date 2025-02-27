@@ -179,7 +179,7 @@ namespace System.Windows.Forms
 		/// <param name="caption">The text to display in the title bar of the message box.</param>
 		/// <param name="buttonsVisible">A Boolset of flags specifying which buttons should be visible.</param>
 		/// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-		/// <exception cref="System.ArgumentException">buttonsVisible must contain at least three flags</exception>
+		/// <exception cref="ArgumentException">buttonsVisible must contain at least three flags</exception>
 		public static DialogResult Show(
 			string text,
 			string caption,
@@ -199,7 +199,7 @@ namespace System.Windows.Forms
 		/// <param name="caption">The text to display in the title bar of the message box.</param>
 		/// <param name="buttonsVisible">A Boolset of flags specifying which buttons should be visible.</param>
 		/// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-		/// <exception cref="System.ArgumentException">buttonsVisible must contain at least three flags</exception>
+		/// <exception cref="ArgumentException">buttonsVisible must contain at least three flags</exception>
 		public static DialogResult Show(
 			IWin32Window owner,
 			string text,
@@ -221,7 +221,7 @@ namespace System.Windows.Forms
 		/// <param name="buttonsOverride">A Boolset of flags specifying which buttons should be overriden from buttons.</param>
 		/// <param name="buttons">Text for button faces</param>
 		/// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-		/// <exception cref="System.ArgumentException">buttonsVisible must contain at least three flags</exception>
+		/// <exception cref="ArgumentException">buttonsVisible must contain at least three flags</exception>
 		public static DialogResult Show(
 			string text,
 			string caption,
@@ -252,7 +252,7 @@ namespace System.Windows.Forms
 		/// <param name="buttonsOverride">A Boolset of flags specifying which buttons should be overriden from buttons.</param>
 		/// <param name="buttons">Text for button faces</param>
 		/// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-		/// <exception cref="System.ArgumentException">buttonsVisible must contain at least three flags</exception>
+		/// <exception cref="ArgumentException">buttonsVisible must contain at least three flags</exception>
 		public static DialogResult Show(
 			IWin32Window owner,
 			string text,
@@ -284,7 +284,7 @@ namespace System.Windows.Forms
 		/// <param name="buttons">Text for button faces</param>
 		/// <param name="resultSet">DialogResult values for buttons</param>
 		/// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-		/// <exception cref="System.ArgumentException">buttonsVisible must contain at least three flags</exception>
+		/// <exception cref="ArgumentException">buttonsVisible must contain at least three flags</exception>
 		public static DialogResult Show(
 			string text,
 			string caption,
@@ -317,7 +317,7 @@ namespace System.Windows.Forms
 		/// <param name="buttons">Text for button faces</param>
 		/// <param name="resultSet">DialogResult values for buttons</param>
 		/// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-		/// <exception cref="System.ArgumentException">buttonsVisible must contain at least three flags</exception>
+		/// <exception cref="ArgumentException">buttonsVisible must contain at least three flags</exception>
 		public static DialogResult Show(
 			IWin32Window owner,
 			string text,

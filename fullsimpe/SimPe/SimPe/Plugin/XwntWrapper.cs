@@ -5,7 +5,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for MmatWrapper.
 	/// </summary>
-	public class XWant : SimPe.PackedFiles.Wrapper.Cpf
+	public class XWant : PackedFiles.Wrapper.Cpf
 	{
 		static Hashtable wanttypelookup;
 		static Hashtable wantnamelookup;
@@ -46,9 +46,9 @@ namespace SimPe.Plugin
 		/// Returns a Human Readable Description of this Wrapper
 		/// </summary>
 		/// <returns>Human Readable Description</returns>
-		protected override SimPe.Interfaces.Plugin.IWrapperInfo CreateWrapperInfo()
+		protected override Interfaces.Plugin.IWrapperInfo CreateWrapperInfo()
 		{
-			return new SimPe.Interfaces.Plugin.AbstractWrapperInfo(
+			return new Interfaces.Plugin.AbstractWrapperInfo(
 				"XWNT Wrapper",
 				"Quaxi",
 				"---",
@@ -212,8 +212,8 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				SimPe.Packages.PackedFileDescriptor pfd =
-					new SimPe.Packages.PackedFileDescriptor();
+				Packages.PackedFileDescriptor pfd =
+					new Packages.PackedFileDescriptor();
 				pfd.Type = Data.MetaData.SIM_IMAGE_FILE;
 				pfd.LongInstance = IconInstance;
 				if (pfd.Instance == 0)
@@ -235,7 +235,7 @@ namespace SimPe.Plugin
 					+ ", ObjectType="
 					+ this.ObjectType;
 
-		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
+		protected override string GetResourceName(Data.TypeAlias ta)
 		{
 			if (!this.Processed)
 			{

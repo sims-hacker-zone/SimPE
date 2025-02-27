@@ -70,7 +70,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns null or a loaded SimDescription
 		/// </summary>
-		public SimPe.Interfaces.Wrapper.ISDesc SimDescription
+		public Interfaces.Wrapper.ISDesc SimDescription
 		{
 			get
 			{
@@ -84,8 +84,8 @@ namespace SimPe.Plugin
 					);
 					if (pfds.Length > 0)
 					{
-						SimPe.PackedFiles.Wrapper.SDesc sdsc =
-							new SimPe.PackedFiles.Wrapper.SDesc(
+						PackedFiles.Wrapper.SDesc sdsc =
+							new PackedFiles.Wrapper.SDesc(
 								Provider.SimNameProvider,
 								Provider.SimFamilynameProvider,
 								Provider.SimDescriptionProvider

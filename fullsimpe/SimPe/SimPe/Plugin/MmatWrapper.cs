@@ -6,11 +6,11 @@ namespace SimPe.Plugin
 	/// Summary description for MmatWrapper.
 	/// </summary>
 	public class MmatWrapper
-		: SimPe.PackedFiles.Wrapper.Cpf,
-			SimPe.Interfaces.Scenegraph.IScenegraphBlock,
-			SimPe.Interfaces.Scenegraph.IScenegraphItem
+		: PackedFiles.Wrapper.Cpf,
+			Interfaces.Scenegraph.IScenegraphBlock,
+			Interfaces.Scenegraph.IScenegraphItem
 	{
-		public static SimPe.PackedFiles.UserInterface.CpfUI.ExecutePreview GlobalCpfPreview
+		public static PackedFiles.UserInterface.CpfUI.ExecutePreview GlobalCpfPreview
 		{
 			get; set;
 		}
@@ -18,7 +18,7 @@ namespace SimPe.Plugin
 		#region IScenegraphBlock Member
 
 		public void ReferencedItems(
-			System.Collections.Hashtable refmap,
+			Hashtable refmap,
 			uint parentgroup
 		)
 		{
@@ -66,18 +66,18 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		protected override SimPe.Interfaces.Plugin.IPackedFileUI CreateDefaultUIHandler()
+		protected override Interfaces.Plugin.IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new SimPe.PackedFiles.UserInterface.CpfUI(GlobalCpfPreview);
+			return new PackedFiles.UserInterface.CpfUI(GlobalCpfPreview);
 		}
 
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper
 		/// </summary>
 		/// <returns>Human Readable Description</returns>
-		protected override SimPe.Interfaces.Plugin.IWrapperInfo CreateWrapperInfo()
+		protected override Interfaces.Plugin.IWrapperInfo CreateWrapperInfo()
 		{
-			return new SimPe.Interfaces.Plugin.AbstractWrapperInfo(
+			return new Interfaces.Plugin.AbstractWrapperInfo(
 				"MMAT Wrapper",
 				"Quaxi",
 				"This File describes a ColorOption for a Mesh Group / Subset. It is needed to provide an additional Colour for Objects.",

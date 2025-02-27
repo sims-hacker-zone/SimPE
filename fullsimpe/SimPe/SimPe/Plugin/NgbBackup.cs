@@ -25,12 +25,12 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for NgbBackup.
 	/// </summary>
-	public class NgbBackup : System.Windows.Forms.Form
+	public class NgbBackup : Form
 	{
-		private System.Windows.Forms.ListBox lbdirs;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.Panel pnNice;
+		private ListBox lbdirs;
+		private Button button1;
+		private Button button2;
+		private Panel pnNice;
 
 		/// <summary>
 		/// Required designer variable.
@@ -69,10 +69,10 @@ namespace SimPe.Plugin
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(NgbBackup));
-			this.lbdirs = new System.Windows.Forms.ListBox();
-			this.button1 = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
-			this.pnNice = new System.Windows.Forms.Panel();
+			this.lbdirs = new ListBox();
+			this.button1 = new Button();
+			this.button2 = new Button();
+			this.pnNice = new Panel();
 			this.pnNice.SuspendLayout();
 			this.SuspendLayout();
 			//
@@ -80,7 +80,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.lbdirs, "lbdirs");
 			this.lbdirs.Name = "lbdirs";
-			this.lbdirs.SelectedIndexChanged += new System.EventHandler(
+			this.lbdirs.SelectedIndexChanged += new EventHandler(
 				this.SelectBackup
 			);
 			//
@@ -88,13 +88,13 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.button1, "button1");
 			this.button1.Name = "button1";
-			this.button1.Click += new System.EventHandler(this.Restore);
+			this.button1.Click += new EventHandler(this.Restore);
 			//
 			// button2
 			//
 			resources.ApplyResources(this.button2, "button2");
 			this.button2.Name = "button2";
-			this.button2.Click += new System.EventHandler(this.Delete);
+			this.button2.Click += new EventHandler(this.Delete);
 			//
 			// pnNice
 			//
@@ -133,12 +133,12 @@ namespace SimPe.Plugin
 			}
 		}
 
-		SimPe.Interfaces.Files.IPackageFile package;
+		Interfaces.Files.IPackageFile package;
 		Interfaces.IProviderRegistry prov;
 
 		public void Execute(
 			string path,
-			SimPe.Interfaces.Files.IPackageFile package,
+			Interfaces.Files.IPackageFile package,
 			Interfaces.IProviderRegistry prov,
 			string lable
 		)
@@ -166,13 +166,13 @@ namespace SimPe.Plugin
 			ShowDialog();
 		}
 
-		private void SelectBackup(object sender, System.EventArgs e)
+		private void SelectBackup(object sender, EventArgs e)
 		{
 			button1.Enabled = (lbdirs.SelectedIndex >= 0);
 			button2.Enabled = button1.Enabled;
 		}
 
-		private void Restore(object sender, System.EventArgs e)
+		private void Restore(object sender, EventArgs e)
 		{
 			if (lbdirs.SelectedIndex < 0)
 			{
@@ -250,7 +250,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void Delete(object sender, System.EventArgs e)
+		private void Delete(object sender, EventArgs e)
 		{
 			if (lbdirs.SelectedIndex < 0)
 			{

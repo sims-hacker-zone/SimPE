@@ -8,28 +8,28 @@ namespace SimPe.Plugin.Tool.Dockable
 	/// <summary>
 	/// Summary description for ObjectPreview.
 	/// </summary>
-	public class NeighborhoodPreview : System.Windows.Forms.UserControl
+	public class NeighborhoodPreview : UserControl
 	{
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label lbName;
-		private System.Windows.Forms.PictureBox pb;
-		private System.Windows.Forms.Label lbAbout;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label lbPop;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Label lbUni;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.Label lbVer;
-		private System.Windows.Forms.Label lbType;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.Label lbholi;
+		private Label label1;
+		private Label label3;
+		private Label lbName;
+		private PictureBox pb;
+		private Label lbAbout;
+		private Label label2;
+		private Label lbPop;
+		private Label label4;
+		private Label lbUni;
+		private Label label5;
+		private Label lbVer;
+		private Label lbType;
+		private Label label6;
+		private Label label7;
+		private Label lbholi;
 
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		private System.ComponentModel.Container components = null;
+		private Container components = null;
 
 		public NeighborhoodPreview()
 		{
@@ -76,26 +76,26 @@ namespace SimPe.Plugin.Tool.Dockable
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources =
-				new System.ComponentModel.ComponentResourceManager(
+			ComponentResourceManager resources =
+				new ComponentResourceManager(
 					typeof(NeighborhoodPreview)
 				);
-			this.pb = new System.Windows.Forms.PictureBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.lbName = new System.Windows.Forms.Label();
-			this.lbAbout = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.lbPop = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.lbUni = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.lbVer = new System.Windows.Forms.Label();
-			this.lbType = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
-			this.lbholi = new System.Windows.Forms.Label();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
+			this.pb = new PictureBox();
+			this.label1 = new Label();
+			this.label3 = new Label();
+			this.lbName = new Label();
+			this.lbAbout = new Label();
+			this.label2 = new Label();
+			this.lbPop = new Label();
+			this.label4 = new Label();
+			this.lbUni = new Label();
+			this.label5 = new Label();
+			this.lbVer = new Label();
+			this.lbType = new Label();
+			this.label6 = new Label();
+			this.label7 = new Label();
+			this.lbholi = new Label();
+			((ISupportInitialize)(this.pb)).BeginInit();
 			this.SuspendLayout();
 			//
 			// pb
@@ -123,7 +123,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			// lbAbout
 			//
 			resources.ApplyResources(this.lbAbout, "lbAbout");
-			this.lbAbout.MaximumSize = new System.Drawing.Size(800, 0);
+			this.lbAbout.MaximumSize = new Size(800, 0);
 			this.lbAbout.Name = "lbAbout";
 			//
 			// label2
@@ -197,7 +197,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.Controls.Add(this.label3);
 			this.DoubleBuffered = true;
 			this.Name = "NeighborhoodPreview";
-			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
+			((ISupportInitialize)(this.pb)).EndInit();
 			this.ResumeLayout(false);
 		}
 		#endregion
@@ -212,7 +212,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		[Browsable(false)]
-		public SimPe.Interfaces.Files.IPackageFile Package
+		public Interfaces.Files.IPackageFile Package
 		{
 			get; private set;
 		}
@@ -228,7 +228,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			if (this.CatalogDescription != null)
 			{
-				ctss.ChangedData -= new SimPe.Events.PackedFileChanged(
+				ctss.ChangedData -= new Events.PackedFileChanged(
 					ctss_ChangedUserData
 				);
 				ctss = null;
@@ -241,7 +241,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.lbholi.Text = "???";
 		}
 
-		public void SetFromPackage(SimPe.Interfaces.Files.IPackageFile pkg)
+		public void SetFromPackage(Interfaces.Files.IPackageFile pkg)
 		{
 			Loaded = false;
 			ClearScreen();
@@ -260,7 +260,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			try
 			{
-				SimPe.PackedFiles.Wrapper.StrItemList strs = GetCtssItems();
+				PackedFiles.Wrapper.StrItemList strs = GetCtssItems();
 				if (strs != null)
 				{
 					if (strs.Count > 0)
@@ -297,7 +297,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					pb.Image = defimg;
 				}
 
-				SimPe.Plugin.Idno idno = SimPe.Plugin.Idno.FromPackage(pkg);
+				Idno idno = SimPe.Plugin.Idno.FromPackage(pkg);
 				if (idno != null)
 				{
 					if (idno.Type == SimPe.Plugin.NeighborhoodType.Normal)
@@ -425,7 +425,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		protected void ShowVersion()
 		{
-			SimPe.Plugin.Idno idno = SimPe.Plugin.Idno.FromPackage(Package);
+			Idno idno = SimPe.Plugin.Idno.FromPackage(Package);
 			if (idno != null)
 			{
 				this.lbVer.Text = idno.Version.ToString().Replace("_", " ");
@@ -436,16 +436,16 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 		}
 
-		protected SimPe.PackedFiles.Wrapper.StrItemList GetCtssItems()
+		protected PackedFiles.Wrapper.StrItemList GetCtssItems()
 		{
 			//Get the Name of the Object
 			Interfaces.Files.IPackedFileDescriptor ctss = CatalogDescription;
 			if (ctss != null)
 			{
-				ctss.ChangedData += new SimPe.Events.PackedFileChanged(
+				ctss.ChangedData += new Events.PackedFileChanged(
 					ctss_ChangedUserData
 				);
-				SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
 				str.ProcessData(ctss, Package);
 
 				return str.LanguageItems(Helper.WindowsRegistry.LanguageCode);
@@ -461,7 +461,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		private void ctss_ChangedUserData(
-			SimPe.Interfaces.Files.IPackedFileDescriptor sender
+			Interfaces.Files.IPackedFileDescriptor sender
 		)
 		{
 			SetFromPackage(this.Package);

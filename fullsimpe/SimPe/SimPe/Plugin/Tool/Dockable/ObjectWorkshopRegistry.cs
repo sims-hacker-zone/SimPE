@@ -5,7 +5,7 @@ namespace SimPe.Plugin.Tool.Dockable
 	/// <summary>
 	/// Registry Keys for the Object Workshop
 	/// </summary>
-	class ObjectWorkshopRegistry : System.IDisposable
+	class ObjectWorkshopRegistry : IDisposable
 	{
 		XmlRegistryKey xrk;
 		dcObjectWorkshop dock;

@@ -28,7 +28,7 @@ namespace SimPe.PackedFiles.Wrapper.Factory
 	public class DefaultWrapperFactory : AbstractWrapperFactory
 	{
 		#region AbstractWrapperFactory Member
-		public override SimPe.Interfaces.IWrapper[] KnownWrappers
+		public override IWrapper[] KnownWrappers
 		{
 			get
 			{
@@ -40,24 +40,24 @@ namespace SimPe.PackedFiles.Wrapper.Factory
 				{
 					IWrapper[] wrappers =
 					{
-						new SimPe.PackedFiles.Wrapper.Picture(),
-						new SimPe.PackedFiles.Wrapper.Xml(),
-						new SimPe.PackedFiles.Wrapper.Fami(
+						new Picture(),
+						new Xml(),
+						new Fami(
 							this.LinkedProvider.SimNameProvider
 						),
-						new SimPe.PackedFiles.Wrapper.SRel(),
-						new SimPe.PackedFiles.Wrapper.Cpf(),
-						new SimPe.PackedFiles.Wrapper.FamilyTies(
+						new SRel(),
+						new Cpf(),
+						new FamilyTies(
 							this.LinkedProvider.SimNameProvider
 						),
-						new SimPe.PackedFiles.Wrapper.Nref(),
-						new SimPe.PackedFiles.Wrapper.Objd(
+						new Nref(),
+						new Objd(
 							this.LinkedProvider.OpcodeProvider
 						),
-						new SimPe.Plugin.Glob(),
-						new SimPe.PackedFiles.Wrapper.ObjLua(),
-						new SimPe.PackedFiles.Wrapper.CompressedFileList(),
-						new SimPe.PackedFiles.Wrapper.Str(),
+						new Plugin.Glob(),
+						new ObjLua(),
+						new CompressedFileList(),
+						new Str(),
 					};
 					return wrappers;
 				}
@@ -65,16 +65,16 @@ namespace SimPe.PackedFiles.Wrapper.Factory
 				{
 					IWrapper[] wrappers =
 					{
-						new SimPe.PackedFiles.Wrapper.Picture(),
-						new SimPe.PackedFiles.Wrapper.Xml(),
-						new SimPe.PackedFiles.Wrapper.Fami(
+						new Picture(),
+						new Xml(),
+						new Fami(
 							this.LinkedProvider.SimNameProvider
 						),
-						new SimPe.PackedFiles.Wrapper.Cpf(),
-						new SimPe.PackedFiles.Wrapper.Nref(),
-						new SimPe.PackedFiles.Wrapper.ExtObjd(),
-						new SimPe.Plugin.Glob(),
-						new SimPe.PackedFiles.Wrapper.ObjLua(),
+						new Cpf(),
+						new Nref(),
+						new ExtObjd(),
+						new Plugin.Glob(),
+						new ObjLua(),
 					};
 					return wrappers;
 				}

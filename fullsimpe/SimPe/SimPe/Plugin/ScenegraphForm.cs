@@ -30,20 +30,20 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Zusammenfassung f�r ScenegraphForm.
 	/// </summary>
-	public class ScenegraphForm : System.Windows.Forms.Form
+	public class ScenegraphForm : Form
 	{
-		private System.Windows.Forms.Panel panel2;
-		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.ComboBox cbrefnames;
-		private System.Windows.Forms.TextBox tbflname;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.LinkLabel llopen;
-		private System.Windows.Forms.GroupBox groupBox2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.ComboBox cbLineStyle;
-		private System.Windows.Forms.CheckBox cbQuality;
+		private Panel panel2;
+		private GroupBox groupBox1;
+		private ComboBox cbrefnames;
+		private TextBox tbflname;
+		private Label label2;
+		private Label label1;
+		private Panel panel1;
+		private LinkLabel llopen;
+		private GroupBox groupBox2;
+		private Label label3;
+		private ComboBox cbLineStyle;
+		private CheckBox cbQuality;
 		private CheckBox cbPriority;
 
 		/// <summary>
@@ -59,12 +59,12 @@ namespace SimPe.Plugin
 			InitializeComponent();
 
 			gb = new GraphBuilder(panel1, new EventHandler(GraphItemClick));
-			Ambertation.Windows.Forms.Graph.LinkControlLineMode[] ls =
-				(Ambertation.Windows.Forms.Graph.LinkControlLineMode[])
+			LinkControlLineMode[] ls =
+				(LinkControlLineMode[])
 					System.Enum.GetValues(
-						typeof(Ambertation.Windows.Forms.Graph.LinkControlLineMode)
+						typeof(LinkControlLineMode)
 					);
-			foreach (Ambertation.Windows.Forms.Graph.LinkControlLineMode l in ls)
+			foreach (LinkControlLineMode l in ls)
 			{
 				this.cbLineStyle.Items.Add(l);
 				if ((int)l == Helper.WindowsRegistry.GraphLineMode)
@@ -79,7 +79,7 @@ namespace SimPe.Plugin
 
 			cbQuality_CheckedChanged(cbQuality, null);
 			cbLineStyle_SelectedIndexChanged(cbLineStyle, null);
-			SimPe.ThemeManager tm = SimPe.ThemeManager.Global.CreateChild();
+			ThemeManager tm = SimPe.ThemeManager.Global.CreateChild();
 			tm.AddControl(this.panel2);
 		}
 
@@ -109,19 +109,19 @@ namespace SimPe.Plugin
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(ScenegraphForm)
 				);
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.cbPriority = new System.Windows.Forms.CheckBox();
-			this.cbLineStyle = new System.Windows.Forms.ComboBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.cbQuality = new System.Windows.Forms.CheckBox();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.llopen = new System.Windows.Forms.LinkLabel();
-			this.cbrefnames = new System.Windows.Forms.ComboBox();
-			this.tbflname = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.panel2 = new Panel();
+			this.groupBox2 = new GroupBox();
+			this.cbPriority = new CheckBox();
+			this.cbLineStyle = new ComboBox();
+			this.label3 = new Label();
+			this.cbQuality = new CheckBox();
+			this.groupBox1 = new GroupBox();
+			this.llopen = new LinkLabel();
+			this.cbrefnames = new ComboBox();
+			this.tbflname = new TextBox();
+			this.label2 = new Label();
+			this.label1 = new Label();
+			this.panel1 = new Panel();
 			this.panel2.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox1.SuspendLayout();
@@ -148,7 +148,7 @@ namespace SimPe.Plugin
 			// groupBox2
 			//
 			this.groupBox2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -184,7 +184,7 @@ namespace SimPe.Plugin
 			this.cbPriority.TabIndex = 3;
 			this.cbPriority.Text = "CRES First";
 			this.cbPriority.UseVisualStyleBackColor = true;
-			this.cbPriority.CheckedChanged += new System.EventHandler(
+			this.cbPriority.CheckedChanged += new EventHandler(
 				this.cbPriority_CheckedChanged
 			);
 			//
@@ -206,7 +206,7 @@ namespace SimPe.Plugin
 			this.cbLineStyle.Name = "cbLineStyle";
 			this.cbLineStyle.Size = new System.Drawing.Size(184, 21);
 			this.cbLineStyle.TabIndex = 2;
-			this.cbLineStyle.SelectedIndexChanged += new System.EventHandler(
+			this.cbLineStyle.SelectedIndexChanged += new EventHandler(
 				this.cbLineStyle_SelectedIndexChanged
 			);
 			//
@@ -242,14 +242,14 @@ namespace SimPe.Plugin
 			this.cbQuality.Size = new System.Drawing.Size(101, 18);
 			this.cbQuality.TabIndex = 0;
 			this.cbQuality.Text = "High Quality";
-			this.cbQuality.CheckedChanged += new System.EventHandler(
+			this.cbQuality.CheckedChanged += new EventHandler(
 				this.cbQuality_CheckedChanged
 			);
 			//
 			// groupBox1
 			//
 			this.groupBox1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -288,12 +288,12 @@ namespace SimPe.Plugin
 			this.llopen.TabStop = true;
 			this.llopen.Text = "open";
 			this.llopen.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OpenPfd);
+				new LinkLabelLinkClickedEventHandler(this.OpenPfd);
 			//
 			// cbrefnames
 			//
 			this.cbrefnames.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -317,7 +317,7 @@ namespace SimPe.Plugin
 			// tbflname
 			//
 			this.tbflname.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -432,9 +432,9 @@ namespace SimPe.Plugin
 					selpfd = rcol.FileDescriptor;
 				}
 			}
-			else if (gi.Tag.GetType() == typeof(SimPe.Plugin.MmatWrapper))
+			else if (gi.Tag.GetType() == typeof(MmatWrapper))
 			{
-				SimPe.Plugin.MmatWrapper mmat = (SimPe.Plugin.MmatWrapper)gi.Tag;
+				MmatWrapper mmat = (MmatWrapper)gi.Tag;
 				this.tbflname.Text = mmat.SubsetName;
 				this.cbrefnames.Items.Clear();
 				cbrefnames.Text = "";
@@ -465,9 +465,9 @@ namespace SimPe.Plugin
 			}
 		}
 
-		SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+		Interfaces.Files.IPackedFileDescriptor pfd,
 			selpfd;
-		SimPe.Interfaces.Files.IPackageFile open_pkg;
+		Interfaces.Files.IPackageFile open_pkg;
 		GraphBuilder gb;
 
 		/// <summary>
@@ -477,8 +477,8 @@ namespace SimPe.Plugin
 		/// <param name="simpe_pkg"></param>
 		public void Execute(
 			IProviderRegistry prov,
-			SimPe.Interfaces.Files.IPackageFile simpe_pkg,
-			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			Interfaces.Files.IPackageFile simpe_pkg,
+			ref Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
 			this.pfd = pfd;
@@ -487,15 +487,15 @@ namespace SimPe.Plugin
 			try
 			{
 				llopen.Enabled = false;
-				SimPe.Interfaces.Files.IPackageFile orgpkg = simpe_pkg;
+				Interfaces.Files.IPackageFile orgpkg = simpe_pkg;
 
 				DateTime start = DateTime.Now;
 				FileTable.FileIndex.Load();
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fileindex =
+				Interfaces.Scenegraph.IScenegraphFileIndex fileindex =
 					FileTable.FileIndex.Clone();
 				fileindex.AddIndexFromPackage(simpe_pkg);
 
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndex oldfileindex =
+				Interfaces.Scenegraph.IScenegraphFileIndex oldfileindex =
 					FileTable.FileIndex;
 				FileTable.FileIndex = fileindex;
 
@@ -543,34 +543,34 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void button1_Click(object sender, System.EventArgs e)
+		private void button1_Click(object sender, EventArgs e)
 		{
 			Close();
 		}
 
 		private void OpenPfd(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			pfd = selpfd;
 			Close();
 		}
 
-		private void cbQuality_CheckedChanged(object sender, System.EventArgs e)
+		private void cbQuality_CheckedChanged(object sender, EventArgs e)
 		{
 			gb.Graph.Quality = cbQuality.Checked;
 			Helper.WindowsRegistry.GraphQuality = gb.Graph.Quality;
 		}
 
-		private void cbLineStyle_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void cbLineStyle_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (cbLineStyle.SelectedIndex < 0)
 			{
 				return;
 			}
 
-			gb.Graph.LineMode = (Ambertation.Windows.Forms.Graph.LinkControlLineMode)
+			gb.Graph.LineMode = (LinkControlLineMode)
 				cbLineStyle.Items[cbLineStyle.SelectedIndex];
 			Helper.WindowsRegistry.GraphLineMode = (int)gb.Graph.LineMode;
 		}

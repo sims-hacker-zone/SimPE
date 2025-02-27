@@ -27,16 +27,16 @@ namespace SimPe.PackedFiles.UserInterface
 	/// Summary description for OLuaUI.
 	/// </summary>
 	public class ObjLua
-		: System.Windows.Forms.UserControl,
-			SimPe.Interfaces.Plugin.IPackedFileUI
+		: UserControl,
+			IPackedFileUI
 	{
-		private System.Windows.Forms.TreeView tv;
-		private System.Windows.Forms.Button btSave;
-		private System.Windows.Forms.Button btLoad;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox tbName;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.Button button2;
+		private TreeView tv;
+		private Button btSave;
+		private Button btLoad;
+		private Label label1;
+		private TextBox tbName;
+		private Button button1;
+		private Button button2;
 
 		/// <summary>
 		/// Required designer variable.
@@ -77,19 +77,19 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.tv = new System.Windows.Forms.TreeView();
-			this.btSave = new System.Windows.Forms.Button();
-			this.btLoad = new System.Windows.Forms.Button();
-			this.label1 = new System.Windows.Forms.Label();
-			this.tbName = new System.Windows.Forms.TextBox();
-			this.button1 = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
+			this.tv = new TreeView();
+			this.btSave = new Button();
+			this.btLoad = new Button();
+			this.label1 = new Label();
+			this.tbName = new TextBox();
+			this.button1 = new Button();
+			this.button2 = new Button();
 			this.SuspendLayout();
 			//
 			// tv
 			//
 			this.tv.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -109,7 +109,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// btSave
 			//
 			this.btSave.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -127,7 +127,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// btLoad
 			//
 			this.btLoad.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -162,7 +162,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbName
 			//
 			this.tbName.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -180,7 +180,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// button1
 			//
 			this.button1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -198,7 +198,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// button2
 			//
 			this.button2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -237,8 +237,8 @@ namespace SimPe.PackedFiles.UserInterface
 		#endregion
 
 		void AddFunction(
-			System.Windows.Forms.TreeNodeCollection nodes,
-			SimPe.PackedFiles.Wrapper.ObjLuaFunction fkt
+			TreeNodeCollection nodes,
+			Wrapper.ObjLuaFunction fkt
 		)
 		{
 			TreeNode tn = new TreeNode(fkt.ToString());
@@ -247,7 +247,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			TreeNode ctn = new TreeNode("Constants");
 			tn.Nodes.Add(ctn);
-			foreach (SimPe.PackedFiles.Wrapper.ObjLuaConstant olc in fkt.Constants)
+			foreach (Wrapper.ObjLuaConstant olc in fkt.Constants)
 			{
 				TreeNode sctn = new TreeNode(olc.ToString());
 				sctn.Tag = olc;
@@ -258,7 +258,7 @@ namespace SimPe.PackedFiles.UserInterface
 			TreeNode cltn = new TreeNode("Locals");
 			tn.Nodes.Add(cltn);
 			int ct = 0;
-			foreach (SimPe.PackedFiles.Wrapper.ObjLuaLocalVar c in fkt.Locals)
+			foreach (Wrapper.ObjLuaLocalVar c in fkt.Locals)
 			{
 				TreeNode scltn = new TreeNode(
 					Helper.HexString(ct++) + ": " + c.ToString()
@@ -271,7 +271,7 @@ namespace SimPe.PackedFiles.UserInterface
 			TreeNode cutn = new TreeNode("UpValues");
 			tn.Nodes.Add(cutn);
 			ct = 0;
-			foreach (SimPe.PackedFiles.Wrapper.ObjLuaUpValue c in fkt.UpValues)
+			foreach (Wrapper.ObjLuaUpValue c in fkt.UpValues)
 			{
 				TreeNode scutn = new TreeNode(
 					Helper.HexString(ct++) + ": " + c.ToString()
@@ -284,7 +284,7 @@ namespace SimPe.PackedFiles.UserInterface
 			TreeNode cstn = new TreeNode("SourceLines");
 			tn.Nodes.Add(cstn);
 			ct = 0;
-			foreach (SimPe.PackedFiles.Wrapper.ObjLuaSourceLine c in fkt.SourceLine)
+			foreach (Wrapper.ObjLuaSourceLine c in fkt.SourceLine)
 			{
 				TreeNode scstn = new TreeNode(
 					Helper.HexString(ct++) + ": " + c.ToString()
@@ -296,7 +296,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			TreeNode ftn = new TreeNode("Functions");
 			tn.Nodes.Add(ftn);
-			foreach (SimPe.PackedFiles.Wrapper.ObjLuaFunction olf in fkt.Functions)
+			foreach (Wrapper.ObjLuaFunction olf in fkt.Functions)
 			{
 				AddFunction(ftn.Nodes, olf);
 			}
@@ -304,7 +304,7 @@ namespace SimPe.PackedFiles.UserInterface
 			TreeNode cdtn = new TreeNode("Instructions");
 			tn.Nodes.Add(cdtn);
 			ct = 0;
-			foreach (SimPe.PackedFiles.Wrapper.ObjLuaCode c in fkt.Codes)
+			foreach (Wrapper.ObjLuaCode c in fkt.Codes)
 			{
 				TreeNode scdtn = new TreeNode(
 					Helper.HexString(ct++) + ": " + c.ToString()
@@ -315,7 +315,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		protected SimPe.PackedFiles.Wrapper.ObjLua Wrapper
+		protected Wrapper.ObjLua Wrapper
 		{
 			get; private set;
 		}
@@ -324,7 +324,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public void UpdateGUI(IFileWrapper wrapper)
 		{
-			Wrapper = (SimPe.PackedFiles.Wrapper.ObjLua)wrapper;
+			Wrapper = (Wrapper.ObjLua)wrapper;
 
 			tv.Nodes.Clear();
 			AddFunction(tv.Nodes, Wrapper.Root);
@@ -350,7 +350,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			SaveFileDialog sfd = new SaveFileDialog();
 			sfd.Filter = SimPe.ExtensionProvider.BuildFilterString(
-				new SimPe.ExtensionType[]
+				new ExtensionType[]
 				{
 					SimPe.ExtensionType.LuaScript,
 					SimPe.ExtensionType.AllFiles,
@@ -367,7 +367,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
 			ofd.Filter = SimPe.ExtensionProvider.BuildFilterString(
-				new SimPe.ExtensionType[]
+				new ExtensionType[]
 				{
 					SimPe.ExtensionType.LuaScript,
 					SimPe.ExtensionType.AllFiles,
@@ -397,7 +397,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			SaveFileDialog sfd = new SaveFileDialog();
 			sfd.Filter = SimPe.ExtensionProvider.BuildFilterString(
-				new SimPe.ExtensionType[]
+				new ExtensionType[]
 				{
 					SimPe.ExtensionType.LuaScript,
 					SimPe.ExtensionType.AllFiles,

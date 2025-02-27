@@ -29,17 +29,17 @@ namespace SimPe.Plugin
 	public class ExtNgbhUI
 		:
 		//System.Windows.Forms.UserControl
-		SimPe.Windows.Forms.WrapperBaseControl,
-			SimPe.Interfaces.Plugin.IPackedFileUI
+		Windows.Forms.WrapperBaseControl,
+			Interfaces.Plugin.IPackedFileUI
 	{
 		private IContainer components;
-		private System.Windows.Forms.Panel pnSims;
-		SimPe.PackedFiles.Wrapper.SimPoolControl spc = null;
-		private System.Windows.Forms.Panel pnDebug;
+		private Panel pnSims;
+		PackedFiles.Wrapper.SimPoolControl spc = null;
+		private Panel pnDebug;
 		private NgbhSlotSelection nssel;
 		private NgbhSlotUI nsui;
 		private ToolStrip toolBar1;
-		private System.Windows.Forms.Panel pnBadge;
+		private Panel pnBadge;
 		private ToolStripButton biSim;
 		private ToolStripButton biBadge;
 		private ToolStripButton biDebug;
@@ -73,13 +73,13 @@ namespace SimPe.Plugin
 
 			SimPe.RemoteControl.HookToMessageQueue(
 				0x4E474248,
-				new SimPe.RemoteControl.ControlEvent(ControlEvent)
+				new RemoteControl.ControlEvent(ControlEvent)
 			);
 		}
 
 		protected void ControlEvent(
 			object sender,
-			SimPe.RemoteControl.ControlEventArgs e
+			RemoteControl.ControlEventArgs e
 		)
 		{
 			object[] os = e.Items as object[];
@@ -150,25 +150,25 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources =
-				new System.ComponentModel.ComponentResourceManager(typeof(ExtNgbhUI));
-			this.pnSims = new System.Windows.Forms.Panel();
-			this.menuBar1 = new System.Windows.Forms.MenuStrip();
-			this.spc = new SimPe.PackedFiles.Wrapper.SimPoolControl();
-			this.menu = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.miNuke = new System.Windows.Forms.ToolStripMenuItem();
-			this.miFix = new System.Windows.Forms.ToolStripMenuItem();
-			this.simslot = new SimPe.Plugin.NgbhSlotUI();
-			this.pnDebug = new System.Windows.Forms.Panel();
-			this.nsui = new SimPe.Plugin.NgbhSlotUI();
-			this.nssel = new SimPe.Plugin.NgbhSlotSelection();
-			this.pnBadge = new System.Windows.Forms.Panel();
-			this.shelper = new SimPe.Plugin.NgbhSkillHelper();
-			this.toolBar1 = new System.Windows.Forms.ToolStrip();
-			this.biSim = new System.Windows.Forms.ToolStripButton();
-			this.biBadge = new System.Windows.Forms.ToolStripButton();
-			this.biDebug = new System.Windows.Forms.ToolStripButton();
+			this.components = new Container();
+			ComponentResourceManager resources =
+				new ComponentResourceManager(typeof(ExtNgbhUI));
+			this.pnSims = new Panel();
+			this.menuBar1 = new MenuStrip();
+			this.spc = new PackedFiles.Wrapper.SimPoolControl();
+			this.menu = new ContextMenuStrip(this.components);
+			this.miNuke = new ToolStripMenuItem();
+			this.miFix = new ToolStripMenuItem();
+			this.simslot = new NgbhSlotUI();
+			this.pnDebug = new Panel();
+			this.nsui = new NgbhSlotUI();
+			this.nssel = new NgbhSlotSelection();
+			this.pnBadge = new Panel();
+			this.shelper = new NgbhSkillHelper();
+			this.toolBar1 = new ToolStrip();
+			this.biSim = new ToolStripButton();
+			this.biBadge = new ToolStripButton();
+			this.biDebug = new ToolStripButton();
 			this.pnSims.SuspendLayout();
 			this.menu.SuspendLayout();
 			this.pnDebug.SuspendLayout();
@@ -207,7 +207,7 @@ namespace SimPe.Plugin
 			this.spc.Location = new System.Drawing.Point(0, 0);
 			this.spc.Name = "spc";
 			this.spc.Package = null;
-			this.spc.Padding = new System.Windows.Forms.Padding(1);
+			this.spc.Padding = new Padding(1);
 			this.spc.RightClickSelect = false;
 			this.spc.SelectedElement = null;
 			this.spc.SelectedSim = null;
@@ -216,19 +216,19 @@ namespace SimPe.Plugin
 			this.spc.TabIndex = 0;
 			this.spc.TileColumns = new int[] { 1 };
 			this.spc.SelectedSimChanged +=
-				new SimPe.PackedFiles.Wrapper.SimPoolControl.SelectedSimHandler(
+				new PackedFiles.Wrapper.SimPoolControl.SelectedSimHandler(
 					this.spc_SelectedSimChanged
 				);
 			//
 			// menu
 			//
 			this.menu.Items.AddRange(
-				new System.Windows.Forms.ToolStripItem[] { this.miNuke, this.miFix }
+				new ToolStripItem[] { this.miNuke, this.miFix }
 			);
 			this.menu.Name = "menu";
 			this.menu.Size = new System.Drawing.Size(158, 48);
 			this.menu.Text = "(context menu)";
-			this.menu.VisibleChanged += new System.EventHandler(
+			this.menu.VisibleChanged += new EventHandler(
 				this.menu_VisibleChanged
 			);
 			//
@@ -240,7 +240,7 @@ namespace SimPe.Plugin
 			this.miNuke.Name = "miNuke";
 			this.miNuke.Size = new System.Drawing.Size(157, 22);
 			this.miNuke.Text = "Nuke Memories";
-			this.miNuke.Click += new System.EventHandler(this.miNuke_Activate);
+			this.miNuke.Click += new EventHandler(this.miNuke_Activate);
 			//
 			// miFix
 			//
@@ -250,12 +250,12 @@ namespace SimPe.Plugin
 			this.miFix.Name = "miFix";
 			this.miFix.Size = new System.Drawing.Size(157, 22);
 			this.miFix.Text = "Fix Memories";
-			this.miFix.Click += new System.EventHandler(this.miFix_Activate);
+			this.miFix.Click += new EventHandler(this.miFix_Activate);
 			//
 			// simslot
 			//
 			this.simslot.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -290,7 +290,7 @@ namespace SimPe.Plugin
 			// nsui
 			//
 			this.nsui.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -316,7 +316,7 @@ namespace SimPe.Plugin
 			// nssel
 			//
 			this.nssel.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -331,7 +331,7 @@ namespace SimPe.Plugin
 			this.nssel.NgbhResource = null;
 			this.nssel.Size = new System.Drawing.Size(264, 276);
 			this.nssel.TabIndex = 0;
-			this.nssel.SelectedSlotChanged += new System.EventHandler(
+			this.nssel.SelectedSlotChanged += new EventHandler(
 				this.nssel_SelectedSlotChanged
 			);
 			//
@@ -343,7 +343,7 @@ namespace SimPe.Plugin
 			this.pnBadge.Name = "pnBadge";
 			this.pnBadge.Size = new System.Drawing.Size(680, 292);
 			this.pnBadge.TabIndex = 1;
-			this.pnBadge.VisibleChanged += new System.EventHandler(
+			this.pnBadge.VisibleChanged += new EventHandler(
 				this.pnBadge_VisibleChanged
 			);
 			//
@@ -355,15 +355,15 @@ namespace SimPe.Plugin
 			this.shelper.Location = new System.Drawing.Point(0, 0);
 			this.shelper.Name = "shelper";
 			this.shelper.NgbhResource = null;
-			this.shelper.Padding = new System.Windows.Forms.Padding(8);
+			this.shelper.Padding = new Padding(8);
 			this.shelper.SimPoolControl = this.spc;
 			this.shelper.Size = new System.Drawing.Size(680, 292);
 			this.shelper.Slot = null;
 			this.shelper.TabIndex = 0;
-			this.shelper.ChangedItem += new System.EventHandler(
+			this.shelper.ChangedItem += new EventHandler(
 				this.shelper_ChangedItem
 			);
-			this.shelper.AddedNewItem += new System.EventHandler(
+			this.shelper.AddedNewItem += new EventHandler(
 				this.shelper_AddedNewItem
 			);
 			//
@@ -372,7 +372,7 @@ namespace SimPe.Plugin
 			this.toolBar1.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.toolBar1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
 			this.toolBar1.Items.AddRange(
-				new System.Windows.Forms.ToolStripItem[]
+				new ToolStripItem[]
 				{
 					this.biSim,
 					this.biBadge,
@@ -403,7 +403,7 @@ namespace SimPe.Plugin
 				.Forms
 				.TextImageRelation
 				.ImageAboveText;
-			this.biSim.Click += new System.EventHandler(this.ChoosePage);
+			this.biSim.Click += new EventHandler(this.ChoosePage);
 			//
 			// biBadge
 			//
@@ -423,7 +423,7 @@ namespace SimPe.Plugin
 				.Forms
 				.TextImageRelation
 				.ImageAboveText;
-			this.biBadge.Click += new System.EventHandler(this.ChoosePage);
+			this.biBadge.Click += new EventHandler(this.ChoosePage);
 			//
 			// biDebug
 			//
@@ -443,7 +443,7 @@ namespace SimPe.Plugin
 				.Forms
 				.TextImageRelation
 				.ImageAboveText;
-			this.biDebug.Click += new System.EventHandler(this.ChoosePage);
+			this.biDebug.Click += new EventHandler(this.ChoosePage);
 			//
 			// ExtNgbhUI
 			//
@@ -511,7 +511,7 @@ namespace SimPe.Plugin
 		{
 		}
 
-		private void ChoosePage(object sender, System.EventArgs e)
+		private void ChoosePage(object sender, EventArgs e)
 		{
 			SelectButton((ToolStripButton)sender);
 
@@ -528,7 +528,7 @@ namespace SimPe.Plugin
 		private void spc_SelectedSimChanged(
 			object sender,
 			System.Drawing.Image thumb,
-			SimPe.PackedFiles.Wrapper.SDesc sdesc
+			PackedFiles.Wrapper.SDesc sdesc
 		)
 		{
 			if (spc.SelectedSim != null)
@@ -547,19 +547,19 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void nssel_SelectedSlotChanged(object sender, System.EventArgs e)
+		private void nssel_SelectedSlotChanged(object sender, EventArgs e)
 		{
 			nsui.Slot = nssel.SelectedSlot;
 		}
 
 		bool updateitems;
 
-		private void shelper_AddedNewItem(object sender, System.EventArgs e)
+		private void shelper_AddedNewItem(object sender, EventArgs e)
 		{
 			updateitems = true;
 		}
 
-		private void shelper_ChangedItem(object sender, System.EventArgs e)
+		private void shelper_ChangedItem(object sender, EventArgs e)
 		{
 			updateitems = true;
 		}
@@ -570,7 +570,7 @@ namespace SimPe.Plugin
 			simslot.Refresh();
 		}
 
-		private void pnBadge_VisibleChanged(object sender, System.EventArgs e)
+		private void pnBadge_VisibleChanged(object sender, EventArgs e)
 		{
 			if (pnBadge.Visible == true)
 			{
@@ -589,7 +589,7 @@ namespace SimPe.Plugin
 			miNuke.Enabled = (spc.SelectedSim != null);
 		}
 
-		private void miNuke_Activate(object sender, System.EventArgs e)
+		private void miNuke_Activate(object sender, EventArgs e)
 		{
 			if (spc.SelectedSim != null)
 			{
@@ -622,7 +622,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void miFix_Activate(object sender, System.EventArgs e)
+		private void miFix_Activate(object sender, EventArgs e)
 		{
 			EnhancedNgbh ngbh = this.Ngbh as EnhancedNgbh;
 			if (ngbh != null)

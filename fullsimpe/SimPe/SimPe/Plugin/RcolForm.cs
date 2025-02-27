@@ -27,48 +27,48 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for RcolForm.
 	/// </summary>
-	public class RcolForm : SimPe.Windows.Forms.WrapperBaseControl
+	public class RcolForm : Windows.Forms.WrapperBaseControl
 	{
-		private System.Windows.Forms.LinkLabel llfix;
-		private System.Windows.Forms.LinkLabel llhash;
-		private System.Windows.Forms.TextBox tbflname;
-		private System.Windows.Forms.Label label2;
-		internal System.Windows.Forms.ComboBox cbitem;
+		private LinkLabel llfix;
+		private LinkLabel llhash;
+		private TextBox tbflname;
+		private Label label2;
+		internal ComboBox cbitem;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.TabPage tabPage2;
-		internal System.Windows.Forms.ListBox lbref;
-		private System.Windows.Forms.TabControl childtc;
-		private System.Windows.Forms.Panel pntypes;
-		internal System.Windows.Forms.LinkLabel lladd;
-		internal System.Windows.Forms.LinkLabel lldelete;
-		internal System.Windows.Forms.TextBox tbsubtype;
-		internal System.Windows.Forms.TextBox tbinstance;
-		private System.Windows.Forms.Label label11;
-		internal System.Windows.Forms.TextBox tbtype;
-		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.Label label10;
-		internal System.Windows.Forms.TextBox tbgroup;
-		internal System.Windows.Forms.ComboBox cbtypes;
-		private System.Windows.Forms.Button btref;
+		internal ListBox lbref;
+		private TabControl childtc;
+		private Panel pntypes;
+		internal LinkLabel lladd;
+		internal LinkLabel lldelete;
+		internal TextBox tbsubtype;
+		internal TextBox tbinstance;
+		private Label label11;
+		internal TextBox tbtype;
+		private Label label8;
+		private Label label9;
+		private Label label10;
+		internal TextBox tbgroup;
+		internal ComboBox cbtypes;
+		private Button btref;
 		private System.Windows.Forms.TabPage tabPage3;
-		private System.Windows.Forms.ListBox lbblocks;
-		private System.Windows.Forms.Button btup;
-		private System.Windows.Forms.Button btdown;
-		private System.Windows.Forms.Button btadd;
-		private System.Windows.Forms.Button btdel;
-		private System.Windows.Forms.ComboBox cbblocks;
-		private System.Windows.Forms.Label label1;
+		private ListBox lbblocks;
+		private Button btup;
+		private Button btdown;
+		private Button btadd;
+		private Button btdel;
+		private ComboBox cbblocks;
+		private Label label1;
 		internal System.Windows.Forms.TabPage tpref;
-		internal System.Windows.Forms.TreeView tv;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.TextBox tbrefgroup;
-		private System.Windows.Forms.TextBox tbrefinst;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.TextBox tbfile;
-		private System.Windows.Forms.LinkLabel linkLabel1;
-		internal System.Windows.Forms.TabControl tbResource;
+		internal TreeView tv;
+		private Label label3;
+		private Label label4;
+		private TextBox tbrefgroup;
+		private TextBox tbrefinst;
+		private Label label5;
+		private TextBox tbfile;
+		private LinkLabel linkLabel1;
+		internal TabControl tbResource;
 		private Ambertation.Windows.Forms.XPTaskBoxSimple xpTaskBoxSimple1;
 		private Ambertation.Windows.Forms.XPTaskBoxSimple xpTaskBoxSimple2;
 
@@ -113,48 +113,48 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.tbResource = new System.Windows.Forms.TabControl();
+			this.tbResource = new TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.label2 = new System.Windows.Forms.Label();
-			this.tbflname = new System.Windows.Forms.TextBox();
-			this.childtc = new System.Windows.Forms.TabControl();
-			this.label1 = new System.Windows.Forms.Label();
-			this.llhash = new System.Windows.Forms.LinkLabel();
-			this.llfix = new System.Windows.Forms.LinkLabel();
-			this.cbitem = new System.Windows.Forms.ComboBox();
+			this.label2 = new Label();
+			this.tbflname = new TextBox();
+			this.childtc = new TabControl();
+			this.label1 = new Label();
+			this.llhash = new LinkLabel();
+			this.llfix = new LinkLabel();
+			this.cbitem = new ComboBox();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.lbref = new System.Windows.Forms.ListBox();
+			this.lbref = new ListBox();
 			this.xpTaskBoxSimple2 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.pntypes = new System.Windows.Forms.Panel();
-			this.lladd = new System.Windows.Forms.LinkLabel();
-			this.lldelete = new System.Windows.Forms.LinkLabel();
-			this.tbsubtype = new System.Windows.Forms.TextBox();
-			this.tbinstance = new System.Windows.Forms.TextBox();
-			this.label11 = new System.Windows.Forms.Label();
-			this.tbtype = new System.Windows.Forms.TextBox();
-			this.label8 = new System.Windows.Forms.Label();
-			this.label9 = new System.Windows.Forms.Label();
-			this.label10 = new System.Windows.Forms.Label();
-			this.tbgroup = new System.Windows.Forms.TextBox();
-			this.cbtypes = new System.Windows.Forms.ComboBox();
-			this.btref = new System.Windows.Forms.Button();
+			this.pntypes = new Panel();
+			this.lladd = new LinkLabel();
+			this.lldelete = new LinkLabel();
+			this.tbsubtype = new TextBox();
+			this.tbinstance = new TextBox();
+			this.label11 = new Label();
+			this.tbtype = new TextBox();
+			this.label8 = new Label();
+			this.label9 = new Label();
+			this.label10 = new Label();
+			this.tbgroup = new TextBox();
+			this.cbtypes = new ComboBox();
+			this.btref = new Button();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
-			this.btup = new System.Windows.Forms.Button();
-			this.lbblocks = new System.Windows.Forms.ListBox();
-			this.btdel = new System.Windows.Forms.Button();
-			this.cbblocks = new System.Windows.Forms.ComboBox();
-			this.btadd = new System.Windows.Forms.Button();
-			this.btdown = new System.Windows.Forms.Button();
+			this.btup = new Button();
+			this.lbblocks = new ListBox();
+			this.btdel = new Button();
+			this.cbblocks = new ComboBox();
+			this.btadd = new Button();
+			this.btdown = new Button();
 			this.tpref = new System.Windows.Forms.TabPage();
-			this.tv = new System.Windows.Forms.TreeView();
+			this.tv = new TreeView();
 			this.xpTaskBoxSimple1 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.tbfile = new System.Windows.Forms.TextBox();
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-			this.label5 = new System.Windows.Forms.Label();
-			this.tbrefinst = new System.Windows.Forms.TextBox();
-			this.tbrefgroup = new System.Windows.Forms.TextBox();
+			this.label4 = new Label();
+			this.label3 = new Label();
+			this.tbfile = new TextBox();
+			this.linkLabel1 = new LinkLabel();
+			this.label5 = new Label();
+			this.tbrefinst = new TextBox();
+			this.tbrefgroup = new TextBox();
 			this.tbResource.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
@@ -168,7 +168,7 @@ namespace SimPe.Plugin
 			// tbResource
 			//
 			this.tbResource.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -188,7 +188,7 @@ namespace SimPe.Plugin
 			this.tbResource.SelectedIndex = 0;
 			this.tbResource.Size = new System.Drawing.Size(752, 261);
 			this.tbResource.TabIndex = 20;
-			this.tbResource.SelectedIndexChanged += new System.EventHandler(
+			this.tbResource.SelectedIndexChanged += new EventHandler(
 				this.tabControl1_SelectedIndexChanged
 			);
 			//
@@ -228,7 +228,7 @@ namespace SimPe.Plugin
 			// tbflname
 			//
 			this.tbflname.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -241,12 +241,12 @@ namespace SimPe.Plugin
 			this.tbflname.Name = "tbflname";
 			this.tbflname.Size = new System.Drawing.Size(510, 23);
 			this.tbflname.TabIndex = 9;
-			this.tbflname.TextChanged += new System.EventHandler(this.ChangeFileName);
+			this.tbflname.TextChanged += new EventHandler(this.ChangeFileName);
 			//
 			// childtc
 			//
 			this.childtc.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -263,7 +263,7 @@ namespace SimPe.Plugin
 			this.childtc.SelectedIndex = 0;
 			this.childtc.Size = new System.Drawing.Size(728, 166);
 			this.childtc.TabIndex = 20;
-			this.childtc.SelectedIndexChanged += new System.EventHandler(
+			this.childtc.SelectedIndexChanged += new EventHandler(
 				this.ChildTabPageChanged
 			);
 			//
@@ -287,7 +287,7 @@ namespace SimPe.Plugin
 			// llhash
 			//
 			this.llhash.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -311,14 +311,14 @@ namespace SimPe.Plugin
 			this.llhash.Text = "assign Hash";
 			this.llhash.Visible = false;
 			this.llhash.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.BuildFilename
 				);
 			//
 			// llfix
 			//
 			this.llfix.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -341,12 +341,12 @@ namespace SimPe.Plugin
 			this.llfix.TabStop = true;
 			this.llfix.Text = "fix TGI";
 			this.llfix.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.FixTGI);
+				new LinkLabelLinkClickedEventHandler(this.FixTGI);
 			//
 			// cbitem
 			//
 			this.cbitem.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -360,7 +360,7 @@ namespace SimPe.Plugin
 			this.cbitem.Name = "cbitem";
 			this.cbitem.Size = new System.Drawing.Size(664, 23);
 			this.cbitem.TabIndex = 7;
-			this.cbitem.SelectedIndexChanged += new System.EventHandler(
+			this.cbitem.SelectedIndexChanged += new EventHandler(
 				this.SelectRcolItem
 			);
 			//
@@ -379,7 +379,7 @@ namespace SimPe.Plugin
 			//
 			this.lbref.AllowDrop = true;
 			this.lbref.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -396,20 +396,20 @@ namespace SimPe.Plugin
 			this.lbref.Name = "lbref";
 			this.lbref.Size = new System.Drawing.Size(288, 233);
 			this.lbref.TabIndex = 0;
-			this.lbref.DragEnter += new System.Windows.Forms.DragEventHandler(
+			this.lbref.DragEnter += new DragEventHandler(
 				this.PackageItemDragEnter
 			);
-			this.lbref.DragDrop += new System.Windows.Forms.DragEventHandler(
+			this.lbref.DragDrop += new DragEventHandler(
 				this.PackageItemDrop
 			);
-			this.lbref.SelectedIndexChanged += new System.EventHandler(
+			this.lbref.SelectedIndexChanged += new EventHandler(
 				this.SelectReference
 			);
 			//
 			// xpTaskBoxSimple2
 			//
 			this.xpTaskBoxSimple2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -442,7 +442,7 @@ namespace SimPe.Plugin
 				.ControlDark;
 			this.xpTaskBoxSimple2.Location = new System.Drawing.Point(296, 0);
 			this.xpTaskBoxSimple2.Name = "xpTaskBoxSimple2";
-			this.xpTaskBoxSimple2.Padding = new System.Windows.Forms.Padding(
+			this.xpTaskBoxSimple2.Padding = new Padding(
 				4,
 				44,
 				4,
@@ -484,7 +484,7 @@ namespace SimPe.Plugin
 				((byte)(0))
 			);
 			this.lladd.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.lladd.LinkArea = new System.Windows.Forms.LinkArea(0, 9);
+			this.lladd.LinkArea = new LinkArea(0, 9);
 			this.lladd.Location = new System.Drawing.Point(344, 80);
 			this.lladd.Name = "lladd";
 			this.lladd.Size = new System.Drawing.Size(25, 18);
@@ -493,7 +493,7 @@ namespace SimPe.Plugin
 			this.lladd.Text = "add";
 			this.lladd.UseCompatibleTextRendering = true;
 			this.lladd.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.SRNItemsAAdd
 				);
 			//
@@ -508,7 +508,7 @@ namespace SimPe.Plugin
 				((byte)(0))
 			);
 			this.lldelete.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.lldelete.LinkArea = new System.Windows.Forms.LinkArea(0, 7);
+			this.lldelete.LinkArea = new LinkArea(0, 7);
 			this.lldelete.Location = new System.Drawing.Point(372, 80);
 			this.lldelete.Name = "lldelete";
 			this.lldelete.Size = new System.Drawing.Size(40, 18);
@@ -517,7 +517,7 @@ namespace SimPe.Plugin
 			this.lldelete.Text = "delete";
 			this.lldelete.UseCompatibleTextRendering = true;
 			this.lldelete.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.SRNItemsADelete
 				);
 			//
@@ -534,7 +534,7 @@ namespace SimPe.Plugin
 			this.tbsubtype.Name = "tbsubtype";
 			this.tbsubtype.Size = new System.Drawing.Size(100, 21);
 			this.tbsubtype.TabIndex = 12;
-			this.tbsubtype.TextChanged += new System.EventHandler(
+			this.tbsubtype.TextChanged += new EventHandler(
 				this.AutoChangeReference
 			);
 			//
@@ -551,7 +551,7 @@ namespace SimPe.Plugin
 			this.tbinstance.Name = "tbinstance";
 			this.tbinstance.Size = new System.Drawing.Size(100, 21);
 			this.tbinstance.TabIndex = 14;
-			this.tbinstance.TextChanged += new System.EventHandler(
+			this.tbinstance.TextChanged += new EventHandler(
 				this.AutoChangeReference
 			);
 			//
@@ -585,7 +585,7 @@ namespace SimPe.Plugin
 			this.tbtype.Name = "tbtype";
 			this.tbtype.Size = new System.Drawing.Size(100, 21);
 			this.tbtype.TabIndex = 11;
-			this.tbtype.TextChanged += new System.EventHandler(this.tbtype_TextChanged);
+			this.tbtype.TextChanged += new EventHandler(this.tbtype_TextChanged);
 			//
 			// label8
 			//
@@ -651,7 +651,7 @@ namespace SimPe.Plugin
 			this.tbgroup.Name = "tbgroup";
 			this.tbgroup.Size = new System.Drawing.Size(100, 21);
 			this.tbgroup.TabIndex = 13;
-			this.tbgroup.TextChanged += new System.EventHandler(
+			this.tbgroup.TextChanged += new EventHandler(
 				this.AutoChangeReference
 			);
 			//
@@ -675,14 +675,14 @@ namespace SimPe.Plugin
 			this.cbtypes.Size = new System.Drawing.Size(240, 21);
 			this.cbtypes.Sorted = true;
 			this.cbtypes.TabIndex = 16;
-			this.cbtypes.SelectedIndexChanged += new System.EventHandler(
+			this.cbtypes.SelectedIndexChanged += new EventHandler(
 				this.SelectType
 			);
 			//
 			// btref
 			//
 			this.btref.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -702,7 +702,7 @@ namespace SimPe.Plugin
 			this.btref.Size = new System.Drawing.Size(21, 21);
 			this.btref.TabIndex = 42;
 			this.btref.Text = "u";
-			this.btref.Click += new System.EventHandler(this.ShowPackageSelector);
+			this.btref.Click += new EventHandler(this.ShowPackageSelector);
 			//
 			// tabPage3
 			//
@@ -727,7 +727,7 @@ namespace SimPe.Plugin
 			this.btup.Size = new System.Drawing.Size(48, 23);
 			this.btup.TabIndex = 1;
 			this.btup.Text = "Up";
-			this.btup.Click += new System.EventHandler(this.btup_Click);
+			this.btup.Click += new EventHandler(this.btup_Click);
 			//
 			// lbblocks
 			//
@@ -739,7 +739,7 @@ namespace SimPe.Plugin
 			this.lbblocks.Name = "lbblocks";
 			this.lbblocks.Size = new System.Drawing.Size(549, 233);
 			this.lbblocks.TabIndex = 0;
-			this.lbblocks.SelectedIndexChanged += new System.EventHandler(
+			this.lbblocks.SelectedIndexChanged += new EventHandler(
 				this.lbblocks_SelectedIndexChanged
 			);
 			//
@@ -752,12 +752,12 @@ namespace SimPe.Plugin
 			this.btup.Size = new System.Drawing.Size(48, 23);
 			this.btup.TabIndex = 1;
 			this.btup.Text = "Up";
-			this.btup.Click += new System.EventHandler(this.btup_Click);
+			this.btup.Click += new EventHandler(this.btup_Click);
 			//
 			// cbblocks
 			//
 			this.cbblocks.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -785,7 +785,7 @@ namespace SimPe.Plugin
 			this.btadd.Size = new System.Drawing.Size(72, 23);
 			this.btadd.TabIndex = 3;
 			this.btadd.Text = "Add";
-			this.btadd.Click += new System.EventHandler(this.btadd_Click);
+			this.btadd.Click += new EventHandler(this.btadd_Click);
 			//
 			// btdown
 			//
@@ -796,7 +796,7 @@ namespace SimPe.Plugin
 			this.btdown.Size = new System.Drawing.Size(48, 23);
 			this.btdown.TabIndex = 2;
 			this.btdown.Text = "Down";
-			this.btdown.Click += new System.EventHandler(this.btdown_Click);
+			this.btdown.Click += new EventHandler(this.btdown_Click);
 			//
 			// btdel
 			//
@@ -807,7 +807,7 @@ namespace SimPe.Plugin
 			this.btdel.Size = new System.Drawing.Size(72, 23);
 			this.btdel.TabIndex = 4;
 			this.btdel.Text = "Delete";
-			this.btdel.Click += new System.EventHandler(this.btdel_Click);
+			this.btdel.Click += new EventHandler(this.btdel_Click);
 			//
 			// tpref
 			//
@@ -823,7 +823,7 @@ namespace SimPe.Plugin
 			// xpTaskBoxSimple1
 			//
 			this.xpTaskBoxSimple1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -861,7 +861,7 @@ namespace SimPe.Plugin
 				.ControlDark;
 			this.xpTaskBoxSimple1.Location = new System.Drawing.Point(296, 0);
 			this.xpTaskBoxSimple1.Name = "xpTaskBoxSimple1";
-			this.xpTaskBoxSimple1.Padding = new System.Windows.Forms.Padding(
+			this.xpTaskBoxSimple1.Padding = new Padding(
 				4,
 				44,
 				4,
@@ -932,7 +932,7 @@ namespace SimPe.Plugin
 			this.linkLabel1.TabStop = true;
 			this.linkLabel1.Text = "reload";
 			this.linkLabel1.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.linkLabel1_LinkClicked
 				);
 			//
@@ -993,7 +993,7 @@ namespace SimPe.Plugin
 			this.Location = new System.Drawing.Point(48, 32);
 			this.Name = "RcolForm";
 			this.Size = new System.Drawing.Size(768, 301);
-			this.Commited += new System.EventHandler(this.Commit);
+			this.Commited += new EventHandler(this.Commit);
 			this.Controls.SetChildIndex(this.tbResource, 0);
 			this.tbResource.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
@@ -1027,7 +1027,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SelectRcolItem(object sender, System.EventArgs e)
+		private void SelectRcolItem(object sender, EventArgs e)
 		{
 			if (cbitem.Tag != null)
 			{
@@ -1042,7 +1042,7 @@ namespace SimPe.Plugin
 			try
 			{
 				cbitem.Tag = true;
-				SimPe.CountedListItem cli = (SimPe.CountedListItem)
+				CountedListItem cli = (CountedListItem)
 					cbitem.Items[cbitem.SelectedIndex];
 				AbstractRcolBlock rb = (AbstractRcolBlock)cli.Object;
 				tbflname.Enabled = (rb.NameResource != null);
@@ -1070,7 +1070,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void ChangeFileName(object sender, System.EventArgs e)
+		private void ChangeFileName(object sender, EventArgs e)
 		{
 			if (cbitem.Tag != null)
 			{
@@ -1085,7 +1085,7 @@ namespace SimPe.Plugin
 			try
 			{
 				cbitem.Tag = true;
-				SimPe.CountedListItem cli = (SimPe.CountedListItem)
+				CountedListItem cli = (CountedListItem)
 					cbitem.Items[cbitem.SelectedIndex];
 				AbstractRcolBlock rb = (AbstractRcolBlock)cli.Object;
 				if (rb.NameResource != null)
@@ -1110,7 +1110,7 @@ namespace SimPe.Plugin
 
 		private void BuildFilename(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			string fl = Hashes.StripHashFromName(this.tbflname.Text);
@@ -1122,7 +1122,7 @@ namespace SimPe.Plugin
 
 		private void FixTGI(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			string fl = Hashes.StripHashFromName(this.tbflname.Text);
@@ -1136,7 +1136,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void Commit(object sender, System.EventArgs e)
+		private void Commit(object sender, EventArgs e)
 		{
 			try
 			{
@@ -1152,7 +1152,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SelectType(object sender, System.EventArgs e)
+		private void SelectType(object sender, EventArgs e)
 		{
 			if (cbtypes.Tag != null)
 			{
@@ -1162,7 +1162,7 @@ namespace SimPe.Plugin
 			tbtype.Text =
 				"0x"
 				+ Helper.HexString(
-					((SimPe.Data.TypeAlias)cbtypes.Items[cbtypes.SelectedIndex]).Id
+					((Data.TypeAlias)cbtypes.Items[cbtypes.SelectedIndex]).Id
 				);
 		}
 
@@ -1202,7 +1202,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void tbtype_TextChanged(object sender, System.EventArgs e)
+		private void tbtype_TextChanged(object sender, EventArgs e)
 		{
 			Change();
 
@@ -1227,7 +1227,7 @@ namespace SimPe.Plugin
 			cbtypes.Tag = null;
 		}
 
-		private void SelectReference(object sender, System.EventArgs e)
+		private void SelectReference(object sender, EventArgs e)
 		{
 			if (lbref.Tag != null)
 			{
@@ -1260,20 +1260,20 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void AutoChangeReference(object sender, System.EventArgs e)
+		private void AutoChangeReference(object sender, EventArgs e)
 		{
 			Change();
 		}
 
 		private void SRNItemsAAdd(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			try
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd =
-					new SimPe.Packages.PackedFileDescriptor();
+					new Packages.PackedFileDescriptor();
 
 				pfd.Type = Convert.ToUInt32(this.tbtype.Text, 16);
 				pfd.SubType = Convert.ToUInt32(this.tbsubtype.Text, 16);
@@ -1294,7 +1294,7 @@ namespace SimPe.Plugin
 
 		private void SRNItemsADelete(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lbref.SelectedIndex < 0)
@@ -1323,9 +1323,9 @@ namespace SimPe.Plugin
 		}
 
 		#region Package Selector
-		private void ShowPackageSelector(object sender, System.EventArgs e)
+		private void ShowPackageSelector(object sender, EventArgs e)
 		{
-			SimPe.PackageSelectorForm form = new SimPe.PackageSelectorForm();
+			PackageSelectorForm form = new PackageSelectorForm();
 			form.Execute(wrapper.Package);
 		}
 
@@ -1346,7 +1346,7 @@ namespace SimPe.Plugin
 
 		private void PackageItemDragEnter(object sender, DragEventArgs e)
 		{
-			if (e.Data.GetDataPresent(typeof(SimPe.Packages.PackedFileDescriptor)))
+			if (e.Data.GetDataPresent(typeof(Packages.PackedFileDescriptor)))
 			{
 				e.Effect = DragDropEffects.Copy;
 			}
@@ -1358,7 +1358,7 @@ namespace SimPe.Plugin
 
 		private void PackageItemDrop(
 			object sender,
-			System.Windows.Forms.DragEventArgs e
+			DragEventArgs e
 		)
 		{
 			try
@@ -1366,7 +1366,7 @@ namespace SimPe.Plugin
 				lbref.Tag = true;
 				Interfaces.Files.IPackedFileDescriptor pfd = null;
 				pfd = (Interfaces.Files.IPackedFileDescriptor)
-					e.Data.GetData(typeof(SimPe.Packages.PackedFileDescriptor));
+					e.Data.GetData(typeof(Packages.PackedFileDescriptor));
 
 				wrapper.ReferencedFiles = (Interfaces.Files.IPackedFileDescriptor[])
 					Helper.Add(wrapper.ReferencedFiles, pfd);
@@ -1391,7 +1391,7 @@ namespace SimPe.Plugin
 
 			this.tbflname.Text = "";
 			this.childtc.TabPages.Clear();
-			foreach (SimPe.CountedListItem o in this.lbblocks.Items)
+			foreach (CountedListItem o in this.lbblocks.Items)
 			{
 				cbitem.Items.Add(o);
 			}
@@ -1402,7 +1402,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void tabControl1_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			//Display the Block Editor
 			if (tbResource.TabPages[tbResource.SelectedIndex] == this.tabPage3)
@@ -1434,7 +1434,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void btup_Click(object sender, System.EventArgs e)
+		private void btup_Click(object sender, EventArgs e)
 		{
 			if (lbblocks.SelectedIndex < 1)
 			{
@@ -1451,11 +1451,11 @@ namespace SimPe.Plugin
 
 				wrapper.Blocks[lbblocks.SelectedIndex] = (AbstractRcolBlock)
 					(
-						(SimPe.CountedListItem)lbblocks.Items[lbblocks.SelectedIndex]
+						(CountedListItem)lbblocks.Items[lbblocks.SelectedIndex]
 					).Object;
 				wrapper.Blocks[lbblocks.SelectedIndex - 1] = (AbstractRcolBlock)
 					(
-						(SimPe.CountedListItem)
+						(CountedListItem)
 							lbblocks.Items[lbblocks.SelectedIndex - 1]
 					).Object;
 				lbblocks.SelectedIndex--;
@@ -1468,7 +1468,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void btdown_Click(object sender, System.EventArgs e)
+		private void btdown_Click(object sender, EventArgs e)
 		{
 			if (lbblocks.SelectedIndex < 0)
 			{
@@ -1489,11 +1489,11 @@ namespace SimPe.Plugin
 				lbblocks.Items[lbblocks.SelectedIndex] = o;
 				wrapper.Blocks[lbblocks.SelectedIndex] = (AbstractRcolBlock)
 					(
-						(SimPe.CountedListItem)lbblocks.Items[lbblocks.SelectedIndex]
+						(CountedListItem)lbblocks.Items[lbblocks.SelectedIndex]
 					).Object;
 				wrapper.Blocks[lbblocks.SelectedIndex + 1] = (AbstractRcolBlock)
 					(
-						(SimPe.CountedListItem)
+						(CountedListItem)
 							lbblocks.Items[lbblocks.SelectedIndex + 1]
 					).Object;
 				lbblocks.SelectedIndex++;
@@ -1506,7 +1506,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void btadd_Click(object sender, System.EventArgs e)
+		private void btadd_Click(object sender, EventArgs e)
 		{
 			try
 			{
@@ -1530,7 +1530,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void lbblocks_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void lbblocks_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			btup.Enabled = btdown.Enabled = btdel.Enabled = false;
 			if (lbblocks.SelectedIndex < 0)
@@ -1541,7 +1541,7 @@ namespace SimPe.Plugin
 			btup.Enabled = btdown.Enabled = btdel.Enabled = true;
 		}
 
-		private void btdel_Click(object sender, System.EventArgs e)
+		private void btdel_Click(object sender, EventArgs e)
 		{
 			if (lbblocks.SelectedIndex < 0)
 			{
@@ -1550,7 +1550,7 @@ namespace SimPe.Plugin
 
 			try
 			{
-				SimPe.CountedListItem cli = (SimPe.CountedListItem)
+				CountedListItem cli = (CountedListItem)
 					lbblocks.Items[lbblocks.SelectedIndex];
 				IRcolBlock irb = ((IRcolBlock)cli.Object);
 				this.lbblocks.Items.Remove(cli);
@@ -1567,7 +1567,7 @@ namespace SimPe.Plugin
 
 		private void SelectRefItem(
 			object sender,
-			System.Windows.Forms.TreeViewEventArgs e
+			TreeViewEventArgs e
 		)
 		{
 			if (e.Node.Tag != null)
@@ -1578,11 +1578,11 @@ namespace SimPe.Plugin
 				tbrefinst.Text = "0x" + Helper.HexString(pfd.Instance);
 
 				SimPe.FileTable.FileIndex.Load();
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+				IScenegraphFileIndexItem[] items =
 					FileTable.FileIndex.FindFile(pfd, null);
 				if (items.Length == 0)
 				{
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item =
+					IScenegraphFileIndexItem item =
 						FileTable.FileIndex.FindFileByName(
 							pfd.Filename,
 							pfd.Type,
@@ -1592,7 +1592,7 @@ namespace SimPe.Plugin
 					if (item != null)
 					{
 						items =
-							new SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[1];
+							new IScenegraphFileIndexItem[1];
 						items[0] = item;
 					}
 				}
@@ -1617,7 +1617,7 @@ namespace SimPe.Plugin
 
 		private void linkLabel1_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			WaitingScreen.Wait();
@@ -1631,7 +1631,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void ChildTabPageChanged(object sender, System.EventArgs e)
+		private void ChildTabPageChanged(object sender, EventArgs e)
 		{
 			wrapper.ChildTabPageChanged(this, e);
 		}

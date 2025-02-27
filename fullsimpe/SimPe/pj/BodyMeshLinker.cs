@@ -25,7 +25,7 @@ using SimPe.Interfaces.Files;
 
 namespace pj
 {
-	class BodyMeshLinker : SimPe.Interfaces.AbstractTool, ITool
+	class BodyMeshLinker : AbstractTool, ITool
 	{
 		private IPackageFile currentPackage = null;
 		private IPackedFileDescriptor refFilePFD = null;
@@ -178,8 +178,8 @@ namespace pj
 		}
 
 		public SimPe.Interfaces.Plugin.IToolResult ShowDialog(
-			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			ref SimPe.Interfaces.Files.IPackageFile package
+			ref IPackedFileDescriptor pfd,
+			ref IPackageFile package
 		)
 		{
 			if (!IsReallyEnabled(pfd, package))

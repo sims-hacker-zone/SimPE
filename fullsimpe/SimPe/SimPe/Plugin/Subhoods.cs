@@ -74,12 +74,12 @@ namespace SimPe.Plugin
 			if (overs.Length > 0)
 			{
 				uint uid;
-				SimPe.Packages.GeneratableFile pkg;
+				Packages.GeneratableFile pkg;
 				foreach (string file in overs)
 				{
 					subh = Localization.Manager.GetString("unknown");
 					pkg = SimPe.Packages.File.LoadFromFile(file);
-					SimPe.Interfaces.Files.IPackedFileDescriptor pfd =
+					Interfaces.Files.IPackedFileDescriptor pfd =
 						pkg.FindFileAnyGroup(Data.MetaData.IDNO, 0, 1);
 					if (pfd != null)
 					{
@@ -90,10 +90,10 @@ namespace SimPe.Plugin
 						pfd = pkg.FindFileAnyGroup(Data.MetaData.CTSS_FILE, 0, 1);
 						if (pfd != null)
 						{
-							SimPe.PackedFiles.Wrapper.Str str =
-								new SimPe.PackedFiles.Wrapper.Str();
+							PackedFiles.Wrapper.Str str =
+								new PackedFiles.Wrapper.Str();
 							str.ProcessData(pfd, pkg);
-							SimPe.PackedFiles.Wrapper.StrItemList items =
+							PackedFiles.Wrapper.StrItemList items =
 								str.FallbackedLanguageItems(
 									Helper.WindowsRegistry.LanguageCode
 								);
@@ -151,7 +151,7 @@ namespace SimPe.Plugin
 			try
 			{
 				foreach (
-					SimPe.PackedFiles.Wrapper.SDesc simdesc in FileTable
+					PackedFiles.Wrapper.SDesc simdesc in FileTable
 						.ProviderRegistry
 						.SimDescriptionProvider
 						.SimInstance

@@ -30,8 +30,8 @@ namespace SimPe.Plugin.Tool.Dockable
 	/// If a Plugin isn't returned, SimPe won't recognize it!
 	/// </remarks>
 	public class DockboxFactory
-		: SimPe.Interfaces.Plugin.AbstractWrapperFactory,
-			SimPe.Interfaces.Plugin.IToolFactory
+		: Interfaces.Plugin.AbstractWrapperFactory,
+			Interfaces.Plugin.IToolFactory
 	{
 		#region Specific Attributes / Methods
 		ResourceDock rd;
@@ -48,7 +48,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		/// Returns a List of all available Plugins in this Package
 		/// </summary>
 		/// <returns>A List of all provided Plugins (=FileType Wrappers)</returns>
-		public override SimPe.Interfaces.IWrapper[] KnownWrappers
+		public override IWrapper[] KnownWrappers
 		{
 			get
 			{

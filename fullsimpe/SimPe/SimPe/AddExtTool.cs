@@ -25,20 +25,20 @@ namespace SimPe
 	/// <summary>
 	/// Summary description for AddExtTool.
 	/// </summary>
-	public class AddExtTool : System.Windows.Forms.Form
+	public class AddExtTool : Form
 	{
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.TextBox tbname;
-		private System.Windows.Forms.TextBox tbfile;
-		private System.Windows.Forms.TextBox tbattr;
-		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.OpenFileDialog ofd;
-		private System.Windows.Forms.TextBox tbtype;
-		private System.Windows.Forms.ComboBox cbtypes;
+		private Label label1;
+		private Label label2;
+		private Label label3;
+		private Label label4;
+		private Button button1;
+		private TextBox tbname;
+		private TextBox tbfile;
+		private TextBox tbattr;
+		private Button button2;
+		private OpenFileDialog ofd;
+		private TextBox tbtype;
+		private ComboBox cbtypes;
 
 		/// <summary>
 		/// Required designer variable.
@@ -49,11 +49,11 @@ namespace SimPe
 		{
 			InitializeComponent();
 
-			foreach (SimPe.Data.TypeAlias a in SimPe.Helper.TGILoader.FileTypes)
+			foreach (Data.TypeAlias a in SimPe.Helper.TGILoader.FileTypes)
 			{
 				if (a.Id == 0xffffffff)
 				{
-					SimPe.Data.TypeAlias an = new SimPe.Data.TypeAlias(
+					Data.TypeAlias an = new Data.TypeAlias(
 						false,
 						"ALL",
 						0xffffffff,
@@ -93,18 +93,18 @@ namespace SimPe
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.button1 = new System.Windows.Forms.Button();
-			this.tbname = new System.Windows.Forms.TextBox();
-			this.tbfile = new System.Windows.Forms.TextBox();
-			this.tbattr = new System.Windows.Forms.TextBox();
-			this.button2 = new System.Windows.Forms.Button();
-			this.ofd = new System.Windows.Forms.OpenFileDialog();
-			this.tbtype = new System.Windows.Forms.TextBox();
-			this.cbtypes = new System.Windows.Forms.ComboBox();
+			this.label1 = new Label();
+			this.label2 = new Label();
+			this.label3 = new Label();
+			this.label4 = new Label();
+			this.button1 = new Button();
+			this.tbname = new TextBox();
+			this.tbfile = new TextBox();
+			this.tbattr = new TextBox();
+			this.button2 = new Button();
+			this.ofd = new OpenFileDialog();
+			this.tbtype = new TextBox();
+			this.cbtypes = new ComboBox();
 			this.SuspendLayout();
 			//
 			// label1
@@ -174,7 +174,7 @@ namespace SimPe
 			// button1
 			//
 			this.button1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -186,12 +186,12 @@ namespace SimPe
 			this.button1.Name = "button1";
 			this.button1.TabIndex = 4;
 			this.button1.Text = "OK";
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.button1.Click += new EventHandler(this.button1_Click);
 			//
 			// tbname
 			//
 			this.tbname.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -209,7 +209,7 @@ namespace SimPe
 			// tbfile
 			//
 			this.tbfile.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -227,7 +227,7 @@ namespace SimPe
 			// tbattr
 			//
 			this.tbattr.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -245,7 +245,7 @@ namespace SimPe
 			// button2
 			//
 			this.button2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -257,7 +257,7 @@ namespace SimPe
 			this.button2.Name = "button2";
 			this.button2.TabIndex = 8;
 			this.button2.Text = "Browse...";
-			this.button2.Click += new System.EventHandler(this.button2_Click);
+			this.button2.Click += new EventHandler(this.button2_Click);
 			//
 			// ofd
 			//
@@ -272,14 +272,14 @@ namespace SimPe
 			this.tbtype.Name = "tbtype";
 			this.tbtype.TabIndex = 17;
 			this.tbtype.Text = "";
-			this.tbtype.TextChanged += new System.EventHandler(
+			this.tbtype.TextChanged += new EventHandler(
 				this.SelectTypeByNameClick
 			);
 			//
 			// cbtypes
 			//
 			this.cbtypes.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -299,7 +299,7 @@ namespace SimPe
 			this.cbtypes.Name = "cbtypes";
 			this.cbtypes.Size = new System.Drawing.Size(248, 21);
 			this.cbtypes.TabIndex = 18;
-			this.cbtypes.SelectedIndexChanged += new System.EventHandler(
+			this.cbtypes.SelectedIndexChanged += new EventHandler(
 				this.TypeSelectClick
 			);
 			//
@@ -348,7 +348,7 @@ namespace SimPe
 			return tli;
 		}
 
-		private void button2_Click(object sender, System.EventArgs e)
+		private void button2_Click(object sender, EventArgs e)
 		{
 			ofd.FileName = tbfile.Text;
 			if (ofd.ShowDialog() == DialogResult.OK)
@@ -357,7 +357,7 @@ namespace SimPe
 			}
 		}
 
-		private void TypeSelectClick(object sender, System.EventArgs e)
+		private void TypeSelectClick(object sender, EventArgs e)
 		{
 			if (cbtypes.Tag != null)
 			{
@@ -367,11 +367,11 @@ namespace SimPe
 			tbtype.Text =
 				"0x"
 				+ Helper.HexString(
-					((SimPe.Data.TypeAlias)cbtypes.Items[cbtypes.SelectedIndex]).Id
+					((Data.TypeAlias)cbtypes.Items[cbtypes.SelectedIndex]).Id
 				);
 		}
 
-		private void SelectTypeByNameClick(object sender, System.EventArgs e)
+		private void SelectTypeByNameClick(object sender, EventArgs e)
 		{
 			cbtypes.Tag = true;
 			Data.TypeAlias a = Data.MetaData.FindTypeAlias(
@@ -394,7 +394,7 @@ namespace SimPe
 			cbtypes.Tag = null;
 		}
 
-		private void button1_Click(object sender, System.EventArgs e)
+		private void button1_Click(object sender, EventArgs e)
 		{
 			tli = new ToolLoaderItemExt(tbname.Text);
 			tli.Attributes = tbattr.Text;

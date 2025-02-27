@@ -30,8 +30,8 @@ namespace SimPe.Plugin
 	public abstract class AbstractCresChildren
 		: AbstractRcolBlock,
 			ICresChildren,
-			System.Collections.IEnumerable,
-			System.Collections.IEnumerator
+			IEnumerable,
+			IEnumerator
 	{
 		public abstract string GetName();
 
@@ -112,14 +112,14 @@ namespace SimPe.Plugin
 			IntArrayList l = new IntArrayList();
 			for (int i = 0; i < parent.Blocks.Length; i++)
 			{
-				SimPe.Interfaces.Scenegraph.IRcolBlock irb =
-					(SimPe.Interfaces.Scenegraph.IRcolBlock)parent.Blocks[i];
+				IRcolBlock irb =
+					(IRcolBlock)parent.Blocks[i];
 				if (
 					irb.GetType().GetInterface("ICresChildren", false)
 					== typeof(ICresChildren)
 				)
 				{
-					SimPe.Interfaces.Scenegraph.ICresChildren icc = (ICresChildren)irb;
+					ICresChildren icc = (ICresChildren)irb;
 					if (icc.ChildBlocks.Contains(Index))
 					{
 						l.Add(i);
@@ -133,7 +133,7 @@ namespace SimPe.Plugin
 		/// Get the first Block that references this Block as a Child
 		/// </summary>
 		/// <returns></returns>
-		public SimPe.Interfaces.Scenegraph.ICresChildren GetFirstParent()
+		public ICresChildren GetFirstParent()
 		{
 			IntArrayList l = GetParentBlocks();
 			if (l.Length == 0)
@@ -141,7 +141,7 @@ namespace SimPe.Plugin
 				return null;
 			}
 
-			return (SimPe.Interfaces.Scenegraph.ICresChildren)parent.Blocks[l[0]];
+			return (ICresChildren)parent.Blocks[l[0]];
 		}
 
 		/// <summary>

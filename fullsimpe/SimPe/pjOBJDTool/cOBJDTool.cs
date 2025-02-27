@@ -460,7 +460,7 @@ namespace pjOBJDTool
 
 				if (wrapper != null)
 				{
-					wrapper.WrapperChanged -= new System.EventHandler(
+					wrapper.WrapperChanged -= new EventHandler(
 						this.WrapperChanged
 					);
 				}
@@ -555,7 +555,7 @@ namespace pjOBJDTool
 			}
 			else
 			{
-				wrapper.WrapperChanged += new System.EventHandler(this.WrapperChanged);
+				wrapper.WrapperChanged += new EventHandler(this.WrapperChanged);
 				cbOBJDvsn.Enabled =
 					tbCTSSInstance.Enabled =
 					gbValue.Enabled =
@@ -634,7 +634,7 @@ namespace pjOBJDTool
 			btnCommit.Enabled = wrapper.Changed;
 		}
 
-		private void WrapperChanged(object sender, System.EventArgs e)
+		private void WrapperChanged(object sender, EventArgs e)
 		{
 			this.btnCommit.Enabled = wrapper.Changed;
 		}

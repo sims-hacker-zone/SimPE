@@ -165,7 +165,7 @@ namespace SimPe.Wants
 
 			if (isCpf)
 			{
-				SimPe.PackedFiles.Wrapper.Cpf cpf = new SimPe.PackedFiles.Wrapper.Cpf();
+				PackedFiles.Wrapper.Cpf cpf = new PackedFiles.Wrapper.Cpf();
 				cpf.ProcessData(this.FileDescriptor, this.Package);
 				XWNTWrapper xwnt = new XWNTWrapper();
 				foreach (XWNTItem item in xwnt)
@@ -176,7 +176,7 @@ namespace SimPe.Wants
 					}
 					else
 					{
-						SimPe.PackedFiles.Wrapper.CpfItem cpfitem = cpf.GetItem(
+						PackedFiles.Wrapper.CpfItem cpfitem = cpf.GetItem(
 							item.Key
 						);
 						if (cpfitem != null)

@@ -9,7 +9,7 @@ namespace SimPe.Plugin
 	/// This class is used to fill the UI for this FileType with Data
 	/// </summary>
 	public partial class TreesPackedFileUI
-		: SimPe.Windows.Forms.WrapperBaseControl,
+		: Windows.Forms.WrapperBaseControl,
 			IPackedFileUI
 	{
 		protected new TreesPackedFileWrapper Wrapper => base.Wrapper as TreesPackedFileWrapper;
@@ -86,7 +86,7 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region IPackedFileUI Member
-		System.Windows.Forms.Control IPackedFileUI.GUIHandle => this;
+		Control IPackedFileUI.GUIHandle => this;
 		#endregion
 
 		#region IDisposable Member
@@ -374,7 +374,7 @@ namespace SimPe.Plugin
 
 		private void btBhave_Click(object sender, EventArgs e)
 		{
-			SimPe.PackedFiles.Wrapper.Bhav bhave = (SimPe.PackedFiles.Wrapper.Bhav)
+			PackedFiles.Wrapper.Bhav bhave = (PackedFiles.Wrapper.Bhav)
 				Wrapper.SiblingResource(0x42484156);
 			if (bhave == null)
 			{

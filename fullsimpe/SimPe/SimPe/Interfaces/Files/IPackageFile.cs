@@ -45,7 +45,7 @@ namespace SimPe.Interfaces.Files
 		/// Create a Clone of this Package File
 		/// </summary>
 		/// <returns>the new Package File</returns>
-		Interfaces.Files.IPackageFile Clone();
+		IPackageFile Clone();
 
 		#region FileIndex Handling
 		/// <summary>
@@ -100,7 +100,7 @@ namespace SimPe.Interfaces.Files
 		/// a Clone for each Descriptor, and read it' Userdata form the original package.
 		/// </summary>
 		/// <param name="package">The package that should get copied into this one</param>
-		void CopyDescriptors(SimPe.Interfaces.Files.IPackageFile package);
+		void CopyDescriptors(IPackageFile package);
 
 		/// <summary>
 		/// Returns or Changes the stored Fileindex
@@ -164,7 +164,7 @@ namespace SimPe.Interfaces.Files
 		/// </summary>
 		/// <param name="pfd">Type you want to look for</param>
 		/// <returns>The descriptor for the matching Dile or null</returns>
-		IPackedFileDescriptor FindFile(Interfaces.Files.IPackedFileDescriptor pfd);
+		IPackedFileDescriptor FindFile(IPackedFileDescriptor pfd);
 
 		/// <summary>
 		/// Returns the first File matching
@@ -183,7 +183,7 @@ namespace SimPe.Interfaces.Files
 		/// </summary>
 		/// <param name="pfd">Type you want to look for</param>
 		/// <returns>The descriptor for the matching Dile or null</returns>
-		IPackedFileDescriptor FindExactFile(Interfaces.Files.IPackedFileDescriptor pfd);
+		IPackedFileDescriptor FindExactFile(IPackedFileDescriptor pfd);
 
 		/// <summary>
 		/// Returns the first File matching
@@ -221,7 +221,7 @@ namespace SimPe.Interfaces.Files
 		/// <summary>
 		/// The Structural Data of the Header
 		/// </summary>
-		Interfaces.Files.IPackageHeader Header
+		IPackageHeader Header
 		{
 			get;
 		}

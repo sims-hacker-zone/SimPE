@@ -1245,7 +1245,7 @@ namespace pjse
 				return s + readStr(pjse.GS.BhavStr.Primitives, (ushort)instance);
 			}
 
-			pjse.FileTable.Entry ftEntry = parent.ResourceByInstance(
+			FileTable.Entry ftEntry = parent.ResourceByInstance(
 				SimPe.Data.MetaData.BHAV_FILE,
 				instance
 			);
@@ -1309,7 +1309,7 @@ namespace pjse
 
 			uint group = instruction.Parent.FileDescriptor.Group;
 			uint instance = instruction.Parent.FileDescriptor.Instance;
-			pjse.FileTable.Entry[] items = pjse.FileTable.GFT[
+			FileTable.Entry[] items = pjse.FileTable.GFT[
 				0x54505250,
 				group,
 				instance
@@ -1379,7 +1379,7 @@ namespace pjse
 
 		public static Glob GlobByGroup(uint group)
 		{
-			pjse.FileTable.Entry[] items = pjse.FileTable.GFT[
+			FileTable.Entry[] items = pjse.FileTable.GFT[
 				(uint)SimPe.Data.MetaData.GLOB_FILE,
 				group
 			];
@@ -1460,7 +1460,7 @@ namespace pjse
 				return "";
 			}
 
-			pjse.FileTable.Entry[] items = pjse.FileTable.GFT[
+			FileTable.Entry[] items = pjse.FileTable.GFT[
 				0x42434F4E,
 				instruction.Parent.GroupForScope(s),
 				instance

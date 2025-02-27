@@ -28,7 +28,7 @@ using SimPe.Interfaces.Wrapper;
 namespace SimPe
 {
 	/// <summary>
-	/// Do not use this class direct, use <see cref="SimPe.FileTable"/> instead!
+	/// Do not use this class direct, use <see cref="FileTable"/> instead!
 	/// </summary>
 	public class FileTableBase
 	{
@@ -472,7 +472,7 @@ namespace SimPe
 		/// <summary>
 		/// Returns/Sets a WrapperRegistry (can be null)
 		/// </summary>
-		public static SimPe.Interfaces.IWrapperRegistry WrapperRegistry
+		public static Interfaces.IWrapperRegistry WrapperRegistry
 		{
 			get; set;
 		}
@@ -480,7 +480,7 @@ namespace SimPe
 		/// <summary>
 		/// Returns/Sets a ProviderRegistry (can be null)
 		/// </summary>
-		public static SimPe.Interfaces.IProviderRegistry ProviderRegistry
+		public static Interfaces.IProviderRegistry ProviderRegistry
 		{
 			get; set;
 		}

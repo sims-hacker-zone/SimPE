@@ -24,28 +24,28 @@ namespace SimPe.Plugin.Anim
 	/// <summary>
 	/// Summary description for ImportJointAnim.
 	/// </summary>
-	public class ImportJointAnim : System.Windows.Forms.Form
+	public class ImportJointAnim : Form
 	{
-		private System.Windows.Forms.Panel Gradientpanel1;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.ListView lv;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.ColumnHeader chName;
-		private System.Windows.Forms.ColumnHeader chAction;
-		private System.Windows.Forms.ColumnHeader chTarget;
-		private System.Windows.Forms.ColumnHeader chCount;
-		private System.Windows.Forms.GroupBox gbgroups;
-		private System.Windows.Forms.ComboBox cbnames;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label lbname;
-		private System.Windows.Forms.ComboBox cbaction;
-		private System.Windows.Forms.CheckBox cbDiscard;
-		private System.Windows.Forms.ColumnHeader chDuration;
-		private System.Windows.Forms.ColumnHeader chDiscardZero;
-		private System.Windows.Forms.CheckBox cbRemove;
-		private System.Windows.Forms.GroupBox gbsettings;
-		private System.Windows.Forms.CheckBox cbCorrect;
+		private Panel Gradientpanel1;
+		private Button button1;
+		private ListView lv;
+		private Label label1;
+		private ColumnHeader chName;
+		private ColumnHeader chAction;
+		private ColumnHeader chTarget;
+		private ColumnHeader chCount;
+		private GroupBox gbgroups;
+		private ComboBox cbnames;
+		private Label label2;
+		private Label label3;
+		private Label lbname;
+		private ComboBox cbaction;
+		private CheckBox cbDiscard;
+		private ColumnHeader chDuration;
+		private ColumnHeader chDiscardZero;
+		private CheckBox cbRemove;
+		private GroupBox gbsettings;
+		private CheckBox cbCorrect;
 
 		/// <summary>
 		/// Required designer variable.
@@ -90,26 +90,26 @@ namespace SimPe.Plugin.Anim
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(ImportJointAnim)
 				);
-			this.Gradientpanel1 = new System.Windows.Forms.Panel();
-			this.gbsettings = new System.Windows.Forms.GroupBox();
-			this.cbCorrect = new System.Windows.Forms.CheckBox();
-			this.gbgroups = new System.Windows.Forms.GroupBox();
-			this.cbRemove = new System.Windows.Forms.CheckBox();
-			this.cbDiscard = new System.Windows.Forms.CheckBox();
-			this.cbnames = new System.Windows.Forms.ComboBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.lbname = new System.Windows.Forms.Label();
-			this.cbaction = new System.Windows.Forms.ComboBox();
-			this.button1 = new System.Windows.Forms.Button();
-			this.lv = new System.Windows.Forms.ListView();
-			this.chName = new System.Windows.Forms.ColumnHeader();
-			this.chAction = new System.Windows.Forms.ColumnHeader();
-			this.chTarget = new System.Windows.Forms.ColumnHeader();
-			this.chCount = new System.Windows.Forms.ColumnHeader();
-			this.chDuration = new System.Windows.Forms.ColumnHeader();
-			this.chDiscardZero = new System.Windows.Forms.ColumnHeader();
-			this.label1 = new System.Windows.Forms.Label();
+			this.Gradientpanel1 = new Panel();
+			this.gbsettings = new GroupBox();
+			this.cbCorrect = new CheckBox();
+			this.gbgroups = new GroupBox();
+			this.cbRemove = new CheckBox();
+			this.cbDiscard = new CheckBox();
+			this.cbnames = new ComboBox();
+			this.label2 = new Label();
+			this.label3 = new Label();
+			this.lbname = new Label();
+			this.cbaction = new ComboBox();
+			this.button1 = new Button();
+			this.lv = new ListView();
+			this.chName = new ColumnHeader();
+			this.chAction = new ColumnHeader();
+			this.chTarget = new ColumnHeader();
+			this.chCount = new ColumnHeader();
+			this.chDuration = new ColumnHeader();
+			this.chDiscardZero = new ColumnHeader();
+			this.label1 = new Label();
 			this.Gradientpanel1.SuspendLayout();
 			this.gbsettings.SuspendLayout();
 			this.gbgroups.SuspendLayout();
@@ -139,7 +139,7 @@ namespace SimPe.Plugin.Anim
 			// gbsettings
 			//
 			this.gbsettings.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -150,7 +150,7 @@ namespace SimPe.Plugin.Anim
 			this.gbsettings.Controls.Add(this.cbCorrect);
 			this.gbsettings.Location = new System.Drawing.Point(536, 16);
 			this.gbsettings.Name = "gbsettings";
-			this.gbsettings.Padding = new System.Windows.Forms.Padding(4, 44, 4, 4);
+			this.gbsettings.Padding = new Padding(4, 44, 4, 4);
 			this.gbsettings.Size = new System.Drawing.Size(280, 72);
 			this.gbsettings.TabIndex = 15;
 			//
@@ -172,7 +172,7 @@ namespace SimPe.Plugin.Anim
 			// gbgroups
 			//
 			this.gbgroups.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -190,7 +190,7 @@ namespace SimPe.Plugin.Anim
 			this.gbgroups.Enabled = false;
 			this.gbgroups.Location = new System.Drawing.Point(536, 88);
 			this.gbgroups.Name = "gbgroups";
-			this.gbgroups.Padding = new System.Windows.Forms.Padding(4, 44, 4, 4);
+			this.gbgroups.Padding = new Padding(4, 44, 4, 4);
 			this.gbgroups.Size = new System.Drawing.Size(280, 168);
 			this.gbgroups.TabIndex = 14;
 			//
@@ -330,7 +330,7 @@ namespace SimPe.Plugin.Anim
 			// button1
 			//
 			this.button1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -355,7 +355,7 @@ namespace SimPe.Plugin.Anim
 			// lv
 			//
 			this.lv.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -368,7 +368,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.lv.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.lv.Columns.AddRange(
-				new System.Windows.Forms.ColumnHeader[]
+				new ColumnHeader[]
 				{
 					this.chName,
 					this.chAction,

@@ -446,15 +446,15 @@ namespace SimPe.PackedFiles.UserInterface
 				species = (int)Sim.Nightlife.Species;
 			}
 
-			SimPe.Packages.GeneratableFile pkg =
+			Packages.GeneratableFile pkg =
 				SimPe.Packages.GeneratableFile.LoadFromFile(Sim.CharacterFileName);
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
 				Data.MetaData.AGED
 			);
 			if (pfds.Length == 1)
 			{
-				SimPe.PackedFiles.Wrapper.Cpf ageData =
-					new SimPe.PackedFiles.Wrapper.Cpf();
+				Wrapper.Cpf ageData =
+					new Wrapper.Cpf();
 				ageData.ProcessData(pfds[0], pkg);
 				curspec = ageData.GetItem("species").UIntegerValue;
 				if (curspec == 8)
@@ -483,7 +483,7 @@ namespace SimPe.PackedFiles.UserInterface
 			if (curspec != species)
 			{
 				Sim.Nightlife.Species =
-					(SimPe.PackedFiles.Wrapper.SdscNightlife.SpeciesType)curspec;
+					(Wrapper.SdscNightlife.SpeciesType)curspec;
 				pkg.Close();
 				fixresult = "Inconsistant Species, No Changes Applied";
 				return;
@@ -492,8 +492,8 @@ namespace SimPe.PackedFiles.UserInterface
 			pfds = pkg.FindFiles(Data.MetaData.OBJD_FILE);
 			if (pfds.Length == 1)
 			{
-				SimPe.PackedFiles.Wrapper.ExtObjd objd =
-					new SimPe.PackedFiles.Wrapper.ExtObjd();
+				Wrapper.ExtObjd objd =
+					new Wrapper.ExtObjd();
 				objd.ProcessData(pfds[0], pkg);
 				if (
 					objd.OriginalGuid == 0x9985408B
@@ -531,7 +531,7 @@ namespace SimPe.PackedFiles.UserInterface
 					) // these are gleened from species
 					{
 						Sim.Nightlife.Species =
-							(SimPe.PackedFiles.Wrapper.SdscNightlife.SpeciesType)species;
+							(Wrapper.SdscNightlife.SpeciesType)species;
 					}
 					else
 					{
@@ -543,7 +543,7 @@ namespace SimPe.PackedFiles.UserInterface
 					pfds = pkg.FindFiles(Data.MetaData.GLOB_FILE);
 					if (pfds.Length == 1)
 					{
-						SimPe.Plugin.Glob globy = new SimPe.Plugin.Glob();
+						Plugin.Glob globy = new Plugin.Glob();
 						globy.ProcessData(pfds[0], pkg);
 						globy.SemiGlobalName = semig;
 						globy.SynchronizeUserData();
@@ -610,7 +610,7 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 			}
 
-			SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+			Packages.File pkg = SimPe.Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
 					PathProvider.Global.Latest.InstallFolder,
 					"TSData\\Res\\UI\\ui.package"
@@ -618,7 +618,7 @@ namespace SimPe.PackedFiles.UserInterface
 			);
 			if (pkg != null)
 			{
-				SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
+				Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
 					0x856DDBAC,
 					0,
 					0x499DB772,
@@ -626,8 +626,8 @@ namespace SimPe.PackedFiles.UserInterface
 				);
 				if (pfd != null)
 				{
-					SimPe.PackedFiles.Wrapper.Picture pic =
-						new SimPe.PackedFiles.Wrapper.Picture();
+					Wrapper.Picture pic =
+						new Wrapper.Picture();
 					pic.ProcessData(pfd, pkg);
 					return pic.Image;
 				}

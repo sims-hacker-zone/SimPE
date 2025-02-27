@@ -24,11 +24,11 @@ namespace SimPe
 	/// <summary>
 	/// Summary description for PackageSelectorForm.
 	/// </summary>
-	public class PackageSelectorForm : System.Windows.Forms.Form
+	public class PackageSelectorForm : Form
 	{
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label lbfile;
-		private System.Windows.Forms.ListBox lbfiles;
+		private Label label1;
+		private Label lbfile;
+		private ListBox lbfiles;
 
 		/// <summary>
 		/// Required designer variable.
@@ -67,15 +67,15 @@ namespace SimPe
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(PackageSelectorForm));
-			this.label1 = new System.Windows.Forms.Label();
-			this.lbfile = new System.Windows.Forms.Label();
-			this.lbfiles = new System.Windows.Forms.ListBox();
+			this.label1 = new Label();
+			this.lbfile = new Label();
+			this.lbfiles = new ListBox();
 			this.SuspendLayout();
 			//
 			// label1
 			//
 			this.label1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Bottom
@@ -112,7 +112,7 @@ namespace SimPe
 			// lbfiles
 			//
 			this.lbfiles.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -127,7 +127,7 @@ namespace SimPe
 			this.lbfiles.Name = "lbfiles";
 			this.lbfiles.Size = new System.Drawing.Size(552, 238);
 			this.lbfiles.TabIndex = 2;
-			this.lbfiles.MouseMove += new System.Windows.Forms.MouseEventHandler(
+			this.lbfiles.MouseMove += new MouseEventHandler(
 				this.StartDrop
 			);
 			//
@@ -162,7 +162,7 @@ namespace SimPe
 		/// Displays the Tool with the content of the passed Package
 		/// </summary>
 		/// <param name="package">The package you want to list</param>
-		public void Execute(SimPe.Interfaces.Files.IPackageFile package)
+		public void Execute(Interfaces.Files.IPackageFile package)
 		{
 			this.lbfiles.Sorted = false;
 			this.lbfiles.Items.Clear();
@@ -177,7 +177,7 @@ namespace SimPe
 			this.Show();
 		}
 
-		private void StartDrop(object sender, System.Windows.Forms.MouseEventArgs e)
+		private void StartDrop(object sender, MouseEventArgs e)
 		{
 			if (lbfiles.SelectedIndex < 0)
 			{

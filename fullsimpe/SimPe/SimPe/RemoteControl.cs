@@ -26,7 +26,7 @@ namespace SimPe
 	/// </summary>
 	public class RemoteControl
 	{
-		public class ControlEventArgs : System.EventArgs
+		public class ControlEventArgs : EventArgs
 		{
 			object[] data;
 
@@ -128,14 +128,14 @@ namespace SimPe
 		/// Delegate you have to implement for the remote Package opener
 		/// </summary>
 		public delegate bool OpenMemPackageDelegate(
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Interfaces.Files.IPackageFile pkg
 		);
 
 		/// <summary>
 		/// Delegate you have to implement for the Remote PackedFile Opener
 		/// </summary>
 		public delegate bool OpenPackedFileDelegate(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii
+			Interfaces.Scenegraph.IScenegraphFileIndexItem fii
 		);
 
 		/// <summary>
@@ -366,7 +366,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="filename">The Filename of the package</param>
 		/// <returns>true, if the package was opened</returns>
-		public static bool OpenMemoryPackage(SimPe.Interfaces.Files.IPackageFile pkg)
+		public static bool OpenMemoryPackage(Interfaces.Files.IPackageFile pkg)
 		{
 			if (OpenMemoryPackageFkt == null)
 			{
@@ -396,8 +396,8 @@ namespace SimPe
 		/// <param name="pkg">The package the descriptor is in</param>
 		/// <returns>true, if the package was opened</returns>
 		public static bool OpenPackedFile(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
 			return OpenPackedFile(FileTable.FileIndex.CreateFileIndexItem(pfd, pkg));
@@ -409,7 +409,7 @@ namespace SimPe
 		/// <param name="pfd">The FileDescriptor</param>
 		/// <returns>true, if the package was opened</returns>
 		public static bool OpenPackedFile(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii
+			Interfaces.Scenegraph.IScenegraphFileIndexItem fii
 		)
 		{
 			if (OpenPackedFileFkt == null)
@@ -465,7 +465,7 @@ namespace SimPe
 		/// Displays a Form, with the passed Custom Settings
 		/// </summary>
 		/// <param name="settings"></param>
-		public static void ShowCustomSettings(SimPe.Interfaces.ISettings settings)
+		public static void ShowCustomSettings(Interfaces.ISettings settings)
 		{
 			System.Windows.Forms.Form f = new System.Windows.Forms.Form();
 			f.Text = settings.ToString();
@@ -485,12 +485,12 @@ namespace SimPe
 
 		public delegate void ResourceListSelectionChangedHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs e
+			Events.ResourceEventArgs e
 		);
 
 		public static void FireResourceListSelectionChangedHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs e
+			Events.ResourceEventArgs e
 		)
 		{
 			if (ResourceListSelectionChanged != null)

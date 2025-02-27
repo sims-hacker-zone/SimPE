@@ -142,12 +142,12 @@ namespace SimPe
 			this.ResumeLayout();
 		}
 
-		private void FixCheckedState(System.Windows.Forms.ToolStrip ts)
+		private void FixCheckedState(ToolStrip ts)
 		{
-			foreach (System.Windows.Forms.ToolStripItem tsi in ts.Items)
+			foreach (ToolStripItem tsi in ts.Items)
 			{
-				System.Windows.Forms.ToolStripButton tsb =
-					tsi as System.Windows.Forms.ToolStripButton;
+				ToolStripButton tsb =
+					tsi as ToolStripButton;
 				if (tsb == null)
 				{
 					continue;
@@ -160,12 +160,12 @@ namespace SimPe
 			}
 		}
 
-		private void FixVisibleState(System.Windows.Forms.ToolStrip ts)
+		private void FixVisibleState(ToolStrip ts)
 		{
-			foreach (System.Windows.Forms.ToolStripItem tsi in ts.Items)
+			foreach (ToolStripItem tsi in ts.Items)
 			{
-				System.Windows.Forms.ToolStripButton tsb =
-					tsi as System.Windows.Forms.ToolStripButton;
+				ToolStripButton tsb =
+					tsi as ToolStripButton;
 				if (tsb == null)
 				{
 					continue;

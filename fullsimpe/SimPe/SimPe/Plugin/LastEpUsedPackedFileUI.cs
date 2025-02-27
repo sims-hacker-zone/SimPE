@@ -7,7 +7,7 @@ using SimPe.Interfaces.Plugin;
 namespace SimPe.Plugin
 {
 	public partial class LastEPusePackedFileUI
-		: SimPe.Windows.Forms.WrapperBaseControl,
+		: Windows.Forms.WrapperBaseControl,
 			IPackedFileUI
 	{
 		protected new LastEPusePackedFileWrapper Wrapper => base.Wrapper as LastEPusePackedFileWrapper;
@@ -350,7 +350,7 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region IPackedFileUI Member
-		System.Windows.Forms.Control IPackedFileUI.GUIHandle => this;
+		Control IPackedFileUI.GUIHandle => this;
 		#endregion
 
 		#region IDisposable Member

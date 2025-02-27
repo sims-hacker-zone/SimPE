@@ -28,7 +28,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for NgbhForm.
 	/// </summary>
-	public class NgbhForm : System.Windows.Forms.Form
+	public class NgbhForm : Form
 	{
 		private System.ComponentModel.IContainer components;
 
@@ -50,13 +50,13 @@ namespace SimPe.Plugin
 
 			SimPe.RemoteControl.HookToMessageQueue(
 				0x4E474248,
-				new SimPe.RemoteControl.ControlEvent(ControlEvent)
+				new RemoteControl.ControlEvent(ControlEvent)
 			);
 		}
 
 		protected void ControlEvent(
 			object sender,
-			SimPe.RemoteControl.ControlEventArgs e
+			RemoteControl.ControlEventArgs e
 		)
 		{
 			object[] os = e.Items as object[];
@@ -92,7 +92,7 @@ namespace SimPe.Plugin
 			{
 				SimPe.RemoteControl.UnhookFromMessageQueue(
 					0x4E474248,
-					new SimPe.RemoteControl.ControlEvent(ControlEvent)
+					new RemoteControl.ControlEvent(ControlEvent)
 				);
 				if (components != null)
 				{
@@ -112,42 +112,42 @@ namespace SimPe.Plugin
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(NgbhForm));
-			this.ngbhPanel = new System.Windows.Forms.Panel();
-			this.cbtype = new System.Windows.Forms.ComboBox();
-			this.lbname = new System.Windows.Forms.Label();
-			this.button1 = new System.Windows.Forms.Button();
-			this.gbmem = new System.Windows.Forms.GroupBox();
-			this.cbown = new System.Windows.Forms.ComboBox();
-			this.tbval = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.tbUnk = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.btdown = new System.Windows.Forms.Button();
-			this.btup = new System.Windows.Forms.Button();
-			this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-			this.lbmem = new System.Windows.Forms.ListView();
-			this.memilist = new System.Windows.Forms.ImageList(this.components);
-			this.tbown = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.lladd = new System.Windows.Forms.LinkLabel();
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-			this.tbsubid = new System.Windows.Forms.TextBox();
-			this.cbsub = new System.Windows.Forms.ComboBox();
-			this.tbsub = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.cbguid = new System.Windows.Forms.ComboBox();
-			this.tbguid = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.cbaction = new System.Windows.Forms.CheckBox();
-			this.cbvis = new System.Windows.Forms.CheckBox();
-			this.tbFlag = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.pb = new System.Windows.Forms.PictureBox();
-			this.lbdata = new System.Windows.Forms.TextBox();
-			this.lv = new System.Windows.Forms.ListView();
-			this.ilist = new System.Windows.Forms.ImageList(this.components);
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.label27 = new System.Windows.Forms.Label();
+			this.ngbhPanel = new Panel();
+			this.cbtype = new ComboBox();
+			this.lbname = new Label();
+			this.button1 = new Button();
+			this.gbmem = new GroupBox();
+			this.cbown = new ComboBox();
+			this.tbval = new TextBox();
+			this.label6 = new Label();
+			this.tbUnk = new TextBox();
+			this.label5 = new Label();
+			this.btdown = new Button();
+			this.btup = new Button();
+			this.linkLabel2 = new LinkLabel();
+			this.lbmem = new ListView();
+			this.memilist = new ImageList(this.components);
+			this.tbown = new TextBox();
+			this.label4 = new Label();
+			this.lladd = new LinkLabel();
+			this.linkLabel1 = new LinkLabel();
+			this.tbsubid = new TextBox();
+			this.cbsub = new ComboBox();
+			this.tbsub = new TextBox();
+			this.label3 = new Label();
+			this.cbguid = new ComboBox();
+			this.tbguid = new TextBox();
+			this.label2 = new Label();
+			this.cbaction = new CheckBox();
+			this.cbvis = new CheckBox();
+			this.tbFlag = new TextBox();
+			this.label1 = new Label();
+			this.pb = new PictureBox();
+			this.lbdata = new TextBox();
+			this.lv = new ListView();
+			this.ilist = new ImageList(this.components);
+			this.panel2 = new Panel();
+			this.label27 = new Label();
 			this.ngbhPanel.SuspendLayout();
 			this.gbmem.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
@@ -181,7 +181,7 @@ namespace SimPe.Plugin
 				}
 			);
 			this.cbtype.Name = "cbtype";
-			this.cbtype.SelectedIndexChanged += new System.EventHandler(this.SelectSim);
+			this.cbtype.SelectedIndexChanged += new EventHandler(this.SelectSim);
 			//
 			// lbname
 			//
@@ -192,7 +192,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.button1, "button1");
 			this.button1.Name = "button1";
-			this.button1.Click += new System.EventHandler(this.Commit);
+			this.button1.Click += new EventHandler(this.Commit);
 			//
 			// gbmem
 			//
@@ -232,7 +232,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbown, "cbown");
 			this.cbown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbown.Name = "cbown";
-			this.cbown.SelectedIndexChanged += new System.EventHandler(
+			this.cbown.SelectedIndexChanged += new EventHandler(
 				this.ChgOwnerItem
 			);
 			//
@@ -240,7 +240,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbval, "tbval");
 			this.tbval.Name = "tbval";
-			this.tbval.TextChanged += new System.EventHandler(this.tbval_TextChanged);
+			this.tbval.TextChanged += new EventHandler(this.tbval_TextChanged);
 			//
 			// label6
 			//
@@ -251,7 +251,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbUnk, "tbUnk");
 			this.tbUnk.Name = "tbUnk";
-			this.tbUnk.TextChanged += new System.EventHandler(this.tbUnk_TextChanged);
+			this.tbUnk.TextChanged += new EventHandler(this.tbUnk_TextChanged);
 			//
 			// label5
 			//
@@ -262,13 +262,13 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.btdown, "btdown");
 			this.btdown.Name = "btdown";
-			this.btdown.Click += new System.EventHandler(this.ItemDown);
+			this.btdown.Click += new EventHandler(this.ItemDown);
 			//
 			// btup
 			//
 			resources.ApplyResources(this.btup, "btup");
 			this.btup.Name = "btup";
-			this.btup.Click += new System.EventHandler(this.ItemUp);
+			this.btup.Click += new EventHandler(this.ItemUp);
 			//
 			// linkLabel2
 			//
@@ -276,7 +276,7 @@ namespace SimPe.Plugin
 			this.linkLabel2.Name = "linkLabel2";
 			this.linkLabel2.TabStop = true;
 			this.linkLabel2.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.IOwn);
+				new LinkLabelLinkClickedEventHandler(this.IOwn);
 			//
 			// lbmem
 			//
@@ -289,7 +289,7 @@ namespace SimPe.Plugin
 			this.lbmem.StateImageList = this.memilist;
 			this.lbmem.UseCompatibleStateImageBehavior = false;
 			this.lbmem.View = System.Windows.Forms.View.List;
-			this.lbmem.SelectedIndexChanged += new System.EventHandler(
+			this.lbmem.SelectedIndexChanged += new EventHandler(
 				this.SelectMemory
 			);
 			//
@@ -303,7 +303,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbown, "tbown");
 			this.tbown.Name = "tbown";
-			this.tbown.TextChanged += new System.EventHandler(this.ChgOwner);
+			this.tbown.TextChanged += new EventHandler(this.ChgOwner);
 			//
 			// label4
 			//
@@ -316,7 +316,7 @@ namespace SimPe.Plugin
 			this.lladd.Name = "lladd";
 			this.lladd.TabStop = true;
 			this.lladd.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.AddItem);
+				new LinkLabelLinkClickedEventHandler(this.AddItem);
 			//
 			// linkLabel1
 			//
@@ -324,7 +324,7 @@ namespace SimPe.Plugin
 			this.linkLabel1.Name = "linkLabel1";
 			this.linkLabel1.TabStop = true;
 			this.linkLabel1.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.DeleteItem
 				);
 			//
@@ -332,14 +332,14 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbsubid, "tbsubid");
 			this.tbsubid.Name = "tbsubid";
-			this.tbsubid.TextChanged += new System.EventHandler(this.ChgSubjectID);
+			this.tbsubid.TextChanged += new EventHandler(this.ChgSubjectID);
 			//
 			// cbsub
 			//
 			resources.ApplyResources(this.cbsub, "cbsub");
 			this.cbsub.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbsub.Name = "cbsub";
-			this.cbsub.SelectedIndexChanged += new System.EventHandler(
+			this.cbsub.SelectedIndexChanged += new EventHandler(
 				this.ChgSubjectItem
 			);
 			//
@@ -347,7 +347,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbsub, "tbsub");
 			this.tbsub.Name = "tbsub";
-			this.tbsub.TextChanged += new System.EventHandler(this.ChgSubject);
+			this.tbsub.TextChanged += new EventHandler(this.ChgSubject);
 			//
 			// label3
 			//
@@ -359,7 +359,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cbguid, "cbguid");
 			this.cbguid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbguid.Name = "cbguid";
-			this.cbguid.SelectedIndexChanged += new System.EventHandler(
+			this.cbguid.SelectedIndexChanged += new EventHandler(
 				this.ChgGuidItem
 			);
 			//
@@ -367,7 +367,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbguid, "tbguid");
 			this.tbguid.Name = "tbguid";
-			this.tbguid.TextChanged += new System.EventHandler(this.ChgGuid);
+			this.tbguid.TextChanged += new EventHandler(this.ChgGuid);
 			//
 			// label2
 			//
@@ -378,19 +378,19 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.cbaction, "cbaction");
 			this.cbaction.Name = "cbaction";
-			this.cbaction.CheckedChanged += new System.EventHandler(this.ChgFlags);
+			this.cbaction.CheckedChanged += new EventHandler(this.ChgFlags);
 			//
 			// cbvis
 			//
 			resources.ApplyResources(this.cbvis, "cbvis");
 			this.cbvis.Name = "cbvis";
-			this.cbvis.CheckedChanged += new System.EventHandler(this.ChgFlags);
+			this.cbvis.CheckedChanged += new EventHandler(this.ChgFlags);
 			//
 			// tbFlag
 			//
 			resources.ApplyResources(this.tbFlag, "tbFlag");
 			this.tbFlag.Name = "tbFlag";
-			this.tbFlag.TextChanged += new System.EventHandler(this.ChgFlag);
+			this.tbFlag.TextChanged += new EventHandler(this.ChgFlag);
 			//
 			// label1
 			//
@@ -407,7 +407,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.lbdata, "lbdata");
 			this.lbdata.Name = "lbdata";
-			this.lbdata.TextChanged += new System.EventHandler(this.ChgData);
+			this.lbdata.TextChanged += new EventHandler(this.ChgData);
 			//
 			// lv
 			//
@@ -417,7 +417,7 @@ namespace SimPe.Plugin
 			this.lv.LargeImageList = this.ilist;
 			this.lv.Name = "lv";
 			this.lv.UseCompatibleStateImageBehavior = false;
-			this.lv.SelectedIndexChanged += new System.EventHandler(this.SelectSim);
+			this.lv.SelectedIndexChanged += new EventHandler(this.SelectSim);
 			//
 			// ilist
 			//
@@ -454,42 +454,42 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		private System.Windows.Forms.Panel panel2;
-		private System.Windows.Forms.Label label27;
-		internal System.Windows.Forms.Panel ngbhPanel;
-		internal System.Windows.Forms.ListView lv;
-		internal System.Windows.Forms.ImageList ilist;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox tbFlag;
-		private System.Windows.Forms.CheckBox cbvis;
-		private System.Windows.Forms.CheckBox cbaction;
-		private System.Windows.Forms.TextBox tbguid;
-		private System.Windows.Forms.Label label2;
-		internal System.Windows.Forms.ComboBox cbguid;
-		internal System.Windows.Forms.ComboBox cbsub;
-		private System.Windows.Forms.TextBox tbsub;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.TextBox lbdata;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.TextBox tbsubid;
-		internal System.Windows.Forms.GroupBox gbmem;
-		private System.Windows.Forms.LinkLabel linkLabel1;
-		private System.Windows.Forms.LinkLabel lladd;
-		private System.Windows.Forms.PictureBox pb;
-		internal System.Windows.Forms.ComboBox cbown;
-		private System.Windows.Forms.TextBox tbown;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Label lbname;
-		private System.Windows.Forms.ImageList memilist;
-		internal System.Windows.Forms.ListView lbmem;
-		private System.Windows.Forms.LinkLabel linkLabel2;
-		internal System.Windows.Forms.Button btdown;
-		internal System.Windows.Forms.Button btup;
-		internal System.Windows.Forms.ComboBox cbtype;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.TextBox tbUnk;
-		private System.Windows.Forms.TextBox tbval;
-		private System.Windows.Forms.Label label6;
+		private Panel panel2;
+		private Label label27;
+		internal Panel ngbhPanel;
+		internal ListView lv;
+		internal ImageList ilist;
+		private Label label1;
+		private TextBox tbFlag;
+		private CheckBox cbvis;
+		private CheckBox cbaction;
+		private TextBox tbguid;
+		private Label label2;
+		internal ComboBox cbguid;
+		internal ComboBox cbsub;
+		private TextBox tbsub;
+		private Label label3;
+		private TextBox lbdata;
+		private Button button1;
+		private TextBox tbsubid;
+		internal GroupBox gbmem;
+		private LinkLabel linkLabel1;
+		private LinkLabel lladd;
+		private PictureBox pb;
+		internal ComboBox cbown;
+		private TextBox tbown;
+		private Label label4;
+		private Label lbname;
+		private ImageList memilist;
+		internal ListView lbmem;
+		private LinkLabel linkLabel2;
+		internal Button btdown;
+		internal Button btup;
+		internal ComboBox cbtype;
+		private Label label5;
+		private TextBox tbUnk;
+		private TextBox tbval;
+		private Label label6;
 
 		internal IFileWrapperSaveExtension wrapper;
 
@@ -514,7 +514,7 @@ namespace SimPe.Plugin
 			lbmem.Items.Add(lvi);
 		}
 
-		private void tbval_TextChanged(object sender, System.EventArgs e)
+		private void tbval_TextChanged(object sender, EventArgs e)
 		{
 			if (tbFlag.Tag != null)
 			{
@@ -549,7 +549,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void tbUnk_TextChanged(object sender, System.EventArgs e)
+		private void tbUnk_TextChanged(object sender, EventArgs e)
 		{
 			if (tbFlag.Tag != null)
 			{
@@ -573,7 +573,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void ItemUp(object sender, System.EventArgs e)
+		private void ItemUp(object sender, EventArgs e)
 		{
 			if (lbmem.SelectedItems.Count == 0)
 			{
@@ -613,7 +613,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void ItemDown(object sender, System.EventArgs e)
+		private void ItemDown(object sender, EventArgs e)
 		{
 			if (lbmem.SelectedItems.Count == 0)
 			{
@@ -670,7 +670,7 @@ namespace SimPe.Plugin
 				{
 					int id = lbmem.SelectedItems[0].ImageIndex;
 					lbmem.SelectedItems[0].ImageIndex = -1;
-					System.Drawing.Image simg = item.MemoryCacheItem.Icon;
+					Image simg = item.MemoryCacheItem.Icon;
 					Bitmap img = new Bitmap(
 						memilist.ImageSize.Width,
 						memilist.ImageSize.Height
@@ -693,7 +693,7 @@ namespace SimPe.Plugin
 
 		private void IOwn(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lv.SelectedItems.Count == 0)
@@ -732,7 +732,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SelectSim(object sender, System.EventArgs e)
+		private void SelectSim(object sender, EventArgs e)
 		{
 			gbmem.Enabled = false;
 			memilist.Images.Clear();
@@ -796,7 +796,7 @@ namespace SimPe.Plugin
 			return (NgbhItem)lbmem.SelectedItems[0].Tag;
 		}
 
-		private void SelectMemory(object sender, System.EventArgs e)
+		private void SelectMemory(object sender, EventArgs e)
 		{
 			tbFlag.Tag = true;
 			this.cbvis.Checked = GetSelectedItem().Flags.IsVisible;
@@ -880,7 +880,7 @@ namespace SimPe.Plugin
 			pb.Image = GetSelectedItem().MemoryCacheItem.Icon;
 		}
 
-		private void ChgFlags(object sender, System.EventArgs e)
+		private void ChgFlags(object sender, EventArgs e)
 		{
 			if (tbFlag.Tag != null)
 			{
@@ -895,7 +895,7 @@ namespace SimPe.Plugin
 			tbFlag.Tag = null;
 		}
 
-		private void ChgFlag(object sender, System.EventArgs e)
+		private void ChgFlag(object sender, EventArgs e)
 		{
 			if (tbFlag.Tag != null)
 			{
@@ -915,7 +915,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void ChgGuidItem(object sender, System.EventArgs e)
+		private void ChgGuidItem(object sender, EventArgs e)
 		{
 			if (tbguid.Tag != null)
 			{
@@ -931,7 +931,7 @@ namespace SimPe.Plugin
 			tbguid.Text = "0x" + Helper.HexString(a.Id);
 		}
 
-		private void ChgGuid(object sender, System.EventArgs e)
+		private void ChgGuid(object sender, EventArgs e)
 		{
 			if (tbguid.Tag != null)
 			{
@@ -952,7 +952,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void ChgSubjectItem(object sender, System.EventArgs e)
+		private void ChgSubjectItem(object sender, EventArgs e)
 		{
 			if (tbsub.Tag != null)
 			{
@@ -976,7 +976,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void ChgSubject(object sender, System.EventArgs e)
+		private void ChgSubject(object sender, EventArgs e)
 		{
 			if (tbsub.Tag != null)
 			{
@@ -997,7 +997,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void ChgSubjectID(object sender, System.EventArgs e)
+		private void ChgSubjectID(object sender, EventArgs e)
 		{
 			if (tbsub.Tag != null)
 			{
@@ -1018,7 +1018,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void ChgOwnerItem(object sender, System.EventArgs e)
+		private void ChgOwnerItem(object sender, EventArgs e)
 		{
 			if (tbown.Tag != null)
 			{
@@ -1041,7 +1041,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void ChgOwner(object sender, System.EventArgs e)
+		private void ChgOwner(object sender, EventArgs e)
 		{
 			if (tbown.Tag != null)
 			{
@@ -1062,7 +1062,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void ChgData(object sender, System.EventArgs e)
+		private void ChgData(object sender, EventArgs e)
 		{
 			if (lbdata.Tag != null)
 			{
@@ -1097,7 +1097,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void Commit(object sender, System.EventArgs e)
+		private void Commit(object sender, EventArgs e)
 		{
 			try
 			{
@@ -1116,7 +1116,7 @@ namespace SimPe.Plugin
 
 		private void DeleteItem(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lbmem.SelectedItems.Count == 0)
@@ -1138,7 +1138,7 @@ namespace SimPe.Plugin
 
 		private void AddItem(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lv.SelectedItems.Count <= 0)

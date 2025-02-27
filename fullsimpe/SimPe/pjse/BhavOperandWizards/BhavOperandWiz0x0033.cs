@@ -25,11 +25,11 @@ using SimPe.PackedFiles.Wrapper;
 
 namespace pjse.BhavOperandWizards.Wiz0x0033
 {
-	internal class UI : System.Windows.Forms.Form, iBhavOperandWizForm
+	internal class UI : Form, iBhavOperandWizForm
 	{
 		#region Form variables
 
-		internal System.Windows.Forms.Panel pnWiz0x0033;
+		internal Panel pnWiz0x0033;
 		private TableLayoutPanel tlpnGetSetValue;
 		private Panel pnDoid1;
 		private ComboBox cbPicker1;
@@ -644,56 +644,56 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWiz0x0033 = new System.Windows.Forms.Panel();
-			this.tlpnGetSetValue = new System.Windows.Forms.TableLayoutPanel();
-			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-			this.ckbDecimal = new System.Windows.Forms.CheckBox();
-			this.ckbAttrPicker = new System.Windows.Forms.CheckBox();
-			this.lbOperation = new System.Windows.Forms.Label();
-			this.flpnOperation = new System.Windows.Forms.FlowLayoutPanel();
-			this.cbOperation = new System.Windows.Forms.ComboBox();
-			this.ckbReversed = new System.Windows.Forms.CheckBox();
-			this.gbTokenTypes = new System.Windows.Forms.GroupBox();
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.ckbTTAll = new System.Windows.Forms.CheckBox();
-			this.ckbTTInvShopping = new System.Windows.Forms.CheckBox();
-			this.ckbTTShopping = new System.Windows.Forms.CheckBox();
-			this.ckbTTInvMemory = new System.Windows.Forms.CheckBox();
-			this.ckbTTMemory = new System.Windows.Forms.CheckBox();
-			this.ckbTTInvVisible = new System.Windows.Forms.CheckBox();
-			this.ckbTTVisible = new System.Windows.Forms.CheckBox();
-			this.gbInventoryType = new System.Windows.Forms.GroupBox();
-			this.flpnDoid0 = new System.Windows.Forms.FlowLayoutPanel();
-			this.lbDoid0 = new System.Windows.Forms.Label();
-			this.pnDoid0 = new System.Windows.Forms.Panel();
-			this.cbPicker0 = new System.Windows.Forms.ComboBox();
-			this.tbVal0 = new System.Windows.Forms.TextBox();
-			this.cbDataOwner0 = new System.Windows.Forms.ComboBox();
-			this.flpnInventoryType = new System.Windows.Forms.FlowLayoutPanel();
-			this.rb1Counted = new System.Windows.Forms.RadioButton();
-			this.rb1Singular = new System.Windows.Forms.RadioButton();
-			this.cbTargetInv = new System.Windows.Forms.ComboBox();
-			this.lbDoid1 = new System.Windows.Forms.Label();
-			this.pnDoid1 = new System.Windows.Forms.Panel();
-			this.cbPicker1 = new System.Windows.Forms.ComboBox();
-			this.tbVal1 = new System.Windows.Forms.TextBox();
-			this.cbDataOwner1 = new System.Windows.Forms.ComboBox();
-			this.pnDoid3 = new System.Windows.Forms.Panel();
-			this.cbPicker3 = new System.Windows.Forms.ComboBox();
-			this.tbVal3 = new System.Windows.Forms.TextBox();
-			this.cbDataOwner3 = new System.Windows.Forms.ComboBox();
-			this.pnDoid2 = new System.Windows.Forms.Panel();
-			this.cbPicker2 = new System.Windows.Forms.ComboBox();
-			this.tbVal2 = new System.Windows.Forms.TextBox();
-			this.cbDataOwner2 = new System.Windows.Forms.ComboBox();
-			this.lbInventory = new System.Windows.Forms.Label();
-			this.lbDoid3 = new System.Windows.Forms.Label();
-			this.cbInventory = new System.Windows.Forms.ComboBox();
-			this.flpnGUID = new System.Windows.Forms.FlowLayoutPanel();
-			this.tbGUID = new System.Windows.Forms.TextBox();
-			this.tbObjName = new System.Windows.Forms.TextBox();
-			this.lbDoid2 = new System.Windows.Forms.Label();
-			this.lbGUID = new System.Windows.Forms.Label();
+			this.pnWiz0x0033 = new Panel();
+			this.tlpnGetSetValue = new TableLayoutPanel();
+			this.flowLayoutPanel1 = new FlowLayoutPanel();
+			this.ckbDecimal = new CheckBox();
+			this.ckbAttrPicker = new CheckBox();
+			this.lbOperation = new Label();
+			this.flpnOperation = new FlowLayoutPanel();
+			this.cbOperation = new ComboBox();
+			this.ckbReversed = new CheckBox();
+			this.gbTokenTypes = new GroupBox();
+			this.tableLayoutPanel1 = new TableLayoutPanel();
+			this.ckbTTAll = new CheckBox();
+			this.ckbTTInvShopping = new CheckBox();
+			this.ckbTTShopping = new CheckBox();
+			this.ckbTTInvMemory = new CheckBox();
+			this.ckbTTMemory = new CheckBox();
+			this.ckbTTInvVisible = new CheckBox();
+			this.ckbTTVisible = new CheckBox();
+			this.gbInventoryType = new GroupBox();
+			this.flpnDoid0 = new FlowLayoutPanel();
+			this.lbDoid0 = new Label();
+			this.pnDoid0 = new Panel();
+			this.cbPicker0 = new ComboBox();
+			this.tbVal0 = new TextBox();
+			this.cbDataOwner0 = new ComboBox();
+			this.flpnInventoryType = new FlowLayoutPanel();
+			this.rb1Counted = new RadioButton();
+			this.rb1Singular = new RadioButton();
+			this.cbTargetInv = new ComboBox();
+			this.lbDoid1 = new Label();
+			this.pnDoid1 = new Panel();
+			this.cbPicker1 = new ComboBox();
+			this.tbVal1 = new TextBox();
+			this.cbDataOwner1 = new ComboBox();
+			this.pnDoid3 = new Panel();
+			this.cbPicker3 = new ComboBox();
+			this.tbVal3 = new TextBox();
+			this.cbDataOwner3 = new ComboBox();
+			this.pnDoid2 = new Panel();
+			this.cbPicker2 = new ComboBox();
+			this.tbVal2 = new TextBox();
+			this.cbDataOwner2 = new ComboBox();
+			this.lbInventory = new Label();
+			this.lbDoid3 = new Label();
+			this.cbInventory = new ComboBox();
+			this.flpnGUID = new FlowLayoutPanel();
+			this.tbGUID = new TextBox();
+			this.tbObjName = new TextBox();
+			this.lbDoid2 = new Label();
+			this.lbGUID = new Label();
 			this.pnWiz0x0033.SuspendLayout();
 			this.tlpnGetSetValue.SuspendLayout();
 			this.flowLayoutPanel1.SuspendLayout();
@@ -776,7 +776,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			this.cbOperation.FormattingEnabled = true;
 			resources.ApplyResources(this.cbOperation, "cbOperation");
 			this.cbOperation.Name = "cbOperation";
-			this.cbOperation.SelectedIndexChanged += new System.EventHandler(
+			this.cbOperation.SelectedIndexChanged += new EventHandler(
 				this.cbOperation_SelectedIndexChanged
 			);
 			//
@@ -825,7 +825,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			resources.ApplyResources(this.ckbTTShopping, "ckbTTShopping");
 			this.ckbTTShopping.Name = "ckbTTShopping";
 			this.ckbTTShopping.UseVisualStyleBackColor = true;
-			this.ckbTTShopping.CheckedChanged += new System.EventHandler(
+			this.ckbTTShopping.CheckedChanged += new EventHandler(
 				this.ckbTT_CheckedChanged
 			);
 			//
@@ -840,7 +840,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			resources.ApplyResources(this.ckbTTMemory, "ckbTTMemory");
 			this.ckbTTMemory.Name = "ckbTTMemory";
 			this.ckbTTMemory.UseVisualStyleBackColor = true;
-			this.ckbTTMemory.CheckedChanged += new System.EventHandler(
+			this.ckbTTMemory.CheckedChanged += new EventHandler(
 				this.ckbTT_CheckedChanged
 			);
 			//
@@ -855,7 +855,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			resources.ApplyResources(this.ckbTTVisible, "ckbTTVisible");
 			this.ckbTTVisible.Name = "ckbTTVisible";
 			this.ckbTTVisible.UseVisualStyleBackColor = true;
-			this.ckbTTVisible.CheckedChanged += new System.EventHandler(
+			this.ckbTTVisible.CheckedChanged += new EventHandler(
 				this.ckbTT_CheckedChanged
 			);
 			//
@@ -931,7 +931,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			this.rb1Counted.Name = "rb1Counted";
 			this.rb1Counted.TabStop = true;
 			this.rb1Counted.UseVisualStyleBackColor = true;
-			this.rb1Counted.CheckedChanged += new System.EventHandler(
+			this.rb1Counted.CheckedChanged += new EventHandler(
 				this.rb1_CheckedChanged
 			);
 			//
@@ -941,7 +941,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			this.rb1Singular.Name = "rb1Singular";
 			this.rb1Singular.TabStop = true;
 			this.rb1Singular.UseVisualStyleBackColor = true;
-			this.rb1Singular.CheckedChanged += new System.EventHandler(
+			this.rb1Singular.CheckedChanged += new EventHandler(
 				this.rb1_CheckedChanged
 			);
 			//
@@ -955,7 +955,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			this.cbTargetInv.FormattingEnabled = true;
 			resources.ApplyResources(this.cbTargetInv, "cbTargetInv");
 			this.cbTargetInv.Name = "cbTargetInv";
-			this.cbTargetInv.SelectedIndexChanged += new System.EventHandler(
+			this.cbTargetInv.SelectedIndexChanged += new EventHandler(
 				this.cbTargetInv_SelectedIndexChanged
 			);
 			//
@@ -1097,7 +1097,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			this.cbInventory.DropDownWidth = 384;
 			resources.ApplyResources(this.cbInventory, "cbInventory");
 			this.cbInventory.Name = "cbInventory";
-			this.cbInventory.SelectedIndexChanged += new System.EventHandler(
+			this.cbInventory.SelectedIndexChanged += new EventHandler(
 				this.cbInventory_SelectedIndexChanged
 			);
 			//
@@ -1112,11 +1112,11 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			//
 			resources.ApplyResources(this.tbGUID, "tbGUID");
 			this.tbGUID.Name = "tbGUID";
-			this.tbGUID.Validated += new System.EventHandler(this.hex32_Validated);
+			this.tbGUID.Validated += new EventHandler(this.hex32_Validated);
 			this.tbGUID.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex32_Validating
 			);
-			this.tbGUID.TextChanged += new System.EventHandler(this.tbGUID_TextChanged);
+			this.tbGUID.TextChanged += new EventHandler(this.tbGUID_TextChanged);
 			//
 			// tbObjName
 			//
@@ -1244,7 +1244,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			internalchg = origstate;
 		}
 
-		private void hex32_Validated(object sender, System.EventArgs e)
+		private void hex32_Validated(object sender, EventArgs e)
 		{
 			bool origstate = internalchg;
 			internalchg = true;
@@ -1311,7 +1311,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 
 namespace pjse.BhavOperandWizards
 {
-	public class BhavOperandWiz0x0033 : pjse.ABhavOperandWiz
+	public class BhavOperandWiz0x0033 : ABhavOperandWiz
 	{
 		public BhavOperandWiz0x0033(Instruction i)
 			: base(i)

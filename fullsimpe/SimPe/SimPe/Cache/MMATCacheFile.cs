@@ -41,7 +41,7 @@ namespace SimPe.Cache
 		/// Add a MaterialOverride to the Cache
 		/// </summary>
 		/// <param name="mmat">The Material Override to add</param>
-		public void AddItem(SimPe.Plugin.MmatWrapper mmat)
+		public void AddItem(MmatWrapper mmat)
 		{
 			CacheContainer mycc = this.UseConatiner(
 				ContainerType.MaterialOverride,

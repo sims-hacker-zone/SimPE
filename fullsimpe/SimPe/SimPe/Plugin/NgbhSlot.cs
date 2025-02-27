@@ -56,8 +56,8 @@ namespace SimPe.Plugin
 			}
 
 			this.Parent = parent;
-			itemsa = new SimPe.Plugin.Collections.NgbhItems(this);
-			itemsb = new SimPe.Plugin.Collections.NgbhItems(this);
+			itemsa = new Collections.NgbhItems(this);
+			itemsb = new Collections.NgbhItems(this);
 		}
 
 		/// <summary>
@@ -303,7 +303,7 @@ namespace SimPe.Plugin
 		{
 			int deletedCount = 0;
 			Collections.NgbhItems memoriesToRemove =
-				new SimPe.Plugin.Collections.NgbhItems(null);
+				new Collections.NgbhItems(null);
 
 			Collections.NgbhSlots slots = Parent.GetSlots(Data.NeighborhoodSlots.Sims);
 			foreach (NgbhSlot slot in slots)

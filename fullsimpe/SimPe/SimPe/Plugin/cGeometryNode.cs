@@ -156,7 +156,7 @@ namespace SimPe.Plugin
 			{
 				if (tGeometryNode == null)
 				{
-					tGeometryNode = new SimPe.Plugin.TabPage.GeometryNode();
+					tGeometryNode = new TabPage.GeometryNode();
 				}
 
 				return tGeometryNode;
@@ -171,7 +171,7 @@ namespace SimPe.Plugin
 		{
 			if (tGeometryNode == null)
 			{
-				tGeometryNode = new SimPe.Plugin.TabPage.GeometryNode();
+				tGeometryNode = new TabPage.GeometryNode();
 			}
 
 			tGeometryNode.tb_gn_ver.Text = "0x" + Helper.HexString(this.version);
@@ -225,10 +225,10 @@ namespace SimPe.Plugin
 		/// <remarks>This Version will not Load the FileTable!</remarks>
 		public Rcol FindReferencingSHPE_NoLoad()
 		{
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+			IScenegraphFileIndexItem[] items =
 				FileTable.FileIndex.FindFile(SimPe.Data.MetaData.SHPE, true);
 			string mn = Hashes.StripHashFromName(this.Parent.FileName.Trim().ToLower());
-			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
+			foreach (IScenegraphFileIndexItem item in items)
 			{
 				Rcol r = new GenericRcol(null, false);
 				//try to open the File in the same package, not in the FileTable Package!

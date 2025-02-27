@@ -26,30 +26,30 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for PhotoStudio.
 	/// </summary>
-	public class PhotoStudio : System.Windows.Forms.Form
+	public class PhotoStudio : Form
 	{
-		private System.Windows.Forms.ImageList ilist;
-		private System.Windows.Forms.ToolTip toolTip1;
-		private System.Windows.Forms.TabControl tabControl1;
+		private ImageList ilist;
+		private ToolTip toolTip1;
+		private TabControl tabControl1;
 		private System.Windows.Forms.TabPage tabPage1;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.PictureBox pb;
-		private System.Windows.Forms.Button btopen;
-		private System.Windows.Forms.OpenFileDialog ofd;
-		private System.Windows.Forms.SaveFileDialog sfd;
-		private System.Windows.Forms.Label lbname;
-		private System.Windows.Forms.Label lbsize;
-		private System.Windows.Forms.LinkLabel llcreate;
+		private Label label1;
+		private PictureBox pb;
+		private Button btopen;
+		private OpenFileDialog ofd;
+		private SaveFileDialog sfd;
+		private Label lbname;
+		private Label lbsize;
+		private LinkLabel llcreate;
 		private System.Windows.Forms.TabPage tabPage2;
-		private System.Windows.Forms.ListView lv;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.ComboBox cbquality;
-		private System.Windows.Forms.ListView lvbase;
-		private System.Windows.Forms.ImageList ibase;
-		private System.Windows.Forms.PictureBox pbpreview;
-		private System.Windows.Forms.CheckBox cbprev;
-		private System.Windows.Forms.CheckBox cbflip;
-		private System.Windows.Forms.Panel panel1;
+		private ListView lv;
+		private Label label2;
+		private ComboBox cbquality;
+		private ListView lvbase;
+		private ImageList ibase;
+		private PictureBox pbpreview;
+		private CheckBox cbprev;
+		private CheckBox cbflip;
+		private Panel panel1;
 		private System.ComponentModel.IContainer components;
 
 		public PhotoStudio()
@@ -83,7 +83,7 @@ namespace SimPe.Plugin
 				{
 					foreach (string file in files)
 					{
-						SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+						Packages.File pkg = SimPe.Packages.File.LoadFromFile(
 							file
 						);
 						PhotoStudioTemplate pst = new PhotoStudioTemplate(pkg);
@@ -150,28 +150,28 @@ namespace SimPe.Plugin
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(PhotoStudio));
-			this.ilist = new System.Windows.Forms.ImageList(this.components);
-			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-			this.btopen = new System.Windows.Forms.Button();
-			this.cbquality = new System.Windows.Forms.ComboBox();
-			this.lvbase = new System.Windows.Forms.ListView();
-			this.ibase = new System.Windows.Forms.ImageList(this.components);
-			this.pbpreview = new System.Windows.Forms.PictureBox();
-			this.cbflip = new System.Windows.Forms.CheckBox();
-			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.ilist = new ImageList(this.components);
+			this.toolTip1 = new ToolTip(this.components);
+			this.btopen = new Button();
+			this.cbquality = new ComboBox();
+			this.lvbase = new ListView();
+			this.ibase = new ImageList(this.components);
+			this.pbpreview = new PictureBox();
+			this.cbflip = new CheckBox();
+			this.tabControl1 = new TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.lbsize = new System.Windows.Forms.Label();
-			this.lbname = new System.Windows.Forms.Label();
-			this.pb = new System.Windows.Forms.PictureBox();
+			this.lbsize = new Label();
+			this.lbname = new Label();
+			this.pb = new PictureBox();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.lv = new System.Windows.Forms.ListView();
-			this.label1 = new System.Windows.Forms.Label();
-			this.llcreate = new System.Windows.Forms.LinkLabel();
-			this.label2 = new System.Windows.Forms.Label();
-			this.cbprev = new System.Windows.Forms.CheckBox();
-			this.ofd = new System.Windows.Forms.OpenFileDialog();
-			this.sfd = new System.Windows.Forms.SaveFileDialog();
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.lv = new ListView();
+			this.label1 = new Label();
+			this.llcreate = new LinkLabel();
+			this.label2 = new Label();
+			this.cbprev = new CheckBox();
+			this.ofd = new OpenFileDialog();
+			this.sfd = new SaveFileDialog();
+			this.panel1 = new Panel();
 			((System.ComponentModel.ISupportInitialize)(this.pbpreview)).BeginInit();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
@@ -194,7 +194,7 @@ namespace SimPe.Plugin
 				this.btopen,
 				resources.GetString("btopen.ToolTip")
 			);
-			this.btopen.Click += new System.EventHandler(this.OpenImage);
+			this.btopen.Click += new EventHandler(this.OpenImage);
 			//
 			// cbquality
 			//
@@ -225,7 +225,7 @@ namespace SimPe.Plugin
 				resources.GetString("lvbase.ToolTip")
 			);
 			this.lvbase.UseCompatibleStateImageBehavior = false;
-			this.lvbase.SelectedIndexChanged += new System.EventHandler(
+			this.lvbase.SelectedIndexChanged += new EventHandler(
 				this.lvbase_SelectedIndexChanged
 			);
 			//
@@ -246,7 +246,7 @@ namespace SimPe.Plugin
 				this.pbpreview,
 				resources.GetString("pbpreview.ToolTip")
 			);
-			this.pbpreview.Click += new System.EventHandler(this.pbpreview_Click);
+			this.pbpreview.Click += new EventHandler(this.pbpreview_Click);
 			//
 			// cbflip
 			//
@@ -260,7 +260,7 @@ namespace SimPe.Plugin
 				resources.GetString("cbflip.ToolTip")
 			);
 			this.cbflip.UseVisualStyleBackColor = false;
-			this.cbflip.CheckedChanged += new System.EventHandler(
+			this.cbflip.CheckedChanged += new EventHandler(
 				this.lvbase_SelectedIndexChanged
 			);
 			//
@@ -271,7 +271,7 @@ namespace SimPe.Plugin
 			this.tabControl1.Controls.Add(this.tabPage2);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.SelectedIndexChanged += new System.EventHandler(
+			this.tabControl1.SelectedIndexChanged += new EventHandler(
 				this.lvbase_SelectedIndexChanged
 			);
 			//
@@ -315,7 +315,7 @@ namespace SimPe.Plugin
 			this.lv.LargeImageList = this.ilist;
 			this.lv.Name = "lv";
 			this.lv.UseCompatibleStateImageBehavior = false;
-			this.lv.SelectedIndexChanged += new System.EventHandler(
+			this.lv.SelectedIndexChanged += new EventHandler(
 				this.lvbase_SelectedIndexChanged
 			);
 			//
@@ -332,7 +332,7 @@ namespace SimPe.Plugin
 			this.llcreate.Name = "llcreate";
 			this.llcreate.TabStop = true;
 			this.llcreate.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.CreateImage
 				);
 			//
@@ -348,7 +348,7 @@ namespace SimPe.Plugin
 			this.cbprev.BackColor = System.Drawing.Color.Transparent;
 			this.cbprev.Name = "cbprev";
 			this.cbprev.UseVisualStyleBackColor = false;
-			this.cbprev.CheckedChanged += new System.EventHandler(
+			this.cbprev.CheckedChanged += new EventHandler(
 				this.lvbase_SelectedIndexChanged
 			);
 			//
@@ -399,7 +399,7 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		protected void AddImage(SimPe.PackedFiles.Wrapper.SDesc sdesc)
+		protected void AddImage(PackedFiles.Wrapper.SDesc sdesc)
 		{
 			if (sdesc.HasImage)
 			{
@@ -411,7 +411,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		protected void AddSim(SimPe.PackedFiles.Wrapper.SDesc sdesc)
+		protected void AddSim(PackedFiles.Wrapper.SDesc sdesc)
 		{
 			if (!sdesc.AvailableCharacterData || sdesc.HasImage == false)
 			{
@@ -427,12 +427,12 @@ namespace SimPe.Plugin
 			lv.Items.Add(lvi);
 		}
 
-		SimPe.Interfaces.Files.IPackedFileDescriptor pfd;
-		SimPe.Interfaces.Files.IPackageFile package;
+		Interfaces.Files.IPackedFileDescriptor pfd;
+		Interfaces.Files.IPackageFile package;
 
 		public Interfaces.Plugin.IToolResult Execute(
-			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			ref SimPe.Interfaces.Files.IPackageFile package,
+			ref Interfaces.Files.IPackedFileDescriptor pfd,
+			ref Interfaces.Files.IPackageFile package,
 			Interfaces.IProviderRegistry prov
 		)
 		{
@@ -459,7 +459,7 @@ namespace SimPe.Plugin
 					foreach (Interfaces.Files.IPackedFileDescriptor spfd in pfds)
 					{
 						PackedFiles.Wrapper.SDesc sdesc =
-							new SimPe.PackedFiles.Wrapper.SDesc(
+							new PackedFiles.Wrapper.SDesc(
 								prov.SimNameProvider,
 								prov.SimFamilynameProvider,
 								null
@@ -495,7 +495,7 @@ namespace SimPe.Plugin
 				package = this.package;
 			}
 
-			return new Plugin.ToolResult((this.pfd != null), (this.package != null));
+			return new ToolResult((this.pfd != null), (this.package != null));
 		}
 
 		/// <summary>
@@ -529,7 +529,7 @@ namespace SimPe.Plugin
 				return new Bitmap(1, 1);
 			}
 
-			SimPe.Interfaces.Files.IPackageFile pkg = BuildPicture(
+			Interfaces.Files.IPackageFile pkg = BuildPicture(
 				"dummy.package",
 				img,
 				(PhotoStudioTemplate)lvbase.SelectedItems[0].Tag,
@@ -540,7 +540,7 @@ namespace SimPe.Plugin
 			);
 			try
 			{
-				SimPe.Plugin.Txtr txtr = new Txtr(null, false);
+				Txtr txtr = new Txtr(null, false);
 
 				//load TXTR
 				Interfaces.Files.IPackedFileDescriptor[] pfd = pkg.FindFile(
@@ -553,7 +553,7 @@ namespace SimPe.Plugin
 					txtr.ProcessData(pfd[0], pkg);
 				}
 
-				SimPe.Plugin.ImageData id = (SimPe.Plugin.ImageData)txtr.Blocks[0];
+				ImageData id = (ImageData)txtr.Blocks[0];
 				return id.MipMapBlocks[0]
 					.MipMaps[id.MipMapBlocks[0].MipMaps.Length - 1]
 					.Texture;
@@ -567,7 +567,7 @@ namespace SimPe.Plugin
 
 		Image loadimg = null;
 
-		private void OpenImage(object sender, System.EventArgs e)
+		private void OpenImage(object sender, EventArgs e)
 		{
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
@@ -610,7 +610,7 @@ namespace SimPe.Plugin
 		/// <param name="rename">true, if the Texture should be renamed</param>
 		/// <param name="flip">true if the Image should be flipped</param>
 		/// <returns>The package with the Recolor</returns>
-		protected static SimPe.Packages.GeneratableFile BuildPicture(
+		protected static Packages.GeneratableFile BuildPicture(
 			string filename,
 			Image img,
 			PhotoStudioTemplate template,
@@ -623,12 +623,12 @@ namespace SimPe.Plugin
 			WaitingScreen.Wait();
 			try
 			{
-				SimPe.Plugin.Txtr txtr = new Txtr(null, false);
-				SimPe.Plugin.Rcol matd = new GenericRcol(null, false);
-				SimPe.PackedFiles.Wrapper.Cpf mmat =
-					new SimPe.PackedFiles.Wrapper.Cpf();
+				Txtr txtr = new Txtr(null, false);
+				Rcol matd = new GenericRcol(null, false);
+				PackedFiles.Wrapper.Cpf mmat =
+					new PackedFiles.Wrapper.Cpf();
 
-				SimPe.Packages.GeneratableFile pkg =
+				Packages.GeneratableFile pkg =
 					SimPe.Packages.GeneratableFile.LoadFromStream(
 						(System.IO.BinaryReader)null
 					);
@@ -642,7 +642,7 @@ namespace SimPe.Plugin
 				string family = System.Guid.NewGuid().ToString();
 				string unique = RenameForm.GetUniqueName();
 
-				SimPe.Packages.GeneratableFile tpkg =
+				Packages.GeneratableFile tpkg =
 					SimPe.Packages.GeneratableFile.LoadFromFile(
 						template.Package.FileName
 					);
@@ -706,8 +706,8 @@ namespace SimPe.Plugin
 							+ "_txmt";
 					}
 
-					SimPe.Plugin.MaterialDefinition md =
-						(SimPe.Plugin.MaterialDefinition)matd.Blocks[0];
+					MaterialDefinition md =
+						(MaterialDefinition)matd.Blocks[0];
 					if (rename)
 					{
 						md.GetProperty("stdMatBaseTextureName").Value =
@@ -769,9 +769,9 @@ namespace SimPe.Plugin
 							+ "_txtr";
 					}
 
-					SimPe.Plugin.ImageData id = (SimPe.Plugin.ImageData)txtr.Blocks[0];
-					SimPe.Plugin.MipMapBlock mmp = id.MipMapBlocks[0];
-					SimPe.Plugin.MipMap mm = mmp.MipMaps[mmp.MipMaps.Length - 1];
+					ImageData id = (ImageData)txtr.Blocks[0];
+					MipMapBlock mmp = id.MipMapBlocks[0];
+					MipMap mm = mmp.MipMaps[mmp.MipMaps.Length - 1];
 					//mm.Data = null;
 
 					WaitingScreen.UpdateMessage("Updating Image");
@@ -782,7 +782,7 @@ namespace SimPe.Plugin
 						mmimg.RotateFlip(System.Drawing.RotateFlipType.RotateNoneFlipX);
 					}
 
-					System.Drawing.Graphics g = Graphics.FromImage(mm.Texture);
+					Graphics g = Graphics.FromImage(mm.Texture);
 					g.InterpolationMode = System
 						.Drawing
 						.Drawing2D
@@ -819,7 +819,7 @@ namespace SimPe.Plugin
 					{
 						for (int i = mmp.MipMaps.Length - 2; i >= 0; i--)
 						{
-							SimPe.Plugin.MipMap newmm = mmp.MipMaps[i];
+							MipMap newmm = mmp.MipMaps[i];
 							Image newimg = new Bitmap(
 								newmm.Texture.Width,
 								newmm.Texture.Height
@@ -870,7 +870,7 @@ namespace SimPe.Plugin
 
 		private void CreateImage(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lvbase.SelectedItems.Count == 0)
@@ -916,7 +916,7 @@ namespace SimPe.Plugin
 						true,
 						cbflip.Checked
 					);
-					((SimPe.Packages.GeneratableFile)this.package).Save();
+					((Packages.GeneratableFile)this.package).Save();
 					this.Cursor = Cursors.Default;
 					Close();
 				}
@@ -929,7 +929,7 @@ namespace SimPe.Plugin
 
 		Image preview;
 
-		private void lvbase_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void lvbase_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			this.Cursor = Cursors.WaitCursor;
 			if (tabControl1.SelectedIndex == 0)
@@ -954,7 +954,7 @@ namespace SimPe.Plugin
 			this.Cursor = Cursors.Default;
 		}
 
-		private void pbpreview_Click(object sender, System.EventArgs e)
+		private void pbpreview_Click(object sender, EventArgs e)
 		{
 			if (preview == null)
 			{

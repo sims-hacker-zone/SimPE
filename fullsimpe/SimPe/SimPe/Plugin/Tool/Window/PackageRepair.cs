@@ -5,7 +5,7 @@ namespace SimPe.Plugin.Tool.Window
 	/// <summary>
 	/// Tool that should automatically repair corrupted packages
 	/// </summary>
-	public class PackageRepairTool : SimPe.Interfaces.IToolPlus
+	public class PackageRepairTool : Interfaces.IToolPlus
 	{
 		public PackageRepairTool()
 		{
@@ -13,7 +13,7 @@ namespace SimPe.Plugin.Tool.Window
 
 		#region IToolPlus Member
 
-		public void Execute(object sender, SimPe.Events.ResourceEventArgs e)
+		public void Execute(object sender, Events.ResourceEventArgs e)
 		{
 			PackageRepairForm f = new PackageRepairForm();
 			if (e.Loaded)
@@ -27,7 +27,7 @@ namespace SimPe.Plugin.Tool.Window
 
 		public bool ChangeEnabledStateEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs e
+			Events.ResourceEventArgs e
 		)
 		{
 			// return !e.Loaded;

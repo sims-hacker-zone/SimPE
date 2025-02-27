@@ -27,8 +27,8 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class PhotoStudioTemplate
 	{
-		SimPe.PackedFiles.Wrapper.Cpf pset;
-		SimPe.PackedFiles.Wrapper.Str ctss;
+		PackedFiles.Wrapper.Cpf pset;
+		PackedFiles.Wrapper.Str ctss;
 
 		/// <summary>
 		/// Create a new Instance and load the main Template Files
@@ -44,7 +44,7 @@ namespace SimPe.Plugin
 				0xffffffff,
 				0xffffffff
 			);
-			pset = new SimPe.PackedFiles.Wrapper.Cpf();
+			pset = new PackedFiles.Wrapper.Cpf();
 			ctss = null;
 			if (pfd != null)
 			{
@@ -58,7 +58,7 @@ namespace SimPe.Plugin
 				);
 				if (pfd != null)
 				{
-					ctss = new SimPe.PackedFiles.Wrapper.Str();
+					ctss = new PackedFiles.Wrapper.Str();
 					ctss.ProcessData(pfd, package);
 				}
 			}
@@ -84,7 +84,7 @@ namespace SimPe.Plugin
 					return Package.FileName;
 				}
 
-				SimPe.PackedFiles.Wrapper.StrItemList items =
+				PackedFiles.Wrapper.StrItemList items =
 					ctss.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
 				if (items.Length > 0)
 				{
@@ -117,7 +117,7 @@ namespace SimPe.Plugin
 			{
 				try
 				{
-					SimPe.Plugin.Txtr txtr = new Txtr(null, false);
+					Txtr txtr = new Txtr(null, false);
 
 					//load TXTR
 					Interfaces.Files.IPackedFileDescriptor[] pfd = Package.FindFile(
@@ -129,7 +129,7 @@ namespace SimPe.Plugin
 						txtr.ProcessData(pfd[0], Package);
 					}
 
-					SimPe.Plugin.ImageData id = (SimPe.Plugin.ImageData)txtr.Blocks[0];
+					ImageData id = (ImageData)txtr.Blocks[0];
 					return id.MipMapBlocks[0]
 						.MipMaps[id.MipMapBlocks[0].MipMaps.Length - 1]
 						.Texture;
@@ -155,7 +155,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the Rectangle you should place the Custom Image to
 		/// </summary>
-		public System.Drawing.Rectangle TargetRectangle => new System.Drawing.Rectangle(
+		public Rectangle TargetRectangle => new Rectangle(
 					pset.GetSaveItem("left").IntegerValue,
 					pset.GetSaveItem("top").IntegerValue,
 					pset.GetSaveItem("width").IntegerValue,
@@ -168,7 +168,7 @@ namespace SimPe.Plugin
 		/// <returns></returns>
 		public override string ToString()
 		{
-			System.Drawing.Rectangle rect = TargetRectangle;
+			Rectangle rect = TargetRectangle;
 			return rect.Width.ToString() + "x" + rect.Height.ToString() + ": " + Title;
 		}
 	}

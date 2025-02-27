@@ -26,10 +26,10 @@ namespace SimPe
 	/// <summary>
 	/// Summary description for About.
 	/// </summary>
-	public class About : SimPe.Windows.Forms.HelpForm
+	public class About : Windows.Forms.HelpForm
 	{
-		private System.Windows.Forms.RichTextBox rtb;
-		private System.Windows.Forms.Button button1;
+		private RichTextBox rtb;
+		private Button button1;
 		private Button button2;
 		private WebBrowser wb;
 
@@ -100,16 +100,16 @@ namespace SimPe
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(About));
-			this.rtb = new System.Windows.Forms.RichTextBox();
-			this.button1 = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
-			this.wb = new System.Windows.Forms.WebBrowser();
+			this.rtb = new RichTextBox();
+			this.button1 = new Button();
+			this.button2 = new Button();
+			this.wb = new WebBrowser();
 			this.SuspendLayout();
 			//
 			// rtb
 			//
 			this.rtb.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -123,51 +123,51 @@ namespace SimPe
 			this.rtb.BackColor = System.Drawing.Color.White;
 			this.rtb.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.rtb.Cursor = System.Windows.Forms.Cursors.Arrow;
-			this.rtb.Font = new System.Drawing.Font(
+			this.rtb.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.rtb.Location = new System.Drawing.Point(30, 130);
+			this.rtb.Location = new Point(30, 130);
 			this.rtb.Name = "rtb";
 			this.rtb.ReadOnly = true;
 			this.rtb.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-			this.rtb.Size = new System.Drawing.Size(975, 484);
+			this.rtb.Size = new Size(975, 484);
 			this.rtb.TabIndex = 2;
 			this.rtb.Text = "";
-			this.rtb.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(
+			this.rtb.LinkClicked += new LinkClickedEventHandler(
 				this.rtb_LinkClicked
 			);
-			this.rtb.Enter += new System.EventHandler(this.rtb_Enter);
+			this.rtb.Enter += new EventHandler(this.rtb_Enter);
 			//
 			// button1
 			//
-			this.button1.Location = new System.Drawing.Point(342, 170);
+			this.button1.Location = new Point(342, 170);
 			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
+			this.button1.Size = new Size(75, 23);
 			this.button1.TabIndex = 3;
 			this.button1.Text = "button1";
 			//
 			// button2
 			//
 			this.button2.Image = (
-				(System.Drawing.Image)(resources.GetObject("button2.Image"))
+				(Image)(resources.GetObject("button2.Image"))
 			);
-			this.button2.Location = new System.Drawing.Point(938, 12);
+			this.button2.Location = new Point(938, 12);
 			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(64, 23);
+			this.button2.Size = new Size(64, 23);
 			this.button2.TabIndex = 4;
 			this.button2.UseVisualStyleBackColor = false;
-			this.button2.Click += new System.EventHandler(this.button2_Click);
+			this.button2.Click += new EventHandler(this.button2_Click);
 			//
 			// wb
 			//
 			this.wb.AllowNavigation = false;
 			this.wb.AllowWebBrowserDrop = false;
 			this.wb.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -179,22 +179,22 @@ namespace SimPe
 				)
 			);
 			this.wb.IsWebBrowserContextMenuEnabled = false;
-			this.wb.Location = new System.Drawing.Point(30, 130);
-			this.wb.MinimumSize = new System.Drawing.Size(20, 20);
+			this.wb.Location = new Point(30, 130);
+			this.wb.MinimumSize = new Size(20, 20);
 			this.wb.Name = "wb";
-			this.wb.Size = new System.Drawing.Size(975, 484);
+			this.wb.Size = new Size(975, 484);
 			this.wb.TabIndex = 5;
 			this.wb.WebBrowserShortcutsEnabled = false;
 			//
 			// About
 			//
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.ClientSize = new System.Drawing.Size(1024, 661);
+			this.AutoScaleDimensions = new SizeF(6F, 13F);
+			this.ClientSize = new Size(1024, 661);
 			this.Controls.Add(this.wb);
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.rtb);
 			this.Controls.Add(this.button1);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "About";
@@ -318,7 +318,7 @@ namespace SimPe
 
 		private void rtb_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkClickedEventArgs e
+			LinkClickedEventArgs e
 		)
 		{
 			try
@@ -334,7 +334,7 @@ namespace SimPe
 			}
 		}
 
-		private void rtb_Enter(object sender, System.EventArgs e)
+		private void rtb_Enter(object sender, EventArgs e)
 		{
 			button1.Focus();
 		}

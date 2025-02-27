@@ -22,7 +22,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 {
 	public partial class FindInNmap : FindInStr
 	{
-		public FindInNmap(SimPe.Interfaces.IFinderResultGui rgui)
+		public FindInNmap(Interfaces.IFinderResultGui rgui)
 			: base(rgui)
 		{
 			InitializeComponent();
@@ -34,8 +34,8 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 		public override bool ProcessParalell => false;
 
 		public override void SearchPackage(
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			Interfaces.Files.IPackageFile pkg,
+			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
 			if (pfd.Type != Data.MetaData.NAME_MAP)
@@ -43,11 +43,11 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 				return;
 			}
 
-			SimPe.Plugin.Nmap nmap = new Nmap(FileTable.ProviderRegistry);
+			Nmap nmap = new Nmap(FileTable.ProviderRegistry);
 			nmap.ProcessData(pfd, pkg);
 
 			//check all stored nMap entries for a match
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor mypfd in nmap.Items)
+			foreach (Interfaces.Files.IPackedFileDescriptor mypfd in nmap.Items)
 			{
 				bool found = false;
 				string n = mypfd.Filename.Trim().ToLower();
@@ -75,7 +75,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 				//we have a match, so add the result item
 				if (found)
 				{
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] rfiis =
+					Interfaces.Scenegraph.IScenegraphFileIndexItem[] rfiis =
 						FileTable.FileIndex.FindFileDiscardingHighInstance(
 							pfd.Instance,
 							mypfd.Group,
@@ -84,7 +84,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 						);
 
 					foreach (
-						SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem rfii in rfiis
+						Interfaces.Scenegraph.IScenegraphFileIndexItem rfii in rfiis
 					)
 					{
 						ResultGui.AddResult(rfii.Package, rfii.FileDescriptor);

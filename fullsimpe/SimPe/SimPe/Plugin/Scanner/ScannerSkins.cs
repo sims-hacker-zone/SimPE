@@ -47,7 +47,7 @@ namespace SimPe.Plugin.Scanner
 
 		public void ScanPackage(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
+			PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
@@ -56,7 +56,7 @@ namespace SimPe.Plugin.Scanner
 
 		public void UpdateState(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
+			PackageState ps,
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
@@ -88,7 +88,7 @@ namespace SimPe.Plugin.Scanner
 			bool en = false;
 			foreach (ScannerItem item in items)
 			{
-				SimPe.Cache.PackageState ps = item.PackageCacheItem.FindState(
+				PackageState ps = item.PackageCacheItem.FindState(
 					this.Uid,
 					true
 				);
@@ -135,7 +135,7 @@ namespace SimPe.Plugin.Scanner
 				return;
 			}
 
-			SimPe.Packages.GeneratableFile pkg = BuildOverride(
+			Packages.GeneratableFile pkg = BuildOverride(
 				selection[0],
 				skintone,
 				family,
@@ -156,18 +156,18 @@ namespace SimPe.Plugin.Scanner
 		/// <param name="sitem"></param>
 		/// <param name="src"></param>
 		/// <returns>the replacement package</returns>
-		public SimPe.Packages.GeneratableFile BuildOverride(
+		public Packages.GeneratableFile BuildOverride(
 			ScannerItem sitem,
 			string skintone,
 			string family,
-			SimPe.Interfaces.Files.IPackageFile src,
+			Interfaces.Files.IPackageFile src,
 			bool addtxmt,
 			bool addtxtr,
 			bool addref
 		)
 		{
 			FileTable.FileIndex.Load();
-			SimPe.Packages.GeneratableFile pkg =
+			Packages.GeneratableFile pkg =
 				SimPe.Packages.GeneratableFile.LoadFromStream(
 					(System.IO.BinaryReader)null
 				);
@@ -184,13 +184,13 @@ namespace SimPe.Plugin.Scanner
 				//find al description Files that belong to the Skintone that should be replaced
 				ArrayList basecpf = new ArrayList();
 
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
 					FileTable.FileIndex.FindFile(Data.MetaData.GZPS, true);
 				foreach (
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
+					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
 				)
 				{
-					SimPe.PackedFiles.Wrapper.Cpf cpf = new Cpf();
+					Cpf cpf = new Cpf();
 					cpf.ProcessData(item);
 
 					if (cpf.GetSaveItem("skintone").StringValue != skintone)
@@ -208,7 +208,7 @@ namespace SimPe.Plugin.Scanner
 						continue;
 					}
 
-					SimPe.Plugin.SkinChain sc = new SkinChain(cpf);
+					SkinChain sc = new SkinChain(cpf);
 					basecpf.Add(sc);
 					WaitingScreen.UpdateMessage(cpf.GetSaveItem("name").StringValue);
 				}
@@ -269,7 +269,7 @@ namespace SimPe.Plugin.Scanner
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					//load a description File for the new Skintone
-					SimPe.PackedFiles.Wrapper.Cpf cpf = new Cpf();
+					Cpf cpf = new Cpf();
 					cpf.ProcessData(pfd, src);
 
 					int index = -1;
@@ -277,7 +277,7 @@ namespace SimPe.Plugin.Scanner
 					//check if File is a match
 					for (int i = 0; i < basecpf.Count; i++)
 					{
-						SimPe.Plugin.SkinChain sc = (SimPe.Plugin.SkinChain)basecpf[i];
+						SkinChain sc = (SkinChain)basecpf[i];
 						int point = compare.Count;
 						//scan for valid CPF Files
 						foreach (string s in compare)
@@ -346,7 +346,7 @@ namespace SimPe.Plugin.Scanner
 					//yes, yes :D this is a match
 					if (index >= 0 && maxpoint == compare.Count)
 					{
-						SimPe.Plugin.SkinChain sc = (SimPe.Plugin.SkinChain)
+						SkinChain sc = (SkinChain)
 							basecpf[index];
 
 						SkinChain newsc = new SkinChain(cpf);
@@ -369,7 +369,7 @@ namespace SimPe.Plugin.Scanner
 
 						if (sc.TXTR != null && newsc.TXTR != null && addtxtr)
 						{
-							SimPe.Plugin.GenericRcol txtr = newsc.TXTR;
+							GenericRcol txtr = newsc.TXTR;
 							txtr.FileDescriptor = sc.TXTR.FileDescriptor.Clone();
 #if DEBUG
 #else
@@ -387,7 +387,7 @@ namespace SimPe.Plugin.Scanner
 
 						if (sc.TXMT != null && newsc.TXMT != null && addtxmt)
 						{
-							SimPe.Plugin.GenericRcol txmt = newsc.TXMT;
+							GenericRcol txmt = newsc.TXMT;
 							txmt.FileDescriptor = sc.TXMT.FileDescriptor.Clone();
 #if DEBUG
 #else
@@ -409,7 +409,7 @@ namespace SimPe.Plugin.Scanner
 					}
 				}
 
-				SimPe.PackedFiles.Wrapper.Str str = new Str();
+				Str str = new Str();
 				str.Add(
 					new StrToken(
 						0,
@@ -423,7 +423,7 @@ namespace SimPe.Plugin.Scanner
 					)
 				);
 
-				str.FileDescriptor = new SimPe.Packages.PackedFileDescriptor();
+				str.FileDescriptor = new Packages.PackedFileDescriptor();
 				str.FileDescriptor.Type = Data.MetaData.STRING_FILE;
 				str.FileDescriptor.Group = Data.MetaData.LOCAL_GROUP;
 				str.FileDescriptor.LongInstance = 0;

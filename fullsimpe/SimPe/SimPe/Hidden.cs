@@ -25,17 +25,17 @@ namespace SimPe
 	/// <summary>
 	/// Summary description for Hidden.
 	/// </summary>
-	public class Hidden : System.Windows.Forms.Form
+	public class Hidden : Form
 	{
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox tbComp;
-		private System.Windows.Forms.TextBox tbBig;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label lbMem;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.Button button3;
+		private Label label1;
+		private TextBox tbComp;
+		private TextBox tbBig;
+		private Label label2;
+		private Label label3;
+		private Label lbMem;
+		private Button button1;
+		private Button button2;
+		private Button button3;
 		private Button button4;
 
 		/// <summary>
@@ -73,16 +73,16 @@ namespace SimPe
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(Hidden));
-			this.label1 = new System.Windows.Forms.Label();
-			this.tbComp = new System.Windows.Forms.TextBox();
-			this.tbBig = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.lbMem = new System.Windows.Forms.Label();
-			this.button1 = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
-			this.button3 = new System.Windows.Forms.Button();
-			this.button4 = new System.Windows.Forms.Button();
+			this.label1 = new Label();
+			this.tbComp = new TextBox();
+			this.tbBig = new TextBox();
+			this.label2 = new Label();
+			this.label3 = new Label();
+			this.lbMem = new Label();
+			this.button1 = new Button();
+			this.button2 = new Button();
+			this.button3 = new Button();
+			this.button4 = new Button();
 			this.SuspendLayout();
 			//
 			// label1
@@ -143,7 +143,7 @@ namespace SimPe
 			this.button1.Size = new System.Drawing.Size(120, 23);
 			this.button1.TabIndex = 7;
 			this.button1.Text = "Collect Garbage";
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.button1.Click += new EventHandler(this.button1_Click);
 			//
 			// button2
 			//
@@ -153,7 +153,7 @@ namespace SimPe
 			this.button2.Size = new System.Drawing.Size(128, 23);
 			this.button2.TabIndex = 8;
 			this.button2.Text = "StreamManager";
-			this.button2.Click += new System.EventHandler(this.button2_Click);
+			this.button2.Click += new EventHandler(this.button2_Click);
 			//
 			// button3
 			//
@@ -163,7 +163,7 @@ namespace SimPe
 			this.button3.Size = new System.Drawing.Size(128, 23);
 			this.button3.TabIndex = 9;
 			this.button3.Text = "File Table Content";
-			this.button3.Click += new System.EventHandler(this.button3_Click);
+			this.button3.Click += new EventHandler(this.button3_Click);
 			//
 			// button4
 			//
@@ -173,7 +173,7 @@ namespace SimPe
 			this.button4.Size = new System.Drawing.Size(128, 23);
 			this.button4.TabIndex = 10;
 			this.button4.Text = "Properties";
-			this.button4.Click += new System.EventHandler(this.button4_Click);
+			this.button4.Click += new EventHandler(this.button4_Click);
 			//
 			// Hidden
 			//
@@ -203,14 +203,14 @@ namespace SimPe
 			this.Name = "Hidden";
 			this.Opacity = 0.8;
 			this.Text = "Hidden";
-			this.Closed += new System.EventHandler(this.Hidden_Closed);
-			this.Load += new System.EventHandler(this.Hidden_Load);
+			this.Closed += new EventHandler(this.Hidden_Closed);
+			this.Load += new EventHandler(this.Hidden_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
 		#endregion
 
-		private void Hidden_Load(object sender, System.EventArgs e)
+		private void Hidden_Load(object sender, EventArgs e)
 		{
 			UpdateDialog();
 		}
@@ -223,7 +223,7 @@ namespace SimPe
 			this.lbMem.Text = GC.GetTotalMemory(false).ToString("N0") + " Byte";
 		}
 
-		private void Hidden_Closed(object sender, System.EventArgs e)
+		private void Hidden_Closed(object sender, EventArgs e)
 		{
 			try
 			{
@@ -237,7 +237,7 @@ namespace SimPe
 			catch { }
 		}
 
-		private void button1_Click(object sender, System.EventArgs e)
+		private void button1_Click(object sender, EventArgs e)
 		{
 			this.Cursor = Cursors.WaitCursor;
 			GC.Collect();
@@ -247,12 +247,12 @@ namespace SimPe
 			this.Cursor = Cursors.Default;
 		}
 
-		private void button2_Click(object sender, System.EventArgs e)
+		private void button2_Click(object sender, EventArgs e)
 		{
 			SimPe.Packages.StreamFactory.WriteToConsole();
 		}
 
-		private void button3_Click(object sender, System.EventArgs e)
+		private void button3_Click(object sender, EventArgs e)
 		{
 			SimPe.FileTable.FileIndex.WriteContentToConsole();
 		}

@@ -25,29 +25,29 @@ namespace SimPe.Plugin.Anim
 	/// <summary>
 	/// Summary description for AnimAxisTransformControl.
 	/// </summary>
-	public class AnimAxisTransformControl : System.Windows.Forms.UserControl
+	public class AnimAxisTransformControl : UserControl
 	{
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.CheckBox cbEvent;
-		private System.Windows.Forms.TextBox tbTimeCode;
-		private System.Windows.Forms.TextBox tbParameter;
-		private System.Windows.Forms.TextBox tbU1;
-		private System.Windows.Forms.TextBox tbU2;
-		private System.Windows.Forms.TextBox tbU2Float;
-		private System.Windows.Forms.TextBox tbU1Float;
-		private System.Windows.Forms.TextBox tbParameterFloat;
-		private System.Windows.Forms.TextBox tbU2Hex;
-		private System.Windows.Forms.TextBox tbU1Hex;
-		private System.Windows.Forms.TextBox tbParameterHex;
-		private System.Windows.Forms.TextBox tbU2Bin;
-		private System.Windows.Forms.TextBox tbU1Bin;
-		private System.Windows.Forms.TextBox tbParameterBin;
-		private System.Windows.Forms.LinkLabel llDelete;
-		private System.Windows.Forms.LinkLabel llAdd;
-		private System.Windows.Forms.CheckBox cbParentLock;
+		private Label label1;
+		private Label label2;
+		private Label label3;
+		private Label label4;
+		private CheckBox cbEvent;
+		private TextBox tbTimeCode;
+		private TextBox tbParameter;
+		private TextBox tbU1;
+		private TextBox tbU2;
+		private TextBox tbU2Float;
+		private TextBox tbU1Float;
+		private TextBox tbParameterFloat;
+		private TextBox tbU2Hex;
+		private TextBox tbU1Hex;
+		private TextBox tbParameterHex;
+		private TextBox tbU2Bin;
+		private TextBox tbU1Bin;
+		private TextBox tbParameterBin;
+		private LinkLabel llDelete;
+		private LinkLabel llAdd;
+		private CheckBox cbParentLock;
 
 		/// <summary>
 		/// Required designer variable.
@@ -98,27 +98,27 @@ namespace SimPe.Plugin.Anim
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(AnimAxisTransformControl));
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.cbEvent = new System.Windows.Forms.CheckBox();
-			this.tbTimeCode = new System.Windows.Forms.TextBox();
-			this.tbParameter = new System.Windows.Forms.TextBox();
-			this.tbU1 = new System.Windows.Forms.TextBox();
-			this.tbU2 = new System.Windows.Forms.TextBox();
-			this.tbU2Float = new System.Windows.Forms.TextBox();
-			this.tbU1Float = new System.Windows.Forms.TextBox();
-			this.tbParameterFloat = new System.Windows.Forms.TextBox();
-			this.tbU2Hex = new System.Windows.Forms.TextBox();
-			this.tbU1Hex = new System.Windows.Forms.TextBox();
-			this.tbParameterHex = new System.Windows.Forms.TextBox();
-			this.tbU2Bin = new System.Windows.Forms.TextBox();
-			this.tbU1Bin = new System.Windows.Forms.TextBox();
-			this.tbParameterBin = new System.Windows.Forms.TextBox();
-			this.llDelete = new System.Windows.Forms.LinkLabel();
-			this.llAdd = new System.Windows.Forms.LinkLabel();
-			this.cbParentLock = new System.Windows.Forms.CheckBox();
+			this.label1 = new Label();
+			this.label2 = new Label();
+			this.label3 = new Label();
+			this.label4 = new Label();
+			this.cbEvent = new CheckBox();
+			this.tbTimeCode = new TextBox();
+			this.tbParameter = new TextBox();
+			this.tbU1 = new TextBox();
+			this.tbU2 = new TextBox();
+			this.tbU2Float = new TextBox();
+			this.tbU1Float = new TextBox();
+			this.tbParameterFloat = new TextBox();
+			this.tbU2Hex = new TextBox();
+			this.tbU1Hex = new TextBox();
+			this.tbParameterHex = new TextBox();
+			this.tbU2Bin = new TextBox();
+			this.tbU1Bin = new TextBox();
+			this.tbParameterBin = new TextBox();
+			this.llDelete = new LinkLabel();
+			this.llAdd = new LinkLabel();
+			this.cbParentLock = new CheckBox();
 			this.SuspendLayout();
 			//
 			// label1
@@ -128,13 +128,13 @@ namespace SimPe.Plugin.Anim
 			);
 			this.label1.AccessibleName = resources.GetString("label1.AccessibleName");
 			this.label1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("label1.Anchor")
 				)
 			);
 			this.label1.AutoSize = ((bool)(resources.GetObject("label1.AutoSize")));
 			this.label1.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("label1.Dock"))
+				(DockStyle)(resources.GetObject("label1.Dock"))
 			);
 			this.label1.Enabled = ((bool)(resources.GetObject("label1.Enabled")));
 			this.label1.Font = (
@@ -150,14 +150,14 @@ namespace SimPe.Plugin.Anim
 			);
 			this.label1.ImageIndex = ((int)(resources.GetObject("label1.ImageIndex")));
 			this.label1.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("label1.ImeMode"))
+				(ImeMode)(resources.GetObject("label1.ImeMode"))
 			);
 			this.label1.Location = (
 				(System.Drawing.Point)(resources.GetObject("label1.Location"))
 			);
 			this.label1.Name = "label1";
 			this.label1.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("label1.RightToLeft")
 				)
 			);
@@ -180,13 +180,13 @@ namespace SimPe.Plugin.Anim
 			);
 			this.label2.AccessibleName = resources.GetString("label2.AccessibleName");
 			this.label2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("label2.Anchor")
 				)
 			);
 			this.label2.AutoSize = ((bool)(resources.GetObject("label2.AutoSize")));
 			this.label2.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("label2.Dock"))
+				(DockStyle)(resources.GetObject("label2.Dock"))
 			);
 			this.label2.Enabled = ((bool)(resources.GetObject("label2.Enabled")));
 			this.label2.Font = (
@@ -202,14 +202,14 @@ namespace SimPe.Plugin.Anim
 			);
 			this.label2.ImageIndex = ((int)(resources.GetObject("label2.ImageIndex")));
 			this.label2.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("label2.ImeMode"))
+				(ImeMode)(resources.GetObject("label2.ImeMode"))
 			);
 			this.label2.Location = (
 				(System.Drawing.Point)(resources.GetObject("label2.Location"))
 			);
 			this.label2.Name = "label2";
 			this.label2.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("label2.RightToLeft")
 				)
 			);
@@ -232,13 +232,13 @@ namespace SimPe.Plugin.Anim
 			);
 			this.label3.AccessibleName = resources.GetString("label3.AccessibleName");
 			this.label3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("label3.Anchor")
 				)
 			);
 			this.label3.AutoSize = ((bool)(resources.GetObject("label3.AutoSize")));
 			this.label3.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("label3.Dock"))
+				(DockStyle)(resources.GetObject("label3.Dock"))
 			);
 			this.label3.Enabled = ((bool)(resources.GetObject("label3.Enabled")));
 			this.label3.Font = (
@@ -254,14 +254,14 @@ namespace SimPe.Plugin.Anim
 			);
 			this.label3.ImageIndex = ((int)(resources.GetObject("label3.ImageIndex")));
 			this.label3.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("label3.ImeMode"))
+				(ImeMode)(resources.GetObject("label3.ImeMode"))
 			);
 			this.label3.Location = (
 				(System.Drawing.Point)(resources.GetObject("label3.Location"))
 			);
 			this.label3.Name = "label3";
 			this.label3.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("label3.RightToLeft")
 				)
 			);
@@ -284,13 +284,13 @@ namespace SimPe.Plugin.Anim
 			);
 			this.label4.AccessibleName = resources.GetString("label4.AccessibleName");
 			this.label4.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("label4.Anchor")
 				)
 			);
 			this.label4.AutoSize = ((bool)(resources.GetObject("label4.AutoSize")));
 			this.label4.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("label4.Dock"))
+				(DockStyle)(resources.GetObject("label4.Dock"))
 			);
 			this.label4.Enabled = ((bool)(resources.GetObject("label4.Enabled")));
 			this.label4.Font = (
@@ -306,14 +306,14 @@ namespace SimPe.Plugin.Anim
 			);
 			this.label4.ImageIndex = ((int)(resources.GetObject("label4.ImageIndex")));
 			this.label4.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("label4.ImeMode"))
+				(ImeMode)(resources.GetObject("label4.ImeMode"))
 			);
 			this.label4.Location = (
 				(System.Drawing.Point)(resources.GetObject("label4.Location"))
 			);
 			this.label4.Name = "label4";
 			this.label4.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("label4.RightToLeft")
 				)
 			);
@@ -336,12 +336,12 @@ namespace SimPe.Plugin.Anim
 			);
 			this.cbEvent.AccessibleName = resources.GetString("cbEvent.AccessibleName");
 			this.cbEvent.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("cbEvent.Anchor")
 				)
 			);
 			this.cbEvent.Appearance = (
-				(System.Windows.Forms.Appearance)(
+				(Appearance)(
 					resources.GetObject("cbEvent.Appearance")
 				)
 			);
@@ -354,11 +354,11 @@ namespace SimPe.Plugin.Anim
 				)
 			);
 			this.cbEvent.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("cbEvent.Dock"))
+				(DockStyle)(resources.GetObject("cbEvent.Dock"))
 			);
 			this.cbEvent.Enabled = ((bool)(resources.GetObject("cbEvent.Enabled")));
 			this.cbEvent.FlatStyle = (
-				(System.Windows.Forms.FlatStyle)(
+				(FlatStyle)(
 					resources.GetObject("cbEvent.FlatStyle")
 				)
 			);
@@ -377,14 +377,14 @@ namespace SimPe.Plugin.Anim
 				(int)(resources.GetObject("cbEvent.ImageIndex"))
 			);
 			this.cbEvent.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("cbEvent.ImeMode"))
+				(ImeMode)(resources.GetObject("cbEvent.ImeMode"))
 			);
 			this.cbEvent.Location = (
 				(System.Drawing.Point)(resources.GetObject("cbEvent.Location"))
 			);
 			this.cbEvent.Name = "cbEvent";
 			this.cbEvent.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("cbEvent.RightToLeft")
 				)
 			);
@@ -399,7 +399,7 @@ namespace SimPe.Plugin.Anim
 				)
 			);
 			this.cbEvent.Visible = ((bool)(resources.GetObject("cbEvent.Visible")));
-			this.cbEvent.CheckedChanged += new System.EventHandler(
+			this.cbEvent.CheckedChanged += new EventHandler(
 				this.cbEvent_CheckedChanged
 			);
 			//
@@ -412,7 +412,7 @@ namespace SimPe.Plugin.Anim
 				"tbTimeCode.AccessibleName"
 			);
 			this.tbTimeCode.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("tbTimeCode.Anchor")
 				)
 			);
@@ -425,7 +425,7 @@ namespace SimPe.Plugin.Anim
 				)
 			);
 			this.tbTimeCode.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("tbTimeCode.Dock"))
+				(DockStyle)(resources.GetObject("tbTimeCode.Dock"))
 			);
 			this.tbTimeCode.Enabled = (
 				(bool)(resources.GetObject("tbTimeCode.Enabled"))
@@ -434,7 +434,7 @@ namespace SimPe.Plugin.Anim
 				(System.Drawing.Font)(resources.GetObject("tbTimeCode.Font"))
 			);
 			this.tbTimeCode.ImeMode = (
-				(System.Windows.Forms.ImeMode)(
+				(ImeMode)(
 					resources.GetObject("tbTimeCode.ImeMode")
 				)
 			);
@@ -452,12 +452,12 @@ namespace SimPe.Plugin.Anim
 				(char)(resources.GetObject("tbTimeCode.PasswordChar"))
 			);
 			this.tbTimeCode.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("tbTimeCode.RightToLeft")
 				)
 			);
 			this.tbTimeCode.ScrollBars = (
-				(System.Windows.Forms.ScrollBars)(
+				(ScrollBars)(
 					resources.GetObject("tbTimeCode.ScrollBars")
 				)
 			);
@@ -469,7 +469,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.tbTimeCode.Text = resources.GetString("tbTimeCode.Text");
 			this.tbTimeCode.TextAlign = (
-				(System.Windows.Forms.HorizontalAlignment)(
+				(HorizontalAlignment)(
 					resources.GetObject("tbTimeCode.TextAlign")
 				)
 			);
@@ -479,7 +479,7 @@ namespace SimPe.Plugin.Anim
 			this.tbTimeCode.WordWrap = (
 				(bool)(resources.GetObject("tbTimeCode.WordWrap"))
 			);
-			this.tbTimeCode.TextChanged += new System.EventHandler(
+			this.tbTimeCode.TextChanged += new EventHandler(
 				this.tbTimeCode_TextChanged
 			);
 			//
@@ -492,7 +492,7 @@ namespace SimPe.Plugin.Anim
 				"tbParameter.AccessibleName"
 			);
 			this.tbParameter.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("tbParameter.Anchor")
 				)
 			);
@@ -505,7 +505,7 @@ namespace SimPe.Plugin.Anim
 				)
 			);
 			this.tbParameter.Dock = (
-				(System.Windows.Forms.DockStyle)(
+				(DockStyle)(
 					resources.GetObject("tbParameter.Dock")
 				)
 			);
@@ -516,7 +516,7 @@ namespace SimPe.Plugin.Anim
 				(System.Drawing.Font)(resources.GetObject("tbParameter.Font"))
 			);
 			this.tbParameter.ImeMode = (
-				(System.Windows.Forms.ImeMode)(
+				(ImeMode)(
 					resources.GetObject("tbParameter.ImeMode")
 				)
 			);
@@ -534,12 +534,12 @@ namespace SimPe.Plugin.Anim
 				(char)(resources.GetObject("tbParameter.PasswordChar"))
 			);
 			this.tbParameter.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("tbParameter.RightToLeft")
 				)
 			);
 			this.tbParameter.ScrollBars = (
-				(System.Windows.Forms.ScrollBars)(
+				(ScrollBars)(
 					resources.GetObject("tbParameter.ScrollBars")
 				)
 			);
@@ -551,7 +551,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.tbParameter.Text = resources.GetString("tbParameter.Text");
 			this.tbParameter.TextAlign = (
-				(System.Windows.Forms.HorizontalAlignment)(
+				(HorizontalAlignment)(
 					resources.GetObject("tbParameter.TextAlign")
 				)
 			);
@@ -561,7 +561,7 @@ namespace SimPe.Plugin.Anim
 			this.tbParameter.WordWrap = (
 				(bool)(resources.GetObject("tbParameter.WordWrap"))
 			);
-			this.tbParameter.TextChanged += new System.EventHandler(
+			this.tbParameter.TextChanged += new EventHandler(
 				this.tbParameter_TextChanged
 			);
 			//
@@ -572,19 +572,19 @@ namespace SimPe.Plugin.Anim
 			);
 			this.tbU1.AccessibleName = resources.GetString("tbU1.AccessibleName");
 			this.tbU1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(resources.GetObject("tbU1.Anchor"))
+				(AnchorStyles)(resources.GetObject("tbU1.Anchor"))
 			);
 			this.tbU1.AutoSize = ((bool)(resources.GetObject("tbU1.AutoSize")));
 			this.tbU1.BackgroundImage = (
 				(System.Drawing.Image)(resources.GetObject("tbU1.BackgroundImage"))
 			);
 			this.tbU1.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("tbU1.Dock"))
+				(DockStyle)(resources.GetObject("tbU1.Dock"))
 			);
 			this.tbU1.Enabled = ((bool)(resources.GetObject("tbU1.Enabled")));
 			this.tbU1.Font = ((System.Drawing.Font)(resources.GetObject("tbU1.Font")));
 			this.tbU1.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("tbU1.ImeMode"))
+				(ImeMode)(resources.GetObject("tbU1.ImeMode"))
 			);
 			this.tbU1.Location = (
 				(System.Drawing.Point)(resources.GetObject("tbU1.Location"))
@@ -594,12 +594,12 @@ namespace SimPe.Plugin.Anim
 			this.tbU1.Name = "tbU1";
 			this.tbU1.PasswordChar = ((char)(resources.GetObject("tbU1.PasswordChar")));
 			this.tbU1.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("tbU1.RightToLeft")
 				)
 			);
 			this.tbU1.ScrollBars = (
-				(System.Windows.Forms.ScrollBars)(
+				(ScrollBars)(
 					resources.GetObject("tbU1.ScrollBars")
 				)
 			);
@@ -607,13 +607,13 @@ namespace SimPe.Plugin.Anim
 			this.tbU1.TabIndex = ((int)(resources.GetObject("tbU1.TabIndex")));
 			this.tbU1.Text = resources.GetString("tbU1.Text");
 			this.tbU1.TextAlign = (
-				(System.Windows.Forms.HorizontalAlignment)(
+				(HorizontalAlignment)(
 					resources.GetObject("tbU1.TextAlign")
 				)
 			);
 			this.tbU1.Visible = ((bool)(resources.GetObject("tbU1.Visible")));
 			this.tbU1.WordWrap = ((bool)(resources.GetObject("tbU1.WordWrap")));
-			this.tbU1.TextChanged += new System.EventHandler(this.tbU1_TextChanged);
+			this.tbU1.TextChanged += new EventHandler(this.tbU1_TextChanged);
 			//
 			// tbU2
 			//
@@ -622,19 +622,19 @@ namespace SimPe.Plugin.Anim
 			);
 			this.tbU2.AccessibleName = resources.GetString("tbU2.AccessibleName");
 			this.tbU2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(resources.GetObject("tbU2.Anchor"))
+				(AnchorStyles)(resources.GetObject("tbU2.Anchor"))
 			);
 			this.tbU2.AutoSize = ((bool)(resources.GetObject("tbU2.AutoSize")));
 			this.tbU2.BackgroundImage = (
 				(System.Drawing.Image)(resources.GetObject("tbU2.BackgroundImage"))
 			);
 			this.tbU2.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("tbU2.Dock"))
+				(DockStyle)(resources.GetObject("tbU2.Dock"))
 			);
 			this.tbU2.Enabled = ((bool)(resources.GetObject("tbU2.Enabled")));
 			this.tbU2.Font = ((System.Drawing.Font)(resources.GetObject("tbU2.Font")));
 			this.tbU2.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("tbU2.ImeMode"))
+				(ImeMode)(resources.GetObject("tbU2.ImeMode"))
 			);
 			this.tbU2.Location = (
 				(System.Drawing.Point)(resources.GetObject("tbU2.Location"))
@@ -644,12 +644,12 @@ namespace SimPe.Plugin.Anim
 			this.tbU2.Name = "tbU2";
 			this.tbU2.PasswordChar = ((char)(resources.GetObject("tbU2.PasswordChar")));
 			this.tbU2.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("tbU2.RightToLeft")
 				)
 			);
 			this.tbU2.ScrollBars = (
-				(System.Windows.Forms.ScrollBars)(
+				(ScrollBars)(
 					resources.GetObject("tbU2.ScrollBars")
 				)
 			);
@@ -657,13 +657,13 @@ namespace SimPe.Plugin.Anim
 			this.tbU2.TabIndex = ((int)(resources.GetObject("tbU2.TabIndex")));
 			this.tbU2.Text = resources.GetString("tbU2.Text");
 			this.tbU2.TextAlign = (
-				(System.Windows.Forms.HorizontalAlignment)(
+				(HorizontalAlignment)(
 					resources.GetObject("tbU2.TextAlign")
 				)
 			);
 			this.tbU2.Visible = ((bool)(resources.GetObject("tbU2.Visible")));
 			this.tbU2.WordWrap = ((bool)(resources.GetObject("tbU2.WordWrap")));
-			this.tbU2.TextChanged += new System.EventHandler(this.tbU2_TextChanged);
+			this.tbU2.TextChanged += new EventHandler(this.tbU2_TextChanged);
 			//
 			// tbU2Float
 			//
@@ -674,7 +674,7 @@ namespace SimPe.Plugin.Anim
 				"tbU2Float.AccessibleName"
 			);
 			this.tbU2Float.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("tbU2Float.Anchor")
 				)
 			);
@@ -685,14 +685,14 @@ namespace SimPe.Plugin.Anim
 				(System.Drawing.Image)(resources.GetObject("tbU2Float.BackgroundImage"))
 			);
 			this.tbU2Float.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("tbU2Float.Dock"))
+				(DockStyle)(resources.GetObject("tbU2Float.Dock"))
 			);
 			this.tbU2Float.Enabled = ((bool)(resources.GetObject("tbU2Float.Enabled")));
 			this.tbU2Float.Font = (
 				(System.Drawing.Font)(resources.GetObject("tbU2Float.Font"))
 			);
 			this.tbU2Float.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("tbU2Float.ImeMode"))
+				(ImeMode)(resources.GetObject("tbU2Float.ImeMode"))
 			);
 			this.tbU2Float.Location = (
 				(System.Drawing.Point)(resources.GetObject("tbU2Float.Location"))
@@ -708,12 +708,12 @@ namespace SimPe.Plugin.Anim
 				(char)(resources.GetObject("tbU2Float.PasswordChar"))
 			);
 			this.tbU2Float.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("tbU2Float.RightToLeft")
 				)
 			);
 			this.tbU2Float.ScrollBars = (
-				(System.Windows.Forms.ScrollBars)(
+				(ScrollBars)(
 					resources.GetObject("tbU2Float.ScrollBars")
 				)
 			);
@@ -725,7 +725,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.tbU2Float.Text = resources.GetString("tbU2Float.Text");
 			this.tbU2Float.TextAlign = (
-				(System.Windows.Forms.HorizontalAlignment)(
+				(HorizontalAlignment)(
 					resources.GetObject("tbU2Float.TextAlign")
 				)
 			);
@@ -733,7 +733,7 @@ namespace SimPe.Plugin.Anim
 			this.tbU2Float.WordWrap = (
 				(bool)(resources.GetObject("tbU2Float.WordWrap"))
 			);
-			this.tbU2Float.TextChanged += new System.EventHandler(
+			this.tbU2Float.TextChanged += new EventHandler(
 				this.tbU2Float_TextChanged
 			);
 			//
@@ -746,7 +746,7 @@ namespace SimPe.Plugin.Anim
 				"tbU1Float.AccessibleName"
 			);
 			this.tbU1Float.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("tbU1Float.Anchor")
 				)
 			);
@@ -757,14 +757,14 @@ namespace SimPe.Plugin.Anim
 				(System.Drawing.Image)(resources.GetObject("tbU1Float.BackgroundImage"))
 			);
 			this.tbU1Float.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("tbU1Float.Dock"))
+				(DockStyle)(resources.GetObject("tbU1Float.Dock"))
 			);
 			this.tbU1Float.Enabled = ((bool)(resources.GetObject("tbU1Float.Enabled")));
 			this.tbU1Float.Font = (
 				(System.Drawing.Font)(resources.GetObject("tbU1Float.Font"))
 			);
 			this.tbU1Float.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("tbU1Float.ImeMode"))
+				(ImeMode)(resources.GetObject("tbU1Float.ImeMode"))
 			);
 			this.tbU1Float.Location = (
 				(System.Drawing.Point)(resources.GetObject("tbU1Float.Location"))
@@ -780,12 +780,12 @@ namespace SimPe.Plugin.Anim
 				(char)(resources.GetObject("tbU1Float.PasswordChar"))
 			);
 			this.tbU1Float.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("tbU1Float.RightToLeft")
 				)
 			);
 			this.tbU1Float.ScrollBars = (
-				(System.Windows.Forms.ScrollBars)(
+				(ScrollBars)(
 					resources.GetObject("tbU1Float.ScrollBars")
 				)
 			);
@@ -797,7 +797,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.tbU1Float.Text = resources.GetString("tbU1Float.Text");
 			this.tbU1Float.TextAlign = (
-				(System.Windows.Forms.HorizontalAlignment)(
+				(HorizontalAlignment)(
 					resources.GetObject("tbU1Float.TextAlign")
 				)
 			);
@@ -805,7 +805,7 @@ namespace SimPe.Plugin.Anim
 			this.tbU1Float.WordWrap = (
 				(bool)(resources.GetObject("tbU1Float.WordWrap"))
 			);
-			this.tbU1Float.TextChanged += new System.EventHandler(
+			this.tbU1Float.TextChanged += new EventHandler(
 				this.tbU1Float_TextChanged
 			);
 			//
@@ -818,7 +818,7 @@ namespace SimPe.Plugin.Anim
 				"tbParameterFloat.AccessibleName"
 			);
 			this.tbParameterFloat.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("tbParameterFloat.Anchor")
 				)
 			);
@@ -831,7 +831,7 @@ namespace SimPe.Plugin.Anim
 				)
 			);
 			this.tbParameterFloat.Dock = (
-				(System.Windows.Forms.DockStyle)(
+				(DockStyle)(
 					resources.GetObject("tbParameterFloat.Dock")
 				)
 			);
@@ -842,7 +842,7 @@ namespace SimPe.Plugin.Anim
 				(System.Drawing.Font)(resources.GetObject("tbParameterFloat.Font"))
 			);
 			this.tbParameterFloat.ImeMode = (
-				(System.Windows.Forms.ImeMode)(
+				(ImeMode)(
 					resources.GetObject("tbParameterFloat.ImeMode")
 				)
 			);
@@ -860,12 +860,12 @@ namespace SimPe.Plugin.Anim
 				(char)(resources.GetObject("tbParameterFloat.PasswordChar"))
 			);
 			this.tbParameterFloat.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("tbParameterFloat.RightToLeft")
 				)
 			);
 			this.tbParameterFloat.ScrollBars = (
-				(System.Windows.Forms.ScrollBars)(
+				(ScrollBars)(
 					resources.GetObject("tbParameterFloat.ScrollBars")
 				)
 			);
@@ -877,7 +877,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.tbParameterFloat.Text = resources.GetString("tbParameterFloat.Text");
 			this.tbParameterFloat.TextAlign = (
-				(System.Windows.Forms.HorizontalAlignment)(
+				(HorizontalAlignment)(
 					resources.GetObject("tbParameterFloat.TextAlign")
 				)
 			);
@@ -887,7 +887,7 @@ namespace SimPe.Plugin.Anim
 			this.tbParameterFloat.WordWrap = (
 				(bool)(resources.GetObject("tbParameterFloat.WordWrap"))
 			);
-			this.tbParameterFloat.TextChanged += new System.EventHandler(
+			this.tbParameterFloat.TextChanged += new EventHandler(
 				this.tbParameterFloat_TextChanged
 			);
 			//
@@ -898,7 +898,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.tbU2Hex.AccessibleName = resources.GetString("tbU2Hex.AccessibleName");
 			this.tbU2Hex.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("tbU2Hex.Anchor")
 				)
 			);
@@ -907,14 +907,14 @@ namespace SimPe.Plugin.Anim
 				(System.Drawing.Image)(resources.GetObject("tbU2Hex.BackgroundImage"))
 			);
 			this.tbU2Hex.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("tbU2Hex.Dock"))
+				(DockStyle)(resources.GetObject("tbU2Hex.Dock"))
 			);
 			this.tbU2Hex.Enabled = ((bool)(resources.GetObject("tbU2Hex.Enabled")));
 			this.tbU2Hex.Font = (
 				(System.Drawing.Font)(resources.GetObject("tbU2Hex.Font"))
 			);
 			this.tbU2Hex.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("tbU2Hex.ImeMode"))
+				(ImeMode)(resources.GetObject("tbU2Hex.ImeMode"))
 			);
 			this.tbU2Hex.Location = (
 				(System.Drawing.Point)(resources.GetObject("tbU2Hex.Location"))
@@ -926,12 +926,12 @@ namespace SimPe.Plugin.Anim
 				(char)(resources.GetObject("tbU2Hex.PasswordChar"))
 			);
 			this.tbU2Hex.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("tbU2Hex.RightToLeft")
 				)
 			);
 			this.tbU2Hex.ScrollBars = (
-				(System.Windows.Forms.ScrollBars)(
+				(ScrollBars)(
 					resources.GetObject("tbU2Hex.ScrollBars")
 				)
 			);
@@ -941,13 +941,13 @@ namespace SimPe.Plugin.Anim
 			this.tbU2Hex.TabIndex = ((int)(resources.GetObject("tbU2Hex.TabIndex")));
 			this.tbU2Hex.Text = resources.GetString("tbU2Hex.Text");
 			this.tbU2Hex.TextAlign = (
-				(System.Windows.Forms.HorizontalAlignment)(
+				(HorizontalAlignment)(
 					resources.GetObject("tbU2Hex.TextAlign")
 				)
 			);
 			this.tbU2Hex.Visible = ((bool)(resources.GetObject("tbU2Hex.Visible")));
 			this.tbU2Hex.WordWrap = ((bool)(resources.GetObject("tbU2Hex.WordWrap")));
-			this.tbU2Hex.TextChanged += new System.EventHandler(
+			this.tbU2Hex.TextChanged += new EventHandler(
 				this.tbU2Hex_TextChanged
 			);
 			//
@@ -958,7 +958,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.tbU1Hex.AccessibleName = resources.GetString("tbU1Hex.AccessibleName");
 			this.tbU1Hex.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("tbU1Hex.Anchor")
 				)
 			);
@@ -967,14 +967,14 @@ namespace SimPe.Plugin.Anim
 				(System.Drawing.Image)(resources.GetObject("tbU1Hex.BackgroundImage"))
 			);
 			this.tbU1Hex.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("tbU1Hex.Dock"))
+				(DockStyle)(resources.GetObject("tbU1Hex.Dock"))
 			);
 			this.tbU1Hex.Enabled = ((bool)(resources.GetObject("tbU1Hex.Enabled")));
 			this.tbU1Hex.Font = (
 				(System.Drawing.Font)(resources.GetObject("tbU1Hex.Font"))
 			);
 			this.tbU1Hex.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("tbU1Hex.ImeMode"))
+				(ImeMode)(resources.GetObject("tbU1Hex.ImeMode"))
 			);
 			this.tbU1Hex.Location = (
 				(System.Drawing.Point)(resources.GetObject("tbU1Hex.Location"))
@@ -986,12 +986,12 @@ namespace SimPe.Plugin.Anim
 				(char)(resources.GetObject("tbU1Hex.PasswordChar"))
 			);
 			this.tbU1Hex.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("tbU1Hex.RightToLeft")
 				)
 			);
 			this.tbU1Hex.ScrollBars = (
-				(System.Windows.Forms.ScrollBars)(
+				(ScrollBars)(
 					resources.GetObject("tbU1Hex.ScrollBars")
 				)
 			);
@@ -1001,13 +1001,13 @@ namespace SimPe.Plugin.Anim
 			this.tbU1Hex.TabIndex = ((int)(resources.GetObject("tbU1Hex.TabIndex")));
 			this.tbU1Hex.Text = resources.GetString("tbU1Hex.Text");
 			this.tbU1Hex.TextAlign = (
-				(System.Windows.Forms.HorizontalAlignment)(
+				(HorizontalAlignment)(
 					resources.GetObject("tbU1Hex.TextAlign")
 				)
 			);
 			this.tbU1Hex.Visible = ((bool)(resources.GetObject("tbU1Hex.Visible")));
 			this.tbU1Hex.WordWrap = ((bool)(resources.GetObject("tbU1Hex.WordWrap")));
-			this.tbU1Hex.TextChanged += new System.EventHandler(
+			this.tbU1Hex.TextChanged += new EventHandler(
 				this.tbU1Hex_TextChanged
 			);
 			//
@@ -1020,7 +1020,7 @@ namespace SimPe.Plugin.Anim
 				"tbParameterHex.AccessibleName"
 			);
 			this.tbParameterHex.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("tbParameterHex.Anchor")
 				)
 			);
@@ -1033,7 +1033,7 @@ namespace SimPe.Plugin.Anim
 				)
 			);
 			this.tbParameterHex.Dock = (
-				(System.Windows.Forms.DockStyle)(
+				(DockStyle)(
 					resources.GetObject("tbParameterHex.Dock")
 				)
 			);
@@ -1044,7 +1044,7 @@ namespace SimPe.Plugin.Anim
 				(System.Drawing.Font)(resources.GetObject("tbParameterHex.Font"))
 			);
 			this.tbParameterHex.ImeMode = (
-				(System.Windows.Forms.ImeMode)(
+				(ImeMode)(
 					resources.GetObject("tbParameterHex.ImeMode")
 				)
 			);
@@ -1062,12 +1062,12 @@ namespace SimPe.Plugin.Anim
 				(char)(resources.GetObject("tbParameterHex.PasswordChar"))
 			);
 			this.tbParameterHex.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("tbParameterHex.RightToLeft")
 				)
 			);
 			this.tbParameterHex.ScrollBars = (
-				(System.Windows.Forms.ScrollBars)(
+				(ScrollBars)(
 					resources.GetObject("tbParameterHex.ScrollBars")
 				)
 			);
@@ -1079,7 +1079,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.tbParameterHex.Text = resources.GetString("tbParameterHex.Text");
 			this.tbParameterHex.TextAlign = (
-				(System.Windows.Forms.HorizontalAlignment)(
+				(HorizontalAlignment)(
 					resources.GetObject("tbParameterHex.TextAlign")
 				)
 			);
@@ -1089,7 +1089,7 @@ namespace SimPe.Plugin.Anim
 			this.tbParameterHex.WordWrap = (
 				(bool)(resources.GetObject("tbParameterHex.WordWrap"))
 			);
-			this.tbParameterHex.TextChanged += new System.EventHandler(
+			this.tbParameterHex.TextChanged += new EventHandler(
 				this.tbParameterHex_TextChanged
 			);
 			//
@@ -1100,7 +1100,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.tbU2Bin.AccessibleName = resources.GetString("tbU2Bin.AccessibleName");
 			this.tbU2Bin.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("tbU2Bin.Anchor")
 				)
 			);
@@ -1109,14 +1109,14 @@ namespace SimPe.Plugin.Anim
 				(System.Drawing.Image)(resources.GetObject("tbU2Bin.BackgroundImage"))
 			);
 			this.tbU2Bin.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("tbU2Bin.Dock"))
+				(DockStyle)(resources.GetObject("tbU2Bin.Dock"))
 			);
 			this.tbU2Bin.Enabled = ((bool)(resources.GetObject("tbU2Bin.Enabled")));
 			this.tbU2Bin.Font = (
 				(System.Drawing.Font)(resources.GetObject("tbU2Bin.Font"))
 			);
 			this.tbU2Bin.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("tbU2Bin.ImeMode"))
+				(ImeMode)(resources.GetObject("tbU2Bin.ImeMode"))
 			);
 			this.tbU2Bin.Location = (
 				(System.Drawing.Point)(resources.GetObject("tbU2Bin.Location"))
@@ -1128,12 +1128,12 @@ namespace SimPe.Plugin.Anim
 				(char)(resources.GetObject("tbU2Bin.PasswordChar"))
 			);
 			this.tbU2Bin.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("tbU2Bin.RightToLeft")
 				)
 			);
 			this.tbU2Bin.ScrollBars = (
-				(System.Windows.Forms.ScrollBars)(
+				(ScrollBars)(
 					resources.GetObject("tbU2Bin.ScrollBars")
 				)
 			);
@@ -1143,7 +1143,7 @@ namespace SimPe.Plugin.Anim
 			this.tbU2Bin.TabIndex = ((int)(resources.GetObject("tbU2Bin.TabIndex")));
 			this.tbU2Bin.Text = resources.GetString("tbU2Bin.Text");
 			this.tbU2Bin.TextAlign = (
-				(System.Windows.Forms.HorizontalAlignment)(
+				(HorizontalAlignment)(
 					resources.GetObject("tbU2Bin.TextAlign")
 				)
 			);
@@ -1157,7 +1157,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.tbU1Bin.AccessibleName = resources.GetString("tbU1Bin.AccessibleName");
 			this.tbU1Bin.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("tbU1Bin.Anchor")
 				)
 			);
@@ -1166,14 +1166,14 @@ namespace SimPe.Plugin.Anim
 				(System.Drawing.Image)(resources.GetObject("tbU1Bin.BackgroundImage"))
 			);
 			this.tbU1Bin.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("tbU1Bin.Dock"))
+				(DockStyle)(resources.GetObject("tbU1Bin.Dock"))
 			);
 			this.tbU1Bin.Enabled = ((bool)(resources.GetObject("tbU1Bin.Enabled")));
 			this.tbU1Bin.Font = (
 				(System.Drawing.Font)(resources.GetObject("tbU1Bin.Font"))
 			);
 			this.tbU1Bin.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("tbU1Bin.ImeMode"))
+				(ImeMode)(resources.GetObject("tbU1Bin.ImeMode"))
 			);
 			this.tbU1Bin.Location = (
 				(System.Drawing.Point)(resources.GetObject("tbU1Bin.Location"))
@@ -1185,12 +1185,12 @@ namespace SimPe.Plugin.Anim
 				(char)(resources.GetObject("tbU1Bin.PasswordChar"))
 			);
 			this.tbU1Bin.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("tbU1Bin.RightToLeft")
 				)
 			);
 			this.tbU1Bin.ScrollBars = (
-				(System.Windows.Forms.ScrollBars)(
+				(ScrollBars)(
 					resources.GetObject("tbU1Bin.ScrollBars")
 				)
 			);
@@ -1200,7 +1200,7 @@ namespace SimPe.Plugin.Anim
 			this.tbU1Bin.TabIndex = ((int)(resources.GetObject("tbU1Bin.TabIndex")));
 			this.tbU1Bin.Text = resources.GetString("tbU1Bin.Text");
 			this.tbU1Bin.TextAlign = (
-				(System.Windows.Forms.HorizontalAlignment)(
+				(HorizontalAlignment)(
 					resources.GetObject("tbU1Bin.TextAlign")
 				)
 			);
@@ -1216,7 +1216,7 @@ namespace SimPe.Plugin.Anim
 				"tbParameterBin.AccessibleName"
 			);
 			this.tbParameterBin.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("tbParameterBin.Anchor")
 				)
 			);
@@ -1229,7 +1229,7 @@ namespace SimPe.Plugin.Anim
 				)
 			);
 			this.tbParameterBin.Dock = (
-				(System.Windows.Forms.DockStyle)(
+				(DockStyle)(
 					resources.GetObject("tbParameterBin.Dock")
 				)
 			);
@@ -1240,7 +1240,7 @@ namespace SimPe.Plugin.Anim
 				(System.Drawing.Font)(resources.GetObject("tbParameterBin.Font"))
 			);
 			this.tbParameterBin.ImeMode = (
-				(System.Windows.Forms.ImeMode)(
+				(ImeMode)(
 					resources.GetObject("tbParameterBin.ImeMode")
 				)
 			);
@@ -1258,12 +1258,12 @@ namespace SimPe.Plugin.Anim
 				(char)(resources.GetObject("tbParameterBin.PasswordChar"))
 			);
 			this.tbParameterBin.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("tbParameterBin.RightToLeft")
 				)
 			);
 			this.tbParameterBin.ScrollBars = (
-				(System.Windows.Forms.ScrollBars)(
+				(ScrollBars)(
 					resources.GetObject("tbParameterBin.ScrollBars")
 				)
 			);
@@ -1275,7 +1275,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.tbParameterBin.Text = resources.GetString("tbParameterBin.Text");
 			this.tbParameterBin.TextAlign = (
-				(System.Windows.Forms.HorizontalAlignment)(
+				(HorizontalAlignment)(
 					resources.GetObject("tbParameterBin.TextAlign")
 				)
 			);
@@ -1285,7 +1285,7 @@ namespace SimPe.Plugin.Anim
 			this.tbParameterBin.WordWrap = (
 				(bool)(resources.GetObject("tbParameterBin.WordWrap"))
 			);
-			this.tbParameterBin.TextChanged += new System.EventHandler(
+			this.tbParameterBin.TextChanged += new EventHandler(
 				this.tbParameterBin_TextChanged
 			);
 			//
@@ -1298,13 +1298,13 @@ namespace SimPe.Plugin.Anim
 				"llDelete.AccessibleName"
 			);
 			this.llDelete.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("llDelete.Anchor")
 				)
 			);
 			this.llDelete.AutoSize = ((bool)(resources.GetObject("llDelete.AutoSize")));
 			this.llDelete.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("llDelete.Dock"))
+				(DockStyle)(resources.GetObject("llDelete.Dock"))
 			);
 			this.llDelete.Enabled = ((bool)(resources.GetObject("llDelete.Enabled")));
 			this.llDelete.Font = (
@@ -1322,10 +1322,10 @@ namespace SimPe.Plugin.Anim
 				(int)(resources.GetObject("llDelete.ImageIndex"))
 			);
 			this.llDelete.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("llDelete.ImeMode"))
+				(ImeMode)(resources.GetObject("llDelete.ImeMode"))
 			);
 			this.llDelete.LinkArea = (
-				(System.Windows.Forms.LinkArea)(
+				(LinkArea)(
 					resources.GetObject("llDelete.LinkArea")
 				)
 			);
@@ -1334,7 +1334,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.llDelete.Name = "llDelete";
 			this.llDelete.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("llDelete.RightToLeft")
 				)
 			);
@@ -1351,7 +1351,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.llDelete.Visible = ((bool)(resources.GetObject("llDelete.Visible")));
 			this.llDelete.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llDelete_LinkClicked
 				);
 			//
@@ -1362,11 +1362,11 @@ namespace SimPe.Plugin.Anim
 			);
 			this.llAdd.AccessibleName = resources.GetString("llAdd.AccessibleName");
 			this.llAdd.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(resources.GetObject("llAdd.Anchor"))
+				(AnchorStyles)(resources.GetObject("llAdd.Anchor"))
 			);
 			this.llAdd.AutoSize = ((bool)(resources.GetObject("llAdd.AutoSize")));
 			this.llAdd.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("llAdd.Dock"))
+				(DockStyle)(resources.GetObject("llAdd.Dock"))
 			);
 			this.llAdd.Enabled = ((bool)(resources.GetObject("llAdd.Enabled")));
 			this.llAdd.Font = (
@@ -1382,17 +1382,17 @@ namespace SimPe.Plugin.Anim
 			);
 			this.llAdd.ImageIndex = ((int)(resources.GetObject("llAdd.ImageIndex")));
 			this.llAdd.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("llAdd.ImeMode"))
+				(ImeMode)(resources.GetObject("llAdd.ImeMode"))
 			);
 			this.llAdd.LinkArea = (
-				(System.Windows.Forms.LinkArea)(resources.GetObject("llAdd.LinkArea"))
+				(LinkArea)(resources.GetObject("llAdd.LinkArea"))
 			);
 			this.llAdd.Location = (
 				(System.Drawing.Point)(resources.GetObject("llAdd.Location"))
 			);
 			this.llAdd.Name = "llAdd";
 			this.llAdd.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("llAdd.RightToLeft")
 				)
 			);
@@ -1409,7 +1409,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.llAdd.Visible = ((bool)(resources.GetObject("llAdd.Visible")));
 			this.llAdd.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llAdd_LinkClicked
 				);
 			//
@@ -1422,12 +1422,12 @@ namespace SimPe.Plugin.Anim
 				"cbParentLock.AccessibleName"
 			);
 			this.cbParentLock.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("cbParentLock.Anchor")
 				)
 			);
 			this.cbParentLock.Appearance = (
-				(System.Windows.Forms.Appearance)(
+				(Appearance)(
 					resources.GetObject("cbParentLock.Appearance")
 				)
 			);
@@ -1442,7 +1442,7 @@ namespace SimPe.Plugin.Anim
 				)
 			);
 			this.cbParentLock.Dock = (
-				(System.Windows.Forms.DockStyle)(
+				(DockStyle)(
 					resources.GetObject("cbParentLock.Dock")
 				)
 			);
@@ -1450,7 +1450,7 @@ namespace SimPe.Plugin.Anim
 				(bool)(resources.GetObject("cbParentLock.Enabled"))
 			);
 			this.cbParentLock.FlatStyle = (
-				(System.Windows.Forms.FlatStyle)(
+				(FlatStyle)(
 					resources.GetObject("cbParentLock.FlatStyle")
 				)
 			);
@@ -1469,7 +1469,7 @@ namespace SimPe.Plugin.Anim
 				(int)(resources.GetObject("cbParentLock.ImageIndex"))
 			);
 			this.cbParentLock.ImeMode = (
-				(System.Windows.Forms.ImeMode)(
+				(ImeMode)(
 					resources.GetObject("cbParentLock.ImeMode")
 				)
 			);
@@ -1478,7 +1478,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.cbParentLock.Name = "cbParentLock";
 			this.cbParentLock.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("cbParentLock.RightToLeft")
 				)
 			);
@@ -1497,7 +1497,7 @@ namespace SimPe.Plugin.Anim
 			this.cbParentLock.Visible = (
 				(bool)(resources.GetObject("cbParentLock.Visible"))
 			);
-			this.cbParentLock.CheckedChanged += new System.EventHandler(
+			this.cbParentLock.CheckedChanged += new EventHandler(
 				this.cbParentLock_CheckedChanged
 			);
 			//
@@ -1541,14 +1541,14 @@ namespace SimPe.Plugin.Anim
 			this.Enabled = ((bool)(resources.GetObject("$this.Enabled")));
 			this.Font = ((System.Drawing.Font)(resources.GetObject("$this.Font")));
 			this.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("$this.ImeMode"))
+				(ImeMode)(resources.GetObject("$this.ImeMode"))
 			);
 			this.Location = (
 				(System.Drawing.Point)(resources.GetObject("$this.Location"))
 			);
 			this.Name = "AnimAxisTransformControl";
 			this.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("$this.RightToLeft")
 				)
 			);
@@ -1694,7 +1694,7 @@ namespace SimPe.Plugin.Anim
 		bool intern,
 			refresh;
 
-		private void tbParameter_TextChanged(object sender, System.EventArgs e)
+		private void tbParameter_TextChanged(object sender, EventArgs e)
 		{
 			if (intern && !refresh)
 			{
@@ -1740,11 +1740,11 @@ namespace SimPe.Plugin.Anim
 			aat.Parameter = val;
 			if (Changed != null)
 			{
-				Changed(this, new System.EventArgs());
+				Changed(this, new EventArgs());
 			}
 		}
 
-		private void tbU2_TextChanged(object sender, System.EventArgs e)
+		private void tbU2_TextChanged(object sender, EventArgs e)
 		{
 			if (intern && !refresh)
 			{
@@ -1784,11 +1784,11 @@ namespace SimPe.Plugin.Anim
 			aat.Unknown2 = val;
 			if (Changed != null)
 			{
-				Changed(this, new System.EventArgs());
+				Changed(this, new EventArgs());
 			}
 		}
 
-		private void tbU1_TextChanged(object sender, System.EventArgs e)
+		private void tbU1_TextChanged(object sender, EventArgs e)
 		{
 			if (intern && !refresh)
 			{
@@ -1825,11 +1825,11 @@ namespace SimPe.Plugin.Anim
 			aat.Unknown1 = val;
 			if (Changed != null)
 			{
-				Changed(this, new System.EventArgs());
+				Changed(this, new EventArgs());
 			}
 		}
 
-		private void tbTimeCode_TextChanged(object sender, System.EventArgs e)
+		private void tbTimeCode_TextChanged(object sender, EventArgs e)
 		{
 			if (intern || aat == null)
 			{
@@ -1839,11 +1839,11 @@ namespace SimPe.Plugin.Anim
 			aat.TimeCode = Helper.StringToInt16(tbTimeCode.Text, aat.TimeCode, 10);
 			if (Changed != null)
 			{
-				Changed(this, new System.EventArgs());
+				Changed(this, new EventArgs());
 			}
 		}
 
-		private void cbEvent_CheckedChanged(object sender, System.EventArgs e)
+		private void cbEvent_CheckedChanged(object sender, EventArgs e)
 		{
 			if (intern || aat == null)
 			{
@@ -1853,11 +1853,11 @@ namespace SimPe.Plugin.Anim
 			aat.Linear = cbEvent.Checked;
 			if (Changed != null)
 			{
-				Changed(this, new System.EventArgs());
+				Changed(this, new EventArgs());
 			}
 		}
 
-		private void tbParameterFloat_TextChanged(object sender, System.EventArgs e)
+		private void tbParameterFloat_TextChanged(object sender, EventArgs e)
 		{
 			if (intern || aat == null)
 			{
@@ -1892,11 +1892,11 @@ namespace SimPe.Plugin.Anim
 			aat.Parameter = val;
 			if (Changed != null)
 			{
-				Changed(this, new System.EventArgs());
+				Changed(this, new EventArgs());
 			}
 		}
 
-		private void tbU1Float_TextChanged(object sender, System.EventArgs e)
+		private void tbU1Float_TextChanged(object sender, EventArgs e)
 		{
 			if (intern || aat == null)
 			{
@@ -1925,11 +1925,11 @@ namespace SimPe.Plugin.Anim
 			aat.Unknown1 = val;
 			if (Changed != null)
 			{
-				Changed(this, new System.EventArgs());
+				Changed(this, new EventArgs());
 			}
 		}
 
-		private void tbU2Float_TextChanged(object sender, System.EventArgs e)
+		private void tbU2Float_TextChanged(object sender, EventArgs e)
 		{
 			if (intern || aat == null)
 			{
@@ -1958,11 +1958,11 @@ namespace SimPe.Plugin.Anim
 			aat.Unknown2 = val;
 			if (Changed != null)
 			{
-				Changed(this, new System.EventArgs());
+				Changed(this, new EventArgs());
 			}
 		}
 
-		private void tbParameterHex_TextChanged(object sender, System.EventArgs e)
+		private void tbParameterHex_TextChanged(object sender, EventArgs e)
 		{
 			if (intern)
 			{
@@ -2004,11 +2004,11 @@ namespace SimPe.Plugin.Anim
 			aat.Parameter = val;
 			if (Changed != null)
 			{
-				Changed(this, new System.EventArgs());
+				Changed(this, new EventArgs());
 			}
 		}
 
-		private void tbU1Hex_TextChanged(object sender, System.EventArgs e)
+		private void tbU1Hex_TextChanged(object sender, EventArgs e)
 		{
 			if (intern)
 			{
@@ -2041,11 +2041,11 @@ namespace SimPe.Plugin.Anim
 			aat.Unknown1 = val;
 			if (Changed != null)
 			{
-				Changed(this, new System.EventArgs());
+				Changed(this, new EventArgs());
 			}
 		}
 
-		private void tbU2Hex_TextChanged(object sender, System.EventArgs e)
+		private void tbU2Hex_TextChanged(object sender, EventArgs e)
 		{
 			if (intern)
 			{
@@ -2078,11 +2078,11 @@ namespace SimPe.Plugin.Anim
 			aat.Unknown2 = val;
 			if (Changed != null)
 			{
-				Changed(this, new System.EventArgs());
+				Changed(this, new EventArgs());
 			}
 		}
 
-		private void tbParameterBin_TextChanged(object sender, System.EventArgs e)
+		private void tbParameterBin_TextChanged(object sender, EventArgs e)
 		{
 			if (intern)
 			{
@@ -2124,11 +2124,11 @@ namespace SimPe.Plugin.Anim
 			aat.Parameter = val;
 			if (Changed != null)
 			{
-				Changed(this, new System.EventArgs());
+				Changed(this, new EventArgs());
 			}
 		}
 
-		private void tbU1Bin_TextChanged(object sender, System.EventArgs e)
+		private void tbU1Bin_TextChanged(object sender, EventArgs e)
 		{
 			if (intern)
 			{
@@ -2161,11 +2161,11 @@ namespace SimPe.Plugin.Anim
 			aat.Unknown1 = val;
 			if (Changed != null)
 			{
-				Changed(this, new System.EventArgs());
+				Changed(this, new EventArgs());
 			}
 		}
 
-		private void tbU2Bin_TextChanged(object sender, System.EventArgs e)
+		private void tbU2Bin_TextChanged(object sender, EventArgs e)
 		{
 			if (intern)
 			{
@@ -2198,13 +2198,13 @@ namespace SimPe.Plugin.Anim
 			aat.Unknown2 = val;
 			if (Changed != null)
 			{
-				Changed(this, new System.EventArgs());
+				Changed(this, new EventArgs());
 			}
 		}
 
 		private void llDelete_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (aat == null)
@@ -2216,13 +2216,13 @@ namespace SimPe.Plugin.Anim
 			aat = null;
 			if (Deleted != null)
 			{
-				Deleted(this, new System.EventArgs());
+				Deleted(this, new EventArgs());
 			}
 		}
 
 		private void llAdd_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (CreateClicked != null)
@@ -2231,7 +2231,7 @@ namespace SimPe.Plugin.Anim
 			}
 		}
 
-		private void cbParentLock_CheckedChanged(object sender, System.EventArgs e)
+		private void cbParentLock_CheckedChanged(object sender, EventArgs e)
 		{
 			if (intern || aat == null)
 			{
@@ -2243,15 +2243,15 @@ namespace SimPe.Plugin.Anim
 			this.RefreshData();
 			if (Changed != null)
 			{
-				Changed(this, new System.EventArgs());
+				Changed(this, new EventArgs());
 			}
 		}
 
 		#region Events
-		public event System.EventHandler Deleted;
-		public event System.EventHandler Changed;
-		public event System.EventHandler Cleared;
-		public event System.EventHandler CreateClicked;
+		public event EventHandler Deleted;
+		public event EventHandler Changed;
+		public event EventHandler Cleared;
+		public event EventHandler CreateClicked;
 		#endregion
 	}
 }

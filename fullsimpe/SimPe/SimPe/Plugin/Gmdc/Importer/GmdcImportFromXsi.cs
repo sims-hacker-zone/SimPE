@@ -24,7 +24,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 	/// <summary>
 	/// This class provides the functionality to Import Data from the .obj FileFormat
 	/// </summary>
-	public class GmdcImportFromXsi : SimPe.Plugin.Gmdc.IGmdcImporter
+	public class GmdcImportFromXsi : IGmdcImporter
 	{
 		#region IGmdcImporter Member
 
@@ -75,12 +75,12 @@ namespace SimPe.Plugin.Gmdc.Importer
 		}
 
 		public bool Process(
-			System.IO.Stream input,
+			Stream input,
 			GeometryDataContainer gmdc,
 			bool animationonly
 		)
 		{
-			System.IO.StreamReader sr = new StreamReader(input);
+			StreamReader sr = new StreamReader(input);
 			Ambertation.XSI.IO.AsciiFile xsi = Ambertation.XSI.IO.AsciiFile.FromStream(
 				sr,
 				FileName

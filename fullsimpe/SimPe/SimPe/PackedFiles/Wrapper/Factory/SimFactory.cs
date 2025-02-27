@@ -28,7 +28,7 @@ namespace SimPe.PackedFiles.Wrapper.Factory
 	public class SimFactory : AbstractWrapperFactory
 	{
 		#region AbstractWrapperFactory Member
-		public override SimPe.Interfaces.IWrapper[] KnownWrappers
+		public override IWrapper[] KnownWrappers
 		{
 			get
 			{
@@ -40,7 +40,7 @@ namespace SimPe.PackedFiles.Wrapper.Factory
 				{
 					IWrapper[] wrappers =
 					{
-						new SimPe.PackedFiles.Wrapper.LinkedSDesc(),
+						new LinkedSDesc(),
 					};
 					return wrappers;
 				}
@@ -48,11 +48,11 @@ namespace SimPe.PackedFiles.Wrapper.Factory
 				{
 					IWrapper[] wrappers =
 					{
-						new SimPe.PackedFiles.Wrapper.ExtFamilyTies(),
-						new SimPe.PackedFiles.Wrapper.LinkedSDesc(),
-						new SimPe.PackedFiles.Wrapper.ExtSrel(),
-						new SimPe.PackedFiles.Wrapper.SimDNA(),
-						new SimPe.PackedFiles.Wrapper.Scor(),
+						new ExtFamilyTies(),
+						new LinkedSDesc(),
+						new ExtSrel(),
+						new SimDNA(),
+						new Scor(),
 					};
 					return wrappers;
 				}

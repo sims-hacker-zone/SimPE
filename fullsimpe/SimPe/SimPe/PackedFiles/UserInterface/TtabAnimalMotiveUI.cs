@@ -27,10 +27,10 @@ namespace SimPe.PackedFiles.UserInterface
 	/// <summary>
 	/// Summary description for TtabSingleMotive.
 	/// </summary>
-	public class TtabAnimalMotiveUI : System.Windows.Forms.UserControl
+	public class TtabAnimalMotiveUI : UserControl
 	{
 		#region Form variables
-		private System.Windows.Forms.TextBox tbValue;
+		private TextBox tbValue;
 		private Button btnPopup;
 
 		/// <summary>
@@ -77,7 +77,7 @@ namespace SimPe.PackedFiles.UserInterface
 				{
 					if (item != null)
 					{
-						item.Wrapper.WrapperChanged -= new System.EventHandler(
+						item.Wrapper.WrapperChanged -= new EventHandler(
 							this.WrapperChanged
 						);
 					}
@@ -86,7 +86,7 @@ namespace SimPe.PackedFiles.UserInterface
 					setText();
 					if (item != null)
 					{
-						item.Wrapper.WrapperChanged += new System.EventHandler(
+						item.Wrapper.WrapperChanged += new EventHandler(
 							this.WrapperChanged
 						);
 					}
@@ -94,7 +94,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		private void WrapperChanged(object sender, System.EventArgs e)
+		private void WrapperChanged(object sender, EventArgs e)
 		{
 			if (sender != item)
 			{
@@ -146,8 +146,8 @@ namespace SimPe.PackedFiles.UserInterface
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(TtabAnimalMotiveUI)
 				);
-			this.tbValue = new System.Windows.Forms.TextBox();
-			this.btnPopup = new System.Windows.Forms.Button();
+			this.tbValue = new TextBox();
+			this.btnPopup = new Button();
 			this.SuspendLayout();
 			//
 			// tbValue
@@ -162,7 +162,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.btnPopup, "btnPopup");
 			this.btnPopup.Name = "btnPopup";
 			this.btnPopup.UseVisualStyleBackColor = false;
-			this.btnPopup.Click += new System.EventHandler(this.btnPopup_Click);
+			this.btnPopup.Click += new EventHandler(this.btnPopup_Click);
 			//
 			// TtabAnimalMotiveUI
 			//

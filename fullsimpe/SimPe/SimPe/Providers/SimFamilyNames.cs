@@ -30,7 +30,7 @@ namespace SimPe.Providers
 	/// </summary>
 	public class SimFamilyNames
 		: SimCommonPackage,
-			SimPe.Interfaces.Providers.ISimFamilyNames
+			Interfaces.Providers.ISimFamilyNames
 	{
 		/// <summary>
 		/// List of known Aliases (can be null)
@@ -61,7 +61,7 @@ namespace SimPe.Providers
 				return;
 			}
 
-			SimPe.PackedFiles.Wrapper.Fami fami = new SimPe.PackedFiles.Wrapper.Fami(
+			PackedFiles.Wrapper.Fami fami = new PackedFiles.Wrapper.Fami(
 				null
 			);
 			Hashtable al = new Hashtable();
@@ -87,7 +87,7 @@ namespace SimPe.Providers
 
 			///add unlisted Sims
 			foreach (
-				SimPe.PackedFiles.Wrapper.SDesc sdesc in FileTable
+				PackedFiles.Wrapper.SDesc sdesc in FileTable
 					.ProviderRegistry
 					.SimDescriptionProvider
 					.SimInstance
@@ -102,10 +102,10 @@ namespace SimPe.Providers
 						!= BasePackage.SaveFileName.Trim().ToLower()
 					)
 					{
-						SimPe.Interfaces.Files.IPackageFile pkg = sdesc.Package;
+						IPackageFile pkg = sdesc.Package;
 						if (pkg != null)
 						{
-							SimPe.Interfaces.Files.IPackedFileDescriptor pfd =
+							IPackedFileDescriptor pfd =
 								pkg.FindFile(
 									fami.AssignableTypes[0],
 									0,
@@ -142,7 +142,7 @@ namespace SimPe.Providers
 		/// </summary>
 		/// <param name="id">The id of a Sim</param>
 		/// <returns>The Alias of the Sim</returns>
-		public SimPe.Interfaces.IAlias FindName(uint id)
+		public IAlias FindName(uint id)
 		{
 			if (names == null)
 			{
@@ -183,7 +183,7 @@ namespace SimPe.Providers
 			}*/
 
 			foreach (
-				SimPe.PackedFiles.Wrapper.SDesc sdesc in FileTable
+				PackedFiles.Wrapper.SDesc sdesc in FileTable
 					.ProviderRegistry
 					.SimDescriptionProvider
 					.SimInstance

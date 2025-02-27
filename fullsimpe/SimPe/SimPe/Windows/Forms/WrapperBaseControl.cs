@@ -28,10 +28,10 @@ namespace SimPe.Windows.Forms
 	/// <summary>
 	/// Summary description for WrapperBaseControl.
 	/// </summary>
-	[ToolboxBitmapAttribute(typeof(Panel))]
+	[ToolboxBitmap(typeof(Panel))]
 	public class WrapperBaseControl
-		: System.Windows.Forms.UserControl,
-			SimPe.Interfaces.Plugin.IPackedFileUI
+		: UserControl,
+			Interfaces.Plugin.IPackedFileUI
 	{
 		/// <summary>
 		/// Determines the Anchor Location of the background image.
@@ -52,7 +52,7 @@ namespace SimPe.Windows.Forms
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		private System.ComponentModel.Container components = null;
+		private Container components = null;
 
 		public WrapperBaseControl()
 		{
@@ -93,7 +93,7 @@ namespace SimPe.Windows.Forms
 				midcol = Color.FromArgb(192, 192, 255);
 				gradcol = Color.FromArgb(252, 248, 255);
 				mCentre = 0.7F;
-				mPicloc = new System.Drawing.Point(0, 0);
+				mPicloc = new Point(0, 0);
 				mPicZoom = 1.0F;
 				mPicOpacity = 1.0F;
 				mPicFit = false;
@@ -246,11 +246,11 @@ namespace SimPe.Windows.Forms
 
 		public int HeaderHeight => 24;
 
-		private System.Windows.Forms.Button btCommit;
+		private Button btCommit;
 		Color gradcol;
 		Color midcol;
 		float mCentre;
-		System.Drawing.Point mPicloc;
+		Point mPicloc;
 		float mPicZoom;
 		float mPicOpacity;
 		bool mPicFit;
@@ -347,7 +347,7 @@ namespace SimPe.Windows.Forms
 				}
 			}
 		}
-		public System.Drawing.Point BackgroundImageLocation
+		public Point BackgroundImageLocation
 		{
 			get
 			{
@@ -396,7 +396,7 @@ namespace SimPe.Windows.Forms
 		#region Properties
 
 		[Browsable(false)]
-		public SimPe.ThemeManager ThemeManager
+		public ThemeManager ThemeManager
 		{
 			get; private set;
 		}
@@ -404,20 +404,20 @@ namespace SimPe.Windows.Forms
 		public class WrapperChangedEventArgs : EventArgs
 		{
 			public WrapperChangedEventArgs(
-				SimPe.Interfaces.Plugin.IFileWrapper owrp,
-				SimPe.Interfaces.Plugin.IFileWrapper nwrp
+				Interfaces.Plugin.IFileWrapper owrp,
+				Interfaces.Plugin.IFileWrapper nwrp
 			)
 			{
 				this.OldWrapper = owrp;
 				this.NewWrapper = nwrp;
 			}
 
-			public SimPe.Interfaces.Plugin.IFileWrapper OldWrapper
+			public Interfaces.Plugin.IFileWrapper OldWrapper
 			{
 				get;
 			}
 
-			public SimPe.Interfaces.Plugin.IFileWrapper NewWrapper
+			public Interfaces.Plugin.IFileWrapper NewWrapper
 			{
 				get;
 			}
@@ -430,14 +430,14 @@ namespace SimPe.Windows.Forms
 		public event WrapperChangedHandle WrapperChanged;
 
 		[Browsable(false)]
-		public SimPe.Interfaces.Plugin.IFileWrapper Wrapper
+		public Interfaces.Plugin.IFileWrapper Wrapper
 		{
 			get; private set;
 		}
 		#endregion
 
 		#region Events
-		public event System.EventHandler Commited;
+		public event EventHandler Commited;
 		#endregion
 
 		#region Windows Form Designer generated code
@@ -449,7 +449,7 @@ namespace SimPe.Windows.Forms
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(WrapperBaseControl));
-			this.btCommit = new System.Windows.Forms.Button();
+			this.btCommit = new Button();
 			this.SuspendLayout();
 			//
 			// btCommit
@@ -461,30 +461,30 @@ namespace SimPe.Windows.Forms
 				"btCommit.AccessibleName"
 			);
 			this.btCommit.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("btCommit.Anchor")
 				)
 			);
 			this.btCommit.BackgroundImage = (
-				(System.Drawing.Image)(resources.GetObject("btCommit.BackgroundImage"))
+				(Image)(resources.GetObject("btCommit.BackgroundImage"))
 			);
 			this.btCommit.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("btCommit.Dock"))
+				(DockStyle)(resources.GetObject("btCommit.Dock"))
 			);
 			this.btCommit.Enabled = ((bool)(resources.GetObject("btCommit.Enabled")));
 			this.btCommit.FlatStyle = (
-				(System.Windows.Forms.FlatStyle)(
+				(FlatStyle)(
 					resources.GetObject("btCommit.FlatStyle")
 				)
 			);
 			this.btCommit.Font = (
-				(System.Drawing.Font)(resources.GetObject("btCommit.Font"))
+				(Font)(resources.GetObject("btCommit.Font"))
 			);
 			this.btCommit.Image = (
-				(System.Drawing.Image)(resources.GetObject("btCommit.Image"))
+				(Image)(resources.GetObject("btCommit.Image"))
 			);
 			this.btCommit.ImageAlign = (
-				(System.Drawing.ContentAlignment)(
+				(ContentAlignment)(
 					resources.GetObject("btCommit.ImageAlign")
 				)
 			);
@@ -492,29 +492,29 @@ namespace SimPe.Windows.Forms
 				(int)(resources.GetObject("btCommit.ImageIndex"))
 			);
 			this.btCommit.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("btCommit.ImeMode"))
+				(ImeMode)(resources.GetObject("btCommit.ImeMode"))
 			);
 			this.btCommit.Location = (
-				(System.Drawing.Point)(resources.GetObject("btCommit.Location"))
+				(Point)(resources.GetObject("btCommit.Location"))
 			);
 			this.btCommit.Name = "btCommit";
 			this.btCommit.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("btCommit.RightToLeft")
 				)
 			);
 			this.btCommit.Size = (
-				(System.Drawing.Size)(resources.GetObject("btCommit.Size"))
+				(Size)(resources.GetObject("btCommit.Size"))
 			);
 			this.btCommit.TabIndex = ((int)(resources.GetObject("btCommit.TabIndex")));
 			this.btCommit.Text = resources.GetString("btCommit.Text");
 			this.btCommit.TextAlign = (
-				(System.Drawing.ContentAlignment)(
+				(ContentAlignment)(
 					resources.GetObject("btCommit.TextAlign")
 				)
 			);
 			this.btCommit.Visible = ((bool)(resources.GetObject("btCommit.Visible")));
-			this.btCommit.Click += new System.EventHandler(this.btCommit_Click);
+			this.btCommit.Click += new EventHandler(this.btCommit_Click);
 			//
 			// WrapperBaseControl
 			//
@@ -524,31 +524,31 @@ namespace SimPe.Windows.Forms
 			this.AccessibleName = resources.GetString("$this.AccessibleName");
 			this.AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
 			this.AutoScrollMargin = (
-				(System.Drawing.Size)(resources.GetObject("$this.AutoScrollMargin"))
+				(Size)(resources.GetObject("$this.AutoScrollMargin"))
 			);
 			this.AutoScrollMinSize = (
-				(System.Drawing.Size)(resources.GetObject("$this.AutoScrollMinSize"))
+				(Size)(resources.GetObject("$this.AutoScrollMinSize"))
 			);
 			this.BackgroundImage = (
-				(System.Drawing.Image)(resources.GetObject("$this.BackgroundImage"))
+				(Image)(resources.GetObject("$this.BackgroundImage"))
 			);
 			this.Controls.Add(this.btCommit);
 			this.DockPadding.Top = 24;
 			this.Enabled = ((bool)(resources.GetObject("$this.Enabled")));
-			this.Font = ((System.Drawing.Font)(resources.GetObject("$this.Font")));
+			this.Font = ((Font)(resources.GetObject("$this.Font")));
 			this.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("$this.ImeMode"))
+				(ImeMode)(resources.GetObject("$this.ImeMode"))
 			);
 			this.Location = (
-				(System.Drawing.Point)(resources.GetObject("$this.Location"))
+				(Point)(resources.GetObject("$this.Location"))
 			);
 			this.Name = "WrapperBaseControl";
 			this.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("$this.RightToLeft")
 				)
 			);
-			this.Size = ((System.Drawing.Size)(resources.GetObject("$this.Size")));
+			this.Size = ((Size)(resources.GetObject("$this.Size")));
 			this.ResumeLayout(false);
 		}
 		#endregion
@@ -747,7 +747,7 @@ namespace SimPe.Windows.Forms
 		{
 		}
 
-		private void btCommit_Click(object sender, System.EventArgs e)
+		private void btCommit_Click(object sender, EventArgs e)
 		{
 			if (Commited != null)
 			{
@@ -761,7 +761,7 @@ namespace SimPe.Windows.Forms
 		/// <summary>
 		/// Returns the Panel that will be displayed within SimPe
 		/// </summary>
-		public System.Windows.Forms.Control GUIHandle => this;
+		public Control GUIHandle => this;
 
 		protected virtual void OnWrapperChanged(WrapperChangedEventArgs e)
 		{
@@ -775,15 +775,15 @@ namespace SimPe.Windows.Forms
 		/// <remarks>attr.Tag is used to let TextChanged event handlers know the change is being
 		/// made internally rather than by the users.</remarks>
 		/// <param name="wrp">The Attributes of this Wrapper have to be displayed</param>
-		public void UpdateGUI(SimPe.Interfaces.Plugin.IFileWrapper wrp)
+		public void UpdateGUI(Interfaces.Plugin.IFileWrapper wrp)
 		{
 			SetWrapper(wrp);
 			RefreshGUI();
 		}
 
-		private void SetWrapper(SimPe.Interfaces.Plugin.IFileWrapper wrp)
+		private void SetWrapper(Interfaces.Plugin.IFileWrapper wrp)
 		{
-			SimPe.Interfaces.Plugin.IFileWrapper old = this.Wrapper;
+			Interfaces.Plugin.IFileWrapper old = this.Wrapper;
 			this.Wrapper = wrp;
 
 			WrapperChangedEventArgs e = new WrapperChangedEventArgs(old, wrp);

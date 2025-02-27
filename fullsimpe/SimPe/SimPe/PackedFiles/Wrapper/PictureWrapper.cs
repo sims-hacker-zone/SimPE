@@ -29,18 +29,18 @@ namespace SimPe.PackedFiles.Wrapper
 	/// </summary>
 	public class Picture
 		: AbstractWrapper,
-			SimPe.Interfaces.Plugin.IFileWrapper,
-			System.IDisposable
+			IFileWrapper,
+			IDisposable
 	{
 		/// <summary>
 		/// Stores the Image
 		/// </summary>
-		protected System.Drawing.Image image;
+		protected Image image;
 
 		/// <summary>
 		/// Returns the Stored Image
 		/// </summary>
-		public System.Drawing.Image Image => image;
+		public Image Image => image;
 
 		#region IWrapper Member
 		protected override IWrapperInfo CreateWrapperInfo()
@@ -118,7 +118,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new SimPe.PackedFiles.UserInterface.Picture();
+			return new UserInterface.Picture();
 		}
 
 		public Picture()

@@ -65,7 +65,7 @@ namespace SimPe.Plugin
 				Wait.Message = ("Load Memories from Cache");
 				foreach (MemoryCacheItem mci in ObjectCache.List)
 				{
-					Data.Alias a = new SimPe.Data.Alias(mci.Guid, mci.Name);
+					Data.Alias a = new Data.Alias(mci.Guid, mci.Name);
 					object[] o = new object[3];
 					o[0] = mci.FileDescriptor;
 					o[1] = mci.ObjectType;
@@ -95,7 +95,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the Panel that will be displayed within SimPe
 		/// </summary>
-		public System.Windows.Forms.Control GUIHandle => form.ngbhPanel;
+		public Control GUIHandle => form.ngbhPanel;
 
 		/// <summary>
 		/// Is called by SimPe (through the Wrapper) when the Panel is going to be displayed, so
@@ -126,7 +126,7 @@ namespace SimPe.Plugin
 			form.cbown.Sorted = false;
 			foreach (Interfaces.Files.IPackedFileDescriptor spfd in pfds)
 			{
-				PackedFiles.Wrapper.SDesc sdesc = new SimPe.PackedFiles.Wrapper.SDesc(
+				PackedFiles.Wrapper.SDesc sdesc = new PackedFiles.Wrapper.SDesc(
 					wrp.Provider.SimNameProvider,
 					wrp.Provider.SimFamilynameProvider,
 					null
@@ -171,7 +171,7 @@ namespace SimPe.Plugin
 					if ((sdesc.Unlinked != 0x00) || (!sdesc.AvailableCharacterData))
 					{
 						Image img = (Image)sdesc.Image.Clone();
-						System.Drawing.Graphics g = Graphics.FromImage(img);
+						Graphics g = Graphics.FromImage(img);
 						g.CompositingQuality = System
 							.Drawing
 							.Drawing2D

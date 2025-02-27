@@ -26,7 +26,7 @@ using SimPe.Interfaces.Plugin.Internal;
 namespace SimPe.Packages
 {
 	public class PackedFileDescriptorSimple
-		: SimPe.Interfaces.Files.IPackedFileDescriptorSimple
+		: IPackedFileDescriptorSimple
 	{
 		public PackedFileDescriptorSimple()
 			: this(0, 0, 0, 0) { }
@@ -153,7 +153,7 @@ namespace SimPe.Packages
 	public class PackedFileDescriptor
 		: PackedFileDescriptorSimple,
 			IPackedFileDescriptor,
-			System.IDisposable
+			IDisposable
 	{
 		/// <summary>
 		/// Creates a clone of this Object
@@ -809,7 +809,7 @@ namespace SimPe.Packages
 		/// </summary>
 		/// <remarks>
 		/// This is the public Change Listener. Developers can control in
-		/// <see cref="SetUserData"/>if this Event is fired. This Event will not fire if <see cref="SimPe.Interfaces.Plugin.Internal.SynchronizeUserData"/>
+		/// <see cref="SetUserData"/>if this Event is fired. This Event will not fire if <see cref="Interfaces.Plugin.Internal.SynchronizeUserData"/>
 		/// is called (which changes the UserData).
 		/// </remarks>
 		public event PackedFileChanged ChangedUserData;
@@ -830,12 +830,12 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Triggered whenever the Content of the Descriptor was changed
 		/// </summary>
-		public event System.EventHandler DescriptionChanged;
+		public event EventHandler DescriptionChanged;
 
 		/// <summary>
 		/// Triggered whenever the Descriptor get's AMrked for Deletion
 		/// </summary>
-		public event System.EventHandler Deleted;
+		public event EventHandler Deleted;
 
 		void ChangedDataFkt()
 		{
@@ -887,7 +887,7 @@ namespace SimPe.Packages
 		}
 
 		internal void LoadFromStream(
-			SimPe.Interfaces.Files.IPackageHeader header,
+			IPackageHeader header,
 			System.IO.BinaryReader reader
 		)
 		{

@@ -22,7 +22,7 @@ using System;
 
 namespace SimPe.Plugin.Tool.Dockable.Finder
 {
-	public partial class FindInStr : SimPe.Interfaces.AFinderTool
+	public partial class FindInStr : Interfaces.AFinderTool
 	{
 		public enum CompareType
 		{
@@ -34,7 +34,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 			RegExp = 4,
 		}
 
-		public FindInStr(SimPe.Interfaces.IFinderResultGui rgui)
+		public FindInStr(Interfaces.IFinderResultGui rgui)
 			: base(rgui)
 		{
 			InitializeComponent();
@@ -82,8 +82,8 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 		}
 
 		public override void SearchPackage(
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			Interfaces.Files.IPackageFile pkg,
+			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
 			if (
@@ -94,12 +94,12 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 				return;
 			}
 
-			SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
 			str.ProcessData(pfd, pkg);
 
-			SimPe.PackedFiles.Wrapper.StrItemList sitems = str.Items;
+			PackedFiles.Wrapper.StrItemList sitems = str.Items;
 			//check all stored nMap entries for a match
-			foreach (SimPe.PackedFiles.Wrapper.StrToken item in sitems)
+			foreach (PackedFiles.Wrapper.StrToken item in sitems)
 			{
 				bool found = false;
 				string n = item.Title.Trim().ToLower();

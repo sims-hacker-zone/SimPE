@@ -24,7 +24,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Zusammenfassung für ImportSemiTool.
 	/// </summary>
-	public class ScenegraphTool : Interfaces.AbstractTool, Interfaces.ITool
+	public class ScenegraphTool : AbstractTool, ITool
 	{
 		IWrapperRegistry reg;
 		IProviderRegistry prov;
@@ -41,19 +41,19 @@ namespace SimPe.Plugin
 		#region ITool Member
 
 		public bool IsEnabled(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile package
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile package
 		)
 		{
 			return (package != null);
 		}
 
 		public Interfaces.Plugin.IToolResult ShowDialog(
-			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			ref SimPe.Interfaces.Files.IPackageFile package
+			ref Interfaces.Files.IPackedFileDescriptor pfd,
+			ref Interfaces.Files.IPackageFile package
 		)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor opfd = pfd;
+			Interfaces.Files.IPackedFileDescriptor opfd = pfd;
 			sg.Execute(prov, package, ref pfd);
 
 			if ((pfd == null) && (opfd == null))

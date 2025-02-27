@@ -31,7 +31,7 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 			InitializeComponent();
 		}
 
-		internal void AddElement(ScoreItemBusinessRewards.Element e)
+		internal void AddElement(Element e)
 		{
 			if (e == null)
 			{
@@ -41,7 +41,7 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 			lb.Items.Add(e);
 		}
 
-		protected void RemoveElement(ScoreItemBusinessRewards.Element e)
+		protected void RemoveElement(Element e)
 		{
 			if (e == null)
 			{
@@ -74,8 +74,8 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 			ScorItem.SerializeDefaultToken(writer, last && lb.Items.Count == 0);
 			for (int i = 0; i < lb.Items.Count; i++)
 			{
-				ScoreItemBusinessRewards.Element e =
-					lb.Items[i] as ScoreItemBusinessRewards.Element;
+				Element e =
+					lb.Items[i] as Element;
 				e.SaveData(writer, last && i == lb.Items.Count - 1);
 			}
 		}
@@ -90,7 +90,7 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			RemoveElement(lb.SelectedItem as ScoreItemBusinessRewards.Element);
+			RemoveElement(lb.SelectedItem as Element);
 		}
 	}
 }

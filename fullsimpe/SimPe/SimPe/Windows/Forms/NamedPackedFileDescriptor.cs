@@ -2,26 +2,26 @@ namespace SimPe.Windows.Forms
 {
 	public class NamedPackedFileDescriptor
 	{
-		SimPe.Interfaces.Files.IPackageFile pkg;
+		Interfaces.Files.IPackageFile pkg;
 		string realname;
 
 		public NamedPackedFileDescriptor(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
 			this.Descriptor = pfd;
 			this.pkg = pkg;
-			this.Resource = new SimPe.Plugin.FileIndexItem(pfd, pkg);
+			this.Resource = new Plugin.FileIndexItem(pfd, pkg);
 			realname = null;
 		}
 
-		public SimPe.Plugin.FileIndexItem Resource
+		public Plugin.FileIndexItem Resource
 		{
 			get;
 		}
 
-		public SimPe.Interfaces.Files.IPackedFileDescriptor Descriptor
+		public Interfaces.Files.IPackedFileDescriptor Descriptor
 		{
 			get;
 		}
@@ -39,19 +39,19 @@ namespace SimPe.Windows.Forms
 			{
 				if (Helper.WindowsRegistry.DecodeFilenamesState)
 				{
-					SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper wrp =
+					Interfaces.Plugin.Internal.IPackedFileWrapper wrp =
 						FileTable.WrapperRegistry.FindHandler(Descriptor.Type);
 					if (wrp != null)
 					{
 						lock (wrp)
 						{
 							//System.Diagnostics.Debug.WriteLine("Processing " + pfd.Type.ToString("X")+" "+pfd.Offset.ToString("X"));
-							SimPe.Interfaces.Files.IPackedFileDescriptor bakpfd = null;
-							SimPe.Interfaces.Files.IPackageFile bakpkg = null;
-							if (wrp is SimPe.Interfaces.Plugin.AbstractWrapper)
+							Interfaces.Files.IPackedFileDescriptor bakpfd = null;
+							Interfaces.Files.IPackageFile bakpkg = null;
+							if (wrp is Interfaces.Plugin.AbstractWrapper)
 							{
-								SimPe.Interfaces.Plugin.AbstractWrapper awrp =
-									(SimPe.Interfaces.Plugin.AbstractWrapper)wrp;
+								Interfaces.Plugin.AbstractWrapper awrp =
+									(Interfaces.Plugin.AbstractWrapper)wrp;
 								if (!awrp.AllowMultipleInstances)
 								{
 									bakpfd = awrp.FileDescriptor;
@@ -73,10 +73,10 @@ namespace SimPe.Windows.Forms
 							{
 								if (bakpfd != null || bakpkg != null)
 								{
-									if (wrp is SimPe.Interfaces.Plugin.AbstractWrapper)
+									if (wrp is Interfaces.Plugin.AbstractWrapper)
 									{
-										SimPe.Interfaces.Plugin.AbstractWrapper awrp =
-											(SimPe.Interfaces.Plugin.AbstractWrapper)wrp;
+										Interfaces.Plugin.AbstractWrapper awrp =
+											(Interfaces.Plugin.AbstractWrapper)wrp;
 										if (!awrp.AllowMultipleInstances)
 										{
 											awrp.FileDescriptor = bakpfd;

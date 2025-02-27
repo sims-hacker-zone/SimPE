@@ -30,129 +30,129 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for fGeometryDataContainer.
 	/// </summary>
-	internal class fGeometryDataContainer : System.Windows.Forms.Form
+	internal class fGeometryDataContainer : Form
 	{
-		private System.Windows.Forms.TabControl tabControl1;
-		private System.Windows.Forms.GroupBox groupBox10;
-		internal System.Windows.Forms.TextBox tb_ver;
-		private System.Windows.Forms.Label label28;
+		private TabControl tabControl1;
+		private GroupBox groupBox10;
+		internal TextBox tb_ver;
+		private Label label28;
 		internal System.Windows.Forms.TabPage tGeometryDataContainer;
-		private System.Windows.Forms.GroupBox groupBox3;
-		internal System.Windows.Forms.TextBox tb_uk5;
-		private System.Windows.Forms.Label label10;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.Label label5;
-		internal System.Windows.Forms.TextBox tb_uk1;
-		private System.Windows.Forms.Label label6;
-		internal System.Windows.Forms.ListBox lb_itemsa;
-		internal System.Windows.Forms.TextBox tb_mod2;
-		internal System.Windows.Forms.TextBox tb_mod1;
-		internal System.Windows.Forms.TextBox tb_id;
-		private System.Windows.Forms.GroupBox groupBox1;
-		internal System.Windows.Forms.ListBox lb_itemsa2;
-		private System.Windows.Forms.Label label1;
-		internal System.Windows.Forms.TextBox tb_itemsa2;
+		private GroupBox groupBox3;
+		internal TextBox tb_uk5;
+		private Label label10;
+		private Label label7;
+		private Label label8;
+		private Label label5;
+		internal TextBox tb_uk1;
+		private Label label6;
+		internal ListBox lb_itemsa;
+		internal TextBox tb_mod2;
+		internal TextBox tb_mod1;
+		internal TextBox tb_id;
+		private GroupBox groupBox1;
+		internal ListBox lb_itemsa2;
+		private Label label1;
+		internal TextBox tb_itemsa2;
 		internal System.Windows.Forms.TabPage tGeometryDataContainer2;
 		internal System.Windows.Forms.TabPage tGeometryDataContainer3;
-		private System.Windows.Forms.GroupBox groupBox2;
-		internal System.Windows.Forms.ListBox lb_itemsc;
-		internal System.Windows.Forms.TextBox tb_itemsc_name;
-		private System.Windows.Forms.Label label11;
-		internal System.Windows.Forms.TextBox tb_opacity;
-		private System.Windows.Forms.Label label13;
-		internal System.Windows.Forms.TextBox tb_uk3;
-		private System.Windows.Forms.Label label2;
-		internal System.Windows.Forms.TextBox tb_uk2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.GroupBox groupBox4;
-		private System.Windows.Forms.Label label4;
-		internal System.Windows.Forms.ListBox lb_itemsc2;
-		private System.Windows.Forms.GroupBox groupBox5;
-		private System.Windows.Forms.Label label9;
-		internal System.Windows.Forms.ListBox lb_itemsc3;
-		internal System.Windows.Forms.TextBox tb_itemsc2;
-		internal System.Windows.Forms.TextBox tb_itemsc3;
-		private System.Windows.Forms.GroupBox groupBox6;
-		internal System.Windows.Forms.TextBox tb_itemsb2;
-		private System.Windows.Forms.Label label14;
-		internal System.Windows.Forms.ListBox lb_itemsb2;
-		private System.Windows.Forms.GroupBox groupBox7;
-		private System.Windows.Forms.Label label16;
-		internal System.Windows.Forms.ListBox lb_itemsb;
-		private System.Windows.Forms.Label label18;
-		private System.Windows.Forms.GroupBox groupBox8;
-		internal System.Windows.Forms.TextBox tb_itemsb3;
-		private System.Windows.Forms.Label label19;
-		internal System.Windows.Forms.ListBox lb_itemsb3;
-		private System.Windows.Forms.GroupBox groupBox9;
-		internal System.Windows.Forms.TextBox tb_itemsb4;
-		private System.Windows.Forms.Label label15;
-		internal System.Windows.Forms.ListBox lb_itemsb4;
-		private System.Windows.Forms.GroupBox groupBox11;
-		internal System.Windows.Forms.TextBox tb_itemsb5;
-		private System.Windows.Forms.Label label17;
-		internal System.Windows.Forms.ListBox lb_itemsb5;
-		internal System.Windows.Forms.TextBox tb_uk4;
-		internal System.Windows.Forms.TextBox tb_uk6;
-		private System.Windows.Forms.SaveFileDialog sfd;
-		private System.Windows.Forms.Button button3;
-		internal System.Windows.Forms.CheckedListBox lbmodel;
+		private GroupBox groupBox2;
+		internal ListBox lb_itemsc;
+		internal TextBox tb_itemsc_name;
+		private Label label11;
+		internal TextBox tb_opacity;
+		private Label label13;
+		internal TextBox tb_uk3;
+		private Label label2;
+		internal TextBox tb_uk2;
+		private Label label3;
+		private GroupBox groupBox4;
+		private Label label4;
+		internal ListBox lb_itemsc2;
+		private GroupBox groupBox5;
+		private Label label9;
+		internal ListBox lb_itemsc3;
+		internal TextBox tb_itemsc2;
+		internal TextBox tb_itemsc3;
+		private GroupBox groupBox6;
+		internal TextBox tb_itemsb2;
+		private Label label14;
+		internal ListBox lb_itemsb2;
+		private GroupBox groupBox7;
+		private Label label16;
+		internal ListBox lb_itemsb;
+		private Label label18;
+		private GroupBox groupBox8;
+		internal TextBox tb_itemsb3;
+		private Label label19;
+		internal ListBox lb_itemsb3;
+		private GroupBox groupBox9;
+		internal TextBox tb_itemsb4;
+		private Label label15;
+		internal ListBox lb_itemsb4;
+		private GroupBox groupBox11;
+		internal TextBox tb_itemsb5;
+		private Label label17;
+		internal ListBox lb_itemsb5;
+		internal TextBox tb_uk4;
+		internal TextBox tb_uk6;
+		private SaveFileDialog sfd;
+		private Button button3;
+		internal CheckedListBox lbmodel;
 		private Ambertation.Graphics.RenderSelection scenesel;
-		private System.Windows.Forms.Button button4;
-		private System.Windows.Forms.ColorDialog cd;
+		private Button button4;
+		private ColorDialog cd;
 		internal System.Windows.Forms.TabPage tMesh;
 		internal System.Windows.Forms.TabPage tAdvncd;
-		private System.Windows.Forms.PropertyGrid pg;
-		internal System.Windows.Forms.Label label_elements;
-		internal System.Windows.Forms.ListBox list_elements;
-		internal System.Windows.Forms.ListBox list_links;
-		internal System.Windows.Forms.Label label_links;
-		internal System.Windows.Forms.ListBox list_groups;
-		internal System.Windows.Forms.Label label_groups;
-		internal System.Windows.Forms.ListBox list_subsets;
-		internal System.Windows.Forms.Label label_subsets;
-		private System.Windows.Forms.LinkLabel linkLabel1;
-		private System.Windows.Forms.Button button5;
-		private System.Windows.Forms.ComboBox cbblock;
-		private System.Windows.Forms.ComboBox cbset;
-		private System.Windows.Forms.ComboBox cbid;
-		private System.Windows.Forms.GroupBox groupBox12;
-		internal System.Windows.Forms.ListBox lb_itemsa1;
+		private PropertyGrid pg;
+		internal Label label_elements;
+		internal ListBox list_elements;
+		internal ListBox list_links;
+		internal Label label_links;
+		internal ListBox list_groups;
+		internal Label label_groups;
+		internal ListBox list_subsets;
+		internal Label label_subsets;
+		private LinkLabel linkLabel1;
+		private Button button5;
+		private ComboBox cbblock;
+		private ComboBox cbset;
+		private ComboBox cbid;
+		private GroupBox groupBox12;
+		internal ListBox lb_itemsa1;
 		internal System.Windows.Forms.TabPage tSubset;
-		private System.Windows.Forms.GroupBox groupBox13;
-		private System.Windows.Forms.GroupBox groupBox14;
-		private System.Windows.Forms.GroupBox groupBox15;
-		internal System.Windows.Forms.ListBox lb_subsets;
-		internal System.Windows.Forms.ListBox lb_sub_items;
-		internal System.Windows.Forms.ListBox lb_sub_faces;
+		private GroupBox groupBox13;
+		private GroupBox groupBox14;
+		private GroupBox groupBox15;
+		internal ListBox lb_subsets;
+		internal ListBox lb_sub_items;
+		internal ListBox lb_sub_faces;
 		internal System.Windows.Forms.TabPage tModel;
-		private System.Windows.Forms.GroupBox groupBox16;
-		private System.Windows.Forms.GroupBox groupBox17;
-		private System.Windows.Forms.GroupBox groupBox18;
-		private System.Windows.Forms.GroupBox groupBox19;
-		internal System.Windows.Forms.ListBox lb_model_trans;
-		internal System.Windows.Forms.ListBox lb_model_names;
-		internal System.Windows.Forms.ListBox lb_model_faces;
-		internal System.Windows.Forms.ListBox lb_model_items;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.OpenFileDialog ofd;
-		private System.Windows.Forms.LinkLabel linkLabel2;
-		private System.Windows.Forms.LinkLabel linkLabel3;
-		internal System.Windows.Forms.Label lb_models;
-		private System.Windows.Forms.LinkLabel linkLabel4;
-		private System.Windows.Forms.LinkLabel linkLabel5;
-		private System.Windows.Forms.Label label12;
-		private System.Windows.Forms.ComboBox cbaxis;
-		private System.Windows.Forms.LinkLabel linkLabel6;
-		private System.Windows.Forms.LinkLabel linkLabel7;
+		private GroupBox groupBox16;
+		private GroupBox groupBox17;
+		private GroupBox groupBox18;
+		private GroupBox groupBox19;
+		internal ListBox lb_model_trans;
+		internal ListBox lb_model_names;
+		internal ListBox lb_model_faces;
+		internal ListBox lb_model_items;
+		private Button button1;
+		private OpenFileDialog ofd;
+		private LinkLabel linkLabel2;
+		private LinkLabel linkLabel3;
+		internal Label lb_models;
+		private LinkLabel linkLabel4;
+		private LinkLabel linkLabel5;
+		private Label label12;
+		private ComboBox cbaxis;
+		private LinkLabel linkLabel6;
+		private LinkLabel linkLabel7;
 		private Ambertation.Graphics.DirectXPanel dxprev;
-		private System.Windows.Forms.Label label21;
-		internal System.Windows.Forms.ComboBox cbGroupJoint;
-		private System.Windows.Forms.LinkLabel llAssign;
-		private System.Windows.Forms.CheckBox cbCorrect;
-		private System.Windows.Forms.LinkLabel llClearBB;
-		private System.Windows.Forms.LinkLabel llAddBB;
+		private Label label21;
+		internal ComboBox cbGroupJoint;
+		private LinkLabel llAssign;
+		private CheckBox cbCorrect;
+		private LinkLabel llClearBB;
+		private LinkLabel llAddBB;
 
 		/// <summary>
 		/// Required designer variable.
@@ -170,7 +170,7 @@ namespace SimPe.Plugin
 				dxprev.Settings.AddAxis = false;
 				dxprev.LoadSettings(Helper.SimPeViewportFile);
 			}
-			catch (System.IO.FileNotFoundException)
+			catch (FileNotFoundException)
 			{
 				WaitingScreen.Stop();
 				MessageBox.Show(
@@ -181,23 +181,23 @@ namespace SimPe.Plugin
 				InitializeComponent();
 			}
 
-			Gmdc.BlockFormat[] bls = (Gmdc.BlockFormat[])
-				System.Enum.GetValues(typeof(Gmdc.BlockFormat));
-			foreach (Gmdc.BlockFormat b in bls)
+			BlockFormat[] bls = (BlockFormat[])
+				System.Enum.GetValues(typeof(BlockFormat));
+			foreach (BlockFormat b in bls)
 			{
 				this.cbblock.Items.Add(b);
 			}
 
-			Gmdc.SetFormat[] sets = (Gmdc.SetFormat[])
-				System.Enum.GetValues(typeof(Gmdc.SetFormat));
-			foreach (Gmdc.SetFormat s in sets)
+			SetFormat[] sets = (SetFormat[])
+				System.Enum.GetValues(typeof(SetFormat));
+			foreach (SetFormat s in sets)
 			{
 				this.cbset.Items.Add(s);
 			}
 
-			Gmdc.ElementIdentity[] eis = (Gmdc.ElementIdentity[])
-				System.Enum.GetValues(typeof(Gmdc.ElementIdentity));
-			foreach (Gmdc.ElementIdentity e in eis)
+			ElementIdentity[] eis = (ElementIdentity[])
+				System.Enum.GetValues(typeof(ElementIdentity));
+			foreach (ElementIdentity e in eis)
 			{
 				this.cbid.Items.Add(e);
 			}
@@ -205,9 +205,9 @@ namespace SimPe.Plugin
 			this.cbCorrect.Checked = Helper
 				.WindowsRegistry
 				.CorrectJointDefinitionOnExport;
-			SimPe.Plugin.Gmdc.ElementSorting[] vs = (SimPe.Plugin.Gmdc.ElementSorting[])
-				System.Enum.GetValues(typeof(SimPe.Plugin.Gmdc.ElementSorting));
-			foreach (SimPe.Plugin.Gmdc.ElementSorting es in vs)
+			ElementSorting[] vs = (ElementSorting[])
+				System.Enum.GetValues(typeof(ElementSorting));
+			foreach (ElementSorting es in vs)
 			{
 				if (es == ElementSorting.Preview)
 				{
@@ -270,126 +270,126 @@ namespace SimPe.Plugin
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(fGeometryDataContainer)
 				);
-			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.tabControl1 = new TabControl();
 			this.tGeometryDataContainer = new System.Windows.Forms.TabPage();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.tb_itemsa2 = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.lb_itemsa2 = new System.Windows.Forms.ListBox();
-			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			this.cbid = new System.Windows.Forms.ComboBox();
-			this.cbset = new System.Windows.Forms.ComboBox();
-			this.cbblock = new System.Windows.Forms.ComboBox();
-			this.lb_itemsa = new System.Windows.Forms.ListBox();
-			this.tb_uk5 = new System.Windows.Forms.TextBox();
-			this.label10 = new System.Windows.Forms.Label();
-			this.tb_mod2 = new System.Windows.Forms.TextBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.tb_mod1 = new System.Windows.Forms.TextBox();
-			this.label8 = new System.Windows.Forms.Label();
-			this.tb_id = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.tb_uk1 = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.groupBox10 = new System.Windows.Forms.GroupBox();
-			this.tb_ver = new System.Windows.Forms.TextBox();
-			this.label28 = new System.Windows.Forms.Label();
-			this.groupBox12 = new System.Windows.Forms.GroupBox();
-			this.lb_itemsa1 = new System.Windows.Forms.ListBox();
+			this.groupBox1 = new GroupBox();
+			this.tb_itemsa2 = new TextBox();
+			this.label1 = new Label();
+			this.lb_itemsa2 = new ListBox();
+			this.groupBox3 = new GroupBox();
+			this.cbid = new ComboBox();
+			this.cbset = new ComboBox();
+			this.cbblock = new ComboBox();
+			this.lb_itemsa = new ListBox();
+			this.tb_uk5 = new TextBox();
+			this.label10 = new Label();
+			this.tb_mod2 = new TextBox();
+			this.label7 = new Label();
+			this.tb_mod1 = new TextBox();
+			this.label8 = new Label();
+			this.tb_id = new TextBox();
+			this.label5 = new Label();
+			this.tb_uk1 = new TextBox();
+			this.label6 = new Label();
+			this.groupBox10 = new GroupBox();
+			this.tb_ver = new TextBox();
+			this.label28 = new Label();
+			this.groupBox12 = new GroupBox();
+			this.lb_itemsa1 = new ListBox();
 			this.tAdvncd = new System.Windows.Forms.TabPage();
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-			this.list_subsets = new System.Windows.Forms.ListBox();
-			this.label_subsets = new System.Windows.Forms.Label();
-			this.list_groups = new System.Windows.Forms.ListBox();
-			this.label_groups = new System.Windows.Forms.Label();
-			this.list_links = new System.Windows.Forms.ListBox();
-			this.label_links = new System.Windows.Forms.Label();
-			this.list_elements = new System.Windows.Forms.ListBox();
-			this.label_elements = new System.Windows.Forms.Label();
-			this.pg = new System.Windows.Forms.PropertyGrid();
+			this.linkLabel1 = new LinkLabel();
+			this.list_subsets = new ListBox();
+			this.label_subsets = new Label();
+			this.list_groups = new ListBox();
+			this.label_groups = new Label();
+			this.list_links = new ListBox();
+			this.label_links = new Label();
+			this.list_elements = new ListBox();
+			this.label_elements = new Label();
+			this.pg = new PropertyGrid();
 			this.tGeometryDataContainer3 = new System.Windows.Forms.TabPage();
-			this.groupBox4 = new System.Windows.Forms.GroupBox();
-			this.tb_itemsc2 = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.lb_itemsc2 = new System.Windows.Forms.ListBox();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.llAddBB = new System.Windows.Forms.LinkLabel();
-			this.llAssign = new System.Windows.Forms.LinkLabel();
-			this.cbGroupJoint = new System.Windows.Forms.ComboBox();
-			this.label21 = new System.Windows.Forms.Label();
-			this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-			this.tb_opacity = new System.Windows.Forms.TextBox();
-			this.tb_uk2 = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.tb_uk3 = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.lb_itemsc = new System.Windows.Forms.ListBox();
-			this.tb_itemsc_name = new System.Windows.Forms.TextBox();
-			this.label11 = new System.Windows.Forms.Label();
-			this.label13 = new System.Windows.Forms.Label();
-			this.groupBox5 = new System.Windows.Forms.GroupBox();
-			this.tb_itemsc3 = new System.Windows.Forms.TextBox();
-			this.label9 = new System.Windows.Forms.Label();
-			this.lb_itemsc3 = new System.Windows.Forms.ListBox();
+			this.groupBox4 = new GroupBox();
+			this.tb_itemsc2 = new TextBox();
+			this.label4 = new Label();
+			this.lb_itemsc2 = new ListBox();
+			this.groupBox2 = new GroupBox();
+			this.llAddBB = new LinkLabel();
+			this.llAssign = new LinkLabel();
+			this.cbGroupJoint = new ComboBox();
+			this.label21 = new Label();
+			this.linkLabel2 = new LinkLabel();
+			this.tb_opacity = new TextBox();
+			this.tb_uk2 = new TextBox();
+			this.label3 = new Label();
+			this.tb_uk3 = new TextBox();
+			this.label2 = new Label();
+			this.lb_itemsc = new ListBox();
+			this.tb_itemsc_name = new TextBox();
+			this.label11 = new Label();
+			this.label13 = new Label();
+			this.groupBox5 = new GroupBox();
+			this.tb_itemsc3 = new TextBox();
+			this.label9 = new Label();
+			this.lb_itemsc3 = new ListBox();
 			this.tMesh = new System.Windows.Forms.TabPage();
-			this.cbCorrect = new System.Windows.Forms.CheckBox();
+			this.cbCorrect = new CheckBox();
 			this.dxprev = new Ambertation.Graphics.DirectXPanel();
-			this.cbaxis = new System.Windows.Forms.ComboBox();
-			this.label12 = new System.Windows.Forms.Label();
-			this.button1 = new System.Windows.Forms.Button();
-			this.button5 = new System.Windows.Forms.Button();
+			this.cbaxis = new ComboBox();
+			this.label12 = new Label();
+			this.button1 = new Button();
+			this.button5 = new Button();
 			this.scenesel = new Ambertation.Graphics.RenderSelection();
-			this.lbmodel = new System.Windows.Forms.CheckedListBox();
-			this.lb_models = new System.Windows.Forms.Label();
-			this.button3 = new System.Windows.Forms.Button();
-			this.button4 = new System.Windows.Forms.Button();
+			this.lbmodel = new CheckedListBox();
+			this.lb_models = new Label();
+			this.button3 = new Button();
+			this.button4 = new Button();
 			this.tModel = new System.Windows.Forms.TabPage();
-			this.groupBox19 = new System.Windows.Forms.GroupBox();
-			this.lb_model_items = new System.Windows.Forms.ListBox();
-			this.groupBox18 = new System.Windows.Forms.GroupBox();
-			this.llClearBB = new System.Windows.Forms.LinkLabel();
-			this.lb_model_faces = new System.Windows.Forms.ListBox();
-			this.groupBox17 = new System.Windows.Forms.GroupBox();
-			this.lb_model_names = new System.Windows.Forms.ListBox();
-			this.groupBox16 = new System.Windows.Forms.GroupBox();
-			this.linkLabel6 = new System.Windows.Forms.LinkLabel();
-			this.lb_model_trans = new System.Windows.Forms.ListBox();
+			this.groupBox19 = new GroupBox();
+			this.lb_model_items = new ListBox();
+			this.groupBox18 = new GroupBox();
+			this.llClearBB = new LinkLabel();
+			this.lb_model_faces = new ListBox();
+			this.groupBox17 = new GroupBox();
+			this.lb_model_names = new ListBox();
+			this.groupBox16 = new GroupBox();
+			this.linkLabel6 = new LinkLabel();
+			this.lb_model_trans = new ListBox();
 			this.tGeometryDataContainer2 = new System.Windows.Forms.TabPage();
-			this.groupBox9 = new System.Windows.Forms.GroupBox();
-			this.tb_itemsb4 = new System.Windows.Forms.TextBox();
-			this.label15 = new System.Windows.Forms.Label();
-			this.lb_itemsb4 = new System.Windows.Forms.ListBox();
-			this.groupBox11 = new System.Windows.Forms.GroupBox();
-			this.tb_itemsb5 = new System.Windows.Forms.TextBox();
-			this.label17 = new System.Windows.Forms.Label();
-			this.lb_itemsb5 = new System.Windows.Forms.ListBox();
-			this.groupBox6 = new System.Windows.Forms.GroupBox();
-			this.tb_itemsb2 = new System.Windows.Forms.TextBox();
-			this.label14 = new System.Windows.Forms.Label();
-			this.lb_itemsb2 = new System.Windows.Forms.ListBox();
-			this.groupBox7 = new System.Windows.Forms.GroupBox();
-			this.linkLabel7 = new System.Windows.Forms.LinkLabel();
-			this.tb_uk4 = new System.Windows.Forms.TextBox();
-			this.tb_uk6 = new System.Windows.Forms.TextBox();
-			this.label16 = new System.Windows.Forms.Label();
-			this.lb_itemsb = new System.Windows.Forms.ListBox();
-			this.label18 = new System.Windows.Forms.Label();
-			this.groupBox8 = new System.Windows.Forms.GroupBox();
-			this.tb_itemsb3 = new System.Windows.Forms.TextBox();
-			this.label19 = new System.Windows.Forms.Label();
-			this.lb_itemsb3 = new System.Windows.Forms.ListBox();
+			this.groupBox9 = new GroupBox();
+			this.tb_itemsb4 = new TextBox();
+			this.label15 = new Label();
+			this.lb_itemsb4 = new ListBox();
+			this.groupBox11 = new GroupBox();
+			this.tb_itemsb5 = new TextBox();
+			this.label17 = new Label();
+			this.lb_itemsb5 = new ListBox();
+			this.groupBox6 = new GroupBox();
+			this.tb_itemsb2 = new TextBox();
+			this.label14 = new Label();
+			this.lb_itemsb2 = new ListBox();
+			this.groupBox7 = new GroupBox();
+			this.linkLabel7 = new LinkLabel();
+			this.tb_uk4 = new TextBox();
+			this.tb_uk6 = new TextBox();
+			this.label16 = new Label();
+			this.lb_itemsb = new ListBox();
+			this.label18 = new Label();
+			this.groupBox8 = new GroupBox();
+			this.tb_itemsb3 = new TextBox();
+			this.label19 = new Label();
+			this.lb_itemsb3 = new ListBox();
 			this.tSubset = new System.Windows.Forms.TabPage();
-			this.groupBox13 = new System.Windows.Forms.GroupBox();
-			this.lb_sub_items = new System.Windows.Forms.ListBox();
-			this.groupBox14 = new System.Windows.Forms.GroupBox();
-			this.lb_sub_faces = new System.Windows.Forms.ListBox();
-			this.groupBox15 = new System.Windows.Forms.GroupBox();
-			this.linkLabel5 = new System.Windows.Forms.LinkLabel();
-			this.linkLabel4 = new System.Windows.Forms.LinkLabel();
-			this.lb_subsets = new System.Windows.Forms.ListBox();
-			this.sfd = new System.Windows.Forms.SaveFileDialog();
-			this.cd = new System.Windows.Forms.ColorDialog();
-			this.ofd = new System.Windows.Forms.OpenFileDialog();
+			this.groupBox13 = new GroupBox();
+			this.lb_sub_items = new ListBox();
+			this.groupBox14 = new GroupBox();
+			this.lb_sub_faces = new ListBox();
+			this.groupBox15 = new GroupBox();
+			this.linkLabel5 = new LinkLabel();
+			this.linkLabel4 = new LinkLabel();
+			this.lb_subsets = new ListBox();
+			this.sfd = new SaveFileDialog();
+			this.cd = new ColorDialog();
+			this.ofd = new OpenFileDialog();
 			this.tabControl1.SuspendLayout();
 			this.tGeometryDataContainer.SuspendLayout();
 			this.groupBox1.SuspendLayout();
@@ -454,7 +454,7 @@ namespace SimPe.Plugin
 			// groupBox1
 			//
 			this.groupBox1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -482,7 +482,7 @@ namespace SimPe.Plugin
 			// tb_itemsa2
 			//
 			this.tb_itemsa2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -506,7 +506,7 @@ namespace SimPe.Plugin
 			// label1
 			//
 			this.label1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -530,7 +530,7 @@ namespace SimPe.Plugin
 			// lb_itemsa2
 			//
 			this.lb_itemsa2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -554,14 +554,14 @@ namespace SimPe.Plugin
 			this.lb_itemsa2.Name = "lb_itemsa2";
 			this.lb_itemsa2.Size = new System.Drawing.Size(248, 72);
 			this.lb_itemsa2.TabIndex = 22;
-			this.lb_itemsa2.SelectedIndexChanged += new System.EventHandler(
+			this.lb_itemsa2.SelectedIndexChanged += new EventHandler(
 				this.SelectItemsA2
 			);
 			//
 			// groupBox3
 			//
 			this.groupBox3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -604,7 +604,7 @@ namespace SimPe.Plugin
 			// cbid
 			//
 			this.cbid.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -628,7 +628,7 @@ namespace SimPe.Plugin
 			// cbset
 			//
 			this.cbset.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -652,7 +652,7 @@ namespace SimPe.Plugin
 			// cbblock
 			//
 			this.cbblock.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -680,7 +680,7 @@ namespace SimPe.Plugin
 			// lb_itemsa
 			//
 			this.lb_itemsa.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -704,14 +704,14 @@ namespace SimPe.Plugin
 			this.lb_itemsa.Name = "lb_itemsa";
 			this.lb_itemsa.Size = new System.Drawing.Size(244, 168);
 			this.lb_itemsa.TabIndex = 21;
-			this.lb_itemsa.SelectedIndexChanged += new System.EventHandler(
+			this.lb_itemsa.SelectedIndexChanged += new EventHandler(
 				this.SelectItemsA
 			);
 			//
 			// tb_uk5
 			//
 			this.tb_uk5.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -735,7 +735,7 @@ namespace SimPe.Plugin
 			// label10
 			//
 			this.label10.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -759,7 +759,7 @@ namespace SimPe.Plugin
 			// tb_mod2
 			//
 			this.tb_mod2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -783,7 +783,7 @@ namespace SimPe.Plugin
 			// label7
 			//
 			this.label7.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -807,7 +807,7 @@ namespace SimPe.Plugin
 			// tb_mod1
 			//
 			this.tb_mod1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -831,7 +831,7 @@ namespace SimPe.Plugin
 			// label8
 			//
 			this.label8.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -855,7 +855,7 @@ namespace SimPe.Plugin
 			// tb_id
 			//
 			this.tb_id.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -879,7 +879,7 @@ namespace SimPe.Plugin
 			// label5
 			//
 			this.label5.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -903,7 +903,7 @@ namespace SimPe.Plugin
 			// tb_uk1
 			//
 			this.tb_uk1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -927,7 +927,7 @@ namespace SimPe.Plugin
 			// label6
 			//
 			this.label6.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -981,7 +981,7 @@ namespace SimPe.Plugin
 			this.tb_ver.Size = new System.Drawing.Size(88, 21);
 			this.tb_ver.TabIndex = 24;
 			this.tb_ver.Text = "0x00000000";
-			this.tb_ver.TextChanged += new System.EventHandler(this.SettingsChange);
+			this.tb_ver.TextChanged += new EventHandler(this.SettingsChange);
 			//
 			// label28
 			//
@@ -1002,7 +1002,7 @@ namespace SimPe.Plugin
 			// groupBox12
 			//
 			this.groupBox12.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -1030,7 +1030,7 @@ namespace SimPe.Plugin
 			// lb_itemsa1
 			//
 			this.lb_itemsa1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -1084,7 +1084,7 @@ namespace SimPe.Plugin
 			this.linkLabel1.TabStop = true;
 			this.linkLabel1.Text = "Model";
 			this.linkLabel1.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.SeletAdvncdObject
 				);
 			//
@@ -1094,7 +1094,7 @@ namespace SimPe.Plugin
 			this.list_subsets.Name = "list_subsets";
 			this.list_subsets.Size = new System.Drawing.Size(264, 95);
 			this.list_subsets.TabIndex = 8;
-			this.list_subsets.SelectedIndexChanged += new System.EventHandler(
+			this.list_subsets.SelectedIndexChanged += new EventHandler(
 				this.SeletAdvncdObject
 			);
 			//
@@ -1110,7 +1110,7 @@ namespace SimPe.Plugin
 			// list_groups
 			//
 			this.list_groups.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -1123,7 +1123,7 @@ namespace SimPe.Plugin
 			this.list_groups.Name = "list_groups";
 			this.list_groups.Size = new System.Drawing.Size(264, 69);
 			this.list_groups.TabIndex = 6;
-			this.list_groups.SelectedIndexChanged += new System.EventHandler(
+			this.list_groups.SelectedIndexChanged += new EventHandler(
 				this.SeletAdvncdObject
 			);
 			//
@@ -1142,7 +1142,7 @@ namespace SimPe.Plugin
 			this.list_links.Name = "list_links";
 			this.list_links.Size = new System.Drawing.Size(264, 69);
 			this.list_links.TabIndex = 4;
-			this.list_links.SelectedIndexChanged += new System.EventHandler(
+			this.list_links.SelectedIndexChanged += new EventHandler(
 				this.SeletAdvncdObject
 			);
 			//
@@ -1161,7 +1161,7 @@ namespace SimPe.Plugin
 			this.list_elements.Name = "list_elements";
 			this.list_elements.Size = new System.Drawing.Size(264, 95);
 			this.list_elements.TabIndex = 2;
-			this.list_elements.SelectedIndexChanged += new System.EventHandler(
+			this.list_elements.SelectedIndexChanged += new EventHandler(
 				this.SeletAdvncdObject
 			);
 			//
@@ -1177,7 +1177,7 @@ namespace SimPe.Plugin
 			// pg
 			//
 			this.pg.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -1216,7 +1216,7 @@ namespace SimPe.Plugin
 			// groupBox4
 			//
 			this.groupBox4.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1244,7 +1244,7 @@ namespace SimPe.Plugin
 			// tb_itemsc2
 			//
 			this.tb_itemsc2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -1268,7 +1268,7 @@ namespace SimPe.Plugin
 			// label4
 			//
 			this.label4.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -1292,7 +1292,7 @@ namespace SimPe.Plugin
 			// lb_itemsc2
 			//
 			this.lb_itemsc2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -1316,14 +1316,14 @@ namespace SimPe.Plugin
 			this.lb_itemsc2.Name = "lb_itemsc2";
 			this.lb_itemsc2.Size = new System.Drawing.Size(248, 72);
 			this.lb_itemsc2.TabIndex = 22;
-			this.lb_itemsc2.SelectedIndexChanged += new System.EventHandler(
+			this.lb_itemsc2.SelectedIndexChanged += new EventHandler(
 				this.SelectItemsC2
 			);
 			//
 			// groupBox2
 			//
 			this.groupBox2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -1366,14 +1366,14 @@ namespace SimPe.Plugin
 			// llAddBB
 			//
 			this.llAddBB.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
 					)
 				)
 			);
-			this.llAddBB.LinkArea = new System.Windows.Forms.LinkArea(0, 20);
+			this.llAddBB.LinkArea = new LinkArea(0, 20);
 			this.llAddBB.Location = new System.Drawing.Point(268, 128);
 			this.llAddBB.Name = "llAddBB";
 			this.llAddBB.Size = new System.Drawing.Size(236, 23);
@@ -1382,21 +1382,21 @@ namespace SimPe.Plugin
 			this.llAddBB.Text = "Add to Bounding Mesh (by Pinhead)";
 			this.llAddBB.UseCompatibleTextRendering = true;
 			this.llAddBB.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llAddBB_LinkClicked
 				);
 			//
 			// llAssign
 			//
 			this.llAssign.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
 					)
 				)
 			);
-			this.llAssign.LinkArea = new System.Windows.Forms.LinkArea(0, 6);
+			this.llAssign.LinkArea = new LinkArea(0, 6);
 			this.llAssign.Location = new System.Drawing.Point(456, 208);
 			this.llAssign.Name = "llAssign";
 			this.llAssign.Size = new System.Drawing.Size(120, 23);
@@ -1406,14 +1406,14 @@ namespace SimPe.Plugin
 			this.llAssign.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			this.llAssign.UseCompatibleTextRendering = true;
 			this.llAssign.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llAssign_LinkClicked
 				);
 			//
 			// cbGroupJoint
 			//
 			this.cbGroupJoint.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1440,7 +1440,7 @@ namespace SimPe.Plugin
 			// label21
 			//
 			this.label21.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1464,7 +1464,7 @@ namespace SimPe.Plugin
 			// linkLabel2
 			//
 			this.linkLabel2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1478,14 +1478,14 @@ namespace SimPe.Plugin
 			this.linkLabel2.TabStop = true;
 			this.linkLabel2.Text = "Delete";
 			this.linkLabel2.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.linkLabel2_LinkClicked
 				);
 			//
 			// tb_opacity
 			//
 			this.tb_opacity.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1504,12 +1504,12 @@ namespace SimPe.Plugin
 			this.tb_opacity.Size = new System.Drawing.Size(88, 21);
 			this.tb_opacity.TabIndex = 6;
 			this.tb_opacity.Text = "0x00000000";
-			this.tb_opacity.TextChanged += new System.EventHandler(this.ChangeItemsC);
+			this.tb_opacity.TextChanged += new EventHandler(this.ChangeItemsC);
 			//
 			// tb_uk2
 			//
 			this.tb_uk2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1528,12 +1528,12 @@ namespace SimPe.Plugin
 			this.tb_uk2.Size = new System.Drawing.Size(88, 21);
 			this.tb_uk2.TabIndex = 25;
 			this.tb_uk2.Text = "0x00000000";
-			this.tb_uk2.TextChanged += new System.EventHandler(this.ChangeItemsC);
+			this.tb_uk2.TextChanged += new EventHandler(this.ChangeItemsC);
 			//
 			// label3
 			//
 			this.label3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1557,7 +1557,7 @@ namespace SimPe.Plugin
 			// tb_uk3
 			//
 			this.tb_uk3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1576,12 +1576,12 @@ namespace SimPe.Plugin
 			this.tb_uk3.Size = new System.Drawing.Size(88, 21);
 			this.tb_uk3.TabIndex = 23;
 			this.tb_uk3.Text = "0x00000000";
-			this.tb_uk3.TextChanged += new System.EventHandler(this.ChangeItemsC);
+			this.tb_uk3.TextChanged += new EventHandler(this.ChangeItemsC);
 			//
 			// label2
 			//
 			this.label2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1605,7 +1605,7 @@ namespace SimPe.Plugin
 			// lb_itemsc
 			//
 			this.lb_itemsc.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -1629,14 +1629,14 @@ namespace SimPe.Plugin
 			this.lb_itemsc.Name = "lb_itemsc";
 			this.lb_itemsc.Size = new System.Drawing.Size(244, 256);
 			this.lb_itemsc.TabIndex = 21;
-			this.lb_itemsc.SelectedIndexChanged += new System.EventHandler(
+			this.lb_itemsc.SelectedIndexChanged += new EventHandler(
 				this.SelectItemsC
 			);
 			//
 			// tb_itemsc_name
 			//
 			this.tb_itemsc_name.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1654,14 +1654,14 @@ namespace SimPe.Plugin
 			this.tb_itemsc_name.Name = "tb_itemsc_name";
 			this.tb_itemsc_name.Size = new System.Drawing.Size(312, 21);
 			this.tb_itemsc_name.TabIndex = 8;
-			this.tb_itemsc_name.TextChanged += new System.EventHandler(
+			this.tb_itemsc_name.TextChanged += new EventHandler(
 				this.ChangeItemsC
 			);
 			//
 			// label11
 			//
 			this.label11.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1685,7 +1685,7 @@ namespace SimPe.Plugin
 			// label13
 			//
 			this.label13.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -1709,7 +1709,7 @@ namespace SimPe.Plugin
 			// groupBox5
 			//
 			this.groupBox5.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -1739,7 +1739,7 @@ namespace SimPe.Plugin
 			// tb_itemsc3
 			//
 			this.tb_itemsc3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -1763,7 +1763,7 @@ namespace SimPe.Plugin
 			// label9
 			//
 			this.label9.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -1787,7 +1787,7 @@ namespace SimPe.Plugin
 			// lb_itemsc3
 			//
 			this.lb_itemsc3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -1811,7 +1811,7 @@ namespace SimPe.Plugin
 			this.lb_itemsc3.Name = "lb_itemsc3";
 			this.lb_itemsc3.Size = new System.Drawing.Size(248, 80);
 			this.lb_itemsc3.TabIndex = 22;
-			this.lb_itemsc3.SelectedIndexChanged += new System.EventHandler(
+			this.lb_itemsc3.SelectedIndexChanged += new EventHandler(
 				this.SelectItemsC3
 			);
 			//
@@ -1835,12 +1835,12 @@ namespace SimPe.Plugin
 			this.tMesh.TabIndex = 4;
 			this.tMesh.Text = "3D Mesh";
 			this.tMesh.UseVisualStyleBackColor = true;
-			this.tMesh.SizeChanged += new System.EventHandler(this.dxprev_SizeChanged);
+			this.tMesh.SizeChanged += new EventHandler(this.dxprev_SizeChanged);
 			//
 			// cbCorrect
 			//
 			this.cbCorrect.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -1852,7 +1852,7 @@ namespace SimPe.Plugin
 			this.cbCorrect.Size = new System.Drawing.Size(96, 32);
 			this.cbCorrect.TabIndex = 32;
 			this.cbCorrect.Text = "Correct Joint definition";
-			this.cbCorrect.CheckedChanged += new System.EventHandler(
+			this.cbCorrect.CheckedChanged += new EventHandler(
 				this.cbCorrect_CheckedChanged
 			);
 			//
@@ -1871,12 +1871,12 @@ namespace SimPe.Plugin
 			this.dxprev.WorldMatrix = (
 				(Microsoft.DirectX.Matrix)(resources.GetObject("dxprev.WorldMatrix"))
 			);
-			this.dxprev.ResetDevice += new System.EventHandler(this.dxprev_ResetDevice);
+			this.dxprev.ResetDevice += new EventHandler(this.dxprev_ResetDevice);
 			//
 			// cbaxis
 			//
 			this.cbaxis.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -1888,14 +1888,14 @@ namespace SimPe.Plugin
 			this.cbaxis.Name = "cbaxis";
 			this.cbaxis.Size = new System.Drawing.Size(96, 21);
 			this.cbaxis.TabIndex = 30;
-			this.cbaxis.SelectedIndexChanged += new System.EventHandler(
+			this.cbaxis.SelectedIndexChanged += new EventHandler(
 				this.ChangedAxis
 			);
 			//
 			// label12
 			//
 			this.label12.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -1919,7 +1919,7 @@ namespace SimPe.Plugin
 			// button1
 			//
 			this.button1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -1932,12 +1932,12 @@ namespace SimPe.Plugin
 			this.button1.Size = new System.Drawing.Size(78, 23);
 			this.button1.TabIndex = 28;
 			this.button1.Text = "Import...";
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.button1.Click += new EventHandler(this.button1_Click);
 			//
 			// button5
 			//
 			this.button5.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -1950,12 +1950,12 @@ namespace SimPe.Plugin
 			this.button5.Size = new System.Drawing.Size(78, 23);
 			this.button5.TabIndex = 27;
 			this.button5.Text = "Export...";
-			this.button5.Click += new System.EventHandler(this.Export);
+			this.button5.Click += new EventHandler(this.Export);
 			//
 			// scenesel
 			//
 			this.scenesel.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -1982,7 +1982,7 @@ namespace SimPe.Plugin
 			// lbmodel
 			//
 			this.lbmodel.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -2017,7 +2017,7 @@ namespace SimPe.Plugin
 			// button3
 			//
 			this.button3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -2030,12 +2030,12 @@ namespace SimPe.Plugin
 			this.button3.Size = new System.Drawing.Size(172, 23);
 			this.button3.TabIndex = 4;
 			this.button3.Text = "Preview";
-			this.button3.Click += new System.EventHandler(this.Preview);
+			this.button3.Click += new EventHandler(this.Preview);
 			//
 			// button4
 			//
 			this.button4.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -2048,7 +2048,7 @@ namespace SimPe.Plugin
 			this.button4.Size = new System.Drawing.Size(32, 23);
 			this.button4.TabIndex = 26;
 			this.button4.Text = "BG";
-			this.button4.Click += new System.EventHandler(this.PickColor);
+			this.button4.Click += new EventHandler(this.PickColor);
 			//
 			// tModel
 			//
@@ -2067,7 +2067,7 @@ namespace SimPe.Plugin
 			// groupBox19
 			//
 			this.groupBox19.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -2093,7 +2093,7 @@ namespace SimPe.Plugin
 			// lb_model_items
 			//
 			this.lb_model_items.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -2121,7 +2121,7 @@ namespace SimPe.Plugin
 			// groupBox18
 			//
 			this.groupBox18.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -2152,7 +2152,7 @@ namespace SimPe.Plugin
 			// llClearBB
 			//
 			this.llClearBB.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -2167,14 +2167,14 @@ namespace SimPe.Plugin
 			this.llClearBB.TabStop = true;
 			this.llClearBB.Text = "Clear";
 			this.llClearBB.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llClearBB_LinkClicked
 				);
 			//
 			// lb_model_faces
 			//
 			this.lb_model_faces.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -2202,7 +2202,7 @@ namespace SimPe.Plugin
 			// groupBox17
 			//
 			this.groupBox17.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Bottom
@@ -2230,7 +2230,7 @@ namespace SimPe.Plugin
 			// lb_model_names
 			//
 			this.lb_model_names.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -2258,7 +2258,7 @@ namespace SimPe.Plugin
 			// groupBox16
 			//
 			this.groupBox16.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -2294,14 +2294,14 @@ namespace SimPe.Plugin
 			this.linkLabel6.TabStop = true;
 			this.linkLabel6.Text = "Rebuild";
 			this.linkLabel6.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.RebuildAbsTransform
 				);
 			//
 			// lb_model_trans
 			//
 			this.lb_model_trans.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -2345,7 +2345,7 @@ namespace SimPe.Plugin
 			// groupBox9
 			//
 			this.groupBox9.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -2373,7 +2373,7 @@ namespace SimPe.Plugin
 			// tb_itemsb4
 			//
 			this.tb_itemsb4.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -2397,7 +2397,7 @@ namespace SimPe.Plugin
 			// label15
 			//
 			this.label15.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -2421,7 +2421,7 @@ namespace SimPe.Plugin
 			// lb_itemsb4
 			//
 			this.lb_itemsb4.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -2445,14 +2445,14 @@ namespace SimPe.Plugin
 			this.lb_itemsb4.Name = "lb_itemsb4";
 			this.lb_itemsb4.Size = new System.Drawing.Size(216, 72);
 			this.lb_itemsb4.TabIndex = 22;
-			this.lb_itemsb4.SelectedIndexChanged += new System.EventHandler(
+			this.lb_itemsb4.SelectedIndexChanged += new EventHandler(
 				this.SelectItemsB4
 			);
 			//
 			// groupBox11
 			//
 			this.groupBox11.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -2482,7 +2482,7 @@ namespace SimPe.Plugin
 			// tb_itemsb5
 			//
 			this.tb_itemsb5.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -2506,7 +2506,7 @@ namespace SimPe.Plugin
 			// label17
 			//
 			this.label17.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -2530,7 +2530,7 @@ namespace SimPe.Plugin
 			// lb_itemsb5
 			//
 			this.lb_itemsb5.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -2554,14 +2554,14 @@ namespace SimPe.Plugin
 			this.lb_itemsb5.Name = "lb_itemsb5";
 			this.lb_itemsb5.Size = new System.Drawing.Size(216, 80);
 			this.lb_itemsb5.TabIndex = 22;
-			this.lb_itemsb5.SelectedIndexChanged += new System.EventHandler(
+			this.lb_itemsb5.SelectedIndexChanged += new EventHandler(
 				this.SelectItemsB5
 			);
 			//
 			// groupBox6
 			//
 			this.groupBox6.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -2589,7 +2589,7 @@ namespace SimPe.Plugin
 			// tb_itemsb2
 			//
 			this.tb_itemsb2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -2613,7 +2613,7 @@ namespace SimPe.Plugin
 			// label14
 			//
 			this.label14.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -2637,7 +2637,7 @@ namespace SimPe.Plugin
 			// lb_itemsb2
 			//
 			this.lb_itemsb2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -2661,14 +2661,14 @@ namespace SimPe.Plugin
 			this.lb_itemsb2.Name = "lb_itemsb2";
 			this.lb_itemsb2.Size = new System.Drawing.Size(216, 72);
 			this.lb_itemsb2.TabIndex = 22;
-			this.lb_itemsb2.SelectedIndexChanged += new System.EventHandler(
+			this.lb_itemsb2.SelectedIndexChanged += new EventHandler(
 				this.SelectItemsB2
 			);
 			//
 			// groupBox7
 			//
 			this.groupBox7.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -2703,7 +2703,7 @@ namespace SimPe.Plugin
 			// linkLabel7
 			//
 			this.linkLabel7.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -2717,14 +2717,14 @@ namespace SimPe.Plugin
 			this.linkLabel7.TabStop = true;
 			this.linkLabel7.Text = "Flatten";
 			this.linkLabel7.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.FlattenAliasMap
 				);
 			//
 			// tb_uk4
 			//
 			this.tb_uk4.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -2748,7 +2748,7 @@ namespace SimPe.Plugin
 			// tb_uk6
 			//
 			this.tb_uk6.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -2772,7 +2772,7 @@ namespace SimPe.Plugin
 			// label16
 			//
 			this.label16.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -2796,7 +2796,7 @@ namespace SimPe.Plugin
 			// lb_itemsb
 			//
 			this.lb_itemsb.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -2820,14 +2820,14 @@ namespace SimPe.Plugin
 			this.lb_itemsb.Name = "lb_itemsb";
 			this.lb_itemsb.Size = new System.Drawing.Size(252, 256);
 			this.lb_itemsb.TabIndex = 21;
-			this.lb_itemsb.SelectedIndexChanged += new System.EventHandler(
+			this.lb_itemsb.SelectedIndexChanged += new EventHandler(
 				this.SelectItemsB
 			);
 			//
 			// label18
 			//
 			this.label18.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -2851,7 +2851,7 @@ namespace SimPe.Plugin
 			// groupBox8
 			//
 			this.groupBox8.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -2881,7 +2881,7 @@ namespace SimPe.Plugin
 			// tb_itemsb3
 			//
 			this.tb_itemsb3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -2905,7 +2905,7 @@ namespace SimPe.Plugin
 			// label19
 			//
 			this.label19.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -2929,7 +2929,7 @@ namespace SimPe.Plugin
 			// lb_itemsb3
 			//
 			this.lb_itemsb3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -2953,7 +2953,7 @@ namespace SimPe.Plugin
 			this.lb_itemsb3.Name = "lb_itemsb3";
 			this.lb_itemsb3.Size = new System.Drawing.Size(216, 80);
 			this.lb_itemsb3.TabIndex = 22;
-			this.lb_itemsb3.SelectedIndexChanged += new System.EventHandler(
+			this.lb_itemsb3.SelectedIndexChanged += new EventHandler(
 				this.SelectItemsB3
 			);
 			//
@@ -2973,7 +2973,7 @@ namespace SimPe.Plugin
 			// groupBox13
 			//
 			this.groupBox13.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -2999,7 +2999,7 @@ namespace SimPe.Plugin
 			// lb_sub_items
 			//
 			this.lb_sub_items.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -3023,14 +3023,14 @@ namespace SimPe.Plugin
 			this.lb_sub_items.Name = "lb_sub_items";
 			this.lb_sub_items.Size = new System.Drawing.Size(256, 96);
 			this.lb_sub_items.TabIndex = 22;
-			this.lb_sub_items.SelectedIndexChanged += new System.EventHandler(
+			this.lb_sub_items.SelectedIndexChanged += new EventHandler(
 				this.lb_sub_item_SelectedIndexChanged
 			);
 			//
 			// groupBox14
 			//
 			this.groupBox14.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -3058,7 +3058,7 @@ namespace SimPe.Plugin
 			// lb_sub_faces
 			//
 			this.lb_sub_faces.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -3086,7 +3086,7 @@ namespace SimPe.Plugin
 			// groupBox15
 			//
 			this.groupBox15.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -3118,7 +3118,7 @@ namespace SimPe.Plugin
 			// linkLabel5
 			//
 			this.linkLabel5.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -3133,14 +3133,14 @@ namespace SimPe.Plugin
 			this.linkLabel5.Text = "Rebuild";
 			this.linkLabel5.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			this.linkLabel5.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.RebuildJointVertices
 				);
 			//
 			// linkLabel4
 			//
 			this.linkLabel4.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -3155,14 +3155,14 @@ namespace SimPe.Plugin
 			this.linkLabel4.Text = "Delete";
 			this.linkLabel4.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			this.linkLabel4.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.DeleteJoint
 				);
 			//
 			// lb_subsets
 			//
 			this.lb_subsets.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -3186,7 +3186,7 @@ namespace SimPe.Plugin
 			this.lb_subsets.Name = "lb_subsets";
 			this.lb_subsets.Size = new System.Drawing.Size(512, 256);
 			this.lb_subsets.TabIndex = 21;
-			this.lb_subsets.SelectedIndexChanged += new System.EventHandler(
+			this.lb_subsets.SelectedIndexChanged += new EventHandler(
 				this.lb_subsets_SelectedIndexChanged
 			);
 			//
@@ -3213,7 +3213,7 @@ namespace SimPe.Plugin
 			this.Controls.Add(this.tabControl1);
 			this.Name = "fGeometryDataContainer";
 			this.Text = "fGeometryDataContainer";
-			this.Load += new System.EventHandler(this.fGeometryDataContainer_Load);
+			this.Load += new EventHandler(this.fGeometryDataContainer_Load);
 			this.tabControl1.ResumeLayout(false);
 			this.tGeometryDataContainer.ResumeLayout(false);
 			this.groupBox1.ResumeLayout(false);
@@ -3260,7 +3260,7 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		private void SettingsChange(object sender, System.EventArgs e)
+		private void SettingsChange(object sender, EventArgs e)
 		{
 			if (tMesh.Tag == null)
 			{
@@ -3281,7 +3281,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SelectItemsA(object sender, System.EventArgs e)
+		private void SelectItemsA(object sender, EventArgs e)
 		{
 			if (lb_itemsa.Tag != null)
 			{
@@ -3308,7 +3308,7 @@ namespace SimPe.Plugin
 				cbid.SelectedIndex = 0;
 				for (int i = 0; i < this.cbid.Items.Count; i++)
 				{
-					Gmdc.ElementIdentity b = (ElementIdentity)this.cbid.Items[i];
+					ElementIdentity b = (ElementIdentity)this.cbid.Items[i];
 					if (b == item.Identity)
 					{
 						cbid.SelectedIndex = i;
@@ -3318,7 +3318,7 @@ namespace SimPe.Plugin
 				cbblock.SelectedIndex = cbblock.Items.Count - 1;
 				for (int i = 0; i < this.cbblock.Items.Count; i++)
 				{
-					Gmdc.BlockFormat b = (BlockFormat)this.cbblock.Items[i];
+					BlockFormat b = (BlockFormat)this.cbblock.Items[i];
 					if (b == item.BlockFormat)
 					{
 						cbblock.SelectedIndex = i;
@@ -3328,7 +3328,7 @@ namespace SimPe.Plugin
 				cbset.SelectedIndex = cbset.Items.Count - 1;
 				for (int i = 0; i < this.cbset.Items.Count; i++)
 				{
-					Gmdc.SetFormat b = (SetFormat)this.cbset.Items[i];
+					SetFormat b = (SetFormat)this.cbset.Items[i];
 					if (b == item.SetFormat)
 					{
 						cbset.SelectedIndex = i;
@@ -3357,7 +3357,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SelectItemsA2(object sender, System.EventArgs e)
+		private void SelectItemsA2(object sender, EventArgs e)
 		{
 			if (lb_itemsa.Tag != null)
 			{
@@ -3379,7 +3379,7 @@ namespace SimPe.Plugin
 				lb_itemsa.Tag = true;
 				GmdcElement item = (GmdcElement)
 					(
-						(SimPe.CountedListItem)lb_itemsa.Items[lb_itemsa.SelectedIndex]
+						(CountedListItem)lb_itemsa.Items[lb_itemsa.SelectedIndex]
 					).Object;
 
 				this.tb_itemsa2.Text =
@@ -3395,7 +3395,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SelectItemsB(object sender, System.EventArgs e)
+		private void SelectItemsB(object sender, EventArgs e)
 		{
 			if (lb_itemsb.Tag != null)
 			{
@@ -3450,7 +3450,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SelectItemsB2(object sender, System.EventArgs e)
+		private void SelectItemsB2(object sender, EventArgs e)
 		{
 			if (lb_itemsb.Tag != null)
 			{
@@ -3488,7 +3488,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SelectItemsB3(object sender, System.EventArgs e)
+		private void SelectItemsB3(object sender, EventArgs e)
 		{
 			if (lb_itemsb.Tag != null)
 			{
@@ -3524,7 +3524,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SelectItemsB4(object sender, System.EventArgs e)
+		private void SelectItemsB4(object sender, EventArgs e)
 		{
 			if (lb_itemsb.Tag != null)
 			{
@@ -3560,7 +3560,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SelectItemsB5(object sender, System.EventArgs e)
+		private void SelectItemsB5(object sender, EventArgs e)
 		{
 			if (lb_itemsb.Tag != null)
 			{
@@ -3596,7 +3596,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SelectItemsC(object sender, System.EventArgs e)
+		private void SelectItemsC(object sender, EventArgs e)
 		{
 			if (lb_itemsc.Tag != null)
 			{
@@ -3640,7 +3640,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SelectItemsC2(object sender, System.EventArgs e)
+		private void SelectItemsC2(object sender, EventArgs e)
 		{
 			if (lb_itemsc.Tag != null)
 			{
@@ -3675,7 +3675,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SelectItemsC3(object sender, System.EventArgs e)
+		private void SelectItemsC3(object sender, EventArgs e)
 		{
 			if (lb_itemsc.Tag != null)
 			{
@@ -3710,7 +3710,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void ChangeItemsC(object sender, System.EventArgs e)
+		private void ChangeItemsC(object sender, EventArgs e)
 		{
 			if (lb_itemsc.Tag != null)
 			{
@@ -3767,7 +3767,7 @@ namespace SimPe.Plugin
 			this.scenesel.Scene = null;
 		}
 
-		private void Preview(object sender, System.EventArgs e)
+		private void Preview(object sender, EventArgs e)
 		{
 			GeometryDataContainer gmdc = (GeometryDataContainer)this.tMesh.Tag;
 			Wait.SubStart();
@@ -3797,7 +3797,7 @@ namespace SimPe.Plugin
 					}
 				}*/
 			}
-			catch (System.IO.FileNotFoundException)
+			catch (FileNotFoundException)
 			{
 				WaitingScreen.Stop();
 				MessageBox.Show(
@@ -3819,9 +3819,9 @@ namespace SimPe.Plugin
 		/// Get all Selected Models
 		/// </summary>
 		/// <returns></returns>
-		System.Collections.ArrayList GetModels()
+		ArrayList GetModels()
 		{
-			System.Collections.ArrayList list = new ArrayList();
+			ArrayList list = new ArrayList();
 			for (int i = 0; i < lbmodel.CheckedItems.Count; i++)
 			{
 				list.Add(lbmodel.CheckedItems[i]);
@@ -3845,7 +3845,7 @@ namespace SimPe.Plugin
 			return list;
 		}
 
-		private void PickColor(object sender, System.EventArgs e)
+		private void PickColor(object sender, EventArgs e)
 		{
 			cd.Color = dxprev.BackColor;
 			if (cd.ShowDialog() == DialogResult.OK)
@@ -3854,19 +3854,19 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SeletAdvncdObject(object sender, System.EventArgs e)
+		private void SeletAdvncdObject(object sender, EventArgs e)
 		{
 			ListBox lb = (ListBox)sender;
 			if (lb.SelectedIndex >= 0)
 			{
 				pg.SelectedObject = (
-					(SimPe.CountedListItem)lb.Items[lb.SelectedIndex]
+					(CountedListItem)lb.Items[lb.SelectedIndex]
 				).Object;
 				pg.Refresh();
 			}
 		}
 
-		private void dxprev_ResetDevice(object sender, System.EventArgs e)
+		private void dxprev_ResetDevice(object sender, EventArgs e)
 		{
 			Ambertation.Graphics.DirectXPanel dx =
 				sender as Ambertation.Graphics.DirectXPanel;
@@ -3874,7 +3874,7 @@ namespace SimPe.Plugin
 
 		private void llAddBB_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (this.tMesh.Tag != null)
@@ -3895,7 +3895,7 @@ namespace SimPe.Plugin
 
 		private void llClearBB_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (this.tMesh.Tag != null)
@@ -3910,7 +3910,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void cbCorrect_CheckedChanged(object sender, System.EventArgs e)
+		private void cbCorrect_CheckedChanged(object sender, EventArgs e)
 		{
 			Helper.WindowsRegistry.CorrectJointDefinitionOnExport =
 				this.cbCorrect.Checked;
@@ -3918,7 +3918,7 @@ namespace SimPe.Plugin
 
 		private void llAssign_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (this.cbGroupJoint.SelectedItem != null)
@@ -3994,7 +3994,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void dxprev_SizeChanged(object sender, System.EventArgs e)
+		private void dxprev_SizeChanged(object sender, EventArgs e)
 		{
 			int width = scenesel.Left - lbmodel.Right - 16;
 			int height = scenesel.Height;
@@ -4023,7 +4023,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void ChangedAxis(object sender, System.EventArgs e)
+		private void ChangedAxis(object sender, EventArgs e)
 		{
 			if (this.tMesh.Tag == null)
 			{
@@ -4036,7 +4036,7 @@ namespace SimPe.Plugin
 
 		private void FlattenAliasMap(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lb_itemsb.SelectedIndex < 0)
@@ -4053,7 +4053,7 @@ namespace SimPe.Plugin
 
 		private void RebuildAbsTransform(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (this.tMesh.Tag != null)
@@ -4107,13 +4107,13 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void fGeometryDataContainer_Load(object sender, System.EventArgs e)
+		private void fGeometryDataContainer_Load(object sender, EventArgs e)
 		{
 		}
 
 		private void RebuildJointVertices(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (this.tMesh.Tag != null)
@@ -4261,7 +4261,7 @@ namespace SimPe.Plugin
 		*/
 		private void DeleteJoint(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (this.tMesh.Tag != null)
@@ -4281,7 +4281,7 @@ namespace SimPe.Plugin
 
 		private void linkLabel2_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (this.tMesh.Tag != null)
@@ -4299,7 +4299,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void button1_Click(object sender, System.EventArgs e)
+		private void button1_Click(object sender, EventArgs e)
 		{
 			try
 			{
@@ -4323,7 +4323,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void lb_sub_item_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void lb_sub_item_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			/*if (lb_sub_items.Tag != null) return;
 			if (lb_sub_items.SelectedIndex<0) return;
@@ -4344,7 +4344,7 @@ namespace SimPe.Plugin
 			}*/
 		}
 
-		private void lb_subsets_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void lb_subsets_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (this.lb_subsets.Tag != null)
 			{
@@ -4387,7 +4387,7 @@ namespace SimPe.Plugin
 		}
 
 		public static void StartImport(
-			System.Windows.Forms.OpenFileDialog ofd,
+			OpenFileDialog ofd,
 			GeometryDataContainer gmdc,
 			string defext,
 			ElementSorting sorting,
@@ -4439,7 +4439,7 @@ namespace SimPe.Plugin
 				IGmdcImporter importer = ExporterLoader.Importers[ofd.FilterIndex - 1];
 				Helper.WindowsRegistry.GmdcExtension = importer.FileExtension;
 				importer.Component.Sorting = sorting;
-				System.IO.FileStream meshreader = File.OpenRead(ofd.FileName);
+				FileStream meshreader = File.OpenRead(ofd.FileName);
 
 				try
 				{
@@ -4474,7 +4474,7 @@ namespace SimPe.Plugin
 		}
 
 		public static void StartExport(
-			System.Windows.Forms.SaveFileDialog sfd,
+			SaveFileDialog sfd,
 			GeometryDataContainer gmdc,
 			string defext,
 			GmdcGroups groups,
@@ -4543,10 +4543,10 @@ namespace SimPe.Plugin
 
 					exporter.FileName = sfd.FileName;
 					Stream s = exporter.Process(gmdc, groups);
-					System.IO.BinaryReader br = new BinaryReader(s);
+					BinaryReader br = new BinaryReader(s);
 					br.BaseStream.Seek(0, SeekOrigin.Begin);
 
-					System.IO.FileStream meshwriter = File.Create(exporter.FileName);
+					FileStream meshwriter = File.Create(exporter.FileName);
 					meshwriter.Write(br.ReadBytes((int)s.Length), 0, (int)s.Length);
 
 					//System.IO.StreamWriter meshwriter = File.CreateText(sfd.FileName);
@@ -4563,7 +4563,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void Export(object sender, System.EventArgs e)
+		private void Export(object sender, EventArgs e)
 		{
 			try
 			{
@@ -4589,7 +4589,7 @@ namespace SimPe.Plugin
 
 		private void SeletAdvncdObject(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (this.tMesh.Tag != null)

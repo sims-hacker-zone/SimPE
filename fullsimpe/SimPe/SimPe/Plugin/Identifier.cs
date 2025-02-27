@@ -40,7 +40,7 @@ namespace SimPe.Plugin
 
 		#region IIdentifier Member
 
-		public SimPe.Cache.PackageType GetType(SimPe.Interfaces.Files.IPackageFile pkg)
+		public Cache.PackageType GetType(Interfaces.Files.IPackageFile pkg)
 		{
 			if (pkg.FindFiles(Data.MetaData.IDNO).Length != 0)
 			{

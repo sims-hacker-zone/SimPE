@@ -27,7 +27,7 @@ namespace SimPe
 	/// Handles Application Settings stored in the Registry
 	/// </summary>
 	/// <remarks>You cannot create instance of this class, use the
-	/// <see cref="SimPe.Helper.WindowsRegistry"/> Field to acces the Registry</remarks>
+	/// <see cref="Helper.WindowsRegistry"/> Field to acces the Registry</remarks>
 	public class Registry
 	{
 		#region Attributes
@@ -266,7 +266,7 @@ namespace SimPe
 		{
 			get
 			{
-				Microsoft.Win32.RegistryKey tk =
+				RegistryKey tk =
 					Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
 						"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Sims2.exe",
 						false
@@ -277,7 +277,7 @@ namespace SimPe
 				}
 
 				object gr = tk.GetValue("Game Registry", false);
-				Microsoft.Win32.RegistryKey rk =
+				RegistryKey rk =
 					Microsoft.Win32.Registry.LocalMachine.OpenSubKey((string)gr, false);
 				if (rk != null)
 				{

@@ -21,7 +21,7 @@ namespace Ambertation
 {
 	/// <summary>
 	/// This Interface has to be implemented by classes that should be lodable by the class directive
-	/// in <see cref="Ambertation.PropertyParser"/>
+	/// in <see cref="PropertyParser"/>
 	/// </summary>
 	/// <remarks>
 	/// Classes implementing this Interface MUST have a constructur that takes one object as argument!

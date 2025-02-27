@@ -6,8 +6,8 @@ namespace SimPe.Plugin.Tool.Dockable
 	public class dcPackageDetails : Ambertation.Windows.Forms.DockPanel
 	{
 		private SteepValley.Windows.Forms.XPGradientPanel xpGradientPanel1;
-		protected SimPe.Plugin.Tool.Dockable.NeighborhoodPreview np;
-		private SimPe.Plugin.Tool.Dockable.ObjectPreview op;
+		protected NeighborhoodPreview np;
+		private ObjectPreview op;
 
 		/// <summary>
 		/// Required designer variable.
@@ -47,8 +47,8 @@ namespace SimPe.Plugin.Tool.Dockable
 					typeof(dcPackageDetails)
 				);
 			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.np = new SimPe.Plugin.Tool.Dockable.NeighborhoodPreview();
-			this.op = new SimPe.Plugin.Tool.Dockable.ObjectPreview();
+			this.np = new NeighborhoodPreview();
+			this.op = new ObjectPreview();
 			this.xpGradientPanel1.SuspendLayout();
 			this.SuspendLayout();
 			//
@@ -100,7 +100,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.op.LoadCustomImage = this.Visible;
 		}
 
-		internal void SetPackage(SimPe.Interfaces.Files.IPackageFile pkg) // CJH
+		internal void SetPackage(Interfaces.Files.IPackageFile pkg) // CJH
 		{
 			this.op.SetFromPackage(pkg);
 			this.np.SetFromPackage(pkg);

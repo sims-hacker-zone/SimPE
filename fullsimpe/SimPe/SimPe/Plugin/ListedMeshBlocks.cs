@@ -41,12 +41,12 @@ namespace SimPe.Plugin
 			get;
 		}
 
-		public SimPe.Plugin.GenericRcol CRES
+		public GenericRcol CRES
 		{
 			get;
 		}
 
-		public SimPe.Plugin.GenericRcol GMDC
+		public GenericRcol GMDC
 		{
 			get;
 		}

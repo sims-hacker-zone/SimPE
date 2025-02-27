@@ -15,7 +15,7 @@ namespace SimPe.PackedFiles.Wrapper
 		private System.ComponentModel.Container components = null;
 		static Size ICON_SIZE = new Size(64, 64);
 
-		SimPe.ColumnsSorter s;
+		ColumnsSorter s;
 
 		public SimListView()
 		{
@@ -32,7 +32,7 @@ namespace SimPe.PackedFiles.Wrapper
 			LargeImageList.ColorDepth = ColorDepth.Depth32Bit;
 			LargeImageList.ImageSize = ICON_SIZE;
 
-			s = new SimPe.ColumnsSorter(new int[] { 1, 0 });
+			s = new ColumnsSorter(new int[] { 1, 0 });
 			this.ListViewItemSorter = s;
 		}
 
@@ -71,7 +71,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		public SteepValley.Windows.Forms.XPListViewItem Add(
-			SimPe.PackedFiles.Wrapper.ExtSDesc sdesc
+			ExtSDesc sdesc
 		)
 		{
 			return Add(
@@ -80,13 +80,13 @@ namespace SimPe.PackedFiles.Wrapper
 			);
 		}
 
-		public Image GetSimIcon(SimPe.PackedFiles.Wrapper.ExtSDesc sdesc, Color bgcol)
+		public Image GetSimIcon(ExtSDesc sdesc, Color bgcol)
 		{
 			return BuildSimPreviewImage(bgcol, sdesc.Image, sdesc.SimId, sdesc);
 		}
 
 		public SteepValley.Windows.Forms.XPListViewItem Add(
-			SimPe.PackedFiles.Wrapper.ExtSDesc sdesc,
+			ExtSDesc sdesc,
 			Color bgcol
 		)
 		{
@@ -95,7 +95,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		public SteepValley.Windows.Forms.XPListViewItem Add(
-			SimPe.PackedFiles.Wrapper.ExtSDesc sdesc,
+			ExtSDesc sdesc,
 			Image imgbig
 		)
 		{
@@ -166,7 +166,7 @@ namespace SimPe.PackedFiles.Wrapper
 			new System.Collections.Generic.Dictionary<uint, Image>();
 
 		public static Image BuildSimPreviewImage(
-			SimPe.PackedFiles.Wrapper.ExtSDesc sdesc,
+			ExtSDesc sdesc,
 			Color bgcol
 		)
 		{
@@ -177,7 +177,7 @@ namespace SimPe.PackedFiles.Wrapper
 			Color bgcol,
 			Image imgbig,
 			uint guid,
-			SimPe.PackedFiles.Wrapper.ExtSDesc sdesc
+			ExtSDesc sdesc
 		)
 		{
 			if (simicons.ContainsKey(guid))

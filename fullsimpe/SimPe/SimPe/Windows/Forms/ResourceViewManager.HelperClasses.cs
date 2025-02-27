@@ -18,7 +18,7 @@ namespace SimPe.Windows.Forms
 		}
 
 		public class ResourceList
-			: List<SimPe.Interfaces.Files.IPackedFileDescriptor>
+			: List<Interfaces.Files.IPackedFileDescriptor>
 		{
 		}
 

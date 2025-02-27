@@ -12,8 +12,8 @@ namespace SimPe.Plugin.Downloads
 		/// <param name="type"></param>
 		/// <param name="pkg"></param>
 		void LoadContent(
-			SimPe.Cache.PackageType type,
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Cache.PackageType type,
+			Interfaces.Files.IPackageFile pkg
 		);
 
 		/// <summary>

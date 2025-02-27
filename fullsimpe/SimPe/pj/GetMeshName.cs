@@ -61,14 +61,14 @@ namespace pj
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(GetMeshName));
-			this.label1 = new System.Windows.Forms.Label();
-			this.tbMeshName = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.btnOK = new System.Windows.Forms.Button();
-			this.btnBrowse = new System.Windows.Forms.Button();
-			this.btnCancel = new System.Windows.Forms.Button();
-			this.label3 = new System.Windows.Forms.Label();
-			this.cbusecres = new System.Windows.Forms.CheckBox();
+			this.label1 = new Label();
+			this.tbMeshName = new TextBox();
+			this.label2 = new Label();
+			this.btnOK = new Button();
+			this.btnBrowse = new Button();
+			this.btnCancel = new Button();
+			this.label3 = new Label();
+			this.cbusecres = new CheckBox();
 			this.SuspendLayout();
 			//
 			// label1

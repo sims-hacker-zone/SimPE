@@ -36,12 +36,12 @@ namespace SimPe.Plugin
 				return false;
 			}
 
-			System.Collections.Generic.List<uint> added =
-				new System.Collections.Generic.List<uint>();
+			List<uint> added =
+				new List<uint>();
 			Splash.Screen.SetMessage("Loading FileTable...");
 			SimPe.FileTable.FileIndex.Load();
 			Splash.Screen.SetMessage("Looking for GLOB Resources...");
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] resources =
+			Interfaces.Scenegraph.IScenegraphFileIndexItem[] resources =
 				SimPe.FileTable.FileIndex.FindFile(SimPe.Data.MetaData.GLOB_FILE, true);
 
 			Splash.Screen.SetMessage("Found " + resources.Length + " GLOB Resources");
@@ -53,7 +53,7 @@ namespace SimPe.Plugin
 			int ct = 0;
 			int unq = 0;
 			foreach (
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in resources
+				Interfaces.Scenegraph.IScenegraphFileIndexItem item in resources
 			)
 			{
 				if (ct % 23 == 0)
@@ -65,7 +65,7 @@ namespace SimPe.Plugin
 
 				ct++;
 
-				SimPe.Plugin.Glob glb = new SimPe.Plugin.Glob();
+				Glob glb = new Glob();
 				glb.ProcessData(item);
 
 				if (!added.Contains(glb.SemiGlobalGroup))

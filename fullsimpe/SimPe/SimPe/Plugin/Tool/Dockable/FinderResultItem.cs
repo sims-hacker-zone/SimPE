@@ -54,24 +54,24 @@ namespace SimPe.Plugin.Tool.Dockable
 	}
 
 	/// <summary>
-	/// Represents a found <see cref="SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem"/> Resource.
+	/// Represents a found <see cref="Interfaces.Scenegraph.IScenegraphFileIndexItem"/> Resource.
 	/// </summary>
 	internal class ScenegraphResultItem : FinderResultItem
 	{
-		SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii;
+		Interfaces.Scenegraph.IScenegraphFileIndexItem fii;
 
 		public ScenegraphResultItem(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii
+			Interfaces.Scenegraph.IScenegraphFileIndexItem fii
 		)
 			: base(SimPe.Localization.GetString("Unknown"))
 		{
 			this.fii = fii;
-			SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper wrp =
+			Interfaces.Plugin.Internal.IPackedFileWrapper wrp =
 				FileTable.WrapperRegistry.FindHandler(fii.FileDescriptor.Type);
 			if (wrp != null)
 			{
-				((SimPe.Interfaces.Plugin.AbstractWrapper)wrp).Package = fii.Package;
-				((SimPe.Interfaces.Plugin.AbstractWrapper)wrp).FileDescriptor =
+				((Interfaces.Plugin.AbstractWrapper)wrp).Package = fii.Package;
+				((Interfaces.Plugin.AbstractWrapper)wrp).FileDescriptor =
 					fii.FileDescriptor;
 				this.Text = wrp.ResourceName;
 			}
@@ -95,8 +95,8 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		public ScenegraphResultItem(
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			Interfaces.Files.IPackageFile pkg,
+			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 			: this(new FileIndexItem(pfd, pkg)) { }
 

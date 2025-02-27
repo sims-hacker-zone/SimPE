@@ -7,17 +7,17 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for RenameForm.
 	/// </summary>
-	public class RenameForm : System.Windows.Forms.Form
+	public class RenameForm : Form
 	{
-		private System.Windows.Forms.ColumnHeader columnHeader1;
-		private System.Windows.Forms.ColumnHeader columnHeader2;
-		private System.Windows.Forms.ColumnHeader columnHeader3;
-		private System.Windows.Forms.ListView lv;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox tbname;
-		private System.Windows.Forms.LinkLabel llname;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.CheckBox cbv2;
+		private ColumnHeader columnHeader1;
+		private ColumnHeader columnHeader2;
+		private ColumnHeader columnHeader3;
+		private ListView lv;
+		private Label label1;
+		private TextBox tbname;
+		private LinkLabel llname;
+		private Button button1;
+		private CheckBox cbv2;
 
 		/// <summary>
 		/// Required designer variable.
@@ -58,21 +58,21 @@ namespace SimPe.Plugin
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(RenameForm));
-			this.lv = new System.Windows.Forms.ListView();
-			this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
-			this.label1 = new System.Windows.Forms.Label();
-			this.tbname = new System.Windows.Forms.TextBox();
-			this.llname = new System.Windows.Forms.LinkLabel();
-			this.button1 = new System.Windows.Forms.Button();
-			this.cbv2 = new System.Windows.Forms.CheckBox();
+			this.lv = new ListView();
+			this.columnHeader1 = new ColumnHeader();
+			this.columnHeader2 = new ColumnHeader();
+			this.columnHeader3 = new ColumnHeader();
+			this.label1 = new Label();
+			this.tbname = new TextBox();
+			this.llname = new LinkLabel();
+			this.button1 = new Button();
+			this.cbv2 = new CheckBox();
 			this.SuspendLayout();
 			//
 			// lv
 			//
 			this.lv.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -84,7 +84,7 @@ namespace SimPe.Plugin
 				)
 			);
 			this.lv.Columns.AddRange(
-				new System.Windows.Forms.ColumnHeader[]
+				new ColumnHeader[]
 				{
 					this.columnHeader1,
 					this.columnHeader2,
@@ -135,7 +135,7 @@ namespace SimPe.Plugin
 			// tbname
 			//
 			this.tbname.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -153,7 +153,7 @@ namespace SimPe.Plugin
 			// llname
 			//
 			this.llname.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -175,14 +175,14 @@ namespace SimPe.Plugin
 			this.llname.TabStop = true;
 			this.llname.Text = "Update";
 			this.llname.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.UpdateNames
 				);
 			//
 			// button1
 			//
 			this.button1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -194,12 +194,12 @@ namespace SimPe.Plugin
 			this.button1.Name = "button1";
 			this.button1.TabIndex = 5;
 			this.button1.Text = "OK";
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.button1.Click += new EventHandler(this.button1_Click);
 			//
 			// cbv2
 			//
 			this.cbv2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -255,7 +255,7 @@ namespace SimPe.Plugin
 		/// <param name="package">The Package containing the Data</param>
 		/// <returns>The Modelname</returns>
 		public static string FindMainOldName(
-			SimPe.Interfaces.Files.IPackageFile package
+			Interfaces.Files.IPackageFile package
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
@@ -265,11 +265,11 @@ namespace SimPe.Plugin
 			{
 				if (pfd.Instance == 0x85)
 				{
-					SimPe.PackedFiles.Wrapper.Str str =
-						new SimPe.PackedFiles.Wrapper.Str();
+					PackedFiles.Wrapper.Str str =
+						new PackedFiles.Wrapper.Str();
 					str.ProcessData(pfd, package);
 
-					SimPe.PackedFiles.Wrapper.StrItemList sil = str.LanguageItems(1);
+					PackedFiles.Wrapper.StrItemList sil = str.LanguageItems(1);
 					if (sil.Length > 1)
 					{
 						return sil[1].Title;
@@ -284,7 +284,7 @@ namespace SimPe.Plugin
 			pfds = package.FindFiles(0x4C697E5A);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				SimPe.PackedFiles.Wrapper.Cpf cpf = new SimPe.PackedFiles.Wrapper.Cpf();
+				PackedFiles.Wrapper.Cpf cpf = new PackedFiles.Wrapper.Cpf();
 				cpf.ProcessData(pfd, package);
 
 				if (cpf.GetSaveItem("modelName").StringValue.Trim() != "")
@@ -352,7 +352,7 @@ namespace SimPe.Plugin
 		/// <returns></returns>
 		public static Hashtable GetNames(
 			bool auto,
-			SimPe.Interfaces.Files.IPackageFile package,
+			Interfaces.Files.IPackageFile package,
 			ListView lv,
 			string username
 		)
@@ -479,7 +479,7 @@ namespace SimPe.Plugin
 						Hashes.StripHashFromName(newname)
 					);
 				}
-				catch (System.ArgumentException ex)
+				catch (ArgumentException ex)
 				{
 					throw new Warning(
 						ex.Message,
@@ -544,11 +544,11 @@ namespace SimPe.Plugin
 			return "[" + uname.Trim() + "]";
 		}
 
-		SimPe.Interfaces.Files.IPackageFile package;
+		Interfaces.Files.IPackageFile package;
 		static string current_unique;
 
 		public static Hashtable Execute(
-			SimPe.Interfaces.Files.IPackageFile package,
+			Interfaces.Files.IPackageFile package,
 			bool uniquename,
 			ref FixVersion ver
 		)
@@ -606,7 +606,7 @@ namespace SimPe.Plugin
 
 		private void UpdateNames(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			GetNames(true, package, lv, tbname.Text);
@@ -614,7 +614,7 @@ namespace SimPe.Plugin
 
 		bool ok;
 
-		private void button1_Click(object sender, System.EventArgs e)
+		private void button1_Click(object sender, EventArgs e)
 		{
 			ok = true;
 			Close();

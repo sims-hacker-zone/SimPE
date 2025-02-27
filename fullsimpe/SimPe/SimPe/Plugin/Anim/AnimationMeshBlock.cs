@@ -34,36 +34,36 @@ namespace SimPe.Plugin.Anim
 
 		public AnimResourceConst Animation => (AnimResourceConst)Parent.Blocks[0];
 
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public AnimationFrameBlock[] Part2
 		{
 			get; set;
 		}
 
 		[
-			DescriptionAttribute("Number of loaded AnimationFrameBlock Items"),
-			CategoryAttribute("Information")
+			Description("Number of loaded AnimationFrameBlock Items"),
+			Category("Information")
 		]
 		public int Part2Count => Part2.Length;
 
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public AnimBlock4[] Part4
 		{
 			get; private set;
 		}
 
 		[
-			DescriptionAttribute("Number of loaded AnimBlock4 Items"),
-			CategoryAttribute("Information")
+			Description("Number of loaded AnimBlock4 Items"),
+			Category("Information")
 		]
 		public int Part4Count => Part4.Length;
 
 		uint[] datai;
 
 		[
-			DescriptionAttribute("Reserved"),
-			CategoryAttribute("Reserved"),
-			DefaultValueAttribute(0x11BA05F0)
+			Description("Reserved"),
+			Category("Reserved"),
+			DefaultValue(0x11BA05F0)
 		]
 		public uint Unknown1
 		{
@@ -78,9 +78,9 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute("Reserved"),
-			CategoryAttribute("Reserved"),
-			DefaultValueAttribute(0x11BA05F0)
+			Description("Reserved"),
+			Category("Reserved"),
+			DefaultValue(0x11BA05F0)
 		]
 		public uint Unknown2
 		{
@@ -95,9 +95,9 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute("Reserved"),
-			CategoryAttribute("Reserved"),
-			DefaultValueAttribute(0x11BA05F0)
+			Description("Reserved"),
+			Category("Reserved"),
+			DefaultValue(0x11BA05F0)
 		]
 		public uint Unknown3
 		{
@@ -112,9 +112,9 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute("Reserved"),
-			CategoryAttribute("Reserved"),
-			DefaultValueAttribute(0x11BA05F0)
+			Description("Reserved"),
+			Category("Reserved"),
+			DefaultValue(0x11BA05F0)
 		]
 		public uint Unknown4
 		{
@@ -129,9 +129,9 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute("Reserved"),
-			CategoryAttribute("Reserved"),
-			DefaultValueAttribute(0x11BA05F0)
+			Description("Reserved"),
+			Category("Reserved"),
+			DefaultValue(0x11BA05F0)
 		]
 		public uint Unknown5
 		{
@@ -158,10 +158,10 @@ namespace SimPe.Plugin.Anim
 			}
 		}
 
-		[DescriptionAttribute("Number of assigned AnimationFrameBlock Items")]
+		[Description("Number of assigned AnimationFrameBlock Items")]
 		public short AnimatedBoneCount => datas[1];
 
-		[DescriptionAttribute(
+		[Description(
 			"Lower 6 Bits(?) are reserved for the Number of assigned AnimBlock4 Items"
 		)]
 		public short SUnknown3
@@ -437,8 +437,8 @@ namespace SimPe.Plugin.Anim
 		}
 
 		protected GenericRcol FindDefiningCRES(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
 			GenericRcol rcol = new GenericRcol();
@@ -447,7 +447,7 @@ namespace SimPe.Plugin.Anim
 			ResourceNode rn = (ResourceNode)rcol.Blocks[0];
 			foreach (int i in rn.ChildBlocks)
 			{
-				SimPe.Interfaces.Scenegraph.ICresChildren icc = rn.GetBlock(i);
+				Interfaces.Scenegraph.ICresChildren icc = rn.GetBlock(i);
 
 				if (icc != null)
 				{
@@ -468,9 +468,9 @@ namespace SimPe.Plugin.Anim
 
 		public GenericRcol FindDefiningCRES()
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds =
+			Interfaces.Files.IPackedFileDescriptor[] pfds =
 				Parent.Package.FindFiles(Data.MetaData.CRES);
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				GenericRcol rcol = FindDefiningCRES(pfd, Parent.Package);
 				if (rcol != null)
@@ -488,10 +488,10 @@ namespace SimPe.Plugin.Anim
 			)
 			{
 				FileTable.FileIndex.Load();
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
 					FileTable.FileIndex.FindFile(Data.MetaData.CRES, true);
 				foreach (
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
+					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
 				)
 				{
 					GenericRcol rcol = FindDefiningCRES(
@@ -514,7 +514,7 @@ namespace SimPe.Plugin.Anim
 				return null;
 			}
 
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item =
+			Interfaces.Scenegraph.IScenegraphFileIndexItem item =
 				cres.FindReferencedType(Data.MetaData.SHPE);
 			if (item != null)
 			{
@@ -561,7 +561,7 @@ namespace SimPe.Plugin.Anim
 					instns = 0x57D5D2CDFF545BA9;
 				}
 
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
 					FileTable.FileIndex.FindFile(
 						Data.MetaData.GMDC,
 						0x1C0532FA,
@@ -569,7 +569,7 @@ namespace SimPe.Plugin.Anim
 						Parent.Package
 					);
 				foreach (
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem iteme in items
+					Interfaces.Scenegraph.IScenegraphFileIndexItem iteme in items
 				)
 				{
 					if (iteme != null)

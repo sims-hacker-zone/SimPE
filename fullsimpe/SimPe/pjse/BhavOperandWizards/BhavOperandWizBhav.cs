@@ -335,7 +335,7 @@ namespace pjse.BhavOperandWizards.WizBhav
 
 			nodeVersion = inst.NodeVersion;
 
-			pjse.FileTable.Entry ftEntry = inst.Parent.ResourceByInstance(
+			FileTable.Entry ftEntry = inst.Parent.ResourceByInstance(
 				SimPe.Data.MetaData.BHAV_FILE,
 				inst.OpCode
 			);
@@ -481,7 +481,7 @@ namespace pjse.BhavOperandWizards.WizBhav
 
 namespace pjse.BhavOperandWizards
 {
-	public class BhavOperandWizBhav : pjse.ABhavOperandWiz
+	public class BhavOperandWizBhav : ABhavOperandWiz
 	{
 		public BhavOperandWizBhav(Instruction i)
 			: base(i)

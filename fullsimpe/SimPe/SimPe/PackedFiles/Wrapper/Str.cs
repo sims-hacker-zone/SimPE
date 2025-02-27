@@ -83,7 +83,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns /Sets the Format Code
 		/// </summary>
-		public SimPe.Data.MetaData.FormatCode Format
+		public Data.MetaData.FormatCode Format
 		{
 			get; set; // should check it's valid
 		}
@@ -395,7 +395,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 			byte[] fi = reader.ReadBytes(0x40);
 
-			SimPe.Data.MetaData.FormatCode fo = (SimPe.Data.MetaData.FormatCode)
+			Data.MetaData.FormatCode fo = (Data.MetaData.FormatCode)
 				reader.ReadUInt16();
 			if (fo != Data.MetaData.FormatCode.normal)
 			{

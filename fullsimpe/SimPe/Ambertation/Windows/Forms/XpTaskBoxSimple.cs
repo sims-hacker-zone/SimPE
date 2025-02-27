@@ -30,7 +30,7 @@ namespace Ambertation.Windows.Forms
 	/// This is an c#-Version of a Control created by www.steepvalley.net.
 	/// I translated it to remove the Expand/Collapse feature
 	/// </summary>
-	[DesignTimeVisible(true), ToolboxBitmapAttribute(typeof(GroupBox))]
+	[DesignTimeVisible(true), ToolboxBitmap(typeof(GroupBox))]
 	public class XPTaskBoxSimple : Panel
 	{
 		// Methods
@@ -237,7 +237,7 @@ namespace Ambertation.Windows.Forms
 			}
 		}
 
-		System.Drawing.Bitmap canvas;
+		Bitmap canvas;
 
 		protected void RebuildCanvas()
 		{
@@ -386,9 +386,9 @@ namespace Ambertation.Windows.Forms
 			Localizable(true),
 			Description("Icon"),
 			Category("Appearance"),
-			DefaultValue(typeof(System.Drawing.Icon), "")
+			DefaultValue(typeof(Icon), "")
 		]
-		public System.Drawing.Image Icon
+		public Image Icon
 		{
 			get
 			{
@@ -427,7 +427,7 @@ namespace Ambertation.Windows.Forms
 
 		// Fields
 		private IContainer components;
-		private System.Drawing.Image mIcon;
+		private Image mIcon;
 		private string mstrHeaderText;
 	}
 }

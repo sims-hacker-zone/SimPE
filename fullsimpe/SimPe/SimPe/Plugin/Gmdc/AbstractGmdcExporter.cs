@@ -154,7 +154,7 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="gmdc"></param>
 		/// <returns>The created Stream</returns>
-		public System.IO.Stream Process(GeometryDataContainer gmdc)
+		public Stream Process(GeometryDataContainer gmdc)
 		{
 			return Process(gmdc, gmdc.Groups);
 		}
@@ -165,7 +165,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="gmdc"></param>
 		/// <param name="groups"></param>
 		/// <returns>The created Stream</returns>
-		public System.IO.Stream Process(GeometryDataContainer gmdc, GmdcGroups groups)
+		public Stream Process(GeometryDataContainer gmdc, GmdcGroups groups)
 		{
 			this.Gmdc = gmdc;
 			LoadGroups(groups);
@@ -249,12 +249,12 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// internal Attribute
 		/// </summary>
-		protected System.IO.StreamWriter writer;
+		protected StreamWriter writer;
 
 		/// <summary>
 		/// Returns the Content of the File base on the last loaded GroupSet
 		/// </summary>
-		public System.IO.StreamWriter FileContent => writer;
+		public StreamWriter FileContent => writer;
 
 		/// <summary>
 		/// Returns a Version Number for the used Interface

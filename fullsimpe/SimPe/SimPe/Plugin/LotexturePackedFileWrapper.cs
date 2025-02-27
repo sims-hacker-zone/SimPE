@@ -105,7 +105,7 @@ namespace SimPe.Plugin
 				//reader.BaseStream.Seek(0x50, System.IO.SeekOrigin.Begin);
 				Hoodtexture = reader.ReadString();
 				itemnum = reader.ReadInt32();
-				Array.Resize<string>(ref texchure, itemnum);
+				Array.Resize(ref texchure, itemnum);
 				if (itemnum > 0)
 				{
 					for (int i = 0; i < itemnum; i++)
@@ -150,7 +150,7 @@ namespace SimPe.Plugin
 				Badges = reader.ReadInt32();
 				if (Badges > 0)
 				{
-					Array.Resize<uint>(ref badgesid, Badges);
+					Array.Resize(ref badgesid, Badges);
 					for (int k = 0; k < Badges; k++)
 					{
 						badgesid[k] = reader.ReadUInt32();
@@ -163,7 +163,7 @@ namespace SimPe.Plugin
 					}
 				}
 				itemnum = reader.ReadInt32();
-				Array.Resize<uint>(ref remeberid, itemnum);
+				Array.Resize(ref remeberid, itemnum);
 				for (int i = 0; i < itemnum; i++)
 				{
 					remeberid[i] = reader.ReadUInt32();
@@ -176,10 +176,10 @@ namespace SimPe.Plugin
 				}
 				bool dided = false;
 				PackedFiles.Wrapper.ExtSDesc sdesc =
-					new SimPe.PackedFiles.Wrapper.ExtSDesc();
-				SimPe.Interfaces.Files.IPackedFileDescriptor[] files =
+					new PackedFiles.Wrapper.ExtSDesc();
+				Interfaces.Files.IPackedFileDescriptor[] files =
 					package.FindFiles(SimPe.Data.MetaData.SIM_DESCRIPTION_FILE);
-				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in files)
+				foreach (Interfaces.Files.IPackedFileDescriptor pfd in files)
 				{
 					sdesc.ProcessData(pfd, package);
 					if (sdesc.Instance == this.FileDescriptor.Instance)
@@ -207,14 +207,14 @@ namespace SimPe.Plugin
 					nuffing = reader.ReadInt32();
 				}
 				itemnum = reader.ReadInt32(); // Total Sims
-				Array.Resize<uint>(ref remeberid, itemnum);
-				Array.Resize<uint>(ref badgesid, itemnum);
-				Array.Resize<string>(ref texchure, itemnum);
+				Array.Resize(ref remeberid, itemnum);
+				Array.Resize(ref badgesid, itemnum);
+				Array.Resize(ref texchure, itemnum);
 				for (int i = 0; i < itemnum; i++)
 				{
 					remeberid[i] = reader.ReadUInt32(); // Nid
 					badgesid[i] = reader.ReadUInt32(); // Instance - GUID
-					SimPe.Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
+					Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
 						Data.MetaData.SIM_DESCRIPTION_FILE,
 						0,
 						0xFFFFFFFF,
@@ -234,7 +234,7 @@ namespace SimPe.Plugin
 					else
 					{
 						PackedFiles.Wrapper.ExtSDesc sdesc =
-							new SimPe.PackedFiles.Wrapper.ExtSDesc();
+							new PackedFiles.Wrapper.ExtSDesc();
 						sdesc.ProcessData(pfd, package);
 						texchure[i] = sdesc.SimName;
 					}
@@ -302,7 +302,7 @@ namespace SimPe.Plugin
 
 		#endregion
 
-		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
+		protected override string GetResourceName(Data.TypeAlias ta)
 		{
 			if (this.FileDescriptor.Type == 0xCDB8BDC4)
 			{

@@ -31,14 +31,14 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// <summary>
 		/// The Parent Wrapper
 		/// </summary>
-		protected Wrapper.FamilyTies famt;
+		protected FamilyTies famt;
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
 		/// <param name="siminstance">Instance of the Sim</param>
 		/// <param name="famt">The Parent Wrapper</param>
-		public FamilyTieCommon(ushort siminstance, Wrapper.FamilyTies famt)
+		public FamilyTieCommon(ushort siminstance, FamilyTies famt)
 		{
 			this.siminstance = siminstance;
 			this.famt = famt;
@@ -86,7 +86,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 
 				try
 				{
-					SimPe.Interfaces.Files.IPackedFileDescriptor pfd =
+					Interfaces.Files.IPackedFileDescriptor pfd =
 						famt.Package.FindFile(
 							MetaData.SIM_DESCRIPTION_FILE,
 							0,
@@ -162,7 +162,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		public FamilyTieSim(
 			ushort siminstance,
 			FamilyTieItem[] ties,
-			Wrapper.FamilyTies famt
+			FamilyTies famt
 		)
 			: base(siminstance, famt)
 		{
@@ -214,7 +214,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// </summary>
 		/// <param name="sdsc"></param>
 		/// <returns>the <see cref="FamilyTieItem"/> for the passed Sim</returns>
-		public FamilyTieItem CreateTie(SDesc sdsc, Data.MetaData.FamilyTieTypes type)
+		public FamilyTieItem CreateTie(SDesc sdsc, MetaData.FamilyTieTypes type)
 		{
 			FamilyTieItem s = FindTie(sdsc);
 			if (s == null)
@@ -254,7 +254,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		public FamilyTieItem(
 			MetaData.FamilyTieTypes type,
 			ushort siminstance,
-			Wrapper.FamilyTies famt
+			FamilyTies famt
 		)
 			: base(siminstance, famt)
 		{

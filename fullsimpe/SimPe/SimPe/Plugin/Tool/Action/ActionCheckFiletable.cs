@@ -22,19 +22,19 @@ namespace SimPe.Plugin.Tool.Action
 	/// <summary>
 	/// The ReloadFileTable Action
 	/// </summary>
-	public class ActionCheckFiletable : SimPe.Interfaces.IToolAction
+	public class ActionCheckFiletable : Interfaces.IToolAction
 	{
 		#region IToolAction Member
 
 		public virtual bool ChangeEnabledStateEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs es
+			Events.ResourceEventArgs es
 		)
 		{
 			return es.Loaded;
 		}
 
-		string GetString(SimPe.Interfaces.Files.IPackedFileDescriptor pfd)
+		string GetString(Interfaces.Files.IPackedFileDescriptor pfd)
 		{
 			return pfd.ExceptionString
 				+ " (o="
@@ -44,7 +44,7 @@ namespace SimPe.Plugin.Tool.Action
 				+ ")";
 		}
 
-		public void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs e)
+		public void ExecuteEventHandler(object sender, Events.ResourceEventArgs e)
 		{
 			if (!ChangeEnabledStateEventHandler(null, e))
 			{
@@ -59,12 +59,12 @@ namespace SimPe.Plugin.Tool.Action
 			try
 			{
 				foreach (
-					SimPe.Interfaces.Files.IPackedFileDescriptor pfd in e.LoadedPackage
+					Interfaces.Files.IPackedFileDescriptor pfd in e.LoadedPackage
 						.Package
 						.Index
 				)
 				{
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] fiis =
+					Interfaces.Scenegraph.IScenegraphFileIndexItem[] fiis =
 						FileTable.FileIndex.FindFile(pfd, e.LoadedPackage.Package);
 
 					if (fiis.Length != 1)
@@ -76,7 +76,7 @@ namespace SimPe.Plugin.Tool.Action
 								+ " times."
 						);
 						foreach (
-							SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii in fiis
+							Interfaces.Scenegraph.IScenegraphFileIndexItem fii in fiis
 						)
 						{
 							sw.WriteLine(

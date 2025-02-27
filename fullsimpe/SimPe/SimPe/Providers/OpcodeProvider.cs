@@ -29,7 +29,7 @@ namespace SimPe.Providers
 	/// <summary>
 	/// Provides an Alias Matching a SimID with it's Name
 	/// </summary>
-	public class Opcodes : SimCommonPackage, SimPe.Interfaces.Providers.IOpcodeProvider
+	public class Opcodes : SimCommonPackage, Interfaces.Providers.IOpcodeProvider
 	{
 		/// <summary>
 		/// List of known Opcode Names
@@ -77,13 +77,13 @@ namespace SimPe.Providers
 		/// </summary>
 		/// <returns>the IAlias Object</returns>
 		protected static void ProcessMemoryFile(
-			Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.PackedFiles.Wrapper.ExtObjd objd,
-			SimPe.PackedFiles.Wrapper.ExtObjd objd_pr,
-			SimPe.PackedFiles.Wrapper.Str str,
+			IPackedFileDescriptor pfd,
+			PackedFiles.Wrapper.ExtObjd objd,
+			PackedFiles.Wrapper.ExtObjd objd_pr,
+			PackedFiles.Wrapper.Str str,
 			ArrayList list,
 			ref Hashtable memories,
-			SimPe.Interfaces.Files.IPackageFile BasePackage
+			IPackageFile BasePackage
 		)
 		{
 		}
@@ -98,11 +98,11 @@ namespace SimPe.Providers
 
 			Registry reg = Helper.WindowsRegistry;
 			ArrayList list = new ArrayList();
-			Interfaces.Files.IPackedFileDescriptor pfd;
+			IPackedFileDescriptor pfd;
 
-			SimPe.PackedFiles.Wrapper.ExtObjd objd =
-				new SimPe.PackedFiles.Wrapper.ExtObjd();
-			SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+			PackedFiles.Wrapper.ExtObjd objd =
+				new PackedFiles.Wrapper.ExtObjd();
+			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
 
 			FileTable.FileIndex.Load();
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
@@ -151,7 +151,7 @@ namespace SimPe.Providers
 							if (sitems.Length > 0)
 							{
 								str.ProcessData(sitems[0]);
-								SimPe.PackedFiles.Wrapper.StrItemList strs =
+								PackedFiles.Wrapper.StrItemList strs =
 									str.LanguageItems(
 										Helper.WindowsRegistry.LanguageCode
 									);
@@ -187,10 +187,10 @@ namespace SimPe.Providers
 						object[] o = new object[3];
 
 						o[0] = pfd;
-						o[1] = (Data.ObjectTypes)objd.Type;
+						o[1] = (ObjectTypes)objd.Type;
 						o[2] = null;
-						SimPe.PackedFiles.Wrapper.Picture pic =
-							new SimPe.PackedFiles.Wrapper.Picture();
+						PackedFiles.Wrapper.Picture pic =
+							new PackedFiles.Wrapper.Picture();
 						Interfaces.Scenegraph.IScenegraphFileIndexItem[] iitems =
 							FileTable.FileIndex.FindFile(
 								Data.MetaData.SIM_IMAGE_FILE,
@@ -244,10 +244,10 @@ namespace SimPe.Providers
 				0x7FE59FD0,
 				instance
 			);
-			SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
 			str.ProcessData(pfd, BasePackage);
-			SimPe.PackedFiles.Wrapper.StrItemList sis = str.FallbackedLanguageItems(
-				(SimPe.Data.MetaData.Languages)lang
+			PackedFiles.Wrapper.StrItemList sis = str.FallbackedLanguageItems(
+				(MetaData.Languages)lang
 			);
 			for (ushort i = 0; i < sis.Length; i++)
 			{
@@ -309,22 +309,22 @@ namespace SimPe.Providers
 
 			//IPackedFileDescriptor pfd = BasePackage.FindFile(Data.MetaData.STRING_FILE, 0x00000000, 0x7FE59FD0, 0x0000008B);
 			FileTable.FileIndex.Load();
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
 				SimPe.FileTable.FileIndex.FindFile(
 					Data.MetaData.STRING_FILE,
 					0x7FE59FD0,
 					0x000000000000008B,
 					null
 				);
-			SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
 
-			foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
+			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
 			{
 				str.ProcessData(item.FileDescriptor, BasePackage);
 
 				for (ushort i = 0; i < str.Items.Length; i++)
 				{
-					SimPe.PackedFiles.Wrapper.StrToken si = str.Items[i];
+					PackedFiles.Wrapper.StrToken si = str.Items[i];
 
 					if (si.Language.Id == 1)
 					{
@@ -381,7 +381,7 @@ namespace SimPe.Providers
 				}
 				//IPackedFileDescriptor pfd = BasePackage.FindFile(Data.MetaData.BHAV_FILE, 0x0, 0x7FD46CD0, opcode);
 				FileTable.FileIndex.Load();
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
 					FileTable.FileIndex.FindFile(
 						Data.MetaData.BHAV_FILE,
 						0x7FD46CD0,
@@ -390,7 +390,7 @@ namespace SimPe.Providers
 					);
 
 				foreach (
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
+					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
 				)
 				{
 					if (item.FileDescriptor != null)
@@ -670,7 +670,7 @@ namespace SimPe.Providers
 		/// </summary>
 		/// <param name="opcode">the Opcode of the BHAV</param>
 		/// <returns>The Descriptor for the Bhav File in the BasePackage or null</returns>
-		public SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem LoadGlobalBHAV(
+		public Interfaces.Scenegraph.IScenegraphFileIndexItem LoadGlobalBHAV(
 			ushort opcode
 		)
 		{
@@ -683,7 +683,7 @@ namespace SimPe.Providers
 		/// <param name="opcode">The Opcode</param>
 		/// <param name="group">The group of the SemiGlobal</param>
 		/// <returns>The Descriptor of the Bhaf File in the Base Packagee or null</returns>
-		public SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem LoadSemiGlobalBHAV(
+		public Interfaces.Scenegraph.IScenegraphFileIndexItem LoadSemiGlobalBHAV(
 			ushort opcode,
 			uint group
 		)
@@ -691,7 +691,7 @@ namespace SimPe.Providers
 			//LoadPackage();
 			//if (BasePackage==null) return null;
 			FileTable.FileIndex.Load();
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
 				FileTable.FileIndex.FindFile(
 					Data.MetaData.BHAV_FILE,
 					group,

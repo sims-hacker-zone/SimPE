@@ -35,8 +35,8 @@ namespace SimPe.PackedFiles.Wrapper
 	/// </summary>
 	public class Objd
 		: AbstractWrapper,
-			SimPe.Interfaces.Plugin.IFileWrapper,
-			SimPe.Interfaces.Plugin.IFileWrapperSaveExtension
+			IFileWrapper,
+			IFileWrapperSaveExtension
 	{
 		/// <summary>
 		///the stored Filename
@@ -309,7 +309,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new SimPe.PackedFiles.UserInterface.Objd();
+			return new UserInterface.Objd();
 		}
 
 		Interfaces.Providers.IOpcodeProvider opcodes;
@@ -553,7 +553,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}*/
 
-		public System.Collections.Hashtable Attributes
+		public Hashtable Attributes
 		{
 			get
 			{

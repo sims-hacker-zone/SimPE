@@ -209,7 +209,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
+		protected override string GetResourceName(Data.TypeAlias ta)
 		{
 			ExtSDesc sdsc =
 				FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(

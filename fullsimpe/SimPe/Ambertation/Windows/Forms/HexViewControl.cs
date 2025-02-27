@@ -705,14 +705,14 @@ namespace Ambertation.Windows.Forms
 		/// Returns the List of Highlighted Elements
 		/// </summary>
 		[Browsable(false)]
-		public Ambertation.Collections.Highlights Highlights
+		public Collections.Highlights Highlights
 		{
 			get;
 		}
 		#endregion
 
 		#region Fields
-		System.Windows.Forms.ScrollBar sb;
+		ScrollBar sb;
 		#endregion
 
 		#region Events
@@ -724,12 +724,12 @@ namespace Ambertation.Windows.Forms
 		/// <summary>
 		/// Fires, whenever the Selection get's changed
 		/// </summary>
-		public event System.EventHandler SelectionChanged;
+		public event EventHandler SelectionChanged;
 
 		/// <summary>
 		/// Fires, whenever the Data get's changed
 		/// </summary>
-		public event System.EventHandler DataChanged;
+		public event EventHandler DataChanged;
 		#endregion
 
 		#region Calulated Measurement
@@ -849,7 +849,7 @@ namespace Ambertation.Windows.Forms
 			charboxwidth = 200;
 			cols = 2;
 			grid = true;
-			Highlights = new Ambertation.Collections.Highlights();
+			Highlights = new Collections.Highlights();
 
 			backcol = SystemColors.ControlLightLight;
 			bkgrcol = SystemColors.Control;
@@ -993,7 +993,7 @@ namespace Ambertation.Windows.Forms
 
 			if (SelectionChanged != null)
 			{
-				SelectionChanged(this, new System.EventArgs());
+				SelectionChanged(this, new EventArgs());
 			}
 		}
 

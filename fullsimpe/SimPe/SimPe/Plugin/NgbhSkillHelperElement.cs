@@ -7,10 +7,10 @@ namespace SimPe.Plugin
 	/// Summary description for NgbhSkillHelperElement.
 	/// </summary>
 	[System.ComponentModel.DefaultEvent("AddedNewItem")]
-	public class NgbhSkillHelperElement : System.Windows.Forms.UserControl
+	public class NgbhSkillHelperElement : UserControl
 	{
-		private SimPe.Plugin.NgbhValueDescriptorSelection cb;
-		private SimPe.Plugin.NgbhValueDescriptorUI ui;
+		private NgbhValueDescriptorSelection cb;
+		private NgbhValueDescriptorUI ui;
 
 		/// <summary>
 		/// Required designer variable.
@@ -59,8 +59,8 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.cb = new SimPe.Plugin.NgbhValueDescriptorSelection();
-			this.ui = new SimPe.Plugin.NgbhValueDescriptorUI();
+			this.cb = new NgbhValueDescriptorSelection();
+			this.ui = new NgbhValueDescriptorUI();
 			this.SuspendLayout();
 			//
 			// cb
@@ -99,8 +99,8 @@ namespace SimPe.Plugin
 			this.ui.Size = new System.Drawing.Size(400, 104);
 			this.ui.Slot = null;
 			this.ui.TabIndex = 1;
-			this.ui.AddedNewItem += new System.EventHandler(this.ui_AddedNewItem);
-			this.ui.ChangedItem += new System.EventHandler(this.ui_ChangedItem);
+			this.ui.AddedNewItem += new EventHandler(this.ui_AddedNewItem);
+			this.ui.ChangedItem += new EventHandler(this.ui_ChangedItem);
 			//
 			// NgbhSkillHelperElement
 			//
@@ -201,7 +201,7 @@ namespace SimPe.Plugin
 			this.ui.Slot = slot;
 		}
 
-		private void ui_AddedNewItem(object sender, System.EventArgs e)
+		private void ui_AddedNewItem(object sender, EventArgs e)
 		{
 			if (AddedNewItem != null)
 			{
@@ -209,7 +209,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void ui_ChangedItem(object sender, System.EventArgs e)
+		private void ui_ChangedItem(object sender, EventArgs e)
 		{
 			if (ChangedItem != null)
 			{

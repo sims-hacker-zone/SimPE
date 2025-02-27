@@ -51,7 +51,7 @@ namespace SimPe.Interfaces.Plugin.Internal
 		/// Processe the Data stored in the sent File
 		/// </summary>
 		/// <param name="item">Contains a Scenegraph Item (which combines a FileDescriptor with a Package)</param>
-		void ProcessData(Interfaces.Scenegraph.IScenegraphFileIndexItem item);
+		void ProcessData(Scenegraph.IScenegraphFileIndexItem item);
 
 		/// <summary>
 		/// Processe the Data stored in the sent File
@@ -79,7 +79,7 @@ namespace SimPe.Interfaces.Plugin.Internal
 		/// <param name="item">Contains a Scenegraph Item (which combines a FileDescriptor with a Package)</param>
 		/// <param name="catchex">true, if the Method should handle all occuring Exceptions</param>
 		void ProcessData(
-			Interfaces.Scenegraph.IScenegraphFileIndexItem item,
+			Scenegraph.IScenegraphFileIndexItem item,
 			bool catchex
 		);
 

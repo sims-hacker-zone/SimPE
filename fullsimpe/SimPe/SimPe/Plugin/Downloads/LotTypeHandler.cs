@@ -8,14 +8,14 @@ namespace SimPe.Plugin.Downloads
 		public LotTypeHandler()
 			: base() { }
 
-		protected override void SetName(SimPe.Interfaces.Files.IPackageFile pkg)
+		protected override void SetName(Interfaces.Files.IPackageFile pkg)
 		{
 			SetName(Data.MetaData.STRING_FILE, pkg);
 		}
 
-		protected override void SetImage(SimPe.Interfaces.Files.IPackageFile pkg)
+		protected override void SetImage(Interfaces.Files.IPackageFile pkg)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
+			Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
 				0x856DDBAC,
 				0,
 				Data.MetaData.LOCAL_GROUP,
@@ -23,7 +23,7 @@ namespace SimPe.Plugin.Downloads
 			);
 			if (pfd == null)
 			{
-				SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
+				Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
 					0x856DDBAC
 				);
 				if (pfds.Length > 0)
@@ -34,8 +34,8 @@ namespace SimPe.Plugin.Downloads
 
 			if (pfd != null)
 			{
-				SimPe.PackedFiles.Wrapper.Picture pic =
-					new SimPe.PackedFiles.Wrapper.Picture();
+				PackedFiles.Wrapper.Picture pic =
+					new PackedFiles.Wrapper.Picture();
 				pic.ProcessData(pfd, pkg);
 				nfo.Image = pic.Image;
 			}

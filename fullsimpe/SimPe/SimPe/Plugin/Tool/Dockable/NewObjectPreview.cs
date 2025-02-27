@@ -51,10 +51,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		#region Public Properties
-		protected SimPe.PackedFiles.Wrapper.ExtObjd objd;
+		protected PackedFiles.Wrapper.ExtObjd objd;
 
 		[Browsable(false)]
-		public SimPe.PackedFiles.Wrapper.ExtObjd SelectedObject
+		public PackedFiles.Wrapper.ExtObjd SelectedObject
 		{
 			get
 			{
@@ -104,7 +104,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				);
 		}
 
-		static SimPe.Packages.File thumbs = null;
+		static Packages.File thumbs = null;
 
 		/// <summary>
 		/// Returns the Thumbnail of an Object
@@ -150,7 +150,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			uint group,
 			string modelname,
 			string message,
-			SimPe.Packages.File thumbs
+			Packages.File thumbs
 		)
 		{
 			uint inst = ThumbnailHash(group, modelname);
@@ -178,7 +178,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			uint type,
 			uint group,
 			uint inst,
-			SimPe.Packages.File thumbs
+			Packages.File thumbs
 		)
 		{
 			return GetThumbnail(message, new uint[] { type }, group, inst, thumbs);
@@ -195,7 +195,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			uint[] types,
 			uint group,
 			uint inst,
-			SimPe.Packages.File thumbs
+			Packages.File thumbs
 		)
 		{
 			/*ArrayList types = new ArrayList();
@@ -228,8 +228,8 @@ namespace SimPe.Plugin.Tool.Dockable
 					Interfaces.Files.IPackedFileDescriptor pfd = pfds[0];
 					try
 					{
-						SimPe.PackedFiles.Wrapper.Picture pic =
-							new SimPe.PackedFiles.Wrapper.Picture();
+						PackedFiles.Wrapper.Picture pic =
+							new PackedFiles.Wrapper.Picture();
 						pic.ProcessData(pfd, thumbs);
 						Bitmap bm = (Bitmap)
 							ImageLoader.Preview(pic.Image, WaitingScreen.ImageSize);
@@ -328,7 +328,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 		}
 
-		public virtual void SetFromObjectCacheItem(SimPe.Cache.ObjectCacheItem oci)
+		public virtual void SetFromObjectCacheItem(Cache.ObjectCacheItem oci)
 		{
 			if (oci == null)
 			{
@@ -340,11 +340,11 @@ namespace SimPe.Plugin.Tool.Dockable
 			objd = null;
 			if (oci.Tag != null)
 			{
-				if (oci.Tag is SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem)
+				if (oci.Tag is Interfaces.Scenegraph.IScenegraphFileIndexItem)
 				{
-					objd = new SimPe.PackedFiles.Wrapper.ExtObjd();
+					objd = new PackedFiles.Wrapper.ExtObjd();
 					objd.ProcessData(
-						(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem)oci.Tag
+						(Interfaces.Scenegraph.IScenegraphFileIndexItem)oci.Tag
 					);
 				}
 			}
@@ -363,7 +363,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			lbVert.Text = "---";
 		}
 
-		public virtual void SetFromPackage(SimPe.Interfaces.Files.IPackageFile pkg)
+		public virtual void SetFromPackage(Interfaces.Files.IPackageFile pkg)
 		{
 			if (pkg == null)
 			{
@@ -372,27 +372,27 @@ namespace SimPe.Plugin.Tool.Dockable
 				return;
 			}
 
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFile(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFile(
 				Data.MetaData.OBJD_FILE,
 				0,
 				0x41A7
 			);
 			if (pfds.Length > 0)
 			{
-				objd = new SimPe.PackedFiles.Wrapper.ExtObjd();
+				objd = new PackedFiles.Wrapper.ExtObjd();
 				objd.ProcessData(pfds[0], pkg);
 			}
 			int fct = 0;
 			int vct = 0;
 			pfds = pkg.FindFiles(Data.MetaData.GMDC);
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				SimPe.Plugin.Rcol rcol = new GenericRcol();
+				Rcol rcol = new GenericRcol();
 				rcol.ProcessData(pfd, pkg, true);
 
-				SimPe.Plugin.GeometryDataContainer gmdc =
-					rcol.Blocks[0] as SimPe.Plugin.GeometryDataContainer;
-				foreach (SimPe.Plugin.Gmdc.GmdcGroup g in gmdc.Groups)
+				GeometryDataContainer gmdc =
+					rcol.Blocks[0] as GeometryDataContainer;
+				foreach (Gmdc.GmdcGroup g in gmdc.Groups)
 				{
 					fct += g.FaceCount;
 					vct += g.UsedVertexCount;
@@ -460,7 +460,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				)
 			);
 
-			SimPe.PackedFiles.Wrapper.StrItemList strs = GetCtssItems();
+			PackedFiles.Wrapper.StrItemList strs = GetCtssItems();
 			if (strs != null)
 			{
 				if (strs.Count > 0)
@@ -533,7 +533,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				return new string[0];
 			}
 
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd = objd.Package.FindFile(
+			Interfaces.Files.IPackedFileDescriptor pfd = objd.Package.FindFile(
 				Data.MetaData.STRING_FILE,
 				0,
 				objd.FileDescriptor.Group,
@@ -542,9 +542,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			ArrayList list = new ArrayList();
 			if (pfd != null)
 			{
-				SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
 				str.ProcessData(pfd, objd.Package);
-				SimPe.PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
+				PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
 				for (int i = 1; i < items.Length; i++)
 				{
 					list.Add(items[i].Title);
@@ -556,14 +556,14 @@ namespace SimPe.Plugin.Tool.Dockable
 			return refname;
 		}
 
-		protected virtual SimPe.PackedFiles.Wrapper.StrItemList GetCtssItems(
+		protected virtual PackedFiles.Wrapper.StrItemList GetCtssItems(
 			Interfaces.Files.IPackedFileDescriptor ctss,
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
 			if (ctss != null)
 			{
-				SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
 				str.ProcessData(ctss, pkg);
 
 				return str.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
@@ -572,7 +572,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			return null;
 		}
 
-		protected virtual SimPe.PackedFiles.Wrapper.StrItemList GetCtssItems()
+		protected virtual PackedFiles.Wrapper.StrItemList GetCtssItems()
 		{
 			if (objd == null)
 			{

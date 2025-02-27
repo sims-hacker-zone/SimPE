@@ -28,15 +28,15 @@ namespace SimPe.PackedFiles.UserInterface
 	public class SimDNAUI
 		:
 		//System.Windows.Forms.UserControl
-		SimPe.Windows.Forms.WrapperBaseControl,
-			SimPe.Interfaces.Plugin.IPackedFileUI
+		Windows.Forms.WrapperBaseControl,
+			Interfaces.Plugin.IPackedFileUI
 	{
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.PropertyGrid pbDom;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.PropertyGrid pbRec;
+		private Label label1;
+		private PropertyGrid pbDom;
+		private Label label2;
+		private PropertyGrid pbRec;
 		private Label lbbody;
-		private System.Windows.Forms.ListBox lbcpf;
+		private ListBox lbcpf;
 
 		/// <summary>
 		/// Required designer variable.
@@ -74,18 +74,18 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.pbDom = new System.Windows.Forms.PropertyGrid();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.pbRec = new System.Windows.Forms.PropertyGrid();
-			this.lbbody = new System.Windows.Forms.Label();
-			this.lbcpf = new System.Windows.Forms.ListBox();
+			this.pbDom = new PropertyGrid();
+			this.label1 = new Label();
+			this.label2 = new Label();
+			this.pbRec = new PropertyGrid();
+			this.lbbody = new Label();
+			this.lbcpf = new ListBox();
 			this.SuspendLayout();
 			//
 			// pbDom
 			//
 			this.pbDom.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -138,7 +138,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// pbRec
 			//
 			this.pbRec.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -159,7 +159,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// lbbody
 			//
 			this.lbbody.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -186,7 +186,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// lbcpf
 			//
 			this.lbcpf.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -234,9 +234,9 @@ namespace SimPe.PackedFiles.UserInterface
 		#region IPackedFileUI Member
 
 
-		public Wrapper.SimDNA Sdna => (SimPe.PackedFiles.Wrapper.SimDNA)Wrapper;
+		public Wrapper.SimDNA Sdna => (Wrapper.SimDNA)Wrapper;
 
-		private SimPe.PackedFiles.Wrapper.Cpf wrp => (SimPe.PackedFiles.Wrapper.Cpf)Wrapper;
+		private Wrapper.Cpf wrp => (Wrapper.Cpf)Wrapper;
 
 		protected override void RefreshGUI()
 		{
@@ -264,10 +264,10 @@ namespace SimPe.PackedFiles.UserInterface
 					this.lbbody.Visible = true;
 				}
 
-				SimPe.PackedFiles.Wrapper.SDesc sdsc =
+				Wrapper.SDesc sdsc =
 					FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(
 						(ushort)Wrapper.FileDescriptor.Instance
-					) as SimPe.PackedFiles.Wrapper.SDesc;
+					) as Wrapper.SDesc;
 				if (sdsc == null)
 				{
 					this.CanCommit = true;
@@ -291,10 +291,10 @@ namespace SimPe.PackedFiles.UserInterface
 						false;
 				lbcpf.Visible = true;
 				lbcpf.Items.Clear();
-				SimPe.PackedFiles.Wrapper.SDesc sdsc =
+				Wrapper.SDesc sdsc =
 					FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(
 						(ushort)Wrapper.FileDescriptor.Instance
-					) as SimPe.PackedFiles.Wrapper.SDesc;
+					) as Wrapper.SDesc;
 				if (sdsc == null)
 				{
 					this.HeaderText = "CPF Viewer";
@@ -309,7 +309,7 @@ namespace SimPe.PackedFiles.UserInterface
 						+ " DNA)";
 				}
 
-				foreach (SimPe.PackedFiles.Wrapper.CpfItem item in wrp.Items)
+				foreach (Wrapper.CpfItem item in wrp.Items)
 				{
 					lbcpf.Items.Add(item);
 				}

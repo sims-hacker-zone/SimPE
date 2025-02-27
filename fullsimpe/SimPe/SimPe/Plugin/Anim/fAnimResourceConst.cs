@@ -6,27 +6,27 @@ namespace SimPe.Plugin.Anim
 	/// <summary>
 	/// Summary description for fAnimResourceConst.
 	/// </summary>
-	public class fAnimResourceConst : System.Windows.Forms.Form
+	public class fAnimResourceConst : Form
 	{
-		internal System.Windows.Forms.TabControl tabControl1;
+		internal TabControl tabControl1;
 		internal System.Windows.Forms.TabPage tAnimResourceConst;
-		private System.Windows.Forms.GroupBox groupBox12;
-		internal System.Windows.Forms.TextBox tb_arc_ver;
-		private System.Windows.Forms.Label label30;
-		private System.Windows.Forms.GroupBox groupBox2;
-		internal System.Windows.Forms.TreeView tv;
-		private System.Windows.Forms.PropertyGrid pg;
-		private System.Windows.Forms.LinkLabel llAdd;
-		private System.Windows.Forms.CheckBox checkBox1;
+		private GroupBox groupBox12;
+		internal TextBox tb_arc_ver;
+		private Label label30;
+		private GroupBox groupBox2;
+		internal TreeView tv;
+		private PropertyGrid pg;
+		private LinkLabel llAdd;
+		private CheckBox checkBox1;
 		internal System.Windows.Forms.TabPage tMisc;
-		private System.Windows.Forms.LinkLabel llClear;
-		private System.Windows.Forms.LinkLabel llTxt;
-		private System.Windows.Forms.LinkLabel llInTxt;
-		internal SimPe.Plugin.Anim.AnimMeshBlockControl ambc;
+		private LinkLabel llClear;
+		private LinkLabel llTxt;
+		private LinkLabel llInTxt;
+		internal AnimMeshBlockControl ambc;
 		internal System.Windows.Forms.TabPage tMesh;
 		private RichTextBox rtbnotes;
 		private CheckBox cbshnote;
-		private System.Windows.Forms.Panel gradpanel;
+		private Panel gradpanel;
 
 		/// <summary>
 		/// Required designer variable.
@@ -74,7 +74,7 @@ namespace SimPe.Plugin.Anim
 			this.ambc.Name = "ambc";
 			this.ambc.Size = new System.Drawing.Size(776, 246);
 			this.ambc.TabIndex = 1;
-			this.ambc.Changed += new System.EventHandler(this.ambc_Changed);
+			this.ambc.Changed += new EventHandler(this.ambc_Changed);
 			this.tMesh.Controls.Add(this.ambc);
 		}
 
@@ -104,24 +104,24 @@ namespace SimPe.Plugin.Anim
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(fAnimResourceConst)
 				);
-			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.tabControl1 = new TabControl();
 			this.tAnimResourceConst = new System.Windows.Forms.TabPage();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.cbshnote = new System.Windows.Forms.CheckBox();
-			this.rtbnotes = new System.Windows.Forms.RichTextBox();
-			this.llTxt = new System.Windows.Forms.LinkLabel();
-			this.llInTxt = new System.Windows.Forms.LinkLabel();
-			this.llClear = new System.Windows.Forms.LinkLabel();
-			this.checkBox1 = new System.Windows.Forms.CheckBox();
-			this.tv = new System.Windows.Forms.TreeView();
-			this.llAdd = new System.Windows.Forms.LinkLabel();
-			this.pg = new System.Windows.Forms.PropertyGrid();
+			this.groupBox2 = new GroupBox();
+			this.cbshnote = new CheckBox();
+			this.rtbnotes = new RichTextBox();
+			this.llTxt = new LinkLabel();
+			this.llInTxt = new LinkLabel();
+			this.llClear = new LinkLabel();
+			this.checkBox1 = new CheckBox();
+			this.tv = new TreeView();
+			this.llAdd = new LinkLabel();
+			this.pg = new PropertyGrid();
 			this.tMisc = new System.Windows.Forms.TabPage();
-			this.groupBox12 = new System.Windows.Forms.GroupBox();
-			this.tb_arc_ver = new System.Windows.Forms.TextBox();
-			this.label30 = new System.Windows.Forms.Label();
+			this.groupBox12 = new GroupBox();
+			this.tb_arc_ver = new TextBox();
+			this.label30 = new Label();
 			this.tMesh = new System.Windows.Forms.TabPage();
-			this.gradpanel = new System.Windows.Forms.Panel();
+			this.gradpanel = new Panel();
 			this.tabControl1.SuspendLayout();
 			this.tAnimResourceConst.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -160,7 +160,7 @@ namespace SimPe.Plugin.Anim
 			// groupBox2
 			//
 			this.groupBox2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -198,7 +198,7 @@ namespace SimPe.Plugin.Anim
 			// cbshnote
 			//
 			this.cbshnote.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -220,14 +220,14 @@ namespace SimPe.Plugin.Anim
 			this.cbshnote.Text = "\'From Text\' Notes";
 			this.cbshnote.UseVisualStyleBackColor = true;
 			this.cbshnote.Visible = false;
-			this.cbshnote.CheckedChanged += new System.EventHandler(
+			this.cbshnote.CheckedChanged += new EventHandler(
 				this.cbshnote_CheckedChanged
 			);
 			//
 			// rtbnotes
 			//
 			this.rtbnotes.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -264,7 +264,7 @@ namespace SimPe.Plugin.Anim
 			this.llTxt.TabStop = true;
 			this.llTxt.Text = "To Text";
 			this.llTxt.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llTxt_LinkClicked
 				);
 			//
@@ -279,7 +279,7 @@ namespace SimPe.Plugin.Anim
 			this.llInTxt.TabStop = true;
 			this.llInTxt.Text = "From Text";
 			this.llInTxt.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llInTxt_LinkClicked
 				);
 			//
@@ -294,14 +294,14 @@ namespace SimPe.Plugin.Anim
 			this.llClear.TabStop = true;
 			this.llClear.Text = "Clear Frames";
 			this.llClear.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llClear_LinkClicked
 				);
 			//
 			// checkBox1
 			//
 			this.checkBox1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -315,14 +315,14 @@ namespace SimPe.Plugin.Anim
 			this.checkBox1.TabIndex = 42;
 			this.checkBox1.Text = "Help";
 			this.checkBox1.UseVisualStyleBackColor = false;
-			this.checkBox1.CheckedChanged += new System.EventHandler(
+			this.checkBox1.CheckedChanged += new EventHandler(
 				this.checkBox1_CheckedChanged
 			);
 			//
 			// tv
 			//
 			this.tv.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -344,7 +344,7 @@ namespace SimPe.Plugin.Anim
 			this.tv.Name = "tv";
 			this.tv.Size = new System.Drawing.Size(396, 216);
 			this.tv.TabIndex = 0;
-			this.tv.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(
+			this.tv.AfterSelect += new TreeViewEventHandler(
 				this.tv_AfterSelect
 			);
 			//
@@ -359,14 +359,14 @@ namespace SimPe.Plugin.Anim
 			this.llAdd.TabStop = true;
 			this.llAdd.Text = "Add Frame";
 			this.llAdd.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llAdd_LinkClicked
 				);
 			//
 			// pg
 			//
 			this.pg.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -435,7 +435,7 @@ namespace SimPe.Plugin.Anim
 			this.tb_arc_ver.Size = new System.Drawing.Size(88, 21);
 			this.tb_arc_ver.TabIndex = 24;
 			this.tb_arc_ver.Text = "0x00000000";
-			this.tb_arc_ver.TextChanged += new System.EventHandler(
+			this.tb_arc_ver.TextChanged += new EventHandler(
 				this.tb_arc_ver_TextChanged
 			);
 			//
@@ -503,7 +503,7 @@ namespace SimPe.Plugin.Anim
 
 		private void tv_AfterSelect(
 			object sender,
-			System.Windows.Forms.TreeViewEventArgs e
+			TreeViewEventArgs e
 		)
 		{
 			llAdd.Enabled = llTxt.Enabled = llInTxt.Enabled = llClear.Enabled = false;
@@ -544,7 +544,7 @@ namespace SimPe.Plugin.Anim
 			rtbnotes.Visible = (llInTxt.Enabled && cbshnote.Checked);
 		}
 
-		private void tb_arc_ver_TextChanged(object sender, System.EventArgs e)
+		private void tb_arc_ver_TextChanged(object sender, EventArgs e)
 		{
 			if (this.tb_arc_ver.Tag == null)
 			{
@@ -566,7 +566,7 @@ namespace SimPe.Plugin.Anim
 
 		private void llAdd_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			AnimationFrameBlock ab2 = null;
@@ -590,14 +590,14 @@ namespace SimPe.Plugin.Anim
 			arc.Refresh();
 		}
 
-		private void checkBox1_CheckedChanged(object sender, System.EventArgs e)
+		private void checkBox1_CheckedChanged(object sender, EventArgs e)
 		{
 			pg.HelpVisible = checkBox1.Checked;
 		}
 
 		private void llClear_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			AnimationFrameBlock ab2 = null;
@@ -618,7 +618,7 @@ namespace SimPe.Plugin.Anim
 
 		private void llTxt_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			AnimationMeshBlock ab1 = (AnimationMeshBlock)tv.SelectedNode.Tag;
@@ -659,7 +659,7 @@ namespace SimPe.Plugin.Anim
 
 		private void llInTxt_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			nah = true;
@@ -837,7 +837,7 @@ namespace SimPe.Plugin.Anim
 			return true;
 		}
 
-		private void ambc_Changed(object sender, System.EventArgs e)
+		private void ambc_Changed(object sender, EventArgs e)
 		{
 			AnimResourceConst arc = (AnimResourceConst)tMesh.Tag;
 			arc.Parent.Changed = true;

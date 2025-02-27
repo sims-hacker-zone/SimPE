@@ -33,7 +33,7 @@ namespace SimPe.Interfaces.Providers
 		/// </summary>
 		/// <param name="spfd">The File Description of the File you are looking for</param>
 		/// <returns>null or the Property Set File</returns>
-		object FindSet(Interfaces.Files.IPackedFileDescriptor spfd);
+		object FindSet(Files.IPackedFileDescriptor spfd);
 
 		/// <summary>
 		/// Returns a list of all known memories
@@ -43,7 +43,7 @@ namespace SimPe.Interfaces.Providers
 			get;
 		}
 
-		string FindTxtrName(Interfaces.Files.IPackedFileDescriptor spfd);
+		string FindTxtrName(Files.IPackedFileDescriptor spfd);
 		string FindTxtrName(string matdname);
 
 		/// <summary>

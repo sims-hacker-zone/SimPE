@@ -33,11 +33,11 @@ namespace SimPe.Plugin
 	/// Summary description for ExtNgbhUI.
 	/// </summary>
 	public class BnfoUI
-		: SimPe.Windows.Forms.WrapperBaseControl,
-			SimPe.Interfaces.Plugin.IPackedFileUI
+		: Windows.Forms.WrapperBaseControl,
+			Interfaces.Plugin.IPackedFileUI
 	{
-		private SimPe.Plugin.BnfoCustomerItemsUI lv;
-		private SimPe.Plugin.BnfoCustomerItemUI bnfoCustomerItemUI1;
+		private BnfoCustomerItemsUI lv;
+		private BnfoCustomerItemUI bnfoCustomerItemUI1;
 		private ToolStrip toolBar1;
 		private ToolStripButton biMax;
 		private ToolStripButton biReward;
@@ -46,8 +46,8 @@ namespace SimPe.Plugin
 		private Panel panel2;
 		private Panel Panel3;
 		private Panel Panel4;
-		private System.Windows.Forms.Panel gpreven;
-		private System.Windows.Forms.Panel gpexpen;
+		private Panel gpreven;
+		private Panel gpexpen;
 		private ExtProgressBar pbpay;
 		private Label label1;
 		private Label lblot;
@@ -108,7 +108,7 @@ namespace SimPe.Plugin
 			InitializeComponent();
 			if (Helper.WindowsRegistry.UseBigIcons)
 			{
-				this.lv.Font = new System.Drawing.Font("Tahoma", 12F);
+				this.lv.Font = new Font("Tahoma", 12F);
 			}
 
 			string ttip =
@@ -143,81 +143,81 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources =
-				new System.ComponentModel.ComponentResourceManager(typeof(BnfoUI));
-			this.lv = new SimPe.Plugin.BnfoCustomerItemsUI();
-			this.bnfoCustomerItemUI1 = new SimPe.Plugin.BnfoCustomerItemUI();
-			this.label1 = new System.Windows.Forms.Label();
-			this.lblot = new System.Windows.Forms.Label();
-			this.toolBar1 = new System.Windows.Forms.ToolStrip();
-			this.biMax = new System.Windows.Forms.ToolStripButton();
-			this.biReward = new System.Windows.Forms.ToolStripButton();
-			this.biWorkers = new System.Windows.Forms.ToolStripButton();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.lbcashf = new System.Windows.Forms.Label();
-			this.gpexpen = new System.Windows.Forms.Panel();
-			this.gpreven = new System.Windows.Forms.Panel();
-			this.btClearim = new System.Windows.Forms.Button();
-			this.tbMax = new System.Windows.Forms.TextBox();
-			this.tbCur = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.btaddim = new System.Windows.Forms.Button();
-			this.Panel3 = new System.Windows.Forms.Panel();
-			this.btchcancel = new System.Windows.Forms.Button();
-			this.btchadd = new System.Windows.Forms.Button();
-			this.lbchgender = new System.Windows.Forms.Label();
-			this.lbchage = new System.Windows.Forms.Label();
-			this.tbchgender = new System.Windows.Forms.TextBox();
-			this.tbchage = new System.Windows.Forms.TextBox();
-			this.lbchoose = new System.Windows.Forms.Label();
-			this.cbsimselect = new System.Windows.Forms.ComboBox();
-			this.lbadvice = new System.Windows.Forms.Label();
-			this.btdelety = new System.Windows.Forms.Button();
-			this.pbox = new System.Windows.Forms.PictureBox();
-			this.lbaward = new System.Windows.Forms.Label();
-			this.tbunknown = new System.Windows.Forms.TextBox();
-			this.lbpay = new System.Windows.Forms.Label();
+			this.components = new Container();
+			ComponentResourceManager resources =
+				new ComponentResourceManager(typeof(BnfoUI));
+			this.lv = new BnfoCustomerItemsUI();
+			this.bnfoCustomerItemUI1 = new BnfoCustomerItemUI();
+			this.label1 = new Label();
+			this.lblot = new Label();
+			this.toolBar1 = new ToolStrip();
+			this.biMax = new ToolStripButton();
+			this.biReward = new ToolStripButton();
+			this.biWorkers = new ToolStripButton();
+			this.panel1 = new Panel();
+			this.lbcashf = new Label();
+			this.gpexpen = new Panel();
+			this.gpreven = new Panel();
+			this.btClearim = new Button();
+			this.tbMax = new TextBox();
+			this.tbCur = new TextBox();
+			this.label3 = new Label();
+			this.label2 = new Label();
+			this.panel2 = new Panel();
+			this.btaddim = new Button();
+			this.Panel3 = new Panel();
+			this.btchcancel = new Button();
+			this.btchadd = new Button();
+			this.lbchgender = new Label();
+			this.lbchage = new Label();
+			this.tbchgender = new TextBox();
+			this.tbchage = new TextBox();
+			this.lbchoose = new Label();
+			this.cbsimselect = new ComboBox();
+			this.lbadvice = new Label();
+			this.btdelety = new Button();
+			this.pbox = new PictureBox();
+			this.lbaward = new Label();
+			this.tbunknown = new TextBox();
+			this.lbpay = new Label();
 			this.pbpay = new ExtProgressBar();
-			this.tbassi = new System.Windows.Forms.TextBox();
-			this.lbassi = new System.Windows.Forms.Label();
-			this.tbwages = new System.Windows.Forms.TextBox();
-			this.lbwages = new System.Windows.Forms.Label();
-			this.tbsgender = new System.Windows.Forms.TextBox();
-			this.lbsgender = new System.Windows.Forms.Label();
-			this.ybsimage = new System.Windows.Forms.TextBox();
-			this.lbsimage = new System.Windows.Forms.Label();
-			this.lbLaball = new System.Windows.Forms.Label();
-			this.tbright = new System.Windows.Forms.TextBox();
-			this.lbright = new System.Windows.Forms.Label();
-			this.tbLeft = new System.Windows.Forms.TextBox();
-			this.lvEmployees = new System.Windows.Forms.ListView();
-			this.ilist = new System.Windows.Forms.ImageList(this.components);
-			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-			this.btchngeOwn = new System.Windows.Forms.Button();
-			this.Panel4 = new System.Windows.Forms.Panel();
-			this.btOcancel = new System.Windows.Forms.Button();
-			this.btOadd = new System.Windows.Forms.Button();
-			this.lbOgender = new System.Windows.Forms.Label();
-			this.lbOage = new System.Windows.Forms.Label();
-			this.tbOgender = new System.Windows.Forms.TextBox();
-			this.tbOchage = new System.Windows.Forms.TextBox();
-			this.lbOchoos = new System.Windows.Forms.Label();
-			this.cbOsimselect = new System.Windows.Forms.ComboBox();
+			this.tbassi = new TextBox();
+			this.lbassi = new Label();
+			this.tbwages = new TextBox();
+			this.lbwages = new Label();
+			this.tbsgender = new TextBox();
+			this.lbsgender = new Label();
+			this.ybsimage = new TextBox();
+			this.lbsimage = new Label();
+			this.lbLaball = new Label();
+			this.tbright = new TextBox();
+			this.lbright = new Label();
+			this.tbLeft = new TextBox();
+			this.lvEmployees = new ListView();
+			this.ilist = new ImageList(this.components);
+			this.toolTip1 = new ToolTip(this.components);
+			this.btchngeOwn = new Button();
+			this.Panel4 = new Panel();
+			this.btOcancel = new Button();
+			this.btOadd = new Button();
+			this.lbOgender = new Label();
+			this.lbOage = new Label();
+			this.tbOgender = new TextBox();
+			this.tbOchage = new TextBox();
+			this.lbOchoos = new Label();
+			this.cbOsimselect = new ComboBox();
 			this.toolBar1.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.Panel3.SuspendLayout();
 			this.Panel4.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pbox)).BeginInit();
+			((ISupportInitialize)(this.pbox)).BeginInit();
 			this.SuspendLayout();
 			//
 			// lv
 			//
 			this.lv.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -226,17 +226,17 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.lv.Font = new System.Drawing.Font("Tahoma", 8.25F);
+			this.lv.Font = new Font("Tahoma", 8.25F);
 			this.lv.Items = null;
-			this.lv.Location = new System.Drawing.Point(8, 32);
+			this.lv.Location = new Point(8, 32);
 			this.lv.Name = "lv";
-			this.lv.Size = new System.Drawing.Size(328, 229);
+			this.lv.Size = new Size(328, 229);
 			this.lv.TabIndex = 1;
 			//
 			// bnfoCustomerItemUI1
 			//
 			this.bnfoCustomerItemUI1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -247,18 +247,18 @@ namespace SimPe.Plugin
 			);
 			this.bnfoCustomerItemUI1.BackColor = System.Drawing.Color.Transparent;
 			this.bnfoCustomerItemUI1.BnfoCustomerItemsUI = this.lv;
-			this.bnfoCustomerItemUI1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+			this.bnfoCustomerItemUI1.Font = new Font("Tahoma", 8.25F);
 			this.bnfoCustomerItemUI1.Item = null;
-			this.bnfoCustomerItemUI1.Location = new System.Drawing.Point(344, 32);
+			this.bnfoCustomerItemUI1.Location = new Point(344, 32);
 			this.bnfoCustomerItemUI1.Name = "bnfoCustomerItemUI1";
-			this.bnfoCustomerItemUI1.Size = new System.Drawing.Size(408, 140);
+			this.bnfoCustomerItemUI1.Size = new Size(408, 140);
 			this.bnfoCustomerItemUI1.TabIndex = 2;
 			//
 			// label1
 			//
 			this.label1.AutoSize = true;
 			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font(
+			this.label1.Font = new Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Bold,
@@ -266,9 +266,9 @@ namespace SimPe.Plugin
 				((byte)(0))
 			);
 			this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.label1.Location = new System.Drawing.Point(8, 8);
+			this.label1.Location = new Point(8, 8);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(41, 19);
+			this.label1.Size = new Size(41, 19);
 			this.label1.TabIndex = 5;
 			this.label1.Text = "Lot:";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -277,7 +277,7 @@ namespace SimPe.Plugin
 			//
 			this.lblot.AutoSize = true;
 			this.lblot.BackColor = System.Drawing.Color.Transparent;
-			this.lblot.Font = new System.Drawing.Font(
+			this.lblot.Font = new Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Regular,
@@ -285,9 +285,9 @@ namespace SimPe.Plugin
 				((byte)(0))
 			);
 			this.lblot.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.lblot.Location = new System.Drawing.Point(54, 8);
+			this.lblot.Location = new Point(54, 8);
 			this.lblot.Name = "lblot";
-			this.lblot.Size = new System.Drawing.Size(0, 19);
+			this.lblot.Size = new Size(0, 19);
 			this.lblot.TabIndex = 6;
 			this.lblot.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			//
@@ -295,23 +295,23 @@ namespace SimPe.Plugin
 			//
 			this.toolBar1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
 			this.toolBar1.Items.AddRange(
-				new System.Windows.Forms.ToolStripItem[]
+				new ToolStripItem[]
 				{
 					this.biMax,
 					this.biReward,
 					this.biWorkers,
 				}
 			);
-			this.toolBar1.Location = new System.Drawing.Point(0, 24);
+			this.toolBar1.Location = new Point(0, 24);
 			this.toolBar1.Name = "toolBar1";
-			this.toolBar1.Size = new System.Drawing.Size(760, 54);
+			this.toolBar1.Size = new Size(760, 54);
 			this.toolBar1.TabIndex = 7;
 			this.toolBar1.Text = "toolBar1";
 			//
 			// biMax
 			//
 			this.biMax.Image = (
-				(System.Drawing.Image)(resources.GetObject("biMax.Image"))
+				(Image)(resources.GetObject("biMax.Image"))
 			);
 			this.biMax.ImageScaling = System
 				.Windows
@@ -319,19 +319,19 @@ namespace SimPe.Plugin
 				.ToolStripItemImageScaling
 				.None;
 			this.biMax.Name = "biMax";
-			this.biMax.Size = new System.Drawing.Size(62, 51);
+			this.biMax.Size = new Size(62, 51);
 			this.biMax.Text = "Maximize";
 			this.biMax.TextImageRelation = System
 				.Windows
 				.Forms
 				.TextImageRelation
 				.ImageAboveText;
-			this.biMax.Click += new System.EventHandler(this.biMax_Activate);
+			this.biMax.Click += new EventHandler(this.biMax_Activate);
 			//
 			// biReward
 			//
 			this.biReward.Image = (
-				(System.Drawing.Image)(resources.GetObject("biReward.Image"))
+				(Image)(resources.GetObject("biReward.Image"))
 			);
 			this.biReward.ImageScaling = System
 				.Windows
@@ -339,19 +339,19 @@ namespace SimPe.Plugin
 				.ToolStripItemImageScaling
 				.None;
 			this.biReward.Name = "biReward";
-			this.biReward.Size = new System.Drawing.Size(82, 51);
+			this.biReward.Size = new Size(82, 51);
 			this.biReward.Text = "Reward again";
 			this.biReward.TextImageRelation = System
 				.Windows
 				.Forms
 				.TextImageRelation
 				.ImageAboveText;
-			this.biReward.Click += new System.EventHandler(this.biReward_Activate);
+			this.biReward.Click += new EventHandler(this.biReward_Activate);
 			//
 			// biWorkers
 			//
 			this.biWorkers.Image = (
-				(System.Drawing.Image)(resources.GetObject("biWorkers.Image"))
+				(Image)(resources.GetObject("biWorkers.Image"))
 			);
 			this.biWorkers.ImageScaling = System
 				.Windows
@@ -360,7 +360,7 @@ namespace SimPe.Plugin
 				.None;
 			this.biWorkers.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.biWorkers.Name = "biWorkers";
-			this.biWorkers.Size = new System.Drawing.Size(68, 51);
+			this.biWorkers.Size = new Size(68, 51);
 			this.biWorkers.Text = "Employees";
 			this.biWorkers.TextImageRelation = System
 				.Windows
@@ -368,7 +368,7 @@ namespace SimPe.Plugin
 				.TextImageRelation
 				.ImageAboveText;
 			this.biWorkers.ToolTipText = "Change to Employees or Customers";
-			this.biWorkers.Click += new System.EventHandler(this.biWorkers_Click);
+			this.biWorkers.Click += new EventHandler(this.biWorkers_Click);
 			//
 			// panel1
 			//
@@ -386,16 +386,16 @@ namespace SimPe.Plugin
 			this.panel1.Controls.Add(this.bnfoCustomerItemUI1);
 			this.panel1.Controls.Add(this.lblot);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel1.Font = new System.Drawing.Font("Tahoma", 8.25F);
-			this.panel1.Location = new System.Drawing.Point(0, 78);
+			this.panel1.Font = new Font("Tahoma", 8.25F);
+			this.panel1.Location = new Point(0, 78);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(760, 320);
+			this.panel1.Size = new Size(760, 320);
 			this.panel1.TabIndex = 8;
 			//
 			// lbcashf
 			//
 			this.lbcashf.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -403,21 +403,21 @@ namespace SimPe.Plugin
 				)
 			);
 			this.lbcashf.AutoSize = true;
-			this.lbcashf.Font = new System.Drawing.Font(
+			this.lbcashf.Font = new Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.lbcashf.Location = new System.Drawing.Point(359, 182);
+			this.lbcashf.Location = new Point(359, 182);
 			this.lbcashf.Name = "lbcashf";
-			this.lbcashf.Size = new System.Drawing.Size(170, 19);
+			this.lbcashf.Size = new Size(170, 19);
 			this.lbcashf.TabIndex = 14;
 			this.lbcashf.Text = "Last Cashflow  = $0";
 			//
 			// gpexpen
 			//
 			this.gpexpen.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -426,15 +426,15 @@ namespace SimPe.Plugin
 			);
 			this.gpexpen.BackColor = System.Drawing.Color.Transparent;
 			this.gpexpen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.gpexpen.Location = new System.Drawing.Point(551, 212);
+			this.gpexpen.Location = new Point(551, 212);
 			this.gpexpen.Name = "gpexpen";
-			this.gpexpen.Size = new System.Drawing.Size(201, 105);
+			this.gpexpen.Size = new Size(201, 105);
 			this.gpexpen.TabIndex = 13;
 			//
 			// gpreven
 			//
 			this.gpreven.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -442,24 +442,24 @@ namespace SimPe.Plugin
 				)
 			);
 			this.gpreven.BackColor = System.Drawing.Color.Transparent;
-			this.gpreven.Location = new System.Drawing.Point(344, 212);
+			this.gpreven.Location = new Point(344, 212);
 			this.gpreven.Name = "gpreven";
-			this.gpreven.Size = new System.Drawing.Size(201, 105);
+			this.gpreven.Size = new Size(201, 105);
 			this.gpreven.TabIndex = 12;
 			//
 			// btClearim
 			//
 			this.btClearim.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
 					)
 				)
 			);
-			this.btClearim.Location = new System.Drawing.Point(261, 270);
+			this.btClearim.Location = new Point(261, 270);
 			this.btClearim.Name = "btClearim";
-			this.btClearim.Size = new System.Drawing.Size(75, 25);
+			this.btClearim.Size = new Size(75, 25);
 			this.btClearim.TabIndex = 11;
 			this.btClearim.Text = "Clean Up";
 			this.toolTip1.SetToolTip(
@@ -467,44 +467,44 @@ namespace SimPe.Plugin
 				"Remove Unknown\r\nSims from this list"
 			);
 			this.btClearim.UseVisualStyleBackColor = true;
-			this.btClearim.Click += new System.EventHandler(this.btClearim_Click);
+			this.btClearim.Click += new EventHandler(this.btClearim_Click);
 			//
 			// tbMax
 			//
 			this.tbMax.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
 					)
 				)
 			);
-			this.tbMax.Location = new System.Drawing.Point(120, 293);
+			this.tbMax.Location = new Point(120, 293);
 			this.tbMax.Name = "tbMax";
-			this.tbMax.Size = new System.Drawing.Size(100, 21);
+			this.tbMax.Size = new Size(100, 21);
 			this.tbMax.TabIndex = 10;
-			this.tbMax.TextChanged += new System.EventHandler(this.tbMax_TextChanged);
+			this.tbMax.TextChanged += new EventHandler(this.tbMax_TextChanged);
 			//
 			// tbCur
 			//
 			this.tbCur.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
 					)
 				)
 			);
-			this.tbCur.Location = new System.Drawing.Point(120, 269);
+			this.tbCur.Location = new Point(120, 269);
 			this.tbCur.Name = "tbCur";
-			this.tbCur.Size = new System.Drawing.Size(100, 21);
+			this.tbCur.Size = new Size(100, 21);
 			this.tbCur.TabIndex = 9;
-			this.tbCur.TextChanged += new System.EventHandler(this.tbCur_TextChanged);
+			this.tbCur.TextChanged += new EventHandler(this.tbCur_TextChanged);
 			//
 			// label3
 			//
 			this.label3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -512,15 +512,15 @@ namespace SimPe.Plugin
 				)
 			);
 			this.label3.BackColor = System.Drawing.Color.Transparent;
-			this.label3.Font = new System.Drawing.Font(
+			this.label3.Font = new Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
 			this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.label3.Location = new System.Drawing.Point(8, 293);
+			this.label3.Location = new Point(8, 293);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(104, 23);
+			this.label3.Size = new Size(104, 23);
 			this.label3.TabIndex = 8;
 			this.label3.Text = "Rewarded Level:";
 			this.label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -528,7 +528,7 @@ namespace SimPe.Plugin
 			// label2
 			//
 			this.label2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -536,15 +536,15 @@ namespace SimPe.Plugin
 				)
 			);
 			this.label2.BackColor = System.Drawing.Color.Transparent;
-			this.label2.Font = new System.Drawing.Font(
+			this.label2.Font = new Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
 			this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.label2.Location = new System.Drawing.Point(8, 269);
+			this.label2.Location = new Point(8, 269);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(104, 23);
+			this.label2.Size = new Size(104, 23);
 			this.label2.TabIndex = 7;
 			this.label2.Text = "Current Level:";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -577,26 +577,26 @@ namespace SimPe.Plugin
 			this.panel2.Controls.Add(this.tbLeft);
 			this.panel2.Controls.Add(this.lvEmployees);
 			this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel2.Font = new System.Drawing.Font("Tahoma", 8.25F);
-			this.panel2.Location = new System.Drawing.Point(0, 78);
+			this.panel2.Font = new Font("Tahoma", 8.25F);
+			this.panel2.Location = new Point(0, 78);
 			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(760, 320);
+			this.panel2.Size = new Size(760, 320);
 			this.panel2.TabIndex = 9;
 			this.panel2.Visible = false;
 			//
 			// btaddim
 			//
 			this.btaddim.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
 					)
 				)
 			);
-			this.btaddim.Location = new System.Drawing.Point(710, 291);
+			this.btaddim.Location = new Point(710, 291);
 			this.btaddim.Name = "btaddim";
-			this.btaddim.Size = new System.Drawing.Size(47, 23);
+			this.btaddim.Size = new Size(47, 23);
 			this.btaddim.TabIndex = 23;
 			this.btaddim.Text = "Add";
 			this.toolTip1.SetToolTip(
@@ -605,7 +605,7 @@ namespace SimPe.Plugin
 					+ "d add the\r\nbusiness data and career."
 			);
 			this.btaddim.UseVisualStyleBackColor = true;
-			this.btaddim.Click += new System.EventHandler(this.btaddim_Click);
+			this.btaddim.Click += new EventHandler(this.btaddim_Click);
 			//
 			// Panel3
 			//
@@ -619,96 +619,96 @@ namespace SimPe.Plugin
 			this.Panel3.Controls.Add(this.tbchage);
 			this.Panel3.Controls.Add(this.lbchoose);
 			this.Panel3.Controls.Add(this.cbsimselect);
-			this.Panel3.Font = new System.Drawing.Font("Tahoma", 12F);
-			this.Panel3.Location = new System.Drawing.Point(357, 46);
+			this.Panel3.Font = new Font("Tahoma", 12F);
+			this.Panel3.Location = new Point(357, 46);
 			this.Panel3.Name = "Panel3";
-			this.Panel3.Size = new System.Drawing.Size(365, 215);
+			this.Panel3.Size = new Size(365, 215);
 			this.Panel3.TabIndex = 22;
 			this.Panel3.Visible = false;
 			//
 			// btchcancel
 			//
-			this.btchcancel.Location = new System.Drawing.Point(168, 164);
+			this.btchcancel.Location = new Point(168, 164);
 			this.btchcancel.Name = "btchcancel";
-			this.btchcancel.Size = new System.Drawing.Size(84, 29);
+			this.btchcancel.Size = new Size(84, 29);
 			this.btchcancel.TabIndex = 13;
 			this.btchcancel.Text = "Cancel";
 			this.btchcancel.UseVisualStyleBackColor = true;
-			this.btchcancel.Click += new System.EventHandler(this.btchcancel_Click);
+			this.btchcancel.Click += new EventHandler(this.btchcancel_Click);
 			//
 			// btchadd
 			//
-			this.btchadd.Location = new System.Drawing.Point(269, 164);
+			this.btchadd.Location = new Point(269, 164);
 			this.btchadd.Name = "btchadd";
-			this.btchadd.Size = new System.Drawing.Size(84, 29);
+			this.btchadd.Size = new Size(84, 29);
 			this.btchadd.TabIndex = 12;
 			this.btchadd.Text = "Apply";
 			this.btchadd.UseVisualStyleBackColor = true;
-			this.btchadd.Click += new System.EventHandler(this.btchadd_Click);
+			this.btchadd.Click += new EventHandler(this.btchadd_Click);
 			//
 			// lbchgender
 			//
 			this.lbchgender.AutoSize = true;
-			this.lbchgender.Font = new System.Drawing.Font(
+			this.lbchgender.Font = new Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbchgender.Location = new System.Drawing.Point(120, 114);
+			this.lbchgender.Location = new Point(120, 114);
 			this.lbchgender.Name = "lbchgender";
-			this.lbchgender.Size = new System.Drawing.Size(60, 19);
+			this.lbchgender.Size = new Size(60, 19);
 			this.lbchgender.TabIndex = 11;
 			this.lbchgender.Text = "Gender";
 			//
 			// lbchage
 			//
 			this.lbchage.AutoSize = true;
-			this.lbchage.Font = new System.Drawing.Font(
+			this.lbchage.Font = new Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbchage.Location = new System.Drawing.Point(143, 80);
+			this.lbchage.Location = new Point(143, 80);
 			this.lbchage.Name = "lbchage";
-			this.lbchage.Size = new System.Drawing.Size(37, 19);
+			this.lbchage.Size = new Size(37, 19);
 			this.lbchage.TabIndex = 10;
 			this.lbchage.Text = "Age";
 			//
 			// tbchgender
 			//
-			this.tbchgender.Location = new System.Drawing.Point(186, 110);
+			this.tbchgender.Location = new Point(186, 110);
 			this.tbchgender.Name = "tbchgender";
-			this.tbchgender.Size = new System.Drawing.Size(167, 27);
+			this.tbchgender.Size = new Size(167, 27);
 			this.tbchgender.TabIndex = 3;
 			//
 			// tbchage
 			//
-			this.tbchage.Location = new System.Drawing.Point(186, 76);
+			this.tbchage.Location = new Point(186, 76);
 			this.tbchage.Name = "tbchage";
-			this.tbchage.Size = new System.Drawing.Size(167, 27);
+			this.tbchage.Size = new Size(167, 27);
 			this.tbchage.TabIndex = 2;
 			//
 			// lbchoose
 			//
 			this.lbchoose.AutoSize = true;
-			this.lbchoose.Location = new System.Drawing.Point(22, 19);
+			this.lbchoose.Location = new Point(22, 19);
 			this.lbchoose.Name = "lbchoose";
-			this.lbchoose.Size = new System.Drawing.Size(106, 19);
+			this.lbchoose.Size = new Size(106, 19);
 			this.lbchoose.TabIndex = 1;
 			this.lbchoose.Text = "Choose a Sim";
 			//
 			// cbsimselect
 			//
 			this.cbsimselect.FormattingEnabled = true;
-			this.cbsimselect.Location = new System.Drawing.Point(134, 15);
+			this.cbsimselect.Location = new Point(134, 15);
 			this.cbsimselect.Name = "cbsimselect";
-			this.cbsimselect.Size = new System.Drawing.Size(219, 27);
+			this.cbsimselect.Size = new Size(219, 27);
 			this.cbsimselect.TabIndex = 0;
-			this.cbsimselect.SelectedIndexChanged += new System.EventHandler(
+			this.cbsimselect.SelectedIndexChanged += new EventHandler(
 				this.cbsimselect_SelectedIndexChanged
 			);
 
@@ -725,96 +725,96 @@ namespace SimPe.Plugin
 			this.Panel4.Controls.Add(this.tbOchage);
 			this.Panel4.Controls.Add(this.lbOchoos);
 			this.Panel4.Controls.Add(this.cbOsimselect);
-			this.Panel4.Font = new System.Drawing.Font("Tahoma", 12F);
-			this.Panel4.Location = new System.Drawing.Point(357, 46);
+			this.Panel4.Font = new Font("Tahoma", 12F);
+			this.Panel4.Location = new Point(357, 46);
 			this.Panel4.Name = "Panel4";
-			this.Panel4.Size = new System.Drawing.Size(365, 215);
+			this.Panel4.Size = new Size(365, 215);
 			this.Panel4.TabIndex = 23;
 			this.Panel4.Visible = false;
 			//
 			// btOcancel
 			//
-			this.btOcancel.Location = new System.Drawing.Point(168, 164);
+			this.btOcancel.Location = new Point(168, 164);
 			this.btOcancel.Name = "btOcancel";
-			this.btOcancel.Size = new System.Drawing.Size(84, 29);
+			this.btOcancel.Size = new Size(84, 29);
 			this.btOcancel.TabIndex = 13;
 			this.btOcancel.Text = "Cancel";
 			this.btOcancel.UseVisualStyleBackColor = true;
-			this.btOcancel.Click += new System.EventHandler(this.btOcancel_Click);
+			this.btOcancel.Click += new EventHandler(this.btOcancel_Click);
 			//
 			// btOadd
 			//
-			this.btOadd.Location = new System.Drawing.Point(269, 164);
+			this.btOadd.Location = new Point(269, 164);
 			this.btOadd.Name = "btOadd";
-			this.btOadd.Size = new System.Drawing.Size(84, 29);
+			this.btOadd.Size = new Size(84, 29);
 			this.btOadd.TabIndex = 12;
 			this.btOadd.Text = "Apply";
 			this.btOadd.UseVisualStyleBackColor = true;
-			this.btOadd.Click += new System.EventHandler(this.btOadd_Click);
+			this.btOadd.Click += new EventHandler(this.btOadd_Click);
 			//
 			// lbOgender
 			//
 			this.lbOgender.AutoSize = true;
-			this.lbOgender.Font = new System.Drawing.Font(
+			this.lbOgender.Font = new Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbOgender.Location = new System.Drawing.Point(120, 114);
+			this.lbOgender.Location = new Point(120, 114);
 			this.lbOgender.Name = "lbOgender";
-			this.lbOgender.Size = new System.Drawing.Size(60, 19);
+			this.lbOgender.Size = new Size(60, 19);
 			this.lbOgender.TabIndex = 11;
 			this.lbOgender.Text = "Gender";
 			//
 			// lbOage
 			//
 			this.lbOage.AutoSize = true;
-			this.lbOage.Font = new System.Drawing.Font(
+			this.lbOage.Font = new Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbOage.Location = new System.Drawing.Point(143, 80);
+			this.lbOage.Location = new Point(143, 80);
 			this.lbOage.Name = "lbOage";
-			this.lbOage.Size = new System.Drawing.Size(37, 19);
+			this.lbOage.Size = new Size(37, 19);
 			this.lbOage.TabIndex = 10;
 			this.lbOage.Text = "Age";
 			//
 			// tbOgender
 			//
-			this.tbOgender.Location = new System.Drawing.Point(186, 110);
+			this.tbOgender.Location = new Point(186, 110);
 			this.tbOgender.Name = "tbOgender";
-			this.tbOgender.Size = new System.Drawing.Size(167, 27);
+			this.tbOgender.Size = new Size(167, 27);
 			this.tbOgender.TabIndex = 3;
 			//
 			// tbOchage
 			//
-			this.tbOchage.Location = new System.Drawing.Point(186, 76);
+			this.tbOchage.Location = new Point(186, 76);
 			this.tbOchage.Name = "tbOchage";
-			this.tbOchage.Size = new System.Drawing.Size(167, 27);
+			this.tbOchage.Size = new Size(167, 27);
 			this.tbOchage.TabIndex = 2;
 			//
 			// lbOchoos
 			//
 			this.lbOchoos.AutoSize = true;
-			this.lbOchoos.Location = new System.Drawing.Point(22, 19);
+			this.lbOchoos.Location = new Point(22, 19);
 			this.lbOchoos.Name = "lbOchoos";
-			this.lbOchoos.Size = new System.Drawing.Size(106, 19);
+			this.lbOchoos.Size = new Size(106, 19);
 			this.lbOchoos.TabIndex = 1;
 			this.lbOchoos.Text = "Choose a Sim";
 			//
 			// cbOsimselect
 			//
 			this.cbOsimselect.FormattingEnabled = true;
-			this.cbOsimselect.Location = new System.Drawing.Point(134, 15);
+			this.cbOsimselect.Location = new Point(134, 15);
 			this.cbOsimselect.Name = "cbOsimselect";
-			this.cbOsimselect.Size = new System.Drawing.Size(219, 27);
+			this.cbOsimselect.Size = new Size(219, 27);
 			this.cbOsimselect.TabIndex = 0;
-			this.cbOsimselect.SelectedIndexChanged += new System.EventHandler(
+			this.cbOsimselect.SelectedIndexChanged += new EventHandler(
 				this.cbOsimselect_SelectedIndexChanged
 			);
 
@@ -822,7 +822,7 @@ namespace SimPe.Plugin
 			// lbadvice
 			//
 			this.lbadvice.AutoSize = true;
-			this.lbadvice.Font = new System.Drawing.Font(
+			this.lbadvice.Font = new Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Bold,
@@ -830,9 +830,9 @@ namespace SimPe.Plugin
 				((byte)(0))
 			);
 			this.lbadvice.ForeColor = System.Drawing.Color.DarkRed;
-			this.lbadvice.Location = new System.Drawing.Point(466, 4);
+			this.lbadvice.Location = new Point(466, 4);
 			this.lbadvice.Name = "lbadvice";
-			this.lbadvice.Size = new System.Drawing.Size(77, 19);
+			this.lbadvice.Size = new Size(77, 19);
 			this.lbadvice.TabIndex = 21;
 			this.lbadvice.Text = "Warning";
 			this.lbadvice.Visible = false;
@@ -840,16 +840,16 @@ namespace SimPe.Plugin
 			// btdelety
 			//
 			this.btdelety.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
 					)
 				)
 			);
-			this.btdelety.Location = new System.Drawing.Point(625, 291);
+			this.btdelety.Location = new Point(625, 291);
 			this.btdelety.Name = "btdelety";
-			this.btdelety.Size = new System.Drawing.Size(75, 23);
+			this.btdelety.Size = new Size(75, 23);
 			this.btdelety.TabIndex = 20;
 			this.btdelety.Text = "Remove";
 			this.toolTip1.SetToolTip(
@@ -858,60 +858,60 @@ namespace SimPe.Plugin
 					+ "ile and clear any\r\nbusiness data and career."
 			);
 			this.btdelety.UseVisualStyleBackColor = true;
-			this.btdelety.Click += new System.EventHandler(this.btdelety_Click);
+			this.btdelety.Click += new EventHandler(this.btdelety_Click);
 			//
 			// pbox
 			//
-			this.pbox.Location = new System.Drawing.Point(646, 32);
+			this.pbox.Location = new Point(646, 32);
 			this.pbox.Name = "pbox";
-			this.pbox.Size = new System.Drawing.Size(40, 41);
+			this.pbox.Size = new Size(40, 41);
 			this.pbox.TabIndex = 19;
 			this.pbox.TabStop = false;
 			//
 			// lbaward
 			//
 			this.lbaward.AutoSize = true;
-			this.lbaward.Font = new System.Drawing.Font(
+			this.lbaward.Font = new Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbaward.Location = new System.Drawing.Point(388, 156);
+			this.lbaward.Location = new Point(388, 156);
 			this.lbaward.Name = "lbaward";
-			this.lbaward.Size = new System.Drawing.Size(65, 19);
+			this.lbaward.Size = new Size(65, 19);
 			this.lbaward.TabIndex = 18;
 			this.lbaward.Text = "Fair Pay";
 			//
 			// tbunknown
 			//
 			this.tbunknown.BackColor = System.Drawing.SystemColors.Window;
-			this.tbunknown.Font = new System.Drawing.Font("Tahoma", 12F);
-			this.tbunknown.Location = new System.Drawing.Point(459, 152);
+			this.tbunknown.Font = new Font("Tahoma", 12F);
+			this.tbunknown.Location = new Point(459, 152);
 			this.tbunknown.Name = "tbunknown";
-			this.tbunknown.Size = new System.Drawing.Size(167, 27);
+			this.tbunknown.Size = new Size(167, 27);
 			this.tbunknown.TabIndex = 17;
 			this.toolTip1.SetToolTip(
 				this.tbunknown,
 				resources.GetString("tbunknown.ToolTip")
 			);
-			this.tbunknown.TextChanged += new System.EventHandler(
+			this.tbunknown.TextChanged += new EventHandler(
 				this.tbunknown_TextChanged
 			);
 			//
 			// lbpay
 			//
-			this.lbpay.Font = new System.Drawing.Font(
+			this.lbpay.Font = new Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbpay.Location = new System.Drawing.Point(374, 283);
+			this.lbpay.Location = new Point(374, 283);
 			this.lbpay.Name = "lbpay";
-			this.lbpay.Size = new System.Drawing.Size(227, 19);
+			this.lbpay.Size = new Size(227, 19);
 			this.lbpay.TabIndex = 16;
 			this.lbpay.Text = "Fairly Paid (100%)";
 			this.lbpay.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -919,7 +919,7 @@ namespace SimPe.Plugin
 			// pbpay
 			//
 			this.pbpay.BackColor = System.Drawing.Color.Transparent;
-			this.pbpay.Font = new System.Drawing.Font(
+			this.pbpay.Font = new Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
@@ -927,12 +927,12 @@ namespace SimPe.Plugin
 				((byte)(0))
 			);
 			this.pbpay.ImeMode = System.Windows.Forms.ImeMode.Disable;
-			this.pbpay.Location = new System.Drawing.Point(363, 245);
+			this.pbpay.Location = new Point(363, 245);
 			this.pbpay.Maximum = 7;
 			this.pbpay.Name = "pbpay";
-			this.pbpay.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+			this.pbpay.Padding = new Padding(0, 0, 0, 2);
 			this.pbpay.SelectedColor = System.Drawing.Color.Gold;
-			this.pbpay.Size = new System.Drawing.Size(261, 35);
+			this.pbpay.Size = new Size(261, 35);
 			this.pbpay.TabIndex = 15;
 			this.pbpay.TokenCount = 7;
 			this.pbpay.UnselectedColor = System.Drawing.Color.Black;
@@ -941,200 +941,200 @@ namespace SimPe.Plugin
 			// tbassi
 			//
 			this.tbassi.BackColor = System.Drawing.SystemColors.Window;
-			this.tbassi.Font = new System.Drawing.Font(
+			this.tbassi.Font = new Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbassi.Location = new System.Drawing.Point(459, 212);
+			this.tbassi.Location = new Point(459, 212);
 			this.tbassi.Name = "tbassi";
 			this.tbassi.ReadOnly = true;
-			this.tbassi.Size = new System.Drawing.Size(167, 27);
+			this.tbassi.Size = new Size(167, 27);
 			this.tbassi.TabIndex = 14;
 			//
 			// lbassi
 			//
 			this.lbassi.AutoSize = true;
-			this.lbassi.Font = new System.Drawing.Font(
+			this.lbassi.Font = new Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbassi.Location = new System.Drawing.Point(361, 216);
+			this.lbassi.Location = new Point(361, 216);
 			this.lbassi.Name = "lbassi";
-			this.lbassi.Size = new System.Drawing.Size(92, 19);
+			this.lbassi.Size = new Size(92, 19);
 			this.lbassi.TabIndex = 13;
 			this.lbassi.Text = "Assignment";
 			//
 			// tbwages
 			//
 			this.tbwages.BackColor = System.Drawing.SystemColors.Window;
-			this.tbwages.Font = new System.Drawing.Font(
+			this.tbwages.Font = new Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbwages.Location = new System.Drawing.Point(459, 182);
+			this.tbwages.Location = new Point(459, 182);
 			this.tbwages.Name = "tbwages";
 			this.tbwages.ReadOnly = true;
-			this.tbwages.Size = new System.Drawing.Size(167, 27);
+			this.tbwages.Size = new Size(167, 27);
 			this.tbwages.TabIndex = 12;
 			//
 			// lbwages
 			//
 			this.lbwages.AutoSize = true;
-			this.lbwages.Font = new System.Drawing.Font(
+			this.lbwages.Font = new Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbwages.Location = new System.Drawing.Point(353, 186);
+			this.lbwages.Location = new Point(353, 186);
 			this.lbwages.Name = "lbwages";
-			this.lbwages.Size = new System.Drawing.Size(100, 19);
+			this.lbwages.Size = new Size(100, 19);
 			this.lbwages.TabIndex = 11;
 			this.lbwages.Text = "Hourly Wage";
 			//
 			// tbsgender
 			//
 			this.tbsgender.BackColor = System.Drawing.SystemColors.Window;
-			this.tbsgender.Font = new System.Drawing.Font(
+			this.tbsgender.Font = new Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbsgender.Location = new System.Drawing.Point(459, 122);
+			this.tbsgender.Location = new Point(459, 122);
 			this.tbsgender.Name = "tbsgender";
 			this.tbsgender.ReadOnly = true;
-			this.tbsgender.Size = new System.Drawing.Size(167, 27);
+			this.tbsgender.Size = new Size(167, 27);
 			this.tbsgender.TabIndex = 10;
 			//
 			// lbsgender
 			//
 			this.lbsgender.AutoSize = true;
-			this.lbsgender.Font = new System.Drawing.Font(
+			this.lbsgender.Font = new Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbsgender.Location = new System.Drawing.Point(393, 126);
+			this.lbsgender.Location = new Point(393, 126);
 			this.lbsgender.Name = "lbsgender";
-			this.lbsgender.Size = new System.Drawing.Size(60, 19);
+			this.lbsgender.Size = new Size(60, 19);
 			this.lbsgender.TabIndex = 9;
 			this.lbsgender.Text = "Gender";
 			//
 			// ybsimage
 			//
 			this.ybsimage.BackColor = System.Drawing.SystemColors.Window;
-			this.ybsimage.Font = new System.Drawing.Font(
+			this.ybsimage.Font = new Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.ybsimage.Location = new System.Drawing.Point(459, 92);
+			this.ybsimage.Location = new Point(459, 92);
 			this.ybsimage.Name = "ybsimage";
 			this.ybsimage.ReadOnly = true;
-			this.ybsimage.Size = new System.Drawing.Size(167, 27);
+			this.ybsimage.Size = new Size(167, 27);
 			this.ybsimage.TabIndex = 8;
 			//
 			// lbsimage
 			//
 			this.lbsimage.AutoSize = true;
-			this.lbsimage.Font = new System.Drawing.Font(
+			this.lbsimage.Font = new Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbsimage.Location = new System.Drawing.Point(416, 96);
+			this.lbsimage.Location = new Point(416, 96);
 			this.lbsimage.Name = "lbsimage";
-			this.lbsimage.Size = new System.Drawing.Size(37, 19);
+			this.lbsimage.Size = new Size(37, 19);
 			this.lbsimage.TabIndex = 7;
 			this.lbsimage.Text = "Age";
 			//
 			// lbLaball
 			//
 			this.lbLaball.AutoSize = true;
-			this.lbLaball.Font = new System.Drawing.Font(
+			this.lbLaball.Font = new Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbLaball.Location = new System.Drawing.Point(28, 8);
+			this.lbLaball.Location = new Point(28, 8);
 			this.lbLaball.Name = "lbLaball";
-			this.lbLaball.Size = new System.Drawing.Size(85, 19);
+			this.lbLaball.Size = new Size(85, 19);
 			this.lbLaball.TabIndex = 6;
 			this.lbLaball.Text = "Employees";
 			//
 			// tbright
 			//
 			this.tbright.BackColor = System.Drawing.SystemColors.Window;
-			this.tbright.Font = new System.Drawing.Font(
+			this.tbright.Font = new Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbright.Location = new System.Drawing.Point(459, 62);
+			this.tbright.Location = new Point(459, 62);
 			this.tbright.Name = "tbright";
 			this.tbright.ReadOnly = true;
-			this.tbright.Size = new System.Drawing.Size(167, 27);
+			this.tbright.Size = new Size(167, 27);
 			this.tbright.TabIndex = 5;
 			//
 			// lbright
 			//
 			this.lbright.AutoSize = true;
-			this.lbright.Font = new System.Drawing.Font(
+			this.lbright.Font = new Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbright.Location = new System.Drawing.Point(401, 66);
+			this.lbright.Location = new Point(401, 66);
 			this.lbright.Name = "lbright";
-			this.lbright.Size = new System.Drawing.Size(52, 19);
+			this.lbright.Size = new Size(52, 19);
 			this.lbright.TabIndex = 4;
 			this.lbright.Text = "Status";
 			//
 			// tbLeft
 			//
 			this.tbLeft.BackColor = System.Drawing.SystemColors.Window;
-			this.tbLeft.Font = new System.Drawing.Font(
+			this.tbLeft.Font = new Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbLeft.Location = new System.Drawing.Point(365, 32);
+			this.tbLeft.Location = new Point(365, 32);
 			this.tbLeft.Name = "tbLeft";
 			this.tbLeft.ReadOnly = true;
-			this.tbLeft.Size = new System.Drawing.Size(261, 27);
+			this.tbLeft.Size = new Size(261, 27);
 			this.tbLeft.TabIndex = 3;
 			this.tbLeft.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			//
 			// lvEmployees
 			//
 			this.lvEmployees.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -1147,23 +1147,23 @@ namespace SimPe.Plugin
 			this.lvEmployees.FullRowSelect = true;
 			this.lvEmployees.HideSelection = false;
 			this.lvEmployees.LargeImageList = this.ilist;
-			this.lvEmployees.Location = new System.Drawing.Point(8, 32);
+			this.lvEmployees.Location = new Point(8, 32);
 			this.lvEmployees.MultiSelect = false;
 			this.lvEmployees.Name = "lvEmployees";
-			this.lvEmployees.Size = new System.Drawing.Size(330, 270);
+			this.lvEmployees.Size = new Size(330, 270);
 			this.lvEmployees.TabIndex = 1;
 			this.lvEmployees.UseCompatibleStateImageBehavior = false;
-			this.lvEmployees.SelectedIndexChanged += new System.EventHandler(
+			this.lvEmployees.SelectedIndexChanged += new EventHandler(
 				this.lvEmployees_SelectedIndexChanged
 			);
-			this.lvEmployees.DoubleClick += new System.EventHandler(
+			this.lvEmployees.DoubleClick += new EventHandler(
 				this.lvEmployees_DoubleClick
 			);
 			//
 			// ilist
 			//
 			this.ilist.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-			this.ilist.ImageSize = new System.Drawing.Size(96, 96);
+			this.ilist.ImageSize = new Size(96, 96);
 			this.ilist.TransparentColor = System.Drawing.Color.Transparent;
 			//
 			// toolTip1
@@ -1178,16 +1178,16 @@ namespace SimPe.Plugin
 			// btchngeOwn
 			//
 			this.btchngeOwn.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
 					)
 				)
 			);
-			this.btchngeOwn.Location = new System.Drawing.Point(625, 291);
+			this.btchngeOwn.Location = new Point(625, 291);
 			this.btchngeOwn.Name = "btchngeOwn";
-			this.btchngeOwn.Size = new System.Drawing.Size(75, 23);
+			this.btchngeOwn.Size = new Size(75, 23);
 			this.btchngeOwn.TabIndex = 24;
 			this.btchngeOwn.Text = "Change";
 			this.toolTip1.SetToolTip(
@@ -1196,19 +1196,19 @@ namespace SimPe.Plugin
 			);
 			this.btchngeOwn.UseVisualStyleBackColor = true;
 			this.btchngeOwn.Visible = false;
-			this.btchngeOwn.Click += new System.EventHandler(this.btchngeOwn_Click);
+			this.btchngeOwn.Click += new EventHandler(this.btchngeOwn_Click);
 			//
 			// BnfoUI
 			//
-			this.BackgroundImageLocation = new System.Drawing.Point(760, 54);
+			this.BackgroundImageLocation = new Point(760, 54);
 			this.BackgroundImageZoomToFit = true;
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.panel2);
 			this.Controls.Add(this.toolBar1);
-			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+			this.Font = new Font("Microsoft Sans Serif", 8.25F);
 			this.HeaderText = "Business Info";
 			this.Name = "BnfoUI";
-			this.Size = new System.Drawing.Size(760, 398);
+			this.Size = new Size(760, 398);
 			this.Controls.SetChildIndex(this.toolBar1, 0);
 			this.Controls.SetChildIndex(this.panel2, 0);
 			this.Controls.SetChildIndex(this.panel1, 0);
@@ -1222,7 +1222,7 @@ namespace SimPe.Plugin
 			this.Panel3.PerformLayout();
 			this.Panel4.ResumeLayout(false);
 			this.Panel4.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pbox)).EndInit();
+			((ISupportInitialize)(this.pbox)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
@@ -1271,7 +1271,7 @@ namespace SimPe.Plugin
 				owner = 0xffff;
 				string ltname = SimPe.Localization.GetString("Unknown");
 
-				SimPe.Interfaces.Files.IPackedFileDescriptor pfd =
+				Interfaces.Files.IPackedFileDescriptor pfd =
 					Bnfo.Package.FindFile(
 						0x0BF999E7,
 						0,
@@ -1280,7 +1280,7 @@ namespace SimPe.Plugin
 					);
 				if (pfd != null)
 				{
-					SimPe.Plugin.Ltxt ltx = new SimPe.Plugin.Ltxt();
+					Ltxt ltx = new Ltxt();
 					ltx.ProcessData(pfd, Bnfo.Package);
 					owner = (ushort)ltx.OwnerInstance;
 					ltname = ltx.LotName;
@@ -1297,7 +1297,7 @@ namespace SimPe.Plugin
 				}
 				else
 				{
-					SimPe.Interfaces.Providers.ILotItem ili =
+					Interfaces.Providers.ILotItem ili =
 						FileTable.ProviderRegistry.LotProvider.FindLot(
 							Bnfo.FileDescriptor.Instance
 						);
@@ -1338,11 +1338,11 @@ namespace SimPe.Plugin
 
 		private void GetEmployees()
 		{
-			SimPe.PackedFiles.Wrapper.ExtSDesc sdsc;
+			ExtSDesc sdsc;
 
 			sdsc =
 				FileTable.ProviderRegistry.SimDescriptionProvider.SimInstance[owner]
-				as SimPe.PackedFiles.Wrapper.ExtSDesc;
+				as ExtSDesc;
 			if (sdsc != null)
 			{
 				AddImage(sdsc);
@@ -1375,7 +1375,7 @@ namespace SimPe.Plugin
 				sdsc =
 					FileTable.ProviderRegistry.SimDescriptionProvider.SimInstance[
 						Bnfo.Employees[i]
-					] as SimPe.PackedFiles.Wrapper.ExtSDesc;
+					] as ExtSDesc;
 				if (sdsc != null)
 				{
 					AddImage(sdsc);
@@ -1416,8 +1416,8 @@ namespace SimPe.Plugin
 				int cflo =
 					(Bnfo.Revenue[historycount - 1])
 					- (Bnfo.Expences[historycount - 1]);
-				Array.Resize<int>(ref rdatas, historycount - homeb);
-				Array.Resize<int>(ref edatas, historycount - homeb);
+				Array.Resize(ref rdatas, historycount - homeb);
+				Array.Resize(ref edatas, historycount - homeb);
 				// set both graphs to same max value so a direct comparison between the bar heights is possible
 				double mMax = 0;
 
@@ -1457,7 +1457,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void AddImage(SimPe.PackedFiles.Wrapper.ExtSDesc sdesc)
+		private void AddImage(ExtSDesc sdesc)
 		{
 			Image img = null;
 			if (sdesc.HasImage)
@@ -1494,7 +1494,7 @@ namespace SimPe.Plugin
 			Bnfo.SynchronizeUserData(true, false);
 		}
 
-		private void biMax_Activate(object sender, System.EventArgs e)
+		private void biMax_Activate(object sender, EventArgs e)
 		{
 			if (lv.Items == null)
 			{
@@ -1509,7 +1509,7 @@ namespace SimPe.Plugin
 			lv.Refresh();
 		}
 
-		private void biReward_Activate(object sender, System.EventArgs e)
+		private void biReward_Activate(object sender, EventArgs e)
 		{
 			if (Bnfo == null)
 			{
@@ -1522,7 +1522,7 @@ namespace SimPe.Plugin
 			RefreshGUI();
 		}
 
-		private void tbCur_TextChanged(object sender, System.EventArgs e)
+		private void tbCur_TextChanged(object sender, EventArgs e)
 		{
 			if (intern)
 			{
@@ -1541,7 +1541,7 @@ namespace SimPe.Plugin
 			);
 		}
 
-		private void tbMax_TextChanged(object sender, System.EventArgs e)
+		private void tbMax_TextChanged(object sender, EventArgs e)
 		{
 			if (intern)
 			{
@@ -1615,12 +1615,12 @@ namespace SimPe.Plugin
 			catch { }
 			if (lvEmployees.SelectedItems[0].Tag != null)
 			{
-				SimPe.PackedFiles.Wrapper.ExtSDesc sdsc =
+				ExtSDesc sdsc =
 					lvEmployees.SelectedItems[0].Tag
-					as SimPe.PackedFiles.Wrapper.ExtSDesc;
+					as ExtSDesc;
 				tbLeft.Text = sdsc.SimName + " " + sdsc.SimFamilyName;
 				ybsimage.Text = Enum.GetName(
-					typeof(Data.MetaData.LifeSections),
+					typeof(MetaData.LifeSections),
 					(ushort)sdsc.CharacterDescription.LifeSection
 				);
 				if (sdsc.CharacterDescription.Gender == Data.MetaData.Gender.Female)
@@ -1700,7 +1700,7 @@ namespace SimPe.Plugin
 			intern = false;
 		}
 
-		private void lvEmployees_DoubleClick(object sender, System.EventArgs e)
+		private void lvEmployees_DoubleClick(object sender, EventArgs e)
 		{
 			if (lvEmployees.SelectedItems.Count < 1)
 			{
@@ -1712,8 +1712,8 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			SimPe.PackedFiles.Wrapper.ExtSDesc sdsc =
-				lvEmployees.SelectedItems[0].Tag as SimPe.PackedFiles.Wrapper.ExtSDesc;
+			ExtSDesc sdsc =
+				lvEmployees.SelectedItems[0].Tag as ExtSDesc;
 			if (sdsc == null)
 			{
 				return;
@@ -1901,7 +1901,7 @@ namespace SimPe.Plugin
 				inst = 0xABBA2575;
 			}
 
-			SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+			Packages.File pkg = SimPe.Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
 					PathProvider.Global.Latest.InstallFolder,
 					"TSData\\Res\\UI\\ui.package"
@@ -1909,7 +1909,7 @@ namespace SimPe.Plugin
 			);
 			if (pkg != null)
 			{
-				SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
+				Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
 					0x856DDBAC,
 					0,
 					0x499DB772,
@@ -1917,8 +1917,8 @@ namespace SimPe.Plugin
 				);
 				if (pfd != null)
 				{
-					SimPe.PackedFiles.Wrapper.Picture pic =
-						new SimPe.PackedFiles.Wrapper.Picture();
+					Picture pic =
+						new Picture();
 					pic.ProcessData(pfd, pkg);
 					pbox.Image = pic.Image;
 				}
@@ -1935,8 +1935,8 @@ namespace SimPe.Plugin
 
 		private void btClearim_Click(object sender, EventArgs e)
 		{
-			SimPe.Plugin.Collections.BnfoCustomerItems bnff =
-				new SimPe.Plugin.Collections.BnfoCustomerItems(Bnfo);
+			Collections.BnfoCustomerItems bnff =
+				new Collections.BnfoCustomerItems(Bnfo);
 
 			foreach (BnfoCustomerItem item in Bnfo.CustomerItems)
 			{
@@ -1971,9 +1971,9 @@ namespace SimPe.Plugin
 
 			if (lvEmployees.SelectedItems[0].Tag != null)
 			{
-				SimPe.PackedFiles.Wrapper.ExtSDesc sdsc =
+				ExtSDesc sdsc =
 					lvEmployees.SelectedItems[0].Tag
-					as SimPe.PackedFiles.Wrapper.ExtSDesc;
+					as ExtSDesc;
 				if (sdsc != null)
 				{
 					if (Bnfo.Package == sdsc.Package)
@@ -2074,7 +2074,7 @@ namespace SimPe.Plugin
 				cbsimselect.Items.Clear();
 				cbsimselect.Sorted = false;
 				foreach (
-					SimPe.PackedFiles.Wrapper.ExtSDesc sdsc in FileTable
+					ExtSDesc sdsc in FileTable
 						.ProviderRegistry
 						.SimDescriptionProvider
 						.SimInstance
@@ -2083,7 +2083,7 @@ namespace SimPe.Plugin
 				{
 					if (canhire(sdsc))
 					{
-						SimPe.Interfaces.IAlias a = new SimPe.Data.StaticAlias(
+						Interfaces.IAlias a = new StaticAlias(
 							sdsc.SimId,
 							sdsc.SimName + " " + sdsc.SimFamilyName,
 							new object[] { sdsc }
@@ -2110,10 +2110,10 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			SimPe.Interfaces.IAlias a =
-				cbsimselect.SelectedItem as SimPe.Interfaces.IAlias;
-			SimPe.PackedFiles.Wrapper.ExtSDesc s =
-				a.Tag[0] as SimPe.PackedFiles.Wrapper.ExtSDesc;
+			Interfaces.IAlias a =
+				cbsimselect.SelectedItem as Interfaces.IAlias;
+			ExtSDesc s =
+				a.Tag[0] as ExtSDesc;
 			if (s != null)
 			{
 				ushort[] empls = new ushort[Bnfo.EmployeeCount + 1];
@@ -2194,14 +2194,14 @@ namespace SimPe.Plugin
 
 			try
 			{
-				SimPe.Interfaces.IAlias a =
-					cbsimselect.SelectedItem as SimPe.Interfaces.IAlias;
-				SimPe.PackedFiles.Wrapper.ExtSDesc s =
-					a.Tag[0] as SimPe.PackedFiles.Wrapper.ExtSDesc;
+				Interfaces.IAlias a =
+					cbsimselect.SelectedItem as Interfaces.IAlias;
+				ExtSDesc s =
+					a.Tag[0] as ExtSDesc;
 				if (s != null)
 				{
 					tbchage.Text = Enum.GetName(
-						typeof(Data.MetaData.LifeSections),
+						typeof(MetaData.LifeSections),
 						(ushort)s.CharacterDescription.LifeSection
 					);
 					if (s.CharacterDescription.Gender == Data.MetaData.Gender.Female)
@@ -2221,7 +2221,7 @@ namespace SimPe.Plugin
 			catch { }
 		}
 
-		private bool canhire(SimPe.PackedFiles.Wrapper.ExtSDesc sdsc)
+		private bool canhire(ExtSDesc sdsc)
 		{
 			foreach (ushort employee in Bnfo.Employees)
 			{
@@ -2339,7 +2339,7 @@ namespace SimPe.Plugin
 				cbOsimselect.Items.Clear();
 				cbOsimselect.Sorted = false;
 				foreach (
-					SimPe.PackedFiles.Wrapper.ExtSDesc sdsc in FileTable
+					ExtSDesc sdsc in FileTable
 						.ProviderRegistry
 						.SimDescriptionProvider
 						.SimInstance
@@ -2348,7 +2348,7 @@ namespace SimPe.Plugin
 				{
 					if (canownim(sdsc))
 					{
-						SimPe.Interfaces.IAlias a = new SimPe.Data.StaticAlias(
+						Interfaces.IAlias a = new StaticAlias(
 							sdsc.SimId,
 							sdsc.SimName + " " + sdsc.SimFamilyName,
 							new object[] { sdsc }
@@ -2376,14 +2376,14 @@ namespace SimPe.Plugin
 
 			try
 			{
-				SimPe.Interfaces.IAlias a =
-					cbOsimselect.SelectedItem as SimPe.Interfaces.IAlias;
-				SimPe.PackedFiles.Wrapper.ExtSDesc s =
-					a.Tag[0] as SimPe.PackedFiles.Wrapper.ExtSDesc;
+				Interfaces.IAlias a =
+					cbOsimselect.SelectedItem as Interfaces.IAlias;
+				ExtSDesc s =
+					a.Tag[0] as ExtSDesc;
 				if (s != null)
 				{
 					tbOchage.Text = Enum.GetName(
-						typeof(Data.MetaData.LifeSections),
+						typeof(MetaData.LifeSections),
 						(ushort)s.CharacterDescription.LifeSection
 					);
 					if (s.CharacterDescription.Gender == Data.MetaData.Gender.Female)
@@ -2416,10 +2416,10 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			SimPe.Interfaces.IAlias a =
-				cbOsimselect.SelectedItem as SimPe.Interfaces.IAlias;
-			SimPe.PackedFiles.Wrapper.ExtSDesc s =
-				a.Tag[0] as SimPe.PackedFiles.Wrapper.ExtSDesc;
+			Interfaces.IAlias a =
+				cbOsimselect.SelectedItem as Interfaces.IAlias;
+			ExtSDesc s =
+				a.Tag[0] as ExtSDesc;
 			if (s != null)
 			{
 				if (famly > 0 && homeb == 0 && s.FamilyInstance != famly)
@@ -2430,7 +2430,7 @@ namespace SimPe.Plugin
 				}
 				else
 				{
-					SimPe.Interfaces.Files.IPackedFileDescriptor pfd =
+					Interfaces.Files.IPackedFileDescriptor pfd =
 						Bnfo.Package.FindFile(
 							0x0BF999E7,
 							0,
@@ -2439,7 +2439,7 @@ namespace SimPe.Plugin
 						);
 					if (pfd != null)
 					{
-						SimPe.Plugin.Ltxt ltx = new SimPe.Plugin.Ltxt();
+						Ltxt ltx = new Ltxt();
 						ltx.ProcessData(pfd, Bnfo.Package);
 						ltx.OwnerInstance = (uint)s.Instance;
 						ltx.SynchronizeUserData();
@@ -2454,7 +2454,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private bool canownim(SimPe.PackedFiles.Wrapper.ExtSDesc sdsc)
+		private bool canownim(ExtSDesc sdsc)
 		{
 			foreach (ushort employee in Bnfo.Employees)
 			{
@@ -2487,7 +2487,7 @@ namespace SimPe.Plugin
 			return sdsc.Nightlife.IsHuman; // no pets
 		}
 
-		private SimPe.Packages.File fixlowercase(string filyname)
+		private Packages.File fixlowercase(string filyname)
 		{
 			if (System.IO.File.Exists(filyname))
 			{

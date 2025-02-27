@@ -37,14 +37,14 @@ namespace SimPe.PackedFiles.UserInterface
 			Interfaces.Files.IPackedFileDescriptor[] pfds = famt.Package.FindFiles(
 				Data.MetaData.SIM_DESCRIPTION_FILE
 			);
-			Wrapper.SDesc sdesc = new SimPe.PackedFiles.Wrapper.SDesc(
+			Wrapper.SDesc sdesc = new Wrapper.SDesc(
 				famt.NameProvider,
 				null,
 				null
 			);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				Wrapper.Supporting.FamilyTieSim fts = new FamilyTieSim(
+				FamilyTieSim fts = new FamilyTieSim(
 					(ushort)pfd.Instance,
 					null,
 					famt
@@ -83,7 +83,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public Control GUIHandle => form.familytiePanel;
 
-		public void UpdateGUI(SimPe.Interfaces.Plugin.IFileWrapper wrapper)
+		public void UpdateGUI(IFileWrapper wrapper)
 		{
 			Wrapper.FamilyTies famt = (Wrapper.FamilyTies)wrapper;
 			form.wrapper = famt;

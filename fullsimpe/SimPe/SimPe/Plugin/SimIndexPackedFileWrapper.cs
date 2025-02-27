@@ -47,7 +47,7 @@ namespace SimPe.Plugin
 
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-			SimPe.Plugin.Idno idno = SimPe.Plugin.Idno.FromPackage(package);
+			Idno idno = SimPe.Plugin.Idno.FromPackage(package);
 			if (idno == null)
 			{
 				IsOK = true;

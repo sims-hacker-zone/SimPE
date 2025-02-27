@@ -24,7 +24,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for ImportSemiTool.
 	/// </summary>
-	public class ImportSemiTool : Interfaces.AbstractTool, Interfaces.ITool
+	public class ImportSemiTool : AbstractTool, ITool
 	{
 		IWrapperRegistry reg;
 		IProviderRegistry prov;
@@ -38,8 +38,8 @@ namespace SimPe.Plugin
 		#region ITool Member
 
 		public bool IsEnabled(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile package
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile package
 		)
 		{
 			if (prov == null)
@@ -63,8 +63,8 @@ namespace SimPe.Plugin
 		ImportSemi isg;
 
 		public Interfaces.Plugin.IToolResult ShowDialog(
-			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			ref SimPe.Interfaces.Files.IPackageFile package
+			ref Interfaces.Files.IPackedFileDescriptor pfd,
+			ref Interfaces.Files.IPackageFile package
 		)
 		{
 			if (isg == null)
@@ -73,7 +73,7 @@ namespace SimPe.Plugin
 			}
 
 			isg.Execute(package, this.reg, this.prov);
-			return new SimPe.Plugin.ToolResult(false, true);
+			return new ToolResult(false, true);
 		}
 
 		public override string ToString()

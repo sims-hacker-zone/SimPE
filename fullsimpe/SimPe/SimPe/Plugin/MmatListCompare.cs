@@ -25,8 +25,8 @@ namespace SimPe.Plugin
 
 		public int Compare(object x, object y)
 		{
-			SimPe.Plugin.MmatWrapper mmat1 = (SimPe.Plugin.MmatWrapper)x;
-			SimPe.Plugin.MmatWrapper mmat2 = (SimPe.Plugin.MmatWrapper)y;
+			MmatWrapper mmat1 = (MmatWrapper)x;
+			MmatWrapper mmat2 = (MmatWrapper)y;
 
 			int cmp =
 				mmat1.GetSaveItem("materialStateFlags").IntegerValue

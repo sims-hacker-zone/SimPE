@@ -32,14 +32,14 @@ namespace SimPe.Actions.Default
 
 		public override bool ChangeEnabledStateEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs es
+			Events.ResourceEventArgs es
 		)
 		{
 			bool res = base.ChangeEnabledStateEventHandler(sender, es);
 			if (res)
 			{
 				res = false;
-				foreach (SimPe.Events.ResourceContainer e in es)
+				foreach (Events.ResourceContainer e in es)
 				{
 					if (e.HasFileDescriptor)
 					{
@@ -55,7 +55,7 @@ namespace SimPe.Actions.Default
 
 		public override void ExecuteEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs es
+			Events.ResourceEventArgs es
 		)
 		{
 			if (!ChangeEnabledStateEventHandler(null, es))
@@ -63,7 +63,7 @@ namespace SimPe.Actions.Default
 				return;
 			}
 
-			foreach (SimPe.Events.ResourceContainer e in es)
+			foreach (Events.ResourceContainer e in es)
 			{
 				e.Resource.FileDescriptor.MarkForDelete = false;
 			}

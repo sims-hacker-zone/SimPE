@@ -66,7 +66,7 @@ namespace SimPe.Plugin
 			set
 			{
 				count = value;
-				Array.Resize<string>(ref items, value);
+				Array.Resize(ref items, value);
 			}
 		}
 
@@ -119,7 +119,7 @@ namespace SimPe.Plugin
 		public void AddBlock()
 		{
 			Count++;
-			Array.Resize<string>(ref items, Count);
+			Array.Resize(ref items, Count);
 			items[Count - 1] = "";
 		}
 
@@ -131,10 +131,10 @@ namespace SimPe.Plugin
 			}
 
 			Count--;
-			Array.Resize<string>(ref items, Count);
+			Array.Resize(ref items, Count);
 		}
 
-		public SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper SiblingResource(
+		public Interfaces.Plugin.Internal.IPackedFileWrapper SiblingResource(
 			uint type
 		)
 		{
@@ -153,7 +153,7 @@ namespace SimPe.Plugin
 				return null;
 			}
 
-			SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper wrp =
+			Interfaces.Plugin.Internal.IPackedFileWrapper wrp =
 				SimPe.FileTable.WrapperRegistry.FindHandler(type);
 			wrp.ProcessData(items[0].PFD, items[0].Package);
 			return wrp;
@@ -215,7 +215,7 @@ namespace SimPe.Plugin
 			Unk3 = reader.ReadUInt32();
 			Unk4 = reader.ReadUInt32();
 			count = reader.ReadInt32();
-			Array.Resize<string>(ref items, count);
+			Array.Resize(ref items, count);
 			Unk5 = reader.ReadUInt32();
 			/*
 			 * strings always terminate with 0000, the first Zero1 is probably part of the header, after that they are at the end as terminater

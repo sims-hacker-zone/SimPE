@@ -149,7 +149,7 @@ namespace SimPe.Plugin
 		void SetGuidForType(SimMemoryType type)
 		{
 			foreach (
-				SimPe.Cache.MemoryCacheItem mci in SimPe
+				Cache.MemoryCacheItem mci in SimPe
 					.PackedFiles
 					.Wrapper
 					.ObjectComboBox
@@ -230,7 +230,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		protected SimPe.PackedFiles.Wrapper.ExtObjd objd = null;
+		protected PackedFiles.Wrapper.ExtObjd objd = null;
 
 		/// <summary>
 		/// Returns the Slot that owns this Item
@@ -306,7 +306,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the ObjectData for this Item
 		/// </summary>
-		public SimPe.PackedFiles.Wrapper.ExtObjd ObjectDataFile
+		public PackedFiles.Wrapper.ExtObjd ObjectDataFile
 		{
 			get
 			{
@@ -315,9 +315,9 @@ namespace SimPe.Plugin
 					return objd;
 				}
 
-				this.objd = new SimPe.PackedFiles.Wrapper.ExtObjd();
+				this.objd = new PackedFiles.Wrapper.ExtObjd();
 
-				SimPe.Cache.MemoryCacheItem mci =
+				Cache.MemoryCacheItem mci =
 					SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(guid);
 				if (mci != null)
 				{
@@ -330,8 +330,8 @@ namespace SimPe.Plugin
 			}
 		}
 
-		SimPe.Cache.MemoryCacheItem mci;
-		public SimPe.Cache.MemoryCacheItem MemoryCacheItem
+		Cache.MemoryCacheItem mci;
+		public Cache.MemoryCacheItem MemoryCacheItem
 		{
 			get
 			{
@@ -349,7 +349,7 @@ namespace SimPe.Plugin
 
 				if (mci == null)
 				{
-					mci = new SimPe.Cache.MemoryCacheItem();
+					mci = new Cache.MemoryCacheItem();
 				}
 
 				return mci;
@@ -442,7 +442,7 @@ namespace SimPe.Plugin
 		/// True if this Item can be processed as a Memory
 		/// </summary>
 		public bool IsMemory => (
-					(SimPe.Data.ObjectTypes)this.ObjectDataFile.Type
+					(Data.ObjectTypes)this.ObjectDataFile.Type
 					== SimPe.Data.ObjectTypes.Memory
 				);
 
@@ -582,9 +582,9 @@ namespace SimPe.Plugin
 
 		public void SetSubject(uint guid)
 		{
-			SimPe.Interfaces.Wrapper.ISDesc sdsc =
+			Interfaces.Wrapper.ISDesc sdsc =
 				FileTable.ProviderRegistry.SimDescriptionProvider.SimGuidMap[guid]
-				as SimPe.Interfaces.Wrapper.ISDesc;
+				as Interfaces.Wrapper.ISDesc;
 			if (sdsc != null)
 			{
 				SetSubject(sdsc.Instance, guid);
@@ -734,7 +734,7 @@ namespace SimPe.Plugin
 			}
 			else
 			{
-				SimPe.Cache.MemoryCacheItem mci =
+				Cache.MemoryCacheItem mci =
 					SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(
 						this.SimID
 					);
@@ -794,7 +794,7 @@ namespace SimPe.Plugin
 			if (MemoryType == SimMemoryType.Object)
 			{
 				name += " {";
-				SimPe.Cache.MemoryCacheItem mci =
+				Cache.MemoryCacheItem mci =
 					SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(
 						this.ReferencedObjectGuid
 					);

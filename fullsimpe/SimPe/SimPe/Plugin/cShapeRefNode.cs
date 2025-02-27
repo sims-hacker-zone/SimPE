@@ -154,7 +154,7 @@ namespace SimPe.Plugin
 			get; set;
 		}
 
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public override TransformNode StoredTransformNode => tn;
 		#endregion
 
@@ -308,7 +308,7 @@ namespace SimPe.Plugin
 			{
 				if (tShapeRefNode == null)
 				{
-					tShapeRefNode = new SimPe.Plugin.TabPage.ShapeRefNode();
+					tShapeRefNode = new TabPage.ShapeRefNode();
 				}
 
 				return tShapeRefNode;
@@ -325,10 +325,10 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a List of all Child Blocks referenced by this Element
 		/// </summary>
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public override IntArrayList ChildBlocks => tn.ChildBlocks;
 
-		[BrowsableAttribute(false)]
+		[Browsable(false)]
 		public override int ImageIndex => 3; //mesh
 		#endregion
 
@@ -339,7 +339,7 @@ namespace SimPe.Plugin
 		{
 			if (tShapeRefNode == null)
 			{
-				tShapeRefNode = new SimPe.Plugin.TabPage.ShapeRefNode();
+				tShapeRefNode = new TabPage.ShapeRefNode();
 			}
 
 			tShapeRefNode.lb_srn_a.Items.Clear();

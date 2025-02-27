@@ -11,14 +11,14 @@ namespace SimPe.Plugin
 	/// GetWrappers() has to return a list of all Plugins provided by this Library.
 	/// If a Plugin isn't returned, SimPe won't recognize it!
 	/// </remarks>
-	public class FamiuWrapperFactory : SimPe.Interfaces.Plugin.AbstractWrapperFactory //This Interface allows your Plugin to offer packed File Wrappers
+	public class FamiuWrapperFactory : Interfaces.Plugin.AbstractWrapperFactory //This Interface allows your Plugin to offer packed File Wrappers
 	{
 		#region AbstractWrapperFactory Member
 		/// <summary>
 		/// Returns a List of all available Plugins in this Package
 		/// </summary>
 		/// <returns>A List of all provided Plugins (=FileType Wrappers)</returns>
-		public override SimPe.Interfaces.IWrapper[] KnownWrappers
+		public override IWrapper[] KnownWrappers
 		{
 			get
 			{

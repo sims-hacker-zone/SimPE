@@ -86,14 +86,14 @@ namespace SimPe.Plugin.Downloads
 			}
 		}
 
-		public void AddTypeHandler(SimPe.Cache.PackageType type, Type handler)
+		public void AddTypeHandler(Cache.PackageType type, Type handler)
 		{
 			subreg[type] = handler;
 		}
 
 		public ITypeHandler LoadTypeHandler(
-			SimPe.Cache.PackageType type,
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Cache.PackageType type,
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
 			Type t = subreg[type] as Type;

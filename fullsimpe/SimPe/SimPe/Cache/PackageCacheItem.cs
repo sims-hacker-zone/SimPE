@@ -200,7 +200,7 @@ namespace SimPe.Cache
 			}
 		}
 
-		internal virtual void Load(System.IO.BinaryReader reader)
+		internal virtual void Load(BinaryReader reader)
 		{
 			State = (TriState)reader.ReadByte();
 			Uid = reader.ReadUInt32();
@@ -213,7 +213,7 @@ namespace SimPe.Cache
 			}
 		}
 
-		internal virtual void Save(System.IO.BinaryWriter writer)
+		internal virtual void Save(BinaryWriter writer)
 		{
 			writer.Write((byte)State);
 			writer.Write(Uid);
@@ -386,7 +386,7 @@ namespace SimPe.Cache
 
 		#region ICacheItem Member
 
-		public void Load(System.IO.BinaryReader reader)
+		public void Load(BinaryReader reader)
 		{
 			States.Clear();
 			version = reader.ReadByte();
@@ -427,7 +427,7 @@ namespace SimPe.Cache
 			}
 		}
 
-		public void Save(System.IO.BinaryWriter writer)
+		public void Save(BinaryWriter writer)
 		{
 			version = VERSION;
 			writer.Write(version);

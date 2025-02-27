@@ -22,9 +22,9 @@ using System.Collections;
 namespace SimPe.Plugin.Collections
 {
 	/// <summary>
-	/// Collection of <see cref="SimPe.Plugin.NgbhSlot"/> Objects
+	/// Collection of <see cref="NgbhSlot"/> Objects
 	/// </summary>
-	public class NgbhSlots : System.IDisposable, System.Collections.IEnumerable
+	public class NgbhSlots : System.IDisposable, IEnumerable
 	{
 		ArrayList list = new ArrayList();
 		Ngbh parent;

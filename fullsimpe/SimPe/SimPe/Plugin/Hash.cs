@@ -25,16 +25,16 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for Hash.
 	/// </summary>
-	public class Hash : System.Windows.Forms.Form
+	public class Hash : Form
 	{
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.TextBox tbtext;
-		private System.Windows.Forms.TextBox tbhash;
-		private System.Windows.Forms.RadioButton rb24;
-		private System.Windows.Forms.RadioButton rb32;
-		private System.Windows.Forms.RadioButton radioButton1;
-		private System.Windows.Forms.Panel panel1;
+		private Label label1;
+		private Label label4;
+		private TextBox tbtext;
+		private TextBox tbhash;
+		private RadioButton rb24;
+		private RadioButton rb32;
+		private RadioButton radioButton1;
+		private Panel panel1;
 		private Button btcopy;
 		private CheckBox cbTrim;
 		private Label lbnamer;
@@ -76,17 +76,17 @@ namespace SimPe.Plugin
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(Hash));
-			this.label1 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.tbtext = new System.Windows.Forms.TextBox();
-			this.tbhash = new System.Windows.Forms.TextBox();
-			this.rb24 = new System.Windows.Forms.RadioButton();
-			this.rb32 = new System.Windows.Forms.RadioButton();
-			this.radioButton1 = new System.Windows.Forms.RadioButton();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.btcopy = new System.Windows.Forms.Button();
-			this.cbTrim = new System.Windows.Forms.CheckBox();
-			this.lbnamer = new System.Windows.Forms.Label();
+			this.label1 = new Label();
+			this.label4 = new Label();
+			this.tbtext = new TextBox();
+			this.tbhash = new TextBox();
+			this.rb24 = new RadioButton();
+			this.rb32 = new RadioButton();
+			this.radioButton1 = new RadioButton();
+			this.panel1 = new Panel();
+			this.btcopy = new Button();
+			this.cbTrim = new CheckBox();
+			this.lbnamer = new Label();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			//
@@ -129,7 +129,7 @@ namespace SimPe.Plugin
 			// tbtext
 			//
 			this.tbtext.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -144,7 +144,7 @@ namespace SimPe.Plugin
 			this.tbtext.Size = new System.Drawing.Size(372, 21);
 			this.tbtext.TabIndex = 4;
 			this.tbtext.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.tbtext.TextChanged += new System.EventHandler(this.tbtext_TextChanged);
+			this.tbtext.TextChanged += new EventHandler(this.tbtext_TextChanged);
 			//
 			// tbhash
 			//
@@ -170,8 +170,8 @@ namespace SimPe.Plugin
 			this.rb24.TabStop = true;
 			this.rb24.Text = "CRC 24";
 			this.rb24.UseVisualStyleBackColor = false;
-			this.rb24.Click += new System.EventHandler(this.tbtext_TextChanged);
-			this.rb24.CheckedChanged += new System.EventHandler(
+			this.rb24.Click += new EventHandler(this.tbtext_TextChanged);
+			this.rb24.CheckedChanged += new EventHandler(
 				this.rb14_CheckedChanged
 			);
 			//
@@ -186,8 +186,8 @@ namespace SimPe.Plugin
 			this.rb32.TabIndex = 9;
 			this.rb32.Text = "CRC 32";
 			this.rb32.UseVisualStyleBackColor = false;
-			this.rb32.Click += new System.EventHandler(this.tbtext_TextChanged);
-			this.rb32.CheckedChanged += new System.EventHandler(
+			this.rb32.Click += new EventHandler(this.tbtext_TextChanged);
+			this.rb32.CheckedChanged += new EventHandler(
 				this.rb32_CheckedChanged
 			);
 			//
@@ -202,7 +202,7 @@ namespace SimPe.Plugin
 			this.radioButton1.TabIndex = 10;
 			this.radioButton1.Text = "GUID";
 			this.radioButton1.UseVisualStyleBackColor = false;
-			this.radioButton1.CheckedChanged += new System.EventHandler(
+			this.radioButton1.CheckedChanged += new EventHandler(
 				this.guid_CheckedChanged
 			);
 			//
@@ -240,7 +240,7 @@ namespace SimPe.Plugin
 			this.btcopy.TabIndex = 11;
 			this.btcopy.Text = "Copy";
 			this.btcopy.UseVisualStyleBackColor = true;
-			this.btcopy.Click += new System.EventHandler(this.btcopy_Click);
+			this.btcopy.Click += new EventHandler(this.btcopy_Click);
 			//
 			// cbTrim
 			//
@@ -253,7 +253,7 @@ namespace SimPe.Plugin
 			this.cbTrim.TabIndex = 12;
 			this.cbTrim.Text = "Use Lower Case Only";
 			this.cbTrim.UseVisualStyleBackColor = true;
-			this.cbTrim.CheckedChanged += new System.EventHandler(
+			this.cbTrim.CheckedChanged += new EventHandler(
 				this.cbTrim_CheckedChanged
 			);
 			//
@@ -310,7 +310,7 @@ namespace SimPe.Plugin
 			this.Show();
 		}
 
-		private void tbtext_TextChanged(object sender, System.EventArgs e)
+		private void tbtext_TextChanged(object sender, EventArgs e)
 		{
 			try
 			{
@@ -355,19 +355,19 @@ namespace SimPe.Plugin
 			catch (Exception) { }
 		}
 
-		private void rb32_CheckedChanged(object sender, System.EventArgs e)
+		private void rb32_CheckedChanged(object sender, EventArgs e)
 		{
 			tbtext.Enabled = cbTrim.Enabled = true;
 		}
 
-		private void guid_CheckedChanged(object sender, System.EventArgs e)
+		private void guid_CheckedChanged(object sender, EventArgs e)
 		{
 			tbtext.Enabled = cbTrim.Enabled = false;
 			lbnamer.Visible = false;
 			tbhash.Text = System.Guid.NewGuid().ToString();
 		}
 
-		private void rb14_CheckedChanged(object sender, System.EventArgs e)
+		private void rb14_CheckedChanged(object sender, EventArgs e)
 		{
 			tbtext.Enabled = cbTrim.Enabled = true;
 		}

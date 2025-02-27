@@ -28,29 +28,29 @@ namespace SimPe.Plugin.TabPage
 	public class DirectionalLight : System.Windows.Forms.TabPage
 	//System.Windows.Forms.UserControl
 	{
-		private System.Windows.Forms.GroupBox groupBox13;
-		internal System.Windows.Forms.TextBox tb_l_ver;
-		private System.Windows.Forms.Label label32;
-		internal System.Windows.Forms.TextBox tb_l_name;
-		private System.Windows.Forms.Label label34;
-		private System.Windows.Forms.Label label38;
-		internal System.Windows.Forms.TextBox tb_l_1;
-		internal System.Windows.Forms.TextBox tb_l_6;
-		internal System.Windows.Forms.Label label39;
-		internal System.Windows.Forms.TextBox tb_l_2;
-		private System.Windows.Forms.Label label40;
-		internal System.Windows.Forms.TextBox tb_l_3;
-		private System.Windows.Forms.Label label41;
-		internal System.Windows.Forms.TextBox tb_l_4;
-		private System.Windows.Forms.Label label42;
-		internal System.Windows.Forms.TextBox tb_l_5;
-		private System.Windows.Forms.Label label43;
-		internal System.Windows.Forms.TextBox tb_l_7;
-		internal System.Windows.Forms.Label label44;
-		internal System.Windows.Forms.TextBox tb_l_8;
-		internal System.Windows.Forms.Label label45;
-		internal System.Windows.Forms.TextBox tb_l_9;
-		internal System.Windows.Forms.Label label46;
+		private GroupBox groupBox13;
+		internal TextBox tb_l_ver;
+		private Label label32;
+		internal TextBox tb_l_name;
+		private Label label34;
+		private Label label38;
+		internal TextBox tb_l_1;
+		internal TextBox tb_l_6;
+		internal Label label39;
+		internal TextBox tb_l_2;
+		private Label label40;
+		internal TextBox tb_l_3;
+		private Label label41;
+		internal TextBox tb_l_4;
+		private Label label42;
+		internal TextBox tb_l_5;
+		private Label label43;
+		internal TextBox tb_l_7;
+		internal Label label44;
+		internal TextBox tb_l_8;
+		internal Label label45;
+		internal TextBox tb_l_9;
+		internal Label label46;
 
 		//private System.ComponentModel.IContainer components;
 
@@ -97,29 +97,29 @@ namespace SimPe.Plugin.TabPage
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.groupBox13 = new System.Windows.Forms.GroupBox();
-			this.tb_l_9 = new System.Windows.Forms.TextBox();
-			this.label46 = new System.Windows.Forms.Label();
-			this.tb_l_8 = new System.Windows.Forms.TextBox();
-			this.label45 = new System.Windows.Forms.Label();
-			this.tb_l_7 = new System.Windows.Forms.TextBox();
-			this.label44 = new System.Windows.Forms.Label();
-			this.tb_l_5 = new System.Windows.Forms.TextBox();
-			this.label43 = new System.Windows.Forms.Label();
-			this.tb_l_4 = new System.Windows.Forms.TextBox();
-			this.label42 = new System.Windows.Forms.Label();
-			this.tb_l_3 = new System.Windows.Forms.TextBox();
-			this.label41 = new System.Windows.Forms.Label();
-			this.tb_l_2 = new System.Windows.Forms.TextBox();
-			this.label40 = new System.Windows.Forms.Label();
-			this.tb_l_6 = new System.Windows.Forms.TextBox();
-			this.label39 = new System.Windows.Forms.Label();
-			this.tb_l_1 = new System.Windows.Forms.TextBox();
-			this.label38 = new System.Windows.Forms.Label();
-			this.tb_l_name = new System.Windows.Forms.TextBox();
-			this.label34 = new System.Windows.Forms.Label();
-			this.tb_l_ver = new System.Windows.Forms.TextBox();
-			this.label32 = new System.Windows.Forms.Label();
+			this.groupBox13 = new GroupBox();
+			this.tb_l_9 = new TextBox();
+			this.label46 = new Label();
+			this.tb_l_8 = new TextBox();
+			this.label45 = new Label();
+			this.tb_l_7 = new TextBox();
+			this.label44 = new Label();
+			this.tb_l_5 = new TextBox();
+			this.label43 = new Label();
+			this.tb_l_4 = new TextBox();
+			this.label42 = new Label();
+			this.tb_l_3 = new TextBox();
+			this.label41 = new Label();
+			this.tb_l_2 = new TextBox();
+			this.label40 = new Label();
+			this.tb_l_6 = new TextBox();
+			this.label39 = new Label();
+			this.tb_l_1 = new TextBox();
+			this.label38 = new Label();
+			this.tb_l_name = new TextBox();
+			this.label34 = new Label();
+			this.tb_l_ver = new TextBox();
+			this.label32 = new Label();
 			this.groupBox13.SuspendLayout();
 			this.SuspendLayout();
 			//
@@ -136,7 +136,7 @@ namespace SimPe.Plugin.TabPage
 			// groupBox13
 			//
 			this.groupBox13.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -196,7 +196,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_l_9.Size = new System.Drawing.Size(66, 21);
 			this.tb_l_9.TabIndex = 44;
 			this.tb_l_9.Text = "0";
-			this.tb_l_9.TextChanged += new System.EventHandler(this.LSettingsChanged);
+			this.tb_l_9.TextChanged += new EventHandler(this.LSettingsChanged);
 			//
 			// label46
 			//
@@ -228,7 +228,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_l_8.Size = new System.Drawing.Size(66, 21);
 			this.tb_l_8.TabIndex = 42;
 			this.tb_l_8.Text = "0";
-			this.tb_l_8.TextChanged += new System.EventHandler(this.LSettingsChanged);
+			this.tb_l_8.TextChanged += new EventHandler(this.LSettingsChanged);
 			//
 			// label45
 			//
@@ -260,7 +260,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_l_7.Size = new System.Drawing.Size(66, 21);
 			this.tb_l_7.TabIndex = 40;
 			this.tb_l_7.Text = "0";
-			this.tb_l_7.TextChanged += new System.EventHandler(this.LSettingsChanged);
+			this.tb_l_7.TextChanged += new EventHandler(this.LSettingsChanged);
 			//
 			// label44
 			//
@@ -292,7 +292,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_l_5.Size = new System.Drawing.Size(66, 21);
 			this.tb_l_5.TabIndex = 38;
 			this.tb_l_5.Text = "0";
-			this.tb_l_5.TextChanged += new System.EventHandler(this.LSettingsChanged);
+			this.tb_l_5.TextChanged += new EventHandler(this.LSettingsChanged);
 			//
 			// label43
 			//
@@ -324,7 +324,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_l_4.Size = new System.Drawing.Size(66, 21);
 			this.tb_l_4.TabIndex = 36;
 			this.tb_l_4.Text = "0";
-			this.tb_l_4.TextChanged += new System.EventHandler(this.LSettingsChanged);
+			this.tb_l_4.TextChanged += new EventHandler(this.LSettingsChanged);
 			//
 			// label42
 			//
@@ -356,7 +356,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_l_3.Size = new System.Drawing.Size(66, 21);
 			this.tb_l_3.TabIndex = 34;
 			this.tb_l_3.Text = "0";
-			this.tb_l_3.TextChanged += new System.EventHandler(this.LSettingsChanged);
+			this.tb_l_3.TextChanged += new EventHandler(this.LSettingsChanged);
 			//
 			// label41
 			//
@@ -388,7 +388,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_l_2.Size = new System.Drawing.Size(66, 21);
 			this.tb_l_2.TabIndex = 32;
 			this.tb_l_2.Text = "0";
-			this.tb_l_2.TextChanged += new System.EventHandler(this.LSettingsChanged);
+			this.tb_l_2.TextChanged += new EventHandler(this.LSettingsChanged);
 			//
 			// label40
 			//
@@ -420,7 +420,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_l_6.Size = new System.Drawing.Size(66, 21);
 			this.tb_l_6.TabIndex = 30;
 			this.tb_l_6.Text = "0";
-			this.tb_l_6.TextChanged += new System.EventHandler(this.LSettingsChanged);
+			this.tb_l_6.TextChanged += new EventHandler(this.LSettingsChanged);
 			//
 			// label39
 			//
@@ -452,7 +452,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_l_1.Size = new System.Drawing.Size(66, 21);
 			this.tb_l_1.TabIndex = 28;
 			this.tb_l_1.Text = "0";
-			this.tb_l_1.TextChanged += new System.EventHandler(this.LSettingsChanged);
+			this.tb_l_1.TextChanged += new EventHandler(this.LSettingsChanged);
 			//
 			// label38
 			//
@@ -473,7 +473,7 @@ namespace SimPe.Plugin.TabPage
 			// tb_l_name
 			//
 			this.tb_l_name.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -494,7 +494,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_l_name.Size = new System.Drawing.Size(752, 21);
 			this.tb_l_name.TabIndex = 26;
 			this.tb_l_name.Text = "";
-			this.tb_l_name.TextChanged += new System.EventHandler(
+			this.tb_l_name.TextChanged += new EventHandler(
 				this.LSettingsChanged
 			);
 			//
@@ -528,7 +528,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_l_ver.Size = new System.Drawing.Size(88, 21);
 			this.tb_l_ver.TabIndex = 24;
 			this.tb_l_ver.Text = "0x00000000";
-			this.tb_l_ver.TextChanged += new System.EventHandler(this.LSettingsChanged);
+			this.tb_l_ver.TextChanged += new EventHandler(this.LSettingsChanged);
 			//
 			// label32
 			//
@@ -557,7 +557,7 @@ namespace SimPe.Plugin.TabPage
 
 
 
-		private void LSettingsChanged(object sender, System.EventArgs e)
+		private void LSettingsChanged(object sender, EventArgs e)
 		{
 			if (this.Tag == null)
 			{
@@ -566,7 +566,7 @@ namespace SimPe.Plugin.TabPage
 
 			try
 			{
-				SimPe.Plugin.DirectionalLight dl = (SimPe.Plugin.DirectionalLight)Tag;
+				Plugin.DirectionalLight dl = (Plugin.DirectionalLight)Tag;
 
 				dl.Version = Convert.ToUInt32(tb_l_ver.Text, 16);
 				dl.Name = tb_l_name.Text;

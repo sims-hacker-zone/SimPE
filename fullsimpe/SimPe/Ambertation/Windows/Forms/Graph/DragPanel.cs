@@ -31,7 +31,7 @@ namespace Ambertation.Windows.Forms.Graph
 	{
 		public DragPanel()
 		{
-			fnt = new System.Drawing.Font(
+			fnt = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
@@ -124,11 +124,11 @@ namespace Ambertation.Windows.Forms.Graph
 
 			if (e.Clicks == 1 && this.Click != null)
 			{
-				Click(this, new System.EventArgs());
+				Click(this, new EventArgs());
 			}
 			else if (e.Clicks == 2 && this.DoubleClick != null)
 			{
-				DoubleClick(this, new System.EventArgs());
+				DoubleClick(this, new EventArgs());
 				return true;
 			}
 			else if (MouseDown != null)
@@ -215,11 +215,11 @@ namespace Ambertation.Windows.Forms.Graph
 		#endregion
 
 		#region Events
-		public event System.Windows.Forms.MouseEventHandler MouseMove;
-		public event System.Windows.Forms.MouseEventHandler MouseUp;
-		public event System.Windows.Forms.MouseEventHandler MouseDown;
-		public event System.EventHandler DoubleClick;
-		public event System.EventHandler Click;
+		public event MouseEventHandler MouseMove;
+		public event MouseEventHandler MouseUp;
+		public event MouseEventHandler MouseDown;
+		public event EventHandler DoubleClick;
+		public event EventHandler Click;
 		#endregion
 
 		internal void SetFocus(bool val)
@@ -229,11 +229,11 @@ namespace Ambertation.Windows.Forms.Graph
 				this.Focused = val;
 				if (Focused)
 				{
-					this.OnGotFocus(new System.EventArgs());
+					this.OnGotFocus(new EventArgs());
 				}
 				else
 				{
-					this.OnLostFocus(new System.EventArgs());
+					this.OnLostFocus(new EventArgs());
 				}
 			}
 		}

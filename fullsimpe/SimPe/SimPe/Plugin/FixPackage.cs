@@ -97,7 +97,7 @@ namespace SimPe.Plugin
 		{
 			if (System.IO.File.Exists(package))
 			{
-				SimPe.Packages.GeneratableFile pkg =
+				Packages.GeneratableFile pkg =
 					SimPe.Packages.GeneratableFile.LoadFromFile(package);
 
 				System.Collections.Hashtable map = RenameForm.GetNames(

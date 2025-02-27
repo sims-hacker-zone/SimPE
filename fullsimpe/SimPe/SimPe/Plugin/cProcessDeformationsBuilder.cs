@@ -26,7 +26,7 @@ namespace SimPe.Plugin
 	{
 		#region Attributes
 		GeometryBuilder gb;
-		SimPe.Interfaces.Files.IPackedFileDescriptor pfd;
+		Interfaces.Files.IPackedFileDescriptor pfd;
 
 		public short Unknown1
 		{
@@ -49,7 +49,7 @@ namespace SimPe.Plugin
 			gb = new GeometryBuilder(null);
 			BlockID = 0x5ce7e026;
 
-			pfd = new SimPe.Packages.PackedFileDescriptor();
+			pfd = new Packages.PackedFileDescriptor();
 		}
 
 		#region IRcolBlock Member
@@ -117,7 +117,7 @@ namespace SimPe.Plugin
 			{
 				if (tGenericRcol == null)
 				{
-					tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+					tGenericRcol = new TabPage.GenericRcol();
 				}
 
 				return tGenericRcol;
@@ -132,7 +132,7 @@ namespace SimPe.Plugin
 		{
 			if (tGenericRcol == null)
 			{
-				tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+				tGenericRcol = new TabPage.GenericRcol();
 			}
 
 			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(this.version);

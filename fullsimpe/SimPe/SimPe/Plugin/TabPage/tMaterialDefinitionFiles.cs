@@ -77,11 +77,11 @@ namespace SimPe.Plugin.TabPage
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.linkLabel4 = new System.Windows.Forms.LinkLabel();
-			this.linkLabel3 = new System.Windows.Forms.LinkLabel();
-			this.tblistfile = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.lbfl = new System.Windows.Forms.ListBox();
+			this.linkLabel4 = new LinkLabel();
+			this.linkLabel3 = new LinkLabel();
+			this.tblistfile = new TextBox();
+			this.label6 = new Label();
+			this.lbfl = new ListBox();
 			this.SuspendLayout();
 			//
 			// tMaterialDefinitionFiles
@@ -101,7 +101,7 @@ namespace SimPe.Plugin.TabPage
 			// linkLabel4
 			//
 			this.linkLabel4.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -123,12 +123,12 @@ namespace SimPe.Plugin.TabPage
 			this.linkLabel4.TabStop = true;
 			this.linkLabel4.Text = "add";
 			this.linkLabel4.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Add);
+				new LinkLabelLinkClickedEventHandler(this.Add);
 			//
 			// linkLabel3
 			//
 			this.linkLabel3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -150,12 +150,12 @@ namespace SimPe.Plugin.TabPage
 			this.linkLabel3.TabStop = true;
 			this.linkLabel3.Text = "delete";
 			this.linkLabel3.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Delete);
+				new LinkLabelLinkClickedEventHandler(this.Delete);
 			//
 			// tblistfile
 			//
 			this.tblistfile.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -176,7 +176,7 @@ namespace SimPe.Plugin.TabPage
 			this.tblistfile.Size = new System.Drawing.Size(296, 21);
 			this.tblistfile.TabIndex = 6;
 			this.tblistfile.Text = "";
-			this.tblistfile.TextChanged += new System.EventHandler(this.ChangeListFile);
+			this.tblistfile.TextChanged += new EventHandler(this.ChangeListFile);
 			//
 			// label6
 			//
@@ -197,7 +197,7 @@ namespace SimPe.Plugin.TabPage
 			// lbfl
 			//
 			this.lbfl.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -212,7 +212,7 @@ namespace SimPe.Plugin.TabPage
 			this.lbfl.Name = "lbfl";
 			this.lbfl.Size = new System.Drawing.Size(416, 224);
 			this.lbfl.TabIndex = 4;
-			this.lbfl.SelectedIndexChanged += new System.EventHandler(
+			this.lbfl.SelectedIndexChanged += new EventHandler(
 				this.SelectListFile
 			);
 			//
@@ -222,13 +222,13 @@ namespace SimPe.Plugin.TabPage
 		}
 		#endregion
 
-		internal System.Windows.Forms.ListBox lbfl;
-		private System.Windows.Forms.TextBox tblistfile;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.LinkLabel linkLabel3;
-		private System.Windows.Forms.LinkLabel linkLabel4;
+		internal ListBox lbfl;
+		private TextBox tblistfile;
+		private Label label6;
+		private LinkLabel linkLabel3;
+		private LinkLabel linkLabel4;
 
-		private void SelectListFile(object sender, System.EventArgs e)
+		private void SelectListFile(object sender, EventArgs e)
 		{
 			if (tblistfile.Tag != null)
 			{
@@ -252,7 +252,7 @@ namespace SimPe.Plugin.TabPage
 			}
 		}
 
-		private void ChangeListFile(object sender, System.EventArgs e)
+		private void ChangeListFile(object sender, EventArgs e)
 		{
 			if (this.Tag == null)
 			{
@@ -274,7 +274,7 @@ namespace SimPe.Plugin.TabPage
 				tblistfile.Tag = true;
 				lbfl.Items[lbfl.SelectedIndex] = tblistfile.Text;
 
-				SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
+				Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
 					this.Tag;
 				md.Listing[lbfl.SelectedIndex] = tblistfile.Text;
 
@@ -289,7 +289,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void Delete(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (this.Tag == null)
@@ -302,7 +302,7 @@ namespace SimPe.Plugin.TabPage
 				return;
 			}
 
-			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
+			Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
 				this.Tag;
 			md.Listing = (string[])
 				Helper.Delete(md.Listing, lbfl.Items[lbfl.SelectedIndex]);
@@ -314,7 +314,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void Add(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (this.Tag == null)
@@ -325,7 +325,7 @@ namespace SimPe.Plugin.TabPage
 			lbfl.Items.Add(tblistfile.Text);
 			lbfl.SelectedIndex = lbfl.Items.Count - 1;
 
-			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
+			Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
 				this.Tag;
 			md.Listing = (string[])Helper.Add(md.Listing, tblistfile.Text);
 

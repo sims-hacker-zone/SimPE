@@ -24,7 +24,7 @@ namespace SimPe.Plugin.Tool
 	/// <summary>
 	/// Zusammenfassung für ImportSemiTool.
 	/// </summary>
-	public class CreateListFromPackageTool : SimPe.Interfaces.IToolPlus
+	public class CreateListFromPackageTool : Interfaces.IToolPlus
 	{
 		internal CreateListFromPackageTool()
 		{
@@ -44,16 +44,16 @@ namespace SimPe.Plugin.Tool
 				return;
 			}
 
-			SimPe.Events.ResourceContainers c = new ResourceContainers();
+			ResourceContainers c = new ResourceContainers();
 			foreach (
-				SimPe.Interfaces.Files.IPackedFileDescriptor pfd in es.LoadedPackage
+				Interfaces.Files.IPackedFileDescriptor pfd in es.LoadedPackage
 					.Package
 					.Index
 			)
 			{
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii =
-					new SimPe.Plugin.FileIndexItem(pfd, es.LoadedPackage.Package);
-				SimPe.Events.ResourceContainer rc = new ResourceContainer(fii);
+				Interfaces.Scenegraph.IScenegraphFileIndexItem fii =
+					new FileIndexItem(pfd, es.LoadedPackage.Package);
+				ResourceContainer rc = new ResourceContainer(fii);
 				c.Add(rc);
 			}
 

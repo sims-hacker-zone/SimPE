@@ -34,20 +34,20 @@ namespace SimPe.Plugin
 		#region ITool Member
 
 		public bool IsEnabled(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile package
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile package
 		)
 		{
 			return (SimPe.PathProvider.Global.EPInstalled >= 0x2);
 		}
 
-		public SimPe.Interfaces.Plugin.IToolResult ShowDialog(
-			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			ref SimPe.Interfaces.Files.IPackageFile package
+		public Interfaces.Plugin.IToolResult ShowDialog(
+			ref Interfaces.Files.IPackedFileDescriptor pfd,
+			ref Interfaces.Files.IPackageFile package
 		)
 		{
 			package = SimPe.ObjLuaLoader.VirtualPackage;
-			return new SimPe.Plugin.ToolResult(false, true);
+			return new ToolResult(false, true);
 		}
 
 		#endregion

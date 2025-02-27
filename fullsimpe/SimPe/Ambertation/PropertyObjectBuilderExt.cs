@@ -132,7 +132,7 @@ else if (value.GetType()==typeof(ushort))
 						}
 						else if (
 							Type.GetInterface("Ambertation.IPropertyClass")
-							== typeof(Ambertation.IPropertyClass)
+							== typeof(IPropertyClass)
 						)
 						{
 							prop = System.Activator.CreateInstance(

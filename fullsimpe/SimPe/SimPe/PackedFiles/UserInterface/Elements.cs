@@ -28,95 +28,95 @@ namespace SimPe.PackedFiles.UserInterface
 	/// <summary>
 	/// Summary description for Elements.
 	/// </summary>
-	internal class Elements : System.Windows.Forms.Form
+	internal class Elements : Form
 	{
-		private System.Windows.Forms.Panel panel2;
-		internal System.Windows.Forms.PictureBox pb;
-		internal System.Windows.Forms.Panel JpegPanel;
-		internal System.Windows.Forms.Panel xmlPanel;
-		private System.Windows.Forms.Panel panel3;
-		internal System.Windows.Forms.RichTextBox rtb;
+		private Panel panel2;
+		internal PictureBox pb;
+		internal Panel JpegPanel;
+		internal Panel xmlPanel;
+		private Panel panel3;
+		internal RichTextBox rtb;
 		private System.ComponentModel.IContainer components;
-		internal System.Windows.Forms.TextBox tbsimid;
-		private System.Windows.Forms.Label label8;
-		internal System.Windows.Forms.Panel objdPanel;
-		internal System.Windows.Forms.TextBox tbsimname;
-		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.TabControl tabControl1;
-		private System.Windows.Forms.TabPage tabPage1;
-		internal System.Windows.Forms.Panel famiPanel;
-		internal System.Windows.Forms.TextBox tblotinst;
-		internal System.Windows.Forms.Label label15;
-		private System.Windows.Forms.Button llFamiDeleteSim;
-		private System.Windows.Forms.Button llFamiAddSim;
-		internal System.Windows.Forms.Button btOpenHistory;
-		internal System.Windows.Forms.PictureBox pbImage;
-		internal System.Windows.Forms.ComboBox cbsims;
-		internal System.Windows.Forms.ListBox lbmembers;
-		internal System.Windows.Forms.TextBox tbname;
-		private System.Windows.Forms.Label label6;
-		internal System.Windows.Forms.TextBox tbfamily;
-		internal System.Windows.Forms.TextBox tbmoney;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.Label lbnotiss;
-		private System.Windows.Forms.Label label4;
-		internal System.Windows.Forms.Label label3;
-		internal System.Windows.Forms.Panel panel4;
-		private System.Windows.Forms.TabPage tabPage3;
-		internal System.Windows.Forms.Panel realPanel;
-		private System.Windows.Forms.Panel panel7;
-		internal System.Windows.Forms.TextBox tblongterm;
-		internal System.Windows.Forms.TextBox tbshortterm;
-		private System.Windows.Forms.Label label57;
-		private System.Windows.Forms.Label label58;
-		private System.Windows.Forms.GroupBox gbrelation;
-		internal System.Windows.Forms.CheckBox cbmarried;
-		internal System.Windows.Forms.CheckBox cbengaged;
-		internal System.Windows.Forms.CheckBox cbsteady;
-		internal System.Windows.Forms.CheckBox cblove;
-		internal System.Windows.Forms.CheckBox cbcrush;
-		internal System.Windows.Forms.CheckBox cbenemy;
-		internal System.Windows.Forms.CheckBox cbbuddie;
-		internal System.Windows.Forms.CheckBox cbfriend;
-		private System.Windows.Forms.TabPage tabPage4;
-		private System.Windows.Forms.Label label64;
-		private System.Windows.Forms.Panel panel8;
-		internal System.Windows.Forms.Panel familytiePanel;
-		internal System.Windows.Forms.ComboBox cbtiesims;
-		private System.Windows.Forms.GroupBox gbties;
-		internal System.Windows.Forms.ComboBox cbtietype;
-		internal System.Windows.Forms.Button btdeletetie;
-		internal System.Windows.Forms.Button btaddtie;
-		internal System.Windows.Forms.ListBox lbties;
-		internal System.Windows.Forms.ComboBox cballtieablesims;
-		private System.Windows.Forms.LinkLabel llcommitties;
-		internal System.Windows.Forms.Button btnewtie;
-		internal System.Windows.Forms.TextBox tblottype;
-		private System.Windows.Forms.Label label65;
-		private System.Windows.Forms.GroupBox gbelements;
-		internal System.Windows.Forms.Panel pnelements;
-		internal System.Windows.Forms.Label lbtypename;
-		internal System.Windows.Forms.CheckBox cbfamily;
-		internal System.Windows.Forms.CheckBox cbbest;
-		internal System.Windows.Forms.ComboBox cbfamtype;
-		private System.Windows.Forms.Label label91;
-		internal System.Windows.Forms.TextBox tbflag;
-		internal System.Windows.Forms.TextBox tbalbum;
-		private System.Windows.Forms.Label label93;
-		internal System.Windows.Forms.TextBox tborgguid;
-		internal System.Windows.Forms.TextBox tbproxguid;
-		private System.Windows.Forms.Label label97;
-		internal System.Windows.Forms.ToolTip toolTip1;
-		private System.Windows.Forms.Label label63;
-		private System.Windows.Forms.GroupBox groupBox4;
-		private System.Windows.Forms.CheckBox cbphone;
-		private System.Windows.Forms.CheckBox cbbaby;
-		private System.Windows.Forms.CheckBox cbcomputer;
-		private System.Windows.Forms.CheckBox cblot;
-		private System.Windows.Forms.CheckBox cbupdate;
-		internal System.Windows.Forms.TextBox tbsubhood;
-		private System.Windows.Forms.Label label89;
-		private System.Windows.Forms.Button btPicExport;
+		internal TextBox tbsimid;
+		private Label label8;
+		internal Panel objdPanel;
+		internal TextBox tbsimname;
+		private Label label9;
+		private TabControl tabControl1;
+		private TabPage tabPage1;
+		internal Panel famiPanel;
+		internal TextBox tblotinst;
+		internal Label label15;
+		private Button llFamiDeleteSim;
+		private Button llFamiAddSim;
+		internal Button btOpenHistory;
+		internal PictureBox pbImage;
+		internal ComboBox cbsims;
+		internal ListBox lbmembers;
+		internal TextBox tbname;
+		private Label label6;
+		internal TextBox tbfamily;
+		internal TextBox tbmoney;
+		private Label label5;
+		private Label lbnotiss;
+		private Label label4;
+		internal Label label3;
+		internal Panel panel4;
+		private TabPage tabPage3;
+		internal Panel realPanel;
+		private Panel panel7;
+		internal TextBox tblongterm;
+		internal TextBox tbshortterm;
+		private Label label57;
+		private Label label58;
+		private GroupBox gbrelation;
+		internal CheckBox cbmarried;
+		internal CheckBox cbengaged;
+		internal CheckBox cbsteady;
+		internal CheckBox cblove;
+		internal CheckBox cbcrush;
+		internal CheckBox cbenemy;
+		internal CheckBox cbbuddie;
+		internal CheckBox cbfriend;
+		private TabPage tabPage4;
+		private Label label64;
+		private Panel panel8;
+		internal Panel familytiePanel;
+		internal ComboBox cbtiesims;
+		private GroupBox gbties;
+		internal ComboBox cbtietype;
+		internal Button btdeletetie;
+		internal Button btaddtie;
+		internal ListBox lbties;
+		internal ComboBox cballtieablesims;
+		private LinkLabel llcommitties;
+		internal Button btnewtie;
+		internal TextBox tblottype;
+		private Label label65;
+		private GroupBox gbelements;
+		internal Panel pnelements;
+		internal Label lbtypename;
+		internal CheckBox cbfamily;
+		internal CheckBox cbbest;
+		internal ComboBox cbfamtype;
+		private Label label91;
+		internal TextBox tbflag;
+		internal TextBox tbalbum;
+		private Label label93;
+		internal TextBox tborgguid;
+		internal TextBox tbproxguid;
+		private Label label97;
+		internal ToolTip toolTip1;
+		private Label label63;
+		private GroupBox groupBox4;
+		private CheckBox cbphone;
+		private CheckBox cbbaby;
+		private CheckBox cbcomputer;
+		private CheckBox cblot;
+		private CheckBox cbupdate;
+		internal TextBox tbsubhood;
+		private Label label89;
+		private Button btPicExport;
 		internal TextBox tbvac;
 		internal Label label7;
 		internal GroupBox gbCastaway;
@@ -133,9 +133,9 @@ namespace SimPe.PackedFiles.UserInterface
 		internal CheckBox cbplatonic;
 		internal CheckBox cbBFF;
 		internal CheckBox cbsecret;
-		private System.Windows.Forms.Panel panel6;
+		private Panel panel6;
 
-		internal SimPe.Interfaces.Plugin.IFileWrapperSaveExtension wrapper = null;
+		internal Interfaces.Plugin.IFileWrapperSaveExtension wrapper = null;
 
 		public Elements()
 		{
@@ -191,109 +191,109 @@ namespace SimPe.PackedFiles.UserInterface
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(Elements));
-			this.JpegPanel = new System.Windows.Forms.Panel();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.btPicExport = new System.Windows.Forms.Button();
-			this.pb = new System.Windows.Forms.PictureBox();
-			this.xmlPanel = new System.Windows.Forms.Panel();
-			this.rtb = new System.Windows.Forms.RichTextBox();
-			this.panel3 = new System.Windows.Forms.Panel();
-			this.objdPanel = new System.Windows.Forms.Panel();
-			this.cbupdate = new System.Windows.Forms.CheckBox();
-			this.label63 = new System.Windows.Forms.Label();
-			this.tbproxguid = new System.Windows.Forms.TextBox();
-			this.label97 = new System.Windows.Forms.Label();
-			this.tborgguid = new System.Windows.Forms.TextBox();
-			this.lbtypename = new System.Windows.Forms.Label();
-			this.gbelements = new System.Windows.Forms.GroupBox();
-			this.pnelements = new System.Windows.Forms.Panel();
-			this.tblottype = new System.Windows.Forms.TextBox();
-			this.label65 = new System.Windows.Forms.Label();
-			this.tbsimname = new System.Windows.Forms.TextBox();
-			this.label9 = new System.Windows.Forms.Label();
-			this.tbsimid = new System.Windows.Forms.TextBox();
-			this.label8 = new System.Windows.Forms.Label();
-			this.panel6 = new System.Windows.Forms.Panel();
-			this.tabControl1 = new System.Windows.Forms.TabControl();
-			this.tabPage4 = new System.Windows.Forms.TabPage();
-			this.familytiePanel = new System.Windows.Forms.Panel();
-			this.gbties = new System.Windows.Forms.GroupBox();
-			this.btnewtie = new System.Windows.Forms.Button();
-			this.cballtieablesims = new System.Windows.Forms.ComboBox();
-			this.cbtietype = new System.Windows.Forms.ComboBox();
-			this.lbties = new System.Windows.Forms.ListBox();
-			this.btdeletetie = new System.Windows.Forms.Button();
-			this.btaddtie = new System.Windows.Forms.Button();
-			this.llcommitties = new System.Windows.Forms.LinkLabel();
-			this.cbtiesims = new System.Windows.Forms.ComboBox();
-			this.label64 = new System.Windows.Forms.Label();
-			this.panel8 = new System.Windows.Forms.Panel();
-			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.famiPanel = new System.Windows.Forms.Panel();
-			this.tbbmoney = new System.Windows.Forms.TextBox();
-			this.label16 = new System.Windows.Forms.Label();
-			this.tbblot = new System.Windows.Forms.TextBox();
-			this.label14 = new System.Windows.Forms.Label();
-			this.gbCastaway = new System.Windows.Forms.GroupBox();
-			this.tbcaunk = new System.Windows.Forms.TextBox();
-			this.label13 = new System.Windows.Forms.Label();
-			this.tbcares = new System.Windows.Forms.TextBox();
-			this.label11 = new System.Windows.Forms.Label();
-			this.tbcafood1 = new System.Windows.Forms.TextBox();
-			this.label10 = new System.Windows.Forms.Label();
-			this.tbvac = new System.Windows.Forms.TextBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.tbsubhood = new System.Windows.Forms.TextBox();
-			this.label89 = new System.Windows.Forms.Label();
-			this.groupBox4 = new System.Windows.Forms.GroupBox();
-			this.cbcomputer = new System.Windows.Forms.CheckBox();
-			this.cblot = new System.Windows.Forms.CheckBox();
-			this.cbbaby = new System.Windows.Forms.CheckBox();
-			this.cbphone = new System.Windows.Forms.CheckBox();
-			this.tbflag = new System.Windows.Forms.TextBox();
-			this.tbalbum = new System.Windows.Forms.TextBox();
-			this.label93 = new System.Windows.Forms.Label();
-			this.tblotinst = new System.Windows.Forms.TextBox();
-			this.llFamiDeleteSim = new System.Windows.Forms.Button();
-			this.llFamiAddSim = new System.Windows.Forms.Button();
-			this.btOpenHistory = new System.Windows.Forms.Button();
-			this.pbImage = new System.Windows.Forms.PictureBox();
-			this.cbsims = new System.Windows.Forms.ComboBox();
-			this.lbmembers = new System.Windows.Forms.ListBox();
-			this.tbname = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.tbfamily = new System.Windows.Forms.TextBox();
-			this.tbmoney = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.lbnotiss = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.panel4 = new System.Windows.Forms.Panel();
-			this.label15 = new System.Windows.Forms.Label();
-			this.tabPage3 = new System.Windows.Forms.TabPage();
-			this.realPanel = new System.Windows.Forms.Panel();
-			this.label91 = new System.Windows.Forms.Label();
-			this.cbfamtype = new System.Windows.Forms.ComboBox();
-			this.gbrelation = new System.Windows.Forms.GroupBox();
-			this.cbBFF = new System.Windows.Forms.CheckBox();
-			this.cbsecret = new System.Windows.Forms.CheckBox();
-			this.cbplatonic = new System.Windows.Forms.CheckBox();
-			this.cbbest = new System.Windows.Forms.CheckBox();
-			this.cbfamily = new System.Windows.Forms.CheckBox();
-			this.cbmarried = new System.Windows.Forms.CheckBox();
-			this.cbengaged = new System.Windows.Forms.CheckBox();
-			this.cbsteady = new System.Windows.Forms.CheckBox();
-			this.cblove = new System.Windows.Forms.CheckBox();
-			this.cbcrush = new System.Windows.Forms.CheckBox();
-			this.cbbuddie = new System.Windows.Forms.CheckBox();
-			this.cbfriend = new System.Windows.Forms.CheckBox();
-			this.cbenemy = new System.Windows.Forms.CheckBox();
-			this.tblongterm = new System.Windows.Forms.TextBox();
-			this.tbshortterm = new System.Windows.Forms.TextBox();
-			this.label57 = new System.Windows.Forms.Label();
-			this.label58 = new System.Windows.Forms.Label();
-			this.panel7 = new System.Windows.Forms.Panel();
-			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+			this.JpegPanel = new Panel();
+			this.panel2 = new Panel();
+			this.btPicExport = new Button();
+			this.pb = new PictureBox();
+			this.xmlPanel = new Panel();
+			this.rtb = new RichTextBox();
+			this.panel3 = new Panel();
+			this.objdPanel = new Panel();
+			this.cbupdate = new CheckBox();
+			this.label63 = new Label();
+			this.tbproxguid = new TextBox();
+			this.label97 = new Label();
+			this.tborgguid = new TextBox();
+			this.lbtypename = new Label();
+			this.gbelements = new GroupBox();
+			this.pnelements = new Panel();
+			this.tblottype = new TextBox();
+			this.label65 = new Label();
+			this.tbsimname = new TextBox();
+			this.label9 = new Label();
+			this.tbsimid = new TextBox();
+			this.label8 = new Label();
+			this.panel6 = new Panel();
+			this.tabControl1 = new TabControl();
+			this.tabPage4 = new TabPage();
+			this.familytiePanel = new Panel();
+			this.gbties = new GroupBox();
+			this.btnewtie = new Button();
+			this.cballtieablesims = new ComboBox();
+			this.cbtietype = new ComboBox();
+			this.lbties = new ListBox();
+			this.btdeletetie = new Button();
+			this.btaddtie = new Button();
+			this.llcommitties = new LinkLabel();
+			this.cbtiesims = new ComboBox();
+			this.label64 = new Label();
+			this.panel8 = new Panel();
+			this.tabPage1 = new TabPage();
+			this.famiPanel = new Panel();
+			this.tbbmoney = new TextBox();
+			this.label16 = new Label();
+			this.tbblot = new TextBox();
+			this.label14 = new Label();
+			this.gbCastaway = new GroupBox();
+			this.tbcaunk = new TextBox();
+			this.label13 = new Label();
+			this.tbcares = new TextBox();
+			this.label11 = new Label();
+			this.tbcafood1 = new TextBox();
+			this.label10 = new Label();
+			this.tbvac = new TextBox();
+			this.label7 = new Label();
+			this.tbsubhood = new TextBox();
+			this.label89 = new Label();
+			this.groupBox4 = new GroupBox();
+			this.cbcomputer = new CheckBox();
+			this.cblot = new CheckBox();
+			this.cbbaby = new CheckBox();
+			this.cbphone = new CheckBox();
+			this.tbflag = new TextBox();
+			this.tbalbum = new TextBox();
+			this.label93 = new Label();
+			this.tblotinst = new TextBox();
+			this.llFamiDeleteSim = new Button();
+			this.llFamiAddSim = new Button();
+			this.btOpenHistory = new Button();
+			this.pbImage = new PictureBox();
+			this.cbsims = new ComboBox();
+			this.lbmembers = new ListBox();
+			this.tbname = new TextBox();
+			this.label6 = new Label();
+			this.tbfamily = new TextBox();
+			this.tbmoney = new TextBox();
+			this.label5 = new Label();
+			this.lbnotiss = new Label();
+			this.label4 = new Label();
+			this.label3 = new Label();
+			this.panel4 = new Panel();
+			this.label15 = new Label();
+			this.tabPage3 = new TabPage();
+			this.realPanel = new Panel();
+			this.label91 = new Label();
+			this.cbfamtype = new ComboBox();
+			this.gbrelation = new GroupBox();
+			this.cbBFF = new CheckBox();
+			this.cbsecret = new CheckBox();
+			this.cbplatonic = new CheckBox();
+			this.cbbest = new CheckBox();
+			this.cbfamily = new CheckBox();
+			this.cbmarried = new CheckBox();
+			this.cbengaged = new CheckBox();
+			this.cbsteady = new CheckBox();
+			this.cblove = new CheckBox();
+			this.cbcrush = new CheckBox();
+			this.cbbuddie = new CheckBox();
+			this.cbfriend = new CheckBox();
+			this.cbenemy = new CheckBox();
+			this.tblongterm = new TextBox();
+			this.tbshortterm = new TextBox();
+			this.label57 = new Label();
+			this.label58 = new Label();
+			this.panel7 = new Panel();
+			this.toolTip1 = new ToolTip(this.components);
 			this.JpegPanel.SuspendLayout();
 			this.panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
@@ -338,7 +338,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.btPicExport.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.btPicExport.Name = "btPicExport";
 			this.btPicExport.UseVisualStyleBackColor = false;
-			this.btPicExport.Click += new System.EventHandler(this.btPicExport_Click);
+			this.btPicExport.Click += new EventHandler(this.btPicExport_Click);
 			//
 			// pb
 			//
@@ -529,7 +529,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.btnewtie, "btnewtie");
 			this.btnewtie.Name = "btnewtie";
-			this.btnewtie.Click += new System.EventHandler(this.AddSimToTiesClick);
+			this.btnewtie.Click += new EventHandler(this.AddSimToTiesClick);
 			//
 			// cballtieablesims
 			//
@@ -540,7 +540,7 @@ namespace SimPe.PackedFiles.UserInterface
 				.ComboBoxStyle
 				.DropDownList;
 			this.cballtieablesims.Name = "cballtieablesims";
-			this.cballtieablesims.SelectedIndexChanged += new System.EventHandler(
+			this.cballtieablesims.SelectedIndexChanged += new EventHandler(
 				this.AllTieableSimsIndexChanged
 			);
 			//
@@ -558,7 +558,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.lbties, "lbties");
 			this.lbties.Name = "lbties";
-			this.lbties.SelectedIndexChanged += new System.EventHandler(
+			this.lbties.SelectedIndexChanged += new EventHandler(
 				this.TieIndexChanged
 			);
 			//
@@ -566,13 +566,13 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.btdeletetie, "btdeletetie");
 			this.btdeletetie.Name = "btdeletetie";
-			this.btdeletetie.Click += new System.EventHandler(this.DeleteTieClick);
+			this.btdeletetie.Click += new EventHandler(this.DeleteTieClick);
 			//
 			// btaddtie
 			//
 			resources.ApplyResources(this.btaddtie, "btaddtie");
 			this.btaddtie.Name = "btaddtie";
-			this.btaddtie.Click += new System.EventHandler(this.AddTieClick);
+			this.btaddtie.Click += new EventHandler(this.AddTieClick);
 			//
 			// llcommitties
 			//
@@ -581,7 +581,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.llcommitties.TabStop = true;
 			this.llcommitties.UseCompatibleTextRendering = true;
 			this.llcommitties.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.CommitSimTieClicked
 				);
 			//
@@ -594,7 +594,7 @@ namespace SimPe.PackedFiles.UserInterface
 				.ComboBoxStyle
 				.DropDownList;
 			this.cbtiesims.Name = "cbtiesims";
-			this.cbtiesims.SelectedIndexChanged += new System.EventHandler(
+			this.cbtiesims.SelectedIndexChanged += new EventHandler(
 				this.FamilyTieSimIndexChanged
 			);
 			//
@@ -660,7 +660,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.tbbmoney, "tbbmoney");
 			this.tbbmoney.Name = "tbbmoney";
-			this.tbbmoney.TextChanged += new System.EventHandler(this.ChangedBMoney);
+			this.tbbmoney.TextChanged += new EventHandler(this.ChangedBMoney);
 			//
 			// label16
 			//
@@ -696,7 +696,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.tbcaunk, "tbcaunk");
 			this.tbcaunk.Name = "tbcaunk";
-			this.tbcaunk.TextChanged += new System.EventHandler(this.ChangedBMoney);
+			this.tbcaunk.TextChanged += new EventHandler(this.ChangedBMoney);
 			//
 			// label13
 			//
@@ -717,7 +717,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.tbcafood1, "tbcafood1");
 			this.tbcafood1.Name = "tbcafood1";
-			this.tbcafood1.TextChanged += new System.EventHandler(this.ChangedMoney);
+			this.tbcafood1.TextChanged += new EventHandler(this.ChangedMoney);
 			//
 			// label10
 			//
@@ -762,31 +762,31 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.cbcomputer, "cbcomputer");
 			this.cbcomputer.Name = "cbcomputer";
-			this.cbcomputer.CheckedChanged += new System.EventHandler(this.ChangeFlags);
+			this.cbcomputer.CheckedChanged += new EventHandler(this.ChangeFlags);
 			//
 			// cblot
 			//
 			resources.ApplyResources(this.cblot, "cblot");
 			this.cblot.Name = "cblot";
-			this.cblot.CheckedChanged += new System.EventHandler(this.ChangeFlags);
+			this.cblot.CheckedChanged += new EventHandler(this.ChangeFlags);
 			//
 			// cbbaby
 			//
 			resources.ApplyResources(this.cbbaby, "cbbaby");
 			this.cbbaby.Name = "cbbaby";
-			this.cbbaby.CheckedChanged += new System.EventHandler(this.ChangeFlags);
+			this.cbbaby.CheckedChanged += new EventHandler(this.ChangeFlags);
 			//
 			// cbphone
 			//
 			resources.ApplyResources(this.cbphone, "cbphone");
 			this.cbphone.Name = "cbphone";
-			this.cbphone.CheckedChanged += new System.EventHandler(this.ChangeFlags);
+			this.cbphone.CheckedChanged += new EventHandler(this.ChangeFlags);
 			//
 			// tbflag
 			//
 			resources.ApplyResources(this.tbflag, "tbflag");
 			this.tbflag.Name = "tbflag";
-			this.tbflag.TextChanged += new System.EventHandler(this.FlagChanged);
+			this.tbflag.TextChanged += new EventHandler(this.FlagChanged);
 			//
 			// tbalbum
 			//
@@ -808,7 +808,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.llFamiDeleteSim, "llFamiDeleteSim");
 			this.llFamiDeleteSim.Name = "llFamiDeleteSim";
-			this.llFamiDeleteSim.Click += new System.EventHandler(
+			this.llFamiDeleteSim.Click += new EventHandler(
 				this.FamiDeleteSimClick
 			);
 			//
@@ -816,13 +816,13 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.llFamiAddSim, "llFamiAddSim");
 			this.llFamiAddSim.Name = "llFamiAddSim";
-			this.llFamiAddSim.Click += new System.EventHandler(this.FamiSimAddClick);
+			this.llFamiAddSim.Click += new EventHandler(this.FamiSimAddClick);
 			//
 			// btOpenHistory
 			//
 			resources.ApplyResources(this.btOpenHistory, "btOpenHistory");
 			this.btOpenHistory.Name = "btOpenHistory";
-			this.btOpenHistory.Click += new System.EventHandler(this.FamiOpenHistory);
+			this.btOpenHistory.Click += new EventHandler(this.FamiOpenHistory);
 			//
 			// pbImage
 			//
@@ -836,7 +836,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.cbsims.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			resources.ApplyResources(this.cbsims, "cbsims");
 			this.cbsims.Name = "cbsims";
-			this.cbsims.SelectedIndexChanged += new System.EventHandler(
+			this.cbsims.SelectedIndexChanged += new EventHandler(
 				this.SimSelectionChange
 			);
 			//
@@ -844,10 +844,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.lbmembers, "lbmembers");
 			this.lbmembers.Name = "lbmembers";
-			this.lbmembers.SelectedIndexChanged += new System.EventHandler(
+			this.lbmembers.SelectedIndexChanged += new EventHandler(
 				this.FamiMemberSelectionClick
 			);
-			this.lbmembers.DoubleClick += new System.EventHandler(
+			this.lbmembers.DoubleClick += new EventHandler(
 				this.lbmembers_DoubleClick
 			);
 			//
@@ -871,7 +871,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this.tbmoney, "tbmoney");
 			this.tbmoney.Name = "tbmoney";
-			this.tbmoney.TextChanged += new System.EventHandler(this.ChangedMoney);
+			this.tbmoney.TextChanged += new EventHandler(this.ChangedMoney);
 			//
 			// label5
 			//
@@ -910,7 +910,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.label15, "label15");
 			this.label15.BackColor = System.Drawing.Color.Transparent;
 			this.label15.Name = "label15";
-			this.label15.Click += new System.EventHandler(this.label15_Click);
+			this.label15.Click += new EventHandler(this.label15_Click);
 			//
 			// tabPage3
 			//
@@ -1100,14 +1100,14 @@ namespace SimPe.PackedFiles.UserInterface
 		}
 		#endregion
 
-		private void CommitFamiClick(object sender, System.EventArgs e)
+		private void CommitFamiClick(object sender, EventArgs e)
 		{
 			if (wrapper != null)
 			{
 				try
 				{
 					this.Cursor = Cursors.WaitCursor;
-					SimPe.PackedFiles.Wrapper.Fami fami = (Wrapper.Fami)wrapper;
+					Wrapper.Fami fami = (Wrapper.Fami)wrapper;
 					fami.Money = Convert.ToInt32(tbmoney.Text);
 					fami.Friends = Convert.ToUInt32(tbfamily.Text);
 					fami.Flags = Convert.ToUInt32(tbflag.Text, 16);
@@ -1148,8 +1148,8 @@ namespace SimPe.PackedFiles.UserInterface
 					uint[] members = new uint[lbmembers.Items.Count];
 					for (int i = 0; i < members.Length; i++)
 					{
-						members[i] = ((SimPe.Interfaces.IAlias)lbmembers.Items[i]).Id;
-						SimPe.PackedFiles.Wrapper.SDesc sdesc = fami.GetDescriptionFile(
+						members[i] = ((Interfaces.IAlias)lbmembers.Items[i]).Id;
+						Wrapper.SDesc sdesc = fami.GetDescriptionFile(
 							members[i]
 						);
 						sdesc.FamilyInstance = (ushort)fami.FileDescriptor.Instance;
@@ -1187,13 +1187,13 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		private void lbmembers_DoubleClick(object sender, System.EventArgs e)
+		private void lbmembers_DoubleClick(object sender, EventArgs e)
 		{
 			if (lbmembers.SelectedIndex >= 0)
 			{
-				SimPe.PackedFiles.Wrapper.Fami fami = (Wrapper.Fami)wrapper;
+				Wrapper.Fami fami = (Wrapper.Fami)wrapper;
 				Data.Alias a = (Data.Alias)lbmembers.SelectedItem;
-				SimPe.PackedFiles.Wrapper.SDesc sdsc = fami.GetDescriptionFile(a.Id);
+				Wrapper.SDesc sdsc = fami.GetDescriptionFile(a.Id);
 				if (sdsc == null)
 				{
 					return;
@@ -1210,13 +1210,13 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		private void CommitXmlClick(object sender, System.EventArgs e)
+		private void CommitXmlClick(object sender, EventArgs e)
 		{
 			if (wrapper != null)
 			{
 				try
 				{
-					SimPe.PackedFiles.Wrapper.Xml xml = (Wrapper.Xml)wrapper;
+					Wrapper.Xml xml = (Wrapper.Xml)wrapper;
 
 					xml.Text = "";
 					foreach (string clit in rtb.Lines)
@@ -1233,7 +1233,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		bool warnim = false;
 
-		private void FamiSimAddClick(object sender, System.EventArgs e)
+		private void FamiSimAddClick(object sender, EventArgs e)
 		{
 			if (cbsims.SelectedIndex >= 0)
 			{
@@ -1260,7 +1260,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		private void SimSelectionChange(object sender, System.EventArgs e)
+		private void SimSelectionChange(object sender, EventArgs e)
 		{
 			this.llFamiAddSim.Enabled = (
 				(((ComboBox)sender).SelectedIndex >= 0)
@@ -1268,14 +1268,14 @@ namespace SimPe.PackedFiles.UserInterface
 			);
 		}
 
-		private void FamiMemberSelectionClick(object sender, System.EventArgs e)
+		private void FamiMemberSelectionClick(object sender, EventArgs e)
 		{
 			this.llFamiDeleteSim.Enabled = (((ListBox)sender).SelectedIndex >= 0);
 			this.llFamiDeleteSim.Invalidate();
 			this.llFamiDeleteSim.Update();
 		}
 
-		private void FamiDeleteSimClick(object sender, System.EventArgs e)
+		private void FamiDeleteSimClick(object sender, EventArgs e)
 		{
 			if (lbmembers.SelectedIndex >= 0)
 			{
@@ -1293,11 +1293,11 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 		*/
-		private void FamiOpenHistory(object sender, System.EventArgs e)
+		private void FamiOpenHistory(object sender, EventArgs e)
 		{
 			try
 			{
-				SimPe.PackedFiles.Wrapper.Fami fami = (Wrapper.Fami)wrapper;
+				Wrapper.Fami fami = (Wrapper.Fami)wrapper;
 				Interfaces.Files.IPackedFileDescriptor pfd = fami.Package.NewDescriptor(
 					0x46414D68,
 					fami.FileDescriptor.SubType,
@@ -1429,7 +1429,7 @@ namespace SimPe.PackedFiles.UserInterface
 		#endregion
 		*/
 		#region Family Ties
-		private void FamilyTieSimIndexChanged(object sender, System.EventArgs e)
+		private void FamilyTieSimIndexChanged(object sender, EventArgs e)
 		{
 			this.btdeletetie.Enabled = false;
 			if (this.cbtiesims.SelectedIndex < 0)
@@ -1446,7 +1446,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		private void AllTieableSimsIndexChanged(object sender, System.EventArgs e)
+		private void AllTieableSimsIndexChanged(object sender, EventArgs e)
 		{
 			this.btaddtie.Enabled = false;
 			this.btnewtie.Enabled = false;
@@ -1464,7 +1464,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.btaddtie.Enabled = true;
 		}
 
-		private void DeleteTieClick(object sender, System.EventArgs e)
+		private void DeleteTieClick(object sender, EventArgs e)
 		{
 			this.btaddtie.Enabled = false;
 			if (this.lbties.SelectedIndex < 0)
@@ -1475,7 +1475,7 @@ namespace SimPe.PackedFiles.UserInterface
 			lbties.Items.Remove(lbties.Items[lbties.SelectedIndex]);
 		}
 
-		private void AddTieClick(object sender, System.EventArgs e)
+		private void AddTieClick(object sender, EventArgs e)
 		{
 			if (this.cballtieablesims.SelectedIndex < 0)
 			{
@@ -1489,7 +1489,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			try
 			{
-				SimPe.PackedFiles.Wrapper.FamilyTies famt = (Wrapper.FamilyTies)wrapper;
+				Wrapper.FamilyTies famt = (Wrapper.FamilyTies)wrapper;
 				Data.MetaData.FamilyTieTypes ftt = (Data.LocalizedFamilyTieTypes)
 					this.cbtietype.Items[cbtietype.SelectedIndex];
 				FamilyTieSim fts = (FamilyTieSim)
@@ -1508,7 +1508,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void CommitSimTieClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (this.cbtiesims.SelectedIndex < 0)
@@ -1520,7 +1520,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				try
 				{
-					SimPe.PackedFiles.Wrapper.FamilyTies famt =
+					Wrapper.FamilyTies famt =
 						(Wrapper.FamilyTies)wrapper;
 
 					FamilyTieSim fts = (FamilyTieSim)
@@ -1542,7 +1542,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		private void TieIndexChanged(object sender, System.EventArgs e)
+		private void TieIndexChanged(object sender, EventArgs e)
 		{
 			this.btdeletetie.Enabled = false;
 			if (this.lbties.SelectedIndex < 0)
@@ -1553,14 +1553,14 @@ namespace SimPe.PackedFiles.UserInterface
 			this.btdeletetie.Enabled = true;
 		}
 
-		private void CommitTieClick(object sender, System.EventArgs e)
+		private void CommitTieClick(object sender, EventArgs e)
 		{
 			CommitSimTieClicked(null, null);
 			if (wrapper != null)
 			{
 				try
 				{
-					SimPe.PackedFiles.Wrapper.FamilyTies famt =
+					Wrapper.FamilyTies famt =
 						(Wrapper.FamilyTies)wrapper;
 
 					FamilyTieSim[] sims = new FamilyTieSim[cbtiesims.Items.Count];
@@ -1582,7 +1582,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		private void AddSimToTiesClick(object sender, System.EventArgs e)
+		private void AddSimToTiesClick(object sender, EventArgs e)
 		{
 			if (this.cballtieablesims.SelectedIndex < 0)
 			{
@@ -1613,13 +1613,13 @@ namespace SimPe.PackedFiles.UserInterface
 
 		#region Relationships
 
-		private void RelationshipFileCommit(object sender, System.EventArgs e)
+		private void RelationshipFileCommit(object sender, EventArgs e)
 		{
 			if (wrapper != null)
 			{
 				try
 				{
-					SimPe.PackedFiles.Wrapper.SRel srel = (Wrapper.SRel)wrapper;
+					Wrapper.SRel srel = (Wrapper.SRel)wrapper;
 					srel.Shortterm = Convert.ToInt32(tbshortterm.Text);
 					srel.Longterm = Convert.ToInt32(tblongterm.Text);
 
@@ -1702,14 +1702,14 @@ namespace SimPe.PackedFiles.UserInterface
 		}
 		#endregion
 
-		private void CommitObjdClicked(object sender, System.EventArgs e)
+		private void CommitObjdClicked(object sender, EventArgs e)
 		{
 			if (wrapper != null)
 			{
 				try
 				{
 					this.Cursor = Cursors.WaitCursor;
-					SimPe.PackedFiles.Wrapper.Objd objd = (Wrapper.Objd)wrapper;
+					Wrapper.Objd objd = (Wrapper.Objd)wrapper;
 
 					foreach (Control c in pnelements.Controls)
 					{
@@ -1754,7 +1754,7 @@ namespace SimPe.PackedFiles.UserInterface
 			simnamechanged = true;
 		}
 		*/
-		private void FlagChanged(object sender, System.EventArgs e)
+		private void FlagChanged(object sender, EventArgs e)
 		{
 			if (tbflag.Tag != null)
 			{
@@ -1765,8 +1765,8 @@ namespace SimPe.PackedFiles.UserInterface
 			try
 			{
 				uint flag = Convert.ToUInt32(tbflag.Text, 16);
-				SimPe.PackedFiles.Wrapper.FamiFlags flags =
-					new SimPe.PackedFiles.Wrapper.FamiFlags((ushort)flag);
+				Wrapper.FamiFlags flags =
+					new Wrapper.FamiFlags((ushort)flag);
 
 				this.cbphone.Checked = flags.HasPhone;
 				this.cbcomputer.Checked = flags.HasComputer;
@@ -1780,7 +1780,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		private void ChangeFlags(object sender, System.EventArgs e)
+		private void ChangeFlags(object sender, EventArgs e)
 		{
 			if (tbflag.Tag != null)
 			{
@@ -1792,8 +1792,8 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				uint flag = Convert.ToUInt32(tbflag.Text, 16) & 0xffff0000;
 
-				SimPe.PackedFiles.Wrapper.FamiFlags flags =
-					new SimPe.PackedFiles.Wrapper.FamiFlags(0);
+				Wrapper.FamiFlags flags =
+					new Wrapper.FamiFlags(0);
 
 				flags.HasPhone = this.cbphone.Checked;
 				flags.HasComputer = this.cbcomputer.Checked;
@@ -1810,13 +1810,13 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		internal SimPe.Interfaces.Plugin.IFileWrapper picwrapper;
+		internal Interfaces.Plugin.IFileWrapper picwrapper;
 
-		private void btPicExport_Click(object sender, System.EventArgs e)
+		private void btPicExport_Click(object sender, EventArgs e)
 		{
-			SimPe.PackedFiles.Wrapper.Picture wrp =
-				(SimPe.PackedFiles.Wrapper.Picture)picwrapper;
-			System.Windows.Forms.SaveFileDialog sfd = new SaveFileDialog();
+			Wrapper.Picture wrp =
+				(Wrapper.Picture)picwrapper;
+			SaveFileDialog sfd = new SaveFileDialog();
 			sfd.Filter = "Image (*.png) | *.png";
 
 			if (sfd.ShowDialog() == DialogResult.OK)
@@ -1839,7 +1839,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			try
 			{
-				SimPe.PackedFiles.Wrapper.Fami fami = (Wrapper.Fami)wrapper;
+				Wrapper.Fami fami = (Wrapper.Fami)wrapper;
 				if (fami.LotInstance == 0)
 				{
 					return;
@@ -1871,7 +1871,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			intern = true;
-			SimPe.PackedFiles.Wrapper.Fami fami = (Wrapper.Fami)wrapper;
+			Wrapper.Fami fami = (Wrapper.Fami)wrapper;
 			TextBox tb = (TextBox)sender;
 			fami.Money = Helper.StringToInt32(tb.Text, fami.Money, 10);
 			fami.CastAwayFood = fami.Money;
@@ -1897,7 +1897,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			intern = true;
-			SimPe.PackedFiles.Wrapper.Fami fami = (Wrapper.Fami)wrapper;
+			Wrapper.Fami fami = (Wrapper.Fami)wrapper;
 			TextBox tb = (TextBox)sender;
 			fami.BusinessMoney = Helper.StringToInt32(tb.Text, fami.BusinessMoney, 10);
 			fami.CastAwayFoodDecay = fami.BusinessMoney;

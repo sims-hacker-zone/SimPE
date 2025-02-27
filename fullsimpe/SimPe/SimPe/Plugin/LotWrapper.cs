@@ -253,7 +253,7 @@ namespace SimPe.Plugin
 
 		#endregion
 
-		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
+		protected override string GetResourceName(Data.TypeAlias ta)
 		{
 			if (!this.Processed)
 			{

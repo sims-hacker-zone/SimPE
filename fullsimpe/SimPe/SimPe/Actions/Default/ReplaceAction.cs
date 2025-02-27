@@ -33,14 +33,14 @@ namespace SimPe.Actions.Default
 		/// </summary>
 		/// <param name="add">true if you want to add them lateron</param>
 		/// <returns></returns>
-		protected SimPe.Collections.PackedFileDescriptors LoadDescriptors(bool add)
+		protected Collections.PackedFileDescriptors LoadDescriptors(bool add)
 		{
 			System.Windows.Forms.OpenFileDialog ofd =
 				new System.Windows.Forms.OpenFileDialog();
 			if (!add)
 			{
 				ofd.Filter = ExtensionProvider.BuildFilterString(
-					new SimPe.ExtensionType[]
+					new ExtensionType[]
 					{
 						SimPe.ExtensionType.ExtractedFile,
 						SimPe.ExtensionType.ExtractedFileDescriptor,
@@ -51,7 +51,7 @@ namespace SimPe.Actions.Default
 			else
 			{
 				ofd.Filter = ExtensionProvider.BuildFilterString(
-					new SimPe.ExtensionType[]
+					new ExtensionType[]
 					{
 						SimPe.ExtensionType.ExtractedFileDescriptor,
 						SimPe.ExtensionType.ExtrackedPackageDescriptor,
@@ -67,19 +67,19 @@ namespace SimPe.Actions.Default
 			ofd.Multiselect = add;
 			if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 			{
-				SimPe.Collections.PackedFileDescriptors pfds =
+				Collections.PackedFileDescriptors pfds =
 					LoadedPackage.LoadDescriptorsFromDisk(ofd.FileNames);
 				return pfds;
 			}
 
-			return new SimPe.Collections.PackedFileDescriptors();
+			return new Collections.PackedFileDescriptors();
 		}
 
 		#region IToolAction Member
 
 		public override bool ChangeEnabledStateEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs es
+			Events.ResourceEventArgs es
 		)
 		{
 			bool res = base.ChangeEnabledStateEventHandler(sender, es);
@@ -88,7 +88,7 @@ namespace SimPe.Actions.Default
 
 		public override void ExecuteEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs es
+			Events.ResourceEventArgs es
 		)
 		{
 			if (!ChangeEnabledStateEventHandler(null, es))
@@ -96,10 +96,10 @@ namespace SimPe.Actions.Default
 				return;
 			}
 
-			SimPe.Collections.PackedFileDescriptors pfds = this.LoadDescriptors(false);
+			Collections.PackedFileDescriptors pfds = this.LoadDescriptors(false);
 			if (es.Count > 0)
 			{
-				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					if (pfd != null)
 					{

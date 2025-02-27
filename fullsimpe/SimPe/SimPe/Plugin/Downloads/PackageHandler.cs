@@ -3,16 +3,16 @@ namespace SimPe.Plugin.Downloads
 	/// <summary>
 	/// Summary description for TypedPackageHandler.
 	/// </summary>
-	public class PackageHandler : Downloads.IPackageHandler, System.IDisposable
+	public class PackageHandler : IPackageHandler, System.IDisposable
 	{
-		SimPe.Cache.PackageType type;
+		Cache.PackageType type;
 		string flname;
-		Downloads.ITypeHandler hnd;
+		ITypeHandler hnd;
 
 		public PackageHandler(string filename)
 			: this(SimPe.Packages.File.LoadFromFile(filename)) { }
 
-		public PackageHandler(SimPe.Interfaces.Files.IPackageFile pkg)
+		public PackageHandler(Interfaces.Files.IPackageFile pkg)
 		{
 			this.flname = pkg.SaveFileName;
 			type = SimPe.Cache.PackageType.Undefined;
@@ -35,7 +35,7 @@ namespace SimPe.Plugin.Downloads
 			LoadContent(pkg);
 		}
 
-		protected virtual void DeterminType(SimPe.Interfaces.Files.IPackageFile pkg)
+		protected virtual void DeterminType(Interfaces.Files.IPackageFile pkg)
 		{
 			if (
 				System.IO.File.Exists(
@@ -55,24 +55,24 @@ namespace SimPe.Plugin.Downloads
 		}
 
 		protected virtual void OnLoadContent(
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.Cache.PackageType type
+			Interfaces.Files.IPackageFile pkg,
+			Cache.PackageType type
 		)
 		{
 		}
 
-		protected virtual void OnReset(SimPe.Cache.PackageType type)
+		protected virtual void OnReset(Cache.PackageType type)
 		{
 		}
 
-		protected void LoadContent(SimPe.Interfaces.Files.IPackageFile pkg)
+		protected void LoadContent(Interfaces.Files.IPackageFile pkg)
 		{
 			hnd.LoadContent(type, pkg);
-			foreach (Downloads.IPackageInfo nfo in hnd.Objects)
+			foreach (IPackageInfo nfo in hnd.Objects)
 			{
-				if (nfo is Downloads.PackageInfo)
+				if (nfo is PackageInfo)
 				{
-					((Downloads.PackageInfo)nfo).Type = type;
+					((PackageInfo)nfo).Type = type;
 				}
 			}
 

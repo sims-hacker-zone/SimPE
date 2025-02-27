@@ -213,8 +213,8 @@ namespace SimPe
 				"*.simpe" + suffix
 			};
 
-			SimPe.Data.TypeAlias[] types = Helper.TGILoader.FileTypes;
-			foreach (SimPe.Data.TypeAlias type in types)
+			Data.TypeAlias[] types = Helper.TGILoader.FileTypes;
+			foreach (Data.TypeAlias type in types)
 			{
 				string ext = type.Extension.Trim().ToLower();
 				if (ext == "")

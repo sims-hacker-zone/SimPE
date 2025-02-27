@@ -27,11 +27,11 @@ namespace pjse.BhavOperandWizards.Wiz0x0020
 	/// <summary>
 	/// Summary description for StrBig.
 	/// </summary>
-	internal class UI : System.Windows.Forms.Form, iBhavOperandWizForm
+	internal class UI : Form, iBhavOperandWizForm
 	{
 		#region Form variables
 
-		internal System.Windows.Forms.Panel pnWiz0x001f;
+		internal Panel pnWiz0x001f;
 		private FlowLayoutPanel flowLayoutPanel1;
 		private Label label1;
 		private Panel pnObject;
@@ -185,22 +185,22 @@ namespace pjse.BhavOperandWizards.Wiz0x0020
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWiz0x001f = new System.Windows.Forms.Panel();
-			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-			this.label1 = new System.Windows.Forms.Label();
-			this.pnObject = new System.Windows.Forms.Panel();
-			this.cbAttrPicker = new System.Windows.Forms.CheckBox();
-			this.cbDecimal = new System.Windows.Forms.CheckBox();
-			this.cbPicker1 = new System.Windows.Forms.ComboBox();
-			this.tbVal1 = new System.Windows.Forms.TextBox();
-			this.cbDataOwner1 = new System.Windows.Forms.ComboBox();
-			this.ckbNID = new System.Windows.Forms.CheckBox();
-			this.ckbOrigGUID = new System.Windows.Forms.CheckBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-			this.tbGUID = new System.Windows.Forms.TextBox();
-			this.lbGUIDText = new System.Windows.Forms.Label();
-			this.ckbTemp01 = new System.Windows.Forms.CheckBox();
+			this.pnWiz0x001f = new Panel();
+			this.flowLayoutPanel1 = new FlowLayoutPanel();
+			this.label1 = new Label();
+			this.pnObject = new Panel();
+			this.cbAttrPicker = new CheckBox();
+			this.cbDecimal = new CheckBox();
+			this.cbPicker1 = new ComboBox();
+			this.tbVal1 = new TextBox();
+			this.cbDataOwner1 = new ComboBox();
+			this.ckbNID = new CheckBox();
+			this.ckbOrigGUID = new CheckBox();
+			this.label2 = new Label();
+			this.flowLayoutPanel2 = new FlowLayoutPanel();
+			this.tbGUID = new TextBox();
+			this.lbGUIDText = new Label();
+			this.ckbTemp01 = new CheckBox();
 			this.pnWiz0x001f.SuspendLayout();
 			this.flowLayoutPanel1.SuspendLayout();
 			this.pnObject.SuspendLayout();
@@ -307,8 +307,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0020
 			//
 			resources.ApplyResources(this.tbGUID, "tbGUID");
 			this.tbGUID.Name = "tbGUID";
-			this.tbGUID.TextChanged += new System.EventHandler(this.tbGUID_TextChanged);
-			this.tbGUID.Validated += new System.EventHandler(this.hex32_Validated);
+			this.tbGUID.TextChanged += new EventHandler(this.tbGUID_TextChanged);
+			this.tbGUID.Validated += new EventHandler(this.hex32_Validated);
 			this.tbGUID.Validating += new System.ComponentModel.CancelEventHandler(
 				this.hex32_Validating
 			);
@@ -377,7 +377,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0020
 			internalchg = origstate;
 		}
 
-		private void hex32_Validated(object sender, System.EventArgs e)
+		private void hex32_Validated(object sender, EventArgs e)
 		{
 			bool origstate = internalchg;
 			internalchg = true;
@@ -392,7 +392,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0020
 
 namespace pjse.BhavOperandWizards
 {
-	public class BhavOperandWiz0x0020 : pjse.ABhavOperandWiz
+	public class BhavOperandWiz0x0020 : ABhavOperandWiz
 	{
 		public BhavOperandWiz0x0020(Instruction i)
 			: base(i)

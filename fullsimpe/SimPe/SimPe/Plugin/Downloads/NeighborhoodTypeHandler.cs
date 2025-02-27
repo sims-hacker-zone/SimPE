@@ -9,15 +9,15 @@ namespace SimPe.Plugin.Downloads
 		{
 		}
 
-		protected override void SetName(SimPe.Interfaces.Files.IPackageFile pkg)
+		protected override void SetName(Interfaces.Files.IPackageFile pkg)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
 				Data.MetaData.CTSS_FILE
 			);
 
 			if (pfds.Length > 0)
 			{
-				SimPe.PackedFiles.Wrapper.StrItemList items =
+				PackedFiles.Wrapper.StrItemList items =
 					Downloads.DefaultTypeHandler.GetCtssItems(pfds[0], pkg);
 				if (items.Length > 0)
 				{
@@ -31,7 +31,7 @@ namespace SimPe.Plugin.Downloads
 			}
 		}
 
-		protected override void SetImage(SimPe.Interfaces.Files.IPackageFile pkg)
+		protected override void SetImage(Interfaces.Files.IPackageFile pkg)
 		{
 			SetImage(0x856DDBAC, pkg);
 			nfo.KnockoutThumbnail = true;

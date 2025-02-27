@@ -334,7 +334,7 @@ namespace SimPe
 			this.filename = outfilename;
 
 			//read XML File
-			System.Xml.XmlDocument xmlfile = new XmlDocument();
+			XmlDocument xmlfile = new XmlDocument();
 			xmlfile.Load(infilename);
 
 			//seek Root Node

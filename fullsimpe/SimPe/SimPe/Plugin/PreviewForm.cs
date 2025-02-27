@@ -6,7 +6,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for PreviewForm.
 	/// </summary>
-	public class PreviewForm : System.Windows.Forms.Form
+	public class PreviewForm : Form
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -94,7 +94,7 @@ namespace SimPe.Plugin
 
 		static void Exception()
 		{
-			throw new SimPe.Warning(
+			throw new Warning(
 				"This Item can't be previewed!",
 				"SimPe was unable to build the Scenegraph."
 			);
@@ -102,30 +102,30 @@ namespace SimPe.Plugin
 
 		public static Ambertation.Scenes.Scene BuildScene(
 			MmatWrapper mmat,
-			SimPe.Interfaces.Files.IPackageFile package
+			Interfaces.Files.IPackageFile package
 		)
 		{
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fii;
+			Interfaces.Scenegraph.IScenegraphFileIndex fii;
 			Ambertation.Scenes.Scene scn = BuildScene(out fii, mmat, package);
 			fii.Clear();
 			return scn;
 		}
 
 		public static Ambertation.Scenes.Scene BuildScene(
-			out SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fii,
+			out Interfaces.Scenegraph.IScenegraphFileIndex fii,
 			MmatWrapper mmat,
-			SimPe.Interfaces.Files.IPackageFile package
+			Interfaces.Files.IPackageFile package
 		)
 		{
-			SimPe.Interfaces.Files.IPackageFile npkg;
+			Interfaces.Files.IPackageFile npkg;
 			Ambertation.Scenes.Scene scn = BuildScene(out fii, mmat, package, out npkg);
 
 			if (npkg != null)
 			{
 				npkg.Close();
-				if (npkg is SimPe.Packages.GeneratableFile)
+				if (npkg is Packages.GeneratableFile)
 				{
-					((SimPe.Packages.GeneratableFile)npkg).Dispose();
+					((Packages.GeneratableFile)npkg).Dispose();
 				}
 			}
 			npkg = null;
@@ -134,20 +134,20 @@ namespace SimPe.Plugin
 		}
 
 		public static Ambertation.Scenes.Scene BuildScene(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fii,
+			Interfaces.Scenegraph.IScenegraphFileIndex fii,
 			MmatWrapper mmat,
-			SimPe.Interfaces.Files.IPackageFile package
+			Interfaces.Files.IPackageFile package
 		)
 		{
-			SimPe.Interfaces.Files.IPackageFile npkg;
+			Interfaces.Files.IPackageFile npkg;
 			Ambertation.Scenes.Scene scn = BuildScene(fii, mmat, package, out npkg);
 
 			if (npkg != null)
 			{
 				npkg.Close();
-				if (npkg is SimPe.Packages.GeneratableFile)
+				if (npkg is Packages.GeneratableFile)
 				{
-					((SimPe.Packages.GeneratableFile)npkg).Dispose();
+					((Packages.GeneratableFile)npkg).Dispose();
 				}
 			}
 			npkg = null;
@@ -156,10 +156,10 @@ namespace SimPe.Plugin
 		}
 
 		public static Ambertation.Scenes.Scene BuildScene(
-			out SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fii,
+			out Interfaces.Scenegraph.IScenegraphFileIndex fii,
 			MmatWrapper mmat,
-			SimPe.Interfaces.Files.IPackageFile package,
-			out SimPe.Interfaces.Files.IPackageFile npkg
+			Interfaces.Files.IPackageFile package,
+			out Interfaces.Files.IPackageFile npkg
 		)
 		{
 			npkg = null;
@@ -187,10 +187,10 @@ namespace SimPe.Plugin
 		}
 
 		public static Ambertation.Scenes.Scene BuildScene(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fii,
+			Interfaces.Scenegraph.IScenegraphFileIndex fii,
 			MmatWrapper mmat,
-			SimPe.Interfaces.Files.IPackageFile package,
-			out SimPe.Interfaces.Files.IPackageFile npkg
+			Interfaces.Files.IPackageFile package,
+			out Interfaces.Files.IPackageFile npkg
 		)
 		{
 			npkg = null;
@@ -210,10 +210,10 @@ namespace SimPe.Plugin
 				try
 				{
 					foreach (
-						SimPe.Interfaces.Files.IPackedFileDescriptor pfd in package.Index
+						Interfaces.Files.IPackedFileDescriptor pfd in package.Index
 					)
 					{
-						SimPe.Interfaces.Files.IPackedFileDescriptor npfd = pfd.Clone();
+						Interfaces.Files.IPackedFileDescriptor npfd = pfd.Clone();
 						npfd.UserData = package.Read(pfd).UncompressedData;
 						if (pfd == mmat.FileDescriptor)
 						{
@@ -257,7 +257,7 @@ namespace SimPe.Plugin
 						gmdcext.UserTxmtMap[mmat.SubsetName] = mmat.TXMT;
 						gmdcext.UserTxtrMap[mmat.SubsetName] = mmat.TXTR;
 						Ambertation.Scenes.Scene scene = gmdcext.GetScene(
-							new SimPe.Plugin.Gmdc.ElementOrder(
+							new Gmdc.ElementOrder(
 								Gmdc.ElementSorting.Preview
 							)
 						);
@@ -288,8 +288,8 @@ namespace SimPe.Plugin
 
 		//static Ambertation.Panel3D p3d;
 		public static void Execute(
-			SimPe.PackedFiles.Wrapper.Cpf cmmat,
-			SimPe.Interfaces.Files.IPackageFile package
+			PackedFiles.Wrapper.Cpf cmmat,
+			Interfaces.Files.IPackageFile package
 		)
 		{
 			if (!(cmmat is MmatWrapper))
@@ -302,7 +302,7 @@ namespace SimPe.Plugin
 			try
 			{
 				PreviewForm f = new PreviewForm();
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fii;
+				Interfaces.Scenegraph.IScenegraphFileIndex fii;
 				f.scene = BuildScene(out fii, mmat, package);
 				fii.Clear();
 				if (f.scene == null)

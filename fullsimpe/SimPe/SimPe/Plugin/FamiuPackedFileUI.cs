@@ -9,7 +9,7 @@ namespace SimPe.Plugin
 	/// This class is used to fill the UI for this FileType with Data
 	/// </summary>
 	public partial class FamiuPackedFileUI
-		: SimPe.Windows.Forms.WrapperBaseControl,
+		: Windows.Forms.WrapperBaseControl,
 			IPackedFileUI
 	{
 		protected new FamiuPackedFileWrapper Wrapper => base.Wrapper as FamiuPackedFileWrapper;
@@ -27,7 +27,7 @@ namespace SimPe.Plugin
 		int currentsection;
 		int goodsections;
 		bool shwraw = false;
-		SimPe.Interfaces.Providers.ILotItem LotDescription;
+		Interfaces.Providers.ILotItem LotDescription;
 
 		#region WrapperBaseControl Member
 
@@ -36,8 +36,8 @@ namespace SimPe.Plugin
 			InitializeComponent();
 			if (Helper.WindowsRegistry.UseBigIcons)
 			{
-				this.pbImage.Size = new System.Drawing.Size(168, 168);
-				this.pbImage.Location = new System.Drawing.Point(6, 28);
+				this.pbImage.Size = new Size(168, 168);
+				this.pbImage.Location = new Point(6, 28);
 			}
 		}
 
@@ -110,13 +110,13 @@ namespace SimPe.Plugin
 			if (goodsections > 1)
 			{
 				int n = 0;
-				Array.Resize<int>(ref sdatas, goodsections);
-				Array.Resize<int>(ref wdatas, goodsections);
-				Array.Resize<int>(ref mdatas, goodsections);
-				Array.Resize<int>(ref gdatas, goodsections);
-				Array.Resize<int>(ref bdatas, goodsections);
-				Array.Resize<int>(ref fdatas, goodsections);
-				Array.Resize<int>(ref cdatas, goodsections);
+				Array.Resize(ref sdatas, goodsections);
+				Array.Resize(ref wdatas, goodsections);
+				Array.Resize(ref mdatas, goodsections);
+				Array.Resize(ref gdatas, goodsections);
+				Array.Resize(ref bdatas, goodsections);
+				Array.Resize(ref fdatas, goodsections);
+				Array.Resize(ref cdatas, goodsections);
 				for (int i = 0; i < sections; i++)
 				{
 					if (TestIsValid(i))
@@ -394,7 +394,7 @@ gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 36
 			}
 
 			sections--;
-			Array.Resize<ushort>(ref filedata, sections * 42);
+			Array.Resize(ref filedata, sections * 42);
 			foreach (ushort k in Wrapper.FVal)
 			{
 				if (
@@ -602,7 +602,7 @@ gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 36
 				tbFunds.ForeColor = System.Drawing.SystemColors.WindowText;
 
 				sections++;
-				Array.Resize<ushort>(ref filedata, sections * 42);
+				Array.Resize(ref filedata, sections * 42);
 				filedata[(currentsectionindex * 42)] = lotno;
 				filedata[(currentsectionindex * 42) + 2] = meno;
 				filedata[(currentsectionindex * 42) + 3] = ladyno;

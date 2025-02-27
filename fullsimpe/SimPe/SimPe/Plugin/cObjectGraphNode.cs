@@ -168,7 +168,7 @@ namespace SimPe.Plugin
 			{
 				if (tObjectGraphNode == null)
 				{
-					tObjectGraphNode = new SimPe.Plugin.TabPage.ObjectGraphNode();
+					tObjectGraphNode = new TabPage.ObjectGraphNode();
 				}
 
 				return tObjectGraphNode;
@@ -183,7 +183,7 @@ namespace SimPe.Plugin
 		{
 			if (tObjectGraphNode == null)
 			{
-				tObjectGraphNode = new SimPe.Plugin.TabPage.ObjectGraphNode();
+				tObjectGraphNode = new TabPage.ObjectGraphNode();
 			}
 
 			tObjectGraphNode.lb_ogn.Items.Clear();

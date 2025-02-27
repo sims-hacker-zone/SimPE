@@ -195,7 +195,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
-		protected override void Serialize(System.IO.BinaryWriter writer)
+		protected override void Serialize(BinaryWriter writer)
 		{
 			CleanUp();
 
@@ -225,7 +225,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Unserializes a BinaryStream into the Attributes of this Instance
 		/// </summary>
 		/// <param name="reader">The Stream that contains the FileData</param>
-		protected override void Unserialize(System.IO.BinaryReader reader)
+		protected override void Unserialize(BinaryReader reader)
 		{
 			filename = reader.ReadBytes(0x40);
 
@@ -296,7 +296,7 @@ namespace SimPe.PackedFiles.Wrapper
 				return base.GetResourceName(ta);
 			}
 
-			SimPe.Interfaces.Files.IPackedFile pf = Package.Read(FileDescriptor);
+			Interfaces.Files.IPackedFile pf = Package.Read(FileDescriptor);
 			byte[] ab = pf.GetUncompressedData(0x42);
 			return (
 					ab.Length > 0x41
@@ -440,7 +440,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public void ExportLanguage(byte lid, String path)
 		{
-			System.IO.StreamWriter sw = new StreamWriter(path, false);
+			StreamWriter sw = new StreamWriter(path, false);
 			sw.WriteLine("<-Comment->");
 			sw.WriteLine("PJSE String file - single language export");
 			if (languages[lid].Count == 0)
@@ -475,7 +475,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			if (File.Exists(path))
 			{
-				System.IO.StreamReader sr = new StreamReader(path);
+				StreamReader sr = new StreamReader(path);
 				int lineCt = -1;
 				bool isString = false;
 				bool isDesc = false;
@@ -598,7 +598,7 @@ namespace SimPe.PackedFiles.Wrapper
 			this.parent = parent;
 		}
 
-		public StrItem(StrWrapper parent, System.IO.BinaryReader reader)
+		public StrItem(StrWrapper parent, BinaryReader reader)
 		{
 			this.parent = parent;
 			this.Unserialize(reader);
@@ -622,7 +622,7 @@ namespace SimPe.PackedFiles.Wrapper
 			return si.Title;
 		}
 
-		public void Unserialize(System.IO.BinaryReader reader)
+		public void Unserialize(BinaryReader reader)
 		{
 			if (parent.Format == 0x0000)
 			{
@@ -644,7 +644,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public void Serialize(System.IO.BinaryWriter writer)
+		public void Serialize(BinaryWriter writer)
 		{
 			if (parent.Format == 0x0000)
 			{
@@ -669,7 +669,7 @@ namespace SimPe.PackedFiles.Wrapper
 		 * become part of thier saved file without thier knowledge.
 		 * CJH.
 		*/
-		private string UnserializeStringZero(System.IO.BinaryReader r)
+		private string UnserializeStringZero(BinaryReader r)
 		{
 			string s = "";
 			while (r.BaseStream.Position < r.BaseStream.Length)
@@ -692,7 +692,7 @@ namespace SimPe.PackedFiles.Wrapper
 			return s;
 		}
 
-		private void SerializeStringZero(System.IO.BinaryWriter w, string s)
+		private void SerializeStringZero(BinaryWriter w, string s)
 		{
 			if (s != null)
 			{

@@ -28,8 +28,8 @@ namespace pjse
 {
 	public partial class CompareButton : Button
 	{
-		private pjse.ExtendedWrapper wrapper = null;
-		public pjse.ExtendedWrapper Wrapper
+		private ExtendedWrapper wrapper = null;
+		public ExtendedWrapper Wrapper
 		{
 			get
 			{
@@ -53,11 +53,11 @@ namespace pjse
 		/// </summary>
 		public class CompareWithEventArgs : EventArgs
 		{
-			public pjse.FileTable.Entry Item { get; } = null;
+			public FileTable.Entry Item { get; } = null;
 			public SimPe.ExpansionItem ExpansionItem { get; } = null;
 
 			public CompareWithEventArgs(
-				pjse.FileTable.Entry item,
+				FileTable.Entry item,
 				SimPe.ExpansionItem exp
 			)
 				: base()
@@ -120,7 +120,7 @@ namespace pjse
 
 		private void tsmi_Click(object sender, EventArgs e)
 		{
-			pjse.FileTable.Entry fe;
+			FileTable.Entry fe;
 			SimPe.ExpansionItem exp;
 			int i = cmenuCompare.Items.IndexOf((ToolStripItem)sender);
 			if (i < 0)
@@ -132,7 +132,7 @@ namespace pjse
 			}
 			else if (i == 0)
 			{
-				pjse.FileTable.Entry[] items = pjse.FileTable.GFT[
+				FileTable.Entry[] items = pjse.FileTable.GFT[
 					wrapper.FileDescriptor.Type,
 					wrapper.FileDescriptor.Group,
 					wrapper.FileDescriptor.Instance,
@@ -182,7 +182,7 @@ namespace pjse
 					);
 					return;
 				}
-				fe = new pjse.FileTable.Entry(op, pfd, true, false);
+				fe = new FileTable.Entry(op, pfd, true, false);
 			}
 
 			OnCompareWith(this, new CompareWithEventArgs(fe, exp));

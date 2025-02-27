@@ -34,7 +34,7 @@ namespace SimPe
 		{
 			get;
 		} = new CRC(
-			new Classless.Hasher.CRCParameters(32, 0x04C11DB7, 0xffffffff, 0, false)
+			new CRCParameters(32, 0x04C11DB7, 0xffffffff, 0, false)
 		);
 
 		public static CRC Crc32_cas

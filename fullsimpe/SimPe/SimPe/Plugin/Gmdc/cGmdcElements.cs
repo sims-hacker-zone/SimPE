@@ -85,7 +85,7 @@ namespace SimPe.Plugin.Gmdc
 		/// Unserializes a BinaryStream into the Attributes of this Instance
 		/// </summary>
 		/// <param name="reader">The Stream that contains the FileData</param>
-		internal virtual void Unserialize(System.IO.BinaryReader reader)
+		internal virtual void Unserialize(BinaryReader reader)
 		{
 			for (int i = 0; i < Data.Length; i++)
 			{
@@ -101,7 +101,7 @@ namespace SimPe.Plugin.Gmdc
 		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
-		internal virtual void Serialize(System.IO.BinaryWriter writer)
+		internal virtual void Serialize(BinaryWriter writer)
 		{
 			for (int i = 0; i < Data.Length; i++)
 			{
@@ -486,30 +486,30 @@ namespace SimPe.Plugin.Gmdc
 			switch (BlockFormat)
 			{
 				case BlockFormat.OneDword:
-					return new Gmdc.GmdcElementValueOneInt();
+					return new GmdcElementValueOneInt();
 				case BlockFormat.OneFloat:
-					return new Gmdc.GmdcElementValueOneFloat();
+					return new GmdcElementValueOneFloat();
 				case BlockFormat.TwoFloat:
-					return new Gmdc.GmdcElementValueTwoFloat();
+					return new GmdcElementValueTwoFloat();
 				case BlockFormat.ThreeFloat:
-					return new Gmdc.GmdcElementValueThreeFloat();
+					return new GmdcElementValueThreeFloat();
 			}
 
-			return new Gmdc.GmdcElementValueOneFloat();
+			return new GmdcElementValueOneFloat();
 		}
 
 		/// <summary>
 		/// Unserializes a BinaryStream into the Attributes of this Instance
 		/// </summary>
 		/// <param name="reader">The Stream that contains the FileData</param>
-		public void Unserialize(System.IO.BinaryReader reader)
+		public void Unserialize(BinaryReader reader)
 		{
 			Number = reader.ReadInt32();
 			uint id = reader.ReadUInt32();
 			Identity = (ElementIdentity)id;
 			GroupId = reader.ReadInt32();
-			BlockFormat = (SimPe.Plugin.Gmdc.BlockFormat)reader.ReadInt32();
-			SetFormat = (SimPe.Plugin.Gmdc.SetFormat)reader.ReadInt32();
+			BlockFormat = (BlockFormat)reader.ReadInt32();
+			SetFormat = (SetFormat)reader.ReadInt32();
 
 			GmdcElementValueBase dummy = GetValueInstance();
 			int len = reader.ReadInt32() / (4 * dummy.Size);
@@ -532,7 +532,7 @@ namespace SimPe.Plugin.Gmdc
 		/// Be sure that the Position of the stream is Proper on
 		/// return (i.e. must point to the first Byte after your actual File)
 		/// </remarks>
-		public void Serialize(System.IO.BinaryWriter writer)
+		public void Serialize(BinaryWriter writer)
 		{
 			//automatically keep the Number Field correct
 			if (Items.Length == 0)

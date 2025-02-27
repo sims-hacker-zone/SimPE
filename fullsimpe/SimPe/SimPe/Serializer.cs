@@ -28,8 +28,8 @@ namespace SimPe
 	public class Serializer
 	{
 		#region Formater
-		static SimPe.Interfaces.ISerializeFormater formater;
-		public static SimPe.Interfaces.ISerializeFormater Formater
+		static Interfaces.ISerializeFormater formater;
+		public static Interfaces.ISerializeFormater Formater
 		{
 			get
 			{
@@ -150,16 +150,16 @@ namespace SimPe
 		}
 
 		public static string SerializeTypeHeader(
-			SimPe.Interfaces.Plugin.Internal.IPackedFileName wrapper,
-			SimPe.Interfaces.Files.IPackedFileDescriptorBasic pfd
+			Interfaces.Plugin.Internal.IPackedFileName wrapper,
+			Interfaces.Files.IPackedFileDescriptorBasic pfd
 		)
 		{
 			return SerializeTypeHeader(wrapper, pfd, true);
 		}
 
 		public static string SerializeTypeHeader(
-			SimPe.Interfaces.Plugin.Internal.IPackedFileName wrapper,
-			SimPe.Interfaces.Files.IPackedFileDescriptorBasic pfd,
+			Interfaces.Plugin.Internal.IPackedFileName wrapper,
+			Interfaces.Files.IPackedFileDescriptorBasic pfd,
 			bool withdesc
 		)
 		{
@@ -175,8 +175,8 @@ namespace SimPe
 		}
 
 		public static string Serialize(
-			SimPe.Interfaces.Plugin.Internal.IPackedFileName wrapper,
-			SimPe.Interfaces.Files.IPackedFileDescriptorBasic pfd
+			Interfaces.Plugin.Internal.IPackedFileName wrapper,
+			Interfaces.Files.IPackedFileDescriptorBasic pfd
 		)
 		{
 			return Serialize(wrapper, pfd, false);
@@ -190,8 +190,8 @@ namespace SimPe
 		/// <param name="withdesc">true, if you want to include the Description of the DAta stored in the passed Wrapper</param>
 		/// <returns></returns>
 		public static string Serialize(
-			SimPe.Interfaces.Plugin.Internal.IPackedFileName wrapper,
-			SimPe.Interfaces.Files.IPackedFileDescriptorBasic pfd,
+			Interfaces.Plugin.Internal.IPackedFileName wrapper,
+			Interfaces.Files.IPackedFileDescriptorBasic pfd,
 			bool withdesc
 		)
 		{

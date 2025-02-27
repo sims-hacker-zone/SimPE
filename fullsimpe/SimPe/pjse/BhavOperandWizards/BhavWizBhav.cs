@@ -67,7 +67,7 @@ namespace pjse.BhavNameWizards
 		{
 			get
 			{
-				pjse.FileTable.Entry ftEntry = instruction.Parent.ResourceByInstance(
+				FileTable.Entry ftEntry = instruction.Parent.ResourceByInstance(
 					SimPe.Data.MetaData.BHAV_FILE,
 					instruction.OpCode
 				);
@@ -80,7 +80,7 @@ namespace pjse.BhavNameWizards
 		public override ABhavOperandWiz Wizard()
 		{
 			return /*Wrapper == null ? null :*/
-			new pjse.BhavOperandWizards.BhavOperandWizBhav(instruction);
+			new BhavOperandWizards.BhavOperandWizBhav(instruction);
 		}
 
 		internal enum dataFormat
@@ -237,7 +237,7 @@ namespace pjse.BhavNameWizards
 			}
 		}
 
-		private pjse.FileTable.Entry ftEntry = null;
+		private FileTable.Entry ftEntry = null;
 		private Bhav wrapper = null;
 
 		/// <summary>

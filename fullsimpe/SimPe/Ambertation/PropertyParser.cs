@@ -214,7 +214,7 @@ namespace Ambertation
 				{
 					if (
 						t.GetInterface("Ambertation.IPropertyClass")
-						== typeof(Ambertation.IPropertyClass)
+						== typeof(IPropertyClass)
 					)
 					{
 						o = System.Activator.CreateInstance(
@@ -362,7 +362,7 @@ namespace Ambertation
 			}
 
 			//read XML File
-			System.Xml.XmlDocument xmlfile = new XmlDocument();
+			XmlDocument xmlfile = new XmlDocument();
 			xmlfile.Load(flname);
 
 			//seek Root Node

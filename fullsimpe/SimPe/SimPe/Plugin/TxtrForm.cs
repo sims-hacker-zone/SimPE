@@ -28,7 +28,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for TxtrForm.
 	/// </summary>
-	public class TxtrForm : System.Windows.Forms.Form
+	public class TxtrForm : Form
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -70,46 +70,46 @@ namespace SimPe.Plugin
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(TxtrForm));
-			this.txtrPanel = new System.Windows.Forms.Panel();
-			this.linkLabel4 = new System.Windows.Forms.LinkLabel();
-			this.linkLabel3 = new System.Windows.Forms.LinkLabel();
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-			this.tblevel = new System.Windows.Forms.TextBox();
-			this.label8 = new System.Windows.Forms.Label();
-			this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-			this.lldel = new System.Windows.Forms.LinkLabel();
-			this.tblifo = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.tbheight = new System.Windows.Forms.TextBox();
-			this.tbwidth = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.cbformats = new System.Windows.Forms.ComboBox();
-			this.tbflname = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.cbitem = new System.Windows.Forms.ComboBox();
-			this.cbmipmaps = new System.Windows.Forms.ComboBox();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.label7 = new System.Windows.Forms.Label();
-			this.pb = new System.Windows.Forms.PictureBox();
-			this.contextMenu1 = new System.Windows.Forms.ContextMenu();
-			this.menuItem1 = new System.Windows.Forms.MenuItem();
-			this.milifo = new System.Windows.Forms.MenuItem();
-			this.menuItem4 = new System.Windows.Forms.MenuItem();
-			this.menuItem6 = new System.Windows.Forms.MenuItem();
-			this.menuItem7 = new System.Windows.Forms.MenuItem();
-			this.mibuild = new System.Windows.Forms.MenuItem();
-			this.menuItem3 = new System.Windows.Forms.MenuItem();
-			this.menuItem2 = new System.Windows.Forms.MenuItem();
-			this.menuItem5 = new System.Windows.Forms.MenuItem();
-			this.lbimg = new System.Windows.Forms.ListBox();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.btex = new System.Windows.Forms.Button();
-			this.btim = new System.Windows.Forms.Button();
-			this.label1 = new System.Windows.Forms.Label();
-			this.sfd = new System.Windows.Forms.SaveFileDialog();
-			this.ofd = new System.Windows.Forms.OpenFileDialog();
+			this.txtrPanel = new Panel();
+			this.linkLabel4 = new LinkLabel();
+			this.linkLabel3 = new LinkLabel();
+			this.linkLabel1 = new LinkLabel();
+			this.tblevel = new TextBox();
+			this.label8 = new Label();
+			this.linkLabel2 = new LinkLabel();
+			this.lldel = new LinkLabel();
+			this.tblifo = new TextBox();
+			this.label6 = new Label();
+			this.label5 = new Label();
+			this.tbheight = new TextBox();
+			this.tbwidth = new TextBox();
+			this.label4 = new Label();
+			this.label3 = new Label();
+			this.cbformats = new ComboBox();
+			this.tbflname = new TextBox();
+			this.label2 = new Label();
+			this.cbitem = new ComboBox();
+			this.cbmipmaps = new ComboBox();
+			this.panel1 = new Panel();
+			this.label7 = new Label();
+			this.pb = new PictureBox();
+			this.contextMenu1 = new ContextMenu();
+			this.menuItem1 = new MenuItem();
+			this.milifo = new MenuItem();
+			this.menuItem4 = new MenuItem();
+			this.menuItem6 = new MenuItem();
+			this.menuItem7 = new MenuItem();
+			this.mibuild = new MenuItem();
+			this.menuItem3 = new MenuItem();
+			this.menuItem2 = new MenuItem();
+			this.menuItem5 = new MenuItem();
+			this.lbimg = new ListBox();
+			this.panel2 = new Panel();
+			this.btex = new Button();
+			this.btim = new Button();
+			this.label1 = new Label();
+			this.sfd = new SaveFileDialog();
+			this.ofd = new OpenFileDialog();
 			this.txtrPanel.SuspendLayout();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
@@ -142,22 +142,22 @@ namespace SimPe.Plugin
 			this.txtrPanel.Controls.Add(this.lbimg);
 			this.txtrPanel.Controls.Add(this.panel2);
 			this.txtrPanel.Controls.Add(this.label1);
-			this.txtrPanel.Font = new System.Drawing.Font(
+			this.txtrPanel.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.txtrPanel.Location = new System.Drawing.Point(8, 8);
+			this.txtrPanel.Location = new Point(8, 8);
 			this.txtrPanel.Name = "txtrPanel";
-			this.txtrPanel.Size = new System.Drawing.Size(768, 288);
+			this.txtrPanel.Size = new Size(768, 288);
 			this.txtrPanel.TabIndex = 19;
 			//
 			// linkLabel4
 			//
 			this.linkLabel4.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -166,23 +166,23 @@ namespace SimPe.Plugin
 			);
 			this.linkLabel4.AutoSize = true;
 			this.linkLabel4.BackColor = System.Drawing.Color.Transparent;
-			this.linkLabel4.Font = new System.Drawing.Font(
+			this.linkLabel4.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.linkLabel4.LinkArea = new System.Windows.Forms.LinkArea(0, 5);
-			this.linkLabel4.Location = new System.Drawing.Point(200, 264);
+			this.linkLabel4.LinkArea = new LinkArea(0, 5);
+			this.linkLabel4.Location = new Point(200, 264);
 			this.linkLabel4.Name = "linkLabel4";
-			this.linkLabel4.Size = new System.Drawing.Size(137, 18);
+			this.linkLabel4.Size = new Size(137, 18);
 			this.linkLabel4.TabIndex = 24;
 			this.linkLabel4.TabStop = true;
 			this.linkLabel4.Text = "build default MipMap";
 			this.linkLabel4.UseCompatibleTextRendering = true;
 			this.linkLabel4.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.BuildMipMap
 				);
 			//
@@ -190,74 +190,74 @@ namespace SimPe.Plugin
 			//
 			this.linkLabel3.AutoSize = true;
 			this.linkLabel3.BackColor = System.Drawing.Color.Transparent;
-			this.linkLabel3.Font = new System.Drawing.Font(
+			this.linkLabel3.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.linkLabel3.Location = new System.Drawing.Point(288, 88);
+			this.linkLabel3.Location = new Point(288, 88);
 			this.linkLabel3.Name = "linkLabel3";
-			this.linkLabel3.Size = new System.Drawing.Size(51, 13);
+			this.linkLabel3.Size = new Size(51, 13);
 			this.linkLabel3.TabIndex = 23;
 			this.linkLabel3.TabStop = true;
 			this.linkLabel3.Text = "fix TGI";
 			this.linkLabel3.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.FixTGI);
+				new LinkLabelLinkClickedEventHandler(this.FixTGI);
 			//
 			// linkLabel1
 			//
 			this.linkLabel1.AutoSize = true;
 			this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
-			this.linkLabel1.Font = new System.Drawing.Font(
+			this.linkLabel1.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.linkLabel1.Location = new System.Drawing.Point(344, 88);
+			this.linkLabel1.Location = new Point(344, 88);
 			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.Size = new System.Drawing.Size(85, 13);
+			this.linkLabel1.Size = new Size(85, 13);
 			this.linkLabel1.TabIndex = 22;
 			this.linkLabel1.TabStop = true;
 			this.linkLabel1.Text = "assign Hash";
 			this.linkLabel1.Visible = false;
 			this.linkLabel1.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.BuildFilename
 				);
 			//
 			// tblevel
 			//
-			this.tblevel.Location = new System.Drawing.Point(336, 134);
+			this.tblevel.Location = new Point(336, 134);
 			this.tblevel.Name = "tblevel";
-			this.tblevel.Size = new System.Drawing.Size(88, 21);
+			this.tblevel.Size = new Size(88, 21);
 			this.tblevel.TabIndex = 21;
-			this.tblevel.TextChanged += new System.EventHandler(this.Changedlevel);
+			this.tblevel.TextChanged += new EventHandler(this.Changedlevel);
 			//
 			// label8
 			//
 			this.label8.AutoSize = true;
 			this.label8.BackColor = System.Drawing.Color.Transparent;
-			this.label8.Font = new System.Drawing.Font(
+			this.label8.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label8.Location = new System.Drawing.Point(240, 136);
+			this.label8.Location = new Point(240, 136);
 			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(98, 13);
+			this.label8.Size = new Size(98, 13);
 			this.label8.TabIndex = 20;
 			this.label8.Text = "MipMap Level:";
 			//
 			// linkLabel2
 			//
 			this.linkLabel2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -266,26 +266,26 @@ namespace SimPe.Plugin
 			);
 			this.linkLabel2.AutoSize = true;
 			this.linkLabel2.BackColor = System.Drawing.Color.Transparent;
-			this.linkLabel2.Font = new System.Drawing.Font(
+			this.linkLabel2.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.linkLabel2.Location = new System.Drawing.Point(344, 264);
+			this.linkLabel2.Location = new Point(344, 264);
 			this.linkLabel2.Name = "linkLabel2";
-			this.linkLabel2.Size = new System.Drawing.Size(31, 13);
+			this.linkLabel2.Size = new Size(31, 13);
 			this.linkLabel2.TabIndex = 19;
 			this.linkLabel2.TabStop = true;
 			this.linkLabel2.Text = "add";
 			this.linkLabel2.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Add);
+				new LinkLabelLinkClickedEventHandler(this.Add);
 			//
 			// lldel
 			//
 			this.lldel.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -294,26 +294,26 @@ namespace SimPe.Plugin
 			);
 			this.lldel.AutoSize = true;
 			this.lldel.BackColor = System.Drawing.Color.Transparent;
-			this.lldel.Font = new System.Drawing.Font(
+			this.lldel.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lldel.Location = new System.Drawing.Point(380, 264);
+			this.lldel.Location = new Point(380, 264);
 			this.lldel.Name = "lldel";
-			this.lldel.Size = new System.Drawing.Size(48, 13);
+			this.lldel.Size = new Size(48, 13);
 			this.lldel.TabIndex = 18;
 			this.lldel.TabStop = true;
 			this.lldel.Text = "delete";
 			this.lldel.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Delete);
+				new LinkLabelLinkClickedEventHandler(this.Delete);
 			//
 			// tblifo
 			//
 			this.tblifo.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Bottom
@@ -322,16 +322,16 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.tblifo.Location = new System.Drawing.Point(440, 252);
+			this.tblifo.Location = new Point(440, 252);
 			this.tblifo.Name = "tblifo";
-			this.tblifo.Size = new System.Drawing.Size(320, 21);
+			this.tblifo.Size = new Size(320, 21);
 			this.tblifo.TabIndex = 16;
-			this.tblifo.TextChanged += new System.EventHandler(this.SetLifo);
+			this.tblifo.TextChanged += new EventHandler(this.SetLifo);
 			//
 			// label6
 			//
 			this.label6.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -340,16 +340,16 @@ namespace SimPe.Plugin
 			);
 			this.label6.AutoSize = true;
 			this.label6.BackColor = System.Drawing.Color.Transparent;
-			this.label6.Font = new System.Drawing.Font(
+			this.label6.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label6.Location = new System.Drawing.Point(432, 236);
+			this.label6.Location = new Point(432, 236);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(111, 13);
+			this.label6.Size = new Size(111, 13);
 			this.label6.TabIndex = 17;
 			this.label6.Text = "LIFO Reference:";
 			//
@@ -357,49 +357,49 @@ namespace SimPe.Plugin
 			//
 			this.label5.AutoSize = true;
 			this.label5.BackColor = System.Drawing.Color.Transparent;
-			this.label5.Font = new System.Drawing.Font(
+			this.label5.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label5.Location = new System.Drawing.Point(141, 136);
+			this.label5.Location = new Point(141, 136);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(15, 13);
+			this.label5.Size = new Size(15, 13);
 			this.label5.TabIndex = 15;
 			this.label5.Text = "x";
 			//
 			// tbheight
 			//
-			this.tbheight.Location = new System.Drawing.Point(160, 134);
+			this.tbheight.Location = new Point(160, 134);
 			this.tbheight.Name = "tbheight";
-			this.tbheight.Size = new System.Drawing.Size(56, 21);
+			this.tbheight.Size = new Size(56, 21);
 			this.tbheight.TabIndex = 14;
-			this.tbheight.TextChanged += new System.EventHandler(this.ChangedSize);
+			this.tbheight.TextChanged += new EventHandler(this.ChangedSize);
 			//
 			// tbwidth
 			//
-			this.tbwidth.Location = new System.Drawing.Point(80, 134);
+			this.tbwidth.Location = new Point(80, 134);
 			this.tbwidth.Name = "tbwidth";
-			this.tbwidth.Size = new System.Drawing.Size(56, 21);
+			this.tbwidth.Size = new Size(56, 21);
 			this.tbwidth.TabIndex = 13;
-			this.tbwidth.TextChanged += new System.EventHandler(this.ChangedSize);
+			this.tbwidth.TextChanged += new EventHandler(this.ChangedSize);
 			//
 			// label4
 			//
 			this.label4.AutoSize = true;
 			this.label4.BackColor = System.Drawing.Color.Transparent;
-			this.label4.Font = new System.Drawing.Font(
+			this.label4.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label4.Location = new System.Drawing.Point(43, 136);
+			this.label4.Location = new Point(43, 136);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(38, 13);
+			this.label4.Size = new Size(38, 13);
 			this.label4.TabIndex = 12;
 			this.label4.Text = "Size:";
 			//
@@ -407,16 +407,16 @@ namespace SimPe.Plugin
 			//
 			this.label3.AutoSize = true;
 			this.label3.BackColor = System.Drawing.Color.Transparent;
-			this.label3.Font = new System.Drawing.Font(
+			this.label3.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label3.Location = new System.Drawing.Point(24, 112);
+			this.label3.Location = new Point(24, 112);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(58, 13);
+			this.label3.Size = new Size(58, 13);
 			this.label3.TabIndex = 11;
 			this.label3.Text = "Format:";
 			//
@@ -427,47 +427,47 @@ namespace SimPe.Plugin
 				.Forms
 				.ComboBoxStyle
 				.DropDownList;
-			this.cbformats.Location = new System.Drawing.Point(80, 108);
+			this.cbformats.Location = new Point(80, 108);
 			this.cbformats.Name = "cbformats";
-			this.cbformats.Size = new System.Drawing.Size(344, 21);
+			this.cbformats.Size = new Size(344, 21);
 			this.cbformats.TabIndex = 10;
-			this.cbformats.SelectedIndexChanged += new System.EventHandler(
+			this.cbformats.SelectedIndexChanged += new EventHandler(
 				this.ChangeFormat
 			);
 			//
 			// tbflname
 			//
-			this.tbflname.Location = new System.Drawing.Point(80, 56);
+			this.tbflname.Location = new Point(80, 56);
 			this.tbflname.Name = "tbflname";
-			this.tbflname.Size = new System.Drawing.Size(344, 21);
+			this.tbflname.Size = new Size(344, 21);
 			this.tbflname.TabIndex = 9;
-			this.tbflname.TextChanged += new System.EventHandler(this.FileNameChanged);
+			this.tbflname.TextChanged += new EventHandler(this.FileNameChanged);
 			//
 			// label2
 			//
 			this.label2.AutoSize = true;
 			this.label2.BackColor = System.Drawing.Color.Transparent;
-			this.label2.Font = new System.Drawing.Font(
+			this.label2.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label2.Location = new System.Drawing.Point(8, 36);
+			this.label2.Location = new Point(8, 36);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(71, 13);
+			this.label2.Size = new Size(71, 13);
 			this.label2.TabIndex = 8;
 			this.label2.Text = "Filename:";
 			//
 			// cbitem
 			//
 			this.cbitem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbitem.Location = new System.Drawing.Point(80, 32);
+			this.cbitem.Location = new Point(80, 32);
 			this.cbitem.Name = "cbitem";
-			this.cbitem.Size = new System.Drawing.Size(344, 21);
+			this.cbitem.Size = new Size(344, 21);
 			this.cbitem.TabIndex = 7;
-			this.cbitem.SelectedIndexChanged += new System.EventHandler(
+			this.cbitem.SelectedIndexChanged += new EventHandler(
 				this.SelectItem
 			);
 			//
@@ -478,18 +478,18 @@ namespace SimPe.Plugin
 				.Forms
 				.ComboBoxStyle
 				.DropDownList;
-			this.cbmipmaps.Location = new System.Drawing.Point(80, 160);
+			this.cbmipmaps.Location = new Point(80, 160);
 			this.cbmipmaps.Name = "cbmipmaps";
-			this.cbmipmaps.Size = new System.Drawing.Size(344, 21);
+			this.cbmipmaps.Size = new Size(344, 21);
 			this.cbmipmaps.TabIndex = 5;
-			this.cbmipmaps.SelectedIndexChanged += new System.EventHandler(
+			this.cbmipmaps.SelectedIndexChanged += new EventHandler(
 				this.SelectMipMapBlock
 			);
 			//
 			// panel1
 			//
 			this.panel1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -501,19 +501,19 @@ namespace SimPe.Plugin
 				)
 			);
 			this.panel1.AutoScroll = true;
-			this.panel1.AutoScrollMinSize = new System.Drawing.Size(24, 24);
+			this.panel1.AutoScrollMinSize = new Size(24, 24);
 			this.panel1.BackColor = System.Drawing.Color.Transparent;
 			this.panel1.Controls.Add(this.label7);
 			this.panel1.Controls.Add(this.pb);
-			this.panel1.Location = new System.Drawing.Point(432, 32);
+			this.panel1.Location = new Point(432, 32);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(328, 200);
+			this.panel1.Size = new Size(328, 200);
 			this.panel1.TabIndex = 4;
 			//
 			// label7
 			//
 			this.label7.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Left
@@ -521,12 +521,12 @@ namespace SimPe.Plugin
 				)
 			);
 			this.label7.AutoSize = true;
-			this.label7.Font = new System.Drawing.Font("Verdana", 8.25F);
+			this.label7.Font = new Font("Verdana", 8.25F);
 			this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
 			this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.label7.Location = new System.Drawing.Point(8, 176);
+			this.label7.Location = new Point(8, 176);
 			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(293, 13);
+			this.label7.Size = new Size(293, 13);
 			this.label7.TabIndex = 6;
 			this.label7.Text = "Right click on the Image to get more Interactions.";
 			//
@@ -534,12 +534,12 @@ namespace SimPe.Plugin
 			//
 			this.pb.BackColor = System.Drawing.SystemColors.Control;
 			this.pb.BackgroundImage = (
-				(System.Drawing.Image)(resources.GetObject("pb.BackgroundImage"))
+				(Image)(resources.GetObject("pb.BackgroundImage"))
 			);
 			this.pb.ContextMenu = this.contextMenu1;
-			this.pb.Location = new System.Drawing.Point(0, 0);
+			this.pb.Location = new Point(0, 0);
 			this.pb.Name = "pb";
-			this.pb.Size = new System.Drawing.Size(100, 50);
+			this.pb.Size = new Size(100, 50);
 			this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
 			this.pb.TabIndex = 5;
 			this.pb.TabStop = false;
@@ -547,7 +547,7 @@ namespace SimPe.Plugin
 			// contextMenu1
 			//
 			this.contextMenu1.MenuItems.AddRange(
-				new System.Windows.Forms.MenuItem[]
+				new MenuItem[]
 				{
 					this.menuItem1,
 					this.milifo,
@@ -560,44 +560,44 @@ namespace SimPe.Plugin
 					this.menuItem5,
 				}
 			);
-			this.contextMenu1.Popup += new System.EventHandler(this.ContextPopUp);
+			this.contextMenu1.Popup += new EventHandler(this.ContextPopUp);
 			//
 			// menuItem1
 			//
 			this.menuItem1.Index = 0;
 			this.menuItem1.Text = "&Import...";
-			this.menuItem1.Click += new System.EventHandler(this.btim_Click);
+			this.menuItem1.Click += new EventHandler(this.btim_Click);
 			//
 			// milifo
 			//
 			this.milifo.Enabled = false;
 			this.milifo.Index = 1;
 			this.milifo.Text = "Import local  LIFO";
-			this.milifo.Click += new System.EventHandler(this.ImportLifo);
+			this.milifo.Click += new EventHandler(this.ImportLifo);
 			//
 			// menuItem4
 			//
 			this.menuItem4.Index = 2;
 			this.menuItem4.Text = "Import &Alpha Channel...";
-			this.menuItem4.Click += new System.EventHandler(this.ImportAlpha);
+			this.menuItem4.Click += new EventHandler(this.ImportAlpha);
 			//
 			// menuItem6
 			//
 			this.menuItem6.Index = 3;
 			this.menuItem6.Text = "&Update all Sizes";
-			this.menuItem6.Click += new System.EventHandler(this.UpdateAllSizes);
+			this.menuItem6.Click += new EventHandler(this.UpdateAllSizes);
 			//
 			// menuItem7
 			//
 			this.menuItem7.Index = 4;
 			this.menuItem7.Text = "Import &DDS...";
-			this.menuItem7.Click += new System.EventHandler(this.ImportDDS);
+			this.menuItem7.Click += new EventHandler(this.ImportDDS);
 			//
 			// mibuild
 			//
 			this.mibuild.Index = 5;
 			this.mibuild.Text = "Build DXT...";
-			this.mibuild.Click += new System.EventHandler(this.BuildDXT);
+			this.mibuild.Click += new EventHandler(this.BuildDXT);
 			//
 			// menuItem3
 			//
@@ -608,18 +608,18 @@ namespace SimPe.Plugin
 			//
 			this.menuItem2.Index = 7;
 			this.menuItem2.Text = "&Export...";
-			this.menuItem2.Click += new System.EventHandler(this.btex_Click);
+			this.menuItem2.Click += new EventHandler(this.btex_Click);
 			//
 			// menuItem5
 			//
 			this.menuItem5.Index = 8;
 			this.menuItem5.Text = "Export Alpha &Channel...";
-			this.menuItem5.Click += new System.EventHandler(this.ExportAlpha);
+			this.menuItem5.Click += new EventHandler(this.ExportAlpha);
 			//
 			// lbimg
 			//
 			this.lbimg.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -629,18 +629,18 @@ namespace SimPe.Plugin
 				)
 			);
 			this.lbimg.IntegralHeight = false;
-			this.lbimg.Location = new System.Drawing.Point(8, 184);
+			this.lbimg.Location = new Point(8, 184);
 			this.lbimg.Name = "lbimg";
-			this.lbimg.Size = new System.Drawing.Size(416, 80);
+			this.lbimg.Size = new Size(416, 80);
 			this.lbimg.TabIndex = 3;
-			this.lbimg.SelectedIndexChanged += new System.EventHandler(
+			this.lbimg.SelectedIndexChanged += new EventHandler(
 				this.PictureSelect
 			);
 			//
 			// panel2
 			//
 			this.panel2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -653,22 +653,22 @@ namespace SimPe.Plugin
 			this.panel2.Controls.Add(this.btim);
 			this.panel2.Controls.Add(this.label27);
 			this.panel2.Controls.Add(this.btcommit);
-			this.panel2.Font = new System.Drawing.Font(
+			this.panel2.Font = new Font(
 				"Verdana",
 				9.75F,
 				System.Drawing.FontStyle.Bold
 			);
 			this.panel2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.panel2.Location = new System.Drawing.Point(0, 0);
-			this.panel2.Margin = new System.Windows.Forms.Padding(0);
+			this.panel2.Location = new Point(0, 0);
+			this.panel2.Margin = new Padding(0);
 			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(768, 24);
+			this.panel2.Size = new Size(768, 24);
 			this.panel2.TabIndex = 0;
 			//
 			// btex
 			//
 			this.btex.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -676,7 +676,7 @@ namespace SimPe.Plugin
 				)
 			);
 			this.btex.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btex.Font = new System.Drawing.Font(
+			this.btex.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
@@ -684,17 +684,17 @@ namespace SimPe.Plugin
 				((byte)(0))
 			);
 			this.btex.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.btex.Location = new System.Drawing.Point(584, 0);
+			this.btex.Location = new Point(584, 0);
 			this.btex.Name = "btex";
-			this.btex.Size = new System.Drawing.Size(80, 23);
+			this.btex.Size = new Size(80, 23);
 			this.btex.TabIndex = 8;
 			this.btex.Text = "Export...";
-			this.btex.Click += new System.EventHandler(this.btex_Click);
+			this.btex.Click += new EventHandler(this.btex_Click);
 			//
 			// btim
 			//
 			this.btim.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -702,7 +702,7 @@ namespace SimPe.Plugin
 				)
 			);
 			this.btim.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btim.Font = new System.Drawing.Font(
+			this.btim.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
@@ -710,27 +710,27 @@ namespace SimPe.Plugin
 				((byte)(0))
 			);
 			this.btim.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.btim.Location = new System.Drawing.Point(504, 0);
+			this.btim.Location = new Point(504, 0);
 			this.btim.Name = "btim";
-			this.btim.Size = new System.Drawing.Size(75, 23);
+			this.btim.Size = new Size(75, 23);
 			this.btim.TabIndex = 7;
 			this.btim.Text = "Import...";
-			this.btim.Click += new System.EventHandler(this.btim_Click);
+			this.btim.Click += new EventHandler(this.btim_Click);
 			//
 			// label27
 			//
 			this.label27.AutoSize = true;
 			this.label27.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.label27.Location = new System.Drawing.Point(0, 4);
+			this.label27.Location = new Point(0, 4);
 			this.label27.Name = "label27";
-			this.label27.Size = new System.Drawing.Size(93, 19);
+			this.label27.Size = new Size(93, 19);
 			this.label27.TabIndex = 0;
 			this.label27.Text = "TXTR Editor";
 			//
 			// btcommit
 			//
 			this.btcommit.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -738,33 +738,33 @@ namespace SimPe.Plugin
 				)
 			);
 			this.btcommit.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btcommit.Font = new System.Drawing.Font(
+			this.btcommit.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.btcommit.Location = new System.Drawing.Point(688, 0);
+			this.btcommit.Location = new Point(688, 0);
 			this.btcommit.Name = "btcommit";
 			this.btcommit.TabIndex = 6;
 			this.btcommit.Text = "Commit";
-			this.btcommit.Click += new System.EventHandler(this.btcommit_Click);
+			this.btcommit.Click += new EventHandler(this.btcommit_Click);
 			//
 			// label1
 			//
 			this.label1.AutoSize = true;
 			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font(
+			this.label1.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.Location = new System.Drawing.Point(28, 168);
+			this.label1.Location = new Point(28, 168);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(53, 13);
+			this.label1.Size = new Size(53, 13);
 			this.label1.TabIndex = 6;
 			this.label1.Text = "Blocks:";
 			//
@@ -779,10 +779,10 @@ namespace SimPe.Plugin
 			//
 			// TxtrForm
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-			this.ClientSize = new System.Drawing.Size(792, 310);
+			this.AutoScaleBaseSize = new Size(6, 14);
+			this.ClientSize = new Size(792, 310);
 			this.Controls.Add(this.txtrPanel);
-			this.Font = new System.Drawing.Font(
+			this.Font = new Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
@@ -802,52 +802,52 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		internal System.Windows.Forms.Panel txtrPanel;
-		internal System.Windows.Forms.ListBox lbimg;
-		private System.Windows.Forms.Panel panel2;
-		private System.Windows.Forms.Label label27;
-		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.PictureBox pb;
-		private System.Windows.Forms.Button btcommit;
-		private System.Windows.Forms.Button btim;
-		internal System.Windows.Forms.Button btex;
-		private System.Windows.Forms.SaveFileDialog sfd;
-		private System.Windows.Forms.OpenFileDialog ofd;
-		private System.Windows.Forms.Label label1;
-		internal System.Windows.Forms.ComboBox cbmipmaps;
-		internal System.Windows.Forms.ComboBox cbitem;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.TextBox tbflname;
-		internal System.Windows.Forms.ComboBox cbformats;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.TextBox tbwidth;
-		private System.Windows.Forms.TextBox tbheight;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.TextBox tblifo;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.LinkLabel linkLabel2;
-		internal System.Windows.Forms.LinkLabel lldel;
-		private System.Windows.Forms.ContextMenu contextMenu1;
-		private System.Windows.Forms.MenuItem menuItem1;
-		private System.Windows.Forms.MenuItem menuItem2;
-		private System.Windows.Forms.MenuItem menuItem3;
-		private System.Windows.Forms.MenuItem menuItem4;
-		private System.Windows.Forms.MenuItem menuItem5;
-		private System.Windows.Forms.MenuItem menuItem6;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.TextBox tblevel;
-		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.LinkLabel linkLabel1;
-		private System.Windows.Forms.LinkLabel linkLabel3;
-		private System.Windows.Forms.MenuItem milifo;
-		private System.Windows.Forms.LinkLabel linkLabel4;
-		private System.Windows.Forms.MenuItem menuItem7;
-		private System.Windows.Forms.MenuItem mibuild;
+		internal Panel txtrPanel;
+		internal ListBox lbimg;
+		private Panel panel2;
+		private Label label27;
+		private Panel panel1;
+		private PictureBox pb;
+		private Button btcommit;
+		private Button btim;
+		internal Button btex;
+		private SaveFileDialog sfd;
+		private OpenFileDialog ofd;
+		private Label label1;
+		internal ComboBox cbmipmaps;
+		internal ComboBox cbitem;
+		private Label label2;
+		private TextBox tbflname;
+		internal ComboBox cbformats;
+		private Label label3;
+		private Label label4;
+		private TextBox tbwidth;
+		private TextBox tbheight;
+		private Label label5;
+		private TextBox tblifo;
+		private Label label6;
+		private LinkLabel linkLabel2;
+		internal LinkLabel lldel;
+		private ContextMenu contextMenu1;
+		private MenuItem menuItem1;
+		private MenuItem menuItem2;
+		private MenuItem menuItem3;
+		private MenuItem menuItem4;
+		private MenuItem menuItem5;
+		private MenuItem menuItem6;
+		private Label label7;
+		private TextBox tblevel;
+		private Label label8;
+		private LinkLabel linkLabel1;
+		private LinkLabel linkLabel3;
+		private MenuItem milifo;
+		private LinkLabel linkLabel4;
+		private MenuItem menuItem7;
+		private MenuItem mibuild;
 
 		internal Txtr wrapper = null;
 
-		private void PictureSelect(object sender, System.EventArgs e)
+		private void PictureSelect(object sender, EventArgs e)
 		{
 			pb.Image = null;
 			btex.Enabled = false;
@@ -876,7 +876,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void btcommit_Click(object sender, System.EventArgs e)
+		private void btcommit_Click(object sender, EventArgs e)
 		{
 			try
 			{
@@ -893,7 +893,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void btex_Click(object sender, System.EventArgs e)
+		private void btex_Click(object sender, EventArgs e)
 		{
 			if (pb.Image == null)
 			{
@@ -926,7 +926,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void btim_Click(object sender, System.EventArgs e)
+		private void btim_Click(object sender, EventArgs e)
 		{
 			if (lbimg.SelectedIndex < 0)
 			{
@@ -976,7 +976,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SelectItem(object sender, System.EventArgs e)
+		private void SelectItem(object sender, EventArgs e)
 		{
 			if (cbitem.Tag != null)
 			{
@@ -1034,7 +1034,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void FileNameChanged(object sender, System.EventArgs e)
+		private void FileNameChanged(object sender, EventArgs e)
 		{
 			if (cbitem.Tag != null)
 			{
@@ -1075,7 +1075,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SelectMipMapBlock(object sender, System.EventArgs e)
+		private void SelectMipMapBlock(object sender, EventArgs e)
 		{
 			if (cbmipmaps.Tag != null)
 			{
@@ -1119,7 +1119,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void ChangeFormat(object sender, System.EventArgs e)
+		private void ChangeFormat(object sender, EventArgs e)
 		{
 			if (cbitem.Tag != null)
 			{
@@ -1165,7 +1165,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SetLifo(object sender, System.EventArgs e)
+		private void SetLifo(object sender, EventArgs e)
 		{
 			if (lbimg.Tag != null)
 			{
@@ -1191,7 +1191,7 @@ namespace SimPe.Plugin
 
 		private void Delete(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lbimg.SelectedIndex < 0)
@@ -1205,7 +1205,7 @@ namespace SimPe.Plugin
 
 		private void Add(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			MipMap mm = new MipMap(SelectedImageData());
@@ -1289,7 +1289,7 @@ namespace SimPe.Plugin
 			tblevel.Text = id.MipMapLevels.ToString();
 		}
 
-		private void UpdateAllSizes(object sender, System.EventArgs e)
+		private void UpdateAllSizes(object sender, EventArgs e)
 		{
 			try
 			{
@@ -1450,7 +1450,7 @@ namespace SimPe.Plugin
 			return img;
 		}
 
-		private void ExportAlpha(object sender, System.EventArgs e)
+		private void ExportAlpha(object sender, EventArgs e)
 		{
 			if (pb.Image == null)
 			{
@@ -1481,7 +1481,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void ImportAlpha(object sender, System.EventArgs e)
+		private void ImportAlpha(object sender, EventArgs e)
 		{
 			if (lbimg.SelectedIndex < 0)
 			{
@@ -1529,7 +1529,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void Changedlevel(object sender, System.EventArgs e)
+		private void Changedlevel(object sender, EventArgs e)
 		{
 			if (cbitem.Tag != null)
 			{
@@ -1564,7 +1564,7 @@ namespace SimPe.Plugin
 
 		private void BuildFilename(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			string fl = Hashes.StripHashFromName(this.tbflname.Text);
@@ -1576,7 +1576,7 @@ namespace SimPe.Plugin
 
 		private void FixTGI(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			string fl = Hashes.StripHashFromName(this.tbflname.Text);
@@ -1603,7 +1603,7 @@ namespace SimPe.Plugin
 			return null;
 		}
 
-		private void ContextPopUp(object sender, System.EventArgs e)
+		private void ContextPopUp(object sender, EventArgs e)
 		{
 			milifo.Enabled = false;
 			this.mibuild.Enabled = System.IO.File.Exists(
@@ -1636,7 +1636,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void ImportLifo(object sender, System.EventArgs e)
+		private void ImportLifo(object sender, EventArgs e)
 		{
 			if (lbimg.SelectedIndex < 0)
 			{
@@ -1667,7 +1667,7 @@ namespace SimPe.Plugin
 
 		private void BuildMipMap(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			try
@@ -1787,7 +1787,7 @@ namespace SimPe.Plugin
 			lbimg.SelectedIndex = lbimg.Items.Count - 1;
 		}
 
-		private void ImportDDS(object sender, System.EventArgs e)
+		private void ImportDDS(object sender, EventArgs e)
 		{
 			ofd.Filter = "NVIDIA DDS File (*.dds)|*.dds|All Files (*.*)|*.*";
 			if (ofd.ShowDialog() == DialogResult.OK)
@@ -1811,7 +1811,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void ChangedSize(object sender, System.EventArgs e)
+		private void ChangedSize(object sender, EventArgs e)
 		{
 			if (cbitem.Tag != null)
 			{
@@ -1847,7 +1847,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void BuildDXT(object sender, System.EventArgs e)
+		private void BuildDXT(object sender, EventArgs e)
 		{
 			DDSTool dds = new DDSTool();
 

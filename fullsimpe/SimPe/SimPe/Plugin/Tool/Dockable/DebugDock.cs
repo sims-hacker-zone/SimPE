@@ -7,9 +7,9 @@ namespace SimPe.Plugin.Tool.Dockable
 	/// </summary>
 	public class DebugDock
 		: Ambertation.Windows.Forms.DockPanel,
-			SimPe.Interfaces.IDockableTool
+			Interfaces.IDockableTool
 	{
-		SimPe.ThemeManager tm;
+		ThemeManager tm;
 		private SteepValley.Windows.Forms.XPGradientPanel xpGradientPanel1;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label lbMem;
@@ -110,7 +110,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.label2.Size = new System.Drawing.Size(128, 23);
 			this.label2.TabIndex = 2;
 			this.label2.Text = "FileTable Content:";
-			this.label2.Click += new System.EventHandler(this.label2_Click);
+			this.label2.Click += new EventHandler(this.label2_Click);
 			//
 			// lbMem
 			//
@@ -137,7 +137,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.lbMem.Size = new System.Drawing.Size(224, 23);
 			this.lbMem.TabIndex = 1;
 			this.lbMem.Text = "0";
-			this.lbMem.Click += new System.EventHandler(this.lbMem_Click);
+			this.lbMem.Click += new EventHandler(this.lbMem_Click);
 			//
 			// label1
 			//
@@ -153,7 +153,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.label1.Name = "label1";
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Memory Usage:";
-			this.label1.Click += new System.EventHandler(this.label1_Click);
+			this.label1.Click += new EventHandler(this.label1_Click);
 			//
 			// DebugDock
 			//
@@ -181,9 +181,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			return this;
 		}
 
-		public event SimPe.Events.ChangedResourceEvent ShowNewResource;
+		public event Events.ChangedResourceEvent ShowNewResource;
 
-		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es)
+		public void RefreshDock(object sender, Events.ResourceEventArgs es)
 		{
 			lbMem.Text = GC.GetTotalMemory(false).ToString("N0") + " Byte";
 		}
@@ -197,16 +197,16 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		#endregion
 
-		private void lbMem_Click(object sender, System.EventArgs e)
+		private void lbMem_Click(object sender, EventArgs e)
 		{
 			RefreshDock(null, null);
 		}
 
-		private void label2_Click(object sender, System.EventArgs e)
+		private void label2_Click(object sender, EventArgs e)
 		{
 		}
 
-		private void label1_Click(object sender, System.EventArgs e)
+		private void label1_Click(object sender, EventArgs e)
 		{
 			System.IO.StreamWriter sw = System.IO.File.CreateText(@"i:\replicated.txt");
 			string objname = System
@@ -220,16 +220,16 @@ namespace SimPe.Plugin.Tool.Dockable
 				System.IO.Path.GetFileName(objname)
 					+ "----------------------------------------"
 			);
-			SimPe.Interfaces.Files.IPackageFile pkg = SimPe.Packages.File.LoadFromFile(
+			Interfaces.Files.IPackageFile pkg = SimPe.Packages.File.LoadFromFile(
 				objname
 			);
 			FileTable.FileIndex.Load();
 			lbft.Items.Clear();
 
 			int[] ct = new int[3];
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pkg.Index)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.Index)
 			{
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
 					FileTable.FileIndex.FindFile(pfd, null);
 
 				bool copy = false;
@@ -239,7 +239,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 
 				foreach (
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
+					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
 				)
 				{
 					if (item.Package.FileName.Trim().ToLower() != objname)

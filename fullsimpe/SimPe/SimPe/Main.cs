@@ -30,7 +30,7 @@ namespace SimPe
 	/// <summary>
 	/// Summary description for MainForm.
 	/// </summary>
-	public partial class MainForm : System.Windows.Forms.Form
+	public partial class MainForm : Form
 	{
 		public MainForm()
 		{
@@ -141,7 +141,7 @@ namespace SimPe
 		{
 			plugger.ChangedGuiResourceEventHandler(
 				this,
-				new SimPe.Events.ResourceEventArgs(package)
+				new ResourceEventArgs(package)
 			);
 			resourceViewManager1.Package = package.Package;
 			package.UpdateRecentFileMenu(this.miRecent);
@@ -167,7 +167,7 @@ namespace SimPe
 
 			plugger.ChangedGuiResourceEventHandler(
 				this,
-				new SimPe.Events.ResourceEventArgs(package)
+				new ResourceEventArgs(package)
 			);
 			return true;
 		}
@@ -180,7 +180,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="e"></param>
 		/// <returns></returns>
-		string[] DragDropNames(System.Windows.Forms.DragEventArgs e)
+		string[] DragDropNames(DragEventArgs e)
 		{
 			Array a = (Array)e.Data.GetData(DataFormats.FileDrop);
 
@@ -238,7 +238,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void DragEnterFile(object sender, System.Windows.Forms.DragEventArgs e)
+		private void DragEnterFile(object sender, DragEventArgs e)
 		{
 			if (e.Data.GetDataPresent(DataFormats.FileDrop))
 			{
@@ -259,7 +259,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void DragDropFile(object sender, System.Windows.Forms.DragEventArgs e)
+		private void DragDropFile(object sender, DragEventArgs e)
 		{
 			try
 			{
@@ -272,7 +272,7 @@ namespace SimPe
 		}
 		#endregion
 
-		void Activate_miOpen(object sender, System.EventArgs e)
+		void Activate_miOpen(object sender, EventArgs e)
 		{
 			// ofd.Filter = ExtensionProvider.BuildFilterString(
 			// 	new SimPe.ExtensionType[] {
@@ -287,7 +287,7 @@ namespace SimPe
 			}
 		}
 
-		private void SetFilter(object sender, System.EventArgs e)
+		private void SetFilter(object sender, EventArgs e)
 		{
 			try
 			{
@@ -318,12 +318,12 @@ namespace SimPe
 			);
 		}
 
-		private void Activate_miAbout(object sender, System.EventArgs e)
+		private void Activate_miAbout(object sender, EventArgs e)
 		{
 			About.ShowAbout();
 		}
 
-		private void dc_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
+		private void dc_MouseUp(object sender, MouseEventArgs e)
 		{
 			if (
 				e.Button == MouseButtons.Middle
@@ -337,7 +337,7 @@ namespace SimPe
 
 		private void ResourceListKeyUp(
 			object sender,
-			System.Windows.Forms.KeyEventArgs e
+			KeyEventArgs e
 		)
 		{
 			if (e.KeyCode == Keys.H && e.Control && e.Alt && e.Shift)
@@ -347,7 +347,7 @@ namespace SimPe
 			}
 		}
 
-		private void Activate_miNew(object sender, System.EventArgs e)
+		private void Activate_miNew(object sender, EventArgs e)
 		{
 			if (this.ClosePackage())
 			{
@@ -362,7 +362,7 @@ namespace SimPe
 
 		private void lv_SelectionChanged(object sender, EventArgs e)
 		{
-			SimPe.Events.ResourceEventArgs res = new SimPe.Events.ResourceEventArgs(
+			ResourceEventArgs res = new ResourceEventArgs(
 				package
 			);
 			try
@@ -374,10 +374,10 @@ namespace SimPe
 				else
 				{
 					foreach (
-						SimPe.Windows.Forms.NamedPackedFileDescriptor lvi in lv.SelectedItems
+						Windows.Forms.NamedPackedFileDescriptor lvi in lv.SelectedItems
 					)
 					{
-						res.Items.Add(new SimPe.Events.ResourceContainer(lvi.Resource));
+						res.Items.Add(new ResourceContainer(lvi.Resource));
 					}
 				}
 			}
@@ -390,8 +390,8 @@ namespace SimPe
 		}
 
 		private void lv_SelectResource(
-			SimPe.Windows.Forms.ResourceListViewExt sender,
-			SimPe.Windows.Forms.ResourceListViewExt.SelectResourceEventArgs e
+			Windows.Forms.ResourceListViewExt sender,
+			Windows.Forms.ResourceListViewExt.SelectResourceEventArgs e
 		)
 		{
 			if (lv.SelectedItem != null)
@@ -402,7 +402,7 @@ namespace SimPe
 			lv.Focus();
 		}
 
-		private void ShowPreferences(object sender, System.EventArgs e)
+		private void ShowPreferences(object sender, EventArgs e)
 		{
 			OptionForm of = new OptionForm();
 			of.ResetLayout += new EventHandler(ResetLayout);
@@ -427,13 +427,13 @@ namespace SimPe
 			{
 				if (pk.Result.ChangedPackage)
 				{
-					package.LoadFromPackage((SimPe.Packages.GeneratableFile)pk.Package);
+					package.LoadFromPackage((Packages.GeneratableFile)pk.Package);
 				}
 
 				if (pk.Result.ChangedFile)
 				{
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii =
-						new SimPe.Plugin.FileIndexItem(pk.FileDescriptor, pk.Package);
+					Interfaces.Scenegraph.IScenegraphFileIndexItem fii =
+						new Plugin.FileIndexItem(pk.FileDescriptor, pk.Package);
 					resloader.AddResource(fii, true);
 					remote.FireLoadEvent(fii);
 				}
@@ -444,7 +444,7 @@ namespace SimPe
 			}
 		}
 
-		private void CreateNewDocumentContainer(object sender, System.EventArgs e)
+		private void CreateNewDocumentContainer(object sender, EventArgs e)
 		{
 			DockPanel doc = new DockPanel();
 			doc.Text = "New Container";
@@ -488,7 +488,7 @@ namespace SimPe
 			}
 		}
 
-		private void Activate_miNoMeta(object sender, System.EventArgs e)
+		private void Activate_miNoMeta(object sender, EventArgs e)
 		{
 			ToolStripMenuItem mi = (ToolStripMenuItem)sender;
 			mi.Checked = !mi.Checked;
@@ -496,7 +496,7 @@ namespace SimPe
 			Helper.WindowsRegistry.LoadMetaInfo = !mi.Checked;
 		}
 
-		private void Activate_miFileNames(object sender, System.EventArgs e)
+		private void Activate_miFileNames(object sender, EventArgs e)
 		{
 			ToolStripMenuItem mi = (ToolStripMenuItem)sender;
 			mi.Checked = !mi.Checked;
@@ -504,12 +504,12 @@ namespace SimPe
 			Helper.WindowsRegistry.DecodeFilenamesState = mi.Checked;
 		}
 
-		private void Activate_miExit(object sender, System.EventArgs e)
+		private void Activate_miExit(object sender, EventArgs e)
 		{
 			Close();
 		}
 
-		private void Activate_miRunSims(object sender, System.EventArgs e)
+		private void Activate_miRunSims(object sender, EventArgs e)
 		{
 			if (!File.Exists(SimPe.PathProvider.Global.SimsApplication))
 			{
@@ -529,15 +529,15 @@ namespace SimPe
 			p.Start();
 		}
 
-		private void Activate_miSave(object sender, System.EventArgs e)
+		private void Activate_miSave(object sender, EventArgs e)
 		{
 			package.Save();
 		}
 
-		private void Activate_miSaveAs(object sender, System.EventArgs e)
+		private void Activate_miSaveAs(object sender, EventArgs e)
 		{
 			sfd.Filter = ExtensionProvider.BuildFilterString(
-				new SimPe.ExtensionType[]
+				new ExtensionType[]
 				{
 					SimPe.ExtensionType.Package,
 					SimPe.ExtensionType.DisabledPackage,
@@ -552,7 +552,7 @@ namespace SimPe
 			}
 		}
 
-		private void Activate_miClose(object sender, System.EventArgs e)
+		private void Activate_miClose(object sender, EventArgs e)
 		{
 			if (ClosePackage())
 			{
@@ -571,7 +571,7 @@ namespace SimPe
 
 		private void rh_LoadedResource(object sender, ResourceEventArgs es)
 		{
-			foreach (SimPe.Events.ResourceContainer e in es)
+			foreach (ResourceContainer e in es)
 			{
 				if (e.HasResource)
 				{
@@ -580,7 +580,7 @@ namespace SimPe
 			}
 		}
 
-		private void Activate_miOpenInEp(object sender, System.EventArgs e)
+		private void Activate_miOpenInEp(object sender, EventArgs e)
 		{
 			ToolStripMenuItem mi = sender as ToolStripMenuItem;
 			if (mi != null)
@@ -598,7 +598,7 @@ namespace SimPe
 			}
 		}
 
-		private void Activate_miOpenSimsRes(object sender, System.EventArgs e)
+		private void Activate_miOpenSimsRes(object sender, EventArgs e)
 		{
 			ofd.InitialDirectory = Path.Combine(
 				SimPe.PathProvider.Global[Expansions.BaseGame].InstallFolder,
@@ -608,7 +608,7 @@ namespace SimPe
 			this.Activate_miOpen(sender, e);
 		}
 
-		private void Activate_miOpenDownloads(object sender, System.EventArgs e)
+		private void Activate_miOpenDownloads(object sender, EventArgs e)
 		{
 			if (
 				SimPe
@@ -637,7 +637,7 @@ namespace SimPe
 			this.Activate_miOpen(sender, e);
 		}
 
-		private void SetRcolNameFilter(object sender, System.EventArgs e)
+		private void SetRcolNameFilter(object sender, EventArgs e)
 		{
 			filter.FilterGroup = false;
 			try
@@ -655,7 +655,7 @@ namespace SimPe
 			;
 		}
 
-		private void SetSemiGlobalFilter(object sender, System.EventArgs e)
+		private void SetSemiGlobalFilter(object sender, EventArgs e)
 		{
 			filter.FilterInstance = false;
 			try
@@ -693,10 +693,10 @@ namespace SimPe
 			}
 		}
 
-		private void Activate_miSaveCopyAs(object sender, System.EventArgs e)
+		private void Activate_miSaveCopyAs(object sender, EventArgs e)
 		{
 			sfd.Filter = ExtensionProvider.BuildFilterString(
-				new SimPe.ExtensionType[]
+				new ExtensionType[]
 				{
 					SimPe.ExtensionType.Package,
 					SimPe.ExtensionType.DisabledPackage,
@@ -707,13 +707,13 @@ namespace SimPe
 			sfd.FileName = package.FileName;
 			if (sfd.ShowDialog() == DialogResult.OK)
 			{
-				SimPe.Packages.GeneratableFile gf = (SimPe.Packages.GeneratableFile)
+				Packages.GeneratableFile gf = (Packages.GeneratableFile)
 					package.Package.Clone();
 				gf.Save(sfd.FileName);
 			}
 		}
 
-		private void Activate_miObjects(object sender, System.EventArgs e)
+		private void Activate_miObjects(object sender, EventArgs e)
 		{
 			package.LoadFromFile(
 				System.IO.Path.Combine(
@@ -723,17 +723,17 @@ namespace SimPe
 			);
 		}
 
-		private void Activate_biReset(object sender, System.EventArgs e)
+		private void Activate_biReset(object sender, EventArgs e)
 		{
 			ResetLayout(null, null);
 		}
 
-		private void Activate_miReload(object sender, System.EventArgs e)
+		private void Activate_miReload(object sender, EventArgs e)
 		{
 			ReloadLayout();
 		}
 
-		void MakeFloatable(Ambertation.Windows.Forms.DockPanel dw, bool fl)
+		void MakeFloatable(DockPanel dw, bool fl)
 		{
 			dw.ShowCloseButton = fl;
 			dw.ShowCollapseButton = fl;

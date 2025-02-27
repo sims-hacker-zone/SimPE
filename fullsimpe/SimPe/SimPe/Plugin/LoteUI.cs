@@ -7,7 +7,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// This class is used to fill the UI for this FileType with Data
 	/// </summary>
-	public partial class LoteUI : SimPe.Windows.Forms.WrapperBaseControl, IPackedFileUI
+	public partial class LoteUI : Windows.Forms.WrapperBaseControl, IPackedFileUI
 	{
 		protected new Lot Wrapper => base.Wrapper as Lot;
 		public Lot TPFW => (Lot)Wrapper;

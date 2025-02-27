@@ -26,7 +26,7 @@ namespace SimPe.Plugin.Tool
 	/// <summary>
 	/// Zusammenfassung für ImportSemiTool.
 	/// </summary>
-	public class CreateListFromSelectionTool : SimPe.Interfaces.IToolPlus
+	public class CreateListFromSelectionTool : Interfaces.IToolPlus
 	{
 		internal CreateListFromSelectionTool()
 		{
@@ -37,7 +37,7 @@ namespace SimPe.Plugin.Tool
 		public static void WriteHeader(
 			System.IO.StreamWriter sw,
 			Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Plugin.IFileWrapper wrapper
+			Interfaces.Plugin.IFileWrapper wrapper
 		)
 		{
 			sw.WriteLine(Serializer.SerializeTypeHeader(wrapper, pfd, true));
@@ -46,7 +46,7 @@ namespace SimPe.Plugin.Tool
 		public static void WriteItem(
 			System.IO.StreamWriter sw,
 			Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Plugin.IFileWrapper wrapper
+			Interfaces.Plugin.IFileWrapper wrapper
 		)
 		{
 			sw.WriteLine(Serializer.Serialize(wrapper, pfd, true));
@@ -54,7 +54,7 @@ namespace SimPe.Plugin.Tool
 
 		public static string ProcessItem(
 			System.IO.StreamWriter sw,
-			SimPe.Events.ResourceContainer e,
+			ResourceContainer e,
 			bool first
 		)
 		{
@@ -72,8 +72,8 @@ namespace SimPe.Plugin.Tool
 			try
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = e.Resource.FileDescriptor;
-				SimPe.Interfaces.Plugin.IFileWrapper wrapper =
-					(SimPe.Interfaces.Plugin.IFileWrapper)
+				Interfaces.Plugin.IFileWrapper wrapper =
+					(Interfaces.Plugin.IFileWrapper)
 						FileTable.WrapperRegistry.FindHandler(pfd.Type);
 				if (wrapper != null)
 				{
@@ -96,7 +96,7 @@ namespace SimPe.Plugin.Tool
 			return error;
 		}
 
-		public static void Execute(SimPe.Events.ResourceContainers es)
+		public static void Execute(ResourceContainers es)
 		{
 			//Select the Type
 			if (Helper.WindowsRegistry.ReportFormat == Registry.ReportFormats.CSV)
@@ -106,14 +106,14 @@ namespace SimPe.Plugin.Tool
 
 			System.Collections.Hashtable map = new System.Collections.Hashtable();
 
-			foreach (SimPe.Events.ResourceContainer e in es)
+			foreach (ResourceContainer e in es)
 			{
 				uint t = e.Resource.FileDescriptor.Type;
-				SimPe.Events.ResourceContainers o =
-					map[t] as SimPe.Events.ResourceContainers;
+				ResourceContainers o =
+					map[t] as ResourceContainers;
 				if (o == null)
 				{
-					o = new SimPe.Events.ResourceContainers();
+					o = new ResourceContainers();
 					map[t] = o;
 				}
 
@@ -132,11 +132,11 @@ namespace SimPe.Plugin.Tool
 			{
 				foreach (uint type in map.Keys)
 				{
-					SimPe.Events.ResourceContainers rc =
-						map[type] as SimPe.Events.ResourceContainers;
+					ResourceContainers rc =
+						map[type] as ResourceContainers;
 					bool first = true;
 
-					foreach (SimPe.Events.ResourceContainer e in rc)
+					foreach (ResourceContainer e in rc)
 					{
 						error += ProcessItem(sw, e, first);
 						WaitingScreen.UpdateMessage(

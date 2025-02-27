@@ -139,7 +139,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.rbhex.TabIndex = 6;
 			this.rbhex.Text = "Hexadecimal";
 			this.rbhex.UseVisualStyleBackColor = false;
-			this.rbhex.CheckedChanged += new System.EventHandler(this.DigitChanged);
+			this.rbhex.CheckedChanged += new EventHandler(this.DigitChanged);
 			//
 			// rbdec
 			//
@@ -167,7 +167,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.rbdec.TabIndex = 5;
 			this.rbdec.Text = "Decimal";
 			this.rbdec.UseVisualStyleBackColor = false;
-			this.rbdec.CheckedChanged += new System.EventHandler(this.DigitChanged);
+			this.rbdec.CheckedChanged += new EventHandler(this.DigitChanged);
 			//
 			// rbbin
 			//
@@ -195,7 +195,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.rbbin.TabIndex = 4;
 			this.rbbin.Text = "Binary";
 			this.rbbin.UseVisualStyleBackColor = false;
-			this.rbbin.CheckedChanged += new System.EventHandler(this.DigitChanged);
+			this.rbbin.CheckedChanged += new EventHandler(this.DigitChanged);
 			//
 			// button1
 			//
@@ -213,7 +213,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.button1.Size = new System.Drawing.Size(75, 23);
 			this.button1.TabIndex = 2;
 			this.button1.Text = "OK";
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.button1.Click += new EventHandler(this.button1_Click);
 			//
 			// button2
 			//
@@ -231,7 +231,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.button2.Size = new System.Drawing.Size(75, 23);
 			this.button2.TabIndex = 3;
 			this.button2.Text = "Cancel";
-			this.button2.Click += new System.EventHandler(this.button2_Click);
+			this.button2.Click += new EventHandler(this.button2_Click);
 			//
 			// SdscExtendedForm
 			//
@@ -261,7 +261,7 @@ namespace SimPe.PackedFiles.UserInterface
 		Ambertation.PropertyObjectBuilder pob;
 		Hashtable names;
 		bool propchanged;
-		SimPe.Plugin.WantNameLoader wnl;
+		Plugin.WantNameLoader wnl;
 		short[] shortdata;
 
 		string GetName(int i)
@@ -290,7 +290,7 @@ namespace SimPe.PackedFiles.UserInterface
 				);
 				if (System.IO.File.Exists(flname))
 				{
-					SimPe.Packages.File fl = SimPe.Packages.File.LoadFromFile(flname);
+					Packages.File fl = SimPe.Packages.File.LoadFromFile(flname);
 					Interfaces.Files.IPackedFileDescriptor pfd = fl.FindFile(
 						0x53545223,
 						0,
@@ -300,17 +300,17 @@ namespace SimPe.PackedFiles.UserInterface
 
 					if (pfd != null)
 					{
-						SimPe.PackedFiles.Wrapper.Str str = new Str();
+						Str str = new Str();
 						str.ProcessData(pfd, fl);
 
-						SimPe.PackedFiles.Wrapper.StrItemList list = str.LanguageItems(
+						StrItemList list = str.LanguageItems(
 							1
 						);
 						string xml = "<wantSimulator>" + Helper.lbr;
 						xml += "  <persondata>" + Helper.lbr;
 						for (int sid = 0; sid < list.Length; sid++)
 						{
-							SimPe.PackedFiles.Wrapper.StrToken si = list[sid];
+							StrToken si = list[sid];
 							xml +=
 								"    <persondata id=\""
 								+ (sid + 1).ToString()
@@ -322,7 +322,7 @@ namespace SimPe.PackedFiles.UserInterface
 						xml += "  </persondata>" + Helper.lbr;
 						xml += "</wantSimulator>" + Helper.lbr;
 
-						wnl = new SimPe.Plugin.WantNameLoader(xml);
+						wnl = new Plugin.WantNameLoader(xml);
 					}
 				}
 			}
@@ -330,7 +330,7 @@ namespace SimPe.PackedFiles.UserInterface
 			if (wnl == null)
 			{
 				// FileTable.FileIndex.Load(); // don't need this anymore
-				wnl = new SimPe.Plugin.WantNameLoader(version);
+				wnl = new Plugin.WantNameLoader(version);
 			}
 		}
 
@@ -359,7 +359,7 @@ namespace SimPe.PackedFiles.UserInterface
 			ArrayList ns = wnl.GetNames(SimPe.Plugin.WantType.Undefined);
 
 			int max = -1;
-			foreach (SimPe.Interfaces.IAlias a in ns)
+			foreach (Interfaces.IAlias a in ns)
 			{
 				max = (int)Math.Max(a.Id, max);
 				names[(int)a.Id] = a.Name;
@@ -423,7 +423,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		private void DigitChanged(object sender, System.EventArgs e)
+		private void DigitChanged(object sender, EventArgs e)
 		{
 			if (rbhex.Checked)
 			{
@@ -454,7 +454,7 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		/// <param name="wrp">the sdsc you want to show</param>
 		/// <returns>true, if something was changed</returns>
-		public static bool Execute(SimPe.PackedFiles.Wrapper.SDesc wrp)
+		public static bool Execute(SDesc wrp)
 		{
 			SdscExtendedForm f = new SdscExtendedForm();
 			f.LoadWantTable(wrp.Version);
@@ -481,13 +481,13 @@ namespace SimPe.PackedFiles.UserInterface
 
 		bool ok;
 
-		private void button1_Click(object sender, System.EventArgs e)
+		private void button1_Click(object sender, EventArgs e)
 		{
 			ok = true;
 			Close();
 		}
 
-		private void button2_Click(object sender, System.EventArgs e)
+		private void button2_Click(object sender, EventArgs e)
 		{
 			Close();
 		}

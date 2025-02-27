@@ -80,7 +80,7 @@ namespace SimPe.Plugin
 			{
 				if (tLightT == null)
 				{
-					tLightT = new SimPe.Plugin.TabPage.LightT();
+					tLightT = new TabPage.LightT();
 				}
 
 				return tLightT;
@@ -95,7 +95,7 @@ namespace SimPe.Plugin
 		{
 			if (tLightT == null)
 			{
-				tLightT = new SimPe.Plugin.TabPage.LightT();
+				tLightT = new TabPage.LightT();
 			}
 
 			tLightT.tb_lt_ver.Text = "0x" + Helper.HexString(this.version);

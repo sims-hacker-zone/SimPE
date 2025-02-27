@@ -29,13 +29,13 @@ namespace SimPe.Plugin
 	/// If a Plugin isn't returned, SimPe won't recognize it!
 	/// </remarks>
 	public class DownloadsToolFactory
-		: SimPe.Interfaces.Plugin.AbstractWrapperFactory,
-			SimPe.Interfaces.Plugin.IToolFactory,
-			SimPe.Interfaces.Plugin.ISettingsFactory
+		: Interfaces.Plugin.AbstractWrapperFactory,
+			Interfaces.Plugin.IToolFactory,
+			Interfaces.Plugin.ISettingsFactory
 	{
-		static SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fii,
+		static Interfaces.Scenegraph.IScenegraphFileIndex fii,
 			tfii;
-		internal static SimPe.Interfaces.Scenegraph.IScenegraphFileIndex FileIndex
+		internal static Interfaces.Scenegraph.IScenegraphFileIndex FileIndex
 		{
 			get
 			{
@@ -47,7 +47,7 @@ namespace SimPe.Plugin
 				return fii;
 			}
 		}
-		internal static SimPe.Interfaces.Scenegraph.IScenegraphFileIndex TeleportFileIndex
+		internal static Interfaces.Scenegraph.IScenegraphFileIndex TeleportFileIndex
 		{
 			get
 			{
@@ -75,7 +75,7 @@ namespace SimPe.Plugin
 		/// Returns a List of all available Plugins in this Package
 		/// </summary>
 		/// <returns>A List of all provided Plugins (=FileType Wrappers)</returns>
-		public override SimPe.Interfaces.IWrapper[] KnownWrappers
+		public override IWrapper[] KnownWrappers
 		{
 			get
 			{
@@ -96,9 +96,9 @@ namespace SimPe.Plugin
 				{
 					IToolPlugin[] tools =
 					{
-						new SimPe.Plugin.Tool.Window.InstallerTool(),
-						new SimPe.Plugin.Tool.SaveSims2PackTool(),
-						new SimPe.Plugin.Tool.LoadSims2PackTool(),
+						new Tool.Window.InstallerTool(),
+						new Tool.SaveSims2PackTool(),
+						new Tool.LoadSims2PackTool(),
 					};
 					return tools;
 				}
@@ -107,14 +107,14 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region ISettingsFactory Member
-		static SimPe.Plugin.Downloads.DownloadsSettings settings;
-		public static SimPe.Plugin.Downloads.DownloadsSettings Settings
+		static Downloads.DownloadsSettings settings;
+		public static Downloads.DownloadsSettings Settings
 		{
 			get
 			{
 				if (settings == null)
 				{
-					settings = new SimPe.Plugin.Downloads.DownloadsSettings();
+					settings = new Downloads.DownloadsSettings();
 				}
 
 				return settings;

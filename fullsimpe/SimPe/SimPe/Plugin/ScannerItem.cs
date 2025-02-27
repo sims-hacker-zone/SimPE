@@ -53,17 +53,17 @@ namespace SimPe.Plugin
 			}
 		}
 
-		public SimPe.Cache.CacheContainer ParentContainer
+		public CacheContainer ParentContainer
 		{
 			get;
 		}
 
-		SimPe.Packages.GeneratableFile pkg = null;
+		Packages.GeneratableFile pkg = null;
 
 		/// <summary>
 		/// Returns the Package Instance fo the given FileNmae
 		/// </summary>
-		public SimPe.Packages.GeneratableFile Package
+		public Packages.GeneratableFile Package
 		{
 			get
 			{
@@ -80,7 +80,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		public ScannerItem(PackageCacheItem pci, SimPe.Cache.CacheContainer cc)
+		public ScannerItem(PackageCacheItem pci, CacheContainer cc)
 		{
 			this.PackageCacheItem = pci;
 			this.ParentContainer = cc;

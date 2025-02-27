@@ -26,7 +26,7 @@ namespace SimPe.Wizards
 	/// <summary>
 	/// Abstract Implementaion of a Wizard Step
 	/// </summary>
-	[ToolboxBitmapAttribute(typeof(Panel))]
+	[ToolboxBitmap(typeof(Panel))]
 	public class WizardStepPanel : Panel
 	{
 		public WizardStepPanel()
@@ -60,7 +60,7 @@ namespace SimPe.Wizards
 		#region IWizardStep Member
 
 		[Browsable(false)]
-		public System.Windows.Forms.Control Client => this;
+		public Control Client => this;
 
 		internal void SetupParent(Wizard parent)
 		{

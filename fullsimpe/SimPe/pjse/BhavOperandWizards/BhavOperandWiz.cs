@@ -30,13 +30,13 @@ namespace pjse
 	/// <summary>
 	/// Container for bhavPrimWizPanel from BhavOperandWizProvider
 	/// </summary>
-	public class BhavOperandWiz : System.Windows.Forms.Form
+	public class BhavOperandWiz : Form
 	{
 		#region Form variables
 
-		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.Button OK;
-		private System.Windows.Forms.Button Cancel;
+		private Panel panel1;
+		private Button OK;
+		private Button Cancel;
 
 		/// <summary>
 		/// Erforderliche Designervariable.
@@ -69,17 +69,17 @@ namespace pjse
 
 		public Instruction Execute(BhavWiz i, int wizType)
 		{
-			pjse.ABhavOperandWiz wiz = null;
+			ABhavOperandWiz wiz = null;
 			switch (wizType)
 			{
 				case 0:
-					wiz = new pjse.BhavOperandWizards.BhavOperandWizRaw(i);
+					wiz = new BhavOperandWizards.BhavOperandWizRaw(i);
 					break;
 				case 1:
 					wiz = i.Wizard();
 					break;
 				default:
-					wiz = new pjse.BhavOperandWizards.BhavOperandWizDefault(i);
+					wiz = new BhavOperandWizards.BhavOperandWizDefault(i);
 					break;
 			}
 			if (wiz == null)
@@ -127,9 +127,9 @@ namespace pjse
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(BhavOperandWiz)
 				);
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.OK = new System.Windows.Forms.Button();
-			this.Cancel = new System.Windows.Forms.Button();
+			this.panel1 = new Panel();
+			this.OK = new Button();
+			this.Cancel = new Button();
 			this.SuspendLayout();
 			//
 			// panel1
@@ -226,7 +226,7 @@ namespace pjse.BhavOperandWizards
 		#endregion
 
 		#region Form event handlers
-		private void cbDataOwner_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void cbDataOwner_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
 			{
@@ -239,7 +239,7 @@ namespace pjse.BhavOperandWizards
 			}
 		}
 
-		private void cbPicker_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void cbPicker_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
 			{
@@ -253,12 +253,12 @@ namespace pjse.BhavOperandWizards
 			}
 		}
 
-		private void tbValue_Enter(object sender, System.EventArgs e)
+		private void tbValue_Enter(object sender, EventArgs e)
 		{
 			((TextBox)sender).SelectAll();
 		}
 
-		private void tbValue_TextChanged(object sender, System.EventArgs ev)
+		private void tbValue_TextChanged(object sender, EventArgs ev)
 		{
 			if (internalchg)
 			{
@@ -287,7 +287,7 @@ namespace pjse.BhavOperandWizards
 			tbValue_Validated(sender, null);
 		}
 
-		private void tbValue_Validated(object sender, System.EventArgs e)
+		private void tbValue_Validated(object sender, EventArgs e)
 		{
 			bool origstate = internalchg;
 			internalchg = true;
@@ -295,7 +295,7 @@ namespace pjse.BhavOperandWizards
 			internalchg = origstate;
 		}
 
-		private void ckbDecimal_CheckedChanged(object sender, System.EventArgs e)
+		private void ckbDecimal_CheckedChanged(object sender, EventArgs e)
 		{
 			if (this.ckbDecimal.Visible)
 			{
@@ -303,7 +303,7 @@ namespace pjse.BhavOperandWizards
 			}
 		}
 
-		private void ckbUseAttrPicker_CheckedChanged(object sender, System.EventArgs e)
+		private void ckbUseAttrPicker_CheckedChanged(object sender, EventArgs e)
 		{
 			if (this.ckbUseInstancePicker.Visible)
 			{
@@ -461,14 +461,14 @@ namespace pjse.BhavOperandWizards
 					cbDataOwner.SelectedIndex = dataOwner;
 				}
 
-				this.cbDataOwner.SelectedIndexChanged += new System.EventHandler(
+				this.cbDataOwner.SelectedIndexChanged += new EventHandler(
 					this.cbDataOwner_SelectedIndexChanged
 				);
 			}
 
 			if (this.cbPicker != null)
 			{
-				this.cbPicker.SelectedIndexChanged += new System.EventHandler(
+				this.cbPicker.SelectedIndexChanged += new EventHandler(
 					this.cbPicker_SelectedIndexChanged
 				);
 			}
@@ -479,13 +479,13 @@ namespace pjse.BhavOperandWizards
 				this.tbValue.Validating += new System.ComponentModel.CancelEventHandler(
 					this.tbValue_Validating
 				);
-				this.tbValue.Validated += new System.EventHandler(
+				this.tbValue.Validated += new EventHandler(
 					this.tbValue_Validated
 				);
-				this.tbValue.TextChanged += new System.EventHandler(
+				this.tbValue.TextChanged += new EventHandler(
 					this.tbValue_TextChanged
 				);
-				this.tbValue.Enter += new System.EventHandler(this.tbValue_Enter);
+				this.tbValue.Enter += new EventHandler(this.tbValue_Enter);
 			}
 
 			pjse.Settings.PJSE.DecimalDOValueChanged += new EventHandler(
@@ -495,7 +495,7 @@ namespace pjse.BhavOperandWizards
 			if (this.ckbDecimal != null)
 			{
 				this.ckbDecimal.Checked = Decimal;
-				this.ckbDecimal.CheckedChanged += new System.EventHandler(
+				this.ckbDecimal.CheckedChanged += new EventHandler(
 					this.ckbDecimal_CheckedChanged
 				);
 			}
@@ -507,7 +507,7 @@ namespace pjse.BhavOperandWizards
 			if (this.ckbUseInstancePicker != null)
 			{
 				this.ckbUseInstancePicker.Checked = UseInstancePicker;
-				this.ckbUseInstancePicker.CheckedChanged += new System.EventHandler(
+				this.ckbUseInstancePicker.CheckedChanged += new EventHandler(
 					this.ckbUseAttrPicker_CheckedChanged
 				);
 			}
@@ -547,21 +547,21 @@ namespace pjse.BhavOperandWizards
 		{
 			if (this.cbDataOwner != null)
 			{
-				this.cbDataOwner.SelectedIndexChanged -= new System.EventHandler(
+				this.cbDataOwner.SelectedIndexChanged -= new EventHandler(
 					this.cbDataOwner_SelectedIndexChanged
 				);
 			}
 
 			if (this.cbPicker != null)
 			{
-				this.cbPicker.SelectedIndexChanged -= new System.EventHandler(
+				this.cbPicker.SelectedIndexChanged -= new EventHandler(
 					this.cbPicker_SelectedIndexChanged
 				);
 			}
 
 			if (this.tbValue != null)
 			{
-				this.tbValue.TextChanged -= new System.EventHandler(
+				this.tbValue.TextChanged -= new EventHandler(
 					this.tbValue_TextChanged
 				);
 			}

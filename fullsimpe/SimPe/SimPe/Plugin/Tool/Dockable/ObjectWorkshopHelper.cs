@@ -26,7 +26,7 @@ namespace SimPe.Plugin.Tool.Dockable
 	/// <summary>
 	/// This is a basic Structure that describes what Features should be enabled during  a OW Task
 	/// </summary>
-	public class ObjectWorkshopSettings : SimPe.Plugin.CloneSettings
+	public class ObjectWorkshopSettings : CloneSettings
 	{
 		internal ObjectWorkshopSettings()
 			: base()
@@ -132,11 +132,11 @@ namespace SimPe.Plugin.Tool.Dockable
 	public class ObjectWorkshopHelper
 	{
 		internal static void PrepareForClone(
-			SimPe.Interfaces.Files.IPackageFile package,
-			SimPe.Interfaces.IAlias current,
-			out SimPe.Interfaces.IAlias a,
+			Interfaces.Files.IPackageFile package,
+			Interfaces.IAlias current,
+			out Interfaces.IAlias a,
 			out uint localgroup,
-			out SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			out Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
 			FileTable.FileIndex.Load();
@@ -147,7 +147,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			{
 				if (package.FileName != null)
 				{
-					SimPe.Interfaces.Wrapper.IGroupCacheItem gci =
+					Interfaces.Wrapper.IGroupCacheItem gci =
 						SimPe.FileTable.GroupCache.GetItem(package.FileName);
 					if (gci != null)
 					{
@@ -167,10 +167,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		protected static void PrepareForClone(
-			SimPe.Interfaces.Files.IPackageFile package,
-			out SimPe.Interfaces.IAlias a,
+			Interfaces.Files.IPackageFile package,
+			out Interfaces.IAlias a,
 			out uint localgroup,
-			out SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			out Interfaces.Files.IPackedFileDescriptor pfd,
 			out OWCloneSettings cs
 		)
 		{
@@ -202,11 +202,11 @@ namespace SimPe.Plugin.Tool.Dockable
 		/// </summary>
 		/// <param name="gid"></param>
 		/// <returns></returns>
-		public static SimPe.Packages.GeneratableFile CreatCloneByGroup(uint gid)
+		public static Packages.GeneratableFile CreatCloneByGroup(uint gid)
 		{
-			SimPe.Packages.GeneratableFile package =
+			Packages.GeneratableFile package =
 				SimPe.Packages.GeneratableFile.CreateNew();
-			SimPe.Interfaces.IAlias a;
+			Interfaces.IAlias a;
 			Interfaces.Files.IPackedFileDescriptor pfd;
 			uint localgroup;
 			OWCloneSettings cs;
@@ -235,11 +235,11 @@ namespace SimPe.Plugin.Tool.Dockable
 		/// </summary>
 		/// <param name="guid"></param>
 		/// <returns></returns>
-		public static SimPe.Packages.GeneratableFile CreatCloneByGuid(uint guid)
+		public static Packages.GeneratableFile CreatCloneByGuid(uint guid)
 		{
-			SimPe.Packages.GeneratableFile package =
+			Packages.GeneratableFile package =
 				SimPe.Packages.GeneratableFile.CreateNew();
-			SimPe.Interfaces.IAlias a;
+			Interfaces.IAlias a;
 			Interfaces.Files.IPackedFileDescriptor pfd;
 			uint localgroup;
 			OWCloneSettings cs;
@@ -250,17 +250,17 @@ namespace SimPe.Plugin.Tool.Dockable
 				out pfd,
 				out cs
 			);
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fii =
+			Interfaces.Scenegraph.IScenegraphFileIndex fii =
 				FileTable.FileIndex.AddNewChild();
 
-			SimPe.Cache.MemoryCacheItem mci =
+			Cache.MemoryCacheItem mci =
 				SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(guid);
 			if (mci != null)
 			{
 				localgroup = mci.FileDescriptor.Group;
 				if (localgroup == Data.MetaData.LOCAL_GROUP)
 				{
-					SimPe.Interfaces.Wrapper.IGroupCacheItem gci =
+					Interfaces.Wrapper.IGroupCacheItem gci =
 						SimPe.FileTable.GroupCache.GetItem(
 							mci.ParentCacheContainer.FileName
 						);
@@ -281,7 +281,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				ObjectWorkshopHelper.BaseClone(localgroup, package, false);
 			}
 
-			SimPe.Packages.GeneratableFile ret = ObjectWorkshopHelper.Start(
+			Packages.GeneratableFile ret = ObjectWorkshopHelper.Start(
 				package,
 				a,
 				ref pfd,
@@ -300,11 +300,11 @@ namespace SimPe.Plugin.Tool.Dockable
 		/// </summary>
 		/// <param name="cres"></param>
 		/// <returns></returns>
-		public static SimPe.Packages.GeneratableFile CreatCloneByCres(string cres)
+		public static Packages.GeneratableFile CreatCloneByCres(string cres)
 		{
-			SimPe.Packages.GeneratableFile package =
+			Packages.GeneratableFile package =
 				SimPe.Packages.GeneratableFile.CreateNew();
-			SimPe.Interfaces.IAlias a;
+			Interfaces.IAlias a;
 			Interfaces.Files.IPackedFileDescriptor pfd;
 			uint localgroup;
 			OWCloneSettings cs;
@@ -316,8 +316,8 @@ namespace SimPe.Plugin.Tool.Dockable
 				out cs
 			);
 
-			SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
-			str.FileDescriptor = new SimPe.Packages.PackedFileDescriptor();
+			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
+			str.FileDescriptor = new Packages.PackedFileDescriptor();
 			str.FileDescriptor.Type = Data.MetaData.STRING_FILE;
 			str.FileDescriptor.LongInstance = 0x85;
 			str.FileDescriptor.Group = 0x7F000000;
@@ -331,7 +331,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			str.FileName = "Model - Names";
 			str.Add(
-				new SimPe.PackedFiles.Wrapper.StrToken(
+				new PackedFiles.Wrapper.StrToken(
 					0,
 					(byte)Data.MetaData.Languages.English,
 					"",
@@ -339,7 +339,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				)
 			);
 			str.Add(
-				new SimPe.PackedFiles.Wrapper.StrToken(
+				new PackedFiles.Wrapper.StrToken(
 					1,
 					(byte)Data.MetaData.Languages.English,
 					name,
@@ -366,19 +366,19 @@ namespace SimPe.Plugin.Tool.Dockable
 		/// <param name="pfd"></param>
 		/// <param name="localgroup"></param>
 		/// <param name="onlydefault"></param>
-		protected static SimPe.Packages.GeneratableFile RecolorClone(
+		protected static Packages.GeneratableFile RecolorClone(
 			CloneSettings.BaseResourceType br,
-			SimPe.Packages.GeneratableFile ppkg,
+			Packages.GeneratableFile ppkg,
 			Interfaces.Files.IPackedFileDescriptor pfd,
 			uint localgroup,
 			ObjectWorkshopSettings settings,
 			bool pkgcontainsonlybase
 		)
 		{
-			SimPe.Packages.GeneratableFile package = null;
+			Packages.GeneratableFile package = null;
 			if (ppkg != null)
 			{
-				package = (SimPe.Packages.GeneratableFile)ppkg.Clone();
+				package = (Packages.GeneratableFile)ppkg.Clone();
 			}
 
 			if (ppkg == null || pkgcontainsonlybase)
@@ -395,11 +395,11 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 				else
 				{
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] fii =
+					Interfaces.Scenegraph.IScenegraphFileIndexItem[] fii =
 						FileTable.FileIndex.FindFile(pfd, null);
 					if (fii.Length > 0)
 					{
-						SimPe.Interfaces.Files.IPackedFileDescriptor cpfd = fii[0]
+						Interfaces.Files.IPackedFileDescriptor cpfd = fii[0]
 							.FileDescriptor.Clone();
 						cpfd = cpfd.Clone();
 						cpfd.UserData = fii[0]
@@ -450,7 +450,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					)
 					{
 						string[] names = Scenegraph.LoadParentModelNames(package, true);
-						SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+						Packages.File pkg = SimPe.Packages.File.LoadFromFile(
 							null
 						);
 
@@ -493,13 +493,13 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		static void LoadModelName(
 			ArrayList list,
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
-			SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
 			str.ProcessData(pfd, pkg);
-			SimPe.PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
+			PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
 			for (int i = 1; i < items.Length; i++)
 			{
 				list.Add(items[i].Title);
@@ -517,7 +517,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		/// <returns>The Modlename of that Object or null if none</returns>
 		public static string[] BaseClone(
 			uint localgroup,
-			SimPe.Packages.File package,
+			Packages.File package,
 			bool pkgcontainsbase
 		)
 		{
@@ -526,7 +526,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			if (pkgcontainsbase)
 			{
 				foreach (
-					SimPe.Interfaces.Files.IPackedFileDescriptor pfd in package.Index
+					Interfaces.Files.IPackedFileDescriptor pfd in package.Index
 				)
 				{
 					if (
@@ -549,8 +549,8 @@ namespace SimPe.Plugin.Tool.Dockable
 						item.FileDescriptor
 					);
 
-					SimPe.Packages.PackedFileDescriptor npfd =
-						new SimPe.Packages.PackedFileDescriptor();
+					Packages.PackedFileDescriptor npfd =
+						new Packages.PackedFileDescriptor();
 
 					npfd.UserData = file.UncompressedData;
 					npfd.Group = item.FileDescriptor.Group;
@@ -579,16 +579,16 @@ namespace SimPe.Plugin.Tool.Dockable
 			return refname;
 		}
 
-		protected static SimPe.Packages.GeneratableFile ReColorXObject(
+		protected static Packages.GeneratableFile ReColorXObject(
 			CloneSettings.BaseResourceType br,
-			SimPe.Packages.GeneratableFile pkg,
+			Packages.GeneratableFile pkg,
 			Interfaces.Files.IPackedFileDescriptor pfd,
 			uint localgroup,
 			ObjectWorkshopSettings settings
 		)
 		{
 			settings.KeepOriginalMesh = true;
-			SimPe.Packages.GeneratableFile package = pkg;
+			Packages.GeneratableFile package = pkg;
 			// Low Eps need packages in the Gmaes and the Download Folder
 
 			if (
@@ -614,7 +614,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			SaveFileDialog sfd = new SaveFileDialog();
 			sfd.Filter = ExtensionProvider.BuildFilterString(
-				new SimPe.ExtensionType[]
+				new ExtensionType[]
 				{
 					SimPe.ExtensionType.Package,
 					SimPe.ExtensionType.AllFiles,
@@ -654,16 +654,16 @@ namespace SimPe.Plugin.Tool.Dockable
 			return package;
 		}
 
-		protected static SimPe.Packages.GeneratableFile ReColor(
+		protected static Packages.GeneratableFile ReColor(
 			CloneSettings.BaseResourceType br,
-			SimPe.Packages.GeneratableFile pkg,
+			Packages.GeneratableFile pkg,
 			Interfaces.Files.IPackedFileDescriptor pfd,
 			uint localgroup,
 			ObjectWorkshopSettings settings,
 			bool pkgcontainsonlybase
 		)
 		{
-			SimPe.Packages.GeneratableFile package = pkg;
+			Packages.GeneratableFile package = pkg;
 			// Low Eps need packages in the Gmaes and the Download Folder
 
 			if (
@@ -689,7 +689,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			SaveFileDialog sfd = new SaveFileDialog();
 			sfd.Filter = ExtensionProvider.BuildFilterString(
-				new SimPe.ExtensionType[]
+				new ExtensionType[]
 				{
 					SimPe.ExtensionType.Package,
 					SimPe.ExtensionType.AllFiles,
@@ -722,7 +722,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				WaitingScreen.Stop();
 			}
 
-			SimPe.Packages.GeneratableFile npackage =
+			Packages.GeneratableFile npackage =
 				SimPe.Packages.GeneratableFile.CreateNew(); //.LoadFromStream((System.IO.BinaryReader)null);
 
 			//Create the Templae for an additional MMAT
@@ -744,9 +744,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			return package;
 		}
 
-		public static SimPe.Packages.GeneratableFile Start(
-			SimPe.Packages.GeneratableFile pkg,
-			SimPe.Interfaces.IAlias a,
+		public static Packages.GeneratableFile Start(
+			Packages.GeneratableFile pkg,
+			Interfaces.IAlias a,
 			ref Interfaces.Files.IPackedFileDescriptor pfd,
 			uint localgroup,
 			ObjectWorkshopSettings settings
@@ -755,17 +755,17 @@ namespace SimPe.Plugin.Tool.Dockable
 			return Start(pkg, a, ref pfd, localgroup, settings, false);
 		}
 
-		public static SimPe.Packages.GeneratableFile Start(
-			SimPe.Packages.GeneratableFile pkg,
-			SimPe.Interfaces.IAlias a,
+		public static Packages.GeneratableFile Start(
+			Packages.GeneratableFile pkg,
+			Interfaces.IAlias a,
 			ref Interfaces.Files.IPackedFileDescriptor pfd,
 			uint localgroup,
 			ObjectWorkshopSettings settings,
 			bool containsonlybaseclone
 		)
 		{
-			SimPe.Packages.GeneratableFile package = pkg;
-			SimPe.Plugin.CloneSettings.BaseResourceType br = SimPe
+			Packages.GeneratableFile package = pkg;
+			CloneSettings.BaseResourceType br = SimPe
 				.Plugin
 				.CloneSettings
 				.BaseResourceType
@@ -796,7 +796,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					FixVersion.UniversityReady,
 					settings.RemoveNonDefaultTextReferences
 				);
-				System.Collections.Hashtable map = null;
+				Hashtable map = null;
 
 				if (cs.FixResources)
 				{
@@ -808,7 +808,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 					SaveFileDialog sfd = new SaveFileDialog();
 					sfd.Filter = ExtensionProvider.BuildFilterString(
-						new SimPe.ExtensionType[]
+						new ExtensionType[]
 						{
 							SimPe.ExtensionType.Package,
 							SimPe.ExtensionType.AllFiles,
@@ -869,7 +869,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				pfd = null;
 				if (package != null)
 				{
-					SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds =
+					Interfaces.Files.IPackedFileDescriptor[] pfds =
 						package.FindFiles(Data.MetaData.OBJD_FILE);
 					if (pfds.Length > 0)
 					{
@@ -892,7 +892,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				pfd = null;
 				if (package != null)
 				{
-					SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds =
+					Interfaces.Files.IPackedFileDescriptor[] pfds =
 						package.FindFiles(Data.MetaData.TXTR);
 					if (pfds.Length > 0)
 					{
@@ -925,10 +925,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		/// <param name="cs"></param>
 		/// <param name="cpf"></param>
 		/// <returns>ResourceDescriptor for the references String</returns>
-		protected static SimPe.Interfaces.Files.IPackedFileDescriptor UpdateDescription(
+		protected static Interfaces.Files.IPackedFileDescriptor UpdateDescription(
 			OWCloneSettings cs,
-			SimPe.Packages.GeneratableFile package,
-			SimPe.PackedFiles.Wrapper.ExtObjd obj
+			Packages.GeneratableFile package,
+			PackedFiles.Wrapper.ExtObjd obj
 		)
 		{
 			obj.Price = cs.Price;
@@ -938,7 +938,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			obj.Data[0x25] = 0; // self depreciation
 			obj.Data[0x26] = (short)Math.Floor(cs.Price * 0.40); // depreciation limit
 			obj.SynchronizeUserData();
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
+			Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
 				Data.MetaData.CTSS_FILE,
 				0,
 				obj.FileDescriptor.Group,
@@ -954,10 +954,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		/// <param name="cs"></param>
 		/// <param name="cpf"></param>
 		/// <returns>ResourceDescriptor for the references String</returns>
-		protected static SimPe.Interfaces.Files.IPackedFileDescriptor UpdateDescription(
+		protected static Interfaces.Files.IPackedFileDescriptor UpdateDescription(
 			OWCloneSettings cs,
-			SimPe.Packages.GeneratableFile package,
-			SimPe.PackedFiles.Wrapper.Cpf cpf
+			Packages.GeneratableFile package,
+			PackedFiles.Wrapper.Cpf cpf
 		)
 		{
 			cpf.GetSaveItem("cost").UIntegerValue = (uint)cs.Price;
@@ -971,7 +971,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				.Replace("\r", " ");
 			cpf.SynchronizeUserData();
 
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
+			Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
 				cpf.GetSaveItem("stringsetrestypeid").UIntegerValue,
 				0,
 				cpf.GetSaveItem("stringsetgroupid").UIntegerValue,
@@ -983,14 +983,14 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		protected static void UpdateDescription(
 			OWCloneSettings cs,
-			SimPe.PackedFiles.Wrapper.Str str
+			PackedFiles.Wrapper.Str str
 		)
 		{
 			str.ClearNonDefault();
 			while (str.Items.Length < 2)
 			{
 				str.Add(
-					new SimPe.PackedFiles.Wrapper.StrToken(str.Items.Length, 1, "", "")
+					new PackedFiles.Wrapper.StrToken(str.Items.Length, 1, "", "")
 				);
 			}
 
@@ -1002,21 +1002,21 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		protected static void UpdateDescription(
 			OWCloneSettings cs,
-			SimPe.Packages.GeneratableFile package
+			Packages.GeneratableFile package
 		)
 		{
 			//change the price in the OBJd
-			SimPe.PackedFiles.Wrapper.ExtObjd obj =
-				new SimPe.PackedFiles.Wrapper.ExtObjd();
-			SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
+			PackedFiles.Wrapper.ExtObjd obj =
+				new PackedFiles.Wrapper.ExtObjd();
+			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
+			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
 				Data.MetaData.OBJD_FILE
 			);
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				obj.ProcessData(pfd, package);
 
-				SimPe.Interfaces.Files.IPackedFileDescriptor spfd = UpdateDescription(
+				Interfaces.Files.IPackedFileDescriptor spfd = UpdateDescription(
 					cs,
 					package,
 					obj
@@ -1037,14 +1037,14 @@ namespace SimPe.Plugin.Tool.Dockable
 				Data.MetaData.XFLR,
 				Data.MetaData.XOBJ,
 			};
-			SimPe.PackedFiles.Wrapper.Cpf cpf = new SimPe.PackedFiles.Wrapper.Cpf();
+			PackedFiles.Wrapper.Cpf cpf = new PackedFiles.Wrapper.Cpf();
 			foreach (uint t in types)
 			{
 				pfds = package.FindFiles(t);
-				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					cpf.ProcessData(pfd, package);
-					SimPe.Interfaces.Files.IPackedFileDescriptor spfd =
+					Interfaces.Files.IPackedFileDescriptor spfd =
 						UpdateDescription(cs, package, cpf);
 
 					if (spfd != null)

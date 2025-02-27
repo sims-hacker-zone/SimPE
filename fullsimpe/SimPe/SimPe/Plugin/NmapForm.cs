@@ -25,7 +25,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for NmapForm.
 	/// </summary>
-	public class NmapForm : System.Windows.Forms.Form
+	public class NmapForm : Form
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -72,26 +72,26 @@ namespace SimPe.Plugin
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(NmapForm));
-			this.wrapperPanel = new System.Windows.Forms.Panel();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-			this.tbfindname = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.btref = new System.Windows.Forms.Button();
-			this.gbtypes = new System.Windows.Forms.GroupBox();
-			this.pntypes = new System.Windows.Forms.Panel();
-			this.tbname = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.lladd = new System.Windows.Forms.LinkLabel();
-			this.lldelete = new System.Windows.Forms.LinkLabel();
-			this.tbinstance = new System.Windows.Forms.TextBox();
-			this.label11 = new System.Windows.Forms.Label();
-			this.label9 = new System.Windows.Forms.Label();
-			this.tbgroup = new System.Windows.Forms.TextBox();
-			this.llcommit = new System.Windows.Forms.LinkLabel();
-			this.lblist = new System.Windows.Forms.ListBox();
-			this.panel3 = new System.Windows.Forms.Panel();
-			this.sfd = new System.Windows.Forms.SaveFileDialog();
+			this.wrapperPanel = new Panel();
+			this.groupBox1 = new GroupBox();
+			this.linkLabel1 = new LinkLabel();
+			this.tbfindname = new TextBox();
+			this.label3 = new Label();
+			this.btref = new Button();
+			this.gbtypes = new GroupBox();
+			this.pntypes = new Panel();
+			this.tbname = new TextBox();
+			this.label2 = new Label();
+			this.lladd = new LinkLabel();
+			this.lldelete = new LinkLabel();
+			this.tbinstance = new TextBox();
+			this.label11 = new Label();
+			this.label9 = new Label();
+			this.tbgroup = new TextBox();
+			this.llcommit = new LinkLabel();
+			this.lblist = new ListBox();
+			this.panel3 = new Panel();
+			this.sfd = new SaveFileDialog();
 			this.wrapperPanel.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.gbtypes.SuspendLayout();
@@ -126,7 +126,7 @@ namespace SimPe.Plugin
 			this.linkLabel1.TabStop = true;
 			this.linkLabel1.UseCompatibleTextRendering = true;
 			this.linkLabel1.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.CreateTextFile
 				);
 			//
@@ -134,7 +134,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbfindname, "tbfindname");
 			this.tbfindname.Name = "tbfindname";
-			this.tbfindname.TextChanged += new System.EventHandler(
+			this.tbfindname.TextChanged += new EventHandler(
 				this.tbfindname_TextChanged
 			);
 			//
@@ -147,7 +147,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.btref, "btref");
 			this.btref.Name = "btref";
-			this.btref.Click += new System.EventHandler(this.ShowPackageSelector);
+			this.btref.Click += new EventHandler(this.ShowPackageSelector);
 			//
 			// gbtypes
 			//
@@ -175,7 +175,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbname, "tbname");
 			this.tbname.Name = "tbname";
-			this.tbname.TextChanged += new System.EventHandler(this.AutoChange);
+			this.tbname.TextChanged += new EventHandler(this.AutoChange);
 			//
 			// label2
 			//
@@ -189,7 +189,7 @@ namespace SimPe.Plugin
 			this.lladd.TabStop = true;
 			this.lladd.UseCompatibleTextRendering = true;
 			this.lladd.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.AddFile);
+				new LinkLabelLinkClickedEventHandler(this.AddFile);
 			//
 			// lldelete
 			//
@@ -198,7 +198,7 @@ namespace SimPe.Plugin
 			this.lldelete.TabStop = true;
 			this.lldelete.UseCompatibleTextRendering = true;
 			this.lldelete.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.DeleteFile
 				);
 			//
@@ -206,7 +206,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbinstance, "tbinstance");
 			this.tbinstance.Name = "tbinstance";
-			this.tbinstance.TextChanged += new System.EventHandler(this.AutoChange);
+			this.tbinstance.TextChanged += new EventHandler(this.AutoChange);
 			//
 			// label11
 			//
@@ -222,7 +222,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbgroup, "tbgroup");
 			this.tbgroup.Name = "tbgroup";
-			this.tbgroup.TextChanged += new System.EventHandler(this.AutoChange);
+			this.tbgroup.TextChanged += new EventHandler(this.AutoChange);
 			//
 			// llcommit
 			//
@@ -230,7 +230,7 @@ namespace SimPe.Plugin
 			this.llcommit.Name = "llcommit";
 			this.llcommit.TabStop = true;
 			this.llcommit.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.ChangeFile
 				);
 			//
@@ -239,13 +239,13 @@ namespace SimPe.Plugin
 			this.lblist.AllowDrop = true;
 			resources.ApplyResources(this.lblist, "lblist");
 			this.lblist.Name = "lblist";
-			this.lblist.SelectedIndexChanged += new System.EventHandler(
+			this.lblist.SelectedIndexChanged += new EventHandler(
 				this.SelectFile
 			);
-			this.lblist.DragDrop += new System.Windows.Forms.DragEventHandler(
+			this.lblist.DragDrop += new DragEventHandler(
 				this.PackageItemDrop
 			);
-			this.lblist.DragEnter += new System.Windows.Forms.DragEventHandler(
+			this.lblist.DragEnter += new DragEventHandler(
 				this.PackageItemDragEnter
 			);
 			//
@@ -275,30 +275,30 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		internal System.Windows.Forms.Panel wrapperPanel;
-		internal System.Windows.Forms.ListBox lblist;
-		private System.Windows.Forms.Panel panel3;
-		private System.Windows.Forms.GroupBox gbtypes;
-		internal System.Windows.Forms.LinkLabel lladd;
-		internal System.Windows.Forms.LinkLabel lldelete;
-		internal System.Windows.Forms.TextBox tbinstance;
-		private System.Windows.Forms.Label label11;
-		private System.Windows.Forms.Label label9;
-		internal System.Windows.Forms.TextBox tbgroup;
-		internal System.Windows.Forms.LinkLabel llcommit;
-		private System.Windows.Forms.Panel pntypes;
-		private System.Windows.Forms.Label label2;
-		internal System.Windows.Forms.TextBox tbname;
-		private System.Windows.Forms.Button btref;
-		private System.Windows.Forms.GroupBox groupBox1;
-		internal System.Windows.Forms.TextBox tbfindname;
-		private System.Windows.Forms.Label label3;
-		internal System.Windows.Forms.LinkLabel linkLabel1;
-		private System.Windows.Forms.SaveFileDialog sfd;
+		internal Panel wrapperPanel;
+		internal ListBox lblist;
+		private Panel panel3;
+		private GroupBox gbtypes;
+		internal LinkLabel lladd;
+		internal LinkLabel lldelete;
+		internal TextBox tbinstance;
+		private Label label11;
+		private Label label9;
+		internal TextBox tbgroup;
+		internal LinkLabel llcommit;
+		private Panel pntypes;
+		private Label label2;
+		internal TextBox tbname;
+		private Button btref;
+		private GroupBox groupBox1;
+		internal TextBox tbfindname;
+		private Label label3;
+		internal LinkLabel linkLabel1;
+		private SaveFileDialog sfd;
 
-		internal SimPe.Plugin.Nmap wrapper;
+		internal Nmap wrapper;
 
-		private void SelectFile(object sender, System.EventArgs e)
+		private void SelectFile(object sender, EventArgs e)
 		{
 			llcommit.Enabled = false;
 			lldelete.Enabled = false;
@@ -340,7 +340,7 @@ namespace SimPe.Plugin
 
 		private void ChangeFile(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			try
@@ -380,7 +380,7 @@ namespace SimPe.Plugin
 
 		private void AddFile(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			lblist.SelectedIndex = -1;
@@ -390,7 +390,7 @@ namespace SimPe.Plugin
 
 		private void DeleteFile(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			llcommit.Enabled = false;
@@ -406,7 +406,7 @@ namespace SimPe.Plugin
 			lblist.Items.Remove(lblist.Items[lblist.SelectedIndex]);
 		}
 
-		private void AutoChange(object sender, System.EventArgs e)
+		private void AutoChange(object sender, EventArgs e)
 		{
 			if (tbgroup.Tag != null)
 			{
@@ -422,7 +422,7 @@ namespace SimPe.Plugin
 			tbgroup.Tag = null;
 		}
 
-		private void CommitAll(object sender, System.EventArgs e)
+		private void CommitAll(object sender, EventArgs e)
 		{
 			try
 			{
@@ -447,15 +447,15 @@ namespace SimPe.Plugin
 		}
 
 		#region Package Selector
-		private void ShowPackageSelector(object sender, System.EventArgs e)
+		private void ShowPackageSelector(object sender, EventArgs e)
 		{
-			SimPe.PackageSelectorForm form = new SimPe.PackageSelectorForm();
+			PackageSelectorForm form = new PackageSelectorForm();
 			form.Execute(wrapper.Package);
 		}
 
 		private void PackageItemDragEnter(object sender, DragEventArgs e)
 		{
-			if (e.Data.GetDataPresent(typeof(SimPe.Packages.PackedFileDescriptor)))
+			if (e.Data.GetDataPresent(typeof(Packages.PackedFileDescriptor)))
 			{
 				e.Effect = DragDropEffects.Copy;
 			}
@@ -467,14 +467,14 @@ namespace SimPe.Plugin
 
 		private void PackageItemDrop(
 			object sender,
-			System.Windows.Forms.DragEventArgs e
+			DragEventArgs e
 		)
 		{
 			try
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = null;
 				pfd = (Interfaces.Files.IPackedFileDescriptor)
-					e.Data.GetData(typeof(SimPe.Packages.PackedFileDescriptor));
+					e.Data.GetData(typeof(Packages.PackedFileDescriptor));
 
 				NmapItem nmi = new NmapItem(wrapper);
 				nmi.Group = pfd.Group;
@@ -491,7 +491,7 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		private void tbfindname_TextChanged(object sender, System.EventArgs e)
+		private void tbfindname_TextChanged(object sender, EventArgs e)
 		{
 			string name = tbfindname.Text.Trim().ToLower();
 			for (int i = 0; i < lblist.Items.Count; i++)
@@ -514,7 +514,7 @@ namespace SimPe.Plugin
 
 		private void CreateTextFile(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			sfd.FileName =

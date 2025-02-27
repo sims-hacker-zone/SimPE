@@ -30,7 +30,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// All known Want Flags
 	/// </summary>
-	public class WantFlags : SimPe.FlagBase
+	public class WantFlags : FlagBase
 	{
 		internal WantFlags(ushort val)
 			: base(val) { }

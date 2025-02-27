@@ -28,7 +28,7 @@ using SimPe.Interfaces.Files;
 
 namespace pj
 {
-	public class BodyMeshExtractor : SimPe.Interfaces.AbstractTool, ITool
+	public class BodyMeshExtractor : AbstractTool, ITool
 	{
 		private static List<string> packs = null;
 
@@ -539,8 +539,8 @@ namespace pj
 		}
 
 		public SimPe.Interfaces.Plugin.IToolResult ShowDialog(
-			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			ref SimPe.Interfaces.Files.IPackageFile package
+			ref IPackedFileDescriptor pfd,
+			ref IPackageFile package
 		)
 		{
 			currentPackage = package;

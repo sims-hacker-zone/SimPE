@@ -26,13 +26,13 @@ namespace pjse.BhavOperandWizards.Wiz0x0001
 	/// <summary>
 	/// Zusammenfassung f�r BhavInstruction.
 	/// </summary>
-	internal class UI : System.Windows.Forms.Form, iBhavOperandWizForm
+	internal class UI : Form, iBhavOperandWizForm
 	{
 		#region Form variables
 
-		internal System.Windows.Forms.Panel pnWiz0x0001;
-		private System.Windows.Forms.ComboBox cbGenericSimsCall;
-		private System.Windows.Forms.Label lbGenericSimsCallparms;
+		internal Panel pnWiz0x0001;
+		private ComboBox cbGenericSimsCall;
+		private Label lbGenericSimsCallparms;
 
 		/// <summary>
 		/// Erforderliche Designervariable.
@@ -114,9 +114,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0001
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWiz0x0001 = new System.Windows.Forms.Panel();
-			this.lbGenericSimsCallparms = new System.Windows.Forms.Label();
-			this.cbGenericSimsCall = new System.Windows.Forms.ComboBox();
+			this.pnWiz0x0001 = new Panel();
+			this.lbGenericSimsCallparms = new Label();
+			this.cbGenericSimsCall = new ComboBox();
 			this.pnWiz0x0001.SuspendLayout();
 			this.SuspendLayout();
 			//
@@ -172,7 +172,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0001
 
 namespace pjse.BhavOperandWizards
 {
-	public class BhavOperandWiz0x0001 : pjse.ABhavOperandWiz
+	public class BhavOperandWiz0x0001 : ABhavOperandWiz
 	{
 		public BhavOperandWiz0x0001(Instruction i)
 			: base(i)

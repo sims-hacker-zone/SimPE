@@ -52,8 +52,8 @@ namespace SimPe.Plugin.Scanner
 
 		public void ScanPackage(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			PackageState ps,
+			ListViewItem lvi
 		)
 		{
 			if (
@@ -96,7 +96,7 @@ namespace SimPe.Plugin.Scanner
 				ArrayList data = new ArrayList();
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
-					SimPe.PackedFiles.Wrapper.Cpf cpf = new Cpf();
+					Cpf cpf = new Cpf();
 					cpf.ProcessData(pfd, si.Package, false);
 
 					data.Add(cpf.GetSaveItem("age").UIntegerValue);
@@ -118,8 +118,8 @@ namespace SimPe.Plugin.Scanner
 
 		public void UpdateState(
 			ScannerItem si,
-			SimPe.Cache.PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			PackageState ps,
+			ListViewItem lvi
 		)
 		{
 			AbstractScanner.SetSubItem(lvi, this.StartColum + 2, "");
@@ -255,7 +255,7 @@ namespace SimPe.Plugin.Scanner
 			int maxagecount = 0;
 			foreach (ScannerItem si in items)
 			{
-				SimPe.Cache.PackageState ps = si.PackageCacheItem.FindState(
+				PackageState ps = si.PackageCacheItem.FindState(
 					this.Uid,
 					true
 				);
@@ -392,7 +392,7 @@ namespace SimPe.Plugin.Scanner
 			this.OperationControl.Enabled = en;
 		}
 
-		protected override System.Windows.Forms.Control CreateOperationControl()
+		protected override Control CreateOperationControl()
 		{
 			ScannerPanelForm.Form.pncloth.Tag = this;
 			return ScannerPanelForm.Form.pncloth;
@@ -400,12 +400,12 @@ namespace SimPe.Plugin.Scanner
 
 		#endregion
 
-		void AddUniversityFields(SimPe.PackedFiles.Wrapper.Cpf cpf)
+		void AddUniversityFields(Cpf cpf)
 		{
 			if (cpf.GetItem("product") == null)
 			{
-				SimPe.PackedFiles.Wrapper.CpfItem i =
-					new SimPe.PackedFiles.Wrapper.CpfItem();
+				CpfItem i =
+					new CpfItem();
 				i.Name = "product";
 				i.UIntegerValue = 1;
 				cpf.AddItem(i);
@@ -413,8 +413,8 @@ namespace SimPe.Plugin.Scanner
 
 			if (cpf.GetItem("version") == null)
 			{
-				SimPe.PackedFiles.Wrapper.CpfItem i =
-					new SimPe.PackedFiles.Wrapper.CpfItem();
+				CpfItem i =
+					new CpfItem();
 				i.Name = "version";
 				i.UIntegerValue = 2;
 				cpf.AddItem(i);
@@ -457,7 +457,7 @@ namespace SimPe.Plugin.Scanner
 						WaitingScreen.UpdateMessage(si.FileName);
 
 						//make sure, the file is rescanned on the next Cache Update
-						SimPe.Cache.PackageState ps = si.PackageCacheItem.FindState(
+						PackageState ps = si.PackageCacheItem.FindState(
 							this.Uid,
 							true
 						);
@@ -488,7 +488,7 @@ namespace SimPe.Plugin.Scanner
 						ArrayList data = new ArrayList();
 						foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 						{
-							SimPe.PackedFiles.Wrapper.Cpf cpf = new Cpf();
+							Cpf cpf = new Cpf();
 							cpf.ProcessData(pfd, si.Package, false);
 
 							uint age = cpf.GetSaveItem(name).UIntegerValue;

@@ -59,13 +59,13 @@ namespace SimPe.Plugin.Tool.Action
 	/// <summary>
 	/// The UniqueInstance Action
 	/// </summary>
-	public class ActionUniqueInstance : SimPe.Interfaces.IToolAction
+	public class ActionUniqueInstance : Interfaces.IToolAction
 	{
 		#region IToolAction Member
 
 		public virtual bool ChangeEnabledStateEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs es
+			Events.ResourceEventArgs es
 		)
 		{
 			return true;
@@ -73,13 +73,13 @@ namespace SimPe.Plugin.Tool.Action
 
 		private bool RealChangeEnabledStateEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs es
+			Events.ResourceEventArgs es
 		)
 		{
 			return es.HasFileDescriptor;
 		}
 
-		public void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs e)
+		public void ExecuteEventHandler(object sender, Events.ResourceEventArgs e)
 		{
 			if (!RealChangeEnabledStateEventHandler(null, e))
 			{
@@ -95,7 +95,7 @@ namespace SimPe.Plugin.Tool.Action
 			SimPe.Collections.PackedFileDescriptors pfds = e.GetDescriptors();
 			bool first = true;
 			uint inst = 0x8000;
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				if (first)
 				{

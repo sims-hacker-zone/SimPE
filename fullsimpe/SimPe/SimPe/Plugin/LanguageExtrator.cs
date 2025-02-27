@@ -10,7 +10,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for Form.
 	/// </summary>
-	public class LanguageExtrator : System.Windows.Forms.Form
+	public class LanguageExtrator : Form
 	{
 		#region Windows Form Designer generated code
 
@@ -63,14 +63,14 @@ namespace SimPe.Plugin
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(LanguageExtrator)
 				);
-			this.pntheme = new System.Windows.Forms.Panel();
+			this.pntheme = new Panel();
 			this.Progress = new LabeledProgressBar();
-			this.Language = new System.Windows.Forms.ComboBox();
-			this.btCome = new System.Windows.Forms.Button();
-			this.btGo = new System.Windows.Forms.Button();
-			this.btclean = new System.Windows.Forms.Button();
-			this.lbdone = new System.Windows.Forms.Label();
-			this.lbselect = new System.Windows.Forms.Label();
+			this.Language = new ComboBox();
+			this.btCome = new Button();
+			this.btGo = new Button();
+			this.btclean = new Button();
+			this.lbdone = new Label();
+			this.lbselect = new Label();
 			this.pntheme.SuspendLayout();
 			this.SuspendLayout();
 			//
@@ -81,7 +81,7 @@ namespace SimPe.Plugin
 			this.Language.Name = "Language";
 			this.Language.Size = new System.Drawing.Size(188, 21);
 			this.Language.TabIndex = 6;
-			this.Language.SelectedIndexChanged += new System.EventHandler(
+			this.Language.SelectedIndexChanged += new EventHandler(
 				this.Language_SelectedIndexChanged
 			);
 			//
@@ -116,12 +116,12 @@ namespace SimPe.Plugin
 			this.btCome.TabIndex = 11;
 			this.btCome.Text = "Import";
 			this.btCome.UseVisualStyleBackColor = true;
-			this.btCome.Click += new System.EventHandler(this.btCome_Click);
+			this.btCome.Click += new EventHandler(this.btCome_Click);
 			//
 			// Progress
 			//
 			this.Progress.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Bottom
@@ -166,7 +166,7 @@ namespace SimPe.Plugin
 			this.btGo.TabIndex = 8;
 			this.btGo.Text = "Extract";
 			this.btGo.UseVisualStyleBackColor = true;
-			this.btGo.Click += new System.EventHandler(this.btGo_Click);
+			this.btGo.Click += new EventHandler(this.btGo_Click);
 			//
 			// lbselect
 			//
@@ -192,7 +192,7 @@ namespace SimPe.Plugin
 			this.btclean.TabIndex = 12;
 			this.btclean.Text = "Clean All";
 			this.btclean.UseVisualStyleBackColor = true;
-			this.btclean.Click += new System.EventHandler(this.btclean_Click);
+			this.btclean.Click += new EventHandler(this.btclean_Click);
 			//
 			// LanguageExtrator
 			//
@@ -211,7 +211,7 @@ namespace SimPe.Plugin
 		}
 
 		private ComboBox Language;
-		private System.Windows.Forms.Panel pntheme;
+		private Panel pntheme;
 		private LabeledProgressBar Progress;
 		private Label lbselect;
 		private Label lbdone;
@@ -219,28 +219,28 @@ namespace SimPe.Plugin
 		private Button btCome;
 		private Button btclean;
 
-		private SimPe.Packages.GeneratableFile package;
+		private Packages.GeneratableFile package;
 		private List<String> languageString;
 		private byte currentLanguage = 1;
 		private bool okay = false;
 		#endregion
 
 		public Interfaces.Plugin.IToolResult Execute(
-			ref SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
-			ref SimPe.Interfaces.Files.IPackageFile package,
+			ref Interfaces.Files.IPackedFileDescriptor pfd,
+			ref Interfaces.Files.IPackageFile package,
 			Interfaces.IProviderRegistry prov
 		)
 		{
 			Language.DataSource = languageString;
 			Language.SelectedIndex = currentLanguage - 1;
-			this.package = (SimPe.Packages.GeneratableFile)package;
+			this.package = (Packages.GeneratableFile)package;
 			ShowDialog();
-			return new Plugin.ToolResult(okay, okay);
+			return new ToolResult(okay, okay);
 		}
 
-		private void Language_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void Language_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			int index = ((System.Windows.Forms.ComboBox)sender).SelectedIndex;
+			int index = ((ComboBox)sender).SelectedIndex;
 			currentLanguage = (byte)(index + 1);
 		}
 
@@ -278,8 +278,8 @@ namespace SimPe.Plugin
 		private void saveFiles()
 		{
 			string parf;
-			System.Windows.Forms.FolderBrowserDialog fbd =
-				new System.Windows.Forms.FolderBrowserDialog();
+			FolderBrowserDialog fbd =
+				new FolderBrowserDialog();
 			if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK)
 			{
 				return;
@@ -297,11 +297,11 @@ namespace SimPe.Plugin
 				Directory.CreateDirectory(floder);
 			}
 
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfdc =
+			Interfaces.Files.IPackedFileDescriptor[] pfdc =
 				this.package.FindFiles(0x43545353); //CTSS
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfdm =
+			Interfaces.Files.IPackedFileDescriptor[] pfdm =
 				this.package.FindFiles(0x54544173); //Pie String (TTAB)
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfdt =
+			Interfaces.Files.IPackedFileDescriptor[] pfdt =
 				this.package.FindFiles(0x53545223); //STR#
 			Progress.Maximum = pfdc.Length + pfdm.Length + pfdt.Length;
 
@@ -312,8 +312,8 @@ namespace SimPe.Plugin
 					+ Helper.HexString(pfd.Group)
 					+ "-"
 					+ Helper.HexString(pfd.Instance);
-				SimPe.PackedFiles.Wrapper.StrWrapper str =
-					new SimPe.PackedFiles.Wrapper.StrWrapper();
+				PackedFiles.Wrapper.StrWrapper str =
+					new PackedFiles.Wrapper.StrWrapper();
 				str.ProcessData(pfd, this.package);
 				if (str.HasLanguage(currentLanguage))
 				{
@@ -330,8 +330,8 @@ namespace SimPe.Plugin
 					+ Helper.HexString(pfd.Group)
 					+ "-"
 					+ Helper.HexString(pfd.Instance);
-				SimPe.PackedFiles.Wrapper.StrWrapper str =
-					new SimPe.PackedFiles.Wrapper.StrWrapper();
+				PackedFiles.Wrapper.StrWrapper str =
+					new PackedFiles.Wrapper.StrWrapper();
 				str.ProcessData(pfd, this.package);
 				if (str.HasLanguage(currentLanguage))
 				{
@@ -348,8 +348,8 @@ namespace SimPe.Plugin
 					+ Helper.HexString(pfd.Group)
 					+ "-"
 					+ Helper.HexString(pfd.Instance);
-				SimPe.PackedFiles.Wrapper.StrWrapper str =
-					new SimPe.PackedFiles.Wrapper.StrWrapper();
+				PackedFiles.Wrapper.StrWrapper str =
+					new PackedFiles.Wrapper.StrWrapper();
 				str.ProcessData(pfd, this.package);
 				if (str.HasLanguage(currentLanguage))
 				{
@@ -367,8 +367,8 @@ namespace SimPe.Plugin
 			uint groop;
 			uint insta;
 			string twine;
-			System.Windows.Forms.FolderBrowserDialog fbd =
-				new System.Windows.Forms.FolderBrowserDialog();
+			FolderBrowserDialog fbd =
+				new FolderBrowserDialog();
 			if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK)
 			{
 				return;
@@ -416,12 +416,12 @@ namespace SimPe.Plugin
 				string[] bits = twine.Split(new char[] { '-' });
 				groop = Helper.HexStringToUInt(bits[1]);
 				insta = Helper.HexStringToUInt(bits[2]);
-				SimPe.Interfaces.Files.IPackedFileDescriptor pfd =
+				Interfaces.Files.IPackedFileDescriptor pfd =
 					this.package.FindFile(tipe, 0, groop, insta);
 				if (pfd != null)
 				{
-					SimPe.PackedFiles.Wrapper.StrWrapper str =
-						new SimPe.PackedFiles.Wrapper.StrWrapper();
+					PackedFiles.Wrapper.StrWrapper str =
+						new PackedFiles.Wrapper.StrWrapper();
 					str.ProcessData(pfd, this.package);
 					str.ImportLanguage(currentLanguage, file);
 					str.SynchronizeUserData();
@@ -437,18 +437,18 @@ namespace SimPe.Plugin
 				this.btCome.Enabled =
 				this.btclean.Enabled =
 					false;
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfdc =
+			Interfaces.Files.IPackedFileDescriptor[] pfdc =
 				this.package.FindFiles(0x43545353); //CTSS
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfdm =
+			Interfaces.Files.IPackedFileDescriptor[] pfdm =
 				this.package.FindFiles(0x54544173); //Pie String (TTAB)
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfdt =
+			Interfaces.Files.IPackedFileDescriptor[] pfdt =
 				this.package.FindFiles(0x53545223); //STR#
 			Progress.Maximum = pfdc.Length + pfdm.Length + pfdt.Length;
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfdc)
 			{
-				SimPe.PackedFiles.Wrapper.StrWrapper str =
-					new SimPe.PackedFiles.Wrapper.StrWrapper();
+				PackedFiles.Wrapper.StrWrapper str =
+					new PackedFiles.Wrapper.StrWrapper();
 				str.ProcessData(pfd, this.package);
 				str.CleanHim();
 				str.SynchronizeUserData();
@@ -457,8 +457,8 @@ namespace SimPe.Plugin
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfdm)
 			{
-				SimPe.PackedFiles.Wrapper.StrWrapper str =
-					new SimPe.PackedFiles.Wrapper.StrWrapper();
+				PackedFiles.Wrapper.StrWrapper str =
+					new PackedFiles.Wrapper.StrWrapper();
 				str.ProcessData(pfd, this.package);
 				str.CleanHim();
 				str.SynchronizeUserData();
@@ -467,8 +467,8 @@ namespace SimPe.Plugin
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfdt)
 			{
-				SimPe.PackedFiles.Wrapper.StrWrapper str =
-					new SimPe.PackedFiles.Wrapper.StrWrapper();
+				PackedFiles.Wrapper.StrWrapper str =
+					new PackedFiles.Wrapper.StrWrapper();
 				str.ProcessData(pfd, this.package);
 				str.CleanHim();
 				str.SynchronizeUserData();

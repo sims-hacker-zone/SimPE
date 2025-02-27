@@ -34,7 +34,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Name Provider
 		/// </summary>
-		internal SimPe.Interfaces.Providers.ISimNames NameProvider
+		internal Interfaces.Providers.ISimNames NameProvider
 		{
 			get;
 		}
@@ -78,10 +78,10 @@ namespace SimPe.PackedFiles.Wrapper
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new SimPe.PackedFiles.UserInterface.FamilyTies();
+			return new UserInterface.FamilyTies();
 		}
 
-		public FamilyTies(SimPe.Interfaces.Providers.ISimNames names)
+		public FamilyTies(Interfaces.Providers.ISimNames names)
 			: base()
 		{
 			NameProvider = names;

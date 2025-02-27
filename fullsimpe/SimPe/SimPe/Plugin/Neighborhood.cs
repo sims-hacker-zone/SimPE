@@ -28,20 +28,20 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for NeighborhoodForm.
 	/// </summary>
-	public class NeighborhoodForm : System.Windows.Forms.Form
+	public class NeighborhoodForm : Form
 	{
 		private Ambertation.Windows.Forms.XPTaskBoxSimple pnBackup;
 		private Ambertation.Windows.Forms.XPTaskBoxSimple pnOptions;
-		private System.Windows.Forms.ListView lv;
-		private System.Windows.Forms.ImageList ilist;
-		private System.Windows.Forms.Button btnOpen;
-		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.Button button3;
+		private ListView lv;
+		private ImageList ilist;
+		private Button btnOpen;
+		private Button button2;
+		private Button button3;
 		private ComboBox cbtypes;
 		private Label label1;
 		private System.ComponentModel.IContainer components;
 		private Button btnClose;
-		private System.Windows.Forms.Panel pnBoPeep;
+		private Panel pnBoPeep;
 		private PictureBox pbox;
 
 		public NeighborhoodForm()
@@ -81,18 +81,18 @@ namespace SimPe.Plugin
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(NeighborhoodForm)
 				);
-			this.lv = new System.Windows.Forms.ListView();
-			this.ilist = new System.Windows.Forms.ImageList(this.components);
-			this.btnOpen = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
-			this.button3 = new System.Windows.Forms.Button();
+			this.lv = new ListView();
+			this.ilist = new ImageList(this.components);
+			this.btnOpen = new Button();
+			this.button2 = new Button();
+			this.button3 = new Button();
 			this.pnBackup = new Ambertation.Windows.Forms.XPTaskBoxSimple();
 			this.pnOptions = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.cbtypes = new System.Windows.Forms.ComboBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.btnClose = new System.Windows.Forms.Button();
-			this.pnBoPeep = new System.Windows.Forms.Panel();
-			this.pbox = new System.Windows.Forms.PictureBox();
+			this.cbtypes = new ComboBox();
+			this.label1 = new Label();
+			this.btnClose = new Button();
+			this.pnBoPeep = new Panel();
+			this.pbox = new PictureBox();
 			this.pnBackup.SuspendLayout();
 			this.pnOptions.SuspendLayout();
 			this.pnBoPeep.SuspendLayout();
@@ -107,8 +107,8 @@ namespace SimPe.Plugin
 			this.lv.MultiSelect = false;
 			this.lv.Name = "lv";
 			this.lv.UseCompatibleStateImageBehavior = false;
-			this.lv.SelectedIndexChanged += new System.EventHandler(this.NgbSelect);
-			this.lv.DoubleClick += new System.EventHandler(this.NgbOpen);
+			this.lv.SelectedIndexChanged += new EventHandler(this.NgbSelect);
+			this.lv.DoubleClick += new EventHandler(this.NgbOpen);
 			//
 			// ilist
 			//
@@ -121,19 +121,19 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.btnOpen, "btnOpen");
 			this.btnOpen.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.btnOpen.Name = "btnOpen";
-			this.btnOpen.Click += new System.EventHandler(this.NgbOpen);
+			this.btnOpen.Click += new EventHandler(this.NgbOpen);
 			//
 			// button2
 			//
 			resources.ApplyResources(this.button2, "button2");
 			this.button2.Name = "button2";
-			this.button2.Click += new System.EventHandler(this.NgbBackup);
+			this.button2.Click += new EventHandler(this.NgbBackup);
 			//
 			// button3
 			//
 			resources.ApplyResources(this.button3, "button3");
 			this.button3.Name = "button3";
-			this.button3.Click += new System.EventHandler(this.NgbRestoreBackup);
+			this.button3.Click += new EventHandler(this.NgbRestoreBackup);
 			//
 			// pnBackup
 			//
@@ -142,13 +142,13 @@ namespace SimPe.Plugin
 			this.pnBackup.Controls.Add(this.pbox);
 			this.pnBackup.Controls.Add(this.button3);
 			this.pnBackup.Controls.Add(this.button2);
-			this.pnBackup.HeaderFont = new System.Drawing.Font(
+			this.pnBackup.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.pnBackup.IconLocation = new System.Drawing.Point(4, 12);
-			this.pnBackup.IconSize = new System.Drawing.Size(32, 32);
+			this.pnBackup.IconLocation = new Point(4, 12);
+			this.pnBackup.IconSize = new Size(32, 32);
 			this.pnBackup.Name = "pnBackup";
 			//
 			// pnOptions
@@ -157,13 +157,13 @@ namespace SimPe.Plugin
 			this.pnOptions.BackColor = System.Drawing.Color.Transparent;
 			this.pnOptions.Controls.Add(this.cbtypes);
 			this.pnOptions.Controls.Add(this.label1);
-			this.pnOptions.HeaderFont = new System.Drawing.Font(
+			this.pnOptions.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.pnOptions.IconLocation = new System.Drawing.Point(4, 12);
-			this.pnOptions.IconSize = new System.Drawing.Size(32, 32);
+			this.pnOptions.IconLocation = new Point(4, 12);
+			this.pnOptions.IconSize = new Size(32, 32);
 			this.pnOptions.Name = "pnOptions";
 			//
 			// cbtypes
@@ -171,7 +171,7 @@ namespace SimPe.Plugin
 			this.cbtypes.FormattingEnabled = true;
 			resources.ApplyResources(this.cbtypes, "cbtypes");
 			this.cbtypes.Name = "cbtypes";
-			this.cbtypes.SelectedIndexChanged += new System.EventHandler(
+			this.cbtypes.SelectedIndexChanged += new EventHandler(
 				this.cbtypes_SelectedIndexChanged
 			);
 			//
@@ -236,8 +236,8 @@ namespace SimPe.Plugin
 		NgbhType ngbh = null;
 		public string SelectedNgbh => ngbh == null ? null : ngbh.FileName;
 
-		SimPe.Packages.GeneratableFile package;
-		SimPe.Packages.File source_package;
+		Packages.GeneratableFile package;
+		Packages.File source_package;
 		Interfaces.IProviderRegistry prov;
 		bool changed;
 
@@ -267,7 +267,7 @@ namespace SimPe.Plugin
 					this.ilist.Images.Add(img);
 					return;
 				}
-				catch (System.ArgumentException) { }
+				catch (ArgumentException) { }
 			}
 			this.ilist.Images.Add(new Bitmap(SimPe.GetImage.Network));
 		}
@@ -320,7 +320,7 @@ namespace SimPe.Plugin
 				ret = true;
 				try
 				{
-					SimPe.Packages.File pk = SimPe.Packages.File.LoadFromFile(name);
+					Packages.File pk = SimPe.Packages.File.LoadFromFile(name);
 					NeighborhoodType t;
 					name = LoadLabel(pk, out t);
 				}
@@ -349,7 +349,7 @@ namespace SimPe.Plugin
 		}
 
 		private static string LoadLabel(
-			SimPe.Packages.File pk,
+			Packages.File pk,
 			out NeighborhoodType type
 		)
 		{
@@ -357,7 +357,7 @@ namespace SimPe.Plugin
 			type = NeighborhoodType.Normal;
 			try
 			{
-				SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pk.FindFile(
+				Interfaces.Files.IPackedFileDescriptor pfd = pk.FindFile(
 					0x43545353,
 					0,
 					0xffffffff,
@@ -365,8 +365,8 @@ namespace SimPe.Plugin
 				);
 				if (pfd != null)
 				{
-					SimPe.PackedFiles.Wrapper.Str str =
-						new SimPe.PackedFiles.Wrapper.Str();
+					PackedFiles.Wrapper.Str str =
+						new PackedFiles.Wrapper.Str();
 					str.ProcessData(pfd, pk);
 					name = str.FallbackedLanguageItem(
 						Helper.WindowsRegistry.LanguageCode,
@@ -381,7 +381,7 @@ namespace SimPe.Plugin
 				pfd = pk.FindFile(0xAC8A7A2E, 0, 0xffffffff, 1);
 				if (pfd != null)
 				{
-					SimPe.Plugin.Idno idno = new Idno();
+					Idno idno = new Idno();
 					idno.ProcessData(pfd, pk);
 					type = idno.Type;
 				}
@@ -506,14 +506,14 @@ namespace SimPe.Plugin
 		}
 
 		public IToolResult Execute(
-			ref SimPe.Interfaces.Files.IPackageFile package,
+			ref Interfaces.Files.IPackageFile package,
 			Interfaces.IProviderRegistry prov
 		)
 		{
 			this.Cursor = Cursors.WaitCursor;
 			this.package = null;
 			this.prov = prov;
-			source_package = (SimPe.Packages.File)package;
+			source_package = (Packages.File)package;
 			changed = false;
 			UpdateList();
 			this.Cursor = Cursors.Default;
@@ -525,7 +525,7 @@ namespace SimPe.Plugin
 				package = this.package;
 			}
 
-			return new Plugin.ToolResult(false, ((this.package != null) || (changed)));
+			return new ToolResult(false, ((this.package != null) || (changed)));
 		}
 
 		class NgbhType
@@ -551,7 +551,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void NgbSelect(object sender, System.EventArgs e)
+		private void NgbSelect(object sender, EventArgs e)
 		{
 			//button1.Enabled = (lv.SelectedItems.Count>0);
 			button2.Enabled = (lv.SelectedItems.Count > 0);
@@ -567,7 +567,7 @@ namespace SimPe.Plugin
 
 				foreach (string file in files)
 				{
-					SimPe.Packages.File pk = SimPe.Packages.File.LoadFromFile(file);
+					Packages.File pk = SimPe.Packages.File.LoadFromFile(file);
 					NeighborhoodType type;
 					string name = LoadLabel(pk, out type);
 					NgbhType nt = new NgbhType(file, name, type);
@@ -588,7 +588,7 @@ namespace SimPe.Plugin
 			SetSmilyIcon("none");
 		}
 
-		private void NgbOpen(object sender, System.EventArgs e)
+		private void NgbOpen(object sender, EventArgs e)
 		{
 			if (lv.SelectedItems.Count <= 0)
 			{
@@ -630,7 +630,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void NgbBackup(object sender, System.EventArgs e)
+		private void NgbBackup(object sender, EventArgs e)
 		{
 			if (lv.SelectedItems.Count <= 0)
 			{
@@ -684,7 +684,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void NgbRestoreBackup(object sender, System.EventArgs e)
+		private void NgbRestoreBackup(object sender, EventArgs e)
 		{
 			if (lv.SelectedItems.Count <= 0)
 			{
@@ -783,7 +783,7 @@ if (pbpay.Value == 5) inst = 0xABBA2582;
 if (pbpay.Value == 6) inst = 0xABBA2578;
 if (pbpay.Value == 7) inst = 0xABBA2575;
 */
-			SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+			Packages.File pkg = SimPe.Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
 					PathProvider.Global.Latest.InstallFolder,
 					"TSData\\Res\\UI\\ui.package"
@@ -791,7 +791,7 @@ if (pbpay.Value == 7) inst = 0xABBA2575;
 			);
 			if (pkg != null)
 			{
-				SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
+				Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
 					0x856DDBAC,
 					0,
 					0x499DB772,
@@ -799,8 +799,8 @@ if (pbpay.Value == 7) inst = 0xABBA2575;
 				);
 				if (pfd != null)
 				{
-					SimPe.PackedFiles.Wrapper.Picture pic =
-						new SimPe.PackedFiles.Wrapper.Picture();
+					PackedFiles.Wrapper.Picture pic =
+						new PackedFiles.Wrapper.Picture();
 					pic.ProcessData(pfd, pkg);
 					pbox.Image = pic.Image;
 				}

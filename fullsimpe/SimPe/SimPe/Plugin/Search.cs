@@ -29,44 +29,44 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for Search.
 	/// </summary>
-	public class Search : System.Windows.Forms.Form
+	public class Search : Form
 	{
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tabPage1;
-		private System.Windows.Forms.ListBox lblist;
-		private System.Windows.Forms.Button btopen;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox tbOpcode;
-		private System.Windows.Forms.LinkLabel llsearch;
+		private ListBox lblist;
+		private Button btopen;
+		private Label label1;
+		private TextBox tbOpcode;
+		private LinkLabel llsearch;
 		private ExtProgressBar pb;
 		private System.Windows.Forms.TabPage tabPage2;
-		private System.Windows.Forms.LinkLabel linkLabel1;
-		private System.Windows.Forms.TextBox tbflname;
-		private System.Windows.Forms.Label label2;
+		private LinkLabel linkLabel1;
+		private TextBox tbflname;
+		private Label label2;
 		private System.Windows.Forms.TabPage tabPage3;
-		private System.Windows.Forms.LinkLabel linkLabel2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.TextBox tbsimname;
+		private LinkLabel linkLabel2;
+		private Label label3;
+		private TextBox tbsimname;
 		private System.Windows.Forms.TabPage tabPage4;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.LinkLabel linkLabel3;
-		private System.Windows.Forms.TextBox tbpropname;
-		private System.Windows.Forms.TextBox tbbhavgroup;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.ToolTip toolTip1;
-		private System.Windows.Forms.RadioButton rbfull;
-		private System.Windows.Forms.RadioButton rbstart;
-		private System.Windows.Forms.RadioButton rbend;
-		private System.Windows.Forms.RadioButton rbcont;
-		private System.Windows.Forms.CheckBox cbusefileindex;
+		private Label label4;
+		private LinkLabel linkLabel3;
+		private TextBox tbpropname;
+		private TextBox tbbhavgroup;
+		private Label label5;
+		private ToolTip toolTip1;
+		private RadioButton rbfull;
+		private RadioButton rbstart;
+		private RadioButton rbend;
+		private RadioButton rbcont;
+		private CheckBox cbusefileindex;
 		private System.Windows.Forms.TabPage tabPage5;
-		private System.Windows.Forms.LinkLabel linkLabel4;
-		private System.Windows.Forms.TextBox tbguid;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.TextBox tbpropval;
-		private System.Windows.Forms.Label label7;
+		private LinkLabel linkLabel4;
+		private TextBox tbguid;
+		private Label label6;
+		private TextBox tbpropval;
+		private Label label7;
 		private CheckBox cblastname;
-		private System.Windows.Forms.Panel panel1;
+		private Panel panel1;
 		private System.ComponentModel.IContainer components;
 
 		public Search()
@@ -108,40 +108,40 @@ namespace SimPe.Plugin
 			this.components = new System.ComponentModel.Container();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.tbbhavgroup = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.llsearch = new System.Windows.Forms.LinkLabel();
-			this.tbOpcode = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
+			this.tbbhavgroup = new TextBox();
+			this.label5 = new Label();
+			this.llsearch = new LinkLabel();
+			this.tbOpcode = new TextBox();
+			this.label1 = new Label();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.cbusefileindex = new System.Windows.Forms.CheckBox();
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-			this.tbflname = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
+			this.cbusefileindex = new CheckBox();
+			this.linkLabel1 = new LinkLabel();
+			this.tbflname = new TextBox();
+			this.label2 = new Label();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
-			this.cblastname = new System.Windows.Forms.CheckBox();
-			this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-			this.tbsimname = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
+			this.cblastname = new CheckBox();
+			this.linkLabel2 = new LinkLabel();
+			this.tbsimname = new TextBox();
+			this.label3 = new Label();
 			this.tabPage4 = new System.Windows.Forms.TabPage();
-			this.tbpropval = new System.Windows.Forms.TextBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.rbcont = new System.Windows.Forms.RadioButton();
-			this.rbend = new System.Windows.Forms.RadioButton();
-			this.rbstart = new System.Windows.Forms.RadioButton();
-			this.rbfull = new System.Windows.Forms.RadioButton();
-			this.linkLabel3 = new System.Windows.Forms.LinkLabel();
-			this.tbpropname = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
+			this.tbpropval = new TextBox();
+			this.label7 = new Label();
+			this.rbcont = new RadioButton();
+			this.rbend = new RadioButton();
+			this.rbstart = new RadioButton();
+			this.rbfull = new RadioButton();
+			this.linkLabel3 = new LinkLabel();
+			this.tbpropname = new TextBox();
+			this.label4 = new Label();
 			this.tabPage5 = new System.Windows.Forms.TabPage();
-			this.linkLabel4 = new System.Windows.Forms.LinkLabel();
-			this.tbguid = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.lblist = new System.Windows.Forms.ListBox();
-			this.btopen = new System.Windows.Forms.Button();
+			this.linkLabel4 = new LinkLabel();
+			this.tbguid = new TextBox();
+			this.label6 = new Label();
+			this.lblist = new ListBox();
+			this.btopen = new Button();
 			this.pb = new ExtProgressBar();
-			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.toolTip1 = new ToolTip(this.components);
+			this.panel1 = new Panel();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
@@ -154,7 +154,7 @@ namespace SimPe.Plugin
 			// tabControl1
 			//
 			this.tabControl1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -224,7 +224,7 @@ namespace SimPe.Plugin
 			// llsearch
 			//
 			this.llsearch.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -247,7 +247,7 @@ namespace SimPe.Plugin
 			this.llsearch.TabStop = true;
 			this.llsearch.Text = "search";
 			this.llsearch.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.BhavSearch
 				);
 			//
@@ -299,7 +299,7 @@ namespace SimPe.Plugin
 			// linkLabel1
 			//
 			this.linkLabel1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -322,14 +322,14 @@ namespace SimPe.Plugin
 			this.linkLabel1.TabStop = true;
 			this.linkLabel1.Text = "search";
 			this.linkLabel1.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.RcolSearch
 				);
 			//
 			// tbflname
 			//
 			this.tbflname.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -384,7 +384,7 @@ namespace SimPe.Plugin
 			// linkLabel2
 			//
 			this.linkLabel2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -407,12 +407,12 @@ namespace SimPe.Plugin
 			this.linkLabel2.TabStop = true;
 			this.linkLabel2.Text = "search";
 			this.linkLabel2.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.FindSim);
+				new LinkLabelLinkClickedEventHandler(this.FindSim);
 			//
 			// tbsimname
 			//
 			this.tbsimname.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -462,7 +462,7 @@ namespace SimPe.Plugin
 			// tbpropval
 			//
 			this.tbpropval.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -533,7 +533,7 @@ namespace SimPe.Plugin
 			// linkLabel3
 			//
 			this.linkLabel3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -556,7 +556,7 @@ namespace SimPe.Plugin
 			this.linkLabel3.TabStop = true;
 			this.linkLabel3.Text = "search";
 			this.linkLabel3.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.GzpsSearch
 				);
 			//
@@ -598,7 +598,7 @@ namespace SimPe.Plugin
 			// linkLabel4
 			//
 			this.linkLabel4.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -621,14 +621,14 @@ namespace SimPe.Plugin
 			this.linkLabel4.TabStop = true;
 			this.linkLabel4.Text = "search";
 			this.linkLabel4.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.GuidSearch
 				);
 			//
 			// tbguid
 			//
 			this.tbguid.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -662,7 +662,7 @@ namespace SimPe.Plugin
 			// lblist
 			//
 			this.lblist.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -679,14 +679,14 @@ namespace SimPe.Plugin
 			this.lblist.Name = "lblist";
 			this.lblist.Size = new System.Drawing.Size(768, 344);
 			this.lblist.TabIndex = 1;
-			this.lblist.SelectedIndexChanged += new System.EventHandler(
+			this.lblist.SelectedIndexChanged += new EventHandler(
 				this.SelectFile
 			);
 			//
 			// btopen
 			//
 			this.btopen.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -699,12 +699,12 @@ namespace SimPe.Plugin
 			this.btopen.Size = new System.Drawing.Size(75, 23);
 			this.btopen.TabIndex = 2;
 			this.btopen.Text = "Open";
-			this.btopen.Click += new System.EventHandler(this.Open);
+			this.btopen.Click += new EventHandler(this.Open);
 			//
 			// pb
 			//
 			this.pb.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Bottom
@@ -734,7 +734,7 @@ namespace SimPe.Plugin
 			// panel1
 			//
 			this.panel1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -915,7 +915,7 @@ namespace SimPe.Plugin
 
 			if ((pfd.Instance == inst) && ((pfd.SubType == st) || pfd.SubType == 0))
 			{
-				SimPe.Plugin.Rcol rcol = new GenericRcol(prov, false);
+				Rcol rcol = new GenericRcol(prov, false);
 				rcol.ProcessData(pfd, package);
 				return new SearchItem(rcol.FileName, pfd);
 			}
@@ -938,7 +938,7 @@ namespace SimPe.Plugin
 		{
 			string name = tbsimname.Text.Trim().ToLower();
 
-			SimPe.PackedFiles.Wrapper.SDesc sdesc = new SimPe.PackedFiles.Wrapper.SDesc(
+			SDesc sdesc = new SDesc(
 				prov.SimNameProvider,
 				prov.SimFamilynameProvider,
 				prov.SimDescriptionProvider
@@ -1038,7 +1038,7 @@ namespace SimPe.Plugin
 		)
 		{
 			ushort opcode = Convert.ToUInt16(this.tbOpcode.Text, 16);
-			SimPe.PackedFiles.Wrapper.Cpf cpf = new SimPe.PackedFiles.Wrapper.Cpf();
+			Cpf cpf = new Cpf();
 			cpf.ProcessData(pfd, package);
 
 			//foreach (SimPe.PackedFiles.Wrapper.CpfItem i in cpf.Items)
@@ -1092,8 +1092,8 @@ namespace SimPe.Plugin
 		{
 			uint guid = Convert.ToUInt32(tbguid.Text, 16);
 
-			SimPe.PackedFiles.Wrapper.ExtObjd objd =
-				new SimPe.PackedFiles.Wrapper.ExtObjd();
+			ExtObjd objd =
+				new ExtObjd();
 			objd.ProcessData(pfd, package);
 
 			if (objd.Guid == guid)
@@ -1107,7 +1107,7 @@ namespace SimPe.Plugin
 
 		private void FindSim(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			this.StartSearch(
@@ -1139,7 +1139,7 @@ namespace SimPe.Plugin
 
 		private void BhavSearch(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			this.StartSearch(
@@ -1148,7 +1148,7 @@ namespace SimPe.Plugin
 			);
 		}
 
-		private void Open(object sender, System.EventArgs e)
+		private void Open(object sender, EventArgs e)
 		{
 			if (lblist.SelectedIndex < 0)
 			{
@@ -1167,7 +1167,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void SelectFile(object sender, System.EventArgs e)
+		private void SelectFile(object sender, EventArgs e)
 		{
 			this.btopen.Enabled = false;
 			if (lblist.SelectedIndex < 0)
@@ -1180,7 +1180,7 @@ namespace SimPe.Plugin
 
 		private void GzpsSearch(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds =
@@ -1195,7 +1195,7 @@ namespace SimPe.Plugin
 
 		private void GuidSearch(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
@@ -1206,7 +1206,7 @@ namespace SimPe.Plugin
 
 		private void RcolSearch(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (cbusefileindex.Checked)
@@ -1222,8 +1222,8 @@ namespace SimPe.Plugin
 				}
 
 				lblist.Items.Clear();
-				SimPe.Packages.PackedFileDescriptor pfd =
-					new SimPe.Packages.PackedFileDescriptor();
+				Packages.PackedFileDescriptor pfd =
+					new Packages.PackedFileDescriptor();
 				pfd.SubType = Hashes.SubTypeHash(
 					Hashes.StripHashFromName(tbflname.Text)
 				);
@@ -1231,7 +1231,7 @@ namespace SimPe.Plugin
 					Hashes.StripHashFromName(tbflname.Text)
 				);
 
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
 					FileTable.FileIndex.FindFileByInstance(pfd.LongInstance);
 
 				//short Index
@@ -1242,7 +1242,7 @@ namespace SimPe.Plugin
 				}
 
 				foreach (
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
+					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
 				)
 				{
 					lblist.Items.Add(item.Package.FileName);

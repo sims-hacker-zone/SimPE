@@ -104,10 +104,10 @@ namespace SimPe.PackedFiles.Wrapper
 			this.cb.Name = "cb";
 			this.cb.Size = new System.Drawing.Size(150, 21);
 			this.cb.TabIndex = 0;
-			this.cb.SelectedIndexChanged += new System.EventHandler(
+			this.cb.SelectedIndexChanged += new EventHandler(
 				this.cb_SelectedIndexChanged
 			);
-			this.cb.TextChanged += new System.EventHandler(this.cb_TextChanged);
+			this.cb.TextChanged += new EventHandler(this.cb_TextChanged);
 			//
 			// SimComboBox
 			//
@@ -123,14 +123,14 @@ namespace SimPe.PackedFiles.Wrapper
 			cb.Items.Clear();
 			cb.Sorted = false;
 			foreach (
-				SimPe.PackedFiles.Wrapper.ExtSDesc sdsc in FileTable
+				ExtSDesc sdsc in FileTable
 					.ProviderRegistry
 					.SimDescriptionProvider
 					.SimInstance
 					.Values
 			)
 			{
-				SimPe.Interfaces.IAlias a = new SimPe.Data.StaticAlias(
+				Interfaces.IAlias a = new Data.StaticAlias(
 					sdsc.SimId,
 					sdsc.SimName + " " + sdsc.SimFamilyName,
 					new object[] { sdsc }
@@ -144,7 +144,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				SimPe.PackedFiles.Wrapper.ExtSDesc sdsc = SelectedSim;
+				ExtSDesc sdsc = SelectedSim;
 				if (sdsc != null)
 				{
 					return sdsc.Instance;
@@ -157,10 +157,10 @@ namespace SimPe.PackedFiles.Wrapper
 				int id = -1;
 
 				int ct = 0;
-				foreach (SimPe.Interfaces.IAlias a in cb.Items)
+				foreach (Interfaces.IAlias a in cb.Items)
 				{
-					SimPe.PackedFiles.Wrapper.ExtSDesc s =
-						a.Tag[0] as SimPe.PackedFiles.Wrapper.ExtSDesc;
+					ExtSDesc s =
+						a.Tag[0] as ExtSDesc;
 					if (s.Instance == value)
 					{
 						id = ct;
@@ -176,7 +176,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				SimPe.PackedFiles.Wrapper.ExtSDesc sdsc = SelectedSim;
+				ExtSDesc sdsc = SelectedSim;
 				if (sdsc != null)
 				{
 					return sdsc.SimId;
@@ -189,10 +189,10 @@ namespace SimPe.PackedFiles.Wrapper
 				int id = -1;
 
 				int ct = 0;
-				foreach (SimPe.Interfaces.IAlias a in cb.Items)
+				foreach (Interfaces.IAlias a in cb.Items)
 				{
-					SimPe.PackedFiles.Wrapper.ExtSDesc s =
-						a.Tag[0] as SimPe.PackedFiles.Wrapper.ExtSDesc;
+					ExtSDesc s =
+						a.Tag[0] as ExtSDesc;
 					if (s.SimId == value)
 					{
 						id = ct;
@@ -204,7 +204,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public SimPe.PackedFiles.Wrapper.ExtSDesc SelectedSim
+		public ExtSDesc SelectedSim
 		{
 			get
 			{
@@ -213,8 +213,8 @@ namespace SimPe.PackedFiles.Wrapper
 					return null;
 				}
 
-				SimPe.Interfaces.IAlias a = cb.SelectedItem as SimPe.Interfaces.IAlias;
-				return a.Tag[0] as SimPe.PackedFiles.Wrapper.ExtSDesc;
+				Interfaces.IAlias a = cb.SelectedItem as Interfaces.IAlias;
+				return a.Tag[0] as ExtSDesc;
 			}
 			set
 			{
@@ -222,10 +222,10 @@ namespace SimPe.PackedFiles.Wrapper
 				if (value != null)
 				{
 					int ct = 0;
-					foreach (SimPe.Interfaces.IAlias a in cb.Items)
+					foreach (Interfaces.IAlias a in cb.Items)
 					{
-						SimPe.PackedFiles.Wrapper.ExtSDesc s =
-							a.Tag[0] as SimPe.PackedFiles.Wrapper.ExtSDesc;
+						ExtSDesc s =
+							a.Tag[0] as ExtSDesc;
 						if (s.Instance == value.Instance)
 						{
 							id = ct;
@@ -248,7 +248,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public event EventHandler SelectedSimChanged;
 
-		private void cb_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void cb_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (SelectedSimChanged != null)
 			{
@@ -276,7 +276,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		private void cb_TextChanged(object sender, System.EventArgs e)
+		private void cb_TextChanged(object sender, EventArgs e)
 		{
 			//cb.DroppedDown = true;
 		}

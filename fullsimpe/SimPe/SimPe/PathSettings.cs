@@ -25,7 +25,7 @@ namespace SimPe
 	/// <summary>
 	/// This is used to display Paths in the Options Dialog
 	/// </summary>
-	public class PathSettings : SimPe.GlobalizedObject
+	public class PathSettings : GlobalizedObject
 	{
 		Registry r;
 		static PathSettings ps;
@@ -161,8 +161,8 @@ namespace SimPe
 
 		[
 			Category("BaseGame"),
-			System.ComponentModel.Editor(
-				typeof(SimPe.SelectSimFolderUITypeEditor),
+			Editor(
+				typeof(SelectSimFolderUITypeEditor),
 				typeof(System.Drawing.Design.UITypeEditor)
 			)
 		]

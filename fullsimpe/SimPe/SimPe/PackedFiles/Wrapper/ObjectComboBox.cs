@@ -108,8 +108,8 @@ namespace SimPe.PackedFiles.Wrapper
 			this.cb.Name = "cb";
 			this.cb.Size = new System.Drawing.Size(150, 21);
 			this.cb.TabIndex = 0;
-			this.cb.TextChanged += new System.EventHandler(this.cb_TextChanged);
-			this.cb.SelectedIndexChanged += new System.EventHandler(
+			this.cb.TextChanged += new EventHandler(this.cb_TextChanged);
+			this.cb.SelectedIndexChanged += new EventHandler(
 				this.cb_SelectedIndexChanged
 			);
 			//
@@ -139,7 +139,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 				cb.Items.Clear();
 				cb.Sorted = false;
-				foreach (SimPe.Cache.MemoryCacheItem mci in ObjectCache.List)
+				foreach (MemoryCacheItem mci in ObjectCache.List)
 				{
 					bool use = false;
 					if (
@@ -188,7 +188,7 @@ namespace SimPe.PackedFiles.Wrapper
 						continue;
 					}
 
-					SimPe.Interfaces.IAlias a = new SimPe.Data.StaticAlias(
+					Interfaces.IAlias a = new Data.StaticAlias(
 						mci.Guid,
 						mci.Name + " {" + mci.ObjdName + "}",
 						new object[] { mci }
@@ -331,7 +331,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				SimPe.Cache.MemoryCacheItem mci = SelectedItem;
+				MemoryCacheItem mci = SelectedItem;
 
 				if (mci == null)
 				{
@@ -344,10 +344,10 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				int id = -1;
 				int ct = 0;
-				foreach (SimPe.Interfaces.IAlias a in cb.Items)
+				foreach (Interfaces.IAlias a in cb.Items)
 				{
-					SimPe.Cache.MemoryCacheItem mci =
-						a.Tag[0] as SimPe.Cache.MemoryCacheItem;
+					MemoryCacheItem mci =
+						a.Tag[0] as MemoryCacheItem;
 					if (mci.Guid == value)
 					{
 						id = ct;
@@ -360,7 +360,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public SimPe.Cache.MemoryCacheItem SelectedItem
+		public MemoryCacheItem SelectedItem
 		{
 			get
 			{
@@ -369,8 +369,8 @@ namespace SimPe.PackedFiles.Wrapper
 					return null;
 				}
 
-				SimPe.Interfaces.IAlias a = cb.SelectedItem as SimPe.Interfaces.IAlias;
-				return a.Tag[0] as SimPe.Cache.MemoryCacheItem;
+				Interfaces.IAlias a = cb.SelectedItem as Interfaces.IAlias;
+				return a.Tag[0] as MemoryCacheItem;
 			}
 			set
 			{
@@ -378,10 +378,10 @@ namespace SimPe.PackedFiles.Wrapper
 				if (value != null)
 				{
 					int ct = 0;
-					foreach (SimPe.Interfaces.IAlias a in cb.Items)
+					foreach (Interfaces.IAlias a in cb.Items)
 					{
-						SimPe.Cache.MemoryCacheItem mci =
-							a.Tag[0] as SimPe.Cache.MemoryCacheItem;
+						MemoryCacheItem mci =
+							a.Tag[0] as MemoryCacheItem;
 						if (mci.Guid == value.Guid)
 						{
 							id = ct;
@@ -406,7 +406,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public event EventHandler SelectedObjectChanged;
 
-		private void cb_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void cb_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (SelectedObjectChanged != null)
 			{
@@ -423,7 +423,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		private void cb_TextChanged(object sender, System.EventArgs e)
+		private void cb_TextChanged(object sender, EventArgs e)
 		{
 			//cb.DroppedDown = true;
 		}

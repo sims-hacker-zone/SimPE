@@ -29,17 +29,17 @@ namespace Ambertation.Windows.Forms
 	/// <summary>
 	/// This is a Dragable Panel
 	/// </summary>
-	[ToolboxBitmapAttribute(typeof(Panel))]
-	public class GraphPanel : System.Windows.Forms.Panel
+	[ToolboxBitmap(typeof(Panel))]
+	public class GraphPanel : Panel
 	{
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		private System.ComponentModel.Container components = null;
+		private Container components = null;
 
-		internal Ambertation.Collections.GraphElements LinkItems => Items;
+		internal Collections.GraphElements LinkItems => Items;
 
-		public Ambertation.Collections.GraphElements Items
+		public Collections.GraphElements Items
 		{
 			get;
 		}
@@ -59,7 +59,7 @@ namespace Ambertation.Windows.Forms
 					| ControlStyles.DoubleBuffer,
 				true
 			);
-			Items = new Ambertation.Collections.GraphElements();
+			Items = new Collections.GraphElements();
 			Items.ItemsChanged += new EventHandler(li_ItemsChanged);
 			this.BackColor = SystemColors.ControlLightLight;
 			lm = LinkControlLineMode.Bezier;
@@ -108,7 +108,7 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		private void InitializeComponent()
 		{
-			components = new System.ComponentModel.Container();
+			components = new Container();
 		}
 		#endregion
 
@@ -185,8 +185,8 @@ namespace Ambertation.Windows.Forms
 				}
 			}
 		}
-		Ambertation.Windows.Forms.Graph.LinkControlLineMode lm;
-		public Ambertation.Windows.Forms.Graph.LinkControlLineMode LineMode
+		LinkControlLineMode lm;
+		public LinkControlLineMode LineMode
 		{
 			get
 			{

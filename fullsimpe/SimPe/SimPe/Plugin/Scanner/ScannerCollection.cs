@@ -7,7 +7,7 @@ namespace SimPe.Plugin.Scanner
 	/// <summary>
 	/// Summary description for ScannerCollection.
 	/// </summary>
-	public class ScannerCollection : System.Collections.IEnumerable, System.IDisposable
+	public class ScannerCollection : IEnumerable, System.IDisposable
 	{
 		ArrayList list;
 
@@ -33,7 +33,7 @@ namespace SimPe.Plugin.Scanner
 			return list.Contains(item);
 		}
 
-		public void Sort(System.Collections.IComparer cmp)
+		public void Sort(IComparer cmp)
 		{
 			list.Sort(cmp);
 		}
@@ -53,7 +53,7 @@ namespace SimPe.Plugin.Scanner
 
 		#region IEnumerable Member
 
-		public System.Collections.IEnumerator GetEnumerator()
+		public IEnumerator GetEnumerator()
 		{
 			return list.GetEnumerator();
 		}

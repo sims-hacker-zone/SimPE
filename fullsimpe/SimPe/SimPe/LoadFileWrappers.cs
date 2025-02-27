@@ -27,7 +27,7 @@ using SimPe.Interfaces.Plugin;
 
 namespace SimPe
 {
-	public class PackageArg : System.EventArgs
+	public class PackageArg : EventArgs
 	{
 		public Interfaces.Files.IPackageFile Package
 		{
@@ -39,7 +39,7 @@ namespace SimPe
 			get; set;
 		}
 
-		public Interfaces.Plugin.IToolResult Result
+		public IToolResult Result
 		{
 			get; set;
 		}
@@ -69,13 +69,13 @@ namespace SimPe
 			ChangeHandler = chghnd;
 		}
 
-		private void ClickItem(object sender, System.EventArgs e)
+		private void ClickItem(object sender, EventArgs e)
 		{
 			try
 			{
 				if (tool.IsEnabled(pfd, package))
 				{
-					SimPe.Interfaces.Plugin.IToolResult tr = tool.ShowDialog(
+					IToolResult tr = tool.ShowDialog(
 						ref pfd,
 						ref package
 					);
@@ -166,7 +166,7 @@ namespace SimPe
 		IToolRegistry treg;
 
 		//this is a manual List of Wrappers that are known to cause Problems
-		System.Collections.ArrayList ignore;
+		ArrayList ignore;
 
 		void CreateIgnoreList()
 		{
@@ -214,7 +214,7 @@ namespace SimPe
 		}
 
 		public static void LoadErrorWrapper(
-			SimPe.PackedFiles.Wrapper.ErrorWrapper w,
+			PackedFiles.Wrapper.ErrorWrapper w,
 			LoadFileWrappersExt lfw
 		)
 		{
@@ -444,25 +444,25 @@ namespace SimPe
 		/// <param name="chghandler">A Function to call when the Package was chaged by a Tool</param>
 		public void AddMenuItems(
 			System.Windows.Forms.MenuItem mi,
-			System.EventHandler chghandler
+			EventHandler chghandler
 		)
 		{
 			ITool[] tools = treg.Tools;
-			foreach (SimPe.Interfaces.ITool tool in tools)
+			foreach (ITool tool in tools)
 			{
 				ToolMenuItem item = new ToolMenuItem(tool, chghandler);
 				mi.MenuItems.Add(item);
 			}
 
-			foreach (SimPe.Interfaces.IToolPlugin tool in treg.Docks)
+			foreach (IToolPlugin tool in treg.Docks)
 			{
 				if (
 					tool.GetType().GetInterface("SimPe.Interfaces.ITool", true)
-					== typeof(SimPe.Interfaces.ITool)
+					== typeof(ITool)
 				)
 				{
 					ToolMenuItem item = new ToolMenuItem(
-						(SimPe.Interfaces.ITool)tool,
+						(ITool)tool,
 						chghandler
 					);
 					mi.MenuItems.Add(item);

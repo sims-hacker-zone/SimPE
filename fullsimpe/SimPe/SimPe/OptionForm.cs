@@ -28,7 +28,7 @@ namespace SimPe
 	/// <summary>
 	/// Summary description for OptionForm.
 	/// </summary>
-	public partial class OptionForm : System.Windows.Forms.Form
+	public partial class OptionForm : Form
 	{
 		public OptionForm()
 		{
@@ -48,36 +48,36 @@ namespace SimPe
 				this.tbTools.Tag = hcTools;
 				this.tbIdent.Tag = hcIdent;
 
-				SimPe.Registry.ResourceListExtensionFormats[] rls =
-					(SimPe.Registry.ResourceListExtensionFormats[])
+				Registry.ResourceListExtensionFormats[] rls =
+					(Registry.ResourceListExtensionFormats[])
 						System.Enum.GetValues(
-							typeof(SimPe.Registry.ResourceListExtensionFormats)
+							typeof(Registry.ResourceListExtensionFormats)
 						);
-				foreach (SimPe.Registry.ResourceListExtensionFormats rl in rls)
+				foreach (Registry.ResourceListExtensionFormats rl in rls)
 				{
 					cbRLExt.Items.Add(rl);
 				}
 
 				cbRLExt.SelectedIndex = 0;
 
-				SimPe.Registry.ResourceListFormats[] rlf =
-					(SimPe.Registry.ResourceListFormats[])
+				Registry.ResourceListFormats[] rlf =
+					(Registry.ResourceListFormats[])
 						System.Enum.GetValues(
-							typeof(SimPe.Registry.ResourceListFormats)
+							typeof(Registry.ResourceListFormats)
 						);
-				foreach (SimPe.Registry.ResourceListFormats ri in rlf)
+				foreach (Registry.ResourceListFormats ri in rlf)
 				{
 					cbRLNames.Items.Add(ri);
 				}
 
 				cbRLNames.SelectedIndex = 0;
 
-				SimPe.Registry.ResourceListUnnamedFormats[] rlu =
-					(SimPe.Registry.ResourceListUnnamedFormats[])
+				Registry.ResourceListUnnamedFormats[] rlu =
+					(Registry.ResourceListUnnamedFormats[])
 						System.Enum.GetValues(
-							typeof(SimPe.Registry.ResourceListUnnamedFormats)
+							typeof(Registry.ResourceListUnnamedFormats)
 						);
-				foreach (SimPe.Registry.ResourceListUnnamedFormats ru in rlu)
+				foreach (Registry.ResourceListUnnamedFormats ru in rlu)
 				{
 					cbRLTGI.Items.Add(ru);
 				}
@@ -88,12 +88,12 @@ namespace SimPe
 
 				for (byte i = 1; i < 0x2d; i++)
 				{
-					this.cblang.Items.Add(new SimPe.PackedFiles.Wrapper.StrLanguage(i)); // CJH
+					this.cblang.Items.Add(new PackedFiles.Wrapper.StrLanguage(i)); // CJH
 				}
 
-				SimPe.Registry.ReportFormats[] rfs = (SimPe.Registry.ReportFormats[])
-					System.Enum.GetValues(typeof(SimPe.Registry.ReportFormats));
-				foreach (SimPe.Registry.ReportFormats rf in rfs)
+				Registry.ReportFormats[] rfs = (Registry.ReportFormats[])
+					System.Enum.GetValues(typeof(Registry.ReportFormats));
+				foreach (Registry.ReportFormats rf in rfs)
 				{
 					cbReport.Items.Add(rf);
 				}
@@ -101,7 +101,7 @@ namespace SimPe
 				cbReport.SelectedIndex = 0;
 
 				foreach (
-					SimPe.Interfaces.ISettings settings in FileTable
+					Interfaces.ISettings settings in FileTable
 						.SettingsRegistry
 						.Settings
 				)
@@ -208,46 +208,46 @@ namespace SimPe
 			lbfolder.SelectedIndex = lbfolder.Items.Count > 0 ? 0 : -1;
 
 			//Report Format
-			SimPe.Registry.ReportFormats rf = (SimPe.Registry.ReportFormats)
+			Registry.ReportFormats rf = (Registry.ReportFormats)
 				Helper.WindowsRegistry.ReportFormat;
 			for (int i = 0; i < cbReport.Items.Count; i++)
 			{
-				if ((SimPe.Registry.ReportFormats)cbReport.Items[i] == rf)
+				if ((Registry.ReportFormats)cbReport.Items[i] == rf)
 				{
 					cbReport.SelectedIndex = i;
 				}
 			}
 
-			SimPe.Registry.ResourceListExtensionFormats rlf =
-				(SimPe.Registry.ResourceListExtensionFormats)
+			Registry.ResourceListExtensionFormats rlf =
+				(Registry.ResourceListExtensionFormats)
 					Helper.WindowsRegistry.ResourceListExtensionFormat;
 			for (int i = 0; i < cbRLExt.Items.Count; i++)
 			{
 				if (
-					(SimPe.Registry.ResourceListExtensionFormats)cbRLExt.Items[i] == rlf
+					(Registry.ResourceListExtensionFormats)cbRLExt.Items[i] == rlf
 				)
 				{
 					cbRLExt.SelectedIndex = i;
 				}
 			}
 
-			SimPe.Registry.ResourceListFormats rif =
-				(SimPe.Registry.ResourceListFormats)
+			Registry.ResourceListFormats rif =
+				(Registry.ResourceListFormats)
 					Helper.WindowsRegistry.ResourceListFormat;
 			for (int i = 0; i < cbRLNames.Items.Count; i++)
 			{
-				if ((SimPe.Registry.ResourceListFormats)cbRLNames.Items[i] == rif)
+				if ((Registry.ResourceListFormats)cbRLNames.Items[i] == rif)
 				{
 					cbRLNames.SelectedIndex = i;
 				}
 			}
 
-			SimPe.Registry.ResourceListUnnamedFormats ruf =
-				(SimPe.Registry.ResourceListUnnamedFormats)
+			Registry.ResourceListUnnamedFormats ruf =
+				(Registry.ResourceListUnnamedFormats)
 					Helper.WindowsRegistry.ResourceListUnknownDescriptionFormat;
 			for (int i = 0; i < cbRLTGI.Items.Count; i++)
 			{
-				if ((SimPe.Registry.ResourceListUnnamedFormats)cbRLTGI.Items[i] == ruf)
+				if ((Registry.ResourceListUnnamedFormats)cbRLTGI.Items[i] == ruf)
 				{
 					cbRLTGI.SelectedIndex = i;
 				}
@@ -271,7 +271,7 @@ namespace SimPe
 			this.ShowDialog();
 		}
 
-		private void SaveOptionsClick(object sender, System.EventArgs e)
+		private void SaveOptionsClick(object sender, EventArgs e)
 		{
 			PathProvider.Global.NvidiaDDSPath = tbdds.Text;
 			Helper.WindowsRegistry.LanguageCode =
@@ -319,8 +319,8 @@ namespace SimPe
 			Helper.WindowsRegistry.Password = tbPassword.Text;
 			Helper.WindowsRegistry.FileTableSimpleSelectUseGroups = !cbhidden.Checked;
 
-			System.Collections.Generic.List<FileTableItem> lfti =
-				new System.Collections.Generic.List<FileTableItem>();
+			List<FileTableItem> lfti =
+				new List<FileTableItem>();
 			foreach (FileTableItem fti in lbfolder.Items)
 			{
 				lfti.Add(fti);
@@ -352,7 +352,7 @@ namespace SimPe
 
 		private void DeleteExt(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lbext.SelectedIndex < 0)
@@ -365,7 +365,7 @@ namespace SimPe
 
 		private void AddExt(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			AddExtTool aet = new AddExtTool();
@@ -377,7 +377,7 @@ namespace SimPe
 			}
 		}
 
-		private void button4_Click(object sender, System.EventArgs e)
+		private void button4_Click(object sender, EventArgs e)
 		{
 			if (System.IO.Directory.Exists(tbdds.Text))
 			{
@@ -390,12 +390,12 @@ namespace SimPe
 			}
 		}
 
-		private void ClearCaches(object sender, System.EventArgs e)
+		private void ClearCaches(object sender, EventArgs e)
 		{
 			SimPe.CheckControl.ClearCache();
 		}
 
-		private void DDSChanged(object sender, System.EventArgs e)
+		private void DDSChanged(object sender, EventArgs e)
 		{
 			string name = System.IO.Path.Combine(this.tbdds.Text, "nvdxt.exe");
 			lldds.Visible = (!System.IO.File.Exists(name));
@@ -404,7 +404,7 @@ namespace SimPe
 
 		private void LoadDDS(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			System.Windows.Forms.Help.ShowHelp(
@@ -413,7 +413,7 @@ namespace SimPe
 			);
 		}
 
-		private void ChangedThemeHandler(object sender, System.EventArgs e)
+		private void ChangedThemeHandler(object sender, EventArgs e)
 		{
 		}
 
@@ -426,7 +426,7 @@ namespace SimPe
 			}
 		}
 
-		private void ResetLayoutClick(object sender, System.EventArgs e)
+		private void ResetLayoutClick(object sender, EventArgs e)
 		{
 			if (ResetLayout != null)
 			{
@@ -434,7 +434,7 @@ namespace SimPe
 			}
 		}
 
-		private void LockDocksClick(object sender, System.EventArgs e)
+		private void LockDocksClick(object sender, EventArgs e)
 		{
 			if (LockDocks != null)
 			{
@@ -442,7 +442,7 @@ namespace SimPe
 			}
 		}
 
-		private void UnlockDocksClick(object sender, System.EventArgs e)
+		private void UnlockDocksClick(object sender, EventArgs e)
 		{
 			if (UnlockDocks != null)
 			{
@@ -451,13 +451,13 @@ namespace SimPe
 		}
 
 		#region Events
-		public event System.EventHandler ResetLayout;
-		public event System.EventHandler LockDocks;
-		public event System.EventHandler UnlockDocks;
+		public event EventHandler ResetLayout;
+		public event EventHandler LockDocks;
+		public event EventHandler UnlockDocks;
 		#endregion
 
 		#region Plugins
-		public Image GetImage(SimPe.Interfaces.IWrapper wrapper)
+		public Image GetImage(Interfaces.IWrapper wrapper)
 		{
 			if (uids.Contains(wrapper.WrapperDescription.UID))
 			{
@@ -482,7 +482,7 @@ namespace SimPe
 		}
 
 		public void SetPanel(
-			SimPe.Interfaces.IWrapper wrapper,
+			Interfaces.IWrapper wrapper,
 			TD.Eyefinder.HeaderControl pn
 		)
 		{
@@ -522,12 +522,12 @@ namespace SimPe
 			return false;
 		}
 
-		System.Collections.ArrayList uids;
-		System.Collections.ArrayList wrappers;
+		ArrayList uids;
+		ArrayList wrappers;
 
 		int height = 116;
 
-		public Control BuildPanel(SimPe.Interfaces.IWrapper wrapper, int index)
+		public Control BuildPanel(Interfaces.IWrapper wrapper, int index)
 		{
 			if (Helper.WindowsRegistry.HiddenMode)
 			{
@@ -795,7 +795,7 @@ namespace SimPe
 				this.toolTip1.SetToolTip(pb, "Allows Multiple instance.");
 			}
 
-			if (wrapper is SimPe.PackedFiles.Wrapper.ErrorWrapper)
+			if (wrapper is PackedFiles.Wrapper.ErrorWrapper)
 			{
 				pb = new PictureBox();
 				pb.Parent = pn;
@@ -923,13 +923,13 @@ namespace SimPe
 				f.Icon = icon;
 			}
 
-			SimPe.Interfaces.IWrapper[] wrappers = FileTable
+			Interfaces.IWrapper[] wrappers = FileTable
 				.WrapperRegistry
 				.AllWrappers;
 
 			for (int ct = wrappers.Length - 1; ct >= 0; ct--)
 			{
-				SimPe.Interfaces.IWrapper wrapper = wrappers[ct];
+				Interfaces.IWrapper wrapper = wrappers[ct];
 				f.cnt.Controls.Add(f.BuildPanel(wrapper, ct));
 			}
 
@@ -941,9 +941,9 @@ namespace SimPe
 
 			f.Execute();
 
-			foreach (SimPe.Interfaces.IWrapper wrapper in wrappers)
+			foreach (Interfaces.IWrapper wrapper in wrappers)
 			{
-				if (!(wrapper is SimPe.PackedFiles.Wrapper.ErrorWrapper))
+				if (!(wrapper is PackedFiles.Wrapper.ErrorWrapper))
 				{
 					Helper.WindowsRegistry.SetWrapperPriority(
 						wrapper.WrapperDescription.UID,
@@ -1011,7 +1011,7 @@ namespace SimPe
 		{
 			PictureBox pb = (PictureBox)sender;
 			TD.Eyefinder.HeaderControl pn = (TD.Eyefinder.HeaderControl)pb.Tag;
-			SimPe.Interfaces.IWrapper wrapper = (SimPe.Interfaces.IWrapper)pn.Tag;
+			Interfaces.IWrapper wrapper = (Interfaces.IWrapper)pn.Tag;
 
 			wrapper.Priority *= -1;
 			SetPanel(wrapper, pn);
@@ -1045,8 +1045,8 @@ namespace SimPe
 			int d = pn1.Top;
 			pn1.Top = pn2.Top;
 			pn2.Top = d;
-			SimPe.Interfaces.IWrapper w1 = (SimPe.Interfaces.IWrapper)pn1.Tag;
-			SimPe.Interfaces.IWrapper w2 = (SimPe.Interfaces.IWrapper)pn2.Tag;
+			Interfaces.IWrapper w1 = (Interfaces.IWrapper)pn1.Tag;
+			Interfaces.IWrapper w2 = (Interfaces.IWrapper)pn2.Tag;
 
 			int p1 = w1.Priority;
 			int p2 = w2.Priority;
@@ -1075,7 +1075,7 @@ namespace SimPe
 			cnt.Controls.SetChildIndex(pn1, index + o);
 		}
 
-		private void btpup_Click(object sender, System.EventArgs e)
+		private void btpup_Click(object sender, EventArgs e)
 		{
 			if (lastpn == null)
 			{
@@ -1093,7 +1093,7 @@ namespace SimPe
 			lastpn.Focus();
 		}
 
-		private void btpdown_Click(object sender, System.EventArgs e)
+		private void btpdown_Click(object sender, EventArgs e)
 		{
 			if (lastpn == null)
 			{
@@ -1151,7 +1151,7 @@ namespace SimPe
 			}
 
 			pb.Image = GetShrinkImage(pn);
-			SimPe.Interfaces.IWrapper wrapper = (SimPe.Interfaces.IWrapper)pn.Tag;
+			Interfaces.IWrapper wrapper = (Interfaces.IWrapper)pn.Tag;
 			//SetBackgroundColor(pb, wrapper);
 		}
 
@@ -1165,18 +1165,18 @@ namespace SimPe
 
 		#endregion
 
-		private void cbmulti_CheckedChanged(object sender, System.EventArgs e)
+		private void cbmulti_CheckedChanged(object sender, EventArgs e)
 		{
 			cbFirefox.Enabled = cbmulti.Checked;
 			cbFirefox.Refresh();
 		}
 
-		private void button8_Click(object sender, System.EventArgs e)
+		private void button8_Click(object sender, EventArgs e)
 		{
 			Helper.WindowsRegistry.ClearRecentFileList();
 		}
 
-		private void tbPassword_Leave(object sender, System.EventArgs e)
+		private void tbPassword_Leave(object sender, EventArgs e)
 		{
 			if (this.Tag != null)
 			{
@@ -1216,13 +1216,13 @@ namespace SimPe
 			this.btcreateid.Visible = false;
 		}
 
-		private void cbblur_CheckedChanged(object sender, System.EventArgs e)
+		private void cbblur_CheckedChanged(object sender, EventArgs e)
 		{
 			Helper.WindowsRegistry.BlurNudity = cbblur.Checked;
 			cbblur.Checked = Helper.WindowsRegistry.BlurNudity;
 		}
 
-		private void cbDeep_CheckedChanged(object sender, System.EventArgs e)
+		private void cbDeep_CheckedChanged(object sender, EventArgs e)
 		{
 			cbSimTemp.Enabled = cbDeep.Checked;
 		}
@@ -1250,7 +1250,7 @@ namespace SimPe
 
 			lcb.Add(key, cb);
 			cb.Text = text;
-			cb.CheckedChanged += new System.EventHandler(
+			cb.CheckedChanged += new EventHandler(
 				this.cbIncNightlife_CheckedChanged
 			);
 
@@ -1318,14 +1318,14 @@ namespace SimPe
 			}
 		}
 
-		private void btReload_Click(object sender, System.EventArgs e)
+		private void btReload_Click(object sender, EventArgs e)
 		{
 			this.Enabled = false;
 			try
 			{
 				Helper.LocalMode = btReload.Enabled = false; // We're no longer in LocalMode after a filetable reload
-				System.Collections.Generic.List<FileTableItem> lfti =
-					new System.Collections.Generic.List<FileTableItem>();
+				List<FileTableItem> lfti =
+					new List<FileTableItem>();
 				foreach (FileTableItem fti in lbfolder.Items)
 				{
 					lfti.Add(fti);
@@ -1343,7 +1343,7 @@ namespace SimPe
 
 		private void linkLabel6_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			this.Enabled = false;
@@ -1551,7 +1551,7 @@ namespace SimPe
 
 		private void lbfolder_ItemCheck(
 			object sender,
-			System.Windows.Forms.ItemCheckEventArgs e
+			ItemCheckEventArgs e
 		)
 		{
 			if (this.Tag != null)
@@ -1581,7 +1581,7 @@ namespace SimPe
 
 		private void lbfolder_SelectedIndexChanged(
 			object sender,
-			System.EventArgs e
+			EventArgs e
 		)
 		{
 		}
@@ -1642,7 +1642,7 @@ namespace SimPe
 			this.cbIncCep.Tag = null;
 		}
 
-		private void cbIncNightlife_CheckedChanged(object sender, System.EventArgs e)
+		private void cbIncNightlife_CheckedChanged(object sender, EventArgs e)
 		{
 			if (speady == true)
 			{
@@ -1711,7 +1711,7 @@ namespace SimPe
 
 		private void lladddown_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			this.Enabled = false;
@@ -1755,7 +1755,7 @@ namespace SimPe
 
 		private void lldel_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lbfolder.SelectedIndex < 0)
@@ -1779,7 +1779,7 @@ namespace SimPe
 
 		private void lladd_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			FileTableItem fti = FileTableItemForm.Execute();
@@ -1802,7 +1802,7 @@ namespace SimPe
 
 		private void llchg_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lbfolder.SelectedItem != null)
@@ -1827,7 +1827,7 @@ namespace SimPe
 		}
 		#endregion
 
-		private void cbLock_CheckedChanged(object sender, System.EventArgs e)
+		private void cbLock_CheckedChanged(object sender, EventArgs e)
 		{
 			CheckBox cb = sender as CheckBox;
 
@@ -1841,12 +1841,12 @@ namespace SimPe
 			}
 		}
 
-		private void checkControl1_FixedFileTable(object sender, System.EventArgs e)
+		private void checkControl1_FixedFileTable(object sender, EventArgs e)
 		{
 			RebuildFileTableList();
 		}
 
-		private void cbCustom_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void cbCustom_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			this.pgcustom.SelectedObject = cbCustom.SelectedItem;
 		}
@@ -2024,7 +2024,7 @@ namespace SimPe
 			}
 		}
 
-		private void ChoosePage(object sender, System.EventArgs e)
+		private void ChoosePage(object sender, EventArgs e)
 		{
 			SelectButton((ToolStripButton)sender);
 		}

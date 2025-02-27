@@ -5,7 +5,7 @@ namespace SimPe.PackedFiles.Wrapper
 {
 	public partial class SimInfo : Form
 	{
-		public SimInfo(Wrapper.ExtSDesc Sim, Image img)
+		public SimInfo(ExtSDesc Sim, Image img)
 		{
 			InitializeComponent();
 			this.pbImage.Image = img;

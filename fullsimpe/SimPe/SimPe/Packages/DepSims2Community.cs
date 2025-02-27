@@ -24,14 +24,14 @@ namespace SimPe.Packages
 	/// <summary>
 	/// Summary description for DepSims2Community.
 	/// </summary>
-	internal class DepSims2Community : System.Windows.Forms.Form
+	internal class DepSims2Community : Form
 	{
-		private System.Windows.Forms.ListBox lblist;
-		private System.Windows.Forms.OpenFileDialog ofd;
-		private System.Windows.Forms.Button btdelete;
-		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.Button btadd;
-		private System.Windows.Forms.Panel panel1;
+		private ListBox lblist;
+		private OpenFileDialog ofd;
+		private Button btdelete;
+		private Button button2;
+		private Button btadd;
+		private Panel panel1;
 
 		/// <summary>
 		/// Required designer variable.
@@ -68,19 +68,19 @@ namespace SimPe.Packages
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.btadd = new System.Windows.Forms.Button();
-			this.lblist = new System.Windows.Forms.ListBox();
-			this.ofd = new System.Windows.Forms.OpenFileDialog();
-			this.btdelete = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.btadd = new Button();
+			this.lblist = new ListBox();
+			this.ofd = new OpenFileDialog();
+			this.btdelete = new Button();
+			this.button2 = new Button();
+			this.panel1 = new Panel();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			//
 			// btadd
 			//
 			this.btadd.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -100,7 +100,7 @@ namespace SimPe.Packages
 			// lblist
 			//
 			this.lblist.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -121,7 +121,7 @@ namespace SimPe.Packages
 			// btdelete
 			//
 			this.btdelete.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -141,7 +141,7 @@ namespace SimPe.Packages
 			// button2
 			//
 			this.button2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
@@ -161,7 +161,7 @@ namespace SimPe.Packages
 			// panel1
 			//
 			this.panel1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -207,7 +207,7 @@ namespace SimPe.Packages
 		#endregion
 		bool ok;
 
-		public void Execute(SimPe.Packages.S2CPDescriptor s2cp, bool ronly)
+		public void Execute(S2CPDescriptor s2cp, bool ronly)
 		{
 			lblist.Items.Clear();
 
@@ -247,7 +247,7 @@ namespace SimPe.Packages
 			ofd.Filter = "Sims 2 Package (*.package)|*.package|All Files (*.*)|*.*";
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
-				SimPe.Packages.GeneratableFile package = GeneratableFile.LoadFromFile(
+				GeneratableFile package = GeneratableFile.LoadFromFile(
 					ofd.FileName
 				);
 				S2CPDescriptorBase s2cpb = new S2CPDescriptorBase(package);

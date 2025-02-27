@@ -24,7 +24,7 @@ namespace SimPe
 	/// <summary>
 	/// Describes Values used to Filter the ResourceView
 	/// </summary>
-	public class ViewFilter : SimPe.Windows.Forms.IResourceViewFilter
+	public class ViewFilter : Windows.Forms.IResourceViewFilter
 	{
 		/// <summary>
 		/// Create a new instance
@@ -144,7 +144,7 @@ namespace SimPe
 		/// <summary>
 		/// returns true, if the passed Item should be filtered
 		/// </summary>
-		public bool IsFiltered(SimPe.Interfaces.Files.IPackedFileDescriptor pfd)
+		public bool IsFiltered(Interfaces.Files.IPackedFileDescriptor pfd)
 		{
 			if (dogrp)
 			{

@@ -29,11 +29,11 @@ namespace pjse.BhavOperandWizards.WizRaw
 	/// <summary>
 	/// Zusammenfassung f�r BhavInstruction.
 	/// </summary>
-	internal class UI : System.Windows.Forms.Form, iBhavOperandWizForm
+	internal class UI : Form, iBhavOperandWizForm
 	{
 		#region Form variables
-		internal System.Windows.Forms.Panel pnWizRaw;
-		private System.Windows.Forms.TextBox tbRaw;
+		internal Panel pnWizRaw;
+		private TextBox tbRaw;
 
 		/// <summary>
 		/// Erforderliche Designervariable.
@@ -121,8 +121,8 @@ namespace pjse.BhavOperandWizards.WizRaw
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWizRaw = new System.Windows.Forms.Panel();
-			this.tbRaw = new System.Windows.Forms.TextBox();
+			this.pnWizRaw = new Panel();
+			this.tbRaw = new TextBox();
 			this.pnWizRaw.SuspendLayout();
 			this.SuspendLayout();
 			//
@@ -153,7 +153,7 @@ namespace pjse.BhavOperandWizards.WizRaw
 
 namespace pjse.BhavOperandWizards
 {
-	public class BhavOperandWizRaw : pjse.ABhavOperandWiz
+	public class BhavOperandWizRaw : ABhavOperandWiz
 	{
 		public BhavOperandWizRaw(Instruction i)
 			: base(i)

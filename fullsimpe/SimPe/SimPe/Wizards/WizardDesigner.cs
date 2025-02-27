@@ -31,7 +31,7 @@ namespace SimPe.Wizards
 		}
 
 		private DesignerVerbCollection actions;
-		public override System.ComponentModel.Design.DesignerVerbCollection Verbs
+		public override DesignerVerbCollection Verbs
 		{
 			get
 			{
@@ -81,7 +81,7 @@ namespace SimPe.Wizards
 			c.ComponentRemoving += new ComponentEventHandler(OnComponentRemoving);
 		}
 
-		private void OnSelectionChanged(object sender, System.EventArgs e)
+		private void OnSelectionChanged(object sender, EventArgs e)
 		{
 			//MyControl.OnSelectionChanged();
 		}
@@ -136,27 +136,27 @@ namespace SimPe.Wizards
 
 		public override System.Collections.ICollection AssociatedComponents => wz.Controls;
 
-		private void ShowNextStep(object sender, System.EventArgs e)
+		private void ShowNextStep(object sender, EventArgs e)
 		{
 			wz.GoNext();
 		}
 
-		private void ShowPrevStep(object sender, System.EventArgs e)
+		private void ShowPrevStep(object sender, EventArgs e)
 		{
 			wz.GoPrev();
 		}
 
-		private void ShowFirstStep(object sender, System.EventArgs e)
+		private void ShowFirstStep(object sender, EventArgs e)
 		{
 			wz.JumpToStep(0);
 		}
 
-		private void ShowLastStep(object sender, System.EventArgs e)
+		private void ShowLastStep(object sender, EventArgs e)
 		{
 			wz.JumpToStep(wz.StepCount - 1);
 		}
 
-		private void AddStep(object sender, System.EventArgs e)
+		private void AddStep(object sender, EventArgs e)
 		{
 			WizardStepPanel pn;
 			IDesignerHost h = (IDesignerHost)GetService(typeof(IDesignerHost));

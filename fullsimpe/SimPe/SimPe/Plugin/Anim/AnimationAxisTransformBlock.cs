@@ -27,8 +27,8 @@ namespace SimPe.Plugin.Anim
 	/// Data is unknown
 	/// </summary>
 	public class AnimationAxisTransformBlock
-		: System.ICloneable,
-			System.Collections.IEnumerable
+		: ICloneable,
+			IEnumerable
 	{
 		#region Attributes
 		[Browsable(false)]
@@ -40,7 +40,7 @@ namespace SimPe.Plugin.Anim
 		uint[] datai;
 
 		[
-			DescriptionAttribute(
+			Description(
 				"Lower 16 Bits contain the count, Bit 16-17 contain the type of the assigned AddonData. Bit 18 seems to Lock the Animation"
 			),
 			Category("Information")
@@ -58,7 +58,7 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute(
+			Description(
 				"Setting this Bit seems to Lock the Animation. However I am not sure about this!"
 			),
 			Category("Information")
@@ -82,7 +82,7 @@ namespace SimPe.Plugin.Anim
 			}
 		}
 
-		[DescriptionAttribute("Unknown Parts of Unknown1.")]
+		[Description("Unknown Parts of Unknown1.")]
 		public uint Unknown1Bits
 		{
 			get
@@ -116,9 +116,9 @@ namespace SimPe.Plugin.Anim
 		public string Unknown1Hex => "0x" + Helper.HexString(Unknown1Bits);
 
 		[
-			DescriptionAttribute("Reserved"),
-			CategoryAttribute("Reserved"),
-			DefaultValueAttribute(0x11BA05F0)
+			Description("Reserved"),
+			Category("Reserved"),
+			DefaultValue(0x11BA05F0)
 		]
 		public uint Unknown2
 		{
@@ -137,8 +137,8 @@ namespace SimPe.Plugin.Anim
 		byte type;
 
 		[
-			DescriptionAttribute("Propbably some sort of Type Identifier"),
-			CategoryAttribute("Information")
+			Description("Propbably some sort of Type Identifier"),
+			Category("Information")
 		]
 		public AnimationTokenType Type
 		{
@@ -153,8 +153,8 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute("The First TimeCode for this Transformation Element"),
-			CategoryAttribute("Information")
+			Description("The First TimeCode for this Transformation Element"),
+			Category("Information")
 		]
 		public short FirstTimeCode
 		{
@@ -176,8 +176,8 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute("The Last TimeCode for this Transformation Element"),
-			CategoryAttribute("Information")
+			Description("The Last TimeCode for this Transformation Element"),
+			Category("Information")
 		]
 		public short LastTimeCode
 		{
@@ -194,8 +194,8 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute("Size (in Bytes) of one Addon Token"),
-			CategoryAttribute("Information")
+			Description("Size (in Bytes) of one Addon Token"),
+			Category("Information")
 		]
 		public byte TokenSize
 		{
@@ -221,14 +221,14 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[
-			DescriptionAttribute("Remaining Information stored in Unknown1"),
-			CategoryAttribute("Information")
+			Description("Remaining Information stored in Unknown1"),
+			Category("Information")
 		]
 		public uint AddonTokenUnknown => Unknown1 >> 0x13;
 
 		[
-			DescriptionAttribute("Number of Tokens stored in the Addon Data"),
-			CategoryAttribute("Information")
+			Description("Number of Tokens stored in the Addon Data"),
+			Category("Information")
 		]
 		public int Count => items.Count;
 		#endregion
@@ -396,7 +396,7 @@ namespace SimPe.Plugin.Anim
 
 		#region ICloneable Member
 
-		object System.ICloneable.Clone()
+		object ICloneable.Clone()
 		{
 			return CloneBase();
 		}

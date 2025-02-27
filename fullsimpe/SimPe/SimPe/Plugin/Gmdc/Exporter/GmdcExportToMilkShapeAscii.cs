@@ -188,7 +188,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 					else
 					{
 						bnr = (
-							(SimPe.Plugin.Gmdc.GmdcElementValueOneInt)
+							(GmdcElementValueOneInt)
 								boneelement.Values[bnr]
 						).Value;
 						if (bnr == -1)
@@ -267,39 +267,39 @@ namespace SimPe.Plugin.Gmdc.Exporter
 			modelnr++;
 		}
 
-		SimPe.Geometry.Vector3f Correct(SimPe.Geometry.Vector3f t, object cor)
+		Vector3f Correct(Vector3f t, object cor)
 		{
 			if (cor == null)
 			{
 				return t;
 			}
 
-			if (cor is SimPe.Geometry.Quaternion)
+			if (cor is Quaternion)
 			{
 				return t;
 			}
 
-			if (!(cor is SimPe.Geometry.Vector3f))
+			if (!(cor is Vector3f))
 			{
 				return t;
 			}
 
-			return t + (SimPe.Geometry.Vector3f)cor;
+			return t + (Vector3f)cor;
 		}
 
-		SimPe.Geometry.Quaternion Correct(SimPe.Geometry.Quaternion t, object cor)
+		Quaternion Correct(Quaternion t, object cor)
 		{
 			if (cor == null)
 			{
 				return t;
 			}
 
-			if (!(cor is SimPe.Geometry.Quaternion))
+			if (!(cor is Quaternion))
 			{
 				return t;
 			}
 
-			return t * (SimPe.Geometry.Quaternion)cor;
+			return t * (Quaternion)cor;
 		}
 
 		/// <summary>
@@ -435,7 +435,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 					);
 
 					//get Translation Frames
-					Anim.AnimationFrameBlock ab =
+					AnimationFrameBlock ab =
 						Gmdc.LinkedAnimation.GetJointTransformation(
 							Gmdc.Joints[i].Name,
 							FrameType.Translation

@@ -110,7 +110,7 @@ namespace SimPe.PackedFiles.UserInterface
 				{
 					if (item != null)
 					{
-						item.Wrapper.WrapperChanged -= new System.EventHandler(
+						item.Wrapper.WrapperChanged -= new EventHandler(
 							this.WrapperChanged
 						);
 					}
@@ -119,7 +119,7 @@ namespace SimPe.PackedFiles.UserInterface
 					setData();
 					if (item != null)
 					{
-						item.Wrapper.WrapperChanged += new System.EventHandler(
+						item.Wrapper.WrapperChanged += new EventHandler(
 							this.WrapperChanged
 						);
 					}
@@ -127,7 +127,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		private void WrapperChanged(object sender, System.EventArgs e)
+		private void WrapperChanged(object sender, EventArgs e)
 		{
 			if (sender != item)
 			{
@@ -231,7 +231,7 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.btnClear, "btnClear");
 			this.btnClear.Name = "btnClear";
 			this.btnClear.UseVisualStyleBackColor = false;
-			this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+			this.btnClear.Click += new EventHandler(this.btnClear_Click);
 			//
 			// lbMin
 			//
@@ -259,14 +259,14 @@ namespace SimPe.PackedFiles.UserInterface
 		}
 		#endregion
 
-		private void btnClear_Click(object sender, System.EventArgs e)
+		private void btnClear_Click(object sender, EventArgs e)
 		{
 			item.Clear();
 		}
 	}
 
 	#region MotiveClickEvent
-	public class MotiveClickEventArgs : System.EventArgs
+	public class MotiveClickEventArgs : EventArgs
 	{
 		public MotiveClickEventArgs(int m)
 			: base()

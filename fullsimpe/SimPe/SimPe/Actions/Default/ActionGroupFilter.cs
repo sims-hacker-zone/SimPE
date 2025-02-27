@@ -21,17 +21,17 @@ namespace SimPe.Actions.Default
 {
 	class ActionGroupFilter : AbstractActionDefault
 	{
-		private SimPe.Windows.Forms.ResourceListViewExt lv = null;
+		private Windows.Forms.ResourceListViewExt lv = null;
 		private ViewFilter Filter => (ViewFilter)((lv == null) ? null : lv.Filter);
 
-		public ActionGroupFilter(SimPe.Windows.Forms.ResourceListViewExt value)
+		public ActionGroupFilter(Windows.Forms.ResourceListViewExt value)
 		{
 			lv = value;
 		}
 
 		public override bool ChangeEnabledStateEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs es
+			Events.ResourceEventArgs es
 		)
 		{
 			bool res = base.ChangeEnabledStateEventHandler(sender, es);
@@ -42,7 +42,7 @@ namespace SimPe.Actions.Default
 
 		public override void ExecuteEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs es
+			Events.ResourceEventArgs es
 		)
 		{
 			if (!ChangeEnabledStateEventHandler(sender, es))

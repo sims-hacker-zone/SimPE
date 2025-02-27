@@ -83,7 +83,7 @@ namespace SimPe.Interfaces
 		/// A handler is assigned if the first bytes of the Data are equal
 		/// to the signature provided by the Handler
 		/// </remarks>
-		SimPe.Interfaces.Plugin.IFileWrapper FindHandler(Byte[] data);
+		Plugin.IFileWrapper FindHandler(Byte[] data);
 
 		/// <summary>
 		/// Contains a Listing of all available Wrapper Icons

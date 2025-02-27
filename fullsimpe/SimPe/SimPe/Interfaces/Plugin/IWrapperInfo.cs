@@ -23,7 +23,7 @@ namespace SimPe.Interfaces.Plugin
 	/// Contains Human Readable Information about a Wrapper
 	/// </summary>
 	/// <remarks>Never Implement a new Version of this Interface,
-	/// use <see cref="SimPe.Interfaces.Plugin.AbstractWrapperInfo"/>
+	/// use <see cref="AbstractWrapperInfo"/>
 	/// as staring Point for a new Implementation. Otherwise the Loader
 	/// Wrapper loader won't load the Image Index correct!</remarks>
 	public interface IWrapperInfo : System.IDisposable

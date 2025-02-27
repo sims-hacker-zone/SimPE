@@ -6,7 +6,7 @@ using System.Xml;
 
 namespace SimPe
 {
-	[ToolboxBitmapAttribute(typeof(Panel))]
+	[ToolboxBitmap(typeof(Panel))]
 	public partial class infocheck : UserControl
 	{
 		public ArrayList listing;
@@ -48,7 +48,7 @@ namespace SimPe
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-			this.lbRelease.Font = new System.Drawing.Font("Tahoma", 10F);
+			this.lbRelease.Font = new Font("Tahoma", 10F);
 			this.lbRelease.TextAlign = System.Drawing.ContentAlignment.TopLeft;
 			this.lbRelease.Text = ReleaseDir;
 			allgoody = allsame = true;
@@ -57,7 +57,7 @@ namespace SimPe
 			this.button2.Visible = false;
 			this.lv2.Items.Clear();
 
-			System.Xml.XmlDocument xmlfile = new XmlDocument();
+			XmlDocument xmlfile = new XmlDocument();
 			xmlfile.Load(System.IO.Path.Combine(Helper.SimPeDataPath, "release.nfo"));
 			XmlNodeList XMLData = xmlfile.GetElementsByTagName("simperelease");
 			for (int i = 0; i < XMLData.Count; i++)
@@ -117,10 +117,10 @@ namespace SimPe
 			}
 		}
 
-		private void button1_Click(object sender, System.EventArgs e)
+		private void button1_Click(object sender, EventArgs e)
 		{
 			removecrap();
-			this.lbRelease.Font = new System.Drawing.Font("Tahoma", 10F);
+			this.lbRelease.Font = new Font("Tahoma", 10F);
 			this.lbRelease.TextAlign = System.Drawing.ContentAlignment.TopLeft;
 			this.lbRelease.Text = ReleaseDir;
 			this.label1.Visible =

@@ -26,8 +26,8 @@ namespace SimPe
 	/// Basic Class you can use if you have to implement Flags
 	/// </summary>
 	[
-		TypeConverterAttribute(typeof(FlagBaseConverter)),
-		DescriptionAttribute("This Property contains some Flags")
+		TypeConverter(typeof(FlagBaseConverter)),
+		Description("This Property contains some Flags")
 	]
 	public class FlagBase : Serializer, Ambertation.IPropertyClass
 	{
@@ -46,7 +46,7 @@ namespace SimPe
 			catch { }
 		}
 
-		[System.ComponentModel.Browsable(false)]
+		[Browsable(false)]
 		public ushort Value
 		{
 			get; set;

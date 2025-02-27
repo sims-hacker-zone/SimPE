@@ -27,7 +27,7 @@ namespace SimPe.PackedFiles.Wrapper
 	/// <summary>
 	/// Summary description for Elements2.
 	/// </summary>
-	public class Elements2 : System.Windows.Forms.Form
+	public class Elements2 : Form
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -75,26 +75,26 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(Elements2));
-			this.btprev = new System.Windows.Forms.Button();
-			this.cbtype = new System.Windows.Forms.ComboBox();
-			this.label8 = new System.Windows.Forms.Label();
-			this.rtbcpfname = new System.Windows.Forms.RichTextBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.rtbcpf = new System.Windows.Forms.RichTextBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.lbcpf = new System.Windows.Forms.ListBox();
-			this.panel5 = new System.Windows.Forms.Panel();
-			this.tbNref = new System.Windows.Forms.TextBox();
-			this.label10 = new System.Windows.Forms.Label();
-			this.tbnrefhash = new System.Windows.Forms.TextBox();
-			this.label9 = new System.Windows.Forms.Label();
-			this.NrefPanel = new System.Windows.Forms.Panel();
-			this.panel4 = new System.Windows.Forms.Panel();
-			this.CpfPanel = new System.Windows.Forms.Panel();
-			this.pbicon = new System.Windows.Forms.PictureBox();
-			this.llcpfadd = new System.Windows.Forms.LinkLabel();
-			this.llcpfchange = new System.Windows.Forms.LinkLabel();
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+			this.btprev = new Button();
+			this.cbtype = new ComboBox();
+			this.label8 = new Label();
+			this.rtbcpfname = new RichTextBox();
+			this.label7 = new Label();
+			this.rtbcpf = new RichTextBox();
+			this.label6 = new Label();
+			this.lbcpf = new ListBox();
+			this.panel5 = new Panel();
+			this.tbNref = new TextBox();
+			this.label10 = new Label();
+			this.tbnrefhash = new TextBox();
+			this.label9 = new Label();
+			this.NrefPanel = new Panel();
+			this.panel4 = new Panel();
+			this.CpfPanel = new Panel();
+			this.pbicon = new PictureBox();
+			this.llcpfadd = new LinkLabel();
+			this.llcpfchange = new LinkLabel();
+			this.linkLabel1 = new LinkLabel();
 			this.NrefPanel.SuspendLayout();
 			this.CpfPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbicon)).BeginInit();
@@ -104,14 +104,14 @@ namespace SimPe.PackedFiles.Wrapper
 			//
 			resources.ApplyResources(this.btprev, "btprev");
 			this.btprev.Name = "btprev";
-			this.btprev.Click += new System.EventHandler(this.btprev_Click);
+			this.btprev.Click += new EventHandler(this.btprev_Click);
 			//
 			// cbtype
 			//
 			resources.ApplyResources(this.cbtype, "cbtype");
 			this.cbtype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbtype.Name = "cbtype";
-			this.cbtype.SelectedIndexChanged += new System.EventHandler(
+			this.cbtype.SelectedIndexChanged += new EventHandler(
 				this.CpfAutoChange
 			);
 			//
@@ -126,7 +126,7 @@ namespace SimPe.PackedFiles.Wrapper
 			resources.ApplyResources(this.rtbcpfname, "rtbcpfname");
 			this.rtbcpfname.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.rtbcpfname.Name = "rtbcpfname";
-			this.rtbcpfname.TextChanged += new System.EventHandler(this.CpfAutoChange);
+			this.rtbcpfname.TextChanged += new EventHandler(this.CpfAutoChange);
 			//
 			// label7
 			//
@@ -139,7 +139,7 @@ namespace SimPe.PackedFiles.Wrapper
 			resources.ApplyResources(this.rtbcpf, "rtbcpf");
 			this.rtbcpf.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.rtbcpf.Name = "rtbcpf";
-			this.rtbcpf.TextChanged += new System.EventHandler(this.CpfAutoChange);
+			this.rtbcpf.TextChanged += new EventHandler(this.CpfAutoChange);
 			//
 			// label6
 			//
@@ -151,7 +151,7 @@ namespace SimPe.PackedFiles.Wrapper
 			//
 			resources.ApplyResources(this.lbcpf, "lbcpf");
 			this.lbcpf.Name = "lbcpf";
-			this.lbcpf.SelectedIndexChanged += new System.EventHandler(
+			this.lbcpf.SelectedIndexChanged += new EventHandler(
 				this.CpfItemSelect
 			);
 			//
@@ -166,7 +166,7 @@ namespace SimPe.PackedFiles.Wrapper
 			//
 			resources.ApplyResources(this.tbNref, "tbNref");
 			this.tbNref.Name = "tbNref";
-			this.tbNref.TextChanged += new System.EventHandler(this.tbnref_TextChanged);
+			this.tbNref.TextChanged += new EventHandler(this.tbnref_TextChanged);
 			//
 			// label10
 			//
@@ -244,7 +244,7 @@ namespace SimPe.PackedFiles.Wrapper
 			this.llcpfadd.TabStop = true;
 			this.llcpfadd.UseCompatibleTextRendering = true;
 			this.llcpfadd.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.AddCpf);
+				new LinkLabelLinkClickedEventHandler(this.AddCpf);
 			//
 			// llcpfchange
 			//
@@ -253,7 +253,7 @@ namespace SimPe.PackedFiles.Wrapper
 			this.llcpfchange.Name = "llcpfchange";
 			this.llcpfchange.TabStop = true;
 			this.llcpfchange.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.CpfChange
 				);
 			//
@@ -264,7 +264,7 @@ namespace SimPe.PackedFiles.Wrapper
 			this.linkLabel1.Name = "linkLabel1";
 			this.linkLabel1.TabStop = true;
 			this.linkLabel1.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.DeleteCpf
 				);
 			//
@@ -283,25 +283,25 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 		#endregion
 
-		private System.Windows.Forms.Panel panel5;
-		internal System.Windows.Forms.ListBox lbcpf;
-		internal System.Windows.Forms.RichTextBox rtbcpf;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Label label7;
-		internal System.Windows.Forms.RichTextBox rtbcpfname;
-		private System.Windows.Forms.Label label8;
-		internal System.Windows.Forms.ComboBox cbtype;
-		private System.Windows.Forms.Panel panel4;
-		internal System.Windows.Forms.Label label9;
-		internal System.Windows.Forms.TextBox tbnrefhash;
-		internal System.Windows.Forms.Label label10;
-		internal System.Windows.Forms.Button btprev;
-		internal System.Windows.Forms.TextBox tbNref;
-		internal System.Windows.Forms.Panel NrefPanel;
-		internal System.Windows.Forms.Panel CpfPanel;
-		internal System.Windows.Forms.LinkLabel linkLabel1;
-		internal System.Windows.Forms.LinkLabel llcpfadd;
-		internal System.Windows.Forms.LinkLabel llcpfchange;
+		private Panel panel5;
+		internal ListBox lbcpf;
+		internal RichTextBox rtbcpf;
+		private Label label6;
+		private Label label7;
+		internal RichTextBox rtbcpfname;
+		private Label label8;
+		internal ComboBox cbtype;
+		private Panel panel4;
+		internal Label label9;
+		internal TextBox tbnrefhash;
+		internal Label label10;
+		internal Button btprev;
+		internal TextBox tbNref;
+		internal Panel NrefPanel;
+		internal Panel CpfPanel;
+		internal LinkLabel linkLabel1;
+		internal LinkLabel llcpfadd;
+		internal LinkLabel llcpfchange;
 		private PictureBox pbicon;
 
 		#region Str Attributes
@@ -310,7 +310,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#endregion
 
 		#region CPF
-		private void CpfItemSelect(object sender, System.EventArgs e)
+		private void CpfItemSelect(object sender, EventArgs e)
 		{
 			if (rtbcpfname.Tag != null)
 			{
@@ -394,7 +394,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		private void CpfChange(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (cbtype.SelectedIndex < 0)
@@ -489,7 +489,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		private void AddCpf(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			lbcpf.SelectedIndex = -1;
@@ -511,7 +511,7 @@ namespace SimPe.PackedFiles.Wrapper
 			wrp.Items = items;
 		}
 
-		private void CpfCommit(object sender, System.EventArgs e)
+		private void CpfCommit(object sender, EventArgs e)
 		{
 			try
 			{
@@ -537,7 +537,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#endregion
 
-		private void tbnref_TextChanged(object sender, System.EventArgs e)
+		private void tbnref_TextChanged(object sender, EventArgs e)
 		{
 			try
 			{
@@ -556,7 +556,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		private void NrefCommit(object sender, System.EventArgs e)
+		private void NrefCommit(object sender, EventArgs e)
 		{
 			try
 			{
@@ -595,9 +595,9 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		internal SimPe.PackedFiles.UserInterface.CpfUI.ExecutePreview fkt;
+		internal UserInterface.CpfUI.ExecutePreview fkt;
 
-		private void btprev_Click(object sender, System.EventArgs e)
+		private void btprev_Click(object sender, EventArgs e)
 		{
 			if (fkt == null)
 			{
@@ -617,7 +617,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		private void DeleteCpf(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (lbcpf.SelectedIndex < 0)
@@ -631,7 +631,7 @@ namespace SimPe.PackedFiles.Wrapper
 			wrapper.Changed = true;
 		}
 
-		private void CpfAutoChange(object sender, System.EventArgs e)
+		private void CpfAutoChange(object sender, EventArgs e)
 		{
 			CpfAutoChange();
 		}

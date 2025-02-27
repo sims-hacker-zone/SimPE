@@ -3,7 +3,7 @@ namespace SimPe.Plugin.Downloads
 	/// <summary>
 	/// Summary description for ArchiveHandler.
 	/// </summary>
-	public abstract class ArchiveHandler : Downloads.IPackageHandler, System.IDisposable
+	public abstract class ArchiveHandler : IPackageHandler, System.IDisposable
 	{
 		protected PackageInfoCollection Nfos
 		{
@@ -37,12 +37,12 @@ namespace SimPe.Plugin.Downloads
 		{
 		}
 
-		protected abstract SimPe.StringArrayList ExtractArchive();
+		protected abstract StringArrayList ExtractArchive();
 
 		protected void LoadContent()
 		{
 			Wait.Message = "Extracting Archive";
-			SimPe.StringArrayList files = ExtractArchive();
+			StringArrayList files = ExtractArchive();
 
 			Wait.SubStart(files.Count);
 
@@ -52,7 +52,7 @@ namespace SimPe.Plugin.Downloads
 			Wait.SubStop();
 		}
 
-		private void LoadFiles(SimPe.StringArrayList files)
+		private void LoadFiles(StringArrayList files)
 		{
 			int nr = 0;
 			foreach (string file in files)
@@ -67,7 +67,7 @@ namespace SimPe.Plugin.Downloads
 					);
 				}
 
-				Downloads.IPackageHandler hnd = HandlerRegistry.Global.LoadFileHandler(
+				IPackageHandler hnd = HandlerRegistry.Global.LoadFileHandler(
 					file
 				);
 				if (hnd != null)
@@ -79,15 +79,15 @@ namespace SimPe.Plugin.Downloads
 			}
 		}
 
-		private SimPe.StringArrayList SortFilesByType(SimPe.StringArrayList files)
+		private StringArrayList SortFilesByType(StringArrayList files)
 		{
-			SimPe.StringArrayList objects = new StringArrayList();
-			SimPe.StringArrayList other = new StringArrayList();
+			StringArrayList objects = new StringArrayList();
+			StringArrayList other = new StringArrayList();
 			foreach (string file in files)
 			{
 				if (file.EndsWith(".package", true, null))
 				{
-					SimPe.Cache.PackageType type = PackageInfo.ClassifyPackage(file);
+					Cache.PackageType type = PackageInfo.ClassifyPackage(file);
 					SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.AddIndexFromPackage(
 						file
 					);

@@ -259,7 +259,7 @@ namespace SimPe.PackedFiles.Wrapper
 				return base.GetResourceName(ta);
 			}
 
-			SimPe.Interfaces.Files.IPackedFile pf = Package.Read(FileDescriptor);
+			Interfaces.Files.IPackedFile pf = Package.Read(FileDescriptor);
 			byte[] ab = pf.GetUncompressedData(0x48);
 			return (ab.Length > 0x44 ? "0x" + Helper.HexString(ab[0x44]) + ": " : "")
 				+ Helper.ToString(pf.GetUncompressedData(0x40));

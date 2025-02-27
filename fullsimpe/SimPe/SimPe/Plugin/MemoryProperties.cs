@@ -8,7 +8,7 @@ namespace SimPe.Plugin
 	/// Summary description for MemoryProperties.
 	/// </summary>
 
-	public class MemoryProperties : System.Windows.Forms.UserControl
+	public class MemoryProperties : UserControl
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -68,56 +68,56 @@ namespace SimPe.Plugin
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(MemoryProperties)
 				);
-			this.pg = new System.Windows.Forms.PropertyGrid();
+			this.pg = new PropertyGrid();
 			this.tabControl2 = new TD.SandDock.TabControl();
 			this.tabPage3 = new TD.SandDock.TabPage();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.pnObjectGuid = new System.Windows.Forms.Panel();
-			this.cbSubjectObj = new SimPe.PackedFiles.Wrapper.ObjectComboBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.pnSubject = new System.Windows.Forms.Panel();
-			this.label4 = new System.Windows.Forms.Label();
-			this.cbSubject = new SimPe.PackedFiles.Wrapper.SimComboBox();
-			this.llme2 = new System.Windows.Forms.LinkLabel();
-			this.pnSub2 = new System.Windows.Forms.Panel();
-			this.pnSub1 = new System.Windows.Forms.Panel();
-			this.label6 = new System.Windows.Forms.Label();
-			this.pnValue = new System.Windows.Forms.Panel();
-			this.tbValue = new System.Windows.Forms.TextBox();
-			this.label8 = new System.Windows.Forms.Label();
-			this.pnInventory = new System.Windows.Forms.Panel();
-			this.tbInv = new System.Windows.Forms.TextBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.pnOwner = new System.Windows.Forms.Panel();
-			this.cbOwner = new SimPe.PackedFiles.Wrapper.SimComboBox();
-			this.llme = new System.Windows.Forms.LinkLabel();
-			this.label3 = new System.Windows.Forms.Label();
-			this.pnSelection = new System.Windows.Forms.Panel();
-			this.lbtype = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.pb = new System.Windows.Forms.PictureBox();
+			this.panel2 = new Panel();
+			this.pnObjectGuid = new Panel();
+			this.cbSubjectObj = new PackedFiles.Wrapper.ObjectComboBox();
+			this.label5 = new Label();
+			this.pnSubject = new Panel();
+			this.label4 = new Label();
+			this.cbSubject = new PackedFiles.Wrapper.SimComboBox();
+			this.llme2 = new LinkLabel();
+			this.pnSub2 = new Panel();
+			this.pnSub1 = new Panel();
+			this.label6 = new Label();
+			this.pnValue = new Panel();
+			this.tbValue = new TextBox();
+			this.label8 = new Label();
+			this.pnInventory = new Panel();
+			this.tbInv = new TextBox();
+			this.label7 = new Label();
+			this.pnOwner = new Panel();
+			this.cbOwner = new PackedFiles.Wrapper.SimComboBox();
+			this.llme = new LinkLabel();
+			this.label3 = new Label();
+			this.pnSelection = new Panel();
+			this.lbtype = new Label();
+			this.label2 = new Label();
+			this.pb = new PictureBox();
 			this.cbtype = new Ambertation.Windows.Forms.EnumComboBox();
-			this.cbObjs = new SimPe.PackedFiles.Wrapper.ObjectComboBox();
-			this.cbToks = new SimPe.PackedFiles.Wrapper.ObjectComboBox();
-			this.cbMems = new SimPe.PackedFiles.Wrapper.ObjectComboBox();
-			this.pnListing = new System.Windows.Forms.Panel();
-			this.rbObjs = new System.Windows.Forms.RadioButton();
-			this.rbToks = new System.Windows.Forms.RadioButton();
-			this.rbMems = new System.Windows.Forms.RadioButton();
-			this.label10 = new System.Windows.Forms.Label();
-			this.pnFlags = new System.Windows.Forms.Panel();
-			this.cbVis = new System.Windows.Forms.CheckBox();
-			this.cbCtrl = new System.Windows.Forms.CheckBox();
-			this.tbFlag = new System.Windows.Forms.TextBox();
-			this.label9 = new System.Windows.Forms.Label();
-			this.panel3 = new System.Windows.Forms.Panel();
+			this.cbObjs = new PackedFiles.Wrapper.ObjectComboBox();
+			this.cbToks = new PackedFiles.Wrapper.ObjectComboBox();
+			this.cbMems = new PackedFiles.Wrapper.ObjectComboBox();
+			this.pnListing = new Panel();
+			this.rbObjs = new RadioButton();
+			this.rbToks = new RadioButton();
+			this.rbMems = new RadioButton();
+			this.label10 = new Label();
+			this.pnFlags = new Panel();
+			this.cbVis = new CheckBox();
+			this.cbCtrl = new CheckBox();
+			this.tbFlag = new TextBox();
+			this.label9 = new Label();
+			this.panel3 = new Panel();
 			this.tabPage4 = new TD.SandDock.TabPage();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.llSetRawLength = new System.Windows.Forms.LinkLabel();
-			this.tbRawLength = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label11 = new System.Windows.Forms.Label();
-			this.tbUnk = new System.Windows.Forms.TextBox();
+			this.panel1 = new Panel();
+			this.llSetRawLength = new LinkLabel();
+			this.tbRawLength = new TextBox();
+			this.label1 = new Label();
+			this.label11 = new Label();
+			this.tbUnk = new TextBox();
 			this.tabControl2.SuspendLayout();
 			this.tabPage3.SuspendLayout();
 			this.panel2.SuspendLayout();
@@ -145,7 +145,7 @@ namespace SimPe.Plugin
 			this.pg.PropertySort = System.Windows.Forms.PropertySort.Alphabetical;
 			this.pg.ToolbarVisible = false;
 			this.pg.PropertyValueChanged +=
-				new System.Windows.Forms.PropertyValueChangedEventHandler(
+				new PropertyValueChangedEventHandler(
 					this.pg_PropertyValueChanged
 				);
 			//
@@ -191,11 +191,11 @@ namespace SimPe.Plugin
 			this.tabPage3.Controls.Add(this.pnListing);
 			this.tabPage3.Controls.Add(this.pnFlags);
 			this.tabPage3.FloatingSize = new System.Drawing.Size(550, 400);
-			this.tabPage3.Guid = new System.Guid(
+			this.tabPage3.Guid = new Guid(
 				"4e851d66-304f-4d0f-9896-8d73154946f3"
 			);
 			this.tabPage3.Name = "tabPage3";
-			this.tabPage3.VisibleChanged += new System.EventHandler(
+			this.tabPage3.VisibleChanged += new EventHandler(
 				this.tabPage3_VisibleChanged
 			);
 			//
@@ -228,7 +228,7 @@ namespace SimPe.Plugin
 			this.cbSubjectObj.ShowMemories = true;
 			this.cbSubjectObj.ShowSkill = true;
 			this.cbSubjectObj.ShowTokens = false;
-			this.cbSubjectObj.SelectedObjectChanged += new System.EventHandler(
+			this.cbSubjectObj.SelectedObjectChanged += new EventHandler(
 				this.cbSubjectObj_SelectedObjectChanged
 			);
 			//
@@ -257,7 +257,7 @@ namespace SimPe.Plugin
 			this.cbSubject.SelectedSim = null;
 			this.cbSubject.SelectedSimId = ((uint)(4294967295u));
 			this.cbSubject.SelectedSimInstance = ((ushort)(65535));
-			this.cbSubject.SelectedSimChanged += new System.EventHandler(
+			this.cbSubject.SelectedSimChanged += new EventHandler(
 				this.cbSubject_SelectedSimChanged
 			);
 			//
@@ -267,7 +267,7 @@ namespace SimPe.Plugin
 			this.llme2.Name = "llme2";
 			this.llme2.TabStop = true;
 			this.llme2.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.linkLabel1_LinkClicked
 				);
 			//
@@ -298,7 +298,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbValue, "tbValue");
 			this.tbValue.Name = "tbValue";
-			this.tbValue.TextChanged += new System.EventHandler(
+			this.tbValue.TextChanged += new EventHandler(
 				this.tbValue_TextChanged
 			);
 			//
@@ -318,7 +318,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.tbInv, "tbInv");
 			this.tbInv.Name = "tbInv";
-			this.tbInv.TextChanged += new System.EventHandler(this.tbInv_TextChanged);
+			this.tbInv.TextChanged += new EventHandler(this.tbInv_TextChanged);
 			//
 			// label7
 			//
@@ -340,7 +340,7 @@ namespace SimPe.Plugin
 			this.cbOwner.SelectedSim = null;
 			this.cbOwner.SelectedSimId = ((uint)(4294967295u));
 			this.cbOwner.SelectedSimInstance = ((ushort)(65535));
-			this.cbOwner.SelectedSimChanged += new System.EventHandler(
+			this.cbOwner.SelectedSimChanged += new EventHandler(
 				this.cbOwner_SelectedSimChanged
 			);
 			//
@@ -350,7 +350,7 @@ namespace SimPe.Plugin
 			this.llme.Name = "llme";
 			this.llme.TabStop = true;
 			this.llme.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llme_LinkClicked
 				);
 			//
@@ -395,7 +395,7 @@ namespace SimPe.Plugin
 			this.cbtype.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.cbtype.Name = "cbtype";
 			this.cbtype.ResourceManager = null;
-			this.cbtype.SelectedIndexChanged += new System.EventHandler(
+			this.cbtype.SelectedIndexChanged += new EventHandler(
 				this.cbtype_SelectedIndexChanged
 			);
 			//
@@ -412,7 +412,7 @@ namespace SimPe.Plugin
 			this.cbObjs.ShowMemories = false;
 			this.cbObjs.ShowSkill = false;
 			this.cbObjs.ShowTokens = false;
-			this.cbObjs.SelectedObjectChanged += new System.EventHandler(
+			this.cbObjs.SelectedObjectChanged += new EventHandler(
 				this.ChangeGuid
 			);
 			//
@@ -429,7 +429,7 @@ namespace SimPe.Plugin
 			this.cbToks.ShowMemories = false;
 			this.cbToks.ShowSkill = false;
 			this.cbToks.ShowTokens = true;
-			this.cbToks.SelectedObjectChanged += new System.EventHandler(
+			this.cbToks.SelectedObjectChanged += new EventHandler(
 				this.ChangeGuid
 			);
 			//
@@ -446,7 +446,7 @@ namespace SimPe.Plugin
 			this.cbMems.ShowMemories = true;
 			this.cbMems.ShowSkill = false;
 			this.cbMems.ShowTokens = false;
-			this.cbMems.SelectedObjectChanged += new System.EventHandler(
+			this.cbMems.SelectedObjectChanged += new EventHandler(
 				this.ChangeGuid
 			);
 			//
@@ -463,7 +463,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.rbObjs, "rbObjs");
 			this.rbObjs.Name = "rbObjs";
-			this.rbObjs.CheckedChanged += new System.EventHandler(
+			this.rbObjs.CheckedChanged += new EventHandler(
 				this.rbObjs_CheckedChanged
 			);
 			//
@@ -471,7 +471,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.rbToks, "rbToks");
 			this.rbToks.Name = "rbToks";
-			this.rbToks.CheckedChanged += new System.EventHandler(
+			this.rbToks.CheckedChanged += new EventHandler(
 				this.rbToks_CheckedChanged
 			);
 			//
@@ -479,7 +479,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.rbMems, "rbMems");
 			this.rbMems.Name = "rbMems";
-			this.rbMems.CheckedChanged += new System.EventHandler(
+			this.rbMems.CheckedChanged += new EventHandler(
 				this.rbMems_CheckedChanged
 			);
 			//
@@ -501,7 +501,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.cbVis, "cbVis");
 			this.cbVis.Name = "cbVis";
-			this.cbVis.CheckedChanged += new System.EventHandler(
+			this.cbVis.CheckedChanged += new EventHandler(
 				this.cbVis_CheckedChanged
 			);
 			//
@@ -509,7 +509,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.cbCtrl, "cbCtrl");
 			this.cbCtrl.Name = "cbCtrl";
-			this.cbCtrl.CheckedChanged += new System.EventHandler(
+			this.cbCtrl.CheckedChanged += new EventHandler(
 				this.cbAct_CheckedChanged
 			);
 			//
@@ -518,7 +518,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.tbFlag, "tbFlag");
 			this.tbFlag.Name = "tbFlag";
 			this.tbFlag.ReadOnly = true;
-			this.tbFlag.TextChanged += new System.EventHandler(this.tbFlag_TextChanged);
+			this.tbFlag.TextChanged += new EventHandler(this.tbFlag_TextChanged);
 			//
 			// label9
 			//
@@ -538,7 +538,7 @@ namespace SimPe.Plugin
 			this.tabPage4.Controls.Add(this.pg);
 			this.tabPage4.Controls.Add(this.panel1);
 			this.tabPage4.FloatingSize = new System.Drawing.Size(550, 400);
-			this.tabPage4.Guid = new System.Guid(
+			this.tabPage4.Guid = new Guid(
 				"3b0d25ef-e354-4693-8339-f171a2b4f000"
 			);
 			resources.ApplyResources(this.tabPage4, "tabPage4");
@@ -558,7 +558,7 @@ namespace SimPe.Plugin
 			this.llSetRawLength.Name = "llSetRawLength";
 			this.llSetRawLength.TabStop = true;
 			this.llSetRawLength.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llSetRawLength_LinkClicked
 				);
 			//
@@ -615,53 +615,53 @@ namespace SimPe.Plugin
 
 
 		NgbhItem item;
-		private System.Windows.Forms.PropertyGrid pg;
+		private PropertyGrid pg;
 		private TD.SandDock.TabControl tabControl2;
 		private TD.SandDock.TabPage tabPage3;
 		private TD.SandDock.TabPage tabPage4;
-		private System.Windows.Forms.TextBox tbRawLength;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.LinkLabel llSetRawLength;
-		private System.Windows.Forms.Label lbtype;
+		private TextBox tbRawLength;
+		private Label label1;
+		private Panel panel1;
+		private LinkLabel llSetRawLength;
+		private Label lbtype;
 		private Ambertation.Windows.Forms.EnumComboBox cbtype;
-		private SimPe.PackedFiles.Wrapper.ObjectComboBox cbMems;
-		private SimPe.PackedFiles.Wrapper.ObjectComboBox cbToks;
-		private System.Windows.Forms.Label label2;
-		private SimPe.PackedFiles.Wrapper.ObjectComboBox cbObjs;
-		private System.Windows.Forms.PictureBox pb;
-		private System.Windows.Forms.Panel pnSelection;
-		private System.Windows.Forms.Panel pnOwner;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.LinkLabel llme;
-		SimPe.PackedFiles.Wrapper.SimComboBox cbOwner;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Panel pnSubject;
-		private SimPe.PackedFiles.Wrapper.SimComboBox cbSubject;
-		private SimPe.PackedFiles.Wrapper.ObjectComboBox cbSubjectObj;
-		private System.Windows.Forms.Panel pnObjectGuid;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.LinkLabel llme2;
-		private System.Windows.Forms.Panel panel2;
-		private System.Windows.Forms.Panel pnSub2;
-		private System.Windows.Forms.Panel pnSub1;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Panel pnInventory;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.TextBox tbInv;
-		private System.Windows.Forms.Panel pnValue;
-		private System.Windows.Forms.TextBox tbValue;
-		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.Panel pnFlags;
-		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.CheckBox cbVis;
-		private System.Windows.Forms.TextBox tbFlag;
-		private System.Windows.Forms.CheckBox cbCtrl;
-		private System.Windows.Forms.Panel pnListing;
-		private System.Windows.Forms.Label label10;
-		private System.Windows.Forms.RadioButton rbMems;
-		private System.Windows.Forms.RadioButton rbToks;
-		private System.Windows.Forms.RadioButton rbObjs;
+		private PackedFiles.Wrapper.ObjectComboBox cbMems;
+		private PackedFiles.Wrapper.ObjectComboBox cbToks;
+		private Label label2;
+		private PackedFiles.Wrapper.ObjectComboBox cbObjs;
+		private PictureBox pb;
+		private Panel pnSelection;
+		private Panel pnOwner;
+		private Label label3;
+		private LinkLabel llme;
+		PackedFiles.Wrapper.SimComboBox cbOwner;
+		private Label label4;
+		private Panel pnSubject;
+		private PackedFiles.Wrapper.SimComboBox cbSubject;
+		private PackedFiles.Wrapper.ObjectComboBox cbSubjectObj;
+		private Panel pnObjectGuid;
+		private Label label5;
+		private LinkLabel llme2;
+		private Panel panel2;
+		private Panel pnSub2;
+		private Panel pnSub1;
+		private Label label6;
+		private Panel pnInventory;
+		private Label label7;
+		private TextBox tbInv;
+		private Panel pnValue;
+		private TextBox tbValue;
+		private Label label8;
+		private Panel pnFlags;
+		private Label label9;
+		private CheckBox cbVis;
+		private TextBox tbFlag;
+		private CheckBox cbCtrl;
+		private Panel pnListing;
+		private Label label10;
+		private RadioButton rbMems;
+		private RadioButton rbToks;
+		private RadioButton rbObjs;
 		private Panel panel3;
 		private TextBox tbUnk;
 		private Label label11;
@@ -680,8 +680,8 @@ namespace SimPe.Plugin
 			}
 		}
 
-		Plugin.NgbhItemsListView nilv;
-		public Plugin.NgbhItemsListView NgbhItemsListView
+		NgbhItemsListView nilv;
+		public NgbhItemsListView NgbhItemsListView
 		{
 			get
 			{
@@ -819,12 +819,12 @@ namespace SimPe.Plugin
 			}
 		}
 
-		void SelectNgbhItem(SimPe.PackedFiles.Wrapper.ObjectComboBox cb, NgbhItem item)
+		void SelectNgbhItem(PackedFiles.Wrapper.ObjectComboBox cb, NgbhItem item)
 		{
 			cb.SelectedGuid = item.Guid;
 		}
 
-		void SelectOwner(SimPe.PackedFiles.Wrapper.SimComboBox cb, NgbhItem item)
+		void SelectOwner(PackedFiles.Wrapper.SimComboBox cb, NgbhItem item)
 		{
 			cb.SelectedSimInstance = item.OwnerInstance;
 		}
@@ -846,7 +846,7 @@ namespace SimPe.Plugin
 		{
 			if (nilv != null)
 			{
-				Plugin.NgbhItemsListViewItem lvi = nilv.SelectedItem;
+				NgbhItemsListViewItem lvi = nilv.SelectedItem;
 				if (lvi != null && !nilv.SelectedMultiple)
 				{
 					Item = lvi.Item;
@@ -864,7 +864,7 @@ namespace SimPe.Plugin
 
 		private void llSetRawLength_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (this.item != null)
@@ -889,7 +889,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void ChangeGuid(object sender, System.EventArgs e)
+		private void ChangeGuid(object sender, EventArgs e)
 		{
 			if (inter)
 			{
@@ -901,8 +901,8 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			SimPe.PackedFiles.Wrapper.ObjectComboBox cb =
-				sender as SimPe.PackedFiles.Wrapper.ObjectComboBox;
+			PackedFiles.Wrapper.ObjectComboBox cb =
+				sender as PackedFiles.Wrapper.ObjectComboBox;
 			item.Guid = cb.SelectedGuid;
 			SetContent();
 			this.FireChangeEvent();
@@ -910,7 +910,7 @@ namespace SimPe.Plugin
 
 		private void pg_PropertyValueChanged(
 			object s,
-			System.Windows.Forms.PropertyValueChangedEventArgs e
+			PropertyValueChangedEventArgs e
 		)
 		{
 			if (item == null)
@@ -937,7 +937,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void tabPage3_VisibleChanged(object sender, System.EventArgs e)
+		private void tabPage3_VisibleChanged(object sender, EventArgs e)
 		{
 			if (this.tabPage3.Visible && chgraw)
 			{
@@ -945,7 +945,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private void cbtype_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void cbtype_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			SimMemoryType smt = (SimMemoryType)cbtype.SelectedValue;
 
@@ -980,7 +980,7 @@ namespace SimPe.Plugin
 			this.pnListing.Visible = Helper.WindowsRegistry.HiddenMode;
 		}
 
-		void SetMe(SimPe.PackedFiles.Wrapper.SimComboBox cb)
+		void SetMe(PackedFiles.Wrapper.SimComboBox cb)
 		{
 			if (item == null)
 			{
@@ -992,7 +992,7 @@ namespace SimPe.Plugin
 
 		private void llme_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			SetMe(this.cbOwner);
@@ -1000,13 +1000,13 @@ namespace SimPe.Plugin
 
 		private void linkLabel1_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			SetMe(this.cbSubject);
 		}
 
-		private void cbOwner_SelectedSimChanged(object sender, System.EventArgs e)
+		private void cbOwner_SelectedSimChanged(object sender, EventArgs e)
 		{
 			if (inter)
 			{
@@ -1024,7 +1024,7 @@ namespace SimPe.Plugin
 			this.FireChangeEvent();
 		}
 
-		private void cbSubject_SelectedSimChanged(object sender, System.EventArgs e)
+		private void cbSubject_SelectedSimChanged(object sender, EventArgs e)
 		{
 			if (inter)
 			{
@@ -1050,7 +1050,7 @@ namespace SimPe.Plugin
 
 		private void cbSubjectObj_SelectedObjectChanged(
 			object sender,
-			System.EventArgs e
+			EventArgs e
 		)
 		{
 			if (inter)
@@ -1081,7 +1081,7 @@ namespace SimPe.Plugin
 			this.FireChangeEvent();
 		}
 
-		private void tbInv_TextChanged(object sender, System.EventArgs e)
+		private void tbInv_TextChanged(object sender, EventArgs e)
 		{
 			if (inter)
 			{
@@ -1102,7 +1102,7 @@ namespace SimPe.Plugin
 			this.FireChangeEvent();
 		}
 
-		private void tbValue_TextChanged(object sender, System.EventArgs e)
+		private void tbValue_TextChanged(object sender, EventArgs e)
 		{
 			if (inter)
 			{
@@ -1118,7 +1118,7 @@ namespace SimPe.Plugin
 			this.FireChangeEvent();
 		}
 
-		private void tbFlag_TextChanged(object sender, System.EventArgs e)
+		private void tbFlag_TextChanged(object sender, EventArgs e)
 		{
 			if (item == null)
 			{
@@ -1129,7 +1129,7 @@ namespace SimPe.Plugin
 			this.cbVis.Checked = item.Flags.IsVisible;
 		}
 
-		private void cbVis_CheckedChanged(object sender, System.EventArgs e)
+		private void cbVis_CheckedChanged(object sender, EventArgs e)
 		{
 			if (inter)
 			{
@@ -1149,7 +1149,7 @@ namespace SimPe.Plugin
 			this.FireChangeEvent();
 		}
 
-		private void cbAct_CheckedChanged(object sender, System.EventArgs e)
+		private void cbAct_CheckedChanged(object sender, EventArgs e)
 		{
 			if (inter)
 			{
@@ -1169,7 +1169,7 @@ namespace SimPe.Plugin
 			this.FireChangeEvent();
 		}
 
-		private void rbObjs_CheckedChanged(object sender, System.EventArgs e)
+		private void rbObjs_CheckedChanged(object sender, EventArgs e)
 		{
 			if (inter)
 			{
@@ -1181,7 +1181,7 @@ namespace SimPe.Plugin
 			cbToks.Visible = false;
 		}
 
-		private void rbMems_CheckedChanged(object sender, System.EventArgs e)
+		private void rbMems_CheckedChanged(object sender, EventArgs e)
 		{
 			if (inter)
 			{
@@ -1193,7 +1193,7 @@ namespace SimPe.Plugin
 			cbToks.Visible = false;
 		}
 
-		private void rbToks_CheckedChanged(object sender, System.EventArgs e)
+		private void rbToks_CheckedChanged(object sender, EventArgs e)
 		{
 			if (inter)
 			{

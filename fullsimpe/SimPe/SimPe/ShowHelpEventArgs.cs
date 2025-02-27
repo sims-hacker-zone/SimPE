@@ -20,7 +20,7 @@
 namespace SimPe
 {
 	/// <summary>
-	/// Used to send Data along with a call to <see cref="SimPe.Interfaces.IHelp.ShowHelp"/>
+	/// Used to send Data along with a call to <see cref="Interfaces.IHelp.ShowHelp"/>
 	/// </summary>
 	public class ShowHelpEventArgs : System.EventArgs
 	{

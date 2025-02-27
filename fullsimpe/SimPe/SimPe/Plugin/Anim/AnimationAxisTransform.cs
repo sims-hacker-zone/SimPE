@@ -35,9 +35,9 @@ namespace SimPe.Plugin.Anim
 	/// This Represents one Transformation within the <see cref="AnimationAxisTransformBlock"/>
 	/// </summary>
 	public class AnimationAxisTransform
-		: System.IDisposable,
-			System.ICloneable,
-			System.IComparable
+		: IDisposable,
+			ICloneable,
+			IComparable
 	{
 		#region Attributes
 		/// <summary>

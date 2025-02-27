@@ -51,7 +51,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new SimPe.PackedFiles.UserInterface.ExtSDesc();
+			return new UserInterface.ExtSDesc();
 		}
 
 		/// <summary>
@@ -271,8 +271,8 @@ namespace SimPe.PackedFiles.Wrapper
 				return;
 			}
 
-			SimPe.Collections.PackedFileDescriptors pfds =
-				new SimPe.Collections.PackedFileDescriptors();
+			Collections.PackedFileDescriptors pfds =
+				new Collections.PackedFileDescriptors();
 			locked = true;
 
 			try
@@ -389,10 +389,10 @@ namespace SimPe.PackedFiles.Wrapper
 		public static ExtSrel FindRelation(ExtSDesc cache, ExtSDesc src, ExtSDesc dst)
 		{
 			uint sinst = src.GetRelationInstance(dst);
-			SimPe.PackedFiles.Wrapper.ExtSrel srel = cache.GetCachedRelation(sinst);
+			ExtSrel srel = cache.GetCachedRelation(sinst);
 			if (srel == null)
 			{
-				SimPe.Interfaces.Files.IPackedFileDescriptor spfd =
+				Interfaces.Files.IPackedFileDescriptor spfd =
 					cache.Package.FindFile(
 						Data.MetaData.RELATION_FILE,
 						0,
@@ -402,7 +402,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 				if (spfd != null)
 				{
-					srel = new SimPe.PackedFiles.Wrapper.ExtSrel();
+					srel = new ExtSrel();
 					srel.ProcessData(spfd, cache.Package);
 				}
 			}
@@ -547,14 +547,14 @@ namespace SimPe.PackedFiles.Wrapper
 			sdna = null;
 		}
 
-		SimPe.PackedFiles.Wrapper.SimDNA sdna;
-		public SimPe.PackedFiles.Wrapper.SimDNA SimDNA
+		SimDNA sdna;
+		public SimDNA SimDNA
 		{
 			get
 			{
 				if (sdna == null)
 				{
-					SimPe.Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
+					Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
 						Data.MetaData.SDNA,
 						0,
 						Data.MetaData.LOCAL_GROUP,
@@ -571,13 +571,13 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public SimPe.Interfaces.Providers.ILotItem[] BusinessList
+		public Interfaces.Providers.ILotItem[] BusinessList
 		{
 			get
 			{
 				if ((uint)this.Version < (uint)SDescVersions.Business)
 				{
-					return new SimPe.Interfaces.Providers.ILotItem[0];
+					return new Interfaces.Providers.ILotItem[0];
 				}
 
 				return FileTable.ProviderRegistry.LotProvider.FindLotsOwnedBySim(

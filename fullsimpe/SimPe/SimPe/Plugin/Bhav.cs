@@ -26,9 +26,9 @@ namespace SimPe.Plugin
 	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public class Bhav : SimPe.PackedFiles.Wrapper.Bhav
+	public class Bhav : PackedFiles.Wrapper.Bhav
 	{
-		public Bhav(SimPe.Interfaces.Providers.IOpcodeProvider prv)
+		public Bhav(Interfaces.Providers.IOpcodeProvider prv)
 			: base() { }
 
 		public Bhav()

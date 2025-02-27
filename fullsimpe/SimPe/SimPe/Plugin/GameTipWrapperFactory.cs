@@ -3,11 +3,11 @@ using SimPe.Interfaces;
 namespace SimPe.Plugin
 {
 	public class GametipWrapperFactory
-		: SimPe.Interfaces.Plugin.AbstractWrapperFactory,
-			SimPe.Interfaces.Plugin.IHelpFactory
+		: Interfaces.Plugin.AbstractWrapperFactory,
+			Interfaces.Plugin.IHelpFactory
 	{
 		#region AbstractWrapperFactory Member
-		public override SimPe.Interfaces.IWrapper[] KnownWrappers
+		public override IWrapper[] KnownWrappers
 		{
 			get
 			{

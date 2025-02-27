@@ -57,10 +57,10 @@ namespace SimPe.Plugin
 		/// Create a clone of the Descriptor, so changes won't affect the source Package anymore!
 		/// </summary>
 		/// <param name="item">Clone the Descriptor in this Item</param>
-		public static void Clone(Interfaces.Scenegraph.IScenegraphFileIndexItem item)
+		public static void Clone(IScenegraphFileIndexItem item)
 		{
-			SimPe.Packages.PackedFileDescriptor pfd =
-				new SimPe.Packages.PackedFileDescriptor();
+			Packages.PackedFileDescriptor pfd =
+				new Packages.PackedFileDescriptor();
 			pfd.Type = item.FileDescriptor.Type;
 			pfd.Group = item.FileDescriptor.Group;
 			pfd.LongInstance = item.FileDescriptor.LongInstance;
@@ -77,12 +77,12 @@ namespace SimPe.Plugin
 		/// Create a clone of the Descriptor, so changes won't affect the source Package anymore!
 		/// </summary>
 		/// <param name="item">Clone the Descriptor in this Item</param>
-		public static SimPe.Packages.PackedFileDescriptor Clone(
-			SimPe.Interfaces.Files.IPackedFileDescriptor org
+		public static Packages.PackedFileDescriptor Clone(
+			Interfaces.Files.IPackedFileDescriptor org
 		)
 		{
-			SimPe.Packages.PackedFileDescriptor pfd =
-				new SimPe.Packages.PackedFileDescriptor();
+			Packages.PackedFileDescriptor pfd =
+				new Packages.PackedFileDescriptor();
 			pfd.Type = org.Type;
 			pfd.Group = org.Group;
 			pfd.LongInstance = org.LongInstance;
@@ -95,7 +95,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="pkg">The Package you want to scan</param>
 		/// <returns>a list of Modelnames</returns>
-		public static string[] FindModelNames(SimPe.Interfaces.Files.IPackageFile pkg)
+		public static string[] FindModelNames(Interfaces.Files.IPackageFile pkg)
 		{
 			ArrayList names = new ArrayList();
 
@@ -108,11 +108,11 @@ namespace SimPe.Plugin
 			{
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
-					SimPe.PackedFiles.Wrapper.Str str =
-						new SimPe.PackedFiles.Wrapper.Str();
+					PackedFiles.Wrapper.Str str =
+						new PackedFiles.Wrapper.Str();
 					str.ProcessData(pfd, pkg);
 
-					foreach (SimPe.PackedFiles.Wrapper.StrToken item in str.Items)
+					foreach (PackedFiles.Wrapper.StrToken item in str.Items)
 					{
 						string mname = Hashes.StripHashFromName(
 							item.Title.Trim().ToLower()
@@ -135,8 +135,8 @@ namespace SimPe.Plugin
 			{
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
-					SimPe.PackedFiles.Wrapper.Cpf cpf =
-						new SimPe.PackedFiles.Wrapper.Cpf();
+					PackedFiles.Wrapper.Cpf cpf =
+						new PackedFiles.Wrapper.Cpf();
 					cpf.ProcessData(pfd, pkg);
 
 					string mname = Hashes.StripHashFromName(
@@ -176,7 +176,7 @@ namespace SimPe.Plugin
 					modelnames[i] += "_cres";
 				}
 
-				Interfaces.Scenegraph.IScenegraphFileIndexItem item =
+				IScenegraphFileIndexItem item =
 					FileTable.FileIndex.FindFileByName(
 						modelnames[i],
 						Data.MetaData.CRES,
@@ -209,8 +209,8 @@ namespace SimPe.Plugin
 			ArrayList exclude,
 			ArrayList list,
 			ArrayList itemlist,
-			SimPe.Plugin.GenericRcol rcol,
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item,
+			GenericRcol rcol,
+			IScenegraphFileIndexItem item,
 			bool recursive,
 			CloneSettings setup
 		)
@@ -233,7 +233,7 @@ namespace SimPe.Plugin
 				}
 
 				ArrayList descs = (ArrayList)map[s];
-				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in descs)
+				foreach (Interfaces.Files.IPackedFileDescriptor pfd in descs)
 				{
 					if (setup != null)
 					{
@@ -251,7 +251,7 @@ namespace SimPe.Plugin
 						}
 					}
 
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem subitem =
+					IScenegraphFileIndexItem subitem =
 						FileTable.FileIndex.FindSingleFile(pfd, null, true);
 
 					if (subitem != null)
@@ -260,7 +260,7 @@ namespace SimPe.Plugin
 						{
 							try
 							{
-								SimPe.Plugin.GenericRcol sub = new GenericRcol(
+								GenericRcol sub = new GenericRcol(
 									null,
 									false
 								);
@@ -346,9 +346,9 @@ namespace SimPe.Plugin
 
 			files = new ArrayList();
 			itemlist = new ArrayList();
-			foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in cres)
+			foreach (IScenegraphFileIndexItem item in cres)
 			{
-				SimPe.Plugin.GenericRcol sub = new GenericRcol(null, false);
+				GenericRcol sub = new GenericRcol(null, false);
 				sub.ProcessData(item);
 				LoadReferenced(
 					this.modelnames,
@@ -372,7 +372,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="mmat"></param>
 		/// <returns></returns>
-		public static string MmatContent(SimPe.PackedFiles.Wrapper.Cpf mmat)
+		public static string MmatContent(PackedFiles.Wrapper.Cpf mmat)
 		{
 			return mmat.GetSaveItem("modelName").StringValue /*+mmat.GetSaveItem("family").StringValue*/
 				+ mmat.GetSaveItem("subsetName").StringValue
@@ -405,7 +405,7 @@ namespace SimPe.Plugin
 					string slavename = name.Replace("_" + k + "_", "_" + sub + "_");
 					if (slavename != name)
 					{
-						SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item =
+						IScenegraphFileIndexItem item =
 							FileTable.FileIndex.FindFileByName(
 								slavename,
 								Data.MetaData.TXMT,
@@ -465,17 +465,17 @@ namespace SimPe.Plugin
 		/// <param name="pkg">the package File with the base TXMTs</param>
 		/// <param name="slaves">The Hashtable holding als Slave Subsets</param>
 		public static void AddSlaveTxmts(
-			SimPe.Interfaces.Files.IPackageFile pkg,
+			Interfaces.Files.IPackageFile pkg,
 			Hashtable slaves
 		)
 		{
 			ArrayList files = new ArrayList();
 			ArrayList items = new ArrayList();
 
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
 				Data.MetaData.TXMT
 			);
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				GenericRcol rcol = new GenericRcol(null, false);
 				rcol.ProcessData(pfd, pkg);
@@ -505,7 +505,7 @@ namespace SimPe.Plugin
 		}
 
 		#region Cache Handling
-		static SimPe.Cache.MMATCacheFile cachefile;
+		static Cache.MMATCacheFile cachefile;
 
 		static void LoadCache()
 		{
@@ -514,7 +514,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			cachefile = new SimPe.Cache.MMATCacheFile();
+			cachefile = new Cache.MMATCacheFile();
 			if (Helper.WindowsRegistry.UseCache)
 			{
 				cachefile.Load(Helper.SimPeLanguageCache);
@@ -539,7 +539,7 @@ namespace SimPe.Plugin
 		/// <param name="exception">true if you want to throw an exception when something goes wrong</param>
 		/// <returns>List of all referenced GUIDs</returns>
 		public void AddMaterialOverrides(
-			SimPe.Interfaces.Files.IPackageFile pkg,
+			Interfaces.Files.IPackageFile pkg,
 			bool onlydefault,
 			bool subitems,
 			bool exception
@@ -547,7 +547,7 @@ namespace SimPe.Plugin
 		{
 			LoadCache();
 
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+			IScenegraphFileIndexItem[] items =
 				FileTable.FileIndex.FindFile(Data.MetaData.MMAT, true);
 			ArrayList itemlist = new ArrayList();
 			ArrayList contentlist = new ArrayList();
@@ -556,14 +556,14 @@ namespace SimPe.Plugin
 
 			//create an UpTo Date Cache
 			bool chgcache = false;
-			foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
+			foreach (IScenegraphFileIndexItem item in items)
 			{
 				string pname = item.Package.FileName.Trim().ToLower();
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] citems =
+				IScenegraphFileIndexItem[] citems =
 					cachefile.FileIndex.FindFile(item.FileDescriptor, item.Package);
 				bool have = false;
 				foreach (
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem citem in citems
+					IScenegraphFileIndexItem citem in citems
 				)
 				{
 					if (citem.FileDescriptor.Filename == pname)
@@ -576,7 +576,7 @@ namespace SimPe.Plugin
 				//Not in cache, so add that File
 				if (!have)
 				{
-					SimPe.Plugin.MmatWrapper mmat = new MmatWrapper();
+					MmatWrapper mmat = new MmatWrapper();
 					mmat.ProcessData(item.FileDescriptor, item.Package);
 
 					cachefile.AddItem(mmat);
@@ -592,7 +592,7 @@ namespace SimPe.Plugin
 			if (onlydefault)
 			{
 				foreach (
-					SimPe.Cache.MMATCacheItem mci in (SimPe.Cache.CacheItems)
+					Cache.MMATCacheItem mci in (Cache.CacheItems)
 						cachefile.DefaultMap[true]
 				)
 				{
@@ -603,11 +603,11 @@ namespace SimPe.Plugin
 			//now do the real collect
 			foreach (string k in modelnames)
 			{
-				SimPe.Cache.CacheItems list = (SimPe.Cache.CacheItems)
+				Cache.CacheItems list = (Cache.CacheItems)
 					cachefile.ModelMap[k.Trim().ToLower()];
 				if (list != null)
 				{
-					foreach (SimPe.Cache.MMATCacheItem mci in list)
+					foreach (Cache.MMATCacheItem mci in list)
 					{
 						if (onlydefault && !defaultfam.Contains(mci.Family))
 						{
@@ -618,7 +618,7 @@ namespace SimPe.Plugin
 						items = FileTable.FileIndex.FindFile(mci.FileDescriptor, null);
 
 						foreach (
-							Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
+							IScenegraphFileIndexItem item in items
 						)
 						{
 							if (itemlist.Contains(item))
@@ -627,7 +627,7 @@ namespace SimPe.Plugin
 							}
 
 							itemlist.Add(item);
-							SimPe.Plugin.MmatWrapper mmat = new MmatWrapper();
+							MmatWrapper mmat = new MmatWrapper();
 							mmat.ProcessData(item);
 
 							string content = Scenegraph.MmatContent(mmat);
@@ -644,7 +644,7 @@ namespace SimPe.Plugin
 										pkg.Add(mmat.FileDescriptor);
 									}
 
-									SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem txmtitem =
+									IScenegraphFileIndexItem txmtitem =
 										SimPe.FileTable.FileIndex.FindFileByName(
 											mmat.GetSaveItem("name").StringValue
 												+ "_txmt",
@@ -656,7 +656,7 @@ namespace SimPe.Plugin
 									{
 										try
 										{
-											SimPe.Plugin.GenericRcol sub =
+											GenericRcol sub =
 												new GenericRcol(null, false);
 											sub.ProcessData(
 												txmtitem.FileDescriptor,
@@ -726,7 +726,7 @@ namespace SimPe.Plugin
 		/// <param name="pkg"></param>
 		/// <returns>a List of Subset Names</returns>
 		public static ArrayList GetRecolorableSubsets(
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
 			return GetSubsets(pkg, "tsdesignmodeenabled");
@@ -738,7 +738,7 @@ namespace SimPe.Plugin
 		/// <param name="pkg"></param>
 		/// <returns>a List of Subset Names</returns>
 		public static ArrayList GetParentSubsets(
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
 			return GetSubsets(pkg, "tsMaterialsMeshName");
@@ -750,7 +750,7 @@ namespace SimPe.Plugin
 		/// <param name="pkg"></param>
 		/// <returns>a List of Subset Names</returns>
 		public static ArrayList GetSubsets(
-			SimPe.Interfaces.Files.IPackageFile pkg,
+			Interfaces.Files.IPackageFile pkg,
 			string blockname
 		)
 		{
@@ -767,12 +767,12 @@ namespace SimPe.Plugin
 			}
 
 			blockname = blockname.Trim().ToLower();
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] gmnds = pkg.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] gmnds = pkg.FindFiles(
 				Data.MetaData.GMND
 			);
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in gmnds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in gmnds)
 			{
-				SimPe.Plugin.GenericRcol gmnd = new GenericRcol(null, false);
+				GenericRcol gmnd = new GenericRcol(null, false);
 				gmnd.ProcessData(pfd, pkg);
 
 				foreach (IRcolBlock irb in gmnd.Blocks)
@@ -798,7 +798,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="gmnd">the GMND File</param>
 		/// <param name="map">the Map Table (key=master subset name, value= ArrayList of slave subsets</param>
-		public static void GetSlaveSubsets(SimPe.Plugin.GenericRcol gmnd, Hashtable map)
+		public static void GetSlaveSubsets(GenericRcol gmnd, Hashtable map)
 		{
 			foreach (IRcolBlock irb in gmnd.Blocks)
 			{
@@ -833,7 +833,7 @@ namespace SimPe.Plugin
 		public Hashtable GetSlaveSubsets()
 		{
 			Hashtable map = new Hashtable();
-			foreach (SimPe.Plugin.GenericRcol gmnd in files)
+			foreach (GenericRcol gmnd in files)
 			{
 				if (gmnd.FileDescriptor.Type == Data.MetaData.GMND)
 				{
@@ -848,15 +848,15 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="pkg"></param>
 		/// <returns></returns>
-		public static Hashtable GetSlaveSubsets(SimPe.Interfaces.Files.IPackageFile pkg)
+		public static Hashtable GetSlaveSubsets(Interfaces.Files.IPackageFile pkg)
 		{
 			Hashtable map = new Hashtable();
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] gmnds = pkg.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] gmnds = pkg.FindFiles(
 				Data.MetaData.GMND
 			);
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in gmnds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in gmnds)
 			{
-				SimPe.Plugin.GenericRcol gmnd = new GenericRcol(null, false);
+				GenericRcol gmnd = new GenericRcol(null, false);
 				gmnd.ProcessData(pfd, pkg);
 
 				GetSlaveSubsets(gmnd, map);
@@ -869,21 +869,21 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="pkg">The package you want to scan</param>
 		/// <returns>The Hashtable</returns>
-		public static Hashtable GetMMATMap(SimPe.Interfaces.Files.IPackageFile pkg)
+		public static Hashtable GetMMATMap(Interfaces.Files.IPackageFile pkg)
 		{
 			if (pkg == null)
 			{
 				return new Hashtable();
 			}
 
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] mmats = pkg.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] mmats = pkg.FindFiles(
 				Data.MetaData.MMAT
 			);
 			Hashtable ht = new Hashtable();
 
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in mmats)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in mmats)
 			{
-				SimPe.Plugin.MmatWrapper mmat = new MmatWrapper();
+				MmatWrapper mmat = new MmatWrapper();
 				mmat.ProcessData(pfd, pkg);
 
 				string subset = mmat.GetSaveItem("subsetName")
@@ -926,9 +926,9 @@ namespace SimPe.Plugin
 		/// Create a package based on the collected Files
 		/// </summary>
 		/// <returns></returns>
-		public SimPe.Packages.GeneratableFile BuildPackage()
+		public Packages.GeneratableFile BuildPackage()
 		{
-			SimPe.Packages.GeneratableFile pkg =
+			Packages.GeneratableFile pkg =
 				SimPe.Packages.GeneratableFile.LoadFromFile("simpe_memory");
 			BuildPackage(pkg);
 
@@ -939,7 +939,7 @@ namespace SimPe.Plugin
 		/// Create a package based on the collected Files
 		/// </summary>
 		/// <returns></returns>
-		public void BuildPackage(SimPe.Interfaces.Files.IPackageFile pkg)
+		public void BuildPackage(Interfaces.Files.IPackageFile pkg)
 		{
 			BuildPackage(files, pkg);
 		}
@@ -950,10 +950,10 @@ namespace SimPe.Plugin
 		/// <returns></returns>
 		public static void BuildPackage(
 			ArrayList files,
-			SimPe.Interfaces.Files.IPackageFile pkg
+			Interfaces.Files.IPackageFile pkg
 		)
 		{
-			foreach (SimPe.Plugin.GenericRcol rcol in files)
+			foreach (GenericRcol rcol in files)
 			{
 				rcol.FileDescriptor = Clone(rcol.FileDescriptor);
 				rcol.SynchronizeUserData();
@@ -972,7 +972,7 @@ namespace SimPe.Plugin
 		/// <param name="delete">true, if the tsMaterialsMeshName Blocks should get cleared</param>
 		/// <returns>A List of Modelnames</returns>
 		public static string[] LoadParentModelNames(
-			SimPe.Interfaces.Files.IPackageFile pkg,
+			Interfaces.Files.IPackageFile pkg,
 			bool delete
 		)
 		{
@@ -1031,21 +1031,21 @@ namespace SimPe.Plugin
 
 		#region Str Linked Resources
 		protected ArrayList LoadStrLinked(
-			SimPe.Interfaces.Files.IPackageFile pkg,
+			Interfaces.Files.IPackageFile pkg,
 			CloneSettings.StrIntsanceAlias instance
 		)
 		{
 			ArrayList list = new ArrayList();
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFile(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFile(
 				Data.MetaData.STRING_FILE,
 				0,
 				instance.Instance
 			);
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
 				str.ProcessData(pfd, pkg);
-				foreach (SimPe.PackedFiles.Wrapper.StrToken si in str.Items)
+				foreach (PackedFiles.Wrapper.StrToken si in str.Items)
 				{
 					string name = Hashes.StripHashFromName(si.Title).Trim();
 					if (name == "")
@@ -1055,7 +1055,7 @@ namespace SimPe.Plugin
 
 					name += instance.Extension;
 					//Console.WriteLine("Str Linked: "+name);
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii =
+					IScenegraphFileIndexItem fii =
 						FileTable.FileIndex.FindFileByName(
 							name,
 							instance.Type,
@@ -1080,7 +1080,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="instances"></param>
 		public void AddStrLinked(
-			SimPe.Interfaces.Files.IPackageFile pkg,
+			Interfaces.Files.IPackageFile pkg,
 			CloneSettings.StrIntsanceAlias[] instances
 		)
 		{
@@ -1089,10 +1089,10 @@ namespace SimPe.Plugin
 				ArrayList rcols = LoadStrLinked(pkg, instance);
 
 				foreach (
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in rcols
+					IScenegraphFileIndexItem item in rcols
 				)
 				{
-					SimPe.Plugin.GenericRcol sub = new GenericRcol(null, false);
+					GenericRcol sub = new GenericRcol(null, false);
 					sub.ProcessData(item);
 					LoadReferenced(
 						this.modelnames,
@@ -1146,7 +1146,7 @@ namespace SimPe.Plugin
 
 			//this applies to all found NameMaps for TXTR Files
 			ArrayList foundnames = new ArrayList();
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] namemapitems =
+			IScenegraphFileIndexItem[] namemapitems =
 				FileTable.FileIndex.FindFile(
 					Data.MetaData.NAME_MAP,
 					0x52737256,
@@ -1154,10 +1154,10 @@ namespace SimPe.Plugin
 					null
 				);
 			foreach (
-				Interfaces.Scenegraph.IScenegraphFileIndexItem namemap in namemapitems
+				IScenegraphFileIndexItem namemap in namemapitems
 			)
 			{
-				SimPe.Plugin.Nmap nmap = new Nmap(null);
+				Nmap nmap = new Nmap(null);
 				nmap.ProcessData(namemap);
 
 				foreach (NmapItem ni in nmap.Items)
@@ -1165,7 +1165,7 @@ namespace SimPe.Plugin
 					string name = ni.Filename.Trim().ToLower();
 					if (name.StartsWith(modelname) && name.EndsWith("_wallmask_txmt"))
 					{
-						Interfaces.Scenegraph.IScenegraphFileIndexItem item =
+						IScenegraphFileIndexItem item =
 							FileTable.FileIndex.FindFileByName(
 								name,
 								Data.MetaData.TXMT,
@@ -1208,10 +1208,10 @@ namespace SimPe.Plugin
 				ArrayList txmt = LoadWallmask(s);
 
 				foreach (
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in txmt
+					IScenegraphFileIndexItem item in txmt
 				)
 				{
-					SimPe.Plugin.GenericRcol sub = new GenericRcol(null, false);
+					GenericRcol sub = new GenericRcol(null, false);
 					sub.ProcessData(item);
 					LoadReferenced(
 						this.modelnames,
@@ -1244,7 +1244,7 @@ namespace SimPe.Plugin
 				name += "_anim";
 			}
 
-			Interfaces.Scenegraph.IScenegraphFileIndexItem item =
+			IScenegraphFileIndexItem item =
 				FileTable.FileIndex.FindFileByName(
 					name,
 					Data.MetaData.ANIM,
@@ -1270,10 +1270,10 @@ namespace SimPe.Plugin
 				ArrayList anim = LoadAnim(s);
 
 				foreach (
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in anim
+					IScenegraphFileIndexItem item in anim
 				)
 				{
-					SimPe.Plugin.GenericRcol sub = new GenericRcol(null, false);
+					GenericRcol sub = new GenericRcol(null, false);
 					sub.ProcessData(item);
 					LoadReferenced(
 						this.modelnames,
@@ -1295,28 +1295,28 @@ namespace SimPe.Plugin
 		/// Add Resources referenced from 3IDR Files
 		/// </summary>
 		/// <param name="names"></param>
-		public void AddFrom3IDR(SimPe.Interfaces.Files.IPackageFile pkg)
+		public void AddFrom3IDR(Interfaces.Files.IPackageFile pkg)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
+			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
 				Data.MetaData.REF_FILE
 			);
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				SimPe.Plugin.RefFile re = new RefFile();
+				RefFile re = new RefFile();
 				re.ProcessData(pfd, pkg);
 
-				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor p in re.Items)
+				foreach (Interfaces.Files.IPackedFileDescriptor p in re.Items)
 				{
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+					IScenegraphFileIndexItem[] items =
 						FileTable.FileIndex.FindFile(p, null);
 					foreach (
-						SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
+						IScenegraphFileIndexItem item in items
 					)
 					{
 						try
 						{
 							// if (item.FileDescriptor.Type == Data.MetaData.STRING_FILE)
-							SimPe.Plugin.GenericRcol sub = new GenericRcol(null, false);
+							GenericRcol sub = new GenericRcol(null, false);
 							sub.ProcessData(item);
 							LoadReferenced(
 								this.modelnames,
@@ -1347,13 +1347,13 @@ namespace SimPe.Plugin
 		/// Add Resources referenced from XML Files
 		/// </summary>
 		/// <param name="names"></param>
-		public void AddFromXml(SimPe.Interfaces.Files.IPackageFile pkg)
+		public void AddFromXml(Interfaces.Files.IPackageFile pkg)
 		{
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] index =
-				(SimPe.Interfaces.Files.IPackedFileDescriptor[])pkg.Index.Clone();
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in index)
+			Interfaces.Files.IPackedFileDescriptor[] index =
+				(Interfaces.Files.IPackedFileDescriptor[])pkg.Index.Clone();
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in index)
 			{
-				SimPe.PackedFiles.Wrapper.Cpf cpf = new SimPe.PackedFiles.Wrapper.Cpf();
+				PackedFiles.Wrapper.Cpf cpf = new PackedFiles.Wrapper.Cpf();
 				if (!cpf.CanHandleType(pfd.Type))
 				{
 					continue;
@@ -1398,7 +1398,7 @@ namespace SimPe.Plugin
 				AddFromXml(cpf.GetItem("texturetrim"), "_txtr", Data.MetaData.TXTR);
 				AddFromXml(cpf.GetItem("textureunder"), "_txtr", Data.MetaData.TXTR);
 
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+				IScenegraphFileIndexItem[] items =
 					FileTable.FileIndex.FindFile(
 						cpf.GetSaveItem("stringsetrestypeid").UIntegerValue,
 						cpf.GetSaveItem("stringsetgroupid").UIntegerValue,
@@ -1413,7 +1413,7 @@ namespace SimPe.Plugin
 		/// Add Resources referenced from XML Files
 		/// </summary>
 		protected void AddFromXml(
-			SimPe.PackedFiles.Wrapper.CpfItem item,
+			PackedFiles.Wrapper.CpfItem item,
 			string prefix,
 			uint type
 		)
@@ -1431,7 +1431,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		protected void AddFromXml(string name, uint type)
 		{
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item =
+			IScenegraphFileIndexItem item =
 				FileTable.FileIndex.FindFileByName(
 					name,
 					type,
@@ -1445,7 +1445,7 @@ namespace SimPe.Plugin
 		/// Add Resources referenced from XML Files
 		/// </summary>
 		protected void AddFromXml(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item
+			IScenegraphFileIndexItem item
 		)
 		{
 			if (item == null)
@@ -1453,8 +1453,8 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-				new SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[1];
+			IScenegraphFileIndexItem[] items =
+				new IScenegraphFileIndexItem[1];
 			items[0] = item;
 			AddFromXml(items);
 		}
@@ -1463,14 +1463,14 @@ namespace SimPe.Plugin
 		/// Add Resources referenced from XML Files
 		/// </summary>
 		protected void AddFromXml(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items
+			IScenegraphFileIndexItem[] items
 		)
 		{
-			foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
+			foreach (IScenegraphFileIndexItem item in items)
 			{
 				try
 				{
-					SimPe.Plugin.GenericRcol sub = new GenericRcol(null, false);
+					GenericRcol sub = new GenericRcol(null, false);
 					sub.ProcessData(item);
 					LoadReferenced(
 						this.modelnames,

@@ -78,12 +78,12 @@ namespace SimPe.PackedFiles.Wrapper
 			guis = new Dictionary<string, Type>();
 			readers = new Dictionary<string, IScorItemToken>();
 
-			deftoken = new SCOR.ScorItemTokenDefault();
+			deftoken = new ScorItemTokenDefault();
 
-			guis.Add("Learned Behaviors", typeof(SCOR.ScoreItemLearnedBehaviour));
-			guis.Add("Business Rewards", typeof(SCOR.ScoreItemBusinessRewards));
+			guis.Add("Learned Behaviors", typeof(ScoreItemLearnedBehaviour));
+			guis.Add("Business Rewards", typeof(ScoreItemBusinessRewards));
 
-			readers.Add("Business Rewards", new SCOR.ScorItemTokenBusinessRewards());
+			readers.Add("Business Rewards", new ScorItemTokenBusinessRewards());
 		}
 
 		internal void LoadGuiElement(string name)
@@ -91,20 +91,20 @@ namespace SimPe.PackedFiles.Wrapper
 			gui = GetGuiElement(name, null);
 		}
 
-		protected SCOR.AScorItem GetGuiElement(string name, byte[] data)
+		protected AScorItem GetGuiElement(string name, byte[] data)
 		{
-			SCOR.AScorItem ret = null;
+			AScorItem ret = null;
 			if (GuiElements.ContainsKey(name))
 			{
 				ret =
 					System.Activator.CreateInstance(
 						GuiElements[name],
 						new object[] { this }
-					) as SCOR.AScorItem;
+					) as AScorItem;
 			}
 			if (ret == null)
 			{
-				ret = new SCOR.ScoreItemDefault(this);
+				ret = new ScoreItemDefault(this);
 			}
 
 			if (data != null)
@@ -119,7 +119,7 @@ namespace SimPe.PackedFiles.Wrapper
 			return ret;
 		}
 
-		internal SCOR.IScorItemToken GetTokenParser(string name)
+		internal IScorItemToken GetTokenParser(string name)
 		{
 			if (Readers.ContainsKey(name))
 			{
@@ -130,8 +130,8 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 		#endregion
 
-		SCOR.AScorItem gui;
-		public SCOR.AScorItem Gui
+		AScorItem gui;
+		public AScorItem Gui
 		{
 			get
 			{
@@ -183,7 +183,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			string name = StreamHelper.ReadString(reader);
 
-			SCOR.IScorItemToken tp = GetTokenParser(name);
+			IScorItemToken tp = GetTokenParser(name);
 
 			lock (tp)
 			{
@@ -208,7 +208,7 @@ namespace SimPe.PackedFiles.Wrapper
 				return new byte[0];
 			}
 
-			System.Collections.ArrayList bytes = new ArrayList();
+			ArrayList bytes = new ArrayList();
 
 			byte test = reader.ReadByte();
 			byte last = test;
@@ -270,10 +270,10 @@ namespace SimPe.PackedFiles.Wrapper
 	}
 
 	public class ScorItems
-		: System.Collections.Generic.IEnumerable<ScorItem>,
-			System.IDisposable
+		: IEnumerable<ScorItem>,
+			IDisposable
 	{
-		System.Collections.Generic.List<ScorItem> list;
+		List<ScorItem> list;
 
 		public ScorItems()
 		{

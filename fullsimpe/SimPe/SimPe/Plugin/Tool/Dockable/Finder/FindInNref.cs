@@ -4,7 +4,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 {
 	public partial class FindInNref : FindInStr
 	{
-		public FindInNref(SimPe.Interfaces.IFinderResultGui rgui)
+		public FindInNref(Interfaces.IFinderResultGui rgui)
 			: base(rgui)
 		{
 			InitializeComponent();
@@ -16,8 +16,8 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 		public override bool ProcessParalell => true;
 
 		public override void SearchPackage(
-			SimPe.Interfaces.Files.IPackageFile pkg,
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd
+			Interfaces.Files.IPackageFile pkg,
+			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
 			if (pfd.Type != 0x4E524546)
@@ -25,7 +25,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 				return;
 			}
 
-			SimPe.PackedFiles.Wrapper.Nref nref = new Nref();
+			Nref nref = new Nref();
 			nref.ProcessData(pfd, pkg);
 
 			bool found = false;

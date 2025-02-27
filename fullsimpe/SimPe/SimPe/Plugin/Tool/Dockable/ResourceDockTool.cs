@@ -24,7 +24,7 @@ namespace SimPe.Plugin.Tool.Dockable
 	/// <summary>
 	/// Docakble Tool to view/change Resource specific Informations
 	/// </summary>
-	public class ResourceDockTool : SimPe.Interfaces.IDockableTool
+	public class ResourceDockTool : Interfaces.IDockableTool
 	{
 		ResourceDock rd;
 
@@ -40,9 +40,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			return rd.dcResource;
 		}
 
-		public event SimPe.Events.ChangedResourceEvent ShowNewResource;
+		public event Events.ChangedResourceEvent ShowNewResource;
 
-		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es)
+		public void RefreshDock(object sender, Events.ResourceEventArgs es)
 		{
 			rd.items = null;
 			bool check = false;
@@ -66,7 +66,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			//Set Compression State
 			int tct = 0;
-			foreach (SimPe.Events.ResourceContainer e in es)
+			foreach (Events.ResourceContainer e in es)
 			{
 				if (!e.HasFileDescriptor)
 				{

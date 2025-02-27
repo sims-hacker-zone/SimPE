@@ -50,7 +50,7 @@ namespace SimPe.Cache
 	/// <summary>
 	/// Contains one or more CacheItems
 	/// </summary>
-	public class CacheContainer : System.IDisposable
+	public class CacheContainer : IDisposable
 	{
 		/// <summary>
 		/// The current Version

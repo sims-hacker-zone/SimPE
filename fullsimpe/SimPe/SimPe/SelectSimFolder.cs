@@ -24,7 +24,7 @@ namespace SimPe
 	/// <summary>
 	/// Summary description for SelectSimFolder.
 	/// </summary>
-	class SelectSimFolder : System.Windows.Forms.Form
+	class SelectSimFolder : Form
 	{
 		class FolderWrapper
 		{
@@ -49,12 +49,12 @@ namespace SimPe
 		}
 
 		private SteepValley.Windows.Forms.XPGradientPanel xpGradientPanel1;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.FolderBrowserDialog fbd;
-		private System.Windows.Forms.ComboBox tbFolder;
-		private System.Windows.Forms.Button btCancel;
-		private System.Windows.Forms.Button btOK;
+		private Label label1;
+		private Button button1;
+		private FolderBrowserDialog fbd;
+		private ComboBox tbFolder;
+		private Button btCancel;
+		private Button btOK;
 		private SteepValley.Windows.Forms.XPLine xpLine1;
 
 		/// <summary>
@@ -100,13 +100,13 @@ namespace SimPe
 		private void InitializeComponent()
 		{
 			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.btOK = new System.Windows.Forms.Button();
-			this.btCancel = new System.Windows.Forms.Button();
+			this.btOK = new Button();
+			this.btCancel = new Button();
 			this.xpLine1 = new SteepValley.Windows.Forms.XPLine();
-			this.tbFolder = new System.Windows.Forms.ComboBox();
-			this.button1 = new System.Windows.Forms.Button();
-			this.label1 = new System.Windows.Forms.Label();
-			this.fbd = new System.Windows.Forms.FolderBrowserDialog();
+			this.tbFolder = new ComboBox();
+			this.button1 = new Button();
+			this.label1 = new Label();
+			this.fbd = new FolderBrowserDialog();
 			this.xpGradientPanel1.SuspendLayout();
 			this.SuspendLayout();
 			//
@@ -127,7 +127,7 @@ namespace SimPe
 			// btOK
 			//
 			this.btOK.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -145,7 +145,7 @@ namespace SimPe
 			// btCancel
 			//
 			this.btCancel.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
@@ -164,7 +164,7 @@ namespace SimPe
 			// xpLine1
 			//
 			this.xpLine1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -185,7 +185,7 @@ namespace SimPe
 			// tbFolder
 			//
 			this.tbFolder.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -202,7 +202,7 @@ namespace SimPe
 			// button1
 			//
 			this.button1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right

@@ -33,8 +33,8 @@ namespace pjse
 
 		private List<TextBox> ltb = new List<TextBox>();
 		private List<RadioButton> lrb = new List<RadioButton>();
-		private List<pjse.BhavOperandWizards.DataOwnerControl> ldoc =
-			new List<pjse.BhavOperandWizards.DataOwnerControl>();
+		private List<BhavOperandWizards.DataOwnerControl> ldoc =
+			new List<BhavOperandWizards.DataOwnerControl>();
 		private int selectedRB = -1;
 
 		public PickANumber(ushort[] values, string[] labels)
@@ -64,8 +64,8 @@ namespace pjse
 				resources.ApplyResources(t, "textBox1");
 				ltb.Add(t);
 				t.Enabled = false;
-				pjse.BhavOperandWizards.DataOwnerControl d =
-					new pjse.BhavOperandWizards.DataOwnerControl(
+				BhavOperandWizards.DataOwnerControl d =
+					new BhavOperandWizards.DataOwnerControl(
 						null,
 						null,
 						null,
@@ -87,7 +87,7 @@ namespace pjse
 				resources.ApplyResources(r, "radioButton1");
 				r.Text = labels[i];
 				r.Checked = false;
-				r.CheckedChanged += new System.EventHandler(
+				r.CheckedChanged += new EventHandler(
 					this.radioButton1_CheckedChanged
 				);
 				r.TextAlign = ContentAlignment.MiddleRight;
@@ -100,7 +100,7 @@ namespace pjse
 			}
 
 			ltb[ltb.Count - 1].Enabled = true;
-			ltb[ltb.Count - 1].Enter += new System.EventHandler(this.ltbLast_Enter);
+			ltb[ltb.Count - 1].Enter += new EventHandler(this.ltbLast_Enter);
 			lrb[0].Checked = true;
 
 			this.tableLayoutPanel1.RowCount++;

@@ -5,7 +5,7 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Registry Keys for the Object Workshop
 	/// </summary>
-	class SimsRegistry : System.IDisposable
+	class SimsRegistry : IDisposable
 	{
 		XmlRegistryKey xrk;
 		Sims form;
@@ -242,7 +242,7 @@ namespace SimPe.Plugin
 
 		private void sorter_Changed(object sender, EventArgs e)
 		{
-			SimPe.ColumnSorter cs = sender as SimPe.ColumnSorter;
+			ColumnSorter cs = sender as ColumnSorter;
 			this.SortedColumn = cs.CurrentColumn;
 			this.SortOrder = cs.Sorting;
 		}

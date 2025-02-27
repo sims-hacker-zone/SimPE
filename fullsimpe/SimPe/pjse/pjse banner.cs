@@ -373,14 +373,14 @@ namespace pjse
 			SimPe.FileTable.Reload();
 		}
 
-		private void btnHelp_Click(object sender, System.EventArgs e)
+		private void btnHelp_Click(object sender, EventArgs e)
 		{
 			pjse.HelpHelper.Help(HelpTarget);
 		}
 
 		#region Painting
 
-		protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
+		protected override void OnPaint(PaintEventArgs e)
 		{
 			base.OnPaint(e);
 		}

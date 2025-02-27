@@ -44,7 +44,7 @@ namespace SimPe.Cache
 		/// </summary>
 		/// <returns></returns>
 		public static MemoryCacheFile InitCacheFile(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fileindex
+			Interfaces.Scenegraph.IScenegraphFileIndex fileindex
 		)
 		{
 			Wait.SubStart();
@@ -71,7 +71,7 @@ namespace SimPe.Cache
 		}
 
 		public void ReloadCache(
-			SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fileindex,
+			Interfaces.Scenegraph.IScenegraphFileIndex fileindex,
 			bool save
 		)
 		{
@@ -84,14 +84,14 @@ namespace SimPe.Cache
 			Wait.MaxProgress = items.Length;
 			Wait.Message = "Updating Cache";
 			int ct = 0;
-			foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
+			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
 			{
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] citems =
 					this.FileIndex.FindFile(item.GetLocalFileDescriptor(), null);
 				if (citems.Length == 0)
 				{
-					SimPe.PackedFiles.Wrapper.ExtObjd objd =
-						new SimPe.PackedFiles.Wrapper.ExtObjd();
+					PackedFiles.Wrapper.ExtObjd objd =
+						new PackedFiles.Wrapper.ExtObjd();
 					objd.ProcessData(item);
 
 					this.AddItem(objd);
@@ -127,7 +127,7 @@ namespace SimPe.Cache
 		/// Add a MaterialOverride to the Cache
 		/// </summary>
 		/// <param name="objd">The Object Data File</param>
-		public MemoryCacheItem AddItem(SimPe.PackedFiles.Wrapper.ExtObjd objd)
+		public MemoryCacheItem AddItem(PackedFiles.Wrapper.ExtObjd objd)
 		{
 			CacheContainer mycc = this.UseConatiner(
 				ContainerType.Memory,
@@ -162,10 +162,10 @@ namespace SimPe.Cache
 
 				if (sitems.Length > 0)
 				{
-					SimPe.PackedFiles.Wrapper.Str str =
-						new SimPe.PackedFiles.Wrapper.Str();
+					PackedFiles.Wrapper.Str str =
+						new PackedFiles.Wrapper.Str();
 					str.ProcessData(sitems[0]);
-					SimPe.PackedFiles.Wrapper.StrItemList strs = str.LanguageItems(
+					PackedFiles.Wrapper.StrItemList strs = str.LanguageItems(
 						Helper.WindowsRegistry.LanguageCode
 					);
 					if (strs.Length > 0)
@@ -197,10 +197,10 @@ namespace SimPe.Cache
 					);
 				if (sitems.Length > 0)
 				{
-					SimPe.PackedFiles.Wrapper.Str str =
-						new SimPe.PackedFiles.Wrapper.Str();
+					PackedFiles.Wrapper.Str str =
+						new PackedFiles.Wrapper.Str();
 					str.ProcessData(sitems[0]);
-					SimPe.PackedFiles.Wrapper.StrItemList strs = str.LanguageItems(
+					PackedFiles.Wrapper.StrItemList strs = str.LanguageItems(
 						Data.MetaData.Languages.English
 					);
 					string[] res = new string[strs.Count];
@@ -220,8 +220,8 @@ namespace SimPe.Cache
 				mci.Name = objd.FileName;
 			}
 			//having an icon?
-			SimPe.PackedFiles.Wrapper.Picture pic =
-				new SimPe.PackedFiles.Wrapper.Picture();
+			PackedFiles.Wrapper.Picture pic =
+				new PackedFiles.Wrapper.Picture();
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] iitems;
 			if (mci.IsBadge)
 			{
@@ -405,20 +405,20 @@ namespace SimPe.Cache
 		/// </summary>
 		/// <param name="guid"></param>
 		/// <returns></returns>
-		public SimPe.Interfaces.IAlias FindObject(uint guid)
+		public Interfaces.IAlias FindObject(uint guid)
 		{
 			MemoryCacheItem mci = FindItem(guid);
-			SimPe.Data.Alias a;
+			Data.Alias a;
 			if (mci == null)
 			{
-				a = new SimPe.Data.Alias(
+				a = new Data.Alias(
 					guid,
 					Localization.Manager.GetString("Unknown")
 				);
 			}
 			else
 			{
-				a = new SimPe.Data.Alias(guid, mci.Name);
+				a = new Data.Alias(guid, mci.Name);
 			}
 
 			object[] o = new object[3];

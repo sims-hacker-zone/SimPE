@@ -18,7 +18,7 @@ namespace SimPe.Data
 		void LoadXML()
 		{
 			//read XML File
-			System.Xml.XmlDocument xmlfile = new XmlDocument();
+			XmlDocument xmlfile = new XmlDocument();
 			xmlfile.Load(flname);
 
 			//seek Root Node

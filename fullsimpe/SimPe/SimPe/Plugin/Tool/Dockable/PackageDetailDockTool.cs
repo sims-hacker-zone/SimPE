@@ -22,7 +22,7 @@ namespace SimPe.Plugin.Tool.Dockable
 	/// <summary>
 	/// Dockable Tool that displays Package specific Informations
 	/// </summary>
-	public class PackageDetailDockTool : SimPe.Interfaces.IDockableTool
+	public class PackageDetailDockTool : Interfaces.IDockableTool
 	{
 		dcPackageDetails dc;
 
@@ -39,11 +39,11 @@ namespace SimPe.Plugin.Tool.Dockable
 			return dc;
 		}
 
-		public event SimPe.Events.ChangedResourceEvent ShowNewResource;
+		public event Events.ChangedResourceEvent ShowNewResource;
 
-		SimPe.Interfaces.Files.IPackageFile pkg;
+		Interfaces.Files.IPackageFile pkg;
 
-		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es)
+		public void RefreshDock(object sender, Events.ResourceEventArgs es)
 		{
 			if (!es.Loaded)
 			{

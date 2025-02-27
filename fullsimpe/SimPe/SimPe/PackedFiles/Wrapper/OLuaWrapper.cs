@@ -29,9 +29,9 @@ namespace SimPe.PackedFiles.Wrapper
 	/// </summary>
 	public class ObjLua
 		: AbstractWrapper,
-			SimPe.Interfaces.Plugin.IFileWrapper,
-			SimPe.Interfaces.Plugin.IFileWrapperSaveExtension,
-			SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper
+			IFileWrapper,
+			IFileWrapperSaveExtension,
+			IMultiplePackedFileWrapper
 	{
 		enum Endian : byte
 		{
@@ -118,7 +118,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new SimPe.PackedFiles.UserInterface.ObjLua();
+			return new UserInterface.ObjLua();
 		}
 
 		public ObjLua()
@@ -176,7 +176,7 @@ namespace SimPe.PackedFiles.Wrapper
 						regs[i] = "";
 					}
 
-					Lua.Context cx = new SimPe.PackedFiles.Wrapper.Lua.Context();
+					Lua.Context cx = new Lua.Context();
 					Root.ToSource(sw, cx);
 					sw.Flush();
 
@@ -336,7 +336,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#endregion
 
-		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
+		protected override string GetResourceName(Data.TypeAlias ta)
 		{
 			if (!this.Processed)
 			{
@@ -347,7 +347,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 	}
 
-	public class ObjLuaFunction : System.IDisposable, System.Collections.IEnumerable
+	public class ObjLuaFunction : IDisposable, IEnumerable
 	{
 		internal static bool DEBUG = false;
 
@@ -790,7 +790,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#endregion
 	}
 
-	public class ObjLuaConstant : System.IDisposable
+	public class ObjLuaConstant : IDisposable
 	{
 		public enum Type : byte
 		{
@@ -951,7 +951,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 	}
 
-	public class ObjLuaSourceLine : System.IDisposable
+	public class ObjLuaSourceLine : IDisposable
 	{
 		#region Attributes
 		ObjLuaFunction parent;
@@ -992,7 +992,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 	}
 
-	public class ObjLuaLocalVar : System.IDisposable
+	public class ObjLuaLocalVar : IDisposable
 	{
 		#region Attributes
 		ObjLuaFunction parent;
@@ -1059,7 +1059,7 @@ namespace SimPe.PackedFiles.Wrapper
 			: base(parent) { }
 	}
 
-	public class ObjLuaCode : System.IDisposable
+	public class ObjLuaCode : IDisposable
 	{
 		static Hashtable ocmap;
 

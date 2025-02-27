@@ -27,7 +27,7 @@ namespace SimPe.Packages
 	/// <summary>
 	/// A File within a Package
 	/// </summary>
-	public class PackedFile : IPackedFile, System.IDisposable
+	public class PackedFile : IPackedFile, IDisposable
 	{
 		System.IO.Stream src;
 		System.IO.Stream dst;

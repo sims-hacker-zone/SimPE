@@ -28,11 +28,11 @@ namespace SimPe.Plugin.TabPage
 	public class Cres : System.Windows.Forms.TabPage
 	//System.Windows.Forms.UserControl
 	{
-		private System.Windows.Forms.ToolTip toolTip1;
-		internal System.Windows.Forms.TreeView cres_tv;
-		public System.Windows.Forms.ImageList iCres;
-		private System.Windows.Forms.Label label58;
-		internal System.Windows.Forms.TextBox tbfjoint;
+		private ToolTip toolTip1;
+		internal TreeView cres_tv;
+		public ImageList iCres;
+		private Label label58;
+		internal TextBox tbfjoint;
 		private System.ComponentModel.IContainer components;
 
 		public Cres()
@@ -84,17 +84,17 @@ namespace SimPe.Plugin.TabPage
 			this.components = new System.ComponentModel.Container();
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(Cres));
-			this.tbfjoint = new System.Windows.Forms.TextBox();
-			this.label58 = new System.Windows.Forms.Label();
-			this.cres_tv = new System.Windows.Forms.TreeView();
-			this.iCres = new System.Windows.Forms.ImageList(this.components);
-			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+			this.tbfjoint = new TextBox();
+			this.label58 = new Label();
+			this.cres_tv = new TreeView();
+			this.iCres = new ImageList(this.components);
+			this.toolTip1 = new ToolTip(this.components);
 			this.SuspendLayout();
 			//
 			// tbfjoint
 			//
 			this.tbfjoint.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -108,7 +108,7 @@ namespace SimPe.Plugin.TabPage
 			this.tbfjoint.Size = new System.Drawing.Size(696, 20);
 			this.tbfjoint.TabIndex = 2;
 			this.tbfjoint.Text = "";
-			this.tbfjoint.TextChanged += new System.EventHandler(
+			this.tbfjoint.TextChanged += new EventHandler(
 				this.tbfjoint_TextChanged
 			);
 			//
@@ -131,7 +131,7 @@ namespace SimPe.Plugin.TabPage
 			// cres_tv
 			//
 			this.cres_tv.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							(
@@ -149,10 +149,10 @@ namespace SimPe.Plugin.TabPage
 			this.cres_tv.Name = "cres_tv";
 			this.cres_tv.Size = new System.Drawing.Size(776, 226);
 			this.cres_tv.TabIndex = 0;
-			this.cres_tv.DoubleClick += new System.EventHandler(
+			this.cres_tv.DoubleClick += new EventHandler(
 				this.cres_tv_DoubleClick
 			);
-			this.cres_tv.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(
+			this.cres_tv.AfterSelect += new TreeViewEventHandler(
 				this.SelectCresTv
 			);
 			//
@@ -161,7 +161,7 @@ namespace SimPe.Plugin.TabPage
 			this.iCres.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
 			this.iCres.ImageSize = new System.Drawing.Size(16, 16);
 			this.iCres.ImageStream = (
-				(System.Windows.Forms.ImageListStreamer)(
+				(ImageListStreamer)(
 					resources.GetObject("iCres.ImageStream")
 				)
 			);
@@ -180,7 +180,7 @@ namespace SimPe.Plugin.TabPage
 		}
 		#endregion
 
-		private void cres_tv_DoubleClick(object sender, System.EventArgs e)
+		private void cres_tv_DoubleClick(object sender, EventArgs e)
 		{
 			TreeNode sel = cres_tv.SelectedNode;
 			cres_tv.SelectedNode = null;
@@ -206,9 +206,9 @@ namespace SimPe.Plugin.TabPage
 			}
 		}
 
-		void ClearCresTv(System.Windows.Forms.TreeNodeCollection nodes)
+		void ClearCresTv(TreeNodeCollection nodes)
 		{
-			foreach (System.Windows.Forms.TreeNode n in nodes)
+			foreach (TreeNode n in nodes)
 			{
 				n.Tag = null;
 				ClearCresTv(n.Nodes);
@@ -217,7 +217,7 @@ namespace SimPe.Plugin.TabPage
 			nodes.Clear();
 		}
 
-		private void tbfjoint_TextChanged(object sender, System.EventArgs e)
+		private void tbfjoint_TextChanged(object sender, EventArgs e)
 		{
 			tbfjoint.Tag = true;
 			try
@@ -236,7 +236,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void SelectCresTv(
 			object sender,
-			System.Windows.Forms.TreeViewEventArgs e
+			TreeViewEventArgs e
 		)
 		{
 			if (tbfjoint.Tag != null)
@@ -270,7 +270,7 @@ namespace SimPe.Plugin.TabPage
 			((TabControl)this.Parent).SelectedIndex = 0;
 		}
 
-		bool SelectJoint(System.Windows.Forms.TreeNodeCollection nodes, string name)
+		bool SelectJoint(TreeNodeCollection nodes, string name)
 		{
 			foreach (TreeNode tn in nodes)
 			{

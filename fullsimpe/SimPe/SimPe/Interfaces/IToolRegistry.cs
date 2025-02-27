@@ -48,7 +48,7 @@ namespace SimPe.Interfaces
 		/// <summary>
 		/// Return a Collection of loaded Listeners
 		/// </summary>
-		SimPe.Collections.Listeners Listeners
+		Collections.Listeners Listeners
 		{
 			get;
 		}

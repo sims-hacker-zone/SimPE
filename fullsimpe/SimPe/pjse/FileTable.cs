@@ -58,13 +58,13 @@ namespace pjse
 		{
 			if (SimPe.FileTable.FileIndex != null)
 			{
-				SimPe.FileTable.FileIndex.FILoad += new System.EventHandler(
+				SimPe.FileTable.FileIndex.FILoad += new EventHandler(
 					this.FileIndex_FILoad
 				);
 			}
 		}
 
-		private void FileIndex_FILoad(object sender, System.EventArgs e)
+		private void FileIndex_FILoad(object sender, EventArgs e)
 		{
 			UIRefresh();
 		}
@@ -197,7 +197,7 @@ namespace pjse
 			{
 				if (File.Exists(packages_txt))
 				{
-					System.IO.StreamReader sr = new StreamReader(packages_txt);
+					StreamReader sr = new StreamReader(packages_txt);
 					for (
 						string line = sr.ReadLine();
 						line != null;
@@ -1021,7 +1021,7 @@ namespace pjse
 
 	public class FileTableSettings : SimPe.GlobalizedObject, ISettings
 	{
-		static ResourceManager rm = new ResourceManager(typeof(pjse.Localization));
+		static ResourceManager rm = new ResourceManager(typeof(Localization));
 
 		public static FileTableSettings FTS
 		{
@@ -1086,7 +1086,7 @@ namespace pjse
 	{
 		#region IToolFactory Members
 
-		public IToolPlugin[] KnownTools => new IToolPlugin[] { new pjse.FileTableTool() };
+		public IToolPlugin[] KnownTools => new IToolPlugin[] { new FileTableTool() };
 
 		#endregion
 

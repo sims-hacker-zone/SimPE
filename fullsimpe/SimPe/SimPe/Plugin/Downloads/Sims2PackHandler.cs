@@ -11,10 +11,10 @@ namespace SimPe.Plugin.Downloads
 		protected override StringArrayList ExtractArchive()
 		{
 			StringArrayList ret = new StringArrayList();
-			SimPe.Packages.S2CPDescriptor[] content =
+			Packages.S2CPDescriptor[] content =
 				SimPe.Packages.Sims2CommunityPack.Open(this.ArchiveName);
 
-			foreach (SimPe.Packages.S2CPDescriptor desc in content)
+			foreach (Packages.S2CPDescriptor desc in content)
 			{
 				string name = System.IO.Path.Combine(
 					Helper.SimPeTeleportPath,

@@ -42,7 +42,7 @@ namespace SimPe.Packages
 		/// Init the Clone for this Package
 		/// </summary>
 		/// <returns>An INstance of this Class</returns>
-		protected override Interfaces.Files.IPackageFile NewCloneBase()
+		protected override IPackageFile NewCloneBase()
 		{
 			ExtractableFile fl = new ExtractableFile((BinaryReader)null);
 			fl.header = this.header;
@@ -55,7 +55,7 @@ namespace SimPe.Packages
 		/// </summary>
 		/// <param name="pfd">The PackedFileDescriptor</param>
 		/// <returns>The MemoryStream representing the PackedFile</returns>
-		public System.IO.MemoryStream Extract(PackedFileDescriptor pfd)
+		public MemoryStream Extract(PackedFileDescriptor pfd)
 		{
 			IPackedFile pf = base.Read(pfd);
 			return new MemoryStream(pf.UncompressedData);
@@ -110,7 +110,7 @@ namespace SimPe.Packages
 		{
 			StreamItem si = StreamFactory.GetStreamItem(flname, false);
 
-			System.IO.FileStream fs = null;
+			FileStream fs = null;
 			if (si == null)
 			{
 				fs = new FileStream(flname, System.IO.FileMode.Create);
@@ -148,7 +148,7 @@ namespace SimPe.Packages
 		/// <param name="pfd">The description of the File</param>
 		protected void SaveMetaInfo(string flname, PackedFileDescriptor pfd)
 		{
-			System.IO.TextWriter fs = System.IO.File.CreateText(flname);
+			TextWriter fs = System.IO.File.CreateText(flname);
 			try
 			{
 				fs.WriteLine(
@@ -212,7 +212,7 @@ namespace SimPe.Packages
 		/// <param name="flname">The Filename for the File</param>
 		public void GeneratePackageXML(string flname)
 		{
-			System.IO.TextWriter fs = System.IO.File.CreateText(flname);
+			TextWriter fs = System.IO.File.CreateText(flname);
 			try
 			{
 				fs.WriteLine(

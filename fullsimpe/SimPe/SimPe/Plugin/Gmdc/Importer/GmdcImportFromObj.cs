@@ -191,7 +191,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 						vec = Component.InverseTransformNormal(vec);
 					}
 
-					SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat v =
+					GmdcElementValueThreeFloat v =
 						new GmdcElementValueThreeFloat(
 							(float)vec.X,
 							(float)vec.Y,
@@ -236,7 +236,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 						);
 					}
 
-					SimPe.Plugin.Gmdc.GmdcElementValueTwoFloat v =
+					GmdcElementValueTwoFloat v =
 						new GmdcElementValueTwoFloat(data[0], -data[1]);
 					list.Add(v);
 				}
@@ -316,7 +316,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 
 							data[j] = Convert.ToInt32(items[j]);
 						}
-						SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat v =
+						GmdcElementValueThreeFloat v =
 							new GmdcElementValueThreeFloat(data[0], data[1], data[2]);
 						faces.Add(v);
 					}

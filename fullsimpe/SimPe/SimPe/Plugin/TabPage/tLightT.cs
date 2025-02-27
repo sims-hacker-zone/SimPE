@@ -28,11 +28,11 @@ namespace SimPe.Plugin.TabPage
 	public class LightT : System.Windows.Forms.TabPage
 	//System.Windows.Forms.UserControl
 	{
-		private System.Windows.Forms.GroupBox groupBox14;
-		private System.Windows.Forms.Label label47;
-		internal System.Windows.Forms.TextBox tb_lt_ver;
-		private System.Windows.Forms.Label label48;
-		internal System.Windows.Forms.TextBox tb_lt_name;
+		private GroupBox groupBox14;
+		private Label label47;
+		internal TextBox tb_lt_ver;
+		private Label label48;
+		internal TextBox tb_lt_name;
 
 		//private System.ComponentModel.IContainer components;
 
@@ -80,11 +80,11 @@ namespace SimPe.Plugin.TabPage
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.groupBox14 = new System.Windows.Forms.GroupBox();
-			this.tb_lt_name = new System.Windows.Forms.TextBox();
-			this.label48 = new System.Windows.Forms.Label();
-			this.tb_lt_ver = new System.Windows.Forms.TextBox();
-			this.label47 = new System.Windows.Forms.Label();
+			this.groupBox14 = new GroupBox();
+			this.tb_lt_name = new TextBox();
+			this.label48 = new Label();
+			this.tb_lt_ver = new TextBox();
+			this.label47 = new Label();
 			this.groupBox14.SuspendLayout();
 			this.SuspendLayout();
 			//
@@ -101,7 +101,7 @@ namespace SimPe.Plugin.TabPage
 			// groupBox14
 			//
 			this.groupBox14.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -132,7 +132,7 @@ namespace SimPe.Plugin.TabPage
 			// tb_lt_name
 			//
 			this.tb_lt_name.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
@@ -153,7 +153,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_lt_name.Size = new System.Drawing.Size(752, 21);
 			this.tb_lt_name.TabIndex = 26;
 			this.tb_lt_name.Text = "";
-			this.tb_lt_name.TextChanged += new System.EventHandler(
+			this.tb_lt_name.TextChanged += new EventHandler(
 				this.LTSettingsChanged
 			);
 			//
@@ -187,7 +187,7 @@ namespace SimPe.Plugin.TabPage
 			this.tb_lt_ver.Size = new System.Drawing.Size(88, 21);
 			this.tb_lt_ver.TabIndex = 24;
 			this.tb_lt_ver.Text = "0x00000000";
-			this.tb_lt_ver.TextChanged += new System.EventHandler(
+			this.tb_lt_ver.TextChanged += new EventHandler(
 				this.LTSettingsChanged
 			);
 			//
@@ -215,7 +215,7 @@ namespace SimPe.Plugin.TabPage
 		#endregion
 
 
-		private void LTSettingsChanged(object sender, System.EventArgs e)
+		private void LTSettingsChanged(object sender, EventArgs e)
 		{
 			if (this.Tag == null)
 			{

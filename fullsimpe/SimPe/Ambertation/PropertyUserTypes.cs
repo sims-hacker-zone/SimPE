@@ -29,12 +29,12 @@ namespace Ambertation
 	/// </summary>
 	public class FloatColor
 	{
-		public System.Drawing.Color Color
+		public Color Color
 		{
 			get; set;
 		}
 
-		FloatColor(System.Drawing.Color cl)
+		FloatColor(Color cl)
 		{
 			this.Color = cl;
 		}
@@ -44,7 +44,7 @@ namespace Ambertation
 			Color = ToColor(s);
 		}
 
-		public static FloatColor FromColor(System.Drawing.Color cl)
+		public static FloatColor FromColor(Color cl)
 		{
 			return new FloatColor(cl);
 		}
@@ -75,7 +75,7 @@ namespace Ambertation
 		// Explicit conversion from DBBool to bool. Throws an
 		// exception if the given DBBool is dbNull, otherwise returns
 		// true or false:
-		public static implicit operator System.Drawing.Color(FloatColor x)
+		public static implicit operator Color(FloatColor x)
 		{
 			return x.Color;
 		}
@@ -85,9 +85,9 @@ namespace Ambertation
 		/// </summary>
 		/// <param name="s"></param>
 		/// <returns></returns>
-		public static System.Drawing.Color ToColor(string s)
+		public static Color ToColor(string s)
 		{
-			System.Drawing.Color o = System.Drawing.Color.Black;
+			Color o = System.Drawing.Color.Black;
 
 			while (s.IndexOf(" ") != -1)
 			{
@@ -228,7 +228,7 @@ namespace Ambertation
 
 		public override bool CanConvertTo(
 			ITypeDescriptorContext context,
-			System.Type destinationType
+			Type destinationType
 		)
 		{
 			if (destinationType == typeof(BaseChangeableNumber))
@@ -243,7 +243,7 @@ namespace Ambertation
 			ITypeDescriptorContext context,
 			CultureInfo culture,
 			object value,
-			System.Type destinationType
+			Type destinationType
 		)
 		{
 			if (
@@ -266,7 +266,7 @@ namespace Ambertation
 
 		public override bool CanConvertFrom(
 			ITypeDescriptorContext context,
-			System.Type sourceType
+			Type sourceType
 		)
 		{
 			if (sourceType == typeof(string))
@@ -358,8 +358,8 @@ namespace Ambertation
 	/// This is a class that can present short Values in diffrent Ways
 	/// </summary>
 	[
-		TypeConverterAttribute(typeof(NumberBaseTypeConverter)),
-		DescriptionAttribute("This Values can be displayed in Dec, Hex and Bin")
+		TypeConverter(typeof(NumberBaseTypeConverter)),
+		Description("This Values can be displayed in Dec, Hex and Bin")
 	]
 	public class BaseChangeableNumber
 	{

@@ -361,7 +361,7 @@ namespace SimPe.Interfaces.Plugin
 			ProcessData(pfd, package, file, true);
 		}
 
-		public void ProcessData(Interfaces.Scenegraph.IScenegraphFileIndexItem item)
+		public void ProcessData(Scenegraph.IScenegraphFileIndexItem item)
 		{
 			ProcessData(item, true);
 		}
@@ -441,7 +441,7 @@ namespace SimPe.Interfaces.Plugin
 		}
 
 		public void ProcessData(
-			Interfaces.Scenegraph.IScenegraphFileIndexItem item,
+			Scenegraph.IScenegraphFileIndexItem item,
 			bool catchex
 		)
 		{
@@ -519,7 +519,7 @@ namespace SimPe.Interfaces.Plugin
 						.GetInterface(
 							"SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper",
 							false
-						) == typeof(SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper)
+						) == typeof(IMultiplePackedFileWrapper)
 				);
 
 		public virtual bool ReferencesResources => (
@@ -527,7 +527,7 @@ namespace SimPe.Interfaces.Plugin
 						.GetInterface(
 							"SimPe.Interfaces.Plugin.IWrapperReferencedResources",
 							false
-						) == typeof(SimPe.Interfaces.Plugin.IWrapperReferencedResources)
+						) == typeof(IWrapperReferencedResources)
 				);
 
 		public void RefreshUI()
@@ -586,7 +586,7 @@ namespace SimPe.Interfaces.Plugin
 
 			if (ta.containsfilename)
 			{
-				SimPe.Interfaces.Files.IPackedFile pf = Package.Read(FileDescriptor);
+				IPackedFile pf = Package.Read(FileDescriptor);
 				return Helper.ToString(pf.GetUncompressedData(0x40));
 			}
 			else
@@ -731,8 +731,8 @@ namespace SimPe.Interfaces.Plugin
 			}
 			else
 			{
-				SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper me =
-					(SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper)this;
+				IMultiplePackedFileWrapper me =
+					(IMultiplePackedFileWrapper)this;
 				return (IFileWrapper)
 					Activator.CreateInstance(
 						this.GetType(),

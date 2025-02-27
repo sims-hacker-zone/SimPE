@@ -157,7 +157,7 @@ namespace SimPe
 			waitControl1.Visible = Helper.WindowsRegistry.ShowWaitBarPermanent;
 		}
 
-		void LoadForm(object sender, System.EventArgs e)
+		void LoadForm(object sender, EventArgs e)
 		{
 			SimPe.Splash.Screen.SetMessage(
 				SimPe.Localization.GetString("Starting Main Form")
@@ -169,10 +169,10 @@ namespace SimPe
 
 			cbsemig.Items.Add("[Group Filter]");
 			cbsemig.Items.Add(
-				new SimPe.Data.SemiGlobalAlias(true, 0x7FD46CD0, "Globals")
+				new Data.SemiGlobalAlias(true, 0x7FD46CD0, "Globals")
 			);
 			cbsemig.Items.Add(
-				new SimPe.Data.SemiGlobalAlias(true, 0x7FE59FD0, "Behaviour")
+				new Data.SemiGlobalAlias(true, 0x7FE59FD0, "Behaviour")
 			);
 			foreach (Data.SemiGlobalAlias sga in Data.MetaData.SemiGlobals)
 			{

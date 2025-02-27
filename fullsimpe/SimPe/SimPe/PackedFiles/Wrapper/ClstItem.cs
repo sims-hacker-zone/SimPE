@@ -36,7 +36,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Constructor
 		/// </summary>
 		public ClstItem(
-			SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
+			Interfaces.Files.IPackedFileDescriptor pfd,
 			Data.MetaData.IndexTypes format
 		)
 		{
@@ -122,10 +122,10 @@ namespace SimPe.PackedFiles.Wrapper
 					)
 				);
 			}
-			else if (obj is SimPe.Interfaces.Files.IPackedFileDescriptor)
+			else if (obj is Interfaces.Files.IPackedFileDescriptor)
 			{
-				SimPe.Interfaces.Files.IPackedFileDescriptor ci =
-					(SimPe.Interfaces.Files.IPackedFileDescriptor)obj;
+				Interfaces.Files.IPackedFileDescriptor ci =
+					(Interfaces.Files.IPackedFileDescriptor)obj;
 				return (
 					ci.Group == Group
 					&& ci.Instance == Instance

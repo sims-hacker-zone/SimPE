@@ -24,13 +24,13 @@ namespace SimPe.Plugin.Tool.Action
 	/// <summary>
 	/// The Intrigued Neighbourhood Action
 	/// </summary>
-	public class ActionIntriguedNeighborhood : SimPe.Interfaces.IToolAction
+	public class ActionIntriguedNeighborhood : Interfaces.IToolAction
 	{
 		#region IToolAction Member
 
 		public virtual bool ChangeEnabledStateEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs es
+			Events.ResourceEventArgs es
 		)
 		{
 			if (es.Loaded && Helper.IsNeighborhoodFile(es.LoadedPackage.FileName))
@@ -43,7 +43,7 @@ namespace SimPe.Plugin.Tool.Action
 
 		private bool RealChangeEnabledStateEventHandler(
 			object sender,
-			SimPe.Events.ResourceEventArgs es
+			Events.ResourceEventArgs es
 		)
 		{
 			if (!es.Loaded)
@@ -56,7 +56,7 @@ namespace SimPe.Plugin.Tool.Action
 				).Length > 0;
 		}
 
-		public void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs e)
+		public void ExecuteEventHandler(object sender, Events.ResourceEventArgs e)
 		{
 			if (!RealChangeEnabledStateEventHandler(null, e))
 			{
@@ -68,18 +68,18 @@ namespace SimPe.Plugin.Tool.Action
 				);
 				return;
 			}
-			SimPe.PackedFiles.Wrapper.SimDNA sdna; // Fuck
+			PackedFiles.Wrapper.SimDNA sdna; // Fuck
 
-			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds =
+			Interfaces.Files.IPackedFileDescriptor[] pfds =
 				e.LoadedPackage.Package.FindFiles(Data.MetaData.SIM_DESCRIPTION_FILE);
 
-			SimPe.PackedFiles.Wrapper.SDesc sdesc = new SimPe.PackedFiles.Wrapper.SDesc(
+			PackedFiles.Wrapper.SDesc sdesc = new PackedFiles.Wrapper.SDesc(
 				null,
 				null,
 				null
 			);
 			Random slt = new Random();
-			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				sdesc.ProcessData(pfd, e.LoadedPackage.Package);
 				if (
@@ -94,7 +94,7 @@ namespace SimPe.Plugin.Tool.Action
 					continue;
 				}
 
-				SimPe.Interfaces.Files.IPackedFileDescriptor pfb =
+				Interfaces.Files.IPackedFileDescriptor pfb =
 					e.LoadedPackage.Package.FindFileAnyGroup(
 						Data.MetaData.SDNA,
 						0,
@@ -102,7 +102,7 @@ namespace SimPe.Plugin.Tool.Action
 					);
 				if (pfb != null)
 				{
-					sdna = new SimPe.PackedFiles.Wrapper.SimDNA();
+					sdna = new PackedFiles.Wrapper.SimDNA();
 					sdna.ProcessData(pfb, e.LoadedPackage.Package, true);
 				}
 

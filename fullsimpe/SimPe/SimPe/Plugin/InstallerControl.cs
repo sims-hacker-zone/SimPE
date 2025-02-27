@@ -7,10 +7,10 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for InstallerControl.
 	/// </summary>
-	public class InstallerControl : System.Windows.Forms.UserControl
+	public class InstallerControl : UserControl
 	{
-		private System.Windows.Forms.Panel pndrop;
-		private System.Windows.Forms.PictureBox pb;
+		private Panel pndrop;
+		private PictureBox pb;
 		Ambertation.Windows.Forms.XPTaskBoxSimple tbs;
 		private ComboBox cb;
 		private RichTextBox rtb;
@@ -22,11 +22,11 @@ namespace SimPe.Plugin
 		private Label label5;
 		private Label lbPrice;
 		private Label label3;
-		private System.Windows.Forms.Label lbGuid;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Label lbType;
-		private System.Windows.Forms.LinkLabel llOptions;
+		private Label lbGuid;
+		private Label label4;
+		private Label label6;
+		private Label lbType;
+		private LinkLabel llOptions;
 
 		/// <summary>
 		/// Required designer variable.
@@ -67,24 +67,24 @@ namespace SimPe.Plugin
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(InstallerControl)
 				);
-			this.pndrop = new System.Windows.Forms.Panel();
-			this.pb = new System.Windows.Forms.PictureBox();
+			this.pndrop = new Panel();
+			this.pb = new PictureBox();
 			this.tbs = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.lbType = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.lbGuid = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.lbVert = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.lbCat = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.rtb = new System.Windows.Forms.RichTextBox();
-			this.cb = new System.Windows.Forms.ComboBox();
-			this.lbPrice = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.lbFace = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
-			this.llOptions = new System.Windows.Forms.LinkLabel();
+			this.lbType = new Label();
+			this.label6 = new Label();
+			this.lbGuid = new Label();
+			this.label4 = new Label();
+			this.lbVert = new Label();
+			this.label5 = new Label();
+			this.lbCat = new Label();
+			this.label1 = new Label();
+			this.rtb = new RichTextBox();
+			this.cb = new ComboBox();
+			this.lbPrice = new Label();
+			this.label3 = new Label();
+			this.lbFace = new Label();
+			this.label7 = new Label();
+			this.llOptions = new LinkLabel();
 			this.pndrop.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
 			this.tbs.SuspendLayout();
@@ -97,10 +97,10 @@ namespace SimPe.Plugin
 			this.pndrop.Controls.Add(this.pb);
 			resources.ApplyResources(this.pndrop, "pndrop");
 			this.pndrop.Name = "pndrop";
-			this.pndrop.DragDrop += new System.Windows.Forms.DragEventHandler(
+			this.pndrop.DragDrop += new DragEventHandler(
 				this.DragDropFile
 			);
-			this.pndrop.DragEnter += new System.Windows.Forms.DragEventHandler(
+			this.pndrop.DragEnter += new DragEventHandler(
 				this.DragEnterFile
 			);
 			//
@@ -130,14 +130,14 @@ namespace SimPe.Plugin
 			this.tbs.Controls.Add(this.label3);
 			this.tbs.Controls.Add(this.lbFace);
 			this.tbs.Controls.Add(this.label7);
-			this.tbs.HeaderFont = new System.Drawing.Font(
+			this.tbs.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				System.Drawing.FontStyle.Bold
 			);
 			this.tbs.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.tbs.IconLocation = new System.Drawing.Point(4, 12);
-			this.tbs.IconSize = new System.Drawing.Size(32, 32);
+			this.tbs.IconLocation = new Point(4, 12);
+			this.tbs.IconSize = new Size(32, 32);
 			this.tbs.LeftHeaderColor = System.Drawing.Color.Transparent;
 			this.tbs.Name = "tbs";
 			this.tbs.RightHeaderColor = System.Drawing.Color.Transparent;
@@ -203,7 +203,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.cb, "cb");
 			this.cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cb.Name = "cb";
-			this.cb.SelectedIndexChanged += new System.EventHandler(this.SelectedInfo);
+			this.cb.SelectedIndexChanged += new EventHandler(this.SelectedInfo);
 			//
 			// lbPrice
 			//
@@ -243,7 +243,7 @@ namespace SimPe.Plugin
 			this.llOptions.TabStop = true;
 			this.llOptions.VisitedLinkColor = System.Drawing.Color.Silver;
 			this.llOptions.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.ShowOptions
 				);
 			//
@@ -309,7 +309,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="e"></param>
 		/// <returns></returns>
-		string[] DragDropNames(System.Windows.Forms.DragEventArgs e)
+		string[] DragDropNames(DragEventArgs e)
 		{
 			Array a = (Array)e.Data.GetData(DataFormats.FileDrop);
 
@@ -350,7 +350,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void DragEnterFile(object sender, System.Windows.Forms.DragEventArgs e)
+		private void DragEnterFile(object sender, DragEventArgs e)
 		{
 			if (e.Data.GetDataPresent(DataFormats.FileDrop))
 			{
@@ -371,7 +371,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void DragDropFile(object sender, System.Windows.Forms.DragEventArgs e)
+		private void DragDropFile(object sender, DragEventArgs e)
 		{
 			try
 			{
@@ -407,7 +407,7 @@ namespace SimPe.Plugin
 
 		private void ShowOptions(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			SimPe.RemoteControl.ShowCustomSettings(

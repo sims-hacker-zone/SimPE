@@ -1379,7 +1379,7 @@ namespace SimPe
 		/// <param name="item">The new Item</param>
 		/// <param name="elementType">Type of the Array Elements</param>
 		/// <returns>The extended Array</returns>
-		public static Array Add(Array source, object item, System.Type elementType)
+		public static Array Add(Array source, object item, Type elementType)
 		{
 			Array a = Array.CreateInstance(elementType, source.Length + 1);
 			source.CopyTo(a, 0);
@@ -1405,7 +1405,7 @@ namespace SimPe
 		/// <param name="item">The Item delete</param>
 		/// <param name="elementType">Type of the Array Elements</param>
 		/// <returns>The Source Array without any Element that Equals item</returns>
-		public static Array Delete(Array source, object item, System.Type elementType)
+		public static Array Delete(Array source, object item, Type elementType)
 		{
 			System.Collections.ArrayList a = new System.Collections.ArrayList();
 			foreach (object i in source)
@@ -1446,7 +1446,7 @@ namespace SimPe
 		/// <param name="item">The Item delete</param>
 		/// <param name="elementType">Type of the Array Elements</param>
 		/// <returns>The Source Array without any Element that Equals item</returns>
-		public static Array Merge(Array source1, Array source2, System.Type elementType)
+		public static Array Merge(Array source1, Array source2, Type elementType)
 		{
 			Array a = Array.CreateInstance(
 				elementType,
@@ -1642,12 +1642,12 @@ namespace SimPe
 		/// <returns></returns>
 		public static string NewestGamePath => PathProvider.Global.Latest.InstallFolder;
 
-		static SimPe.TGILoader tgiload;
+		static TGILoader tgiload;
 
 		/// <summary>
 		/// Retrns the TGI Loader Class
 		/// </summary>
-		public static SimPe.TGILoader TGILoader
+		public static TGILoader TGILoader
 		{
 			get
 			{
@@ -1720,7 +1720,7 @@ namespace SimPe
 		[DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
 		static extern uint GetLongPathName(
 			string lpszShortPath,
-			[Out] System.Text.StringBuilder lpszLongPath,
+			[Out] StringBuilder lpszLongPath,
 			uint cchBuffer
 		);
 

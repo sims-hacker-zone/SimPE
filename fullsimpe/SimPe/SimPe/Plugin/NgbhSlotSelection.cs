@@ -7,9 +7,9 @@ namespace SimPe.Plugin
 	/// Summary description for NgbhSlotSelection.
 	/// </summary>
 	[System.ComponentModel.DefaultEvent("SelectedSlotChanged")]
-	public class NgbhSlotSelection : System.Windows.Forms.UserControl
+	public class NgbhSlotSelection : UserControl
 	{
-		private SimPe.Plugin.NgbhSlotListView lv;
+		private NgbhSlotListView lv;
 		private Ambertation.Windows.Forms.EnumComboBox cb;
 
 		/// <summary>
@@ -64,7 +64,7 @@ namespace SimPe.Plugin
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(NgbhSlotSelection)
 				);
-			this.lv = new SimPe.Plugin.NgbhSlotListView();
+			this.lv = new NgbhSlotListView();
 			this.cb = new Ambertation.Windows.Forms.EnumComboBox();
 			this.SuspendLayout();
 			//
@@ -76,7 +76,7 @@ namespace SimPe.Plugin
 			this.lv.Slot = null;
 			this.lv.Slots = null;
 			this.lv.SlotType = SimPe.Data.NeighborhoodSlots.LotsIntern;
-			this.lv.SelectedSlotChanged += new System.EventHandler(
+			this.lv.SelectedSlotChanged += new EventHandler(
 				this.lv_SelectedSlotChanged
 			);
 			//
@@ -88,7 +88,7 @@ namespace SimPe.Plugin
 			this.cb.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.cb.Name = "cb";
 			this.cb.ResourceManager = null;
-			this.cb.SelectedIndexChanged += new System.EventHandler(
+			this.cb.SelectedIndexChanged += new EventHandler(
 				this.cb_SelectedIndexChanged
 			);
 			//
@@ -102,7 +102,7 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		private void cb_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void cb_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (cb.SelectedIndex >= 0)
 			{
@@ -132,7 +132,7 @@ namespace SimPe.Plugin
 			lv.SlotType = SlotType;
 		}
 
-		private void lv_SelectedSlotChanged(object sender, System.EventArgs e)
+		private void lv_SelectedSlotChanged(object sender, EventArgs e)
 		{
 			if (SelectedSlotChanged != null)
 			{

@@ -24,37 +24,37 @@ namespace SimPe.Plugin.Anim
 	/// <summary>
 	/// Summary description for AnimFrameBlockControl.
 	/// </summary>
-	public class AnimFrameBlockControl : System.Windows.Forms.UserControl
+	public class AnimFrameBlockControl : UserControl
 	{
-		private System.Windows.Forms.TreeView tv;
-		private System.Windows.Forms.Splitter splitter1;
-		private System.Windows.Forms.Panel panel2;
-		private SimPe.Plugin.Anim.AnimAxisTransformControl pn1;
-		private SimPe.Plugin.Anim.AnimAxisTransformControl pn2;
-		private SimPe.Plugin.Anim.AnimAxisTransformControl pn3;
-		private System.Windows.Forms.Panel pnSplit1;
-		private System.Windows.Forms.Panel pnSplit2;
-		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.Panel panel3;
-		private System.Windows.Forms.Panel panel4;
-		private System.Windows.Forms.LinkLabel llClear;
-		private System.Windows.Forms.LinkLabel llAdd;
-		private System.Windows.Forms.Panel panel5;
-		private System.Windows.Forms.Panel panel6;
-		private System.Windows.Forms.TextBox tbTimeCode;
-		private System.Windows.Forms.Label lbTimeCode;
-		private System.Windows.Forms.LinkLabel llRefresh;
-		private System.Windows.Forms.LinkLabel llClone;
-		private System.Windows.Forms.ContextMenu contextMenu1;
-		private System.Windows.Forms.MenuItem miExp;
-		private System.Windows.Forms.MenuItem miClp;
-		private System.Windows.Forms.MenuItem miSlp;
-		private System.Windows.Forms.MenuItem miRem;
-		private System.Windows.Forms.TextBox tbDuration;
-		private System.Windows.Forms.TextBox tbName;
-		private System.Windows.Forms.Label lbDuration;
-		private System.Windows.Forms.Label lbName;
-		private System.Windows.Forms.MenuItem miSort;
+		private TreeView tv;
+		private Splitter splitter1;
+		private Panel panel2;
+		private AnimAxisTransformControl pn1;
+		private AnimAxisTransformControl pn2;
+		private AnimAxisTransformControl pn3;
+		private Panel pnSplit1;
+		private Panel pnSplit2;
+		private Panel panel1;
+		private Panel panel3;
+		private Panel panel4;
+		private LinkLabel llClear;
+		private LinkLabel llAdd;
+		private Panel panel5;
+		private Panel panel6;
+		private TextBox tbTimeCode;
+		private Label lbTimeCode;
+		private LinkLabel llRefresh;
+		private LinkLabel llClone;
+		private ContextMenu contextMenu1;
+		private MenuItem miExp;
+		private MenuItem miClp;
+		private MenuItem miSlp;
+		private MenuItem miRem;
+		private TextBox tbDuration;
+		private TextBox tbName;
+		private Label lbDuration;
+		private Label lbName;
+		private MenuItem miSort;
 
 		/// <summary>
 		/// Required designer variable.
@@ -111,35 +111,35 @@ namespace SimPe.Plugin.Anim
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(AnimFrameBlockControl));
-			this.tv = new System.Windows.Forms.TreeView();
-			this.contextMenu1 = new System.Windows.Forms.ContextMenu();
-			this.miSlp = new System.Windows.Forms.MenuItem();
-			this.miClp = new System.Windows.Forms.MenuItem();
-			this.miExp = new System.Windows.Forms.MenuItem();
-			this.miRem = new System.Windows.Forms.MenuItem();
-			this.miSort = new System.Windows.Forms.MenuItem();
-			this.splitter1 = new System.Windows.Forms.Splitter();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.pn3 = new SimPe.Plugin.Anim.AnimAxisTransformControl();
-			this.pnSplit2 = new System.Windows.Forms.Panel();
-			this.panel3 = new System.Windows.Forms.Panel();
-			this.pn2 = new SimPe.Plugin.Anim.AnimAxisTransformControl();
-			this.pnSplit1 = new System.Windows.Forms.Panel();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.pn1 = new SimPe.Plugin.Anim.AnimAxisTransformControl();
-			this.panel5 = new System.Windows.Forms.Panel();
-			this.panel6 = new System.Windows.Forms.Panel();
-			this.panel4 = new System.Windows.Forms.Panel();
-			this.tbName = new System.Windows.Forms.TextBox();
-			this.lbName = new System.Windows.Forms.Label();
-			this.lbDuration = new System.Windows.Forms.Label();
-			this.tbDuration = new System.Windows.Forms.TextBox();
-			this.llClone = new System.Windows.Forms.LinkLabel();
-			this.llRefresh = new System.Windows.Forms.LinkLabel();
-			this.lbTimeCode = new System.Windows.Forms.Label();
-			this.tbTimeCode = new System.Windows.Forms.TextBox();
-			this.llAdd = new System.Windows.Forms.LinkLabel();
-			this.llClear = new System.Windows.Forms.LinkLabel();
+			this.tv = new TreeView();
+			this.contextMenu1 = new ContextMenu();
+			this.miSlp = new MenuItem();
+			this.miClp = new MenuItem();
+			this.miExp = new MenuItem();
+			this.miRem = new MenuItem();
+			this.miSort = new MenuItem();
+			this.splitter1 = new Splitter();
+			this.panel2 = new Panel();
+			this.pn3 = new AnimAxisTransformControl();
+			this.pnSplit2 = new Panel();
+			this.panel3 = new Panel();
+			this.pn2 = new AnimAxisTransformControl();
+			this.pnSplit1 = new Panel();
+			this.panel1 = new Panel();
+			this.pn1 = new AnimAxisTransformControl();
+			this.panel5 = new Panel();
+			this.panel6 = new Panel();
+			this.panel4 = new Panel();
+			this.tbName = new TextBox();
+			this.lbName = new Label();
+			this.lbDuration = new Label();
+			this.tbDuration = new TextBox();
+			this.llClone = new LinkLabel();
+			this.llRefresh = new LinkLabel();
+			this.lbTimeCode = new Label();
+			this.tbTimeCode = new TextBox();
+			this.llAdd = new LinkLabel();
+			this.llClear = new LinkLabel();
 			this.panel2.SuspendLayout();
 			this.pnSplit2.SuspendLayout();
 			this.pnSplit1.SuspendLayout();
@@ -154,7 +154,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.tv.AccessibleName = resources.GetString("tv.AccessibleName");
 			this.tv.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(resources.GetObject("tv.Anchor"))
+				(AnchorStyles)(resources.GetObject("tv.Anchor"))
 			);
 			this.tv.BackgroundImage = (
 				(System.Drawing.Image)(resources.GetObject("tv.BackgroundImage"))
@@ -162,14 +162,14 @@ namespace SimPe.Plugin.Anim
 			this.tv.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.tv.ContextMenu = this.contextMenu1;
 			this.tv.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("tv.Dock"))
+				(DockStyle)(resources.GetObject("tv.Dock"))
 			);
 			this.tv.Enabled = ((bool)(resources.GetObject("tv.Enabled")));
 			this.tv.Font = ((System.Drawing.Font)(resources.GetObject("tv.Font")));
 			this.tv.HideSelection = false;
 			this.tv.ImageIndex = ((int)(resources.GetObject("tv.ImageIndex")));
 			this.tv.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("tv.ImeMode"))
+				(ImeMode)(resources.GetObject("tv.ImeMode"))
 			);
 			this.tv.Indent = ((int)(resources.GetObject("tv.Indent")));
 			this.tv.ItemHeight = ((int)(resources.GetObject("tv.ItemHeight")));
@@ -178,7 +178,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.tv.Name = "tv";
 			this.tv.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("tv.RightToLeft")
 				)
 			);
@@ -189,14 +189,14 @@ namespace SimPe.Plugin.Anim
 			this.tv.TabIndex = ((int)(resources.GetObject("tv.TabIndex")));
 			this.tv.Text = resources.GetString("tv.Text");
 			this.tv.Visible = ((bool)(resources.GetObject("tv.Visible")));
-			this.tv.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(
+			this.tv.AfterSelect += new TreeViewEventHandler(
 				this.tv_AfterSelect
 			);
 			//
 			// contextMenu1
 			//
 			this.contextMenu1.MenuItems.AddRange(
-				new System.Windows.Forms.MenuItem[]
+				new MenuItem[]
 				{
 					this.miExp,
 					this.miRem,
@@ -206,7 +206,7 @@ namespace SimPe.Plugin.Anim
 				}
 			);
 			this.contextMenu1.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("contextMenu1.RightToLeft")
 				)
 			);
@@ -216,7 +216,7 @@ namespace SimPe.Plugin.Anim
 			this.miExp.Enabled = ((bool)(resources.GetObject("miExp.Enabled")));
 			this.miExp.Index = 0;
 			this.miExp.Shortcut = (
-				(System.Windows.Forms.Shortcut)(resources.GetObject("miExp.Shortcut"))
+				(Shortcut)(resources.GetObject("miExp.Shortcut"))
 			);
 			this.miExp.ShowShortcut = (
 				(bool)(resources.GetObject("miExp.ShowShortcut"))
@@ -230,7 +230,7 @@ namespace SimPe.Plugin.Anim
 			this.miRem.Enabled = ((bool)(resources.GetObject("miRem.Enabled")));
 			this.miRem.Index = 1;
 			this.miRem.Shortcut = (
-				(System.Windows.Forms.Shortcut)(resources.GetObject("miRem.Shortcut"))
+				(Shortcut)(resources.GetObject("miRem.Shortcut"))
 			);
 			this.miRem.ShowShortcut = (
 				(bool)(resources.GetObject("miRem.ShowShortcut"))
@@ -244,7 +244,7 @@ namespace SimPe.Plugin.Anim
 			this.miSort.Enabled = ((bool)(resources.GetObject("miSort.Enabled")));
 			this.miSort.Index = 2;
 			this.miSort.Shortcut = (
-				(System.Windows.Forms.Shortcut)(resources.GetObject("miSort.Shortcut"))
+				(Shortcut)(resources.GetObject("miSort.Shortcut"))
 			);
 			this.miSort.ShowShortcut = (
 				(bool)(resources.GetObject("miSort.ShowShortcut"))
@@ -258,7 +258,7 @@ namespace SimPe.Plugin.Anim
 			this.miClp.Enabled = ((bool)(resources.GetObject("miClp.Enabled")));
 			this.miClp.Index = 3;
 			this.miClp.Shortcut = (
-				(System.Windows.Forms.Shortcut)(resources.GetObject("miClp.Shortcut"))
+				(Shortcut)(resources.GetObject("miClp.Shortcut"))
 			);
 			this.miClp.ShowShortcut = (
 				(bool)(resources.GetObject("miClp.ShowShortcut"))
@@ -272,7 +272,7 @@ namespace SimPe.Plugin.Anim
 			this.miSlp.Enabled = ((bool)(resources.GetObject("miSlp.Enabled")));
 			this.miSlp.Index = 3;
 			this.miSlp.Shortcut = (
-				(System.Windows.Forms.Shortcut)(resources.GetObject("miSlp.Shortcut"))
+				(Shortcut)(resources.GetObject("miSlp.Shortcut"))
 			);
 			this.miSlp.ShowShortcut = (
 				(bool)(resources.GetObject("miSlp.ShowShortcut"))
@@ -290,7 +290,7 @@ namespace SimPe.Plugin.Anim
 				"splitter1.AccessibleName"
 			);
 			this.splitter1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("splitter1.Anchor")
 				)
 			);
@@ -298,14 +298,14 @@ namespace SimPe.Plugin.Anim
 				(System.Drawing.Image)(resources.GetObject("splitter1.BackgroundImage"))
 			);
 			this.splitter1.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("splitter1.Dock"))
+				(DockStyle)(resources.GetObject("splitter1.Dock"))
 			);
 			this.splitter1.Enabled = ((bool)(resources.GetObject("splitter1.Enabled")));
 			this.splitter1.Font = (
 				(System.Drawing.Font)(resources.GetObject("splitter1.Font"))
 			);
 			this.splitter1.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("splitter1.ImeMode"))
+				(ImeMode)(resources.GetObject("splitter1.ImeMode"))
 			);
 			this.splitter1.Location = (
 				(System.Drawing.Point)(resources.GetObject("splitter1.Location"))
@@ -316,7 +316,7 @@ namespace SimPe.Plugin.Anim
 			this.splitter1.MinSize = ((int)(resources.GetObject("splitter1.MinSize")));
 			this.splitter1.Name = "splitter1";
 			this.splitter1.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("splitter1.RightToLeft")
 				)
 			);
@@ -336,7 +336,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.panel2.AccessibleName = resources.GetString("panel2.AccessibleName");
 			this.panel2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("panel2.Anchor")
 				)
 			);
@@ -358,7 +358,7 @@ namespace SimPe.Plugin.Anim
 			this.panel2.Controls.Add(this.panel5);
 			this.panel2.Controls.Add(this.panel4);
 			this.panel2.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("panel2.Dock"))
+				(DockStyle)(resources.GetObject("panel2.Dock"))
 			);
 			this.panel2.DockPadding.Left = 8;
 			this.panel2.DockPadding.Right = 8;
@@ -367,14 +367,14 @@ namespace SimPe.Plugin.Anim
 				(System.Drawing.Font)(resources.GetObject("panel2.Font"))
 			);
 			this.panel2.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("panel2.ImeMode"))
+				(ImeMode)(resources.GetObject("panel2.ImeMode"))
 			);
 			this.panel2.Location = (
 				(System.Drawing.Point)(resources.GetObject("panel2.Location"))
 			);
 			this.panel2.Name = "panel2";
 			this.panel2.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("panel2.RightToLeft")
 				)
 			);
@@ -392,7 +392,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.pn3.AccessibleName = resources.GetString("pn3.AccessibleName");
 			this.pn3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(resources.GetObject("pn3.Anchor"))
+				(AnchorStyles)(resources.GetObject("pn3.Anchor"))
 			);
 			this.pn3.AutoScroll = ((bool)(resources.GetObject("pn3.AutoScroll")));
 			this.pn3.AutoScrollMargin = (
@@ -407,19 +407,19 @@ namespace SimPe.Plugin.Anim
 			);
 			this.pn3.CanCreate = false;
 			this.pn3.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("pn3.Dock"))
+				(DockStyle)(resources.GetObject("pn3.Dock"))
 			);
 			this.pn3.Enabled = ((bool)(resources.GetObject("pn3.Enabled")));
 			this.pn3.Font = ((System.Drawing.Font)(resources.GetObject("pn3.Font")));
 			this.pn3.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("pn3.ImeMode"))
+				(ImeMode)(resources.GetObject("pn3.ImeMode"))
 			);
 			this.pn3.Location = (
 				(System.Drawing.Point)(resources.GetObject("pn3.Location"))
 			);
 			this.pn3.Name = "pn3";
 			this.pn3.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("pn3.RightToLeft")
 				)
 			);
@@ -440,7 +440,7 @@ namespace SimPe.Plugin.Anim
 				"pnSplit2.AccessibleName"
 			);
 			this.pnSplit2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("pnSplit2.Anchor")
 				)
 			);
@@ -458,21 +458,21 @@ namespace SimPe.Plugin.Anim
 			);
 			this.pnSplit2.Controls.Add(this.panel3);
 			this.pnSplit2.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("pnSplit2.Dock"))
+				(DockStyle)(resources.GetObject("pnSplit2.Dock"))
 			);
 			this.pnSplit2.Enabled = ((bool)(resources.GetObject("pnSplit2.Enabled")));
 			this.pnSplit2.Font = (
 				(System.Drawing.Font)(resources.GetObject("pnSplit2.Font"))
 			);
 			this.pnSplit2.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("pnSplit2.ImeMode"))
+				(ImeMode)(resources.GetObject("pnSplit2.ImeMode"))
 			);
 			this.pnSplit2.Location = (
 				(System.Drawing.Point)(resources.GetObject("pnSplit2.Location"))
 			);
 			this.pnSplit2.Name = "pnSplit2";
 			this.pnSplit2.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("pnSplit2.RightToLeft")
 				)
 			);
@@ -490,7 +490,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.panel3.AccessibleName = resources.GetString("panel3.AccessibleName");
 			this.panel3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("panel3.Anchor")
 				)
 			);
@@ -505,21 +505,21 @@ namespace SimPe.Plugin.Anim
 				(System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage"))
 			);
 			this.panel3.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("panel3.Dock"))
+				(DockStyle)(resources.GetObject("panel3.Dock"))
 			);
 			this.panel3.Enabled = ((bool)(resources.GetObject("panel3.Enabled")));
 			this.panel3.Font = (
 				(System.Drawing.Font)(resources.GetObject("panel3.Font"))
 			);
 			this.panel3.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("panel3.ImeMode"))
+				(ImeMode)(resources.GetObject("panel3.ImeMode"))
 			);
 			this.panel3.Location = (
 				(System.Drawing.Point)(resources.GetObject("panel3.Location"))
 			);
 			this.panel3.Name = "panel3";
 			this.panel3.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("panel3.RightToLeft")
 				)
 			);
@@ -537,7 +537,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.pn2.AccessibleName = resources.GetString("pn2.AccessibleName");
 			this.pn2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(resources.GetObject("pn2.Anchor"))
+				(AnchorStyles)(resources.GetObject("pn2.Anchor"))
 			);
 			this.pn2.AutoScroll = ((bool)(resources.GetObject("pn2.AutoScroll")));
 			this.pn2.AutoScrollMargin = (
@@ -552,19 +552,19 @@ namespace SimPe.Plugin.Anim
 			);
 			this.pn2.CanCreate = false;
 			this.pn2.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("pn2.Dock"))
+				(DockStyle)(resources.GetObject("pn2.Dock"))
 			);
 			this.pn2.Enabled = ((bool)(resources.GetObject("pn2.Enabled")));
 			this.pn2.Font = ((System.Drawing.Font)(resources.GetObject("pn2.Font")));
 			this.pn2.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("pn2.ImeMode"))
+				(ImeMode)(resources.GetObject("pn2.ImeMode"))
 			);
 			this.pn2.Location = (
 				(System.Drawing.Point)(resources.GetObject("pn2.Location"))
 			);
 			this.pn2.Name = "pn2";
 			this.pn2.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("pn2.RightToLeft")
 				)
 			);
@@ -585,7 +585,7 @@ namespace SimPe.Plugin.Anim
 				"pnSplit1.AccessibleName"
 			);
 			this.pnSplit1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("pnSplit1.Anchor")
 				)
 			);
@@ -603,21 +603,21 @@ namespace SimPe.Plugin.Anim
 			);
 			this.pnSplit1.Controls.Add(this.panel1);
 			this.pnSplit1.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("pnSplit1.Dock"))
+				(DockStyle)(resources.GetObject("pnSplit1.Dock"))
 			);
 			this.pnSplit1.Enabled = ((bool)(resources.GetObject("pnSplit1.Enabled")));
 			this.pnSplit1.Font = (
 				(System.Drawing.Font)(resources.GetObject("pnSplit1.Font"))
 			);
 			this.pnSplit1.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("pnSplit1.ImeMode"))
+				(ImeMode)(resources.GetObject("pnSplit1.ImeMode"))
 			);
 			this.pnSplit1.Location = (
 				(System.Drawing.Point)(resources.GetObject("pnSplit1.Location"))
 			);
 			this.pnSplit1.Name = "pnSplit1";
 			this.pnSplit1.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("pnSplit1.RightToLeft")
 				)
 			);
@@ -635,7 +635,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.panel1.AccessibleName = resources.GetString("panel1.AccessibleName");
 			this.panel1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("panel1.Anchor")
 				)
 			);
@@ -650,21 +650,21 @@ namespace SimPe.Plugin.Anim
 				(System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage"))
 			);
 			this.panel1.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("panel1.Dock"))
+				(DockStyle)(resources.GetObject("panel1.Dock"))
 			);
 			this.panel1.Enabled = ((bool)(resources.GetObject("panel1.Enabled")));
 			this.panel1.Font = (
 				(System.Drawing.Font)(resources.GetObject("panel1.Font"))
 			);
 			this.panel1.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("panel1.ImeMode"))
+				(ImeMode)(resources.GetObject("panel1.ImeMode"))
 			);
 			this.panel1.Location = (
 				(System.Drawing.Point)(resources.GetObject("panel1.Location"))
 			);
 			this.panel1.Name = "panel1";
 			this.panel1.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("panel1.RightToLeft")
 				)
 			);
@@ -682,7 +682,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.pn1.AccessibleName = resources.GetString("pn1.AccessibleName");
 			this.pn1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(resources.GetObject("pn1.Anchor"))
+				(AnchorStyles)(resources.GetObject("pn1.Anchor"))
 			);
 			this.pn1.AutoScroll = ((bool)(resources.GetObject("pn1.AutoScroll")));
 			this.pn1.AutoScrollMargin = (
@@ -697,19 +697,19 @@ namespace SimPe.Plugin.Anim
 			);
 			this.pn1.CanCreate = false;
 			this.pn1.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("pn1.Dock"))
+				(DockStyle)(resources.GetObject("pn1.Dock"))
 			);
 			this.pn1.Enabled = ((bool)(resources.GetObject("pn1.Enabled")));
 			this.pn1.Font = ((System.Drawing.Font)(resources.GetObject("pn1.Font")));
 			this.pn1.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("pn1.ImeMode"))
+				(ImeMode)(resources.GetObject("pn1.ImeMode"))
 			);
 			this.pn1.Location = (
 				(System.Drawing.Point)(resources.GetObject("pn1.Location"))
 			);
 			this.pn1.Name = "pn1";
 			this.pn1.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("pn1.RightToLeft")
 				)
 			);
@@ -727,7 +727,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.panel5.AccessibleName = resources.GetString("panel5.AccessibleName");
 			this.panel5.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("panel5.Anchor")
 				)
 			);
@@ -743,21 +743,21 @@ namespace SimPe.Plugin.Anim
 			);
 			this.panel5.Controls.Add(this.panel6);
 			this.panel5.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("panel5.Dock"))
+				(DockStyle)(resources.GetObject("panel5.Dock"))
 			);
 			this.panel5.Enabled = ((bool)(resources.GetObject("panel5.Enabled")));
 			this.panel5.Font = (
 				(System.Drawing.Font)(resources.GetObject("panel5.Font"))
 			);
 			this.panel5.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("panel5.ImeMode"))
+				(ImeMode)(resources.GetObject("panel5.ImeMode"))
 			);
 			this.panel5.Location = (
 				(System.Drawing.Point)(resources.GetObject("panel5.Location"))
 			);
 			this.panel5.Name = "panel5";
 			this.panel5.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("panel5.RightToLeft")
 				)
 			);
@@ -775,7 +775,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.panel6.AccessibleName = resources.GetString("panel6.AccessibleName");
 			this.panel6.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("panel6.Anchor")
 				)
 			);
@@ -790,21 +790,21 @@ namespace SimPe.Plugin.Anim
 				(System.Drawing.Image)(resources.GetObject("panel6.BackgroundImage"))
 			);
 			this.panel6.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("panel6.Dock"))
+				(DockStyle)(resources.GetObject("panel6.Dock"))
 			);
 			this.panel6.Enabled = ((bool)(resources.GetObject("panel6.Enabled")));
 			this.panel6.Font = (
 				(System.Drawing.Font)(resources.GetObject("panel6.Font"))
 			);
 			this.panel6.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("panel6.ImeMode"))
+				(ImeMode)(resources.GetObject("panel6.ImeMode"))
 			);
 			this.panel6.Location = (
 				(System.Drawing.Point)(resources.GetObject("panel6.Location"))
 			);
 			this.panel6.Name = "panel6";
 			this.panel6.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("panel6.RightToLeft")
 				)
 			);
@@ -822,7 +822,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.panel4.AccessibleName = resources.GetString("panel4.AccessibleName");
 			this.panel4.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("panel4.Anchor")
 				)
 			);
@@ -847,21 +847,21 @@ namespace SimPe.Plugin.Anim
 			this.panel4.Controls.Add(this.llAdd);
 			this.panel4.Controls.Add(this.llClear);
 			this.panel4.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("panel4.Dock"))
+				(DockStyle)(resources.GetObject("panel4.Dock"))
 			);
 			this.panel4.Enabled = ((bool)(resources.GetObject("panel4.Enabled")));
 			this.panel4.Font = (
 				(System.Drawing.Font)(resources.GetObject("panel4.Font"))
 			);
 			this.panel4.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("panel4.ImeMode"))
+				(ImeMode)(resources.GetObject("panel4.ImeMode"))
 			);
 			this.panel4.Location = (
 				(System.Drawing.Point)(resources.GetObject("panel4.Location"))
 			);
 			this.panel4.Name = "panel4";
 			this.panel4.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("panel4.RightToLeft")
 				)
 			);
@@ -879,7 +879,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.tbName.AccessibleName = resources.GetString("tbName.AccessibleName");
 			this.tbName.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("tbName.Anchor")
 				)
 			);
@@ -888,14 +888,14 @@ namespace SimPe.Plugin.Anim
 				(System.Drawing.Image)(resources.GetObject("tbName.BackgroundImage"))
 			);
 			this.tbName.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("tbName.Dock"))
+				(DockStyle)(resources.GetObject("tbName.Dock"))
 			);
 			this.tbName.Enabled = ((bool)(resources.GetObject("tbName.Enabled")));
 			this.tbName.Font = (
 				(System.Drawing.Font)(resources.GetObject("tbName.Font"))
 			);
 			this.tbName.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("tbName.ImeMode"))
+				(ImeMode)(resources.GetObject("tbName.ImeMode"))
 			);
 			this.tbName.Location = (
 				(System.Drawing.Point)(resources.GetObject("tbName.Location"))
@@ -907,12 +907,12 @@ namespace SimPe.Plugin.Anim
 				(char)(resources.GetObject("tbName.PasswordChar"))
 			);
 			this.tbName.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("tbName.RightToLeft")
 				)
 			);
 			this.tbName.ScrollBars = (
-				(System.Windows.Forms.ScrollBars)(
+				(ScrollBars)(
 					resources.GetObject("tbName.ScrollBars")
 				)
 			);
@@ -922,7 +922,7 @@ namespace SimPe.Plugin.Anim
 			this.tbName.TabIndex = ((int)(resources.GetObject("tbName.TabIndex")));
 			this.tbName.Text = resources.GetString("tbName.Text");
 			this.tbName.TextAlign = (
-				(System.Windows.Forms.HorizontalAlignment)(
+				(HorizontalAlignment)(
 					resources.GetObject("tbName.TextAlign")
 				)
 			);
@@ -937,13 +937,13 @@ namespace SimPe.Plugin.Anim
 			);
 			this.lbName.AccessibleName = resources.GetString("lbName.AccessibleName");
 			this.lbName.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("lbName.Anchor")
 				)
 			);
 			this.lbName.AutoSize = ((bool)(resources.GetObject("lbName.AutoSize")));
 			this.lbName.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("lbName.Dock"))
+				(DockStyle)(resources.GetObject("lbName.Dock"))
 			);
 			this.lbName.Enabled = ((bool)(resources.GetObject("lbName.Enabled")));
 			this.lbName.Font = (
@@ -959,14 +959,14 @@ namespace SimPe.Plugin.Anim
 			);
 			this.lbName.ImageIndex = ((int)(resources.GetObject("lbName.ImageIndex")));
 			this.lbName.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("lbName.ImeMode"))
+				(ImeMode)(resources.GetObject("lbName.ImeMode"))
 			);
 			this.lbName.Location = (
 				(System.Drawing.Point)(resources.GetObject("lbName.Location"))
 			);
 			this.lbName.Name = "lbName";
 			this.lbName.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("lbName.RightToLeft")
 				)
 			);
@@ -991,7 +991,7 @@ namespace SimPe.Plugin.Anim
 				"lbDuration.AccessibleName"
 			);
 			this.lbDuration.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("lbDuration.Anchor")
 				)
 			);
@@ -999,7 +999,7 @@ namespace SimPe.Plugin.Anim
 				(bool)(resources.GetObject("lbDuration.AutoSize"))
 			);
 			this.lbDuration.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("lbDuration.Dock"))
+				(DockStyle)(resources.GetObject("lbDuration.Dock"))
 			);
 			this.lbDuration.Enabled = (
 				(bool)(resources.GetObject("lbDuration.Enabled"))
@@ -1019,7 +1019,7 @@ namespace SimPe.Plugin.Anim
 				(int)(resources.GetObject("lbDuration.ImageIndex"))
 			);
 			this.lbDuration.ImeMode = (
-				(System.Windows.Forms.ImeMode)(
+				(ImeMode)(
 					resources.GetObject("lbDuration.ImeMode")
 				)
 			);
@@ -1028,7 +1028,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.lbDuration.Name = "lbDuration";
 			this.lbDuration.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("lbDuration.RightToLeft")
 				)
 			);
@@ -1057,7 +1057,7 @@ namespace SimPe.Plugin.Anim
 				"tbDuration.AccessibleName"
 			);
 			this.tbDuration.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("tbDuration.Anchor")
 				)
 			);
@@ -1070,7 +1070,7 @@ namespace SimPe.Plugin.Anim
 				)
 			);
 			this.tbDuration.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("tbDuration.Dock"))
+				(DockStyle)(resources.GetObject("tbDuration.Dock"))
 			);
 			this.tbDuration.Enabled = (
 				(bool)(resources.GetObject("tbDuration.Enabled"))
@@ -1079,7 +1079,7 @@ namespace SimPe.Plugin.Anim
 				(System.Drawing.Font)(resources.GetObject("tbDuration.Font"))
 			);
 			this.tbDuration.ImeMode = (
-				(System.Windows.Forms.ImeMode)(
+				(ImeMode)(
 					resources.GetObject("tbDuration.ImeMode")
 				)
 			);
@@ -1097,12 +1097,12 @@ namespace SimPe.Plugin.Anim
 				(char)(resources.GetObject("tbDuration.PasswordChar"))
 			);
 			this.tbDuration.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("tbDuration.RightToLeft")
 				)
 			);
 			this.tbDuration.ScrollBars = (
-				(System.Windows.Forms.ScrollBars)(
+				(ScrollBars)(
 					resources.GetObject("tbDuration.ScrollBars")
 				)
 			);
@@ -1114,7 +1114,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.tbDuration.Text = resources.GetString("tbDuration.Text");
 			this.tbDuration.TextAlign = (
-				(System.Windows.Forms.HorizontalAlignment)(
+				(HorizontalAlignment)(
 					resources.GetObject("tbDuration.TextAlign")
 				)
 			);
@@ -1135,13 +1135,13 @@ namespace SimPe.Plugin.Anim
 			);
 			this.llClone.AccessibleName = resources.GetString("llClone.AccessibleName");
 			this.llClone.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("llClone.Anchor")
 				)
 			);
 			this.llClone.AutoSize = ((bool)(resources.GetObject("llClone.AutoSize")));
 			this.llClone.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("llClone.Dock"))
+				(DockStyle)(resources.GetObject("llClone.Dock"))
 			);
 			this.llClone.Enabled = ((bool)(resources.GetObject("llClone.Enabled")));
 			this.llClone.Font = (
@@ -1159,17 +1159,17 @@ namespace SimPe.Plugin.Anim
 				(int)(resources.GetObject("llClone.ImageIndex"))
 			);
 			this.llClone.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("llClone.ImeMode"))
+				(ImeMode)(resources.GetObject("llClone.ImeMode"))
 			);
 			this.llClone.LinkArea = (
-				(System.Windows.Forms.LinkArea)(resources.GetObject("llClone.LinkArea"))
+				(LinkArea)(resources.GetObject("llClone.LinkArea"))
 			);
 			this.llClone.Location = (
 				(System.Drawing.Point)(resources.GetObject("llClone.Location"))
 			);
 			this.llClone.Name = "llClone";
 			this.llClone.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("llClone.RightToLeft")
 				)
 			);
@@ -1186,7 +1186,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.llClone.Visible = ((bool)(resources.GetObject("llClone.Visible")));
 			this.llClone.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llClone_LinkClicked
 				);
 			//
@@ -1199,7 +1199,7 @@ namespace SimPe.Plugin.Anim
 				"llRefresh.AccessibleName"
 			);
 			this.llRefresh.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("llRefresh.Anchor")
 				)
 			);
@@ -1207,7 +1207,7 @@ namespace SimPe.Plugin.Anim
 				(bool)(resources.GetObject("llRefresh.AutoSize"))
 			);
 			this.llRefresh.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("llRefresh.Dock"))
+				(DockStyle)(resources.GetObject("llRefresh.Dock"))
 			);
 			this.llRefresh.Enabled = ((bool)(resources.GetObject("llRefresh.Enabled")));
 			this.llRefresh.Font = (
@@ -1225,10 +1225,10 @@ namespace SimPe.Plugin.Anim
 				(int)(resources.GetObject("llRefresh.ImageIndex"))
 			);
 			this.llRefresh.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("llRefresh.ImeMode"))
+				(ImeMode)(resources.GetObject("llRefresh.ImeMode"))
 			);
 			this.llRefresh.LinkArea = (
-				(System.Windows.Forms.LinkArea)(
+				(LinkArea)(
 					resources.GetObject("llRefresh.LinkArea")
 				)
 			);
@@ -1237,7 +1237,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.llRefresh.Name = "llRefresh";
 			this.llRefresh.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("llRefresh.RightToLeft")
 				)
 			);
@@ -1256,7 +1256,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.llRefresh.Visible = ((bool)(resources.GetObject("llRefresh.Visible")));
 			this.llRefresh.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llRefresh_LinkClicked
 				);
 			//
@@ -1269,7 +1269,7 @@ namespace SimPe.Plugin.Anim
 				"lbTimeCode.AccessibleName"
 			);
 			this.lbTimeCode.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("lbTimeCode.Anchor")
 				)
 			);
@@ -1277,7 +1277,7 @@ namespace SimPe.Plugin.Anim
 				(bool)(resources.GetObject("lbTimeCode.AutoSize"))
 			);
 			this.lbTimeCode.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("lbTimeCode.Dock"))
+				(DockStyle)(resources.GetObject("lbTimeCode.Dock"))
 			);
 			this.lbTimeCode.Enabled = (
 				(bool)(resources.GetObject("lbTimeCode.Enabled"))
@@ -1297,7 +1297,7 @@ namespace SimPe.Plugin.Anim
 				(int)(resources.GetObject("lbTimeCode.ImageIndex"))
 			);
 			this.lbTimeCode.ImeMode = (
-				(System.Windows.Forms.ImeMode)(
+				(ImeMode)(
 					resources.GetObject("lbTimeCode.ImeMode")
 				)
 			);
@@ -1306,7 +1306,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.lbTimeCode.Name = "lbTimeCode";
 			this.lbTimeCode.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("lbTimeCode.RightToLeft")
 				)
 			);
@@ -1335,7 +1335,7 @@ namespace SimPe.Plugin.Anim
 				"tbTimeCode.AccessibleName"
 			);
 			this.tbTimeCode.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("tbTimeCode.Anchor")
 				)
 			);
@@ -1348,7 +1348,7 @@ namespace SimPe.Plugin.Anim
 				)
 			);
 			this.tbTimeCode.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("tbTimeCode.Dock"))
+				(DockStyle)(resources.GetObject("tbTimeCode.Dock"))
 			);
 			this.tbTimeCode.Enabled = (
 				(bool)(resources.GetObject("tbTimeCode.Enabled"))
@@ -1357,7 +1357,7 @@ namespace SimPe.Plugin.Anim
 				(System.Drawing.Font)(resources.GetObject("tbTimeCode.Font"))
 			);
 			this.tbTimeCode.ImeMode = (
-				(System.Windows.Forms.ImeMode)(
+				(ImeMode)(
 					resources.GetObject("tbTimeCode.ImeMode")
 				)
 			);
@@ -1375,12 +1375,12 @@ namespace SimPe.Plugin.Anim
 				(char)(resources.GetObject("tbTimeCode.PasswordChar"))
 			);
 			this.tbTimeCode.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("tbTimeCode.RightToLeft")
 				)
 			);
 			this.tbTimeCode.ScrollBars = (
-				(System.Windows.Forms.ScrollBars)(
+				(ScrollBars)(
 					resources.GetObject("tbTimeCode.ScrollBars")
 				)
 			);
@@ -1392,7 +1392,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.tbTimeCode.Text = resources.GetString("tbTimeCode.Text");
 			this.tbTimeCode.TextAlign = (
-				(System.Windows.Forms.HorizontalAlignment)(
+				(HorizontalAlignment)(
 					resources.GetObject("tbTimeCode.TextAlign")
 				)
 			);
@@ -1405,7 +1405,7 @@ namespace SimPe.Plugin.Anim
 			this.tbTimeCode.TextChanged += new System.EventHandler(
 				this.tbTimeCode_TextChanged_1
 			);
-			this.tbTimeCode.KeyUp += new System.Windows.Forms.KeyEventHandler(
+			this.tbTimeCode.KeyUp += new KeyEventHandler(
 				this.tbTimeCode_KeyUp
 			);
 			//
@@ -1416,11 +1416,11 @@ namespace SimPe.Plugin.Anim
 			);
 			this.llAdd.AccessibleName = resources.GetString("llAdd.AccessibleName");
 			this.llAdd.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(resources.GetObject("llAdd.Anchor"))
+				(AnchorStyles)(resources.GetObject("llAdd.Anchor"))
 			);
 			this.llAdd.AutoSize = ((bool)(resources.GetObject("llAdd.AutoSize")));
 			this.llAdd.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("llAdd.Dock"))
+				(DockStyle)(resources.GetObject("llAdd.Dock"))
 			);
 			this.llAdd.Enabled = ((bool)(resources.GetObject("llAdd.Enabled")));
 			this.llAdd.Font = (
@@ -1436,17 +1436,17 @@ namespace SimPe.Plugin.Anim
 			);
 			this.llAdd.ImageIndex = ((int)(resources.GetObject("llAdd.ImageIndex")));
 			this.llAdd.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("llAdd.ImeMode"))
+				(ImeMode)(resources.GetObject("llAdd.ImeMode"))
 			);
 			this.llAdd.LinkArea = (
-				(System.Windows.Forms.LinkArea)(resources.GetObject("llAdd.LinkArea"))
+				(LinkArea)(resources.GetObject("llAdd.LinkArea"))
 			);
 			this.llAdd.Location = (
 				(System.Drawing.Point)(resources.GetObject("llAdd.Location"))
 			);
 			this.llAdd.Name = "llAdd";
 			this.llAdd.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("llAdd.RightToLeft")
 				)
 			);
@@ -1463,7 +1463,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.llAdd.Visible = ((bool)(resources.GetObject("llAdd.Visible")));
 			this.llAdd.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llAdd_LinkClicked
 				);
 			//
@@ -1474,13 +1474,13 @@ namespace SimPe.Plugin.Anim
 			);
 			this.llClear.AccessibleName = resources.GetString("llClear.AccessibleName");
 			this.llClear.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+				(AnchorStyles)(
 					resources.GetObject("llClear.Anchor")
 				)
 			);
 			this.llClear.AutoSize = ((bool)(resources.GetObject("llClear.AutoSize")));
 			this.llClear.Dock = (
-				(System.Windows.Forms.DockStyle)(resources.GetObject("llClear.Dock"))
+				(DockStyle)(resources.GetObject("llClear.Dock"))
 			);
 			this.llClear.Enabled = ((bool)(resources.GetObject("llClear.Enabled")));
 			this.llClear.Font = (
@@ -1498,17 +1498,17 @@ namespace SimPe.Plugin.Anim
 				(int)(resources.GetObject("llClear.ImageIndex"))
 			);
 			this.llClear.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("llClear.ImeMode"))
+				(ImeMode)(resources.GetObject("llClear.ImeMode"))
 			);
 			this.llClear.LinkArea = (
-				(System.Windows.Forms.LinkArea)(resources.GetObject("llClear.LinkArea"))
+				(LinkArea)(resources.GetObject("llClear.LinkArea"))
 			);
 			this.llClear.Location = (
 				(System.Drawing.Point)(resources.GetObject("llClear.Location"))
 			);
 			this.llClear.Name = "llClear";
 			this.llClear.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("llClear.RightToLeft")
 				)
 			);
@@ -1525,7 +1525,7 @@ namespace SimPe.Plugin.Anim
 			);
 			this.llClear.Visible = ((bool)(resources.GetObject("llClear.Visible")));
 			this.llClear.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
+				new LinkLabelLinkClickedEventHandler(
 					this.llClear_LinkClicked
 				);
 			//
@@ -1551,14 +1551,14 @@ namespace SimPe.Plugin.Anim
 			this.Enabled = ((bool)(resources.GetObject("$this.Enabled")));
 			this.Font = ((System.Drawing.Font)(resources.GetObject("$this.Font")));
 			this.ImeMode = (
-				(System.Windows.Forms.ImeMode)(resources.GetObject("$this.ImeMode"))
+				(ImeMode)(resources.GetObject("$this.ImeMode"))
 			);
 			this.Location = (
 				(System.Drawing.Point)(resources.GetObject("$this.Location"))
 			);
 			this.Name = "AnimFrameBlockControl";
 			this.RightToLeft = (
-				(System.Windows.Forms.RightToLeft)(
+				(RightToLeft)(
 					resources.GetObject("$this.RightToLeft")
 				)
 			);
@@ -1699,7 +1699,7 @@ namespace SimPe.Plugin.Anim
 
 		private void tv_AfterSelect(
 			object sender,
-			System.Windows.Forms.TreeViewEventArgs e
+			TreeViewEventArgs e
 		)
 		{
 			pn1.AxisTransform = null;
@@ -1838,7 +1838,7 @@ namespace SimPe.Plugin.Anim
 
 		private void llClear_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			afb.ClearFrames();
@@ -1852,7 +1852,7 @@ namespace SimPe.Plugin.Anim
 
 		private void llAdd_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (afb.AxisCount == 0)
@@ -2017,7 +2017,7 @@ namespace SimPe.Plugin.Anim
 
 		private void tbTimeCode_KeyUp(
 			object sender,
-			System.Windows.Forms.KeyEventArgs e
+			KeyEventArgs e
 		)
 		{
 			if (e.KeyCode == Keys.Enter)
@@ -2028,7 +2028,7 @@ namespace SimPe.Plugin.Anim
 
 		private void llRefresh_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			this.RefreshData();
@@ -2036,7 +2036,7 @@ namespace SimPe.Plugin.Anim
 
 		private void llClone_LinkClicked(
 			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+			LinkLabelLinkClickedEventArgs e
 		)
 		{
 			if (tv.SelectedNode == null)

@@ -59,9 +59,9 @@ namespace SimPe.Plugin
 			Quanty = reader.ReadUInt16(); // Number of items
 			if (filid == 0x46434e53 && Quanty > 0) // check for valid file
 			{
-				Array.Resize<string>(ref strung, Quanty);
-				Array.Resize<float>(ref valwe, Quanty);
-				Array.Resize<string>(ref comnt, Quanty);
+				Array.Resize(ref strung, Quanty);
+				Array.Resize(ref valwe, Quanty);
+				Array.Resize(ref comnt, Quanty);
 				reader.BaseStream.Seek(0x2, System.IO.SeekOrigin.Current);
 				for (int i = 0; i < Quanty; i++)
 				{
