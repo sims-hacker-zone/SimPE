@@ -267,13 +267,8 @@ namespace SimPe
 			}
 
 			uint hash = Hashes.GetCrc32(username) & 0xFFFFFFFE;
-			guid = guid << 8 & 0xFFFFFF00;
-			if (guid == 0)
-			{
-				return hash;
-			}
-
-			return ((hash | 0x00000001) & 0x000000FF) | guid;
+			guid = (guid << 8) & 0xFFFFFF00;
+			return guid == 0 ? hash : ((hash | 0x00000001) & 0x000000FF) | guid;
 		}
 
 		public static bool ValidUserId(uint id, string username, string password)

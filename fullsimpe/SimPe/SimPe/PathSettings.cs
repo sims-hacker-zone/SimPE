@@ -131,17 +131,7 @@ namespace SimPe
 
 		protected string GetPath(ExpansionItem ei)
 		{
-			if (ei.InstallFolder == null)
-			{
-				return ei.RealInstallFolder;
-			}
-
-			if (ei.InstallFolder.Trim() == "")
-			{
-				return ei.RealInstallFolder;
-			}
-
-			return ei.InstallFolder;
+			return ei.InstallFolder == null ? ei.RealInstallFolder : ei.InstallFolder.Trim() == "" ? ei.RealInstallFolder : ei.InstallFolder;
 		}
 
 		protected string GetPath(string userpath, string defpath)
@@ -151,12 +141,7 @@ namespace SimPe
 				userpath = "";
 			}
 
-			if (userpath.Trim() == "")
-			{
-				return defpath;
-			}
-
-			return userpath;
+			return userpath.Trim() == "" ? defpath : userpath;
 		}
 
 		[

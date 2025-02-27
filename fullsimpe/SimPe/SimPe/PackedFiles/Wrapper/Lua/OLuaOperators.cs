@@ -197,12 +197,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		public object LoadTable(ushort regnr, object index)
 		{
 			Table tbl = LoadTable(regnr);
-			if (tbl == null)
-			{
-				return Nil;
-			}
-
-			return tbl[index];
+			return tbl == null ? Nil : tbl[index];
 		}
 
 		public void SetTable(ushort regnr, object index, object val)
@@ -283,24 +278,12 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public string SR(ushort val)
 		{
-			if (IsLocal(val))
-			{
-				return LocalName(val);
-			}
-
-			return sregs[val];
+			return IsLocal(val) ? LocalName(val) : sregs[val];
 		}
 
 		public string SRK(ushort v)
 		{
-			if (v < ObjLuaCode.RK_OFFSET)
-			{
-				return SR(v);
-			}
-			else
-			{
-				return (SKst((uint)(v - ObjLuaCode.RK_OFFSET)));
-			}
+			return v < ObjLuaCode.RK_OFFSET ? SR(v) : SKst((uint)(v - ObjLuaCode.RK_OFFSET));
 		}
 
 		public object R(ushort val)
@@ -311,14 +294,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public object RK(ushort v)
 		{
-			if (v < ObjLuaCode.RK_OFFSET)
-			{
-				return R(v);
-			}
-			else
-			{
-				return (Kst((uint)(v - ObjLuaCode.RK_OFFSET)));
-			}
+			return v < ObjLuaCode.RK_OFFSET ? R(v) : Kst((uint)(v - ObjLuaCode.RK_OFFSET));
 		}
 
 		public object Gbl(object name)
@@ -328,12 +304,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 				name = nil;
 			}
 
-			if (globals[name] == null)
-			{
-				return name.ToString();
-			}
-
-			return ((Global)globals[name]).Value;
+			return globals[name] == null ? name.ToString() : ((Global)globals[name]).Value;
 		}
 
 		public string SKst(uint v)
@@ -341,18 +312,9 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 			if (v >= 0 && v < parent.Constants.Count)
 			{
 				ObjLuaConstant oci = (ObjLuaConstant)parent.Constants[(int)v];
-				if (oci.InstructionType == ObjLuaConstant.Type.String)
-				{
-					return "\"" + oci.String.Replace("\\", "\\\\") + "\"";
-				}
-				else if (oci.InstructionType == ObjLuaConstant.Type.Number)
-				{
-					return oci.Value.ToString();
-				}
-				else
-				{
-					return nil.ToString();
-				}
+				return oci.InstructionType == ObjLuaConstant.Type.String
+					? "\"" + oci.String.Replace("\\", "\\\\") + "\""
+					: oci.InstructionType == ObjLuaConstant.Type.Number ? oci.Value.ToString() : nil.ToString();
 			}
 			return v.ToString();
 			;
@@ -360,14 +322,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public bool Bool(ushort v)
 		{
-			if (v == 0)
-			{
-				return false;
-			}
-			else
-			{
-				return true;
-			}
+			return v != 0;
 		}
 
 		public object Kst(uint v)
@@ -375,18 +330,9 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 			if (v >= 0 && v < parent.Constants.Count)
 			{
 				ObjLuaConstant oci = (ObjLuaConstant)parent.Constants[(int)v];
-				if (oci.InstructionType == ObjLuaConstant.Type.String)
-				{
-					return oci.String;
-				}
-				else if (oci.InstructionType == ObjLuaConstant.Type.Number)
-				{
-					return oci.Value;
-				}
-				else
-				{
-					return nil;
-				}
+				return oci.InstructionType == ObjLuaConstant.Type.String
+					? oci.String
+					: oci.InstructionType == ObjLuaConstant.Type.Number ? oci.Value : (object)nil;
 			}
 			return v.ToString();
 		}
@@ -412,12 +358,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public double UpValue(ushort v)
 		{
-			if (HasUpValue(v))
-			{
-				return Convert.ToDouble(parent.UpValues[v]);
-			}
-
-			return 0;
+			return HasUpValue(v) ? Convert.ToDouble(parent.UpValues[v]) : 0;
 		}
 
 		public string ListR(int start, int end, string prefix)
@@ -478,12 +419,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public ObjLuaFunction KProto(uint nr)
 		{
-			if (nr < 0 || nr >= parent.Functions.Count)
-			{
-				return null;
-			}
-
-			return parent.Functions[(int)nr] as ObjLuaFunction;
+			return nr < 0 || nr >= parent.Functions.Count ? null : parent.Functions[(int)nr] as ObjLuaFunction;
 		}
 
 		#region Used to iterate through the Codelines
@@ -500,20 +436,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 			get; private set;
 		}
 
-		public ObjLuaCode CurrentLine
-		{
-			get
-			{
-				if (PC >= 0 && PC < parent.Codes.Count)
-				{
-					return parent.Codes[PC] as ObjLuaCode;
-				}
-				else
-				{
-					return null;
-				}
-			}
-		}
+		public ObjLuaCode CurrentLine => PC >= 0 && PC < parent.Codes.Count ? parent.Codes[PC] as ObjLuaCode : null;
 
 		public ObjLuaCode NextLine()
 		{
@@ -591,23 +514,9 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		protected string Assign(ushort reg, Context cx, object val)
 		{
-			if (cx.IsLocal(reg))
-			{
-				return cx.LocalName(reg) + " = " + val;
-			}
-			else if (R(reg).ToString().StartsWith("{R"))
-			{
-				if (!ObjLuaFunction.DEBUG)
-				{
-					return "";
-				}
-
-				return "// " + R(reg) + " = " + val;
-			}
-			else
-			{
-				return R(reg) + " = " + val;
-			}
+			return cx.IsLocal(reg)
+				? cx.LocalName(reg) + " = " + val
+				: R(reg).ToString().StartsWith("{R") ? !ObjLuaFunction.DEBUG ? "" : "// " + R(reg) + " = " + val : R(reg) + " = " + val;
 		}
 
 		protected string AssignA(Context cx, object val)
@@ -619,14 +528,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public override string ToString()
 		{
-			if (Helper.WindowsRegistry.HiddenMode)
-			{
-				return GetType().Name + ": " + ToAsmString();
-			}
-			else
-			{
-				return ToAsmString();
-			}
+			return Helper.WindowsRegistry.HiddenMode ? GetType().Name + ": " + ToAsmString() : ToAsmString();
 		}
 	}
 
@@ -643,16 +545,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public override string ToString(Context cx)
 		{
-			if (A == B)
-			{
-				if (!ObjLuaFunction.DEBUG)
-				{
-					return "";
-				}
-
-				return "/// " + AssignA(cx, cx.SR(B));
-			}
-			return AssignA(cx, cx.SR(B));
+			return A == B ? !ObjLuaFunction.DEBUG ? "" : "/// " + AssignA(cx, cx.SR(B)) : AssignA(cx, cx.SR(B));
 		}
 
 		protected override string ToAsmString()
@@ -710,17 +603,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public bool LoadsRegister(ushort regnr)
 		{
-			if (regnr == A)
-			{
-				return true;
-			}
-
-			if (regnr > A && regnr <= B)
-			{
-				return true;
-			}
-
-			return false;
+			return regnr == A || (regnr > A && regnr <= B);
 		}
 		#endregion
 	}
@@ -743,17 +626,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 				cx.DefineLocal(A); //this fails, if this Register is used otherwise later
 			}
 
-			if (cx.IsLocal(A))
-			{
-				return "local " + cx.SR(A) + " = " + cx.SKst(BX);
-			}
-
-			if (!ObjLuaFunction.DEBUG)
-			{
-				return "";
-			}
-
-			return "// " + R(A) + " = " + cx.SKst(BX);
+			return cx.IsLocal(A) ? "local " + cx.SR(A) + " = " + cx.SKst(BX) : !ObjLuaFunction.DEBUG ? "" : "// " + R(A) + " = " + cx.SKst(BX);
 		}
 
 		protected override string ToAsmString()
@@ -784,14 +657,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		public override string ToString(Context cx)
 		{
 			object o = cx.R(A);
-			if (o is ObjLuaFunction)
-			{
-				return cx.SR(A).Replace("{{name}}", Kst(BX));
-			}
-			else
-			{
-				return Kst(BX) + " = " + cx.SR(A);
-			}
+			return o is ObjLuaFunction ? cx.SR(A).Replace("{{name}}", Kst(BX)) : Kst(BX) + " = " + cx.SR(A);
 		}
 
 		protected override string ToAsmString()
@@ -813,12 +679,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public override string ToString(Context cx)
 		{
-			if (!ObjLuaFunction.DEBUG)
-			{
-				return "";
-			}
-
-			return "// " + R(A) + " = " + cx.Kst(BX);
+			return !ObjLuaFunction.DEBUG ? "" : "// " + R(A) + " = " + cx.Kst(BX);
 		}
 
 		protected override string ToAsmString()
@@ -856,12 +717,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public override string ToString(Context cx)
 		{
-			if (!ObjLuaFunction.DEBUG)
-			{
-				return "";
-			}
-
-			return "// " + R(A) + " =new table[" + TblFbp(B) + ", " + TblSz(C) + "]";
+			return !ObjLuaFunction.DEBUG ? "" : "// " + R(A) + " =new table[" + TblFbp(B) + ", " + TblSz(C) + "]";
 		}
 
 		protected override string ToAsmString()
@@ -993,12 +849,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 			{
 				if (!haslocal)
 				{
-					if (!ObjLuaFunction.DEBUG)
-					{
-						return "";
-					}
-
-					return "// " + ListR(A, A + C - 2, " = ", ", ... ,") + content;
+					return !ObjLuaFunction.DEBUG ? "" : "// " + ListR(A, A + C - 2, " = ", ", ... ,") + content;
 				}
 				else
 				{
@@ -1040,27 +891,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public bool LoadsRegister(ushort regnr)
 		{
-			if (regnr == A)
-			{
-				return true;
-			}
-
-			if (regnr == A + 1)
-			{
-				return true;
-			}
-
-			if (A <= regnr && (A + C - 2) >= regnr)
-			{
-				return true;
-			}
-
-			if (A + 1 <= regnr && (A + B - 1) >= regnr)
-			{
-				return true;
-			}
-
-			return true;
+			return regnr == A || regnr == A + 1 || (A <= regnr && (A + C - 2) >= regnr) || (A + 1 <= regnr && (A + B - 1) >= regnr) || true;
 		}
 
 		#endregion
@@ -1116,12 +947,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public override string ToString(Context cx)
 		{
-			if (!ObjLuaFunction.DEBUG)
-			{
-				return "";
-			}
-
-			return "// " + R(A) + " = closure(KPROTO[" + BX.ToString() + "])";
+			return !ObjLuaFunction.DEBUG ? "" : "// " + R(A) + " = closure(KPROTO[" + BX.ToString() + "])";
 		}
 
 		protected override string ToAsmString()
@@ -1146,19 +972,9 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public override string ToString(Context cx)
 		{
-			if (cx.IsLocal(A))
-			{
-				return cx.LocalName(A) + " = " + cx.SRK(B) + " + " + cx.SRK(C);
-			}
-			else
-			{
-				if (!ObjLuaFunction.DEBUG)
-				{
-					return "";
-				}
-
-				return "// " + R(A) + " = " + cx.SRK(B) + " + " + cx.SRK(C);
-			}
+			return cx.IsLocal(A)
+				? cx.LocalName(A) + " = " + cx.SRK(B) + " + " + cx.SRK(C)
+				: !ObjLuaFunction.DEBUG ? "" : "// " + R(A) + " = " + cx.SRK(B) + " + " + cx.SRK(C);
 		}
 
 		protected override string ToAsmString()
@@ -1183,19 +999,9 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public override string ToString(Context cx)
 		{
-			if (cx.IsLocal(A))
-			{
-				return cx.LocalName(A) + " = " + cx.SRK(B) + " - " + cx.SRK(C);
-			}
-			else
-			{
-				if (!ObjLuaFunction.DEBUG)
-				{
-					return "";
-				}
-
-				return "// " + R(A) + " = " + cx.SRK(B) + " - " + cx.SRK(C);
-			}
+			return cx.IsLocal(A)
+				? cx.LocalName(A) + " = " + cx.SRK(B) + " - " + cx.SRK(C)
+				: !ObjLuaFunction.DEBUG ? "" : "// " + R(A) + " = " + cx.SRK(B) + " - " + cx.SRK(C);
 		}
 
 		protected override string ToAsmString()
@@ -1220,19 +1026,9 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public override string ToString(Context cx)
 		{
-			if (cx.IsLocal(A))
-			{
-				return cx.LocalName(A) + " = " + cx.SRK(B) + " * " + cx.SRK(C);
-			}
-			else
-			{
-				if (!ObjLuaFunction.DEBUG)
-				{
-					return "";
-				}
-
-				return "// " + R(A) + " = " + cx.SRK(B) + " * " + cx.SRK(C);
-			}
+			return cx.IsLocal(A)
+				? cx.LocalName(A) + " = " + cx.SRK(B) + " * " + cx.SRK(C)
+				: !ObjLuaFunction.DEBUG ? "" : "// " + R(A) + " = " + cx.SRK(B) + " * " + cx.SRK(C);
 		}
 
 		protected override string ToAsmString()
@@ -1260,19 +1056,9 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public override string ToString(Context cx)
 		{
-			if (cx.IsLocal(A))
-			{
-				return cx.LocalName(A) + " = " + cx.SRK(B) + " ^ " + cx.SRK(C);
-			}
-			else
-			{
-				if (!ObjLuaFunction.DEBUG)
-				{
-					return "";
-				}
-
-				return "// " + R(A) + " = " + cx.SRK(B) + " ^ " + cx.SRK(C);
-			}
+			return cx.IsLocal(A)
+				? cx.LocalName(A) + " = " + cx.SRK(B) + " ^ " + cx.SRK(C)
+				: !ObjLuaFunction.DEBUG ? "" : "// " + R(A) + " = " + cx.SRK(B) + " ^ " + cx.SRK(C);
 		}
 
 		protected override string ToAsmString()
@@ -1297,19 +1083,9 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public override string ToString(Context cx)
 		{
-			if (cx.IsLocal(A))
-			{
-				return cx.LocalName(A) + " = " + cx.SRK(B) + " / " + cx.SRK(C);
-			}
-			else
-			{
-				if (!ObjLuaFunction.DEBUG)
-				{
-					return "";
-				}
-
-				return "// " + R(A) + " = " + cx.SRK(B) + " / " + cx.SRK(C);
-			}
+			return cx.IsLocal(A)
+				? cx.LocalName(A) + " = " + cx.SRK(B) + " / " + cx.SRK(C)
+				: !ObjLuaFunction.DEBUG ? "" : "// " + R(A) + " = " + cx.SRK(B) + " / " + cx.SRK(C);
 		}
 
 		protected override string ToAsmString()
@@ -1331,19 +1107,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public override string ToString(Context cx)
 		{
-			if (cx.IsLocal(A))
-			{
-				return cx.LocalName(A) + " = -" + cx.SR(B);
-			}
-			else
-			{
-				if (!ObjLuaFunction.DEBUG)
-				{
-					return "";
-				}
-
-				return "// " + R(A) + " = -" + cx.SR(B);
-			}
+			return cx.IsLocal(A) ? cx.LocalName(A) + " = -" + cx.SR(B) : !ObjLuaFunction.DEBUG ? "" : "// " + R(A) + " = -" + cx.SR(B);
 		}
 
 		protected override string ToAsmString()
@@ -1365,19 +1129,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public override string ToString(Context cx)
 		{
-			if (cx.IsLocal(A))
-			{
-				return cx.LocalName(A) + " = !" + cx.SR(B);
-			}
-			else
-			{
-				if (!ObjLuaFunction.DEBUG)
-				{
-					return "";
-				}
-
-				return "// " + R(A) + " = !" + cx.SR(B);
-			}
+			return cx.IsLocal(A) ? cx.LocalName(A) + " = !" + cx.SR(B) : !ObjLuaFunction.DEBUG ? "" : "// " + R(A) + " = !" + cx.SR(B);
 		}
 
 		protected override string ToAsmString()
@@ -1399,19 +1151,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public override string ToString(Context cx)
 		{
-			if (!cx.HasUpValue(B))
-			{
-				if (!ObjLuaFunction.DEBUG)
-				{
-					return "";
-				}
-
-				return "/// " + AssignA(cx, cx.UpValue(B));
-			}
-			else
-			{
-				return AssignA(cx, cx.UpValue(B));
-			}
+			return !cx.HasUpValue(B) ? !ObjLuaFunction.DEBUG ? "" : "/// " + AssignA(cx, cx.UpValue(B)) : AssignA(cx, cx.UpValue(B));
 		}
 
 		protected override string ToAsmString()
@@ -1441,12 +1181,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public override string ToString(Context cx)
 		{
-			if (!ObjLuaFunction.DEBUG)
-			{
-				return "";
-			}
-
-			return "// " + "PC += " + SBX.ToString() + "//{CPC=" + cx.PC + "}";
+			return !ObjLuaFunction.DEBUG ? "" : "// " + "PC += " + SBX.ToString() + "//{CPC=" + cx.PC + "}";
 		}
 
 		protected override string ToAsmString()
@@ -1469,14 +1204,9 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public override string ToString(Context cx)
 		{
-			if (Bool(A) == "true")
-			{
-				return "if (" + cx.SRK(B) + " " + nsymb + " " + cx.SRK(C) + ") then";
-			}
-			else
-			{
-				return "if (" + cx.SRK(B) + " " + symb + " " + cx.SRK(C) + ") then";
-			}
+			return Bool(A) == "true"
+				? "if (" + cx.SRK(B) + " " + nsymb + " " + cx.SRK(C) + ") then"
+				: "if (" + cx.SRK(B) + " " + symb + " " + cx.SRK(C) + ") then";
 		}
 
 		protected override string ToAsmString()
@@ -1724,13 +1454,9 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public override string ToString(Context cx)
 		{
-			if (!IsStart)
-			{
-				return "end";
-			}
-			else
-			{
-				return "for "
+			return !IsStart
+				? "end"
+				: "for "
 					+ cx.SR(A)
 					+ "="
 					+ cx.R(A).ToString()
@@ -1739,7 +1465,6 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 					+ ", "
 					+ cx.SR((ushort)(A + 2))
 					+ " do ";
-			}
 		}
 
 		protected override string ToAsmString()
@@ -1799,17 +1524,9 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 				cx.DefineLocal(A); //this fails, if this Register is used otherwise later
 			}
 
-			if (cx.IsLocal(A))
-			{
-				return "local " + cx.SR(A) + " = " + cx.Bool(B).ToString();
-			}
-
-			if (!ObjLuaFunction.DEBUG)
-			{
-				return "";
-			}
-
-			return "// " + R(A) + " = " + cx.Bool(B).ToString();
+			return cx.IsLocal(A)
+				? "local " + cx.SR(A) + " = " + cx.Bool(B).ToString()
+				: !ObjLuaFunction.DEBUG ? "" : "// " + R(A) + " = " + cx.Bool(B).ToString();
 		}
 
 		protected override string ToAsmString()
@@ -1853,16 +1570,9 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public override string ToString(Context cx)
 		{
-			if (A == B)
-			{
-				if (!ObjLuaFunction.DEBUG)
-				{
-					return "";
-				}
-
-				return "/// " + AssignA(cx, cx.ListSR(B, C, " .. ", ""));
-			}
-			return AssignA(cx, cx.ListSR(B, C, " .. ", ""));
+			return A == B
+				? !ObjLuaFunction.DEBUG ? "" : "/// " + AssignA(cx, cx.ListSR(B, C, " .. ", ""))
+				: AssignA(cx, cx.ListSR(B, C, " .. ", ""));
 		}
 
 		protected override string ToAsmString()

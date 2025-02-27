@@ -705,12 +705,7 @@ namespace SimPe.Plugin
 		public double ToValue()
 		{
 			double[] list = ToFloat();
-			if (list.Length > 0)
-			{
-				return list[0];
-			}
-
-			return 0;
+			return list.Length > 0 ? list[0] : 0;
 		}
 
 		public Ambertation.Geometry.Vector2 ToVector2()

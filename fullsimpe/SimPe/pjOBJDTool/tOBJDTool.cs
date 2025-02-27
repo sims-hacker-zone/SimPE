@@ -50,12 +50,7 @@ namespace pjOBJDTool
 			SimPe.Interfaces.Files.IPackedFileDescriptor[] obbies = package.FindFiles(
 				SimPe.Data.MetaData.OBJD_FILE
 			);
-			if (obbies.Length < 1)
-			{
-				return false;
-			}
-
-			return true;
+			return obbies.Length >= 1;
 		}
 
 		public bool IsReallyEnabled(

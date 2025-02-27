@@ -472,15 +472,7 @@ namespace Ambertation.Windows.Forms
 		[Browsable(false)]
 		public int Offset
 		{
-			get
-			{
-				if (SelectionStart < 0)
-				{
-					return 0;
-				}
-
-				return SelectionStart;
-			}
+			get => SelectionStart < 0 ? 0 : SelectionStart;
 			set => Select(value, 1);
 		}
 
@@ -552,18 +544,7 @@ namespace Ambertation.Windows.Forms
 		/// Number of Rows needed to display the Data
 		/// </summary>
 		[Browsable(false)]
-		public int Rows
-		{
-			get
-			{
-				if (Columns == 0)
-				{
-					return 0;
-				}
-
-				return Data.Length / Columns + 1;
-			}
-		}
+		public int Rows => Columns == 0 ? 0 : (Data.Length / Columns) + 1;
 
 		int crow;
 
@@ -2024,20 +2005,7 @@ namespace Ambertation.Windows.Forms
 		[Browsable(false)]
 		public byte SelectedByte
 		{
-			get
-			{
-				if (SelectionStart < 0)
-				{
-					return 0;
-				}
-
-				if (data.Length - SelectionStart < 1)
-				{
-					return 0;
-				}
-
-				return data[SelectionStart];
-			}
+			get => SelectionStart < 0 ? (byte)0 : data.Length - SelectionStart < 1 ? (byte)0 : data[SelectionStart];
 			set
 			{
 				if (SelectionStart < 0)
@@ -2162,20 +2130,7 @@ namespace Ambertation.Windows.Forms
 		[Browsable(false)]
 		public ushort SelectedUShort
 		{
-			get
-			{
-				if (SelectionStart < 0)
-				{
-					return 0;
-				}
-
-				if (data.Length - SelectionStart < 2)
-				{
-					return 0;
-				}
-
-				return BitConverter.ToUInt16(data, SelectionStart);
-			}
+			get => SelectionStart < 0 ? (ushort)0 : data.Length - SelectionStart < 2 ? (ushort)0 : BitConverter.ToUInt16(data, SelectionStart);
 			set => SetValue(value);
 		}
 
@@ -2185,20 +2140,7 @@ namespace Ambertation.Windows.Forms
 		[Browsable(false)]
 		public short SelectedShort
 		{
-			get
-			{
-				if (SelectionStart < 0)
-				{
-					return 0;
-				}
-
-				if (data.Length - SelectionStart < 2)
-				{
-					return 0;
-				}
-
-				return BitConverter.ToInt16(data, SelectionStart);
-			}
+			get => SelectionStart < 0 ? (short)0 : data.Length - SelectionStart < 2 ? (short)0 : BitConverter.ToInt16(data, SelectionStart);
 			set => SetValue(value);
 		}
 
@@ -2208,20 +2150,7 @@ namespace Ambertation.Windows.Forms
 		[Browsable(false)]
 		public uint SelectedUInt
 		{
-			get
-			{
-				if (SelectionStart < 0)
-				{
-					return 0;
-				}
-
-				if (data.Length - SelectionStart < 4)
-				{
-					return 0;
-				}
-
-				return BitConverter.ToUInt32(data, SelectionStart);
-			}
+			get => SelectionStart < 0 ? 0 : data.Length - SelectionStart < 4 ? 0 : BitConverter.ToUInt32(data, SelectionStart);
 			set => SetValue(value);
 		}
 
@@ -2231,20 +2160,7 @@ namespace Ambertation.Windows.Forms
 		[Browsable(false)]
 		public int SelectedInt
 		{
-			get
-			{
-				if (SelectionStart < 0)
-				{
-					return 0;
-				}
-
-				if (data.Length - SelectionStart < 4)
-				{
-					return 0;
-				}
-
-				return BitConverter.ToInt32(data, SelectionStart);
-			}
+			get => SelectionStart < 0 ? 0 : data.Length - SelectionStart < 4 ? 0 : BitConverter.ToInt32(data, SelectionStart);
 			set => SetValue(value);
 		}
 
@@ -2254,20 +2170,7 @@ namespace Ambertation.Windows.Forms
 		[Browsable(false)]
 		public ulong SelectedULong
 		{
-			get
-			{
-				if (SelectionStart < 0)
-				{
-					return 0;
-				}
-
-				if (data.Length - SelectionStart < 8)
-				{
-					return 0;
-				}
-
-				return BitConverter.ToUInt64(data, SelectionStart);
-			}
+			get => SelectionStart < 0 ? 0 : data.Length - SelectionStart < 8 ? 0 : BitConverter.ToUInt64(data, SelectionStart);
 			set => SetValue(value);
 		}
 
@@ -2277,20 +2180,7 @@ namespace Ambertation.Windows.Forms
 		[Browsable(false)]
 		public long SelectedLong
 		{
-			get
-			{
-				if (SelectionStart < 0)
-				{
-					return 0;
-				}
-
-				if (data.Length - SelectionStart < 8)
-				{
-					return 0;
-				}
-
-				return BitConverter.ToInt64(data, SelectionStart);
-			}
+			get => SelectionStart < 0 ? 0 : data.Length - SelectionStart < 8 ? 0 : BitConverter.ToInt64(data, SelectionStart);
 			set => SetValue(value);
 		}
 
@@ -2300,20 +2190,7 @@ namespace Ambertation.Windows.Forms
 		[Browsable(false)]
 		public float SelectedFloat
 		{
-			get
-			{
-				if (SelectionStart < 0)
-				{
-					return 0;
-				}
-
-				if (data.Length - SelectionStart < 4)
-				{
-					return 0;
-				}
-
-				return BitConverter.ToSingle(data, SelectionStart);
-			}
+			get => SelectionStart < 0 ? 0 : data.Length - SelectionStart < 4 ? 0 : BitConverter.ToSingle(data, SelectionStart);
 			set => SetValue(value);
 		}
 
@@ -2323,20 +2200,7 @@ namespace Ambertation.Windows.Forms
 		[Browsable(false)]
 		public double SelectedDouble
 		{
-			get
-			{
-				if (SelectionStart < 0)
-				{
-					return 0;
-				}
-
-				if (data.Length - SelectionStart < 8)
-				{
-					return 0;
-				}
-
-				return BitConverter.ToDouble(data, SelectionStart);
-			}
+			get => SelectionStart < 0 ? 0 : data.Length - SelectionStart < 8 ? 0 : BitConverter.ToDouble(data, SelectionStart);
 			set => SetValue(value);
 		}
 

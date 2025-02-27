@@ -352,14 +352,7 @@ namespace SimPe
 		public static string SplitName(string regname)
 		{
 			string[] str = regname.Split("-".ToCharArray(), 2);
-			if (str.Length > 1)
-			{
-				return str[1];
-			}
-			else
-			{
-				return Localization.Manager.GetString("Unknown");
-			}
+			return str.Length > 1 ? str[1] : Localization.Manager.GetString("Unknown");
 		}
 
 		/// <summary>

@@ -92,34 +92,16 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			if (Helper.StartedGui == Executable.Default)
-			{
-				return "Object Creation\\Windowed Object Workshop...";
-			}
-			else
-			{
-				return "Object Creation\\Object Workshop...";
-			}
+			return Helper.StartedGui == Executable.Default
+				? "Object Creation\\Windowed Object Workshop..."
+				: "Object Creation\\Object Workshop...";
 		}
 
 		#endregion
 
 		#region IToolExt Member
 		public override System.Drawing.Image Icon => GetIcon.CreatePackageW;
-		public override System.Windows.Forms.Shortcut Shortcut
-		{
-			get
-			{
-				if (Helper.StartedGui == Executable.Default)
-				{
-					return System.Windows.Forms.Shortcut.None;
-				}
-				else
-				{
-					return System.Windows.Forms.Shortcut.CtrlW;
-				}
-			}
-		}
+		public override System.Windows.Forms.Shortcut Shortcut => Helper.StartedGui == Executable.Default ? System.Windows.Forms.Shortcut.None : System.Windows.Forms.Shortcut.CtrlW;
 		#endregion
 	}
 }

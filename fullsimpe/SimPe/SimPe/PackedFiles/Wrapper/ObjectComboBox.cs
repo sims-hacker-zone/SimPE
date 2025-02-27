@@ -309,12 +309,7 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				MemoryCacheItem mci = SelectedItem;
 
-				if (mci == null)
-				{
-					return 0xffffffff;
-				}
-
-				return mci.Guid;
+				return mci == null ? 0xffffffff : mci.Guid;
 			}
 			set
 			{

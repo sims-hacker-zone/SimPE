@@ -47,14 +47,7 @@ namespace SimPe
 
 		public override string ToString()
 		{
-			if (hex)
-			{
-				return "0x" + index.ToString("X") + ": " + Object.ToString();
-			}
-			else
-			{
-				return index.ToString() + ": " + Object.ToString();
-			}
+			return hex ? "0x" + index.ToString("X") + ": " + Object.ToString() : index.ToString() + ": " + Object.ToString();
 		}
 
 		/// <summary>

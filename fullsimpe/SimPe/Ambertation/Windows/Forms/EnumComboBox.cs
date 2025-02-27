@@ -128,12 +128,7 @@ namespace Ambertation.Windows.Forms
 				}
 
 				object o = Items[SelectedIndex];
-				if (o is EnumComboBoxItem)
-				{
-					return ((EnumComboBoxItem)o).Content;
-				}
-
-				return o;
+				return o is EnumComboBoxItem item ? item.Content : o;
 			}
 			set
 			{

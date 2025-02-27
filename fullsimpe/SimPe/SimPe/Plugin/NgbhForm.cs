@@ -776,17 +776,14 @@ namespace SimPe.Plugin
 
 		protected NgbhItem GetSelectedItem()
 		{
-			if (lbmem.SelectedItems.Count == 0)
-			{
-				return new NgbhItem(
+			return lbmem.SelectedItems.Count == 0
+				? new NgbhItem(
 					new NgbhSlot(
 						(Ngbh)wrapper,
 						(Data.NeighborhoodSlots)cbtype.SelectedValue
 					)
-				);
-			}
-
-			return (NgbhItem)lbmem.SelectedItems[0].Tag;
+				)
+				: (NgbhItem)lbmem.SelectedItems[0].Tag;
 		}
 
 		private void SelectMemory(object sender, EventArgs e)

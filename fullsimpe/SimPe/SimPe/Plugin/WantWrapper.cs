@@ -127,15 +127,8 @@ namespace SimPe.Plugin
 		#region IWrapper member
 		public override bool CheckVersion(uint version)
 		{
-			if (
-				(version == 0012) //0.10
-				|| (version == 0013) //0.12
-			)
-			{
-				return true;
-			}
-
-			return false;
+			return (version == 0012) //0.10
+				|| (version == 0013); //0.12
 		}
 		#endregion
 

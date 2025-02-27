@@ -91,14 +91,7 @@ namespace SimPe.Data
 		public override string ToString()
 		{
 			string s = Localization.Manager.GetString("RT_" + data.ToString());
-			if (s != null)
-			{
-				return s;
-			}
-			else
-			{
-				return data.ToString();
-			}
+			return s ?? data.ToString();
 		}
 
 		public override bool Equals(object obj)
@@ -276,14 +269,7 @@ namespace SimPe.Data
 		public override string ToString()
 		{
 			string s = Localization.Manager.GetString("Grade_" + data.ToString());
-			if (s != null)
-			{
-				return s;
-			}
-			else
-			{
-				return data.ToString();
-			}
+			return s ?? data.ToString();
 		}
 	}
 
@@ -353,14 +339,7 @@ namespace SimPe.Data
 		public override string ToString()
 		{
 			string s = Localization.Manager.GetString(data.ToString());
-			if (s != null)
-			{
-				return s;
-			}
-			else
-			{
-				return data.ToString();
-			}
+			return s ?? data.ToString();
 		}
 	}
 
@@ -430,14 +409,7 @@ namespace SimPe.Data
 		public override string ToString()
 		{
 			string s = Localization.Manager.GetString(data.ToString());
-			if (s != null)
-			{
-				return s;
-			}
-			else
-			{
-				return data.ToString();
-			}
+			return s ?? data.ToString();
 		}
 	}
 
@@ -597,14 +569,7 @@ namespace SimPe.Data
 		public override string ToString()
 		{
 			string s = Localization.Manager.GetString(data.ToString());
-			if (s != null)
-			{
-				return s;
-			}
-			else
-			{
-				return data.ToString();
-			}
+			return s ?? data.ToString();
 		}
 	}
 
@@ -680,14 +645,7 @@ namespace SimPe.Data
 			string s = Localization.Manager.GetString(
 				"SimPe.Data.MetaData.AspirationTypes." + data.ToString()
 			);
-			if (s != null)
-			{
-				return s;
-			}
-			else
-			{
-				return data.ToString();
-			}
+			return s ?? data.ToString();
 		}
 	}
 
@@ -761,14 +719,7 @@ namespace SimPe.Data
 		public override string ToString()
 		{
 			string s = Localization.Manager.GetString(data.ToString());
-			if (s != null)
-			{
-				return s;
-			}
-			else
-			{
-				return data.ToString();
-			}
+			return s ?? data.ToString();
 		}
 	}
 
@@ -842,14 +793,7 @@ namespace SimPe.Data
 		public override string ToString()
 		{
 			string s = Localization.Manager.GetString(data.ToString());
-			if (s != null)
-			{
-				return s;
-			}
-			else
-			{
-				return data.ToString();
-			}
+			return s ?? data.ToString();
 		}
 	}
 
@@ -919,14 +863,7 @@ namespace SimPe.Data
 		public override string ToString()
 		{
 			string s = Localization.Manager.GetString(data.ToString());
-			if (s != null)
-			{
-				return s;
-			}
-			else
-			{
-				return data.ToString();
-			}
+			return s ?? data.ToString();
 		}
 	}
 
@@ -1005,26 +942,12 @@ namespace SimPe.Data
 				string s = Localization.Manager.GetString(
 					type.Namespace + "." + type.Name + "." + data.ToString()
 				);
-				if (s != null)
-				{
-					return s;
-				}
-				else
-				{
-					return data.ToString();
-				}
+				return s ?? data.ToString();
 			}
 			else
 			{
 				string s = Localization.Manager.GetString(data.ToString());
-				if (s != null)
-				{
-					return s;
-				}
-				else
-				{
-					return data.ToString();
-				}
+				return s ?? data.ToString();
 			}
 		}
 	}
@@ -1095,14 +1018,7 @@ namespace SimPe.Data
 		public override string ToString()
 		{
 			string s = Localization.Manager.GetString(data.ToString());
-			if (s != null)
-			{
-				return s;
-			}
-			else
-			{
-				return data.ToString();
-			}
+			return s ?? data.ToString();
 		}
 	}
 }

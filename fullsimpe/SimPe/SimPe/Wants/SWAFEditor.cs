@@ -584,27 +584,19 @@ namespace SimPe.Wants
 
 		private bool incItem(SWAFItem.SWAFItemType t)
 		{
-			if (t == SWAFItem.SWAFItemType.Wants)
+			switch (t)
 			{
-				return ckbIncWants.Checked;
+				case SWAFItem.SWAFItemType.Wants:
+					return ckbIncWants.Checked;
+				case SWAFItem.SWAFItemType.Fears:
+					return ckbIncFears.Checked;
+				case SWAFItem.SWAFItemType.LifetimeWants:
+					return ckbIncLTWants.Checked;
+				case SWAFItem.SWAFItemType.History:
+					return ckbIncHistory.Checked;
+				default:
+					return false;
 			}
-
-			if (t == SWAFItem.SWAFItemType.Fears)
-			{
-				return ckbIncFears.Checked;
-			}
-
-			if (t == SWAFItem.SWAFItemType.LifetimeWants)
-			{
-				return ckbIncLTWants.Checked;
-			}
-
-			if (t == SWAFItem.SWAFItemType.History)
-			{
-				return ckbIncHistory.Checked;
-			}
-
-			return false;
 		}
 
 		private void setLV()

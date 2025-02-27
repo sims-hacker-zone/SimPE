@@ -78,31 +78,19 @@ namespace SimPe.Windows.Forms
 
 		string GetExtText()
 		{
-			if (
+			switch (
 				Helper.WindowsRegistry.ResourceListExtensionFormat
-				== Registry.ResourceListExtensionFormats.Short
 			)
 			{
-				return pfd.Descriptor.TypeName.shortname;
+				case Registry.ResourceListExtensionFormats.Short:
+					return pfd.Descriptor.TypeName.shortname;
+				case Registry.ResourceListExtensionFormats.Long:
+					return pfd.Descriptor.TypeName.Name;
+				case Registry.ResourceListExtensionFormats.Hex:
+					return "0x" + Helper.HexString(pfd.Descriptor.Type);
+				default:
+					return "";
 			}
-
-			if (
-				Helper.WindowsRegistry.ResourceListExtensionFormat
-				== Registry.ResourceListExtensionFormats.Long
-			)
-			{
-				return pfd.Descriptor.TypeName.Name;
-			}
-
-			if (
-				Helper.WindowsRegistry.ResourceListExtensionFormat
-				== Registry.ResourceListExtensionFormats.Hex
-			)
-			{
-				return "0x" + Helper.HexString(pfd.Descriptor.Type);
-			}
-
-			return "";
 		}
 
 		/*void Descriptor_DescriptionChanged(object sender, EventArgs e)

@@ -25,12 +25,7 @@ namespace SimPe.Plugin
 			Interfaces.Files.IPackageFile package
 		)
 		{
-			if (package == null || package.FileName == null)
-			{
-				return false;
-			}
-
-			return true;
+			return package != null && package.FileName != null;
 		}
 
 		private bool IsReallyEnabled(

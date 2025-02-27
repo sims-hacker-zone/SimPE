@@ -37,28 +37,23 @@ namespace SimPe
 			/*
 			try
 			{
-				
+
 			}
 			catch {}*/
 		}
 
 		static Image LoadFromResource(string name)
 		{
-			if (name == "fail")
+			switch (name)
 			{
-				return GetIcon.Fail;
-			}
-			else if (name == "ok")
-			{
-				return GetIcon.OK;
-			}
-			else if (name == "warn")
-			{
-				return GetIcon.Warn;
-			}
-			else
-			{
-				return GetIcon.Unk;
+				case "fail":
+					return GetIcon.Fail;
+				case "ok":
+					return GetIcon.OK;
+				case "warn":
+					return GetIcon.Warn;
+				default:
+					return GetIcon.Unk;
 			}
 		}
 

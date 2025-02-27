@@ -84,22 +84,15 @@ namespace SimPe.Cache
 		{
 			get
 			{
-				if (Version == (byte)ObjectCacheItemVersions.ClassicOW)
+				switch (Version)
 				{
-					return ObjectCacheItemVersions.ClassicOW;
+					case (byte)ObjectCacheItemVersions.ClassicOW:
+						return ObjectCacheItemVersions.ClassicOW;
+					case (byte)ObjectCacheItemVersions.DockableOW:
+						return ObjectCacheItemVersions.DockableOW;
+					default:
+						return Version > VERSION ? ObjectCacheItemVersions.Unsupported : ObjectCacheItemVersions.Outdated;
 				}
-
-				if (Version == (byte)ObjectCacheItemVersions.DockableOW)
-				{
-					return ObjectCacheItemVersions.DockableOW;
-				}
-
-				if (Version > VERSION)
-				{
-					return ObjectCacheItemVersions.Unsupported;
-				}
-
-				return ObjectCacheItemVersions.Outdated;
 			}
 			/*set {
 				if (value == ObjectCacheItemVersions.Outdated) version = (byte)ObjectCacheItemVersions.ClassicOW;

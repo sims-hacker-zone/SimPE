@@ -33,12 +33,7 @@ namespace SimPe.Plugin.Tool.Action
 			Events.ResourceEventArgs es
 		)
 		{
-			if (es.Loaded && Helper.IsNeighborhoodFile(es.LoadedPackage.FileName))
-			{
-				return true;
-			}
-
-			return false;
+			return es.Loaded && Helper.IsNeighborhoodFile(es.LoadedPackage.FileName);
 		}
 
 		private bool RealChangeEnabledStateEventHandler(
@@ -46,12 +41,8 @@ namespace SimPe.Plugin.Tool.Action
 			Events.ResourceEventArgs es
 		)
 		{
-			if (!es.Loaded)
-			{
-				return false;
-			}
-
-			return es.LoadedPackage.Package.FindFiles(
+			return es.Loaded
+&& es.LoadedPackage.Package.FindFiles(
 					Data.MetaData.SIM_DESCRIPTION_FILE
 				).Length > 0;
 		}

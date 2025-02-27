@@ -122,21 +122,17 @@ namespace SimPe.PackedFiles.Wrapper
 					)
 				);
 			}
-			else if (obj is Interfaces.Files.IPackedFileDescriptor ci)
-			{
-				return (
-					ci.Group == Group
-					&& ci.Instance == Instance
-					&& ci.Type == Type
-					&& (
-						ci.SubType == SubType
-						|| format == Data.MetaData.IndexTypes.ptShortFileIndex
-					)
-				);
-			}
 			else
 			{
-				return base.Equals(obj);
+				return obj is Interfaces.Files.IPackedFileDescriptor ci
+					? ci.Group == Group
+									&& ci.Instance == Instance
+									&& ci.Type == Type
+									&& (
+										ci.SubType == SubType
+										|| format == Data.MetaData.IndexTypes.ptShortFileIndex
+									)
+					: base.Equals(obj);
 			}
 		}
 

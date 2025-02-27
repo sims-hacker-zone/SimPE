@@ -60,13 +60,7 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				string enumName = ((Data.MetaData.Languages)Id).ToString();
-				string s = Localization.Manager.GetString(enumName);
-				if (s != null)
-				{
-					return s;
-				}
-
-				return enumName;
+				return Localization.Manager.GetString(enumName) ?? enumName;
 			}
 		}
 		#endregion
@@ -92,12 +86,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public override bool Equals(object obj)
 		{
-			if (obj.GetType() == typeof(StrLanguage))
-			{
-				return (Id == ((StrLanguage)obj).Id);
-			}
-
-			return base.Equals(obj);
+			return obj.GetType() == typeof(StrLanguage) ? Id == ((StrLanguage)obj).Id : base.Equals(obj);
 		}
 
 		public override int GetHashCode()

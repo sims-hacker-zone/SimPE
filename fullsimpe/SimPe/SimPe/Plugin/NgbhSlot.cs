@@ -115,16 +115,11 @@ namespace SimPe.Plugin
 
 		public Collections.NgbhItems GetItems(Data.NeighborhoodSlots id)
 		{
-			if (
-				id == Data.NeighborhoodSlots.Families
+			return id == Data.NeighborhoodSlots.Families
 				|| id == Data.NeighborhoodSlots.Lots
 				|| id == Data.NeighborhoodSlots.Sims
-			)
-			{
-				return ItemsB;
-			}
-
-			return ItemsA;
+				? ItemsB
+				: ItemsA;
 		}
 
 		/// <summary>

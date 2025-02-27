@@ -51,32 +51,17 @@ namespace SimPe.Plugin
 		/// <returns></returns>
 		public ICresChildren GetBlock(int index)
 		{
-			if (Parent == null)
-			{
-				return null;
-			}
-
-			if (index < 0)
-			{
-				return null;
-			}
-
-			if (index >= Parent.Blocks.Length)
+			if (Parent == null || index < 0 || index >= Parent.Blocks.Length)
 			{
 				return null;
 			}
 
 			object o = Parent.Blocks[index];
 
-			if (
-				o.GetType().GetInterface("ICresChildren", false)
+			return o.GetType().GetInterface("ICresChildren", false)
 				== typeof(ICresChildren)
-			)
-			{
-				return (ICresChildren)o;
-			}
-
-			return null;
+				? (ICresChildren)o
+				: null;
 		}
 
 		/// <summary>
@@ -136,12 +121,7 @@ namespace SimPe.Plugin
 		public ICresChildren GetFirstParent()
 		{
 			IntArrayList l = GetParentBlocks();
-			if (l.Length == 0)
-			{
-				return null;
-			}
-
-			return (ICresChildren)parent.Blocks[l[0]];
+			return l.Length == 0 ? null : (ICresChildren)parent.Blocks[l[0]];
 		}
 
 		/// <summary>
@@ -299,18 +279,7 @@ namespace SimPe.Plugin
 			pos = -1;
 		}
 
-		public object Current
-		{
-			get
-			{
-				if (pos < ChildBlocks.Count && pos >= 0)
-				{
-					return GetBlock(ChildBlocks[pos]);
-				}
-
-				return null;
-			}
-		}
+		public object Current => pos < ChildBlocks.Count && pos >= 0 ? GetBlock(ChildBlocks[pos]) : (object)null;
 
 		public bool MoveNext()
 		{

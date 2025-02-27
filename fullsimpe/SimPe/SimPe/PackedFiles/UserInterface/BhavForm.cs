@@ -1150,14 +1150,7 @@ namespace SimPe.PackedFiles.UserInterface
 		private short OpsToShort(byte lo, byte hi)
 		{
 			ushort uval = (ushort)(lo + (hi << 8));
-			if (uval > 32767)
-			{
-				return (short)(uval - 65536);
-			}
-			else
-			{
-				return (short)uval;
-			}
+			return uval > 32767 ? (short)(uval - 65536) : (short)uval;
 		}
 
 		private byte[] ShortToOps(short val)

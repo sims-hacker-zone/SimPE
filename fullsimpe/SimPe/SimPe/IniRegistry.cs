@@ -368,11 +368,7 @@ namespace SimPe
 		public string GetValue(string section, string key, string def)
 		{
 			SectionContent kl = Section(section, false);
-			if (kl != null)
-			{
-				return kl.GetValue(key, def);
-			}
-			return def;
+			return kl != null ? kl.GetValue(key, def) : def;
 		}
 
 		public void SetValue(string section, string key, string value)

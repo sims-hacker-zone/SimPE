@@ -115,15 +115,7 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 		]
 		public uint SelectedGuid
 		{
-			get
-			{
-				if (!(SelectedItem is ContainerItem ci))
-				{
-					return 0;
-				}
-
-				return ci.Guid;
-			}
+			get => !(SelectedItem is ContainerItem ci) ? 0 : ci.Guid;
 			set
 			{
 				SelectedIndex = -1;

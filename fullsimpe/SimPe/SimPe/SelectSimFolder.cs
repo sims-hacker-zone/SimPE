@@ -260,12 +260,7 @@ namespace SimPe
 			SelectSimFolder f = new SelectSimFolder();
 			f.tbFolder.Text = path;
 
-			if (f.ShowDialog() == DialogResult.OK)
-			{
-				return f.tbFolder.Text;
-			}
-
-			return path;
+			return f.ShowDialog() == DialogResult.OK ? f.tbFolder.Text : path;
 		}
 
 		private void button1_Click(object sender, System.EventArgs e)

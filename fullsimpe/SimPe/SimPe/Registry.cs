@@ -722,14 +722,7 @@ namespace SimPe
 			{
 				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("Language");
-				if (o == null)
-				{
-					return Helper.GetMatchingLanguage();
-				}
-				else
-				{
-					return (Data.MetaData.Languages)Convert.ToByte(o);
-				}
+				return o == null ? Helper.GetMatchingLanguage() : (Data.MetaData.Languages)Convert.ToByte(o);
 			}
 			set
 			{
@@ -1518,14 +1511,7 @@ namespace SimPe
 		{
 			XmlRegistryKey rkf = RegistryKey.CreateSubKey("Priorities");
 			object o = rkf.GetValue(Helper.HexString(uid));
-			if (o == null)
-			{
-				return 0x00000000;
-			}
-			else
-			{
-				return Convert.ToInt32(o);
-			}
+			return o == null ? 0x00000000 : Convert.ToInt32(o);
 		}
 
 		/// <summary>

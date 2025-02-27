@@ -26,28 +26,7 @@ namespace SimPe
 			public bool FullObjectsPackage => !GetBit(5);
 			public bool HasNgbhProfiles => GetBit(6);
 
-			public Classes Class
-			{
-				get
-				{
-					if (RegularExpansion)
-					{
-						return Classes.ExpansionPack;
-					}
-
-					if (StuffPack)
-					{
-						return Classes.StuffPack;
-					}
-
-					if (SimStory)
-					{
-						return Classes.Story;
-					}
-
-					return Classes.BaseGame;
-				}
-			}
+			public Classes Class => RegularExpansion ? Classes.ExpansionPack : StuffPack ? Classes.StuffPack : SimStory ? Classes.Story : Classes.BaseGame;
 		}
 
 		string name;
@@ -457,12 +436,7 @@ namespace SimPe
 
 			public override int GetHashCode()
 			{
-				if (Expansion == null)
-				{
-					return 0;
-				}
-
-				return Expansion.Version;
+				return Expansion == null ? 0 : Expansion.Version;
 			}
 
 			public override bool Equals(object obj)
@@ -664,24 +638,17 @@ namespace SimPe
 			{
 				try
 				{
-					if (
-						System.IO.File.Exists(
+					return System.IO.File.Exists(
 							System.IO.Path.Combine(InstallFolder, "TSBin\\" + ExeName)
 						)
-					)
-					{
-						return System.IO.Path.Combine(
+						? System.IO.Path.Combine(
 							InstallFolder,
 							"TSBin\\" + ExeName
-						);
-					}
-					else
-					{
-						return System.IO.Path.Combine(
+						)
+						: System.IO.Path.Combine(
 							RealInstallFolder,
 							"TSBin\\" + ExeName
 						);
-					}
 				}
 				catch (Exception)
 				{
@@ -703,12 +670,7 @@ namespace SimPe
 		protected string GetShortName()
 		{
 			string ret = IdKey.Trim().ToUpper().Replace("SIMS2", "");
-			if (ret == "")
-			{
-				return "Game";
-			}
-
-			return ret;
+			return ret == "" ? "Game" : ret;
 		}
 
 		public string ShortId
@@ -748,14 +710,7 @@ namespace SimPe
 				try
 				{
 					object o = tk.GetValue("Path");
-					if (o == null)
-					{
-						return "";
-					}
-					else
-					{
-						return Helper.ToLongPathName(o.ToString());
-					}
+					return o == null ? "" : Helper.ToLongPathName(o.ToString());
 				}
 				catch (Exception)
 				{
@@ -784,12 +739,7 @@ namespace SimPe
 					{
 						string fl = o.ToString();
 
-						if (!System.IO.Directory.Exists(fl))
-						{
-							return RealInstallFolder;
-						}
-
-						return fl;
+						return !System.IO.Directory.Exists(fl) ? RealInstallFolder : fl;
 					}
 				}
 				catch (Exception)
@@ -821,24 +771,10 @@ namespace SimPe
 		{
 			try
 			{
-				string s = ExeName;
-				Microsoft.Win32.RegistryKey fk =
-					Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
-						"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\" + s,
+				return Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
+						"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\" + ExeName,
 						false
-					);
-				if (fk == null)
-				{
-					return null;
-				}
-
-				object fr = fk.GetValue("Path");
-				if (fr == null)
-				{
-					return null;
-				}
-
-				return fr.ToString();
+					)?.GetValue("Path")?.ToString();
 			}
 			catch (Exception)
 			{
@@ -941,14 +877,7 @@ namespace SimPe
 
 		public int CompareTo(object obj)
 		{
-			if (!(obj is ExpansionItem a))
-			{
-				return 0;
-			}
-			else
-			{
-				return Version.CompareTo(a.Version);
-			}
+			return !(obj is ExpansionItem a) ? 0 : Version.CompareTo(a.Version);
 		}
 
 		#endregion

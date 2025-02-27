@@ -248,14 +248,7 @@ namespace SimPe.Plugin.Gmdc
 				}
 
 				//Do we have aliases?
-				if (AliasValues[nr].Length == 0)
-				{
-					return index;
-				}
-				else
-				{
-					return AliasValues[nr][index];
-				}
+				return AliasValues[nr].Length == 0 ? index : AliasValues[nr][index];
 			}
 			catch
 			{

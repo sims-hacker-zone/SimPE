@@ -452,23 +452,17 @@ namespace SimPe
 		#region Plugins
 		public Image GetImage(Interfaces.IWrapper wrapper)
 		{
-			if (uids.Contains(wrapper.WrapperDescription.UID))
-			{
-				return Image.FromStream(
+			return uids.Contains(wrapper.WrapperDescription.UID)
+				? Image.FromStream(
 					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.error.png")
-				);
-			}
-
-			if (wrapper.Priority >= 0)
-			{
-				return Image.FromStream(
+				)
+				: wrapper.Priority >= 0
+				? Image.FromStream(
 					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.enabled.png")
-				);
-			}
-
-			return Image.FromStream(
+				)
+				: Image.FromStream(
 				GetType()
 					.Assembly.GetManifestResourceStream("SimPe.img.disabled.png")
 			);
@@ -494,20 +488,15 @@ namespace SimPe
 
 		public Image GetShrinkImage(TD.Eyefinder.HeaderControl pn)
 		{
-			if (pn.Height == pn.DisplayRectangle.Top + 1)
-			{
-				return Image.FromStream(
+			return pn.Height == pn.DisplayRectangle.Top + 1
+				? Image.FromStream(
 					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.expand.png")
-				);
-			}
-			else
-			{
-				return Image.FromStream(
+				)
+				: Image.FromStream(
 					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.shrink.png")
 				);
-			}
 		}
 
 		public bool ThumbnailCallback()
@@ -1437,15 +1426,9 @@ namespace SimPe
 			}
 
 			string cfn = Helper.CompareableFileName(fti.Name);
-			if (
-				ei.Version == PathProvider.Global.GameVersion
-				&& (cfn.EndsWith("\\objects") || cfn.EndsWith("\\overrides"))
-			)
-			{
-				return true;
-			}
-
-			return cfn.EndsWith("\\3d")
+			return (ei.Version == PathProvider.Global.GameVersion
+				&& (cfn.EndsWith("\\objects") || cfn.EndsWith("\\overrides")))
+|| cfn.EndsWith("\\3d")
 				|| cfn.EndsWith("\\sims3d")
 				|| cfn.EndsWith("\\stuffpack\\objects")
 				|| cfn.EndsWith("\\materials");
@@ -1471,35 +1454,14 @@ namespace SimPe
 
 		private bool IsMatch(CheckBox cb, FileTableItem fti, FileTableItemType epver)
 		{
-			if (isCEP(fti))
-			{
-				return cb == cbIncCep;
-			}
-
-			if (cb == lcb["cbIncGraphics"])
-			{
-				return IsFtiGraphic(fti);
-			}
-
-			return IsEP(fti, epver);
+			return isCEP(fti) ? cb == cbIncCep : cb == lcb["cbIncGraphics"] ? IsFtiGraphic(fti) : IsEP(fti, epver);
 		}
 
 		private bool neveruse(ExpansionItem ti)
 		{
-			if (
-				PathProvider.Global.GameVersion == 19
-				&& (ti.Version == 18 || ti.Version == 17)
-			)
-			{
-				return true;
-			}
-
-			if (PathProvider.Global.GameVersion == 18 && ti.Version == 17)
-			{
-				return true;
-			}
-
-			return false;
+			return (PathProvider.Global.GameVersion == 19
+				&& (ti.Version == 18 || ti.Version == 17))
+|| PathProvider.Global.GameVersion == 18 && ti.Version == 17;
 		}
 
 		private void SetupFileTableCheckboxes(CheckBox cb, FileTableItemType epver)

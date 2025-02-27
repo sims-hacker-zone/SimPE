@@ -27,18 +27,7 @@ namespace SimPe
 	public class Warning : Exception
 	{
 		string details;
-		public string Details
-		{
-			get
-			{
-				if (details == null)
-				{
-					return "";
-				}
-
-				return details;
-			}
-		}
+		public string Details => details ?? "";
 
 		public Warning(string message, string details)
 			: base(message)

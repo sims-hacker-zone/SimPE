@@ -82,31 +82,9 @@ namespace SimPe.PackedFiles.Wrapper
 #endif
 		}
 
-		public uint TargetSimInstance
-		{
-			get
-			{
-				if (FileDescriptor == null)
-				{
-					return 0;
-				}
+		public uint TargetSimInstance => FileDescriptor == null ? 0 : FileDescriptor.Instance & 0xffff;
 
-				return (FileDescriptor.Instance & 0xffff);
-			}
-		}
-
-		public uint SourceSimInstance
-		{
-			get
-			{
-				if (FileDescriptor == null)
-				{
-					return 0;
-				}
-
-				return ((FileDescriptor.Instance >> 16) & 0xffff);
-			}
-		}
+		public uint SourceSimInstance => FileDescriptor == null ? 0 : (FileDescriptor.Instance >> 16) & 0xffff;
 
 		ExtSDesc src,
 			dst;
@@ -144,31 +122,9 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public string SourceSimName
-		{
-			get
-			{
-				if (SourceSim != null)
-				{
-					return SourceSim.SimName + " " + SourceSim.SimFamilyName;
-				}
+		public string SourceSimName => SourceSim != null ? SourceSim.SimName + " " + SourceSim.SimFamilyName : Localization.GetString("Unknown");
 
-				return Localization.GetString("Unknown");
-			}
-		}
-
-		public string TargetSimName
-		{
-			get
-			{
-				if (TargetSim != null)
-				{
-					return TargetSim.SimName + " " + TargetSim.SimFamilyName;
-				}
-
-				return Localization.GetString("Unknown");
-			}
-		}
+		public string TargetSimName => TargetSim != null ? TargetSim.SimName + " " + TargetSim.SimFamilyName : Localization.GetString("Unknown");
 
 		public Image Image
 		{

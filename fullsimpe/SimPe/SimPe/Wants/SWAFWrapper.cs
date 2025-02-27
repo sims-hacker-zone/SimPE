@@ -368,16 +368,11 @@ namespace SimPe.Wants
 		#region IFileWrapperSaveExtension Member
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
-			if (!(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
+			return !(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 					(ushort)FileDescriptor.Instance
-				) is ExtSDesc sdsc))
-			{
-				return base.GetResourceName(ta);
-			}
-			else
-			{
-				return sdsc.SimName + " " + sdsc.SimFamilyName + " (Wants/Fears)";
-			}
+				) is ExtSDesc sdsc)
+				? base.GetResourceName(ta)
+				: sdsc.SimName + " " + sdsc.SimFamilyName + " (Wants/Fears)";
 		}
 		#endregion
 
@@ -722,12 +717,7 @@ namespace SimPe.Wants
 
 		private ushort getArgUshort(ArgTypes type, uint minVer)
 		{
-			if (argType != type || version < minVer)
-			{
-				throw new InvalidOperationException();
-			}
-
-			return (ushort)arg;
+			return argType != type || version < minVer ? throw new InvalidOperationException() : (ushort)arg;
 		}
 
 		private void setArgUshort(ArgTypes type, uint minVer, ushort value)
@@ -742,12 +732,7 @@ namespace SimPe.Wants
 
 		private uint getArgUint(ArgTypes type)
 		{
-			if (argType != type)
-			{
-				throw new InvalidOperationException();
-			}
-
-			return (uint)arg;
+			return argType != type ? throw new InvalidOperationException() : (uint)arg;
 		}
 
 		private void setArgUint(ArgTypes type, uint value)

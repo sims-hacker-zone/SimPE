@@ -64,20 +64,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Get the Local Group Value used for this Package
 		/// </summary>
-		public uint LocalGroup
-		{
-			get
-			{
-				if (FileDescriptor.Group == Data.MetaData.LOCAL_GROUP)
-				{
-					return localgr;
-				}
-				else
-				{
-					return FileDescriptor.Group;
-				}
-			}
-		}
+		public uint LocalGroup => FileDescriptor.Group == Data.MetaData.LOCAL_GROUP ? localgr : FileDescriptor.Group;
 
 		/// <summary>
 		/// Create a new Instance
@@ -109,14 +96,7 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			if (FileDescriptor != null)
-			{
-				return FileDescriptor.Filename;
-			}
-			else
-			{
-				return Localization.Manager.GetString("unknown");
-			}
+			return FileDescriptor != null ? FileDescriptor.Filename : Localization.Manager.GetString("unknown");
 		}
 
 		public override int GetHashCode()
@@ -149,14 +129,7 @@ namespace SimPe.Plugin
 				//null Values for Packages
 				if (fii.Package == null)
 				{
-					if (Package != null)
-					{
-						return false;
-					}
-					else
-					{
-						return res;
-					}
+					return Package == null && res;
 				}
 				else if (Package == null)
 				{
@@ -1611,12 +1584,7 @@ namespace SimPe.Plugin
 				}
 			}
 
-			if (list.Length > 0)
-			{
-				return list[0];
-			}
-
-			return null;
+			return list.Length > 0 ? list[0] : null;
 		}
 
 		/// <summary>

@@ -158,14 +158,7 @@ namespace SimPe.Plugin.Gmdc
 		public static IGmdcExporter FindExporterByExtension(string fileext)
 		{
 			int res = FindFirstIndexByExtension(fileext);
-			if (res == -1)
-			{
-				return null;
-			}
-			else
-			{
-				return Exporters[res];
-			}
+			return res == -1 ? null : Exporters[res];
 		}
 
 		/// <summary>
@@ -176,14 +169,7 @@ namespace SimPe.Plugin.Gmdc
 		public static int FindFirstIndexByExtension(string fileext)
 		{
 			int[] res = FindIndexByExtension(fileext);
-			if (res.Length == 0)
-			{
-				return -1;
-			}
-			else
-			{
-				return res[0];
-			}
+			return res.Length == 0 ? -1 : res[0];
 		}
 
 		/// <summary>
@@ -223,14 +209,7 @@ namespace SimPe.Plugin.Gmdc
 		public static int FindFirstImporterIndexByExtension(string fileext)
 		{
 			int[] res = FindImporterIndexByExtension(fileext);
-			if (res.Length == 0)
-			{
-				return -1;
-			}
-			else
-			{
-				return res[0];
-			}
+			return res.Length == 0 ? -1 : res[0];
 		}
 
 		/// <summary>

@@ -64,27 +64,12 @@ namespace SimPe
 
 		public bool OpenPackage(string filename)
 		{
-			if (!System.IO.File.Exists(filename))
-			{
-				return false;
-			}
-
-			return lp.LoadFromFile(filename);
+			return System.IO.File.Exists(filename) && lp.LoadFromFile(filename);
 		}
 
 		public bool OpenMemPackage(Interfaces.Files.IPackageFile pkg)
 		{
-			if (pkg == null)
-			{
-				return false;
-			}
-
-			if (!(pkg is Packages.GeneratableFile))
-			{
-				return false;
-			}
-
-			return lp.LoadFromPackage((Packages.GeneratableFile)pkg);
+			return pkg != null && pkg is Packages.GeneratableFile file && lp.LoadFromPackage(file);
 		}
 
 		public bool OpenPackedFile(

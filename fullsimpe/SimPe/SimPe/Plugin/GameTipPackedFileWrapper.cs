@@ -54,7 +54,7 @@ namespace SimPe.Plugin
 				"Chris",
 				"To aid unravelling Game Tip files",
 				2,
-				GetIcon.GameTit
+				GetIcon.GameTip
 			);
 		}
 

@@ -114,12 +114,7 @@ namespace pj
 			ofd.Title = L.Get("selectPkgTexture");
 			ofd.ValidateNames = true;
 			DialogResult dr = ofd.ShowDialog();
-			if (DialogResult.OK.Equals(dr))
-			{
-				return ofd.FileName;
-			}
-
-			return null;
+			return DialogResult.OK.Equals(dr) ? ofd.FileName : null;
 		}
 
 		private bool findAndAdd(String name, uint type, String source)

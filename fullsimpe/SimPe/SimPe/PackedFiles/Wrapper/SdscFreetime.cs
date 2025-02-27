@@ -244,22 +244,7 @@ if (pa == SimPe.Data.MetaData.AspirationTypes.Nothing)
 		/// </remarks>
 		public Data.MetaData.AspirationTypes PrimaryAspiration
 		{
-			get
-			{
-				if (parent == null)
-				{
-					return pa;
-				}
-
-				if ((int)parent.Version >= (int)SDescVersions.Freetime)
-				{
-					return pa;
-				}
-				else
-				{
-					return parent.CharacterDescription.Aspiration;
-				}
-			}
+			get => parent == null ? pa : (int)parent.Version >= (int)SDescVersions.Freetime ? pa : parent.CharacterDescription.Aspiration;
 			set
 			{
 				if ((int)parent.Version >= (int)SDescVersions.Freetime)

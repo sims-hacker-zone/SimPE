@@ -473,22 +473,9 @@ namespace SimPe.Windows.Forms
 
 			public int Compare(ColumnHeader x, ColumnHeader y)
 			{
-				if (x.ListView == null && y.ListView == null)
-				{
-					return 0;
-				}
-
-				if (x.ListView == null)
-				{
-					return 1;
-				}
-
-				if (y.ListView == null)
-				{
-					return -1;
-				}
-
-				return x.DisplayIndex.CompareTo(y.DisplayIndex);
+				return x.ListView == null && y.ListView == null
+					? 0
+					: x.ListView == null ? 1 : y.ListView == null ? -1 : x.DisplayIndex.CompareTo(y.DisplayIndex);
 			}
 
 			#endregion

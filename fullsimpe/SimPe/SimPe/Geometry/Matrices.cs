@@ -74,17 +74,9 @@ namespace SimPe.Geometry
 		/// <returns></returns>
 		public Vector3f GetVector()
 		{
-			if ((Rows != 3 || Columns != 1) && ((Rows != 1 || Columns != 3)))
-			{
-				return null;
-			}
-
-			if (Rows == 3)
-			{
-				return new Vector3f(m[0][0], m[1][0], m[2][0]);
-			}
-
-			return new Vector3f(m[0][1], m[0][1], m[0][2]);
+			return (Rows != 3 || Columns != 1) && (Rows != 1 || Columns != 3)
+				? null
+				: Rows == 3 ? new Vector3f(m[0][0], m[1][0], m[2][0]) : new Vector3f(m[0][1], m[0][1], m[0][2]);
 		}
 
 		/// <summary>
@@ -93,17 +85,9 @@ namespace SimPe.Geometry
 		/// <returns></returns>
 		public Vector4f GetVector4()
 		{
-			if ((Rows != 4 || Columns != 1) && ((Rows != 1 || Columns != 4)))
-			{
-				return null;
-			}
-
-			if (Rows == 4)
-			{
-				return new Vector4f(m[0][0], m[1][0], m[2][0], m[3][0]);
-			}
-
-			return new Vector4f(m[0][1], m[0][1], m[0][2], m[0][3]);
+			return (Rows != 4 || Columns != 1) && (Rows != 1 || Columns != 4)
+				? null
+				: Rows == 4 ? new Vector4f(m[0][0], m[1][0], m[2][0], m[3][0]) : new Vector4f(m[0][1], m[0][1], m[0][2], m[0][3]);
 		}
 
 		/// <summary>
@@ -152,18 +136,7 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// Numbner of stored Columns
 		/// </summary>
-		public int Columns
-		{
-			get
-			{
-				if (Rows == 0)
-				{
-					return 0;
-				}
-
-				return m[0].Length;
-			}
-		}
+		public int Columns => Rows == 0 ? 0 : m[0].Length;
 
 		/// <summary>
 		/// Integer Indexer (row, column)
@@ -737,12 +710,7 @@ namespace SimPe.Geometry
 				}
 
 				t = GetTranspose() * this;
-				if (!t.Identity)
-				{
-					return false;
-				}
-
-				return true;
+				return t.Identity;
 			}
 		}
 

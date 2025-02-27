@@ -35,12 +35,7 @@ namespace pjHoodTool
 	{
 		string q(string u)
 		{
-			if (u == null)
-			{
-				return u;
-			}
-
-			return "\"" + u.Replace("\"", "\"\"") + "\"";
+			return u == null ? u : "\"" + u.Replace("\"", "\"\"") + "\"";
 		}
 
 		Settims getim = new Settims();

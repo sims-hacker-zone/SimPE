@@ -228,37 +228,17 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the Name of this Want
 		/// </summary>
-		public virtual string Name
-		{
-			get
-			{
-				if (str == null)
-				{
-					return "0x" + Helper.HexString(guid);
-				}
-
-				return str.FallbackedLanguageItem(
+		public virtual string Name => str == null
+					? "0x" + Helper.HexString(guid)
+					: str.FallbackedLanguageItem(
 					Helper.WindowsRegistry.LanguageCode,
 					0
 				).Title;
-			}
-		}
 
 		/// <summary>
 		/// Returns Icon for this want or null
 		/// </summary>
-		public virtual System.Drawing.Image Icon
-		{
-			get
-			{
-				if (primicon == null)
-				{
-					return null;
-				}
-
-				return primicon.Image;
-			}
-		}
+		public virtual System.Drawing.Image Icon => primicon?.Image;
 
 		/// <summary>
 		/// The guid of the current Want

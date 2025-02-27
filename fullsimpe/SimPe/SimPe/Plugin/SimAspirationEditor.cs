@@ -199,12 +199,7 @@ namespace SimPe.Plugin
 			}
 
 			NgbhItem ni = GetSecondaryAspirationToken(sim, false);
-			if (ni == null)
-			{
-				return 0;
-			}
-
-			return ni.Value;
+			return ni == null ? (ushort)0 : ni.Value;
 		}
 	}
 }

@@ -81,18 +81,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Returns the color that should be used to display this Group in the "Import Groups" ListView
 		/// </summary>
-		public System.Drawing.Color MarkColor
-		{
-			get
-			{
-				if (Action == GmdcImporterAction.Nothing)
-				{
-					return System.Drawing.Color.Silver;
-				}
-
-				return System.Drawing.Color.DarkBlue;
-			}
-		}
+		public System.Drawing.Color MarkColor => Action == GmdcImporterAction.Nothing ? System.Drawing.Color.Silver : System.Drawing.Color.DarkBlue;
 
 		/// <summary>
 		/// Returns/Sets the scale Factor that should be applied to this group

@@ -53,20 +53,7 @@ namespace SimPe
 				get;
 			}
 
-			public object Item
-			{
-				get
-				{
-					if (data.Length == 0)
-					{
-						return null;
-					}
-					else
-					{
-						return data[0];
-					}
-				}
-			}
+			public object Item => data.Length == 0 ? null : data[0];
 
 			public object Items => data;
 		}
@@ -166,33 +153,11 @@ namespace SimPe
 
 		static bool VisibleForm(System.Windows.Forms.Form form)
 		{
-			if (!form.ShowInTaskbar)
-			{
-				return false;
-			}
-
-			if (
-				form.FormBorderStyle
-				== System.Windows.Forms.FormBorderStyle.FixedToolWindow
-			)
-			{
-				return false;
-			}
-
-			if (
-				form.FormBorderStyle
-				== System.Windows.Forms.FormBorderStyle.SizableToolWindow
-			)
-			{
-				return false;
-			}
-
-			if (form.MinimizeBox == false)
-			{
-				return false;
-			}
-
-			return true;
+			return form.ShowInTaskbar && form.FormBorderStyle
+				!= System.Windows.Forms.FormBorderStyle.FixedToolWindow
+&& form.FormBorderStyle
+				!= System.Windows.Forms.FormBorderStyle.SizableToolWindow
+&& form.MinimizeBox;
 		}
 
 		public static void ShowSubForm(System.Windows.Forms.Form form)

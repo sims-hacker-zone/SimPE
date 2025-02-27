@@ -173,18 +173,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		public NgbhSlot SelectedSlot
-		{
-			get
-			{
-				if (lv.SelectedItems.Count == 0)
-				{
-					return null;
-				}
-
-				return lv.SelectedItems[0].Tag as NgbhSlot;
-			}
-		}
+		public NgbhSlot SelectedSlot => lv.SelectedItems.Count == 0 ? null : lv.SelectedItems[0].Tag as NgbhSlot;
 
 		public event EventHandler SelectedSlotChanged;
 	}

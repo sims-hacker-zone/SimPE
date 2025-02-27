@@ -63,24 +63,17 @@ namespace SimPe
 			get
 			{
 				string name = Helper.DataFolder.ExpansionsXREG;
-				if (File.Exists(name))
-				{
-					return Helper.DataFolder.ExpansionsXREG;
-				}
-				else if (Helper.ECCorNewSEfound)
-				{
-					return Path.Combine(
-						Helper.SimPeDataPath,
-						"expansions2.xreg"
-					);
-				}
-				else
-				{
-					return Path.Combine(
-						Helper.SimPeDataPath,
-						"expansions.xreg"
-					);
-				}
+				return File.Exists(name)
+					? Helper.DataFolder.ExpansionsXREG
+					: Helper.ECCorNewSEfound
+						? Path.Combine(
+											Helper.SimPeDataPath,
+											"expansions2.xreg"
+										)
+						: Path.Combine(
+											Helper.SimPeDataPath,
+											"expansions.xreg"
+										);
 				// else return System.IO.Path.Combine(Helper.SimPeDataPath, "expansions.xreg");
 			}
 		}
@@ -239,22 +232,12 @@ namespace SimPe
 		}
 
 		public int GameVersion // if Ts2 not installed will return a Story Version if installed
-		{
-			get
-			{
-				if (
-					!GetExpansion(SimPe.Expansions.BaseGame).Exists
+=> !GetExpansion(SimPe.Expansions.BaseGame).Exists
 					&& EPInstalled == 0
 					&& SPInstalled == 0
 					&& STInstalled > 0
-				)
-				{
-					return STInstalled;
-				}
-
-				return Math.Max(EPInstalled, SPInstalled);
-			}
-		}
+					? STInstalled
+					: Math.Max(EPInstalled, SPInstalled);
 
 		public int EPInstalled
 		{
@@ -319,12 +302,9 @@ namespace SimPe
 				if (rk != null)
 				{
 					object o = rk.GetValue("Language");
-					if (o == null)
-					{
-						return "Invalid Language Id";
-					}
-
-					return Data.MetaData.GetLanguageName(
+					return o == null
+						? "Invalid Language Id"
+						: Data.MetaData.GetLanguageName(
 						Convert.ToInt16(o.ToString())
 					);
 				}
@@ -431,12 +411,7 @@ namespace SimPe
 		/// returns false.</returns>
 		public ExpansionItem GetExpansion(Expansions exp)
 		{
-			if (!map.ContainsKey(exp))
-			{
-				return Nil;
-			}
-
-			return map[exp];
+			return !map.ContainsKey(exp) ? Nil : map[exp];
 		}
 
 		public ExpansionItem this[Expansions ep] => GetExpansion(ep);
@@ -462,24 +437,7 @@ namespace SimPe
 		/// </summary>
 		internal bool BlurNudity
 		{
-			get
-			{
-				if (Global.EPInstalled < 18)
-				{
-					if (Latest.CensorFile == "")
-					{
-						return BlurNudityPreEP2;
-					}
-					else
-					{
-						return BlurNudityPostEP2;
-					}
-				}
-				else
-				{
-					return true;
-				}
-			}
+			get => Global.EPInstalled < 18 ? Latest.CensorFile == "" ? BlurNudityPreEP2 : BlurNudityPostEP2 : true;
 			set
 			{
 				if (Global.EPInstalled < 18)
@@ -912,12 +870,7 @@ namespace SimPe
 					else
 					{
 						string fl = o.ToString();
-						if (!Directory.Exists(fl))
-						{
-							return RealSavegamePath;
-						}
-
-						return fl;
+						return !Directory.Exists(fl) ? RealSavegamePath : fl;
 					}
 				}
 				catch (Exception)
@@ -1048,12 +1001,7 @@ namespace SimPe
 					XmlRegistryKey rkf =
 						Helper.WindowsRegistry.RegistryKey.CreateSubKey("Settings");
 					object o = rkf.GetValue("NvidiaDDS");
-					if (o == null)
-					{
-						return "";
-					}
-
-					return o.ToString();
+					return o == null ? "" : o.ToString();
 				}
 				catch (Exception)
 				{

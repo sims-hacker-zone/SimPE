@@ -88,12 +88,7 @@ namespace SimPe
 		public static object CreateInstance(Assembly asm, string name, object[] args)
 		{
 			Type t = asm.GetType(name, false);
-			if (t == null)
-			{
-				return null;
-			}
-
-			return Activator.CreateInstance(t, args);
+			return t == null ? null : Activator.CreateInstance(t, args);
 		}
 	}
 }

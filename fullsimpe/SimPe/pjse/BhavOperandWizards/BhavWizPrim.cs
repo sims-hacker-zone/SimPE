@@ -200,12 +200,9 @@ namespace pjse.BhavNameWizards
 					return new WizPrim0x007e(i);
 			}
 
-			if (i.OpCode >= 0x0034 && i.OpCode <= 0x0068 || i.OpCode >= 0x007f)
-			{
-				return new WizPrimUnused(i);
-			}
-
-			throw new Exception("OpCode defies understanding");
+			return (i.OpCode >= 0x0034 && i.OpCode <= 0x0068) || i.OpCode >= 0x007f
+				? (BhavWizPrim)new WizPrimUnused(i)
+				: throw new Exception("OpCode defies understanding");
 		}
 
 		protected override string OpcodeName => readStr(GS.BhavStr.Primitives, instruction.OpCode);

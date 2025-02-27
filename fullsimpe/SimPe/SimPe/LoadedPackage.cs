@@ -116,23 +116,7 @@ namespace SimPe
 		/// <summary>
 		/// returns an empty string or the FileName of the current package
 		/// </summary>
-		public string FileName
-		{
-			get
-			{
-				if (Package == null)
-				{
-					return "";
-				}
-
-				if (Package.FileName == null)
-				{
-					return "";
-				}
-
-				return Package.FileName;
-			}
-		}
+		public string FileName => Package == null ? "" : Package.FileName ?? "";
 
 		/// <summary>
 		/// Make sure the Events get Linked
@@ -243,12 +227,7 @@ namespace SimPe
 		/// <returns></returns>
 		public bool Save()
 		{
-			if (FileName.Trim() == "")
-			{
-				return false;
-			}
-
-			return Save(FileName, false);
+			return FileName.Trim() != "" && Save(FileName, false);
 		}
 
 		/// <summary>
@@ -516,107 +495,51 @@ namespace SimPe
 		/// <returns></returns>
 		Shortcut GetShortCut(int i)
 		{
-			if (i == 1)
+			switch (i)
 			{
-				return Shortcut.Ctrl1;
+				case 1:
+					return Shortcut.Ctrl1;
+				case 2:
+					return Shortcut.Ctrl2;
+				case 3:
+					return Shortcut.Ctrl3;
+				case 4:
+					return Shortcut.Ctrl4;
+				case 5:
+					return Shortcut.Ctrl5;
+				case 6:
+					return Shortcut.Ctrl6;
+				case 7:
+					return Shortcut.Ctrl7;
+				case 8:
+					return Shortcut.Ctrl8;
+				case 9:
+					return Shortcut.Ctrl9;
+				case 10:
+					return Shortcut.Ctrl0;
+				case 11:
+					return Shortcut.Alt1;
+				case 12:
+					return Shortcut.Alt2;
+				case 13:
+					return Shortcut.Alt3;
+				case 14:
+					return Shortcut.Alt4;
+				case 15:
+					return Shortcut.Alt5;
+				case 16:
+					return Shortcut.Alt6;
+				case 17:
+					return Shortcut.Alt7;
+				case 18:
+					return Shortcut.Alt8;
+				case 19:
+					return Shortcut.Alt9;
+				case 20:
+					return Shortcut.Alt0;
+				default:
+					return Shortcut.None;
 			}
-
-			if (i == 2)
-			{
-				return Shortcut.Ctrl2;
-			}
-
-			if (i == 3)
-			{
-				return Shortcut.Ctrl3;
-			}
-
-			if (i == 4)
-			{
-				return Shortcut.Ctrl4;
-			}
-
-			if (i == 5)
-			{
-				return Shortcut.Ctrl5;
-			}
-
-			if (i == 6)
-			{
-				return Shortcut.Ctrl6;
-			}
-
-			if (i == 7)
-			{
-				return Shortcut.Ctrl7;
-			}
-
-			if (i == 8)
-			{
-				return Shortcut.Ctrl8;
-			}
-
-			if (i == 9)
-			{
-				return Shortcut.Ctrl9;
-			}
-
-			if (i == 10)
-			{
-				return Shortcut.Ctrl0;
-			}
-
-			if (i == 11)
-			{
-				return Shortcut.Alt1;
-			}
-
-			if (i == 12)
-			{
-				return Shortcut.Alt2;
-			}
-
-			if (i == 13)
-			{
-				return Shortcut.Alt3;
-			}
-
-			if (i == 14)
-			{
-				return Shortcut.Alt4;
-			}
-
-			if (i == 15)
-			{
-				return Shortcut.Alt5;
-			}
-
-			if (i == 16)
-			{
-				return Shortcut.Alt6;
-			}
-
-			if (i == 17)
-			{
-				return Shortcut.Alt7;
-			}
-
-			if (i == 18)
-			{
-				return Shortcut.Alt8;
-			}
-
-			if (i == 19)
-			{
-				return Shortcut.Alt9;
-			}
-
-			if (i == 20)
-			{
-				return Shortcut.Alt0;
-			}
-
-			return Shortcut.None;
 		}
 
 		/// <summary>

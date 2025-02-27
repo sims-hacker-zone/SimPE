@@ -340,12 +340,7 @@ namespace SimPe.Plugin
 
 		public PackageInfo GetPackageInfo(HairColor key)
 		{
-			if (packages.ContainsKey(key))
-			{
-				return packages[key];
-			}
-
-			return null;
+			return packages.ContainsKey(key) ? packages[key] : null;
 		}
 
 		public void RevertToBaseTextures(RcolTable materials)
@@ -541,12 +536,7 @@ namespace SimPe.Plugin
 
 		public IPackedFileDescriptor[] GetTextureDescriptor(Rcol rcol)
 		{
-			if (rcol is MaterialDefinitionRcol mmat)
-			{
-				return mmat.Textures.GetFileDescriptor();
-			}
-
-			return new IPackedFileDescriptor[0];
+			return rcol is MaterialDefinitionRcol mmat ? mmat.Textures.GetFileDescriptor() : (new IPackedFileDescriptor[0]);
 		}
 
 		Hashtable loadedTextures = new Hashtable();

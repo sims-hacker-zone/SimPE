@@ -260,14 +260,7 @@ catch (Exception) {};*/
 		public ushort GetAttributeShort(string name)
 		{
 			object o = attr[name];
-			if (o == null)
-			{
-				return 0;
-			}
-			else
-			{
-				return ((ObjdItem)o).val;
-			}
+			return o == null ? (ushort)0 : ((ObjdItem)o).val;
 		}
 
 		/// <summary>
@@ -278,14 +271,7 @@ catch (Exception) {};*/
 		public long GetAttributePosition(string name)
 		{
 			object o = attr[name];
-			if (o == null)
-			{
-				return 0;
-			}
-			else
-			{
-				return ((ObjdItem)o).position;
-			}
+			return o == null ? 0 : ((ObjdItem)o).position;
 		}
 
 		#region IWrapper Member

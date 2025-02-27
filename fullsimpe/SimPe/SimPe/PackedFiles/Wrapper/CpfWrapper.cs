@@ -134,28 +134,14 @@ namespace SimPe.PackedFiles.Wrapper
 		public CpfItem GetSaveItem(string name)
 		{
 			CpfItem res = GetItem(name);
-			if (res == null)
-			{
-				return new CpfItem();
-			}
-			else
-			{
-				return res;
-			}
+			return res ?? new CpfItem();
 		}
 
 		#region IWrapper member
 		public override bool CheckVersion(uint version)
 		{
-			if (
-				(version == 0009) //0.00
-				|| (version == 0010) //0.10
-			)
-			{
-				return true;
-			}
-
-			return false;
+			return (version == 0009) //0.00
+				|| (version == 0010); //0.10
 		}
 		#endregion
 
@@ -191,14 +177,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 
 			CpfItem item = GetItem("name");
-			if (item == null)
-			{
-				return base.GetResourceName(ta);
-			}
-			else
-			{
-				return item.StringValue;
-			}
+			return item == null ? base.GetResourceName(ta) : item.StringValue;
 		}
 
 #if DEBUG

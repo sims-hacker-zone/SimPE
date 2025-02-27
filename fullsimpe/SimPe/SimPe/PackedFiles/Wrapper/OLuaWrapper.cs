@@ -1089,15 +1089,8 @@ namespace SimPe.PackedFiles.Wrapper
 		protected static Type GetOpcodeType(byte opcode)
 		{
 			PrepareOpcodeMap();
-			string n = GetOpcodeName(opcode);
-			Type t = ocmap[n] as Type;
 
-			if (t == null)
-			{
-				return typeof(ObjLuaCode);
-			}
-
-			return t;
+			return ocmap[GetOpcodeName(opcode)] as Type ?? typeof(ObjLuaCode);
 		}
 
 		public static ObjLuaCode CreateOperator(uint val, ObjLuaFunction parent)
@@ -1275,26 +1268,12 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public static string GetOpcodeName(byte oc)
 		{
-			if (oc >= 0 && oc < opcodes.Length)
-			{
-				return opcodes[oc];
-			}
-			else
-			{
-				return "UNK_" + Helper.HexString(oc);
-			}
+			return oc >= 0 && oc < opcodes.Length ? opcodes[oc] : "UNK_" + Helper.HexString(oc);
 		}
 
 		public static string GetOpcodeDescription(byte oc)
 		{
-			if (oc >= 0 && oc < opcodedesc.Length)
-			{
-				return opcodedesc[oc];
-			}
-			else
-			{
-				return Localization.GetString("Unknown");
-			}
+			return oc >= 0 && oc < opcodedesc.Length ? opcodedesc[oc] : Localization.GetString("Unknown");
 		}
 
 		#endregion
@@ -1356,41 +1335,15 @@ namespace SimPe.PackedFiles.Wrapper
 				ret = "close all to " + R(a);
 			}
 
-			if (ObjLuaFunction.DEBUG)
-			{
-				if (Helper.WindowsRegistry.HiddenMode)
-				{
-					return ret + "; //" + name;
-				}
-				else
-				{
-					return ret + "; //" + name + ": " + GetOpcodeDescription(oc);
-				}
-			}
-			else
-			{
-				if (Helper.WindowsRegistry.HiddenMode)
-				{
-					return ret + "; //" + name;
-				}
-				else
-				{
-					return ret + "; //" + GetOpcodeDescription(oc);
-				}
-			}
+			return ObjLuaFunction.DEBUG
+				? Helper.WindowsRegistry.HiddenMode ? ret + "; //" + name : ret + "; //" + name + ": " + GetOpcodeDescription(oc)
+				: Helper.WindowsRegistry.HiddenMode ? ret + "; //" + name : ret + "; //" + GetOpcodeDescription(oc);
 			//return ret+"; //"+name+" (a=0x"+Helper.HexString(a)+", b=0x"+Helper.HexString(b)+", c=0x"+Helper.HexString(c)+", bx="+bx.ToString()+", sbx="+sbx.ToString()+") "+GetOpcodeDescription(oc);
 		}
 
 		protected static string R(ushort v, string[] regs, bool use)
 		{
-			if (use)
-			{
-				return R(v, regs);
-			}
-			else
-			{
-				return R(v);
-			}
+			return use ? R(v, regs) : R(v);
 		}
 
 		protected static string R(ushort v)
@@ -1400,24 +1353,12 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected static string R(ushort v, string[] regs)
 		{
-			if (regs[v] == null)
-			{
-				return "null";
-			}
-
-			return regs[v];
+			return regs[v] ?? "null";
 		}
 
 		protected string RK(ushort v)
 		{
-			if (v < RK_OFFSET)
-			{
-				return R(v);
-			}
-			else
-			{
-				return (Kst((uint)(v - RK_OFFSET)));
-			}
+			return v < RK_OFFSET ? R(v) : Kst((uint)(v - RK_OFFSET));
 		}
 
 		protected string Kst(uint v)
@@ -1425,42 +1366,21 @@ namespace SimPe.PackedFiles.Wrapper
 			if (v >= 0 && v < Parent.Constants.Count)
 			{
 				ObjLuaConstant oci = (ObjLuaConstant)Parent.Constants[(int)v];
-				if (oci.InstructionType == ObjLuaConstant.Type.String)
-				{
-					return oci.String;
-				}
-				else if (oci.InstructionType == ObjLuaConstant.Type.Number)
-				{
-					return oci.Value.ToString();
-				}
-				else
-				{
-					return "null";
-				}
+				return oci.InstructionType == ObjLuaConstant.Type.String
+					? oci.String
+					: oci.InstructionType == ObjLuaConstant.Type.Number ? oci.Value.ToString() : "null";
 			}
 			return v.ToString();
 		}
 
 		protected string UpValue(ushort v)
 		{
-			if (v >= 0 && v < Parent.UpValues.Count)
-			{
-				return Parent.UpValues[v].ToString();
-			}
-
-			return v.ToString();
+			return v >= 0 && v < Parent.UpValues.Count ? Parent.UpValues[v].ToString() : v.ToString();
 		}
 
 		protected static string Bool(ushort v)
 		{
-			if (v == 0)
-			{
-				return "false";
-			}
-			else
-			{
-				return "true";
-			}
+			return v == 0 ? "false" : "true";
 		}
 
 		protected static string Gbl(string n)
@@ -1490,17 +1410,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected static string ListR(int start, int end, string prefix, string infix)
 		{
-			if (end < start)
-			{
-				return "";
-			}
-
-			if (end == start)
-			{
-				return R((ushort)start) + prefix;
-			}
-
-			return R((ushort)start) + infix + R((ushort)end) + prefix;
+			return end < start ? "" : end == start ? R((ushort)start) + prefix : R((ushort)start) + infix + R((ushort)end) + prefix;
 		}
 
 		#endregion

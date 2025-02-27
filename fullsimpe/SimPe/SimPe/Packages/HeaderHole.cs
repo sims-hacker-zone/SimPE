@@ -74,19 +74,6 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns the size of One Item stored in the index
 		/// </summary>
-		public virtual int ItemSize
-		{
-			get
-			{
-				if (Count != 0)
-				{
-					return Size / Count;
-				}
-				else
-				{
-					return 0;
-				}
-			}
-		}
+		public virtual int ItemSize => Count != 0 ? Size / Count : 0;
 	}
 }

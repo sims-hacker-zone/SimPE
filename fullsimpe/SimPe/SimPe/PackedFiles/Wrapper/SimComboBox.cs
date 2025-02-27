@@ -142,12 +142,7 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				ExtSDesc sdsc = SelectedSim;
-				if (sdsc != null)
-				{
-					return sdsc.Instance;
-				}
-
-				return 0xffff;
+				return sdsc != null ? sdsc.Instance : (ushort)0xffff;
 			}
 			set
 			{
@@ -174,12 +169,7 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				ExtSDesc sdsc = SelectedSim;
-				if (sdsc != null)
-				{
-					return sdsc.SimId;
-				}
-
-				return 0xffffffff;
+				return sdsc != null ? sdsc.SimId : 0xffffffff;
 			}
 			set
 			{

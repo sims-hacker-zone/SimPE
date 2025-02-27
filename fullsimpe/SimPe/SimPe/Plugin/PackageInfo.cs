@@ -120,12 +120,7 @@ namespace SimPe.Plugin
 
 		public IPackedFileDescriptor[] FindFiles(uint type)
 		{
-			if (package != null)
-			{
-				return package.FindFiles(type);
-			}
-
-			return new IPackedFileDescriptor[0];
+			return package != null ? package.FindFiles(type) : (new IPackedFileDescriptor[0]);
 		}
 
 		public override void CommitChanges()

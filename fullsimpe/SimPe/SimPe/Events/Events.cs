@@ -163,18 +163,7 @@ namespace SimPe.Events
 		/// <summary>
 		/// true, if a package was loaded
 		/// </summary>
-		public bool Loaded
-		{
-			get
-			{
-				if (LoadedPackage == null)
-				{
-					return false;
-				}
-
-				return LoadedPackage.Loaded;
-			}
-		}
+		public bool Loaded => LoadedPackage != null && LoadedPackage.Loaded;
 
 		/// <summary>
 		/// Number of stored Items
@@ -285,12 +274,7 @@ namespace SimPe.Events
 
 		public override int GetHashCode()
 		{
-			if (Resource == null)
-			{
-				return base.GetHashCode();
-			}
-
-			return Resource.GetHashCode();
+			return Resource == null ? base.GetHashCode() : Resource.GetHashCode();
 		}
 
 		public override bool Equals(object obj)
@@ -322,81 +306,22 @@ namespace SimPe.Events
 		/// <summary>
 		/// true if the stored Resource is accessible
 		/// </summary>
-		public bool HasResource
-		{
-			get
-			{
-				if (Resource == null)
-				{
-					return false;
-				}
-
-				return true;
-			}
-		}
+		public bool HasResource => Resource != null;
 
 		/// <summary>
 		/// true if the FileDescriptor of the stored Resource is accessible
 		/// </summary>
-		public bool HasFileDescriptor
-		{
-			get
-			{
-				if (!HasResource)
-				{
-					return false;
-				}
-
-				if (Resource.FileDescriptor == null)
-				{
-					return false;
-				}
-
-				return true;
-			}
-		}
+		public bool HasFileDescriptor => HasResource && Resource.FileDescriptor != null;
 
 		/// <summary>
 		/// true if the Package of the stored Resource is accessible
 		/// </summary>
-		public bool HasPackage
-		{
-			get
-			{
-				if (!HasResource)
-				{
-					return false;
-				}
-
-				if (Resource.Package == null)
-				{
-					return false;
-				}
-
-				return true;
-			}
-		}
+		public bool HasPackage => HasResource && Resource.Package != null;
 
 		/// <summary>
 		/// Returns the FileName of the store package (will never return null)
 		/// </summary>
-		public string FileName
-		{
-			get
-			{
-				if (!HasPackage)
-				{
-					return "";
-				}
-
-				if (Resource.Package.FileName == null)
-				{
-					return "";
-				}
-
-				return Resource.Package.FileName;
-			}
-		}
+		public string FileName => !HasPackage ? "" : Resource.Package.FileName ?? "";
 
 		#region IDisposable Member
 

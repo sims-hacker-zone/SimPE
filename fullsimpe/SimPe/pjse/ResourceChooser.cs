@@ -184,47 +184,22 @@ namespace pjse
 
 		private ListView getListView()
 		{
-			if (
-				tcResources.SelectedTab == tpPackage
+			return tcResources.SelectedTab == tpPackage
 				&& lvPackage.SelectedItems != null
-			)
-			{
-				return lvPackage;
-			}
-
-			if (
-				tcResources.SelectedTab == tpGroup
+				? lvPackage
+				: tcResources.SelectedTab == tpGroup
 				&& lvGroup.SelectedItems != null
-			)
-			{
-				return lvGroup;
-			}
-
-			if (
-				tcResources.SelectedTab == tpSemiGroup
+				? lvGroup
+				: tcResources.SelectedTab == tpSemiGroup
 				&& lvSemi.SelectedItems != null
-			)
-			{
-				return lvSemi;
-			}
-
-			if (
-				tcResources.SelectedTab == tpGlobalGroup
+				? lvSemi
+				: tcResources.SelectedTab == tpGlobalGroup
 				&& lvGlobal.SelectedItems != null
-			)
-			{
-				return lvGlobal;
-			}
-
-			if (
-				tcResources.SelectedTab == tpBuiltIn
+				? lvGlobal
+				: tcResources.SelectedTab == tpBuiltIn
 				&& lvPrim.SelectedItems != null
-			)
-			{
-				return lvPrim;
-			}
-
-			return null;
+				? lvPrim
+				: null;
 		}
 
 		/// <summary>

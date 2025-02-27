@@ -41,7 +41,7 @@ namespace SimPe.Plugin
 				"Chris",
 				"To View/Edit the Index and Neighbour Id of the next sim to be created",
 				2,
-				GetIcon.GameTit
+				GetIcon.GameTip
 			);
 		}
 

@@ -379,12 +379,7 @@ namespace pjse
 
 		public static implicit operator BhavWiz(Instruction i)
 		{
-			if (i.OpCode < 0x0100)
-			{
-				return (BhavWizPrim)i;
-			}
-
-			return (BhavWizBhav)i;
+			return i.OpCode < 0x0100 ? (BhavWizPrim)i : (BhavWiz)(BhavWizBhav)i;
 		}
 
 		public static implicit operator Instruction(BhavWiz b)
@@ -929,9 +924,8 @@ namespace pjse
 								+ ": LID=1] ";
 						}
 
-						if (addQuotes)
-						{
-							return s
+						return addQuotes
+							? s
 								+ "\""
 								+ myLeft(fsi.strItem.Title.Trim(), maxlen)
 								+ "\""
@@ -939,18 +933,14 @@ namespace pjse
 									detail == Detail.Full || detail == Detail.Normal
 										? " [" + pfname + "]"
 										: ""
-								);
-						}
-						else
-						{
-							return s
+								)
+							: s
 								+ myLeft(fsi.strItem.Title.Trim(), maxlen)
 								+ (
 									detail == Detail.Full || detail == Detail.Normal
 										? " [" + pfname + "]"
 										: ""
 								);
-						}
 					}
 					else
 					{
@@ -958,12 +948,7 @@ namespace pjse
 					}
 				}
 			}
-			if (detail == Detail.ValueOnly)
-			{
-				return null;
-			}
-
-			return "[" + Localization.GetString("unk") + ": " + pfname + "]";
+			return detail == Detail.ValueOnly ? null : "[" + Localization.GetString("unk") + ": " + pfname + "]";
 		}
 
 		private static Dictionary<GS.BhavStr, List<String>> gString = null;
@@ -1397,20 +1382,15 @@ namespace pjse
 		{
 			String objName = GUIDIndex.TheGUIDIndex[guid];
 
-			if (objName != null && objName.Length > 0)
-			{
-				if (lng)
-				{
-					return "GUID 0x"
+			return objName != null && objName.Length > 0
+				? lng
+					? "GUID 0x"
 						+ SimPe.Helper.HexString(guid)
 						+ " (\""
 						+ objName
-						+ "\")";
-				}
-
-				return "\"" + myLeft(objName, 60) + "\"";
-			}
-			return (lng ? "GUID " : "") + "0x" + SimPe.Helper.HexString(guid);
+						+ "\")"
+					: "\"" + myLeft(objName, 60) + "\""
+				: (lng ? "GUID " : "") + "0x" + SimPe.Helper.HexString(guid);
 		}
 
 		public static String FormatGUID(bool lng, byte[] o, int op)
@@ -1485,12 +1465,9 @@ namespace pjse
 			).Trim();
 			label = label.Length > 0 ? "\"" + label + "\" " : "";
 
-			if (bid >= bcon.Count)
-			{
-				return label + "[" + Localization.GetString("notset") + "]";
-			}
-
-			return label
+			return bid >= bcon.Count
+				? label + "[" + Localization.GetString("notset") + "]"
+				: label
 				+ Localization.GetString("Value")
 				+ ": "
 				+ (
@@ -1634,12 +1611,7 @@ namespace pjse
 			ushort c = ExpandBCON(b, temp);
 
 			ushort[] d = ExpandBCON(c, temp);
-			if (d[0] != b[0] || d[1] != b[1])
-			{
-				throw new InvalidCastException();
-			}
-
-			return c;
+			return d[0] != b[0] || d[1] != b[1] ? throw new InvalidCastException() : c;
 		}
 
 		#endregion

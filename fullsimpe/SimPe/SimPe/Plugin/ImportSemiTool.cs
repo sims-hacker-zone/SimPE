@@ -42,22 +42,7 @@ namespace SimPe.Plugin
 			Interfaces.Files.IPackageFile package
 		)
 		{
-			if (prov == null)
-			{
-				return false;
-			}
-
-			if (prov.OpcodeProvider == null)
-			{
-				return false;
-			}
-
-			if (package == null)
-			{
-				return false;
-			}
-
-			return true;
+			return prov != null && prov.OpcodeProvider != null && package != null;
 		}
 
 		ImportSemi isg;

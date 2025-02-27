@@ -279,7 +279,7 @@ namespace SimPe.Packages
 					}
 					else this.Add(newpfd);
 				}
-			
+
 				//Remove files that do not exist in the filesystem Version
 				foreach (SimPe.Packages.PackedFileDescriptor pfd in Index)
 				{
@@ -654,12 +654,7 @@ namespace SimPe.Packages
 		/// <returns>The FileIndexItem for this Entry</returns>
 		public IPackedFileDescriptor GetFileIndex(uint item)
 		{
-			if ((item >= fileindex.Length) || (item < 0))
-			{
-				return null;
-			}
-
-			return fileindex[item];
+			return (item >= fileindex.Length) || (item < 0) ? null : fileindex[item];
 		}
 
 		/// <summary>
@@ -887,18 +882,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns the FileName of the Current Package
 		/// </summary>
-		public string SaveFileName
-		{
-			get
-			{
-				if (flname == null)
-				{
-					return "";
-				}
-
-				return flname;
-			}
-		}
+		public string SaveFileName => flname ?? "";
 
 		uint fhg = 0;
 
@@ -1414,31 +1398,12 @@ namespace SimPe.Packages
 
 		public override int GetHashCode()
 		{
-			if (FileName == null)
-			{
-				if (Reader == null)
-				{
-					return base.GetHashCode();
-				}
-				else
-				{
-					return Reader.GetHashCode();
-				}
-			}
-			else
-			{
-				return FileName.GetHashCode();
-			}
+			return FileName == null ? Reader == null ? base.GetHashCode() : Reader.GetHashCode() : FileName.GetHashCode();
 		}
 
 		public override bool Equals(object obj)
 		{
-			if (obj == null)
-			{
-				return false;
-			}
-
-			if (!(obj is File))
+			if (obj == null || !(obj is File))
 			{
 				return false;
 			}
@@ -1455,23 +1420,9 @@ namespace SimPe.Packages
 				return false;
 			}
 
-			if (f.FileName == null && FileName == null)
-			{
-				if (Reader == null)
-				{
-					return f.Reader == null;
-				}
-				if (f.Reader == null)
-				{
-					return false;
-				}
-
-				return Reader.Equals(f.Reader);
-			}
-			else
-			{
-				return FileName.Trim().ToLower() == f.FileName.Trim().ToLower();
-			}
+			return f.FileName == null && FileName == null
+				? Reader == null ? f.Reader == null : f.Reader != null && Reader.Equals(f.Reader)
+				: FileName.Trim().ToLower() == f.FileName.Trim().ToLower();
 		}
 
 		#region Events

@@ -85,15 +85,7 @@ namespace SimPe.Plugin
 		string varname;
 		public string Name
 		{
-			get
-			{
-				if (varname == null)
-				{
-					return "";
-				}
-
-				return varname;
-			}
+			get => varname ?? "";
 			set => varname = value;
 		}
 
@@ -339,12 +331,7 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (varname == null)
-				{
-					return "";
-				}
-
-				return varname;
+				return varname == null ? "" : varname;
 			}
 			set => varname = value;
 		}

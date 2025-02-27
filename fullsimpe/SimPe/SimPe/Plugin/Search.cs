@@ -1091,12 +1091,7 @@ namespace SimPe.Plugin
 				new ExtObjd();
 			objd.ProcessData(pfd, package);
 
-			if (objd.Guid == guid)
-			{
-				return new SearchItem(objd.FileName, pfd);
-			}
-
-			return null;
+			return objd.Guid == guid ? new SearchItem(objd.FileName, pfd) : null;
 		}
 		#endregion
 

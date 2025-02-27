@@ -38,30 +38,11 @@ namespace SimPe
 			set => bar = value;
 		}
 
-		public static bool Running
-		{
-			get
-			{
-				if (bar != null)
-				{
-					return bar.Running;
-				}
-
-				return false;
-			}
-		}
+		public static bool Running => bar != null && bar.Running;
 
 		public static string Message
 		{
-			get
-			{
-				if (bar != null)
-				{
-					return bar.Message;
-				}
-
-				return "";
-			}
+			get => bar != null ? bar.Message : "";
 			set
 			{
 				if (bar != null)
@@ -75,15 +56,7 @@ namespace SimPe
 
 		public static Image Image
 		{
-			get
-			{
-				if (bar != null)
-				{
-					return bar.Image;
-				}
-
-				return null;
-			}
+			get => bar?.Image;
 			set
 			{
 				//lock (sync)
@@ -95,17 +68,8 @@ namespace SimPe
 
 		public static int Progress
 		{
-			get
-			{
-				if (bar != null)
-				{
-					return bar.Progress;
-				}
-
-				return 0;
-				/*if (bar!=null) return bar.Progress;
+			get => bar != null ? bar.Progress : 0;/*if (bar!=null) return bar.Progress;
 				return IntMaxProgress;*/
-			}
 			set
 			{
 				if (bar != null)
@@ -119,15 +83,7 @@ namespace SimPe
 
 		public static int MaxProgress
 		{
-			get
-			{
-				if (bar != null)
-				{
-					return bar.MaxProgress;
-				}
-
-				return 1;
-			}
+			get => bar != null ? bar.MaxProgress : 1;
 			set
 			{
 				if (bar != null)

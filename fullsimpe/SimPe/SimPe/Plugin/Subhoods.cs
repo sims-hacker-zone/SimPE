@@ -17,12 +17,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string SuburbName(uint id)
 		{
-			if (SuburbNameFromID.ContainsKey(id))
-			{
-				return SuburbNameFromID[id];
-			}
-
-			return "not found";
+			return SuburbNameFromID.ContainsKey(id) ? SuburbNameFromID[id] : "not found";
 		}
 
 		/// <summary>
@@ -116,12 +111,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string SimmyName(uint id)
 		{
-			if (SimNamesNids.ContainsKey(id))
-			{
-				return SimNamesNids[id];
-			}
-
-			return "not found";
+			return SimNamesNids.ContainsKey(id) ? SimNamesNids[id] : "not found";
 		}
 
 		/// <summary>

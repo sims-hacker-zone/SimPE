@@ -31,22 +31,7 @@ namespace SimPe.Actions.Default
 			Events.ResourceEventArgs es
 		)
 		{
-			if (es == null)
-			{
-				return false;
-			}
-
-			if (es.LoadedPackage == null)
-			{
-				return false;
-			}
-
-			if (es.LoadedPackage.Loaded)
-			{
-				return es.HasResource;
-			}
-
-			return false;
+			return es != null && es.LoadedPackage != null && es.LoadedPackage.Loaded && es.HasResource;
 		}
 
 		public abstract void ExecuteEventHandler(

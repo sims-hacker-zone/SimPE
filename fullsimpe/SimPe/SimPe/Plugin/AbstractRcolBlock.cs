@@ -252,17 +252,7 @@ namespace SimPe.Plugin
 		[Browsable(false)]
 		public virtual string BlockName
 		{
-			get
-			{
-				if (blockname == null)
-				{
-					return "c" + GetType().Name;
-				}
-				else
-				{
-					return blockname;
-				}
-			}
+			get => blockname ?? "c" + GetType().Name;
 			set => blockname = value;
 		}
 
@@ -290,14 +280,7 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			if (sgres == null)
-			{
-				return BlockName;
-			}
-			else
-			{
-				return sgres.FileName + " (" + BlockName + ")";
-			}
+			return sgres == null ? BlockName : sgres.FileName + " (" + BlockName + ")";
 		}
 
 		/// <summary>
@@ -320,15 +303,10 @@ namespace SimPe.Plugin
 				rcol = FindReferencingParent_NoLoad(type);
 			}
 
-			if (rcol == null)
-			{
-				throw new Warning(
+			return rcol ?? throw new Warning(
 					"No Parent was found in the Search Path!",
 					"Either there is no Scenegraph Resource that is referencing the File, or the package containing that Resource is not in the FileTable (see Extra->Preferences...)"
 				);
-			}
-
-			return rcol;
 		}
 
 		delegate void WaitMessasge(string message);

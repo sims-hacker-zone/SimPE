@@ -227,14 +227,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns></returns>
 		protected int ReadValue(System.IO.BinaryReader reader)
 		{
-			if (parent.Version == 0x04)
-			{
-				return reader.ReadInt16();
-			}
-			else
-			{
-				return reader.ReadInt32();
-			}
+			return parent.Version == 0x04 ? reader.ReadInt16() : reader.ReadInt32();
 		}
 
 		/// <summary>

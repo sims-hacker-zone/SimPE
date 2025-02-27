@@ -410,14 +410,7 @@ namespace SimPe
 		/// <returns>The stored value as String</returns>
 		public static string ToString(object o)
 		{
-			if (o == null)
-			{
-				return "";
-			}
-			else
-			{
-				return o.ToString();
-			}
+			return o == null ? "" : o.ToString();
 		}
 
 		/// <summary>
@@ -487,25 +480,20 @@ namespace SimPe
 		/// <returns></returns>
 		public static string GetSimPeLanguageCache(string prefix)
 		{
-			if (WindowsRegistry.LoadOnlySimsStory > 0)
-			{
-				return Path.Combine(
+			return WindowsRegistry.LoadOnlySimsStory > 0
+				? Path.Combine(
 					SimPeDataPath,
 					prefix
 						+ HexString((byte)WindowsRegistry.LanguageCode)
 						+ Convert.ToString(WindowsRegistry.LoadOnlySimsStory)
 						+ ".simpepkg"
-				);
-			}
-			else
-			{
-				return Path.Combine(
+				)
+				: Path.Combine(
 					SimPeDataPath,
 					prefix
 						+ HexString((byte)WindowsRegistry.LanguageCode)
 						+ ".simpepkg"
 				);
-			}
 		}
 
 		/// <summary>
@@ -642,38 +630,12 @@ namespace SimPe
 			/// <summary>
 			/// The path of the filetable folders file (write)
 			/// </summary>
-			public static string ExpansionsXREGW
-			{
-				get
-				{
-					if (ECCorNewSEfound)
-					{
-						return ProfilePath("expansions2.xreg");
-					}
-					else
-					{
-						return ProfilePath("expansions.xreg");
-					}
-				}
-			}
+			public static string ExpansionsXREGW => ECCorNewSEfound ? ProfilePath("expansions2.xreg") : ProfilePath("expansions.xreg");
 
 			/// <summary>
 			/// The path of the filetable folders file (readonly)
 			/// </summary>
-			public static string ExpansionsXREG
-			{
-				get
-				{
-					if (ECCorNewSEfound)
-					{
-						return ProfilePath("expansions2.xreg", true);
-					}
-					else
-					{
-						return ProfilePath("expansions.xreg", true);
-					}
-				}
-			}
+			public static string ExpansionsXREG => ECCorNewSEfound ? ProfilePath("expansions2.xreg", true) : ProfilePath("expansions.xreg", true);
 
 			/// <summary>
 			/// The path of the MRU registry file (write)
@@ -944,38 +906,18 @@ namespace SimPe
 		/// <summary>
 		/// Returnst the Gui that was started
 		/// </summary>
-		public static Executable StartedGui
-		{
-			get
-			{
-				if (WindowsRegistry.Layout.IsClassicPreset == true)
-				{
-					return Executable.Classic;
-				}
-				else if (
-					System
-						.Windows.Forms.Application.ExecutablePath.Trim()
-						.ToLower()
-						.EndsWith("wizards of simpe.exe")
-				)
-				{
-					return Executable.WizardsOfSimpe;
-				}
-				else if (
-					System
-						.Windows.Forms.Application.ExecutablePath.Trim()
-						.ToLower()
-						.EndsWith("simpe.exe")
-				)
-				{
-					return Executable.Default;
-				}
-				else
-				{
-					return Executable.Other;
-				}
-			}
-		}
+		public static Executable StartedGui => WindowsRegistry.Layout.IsClassicPreset ? Executable.Classic
+					: System
+											.Windows.Forms.Application.ExecutablePath.Trim()
+											.ToLower()
+											.EndsWith("wizards of simpe.exe")
+						? Executable.WizardsOfSimpe
+						: System
+																.Windows.Forms.Application.ExecutablePath.Trim()
+																.ToLower()
+																.EndsWith("simpe.exe")
+											? Executable.Default
+											: Executable.Other;
 
 		/// <summary>
 		/// Creates a String from a byte Array
@@ -1497,12 +1439,9 @@ namespace SimPe
 
 			flname = Path.GetFileNameWithoutExtension(flname);
 			string[] parts = flname.Split(new char[] { '_' }, 2);
-			if (parts.Length == 0)
-			{
-				return filename;
-			}
-
-			return Path.Combine(
+			return parts.Length == 0
+				? filename
+				: Path.Combine(
 				Path.GetDirectoryName(filename),
 				parts[0] + neighborhood_package
 			);
@@ -1654,18 +1593,7 @@ namespace SimPe
 
 		public static bool IsAbsolutePath(string path)
 		{
-			if (path == null)
-			{
-				return false;
-			}
-
-			path = path.Trim();
-			if (path.IndexOf(":") == 1)
-			{
-				return true;
-			}
-
-			return false;
+			return path != null && path.Trim().IndexOf(":") == 1;
 		}
 
 		/// <summary>
@@ -1717,7 +1645,7 @@ namespace SimPe
 
 		#endregion
 
-
+#pragma warning disable IDE0046
 		public static System.Windows.Forms.Keys ToKeys(System.Windows.Forms.Shortcut sc)
 		{
 			System.Windows.Forms.Keys ret = System.Windows.Forms.Keys.None;

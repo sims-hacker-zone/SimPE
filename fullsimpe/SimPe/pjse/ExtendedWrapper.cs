@@ -64,18 +64,7 @@ namespace pjse
 		/// <summary>
 		/// This object's group
 		/// </summary>
-		public uint PrivateGroup
-		{
-			get
-			{
-				if (Context == Scope.Global || Context == Scope.SemiGlobal)
-				{
-					return 0;
-				}
-
-				return FileDescriptor.Group;
-			}
-		}
+		public uint PrivateGroup => Context == Scope.Global || Context == Scope.SemiGlobal ? 0 : FileDescriptor.Group;
 
 		/// <summary>
 		/// The SemiGlobal group for this object
@@ -115,18 +104,7 @@ namespace pjse
 					&& FileDescriptor != null
 				)
 				{
-					if (FileDescriptor.Instance < 0x1000)
-					{
-						return Scope.Global;
-					}
-					else if (FileDescriptor.Instance < 0x2000)
-					{
-						return Scope.Private;
-					}
-					else
-					{
-						return Scope.SemiGlobal;
-					}
+					return FileDescriptor.Instance < 0x1000 ? Scope.Global : FileDescriptor.Instance < 0x2000 ? Scope.Private : Scope.SemiGlobal;
 				}
 				else
 				{
@@ -137,17 +115,15 @@ namespace pjse
 
 		public uint GroupForScope(Scope s)
 		{
-			if (s == Scope.Global)
+			switch (s)
 			{
-				return GlobalGroup;
+				case Scope.Global:
+					return GlobalGroup;
+				case Scope.SemiGlobal:
+					return SemiGroup;
+				default:
+					return PrivateGroup;
 			}
-
-			if (s == Scope.SemiGlobal)
-			{
-				return SemiGroup;
-			}
-
-			return PrivateGroup;
 		}
 
 		public uint GroupForContext => GroupForScope(Context);

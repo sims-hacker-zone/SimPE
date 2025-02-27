@@ -410,14 +410,7 @@ namespace SimPe.Providers
 				o = names[opcode];
 			}
 
-			if (o != null)
-			{
-				return (string)o;
-			}
-			else
-			{
-				return Localization.Manager.GetString("unknown");
-			}
+			return o != null ? (string)o : Localization.Manager.GetString("unknown");
 		}
 
 		/// <summary>
@@ -432,14 +425,7 @@ namespace SimPe.Providers
 			}
 
 			LoadObjdDescription(type);
-			if (objddesc != null)
-			{
-				return objddesc;
-			}
-			else
-			{
-				return new ArrayList();
-			}
+			return objddesc ?? new ArrayList();
 		}
 
 		/// <summary>
@@ -461,14 +447,7 @@ namespace SimPe.Providers
 			object o = null;
 			o = memories[guid];
 
-			if (o != null)
-			{
-				return (IAlias)o;
-			}
-			else
-			{
-				return new Alias(guid, Localization.Manager.GetString("unknown"));
-			}
+			return o != null ? (IAlias)o : new Alias(guid, Localization.Manager.GetString("unknown"));
 		}
 
 		/// <summary>
@@ -563,14 +542,7 @@ namespace SimPe.Providers
 				o = operands[op];
 			}
 
-			if (o != null)
-			{
-				return o.ToString();
-			}
-			else
-			{
-				return Localization.Manager.GetString("unk");
-			}
+			return o != null ? o.ToString() : Localization.Manager.GetString("unk");
 		}
 
 		/// <summary>
@@ -602,14 +574,7 @@ namespace SimPe.Providers
 				o = dataowners[owner];
 			}
 
-			if (o != null)
-			{
-				return o.ToString();
-			}
-			else
-			{
-				return Localization.Manager.GetString("unk");
-			}
+			return o != null ? o.ToString() : Localization.Manager.GetString("unk");
 		}
 
 		/// <summary>
@@ -641,14 +606,7 @@ namespace SimPe.Providers
 				o = motives[nr];
 			}
 
-			if (o != null)
-			{
-				return o.ToString();
-			}
-			else
-			{
-				return Localization.Manager.GetString("unk");
-			}
+			return o != null ? o.ToString() : Localization.Manager.GetString("unk");
 		}
 
 		/// <summary>
@@ -684,12 +642,7 @@ namespace SimPe.Providers
 					opcode,
 					null
 				);
-			if (items.Length > 0)
-			{
-				return items[0];
-			}
-
-			return null;
+			return items.Length > 0 ? items[0] : null;
 		}
 
 		/// <summary>

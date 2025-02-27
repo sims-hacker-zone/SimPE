@@ -43,29 +43,11 @@ namespace SimPe.Plugin
 			get;
 		}
 
-		public string FileName
-		{
-			get
-			{
-				if (flname == null)
-				{
-					return "";
-				}
-
-				return flname;
-			}
-		}
+		public string FileName => flname ?? "";
 
 		public override string ToString()
 		{
-			if (flname == null)
-			{
-				return Descriptor.ToString();
-			}
-			else
-			{
-				return flname + ": " + Descriptor.ToString();
-			}
+			return flname == null ? Descriptor.ToString() : flname + ": " + Descriptor.ToString();
 		}
 	}
 }

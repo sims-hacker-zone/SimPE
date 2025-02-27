@@ -118,15 +118,7 @@ namespace System
 
 		public bool this[int i]
 		{
-			get
-			{
-				if (i > bitset.Length)
-				{
-					throw new ArgumentOutOfRangeException();
-				}
-
-				return bitset[i];
-			}
+			get => i > bitset.Length ? throw new ArgumentOutOfRangeException() : bitset[i];
 			set
 			{
 				if (i > bitset.Length)

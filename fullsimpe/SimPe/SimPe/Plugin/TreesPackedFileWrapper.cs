@@ -99,12 +99,7 @@ namespace SimPe.Plugin
 
 		public string ReadComment(int indx)
 		{
-			if (indx < 0 || indx > Count - 1)
-			{
-				return "";
-			}
-
-			return Items[indx];
+			return indx < 0 || indx > Count - 1 ? "" : Items[indx];
 		}
 
 		public void AddBlock()

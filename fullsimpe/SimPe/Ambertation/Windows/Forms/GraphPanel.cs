@@ -194,15 +194,7 @@ namespace Ambertation.Windows.Forms
 		[Browsable(false)]
 		public int MinWidth
 		{
-			get
-			{
-				if (DesignMode && Parent != null)
-				{
-					return Parent.Width;
-				}
-
-				return minwd;
-			}
+			get => DesignMode && Parent != null ? Parent.Width : minwd;
 			set
 			{
 				minwd = value;
@@ -213,15 +205,7 @@ namespace Ambertation.Windows.Forms
 		[Browsable(false)]
 		public int MinHeight
 		{
-			get
-			{
-				if (DesignMode && Parent != null)
-				{
-					return Parent.Height;
-				}
-
-				return minhg;
-			}
+			get => DesignMode && Parent != null ? Parent.Height : minhg;
 			set
 			{
 				minhg = value;
@@ -283,7 +267,7 @@ namespace Ambertation.Windows.Forms
 								lb.Location = gpe.Location;
 								lb.Visible = true;
 								lb.Parent = this;
-								
+
 								this.ScrollControlIntoView(lb);
 								lb.Parent = null;
 								lb.Dispose();

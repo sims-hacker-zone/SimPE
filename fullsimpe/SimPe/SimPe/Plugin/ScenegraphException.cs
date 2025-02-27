@@ -11,22 +11,7 @@ namespace SimPe.Plugin
 			Interfaces.Scenegraph.IScenegraphFileIndexItem item
 		)
 		{
-			if (item == null)
-			{
-				return "";
-			}
-
-			if (item.Package == null)
-			{
-				return "";
-			}
-
-			if (item.Package.FileName == null)
-			{
-				return "";
-			}
-
-			return item.Package.FileName;
+			return item == null || item.Package == null || item.Package.FileName == null ? "" : item.Package.FileName;
 		}
 
 		public CorruptedFileException(
@@ -75,19 +60,6 @@ namespace SimPe.Plugin
 			this.pfd = pfd;
 		}
 
-		public override string Message
-		{
-			get
-			{
-				if (pfd != null)
-				{
-					return base.Message + " (in " + pfd + ")";
-				}
-				else
-				{
-					return base.Message;
-				}
-			}
-		}
+		public override string Message => pfd != null ? base.Message + " (in " + pfd + ")" : base.Message;
 	}
 }

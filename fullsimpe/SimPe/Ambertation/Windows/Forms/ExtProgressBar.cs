@@ -491,26 +491,7 @@ namespace Ambertation.Windows.Forms
 
 			public override bool Equals(object obj)
 			{
-				if (obj is GraphicsId id)
-				{
-					if (id.wd != wd)
-					{
-						return false;
-					}
-
-					if (id.hg != hg)
-					{
-						return false;
-					}
-
-					if (id.cl != cl)
-					{
-						return false;
-					}
-
-					return true;
-				}
-				return base.Equals(obj);
+				return obj is GraphicsId id ? id.wd == wd && id.hg == hg && id.cl == cl : base.Equals(obj);
 			}
 		}
 
@@ -864,18 +845,7 @@ namespace Ambertation.Windows.Forms
 		#endregion
 
 		#region Properties
-		public int SensitiveWidth
-		{
-			get
-			{
-				if (Style == ProgresBarStyle.Simple)
-				{
-					return Width;
-				}
-
-				return TokenOffset(TokenCount - 1) + TokenWidth;
-			}
-		}
+		public int SensitiveWidth => Style == ProgresBarStyle.Simple ? Width : TokenOffset(TokenCount - 1) + TokenWidth;
 
 		public int TokenOffset(int nr)
 		{
@@ -919,15 +889,7 @@ namespace Ambertation.Windows.Forms
 
 		public virtual int TokenCount
 		{
-			get
-			{
-				if (style == ProgresBarStyle.Balance && (tc % 2) == 0)
-				{
-					return tc - 1;
-				}
-
-				return tc;
-			}
+			get => style == ProgresBarStyle.Balance && (tc % 2) == 0 ? tc - 1 : tc;
 			set => SetTokenCount(value, false);
 		}
 

@@ -157,14 +157,7 @@ namespace SimPe.Geometry
 					(-2.0 * (X + Y + Z + W))
 					- (2 * Math.Sqrt(Math.Pow(X + Y + Z + W, 2) - 4.0 * (Norm - z)))
 				) / 8.0;
-			if (d1 < d2)
-			{
-				return d2;
-			}
-			else
-			{
-				return d1;
-			}
+			return d1 < d2 ? d2 : d1;
 		}
 
 		public double GetMoveMinus(double z)
@@ -179,14 +172,7 @@ namespace SimPe.Geometry
 					(-2.0 * (X + Y + Z + W))
 					- (2 * Math.Sqrt(Math.Pow(X + Y + Z + W, 2) - 4.0 * (Norm - z)))
 				) / 8.0;
-			if (d1 > d2)
-			{
-				return d2;
-			}
-			else
-			{
-				return d1;
-			}
+			return d1 > d2 ? d2 : d1;
 		}
 #endif
 
@@ -390,7 +376,7 @@ namespace SimPe.Geometry
 				if (IsNear(Z, 0.7, 0.09))
 				{
 					double sgnz = 1; if (Z!=0) sgnz = Z/Math.Abs(Z);
-				
+
 					X = 0;
 					Y = 0;
 					Z = Z - (Math.Pow(X, 2) + Math.Pow(Y, 2) ) *sgnz;
@@ -398,7 +384,7 @@ namespace SimPe.Geometry
 				else  if (IsNear(Y, 0.7, 0.09))
 				{
 					double sgny = 1; if (Y!=0) sgny = Y/Math.Abs(Y);
-				
+
 					X = 0;
 					Y = Y - (Math.Pow(X, 2) + Math.Pow(Z, 2) ) *sgny;
 					Z = 0;
@@ -406,7 +392,7 @@ namespace SimPe.Geometry
 				else  if (IsNear(X, 0.7, 0.09))
 				{
 					double sgnx = 1; if (X!=0) sgnx = X/Math.Abs(X);
-									
+
 					X = X - (Math.Pow(Y, 2) + Math.Pow(Z, 2) ) *sgnx;
 					Y = 0;
 					Z = 0;
@@ -445,12 +431,7 @@ namespace SimPe.Geometry
 				//if (W==0) return new Vector3f(0, 0, 1);
 				double sina = Math.Sqrt(1 - Math.Pow(W, 2)); //(double)Math.Sin(Angle/2.0);
 
-				if (sina == 0)
-				{
-					return new Vector3f(0, 0, 0);
-				}
-
-				return new Vector3f(X / sina, Y / sina, Z / sina);
+				return sina == 0 ? new Vector3f(0, 0, 0) : new Vector3f(X / sina, Y / sina, Z / sina);
 			}
 		}
 
@@ -487,17 +468,7 @@ namespace SimPe.Geometry
 
 		protected double Clip1(double d)
 		{
-			if (d < -1)
-			{
-				return -1;
-			}
-
-			if (d > 1)
-			{
-				return 1;
-			}
-
-			return d;
+			return d < -1 ? -1 : d > 1 ? 1 : d;
 		}
 
 		/// <summary>

@@ -224,17 +224,7 @@ namespace SimPe.Packages
 					ref gg
 				);
 
-				if (g != guid)
-				{
-					return ValidationState.GlobalGUIDMismatch;
-				}
-
-				if (n != name)
-				{
-					return ValidationState.NameMismatch;
-				}
-
-				return ValidationState.OK;
+				return g != guid ? ValidationState.GlobalGUIDMismatch : n != name ? ValidationState.NameMismatch : ValidationState.OK;
 			}
 		}
 
@@ -314,15 +304,7 @@ namespace SimPe.Packages
 		/// <returns>The Description of this Object</returns>
 		public override string ToString()
 		{
-			if (Guid != null)
-			{
-				return Name + " (" + Guid + ")";
-			}
-			else
-			{
-				return Name;
-				// return Name + " (No GUID assigned yet!)";
-			}
+			return Guid != null ? Name + " (" + Guid + ")" : Name;
 		}
 	}
 
@@ -689,27 +671,13 @@ namespace SimPe.Packages
 					ref gg
 				);
 
-				if (g != guid)
-				{
-					return ValidationState.GlobalGUIDMismatch;
-				}
-
-				if (n != name)
-				{
-					return ValidationState.NameMismatch;
-				}
-
-				if (a != author && a != "")
-				{
-					return ValidationState.AuthorMismatch;
-				}
-
-				if (gg != GameGuid && GameGuid != "")
-				{
-					return ValidationState.GameGuidMismatch;
-				}
-
-				return ValidationState.OK;
+				return g != guid
+					? ValidationState.GlobalGUIDMismatch
+					: n != name
+					? ValidationState.NameMismatch
+					: a != author && a != ""
+					? ValidationState.AuthorMismatch
+					: gg != GameGuid && GameGuid != "" ? ValidationState.GameGuidMismatch : ValidationState.OK;
 			}
 		}
 
@@ -854,22 +822,16 @@ namespace SimPe.Packages
 		/// <returns>The Description of this Object</returns>
 		public override string ToString()
 		{
-			if (Guid != null)
-			{
-				return Name
+			return Guid != null
+				? Name
 					+ " ("
 					+ Guid
 					+ ", Compression="
 					+ Compressed.ToString()
 					+ ", State="
 					+ Valid.ToString()
-					+ ")";
-			}
-			else
-			{
-				return Name;
-				// return Name + " (No GUID assigned yet, Compression=" + Compressed.ToString() + ")";
-			}
+					+ ")"
+				: Name;
 		}
 	}
 }

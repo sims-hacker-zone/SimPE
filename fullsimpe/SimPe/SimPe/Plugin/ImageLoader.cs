@@ -1021,7 +1021,7 @@ if (test.B>table.B) table = Color.FromArgb(table.A, table.R, table.G, test.B);*/
 				tmp = tmp >> bitct;
 				return (byte)ret;
 			}
-			
+
 		}
 
 		protected static Image RAW15Parser(Size parentsize, TxtrFormats format, int imgsize, System.IO.BinaryReader reader)
@@ -1076,8 +1076,8 @@ if (test.B>table.B) table = Color.FromArgb(table.A, table.R, table.G, test.B);*/
 				bmp = new Bitmap(w, h, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
 			}
 
-			
-			
+
+
 
 			int[] imageSourceAlpha = new int[bmp.Width * bmp.Height];
 
@@ -1103,11 +1103,11 @@ if (test.B>table.B) table = Color.FromArgb(table.A, table.R, table.G, test.B);*/
 										bits = ((abits1 >> (((by<<2)+bx)<<2))&0xF)<<4;
 									else
 										bits = ((abits2 >> ((((by-2)<<2)+bx)<<2))&0xF)<<4;
-								
-								
+
+
 									int col = (int)(0xFF000000 | (bits << 16) | (bits << 8) | bits);
 									imageSourceAlpha[(y+by)*bmp.Width+x+bx] = col  >> 24;
-								
+
 								}
 							}
 						}
@@ -1171,12 +1171,12 @@ if (test.B>table.B) table = Color.FromArgb(table.A, table.R, table.G, test.B);*/
 					}
 				} // for x
 			}// for y
-			
+
 			img = bmp;
 			return bmp;
 		}*/
 		#endregion
-
+#pragma warning disable IDE0046
 		public static System.Drawing.Imaging.ImageFormat GetImageFormat(string name)
 		{
 			name = name.Trim().ToLower();

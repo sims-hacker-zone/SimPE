@@ -21,20 +21,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public Levels Level
 		{
-			get
-			{
-				if (rb1.Checked)
-				{
-					return Levels.High;
-				}
-
-				if (rb3.Checked)
-				{
-					return Levels.Low;
-				}
-
-				return Levels.Normal;
-			}
+			get => rb1.Checked ? Levels.High : rb3.Checked ? Levels.Low : Levels.Normal;
 			set
 			{
 				if (value == Levels.High)

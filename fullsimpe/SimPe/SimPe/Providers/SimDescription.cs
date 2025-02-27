@@ -240,27 +240,13 @@ namespace SimPe.Providers
 		public ushort GetInstance(uint simid)
 		{
 			Interfaces.Wrapper.ISDesc d = FindSim(simid);
-			if (d != null)
-			{
-				return d.Instance;
-			}
-			else
-			{
-				return 0xffff;
-			}
+			return d != null ? d.Instance : (ushort)0xffff;
 		}
 
 		public uint GetSimId(ushort instance)
 		{
 			Interfaces.Wrapper.ISDesc d = FindSim(instance);
-			if (d != null)
-			{
-				return d.SimId;
-			}
-			else
-			{
-				return 0xffffffff;
-			}
+			return d != null ? d.SimId : 0xffffffff;
 		}
 
 		#endregion

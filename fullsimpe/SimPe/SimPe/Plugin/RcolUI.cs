@@ -54,18 +54,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the Panel that will be displayed within SimPe
 		/// </summary>
-		public Control GUIHandle
-		{
-			get
-			{
-				if (form == null)
-				{
-					return null;
-				}
-
-				return form;
-			}
-		}
+		public Control GUIHandle => form == null ? null : (Control)form;
 
 		/// <summary>
 		/// Is called by SimPe (through the Wrapper) when the Panel is going to be displayed, so

@@ -378,14 +378,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <returns>The Value interpreted as Boolean</returns>
 		protected bool AsBoolean()
 		{
-			if (Value.Length < 1)
-			{
-				return false;
-			}
-			else
-			{
-				return (Value[0] == 1);
-			}
+			return Value.Length >= 1 && Value[0] == 1;
 		}
 
 		/// <summary>

@@ -221,8 +221,7 @@ namespace SimPe.Plugin
 
 		private bool KnownWallID(uint uWallID)
 		{
-			if (
-				(uWallID == 1) // normal wall
+			return (uWallID == 1) // normal wall
 				|| (uWallID == 2) // picket rail fence
 				|| (uWallID == 3) // attic wall
 				|| (uWallID == 4) // non-rendered deck skirt
@@ -234,13 +233,7 @@ namespace SimPe.Plugin
 				|| (uWallID == 90) // un-leveled terrain walls
 				|| (uWallID == 93) // un-leveled pool walls
 				|| (uWallID == 300) // normal wall (OFB or later)
-				|| (uWallID == 301) // screen wood (OFB or later)
-			)
-			{
-				return true;
-			}
-
-			return false;
+				|| (uWallID == 301); // screen wood (OFB or later)
 		}
 
 		private void cbExistFences_SelectedIndexChanged(object sender, EventArgs e)

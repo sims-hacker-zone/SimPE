@@ -55,20 +55,9 @@ namespace SimPe.Plugin
 			Interfaces.Files.IPackageFile package
 		)
 		{
-			if (package == null)
-			{
-				return false;
-			}
-
-			if (prov.SimNameProvider == null)
-			{
-				return false;
-			}
-
-			return (
-				Helper.IsNeighborhoodFile(package.FileName)
-				|| Helper.IsLotCatalogFile(package.FileName)
-			);
+			return package != null && prov.SimNameProvider != null
+&& (Helper.IsNeighborhoodFile(package.FileName)
+				|| Helper.IsLotCatalogFile(package.FileName));
 		}
 
 		Surgery surg;

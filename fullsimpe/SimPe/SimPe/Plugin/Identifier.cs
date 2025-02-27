@@ -42,27 +42,13 @@ namespace SimPe.Plugin
 
 		public Cache.PackageType GetType(Interfaces.Files.IPackageFile pkg)
 		{
-			if (pkg.FindFiles(Data.MetaData.IDNO).Length != 0)
-			{
-				return Cache.PackageType.Neighbourhood;
-			}
-
-			if (pkg.FileName.Contains("Tutorial_Neighborhood"))
-			{
-				return Cache.PackageType.Neighbourhood;
-			}
-
-			if (pkg.FindFiles(Data.MetaData.HOUS).Length != 0)
-			{
-				return Cache.PackageType.Lot;
-			}
-
-			if (pkg.FindFiles(Data.MetaData.GINV).Length != 0)
-			{
-				return Cache.PackageType.GameInventory;
-			}
-
-			return Cache.PackageType.Unknown;
+			return pkg.FindFiles(Data.MetaData.IDNO).Length != 0
+				? Cache.PackageType.Neighbourhood
+				: pkg.FileName.Contains("Tutorial_Neighborhood")
+				? Cache.PackageType.Neighbourhood
+				: pkg.FindFiles(Data.MetaData.HOUS).Length != 0
+				? Cache.PackageType.Lot
+				: pkg.FindFiles(Data.MetaData.GINV).Length != 0 ? Cache.PackageType.GameInventory : Cache.PackageType.Unknown;
 		}
 
 		#endregion

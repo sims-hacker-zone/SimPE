@@ -597,14 +597,7 @@ namespace SimPe.Wants
 
 		public static string StypeForKey(string key)
 		{
-			if (KeyType.TryGetValue(key, out string stype))
-			{
-				return stype;
-			}
-			else
-			{
-				throw new ArgumentOutOfRangeException("key");
-			}
+			return KeyType.TryGetValue(key, out string stype) ? stype : throw new ArgumentOutOfRangeException("key");
 		}
 		#endregion
 

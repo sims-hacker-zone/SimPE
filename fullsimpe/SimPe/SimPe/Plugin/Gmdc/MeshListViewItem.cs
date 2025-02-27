@@ -101,20 +101,7 @@ namespace SimPe.Plugin.Gmdc
 
 		public new GmdcGroup Group
 		{
-			get
-			{
-				if (cbgroup.SelectedItem == null)
-				{
-					return null;
-				}
-
-				if (!(cbgroup.SelectedItem is GmdcGroup))
-				{
-					return null;
-				}
-
-				return cbgroup.SelectedItem as GmdcGroup;
-			}
+			get => cbgroup.SelectedItem == null || !(cbgroup.SelectedItem is GmdcGroup) ? null : cbgroup.SelectedItem as GmdcGroup;
 			set
 			{
 				if (value == null)
@@ -157,23 +144,12 @@ namespace SimPe.Plugin.Gmdc
 
 		Color MyColor()
 		{
-			if (
-				mesh.Vertices.Count
+			return mesh.Vertices.Count
 				> AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT
-			)
-			{
-				return Color.Red;
-			}
-
-			if (
-				mesh.FaceIndices.Count
+				|| mesh.FaceIndices.Count
 				> AbstractGmdcImporter.CRITICAL_FACE_AMOUNT
-			)
-			{
-				return Color.Red;
-			}
-
-			return Color.Black;
+				? Color.Red
+				: Color.Black;
 		}
 
 		#region IDisposable Member

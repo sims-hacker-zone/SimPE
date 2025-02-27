@@ -380,21 +380,16 @@ namespace SimPe
 		{
 			get
 			{
-				if (ctheme == GuiTheme.Office2003)
+				switch (ctheme)
 				{
-					return SystemColors.InactiveCaption;
-				}
-				else if (ctheme == GuiTheme.Everett)
-				{
-					return SystemColors.ControlDark;
-				}
-				else if (ctheme == GuiTheme.Glossy)
-				{
-					return Color.FromArgb(0xAD, 0xBC, 0xCE);
-				}
-				else
-				{
-					return c;
+					case GuiTheme.Office2003:
+						return SystemColors.InactiveCaption;
+					case GuiTheme.Everett:
+						return SystemColors.ControlDark;
+					case GuiTheme.Glossy:
+						return Color.FromArgb(0xAD, 0xBC, 0xCE);
+					default:
+						return c;
 				}
 			}
 		}
@@ -403,21 +398,16 @@ namespace SimPe
 		{
 			get
 			{
-				if (ctheme == GuiTheme.Office2003)
+				switch (ctheme)
 				{
-					return SystemColors.InactiveCaptionText;
-				}
-				else if (ctheme == GuiTheme.Everett)
-				{
-					return SystemColors.ControlLight;
-				}
-				else if (ctheme == GuiTheme.Glossy)
-				{
-					return Color.FromArgb(0xDB, 0xE4, 0xEE);
-				}
-				else
-				{
-					return clight;
+					case GuiTheme.Office2003:
+						return SystemColors.InactiveCaptionText;
+					case GuiTheme.Everett:
+						return SystemColors.ControlLight;
+					case GuiTheme.Glossy:
+						return Color.FromArgb(0xDB, 0xE4, 0xEE);
+					default:
+						return clight;
 				}
 			}
 		}
@@ -426,21 +416,16 @@ namespace SimPe
 		{
 			get
 			{
-				if (ctheme == GuiTheme.Office2003)
+				switch (ctheme)
 				{
-					return SystemColors.Highlight;
-				}
-				else if (ctheme == GuiTheme.Everett)
-				{
-					return SystemColors.ControlDarkDark;
-				}
-				else if (ctheme == GuiTheme.Glossy)
-				{
-					return Color.FromArgb(0x75, 0x84, 0x97);
-				}
-				else
-				{
-					return cdark;
+					case GuiTheme.Office2003:
+						return SystemColors.Highlight;
+					case GuiTheme.Everett:
+						return SystemColors.ControlDarkDark;
+					case GuiTheme.Glossy:
+						return Color.FromArgb(0x75, 0x84, 0x97);
+					default:
+						return cdark;
 				}
 			}
 		}

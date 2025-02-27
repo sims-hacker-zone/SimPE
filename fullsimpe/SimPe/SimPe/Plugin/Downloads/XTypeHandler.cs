@@ -193,72 +193,46 @@ namespace SimPe.Plugin.Downloads
 				case "":
 				case "canh":
 				{
-					string stype = cpf.GetSaveItem("sort").StringValue.Trim().ToLower();
-					if (stype == "landmark")
+					switch (cpf.GetSaveItem("sort").StringValue.Trim().ToLower())
 					{
-						return Data.XObjFunctionSubSort.Hood_Landmark;
-					}
-					else if (stype == "flora")
-					{
-						return Data.XObjFunctionSubSort.Hood_Flora;
-					}
-					else if (stype == "effects")
-					{
-						return Data.XObjFunctionSubSort.Hood_Effects;
-					}
-					else if (stype == "misc")
-					{
-						return Data.XObjFunctionSubSort.Hood_Misc;
-					}
-					else if (stype == "stone")
-					{
-						return Data.XObjFunctionSubSort.Hood_Stone;
-					}
-					else
-					{
-						return Data.XObjFunctionSubSort.Hood_Other;
+						case "landmark":
+							return Data.XObjFunctionSubSort.Hood_Landmark;
+						case "flora":
+							return Data.XObjFunctionSubSort.Hood_Flora;
+						case "effects":
+							return Data.XObjFunctionSubSort.Hood_Effects;
+						case "misc":
+							return Data.XObjFunctionSubSort.Hood_Misc;
+						case "stone":
+							return Data.XObjFunctionSubSort.Hood_Stone;
+						default:
+							return Data.XObjFunctionSubSort.Hood_Other;
 					}
 				}
 				case "wall":
 				{
-					string stype = cpf.GetSaveItem("subsort")
+					switch (cpf.GetSaveItem("subsort")
 						.StringValue.Trim()
-						.ToLower();
-					if (stype == "brick")
+						.ToLower())
 					{
-						return Data.XObjFunctionSubSort.Wall_Brick;
-					}
-					else if (stype == "masonry")
-					{
-						return Data.XObjFunctionSubSort.Wall_Masonry;
-					}
-					else if (stype == "paint")
-					{
-						return Data.XObjFunctionSubSort.Wall_Paint;
-					}
-					else if (stype == "paneling")
-					{
-						return Data.XObjFunctionSubSort.Wall_Paneling;
-					}
-					else if (stype == "poured")
-					{
-						return Data.XObjFunctionSubSort.Wall_Poured;
-					}
-					else if (stype == "siding")
-					{
-						return Data.XObjFunctionSubSort.Wall_Siding;
-					}
-					else if (stype == "tile")
-					{
-						return Data.XObjFunctionSubSort.Wall_Tile;
-					}
-					else if (stype == "wallpaper")
-					{
-						return Data.XObjFunctionSubSort.Wall_Wallpaper;
-					}
-					else
-					{
-						return Data.XObjFunctionSubSort.Wall_Other;
+						case "brick":
+							return Data.XObjFunctionSubSort.Wall_Brick;
+						case "masonry":
+							return Data.XObjFunctionSubSort.Wall_Masonry;
+						case "paint":
+							return Data.XObjFunctionSubSort.Wall_Paint;
+						case "paneling":
+							return Data.XObjFunctionSubSort.Wall_Paneling;
+						case "poured":
+							return Data.XObjFunctionSubSort.Wall_Poured;
+						case "siding":
+							return Data.XObjFunctionSubSort.Wall_Siding;
+						case "tile":
+							return Data.XObjFunctionSubSort.Wall_Tile;
+						case "wallpaper":
+							return Data.XObjFunctionSubSort.Wall_Wallpaper;
+						default:
+							return Data.XObjFunctionSubSort.Wall_Other;
 					}
 				}
 				case "terrainpaint":
@@ -267,40 +241,26 @@ namespace SimPe.Plugin.Downloads
 				}
 				case "floor":
 				{
-					string stype = cpf.GetSaveItem("subsort")
+					switch (cpf.GetSaveItem("subsort")
 						.StringValue.Trim()
-						.ToLower();
-					if (stype == "brick")
+						.ToLower())
 					{
-						return Data.XObjFunctionSubSort.Floor_Brick;
-					}
-					else if (stype == "carpet")
-					{
-						return Data.XObjFunctionSubSort.Floor_Carpet;
-					}
-					else if (stype == "lino")
-					{
-						return Data.XObjFunctionSubSort.Floor_Lino;
-					}
-					else if (stype == "poured")
-					{
-						return Data.XObjFunctionSubSort.Floor_Poured;
-					}
-					else if (stype == "stone")
-					{
-						return Data.XObjFunctionSubSort.Floor_Stone;
-					}
-					else if (stype == "tile")
-					{
-						return Data.XObjFunctionSubSort.Floor_Tile;
-					}
-					else if (stype == "wood")
-					{
-						return Data.XObjFunctionSubSort.Floor_Wood;
-					}
-					else
-					{
-						return Data.XObjFunctionSubSort.Floor_Other;
+						case "brick":
+							return Data.XObjFunctionSubSort.Floor_Brick;
+						case "carpet":
+							return Data.XObjFunctionSubSort.Floor_Carpet;
+						case "lino":
+							return Data.XObjFunctionSubSort.Floor_Lino;
+						case "poured":
+							return Data.XObjFunctionSubSort.Floor_Poured;
+						case "stone":
+							return Data.XObjFunctionSubSort.Floor_Stone;
+						case "tile":
+							return Data.XObjFunctionSubSort.Floor_Tile;
+						case "wood":
+							return Data.XObjFunctionSubSort.Floor_Wood;
+						default:
+							return Data.XObjFunctionSubSort.Floor_Other;
 					}
 				}
 				case "roof":
@@ -309,12 +269,9 @@ namespace SimPe.Plugin.Downloads
 				}
 				case "fence":
 				{
-					if (cpf.GetSaveItem("ishalfwall").UIntegerValue == 1)
-					{
-						return Data.XObjFunctionSubSort.Fence_Halfwall;
-					}
-
-					return Data.XObjFunctionSubSort.Fence_Rail;
+					return cpf.GetSaveItem("ishalfwall").UIntegerValue == 1
+						? Data.XObjFunctionSubSort.Fence_Halfwall
+						: Data.XObjFunctionSubSort.Fence_Rail;
 				}
 				default:
 				{

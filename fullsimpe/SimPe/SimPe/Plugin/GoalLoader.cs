@@ -212,18 +212,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns Icon for this Goal or null
 		/// </summary>
-		public virtual System.Drawing.Image Icon
-		{
-			get
-			{
-				if (primicon == null)
-				{
-					return null;
-				}
-
-				return primicon.Image;
-			}
-		}
+		public virtual System.Drawing.Image Icon => primicon?.Image;
 
 		/// <summary>
 		/// The guid of the current Goal

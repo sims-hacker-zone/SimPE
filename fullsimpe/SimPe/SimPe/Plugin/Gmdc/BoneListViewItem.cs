@@ -81,20 +81,7 @@ namespace SimPe.Plugin.Gmdc
 
 		public GmdcJoint Joint
 		{
-			get
-			{
-				if (cbgroup.SelectedItem == null)
-				{
-					return null;
-				}
-
-				if (!(cbgroup.SelectedItem is GmdcJoint))
-				{
-					return null;
-				}
-
-				return cbgroup.SelectedItem as GmdcJoint;
-			}
+			get => cbgroup.SelectedItem == null || !(cbgroup.SelectedItem is GmdcJoint) ? null : cbgroup.SelectedItem as GmdcJoint;
 			set
 			{
 				if (value == null)

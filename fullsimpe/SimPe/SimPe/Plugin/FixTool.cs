@@ -46,12 +46,7 @@ namespace SimPe.Plugin
 			Interfaces.Files.IPackageFile package
 		)
 		{
-			if (package == null)
-			{
-				return false;
-			}
-
-			return true;
+			return package != null;
 		}
 
 		public Interfaces.Plugin.IToolResult ShowDialog(
@@ -83,14 +78,7 @@ namespace SimPe.Plugin
 				WaitingScreen.Stop();
 			}
 
-			if (Helper.StartedGui != Executable.Classic)
-			{
-				return new ToolResult(false, false);
-			}
-			else
-			{
-				return new ToolResult(false, true);
-			}
+			return Helper.StartedGui != Executable.Classic ? new ToolResult(false, false) : (Interfaces.Plugin.IToolResult)new ToolResult(false, true);
 		}
 
 		public override string ToString()

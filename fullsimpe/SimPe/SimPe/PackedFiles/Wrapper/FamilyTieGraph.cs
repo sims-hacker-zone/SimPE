@@ -434,33 +434,22 @@ namespace SimPe.PackedFiles.Wrapper
 			Data.MetaData.FamilyTieTypes t
 		)
 		{
-			if (
-				t == Data.MetaData.FamilyTieTypes.MyMotherIs
-				|| t == Data.MetaData.FamilyTieTypes.MyFatherIs
-			)
+			switch (
+				t)
 			{
-				return Data.MetaData.FamilyTieTypes.MyChildIs;
+				case Data.MetaData.FamilyTieTypes.MyMotherIs:
+				case Data.MetaData.FamilyTieTypes.MyFatherIs:
+					return Data.MetaData.FamilyTieTypes.MyChildIs;
+				case Data.MetaData.FamilyTieTypes.MyChildIs:
+					return sdsc == null
+									? Data.MetaData.FamilyTieTypes.MyMotherIs
+									: sdsc.CharacterDescription.Gender
+									== Data.MetaData.Gender.Female
+									? Data.MetaData.FamilyTieTypes.MyMotherIs
+									: Data.MetaData.FamilyTieTypes.MyFatherIs;
+				default:
+					return t;
 			}
-
-			if (t == Data.MetaData.FamilyTieTypes.MyChildIs)
-			{
-				if (sdsc == null)
-				{
-					return Data.MetaData.FamilyTieTypes.MyMotherIs;
-				}
-
-				if (
-					sdsc.CharacterDescription.Gender
-					== Data.MetaData.Gender.Female
-				)
-				{
-					return Data.MetaData.FamilyTieTypes.MyMotherIs;
-				}
-
-				return Data.MetaData.FamilyTieTypes.MyFatherIs;
-			}
-
-			return t;
 		}
 	}
 }

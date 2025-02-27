@@ -35,12 +35,7 @@ namespace SimPe.Actions.Default
 			Events.ResourceEventArgs es
 		)
 		{
-			if (es.LoadedPackage == null)
-			{
-				return false;
-			}
-
-			return es.LoadedPackage.Loaded;
+			return es.LoadedPackage != null && es.LoadedPackage.Loaded;
 		}
 
 		public override void ExecuteEventHandler(

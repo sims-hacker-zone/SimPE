@@ -845,12 +845,7 @@ namespace SimPe.Plugin.Gmdc
 
 		public string BuildBoneName(int i)
 		{
-			if (i >= 0 && i < gmdc.Joints.Count)
-			{
-				return i.ToString() + ": " + gmdc.Joints[i].Name;
-			}
-
-			return "Bone " + i.ToString();
+			return i >= 0 && i < gmdc.Joints.Count ? i.ToString() + ": " + gmdc.Joints[i].Name : "Bone " + i.ToString();
 		}
 
 		public string BuildBoneName(ImportedBone a)

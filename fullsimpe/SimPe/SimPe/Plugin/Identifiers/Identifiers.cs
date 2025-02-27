@@ -32,14 +32,7 @@ namespace SimPe.Plugin.Identifiers
 		{
 			if (x == null)
 			{
-				if (y == null)
-				{
-					return 0;
-				}
-				else
-				{
-					return 1;
-				}
+				return y == null ? 0 : 1;
 			}
 
 			IScannerPluginBase ix = (IScannerPluginBase)x;
@@ -73,29 +66,18 @@ namespace SimPe.Plugin.Identifiers
 		public Cache.PackageType GetType(Interfaces.Files.IPackageFile pkg)
 		{
 			string name = System.IO.Path.GetFileName(pkg.FileName).Trim().ToLower();
-			if (
-				name
+			return name
 				== System
 					.IO.Path.GetFileName(Data.MetaData.GMND_PACKAGE)
 					.Trim()
 					.ToLower()
-			)
-			{
-				return Cache.PackageType.CEP;
-			}
-
-			if (
-				name
+			|| name
 				== System
 					.IO.Path.GetFileName(Data.MetaData.MMAT_PACKAGE)
 					.Trim()
 					.ToLower()
-			)
-			{
-				return Cache.PackageType.CEP;
-			}
-
-			return Cache.PackageType.Unknown;
+				? Cache.PackageType.CEP
+				: Cache.PackageType.Unknown;
 		}
 
 		#endregion
@@ -169,14 +151,7 @@ namespace SimPe.Plugin.Identifiers
 				return Cache.PackageType.Lot; //HOUS Resources - Lots won't get here
 			}
 
-			if (pkg.FindFilesByGroup(Data.MetaData.CUSTOM_GROUP).Length > 0)
-			{
-				return Cache.PackageType.CustomObject;
-			}
-			else
-			{
-				return Cache.PackageType.Object;
-			}
+			return pkg.FindFilesByGroup(Data.MetaData.CUSTOM_GROUP).Length > 0 ? Cache.PackageType.CustomObject : Cache.PackageType.Object;
 		}
 
 		#endregion
@@ -246,9 +221,8 @@ namespace SimPe.Plugin.Identifiers
 				PackedFiles.Wrapper.Cpf cpf = new PackedFiles.Wrapper.Cpf();
 				cpf.ProcessData(pfds[0], pkg, false);
 
-				string type = cpf.GetSaveItem("type").StringValue.Trim().ToLower();
 
-				switch (type)
+				switch (cpf.GetSaveItem("type").StringValue.Trim().ToLower())
 				{
 					case "wall":
 					{
@@ -274,93 +248,43 @@ namespace SimPe.Plugin.Identifiers
 					{
 						uint cat = cpf.GetSaveItem("category").UIntegerValue;
 
-						if ((cat & (uint)Data.OutfitCats.Skin) != 0)
+						return (cat & (uint)Data.OutfitCats.Skin) != 0 ? Cache.PackageType.Skin : Cache.PackageType.Clothing;
+					}
+					case "textureoverlay":
+					{
+						switch (
+							cpf.GetSaveItem("subtype").UIntegerValue
+						)
 						{
-							return Cache.PackageType.Skin;
-						}
-						else
-						{
-							return Cache.PackageType.Clothing;
+							case (uint)Data.TextureOverlayTypes.Blush:
+								return Cache.PackageType.Blush;
+							case (uint)Data.TextureOverlayTypes.Eye:
+								return Cache.PackageType.Eye;
+							case (uint)Data.TextureOverlayTypes.EyeBrow:
+								return Cache.PackageType.EyeBrow;
+							case (uint)Data.TextureOverlayTypes.EyeShadow:
+								return Cache.PackageType.EyeShadow;
+							case (uint)Data.TextureOverlayTypes.Glasses:
+								return Cache.PackageType.Glasses;
+							case (uint)Data.TextureOverlayTypes.Lipstick:
+								return Cache.PackageType.Lipstick;
+							case (uint)Data.TextureOverlayTypes.Mask:
+								return Cache.PackageType.Mask;
+							case (uint)Data.TextureOverlayTypes.Beard:
+								return Cache.PackageType.Beard;
+							default:
+								return Cache.PackageType.Makeup;
 						}
 					}
 					case "meshoverlay":
-					case "textureoverlay":
-					{
-						if (
-							cpf.GetSaveItem("subtype").UIntegerValue
-							== (uint)Data.TextureOverlayTypes.Blush
-						)
-						{
-							return Cache.PackageType.Blush;
-						}
-
-						if (
-							cpf.GetSaveItem("subtype").UIntegerValue
-							== (uint)Data.TextureOverlayTypes.Eye
-						)
-						{
-							return Cache.PackageType.Eye;
-						}
-
-						if (
-							cpf.GetSaveItem("subtype").UIntegerValue
-							== (uint)Data.TextureOverlayTypes.EyeBrow
-						)
-						{
-							return Cache.PackageType.EyeBrow;
-						}
-
-						if (
-							cpf.GetSaveItem("subtype").UIntegerValue
-							== (uint)Data.TextureOverlayTypes.EyeShadow
-						)
-						{
-							return Cache.PackageType.EyeShadow;
-						}
-
-						if (
-							cpf.GetSaveItem("subtype").UIntegerValue
-							== (uint)Data.TextureOverlayTypes.Glasses
-						)
-						{
-							return Cache.PackageType.Glasses;
-						}
-
-						if (
-							cpf.GetSaveItem("subtype").UIntegerValue
-							== (uint)Data.TextureOverlayTypes.Lipstick
-						)
-						{
-							return Cache.PackageType.Lipstick;
-						}
-
-						if (
-							cpf.GetSaveItem("subtype").UIntegerValue
-							== (uint)Data.TextureOverlayTypes.Mask
-						)
-						{
-							return Cache.PackageType.Mask;
-						}
-
-						if (
-							cpf.GetSaveItem("subtype").UIntegerValue
-							== (uint)Data.TextureOverlayTypes.Beard
-						)
-						{
-							return Cache.PackageType.Beard;
-						}
-
-						if (type == "meshoverlay")
-						{
-							return Cache.PackageType.Accessory;
-						}
-
-						return Cache.PackageType.Makeup;
-					}
+						return Cache.PackageType.Accessory;
 					case "hairtone":
 					{
 						return Cache.PackageType.Hair;
 					}
+
+					default:
+						break;
 				}
 			}
 

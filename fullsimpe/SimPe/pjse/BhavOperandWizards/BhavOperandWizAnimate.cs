@@ -352,32 +352,16 @@ namespace pjse.BhavOperandWizards.WizAnimate
 
 		private Scope AnimScope()
 		{
-			if (mode.Equals("bwp_Object"))
-			{
-				return Scope.Private;
-			}
-
-			return (doidAnimType.Value == 0x80) ? Scope.Global : Scope.Private;
+			return mode.Equals("bwp_Object") ? Scope.Private : (doidAnimType.Value == 0x80) ? Scope.Global : Scope.Private;
 		}
 
 		private GS.GlobalStr AnimInstance()
 		{
-			if (mode.Equals("bwp_Object"))
-			{
-				return GS.GlobalStr.ObjectAnims;
-			}
-
-			if (doidAnimType.Value == 0x80)
-			{
-				return GS.GlobalStr.AdultAnims;
-			}
-
-			if (IsAnim(doidAnimType.Value))
-			{
-				return (GS.GlobalStr)doidAnimType.Value;
-			}
-
-			return GS.GlobalStr.ObjectAnims;
+			return mode.Equals("bwp_Object")
+				? GS.GlobalStr.ObjectAnims
+				: doidAnimType.Value == 0x80
+				? GS.GlobalStr.AdultAnims
+				: IsAnim(doidAnimType.Value) ? (GS.GlobalStr)doidAnimType.Value : GS.GlobalStr.ObjectAnims;
 		}
 
 		private void doStrValue(ushort strno, TextBox strText)

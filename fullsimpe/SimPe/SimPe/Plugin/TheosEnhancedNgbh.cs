@@ -398,12 +398,7 @@ namespace SimPe.Plugin
 
 			public static ushort GetSubjectType(uint itemGuid)
 			{
-				if (memorySubjectType.ContainsKey(itemGuid))
-				{
-					return (ushort)memorySubjectType[itemGuid];
-				}
-
-				return 0;
+				return memorySubjectType.ContainsKey(itemGuid) ? (ushort)memorySubjectType[itemGuid] : (ushort)0;
 			}
 
 			public static bool IsSpamMemory(NgbhItem item)

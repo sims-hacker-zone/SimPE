@@ -129,12 +129,7 @@ namespace pjse
 					}
 
 					Hashtable typeHash = (Hashtable)instanceHash[type];
-					if (typeHash == null)
-					{
-						return null;
-					}
-
-					return (Str)typeHash[type];
+					return typeHash == null ? null : (Str)typeHash[type];
 				}
 				set
 				{
@@ -298,22 +293,7 @@ namespace pjse
 
 		private bool rejectStrItem(FallbackStrItem fsi)
 		{
-			if (fsi == null)
-			{
-				return true;
-			}
-
-			if (fsi.strItem == null)
-			{
-				return true;
-			}
-
-			if (fsi.strItem.Title.Trim().Length.Equals(0))
-			{
-				return true;
-			}
-
-			return false;
+			return fsi == null || fsi.strItem == null || fsi.strItem.Title.Trim().Length.Equals(0);
 		}
 
 		public List<StrItem> this[byte lid]

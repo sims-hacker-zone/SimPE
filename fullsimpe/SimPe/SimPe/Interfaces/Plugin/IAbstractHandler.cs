@@ -188,17 +188,9 @@ namespace SimPe.Interfaces.Plugin
 		{
 			get
 			{
-				string i = GetType().Assembly.FullName;
-				string[] p = i.Split(",".ToCharArray(), 2);
+				string[] p = GetType().Assembly.FullName.Split(",".ToCharArray(), 2);
 
-				if (p.Length > 0)
-				{
-					return p[0].Trim();
-				}
-				else
-				{
-					return Localization.GetString("unknown");
-				}
+				return p.Length > 0 ? p[0].Trim() : Localization.GetString("unknown");
 			}
 		}
 

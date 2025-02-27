@@ -573,16 +573,13 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			if (MipMaps.Length == 1)
-			{
-				return "0x"
+			return MipMaps.Length == 1
+				? "0x"
 					+ Helper.HexString(creator)
 					+ " - 0x"
 					+ Helper.HexString(unknown_1)
-					+ " (1 Item)";
-			}
-
-			return "0x"
+					+ " (1 Item)"
+				: "0x"
 				+ Helper.HexString(creator)
 				+ " - 0x"
 				+ Helper.HexString(unknown_1)
@@ -812,18 +809,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the Biggest MipMap in the first MipMap Block (null if no Texture was available)
 		/// </summary>
-		public MipMap LargestTexture
-		{
-			get
-			{
-				if (MipMapBlocks.Length == 0)
-				{
-					return null;
-				}
-
-				return MipMapBlocks[0].LargestTexture;
-			}
-		}
+		public MipMap LargestTexture => MipMapBlocks.Length == 0 ? null : MipMapBlocks[0].LargestTexture;
 
 		/// <summary>
 		/// Returns the Biggest MipMap in the first MipMap Block (null if no Texture was available)
@@ -831,12 +817,7 @@ namespace SimPe.Plugin
 		/// <param name="zs">The wanted Size for the Texture</param>
 		public MipMap GetLargestTexture(Size zs)
 		{
-			if (MipMapBlocks.Length == 0)
-			{
-				return null;
-			}
-
-			return MipMapBlocks[0].GetLargestTexture(zs);
+			return MipMapBlocks.Length == 0 ? null : MipMapBlocks[0].GetLargestTexture(zs);
 		}
 
 		/// <summary>

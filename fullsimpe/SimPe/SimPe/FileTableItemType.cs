@@ -49,35 +49,9 @@ namespace SimPe
 			return new FileTableItemType(i);
 		}
 
-		public Expansions AsExpansions
-		{
-			get
-			{
-				if (AsUint <= 0x80000000)
-				{
-					return (Expansions)AsUint;
-				}
-				else
-				{
-					return Expansions.Custom;
-				}
-			}
-		}
+		public Expansions AsExpansions => AsUint <= 0x80000000 ? (Expansions)AsUint : Expansions.Custom;
 
-		public FileTablePaths AsFileTablePaths
-		{
-			get
-			{
-				if (AsUint > 0x80000000)
-				{
-					return (FileTablePaths)AsUint;
-				}
-				else
-				{
-					return FileTablePaths.Absolute;
-				}
-			}
-		}
+		public FileTablePaths AsFileTablePaths => AsUint > 0x80000000 ? (FileTablePaths)AsUint : FileTablePaths.Absolute;
 
 		public uint AsUint { get; } = 0;
 
@@ -117,12 +91,7 @@ namespace SimPe
 			}
 
 			ExpansionItem ei = PathProvider.Global[AsExpansions];
-			if (ei.Flag.Class == ExpansionItem.Classes.Story)
-			{
-				return -1;
-			}
-
-			return ei.Version;
+			return ei.Flag.Class == ExpansionItem.Classes.Story ? -1 : ei.Version;
 
 			//return -1;
 		}
@@ -205,14 +174,7 @@ namespace SimPe
 
 		public override string ToString()
 		{
-			if (AsUint > 0x80000000)
-			{
-				return AsFileTablePaths.ToString();
-			}
-			else
-			{
-				return AsExpansions.ToString();
-			}
+			return AsUint > 0x80000000 ? AsFileTablePaths.ToString() : AsExpansions.ToString();
 		}
 	}
 }

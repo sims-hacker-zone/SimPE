@@ -46,15 +46,7 @@ namespace SimPe.Plugin
 
 		public string BaseTextureName
 		{
-			get
-			{
-				if (MaterialDefinition != null)
-				{
-					return mmatd.GetProperty("stdMatBaseTextureName").Value;
-				}
-
-				return String.Empty;
-			}
+			get => MaterialDefinition != null ? mmatd.GetProperty("stdMatBaseTextureName").Value : string.Empty;
 			set
 			{
 				if (MaterialDefinition != null)
@@ -66,15 +58,7 @@ namespace SimPe.Plugin
 
 		public string NormalMapTextureName
 		{
-			get
-			{
-				if (MaterialDefinition != null)
-				{
-					return mmatd.GetProperty("stdMatNormalMapTextureName").Value;
-				}
-
-				return String.Empty;
-			}
+			get => MaterialDefinition != null ? mmatd.GetProperty("stdMatNormalMapTextureName").Value : string.Empty;
 			set
 			{
 				if (MaterialDefinition != null)

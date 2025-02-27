@@ -356,12 +356,7 @@ namespace SimPe.Plugin
 				}
 
 				GenericRcol[] txmts = TXMTs;
-				if (txmts.Length > 0)
-				{
-					return txmts[0];
-				}
-
-				return null;
+				return txmts.Length > 0 ? txmts[0] : null;
 			}
 		}
 
@@ -376,12 +371,7 @@ namespace SimPe.Plugin
 				}
 
 				GenericRcol[] txtrs = TXTRs;
-				if (txtrs.Length > 0)
-				{
-					return txtrs[0];
-				}
-
-				return null;
+				return txtrs.Length > 0 ? txtrs[0] : null;
 			}
 		}
 

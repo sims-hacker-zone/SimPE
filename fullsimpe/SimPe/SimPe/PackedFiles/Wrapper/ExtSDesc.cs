@@ -110,15 +110,7 @@ namespace SimPe.PackedFiles.Wrapper
 			sfname;
 		public override string SimFamilyName
 		{
-			get
-			{
-				if (sfname == null)
-				{
-					return base.SimFamilyName;
-				}
-
-				return sfname;
-			}
+			get => sfname ?? base.SimFamilyName;
 			set
 			{
 				chgname = true;
@@ -128,15 +120,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public override string SimName
 		{
-			get
-			{
-				if (sname == null)
-				{
-					return base.SimName;
-				}
-
-				return sname;
-			}
+			get => sname ?? base.SimName;
 			set
 			{
 				chgname = true;
@@ -332,12 +316,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		internal ExtSrel GetCachedRelation(uint inst)
 		{
-			if (crmap.ContainsKey(inst))
-			{
-				return (ExtSrel)crmap[inst];
-			}
-
-			return null;
+			return crmap.ContainsKey(inst) ? (ExtSrel)crmap[inst] : null;
 		}
 
 		internal ExtSrel GetCachedRelation(ExtSDesc sdesc)
@@ -444,16 +423,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public override bool Equals(object obj)
 		{
-			if (obj == null)
-			{
-				return false;
-			}
-
-			if (obj is SDesc s)
-			{
-				return (s.SimId == SimId);
-			}
-			return base.Equals(obj);
+			return obj != null && (obj is SDesc s ? s.SimId == SimId : base.Equals(obj));
 		}
 
 		public override string DescriptionHeader
@@ -570,20 +540,11 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public Interfaces.Providers.ILotItem[] BusinessList
-		{
-			get
-			{
-				if ((uint)Version < (uint)SDescVersions.Business)
-				{
-					return new Interfaces.Providers.ILotItem[0];
-				}
-
-				return FileTableBase.ProviderRegistry.LotProvider.FindLotsOwnedBySim(
+		public Interfaces.Providers.ILotItem[] BusinessList => (uint)Version < (uint)SDescVersions.Business
+					? (new Interfaces.Providers.ILotItem[0])
+					: FileTableBase.ProviderRegistry.LotProvider.FindLotsOwnedBySim(
 					Instance
 				);
-			}
-		}
 
 		public override string DescriptionHeader
 		{

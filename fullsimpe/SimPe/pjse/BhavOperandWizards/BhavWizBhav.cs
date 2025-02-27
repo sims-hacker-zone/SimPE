@@ -55,12 +55,7 @@ namespace pjse.BhavNameWizards
 
 		public static implicit operator BhavWizBhav(Instruction i)
 		{
-			if (i.OpCode < 0x0100)
-			{
-				throw new InvalidCastException("OpCode not a BHAV");
-			}
-
-			return new BhavWizBhav(i);
+			return i.OpCode < 0x0100 ? throw new InvalidCastException("OpCode not a BHAV") : new BhavWizBhav(i);
 		}
 
 		protected override string OpcodeName

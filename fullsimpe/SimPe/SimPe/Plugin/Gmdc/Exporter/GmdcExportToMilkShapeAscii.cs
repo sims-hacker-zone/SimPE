@@ -269,37 +269,12 @@ namespace SimPe.Plugin.Gmdc.Exporter
 
 		Vector3f Correct(Vector3f t, object cor)
 		{
-			if (cor == null)
-			{
-				return t;
-			}
-
-			if (cor is Quaternion)
-			{
-				return t;
-			}
-
-			if (!(cor is Vector3f))
-			{
-				return t;
-			}
-
-			return t + (Vector3f)cor;
+			return cor == null || cor is Quaternion || !(cor is Vector3f f) ? t : t + f;
 		}
 
 		Quaternion Correct(Quaternion t, object cor)
 		{
-			if (cor == null)
-			{
-				return t;
-			}
-
-			if (!(cor is Quaternion))
-			{
-				return t;
-			}
-
-			return t * (Quaternion)cor;
+			return cor == null || !(cor is Quaternion quaternion) ? t : t * quaternion;
 		}
 
 		/// <summary>

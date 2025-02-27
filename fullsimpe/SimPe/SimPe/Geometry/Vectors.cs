@@ -39,15 +39,7 @@ namespace SimPe.Geometry
 		/// </summary>
 		public double X
 		{
-			get
-			{
-				if (double.IsNaN(x))
-				{
-					return 0;
-				}
-
-				return x;
-			}
+			get => double.IsNaN(x) ? 0 : x;
 			set => x = value;
 		}
 
@@ -56,15 +48,7 @@ namespace SimPe.Geometry
 		/// </summary>
 		public double Y
 		{
-			get
-			{
-				if (double.IsNaN(y))
-				{
-					return 0;
-				}
-
-				return y;
-			}
+			get => double.IsNaN(y) ? 0 : y;
 			set => y = value;
 		}
 
@@ -90,12 +74,7 @@ namespace SimPe.Geometry
 
 		protected double EpsilonCorrect(double v)
 		{
-			if (Math.Abs(v) < 0.00001)
-			{
-				return 0;
-			}
-
-			return v;
+			return Math.Abs(v) < 0.00001 ? 0 : v;
 		}
 
 		/// <summary>
@@ -159,15 +138,7 @@ namespace SimPe.Geometry
 		/// </summary>
 		public double Z
 		{
-			get
-			{
-				if (double.IsNaN(z))
-				{
-					return 0;
-				}
-
-				return z;
-			}
+			get => double.IsNaN(z) ? 0 : z;
 			set => z = value;
 		}
 
@@ -403,12 +374,9 @@ namespace SimPe.Geometry
 		/// <returns>The resulting Vector</returns>
 		public static bool operator ==(Vector3f v1, Vector3f v2)
 		{
-			if (((object)v1) == null || ((object)v2) == null)
-			{
-				return (((object)v1) == null && ((object)v2) == null);
-			}
-
-			return (v1.X == v2.X) && (v1.Y == v2.Y) && (v1.Z == v2.Z);
+			return ((object)v1) == null || ((object)v2) == null
+				? ((object)v1) == null && ((object)v2) == null
+				: (v1.X == v2.X) && (v1.Y == v2.Y) && (v1.Z == v2.Z);
 		}
 
 		/// <summary>
@@ -448,22 +416,17 @@ namespace SimPe.Geometry
 		/// <returns>the value stored in that Component</returns>
 		public virtual double GetComponent(int index)
 		{
-			if (index == 0)
+			switch (index)
 			{
-				return X;
+				case 0:
+					return X;
+				case 1:
+					return Y;
+				case 2:
+					return Z;
+				default:
+					return 0;
 			}
-
-			if (index == 1)
-			{
-				return Y;
-			}
-
-			if (index == 2)
-			{
-				return Z;
-			}
-
-			return 0;
 		}
 
 		/// <summary>
@@ -665,15 +628,7 @@ namespace SimPe.Geometry
 		/// </summary>
 		public double W
 		{
-			get
-			{
-				if (double.IsNaN(w))
-				{
-					return 0;
-				}
-
-				return w;
-			}
+			get => double.IsNaN(w) ? 0 : w;
 			set => w = value;
 		}
 
@@ -748,12 +703,7 @@ namespace SimPe.Geometry
 		/// <returns>the value stored in that Component</returns>
 		public override double GetComponent(int index)
 		{
-			if (index == 3)
-			{
-				return W;
-			}
-
-			return base.GetComponent(index);
+			return index == 3 ? W : base.GetComponent(index);
 		}
 
 		/// <summary>

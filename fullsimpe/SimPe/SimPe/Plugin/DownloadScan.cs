@@ -1024,12 +1024,7 @@ namespace SimPe.Plugin
 				}
 			}
 
-			if (incomplete)
-			{
-				return -1;
-			}
-
-			return 0;
+			return incomplete ? -1 : 0;
 		}
 
 		/// <summary>

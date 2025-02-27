@@ -69,23 +69,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// The Link Element
 		/// </summary>
-		public GmdcLink Link
-		{
-			get
-			{
-				if (parent == null)
-				{
-					return null;
-				}
-
-				if (LinkIndex < 0 || LinkIndex >= parent.Links.Count)
-				{
-					return null;
-				}
-
-				return parent.Links[LinkIndex];
-			}
-		}
+		public GmdcLink Link => parent == null || LinkIndex < 0 || LinkIndex >= parent.Links.Count ? null : parent.Links[LinkIndex];
 
 		/// <summary>
 		/// The Name of this Group
@@ -236,22 +220,17 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns>A String Describing the Data</returns>
 		public override string ToString()
 		{
-			if (Faces.Count < 0x2000 || UserVerification.HaveUserId)
-			{
-				return Name
+			return Faces.Count < 0x2000 || UserVerification.HaveUserId
+				? Name
 					+ " (FaceCount="
 					+ (FaceCount).ToString()
 					+ ", VertexCount="
 					+ UsedVertexCount.ToString()
-					+ ")";
-			}
-			else
-			{
-				return Name
+					+ ")"
+				: Name
 					+ " (FaceCount="
 					+ (FaceCount).ToString()
 					+ ", VertexCount=too many Faces)";
-			}
 		}
 
 		/// <summary>

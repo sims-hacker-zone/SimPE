@@ -197,14 +197,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <returns>the stored Value</returns>
 		protected int GetValue(int slot)
 		{
-			if (values.Length > slot)
-			{
-				return values[slot];
-			}
-			else
-			{
-				return 0;
-			}
+			return values.Length > slot ? values[slot] : 0;
 		}
 
 		/// <summary>

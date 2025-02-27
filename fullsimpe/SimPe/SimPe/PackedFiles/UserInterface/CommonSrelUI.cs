@@ -664,69 +664,14 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 		}
 
-		public Wrapper.ExtSDesc SourceSim
-		{
-			get
-			{
-				if (Srel == null)
-				{
-					return null;
-				}
+		public Wrapper.ExtSDesc SourceSim => Srel?.SourceSim;
 
-				return Srel.SourceSim;
-			}
-		}
+		public Wrapper.ExtSDesc TargetSim => Srel?.TargetSim;
 
-		public Wrapper.ExtSDesc TargetSim
-		{
-			get
-			{
-				if (Srel == null)
-				{
-					return null;
-				}
+		public string SourceSimName => Srel == null ? Localization.GetString("Unknown") : Srel.SourceSimName;
 
-				return Srel.TargetSim;
-			}
-		}
+		public string TargetSimName => Srel == null ? Localization.GetString("Unknown") : Srel.TargetSimName;
 
-		public string SourceSimName
-		{
-			get
-			{
-				if (Srel == null)
-				{
-					return Localization.GetString("Unknown");
-				}
-
-				return Srel.SourceSimName;
-			}
-		}
-
-		public string TargetSimName
-		{
-			get
-			{
-				if (Srel == null)
-				{
-					return Localization.GetString("Unknown");
-				}
-
-				return Srel.TargetSimName;
-			}
-		}
-
-		public Image Image
-		{
-			get
-			{
-				if (Srel == null)
-				{
-					return null;
-				}
-
-				return Srel.Image;
-			}
-		}
+		public Image Image => Srel?.Image;
 	}
 }

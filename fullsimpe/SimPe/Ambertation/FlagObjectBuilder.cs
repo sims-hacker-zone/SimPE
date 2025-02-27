@@ -35,14 +35,7 @@ namespace Ambertation
 
 		public static object ActivateType(Type t, object[] o)
 		{
-			if (o != null)
-			{
-				return Activator.CreateInstance(t, o);
-			}
-			else
-			{
-				return Activator.CreateInstance(t);
-			}
+			return o != null ? Activator.CreateInstance(t, o) : Activator.CreateInstance(t);
 		}
 
 		public static Type BuildFlagObject(string classname, Type useenum)

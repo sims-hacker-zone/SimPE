@@ -136,18 +136,7 @@ namespace SimPe.Plugin
 
 		public NgbhSlot SelectedSlot => lv.SelectedSlot;
 
-		public Data.NeighborhoodSlots SlotType
-		{
-			get
-			{
-				if (cb.SelectedIndex < 0)
-				{
-					return Data.NeighborhoodSlots.Lots;
-				}
-
-				return (Data.NeighborhoodSlots)cb.SelectedValue;
-			}
-		}
+		public Data.NeighborhoodSlots SlotType => cb.SelectedIndex < 0 ? Data.NeighborhoodSlots.Lots : (Data.NeighborhoodSlots)cb.SelectedValue;
 
 		public event EventHandler SelectedSlotChanged;
 	}

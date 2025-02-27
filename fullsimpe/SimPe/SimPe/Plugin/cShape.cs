@@ -195,18 +195,13 @@ namespace SimPe.Plugin
 				+ Helper.HexString((uint)Unknown1)
 				+ " - 0x"
 				+ Helper.HexString(Unknown2);
-			if ((parent.Version == 0x07) || (parent.Version == 0x06))
-			{
-				return name
+			return (parent.Version == 0x07) || (parent.Version == 0x06)
+				? name
 					+ " - 0x"
 					+ Helper.HexString((uint)Unknown3)
 					+ " - 0x"
-					+ Helper.HexString(Unknown4);
-			}
-			else
-			{
-				return name + ": " + FileName;
-			}
+					+ Helper.HexString(Unknown4)
+				: name + ": " + FileName;
 		}
 	}
 

@@ -36,22 +36,8 @@ namespace SimPe.Plugin.Tool
 
 		public bool ChangeEnabledStateEventHandler(object sender, ResourceEventArgs e)
 		{
-			if (!e.Loaded)
-			{
-				return false;
-			}
-
-			if (!e.HasResource)
-			{
-				return false;
-			}
-
-			if (e.Count > 1)
-			{
-				return false;
-			}
-
-			return e.Items[0].Resource.FileDescriptor.Type
+			return e.Loaded && e.HasResource && e.Count <= 1
+				&& e.Items[0].Resource.FileDescriptor.Type
 				== Data.MetaData.ANIM;
 		}
 

@@ -234,15 +234,8 @@ namespace SimPe.PackedFiles.Wrapper
 		#region AbstractWrapper Member
 		public override bool CheckVersion(uint version)
 		{
-			if (
-				(version == 0012) //0.00
-				|| (version == 0013) //0.10
-			)
-			{
-				return true;
-			}
-
-			return false;
+			return (version == 0012) //0.00
+				|| (version == 0013);  //0.10
 		}
 
 		protected override IPackedFileUI CreateDefaultUIHandler()

@@ -74,15 +74,7 @@ namespace SimPe.Plugin
 
 		public TextureOverlayTypes TextureOverlayType
 		{
-			get
-			{
-				if (ContainsItem("subtype"))
-				{
-					return (TextureOverlayTypes)CpfItem("subtype").UIntegerValue;
-				}
-
-				return TextureOverlayTypes.EyeBrow;
-			}
+			get => ContainsItem("subtype") ? (TextureOverlayTypes)CpfItem("subtype").UIntegerValue : TextureOverlayTypes.EyeBrow;
 			set => SetValue("subtype", Convert.ToUInt32(value));
 		}
 

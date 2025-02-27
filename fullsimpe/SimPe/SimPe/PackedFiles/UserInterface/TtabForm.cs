@@ -445,13 +445,7 @@ namespace SimPe.PackedFiles.UserInterface
 				Title = "\"Pie String ID\" increment",
 				Prompt = ""
 			};
-			DialogResult dr = pan.ShowDialog();
-			if (dr == DialogResult.OK)
-			{
-				return pan.Value;
-			}
-
-			return 0xffffffff;
+			return pan.ShowDialog() == DialogResult.OK ? pan.Value : 0xffffffff;
 		}
 
 		private void populateCbStringIndex()
@@ -708,18 +702,12 @@ namespace SimPe.PackedFiles.UserInterface
 			lbttab.Items.Add(lbttabItem(i));
 		}
 
-		private String lbttabItem(int i)
+		private string lbttabItem(int i)
 		{
-			if (
-				wrapper[i] != null
+			return wrapper[i] != null
 				&& wrapper[i].StringIndex < cbStringIndex.Items.Count
-			)
-			{
-				return (String)cbStringIndex.Items[(int)wrapper[i].StringIndex];
-			}
-			else
-			{
-				return "[0x"
+				? (string)cbStringIndex.Items[(int)wrapper[i].StringIndex]
+				: "[0x"
 					+ i.ToString("X")
 					+ " ("
 					+ i
@@ -728,7 +716,6 @@ namespace SimPe.PackedFiles.UserInterface
 					+ ": 0x"
 					+ Helper.HexString(wrapper[i].StringIndex)
 					+ "]";
-			}
 		}
 
 		private void setBHAV(int which, ushort target, bool notxt)

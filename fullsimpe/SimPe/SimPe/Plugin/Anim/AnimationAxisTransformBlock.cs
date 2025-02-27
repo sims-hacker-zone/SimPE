@@ -200,12 +200,7 @@ namespace SimPe.Plugin.Anim
 		/// <returns></returns>
 		public short GetTimeCode(int index)
 		{
-			if (index < 0 || index >= Count)
-			{
-				return 0;
-			}
-
-			return this[index].TimeCode;
+			return index < 0 || index >= Count ? (short)0 : this[index].TimeCode;
 		}
 
 		public AnimationAxisTransformBlock CloneBase()
@@ -380,12 +375,7 @@ namespace SimPe.Plugin.Anim
 		/// <returns></returns>
 		public AnimationAxisTransform GetLast()
 		{
-			if (Count == 0)
-			{
-				return null;
-			}
-
-			return this[Count - 1];
+			return Count == 0 ? null : this[Count - 1];
 		}
 
 		/// <summary>
@@ -394,12 +384,7 @@ namespace SimPe.Plugin.Anim
 		/// <returns></returns>
 		public AnimationAxisTransform GetFirst()
 		{
-			if (Count == 0)
-			{
-				return null;
-			}
-
-			return this[0];
+			return Count == 0 ? null : this[0];
 		}
 
 		public AnimationAxisTransform BuildAnimationAxisTransform(

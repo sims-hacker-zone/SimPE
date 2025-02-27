@@ -686,12 +686,7 @@ namespace SimPe.Plugin
 					TriedToLoadParentResourceNode = true;
 				}
 
-				if (cres == null)
-				{
-					return null;
-				}
-
-				return (ResourceNode)cres.Blocks[0];
+				return cres == null ? null : (ResourceNode)cres.Blocks[0];
 			}
 		}
 
@@ -753,12 +748,7 @@ namespace SimPe.Plugin
 			step = ((AbstractRcolBlock)step.Blocks[0]).FindReferencingParent_NoLoad(
 				Data.MetaData.CRES
 			);
-			if (step == null)
-			{
-				return null;
-			}
-
-			return step;
+			return step ?? null;
 		}
 
 		/// <summary>

@@ -284,18 +284,7 @@ namespace Ambertation.Windows.Forms.Graph
 			}
 		}
 
-		Color CurrentLinkColor
-		{
-			get
-			{
-				if (Focused)
-				{
-					return ActiveOutgoingLinkColor;
-				}
-
-				return LinkColor;
-			}
-		}
+		Color CurrentLinkColor => Focused ? ActiveOutgoingLinkColor : LinkColor;
 		#endregion
 
 		protected virtual void InitDocks()

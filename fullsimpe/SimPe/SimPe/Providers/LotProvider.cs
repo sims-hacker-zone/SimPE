@@ -122,12 +122,9 @@ namespace SimPe.Providers
 							Data.MetaData.LOCAL_GROUP,
 							Instance
 						);
-					if (pfd == null)
-					{
-						return null;
-					}
-
-					return new Plugin.FileIndexItem(
+					return pfd == null
+						? null
+						: (Interfaces.Scenegraph.IScenegraphFileIndexItem)new Plugin.FileIndexItem(
 						pfd,
 						LtxtFileIndexItem.Package
 					);
@@ -150,12 +147,9 @@ namespace SimPe.Providers
 							Data.MetaData.LOCAL_GROUP,
 							Instance | 0x8000
 						);
-					if (pfd == null)
-					{
-						return null;
-					}
-
-					return new Plugin.FileIndexItem(
+					return pfd == null
+						? null
+						: (Interfaces.Scenegraph.IScenegraphFileIndexItem)new Plugin.FileIndexItem(
 						pfd,
 						LtxtFileIndexItem.Package
 					);
@@ -441,17 +435,14 @@ namespace SimPe.Providers
 		public Interfaces.Providers.ILotItem FindLot(uint inst)
 		{
 			object o = StoredData[inst];
-			if (o == null)
-			{
-				return new LotItem(
+			return o == null
+				? new LotItem(
 					inst,
 					Localization.GetString("Unknown"),
 					null,
 					null
-				);
-			}
-
-			return o as Interfaces.Providers.ILotItem;
+				)
+				: o as Interfaces.Providers.ILotItem;
 		}
 
 		public Interfaces.Providers.ILotItem[] FindLotsOwnedBySim(uint siminst)

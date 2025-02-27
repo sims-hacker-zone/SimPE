@@ -44,12 +44,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// <returns>A String Describing the Object</returns>
 		public override string ToString()
 		{
-			if (NameTag != null)
-			{
-				return NameTag;
-			}
-
-			return base.ToString();
+			return NameTag ?? base.ToString();
 		}
 
 		/// <summary>

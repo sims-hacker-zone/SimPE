@@ -59,12 +59,7 @@ namespace SimPe.Plugin
 
 		AnimationFrame GetFrame(AnimationFrame[] frames, int index)
 		{
-			if (index < 0 || index >= frames.Length)
-			{
-				return null;
-			}
-
-			return frames[index];
+			return index < 0 || index >= frames.Length ? null : frames[index];
 		}
 
 		void InterpolateFrames(AnimationFrame[] iframes, byte axis)

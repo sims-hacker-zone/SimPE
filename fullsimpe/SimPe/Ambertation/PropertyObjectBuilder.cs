@@ -37,12 +37,7 @@ namespace Ambertation
 			Type destinationType
 		)
 		{
-			if (destinationType == typeof(BaseChangeShort))
-			{
-				return true;
-			}
-
-			return base.CanConvertTo(context, destinationType);
+			return destinationType == typeof(BaseChangeShort) || base.CanConvertTo(context, destinationType);
 		}
 
 		public override object ConvertTo(
@@ -66,12 +61,7 @@ namespace Ambertation
 			Type sourceType
 		)
 		{
-			if (sourceType == typeof(string))
-			{
-				return true;
-			}
-
-			return base.CanConvertFrom(context, sourceType);
+			return sourceType == typeof(string) || base.CanConvertFrom(context, sourceType);
 		}
 
 		public override object ConvertFrom(
@@ -122,17 +112,15 @@ namespace Ambertation
 		{
 			get
 			{
-				if (DigitBase == 16)
+				switch (DigitBase)
 				{
-					return "Hexadecimal";
+					case 16:
+						return "Hexadecimal";
+					case 2:
+						return "Binary";
+					default:
+						return "Decimal";
 				}
-
-				if (DigitBase == 2)
-				{
-					return "Binary";
-				}
-
-				return "Decimal";
 			}
 		}
 
@@ -194,17 +182,14 @@ namespace Ambertation
 		/// <returns>A String</returns>
 		public override string ToString()
 		{
-			if (DigitBase == 16)
+			switch (DigitBase)
 			{
-				return "0x" + IntegerValue.ToString("x");
-			}
-			else if (DigitBase == 2)
-			{
-				return "b" + System.Convert.ToString(IntegerValue, 2);
-			}
-			else
-			{
-				return IntegerValue.ToString();
+				case 16:
+					return "0x" + IntegerValue.ToString("x");
+				case 2:
+					return "b" + System.Convert.ToString(IntegerValue, 2);
+				default:
+					return IntegerValue.ToString();
 			}
 		}
 	}

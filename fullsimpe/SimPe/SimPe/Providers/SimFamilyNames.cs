@@ -150,14 +150,7 @@ namespace SimPe.Providers
 			}
 
 			object o = names[id];
-			if (o != null)
-			{
-				return (IAlias)o;
-			}
-			else
-			{
-				return new Alias(id, "Unknown");
-			}
+			return o != null ? (IAlias)o : new Alias(id, "Unknown");
 		}
 
 		/// <summary>

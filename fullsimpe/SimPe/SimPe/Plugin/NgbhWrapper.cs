@@ -171,10 +171,11 @@ namespace SimPe.Plugin
 
 		public static SimMemoryType[] AllowedMemoryTypes(Data.NeighborhoodSlots type)
 		{
-			if (type == Data.NeighborhoodSlots.Sims)
+			switch (type)
 			{
-				return new SimMemoryType[]
-				{
+				case Data.NeighborhoodSlots.Sims:
+					return new SimMemoryType[]
+								{
 					SimMemoryType.Memory,
 					SimMemoryType.Gossip,
 					SimMemoryType.Inventory,
@@ -183,26 +184,20 @@ namespace SimPe.Plugin
 					SimMemoryType.Aspiration,
 					SimMemoryType.Token,
 					SimMemoryType.ValueToken,
-				};
-			}
-
-			if (type == Data.NeighborhoodSlots.SimsIntern)
-			{
-				return new SimMemoryType[]
-				{
+								};
+				case Data.NeighborhoodSlots.SimsIntern:
+					return new SimMemoryType[]
+								{
 					SimMemoryType.Badge,
 					SimMemoryType.Skill,
 					SimMemoryType.Token,
 					SimMemoryType.ValueToken,
-				};
+								};
+				case Data.NeighborhoodSlots.Families:
+					return new SimMemoryType[] { SimMemoryType.Token };
+				default:
+					return new SimMemoryType[0];
 			}
-
-			if (type == Data.NeighborhoodSlots.Families)
-			{
-				return new SimMemoryType[] { SimMemoryType.Token };
-			}
-
-			return new SimMemoryType[0];
 		}
 
 		#region IWrapper member
@@ -238,23 +233,17 @@ namespace SimPe.Plugin
 
 		public Collections.NgbhSlots GetSlots(Data.NeighborhoodSlots id)
 		{
-			if (
-				id == Data.NeighborhoodSlots.Families
-				|| id == Data.NeighborhoodSlots.FamiliesIntern
-			)
+			switch (id)
 			{
-				return Families;
+				case Data.NeighborhoodSlots.Families:
+				case Data.NeighborhoodSlots.FamiliesIntern:
+					return Families;
+				case Data.NeighborhoodSlots.Lots:
+				case Data.NeighborhoodSlots.LotsIntern:
+					return Lots;
+				default:
+					return Sims;
 			}
-
-			if (
-				id == Data.NeighborhoodSlots.Lots
-				|| id == Data.NeighborhoodSlots.LotsIntern
-			)
-			{
-				return Lots;
-			}
-
-			return Sims;
 		}
 
 		public Collections.NgbhItems GetItems(Data.NeighborhoodSlots id, uint inst)
@@ -276,13 +265,7 @@ namespace SimPe.Plugin
 				slots = Lots;
 			}
 
-			NgbhSlot slot = slots.GetInstanceSlot(inst);
-			if (slot != null)
-			{
-				return slot.GetItems(id);
-			}
-
-			return null;
+			return slots.GetInstanceSlot(inst)?.GetItems(id);
 		}
 
 		/// <summary>

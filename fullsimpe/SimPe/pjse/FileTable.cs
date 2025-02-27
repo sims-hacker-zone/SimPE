@@ -701,17 +701,9 @@ namespace pjse
 
 				Entry that = (Entry)obj;
 
-				if (Type.CompareTo(that.Type) != 0)
-				{
-					return Type.CompareTo(that.Type);
-				}
-
-				if (Group.CompareTo(that.Group) != 0)
-				{
-					return Group.CompareTo(that.Group);
-				}
-
-				return Instance.CompareTo(that.Instance);
+				return Type.CompareTo(that.Type) != 0
+					? Type.CompareTo(that.Type)
+					: Group.CompareTo(that.Group) != 0 ? Group.CompareTo(that.Group) : Instance.CompareTo(that.Instance);
 			}
 
 			#endregion
@@ -734,16 +726,9 @@ namespace pjse
 			#endregion
 		}
 
-		public Entry[] this[IPackageFile package, IPackedFileDescriptor pfd]
-		{
-			get
-			{
-				if (package == null || pfd == null)
-				{
-					return new Entry[0];
-				}
-
-				return this[
+		public Entry[] this[IPackageFile package, IPackedFileDescriptor pfd] => package == null || pfd == null
+					? (new Entry[0])
+					: this[
 					pfd.Type,
 					pfd.Group,
 					pfd.Instance,
@@ -753,8 +738,6 @@ namespace pjse
 						//: IsFixed(package) ? Source.Fixed
 						: Source.Any
 				];
-			}
-		}
 
 		public Entry[] this[IPackageFile package, uint packedFileType]
 		{
@@ -813,12 +796,7 @@ namespace pjse
 				}
 
 				Hashtable tgt = (Hashtable)pfByTypeGroup[packedFileType];
-				if (tgt == null)
-				{
-					return new Entry[0];
-				}
-
-				return putLocalFirst((Hashtable)tgt[group], where);
+				return tgt == null ? (new Entry[0]) : putLocalFirst((Hashtable)tgt[group], where);
 			}
 		}
 
@@ -844,12 +822,9 @@ namespace pjse
 				}
 
 				Hashtable tgitg = (Hashtable)tgit[group];
-				if (tgitg == null)
-				{
-					return new Entry[0];
-				}
-
-				return putLocalFirst(
+				return tgitg == null
+					? (new Entry[0])
+					: putLocalFirst(
 					(Hashtable)tgitg[instance],
 					group == 0xffffffff ? Source.Local : where
 				);
@@ -863,12 +838,9 @@ namespace pjse
 				Refresh();
 			}
 
-			if (pfByGroup == null)
-			{
-				return new Entry[0];
-			}
-
-			return putLocalFirst(
+			return pfByGroup == null
+				? (new Entry[0])
+				: putLocalFirst(
 				(Hashtable)pfByGroup[group],
 				group == 0xffffffff ? Source.Local : where
 			);

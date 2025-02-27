@@ -185,17 +185,15 @@ namespace SimPe.Packages
 
 			public override long Seek(long offset, System.IO.SeekOrigin origin)
 			{
-				if (origin == System.IO.SeekOrigin.Current)
+				switch (origin)
 				{
-					return s.Seek(offset, origin);
+					case System.IO.SeekOrigin.Current:
+						return s.Seek(offset, origin);
+					case System.IO.SeekOrigin.Begin:
+						return s.Seek(offset + o, origin);
+					default:
+						return s.Seek(sz - offset + 0, System.IO.SeekOrigin.Begin);
 				}
-
-				if (origin == System.IO.SeekOrigin.Begin)
-				{
-					return s.Seek(offset + o, origin);
-				}
-
-				return s.Seek(sz - offset + 0, System.IO.SeekOrigin.Begin);
 			}
 
 			public override void SetLength(long value)

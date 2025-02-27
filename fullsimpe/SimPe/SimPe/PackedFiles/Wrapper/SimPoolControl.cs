@@ -49,29 +49,13 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public SDesc SelectedElement
 		{
-			get
-			{
-				if (gp.SelectedItems.Count < 1)
-				{
-					return null;
-				}
-
-				return (ExtSDesc)gp.SelectedItems[0].Tag;
-			}
+			get => gp.SelectedItems.Count < 1 ? null : (SDesc)(ExtSDesc)gp.SelectedItems[0].Tag;
 			set => FindItem(value);
 		}
 
 		public ExtSDesc SelectedSim
 		{
-			get
-			{
-				if (gp.SelectedItems.Count < 1)
-				{
-					return null;
-				}
-
-				return (ExtSDesc)gp.SelectedItems[0].Tag;
-			}
+			get => gp.SelectedItems.Count < 1 ? null : (ExtSDesc)gp.SelectedItems[0].Tag;
 			set => FindItem(value);
 		}
 
@@ -360,14 +344,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			if (sdesc.Unlinked != 0)
 			{
-				if (!sdesc.AvailableCharacterData)
-				{
-					return System.Drawing.Color.FromArgb(72, 0, 72);
-				}
-				else
-				{
-					return System.Drawing.Color.DarkBlue;
-				}
+				return !sdesc.AvailableCharacterData ? System.Drawing.Color.FromArgb(72, 0, 72) : System.Drawing.Color.DarkBlue;
 			}
 			else if (!sdesc.AvailableCharacterData && !sdesc.IsCharSplit)
 			{

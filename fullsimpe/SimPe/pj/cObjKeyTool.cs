@@ -228,12 +228,7 @@ namespace pj
 
 		private bool has3idr(IPackedFileDescriptor pfd, IPackageFile package)
 		{
-			if (pfd == null || package == null)
-			{
-				return false;
-			}
-
-			return findInPackagelist(objkeys, SimPe.Data.MetaData.REF_FILE, pfd)
+			return pfd != null && package != null && findInPackagelist(objkeys, SimPe.Data.MetaData.REF_FILE, pfd)
 				!= null;
 		}
 
@@ -932,12 +927,7 @@ namespace pj
 
 		public bool IsEnabled(IPackedFileDescriptor pfd, IPackageFile package)
 		{
-			if (pfd == null || package == null)
-			{
-				return false;
-			}
-
-			return true;
+			return pfd != null && package != null;
 		}
 
 		private bool IsReallyEnabled(IPackedFileDescriptor pfd, IPackageFile package)

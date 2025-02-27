@@ -41,12 +41,7 @@ namespace SimPe.Plugin.Gmdc
 		int GetAlias(Hashtable alias, int index)
 		{
 			object o = alias[index - 1];
-			if (o == null)
-			{
-				return -1;
-			}
-
-			return (int)o;
+			return o == null ? -1 : (int)o;
 		}
 
 		public override int GetHashCode()

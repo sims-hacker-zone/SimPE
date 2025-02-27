@@ -142,8 +142,7 @@ namespace SimPe.Plugin.Downloads
 					return (ei.Expansion);
 				}
 			}
-			if (
-				flname.StartsWith(
+			return flname.StartsWith(
 					Helper.CompareableFileName(
 						System.IO.Path.Combine(
 							PathProvider.SimSavegameFolder,
@@ -151,12 +150,8 @@ namespace SimPe.Plugin.Downloads
 						)
 					)
 				)
-			)
-			{
-				return Expansions.Custom;
-			}
-
-			return Expansions.None;
+				? Expansions.Custom
+				: Expansions.None;
 		}
 
 		string flname;
@@ -336,12 +331,7 @@ namespace SimPe.Plugin.Downloads
 
 		public Image GetThumbnail(Size sz)
 		{
-			if (Image == null)
-			{
-				return null;
-			}
-
-			return GeneratePreviewImage(sz, Image, KnockoutThumbnail, true);
+			return Image == null ? null : GeneratePreviewImage(sz, Image, KnockoutThumbnail, true);
 		}
 
 		public override string ToString()

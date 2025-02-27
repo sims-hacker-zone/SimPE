@@ -113,12 +113,7 @@ namespace SimPe.Plugin.Collections
 				}
 			}
 
-			if (create)
-			{
-				return AddNew(instance);
-			}
-
-			return null;
+			return create ? AddNew(instance) : null;
 		}
 
 		#region IDisposable Member

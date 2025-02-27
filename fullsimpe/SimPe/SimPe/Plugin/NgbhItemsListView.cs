@@ -309,21 +309,8 @@ namespace SimPe.Plugin
 
 		public NgbhSlotList Slot
 		{
-			get
-			{
-				if (NgbhItems == null)
-				{
-					return null;
-				}
-				else
-				{
-					return NgbhItems.Parent;
-				}
-			}
-			set
-			{
-				NgbhItems = value != null ? value.GetItems(SlotType) : null;
-			}
+			get => NgbhItems?.Parent;
+			set => NgbhItems = value?.GetItems(SlotType);
 		}
 
 		Collections.NgbhItems items;
@@ -457,18 +444,7 @@ namespace SimPe.Plugin
 		}
 
 		[Browsable(false)]
-		public NgbhItem SelectedNgbhItem
-		{
-			get
-			{
-				if (SelectedItem == null)
-				{
-					return null;
-				}
-
-				return SelectedItem.Item;
-			}
-		}
+		public NgbhItem SelectedNgbhItem => SelectedItem?.Item;
 
 		[Browsable(false)]
 		public Collections.NgbhItems SelectedNgbhItems
@@ -610,18 +586,7 @@ namespace SimPe.Plugin
 			lv.Items[i1] = o2;
 		}
 
-		int SelectedIndex
-		{
-			get
-			{
-				if (lv.SelectedIndices.Count == 0)
-				{
-					return -1;
-				}
-
-				return lv.SelectedIndices[0];
-			}
-		}
+		int SelectedIndex => lv.SelectedIndices.Count == 0 ? -1 : lv.SelectedIndices[0];
 
 		private void btUp_Click(object sender, EventArgs e)
 		{
@@ -838,13 +803,7 @@ namespace SimPe.Plugin
 
 		NgbhItem GetFocusedItem()
 		{
-			NgbhItemsListViewItem li = SelectedItem;
-			if (li == null)
-			{
-				return null;
-			}
-
-			return li.Item;
+			return SelectedItem?.Item;
 		}
 
 		public void SelectMemoriesByGuid(Collections.NgbhItems items)

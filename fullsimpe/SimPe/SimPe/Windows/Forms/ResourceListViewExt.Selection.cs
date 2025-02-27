@@ -232,12 +232,7 @@ namespace SimPe.Windows.Forms
 			{
 				lock (names)
 				{
-					if (lv.SelectedIndices.Count == 0)
-					{
-						return null;
-					}
-
-					return names[lv.SelectedIndices[0]].Resource;
+					return lv.SelectedIndices.Count == 0 ? null : names[lv.SelectedIndices[0]].Resource;
 				}
 			}
 		}

@@ -270,18 +270,7 @@ namespace SimPe.Packages
 
 		public IndexDetailsAdvanced IndexDetailsAdvanced => new IndexDetailsAdvanced(pkg.Header);
 
-		public GeneratableFile Package
-		{
-			get
-			{
-				if (pkg is GeneratableFile)
-				{
-					return (GeneratableFile)pkg;
-				}
-
-				return null;
-			}
-		}
+		public GeneratableFile Package => pkg is GeneratableFile file ? file : null;
 
 		#region IDisposable Member
 

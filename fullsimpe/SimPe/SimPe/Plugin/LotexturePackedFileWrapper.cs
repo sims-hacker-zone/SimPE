@@ -292,23 +292,13 @@ namespace SimPe.Plugin
 
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
-			if (FileDescriptor.Type == 0xCDB8BDC4)
-			{
-				if (!(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
+			return FileDescriptor.Type == 0xCDB8BDC4
+				? !(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 						(ushort)FileDescriptor.Instance
-					) is PackedFiles.Wrapper.ExtSDesc sdsc))
-				{
-					return base.GetResourceName(ta);
-				}
-				else
-				{
-					return sdsc.SimName + " Memories";
-				}
-			}
-			else
-			{
-				return base.GetResourceName(ta);
-			}
+					) is PackedFiles.Wrapper.ExtSDesc sdsc)
+					? base.GetResourceName(ta)
+					: sdsc.SimName + " Memories"
+				: base.GetResourceName(ta);
 		}
 	}
 }

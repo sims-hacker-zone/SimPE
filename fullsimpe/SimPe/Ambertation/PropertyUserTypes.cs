@@ -217,12 +217,7 @@ namespace Ambertation
 			Type destinationType
 		)
 		{
-			if (destinationType == typeof(BaseChangeableNumber))
-			{
-				return true;
-			}
-
-			return base.CanConvertTo(context, destinationType);
+			return destinationType == typeof(BaseChangeableNumber) || base.CanConvertTo(context, destinationType);
 		}
 
 		public override object ConvertTo(
@@ -255,12 +250,7 @@ namespace Ambertation
 			Type sourceType
 		)
 		{
-			if (sourceType == typeof(string))
-			{
-				return true;
-			}
-
-			return base.CanConvertFrom(context, sourceType);
+			return sourceType == typeof(string) || base.CanConvertFrom(context, sourceType);
 		}
 
 		public override object ConvertFrom(
@@ -277,7 +267,7 @@ namespace Ambertation
 					{
 						type = context.PropertyDescriptor.PropertyType;
 					}
-
+#pragma warning disable IDE0046
 					BaseChangeableNumber bcn = BaseChangeableNumber.Convert(s, type);
 					if (context.PropertyDescriptor.PropertyType == typeof(long))
 					{
@@ -320,6 +310,7 @@ namespace Ambertation
 					}
 
 					return bcn;
+#pragma warning restore IDE0046
 				}
 				catch
 				{
@@ -364,17 +355,15 @@ namespace Ambertation
 		{
 			get
 			{
-				if (DigitBase == 16)
+				switch (DigitBase)
 				{
-					return "Hexadecimal";
+					case 16:
+						return "Hexadecimal";
+					case 2:
+						return "Binary";
+					default:
+						return "Decimal";
 				}
-
-				if (DigitBase == 2)
-				{
-					return "Binary";
-				}
-
-				return "Decimal";
 			}
 		}
 
@@ -515,6 +504,7 @@ namespace Ambertation
 			set => SetValue(value, value.GetType());
 			get
 			{
+#pragma warning disable IDE0046
 				if (Type == typeof(int))
 				{
 					return (int)LongValue;
@@ -546,6 +536,7 @@ namespace Ambertation
 				}
 
 				return LongValue;
+#pragma warning restore IDE0046
 			}
 		}
 
@@ -589,23 +580,20 @@ namespace Ambertation
 				len = 64;
 			}
 
-			if (DigitBase == 16)
+			switch (DigitBase)
 			{
-				len = len / 4;
-				return "0x" + SimPe.Helper.StrLength(LongValue.ToString("x"), len, false);
-			}
-			else if (DigitBase == 2)
-			{
-				return "b"
-					+ SimPe.Helper.StrLength(
-						System.Convert.ToString(LongValue, 2),
-						len,
-						false
-					);
-			}
-			else
-			{
-				return LongValue.ToString();
+				case 16:
+					len /= 4;
+					return "0x" + SimPe.Helper.StrLength(LongValue.ToString("x"), len, false);
+				case 2:
+					return "b"
+									+ SimPe.Helper.StrLength(
+										System.Convert.ToString(LongValue, 2),
+										len,
+										false
+									);
+				default:
+					return LongValue.ToString();
 			}
 		}
 

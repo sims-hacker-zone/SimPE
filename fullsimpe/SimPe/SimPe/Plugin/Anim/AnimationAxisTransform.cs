@@ -95,15 +95,7 @@ namespace SimPe.Plugin.Anim
 		[Description("True if the Parent is Locked."), Category("Information")]
 		public bool ParentLocked
 		{
-			get
-			{
-				if (parent == null)
-				{
-					return true;
-				}
-
-				return parent.Locked;
-			}
+			get => parent == null || parent.Locked;
 			set => parent.Locked = value;
 		}
 
@@ -340,12 +332,9 @@ namespace SimPe.Plugin.Anim
 
 		public float GetCompressedFloat(short val)
 		{
-			if (parent != null)
-			{
-				return parent.GetCompressedFloat(val);
-			}
-
-			return AnimationAxisTransformBlock.GetCompressedFloat(
+			return parent != null
+				? parent.GetCompressedFloat(val)
+				: AnimationAxisTransformBlock.GetCompressedFloat(
 				val,
 				AnimationAxisTransformBlock.SCALE
 			);
@@ -353,12 +342,9 @@ namespace SimPe.Plugin.Anim
 
 		public short FromCompressedFloat(float val)
 		{
-			if (parent != null)
-			{
-				return parent.FromCompressedFloat(val);
-			}
-
-			return AnimationAxisTransformBlock.FromCompressedFloat(
+			return parent != null
+				? parent.FromCompressedFloat(val)
+				: AnimationAxisTransformBlock.FromCompressedFloat(
 				val,
 				AnimationAxisTransformBlock.SCALE
 			);

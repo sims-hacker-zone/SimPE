@@ -2412,11 +2412,7 @@ namespace SimPe.Plugin
 
 		private Packages.File fixlowercase(string filyname)
 		{
-			if (System.IO.File.Exists(filyname))
-			{
-				return Packages.File.LoadFromFile(filyname);
-			}
-			return null;
+			return System.IO.File.Exists(filyname) ? Packages.File.LoadFromFile(filyname) : (Packages.File)null;
 			/*
 			 * SimPe often internally changes filenames to lower case and if re-opening a recently opened file
 			 * it can load it from memory causing the lower case filename to remain, this causes it to re-open

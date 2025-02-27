@@ -31,12 +31,7 @@ namespace SimPe.Plugin
 		{
 			uint c = Convert.ToUInt32(compositeValue);
 			uint d = Convert.ToUInt32(discreteValue);
-			if (d == 0)
-			{
-				return (c == 0);
-			}
-
-			return (c & d) == d;
+			return d == 0 ? c == 0 : (c & d) == d;
 		}
 
 		public static bool EnumCheck(Enum compValue, Enum disValue)

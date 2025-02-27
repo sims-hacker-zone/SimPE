@@ -485,12 +485,7 @@ namespace SimPe.Providers
 			}
 
 			string es = MetaData.GetKnownNPC(id);
-			if (es != "not found")
-			{
-				return new Alias(id, es);
-			}
-
-			return new Alias(id, Localization.Manager.GetString("unknown"));
+			return es != "not found" ? new Alias(id, es) : (IAlias)new Alias(id, Localization.Manager.GetString("unknown"));
 		}
 
 		/// <summary>

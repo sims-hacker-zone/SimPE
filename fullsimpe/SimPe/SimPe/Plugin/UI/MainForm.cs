@@ -715,12 +715,7 @@ namespace SimPe.Plugin.UI
 			get
 			{
 				System.Windows.Forms.TabPage tp = tcMain.SelectedTab;
-				if (tp != null)
-				{
-					return (HairColor)tp.Tag;
-				}
-
-				return HairColor.Unbinned;
+				return tp != null ? (HairColor)tp.Tag : HairColor.Unbinned;
 			}
 		}
 

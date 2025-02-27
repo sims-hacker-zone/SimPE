@@ -14,12 +14,7 @@ namespace SimPe
 			Type destinationType
 		)
 		{
-			if (destinationType == typeof(FlagBase))
-			{
-				return true;
-			}
-
-			return base.CanConvertTo(context, destinationType);
+			return destinationType == typeof(FlagBase) || base.CanConvertTo(context, destinationType);
 		}
 
 		public override object ConvertTo(
@@ -29,11 +24,9 @@ namespace SimPe
 			Type destinationType
 		)
 		{
-			if (destinationType == typeof(System.String) && value is FlagBase)
-			{
-				return Helper.MinStrLength(value.ToString(), 16);
-			}
-			return base.ConvertTo(context, culture, value, destinationType);
+			return destinationType == typeof(string) && value is FlagBase
+				? Helper.MinStrLength(value.ToString(), 16)
+				: base.ConvertTo(context, culture, value, destinationType);
 		}
 
 		public override bool CanConvertFrom(
@@ -41,12 +34,7 @@ namespace SimPe
 			Type sourceType
 		)
 		{
-			if (sourceType == typeof(string))
-			{
-				return true;
-			}
-
-			return base.CanConvertFrom(context, sourceType);
+			return sourceType == typeof(string) || base.CanConvertFrom(context, sourceType);
 		}
 
 		public override object ConvertFrom(

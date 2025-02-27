@@ -479,12 +479,7 @@ namespace SimPe
 			Interfaces.Scenegraph.IScenegraphFileIndexItem fii
 		)
 		{
-			if (loaded.ContainsKey(fii))
-			{
-				return (TD.SandDock.DockControl)loaded[fii];
-			}
-
-			return null;
+			return loaded.ContainsKey(fii) ? (TD.SandDock.DockControl)loaded[fii] : null;
 		}
 
 		/// <summary>

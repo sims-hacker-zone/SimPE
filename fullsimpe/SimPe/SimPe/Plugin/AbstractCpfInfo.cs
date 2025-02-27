@@ -61,29 +61,13 @@ namespace SimPe.Plugin
 
 		public Guid Family
 		{
-			get
-			{
-				if (propertySet != null)
-				{
-					return ParseGuidValue(CpfItem("family"));
-				}
-
-				return Guid.Empty;
-			}
+			get => propertySet != null ? ParseGuidValue(CpfItem("family")) : Guid.Empty;
 			set => SetValue("family", value.ToString());
 		}
 
 		public string Name
 		{
-			get
-			{
-				if (propertySet != null)
-				{
-					return CpfItem("name").StringValue;
-				}
-
-				return null;
-			}
+			get => propertySet != null ? CpfItem("name").StringValue : null;
 			set => SetValue("name", value);
 		}
 
@@ -107,12 +91,7 @@ namespace SimPe.Plugin
 
 		public CpfItem GetProperty(string name)
 		{
-			if (propertySet == null)
-			{
-				return null;
-			}
-
-			return propertySet.GetSaveItem(name);
+			return propertySet?.GetSaveItem(name);
 		}
 
 		protected CpfItem CpfItem(string name)

@@ -96,23 +96,9 @@ namespace SimPe.Plugin.Anim
 		/// <summary>
 		/// Returns the color that should be used to display this Group in the "Import Groups" ListView
 		/// </summary>
-		public System.Drawing.Color MarkColor
-		{
-			get
-			{
-				if (Action == AnimImporterAction.Nothing)
-				{
-					return System.Drawing.Color.Silver;
-				}
-
-				if (Target == null)
-				{
-					return System.Drawing.Color.Red;
-				}
-
-				return System.Drawing.Color.DarkBlue;
-			}
-		}
+		public System.Drawing.Color MarkColor => Action == AnimImporterAction.Nothing
+					? System.Drawing.Color.Silver
+					: Target == null ? System.Drawing.Color.Red : System.Drawing.Color.DarkBlue;
 
 		/// <summary>
 		/// Create a new Instance

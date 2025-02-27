@@ -212,33 +212,9 @@ namespace SimPe
 			get; set;
 		}
 
-		public bool IsAvail
-		{
-			get
-			{
-				if (!IsUseable)
-				{
-					return false;
-				}
+		public bool IsAvail => IsUseable && Exists;
 
-				return Exists;
-			}
-		}
-
-		public bool Exists
-		{
-			get
-			{
-				if (IsFile)
-				{
-					return System.IO.File.Exists(Name);
-				}
-				else
-				{
-					return System.IO.Directory.Exists(Name);
-				}
-			}
-		}
+		public bool Exists => IsFile ? System.IO.File.Exists(Name) : System.IO.Directory.Exists(Name);
 
 		public string Name
 		{

@@ -158,23 +158,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns the current State of this Stream
 		/// </summary>
-		public StreamState StreamState
-		{
-			get
-			{
-				if (FileStream == null)
-				{
-					return StreamState.Removed;
-				}
-
-				if (FileStream.CanSeek)
-				{
-					return StreamState.Opened;
-				}
-
-				return StreamState.Closed;
-			}
-		}
+		public StreamState StreamState => FileStream == null ? StreamState.Removed : FileStream.CanSeek ? StreamState.Opened : StreamState.Closed;
 
 		/// <summary>
 		/// Closes the Stream if opened
@@ -475,12 +459,7 @@ namespace SimPe.Packages
 		/// <returns>the Stream Item or null if none was found</returns>
 		public static StreamItem FindStreamItem(FileStream fs)
 		{
-			if (fs == null)
-			{
-				return null;
-			}
-
-			return GetStreamItem(fs.Name, false);
+			return fs == null ? null : GetStreamItem(fs.Name, false);
 		}
 
 		/// <summary>

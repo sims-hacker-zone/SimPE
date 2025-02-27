@@ -102,7 +102,7 @@ namespace SimPe.Plugin
 				"Chris",
 				"To View/Edit String Map Files",
 				1,
-				GetIcon.GameTit
+				GetIcon.GameTip
 			);
 		}
 

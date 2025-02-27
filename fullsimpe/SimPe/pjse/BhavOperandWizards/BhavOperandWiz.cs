@@ -349,21 +349,14 @@ namespace pjse.BhavOperandWizards
 
 		private ushort tbValueConverter(TextBox sender)
 		{
-			if (DataOwner == 0x1a)
+			switch (DataOwner)
 			{
-				return BhavWiz.StringtoExpandBCON(sender.Text, false);
-			}
-			else if (DataOwner == 0x2f)
-			{
-				return BhavWiz.StringtoExpandBCON(sender.Text, true);
-			}
-			else if (isDecimal)
-			{
-				return (ushort)Convert.ToInt16(sender.Text, 10);
-			}
-			else
-			{
-				return Convert.ToUInt16(sender.Text, 16);
+				case 0x1a:
+					return BhavWiz.StringtoExpandBCON(sender.Text, false);
+				case 0x2f:
+					return BhavWiz.StringtoExpandBCON(sender.Text, true);
+				default:
+					return isDecimal ? (ushort)Convert.ToInt16(sender.Text, 10) : Convert.ToUInt16(sender.Text, 16);
 			}
 		}
 

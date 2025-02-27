@@ -88,20 +88,15 @@ namespace SimPe
 			ListViewItem rowA = (ListViewItem)x;
 			ListViewItem rowB = (ListViewItem)y;
 
-			if (Sorting == SortOrder.Ascending)
-			{
-				return String.Compare(
+			return Sorting == SortOrder.Ascending
+				? String.Compare(
 					rowA.SubItems[CurrentColumn].Text,
 					rowB.SubItems[CurrentColumn].Text
-				);
-			}
-			else
-			{
-				return String.Compare(
+				)
+				: String.Compare(
 					rowB.SubItems[CurrentColumn].Text,
 					rowA.SubItems[CurrentColumn].Text
 				);
-			}
 		}
 	}
 

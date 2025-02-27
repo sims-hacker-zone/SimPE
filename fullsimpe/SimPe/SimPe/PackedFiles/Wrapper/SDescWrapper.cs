@@ -1476,28 +1476,7 @@ namespace SimPe.PackedFiles.Wrapper
 			get; set;
 		}
 
-		public bool IsHuman
-		{
-			get
-			{
-				if (Species == SpeciesType.Cat)
-				{
-					return false;
-				}
-
-				if (Species == SpeciesType.SmallDog)
-				{
-					return false;
-				}
-
-				if (Species == SpeciesType.LargeDog)
-				{
-					return false;
-				}
-
-				return true;
-			}
-		}
+		public bool IsHuman => Species != SpeciesType.Cat && Species != SpeciesType.SmallDog && Species != SpeciesType.LargeDog;
 
 		internal void Unserialize(BinaryReader reader, SDescVersions ver)
 		{
@@ -1953,17 +1932,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <remarks>If no SimName Provider is available, '---' will be delivered</remarks>
 		public virtual string SimName
 		{
-			get
-			{
-				if (nameprovider != null)
-				{
-					return nameprovider.FindName(SimId).Name;
-				}
-				else
-				{
-					return "---";
-				}
-			}
+			get => nameprovider != null ? nameprovider.FindName(SimId).Name : "---";
 			set => throw new Exception("SimFamilyName can't be changed here!");
 		}
 
@@ -2034,24 +2003,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public bool IsCharSplit
-		{
-			get
-			{
-				if (CharacterFileName == null)
-				{
-					return false;
-				}
-				else if (CharacterFileName.Contains(".1"))
-				{
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-			}
-		}
+		public bool IsCharSplit => CharacterFileName != null && CharacterFileName.Contains(".1");
 
 		/// <summary>
 		/// Returns or Sets the Instance Number
@@ -2151,30 +2103,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Returns the FamilyName of a Sim that is stored in the current Package
 		/// </summary>
 		/// <remarks>If no SimFamilyName Provider is available, '---' will be delivered</remarks>
-		public string HouseholdName
-		{
-			get
-			{
-				if (familynameprovider != null)
-				{
-					if (
-						familynameprovider.FindName(SimId).Name
+		public string HouseholdName => familynameprovider != null
+					? familynameprovider.FindName(SimId).Name
 						== Localization.GetString("Unknown")
-					)
-					{
-						return MetaData.NPCFamily(
+						? MetaData.NPCFamily(
 							Convert.ToUInt32(FamilyInstance)
-						);
-					}
-
-					return familynameprovider.FindName(SimId).Name;
-				}
-				else
-				{
-					return "---";
-				}
-			}
-		}
+						)
+						: familynameprovider.FindName(SimId).Name
+					: "---";
 
 		/// <summary>
 		/// True if the Character File contains Character Data (AgeData, 3dMesh...)
@@ -2361,6 +2297,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Offset for the Relation COunt Filed
 		/// </summary>
+#pragma warning disable IDE0046
 		int RelationPosition
 		{
 			get
@@ -3084,96 +3021,48 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public static ExpansionItem GetIEVersion(SDescVersions sv)
 		{
-			if (sv == SDescVersions.Apartment)
+			switch (sv)
 			{
-				return PathProvider.Global.Latest;
-			}
+				case SDescVersions.Apartment:
+					return PathProvider.Global.Latest;
+				case SDescVersions.Freetime:
+					return PathProvider.Global.GetLowestAvailableExpansion(13, 15); // lowest is EP, these SPs lack data so use them last
+				case SDescVersions.Voyage:
+				case SDescVersions.VoyageB:
+					return PathProvider.Global.GetLowestAvailableExpansion(10, 12);
+				case SDescVersions.Castaway:
+					return PathProvider.Global.GetExpansion(28);
+				case SDescVersions.Pets:
+					return Helper.WindowsRegistry.LoadOnlySimsStory == 29
+						? PathProvider.Global.GetExpansion(29)
+						: PathProvider.Global.GetHighestAvailableExpansion(6, 9);
 
-			if (sv == SDescVersions.Freetime)
-			{
-				return PathProvider.Global.GetLowestAvailableExpansion(13, 15); // lowest is EP, these SPs lack data so use them last
-			}
+				case SDescVersions.Business:
+					return Helper.WindowsRegistry.LoadOnlySimsStory == 30
+						? PathProvider.Global.GetExpansion(30)
+						: PathProvider.Global.GetHighestAvailableExpansion(3, 5);
 
-			if (sv == SDescVersions.Voyage || sv == SDescVersions.VoyageB)
-			{
-				return PathProvider.Global.GetLowestAvailableExpansion(10, 12);
+				case SDescVersions.Nightlife:
+					return PathProvider.Global.GetExpansion(2);
+				case SDescVersions.University:
+					return PathProvider.Global.GetExpansion(1);
+				case SDescVersions.BaseGame:
+					return PathProvider.Global.GetExpansion(0);
+				default:
+					return null;
 			}
-
-			if (sv == SDescVersions.Castaway)
-			{
-				return PathProvider.Global.GetExpansion(28);
-			}
-
-			if (sv == SDescVersions.Pets)
-			{
-				if (Helper.WindowsRegistry.LoadOnlySimsStory == 29)
-				{
-					return PathProvider.Global.GetExpansion(29);
-				}
-				else
-				{
-					return PathProvider.Global.GetHighestAvailableExpansion(6, 9);
-				}
-			}
-			if (sv == SDescVersions.Business)
-			{
-				if (Helper.WindowsRegistry.LoadOnlySimsStory == 30)
-				{
-					return PathProvider.Global.GetExpansion(30);
-				}
-				else
-				{
-					return (PathProvider.Global.GetHighestAvailableExpansion(3, 5));
-				}
-			}
-			if (sv == SDescVersions.Nightlife)
-			{
-				return PathProvider.Global.GetExpansion(2);
-			}
-
-			if (sv == SDescVersions.University)
-			{
-				return PathProvider.Global.GetExpansion(1);
-			}
-
-			if (sv == SDescVersions.BaseGame)
-			{
-				return PathProvider.Global.GetExpansion(0);
-			}
-
-			return null;
 		}
 
 		public override int GetHashCode()
 		{
-			if (FileDescriptor == null || Package == null)
-			{
-				return base.GetHashCode();
-			}
-			else
-			{
-				return (int)SimId;
-			}
+			return FileDescriptor == null || Package == null ? base.GetHashCode() : (int)SimId;
 		}
 
 		public override bool Equals(object obj)
 		{
-			if (FileDescriptor == null || Package == null)
-			{
-				return base.Equals(obj);
-			}
-
-			if (obj == null)
-			{
-				return false;
-			}
-
-			if (!(obj is SDesc))
-			{
-				return false;
-			}
-
-			return (((SDesc)obj).SimId == SimId) && (((SDesc)obj).Instance == Instance);
+			return FileDescriptor == null || Package == null
+				? base.Equals(obj)
+				: obj != null && obj is SDesc desc && (desc.SimId == SimId) && (desc.Instance == Instance);
 		}
 
 		/*public static bool operator ==(SDesc s1, SDesc s2)

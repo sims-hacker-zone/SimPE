@@ -188,17 +188,7 @@ namespace SimPe.Packages
 		/// </summary>
 		public int Size
 		{
-			get
-			{
-				if (userdata == null)
-				{
-					return size;
-				}
-				else
-				{
-					return userdata.Length;
-				}
-			}
+			get => userdata == null ? size : userdata.Length;
 			set => size = value;
 		}
 
@@ -390,35 +380,29 @@ namespace SimPe.Packages
 
 		string GetResDescString()
 		{
-			if (
+			switch (
 				Helper.WindowsRegistry.ResourceListUnknownDescriptionFormat
-				== Registry.ResourceListUnnamedFormats.FullTGI
 			)
 			{
-				return Helper.HexString(Type)
-					+ " - "
-					+ Helper.HexString(SubType)
-					+ " - "
-					+ Helper.HexString(Group)
-					+ " - "
-					+ Helper.HexString(Instance);
+				case Registry.ResourceListUnnamedFormats.FullTGI:
+					return Helper.HexString(Type)
+																					+ " - "
+																					+ Helper.HexString(SubType)
+																					+ " - "
+																					+ Helper.HexString(Group)
+																					+ " - "
+																					+ Helper.HexString(Instance);
+				case Registry.ResourceListUnnamedFormats.Instance:
+					return Helper.HexString(SubType)
+																					 + " - "
+																					 + Helper.HexString(Instance);
+				default:
+					return Helper.HexString(SubType)
+						+ " - "
+						+ Helper.HexString(Group)
+						+ " - "
+						+ Helper.HexString(Instance);
 			}
-
-			if (
-				Helper.WindowsRegistry.ResourceListUnknownDescriptionFormat
-				== Registry.ResourceListUnnamedFormats.Instance
-			)
-			{
-				return Helper.HexString(SubType)
-					+ " - "
-					+ Helper.HexString(Instance);
-			}
-
-			return Helper.HexString(SubType)
-				+ " - "
-				+ Helper.HexString(Group)
-				+ " - "
-				+ Helper.HexString(Instance);
 		}
 
 		public string ToResListString()

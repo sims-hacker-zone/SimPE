@@ -306,38 +306,17 @@ namespace SimPe
 
 		private static bool shouldignor(ExpansionItem ei, string folder)
 		{
-			if (
-				(PathProvider.Global.GameVersion < 21 && ei.Flag.SimStory)
+			return (PathProvider.Global.GameVersion < 21 && ei.Flag.SimStory)
 				|| (!ei.Exists && ei.InstallFolder == "")
-			)
-			{
-				return true;
-			}
-
-			if (
-				ei.Version == PathProvider.Global.GameVersion
-				&& (
-					folder.EndsWith("\\Objects")
-					|| folder.EndsWith("\\Overrides")
-					|| folder.EndsWith("\\UI")
-					|| folder.EndsWith("\\Wants")
-				)
-			)
-			{
-				return false;
-			}
-
-			if (
-				folder.EndsWith("\\3D")
-				|| folder.EndsWith("\\Sims3D")
-				|| folder.EndsWith("\\Stuffpack\\Objects")
-				|| folder.EndsWith("\\Materials")
-			)
-			{
-				return false;
-			}
-
-			return true;
+|| ((ei.Version != PathProvider.Global.GameVersion
+				|| (!folder.EndsWith("\\Objects")
+					&& !folder.EndsWith("\\Overrides")
+					&& !folder.EndsWith("\\UI")
+					&& !folder.EndsWith("\\Wants")))
+					&& !folder.EndsWith("\\3D")
+				&& !folder.EndsWith("\\Sims3D")
+				&& !folder.EndsWith("\\Stuffpack\\Objects")
+				&& !folder.EndsWith("\\Materials"));
 		}
 
 		/// <summary>

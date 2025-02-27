@@ -355,7 +355,7 @@ namespace SimPe.Plugin
 				return false;
 			}
 		}
-
+#pragma warning disable IDE0046
 		public SimMemoryType MemoryType
 		{
 			get
@@ -645,14 +645,7 @@ namespace SimPe.Plugin
 		/// <returns>the stored Value</returns>
 		internal ushort GetValue(int slot)
 		{
-			if (data.Length > slot)
-			{
-				return data[slot];
-			}
-			else
-			{
-				return 0;
-			}
+			return data.Length > slot ? data[slot] : (ushort)0;
 		}
 
 		protected string GetSubjectName()

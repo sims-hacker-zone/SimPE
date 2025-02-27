@@ -121,12 +121,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		internal IScorItemToken GetTokenParser(string name)
 		{
-			if (Readers.ContainsKey(name))
-			{
-				return Readers[name];
-			}
-
-			return DefaultTokenParser;
+			return Readers.ContainsKey(name) ? Readers[name] : DefaultTokenParser;
 		}
 		#endregion
 

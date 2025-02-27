@@ -41,15 +41,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 		string flname;
 		public string FileName
 		{
-			get
-			{
-				if (flname == null)
-				{
-					return "";
-				}
-
-				return flname;
-			}
+			get => flname ?? "";
 			set => flname = value;
 		}
 

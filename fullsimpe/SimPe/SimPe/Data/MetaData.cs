@@ -1088,12 +1088,7 @@ namespace SimPe.Data
 				InitializeNPCNameFromID();
 			}
 
-			if (NPCNameFromID.ContainsKey(id))
-			{
-				return NPCNameFromID[id];
-			}
-
-			return "not found";
+			return NPCNameFromID.ContainsKey(id) ? NPCNameFromID[id] : "not found";
 		}
 
 		private static void InitializeNPCNameFromID()
@@ -1307,12 +1302,7 @@ namespace SimPe.Data
 				InitializeTitlePostName();
 			}
 
-			if (TitlePostName.ContainsKey(id))
-			{
-				return TitlePostName[id];
-			}
-
-			return "";
+			return TitlePostName.ContainsKey(id) ? TitlePostName[id] : "";
 		}
 
 		/// <summary>
@@ -1373,12 +1363,7 @@ namespace SimPe.Data
 				InitializeKnownFences();
 			}
 
-			if (KnownFences.ContainsKey(id))
-			{
-				return KnownFences[id];
-			}
-
-			return "not found";
+			return KnownFences.ContainsKey(id) ? KnownFences[id] : "not found";
 		}
 
 		/// <summary>
@@ -1858,12 +1843,7 @@ namespace SimPe.Data
 				InitializeLanguageName();
 			}
 
-			if (LanguageName.ContainsKey(id))
-			{
-				return LanguageName[id];
-			}
-
-			return "Invalid Language Id";
+			return LanguageName.ContainsKey(id) ? LanguageName[id] : "Invalid Language Id";
 		}
 
 		/// <summary>
@@ -1933,22 +1913,9 @@ namespace SimPe.Data
 				InitializeNPCFamilyFromInstance();
 			}
 
-			if (NPCFamilyFromInstance.ContainsKey(id))
-			{
-				return NPCFamilyFromInstance[id];
-			}
-
-			if (id == 0)
-			{
-				return "No Family";
-			}
-
-			if (id < 32512)
-			{
-				return "Playable Family";
-			}
-
-			return "Unknown NPC Family";
+			return NPCFamilyFromInstance.ContainsKey(id)
+				? NPCFamilyFromInstance[id]
+				: id == 0 ? "No Family" : id < 32512 ? "Playable Family" : "Unknown NPC Family";
 		}
 
 		private static void InitializeNPCFamilyFromInstance()
@@ -2007,12 +1974,7 @@ namespace SimPe.Data
 				InitializeGUIDsToBody();
 			}
 
-			if (GUIDsToBody.ContainsKey(id))
-			{
-				return GUIDsToBody[id];
-			}
-
-			return 0;
+			return GUIDsToBody.ContainsKey(id) ? GUIDsToBody[id] : 0;
 		}
 
 		private static void InitializeGUIDsToBody()
@@ -2646,12 +2608,7 @@ namespace SimPe.Data
 				InitializeBodyShapes();
 			}
 
-			if (BodyShapeIds.ContainsKey(id))
-			{
-				return BodyShapeIds[id];
-			}
-
-			return "Unknown";
+			return BodyShapeIds.ContainsKey(id) ? BodyShapeIds[id] : "Unknown";
 		}
 
 		public static uint GetBodyShapeKey(object ob)
@@ -3056,33 +3013,22 @@ namespace SimPe.Data
 		public static Ages AgeTranslation(LifeSections age)
 		{
 			agelist = new Hashtable();
-			if (age == LifeSections.Adult)
+			switch (age)
 			{
-				return Ages.Adult;
-			}
-			else if (age == LifeSections.Baby)
-			{
-				return Ages.Baby;
-			}
-			else if (age == LifeSections.Child)
-			{
-				return Ages.Child;
-			}
-			else if (age == LifeSections.Elder)
-			{
-				return Ages.Elder;
-			}
-			else if (age == LifeSections.Teen)
-			{
-				return Ages.Teen;
-			}
-			else if (age == LifeSections.Toddler)
-			{
-				return Ages.Toddler;
-			}
-			else
-			{
-				return Ages.Adult;
+				case LifeSections.Adult:
+					return Ages.Adult;
+				case LifeSections.Baby:
+					return Ages.Baby;
+				case LifeSections.Child:
+					return Ages.Child;
+				case LifeSections.Elder:
+					return Ages.Elder;
+				case LifeSections.Teen:
+					return Ages.Teen;
+				case LifeSections.Toddler:
+					return Ages.Toddler;
+				default:
+					return Ages.Adult;
 			}
 		}
 		#endregion

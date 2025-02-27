@@ -82,16 +82,11 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected override string GetResourceName(TypeAlias ta)
 		{
-			if (!(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
+			return !(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 					(ushort)FileDescriptor.Instance
-				) is ExtSDesc sdsc))
-			{
-				return base.GetResourceName(ta);
-			}
-			else
-			{
-				return sdsc.SimName + " " + sdsc.SimFamilyName + " (Scores)";
-			}
+				) is ExtSDesc sdsc)
+				? base.GetResourceName(ta)
+				: sdsc.SimName + " " + sdsc.SimFamilyName + " (Scores)";
 		}
 
 		#region AbstractWrapper Member

@@ -88,15 +88,7 @@ namespace SimPe.Cache
 		string objdname;
 		public string ObjdName
 		{
-			get
-			{
-				if (objdname == null)
-				{
-					return Name;
-				}
-
-				return objdname;
-			}
+			get => objdname ?? Name;
 			set => objdname = value;
 		}
 

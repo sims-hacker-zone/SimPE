@@ -97,12 +97,7 @@ namespace SimPe.Plugin.Downloads
 		)
 		{
 			Type t = subreg[type] as Type;
-			if (t == null)
-			{
-				return new XTypeHandler();
-			}
-
-			return Activator.CreateInstance(t, new object[] { }) as ITypeHandler;
+			return t == null ? new XTypeHandler() : Activator.CreateInstance(t, new object[] { }) as ITypeHandler;
 		}
 
 		string FixedExtension(string extension)

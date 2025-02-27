@@ -585,20 +585,8 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns></returns>
 		bool IsLocalCres()
 		{
-			if (Gmdc.ParentResourceNode == null)
-			{
-				return false;
-			}
-
-			if (
-				Gmdc.ParentResourceNode.Parent.Package.FileName.Trim().ToLower()
-				== Gmdc.Parent.Package.FileName.Trim().ToLower()
-			)
-			{
-				return true;
-			}
-
-			return false;
+			return Gmdc.ParentResourceNode != null && Gmdc.ParentResourceNode.Parent.Package.FileName.Trim().ToLower()
+					== Gmdc.Parent.Package.FileName.Trim().ToLower();
 		}
 
 		#region Bone

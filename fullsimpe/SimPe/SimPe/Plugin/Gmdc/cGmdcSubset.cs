@@ -166,18 +166,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Reads the Name from the TransformNode or generates a default Name based on the Index
 		/// </summary>
-		public string Name
-		{
-			get
-			{
-				if (AssignedTransformNode != null)
-				{
-					return AssignedTransformNode.ObjectGraphNode.FileName;
-				}
-
-				return "Joint" + Index.ToString();
-			}
-		}
+		public string Name => AssignedTransformNode != null ? AssignedTransformNode.ObjectGraphNode.FileName : "Joint" + Index.ToString();
 
 		/// <summary>
 		/// Returns the assigned TransformNode

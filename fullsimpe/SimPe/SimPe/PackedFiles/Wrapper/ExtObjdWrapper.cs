@@ -119,12 +119,7 @@ namespace SimPe.PackedFiles.Wrapper
 				if (Data.Length > 0x004F)
 				{
 					short v = Data[0x004F];
-					if (v != 0x64 && v != 0x96 && v != 0 && v != 1 && v != 2)
-					{
-						return ShelveDimension.Indetermined;
-					}
-
-					return (ShelveDimension)v;
+					return v != 0x64 && v != 0x96 && v != 0 && v != 1 && v != 2 ? ShelveDimension.Indetermined : (ShelveDimension)v;
 				}
 				return 0;
 			}
@@ -142,15 +137,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public ushort CTSSInstance
 		{
-			get
-			{
-				if (Data.Length > 0x29)
-				{
-					return (ushort)Data[0x29];
-				}
-
-				return 0;
-			}
+			get => Data.Length > 0x29 ? (ushort)Data[0x29] : (ushort)0;
 			set
 			{
 				if (Data.Length > 0x29)
@@ -165,15 +152,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public Data.ObjectTypes Type
 		{
-			get
-			{
-				if (Data.Length > 0x09)
-				{
-					return (Data.ObjectTypes)Data[0x09];
-				}
-
-				return SimPe.Data.ObjectTypes.Normal;
-			}
+			get => Data.Length > 0x09 ? (Data.ObjectTypes)Data[0x09] : SimPe.Data.ObjectTypes.Normal;
 			set
 			{
 				if (Data.Length > 0x09)

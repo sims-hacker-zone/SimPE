@@ -35,57 +35,19 @@ namespace SimPe
 		/// <summary>
 		/// Return null, or the stored extended Tool
 		/// </summary>
-		public IToolExt ToolExt
-		{
-			get
-			{
+		public IToolExt ToolExt =>
 				//if (tool.GetType().GetInterface("SimPe.Interfaces.IToolExt", true) == typeof(SimPe.Interfaces.IToolExt)) return (SimPe.Interfaces.IToolExt)tool;
-				if (tool is IToolExt)
-				{
-					return (IToolExt)tool;
-				}
-				else
-				{
-					return null;
-				}
-			}
-		}
+				tool is IToolExt ext ? ext : null;
 
 		/// <summary>
 		/// Return null, or the stored  Tool
 		/// </summary>
-		public ITool Tool
-		{
-			get
-			{
-				if (tool is ITool)
-				{
-					return (ITool)tool;
-				}
-				else
-				{
-					return null;
-				}
-			}
-		}
+		public ITool Tool => tool is ITool tool1 ? tool1 : null;
 
 		/// <summary>
 		/// Return null, or the stored ToolPlus Item
 		/// </summary>
-		public IToolPlus ToolPlus
-		{
-			get
-			{
-				if (tool is IToolPlus)
-				{
-					return (IToolPlus)tool;
-				}
-				else
-				{
-					return null;
-				}
-			}
-		}
+		public IToolPlus ToolPlus => tool is IToolPlus plus ? plus : null;
 		Interfaces.Files.IPackedFileDescriptor pfd;
 		Interfaces.Files.IPackageFile package;
 

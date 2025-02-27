@@ -196,28 +196,11 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Returns the color that should be used to display this Group in the "Import Groups" ListView
 		/// </summary>
-		public System.Drawing.Color MarkColor
-		{
-			get
-			{
-				if (Action == GmdcImporterAction.Nothing)
-				{
-					return System.Drawing.Color.Silver;
-				}
-
-				if (VertexCount > AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT)
-				{
-					return System.Drawing.Color.Red;
-				}
-
-				if (FaceCount > AbstractGmdcImporter.CRITICAL_FACE_AMOUNT)
-				{
-					return System.Drawing.Color.Red;
-				}
-
-				return System.Drawing.SystemColors.WindowText;
-			}
-		}
+		public System.Drawing.Color MarkColor => Action == GmdcImporterAction.Nothing
+					? System.Drawing.Color.Silver
+					: VertexCount > AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT || FaceCount > AbstractGmdcImporter.CRITICAL_FACE_AMOUNT
+					? System.Drawing.Color.Red
+					: System.Drawing.SystemColors.WindowText;
 
 		/// <summary>
 		/// Create a new Instance

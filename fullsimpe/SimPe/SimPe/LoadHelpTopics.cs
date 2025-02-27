@@ -22,12 +22,7 @@ namespace SimPe
 		public string GetName()
 		{
 			string[] path = GetMenuPath();
-			if (path.Length > 0)
-			{
-				return Localization.GetString(path[path.Length - 1]);
-			}
-
-			return Localization.GetString("Unknown");
+			return path.Length > 0 ? Localization.GetString(path[path.Length - 1]) : Localization.GetString("Unknown");
 		}
 
 		public string[] GetMenuPath()

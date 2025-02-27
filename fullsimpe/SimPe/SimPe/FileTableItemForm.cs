@@ -183,14 +183,7 @@ namespace SimPe
 		{
 			FileTableItem fti = new FileTableItem("", false, false);
 
-			if (Execute(fti))
-			{
-				return fti;
-			}
-			else
-			{
-				return null;
-			}
+			return Execute(fti) ? fti : null;
 		}
 
 		public static bool Execute(FileTableItem fti)
